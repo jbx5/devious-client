@@ -11,6 +11,7 @@ import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetID;
 import net.runelite.api.widgets.WidgetInfo;
 
+import javax.annotation.Nullable;
 import javax.inject.Inject;
 
 public class Game
@@ -20,19 +21,23 @@ public class Game
 	private static final String LOGOUT_ACTION = "Logout";
 
 	@Inject
+	@Nullable
 	private static Client client;
 
 	@Inject
+	@Nullable
 	private static ClientPacket clientPacket;
 
 	@Inject
 	private static GlobalCollisionMap globalCollisionMap;
 
+	@Nullable
 	public static Client getClient()
 	{
 		return client;
 	}
 
+	@Nullable
 	public static ClientPacket getClientPacket()
 	{
 		return clientPacket;
