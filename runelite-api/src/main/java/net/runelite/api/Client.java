@@ -33,6 +33,12 @@ import java.util.Map;
 import java.util.Set;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+
+import dev.hoot.api.MouseHandler;
+import net.runelite.api.packets.ClientPacket;
+import net.runelite.api.packets.IsaacCipher;
+import net.runelite.api.packets.PacketBufferNode;
+import net.runelite.api.packets.PacketWriter;
 import net.runelite.api.annotations.VisibleForExternalPlugins;
 import net.runelite.api.clan.ClanChannel;
 import net.runelite.api.clan.ClanSettings;
@@ -2017,7 +2023,13 @@ public interface Client extends GameEngine
 
 	void setRenderSelf(boolean enabled);
 
-	void invokeMenuAction(String option, String target, int identifier, int opcode, int param0, int param1);
+	default void invokeMenuAction(String option, String target, int identifier, int opcode, int param0,
+								  int param1) {
+		invokeMenuAction(option, target, identifier, opcode, param0, param1, -1, -1);
+	}
+
+	void invokeMenuAction(String option, String target, int identifier, int opcode, int param0, int param1,
+						  int screenX, int screenY);
 
 	MouseRecorder getMouseRecorder();
 
@@ -2335,4 +2347,110 @@ public interface Client extends GameEngine
 	 * @return
 	 */
 	Deque<AmbientSoundEffect> getAmbientSoundEffects();
+
+	boolean getCameraPitchRelaxerEnabled();
+
+	void posToCameraAngle(int var0, int var1);
+
+	/*
+	 * Unethical
+	 */
+
+	default void interact(final int identifier, final int opcode, final int param0, final int param1) {
+		interact(identifier, opcode, param0, param1, -1, -1);
+	}
+
+	void interact(final int identifier, final int opcode, final int param0, final int param1, int clickX, int clickY);
+
+	int getMouseLastPressedX();
+
+	void setMouseLastPressedX(int x);
+
+	int getMouseLastPressedY();
+
+	void setMouseLastPressedY(int y);
+
+	String getLoginMessage();
+	/**
+	 * Used to send packets to the server.
+	 * @return the client's PacketWriter.
+	 */
+	PacketWriter getPacketWriter();
+
+	/**
+	 * Used to prepare a packet which can then be queued to the PacketWriter.
+	 * @param packet the type of packet
+	 * @param isaac client's isaaccipher
+	 * @return the prepared packet.
+	 */
+	PacketBufferNode preparePacket(ClientPacket packet, IsaacCipher isaac);
+
+	/**
+	 * The packet which is sent when sending a name input (ex. adding friends).
+	 * @return the ClientPacket which belongs to this packet
+	 */
+
+	void setSelectedSceneTileX(int sceneX);
+
+	void setSelectedSceneTileY(int sceneY);
+
+	void setViewportWalking(boolean enabled);
+
+	void setCheckClick(boolean enabled);
+
+	boolean isTileObjectValid(Tile tile, TileObject tileObject);
+
+	boolean isItemDefinitionCached(int id);
+
+	boolean loadWorlds();
+
+	Widget[][] getWidgets();
+
+	boolean isLowCpu();
+
+	void setLowCpu(boolean enabled);
+
+	void uncacheNPC(int id);
+
+	void uncacheItem(int id);
+
+	void uncacheObject(int id);
+
+	void clearNPCCache();
+
+	void clearItemCache();
+
+	void clearObjectCache();
+
+	void processDialog(int widgetUid, int menuIndex);
+
+	void setDestinationX(int sceneX);
+
+	void setDestinationY(int sceneY);
+
+	int getDestinationX();
+
+	int getDestinationY();
+
+	boolean isWorldSelectOpen();
+
+	void setWorldSelectOpen(boolean open);
+
+	void setWindowedMode(int mode);
+
+	int getWindowedMode();
+
+	MouseHandler getMouseHandler();
+
+	long getCurrentTime();
+
+	boolean isFocused();
+
+	void setFocused(boolean focused);
+
+	void setClickCrossX(int x);
+
+	void setClickCrossY(int y);
+
+	ClientPacket getClientPacket();
 }

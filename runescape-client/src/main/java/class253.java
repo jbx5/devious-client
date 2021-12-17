@@ -408,7 +408,7 @@ public class class253 {
 						String var19 = "";
 						var5 = "";
 						var6 = "";
-						switch(Login.field871) {
+						switch(Login.Login_banType) {
 						case 0:
 							var19 = "Your account has been disabled.";
 							var5 = Strings.field3523;

@@ -41,6 +41,7 @@ import net.runelite.api.Perspective;
 import net.runelite.api.Point;
 import net.runelite.api.TileObject;
 import net.runelite.api.coords.LocalPoint;
+import net.runelite.api.coords.WorldPoint;
 import net.runelite.client.util.ColorUtil;
 
 public class OverlayUtil
@@ -261,5 +262,24 @@ public class OverlayUtil
 		}
 
 		return result;
+	}
+
+	public static void fillTile(Graphics2D graphics, Client client, WorldPoint point, Color color) {
+		if (point.getPlane() != client.getPlane()) {
+			return;
+		}
+
+		LocalPoint lp = LocalPoint.fromWorld(client, point);
+		if (lp == null) {
+			return;
+		}
+
+		Polygon poly = Perspective.getCanvasTilePoly(client, lp);
+		if (poly == null) {
+			return;
+		}
+
+		graphics.setColor(color);
+		graphics.fill(poly);
 	}
 }

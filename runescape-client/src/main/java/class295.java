@@ -59,7 +59,7 @@ public enum class295 implements MouseWheel {
 		garbageValue = "1999955592"
 	)
 	public static boolean method5515() {
-		long var0 = Ignored.method6459();
+		long var0 = Ignored.getServerTime();
 		int var2 = (int)(var0 - UserComparator7.field1319);
 		UserComparator7.field1319 = var0;
 		if (var2 > 200) {

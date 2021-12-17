@@ -29,6 +29,8 @@ import java.awt.Polygon;
 import java.awt.Shape;
 import java.awt.image.BufferedImage;
 import javax.annotation.Nullable;
+
+import dev.hoot.api.SceneEntity;
 import net.runelite.api.annotations.VisibleForDevtools;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldArea;
@@ -37,7 +39,7 @@ import net.runelite.api.coords.WorldPoint;
 /**
  * Represents a RuneScape actor/entity.
  */
-public interface Actor extends Renderable, Locatable
+public interface Actor extends Renderable, SceneEntity
 {
 	/**
 	 * Gets the combat level of the actor.
@@ -409,4 +411,9 @@ public interface Actor extends Renderable, Locatable
 	boolean isDead();
 
 	boolean isMoving();
+
+	default boolean isAnimating()
+	{
+		return getAnimation() != -1;
+	}
 }

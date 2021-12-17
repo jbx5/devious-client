@@ -313,7 +313,7 @@ public class class143 {
 		}
 
 		if (PacketBufferNode.garbageCollector != null) {
-			long var9 = Ignored.method6459();
+			long var9 = Ignored.getServerTime();
 			long var3 = PacketBufferNode.garbageCollector.getCollectionTime();
 			if (-1L != GameEngine.garbageCollectorLastCollectionTime) {
 				long var5 = var3 - GameEngine.garbageCollectorLastCollectionTime;

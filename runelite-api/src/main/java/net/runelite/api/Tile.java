@@ -159,4 +159,6 @@ public interface Tile extends Locatable
 	 * Return the tile under this one, if this tile is a bridge
 	 */
 	Tile getBridge();
+
+	void walkHere();
 }

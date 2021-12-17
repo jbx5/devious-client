@@ -31,6 +31,7 @@ import lombok.Getter;
 import net.runelite.api.Client;
 import net.runelite.api.CollisionData;
 import net.runelite.api.CollisionDataFlag;
+import net.runelite.api.Locatable;
 import net.runelite.api.Point;
 import net.runelite.api.Tile;
 import net.runelite.api.Constants;
@@ -743,5 +744,9 @@ public class WorldArea
 		}
 
 		return list;
+	}
+
+	public boolean contains(Locatable locatable) {
+		return contains(locatable.getWorldLocation());
 	}
 }

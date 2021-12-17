@@ -1001,4 +1001,24 @@ public class Perspective
 		}
 		return pList;
 	}
+
+	public static Point tileCenter(Client client,WorldPoint b) {
+		if (b.getPlane() != client.getPlane()) {
+			return null;
+		}
+
+		LocalPoint lp = LocalPoint.fromWorld(client, b);
+		if (lp == null) {
+			return null;
+		}
+
+		Polygon poly = Perspective.getCanvasTilePoly(client, lp);
+		if (poly == null) {
+			return null;
+		}
+
+		int cx = poly.getBounds().x + poly.getBounds().width / 2;
+		int cy = poly.getBounds().y + poly.getBounds().height / 2;
+		return new Point(cx, cy);
+	}
 }

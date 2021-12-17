@@ -103,5 +103,5 @@ public interface Player extends Actor
 	 */
 	int getRSSkillLevel();
 
-	String[] getActions();
+//	String[] getActions();
 }

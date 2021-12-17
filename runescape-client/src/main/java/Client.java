@@ -1635,7 +1635,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 	)
 	@Export("resizeGame")
 	protected final void resizeGame() {
-		field514 = Ignored.method6459() + 500L;
+		field514 = Ignored.getServerTime() + 500L;
 		this.resizeJS();
 		if (rootInterface != -1) {
 			this.resizeRoot(true);
@@ -2835,7 +2835,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 			JagexCache.pcmPlayer0.tryDiscard();
 		}
 
-		if ((gameState == 10 || gameState == 20 || gameState == 30) && field514 != 0L && Ignored.method6459() > field514) {
+		if ((gameState == 10 || gameState == 20 || gameState == 30) && field514 != 0L && Ignored.getServerTime() > field514) {
 			Occluder.setWindowedMode(class143.getWindowedMode());
 		}
 
@@ -3045,7 +3045,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 						var1.writeInt(202);
 						FontName.js5Socket.write(var1.array, 0, 5);
 						++js5ConnectState;
-						class120.field1450 = Ignored.method6459();
+						class120.field1450 = Ignored.getServerTime();
 					}
 
 					if (js5ConnectState == 3) {
@@ -3057,7 +3057,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 							}
 
 							++js5ConnectState;
-						} else if (Ignored.method6459() - class120.field1450 > 30000L) {
+						} else if (Ignored.getServerTime() - class120.field1450 > 30000L) {
 							this.js5Error(-2);
 							return;
 						}
@@ -3107,7 +3107,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 										}
 
 										NetCache.NetCache_loadTime = 0;
-										UserComparator7.field1319 = Ignored.method6459();
+										UserComparator7.field1319 = Ignored.getServerTime();
 										ScriptEvent.js5SocketTask = null;
 										FontName.js5Socket = null;
 										js5ConnectState = 0;
@@ -4014,7 +4014,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 							var14 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2899, packetWriter.isaacCipher);
 							var14.packetBuffer.writeShort(0);
 							var15 = var14.packetBuffer.offset;
-							long var19 = Ignored.method6459();
+							long var19 = Ignored.getServerTime();
 
 							for (var5 = 0; var5 < KeyHandler.field140; ++var5) {
 								long var21 = var19 - field676;
@@ -4309,7 +4309,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 															if (Scene.shouldSendWalk()) {
 																var4 = Scene.Scene_selectedX;
 																var5 = Scene.Scene_selectedY;
-																var18 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2859, packetWriter.isaacCipher);
+																var18 = HitSplatDefinition.getPacketBufferNode(ClientPacket.MOVE_GAMECLICK, packetWriter.isaacCipher);
 																var18.packetBuffer.writeByte(5);
 																var18.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? (KeyHandler.KeyHandler_pressedKeys[81] ? 2 : 1) : 0);
 																var18.packetBuffer.method7493(var5 + TileItem.baseY);
@@ -6146,7 +6146,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 				if (ServerPacket.field2933 == var1.serverPacket) {
 					var66 = var3.readUnsignedByte() == 1;
 					if (var66) {
-						WorldMapSprite.field2727 = Ignored.method6459() - var3.readLong();
+						WorldMapSprite.field2727 = Ignored.getServerTime() - var3.readLong();
 						grandExchangeEvents = new GrandExchangeEvents(var3, true);
 					} else {
 						grandExchangeEvents = null;

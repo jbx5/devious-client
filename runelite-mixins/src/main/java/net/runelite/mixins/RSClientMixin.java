@@ -1607,6 +1607,8 @@ public abstract class RSClientMixin implements RSClient
 		menuOptionClicked.setId(id);
 		menuOptionClicked.setParam1(param1);
 		menuOptionClicked.setSelectedItemIndex(client.getSelectedItemSlot());
+		menuOptionClicked.setCanvasX(canvasX);
+		menuOptionClicked.setCanvasY(canvasY);
 
 		client.getCallbacks().post(menuOptionClicked);
 

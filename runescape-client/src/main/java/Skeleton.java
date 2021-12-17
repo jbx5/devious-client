@@ -328,10 +328,10 @@ public class Skeleton extends Node {
 
 			if (Client.gameState != 5) {
 				if (-1L == Login.field890) {
-					Login.field890 = Ignored.method6459() + 1000L;
+					Login.field890 = Ignored.getServerTime() + 1000L;
 				}
 
-				long var22 = Ignored.method6459();
+				long var22 = Ignored.getServerTime();
 				boolean var4;
 				if (Client.archiveLoaders != null && Client.archiveLoadersDone < Client.archiveLoaders.size()) {
 					while (true) {
@@ -940,7 +940,7 @@ public class Skeleton extends Node {
 										}
 									} else if (Login.loginIndex == 14) {
 										String var32 = "";
-										switch(Login.field871) {
+										switch(Login.Login_banType) {
 										case 0:
 											var32 = "https://support.runescape.com/hc/en-gb/articles/115002238729-Account-Bans";
 											break;

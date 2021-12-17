@@ -24,35 +24,40 @@
  */
 package net.runelite.api;
 
+import lombok.Getter;
+import net.runelite.api.widgets.WidgetInfo;
+
 /**
  * An enumeration of equipment slots in the inventory {@link ItemContainer}.
  * <p>
- * These values are intended for use with the local players equipment
- * {@link ItemContainer} corresponding. For obtaining information about equipment
- * in the {@link PlayerComposition}, use {@link net.runelite.api.kit.KitType}.
+ * These values are intended for use with the local players equipment {@link ItemContainer}
+ * corresponding. For obtaining information about equipment in the {@link PlayerComposition}, use
+ * {@link net.runelite.api.kit.KitType}.
  *
  * @see Client#getItemContainer(InventoryID)
  * @see InventoryID#EQUIPMENT
  */
-public enum EquipmentInventorySlot
-{
-	HEAD(0),
-	CAPE(1),
-	AMULET(2),
-	WEAPON(3),
-	BODY(4),
-	SHIELD(5),
-	LEGS(7),
-	GLOVES(9),
-	BOOTS(10),
-	RING(12),
-	AMMO(13);
+public enum EquipmentInventorySlot {
+	HEAD(0, WidgetInfo.EQUIPMENT_HELMET),
+	CAPE(1, WidgetInfo.EQUIPMENT_CAPE),
+	AMULET(2, WidgetInfo.EQUIPMENT_AMULET),
+	WEAPON(3, WidgetInfo.EQUIPMENT_WEAPON),
+	BODY(4, WidgetInfo.EQUIPMENT_BODY),
+	SHIELD(5, WidgetInfo.EQUIPMENT_SHIELD),
+	LEGS(7, WidgetInfo.EQUIPMENT_LEGS),
+	GLOVES(9, WidgetInfo.EQUIPMENT_GLOVES),
+	BOOTS(10, WidgetInfo.EQUIPMENT_BOOTS),
+	RING(12, WidgetInfo.EQUIPMENT_RING),
+	AMMO(13, WidgetInfo.EQUIPMENT_AMMO);
 
 	private final int slotIdx;
+	@Getter
+	private final WidgetInfo widgetInfo;
 
-	EquipmentInventorySlot(int slotIdx)
+	EquipmentInventorySlot(int slotIdx, WidgetInfo widgetInfo)
 	{
 		this.slotIdx = slotIdx;
+		this.widgetInfo = widgetInfo;
 	}
 
 	/**

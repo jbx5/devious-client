@@ -114,6 +114,8 @@ dependencies {
     testImplementation(group = "org.mockito", name = "mockito-inline", version = "3.1.0")
     testImplementation(group = "com.squareup.okhttp3", name = "mockwebserver", version = "4.9.1")
     testImplementation(group = "org.slf4j", name = "slf4j-api", version = "1.7.32")
+
+    implementation("com.miglayout:miglayout:3.7.4")
 }
 
 fun formatDate(date: Date?) = with(date ?: Date()) {

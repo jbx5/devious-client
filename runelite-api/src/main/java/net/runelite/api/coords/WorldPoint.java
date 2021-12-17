@@ -25,6 +25,7 @@
  */
 package net.runelite.api.coords;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -33,6 +34,8 @@ import lombok.Value;
 import net.runelite.api.Client;
 import static net.runelite.api.Constants.CHUNK_SIZE;
 import static net.runelite.api.Constants.REGION_SIZE;
+
+import net.runelite.api.Locatable;
 import net.runelite.api.Perspective;
 import net.runelite.api.Tile;
 
@@ -592,5 +595,40 @@ public class WorldPoint
 			}
 		}
 		return false;
+	}
+
+	public void outline(Client client, Graphics2D graphics2D, Color color) {
+		outline(client, graphics2D, color, null);
+	}
+
+	public void outline(Client client, Graphics2D graphics, Color color, String text) {
+		LocalPoint localPoint = LocalPoint.fromWorld(client, this);
+		if (localPoint == null) {
+			return;
+		}
+
+		Polygon poly = Perspective.getCanvasTilePoly(client, localPoint);
+		if (poly == null) {
+			return;
+		}
+
+		if (text != null) {
+			var stringX = (int) (poly.getBounds().getCenterX() - graphics.getFont().getStringBounds(text, graphics.getFontRenderContext()).getWidth() / 2);
+			var stringY = (int) poly.getBounds().getCenterY();
+			graphics.setColor(color);
+			graphics.drawString(text, stringX, stringY);
+		}
+
+		graphics.setColor(color);
+		final Stroke originalStroke = graphics.getStroke();
+		graphics.setStroke(new BasicStroke(2));
+		graphics.draw(poly);
+		graphics.setColor(new Color(0, 0, 0, 50));
+		graphics.fill(poly);
+		graphics.setStroke(originalStroke);
+	}
+
+	public int distanceTo(Locatable locatable) {
+		return locatable.getWorldLocation().distanceTo(this);
 	}
 }

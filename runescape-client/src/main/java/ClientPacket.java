@@ -297,7 +297,8 @@ public class ClientPacket implements class251 {
 	@ObfuscatedSignature(
 		descriptor = "Liu;"
 	)
-	public static final ClientPacket field2859;
+	@Export("MOVE_GAMECLICK")
+	public static final ClientPacket MOVE_GAMECLICK;
 	@ObfuscatedName("bi")
 	@ObfuscatedSignature(
 		descriptor = "Liu;"
@@ -609,7 +610,7 @@ public class ClientPacket implements class251 {
 		field2856 = new ClientPacket(54, 7);
 		field2848 = new ClientPacket(55, 0);
 		field2858 = new ClientPacket(56, 7);
-		field2859 = new ClientPacket(57, -1);
+		MOVE_GAMECLICK = new ClientPacket(57, -1);
 		field2860 = new ClientPacket(58, -1);
 		field2812 = new ClientPacket(59, 3);
 		field2849 = new ClientPacket(60, -2);

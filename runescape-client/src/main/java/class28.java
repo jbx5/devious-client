@@ -133,7 +133,7 @@ public class class28 {
 					} else if (var0 == ScriptOpcodes.TRADINGPOST_GETOFFERAGE) {
 						var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
 						var4 = (GrandExchangeEvent)Client.grandExchangeEvents.events.get(var3);
-						long var5 = Ignored.method6459() - WorldMapSprite.field2727 - var4.age;
+						long var5 = Ignored.getServerTime() - WorldMapSprite.field2727 - var4.age;
 						int var7 = (int)(var5 / 3600000L);
 						int var8 = (int)((var5 - (long)(var7 * 3600000)) / 60000L);
 						int var9 = (int)((var5 - (long)(var7 * 3600000) - (long)(var8 * 60000)) / 1000L);

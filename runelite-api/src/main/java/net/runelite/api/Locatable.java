@@ -45,4 +45,12 @@ public interface Locatable
 	 * @return the client location
 	 */
 	LocalPoint getLocalLocation();
+
+	default int distanceTo(Locatable locatable) {
+		return locatable.getWorldLocation().distanceTo(getWorldLocation());
+	}
+
+	default int distanceTo(WorldPoint point) {
+		return point.distanceTo(getWorldLocation());
+	}
 }

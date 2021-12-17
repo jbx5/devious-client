@@ -425,7 +425,7 @@ public class WorldMap {
 		garbageValue = "2076670007"
 	)
 	public void method7062(int var1, int var2, boolean var3, boolean var4) {
-		long var5 = Ignored.method6459();
+		long var5 = Ignored.getServerTime();
 		this.method6886(var1, var2, var4, var5);
 		if (this.hasTarget() || !var4 && !var3) {
 			this.method7050();
@@ -543,7 +543,7 @@ public class WorldMap {
 	final void setWorldMapPosition(int var1, int var2, boolean var3) {
 		this.centerTileX = var1;
 		this.centerTileY = var2;
-		Ignored.method6459();
+		Ignored.getServerTime();
 		if (var3) {
 			this.method7050();
 		}

@@ -31,7 +31,7 @@ public class FriendLoginUpdate extends Link {
 		descriptor = "(Lpo;I)V"
 	)
 	FriendLoginUpdate(Username var1, int var2) {
-		this.field4097 = (int)(Ignored.method6459() / 1000L);
+		this.field4097 = (int)(Ignored.getServerTime() / 1000L);
 		this.username = var1;
 		this.world = (short)var2;
 	}

@@ -27,6 +27,9 @@ package net.runelite.api.widgets;
 import java.awt.Rectangle;
 import java.util.Collection;
 import javax.annotation.Nullable;
+
+import dev.hoot.api.Identifiable;
+import dev.hoot.api.Interactable;
 import net.runelite.api.FontTypeFace;
 import net.runelite.api.Point;
 import net.runelite.api.SpritePixels;
@@ -46,7 +49,7 @@ import net.runelite.api.SpritePixels;
  * <p>
  * For a more complete idea of what is classified as a widget, see {@link WidgetID}.
  */
-public interface Widget
+public interface Widget extends Interactable, Identifiable
 {
 	/**
 	 * Gets the widgets ID.
@@ -606,10 +609,10 @@ public interface Widget
 	 */
 	void setOriginalWidth(int originalWidth);
 
-	/**
-	 * Gets the menu options available on the widget as a sparse array.
-	 */
-	String[] getActions();
+//	/**
+//	 * Gets the menu options available on the widget as a sparse array.
+//	 */
+//	String[] getActions();
 
 	/**
 	 * Creates a dynamic widget child

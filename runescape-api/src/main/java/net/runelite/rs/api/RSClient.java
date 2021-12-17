@@ -26,6 +26,9 @@ package net.runelite.rs.api;
 
 import java.math.BigInteger;
 import java.util.Map;
+
+import net.runelite.api.packets.ClientPacket;
+import net.runelite.api.packets.IsaacCipher;
 import net.runelite.api.AmbientSoundEffect;
 import net.runelite.api.Client;
 import net.runelite.api.Deque;
@@ -1483,4 +1486,101 @@ public interface RSClient extends RSGameEngine, Client
 
 	@Import("objectSounds")
 	Deque<AmbientSoundEffect> getAmbientSoundEffects();
+
+	/*
+	Unethical
+	 */
+
+	@Import("Login_response0")
+	String getLoginResponse0();
+
+	@Import("Login_response1")
+	String getLoginResponse1();
+
+	@Import("Login_response2")
+	String getLoginResponse2();
+
+	@Import("Login_response3")
+	String getLoginResponse3();
+
+	@Import("Login_banType")
+	int getBanType();
+
+	@Import("MouseHandler_lastPressedX")
+	@Override
+	int getMouseLastPressedX();
+
+	@Import("MouseHandler_lastPressedX")
+	@Override
+	void setMouseLastPressedX(int x);
+
+	@Import("MouseHandler_lastPressedY")
+	@Override
+	int getMouseLastPressedY();
+
+	@Import("MouseHandler_lastPressedY")
+	@Override
+	void setMouseLastPressedY(int y);
+
+	@Import("packetWriter")
+	@Override
+	RSPacketWriter getPacketWriter();
+
+	@Import("getPacketBufferNode")
+	@Override
+	RSPacketBufferNode preparePacket(ClientPacket packet, IsaacCipher isaac);
+
+	@Import("loadWorlds")
+	@Override
+	boolean loadWorlds();
+
+	@Import("resumePauseWidget")
+	@Override
+	void processDialog(int widgetUid, int menuIndex);
+
+	@Import("destinationX")
+	void setDestinationX(int sceneX);
+
+	@Import("destinationY")
+	void setDestinationY(int sceneY);
+
+	@Import("worldSelectOpen")
+	@Override
+	boolean isWorldSelectOpen();
+
+	@Import("worldSelectOpen")
+	@Override
+	void setWorldSelectOpen(boolean open);
+
+	@Import("setWindowedMode")
+	@Override
+	void setWindowedMode(int mode);
+
+	@Import("getWindowedMode")
+	@Override
+	int getWindowedMode();
+
+	@Import("MouseHandler_instance")
+	@Override
+	RSMouseHandler getMouseHandler();
+
+	@Import("getServerTime")
+	@Override
+	long getCurrentTime();
+
+	@Import("hasFocus")
+	@Override
+	boolean isFocused();
+
+	@Import("volatileFocus")
+	@Override
+	void setFocused(boolean focused);
+
+	@Import("mouseCrossX")
+	@Override
+	void setClickCrossX(int x);
+
+	@Import("mouseCrossY")
+	@Override
+	void setClickCrossY(int y);
 }

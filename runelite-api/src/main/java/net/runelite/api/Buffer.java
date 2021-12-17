@@ -36,15 +36,57 @@ public interface Buffer extends Node
 	/**
 	 * Use this api to write to byte buffers
 	 */
+
+	void writeIntME2(int var1);
+
+	void writeByteA(int var1);
+
+	void writeByteB(int var1);
+
+	void writeByteC(int var1);
+
+	void writeByteB0(int var1);
+
+	void writeIntME3(int var1);
+
+	void write1(int var1);
+
+	void writeByte01(int var1);
+
+	void writeMedium(int var1);
+
+	void writeByte0A1(int var1);
+
+	void writeByte2(int var1);
+
+	void writeByte01A(int var1);
+
+	void writeIntME(int var1);
+
+	void writeInt2(int var1);
+
+	void writeShort01(int var1);
+
+	void writeInt0123(int var1);
+
+	void writeShortA(int var1);
+
+	void writeShort01A(int var1);
+
+	void write2(int i);
+
+	void writeShortLE(int i);
+
+	void writeStringCp1252NullTerminated(String string);
+
+	/**
+	 * Use this api to write to byte buffers
+	 */
 	void writeByte(int var1);
 
 	void writeShort(int var1);
 
-	void writeMedium(int var1);
-
 	void writeInt(int var1);
 
 	void writeLong(long var1);
-
-	void writeStringCp1252NullTerminated(String string);
 }

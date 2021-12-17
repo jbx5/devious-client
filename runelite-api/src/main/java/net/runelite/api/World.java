@@ -105,4 +105,28 @@ public interface World
 	 * @param address the address
 	 */
 	void setAddress(String address);
+
+	default boolean isMembers() {
+		return getTypes().contains(WorldType.MEMBERS);
+	}
+
+	default boolean isAllPkWorld() {
+		return WorldType.isAllPKWorld(getTypes());
+	}
+
+	default boolean isSkillTotal() {
+		return getTypes().contains(WorldType.SKILL_TOTAL);
+	}
+
+	default boolean isTournament() {
+		return getTypes().contains(WorldType.NOSAVE_MODE) || getTypes().contains(WorldType.TOURNAMENT_WORLD);
+	}
+
+	default boolean isLeague() {
+		return getTypes().contains(WorldType.SEASONAL);
+	}
+
+	default boolean isNormal() {
+		return !isAllPkWorld() && !isSkillTotal() && !isTournament() && !isLeague();
+	}
 }

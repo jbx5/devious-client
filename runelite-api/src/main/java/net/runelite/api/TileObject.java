@@ -28,12 +28,14 @@ import java.awt.Graphics2D;
 import java.awt.Polygon;
 import java.awt.Shape;
 import javax.annotation.Nullable;
+
+import dev.hoot.api.SceneEntity;
 import net.runelite.api.coords.LocalPoint;
 
 /**
  * Represents an object on a Tile
  */
-public interface TileObject extends Locatable
+public interface TileObject extends SceneEntity
 {
 	long getHash();
 
@@ -109,8 +111,16 @@ public interface TileObject extends Locatable
 	 */
 	String getName();
 
-	/**
-	 * Gets the menu actions of the object
-	 */
-	String[] getActions();
+//	/**
+//	 * Gets the menu actions of the object
+//	 */
+//	String[] getActions();
+
+	Point menuPoint();
+
+	ObjectComposition getDefinition();
+
+	ObjectComposition getCachedDefinition();
+
+	boolean isDefinitionCached();
 }

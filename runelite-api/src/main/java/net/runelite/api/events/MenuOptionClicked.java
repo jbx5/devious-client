@@ -75,6 +75,10 @@ public class MenuOptionClicked
 	 */
 	private boolean consumed;
 
+	private int canvasX;
+
+	private int canvasY;
+
 	/**
 	 * Marks the event as having been consumed.
 	 * <p>

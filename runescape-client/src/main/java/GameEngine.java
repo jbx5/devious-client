@@ -523,7 +523,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 		}
 
 		this.isCanvasInvalid = false;
-		this.field207 = Ignored.method6459();
+		this.field207 = Ignored.getServerTime();
 	}
 
 	@ObfuscatedName("a")
@@ -565,7 +565,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 	)
 	@Export("clientTick")
 	void clientTick() {
-		long var1 = Ignored.method6459();
+		long var1 = Ignored.getServerTime();
 		long var3 = clientTickTimes[ScriptFrame.field448];
 		clientTickTimes[ScriptFrame.field448] = var1;
 		ScriptFrame.field448 = ScriptFrame.field448 + 1 & 31;
@@ -587,7 +587,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 	@Export("graphicsTick")
 	void graphicsTick() {
 		Container var1 = this.container();
-		long var2 = Ignored.method6459();
+		long var2 = Ignored.getServerTime();
 		long var4 = graphicsTickTimes[field191];
 		graphicsTickTimes[field191] = var2;
 		field191 = field191 + 1 & 31;
@@ -850,7 +850,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 	public final synchronized void paint(Graphics var1) {
 		if (this == gameEngine && !isKilled) {
 			this.fullRedraw = true;
-			if (Ignored.method6459() - this.field207 > 1000L) {
+			if (Ignored.getServerTime() - this.field207 > 1000L) {
 				Rectangle var2 = var1.getClipBounds();
 				if (var2 == null || var2.width >= class186.canvasWidth && var2.height >= BoundaryObject.canvasHeight) {
 					this.isCanvasInvalid = true;
@@ -862,7 +862,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 
 	public final void destroy() {
 		if (this == gameEngine && !isKilled) {
-			stopTimeMs = Ignored.method6459();
+			stopTimeMs = Ignored.getServerTime();
 			Bounds.method6608(5000L);
 			this.kill();
 		}
@@ -914,7 +914,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 
 			class91.clock = (Clock)var8;
 
-			while (0L == stopTimeMs || Ignored.method6459() < stopTimeMs) {
+			while (0L == stopTimeMs || Ignored.getServerTime() < stopTimeMs) {
 				gameCyclesToDo = class91.clock.wait(cycleDurationMillis, fiveOrOne);
 
 				for (int var5 = 0; var5 < gameCyclesToDo; ++var5) {
@@ -934,7 +934,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 
 	public final void stop() {
 		if (this == gameEngine && !isKilled) {
-			stopTimeMs = Ignored.method6459() + 4000L;
+			stopTimeMs = Ignored.getServerTime() + 4000L;
 		}
 	}
 

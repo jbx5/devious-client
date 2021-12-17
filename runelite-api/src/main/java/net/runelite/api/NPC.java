@@ -70,4 +70,8 @@ public interface NPC extends Actor
 	NPCComposition getTransformedComposition();
 
 	void onDefinitionChanged(NPCComposition composition);
+
+	boolean isTransformRequired();
+
+	boolean isDefinitionCached();
 }

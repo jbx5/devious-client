@@ -1,3 +1,15 @@
 package net.runelite.rs.api;
 
-public interface RSPacketBufferNode {}
+import net.runelite.api.packets.PacketBufferNode;
+import net.runelite.mapping.Import;
+
+public interface RSPacketBufferNode extends PacketBufferNode
+{
+	@Import("packetBuffer")
+	@Override
+	RSPacketBuffer getPacketBuffer();
+
+	@Import("clientPacket")
+	@Override
+	RSClientPacket getClientPacket();
+}

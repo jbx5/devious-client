@@ -42,6 +42,11 @@ import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
 import javax.annotation.Nullable;
 import javax.inject.Singleton;
+
+import dev.hoot.api.game.Game;
+import dev.hoot.api.game.GameThread;
+import dev.hoot.api.game.Prices;
+import dev.hoot.api.game.Worlds;
 import lombok.AllArgsConstructor;
 import net.runelite.api.Client;
 import net.runelite.api.hooks.Callbacks;
@@ -60,6 +65,7 @@ import net.runelite.client.util.DeferredEventBus;
 import net.runelite.client.util.ExecutorServiceExceptionLogger;
 import net.runelite.http.api.RuneLiteAPI;
 import net.runelite.http.api.chat.ChatClient;
+import net.runelite.api.packets.ClientPacket;
 import okhttp3.OkHttpClient;
 
 @AllArgsConstructor
@@ -104,6 +110,13 @@ public class RuneLiteModule extends AbstractModule
 		bind(EventBus.class)
 			.annotatedWith(Names.named("Deferred EventBus"))
 			.to(DeferredEventBus.class);
+
+		requestStaticInjection(
+				GameThread.class,
+				Game.class,
+				Prices.class,
+				Worlds.class
+		);
 	}
 
 	@Provides
@@ -163,5 +176,11 @@ public class RuneLiteModule extends AbstractModule
 		executor.allowCoreThreadTimeOut(true);
 
 		return new NonScheduledExecutorServiceExceptionLogger(executor);
+	}
+
+	@Provides
+	@Singleton
+	ClientPacket provideClientPacket(Client client) {
+		return client.getClientPacket();
 	}
 }

@@ -52,7 +52,8 @@ public class Ignored extends User {
 		descriptor = "(I)J",
 		garbageValue = "-376840192"
 	)
-	public static final synchronized long method6459() {
+	@Export("getServerTime")
+	public static final synchronized long getServerTime() {
 		long var0 = System.currentTimeMillis();
 		if (var0 < class415.field4466) {
 			class415.field4467 += class415.field4466 - var0;

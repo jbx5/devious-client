@@ -227,7 +227,7 @@ public class UserComparator4 implements Comparator {
 			if (var0.length() == 0) {
 				var3 = var3 + "; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0";
 			} else {
-				var3 = var3 + "; Expires=" + class13.method195(Ignored.method6459() + 94608000000L) + "; Max-Age=" + 94608000L;
+				var3 = var3 + "; Expires=" + class13.method195(Ignored.getServerTime() + 94608000000L) + "; Max-Age=" + 94608000L;
 			}
 
 			class27.method432(class295.client, "document.cookie=\"" + var3 + "\"");

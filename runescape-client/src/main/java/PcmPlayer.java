@@ -104,7 +104,7 @@ public class PcmPlayer {
 
 	protected PcmPlayer() {
 		this.field284 = 32;
-		this.timeMs = Ignored.method6459();
+		this.timeMs = Ignored.getServerTime();
 		this.field280 = 0L;
 		this.field290 = 0;
 		this.field291 = 0;
@@ -185,7 +185,7 @@ public class PcmPlayer {
 	@Export("run")
 	public final synchronized void run() {
 		if (this.samples != null) {
-			long var1 = Ignored.method6459();
+			long var1 = Ignored.getServerTime();
 
 			try {
 				if (0L != this.field280) {
@@ -292,7 +292,7 @@ public class PcmPlayer {
 			this.discard();
 		} catch (Exception var2) {
 			this.close();
-			this.field280 = Ignored.method6459() + 2000L;
+			this.field280 = Ignored.getServerTime() + 2000L;
 		}
 
 	}
@@ -457,7 +457,7 @@ public class PcmPlayer {
 			this.stream.fill(var1, 0, var2);
 		}
 
-		this.timeMs = Ignored.method6459();
+		this.timeMs = Ignored.getServerTime();
 	}
 
 	@ObfuscatedName("az")

@@ -26,6 +26,7 @@ package net.runelite.api;
 
 import java.awt.Shape;
 import net.runelite.api.coords.Angle;
+import net.runelite.api.coords.WorldArea;
 
 /**
  * Represents a game object.
@@ -93,4 +94,6 @@ public interface GameObject extends TileObject
 	 * @see net.runelite.api.coords.Angle
 	 */
 	int getModelOrientation();
+
+	WorldArea getWorldArea();
 }

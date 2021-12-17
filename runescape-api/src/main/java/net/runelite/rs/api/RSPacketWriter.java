@@ -1,3 +1,14 @@
 package net.runelite.rs.api;
 
-public interface RSPacketWriter {}
+import net.runelite.api.packets.PacketWriter;
+import net.runelite.mapping.Import;
+
+public interface RSPacketWriter extends PacketWriter
+{
+	@Import("addNode")
+	void sendPacket(RSPacketBufferNode packet);
+
+	@Import("isaacCipher")
+	@Override
+	RSIsaacCipher getIsaacCipher();
+}
