@@ -4043,7 +4043,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 							field560 = 20;
 							field561 = false;
 							var14 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2869, packetWriter.isaacCipher);
-							var14.packetBuffer.method7493(camAngleX);
+							var14.packetBuffer.writeByteC(camAngleX);
 							var14.packetBuffer.method7398(camAngleY);
 							packetWriter.addNode(var14);
 						}
@@ -4286,7 +4286,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 																			var18.packetBuffer.method7398(dragItemSlotDestination);
 																			var18.packetBuffer.method7362(var35);
 																			var18.packetBuffer.method7407(class143.dragInventoryWidget.id);
-																			var18.packetBuffer.method7493(dragItemSlotSource);
+																			var18.packetBuffer.writeByteC(dragItemSlotSource);
 																			packetWriter.addNode(var18);
 																		}
 																	} else if (this.shouldLeftClickOpenMenu()) {
@@ -4312,8 +4312,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 																var18 = HitSplatDefinition.getPacketBufferNode(ClientPacket.MOVE_GAMECLICK, packetWriter.isaacCipher);
 																var18.packetBuffer.writeByte(5);
 																var18.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? (KeyHandler.KeyHandler_pressedKeys[81] ? 2 : 1) : 0);
-																var18.packetBuffer.method7493(var5 + TileItem.baseY);
-																var18.packetBuffer.method7349(var4 + class131.baseX);
+																var18.packetBuffer.writeByteC(var5 + TileItem.baseY);
+																var18.packetBuffer.writeShortLE(var4 + class131.baseX);
 																packetWriter.addNode(var18);
 																Scene.method3990();
 																mouseCrossX = MouseHandler.MouseHandler_lastPressedX;
@@ -6636,8 +6636,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 						PacketBufferNode var11 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2816, packetWriter.isaacCipher);
 						var11.packetBuffer.method7407(draggedOnWidget.id);
 						var11.packetBuffer.method7398(clickedWidget.childIndex);
-						var11.packetBuffer.method7493(draggedOnWidget.itemId);
-						var11.packetBuffer.method7493(draggedOnWidget.childIndex);
+						var11.packetBuffer.writeByteC(draggedOnWidget.itemId);
+						var11.packetBuffer.writeByteC(draggedOnWidget.childIndex);
 						var11.packetBuffer.writeShort(clickedWidget.itemId);
 						var11.packetBuffer.writeInt(clickedWidget.id);
 						packetWriter.addNode(var11);

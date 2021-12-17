@@ -117,7 +117,7 @@ public class class136 extends class126 {
 					Client.packetWriter.addNode(var8);
 				} else if (var0 == 4) {
 					var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2807, Client.packetWriter.isaacCipher);
-					var8.packetBuffer.method7349(var3[var6]);
+					var8.packetBuffer.writeShortLE(var3[var6]);
 					var8.packetBuffer.writeByte(0);
 					Client.packetWriter.addNode(var8);
 				} else if (var0 == 6) {
@@ -128,7 +128,7 @@ public class class136 extends class126 {
 				} else if (var0 == 7) {
 					var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2906, Client.packetWriter.isaacCipher);
 					var8.packetBuffer.method7362(0);
-					var8.packetBuffer.method7493(var3[var6]);
+					var8.packetBuffer.writeByteC(var3[var6]);
 					Client.packetWriter.addNode(var8);
 				}
 

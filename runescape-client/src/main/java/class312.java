@@ -256,8 +256,8 @@ public class class312 {
 					PacketBufferNode var13 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2860, Client.packetWriter.isaacCipher);
 					var13.packetBuffer.writeByte(18);
 					var13.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? (KeyHandler.KeyHandler_pressedKeys[81] ? 2 : 1) : 0);
-					var13.packetBuffer.method7493(var12 + TileItem.baseY);
-					var13.packetBuffer.method7349(var11 + class131.baseX);
+					var13.packetBuffer.writeByteC(var12 + TileItem.baseY);
+					var13.packetBuffer.writeShortLE(var11 + class131.baseX);
 					var13.packetBuffer.writeByte(var4);
 					var13.packetBuffer.writeByte(var5);
 					var13.packetBuffer.writeShort(Client.camAngleY);
