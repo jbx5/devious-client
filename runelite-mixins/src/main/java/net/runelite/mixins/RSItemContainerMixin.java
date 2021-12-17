@@ -25,15 +25,15 @@
  */
 package net.runelite.mixins;
 
-import net.runelite.api.Item;
-import net.runelite.api.events.ItemContainerChanged;
-import net.runelite.api.mixins.FieldHook;
+//import net.runelite.api.Item;
+//import net.runelite.api.events.ItemContainerChanged;
+//import net.runelite.api.mixins.FieldHook;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Shadow;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSItemContainer;
-import net.runelite.rs.api.RSNodeHashTable;
+//import net.runelite.rs.api.RSNodeHashTable;
 
 @Mixin(RSItemContainer.class)
 public abstract class RSItemContainerMixin implements RSItemContainer

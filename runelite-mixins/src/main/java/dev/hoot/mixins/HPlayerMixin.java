@@ -11,16 +11,20 @@ import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSPlayer;
 
 @Mixin(RSPlayer.class)
-public abstract class HPlayerMixin extends RSPlayerMixin implements RSPlayer {
+public abstract class HPlayerMixin extends RSPlayerMixin implements RSPlayer
+{
 	@Shadow("client")
 	private static RSClient client;
 
 	@Inject
 	@Override
-	public int getIndex() {
-		for (int i = 0; i < client.getCachedPlayers().length; i++) {
+	public int getIndex()
+	{
+		for (int i = 0; i < client.getCachedPlayers().length; i++)
+		{
 			RSPlayer player = client.getCachedPlayers()[i];
-			if (player != null && player.equals(this)) {
+			if (player != null && player.equals(this))
+			{
 				return i;
 			}
 		}
@@ -30,8 +34,10 @@ public abstract class HPlayerMixin extends RSPlayerMixin implements RSPlayer {
 
 	@Inject
 	@Override
-	public int getActionId(int action) {
-		switch (action) {
+	public int getActionId(int action)
+	{
+		switch (action)
+		{
 			case 0:
 				return MenuAction.PLAYER_FIRST_OPTION.getId();
 			case 1:
@@ -55,31 +61,36 @@ public abstract class HPlayerMixin extends RSPlayerMixin implements RSPlayer {
 
 	@Inject
 	@Override
-	public String[] getRawActions() {
+	public String[] getRawActions()
+	{
 		return client.getPlayerOptions();
 	}
 
 	@Override
 	@Inject
-	public void interact(int action) {
+	public void interact(int action)
+	{
 		interact(getIndex(), getActionId(action));
 	}
 
 	@Inject
 	@Override
-	public void interact(String action) {
+	public void interact(String action)
+	{
 		interact(getActions().indexOf(action));
 	}
 
 	@Inject
 	@Override
-	public void interact(int index, int menuAction) {
+	public void interact(int index, int menuAction)
+	{
 		interact(getIndex(), menuAction, 0, 0);
 	}
 
 	@Inject
 	@Override
-	public void interact(int identifier, int opcode, int param0, int param1) {
+	public void interact(int identifier, int opcode, int param0, int param1)
+	{
 		Point screenCoords = getScreenCoords();
 		int x = screenCoords != null ? screenCoords.getX() : -1;
 		int y = screenCoords != null ? screenCoords.getY() : -1;
@@ -88,7 +99,8 @@ public abstract class HPlayerMixin extends RSPlayerMixin implements RSPlayer {
 	}
 
 	@Inject
-	private Point getScreenCoords() {
+	private Point getScreenCoords()
+	{
 		return Perspective.localToCanvas(client, getLocalLocation(), client.getPlane());
 	}
 }

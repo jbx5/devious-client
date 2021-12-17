@@ -11,19 +11,22 @@ import net.runelite.rs.api.RSPacketBufferNode;
 import net.runelite.rs.api.RSPacketWriter;
 
 @Mixin(RSPacketWriter.class)
-public abstract class HPacketWriterMixin implements RSPacketWriter {
+public abstract class HPacketWriterMixin implements RSPacketWriter
+{
 	@Shadow("client")
 	private static RSClient client;
 
 	@Inject
 	@Override
-	public void queuePacket(PacketBufferNode packetBufferNode) {
+	public void queuePacket(PacketBufferNode packetBufferNode)
+	{
 		sendPacket((RSPacketBufferNode) packetBufferNode);
 	}
 
 	@Inject
 	@MethodHook("addNode")
-	public void addNode(RSPacketBufferNode packet) {
+	public void addNode(RSPacketBufferNode packet)
+	{
 		client.getCallbacks().post(new PacketSent(packet));
 	}
 }

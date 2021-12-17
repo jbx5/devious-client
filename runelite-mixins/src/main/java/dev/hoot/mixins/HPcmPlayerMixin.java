@@ -8,14 +8,17 @@ import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSPcmPlayer;
 
 @Mixin(RSPcmPlayer.class)
-public class HPcmPlayerMixin implements RSPcmPlayer {
+public class HPcmPlayerMixin implements RSPcmPlayer
+{
 	@Shadow("client")
 	private static RSClient client;
 
 	@Copy("run")
 	@Replace("run")
-	public final void copy$run() {
-		if (!client.isLowCpu()) {
+	public final void copy$run()
+	{
+		if (!client.isLowCpu())
+		{
 			copy$run();
 		}
 	}
