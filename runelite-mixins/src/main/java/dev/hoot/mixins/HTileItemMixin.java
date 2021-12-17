@@ -4,6 +4,8 @@ import net.runelite.api.ItemComposition;
 import net.runelite.api.MenuAction;
 import net.runelite.api.Perspective;
 import net.runelite.api.Point;
+import net.runelite.api.Tile;
+import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Shadow;
@@ -151,5 +153,28 @@ public abstract class HTileItemMixin implements RSTileItem
 	private Point getScreenCoords()
 	{
 		return Perspective.localToCanvas(client, getLocalLocation(), client.getPlane());
+	}
+
+	@Inject
+	@Override
+	public int getDistanceFromLocalPlayer() {
+		//Mancrappen :tm:
+		int distanceX;
+		int distanceY;
+		Tile localTile = client.getScene().getTiles()[client.getPlane()][getX()][getY()];
+		LocalPoint tileLocalLocation = localTile.getLocalLocation();
+		LocalPoint localPlayerPosition = client.getLocalPlayer().getLocalLocation();
+
+		if (tileLocalLocation.getX() > localPlayerPosition.getX())
+			distanceX = tileLocalLocation.getX() - localPlayerPosition.getX();
+		else
+			distanceX = localPlayerPosition.getX() - tileLocalLocation.getX();
+
+		if (tileLocalLocation.getY() > localPlayerPosition.getY())
+			distanceY = tileLocalLocation.getY() - localPlayerPosition.getY();
+		else
+			distanceY = localPlayerPosition.getY() - tileLocalLocation.getY();
+
+		return (distanceX + distanceY) / 2;
 	}
 }

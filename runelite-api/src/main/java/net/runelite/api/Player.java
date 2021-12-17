@@ -106,4 +106,14 @@ public interface Player extends Actor
 //	String[] getActions();
 
 	int getIndex();
+
+	boolean isIdle();
+
+	default int getId() {
+		return getPlayerId();
+	}
+
+	default boolean isAnimating() {
+		return getAnimation() != -1;
+	}
 }
