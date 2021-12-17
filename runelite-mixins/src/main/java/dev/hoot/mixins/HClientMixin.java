@@ -182,6 +182,13 @@ public abstract class HClientMixin implements RSClient
 	@MethodHook("resumePauseWidget")
 	public static void onDialogProcessed(int widgetUid, int menuIndex)
 	{
-		client.getCallbacks().post(DialogOption.of(widgetUid, menuIndex));
+		DialogOption option = DialogOption.of(widgetUid, menuIndex);
+		if (option == null)
+		{
+			client.getLogger().debug("Unmapped DialogOption: {} {}", widgetUid, menuIndex);
+			return;
+		}
+
+		client.getCallbacks().post(option);
 	}
 }
