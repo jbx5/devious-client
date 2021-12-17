@@ -41,8 +41,8 @@ public abstract class RSItemContainerMixin implements RSItemContainer
 	@Shadow("client")
 	private static RSClient client;
 
-	@Shadow("changedItemContainers")
-	private static int[] changedItemContainers;
+//	@Shadow("changedItemContainers")
+//	private static int[] changedItemContainers;
 
 	@Inject
 	@Override
@@ -51,39 +51,39 @@ public abstract class RSItemContainerMixin implements RSItemContainer
 		return (int) this.getHash();
 	}
 
-	@Inject
-	@Override
-	public Item[] getItems()
-	{
-		int[] itemIds = getItemIds();
-		int[] stackSizes = getStackSizes();
-		Item[] items = new Item[itemIds.length];
-
-		for (int i = 0; i < itemIds.length; ++i)
-		{
-			Item item = new Item(
-				itemIds[i],
-				stackSizes[i]
-			);
-			items[i] = item;
-		}
-
-		return items;
-	}
-
-	@Inject
-	@Override
-	public Item getItem(int slot)
-	{
-		int[] itemIds = getItemIds();
-		int[] stackSizes = getStackSizes();
-		if (slot >= 0 && slot < itemIds.length && itemIds[slot] != -1)
-		{
-			return new Item(itemIds[slot], stackSizes[slot]);
-		}
-
-		return null;
-	}
+//	@Inject
+//	@Override
+//	public Item[] getItems()
+//	{
+//		int[] itemIds = getItemIds();
+//		int[] stackSizes = getStackSizes();
+//		Item[] items = new Item[itemIds.length];
+//
+//		for (int i = 0; i < itemIds.length; ++i)
+//		{
+//			Item item = new Item(
+//				itemIds[i],
+//				stackSizes[i]
+//			);
+//			items[i] = item;
+//		}
+//
+//		return items;
+//	}
+//
+//	@Inject
+//	@Override
+//	public Item getItem(int slot)
+//	{
+//		int[] itemIds = getItemIds();
+//		int[] stackSizes = getStackSizes();
+//		if (slot >= 0 && slot < itemIds.length && itemIds[slot] != -1)
+//		{
+//			return new Item(itemIds[slot], stackSizes[slot]);
+//		}
+//
+//		return null;
+//	}
 
 	@Inject
 	@Override
@@ -128,33 +128,33 @@ public abstract class RSItemContainerMixin implements RSItemContainer
 		return count;
 	}
 
-	@FieldHook("changedItemContainers")
-	@Inject
-	public static void onItemContainerUpdate(int idx)
-	{
-		if (idx != -1)
-		{
-			int changedId = idx - 1 & 31;
-			int containerId = changedItemContainers[changedId];
-
-			RSNodeHashTable itemContainers = client.getItemContainers();
-
-			RSItemContainer changedContainer = (RSItemContainer) itemContainers.get(containerId);
-			RSItemContainer changedContainerInvOther = (RSItemContainer) itemContainers.get(containerId | 0x8000);
-
-			if (changedContainer != null)
-			{
-				ItemContainerChanged event = new ItemContainerChanged(containerId, changedContainer);
-				client.getCallbacks().postDeferred(event);
-			}
-
-			if (changedContainerInvOther != null)
-			{
-				ItemContainerChanged event = new ItemContainerChanged(containerId | 0x8000, changedContainerInvOther);
-				client.getCallbacks().postDeferred(event);
-			}
-		}
-	}
+//	@FieldHook("changedItemContainers")
+//	@Inject
+//	public static void onItemContainerUpdate(int idx)
+//	{
+//		if (idx != -1)
+//		{
+//			int changedId = idx - 1 & 31;
+//			int containerId = changedItemContainers[changedId];
+//
+//			RSNodeHashTable itemContainers = client.getItemContainers();
+//
+//			RSItemContainer changedContainer = (RSItemContainer) itemContainers.get(containerId);
+//			RSItemContainer changedContainerInvOther = (RSItemContainer) itemContainers.get(containerId | 0x8000);
+//
+//			if (changedContainer != null)
+//			{
+//				ItemContainerChanged event = new ItemContainerChanged(containerId, changedContainer);
+//				client.getCallbacks().postDeferred(event);
+//			}
+//
+//			if (changedContainerInvOther != null)
+//			{
+//				ItemContainerChanged event = new ItemContainerChanged(containerId | 0x8000, changedContainerInvOther);
+//				client.getCallbacks().postDeferred(event);
+//			}
+//		}
+//	}
 
 	@Inject
 	public int size()
