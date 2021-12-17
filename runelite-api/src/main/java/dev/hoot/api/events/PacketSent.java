@@ -7,14 +7,18 @@ import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
 @Value
-public class PacketSent {
+public class PacketSent
+{
 	PacketBufferNode packetBufferNode;
 
-	public String hexDump() {
+	public String hexDump()
+	{
 		int opcode = packetBufferNode.getClientPacket() != null ? packetBufferNode.getClientPacket().getId() : -1;
 		String opcodeText = String.valueOf(opcode);
 
-		byte[] payload = Arrays.copyOfRange(packetBufferNode.getPacketBuffer().getPayload(), 1, packetBufferNode.getPacketBuffer().getOffset());
+		byte[] payload = Arrays.copyOfRange(
+				packetBufferNode.getPacketBuffer().getPayload(),
+				1, packetBufferNode.getPacketBuffer().getOffset());
 
 //		for (PacketOpcode op : PacketOpcode.values()) {
 //			if (opcode == op.getOpcode()) {
@@ -31,26 +35,36 @@ public class PacketSent {
 				);
 	}
 
-	public static String hexDump(byte[] array, int offset, int length) {
+	public static String hexDump(byte[] array, int offset, int length)
+	{
 		final int width = 16;
 
 		StringBuilder builder = new StringBuilder();
 
-		for (int rowOffset = offset; rowOffset < offset + length; rowOffset += width) {
+		for (int rowOffset = offset; rowOffset < offset + length; rowOffset += width)
+		{
 			builder.append(String.format("%06d     ", rowOffset));
 
-			for (int index = 0; index < width; index++) {
-				if (rowOffset + index < array.length) {
+			for (int index = 0; index < width; index++)
+			{
+				if (rowOffset + index < array.length)
+				{
 					builder.append(String.format("%02X ", array[rowOffset + index]));
-				} else {
+				}
+				else
+				{
 					builder.append("   ");
 				}
 			}
 
-			if (rowOffset < array.length) {
+			if (rowOffset < array.length)
+			{
 				int asciiWidth = Math.min(width, array.length - rowOffset);
 				builder.append("     ");
-				builder.append(new String(array, rowOffset, asciiWidth, StandardCharsets.UTF_8).replaceAll("\r\n", " ").replaceAll("\n", " "));
+				builder.append(new String(array, rowOffset, asciiWidth, StandardCharsets.UTF_8)
+						.replaceAll("\r\n", " ")
+						.replaceAll("\n", " ")
+				);
 			}
 
 			builder.append(String.format("%n"));

@@ -19,80 +19,100 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
-public class Tiles {
-    private static final Logger log = LoggerFactory.getLogger(Tiles.class);
-    public static List<Tile> getTiles(Predicate<Tile> filter) {
-        List<Tile> out = new ArrayList<>();
+public class Tiles
+{
+	private static final Logger log = LoggerFactory.getLogger(Tiles.class);
 
-        for (int x = 0; x < Constants.SCENE_SIZE; x++) {
-            for (int y = 0; y < Constants.SCENE_SIZE; y++) {
-                Tile tile = Game.getClient().getScene().getTiles()[Game.getClient().getPlane()][x][y];
-                if (tile != null && filter.test(tile)) {
-                    out.add(tile);
-                }
-            }
-        }
+	public static List<Tile> getTiles(Predicate<Tile> filter)
+	{
+		List<Tile> out = new ArrayList<>();
 
-        return out;
-    }
+		for (int x = 0; x < Constants.SCENE_SIZE; x++)
+		{
+			for (int y = 0; y < Constants.SCENE_SIZE; y++)
+			{
+				Tile tile = Game.getClient().getScene().getTiles()[Game.getClient().getPlane()][x][y];
+				if (tile != null && filter.test(tile))
+				{
+					out.add(tile);
+				}
+			}
+		}
 
-    public static List<Tile> getTiles() {
-        return getTiles(x -> true);
-    }
+		return out;
+	}
 
-    public static Tile getAt(WorldPoint worldPoint) {
-        return getAt(worldPoint.getX(), worldPoint.getY(), worldPoint.getPlane());
-    }
+	public static List<Tile> getTiles()
+	{
+		return getTiles(x -> true);
+	}
 
-    public static Tile getAt(LocalPoint localPoint) {
-        return Game.getClient().getScene().getTiles()[Game.getClient().getPlane()][localPoint.getSceneX()][localPoint.getSceneY()];
-    }
+	public static Tile getAt(WorldPoint worldPoint)
+	{
+		return getAt(worldPoint.getX(), worldPoint.getY(), worldPoint.getPlane());
+	}
 
-    public static Tile getAt(int worldX, int worldY, int plane) {
-        if (!WorldPoint.isInScene(Game.getClient(), worldX, worldY)) {
-            return null;
-        }
+	public static Tile getAt(LocalPoint localPoint)
+	{
+		return Game.getClient().getScene().getTiles()[Game.getClient().getPlane()][localPoint.getSceneX()][localPoint.getSceneY()];
+	}
 
-        int x = worldX - Game.getClient().getBaseX();
-        int y = worldY - Game.getClient().getBaseY();
+	public static Tile getAt(int worldX, int worldY, int plane)
+	{
+		if (!WorldPoint.isInScene(Game.getClient(), worldX, worldY))
+		{
+			return null;
+		}
 
-        return Game.getClient().getScene().getTiles()[plane][x][y];
-    }
+		int x = worldX - Game.getClient().getBaseX();
+		int y = worldY - Game.getClient().getBaseY();
 
-    public static Tile getHoveredTile() {
-        return Game.getClient().getSelectedSceneTile();
-    }
+		return Game.getClient().getScene().getTiles()[plane][x][y];
+	}
 
-    private static TileObject findTileObject(int x, int y, int id) {
-        Scene scene = Game.getClient().getScene();
-        Tile[][][] tiles = scene.getTiles();
-        Tile tile = tiles[Game.getClient().getPlane()][x][y];
-        if (tile != null) {
-            for (GameObject gameObject : tile.getGameObjects()) {
-                if (gameObject != null && gameObject.getId() == id) {
-                    return gameObject;
-                }
-            }
+	public static Tile getHoveredTile()
+	{
+		return Game.getClient().getSelectedSceneTile();
+	}
 
-            WallObject wallObject = tile.getWallObject();
-            if (wallObject != null && wallObject.getId() == id) {
-                return wallObject;
-            }
+	private static TileObject findTileObject(int x, int y, int id)
+	{
+		Scene scene = Game.getClient().getScene();
+		Tile[][][] tiles = scene.getTiles();
+		Tile tile = tiles[Game.getClient().getPlane()][x][y];
+		if (tile != null)
+		{
+			for (GameObject gameObject : tile.getGameObjects())
+			{
+				if (gameObject != null && gameObject.getId() == id)
+				{
+					return gameObject;
+				}
+			}
 
-            DecorativeObject decorativeObject = tile.getDecorativeObject();
-            if (decorativeObject != null && decorativeObject.getId() == id) {
-                return decorativeObject;
-            }
+			WallObject wallObject = tile.getWallObject();
+			if (wallObject != null && wallObject.getId() == id)
+			{
+				return wallObject;
+			}
 
-            GroundObject groundObject = tile.getGroundObject();
-            if (groundObject != null && groundObject.getId() == id) {
-                return groundObject;
-            }
-        }
-        return null;
-    }
+			DecorativeObject decorativeObject = tile.getDecorativeObject();
+			if (decorativeObject != null && decorativeObject.getId() == id)
+			{
+				return decorativeObject;
+			}
 
-    private static NPC findNpc(int id) {
-        return Game.getClient().getCachedNPCs()[id];
-    }
+			GroundObject groundObject = tile.getGroundObject();
+			if (groundObject != null && groundObject.getId() == id)
+			{
+				return groundObject;
+			}
+		}
+		return null;
+	}
+
+	private static NPC findNpc(int id)
+	{
+		return Game.getClient().getCachedNPCs()[id];
+	}
 }

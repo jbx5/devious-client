@@ -187,7 +187,8 @@ public class ClientPacket implements class251 {
 	@ObfuscatedSignature(
 		descriptor = "Liu;"
 	)
-	public static final ClientPacket field2894;
+	@Export("EVENT_MOUSE_CLICK")
+	public static final ClientPacket EVENT_MOUSE_CLICK;
 	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
 		descriptor = "Liu;"
@@ -468,7 +469,8 @@ public class ClientPacket implements class251 {
 	@ObfuscatedSignature(
 		descriptor = "Liu;"
 	)
-	public static final ClientPacket field2889;
+	@Export("MOUSERECORDER_DATA")
+	public static final ClientPacket MOUSERECORDER_DATA;
 	@ObfuscatedName("cj")
 	@ObfuscatedSignature(
 		descriptor = "Liu;"
@@ -588,7 +590,7 @@ public class ClientPacket implements class251 {
 		field2811 = new ClientPacket(32, 9);
 		field2868 = new ClientPacket(33, 7);
 		field2835 = new ClientPacket(34, 15);
-		field2894 = new ClientPacket(35, 6);
+		EVENT_MOUSE_CLICK = new ClientPacket(35, 6);
 		field2857 = new ClientPacket(36, -1);
 		field2839 = new ClientPacket(37, 3);
 		field2840 = new ClientPacket(38, 11);
@@ -644,7 +646,7 @@ public class ClientPacket implements class251 {
 		field2871 = new ClientPacket(88, 8);
 		field2904 = new ClientPacket(89, 13);
 		field2892 = new ClientPacket(90, 3);
-		field2889 = new ClientPacket(91, -1);
+		MOUSERECORDER_DATA = new ClientPacket(91, -1);
 		field2813 = new ClientPacket(92, 3);
 		field2895 = new ClientPacket(93, -1);
 		field2896 = new ClientPacket(94, 7);

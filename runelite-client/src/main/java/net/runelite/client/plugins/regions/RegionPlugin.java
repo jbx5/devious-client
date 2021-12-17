@@ -9,7 +9,6 @@ import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
-import net.runelite.api.MenuEntry;
 import net.runelite.api.events.ClientTick;
 import net.runelite.api.events.ConfigButtonClicked;
 import net.runelite.api.events.GameStateChanged;
@@ -19,8 +18,6 @@ import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.ui.overlay.OverlayManager;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 import java.io.ByteArrayInputStream;
@@ -31,7 +28,8 @@ import java.util.zip.GZIPInputStream;
 
 @PluginDescriptor(name = "Regions")
 @Slf4j
-public class RegionPlugin extends Plugin {
+public class RegionPlugin extends Plugin
+{
 
 	@Inject
 	private OverlayManager overlayManager;
@@ -59,7 +57,8 @@ public class RegionPlugin extends Plugin {
 	public static boolean selectingObject = false;
 
 	@Override
-	public void startUp() {
+	public void startUp()
+	{
 		eventBus.register(transportDialog);
 
 		updateCollisionMap();
@@ -68,23 +67,27 @@ public class RegionPlugin extends Plugin {
 	}
 
 	@Override
-	public void shutDown() {
+	public void shutDown()
+	{
 		overlayManager.remove(overlay);
 		eventBus.unregister(transportDialog);
 	}
 
 	@Subscribe
-	public void onClientTick(ClientTick e) {
-		if (selectingSourceTile) {
+	public void onClientTick(ClientTick e)
+	{
+		if (selectingSourceTile)
+		{
 			client.createMenuEntry(-1)
 					.setOption("Set")
 					.setTarget("<col=00ff00>Source tile")
-							.setIdentifier(TileSelection.SOURCE.id);
+					.setIdentifier(TileSelection.SOURCE.id);
 
 			return;
 		}
 
-		if (selectingDestinationTile) {
+		if (selectingDestinationTile)
+		{
 			client.createMenuEntry(-1)
 					.setOption("Set")
 					.setTarget("<col=00ff00>Destination tile")
@@ -92,7 +95,8 @@ public class RegionPlugin extends Plugin {
 			return;
 		}
 
-		if (selectingObject) {
+		if (selectingObject)
+		{
 			client.createMenuEntry(-1)
 					.setOption("Set")
 					.setTarget("<col=00ff00>Transport object")
@@ -101,17 +105,21 @@ public class RegionPlugin extends Plugin {
 	}
 
 	@Subscribe
-	public void onConfigButtonClicked(ConfigButtonClicked e) {
-		if (!e.getGroup().equals("regions")) {
+	public void onConfigButtonClicked(ConfigButtonClicked e)
+	{
+		if (!e.getGroup().equals("regions"))
+		{
 			return;
 		}
 
-		switch (e.getKey()) {
+		switch (e.getKey())
+		{
 			case "download":
 				updateCollisionMap();
 				break;
 			case "transport":
-				if (transportDialog == null) {
+				if (transportDialog == null)
+				{
 					log.error("Add transport UI was not loaded somehow");
 					return;
 				}
@@ -122,8 +130,10 @@ public class RegionPlugin extends Plugin {
 	}
 
 	@Subscribe
-	public void onGameStateChanged(GameStateChanged e) {
-		if (e.getGameState() != GameState.LOGGED_IN) {
+	public void onGameStateChanged(GameStateChanged e)
+	{
+		if (e.getGameState() != GameState.LOGGED_IN)
+		{
 			return;
 		}
 
@@ -131,32 +141,41 @@ public class RegionPlugin extends Plugin {
 	}
 
 	@Subscribe
-	public void onPlaneChanged(PlaneChanged e) {
-		if (Game.getState() != GameState.LOGGED_IN) {
+	public void onPlaneChanged(PlaneChanged e)
+	{
+		if (Game.getState() != GameState.LOGGED_IN)
+		{
 			return;
 		}
 
 		regionManager.sendRegion();
 	}
 
-	private void updateCollisionMap() {
-		try (InputStream is = new URL(RegionManager.API_URL + "/regions").openStream()) {
+	private void updateCollisionMap()
+	{
+		try (InputStream is = new URL(RegionManager.API_URL + "/regions").openStream())
+		{
 			collisionMap.overwrite(new GlobalCollisionMap(readGzip(is.readAllBytes())));
-		} catch (IOException e) {
+		}
+		catch (IOException e)
+		{
 			log.error("Error downloading collision data: {}", e.getMessage());
 		}
 	}
 
-	private byte[] readGzip(byte[] input) throws IOException {
+	private byte[] readGzip(byte[] input) throws IOException
+	{
 		return new GZIPInputStream(new ByteArrayInputStream(input)).readAllBytes();
 	}
 
 	@Provides
-	public RegionConfig provideConfig(ConfigManager configManager) {
+	public RegionConfig provideConfig(ConfigManager configManager)
+	{
 		return configManager.getConfig(RegionConfig.class);
 	}
 
-	enum TileSelection {
+	enum TileSelection
+	{
 		SOURCE(-420),
 		DESTINATION(-421),
 		OBJECT(-422);
@@ -164,7 +183,8 @@ public class RegionPlugin extends Plugin {
 		@Getter
 		private final int id;
 
-		TileSelection(int id) {
+		TileSelection(int id)
+		{
 			this.id = id;
 		}
 	}

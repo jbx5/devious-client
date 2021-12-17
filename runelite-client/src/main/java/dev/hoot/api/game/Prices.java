@@ -12,25 +12,32 @@ import org.slf4j.LoggerFactory;
 import java.time.Duration;
 import java.util.concurrent.ExecutionException;
 
-public class Prices {
+public class Prices
+{
 	private static final Logger logger = LoggerFactory.getLogger(Prices.class);
 	@Inject
 	private static ItemManager itemManager;
 
 	private static final LoadingCache<Integer, Integer> CACHE = CacheBuilder.newBuilder()
-					.expireAfterWrite(Duration.ofMinutes(5))
-					.build(new CacheLoader<>() {
-						@Override
-						public Integer load(@NotNull Integer itemId) {
-							logger.debug("Caching item {} price", itemId);
-							return GameThread.invokeLater(() -> itemManager.getItemPrice(itemId));
-						}
-					});
+			.expireAfterWrite(Duration.ofMinutes(5))
+			.build(new CacheLoader<>()
+			{
+				@Override
+				public Integer load(@NotNull Integer itemId)
+				{
+					logger.debug("Caching item {} price", itemId);
+					return GameThread.invokeLater(() -> itemManager.getItemPrice(itemId));
+				}
+			});
 
-	public static int getItemPrice(int id) {
-		try {
+	public static int getItemPrice(int id)
+	{
+		try
+		{
 			return CACHE.get(id);
-		} catch (ExecutionException e) {
+		}
+		catch (ExecutionException e)
+		{
 			return -1;
 		}
 	}

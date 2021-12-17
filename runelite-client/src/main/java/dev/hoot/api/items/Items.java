@@ -5,17 +5,23 @@ import net.runelite.api.Item;
 import java.util.List;
 import java.util.function.Predicate;
 
-public abstract class Items {
+public abstract class Items
+{
 	protected abstract List<Item> all(Predicate<Item> filter);
 
-	public List<Item> all(String... names) {
-		return all(x -> {
-			if (x.getName() == null) {
+	public List<Item> all(String... names)
+	{
+		return all(x ->
+		{
+			if (x.getName() == null)
+			{
 				return false;
 			}
 
-			for (String name : names) {
-				if (name.equals(x.getName())) {
+			for (String name : names)
+			{
+				if (name.equals(x.getName()))
+				{
 					return true;
 				}
 			}
@@ -24,10 +30,14 @@ public abstract class Items {
 		});
 	}
 
-	public List<Item> all(int... ids) {
-		return all(x -> {
-			for (int id : ids) {
-				if (id == x.getId()) {
+	public List<Item> all(int... ids)
+	{
+		return all(x ->
+		{
+			for (int id : ids)
+			{
+				if (id == x.getId())
+				{
 					return true;
 				}
 			}
@@ -36,14 +46,19 @@ public abstract class Items {
 		});
 	}
 
-	public Item first(Predicate<Item> filter) {
+	public Item first(Predicate<Item> filter)
+	{
 		return all(filter).stream().findFirst().orElse(null);
 	}
 
-	public Item first(int... ids) {
-		return first(x -> {
-			for (int id : ids) {
-				if (id == x.getId()) {
+	public Item first(int... ids)
+	{
+		return first(x ->
+		{
+			for (int id : ids)
+			{
+				if (id == x.getId())
+				{
 					return true;
 				}
 			}
@@ -52,14 +67,19 @@ public abstract class Items {
 		});
 	}
 
-	public Item first(String... names) {
-		return first(x -> {
-			if (x.getName() == null) {
+	public Item first(String... names)
+	{
+		return first(x ->
+		{
+			if (x.getName() == null)
+			{
 				return false;
 			}
 
-			for (String name : names) {
-				if (name.equals(x.getName())) {
+			for (String name : names)
+			{
+				if (name.equals(x.getName()))
+				{
 					return true;
 				}
 			}
@@ -68,15 +88,18 @@ public abstract class Items {
 		});
 	}
 
-	public boolean exists(Predicate<Item> filter) {
+	public boolean exists(Predicate<Item> filter)
+	{
 		return first(filter) != null;
 	}
 
-	public boolean exists(String name) {
+	public boolean exists(String name)
+	{
 		return first(name) != null;
 	}
 
-	public boolean exists(int id) {
+	public boolean exists(int id)
+	{
 		return first(id) != null;
 	}
 }

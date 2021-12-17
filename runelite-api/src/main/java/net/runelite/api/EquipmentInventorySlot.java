@@ -37,7 +37,8 @@ import net.runelite.api.widgets.WidgetInfo;
  * @see Client#getItemContainer(InventoryID)
  * @see InventoryID#EQUIPMENT
  */
-public enum EquipmentInventorySlot {
+public enum EquipmentInventorySlot
+{
 	HEAD(0, WidgetInfo.EQUIPMENT_HELMET),
 	CAPE(1, WidgetInfo.EQUIPMENT_CAPE),
 	AMULET(2, WidgetInfo.EQUIPMENT_AMULET),
@@ -70,5 +71,4 @@ public enum EquipmentInventorySlot {
 	{
 		return slotIdx;
 	}
-
 }

@@ -30,6 +30,7 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import com.google.inject.name.Names;
 import com.openosrs.client.config.OpenOSRSConfig;
+
 import java.applet.Applet;
 import java.io.File;
 import java.util.Properties;
@@ -105,11 +106,11 @@ public class RuneLiteModule extends AbstractModule
 		bind(Callbacks.class).to(Hooks.class);
 
 		bind(EventBus.class)
-			.toInstance(new EventBus());
+				.toInstance(new EventBus());
 
 		bind(EventBus.class)
-			.annotatedWith(Names.named("Deferred EventBus"))
-			.to(DeferredEventBus.class);
+				.annotatedWith(Names.named("Deferred EventBus"))
+				.to(DeferredEventBus.class);
 
 		requestStaticInjection(
 				GameThread.class,
@@ -170,9 +171,9 @@ public class RuneLiteModule extends AbstractModule
 		// Will start up to poolSize threads (because of allowCoreThreadTimeOut) as necessary, and times out
 		// unused threads after 1 minute
 		ThreadPoolExecutor executor = new ThreadPoolExecutor(poolSize, poolSize,
-			60L, TimeUnit.SECONDS,
-			new LinkedBlockingQueue<>(),
-			new ThreadFactoryBuilder().setNameFormat("worker-%d").build());
+				60L, TimeUnit.SECONDS,
+				new LinkedBlockingQueue<>(),
+				new ThreadFactoryBuilder().setNameFormat("worker-%d").build());
 		executor.allowCoreThreadTimeOut(true);
 
 		return new NonScheduledExecutorServiceExceptionLogger(executor);
@@ -180,7 +181,8 @@ public class RuneLiteModule extends AbstractModule
 
 	@Provides
 	@Singleton
-	ClientPacket provideClientPacket(Client client) {
+	ClientPacket provideClientPacket(Client client)
+	{
 		return client.getClientPacket();
 	}
 }

@@ -1,5 +1,6 @@
 package dev.hoot.api;
 
-public interface EntityNameable {
+public interface EntityNameable
+{
 	String getName();
 }

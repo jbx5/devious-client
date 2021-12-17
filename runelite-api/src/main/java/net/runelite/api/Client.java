@@ -2029,13 +2029,13 @@ public interface Client extends GameEngine
 
 	void setRenderSelf(boolean enabled);
 
-	default void invokeMenuAction(String option, String target, int identifier, int opcode, int param0,
-								  int param1) {
+	default void invokeMenuAction(String option, String target, int identifier, int opcode, int param0, int param1)
+	{
 		invokeMenuAction(option, target, identifier, opcode, param0, param1, -1, -1);
 	}
 
 	void invokeMenuAction(String option, String target, int identifier, int opcode, int param0, int param1,
-						  int screenX, int screenY);
+			int screenX, int screenY);
 
 	MouseRecorder getMouseRecorder();
 
@@ -2362,7 +2362,8 @@ public interface Client extends GameEngine
 	 * Unethical
 	 */
 
-	default void interact(final int identifier, final int opcode, final int param0, final int param1) {
+	default void interact(final int identifier, final int opcode, final int param0, final int param1)
+	{
 		interact(identifier, opcode, param0, param1, -1, -1);
 	}
 

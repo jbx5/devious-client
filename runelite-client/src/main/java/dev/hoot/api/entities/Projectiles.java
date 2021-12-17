@@ -11,17 +11,23 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-public class Projectiles {
-	public static List<Projectile> getAll(Predicate<Projectile> filter) {
+public class Projectiles
+{
+	public static List<Projectile> getAll(Predicate<Projectile> filter)
+	{
 		return Game.getClient().getProjectiles().stream()
-						.filter(projectile -> projectile != null && filter.test(projectile))
-						.collect(Collectors.toList());
+				.filter(projectile -> projectile != null && filter.test(projectile))
+				.collect(Collectors.toList());
 	}
 
-	public static List<Projectile> getAll(int... ids) {
-		return getAll(x -> {
-			for (int id : ids) {
-				if (id == x.getId()) {
+	public static List<Projectile> getAll(int... ids)
+	{
+		return getAll(x ->
+		{
+			for (int id : ids)
+			{
+				if (id == x.getId())
+				{
 					return true;
 				}
 			}
@@ -30,19 +36,24 @@ public class Projectiles {
 		});
 	}
 
-	public static Projectile getNearest(Predicate<Projectile> filter) {
+	public static Projectile getNearest(Predicate<Projectile> filter)
+	{
 		return getAll(filter).stream()
-						.min(Comparator.comparingInt(p ->
-										WorldPoint.fromLocal(Game.getClient(), (int) p.getX(), (int) p.getY(), Game.getClient().getPlane())
-														.distanceTo(Players.getLocal().getWorldLocation()))
-						)
-						.orElse(null);
+				.min(Comparator.comparingInt(p ->
+						WorldPoint.fromLocal(Game.getClient(), (int) p.getX(), (int) p.getY(), Game.getClient().getPlane())
+								.distanceTo(Players.getLocal().getWorldLocation()))
+				)
+				.orElse(null);
 	}
 
-	public static Projectile getNearest(int... ids) {
-		return getNearest(x -> {
-			for (int id : ids) {
-				if (id == x.getId()) {
+	public static Projectile getNearest(int... ids)
+	{
+		return getNearest(x ->
+		{
+			for (int id : ids)
+			{
+				if (id == x.getId())
+				{
 					return true;
 				}
 			}
@@ -51,13 +62,16 @@ public class Projectiles {
 		});
 	}
 
-	public static Projectile getNearest(Actor target) {
+	public static Projectile getNearest(Actor target)
+	{
 		return getNearest(x -> x.getInteracting() != null && x.getInteracting().equals(target));
 	}
 
-	public static Projectile getNearest(WorldPoint startPoint) {
+	public static Projectile getNearest(WorldPoint startPoint)
+	{
 		LocalPoint localPoint = LocalPoint.fromWorld(Game.getClient(), startPoint);
-		if (localPoint == null) {
+		if (localPoint == null)
+		{
 			return null;
 		}
 

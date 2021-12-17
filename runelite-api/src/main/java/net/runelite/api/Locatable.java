@@ -46,11 +46,13 @@ public interface Locatable
 	 */
 	LocalPoint getLocalLocation();
 
-	default int distanceTo(Locatable locatable) {
+	default int distanceTo(Locatable locatable)
+	{
 		return locatable.getWorldLocation().distanceTo(getWorldLocation());
 	}
 
-	default int distanceTo(WorldPoint point) {
+	default int distanceTo(WorldPoint point)
+	{
 		return point.distanceTo(getWorldLocation());
 	}
 }

@@ -21,7 +21,8 @@ import javax.inject.Inject;
 		description = "Automation plugin",
 		tags = {"automation", "interaction", "interact", "bot"}
 )
-public class InteractionPlugin extends Plugin {
+public class InteractionPlugin extends Plugin
+{
 	@Inject
 	private OverlayManager overlayManager;
 
@@ -38,31 +39,37 @@ public class InteractionPlugin extends Plugin {
 	private MouseManager mouseManager;
 
 	@Override
-	public void startUp() {
+	public void startUp()
+	{
 		overlayManager.add(interactionOverlay);
 		mouseManager.registerMouseListener(interactionOverlay);
 		eventBus.register(interactionManager);
 	}
 
 	@Override
-	public void shutDown() {
+	public void shutDown()
+	{
 		overlayManager.remove(interactionOverlay);
 		mouseManager.unregisterMouseListener(interactionOverlay);
 		eventBus.unregister(interactionManager);
 	}
 
 	@Provides
-	InteractionConfig provideConfig(ConfigManager configManager) {
+	InteractionConfig provideConfig(ConfigManager configManager)
+	{
 		return configManager.getConfig(InteractionConfig.class);
 	}
 
 	@Subscribe
-	public void onConfigChanged(ConfigChanged e) {
-		if (!e.getGroup().equals("interaction")) {
+	public void onConfigChanged(ConfigChanged e)
+	{
+		if (!e.getGroup().equals("interaction"))
+		{
 			return;
 		}
 
-		if (Game.getState() != GameState.LOGGED_IN) {
+		if (Game.getState() != GameState.LOGGED_IN)
+		{
 			return;
 		}
 

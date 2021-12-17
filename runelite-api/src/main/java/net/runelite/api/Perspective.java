@@ -1002,18 +1002,22 @@ public class Perspective
 		return pList;
 	}
 
-	public static Point tileCenter(Client client,WorldPoint b) {
-		if (b.getPlane() != client.getPlane()) {
+	public static Point tileCenter(Client client, WorldPoint b)
+	{
+		if (b.getPlane() != client.getPlane())
+		{
 			return null;
 		}
 
 		LocalPoint lp = LocalPoint.fromWorld(client, b);
-		if (lp == null) {
+		if (lp == null)
+		{
 			return null;
 		}
 
 		Polygon poly = Perspective.getCanvasTilePoly(client, lp);
-		if (poly == null) {
+		if (poly == null)
+		{
 			return null;
 		}
 

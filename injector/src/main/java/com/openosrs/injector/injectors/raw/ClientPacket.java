@@ -14,7 +14,8 @@ import net.runelite.asm.attributes.code.instructions.Return;
 import net.runelite.asm.attributes.code.instructions.SiPush;
 import net.runelite.asm.signature.Signature;
 
-public class ClientPacket extends AbstractInjector {
+public class ClientPacket extends AbstractInjector
+{
 	public ClientPacket(InjectData inject)
 	{
 		super(inject);

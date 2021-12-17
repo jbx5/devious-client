@@ -597,23 +597,29 @@ public class WorldPoint
 		return false;
 	}
 
-	public void outline(Client client, Graphics2D graphics2D, Color color) {
+	public void outline(Client client, Graphics2D graphics2D, Color color)
+	{
 		outline(client, graphics2D, color, null);
 	}
 
-	public void outline(Client client, Graphics2D graphics, Color color, String text) {
+	public void outline(Client client, Graphics2D graphics, Color color, String text)
+	{
 		LocalPoint localPoint = LocalPoint.fromWorld(client, this);
-		if (localPoint == null) {
+		if (localPoint == null)
+		{
 			return;
 		}
 
 		Polygon poly = Perspective.getCanvasTilePoly(client, localPoint);
-		if (poly == null) {
+		if (poly == null)
+		{
 			return;
 		}
 
-		if (text != null) {
-			var stringX = (int) (poly.getBounds().getCenterX() - graphics.getFont().getStringBounds(text, graphics.getFontRenderContext()).getWidth() / 2);
+		if (text != null)
+		{
+			var stringX = (int) (poly.getBounds().getCenterX() -
+					graphics.getFont().getStringBounds(text, graphics.getFontRenderContext()).getWidth() / 2);
 			var stringY = (int) poly.getBounds().getCenterY();
 			graphics.setColor(color);
 			graphics.drawString(text, stringX, stringY);
@@ -628,7 +634,8 @@ public class WorldPoint
 		graphics.setStroke(originalStroke);
 	}
 
-	public int distanceTo(Locatable locatable) {
+	public int distanceTo(Locatable locatable)
+	{
 		return locatable.getWorldLocation().distanceTo(this);
 	}
 }

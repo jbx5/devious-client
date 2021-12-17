@@ -59,19 +59,23 @@ public interface TileItem extends Renderable, SceneEntity
 
 	String getName();
 
-	default int distanceTo(Locatable locatable) {
+	default int distanceTo(Locatable locatable)
+	{
 		return getTile().distanceTo(locatable.getWorldLocation());
 	}
 
-	default int distanceTo(WorldPoint point) {
+	default int distanceTo(WorldPoint point)
+	{
 		return getTile().distanceTo(point);
 	}
 
-	default WorldPoint getWorldLocation() {
+	default WorldPoint getWorldLocation()
+	{
 		return getTile().getWorldLocation();
 	}
 
-	default LocalPoint getLocalLocation() {
+	default LocalPoint getLocalLocation()
+	{
 		return getTile().getLocalLocation();
 	}
 
@@ -89,11 +93,13 @@ public interface TileItem extends Renderable, SceneEntity
 
 	String[] getInventoryActions();
 
-	default List<String> inventoryActions() {
+	default List<String> inventoryActions()
+	{
 		return Arrays.asList(getInventoryActions());
 	}
 
-	default boolean hasInventoryAction(String action) {
+	default boolean hasInventoryAction(String action)
+	{
 		return inventoryActions().contains(action);
 	}
 }

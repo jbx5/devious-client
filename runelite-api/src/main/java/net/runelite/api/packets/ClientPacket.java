@@ -1,90 +1,94 @@
 package net.runelite.api.packets;
 
-public interface ClientPacket {
-    int getId();
-    int getLength();
+public interface ClientPacket
+{
+	int getId();
 
-    ClientPacket OPHELDT();
+	int getLength();
 
-    ClientPacket OPNPCT();
+	ClientPacket OPHELDT();
 
-    ClientPacket EVENT_MOUSE_CLICK();
+	ClientPacket OPNPCT();
 
-    ClientPacket OPNPCU();
+	ClientPacket EVENT_MOUSE_CLICK();
 
-    ClientPacket OPLOCU();
+	ClientPacket OPNPCU();
 
-    ClientPacket OPHELD1();
+	ClientPacket OPLOCU();
 
-    ClientPacket OPHELD2();
+	ClientPacket OPHELD1();
 
-    ClientPacket OPHELD3();
+	ClientPacket OPHELD2();
 
-    ClientPacket OPHELD4();
+	ClientPacket OPHELD3();
 
-    ClientPacket OPHELD5();
+	ClientPacket OPHELD4();
 
-    ClientPacket OPHELDU();
+	ClientPacket OPHELD5();
 
-    ClientPacket RESUME_PAUSEBUTTON();
+	ClientPacket OPHELDU();
 
-    ClientPacket IF_BUTTON1();
+	ClientPacket RESUME_PAUSEBUTTON();
 
-    ClientPacket IF_BUTTON2();
+	ClientPacket IF_BUTTON1();
 
-    ClientPacket IF_BUTTON3();
+	ClientPacket IF_BUTTON2();
 
-    ClientPacket IF_BUTTON4();
+	ClientPacket IF_BUTTON3();
 
-    ClientPacket IF_BUTTON5();
+	ClientPacket IF_BUTTON4();
 
-    ClientPacket IF_BUTTON6();
+	ClientPacket IF_BUTTON5();
 
-    ClientPacket IF_BUTTON7();
+	ClientPacket IF_BUTTON6();
 
-    ClientPacket IF_BUTTON8();
+	ClientPacket IF_BUTTON7();
 
-    ClientPacket IF_BUTTON9();
+	ClientPacket IF_BUTTON8();
 
-    ClientPacket IF_BUTTON10();
+	ClientPacket IF_BUTTON9();
 
-    ClientPacket OPLOC1();
+	ClientPacket IF_BUTTON10();
 
-    ClientPacket OPLOC2();
+	ClientPacket OPLOC1();
 
-    ClientPacket OPLOC3();
+	ClientPacket OPLOC2();
 
-    ClientPacket OPLOC4();
+	ClientPacket OPLOC3();
 
-    ClientPacket OPLOC5();
+	ClientPacket OPLOC4();
 
-    ClientPacket OPOBJ1();
+	ClientPacket OPLOC5();
 
-    ClientPacket OPOBJ2();
+	ClientPacket OPOBJ1();
 
-    ClientPacket OPOBJ3();
+	ClientPacket OPOBJ2();
 
-    ClientPacket OPOBJ4();
+	ClientPacket OPOBJ3();
 
-    ClientPacket OPOBJ5();
+	ClientPacket OPOBJ4();
 
-    ClientPacket MOVE_GAMECLICK();
+	ClientPacket OPOBJ5();
 
-    ClientPacket RESUME_P_COUNTDIALOG();
+	ClientPacket MOVE_GAMECLICK();
 
-    ClientPacket RESUME_P_STRINGDIALOG();
+	ClientPacket RESUME_P_COUNTDIALOG();
 
-    ClientPacket RESUME_P_NAMEDIALOG();
+	ClientPacket RESUME_P_STRINGDIALOG();
 
-    ClientPacket OPNPC1();
+	ClientPacket RESUME_P_NAMEDIALOG();
 
-    ClientPacket OPNPC2();
+	ClientPacket OPNPC1();
 
-    ClientPacket OPNPC3();
+	ClientPacket OPNPC2();
 
-    ClientPacket OPNPC4();
+	ClientPacket OPNPC3();
 
-    ClientPacket OPNPC5();
+	ClientPacket OPNPC4();
 
-    ClientPacket CLOSE_MODAL();
+	ClientPacket OPNPC5();
+
+	ClientPacket CLOSE_MODAL();
+
+	ClientPacket MOUSERECORDER_DATA();
 }

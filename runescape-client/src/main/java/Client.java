@@ -3906,7 +3906,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 
 									if (var9 != field483 || var8 != field746) {
 										if (var31 == null) {
-											var31 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2889, packetWriter.isaacCipher);
+											var31 = HitSplatDefinition.getPacketBufferNode(ClientPacket.MOUSERECORDER_DATA, packetWriter.isaacCipher);
 											var31.packetBuffer.writeByte(0);
 											var3 = var31.packetBuffer.offset;
 											var10000 = var31.packetBuffer;
@@ -4003,7 +4003,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 							}
 
 							var5 = (int)var16;
-							var18 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2894, packetWriter.isaacCipher);
+							var18 = HitSplatDefinition.getPacketBufferNode(ClientPacket.EVENT_MOUSE_CLICK, packetWriter.isaacCipher);
 							var18.packetBuffer.writeShort((MouseHandler.MouseHandler_lastButton == 2 ? 1 : 0) + (var5 << 1));
 							var18.packetBuffer.writeShort(var4);
 							var18.packetBuffer.writeShort(var3);

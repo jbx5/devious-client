@@ -33,192 +33,212 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 @Singleton
-public class AddTransportDialog extends JFrame {
-    private static final ScheduledExecutorService EXECUTOR = Executors.newSingleThreadScheduledExecutor();
-    private static final Logger logger = LoggerFactory.getLogger(AddTransportDialog.class);
+public class AddTransportDialog extends JFrame
+{
+	private static final ScheduledExecutorService EXECUTOR = Executors.newSingleThreadScheduledExecutor();
+	private static final Logger logger = LoggerFactory.getLogger(AddTransportDialog.class);
 
-    private final JTextField fromText;
+	private final JTextField fromText;
 
-    private final JTextField toText;
+	private final JTextField toText;
 
-    private final JTextField actionText;
-    private final JTextField objNameText;
-    private final JTextField objIdText;
+	private final JTextField actionText;
+	private final JTextField objNameText;
+	private final JTextField objIdText;
 
-    private final DefaultListModel<TransportLink> listModel;
+	private final DefaultListModel<TransportLink> listModel;
 
-    @Inject
-    private OkHttpClient okHttpClient;
+	@Inject
+	private OkHttpClient okHttpClient;
 
-    @Inject
-    private RegionConfig regionConfig;
+	@Inject
+	private RegionConfig regionConfig;
 
-    public AddTransportDialog() {
+	public AddTransportDialog()
+	{
 
-        setLayout(new GridLayout(1, 2));
-        setMinimumSize(new Dimension(550, 350));
+		setLayout(new GridLayout(1, 2));
+		setMinimumSize(new Dimension(550, 350));
 
-        listModel = new DefaultListModel<>();
+		listModel = new DefaultListModel<>();
 
-        JPanel configPanel = new JPanel(new MigLayout("fill"));
-        configPanel.setBorder(new TitledBorder("Config"));
-        configPanel.setMinimumSize(new Dimension(250, 350));
+		JPanel configPanel = new JPanel(new MigLayout("fill"));
+		configPanel.setBorder(new TitledBorder("Config"));
+		configPanel.setMinimumSize(new Dimension(250, 350));
 
-        JPanel listPanel = new JPanel(new MigLayout());
-        listPanel.setBorder(new TitledBorder("Links"));
-        listPanel.setMinimumSize(new Dimension(400, 350));
+		JPanel listPanel = new JPanel(new MigLayout());
+		listPanel.setBorder(new TitledBorder("Links"));
+		listPanel.setMinimumSize(new Dimension(400, 350));
 
-        add(configPanel);
-        add(listPanel);
+		add(configPanel);
+		add(listPanel);
 
-        configPanel.add(new JLabel("Source tile: "));
-        configPanel.add(fromText = new JTextField(), "growx");
-        JButton fromButton = new JButton("...");
-        configPanel.add(fromButton, "wrap");
+		configPanel.add(new JLabel("Source tile: "));
+		configPanel.add(fromText = new JTextField(), "growx");
+		JButton fromButton = new JButton("...");
+		configPanel.add(fromButton, "wrap");
 
-        configPanel.add(new JLabel("Destination tile: "));
-        configPanel.add(toText = new JTextField(), "growx");
-        JButton toButton = new JButton("...");
-        configPanel.add(toButton, "wrap");
+		configPanel.add(new JLabel("Destination tile: "));
+		configPanel.add(toText = new JTextField(), "growx");
+		JButton toButton = new JButton("...");
+		configPanel.add(toButton, "wrap");
 
-        JButton selectObject = new JButton("Select object");
-        configPanel.add(selectObject, "spanx 2, wrap");
-        configPanel.add(new JLabel("Action: "));
-        configPanel.add(actionText = new JTextField(), "growx, wrap");
+		JButton selectObject = new JButton("Select object");
+		configPanel.add(selectObject, "spanx 2, wrap");
+		configPanel.add(new JLabel("Action: "));
+		configPanel.add(actionText = new JTextField(), "growx, wrap");
 
-        configPanel.add(new JLabel("Object name: "));
-        configPanel.add(objNameText = new JTextField(), "growx, wrap");
+		configPanel.add(new JLabel("Object name: "));
+		configPanel.add(objNameText = new JTextField(), "growx, wrap");
 
-        configPanel.add(new JLabel("Object id: "));
-        configPanel.add(objIdText = new JTextField(), "growx, wrap");
+		configPanel.add(new JLabel("Object id: "));
+		configPanel.add(objIdText = new JTextField(), "growx, wrap");
 
-        JButton addLink = new JButton("Add link");
-        configPanel.add(addLink, "growx, skip");
+		JButton addLink = new JButton("Add link");
+		configPanel.add(addLink, "growx, skip");
 
-        JScrollPane listScroll = new JScrollPane(new JList<>(listModel));
+		JScrollPane listScroll = new JScrollPane(new JList<>(listModel));
 
-        listPanel.add(listScroll, "grow, push, wrap");
-        JButton submit = new JButton("Submit");
-        listPanel.add(submit);
+		listPanel.add(listScroll, "grow, push, wrap");
+		JButton submit = new JButton("Submit");
+		listPanel.add(submit);
 
-        fromButton.addActionListener(a -> RegionPlugin.selectingSourceTile = true);
-        toButton.addActionListener(a -> RegionPlugin.selectingDestinationTile = true);
-        selectObject.addActionListener(a -> RegionPlugin.selectingObject = true);
+		fromButton.addActionListener(a -> RegionPlugin.selectingSourceTile = true);
+		toButton.addActionListener(a -> RegionPlugin.selectingDestinationTile = true);
+		selectObject.addActionListener(a -> RegionPlugin.selectingObject = true);
 
-        addLink.addActionListener(a -> addLink());
-        submit.addActionListener(a -> submit());
+		addLink.addActionListener(a -> addLink());
+		submit.addActionListener(a -> submit());
 
-        pack();
-    }
+		pack();
+	}
 
-    private void addLink() {
-        listModel.addElement(new TransportLink(
-                fromText.getText(),
-                toText.getText(),
-                actionText.getText(),
-                objNameText.getText(),
-                Integer.parseInt(objIdText.getText())
-        ));
+	private void addLink()
+	{
+		listModel.addElement(new TransportLink(
+				fromText.getText(),
+				toText.getText(),
+				actionText.getText(),
+				objNameText.getText(),
+				Integer.parseInt(objIdText.getText())
+		));
 
-        fromText.setText(null);
-        toText.setText(null);
-        actionText.setText(null);
-        objNameText.setText(null);
-        objIdText.setText(null);
-    }
+		fromText.setText(null);
+		toText.setText(null);
+		actionText.setText(null);
+		objNameText.setText(null);
+		objIdText.setText(null);
+	}
 
-    private void submit() {
-        if (Game.getState() != GameState.LOGGED_IN || regionConfig.apiKey().isBlank()) {
-            return;
-        }
+	private void submit()
+	{
+		if (Game.getState() != GameState.LOGGED_IN || regionConfig.apiKey().isBlank())
+		{
+			return;
+		}
 
-        List<TransportLink> out = new ArrayList<>();
-        Enumeration<TransportLink> links = listModel.elements();
-        while (links.hasMoreElements()) {
-            out.add(links.nextElement());
-        }
+		List<TransportLink> out = new ArrayList<>();
+		Enumeration<TransportLink> links = listModel.elements();
+		while (links.hasMoreElements())
+		{
+			out.add(links.nextElement());
+		}
 
-        EXECUTOR.schedule(() -> {
-            try {
-                String json = RegionManager.GSON.toJson(out);
-                RequestBody body = RequestBody.create(RegionManager.JSON_MEDIATYPE, json);
-                Request request = new Request.Builder()
-                        .post(body)
-                        .header("api-key", regionConfig.apiKey())
-                        .url(RegionManager.API_URL + "/transports")
-                        .build();
-                Response response = okHttpClient.newCall(request)
-                        .execute();
-                int code = response.code();
-                if (code != 200) {
-                    logger.error("Request was unsuccessful: {}", code);
-                    return;
-                }
+		EXECUTOR.schedule(() ->
+		{
+			try
+			{
+				String json = RegionManager.GSON.toJson(out);
+				RequestBody body = RequestBody.create(RegionManager.JSON_MEDIATYPE, json);
+				Request request = new Request.Builder()
+						.post(body)
+						.header("api-key", regionConfig.apiKey())
+						.url(RegionManager.API_URL + "/transports")
+						.build();
+				Response response = okHttpClient.newCall(request)
+						.execute();
+				int code = response.code();
+				if (code != 200)
+				{
+					logger.error("Request was unsuccessful: {}", code);
+					return;
+				}
 
-                listModel.clear();
-                logger.debug("Transports saved successfully");
-            } catch (Exception e) {
-                logger.error("Failed to POST: {}", e.getMessage());
-                e.printStackTrace();
-            }
-        }, 1_000, TimeUnit.MILLISECONDS);
-    }
+				listModel.clear();
+				logger.debug("Transports saved successfully");
+			}
+			catch (Exception e)
+			{
+				logger.error("Failed to POST: {}", e.getMessage());
+				e.printStackTrace();
+			}
+		}, 1_000, TimeUnit.MILLISECONDS);
+	}
 
-    public void display() {
-        setLocationRelativeTo(null);
-        setVisible(true);
-    }
+	public void display()
+	{
+		setLocationRelativeTo(null);
+		setVisible(true);
+	}
 
-    @Subscribe
-    public void onMenuOptionClicked(MenuOptionClicked e) {
-        RegionPlugin.selectingSourceTile = false;
-        RegionPlugin.selectingDestinationTile = false;
-        RegionPlugin.selectingObject = false;
+	@Subscribe
+	public void onMenuOptionClicked(MenuOptionClicked e)
+	{
+		RegionPlugin.selectingSourceTile = false;
+		RegionPlugin.selectingDestinationTile = false;
+		RegionPlugin.selectingObject = false;
 
-        if (e.getId() == RegionPlugin.TileSelection.SOURCE.getId()) {
-            e.consume();
-            Tile hovered = Tiles.getHoveredTile();
-            if (hovered == null) {
-                return;
-            }
+		if (e.getId() == RegionPlugin.TileSelection.SOURCE.getId())
+		{
+			e.consume();
+			Tile hovered = Tiles.getHoveredTile();
+			if (hovered == null)
+			{
+				return;
+			}
 
-            WorldPoint coord = hovered.getWorldLocation();
+			WorldPoint coord = hovered.getWorldLocation();
 
-            fromText.setText(coord.getX() + " " + coord.getY() + " " + coord.getPlane());
-            return;
-        }
+			fromText.setText(coord.getX() + " " + coord.getY() + " " + coord.getPlane());
+			return;
+		}
 
-        if (e.getId() == RegionPlugin.TileSelection.DESTINATION.getId()) {
-            e.consume();
-            Tile hovered = Tiles.getHoveredTile();
-            if (hovered == null) {
-                return;
-            }
+		if (e.getId() == RegionPlugin.TileSelection.DESTINATION.getId())
+		{
+			e.consume();
+			Tile hovered = Tiles.getHoveredTile();
+			if (hovered == null)
+			{
+				return;
+			}
 
-            WorldPoint coord = hovered.getWorldLocation();
+			WorldPoint coord = hovered.getWorldLocation();
 
-            toText.setText(coord.getX() + " " + coord.getY() + " " + coord.getPlane());
-            return;
-        }
+			toText.setText(coord.getX() + " " + coord.getY() + " " + coord.getPlane());
+			return;
+		}
 
-        if (e.getId() == RegionPlugin.TileSelection.OBJECT.getId()) {
-            e.consume();
-            List<? extends SceneEntity> entities = Entities.getHoveredEntities();
-            if (entities.isEmpty()) {
-                return;
-            }
+		if (e.getId() == RegionPlugin.TileSelection.OBJECT.getId())
+		{
+			e.consume();
+			List<? extends SceneEntity> entities = Entities.getHoveredEntities();
+			if (entities.isEmpty())
+			{
+				return;
+			}
 
-            SceneEntity transport = entities.stream().filter(o -> o.getActions() != null
-                    && o.getActions().stream().anyMatch(Objects::nonNull))
-                    .findFirst().orElse(null);
-            if (transport == null) {
-                return;
-            }
+			SceneEntity transport = entities.stream().filter(o -> o.getActions() != null
+							&& o.getActions().stream().anyMatch(Objects::nonNull))
+					.findFirst().orElse(null);
+			if (transport == null)
+			{
+				return;
+			}
 
-            objNameText.setText(transport.getName());
-            objIdText.setText(String.valueOf(transport.getId()));
+			objNameText.setText(transport.getName());
+			objIdText.setText(String.valueOf(transport.getId()));
 
-            transport.getActions().stream().filter(Objects::nonNull).findFirst().ifPresent(actionText::setText);
-        }
-    }
+			transport.getActions().stream().filter(Objects::nonNull).findFirst().ifPresent(actionText::setText);
+		}
+	}
 }

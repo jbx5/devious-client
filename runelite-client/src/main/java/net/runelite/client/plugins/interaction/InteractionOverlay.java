@@ -13,14 +13,16 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 
 @Singleton
-public class InteractionOverlay extends Overlay implements MouseListener {
+public class InteractionOverlay extends Overlay implements MouseListener
+{
 	private final InteractionConfig config;
 
 	private Point lastClick;
 	private Point lastMove;
 
 	@Inject
-	public InteractionOverlay(InteractionConfig config) {
+	public InteractionOverlay(InteractionConfig config)
+	{
 		this.config = config;
 
 		setPosition(OverlayPosition.DYNAMIC);
@@ -29,15 +31,19 @@ public class InteractionOverlay extends Overlay implements MouseListener {
 	}
 
 	@Override
-	public Dimension render(Graphics2D g) {
-		if (config.drawMouse()) {
+	public Dimension render(Graphics2D g)
+	{
+		if (config.drawMouse())
+		{
 			g.setFont(new Font("Tahoma", Font.BOLD, 18));
 
-			if (lastClick != null) {
+			if (lastClick != null)
+			{
 				OverlayUtil.renderTextLocation(g, new net.runelite.api.Point(lastClick.x - (g.getFont().getSize() / 3), lastClick.y + (g.getFont().getSize() / 3)), "X", Color.WHITE);
 			}
 
-			if (lastMove != null) {
+			if (lastMove != null)
+			{
 				OverlayUtil.renderTextLocation(g, new net.runelite.api.Point(lastMove.x - (g.getFont().getSize() / 3), lastMove.y + (g.getFont().getSize() / 3)), "X", Color.GREEN);
 			}
 		}
@@ -46,43 +52,50 @@ public class InteractionOverlay extends Overlay implements MouseListener {
 	}
 
 	@Override
-	public MouseEvent mouseClicked(MouseEvent mouseEvent) {
+	public MouseEvent mouseClicked(MouseEvent mouseEvent)
+	{
 		lastClick = mouseEvent.getPoint();
 		return mouseEvent;
 	}
 
 	@Override
-	public MouseEvent mousePressed(MouseEvent mouseEvent) {
+	public MouseEvent mousePressed(MouseEvent mouseEvent)
+	{
 		lastClick = mouseEvent.getPoint();
 		return mouseEvent;
 	}
 
 	@Override
-	public MouseEvent mouseReleased(MouseEvent mouseEvent) {
+	public MouseEvent mouseReleased(MouseEvent mouseEvent)
+	{
 		lastClick = mouseEvent.getPoint();
 		return mouseEvent;
 	}
 
 	@Override
-	public MouseEvent mouseEntered(MouseEvent mouseEvent) {
+	public MouseEvent mouseEntered(MouseEvent mouseEvent)
+	{
 		lastMove = mouseEvent.getPoint();
 		return mouseEvent;
 	}
 
 	@Override
-	public MouseEvent mouseExited(MouseEvent mouseEvent) {
+	public MouseEvent mouseExited(MouseEvent mouseEvent)
+	{
 		lastMove = mouseEvent.getPoint();
 		return mouseEvent;
 	}
 
 	@Override
-	public MouseEvent mouseDragged(MouseEvent mouseEvent) {
+	public MouseEvent mouseDragged(MouseEvent mouseEvent)
+	{
 		lastMove = mouseEvent.getPoint();
 		return mouseEvent;
 	}
 
 	@Override
-	public MouseEvent mouseMoved(MouseEvent mouseEvent) {
+	public MouseEvent mouseMoved(MouseEvent mouseEvent)
+	{
 		lastMove = mouseEvent.getPoint();
 		return mouseEvent;
 	}

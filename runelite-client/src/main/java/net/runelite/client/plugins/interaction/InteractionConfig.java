@@ -6,7 +6,8 @@ import net.runelite.client.config.ConfigItem;
 import net.runelite.client.config.ConfigSection;
 
 @ConfigGroup("interaction")
-public interface InteractionConfig extends Config {
+public interface InteractionConfig extends Config
+{
 	@ConfigSection(
 			name = "Interaction manager",
 			description = "Interaction settings",
@@ -22,7 +23,8 @@ public interface InteractionConfig extends Config {
 			section = interactionManager,
 			position = 0
 	)
-	default boolean mouseEvents() {
+	default boolean mouseEvents()
+	{
 		return false;
 	}
 
@@ -33,7 +35,8 @@ public interface InteractionConfig extends Config {
 			section = interactionManager,
 			position = 0
 	)
-	default InteractType interactType() {
+	default InteractType interactType()
+	{
 		return InteractType.CLICKBOXES;
 	}
 
@@ -44,7 +47,8 @@ public interface InteractionConfig extends Config {
 			section = interactionManager,
 			position = 1
 	)
-	default boolean drawMouse() {
+	default boolean drawMouse()
+	{
 		return false;
 	}
 
@@ -55,7 +59,8 @@ public interface InteractionConfig extends Config {
 			section = interactionManager,
 			position = 2
 	)
-	default boolean debugInteractions() {
+	default boolean debugInteractions()
+	{
 		return false;
 	}
 
@@ -66,7 +71,8 @@ public interface InteractionConfig extends Config {
 			section = interactionManager,
 			position = 3
 	)
-	default boolean debugDialogs() {
+	default boolean debugDialogs()
+	{
 		return false;
 	}
 }

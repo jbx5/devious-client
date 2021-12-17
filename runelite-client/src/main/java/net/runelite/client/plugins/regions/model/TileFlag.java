@@ -5,7 +5,8 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class TileFlag {
+public class TileFlag
+{
 	private int x;
 	private int y;
 	private int z;

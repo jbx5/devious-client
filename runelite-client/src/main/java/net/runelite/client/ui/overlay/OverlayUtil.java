@@ -25,6 +25,7 @@
 package net.runelite.client.ui.overlay;
 
 import com.google.common.base.Strings;
+
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -35,6 +36,7 @@ import java.awt.RenderingHints;
 import java.awt.Shape;
 import java.awt.Stroke;
 import java.awt.image.BufferedImage;
+
 import net.runelite.api.Actor;
 import net.runelite.api.Client;
 import net.runelite.api.Perspective;
@@ -264,18 +266,22 @@ public class OverlayUtil
 		return result;
 	}
 
-	public static void fillTile(Graphics2D graphics, Client client, WorldPoint point, Color color) {
-		if (point.getPlane() != client.getPlane()) {
+	public static void fillTile(Graphics2D graphics, Client client, WorldPoint point, Color color)
+	{
+		if (point.getPlane() != client.getPlane())
+		{
 			return;
 		}
 
 		LocalPoint lp = LocalPoint.fromWorld(client, point);
-		if (lp == null) {
+		if (lp == null)
+		{
 			return;
 		}
 
 		Polygon poly = Perspective.getCanvasTilePoly(client, lp);
-		if (poly == null) {
+		if (poly == null)
+		{
 			return;
 		}
 

@@ -5,7 +5,8 @@ import dev.hoot.api.items.Inventory;
 import net.runelite.api.ItemID;
 import net.runelite.api.coords.WorldPoint;
 
-public enum TeleportTab {
+public enum TeleportTab
+{
 	VARROCK_TELEPORT_TAB(new WorldPoint(3212, 3424, 0), "Varrock teleport", ItemID.VARROCK_TELEPORT),
 	LUMBRIDGE_TELEPORT_TAB(new WorldPoint(3225, 3219, 0), "Lumbridge teleport", ItemID.LUMBRIDGE_TELEPORT),
 	FALADOR_TELEPORT_TAB(new WorldPoint(2966, 3379, 0), "Falador teleport", ItemID.FALADOR_TELEPORT),
@@ -25,30 +26,36 @@ public enum TeleportTab {
 	private final String itemName;
 	private final int itemId;
 
-	TeleportTab(WorldPoint point, String itemName, int itemId) {
+	TeleportTab(WorldPoint point, String itemName, int itemId)
+	{
 		this.point = point;
 		this.itemName = itemName;
 		this.itemId = itemId;
 	}
 
-	public WorldPoint getPoint() {
+	public WorldPoint getPoint()
+	{
 		return point;
 	}
 
-	public String getItemName() {
+	public String getItemName()
+	{
 		return itemName;
 	}
 
-	public int getItemId() {
+	public int getItemId()
+	{
 		return itemId;
 	}
 
-	public boolean canUse() {
+	public boolean canUse()
+	{
 		return hasRequirements() && Inventory.getFirst(itemId) != null;
 	}
 
-	public boolean hasRequirements() {
+	public boolean hasRequirements()
+	{
 		return (this != ARDOUGNE_TELEPORT_TAB || Vars.getVarp(165) >= 30)
-						&& (this != SALVE_GRAVEYARD_TELEPORT_TAB || Vars.getVarp(302) >= 61);
+				&& (this != SALVE_GRAVEYARD_TELEPORT_TAB || Vars.getVarp(302) >= 61);
 	}
 }

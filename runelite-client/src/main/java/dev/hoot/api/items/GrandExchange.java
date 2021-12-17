@@ -21,7 +21,8 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
-public class GrandExchange {
+public class GrandExchange
+{
 	private static final int F2P_SLOTS = 3;
 	private static final int P2P_SLOTS = 8;
 	private static final int PRICE_VARBIT = 4398;
@@ -30,19 +31,24 @@ public class GrandExchange {
 	private static final Supplier<Widget> CONFIRM_BUTTON = () -> Widgets.get(WidgetID.GRAND_EXCHANGE_GROUP_ID, 29);
 	private static final Supplier<Widget> OFFER_PRICE = () -> Widgets.get(WidgetID.GRAND_EXCHANGE_GROUP_ID, 27);
 
-	public static View getView() {
+	public static View getView()
+	{
 		Widget setupWindow = Widgets.get(WidgetInfo.GRAND_EXCHANGE_OFFER_CONTAINER);
-		if (setupWindow != null && !GameThread.invokeLater(setupWindow::isHidden)) {
+		if (setupWindow != null && !GameThread.invokeLater(setupWindow::isHidden))
+		{
 			String text = setupWindow.getChild(18).getText();
-			if (text == null || text.isEmpty()) {
+			if (text == null || text.isEmpty())
+			{
 				return View.UNKNOWN;
 			}
 
-			if (text.equals("Sell offer")) {
+			if (text.equals("Sell offer"))
+			{
 				return View.SELLING;
 			}
 
-			if (text.equals("Buy offer")) {
+			if (text.equals("Buy offer"))
+			{
 				return View.BUYING;
 			}
 
@@ -51,96 +57,121 @@ public class GrandExchange {
 		}
 
 		Widget geWindow = Widgets.get(WidgetInfo.GRAND_EXCHANGE_WINDOW_CONTAINER);
-		if (geWindow != null && !GameThread.invokeLater(geWindow::isHidden)) {
+		if (geWindow != null && !GameThread.invokeLater(geWindow::isHidden))
+		{
 			return View.OFFERS;
 		}
 
 		return View.CLOSED;
 	}
 
-	public static boolean isOpen() {
+	public static boolean isOpen()
+	{
 		return getView() != View.CLOSED && getView() != View.UNKNOWN;
 	}
 
-	public static boolean isSetupOpen() {
+	public static boolean isSetupOpen()
+	{
 		return getView() == View.BUYING || getView() == View.SELLING;
 	}
 
-	public static void openBank() {
+	public static void openBank()
+	{
 		TileObject bank = TileObjects.getNearest(x -> x.getName() != null
-						&& x.getName().toLowerCase().contains("exchange booth") && x.hasAction("Bank"));
-		if (bank != null) {
+				&& x.getName().toLowerCase().contains("exchange booth") && x.hasAction("Bank"));
+		if (bank != null)
+		{
 			bank.interact("Bank");
 		}
 	}
 
-	public static boolean isSelling() {
+	public static boolean isSelling()
+	{
 		return getView() == View.SELLING;
 	}
 
-	public static boolean isBuying() {
+	public static boolean isBuying()
+	{
 		return getView() == View.BUYING;
 	}
 
-	public static int getItemId() {
+	public static int getItemId()
+	{
 		return Vars.getVarp(VarPlayer.CURRENT_GE_ITEM.getId());
 	}
 
-	public static void setItem(int id) {
+	public static void setItem(int id)
+	{
 		GameThread.invoke(() -> Game.getClient().runScript(754, id, 84));
 	}
 
-	public static int getPrice() {
+	public static int getPrice()
+	{
 		return Vars.getBit(PRICE_VARBIT);
 	}
 
-	public static void setPrice(int price) {
+	public static void setPrice(int price)
+	{
 		Widget enterPriceButton = Widgets.get(WidgetInfo.GRAND_EXCHANGE_OFFER_CONTAINER);
-		if (enterPriceButton != null && enterPriceButton.getChild(12) != null) {
+		if (enterPriceButton != null && enterPriceButton.getChild(12) != null)
+		{
 			enterPriceButton.getChild(12).interact("Enter price");
 			Dialog.enterInput(price);
 		}
 	}
 
-	public static int getQuantity() {
+	public static int getQuantity()
+	{
 		return Vars.getBit(QUANTITY_VARBIT);
 	}
 
-	public static void setQuantity(int quantity) {
+	public static void setQuantity(int quantity)
+	{
 		Widget enterPriceButton = Widgets.get(WidgetInfo.GRAND_EXCHANGE_OFFER_CONTAINER);
-		if (enterPriceButton != null && enterPriceButton.getChild(7) != null) {
+		if (enterPriceButton != null && enterPriceButton.getChild(7) != null)
+		{
 			enterPriceButton.getChild(7).interact("Enter quantity");
 			Dialog.enterInput(quantity);
 		}
 	}
 
-	public static int getGuidePrice() {
+	public static int getGuidePrice()
+	{
 		Widget priceWidget = OFFER_PRICE.get();
-		if (priceWidget != null) {
+		if (priceWidget != null)
+		{
 			return Integer.parseInt(priceWidget.getText().replaceAll("[^0-9]", ""));
 		}
 
 		return -1;
 	}
 
-	public static void open() {
+	public static void open()
+	{
 		TileObject booth = TileObjects.getNearest(x -> x.hasAction("Exchange"));
-		if (booth != null) {
+		if (booth != null)
+		{
 			booth.interact("Exchange");
 		}
 	}
 
-	public static void sell(Predicate<Item> filter) {
+	public static void sell(Predicate<Item> filter)
+	{
 		Item item = Inventory.getFirst(filter);
-		if (item != null) {
+		if (item != null)
+		{
 			Game.getClient().interact(1, 57, item.getSlot(), 30605312);
 		}
 	}
 
-	public static void sell(int... ids) {
-		sell(x -> {
-			for (int id : ids) {
-				if (id == x.getId()) {
+	public static void sell(int... ids)
+	{
+		sell(x ->
+		{
+			for (int id : ids)
+			{
+				if (id == x.getId())
+				{
 					return true;
 				}
 			}
@@ -149,14 +180,19 @@ public class GrandExchange {
 		});
 	}
 
-	public static void sell(String... names) {
-		sell(x -> {
-			if (x.getName() == null) {
+	public static void sell(String... names)
+	{
+		sell(x ->
+		{
+			if (x.getName() == null)
+			{
 				return false;
 			}
 
-			for (String name : names) {
-				if (name.equals(x.getName())) {
+			for (String name : names)
+			{
+				if (name.equals(x.getName()))
+				{
 					return true;
 				}
 			}
@@ -165,25 +201,31 @@ public class GrandExchange {
 		});
 	}
 
-	public static void createBuyOffer() {
+	public static void createBuyOffer()
+	{
 		List<Widget> geRoot = Widgets.get(465);
 
-		if (isFull()) {
+		if (isFull())
+		{
 			return;
 		}
 
-		if (geRoot == null) {
+		if (geRoot == null)
+		{
 			return;
 		}
 
-		for (int i = 7; i < 15; i++) {
+		for (int i = 7; i < 15; i++)
+		{
 			Widget box = geRoot.get(i);
-			if (box == null) {
+			if (box == null)
+			{
 				continue;
 			}
 
 			Widget buyButton = box.getChild(3);
-			if (buyButton == null || GameThread.invokeLater(buyButton::isHidden)) {
+			if (buyButton == null || GameThread.invokeLater(buyButton::isHidden))
+			{
 				continue;
 			}
 
@@ -191,58 +233,73 @@ public class GrandExchange {
 		}
 	}
 
-	public static void abortOffer(int itemId) {
+	public static void abortOffer(int itemId)
+	{
 		List<Widget> geRoot = Widgets.get(465);
 
-		if (isEmpty()) {
+		if (isEmpty())
+		{
 			return;
 		}
 
-		if (geRoot == null) {
+		if (geRoot == null)
+		{
 			return;
 		}
 
-		for (int i = 7; i < 15; i++) {
+		for (int i = 7; i < 15; i++)
+		{
 			Widget box = geRoot.get(i);
-			if (box == null) {
+			if (box == null)
+			{
 				continue;
 			}
 
 			Widget abortBox = box.getChild(2);
-			if (abortBox == null || !abortBox.hasAction("Abort offer") || GameThread.invokeLater(abortBox::isHidden)) {
+			if (abortBox == null || !abortBox.hasAction("Abort offer") || GameThread.invokeLater(abortBox::isHidden))
+			{
 				continue;
 			}
 
 			Widget itemIdBox = box.getChild(18);
-			if (itemIdBox == null || GameThread.invokeLater(itemIdBox::isHidden)) {
+			if (itemIdBox == null || GameThread.invokeLater(itemIdBox::isHidden))
+			{
 				continue;
 			}
 
-			if (itemIdBox.getItemId() == itemId) {
+			if (itemIdBox.getItemId() == itemId)
+			{
 				abortBox.interact("Abort offer");
 				return;
 			}
 		}
 	}
 
-	public static boolean isFull() {
+	public static boolean isFull()
+	{
 		return getEmptySlots() == 0;
 	}
 
-	public static boolean isEmpty() {
+	public static boolean isEmpty()
+	{
 		return getOffers().size() == 0;
 	}
 
-	public static int getEmptySlots() {
+	public static int getEmptySlots()
+	{
 		return Game.getMembershipDays() <= 0 ? F2P_SLOTS - getOffers().size() : P2P_SLOTS - getOffers().size();
 	}
 
-	public static List<GrandExchangeOffer> getOffers() {
+	public static List<GrandExchangeOffer> getOffers()
+	{
 		List<GrandExchangeOffer> out = new ArrayList<>();
 		GrandExchangeOffer[] offers = Game.getClient().getGrandExchangeOffers();
-		if (offers != null) {
-			for (GrandExchangeOffer offer : offers) {
-				if (offer.getItemId() > 0) {
+		if (offers != null)
+		{
+			for (GrandExchangeOffer offer : offers)
+			{
+				if (offer.getItemId() > 0)
+				{
 					out.add(offer);
 				}
 			}
@@ -251,106 +308,136 @@ public class GrandExchange {
 		return out;
 	}
 
-	public static boolean canCollect() {
+	public static boolean canCollect()
+	{
 		Widget collect = COLLECT_BUTTON.get();
 		return collect != null && !GameThread.invokeLater(collect::isHidden);
 	}
 
-	public static void collect() {
+	public static void collect()
+	{
 		collect(false);
 	}
 
-	public static void collect(boolean toBank) {
+	public static void collect(boolean toBank)
+	{
 		Widget collect = COLLECT_BUTTON.get();
-		if (collect != null && !GameThread.invokeLater(collect::isHidden)) {
+		if (collect != null && !GameThread.invokeLater(collect::isHidden))
+		{
 			collect.interact(toBank ? "Collect to bank" : "Collect to inventory");
 		}
 	}
 
-	public static void confirm() {
+	public static void confirm()
+	{
 		Widget confirm = CONFIRM_BUTTON.get();
-		if (confirm != null && !GameThread.invokeLater(confirm::isHidden)) {
+		if (confirm != null && !GameThread.invokeLater(confirm::isHidden))
+		{
 			confirm.interact("Confirm");
 		}
 	}
 
-	public static boolean isSearchingItem() {
+	public static boolean isSearchingItem()
+	{
 		return Vars.getVarcInt(VarClientInt.INPUT_TYPE) == 14;
 	}
 
-	public static void openItemSearch() {
+	public static void openItemSearch()
+	{
 		Game.getClient().interact(1, 57, 0, 30474264);
 	}
 
-	public static boolean sell(int itemId, int quantity, int price) {
+	public static boolean sell(int itemId, int quantity, int price)
+	{
 		return exchange(false, itemId, quantity, price, true, false);
 	}
 
-	public static boolean sell(int itemId, int quantity, int price, boolean collect, boolean toBank) {
+	public static boolean sell(int itemId, int quantity, int price, boolean collect, boolean toBank)
+	{
 		return exchange(false, itemId, quantity, price, collect, toBank);
 	}
 
-	public static boolean buy(int itemId, int quantity, int price) {
+	public static boolean buy(int itemId, int quantity, int price)
+	{
 		return exchange(true, itemId, quantity, price, true, false);
 	}
 
-	public static boolean buy(int itemId, int quantity, int price, boolean collect, boolean toBank) {
+	public static boolean buy(int itemId, int quantity, int price, boolean collect, boolean toBank)
+	{
 		return exchange(true, itemId, quantity, price, collect, toBank);
 	}
 
-	public static boolean exchange(boolean buy, int itemId, int quantity, int price) {
+	public static boolean exchange(boolean buy, int itemId, int quantity, int price)
+	{
 		return exchange(buy, itemId, quantity, price, true, false);
 	}
 
-	public static boolean exchange(boolean buy, int itemId, int quantity, int price, boolean collect, boolean toBank) {
-		if (!isOpen()) {
+	public static boolean exchange(boolean buy, int itemId, int quantity, int price, boolean collect, boolean toBank)
+	{
+		if (!isOpen())
+		{
 			open();
 			return false;
 		}
 
-		if (collect && canCollect()) {
+		if (collect && canCollect())
+		{
 			collect(toBank);
 			return false;
 		}
 
-		if (buy) {
-			if (!isBuying()) {
+		if (buy)
+		{
+			if (!isBuying())
+			{
 				createBuyOffer();
 				return false;
 			}
-		} else {
-			if (!isSelling()) {
+		}
+		else
+		{
+			if (!isSelling())
+			{
 				sell(itemId);
 				return false;
 			}
 		}
 
-		if (getItemId() != itemId) {
-			if (buy) {
-				if (!isSearchingItem()) {
+		if (getItemId() != itemId)
+		{
+			if (buy)
+			{
+				if (!isSearchingItem())
+				{
 					openItemSearch();
 				}
 
 				setItem(itemId);
-			} else {
+			}
+			else
+			{
 				sell(itemId);
 			}
 
 			return false;
 		}
 
-		if (getItemId() == itemId) {
-			if (getPrice() != price) {
+		if (getItemId() == itemId)
+		{
+			if (getPrice() != price)
+			{
 				setPrice(price);
 			}
 
-			if (getQuantity() != quantity) {
+			if (getQuantity() != quantity)
+			{
 				setQuantity(quantity);
 			}
 
 			Time.sleepUntil(() -> getPrice() == price && getQuantity() == quantity, 3000);
 
-			if (getPrice() == price && getQuantity() == quantity) {
+			if (getPrice() == price && getQuantity() == quantity)
+			{
 				confirm();
 				return true;
 			}
@@ -359,7 +446,8 @@ public class GrandExchange {
 		return false;
 	}
 
-	public enum View {
+	public enum View
+	{
 		CLOSED, OFFERS, BUYING, SELLING, UNKNOWN
 	}
 }

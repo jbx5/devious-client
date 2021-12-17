@@ -6,11 +6,14 @@ import net.runelite.api.Tile;
 import net.runelite.api.coords.Direction;
 import net.runelite.api.coords.WorldPoint;
 
-public class LocalCollisionMap implements CollisionMap {
+public class LocalCollisionMap implements CollisionMap
+{
 	@Override
-	public boolean n(int x, int y, int z) {
+	public boolean n(int x, int y, int z)
+	{
 		WorldPoint current = new WorldPoint(x, y, z);
-		if (Reachable.isObstacle(current)) {
+		if (Reachable.isObstacle(current))
+		{
 			return false;
 		}
 
@@ -18,8 +21,9 @@ public class LocalCollisionMap implements CollisionMap {
 		Tile destinationTile = Tiles.getAt(current.dy(1));
 
 		if (currentTile != null
-						&& destinationTile != null
-						&& (Reachable.isDoored(currentTile, destinationTile) || Reachable.isDoored(destinationTile, currentTile))) {
+				&& destinationTile != null
+				&& (Reachable.isDoored(currentTile, destinationTile) || Reachable.isDoored(destinationTile, currentTile)))
+		{
 			return !Reachable.isObstacle(destinationTile.getWorldLocation());
 		}
 
@@ -27,9 +31,11 @@ public class LocalCollisionMap implements CollisionMap {
 	}
 
 	@Override
-	public boolean e(int x, int y, int z) {
+	public boolean e(int x, int y, int z)
+	{
 		WorldPoint current = new WorldPoint(x, y, z);
-		if (Reachable.isObstacle(current)) {
+		if (Reachable.isObstacle(current))
+		{
 			return false;
 		}
 
@@ -37,8 +43,9 @@ public class LocalCollisionMap implements CollisionMap {
 		Tile destinationTile = Tiles.getAt(current.dx(1));
 
 		if (currentTile != null
-						&& destinationTile != null
-						&& (Reachable.isDoored(currentTile, destinationTile) || Reachable.isDoored(destinationTile, currentTile))) {
+				&& destinationTile != null
+				&& (Reachable.isDoored(currentTile, destinationTile) || Reachable.isDoored(destinationTile, currentTile)))
+		{
 			return !Reachable.isObstacle(destinationTile.getWorldLocation());
 		}
 

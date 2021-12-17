@@ -746,7 +746,8 @@ public class WorldArea
 		return list;
 	}
 
-	public boolean contains(Locatable locatable) {
+	public boolean contains(Locatable locatable)
+	{
 		return contains(locatable.getWorldLocation());
 	}
 }

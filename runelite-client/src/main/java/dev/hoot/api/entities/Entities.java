@@ -13,17 +13,23 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
 
-public abstract class Entities<T extends SceneEntity> {
+public abstract class Entities<T extends SceneEntity>
+{
 	protected abstract List<T> all(Predicate<? super T> filter);
 
-	public List<T> all(String... names) {
-		return all(x -> {
-			if (x.getName() == null) {
+	public List<T> all(String... names)
+	{
+		return all(x ->
+		{
+			if (x.getName() == null)
+			{
 				return false;
 			}
 
-			for (String name : names) {
-				if (name.equals(x.getName())) {
+			for (String name : names)
+			{
+				if (name.equals(x.getName()))
+				{
 					return true;
 				}
 			}
@@ -32,10 +38,14 @@ public abstract class Entities<T extends SceneEntity> {
 		});
 	}
 
-	public List<T> all(int... ids) {
-		return all(x -> {
-			for (int id : ids) {
-				if (id == x.getId()) {
+	public List<T> all(int... ids)
+	{
+		return all(x ->
+		{
+			for (int id : ids)
+			{
+				if (id == x.getId())
+				{
 					return true;
 				}
 			}
@@ -44,20 +54,26 @@ public abstract class Entities<T extends SceneEntity> {
 		});
 	}
 
-	public T nearest(WorldPoint to, Predicate<? super T> filter) {
+	public T nearest(WorldPoint to, Predicate<? super T> filter)
+	{
 		return all(x -> x.getId() != -1 && filter.test(x)).stream()
-						.min(Comparator.comparingInt(t -> t.getWorldLocation().distanceTo(to)))
-						.orElse(null);
+				.min(Comparator.comparingInt(t -> t.getWorldLocation().distanceTo(to)))
+				.orElse(null);
 	}
 
-	public T nearest(WorldPoint to, String... names) {
-		return nearest(to, x -> {
-			if (x.getName() == null) {
+	public T nearest(WorldPoint to, String... names)
+	{
+		return nearest(to, x ->
+		{
+			if (x.getName() == null)
+			{
 				return false;
 			}
 
-			for (String name : names) {
-				if (name.equals(x.getName())) {
+			for (String name : names)
+			{
+				if (name.equals(x.getName()))
+				{
 					return true;
 				}
 			}
@@ -66,10 +82,14 @@ public abstract class Entities<T extends SceneEntity> {
 		});
 	}
 
-	public T nearest(WorldPoint to, int... ids) {
-		return nearest(to, x -> {
-			for (int id : ids) {
-				if (id == x.getId()) {
+	public T nearest(WorldPoint to, int... ids)
+	{
+		return nearest(to, x ->
+		{
+			for (int id : ids)
+			{
+				if (id == x.getId())
+				{
 					return true;
 				}
 			}
@@ -78,18 +98,22 @@ public abstract class Entities<T extends SceneEntity> {
 		});
 	}
 
-	public static List<? extends SceneEntity> getHoveredEntities() {
+	public static List<? extends SceneEntity> getHoveredEntities()
+	{
 		MenuEntry[] menuEntries = Game.getClient().getMenuEntries();
-		if (menuEntries.length == 0) {
+		if (menuEntries.length == 0)
+		{
 			return Collections.emptyList();
 		}
 
 		List<SceneEntity> out = new ArrayList<>();
 
-		for (MenuEntry menuEntry : menuEntries) {
+		for (MenuEntry menuEntry : menuEntries)
+		{
 			MenuAction menuAction = menuEntry.getType();
 
-			switch (menuAction) {
+			switch (menuAction)
+			{
 				case EXAMINE_OBJECT:
 				case ITEM_USE_ON_GAME_OBJECT:
 				case SPELL_CAST_ON_GAME_OBJECT:
@@ -97,7 +121,8 @@ public abstract class Entities<T extends SceneEntity> {
 				case GAME_OBJECT_SECOND_OPTION:
 				case GAME_OBJECT_THIRD_OPTION:
 				case GAME_OBJECT_FOURTH_OPTION:
-				case GAME_OBJECT_FIFTH_OPTION: {
+				case GAME_OBJECT_FIFTH_OPTION:
+				{
 					int x = menuEntry.getParam0();
 					int y = menuEntry.getParam1();
 					int id = menuEntry.getIdentifier();
@@ -113,7 +138,8 @@ public abstract class Entities<T extends SceneEntity> {
 				case NPC_SECOND_OPTION:
 				case NPC_THIRD_OPTION:
 				case NPC_FOURTH_OPTION:
-				case NPC_FIFTH_OPTION: {
+				case NPC_FIFTH_OPTION:
+				{
 					int id = menuEntry.getIdentifier();
 					out.add(Game.getClient().getCachedNPCs()[id]);
 					break;
@@ -126,7 +152,8 @@ public abstract class Entities<T extends SceneEntity> {
 				case GROUND_ITEM_SECOND_OPTION:
 				case GROUND_ITEM_THIRD_OPTION:
 				case GROUND_ITEM_FOURTH_OPTION:
-				case GROUND_ITEM_FIFTH_OPTION: {
+				case GROUND_ITEM_FIFTH_OPTION:
+				{
 					int x = menuEntry.getParam0();
 					int y = menuEntry.getParam1();
 					int id = menuEntry.getIdentifier();
@@ -144,7 +171,8 @@ public abstract class Entities<T extends SceneEntity> {
 				case PLAYER_FIFTH_OPTION:
 				case PLAYER_SIXTH_OPTION:
 				case PLAYER_SEVENTH_OPTION:
-				case PLAYER_EIGTH_OPTION: {
+				case PLAYER_EIGTH_OPTION:
+				{
 					out.add(Game.getClient().getCachedPlayers()[menuEntry.getIdentifier()]);
 					break;
 				}

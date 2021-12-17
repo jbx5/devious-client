@@ -3,6 +3,7 @@ package dev.hoot.api.events;
 import lombok.Value;
 
 @Value
-public class PlaneChanged {
+public class PlaneChanged
+{
 	int plane;
 }

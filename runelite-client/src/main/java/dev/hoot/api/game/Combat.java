@@ -14,58 +14,74 @@ import java.util.Arrays;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
-public class Combat {
+public class Combat
+{
 	private static final int POISON_VARP = 102;
 	private static final int SPEC_VARP = 301;
 	private static final int SPEC_ENERGY_VARP = 300;
 	private static final Supplier<Widget> SPEC_BUTTON = () -> Widgets.get(593, 36);
 
-	public static boolean isRetaliating() {
+	public static boolean isRetaliating()
+	{
 		return Vars.getVarp(VarPlayer.AUTO_RETALIATE.getId()) == 0;
 	}
 
-	public static boolean isPoisoned() {
+	public static boolean isPoisoned()
+	{
 		return Vars.getVarp(POISON_VARP) > 0;
 	}
 
-	public static boolean isSpecEnabled() {
+	public static boolean isSpecEnabled()
+	{
 		return Vars.getVarp(SPEC_VARP) == 1;
 	}
 
-	public static int getSpecEnergy() {
+	public static int getSpecEnergy()
+	{
 		return Vars.getVarp(SPEC_ENERGY_VARP) / 10;
 	}
 
-	public static void toggleSpec() {
-		if (isSpecEnabled()) {
+	public static void toggleSpec()
+	{
+		if (isSpecEnabled())
+		{
 			return;
 		}
 
 		Widget spec = SPEC_BUTTON.get();
-		if (spec != null) {
+		if (spec != null)
+		{
 			spec.interact(0);
 		}
 	}
 
-	public static void setAttackStyle(AttackStyle attackStyle) {
-		if (attackStyle.widgetInfo == null) {
+	public static void setAttackStyle(AttackStyle attackStyle)
+	{
+		if (attackStyle.widgetInfo == null)
+		{
 			return;
 		}
 
 		Widget widget = Widgets.get(attackStyle.widgetInfo);
-		if (widget != null) {
+		if (widget != null)
+		{
 			widget.interact(0);
 		}
 	}
 
-	public static AttackStyle getAttackStyle() {
+	public static AttackStyle getAttackStyle()
+	{
 		return AttackStyle.fromIndex(Vars.getVarp(43));
 	}
 
-	public static NPC getAttackableNPC(int... ids) {
-		return getAttackableNPC(x -> {
-			for (int id : ids) {
-				if (id == x.getId()) {
+	public static NPC getAttackableNPC(int... ids)
+	{
+		return getAttackableNPC(x ->
+		{
+			for (int id : ids)
+			{
+				if (id == x.getId())
+				{
 					return true;
 				}
 			}
@@ -74,14 +90,19 @@ public class Combat {
 		});
 	}
 
-	public static NPC getAttackableNPC(String... names) {
-		return getAttackableNPC(x -> {
-			if (x.getName() == null) {
+	public static NPC getAttackableNPC(String... names)
+	{
+		return getAttackableNPC(x ->
+		{
+			if (x.getName() == null)
+			{
 				return false;
 			}
 
-			for (String name : names) {
-				if (name.equals(x.getName())) {
+			for (String name : names)
+			{
+				if (name.equals(x.getName()))
+				{
 					return true;
 				}
 			}
@@ -90,32 +111,38 @@ public class Combat {
 		});
 	}
 
-	public static NPC getAttackableNPC(Predicate<NPC> filter) {
+	public static NPC getAttackableNPC(Predicate<NPC> filter)
+	{
 		Player local = Players.getLocal();
 		NPC attackingMe = NPCs.getNearest(x -> x.hasAction("Attack") && Players.getNearest(p -> p.getInteracting() != null
-						&& p.getInteracting().equals(x)) == null && x.getInteracting() != null && x.getInteracting().equals(local)
-						&& filter.test(x));
-		if (attackingMe != null) {
+				&& p.getInteracting().equals(x)) == null && x.getInteracting() != null && x.getInteracting().equals(local)
+				&& filter.test(x));
+		if (attackingMe != null)
+		{
 			return attackingMe;
 		}
 
 		return NPCs.getNearest(x -> x.hasAction("Attack") && Players.getNearest(p -> p.getInteracting() != null
-						&& p.getInteracting().equals(x)) == null && x.getInteracting() == null && filter.test(x));
+				&& p.getInteracting().equals(x)) == null && x.getInteracting() == null && filter.test(x));
 	}
 
-	public static int getCurrentHealth() {
+	public static int getCurrentHealth()
+	{
 		return Skills.getBoostedLevel(Skill.HITPOINTS);
 	}
 
-	public static int getMissingHealth() {
+	public static int getMissingHealth()
+	{
 		return Skills.getLevel(Skill.HITPOINTS) - Skills.getBoostedLevel(Skill.HITPOINTS);
 	}
 
-	public static double getHealthPercent() {
+	public static double getHealthPercent()
+	{
 		return ((double) getCurrentHealth() / Skills.getLevel(Skill.HITPOINTS)) * 100;
 	}
 
-	public enum AttackStyle {
+	public enum AttackStyle
+	{
 		FIRST(0, WidgetInfo.COMBAT_STYLE_ONE),
 		SECOND(1, WidgetInfo.COMBAT_STYLE_TWO),
 		THIRD(2, WidgetInfo.COMBAT_STYLE_THREE),
@@ -127,23 +154,27 @@ public class Combat {
 		private final int index;
 		private final WidgetInfo widgetInfo;
 
-		AttackStyle(int index, WidgetInfo widgetInfo) {
+		AttackStyle(int index, WidgetInfo widgetInfo)
+		{
 			this.index = index;
 			this.widgetInfo = widgetInfo;
 		}
 
-		public int getIndex() {
+		public int getIndex()
+		{
 			return index;
 		}
 
-		public WidgetInfo getWidgetInfo() {
+		public WidgetInfo getWidgetInfo()
+		{
 			return widgetInfo;
 		}
 
-		public static AttackStyle fromIndex(int index) {
+		public static AttackStyle fromIndex(int index)
+		{
 			return Arrays.stream(values()).filter(x -> x.index == index)
-							.findFirst()
-							.orElse(UNKNOWN);
+					.findFirst()
+					.orElse(UNKNOWN);
 		}
 	}
 }

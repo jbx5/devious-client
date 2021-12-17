@@ -30,8 +30,8 @@ public abstract class HMouseHandlerMixin implements RSMouseHandler
 
 		client.setFocused(true);
 		setIdleCycles(0);
-		setLastPressedX(x);
-		setLastPressedY(y);
+		setLastPressedX(correctX(x));
+		setLastPressedY(correctY(y));
 		setLastPressedMillis(client.getCurrentTime());
 		setLastButton(btn);
 
@@ -47,8 +47,40 @@ public abstract class HMouseHandlerMixin implements RSMouseHandler
 	{
 		client.setFocused(true);
 		setIdleCycles(0);
-		setCurrentX(x);
-		setCurrentY(y);
+		setCurrentX(correctX(x));
+		setCurrentY(correctY(y));
 		setCurrentMillis(System.currentTimeMillis());
+	}
+
+	@Inject
+	public int correctX(int x)
+	{
+		if (x < 0)
+		{
+			return 0;
+		}
+
+		if (x > client.getCanvasWidth())
+		{
+			return client.getCanvasWidth();
+		}
+
+		return x;
+	}
+
+	@Inject
+	public int correctY(int y)
+	{
+		if (y < 0)
+		{
+			return 0;
+		}
+
+		if (y > client.getCanvasHeight())
+		{
+			return client.getCanvasHeight();
+		}
+
+		return y;
 	}
 }

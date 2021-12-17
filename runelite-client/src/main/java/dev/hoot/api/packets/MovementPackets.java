@@ -7,8 +7,10 @@ import net.runelite.api.packets.ClientPacket;
 import net.runelite.api.packets.PacketBufferNode;
 
 
-public class MovementPackets {
-	public static void sendMovement(int worldX, int worldY, boolean run) {
+public class MovementPackets
+{
+	public static void sendMovement(int worldX, int worldY, boolean run)
+	{
 		Client client = Game.getClient();
 		ClientPacket clientPacket = Game.getClientPacket();
 		PacketBufferNode var18 = Game.getClient().preparePacket(clientPacket.MOVE_GAMECLICK(), client.getPacketWriter().getIsaacCipher());
@@ -19,15 +21,18 @@ public class MovementPackets {
 		client.getPacketWriter().queuePacket(var18);
 	}
 
-	public static void sendMovement(int worldX, int worldY) {
+	public static void sendMovement(int worldX, int worldY)
+	{
 		sendMovement(worldX, worldY, false);
 	}
 
-	public static void sendMovement(WorldPoint worldPoint, boolean run) {
+	public static void sendMovement(WorldPoint worldPoint, boolean run)
+	{
 		sendMovement(worldPoint.getX(), worldPoint.getY(), run);
 	}
 
-	public static void sendMovement(WorldPoint worldPoint) {
+	public static void sendMovement(WorldPoint worldPoint)
+	{
 		sendMovement(worldPoint, false);
 	}
 }

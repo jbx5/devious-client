@@ -10,38 +10,49 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Supplier;
 
-public class Minigames {
+public class Minigames
+{
 	private static final Supplier<Widget> MINIGAMES_TAB_BUTTON = () -> Widgets.get(707, 6);
 	private static final Supplier<Widget> MINIGAMES_DESTINATION = () -> Widgets.get(76, 8);
 
-	public static void teleport(Destination destination) {
+	public static void teleport(Destination destination)
+	{
 		Widget minigamesTeleportButton = Widgets.get(WidgetInfo.MINIGAME_TELEPORT_BUTTON);
 		List<Integer> teleportGraphics = List.of(800, 802, 803, 804);
-		if (isOpen() && minigamesTeleportButton != null) {
-			if (Destination.getCurrent() != destination) {
+		if (isOpen() && minigamesTeleportButton != null)
+		{
+			if (Destination.getCurrent() != destination)
+			{
 				GameThread.invoke(() -> Game.getClient().runScript(124, destination.index));
 				return;
 			}
 
-			if (teleportGraphics.contains(Players.getLocal().getGraphic())) {
+			if (teleportGraphics.contains(Players.getLocal().getGraphic()))
+			{
 				return;
 			}
 
 			Game.getClient().interact(1, 57, destination.index, 4980762);
-		} else {
+		}
+		else
+		{
 			open();
 		}
 	}
 
-	public static boolean open() {
-		if (!isTabOpen()) {
+	public static boolean open()
+	{
+		if (!isTabOpen())
+		{
 			Tabs.open(Tab.QUESTS);
 			return false;
 		}
 
-		if (!isOpen()) {
+		if (!isOpen())
+		{
 			Widget widget = MINIGAMES_TAB_BUTTON.get();
-			if (widget != null && !GameThread.invokeLater(widget::isHidden)) {
+			if (widget != null && !GameThread.invokeLater(widget::isHidden))
+			{
 				widget.interact("Grouping");
 				return false;
 			}
@@ -50,15 +61,19 @@ public class Minigames {
 		return isOpen();
 	}
 
-	public static boolean isOpen() {
+	public static boolean isOpen()
+	{
 		Widget minigamesButton = Widgets.get(WidgetInfo.MINIGAME_TELEPORT_BUTTON);
 		return minigamesButton != null && !GameThread.invokeLater(minigamesButton::isHidden);
 	}
-	public static boolean isTabOpen() {
+
+	public static boolean isTabOpen()
+	{
 		return Tabs.isOpen(Tab.CLAN_CHAT);
 	}
 
-	public enum Destination {
+	public enum Destination
+	{
 		BARBARIAN_ASSAULT(1, "Barbarian Assault"),
 		BLAST_FURNACE(2, "Blast Furnace"),
 		BURTHORPE_GAMES_ROOM(3, "Burthorpe Games Room"),
@@ -79,39 +94,44 @@ public class Minigames {
 		TROUBLE_BREWING(18, "Trouble Brewing"),
 		TZHAAR_FIGHT_PIT(19, "TzHaar Fight Pit"),
 		VOLCANIC_MINE(20, "Volcanic Mine"),
-		NONE(-1, "None")
-		;
+		NONE(-1, "None");
 
 		private final int index;
 		private final String name;
 
-		Destination(int index, String name) {
+		Destination(int index, String name)
+		{
 			this.index = index;
 			this.name = name;
 		}
 
-		public String getName() {
+		public String getName()
+		{
 			return name;
 		}
 
-		public int getIndex() {
+		public int getIndex()
+		{
 			return index;
 		}
 
-		public static Destination getCurrent() {
+		public static Destination getCurrent()
+		{
 			Widget selectedTeleport = MINIGAMES_DESTINATION.get();
-			if (selectedTeleport != null && !GameThread.invokeLater(selectedTeleport::isHidden)) {
+			if (selectedTeleport != null && !GameThread.invokeLater(selectedTeleport::isHidden))
+			{
 				return byName(selectedTeleport.getText());
 			}
 
 			return NONE;
 		}
 
-		public static Destination byName(String name) {
+		public static Destination byName(String name)
+		{
 			return Arrays.stream(values())
-							.filter(x -> x.getName().equals(name))
-							.findFirst()
-							.orElse(NONE);
+					.filter(x -> x.getName().equals(name))
+					.findFirst()
+					.orElse(NONE);
 		}
 	}
 }

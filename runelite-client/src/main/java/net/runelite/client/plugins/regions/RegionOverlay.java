@@ -10,12 +10,14 @@ import net.runelite.client.ui.overlay.OverlayPriority;
 import javax.inject.Inject;
 import java.awt.*;
 
-public class RegionOverlay extends Overlay {
+public class RegionOverlay extends Overlay
+{
 	private final RegionConfig regionConfig;
 	private final GlobalCollisionMap collisionMap;
 
 	@Inject
-	public RegionOverlay(RegionConfig regionConfig, GlobalCollisionMap collisionMap) {
+	public RegionOverlay(RegionConfig regionConfig, GlobalCollisionMap collisionMap)
+	{
 		this.regionConfig = regionConfig;
 		this.collisionMap = collisionMap;
 
@@ -25,8 +27,10 @@ public class RegionOverlay extends Overlay {
 	}
 
 	@Override
-	public Dimension render(Graphics2D graphics) {
-		if (!regionConfig.overlay()) {
+	public Dimension render(Graphics2D graphics)
+	{
+		if (!regionConfig.overlay())
+		{
 			return null;
 		}
 

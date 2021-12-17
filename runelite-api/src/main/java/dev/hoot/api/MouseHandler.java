@@ -4,7 +4,8 @@ import java.awt.event.FocusListener;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
-public interface MouseHandler extends MouseListener, MouseMotionListener, FocusListener {
+public interface MouseHandler extends MouseListener, MouseMotionListener, FocusListener
+{
 	int getCurrentX();
 
 	int getCurrentY();
@@ -43,7 +44,8 @@ public interface MouseHandler extends MouseListener, MouseMotionListener, FocusL
 
 	void sendClick(int x, int y, int button);
 
-	default void sendClick(int x, int y) {
+	default void sendClick(int x, int y)
+	{
 		sendClick(x, y, 1);
 	}
 

@@ -21,7 +21,8 @@ import java.awt.*;
 
 @Singleton
 @Slf4j
-public class InteractionManager {
+public class InteractionManager
+{
 	private static final int MINIMAP_WIDTH = 250;
 	private static final int MINIMAP_HEIGHT = 180;
 
@@ -36,20 +37,24 @@ public class InteractionManager {
 	private volatile int mouseClickY = -1;
 
 	@Subscribe
-	public void onInvokeMenuAction(InvokeMenuActionEvent e) {
+	public void onInvokeMenuAction(InvokeMenuActionEvent e)
+	{
 		String debug = "O=" + e.getMenuEntry().getOption()
-						+ " | T=" + e.getMenuEntry().getTarget()
-						+ " | ID=" + e.getMenuEntry().getIdentifier()
-						+ " | OP=" + e.getMenuEntry().getType()
-						+ " | P0=" + e.getMenuEntry().getParam0()
-						+ " | P1=" + e.getMenuEntry().getParam1();
+				+ " | T=" + e.getMenuEntry().getTarget()
+				+ " | ID=" + e.getMenuEntry().getIdentifier()
+				+ " | OP=" + e.getMenuEntry().getType()
+				+ " | P0=" + e.getMenuEntry().getParam0()
+				+ " | P1=" + e.getMenuEntry().getParam1();
 
-		if (config.debugInteractions()) {
+		if (config.debugInteractions())
+		{
 			log.info("[Bot Action] {}", debug);
 		}
 
-		if (config.mouseEvents()) {
-			if (!interactReady()) {
+		if (config.mouseEvents())
+		{
+			if (!interactReady())
+			{
 				log.error("Interact was not ready {} {}", mouseClickX, mouseClickY);
 				return;
 			}
@@ -57,14 +62,17 @@ public class InteractionManager {
 			Point randomPoint = getClickPoint(e);
 			mouseClickX = randomPoint.x;
 			mouseClickY = randomPoint.y;
-			if (config.debugInteractions()) {
+			if (config.debugInteractions())
+			{
 				log.info("Sending click to {} {}", mouseClickX, mouseClickY);
 			}
 
 			action = e.getMenuEntry();
 
 			Mouse.click(mouseClickX, mouseClickY, true);
-		} else {
+		}
+		else
+		{
 			// Spoof mouse
 			MouseHandler mouseHandler = client.getMouseHandler();
 			Point randomPoint = getClickPoint(e);
@@ -77,11 +85,14 @@ public class InteractionManager {
 	}
 
 	@Subscribe
-	public void onMenuOptionClicked(MenuOptionClicked e) {
-		if (config.mouseEvents() && e.getCanvasX() == mouseClickX && e.getCanvasY() == mouseClickY) {
+	public void onMenuOptionClicked(MenuOptionClicked e)
+	{
+		if (config.mouseEvents() && e.getCanvasX() == mouseClickX && e.getCanvasY() == mouseClickY)
+		{
 			e.consume();
 
-			if (action == null) {
+			if (action == null)
+			{
 				log.error("Menu replace failed");
 				return;
 			}
@@ -91,13 +102,14 @@ public class InteractionManager {
 			return;
 		}
 
-		if (config.debugInteractions()) {
+		if (config.debugInteractions())
+		{
 			String action = "O=" + e.getMenuOption()
-							+ " | T=" + e.getMenuTarget()
-							+ " | ID=" + e.getId()
-							+ " | OP=" + e.getMenuAction().getId()
-							+ " | P0=" + e.getParam0()
-							+ " | P1=" + e.getParam1();
+					+ " | T=" + e.getMenuTarget()
+					+ " | ID=" + e.getId()
+					+ " | OP=" + e.getMenuAction().getId()
+					+ " | P0=" + e.getParam0()
+					+ " | P1=" + e.getParam1();
 			log.info("[Manual Action] {}", action);
 		}
 
@@ -105,56 +117,73 @@ public class InteractionManager {
 	}
 
 	@Subscribe
-	public void onDialogProcessed(DialogProcessed e) {
-		if (!config.debugDialogs()) {
+	public void onDialogProcessed(DialogProcessed e)
+	{
+		if (!config.debugDialogs())
+		{
 			return;
 		}
 
 		DialogOption dialogOption = DialogOption.of(e.getDialogOption().getWidgetUid(), e.getDialogOption().getMenuIndex());
-		if (dialogOption != null) {
+		if (dialogOption != null)
+		{
 			log.info("Dialog processed {}", dialogOption);
-		} else {
+		}
+		else
+		{
 			log.info("Unknown or unmapped dialog {}", e);
 		}
 	}
 
-	private void processAction(MenuEntry entry, int x, int y) {
-		if (entry.getMenuAction() == MenuAction.WALK) {
+	private void processAction(MenuEntry entry, int x, int y)
+	{
+		if (entry.getMenuAction() == MenuAction.WALK)
+		{
 			Movement.setDestination(entry.getParam0(), entry.getParam1());
-		} else {
+		}
+		else
+		{
 			GameThread.invoke(() -> client.invokeMenuAction(entry.getOption(), entry.getTarget(), entry.getIdentifier(),
-							entry.getMenuAction().getId(), entry.getParam0(), entry.getParam1(), x, y));
+					entry.getMenuAction().getId(), entry.getParam0(), entry.getParam1(), x, y));
 		}
 	}
 
-	private Point getClickPoint(InvokeMenuActionEvent e) {
-		if (config.interactType() == InteractType.OFF_SCREEN) {
+	private Point getClickPoint(InvokeMenuActionEvent e)
+	{
+		if (config.interactType() == InteractType.OFF_SCREEN)
+		{
 			return new Point(0, 0);
 		}
 
-		if (config.interactType() == InteractType.MOUSE_POS) {
+		if (config.interactType() == InteractType.MOUSE_POS)
+		{
 			return new Point(client.getMouseHandler().getCurrentX(), client.getMouseHandler().getCurrentY());
 		}
 
-		if (e.clickX != -1 && e.clickY != -1 && config.interactType() == InteractType.CLICKBOXES) {
+		if (e.clickX != -1 && e.clickY != -1 && config.interactType() == InteractType.CLICKBOXES)
+		{
 			Point clickPoint = new Point(e.clickX, e.clickY);
-			if (!clickInsideMinimap(clickPoint)) {
+			if (!clickInsideMinimap(clickPoint))
+			{
 				return clickPoint;
 			}
 		}
 
 		Rectangle bounds = client.getCanvas().getBounds();
 		Point randomPoint = new Point(Rand.nextInt(2, bounds.width), Rand.nextInt(2, bounds.height));
-		if (clickInsideMinimap(randomPoint)) {
+		if (clickInsideMinimap(randomPoint))
+		{
 			return getClickPoint(e);
 		}
 
 		return randomPoint;
 	}
 
-	private boolean clickInsideMinimap(Point point) {
+	private boolean clickInsideMinimap(Point point)
+	{
 		Rectangle minimap = getMinimap();
-		if (minimap.contains(point)) {
+		if (minimap.contains(point))
+		{
 			log.debug("Click {} was inside minimap", point);
 			return true;
 		}
@@ -162,18 +191,21 @@ public class InteractionManager {
 		return false;
 	}
 
-	private Rectangle getMinimap() {
+	private Rectangle getMinimap()
+	{
 		Rectangle bounds = client.getCanvas().getBounds();
 		return new Rectangle(bounds.width - MINIMAP_WIDTH, 0, MINIMAP_WIDTH, MINIMAP_HEIGHT);
 	}
 
-	private void reset() {
+	private void reset()
+	{
 		action = null;
 		mouseClickX = -1;
 		mouseClickY = -1;
 	}
 
-	private boolean interactReady() {
+	private boolean interactReady()
+	{
 		return mouseClickX == -1 && mouseClickY == -1;
 	}
 }
