@@ -154,27 +154,4 @@ public abstract class HTileItemMixin implements RSTileItem
 	{
 		return Perspective.localToCanvas(client, getLocalLocation(), client.getPlane());
 	}
-
-	@Inject
-	@Override
-	public int getDistanceFromLocalPlayer() {
-		//Mancrappen :tm:
-		int distanceX;
-		int distanceY;
-		Tile localTile = client.getScene().getTiles()[client.getPlane()][getX()][getY()];
-		LocalPoint tileLocalLocation = localTile.getLocalLocation();
-		LocalPoint localPlayerPosition = client.getLocalPlayer().getLocalLocation();
-
-		if (tileLocalLocation.getX() > localPlayerPosition.getX())
-			distanceX = tileLocalLocation.getX() - localPlayerPosition.getX();
-		else
-			distanceX = localPlayerPosition.getX() - tileLocalLocation.getX();
-
-		if (tileLocalLocation.getY() > localPlayerPosition.getY())
-			distanceY = tileLocalLocation.getY() - localPlayerPosition.getY();
-		else
-			distanceY = localPlayerPosition.getY() - tileLocalLocation.getY();
-
-		return (distanceX + distanceY) / 2;
-	}
 }

@@ -105,16 +105,16 @@ subprojects {
     project.extra["gitCommit"] = localGitCommit
     project.extra["rootPath"] = rootDir.toString().replace("\\", "/")
 
-//    if (this.name != "runescape-client") {
-//        apply<CheckstylePlugin>()
-//
-//        configure<CheckstyleExtension> {
-//            maxWarnings = 0
-//            toolVersion = "9.1"
-//            isShowViolations = true
-//            isIgnoreFailures = false
-//        }
-//    }
+    if (this.name != "runescape-client") {
+        apply<CheckstylePlugin>()
+
+        configure<CheckstyleExtension> {
+            maxWarnings = 0
+            toolVersion = "9.1"
+            isShowViolations = true
+            isIgnoreFailures = false
+        }
+    }
 
     configure<PublishingExtension> {
         repositories {

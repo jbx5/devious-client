@@ -55,8 +55,6 @@ public interface TileItem extends Renderable, SceneEntity
 	 */
 	Tile getTile();
 
-	int getDistanceFromLocalPlayer();
-
 	void pickup();
 
 	String getName();
