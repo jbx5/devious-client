@@ -124,14 +124,14 @@ jobs:
 #      - name: Checking code conventions
 #        run: ./gradlew checkstyleTest --console=plain
 
-  approve:
-    name: Approve
-    needs: [build, test, checkstyleMain, checkstyleTest]
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Approve pull request
-        if: github.event_name == 'pull_request' && github.actor == 'OpenOSRS'
-        uses: hmarr/auto-approve-action@v2.0.0
-        with:
-          github-token: ${{ secrets.Owain }}
+#  approve:
+#    name: Approve
+#    needs: [build, test, checkstyleMain, checkstyleTest]
+#    runs-on: ubuntu-latest
+#
+#    steps:
+#      - name: Approve pull request
+#        if: github.event_name == 'pull_request' && github.actor == 'OpenOSRS'
+#        uses: hmarr/auto-approve-action@v2.0.0
+#        with:
+#          github-token: ${{ secrets.Owain }}
