@@ -266,6 +266,90 @@ public class OverlayUtil
 		return result;
 	}
 
+	public static void renderParagraphLocation(Graphics2D graphics, Point txtLoc, String text, Color color)
+	{
+		if (Strings.isNullOrEmpty(text))
+		{
+			return;
+		}
+
+		int x = txtLoc.getX();
+		int y = txtLoc.getY();
+
+		for (String line : text.split("\n"))
+		{
+			graphics.setColor(Color.BLACK);
+			graphics.drawString(line, x + 1, y + 1);
+
+			graphics.setColor(color);
+			graphics.drawString(line, x, y);
+
+			y += 10;
+		}
+	}
+
+	public static void renderActorParagraph(Graphics2D graphics, Actor actor, String text, Color color)
+	{
+		Polygon poly = actor.getCanvasTilePoly();
+		if (poly != null)
+		{
+			renderPolygon(graphics, poly, color);
+		}
+
+		String[] lines = text.split("\n");
+		int lineLength = Integer.MIN_VALUE;
+		String largestLine = "";
+
+		for (String line : lines)
+		{
+			if (line.length() > lineLength)
+			{
+				lineLength = line.length();
+				largestLine = line;
+			}
+		}
+
+		Point textLocation = actor.getCanvasTextLocation(graphics, largestLine, actor.getLogicalHeight() + 40);
+		if (textLocation != null)
+		{
+			renderParagraphLocation(graphics, textLocation, text, color);
+		}
+	}
+
+	public static void renderTileOverlayParagraph(Graphics2D graphics, TileObject tileObject, String text, Color color)
+	{
+		Polygon poly = tileObject.getCanvasTilePoly();
+		if (poly != null)
+		{
+			renderPolygon(graphics, poly, color);
+		}
+
+		Point minimapLocation = tileObject.getMinimapLocation();
+		if (minimapLocation != null)
+		{
+			renderMinimapLocation(graphics, minimapLocation, color);
+		}
+
+		String[] lines = text.split("\n");
+		int lineLength = Integer.MIN_VALUE;
+		String largestLine = "";
+
+		for (String line : lines)
+		{
+			if (line.length() > lineLength)
+			{
+				lineLength = line.length();
+				largestLine = line;
+			}
+		}
+
+		Point textLocation = tileObject.getCanvasTextLocation(graphics, largestLine, 0);
+		if (textLocation != null)
+		{
+			renderParagraphLocation(graphics, textLocation, text, color);
+		}
+	}
+
 	public static void fillTile(Graphics2D graphics, Client client, WorldPoint point, Color color)
 	{
 		if (point.getPlane() != client.getPlane())
