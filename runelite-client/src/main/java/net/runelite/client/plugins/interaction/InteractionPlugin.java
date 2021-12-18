@@ -59,20 +59,4 @@ public class InteractionPlugin extends Plugin
 	{
 		return configManager.getConfig(InteractionConfig.class);
 	}
-
-	@Subscribe
-	public void onConfigChanged(ConfigChanged e)
-	{
-		if (!e.getGroup().equals("interaction"))
-		{
-			return;
-		}
-
-		if (Game.getState() != GameState.LOGGED_IN)
-		{
-			return;
-		}
-
-		Movement.walk(Players.getLocal().getWorldLocation().dx(5));
-	}
 }

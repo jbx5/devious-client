@@ -1,6 +1,5 @@
 package dev.hoot.mixins;
 
-import dev.hoot.api.MouseHandler;
 import dev.hoot.api.events.PacketSent;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.MethodHook;
@@ -41,20 +40,20 @@ public abstract class HPacketWriterMixin implements RSPacketWriter
 			return;
 		}
 
-		MouseHandler mouseHandler = client.getMouseHandler();
-		PacketBufferNode click = client.preparePacket(
-				client.getClientPacket().EVENT_MOUSE_CLICK(),
-				client.getPacketWriter().getIsaacCipher()
-		);
-		long pressedTime = mouseHandler.getLastPressedMillis() - client.getClientMouseLastPressedMillis();
-		if (pressedTime > Short.MAX_VALUE)
-		{
-			pressedTime = Short.MAX_VALUE;
-		}
-
-		click.getPacketBuffer().writeShort(1 + (int) (pressedTime << 1));
-		click.getPacketBuffer().writeShort(mouseHandler.getLastPressedX());
-		click.getPacketBuffer().writeShort(mouseHandler.getLastPressedY());
-		queuePacket(click);
+//		MouseHandler mouseHandler = client.getMouseHandler();
+//		PacketBufferNode click = client.preparePacket(
+//				client.getClientPacket().EVENT_MOUSE_CLICK(),
+//				client.getPacketWriter().getIsaacCipher()
+//		);
+//		long pressedTime = mouseHandler.getLastPressedMillis() - client.getClientMouseLastPressedMillis();
+//		if (pressedTime > Short.MAX_VALUE)
+//		{
+//			pressedTime = Short.MAX_VALUE;
+//		}
+//
+//		click.getPacketBuffer().writeShort(1 + (int) (pressedTime << 1));
+//		click.getPacketBuffer().writeShort(mouseHandler.getLastPressedX());
+//		click.getPacketBuffer().writeShort(mouseHandler.getLastPressedY());
+//		queuePacket(click);
 	}
 }

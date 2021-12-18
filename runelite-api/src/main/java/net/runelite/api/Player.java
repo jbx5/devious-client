@@ -109,11 +109,13 @@ public interface Player extends Actor
 
 	boolean isIdle();
 
-	default int getId() {
+	default int getId()
+	{
 		return getPlayerId();
 	}
 
-	default boolean isAnimating() {
+	default boolean isAnimating()
+	{
 		return getAnimation() != -1;
 	}
 }

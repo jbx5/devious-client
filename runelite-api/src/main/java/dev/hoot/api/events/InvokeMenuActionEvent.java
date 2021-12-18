@@ -15,7 +15,10 @@ public class InvokeMenuActionEvent
 
 	public InvokeMenuActionEvent(Client client, int identifier, int opcode, int param0, int param1)
 	{
-		menuEntry = client.createMenuEntry(-1).setOption("Automated").setTarget("").setIdentifier(identifier)
+		menuEntry = client.createMenuEntry(0)
+				.setOption("Automated")
+				.setTarget("")
+				.setIdentifier(identifier)
 				.setType(MenuAction.of(opcode))
 				.setParam0(param0)
 				.setParam1(param1);

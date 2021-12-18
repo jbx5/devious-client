@@ -124,4 +124,9 @@ public class MenuOptionClicked
 	{
 		param1 = i;
 	}
+
+	public boolean isAutomated()
+	{
+		return menuOption != null && menuOption.equals("Automated");
+	}
 }

@@ -1635,7 +1635,11 @@ public abstract class RSClientMixin implements RSClient
 		menuOptionClicked.setCanvasX(canvasX);
 		menuOptionClicked.setCanvasY(canvasY);
 
-		client.getCallbacks().post(menuOptionClicked);
+		// Do not forward automated interaction events to eventbus
+		if (!menuOptionClicked.isAutomated())
+		{
+			client.getCallbacks().post(menuOptionClicked);
+		}
 
 		if (menuEntry != null && menuEntry.getConsumer() != null)
 		{
