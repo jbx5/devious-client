@@ -103,4 +103,11 @@ public abstract class HPlayerMixin extends RSPlayerMixin implements RSPlayer
 	{
 		return Perspective.localToCanvas(client, getLocalLocation(), client.getPlane());
 	}
+
+	@Inject
+	@Override
+	public boolean isIdle() {
+		return (getIdlePoseAnimation() == getPoseAnimation() && getAnimation() == -1)
+				&& (getInteracting() == null || getInteracting().isDead());
+	}
 }
