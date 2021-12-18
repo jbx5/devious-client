@@ -39,11 +39,11 @@
 			<property name="option" value="alone"/>
 		</module>
 		<!-- require tabs for indenting - https://stackoverflow.com/a/28550141 -->
-		<module name="RegexpSinglelineJava">
-			<property name="format" value="^\t* "/>
-			<property name="message" value="Indent must use tab characters"/>
-			<property name="ignoreComments" value="true"/>
-		</module>
+<!--		<module name="RegexpSinglelineJava">-->
+<!--			<property name="format" value="^\t* "/>-->
+<!--			<property name="message" value="Indent must use tab characters"/>-->
+<!--			<property name="ignoreComments" value="true"/>-->
+<!--		</module>-->
 		<module name="RegexpSinglelineJava">
 			<property name="format" value="[^\s]\s+$"/>
 			<property name="message" value="No trailing whitespace"/>
