@@ -35,7 +35,7 @@ public class UnethicalFileDownloader extends SimpleFileDownloader
 
 		// set up the URL connection
 		URLConnection connection = fileUrl.openConnection();
-		connection.addRequestProperty("Authorization", token);
+		connection.addRequestProperty("Authorization", "Bearer " + token);
 
 		// connect to the remote site (may takes some time)
 		connection.connect();

@@ -172,11 +172,12 @@ public class OPRSExternalPluginManager
 		return new URL("https://raw.githubusercontent.com/" + owner + "/" + name + "/master/");
 	}
 
-	public static boolean testGHRepository(String owner, String name)
+	public static boolean testGHRepository(String owner, String name, String token)
 	{
+		log.info("Token: {}", token);
 		try
 		{
-			return testRepository(toRepositoryUrl(owner, name));
+			return testRepository(toRepositoryUrl(owner, name), token);
 		}
 		catch (MalformedURLException e)
 		{
@@ -185,21 +186,35 @@ public class OPRSExternalPluginManager
 		return false;
 	}
 
-	public static boolean testRepository(URL url)
+	public static boolean testRepository(URL url, String token)
 	{
-		return testRepository(url, null);
+		return testRepository(url, null, token);
 	}
 
-	public static boolean testRepository(URL url, String pluginsJson)
+	public static boolean testRepository(URL url, String pluginsJson, String token)
 	{
 		final List<UpdateRepository> repositories = new ArrayList<>();
 		if (pluginsJson != null)
 		{
-			repositories.add(new DefaultUpdateRepository("repository-testing", url, pluginsJson));
+			if (token.isEmpty())
+			{
+				repositories.add(new DefaultUpdateRepository("repository-testing", url, pluginsJson));
+			}
+			else
+			{
+				repositories.add(new PluginRepository("repository-testing", url, pluginsJson, token));
+			}
 		}
 		else
 		{
-			repositories.add(new DefaultUpdateRepository("repository-testing", url));
+			if (token.isEmpty())
+			{
+				repositories.add(new DefaultUpdateRepository("repository-testing", url));
+			}
+			else
+			{
+				repositories.add(new PluginRepository("repository-testing", url, token));
+			}
 		}
 		DefaultPluginManager testPluginManager = new DefaultPluginManager(EXTERNALPLUGIN_DIR.toPath());
 		UpdateManager updateManager = new UpdateManager(testPluginManager, repositories);
