@@ -140,7 +140,7 @@ public class ExternalPluginManagerPanel extends PluginPanel
 					return;
 				}
 
-				externalPluginManager.addGHRepository(owner.getText(), name.getText());
+				externalPluginManager.addGHRepository(owner.getText(), name.getText(), token.getText());
 			}
 
 			@Override
@@ -243,14 +243,8 @@ public class ExternalPluginManagerPanel extends PluginPanel
 					return;
 				}
 
-				if (pluginJson == null)
-				{
-					externalPluginManager.addRepository(id.getText(), urlActual);
-				}
-				else
-				{
-					externalPluginManager.addRepository(id.getText(), urlActual, pluginJson);
-				}
+				externalPluginManager.addRepository(id.getText(), urlActual, pluginJson, token.getText());
+
 			}
 
 			@Override

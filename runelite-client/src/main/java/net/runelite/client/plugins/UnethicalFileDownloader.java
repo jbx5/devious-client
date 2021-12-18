@@ -1,16 +1,17 @@
 package net.runelite.client.plugins;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.ConnectException;
-import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLConnection;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.attribute.FileTime;
 import lombok.extern.slf4j.Slf4j;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+import okio.BufferedSink;
+import okio.BufferedSource;
+import okio.Okio;
 import org.pf4j.update.SimpleFileDownloader;
 
 @Slf4j
@@ -33,56 +34,38 @@ public class UnethicalFileDownloader extends SimpleFileDownloader
 		String fileName = path.substring(path.lastIndexOf('/') + 1);
 		Path file = destination.resolve(fileName);
 
-		// set up the URL connection
-		URLConnection connection = fileUrl.openConnection();
-		connection.addRequestProperty("Authorization", "Bearer " + token);
+		OkHttpClient okHttpClient = new OkHttpClient();
+		Request request = new Request.Builder()
+			.addHeader("Authorization", "Bearer " + token)
+			.url(fileUrl)
+			.get()
+			.build();
 
-		// connect to the remote site (may takes some time)
-		connection.connect();
-
-		// check for http authorization
-		HttpURLConnection httpConnection = (HttpURLConnection) connection;
-		if (httpConnection.getResponseCode() == HttpURLConnection.HTTP_UNAUTHORIZED)
+		try (Response response = okHttpClient.newCall(request).execute())
 		{
-			throw new ConnectException("HTTP Authorization failure");
-		}
-
-		// try to get the server-specified last-modified date of this artifact
-		long lastModified = httpConnection.getHeaderFieldDate("Last-Modified", System.currentTimeMillis());
-
-		// try to get the input stream (three times)
-		InputStream is = null;
-		for (int i = 0; i < 3; i++)
-		{
-			try
+			long lastModified = System.currentTimeMillis();
+			if (response.headers().getDate("Last-Modified") != null)
 			{
-				is = connection.getInputStream();
-				break;
+				lastModified = response.headers().getDate("Last-Modified").toInstant().toEpochMilli();
 			}
-			catch (IOException e)
+
+
+			try (BufferedSource bufferedSource = response.body().source())
 			{
-				log.error(e.getMessage(), e);
+				BufferedSink bufferedSink = Okio.buffer(Okio.sink(file));
+				bufferedSink.writeAll(bufferedSource);
+				bufferedSink.close();
 			}
+
+			log.debug("Set last modified of '{}' to '{}'", file, lastModified);
+			Files.setLastModifiedTime(file, FileTime.fromMillis(lastModified));
+
+			return file;
 		}
-		if (is == null)
+		catch (Exception e)
 		{
-			throw new ConnectException("Can't get '" + fileUrl + " to '" + file + "'");
+			log.error("Exception", e);
+			throw new IOException(e);
 		}
-
-		// reade from remote resource and write to the local file
-		FileOutputStream fos = new FileOutputStream(file.toFile());
-		byte[] buffer = new byte[1024];
-		int length;
-		while ((length = is.read(buffer)) >= 0)
-		{
-			fos.write(buffer, 0, length);
-		}
-		fos.close();
-		is.close();
-
-		log.debug("Set last modified of '{}' to '{}'", file, lastModified);
-		Files.setLastModifiedTime(file, FileTime.fromMillis(lastModified));
-
-		return file;
 	}
 }

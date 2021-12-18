@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import lombok.Getter;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -25,6 +26,7 @@ import org.slf4j.LoggerFactory;
 
 public class PluginRepository implements UpdateRepository
 {
+	@Getter
 	private final String token;
 
 	public PluginRepository(String id, URL url, String token)
@@ -91,7 +93,8 @@ public class PluginRepository implements UpdateRepository
 				.url(pluginsUrl)
 				.get()
 				.build();
-			log.info("Read plugins of '{}' repository from '{}'", id, pluginsUrl);
+
+			log.debug("Read plugins of '{}' repository from '{}'", id, pluginsUrl);
 			try (Response response = okHttpClient.newCall(request).execute())
 			{
 				pluginsJsonReader = new InputStreamReader(Objects.requireNonNull(response.body()).byteStream());
