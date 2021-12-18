@@ -2459,6 +2459,5 @@ public interface Client extends GameEngine
 
 	void setClickCrossY(int y);
 
-	@Nullable
 	ClientPacket getClientPacket();
 }

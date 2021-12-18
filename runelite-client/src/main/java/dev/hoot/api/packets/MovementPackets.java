@@ -13,12 +13,12 @@ public class MovementPackets
 	{
 		Client client = Game.getClient();
 		ClientPacket clientPacket = Game.getClientPacket();
-		PacketBufferNode var18 = Game.getClient().preparePacket(clientPacket.MOVE_GAMECLICK(), client.getPacketWriter().getIsaacCipher());
-		var18.getPacketBuffer().writeByte(5);
-		var18.getPacketBuffer().writeByte(run ? 2 : 0);
-		var18.getPacketBuffer().writeShortLE(worldX);
-		var18.getPacketBuffer().writeByteC(worldY);
-		client.getPacketWriter().queuePacket(var18);
+		PacketBufferNode movement = Game.getClient().preparePacket(clientPacket.MOVE_GAMECLICK(), client.getPacketWriter().getIsaacCipher());
+		movement.getPacketBuffer().writeByte(5);
+		movement.getPacketBuffer().writeByte(run ? 2 : 0);
+		movement.getPacketBuffer().writeByteC(worldY);
+		movement.getPacketBuffer().writeShortLE(worldX);
+		client.getPacketWriter().queuePacket(movement);
 	}
 
 	public static void sendMovement(int worldX, int worldY)
