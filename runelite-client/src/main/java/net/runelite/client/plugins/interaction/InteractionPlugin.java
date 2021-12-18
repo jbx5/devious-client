@@ -1,14 +1,8 @@
 package net.runelite.client.plugins.interaction;
 
 import com.google.inject.Provides;
-import dev.hoot.api.entities.Players;
-import dev.hoot.api.game.Game;
-import dev.hoot.api.movement.Movement;
-import net.runelite.api.GameState;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.EventBus;
-import net.runelite.client.eventbus.Subscribe;
-import net.runelite.client.events.ConfigChanged;
 import net.runelite.client.input.MouseManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
