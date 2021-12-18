@@ -10,20 +10,18 @@ import dev.hoot.api.widgets.Widgets;
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
 import net.runelite.api.World;
+import net.runelite.api.WorldType;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.client.game.WorldService;
-import net.runelite.client.util.WorldUtil;
 import net.runelite.http.api.worlds.WorldResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
-import java.awt.Point;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
+import java.awt.*;
 import java.util.List;
+import java.util.*;
 import java.util.function.Predicate;
 
 public class Worlds
@@ -55,7 +53,9 @@ public class Worlds
 			world.setId(w.getId());
 			world.setPlayerCount(w.getPlayers());
 			world.setLocation(w.getLocation());
-			world.setTypes(WorldUtil.toWorldTypes(w.getTypes()));
+			EnumSet<WorldType> types = EnumSet.noneOf(WorldType.class);
+			w.getTypes().stream().map(Worlds::toApiWorldType).forEach(types::add);
+			world.setTypes(types);
 			out.add(world);
 		});
 
@@ -208,5 +208,15 @@ public class Worlds
 	{
 		Widget hopper = Widgets.get(WidgetInfo.WORLD_SWITCHER_LIST);
 		return hopper != null && !GameThread.invokeLater(hopper::isHidden);
+	}
+
+	private static WorldType toApiWorldType(net.runelite.http.api.worlds.WorldType httpWorld)
+	{
+		if (httpWorld == net.runelite.http.api.worlds.WorldType.TOURNAMENT)
+		{
+			return WorldType.TOURNAMENT_WORLD;
+		}
+
+		return WorldType.valueOf(httpWorld.name());
 	}
 }

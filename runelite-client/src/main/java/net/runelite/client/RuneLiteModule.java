@@ -32,7 +32,11 @@ import com.google.inject.name.Names;
 import com.openosrs.client.config.OpenOSRSConfig;
 
 import java.applet.Applet;
+import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.Properties;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -41,6 +45,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
+import java.util.zip.GZIPInputStream;
 import javax.annotation.Nullable;
 import javax.inject.Singleton;
 
@@ -48,6 +53,9 @@ import dev.hoot.api.game.Game;
 import dev.hoot.api.game.GameThread;
 import dev.hoot.api.game.Prices;
 import dev.hoot.api.game.Worlds;
+import dev.hoot.api.movement.pathfinder.GlobalCollisionMap;
+import dev.hoot.api.movement.pathfinder.RegionManager;
+import dev.hoot.api.movement.pathfinder.Walker;
 import lombok.AllArgsConstructor;
 import net.runelite.api.Client;
 import net.runelite.api.hooks.Callbacks;
@@ -68,6 +76,7 @@ import net.runelite.http.api.RuneLiteAPI;
 import net.runelite.http.api.chat.ChatClient;
 import net.runelite.api.packets.ClientPacket;
 import okhttp3.OkHttpClient;
+import org.slf4j.LoggerFactory;
 
 @AllArgsConstructor
 public class RuneLiteModule extends AbstractModule
@@ -186,5 +195,28 @@ public class RuneLiteModule extends AbstractModule
 	{
 		assert client != null;
 		return client.getClientPacket();
+	}
+
+	@Provides
+	@Singleton
+	GlobalCollisionMap provideGlobalCollisionMap() throws IOException
+	{
+		try (InputStream is = new URL(RegionManager.API_URL + "/regions").openStream())
+		{
+			return new GlobalCollisionMap(new GZIPInputStream(new ByteArrayInputStream(is.readAllBytes())).readAllBytes());
+		}
+		catch (IOException e)
+		{
+			// Fallback to old map
+			LoggerFactory.getLogger(RuneLiteModule.class)
+					.warn("Failed to load global collision map, falling back to old map", e);
+			return new GlobalCollisionMap(
+					new GZIPInputStream(
+							new ByteArrayInputStream(
+									Walker.class.getResourceAsStream("/regions").readAllBytes()
+							)
+					).readAllBytes()
+			);
+		}
 	}
 }

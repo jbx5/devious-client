@@ -200,7 +200,7 @@ public class RegionManager
 				RequestBody body = RequestBody.create(JSON_MEDIATYPE, json);
 				Request request = new Request.Builder()
 						.post(body)
-//                        .header("api-key", regionConfig.apiKey())
+                        .header("api-key", regionConfig.apiKey())
 						.url(API_URL + "/regions/" + VERSION)
 						.build();
 				Response response = okHttpClient.newCall(request)
