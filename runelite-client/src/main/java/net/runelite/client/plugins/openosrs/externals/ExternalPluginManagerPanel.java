@@ -112,9 +112,11 @@ public class ExternalPluginManagerPanel extends PluginPanel
 
 				JTextField owner = new JTextField();
 				JTextField name = new JTextField();
+				JTextField token = new JTextField();
 				Object[] message = {
 					"Github Repository owner:", owner,
-					"Github Repository name:", name
+					"Github Repository name:", name,
+					"Github Repository token:", token
 				};
 
 				int option =
@@ -131,14 +133,14 @@ public class ExternalPluginManagerPanel extends PluginPanel
 					return;
 				}
 
-				if (OPRSExternalPluginManager.testGHRepository(owner.getText(), name.getText()))
+				if (OPRSExternalPluginManager.testGHRepository(owner.getText(), name.getText(), token.getText()))
 				{
 					JOptionPane.showMessageDialog(ClientUI.getFrame(), "This doesn't appear to be a valid repository.", "Error!",
 						JOptionPane.ERROR_MESSAGE);
 					return;
 				}
 
-				externalPluginManager.addGHRepository(owner.getText(), name.getText());
+				externalPluginManager.addGHRepository(owner.getText(), name.getText(), token.getText());
 			}
 
 			@Override
@@ -179,9 +181,11 @@ public class ExternalPluginManagerPanel extends PluginPanel
 
 				JTextField id = new JTextField();
 				JTextField url = new JTextField();
+				JTextField token = new JTextField();
 				Object[] message = {
 					"Repository ID:", id,
-					"Repository URL:", url
+					"Repository URL:", url,
+					"Repository token:", token
 				};
 
 				int option =
@@ -232,21 +236,15 @@ public class ExternalPluginManagerPanel extends PluginPanel
 					return;
 				}
 
-				if ((pluginJson == null && OPRSExternalPluginManager.testRepository(urlActual)) || (pluginJson != null && OPRSExternalPluginManager.testRepository(urlActual, pluginJson)))
+				if ((pluginJson == null && OPRSExternalPluginManager.testRepository(urlActual, token.getText())) || (pluginJson != null && OPRSExternalPluginManager.testRepository(urlActual, pluginJson)))
 				{
 					JOptionPane.showMessageDialog(ClientUI.getFrame(), "This doesn't appear to be a valid repository.", "Error!",
 						JOptionPane.ERROR_MESSAGE);
 					return;
 				}
 
-				if (pluginJson == null)
-				{
-					externalPluginManager.addRepository(id.getText(), urlActual);
-				}
-				else
-				{
-					externalPluginManager.addRepository(id.getText(), urlActual, pluginJson);
-				}
+				externalPluginManager.addRepository(id.getText(), urlActual, pluginJson, token.getText());
+
 			}
 
 			@Override

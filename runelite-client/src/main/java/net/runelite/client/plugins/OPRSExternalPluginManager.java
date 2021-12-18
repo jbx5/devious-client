@@ -172,11 +172,12 @@ public class OPRSExternalPluginManager
 		return new URL("https://raw.githubusercontent.com/" + owner + "/" + name + "/master/");
 	}
 
-	public static boolean testGHRepository(String owner, String name)
+	public static boolean testGHRepository(String owner, String name, String token)
 	{
+		log.info("Token: {}", token);
 		try
 		{
-			return testRepository(toRepositoryUrl(owner, name));
+			return testRepository(toRepositoryUrl(owner, name), token);
 		}
 		catch (MalformedURLException e)
 		{
@@ -185,21 +186,35 @@ public class OPRSExternalPluginManager
 		return false;
 	}
 
-	public static boolean testRepository(URL url)
+	public static boolean testRepository(URL url, String token)
 	{
-		return testRepository(url, null);
+		return testRepository(url, null, token);
 	}
 
-	public static boolean testRepository(URL url, String pluginsJson)
+	public static boolean testRepository(URL url, String pluginsJson, String token)
 	{
 		final List<UpdateRepository> repositories = new ArrayList<>();
 		if (pluginsJson != null)
 		{
-			repositories.add(new DefaultUpdateRepository("repository-testing", url, pluginsJson));
+			if (token.isEmpty())
+			{
+				repositories.add(new DefaultUpdateRepository("repository-testing", url, pluginsJson));
+			}
+			else
+			{
+				repositories.add(new PluginRepository("repository-testing", url, pluginsJson, token));
+			}
 		}
 		else
 		{
-			repositories.add(new DefaultUpdateRepository("repository-testing", url));
+			if (token.isEmpty())
+			{
+				repositories.add(new DefaultUpdateRepository("repository-testing", url));
+			}
+			else
+			{
+				repositories.add(new PluginRepository("repository-testing", url, token));
+			}
 		}
 		DefaultPluginManager testPluginManager = new DefaultPluginManager(EXTERNALPLUGIN_DIR.toPath());
 		UpdateManager updateManager = new UpdateManager(testPluginManager, repositories);
@@ -273,7 +288,7 @@ public class OPRSExternalPluginManager
 			for (String keyval : openOSRSConfig.getExternalRepositories().split(";"))
 			{
 				String[] split = keyval.split("\\|");
-				if (split.length != 2)
+				if (split.length != 2 && split.length != 3)
 				{
 					log.debug("Split length invalid: {}", keyval);
 					repositories.clear();
@@ -281,6 +296,11 @@ public class OPRSExternalPluginManager
 				}
 				String id = split[0];
 				String url = split[1];
+				String token = "";
+				if (split.length == 3)
+				{
+					token = split[2];
+				}
 				if (!url.endsWith("/"))
 				{
 					url = url.concat("/");
@@ -310,11 +330,25 @@ public class OPRSExternalPluginManager
 
 				if (pluginJson == null)
 				{
-					repositories.add(new DefaultUpdateRepository(id, new URL(url)));
+					if (token.isEmpty())
+					{
+						repositories.add(new DefaultUpdateRepository(id, new URL(url)));
+					}
+					else
+					{
+						repositories.add(new PluginRepository(id, new URL(url), token));
+					}
 				}
 				else
 				{
-					repositories.add(new DefaultUpdateRepository(id, new URL(url), pluginJson));
+					if (token.isEmpty())
+					{
+						repositories.add(new DefaultUpdateRepository(id, new URL(url), pluginJson));
+					}
+					else
+					{
+						repositories.add(new PluginRepository(id, new URL(url), pluginJson, token));
+					}
 				}
 			}
 		}
@@ -337,10 +371,25 @@ public class OPRSExternalPluginManager
 			for (String keyval : openOSRSConfig.getExternalRepositories().split(";"))
 			{
 				log.debug("KeyVal: {}", keyval);
-				String id = keyval.substring(0, keyval.lastIndexOf(":https"));
-				String url = keyval.substring(keyval.lastIndexOf("https"));
 
-				DefaultUpdateRepository defaultRepo = new DefaultUpdateRepository(id, new URL(url));
+				String[] split = keyval.split("\\|");
+				String id = split[0];
+				String url = split[1];
+				String token = "";
+				if (split.length == 3)
+				{
+					token = split[2];
+				}
+
+				UpdateRepository defaultRepo;
+				if (token.isEmpty())
+				{
+					defaultRepo = new DefaultUpdateRepository(id, new URL(url));
+				}
+				else
+				{
+					defaultRepo = new PluginRepository(id, new URL(url), token);
+				}
 				repositories.add(defaultRepo);
 				log.debug("Added Repo: {}", defaultRepo.getUrl());
 			}
@@ -358,11 +407,11 @@ public class OPRSExternalPluginManager
 		updateManager = new UpdateManager(externalPluginManager, repositories);
 	}
 
-	public void addGHRepository(String owner, String name)
+	public void addGHRepository(String owner, String name, String token)
 	{
 		try
 		{
-			addRepository("gh:" + owner + "/" + name, toRepositoryUrl(owner, name));
+			addRepository("gh:" + owner + "/" + name, toRepositoryUrl(owner, name), token);
 		}
 		catch (MalformedURLException e)
 		{
@@ -370,22 +419,36 @@ public class OPRSExternalPluginManager
 		}
 	}
 
-	public void addRepository(String key, URL url)
+	public void addRepository(String key, URL url, String token)
 	{
-		addRepository(key, url, null);
+		addRepository(key, url, null, token);
 	}
 
-	public void addRepository(String key, URL url, String pluginsJson)
+	public void addRepository(String key, URL url, String pluginsJson, String token)
 	{
-		DefaultUpdateRepository respository;
+		UpdateRepository respository;
 
 		if (pluginsJson != null)
 		{
-			respository = new DefaultUpdateRepository(key, url, pluginsJson);
+			if (token.isEmpty())
+			{
+				respository = new DefaultUpdateRepository(key, url, pluginsJson);
+			}
+			else
+			{
+				respository = new PluginRepository(key, url, pluginsJson, token);
+			}
 		}
 		else
 		{
-			respository = new DefaultUpdateRepository(key, url);
+			if (token.isEmpty())
+			{
+				respository = new DefaultUpdateRepository(key, url);
+			}
+			else
+			{
+				respository = new PluginRepository(key, url, token);
+			}
 		}
 
 		updateManager.addRepository(respository);
@@ -403,7 +466,13 @@ public class OPRSExternalPluginManager
 	private void saveConfig()
 	{
 		String config = updateManager.getRepositories().stream()
-			.map(r -> r.getId() + "|" + urlToStringEncoded(r.getUrl()))
+			.map(r -> {
+				if (r instanceof PluginRepository pr)
+				{
+					return pr.getId() + "|" + urlToStringEncoded(pr.getUrl()) + "|" + pr.getToken();
+				}
+				return r.getId() + "|" + urlToStringEncoded(r.getUrl());
+			})
 			.collect(Collectors.joining(";"));
 
 		openOSRSConfig.setExternalRepositories(config);
