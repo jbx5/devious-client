@@ -88,6 +88,11 @@ public class Text
 	 */
 	public static String removeTags(String str, boolean removeLevels)
 	{
+		if (str == null)
+		{
+			return null;
+		}
+
 		if (removeLevels)
 		{
 			int levelIdx =  StringUtils.lastIndexOf(str, "  (level");
