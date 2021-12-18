@@ -288,7 +288,7 @@ public class OPRSExternalPluginManager
 			for (String keyval : openOSRSConfig.getExternalRepositories().split(";"))
 			{
 				String[] split = keyval.split("\\|");
-				if (split.length != 2)
+				if (split.length != 2 && split.length != 3)
 				{
 					log.debug("Split length invalid: {}", keyval);
 					repositories.clear();
@@ -296,6 +296,11 @@ public class OPRSExternalPluginManager
 				}
 				String id = split[0];
 				String url = split[1];
+				String token = "";
+				if (split.length == 3)
+				{
+					token = split[2];
+				}
 				if (!url.endsWith("/"))
 				{
 					url = url.concat("/");
@@ -325,11 +330,25 @@ public class OPRSExternalPluginManager
 
 				if (pluginJson == null)
 				{
-					repositories.add(new DefaultUpdateRepository(id, new URL(url)));
+					if (token.isEmpty())
+					{
+						repositories.add(new DefaultUpdateRepository(id, new URL(url)));
+					}
+					else
+					{
+						repositories.add(new PluginRepository(id, new URL(url), token));
+					}
 				}
 				else
 				{
-					repositories.add(new DefaultUpdateRepository(id, new URL(url), pluginJson));
+					if (token.isEmpty())
+					{
+						repositories.add(new DefaultUpdateRepository(id, new URL(url), pluginJson));
+					}
+					else
+					{
+						repositories.add(new PluginRepository(id, new URL(url), pluginJson, token));
+					}
 				}
 			}
 		}
