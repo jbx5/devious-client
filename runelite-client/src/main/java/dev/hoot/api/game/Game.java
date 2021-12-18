@@ -11,7 +11,6 @@ import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetID;
 import net.runelite.api.widgets.WidgetInfo;
 
-import javax.annotation.Nullable;
 import javax.inject.Inject;
 
 public class Game
