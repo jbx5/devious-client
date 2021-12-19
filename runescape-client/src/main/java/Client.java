@@ -2737,7 +2737,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 								ObjectComposition.ObjectDefinition_cachedModelData.clear();
 								PacketBufferNode var80;
 								if (class295.client.hasFrame()) {
-									var80 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2879, packetWriter.isaacCipher);
+									var80 = HitSplatDefinition.getPacketBufferNode(ClientPacket.DETECT_MODIFIED_CLIENT, packetWriter.isaacCipher);
 									var80.packetBuffer.writeInt(1057001181);
 									packetWriter.addNode(var80);
 								}
@@ -2761,7 +2761,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 								VertexNormal.updateGameState(30);
 								class148.playPcmPlayers();
 								class119.method2689();
-								var80 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2848, packetWriter.isaacCipher);
+								var80 = HitSplatDefinition.getPacketBufferNode(ClientPacket.MAP_BUILD_COMPLETE, packetWriter.isaacCipher);
 								packetWriter.addNode(var80);
 								class17.method292();
 							}
@@ -3776,7 +3776,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 							field504[var34] = true;
 						}
 
-						var23 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2824, packetWriter.isaacCipher);
+						var23 = HitSplatDefinition.getPacketBufferNode(ClientPacket.WINDOW_STATUS, packetWriter.isaacCipher);
 						var23.packetBuffer.writeByte(class143.getWindowedMode());
 						var23.packetBuffer.writeShort(class186.canvasWidth);
 						var23.packetBuffer.writeShort(BoundaryObject.canvasHeight);
@@ -3859,7 +3859,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 						PacketBufferNode var14;
 						int var15;
 						if (timer.field4043) {
-							var14 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2907, packetWriter.isaacCipher);
+							var14 = HitSplatDefinition.getPacketBufferNode(ClientPacket.LOGIN_TIMINGS, packetWriter.isaacCipher);
 							var14.packetBuffer.writeByte(0);
 							var15 = var14.packetBuffer.offset;
 							timer.write(var14.packetBuffer);
@@ -4011,7 +4011,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 						}
 
 						if (KeyHandler.field140 > 0) {
-							var14 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2899, packetWriter.isaacCipher);
+							var14 = HitSplatDefinition.getPacketBufferNode(ClientPacket.EVENT_KEYBOARD, packetWriter.isaacCipher);
 							var14.packetBuffer.writeShort(0);
 							var15 = var14.packetBuffer.offset;
 							long var19 = Ignored.getServerTime();
@@ -4042,7 +4042,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 						if (field561 && field560 <= 0) {
 							field560 = 20;
 							field561 = false;
-							var14 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2869, packetWriter.isaacCipher);
+							var14 = HitSplatDefinition.getPacketBufferNode(ClientPacket.EVENT_CAMERA_POSITION, packetWriter.isaacCipher);
 							var14.packetBuffer.writeByteC(camAngleX);
 							var14.packetBuffer.method7398(camAngleY);
 							packetWriter.addNode(var14);
@@ -4050,14 +4050,14 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 
 						if (World.hasFocus && !hadFocus) {
 							hadFocus = true;
-							var14 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2861, packetWriter.isaacCipher);
+							var14 = HitSplatDefinition.getPacketBufferNode(ClientPacket.EVENT_APPLET_FOCUS, packetWriter.isaacCipher);
 							var14.packetBuffer.writeByte(1);
 							packetWriter.addNode(var14);
 						}
 
 						if (!World.hasFocus && hadFocus) {
 							hadFocus = false;
-							var14 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2861, packetWriter.isaacCipher);
+							var14 = HitSplatDefinition.getPacketBufferNode(ClientPacket.EVENT_APPLET_FOCUS, packetWriter.isaacCipher);
 							var14.packetBuffer.writeByte(0);
 							packetWriter.addNode(var14);
 						}
@@ -4282,7 +4282,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 																				var42.swapItems(dragItemSlotDestination, dragItemSlotSource);
 																			}
 
-																			var18 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2811, packetWriter.isaacCipher);
+																			var18 = HitSplatDefinition.getPacketBufferNode(ClientPacket.IF_BUTTOND, packetWriter.isaacCipher);
 																			var18.packetBuffer.method7398(dragItemSlotDestination);
 																			var18.packetBuffer.method7362(var35);
 																			var18.packetBuffer.method7407(class143.dragInventoryWidget.id);
@@ -4494,7 +4494,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 																}
 
 																if (KeyHandler.KeyHandler_pressedKeys[13]) {
-																	packetWriter.addNode(HitSplatDefinition.getPacketBufferNode(ClientPacket.field2867, packetWriter.isaacCipher));
+																	packetWriter.addNode(HitSplatDefinition.getPacketBufferNode(ClientPacket.FREECAM_EXIT, packetWriter.isaacCipher));
 																	oculusOrbState = 0;
 																}
 															}
@@ -4567,14 +4567,14 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 															if (var4 > 15000 && var6 > 15000) {
 																logoutTimer = 250;
 																class123.method2746(14500);
-																var27 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2837, packetWriter.isaacCipher);
+																var27 = HitSplatDefinition.getPacketBufferNode(ClientPacket.EVENT_MOUSE_IDLE, packetWriter.isaacCipher);
 																packetWriter.addNode(var27);
 															}
 
 															GameEngine.friendSystem.processFriendUpdates();
 															++packetWriter.pendingWrites;
 															if (packetWriter.pendingWrites > 50) {
-																var27 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2814, packetWriter.isaacCipher);
+																var27 = HitSplatDefinition.getPacketBufferNode(ClientPacket.NO_TIMEOUT, packetWriter.isaacCipher);
 																packetWriter.addNode(var27);
 															}
 
@@ -4623,7 +4623,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 						}
 					}
 
-					var31 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2852, packetWriter.isaacCipher);
+					var31 = HitSplatDefinition.getPacketBufferNode(ClientPacket.REFLECTION_CHECK_REPLY, packetWriter.isaacCipher);
 					var31.packetBuffer.writeByte(0);
 					var3 = var31.packetBuffer.offset;
 					UserComparator3.performReflectionCheck(var31.packetBuffer);
@@ -5041,7 +5041,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 					var17 = var3.readInt();
 					var5 = var3.readInt();
 					var6 = class143.getGcDuration();
-					PacketBufferNode var73 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2890, packetWriter.isaacCipher);
+					PacketBufferNode var73 = HitSplatDefinition.getPacketBufferNode(ClientPacket.PING_STATISTICS, packetWriter.isaacCipher);
 					var73.packetBuffer.writeByte(GameEngine.fps);
 					var73.packetBuffer.method7343(var6);
 					var73.packetBuffer.method7407(var17);
@@ -6633,7 +6633,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthTokens {
 					}
 
 					if (draggedOnWidget != null && SpotAnimationDefinition.method3340(clickedWidget) != null) {
-						PacketBufferNode var11 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2816, packetWriter.isaacCipher);
+						PacketBufferNode var11 = HitSplatDefinition.getPacketBufferNode(ClientPacket.OPHELDD, packetWriter.isaacCipher);
 						var11.packetBuffer.method7407(draggedOnWidget.id);
 						var11.packetBuffer.method7398(clickedWidget.childIndex);
 						var11.packetBuffer.writeByteC(draggedOnWidget.itemId);

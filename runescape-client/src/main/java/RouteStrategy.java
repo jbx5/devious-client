@@ -101,7 +101,7 @@ public abstract class RouteStrategy {
 			}
 		}
 
-		PacketBufferNode var1 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2846, Client.packetWriter.isaacCipher);
+		PacketBufferNode var1 = HitSplatDefinition.getPacketBufferNode(ClientPacket.CLIENT_CHEAT, Client.packetWriter.isaacCipher);
 		var1.packetBuffer.writeByte(var0.length() + 1);
 		var1.packetBuffer.writeStringCp1252NullTerminated(var0);
 		Client.packetWriter.addNode(var1);

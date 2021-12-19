@@ -175,7 +175,7 @@ public class class409 implements MouseWheel {
 	@Export("clanKickUser")
 	static final void clanKickUser(String var0) {
 		if (Players.friendsChat != null) {
-			PacketBufferNode var1 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2828, Client.packetWriter.isaacCipher);
+			PacketBufferNode var1 = HitSplatDefinition.getPacketBufferNode(ClientPacket.CLAN_KICKUSER, Client.packetWriter.isaacCipher);
 			var1.packetBuffer.writeByte(class116.stringCp1252NullTerminatedByteSize(var0));
 			var1.packetBuffer.writeStringCp1252NullTerminated(var0);
 			Client.packetWriter.addNode(var1);

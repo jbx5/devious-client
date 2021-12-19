@@ -253,7 +253,7 @@ public class class312 {
 					int var10 = var8 * var5 - var7 * var4 >> 11;
 					int var11 = var9 + class340.localPlayer.x >> 7;
 					int var12 = class340.localPlayer.y - var10 >> 7;
-					PacketBufferNode var13 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2860, Client.packetWriter.isaacCipher);
+					PacketBufferNode var13 = HitSplatDefinition.getPacketBufferNode(ClientPacket.MOVE_MINIMAP_CLICKMOVE_MINIMAP_CLICK, Client.packetWriter.isaacCipher);
 					var13.packetBuffer.writeByte(18);
 					var13.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? (KeyHandler.KeyHandler_pressedKeys[81] ? 2 : 1) : 0);
 					var13.packetBuffer.writeByteC(var12 + TileItem.baseY);

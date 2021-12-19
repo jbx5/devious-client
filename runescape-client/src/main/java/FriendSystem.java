@@ -243,7 +243,7 @@ public class FriendSystem {
 			if (var2.hasCleanName()) {
 				if (this.friendsList.removeByUsername(var2)) {
 					class409.method7267();
-					PacketBufferNode var3 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2854, Client.packetWriter.isaacCipher);
+					PacketBufferNode var3 = HitSplatDefinition.getPacketBufferNode(ClientPacket.FRIENDLIST_DEL, Client.packetWriter.isaacCipher);
 					var3.packetBuffer.writeByte(class116.stringCp1252NullTerminatedByteSize(var1));
 					var3.packetBuffer.writeStringCp1252NullTerminated(var1);
 					Client.packetWriter.addNode(var3);
@@ -266,7 +266,7 @@ public class FriendSystem {
 			if (var2.hasCleanName()) {
 				if (this.ignoreList.removeByUsername(var2)) {
 					class409.method7267();
-					PacketBufferNode var3 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2805, Client.packetWriter.isaacCipher);
+					PacketBufferNode var3 = HitSplatDefinition.getPacketBufferNode(ClientPacket.IGNORELIST_DEL, Client.packetWriter.isaacCipher);
 					var3.packetBuffer.writeByte(class116.stringCp1252NullTerminatedByteSize(var1));
 					var3.packetBuffer.writeStringCp1252NullTerminated(var1);
 					Client.packetWriter.addNode(var3);

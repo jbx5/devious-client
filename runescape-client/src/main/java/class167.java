@@ -54,7 +54,7 @@ public class class167 {
 			}
 
 			Client.tradeChatMode = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize + 2];
-			PacketBufferNode var13 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2855, Client.packetWriter.isaacCipher);
+			PacketBufferNode var13 = HitSplatDefinition.getPacketBufferNode(ClientPacket.CHAT_SETMODE, Client.packetWriter.isaacCipher);
 			var13.packetBuffer.writeByte(Client.publicChatMode);
 			var13.packetBuffer.writeByte(Projectile.privateChatMode.field4597);
 			var13.packetBuffer.writeByte(Client.tradeChatMode);
@@ -70,7 +70,7 @@ public class class167 {
 				IsaacCipher.Interpreter_intStackSize -= 2;
 				var7 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize];
 				var9 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize + 1];
-				var6 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2851, Client.packetWriter.isaacCipher);
+				var6 = HitSplatDefinition.getPacketBufferNode(ClientPacket.PLAYER_REPORT, Client.packetWriter.isaacCipher);
 				var6.packetBuffer.writeByte(class116.stringCp1252NullTerminatedByteSize(var8) + 2);
 				var6.packetBuffer.writeStringCp1252NullTerminated(var8);
 				var6.packetBuffer.writeByte(var7 - 1);
@@ -144,7 +144,7 @@ public class class167 {
 							class13.Interpreter_stringStackSize -= 2;
 							var8 = Interpreter.Interpreter_stringStack[class13.Interpreter_stringStackSize];
 							String var11 = Interpreter.Interpreter_stringStack[class13.Interpreter_stringStackSize + 1];
-							var12 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2849, Client.packetWriter.isaacCipher);
+							var12 = HitSplatDefinition.getPacketBufferNode(ClientPacket.MESSAGE_PRIVATE, Client.packetWriter.isaacCipher);
 							var12.packetBuffer.writeShort(0);
 							int var10 = var12.packetBuffer.offset;
 							var12.packetBuffer.writeStringCp1252NullTerminated(var8);

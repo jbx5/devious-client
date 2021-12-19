@@ -277,7 +277,7 @@ public class Decimator {
 			Client.mouseCrossState = 0;
 			Client.destinationX = var0;
 			Client.destinationY = var1;
-			var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2831, Client.packetWriter.isaacCipher);
+			var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.OPLOCU, Client.packetWriter.isaacCipher);
 			var8.packetBuffer.method7390(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
 			var8.packetBuffer.writeShort(var3);
 			var8.packetBuffer.writeShort(class139.selectedItemId);
@@ -293,7 +293,7 @@ public class Decimator {
 			Client.mouseCrossState = 0;
 			Client.destinationX = var0;
 			Client.destinationY = var1;
-			var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2850, Client.packetWriter.isaacCipher);
+			var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.OPLOCT, Client.packetWriter.isaacCipher);
 			var8.packetBuffer.writeByteC(Client.selectedSpellChildIndex);
 			var8.packetBuffer.method7390(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
 			var8.packetBuffer.method7527(class20.selectedSpellWidget);
@@ -309,7 +309,7 @@ public class Decimator {
 			Client.mouseCrossState = 0;
 			Client.destinationX = var0;
 			Client.destinationY = var1;
-			var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2883, Client.packetWriter.isaacCipher);
+			var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.OPLOC1, Client.packetWriter.isaacCipher);
 			var8.packetBuffer.method7398(var0 + class131.baseX);
 			var8.packetBuffer.writeShort(var3);
 			var8.packetBuffer.writeByteC(TileItem.baseY + var1);
@@ -322,7 +322,7 @@ public class Decimator {
 			Client.mouseCrossState = 0;
 			Client.destinationX = var0;
 			Client.destinationY = var1;
-			var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2896, Client.packetWriter.isaacCipher);
+			var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.OPLOC2, Client.packetWriter.isaacCipher);
 			var8.packetBuffer.method7398(TileItem.baseY + var1);
 			var8.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
 			var8.packetBuffer.writeShortLE(var0 + class131.baseX);
@@ -335,7 +335,7 @@ public class Decimator {
 			Client.mouseCrossState = 0;
 			Client.destinationX = var0;
 			Client.destinationY = var1;
-			var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2856, Client.packetWriter.isaacCipher);
+			var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.OPLOC3, Client.packetWriter.isaacCipher);
 			var8.packetBuffer.writeByteC(var3);
 			var8.packetBuffer.writeByteC(TileItem.baseY + var1);
 			var8.packetBuffer.writeShort(var0 + class131.baseX);
@@ -348,7 +348,7 @@ public class Decimator {
 			Client.mouseCrossState = 0;
 			Client.destinationX = var0;
 			Client.destinationY = var1;
-			var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2870, Client.packetWriter.isaacCipher);
+			var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.OPLOC4, Client.packetWriter.isaacCipher);
 			var8.packetBuffer.writeByteC(var3);
 			var8.packetBuffer.method7390(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
 			var8.packetBuffer.writeByteC(TileItem.baseY + var1);
@@ -366,7 +366,7 @@ public class Decimator {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2840, Client.packetWriter.isaacCipher);
+					var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.OPNPCU, Client.packetWriter.isaacCipher);
 					var9.packetBuffer.method7398(class139.selectedItemId);
 					var9.packetBuffer.method7362(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
 					var9.packetBuffer.method7398(var3);
@@ -383,7 +383,7 @@ public class Decimator {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2901, Client.packetWriter.isaacCipher);
+					var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.OPNPCT, Client.packetWriter.isaacCipher);
 					var9.packetBuffer.method7407(class20.selectedSpellWidget);
 					var9.packetBuffer.method7398(Client.field633);
 					var9.packetBuffer.writeShort(Client.selectedSpellChildIndex);
@@ -400,7 +400,7 @@ public class Decimator {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2839, Client.packetWriter.isaacCipher);
+					var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.OPNPC1, Client.packetWriter.isaacCipher);
 					var9.packetBuffer.writeShortLE(var3);
 					var9.packetBuffer.method7343(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
 					Client.packetWriter.addNode(var9);
@@ -414,7 +414,7 @@ public class Decimator {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2865, Client.packetWriter.isaacCipher);
+					var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.OPNPC2, Client.packetWriter.isaacCipher);
 					var9.packetBuffer.method7362(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
 					var9.packetBuffer.method7398(var3);
 					Client.packetWriter.addNode(var9);
@@ -428,7 +428,7 @@ public class Decimator {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2812, Client.packetWriter.isaacCipher);
+					var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.OPNPC3, Client.packetWriter.isaacCipher);
 					var9.packetBuffer.writeByteC(var3);
 					var9.packetBuffer.method7343(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
 					Client.packetWriter.addNode(var9);
@@ -442,7 +442,7 @@ public class Decimator {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2872, Client.packetWriter.isaacCipher);
+					var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.OPNPC4, Client.packetWriter.isaacCipher);
 					var9.packetBuffer.writeShort(var3);
 					var9.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
 					Client.packetWriter.addNode(var9);
@@ -456,7 +456,7 @@ public class Decimator {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2876, Client.packetWriter.isaacCipher);
+					var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.OPNPC5, Client.packetWriter.isaacCipher);
 					var9.packetBuffer.method7398(var3);
 					var9.packetBuffer.method7362(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
 					Client.packetWriter.addNode(var9);
@@ -472,7 +472,7 @@ public class Decimator {
 						Client.mouseCrossState = 0;
 						Client.destinationX = var0;
 						Client.destinationY = var1;
-						var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2864, Client.packetWriter.isaacCipher);
+						var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.OPPLAYERU, Client.packetWriter.isaacCipher);
 						var9.packetBuffer.method7398(class139.selectedItemId);
 						var9.packetBuffer.method7527(MidiPcmStream.selectedItemWidget);
 						var9.packetBuffer.method7343(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
@@ -489,7 +489,7 @@ public class Decimator {
 						Client.mouseCrossState = 0;
 						Client.destinationX = var0;
 						Client.destinationY = var1;
-						var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2820, Client.packetWriter.isaacCipher);
+						var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.OPPLAYERT, Client.packetWriter.isaacCipher);
 						var9.packetBuffer.method7407(class20.selectedSpellWidget);
 						var9.packetBuffer.writeShort(Client.field633);
 						var9.packetBuffer.method7343(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
@@ -504,7 +504,7 @@ public class Decimator {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2882, Client.packetWriter.isaacCipher);
+					var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.OPOBJU, Client.packetWriter.isaacCipher);
 					var8.packetBuffer.writeShort(class139.selectedItemId);
 					var8.packetBuffer.writeShort(Calendar.selectedItemSlot);
 					var8.packetBuffer.writeShort(TileItem.baseY + var1);
@@ -520,7 +520,7 @@ public class Decimator {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2835, Client.packetWriter.isaacCipher);
+					var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.OPOBJT, Client.packetWriter.isaacCipher);
 					var8.packetBuffer.method7398(TileItem.baseY + var1);
 					var8.packetBuffer.writeShort(Client.selectedSpellChildIndex);
 					var8.packetBuffer.method7343(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
@@ -536,7 +536,7 @@ public class Decimator {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2836, Client.packetWriter.isaacCipher);
+					var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.OPOBJ1, Client.packetWriter.isaacCipher);
 					var8.packetBuffer.method7398(var0 + class131.baseX);
 					var8.packetBuffer.writeShortLE(var3);
 					var8.packetBuffer.writeShortLE(TileItem.baseY + var1);
@@ -549,7 +549,7 @@ public class Decimator {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2838, Client.packetWriter.isaacCipher);
+					var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.OPOBJ2, Client.packetWriter.isaacCipher);
 					var8.packetBuffer.method7362(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
 					var8.packetBuffer.writeByteC(TileItem.baseY + var1);
 					var8.packetBuffer.writeByteC(var3);
@@ -562,7 +562,7 @@ public class Decimator {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2818, Client.packetWriter.isaacCipher);
+					var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.OPOBJ3, Client.packetWriter.isaacCipher);
 					var8.packetBuffer.writeByteC(var0 + class131.baseX);
 					var8.packetBuffer.writeShort(var3);
 					var8.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
@@ -575,7 +575,7 @@ public class Decimator {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2823, Client.packetWriter.isaacCipher);
+					var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.OPOBJ4, Client.packetWriter.isaacCipher);
 					var8.packetBuffer.writeShortLE(TileItem.baseY + var1);
 					var8.packetBuffer.method7343(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
 					var8.packetBuffer.writeShort(var3);
@@ -588,7 +588,7 @@ public class Decimator {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2868, Client.packetWriter.isaacCipher);
+					var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.OPOBJ5, Client.packetWriter.isaacCipher);
 					var8.packetBuffer.method7398(var0 + class131.baseX);
 					var8.packetBuffer.writeShortLE(TileItem.baseY + var1);
 					var8.packetBuffer.method7398(var3);
@@ -611,7 +611,7 @@ public class Decimator {
 						}
 
 						if (var11) {
-							var12 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2842, Client.packetWriter.isaacCipher);
+							var12 = HitSplatDefinition.getPacketBufferNode(ClientPacket.WIDGET_TYPE_1, Client.packetWriter.isaacCipher);
 							var12.packetBuffer.writeInt(var1);
 							Client.packetWriter.addNode(var12);
 						}
@@ -643,7 +643,7 @@ public class Decimator {
 							int var10;
 							Widget var14;
 							if (var2 == 28) {
-								var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2842, Client.packetWriter.isaacCipher);
+								var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.WIDGET_TYPE_1, Client.packetWriter.isaacCipher);
 								var8.packetBuffer.writeInt(var1);
 								Client.packetWriter.addNode(var8);
 								var14 = ChatChannel.getWidget(var1);
@@ -653,7 +653,7 @@ public class Decimator {
 									class281.changeGameOptions(var10);
 								}
 							} else if (var2 == 29) {
-								var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2842, Client.packetWriter.isaacCipher);
+								var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.WIDGET_TYPE_1, Client.packetWriter.isaacCipher);
 								var8.packetBuffer.writeInt(var1);
 								Client.packetWriter.addNode(var8);
 								var14 = ChatChannel.getWidget(var1);
@@ -671,7 +671,7 @@ public class Decimator {
 									SecureRandomCallable.invalidateWidget(Client.meslayerContinueWidget);
 								}
 							} else if (var2 == 31) {
-								var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2804, Client.packetWriter.isaacCipher);
+								var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.OPHELDU, Client.packetWriter.isaacCipher);
 								var8.packetBuffer.writeShortLE(var0);
 								var8.packetBuffer.writeShort(class139.selectedItemId);
 								var8.packetBuffer.writeShortLE(var3);
@@ -683,7 +683,7 @@ public class Decimator {
 								WorldMapDecoration.field2722 = ChatChannel.getWidget(var1);
 								Client.field599 = var0;
 							} else if (var2 == 32) {
-								var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2886, Client.packetWriter.isaacCipher);
+								var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.OPHELDT, Client.packetWriter.isaacCipher);
 								var8.packetBuffer.writeShort(var0);
 								var8.packetBuffer.writeIntME(var1);
 								var8.packetBuffer.writeByteC(Client.selectedSpellChildIndex);
@@ -694,7 +694,7 @@ public class Decimator {
 								WorldMapDecoration.field2722 = ChatChannel.getWidget(var1);
 								Client.field599 = var0;
 							} else if (var2 == 33) {
-								var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2874, Client.packetWriter.isaacCipher);
+								var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.OPHELD1, Client.packetWriter.isaacCipher);
 								var8.packetBuffer.writeInt(var1);
 								var8.packetBuffer.writeShortLE(var0);
 								var8.packetBuffer.writeShortLE(var3);
@@ -703,7 +703,7 @@ public class Decimator {
 								WorldMapDecoration.field2722 = ChatChannel.getWidget(var1);
 								Client.field599 = var0;
 							} else if (var2 == 34) {
-								var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2833, Client.packetWriter.isaacCipher);
+								var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.OPHELD2, Client.packetWriter.isaacCipher);
 								var8.packetBuffer.method7398(var3);
 								var8.packetBuffer.method7398(var0);
 								var8.packetBuffer.method7407(var1);
@@ -712,7 +712,7 @@ public class Decimator {
 								WorldMapDecoration.field2722 = ChatChannel.getWidget(var1);
 								Client.field599 = var0;
 							} else if (var2 == 35) {
-								var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2817, Client.packetWriter.isaacCipher);
+								var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.OPHELD3, Client.packetWriter.isaacCipher);
 								var8.packetBuffer.writeShortLE(var0);
 								var8.packetBuffer.writeShortLE(var3);
 								var8.packetBuffer.writeInt(var1);
@@ -721,7 +721,7 @@ public class Decimator {
 								WorldMapDecoration.field2722 = ChatChannel.getWidget(var1);
 								Client.field599 = var0;
 							} else if (var2 == 36) {
-								var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2847, Client.packetWriter.isaacCipher);
+								var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.OPHELD4, Client.packetWriter.isaacCipher);
 								var8.packetBuffer.method7527(var1);
 								var8.packetBuffer.writeShortLE(var0);
 								var8.packetBuffer.method7398(var3);
@@ -730,7 +730,7 @@ public class Decimator {
 								WorldMapDecoration.field2722 = ChatChannel.getWidget(var1);
 								Client.field599 = var0;
 							} else if (var2 == 37) {
-								var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2802, Client.packetWriter.isaacCipher);
+								var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.OPHELD5, Client.packetWriter.isaacCipher);
 								var8.packetBuffer.writeIntME(var1);
 								var8.packetBuffer.writeByteC(var0);
 								var8.packetBuffer.writeShort(var3);
@@ -756,7 +756,7 @@ public class Decimator {
 								}
 
 								if (var2 == 39) {
-									var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2844, Client.packetWriter.isaacCipher);
+									var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.IF1_BUTTON1, Client.packetWriter.isaacCipher);
 									var8.packetBuffer.writeIntME(var1);
 									var8.packetBuffer.writeByteC(var0);
 									var8.packetBuffer.writeShort(var3);
@@ -765,7 +765,7 @@ public class Decimator {
 									WorldMapDecoration.field2722 = ChatChannel.getWidget(var1);
 									Client.field599 = var0;
 								} else if (var2 == 40) {
-									var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2871, Client.packetWriter.isaacCipher);
+									var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.IF1_BUTTON2, Client.packetWriter.isaacCipher);
 									var8.packetBuffer.writeInt(var1);
 									var8.packetBuffer.writeByteC(var3);
 									var8.packetBuffer.writeByteC(var0);
@@ -774,7 +774,7 @@ public class Decimator {
 									WorldMapDecoration.field2722 = ChatChannel.getWidget(var1);
 									Client.field599 = var0;
 								} else if (var2 == 41) {
-									var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2810, Client.packetWriter.isaacCipher);
+									var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.IF1_BUTTON3, Client.packetWriter.isaacCipher);
 									var8.packetBuffer.method7398(var3);
 									var8.packetBuffer.writeInt(var1);
 									var8.packetBuffer.method7398(var0);
@@ -783,7 +783,7 @@ public class Decimator {
 									WorldMapDecoration.field2722 = ChatChannel.getWidget(var1);
 									Client.field599 = var0;
 								} else if (var2 == 42) {
-									var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2803, Client.packetWriter.isaacCipher);
+									var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.IF1_BUTTON4, Client.packetWriter.isaacCipher);
 									var8.packetBuffer.writeByteC(var0);
 									var8.packetBuffer.writeIntME(var1);
 									var8.packetBuffer.method7398(var3);
@@ -792,7 +792,7 @@ public class Decimator {
 									WorldMapDecoration.field2722 = ChatChannel.getWidget(var1);
 									Client.field599 = var0;
 								} else if (var2 == 43) {
-									var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2843, Client.packetWriter.isaacCipher);
+									var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.IF1_BUTTON5, Client.packetWriter.isaacCipher);
 									var8.packetBuffer.writeInt(var1);
 									var8.packetBuffer.writeShort(var0);
 									var8.packetBuffer.writeShort(var3);
@@ -809,7 +809,7 @@ public class Decimator {
 										Client.mouseCrossState = 0;
 										Client.destinationX = var0;
 										Client.destinationY = var1;
-										var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2887, Client.packetWriter.isaacCipher);
+										var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.OPPLAYER1, Client.packetWriter.isaacCipher);
 										var9.packetBuffer.method7343(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
 										var9.packetBuffer.method7398(var3);
 										Client.packetWriter.addNode(var9);
@@ -823,7 +823,7 @@ public class Decimator {
 										Client.mouseCrossState = 0;
 										Client.destinationX = var0;
 										Client.destinationY = var1;
-										var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2813, Client.packetWriter.isaacCipher);
+										var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.OPPLAYER2, Client.packetWriter.isaacCipher);
 										var9.packetBuffer.method7343(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
 										var9.packetBuffer.writeByteC(var3);
 										Client.packetWriter.addNode(var9);
@@ -837,7 +837,7 @@ public class Decimator {
 										Client.mouseCrossState = 0;
 										Client.destinationX = var0;
 										Client.destinationY = var1;
-										var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2827, Client.packetWriter.isaacCipher);
+										var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.OPPLAYER3, Client.packetWriter.isaacCipher);
 										var9.packetBuffer.method7398(var3);
 										var9.packetBuffer.method7343(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
 										Client.packetWriter.addNode(var9);
@@ -851,7 +851,7 @@ public class Decimator {
 										Client.mouseCrossState = 0;
 										Client.destinationX = var0;
 										Client.destinationY = var1;
-										var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2807, Client.packetWriter.isaacCipher);
+										var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.OPPLAYER4, Client.packetWriter.isaacCipher);
 										var9.packetBuffer.writeShortLE(var3);
 										var9.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
 										Client.packetWriter.addNode(var9);
@@ -865,7 +865,7 @@ public class Decimator {
 										Client.mouseCrossState = 0;
 										Client.destinationX = var0;
 										Client.destinationY = var1;
-										var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2892, Client.packetWriter.isaacCipher);
+										var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.OPPLAYER5, Client.packetWriter.isaacCipher);
 										var9.packetBuffer.writeShort(var3);
 										var9.packetBuffer.method7362(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
 										Client.packetWriter.addNode(var9);
@@ -879,7 +879,7 @@ public class Decimator {
 										Client.mouseCrossState = 0;
 										Client.destinationX = var0;
 										Client.destinationY = var1;
-										var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2863, Client.packetWriter.isaacCipher);
+										var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.OPPLAYER6, Client.packetWriter.isaacCipher);
 										var9.packetBuffer.method7390(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
 										var9.packetBuffer.method7398(var3);
 										Client.packetWriter.addNode(var9);
@@ -893,7 +893,7 @@ public class Decimator {
 										Client.mouseCrossState = 0;
 										Client.destinationX = var0;
 										Client.destinationY = var1;
-										var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2906, Client.packetWriter.isaacCipher);
+										var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.OPPLAYER7, Client.packetWriter.isaacCipher);
 										var9.packetBuffer.method7362(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
 										var9.packetBuffer.writeByteC(var3);
 										Client.packetWriter.addNode(var9);
@@ -907,7 +907,7 @@ public class Decimator {
 										Client.mouseCrossState = 0;
 										Client.destinationX = var0;
 										Client.destinationY = var1;
-										var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2885, Client.packetWriter.isaacCipher);
+										var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.OPPLAYER8, Client.packetWriter.isaacCipher);
 										var9.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
 										var9.packetBuffer.method7398(var3);
 										Client.packetWriter.addNode(var9);
@@ -916,7 +916,7 @@ public class Decimator {
 									if (var2 == 58) {
 										var16 = class126.getWidgetChild(var1, var0);
 										if (var16 != null) {
-											var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2809, Client.packetWriter.isaacCipher);
+											var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.IF_BUTTONT, Client.packetWriter.isaacCipher);
 											var9.packetBuffer.writeShort(var16.itemId);
 											var9.packetBuffer.method7527(var1);
 											var9.packetBuffer.writeByteC(Client.selectedSpellChildIndex);
@@ -932,7 +932,7 @@ public class Decimator {
 										Client.mouseCrossState = 0;
 										Client.destinationX = var0;
 										Client.destinationY = var1;
-										var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2826, Client.packetWriter.isaacCipher);
+										var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.OPLOC5, Client.packetWriter.isaacCipher);
 										var8.packetBuffer.method7398(TileItem.baseY + var1);
 										var8.packetBuffer.method7390(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
 										var8.packetBuffer.writeByteC(var0 + class131.baseX);
@@ -943,7 +943,7 @@ public class Decimator {
 										Client.mouseCrossY = var7;
 										Client.mouseCrossColor = 2;
 										Client.mouseCrossState = 0;
-										var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2815, Client.packetWriter.isaacCipher);
+										var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.OPLOC6, Client.packetWriter.isaacCipher);
 										var8.packetBuffer.writeShortLE(var3);
 										Client.packetWriter.addNode(var8);
 									} else if (var2 == 1003) {
@@ -959,7 +959,7 @@ public class Decimator {
 											}
 
 											if (var17 != null) {
-												var12 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2829, Client.packetWriter.isaacCipher);
+												var12 = HitSplatDefinition.getPacketBufferNode(ClientPacket.OPNPC6, Client.packetWriter.isaacCipher);
 												var12.packetBuffer.method7398(var17.id);
 												Client.packetWriter.addNode(var12);
 											}
@@ -969,7 +969,7 @@ public class Decimator {
 										Client.mouseCrossY = var7;
 										Client.mouseCrossColor = 2;
 										Client.mouseCrossState = 0;
-										var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2902, Client.packetWriter.isaacCipher);
+										var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.OPOBJ6, Client.packetWriter.isaacCipher);
 										var8.packetBuffer.method7398(var3);
 										Client.packetWriter.addNode(var8);
 									} else if (var2 == 1005) {
@@ -977,7 +977,7 @@ public class Decimator {
 										if (var16 != null && var16.itemQuantities[var0] >= 100000) {
 											class194.addGameMessage(27, "", var16.itemQuantities[var0] + " x " + UserComparator6.ItemDefinition_get(var3).name);
 										} else {
-											var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2902, Client.packetWriter.isaacCipher);
+											var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.OPOBJ6, Client.packetWriter.isaacCipher);
 											var9.packetBuffer.method7398(var3);
 											Client.packetWriter.addNode(var9);
 										}
