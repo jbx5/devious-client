@@ -37,4 +37,28 @@ public interface RSClientPreferences extends Preferences
 
 	@Import("hideUsername")
 	boolean getHideUsername();
+
+	@Import("roofsHidden")
+	@Override
+	void setHidingRoofs(boolean hidden);
+
+	@Import("roofsHidden")
+	@Override
+	boolean isHidingRoofs();
+
+	@Import("windowMode")
+	@Override
+	void setWindowMode(int mode);
+
+	@Import("windowMode")
+	@Override
+	int getWindowMode();
+
+	@Import("titleMusicDisabled")
+	@Override
+	boolean isTitleMusicDisabled();
+
+	@Import("titleMusicDisabled")
+	@Override
+	void setTitleMusicDisabled(boolean disabled);
 }

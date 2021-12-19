@@ -1583,4 +1583,8 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("mouseCrossY")
 	@Override
 	void setClickCrossY(int y);
+
+	@Import("loginIndex")
+	@Override
+	void setLoginIndex(int index);
 }

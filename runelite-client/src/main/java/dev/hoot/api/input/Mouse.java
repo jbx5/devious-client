@@ -80,42 +80,42 @@ public class Mouse
 	public static synchronized void pressed(int x, int y, Canvas canvas, long time, int button)
 	{
 		MouseEvent event = new MouseEvent(canvas, MouseEvent.MOUSE_PRESSED, time, 0, x, y, 1, false, button);
-		event.setSource("meteor");
+		event.setSource("hoot");
 		canvas.dispatchEvent(event);
 	}
 
 	public static synchronized void released(int x, int y, Canvas canvas, long time, int button)
 	{
 		MouseEvent event = new MouseEvent(canvas, MouseEvent.MOUSE_RELEASED, time, 0, x, y, 1, false, button);
-		event.setSource("meteor");
+		event.setSource("hoot");
 		canvas.dispatchEvent(event);
 	}
 
 	public static synchronized void clicked(int x, int y, Canvas canvas, long time, int button)
 	{
 		MouseEvent event = new MouseEvent(canvas, MouseEvent.MOUSE_CLICKED, time, 0, x, y, 1, false, button);
-		event.setSource("meteor");
+		event.setSource("hoot");
 		canvas.dispatchEvent(event);
 	}
 
 	public static synchronized void released(int x, int y, Canvas canvas, long time)
 	{
 		MouseEvent event = new MouseEvent(canvas, MouseEvent.MOUSE_RELEASED, time, 0, x, y, 1, false);
-		event.setSource("meteor");
+		event.setSource("hoot");
 		canvas.dispatchEvent(event);
 	}
 
 	public static synchronized void clicked(int x, int y, Canvas canvas, long time)
 	{
 		MouseEvent event = new MouseEvent(canvas, MouseEvent.MOUSE_CLICKED, time, 0, x, y, 1, false);
-		event.setSource("meteor");
+		event.setSource("hoot");
 		canvas.dispatchEvent(event);
 	}
 
 	public static synchronized void exited(int x, int y, Canvas canvas, long time)
 	{
 		MouseEvent event = new MouseEvent(canvas, MouseEvent.MOUSE_EXITED, time, 0, x, y, 0, false);
-		event.setSource("meteor");
+		event.setSource("hoot");
 		canvas.dispatchEvent(event);
 		exited = true;
 	}
@@ -123,7 +123,7 @@ public class Mouse
 	public static synchronized void entered(int x, int y, Canvas canvas, long time)
 	{
 		MouseEvent event = new MouseEvent(canvas, MouseEvent.MOUSE_ENTERED, time, 0, x, y, 0, false);
-		event.setSource("meteor");
+		event.setSource("hoot");
 		canvas.dispatchEvent(event);
 		exited = false;
 	}
@@ -131,7 +131,7 @@ public class Mouse
 	public static synchronized void moved(int x, int y, Canvas canvas, long time)
 	{
 		MouseEvent event = new MouseEvent(canvas, MouseEvent.MOUSE_MOVED, time, 0, x, y, 0, false);
-		event.setSource("meteor");
+		event.setSource("hoot");
 		canvas.dispatchEvent(event);
 	}
 }

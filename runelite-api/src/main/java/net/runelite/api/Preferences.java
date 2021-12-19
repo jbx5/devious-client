@@ -71,4 +71,20 @@ public interface Preferences
 	 * Gets if the login name should be replaced with asterisks
 	 */
 	boolean getHideUsername();
+
+	void setMusicVolume(int volume);
+
+	int getMusicVolume();
+
+	void setWindowMode(int mode);
+
+	int getWindowMode();
+
+	boolean isTitleMusicDisabled();
+
+	void setTitleMusicDisabled(boolean disabled);
+
+	void setHidingRoofs(boolean hidden);
+
+	boolean isHidingRoofs();
 }

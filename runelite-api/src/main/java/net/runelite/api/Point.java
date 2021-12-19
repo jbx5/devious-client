@@ -57,4 +57,9 @@ public class Point
 	{
 		return new Point(x + xOff, y + yOff);
 	}
+
+	public java.awt.Point getAwtPoint()
+	{
+		return new java.awt.Point(getX(), getY());
+	}
 }
