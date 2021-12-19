@@ -473,7 +473,7 @@ public class WorldMap {
 					}
 
 					if (var9) {
-						PacketBufferNode var12 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2825, Client.packetWriter.isaacCipher);
+						PacketBufferNode var12 = HitSplatDefinition.getPacketBufferNode(ClientPacket.CLICKWORLDMAP, Client.packetWriter.isaacCipher);
 						var12.packetBuffer.writeIntME(this.mouseCoord.packed());
 						Client.packetWriter.addNode(var12);
 						this.field4311 = 0L;

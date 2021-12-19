@@ -257,7 +257,7 @@ public class class113 {
 		garbageValue = "13"
 	)
 	static final void method2618(String var0, int var1) {
-		PacketBufferNode var2 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2878, Client.packetWriter.isaacCipher);
+		PacketBufferNode var2 = HitSplatDefinition.getPacketBufferNode(ClientPacket.CLAN_SETRANK, Client.packetWriter.isaacCipher);
 		var2.packetBuffer.writeByte(class116.stringCp1252NullTerminatedByteSize(var0) + 1);
 		var2.packetBuffer.method7343(var1);
 		var2.packetBuffer.writeStringCp1252NullTerminated(var0);
