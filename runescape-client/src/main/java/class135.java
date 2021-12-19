@@ -59,7 +59,7 @@ public class class135 extends class126 {
 			if (var3.rank == -1) {
 				String var4 = var3.username.getName();
 				PacketWriter var5 = Client.packetWriter;
-				PacketBufferNode var6 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2875, var5.isaacCipher);
+				PacketBufferNode var6 = HitSplatDefinition.getPacketBufferNode(ClientPacket.ACTIVECLANCHANNEL_KICKUSER, var5.isaacCipher);
 				var6.packetBuffer.writeByte(3 + class116.stringCp1252NullTerminatedByteSize(var4));
 				var6.packetBuffer.writeByte(var0);
 				var6.packetBuffer.writeShort(var1);

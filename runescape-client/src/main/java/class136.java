@@ -111,22 +111,22 @@ public class class136 extends class126 {
 			if (var7 != null && var7 != class340.localPlayer && var7.username != null && var7.username.equals(var5)) {
 				PacketBufferNode var8;
 				if (var0 == 1) {
-					var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2887, Client.packetWriter.isaacCipher);
+					var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.OPPLAYER1, Client.packetWriter.isaacCipher);
 					var8.packetBuffer.method7343(0);
 					var8.packetBuffer.method7398(var3[var6]);
 					Client.packetWriter.addNode(var8);
 				} else if (var0 == 4) {
-					var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2807, Client.packetWriter.isaacCipher);
+					var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.OPPLAYER4, Client.packetWriter.isaacCipher);
 					var8.packetBuffer.writeShortLE(var3[var6]);
 					var8.packetBuffer.writeByte(0);
 					Client.packetWriter.addNode(var8);
 				} else if (var0 == 6) {
-					var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2863, Client.packetWriter.isaacCipher);
+					var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.OPPLAYER6, Client.packetWriter.isaacCipher);
 					var8.packetBuffer.method7390(0);
 					var8.packetBuffer.method7398(var3[var6]);
 					Client.packetWriter.addNode(var8);
 				} else if (var0 == 7) {
-					var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2906, Client.packetWriter.isaacCipher);
+					var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.OPPLAYER7, Client.packetWriter.isaacCipher);
 					var8.packetBuffer.method7362(0);
 					var8.packetBuffer.writeByteC(var3[var6]);
 					Client.packetWriter.addNode(var8);

@@ -43,7 +43,7 @@ public class class288 {
 	)
 	@Export("resumePauseWidget")
 	static void resumePauseWidget(int var0, int var1) {
-		PacketBufferNode var2 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2873, Client.packetWriter.isaacCipher);
+		PacketBufferNode var2 = HitSplatDefinition.getPacketBufferNode(ClientPacket.RESUME_PAUSEBUTTON, Client.packetWriter.isaacCipher);
 		var2.packetBuffer.writeShortLE(var1);
 		var2.packetBuffer.method7407(var0);
 		Client.packetWriter.addNode(var2);
