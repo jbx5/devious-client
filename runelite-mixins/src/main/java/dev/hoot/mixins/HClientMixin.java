@@ -1,9 +1,7 @@
 package dev.hoot.mixins;
 
 import dev.hoot.api.events.InvokeMenuActionEvent;
-import net.runelite.api.DialogOption;
-import net.runelite.api.Tile;
-import net.runelite.api.TileObject;
+import net.runelite.api.*;
 import net.runelite.api.mixins.Copy;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.MethodHook;
@@ -22,6 +20,7 @@ import net.runelite.rs.api.RSProjectile;
 import net.runelite.rs.api.RSRenderable;
 import net.runelite.rs.api.RSTile;
 
+import javax.annotation.Nonnull;
 import java.util.HashMap;
 
 @Mixin(RSClient.class)
@@ -190,5 +189,36 @@ public abstract class HClientMixin implements RSClient
 		}
 
 		client.getCallbacks().post(option);
+	}
+
+	@Inject
+	@Override
+	public ObjectComposition getObjectDefinition(int objectId)
+	{
+		if (objDefCache.containsKey(objectId))
+		{
+			return objDefCache.get(objectId);
+		}
+
+		assert this.isClientThread() : "getObjectDefinition must be called on client thread";
+		RSObjectComposition objectComposition = getRSObjectComposition(objectId);
+		objDefCache.put(objectId, objectComposition);
+		return objectComposition;
+	}
+
+	@Inject
+	@Override
+	@Nonnull
+	public ItemComposition getItemComposition(int id)
+	{
+		if (itemDefCache.containsKey(id))
+		{
+			return itemDefCache.get(id);
+		}
+
+		assert this.isClientThread() : "getItemComposition must be called on client thread";
+		RSItemComposition def = getRSItemDefinition(id);
+		itemDefCache.put(id, def);
+		return def;
 	}
 }

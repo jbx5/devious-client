@@ -2271,22 +2271,22 @@ public abstract class RSClientMixin implements RSClient
 		this.comparingAppearance += comparingAppearance ? 1 : -1;
 	}
 
-	@Inject
-	@Override
-	public ObjectComposition getObjectDefinition(int objectId)
-	{
-		assert this.isClientThread() : "getObjectDefinition must be called on client thread";
-		return getRSObjectComposition(objectId);
-	}
-
-	@Inject
-	@Override
-	@Nonnull
-	public ItemComposition getItemComposition(int id)
-	{
-		assert this.isClientThread() : "getItemComposition must be called on client thread";
-		return getRSItemDefinition(id);
-	}
+//	@Inject
+//	@Override
+//	public ObjectComposition getObjectDefinition(int objectId)
+//	{
+//		assert this.isClientThread() : "getObjectDefinition must be called on client thread";
+//		return getRSObjectComposition(objectId);
+//	}
+//
+//	@Inject
+//	@Override
+//	@Nonnull
+//	public ItemComposition getItemComposition(int id)
+//	{
+//		assert this.isClientThread() : "getItemComposition must be called on client thread";
+//		return getRSItemDefinition(id);
+//	}
 
 	@Inject
 	@Override
