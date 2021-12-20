@@ -2459,7 +2459,7 @@ public interface Client extends GameEngine
 
 	void setClickCrossY(int y);
 
-	ClientPacket getClientPacket();
-
 	void setLoginIndex(int index);
+
+	ClientPacket createClientPacket(int opcode, int length);
 }

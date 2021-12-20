@@ -194,7 +194,7 @@ public class RuneLiteModule extends AbstractModule
 	ClientPacket provideClientPacket(@Nullable Client client)
 	{
 		assert client != null;
-		return client.getClientPacket();
+		return client.createClientPacket(-1, -1);
 	}
 
 	@Provides

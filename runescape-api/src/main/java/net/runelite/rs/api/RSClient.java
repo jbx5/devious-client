@@ -1587,4 +1587,7 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("loginIndex")
 	@Override
 	void setLoginIndex(int index);
+
+	@Construct
+	RSClientPacket createClientPacket(int opcode, int length);
 }

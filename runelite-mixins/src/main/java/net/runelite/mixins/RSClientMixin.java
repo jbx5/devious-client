@@ -72,7 +72,6 @@ import net.runelite.api.NPCComposition;
 import net.runelite.api.NameableContainer;
 import net.runelite.api.Node;
 import net.runelite.api.NodeCache;
-import net.runelite.api.ObjectComposition;
 import net.runelite.api.Perspective;
 import static net.runelite.api.Perspective.LOCAL_TILE_SIZE;
 import net.runelite.api.Player;
