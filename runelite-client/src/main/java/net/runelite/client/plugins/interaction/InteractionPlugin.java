@@ -12,8 +12,8 @@ import javax.inject.Inject;
 
 @PluginDescriptor(
 		name = "Interaction",
-		description = "Automation plugin",
-		tags = {"automation", "interaction", "interact", "bot"}
+		description = "Interaction plugin",
+		tags = {"automation", "interaction", "interact"}
 )
 public class InteractionPlugin extends Plugin
 {

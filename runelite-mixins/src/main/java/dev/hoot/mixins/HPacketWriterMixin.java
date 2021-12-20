@@ -34,11 +34,11 @@ public abstract class HPacketWriterMixin implements RSPacketWriter
 		// So we queue the packet directly after the mouserecorder packet is sent.
 		// Normally we'd have the client handle this by doing an extra check in the if condition (lastbutton == 1337)
 		// but we cannot currently modify the asm instructions, so this is a temporary workaround.
-		if (packet.getClientPacket() != client.getClientPacket().MOUSERECORDER_DATA()
-				|| client.getMouseHandler().getLastButton() != 1337)
-		{
-			return;
-		}
+//		if (packet.getClientPacket() != client.getClientPacket().MOUSERECORDER_DATA()
+//				|| client.getMouseHandler().getLastButton() != 1337)
+//		{
+//			return;
+//		}
 
 //		MouseHandler mouseHandler = client.getMouseHandler();
 //		PacketBufferNode click = client.preparePacket(

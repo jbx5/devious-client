@@ -21,9 +21,9 @@ public interface RSClientPacket extends ClientPacket
 //	@Override
 //	RSClientPacket OPNPCT();
 //
-	@Import("EVENT_MOUSE_CLICK")
-	@Override
-	RSClientPacket EVENT_MOUSE_CLICK();
+//	@Import("EVENT_MOUSE_CLICK")
+//	@Override
+//	RSClientPacket EVENT_MOUSE_CLICK();
 //
 //	@Import("OPNPCU")
 //	@Override
@@ -181,7 +181,7 @@ public interface RSClientPacket extends ClientPacket
 //	@Override
 //	RSClientPacket CLOSE_MODAL();
 
-	@Import("MOUSERECORDER_DATA")
-	@Override
-	RSClientPacket MOUSERECORDER_DATA();
+//	@Import("MOUSERECORDER_DATA")
+//	@Override
+//	RSClientPacket MOUSERECORDER_DATA();
 }

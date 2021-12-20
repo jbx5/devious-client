@@ -372,6 +372,11 @@ public class OPRSExternalPluginManager
 			{
 				log.debug("KeyVal: {}", keyval);
 
+				if (keyval.isBlank())
+				{
+					continue;
+				}
+
 				String[] split = keyval.split("\\|");
 				String id = split[0];
 				String url = split[1];

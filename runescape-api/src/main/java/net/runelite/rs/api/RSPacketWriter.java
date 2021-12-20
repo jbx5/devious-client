@@ -11,4 +11,7 @@ public interface RSPacketWriter extends PacketWriter
 	@Import("isaacCipher")
 	@Override
 	RSIsaacCipher getIsaacCipher();
+
+	@Import("serverPacket")
+	RSServerPacket getServerPacket();
 }
