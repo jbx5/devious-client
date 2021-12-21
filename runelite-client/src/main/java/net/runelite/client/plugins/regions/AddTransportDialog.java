@@ -132,7 +132,7 @@ public class AddTransportDialog extends JFrame
 
 	private void submit()
 	{
-		if (Game.getState() != GameState.LOGGED_IN || regionConfig.apiKey().isBlank())
+		if (Game.getState() != GameState.LOGGED_IN)
 		{
 			return;
 		}
@@ -152,7 +152,7 @@ public class AddTransportDialog extends JFrame
 				RequestBody body = RequestBody.create(RegionManager.JSON_MEDIATYPE, json);
 				Request request = new Request.Builder()
 						.post(body)
-						.header("api-key", regionConfig.apiKey())
+						.header("api-key", "f0bbb47b-839a-43f7-b907-eff4ab131231")
 						.url(RegionManager.API_URL + "/transports")
 						.build();
 				Response response = okHttpClient.newCall(request)

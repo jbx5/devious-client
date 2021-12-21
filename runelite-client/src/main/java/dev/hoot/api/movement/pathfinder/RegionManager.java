@@ -50,7 +50,7 @@ public class RegionManager
 
 	public void sendRegion()
 	{
-		if (Game.getState() != GameState.LOGGED_IN || regionConfig.apiKey().isBlank())
+		if (Game.getState() != GameState.LOGGED_IN)
 		{
 			return;
 		}
@@ -63,7 +63,7 @@ public class RegionManager
 				{
 					Request request = new Request.Builder()
 							.get()
-							.header("api-key", regionConfig.apiKey())
+							.header("api-key", "f0bbb47b-839a-43f7-b907-eff4ab131231")
 							.url(API_URL + "/regions/instance/" + Players.getLocal().getWorldLocation().getRegionID())
 							.build();
 					Response response = okHttpClient.newCall(request)
@@ -200,7 +200,7 @@ public class RegionManager
 				RequestBody body = RequestBody.create(JSON_MEDIATYPE, json);
 				Request request = new Request.Builder()
 						.post(body)
-                        .header("api-key", regionConfig.apiKey())
+                        .header("api-key", "f0bbb47b-839a-43f7-b907-eff4ab131231")
 						.url(API_URL + "/regions/" + VERSION)
 						.build();
 				Response response = okHttpClient.newCall(request)
