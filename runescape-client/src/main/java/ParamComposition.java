@@ -1,48 +1,45 @@
+import net.runelite.rs.ScriptOpcodes;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
-
 @ObfuscatedName("fr")
 @Implements("ParamComposition")
 public class ParamComposition extends DualNode {
 	@ObfuscatedName("ur")
-	@ObfuscatedSignature(
-		descriptor = "Lmy;"
-	)
+	@ObfuscatedSignature(descriptor = "Lmy;")
 	@Export("masterDisk")
 	static ArchiveDisk masterDisk;
+
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "Lku;"
-	)
+	@ObfuscatedSignature(descriptor = "Lku;")
 	@Export("ParamDefinition_archive")
 	static AbstractArchive ParamDefinition_archive;
+
 	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "Liq;"
-	)
+	@ObfuscatedSignature(descriptor = "Liq;")
 	@Export("ParamDefinition_cached")
 	public static EvictingDualNodeHashTable ParamDefinition_cached;
+
 	@ObfuscatedName("p")
 	@Export("type")
 	char type;
+
 	@ObfuscatedName("m")
-	@ObfuscatedGetter(
-		intValue = -871462947
-	)
+	@ObfuscatedGetter(intValue = -871462947)
 	@Export("defaultInt")
 	public int defaultInt;
+
 	@ObfuscatedName("t")
 	@Export("defaultStr")
 	public String defaultStr;
+
 	@ObfuscatedName("s")
 	@Export("autoDisable")
 	boolean autoDisable;
-
-	static {
+	static 
+	{
 		ParamDefinition_cached = new EvictingDualNodeHashTable(64);
 	}
 
@@ -51,19 +48,13 @@ public class ParamComposition extends DualNode {
 	}
 
 	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "630650762"
-	)
+	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "630650762")
 	@Export("postDecode")
 	void postDecode() {
 	}
 
 	@ObfuscatedName("m")
-	@ObfuscatedSignature(
-		descriptor = "(Lpi;B)V",
-		garbageValue = "-46"
-	)
+	@ObfuscatedSignature(descriptor = "(Lpi;B)V", garbageValue = "-46")
 	@Export("decode")
 	void decode(Buffer var1) {
 		while (true) {
@@ -71,16 +62,12 @@ public class ParamComposition extends DualNode {
 			if (var2 == 0) {
 				return;
 			}
-
 			this.decodeNext(var1, var2);
-		}
+		} 
 	}
 
 	@ObfuscatedName("t")
-	@ObfuscatedSignature(
-		descriptor = "(Lpi;II)V",
-		garbageValue = "-1961413058"
-	)
+	@ObfuscatedSignature(descriptor = "(Lpi;II)V", garbageValue = "-1961413058")
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
 		if (var2 == 1) {
@@ -92,24 +79,17 @@ public class ParamComposition extends DualNode {
 		} else if (var2 == 5) {
 			this.defaultStr = var1.readStringCp1252NullTerminated();
 		}
-
 	}
 
 	@ObfuscatedName("s")
-	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "404236453"
-	)
+	@ObfuscatedSignature(descriptor = "(I)Z", garbageValue = "404236453")
 	@Export("isString")
 	public boolean isString() {
 		return this.type == 's';
 	}
 
 	@ObfuscatedName("x")
-	@ObfuscatedSignature(
-		descriptor = "(ILbn;ZI)I",
-		garbageValue = "-893226045"
-	)
+	@ObfuscatedSignature(descriptor = "(ILbn;ZI)I", garbageValue = "-893226045")
 	static int method3397(int var0, Script var1, boolean var2) {
 		if (var0 == ScriptOpcodes.SOUND_SYNTH) {
 			IsaacCipher.Interpreter_intStackSize -= 3;
@@ -125,8 +105,8 @@ public class ParamComposition extends DualNode {
 		} else {
 			int var3;
 			int var4;
-			if (var0 != 3209 && var0 != 3181 && var0 != 3203 && var0 != 3205 && var0 != 3207) {
-				if (var0 != 3210 && var0 != 3182 && var0 != 3204 && var0 != 3206 && var0 != 3208) {
+			if (((((var0 != 3209) && (var0 != 3181)) && (var0 != 3203)) && (var0 != 3205)) && (var0 != 3207)) {
+				if (((((var0 != 3210) && (var0 != 3182)) && (var0 != 3204)) && (var0 != 3206)) && (var0 != 3208)) {
 					return var0 == 3211 ? 1 : 2;
 				} else {
 					var3 = 0;
@@ -142,19 +122,17 @@ public class ParamComposition extends DualNode {
 					} else if (var0 == 3208) {
 						var3 = 9;
 					}
-
 					if (var3 == 6) {
-						float var5 = 200.0F * ((float)SecureRandomFuture.clientPreferences.brightness - 0.5F);
+						float var5 = 200.0F * (((float) (SecureRandomFuture.clientPreferences.brightness)) - 0.5F);
 						var4 = 100 - Math.round(var5);
 					} else if (var3 == 7) {
-						var4 = Math.round((float)SecureRandomFuture.clientPreferences.musicVolume / 2.55F);
+						var4 = Math.round(((float) (SecureRandomFuture.clientPreferences.musicVolume)) / 2.55F);
 					} else if (var3 == 8) {
-						var4 = Math.round((float)SecureRandomFuture.clientPreferences.soundEffectsVolume / 1.27F);
+						var4 = Math.round(((float) (SecureRandomFuture.clientPreferences.soundEffectsVolume)) / 1.27F);
 					} else if (var3 == 9) {
-						var4 = Math.round((float)SecureRandomFuture.clientPreferences.areaSoundEffectsVolume / 1.27F);
+						var4 = Math.round(((float) (SecureRandomFuture.clientPreferences.areaSoundEffectsVolume)) / 1.27F);
 					}
-
-					Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var4;
+					Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = var4;
 					return 1;
 				}
 			} else {
@@ -171,21 +149,19 @@ public class ParamComposition extends DualNode {
 				} else if (var0 == 3207) {
 					var3 = 9;
 				}
-
 				if (var3 == 6) {
 					var4 = 100 - Math.min(Math.max(var4, 0), 100);
-					InterfaceParent.method2142((double)(0.5F + (float)var4 / 200.0F));
+					InterfaceParent.method2142(((double) (0.5F + (((float) (var4)) / 200.0F))));
 				} else if (var3 == 7) {
 					var4 = Math.min(Math.max(var4, 0), 100);
-					Varcs.method2426(Math.round((float)var4 * 2.55F));
+					Varcs.method2426(Math.round(((float) (var4)) * 2.55F));
 				} else if (var3 == 8) {
 					var4 = Math.min(Math.max(var4, 0), 100);
-					class20.updateSoundEffectVolume(Math.round((float)var4 * 1.27F));
+					class20.updateSoundEffectVolume(Math.round(((float) (var4)) * 1.27F));
 				} else if (var3 == 9) {
 					var4 = Math.min(Math.max(var4, 0), 100);
-					Players.method2383(Math.round(1.27F * (float)var4));
+					Players.method2383(Math.round(1.27F * ((float) (var4))));
 				}
-
 				return 1;
 			}
 		}

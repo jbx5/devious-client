@@ -1,7 +1,6 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-
 @ObfuscatedName("nv")
 public class class372 extends class373 {
 	public class372(int var1) {
@@ -9,23 +8,17 @@ public class class372 extends class373 {
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(Lpi;II)V",
-		garbageValue = "1616764501"
-	)
+	@ObfuscatedSignature(descriptor = "(Lpi;II)V", garbageValue = "1616764501")
 	void vmethod6785(Buffer var1, int var2) {
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(CI)B",
-		garbageValue = "1890752943"
-	)
+	@ObfuscatedSignature(descriptor = "(CI)B", garbageValue = "1890752943")
 	@Export("charToByteCp1252")
 	public static byte charToByteCp1252(char var0) {
 		byte var1;
-		if (var0 > 0 && var0 < 128 || var0 >= 160 && var0 <= 255) {
-			var1 = (byte)var0;
+		if (((var0 > 0) && (var0 < 128)) || ((var0 >= 160) && (var0 <= 255))) {
+			var1 = ((byte) (var0));
 		} else if (var0 == 8364) {
 			var1 = -128;
 		} else if (var0 == 8218) {
@@ -83,7 +76,6 @@ public class class372 extends class373 {
 		} else {
 			var1 = 63;
 		}
-
 		return var1;
 	}
 }

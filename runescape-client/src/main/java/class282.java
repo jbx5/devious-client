@@ -2,39 +2,26 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-
 @ObfuscatedName("ja")
 public enum class282 implements MouseWheel {
+
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "Lja;"
-	)
+	@ObfuscatedSignature(descriptor = "Lja;")
 	field3377(0),
 	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "Lja;"
-	)
+	@ObfuscatedSignature(descriptor = "Lja;")
 	field3376(1),
 	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "Lja;"
-	)
+	@ObfuscatedSignature(descriptor = "Lja;")
 	field3378(2),
 	@ObfuscatedName("m")
-	@ObfuscatedSignature(
-		descriptor = "Lja;"
-	)
+	@ObfuscatedSignature(descriptor = "Lja;")
 	field3379(3),
 	@ObfuscatedName("t")
-	@ObfuscatedSignature(
-		descriptor = "Lja;"
-	)
+	@ObfuscatedSignature(descriptor = "Lja;")
 	field3380(4);
-
 	@ObfuscatedName("s")
-	@ObfuscatedGetter(
-		intValue = 1590225627
-	)
+	@ObfuscatedGetter(intValue = 1590225627)
 	final int field3381;
 
 	class282(int var3) {
@@ -42,23 +29,16 @@ public enum class282 implements MouseWheel {
 	}
 
 	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "48"
-	)
+	@ObfuscatedSignature(descriptor = "(B)I", garbageValue = "48")
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.field3381;
 	}
 
 	@ObfuscatedName("w")
-	@ObfuscatedSignature(
-		descriptor = "(B)Lbw;",
-		garbageValue = "-51"
-	)
+	@ObfuscatedSignature(descriptor = "(B)Lbw;", garbageValue = "-51")
 	@Export("worldListStart")
 	static World worldListStart() {
 		World.World_listCount = 0;
 		return Canvas.getNextWorldListWorld();
-	}
-}
+	}}

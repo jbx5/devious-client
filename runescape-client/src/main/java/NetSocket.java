@@ -8,74 +8,69 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-
 @ObfuscatedName("ff")
 @Implements("NetSocket")
 public final class NetSocket extends AbstractSocket implements Runnable {
 	@ObfuscatedName("er")
-	@ObfuscatedSignature(
-		descriptor = "Lkz;"
-	)
+	@ObfuscatedSignature(descriptor = "Lkz;")
 	@Export("archive9")
 	static Archive archive9;
+
 	@ObfuscatedName("c")
 	@Export("inputStream")
 	InputStream inputStream;
+
 	@ObfuscatedName("b")
 	@Export("outputStream")
 	OutputStream outputStream;
+
 	@ObfuscatedName("p")
 	@Export("socket")
 	Socket socket;
+
 	@ObfuscatedName("m")
 	@Export("isClosed")
 	boolean isClosed;
+
 	@ObfuscatedName("t")
-	@ObfuscatedSignature(
-		descriptor = "Leb;"
-	)
+	@ObfuscatedSignature(descriptor = "Leb;")
 	@Export("taskHandler")
 	TaskHandler taskHandler;
+
 	@ObfuscatedName("s")
-	@ObfuscatedSignature(
-		descriptor = "Lfk;"
-	)
+	@ObfuscatedSignature(descriptor = "Lfk;")
 	@Export("task")
 	Task task;
+
 	@ObfuscatedName("j")
 	@Export("outBuffer")
 	byte[] outBuffer;
+
 	@ObfuscatedName("w")
-	@ObfuscatedGetter(
-		intValue = -1984666421
-	)
+	@ObfuscatedGetter(intValue = -1984666421)
 	@Export("outLength")
 	int outLength;
+
 	@ObfuscatedName("n")
-	@ObfuscatedGetter(
-		intValue = 773716871
-	)
+	@ObfuscatedGetter(intValue = 773716871)
 	@Export("outOffset")
 	int outOffset;
+
 	@ObfuscatedName("r")
 	@Export("exceptionWriting")
 	boolean exceptionWriting;
+
 	@ObfuscatedName("o")
-	@ObfuscatedGetter(
-		intValue = 1772673061
-	)
+	@ObfuscatedGetter(intValue = 1772673061)
 	@Export("bufferLength")
 	final int bufferLength;
+
 	@ObfuscatedName("v")
-	@ObfuscatedGetter(
-		intValue = -19944007
-	)
+	@ObfuscatedGetter(intValue = -19944007)
 	@Export("maxPacketLength")
 	final int maxPacketLength;
 
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/net/Socket;Leb;I)V"
-	)
+	@ObfuscatedSignature(descriptor = "(Ljava/net/Socket;Leb;I)V")
 	public NetSocket(Socket var1, TaskHandler var2, int var3) throws IOException {
 		this.isClosed = false;
 		this.outLength = 0;
@@ -94,10 +89,7 @@ public final class NetSocket extends AbstractSocket implements Runnable {
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-2099219864"
-	)
+	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "-2099219864")
 	@Export("close")
 	public void close() {
 		if (!this.isClosed) {
@@ -105,49 +97,37 @@ public final class NetSocket extends AbstractSocket implements Runnable {
 				this.isClosed = true;
 				this.notifyAll();
 			}
-
 			if (this.task != null) {
 				while (this.task.status == 0) {
 					Bounds.method6608(1L);
-				}
-
+				} 
 				if (this.task.status == 1) {
 					try {
-						((Thread)this.task.result).join();
+						((Thread) (this.task.result)).join();
 					} catch (InterruptedException var3) {
 					}
 				}
 			}
-
 			this.task = null;
 		}
 	}
 
 	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "-44"
-	)
+	@ObfuscatedSignature(descriptor = "(B)I", garbageValue = "-44")
 	@Export("readUnsignedByte")
 	public int readUnsignedByte() throws IOException {
 		return this.isClosed ? 0 : this.inputStream.read();
 	}
 
 	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-1579083707"
-	)
+	@ObfuscatedSignature(descriptor = "(I)I", garbageValue = "-1579083707")
 	@Export("available")
 	public int available() throws IOException {
 		return this.isClosed ? 0 : this.inputStream.available();
 	}
 
 	@ObfuscatedName("m")
-	@ObfuscatedSignature(
-		descriptor = "(II)Z",
-		garbageValue = "1654551476"
-	)
+	@ObfuscatedSignature(descriptor = "(II)Z", garbageValue = "1654551476")
 	@Export("isAvailable")
 	public boolean isAvailable(int var1) throws IOException {
 		if (this.isClosed) {
@@ -158,10 +138,7 @@ public final class NetSocket extends AbstractSocket implements Runnable {
 	}
 
 	@ObfuscatedName("t")
-	@ObfuscatedSignature(
-		descriptor = "([BIIS)I",
-		garbageValue = "909"
-	)
+	@ObfuscatedSignature(descriptor = "([BIIS)I", garbageValue = "909")
 	@Export("read")
 	public int read(byte[] var1, int var2, int var3) throws IOException {
 		if (this.isClosed) {
@@ -174,19 +151,14 @@ public final class NetSocket extends AbstractSocket implements Runnable {
 				if (var5 <= 0) {
 					throw new EOFException();
 				}
-
 				var2 += var5;
 			}
-
 			return var4;
 		}
 	}
 
 	@ObfuscatedName("s")
-	@ObfuscatedSignature(
-		descriptor = "([BIIB)V",
-		garbageValue = "-34"
-	)
+	@ObfuscatedSignature(descriptor = "([BIIB)V", garbageValue = "-34")
 	@Export("write0")
 	void write0(byte[] var1, int var2, int var3) throws IOException {
 		if (!this.isClosed) {
@@ -197,20 +169,17 @@ public final class NetSocket extends AbstractSocket implements Runnable {
 				if (this.outBuffer == null) {
 					this.outBuffer = new byte[this.bufferLength];
 				}
-
 				synchronized(this) {
 					for (int var5 = 0; var5 < var3; ++var5) {
 						this.outBuffer[this.outOffset] = var1[var5 + var2];
 						this.outOffset = (this.outOffset + 1) % this.bufferLength;
-						if ((this.maxPacketLength + this.outLength) % this.bufferLength == this.outOffset) {
+						if (((this.maxPacketLength + this.outLength) % this.bufferLength) == this.outOffset) {
 							throw new IOException();
 						}
 					}
-
 					if (this.task == null) {
 						this.task = this.taskHandler.newThreadTask(this, 3);
 					}
-
 					this.notifyAll();
 				}
 			}
@@ -218,10 +187,7 @@ public final class NetSocket extends AbstractSocket implements Runnable {
 	}
 
 	@ObfuscatedName("j")
-	@ObfuscatedSignature(
-		descriptor = "([BIII)V",
-		garbageValue = "-1320460000"
-	)
+	@ObfuscatedSignature(descriptor = "([BIII)V", garbageValue = "-1320460000")
 	@Export("write")
 	public void write(byte[] var1, int var2, int var3) throws IOException {
 		this.write0(var1, var2, var3);
@@ -230,7 +196,7 @@ public final class NetSocket extends AbstractSocket implements Runnable {
 	public void run() {
 		try {
 			while (true) {
-				label84: {
+				label84 : {
 					int var1;
 					int var2;
 					synchronized(this) {
@@ -238,13 +204,11 @@ public final class NetSocket extends AbstractSocket implements Runnable {
 							if (this.isClosed) {
 								break label84;
 							}
-
 							try {
 								this.wait();
 							} catch (InterruptedException var10) {
 							}
 						}
-
 						var2 = this.outLength;
 						if (this.outOffset >= this.outLength) {
 							var1 = this.outOffset - this.outLength;
@@ -252,19 +216,15 @@ public final class NetSocket extends AbstractSocket implements Runnable {
 							var1 = this.bufferLength - this.outLength;
 						}
 					}
-
 					if (var1 <= 0) {
 						continue;
 					}
-
 					try {
 						this.outputStream.write(this.outBuffer, var2, var1);
 					} catch (IOException var9) {
 						this.exceptionWriting = true;
 					}
-
 					this.outLength = (var1 + this.outLength) % this.bufferLength;
-
 					try {
 						if (this.outLength == this.outOffset) {
 							this.outputStream.flush();
@@ -274,29 +234,24 @@ public final class NetSocket extends AbstractSocket implements Runnable {
 					}
 					continue;
 				}
-
 				try {
 					if (this.inputStream != null) {
 						this.inputStream.close();
 					}
-
 					if (this.outputStream != null) {
 						this.outputStream.close();
 					}
-
 					if (this.socket != null) {
 						this.socket.close();
 					}
 				} catch (IOException var7) {
 				}
-
 				this.outBuffer = null;
 				break;
-			}
+			} 
 		} catch (Exception var12) {
-			AccessFile.RunException_sendStackTrace((String)null, var12);
+			AccessFile.RunException_sendStackTrace(((String) (null)), var12);
 		}
-
 	}
 
 	protected void finalize() {
@@ -304,19 +259,13 @@ public final class NetSocket extends AbstractSocket implements Runnable {
 	}
 
 	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "(CI)Z",
-		garbageValue = "320078998"
-	)
+	@ObfuscatedSignature(descriptor = "(CI)Z", garbageValue = "320078998")
 	static final boolean method3119(char var0) {
-		return var0 == 160 || var0 == ' ' || var0 == '_' || var0 == '-';
+		return (((var0 == 160) || (var0 == ' ')) || (var0 == '_')) || (var0 == '-');
 	}
 
 	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "(Lku;IIIZI)V",
-		garbageValue = "1774445817"
-	)
+	@ObfuscatedSignature(descriptor = "(Lku;IIIZI)V", garbageValue = "1774445817")
 	public static void method3118(AbstractArchive var0, int var1, int var2, int var3, boolean var4) {
 		class260.musicPlayerStatus = 1;
 		class124.musicTrackArchive = var0;

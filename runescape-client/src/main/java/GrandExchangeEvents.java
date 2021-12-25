@@ -6,27 +6,30 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-
 @ObfuscatedName("ka")
 @Implements("GrandExchangeEvents")
 public class GrandExchangeEvents {
 	@ObfuscatedName("b")
 	@Export("GrandExchangeEvents_ageComparator")
 	public static Comparator GrandExchangeEvents_ageComparator;
+
 	@ObfuscatedName("p")
 	@Export("GrandExchangeEvents_priceComparator")
 	public static Comparator GrandExchangeEvents_priceComparator;
+
 	@ObfuscatedName("m")
 	@Export("GrandExchangeEvents_nameComparator")
 	public static Comparator GrandExchangeEvents_nameComparator;
+
 	@ObfuscatedName("t")
 	@Export("GrandExchangeEvents_quantityComparator")
 	public static Comparator GrandExchangeEvents_quantityComparator;
+
 	@ObfuscatedName("c")
 	@Export("events")
 	public final List events;
-
-	static {
+	static 
+	{
 		GrandExchangeEvents_ageComparator = new GrandExchangeOfferAgeComparator();
 		new GrandExchangeOfferWorldComparator();
 		GrandExchangeEvents_priceComparator = new GrandExchangeOfferUnitPriceComparator();
@@ -34,10 +37,7 @@ public class GrandExchangeEvents {
 		GrandExchangeEvents_quantityComparator = new GrandExchangeOfferTotalQuantityComparator();
 	}
 
-	@ObfuscatedSignature(
-		descriptor = "(Lpi;Z)V",
-		garbageValue = "1"
-	)
+	@ObfuscatedSignature(descriptor = "(Lpi;Z)V", garbageValue = "1")
 	public GrandExchangeEvents(Buffer var1, boolean var2) {
 		int var3 = var1.readUnsignedShort();
 		boolean var4 = var1.readUnsignedByte() == 1;
@@ -47,21 +47,15 @@ public class GrandExchangeEvents {
 		} else {
 			var5 = 0;
 		}
-
 		int var6 = var1.readUnsignedShort();
 		this.events = new ArrayList(var6);
-
 		for (int var7 = 0; var7 < var6; ++var7) {
 			this.events.add(new GrandExchangeEvent(var1, var5, var3));
 		}
-
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/util/Comparator;ZB)V",
-		garbageValue = "39"
-	)
+	@ObfuscatedSignature(descriptor = "(Ljava/util/Comparator;ZB)V", garbageValue = "39")
 	@Export("sort")
 	public void sort(Comparator var1, boolean var2) {
 		if (var2) {
@@ -69,20 +63,15 @@ public class GrandExchangeEvents {
 		} else {
 			Collections.sort(this.events, Collections.reverseOrder(var1));
 		}
-
 	}
 
 	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "40"
-	)
+	@ObfuscatedSignature(descriptor = "(B)V", garbageValue = "40")
 	public static void method5716() {
 		if (KeyHandler.KeyHandler_instance != null) {
 			synchronized(KeyHandler.KeyHandler_instance) {
 				KeyHandler.KeyHandler_instance = null;
 			}
 		}
-
 	}
 }

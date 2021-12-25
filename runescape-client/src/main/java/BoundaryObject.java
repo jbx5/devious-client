@@ -5,74 +5,61 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-
 @ObfuscatedName("hg")
 @Implements("BoundaryObject")
 public final class BoundaryObject {
 	@ObfuscatedName("sv")
-	@ObfuscatedSignature(
-		descriptor = "Lbp;"
-	)
+	@ObfuscatedSignature(descriptor = "Lbp;")
 	@Export("decimator")
 	static Decimator decimator;
+
 	@ObfuscatedName("z")
-	@ObfuscatedGetter(
-		intValue = 1063429417
-	)
+	@ObfuscatedGetter(intValue = 1063429417)
 	@Export("canvasHeight")
 	public static int canvasHeight;
+
 	@ObfuscatedName("c")
-	@ObfuscatedGetter(
-		intValue = 1211283293
-	)
+	@ObfuscatedGetter(intValue = 1211283293)
 	@Export("tileHeight")
 	int tileHeight;
+
 	@ObfuscatedName("b")
-	@ObfuscatedGetter(
-		intValue = 392897309
-	)
+	@ObfuscatedGetter(intValue = 392897309)
 	@Export("x")
 	int x;
+
 	@ObfuscatedName("p")
-	@ObfuscatedGetter(
-		intValue = 1130231369
-	)
+	@ObfuscatedGetter(intValue = 1130231369)
 	@Export("y")
 	int y;
+
 	@ObfuscatedName("m")
-	@ObfuscatedGetter(
-		intValue = 1078743455
-	)
+	@ObfuscatedGetter(intValue = 1078743455)
 	@Export("orientationA")
 	int orientationA;
+
 	@ObfuscatedName("t")
-	@ObfuscatedGetter(
-		intValue = -1456059729
-	)
+	@ObfuscatedGetter(intValue = -1456059729)
 	@Export("orientationB")
 	int orientationB;
+
 	@ObfuscatedName("s")
-	@ObfuscatedSignature(
-		descriptor = "Lgt;"
-	)
+	@ObfuscatedSignature(descriptor = "Lgt;")
 	@Export("renderable1")
 	public Renderable renderable1;
+
 	@ObfuscatedName("j")
-	@ObfuscatedSignature(
-		descriptor = "Lgt;"
-	)
+	@ObfuscatedSignature(descriptor = "Lgt;")
 	@Export("renderable2")
 	public Renderable renderable2;
+
 	@ObfuscatedName("w")
-	@ObfuscatedGetter(
-		longValue = 7825076594130185971L
-	)
+	@ObfuscatedGetter(longValue = 7825076594130185971L)
 	@Export("tag")
 	public long tag;
+
 	@ObfuscatedName("n")
-	@ObfuscatedGetter(
-		intValue = -1681276427
-	)
+	@ObfuscatedGetter(intValue = -1681276427)
 	@Export("flags")
 	int flags;
 
@@ -82,10 +69,7 @@ public final class BoundaryObject {
 	}
 
 	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/io/File;ZB)Z",
-		garbageValue = "15"
-	)
+	@ObfuscatedSignature(descriptor = "(Ljava/io/File;ZB)Z", garbageValue = "15")
 	public static boolean method4321(File var0, boolean var1) {
 		try {
 			RandomAccessFile var2 = new RandomAccessFile(var0, "rw");
@@ -97,7 +81,6 @@ public final class BoundaryObject {
 			if (var1) {
 				var0.delete();
 			}
-
 			return true;
 		} catch (Exception var4) {
 			return false;
@@ -105,17 +88,13 @@ public final class BoundaryObject {
 	}
 
 	@ObfuscatedName("d")
-	@ObfuscatedSignature(
-		descriptor = "(Lbw;B)V",
-		garbageValue = "2"
-	)
+	@ObfuscatedSignature(descriptor = "(Lbw;B)V", garbageValue = "2")
 	@Export("changeWorld")
 	static void changeWorld(World var0) {
 		if (var0.isMembersOnly() != Client.isMembersWorld) {
 			Client.isMembersWorld = var0.isMembersOnly();
 			UserComparator6.method2552(var0.isMembersOnly());
 		}
-
 		if (var0.properties != Client.worldProperties) {
 			Archive var1 = UserComparator6.archive8;
 			int var2 = var0.properties;
@@ -127,12 +106,11 @@ public final class BoundaryObject {
 				Login.logoSprite = ClientPreferences.SpriteBuffer_getIndexedSpriteByName(var1, "logo", "");
 			}
 		}
-
 		class185.worldHost = var0.host;
 		Client.worldId = var0.id;
 		Client.worldProperties = var0.properties;
-		GameObject.worldPort = Client.gameBuild == 0 ? 43594 : var0.id + 40000;
-		class133.js5Port = Client.gameBuild == 0 ? 443 : var0.id + 50000;
+		GameObject.worldPort = (Client.gameBuild == 0) ? 43594 : var0.id + 40000;
+		class133.js5Port = (Client.gameBuild == 0) ? 443 : var0.id + 50000;
 		class129.currentPort = GameObject.worldPort;
 	}
 }

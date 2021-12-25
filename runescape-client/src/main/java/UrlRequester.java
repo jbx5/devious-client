@@ -5,21 +5,22 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.LinkedList;
 import java.util.Queue;
+import net.runelite.rs.ScriptOpcodes;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
-
 @ObfuscatedName("cq")
 @Implements("UrlRequester")
 public class UrlRequester implements Runnable {
 	@ObfuscatedName("c")
 	@Export("thread")
 	final Thread thread;
+
 	@ObfuscatedName("b")
 	@Export("isClosed")
 	volatile boolean isClosed;
+
 	@ObfuscatedName("p")
 	@Export("requests")
 	Queue requests;
@@ -32,10 +33,7 @@ public class UrlRequester implements Runnable {
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/net/URL;I)Lcf;",
-		garbageValue = "-1357643641"
-	)
+	@ObfuscatedSignature(descriptor = "(Ljava/net/URL;I)Lcf;", garbageValue = "-1357643641")
 	@Export("request")
 	public UrlRequest request(URL var1) {
 		UrlRequest var2 = new UrlRequest(var1);
@@ -47,23 +45,17 @@ public class UrlRequester implements Runnable {
 	}
 
 	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "397818236"
-	)
+	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "397818236")
 	@Export("close")
 	public void close() {
 		this.isClosed = true;
-
 		try {
 			synchronized(this) {
 				this.notify();
 			}
-
 			this.thread.join();
 		} catch (InterruptedException var4) {
 		}
-
 	}
 
 	public void run() {
@@ -71,7 +63,7 @@ public class UrlRequester implements Runnable {
 			try {
 				UrlRequest var1;
 				synchronized(this) {
-					var1 = (UrlRequest)this.requests.poll();
+					var1 = ((UrlRequest) (this.requests.poll()));
 					if (var1 == null) {
 						try {
 							this.wait();
@@ -80,10 +72,8 @@ public class UrlRequester implements Runnable {
 						continue;
 					}
 				}
-
 				DataInputStream var2 = null;
 				URLConnection var3 = null;
-
 				try {
 					var3 = var1.url.openConnection();
 					var3.setConnectTimeout(5000);
@@ -97,7 +87,6 @@ public class UrlRequester implements Runnable {
 						var2.readFully(var5);
 						var1.response0 = var5;
 					}
-
 					var1.isDone0 = true;
 				} catch (IOException var14) {
 					var1.isDone0 = true;
@@ -105,72 +94,66 @@ public class UrlRequester implements Runnable {
 					if (var2 != null) {
 						var2.close();
 					}
-
-					if (var3 != null && var3 instanceof HttpURLConnection) {
-						((HttpURLConnection)var3).disconnect();
+					if ((var3 != null) && (var3 instanceof HttpURLConnection)) {
+						((HttpURLConnection) (var3)).disconnect();
 					}
-
 				}
 			} catch (Exception var17) {
-				AccessFile.RunException_sendStackTrace((String)null, var17);
+				AccessFile.RunException_sendStackTrace(((String) (null)), var17);
 			}
-		}
-
+		} 
 	}
 
 	@ObfuscatedName("k")
-	@ObfuscatedSignature(
-		descriptor = "(ILbn;ZI)I",
-		garbageValue = "-33577073"
-	)
+	@ObfuscatedSignature(descriptor = "(ILbn;ZI)I", garbageValue = "-33577073")
 	static int method2486(int var0, Script var1, boolean var2) {
 		Widget var3 = ChatChannel.getWidget(Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize]);
 		if (var0 == ScriptOpcodes.IF_GETSCROLLX) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var3.scrollX;
+			Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = var3.scrollX;
 			return 1;
 		} else if (var0 == ScriptOpcodes.IF_GETSCROLLY) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var3.scrollY;
+			Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = var3.scrollY;
 			return 1;
 		} else if (var0 == ScriptOpcodes.IF_GETTEXT) {
-			Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = var3.text;
+			Interpreter.Interpreter_stringStack[(++class13.Interpreter_stringStackSize) - 1] = var3.text;
 			return 1;
 		} else if (var0 == ScriptOpcodes.IF_GETSCROLLWIDTH) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var3.scrollWidth;
+			Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = var3.scrollWidth;
 			return 1;
 		} else if (var0 == ScriptOpcodes.IF_GETSCROLLHEIGHT) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var3.scrollHeight;
+			Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = var3.scrollHeight;
 			return 1;
 		} else if (var0 == ScriptOpcodes.IF_GETMODELZOOM) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var3.modelZoom;
+			Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = var3.modelZoom;
 			return 1;
 		} else if (var0 == ScriptOpcodes.IF_GETMODELANGLE_X) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var3.modelAngleX;
+			Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = var3.modelAngleX;
 			return 1;
 		} else if (var0 == ScriptOpcodes.IF_GETMODELANGLE_Z) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var3.modelAngleZ;
+			Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = var3.modelAngleZ;
 			return 1;
 		} else if (var0 == ScriptOpcodes.IF_GETMODELANGLE_Y) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var3.modelAngleY;
+			Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = var3.modelAngleY;
 			return 1;
 		} else if (var0 == ScriptOpcodes.IF_GETTRANS) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var3.transparencyTop;
+			Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = var3.transparencyTop;
 			return 1;
 		} else if (var0 == 2610) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var3.transparencyBot;
+			Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = var3.transparencyBot;
 			return 1;
 		} else if (var0 == ScriptOpcodes.IF_GETCOLOUR) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var3.color;
+			Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = var3.color;
 			return 1;
 		} else if (var0 == ScriptOpcodes.IF_GETFILLCOLOUR) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var3.color2;
+			Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = var3.color2;
 			return 1;
 		} else if (var0 == 2613) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var3.fillMode.rsOrdinal();
+			Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = var3.fillMode.rsOrdinal();
 			return 1;
 		} else if (var0 == ScriptOpcodes.IF_GETMODELTRANSPARENT) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var3.modelTransparency ? 1 : 0;
+			Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = (var3.modelTransparency) ? 1 : 0;
 			return 1;
-		} else if (var0 != 2615 && var0 != 2616) {
+		} else if ((var0 != 2615) && (var0 != 2616)) {
 			return 2;
 		} else {
 			++IsaacCipher.Interpreter_intStackSize;
