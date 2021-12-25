@@ -8,26 +8,34 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+
 @ObfuscatedName("u")
 class class17 implements SSLSession {
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "Lku;")
+	@ObfuscatedSignature(
+		descriptor = "Lku;"
+	)
 	@Export("StructDefinition_archive")
 	static AbstractArchive StructDefinition_archive;
-
 	@ObfuscatedName("o")
-	@ObfuscatedGetter(intValue = 1007360263)
+	@ObfuscatedGetter(
+		intValue = 1007360263
+	)
 	static int field93;
-
 	@ObfuscatedName("ha")
-	@ObfuscatedGetter(intValue = -303525593)
+	@ObfuscatedGetter(
+		intValue = -303525593
+	)
 	static int field90;
-
-
-	@ObfuscatedSignature(descriptor = "Ld;")
+	// $FF: synthetic field
+	@ObfuscatedSignature(
+		descriptor = "Ld;"
+	)
 	final class12 this$1;
 
-	@ObfuscatedSignature(descriptor = "(Ld;)V")
+	@ObfuscatedSignature(
+		descriptor = "(Ld;)V"
+	)
 	class17(class12 var1) {
 		this.this$1 = var1;
 	}
@@ -117,21 +125,30 @@ class class17 implements SSLSession {
 	}
 
 	@ObfuscatedName("x")
-	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "-1239241420")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-1239241420"
+	)
 	protected static final void method292() {
 		class91.clock.mark();
+
 		int var0;
 		for (var0 = 0; var0 < 32; ++var0) {
 			GameEngine.graphicsTickTimes[var0] = 0L;
 		}
+
 		for (var0 = 0; var0 < 32; ++var0) {
 			GameEngine.clientTickTimes[var0] = 0L;
 		}
+
 		GameEngine.gameCyclesToDo = 0;
 	}
 
 	@ObfuscatedName("ik")
-	@ObfuscatedSignature(descriptor = "(IB)V", garbageValue = "40")
+	@ObfuscatedSignature(
+		descriptor = "(IB)V",
+		garbageValue = "40"
+	)
 	static final void method291(int var0) {
 		if (var0 >= 0) {
 			int var1 = Client.menuArguments1[var0];

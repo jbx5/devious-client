@@ -2,23 +2,25 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+
 @ObfuscatedName("ai")
 @Implements("PcmStream")
 public abstract class PcmStream extends Node {
 	@ObfuscatedName("w")
 	@Export("active")
 	volatile boolean active;
-
 	@ObfuscatedName("a")
-	@ObfuscatedSignature(descriptor = "Lai;")
+	@ObfuscatedSignature(
+		descriptor = "Lai;"
+	)
 	@Export("after")
 	PcmStream after;
-
 	@ObfuscatedName("u")
 	int field346;
-
 	@ObfuscatedName("k")
-	@ObfuscatedSignature(descriptor = "Lbq;")
+	@ObfuscatedSignature(
+		descriptor = "Lbq;"
+	)
 	@Export("sound")
 	AbstractSound sound;
 
@@ -27,12 +29,16 @@ public abstract class PcmStream extends Node {
 	}
 
 	@ObfuscatedName("s")
-	@ObfuscatedSignature(descriptor = "()Lai;")
+	@ObfuscatedSignature(
+		descriptor = "()Lai;"
+	)
 	@Export("firstSubStream")
 	protected abstract PcmStream firstSubStream();
 
 	@ObfuscatedName("j")
-	@ObfuscatedSignature(descriptor = "()Lai;")
+	@ObfuscatedSignature(
+		descriptor = "()Lai;"
+	)
 	@Export("nextSubStream")
 	protected abstract PcmStream nextSubStream();
 
@@ -60,5 +66,6 @@ public abstract class PcmStream extends Node {
 		} else {
 			this.skip(var3);
 		}
+
 	}
 }

@@ -1,13 +1,17 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+
 @ObfuscatedName("dq")
 public class class119 {
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(II)Lfz;", garbageValue = "237909291")
+	@ObfuscatedSignature(
+		descriptor = "(II)Lfz;",
+		garbageValue = "237909291"
+	)
 	@Export("getEnum")
 	public static EnumComposition getEnum(int var0) {
-		EnumComposition var1 = ((EnumComposition) (EnumComposition.EnumDefinition_cached.get(((long) (var0)))));
+		EnumComposition var1 = (EnumComposition)EnumComposition.EnumDefinition_cached.get((long)var0);
 		if (var1 != null) {
 			return var1;
 		} else {
@@ -16,13 +20,17 @@ public class class119 {
 			if (var2 != null) {
 				var1.decode(new Buffer(var2));
 			}
-			EnumComposition.EnumDefinition_cached.put(var1, ((long) (var0)));
+
+			EnumComposition.EnumDefinition_cached.put(var1, (long)var0);
 			return var1;
 		}
 	}
 
 	@ObfuscatedName("b")
-	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "935400693")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "935400693"
+	)
 	static void method2689() {
 		Tiles.Tiles_underlays = null;
 		Tiles.Tiles_overlays = null;

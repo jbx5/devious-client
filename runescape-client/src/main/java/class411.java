@@ -1,4 +1,5 @@
 import net.runelite.mapping.ObfuscatedName;
+
 @ObfuscatedName("oj")
 public final class class411 {
 	@ObfuscatedName("b")
@@ -7,5 +8,6 @@ public final class class411 {
 			Thread.sleep(var0);
 		} catch (InterruptedException var3) {
 		}
+
 	}
 }

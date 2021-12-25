@@ -1,21 +1,23 @@
-import java.util.HashMap;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+
 @ObfuscatedName("dv")
 @Implements("UserComparator10")
 public class UserComparator10 extends AbstractUserComparator {
 	@ObfuscatedName("n")
-	@ObfuscatedGetter(intValue = 1996697933)
+	@ObfuscatedGetter(
+		intValue = 1996697933
+	)
 	public static int field1339;
-
 	@ObfuscatedName("ie")
-	@ObfuscatedGetter(intValue = 1340087327)
+	@ObfuscatedGetter(
+		intValue = 1340087327
+	)
 	@Export("cameraZ")
 	static int cameraZ;
-
 	@ObfuscatedName("c")
 	@Export("reversed")
 	final boolean reversed;
@@ -25,10 +27,13 @@ public class UserComparator10 extends AbstractUserComparator {
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(Lmp;Lmp;B)I", garbageValue = "77")
+	@ObfuscatedSignature(
+		descriptor = "(Lmp;Lmp;B)I",
+		garbageValue = "77"
+	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
-		if ((Client.worldId == var1.world) && (var2.world == Client.worldId)) {
+		if (Client.worldId == var1.world && var2.world == Client.worldId) {
 			return this.reversed ? var1.int2 - var2.int2 : var2.int2 - var1.int2;
 		} else {
 			return this.compareUser(var1, var2);
@@ -36,19 +41,24 @@ public class UserComparator10 extends AbstractUserComparator {
 	}
 
 	public int compare(Object var1, Object var2) {
-		return this.compareBuddy(((Buddy) (var1)), ((Buddy) (var2)));
+		return this.compareBuddy((Buddy)var1, (Buddy)var2);
 	}
 
 	@ObfuscatedName("fb")
-	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "-1506932580")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-1506932580"
+	)
 	@Export("load")
 	static void load() {
 		int var18;
 		if (Client.titleLoadingStage == 0) {
 			class7.scene = new Scene(4, 104, 104, Tiles.Tiles_heights);
+
 			for (var18 = 0; var18 < 4; ++var18) {
 				Client.collisionMaps[var18] = new CollisionMap(104, 104);
 			}
+
 			class29.sceneMinimapSprite = new SpritePixels(512, 512);
 			Login.Login_loadingText = "Starting game engine...";
 			Login.Login_loadingPercent = 5;
@@ -83,30 +93,31 @@ public class UserComparator10 extends AbstractUserComparator {
 			Client.titleLoadingStage = 40;
 		} else if (Client.titleLoadingStage == 40) {
 			byte var41 = 0;
-			var18 = var41 + ((class115.archive0.percentage() * 4) / 100);
-			var18 += (class9.archive1.percentage() * 4) / 100;
-			var18 += (class131.archive2.percentage() * 2) / 100;
-			var18 += (class19.archive3.percentage() * 2) / 100;
-			var18 += (KeyHandler.archive4.percentage() * 6) / 100;
-			var18 += (class140.archive5.percentage() * 4) / 100;
-			var18 += (WorldMapScaleHandler.archive6.percentage() * 2) / 100;
-			var18 += (class115.archive7.percentage() * 56) / 100;
-			var18 += (UserComparator6.archive8.percentage() * 2) / 100;
-			var18 += (NetSocket.archive9.percentage() * 2) / 100;
-			var18 += (class257.archive10.percentage() * 2) / 100;
-			var18 += (Players.archive11.percentage() * 2) / 100;
-			var18 += (TaskHandler.archive12.percentage() * 2) / 100;
-			var18 += (class1.archive13.percentage() * 2) / 100;
-			var18 += (ChatChannel.archive14.percentage() * 2) / 100;
-			var18 += (class133.archive15.percentage() * 2) / 100;
+			var18 = var41 + class115.archive0.percentage() * 4 / 100;
+			var18 += class9.archive1.percentage() * 4 / 100;
+			var18 += class131.archive2.percentage() * 2 / 100;
+			var18 += class19.archive3.percentage() * 2 / 100;
+			var18 += KeyHandler.archive4.percentage() * 6 / 100;
+			var18 += class140.archive5.percentage() * 4 / 100;
+			var18 += WorldMapScaleHandler.archive6.percentage() * 2 / 100;
+			var18 += class115.archive7.percentage() * 56 / 100;
+			var18 += UserComparator6.archive8.percentage() * 2 / 100;
+			var18 += NetSocket.archive9.percentage() * 2 / 100;
+			var18 += class257.archive10.percentage() * 2 / 100;
+			var18 += Players.archive11.percentage() * 2 / 100;
+			var18 += TaskHandler.archive12.percentage() * 2 / 100;
+			var18 += class1.archive13.percentage() * 2 / 100;
+			var18 += ChatChannel.archive14.percentage() * 2 / 100;
+			var18 += class133.archive15.percentage() * 2 / 100;
 			var18 += class148.archive19.percentage() / 100;
 			var18 += VertexNormal.archive18.percentage() / 100;
 			var18 += HealthBarUpdate.archive20.percentage() / 100;
-			var18 += (class126.archive17.method5540() && class126.archive17.isFullyLoaded()) ? 1 : 0;
+			var18 += class126.archive17.method5540() && class126.archive17.isFullyLoaded() ? 1 : 0;
 			if (var18 != 100) {
 				if (var18 != 0) {
-					Login.Login_loadingText = ("Checking for updates - " + var18) + "%";
+					Login.Login_loadingText = "Checking for updates - " + var18 + "%";
 				}
+
 				Login.Login_loadingPercent = 30;
 			} else {
 				NetFileRequest.method5587(class115.archive0, "Animations");
@@ -157,18 +168,18 @@ public class UserComparator10 extends AbstractUserComparator {
 			} else {
 				int var19;
 				if (Client.titleLoadingStage == 50) {
-					FontName[] var27 = new FontName[]{ FontName.FontName_verdana15, FontName.FontName_plain11, FontName.FontName_verdana11, FontName.FontName_plain12, FontName.FontName_verdana13, FontName.FontName_bold12 };
+					FontName[] var27 = new FontName[]{FontName.FontName_verdana15, FontName.FontName_plain11, FontName.FontName_verdana11, FontName.FontName_plain12, FontName.FontName_verdana13, FontName.FontName_bold12};
 					var19 = var27.length;
 					Fonts var30 = class126.WorldMapElement_fonts;
-					FontName[] var25 = new FontName[]{ FontName.FontName_verdana15, FontName.FontName_plain11, FontName.FontName_verdana11, FontName.FontName_plain12, FontName.FontName_verdana13, FontName.FontName_bold12 };
+					FontName[] var25 = new FontName[]{FontName.FontName_verdana15, FontName.FontName_plain11, FontName.FontName_verdana11, FontName.FontName_plain12, FontName.FontName_verdana13, FontName.FontName_bold12};
 					Client.fontsMap = var30.createMap(var25);
 					if (Client.fontsMap.size() < var19) {
-						Login.Login_loadingText = ("Loading fonts - " + ((Client.fontsMap.size() * 100) / var19)) + "%";
+						Login.Login_loadingText = "Loading fonts - " + Client.fontsMap.size() * 100 / var19 + "%";
 						Login.Login_loadingPercent = 40;
 					} else {
-						class307.fontPlain11 = ((Font) (Client.fontsMap.get(FontName.FontName_plain11)));
-						class114.fontPlain12 = ((Font) (Client.fontsMap.get(FontName.FontName_plain12)));
-						class136.fontBold12 = ((Font) (Client.fontsMap.get(FontName.FontName_bold12)));
+						class307.fontPlain11 = (Font)Client.fontsMap.get(FontName.FontName_plain11);
+						class114.fontPlain12 = (Font)Client.fontsMap.get(FontName.FontName_plain12);
+						class136.fontBold12 = (Font)Client.fontsMap.get(FontName.FontName_bold12);
 						Interpreter.platformInfo = Client.platformInfoProvider.get();
 						Login.Login_loadingText = "Loaded fonts";
 						Login.Login_loadingPercent = 40;
@@ -178,7 +189,7 @@ public class UserComparator10 extends AbstractUserComparator {
 					var18 = WorldMapArea.method4490(class257.archive10, UserComparator6.archive8);
 					var19 = Login.field893.length + Login.field892.length;
 					if (var18 < var19) {
-						Login.Login_loadingText = ("Loading title screen - " + ((var18 * 100) / var19)) + "%";
+						Login.Login_loadingText = "Loading title screen - " + var18 * 100 / var19 + "%";
 						Login.Login_loadingPercent = 50;
 					} else {
 						Login.Login_loadingText = "Loaded title screen";
@@ -188,7 +199,7 @@ public class UserComparator10 extends AbstractUserComparator {
 					}
 				} else if (Client.titleLoadingStage == 70) {
 					if (!class131.archive2.isFullyLoaded()) {
-						Login.Login_loadingText = ("Loading config - " + class131.archive2.loadPercent()) + "%";
+						Login.Login_loadingText = "Loading config - " + class131.archive2.loadPercent() + "%";
 						Login.Login_loadingPercent = 60;
 					} else {
 						Archive var26 = class131.archive2;
@@ -239,6 +250,7 @@ public class UserComparator10 extends AbstractUserComparator {
 						if (var14.isFullyLoaded()) {
 							class408.WorldMapElement_count = var14.getGroupFileCount(35);
 							WorldMapElement.WorldMapElement_cached = new WorldMapElement[class408.WorldMapElement_count];
+
 							for (int var16 = 0; var16 < class408.WorldMapElement_count; ++var16) {
 								byte[] var17 = var14.takeFile(35, var16);
 								WorldMapElement.WorldMapElement_cached[var16] = new WorldMapElement(var16);
@@ -248,6 +260,7 @@ public class UserComparator10 extends AbstractUserComparator {
 								}
 							}
 						}
+
 						Login.Login_loadingText = "Loaded config";
 						Login.Login_loadingPercent = 60;
 						Client.titleLoadingStage = 80;
@@ -259,11 +272,13 @@ public class UserComparator10 extends AbstractUserComparator {
 					} else {
 						++var18;
 					}
+
 					if (PcmPlayer.redHintArrowSprite == null) {
 						PcmPlayer.redHintArrowSprite = class6.SpriteBuffer_getSprite(UserComparator6.archive8, class6.spriteIds.field4163, 0);
 					} else {
 						++var18;
 					}
+
 					IndexedSprite[] var1;
 					int var3;
 					IndexedSprite[] var5;
@@ -276,6 +291,7 @@ public class UserComparator10 extends AbstractUserComparator {
 							var1 = null;
 						} else {
 							var5 = new IndexedSprite[class440.SpriteBuffer_spriteCount];
+
 							for (var6 = 0; var6 < class440.SpriteBuffer_spriteCount; ++var6) {
 								var7 = var5[var6] = new IndexedSprite();
 								var7.width = class432.SpriteBuffer_spriteWidth;
@@ -287,13 +303,16 @@ public class UserComparator10 extends AbstractUserComparator {
 								var7.palette = class432.SpriteBuffer_spritePalette;
 								var7.pixels = class369.SpriteBuffer_pixels[var6];
 							}
+
 							UserComparator3.method2529();
 							var1 = var5;
 						}
+
 						AbstractWorldMapData.mapSceneSprites = var1;
 					} else {
 						++var18;
 					}
+
 					int var8;
 					byte[] var9;
 					int var10;
@@ -308,12 +327,14 @@ public class UserComparator10 extends AbstractUserComparator {
 						} else {
 							var31 = new SpritePixels[class440.SpriteBuffer_spriteCount];
 							var6 = 0;
+
 							while (true) {
 								if (var6 >= class440.SpriteBuffer_spriteCount) {
 									UserComparator3.method2529();
 									var28 = var31;
 									break;
 								}
+
 								var33 = var31[var6] = new SpritePixels();
 								var33.width = class432.SpriteBuffer_spriteWidth;
 								var33.height = class432.SpriteBuffer_spriteHeight;
@@ -324,16 +345,20 @@ public class UserComparator10 extends AbstractUserComparator {
 								var8 = var33.subHeight * var33.subWidth;
 								var9 = class369.SpriteBuffer_pixels[var6];
 								var33.pixels = new int[var8];
+
 								for (var10 = 0; var10 < var8; ++var10) {
 									var33.pixels[var10] = class432.SpriteBuffer_spritePalette[var9[var10] & 255];
 								}
+
 								++var6;
-							} 
+							}
 						}
+
 						class286.headIconPkSprites = var28;
 					} else {
 						++var18;
 					}
+
 					if (PlayerComposition.headIconPrayerSprites == null) {
 						var2 = UserComparator6.archive8;
 						var3 = class6.spriteIds.field4166;
@@ -342,12 +367,14 @@ public class UserComparator10 extends AbstractUserComparator {
 						} else {
 							var31 = new SpritePixels[class440.SpriteBuffer_spriteCount];
 							var6 = 0;
+
 							while (true) {
 								if (var6 >= class440.SpriteBuffer_spriteCount) {
 									UserComparator3.method2529();
 									var28 = var31;
 									break;
 								}
+
 								var33 = var31[var6] = new SpritePixels();
 								var33.width = class432.SpriteBuffer_spriteWidth;
 								var33.height = class432.SpriteBuffer_spriteHeight;
@@ -358,16 +385,20 @@ public class UserComparator10 extends AbstractUserComparator {
 								var8 = var33.subHeight * var33.subWidth;
 								var9 = class369.SpriteBuffer_pixels[var6];
 								var33.pixels = new int[var8];
+
 								for (var10 = 0; var10 < var8; ++var10) {
 									var33.pixels[var10] = class432.SpriteBuffer_spritePalette[var9[var10] & 255];
 								}
+
 								++var6;
-							} 
+							}
 						}
+
 						PlayerComposition.headIconPrayerSprites = var28;
 					} else {
 						++var18;
 					}
+
 					if (class260.headIconHintSprites == null) {
 						var2 = UserComparator6.archive8;
 						var3 = class6.spriteIds.field4173;
@@ -376,12 +407,14 @@ public class UserComparator10 extends AbstractUserComparator {
 						} else {
 							var31 = new SpritePixels[class440.SpriteBuffer_spriteCount];
 							var6 = 0;
+
 							while (true) {
 								if (var6 >= class440.SpriteBuffer_spriteCount) {
 									UserComparator3.method2529();
 									var28 = var31;
 									break;
 								}
+
 								var33 = var31[var6] = new SpritePixels();
 								var33.width = class432.SpriteBuffer_spriteWidth;
 								var33.height = class432.SpriteBuffer_spriteHeight;
@@ -392,16 +425,20 @@ public class UserComparator10 extends AbstractUserComparator {
 								var8 = var33.subHeight * var33.subWidth;
 								var9 = class369.SpriteBuffer_pixels[var6];
 								var33.pixels = new int[var8];
+
 								for (var10 = 0; var10 < var8; ++var10) {
 									var33.pixels[var10] = class432.SpriteBuffer_spritePalette[var9[var10] & 255];
 								}
+
 								++var6;
-							} 
+							}
 						}
+
 						class260.headIconHintSprites = var28;
 					} else {
 						++var18;
 					}
+
 					if (UserComparator7.mapMarkerSprites == null) {
 						var2 = UserComparator6.archive8;
 						var3 = class6.spriteIds.field4169;
@@ -410,12 +447,14 @@ public class UserComparator10 extends AbstractUserComparator {
 						} else {
 							var31 = new SpritePixels[class440.SpriteBuffer_spriteCount];
 							var6 = 0;
+
 							while (true) {
 								if (var6 >= class440.SpriteBuffer_spriteCount) {
 									UserComparator3.method2529();
 									var28 = var31;
 									break;
 								}
+
 								var33 = var31[var6] = new SpritePixels();
 								var33.width = class432.SpriteBuffer_spriteWidth;
 								var33.height = class432.SpriteBuffer_spriteHeight;
@@ -426,16 +465,20 @@ public class UserComparator10 extends AbstractUserComparator {
 								var8 = var33.subHeight * var33.subWidth;
 								var9 = class369.SpriteBuffer_pixels[var6];
 								var33.pixels = new int[var8];
+
 								for (var10 = 0; var10 < var8; ++var10) {
 									var33.pixels[var10] = class432.SpriteBuffer_spritePalette[var9[var10] & 255];
 								}
+
 								++var6;
-							} 
+							}
 						}
+
 						UserComparator7.mapMarkerSprites = var28;
 					} else {
 						++var18;
 					}
+
 					if (UserComparator5.crossSprites == null) {
 						var2 = UserComparator6.archive8;
 						var3 = class6.spriteIds.field4168;
@@ -444,12 +487,14 @@ public class UserComparator10 extends AbstractUserComparator {
 						} else {
 							var31 = new SpritePixels[class440.SpriteBuffer_spriteCount];
 							var6 = 0;
+
 							while (true) {
 								if (var6 >= class440.SpriteBuffer_spriteCount) {
 									UserComparator3.method2529();
 									var28 = var31;
 									break;
 								}
+
 								var33 = var31[var6] = new SpritePixels();
 								var33.width = class432.SpriteBuffer_spriteWidth;
 								var33.height = class432.SpriteBuffer_spriteHeight;
@@ -460,16 +505,20 @@ public class UserComparator10 extends AbstractUserComparator {
 								var8 = var33.subHeight * var33.subWidth;
 								var9 = class369.SpriteBuffer_pixels[var6];
 								var33.pixels = new int[var8];
+
 								for (var10 = 0; var10 < var8; ++var10) {
 									var33.pixels[var10] = class432.SpriteBuffer_spritePalette[var9[var10] & 255];
 								}
+
 								++var6;
-							} 
+							}
 						}
+
 						UserComparator5.crossSprites = var28;
 					} else {
 						++var18;
 					}
+
 					if (class111.mapDotSprites == null) {
 						var2 = UserComparator6.archive8;
 						var3 = class6.spriteIds.field4170;
@@ -478,12 +527,14 @@ public class UserComparator10 extends AbstractUserComparator {
 						} else {
 							var31 = new SpritePixels[class440.SpriteBuffer_spriteCount];
 							var6 = 0;
+
 							while (true) {
 								if (var6 >= class440.SpriteBuffer_spriteCount) {
 									UserComparator3.method2529();
 									var28 = var31;
 									break;
 								}
+
 								var33 = var31[var6] = new SpritePixels();
 								var33.width = class432.SpriteBuffer_spriteWidth;
 								var33.height = class432.SpriteBuffer_spriteHeight;
@@ -494,16 +545,20 @@ public class UserComparator10 extends AbstractUserComparator {
 								var8 = var33.subWidth * var33.subHeight;
 								var9 = class369.SpriteBuffer_pixels[var6];
 								var33.pixels = new int[var8];
+
 								for (var10 = 0; var10 < var8; ++var10) {
 									var33.pixels[var10] = class432.SpriteBuffer_spritePalette[var9[var10] & 255];
 								}
+
 								++var6;
-							} 
+							}
 						}
+
 						class111.mapDotSprites = var28;
 					} else {
 						++var18;
 					}
+
 					if (AbstractWorldMapData.scrollBarSprites == null) {
 						var2 = UserComparator6.archive8;
 						var3 = class6.spriteIds.field4171;
@@ -511,6 +566,7 @@ public class UserComparator10 extends AbstractUserComparator {
 							var1 = null;
 						} else {
 							var5 = new IndexedSprite[class440.SpriteBuffer_spriteCount];
+
 							for (var6 = 0; var6 < class440.SpriteBuffer_spriteCount; ++var6) {
 								var7 = var5[var6] = new IndexedSprite();
 								var7.width = class432.SpriteBuffer_spriteWidth;
@@ -522,13 +578,16 @@ public class UserComparator10 extends AbstractUserComparator {
 								var7.palette = class432.SpriteBuffer_spritePalette;
 								var7.pixels = class369.SpriteBuffer_pixels[var6];
 							}
+
 							UserComparator3.method2529();
 							var1 = var5;
 						}
+
 						AbstractWorldMapData.scrollBarSprites = var1;
 					} else {
 						++var18;
 					}
+
 					if (World.modIconSprites == null) {
 						var2 = UserComparator6.archive8;
 						var3 = class6.spriteIds.field4172;
@@ -536,6 +595,7 @@ public class UserComparator10 extends AbstractUserComparator {
 							var1 = null;
 						} else {
 							var5 = new IndexedSprite[class440.SpriteBuffer_spriteCount];
+
 							for (var6 = 0; var6 < class440.SpriteBuffer_spriteCount; ++var6) {
 								var7 = var5[var6] = new IndexedSprite();
 								var7.width = class432.SpriteBuffer_spriteWidth;
@@ -547,23 +607,26 @@ public class UserComparator10 extends AbstractUserComparator {
 								var7.palette = class432.SpriteBuffer_spritePalette;
 								var7.pixels = class369.SpriteBuffer_pixels[var6];
 							}
+
 							UserComparator3.method2529();
 							var1 = var5;
 						}
+
 						World.modIconSprites = var1;
 					} else {
 						++var18;
 					}
+
 					if (var18 < 11) {
-						Login.Login_loadingText = ("Loading sprites - " + ((var18 * 100) / 12)) + "%";
+						Login.Login_loadingText = "Loading sprites - " + var18 * 100 / 12 + "%";
 						Login.Login_loadingPercent = 70;
 					} else {
 						AbstractFont.AbstractFont_modIconSprites = World.modIconSprites;
 						PcmPlayer.redHintArrowSprite.normalize();
-						var19 = ((int) (Math.random() * 21.0)) - 10;
-						int var20 = ((int) (Math.random() * 21.0)) - 10;
-						var3 = ((int) (Math.random() * 21.0)) - 10;
-						int var21 = ((int) (Math.random() * 41.0)) - 20;
+						var19 = (int)(Math.random() * 21.0D) - 10;
+						int var20 = (int)(Math.random() * 21.0D) - 10;
+						var3 = (int)(Math.random() * 21.0D) - 10;
+						int var21 = (int)(Math.random() * 41.0D) - 20;
 						AbstractWorldMapData.mapSceneSprites[0].shiftColors(var21 + var19, var20 + var21, var3 + var21);
 						Login.Login_loadingText = "Loaded sprites";
 						Login.Login_loadingPercent = 70;
@@ -582,7 +645,7 @@ public class UserComparator10 extends AbstractUserComparator {
 				} else if (Client.titleLoadingStage == 100) {
 					var18 = ItemContainer.textureProvider.getLoadedPercentage();
 					if (var18 < 100) {
-						Login.Login_loadingText = ("Loading textures - " + var18) + "%";
+						Login.Login_loadingText = "Loading textures - " + var18 + "%";
 						Login.Login_loadingPercent = 90;
 					} else {
 						Login.Login_loadingText = "Loaded textures";
@@ -597,7 +660,7 @@ public class UserComparator10 extends AbstractUserComparator {
 					Client.titleLoadingStage = 120;
 				} else if (Client.titleLoadingStage == 120) {
 					if (!class257.archive10.tryLoadFileByNames("huffman", "")) {
-						Login.Login_loadingText = ("Loading wordpack - " + 0) + "%";
+						Login.Login_loadingText = "Loading wordpack - " + 0 + "%";
 						Login.Login_loadingPercent = 94;
 					} else {
 						Huffman var0 = new Huffman(class257.archive10.takeFileByNames("huffman", ""));
@@ -608,13 +671,13 @@ public class UserComparator10 extends AbstractUserComparator {
 					}
 				} else if (Client.titleLoadingStage == 130) {
 					if (!class19.archive3.isFullyLoaded()) {
-						Login.Login_loadingText = ("Loading interfaces - " + ((class19.archive3.loadPercent() * 4) / 5)) + "%";
+						Login.Login_loadingText = "Loading interfaces - " + class19.archive3.loadPercent() * 4 / 5 + "%";
 						Login.Login_loadingPercent = 96;
 					} else if (!TaskHandler.archive12.isFullyLoaded()) {
-						Login.Login_loadingText = ("Loading interfaces - " + (80 + (TaskHandler.archive12.loadPercent() / 6))) + "%";
+						Login.Login_loadingText = "Loading interfaces - " + (80 + TaskHandler.archive12.loadPercent() / 6) + "%";
 						Login.Login_loadingPercent = 96;
 					} else if (!class1.archive13.isFullyLoaded()) {
-						Login.Login_loadingText = ("Loading interfaces - " + (96 + (class1.archive13.loadPercent() / 50))) + "%";
+						Login.Login_loadingText = "Loading interfaces - " + (96 + class1.archive13.loadPercent() / 50) + "%";
 						Login.Login_loadingPercent = 96;
 					} else {
 						Login.Login_loadingText = "Loaded interfaces";
@@ -624,12 +687,13 @@ public class UserComparator10 extends AbstractUserComparator {
 				} else if (Client.titleLoadingStage == 140) {
 					Login.Login_loadingPercent = 100;
 					if (!class148.archive19.tryLoadGroupByName(WorldMapCacheName.field2768.name)) {
-						Login.Login_loadingText = ("Loading world map - " + (class148.archive19.groupLoadPercentByName(WorldMapCacheName.field2768.name) / 10)) + "%";
+						Login.Login_loadingText = "Loading world map - " + class148.archive19.groupLoadPercentByName(WorldMapCacheName.field2768.name) / 10 + "%";
 					} else {
 						if (Varcs.worldMap == null) {
 							Varcs.worldMap = new WorldMap();
 							Varcs.worldMap.init(class148.archive19, VertexNormal.archive18, HealthBarUpdate.archive20, class136.fontBold12, Client.fontsMap, AbstractWorldMapData.mapSceneSprites);
 						}
+
 						Login.Login_loadingText = "Loaded world map";
 						Client.titleLoadingStage = 150;
 					}
@@ -641,7 +705,10 @@ public class UserComparator10 extends AbstractUserComparator {
 	}
 
 	@ObfuscatedName("iw")
-	@ObfuscatedSignature(descriptor = "(I)I", garbageValue = "-1832124278")
+	@ObfuscatedSignature(
+		descriptor = "(I)I",
+		garbageValue = "-1832124278"
+	)
 	static final int method2543() {
 		return Client.menuOptionsCount - 1;
 	}

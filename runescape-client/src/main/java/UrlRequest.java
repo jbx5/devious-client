@@ -3,22 +3,22 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+
 @ObfuscatedName("cf")
 @Implements("UrlRequest")
 public class UrlRequest {
 	@ObfuscatedName("ce")
-	@ObfuscatedSignature(descriptor = "Lpa;")
+	@ObfuscatedSignature(
+		descriptor = "Lpa;"
+	)
 	@Export("worldSelectRightSprite")
 	static IndexedSprite worldSelectRightSprite;
-
 	@ObfuscatedName("c")
 	@Export("url")
 	final URL url;
-
 	@ObfuscatedName("b")
 	@Export("isDone0")
 	volatile boolean isDone0;
-
 	@ObfuscatedName("p")
 	@Export("response0")
 	volatile byte[] response0;
@@ -28,21 +28,30 @@ public class UrlRequest {
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(I)Z", garbageValue = "-11682805")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z",
+		garbageValue = "-11682805"
+	)
 	@Export("isDone")
 	public boolean isDone() {
 		return this.isDone0;
 	}
 
 	@ObfuscatedName("b")
-	@ObfuscatedSignature(descriptor = "(I)[B", garbageValue = "309471456")
+	@ObfuscatedSignature(
+		descriptor = "(I)[B",
+		garbageValue = "309471456"
+	)
 	@Export("getResponse")
 	public byte[] getResponse() {
 		return this.response0;
 	}
 
 	@ObfuscatedName("fc")
-	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "1703812589")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "1703812589"
+	)
 	static final void method2496() {
 		class364.method6623();
 		FloorUnderlayDefinition.FloorUnderlayDefinition_cached.clear();
@@ -69,7 +78,7 @@ public class UrlRequest {
 		WorldMapElement.WorldMapElement_cachedSprites.clear();
 		PlayerComposition.PlayerAppearance_cachedModels.clear();
 		WorldMapSection2.method4417();
-		((TextureProvider) (Rasterizer3D.Rasterizer3D_textureLoader)).clear();
+		((TextureProvider)Rasterizer3D.Rasterizer3D_textureLoader).clear();
 		Script.Script_cached.clear();
 		class115.archive0.clearFiles();
 		class9.archive1.clearFiles();
@@ -86,23 +95,30 @@ public class UrlRequest {
 	}
 
 	@ObfuscatedName("hk")
-	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "-1546953811")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-1546953811"
+	)
 	static void method2489() {
 		Client.menuOptionsCount = 0;
 		Client.isMenuOpen = false;
 	}
 
 	@ObfuscatedName("iz")
-	@ObfuscatedSignature(descriptor = "(IIIII)V", garbageValue = "-101999626")
+	@ObfuscatedSignature(
+		descriptor = "(IIIII)V",
+		garbageValue = "-101999626"
+	)
 	@Export("selectSpell")
 	static void selectSpell(int var0, int var1, int var2, int var3) {
 		Widget var4 = class126.getWidgetChild(var0, var1);
-		if ((var4 != null) && (var4.onTargetEnter != null)) {
+		if (var4 != null && var4.onTargetEnter != null) {
 			ScriptEvent var5 = new ScriptEvent();
 			var5.widget = var4;
 			var5.args = var4.onTargetEnter;
 			class285.runScriptEvent(var5);
 		}
+
 		Client.field633 = var3;
 		Client.isSpellSelected = true;
 		class20.selectedSpellWidget = var0;

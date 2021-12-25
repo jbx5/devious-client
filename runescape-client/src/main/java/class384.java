@@ -1,4 +1,5 @@
 import net.runelite.mapping.ObfuscatedName;
+
 @ObfuscatedName("nd")
 public class class384 extends Node {
 	@ObfuscatedName("c")

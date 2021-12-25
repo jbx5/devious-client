@@ -3,15 +3,19 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+
 @ObfuscatedName("gt")
 @Implements("Renderable")
 public abstract class Renderable extends DualNode {
 	@ObfuscatedName("sy")
-	@ObfuscatedGetter(intValue = -1303192777)
+	@ObfuscatedGetter(
+		intValue = -1303192777
+	)
 	static int field2358;
-
 	@ObfuscatedName("cf")
-	@ObfuscatedGetter(intValue = -1198254481)
+	@ObfuscatedGetter(
+		intValue = -1198254481
+	)
 	@Export("height")
 	public int height;
 
@@ -20,7 +24,10 @@ public abstract class Renderable extends DualNode {
 	}
 
 	@ObfuscatedName("b")
-	@ObfuscatedSignature(descriptor = "(I)Lgo;", garbageValue = "202861607")
+	@ObfuscatedSignature(
+		descriptor = "(I)Lgo;",
+		garbageValue = "202861607"
+	)
 	@Export("getModel")
 	protected Model getModel() {
 		return null;
@@ -34,65 +41,86 @@ public abstract class Renderable extends DualNode {
 			this.height = var11.height;
 			var11.draw(var1, var2, var3, var4, var5, var6, var7, var8, var9);
 		}
+
 	}
 
 	@ObfuscatedName("b")
-	@ObfuscatedSignature(descriptor = "(CLlf;B)C", garbageValue = "106")
+	@ObfuscatedSignature(
+		descriptor = "(CLlf;B)C",
+		garbageValue = "106"
+	)
 	@Export("standardizeChar")
 	static char standardizeChar(char var0, Language var1) {
-		if ((var0 >= 192) && (var0 <= 255)) {
-			if ((var0 >= 192) && (var0 <= 198)) {
+		if (var0 >= 192 && var0 <= 255) {
+			if (var0 >= 192 && var0 <= 198) {
 				return 'A';
 			}
+
 			if (var0 == 199) {
 				return 'C';
 			}
-			if ((var0 >= 200) && (var0 <= 203)) {
+
+			if (var0 >= 200 && var0 <= 203) {
 				return 'E';
 			}
-			if ((var0 >= 204) && (var0 <= 207)) {
+
+			if (var0 >= 204 && var0 <= 207) {
 				return 'I';
 			}
-			if ((var0 == 209) && (var1 != Language.Language_ES)) {
+
+			if (var0 == 209 && var1 != Language.Language_ES) {
 				return 'N';
 			}
-			if ((var0 >= 210) && (var0 <= 214)) {
+
+			if (var0 >= 210 && var0 <= 214) {
 				return 'O';
 			}
-			if ((var0 >= 217) && (var0 <= 220)) {
+
+			if (var0 >= 217 && var0 <= 220) {
 				return 'U';
 			}
+
 			if (var0 == 221) {
 				return 'Y';
 			}
+
 			if (var0 == 223) {
 				return 's';
 			}
-			if ((var0 >= 224) && (var0 <= 230)) {
+
+			if (var0 >= 224 && var0 <= 230) {
 				return 'a';
 			}
+
 			if (var0 == 231) {
 				return 'c';
 			}
-			if ((var0 >= 232) && (var0 <= 235)) {
+
+			if (var0 >= 232 && var0 <= 235) {
 				return 'e';
 			}
-			if ((var0 >= 236) && (var0 <= 239)) {
+
+			if (var0 >= 236 && var0 <= 239) {
 				return 'i';
 			}
-			if ((var0 == 241) && (var1 != Language.Language_ES)) {
+
+			if (var0 == 241 && var1 != Language.Language_ES) {
 				return 'n';
 			}
-			if ((var0 >= 242) && (var0 <= 246)) {
+
+			if (var0 >= 242 && var0 <= 246) {
 				return 'o';
 			}
-			if ((var0 >= 249) && (var0 <= 252)) {
+
+			if (var0 >= 249 && var0 <= 252) {
 				return 'u';
 			}
-			if ((var0 == 253) || (var0 == 255)) {
+
+			if (var0 == 253 || var0 == 255) {
 				return 'y';
 			}
 		}
+
 		if (var0 == 338) {
 			return 'O';
 		} else if (var0 == 339) {

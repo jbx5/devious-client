@@ -1,20 +1,25 @@
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+
 @ObfuscatedName("lp")
 public class class313 {
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "Llp;")
+	@ObfuscatedSignature(
+		descriptor = "Llp;"
+	)
 	static final class313 field3916;
-
 	@ObfuscatedName("b")
-	@ObfuscatedSignature(descriptor = "Llp;")
+	@ObfuscatedSignature(
+		descriptor = "Llp;"
+	)
 	static final class313 field3917;
-
 	@ObfuscatedName("p")
-	@ObfuscatedSignature(descriptor = "Llp;")
+	@ObfuscatedSignature(
+		descriptor = "Llp;"
+	)
 	static final class313 field3915;
-	static 
-	{
+
+	static {
 		field3916 = new class313();
 		field3917 = new class313();
 		field3915 = new class313();

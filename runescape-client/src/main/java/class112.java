@@ -1,43 +1,49 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+
 @ObfuscatedName("de")
 public class class112 {
 	@ObfuscatedName("m")
 	public static final float field1361;
-
 	@ObfuscatedName("t")
 	public static final float field1362;
-
 	@ObfuscatedName("bo")
-	@ObfuscatedSignature(descriptor = "[Lpa;")
+	@ObfuscatedSignature(
+		descriptor = "[Lpa;"
+	)
 	@Export("worldSelectStars")
 	static IndexedSprite[] worldSelectStars;
-	static 
-	{
+
+	static {
 		field1361 = Math.ulp(1.0F);
 		field1362 = field1361 * 2.0F;
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(Lku;Lku;IZI)Ldb;", garbageValue = "1707780051")
+	@ObfuscatedSignature(
+		descriptor = "(Lku;Lku;IZI)Ldb;",
+		garbageValue = "1707780051"
+	)
 	public static class120 method2571(AbstractArchive var0, AbstractArchive var1, int var2, boolean var3) {
 		boolean var4 = true;
-		byte[] var5 = var0.takeFile((var2 >> 16) & 65535, var2 & 65535);
+		byte[] var5 = var0.takeFile(var2 >> 16 & 65535, var2 & 65535);
 		if (var5 == null) {
 			var4 = false;
 			return null;
 		} else {
-			int var6 = ((var5[1] & 255) << 8) | (var5[2] & 255);
+			int var6 = (var5[1] & 255) << 8 | var5[2] & 255;
 			byte[] var7;
 			if (var3) {
 				var7 = var1.getFile(0, var6);
 			} else {
 				var7 = var1.getFile(var6, 0);
 			}
+
 			if (var7 == null) {
 				var4 = false;
 			}
+
 			if (!var4) {
 				return null;
 			} else {
@@ -51,7 +57,10 @@ public class class112 {
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "([Ljava/lang/CharSequence;III)Ljava/lang/String;", garbageValue = "-1374699895")
+	@ObfuscatedSignature(
+		descriptor = "([Ljava/lang/CharSequence;III)Ljava/lang/String;",
+		garbageValue = "-1374699895"
+	)
 	public static String method2565(CharSequence[] var0, int var1, int var2) {
 		if (var2 == 0) {
 			return "";
@@ -61,6 +70,7 @@ public class class112 {
 		} else {
 			int var3 = var2 + var1;
 			int var4 = 0;
+
 			for (int var5 = var1; var5 < var3; ++var5) {
 				CharSequence var9 = var0[var5];
 				if (var9 == null) {
@@ -69,7 +79,9 @@ public class class112 {
 					var4 += var9.length();
 				}
 			}
+
 			StringBuilder var8 = new StringBuilder(var4);
+
 			for (int var6 = var1; var6 < var3; ++var6) {
 				CharSequence var7 = var0[var6];
 				if (var7 == null) {
@@ -78,12 +90,16 @@ public class class112 {
 					var8.append(var7);
 				}
 			}
+
 			return var8.toString();
 		}
 	}
 
 	@ObfuscatedName("p")
-	@ObfuscatedSignature(descriptor = "(ILbn;ZI)I", garbageValue = "1143513856")
+	@ObfuscatedSignature(
+		descriptor = "(ILbn;ZI)I",
+		garbageValue = "1143513856"
+	)
 	static int method2560(int var0, Script var1, boolean var2) {
 		if (var0 < 1000) {
 			return class273.method5332(var0, var1, var2);
@@ -183,26 +199,33 @@ public class class112 {
 	}
 
 	@ObfuscatedName("p")
-	@ObfuscatedSignature(descriptor = "(IIIII)V", garbageValue = "-1450996658")
+	@ObfuscatedSignature(
+		descriptor = "(IIIII)V",
+		garbageValue = "-1450996658"
+	)
 	static final void method2572(int var0, int var1, int var2, int var3) {
-		for (int var4 = var1; var4 <= (var3 + var1); ++var4) {
-			for (int var5 = var0; var5 <= (var0 + var2); ++var5) {
-				if ((((var5 >= 0) && (var5 < 104)) && (var4 >= 0)) && (var4 < 104)) {
+		for (int var4 = var1; var4 <= var3 + var1; ++var4) {
+			for (int var5 = var0; var5 <= var0 + var2; ++var5) {
+				if (var5 >= 0 && var5 < 104 && var4 >= 0 && var4 < 104) {
 					SoundCache.field321[0][var5][var4] = 127;
-					if ((var0 == var5) && (var5 > 0)) {
+					if (var0 == var5 && var5 > 0) {
 						Tiles.Tiles_heights[0][var5][var4] = Tiles.Tiles_heights[0][var5 - 1][var4];
 					}
-					if ((var5 == (var0 + var2)) && (var5 < 103)) {
+
+					if (var5 == var0 + var2 && var5 < 103) {
 						Tiles.Tiles_heights[0][var5][var4] = Tiles.Tiles_heights[0][var5 + 1][var4];
 					}
-					if ((var4 == var1) && (var4 > 0)) {
+
+					if (var4 == var1 && var4 > 0) {
 						Tiles.Tiles_heights[0][var5][var4] = Tiles.Tiles_heights[0][var5][var4 - 1];
 					}
-					if ((var4 == (var3 + var1)) && (var4 < 103)) {
+
+					if (var4 == var3 + var1 && var4 < 103) {
 						Tiles.Tiles_heights[0][var5][var4] = Tiles.Tiles_heights[0][var5][var4 + 1];
 					}
 				}
 			}
 		}
+
 	}
 }

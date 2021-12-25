@@ -37,57 +37,56 @@ public interface Buffer extends Node
 	 * Use this api to write to byte buffers
 	 */
 
-	void writeBoolean(boolean i);
+	void writeIntME2(int var1);
 
-	void writeBuffer(Buffer i);
+	void writeByteA(int var1);
 
-	void writeByte(int i);
+	void writeByteB(int var1);
 
-	void writeByteAdd(int i);
+	void writeByteC(int var1);
 
-	void writeByteNeg(int i);
+	void writeByteB0(int var1);
 
-	void writeByteSub(int i);
+	void writeIntME3(int var1);
 
-	void writeBytes(byte[] var1, int var2, int var3);
+	void write1(int var1);
 
-	void writeCESU8(CharSequence i);
+	void writeByte01(int var1);
 
-	int writeCrc(int i);
+	void writeMedium(int var1);
 
-	void writeInt(int i);
+	void writeByte0A1(int var1);
 
-	void writeIntIME(int i);
+	void writeByte2(int var1);
 
-	void writeIntLE(int i);
+	void writeByte01A(int var1);
 
-	void writeIntME(int i);
+	void writeIntME(int var1);
 
-	void writeLengthByte(int i);
+	void writeInt2(int var1);
 
-	void writeLengthInt(int i);
+	void writeShort01(int var1);
 
-	void writeLengthShort(long i);
+	void writeInt0123(int var1);
 
-	void writeLong(long i);
+	void writeShortA(int var1);
 
-	void writeLongMedium(int i);
-	
-	void writeMedium(int i);
+	void writeShort01A(int var1);
 
-	void writeShort(int i);
-
-	void writeShortAdd(int i);
-
-	void writeShortAddLE(int i);
+	void write2(int i);
 
 	void writeShortLE(int i);
 
-	void writeSmartByteShort(int i);
+	void writeStringCp1252NullTerminated(String string);
 
-	void writeStringCp1252NullCircumfixed(String i);
+	/**
+	 * Use this api to write to byte buffers
+	 */
+	void writeByte(int var1);
 
-	void writeStringCp1252NullTerminated(String i);
+	void writeShort(int var1);
 
-	void writeVarInt(int i);
+	void writeInt(int var1);
+
+	void writeLong(long var1);
 }
