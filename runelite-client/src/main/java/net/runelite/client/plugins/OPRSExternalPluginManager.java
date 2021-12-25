@@ -472,9 +472,9 @@ public class OPRSExternalPluginManager
 	{
 		String config = updateManager.getRepositories().stream()
 			.map(r -> {
-				if (r instanceof PluginRepository pr)
+				if (r instanceof PluginRepository)
 				{
-					return pr.getId() + "|" + urlToStringEncoded(pr.getUrl()) + "|" + pr.getToken();
+					return r.getId() + "|" + urlToStringEncoded(r.getUrl()) + "|" + ((PluginRepository) r).getToken();
 				}
 				return r.getId() + "|" + urlToStringEncoded(r.getUrl());
 			})
