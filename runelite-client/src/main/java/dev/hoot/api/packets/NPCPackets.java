@@ -2,48 +2,51 @@ package dev.hoot.api.packets;
 
 import dev.hoot.api.game.Game;
 import net.runelite.api.Client;
+import net.runelite.api.NPC;
 import net.runelite.api.packets.ClientPacket;
 import net.runelite.api.packets.PacketBufferNode;
 
+import java.util.List;
+
 public class NPCPackets {
-    public static void npcFirstOption(net.runelite.api.NPC npc, boolean run) {
-        dev.hoot.api.packets.NPCPackets.queueNPCAction1Packet(npc.getIndex(), run);
+    public static void npcFirstOption(NPC npc, boolean run) {
+        NPCPackets.queueNPCAction1Packet(npc.getIndex(), run);
     }
 
-    public static void npcSecondOption(net.runelite.api.NPC npc, boolean run) {
-        dev.hoot.api.packets.NPCPackets.queueNPCAction2Packet(npc.getIndex(), run);
+    public static void npcSecondOption(NPC npc, boolean run) {
+        NPCPackets.queueNPCAction2Packet(npc.getIndex(), run);
     }
 
-    public static void npcThirdOption(net.runelite.api.NPC npc, boolean run) {
-        dev.hoot.api.packets.NPCPackets.queueNPCAction3Packet(npc.getIndex(), run);
+    public static void npcThirdOption(NPC npc, boolean run) {
+        NPCPackets.queueNPCAction3Packet(npc.getIndex(), run);
     }
 
-    public static void npcFourthOption(net.runelite.api.NPC npc, boolean run) {
-        dev.hoot.api.packets.NPCPackets.queueNPCAction4Packet(npc.getIndex(), run);
+    public static void npcFourthOption(NPC npc, boolean run) {
+        NPCPackets.queueNPCAction4Packet(npc.getIndex(), run);
     }
 
-    public static void npcFifthOption(net.runelite.api.NPC npc, boolean run) {
-        dev.hoot.api.packets.NPCPackets.queueNPCAction5Packet(npc.getIndex(), run);
+    public static void npcFifthOption(NPC npc, boolean run) {
+        NPCPackets.queueNPCAction5Packet(npc.getIndex(), run);
     }
 
-    public static void npcAction(net.runelite.api.NPC npc, java.lang.String action, boolean run) {
-        java.util.List<java.lang.String> actions = npc.getActions();
+    public static void npcAction(NPC npc, String action, boolean run) {
+        List<String> actions = npc.getActions();
         int index = actions.indexOf(action);
         switch (index) {
             case 0 :
-                dev.hoot.api.packets.NPCPackets.npcFirstOption(npc, run);
+                NPCPackets.npcFirstOption(npc, run);
                 break;
             case 1 :
-                dev.hoot.api.packets.NPCPackets.npcSecondOption(npc, run);
+                NPCPackets.npcSecondOption(npc, run);
                 break;
             case 2 :
-                dev.hoot.api.packets.NPCPackets.npcThirdOption(npc, run);
+                NPCPackets.npcThirdOption(npc, run);
                 break;
             case 3 :
-                dev.hoot.api.packets.NPCPackets.npcFourthOption(npc, run);
+                NPCPackets.npcFourthOption(npc, run);
                 break;
             case 4 :
-                dev.hoot.api.packets.NPCPackets.npcFifthOption(npc, run);
+                NPCPackets.npcFifthOption(npc, run);
                 break;
         }
     }

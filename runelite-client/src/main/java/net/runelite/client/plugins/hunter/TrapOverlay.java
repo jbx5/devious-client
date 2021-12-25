@@ -31,6 +31,7 @@ import java.util.Map;
 import javax.inject.Inject;
 import net.runelite.api.Client;
 import net.runelite.api.Perspective;
+import net.runelite.api.Point;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.client.ui.overlay.Overlay;
@@ -142,7 +143,7 @@ public class TrapOverlay extends Overlay
 		{
 			return;
 		}
-		net.runelite.api.Point loc = Perspective.localToCanvas(client, localLoc, client.getPlane());
+		Point loc = Perspective.localToCanvas(client, localLoc, client.getPlane());
 
 		if (loc == null)
 		{
@@ -178,7 +179,7 @@ public class TrapOverlay extends Overlay
 		{
 			return;
 		}
-		net.runelite.api.Point loc = Perspective.localToCanvas(client, localLoc, client.getPlane());
+		Point loc = Perspective.localToCanvas(client, localLoc, client.getPlane());
 
 		ProgressPieComponent pie = new ProgressPieComponent();
 		pie.setFill(fill);

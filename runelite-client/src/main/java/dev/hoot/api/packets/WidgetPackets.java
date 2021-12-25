@@ -4,85 +4,88 @@ import dev.hoot.api.game.Game;
 import net.runelite.api.Client;
 import net.runelite.api.packets.ClientPacket;
 import net.runelite.api.packets.PacketBufferNode;
+import net.runelite.api.widgets.Widget;
+
+import java.util.List;
 
 public class WidgetPackets {
 
-    public static void widgetFirstOption(net.runelite.api.widgets.Widget widget) {
-        dev.hoot.api.packets.WidgetPackets.queueWidgetAction1Packet(widget.getId(), widget.getItemId(), widget.getIndex());
+    public static void widgetFirstOption(Widget widget) {
+        WidgetPackets.queueWidgetAction1Packet(widget.getId(), widget.getItemId(), widget.getIndex());
     }
 
-    public static void widgetSecondOption(net.runelite.api.widgets.Widget widget) {
-        dev.hoot.api.packets.WidgetPackets.queueWidgetAction2Packet(widget.getId(), widget.getItemId(), widget.getIndex());
+    public static void widgetSecondOption(Widget widget) {
+        WidgetPackets.queueWidgetAction2Packet(widget.getId(), widget.getItemId(), widget.getIndex());
     }
 
-    public static void widgetThirdOption(net.runelite.api.widgets.Widget widget) {
-        dev.hoot.api.packets.WidgetPackets.queueWidgetAction3Packet(widget.getId(), widget.getItemId(), widget.getIndex());
+    public static void widgetThirdOption(Widget widget) {
+        WidgetPackets.queueWidgetAction3Packet(widget.getId(), widget.getItemId(), widget.getIndex());
     }
 
-    public static void widgetFourthOption(net.runelite.api.widgets.Widget widget) {
-        dev.hoot.api.packets.WidgetPackets.queueWidgetAction4Packet(widget.getId(), widget.getItemId(), widget.getIndex());
+    public static void widgetFourthOption(Widget widget) {
+        WidgetPackets.queueWidgetAction4Packet(widget.getId(), widget.getItemId(), widget.getIndex());
     }
 
-    public static void widgetFifthOption(net.runelite.api.widgets.Widget widget) {
-        dev.hoot.api.packets.WidgetPackets.queueWidgetAction5Packet(widget.getId(), widget.getItemId(), widget.getIndex());
+    public static void widgetFifthOption(Widget widget) {
+        WidgetPackets.queueWidgetAction5Packet(widget.getId(), widget.getItemId(), widget.getIndex());
     }
 
-    public static void widgetSixthOption(net.runelite.api.widgets.Widget widget) {
-        dev.hoot.api.packets.WidgetPackets.queueWidgetAction6Packet(widget.getId(), widget.getItemId(), widget.getIndex());
+    public static void widgetSixthOption(Widget widget) {
+        WidgetPackets.queueWidgetAction6Packet(widget.getId(), widget.getItemId(), widget.getIndex());
     }
 
-    public static void widgetSeventhOption(net.runelite.api.widgets.Widget widget) {
-        dev.hoot.api.packets.WidgetPackets.queueWidgetAction7Packet(widget.getId(), widget.getItemId(), widget.getIndex());
+    public static void widgetSeventhOption(Widget widget) {
+        WidgetPackets.queueWidgetAction7Packet(widget.getId(), widget.getItemId(), widget.getIndex());
     }
 
-    public static void widgetEighthOption(net.runelite.api.widgets.Widget widget) {
-        dev.hoot.api.packets.WidgetPackets.queueWidgetAction8Packet(widget.getId(), widget.getItemId(), widget.getIndex());
+    public static void widgetEighthOption(Widget widget) {
+        WidgetPackets.queueWidgetAction8Packet(widget.getId(), widget.getItemId(), widget.getIndex());
     }
 
-    public static void widgetNinthOption(net.runelite.api.widgets.Widget widget) {
-        dev.hoot.api.packets.WidgetPackets.queueWidgetAction9Packet(widget.getId(), widget.getItemId(), widget.getIndex());
+    public static void widgetNinthOption(Widget widget) {
+        WidgetPackets.queueWidgetAction9Packet(widget.getId(), widget.getItemId(), widget.getIndex());
     }
 
-    public static void widgetTenthOption(net.runelite.api.widgets.Widget widget) {
-        dev.hoot.api.packets.WidgetPackets.queueWidgetAction10Packet(widget.getId(), widget.getItemId(), widget.getIndex());
+    public static void widgetTenthOption(Widget widget) {
+        WidgetPackets.queueWidgetAction10Packet(widget.getId(), widget.getItemId(), widget.getIndex());
     }
 
-    public static void widgetAction(net.runelite.api.widgets.Widget widget, java.lang.String action) {
-        java.util.List<java.lang.String> actions = widget.getActions();
+    public static void widgetAction(Widget widget, String action) {
+        List<String> actions = widget.getActions();
         if (actions == null) {
             return;
         }
         int index = actions.indexOf(action);
         switch (index) {
             case 0 :
-                dev.hoot.api.packets.WidgetPackets.widgetFirstOption(widget);
+                WidgetPackets.widgetFirstOption(widget);
                 break;
             case 1 :
-                dev.hoot.api.packets.WidgetPackets.widgetSecondOption(widget);
+                WidgetPackets.widgetSecondOption(widget);
                 break;
             case 2 :
-                dev.hoot.api.packets.WidgetPackets.widgetThirdOption(widget);
+                WidgetPackets.widgetThirdOption(widget);
                 break;
             case 3 :
-                dev.hoot.api.packets.WidgetPackets.widgetFourthOption(widget);
+                WidgetPackets.widgetFourthOption(widget);
                 break;
             case 4 :
-                dev.hoot.api.packets.WidgetPackets.widgetFifthOption(widget);
+                WidgetPackets.widgetFifthOption(widget);
                 break;
             case 5 :
-                dev.hoot.api.packets.WidgetPackets.widgetSixthOption(widget);
+                WidgetPackets.widgetSixthOption(widget);
                 break;
             case 6 :
-                dev.hoot.api.packets.WidgetPackets.widgetSeventhOption(widget);
+                WidgetPackets.widgetSeventhOption(widget);
                 break;
             case 7 :
-                dev.hoot.api.packets.WidgetPackets.widgetEighthOption(widget);
+                WidgetPackets.widgetEighthOption(widget);
                 break;
             case 8 :
-                dev.hoot.api.packets.WidgetPackets.widgetNinthOption(widget);
+                WidgetPackets.widgetNinthOption(widget);
                 break;
             case 9 :
-                dev.hoot.api.packets.WidgetPackets.widgetTenthOption(widget);
+                WidgetPackets.widgetTenthOption(widget);
                 break;
         }
     }

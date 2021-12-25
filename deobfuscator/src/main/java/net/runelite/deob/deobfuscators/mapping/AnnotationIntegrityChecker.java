@@ -40,7 +40,7 @@ public class AnnotationIntegrityChecker
 {
 	private static final Logger logger = LoggerFactory.getLogger(AnnotationIntegrityChecker.class);
 
-	public static final java.lang.Class<?> CLIENT_CLASS = RSClient.class;
+	public static final Class<?> CLIENT_CLASS = RSClient.class;
 
 	public static final String API_PACKAGE_BASE = "net.runelite.rs.api.RS";
 

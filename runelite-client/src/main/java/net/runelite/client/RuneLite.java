@@ -76,6 +76,7 @@ import net.runelite.client.externalplugins.ExternalPluginManager;
 import net.runelite.client.game.WorldService;
 import net.runelite.client.game.XpDropManager;
 import net.runelite.client.plugins.OPRSExternalPluginManager;
+import net.runelite.client.plugins.PluginManager;
 import net.runelite.client.rs.ClientLoader;
 import net.runelite.client.rs.ClientUpdateCheckMode;
 import net.runelite.client.ui.ClientUI;
@@ -114,7 +115,7 @@ public class RuneLite
 	private static Injector injector;
 
 	@Inject
-	private net.runelite.client.plugins.PluginManager pluginManager;
+	private PluginManager pluginManager;
 
 	@Inject
 	private ExternalPluginManager externalPluginManager;

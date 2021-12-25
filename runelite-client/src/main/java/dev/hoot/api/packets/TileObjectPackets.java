@@ -2,75 +2,79 @@ package dev.hoot.api.packets;
 
 import dev.hoot.api.game.Game;
 import net.runelite.api.Client;
+import net.runelite.api.Item;
 import net.runelite.api.Point;
+import net.runelite.api.TileObject;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.packets.ClientPacket;
 import net.runelite.api.packets.PacketBufferNode;
 
+import java.util.List;
+
 public class TileObjectPackets {
 
-    public static void tileObjectFirstOption(net.runelite.api.TileObject object, boolean run) {
-        net.runelite.api.Point p = object.menuPoint();
-        net.runelite.api.coords.LocalPoint lp = new net.runelite.api.coords.LocalPoint(p.getX(), p.getY());
-        net.runelite.api.coords.WorldPoint wp = net.runelite.api.coords.WorldPoint.fromScene(dev.hoot.api.game.Game.getClient(), lp.getX(), lp.getY(), object.getPlane());
-        dev.hoot.api.packets.TileObjectPackets.queueTileObjectAction1Packet(object.getId(), wp.getX(), wp.getY(), run);
+    public static void tileObjectFirstOption(TileObject object, boolean run) {
+        Point p = object.menuPoint();
+        LocalPoint lp = new LocalPoint(p.getX(), p.getY());
+        WorldPoint wp = WorldPoint.fromScene(Game.getClient(), lp.getX(), lp.getY(), object.getPlane());
+        TileObjectPackets.queueTileObjectAction1Packet(object.getId(), wp.getX(), wp.getY(), run);
     }
 
-    public static void tileObjectSecondOption(net.runelite.api.TileObject object, boolean run) {
-        net.runelite.api.Point p = object.menuPoint();
-        net.runelite.api.coords.LocalPoint lp = new net.runelite.api.coords.LocalPoint(p.getX(), p.getY());
-        net.runelite.api.coords.WorldPoint wp = net.runelite.api.coords.WorldPoint.fromScene(dev.hoot.api.game.Game.getClient(), lp.getX(), lp.getY(), object.getPlane());
-        dev.hoot.api.packets.TileObjectPackets.queueTileObjectAction2Packet(object.getId(), wp.getX(), wp.getY(), run);
+    public static void tileObjectSecondOption(TileObject object, boolean run) {
+        Point p = object.menuPoint();
+        LocalPoint lp = new LocalPoint(p.getX(), p.getY());
+        WorldPoint wp = WorldPoint.fromScene(Game.getClient(), lp.getX(), lp.getY(), object.getPlane());
+        TileObjectPackets.queueTileObjectAction2Packet(object.getId(), wp.getX(), wp.getY(), run);
     }
 
-    public static void tileObjectThirdOption(net.runelite.api.TileObject object, boolean run) {
-        net.runelite.api.Point p = object.menuPoint();
-        net.runelite.api.coords.LocalPoint lp = new net.runelite.api.coords.LocalPoint(p.getX(), p.getY());
-        net.runelite.api.coords.WorldPoint wp = net.runelite.api.coords.WorldPoint.fromScene(dev.hoot.api.game.Game.getClient(), lp.getX(), lp.getY(), object.getPlane());
-        dev.hoot.api.packets.TileObjectPackets.queueTileObjectAction3Packet(object.getId(), wp.getX(), wp.getY(), run);
+    public static void tileObjectThirdOption(TileObject object, boolean run) {
+        Point p = object.menuPoint();
+        LocalPoint lp = new LocalPoint(p.getX(), p.getY());
+        WorldPoint wp = WorldPoint.fromScene(Game.getClient(), lp.getX(), lp.getY(), object.getPlane());
+        TileObjectPackets.queueTileObjectAction3Packet(object.getId(), wp.getX(), wp.getY(), run);
     }
 
-    public static void tileObjectFourthOption(net.runelite.api.TileObject object, boolean run) {
-        net.runelite.api.Point p = object.menuPoint();
-        net.runelite.api.coords.LocalPoint lp = new net.runelite.api.coords.LocalPoint(p.getX(), p.getY());
-        net.runelite.api.coords.WorldPoint wp = net.runelite.api.coords.WorldPoint.fromScene(dev.hoot.api.game.Game.getClient(), lp.getX(), lp.getY(), object.getPlane());
-        dev.hoot.api.packets.TileObjectPackets.queueTileObjectAction4Packet(object.getId(), wp.getX(), wp.getY(), run);
+    public static void tileObjectFourthOption(TileObject object, boolean run) {
+        Point p = object.menuPoint();
+        LocalPoint lp = new LocalPoint(p.getX(), p.getY());
+        WorldPoint wp = WorldPoint.fromScene(Game.getClient(), lp.getX(), lp.getY(), object.getPlane());
+        TileObjectPackets.queueTileObjectAction4Packet(object.getId(), wp.getX(), wp.getY(), run);
     }
 
-    public static void tileObjectFifthOption(net.runelite.api.TileObject object, boolean run) {
-        net.runelite.api.Point p = object.menuPoint();
-        net.runelite.api.coords.LocalPoint lp = new net.runelite.api.coords.LocalPoint(p.getX(), p.getY());
-        net.runelite.api.coords.WorldPoint wp = net.runelite.api.coords.WorldPoint.fromScene(dev.hoot.api.game.Game.getClient(), lp.getX(), lp.getY(), object.getPlane());
-        dev.hoot.api.packets.TileObjectPackets.queueTileObjectAction5Packet(object.getId(), wp.getX(), wp.getY(), run);
+    public static void tileObjectFifthOption(TileObject object, boolean run) {
+        Point p = object.menuPoint();
+        LocalPoint lp = new LocalPoint(p.getX(), p.getY());
+        WorldPoint wp = WorldPoint.fromScene(Game.getClient(), lp.getX(), lp.getY(), object.getPlane());
+        TileObjectPackets.queueTileObjectAction5Packet(object.getId(), wp.getX(), wp.getY(), run);
     }
 
-    public static void tileObjectAction(net.runelite.api.TileObject object, java.lang.String action, boolean run) {
-        java.util.List<java.lang.String> actions = object.getActions();
+    public static void tileObjectAction(TileObject object, String action, boolean run) {
+        List<String> actions = object.getActions();
         int index = actions.indexOf(action);
         switch (index) {
             case 0 :
-                dev.hoot.api.packets.TileObjectPackets.tileObjectFirstOption(object, run);
+                TileObjectPackets.tileObjectFirstOption(object, run);
                 break;
             case 1 :
-                dev.hoot.api.packets.TileObjectPackets.tileObjectSecondOption(object, run);
+                TileObjectPackets.tileObjectSecondOption(object, run);
                 break;
             case 2 :
-                dev.hoot.api.packets.TileObjectPackets.tileObjectThirdOption(object, run);
+                TileObjectPackets.tileObjectThirdOption(object, run);
                 break;
             case 3 :
-                dev.hoot.api.packets.TileObjectPackets.tileObjectFourthOption(object, run);
+                TileObjectPackets.tileObjectFourthOption(object, run);
                 break;
             case 4 :
-                dev.hoot.api.packets.TileObjectPackets.tileObjectFifthOption(object, run);
+                TileObjectPackets.tileObjectFifthOption(object, run);
                 break;
         }
     }
 
-    public static void useItemOnTileObject(net.runelite.api.Item item, net.runelite.api.TileObject object) {
+    public static void useItemOnTileObject(Item item, TileObject object) {
         Point p = object.menuPoint();
-        LocalPoint lp = new net.runelite.api.coords.LocalPoint(p.getX(), p.getY());
-        WorldPoint wp = net.runelite.api.coords.WorldPoint.fromScene(dev.hoot.api.game.Game.getClient(), lp.getX(), lp.getY(), object.getPlane());
+        LocalPoint lp = new LocalPoint(p.getX(), p.getY());
+        WorldPoint wp = WorldPoint.fromScene(Game.getClient(), lp.getX(), lp.getY(), object.getPlane());
         queueItemUseOnTileObjectPacket(object.getId(), wp.getX(), wp.getY(), item.getSlot(), item.getId(), item.getWidgetId(),false);
     }
 

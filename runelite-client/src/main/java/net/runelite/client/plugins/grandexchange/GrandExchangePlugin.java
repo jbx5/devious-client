@@ -191,7 +191,7 @@ public class GrandExchangePlugin extends Plugin
 	private int tradeSeq;
 
 	/**
-	 * Logic from {@link org.apache.commons.text.similarity.FuzzyScore}
+	 * Logic from {@link FuzzyScore}
 	 */
 	@VisibleForTesting
 	static List<Integer> findFuzzyIndices(String term, String query)

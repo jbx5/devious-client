@@ -810,12 +810,12 @@ public interface Widget extends Interactable, Identifiable
 	void setDragDeadTime(int deadTime);
 
 	/**
-	 * Returns widget {@link net.runelite.api.widgets.ItemQuantityMode}.
+	 * Returns widget {@link ItemQuantityMode}.
 	 */
 	int getItemQuantityMode();
 
 	/**
-	 * Sets the widget {@link net.runelite.api.widgets.ItemQuantityMode}
+	 * Sets the widget {@link ItemQuantityMode}
 	 */
 	void setItemQuantityMode(int itemQuantityMode);
 

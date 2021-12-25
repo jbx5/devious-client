@@ -2,48 +2,51 @@ package dev.hoot.api.packets;
 
 import dev.hoot.api.game.Game;
 import net.runelite.api.Client;
+import net.runelite.api.TileItem;
 import net.runelite.api.packets.ClientPacket;
 import net.runelite.api.packets.PacketBufferNode;
 
+import java.util.List;
+
 public class GroundItemPackets {
-    public static void groundItemFirstOption(net.runelite.api.TileItem item, boolean runEnabled) {
-        dev.hoot.api.packets.GroundItemPackets.queueGroundItemAction1Packet(item.getId(), item.getWorldLocation().getX(), item.getWorldLocation().getY(), runEnabled);
+    public static void groundItemFirstOption(TileItem item, boolean runEnabled) {
+        GroundItemPackets.queueGroundItemAction1Packet(item.getId(), item.getWorldLocation().getX(), item.getWorldLocation().getY(), runEnabled);
     }
 
-    public static void groundItemSecondOption(net.runelite.api.TileItem item, boolean runEnabled) {
-        dev.hoot.api.packets.GroundItemPackets.queueGroundItemAction2Packet(item.getId(), item.getWorldLocation().getX(), item.getWorldLocation().getY(), runEnabled);
+    public static void groundItemSecondOption(TileItem item, boolean runEnabled) {
+        GroundItemPackets.queueGroundItemAction2Packet(item.getId(), item.getWorldLocation().getX(), item.getWorldLocation().getY(), runEnabled);
     }
 
-    public static void groundItemThirdOption(net.runelite.api.TileItem item, boolean runEnabled) {
-        dev.hoot.api.packets.GroundItemPackets.queueGroundItemAction3Packet(item.getId(), item.getWorldLocation().getX(), item.getWorldLocation().getY(), runEnabled);
+    public static void groundItemThirdOption(TileItem item, boolean runEnabled) {
+        GroundItemPackets.queueGroundItemAction3Packet(item.getId(), item.getWorldLocation().getX(), item.getWorldLocation().getY(), runEnabled);
     }
 
-    public static void groundItemFourthOption(net.runelite.api.TileItem item, boolean runEnabled) {
-        dev.hoot.api.packets.GroundItemPackets.queueGroundItemAction4Packet(item.getId(), item.getWorldLocation().getX(), item.getWorldLocation().getY(), runEnabled);
+    public static void groundItemFourthOption(TileItem item, boolean runEnabled) {
+        GroundItemPackets.queueGroundItemAction4Packet(item.getId(), item.getWorldLocation().getX(), item.getWorldLocation().getY(), runEnabled);
     }
 
-    public static void groundItemFifthOption(net.runelite.api.TileItem item, boolean runEnabled) {
-        dev.hoot.api.packets.GroundItemPackets.queueGroundItemAction5Packet(item.getId(), item.getWorldLocation().getX(), item.getWorldLocation().getY(), runEnabled);
+    public static void groundItemFifthOption(TileItem item, boolean runEnabled) {
+        GroundItemPackets.queueGroundItemAction5Packet(item.getId(), item.getWorldLocation().getX(), item.getWorldLocation().getY(), runEnabled);
     }
 
-    public static void groundItemAction(net.runelite.api.TileItem item, java.lang.String action, boolean runEnabled) {
-        java.util.List<java.lang.String> actions = item.getActions();
+    public static void groundItemAction(TileItem item, String action, boolean runEnabled) {
+        List<String> actions = item.getActions();
         int index = actions.indexOf(action);
         switch (index) {
             case 0 :
-                dev.hoot.api.packets.GroundItemPackets.groundItemFirstOption(item, runEnabled);
+                GroundItemPackets.groundItemFirstOption(item, runEnabled);
                 break;
             case 1 :
-                dev.hoot.api.packets.GroundItemPackets.groundItemSecondOption(item, runEnabled);
+                GroundItemPackets.groundItemSecondOption(item, runEnabled);
                 break;
             case 2 :
-                dev.hoot.api.packets.GroundItemPackets.groundItemThirdOption(item, runEnabled);
+                GroundItemPackets.groundItemThirdOption(item, runEnabled);
                 break;
             case 3 :
-                dev.hoot.api.packets.GroundItemPackets.groundItemFourthOption(item, runEnabled);
+                GroundItemPackets.groundItemFourthOption(item, runEnabled);
                 break;
             case 4 :
-                dev.hoot.api.packets.GroundItemPackets.groundItemFifthOption(item, runEnabled);
+                GroundItemPackets.groundItemFifthOption(item, runEnabled);
                 break;
         }
     }

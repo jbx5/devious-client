@@ -1,62 +1,67 @@
 package dev.hoot.api.packets;
 
 import dev.hoot.api.game.Game;
+import dev.hoot.api.widgets.Widgets;
 import net.runelite.api.Client;
+import net.runelite.api.InventoryID;
+import net.runelite.api.Item;
 import net.runelite.api.packets.ClientPacket;
 import net.runelite.api.packets.PacketBufferNode;
 import net.runelite.api.widgets.WidgetInfo;
 
+import java.util.List;
+
 public class ItemPackets {
-    public static void itemAction(net.runelite.api.Item item, java.lang.String action) {
-        java.util.List<java.lang.String> actions = item.getActions();
+    public static void itemAction(Item item, String action) {
+        List<String> actions = item.getActions();
         int index = actions.indexOf(action);
         switch (index) {
             case 0 :
-                dev.hoot.api.packets.ItemPackets.itemFirstOption(item);
+                ItemPackets.itemFirstOption(item);
                 break;
             case 1 :
-                dev.hoot.api.packets.ItemPackets.itemSecondOption(item);
+                ItemPackets.itemSecondOption(item);
                 break;
             case 2 :
-                dev.hoot.api.packets.ItemPackets.itemThirdOption(item);
+                ItemPackets.itemThirdOption(item);
                 break;
             case 3 :
-                dev.hoot.api.packets.ItemPackets.itemFourthOption(item);
+                ItemPackets.itemFourthOption(item);
                 break;
             case 4 :
-                dev.hoot.api.packets.ItemPackets.itemFifthOption(item);
+                ItemPackets.itemFifthOption(item);
                 break;
             default :
-                dev.hoot.api.packets.WidgetPackets.widgetAction(dev.hoot.api.widgets.Widgets.fromId(item.getWidgetId()), action);
+                WidgetPackets.widgetAction(Widgets.fromId(item.getWidgetId()), action);
                 break;
         }
     }
 
-    public static void itemFirstOption(net.runelite.api.Item item) {
-        dev.hoot.api.packets.ItemPackets.queueItemAction1Packet(item.getWidgetId(), item.getId(), item.getSlot());
+    public static void itemFirstOption(Item item) {
+        ItemPackets.queueItemAction1Packet(item.getWidgetId(), item.getId(), item.getSlot());
     }
 
-    public static void itemSecondOption(net.runelite.api.Item item) {
-        dev.hoot.api.packets.ItemPackets.queueItemAction2Packet(item.getWidgetId(), item.getId(), item.getSlot());
+    public static void itemSecondOption(Item item) {
+        ItemPackets.queueItemAction2Packet(item.getWidgetId(), item.getId(), item.getSlot());
     }
 
-    public static void itemThirdOption(net.runelite.api.Item item) {
-        dev.hoot.api.packets.ItemPackets.queueItemAction3Packet(item.getWidgetId(), item.getId(), item.getSlot());
+    public static void itemThirdOption(Item item) {
+        ItemPackets.queueItemAction3Packet(item.getWidgetId(), item.getId(), item.getSlot());
     }
 
-    public static void itemFourthOption(net.runelite.api.Item item) {
-        dev.hoot.api.packets.ItemPackets.queueItemAction4Packet(item.getWidgetId(), item.getId(), item.getSlot());
+    public static void itemFourthOption(Item item) {
+        ItemPackets.queueItemAction4Packet(item.getWidgetId(), item.getId(), item.getSlot());
     }
 
-    public static void itemFifthOption(net.runelite.api.Item item) {
-        dev.hoot.api.packets.ItemPackets.queueItemAction5Packet(item.getWidgetId(), item.getId(), item.getSlot());
+    public static void itemFifthOption(Item item) {
+        ItemPackets.queueItemAction5Packet(item.getWidgetId(), item.getId(), item.getSlot());
     }
 
-    public static void useItemOnItem(net.runelite.api.Item item, net.runelite.api.Item item2) {
-        if ((item.getType().getInventoryID() != net.runelite.api.InventoryID.INVENTORY) || (item2.getType().getInventoryID() != net.runelite.api.InventoryID.INVENTORY)) {
+    public static void useItemOnItem(Item item, Item item2) {
+        if ((item.getType().getInventoryID() != InventoryID.INVENTORY) || (item2.getType().getInventoryID() != InventoryID.INVENTORY)) {
             return;
         }
-        dev.hoot.api.packets.ItemPackets.queueItemOnItemPacket(item.getId(), item.getSlot(), item2.getId(), item2.getSlot());
+        ItemPackets.queueItemOnItemPacket(item.getId(), item.getSlot(), item2.getId(), item2.getSlot());
     }
 
     public static void queueItemOnItemPacket(int sourceItemId, int sourceItemSlot, int itemId, int itemSlot) {

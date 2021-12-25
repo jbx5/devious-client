@@ -48,6 +48,7 @@ import net.runelite.asm.attributes.code.instructions.InvokeVirtual;
 import net.runelite.asm.execution.Execution;
 import net.runelite.asm.execution.InstructionContext;
 import net.runelite.asm.execution.StackContext;
+import net.runelite.asm.pool.Field;
 import net.runelite.asm.pool.Method;
 import net.runelite.asm.signature.Signature;
 import net.runelite.deob.Deobfuscator;
@@ -229,7 +230,7 @@ public class PacketWriteDeobfuscator implements Deobfuscator
 		assert idx != -1;
 		--idx;
 
-		net.runelite.asm.pool.Field field = new net.runelite.asm.pool.Field(
+		Field field = new Field(
 			new net.runelite.asm.pool.Class(findClient(group).getName()),
 			RUNELITE_PACKET,
 			Type.BOOLEAN

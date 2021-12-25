@@ -33,6 +33,7 @@ import javax.inject.Inject;
 import lombok.Getter;
 import net.runelite.api.Client;
 import net.runelite.api.Perspective;
+import net.runelite.api.Point;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.client.ui.overlay.Overlay;
 import net.runelite.client.ui.overlay.OverlayLayer;
@@ -82,7 +83,7 @@ public class PohOverlay extends Overlay
 
 				if (icon != null && iconList.contains(icon))
 				{
-					net.runelite.api.Point minimapLoc = Perspective.getMiniMapImageLocation(client, object.getLocalLocation(), icon.getImage());
+					Point minimapLoc = Perspective.getMiniMapImageLocation(client, object.getLocalLocation(), icon.getImage());
 
 					if (minimapLoc != null)
 					{
