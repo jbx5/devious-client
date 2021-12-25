@@ -3,22 +3,19 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-
 @ObfuscatedName("ig")
 @Implements("WorldMapScaleHandler")
 public class WorldMapScaleHandler {
 	@ObfuscatedName("ev")
-	@ObfuscatedSignature(
-		descriptor = "Lkz;"
-	)
+	@ObfuscatedSignature(descriptor = "Lkz;")
 	@Export("archive6")
 	static Archive archive6;
+
 	@ObfuscatedName("c")
-	@ObfuscatedGetter(
-		intValue = 1907354945
-	)
+	@ObfuscatedGetter(intValue = 1907354945)
 	@Export("pixelsPerTile")
 	int pixelsPerTile;
+
 	@ObfuscatedName("b")
 	@Export("tileTemplates")
 	byte[][][] tileTemplates;
@@ -28,12 +25,9 @@ public class WorldMapScaleHandler {
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(IIIIIIIIB)V",
-		garbageValue = "-14"
-	)
+	@ObfuscatedSignature(descriptor = "(IIIIIIIIB)V", garbageValue = "-14")
 	void method4907(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
-		if (var7 != 0 && this.pixelsPerTile != 0 && this.tileTemplates != null) {
+		if (((var7 != 0) && (this.pixelsPerTile != 0)) && (this.tileTemplates != null)) {
 			var8 = this.method4895(var8, var7);
 			var7 = this.method4897(var7);
 			Rasterizer2D.Rasterizer2D_drawGradientPixels(var1, var2, var5, var6, var3, var4, this.tileTemplates[var7 - 1][var8], this.pixelsPerTile);
@@ -41,33 +35,24 @@ public class WorldMapScaleHandler {
 	}
 
 	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "-1888183468"
-	)
+	@ObfuscatedSignature(descriptor = "(III)I", garbageValue = "-1888183468")
 	int method4895(int var1, int var2) {
 		if (var2 == 9) {
-			var1 = var1 + 1 & 3;
+			var1 = (var1 + 1) & 3;
 		}
-
 		if (var2 == 10) {
-			var1 = var1 + 3 & 3;
+			var1 = (var1 + 3) & 3;
 		}
-
 		if (var2 == 11) {
-			var1 = var1 + 3 & 3;
+			var1 = (var1 + 3) & 3;
 		}
-
 		return var1;
 	}
 
 	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "-1710569700"
-	)
+	@ObfuscatedSignature(descriptor = "(II)I", garbageValue = "-1710569700")
 	int method4897(int var1) {
-		if (var1 != 9 && var1 != 10) {
+		if ((var1 != 9) && (var1 != 10)) {
 			return var1 == 11 ? 8 : var1;
 		} else {
 			return 1;
@@ -75,10 +60,7 @@ public class WorldMapScaleHandler {
 	}
 
 	@ObfuscatedName("m")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "16120985"
-	)
+	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "16120985")
 	@Export("init")
 	void init() {
 		if (this.tileTemplates == null) {
@@ -95,15 +77,11 @@ public class WorldMapScaleHandler {
 	}
 
 	@ObfuscatedName("t")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "705578005"
-	)
+	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "705578005")
 	@Export("init0")
 	void init0() {
 		byte[] var1 = new byte[this.pixelsPerTile * this.pixelsPerTile];
 		int var2 = 0;
-
 		int var3;
 		int var4;
 		for (var3 = 0; var3 < this.pixelsPerTile; ++var3) {
@@ -111,532 +89,416 @@ public class WorldMapScaleHandler {
 				if (var4 <= var3) {
 					var1[var2] = -1;
 				}
-
 				++var2;
 			}
 		}
-
 		this.tileTemplates[0][0] = var1;
 		var1 = new byte[this.pixelsPerTile * this.pixelsPerTile];
 		var2 = 0;
-
 		for (var3 = this.pixelsPerTile - 1; var3 >= 0; --var3) {
 			for (var4 = 0; var4 < this.pixelsPerTile; ++var4) {
 				if (var4 <= var3) {
 					var1[var2] = -1;
 				}
-
 				++var2;
 			}
 		}
-
 		this.tileTemplates[0][1] = var1;
 		var1 = new byte[this.pixelsPerTile * this.pixelsPerTile];
 		var2 = 0;
-
 		for (var3 = 0; var3 < this.pixelsPerTile; ++var3) {
 			for (var4 = 0; var4 < this.pixelsPerTile; ++var4) {
 				if (var4 >= var3) {
 					var1[var2] = -1;
 				}
-
 				++var2;
 			}
 		}
-
 		this.tileTemplates[0][2] = var1;
 		var1 = new byte[this.pixelsPerTile * this.pixelsPerTile];
 		var2 = 0;
-
 		for (var3 = this.pixelsPerTile - 1; var3 >= 0; --var3) {
 			for (var4 = 0; var4 < this.pixelsPerTile; ++var4) {
 				if (var4 >= var3) {
 					var1[var2] = -1;
 				}
-
 				++var2;
 			}
 		}
-
 		this.tileTemplates[0][3] = var1;
 	}
 
 	@ObfuscatedName("s")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-2100707486"
-	)
+	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "-2100707486")
 	@Export("init1")
 	void init1() {
 		byte[] var1 = new byte[this.pixelsPerTile * this.pixelsPerTile];
 		int var2 = 0;
-
 		int var3;
 		int var4;
 		for (var3 = this.pixelsPerTile - 1; var3 >= 0; --var3) {
 			for (var4 = 0; var4 < this.pixelsPerTile; ++var4) {
-				if (var4 <= var3 >> 1) {
+				if (var4 <= (var3 >> 1)) {
 					var1[var2] = -1;
 				}
-
 				++var2;
 			}
 		}
-
 		this.tileTemplates[1][0] = var1;
 		var1 = new byte[this.pixelsPerTile * this.pixelsPerTile];
 		var2 = 0;
-
 		for (var3 = 0; var3 < this.pixelsPerTile; ++var3) {
 			for (var4 = 0; var4 < this.pixelsPerTile; ++var4) {
-				if (var2 >= 0 && var2 < var1.length) {
-					if (var4 >= var3 << 1) {
+				if ((var2 >= 0) && (var2 < var1.length)) {
+					if (var4 >= (var3 << 1)) {
 						var1[var2] = -1;
 					}
-
 					++var2;
 				} else {
 					++var2;
 				}
 			}
 		}
-
 		this.tileTemplates[1][1] = var1;
 		var1 = new byte[this.pixelsPerTile * this.pixelsPerTile];
 		var2 = 0;
-
 		for (var3 = 0; var3 < this.pixelsPerTile; ++var3) {
 			for (var4 = this.pixelsPerTile - 1; var4 >= 0; --var4) {
-				if (var4 <= var3 >> 1) {
+				if (var4 <= (var3 >> 1)) {
 					var1[var2] = -1;
 				}
-
 				++var2;
 			}
 		}
-
 		this.tileTemplates[1][2] = var1;
 		var1 = new byte[this.pixelsPerTile * this.pixelsPerTile];
 		var2 = 0;
-
 		for (var3 = this.pixelsPerTile - 1; var3 >= 0; --var3) {
 			for (var4 = this.pixelsPerTile - 1; var4 >= 0; --var4) {
-				if (var4 >= var3 << 1) {
+				if (var4 >= (var3 << 1)) {
 					var1[var2] = -1;
 				}
-
 				++var2;
 			}
 		}
-
 		this.tileTemplates[1][3] = var1;
 	}
 
 	@ObfuscatedName("j")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "65"
-	)
+	@ObfuscatedSignature(descriptor = "(B)V", garbageValue = "65")
 	@Export("init2")
 	void init2() {
 		byte[] var1 = new byte[this.pixelsPerTile * this.pixelsPerTile];
 		int var2 = 0;
-
 		int var3;
 		int var4;
 		for (var3 = this.pixelsPerTile - 1; var3 >= 0; --var3) {
 			for (var4 = this.pixelsPerTile - 1; var4 >= 0; --var4) {
-				if (var4 <= var3 >> 1) {
+				if (var4 <= (var3 >> 1)) {
 					var1[var2] = -1;
 				}
-
 				++var2;
 			}
 		}
-
 		this.tileTemplates[2][0] = var1;
 		var1 = new byte[this.pixelsPerTile * this.pixelsPerTile];
 		var2 = 0;
-
 		for (var3 = this.pixelsPerTile - 1; var3 >= 0; --var3) {
 			for (var4 = 0; var4 < this.pixelsPerTile; ++var4) {
-				if (var4 >= var3 << 1) {
+				if (var4 >= (var3 << 1)) {
 					var1[var2] = -1;
 				}
-
 				++var2;
 			}
 		}
-
 		this.tileTemplates[2][1] = var1;
 		var1 = new byte[this.pixelsPerTile * this.pixelsPerTile];
 		var2 = 0;
-
 		for (var3 = 0; var3 < this.pixelsPerTile; ++var3) {
 			for (var4 = 0; var4 < this.pixelsPerTile; ++var4) {
-				if (var4 <= var3 >> 1) {
+				if (var4 <= (var3 >> 1)) {
 					var1[var2] = -1;
 				}
-
 				++var2;
 			}
 		}
-
 		this.tileTemplates[2][2] = var1;
 		var1 = new byte[this.pixelsPerTile * this.pixelsPerTile];
 		var2 = 0;
-
 		for (var3 = 0; var3 < this.pixelsPerTile; ++var3) {
 			for (var4 = this.pixelsPerTile - 1; var4 >= 0; --var4) {
-				if (var4 >= var3 << 1) {
+				if (var4 >= (var3 << 1)) {
 					var1[var2] = -1;
 				}
-
 				++var2;
 			}
 		}
-
 		this.tileTemplates[2][3] = var1;
 	}
 
 	@ObfuscatedName("w")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1718839549"
-	)
+	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "-1718839549")
 	@Export("init3")
 	void init3() {
 		byte[] var1 = new byte[this.pixelsPerTile * this.pixelsPerTile];
 		int var2 = 0;
-
 		int var3;
 		int var4;
 		for (var3 = this.pixelsPerTile - 1; var3 >= 0; --var3) {
 			for (var4 = 0; var4 < this.pixelsPerTile; ++var4) {
-				if (var4 >= var3 >> 1) {
+				if (var4 >= (var3 >> 1)) {
 					var1[var2] = -1;
 				}
-
 				++var2;
 			}
 		}
-
 		this.tileTemplates[3][0] = var1;
 		var1 = new byte[this.pixelsPerTile * this.pixelsPerTile];
 		var2 = 0;
-
 		for (var3 = 0; var3 < this.pixelsPerTile; ++var3) {
 			for (var4 = 0; var4 < this.pixelsPerTile; ++var4) {
-				if (var4 <= var3 << 1) {
+				if (var4 <= (var3 << 1)) {
 					var1[var2] = -1;
 				}
-
 				++var2;
 			}
 		}
-
 		this.tileTemplates[3][1] = var1;
 		var1 = new byte[this.pixelsPerTile * this.pixelsPerTile];
 		var2 = 0;
-
 		for (var3 = 0; var3 < this.pixelsPerTile; ++var3) {
 			for (var4 = this.pixelsPerTile - 1; var4 >= 0; --var4) {
-				if (var4 >= var3 >> 1) {
+				if (var4 >= (var3 >> 1)) {
 					var1[var2] = -1;
 				}
-
 				++var2;
 			}
 		}
-
 		this.tileTemplates[3][2] = var1;
 		var1 = new byte[this.pixelsPerTile * this.pixelsPerTile];
 		var2 = 0;
-
 		for (var3 = this.pixelsPerTile - 1; var3 >= 0; --var3) {
 			for (var4 = this.pixelsPerTile - 1; var4 >= 0; --var4) {
-				if (var4 <= var3 << 1) {
+				if (var4 <= (var3 << 1)) {
 					var1[var2] = -1;
 				}
-
 				++var2;
 			}
 		}
-
 		this.tileTemplates[3][3] = var1;
 	}
 
 	@ObfuscatedName("n")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "766597576"
-	)
+	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "766597576")
 	@Export("init4")
 	void init4() {
 		byte[] var1 = new byte[this.pixelsPerTile * this.pixelsPerTile];
 		int var2 = 0;
-
 		int var3;
 		int var4;
 		for (var3 = this.pixelsPerTile - 1; var3 >= 0; --var3) {
 			for (var4 = this.pixelsPerTile - 1; var4 >= 0; --var4) {
-				if (var4 >= var3 >> 1) {
+				if (var4 >= (var3 >> 1)) {
 					var1[var2] = -1;
 				}
-
 				++var2;
 			}
 		}
-
 		this.tileTemplates[4][0] = var1;
 		var1 = new byte[this.pixelsPerTile * this.pixelsPerTile];
 		var2 = 0;
-
 		for (var3 = this.pixelsPerTile - 1; var3 >= 0; --var3) {
 			for (var4 = 0; var4 < this.pixelsPerTile; ++var4) {
-				if (var4 <= var3 << 1) {
+				if (var4 <= (var3 << 1)) {
 					var1[var2] = -1;
 				}
-
 				++var2;
 			}
 		}
-
 		this.tileTemplates[4][1] = var1;
 		var1 = new byte[this.pixelsPerTile * this.pixelsPerTile];
 		var2 = 0;
-
 		for (var3 = 0; var3 < this.pixelsPerTile; ++var3) {
 			for (var4 = 0; var4 < this.pixelsPerTile; ++var4) {
-				if (var4 >= var3 >> 1) {
+				if (var4 >= (var3 >> 1)) {
 					var1[var2] = -1;
 				}
-
 				++var2;
 			}
 		}
-
 		this.tileTemplates[4][2] = var1;
 		var1 = new byte[this.pixelsPerTile * this.pixelsPerTile];
 		var2 = 0;
-
 		for (var3 = 0; var3 < this.pixelsPerTile; ++var3) {
 			for (var4 = this.pixelsPerTile - 1; var4 >= 0; --var4) {
-				if (var4 <= var3 << 1) {
+				if (var4 <= (var3 << 1)) {
 					var1[var2] = -1;
 				}
-
 				++var2;
 			}
 		}
-
 		this.tileTemplates[4][3] = var1;
 	}
 
 	@ObfuscatedName("r")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-236684263"
-	)
+	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "-236684263")
 	@Export("init5")
 	void init5() {
 		byte[] var1 = new byte[this.pixelsPerTile * this.pixelsPerTile];
 		boolean var2 = false;
 		var1 = new byte[this.pixelsPerTile * this.pixelsPerTile];
 		int var5 = 0;
-
 		int var3;
 		int var4;
 		for (var3 = 0; var3 < this.pixelsPerTile; ++var3) {
 			for (var4 = 0; var4 < this.pixelsPerTile; ++var4) {
-				if (var4 <= this.pixelsPerTile / 2) {
+				if (var4 <= (this.pixelsPerTile / 2)) {
 					var1[var5] = -1;
 				}
-
 				++var5;
 			}
 		}
-
 		this.tileTemplates[5][0] = var1;
 		var1 = new byte[this.pixelsPerTile * this.pixelsPerTile];
 		var5 = 0;
-
 		for (var3 = 0; var3 < this.pixelsPerTile; ++var3) {
 			for (var4 = 0; var4 < this.pixelsPerTile; ++var4) {
-				if (var3 <= this.pixelsPerTile / 2) {
+				if (var3 <= (this.pixelsPerTile / 2)) {
 					var1[var5] = -1;
 				}
-
 				++var5;
 			}
 		}
-
 		this.tileTemplates[5][1] = var1;
 		var1 = new byte[this.pixelsPerTile * this.pixelsPerTile];
 		var5 = 0;
-
 		for (var3 = 0; var3 < this.pixelsPerTile; ++var3) {
 			for (var4 = 0; var4 < this.pixelsPerTile; ++var4) {
-				if (var4 >= this.pixelsPerTile / 2) {
+				if (var4 >= (this.pixelsPerTile / 2)) {
 					var1[var5] = -1;
 				}
-
 				++var5;
 			}
 		}
-
 		this.tileTemplates[5][2] = var1;
 		var1 = new byte[this.pixelsPerTile * this.pixelsPerTile];
 		var5 = 0;
-
 		for (var3 = 0; var3 < this.pixelsPerTile; ++var3) {
 			for (var4 = 0; var4 < this.pixelsPerTile; ++var4) {
-				if (var3 >= this.pixelsPerTile / 2) {
+				if (var3 >= (this.pixelsPerTile / 2)) {
 					var1[var5] = -1;
 				}
-
 				++var5;
 			}
 		}
-
 		this.tileTemplates[5][3] = var1;
 	}
 
 	@ObfuscatedName("o")
-	@ObfuscatedSignature(
-		descriptor = "(S)V",
-		garbageValue = "255"
-	)
+	@ObfuscatedSignature(descriptor = "(S)V", garbageValue = "255")
 	@Export("init6")
 	void init6() {
 		byte[] var1 = new byte[this.pixelsPerTile * this.pixelsPerTile];
 		boolean var2 = false;
 		var1 = new byte[this.pixelsPerTile * this.pixelsPerTile];
 		int var5 = 0;
-
 		int var3;
 		int var4;
 		for (var3 = 0; var3 < this.pixelsPerTile; ++var3) {
 			for (var4 = 0; var4 < this.pixelsPerTile; ++var4) {
-				if (var4 <= var3 - this.pixelsPerTile / 2) {
+				if (var4 <= (var3 - (this.pixelsPerTile / 2))) {
 					var1[var5] = -1;
 				}
-
 				++var5;
 			}
 		}
-
 		this.tileTemplates[6][0] = var1;
 		var1 = new byte[this.pixelsPerTile * this.pixelsPerTile];
 		var5 = 0;
-
 		for (var3 = this.pixelsPerTile - 1; var3 >= 0; --var3) {
 			for (var4 = 0; var4 < this.pixelsPerTile; ++var4) {
-				if (var4 <= var3 - this.pixelsPerTile / 2) {
+				if (var4 <= (var3 - (this.pixelsPerTile / 2))) {
 					var1[var5] = -1;
 				}
-
 				++var5;
 			}
 		}
-
 		this.tileTemplates[6][1] = var1;
 		var1 = new byte[this.pixelsPerTile * this.pixelsPerTile];
 		var5 = 0;
-
 		for (var3 = this.pixelsPerTile - 1; var3 >= 0; --var3) {
 			for (var4 = this.pixelsPerTile - 1; var4 >= 0; --var4) {
-				if (var4 <= var3 - this.pixelsPerTile / 2) {
+				if (var4 <= (var3 - (this.pixelsPerTile / 2))) {
 					var1[var5] = -1;
 				}
-
 				++var5;
 			}
 		}
-
 		this.tileTemplates[6][2] = var1;
 		var1 = new byte[this.pixelsPerTile * this.pixelsPerTile];
 		var5 = 0;
-
 		for (var3 = 0; var3 < this.pixelsPerTile; ++var3) {
 			for (var4 = this.pixelsPerTile - 1; var4 >= 0; --var4) {
-				if (var4 <= var3 - this.pixelsPerTile / 2) {
+				if (var4 <= (var3 - (this.pixelsPerTile / 2))) {
 					var1[var5] = -1;
 				}
-
 				++var5;
 			}
 		}
-
 		this.tileTemplates[6][3] = var1;
 	}
 
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-279760962"
-	)
+	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "-279760962")
 	@Export("init7")
 	void init7() {
 		byte[] var1 = new byte[this.pixelsPerTile * this.pixelsPerTile];
 		boolean var2 = false;
 		var1 = new byte[this.pixelsPerTile * this.pixelsPerTile];
 		int var5 = 0;
-
 		int var3;
 		int var4;
 		for (var3 = 0; var3 < this.pixelsPerTile; ++var3) {
 			for (var4 = 0; var4 < this.pixelsPerTile; ++var4) {
-				if (var4 >= var3 - this.pixelsPerTile / 2) {
+				if (var4 >= (var3 - (this.pixelsPerTile / 2))) {
 					var1[var5] = -1;
 				}
-
 				++var5;
 			}
 		}
-
 		this.tileTemplates[7][0] = var1;
 		var1 = new byte[this.pixelsPerTile * this.pixelsPerTile];
 		var5 = 0;
-
 		for (var3 = this.pixelsPerTile - 1; var3 >= 0; --var3) {
 			for (var4 = 0; var4 < this.pixelsPerTile; ++var4) {
-				if (var4 >= var3 - this.pixelsPerTile / 2) {
+				if (var4 >= (var3 - (this.pixelsPerTile / 2))) {
 					var1[var5] = -1;
 				}
-
 				++var5;
 			}
 		}
-
 		this.tileTemplates[7][1] = var1;
 		var1 = new byte[this.pixelsPerTile * this.pixelsPerTile];
 		var5 = 0;
-
 		for (var3 = this.pixelsPerTile - 1; var3 >= 0; --var3) {
 			for (var4 = this.pixelsPerTile - 1; var4 >= 0; --var4) {
-				if (var4 >= var3 - this.pixelsPerTile / 2) {
+				if (var4 >= (var3 - (this.pixelsPerTile / 2))) {
 					var1[var5] = -1;
 				}
-
 				++var5;
 			}
 		}
-
 		this.tileTemplates[7][2] = var1;
 		var1 = new byte[this.pixelsPerTile * this.pixelsPerTile];
 		var5 = 0;
-
 		for (var3 = 0; var3 < this.pixelsPerTile; ++var3) {
 			for (var4 = this.pixelsPerTile - 1; var4 >= 0; --var4) {
-				if (var4 >= var3 - this.pixelsPerTile / 2) {
+				if (var4 >= (var3 - (this.pixelsPerTile / 2))) {
 					var1[var5] = -1;
 				}
-
 				++var5;
 			}
 		}
-
 		this.tileTemplates[7][3] = var1;
 	}
 }

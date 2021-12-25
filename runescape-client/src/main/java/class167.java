@@ -1,28 +1,21 @@
+import net.runelite.rs.ScriptOpcodes;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
-
 @ObfuscatedName("fq")
 public class class167 {
 	@ObfuscatedName("sh")
-	@ObfuscatedGetter(
-		intValue = 2133081727
-	)
+	@ObfuscatedGetter(intValue = 2133081727)
 	static int field1811;
+
 	@ObfuscatedName("hv")
-	@ObfuscatedGetter(
-		intValue = 1655093891
-	)
+	@ObfuscatedGetter(intValue = 1655093891)
 	static int field1813;
 
 	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "(ILbn;ZB)I",
-		garbageValue = "1"
-	)
+	@ObfuscatedSignature(descriptor = "(ILbn;ZB)I", garbageValue = "1")
 	static int method3269(int var0, Script var1, boolean var2) {
-		if (var0 != 3700 && var0 != 3701) {
+		if ((var0 != 3700) && (var0 != 3701)) {
 			if (var0 == 3702) {
 				++IsaacCipher.Interpreter_intStackSize;
 				return 1;
@@ -37,13 +30,10 @@ public class class167 {
 	}
 
 	@ObfuscatedName("au")
-	@ObfuscatedSignature(
-		descriptor = "(ILbn;ZI)I",
-		garbageValue = "553813410"
-	)
+	@ObfuscatedSignature(descriptor = "(ILbn;ZI)I", garbageValue = "553813410")
 	static int method3270(int var0, Script var1, boolean var2) {
 		if (var0 == ScriptOpcodes.CHAT_GETFILTER_PUBLIC) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = Client.publicChatMode;
+			Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = Client.publicChatMode;
 			return 1;
 		} else if (var0 == ScriptOpcodes.CHAT_SETFILTER) {
 			IsaacCipher.Interpreter_intStackSize -= 3;
@@ -52,7 +42,6 @@ public class class167 {
 			if (Projectile.privateChatMode == null) {
 				Projectile.privateChatMode = PrivateChatMode.field4596;
 			}
-
 			Client.tradeChatMode = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize + 2];
 			PacketBufferNode var13 = HitSplatDefinition.getPacketBufferNode(ClientPacket.CHAT_SETMODE, Client.packetWriter.isaacCipher);
 			var13.packetBuffer.writeByte(Client.publicChatMode);
@@ -86,21 +75,20 @@ public class class167 {
 					var7 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize + 1];
 					var5 = ItemComposition.Messages_getByChannelAndID(var3, var7);
 					if (var5 != null) {
-						Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var5.count;
-						Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var5.cycle;
-						Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = var5.sender != null ? var5.sender : "";
-						Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = var5.prefix != null ? var5.prefix : "";
-						Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = var5.text != null ? var5.text : "";
-						Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var5.isFromFriend() ? 1 : (var5.isFromIgnored() ? 2 : 0);
+						Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = var5.count;
+						Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = var5.cycle;
+						Interpreter.Interpreter_stringStack[(++class13.Interpreter_stringStackSize) - 1] = (var5.sender != null) ? var5.sender : "";
+						Interpreter.Interpreter_stringStack[(++class13.Interpreter_stringStackSize) - 1] = (var5.prefix != null) ? var5.prefix : "";
+						Interpreter.Interpreter_stringStack[(++class13.Interpreter_stringStackSize) - 1] = (var5.text != null) ? var5.text : "";
+						Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = (var5.isFromFriend()) ? 1 : var5.isFromIgnored() ? 2 : 0;
 					} else {
-						Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = -1;
-						Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
-						Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = "";
-						Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = "";
-						Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = "";
-						Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
+						Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = -1;
+						Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = 0;
+						Interpreter.Interpreter_stringStack[(++class13.Interpreter_stringStackSize) - 1] = "";
+						Interpreter.Interpreter_stringStack[(++class13.Interpreter_stringStackSize) - 1] = "";
+						Interpreter.Interpreter_stringStack[(++class13.Interpreter_stringStackSize) - 1] = "";
+						Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = 0;
 					}
-
 					return 1;
 				} else {
 					Message var4;
@@ -108,29 +96,27 @@ public class class167 {
 						var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
 						var4 = class139.Messages_getMessage(var3);
 						if (var4 != null) {
-							Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var4.type;
-							Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var4.cycle;
-							Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = var4.sender != null ? var4.sender : "";
-							Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = var4.prefix != null ? var4.prefix : "";
-							Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = var4.text != null ? var4.text : "";
-							Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var4.isFromFriend() ? 1 : (var4.isFromIgnored() ? 2 : 0);
+							Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = var4.type;
+							Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = var4.cycle;
+							Interpreter.Interpreter_stringStack[(++class13.Interpreter_stringStackSize) - 1] = (var4.sender != null) ? var4.sender : "";
+							Interpreter.Interpreter_stringStack[(++class13.Interpreter_stringStackSize) - 1] = (var4.prefix != null) ? var4.prefix : "";
+							Interpreter.Interpreter_stringStack[(++class13.Interpreter_stringStackSize) - 1] = (var4.text != null) ? var4.text : "";
+							Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = (var4.isFromFriend()) ? 1 : var4.isFromIgnored() ? 2 : 0;
 						} else {
-							Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = -1;
-							Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
-							Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = "";
-							Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = "";
-							Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = "";
-							Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
+							Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = -1;
+							Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = 0;
+							Interpreter.Interpreter_stringStack[(++class13.Interpreter_stringStackSize) - 1] = "";
+							Interpreter.Interpreter_stringStack[(++class13.Interpreter_stringStackSize) - 1] = "";
+							Interpreter.Interpreter_stringStack[(++class13.Interpreter_stringStackSize) - 1] = "";
+							Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = 0;
 						}
-
 						return 1;
 					} else if (var0 == ScriptOpcodes.CHAT_GETFILTER_PRIVATE) {
 						if (Projectile.privateChatMode == null) {
-							Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = -1;
+							Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = -1;
 						} else {
-							Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = Projectile.privateChatMode.field4597;
+							Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = Projectile.privateChatMode.field4597;
 						}
-
 						return 1;
 					} else {
 						PacketBufferNode var12;
@@ -162,19 +148,19 @@ public class class167 {
 							return 1;
 						} else if (var0 != ScriptOpcodes.CHAT_PLAYERNAME) {
 							if (var0 == ScriptOpcodes.CHAT_GETFILTER_TRADE) {
-								Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = Client.tradeChatMode;
+								Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = Client.tradeChatMode;
 								return 1;
 							} else if (var0 == ScriptOpcodes.CHAT_GETHISTORYLENGTH) {
 								var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-								Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = PlayerComposition.Messages_getHistorySize(var3);
+								Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = PlayerComposition.Messages_getHistorySize(var3);
 								return 1;
 							} else if (var0 == ScriptOpcodes.CHAT_GETNEXTUID) {
 								var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-								Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = VertexNormal.Messages_getLastChatID(var3);
+								Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = VertexNormal.Messages_getLastChatID(var3);
 								return 1;
 							} else if (var0 == ScriptOpcodes.CHAT_GETPREVUID) {
 								var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-								Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = Actor.method2233(var3);
+								Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = Actor.method2233(var3);
 								return 1;
 							} else if (var0 == ScriptOpcodes.DOCHEAT) {
 								var8 = Interpreter.Interpreter_stringStack[--class13.Interpreter_stringStackSize];
@@ -184,7 +170,7 @@ public class class167 {
 								Client.field645 = Interpreter.Interpreter_stringStack[--class13.Interpreter_stringStackSize].toLowerCase().trim();
 								return 1;
 							} else if (var0 == ScriptOpcodes.CHAT_GETMESSAGEFILTER) {
-								Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = Client.field645;
+								Interpreter.Interpreter_stringStack[(++class13.Interpreter_stringStackSize) - 1] = Client.field645;
 								return 1;
 							} else if (var0 == ScriptOpcodes.WRITECONSOLE) {
 								var8 = Interpreter.Interpreter_stringStack[--class13.Interpreter_stringStackSize];
@@ -202,61 +188,58 @@ public class class167 {
 								var7 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize + 1];
 								var5 = ItemComposition.Messages_getByChannelAndID(var3, var7);
 								if (var5 != null) {
-									Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var5.count;
-									Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var5.cycle;
-									Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = var5.sender != null ? var5.sender : "";
-									Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = var5.prefix != null ? var5.prefix : "";
-									Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = var5.text != null ? var5.text : "";
-									Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var5.isFromFriend() ? 1 : (var5.isFromIgnored() ? 2 : 0);
-									Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = "";
-									Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
+									Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = var5.count;
+									Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = var5.cycle;
+									Interpreter.Interpreter_stringStack[(++class13.Interpreter_stringStackSize) - 1] = (var5.sender != null) ? var5.sender : "";
+									Interpreter.Interpreter_stringStack[(++class13.Interpreter_stringStackSize) - 1] = (var5.prefix != null) ? var5.prefix : "";
+									Interpreter.Interpreter_stringStack[(++class13.Interpreter_stringStackSize) - 1] = (var5.text != null) ? var5.text : "";
+									Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = (var5.isFromFriend()) ? 1 : var5.isFromIgnored() ? 2 : 0;
+									Interpreter.Interpreter_stringStack[(++class13.Interpreter_stringStackSize) - 1] = "";
+									Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = 0;
 								} else {
-									Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = -1;
-									Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
-									Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = "";
-									Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = "";
-									Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = "";
-									Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
-									Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = "";
-									Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
+									Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = -1;
+									Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = 0;
+									Interpreter.Interpreter_stringStack[(++class13.Interpreter_stringStackSize) - 1] = "";
+									Interpreter.Interpreter_stringStack[(++class13.Interpreter_stringStackSize) - 1] = "";
+									Interpreter.Interpreter_stringStack[(++class13.Interpreter_stringStackSize) - 1] = "";
+									Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = 0;
+									Interpreter.Interpreter_stringStack[(++class13.Interpreter_stringStackSize) - 1] = "";
+									Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = 0;
 								}
-
 								return 1;
 							} else if (var0 == 5031) {
 								var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
 								var4 = class139.Messages_getMessage(var3);
 								if (var4 != null) {
-									Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var4.type;
-									Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var4.cycle;
-									Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = var4.sender != null ? var4.sender : "";
-									Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = var4.prefix != null ? var4.prefix : "";
-									Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = var4.text != null ? var4.text : "";
-									Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var4.isFromFriend() ? 1 : (var4.isFromIgnored() ? 2 : 0);
-									Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = "";
-									Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
+									Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = var4.type;
+									Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = var4.cycle;
+									Interpreter.Interpreter_stringStack[(++class13.Interpreter_stringStackSize) - 1] = (var4.sender != null) ? var4.sender : "";
+									Interpreter.Interpreter_stringStack[(++class13.Interpreter_stringStackSize) - 1] = (var4.prefix != null) ? var4.prefix : "";
+									Interpreter.Interpreter_stringStack[(++class13.Interpreter_stringStackSize) - 1] = (var4.text != null) ? var4.text : "";
+									Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = (var4.isFromFriend()) ? 1 : var4.isFromIgnored() ? 2 : 0;
+									Interpreter.Interpreter_stringStack[(++class13.Interpreter_stringStackSize) - 1] = "";
+									Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = 0;
 								} else {
-									Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = -1;
-									Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
-									Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = "";
-									Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = "";
-									Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = "";
-									Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
-									Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = "";
-									Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
+									Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = -1;
+									Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = 0;
+									Interpreter.Interpreter_stringStack[(++class13.Interpreter_stringStackSize) - 1] = "";
+									Interpreter.Interpreter_stringStack[(++class13.Interpreter_stringStackSize) - 1] = "";
+									Interpreter.Interpreter_stringStack[(++class13.Interpreter_stringStackSize) - 1] = "";
+									Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = 0;
+									Interpreter.Interpreter_stringStack[(++class13.Interpreter_stringStackSize) - 1] = "";
+									Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = 0;
 								}
-
 								return 1;
 							} else {
 								return 2;
 							}
 						} else {
-							if (class340.localPlayer != null && class340.localPlayer.username != null) {
+							if ((class340.localPlayer != null) && (class340.localPlayer.username != null)) {
 								var8 = class340.localPlayer.username.getName();
 							} else {
 								var8 = "";
 							}
-
-							Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = var8;
+							Interpreter.Interpreter_stringStack[(++class13.Interpreter_stringStackSize) - 1] = var8;
 							return 1;
 						}
 					}
