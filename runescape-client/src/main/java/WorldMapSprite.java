@@ -6,15 +6,13 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-
 @ObfuscatedName("hq")
 @Implements("WorldMapSprite")
 public final class WorldMapSprite {
 	@ObfuscatedName("ut")
-	@ObfuscatedGetter(
-		longValue = 3393919401906433013L
-	)
+	@ObfuscatedGetter(longValue = 3393919401906433013L)
 	static long field2727;
+
 	@ObfuscatedName("b")
 	@Export("tileColors")
 	final int[] tileColors;
@@ -28,20 +26,14 @@ public final class WorldMapSprite {
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "-1161754740"
-	)
+	@ObfuscatedSignature(descriptor = "(III)I", garbageValue = "-1161754740")
 	@Export("getTileColor")
 	final int getTileColor(int var1, int var2) {
-		return this.tileColors[var1 + var2 * 64];
+		return this.tileColors[var1 + (var2 * 64)];
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;ZZI)V",
-		garbageValue = "230861091"
-	)
+	@ObfuscatedSignature(descriptor = "(Ljava/lang/String;ZZI)V", garbageValue = "230861091")
 	@Export("openURL")
 	public static void openURL(String var0, boolean var1, boolean var2) {
 		if (var1) {
@@ -52,7 +44,6 @@ public final class WorldMapSprite {
 				} catch (Exception var4) {
 				}
 			}
-
 			if (class29.field177.startsWith("win")) {
 				NPC.method2314(var0, 0, "openjs");
 			} else if (class29.field177.startsWith("mac")) {
@@ -63,6 +54,5 @@ public final class WorldMapSprite {
 		} else {
 			NPC.method2314(var0, 3, "openjs");
 		}
-
 	}
 }

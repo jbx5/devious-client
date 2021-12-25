@@ -4,660 +4,550 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-
 @ObfuscatedName("iu")
 @Implements("ClientPacket")
 public class ClientPacket implements class251 {
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("CHAT_SETMODE")
 	public static final ClientPacket CHAT_SETMODE;
+
 	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("IF1_BUTTON4")
 	public static final ClientPacket IF1_BUTTON4;
+
 	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("OPHELDU")
 	public static final ClientPacket OPHELDU;
+
 	@ObfuscatedName("m")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("IGNORELIST_DEL")
 	public static final ClientPacket IGNORELIST_DEL;
+
 	@ObfuscatedName("t")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("field2806")
 	static final ClientPacket field2806;
+
 	@ObfuscatedName("s")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("OPHELD4")
 	public static final ClientPacket OPHELD4;
+
 	@ObfuscatedName("j")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("RESUME_P_OBJDIALOG")
 	public static final ClientPacket RESUME_P_OBJDIALOG;
+
 	@ObfuscatedName("w")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("EVENT_APPLET_FOCUS")
 	public static final ClientPacket EVENT_APPLET_FOCUS;
+
 	@ObfuscatedName("n")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("IF_BUTTON10")
 	public static final ClientPacket IF_BUTTON10;
+
 	@ObfuscatedName("r")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("EVENT_MOUSE_IDLE")
 	public static final ClientPacket EVENT_MOUSE_IDLE;
+
 	@ObfuscatedName("o")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("IF_BUTTON9")
 	public static final ClientPacket IF_BUTTON9;
+
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("IF_BUTTON2")
 	public static final ClientPacket IF_BUTTON2;
+
 	@ObfuscatedName("d")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("NO_TIMEOUT")
 	public static final ClientPacket NO_TIMEOUT;
+
 	@ObfuscatedName("h")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("OPLOC6")
 	public static final ClientPacket OPLOC6;
+
 	@ObfuscatedName("g")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("OPHELDD")
 	public static final ClientPacket OPHELDD;
+
 	@ObfuscatedName("e")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("IF_BUTTONT")
 	public static final ClientPacket IF_BUTTONT;
+
 	@ObfuscatedName("a")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("IF_BUTTON1")
 	public static final ClientPacket IF_BUTTON1;
+
 	@ObfuscatedName("u")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("CLICKWORLDMAP_TELEPORT")
 	public static final ClientPacket CLICKWORLDMAP_TELEPORT;
+
 	@ObfuscatedName("k")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("OPPLAYERT")
 	public static final ClientPacket OPPLAYERT;
+
 	@ObfuscatedName("f")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("IF_BUTTON4")
 	public static final ClientPacket IF_BUTTON4;
+
 	@ObfuscatedName("l")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("IF_BUTTON7")
 	public static final ClientPacket IF_BUTTON7;
+
 	@ObfuscatedName("q")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("OPOBJ4")
 	public static final ClientPacket OPOBJ4;
+
 	@ObfuscatedName("x")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("OPNPC6")
 	public static final ClientPacket OPNPC6;
+
 	@ObfuscatedName("z")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("CLICKWORLDMAP")
 	public static final ClientPacket CLICKWORLDMAP;
+
 	@ObfuscatedName("i")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("OPOBJ1")
 	public static final ClientPacket OPOBJ1;
+
 	@ObfuscatedName("y")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("RESUME_P_COUNTDIALOG")
 	public static final ClientPacket RESUME_P_COUNTDIALOG;
+
 	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("CLAN_KICKUSER")
 	public static final ClientPacket CLAN_KICKUSER;
+
 	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("OPOBJ2")
 	public static final ClientPacket OPOBJ2;
+
 	@ObfuscatedName("ab")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("OPLOCU")
 	public static final ClientPacket OPLOCU;
+
 	@ObfuscatedName("an")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("IF_BUTTON3")
 	public static final ClientPacket IF_BUTTON3;
+
 	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("field2832")
 	static final ClientPacket field2832;
+
 	@ObfuscatedName("am")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("OPHELD2")
 	public static final ClientPacket OPHELD2;
+
 	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("IF_BUTTOND")
 	public static final ClientPacket IF_BUTTOND;
+
 	@ObfuscatedName("au")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("OPOBJ5")
 	public static final ClientPacket OPOBJ5;
+
 	@ObfuscatedName("av")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("OPOBJT")
 	public static final ClientPacket OPOBJT;
+
 	@ObfuscatedName("ap")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("EVENT_MOUSE_CLICK")
 	public static final ClientPacket EVENT_MOUSE_CLICK;
+
 	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("CLAN_JOINCHAT_LEAVECHAT")
 	public static final ClientPacket CLAN_JOINCHAT_LEAVECHAT;
+
 	@ObfuscatedName("aj")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("OPNPC1")
 	public static final ClientPacket OPNPC1;
+
 	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("OPNPCU")
 	public static final ClientPacket OPNPCU;
+
 	@ObfuscatedName("ar")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("OPOBJU")
 	public static final ClientPacket OPOBJU;
+
 	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("WIDGET_TYPE_1")
 	public static final ClientPacket WIDGET_TYPE_1;
+
 	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("IF1_BUTTON5")
 	public static final ClientPacket IF1_BUTTON5;
+
 	@ObfuscatedName("aa")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("IF1_BUTTON1")
 	public static final ClientPacket IF1_BUTTON1;
+
 	@ObfuscatedName("as")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("OPHELD5")
 	public static final ClientPacket OPHELD5;
+
 	@ObfuscatedName("at")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("CLIENT_CHEAT")
 	public static final ClientPacket CLIENT_CHEAT;
+
 	@ObfuscatedName("ai")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("BUG_REPORT")
 	public static final ClientPacket BUG_REPORT;
+
 	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("OPPLAYER3")
 	public static final ClientPacket OPPLAYER3;
+
 	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("OPPLAYER4")
 	public static final ClientPacket OPPLAYER4;
+
 	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("WINDOW_STATUS")
 	public static final ClientPacket WINDOW_STATUS;
+
 	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("PLAYER_REPORT")
 	public static final ClientPacket PLAYER_REPORT;
+
 	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("REFLECTION_CHECK_REPLY")
 	public static final ClientPacket REFLECTION_CHECK_REPLY;
+
 	@ObfuscatedName("ad")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("RESUME_P_NAMEDIALOG")
 	public static final ClientPacket RESUME_P_NAMEDIALOG;
+
 	@ObfuscatedName("bp")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("FRIENDLIST_DEL")
 	public static final ClientPacket FRIENDLIST_DEL;
+
 	@ObfuscatedName("bd")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("OPLOC5")
 	public static final ClientPacket OPLOC5;
+
 	@ObfuscatedName("ba")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("OPLOC3")
 	public static final ClientPacket OPLOC3;
+
 	@ObfuscatedName("bq")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("MAP_BUILD_COMPLETE")
 	public static final ClientPacket MAP_BUILD_COMPLETE;
+
 	@ObfuscatedName("bg")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("field2858")
 	static final ClientPacket field2858;
+
 	@ObfuscatedName("br")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("MOVE_GAMECLICK")
 	public static final ClientPacket MOVE_GAMECLICK;
+
 	@ObfuscatedName("bi")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("MOVE_MINIMAP_CLICKMOVE_MINIMAP_CLICK")
 	public static final ClientPacket MOVE_MINIMAP_CLICKMOVE_MINIMAP_CLICK;
+
 	@ObfuscatedName("bm")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("OPNPC3")
 	public static final ClientPacket OPNPC3;
+
 	@ObfuscatedName("bw")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("MESSAGE_PRIVATE")
 	public static final ClientPacket MESSAGE_PRIVATE;
+
 	@ObfuscatedName("bl")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("OPPLAYER6")
 	public static final ClientPacket OPPLAYER6;
+
 	@ObfuscatedName("bz")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("IF1_BUTTON3")
 	public static final ClientPacket IF1_BUTTON3;
+
 	@ObfuscatedName("bu")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("OPNPC2")
 	public static final ClientPacket OPNPC2;
+
 	@ObfuscatedName("bs")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("IF_BUTTON6")
 	public static final ClientPacket IF_BUTTON6;
+
 	@ObfuscatedName("bv")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("FREECAM_EXIT")
 	public static final ClientPacket FREECAM_EXIT;
+
 	@ObfuscatedName("bb")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("OPHELD3")
 	public static final ClientPacket OPHELD3;
+
 	@ObfuscatedName("bc")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("EVENT_CAMERA_POSITION")
 	public static final ClientPacket EVENT_CAMERA_POSITION;
+
 	@ObfuscatedName("bx")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("OPLOC4")
 	public static final ClientPacket OPLOC4;
+
 	@ObfuscatedName("bt")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("OPNPCT")
 	public static final ClientPacket OPNPCT;
+
 	@ObfuscatedName("bh")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("OPNPC4")
 	public static final ClientPacket OPNPC4;
+
 	@ObfuscatedName("bn")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("RESUME_PAUSEBUTTON")
 	public static final ClientPacket RESUME_PAUSEBUTTON;
+
 	@ObfuscatedName("bj")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("OPHELD1")
 	public static final ClientPacket OPHELD1;
+
 	@ObfuscatedName("by")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("OPPLAYERU")
 	public static final ClientPacket OPPLAYERU;
+
 	@ObfuscatedName("bk")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("OPNPC5")
 	public static final ClientPacket OPNPC5;
+
 	@ObfuscatedName("bo")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("IF_BUTTON5")
 	public static final ClientPacket IF_BUTTON5;
+
 	@ObfuscatedName("bf")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("OPOBJ3")
 	public static final ClientPacket OPOBJ3;
+
 	@ObfuscatedName("be")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("DETECT_MODIFIED_CLIENT")
 	public static final ClientPacket DETECT_MODIFIED_CLIENT;
+
 	@ObfuscatedName("ce")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("RESUME_P_STRINGDIALOG")
 	public static final ClientPacket RESUME_P_STRINGDIALOG;
+
 	@ObfuscatedName("cl")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("field2881")
 	static final ClientPacket field2881;
+
 	@ObfuscatedName("cp")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("OPLOCT")
 	public static final ClientPacket OPLOCT;
+
 	@ObfuscatedName("cd")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("OPLOC1")
 	public static final ClientPacket OPLOC1;
+
 	@ObfuscatedName("ck")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("IF_BUTTON8")
 	public static final ClientPacket IF_BUTTON8;
+
 	@ObfuscatedName("cg")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("OPPLAYER8")
 	public static final ClientPacket OPPLAYER8;
+
 	@ObfuscatedName("cy")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("OPHELDT")
 	public static final ClientPacket OPHELDT;
+
 	@ObfuscatedName("cn")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("OPPLAYER1")
 	public static final ClientPacket OPPLAYER1;
+
 	@ObfuscatedName("cv")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("field2888")
 	public static final ClientPacket field2888;
+
 	@ObfuscatedName("co")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("PING_STATISTICS")
 	public static final ClientPacket PING_STATISTICS;
+
 	@ObfuscatedName("cc")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("IF1_BUTTON2")
 	public static final ClientPacket IF1_BUTTON2;
+
 	@ObfuscatedName("cs")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("UPDATE_APPEARANCE")
 	public static final ClientPacket UPDATE_APPEARANCE;
+
 	@ObfuscatedName("cr")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("OPPLAYER5")
 	public static final ClientPacket OPPLAYER5;
+
 	@ObfuscatedName("cb")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("MOUSERECORDER_DATA")
 	public static final ClientPacket MOUSERECORDER_DATA;
+
 	@ObfuscatedName("cj")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("OPPLAYER2")
 	public static final ClientPacket OPPLAYER2;
+
 	@ObfuscatedName("ca")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("FRIENDLIST_ADD")
 	public static final ClientPacket FRIENDLIST_ADD;
+
 	@ObfuscatedName("cz")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("OPLOC2")
 	public static final ClientPacket OPLOC2;
+
 	@ObfuscatedName("cw")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("MESSAGE_PUBLIC")
 	public static final ClientPacket MESSAGE_PUBLIC;
+
 	@ObfuscatedName("ct")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("CLOSE_MODAL")
 	public static final ClientPacket CLOSE_MODAL;
+
 	@ObfuscatedName("ci")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("EVENT_KEYBOARD")
 	public static final ClientPacket EVENT_KEYBOARD;
+
 	@ObfuscatedName("ch")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("field2900")
 	static final ClientPacket field2900;
+
 	@ObfuscatedName("cq")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("CLAN_SETRANK")
 	public static final ClientPacket CLAN_SETRANK;
+
 	@ObfuscatedName("cf")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("OPOBJ6")
 	public static final ClientPacket OPOBJ6;
+
 	@ObfuscatedName("cu")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("field2903")
 	public static final ClientPacket field2903;
+
 	@ObfuscatedName("cx")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("ACTIVECLANCHANNEL_KICKUSER")
 	public static final ClientPacket ACTIVECLANCHANNEL_KICKUSER;
+
 	@ObfuscatedName("cm")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("IGNORELIST_ADD")
 	public static final ClientPacket IGNORELIST_ADD;
+
 	@ObfuscatedName("dm")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("OPPLAYER7")
 	public static final ClientPacket OPPLAYER7;
+
 	@ObfuscatedName("dr")
-	@ObfuscatedSignature(
-			descriptor = "Liu;"
-	)
+	@ObfuscatedSignature(descriptor = "Liu;")
 	@Export("LOGIN_TIMINGS")
 	public static final ClientPacket LOGIN_TIMINGS;
+
 	@ObfuscatedName("ds")
-	@ObfuscatedGetter(
-			intValue = -94628489
-	)
+	@ObfuscatedGetter(intValue = -94628489)
 	@Export("id")
 	final int id;
+
 	@ObfuscatedName("dv")
-	@ObfuscatedGetter(
-			intValue = -1390641219
-	)
+	@ObfuscatedGetter(intValue = -1390641219)
 	@Export("length")
 	final int length;
-
-	static {
+	static 
+	{
 		CHAT_SETMODE = new ClientPacket(0, 3);
 		IF1_BUTTON4 = new ClientPacket(1, 8);
 		OPHELDU = new ClientPacket(2, 16);
@@ -772,26 +662,21 @@ public class ClientPacket implements class251 {
 	}
 
 	@ObfuscatedName("hy")
-	@ObfuscatedSignature(
-			descriptor = "(ZI)V",
-			garbageValue = "1131418917"
-	)
+	@ObfuscatedSignature(descriptor = "(ZI)V", garbageValue = "1131418917")
 	static final void method5001(boolean var0) {
 		class148.playPcmPlayers();
 		++Client.packetWriter.pendingWrites;
-		if (Client.packetWriter.pendingWrites >= 50 || var0) {
+		if ((Client.packetWriter.pendingWrites >= 50) || var0) {
 			Client.packetWriter.pendingWrites = 0;
-			if (!Client.hadNetworkError && Client.packetWriter.getSocket() != null) {
+			if ((!Client.hadNetworkError) && (Client.packetWriter.getSocket() != null)) {
 				PacketBufferNode var1 = HitSplatDefinition.getPacketBufferNode(NO_TIMEOUT, Client.packetWriter.isaacCipher);
 				Client.packetWriter.addNode(var1);
-
 				try {
 					Client.packetWriter.flush();
 				} catch (IOException var3) {
 					Client.hadNetworkError = true;
 				}
 			}
-
 		}
 	}
 }

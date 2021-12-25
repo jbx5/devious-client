@@ -1,5 +1,3 @@
 import net.runelite.mapping.ObfuscatedName;
-
 @ObfuscatedName("ny")
-public interface class374 {
-}
+public interface class374 {}
