@@ -2,6 +2,7 @@ import java.lang.ref.SoftReference;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
+
 @ObfuscatedName("iz")
 @Implements("SoftWrapper")
 public class SoftWrapper extends Wrapper {

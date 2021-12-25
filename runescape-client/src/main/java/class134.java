@@ -1,25 +1,34 @@
-import net.runelite.rs.ScriptOpcodes;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
+
 @ObfuscatedName("ef")
 public class class134 extends class142 {
 	@ObfuscatedName("c")
-	@ObfuscatedGetter(intValue = 642006289)
+	@ObfuscatedGetter(
+		intValue = 642006289
+	)
 	int field1552;
-
-
-	@ObfuscatedSignature(descriptor = "Len;")
+	// $FF: synthetic field
+	@ObfuscatedSignature(
+		descriptor = "Len;"
+	)
 	final class143 this$0;
 
-	@ObfuscatedSignature(descriptor = "(Len;)V")
+	@ObfuscatedSignature(
+		descriptor = "(Len;)V"
+	)
 	class134(class143 var1) {
 		this.this$0 = var1;
 		this.field1552 = -1;
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(Lpi;B)V", garbageValue = "4")
+	@ObfuscatedSignature(
+		descriptor = "(Lpi;B)V",
+		garbageValue = "4"
+	)
 	void vmethod3022(Buffer var1) {
 		this.field1552 = var1.readUnsignedShort();
 		var1.readUnsignedByte();
@@ -27,30 +36,38 @@ public class class134 extends class142 {
 			--var1.offset;
 			var1.readLong();
 		}
+
 	}
 
 	@ObfuscatedName("b")
-	@ObfuscatedSignature(descriptor = "(Lei;B)V", garbageValue = "40")
+	@ObfuscatedSignature(
+		descriptor = "(Lei;B)V",
+		garbageValue = "40"
+	)
 	void vmethod3021(ClanChannel var1) {
 		var1.removeMember(this.field1552);
 	}
 
 	@ObfuscatedName("av")
-	@ObfuscatedSignature(descriptor = "(ILbn;ZB)I", garbageValue = "1")
+	@ObfuscatedSignature(
+		descriptor = "(ILbn;ZB)I",
+		garbageValue = "1"
+	)
 	static int method2824(int var0, Script var1, boolean var2) {
 		if (var0 == ScriptOpcodes.GETWINDOWMODE) {
-			Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = class143.getWindowedMode();
+			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = class143.getWindowedMode();
 			return 1;
 		} else {
 			int var3;
 			if (var0 == ScriptOpcodes.SETWINDOWMODE) {
 				var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-				if ((var3 == 1) || (var3 == 2)) {
+				if (var3 == 1 || var3 == 2) {
 					Occluder.setWindowedMode(var3);
 				}
+
 				return 1;
 			} else if (var0 == ScriptOpcodes.GETDEFAULTWINDOWMODE) {
-				Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = SecureRandomFuture.clientPreferences.windowMode;
+				Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = SecureRandomFuture.clientPreferences.windowMode;
 				return 1;
 			} else if (var0 != ScriptOpcodes.SETDEFAULTWINDOWMODE) {
 				if (var0 == 5310) {
@@ -74,10 +91,11 @@ public class class134 extends class142 {
 				}
 			} else {
 				var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-				if ((var3 == 1) || (var3 == 2)) {
+				if (var3 == 1 || var3 == 2) {
 					SecureRandomFuture.clientPreferences.windowMode = var3;
 					class127.savePreferences();
 				}
+
 				return 1;
 			}
 		}

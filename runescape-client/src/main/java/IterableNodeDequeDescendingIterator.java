@@ -3,31 +3,40 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+
 @ObfuscatedName("lk")
 @Implements("IterableNodeDequeDescendingIterator")
 public class IterableNodeDequeDescendingIterator implements Iterator {
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "Llr;")
+	@ObfuscatedSignature(
+		descriptor = "Llr;"
+	)
 	@Export("deque")
 	IterableNodeDeque deque;
-
 	@ObfuscatedName("b")
-	@ObfuscatedSignature(descriptor = "Lnw;")
+	@ObfuscatedSignature(
+		descriptor = "Lnw;"
+	)
 	Node field3964;
-
 	@ObfuscatedName("p")
-	@ObfuscatedSignature(descriptor = "Lnw;")
+	@ObfuscatedSignature(
+		descriptor = "Lnw;"
+	)
 	@Export("last")
 	Node last;
 
-	@ObfuscatedSignature(descriptor = "(Llr;)V")
+	@ObfuscatedSignature(
+		descriptor = "(Llr;)V"
+	)
 	IterableNodeDequeDescendingIterator(IterableNodeDeque var1) {
 		this.last = null;
 		this.setDeque(var1);
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(Llr;)V")
+	@ObfuscatedSignature(
+		descriptor = "(Llr;)V"
+	)
 	@Export("setDeque")
 	void setDeque(IterableNodeDeque var1) {
 		this.deque = var1;
@@ -37,7 +46,7 @@ public class IterableNodeDequeDescendingIterator implements Iterator {
 	@ObfuscatedName("b")
 	@Export("start")
 	void start() {
-		this.field3964 = (this.deque != null) ? this.deque.sentinel.previous : null;
+		this.field3964 = this.deque != null ? this.deque.sentinel.previous : null;
 		this.last = null;
 	}
 
@@ -51,7 +60,7 @@ public class IterableNodeDequeDescendingIterator implements Iterator {
 	}
 
 	public boolean hasNext() {
-		return (this.deque.sentinel != this.field3964) && (this.field3964 != null);
+		return this.deque.sentinel != this.field3964 && this.field3964 != null;
 	}
 
 	public Object next() {
@@ -62,6 +71,7 @@ public class IterableNodeDequeDescendingIterator implements Iterator {
 		} else {
 			this.field3964 = var1.previous;
 		}
+
 		this.last = var1;
 		return var1;
 	}

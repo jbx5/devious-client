@@ -7,24 +7,27 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+
 @ObfuscatedName("q")
 public class class21 {
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "Ljk;")
+	@ObfuscatedSignature(
+		descriptor = "Ljk;"
+	)
 	@Export("musicTrack")
 	public static MusicTrack musicTrack;
-
 	@ObfuscatedName("d")
 	static boolean field116;
-
 	@ObfuscatedName("bf")
-	@ObfuscatedSignature(descriptor = "Lpa;")
+	@ObfuscatedSignature(
+		descriptor = "Lpa;"
+	)
 	static IndexedSprite field118;
-
 	@ObfuscatedName("c")
-	@ObfuscatedGetter(intValue = -1676321481)
+	@ObfuscatedGetter(
+		intValue = -1676321481
+	)
 	final int field115;
-
 	@ObfuscatedName("b")
 	final String field114;
 
@@ -38,33 +41,45 @@ public class class21 {
 		var1.getResponseMessage();
 		var1.getHeaderFields();
 		StringBuilder var2 = new StringBuilder();
-		InputStream var3 = (this.field115 >= 300) ? var1.getErrorStream() : var1.getInputStream();
+		InputStream var3 = this.field115 >= 300 ? var1.getErrorStream() : var1.getInputStream();
 		if (var3 != null) {
 			InputStreamReader var4 = new InputStreamReader(var3);
 			BufferedReader var5 = new BufferedReader(var4);
+
 			String var6;
 			while ((var6 = var5.readLine()) != null) {
 				var2.append(var6);
-			} 
+			}
+
 			var3.close();
 		}
+
 		this.field114 = var2.toString();
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(I)I", garbageValue = "1543760704")
+	@ObfuscatedSignature(
+		descriptor = "(I)I",
+		garbageValue = "1543760704"
+	)
 	public int method338() {
 		return this.field115;
 	}
 
 	@ObfuscatedName("b")
-	@ObfuscatedSignature(descriptor = "(S)Ljava/lang/String;", garbageValue = "128")
+	@ObfuscatedSignature(
+		descriptor = "(S)Ljava/lang/String;",
+		garbageValue = "128"
+	)
 	public String method339() {
 		return this.field114;
 	}
 
 	@ObfuscatedName("if")
-	@ObfuscatedSignature(descriptor = "(Ljava/lang/String;Ljava/lang/String;IIIIZI)V", garbageValue = "1482446677")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;Ljava/lang/String;IIIIZI)V",
+		garbageValue = "1482446677"
+	)
 	@Export("insertMenuItem")
 	static final void insertMenuItem(String var0, String var1, int var2, int var3, int var4, int var5, boolean var6) {
 		if (!Client.isMenuOpen) {
@@ -78,6 +93,7 @@ public class class21 {
 				Client.menuShiftClick[Client.menuOptionsCount] = var6;
 				++Client.menuOptionsCount;
 			}
+
 		}
 	}
 }

@@ -88,33 +88,7 @@ public interface ClientPacket
 
 	ClientPacket OPNPC5();
 
-	ClientPacket OPPLAYERU();
-
-	ClientPacket OPPLAYERT();
-
-	ClientPacket OPPLAYER1();
-
-	ClientPacket OPPLAYER2();
-
-	ClientPacket OPPLAYER3();
-
-	ClientPacket OPPLAYER4();
-
-	ClientPacket OPPLAYER5();
-
-	ClientPacket OPPLAYER6();
-
-	ClientPacket OPPLAYER7();
-
-	ClientPacket OPPLAYER8();
-
-	ClientPacket OPOBJU();
-
-	ClientPacket OPOBJT();
-
 	ClientPacket CLOSE_MODAL();
 
 	ClientPacket MOUSERECORDER_DATA();
-
-	ClientPacket OPLOCT();
 }

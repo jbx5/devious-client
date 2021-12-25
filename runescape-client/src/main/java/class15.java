@@ -11,15 +11,17 @@ import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 import org.bouncycastle.crypto.tls.TlsClientProtocol;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
+
 @ObfuscatedName("e")
 public class class15 extends SSLSocketFactory {
 	@ObfuscatedName("c")
 	SecureRandom field85;
-	static 
-	{
+
+	static {
 		if (Security.getProvider("BC") == null) {
 			Security.addProvider(new BouncyCastleProvider());
 		}
+
 	}
 
 	class15() {
@@ -27,7 +29,10 @@ public class class15 extends SSLSocketFactory {
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(Ljava/lang/String;Lorg/bouncycastle/crypto/tls/TlsClientProtocol;B)Ljavax/net/ssl/SSLSocket;", garbageValue = "117")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;Lorg/bouncycastle/crypto/tls/TlsClientProtocol;B)Ljavax/net/ssl/SSLSocket;",
+		garbageValue = "117"
+	)
 	SSLSocket method227(String var1, TlsClientProtocol var2) {
 		return new class12(this, var2, var1);
 	}
@@ -36,9 +41,11 @@ public class class15 extends SSLSocketFactory {
 		if (var1 == null) {
 			var1 = new Socket();
 		}
+
 		if (!var1.isConnected()) {
 			var1.connect(new InetSocketAddress(var2, var3));
 		}
+
 		TlsClientProtocol var5 = new TlsClientProtocol(var1.getInputStream(), var1.getOutputStream(), this.field85);
 		return this.method227(var2, var5);
 	}

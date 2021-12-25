@@ -1,5 +1,6 @@
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+
 @ObfuscatedName("fy")
 public class class174 extends DualNode {
 	static {
@@ -7,7 +8,10 @@ public class class174 extends DualNode {
 	}
 
 	@ObfuscatedName("p")
-	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "1822723426")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "1822723426"
+	)
 	static void method3383() {
 		synchronized(ArchiveDiskActionHandler.ArchiveDiskActionHandler_lock) {
 			if (ArchiveDiskActionHandler.field3815 == 0) {
@@ -16,12 +20,16 @@ public class class174 extends DualNode {
 				KeyHandler.ArchiveDiskActionHandler_thread.start();
 				KeyHandler.ArchiveDiskActionHandler_thread.setPriority(5);
 			}
+
 			ArchiveDiskActionHandler.field3815 = 600;
 		}
 	}
 
 	@ObfuscatedName("j")
-	@ObfuscatedSignature(descriptor = "(Lku;IB)Z", garbageValue = "97")
+	@ObfuscatedSignature(
+		descriptor = "(Lku;IB)Z",
+		garbageValue = "97"
+	)
 	static boolean method3382(AbstractArchive var0, int var1) {
 		byte[] var2 = var0.takeFileFlat(var1);
 		if (var2 == null) {
