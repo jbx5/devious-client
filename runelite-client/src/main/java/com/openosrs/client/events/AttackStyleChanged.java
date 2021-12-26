@@ -20,14 +20,14 @@ public class AttackStyleChanged
 	/**
 	 * Can be Unknown(nullable)
 	 *
-	 * @see AttackStyle
+	 * @see com.openosrs.client.game.AttackStyle
 	 */
 	AttackStyle oldStyle;
 
 	/**
 	 * Can be Unknown(nullable)
 	 *
-	 * @see AttackStyle
+	 * @see com.openosrs.client.game.AttackStyle
 	 */
 	AttackStyle newStyle;
 }

@@ -36,8 +36,6 @@ import static net.runelite.api.ObjectID.CRATE_2620;
 import static net.runelite.api.ObjectID.CRATE_354;
 import static net.runelite.api.ObjectID.CRATE_357;
 import static net.runelite.api.ObjectID.CRATE_6616;
-
-import net.runelite.api.Point;
 import net.runelite.api.TileObject;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
@@ -178,7 +176,7 @@ public class MapClue extends ClueScroll implements ObjectClueScroll
 		// Mark game object
 		if (objectId != -1)
 		{
-			Point mousePosition = plugin.getClient().getMouseCanvasPosition();
+			net.runelite.api.Point mousePosition = plugin.getClient().getMouseCanvasPosition();
 
 			if (plugin.getObjectsToMark() != null)
 			{

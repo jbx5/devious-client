@@ -30,7 +30,6 @@ import java.awt.Graphics2D;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import net.runelite.api.Player;
-import net.runelite.api.Point;
 import net.runelite.client.ui.overlay.Overlay;
 import net.runelite.client.ui.overlay.OverlayLayer;
 import net.runelite.client.ui.overlay.OverlayPosition;
@@ -66,7 +65,7 @@ public class PlayerIndicatorsMinimapOverlay extends Overlay
 
 		if (config.drawMinimapNames())
 		{
-			final Point minimapLocation = actor.getMinimapLocation();
+			final net.runelite.api.Point minimapLocation = actor.getMinimapLocation();
 
 			if (minimapLocation != null)
 			{

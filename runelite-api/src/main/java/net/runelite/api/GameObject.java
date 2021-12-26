@@ -91,7 +91,7 @@ public interface GameObject extends TileObject
 	 * lighting during scene loading. See {@link #getOrientation()}
 	 * instead for object orientation.
 	 *
-	 * @see Angle
+	 * @see net.runelite.api.coords.Angle
 	 */
 	int getModelOrientation();
 

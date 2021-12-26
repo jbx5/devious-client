@@ -40,11 +40,11 @@ public class WorldUtil
 	 */
 	public static EnumSet<WorldType> toWorldTypes(final EnumSet<net.runelite.http.api.worlds.WorldType> apiTypes)
 	{
-		final EnumSet<WorldType> types = EnumSet.noneOf(WorldType.class);
+		final EnumSet<net.runelite.api.WorldType> types = EnumSet.noneOf(net.runelite.api.WorldType.class);
 
 		for (net.runelite.http.api.worlds.WorldType apiType : apiTypes)
 		{
-			types.add(WorldType.valueOf(apiType.name()));
+			types.add(net.runelite.api.WorldType.valueOf(apiType.name()));
 		}
 
 		return types;

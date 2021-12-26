@@ -28,7 +28,6 @@ import com.google.common.io.Files;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import javax.sound.midi.MidiSystem;
 import javax.sound.midi.Sequencer;
 import net.runelite.cache.definitions.TrackDefinition;
@@ -133,7 +132,7 @@ public class TrackDumperTest
 		try
 		{
 			// create a stream from a file
-			InputStream is = new FileInputStream(new File("D:\\rs\\07\\cache\\track1\\name-687938017.midi"));
+			java.io.InputStream is = new FileInputStream(new File("D:\\rs\\07\\cache\\track1\\name-687938017.midi"));
 
 			// Sets the current sequence on which the sequencer operates.
 			// The stream must point to MIDI file data.

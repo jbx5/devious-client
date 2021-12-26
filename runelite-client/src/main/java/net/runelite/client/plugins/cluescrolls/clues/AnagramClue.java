@@ -32,7 +32,6 @@ import javax.annotation.Nullable;
 import lombok.Getter;
 import net.runelite.api.NPC;
 import net.runelite.api.ObjectID;
-import net.runelite.api.Point;
 import net.runelite.api.TileObject;
 import net.runelite.api.coords.WorldPoint;
 import static net.runelite.client.plugins.cluescrolls.ClueScrollOverlay.TITLED_CONTENT_COLOR;
@@ -232,7 +231,7 @@ public class AnagramClue extends ClueScroll implements TextClueScroll, NpcClueSc
 		// Mark game object
 		if (objectId != -1)
 		{
-			Point mousePosition = plugin.getClient().getMouseCanvasPosition();
+			net.runelite.api.Point mousePosition = plugin.getClient().getMouseCanvasPosition();
 
 			for (TileObject gameObject : plugin.getObjectsToMark())
 			{

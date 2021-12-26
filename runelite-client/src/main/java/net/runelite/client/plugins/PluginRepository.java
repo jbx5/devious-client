@@ -15,7 +15,6 @@ import lombok.Getter;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-import org.pf4j.update.DefaultUpdateRepository;
 import org.pf4j.update.FileDownloader;
 import org.pf4j.update.FileVerifier;
 import org.pf4j.update.PluginInfo;
@@ -45,7 +44,7 @@ public class PluginRepository implements UpdateRepository
 
 
 	private static final String DEFAULT_PLUGINS_JSON_FILENAME = "plugins.json";
-	private static final Logger log = LoggerFactory.getLogger(DefaultUpdateRepository.class);
+	private static final Logger log = LoggerFactory.getLogger(org.pf4j.update.DefaultUpdateRepository.class);
 
 	private String id;
 	private URL url;

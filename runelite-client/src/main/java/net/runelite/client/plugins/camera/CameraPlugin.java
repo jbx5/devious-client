@@ -28,8 +28,6 @@ package net.runelite.client.plugins.camera;
 
 import com.google.common.primitives.Ints;
 import com.google.inject.Provides;
-
-import java.awt.Component;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import javax.inject.Inject;
@@ -420,7 +418,7 @@ public class CameraPlugin extends Plugin implements KeyListener, MouseListener
 				// Set the rightClick flag to true so we can release the button in mouseReleased() later
 				rightClick = true;
 				// Change the mousePressed() MouseEvent to the middle mouse button
-				mouseEvent = new MouseEvent((Component) mouseEvent.getSource(),
+				mouseEvent = new MouseEvent((java.awt.Component) mouseEvent.getSource(),
 					mouseEvent.getID(),
 					mouseEvent.getWhen(),
 					mouseEvent.getModifiersEx(),
@@ -436,7 +434,7 @@ public class CameraPlugin extends Plugin implements KeyListener, MouseListener
 			// Set the middleClick flag to true so we can release it later in mouseReleased()
 			middleClick = true;
 			// Chance the middle mouse button MouseEvent to a right-click
-			mouseEvent = new MouseEvent((Component) mouseEvent.getSource(),
+			mouseEvent = new MouseEvent((java.awt.Component) mouseEvent.getSource(),
 				mouseEvent.getID(),
 				mouseEvent.getWhen(),
 				mouseEvent.getModifiersEx(),
@@ -459,7 +457,7 @@ public class CameraPlugin extends Plugin implements KeyListener, MouseListener
 		{
 			rightClick = false;
 			// Change the MouseEvent to button 2 so the middle mouse button will be released
-			mouseEvent = new MouseEvent((Component) mouseEvent.getSource(),
+			mouseEvent = new MouseEvent((java.awt.Component) mouseEvent.getSource(),
 				mouseEvent.getID(),
 				mouseEvent.getWhen(),
 				mouseEvent.getModifiersEx(),
@@ -474,7 +472,7 @@ public class CameraPlugin extends Plugin implements KeyListener, MouseListener
 		{
 			middleClick = false;
 			// Change the MouseEvent ot button 3 so the right mouse button will be released
-			mouseEvent = new MouseEvent((Component) mouseEvent.getSource(),
+			mouseEvent = new MouseEvent((java.awt.Component) mouseEvent.getSource(),
 				mouseEvent.getID(),
 				mouseEvent.getWhen(),
 				mouseEvent.getModifiersEx(),

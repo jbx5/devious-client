@@ -56,7 +56,7 @@ public class New extends Instruction implements TypeInstruction
 		this.clazz = clazz;
 	}
 
-	public New(Instructions instructions, ClassFile classFile)
+	public New(Instructions instructions, net.runelite.asm.ClassFile classFile)
 	{
 		super(instructions, InstructionType.NEW);
 		this.clazz = classFile.getPoolClass();
