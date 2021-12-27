@@ -46,5 +46,6 @@ tasks.register<JavaExec>("inject") {
     outputs.upToDateWhen {
         false
     }
+    jvmArgs("-Dinjector.hooks=${if (Unethicalite.isBotBuild()) "dev/hoot/bot/BotHooks" else "net/runelite/client/callback/Hooks"}")
 }
 

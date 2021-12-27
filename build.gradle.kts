@@ -201,5 +201,6 @@ tasks {
 
         classpath = project(":runelite-client").sourceSets.main.get().runtimeClasspath
         enableAssertions = true
+        mainClass.set(if (Unethicalite.isBotBuild()) "dev.hoot.bot.Bot" else "net.runelite.client.RuneLite")
     }
 }

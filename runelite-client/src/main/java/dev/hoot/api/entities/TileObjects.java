@@ -21,14 +21,6 @@ public class TileObjects extends Entities<TileObject>
 {
 	private static final TileObjects TILE_OBJECTS = new TileObjects();
 
-	@Override
-	protected List<TileObject> all(Predicate<? super TileObject> filter)
-	{
-		return getTileObjects(Tiles.getTiles()).stream()
-				.filter(filter)
-				.collect(Collectors.toList());
-	}
-
 	public static List<TileObject> getAll(Predicate<TileObject> filter)
 	{
 		return TILE_OBJECTS.all(filter);
@@ -384,5 +376,13 @@ public class TileObjects extends Entities<TileObject>
 		}
 
 		return out;
+	}
+
+	@Override
+	protected List<TileObject> all(Predicate<? super TileObject> filter)
+	{
+		return getTileObjects(Tiles.getTiles()).stream()
+				.filter(filter)
+				.collect(Collectors.toList());
 	}
 }

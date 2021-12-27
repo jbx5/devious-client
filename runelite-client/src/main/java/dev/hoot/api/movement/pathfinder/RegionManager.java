@@ -33,11 +33,11 @@ import java.util.concurrent.TimeUnit;
 @Singleton
 public class RegionManager
 {
-	private static final Logger logger = LoggerFactory.getLogger(RegionManager.class);
-	private static final int VERSION = 3;
 	public static final MediaType JSON_MEDIATYPE = MediaType.parse("application/json");
 	public static final String API_URL = "http://174.138.15.181:8080";
 	public static final Gson GSON = new GsonBuilder().create();
+	private static final Logger logger = LoggerFactory.getLogger(RegionManager.class);
+	private static final int VERSION = 3;
 
 	@Inject
 	private OkHttpClient okHttpClient;
@@ -200,7 +200,7 @@ public class RegionManager
 				RequestBody body = RequestBody.create(JSON_MEDIATYPE, json);
 				Request request = new Request.Builder()
 						.post(body)
-                        .header("api-key", "f0bbb47b-839a-43f7-b907-eff4ab131231")
+						.header("api-key", "f0bbb47b-839a-43f7-b907-eff4ab131231")
 						.url(API_URL + "/regions/" + VERSION)
 						.build();
 				Response response = okHttpClient.newCall(request)

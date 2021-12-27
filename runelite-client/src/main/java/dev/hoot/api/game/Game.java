@@ -1,12 +1,12 @@
 package dev.hoot.api.game;
 
 import dev.hoot.api.movement.pathfinder.GlobalCollisionMap;
-import net.runelite.api.packets.ClientPacket;
 import dev.hoot.api.widgets.Tab;
 import dev.hoot.api.widgets.Tabs;
 import dev.hoot.api.widgets.Widgets;
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
+import net.runelite.api.packets.ClientPacket;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetID;
 import net.runelite.api.widgets.WidgetInfo;

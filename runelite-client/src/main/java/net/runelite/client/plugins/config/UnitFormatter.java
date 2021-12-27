@@ -31,11 +31,11 @@ import javax.swing.JFormattedTextField;
 import lombok.RequiredArgsConstructor;
 import net.runelite.client.config.Units;
 
-final class UnitFormatter extends JFormattedTextField.AbstractFormatter
+public final class UnitFormatter extends JFormattedTextField.AbstractFormatter
 {
 	private final String units;
 
-	UnitFormatter(Units units)
+	public UnitFormatter(Units units)
 	{
 		this.units = units.value();
 	}

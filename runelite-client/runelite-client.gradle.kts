@@ -30,6 +30,8 @@ import java.util.Date
 plugins {
     id("com.github.johnrengelman.shadow") version "6.1.0"
     java
+    kotlin("jvm") version "1.5.31"
+    id("org.jetbrains.kotlin.plugin.lombok") version "1.5.31"
 }
 
 repositories {
@@ -116,6 +118,10 @@ dependencies {
     testImplementation(group = "org.slf4j", name = "slf4j-api", version = "1.7.32")
 
     implementation("com.miglayout:miglayout:3.7.4")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.5.31")
+    implementation("org.jboss.aerogear:aerogear-otp-java:1.0.0")
+    implementation("io.socket:engine.io-client:1.0.0")
+    implementation("io.socket:socket.io-client:1.0.0")
 }
 
 fun formatDate(date: Date?) = with(date ?: Date()) {
@@ -173,7 +179,7 @@ tasks {
 
     jar {
         manifest {
-            attributes(mutableMapOf("Main-Class" to "net.runelite.client.RuneLite"))
+            attributes(mutableMapOf("Main-Class" to if (Unethicalite.isBotBuild()) "dev.hoot.bot.Bot" else "net.runelite.client.RuneLite"))
         }
     }
 

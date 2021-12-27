@@ -31,7 +31,7 @@ import javax.annotation.Nullable;
 import javax.swing.JPanel;
 import net.runelite.api.Constants;
 
-final class ClientPanel extends JPanel
+public final class ClientPanel extends JPanel
 {
 	public ClientPanel(@Nullable Applet client)
 	{

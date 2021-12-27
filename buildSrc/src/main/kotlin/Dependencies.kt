@@ -34,3 +34,9 @@ object ProjectVersions {
 
     const val lombokVersion = "1.18.20"
 }
+
+object Unethicalite {
+    fun isBotBuild(): Boolean {
+        return System.getenv("unethicalite.build")?.equals("bot") ?: false
+    }
+}
