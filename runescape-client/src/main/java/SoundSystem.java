@@ -2,17 +2,15 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-
 @ObfuscatedName("al")
 @Implements("SoundSystem")
 public class SoundSystem implements Runnable {
 	@ObfuscatedName("qt")
 	@Export("ClanChat_inClanChat")
 	static boolean ClanChat_inClanChat;
+
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "[Lar;"
-	)
+	@ObfuscatedSignature(descriptor = "[Lar;")
 	@Export("players")
 	volatile PcmPlayer[] players;
 
@@ -29,8 +27,7 @@ public class SoundSystem implements Runnable {
 				}
 			}
 		} catch (Exception var4) {
-			AccessFile.RunException_sendStackTrace((String)null, var4);
+			AccessFile.RunException_sendStackTrace(((String) (null)), var4);
 		}
-
 	}
 }

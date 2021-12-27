@@ -1,5 +1,3 @@
 import net.runelite.mapping.ObfuscatedName;
-
 @ObfuscatedName("nh")
-public interface class375 extends class374 {
-}
+public interface class375 extends class374 {}
