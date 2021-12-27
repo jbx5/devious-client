@@ -112,6 +112,21 @@ public class Inventory extends Items
 		return INVENTORY.exists(name);
 	}
 
+	public static int count(Predicate<Item> filter)
+	{
+		return getAll(filter).stream().mapToInt(Item::getQuantity).sum();
+	}
+
+	public static int count(int id)
+	{
+		return getAll(id).stream().mapToInt(Item::getQuantity).sum();
+	}
+
+	public static int count(String name)
+	{
+		return getAll(name).stream().mapToInt(Item::getQuantity).sum();
+	}
+
 	public static boolean isFull()
 	{
 		return getFreeSlots() == 0;

@@ -115,6 +115,21 @@ public class Equipment extends Items
 		return EQUIPMENT.exists(name);
 	}
 
+	public static int count(Predicate<Item> filter)
+	{
+		return getAll(filter).stream().mapToInt(Item::getQuantity).sum();
+	}
+
+	public static int count(int id)
+	{
+		return getAll(id).stream().mapToInt(Item::getQuantity).sum();
+	}
+
+	public static int count(String name)
+	{
+		return getAll(name).stream().mapToInt(Item::getQuantity).sum();
+	}
+
 	public static Item fromSlot(EquipmentInventorySlot slot)
 	{
 		return getFirst(x -> slot.getWidgetInfo().getPackedId() == x.getWidgetId());
