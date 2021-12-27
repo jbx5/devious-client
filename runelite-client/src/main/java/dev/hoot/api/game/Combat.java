@@ -16,10 +16,11 @@ import java.util.function.Supplier;
 
 public class Combat
 {
-	private static final int POISON_VARP = 102;
 	private static final int SPEC_VARP = 301;
 	private static final int SPEC_ENERGY_VARP = 300;
 	private static final Supplier<Widget> SPEC_BUTTON = () -> Widgets.get(593, 36);
+
+	private static final int VENOM_THRESHOLD = 1000000;
 
 	public static boolean isRetaliating()
 	{
@@ -28,7 +29,12 @@ public class Combat
 
 	public static boolean isPoisoned()
 	{
-		return Vars.getVarp(POISON_VARP) > 0;
+		return Vars.getVarp(VarPlayer.POISON.getId()) > 0;
+	}
+
+	public static boolean isVenomed()
+	{
+		return Vars.getVarp(VarPlayer.POISON.getId()) >= VENOM_THRESHOLD;
 	}
 
 	public static boolean isSpecEnabled()
