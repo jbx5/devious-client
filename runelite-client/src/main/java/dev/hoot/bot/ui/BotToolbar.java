@@ -2,6 +2,7 @@ package dev.hoot.bot.ui;
 
 import dev.hoot.bot.Bot;
 import dev.hoot.bot.config.BotConfig;
+import dev.hoot.bot.config.BotConfigManager;
 import dev.hoot.bot.config.ConfigPanel;
 import dev.hoot.bot.config.ConfigurationDescriptor;
 import dev.hoot.bot.devtools.EntityInspector;
@@ -11,7 +12,6 @@ import dev.hoot.bot.devtools.widgetinspector.WidgetInspector;
 import dev.hoot.bot.managers.ScriptManager;
 import dev.hoot.bot.script.events.ScriptChanged;
 import dev.hoot.bot.script.events.ScriptState;
-import net.runelite.client.config.ConfigManager;
 import net.runelite.client.config.RuneLiteConfig;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
@@ -30,7 +30,7 @@ public class BotToolbar extends JMenuBar
 	private final EntityInspector entityInspector;
 	private final ScriptManager scriptManager;
 	private final ScriptPanel scriptPanel;
-	private final ConfigManager configManager;
+	private final BotConfigManager configManager;
 	private final EventBus eventBus;
 	private final BotConfig botConfig;
 	private final RuneLiteConfig runeLiteConfig;
@@ -46,7 +46,7 @@ public class BotToolbar extends JMenuBar
 	@Inject
 	public BotToolbar(VarInspector varInspector, WidgetInspector widgetInspector, ScriptInspector scriptInspector,
 					  EntityInspector entityInspector, ScriptManager scriptManager, ScriptPanel scriptPanel,
-					  ConfigManager configManager, EventBus eventBus, BotConfig botConfig, RuneLiteConfig runeLiteConfig)
+					  BotConfigManager configManager, EventBus eventBus, BotConfig botConfig, RuneLiteConfig runeLiteConfig)
 	{
 		this.varInspector = varInspector;
 		this.widgetInspector = widgetInspector;

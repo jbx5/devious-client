@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Supplier;
 
-public class Shops
+public class Shop
 {
 	private static final Supplier<Widget> SHOP = () -> Widgets.get(300, 0);
 	private static final Supplier<Widget> SHOP_ITEMS = () -> Widgets.get(300, 16);
