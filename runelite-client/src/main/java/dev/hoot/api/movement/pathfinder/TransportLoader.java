@@ -488,7 +488,7 @@ public class TransportLoader
 			}
 
 			TileObjects.getSurrounding(source, 5, x -> x.getId() == objId).stream()
-					.findFirst()
+					.min(Comparator.comparingInt(o -> o.distanceTo(source)))
 					.ifPresent(obj -> obj.interact(action));
 		}, action);
 	}
