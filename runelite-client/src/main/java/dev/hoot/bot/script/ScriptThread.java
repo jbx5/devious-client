@@ -75,7 +75,7 @@ public class ScriptThread extends Thread
 				}
 				catch (Exception e)
 				{
-					log.warn("Exception in loop, consecutiveExceptionCount: ", e);
+					log.warn("Exception in script: ", e);
 					Time.sleep(1000);
 				}
 			}
