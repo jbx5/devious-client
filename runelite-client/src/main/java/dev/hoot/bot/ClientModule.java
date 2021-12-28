@@ -38,6 +38,7 @@ import dev.hoot.api.movement.pathfinder.GlobalCollisionMap;
 import dev.hoot.api.movement.pathfinder.RegionManager;
 import dev.hoot.api.movement.pathfinder.Walker;
 import dev.hoot.bot.config.BotConfig;
+import dev.hoot.bot.config.BotConfigManager;
 import dev.hoot.bot.script.Events;
 import lombok.AllArgsConstructor;
 import net.runelite.api.Client;
@@ -199,7 +200,7 @@ public class ClientModule extends AbstractModule
 
 	@Provides
 	@Singleton
-	BotConfig provideBotConfig(ConfigManager configManager)
+	BotConfig provideBotConfig(BotConfigManager configManager)
 	{
 		return configManager.getConfig(BotConfig.class);
 	}

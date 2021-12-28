@@ -33,6 +33,7 @@ import com.google.inject.Injector;
 import com.openosrs.client.OpenOSRS;
 import dev.hoot.bot.account.GameAccount;
 import dev.hoot.bot.config.BotConfigManager;
+import dev.hoot.bot.ui.BotToolbar;
 import dev.hoot.bot.ui.BotUI;
 import joptsimple.*;
 import lombok.Getter;
@@ -126,6 +127,9 @@ public class Bot
 
 	@Inject
 	private BotModule botModule;
+
+	@Inject
+	private BotToolbar botToolbar;
 
 	@Inject
 	@Nullable
@@ -291,7 +295,7 @@ public class Bot
 			applet.setSize(Constants.GAME_FIXED_SIZE);
 
 			// Change user.home so the client places jagexcache in the .runelite directory
-			String oldHome = System.setProperty("user.home", RuneLite.RUNELITE_DIR.getAbsolutePath());
+			String oldHome = System.setProperty("user.home", Bot.BOT_DIR.getAbsolutePath());
 			try
 			{
 				applet.init();
@@ -306,6 +310,9 @@ public class Bot
 
 		// Load user configuration
 		configManager.load();
+
+		botToolbar.init();
+		eventBus.register(botToolbar);
 
 		botModule.initialize();
 
@@ -466,7 +473,7 @@ public class Bot
 	private static void copyJagexCache()
 	{
 		Path from = Paths.get(System.getProperty("user.home"), "jagexcache");
-		Path to = Paths.get(System.getProperty("user.home"), RuneLite.OPENOSRS, "jagexcache");
+		Path to = Paths.get(System.getProperty("user.home"), ".hoot", "jagexcache");
 		if (Files.exists(to) || !Files.exists(from))
 		{
 			return;

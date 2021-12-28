@@ -66,12 +66,20 @@ public class ScriptThread extends Thread
 
 					var loopSleep = botScript.outerLoop();
 
-					if (loopSleep < 0)
+					if (loopSleep == -1000)
 					{
 						break;
 					}
 
-					Time.sleep(loopSleep);
+					if (loopSleep < 0)
+					{
+						int startTicks = Game.getClient().getTickCount();
+						Time.sleepUntil(() -> Game.getClient().getTickCount() - startTicks >= Math.abs(loopSleep), 10, 30_000);
+					}
+					else
+					{
+						Time.sleep(loopSleep);
+					}
 				}
 				catch (Exception e)
 				{

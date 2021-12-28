@@ -2,6 +2,7 @@ package dev.hoot.bot;
 
 import com.google.inject.AbstractModule;
 import dev.hoot.bot.account.GameAccount;
+import dev.hoot.bot.config.BotConfigManager;
 import dev.hoot.bot.managers.EventManager;
 import dev.hoot.bot.managers.InteractManager;
 import dev.hoot.bot.managers.ScriptManager;
@@ -11,7 +12,6 @@ import dev.hoot.bot.script.ScriptMeta;
 import dev.hoot.bot.script.paint.Paint;
 import joptsimple.OptionParser;
 import joptsimple.OptionSet;
-import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.ui.overlay.OverlayManager;
 
@@ -25,7 +25,7 @@ import java.util.UUID;
 @Singleton
 public class BotModule extends AbstractModule
 {
-	private final ConfigManager configManager;
+	private final BotConfigManager configManager;
 	private final ScriptManager scriptManager;
 
 	private static String acc = null;
@@ -40,7 +40,7 @@ public class BotModule extends AbstractModule
 
 	@Inject
 	public BotModule(
-			ConfigManager configManager,
+			BotConfigManager configManager,
 			EventBus eventBus,
 			ScriptManager scriptManager,
 			EventManager eventManager,

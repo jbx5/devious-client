@@ -29,8 +29,11 @@ import dev.hoot.bot.config.BotConfig;
 import dev.hoot.bot.config.BotConfigManager;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
+import net.runelite.api.Client;
+import net.runelite.api.Constants;
+import net.runelite.api.GameState;
+import net.runelite.api.Player;
 import net.runelite.api.Point;
-import net.runelite.api.*;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.client.callback.ClientThread;
 import net.runelite.client.config.RuneLiteConfig;
@@ -41,7 +44,10 @@ import net.runelite.client.events.ConfigChanged;
 import net.runelite.client.ui.ClientPanel;
 import net.runelite.client.ui.ClientUI;
 import net.runelite.client.ui.ContainableFrame;
-import net.runelite.client.util.*;
+import net.runelite.client.util.ImageUtil;
+import net.runelite.client.util.OSType;
+import net.runelite.client.util.OSXUtil;
+import net.runelite.client.util.WinUtil;
 
 import javax.annotation.Nullable;
 import javax.inject.Inject;
@@ -177,12 +183,9 @@ public class BotUI
 	 */
 	public void init() throws Exception
 	{
-		botToolbar.init();
-		eventBus.register(botToolbar);
-
 		SwingUtilities.invokeAndWait(() ->
 		{
-			SwingUtil.setupDefaults();
+			setupDefaults();
 
 			// Create main window
 			frame = new ContainableFrame();
@@ -201,11 +204,6 @@ public class BotUI
 			container.add(new ClientPanel(client));
 
 			frame.setJMenuBar(botToolbar);
-
-			if (botConfig.minimized())
-			{
-				frame.setState(Frame.ICONIFIED);
-			}
 
 			frame.add(container);
 
@@ -318,9 +316,16 @@ public class BotUI
 
 			// Show frame
 			frame.setVisible(true);
-			frame.toFront();
-			requestFocus();
-			giveClientFocus();
+			if (botConfig.minimized())
+			{
+				frame.setState(Frame.ICONIFIED);
+			}
+			else
+			{
+				frame.toFront();
+				requestFocus();
+				giveClientFocus();
+			}
 		});
 
 		// Show out of date dialog if needed
@@ -685,5 +690,22 @@ public class BotUI
 	public void setTitle(String title)
 	{
 		frame.setTitle(title);
+	}
+
+	public static void setupDefaults()
+	{
+		// Force heavy-weight popups/tooltips.
+		// Prevents them from being obscured by the game applet.
+		ToolTipManager.sharedInstance().setLightWeightPopupEnabled(false);
+		ToolTipManager.sharedInstance().setInitialDelay(300);
+		JPopupMenu.setDefaultLightWeightPopupEnabled(false);
+
+		// Do not render shadows under popups/tooltips.
+		// Fixes black boxes under popups that are above the game applet.
+		System.setProperty("jgoodies.popupDropShadowEnabled", "false");
+
+		// Do not fill in background on repaint. Reduces flickering when
+		// the applet is resized.
+		System.setProperty("sun.awt.noerasebackground", "true");
 	}
 }
