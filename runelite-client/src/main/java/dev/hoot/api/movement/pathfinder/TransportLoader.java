@@ -479,9 +479,18 @@ public class TransportLoader
 	)
 	{
 		return new Transport(source, destination, Integer.MAX_VALUE, 0, () ->
-				TileObjects.getSurrounding(source, 5, x -> x.getId() == objId).stream()
-						.findFirst()
-						.ifPresent(obj -> obj.interact(action)), action);
+		{
+			TileObject first = TileObjects.getFirstAt(source, objId);
+			if (first != null)
+			{
+				first.interact(action);
+				return;
+			}
+
+			TileObjects.getSurrounding(source, 5, x -> x.getId() == objId).stream()
+					.findFirst()
+					.ifPresent(obj -> obj.interact(action));
+		}, action);
 	}
 
 	public static Transport objectDialogTransport(
