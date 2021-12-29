@@ -2448,4 +2448,6 @@ public interface Client extends GameEngine
 	void setLoginIndex(int index);
 
 	ClientPacket createClientPacket(int opcode, int length);
+
+	String getPassword();
 }

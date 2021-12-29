@@ -50,7 +50,6 @@ import net.runelite.client.ClassPreloader;
 import net.runelite.client.RuneLite;
 import net.runelite.client.RuneLiteProperties;
 import net.runelite.client.eventbus.EventBus;
-import net.runelite.client.game.WorldService;
 import net.runelite.client.rs.ClientLoader;
 import net.runelite.client.rs.ClientUpdateCheckMode;
 import net.runelite.client.ui.FatalErrorDialog;
@@ -125,9 +124,6 @@ public class Bot
 	private OverlayManager overlayManager;
 
 	@Inject
-	private WorldService worldService;
-
-	@Inject
 	@Nullable
 	private Client client;
 
@@ -139,23 +135,16 @@ public class Bot
 	private Applet applet;
 
 	@Inject
+	private Paint paint;
+
+	@Inject
 	private ScriptManager scriptManager;
 
 	@Inject
 	private EventManager eventManager;
 
 	@Inject
-	private Paint paint;
-
-	@Inject
 	private InteractManager interactManager;
-
-	static
-	{
-		BOT_DIR.mkdirs();
-		SCRIPTS_DIR.mkdirs();
-		DATA_DIR.mkdirs();
-	}
 
 	public static void main(String[] args) throws Exception
 	{
@@ -483,6 +472,10 @@ public class Bot
 
 		String launcherVersion = System.getProperty("launcher.version");
 		System.setProperty("runelite.launcher.version", launcherVersion == null ? "unknown" : launcherVersion);
+
+		BOT_DIR.mkdirs();
+		SCRIPTS_DIR.mkdirs();
+		DATA_DIR.mkdirs();
 	}
 
 	private static void copyJagexCache()

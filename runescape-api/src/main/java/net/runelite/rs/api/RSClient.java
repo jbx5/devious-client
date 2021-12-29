@@ -1669,4 +1669,9 @@ public interface RSClient extends RSGameEngine, Client
 
 	@Construct
 	RSClientPacket createClientPacket(int opcode, int length);
+
+	@Import("Login_password")
+	@Override
+	String getPassword();
+
 }
