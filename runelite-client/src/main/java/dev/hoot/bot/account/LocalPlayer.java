@@ -44,7 +44,7 @@ public class LocalPlayer
 		return Players.getLocal();
 	}
 
-	public static String getName()
+	public static String getDisplayName()
 	{
 		return getEntity().getName();
 	}
