@@ -1,170 +1,194 @@
 package dev.hoot.bot;
 
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
+import com.google.gson.Gson;
 import com.google.inject.AbstractModule;
-import dev.hoot.bot.account.GameAccount;
+import com.google.inject.Provides;
+import com.google.inject.name.Names;
+import com.openosrs.client.config.OpenOSRSConfig;
+import dev.hoot.api.game.Game;
+import dev.hoot.api.game.GameThread;
+import dev.hoot.api.game.Prices;
+import dev.hoot.api.game.Worlds;
+import dev.hoot.api.movement.pathfinder.GlobalCollisionMap;
+import dev.hoot.api.movement.pathfinder.RegionManager;
+import dev.hoot.api.movement.pathfinder.Walker;
+import dev.hoot.bot.config.BotConfig;
 import dev.hoot.bot.config.BotConfigManager;
-import dev.hoot.bot.managers.EventManager;
-import dev.hoot.bot.managers.InteractManager;
-import dev.hoot.bot.managers.ScriptManager;
 import dev.hoot.bot.script.Events;
-import dev.hoot.bot.script.ScriptEntry;
-import dev.hoot.bot.script.ScriptMeta;
-import dev.hoot.bot.script.paint.Paint;
-import joptsimple.OptionParser;
-import joptsimple.OptionSet;
+import net.runelite.api.Client;
+import net.runelite.api.hooks.Callbacks;
+import net.runelite.api.packets.ClientPacket;
+import net.runelite.client.NonScheduledExecutorServiceExceptionLogger;
+import net.runelite.client.config.ChatColorConfig;
+import net.runelite.client.config.ConfigManager;
+import net.runelite.client.config.RuneLiteConfig;
 import net.runelite.client.eventbus.EventBus;
-import net.runelite.client.ui.overlay.OverlayManager;
+import net.runelite.client.game.ItemManager;
+import net.runelite.client.task.Scheduler;
+import net.runelite.client.util.DeferredEventBus;
+import net.runelite.client.util.ExecutorServiceExceptionLogger;
+import net.runelite.http.api.RuneLiteAPI;
+import net.runelite.http.api.chat.ChatClient;
+import okhttp3.OkHttpClient;
+import org.slf4j.LoggerFactory;
 
-import javax.inject.Inject;
+import javax.annotation.Nullable;
 import javax.inject.Singleton;
+import java.applet.Applet;
+import java.io.ByteArrayInputStream;
 import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Supplier;
+import java.util.zip.GZIPInputStream;
 
 @Singleton
 public class BotModule extends AbstractModule
 {
-	private final BotConfigManager configManager;
-	private final ScriptManager scriptManager;
+	private final OkHttpClient okHttpClient;
+	private final Supplier<Applet> clientLoader;
+	private final File config;
 
-	private static String acc = null;
-	private static String pass = null;
-	private static String auth = null;
-	private static String script = null;
-	private static Boolean noRender = null;
-	private static String customCache = null;
-	private static String[] scriptArgs = new String[0];
-
-	public static final Map<String, File> CONFIG_FILES = new HashMap<>();
-
-	@Inject
-	public BotModule(
-			BotConfigManager configManager,
-			EventBus eventBus,
-			ScriptManager scriptManager,
-			EventManager eventManager,
-			InteractManager interactManager,
-			Paint paint,
-			OverlayManager overlayManager
-	)
+	public BotModule(OkHttpClient okHttpClient, Supplier<Applet> clientLoader, File config)
 	{
-		this.configManager = configManager;
-		this.scriptManager = scriptManager;
-
-		eventBus.register(eventManager);
-		eventBus.register(interactManager);
-		overlayManager.add(paint);
-	}
-
-	static
-	{
-		Bot.BOT_DIR.mkdirs();
-		Bot.SCRIPTS_DIR.mkdirs();
-		Bot.DATA_DIR.mkdirs();
-	}
-
-	public void initialize()
-	{
-//		client.changeMemoryMode(true);
-
-		if (noRender != null)
-		{
-			configManager.setConfiguration("hoot", "renderOff", true);
-		}
-	}
-
-	public void quickLaunch()
-	{
-		if (acc != null && pass != null)
-		{
-			Bot.gameAccount = new GameAccount(acc, pass);
-
-			if (auth != null)
-			{
-				Bot.gameAccount.setAuth(auth);
-			}
-		}
-
-		if (script != null)
-		{
-			ScriptEntry quickStartScript = scriptManager.loadScripts()
-					.stream().filter(x -> x.getScriptClass().getAnnotation(ScriptMeta.class).value().equals(script))
-					.findFirst()
-					.orElse(null);
-			if (quickStartScript == null)
-			{
-				return;
-			}
-
-			scriptManager.startScript(quickStartScript, scriptArgs);
-		}
+		this.okHttpClient = okHttpClient;
+		this.clientLoader = clientLoader;
+		this.config = config;
 	}
 
 	@Override
 	protected void configure()
 	{
+		bindConstant().annotatedWith(Names.named("safeMode")).to(false);
+		bind(File.class).annotatedWith(Names.named("config")).toInstance(config);
+		bind(ScheduledExecutorService.class).toInstance(new ExecutorServiceExceptionLogger(Executors.newSingleThreadScheduledExecutor()));
+		bind(OkHttpClient.class).toInstance(okHttpClient);
+		bind(ItemManager.class);
+		bind(Scheduler.class);
+
+		bind(Gson.class).toInstance(RuneLiteAPI.GSON);
+
+		bind(Callbacks.class).to(BotHooks.class);
+
+		bind(EventBus.class)
+				.toInstance(new EventBus());
+
+		bind(EventBus.class)
+				.annotatedWith(Names.named("Deferred EventBus"))
+				.to(DeferredEventBus.class);
+
 		requestStaticInjection(
-				Events.class
+				Events.class,
+				GameThread.class,
+				Game.class,
+				Prices.class,
+				Worlds.class
 		);
 	}
 
-	public static OptionSet parseArgs(OptionParser parser, String... args)
+	@Provides
+	@Singleton
+	Applet provideApplet()
 	{
-		var accInfo = parser
-				.accepts("account")
-				.withRequiredArg().ofType(String.class);
-		var scriptInfo = parser
-				.accepts("script")
-				.withRequiredArg().ofType(String.class);
-		parser.accepts("norender");
-		var customCacheInfo = parser
-				.accepts("customCache")
-				.withRequiredArg().ofType(String.class);
-		var scriptArgsInfo = parser
-				.accepts("scriptArgs")
-				.withRequiredArg().ofType(String.class);
-		var options = parser.parse(args);
-		if (options.has("account"))
-		{
-			var details = options.valueOf(accInfo).split(":");
-			acc = details[0];
-			pass = details[1];
-			if (details.length >= 3)
-			{
-				auth = details[2];
-			}
-		}
+		return clientLoader.get();
+	}
 
-		if (options.has("script"))
-		{
-			script = options.valueOf(scriptInfo);
-		}
+	@Provides
+	@Singleton
+	Client provideClient(@Nullable Applet applet)
+	{
+		return applet instanceof Client ? (Client) applet : null;
+	}
 
-		if (options.has("norender"))
-		{
-			noRender = true;
-		}
+	@Provides
+	@Singleton
+	RuneLiteConfig provideConfig(ConfigManager configManager)
+	{
+		return configManager.getConfig(RuneLiteConfig.class);
+	}
 
-		if (options.has("customCache"))
-		{
-			customCache = options.valueOf(customCacheInfo);
-		}
+	@Provides
+	@Singleton
+	ChatColorConfig provideChatColorConfig(ConfigManager configManager)
+	{
+		return configManager.getConfig(ChatColorConfig.class);
+	}
 
-		if (options.has("scriptArgs"))
-		{
-			scriptArgs = options.valueOf(scriptArgsInfo).split(",");
-		}
+	@Provides
+	@Singleton
+	ChatClient provideChatClient(OkHttpClient okHttpClient)
+	{
+		return new ChatClient(okHttpClient);
+	}
 
-		if (customCache != null)
-		{
-			var customPath =
-					System.getProperty("user.home") + "/hoot-cache/" + (customCache.equals("random") ? UUID.randomUUID()
-							.toString() : customCache);
-			System.setProperty("user.home", customPath);
-			new File(customPath).mkdirs();
-		}
+	@Provides
+	@Singleton
+	OpenOSRSConfig provideOpenOSRSConfig(ConfigManager configManager)
+	{
+		return configManager.getConfig(OpenOSRSConfig.class);
+	}
 
-		return options;
+	@Provides
+	@Singleton
+	ExecutorService provideExecutorService()
+	{
+		int poolSize = 2 * Runtime.getRuntime().availableProcessors();
+
+		// Will start up to poolSize threads (because of allowCoreThreadTimeOut) as necessary, and times out
+		// unused threads after 1 minute
+		ThreadPoolExecutor executor = new ThreadPoolExecutor(poolSize, poolSize,
+				60L, TimeUnit.SECONDS,
+				new LinkedBlockingQueue<>(),
+				new ThreadFactoryBuilder().setNameFormat("worker-%d").build());
+		executor.allowCoreThreadTimeOut(true);
+
+		return new NonScheduledExecutorServiceExceptionLogger(executor);
+	}
+
+	@Provides
+	@Singleton
+	@Nullable
+	ClientPacket provideClientPacket(@Nullable Client client)
+	{
+		assert client != null;
+		return client.createClientPacket(-1, -1);
+	}
+
+	@Provides
+	@Singleton
+	GlobalCollisionMap provideGlobalCollisionMap() throws IOException
+	{
+		try (InputStream is = new URL(RegionManager.API_URL + "/regions").openStream())
+		{
+			return new GlobalCollisionMap(new GZIPInputStream(new ByteArrayInputStream(is.readAllBytes())).readAllBytes());
+		}
+		catch (IOException e)
+		{
+			// Fallback to old map
+			LoggerFactory.getLogger(BotModule.class)
+					.warn("Failed to load global collision map, falling back to old map", e);
+			return new GlobalCollisionMap(
+					new GZIPInputStream(
+							new ByteArrayInputStream(
+									Walker.class.getResourceAsStream("/regions").readAllBytes()
+							)
+					).readAllBytes()
+			);
+		}
+	}
+
+	@Provides
+	@Singleton
+	BotConfig provideBotConfig(BotConfigManager configManager)
+	{
+		return configManager.getConfig(BotConfig.class);
 	}
 }

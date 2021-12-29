@@ -28,7 +28,7 @@ import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Strings;
 import com.google.common.collect.ComparisonChain;
 import com.google.common.collect.ImmutableMap;
-import dev.hoot.bot.BotModule;
+import dev.hoot.bot.Bot;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.client.config.*;
@@ -83,7 +83,7 @@ public class BotConfigManager
 	{
 		this.eventBus = eventBus;
 		this.propertiesMap = new HashMap<>();
-		for (Map.Entry<String, File> entry : BotModule.CONFIG_FILES.entrySet())
+		for (Map.Entry<String, File> entry : Bot.CONFIG_FILES.entrySet())
 		{
 			Properties properties = new Properties();
 			propertiesMap.put(entry.getKey(), properties);
@@ -100,7 +100,7 @@ public class BotConfigManager
 		handler.invalidate();
 		propertiesMap.values().forEach(Properties::clear);
 
-		for (Map.Entry<String, File> entry : BotModule.CONFIG_FILES.entrySet())
+		for (Map.Entry<String, File> entry : Bot.CONFIG_FILES.entrySet())
 		{
 			File propertiesFile = entry.getValue();
 
@@ -275,7 +275,7 @@ public class BotConfigManager
 
 		try
 		{
-			saveToFile(groupName, BotModule.CONFIG_FILES.get(groupName));
+			saveToFile(groupName, Bot.CONFIG_FILES.get(groupName));
 		}
 		catch (IOException e)
 		{
@@ -326,7 +326,7 @@ public class BotConfigManager
 
 		try
 		{
-			saveToFile(groupName, BotModule.CONFIG_FILES.get(groupName));
+			saveToFile(groupName, Bot.CONFIG_FILES.get(groupName));
 		}
 		catch (IOException e)
 		{
@@ -630,7 +630,7 @@ public class BotConfigManager
 
 		try
 		{
-			for (Map.Entry<String, File> entry : BotModule.CONFIG_FILES.entrySet())
+			for (Map.Entry<String, File> entry : Bot.CONFIG_FILES.entrySet())
 			{
 				saveToFile(entry.getKey(), entry.getValue());
 			}

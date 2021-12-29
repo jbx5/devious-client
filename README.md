@@ -1,1 +1,1 @@
-This fork does not give a shit about Jagex compliance
+This fork is 99.9% Jagex compliant

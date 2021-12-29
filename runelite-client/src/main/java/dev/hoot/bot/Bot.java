@@ -33,6 +33,12 @@ import com.google.inject.Injector;
 import com.openosrs.client.OpenOSRS;
 import dev.hoot.bot.account.GameAccount;
 import dev.hoot.bot.config.BotConfigManager;
+import dev.hoot.bot.managers.EventManager;
+import dev.hoot.bot.managers.InteractManager;
+import dev.hoot.bot.managers.ScriptManager;
+import dev.hoot.bot.script.ScriptEntry;
+import dev.hoot.bot.script.ScriptMeta;
+import dev.hoot.bot.script.paint.Paint;
 import dev.hoot.bot.ui.BotToolbar;
 import dev.hoot.bot.ui.BotUI;
 import joptsimple.*;
@@ -49,10 +55,7 @@ import net.runelite.client.rs.ClientLoader;
 import net.runelite.client.rs.ClientUpdateCheckMode;
 import net.runelite.client.ui.FatalErrorDialog;
 import net.runelite.client.ui.overlay.OverlayManager;
-import net.runelite.client.util.WorldUtil;
 import net.runelite.http.api.RuneLiteAPI;
-import net.runelite.http.api.worlds.World;
-import net.runelite.http.api.worlds.WorldResult;
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
 import okhttp3.Response;
@@ -78,7 +81,9 @@ import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.cert.X509Certificate;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 import java.util.stream.Stream;
 
 import static java.nio.file.StandardCopyOption.COPY_ATTRIBUTES;
@@ -94,6 +99,7 @@ public class Bot
 	public static final File DATA_DIR = new File(BOT_DIR, "data");
 	public static final File SCRIPTS_DIR = new File(BOT_DIR, "scripts");
 	public static final File CONFIG_FILE = new File(BOT_DIR, "hoot.properties");
+	public static final Map<String, File> CONFIG_FILES = new HashMap<>();
 
 	private static final int MAX_OKHTTP_CACHE_SIZE = 20 * 1024 * 1024; // 20mb
 
@@ -126,14 +132,30 @@ public class Bot
 	private Client client;
 
 	@Inject
-	private BotModule botModule;
-
-	@Inject
 	private BotToolbar botToolbar;
 
 	@Inject
 	@Nullable
 	private Applet applet;
+
+	@Inject
+	private ScriptManager scriptManager;
+
+	@Inject
+	private EventManager eventManager;
+
+	@Inject
+	private Paint paint;
+
+	@Inject
+	private InteractManager interactManager;
+
+	static
+	{
+		BOT_DIR.mkdirs();
+		SCRIPTS_DIR.mkdirs();
+		DATA_DIR.mkdirs();
+	}
 
 	public static void main(String[] args) throws Exception
 	{
@@ -164,7 +186,31 @@ public class Bot
 				.withValuesConvertedBy(new ConfigFileConverter())
 				.defaultsTo(CONFIG_FILE);
 
-		OptionSet options = BotModule.parseArgs(parser, args);
+		var accInfo = parser
+				.accepts("account")
+				.withRequiredArg().ofType(String.class);
+
+		parser.accepts("norender");
+
+		parser.accepts("script")
+				.withRequiredArg().ofType(String.class);
+
+		parser.accepts("scriptArgs")
+				.withRequiredArg().ofType(String.class);
+
+		OptionSet options = parser.parse(args);
+
+		if (options.has("account"))
+		{
+			var details = options.valueOf(accInfo).split(":");
+			GameAccount gameAccount = new GameAccount(details[0], details[1]);
+			if (details.length >= 3)
+			{
+				gameAccount.setAuth(details[2]);
+			}
+
+			Bot.gameAccount = gameAccount;
+		}
 
 		if (options.has("debug"))
 		{
@@ -250,16 +296,16 @@ public class Bot
 
 			final long start = System.currentTimeMillis();
 
-			BotModule.CONFIG_FILES.put("hoot", options.valueOf(hootConfigFile));
-			BotModule.CONFIG_FILES.put("runelite", options.valueOf(configfile));
+			CONFIG_FILES.put("hoot", options.valueOf(hootConfigFile));
+			CONFIG_FILES.put("runelite", options.valueOf(configfile));
 
-			injector = Guice.createInjector(new ClientModule(
+			injector = Guice.createInjector(new BotModule(
 				okHttpClient,
 				clientLoader,
 				options.valueOf(configfile))
 			);
 
-			injector.getInstance(Bot.class).start();
+			injector.getInstance(Bot.class).start(options);
 
 			final long end = System.currentTimeMillis();
 			final RuntimeMXBean rb = ManagementFactory.getRuntimeMXBean();
@@ -275,7 +321,7 @@ public class Bot
 		}
 	}
 
-	public void start() throws Exception
+	public void start(OptionSet options) throws Exception
 	{
 		// Load RuneLite or Vanilla client
 		final boolean isOutdated = client == null;
@@ -313,8 +359,11 @@ public class Bot
 
 		botToolbar.init();
 		eventBus.register(botToolbar);
+		eventBus.register(eventManager);
+		eventBus.register(interactManager);
+		overlayManager.add(paint);
 
-		botModule.initialize();
+		initArgs(options);
 
 		botUI.init();
 
@@ -323,7 +372,11 @@ public class Bot
 		eventBus.register(configManager);
 
 		botUI.show();
-		botModule.quickLaunch();
+
+		if (options.has("script"))
+		{
+			quickLaunch(options);
+		}
 	}
 
 	@VisibleForTesting
@@ -368,44 +421,6 @@ public class Bot
 		public String valuePattern()
 		{
 			return null;
-		}
-	}
-
-	private void setWorld(int cliWorld)
-	{
-		int correctedWorld = cliWorld < 300 ? cliWorld + 300 : cliWorld;
-
-		if (correctedWorld <= 300 || client.getWorld() == correctedWorld)
-		{
-			return;
-		}
-
-		final WorldResult worldResult = worldService.getWorlds();
-
-		if (worldResult == null)
-		{
-			log.warn("Failed to lookup worlds.");
-			return;
-		}
-
-		final World world = worldResult.findWorld(correctedWorld);
-
-		if (world != null)
-		{
-			final net.runelite.api.World rsWorld = client.createWorld();
-			rsWorld.setActivity(world.getActivity());
-			rsWorld.setAddress(world.getAddress());
-			rsWorld.setId(world.getId());
-			rsWorld.setPlayerCount(world.getPlayers());
-			rsWorld.setLocation(world.getLocation());
-			rsWorld.setTypes(WorldUtil.toWorldTypes(world.getTypes()));
-
-			client.changeWorld(rsWorld);
-			log.debug("Applied new world {}", correctedWorld);
-		}
-		else
-		{
-			log.warn("World {} not found.", correctedWorld);
 		}
 	}
 
@@ -499,6 +514,39 @@ public class Bot
 		catch (Exception e)
 		{
 			log.warn("unable to copy jagexcache", e);
+		}
+	}
+
+	private void initArgs(OptionSet options)
+	{
+		if (options.has("norender"))
+		{
+			configManager.setConfiguration("hoot", "renderOff", true);
+		}
+	}
+
+	private void quickLaunch(OptionSet options)
+	{
+		if (options.has("script"))
+		{
+			String script = (String) options.valueOf("script");
+			String[] args = null;
+
+			if (options.has("scriptArgs"))
+			{
+				args = ((String) options.valueOf("scriptArgs")).split(",");
+			}
+
+			ScriptEntry quickStartScript = scriptManager.loadScripts()
+					.stream().filter(x -> x.getScriptClass().getAnnotation(ScriptMeta.class).value().equals(script))
+					.findFirst()
+					.orElse(null);
+			if (quickStartScript == null)
+			{
+				return;
+			}
+
+			scriptManager.startScript(quickStartScript, args);
 		}
 	}
 }
