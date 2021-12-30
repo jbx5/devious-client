@@ -49,9 +49,9 @@ open class BootstrapTask @Inject constructor(@Input val type: String) : DefaultT
                     it.file.name.contains("runescape-api") ||
                     it.file.name.contains("runelite-api") ||
                     it.file.name.contains("runelite-jshell")) {
-                path = "https://github.com/open-osrs/hosting/raw/master/${type}/${it.file.name}"
+                path = "https://raw.githubusercontent.com/unethicalite/hosting/master/${type}/${it.file.name}"
             } else if (it.file.name.contains("injection-annotations")) {
-                path = "https://github.com/open-osrs/hosting/raw/master/" + group.replace(".", "/") + "/${name}/$version/${it.file.name}"
+                path = "https://raw.githubusercontent.com/unethicalite/hosting/master/" + group.replace(".", "/") + "/${name}/$version/${it.file.name}"
             } else if (!group.contains("runelite")) {
                 path = "https://repo.maven.apache.org/maven2/" + group.replace(".", "/") + "/${name}/$version/${name}-$version"
                 if (it.classifier != null && it.classifier != "no_aop") {
@@ -98,7 +98,7 @@ open class BootstrapTask @Inject constructor(@Input val type: String) : DefaultT
         val cjar = clientJar.get().asFile
         artifacts.add(JsonBuilder(
                 "name" to cjar.name,
-                "path" to "https://github.com/open-osrs/hosting/raw/master/${type}/${cjar.name}",
+                "path" to "https://raw.githubusercontent.com/unethicalite/hosting/master/${type}/${cjar.name}",
                 "size" to cjar.length(),
                 "hash" to hash(cjar.readBytes())
         ))
