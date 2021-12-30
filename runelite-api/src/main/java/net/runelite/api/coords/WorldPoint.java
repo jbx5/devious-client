@@ -638,4 +638,9 @@ public class WorldPoint
 	{
 		return locatable.getWorldLocation().distanceTo(this);
 	}
+
+	public WorldArea createWorldArea(int width, int height)
+	{
+		return new WorldArea(this, width, height);
+	}
 }
