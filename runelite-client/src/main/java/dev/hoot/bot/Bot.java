@@ -91,7 +91,7 @@ import static java.nio.file.StandardCopyOption.COPY_ATTRIBUTES;
 @Slf4j
 public class Bot
 {
-	public static final File BOT_DIR = new File(System.getProperty("user.home"), ".hoot");
+	public static final File BOT_DIR = new File(System.getProperty("user.home"), ".openosrs");
 	public static final File CACHE_DIR = new File(BOT_DIR, "cache");
 	public static final File LOGS_DIR = new File(BOT_DIR, "logs");
 	public static final File DEFAULT_CONFIG_FILE = new File(BOT_DIR, "settings.properties");
@@ -481,7 +481,7 @@ public class Bot
 	private static void copyJagexCache()
 	{
 		Path from = Paths.get(System.getProperty("user.home"), "jagexcache");
-		Path to = Paths.get(System.getProperty("user.home"), ".hoot", "jagexcache");
+		Path to = Paths.get(System.getProperty("user.home"), ".openosrs", "jagexcache");
 		if (Files.exists(to) || !Files.exists(from))
 		{
 			return;
