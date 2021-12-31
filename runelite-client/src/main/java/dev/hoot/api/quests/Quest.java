@@ -1,11 +1,12 @@
 package dev.hoot.api.quests;
 
 import dev.hoot.api.game.Game;
+import dev.hoot.api.game.GameThread;
+import dev.hoot.api.game.Vars;
 import lombok.Getter;
 import net.runelite.api.Client;
 import net.runelite.api.QuestState;
 import net.runelite.api.ScriptID;
-import net.runelite.api.Skill;
 
 import java.util.Arrays;
 import java.util.List;
@@ -425,27 +426,29 @@ public enum Quest
 			return QuestState.IN_PROGRESS;
 		}
 
-		client.runScript(ScriptID.QUEST_STATUS_GET, id);
-		switch (client.getIntStack()[0])
-		{
-			case 2:
-				return QuestState.FINISHED;
-			case 1:
-				return QuestState.NOT_STARTED;
-			default:
-				return QuestState.IN_PROGRESS;
-		}
+		return GameThread.invokeLater(() -> {
+			client.runScript(ScriptID.QUEST_STATUS_GET, id);
+			switch (client.getIntStack()[0])
+			{
+				case 2:
+					return QuestState.FINISHED;
+				case 1:
+					return QuestState.NOT_STARTED;
+				default:
+					return QuestState.IN_PROGRESS;
+			}
+		});
 	}
 
 	public int getProgress()
 	{
 		if (varbit != null)
 		{
-			return Game.getClient().getVarbitValue(varbit.getId());
+			return Vars.getBit(varbit.getId());
 		}
 		else if (varPlayer != null)
 		{
-			return Game.getClient().getVarpValue(varPlayer.getId());
+			return Vars.getVarp(varPlayer.getId());
 		}
 		else
 		{

@@ -4,6 +4,7 @@ import net.runelite.api.util.Text;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public interface Interactable
@@ -18,6 +19,7 @@ public interface Interactable
 		{
 			return null;
 		}
+
 		return Arrays.stream(getRawActions()).map(Text::removeTags).collect(Collectors.toList());
 	}
 
@@ -31,6 +33,17 @@ public interface Interactable
 
 	default boolean hasAction(String... actions)
 	{
-		return getRawActions() != null && Arrays.stream(actions).anyMatch(x -> getActions().contains(x));
+		String[] raw = getRawActions();
+		if (raw == null)
+		{
+			return false;
+		}
+
+		if (actions.length == 0)
+		{
+			return Arrays.stream(raw).anyMatch(Objects::nonNull);
+		}
+
+		return Arrays.stream(actions).anyMatch(x -> getActions().contains(x));
 	}
 }
