@@ -2,7 +2,7 @@ package dev.hoot.bot.managers;
 
 import dev.hoot.api.MouseHandler;
 import dev.hoot.api.commons.Rand;
-import dev.hoot.api.events.InvokeMenuActionEvent;
+import dev.hoot.api.events.AutomatedInteraction;
 import dev.hoot.api.game.GameThread;
 import dev.hoot.api.input.Mouse;
 import dev.hoot.api.movement.Movement;
@@ -13,16 +13,16 @@ import lombok.extern.slf4j.Slf4j;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.api.Client;
 import net.runelite.api.MenuAction;
-import net.runelite.api.MenuEntry;
 import net.runelite.api.events.MenuOptionClicked;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import java.awt.*;
+import java.awt.Point;
+import java.awt.Rectangle;
 
 @Singleton
 @Slf4j
-public class InteractManager
+public class BotInteractionManager
 {
 	private static final int MINIMAP_WIDTH = 250;
 	private static final int MINIMAP_HEIGHT = 180;
@@ -30,26 +30,26 @@ public class InteractManager
 	private final Client client;
 	private final BotConfig config;
 
-	private volatile MenuEntry action;
+	private volatile AutomatedInteraction action;
 	private volatile int mouseClickX = -1;
 	private volatile int mouseClickY = -1;
 
 	@Inject
-	public InteractManager(Client client, BotConfig config)
+	public BotInteractionManager(Client client, BotConfig config)
 	{
 		this.client = client;
 		this.config = config;
 	}
 
 	@Subscribe
-	public void onInvokeMenuAction(InvokeMenuActionEvent e)
+	public void onInvokeMenuAction(AutomatedInteraction e)
 	{
-		String debug = "O=" + e.getMenuEntry().getOption()
-				+ " | T=" + e.getMenuEntry().getTarget()
-				+ " | ID=" + e.getMenuEntry().getIdentifier()
-				+ " | OP=" + e.getMenuEntry().getType()
-				+ " | P0=" + e.getMenuEntry().getParam0()
-				+ " | P1=" + e.getMenuEntry().getParam1();
+		String debug = "O=" + e.getOption()
+				+ " | T=" + e.getTarget()
+				+ " | ID=" + e.getIdentifier()
+				+ " | OP=" + e.getOpcode()
+				+ " | P0=" + e.getParam0()
+				+ " | P1=" + e.getParam1();
 
 		if (Bot.debugMenuAction)
 		{
@@ -69,7 +69,7 @@ public class InteractManager
 			mouseClickY = clickPoint.y;
 			log.debug("Sending click to {} {}", mouseClickX, mouseClickY);
 
-			action = e.getMenuEntry();
+			action = e;
 
 			Mouse.click(mouseClickX, mouseClickY, true);
 		}
@@ -86,7 +86,7 @@ public class InteractManager
 			InputManager.Companion.setLastClickY(mouseClickY);
 			InputManager.Companion.setLastMovedX(mouseClickX);
 			InputManager.Companion.setLastMovedY(mouseClickY);
-			processAction(e.getMenuEntry(), mouseClickX, mouseClickY);
+			processAction(e, mouseClickX, mouseClickY);
 		}
 	}
 
@@ -122,20 +122,20 @@ public class InteractManager
 		reset();
 	}
 
-	private void processAction(MenuEntry entry, int x, int y)
+	private void processAction(AutomatedInteraction a, int x, int y)
 	{
-		if (entry.getMenuAction() == MenuAction.WALK)
+		if (a.getOpcode() == MenuAction.WALK)
 		{
-			Movement.setDestination(entry.getParam0(), entry.getParam1());
+			Movement.setDestination(a.getParam0(), a.getParam1());
 		}
 		else
 		{
-			GameThread.invoke(() -> client.invokeMenuAction(entry.getOption(), entry.getTarget(), entry.getIdentifier(),
-					entry.getMenuAction().getId(), entry.getParam0(), entry.getParam1(), x, y));
+			GameThread.invoke(() -> client.invokeMenuAction(a.getOption(), a.getTarget(), a.getIdentifier(),
+					a.getOpcode().getId(), a.getParam0(), a.getParam1(), x, y));
 		}
 	}
 
-	private Point getClickPoint(InvokeMenuActionEvent e)
+	private Point getClickPoint(AutomatedInteraction e)
 	{
 		if (config.interactType() == InteractType.OFF_SCREEN)
 		{
@@ -147,9 +147,9 @@ public class InteractManager
 			return new Point(client.getMouseHandler().getCurrentX(), client.getMouseHandler().getCurrentY());
 		}
 
-		if (e.clickX != -1 && e.clickY != -1 && config.interactType() == InteractType.CLICKBOXES)
+		if (e.getClickX() != -1 && e.getClickY() != -1 && config.interactType() == InteractType.CLICKBOXES)
 		{
-			Point clickPoint = new Point(e.clickX, e.clickY);
+			Point clickPoint = new Point(e.getClickX(), e.getClickY());
 			if (!clickInsideMinimap(clickPoint))
 			{
 				return clickPoint;

@@ -35,7 +35,7 @@ import net.runelite.api.widgets.WidgetInfo;
 
 @Getter
 @RequiredArgsConstructor
-enum VarrockMuseumAnswer
+public enum VarrockMuseumAnswer
 {
 	LIZARD_1("How does a lizard regulate body heat?", "Sunlight."),
 	LIZARD_2("Who discovered how to kill lizards?", "The Slayer Masters."),
@@ -152,7 +152,7 @@ enum VarrockMuseumAnswer
 	private final String question;
 	private final String answer;
 
-	static Widget findCorrect(final Client client, final String question, final WidgetInfo... widgets)
+	public static Widget findCorrect(final Client client, final String question, final WidgetInfo... widgets)
 	{
 		final String s = MATCHES.get(question);
 

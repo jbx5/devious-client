@@ -1,6 +1,6 @@
 package dev.hoot.mixins;
 
-import dev.hoot.api.events.InvokeMenuActionEvent;
+import dev.hoot.api.events.AutomatedInteraction;
 import net.runelite.api.*;
 import net.runelite.api.mixins.Copy;
 import net.runelite.api.mixins.Inject;
@@ -44,9 +44,8 @@ public abstract class HClientMixin implements RSClient
 	public void interact(final int identifier, final int opcode, final int param0, final int param1,
 		final int screenX, final int screenY)
 	{
-		InvokeMenuActionEvent event = new InvokeMenuActionEvent(client, identifier, opcode, param0, param1);
-		event.clickX = screenX;
-		event.clickY = screenY;
+		AutomatedInteraction event = new AutomatedInteraction("Automated", "", identifier, MenuAction.of(opcode),
+				param0, param1, screenX, screenY);
 
 		client.getCallbacks().post(event);
 	}

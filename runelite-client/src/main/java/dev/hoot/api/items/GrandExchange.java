@@ -230,6 +230,7 @@ public class GrandExchange
 			}
 
 			buyButton.interact(0);
+			return;
 		}
 	}
 

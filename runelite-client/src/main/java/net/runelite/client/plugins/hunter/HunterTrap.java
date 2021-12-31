@@ -58,6 +58,7 @@ public class HunterTrap
 	 * The ID of the game object this is representing
 	 */
 	@Getter
+	@Setter
 	private int objectId;
 
 	@Getter

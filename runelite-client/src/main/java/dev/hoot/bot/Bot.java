@@ -34,7 +34,7 @@ import com.openosrs.client.OpenOSRS;
 import dev.hoot.bot.account.GameAccount;
 import dev.hoot.bot.config.BotConfigManager;
 import dev.hoot.bot.managers.EventManager;
-import dev.hoot.bot.managers.InteractManager;
+import dev.hoot.bot.managers.BotInteractionManager;
 import dev.hoot.bot.managers.ScriptManager;
 import dev.hoot.bot.script.ScriptEntry;
 import dev.hoot.bot.script.ScriptMeta;
@@ -144,7 +144,7 @@ public class Bot
 	private EventManager eventManager;
 
 	@Inject
-	private InteractManager interactManager;
+	private BotInteractionManager botInteractionManager;
 
 	public static void main(String[] args) throws Exception
 	{
@@ -349,7 +349,7 @@ public class Bot
 		botToolbar.init();
 		eventBus.register(botToolbar);
 		eventBus.register(eventManager);
-		eventBus.register(interactManager);
+		eventBus.register(botInteractionManager);
 		overlayManager.add(paint);
 
 		initArgs(options);
@@ -523,7 +523,7 @@ public class Bot
 		if (options.has("script"))
 		{
 			String script = (String) options.valueOf("script");
-			String[] args = null;
+			String[] args = new String[0];
 
 			if (options.has("scriptArgs"))
 			{
