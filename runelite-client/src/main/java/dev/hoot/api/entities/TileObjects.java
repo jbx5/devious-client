@@ -73,32 +73,32 @@ public class TileObjects extends TileEntities<TileObject>
 
 	public static List<TileObject> getAt(int worldX, int worldY, int plane, int... ids)
 	{
-		return TILE_OBJECTS.at(worldX, worldY, plane, ids);
+		return TILE_OBJECTS.at(Tiles.getAt(worldX, worldY, plane), ids);
 	}
 
 	public static List<TileObject> getAt(int worldX, int worldY, int plane, String... names)
 	{
-		return TILE_OBJECTS.at(worldX, worldY, plane, names);
+		return TILE_OBJECTS.at(Tiles.getAt(worldX, worldY, plane), names);
 	}
 
 	public static List<TileObject> getAt(int worldX, int worldY, int plane, Predicate<TileObject> filter)
 	{
-		return TILE_OBJECTS.at(worldX, worldY, plane, filter);
+		return TILE_OBJECTS.at(Tiles.getAt(worldX, worldY, plane), filter);
 	}
 
 	public static List<TileObject> getAt(WorldPoint worldPoint, Predicate<TileObject> filter)
 	{
-		return TILE_OBJECTS.at(worldPoint, filter);
+		return TILE_OBJECTS.at(Tiles.getAt(worldPoint), filter);
 	}
 
 	public static List<TileObject> getAt(WorldPoint worldPoint, int... ids)
 	{
-		return TILE_OBJECTS.at(worldPoint, ids);
+		return TILE_OBJECTS.at(Tiles.getAt(worldPoint), ids);
 	}
 
 	public static List<TileObject> getAt(WorldPoint worldPoint, String... names)
 	{
-		return TILE_OBJECTS.at(worldPoint, names);
+		return TILE_OBJECTS.at(Tiles.getAt(worldPoint), names);
 	}
 
 	public static List<TileObject> getAt(Tile tile, int... ids)
@@ -196,6 +196,21 @@ public class TileObjects extends TileEntities<TileObject>
 		return getSurrounding(worldPoint, radius, filter).stream().findFirst().orElse(null);
 	}
 
+	public static TileObject getFirstSurrounding(Tile tile, int radius, int... ids)
+	{
+		return getSurrounding(tile, radius, ids).stream().findFirst().orElse(null);
+	}
+
+	public static TileObject getFirstSurrounding(Tile tile, int radius, String... names)
+	{
+		return getSurrounding(tile, radius, names).stream().findFirst().orElse(null);
+	}
+
+	public static TileObject getFirstSurrounding(Tile tile, int radius, Predicate<TileObject> filter)
+	{
+		return getSurrounding(tile, radius, filter).stream().findFirst().orElse(null);
+	}
+
 	public static List<TileObject> getSurrounding(int worldX, int worldY, int plane, int radius, int... ids)
 	{
 		return TILE_OBJECTS.surrounding(worldX, worldY, plane, radius, ids);
@@ -213,17 +228,32 @@ public class TileObjects extends TileEntities<TileObject>
 
 	public static List<TileObject> getSurrounding(WorldPoint worldPoint, int radius, int... ids)
 	{
-		return TILE_OBJECTS.surrounding(worldPoint, radius, ids);
+		return getSurrounding(worldPoint.getX(), worldPoint.getY(), worldPoint.getPlane(), radius, ids);
 	}
 
 	public static List<TileObject> getSurrounding(WorldPoint worldPoint, int radius, String... names)
 	{
-		return TILE_OBJECTS.surrounding(worldPoint, radius, names);
+		return getSurrounding(worldPoint.getX(), worldPoint.getY(), worldPoint.getPlane(), radius, names);
 	}
 
 	public static List<TileObject> getSurrounding(WorldPoint worldPoint, int radius, Predicate<TileObject> filter)
 	{
-		return TILE_OBJECTS.surrounding(worldPoint, radius, filter);
+		return getSurrounding(worldPoint.getX(), worldPoint.getY(), worldPoint.getPlane(), radius, filter);
+	}
+
+	public static List<TileObject> getSurrounding(Tile tile, int radius, int... ids)
+	{
+		return getSurrounding(tile.getWorldX(), tile.getWorldY(), tile.getPlane(), radius, ids);
+	}
+
+	public static List<TileObject> getSurrounding(Tile tile, int radius, String... names)
+	{
+		return getSurrounding(tile.getWorldX(), tile.getWorldY(), tile.getPlane(), radius, names);
+	}
+
+	public static List<TileObject> getSurrounding(Tile tile, int radius, Predicate<TileObject> filter)
+	{
+		return getSurrounding(tile.getWorldX(), tile.getWorldY(), tile.getPlane(), radius, filter);
 	}
 
 	public static List<TileObject> within(WorldArea area, String... names)

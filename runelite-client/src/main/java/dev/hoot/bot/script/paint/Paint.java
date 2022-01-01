@@ -1,14 +1,18 @@
 package dev.hoot.bot.script.paint;
 
-import dev.hoot.api.movement.Movement;
-import dev.hoot.api.scene.Tiles;
+import dev.hoot.api.SceneEntity;
+import dev.hoot.api.entities.Entities;
 import dev.hoot.bot.Bot;
-import dev.hoot.bot.devtools.EntityInspector;
+import dev.hoot.bot.devtools.EntityRenderer;
 import dev.hoot.bot.managers.InputManager;
 import dev.hoot.bot.managers.ScriptManager;
 import net.runelite.api.Point;
-import net.runelite.api.Tile;
-import net.runelite.client.ui.overlay.*;
+import net.runelite.client.ui.overlay.Overlay;
+import net.runelite.client.ui.overlay.OverlayLayer;
+import net.runelite.client.ui.overlay.OverlayPosition;
+import net.runelite.client.ui.overlay.OverlayPriority;
+import net.runelite.client.ui.overlay.OverlayUtil;
+import net.runelite.client.ui.overlay.RenderableEntity;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -26,7 +30,7 @@ public class Paint extends Overlay
 	private ScriptManager scriptManager;
 
 	@Inject
-	private EntityInspector entityInspector;
+	private EntityRenderer entityRenderer;
 
 	private final InputManager inputManager;
 
@@ -57,69 +61,9 @@ public class Paint extends Overlay
 		g.setColor(Color.WHITE);
 		g.setFont(font);
 
-		if (entityInspector.isDecorativeObjects())
-		{
-			entityInspector.renderTileObjects(g);
-		}
+		List<? extends SceneEntity> entities = Entities.getHoveredEntities();
 
-		if (entityInspector.isWallObjects())
-		{
-			entityInspector.renderTileObjects(g);
-		}
-
-		if (entityInspector.isGameObjects())
-		{
-			entityInspector.renderTileObjects(g);
-		}
-
-		if (entityInspector.isGroundObjects())
-		{
-			entityInspector.renderTileObjects(g);
-		}
-
-		if (entityInspector.isTileItems())
-		{
-			entityInspector.renderTileObjects(g);
-		}
-
-		if (entityInspector.isInventory())
-		{
-			entityInspector.renderInventory(g);
-		}
-
-		if (entityInspector.isNpcs())
-		{
-			entityInspector.renderNpcs(g);
-		}
-
-		if (entityInspector.isPlayers())
-		{
-			entityInspector.renderPlayers(g);
-		}
-
-		if (entityInspector.isProjectiles())
-		{
-			entityInspector.renderProjectiles(g);
-		}
-
-		if (entityInspector.isTileLocation())
-		{
-			entityInspector.renderTileObjects(g);
-		}
-
-		if (entityInspector.isCollisionMap())
-		{
-			Movement.drawCollisions(g);
-		}
-
-		if (entityInspector.isPath())
-		{
-			Tile mouseTile = Tiles.getHoveredTile();
-			if (mouseTile != null)
-			{
-				Movement.drawPath(g, mouseTile.getWorldLocation());
-			}
-		}
+		entityRenderer.render(g, entities);
 
 		if (!enabled)
 		{

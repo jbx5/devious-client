@@ -5,7 +5,7 @@ import dev.hoot.bot.config.BotConfig;
 import dev.hoot.bot.config.BotConfigManager;
 import dev.hoot.bot.config.ConfigPanel;
 import dev.hoot.bot.config.ConfigurationDescriptor;
-import dev.hoot.bot.devtools.EntityInspector;
+import dev.hoot.bot.devtools.EntityRenderer;
 import dev.hoot.bot.devtools.scriptinspector.ScriptInspector;
 import dev.hoot.bot.devtools.varinspector.VarInspector;
 import dev.hoot.bot.devtools.widgetinspector.WidgetInspector;
@@ -27,7 +27,7 @@ public class BotToolbar extends JMenuBar
 	private final VarInspector varInspector;
 	private final WidgetInspector widgetInspector;
 	private final ScriptInspector scriptInspector;
-	private final EntityInspector entityInspector;
+	private final EntityRenderer entityRenderer;
 	private final ScriptManager scriptManager;
 	private final ScriptPanel scriptPanel;
 	private final BotConfigManager configManager;
@@ -45,13 +45,13 @@ public class BotToolbar extends JMenuBar
 
 	@Inject
 	public BotToolbar(VarInspector varInspector, WidgetInspector widgetInspector, ScriptInspector scriptInspector,
-					  EntityInspector entityInspector, ScriptManager scriptManager, ScriptPanel scriptPanel,
+					  EntityRenderer entityRenderer, ScriptManager scriptManager, ScriptPanel scriptPanel,
 					  BotConfigManager configManager, EventBus eventBus, BotConfig botConfig, RuneLiteConfig runeLiteConfig)
 	{
 		this.varInspector = varInspector;
 		this.widgetInspector = widgetInspector;
 		this.scriptInspector = scriptInspector;
-		this.entityInspector = entityInspector;
+		this.entityRenderer = entityRenderer;
 		this.scriptManager = scriptManager;
 		this.scriptPanel = scriptPanel;
 		this.configManager = configManager;
@@ -126,11 +126,11 @@ public class BotToolbar extends JMenuBar
 			debug.add(dialogDebug);
 
 			JRadioButton collisionDebug = new JRadioButton("Collision map");
-			collisionDebug.addActionListener(e -> entityInspector.setCollisionMap(!entityInspector.isCollisionMap()));
+			collisionDebug.addActionListener(e -> entityRenderer.setCollisionMap(!entityRenderer.isCollisionMap()));
 			debug.add(collisionDebug);
 
 			JRadioButton pathDebug = new JRadioButton("Draw path");
-			pathDebug.addActionListener(e -> entityInspector.setPath(!entityInspector.isPath()));
+			pathDebug.addActionListener(e -> entityRenderer.setPath(!entityRenderer.isPath()));
 			debug.add(pathDebug);
 
 			add(debug);
@@ -150,25 +150,25 @@ public class BotToolbar extends JMenuBar
 			developer.add(scriptInspectorItem);
 
 			JRadioButton gameObjectsBtn = new JRadioButton("Game Objects");
-			gameObjectsBtn.addActionListener(e -> entityInspector.setGameObjects(!entityInspector.isGameObjects()));
+			gameObjectsBtn.addActionListener(e -> entityRenderer.setGameObjects(!entityRenderer.isGameObjects()));
 			JRadioButton wallObjectsBtn = new JRadioButton("Wall Objects");
-			wallObjectsBtn.addActionListener(e -> entityInspector.setWallObjects(!entityInspector.isWallObjects()));
+			wallObjectsBtn.addActionListener(e -> entityRenderer.setWallObjects(!entityRenderer.isWallObjects()));
 			JRadioButton decorativeObjectsBtn = new JRadioButton("Decorative Objects");
-			decorativeObjectsBtn.addActionListener(e -> entityInspector.setDecorativeObjects(!entityInspector.isDecorativeObjects()));
+			decorativeObjectsBtn.addActionListener(e -> entityRenderer.setDecorativeObjects(!entityRenderer.isDecorativeObjects()));
 			JRadioButton groundObjectsBtn = new JRadioButton("Ground Objects");
-			groundObjectsBtn.addActionListener(e -> entityInspector.setGroundObjects(!entityInspector.isGroundObjects()));
+			groundObjectsBtn.addActionListener(e -> entityRenderer.setGroundObjects(!entityRenderer.isGroundObjects()));
 			JRadioButton npcsBtn = new JRadioButton("NPCs");
-			npcsBtn.addActionListener(e -> entityInspector.setNpcs(!entityInspector.isNpcs()));
+			npcsBtn.addActionListener(e -> entityRenderer.setNpcs(!entityRenderer.isNpcs()));
 			JRadioButton playersBtn = new JRadioButton("Players");
-			playersBtn.addActionListener(e -> entityInspector.setPlayers(!entityInspector.isPlayers()));
+			playersBtn.addActionListener(e -> entityRenderer.setPlayers(!entityRenderer.isPlayers()));
 			JRadioButton tileItemsBtn = new JRadioButton("Tile Items");
-			tileItemsBtn.addActionListener(e -> entityInspector.setTileItems(!entityInspector.isTileItems()));
+			tileItemsBtn.addActionListener(e -> entityRenderer.setTileItems(!entityRenderer.isTileItems()));
 			JRadioButton inventoryBtn = new JRadioButton("Inventory");
-			inventoryBtn.addActionListener(e -> entityInspector.setInventory(!entityInspector.isInventory()));
+			inventoryBtn.addActionListener(e -> entityRenderer.setInventory(!entityRenderer.isInventory()));
 			JRadioButton projectilesBtn = new JRadioButton("Projectiles");
-			projectilesBtn.addActionListener(e -> entityInspector.setProjectiles(!entityInspector.isProjectiles()));
+			projectilesBtn.addActionListener(e -> entityRenderer.setProjectiles(!entityRenderer.isProjectiles()));
 			JRadioButton tileLocationBtn = new JRadioButton("Tile Location");
-			tileLocationBtn.addActionListener(e -> entityInspector.setTileLocation(!entityInspector.isTileLocation()));
+			tileLocationBtn.addActionListener(e -> entityRenderer.setTileLocation(!entityRenderer.isTileLocation()));
 
 			developer.add(gameObjectsBtn);
 			developer.add(wallObjectsBtn);

@@ -161,4 +161,8 @@ public interface Tile extends Locatable
 	Tile getBridge();
 
 	void walkHere();
+
+	int getWorldX();
+
+	int getWorldY();
 }

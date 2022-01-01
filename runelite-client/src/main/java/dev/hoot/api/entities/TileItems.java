@@ -192,6 +192,21 @@ public class TileItems extends TileEntities<TileItem>
 		return getSurrounding(worldPoint, radius, filter).stream().findFirst().orElse(null);
 	}
 
+	public static TileItem getFirstSurrounding(Tile tile, int radius, int... ids)
+	{
+		return getSurrounding(tile, radius, ids).stream().findFirst().orElse(null);
+	}
+
+	public static TileItem getFirstSurrounding(Tile tile, int radius, String... names)
+	{
+		return getSurrounding(tile, radius, names).stream().findFirst().orElse(null);
+	}
+
+	public static TileItem getFirstSurrounding(Tile tile, int radius, Predicate<TileItem> filter)
+	{
+		return getSurrounding(tile, radius, filter).stream().findFirst().orElse(null);
+	}
+
 	public static List<TileItem> getSurrounding(int worldX, int worldY, int plane, int radius, int... ids)
 	{
 		return TILE_ITEMS.surrounding(worldX, worldY, plane, radius, ids);
@@ -209,17 +224,32 @@ public class TileItems extends TileEntities<TileItem>
 
 	public static List<TileItem> getSurrounding(WorldPoint worldPoint, int radius, int... ids)
 	{
-		return TILE_ITEMS.surrounding(worldPoint, radius, ids);
+		return getSurrounding(worldPoint.getX(), worldPoint.getY(), worldPoint.getPlane(), radius, ids);
 	}
 
 	public static List<TileItem> getSurrounding(WorldPoint worldPoint, int radius, String... names)
 	{
-		return TILE_ITEMS.surrounding(worldPoint, radius, names);
+		return getSurrounding(worldPoint.getX(), worldPoint.getY(), worldPoint.getPlane(), radius, names);
 	}
 
 	public static List<TileItem> getSurrounding(WorldPoint worldPoint, int radius, Predicate<TileItem> filter)
 	{
-		return TILE_ITEMS.surrounding(worldPoint, radius, filter);
+		return getSurrounding(worldPoint.getX(), worldPoint.getY(), worldPoint.getPlane(), radius, filter);
+	}
+
+	public static List<TileItem> getSurrounding(Tile tile, int radius, int... ids)
+	{
+		return getSurrounding(tile.getWorldX(), tile.getWorldY(), tile.getPlane(), radius, ids);
+	}
+
+	public static List<TileItem> getSurrounding(Tile tile, int radius, String... names)
+	{
+		return getSurrounding(tile.getWorldX(), tile.getWorldY(), tile.getPlane(), radius, names);
+	}
+
+	public static List<TileItem> getSurrounding(Tile tile, int radius, Predicate<TileItem> filter)
+	{
+		return getSurrounding(tile.getWorldX(), tile.getWorldY(), tile.getPlane(), radius, filter);
 	}
 
 	public static List<TileItem> within(WorldArea area, String... names)

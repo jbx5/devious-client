@@ -19,4 +19,18 @@ public abstract class HTileMixin implements RSTile
 	{
 		client.interact(0, MenuAction.WALK.getId(), getX(), getY());
 	}
+
+	@Override
+	@Inject
+	public int getWorldX()
+	{
+		return getX() + client.getBaseX();
+	}
+
+	@Override
+	@Inject
+	public int getWorldY()
+	{
+		return getY() + client.getBaseY();
+	}
 }
