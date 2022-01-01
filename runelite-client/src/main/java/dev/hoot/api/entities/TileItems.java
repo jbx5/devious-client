@@ -249,6 +249,11 @@ public class TileItems extends TileEntities<TileItem>
 	protected List<TileItem> at(Tile tile, Predicate<? super TileItem> filter)
 	{
 		List<TileItem> out = new ArrayList<>();
+		if (tile == null)
+		{
+			return out;
+		}
+
 		if (tile.getGroundItems() != null)
 		{
 			for (TileItem item : tile.getGroundItems())

@@ -244,6 +244,11 @@ public class TileObjects extends TileEntities<TileObject>
 	private static List<TileObject> getTileObjects(Tile tile)
 	{
 		List<TileObject> out = new ArrayList<>();
+		if (tile == null)
+		{
+			return out;
+		}
+
 		DecorativeObject dec = tile.getDecorativeObject();
 		if (dec != null && dec.getId() != -1)
 		{
