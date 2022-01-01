@@ -111,7 +111,17 @@ public class Inventory extends Items
 		return INVENTORY.exists(id);
 	}
 
+	public static boolean contains(int... id)
+	{
+		return INVENTORY.exists(id);
+	}
+
 	public static boolean contains(String name)
+	{
+		return INVENTORY.exists(name);
+	}
+
+	public static boolean contains(String... name)
 	{
 		return INVENTORY.exists(name);
 	}
@@ -126,7 +136,17 @@ public class Inventory extends Items
 		return getAll(id).stream().mapToInt(Item::getQuantity).sum();
 	}
 
+	public static int count(int... id)
+	{
+		return getAll(id).stream().mapToInt(Item::getQuantity).sum();
+	}
+
 	public static int count(String name)
+	{
+		return getAll(name).stream().mapToInt(Item::getQuantity).sum();
+	}
+
+	public static int count(String... name)
 	{
 		return getAll(name).stream().mapToInt(Item::getQuantity).sum();
 	}

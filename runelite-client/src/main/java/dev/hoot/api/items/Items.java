@@ -98,7 +98,17 @@ public abstract class Items
 		return first(name) != null;
 	}
 
+	public boolean exists(String... name)
+	{
+		return first(name) != null;
+	}
+
 	public boolean exists(int id)
+	{
+		return first(id) != null;
+	}
+
+	public boolean exists(int... id)
 	{
 		return first(id) != null;
 	}
