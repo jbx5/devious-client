@@ -15,6 +15,10 @@ import java.util.stream.Collectors;
 
 public class Inventory extends Items
 {
+	private Inventory()
+	{
+	}
+
 	private static final Inventory INVENTORY = new Inventory();
 
 	@Override

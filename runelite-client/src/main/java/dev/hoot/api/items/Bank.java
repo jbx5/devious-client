@@ -21,6 +21,10 @@ import java.util.function.Supplier;
 
 public class Bank extends Items
 {
+	private Bank()
+	{
+	}
+
 	private static final Bank BANK = new Bank();
 	private static final int WITHDRAW_MODE_VARBIT = 3958;
 	private static final int QUANTITY_MODE_VARP = 6590;

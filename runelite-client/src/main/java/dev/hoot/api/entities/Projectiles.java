@@ -13,6 +13,10 @@ import java.util.stream.Collectors;
 
 public class Projectiles
 {
+	private Projectiles()
+	{
+	}
+
 	public static List<Projectile> getAll(Predicate<Projectile> filter)
 	{
 		return Game.getClient().getProjectiles().stream()

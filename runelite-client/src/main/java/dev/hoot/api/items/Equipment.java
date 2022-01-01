@@ -13,6 +13,10 @@ import java.util.function.Predicate;
 
 public class Equipment extends Items
 {
+	private Equipment()
+	{
+	}
+
 	private static final Equipment EQUIPMENT = new Equipment();
 
 	@Override

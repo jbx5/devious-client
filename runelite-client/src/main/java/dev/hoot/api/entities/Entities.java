@@ -17,7 +17,7 @@ public abstract class Entities<T extends SceneEntity>
 {
 	protected abstract List<T> all(Predicate<? super T> filter);
 
-	public List<T> all(String... names)
+	protected List<T> all(String... names)
 	{
 		return all(x ->
 		{
@@ -38,7 +38,7 @@ public abstract class Entities<T extends SceneEntity>
 		});
 	}
 
-	public List<T> all(int... ids)
+	protected List<T> all(int... ids)
 	{
 		return all(x ->
 		{
@@ -54,14 +54,14 @@ public abstract class Entities<T extends SceneEntity>
 		});
 	}
 
-	public T nearest(WorldPoint to, Predicate<? super T> filter)
+	protected T nearest(WorldPoint to, Predicate<? super T> filter)
 	{
 		return all(x -> x.getId() != -1 && filter.test(x)).stream()
 				.min(Comparator.comparingInt(t -> t.getWorldLocation().distanceTo(to)))
 				.orElse(null);
 	}
 
-	public T nearest(WorldPoint to, String... names)
+	protected T nearest(WorldPoint to, String... names)
 	{
 		return nearest(to, x ->
 		{
@@ -82,7 +82,7 @@ public abstract class Entities<T extends SceneEntity>
 		});
 	}
 
-	public T nearest(WorldPoint to, int... ids)
+	protected T nearest(WorldPoint to, int... ids)
 	{
 		return nearest(to, x ->
 		{

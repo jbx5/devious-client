@@ -10,6 +10,10 @@ import java.util.stream.Collectors;
 
 public class Players extends Entities<Player>
 {
+	private Players()
+	{
+	}
+
 	private static final Players PLAYERS = new Players();
 
 	@Override
