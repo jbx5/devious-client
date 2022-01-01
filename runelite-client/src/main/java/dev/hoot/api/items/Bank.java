@@ -396,9 +396,44 @@ public class Bank extends Items
 		return BANK.exists(id);
 	}
 
+	public static boolean contains(int... id)
+	{
+		return BANK.exists(id);
+	}
+
 	public static boolean contains(String name)
 	{
 		return BANK.exists(name);
+	}
+
+	public static boolean contains(String... name)
+	{
+		return BANK.exists(name);
+	}
+
+	public static int count(Predicate<Item> filter)
+	{
+		return getAll(filter).stream().mapToInt(Item::getQuantity).sum();
+	}
+
+	public static int count(int id)
+	{
+		return getAll(id).stream().mapToInt(Item::getQuantity).sum();
+	}
+
+	public static int count(int... id)
+	{
+		return getAll(id).stream().mapToInt(Item::getQuantity).sum();
+	}
+
+	public static int count(String name)
+	{
+		return getAll(name).stream().mapToInt(Item::getQuantity).sum();
+	}
+
+	public static int count(String... name)
+	{
+		return getAll(name).stream().mapToInt(Item::getQuantity).sum();
 	}
 
 	public static List<Widget> getTabs()
