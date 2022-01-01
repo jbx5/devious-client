@@ -109,12 +109,12 @@ public class Equipment extends Items
 		return EQUIPMENT.exists(filter);
 	}
 
-	public static boolean contains(int id)
+	public static boolean contains(int... id)
 	{
 		return EQUIPMENT.exists(id);
 	}
 
-	public static boolean contains(String name)
+	public static boolean contains(String... name)
 	{
 		return EQUIPMENT.exists(name);
 	}
@@ -124,12 +124,12 @@ public class Equipment extends Items
 		return getAll(filter).stream().mapToInt(Item::getQuantity).sum();
 	}
 
-	public static int count(int id)
+	public static int count(int... id)
 	{
 		return getAll(id).stream().mapToInt(Item::getQuantity).sum();
 	}
 
-	public static int count(String name)
+	public static int count(String... name)
 	{
 		return getAll(name).stream().mapToInt(Item::getQuantity).sum();
 	}

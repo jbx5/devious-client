@@ -93,12 +93,12 @@ public abstract class Items
 		return first(filter) != null;
 	}
 
-	public boolean exists(String name)
+	public boolean exists(String... name)
 	{
 		return first(name) != null;
 	}
 
-	public boolean exists(int id)
+	public boolean exists(int... id)
 	{
 		return first(id) != null;
 	}
