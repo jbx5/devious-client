@@ -24,10 +24,12 @@
  */
 package net.runelite.api;
 
+import dev.hoot.api.Identifiable;
+
 /**
  * Represents a projectile entity. (ie. cannonball, arrow)
  */
-public interface Projectile extends Renderable
+public interface Projectile extends Renderable, Identifiable
 {
 	/**
 	 * Gets the ID of the projectile.

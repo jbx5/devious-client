@@ -1,5 +1,6 @@
 package dev.hoot.api.items;
 
+import dev.hoot.api.commons.Predicates;
 import net.runelite.api.Item;
 
 import java.util.List;
@@ -9,97 +10,58 @@ public abstract class Items
 {
 	protected abstract List<Item> all(Predicate<Item> filter);
 
-	public List<Item> all(String... names)
+	protected List<Item> all(String... names)
 	{
-		return all(x ->
-		{
-			if (x.getName() == null)
-			{
-				return false;
-			}
-
-			for (String name : names)
-			{
-				if (name.equals(x.getName()))
-				{
-					return true;
-				}
-			}
-
-			return false;
-		});
+		return all(Predicates.names(names));
 	}
 
-	public List<Item> all(int... ids)
+	protected List<Item> all(int... ids)
 	{
-		return all(x ->
-		{
-			for (int id : ids)
-			{
-				if (id == x.getId())
-				{
-					return true;
-				}
-			}
-
-			return false;
-		});
+		return all(Predicates.ids(ids));
 	}
 
-	public Item first(Predicate<Item> filter)
+	protected Item first(Predicate<Item> filter)
 	{
 		return all(filter).stream().findFirst().orElse(null);
 	}
 
-	public Item first(int... ids)
+	protected Item first(int... ids)
 	{
-		return first(x ->
-		{
-			for (int id : ids)
-			{
-				if (id == x.getId())
-				{
-					return true;
-				}
-			}
-
-			return false;
-		});
+		return first(Predicates.ids(ids));
 	}
 
-	public Item first(String... names)
+	protected Item first(String... names)
 	{
-		return first(x ->
-		{
-			if (x.getName() == null)
-			{
-				return false;
-			}
-
-			for (String name : names)
-			{
-				if (name.equals(x.getName()))
-				{
-					return true;
-				}
-			}
-
-			return false;
-		});
+		return first(Predicates.names(names));
 	}
 
-	public boolean exists(Predicate<Item> filter)
+	protected boolean exists(Predicate<Item> filter)
 	{
 		return first(filter) != null;
 	}
 
-	public boolean exists(String... name)
+	protected boolean exists(String... name)
 	{
 		return first(name) != null;
 	}
 
-	public boolean exists(int... id)
+	protected boolean exists(int... id)
 	{
 		return first(id) != null;
+	}
+
+	protected int count(boolean stacks, Predicate<Item> filter)
+	{
+		return all(filter).stream().mapToInt(x -> stacks ? x.getQuantity() : 1).sum();
+	}
+
+	protected int count(boolean stacks, int... ids)
+	{
+		return all(ids).stream().mapToInt(x -> stacks ? x.getQuantity() : 1).sum();
+	}
+
+	protected int count(boolean stacks, String... names)
+	{
+		return all(names).stream().mapToInt(x -> stacks ? x.getQuantity() : 1).sum();
 	}
 }

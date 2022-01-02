@@ -1,5 +1,6 @@
 package dev.hoot.api.game;
 
+import dev.hoot.api.commons.Predicates;
 import dev.hoot.api.entities.NPCs;
 import dev.hoot.api.entities.Players;
 import dev.hoot.api.widgets.Widgets;
@@ -82,39 +83,12 @@ public class Combat
 
 	public static NPC getAttackableNPC(int... ids)
 	{
-		return getAttackableNPC(x ->
-		{
-			for (int id : ids)
-			{
-				if (id == x.getId())
-				{
-					return true;
-				}
-			}
-
-			return false;
-		});
+		return getAttackableNPC(Predicates.ids(ids));
 	}
 
 	public static NPC getAttackableNPC(String... names)
 	{
-		return getAttackableNPC(x ->
-		{
-			if (x.getName() == null)
-			{
-				return false;
-			}
-
-			for (String name : names)
-			{
-				if (name.equals(x.getName()))
-				{
-					return true;
-				}
-			}
-
-			return false;
-		});
+		return getAttackableNPC(Predicates.names(names));
 	}
 
 	public static NPC getAttackableNPC(Predicate<NPC> filter)

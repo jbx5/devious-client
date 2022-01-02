@@ -116,20 +116,34 @@ public class Inventory extends Items
 		return INVENTORY.exists(name);
 	}
 
-	public static int count(Predicate<Item> filter)
+	public static int getCount(boolean stacks, Predicate<Item> filter)
 	{
-		return getAll(filter).stream().mapToInt(Item::getQuantity).sum();
+		return INVENTORY.count(stacks, filter);
 	}
 
-
-	public static int count(int... id)
+	public static int getCount(boolean stacks, int... ids)
 	{
-		return getAll(id).stream().mapToInt(Item::getQuantity).sum();
+		return INVENTORY.count(stacks, ids);
 	}
 
-	public static int count(String... name)
+	public static int getCount(boolean stacks, String... names)
 	{
-		return getAll(name).stream().mapToInt(Item::getQuantity).sum();
+		return INVENTORY.count(stacks, names);
+	}
+
+	public static int getCount(Predicate<Item> filter)
+	{
+		return INVENTORY.count(false, filter);
+	}
+
+	public static int getCount(int... ids)
+	{
+		return INVENTORY.count(false, ids);
+	}
+
+	public static int getCount(String... names)
+	{
+		return INVENTORY.count(false, names);
 	}
 
 	public static boolean isFull()

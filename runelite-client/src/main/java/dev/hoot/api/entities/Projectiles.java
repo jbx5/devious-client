@@ -1,5 +1,6 @@
 package dev.hoot.api.entities;
 
+import dev.hoot.api.commons.Predicates;
 import dev.hoot.api.game.Game;
 import net.runelite.api.Actor;
 import net.runelite.api.Projectile;
@@ -26,18 +27,7 @@ public class Projectiles
 
 	public static List<Projectile> getAll(int... ids)
 	{
-		return getAll(x ->
-		{
-			for (int id : ids)
-			{
-				if (id == x.getId())
-				{
-					return true;
-				}
-			}
-
-			return false;
-		});
+		return getAll(Predicates.ids(ids));
 	}
 
 	public static Projectile getNearest(Predicate<Projectile> filter)
@@ -52,18 +42,7 @@ public class Projectiles
 
 	public static Projectile getNearest(int... ids)
 	{
-		return getNearest(x ->
-		{
-			for (int id : ids)
-			{
-				if (id == x.getId())
-				{
-					return true;
-				}
-			}
-
-			return false;
-		});
+		return getNearest(Predicates.ids(ids));
 	}
 
 	public static Projectile getNearest(Actor target)

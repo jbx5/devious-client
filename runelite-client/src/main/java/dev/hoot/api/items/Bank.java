@@ -401,19 +401,34 @@ public class Bank extends Items
 		return BANK.exists(name);
 	}
 
-	public static int count(Predicate<Item> filter)
+	public static int getCount(boolean stacks, Predicate<Item> filter)
 	{
-		return getAll(filter).stream().mapToInt(Item::getQuantity).sum();
+		return BANK.count(stacks, filter);
 	}
 
-	public static int count(int... id)
+	public static int getCount(boolean stacks, int... ids)
 	{
-		return getAll(id).stream().mapToInt(Item::getQuantity).sum();
+		return BANK.count(stacks, ids);
 	}
 
-	public static int count(String... name)
+	public static int getCount(boolean stacks, String... names)
 	{
-		return getAll(name).stream().mapToInt(Item::getQuantity).sum();
+		return BANK.count(stacks, names);
+	}
+
+	public static int getCount(Predicate<Item> filter)
+	{
+		return BANK.count(false, filter);
+	}
+
+	public static int getCount(int... ids)
+	{
+		return BANK.count(false, ids);
+	}
+
+	public static int getCount(String... names)
+	{
+		return BANK.count(false, names);
 	}
 
 	public static List<Widget> getTabs()

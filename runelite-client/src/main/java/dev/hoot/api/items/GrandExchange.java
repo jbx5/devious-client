@@ -1,5 +1,6 @@
 package dev.hoot.api.items;
 
+import dev.hoot.api.commons.Predicates;
 import dev.hoot.api.commons.Time;
 import dev.hoot.api.entities.TileObjects;
 import dev.hoot.api.game.Game;
@@ -166,39 +167,12 @@ public class GrandExchange
 
 	public static void sell(int... ids)
 	{
-		sell(x ->
-		{
-			for (int id : ids)
-			{
-				if (id == x.getId())
-				{
-					return true;
-				}
-			}
-
-			return false;
-		});
+		sell(Predicates.ids(ids));
 	}
 
 	public static void sell(String... names)
 	{
-		sell(x ->
-		{
-			if (x.getName() == null)
-			{
-				return false;
-			}
-
-			for (String name : names)
-			{
-				if (name.equals(x.getName()))
-				{
-					return true;
-				}
-			}
-
-			return false;
-		});
+		sell(Predicates.names(names));
 	}
 
 	public static void createBuyOffer()

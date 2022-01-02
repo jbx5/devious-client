@@ -1,6 +1,7 @@
 package dev.hoot.api.entities;
 
 import dev.hoot.api.SceneEntity;
+import dev.hoot.api.commons.Predicates;
 import dev.hoot.api.scene.Tiles;
 import net.runelite.api.Tile;
 import net.runelite.api.coords.WorldArea;
@@ -16,39 +17,12 @@ public abstract class TileEntities<T extends SceneEntity> extends Entities<T>
 
 	protected List<T> at(Tile tile, int... ids)
 	{
-		return at(tile, x ->
-		{
-			for (int id : ids)
-			{
-				if (id == x.getId())
-				{
-					return true;
-				}
-			}
-
-			return false;
-		});
+		return at(tile, Predicates.ids(ids));
 	}
 
 	protected List<T> at(Tile tile, String... names)
 	{
-		return at(tile, x ->
-		{
-			if (x.getName() == null)
-			{
-				return false;
-			}
-
-			for (String name : names)
-			{
-				if (name.equals(x.getName()))
-				{
-					return true;
-				}
-			}
-
-			return false;
-		});
+		return at(tile, Predicates.names(names));
 	}
 
 	protected List<T> surrounding(int worldX, int worldY, int plane, int radius, Predicate<? super T> filter)
@@ -67,39 +41,12 @@ public abstract class TileEntities<T extends SceneEntity> extends Entities<T>
 
 	protected List<T> surrounding(int worldX, int worldY, int plane, int radius, int... ids)
 	{
-		return surrounding(worldX, worldY, plane, radius, x ->
-		{
-			for (int id : ids)
-			{
-				if (id == x.getId())
-				{
-					return true;
-				}
-			}
-
-			return false;
-		});
+		return surrounding(worldX, worldY, plane, radius, Predicates.ids(ids));
 	}
 
 	protected List<T> surrounding(int worldX, int worldY, int plane, int radius, String... names)
 	{
-		return surrounding(worldX, worldY, plane, radius, x ->
-		{
-			if (x.getName() == null)
-			{
-				return false;
-			}
-
-			for (String name : names)
-			{
-				if (name.equals(x.getName()))
-				{
-					return true;
-				}
-			}
-
-			return false;
-		});
+		return surrounding(worldX, worldY, plane, radius, Predicates.names(names));
 	}
 
 
@@ -116,38 +63,11 @@ public abstract class TileEntities<T extends SceneEntity> extends Entities<T>
 
 	protected List<T> in(WorldArea area, int... ids)
 	{
-		return in(area, x ->
-		{
-			for (int id : ids)
-			{
-				if (id == x.getId())
-				{
-					return true;
-				}
-			}
-
-			return false;
-		});
+		return in(area, Predicates.ids(ids));
 	}
 
 	protected List<T> in(WorldArea area, String... names)
 	{
-		return in(area, x ->
-		{
-			if (x.getName() == null)
-			{
-				return false;
-			}
-
-			for (String name : names)
-			{
-				if (name.equals(x.getName()))
-				{
-					return true;
-				}
-			}
-
-			return false;
-		});
+		return in(area, Predicates.names(names));
 	}
 }
