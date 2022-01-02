@@ -1,19 +1,11 @@
 package dev.hoot.api.scene;
 
 import dev.hoot.api.game.Game;
+import net.runelite.api.Client;
 import net.runelite.api.Constants;
-import net.runelite.api.DecorativeObject;
-import net.runelite.api.GameObject;
-import net.runelite.api.GroundObject;
-import net.runelite.api.NPC;
-import net.runelite.api.Scene;
 import net.runelite.api.Tile;
-import net.runelite.api.TileObject;
-import net.runelite.api.WallObject;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,8 +13,6 @@ import java.util.function.Predicate;
 
 public class Tiles
 {
-	private static final Logger log = LoggerFactory.getLogger(Tiles.class);
-
 	public static List<Tile> getTiles(Predicate<Tile> filter)
 	{
 		List<Tile> out = new ArrayList<>();
@@ -59,60 +49,23 @@ public class Tiles
 
 	public static Tile getAt(int worldX, int worldY, int plane)
 	{
-		if (!WorldPoint.isInScene(Game.getClient(), worldX, worldY))
+		Client client = Game.getClient();
+		int correctedX = worldX < Constants.REGION_SIZE ? worldX + client.getBaseX() : worldX;
+		int correctedY = worldY < Constants.REGION_SIZE ? worldY + client.getBaseY() : worldY;
+
+		if (!WorldPoint.isInScene(client, correctedX, correctedY))
 		{
 			return null;
 		}
 
-		int x = worldX - Game.getClient().getBaseX();
-		int y = worldY - Game.getClient().getBaseY();
+		int x = correctedX - client.getBaseX();
+		int y = correctedY - client.getBaseY();
 
-		return Game.getClient().getScene().getTiles()[plane][x][y];
+		return client.getScene().getTiles()[plane][x][y];
 	}
 
 	public static Tile getHoveredTile()
 	{
 		return Game.getClient().getSelectedSceneTile();
-	}
-
-	private static TileObject findTileObject(int x, int y, int id)
-	{
-		Scene scene = Game.getClient().getScene();
-		Tile[][][] tiles = scene.getTiles();
-		Tile tile = tiles[Game.getClient().getPlane()][x][y];
-		if (tile != null)
-		{
-			for (GameObject gameObject : tile.getGameObjects())
-			{
-				if (gameObject != null && gameObject.getId() == id)
-				{
-					return gameObject;
-				}
-			}
-
-			WallObject wallObject = tile.getWallObject();
-			if (wallObject != null && wallObject.getId() == id)
-			{
-				return wallObject;
-			}
-
-			DecorativeObject decorativeObject = tile.getDecorativeObject();
-			if (decorativeObject != null && decorativeObject.getId() == id)
-			{
-				return decorativeObject;
-			}
-
-			GroundObject groundObject = tile.getGroundObject();
-			if (groundObject != null && groundObject.getId() == id)
-			{
-				return groundObject;
-			}
-		}
-		return null;
-	}
-
-	private static NPC findNpc(int id)
-	{
-		return Game.getClient().getCachedNPCs()[id];
 	}
 }

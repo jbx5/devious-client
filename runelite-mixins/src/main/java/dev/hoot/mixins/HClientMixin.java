@@ -1,8 +1,15 @@
 package dev.hoot.mixins;
 
 import dev.hoot.api.events.AutomatedInteraction;
-import net.runelite.api.*;
+import dev.hoot.api.events.LoginStateChanged;
+import net.runelite.api.DialogOption;
+import net.runelite.api.ItemComposition;
+import net.runelite.api.MenuAction;
+import net.runelite.api.ObjectComposition;
+import net.runelite.api.Tile;
+import net.runelite.api.TileObject;
 import net.runelite.api.mixins.Copy;
+import net.runelite.api.mixins.FieldHook;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.MethodHook;
 import net.runelite.api.mixins.Mixin;
@@ -219,5 +226,12 @@ public abstract class HClientMixin implements RSClient
 		RSItemComposition def = getRSItemDefinition(id);
 		itemDefCache.put(id, def);
 		return def;
+	}
+
+	@Inject
+	@FieldHook("loginIndex")
+	public static void loginIndex(int idx)
+	{
+		client.getCallbacks().post(new LoginStateChanged(client.getLoginIndex()));
 	}
 }

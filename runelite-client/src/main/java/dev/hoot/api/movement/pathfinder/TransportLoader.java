@@ -255,6 +255,16 @@ public class TransportLoader
 				transports.add(npcTransport(new WorldPoint(2504, 3192, 0), new WorldPoint(2515, 3159, 0), 4968, "Follow"));
 				transports.add(npcTransport(new WorldPoint(2515, 3159, 0), new WorldPoint(2504, 3192, 0), 4968, "Follow"));
 			}
+
+			// Eagles peak cave
+			if (Vars.getVarp(934) >= 15)
+			{
+				// Entrance
+				transports.add(objectTransport(new WorldPoint(2328, 3496, 0), new WorldPoint(1994, 4983, 3), 19790,
+						"Enter"));
+				transports.add(objectTransport(new WorldPoint(1994, 4983, 3), new WorldPoint(2328, 3496, 0), 19891,
+						"Exit"));
+			}
 		}
 
 		// Entrana

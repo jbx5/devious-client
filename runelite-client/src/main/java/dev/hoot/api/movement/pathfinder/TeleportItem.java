@@ -27,6 +27,8 @@ public enum TeleportItem
 	// Scrolls
 	FELDIP_HILLS_TELEPORT(new WorldPoint(2541, 2925, 0), "Feldip hills teleport", ItemID.FELDIP_HILLS_TELEPORT,
 			"Teleport"),
+	PISCATORIS_TELEPORT(new WorldPoint(2342, 3647, 0), "Piscatoris teleport", ItemID.PISCATORIS_TELEPORT,
+			"Teleport"),
 
 	;
 
