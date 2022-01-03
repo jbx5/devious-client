@@ -1,13 +1,16 @@
 package dev.hoot.mixins;
 
 import dev.hoot.api.events.AutomatedInteraction;
+import dev.hoot.api.events.ExperienceGained;
 import dev.hoot.api.events.LoginStateChanged;
 import net.runelite.api.DialogOption;
 import net.runelite.api.ItemComposition;
 import net.runelite.api.MenuAction;
 import net.runelite.api.ObjectComposition;
+import net.runelite.api.Skill;
 import net.runelite.api.Tile;
 import net.runelite.api.TileObject;
+import net.runelite.api.events.StatChanged;
 import net.runelite.api.mixins.Copy;
 import net.runelite.api.mixins.FieldHook;
 import net.runelite.api.mixins.Inject;
@@ -47,9 +50,12 @@ public abstract class HClientMixin implements RSClient
 	private static boolean lowCpu;
 
 	@Inject
+	private static int[] previousExp = new int[23];
+
+	@Inject
 	@Override
 	public void interact(final int identifier, final int opcode, final int param0, final int param1,
-		final int screenX, final int screenY)
+						 final int screenX, final int screenY)
 	{
 		AutomatedInteraction event = new AutomatedInteraction("Automated", "", identifier, MenuAction.of(opcode),
 				param0, param1, screenX, screenY);
@@ -233,5 +239,50 @@ public abstract class HClientMixin implements RSClient
 	public static void loginIndex(int idx)
 	{
 		client.getCallbacks().post(new LoginStateChanged(client.getLoginIndex()));
+	}
+
+	@FieldHook("experience")
+	@Inject
+	public static void experiencedChanged(int idx)
+	{
+		Skill[] possibleSkills = Skill.values();
+
+		// We subtract one here because 'Overall' isn't considered a skill that's updated.
+		if (idx < possibleSkills.length - 1)
+		{
+			Skill updatedSkill = possibleSkills[idx];
+			StatChanged statChanged = new StatChanged(
+					updatedSkill,
+					client.getSkillExperience(updatedSkill),
+					client.getRealSkillLevel(updatedSkill),
+					client.getBoostedSkillLevel(updatedSkill)
+			);
+			if (previousExp[idx] == 0 && client.getSkillExperience(updatedSkill) > 0)
+			{
+				previousExp[idx] = client.getSkillExperience(updatedSkill);
+			}
+
+			experienceGained(idx, client.getSkillExperience(updatedSkill), client.getRealSkillLevel(updatedSkill), updatedSkill);
+			client.getCallbacks().post(statChanged);
+		}
+	}
+
+	@Inject
+	public static void experienceGained(int idx, int exp, int skillLevel, Skill updatedSkill)
+	{
+		if (exp > previousExp[idx])
+		{
+			int gained = exp - previousExp[idx];
+
+			ExperienceGained experienceGained = new ExperienceGained(
+					updatedSkill,
+					gained,
+					exp,
+					skillLevel
+			);
+
+			client.getCallbacks().post(experienceGained);
+			previousExp[idx] = exp;
+		}
 	}
 }

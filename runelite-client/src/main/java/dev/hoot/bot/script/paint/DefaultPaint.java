@@ -77,6 +77,7 @@ public class DefaultPaint extends Overlay
 
 	public void clear()
 	{
+		statistics.clear();
 		overlays.clear();
 	}
 
