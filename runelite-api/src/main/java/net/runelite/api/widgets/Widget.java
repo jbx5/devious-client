@@ -1088,4 +1088,14 @@ public interface Widget extends Interactable, Identifiable
 	 * Gets the image which is (or should be) drawn on this widget
 	 */
 	SpritePixels getSprite();
+
+	/**
+	 * Sets the X padding between widgets, mainly for inventory items
+	 */
+	void setPaddingX(int val);
+
+	/**
+	 * Sets the Y padding between widgets, mainly for inventory items
+	 */
+	void setPaddingY(int val);
 }
