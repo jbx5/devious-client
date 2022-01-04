@@ -3,6 +3,7 @@ package dev.hoot.mixins;
 import dev.hoot.api.events.AutomatedInteraction;
 import dev.hoot.api.events.ExperienceGained;
 import dev.hoot.api.events.LoginStateChanged;
+import dev.hoot.api.events.PlaneChanged;
 import net.runelite.api.DialogOption;
 import net.runelite.api.ItemComposition;
 import net.runelite.api.MenuAction;
@@ -284,5 +285,12 @@ public abstract class HClientMixin implements RSClient
 			client.getCallbacks().post(experienceGained);
 			previousExp[idx] = exp;
 		}
+	}
+
+	@Inject
+	@FieldHook("Client_plane")
+	public static void clientPlaneChanged(int idx)
+	{
+		client.getCallbacks().post(new PlaneChanged(client.getPlane()));
 	}
 }
