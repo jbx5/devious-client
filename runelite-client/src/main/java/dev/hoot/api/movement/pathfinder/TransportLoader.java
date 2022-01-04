@@ -269,6 +269,63 @@ public class TransportLoader
 			// Waterbirth island
 			transports.add(npcTransport(new WorldPoint(2544, 3760, 0), new WorldPoint(2620, 3682, 0), 10407, "Rellekka"));
 			transports.add(npcTransport(new WorldPoint(2620, 3682, 0), new WorldPoint(2547, 3759, 0), 5937, "Waterbirth Island"));
+
+			// Fossil Island
+			transports.add(npcTransport(new WorldPoint(3362, 3445, 0),
+					new WorldPoint(3724, 3808, 0),
+					8012,
+					"Quick-Travel"));
+
+			transports.add(objectDialogTransport(new WorldPoint(3724, 3808, 0),
+					new WorldPoint(3362, 3445, 0),
+					30914,
+					"Travel",
+					"Row to the barge and travel to the Digsite."));
+
+			// Motherload Mine
+			if (MLM.contains(Players.getLocal()))
+			{
+				transports.addAll(motherloadMineTransport(new WorldPoint(3726, 5643, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3726, 5654, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3727, 5652, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3727, 5683, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3728, 5651, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3728, 5688, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3731, 5683, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3733, 5680, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3745, 5689, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3748, 5684, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3748, 5689, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3755, 5640, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3756, 5639, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3757, 5677, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3759, 5690, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3762, 5652, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3762, 5668, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3765, 5688, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3766, 5639, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3766, 5647, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3768, 5674, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3768, 5679, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3769, 5642, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3769, 5658, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3769, 5680, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3770, 5659, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3771, 5638, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3762, 5687, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3766, 5670, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3719, 5664, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3720, 5665, 0)));
+			}
+
+			// Corsair's Cove
+			if (Skills.getBoostedLevel(Skill.AGILITY) >= 10)
+			{
+				transports.add(objectTransport(new WorldPoint(2546, 2871, 0), new WorldPoint(2546, 2873, 0), 31757,
+						"Climb"));
+				transports.add(objectTransport(new WorldPoint(2546, 2873, 0), new WorldPoint(2546, 2871, 0), 31757,
+						"Climb"));
+			}
 		}
 
 		// Entrana
@@ -278,54 +335,6 @@ public class TransportLoader
 				new WorldPoint(2822, 9774, 0),
 				1164,
 				"Well that is a risk I will have to take."));
-
-		// Fossil Island
-		transports.add(npcTransport(new WorldPoint(3362, 3445, 0),
-				new WorldPoint(3724, 3808, 0),
-				8012,
-				"Quick-Travel"));
-
-		transports.add(objectDialogTransport(new WorldPoint(3724, 3808, 0),
-				new WorldPoint(3362, 3445, 0),
-				30914,
-				"Travel",
-				"Row to the barge and travel to the Digsite."));
-
-		// Motherload Mine
-		if (MLM.contains(Players.getLocal()))
-		{
-			transports.addAll(motherloadMineTransport(new WorldPoint(3726, 5643, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3726, 5654, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3727, 5652, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3727, 5683, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3728, 5651, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3728, 5688, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3731, 5683, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3733, 5680, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3745, 5689, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3748, 5684, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3748, 5689, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3755, 5640, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3756, 5639, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3757, 5677, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3759, 5690, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3762, 5652, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3762, 5668, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3765, 5688, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3766, 5639, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3766, 5647, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3768, 5674, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3768, 5679, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3769, 5642, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3769, 5658, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3769, 5680, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3770, 5659, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3771, 5638, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3762, 5687, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3766, 5670, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3719, 5664, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3720, 5665, 0)));
-		}
 
 		return List.copyOf(LAST_TRANSPORT_LIST = transports);
 	}
