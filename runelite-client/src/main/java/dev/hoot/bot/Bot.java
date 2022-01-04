@@ -47,7 +47,6 @@ import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.api.Constants;
 import net.runelite.client.ClassPreloader;
-import net.runelite.client.RuneLite;
 import net.runelite.client.RuneLiteProperties;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.rs.ClientLoader;
@@ -57,6 +56,7 @@ import net.runelite.client.ui.overlay.OverlayManager;
 import net.runelite.http.api.RuneLiteAPI;
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
 import okhttp3.Response;
 import org.slf4j.LoggerFactory;
 
@@ -83,9 +83,11 @@ import java.security.cert.X509Certificate;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Stream;
 
 import static java.nio.file.StandardCopyOption.COPY_ATTRIBUTES;
+import static net.runelite.client.RuneLite.USER_AGENT;
 
 @Singleton
 @Slf4j
@@ -254,17 +256,8 @@ public class Bot
 
 		OpenOSRS.preload();
 
-		OkHttpClient.Builder okHttpClientBuilder = RuneLiteAPI.CLIENT.newBuilder();
-		setupCache(okHttpClientBuilder, new File(RuneLite.CACHE_DIR, "okhttp"));
-		setupCache(okHttpClientBuilder, new File(CACHE_DIR, "okhttp"));
-
-		final boolean insecureSkipTlsVerification = options.has("insecure-skip-tls-verification");
-		if (insecureSkipTlsVerification || RuneLiteProperties.isInsecureSkipTlsVerification())
-		{
-			setupInsecureTrustManager(okHttpClientBuilder);
-		}
-
-		final OkHttpClient okHttpClient = okHttpClientBuilder.build();
+		final OkHttpClient okHttpClient = buildHttpClient(options.has("insecure-skip-tls-verification"));
+		RuneLiteAPI.CLIENT = okHttpClient;
 
 		try
 		{
@@ -414,22 +407,40 @@ public class Bot
 	}
 
 	@VisibleForTesting
-	static void setupCache(OkHttpClient.Builder builder, File cacheDir)
+	static OkHttpClient buildHttpClient(boolean insecureSkipTlsVerification)
 	{
-		builder.cache(new Cache(cacheDir, MAX_OKHTTP_CACHE_SIZE))
-			.addNetworkInterceptor(chain ->
-			{
-				// This has to be a network interceptor so it gets hit before the cache tries to store stuff
-				Response res = chain.proceed(chain.request());
-				if (res.code() >= 400 && "GET".equals(res.request().method()))
+		OkHttpClient.Builder builder = new OkHttpClient.Builder()
+				.pingInterval(30, TimeUnit.SECONDS)
+				.addNetworkInterceptor(chain ->
 				{
-					// if the request 404'd we don't want to cache it because its probably temporary
-					res = res.newBuilder()
-						.header("Cache-Control", "no-store")
-						.build();
-				}
-				return res;
-			});
+					Request userAgentRequest = chain.request()
+							.newBuilder()
+							.header("User-Agent", USER_AGENT)
+							.build();
+					return chain.proceed(userAgentRequest);
+				})
+				// Setup cache
+				.cache(new Cache(new File(CACHE_DIR, "okhttp"), MAX_OKHTTP_CACHE_SIZE))
+				.addNetworkInterceptor(chain ->
+				{
+					// This has to be a network interceptor so it gets hit before the cache tries to store stuff
+					Response res = chain.proceed(chain.request());
+					if (res.code() >= 400 && "GET".equals(res.request().method()))
+					{
+						// if the request 404'd we don't want to cache it because its probably temporary
+						res = res.newBuilder()
+								.header("Cache-Control", "no-store")
+								.build();
+					}
+					return res;
+				});
+
+		if (insecureSkipTlsVerification || RuneLiteProperties.isInsecureSkipTlsVerification())
+		{
+			setupInsecureTrustManager(builder);
+		}
+
+		return builder.build();
 	}
 
 	private static void setupInsecureTrustManager(OkHttpClient.Builder okHttpClientBuilder)

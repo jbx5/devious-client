@@ -50,7 +50,7 @@ public class RuneLiteProperties
 	private static final String PLUGINHUB_VERSION = "runelite.pluginhub.version";
 	private static final String API_BASE = "runelite.api.base";
 
-	@Getter(AccessLevel.PACKAGE)
+	@Getter
 	private static final Properties properties = new Properties();
 
 	static

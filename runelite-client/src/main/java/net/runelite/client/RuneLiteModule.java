@@ -76,7 +76,6 @@ import net.runelite.client.util.DeferredEventBus;
 import net.runelite.client.util.ExecutorServiceExceptionLogger;
 import net.runelite.http.api.RuneLiteAPI;
 import okhttp3.HttpUrl;
-import net.runelite.http.api.chat.ChatClient;
 import net.runelite.api.packets.ClientPacket;
 import okhttp3.OkHttpClient;
 import org.slf4j.LoggerFactory;
