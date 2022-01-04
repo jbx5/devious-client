@@ -3,8 +3,8 @@ package dev.hoot.bot.devtools;
 import dev.hoot.api.SceneEntity;
 import dev.hoot.api.entities.Projectiles;
 import dev.hoot.api.entities.TileObjects;
-import dev.hoot.api.movement.Movement;
 import dev.hoot.api.scene.Tiles;
+import dev.hoot.api.utils.DrawUtils;
 import dev.hoot.api.widgets.Widgets;
 import lombok.Getter;
 import lombok.Setter;
@@ -120,12 +120,12 @@ public class EntityRenderer
 
 		if (isCollisionMap())
 		{
-			Movement.drawCollisions(graphics);
+			DrawUtils.drawCollisions(graphics);
 		}
 
 		if (isPath())
 		{
-			Movement.drawPath(graphics, hoveredTile.getWorldLocation());
+			DrawUtils.drawPath(graphics, hoveredTile.getWorldLocation());
 		}
 
 		if (isPlayers())

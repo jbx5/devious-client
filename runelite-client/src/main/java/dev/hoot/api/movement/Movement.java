@@ -4,14 +4,13 @@ import dev.hoot.api.commons.Rand;
 import dev.hoot.api.entities.Players;
 import dev.hoot.api.game.Game;
 import dev.hoot.api.game.Vars;
-import dev.hoot.api.movement.pathfinder.*;
+import dev.hoot.api.movement.pathfinder.BankLocation;
+import dev.hoot.api.movement.pathfinder.Walker;
 import dev.hoot.api.packets.MovementPackets;
 import dev.hoot.api.scene.Tiles;
 import dev.hoot.api.widgets.Widgets;
-import net.runelite.api.Client;
 import net.runelite.api.Locatable;
 import net.runelite.api.MenuAction;
-import net.runelite.api.Perspective;
 import net.runelite.api.Player;
 import net.runelite.api.Point;
 import net.runelite.api.Tile;
@@ -20,11 +19,9 @@ import net.runelite.api.coords.WorldArea;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
-import net.runelite.client.ui.overlay.OverlayUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Iterator;
@@ -33,8 +30,6 @@ import java.util.List;
 public class Movement
 {
 	private static final Logger logger = LoggerFactory.getLogger(Movement.class);
-	private static final Color TILE_BLOCKED_COLOR = new Color(0, 128, 255, 128);
-	private static final Color TRANSPORT_COLOR = new Color(0, 255, 0, 128);
 
 	private static final int STAMINA_VARBIT = 25;
 	private static final int RUN_VARP = 173;
@@ -174,125 +169,6 @@ public class Movement
 	public static boolean isRunEnabled()
 	{
 		return Game.getClient().getVarpValue(RUN_VARP) == 1;
-	}
-
-	public static void drawPath(Graphics2D graphics2D, WorldPoint destination)
-	{
-		drawPath(graphics2D, destination, false);
-	}
-
-	public static void drawPath(Graphics2D graphics2D, WorldPoint destination, boolean localRegion)
-	{
-		Walker.buildPath(destination, localRegion)
-				.forEach(tile -> tile.outline(Game.getClient(), graphics2D, Color.RED, null));
-		destination.outline(Game.getClient(), graphics2D, Color.GREEN, "Destination");
-	}
-
-	public static void drawCollisions(Graphics2D graphics2D, CollisionMap collisionMap)
-	{
-		Client client = Game.getClient();
-		List<Tile> tiles = Tiles.getTiles();
-
-		if (tiles.isEmpty())
-		{
-			return;
-		}
-
-		List<Transport> transports = TransportLoader.buildTransports();
-
-		for (Transport transport : transports)
-		{
-			OverlayUtil.fillTile(graphics2D, client, transport.getSource(), TRANSPORT_COLOR);
-			Point center = Perspective.tileCenter(client, transport.getSource());
-			if (center == null)
-			{
-				continue;
-			}
-
-			Point linkCenter = Perspective.tileCenter(client, transport.getDestination());
-			if (linkCenter == null)
-			{
-				continue;
-			}
-
-			graphics2D.drawLine(center.getX(), center.getY(), linkCenter.getX(), linkCenter.getY());
-		}
-
-		if (collisionMap == null)
-		{
-			return;
-		}
-
-		for (Tile tile : tiles)
-		{
-			Polygon poly = Perspective.getCanvasTilePoly(client, tile.getLocalLocation());
-			if (poly == null)
-			{
-				continue;
-			}
-
-			StringBuilder sb = new StringBuilder("");
-			graphics2D.setColor(Color.WHITE);
-			if (!collisionMap.n(tile.getWorldLocation()))
-			{
-				sb.append("n");
-			}
-
-			if (!collisionMap.s(tile.getWorldLocation()))
-			{
-				sb.append("s");
-			}
-
-			if (!collisionMap.w(tile.getWorldLocation()))
-			{
-				sb.append("w");
-			}
-
-			if (!collisionMap.e(tile.getWorldLocation()))
-			{
-				sb.append("e");
-			}
-
-			String s = sb.toString();
-			if (s.isEmpty())
-			{
-				continue;
-			}
-
-			if (!s.equals("nswe"))
-			{
-				graphics2D.setColor(Color.WHITE);
-				if (s.contains("n"))
-				{
-					graphics2D.drawLine(poly.xpoints[3], poly.ypoints[3], poly.xpoints[2], poly.ypoints[2]);
-				}
-
-				if (s.contains("s"))
-				{
-					graphics2D.drawLine(poly.xpoints[0], poly.ypoints[0], poly.xpoints[1], poly.ypoints[1]);
-				}
-
-				if (s.contains("w"))
-				{
-					graphics2D.drawLine(poly.xpoints[0], poly.ypoints[0], poly.xpoints[3], poly.ypoints[3]);
-				}
-
-				if (s.contains("e"))
-				{
-					graphics2D.drawLine(poly.xpoints[1], poly.ypoints[1], poly.xpoints[2], poly.ypoints[2]);
-				}
-
-				continue;
-			}
-
-			graphics2D.setColor(TILE_BLOCKED_COLOR);
-			graphics2D.fill(poly);
-		}
-	}
-
-	public static void drawCollisions(Graphics2D graphics2D)
-	{
-		drawCollisions(graphics2D, Game.getGlobalCollisionMap());
 	}
 
 	public static void toggleRun()

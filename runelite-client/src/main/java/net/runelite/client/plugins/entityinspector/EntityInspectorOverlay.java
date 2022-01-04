@@ -3,8 +3,8 @@ package net.runelite.client.plugins.entityinspector;
 import dev.hoot.api.Interactable;
 import dev.hoot.api.entities.*;
 import dev.hoot.api.game.GameThread;
-import dev.hoot.api.movement.Movement;
 import dev.hoot.api.scene.Tiles;
+import dev.hoot.api.utils.DrawUtils;
 import dev.hoot.api.widgets.Widgets;
 import net.runelite.api.Point;
 import net.runelite.api.*;
@@ -103,7 +103,7 @@ public class EntityInspectorOverlay extends Overlay
 
 		if (config.path())
 		{
-			Movement.drawPath(g, hoveredTile.getWorldLocation());
+			DrawUtils.drawPath(g, hoveredTile.getWorldLocation());
 		}
 
 		return null;

@@ -1,13 +1,20 @@
 package dev.hoot.api.scene;
 
 import dev.hoot.api.game.Game;
+import dev.hoot.api.widgets.Widgets;
 import net.runelite.api.Client;
 import net.runelite.api.Constants;
+import net.runelite.api.Point;
+import net.runelite.api.RenderOverview;
 import net.runelite.api.Tile;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
+import net.runelite.api.widgets.Widget;
+import net.runelite.api.widgets.WidgetInfo;
 
+import java.awt.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -67,5 +74,39 @@ public class Tiles
 	public static Tile getHoveredTile()
 	{
 		return Game.getClient().getSelectedSceneTile();
+	}
+
+	public static List<WorldPoint> getWorldMapTiles()
+	{
+		Widget worldMap = Widgets.get(WidgetInfo.WORLD_MAP_VIEW);
+		if (worldMap == null)
+		{
+			return Collections.emptyList();
+		}
+
+		List<WorldPoint> out = new ArrayList<>();
+		RenderOverview ro = Game.getClient().getRenderOverview();
+
+		Rectangle worldMapRect = worldMap.getBounds();
+
+		float pixelsPerTile = ro.getWorldMapZoom();
+		int widthInTiles = (int) Math.ceil(worldMapRect.getWidth() / pixelsPerTile);
+		int heightInTiles = (int) Math.ceil(worldMapRect.getHeight() / pixelsPerTile);
+
+		Point worldMapPosition = ro.getWorldMapPosition();
+		int leftX = worldMapPosition.getX() - (widthInTiles / 2);
+		int rightX = leftX + widthInTiles;
+		int topY = worldMapPosition.getY() + (heightInTiles / 2);
+		int bottomY = topY - heightInTiles;
+
+		for (int x = leftX; x < rightX; x++)
+		{
+			for (int y = topY; y >= bottomY; y--)
+			{
+				out.add(new WorldPoint(x, y, 0));
+			}
+		}
+
+		return out;
 	}
 }

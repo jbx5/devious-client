@@ -21,12 +21,34 @@ public interface RegionConfig extends Config
 	}
 
 	@ConfigItem(
-			keyName = "overlay",
+			keyName = "collisionOverlay",
 			name = "Show collision overlay",
 			description = "Show collision overlay",
 			position = 1
 	)
-	default boolean overlay()
+	default boolean collisionOverlay()
+	{
+		return false;
+	}
+
+	@ConfigItem(
+			keyName = "transportsOverlay",
+			name = "Show transports overlay",
+			description = "Show transports overlay",
+			position = 2
+	)
+	default boolean transportsOverlay()
+	{
+		return false;
+	}
+
+	@ConfigItem(
+			keyName = "pathOverlay",
+			name = "Show path overlay",
+			description = "Show path overlay",
+			position = 3
+	)
+	default boolean pathOverlay()
 	{
 		return false;
 	}
@@ -35,7 +57,7 @@ public interface RegionConfig extends Config
 			keyName = "download",
 			name = "Update collision data",
 			description = "Downloads new collision data from the server and updates the currently used collision map",
-			position = 2
+			position = 4
 	)
 	default Button download()
 	{
@@ -46,7 +68,7 @@ public interface RegionConfig extends Config
 			keyName = "transport",
 			name = "Add new transport",
 			description = "Add new transport",
-			position = 3
+			position = 5
 	)
 	default Button transport()
 	{
