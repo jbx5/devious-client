@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2017, Adam <Adam@sigterm.info>
+ * Copyright (c) 2020, Adam <Adam@sigterm.info>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,28 +22,12 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.cache.util;
+package net.runelite.client.game;
 
-import java.util.HashMap;
-import java.util.Map;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.Data;
 
-public class XteaKeyManager
+@Data
+public class NpcInfo
 {
-	private static final Logger logger = LoggerFactory.getLogger(XteaKeyManager.class);
-
-	private Map<Integer, Integer[]> keys = new HashMap<>();
-
-	public void loadKeys()
-	{
-		keys = null;
-
-		logger.info("Loaded {} keys", keys.size());
-	}
-
-	public Integer[] getKeys(int region)
-	{
-		return keys.get(region);
-	}
+	private int hitpoints;
 }

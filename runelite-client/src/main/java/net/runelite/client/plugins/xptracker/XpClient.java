@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2017, Adam <Adam@sigterm.info>
+ * Copyright (c) 2018, Adam <Adam@sigterm.info>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,28 +22,58 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.cache.util;
+package net.runelite.client.plugins.xptracker;
 
-import java.util.HashMap;
-import java.util.Map;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.io.IOException;
+import javax.inject.Inject;
+import javax.inject.Named;
+import lombok.extern.slf4j.Slf4j;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.HttpUrl;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
-public class XteaKeyManager
+@Slf4j
+public class XpClient
 {
-	private static final Logger logger = LoggerFactory.getLogger(XteaKeyManager.class);
+	private final OkHttpClient client;
+	private final HttpUrl apiBase;
 
-	private Map<Integer, Integer[]> keys = new HashMap<>();
-
-	public void loadKeys()
+	@Inject
+	private XpClient(OkHttpClient client, @Named("runelite.api.base") HttpUrl apiBase)
 	{
-		keys = null;
-
-		logger.info("Loaded {} keys", keys.size());
+		this.client = client;
+		this.apiBase = apiBase;
 	}
 
-	public Integer[] getKeys(int region)
+	public void update(String username)
 	{
-		return keys.get(region);
+		HttpUrl url = apiBase.newBuilder()
+			.addPathSegment("xp")
+			.addPathSegment("update")
+			.addQueryParameter("username", username)
+			.build();
+
+		Request request = new Request.Builder()
+			.url(url)
+			.build();
+
+		client.newCall(request).enqueue(new Callback()
+		{
+			@Override
+			public void onFailure(Call call, IOException e)
+			{
+				log.warn("Error submitting xp track", e);
+			}
+
+			@Override
+			public void onResponse(Call call, Response response)
+			{
+				response.close();
+				log.debug("Submitted xp track for {}", username);
+			}
+		});
 	}
 }

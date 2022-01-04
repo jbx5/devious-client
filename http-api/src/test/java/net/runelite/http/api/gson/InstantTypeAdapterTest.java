@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2017, Adam <Adam@sigterm.info>
+ * Copyright (c) 2021 Abex
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,28 +22,33 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.cache.util;
+package net.runelite.http.api.gson;
 
-import java.util.HashMap;
-import java.util.Map;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.time.Instant;
+import net.runelite.http.api.RuneLiteAPI;
+import org.junit.Assert;
+import org.junit.Test;
 
-public class XteaKeyManager
+public class InstantTypeAdapterTest
 {
-	private static final Logger logger = LoggerFactory.getLogger(XteaKeyManager.class);
-
-	private Map<Integer, Integer[]> keys = new HashMap<>();
-
-	public void loadKeys()
+	@Test
+	public void test()
 	{
-		keys = null;
-
-		logger.info("Loaded {} keys", keys.size());
+		test("null", null, true);
+		test("{\"seconds\":1609538310,\"nanos\":291000000}", Instant.ofEpochSecond(1609538310, 291_000_000), false);
+		test("1609538310291", Instant.ofEpochSecond(1609538310, 291_000_000), true);
 	}
 
-	public Integer[] getKeys(int region)
+	private void test(String json, Instant object, boolean exactEncoding)
 	{
-		return keys.get(region);
+		Instant parsed = RuneLiteAPI.GSON.fromJson(json, Instant.class);
+		Assert.assertEquals(object, parsed);
+		String serialized = RuneLiteAPI.GSON.toJson(object);
+		if (exactEncoding)
+		{
+			Assert.assertEquals(json, serialized);
+		}
+		Instant roundTripped = RuneLiteAPI.GSON.fromJson(serialized, Instant.class);
+		Assert.assertEquals(object, roundTripped);
 	}
 }
