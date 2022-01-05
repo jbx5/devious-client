@@ -4,6 +4,7 @@ import net.runelite.client.config.Button;
 import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
+import net.runelite.client.config.Range;
 
 @ConfigGroup("regions")
 public interface RegionConfig extends Config
@@ -20,11 +21,23 @@ public interface RegionConfig extends Config
 		return "";
 	}
 
+	@Range(max = 3)
+	@ConfigItem(
+			keyName = "collisionOverlayPlane",
+			name = "Collision overlay plane",
+			description = "Collision overlay plane",
+			position = 1
+	)
+	default int collisionOverlayPlane()
+	{
+		return 0;
+	}
+
 	@ConfigItem(
 			keyName = "collisionOverlay",
 			name = "Show collision overlay",
 			description = "Show collision overlay",
-			position = 1
+			position = 2
 	)
 	default boolean collisionOverlay()
 	{
@@ -35,7 +48,7 @@ public interface RegionConfig extends Config
 			keyName = "transportsOverlay",
 			name = "Show transports overlay",
 			description = "Show transports overlay",
-			position = 2
+			position = 3
 	)
 	default boolean transportsOverlay()
 	{
@@ -46,7 +59,7 @@ public interface RegionConfig extends Config
 			keyName = "pathOverlay",
 			name = "Show path overlay",
 			description = "Show path overlay",
-			position = 3
+			position = 4
 	)
 	default boolean pathOverlay()
 	{
@@ -57,7 +70,7 @@ public interface RegionConfig extends Config
 			keyName = "download",
 			name = "Update collision data",
 			description = "Downloads new collision data from the server and updates the currently used collision map",
-			position = 4
+			position = 5
 	)
 	default Button download()
 	{
@@ -68,7 +81,7 @@ public interface RegionConfig extends Config
 			keyName = "transport",
 			name = "Add new transport",
 			description = "Add new transport",
-			position = 5
+			position = 6
 	)
 	default Button transport()
 	{

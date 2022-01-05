@@ -326,6 +326,19 @@ public class TransportLoader
 				transports.add(objectTransport(new WorldPoint(2546, 2873, 0), new WorldPoint(2546, 2871, 0), 31757,
 						"Climb"));
 			}
+
+			// Digsite gate
+			if (false)
+			{
+				transports.add(objectTransport(new WorldPoint(3295, 3429, 0), new WorldPoint(3296, 3429, 0), 24561,
+						"Open"));
+				transports.add(objectTransport(new WorldPoint(3296, 3429, 0), new WorldPoint(3295, 3429, 0), 24561,
+						"Open"));
+				transports.add(objectTransport(new WorldPoint(3295, 3428, 0), new WorldPoint(3296, 3428, 0), 24561,
+						"Open"));
+				transports.add(objectTransport(new WorldPoint(3296, 3428, 0), new WorldPoint(3295, 3428, 0), 24561,
+						"Open"));
+			}
 		}
 
 		// Entrana

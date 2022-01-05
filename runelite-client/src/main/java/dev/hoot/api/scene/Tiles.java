@@ -76,7 +76,7 @@ public class Tiles
 		return Game.getClient().getSelectedSceneTile();
 	}
 
-	public static List<WorldPoint> getWorldMapTiles()
+	public static List<WorldPoint> getWorldMapTiles(int plane)
 	{
 		Widget worldMap = Widgets.get(WidgetInfo.WORLD_MAP_VIEW);
 		if (worldMap == null)
@@ -103,7 +103,7 @@ public class Tiles
 		{
 			for (int y = topY; y >= bottomY; y--)
 			{
-				out.add(new WorldPoint(x, y, 0));
+				out.add(new WorldPoint(x, y, plane));
 			}
 		}
 

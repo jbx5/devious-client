@@ -86,7 +86,7 @@ public class RegionOverlay extends Overlay
 
 			if (regionConfig.collisionOverlay())
 			{
-				List<WorldPoint> worldMapTiles = Tiles.getWorldMapTiles();
+				List<WorldPoint> worldMapTiles = Tiles.getWorldMapTiles(regionConfig.collisionOverlayPlane());
 				for (WorldPoint worldMapTile : worldMapTiles)
 				{
 					if (worldMapTile != null && collisionMap.fullBlock(worldMapTile))
