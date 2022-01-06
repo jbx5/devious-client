@@ -132,7 +132,7 @@ public class TransportLoader
 		}
 
 		// Lumbridge castle dining room, ignore if RFD is in progress.
-		if (!Quest.RECIPE_FOR_DISASTER.getState().equals(QuestState.IN_PROGRESS))
+		if (Quest.RECIPE_FOR_DISASTER.getState() != QuestState.IN_PROGRESS)
 		{
 			transports.add(objectTransport(new WorldPoint(3213, 3221, 0), new WorldPoint(3212, 3221, 0), 12349, "Open"));
 			transports.add(objectTransport(new WorldPoint(3212, 3221, 0), new WorldPoint(3213, 3221, 0), 12349, "Open"));
@@ -218,11 +218,11 @@ public class TransportLoader
 			transports.add(npcTransport(new WorldPoint(1824, 3691, 0), new WorldPoint(3055, 3242, 1), 10727, "Port Sarim"));
 
 			// Spirit Trees
-			if (Quest.TREE_GNOME_VILLAGE.getState().equals(QuestState.FINISHED))
+			if (Quest.TREE_GNOME_VILLAGE.getState() == QuestState.FINISHED)
 			{
 				for (var source : SPIRIT_TREES)
 				{
-					if (source.location.equals("Gnome Stronghold") && Quest.THE_GRAND_TREE.getState().equals(QuestState.FINISHED))
+					if (source.location.equals("Gnome Stronghold") && Quest.THE_GRAND_TREE.getState() == QuestState.FINISHED)
 					{
 						continue;
 					}
@@ -250,7 +250,7 @@ public class TransportLoader
 					"Sorry, I'm a bit busy."));
 
 			// Tree Gnome Village
-			if (Vars.getVarp(QuestVarPlayer.QUEST_TREE_GNOME_VILLAGE.getId()) > 0)
+			if (Quest.TREE_GNOME_VILLAGE.getState() != QuestState.NOT_STARTED)
 			{
 				transports.add(npcTransport(new WorldPoint(2504, 3192, 0), new WorldPoint(2515, 3159, 0), 4968, "Follow"));
 				transports.add(npcTransport(new WorldPoint(2515, 3159, 0), new WorldPoint(2504, 3192, 0), 4968, "Follow"));
@@ -267,7 +267,7 @@ public class TransportLoader
 			}
 
 			// Waterbirth island
-			if (Quest.THE_FREMENNIK_TRIALS.getState().equals(QuestState.FINISHED) || gold >= 1000) {
+			if (Quest.THE_FREMENNIK_TRIALS.getState() == QuestState.FINISHED || gold >= 1000) {
 				transports.add(npcTransport(new WorldPoint(2544, 3760, 0), new WorldPoint(2620, 3682, 0), 10407, "Rellekka"));
 				transports.add(npcTransport(new WorldPoint(2620, 3682, 0), new WorldPoint(2547, 3759, 0), 5937, "Waterbirth Island"));
 			}
