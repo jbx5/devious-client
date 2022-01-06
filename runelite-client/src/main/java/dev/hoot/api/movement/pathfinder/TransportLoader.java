@@ -9,10 +9,13 @@ import dev.hoot.api.game.Worlds;
 import dev.hoot.api.items.Inventory;
 import dev.hoot.api.movement.Movement;
 import dev.hoot.api.movement.Reachable;
+import dev.hoot.api.quests.Quest;
+import dev.hoot.api.quests.QuestVarPlayer;
 import dev.hoot.api.widgets.Dialog;
 import dev.hoot.api.widgets.Widgets;
 import net.runelite.api.Item;
 import net.runelite.api.NPC;
+import net.runelite.api.QuestState;
 import net.runelite.api.Skill;
 import net.runelite.api.TileObject;
 import net.runelite.api.coords.Direction;
@@ -32,9 +35,6 @@ import static net.runelite.api.MenuAction.WIDGET_TYPE_6;
 
 public class TransportLoader
 {
-	private static final int TREE_GNOME_VILLAGE_VARBIT = 111;
-	private static final int GRAND_TREE_VARBIT = 150;
-	private static final int RFD_VARBIT = 1850;
 	private static final int BUILD_DELAY_SECONDS = 5;
 	private static Instant lastBuild = Instant.now().minusSeconds(6);
 	private static final List<Transport> STATIC_TRANSPORTS = new ArrayList<>();
@@ -132,7 +132,7 @@ public class TransportLoader
 		}
 
 		// Lumbridge castle dining room, ignore if RFD is in progress.
-		if (Vars.getBit(RFD_VARBIT) == -1)
+		if (Quest.RECIPE_FOR_DISASTER.getState() != QuestState.IN_PROGRESS)
 		{
 			transports.add(objectTransport(new WorldPoint(3213, 3221, 0), new WorldPoint(3212, 3221, 0), 12349, "Open"));
 			transports.add(objectTransport(new WorldPoint(3212, 3221, 0), new WorldPoint(3213, 3221, 0), 12349, "Open"));
@@ -218,11 +218,11 @@ public class TransportLoader
 			transports.add(npcTransport(new WorldPoint(1824, 3691, 0), new WorldPoint(3055, 3242, 1), 10727, "Port Sarim"));
 
 			// Spirit Trees
-			if (Vars.getVarp(TREE_GNOME_VILLAGE_VARBIT) == 9)
+			if (Quest.TREE_GNOME_VILLAGE.getState() == QuestState.FINISHED)
 			{
 				for (var source : SPIRIT_TREES)
 				{
-					if (source.location.equals("Gnome Stronghold") && Vars.getVarp(GRAND_TREE_VARBIT) < 160)
+					if (source.location.equals("Gnome Stronghold") && Quest.THE_GRAND_TREE.getState() == QuestState.FINISHED)
 					{
 						continue;
 					}
@@ -250,7 +250,7 @@ public class TransportLoader
 					"Sorry, I'm a bit busy."));
 
 			// Tree Gnome Village
-			if (Vars.getVarp(111) > 0)
+			if (Quest.TREE_GNOME_VILLAGE.getState() != QuestState.NOT_STARTED)
 			{
 				transports.add(npcTransport(new WorldPoint(2504, 3192, 0), new WorldPoint(2515, 3159, 0), 4968, "Follow"));
 				transports.add(npcTransport(new WorldPoint(2515, 3159, 0), new WorldPoint(2504, 3192, 0), 4968, "Follow"));
@@ -267,8 +267,10 @@ public class TransportLoader
 			}
 
 			// Waterbirth island
-			transports.add(npcTransport(new WorldPoint(2544, 3760, 0), new WorldPoint(2620, 3682, 0), 10407, "Rellekka"));
-			transports.add(npcTransport(new WorldPoint(2620, 3682, 0), new WorldPoint(2547, 3759, 0), 5937, "Waterbirth Island"));
+			if (Quest.THE_FREMENNIK_TRIALS.getState() == QuestState.FINISHED || gold >= 1000) {
+				transports.add(npcTransport(new WorldPoint(2544, 3760, 0), new WorldPoint(2620, 3682, 0), 10407, "Rellekka"));
+				transports.add(npcTransport(new WorldPoint(2620, 3682, 0), new WorldPoint(2547, 3759, 0), 5937, "Waterbirth Island"));
+			}
 
 			// Fossil Island
 			transports.add(npcTransport(new WorldPoint(3362, 3445, 0),
