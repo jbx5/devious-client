@@ -76,9 +76,9 @@ public class GameSettings
 
 	public enum Audio
 	{
-		MUSIC(() -> Widgets.get(116, 39), VarPlayer.MUSIC_VOLUME.getId()),
-		EFFECTS(() -> Widgets.get(116, 53), VarPlayer.SOUND_EFFECT_VOLUME.getId()),
-		AREA(() -> Widgets.get(116, 67), VarPlayer.AREA_EFFECT_VOLUME.getId());
+		MUSIC(() -> Widgets.get(116, 41), VarPlayer.MUSIC_VOLUME.getId()),
+		EFFECTS(() -> Widgets.get(116, 55), VarPlayer.SOUND_EFFECT_VOLUME.getId()),
+		AREA(() -> Widgets.get(116, 69), VarPlayer.AREA_EFFECT_VOLUME.getId());
 
 		private final Supplier<Widget> widgetSupplier;
 		private final int levelVarp;

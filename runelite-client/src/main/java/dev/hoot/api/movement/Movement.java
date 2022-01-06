@@ -168,7 +168,7 @@ public class Movement
 
 	public static boolean isRunEnabled()
 	{
-		return Game.getClient().getVarpValue(RUN_VARP) == 1;
+		return Vars.getVarp(RUN_VARP) == 1;
 	}
 
 	public static void toggleRun()

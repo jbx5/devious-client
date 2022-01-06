@@ -328,7 +328,7 @@ public class TransportLoader
 			}
 
 			// Digsite gate
-			if (false)
+			if (Vars.getBit(3637) >= 153)
 			{
 				transports.add(objectTransport(new WorldPoint(3295, 3429, 0), new WorldPoint(3296, 3429, 0), 24561,
 						"Open"));
