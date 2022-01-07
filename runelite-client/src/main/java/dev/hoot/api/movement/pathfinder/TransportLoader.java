@@ -10,7 +10,6 @@ import dev.hoot.api.items.Inventory;
 import dev.hoot.api.movement.Movement;
 import dev.hoot.api.movement.Reachable;
 import dev.hoot.api.quests.Quest;
-import dev.hoot.api.quests.QuestVarPlayer;
 import dev.hoot.api.widgets.Dialog;
 import dev.hoot.api.widgets.Widgets;
 import net.runelite.api.Item;
@@ -28,7 +27,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.time.Instant;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import static net.runelite.api.MenuAction.WIDGET_TYPE_6;
@@ -267,7 +271,8 @@ public class TransportLoader
 			}
 
 			// Waterbirth island
-			if (Quest.THE_FREMENNIK_TRIALS.getState() == QuestState.FINISHED || gold >= 1000) {
+			if (Quest.THE_FREMENNIK_TRIALS.getState() == QuestState.FINISHED || gold >= 1000)
+			{
 				transports.add(npcTransport(new WorldPoint(2544, 3760, 0), new WorldPoint(2620, 3682, 0), 10407, "Rellekka"));
 				transports.add(npcTransport(new WorldPoint(2620, 3682, 0), new WorldPoint(2547, 3759, 0), 5937, "Waterbirth Island"));
 			}
