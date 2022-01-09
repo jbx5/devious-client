@@ -76,4 +76,8 @@ tasks {
         filter(ReplaceTokens::class, "tokens" to tokens)
         filteringCharset = "UTF-8"
     }
+
+    test {
+        maxHeapSize = "16192m"
+    }
 }
