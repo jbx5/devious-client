@@ -5,6 +5,7 @@ import dev.hoot.bot.script.BotScript;
 import dev.hoot.bot.script.ScriptEntry;
 import dev.hoot.bot.script.ScriptMeta;
 import dev.hoot.bot.script.ScriptThread;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.inject.Singleton;
 import java.io.File;
@@ -16,6 +17,7 @@ import java.util.List;
 import java.util.jar.JarFile;
 
 @Singleton
+@Slf4j
 public class ScriptManager
 {
 	private String[] args = null;
@@ -75,9 +77,9 @@ public class ScriptManager
 							Class<? extends BotScript> scriptClass = (Class<? extends BotScript>) clazz;
 							scripts.add(new ScriptEntry(scriptClass, scriptClass.getAnnotationsByType(ScriptMeta.class)[0]));
 						}
-						catch (Exception e)
+						catch (Exception | NoClassDefFoundError e)
 						{
-							e.printStackTrace();
+							log.error("Failed to load class: " + name, e.getMessage());
 						}
 					}
 				}
