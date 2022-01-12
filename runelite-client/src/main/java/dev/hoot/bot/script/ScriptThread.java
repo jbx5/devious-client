@@ -6,10 +6,13 @@ import dev.hoot.bot.Bot;
 import dev.hoot.bot.script.events.ScriptChanged;
 import dev.hoot.bot.script.events.ScriptState;
 import net.runelite.api.GameState;
+import net.runelite.api.events.GameTick;
+import net.runelite.client.eventbus.Subscribe;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class ScriptThread extends Thread
 {
@@ -18,6 +21,7 @@ public class ScriptThread extends Thread
 	private final BotScript botScript;
 
 	private boolean onLogin;
+	private final AtomicInteger ticks = new AtomicInteger(0);
 
 	public ScriptThread(ScriptEntry scriptEntry, String... startArgs)
 			throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException
@@ -33,6 +37,7 @@ public class ScriptThread extends Thread
 		{
 			Events.clear();
 			Events.subscribe(botScript);
+			Events.subscribe(this);
 			Bot.getInjector().injectMembers(botScript);
 			botScript.getPaint().clear();
 
@@ -73,8 +78,8 @@ public class ScriptThread extends Thread
 
 					if (loopSleep < 0)
 					{
-						int startTicks = Game.getClient().getTickCount();
-						Time.sleepUntil(() -> Game.getClient().getTickCount() - startTicks >= Math.abs(loopSleep), 10, 30_000);
+						int startTicks = ticks.get();
+						Time.sleepUntil(() -> ticks.get() - startTicks >= Math.abs(loopSleep), 10, 30_000);
 					}
 					else
 					{
@@ -98,6 +103,12 @@ public class ScriptThread extends Thread
 			log.error("RS Crashed!!", e);
 			System.exit(0);
 		}
+	}
+
+	@Subscribe
+	public void onGameTick(GameTick event)
+	{
+		ticks.incrementAndGet();
 	}
 
 	public BotScript getScript()

@@ -29,6 +29,18 @@ public interface InteractionConfig extends Config
 	}
 
 	@ConfigItem(
+			keyName = "hoverClick",
+			name = "Hover click",
+			description = "Spoofs the hovered entity and sends a real click",
+			section = interactionManager,
+			position = 0
+	)
+	default boolean hoverClick()
+	{
+		return true;
+	}
+
+	@ConfigItem(
 			keyName = "interactType",
 			name = "Interact click type",
 			description = "Type of clicks to send to the server",

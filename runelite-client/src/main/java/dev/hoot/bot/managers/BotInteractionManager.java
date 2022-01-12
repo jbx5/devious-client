@@ -81,7 +81,7 @@ public class BotInteractionManager
 			mouseClickX = clickPoint.x;
 			mouseClickY = clickPoint.y;
 			mouseHandler.sendMovement(mouseClickX, mouseClickY);
-			mouseHandler.sendClick(mouseClickX, mouseClickY);
+			mouseHandler.sendClick(mouseClickX, mouseClickY, 1337);
 			InputManager.Companion.setLastClickX(mouseClickX);
 			InputManager.Companion.setLastClickY(mouseClickY);
 			InputManager.Companion.setLastMovedX(mouseClickX);

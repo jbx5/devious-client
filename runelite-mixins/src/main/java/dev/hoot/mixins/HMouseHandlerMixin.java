@@ -23,9 +23,9 @@ public abstract class HMouseHandlerMixin implements RSMouseHandler
 		 * both the mouserecorder and the click packet are properly sent. If rev updates remove this added condition,
 		 * make sure to re-add it.
 		 */
-		if (button == 1)
+		if (button == 1337)
 		{
-			btn = 1337;
+			btn = 1;
 		}
 
 		client.setFocused(true);
@@ -33,11 +33,11 @@ public abstract class HMouseHandlerMixin implements RSMouseHandler
 		setLastPressedX(correctX(x));
 		setLastPressedY(correctY(y));
 		setLastPressedMillis(client.getCurrentTime());
-		setLastButton(btn);
+		setLastButton(button);
 
 		if (getLastButton() != 0)
 		{
-			setCurrentButton(button);
+			setCurrentButton(btn);
 		}
 	}
 

@@ -10,6 +10,7 @@ import dev.hoot.api.widgets.DialogOption;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.api.MenuAction;
+import net.runelite.api.MenuEntry;
 import net.runelite.api.events.DialogProcessed;
 import net.runelite.api.events.MenuOptionClicked;
 import net.runelite.client.eventbus.Subscribe;
@@ -78,8 +79,25 @@ public class InteractionManager
 			Point randomPoint = getClickPoint(e);
 			mouseClickX = randomPoint.x;
 			mouseClickY = randomPoint.y;
+			long tag = e.getEntityTag();
+			if (config.hoverClick() && tag != -1337)
+			{
+				long[] entitiesAtMouse = client.getEntitiesAtMouse();
+				int count = client.getEntitiesAtMouseCount();
+				if (count < 1000)
+				{
+					entitiesAtMouse[count] = tag;
+					client.setEntitiesAtMouseCount(count + 1);
+					client.setMenuEntries(new MenuEntry[]{e.toMenuEntry(client)});
+					mouseHandler.sendMovement(mouseClickX, mouseClickY);
+					mouseHandler.sendClick(mouseClickX, mouseClickY);
+				}
+
+				return;
+			}
+
 			mouseHandler.sendMovement(mouseClickX, mouseClickY);
-			mouseHandler.sendClick(mouseClickX, mouseClickY);
+			mouseHandler.sendClick(mouseClickX, mouseClickY, 1337);
 			processAction(e, mouseClickX, mouseClickY);
 		}
 	}

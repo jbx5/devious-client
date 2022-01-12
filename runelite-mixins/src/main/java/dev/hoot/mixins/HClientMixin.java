@@ -56,10 +56,10 @@ public abstract class HClientMixin implements RSClient
 	@Inject
 	@Override
 	public void interact(final int identifier, final int opcode, final int param0, final int param1,
-						 final int screenX, final int screenY)
+						 final int screenX, final int screenY, long entityTag)
 	{
 		AutomatedInteraction event = new AutomatedInteraction("Automated", "", identifier, MenuAction.of(opcode),
-				param0, param1, screenX, screenY);
+				param0, param1, screenX, screenY, entityTag);
 
 		client.getCallbacks().post(event);
 	}

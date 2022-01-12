@@ -125,7 +125,7 @@ public abstract class HNpcMixin implements RSNPC
 		int x = screenCoords != null ? screenCoords.getX() : -1;
 		int y = screenCoords != null ? screenCoords.getY() : -1;
 
-		client.interact(identifier, opcode, param0, param1, x, y);
+		client.interact(identifier, opcode, param0, param1, x, y, getTag());
 	}
 
 	@Inject
