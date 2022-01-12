@@ -105,7 +105,6 @@ public class Bot
 	private static final int MAX_OKHTTP_CACHE_SIZE = 20 * 1024 * 1024; // 20mb
 
 	public static GameAccount gameAccount = null;
-	public static boolean idleChecks = true;
 
 	@Getter
 	private static Injector injector;

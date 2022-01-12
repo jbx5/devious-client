@@ -3,6 +3,7 @@ package dev.hoot.bot.managers
 import dev.hoot.api.game.Game
 import dev.hoot.api.input.Keyboard
 import dev.hoot.bot.Bot
+import dev.hoot.bot.config.BotConfig
 import dev.hoot.bot.config.DisableRenderCallbacks
 import dev.hoot.bot.managers.interaction.InteractionConfig
 import dev.hoot.bot.script.events.ScriptChanged
@@ -36,6 +37,7 @@ class EventManager @Inject constructor(
         private val scriptManager: ScriptManager,
         private val fpsManager: FpsManager,
         private val interactConfig: InteractionConfig,
+        private val botConfig: BotConfig,
         drawManager: DrawManager,
 ) {
     private val random = Random()
@@ -55,7 +57,7 @@ class EventManager @Inject constructor(
     @Suppress("UNUSED_PARAMETER")
     @Subscribe
     private fun onGameTick(e: GameTick) {
-        if (!Bot.idleChecks) {
+        if (!botConfig.neverLog()) {
             return
         }
 

@@ -42,13 +42,25 @@ public interface BotConfig extends Config
 	}
 
 	@ConfigItem(
-			position = 5,
+			position = 2,
 			keyName = "minimized",
 			name = "Start minimized",
 			description = "Start minimized",
 			section = optionsSection
 	)
 	default boolean minimized()
+	{
+		return false;
+	}
+
+	@ConfigItem(
+			position = 3,
+			keyName = "neverLog",
+			name = "Neverlog",
+			description = "Skips idle checks",
+			section = optionsSection
+	)
+	default boolean neverLog()
 	{
 		return true;
 	}
