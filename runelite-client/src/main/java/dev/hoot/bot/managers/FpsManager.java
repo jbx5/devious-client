@@ -1,5 +1,8 @@
 package dev.hoot.bot.managers;
 
+import javax.inject.Singleton;
+
+@Singleton
 public class FpsManager implements Runnable
 {
 	private static final int SAMPLE_SIZE = 4;

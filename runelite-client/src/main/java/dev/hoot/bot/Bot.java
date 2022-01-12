@@ -32,7 +32,9 @@ import com.google.inject.Inject;
 import com.google.inject.Injector;
 import com.openosrs.client.OpenOSRS;
 import dev.hoot.bot.account.GameAccount;
+import dev.hoot.bot.config.BotConfig;
 import dev.hoot.bot.managers.EventManager;
+import dev.hoot.bot.managers.FpsManager;
 import dev.hoot.bot.managers.ScriptManager;
 import dev.hoot.bot.managers.interaction.InteractionManager;
 import dev.hoot.bot.script.ScriptEntry;
@@ -51,6 +53,7 @@ import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.rs.ClientLoader;
 import net.runelite.client.rs.ClientUpdateCheckMode;
+import net.runelite.client.ui.DrawManager;
 import net.runelite.client.ui.FatalErrorDialog;
 import net.runelite.client.ui.overlay.OverlayManager;
 import net.runelite.http.api.RuneLiteAPI;
@@ -80,9 +83,7 @@ import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.cert.X509Certificate;
-import java.util.HashMap;
 import java.util.Locale;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Stream;
 
@@ -99,8 +100,6 @@ public class Bot
 	public static final File DEFAULT_CONFIG_FILE = new File(BOT_DIR, "settings.properties");
 	public static final File DATA_DIR = new File(BOT_DIR, "data");
 	public static final File SCRIPTS_DIR = new File(BOT_DIR, "scripts");
-	public static final File CONFIG_FILE = new File(BOT_DIR, "hoot.properties");
-	public static final Map<String, File> CONFIG_FILES = new HashMap<>();
 
 	private static final int MAX_OKHTTP_CACHE_SIZE = 20 * 1024 * 1024; // 20mb
 
@@ -144,6 +143,15 @@ public class Bot
 	@Inject
 	private InteractionManager interactionManager;
 
+	@Inject
+	private DrawManager drawManager;
+
+	@Inject
+	private FpsManager fpsManager;
+
+	@Inject
+	private BotConfig botConfig;
+
 	public static void main(String[] args) throws Exception
 	{
 		Locale.setDefault(Locale.ENGLISH);
@@ -167,11 +175,6 @@ public class Bot
 			.withRequiredArg()
 			.withValuesConvertedBy(new ConfigFileConverter())
 			.defaultsTo(DEFAULT_CONFIG_FILE);
-
-		final ArgumentAcceptingOptionSpec<File> hootConfigFile = parser.accepts("hoot", "Use a specified config file")
-				.withRequiredArg()
-				.withValuesConvertedBy(new ConfigFileConverter())
-				.defaultsTo(CONFIG_FILE);
 
 		var accInfo = parser
 				.accepts("account")
@@ -274,9 +277,6 @@ public class Bot
 
 			final long start = System.currentTimeMillis();
 
-			CONFIG_FILES.put("hoot", options.valueOf(hootConfigFile));
-			CONFIG_FILES.put("runelite", options.valueOf(configfile));
-
 			injector = Guice.createInjector(new BotModule(
 				okHttpClient,
 				clientLoader,
@@ -336,6 +336,8 @@ public class Bot
 		configManager.load();
 
 		botToolbar.init();
+		drawManager.registerEveryFrameListener(fpsManager);
+		fpsManager.reloadConfig(botConfig.fpsLimit());
 		eventBus.register(botToolbar);
 		eventBus.register(eventManager);
 		eventBus.register(interactionManager);

@@ -10,15 +10,13 @@ import dev.hoot.api.widgets.DialogOption;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.api.MenuAction;
-import net.runelite.api.MenuEntry;
 import net.runelite.api.events.DialogProcessed;
 import net.runelite.api.events.MenuOptionClicked;
 import net.runelite.client.eventbus.Subscribe;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import java.awt.Point;
-import java.awt.Rectangle;
+import java.awt.*;
 
 @Singleton
 @Slf4j
@@ -45,11 +43,12 @@ public class InteractionManager
 				+ " | ID=" + e.getIdentifier()
 				+ " | OP=" + e.getOpcode()
 				+ " | P0=" + e.getParam0()
-				+ " | P1=" + e.getParam1();
+				+ " | P1=" + e.getParam1()
+				+ " | TAG=" + e.getEntityTag();
 
 		if (config.debugInteractions())
 		{
-			log.info("[Bot Action] {}", debug);
+			log.info("[Automated] {}", debug);
 		}
 
 		if (config.mouseEvents())
@@ -79,23 +78,6 @@ public class InteractionManager
 			Point randomPoint = getClickPoint(e);
 			mouseClickX = randomPoint.x;
 			mouseClickY = randomPoint.y;
-			long tag = e.getEntityTag();
-			if (config.hoverClick() && tag != -1337)
-			{
-				long[] entitiesAtMouse = client.getEntitiesAtMouse();
-				int count = client.getEntitiesAtMouseCount();
-				if (count < 1000)
-				{
-					entitiesAtMouse[count] = tag;
-					client.setEntitiesAtMouseCount(count + 1);
-					client.setMenuEntries(new MenuEntry[]{e.toMenuEntry(client)});
-					mouseHandler.sendMovement(mouseClickX, mouseClickY);
-					mouseHandler.sendClick(mouseClickX, mouseClickY);
-				}
-
-				return;
-			}
-
 			mouseHandler.sendMovement(mouseClickX, mouseClickY);
 			mouseHandler.sendClick(mouseClickX, mouseClickY, 1337);
 			processAction(e, mouseClickX, mouseClickY);
@@ -128,7 +110,7 @@ public class InteractionManager
 					+ " | OP=" + e.getMenuAction().getId()
 					+ " | P0=" + e.getParam0()
 					+ " | P1=" + e.getParam1();
-			log.info("[Manual Action] {}", action);
+			log.info("[Menu Action] {}", action);
 		}
 
 		reset();
@@ -170,7 +152,7 @@ public class InteractionManager
 	{
 		if (config.interactType() == InteractType.OFF_SCREEN)
 		{
-			return new Point(0, 0);
+			return new Point(5, 5);
 		}
 
 		if (config.interactType() == InteractType.MOUSE_POS)

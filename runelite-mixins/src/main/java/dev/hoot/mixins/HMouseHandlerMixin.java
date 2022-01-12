@@ -17,15 +17,9 @@ public abstract class HMouseHandlerMixin implements RSMouseHandler
 	public void sendClick(int x, int y, int button)
 	{
 		int btn = button;
-		/*
-		 * Set the button to 1337 so the client doesn't process it as click in the next cycle.
-		 * Adding an extra condition in osrs/Client.java L: 3828 where checking for lastButton == 1337 makes it so that
-		 * both the mouserecorder and the click packet are properly sent. If rev updates remove this added condition,
-		 * make sure to re-add it.
-		 */
 		if (button == 1337)
 		{
-			btn = 1;
+			btn = 4;
 		}
 
 		client.setFocused(true);
@@ -33,7 +27,7 @@ public abstract class HMouseHandlerMixin implements RSMouseHandler
 		setLastPressedX(correctX(x));
 		setLastPressedY(correctY(y));
 		setLastPressedMillis(client.getCurrentTime());
-		setLastButton(button);
+		setLastButton(btn);
 
 		if (getLastButton() != 0)
 		{

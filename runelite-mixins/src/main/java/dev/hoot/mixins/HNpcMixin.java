@@ -154,4 +154,10 @@ public abstract class HNpcMixin implements RSNPC
 	{
 		return Perspective.localToCanvas(client, getLocalLocation(), client.getPlane());
 	}
+
+	@Inject
+	public long getTag()
+	{
+		return client.calculateTag(0, 0, 1, getComposition().isInteractible(), getIndex());
+	}
 }

@@ -152,4 +152,11 @@ public abstract class HTileObjectMixin implements TileObject
 	{
 		interact(getId(), menuAction, menuPoint().getX(), menuPoint().getY());
 	}
+
+	@Inject
+	@Override
+	public long getTag()
+	{
+		return getHash();
+	}
 }

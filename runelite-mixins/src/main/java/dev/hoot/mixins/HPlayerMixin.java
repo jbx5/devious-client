@@ -111,4 +111,11 @@ public abstract class HPlayerMixin extends RSPlayerMixin implements RSPlayer
 		return (getIdlePoseAnimation() == getPoseAnimation() && getAnimation() == -1)
 				&& (getInteracting() == null || getInteracting().isDead());
 	}
+
+	@Inject
+	@Override
+	public long getTag()
+	{
+		return client.calculateTag(0, 0, 0, false, getIndex());
+	}
 }

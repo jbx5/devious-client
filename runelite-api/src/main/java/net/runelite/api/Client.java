@@ -2474,4 +2474,20 @@ public interface Client extends GameEngine
 	int getEntitiesAtMouseCount();
 
 	void setEntitiesAtMouseCount(int count);
+
+	long calculateTag(int var0, int var1, int var2, boolean var3, int var4);
+
+	String[] getMenuOptions();
+
+	String[] getMenuTargets();
+
+	int[] getMenuIdentifiers();
+
+	int[] getMenuOpcodes();
+
+	int[] getMenuArguments1();
+
+	int[] getMenuArguments2();
+
+	void setMenuOpen(boolean open);
 }

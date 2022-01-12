@@ -1,6 +1,5 @@
 package dev.hoot.bot.ui;
 
-import dev.hoot.bot.Bot;
 import dev.hoot.bot.config.BotConfig;
 import dev.hoot.bot.config.ConfigPanel;
 import dev.hoot.bot.config.ConfigurationDescriptor;
@@ -12,6 +11,7 @@ import dev.hoot.bot.managers.ScriptManager;
 import dev.hoot.bot.managers.interaction.InteractionConfig;
 import dev.hoot.bot.script.events.ScriptChanged;
 import dev.hoot.bot.script.events.ScriptState;
+import net.runelite.api.Client;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.config.RuneLiteConfig;
 import net.runelite.client.eventbus.EventBus;
@@ -36,6 +36,7 @@ public class BotToolbar extends JMenuBar
 	private final BotConfig botConfig;
 	private final InteractionConfig interactConfig;
 	private final RuneLiteConfig runeLiteConfig;
+	private final Client client;
 
 	private JMenuItem stopScript;
 	private JMenuItem pauseScript;
@@ -50,7 +51,7 @@ public class BotToolbar extends JMenuBar
 	public BotToolbar(VarInspector varInspector, WidgetInspector widgetInspector, ScriptInspector scriptInspector,
 					  EntityRenderer entityRenderer, ScriptManager scriptManager, ScriptPanel scriptPanel,
 					  ConfigManager configManager, EventBus eventBus, BotConfig botConfig, InteractionConfig interactConfig,
-					  RuneLiteConfig runeLiteConfig)
+					  RuneLiteConfig runeLiteConfig, Client client)
 	{
 		this.varInspector = varInspector;
 		this.widgetInspector = widgetInspector;
@@ -63,6 +64,7 @@ public class BotToolbar extends JMenuBar
 		this.botConfig = botConfig;
 		this.interactConfig = interactConfig;
 		this.runeLiteConfig = runeLiteConfig;
+		this.client = client;
 	}
 
 	public void init()
@@ -76,7 +78,7 @@ public class BotToolbar extends JMenuBar
 				"Bot settings",
 				configManager.getConfigDescriptor(botConfig)
 		);
-		botConfigPanel = new ConfigPanel(configManager, eventBus, bot);
+		botConfigPanel = new ConfigPanel(configManager, eventBus, bot, client);
 		botConfigPanel.init();
 
 		ConfigurationDescriptor interact = new ConfigurationDescriptor(
@@ -84,7 +86,7 @@ public class BotToolbar extends JMenuBar
 				"Interact settings",
 				configManager.getConfigDescriptor(interactConfig)
 		);
-		interactConfigPanel = new ConfigPanel(configManager, eventBus, interact);
+		interactConfigPanel = new ConfigPanel(configManager, eventBus, interact, client);
 		interactConfigPanel.init();
 
 		ConfigurationDescriptor cl = new ConfigurationDescriptor(
@@ -92,7 +94,7 @@ public class BotToolbar extends JMenuBar
 				"Client settings",
 				configManager.getConfigDescriptor(runeLiteConfig)
 		);
-		clientConfigPanel = new ConfigPanel(configManager, eventBus, cl);
+		clientConfigPanel = new ConfigPanel(configManager, eventBus, cl, client);
 		clientConfigPanel.init();
 
 		SwingUtilities.invokeLater(() ->

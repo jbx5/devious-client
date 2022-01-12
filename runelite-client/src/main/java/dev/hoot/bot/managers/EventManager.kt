@@ -37,8 +37,7 @@ class EventManager @Inject constructor(
         private val scriptManager: ScriptManager,
         private val fpsManager: FpsManager,
         private val interactConfig: InteractionConfig,
-        private val botConfig: BotConfig,
-        drawManager: DrawManager,
+        private val botConfig: BotConfig
 ) {
     private val random = Random()
     private var randomDelay = 0L
@@ -47,9 +46,6 @@ class EventManager @Inject constructor(
         private val log = LoggerFactory.getLogger(EventManager::class.java)
     }
 
-    init {
-        drawManager.registerEveryFrameListener(fpsManager)
-    }
 
     private val disableRenderCallbacks = DisableRenderCallbacks()
     var worldSet = false

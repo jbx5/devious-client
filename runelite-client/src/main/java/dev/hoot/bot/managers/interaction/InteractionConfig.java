@@ -11,8 +11,7 @@ public interface InteractionConfig extends Config
 	@ConfigSection(
 			name = "Interaction manager",
 			description = "Interaction settings",
-			closedByDefault = true,
-			position = 3
+			position = 0
 	)
 	String interactionManager = "Interaction manager";
 
@@ -21,7 +20,7 @@ public interface InteractionConfig extends Config
 			name = "Mouse events",
 			description = "Sends mouse events before interaction",
 			section = interactionManager,
-			position = 0
+			position = 1
 	)
 	default boolean mouseEvents()
 	{
@@ -29,23 +28,11 @@ public interface InteractionConfig extends Config
 	}
 
 	@ConfigItem(
-			keyName = "hoverClick",
-			name = "Hover click",
-			description = "Spoofs the hovered entity and sends a real click",
-			section = interactionManager,
-			position = 0
-	)
-	default boolean hoverClick()
-	{
-		return true;
-	}
-
-	@ConfigItem(
 			keyName = "interactType",
 			name = "Interact click type",
 			description = "Type of clicks to send to the server",
 			section = interactionManager,
-			position = 0
+			position = 3
 	)
 	default InteractType interactType()
 	{
@@ -57,7 +44,7 @@ public interface InteractionConfig extends Config
 			name = "Draw mouse events",
 			description = "Draws the sent mouse events on screen",
 			section = interactionManager,
-			position = 1
+			position = 4
 	)
 	default boolean drawMouse()
 	{
@@ -69,7 +56,7 @@ public interface InteractionConfig extends Config
 			name = "Debug interactions",
 			description = "Prints interactions to console",
 			section = interactionManager,
-			position = 2
+			position = 5
 	)
 	default boolean debugInteractions()
 	{
@@ -81,7 +68,7 @@ public interface InteractionConfig extends Config
 			name = "Debug dialogs",
 			description = "Prints dialog actions to console",
 			section = interactionManager,
-			position = 3
+			position = 6
 	)
 	default boolean debugDialogs()
 	{

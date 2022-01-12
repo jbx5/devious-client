@@ -152,4 +152,11 @@ public abstract class HTileItemMixin implements RSTileItem
 	{
 		return Perspective.localToCanvas(client, getLocalLocation(), client.getPlane());
 	}
+
+	@Inject
+	@Override
+	public long getTag()
+	{
+		return client.calculateTag(getTile().getWorldX(), getTile().getWorldY(), 3, false, 0);
+	}
 }
