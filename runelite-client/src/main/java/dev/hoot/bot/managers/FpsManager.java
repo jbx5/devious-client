@@ -1,6 +1,6 @@
-package dev.hoot.bot.devtools;
+package dev.hoot.bot.managers;
 
-public class FpsDrawListener implements Runnable
+public class FpsManager implements Runnable
 {
 	private static final int SAMPLE_SIZE = 4;
 

@@ -32,10 +32,9 @@ import com.google.inject.Inject;
 import com.google.inject.Injector;
 import com.openosrs.client.OpenOSRS;
 import dev.hoot.bot.account.GameAccount;
-import dev.hoot.bot.config.BotConfigManager;
 import dev.hoot.bot.managers.EventManager;
-import dev.hoot.bot.managers.BotInteractionManager;
 import dev.hoot.bot.managers.ScriptManager;
+import dev.hoot.bot.managers.interaction.InteractionManager;
 import dev.hoot.bot.script.ScriptEntry;
 import dev.hoot.bot.script.ScriptMeta;
 import dev.hoot.bot.script.paint.Paint;
@@ -48,6 +47,7 @@ import net.runelite.api.Client;
 import net.runelite.api.Constants;
 import net.runelite.client.ClassPreloader;
 import net.runelite.client.RuneLiteProperties;
+import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.rs.ClientLoader;
 import net.runelite.client.rs.ClientUpdateCheckMode;
@@ -105,9 +105,6 @@ public class Bot
 	private static final int MAX_OKHTTP_CACHE_SIZE = 20 * 1024 * 1024; // 20mb
 
 	public static GameAccount gameAccount = null;
-	public static boolean debugMouse;
-	public static boolean debugMenuAction;
-	public static boolean debugDialogs;
 	public static boolean idleChecks = true;
 
 	@Getter
@@ -117,7 +114,7 @@ public class Bot
 	private EventBus eventBus;
 
 	@Inject
-	private BotConfigManager configManager;
+	private ConfigManager configManager;
 
 	@Inject
 	private BotUI botUI;
@@ -146,7 +143,7 @@ public class Bot
 	private EventManager eventManager;
 
 	@Inject
-	private BotInteractionManager botInteractionManager;
+	private InteractionManager interactionManager;
 
 	public static void main(String[] args) throws Exception
 	{
@@ -342,7 +339,7 @@ public class Bot
 		botToolbar.init();
 		eventBus.register(botToolbar);
 		eventBus.register(eventManager);
-		eventBus.register(botInteractionManager);
+		eventBus.register(interactionManager);
 		overlayManager.add(paint);
 
 		initArgs(options);

@@ -1,5 +1,6 @@
 package net.runelite.client.plugins.interaction;
 
+import dev.hoot.bot.managers.interaction.InteractionConfig;
 import net.runelite.client.input.MouseListener;
 import net.runelite.client.ui.overlay.Overlay;
 import net.runelite.client.ui.overlay.OverlayLayer;

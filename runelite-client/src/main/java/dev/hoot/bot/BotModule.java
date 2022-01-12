@@ -15,7 +15,7 @@ import dev.hoot.api.movement.pathfinder.GlobalCollisionMap;
 import dev.hoot.api.movement.pathfinder.RegionManager;
 import dev.hoot.api.movement.pathfinder.Walker;
 import dev.hoot.bot.config.BotConfig;
-import dev.hoot.bot.config.BotConfigManager;
+import dev.hoot.bot.managers.interaction.InteractionConfig;
 import dev.hoot.bot.script.Events;
 import net.runelite.api.Client;
 import net.runelite.api.hooks.Callbacks;
@@ -45,12 +45,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.Properties;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 import java.util.function.Supplier;
 import java.util.zip.GZIPInputStream;
 
@@ -207,8 +202,15 @@ public class BotModule extends AbstractModule
 
 	@Provides
 	@Singleton
-	BotConfig provideBotConfig(BotConfigManager configManager)
+	BotConfig provideBotConfig(ConfigManager configManager)
 	{
 		return configManager.getConfig(BotConfig.class);
+	}
+
+	@Provides
+	@Singleton
+	InteractionConfig provideInteractionConfig(ConfigManager configManager)
+	{
+		return configManager.getConfig(InteractionConfig.class);
 	}
 }

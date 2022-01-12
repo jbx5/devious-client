@@ -4,7 +4,7 @@ import dev.hoot.api.game.Game
 import dev.hoot.api.input.Keyboard
 import dev.hoot.bot.Bot
 import dev.hoot.bot.config.DisableRenderCallbacks
-import dev.hoot.bot.devtools.FpsDrawListener
+import dev.hoot.bot.managers.interaction.InteractionConfig
 import dev.hoot.bot.script.events.ScriptChanged
 import dev.hoot.bot.script.events.ScriptState
 import net.runelite.client.eventbus.Subscribe
@@ -34,7 +34,8 @@ class EventManager @Inject constructor(
         private val client: Client,
         private val worldService: WorldService,
         private val scriptManager: ScriptManager,
-        private val fpsDrawListener: FpsDrawListener,
+        private val fpsManager: FpsManager,
+        private val interactConfig: InteractionConfig,
         drawManager: DrawManager,
 ) {
     private val random = Random()
@@ -45,7 +46,7 @@ class EventManager @Inject constructor(
     }
 
     init {
-        drawManager.registerEveryFrameListener(fpsDrawListener)
+        drawManager.registerEveryFrameListener(fpsManager)
     }
 
     private val disableRenderCallbacks = DisableRenderCallbacks()
@@ -88,7 +89,7 @@ class EventManager @Inject constructor(
         }
 
         when (e.key) {
-            "fpsLimit" -> fpsDrawListener.reloadConfig(e.newValue.toInt())
+            "fpsLimit" -> fpsManager.reloadConfig(e.newValue.toInt())
             "renderOff" -> {
                 val enabled = e.newValue.toBoolean()
                 client.setIsHidingEntities(enabled)
@@ -105,7 +106,7 @@ class EventManager @Inject constructor(
 
     @Subscribe
     private fun onDialogProcessed(e: DialogProcessed) {
-        if (!Bot.debugDialogs) {
+        if (!interactConfig.debugDialogs()) {
             return
         }
 

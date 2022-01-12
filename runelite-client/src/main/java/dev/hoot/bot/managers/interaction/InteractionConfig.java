@@ -1,4 +1,4 @@
-package net.runelite.client.plugins.interaction;
+package dev.hoot.bot.managers.interaction;
 
 import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;

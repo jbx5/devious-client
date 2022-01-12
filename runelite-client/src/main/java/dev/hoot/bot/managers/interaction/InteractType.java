@@ -1,4 +1,4 @@
-package net.runelite.client.plugins.interaction;
+package dev.hoot.bot.managers.interaction;
 
 public enum InteractType
 {

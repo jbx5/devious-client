@@ -48,13 +48,13 @@ public class ConfigPanel extends PluginPanel
 	private final FixedWidthPanel mainPanel;
 	private final JLabel title;
 
-	private final BotConfigManager configManager;
+	private final ConfigManager configManager;
 	private final EventBus eventBus;
 
 	private final ConfigurationDescriptor configurationDescriptor;
 
 	public ConfigPanel(
-			BotConfigManager configManager,
+			ConfigManager configManager,
 			EventBus eventBus,
 			ConfigurationDescriptor configurationDescriptor
 	)

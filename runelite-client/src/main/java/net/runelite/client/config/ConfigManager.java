@@ -758,7 +758,7 @@ public class ConfigManager
 		}
 	}
 
-	Object stringToObject(String str, Type type)
+	public Object stringToObject(String str, Type type)
 	{
 		if (type == boolean.class || type == Boolean.class)
 		{
@@ -881,7 +881,7 @@ public class ConfigManager
 	}
 
 	@Nullable
-	String objectToString(Object object)
+	public String objectToString(Object object)
 	{
 		if (object instanceof Color)
 		{

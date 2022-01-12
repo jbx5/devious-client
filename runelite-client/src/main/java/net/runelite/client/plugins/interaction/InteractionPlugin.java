@@ -1,7 +1,6 @@
 package net.runelite.client.plugins.interaction;
 
-import com.google.inject.Provides;
-import net.runelite.client.config.ConfigManager;
+import dev.hoot.bot.managers.interaction.InteractionManager;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.input.MouseManager;
 import net.runelite.client.plugins.Plugin;
@@ -46,11 +45,5 @@ public class InteractionPlugin extends Plugin
 		overlayManager.remove(interactionOverlay);
 		mouseManager.unregisterMouseListener(interactionOverlay);
 		eventBus.unregister(interactionManager);
-	}
-
-	@Provides
-	InteractionConfig provideConfig(ConfigManager configManager)
-	{
-		return configManager.getConfig(InteractionConfig.class);
 	}
 }

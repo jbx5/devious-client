@@ -6,6 +6,7 @@ import dev.hoot.bot.Bot;
 import dev.hoot.bot.devtools.EntityRenderer;
 import dev.hoot.bot.managers.InputManager;
 import dev.hoot.bot.managers.ScriptManager;
+import dev.hoot.bot.managers.interaction.InteractionConfig;
 import net.runelite.api.Point;
 import net.runelite.client.ui.overlay.Overlay;
 import net.runelite.client.ui.overlay.OverlayLayer;
@@ -32,6 +33,9 @@ public class Paint extends Overlay
 	@Inject
 	private EntityRenderer entityRenderer;
 
+	@Inject
+	private InteractionConfig interactionConfig;
+
 	private final InputManager inputManager;
 
 	public final DefaultPaint tracker = new DefaultPaint();
@@ -51,7 +55,7 @@ public class Paint extends Overlay
 	{
 		Font font = g.getFont();
 
-		if (Bot.debugMouse)
+		if (interactionConfig.drawMouse())
 		{
 			g.setFont(new Font("Tahoma", Font.BOLD, 18));
 			OverlayUtil.renderTextLocation(g, new Point(InputManager.Companion.getLastClickX() - (g.getFont().getSize() / 3), InputManager.Companion.getLastClickY() + (g.getFont().getSize() / 3)), "X", Color.WHITE);

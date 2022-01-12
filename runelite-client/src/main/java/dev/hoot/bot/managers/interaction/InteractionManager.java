@@ -1,4 +1,4 @@
-package dev.hoot.bot.managers;
+package dev.hoot.bot.managers.interaction;
 
 import dev.hoot.api.MouseHandler;
 import dev.hoot.api.commons.Rand;
@@ -6,14 +6,14 @@ import dev.hoot.api.events.AutomatedInteraction;
 import dev.hoot.api.game.GameThread;
 import dev.hoot.api.input.Mouse;
 import dev.hoot.api.movement.Movement;
-import dev.hoot.bot.Bot;
-import dev.hoot.bot.config.BotConfig;
-import dev.hoot.bot.config.InteractType;
+import dev.hoot.api.widgets.DialogOption;
 import lombok.extern.slf4j.Slf4j;
-import net.runelite.client.eventbus.Subscribe;
 import net.runelite.api.Client;
 import net.runelite.api.MenuAction;
+import net.runelite.api.MenuEntry;
+import net.runelite.api.events.DialogProcessed;
 import net.runelite.api.events.MenuOptionClicked;
+import net.runelite.client.eventbus.Subscribe;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -22,24 +22,20 @@ import java.awt.Rectangle;
 
 @Singleton
 @Slf4j
-public class BotInteractionManager
+public class InteractionManager
 {
 	private static final int MINIMAP_WIDTH = 250;
 	private static final int MINIMAP_HEIGHT = 180;
 
-	private final Client client;
-	private final BotConfig config;
+	@Inject
+	private InteractionConfig config;
+
+	@Inject
+	private Client client;
 
 	private volatile AutomatedInteraction action;
 	private volatile int mouseClickX = -1;
 	private volatile int mouseClickY = -1;
-
-	@Inject
-	public BotInteractionManager(Client client, BotConfig config)
-	{
-		this.client = client;
-		this.config = config;
-	}
 
 	@Subscribe
 	public void onInvokeMenuAction(AutomatedInteraction e)
@@ -51,7 +47,7 @@ public class BotInteractionManager
 				+ " | P0=" + e.getParam0()
 				+ " | P1=" + e.getParam1();
 
-		if (Bot.debugMenuAction)
+		if (config.debugInteractions())
 		{
 			log.info("[Bot Action] {}", debug);
 		}
@@ -60,14 +56,17 @@ public class BotInteractionManager
 		{
 			if (!interactReady())
 			{
-				log.error("Interact was not ready, probably interacting too fast");
+				log.error("Interact was not ready {} {}", mouseClickX, mouseClickY);
 				return;
 			}
 
-			Point clickPoint = getClickPoint(e);
-			mouseClickX = clickPoint.x;
-			mouseClickY = clickPoint.y;
-			log.debug("Sending click to {} {}", mouseClickX, mouseClickY);
+			Point randomPoint = getClickPoint(e);
+			mouseClickX = randomPoint.x;
+			mouseClickY = randomPoint.y;
+			if (config.debugInteractions())
+			{
+				log.info("Sending click to {} {}", mouseClickX, mouseClickY);
+			}
 
 			action = e;
 
@@ -77,15 +76,28 @@ public class BotInteractionManager
 		{
 			// Spoof mouse
 			MouseHandler mouseHandler = client.getMouseHandler();
-			Point clickPoint = getClickPoint(e);
-			mouseClickX = clickPoint.x;
-			mouseClickY = clickPoint.y;
+			Point randomPoint = getClickPoint(e);
+			mouseClickX = randomPoint.x;
+			mouseClickY = randomPoint.y;
+			long tag = e.getEntityTag();
+			if (config.hoverClick() && tag != -1337)
+			{
+				long[] entitiesAtMouse = client.getEntitiesAtMouse();
+				int count = client.getEntitiesAtMouseCount();
+				if (count < 1000)
+				{
+					entitiesAtMouse[count] = tag;
+					client.setEntitiesAtMouseCount(count + 1);
+					client.setMenuEntries(new MenuEntry[]{e.toMenuEntry(client)});
+					mouseHandler.sendMovement(mouseClickX, mouseClickY);
+					mouseHandler.sendClick(mouseClickX, mouseClickY);
+				}
+
+				return;
+			}
+
 			mouseHandler.sendMovement(mouseClickX, mouseClickY);
 			mouseHandler.sendClick(mouseClickX, mouseClickY, 1337);
-			InputManager.Companion.setLastClickX(mouseClickX);
-			InputManager.Companion.setLastClickY(mouseClickY);
-			InputManager.Companion.setLastMovedX(mouseClickX);
-			InputManager.Companion.setLastMovedY(mouseClickY);
 			processAction(e, mouseClickX, mouseClickY);
 		}
 	}
@@ -108,7 +120,7 @@ public class BotInteractionManager
 			return;
 		}
 
-		if (Bot.debugMenuAction)
+		if (config.debugInteractions())
 		{
 			String action = "O=" + e.getMenuOption()
 					+ " | T=" + e.getMenuTarget()
@@ -122,16 +134,35 @@ public class BotInteractionManager
 		reset();
 	}
 
-	private void processAction(AutomatedInteraction a, int x, int y)
+	@Subscribe
+	public void onDialogProcessed(DialogProcessed e)
 	{
-		if (a.getOpcode() == MenuAction.WALK)
+		if (!config.debugDialogs())
 		{
-			Movement.setDestination(a.getParam0(), a.getParam1());
+			return;
+		}
+
+		DialogOption dialogOption = DialogOption.of(e.getDialogOption().getWidgetUid(), e.getDialogOption().getMenuIndex());
+		if (dialogOption != null)
+		{
+			log.info("Dialog processed {}", dialogOption);
 		}
 		else
 		{
-			GameThread.invoke(() -> client.invokeMenuAction(a.getOption(), a.getTarget(), a.getIdentifier(),
-					a.getOpcode().getId(), a.getParam0(), a.getParam1(), x, y));
+			log.info("Unknown or unmapped dialog {}", e);
+		}
+	}
+
+	private void processAction(AutomatedInteraction entry, int x, int y)
+	{
+		if (entry.getOpcode() == MenuAction.WALK)
+		{
+			Movement.setDestination(entry.getParam0(), entry.getParam1());
+		}
+		else
+		{
+			GameThread.invoke(() -> client.invokeMenuAction(entry.getOption(), entry.getTarget(), entry.getIdentifier(),
+					entry.getOpcode().getId(), entry.getParam0(), entry.getParam1(), x, y));
 		}
 	}
 
@@ -149,7 +180,7 @@ public class BotInteractionManager
 
 		if (e.getClickX() != -1 && e.getClickY() != -1 && config.interactType() == InteractType.CLICKBOXES)
 		{
-			Point clickPoint = new Point(e.getClickX(), e.getClickY());
+			Point clickPoint = new Point(e.getClickY(), e.getClickY());
 			if (!clickInsideMinimap(clickPoint))
 			{
 				return clickPoint;

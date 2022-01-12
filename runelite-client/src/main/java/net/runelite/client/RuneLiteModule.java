@@ -58,6 +58,7 @@ import dev.hoot.api.game.Worlds;
 import dev.hoot.api.movement.pathfinder.GlobalCollisionMap;
 import dev.hoot.api.movement.pathfinder.RegionManager;
 import dev.hoot.api.movement.pathfinder.Walker;
+import dev.hoot.bot.managers.interaction.InteractionConfig;
 import lombok.AllArgsConstructor;
 import net.runelite.api.Client;
 import net.runelite.api.hooks.Callbacks;
@@ -245,5 +246,12 @@ public class RuneLiteModule extends AbstractModule
 					).readAllBytes()
 			);
 		}
+	}
+
+	@Provides
+	@Singleton
+	InteractionConfig provideInteractionConfig(ConfigManager configManager)
+	{
+		return configManager.getConfig(InteractionConfig.class);
 	}
 }
