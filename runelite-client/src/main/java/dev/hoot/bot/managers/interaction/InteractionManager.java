@@ -51,7 +51,9 @@ public class InteractionManager
 			log.info("[Automated] {}", debug);
 		}
 
-		if (config.mouseEvents())
+		MouseHandler mouseHandler = client.getMouseHandler();
+
+		if (config.clickSwap())
 		{
 			if (!interactReady())
 			{
@@ -69,12 +71,11 @@ public class InteractionManager
 
 			action = e;
 
-			Mouse.click(mouseClickX, mouseClickY, true);
+			mouseHandler.sendClick(mouseClickX, mouseClickY);
 		}
 		else
 		{
 			// Spoof mouse
-			MouseHandler mouseHandler = client.getMouseHandler();
 			Point randomPoint = getClickPoint(e);
 			mouseClickX = randomPoint.x;
 			mouseClickY = randomPoint.y;
@@ -87,17 +88,20 @@ public class InteractionManager
 	@Subscribe
 	public void onMenuOptionClicked(MenuOptionClicked e)
 	{
-		if (config.mouseEvents() && e.getCanvasX() == mouseClickX && e.getCanvasY() == mouseClickY)
+		if (config.clickSwap() && e.getCanvasX() == mouseClickX && e.getCanvasY() == mouseClickY)
 		{
-			e.consume();
-
 			if (action == null)
 			{
 				log.error("Menu replace failed");
 				return;
 			}
 
-			processAction(action, mouseClickX, mouseClickY);
+			e.setMenuOption(action.getOption());
+			e.setMenuTarget(action.getTarget());
+			e.setId(action.getIdentifier());
+			e.setMenuAction(action.getOpcode());
+			e.setParam0(action.getParam0());
+			e.setParam1(action.getParam1());
 			reset();
 			return;
 		}

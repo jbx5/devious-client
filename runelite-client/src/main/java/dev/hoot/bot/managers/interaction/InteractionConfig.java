@@ -16,13 +16,13 @@ public interface InteractionConfig extends Config
 	String interactionManager = "Interaction manager";
 
 	@ConfigItem(
-			keyName = "mouseEvents",
-			name = "Mouse events",
-			description = "Sends mouse events before interaction",
+			keyName = "clickSwap",
+			name = "Click-swap",
+			description = "Swaps the menuaction after clicking (may be slower)",
 			section = interactionManager,
 			position = 1
 	)
-	default boolean mouseEvents()
+	default boolean clickSwap()
 	{
 		return false;
 	}
