@@ -9,6 +9,7 @@ import net.runelite.api.GroundObject;
 import net.runelite.api.Tile;
 import net.runelite.api.TileObject;
 import net.runelite.api.WallObject;
+import net.runelite.api.coords.WorldArea;
 import net.runelite.api.coords.WorldPoint;
 
 import java.util.ArrayList;
@@ -17,8 +18,12 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-public class TileObjects extends Entities<TileObject>
+public class TileObjects extends TileEntities<TileObject>
 {
+	private TileObjects()
+	{
+	}
+
 	private static final TileObjects TILE_OBJECTS = new TileObjects();
 
 	public static List<TileObject> getAll(Predicate<TileObject> filter)
@@ -68,69 +73,42 @@ public class TileObjects extends Entities<TileObject>
 
 	public static List<TileObject> getAt(int worldX, int worldY, int plane, int... ids)
 	{
-		return getAt(Tiles.getAt(worldX, worldY, plane), ids);
+		return TILE_OBJECTS.at(Tiles.getAt(worldX, worldY, plane), ids);
 	}
 
 	public static List<TileObject> getAt(int worldX, int worldY, int plane, String... names)
 	{
-		return getAt(Tiles.getAt(worldX, worldY, plane), names);
+		return TILE_OBJECTS.at(Tiles.getAt(worldX, worldY, plane), names);
 	}
 
 	public static List<TileObject> getAt(int worldX, int worldY, int plane, Predicate<TileObject> filter)
 	{
-		return getAt(Tiles.getAt(worldX, worldY, plane), filter);
+		return TILE_OBJECTS.at(Tiles.getAt(worldX, worldY, plane), filter);
 	}
 
 	public static List<TileObject> getAt(WorldPoint worldPoint, Predicate<TileObject> filter)
 	{
-		return getAt(worldPoint.getX(), worldPoint.getY(), worldPoint.getPlane(), filter);
+		return TILE_OBJECTS.at(Tiles.getAt(worldPoint), filter);
 	}
 
 	public static List<TileObject> getAt(WorldPoint worldPoint, int... ids)
 	{
-		return getAt(worldPoint.getX(), worldPoint.getY(), worldPoint.getPlane(), ids);
+		return TILE_OBJECTS.at(Tiles.getAt(worldPoint), ids);
 	}
 
 	public static List<TileObject> getAt(WorldPoint worldPoint, String... names)
 	{
-		return getAt(worldPoint.getX(), worldPoint.getY(), worldPoint.getPlane(), names);
+		return TILE_OBJECTS.at(Tiles.getAt(worldPoint), names);
 	}
 
 	public static List<TileObject> getAt(Tile tile, int... ids)
 	{
-		return getAt(tile, x ->
-		{
-			for (int id : ids)
-			{
-				if (id == x.getId())
-				{
-					return true;
-				}
-			}
-
-			return false;
-		});
+		return TILE_OBJECTS.at(tile, ids);
 	}
 
 	public static List<TileObject> getAt(Tile tile, String... names)
 	{
-		return getAt(tile, x ->
-		{
-			if (x.getName() == null)
-			{
-				return false;
-			}
-
-			for (String name : names)
-			{
-				if (name.equals(x.getName()))
-				{
-					return true;
-				}
-			}
-
-			return false;
-		});
+		return TILE_OBJECTS.at(tile, names);
 	}
 
 	public static List<TileObject> getAt(Tile tile, Predicate<TileObject> filter)
@@ -140,7 +118,7 @@ public class TileObjects extends Entities<TileObject>
 			return Collections.emptyList();
 		}
 
-		return parseTile(tile, filter);
+		return TILE_OBJECTS.at(tile, filter);
 	}
 
 	public static TileObject getFirstAt(int worldX, int worldY, int plane, int... ids)
@@ -218,61 +196,34 @@ public class TileObjects extends Entities<TileObject>
 		return getSurrounding(worldPoint, radius, filter).stream().findFirst().orElse(null);
 	}
 
+	public static TileObject getFirstSurrounding(Tile tile, int radius, int... ids)
+	{
+		return getSurrounding(tile, radius, ids).stream().findFirst().orElse(null);
+	}
+
+	public static TileObject getFirstSurrounding(Tile tile, int radius, String... names)
+	{
+		return getSurrounding(tile, radius, names).stream().findFirst().orElse(null);
+	}
+
+	public static TileObject getFirstSurrounding(Tile tile, int radius, Predicate<TileObject> filter)
+	{
+		return getSurrounding(tile, radius, filter).stream().findFirst().orElse(null);
+	}
+
 	public static List<TileObject> getSurrounding(int worldX, int worldY, int plane, int radius, int... ids)
 	{
-		return getSurrounding(worldX, worldY, plane, radius, x ->
-		{
-			for (int id : ids)
-			{
-				if (id == x.getId())
-				{
-					return true;
-				}
-			}
-
-			return false;
-		});
+		return TILE_OBJECTS.surrounding(worldX, worldY, plane, radius, ids);
 	}
 
 	public static List<TileObject> getSurrounding(int worldX, int worldY, int plane, int radius, String... names)
 	{
-		return getSurrounding(worldX, worldY, plane, radius, x ->
-		{
-			if (x.getName() == null)
-			{
-				return false;
-			}
-
-			for (String name : names)
-			{
-				if (name.equals(x.getName()))
-				{
-					return true;
-				}
-			}
-
-			return false;
-		});
+		return TILE_OBJECTS.surrounding(worldX, worldY, plane, radius, names);
 	}
 
 	public static List<TileObject> getSurrounding(int worldX, int worldY, int plane, int radius, Predicate<TileObject> filter)
 	{
-		List<TileObject> out = new ArrayList<>();
-		for (int x = -radius; x <= radius; x++)
-		{
-			for (int y = -radius; y <= radius; y++)
-			{
-				Tile tile = Tiles.getAt(worldX + x, worldY + y, plane);
-				if (tile == null)
-				{
-					continue;
-				}
-
-				out.addAll(getAt(tile, filter));
-			}
-		}
-
-		return out;
+		return TILE_OBJECTS.surrounding(worldX, worldY, plane, radius, filter);
 	}
 
 	public static List<TileObject> getSurrounding(WorldPoint worldPoint, int radius, int... ids)
@@ -290,57 +241,44 @@ public class TileObjects extends Entities<TileObject>
 		return getSurrounding(worldPoint.getX(), worldPoint.getY(), worldPoint.getPlane(), radius, filter);
 	}
 
-	private static List<TileObject> parseTile(Tile tile, Predicate<TileObject> pred)
+	public static List<TileObject> getSurrounding(Tile tile, int radius, int... ids)
 	{
-		Predicate<TileObject> filter = x ->
-		{
-			if (!x.isDefinitionCached())
-			{
-				return GameThread.invokeLater(() ->
-				{
-					x.getCachedDefinition(); // cache it
-					return pred.test(x);
-				});
-			}
-
-			return pred.test(x);
-		};
-
-		return getTileObjects(tile).stream()
-				.filter(filter)
-				.collect(Collectors.toList());
+		return getSurrounding(tile.getWorldX(), tile.getWorldY(), tile.getPlane(), radius, ids);
 	}
 
-	private static List<TileObject> getTileObjects(List<Tile> tiles)
+	public static List<TileObject> getSurrounding(Tile tile, int radius, String... names)
 	{
-		List<TileObject> out = new ArrayList<>();
-		for (Tile tile : tiles)
-		{
-			out.addAll(getTileObjects(tile));
-		}
+		return getSurrounding(tile.getWorldX(), tile.getWorldY(), tile.getPlane(), radius, names);
+	}
 
-		List<TileObject> notCached = out.stream()
-				.filter(x -> !x.isDefinitionCached())
-				.collect(Collectors.toList());
-		if (!notCached.isEmpty())
-		{
-			GameThread.invokeLater(() ->
-			{
-				for (TileObject tileObject : notCached)
-				{
-					tileObject.getDefinition();
-				}
+	public static List<TileObject> getSurrounding(Tile tile, int radius, Predicate<TileObject> filter)
+	{
+		return getSurrounding(tile.getWorldX(), tile.getWorldY(), tile.getPlane(), radius, filter);
+	}
 
-				return true;
-			});
-		}
+	public static List<TileObject> within(WorldArea area, String... names)
+	{
+		return TILE_OBJECTS.in(area, names);
+	}
 
-		return out;
+	public static List<TileObject> within(WorldArea area, int... ids)
+	{
+		return TILE_OBJECTS.in(area, ids);
+	}
+
+	public static List<TileObject> within(WorldArea area, Predicate<TileObject> filter)
+	{
+		return TILE_OBJECTS.in(area, filter);
 	}
 
 	private static List<TileObject> getTileObjects(Tile tile)
 	{
 		List<TileObject> out = new ArrayList<>();
+		if (tile == null)
+		{
+			return out;
+		}
+
 		DecorativeObject dec = tile.getDecorativeObject();
 		if (dec != null && dec.getId() != -1)
 		{
@@ -381,7 +319,51 @@ public class TileObjects extends Entities<TileObject>
 	@Override
 	protected List<TileObject> all(Predicate<? super TileObject> filter)
 	{
-		return getTileObjects(Tiles.getTiles()).stream()
+		List<TileObject> out = new ArrayList<>();
+		for (Tile tile : Tiles.getTiles())
+		{
+			out.addAll(getTileObjects(tile));
+		}
+
+		List<TileObject> notCached = out.stream()
+				.filter(x -> !x.isDefinitionCached())
+				.collect(Collectors.toList());
+		if (!notCached.isEmpty())
+		{
+			GameThread.invokeLater(() ->
+			{
+				for (TileObject tileObject : notCached)
+				{
+					tileObject.getDefinition();
+				}
+
+				return true;
+			});
+		}
+
+		return out.stream()
+				.filter(filter)
+				.collect(Collectors.toList());
+	}
+
+	@Override
+	protected List<TileObject> at(Tile tile, Predicate<? super TileObject> pred)
+	{
+		Predicate<TileObject> filter = x ->
+		{
+			if (!x.isDefinitionCached())
+			{
+				return GameThread.invokeLater(() ->
+				{
+					x.getCachedDefinition(); // cache it
+					return pred.test(x);
+				});
+			}
+
+			return pred.test(x);
+		};
+
+		return getTileObjects(tile).stream()
 				.filter(filter)
 				.collect(Collectors.toList());
 	}

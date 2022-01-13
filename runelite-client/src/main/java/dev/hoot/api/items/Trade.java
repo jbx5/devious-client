@@ -1,5 +1,6 @@
 package dev.hoot.api.items;
 
+import dev.hoot.api.commons.Predicates;
 import dev.hoot.api.game.Game;
 import dev.hoot.api.game.GameThread;
 import dev.hoot.api.game.Vars;
@@ -207,39 +208,12 @@ public class Trade
 
 	public static List<Item> getAll(boolean theirs, int... ids)
 	{
-		return getAll(theirs, x ->
-		{
-			for (int id : ids)
-			{
-				if (id == x.getId())
-				{
-					return true;
-				}
-			}
-
-			return false;
-		});
+		return getAll(theirs, Predicates.ids(ids));
 	}
 
 	public static List<Item> getAll(boolean theirs, String... names)
 	{
-		return getAll(theirs, x ->
-		{
-			if (x.getName() == null)
-			{
-				return false;
-			}
-
-			for (String name : names)
-			{
-				if (name.equals(x.getName()))
-				{
-					return true;
-				}
-			}
-
-			return false;
-		});
+		return getAll(theirs, Predicates.names(names));
 	}
 
 	public static Item getFirst(boolean theirs, Predicate<Item> filter)
@@ -249,39 +223,12 @@ public class Trade
 
 	public static Item getFirst(boolean theirs, int... ids)
 	{
-		return getFirst(theirs, x ->
-		{
-			for (int id : ids)
-			{
-				if (id == x.getId())
-				{
-					return true;
-				}
-			}
-
-			return false;
-		});
+		return getFirst(theirs, Predicates.ids(ids));
 	}
 
 	public static Item getFirst(boolean theirs, String... names)
 	{
-		return getFirst(theirs, x ->
-		{
-			if (x.getName() == null)
-			{
-				return false;
-			}
-
-			for (String name : names)
-			{
-				if (name.equals(x.getName()))
-				{
-					return true;
-				}
-			}
-
-			return false;
-		});
+		return getFirst(theirs, Predicates.names(names));
 	}
 
 	public static boolean contains(boolean theirs, Predicate<Item> filter)
@@ -291,39 +238,12 @@ public class Trade
 
 	public static boolean contains(boolean theirs, int... ids)
 	{
-		return contains(theirs, x ->
-		{
-			for (int id : ids)
-			{
-				if (id == x.getId())
-				{
-					return true;
-				}
-			}
-
-			return false;
-		});
+		return contains(theirs, Predicates.ids(ids));
 	}
 
 	public static boolean contains(boolean theirs, String... names)
 	{
-		return contains(theirs, x ->
-		{
-			if (x.getName() == null)
-			{
-				return false;
-			}
-
-			for (String name : names)
-			{
-				if (name.equals(x.getName()))
-				{
-					return true;
-				}
-			}
-
-			return false;
-		});
+		return contains(theirs, Predicates.names(names));
 	}
 
 	public static String getTradingPlayer()

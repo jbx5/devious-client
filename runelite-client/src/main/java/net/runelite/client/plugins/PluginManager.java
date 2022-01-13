@@ -46,6 +46,7 @@ import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodType;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -320,16 +321,21 @@ public class PluginManager
 		{
 			PluginDescriptor pluginDescriptor = clazz.getAnnotation(PluginDescriptor.class);
 
+			if (Modifier.isAbstract(clazz.getModifiers()))
+			{
+				continue;
+			}
+
 			if (pluginDescriptor == null)
 			{
-				if (clazz.getSuperclass() == Plugin.class)
+				if (Plugin.class.isAssignableFrom(clazz))
 				{
 					log.warn("Class {} is a plugin, but has no plugin descriptor", clazz);
 				}
 				continue;
 			}
 
-			if (clazz.getSuperclass() != Plugin.class)
+			if (!Plugin.class.isAssignableFrom(clazz))
 			{
 				log.warn("Class {} has plugin descriptor, but is not a plugin", clazz);
 				continue;

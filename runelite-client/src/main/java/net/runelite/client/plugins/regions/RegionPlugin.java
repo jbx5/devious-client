@@ -60,6 +60,7 @@ public class RegionPlugin extends Plugin
 	public void startUp()
 	{
 		eventBus.register(transportDialog);
+		eventBus.register(overlay);
 
 		updateCollisionMap();
 
@@ -71,6 +72,7 @@ public class RegionPlugin extends Plugin
 	{
 		overlayManager.remove(overlay);
 		eventBus.unregister(transportDialog);
+		eventBus.unregister(overlay);
 	}
 
 	@Subscribe

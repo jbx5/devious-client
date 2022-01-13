@@ -85,19 +85,18 @@ public class TeleportLoader
 							() -> jewelryTeleport("Eagles' Eyrie", NECKLACE_OF_PASSAGE)));
 				}
 
-				for (TeleportTab tab : TeleportTab.values())
+				for (TeleportItem tele : TeleportItem.values())
 				{
-					if (tab.canUse() && tab.getPoint().distanceTo(Players.getLocal().getWorldLocation()) > 20)
+					if (tele.canUse() && tele.getDestination().distanceTo(Players.getLocal().getWorldLocation()) > 20)
 					{
-						teleports.add(new Teleport(tab.getPoint(), 5,
-								() ->
-								{
-									Item teleTab = Inventory.getFirst(tab.getItemId());
-									if (teleTab != null)
-									{
-										teleTab.interact("Break");
-									}
-								}));
+						teleports.add(new Teleport(tele.getDestination(), 5, () ->
+						{
+							Item item = Inventory.getFirst(tele.getItemId());
+							if (item != null)
+							{
+								item.interact(tele.getAction());
+							}
+						}));
 					}
 				}
 			}
@@ -165,8 +164,16 @@ public class TeleportLoader
 
 				if (teleportSpell.getPoint().distanceTo(Players.getLocal().getWorldLocation()) > 50)
 				{
-					teleports.add(new Teleport(teleportSpell.getPoint(), 5,
-							() -> Magic.cast(teleportSpell.getSpell())));
+					teleports.add(new Teleport(teleportSpell.getPoint(), 5, () ->
+					{
+						if (teleportSpell == TeleportSpell.HOME_TELEPORT_REGULAR
+								&& Players.getLocal().isAnimating())
+						{
+							return;
+						}
+
+						Magic.cast(teleportSpell.getSpell());
+					}));
 				}
 			}
 		}

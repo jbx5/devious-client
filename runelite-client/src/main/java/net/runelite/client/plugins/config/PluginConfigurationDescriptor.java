@@ -38,7 +38,7 @@ import net.runelite.client.util.LinkBrowser;
 
 @Value
 @RequiredArgsConstructor
-class PluginConfigurationDescriptor
+public class PluginConfigurationDescriptor
 {
 	private final String name;
 	private final String description;
@@ -63,7 +63,7 @@ class PluginConfigurationDescriptor
 		return configDescriptor != null && !configDescriptor.getItems().stream().allMatch(item -> item.getItem().hidden());
 	}
 
-	PluginConfigurationDescriptor(String name, String description, String[] tags, Config config, ConfigDescriptor configDescriptor)
+	public PluginConfigurationDescriptor(String name, String description, String[] tags, Config config, ConfigDescriptor configDescriptor)
 	{
 		this(name, description, tags, null, config, configDescriptor, null);
 	}

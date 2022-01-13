@@ -7,6 +7,10 @@ import java.util.function.Supplier;
 
 public class DepositBox
 {
+	private DepositBox()
+	{
+	}
+
 	private static final Supplier<Widget> DEPOSIT_INV = () -> Widgets.get(192, 4);
 	private static final Supplier<Widget> DEPOSIT_EQUIPS = () -> Widgets.get(192, 6);
 	private static final Supplier<Widget> DEPOSIT_LOOTINGBAG = () -> Widgets.get(192, 8);

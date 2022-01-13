@@ -8,7 +8,7 @@ import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSPcmPlayer;
 
 @Mixin(RSPcmPlayer.class)
-public class HPcmPlayerMixin implements RSPcmPlayer
+public abstract class HPcmPlayerMixin implements RSPcmPlayer
 {
 	@Shadow("client")
 	private static RSClient client;

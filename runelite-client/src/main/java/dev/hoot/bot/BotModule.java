@@ -1,5 +1,6 @@
 package dev.hoot.bot;
 
+import com.google.common.base.Strings;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import com.google.gson.Gson;
 import com.google.inject.AbstractModule;
@@ -14,12 +15,13 @@ import dev.hoot.api.movement.pathfinder.GlobalCollisionMap;
 import dev.hoot.api.movement.pathfinder.RegionManager;
 import dev.hoot.api.movement.pathfinder.Walker;
 import dev.hoot.bot.config.BotConfig;
-import dev.hoot.bot.config.BotConfigManager;
+import dev.hoot.bot.managers.interaction.InteractionConfig;
 import dev.hoot.bot.script.Events;
 import net.runelite.api.Client;
 import net.runelite.api.hooks.Callbacks;
 import net.runelite.api.packets.ClientPacket;
 import net.runelite.client.NonScheduledExecutorServiceExceptionLogger;
+import net.runelite.client.RuneLiteProperties;
 import net.runelite.client.config.ChatColorConfig;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.config.RuneLiteConfig;
@@ -29,11 +31,12 @@ import net.runelite.client.task.Scheduler;
 import net.runelite.client.util.DeferredEventBus;
 import net.runelite.client.util.ExecutorServiceExceptionLogger;
 import net.runelite.http.api.RuneLiteAPI;
-import net.runelite.http.api.chat.ChatClient;
+import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.Nullable;
+import javax.inject.Named;
 import javax.inject.Singleton;
 import java.applet.Applet;
 import java.io.ByteArrayInputStream;
@@ -41,12 +44,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import java.util.Properties;
+import java.util.concurrent.*;
 import java.util.function.Supplier;
 import java.util.zip.GZIPInputStream;
 
@@ -67,6 +66,13 @@ public class BotModule extends AbstractModule
 	@Override
 	protected void configure()
 	{
+		Properties properties = RuneLiteProperties.getProperties();
+		for (String key : properties.stringPropertyNames())
+		{
+			String value = properties.getProperty(key);
+			bindConstant().annotatedWith(Names.named(key)).to(value);
+		}
+
 		bindConstant().annotatedWith(Names.named("safeMode")).to(false);
 		bind(File.class).annotatedWith(Names.named("config")).toInstance(config);
 		bind(ScheduledExecutorService.class).toInstance(new ExecutorServiceExceptionLogger(Executors.newSingleThreadScheduledExecutor()));
@@ -123,10 +129,19 @@ public class BotModule extends AbstractModule
 	}
 
 	@Provides
-	@Singleton
-	ChatClient provideChatClient(OkHttpClient okHttpClient)
+	@Named("runelite.api.base")
+	HttpUrl provideApiBase(@Named("runelite.api.base") String s)
 	{
-		return new ChatClient(okHttpClient);
+		final String prop = System.getProperty("runelite.http-service.url");
+		return HttpUrl.get(Strings.isNullOrEmpty(prop) ? s : prop);
+	}
+
+	@Provides
+	@Named("runelite.static.base")
+	HttpUrl provideStaticBase(@Named("runelite.static.base") String s)
+	{
+		final String prop = System.getProperty("runelite.static.url");
+		return HttpUrl.get(Strings.isNullOrEmpty(prop) ? s : prop);
 	}
 
 	@Provides
@@ -187,8 +202,15 @@ public class BotModule extends AbstractModule
 
 	@Provides
 	@Singleton
-	BotConfig provideBotConfig(BotConfigManager configManager)
+	BotConfig provideBotConfig(ConfigManager configManager)
 	{
 		return configManager.getConfig(BotConfig.class);
+	}
+
+	@Provides
+	@Singleton
+	InteractionConfig provideInteractionConfig(ConfigManager configManager)
+	{
+		return configManager.getConfig(InteractionConfig.class);
 	}
 }

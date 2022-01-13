@@ -1,17 +1,18 @@
 package dev.hoot.bot.ui;
 
-import dev.hoot.bot.Bot;
 import dev.hoot.bot.config.BotConfig;
-import dev.hoot.bot.config.BotConfigManager;
 import dev.hoot.bot.config.ConfigPanel;
 import dev.hoot.bot.config.ConfigurationDescriptor;
-import dev.hoot.bot.devtools.EntityInspector;
+import dev.hoot.bot.devtools.EntityRenderer;
 import dev.hoot.bot.devtools.scriptinspector.ScriptInspector;
 import dev.hoot.bot.devtools.varinspector.VarInspector;
 import dev.hoot.bot.devtools.widgetinspector.WidgetInspector;
 import dev.hoot.bot.managers.ScriptManager;
+import dev.hoot.bot.managers.interaction.InteractionConfig;
 import dev.hoot.bot.script.events.ScriptChanged;
 import dev.hoot.bot.script.events.ScriptState;
+import net.runelite.api.Client;
+import net.runelite.client.config.ConfigManager;
 import net.runelite.client.config.RuneLiteConfig;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
@@ -27,13 +28,15 @@ public class BotToolbar extends JMenuBar
 	private final VarInspector varInspector;
 	private final WidgetInspector widgetInspector;
 	private final ScriptInspector scriptInspector;
-	private final EntityInspector entityInspector;
+	private final EntityRenderer entityRenderer;
 	private final ScriptManager scriptManager;
 	private final ScriptPanel scriptPanel;
-	private final BotConfigManager configManager;
+	private final ConfigManager configManager;
 	private final EventBus eventBus;
 	private final BotConfig botConfig;
+	private final InteractionConfig interactConfig;
 	private final RuneLiteConfig runeLiteConfig;
+	private final Client client;
 
 	private JMenuItem stopScript;
 	private JMenuItem pauseScript;
@@ -41,28 +44,33 @@ public class BotToolbar extends JMenuBar
 	private JRadioButton rendering;
 
 	private ConfigPanel botConfigPanel;
+	private ConfigPanel interactConfigPanel;
 	private ConfigPanel clientConfigPanel;
 
 	@Inject
 	public BotToolbar(VarInspector varInspector, WidgetInspector widgetInspector, ScriptInspector scriptInspector,
-					  EntityInspector entityInspector, ScriptManager scriptManager, ScriptPanel scriptPanel,
-					  BotConfigManager configManager, EventBus eventBus, BotConfig botConfig, RuneLiteConfig runeLiteConfig)
+					  EntityRenderer entityRenderer, ScriptManager scriptManager, ScriptPanel scriptPanel,
+					  ConfigManager configManager, EventBus eventBus, BotConfig botConfig, InteractionConfig interactConfig,
+					  RuneLiteConfig runeLiteConfig, Client client)
 	{
 		this.varInspector = varInspector;
 		this.widgetInspector = widgetInspector;
 		this.scriptInspector = scriptInspector;
-		this.entityInspector = entityInspector;
+		this.entityRenderer = entityRenderer;
 		this.scriptManager = scriptManager;
 		this.scriptPanel = scriptPanel;
 		this.configManager = configManager;
 		this.eventBus = eventBus;
 		this.botConfig = botConfig;
+		this.interactConfig = interactConfig;
 		this.runeLiteConfig = runeLiteConfig;
+		this.client = client;
 	}
 
 	public void init()
 	{
 		configManager.setDefaultConfiguration(botConfig, false);
+		configManager.setDefaultConfiguration(interactConfig, false);
 		configManager.setDefaultConfiguration(runeLiteConfig, false);
 
 		ConfigurationDescriptor bot = new ConfigurationDescriptor(
@@ -70,15 +78,23 @@ public class BotToolbar extends JMenuBar
 				"Bot settings",
 				configManager.getConfigDescriptor(botConfig)
 		);
-		botConfigPanel = new ConfigPanel(configManager, eventBus, bot);
+		botConfigPanel = new ConfigPanel(configManager, eventBus, bot, client);
 		botConfigPanel.init();
+
+		ConfigurationDescriptor interact = new ConfigurationDescriptor(
+				"Interact",
+				"Interact settings",
+				configManager.getConfigDescriptor(interactConfig)
+		);
+		interactConfigPanel = new ConfigPanel(configManager, eventBus, interact, client);
+		interactConfigPanel.init();
 
 		ConfigurationDescriptor cl = new ConfigurationDescriptor(
 				"Client",
 				"Client settings",
 				configManager.getConfigDescriptor(runeLiteConfig)
 		);
-		clientConfigPanel = new ConfigPanel(configManager, eventBus, cl);
+		clientConfigPanel = new ConfigPanel(configManager, eventBus, cl, client);
 		clientConfigPanel.init();
 
 		SwingUtilities.invokeLater(() ->
@@ -91,21 +107,28 @@ public class BotToolbar extends JMenuBar
 			scripts.setMaximumSize(scripts.getPreferredSize());
 			add(scripts);
 
-			JMenuItem settings = new JMenuItem("Bot Settings");
-			settings.addActionListener(e ->
+			JMenu settingsMenu = new JMenu("Settings");
+			JMenuItem botSettings = new JMenuItem("Bot Settings");
+			botSettings.addActionListener(e ->
 			{
 				botConfigPanel.open();
 			});
-			settings.setMaximumSize(settings.getPreferredSize());
-			add(settings);
+			settingsMenu.add(botSettings);
+
+			JMenuItem interactSettings = new JMenuItem("Interact Settings");
+			interactSettings.addActionListener(e ->
+			{
+				interactConfigPanel.open();
+			});
+			settingsMenu.add(interactSettings);
 
 			JMenuItem clientSettings = new JMenuItem("Client Settings");
 			clientSettings.addActionListener(e ->
 			{
 				clientConfigPanel.open();
 			});
-			clientSettings.setMaximumSize(clientSettings.getPreferredSize());
-			add(clientSettings);
+			settingsMenu.add(clientSettings);
+			add(settingsMenu);
 
 			rendering = new JRadioButton("Toggle rendering");
 			rendering.addActionListener(e -> configManager.setConfiguration("hoot", "renderOff", rendering.isSelected()));
@@ -114,23 +137,23 @@ public class BotToolbar extends JMenuBar
 			add(rendering);
 
 			JRadioButton mouseDebug = new JRadioButton("Mouse debug");
-			mouseDebug.addActionListener(e -> Bot.debugMouse = mouseDebug.isSelected());
+			mouseDebug.addActionListener(e -> configManager.setConfiguration("interaction", "drawMouse", mouseDebug.isSelected()));
 			debug.add(mouseDebug);
 
 			JRadioButton menuActionDebug = new JRadioButton("MenuAction debug");
-			menuActionDebug.addActionListener(e -> Bot.debugMenuAction = menuActionDebug.isSelected());
+			menuActionDebug.addActionListener(e -> configManager.setConfiguration("interaction", "debugInteractions", menuActionDebug.isSelected()));
 			debug.add(menuActionDebug);
 
 			JRadioButton dialogDebug = new JRadioButton("Dialog debug");
-			dialogDebug.addActionListener(e -> Bot.debugDialogs = dialogDebug.isSelected());
+			dialogDebug.addActionListener(e -> configManager.setConfiguration("interaction", "debugDialogs", dialogDebug.isSelected()));
 			debug.add(dialogDebug);
 
 			JRadioButton collisionDebug = new JRadioButton("Collision map");
-			collisionDebug.addActionListener(e -> entityInspector.setCollisionMap(!entityInspector.isCollisionMap()));
+			collisionDebug.addActionListener(e -> entityRenderer.setCollisionMap(!entityRenderer.isCollisionMap()));
 			debug.add(collisionDebug);
 
 			JRadioButton pathDebug = new JRadioButton("Draw path");
-			pathDebug.addActionListener(e -> entityInspector.setPath(!entityInspector.isPath()));
+			pathDebug.addActionListener(e -> entityRenderer.setPath(!entityRenderer.isPath()));
 			debug.add(pathDebug);
 
 			add(debug);
@@ -150,25 +173,25 @@ public class BotToolbar extends JMenuBar
 			developer.add(scriptInspectorItem);
 
 			JRadioButton gameObjectsBtn = new JRadioButton("Game Objects");
-			gameObjectsBtn.addActionListener(e -> entityInspector.setGameObjects(!entityInspector.isGameObjects()));
+			gameObjectsBtn.addActionListener(e -> entityRenderer.setGameObjects(!entityRenderer.isGameObjects()));
 			JRadioButton wallObjectsBtn = new JRadioButton("Wall Objects");
-			wallObjectsBtn.addActionListener(e -> entityInspector.setWallObjects(!entityInspector.isWallObjects()));
+			wallObjectsBtn.addActionListener(e -> entityRenderer.setWallObjects(!entityRenderer.isWallObjects()));
 			JRadioButton decorativeObjectsBtn = new JRadioButton("Decorative Objects");
-			decorativeObjectsBtn.addActionListener(e -> entityInspector.setDecorativeObjects(!entityInspector.isDecorativeObjects()));
+			decorativeObjectsBtn.addActionListener(e -> entityRenderer.setDecorativeObjects(!entityRenderer.isDecorativeObjects()));
 			JRadioButton groundObjectsBtn = new JRadioButton("Ground Objects");
-			groundObjectsBtn.addActionListener(e -> entityInspector.setGroundObjects(!entityInspector.isGroundObjects()));
+			groundObjectsBtn.addActionListener(e -> entityRenderer.setGroundObjects(!entityRenderer.isGroundObjects()));
 			JRadioButton npcsBtn = new JRadioButton("NPCs");
-			npcsBtn.addActionListener(e -> entityInspector.setNpcs(!entityInspector.isNpcs()));
+			npcsBtn.addActionListener(e -> entityRenderer.setNpcs(!entityRenderer.isNpcs()));
 			JRadioButton playersBtn = new JRadioButton("Players");
-			playersBtn.addActionListener(e -> entityInspector.setPlayers(!entityInspector.isPlayers()));
+			playersBtn.addActionListener(e -> entityRenderer.setPlayers(!entityRenderer.isPlayers()));
 			JRadioButton tileItemsBtn = new JRadioButton("Tile Items");
-			tileItemsBtn.addActionListener(e -> entityInspector.setTileItems(!entityInspector.isTileItems()));
+			tileItemsBtn.addActionListener(e -> entityRenderer.setTileItems(!entityRenderer.isTileItems()));
 			JRadioButton inventoryBtn = new JRadioButton("Inventory");
-			inventoryBtn.addActionListener(e -> entityInspector.setInventory(!entityInspector.isInventory()));
+			inventoryBtn.addActionListener(e -> entityRenderer.setInventory(!entityRenderer.isInventory()));
 			JRadioButton projectilesBtn = new JRadioButton("Projectiles");
-			projectilesBtn.addActionListener(e -> entityInspector.setProjectiles(!entityInspector.isProjectiles()));
+			projectilesBtn.addActionListener(e -> entityRenderer.setProjectiles(!entityRenderer.isProjectiles()));
 			JRadioButton tileLocationBtn = new JRadioButton("Tile Location");
-			tileLocationBtn.addActionListener(e -> entityInspector.setTileLocation(!entityInspector.isTileLocation()));
+			tileLocationBtn.addActionListener(e -> entityRenderer.setTileLocation(!entityRenderer.isTileLocation()));
 
 			developer.add(gameObjectsBtn);
 			developer.add(wallObjectsBtn);

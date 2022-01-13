@@ -143,7 +143,7 @@ public abstract class HTileObjectMixin implements TileObject
 		int x = screenCoords != null ? screenCoords.getX() : -1;
 		int y = screenCoords != null ? screenCoords.getY() : -1;
 
-		client.interact(identifier, opcode, param0, param1, x, y);
+		client.interact(identifier, opcode, param0, param1, x, y, getTag());
 	}
 
 	@Inject
@@ -151,5 +151,12 @@ public abstract class HTileObjectMixin implements TileObject
 	public void interact(int index, int menuAction)
 	{
 		interact(getId(), menuAction, menuPoint().getX(), menuPoint().getY());
+	}
+
+	@Inject
+	@Override
+	public long getTag()
+	{
+		return getHash();
 	}
 }

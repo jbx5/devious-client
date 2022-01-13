@@ -1,28 +1,25 @@
 package dev.hoot.api.scene;
 
 import dev.hoot.api.game.Game;
+import dev.hoot.api.widgets.Widgets;
+import net.runelite.api.Client;
 import net.runelite.api.Constants;
-import net.runelite.api.DecorativeObject;
-import net.runelite.api.GameObject;
-import net.runelite.api.GroundObject;
-import net.runelite.api.NPC;
-import net.runelite.api.Scene;
+import net.runelite.api.Point;
+import net.runelite.api.RenderOverview;
 import net.runelite.api.Tile;
-import net.runelite.api.TileObject;
-import net.runelite.api.WallObject;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import net.runelite.api.widgets.Widget;
+import net.runelite.api.widgets.WidgetInfo;
 
+import java.awt.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.function.Predicate;
 
 public class Tiles
 {
-	private static final Logger log = LoggerFactory.getLogger(Tiles.class);
-
 	public static List<Tile> getTiles(Predicate<Tile> filter)
 	{
 		List<Tile> out = new ArrayList<>();
@@ -59,15 +56,19 @@ public class Tiles
 
 	public static Tile getAt(int worldX, int worldY, int plane)
 	{
-		if (!WorldPoint.isInScene(Game.getClient(), worldX, worldY))
+		Client client = Game.getClient();
+		int correctedX = worldX < Constants.REGION_SIZE ? worldX + client.getBaseX() : worldX;
+		int correctedY = worldY < Constants.REGION_SIZE ? worldY + client.getBaseY() : worldY;
+
+		if (!WorldPoint.isInScene(client, correctedX, correctedY))
 		{
 			return null;
 		}
 
-		int x = worldX - Game.getClient().getBaseX();
-		int y = worldY - Game.getClient().getBaseY();
+		int x = correctedX - client.getBaseX();
+		int y = correctedY - client.getBaseY();
 
-		return Game.getClient().getScene().getTiles()[plane][x][y];
+		return client.getScene().getTiles()[plane][x][y];
 	}
 
 	public static Tile getHoveredTile()
@@ -75,44 +76,37 @@ public class Tiles
 		return Game.getClient().getSelectedSceneTile();
 	}
 
-	private static TileObject findTileObject(int x, int y, int id)
+	public static List<WorldPoint> getWorldMapTiles(int plane)
 	{
-		Scene scene = Game.getClient().getScene();
-		Tile[][][] tiles = scene.getTiles();
-		Tile tile = tiles[Game.getClient().getPlane()][x][y];
-		if (tile != null)
+		Widget worldMap = Widgets.get(WidgetInfo.WORLD_MAP_VIEW);
+		if (worldMap == null)
 		{
-			for (GameObject gameObject : tile.getGameObjects())
-			{
-				if (gameObject != null && gameObject.getId() == id)
-				{
-					return gameObject;
-				}
-			}
+			return Collections.emptyList();
+		}
 
-			WallObject wallObject = tile.getWallObject();
-			if (wallObject != null && wallObject.getId() == id)
-			{
-				return wallObject;
-			}
+		List<WorldPoint> out = new ArrayList<>();
+		RenderOverview ro = Game.getClient().getRenderOverview();
 
-			DecorativeObject decorativeObject = tile.getDecorativeObject();
-			if (decorativeObject != null && decorativeObject.getId() == id)
-			{
-				return decorativeObject;
-			}
+		Rectangle worldMapRect = worldMap.getBounds();
 
-			GroundObject groundObject = tile.getGroundObject();
-			if (groundObject != null && groundObject.getId() == id)
+		float pixelsPerTile = ro.getWorldMapZoom();
+		int widthInTiles = (int) Math.ceil(worldMapRect.getWidth() / pixelsPerTile);
+		int heightInTiles = (int) Math.ceil(worldMapRect.getHeight() / pixelsPerTile);
+
+		Point worldMapPosition = ro.getWorldMapPosition();
+		int leftX = worldMapPosition.getX() - (widthInTiles / 2);
+		int rightX = leftX + widthInTiles;
+		int topY = worldMapPosition.getY() + (heightInTiles / 2);
+		int bottomY = topY - heightInTiles;
+
+		for (int x = leftX; x < rightX; x++)
+		{
+			for (int y = topY; y >= bottomY; y--)
 			{
-				return groundObject;
+				out.add(new WorldPoint(x, y, plane));
 			}
 		}
-		return null;
-	}
 
-	private static NPC findNpc(int id)
-	{
-		return Game.getClient().getCachedNPCs()[id];
+		return out;
 	}
 }

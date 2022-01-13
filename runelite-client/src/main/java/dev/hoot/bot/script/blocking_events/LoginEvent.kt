@@ -87,7 +87,7 @@ class LoginEvent : BlockingEvent() {
                     }
 
                     Game.getClient().username = gameAccount.username
-                    Game.getClient().setPassword(gameAccount.password)
+                    Game.getClient().password = gameAccount.password
                     Keyboard.sendEnter()
                     Keyboard.sendEnter()
                     return 1000

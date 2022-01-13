@@ -3,8 +3,9 @@ package dev.hoot.bot.managers
 import dev.hoot.api.game.Game
 import dev.hoot.api.input.Keyboard
 import dev.hoot.bot.Bot
+import dev.hoot.bot.config.BotConfig
 import dev.hoot.bot.config.DisableRenderCallbacks
-import dev.hoot.bot.devtools.FpsDrawListener
+import dev.hoot.bot.managers.interaction.InteractionConfig
 import dev.hoot.bot.script.events.ScriptChanged
 import dev.hoot.bot.script.events.ScriptState
 import net.runelite.client.eventbus.Subscribe
@@ -34,8 +35,9 @@ class EventManager @Inject constructor(
         private val client: Client,
         private val worldService: WorldService,
         private val scriptManager: ScriptManager,
-        private val fpsDrawListener: FpsDrawListener,
-        drawManager: DrawManager,
+        private val fpsManager: FpsManager,
+        private val interactConfig: InteractionConfig,
+        private val botConfig: BotConfig
 ) {
     private val random = Random()
     private var randomDelay = 0L
@@ -44,9 +46,6 @@ class EventManager @Inject constructor(
         private val log = LoggerFactory.getLogger(EventManager::class.java)
     }
 
-    init {
-        drawManager.registerEveryFrameListener(fpsDrawListener)
-    }
 
     private val disableRenderCallbacks = DisableRenderCallbacks()
     var worldSet = false
@@ -54,7 +53,7 @@ class EventManager @Inject constructor(
     @Suppress("UNUSED_PARAMETER")
     @Subscribe
     private fun onGameTick(e: GameTick) {
-        if (!Bot.idleChecks) {
+        if (!botConfig.neverLog()) {
             return
         }
 
@@ -88,7 +87,7 @@ class EventManager @Inject constructor(
         }
 
         when (e.key) {
-            "fpsLimit" -> fpsDrawListener.reloadConfig(e.newValue.toInt())
+            "fpsLimit" -> fpsManager.reloadConfig(e.newValue.toInt())
             "renderOff" -> {
                 val enabled = e.newValue.toBoolean()
                 client.setIsHidingEntities(enabled)
@@ -105,7 +104,7 @@ class EventManager @Inject constructor(
 
     @Subscribe
     private fun onDialogProcessed(e: DialogProcessed) {
-        if (!Bot.debugDialogs) {
+        if (!interactConfig.debugDialogs()) {
             return
         }
 

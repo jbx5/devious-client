@@ -71,8 +71,9 @@ public class Pathfinder
 			}
 
 			if ((destination.isInScene(Game.getClient())
-					&& Reachable.isObstacle(destination) && boundary.size() > 200) || boundary.size() > 1000)
+					&& Reachable.isObstacle(destination) && boundary.size() > 200) || boundary.size() > 50_000)
 			{
+				System.out.println("Path is too long, cancelling calculation");
 				break;
 			}
 

@@ -24,12 +24,16 @@
  */
 package net.runelite.cache.util;
 
-import java.util.HashMap;
-import java.util.Map;
-import net.runelite.http.api.RuneLiteAPI;
-import net.runelite.http.api.xtea.XteaClient;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
 
 public class XteaKeyManager
 {
@@ -37,11 +41,17 @@ public class XteaKeyManager
 
 	private Map<Integer, Integer[]> keys = new HashMap<>();
 
-	public void loadKeys()
+	public void loadKeys(InputStream in)
 	{
-		XteaClient xteaClient = new XteaClient(RuneLiteAPI.CLIENT);
+		// CHECKSTYLE:OFF
+		Map<Integer, Integer[]> k = new Gson()
+				.fromJson(new InputStreamReader(in, StandardCharsets.UTF_8), new TypeToken<Map<Integer, Integer[]>>() { }.getType());
+		// CHECKSTYLE:ON
 
-		keys = null;
+		for (Map.Entry<Integer, Integer[]> entry : k.entrySet())
+		{
+			keys.put(entry.getKey(), entry.getValue());
+		}
 
 		logger.info("Loaded {} keys", keys.size());
 	}

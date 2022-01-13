@@ -202,7 +202,7 @@ public class WorldPoint
 
 			// get the template chunk for the chunk
 			int[][][] instanceTemplateChunks = client.getInstanceTemplateChunks();
-			int templateChunk = instanceTemplateChunks[client.getPlane()][chunkX][chunkY];
+			int templateChunk = instanceTemplateChunks[plane][chunkX][chunkY];
 
 			int rotation = templateChunk >> 1 & 0x3;
 			int templateChunkY = (templateChunk >> 3 & 0x7FF) * CHUNK_SIZE;
@@ -637,5 +637,10 @@ public class WorldPoint
 	public int distanceTo(Locatable locatable)
 	{
 		return locatable.getWorldLocation().distanceTo(this);
+	}
+
+	public WorldArea createWorldArea(int width, int height)
+	{
+		return new WorldArea(this, width, height);
 	}
 }

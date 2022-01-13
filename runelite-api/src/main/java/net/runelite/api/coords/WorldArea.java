@@ -750,4 +750,9 @@ public class WorldArea
 	{
 		return contains(locatable.getWorldLocation());
 	}
+
+	public WorldPoint getCenter()
+	{
+		return new WorldPoint(x + (width / 2), y + (height / 2), plane);
+	}
 }

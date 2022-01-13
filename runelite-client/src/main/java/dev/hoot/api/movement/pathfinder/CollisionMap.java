@@ -38,6 +38,11 @@ public interface CollisionMap
 		return s(x, y, z) && w(x, y - 1, z) && w(x, y, z) && s(x - 1, y, z);
 	}
 
+	// Full block (like gameobjects)
+	default boolean fullBlock(int x, int y, int z)
+	{
+		return !n(x, y, z) && !s(x, y, z) && !w(x, y, z) && !e(x, y, z);
+	}
 
 	default boolean n(WorldPoint worldPoint)
 	{
@@ -78,4 +83,11 @@ public interface CollisionMap
 	{
 		return sw(worldPoint.getX(), worldPoint.getY(), worldPoint.getPlane());
 	}
+
+	default boolean fullBlock(WorldPoint worldPoint)
+	{
+		return !n(worldPoint) && !s(worldPoint) && !w(worldPoint) && !e(worldPoint);
+	}
+
+
 }

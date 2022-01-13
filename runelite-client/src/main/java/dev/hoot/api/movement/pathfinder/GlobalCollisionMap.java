@@ -45,8 +45,8 @@ public class GlobalCollisionMap implements CollisionMap
 		}
 
 		try (ByteArrayOutputStream bos = new ByteArrayOutputStream(bytes.length);
-			GZIPOutputStream gos = new GZIPOutputStream(bos);
-			FileOutputStream fos = new FileOutputStream(fileLoc))
+			 GZIPOutputStream gos = new GZIPOutputStream(bos);
+			 FileOutputStream fos = new FileOutputStream(fileLoc))
 		{
 			gos.write(bytes);
 			gos.finish();

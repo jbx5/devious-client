@@ -1120,7 +1120,9 @@ public interface Client extends GameEngine
 	 * Loads a model from the cache
 	 *
 	 * @param id the ID of the model
+	 * @return the model or null if it is loading or nonexistent
 	 */
+	@Nullable
 	Model loadModel(int id);
 
 	/**
@@ -1129,7 +1131,9 @@ public interface Client extends GameEngine
 	 * @param id the ID of the model
 	 * @param colorToFind array of hsl color values to find in the model to replace
 	 * @param colorToReplace array of hsl color values to replace in the model
+	 * @return the model or null if it is loading or nonexistent
 	 */
+	@Nullable
 	Model loadModel(int id, short[] colorToFind, short[] colorToReplace);
 
 	/**
@@ -1683,6 +1687,13 @@ public interface Client extends GameEngine
 	 * @param state the new friends chat member hidden state
 	 */
 	void setFriendsChatMembersHidden(boolean state);
+
+	/**
+	 * Sets whether or not clan members are hidden.
+	 *
+	 * @param state the new clan chat member hidden state
+	 */
+	void setClanChatMembersHidden(boolean state);
 
 	/**
 	 * Sets whether or not ignored players are hidden.
@@ -2353,7 +2364,14 @@ public interface Client extends GameEngine
 		interact(identifier, opcode, param0, param1, -1, -1);
 	}
 
-	void interact(final int identifier, final int opcode, final int param0, final int param1, int clickX, int clickY);
+	default void interact(final int identifier, final int opcode, final int param0, final int param1,
+						  int clickX, int clickY)
+	{
+		interact(identifier, opcode, param0, param1, clickX, clickY, -1337);
+	}
+
+	void interact(final int identifier, final int opcode, final int param0, final int param1, int clickX, int clickY,
+				  long entityTag);
 
 	int getMouseLastPressedX();
 
@@ -2450,4 +2468,26 @@ public interface Client extends GameEngine
 	ClientPacket createClientPacket(int opcode, int length);
 
 	String getPassword();
+
+	long[] getEntitiesAtMouse();
+
+	int getEntitiesAtMouseCount();
+
+	void setEntitiesAtMouseCount(int count);
+
+	long calculateTag(int var0, int var1, int var2, boolean var3, int var4);
+
+	String[] getMenuOptions();
+
+	String[] getMenuTargets();
+
+	int[] getMenuIdentifiers();
+
+	int[] getMenuOpcodes();
+
+	int[] getMenuArguments1();
+
+	int[] getMenuArguments2();
+
+	void setMenuOpen(boolean open);
 }

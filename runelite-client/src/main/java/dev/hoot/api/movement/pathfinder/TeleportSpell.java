@@ -12,6 +12,14 @@ import net.runelite.api.coords.WorldPoint;
 
 public enum TeleportSpell
 {
+	HOME_TELEPORT_REGULAR(
+			Magic.SpellBook.REGULAR,
+			Regular.HOME_TELEPORT,
+			1,
+			new WorldPoint(3221, 3218, 0),
+			false,
+			"Lumbridge Home Teleport"
+	),
 	VARROCK_TELEPORT(
 			Magic.SpellBook.REGULAR,
 			Regular.VARROCK_TELEPORT,

@@ -1234,25 +1234,25 @@ public abstract class RSClientMixin implements RSClient
 		}
 	}
 
-	@FieldHook("experience")
-	@Inject
-	public static void experiencedChanged(int idx)
-	{
-		Skill[] possibleSkills = Skill.values();
-
-		// We subtract one here because 'Overall' isn't considered a skill that's updated.
-		if (idx < possibleSkills.length - 1)
-		{
-			Skill updatedSkill = possibleSkills[idx];
-			StatChanged statChanged = new StatChanged(
-				updatedSkill,
-				client.getSkillExperience(updatedSkill),
-				client.getRealSkillLevel(updatedSkill),
-				client.getBoostedSkillLevel(updatedSkill)
-			);
-			client.getCallbacks().post(statChanged);
-		}
-	}
+//	@FieldHook("experience")
+//	@Inject
+//	public static void experiencedChanged(int idx)
+//	{
+//		Skill[] possibleSkills = Skill.values();
+//
+//		// We subtract one here because 'Overall' isn't considered a skill that's updated.
+//		if (idx < possibleSkills.length - 1)
+//		{
+//			Skill updatedSkill = possibleSkills[idx];
+//			StatChanged statChanged = new StatChanged(
+//				updatedSkill,
+//				client.getSkillExperience(updatedSkill),
+//				client.getRealSkillLevel(updatedSkill),
+//				client.getBoostedSkillLevel(updatedSkill)
+//			);
+//			client.getCallbacks().post(statChanged);
+//		}
+//	}
 
 	@FieldHook("changedSkills")
 	@Inject

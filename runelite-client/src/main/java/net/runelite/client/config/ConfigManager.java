@@ -101,7 +101,6 @@ import net.runelite.client.events.RuneScapeProfileChanged;
 import net.runelite.client.plugins.OPRSExternalPluginManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.util.ColorUtil;
-import net.runelite.http.api.config.ConfigClient;
 import net.runelite.http.api.config.ConfigEntry;
 import net.runelite.http.api.config.Configuration;
 import okhttp3.OkHttpClient;
@@ -759,7 +758,7 @@ public class ConfigManager
 		}
 	}
 
-	Object stringToObject(String str, Type type)
+	public Object stringToObject(String str, Type type)
 	{
 		if (type == boolean.class || type == Boolean.class)
 		{
@@ -882,7 +881,7 @@ public class ConfigManager
 	}
 
 	@Nullable
-	String objectToString(Object object)
+	public String objectToString(Object object)
 	{
 		if (object instanceof Color)
 		{

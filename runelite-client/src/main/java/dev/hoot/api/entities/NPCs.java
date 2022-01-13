@@ -12,6 +12,10 @@ import java.util.stream.Collectors;
 
 public class NPCs extends Entities<NPC>
 {
+	private NPCs()
+	{
+	}
+	
 	private static final NPCs NPCS = new NPCs();
 
 	@Override

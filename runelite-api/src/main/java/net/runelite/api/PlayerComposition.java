@@ -79,4 +79,6 @@ public interface PlayerComposition
 	void setHash();
 
 	void setTransformedNpcId(int id);
+
+	long getHash();
 }

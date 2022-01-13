@@ -6,6 +6,7 @@ import com.google.common.primitives.Ints;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.miginfocom.swing.MigLayout;
+import net.runelite.api.Client;
 import net.runelite.api.events.ConfigButtonClicked;
 import net.runelite.api.util.Text;
 import net.runelite.client.config.Button;
@@ -48,21 +49,22 @@ public class ConfigPanel extends PluginPanel
 	private final FixedWidthPanel mainPanel;
 	private final JLabel title;
 
-	private final BotConfigManager configManager;
+	private final ConfigManager configManager;
 	private final EventBus eventBus;
-
 	private final ConfigurationDescriptor configurationDescriptor;
+	private final Client client;
 
 	public ConfigPanel(
-			BotConfigManager configManager,
+			ConfigManager configManager,
 			EventBus eventBus,
-			ConfigurationDescriptor configurationDescriptor
-	)
+			ConfigurationDescriptor configurationDescriptor,
+			Client client)
 	{
 		super(false);
 		this.configManager = configManager;
 		this.eventBus = eventBus;
 		this.configurationDescriptor = configurationDescriptor;
+		this.client = client;
 
 		eventBus.register(this);
 
@@ -96,6 +98,11 @@ public class ConfigPanel extends PluginPanel
 		if (frame != null)
 		{
 			frame.setVisible(!frame.isVisible());
+
+			if (frame.isVisible())
+			{
+				frame.setLocationRelativeTo(client.getCanvas());
+			}
 		}
 	}
 
@@ -115,15 +122,6 @@ public class ConfigPanel extends PluginPanel
 		frame.add(this);
 
 		frame.pack();
-
-		Point centerPoint = GraphicsEnvironment
-				.getLocalGraphicsEnvironment()
-				.getCenterPoint();
-
-		centerPoint.x -= (getWidth() / 2);
-		centerPoint.y -= (getHeight() / 2);
-
-		frame.setLocation(centerPoint);
 	}
 
 	private void rebuild()

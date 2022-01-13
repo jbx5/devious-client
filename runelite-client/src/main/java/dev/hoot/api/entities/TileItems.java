@@ -5,6 +5,7 @@ import dev.hoot.api.game.GameThread;
 import dev.hoot.api.scene.Tiles;
 import net.runelite.api.Tile;
 import net.runelite.api.TileItem;
+import net.runelite.api.coords.WorldArea;
 import net.runelite.api.coords.WorldPoint;
 
 import java.util.ArrayList;
@@ -13,17 +14,13 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-public class TileItems extends Entities<TileItem>
+public class TileItems extends TileEntities<TileItem>
 {
-	private static final TileItems TILE_ITEMS = new TileItems();
-
-	@Override
-	protected List<TileItem> all(Predicate<? super TileItem> filter)
+	private TileItems()
 	{
-		return Tiles.getTiles().stream()
-				.flatMap(tile -> parseTile(tile, filter).stream())
-				.collect(Collectors.toList());
 	}
+
+	private static final TileItems TILE_ITEMS = new TileItems();
 
 	public static List<TileItem> getAll(Predicate<TileItem> filter)
 	{
@@ -102,39 +99,12 @@ public class TileItems extends Entities<TileItem>
 
 	public static List<TileItem> getAt(Tile tile, int... ids)
 	{
-		return getAt(tile, x ->
-		{
-			for (int id : ids)
-			{
-				if (id == x.getId())
-				{
-					return true;
-				}
-			}
-
-			return false;
-		});
+		return TILE_ITEMS.at(tile, ids);
 	}
 
 	public static List<TileItem> getAt(Tile tile, String... names)
 	{
-		return getAt(tile, x ->
-		{
-			if (x.getName() == null)
-			{
-				return false;
-			}
-
-			for (String name : names)
-			{
-				if (name.equals(x.getName()))
-				{
-					return true;
-				}
-			}
-
-			return false;
-		});
+		return TILE_ITEMS.at(tile, names);
 	}
 
 	public static List<TileItem> getAt(Tile tile, Predicate<TileItem> filter)
@@ -144,7 +114,7 @@ public class TileItems extends Entities<TileItem>
 			return Collections.emptyList();
 		}
 
-		return parseTile(tile, filter);
+		return TILE_ITEMS.at(tile, filter);
 	}
 
 	public static TileItem getFirstAt(int worldX, int worldY, int plane, int... ids)
@@ -222,61 +192,34 @@ public class TileItems extends Entities<TileItem>
 		return getSurrounding(worldPoint, radius, filter).stream().findFirst().orElse(null);
 	}
 
+	public static TileItem getFirstSurrounding(Tile tile, int radius, int... ids)
+	{
+		return getSurrounding(tile, radius, ids).stream().findFirst().orElse(null);
+	}
+
+	public static TileItem getFirstSurrounding(Tile tile, int radius, String... names)
+	{
+		return getSurrounding(tile, radius, names).stream().findFirst().orElse(null);
+	}
+
+	public static TileItem getFirstSurrounding(Tile tile, int radius, Predicate<TileItem> filter)
+	{
+		return getSurrounding(tile, radius, filter).stream().findFirst().orElse(null);
+	}
+
 	public static List<TileItem> getSurrounding(int worldX, int worldY, int plane, int radius, int... ids)
 	{
-		return getSurrounding(worldX, worldY, plane, radius, x ->
-		{
-			for (int id : ids)
-			{
-				if (id == x.getId())
-				{
-					return true;
-				}
-			}
-
-			return false;
-		});
+		return TILE_ITEMS.surrounding(worldX, worldY, plane, radius, ids);
 	}
 
 	public static List<TileItem> getSurrounding(int worldX, int worldY, int plane, int radius, String... names)
 	{
-		return getSurrounding(worldX, worldY, plane, radius, x ->
-		{
-			if (x.getName() == null)
-			{
-				return false;
-			}
-
-			for (String name : names)
-			{
-				if (name.equals(x.getName()))
-				{
-					return true;
-				}
-			}
-
-			return false;
-		});
+		return TILE_ITEMS.surrounding(worldX, worldY, plane, radius, names);
 	}
 
 	public static List<TileItem> getSurrounding(int worldX, int worldY, int plane, int radius, Predicate<TileItem> filter)
 	{
-		List<TileItem> out = new ArrayList<>();
-		for (int x = -radius; x <= radius; x++)
-		{
-			for (int y = -radius; y <= radius; y++)
-			{
-				Tile tile = Tiles.getAt(worldX + x, worldY + y, plane);
-				if (tile == null)
-				{
-					continue;
-				}
-
-				out.addAll(getAt(tile, filter));
-			}
-		}
-
-		return out;
+		return TILE_ITEMS.surrounding(worldX, worldY, plane, radius, filter);
 	}
 
 	public static List<TileItem> getSurrounding(WorldPoint worldPoint, int radius, int... ids)
@@ -294,9 +237,53 @@ public class TileItems extends Entities<TileItem>
 		return getSurrounding(worldPoint.getX(), worldPoint.getY(), worldPoint.getPlane(), radius, filter);
 	}
 
-	private static List<TileItem> parseTile(Tile tile, Predicate<? super TileItem> pred)
+	public static List<TileItem> getSurrounding(Tile tile, int radius, int... ids)
+	{
+		return getSurrounding(tile.getWorldX(), tile.getWorldY(), tile.getPlane(), radius, ids);
+	}
+
+	public static List<TileItem> getSurrounding(Tile tile, int radius, String... names)
+	{
+		return getSurrounding(tile.getWorldX(), tile.getWorldY(), tile.getPlane(), radius, names);
+	}
+
+	public static List<TileItem> getSurrounding(Tile tile, int radius, Predicate<TileItem> filter)
+	{
+		return getSurrounding(tile.getWorldX(), tile.getWorldY(), tile.getPlane(), radius, filter);
+	}
+
+	public static List<TileItem> within(WorldArea area, String... names)
+	{
+		return TILE_ITEMS.in(area, names);
+	}
+
+	public static List<TileItem> within(WorldArea area, int... ids)
+	{
+		return TILE_ITEMS.in(area, ids);
+	}
+
+	public static List<TileItem> within(WorldArea area, Predicate<TileItem> filter)
+	{
+		return TILE_ITEMS.in(area, filter);
+	}
+
+	@Override
+	protected List<TileItem> all(Predicate<? super TileItem> filter)
+	{
+		return Tiles.getTiles().stream()
+				.flatMap(tile -> at(tile, filter).stream())
+				.collect(Collectors.toList());
+	}
+
+	@Override
+	protected List<TileItem> at(Tile tile, Predicate<? super TileItem> filter)
 	{
 		List<TileItem> out = new ArrayList<>();
+		if (tile == null)
+		{
+			return out;
+		}
+
 		if (tile.getGroundItems() != null)
 		{
 			for (TileItem item : tile.getGroundItems())
@@ -311,7 +298,7 @@ public class TileItems extends Entities<TileItem>
 					GameThread.invokeLater(() -> Game.getClient().getItemComposition(item.getId()));
 				}
 
-				if (!pred.test(item))
+				if (!filter.test(item))
 				{
 					continue;
 				}

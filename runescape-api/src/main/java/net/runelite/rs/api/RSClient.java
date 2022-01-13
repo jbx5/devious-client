@@ -1674,4 +1674,10 @@ public interface RSClient extends RSGameEngine, Client
 	@Override
 	String getPassword();
 
+	@Import("calculateTag")
+	long calculateTag(int var0, int var1, int var2, boolean var3, int var4);
+
+	@Import("isMenuOpen")
+	@Override
+	void setMenuOpen(boolean open);
 }

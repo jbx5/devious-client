@@ -32,10 +32,11 @@ import com.google.inject.Inject;
 import com.google.inject.Injector;
 import com.openosrs.client.OpenOSRS;
 import dev.hoot.bot.account.GameAccount;
-import dev.hoot.bot.config.BotConfigManager;
+import dev.hoot.bot.config.BotConfig;
 import dev.hoot.bot.managers.EventManager;
-import dev.hoot.bot.managers.InteractManager;
+import dev.hoot.bot.managers.FpsManager;
 import dev.hoot.bot.managers.ScriptManager;
+import dev.hoot.bot.managers.interaction.InteractionManager;
 import dev.hoot.bot.script.ScriptEntry;
 import dev.hoot.bot.script.ScriptMeta;
 import dev.hoot.bot.script.paint.Paint;
@@ -47,16 +48,18 @@ import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.api.Constants;
 import net.runelite.client.ClassPreloader;
-import net.runelite.client.RuneLite;
 import net.runelite.client.RuneLiteProperties;
+import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.rs.ClientLoader;
 import net.runelite.client.rs.ClientUpdateCheckMode;
+import net.runelite.client.ui.DrawManager;
 import net.runelite.client.ui.FatalErrorDialog;
 import net.runelite.client.ui.overlay.OverlayManager;
 import net.runelite.http.api.RuneLiteAPI;
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
 import okhttp3.Response;
 import org.slf4j.LoggerFactory;
 
@@ -80,33 +83,27 @@ import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.cert.X509Certificate;
-import java.util.HashMap;
 import java.util.Locale;
-import java.util.Map;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Stream;
 
 import static java.nio.file.StandardCopyOption.COPY_ATTRIBUTES;
+import static net.runelite.client.RuneLite.USER_AGENT;
 
 @Singleton
 @Slf4j
 public class Bot
 {
-	public static final File BOT_DIR = new File(System.getProperty("user.home"), ".hoot");
+	public static final File BOT_DIR = new File(System.getProperty("user.home"), ".openosrs");
 	public static final File CACHE_DIR = new File(BOT_DIR, "cache");
 	public static final File LOGS_DIR = new File(BOT_DIR, "logs");
 	public static final File DEFAULT_CONFIG_FILE = new File(BOT_DIR, "settings.properties");
 	public static final File DATA_DIR = new File(BOT_DIR, "data");
 	public static final File SCRIPTS_DIR = new File(BOT_DIR, "scripts");
-	public static final File CONFIG_FILE = new File(BOT_DIR, "hoot.properties");
-	public static final Map<String, File> CONFIG_FILES = new HashMap<>();
 
 	private static final int MAX_OKHTTP_CACHE_SIZE = 20 * 1024 * 1024; // 20mb
 
 	public static GameAccount gameAccount = null;
-	public static boolean debugMouse;
-	public static boolean debugMenuAction;
-	public static boolean debugDialogs;
-	public static boolean idleChecks = true;
 
 	@Getter
 	private static Injector injector;
@@ -115,7 +112,7 @@ public class Bot
 	private EventBus eventBus;
 
 	@Inject
-	private BotConfigManager configManager;
+	private ConfigManager configManager;
 
 	@Inject
 	private BotUI botUI;
@@ -144,7 +141,16 @@ public class Bot
 	private EventManager eventManager;
 
 	@Inject
-	private InteractManager interactManager;
+	private InteractionManager interactionManager;
+
+	@Inject
+	private DrawManager drawManager;
+
+	@Inject
+	private FpsManager fpsManager;
+
+	@Inject
+	private BotConfig botConfig;
 
 	public static void main(String[] args) throws Exception
 	{
@@ -169,11 +175,6 @@ public class Bot
 			.withRequiredArg()
 			.withValuesConvertedBy(new ConfigFileConverter())
 			.defaultsTo(DEFAULT_CONFIG_FILE);
-
-		final ArgumentAcceptingOptionSpec<File> hootConfigFile = parser.accepts("hoot", "Use a specified config file")
-				.withRequiredArg()
-				.withValuesConvertedBy(new ConfigFileConverter())
-				.defaultsTo(CONFIG_FILE);
 
 		var accInfo = parser
 				.accepts("account")
@@ -254,17 +255,8 @@ public class Bot
 
 		OpenOSRS.preload();
 
-		OkHttpClient.Builder okHttpClientBuilder = RuneLiteAPI.CLIENT.newBuilder();
-		setupCache(okHttpClientBuilder, new File(RuneLite.CACHE_DIR, "okhttp"));
-		setupCache(okHttpClientBuilder, new File(CACHE_DIR, "okhttp"));
-
-		final boolean insecureSkipTlsVerification = options.has("insecure-skip-tls-verification");
-		if (insecureSkipTlsVerification || RuneLiteProperties.isInsecureSkipTlsVerification())
-		{
-			setupInsecureTrustManager(okHttpClientBuilder);
-		}
-
-		final OkHttpClient okHttpClient = okHttpClientBuilder.build();
+		final OkHttpClient okHttpClient = buildHttpClient(options.has("insecure-skip-tls-verification"));
+		RuneLiteAPI.CLIENT = okHttpClient;
 
 		try
 		{
@@ -284,9 +276,6 @@ public class Bot
 				RuneLiteProperties.getLauncherVersion(), args.length == 0 ? "none" : String.join(" ", args));
 
 			final long start = System.currentTimeMillis();
-
-			CONFIG_FILES.put("hoot", options.valueOf(hootConfigFile));
-			CONFIG_FILES.put("runelite", options.valueOf(configfile));
 
 			injector = Guice.createInjector(new BotModule(
 				okHttpClient,
@@ -347,9 +336,11 @@ public class Bot
 		configManager.load();
 
 		botToolbar.init();
+		drawManager.registerEveryFrameListener(fpsManager);
+		fpsManager.reloadConfig(botConfig.fpsLimit());
 		eventBus.register(botToolbar);
 		eventBus.register(eventManager);
-		eventBus.register(interactManager);
+		eventBus.register(interactionManager);
 		overlayManager.add(paint);
 
 		initArgs(options);
@@ -414,22 +405,40 @@ public class Bot
 	}
 
 	@VisibleForTesting
-	static void setupCache(OkHttpClient.Builder builder, File cacheDir)
+	static OkHttpClient buildHttpClient(boolean insecureSkipTlsVerification)
 	{
-		builder.cache(new Cache(cacheDir, MAX_OKHTTP_CACHE_SIZE))
-			.addNetworkInterceptor(chain ->
-			{
-				// This has to be a network interceptor so it gets hit before the cache tries to store stuff
-				Response res = chain.proceed(chain.request());
-				if (res.code() >= 400 && "GET".equals(res.request().method()))
+		OkHttpClient.Builder builder = new OkHttpClient.Builder()
+				.pingInterval(30, TimeUnit.SECONDS)
+				.addNetworkInterceptor(chain ->
 				{
-					// if the request 404'd we don't want to cache it because its probably temporary
-					res = res.newBuilder()
-						.header("Cache-Control", "no-store")
-						.build();
-				}
-				return res;
-			});
+					Request userAgentRequest = chain.request()
+							.newBuilder()
+							.header("User-Agent", USER_AGENT)
+							.build();
+					return chain.proceed(userAgentRequest);
+				})
+				// Setup cache
+				.cache(new Cache(new File(CACHE_DIR, "okhttp"), MAX_OKHTTP_CACHE_SIZE))
+				.addNetworkInterceptor(chain ->
+				{
+					// This has to be a network interceptor so it gets hit before the cache tries to store stuff
+					Response res = chain.proceed(chain.request());
+					if (res.code() >= 400 && "GET".equals(res.request().method()))
+					{
+						// if the request 404'd we don't want to cache it because its probably temporary
+						res = res.newBuilder()
+								.header("Cache-Control", "no-store")
+								.build();
+					}
+					return res;
+				});
+
+		if (insecureSkipTlsVerification || RuneLiteProperties.isInsecureSkipTlsVerification())
+		{
+			setupInsecureTrustManager(builder);
+		}
+
+		return builder.build();
 	}
 
 	private static void setupInsecureTrustManager(OkHttpClient.Builder okHttpClientBuilder)
@@ -481,7 +490,7 @@ public class Bot
 	private static void copyJagexCache()
 	{
 		Path from = Paths.get(System.getProperty("user.home"), "jagexcache");
-		Path to = Paths.get(System.getProperty("user.home"), ".hoot", "jagexcache");
+		Path to = Paths.get(System.getProperty("user.home"), ".openosrs", "jagexcache");
 		if (Files.exists(to) || !Files.exists(from))
 		{
 			return;
@@ -523,7 +532,7 @@ public class Bot
 		if (options.has("script"))
 		{
 			String script = (String) options.valueOf("script");
-			String[] args = null;
+			String[] args = new String[0];
 
 			if (options.has("scriptArgs"))
 			{

@@ -67,7 +67,7 @@ public abstract class HTileItemMixin implements RSTileItem
 		int x = screenCoords != null ? screenCoords.getX() : -1;
 		int y = screenCoords != null ? screenCoords.getY() : -1;
 
-		client.interact(identifier, opcode, param0, param1, x, y);
+		client.interact(identifier, opcode, param0, param1, x, y, getTag());
 	}
 
 	@Inject
@@ -151,5 +151,12 @@ public abstract class HTileItemMixin implements RSTileItem
 	private Point getScreenCoords()
 	{
 		return Perspective.localToCanvas(client, getLocalLocation(), client.getPlane());
+	}
+
+	@Inject
+	@Override
+	public long getTag()
+	{
+		return client.calculateTag(getTile().getWorldX(), getTile().getWorldY(), 3, false, 0);
 	}
 }

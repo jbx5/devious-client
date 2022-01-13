@@ -21,6 +21,10 @@ import java.util.function.Supplier;
 
 public class Bank extends Items
 {
+	private Bank()
+	{
+	}
+
 	private static final Bank BANK = new Bank();
 	private static final int WITHDRAW_MODE_VARBIT = 3958;
 	private static final int QUANTITY_MODE_VARP = 6590;
@@ -388,14 +392,44 @@ public class Bank extends Items
 		return BANK.exists(filter);
 	}
 
-	public static boolean contains(int id)
+	public static boolean contains(int... id)
 	{
 		return BANK.exists(id);
 	}
 
-	public static boolean contains(String name)
+	public static boolean contains(String... name)
 	{
 		return BANK.exists(name);
+	}
+
+	public static int getCount(boolean stacks, Predicate<Item> filter)
+	{
+		return BANK.count(stacks, filter);
+	}
+
+	public static int getCount(boolean stacks, int... ids)
+	{
+		return BANK.count(stacks, ids);
+	}
+
+	public static int getCount(boolean stacks, String... names)
+	{
+		return BANK.count(stacks, names);
+	}
+
+	public static int getCount(Predicate<Item> filter)
+	{
+		return BANK.count(false, filter);
+	}
+
+	public static int getCount(int... ids)
+	{
+		return BANK.count(false, ids);
+	}
+
+	public static int getCount(String... names)
+	{
+		return BANK.count(false, names);
 	}
 
 	public static List<Widget> getTabs()

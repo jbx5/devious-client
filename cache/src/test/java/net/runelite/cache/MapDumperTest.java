@@ -27,11 +27,6 @@ package net.runelite.cache;
 import com.google.common.io.Files;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import java.io.File;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
 import net.runelite.cache.definitions.LocationsDefinition;
 import net.runelite.cache.definitions.MapDefinition;
 import net.runelite.cache.definitions.loaders.LocationsLoader;
@@ -47,6 +42,13 @@ import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 
 public class MapDumperTest
 {
@@ -65,7 +67,7 @@ public class MapDumperTest
 		File base = StoreLocation.LOCATION,
 			outDir = folder.newFolder();
 		XteaKeyManager keyManager = new XteaKeyManager();
-		keyManager.loadKeys();
+		keyManager.loadKeys(new URL("https://xtea.openosrs.dev/get").openStream());
 
 		try (Store store = new Store(base))
 		{
@@ -122,7 +124,7 @@ public class MapDumperTest
 		Storage storage = store.getStorage();
 		Index index = store.getIndex(IndexType.MAPS);
 		XteaKeyManager keyManager = new XteaKeyManager();
-		keyManager.loadKeys();
+		keyManager.loadKeys(new URL("https://xtea.openosrs.dev/get").openStream());
 
 		for (int i = 0; i < MAX_REGIONS; ++i)
 		{
@@ -170,7 +172,8 @@ public class MapDumperTest
 	public void dumpJson() throws IOException
 	{
 		File base = StoreLocation.LOCATION,
-			outDir = folder.newFolder();
+			outDir = new File(System.getProperty("user.home"), "regions-dump");
+		outDir.mkdirs();
 
 		try (Store store = new Store(base))
 		{

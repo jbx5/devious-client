@@ -1,5 +1,7 @@
 package dev.hoot.api.movement.pathfinder;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import dev.hoot.api.entities.NPCs;
 import dev.hoot.api.entities.Players;
 import dev.hoot.api.entities.TileObjects;
@@ -9,10 +11,13 @@ import dev.hoot.api.game.Worlds;
 import dev.hoot.api.items.Inventory;
 import dev.hoot.api.movement.Movement;
 import dev.hoot.api.movement.Reachable;
+import dev.hoot.api.quests.Quest;
 import dev.hoot.api.widgets.Dialog;
 import dev.hoot.api.widgets.Widgets;
+import lombok.Value;
 import net.runelite.api.Item;
 import net.runelite.api.NPC;
+import net.runelite.api.QuestState;
 import net.runelite.api.Skill;
 import net.runelite.api.TileObject;
 import net.runelite.api.coords.Direction;
@@ -25,16 +30,19 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.time.Instant;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import static net.runelite.api.MenuAction.WIDGET_TYPE_6;
 
 public class TransportLoader
 {
-	private static final int TREE_GNOME_VILLAGE_VARBIT = 111;
-	private static final int GRAND_TREE_VARBIT = 150;
-	private static final int RFD_VARBIT = 1850;
+	private static final Gson GSON = new GsonBuilder().create();
 	private static final int BUILD_DELAY_SECONDS = 5;
 	private static Instant lastBuild = Instant.now().minusSeconds(6);
 	private static final List<Transport> STATIC_TRANSPORTS = new ArrayList<>();
@@ -72,16 +80,11 @@ public class TransportLoader
 
 		try (InputStream txt = new URL(RegionManager.API_URL + "/transports").openStream())
 		{
-			String[] lines = new String(txt.readAllBytes()).split("\n");
-			for (String l : lines)
-			{
-				String line = l.trim();
-				if (line.startsWith("#") || line.isEmpty())
-				{
-					continue;
-				}
+			TransportDto[] json = GSON.fromJson(new String(txt.readAllBytes()), TransportDto[].class);
 
-				STATIC_TRANSPORTS.add(parseTransportLine(line));
+			for (TransportDto transportDto : json)
+			{
+				STATIC_TRANSPORTS.add(transportDto.toModel());
 			}
 		}
 		catch (IOException e)
@@ -132,7 +135,7 @@ public class TransportLoader
 		}
 
 		// Lumbridge castle dining room, ignore if RFD is in progress.
-		if (Vars.getBit(RFD_VARBIT) == -1)
+		if (Quest.RECIPE_FOR_DISASTER.getState() != QuestState.IN_PROGRESS)
 		{
 			transports.add(objectTransport(new WorldPoint(3213, 3221, 0), new WorldPoint(3212, 3221, 0), 12349, "Open"));
 			transports.add(objectTransport(new WorldPoint(3212, 3221, 0), new WorldPoint(3213, 3221, 0), 12349, "Open"));
@@ -218,11 +221,11 @@ public class TransportLoader
 			transports.add(npcTransport(new WorldPoint(1824, 3691, 0), new WorldPoint(3055, 3242, 1), 10727, "Port Sarim"));
 
 			// Spirit Trees
-			if (Vars.getVarp(TREE_GNOME_VILLAGE_VARBIT) == 9)
+			if (Quest.TREE_GNOME_VILLAGE.getState() == QuestState.FINISHED)
 			{
 				for (var source : SPIRIT_TREES)
 				{
-					if (source.location.equals("Gnome Stronghold") && Vars.getVarp(GRAND_TREE_VARBIT) < 160)
+					if (source.location.equals("Gnome Stronghold") && Quest.THE_GRAND_TREE.getState() == QuestState.FINISHED)
 					{
 						continue;
 					}
@@ -250,10 +253,97 @@ public class TransportLoader
 					"Sorry, I'm a bit busy."));
 
 			// Tree Gnome Village
-			if (Vars.getVarp(111) > 0)
+			if (Quest.TREE_GNOME_VILLAGE.getState() != QuestState.NOT_STARTED)
 			{
 				transports.add(npcTransport(new WorldPoint(2504, 3192, 0), new WorldPoint(2515, 3159, 0), 4968, "Follow"));
 				transports.add(npcTransport(new WorldPoint(2515, 3159, 0), new WorldPoint(2504, 3192, 0), 4968, "Follow"));
+			}
+
+			// Eagles peak cave
+			if (Vars.getVarp(934) >= 15)
+			{
+				// Entrance
+				transports.add(objectTransport(new WorldPoint(2328, 3496, 0), new WorldPoint(1994, 4983, 3), 19790,
+						"Enter"));
+				transports.add(objectTransport(new WorldPoint(1994, 4983, 3), new WorldPoint(2328, 3496, 0), 19891,
+						"Exit"));
+			}
+
+			// Waterbirth island
+			if (Quest.THE_FREMENNIK_TRIALS.getState() == QuestState.FINISHED || gold >= 1000)
+			{
+				transports.add(npcTransport(new WorldPoint(2544, 3760, 0), new WorldPoint(2620, 3682, 0), 10407, "Rellekka"));
+				transports.add(npcTransport(new WorldPoint(2620, 3682, 0), new WorldPoint(2547, 3759, 0), 5937, "Waterbirth Island"));
+			}
+
+			// Fossil Island
+			transports.add(npcTransport(new WorldPoint(3362, 3445, 0),
+					new WorldPoint(3724, 3808, 0),
+					8012,
+					"Quick-Travel"));
+
+			transports.add(objectDialogTransport(new WorldPoint(3724, 3808, 0),
+					new WorldPoint(3362, 3445, 0),
+					30914,
+					"Travel",
+					"Row to the barge and travel to the Digsite."));
+
+			// Motherload Mine
+			if (MLM.contains(Players.getLocal()))
+			{
+				transports.addAll(motherloadMineTransport(new WorldPoint(3726, 5643, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3726, 5654, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3727, 5652, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3727, 5683, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3728, 5651, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3728, 5688, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3731, 5683, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3733, 5680, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3745, 5689, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3748, 5684, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3748, 5689, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3755, 5640, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3756, 5639, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3757, 5677, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3759, 5690, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3762, 5652, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3762, 5668, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3765, 5688, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3766, 5639, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3766, 5647, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3768, 5674, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3768, 5679, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3769, 5642, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3769, 5658, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3769, 5680, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3770, 5659, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3771, 5638, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3762, 5687, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3766, 5670, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3719, 5664, 0)));
+				transports.addAll(motherloadMineTransport(new WorldPoint(3720, 5665, 0)));
+			}
+
+			// Corsair's Cove
+			if (Skills.getBoostedLevel(Skill.AGILITY) >= 10)
+			{
+				transports.add(objectTransport(new WorldPoint(2546, 2871, 0), new WorldPoint(2546, 2873, 0), 31757,
+						"Climb"));
+				transports.add(objectTransport(new WorldPoint(2546, 2873, 0), new WorldPoint(2546, 2871, 0), 31757,
+						"Climb"));
+			}
+
+			// Digsite gate
+			if (Vars.getBit(3637) >= 153)
+			{
+				transports.add(objectTransport(new WorldPoint(3295, 3429, 0), new WorldPoint(3296, 3429, 0), 24561,
+						"Open"));
+				transports.add(objectTransport(new WorldPoint(3296, 3429, 0), new WorldPoint(3295, 3429, 0), 24561,
+						"Open"));
+				transports.add(objectTransport(new WorldPoint(3295, 3428, 0), new WorldPoint(3296, 3428, 0), 24561,
+						"Open"));
+				transports.add(objectTransport(new WorldPoint(3296, 3428, 0), new WorldPoint(3295, 3428, 0), 24561,
+						"Open"));
 			}
 		}
 
@@ -264,54 +354,6 @@ public class TransportLoader
 				new WorldPoint(2822, 9774, 0),
 				1164,
 				"Well that is a risk I will have to take."));
-
-		// Fossil Island
-		transports.add(npcTransport(new WorldPoint(3362, 3445, 0),
-				new WorldPoint(3724, 3808, 0),
-				8012,
-				"Quick-Travel"));
-
-		transports.add(objectDialogTransport(new WorldPoint(3724, 3808, 0),
-				new WorldPoint(3362, 3445, 0),
-				30914,
-				"Travel",
-				"Row to the barge and travel to the Digsite."));
-
-		// Motherload Mine
-		if (MLM.contains(Players.getLocal()))
-		{
-			transports.addAll(motherloadMineTransport(new WorldPoint(3726, 5643, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3726, 5654, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3727, 5652, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3727, 5683, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3728, 5651, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3728, 5688, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3731, 5683, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3733, 5680, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3745, 5689, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3748, 5684, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3748, 5689, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3755, 5640, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3756, 5639, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3757, 5677, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3759, 5690, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3762, 5652, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3762, 5668, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3765, 5688, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3766, 5639, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3766, 5647, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3768, 5674, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3768, 5679, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3769, 5642, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3769, 5658, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3769, 5680, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3770, 5659, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3771, 5638, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3762, 5687, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3766, 5670, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3719, 5664, 0)));
-			transports.addAll(motherloadMineTransport(new WorldPoint(3720, 5665, 0)));
-		}
 
 		return List.copyOf(LAST_TRANSPORT_LIST = transports);
 	}
@@ -599,6 +641,27 @@ public class TransportLoader
 		{
 			this.position = position;
 			this.location = location;
+		}
+	}
+
+	@Value
+	private static class TransportDto
+	{
+		int objId;
+		String objName;
+		String source;
+		String destination;
+		String action;
+
+		private Transport toModel()
+		{
+			return objectTransport(stringToWorldPoint(source), stringToWorldPoint(destination), objId, action);
+		}
+
+		private static WorldPoint stringToWorldPoint(String text)
+		{
+			Integer[] points = Arrays.stream(text.split(" ")).map(Integer::parseInt).toArray(Integer[]::new);
+			return new WorldPoint(points[0], points[1], points[2]);
 		}
 	}
 }

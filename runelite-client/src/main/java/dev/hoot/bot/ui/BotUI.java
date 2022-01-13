@@ -26,16 +26,13 @@ package dev.hoot.bot.ui;
 
 import com.google.common.base.Strings;
 import dev.hoot.bot.config.BotConfig;
-import dev.hoot.bot.config.BotConfigManager;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
-import net.runelite.api.Client;
-import net.runelite.api.Constants;
-import net.runelite.api.GameState;
-import net.runelite.api.Player;
 import net.runelite.api.Point;
+import net.runelite.api.*;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.client.callback.ClientThread;
+import net.runelite.client.config.ConfigManager;
 import net.runelite.client.config.RuneLiteConfig;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
@@ -89,7 +86,7 @@ public class BotUI
 
 	private final RuneLiteConfig config;
 	private final Applet client;
-	private final BotConfigManager configManager;
+	private final ConfigManager configManager;
 	private final Provider<ClientThread> clientThreadProvider;
 	private JPanel container;
 	private Dimension lastClientSize;
@@ -110,7 +107,7 @@ public class BotUI
 	private BotUI(
 			RuneLiteConfig config,
 			@Nullable Applet client,
-			BotConfigManager configManager,
+			ConfigManager configManager,
 			Provider<ClientThread> clientThreadProvider,
 			EventBus eventbus
 	)
