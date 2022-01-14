@@ -20,7 +20,7 @@ public interface Interactable
 			return null;
 		}
 
-		return Arrays.stream(getRawActions()).map(Text::standardize).collect(Collectors.toList());
+		return Arrays.stream(getRawActions()).map(Text::removeTags).collect(Collectors.toList());
 	}
 
 	void interact(String action);
@@ -44,6 +44,6 @@ public interface Interactable
 			return Arrays.stream(raw).anyMatch(Objects::nonNull);
 		}
 
-		return Arrays.stream(actions).anyMatch(x -> getActions().contains(Text.standardize(x)));
+		return Arrays.stream(actions).anyMatch(x -> getActions().contains(x));
 	}
 }
