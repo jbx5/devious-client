@@ -24,7 +24,7 @@ public interface InteractionConfig extends Config
 	)
 	default boolean clickSwap()
 	{
-		return false;
+		return true;
 	}
 
 	@ConfigItem(
