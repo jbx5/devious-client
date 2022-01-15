@@ -475,7 +475,7 @@ public class EntityInspectorOverlay extends Overlay
 				if (interactable instanceof GameObject
 						&& ((GameObject) interactable).getRenderable() instanceof DynamicObject)
 				{
-					sb.append("Animations: ").append(((DynamicObject) interactable).getAnimationID()).append("\n");
+					sb.append("Animations: ").append(((DynamicObject) ((GameObject) interactable).getRenderable()).getAnimationID()).append("\n");
 				}
 			}
 

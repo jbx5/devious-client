@@ -30,7 +30,6 @@ public class InteractionManager
 	@Inject
 	private Client client;
 
-
 	@Subscribe
 	public void onInvokeMenuAction(AutomatedInteraction e)
 	{
@@ -58,7 +57,7 @@ public class InteractionManager
 
 			client.setPendingAutomation(e);
 
-			log.debug("Sending click to {} {}", randomPoint.x, randomPoint.y);
+			log.debug("Sending click to [{}, {}]", randomPoint.x, randomPoint.y);
 
 			long tag = e.getEntityTag();
 			if (tag != -1337)
@@ -86,6 +85,11 @@ public class InteractionManager
 	@Subscribe
 	public void onMenuOptionClicked(MenuOptionClicked e)
 	{
+		if (e.isAutomated() && e.getMenuAction() == MenuAction.WALK)
+		{
+			Movement.setDestination(e.getParam0(), e.getParam1());
+		}
+
 		String action = "O=" + e.getMenuOption()
 				+ " | T=" + e.getMenuTarget()
 				+ " | ID=" + e.getId()
@@ -113,15 +117,8 @@ public class InteractionManager
 
 	private void processAction(AutomatedInteraction entry, int x, int y)
 	{
-		if (entry.getOpcode() == MenuAction.WALK)
-		{
-			Movement.setDestination(entry.getParam0(), entry.getParam1());
-		}
-		else
-		{
-			GameThread.invoke(() -> client.invokeMenuAction(entry.getOption(), entry.getTarget(), entry.getIdentifier(),
-					entry.getOpcode().getId(), entry.getParam0(), entry.getParam1(), x, y));
-		}
+		GameThread.invoke(() -> client.invokeMenuAction(entry.getOption(), entry.getTarget(), entry.getIdentifier(),
+				entry.getOpcode().getId(), entry.getParam0(), entry.getParam1(), x, y));
 	}
 
 	private Point getClickPoint(AutomatedInteraction e)
