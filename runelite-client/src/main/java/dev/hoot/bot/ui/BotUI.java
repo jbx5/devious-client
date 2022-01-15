@@ -264,7 +264,6 @@ public class BotUI
 			frame.pack();
 			frame.revalidateMinimumSize();
 
-
 			// Move frame around (needs to be done after frame is packed)
 			if (config.rememberScreenBounds())
 			{

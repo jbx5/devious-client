@@ -4,13 +4,8 @@ import dev.hoot.api.events.AutomatedInteraction;
 import dev.hoot.api.events.ExperienceGained;
 import dev.hoot.api.events.LoginStateChanged;
 import dev.hoot.api.events.PlaneChanged;
-import net.runelite.api.DialogOption;
-import net.runelite.api.ItemComposition;
-import net.runelite.api.MenuAction;
-import net.runelite.api.ObjectComposition;
-import net.runelite.api.Skill;
-import net.runelite.api.Tile;
-import net.runelite.api.TileObject;
+import net.runelite.api.*;
+import net.runelite.api.events.MenuOptionClicked;
 import net.runelite.api.events.StatChanged;
 import net.runelite.api.mixins.Copy;
 import net.runelite.api.mixins.FieldHook;
@@ -20,25 +15,22 @@ import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Replace;
 import net.runelite.api.mixins.Shadow;
 import net.runelite.api.widgets.Widget;
-import net.runelite.rs.api.RSActor;
-import net.runelite.rs.api.RSClient;
-import net.runelite.rs.api.RSGameObject;
-import net.runelite.rs.api.RSGraphicsObject;
-import net.runelite.rs.api.RSItemComposition;
-import net.runelite.rs.api.RSNPCComposition;
-import net.runelite.rs.api.RSObjectComposition;
-import net.runelite.rs.api.RSProjectile;
-import net.runelite.rs.api.RSRenderable;
-import net.runelite.rs.api.RSTile;
+import net.runelite.rs.api.*;
 
 import javax.annotation.Nonnull;
 import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicReference;
+
+import static net.runelite.api.MenuAction.UNKNOWN;
 
 @Mixin(RSClient.class)
 public abstract class HClientMixin implements RSClient
 {
 	@Shadow("client")
 	private static RSClient client;
+
+	@Shadow("rl$menuEntries")
+	private static RSRuneLiteMenuEntry[] rl$menuEntries;
 
 	@Inject
 	public static HashMap<Integer, RSNPCComposition> npcDefCache = new HashMap<>();
@@ -52,6 +44,9 @@ public abstract class HClientMixin implements RSClient
 
 	@Inject
 	private static int[] previousExp = new int[23];
+
+	@Inject
+	private static AtomicReference<AutomatedInteraction> automatedMenu = new AtomicReference<>(null);
 
 	@Inject
 	@Override
@@ -292,5 +287,84 @@ public abstract class HClientMixin implements RSClient
 	public static void clientPlaneChanged(int idx)
 	{
 		client.getCallbacks().post(new PlaneChanged(client.getPlane()));
+	}
+
+	@Copy("menuAction")
+	@Replace("menuAction")
+	static void copy$menuAction(int param0, int param1, int opcode, int id, String option, String target, int canvasX, int canvasY)
+	{
+		RSRuneLiteMenuEntry menuEntry = null;
+
+		for (int i = client.getMenuOptionCount() - 1; i >= 0; --i)
+		{
+			if (client.getMenuOptions()[i] == option && client.getMenuTargets()[i] == target && client.getMenuIdentifiers()[i] == id && client.getMenuOpcodes()[i] == opcode)
+			{
+				menuEntry = rl$menuEntries[i];
+				break;
+			}
+		}
+
+		/*
+		 * The RuneScape client may deprioritize an action in the menu by incrementing the opcode with 2000,
+		 * undo it here so we can get the correct opcode
+		 */
+		if (opcode >= 2000)
+		{
+			opcode -= 2000;
+		}
+
+		AutomatedInteraction replacement = automatedMenu.getAndSet(null);
+		if (replacement != null)
+		{
+			System.out.println("Replaced menu: " + replacement);
+			param0 = replacement.getParam0();
+			param1 = replacement.getParam1();
+			opcode = replacement.getOpcode().getId();
+			id = replacement.getIdentifier();
+			option = replacement.getOption();
+			target = replacement.getTarget();
+		}
+
+		final MenuOptionClicked menuOptionClicked = new MenuOptionClicked();
+		menuOptionClicked.setParam0(param0);
+		menuOptionClicked.setMenuOption(option);
+		menuOptionClicked.setMenuTarget(target);
+		menuOptionClicked.setMenuAction(MenuAction.of(opcode));
+		menuOptionClicked.setId(id);
+		menuOptionClicked.setParam1(param1);
+		menuOptionClicked.setSelectedItemIndex(client.getSelectedItemSlot());
+		menuOptionClicked.setCanvasX(canvasX);
+		menuOptionClicked.setCanvasY(canvasY);
+
+		client.getCallbacks().post(menuOptionClicked);
+
+		if (menuEntry != null && menuEntry.getConsumer() != null)
+		{
+			menuEntry.getConsumer().accept(menuEntry);
+		}
+
+		if (menuOptionClicked.isConsumed())
+		{
+			return;
+		}
+
+		copy$menuAction(menuOptionClicked.getParam0(), menuOptionClicked.getParam1(),
+				menuOptionClicked.getMenuAction() == UNKNOWN ? opcode : menuOptionClicked.getMenuAction().getId(),
+				menuOptionClicked.getId(), menuOptionClicked.getMenuOption(), menuOptionClicked.getMenuTarget(),
+				canvasX, canvasY);
+	}
+
+	@Inject
+	@Override
+	public void setPendingAutomation(AutomatedInteraction replacement)
+	{
+		automatedMenu.set(replacement);
+	}
+
+	@Inject
+	@Override
+	public AutomatedInteraction getPendingAutomation()
+	{
+		return automatedMenu.get();
 	}
 }

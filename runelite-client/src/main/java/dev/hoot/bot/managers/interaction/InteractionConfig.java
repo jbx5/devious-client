@@ -50,28 +50,4 @@ public interface InteractionConfig extends Config
 	{
 		return false;
 	}
-
-	@ConfigItem(
-			keyName = "debugInteractions",
-			name = "Debug interactions",
-			description = "Prints interactions to console",
-			section = interactionManager,
-			position = 5
-	)
-	default boolean debugInteractions()
-	{
-		return false;
-	}
-
-	@ConfigItem(
-			keyName = "debugDialogs",
-			name = "Debug dialogs",
-			description = "Prints dialog actions to console",
-			section = interactionManager,
-			position = 6
-	)
-	default boolean debugDialogs()
-	{
-		return false;
-	}
 }

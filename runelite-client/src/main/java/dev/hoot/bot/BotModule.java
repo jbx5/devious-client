@@ -16,7 +16,7 @@ import dev.hoot.api.movement.pathfinder.RegionManager;
 import dev.hoot.api.movement.pathfinder.Walker;
 import dev.hoot.bot.config.BotConfig;
 import dev.hoot.bot.managers.interaction.InteractionConfig;
-import dev.hoot.bot.script.Events;
+import dev.hoot.bot.script.ScriptEventBus;
 import net.runelite.api.Client;
 import net.runelite.api.hooks.Callbacks;
 import net.runelite.api.packets.ClientPacket;
@@ -92,7 +92,7 @@ public class BotModule extends AbstractModule
 				.to(DeferredEventBus.class);
 
 		requestStaticInjection(
-				Events.class,
+				ScriptEventBus.class,
 				GameThread.class,
 				Game.class,
 				Prices.class,

@@ -4,13 +4,11 @@ import net.runelite.client.input.KeyListener
 import net.runelite.client.input.KeyManager
 import net.runelite.client.input.MouseListener
 import net.runelite.client.input.MouseManager
-import net.runelite.api.Client
 import java.awt.event.KeyEvent
 import java.awt.event.MouseEvent
 import javax.inject.Inject
 
 class InputManager @Inject constructor(
-        private val client: Client,
         private val scriptManager: ScriptManager,
         keyManager: KeyManager,
         mouseManager: MouseManager

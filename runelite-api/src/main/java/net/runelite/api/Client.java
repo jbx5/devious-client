@@ -35,6 +35,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import dev.hoot.api.MouseHandler;
+import dev.hoot.api.events.AutomatedInteraction;
 import net.runelite.api.packets.ClientPacket;
 import net.runelite.api.packets.IsaacCipher;
 import net.runelite.api.packets.PacketBufferNode;
@@ -2490,4 +2491,15 @@ public interface Client extends GameEngine
 	int[] getMenuArguments2();
 
 	void setMenuOpen(boolean open);
+
+	default void clearDefinitionCaches()
+	{
+		clearItemCache();
+		clearObjectCache();
+		clearNPCCache();
+	}
+
+	void setPendingAutomation(AutomatedInteraction entry);
+
+	AutomatedInteraction getPendingAutomation();
 }

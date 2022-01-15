@@ -35,14 +35,7 @@ public class ScriptThread extends Thread
 	{
 		try
 		{
-			Events.clear();
-			Events.subscribe(botScript);
-			Events.subscribe(this);
-			Bot.getInjector().injectMembers(botScript);
-			botScript.getPaint().clear();
-
-			botScript.onStart(startArgs);
-			Game.getClient().getCallbacks().post(new ScriptChanged(botScript.getClass().getSimpleName(), ScriptState.STARTED));
+			onStart();
 
 			while (botScript.isRunning())
 			{
@@ -93,16 +86,33 @@ public class ScriptThread extends Thread
 				}
 			}
 
-			botScript.onStop();
-			Game.getClient().getCallbacks().post(new ScriptChanged(botScript.getClass().getSimpleName(), ScriptState.STOPPED));
-			Events.clear();
-			botScript.getPaint().clear();
+			onStop();
 		}
 		catch (Exception e)
 		{
 			log.error("RS Crashed!!", e);
 			System.exit(0);
 		}
+	}
+
+	private void onStart()
+	{
+		ScriptEventBus.clear();
+		ScriptEventBus.subscribe(botScript);
+		ScriptEventBus.subscribe(this);
+		Bot.getInjector().injectMembers(botScript);
+		botScript.getPaint().clear();
+
+		botScript.onStart(startArgs);
+		Game.getClient().getCallbacks().post(new ScriptChanged(botScript.getClass().getSimpleName(), ScriptState.STARTED));
+	}
+
+	private void onStop()
+	{
+		botScript.onStop();
+		Game.getClient().getCallbacks().post(new ScriptChanged(botScript.getClass().getSimpleName(), ScriptState.STOPPED));
+		ScriptEventBus.clear();
+		botScript.getPaint().clear();
 	}
 
 	@Subscribe

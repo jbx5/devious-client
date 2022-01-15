@@ -27,13 +27,9 @@ package net.runelite.rs.api;
 import java.math.BigInteger;
 import java.util.Map;
 
+import net.runelite.api.*;
 import net.runelite.api.packets.ClientPacket;
 import net.runelite.api.packets.IsaacCipher;
-import net.runelite.api.AmbientSoundEffect;
-import net.runelite.api.Client;
-import net.runelite.api.Deque;
-import net.runelite.api.SpritePixels;
-import net.runelite.api.World;
 import net.runelite.api.clan.ClanRank;
 import net.runelite.api.widgets.Widget;
 import net.runelite.mapping.Construct;

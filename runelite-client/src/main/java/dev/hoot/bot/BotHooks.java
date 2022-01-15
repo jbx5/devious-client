@@ -434,6 +434,9 @@ public class BotHooks implements Callbacks
 	{
 		switch (gameStateChanged.getGameState())
 		{
+			case LOGIN_SCREEN:
+				client.clearDefinitionCaches();
+				break;
 			case LOGGING_IN:
 			case HOPPING:
 				ignoreNextNpcUpdate = true;

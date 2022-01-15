@@ -33,7 +33,6 @@ import com.google.inject.Injector;
 import com.openosrs.client.OpenOSRS;
 import dev.hoot.bot.account.GameAccount;
 import dev.hoot.bot.config.BotConfig;
-import dev.hoot.bot.managers.EventManager;
 import dev.hoot.bot.managers.FpsManager;
 import dev.hoot.bot.managers.ScriptManager;
 import dev.hoot.bot.managers.interaction.InteractionManager;
@@ -51,6 +50,7 @@ import net.runelite.client.ClassPreloader;
 import net.runelite.client.RuneLiteProperties;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.EventBus;
+import net.runelite.client.game.WorldService;
 import net.runelite.client.rs.ClientLoader;
 import net.runelite.client.rs.ClientUpdateCheckMode;
 import net.runelite.client.ui.DrawManager;
@@ -138,9 +138,6 @@ public class Bot
 	private ScriptManager scriptManager;
 
 	@Inject
-	private EventManager eventManager;
-
-	@Inject
 	private InteractionManager interactionManager;
 
 	@Inject
@@ -151,6 +148,9 @@ public class Bot
 
 	@Inject
 	private BotConfig botConfig;
+
+	@Inject
+	private WorldService worldService;
 
 	public static void main(String[] args) throws Exception
 	{
@@ -339,7 +339,7 @@ public class Bot
 		drawManager.registerEveryFrameListener(fpsManager);
 		fpsManager.reloadConfig(botConfig.fpsLimit());
 		eventBus.register(botToolbar);
-		eventBus.register(eventManager);
+		eventBus.register(scriptManager);
 		eventBus.register(interactionManager);
 		overlayManager.add(paint);
 
