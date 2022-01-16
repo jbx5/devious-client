@@ -6,6 +6,8 @@ import net.runelite.api.mixins.Shadow;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSMouseHandler;
 
+import java.awt.event.MouseEvent;
+
 @Mixin(RSMouseHandler.class)
 public abstract class HMouseHandlerMixin implements RSMouseHandler
 {
@@ -18,8 +20,8 @@ public abstract class HMouseHandlerMixin implements RSMouseHandler
 	{
 		client.setFocused(true);
 		setIdleCycles(0);
-		setLastPressedX(correctX(x));
-		setLastPressedY(correctY(y));
+		setLastPressedX(x = correctX(x));
+		setLastPressedY(y = correctY(y));
 		setLastPressedMillis(client.getCurrentTime());
 		setLastButton(button);
 
@@ -27,6 +29,11 @@ public abstract class HMouseHandlerMixin implements RSMouseHandler
 		{
 			setCurrentButton(button);
 		}
+
+		long currentTime = client.getCurrentTime();
+		mousePressed(new MouseEvent(client.getCanvas(), MouseEvent.MOUSE_PRESSED, currentTime, 0, x, y, 1, false, button));
+		mouseReleased(new MouseEvent(client.getCanvas(), MouseEvent.MOUSE_RELEASED, currentTime, 0, x, y, 1, false, button));
+		mouseClicked(new MouseEvent(client.getCanvas(), MouseEvent.MOUSE_CLICKED, currentTime, 0, x, y, 1, false, button));
 	}
 
 	@Override
@@ -35,9 +42,11 @@ public abstract class HMouseHandlerMixin implements RSMouseHandler
 	{
 		client.setFocused(true);
 		setIdleCycles(0);
-		setCurrentX(correctX(x));
-		setCurrentY(correctY(y));
+		setCurrentX(x = correctX(x));
+		setCurrentY(y = correctY(y));
 		setCurrentMillis(System.currentTimeMillis());
+
+		mouseMoved(new MouseEvent(client.getCanvas(), MouseEvent.MOUSE_MOVED, client.getCurrentTime(), 0, x, y, 0, false));
 	}
 
 	@Inject

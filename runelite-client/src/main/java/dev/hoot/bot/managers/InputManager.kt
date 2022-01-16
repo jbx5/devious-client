@@ -1,18 +1,14 @@
 package dev.hoot.bot.managers
 
-import net.runelite.client.input.KeyListener
-import net.runelite.client.input.KeyManager
 import net.runelite.client.input.MouseListener
 import net.runelite.client.input.MouseManager
-import java.awt.event.KeyEvent
 import java.awt.event.MouseEvent
 import javax.inject.Inject
 
 class InputManager @Inject constructor(
         private val scriptManager: ScriptManager,
-        keyManager: KeyManager,
         mouseManager: MouseManager
-) : KeyListener, MouseListener {
+) : MouseListener {
     companion object {
         var lastClickX = -1
         var lastClickY = -1
@@ -21,7 +17,6 @@ class InputManager @Inject constructor(
     }
 
     init {
-        keyManager.registerKeyListener(this)
         mouseManager.registerMouseListener(this)
     }
 
@@ -31,7 +26,6 @@ class InputManager @Inject constructor(
             return mouseEvent
         }
 
-//        client.callbacks.post(GameMouseEvent(mouseEvent, System.currentTimeMillis()))
         lastClickX = mouseEvent.x
         lastClickY = mouseEvent.y
         return mouseEvent
@@ -43,7 +37,6 @@ class InputManager @Inject constructor(
             return mouseEvent
         }
 
-//        client.callbacks.post(GameMouseEvent(mouseEvent, System.currentTimeMillis()))
         lastClickX = mouseEvent.x
         lastClickY = mouseEvent.y
         return mouseEvent
@@ -55,7 +48,6 @@ class InputManager @Inject constructor(
             return mouseEvent
         }
 
-//        client.callbacks.post(GameMouseEvent(mouseEvent, System.currentTimeMillis()))
         lastClickX = mouseEvent.x
         lastClickY = mouseEvent.y
         return mouseEvent
@@ -67,7 +59,6 @@ class InputManager @Inject constructor(
             return mouseEvent
         }
 
-//        client.callbacks.post(GameMouseEvent(mouseEvent, System.currentTimeMillis()))
         return mouseEvent
     }
 
@@ -77,7 +68,6 @@ class InputManager @Inject constructor(
             return mouseEvent
         }
 
-//        client.callbacks.post(GameMouseEvent(mouseEvent, System.currentTimeMillis()))
         return mouseEvent
     }
 
@@ -87,7 +77,6 @@ class InputManager @Inject constructor(
             return mouseEvent
         }
 
-//        client.callbacks.post(GameMouseEvent(mouseEvent, System.currentTimeMillis()))
         return mouseEvent
     }
 
@@ -97,21 +86,8 @@ class InputManager @Inject constructor(
             return mouseEvent
         }
 
-//        client.callbacks.post(GameMouseEvent(mouseEvent, System.currentTimeMillis()))
         lastMovedX = mouseEvent.x
         lastMovedY = mouseEvent.y
         return mouseEvent
-    }
-
-    override fun keyTyped(e: KeyEvent) {
-//        client.callbacks.post(GameKeyboardEvent(e, System.currentTimeMillis()))
-    }
-
-    override fun keyPressed(e: KeyEvent) {
-//        client.callbacks.post(GameKeyboardEvent(e, System.currentTimeMillis()))
-    }
-
-    override fun keyReleased(e: KeyEvent) {
-//        client.callbacks.post(GameKeyboardEvent(e, System.currentTimeMillis()))
     }
 }
