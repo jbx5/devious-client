@@ -2,7 +2,6 @@ package dev.hoot.bot.script.paint;
 
 import dev.hoot.api.SceneEntity;
 import dev.hoot.api.entities.Entities;
-import dev.hoot.bot.Bot;
 import dev.hoot.bot.devtools.EntityRenderer;
 import dev.hoot.bot.managers.InputManager;
 import dev.hoot.bot.managers.ScriptManager;
@@ -36,15 +35,11 @@ public class Paint extends Overlay
 	@Inject
 	private InteractionConfig interactionConfig;
 
-	private final InputManager inputManager;
-
 	public final DefaultPaint tracker = new DefaultPaint();
 
 	@Inject
 	public Paint(InputManager inputManager)
 	{
-		this.inputManager = inputManager;
-
 		setPosition(OverlayPosition.DYNAMIC);
 		setLayer(OverlayLayer.ABOVE_WIDGETS);
 		setPriority(OverlayPriority.LOW);

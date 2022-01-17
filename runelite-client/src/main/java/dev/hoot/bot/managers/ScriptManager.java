@@ -239,7 +239,8 @@ public class ScriptManager
 	private boolean checkIdle()
 	{
 		int idleClientTicks = client.getKeyboardIdleTicks();
-		if (client.getMouseIdleTicks() < idleClientTicks) {
+		if (client.getMouseIdleTicks() < idleClientTicks)
+		{
 			idleClientTicks = client.getMouseIdleTicks();
 		}
 
