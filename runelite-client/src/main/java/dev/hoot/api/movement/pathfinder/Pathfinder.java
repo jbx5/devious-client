@@ -3,6 +3,7 @@ package dev.hoot.api.movement.pathfinder;
 import dev.hoot.api.game.Game;
 import dev.hoot.api.movement.Reachable;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.coords.WorldPoint;
 
 import java.util.ArrayDeque;
@@ -13,6 +14,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+@Slf4j
 @RequiredArgsConstructor
 public class Pathfinder
 {
@@ -73,7 +75,7 @@ public class Pathfinder
 			if ((destination.isInScene(Game.getClient())
 					&& Reachable.isObstacle(destination) && boundary.size() > 200) || boundary.size() > 50_000)
 			{
-				System.out.println("Path is too long, cancelling calculation");
+				log.debug("Path is too long, cancelling calculation");
 				break;
 			}
 
