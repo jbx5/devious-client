@@ -9,7 +9,7 @@ import net.runelite.client.plugins.config.PluginListPanel;
 import javax.inject.Inject;
 import javax.inject.Provider;
 
-public abstract class FakePlugin extends Plugin
+public abstract class SettingsPlugin extends Plugin
 {
     @Inject
     private ConfigManager configManager;
