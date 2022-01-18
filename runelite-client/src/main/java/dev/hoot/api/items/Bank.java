@@ -209,12 +209,22 @@ public class Bank extends Items
 		}
 
 		WithdrawOption withdrawOption = WithdrawOption.ofAmount(item, amount);
-		item.interact(withdrawOption.menuIndex + 1);
 
-		if (withdrawOption == WithdrawOption.X)
+
+		if (withdrawOption == WithdrawOption.X && item.hasAction("Deposit-" + amount))
 		{
-			Dialog.enterInput(amount);
+			item.interact(WithdrawOption.LAST_QUANTITY.getMenuIndex() + 1);
 		}
+		else
+		{
+			item.interact(withdrawOption.menuIndex + 1);
+
+			if (withdrawOption == WithdrawOption.X)
+			{
+				Dialog.enterInput(amount);
+			}
+		}
+
 	}
 
 
@@ -265,13 +275,20 @@ public class Bank extends Items
 			Time.sleepUntil(() -> !isNotedWithdrawMode(), 1200);
 		}
 
-		item.interact(withdrawOption.getMenuIndex());
-
-		if (withdrawOption == WithdrawOption.X)
+		if (withdrawOption == WithdrawOption.X && item.hasAction("Withdraw-" + amount))
 		{
-			Time.sleepUntil(Dialog::isEnterInputOpen, 1200);
-			Dialog.enterInput(amount);
+			item.interact(WithdrawOption.LAST_QUANTITY.getMenuIndex());
 		}
+		else
+		{
+			item.interact(withdrawOption.getMenuIndex());
+			if (withdrawOption == WithdrawOption.X)
+			{
+				Time.sleepUntil(Dialog::isEnterInputOpen, 1200);
+				Dialog.enterInput(amount);
+			}
+		}
+
 	}
 
 	public static void withdrawLastQuantity(String name, WithdrawMode withdrawMode)

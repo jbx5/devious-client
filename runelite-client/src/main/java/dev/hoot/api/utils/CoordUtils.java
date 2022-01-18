@@ -54,4 +54,21 @@ public class CoordUtils
 
 		return null;
 	}
+
+	public static WorldPoint calculateMapPoint(Point point)
+	{
+		float zoom = Game.getClient().getRenderOverview().getWorldMapZoom();
+		RenderOverview renderOverview = Game.getClient().getRenderOverview();
+		final WorldPoint mapPoint = new WorldPoint(renderOverview.getWorldMapPosition().getX(), renderOverview.getWorldMapPosition().getY(), 0);
+		final Point middle = mapWorldPointToGraphicsPoint(mapPoint);
+		if (middle == null)
+		{
+			return null;
+		}
+
+		final int dx = (int) ((point.getX() - middle.getX()) / zoom);
+		final int dy = (int) ((-(point.getY() - middle.getY())) / zoom);
+
+		return mapPoint.dx(dx).dy(dy);
+	}
 }
