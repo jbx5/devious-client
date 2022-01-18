@@ -29,7 +29,8 @@ import java.util.concurrent.Future;
 )
 @Singleton
 @Slf4j
-public class WorldWalkerPlugin extends Plugin {
+public class WorldWalkerPlugin extends Plugin
+{
 
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private Future<?> future = null;
@@ -107,5 +108,4 @@ public class WorldWalkerPlugin extends Plugin {
                     log.debug("Walking to {}", mapPoint);
                 });
     }
-
 }

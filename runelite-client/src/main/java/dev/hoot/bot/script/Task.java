@@ -10,4 +10,9 @@ public interface Task
     {
         return true;
     }
+
+    default boolean subscribe()
+    {
+        return false;
+    }
 }

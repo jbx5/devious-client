@@ -316,7 +316,6 @@ public abstract class HClientMixin implements RSClient
 		AutomatedInteraction replacement = automatedMenu.getAndSet(null);
 		if (replacement != null)
 		{
-			System.out.println("Replaced menu: " + replacement);
 			param0 = replacement.getParam0();
 			param1 = replacement.getParam1();
 			opcode = replacement.getOpcode().getId();
@@ -365,6 +364,6 @@ public abstract class HClientMixin implements RSClient
 	@Override
 	public AutomatedInteraction getPendingAutomation()
 	{
-		return automatedMenu.get();
+		return automatedMenu.getAndSet(null);
 	}
 }

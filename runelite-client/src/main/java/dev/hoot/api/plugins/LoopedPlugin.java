@@ -16,7 +16,8 @@ public abstract class LoopedPlugin extends Plugin
     @Subscribe
     private void outerLoop(GameTick event)
     {
-        if (future == null || future.isDone() || future.isCancelled()) {
+        if (future == null || future.isDone() || future.isCancelled())
+        {
             future = executor.submit(this::loop);
         }
     }

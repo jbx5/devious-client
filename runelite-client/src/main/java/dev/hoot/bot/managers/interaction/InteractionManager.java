@@ -53,8 +53,8 @@ public class InteractionManager
 		{
 			if (!interactReady())
 			{
-				client.setPendingAutomation(null);
 				log.warn("Interacting too fast, consider slowing down consecutive interactions");
+				Time.sleep(Constants.CLIENT_TICK_LENGTH);
 				return;
 			}
 
