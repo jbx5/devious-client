@@ -1627,14 +1627,6 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("destinationY")
 	void setDestinationY(int sceneY);
 
-	@Import("worldSelectOpen")
-	@Override
-	boolean isWorldSelectOpen();
-
-	@Import("worldSelectOpen")
-	@Override
-	void setWorldSelectOpen(boolean open);
-
 	@Import("setWindowedMode")
 	@Override
 	void setWindowedMode(int mode);
