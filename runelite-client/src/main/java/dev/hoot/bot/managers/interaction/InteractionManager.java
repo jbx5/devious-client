@@ -5,6 +5,7 @@ import dev.hoot.api.commons.Rand;
 import dev.hoot.api.commons.Time;
 import dev.hoot.api.events.AutomatedInteraction;
 import dev.hoot.api.game.GameThread;
+import dev.hoot.api.input.naturalmouse.NaturalMouse;
 import dev.hoot.api.movement.Movement;
 import dev.hoot.api.widgets.DialogOption;
 import lombok.extern.slf4j.Slf4j;
@@ -25,6 +26,7 @@ public class InteractionManager
 {
 	private static final int MINIMAP_WIDTH = 250;
 	private static final int MINIMAP_HEIGHT = 180;
+	private final NaturalMouse naturalMouse = new NaturalMouse();
 
 	@Inject
 	private InteractionConfig config;
@@ -74,7 +76,15 @@ public class InteractionManager
 				}
 			}
 
-			mouseHandler.sendMovement(randomPoint.x, randomPoint.y);
+			if (config.naturalMouse())
+			{
+				naturalMouse.moveTo(randomPoint.x, randomPoint.y);
+			}
+			else
+			{
+				mouseHandler.sendMovement(randomPoint.x, randomPoint.y);
+			}
+
 			mouseHandler.sendClick(randomPoint.x, randomPoint.y);
 			Time.sleep(Constants.CLIENT_TICK_LENGTH);
 		}

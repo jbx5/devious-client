@@ -28,6 +28,18 @@ public interface InteractionConfig extends Config
 	}
 
 	@ConfigItem(
+			keyName = "naturalMouse",
+			name = "Natural mouse",
+			description = "Uses the 'natural mouse' algorithm to move and click",
+			section = interactionManager,
+			position = 2
+	)
+	default boolean naturalMouse()
+	{
+		return false;
+	}
+
+	@ConfigItem(
 			keyName = "interactType",
 			name = "Interact click type",
 			description = "Type of clicks to send to the server",
