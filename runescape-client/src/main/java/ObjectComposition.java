@@ -554,7 +554,7 @@ public class ObjectComposition extends DualNode {
 			ObjectDefinition_cachedEntities.put(((DualNode) (var9)), var7);
 		}
 		if (this.nonFlatShading) {
-			var9 = ((ModelData) (var9)).method3751();
+			var9 = ((ModelData) (var9)).copyModelData();
 		}
 		if (this.clipType >= 0) {
 			if (var9 instanceof Model) {
