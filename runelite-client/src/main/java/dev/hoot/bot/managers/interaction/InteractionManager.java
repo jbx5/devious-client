@@ -101,6 +101,7 @@ public class InteractionManager
 	{
 		if (e.isAutomated() && e.getMenuAction() == MenuAction.WALK)
 		{
+			e.setMenuAction(MenuAction.CANCEL);
 			Movement.setDestination(e.getParam0(), e.getParam1());
 		}
 
