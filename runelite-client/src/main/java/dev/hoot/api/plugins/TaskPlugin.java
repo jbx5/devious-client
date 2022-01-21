@@ -1,6 +1,5 @@
 package dev.hoot.api.plugins;
 
-import dev.hoot.api.commons.Time;
 import dev.hoot.bot.script.Task;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
@@ -16,7 +15,7 @@ public abstract class TaskPlugin extends LoopedPlugin
     private EventBus eventBus;
 
     @Override
-    protected void loop()
+    protected int loop()
     {
         for (Task task : getTasks())
         {
@@ -25,11 +24,12 @@ public abstract class TaskPlugin extends LoopedPlugin
                 int delay = task.execute();
                 if (task.isBlocking())
                 {
-                    Time.sleep(delay);
-                    return;
+                    return delay;
                 }
             }
         }
+
+        return 1000;
     }
 
     @Subscribe

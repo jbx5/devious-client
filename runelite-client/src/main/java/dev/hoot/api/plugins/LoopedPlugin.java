@@ -1,26 +1,68 @@
 package dev.hoot.api.plugins;
 
+import dev.hoot.api.commons.Time;
+import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.events.GameTick;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.plugins.Plugin;
+import net.runelite.client.plugins.PluginManager;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+import javax.inject.Inject;
+import java.util.concurrent.atomic.AtomicInteger;
 
+@Slf4j
 public abstract class LoopedPlugin extends Plugin
 {
-    private final ExecutorService executor = Executors.newSingleThreadExecutor();
-    private Future<?> future;
+    @Inject
+    private PluginManager pluginManager;
 
-    @Subscribe
-    private void outerLoop(GameTick event)
-    {
-        if (future == null || future.isDone() || future.isCancelled())
-        {
-            future = executor.submit(this::loop);
-        }
+    private final AtomicInteger ticks = new AtomicInteger(0);
+
+    @Override
+    protected void startUp() throws Exception {
+        log.info("Started looped plugin");
+        new Thread(this::outerLoop).start();
     }
 
-    protected abstract void loop();
+    @Override
+    protected void shutDown() throws Exception {
+        log.info("Stopped looped plugin");
+    }
+
+    private void outerLoop()
+    {
+        log.info("Starting outerloop");
+        while (pluginManager.isPluginEnabled(this))
+        {
+            try {
+                int loopSleep = loop();
+                if (loopSleep == -1000)
+                {
+                    break;
+                }
+
+                if (loopSleep < 0)
+                {
+                    int startTicks = ticks.get();
+                    Time.sleepUntil(() -> ticks.get() - startTicks >= Math.abs(loopSleep), 10, 30_000);
+                }
+                else
+                {
+                    Time.sleep(loopSleep == 0 ? 1000 : loopSleep);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        log.info("Stopping outerloop");
+    }
+
+    protected abstract int loop();
+
+    @Subscribe
+    private void tickCounter(GameTick gameTick)
+    {
+        ticks.incrementAndGet();
+    }
 }

@@ -53,11 +53,10 @@ public class InteractionManager
 
 		if (config.clickSwap())
 		{
+			Time.sleep(Constants.CLIENT_TICK_LENGTH);
 			if (!interactReady())
 			{
-				log.warn("Interacting too fast, consider slowing down consecutive interactions");
-				Time.sleep(Constants.CLIENT_TICK_LENGTH);
-				return;
+				throw new InteractionException("Interacting too fast, consider slowing down consecutive interactions");
 			}
 
 			client.setPendingAutomation(e);
@@ -86,7 +85,6 @@ public class InteractionManager
 			}
 
 			mouseHandler.sendClick(randomPoint.x, randomPoint.y);
-			Time.sleep(Constants.CLIENT_TICK_LENGTH);
 		}
 		else
 		{
@@ -150,7 +148,7 @@ public class InteractionManager
 
 		if (e.getClickX() != -1 && e.getClickY() != -1 && config.interactType() == InteractType.CLICKBOXES)
 		{
-			Point clickPoint = new Point(e.getClickY(), e.getClickY());
+			Point clickPoint = new Point(e.getClickX(), e.getClickY());
 			if (!clickInsideMinimap(clickPoint))
 			{
 				return clickPoint;

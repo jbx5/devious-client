@@ -1,9 +1,6 @@
 package dev.hoot.mixins;
 
-import dev.hoot.api.events.AutomatedInteraction;
-import dev.hoot.api.events.ExperienceGained;
-import dev.hoot.api.events.LoginStateChanged;
-import dev.hoot.api.events.PlaneChanged;
+import dev.hoot.api.events.*;
 import net.runelite.api.*;
 import net.runelite.api.events.MenuOptionClicked;
 import net.runelite.api.events.StatChanged;
@@ -313,7 +310,7 @@ public abstract class HClientMixin implements RSClient
 			opcode -= 2000;
 		}
 
-		AutomatedInteraction replacement = automatedMenu.getAndSet(null);
+		AutomatedInteraction replacement = automatedMenu.get();
 		if (replacement != null)
 		{
 			param0 = replacement.getParam0();
@@ -344,6 +341,7 @@ public abstract class HClientMixin implements RSClient
 
 		if (menuOptionClicked.isConsumed())
 		{
+			automatedMenu.set(null);
 			return;
 		}
 
@@ -351,6 +349,17 @@ public abstract class HClientMixin implements RSClient
 				menuOptionClicked.getMenuAction() == UNKNOWN ? opcode : menuOptionClicked.getMenuAction().getId(),
 				menuOptionClicked.getId(), menuOptionClicked.getMenuOption(), menuOptionClicked.getMenuTarget(),
 				canvasX, canvasY);
+		automatedMenu.set(null);
+		client.getCallbacks().post(new MenuActionProcessed(
+				menuOptionClicked.getMenuOption(),
+				menuOptionClicked.getMenuTarget(),
+				menuOptionClicked.getId(),
+				menuOptionClicked.getMenuAction(),
+				menuOptionClicked.getParam0(),
+				menuOptionClicked.getParam1(),
+				canvasX,
+				canvasY
+		));
 	}
 
 	@Inject
@@ -364,6 +373,6 @@ public abstract class HClientMixin implements RSClient
 	@Override
 	public AutomatedInteraction getPendingAutomation()
 	{
-		return automatedMenu.getAndSet(null);
+		return automatedMenu.get();
 	}
 }

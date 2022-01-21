@@ -9,6 +9,7 @@ import dev.hoot.api.widgets.Widgets;
 import net.runelite.api.Point;
 import net.runelite.api.*;
 import net.runelite.api.coords.LocalPoint;
+import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.api.widgets.WidgetItem;
@@ -522,7 +523,13 @@ public class EntityInspectorOverlay extends Overlay
 
 			if (config.worldLocations())
 			{
-				sb.append("Location: ").append(((Actor) interactable).getWorldLocation()).append("\n");
+				WorldPoint location = ((Actor) interactable).getWorldLocation();
+				sb.append("Location: ").append(location).append("\n");
+				sb.append("Region: ").append(
+						(location.getX() - client.getBaseX()) + ", " +
+						(location.getY() - client.getBaseY()) + " [" +
+						(location.getRegionID()) + "]"
+				).append("\n");
 			}
 
 			return;
@@ -542,7 +549,13 @@ public class EntityInspectorOverlay extends Overlay
 
 			if (config.worldLocations())
 			{
-				sb.append("Location: ").append(((TileObject) interactable).getWorldLocation()).append("\n");
+				WorldPoint location = ((TileObject) interactable).getWorldLocation();
+				sb.append("Location: ").append(location).append("\n");
+				sb.append("Region: ").append(
+						(location.getX() - client.getBaseX()) + ", " +
+								(location.getY() - client.getBaseY()) + " [" +
+								(location.getRegionID()) + "]"
+				).append("\n");
 			}
 
 			return;
@@ -562,7 +575,13 @@ public class EntityInspectorOverlay extends Overlay
 
 			if (config.worldLocations())
 			{
-				sb.append("Location: ").append(((TileItem) interactable).getTile().getWorldLocation()).append("\n");
+				WorldPoint location = ((TileItem) interactable).getWorldLocation();
+				sb.append("Location: ").append(location).append("\n");
+				sb.append("Region: ").append(
+						(location.getX() - client.getBaseX()) + ", " +
+								(location.getY() - client.getBaseY()) + " [" +
+								(location.getRegionID()) + "]"
+				).append("\n");
 			}
 		}
 	}
