@@ -410,9 +410,7 @@ public class EntityInspectorOverlay extends Overlay
 
 	public void renderGraphicsObjects(Graphics2D graphics)
 	{
-		List<GraphicsObject> graphicsObjects = client.getGraphicsObjects();
-
-		for (GraphicsObject graphicsObject : graphicsObjects)
+		client.getGraphicsObjects().forEach(graphicsObject ->
 		{
 			LocalPoint lp = graphicsObject.getLocation();
 			Polygon poly = Perspective.getCanvasTilePoly(client, lp);
@@ -429,7 +427,7 @@ public class EntityInspectorOverlay extends Overlay
 			{
 				OverlayUtil.renderTextLocation(graphics, textLocation, infoString, Color.WHITE);
 			}
-		}
+		});
 	}
 
 	public void renderPlayerWireframe(Graphics2D graphics, Player player, Color color)

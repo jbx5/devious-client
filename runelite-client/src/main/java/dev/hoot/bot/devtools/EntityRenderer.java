@@ -490,30 +490,6 @@ public class EntityRenderer
 		}
 	}
 
-	public void renderGraphicsObjects(Graphics2D graphics)
-	{
-		List<GraphicsObject> graphicsObjects = client.getGraphicsObjects();
-
-		for (GraphicsObject graphicsObject : graphicsObjects)
-		{
-			LocalPoint lp = graphicsObject.getLocation();
-			Polygon poly = Perspective.getCanvasTilePoly(client, lp);
-
-			if (poly != null)
-			{
-				OverlayUtil.renderPolygon(graphics, poly, Color.MAGENTA);
-			}
-
-			String infoString = "(ID: " + graphicsObject.getId() + ")";
-			Point textLocation = Perspective.getCanvasTextLocation(
-					client, graphics, lp, infoString, 0);
-			if (textLocation != null)
-			{
-				OverlayUtil.renderTextLocation(graphics, textLocation, infoString, Color.WHITE);
-			}
-		}
-	}
-
 	public void renderPlayerWireframe(Graphics2D graphics, Player player, Color color)
 	{
 		Polygon[] polys = player.getPolygons();

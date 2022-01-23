@@ -7,6 +7,7 @@ import net.runelite.api.Projectile;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
@@ -20,9 +21,14 @@ public class Projectiles
 
 	public static List<Projectile> getAll(Predicate<Projectile> filter)
 	{
-		return Game.getClient().getProjectiles().stream()
-				.filter(projectile -> projectile != null && filter.test(projectile))
-				.collect(Collectors.toList());
+		List<Projectile> out = new ArrayList<>();
+		Game.getClient().getProjectiles().forEach(p -> {
+			if (filter.test(p)) {
+				out.add(p);
+			}
+		});
+
+		return out;
 	}
 
 	public static List<Projectile> getAll(int... ids)
