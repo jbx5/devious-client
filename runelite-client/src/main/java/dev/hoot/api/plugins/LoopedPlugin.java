@@ -1,6 +1,7 @@
 package dev.hoot.api.plugins;
 
 import dev.hoot.api.commons.Time;
+import dev.hoot.api.game.Game;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.events.GameTick;
 import net.runelite.client.eventbus.Subscribe;
@@ -21,7 +22,13 @@ public abstract class LoopedPlugin extends Plugin
     @Override
     protected void startUp() throws Exception {
         log.info("Started looped plugin");
-        new Thread(this::outerLoop).start();
+        new Thread(() -> {
+            try {
+                outerLoop();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }).start();
     }
 
     @Override
@@ -34,24 +41,27 @@ public abstract class LoopedPlugin extends Plugin
         log.info("Starting outerloop");
         while (pluginManager.isPluginEnabled(this))
         {
+            int loopSleep = 1000;
             try {
-                int loopSleep = loop();
+                loopSleep = loop();
                 if (loopSleep == -1000)
                 {
                     break;
                 }
 
-                if (loopSleep < 0)
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                if (loopSleep < 0 && Game.isLoggedIn())
                 {
                     int startTicks = ticks.get();
-                    Time.sleepUntil(() -> ticks.get() - startTicks >= Math.abs(loopSleep), 10, 30_000);
+                    int finalLoopSleep = loopSleep;
+                    Time.sleepUntil(() -> ticks.get() - startTicks >= Math.abs(finalLoopSleep), 10, 30_000);
                 }
                 else
                 {
-                    Time.sleep(loopSleep == 0 ? 1000 : loopSleep);
+                    Time.sleep(loopSleep < 0 ? 1000 : loopSleep);
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
             }
         }
 

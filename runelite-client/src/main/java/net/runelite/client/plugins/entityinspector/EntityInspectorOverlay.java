@@ -1,6 +1,8 @@
 package net.runelite.client.plugins.entityinspector;
 
-import dev.hoot.api.Interactable;
+import dev.hoot.api.SceneEntity;
+import dev.hoot.api.coords.RegionPoint;
+import dev.hoot.api.coords.ScenePoint;
 import dev.hoot.api.entities.*;
 import dev.hoot.api.game.GameThread;
 import dev.hoot.api.scene.Tiles;
@@ -15,6 +17,8 @@ import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.api.widgets.WidgetItem;
 import net.runelite.client.ui.FontManager;
 import net.runelite.client.ui.overlay.*;
+import net.runelite.client.ui.overlay.tooltip.Tooltip;
+import net.runelite.client.ui.overlay.tooltip.TooltipManager;
 
 import javax.inject.Inject;
 import java.awt.*;
@@ -38,12 +42,14 @@ public class EntityInspectorOverlay extends Overlay
 
 	private final Client client;
 	private final EntityInspectorConfig config;
+	private final TooltipManager tooltipManager;
 
 	@Inject
-	private EntityInspectorOverlay(Client client, EntityInspectorConfig config)
+	private EntityInspectorOverlay(Client client, EntityInspectorConfig config, TooltipManager tooltipManager)
 	{
 		this.client = client;
 		this.config = config;
+		this.tooltipManager = tooltipManager;
 
 		setPosition(OverlayPosition.DYNAMIC);
 		setLayer(OverlayLayer.ABOVE_WIDGETS);
@@ -188,9 +194,18 @@ public class EntityInspectorOverlay extends Overlay
 		Polygon poly = Perspective.getCanvasTilePoly(client, tile.getLocalLocation());
 		if (poly != null && poly.contains(client.getMouseCanvasPosition().getX(), client.getMouseCanvasPosition().getY()))
 		{
+			WorldPoint worldLocation = tile.getWorldLocation();
+			ScenePoint scenePoint = ScenePoint.fromWorld(worldLocation);
+			String tooltip = String.format("World location: %d, %d, %d</br>" +
+							"Region ID: %d location: %d, %d</br>" +
+							"Scene location: %d, %d</br>"
+					,
+					worldLocation.getX(), worldLocation.getY(), worldLocation.getPlane(),
+					worldLocation.getRegionID(), worldLocation.getRegionX(), worldLocation.getRegionY(),
+					scenePoint.getX(), scenePoint.getY())
+					;
+			tooltipManager.add(new Tooltip(tooltip));
 			OverlayUtil.renderPolygon(graphics, poly, GREEN);
-			OverlayUtil.renderTextLocation(graphics, client.getMouseCanvasPosition(),
-					"World Location: " + tile.getWorldLocation().getX() + ", " + tile.getWorldLocation().getY() + ", " + client.getPlane(), Color.GREEN);
 		}
 	}
 
@@ -429,7 +444,7 @@ public class EntityInspectorOverlay extends Overlay
 		}
 	}
 
-	public String createInfo(Interactable interactable)
+	public String createInfo(SceneEntity interactable)
 	{
 		StringBuilder sb = new StringBuilder();
 		if (interactable instanceof Actor)
@@ -466,7 +481,7 @@ public class EntityInspectorOverlay extends Overlay
 		{
 			if (config.ids())
 			{
-				sb.append("ID: ").append(((TileObject) interactable).getId()).append("\n");
+				sb.append("ID: ").append(interactable.getId()).append("\n");
 			}
 
 			appendCommonFields(sb, interactable);
@@ -487,7 +502,7 @@ public class EntityInspectorOverlay extends Overlay
 		{
 			if (config.ids())
 			{
-				sb.append("ID: ").append(((TileItem) interactable).getId()).append("\n");
+				sb.append("ID: ").append(interactable.getId()).append("\n");
 			}
 
 			if (config.quantities())
@@ -502,13 +517,13 @@ public class EntityInspectorOverlay extends Overlay
 		return sb.toString();
 	}
 
-	private void appendCommonFields(StringBuilder sb, Interactable interactable)
+	private void appendCommonFields(StringBuilder sb, SceneEntity interactable)
 	{
 		if (interactable instanceof Actor)
 		{
 			if (interactable instanceof NPC && config.ids())
 			{
-				sb.append("ID: ").append(((Actor) interactable).getId()).append("\n");
+				sb.append("ID: ").append(interactable.getId()).append("\n");
 			}
 
 			if (config.names())
@@ -518,18 +533,15 @@ public class EntityInspectorOverlay extends Overlay
 
 			if (config.actions())
 			{
-				sb.append("Actions: ").append(Arrays.toString(((Actor) interactable).getRawActions())).append("\n");
+				sb.append("Actions: ").append(Arrays.toString(interactable.getRawActions())).append("\n");
 			}
 
 			if (config.worldLocations())
 			{
-				WorldPoint location = ((Actor) interactable).getWorldLocation();
+				WorldPoint location = interactable.getWorldLocation();
 				sb.append("Location: ").append(location).append("\n");
-				sb.append("Region: ").append(
-						(location.getX() - client.getBaseX()) + ", " +
-						(location.getY() - client.getBaseY()) + " [" +
-						(location.getRegionID()) + "]"
-				).append("\n");
+				sb.append("Region: ").append(RegionPoint.fromWorld(location)).append("\n");
+				sb.append("Scene: ").append(ScenePoint.fromWorld(location)).append("\n");
 			}
 
 			return;
@@ -539,7 +551,7 @@ public class EntityInspectorOverlay extends Overlay
 		{
 			if (config.names())
 			{
-				sb.append("Name: ").append(((TileObject) interactable).getName()).append("\n");
+				sb.append("Name: ").append(interactable.getName()).append("\n");
 			}
 
 			if (config.actions())
@@ -549,13 +561,10 @@ public class EntityInspectorOverlay extends Overlay
 
 			if (config.worldLocations())
 			{
-				WorldPoint location = ((TileObject) interactable).getWorldLocation();
+				WorldPoint location = interactable.getWorldLocation();
 				sb.append("Location: ").append(location).append("\n");
-				sb.append("Region: ").append(
-						(location.getX() - client.getBaseX()) + ", " +
-								(location.getY() - client.getBaseY()) + " [" +
-								(location.getRegionID()) + "]"
-				).append("\n");
+				sb.append("Region: ").append(RegionPoint.fromWorld(location)).append("\n");
+				sb.append("Scene: ").append(ScenePoint.fromWorld(location)).append("\n");
 			}
 
 			return;
@@ -565,23 +574,20 @@ public class EntityInspectorOverlay extends Overlay
 		{
 			if (config.names())
 			{
-				sb.append("Name: ").append(((TileItem) interactable).getName()).append("\n");
+				sb.append("Name: ").append(interactable.getName()).append("\n");
 			}
 
 			if (config.actions())
 			{
-				sb.append("Actions: ").append(Arrays.toString(((TileItem) interactable).getRawActions())).append("\n");
+				sb.append("Actions: ").append(Arrays.toString(interactable.getRawActions())).append("\n");
 			}
 
 			if (config.worldLocations())
 			{
-				WorldPoint location = ((TileItem) interactable).getWorldLocation();
+				WorldPoint location = interactable.getWorldLocation();
 				sb.append("Location: ").append(location).append("\n");
-				sb.append("Region: ").append(
-						(location.getX() - client.getBaseX()) + ", " +
-								(location.getY() - client.getBaseY()) + " [" +
-								(location.getRegionID()) + "]"
-				).append("\n");
+				sb.append("Region: ").append(RegionPoint.fromWorld(location)).append("\n");
+				sb.append("Scene: ").append(ScenePoint.fromWorld(location)).append("\n");
 			}
 		}
 	}

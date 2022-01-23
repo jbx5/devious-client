@@ -38,7 +38,7 @@ public class Paint extends Overlay
 	public final DefaultPaint tracker = new DefaultPaint();
 
 	@Inject
-	public Paint(InputManager inputManager)
+	public Paint()
 	{
 		setPosition(OverlayPosition.DYNAMIC);
 		setLayer(OverlayLayer.ABOVE_WIDGETS);

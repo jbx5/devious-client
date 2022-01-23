@@ -1,6 +1,7 @@
 package dev.hoot.mixins;
 
 import net.runelite.api.MenuAction;
+import net.runelite.api.NPCComposition;
 import net.runelite.api.Perspective;
 import net.runelite.api.Point;
 import net.runelite.api.mixins.Inject;
@@ -11,22 +12,20 @@ import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSNPC;
 import net.runelite.rs.api.RSNPCComposition;
 
-import java.util.HashMap;
-
 @Mixin(RSNPC.class)
 public abstract class HNpcMixin implements RSNPC
 {
 	@Shadow("client")
 	private static RSClient client;
 
-	@Shadow("npcDefCache")
-	private static HashMap<Integer, RSNPCComposition> npcDefCache;
+	@Inject
+	private RSNPCComposition transformedComposition = null;
 
 	@Inject
 	@Override
 	public int getId()
 	{
-		RSNPCComposition composition = transformIfRequired();
+		RSNPCComposition composition = getTransformedComposition();
 		return composition == null ? -1 : composition.getId();
 	}
 
@@ -34,7 +33,7 @@ public abstract class HNpcMixin implements RSNPC
 	@Override
 	public String getName()
 	{
-		RSNPCComposition composition = transformIfRequired();
+		RSNPCComposition composition = getTransformedComposition();
 		return composition == null ? null : Text.removeTags(Text.sanitize(composition.getName()));
 	}
 
@@ -42,7 +41,7 @@ public abstract class HNpcMixin implements RSNPC
 	@Override
 	public int getCombatLevel()
 	{
-		RSNPCComposition composition = transformIfRequired();
+		RSNPCComposition composition = getTransformedComposition();
 		return composition == null ? -1 : composition.getCombatLevel();
 	}
 
@@ -50,36 +49,8 @@ public abstract class HNpcMixin implements RSNPC
 	@Override
 	public String[] getRawActions()
 	{
-		RSNPCComposition composition = transformIfRequired();
+		RSNPCComposition composition = getTransformedComposition();
 		return composition == null ? null : composition.getActions();
-	}
-
-	@Inject
-	private RSNPCComposition transformIfRequired()
-	{
-		RSNPCComposition composition = getComposition();
-		if (isTransformRequired())
-		{
-			if (!npcDefCache.containsKey(getIndex()))
-			{
-				assert client.isClientThread() : "NPCComposition.getTransformed must be called on client thread";
-				composition = composition.transform();
-				npcDefCache.put(getIndex(), composition);
-			}
-			else
-			{
-				composition = npcDefCache.get(getIndex());
-			}
-		}
-
-		return composition;
-	}
-
-	@Inject
-	@Override
-	public boolean isDefinitionCached()
-	{
-		return npcDefCache.containsKey(getIndex());
 	}
 
 	@Override
@@ -137,13 +108,6 @@ public abstract class HNpcMixin implements RSNPC
 
 	@Inject
 	@Override
-	public boolean isTransformRequired()
-	{
-		return getComposition() != null && getComposition().getConfigs() != null;
-	}
-
-	@Inject
-	@Override
 	public String toString()
 	{
 		return getIndex() + ": " + getName() + " (" + getId() + ") at " + getWorldLocation();
@@ -159,5 +123,17 @@ public abstract class HNpcMixin implements RSNPC
 	public long getTag()
 	{
 		return client.calculateTag(0, 0, 1, getComposition().isInteractible(), getIndex());
+	}
+
+	@Inject
+	public void setTransformedComposition(NPCComposition composition)
+	{
+		transformedComposition = (RSNPCComposition) composition;
+	}
+
+	@Inject
+	public RSNPCComposition getTransformedComposition()
+	{
+		return transformedComposition == null ? getComposition() : transformedComposition;
 	}
 }

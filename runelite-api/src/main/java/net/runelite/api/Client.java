@@ -2436,6 +2436,8 @@ public interface Client extends GameEngine
 
 	void uncacheNPC(int id);
 
+	void cacheNPC(int index, NPCComposition composition);
+
 	void uncacheItem(int id);
 
 	void uncacheObject(int id);
@@ -2510,4 +2512,6 @@ public interface Client extends GameEngine
 	void setPendingAutomation(AutomatedInteraction entry);
 
 	AutomatedInteraction getPendingAutomation();
+
+	VarbitComposition getVarbitComposition(int varbitId);
 }

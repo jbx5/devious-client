@@ -8,12 +8,14 @@ import dev.hoot.api.game.GameThread;
 import dev.hoot.api.input.naturalmouse.NaturalMouse;
 import dev.hoot.api.movement.Movement;
 import dev.hoot.api.widgets.DialogOption;
+import dev.hoot.bot.managers.DefinitionManager;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.api.Constants;
 import net.runelite.api.MenuAction;
 import net.runelite.api.events.DialogProcessed;
 import net.runelite.api.events.MenuOptionClicked;
+import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
 
 import javax.inject.Inject;
@@ -33,6 +35,13 @@ public class InteractionManager
 
 	@Inject
 	private Client client;
+
+	@Inject
+	InteractionManager(EventBus eventBus, DefinitionManager definitionManager)
+	{
+		definitionManager.init();
+		eventBus.register(definitionManager);
+	}
 
 	@Subscribe
 	public void onInvokeMenuAction(AutomatedInteraction e)

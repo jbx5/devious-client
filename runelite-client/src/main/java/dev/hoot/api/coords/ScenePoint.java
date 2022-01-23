@@ -24,6 +24,16 @@ public class ScenePoint {
         return RegionPoint.fromWorld(toWorld());
     }
 
+    public int distanceTo(ScenePoint other)
+    {
+        if (other.plane != plane)
+        {
+            return Integer.MAX_VALUE;
+        }
+
+        return (int) Math.sqrt(Math.pow(other.x - x, 2) + Math.pow(other.y - y, 2));
+    }
+
     // region > world > scene
     public static ScenePoint fromRegion(RegionPoint regionPoint)
     {

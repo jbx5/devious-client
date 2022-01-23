@@ -30,8 +30,6 @@ public abstract class HClientMixin implements RSClient
 	private static RSRuneLiteMenuEntry[] rl$menuEntries;
 
 	@Inject
-	public static HashMap<Integer, RSNPCComposition> npcDefCache = new HashMap<>();
-	@Inject
 	public static HashMap<Integer, RSObjectComposition> objDefCache = new HashMap<>();
 	@Inject
 	public static HashMap<Integer, RSItemComposition> itemDefCache = new HashMap<>();
@@ -142,13 +140,6 @@ public abstract class HClientMixin implements RSClient
 
 	@Inject
 	@Override
-	public void uncacheNPC(int id)
-	{
-		npcDefCache.remove(id);
-	}
-
-	@Inject
-	@Override
 	public void uncacheItem(int id)
 	{
 		itemDefCache.remove(id);
@@ -159,13 +150,6 @@ public abstract class HClientMixin implements RSClient
 	public void uncacheObject(int id)
 	{
 		objDefCache.remove(id);
-	}
-
-	@Inject
-	@Override
-	public void clearNPCCache()
-	{
-		npcDefCache.clear();
 	}
 
 	@Inject
