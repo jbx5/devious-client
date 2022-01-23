@@ -38,10 +38,13 @@ public abstract class HClientMixin implements RSClient
 	private static boolean lowCpu;
 
 	@Inject
-	private static int[] previousExp = new int[23];
+	private static final int[] previousExp = new int[23];
 
 	@Inject
-	private static AtomicReference<AutomatedInteraction> automatedMenu = new AtomicReference<>(null);
+	private static final AtomicReference<AutomatedInteraction> automatedMenu = new AtomicReference<>(null);
+
+	@Inject
+	private static long lastMenuChange = -1;
 
 	@Inject
 	@Override
@@ -350,6 +353,7 @@ public abstract class HClientMixin implements RSClient
 	@Override
 	public void setPendingAutomation(AutomatedInteraction replacement)
 	{
+		lastMenuChange = System.currentTimeMillis();
 		automatedMenu.set(replacement);
 	}
 
@@ -357,6 +361,11 @@ public abstract class HClientMixin implements RSClient
 	@Override
 	public AutomatedInteraction getPendingAutomation()
 	{
+		if (lastMenuChange + 1000 < System.currentTimeMillis())
+		{
+			automatedMenu.set(null);
+		}
+
 		return automatedMenu.get();
 	}
 }
