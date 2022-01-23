@@ -1482,7 +1482,9 @@ public class ModelData extends Renderable {
 	}
 
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "()Lge;")
+	@ObfuscatedSignature(
+		descriptor = "()Lge;"
+	)
 	@Export("copyModelData")
 	public ModelData copyModelData() {
 		ModelData var1 = new ModelData();

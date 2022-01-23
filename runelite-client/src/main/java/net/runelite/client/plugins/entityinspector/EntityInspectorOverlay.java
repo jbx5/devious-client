@@ -128,11 +128,12 @@ public class EntityInspectorOverlay extends Overlay
 				graphics.setColor(BLUE);
 				graphics.draw(p.getConvexHull());
 
-				OverlayUtil.renderActorParagraph(graphics, p, createInfo(p), BLUE);
+				OverlayUtil.renderActorOverlay(graphics, p, "", BLUE);
+				tooltipManager.add(new Tooltip(createInfo(p)));
 			}
 		}
 
-		if (local.getConvexHull() != null && local.getConvexHull().contains(point.getX(), point.getY()) || !config.hover())
+		if (local.getConvexHull() != null && local.getConvexHull().contains(point.getX(), point.getY()))
 		{
 			graphics.setColor(CYAN);
 
@@ -153,7 +154,7 @@ public class EntityInspectorOverlay extends Overlay
 			if (npc.getConvexHull() != null && npc.getConvexHull().contains(point.getX(), point.getY()) || !config.hover())
 			{
 				graphics.draw(npc.getConvexHull());
-				OverlayUtil.renderActorParagraph(graphics, npc, createInfo(npc), color);
+				tooltipManager.add(new Tooltip(createInfo(npc)));
 			}
 		}
 	}
@@ -223,7 +224,8 @@ public class EntityInspectorOverlay extends Overlay
 				Node current = tileItemPile.getBottom();
 				while (current instanceof TileItem)
 				{
-					OverlayUtil.renderTileOverlayParagraph(graphics, tileItemPile, createInfo((TileItem) current), RED);
+					OverlayUtil.renderTileOverlay(graphics, tileItemPile, "", RED);
+					tooltipManager.add(new Tooltip(createInfo((TileItem) current)));
 					current = current.getNext();
 				}
 			}
@@ -255,7 +257,8 @@ public class EntityInspectorOverlay extends Overlay
 		graphics.setColor(color);
 		graphics.draw(hull);
 
-		OverlayUtil.renderTileOverlayParagraph(graphics, go, createInfo(go), color);
+		OverlayUtil.renderTileOverlay(graphics, go, "", color);
+		tooltipManager.add(new Tooltip(createInfo(go)));
 	}
 
 	public void renderGroundObject(Graphics2D graphics, GroundObject gr, Point point)
@@ -276,7 +279,8 @@ public class EntityInspectorOverlay extends Overlay
 			return;
 		}
 
-		OverlayUtil.renderTileOverlayParagraph(graphics, gr, createInfo(gr), PURPLE);
+		OverlayUtil.renderTileOverlay(graphics, gr, "", PURPLE);
+		tooltipManager.add(new Tooltip(createInfo(gr)));
 	}
 
 	public void renderWallObject(Graphics2D graphics, WallObject w, Point point)
@@ -297,7 +301,8 @@ public class EntityInspectorOverlay extends Overlay
 			return;
 		}
 
-		OverlayUtil.renderTileOverlayParagraph(graphics, w, createInfo(w), GRAY);
+		OverlayUtil.renderTileOverlay(graphics, w, "", GRAY);
+		tooltipManager.add(new Tooltip(createInfo(w)));
 	}
 
 	public void renderDecorObject(Graphics2D graphics, DecorativeObject deo)
@@ -453,12 +458,12 @@ public class EntityInspectorOverlay extends Overlay
 			{
 				if (interactable instanceof Player)
 				{
-					sb.append("Index: ").append(((Player) interactable).getIndex()).append("\n");
+					sb.append("Index: ").append(((Player) interactable).getIndex()).append("</br>");
 				}
 
 				if (interactable instanceof NPC)
 				{
-					sb.append("Index: ").append(((NPC) interactable).getIndex()).append("\n");
+					sb.append("Index: ").append(((NPC) interactable).getIndex()).append("</br>");
 				}
 			}
 
@@ -466,12 +471,12 @@ public class EntityInspectorOverlay extends Overlay
 
 			if (config.animations())
 			{
-				sb.append("Animations: ").append(((Actor) interactable).getAnimation()).append("\n");
+				sb.append("Animations: ").append(((Actor) interactable).getAnimation()).append("</br>");
 			}
 
 			if (config.graphics())
 			{
-				sb.append("Graphic: ").append(((Actor) interactable).getGraphic()).append("\n");
+				sb.append("Graphic: ").append(((Actor) interactable).getGraphic()).append("</br>");
 			}
 
 			return sb.toString();
@@ -481,7 +486,7 @@ public class EntityInspectorOverlay extends Overlay
 		{
 			if (config.ids())
 			{
-				sb.append("ID: ").append(interactable.getId()).append("\n");
+				sb.append("ID: ").append(interactable.getId()).append("</br>");
 			}
 
 			appendCommonFields(sb, interactable);
@@ -491,7 +496,7 @@ public class EntityInspectorOverlay extends Overlay
 				if (interactable instanceof GameObject
 						&& ((GameObject) interactable).getRenderable() instanceof DynamicObject)
 				{
-					sb.append("Animations: ").append(((DynamicObject) ((GameObject) interactable).getRenderable()).getAnimationID()).append("\n");
+					sb.append("Animations: ").append(((DynamicObject) ((GameObject) interactable).getRenderable()).getAnimationID()).append("</br>");
 				}
 			}
 
@@ -502,12 +507,12 @@ public class EntityInspectorOverlay extends Overlay
 		{
 			if (config.ids())
 			{
-				sb.append("ID: ").append(interactable.getId()).append("\n");
+				sb.append("ID: ").append(interactable.getId()).append("</br>");
 			}
 
 			if (config.quantities())
 			{
-				sb.append("Quantity: ").append(((TileItem) interactable).getQuantity()).append("\n");
+				sb.append("Quantity: ").append(((TileItem) interactable).getQuantity()).append("</br>");
 			}
 
 			appendCommonFields(sb, interactable);
@@ -523,25 +528,25 @@ public class EntityInspectorOverlay extends Overlay
 		{
 			if (interactable instanceof NPC && config.ids())
 			{
-				sb.append("ID: ").append(interactable.getId()).append("\n");
+				sb.append("ID: ").append(interactable.getId()).append("</br>");
 			}
 
 			if (config.names())
 			{
-				sb.append("Name: ").append(((Actor) interactable).getName()).append("\n");
+				sb.append("Name: ").append(((Actor) interactable).getName()).append("</br>");
 			}
 
 			if (config.actions())
 			{
-				sb.append("Actions: ").append(Arrays.toString(interactable.getRawActions())).append("\n");
+				sb.append("Actions: ").append(Arrays.toString(interactable.getRawActions())).append("</br>");
 			}
 
 			if (config.worldLocations())
 			{
 				WorldPoint location = interactable.getWorldLocation();
-				sb.append("Location: ").append(location).append("\n");
-				sb.append("Region: ").append(RegionPoint.fromWorld(location)).append("\n");
-				sb.append("Scene: ").append(ScenePoint.fromWorld(location)).append("\n");
+				sb.append("Location: ").append(location).append("</br>");
+				sb.append("Region: ").append(RegionPoint.fromWorld(location)).append("</br>");
+				sb.append("Scene: ").append(ScenePoint.fromWorld(location)).append("</br>");
 			}
 
 			return;
@@ -551,20 +556,20 @@ public class EntityInspectorOverlay extends Overlay
 		{
 			if (config.names())
 			{
-				sb.append("Name: ").append(interactable.getName()).append("\n");
+				sb.append("Name: ").append(interactable.getName()).append("</br>");
 			}
 
 			if (config.actions())
 			{
-				sb.append("Actions: ").append(Arrays.toString(interactable.getRawActions())).append("\n");
+				sb.append("Actions: ").append(Arrays.toString(interactable.getRawActions())).append("</br>");
 			}
 
 			if (config.worldLocations())
 			{
 				WorldPoint location = interactable.getWorldLocation();
-				sb.append("Location: ").append(location).append("\n");
-				sb.append("Region: ").append(RegionPoint.fromWorld(location)).append("\n");
-				sb.append("Scene: ").append(ScenePoint.fromWorld(location)).append("\n");
+				sb.append("Location: ").append(location).append("</br>");
+				sb.append("Region: ").append(RegionPoint.fromWorld(location)).append("</br>");
+				sb.append("Scene: ").append(ScenePoint.fromWorld(location)).append("</br>");
 			}
 
 			return;
@@ -574,20 +579,20 @@ public class EntityInspectorOverlay extends Overlay
 		{
 			if (config.names())
 			{
-				sb.append("Name: ").append(interactable.getName()).append("\n");
+				sb.append("Name: ").append(interactable.getName()).append("</br>");
 			}
 
 			if (config.actions())
 			{
-				sb.append("Actions: ").append(Arrays.toString(interactable.getRawActions())).append("\n");
+				sb.append("Actions: ").append(Arrays.toString(interactable.getRawActions())).append("</br>");
 			}
 
 			if (config.worldLocations())
 			{
 				WorldPoint location = interactable.getWorldLocation();
-				sb.append("Location: ").append(location).append("\n");
-				sb.append("Region: ").append(RegionPoint.fromWorld(location)).append("\n");
-				sb.append("Scene: ").append(ScenePoint.fromWorld(location)).append("\n");
+				sb.append("Location: ").append(location).append("</br>");
+				sb.append("Region: ").append(RegionPoint.fromWorld(location)).append("</br>");
+				sb.append("Scene: ").append(ScenePoint.fromWorld(location)).append("</br>");
 			}
 		}
 	}

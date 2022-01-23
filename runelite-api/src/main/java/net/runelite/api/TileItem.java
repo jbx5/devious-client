@@ -45,12 +45,6 @@ public interface TileItem extends Renderable, SceneEntity
 	int getQuantity();
 
 	/**
-	 * Time in game ticks when the item spawned (relative to us)
-	 * @return
-	 */
-	int getSpawnTime();
-
-	/**
 	 * @return the tile this item is on
 	 */
 	Tile getTile();
