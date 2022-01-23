@@ -159,8 +159,8 @@ public class class65 {
 			var15[var1] = ((class185) (class130.findEnumerated(var21, var0.readByteAdd())));
 		}
 		if ((var3 & 2048) != 0) {
-			var2.spotAnimation = var0.method7499();
-			var5 = var0.method7412();
+			var2.spotAnimation = var0.readUnsignedShortAdd();
+			var5 = var0.readUnsignedIntME();
 			var2.spotAnimationHeight = var5 >> 16;
 			var2.field1130 = (var5 & 65535) + Client.cycle;
 			var2.spotAnimationFrame = 0;

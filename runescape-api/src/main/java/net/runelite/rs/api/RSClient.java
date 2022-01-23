@@ -33,7 +33,6 @@ import net.runelite.api.ModelData;
 import net.runelite.api.SpritePixels;
 import net.runelite.api.World;
 
-import net.runelite.api.*;
 import net.runelite.api.packets.ClientPacket;
 import net.runelite.api.packets.IsaacCipher;
 import net.runelite.api.clan.ClanRank;
