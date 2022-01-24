@@ -30,6 +30,11 @@ public abstract class HMouseHandlerMixin implements RSMouseHandler
 			setCurrentButton(button);
 		}
 
+		if (button == 1337)
+		{
+			button = 1;
+		}
+
 		long currentTime = client.getCurrentTime();
 		mousePressed(new MouseEvent(client.getCanvas(), MouseEvent.MOUSE_PRESSED, currentTime, 0, x, y, 1, false, button));
 		mouseReleased(new MouseEvent(client.getCanvas(), MouseEvent.MOUSE_RELEASED, currentTime, 0, x, y, 1, false, button));

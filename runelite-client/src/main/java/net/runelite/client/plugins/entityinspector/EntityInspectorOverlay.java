@@ -547,6 +547,10 @@ public class EntityInspectorOverlay extends Overlay
 				sb.append("Scene: ").append(ScenePoint.fromWorld(location)).append("</br>");
 			}
 
+			if (interactable instanceof NPC)
+			{
+				sb.append("Transformvarbit: ").append(((NPC) interactable).getComposition().getTransformVarbit()).append("</br>");
+			}
 			return;
 		}
 

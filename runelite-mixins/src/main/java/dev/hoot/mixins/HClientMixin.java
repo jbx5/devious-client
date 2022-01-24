@@ -361,7 +361,7 @@ public abstract class HClientMixin implements RSClient
 	@Override
 	public AutomatedInteraction getPendingAutomation()
 	{
-		if (lastMenuChange + 1000 < System.currentTimeMillis())
+		if (lastMenuChange + 100 < System.currentTimeMillis())
 		{
 			automatedMenu.set(null);
 		}

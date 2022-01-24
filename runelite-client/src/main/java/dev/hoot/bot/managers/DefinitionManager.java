@@ -61,6 +61,11 @@ public class DefinitionManager
                 && composition.getConfigs() != null)
         {
             VARBIT_TO_NPCINDEX.put(composition.getTransformVarbit(), event.getNpcIndex());
+
+            if (Vars.getBit(composition.getTransformVarbit()) != 0)
+            {
+                npc.setTransformedComposition(composition.transform());
+            }
         }
     }
 
