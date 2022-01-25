@@ -74,6 +74,7 @@ import net.runelite.api.NPC;
 import net.runelite.api.NPCComposition;
 import net.runelite.api.NameableContainer;
 import net.runelite.api.NodeCache;
+import net.runelite.api.ObjectComposition;
 import net.runelite.api.Perspective;
 import static net.runelite.api.Perspective.LOCAL_TILE_SIZE;
 import net.runelite.api.Player;
@@ -2302,13 +2303,13 @@ public abstract class RSClientMixin implements RSClient
 		this.comparingAppearance += comparingAppearance ? 1 : -1;
 	}
 
-//	@Inject
-//	@Override
-//	public ObjectComposition getObjectDefinition(int objectId)
-//	{
-//		assert this.isClientThread() : "getObjectDefinition must be called on client thread";
-//		return getRSObjectComposition(objectId);
-//	}
+	@Inject
+	@Override
+	public ObjectComposition getObjectDefinition(int objectId)
+	{
+		assert this.isClientThread() : "getObjectDefinition must be called on client thread";
+		return getRSObjectComposition(objectId);
+	}
 //
 //	@Inject
 //	@Override

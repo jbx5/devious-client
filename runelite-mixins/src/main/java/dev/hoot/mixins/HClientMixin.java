@@ -30,8 +30,6 @@ public abstract class HClientMixin implements RSClient
 	private static RSRuneLiteMenuEntry[] rl$menuEntries;
 
 	@Inject
-	public static HashMap<Integer, RSObjectComposition> objDefCache = new HashMap<>();
-	@Inject
 	public static HashMap<Integer, RSItemComposition> itemDefCache = new HashMap<>();
 
 	@Inject
@@ -150,23 +148,9 @@ public abstract class HClientMixin implements RSClient
 
 	@Inject
 	@Override
-	public void uncacheObject(int id)
-	{
-		objDefCache.remove(id);
-	}
-
-	@Inject
-	@Override
 	public void clearItemCache()
 	{
 		itemDefCache.clear();
-	}
-
-	@Inject
-	@Override
-	public void clearObjectCache()
-	{
-		objDefCache.clear();
 	}
 
 	@Inject
@@ -181,21 +165,6 @@ public abstract class HClientMixin implements RSClient
 		}
 
 		client.getCallbacks().post(option);
-	}
-
-	@Inject
-	@Override
-	public ObjectComposition getObjectDefinition(int objectId)
-	{
-		if (objDefCache.containsKey(objectId))
-		{
-			return objDefCache.get(objectId);
-		}
-
-		assert this.isClientThread() : "getObjectDefinition must be called on client thread";
-		RSObjectComposition objectComposition = getRSObjectComposition(objectId);
-		objDefCache.put(objectId, objectComposition);
-		return objectComposition;
 	}
 
 	@Inject

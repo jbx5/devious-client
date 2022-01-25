@@ -17,8 +17,6 @@ import net.runelite.rs.api.RSItemLayer;
 import net.runelite.rs.api.RSObjectComposition;
 import net.runelite.rs.api.RSWallDecoration;
 
-import java.util.HashMap;
-
 @Mixins({
 		@Mixin(RSWallDecoration.class),
 		@Mixin(RSGameObject.class),
@@ -30,12 +28,6 @@ public abstract class HTileObjectMixin implements TileObject
 {
 	@Shadow("client")
 	private static RSClient client;
-
-	@javax.inject.Inject
-	private Thread clientThread;
-
-	@Shadow("objDefCache")
-	private static HashMap<Integer, RSObjectComposition> objDefCache;
 
 	@Override
 	@Inject
@@ -54,7 +46,7 @@ public abstract class HTileObjectMixin implements TileObject
 	@Override
 	public String getName()
 	{
-		RSObjectComposition def = getCachedDefinition();
+		RSObjectComposition def = (RSObjectComposition) getTransformedDefinition();
 		return def == null ? null : Text.removeTags(Text.sanitize(def.getName()));
 	}
 
@@ -62,42 +54,8 @@ public abstract class HTileObjectMixin implements TileObject
 	@Override
 	public String[] getRawActions()
 	{
-		RSObjectComposition def = getCachedDefinition();
+		RSObjectComposition def = (RSObjectComposition) getTransformedDefinition();
 		return def == null ? null : def.getActions();
-	}
-
-	@Inject
-	@Override
-	public RSObjectComposition getCachedDefinition()
-	{
-		if (objDefCache.containsKey(getId()))
-		{
-			return objDefCache.get(getId());
-		}
-
-		return getDefinition();
-	}
-
-	@Inject
-	@Override
-	public boolean isDefinitionCached()
-	{
-		return objDefCache.containsKey(getId());
-	}
-
-	@Inject
-	@Override
-	public RSObjectComposition getDefinition()
-	{
-		assert client.isClientThread() : "TileObject.getDefinition must be called on client thread " + getId();
-		RSObjectComposition def = client.getRSObjectComposition(getId());
-		if (def != null && def.getImpostorIds() != null)
-		{
-			def = def.getImpostor();
-		}
-
-		objDefCache.put(getId(), def);
-		return def;
 	}
 
 	@Override

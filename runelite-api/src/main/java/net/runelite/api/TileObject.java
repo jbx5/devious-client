@@ -118,9 +118,7 @@ public interface TileObject extends SceneEntity
 
 	Point menuPoint();
 
-	ObjectComposition getDefinition();
+	ObjectComposition getTransformedDefinition();
 
-	ObjectComposition getCachedDefinition();
-
-	boolean isDefinitionCached();
+	void setTransformedDefinition(ObjectComposition composition);
 }

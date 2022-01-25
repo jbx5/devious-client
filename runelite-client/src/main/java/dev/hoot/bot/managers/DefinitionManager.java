@@ -7,7 +7,7 @@ import dev.hoot.api.game.Game;
 import dev.hoot.api.game.Vars;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.*;
-import net.runelite.api.events.VarbitChanged;
+import net.runelite.api.events.*;
 import net.runelite.client.callback.ClientThread;
 import net.runelite.client.eventbus.Subscribe;
 
@@ -27,7 +27,8 @@ public class DefinitionManager
     private ClientThread clientThread;
 
     private static final Multimap<Integer, Integer> VARBITS = HashMultimap.create();
-    private static final Map<Integer, Integer> VARBIT_TO_NPCINDEX = new HashMap<>();
+    private static final Map<Integer, Integer> VARBIT_TO_ENTITYID = new HashMap<>();
+    private static final Map<Integer, TileObject> TRANSFORMING_OBJECTS = new HashMap<>();
 
     public void init()
     {
@@ -60,7 +61,7 @@ public class DefinitionManager
                 && composition.getTransformVarbit() != -1
                 && composition.getConfigs() != null)
         {
-            VARBIT_TO_NPCINDEX.put(composition.getTransformVarbit(), event.getNpcIndex());
+            VARBIT_TO_ENTITYID.put(composition.getTransformVarbit(), event.getNpcIndex());
 
             if (Vars.getBit(composition.getTransformVarbit()) != 0)
             {
@@ -70,34 +71,159 @@ public class DefinitionManager
     }
 
     @Subscribe
+    private void onSpawn(GameObjectSpawned event)
+    {
+        checkTransformObject(event.getGameObject());
+    }
+
+    @Subscribe
+    private void onChange(GameObjectChanged event)
+    {
+        checkTransformObject(event.getGameObject());
+    }
+
+    @Subscribe
+    private void onDespawn(GameObjectDespawned event)
+    {
+        TRANSFORMING_OBJECTS.remove(event.getGameObject().getId());
+    }
+
+    @Subscribe
+    private void onSpawn(WallObjectSpawned event)
+    {
+        checkTransformObject(event.getWallObject());
+    }
+
+    @Subscribe
+    private void onChange(WallObjectSpawned event)
+    {
+        checkTransformObject(event.getWallObject());
+    }
+
+    @Subscribe
+    private void onDespawn(WallObjectDespawned event)
+    {
+        TRANSFORMING_OBJECTS.remove(event.getWallObject().getId());
+    }
+
+    @Subscribe
+    private void onSpawn(DecorativeObjectSpawned event)
+    {
+        checkTransformObject(event.getDecorativeObject());
+    }
+
+    @Subscribe
+    private void onChange(DecorativeObjectChanged event)
+    {
+        checkTransformObject(event.getDecorativeObject());
+    }
+
+    @Subscribe
+    private void onDespawn(DecorativeObjectDespawned event)
+    {
+        TRANSFORMING_OBJECTS.remove(event.getDecorativeObject().getId());
+    }
+
+    @Subscribe
+    private void onSpawn(GroundObjectSpawned event)
+    {
+        checkTransformObject(event.getGroundObject());
+    }
+
+    @Subscribe
+    private void onChange(GroundObjectChanged event)
+    {
+        checkTransformObject(event.getGroundObject());
+    }
+
+    @Subscribe
+    private void onDespawn(GroundObjectDespawned event)
+    {
+        TRANSFORMING_OBJECTS.remove(event.getGroundObject().getId());
+    }
+
+    @Subscribe
     private void onVarbitChanged(VarbitChanged e)
     {
         var changedVarbits = VARBITS.get(e.getIndex());
         for (int varbitId : changedVarbits)
         {
-            if (!VARBIT_TO_NPCINDEX.containsKey(varbitId))
+            if (!VARBIT_TO_ENTITYID.containsKey(varbitId))
             {
                 continue;
             }
 
-            int npcIndex = VARBIT_TO_NPCINDEX.get(varbitId);
             int configValue = Vars.getBit(varbitId);
-            NPC npc = client.getCachedNPCs()[npcIndex];
-            if (npc == null || npc.getComposition() == null)
+            int entityId = VARBIT_TO_ENTITYID.get(varbitId);
+
+            if (entityId < client.getCachedNPCs().length)
             {
-                continue;
+                NPC npc = client.getCachedNPCs()[entityId];
+                if (npc != null && npc.getComposition() != null)
+                {
+                    if (configValue == 0)
+                    {
+                        log.debug("NPC {} reverted to default state", entityId);
+                        npc.setTransformedComposition(null);
+                    }
+                    else
+                    {
+                        log.debug("NPC {} transformed", entityId);
+                        npc.setTransformedComposition(npc.getComposition().transform());
+                    }
+
+                    return;
+                }
             }
 
-            if (configValue == 0)
+            ObjectComposition objectComposition = client.getObjectDefinition(entityId);
+            TileObject cachedObject = TRANSFORMING_OBJECTS.get(entityId);
+            if (objectComposition != null && cachedObject != null)
             {
-                log.debug("NPC {} reverted to default state", npc);
-                npc.setTransformedComposition(null);
+                cachedObject.setTransformedDefinition(objectComposition.getImpostor());
+
+                if (configValue == 0)
+                {
+                    log.debug("Object {} reverted to default state", entityId);
+                }
+                else
+                {
+                    log.debug("Object {} transformed", entityId);
+                }
+            }
+        }
+    }
+
+    private void checkTransformObject(TileObject object)
+    {
+        if (object == null)
+        {
+            return;
+        }
+
+        ObjectComposition composition = client.getObjectDefinition(object.getId());
+        if (composition == null)
+        {
+            return;
+        }
+
+        if (composition.getImpostorIds() != null && composition.getTransformVarbit() != -1)
+        {
+            VARBIT_TO_ENTITYID.put(composition.getTransformVarbit(), object.getId());
+            TRANSFORMING_OBJECTS.put(object.getId(), object);
+
+            if (Vars.getBit(composition.getTransformVarbit()) != 0)
+            {
+                object.setTransformedDefinition(composition.getImpostor());
             }
             else
             {
-                log.debug("NPC {} transformed", npc);
-                npc.setTransformedComposition(npc.getComposition().transform());
+                object.setTransformedDefinition(composition);
             }
+        }
+        else
+        {
+            object.setTransformedDefinition(composition);
         }
     }
 }

@@ -325,22 +325,6 @@ public class TileObjects extends TileEntities<TileObject>
 			out.addAll(getTileObjects(tile));
 		}
 
-		List<TileObject> notCached = out.stream()
-				.filter(x -> !x.isDefinitionCached())
-				.collect(Collectors.toList());
-		if (!notCached.isEmpty())
-		{
-			GameThread.invokeLater(() ->
-			{
-				for (TileObject tileObject : notCached)
-				{
-					tileObject.getDefinition();
-				}
-
-				return true;
-			});
-		}
-
 		return out.stream()
 				.filter(filter)
 				.collect(Collectors.toList());
@@ -349,19 +333,7 @@ public class TileObjects extends TileEntities<TileObject>
 	@Override
 	protected List<TileObject> at(Tile tile, Predicate<? super TileObject> pred)
 	{
-		Predicate<TileObject> filter = x ->
-		{
-			if (!x.isDefinitionCached())
-			{
-				return GameThread.invokeLater(() ->
-				{
-					x.getCachedDefinition(); // cache it
-					return pred.test(x);
-				});
-			}
-
-			return pred.test(x);
-		};
+		Predicate<TileObject> filter = pred::test;
 
 		return getTileObjects(tile).stream()
 				.filter(filter)

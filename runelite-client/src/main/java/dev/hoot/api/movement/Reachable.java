@@ -128,11 +128,6 @@ public class Reachable
 			return false;
 		}
 
-		if (!wall.isDefinitionCached())
-		{
-			GameThread.invokeLater(() -> Game.getClient().getObjectDefinition(wall.getId()));
-		}
-
 		return isWalled(direction, getCollisionFlag(source.getWorldLocation())) && wall.hasAction("Open", "Close");
 	}
 
@@ -142,11 +137,6 @@ public class Reachable
 		if (wall == null)
 		{
 			return false;
-		}
-
-		if (!wall.isDefinitionCached())
-		{
-			GameThread.invokeLater(() -> Game.getClient().getObjectDefinition(wall.getId()));
 		}
 
 		return isWalled(source, destination) && wall.hasAction("Open");
