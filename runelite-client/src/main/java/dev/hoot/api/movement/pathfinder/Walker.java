@@ -120,8 +120,15 @@ public class Walker
 		if (!local.isAnimating() && !path.contains(local.getWorldLocation()))
 		{
 			log.debug("Direction changed, resetting cached path towards {}", destination);
-			LOCAL_PATH_CACHE.refresh(destination);
-			PATH_CACHE.refresh(destination);
+			if (!localRegion)
+			{
+				PATH_CACHE.refresh(destination);
+			}
+			else
+			{
+				LOCAL_PATH_CACHE.refresh(destination);
+			}
+
 			return false;
 		}
 

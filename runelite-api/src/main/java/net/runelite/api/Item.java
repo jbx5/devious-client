@@ -415,12 +415,13 @@ public class Item implements Interactable, Identifiable, EntityNameable
 		{
 			try
 			{
+				Rectangle itemBounds = widget.getWidgetItem(getSlot()).getCanvasBounds();
 				return new Point(
-						random.nextInt(bounds.x, bounds.x + bounds.width),
-						random.nextInt(bounds.y, bounds.y + bounds.height)
+						random.nextInt(itemBounds.x, itemBounds.x + itemBounds.width),
+						random.nextInt(itemBounds.y, itemBounds.y + itemBounds.height)
 				);
 			}
-			catch (IllegalArgumentException e)
+			catch (Exception e)
 			{
 				return new Point(-1, -1);
 			}

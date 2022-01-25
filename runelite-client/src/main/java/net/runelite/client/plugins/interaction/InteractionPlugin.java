@@ -1,6 +1,6 @@
 package net.runelite.client.plugins.interaction;
 
-import dev.hoot.api.plugins.FakePlugin;
+import dev.hoot.api.plugins.SettingsPlugin;
 import dev.hoot.bot.managers.interaction.InteractionConfig;
 import dev.hoot.bot.managers.interaction.InteractionManager;
 import net.runelite.client.config.Config;
@@ -15,7 +15,7 @@ import javax.inject.Inject;
 		name = "Interaction Plugin",
 		hidden = true
 )
-public class InteractionPlugin extends FakePlugin
+public class InteractionPlugin extends SettingsPlugin
 {
 	@Inject
 	private OverlayManager overlayManager;

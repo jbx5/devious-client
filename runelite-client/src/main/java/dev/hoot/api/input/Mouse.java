@@ -134,4 +134,9 @@ public class Mouse
 		event.setSource("hoot");
 		canvas.dispatchEvent(event);
 	}
+
+	public static Point getPosition()
+	{
+		return Game.getClient().getMouseCanvasPosition().getAwtPoint();
+	}
 }

@@ -26,15 +26,17 @@ package net.runelite.rs.api;
 
 import java.math.BigInteger;
 import java.util.Map;
-
-import net.runelite.api.packets.ClientPacket;
-import net.runelite.api.packets.IsaacCipher;
 import net.runelite.api.AmbientSoundEffect;
 import net.runelite.api.Client;
 import net.runelite.api.Deque;
+import net.runelite.api.ModelData;
 import net.runelite.api.SpritePixels;
 import net.runelite.api.World;
+
+import net.runelite.api.packets.ClientPacket;
+import net.runelite.api.packets.IsaacCipher;
 import net.runelite.api.clan.ClanRank;
+import net.runelite.api.clan.ClanSettings;
 import net.runelite.api.widgets.Widget;
 import net.runelite.mapping.Construct;
 import net.runelite.mapping.Import;
@@ -259,6 +261,14 @@ public interface RSClient extends RSGameEngine, Client
 
 	@Import("graphicsObjects")
 	RSNodeDeque getGraphicsObjectDeque();
+
+	@Import("worldSelectOpen")
+	@Override
+	boolean isWorldSelectOpen();
+
+	@Import("worldSelectOpen")
+	@Override
+	void setWorldSelectOpen(boolean open);
 
 	@Import("Login_username")
 	@Override
@@ -1565,6 +1575,18 @@ public interface RSClient extends RSGameEngine, Client
 
 	@Construct
 	RSIterableNodeHashTable createIterableNodeHashTable(int size);
+
+	@Construct
+	RSRuneLiteClanMember runeliteClanMember(ClanSettings var1, int var2);
+
+	@Construct
+	RSProjectile newProjectile(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11);
+
+	@Construct
+	RSModelData newModelData(ModelData[] var1, int var2);
+
+	@Construct
+	RSEvictingDualNodeHashTable newEvictingDualNodeHashTable(int var1);
 	
 	/*
 	Unethical
@@ -1622,14 +1644,6 @@ public interface RSClient extends RSGameEngine, Client
 
 	@Import("destinationY")
 	void setDestinationY(int sceneY);
-
-	@Import("worldSelectOpen")
-	@Override
-	boolean isWorldSelectOpen();
-
-	@Import("worldSelectOpen")
-	@Override
-	void setWorldSelectOpen(boolean open);
 
 	@Import("setWindowedMode")
 	@Override

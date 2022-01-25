@@ -1,6 +1,8 @@
 package net.runelite.client.plugins.entityinspector;
 
-import dev.hoot.api.Interactable;
+import dev.hoot.api.SceneEntity;
+import dev.hoot.api.coords.RegionPoint;
+import dev.hoot.api.coords.ScenePoint;
 import dev.hoot.api.entities.*;
 import dev.hoot.api.game.GameThread;
 import dev.hoot.api.scene.Tiles;
@@ -9,11 +11,14 @@ import dev.hoot.api.widgets.Widgets;
 import net.runelite.api.Point;
 import net.runelite.api.*;
 import net.runelite.api.coords.LocalPoint;
+import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.api.widgets.WidgetItem;
 import net.runelite.client.ui.FontManager;
 import net.runelite.client.ui.overlay.*;
+import net.runelite.client.ui.overlay.tooltip.Tooltip;
+import net.runelite.client.ui.overlay.tooltip.TooltipManager;
 
 import javax.inject.Inject;
 import java.awt.*;
@@ -37,12 +42,14 @@ public class EntityInspectorOverlay extends Overlay
 
 	private final Client client;
 	private final EntityInspectorConfig config;
+	private final TooltipManager tooltipManager;
 
 	@Inject
-	private EntityInspectorOverlay(Client client, EntityInspectorConfig config)
+	private EntityInspectorOverlay(Client client, EntityInspectorConfig config, TooltipManager tooltipManager)
 	{
 		this.client = client;
 		this.config = config;
+		this.tooltipManager = tooltipManager;
 
 		setPosition(OverlayPosition.DYNAMIC);
 		setLayer(OverlayLayer.ABOVE_WIDGETS);
@@ -121,11 +128,12 @@ public class EntityInspectorOverlay extends Overlay
 				graphics.setColor(BLUE);
 				graphics.draw(p.getConvexHull());
 
-				OverlayUtil.renderActorParagraph(graphics, p, createInfo(p), BLUE);
+				OverlayUtil.renderActorOverlay(graphics, p, "", BLUE);
+				tooltipManager.add(new Tooltip(createInfo(p)));
 			}
 		}
 
-		if (local.getConvexHull() != null && local.getConvexHull().contains(point.getX(), point.getY()) || !config.hover())
+		if (local.getConvexHull() != null && local.getConvexHull().contains(point.getX(), point.getY()))
 		{
 			graphics.setColor(CYAN);
 
@@ -146,7 +154,7 @@ public class EntityInspectorOverlay extends Overlay
 			if (npc.getConvexHull() != null && npc.getConvexHull().contains(point.getX(), point.getY()) || !config.hover())
 			{
 				graphics.draw(npc.getConvexHull());
-				OverlayUtil.renderActorParagraph(graphics, npc, createInfo(npc), color);
+				tooltipManager.add(new Tooltip(createInfo(npc)));
 			}
 		}
 	}
@@ -187,9 +195,18 @@ public class EntityInspectorOverlay extends Overlay
 		Polygon poly = Perspective.getCanvasTilePoly(client, tile.getLocalLocation());
 		if (poly != null && poly.contains(client.getMouseCanvasPosition().getX(), client.getMouseCanvasPosition().getY()))
 		{
+			WorldPoint worldLocation = tile.getWorldLocation();
+			ScenePoint scenePoint = ScenePoint.fromWorld(worldLocation);
+			String tooltip = String.format("World location: %d, %d, %d</br>" +
+							"Region ID: %d location: %d, %d</br>" +
+							"Scene location: %d, %d</br>"
+					,
+					worldLocation.getX(), worldLocation.getY(), worldLocation.getPlane(),
+					worldLocation.getRegionID(), worldLocation.getRegionX(), worldLocation.getRegionY(),
+					scenePoint.getX(), scenePoint.getY())
+					;
+			tooltipManager.add(new Tooltip(tooltip));
 			OverlayUtil.renderPolygon(graphics, poly, GREEN);
-			OverlayUtil.renderTextLocation(graphics, client.getMouseCanvasPosition(),
-					"World Location: " + tile.getWorldLocation().getX() + ", " + tile.getWorldLocation().getY() + ", " + client.getPlane(), Color.GREEN);
 		}
 	}
 
@@ -207,7 +224,8 @@ public class EntityInspectorOverlay extends Overlay
 				Node current = tileItemPile.getBottom();
 				while (current instanceof TileItem)
 				{
-					OverlayUtil.renderTileOverlayParagraph(graphics, tileItemPile, createInfo((TileItem) current), RED);
+					OverlayUtil.renderTileOverlay(graphics, tileItemPile, "", RED);
+					tooltipManager.add(new Tooltip(createInfo((TileItem) current)));
 					current = current.getNext();
 				}
 			}
@@ -239,7 +257,8 @@ public class EntityInspectorOverlay extends Overlay
 		graphics.setColor(color);
 		graphics.draw(hull);
 
-		OverlayUtil.renderTileOverlayParagraph(graphics, go, createInfo(go), color);
+		OverlayUtil.renderTileOverlay(graphics, go, "", color);
+		tooltipManager.add(new Tooltip(createInfo(go)));
 	}
 
 	public void renderGroundObject(Graphics2D graphics, GroundObject gr, Point point)
@@ -260,7 +279,8 @@ public class EntityInspectorOverlay extends Overlay
 			return;
 		}
 
-		OverlayUtil.renderTileOverlayParagraph(graphics, gr, createInfo(gr), PURPLE);
+		OverlayUtil.renderTileOverlay(graphics, gr, "", PURPLE);
+		tooltipManager.add(new Tooltip(createInfo(gr)));
 	}
 
 	public void renderWallObject(Graphics2D graphics, WallObject w, Point point)
@@ -281,7 +301,8 @@ public class EntityInspectorOverlay extends Overlay
 			return;
 		}
 
-		OverlayUtil.renderTileOverlayParagraph(graphics, w, createInfo(w), GRAY);
+		OverlayUtil.renderTileOverlay(graphics, w, "", GRAY);
+		tooltipManager.add(new Tooltip(createInfo(w)));
 	}
 
 	public void renderDecorObject(Graphics2D graphics, DecorativeObject deo)
@@ -389,9 +410,7 @@ public class EntityInspectorOverlay extends Overlay
 
 	public void renderGraphicsObjects(Graphics2D graphics)
 	{
-		List<GraphicsObject> graphicsObjects = client.getGraphicsObjects();
-
-		for (GraphicsObject graphicsObject : graphicsObjects)
+		client.getGraphicsObjects().forEach(graphicsObject ->
 		{
 			LocalPoint lp = graphicsObject.getLocation();
 			Polygon poly = Perspective.getCanvasTilePoly(client, lp);
@@ -408,7 +427,7 @@ public class EntityInspectorOverlay extends Overlay
 			{
 				OverlayUtil.renderTextLocation(graphics, textLocation, infoString, Color.WHITE);
 			}
-		}
+		});
 	}
 
 	public void renderPlayerWireframe(Graphics2D graphics, Player player, Color color)
@@ -428,7 +447,7 @@ public class EntityInspectorOverlay extends Overlay
 		}
 	}
 
-	public String createInfo(Interactable interactable)
+	public String createInfo(SceneEntity interactable)
 	{
 		StringBuilder sb = new StringBuilder();
 		if (interactable instanceof Actor)
@@ -437,12 +456,12 @@ public class EntityInspectorOverlay extends Overlay
 			{
 				if (interactable instanceof Player)
 				{
-					sb.append("Index: ").append(((Player) interactable).getIndex()).append("\n");
+					sb.append("Index: ").append(((Player) interactable).getIndex()).append("</br>");
 				}
 
 				if (interactable instanceof NPC)
 				{
-					sb.append("Index: ").append(((NPC) interactable).getIndex()).append("\n");
+					sb.append("Index: ").append(((NPC) interactable).getIndex()).append("</br>");
 				}
 			}
 
@@ -450,12 +469,12 @@ public class EntityInspectorOverlay extends Overlay
 
 			if (config.animations())
 			{
-				sb.append("Animations: ").append(((Actor) interactable).getAnimation()).append("\n");
+				sb.append("Animations: ").append(((Actor) interactable).getAnimation()).append("</br>");
 			}
 
 			if (config.graphics())
 			{
-				sb.append("Graphic: ").append(((Actor) interactable).getGraphic()).append("\n");
+				sb.append("Graphic: ").append(((Actor) interactable).getGraphic()).append("</br>");
 			}
 
 			return sb.toString();
@@ -465,7 +484,7 @@ public class EntityInspectorOverlay extends Overlay
 		{
 			if (config.ids())
 			{
-				sb.append("ID: ").append(((TileObject) interactable).getId()).append("\n");
+				sb.append("ID: ").append(interactable.getId()).append("</br>");
 			}
 
 			appendCommonFields(sb, interactable);
@@ -475,7 +494,7 @@ public class EntityInspectorOverlay extends Overlay
 				if (interactable instanceof GameObject
 						&& ((GameObject) interactable).getRenderable() instanceof DynamicObject)
 				{
-					sb.append("Animations: ").append(((DynamicObject) interactable).getAnimationID()).append("\n");
+					sb.append("Animations: ").append(((DynamicObject) ((GameObject) interactable).getRenderable()).getAnimationID()).append("</br>");
 				}
 			}
 
@@ -486,12 +505,12 @@ public class EntityInspectorOverlay extends Overlay
 		{
 			if (config.ids())
 			{
-				sb.append("ID: ").append(((TileItem) interactable).getId()).append("\n");
+				sb.append("ID: ").append(interactable.getId()).append("</br>");
 			}
 
 			if (config.quantities())
 			{
-				sb.append("Quantity: ").append(((TileItem) interactable).getQuantity()).append("\n");
+				sb.append("Quantity: ").append(((TileItem) interactable).getQuantity()).append("</br>");
 			}
 
 			appendCommonFields(sb, interactable);
@@ -501,30 +520,37 @@ public class EntityInspectorOverlay extends Overlay
 		return sb.toString();
 	}
 
-	private void appendCommonFields(StringBuilder sb, Interactable interactable)
+	private void appendCommonFields(StringBuilder sb, SceneEntity interactable)
 	{
 		if (interactable instanceof Actor)
 		{
 			if (interactable instanceof NPC && config.ids())
 			{
-				sb.append("ID: ").append(((Actor) interactable).getId()).append("\n");
+				sb.append("ID: ").append(interactable.getId()).append("</br>");
 			}
 
 			if (config.names())
 			{
-				sb.append("Name: ").append(((Actor) interactable).getName()).append("\n");
+				sb.append("Name: ").append(((Actor) interactable).getName()).append("</br>");
 			}
 
 			if (config.actions())
 			{
-				sb.append("Actions: ").append(Arrays.toString(((Actor) interactable).getRawActions())).append("\n");
+				sb.append("Actions: ").append(Arrays.toString(interactable.getRawActions())).append("</br>");
 			}
 
 			if (config.worldLocations())
 			{
-				sb.append("Location: ").append(((Actor) interactable).getWorldLocation()).append("\n");
+				WorldPoint location = interactable.getWorldLocation();
+				sb.append("Location: ").append(location).append("</br>");
+				sb.append("Region: ").append(RegionPoint.fromWorld(location)).append("</br>");
+				sb.append("Scene: ").append(ScenePoint.fromWorld(location)).append("</br>");
 			}
 
+			if (interactable instanceof NPC)
+			{
+				sb.append("Transformvarbit: ").append(((NPC) interactable).getComposition().getTransformVarbit()).append("</br>");
+			}
 			return;
 		}
 
@@ -532,17 +558,20 @@ public class EntityInspectorOverlay extends Overlay
 		{
 			if (config.names())
 			{
-				sb.append("Name: ").append(((TileObject) interactable).getName()).append("\n");
+				sb.append("Name: ").append(interactable.getName()).append("</br>");
 			}
 
 			if (config.actions())
 			{
-				sb.append("Actions: ").append(Arrays.toString(interactable.getRawActions())).append("\n");
+				sb.append("Actions: ").append(Arrays.toString(interactable.getRawActions())).append("</br>");
 			}
 
 			if (config.worldLocations())
 			{
-				sb.append("Location: ").append(((TileObject) interactable).getWorldLocation()).append("\n");
+				WorldPoint location = interactable.getWorldLocation();
+				sb.append("Location: ").append(location).append("</br>");
+				sb.append("Region: ").append(RegionPoint.fromWorld(location)).append("</br>");
+				sb.append("Scene: ").append(ScenePoint.fromWorld(location)).append("</br>");
 			}
 
 			return;
@@ -552,17 +581,20 @@ public class EntityInspectorOverlay extends Overlay
 		{
 			if (config.names())
 			{
-				sb.append("Name: ").append(((TileItem) interactable).getName()).append("\n");
+				sb.append("Name: ").append(interactable.getName()).append("</br>");
 			}
 
 			if (config.actions())
 			{
-				sb.append("Actions: ").append(Arrays.toString(((TileItem) interactable).getRawActions())).append("\n");
+				sb.append("Actions: ").append(Arrays.toString(interactable.getRawActions())).append("</br>");
 			}
 
 			if (config.worldLocations())
 			{
-				sb.append("Location: ").append(((TileItem) interactable).getTile().getWorldLocation()).append("\n");
+				WorldPoint location = interactable.getWorldLocation();
+				sb.append("Location: ").append(location).append("</br>");
+				sb.append("Region: ").append(RegionPoint.fromWorld(location)).append("</br>");
+				sb.append("Scene: ").append(ScenePoint.fromWorld(location)).append("</br>");
 			}
 		}
 	}

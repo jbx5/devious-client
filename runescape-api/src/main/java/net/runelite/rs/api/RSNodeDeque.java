@@ -44,6 +44,9 @@ public interface RSNodeDeque extends Deque
 	@Import("addFirst")
 	void addFirst(RSNode val);
 
+	@Import("addLast")
+	void addLast(RSNode val);
+
 	@Import("removeLast")
 	RSNode removeLast();
 

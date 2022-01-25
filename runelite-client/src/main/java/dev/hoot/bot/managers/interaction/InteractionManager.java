@@ -2,16 +2,20 @@ package dev.hoot.bot.managers.interaction;
 
 import dev.hoot.api.MouseHandler;
 import dev.hoot.api.commons.Rand;
+import dev.hoot.api.commons.Time;
 import dev.hoot.api.events.AutomatedInteraction;
 import dev.hoot.api.game.GameThread;
-import dev.hoot.api.input.Mouse;
+import dev.hoot.api.input.naturalmouse.NaturalMouse;
 import dev.hoot.api.movement.Movement;
 import dev.hoot.api.widgets.DialogOption;
+import dev.hoot.bot.managers.DefinitionManager;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
+import net.runelite.api.Constants;
 import net.runelite.api.MenuAction;
 import net.runelite.api.events.DialogProcessed;
 import net.runelite.api.events.MenuOptionClicked;
+import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
 
 import javax.inject.Inject;
@@ -24,6 +28,7 @@ public class InteractionManager
 {
 	private static final int MINIMAP_WIDTH = 250;
 	private static final int MINIMAP_HEIGHT = 180;
+	private final NaturalMouse naturalMouse = new NaturalMouse();
 
 	@Inject
 	private InteractionConfig config;
@@ -31,9 +36,12 @@ public class InteractionManager
 	@Inject
 	private Client client;
 
-	private volatile AutomatedInteraction action;
-	private volatile int mouseClickX = -1;
-	private volatile int mouseClickY = -1;
+	@Inject
+	InteractionManager(EventBus eventBus, DefinitionManager definitionManager)
+	{
+		definitionManager.init();
+		eventBus.register(definitionManager);
+	}
 
 	@Subscribe
 	public void onInvokeMenuAction(AutomatedInteraction e)
@@ -44,119 +52,116 @@ public class InteractionManager
 				+ " | OP=" + e.getOpcode()
 				+ " | P0=" + e.getParam0()
 				+ " | P1=" + e.getParam1()
+				+ " | X=" + e.getClickX()
+				+ " | Y=" + e.getClickY()
 				+ " | TAG=" + e.getEntityTag();
 
-		if (config.debugInteractions())
-		{
-			log.info("[Automated] {}", debug);
-		}
-
+		log.debug("[Automated] {}", debug);
+		Point clickPoint = getClickPoint(e);
 		MouseHandler mouseHandler = client.getMouseHandler();
 
 		if (config.clickSwap())
 		{
-			if (!interactReady())
+			try
 			{
-				log.error("Interact was not ready {} {}", mouseClickX, mouseClickY);
-				return;
-			}
+				if (!interactReady())
+				{
+					throw new InteractionException("Interacting too fast");
+				}
 
-			Point randomPoint = getClickPoint(e);
-			mouseClickX = randomPoint.x;
-			mouseClickY = randomPoint.y;
-			if (config.debugInteractions())
+				client.setPendingAutomation(e);
+
+				log.debug("Sending click to [{}, {}]", clickPoint.x, clickPoint.y);
+
+				long tag = e.getEntityTag();
+				if (tag != -1337)
+				{
+					long[] entitiesAtMouse = client.getEntitiesAtMouse();
+					int count = client.getEntitiesAtMouseCount();
+					if (count < 1000)
+					{
+						entitiesAtMouse[count] = tag;
+						client.setEntitiesAtMouseCount(count + 1);
+					}
+				}
+
+				if (config.naturalMouse())
+				{
+					naturalMouse.moveTo(clickPoint.x, clickPoint.y);
+				}
+				else
+				{
+					mouseHandler.sendMovement(clickPoint.x, clickPoint.y);
+				}
+
+				mouseHandler.sendClick(clickPoint.x, clickPoint.y);
+			}
+			catch (InteractionException ex)
 			{
-				log.info("Sending click to {} {}", mouseClickX, mouseClickY);
+				log.error("Interaction failed: {}", ex.getMessage());
+				client.setPendingAutomation(null);
 			}
-
-			action = e;
-
-			mouseHandler.sendClick(mouseClickX, mouseClickY);
+			finally
+			{
+				long duration = System.currentTimeMillis() - e.getTimestamp();
+				Time.sleep(Constants.CLIENT_TICK_LENGTH + duration);
+			}
 		}
 		else
 		{
-			// Spoof mouse
-			Point randomPoint = getClickPoint(e);
-			mouseClickX = randomPoint.x;
-			mouseClickY = randomPoint.y;
-			mouseHandler.sendMovement(mouseClickX, mouseClickY);
-			mouseHandler.sendClick(mouseClickX, mouseClickY, 1337);
-			processAction(e, mouseClickX, mouseClickY);
+			mouseHandler.sendMovement(clickPoint.x, clickPoint.y);
+			mouseHandler.sendClick(clickPoint.x, clickPoint.y, 1337);
+			processAction(e, clickPoint.x, clickPoint.y);
 		}
 	}
 
 	@Subscribe
 	public void onMenuOptionClicked(MenuOptionClicked e)
 	{
-		if (config.clickSwap() && e.getCanvasX() == mouseClickX && e.getCanvasY() == mouseClickY)
+		if (e.isAutomated() && e.getMenuAction() == MenuAction.WALK)
 		{
-			if (action == null)
-			{
-				log.error("Menu replace failed");
-				return;
-			}
-
-			e.setMenuOption(action.getOption());
-			e.setMenuTarget(action.getTarget());
-			e.setId(action.getIdentifier());
-			e.setMenuAction(action.getOpcode());
-			e.setParam0(action.getParam0());
-			e.setParam1(action.getParam1());
-			reset();
-			return;
+			Movement.setDestination(e.getParam0(), e.getParam1());
+			e.setMenuAction(MenuAction.CANCEL);
+			e.setParam0(0);
+			e.setParam1(0);
 		}
 
-		if (config.debugInteractions())
-		{
-			String action = "O=" + e.getMenuOption()
-					+ " | T=" + e.getMenuTarget()
-					+ " | ID=" + e.getId()
-					+ " | OP=" + e.getMenuAction().getId()
-					+ " | P0=" + e.getParam0()
-					+ " | P1=" + e.getParam1();
-			log.info("[Menu Action] {}", action);
-		}
-
-		reset();
+		String action = "O=" + e.getMenuOption()
+				+ " | T=" + e.getMenuTarget()
+				+ " | ID=" + e.getId()
+				+ " | OP=" + e.getMenuAction().getId()
+				+ " | P0=" + e.getParam0()
+				+ " | P1=" + e.getParam1()
+				+ " | X=" + e.getCanvasX()
+				+ " | Y=" + e.getCanvasY();
+		log.debug("[Menu Action] {}", action);
 	}
 
 	@Subscribe
 	public void onDialogProcessed(DialogProcessed e)
 	{
-		if (!config.debugDialogs())
-		{
-			return;
-		}
-
 		DialogOption dialogOption = DialogOption.of(e.getDialogOption().getWidgetUid(), e.getDialogOption().getMenuIndex());
 		if (dialogOption != null)
 		{
-			log.info("Dialog processed {}", dialogOption);
+			log.debug("Dialog processed {}", dialogOption);
 		}
 		else
 		{
-			log.info("Unknown or unmapped dialog {}", e);
+			log.debug("Unknown or unmapped dialog {}", e);
 		}
 	}
 
 	private void processAction(AutomatedInteraction entry, int x, int y)
 	{
-		if (entry.getOpcode() == MenuAction.WALK)
-		{
-			Movement.setDestination(entry.getParam0(), entry.getParam1());
-		}
-		else
-		{
-			GameThread.invoke(() -> client.invokeMenuAction(entry.getOption(), entry.getTarget(), entry.getIdentifier(),
-					entry.getOpcode().getId(), entry.getParam0(), entry.getParam1(), x, y));
-		}
+		GameThread.invoke(() -> client.invokeMenuAction(entry.getOption(), entry.getTarget(), entry.getIdentifier(),
+				entry.getOpcode().getId(), entry.getParam0(), entry.getParam1(), x, y));
 	}
 
 	private Point getClickPoint(AutomatedInteraction e)
 	{
 		if (config.interactType() == InteractType.OFF_SCREEN)
 		{
-			return new Point(5, 5);
+			return new Point(0, 0);
 		}
 
 		if (config.interactType() == InteractType.MOUSE_POS)
@@ -166,7 +171,7 @@ public class InteractionManager
 
 		if (e.getClickX() != -1 && e.getClickY() != -1 && config.interactType() == InteractType.CLICKBOXES)
 		{
-			Point clickPoint = new Point(e.getClickY(), e.getClickY());
+			Point clickPoint = new Point(e.getClickX(), e.getClickY());
 			if (!clickInsideMinimap(clickPoint))
 			{
 				return clickPoint;
@@ -174,7 +179,7 @@ public class InteractionManager
 		}
 
 		Rectangle bounds = client.getCanvas().getBounds();
-		Point randomPoint = new Point(Rand.nextInt(2, bounds.width), Rand.nextInt(2, bounds.height));
+		Point randomPoint = new Point(Rand.nextInt(0, bounds.width), Rand.nextInt(0, bounds.height));
 		if (clickInsideMinimap(randomPoint))
 		{
 			return getClickPoint(e);
@@ -201,15 +206,8 @@ public class InteractionManager
 		return new Rectangle(bounds.width - MINIMAP_WIDTH, 0, MINIMAP_WIDTH, MINIMAP_HEIGHT);
 	}
 
-	private void reset()
-	{
-		action = null;
-		mouseClickX = -1;
-		mouseClickY = -1;
-	}
-
 	private boolean interactReady()
 	{
-		return mouseClickX == -1 && mouseClickY == -1;
+		return client.getPendingAutomation() == null;
 	}
 }

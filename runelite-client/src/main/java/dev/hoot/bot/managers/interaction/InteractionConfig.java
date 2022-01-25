@@ -24,6 +24,18 @@ public interface InteractionConfig extends Config
 	)
 	default boolean clickSwap()
 	{
+		return true;
+	}
+
+	@ConfigItem(
+			keyName = "naturalMouse",
+			name = "Natural mouse",
+			description = "Uses the 'natural mouse' algorithm to move and click",
+			section = interactionManager,
+			position = 2
+	)
+	default boolean naturalMouse()
+	{
 		return false;
 	}
 
@@ -47,30 +59,6 @@ public interface InteractionConfig extends Config
 			position = 4
 	)
 	default boolean drawMouse()
-	{
-		return false;
-	}
-
-	@ConfigItem(
-			keyName = "debugInteractions",
-			name = "Debug interactions",
-			description = "Prints interactions to console",
-			section = interactionManager,
-			position = 5
-	)
-	default boolean debugInteractions()
-	{
-		return false;
-	}
-
-	@ConfigItem(
-			keyName = "debugDialogs",
-			name = "Debug dialogs",
-			description = "Prints dialog actions to console",
-			section = interactionManager,
-			position = 6
-	)
-	default boolean debugDialogs()
 	{
 		return false;
 	}

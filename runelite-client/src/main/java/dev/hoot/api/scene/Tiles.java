@@ -1,5 +1,7 @@
 package dev.hoot.api.scene;
 
+import dev.hoot.api.coords.RegionPoint;
+import dev.hoot.api.coords.ScenePoint;
 import dev.hoot.api.game.Game;
 import dev.hoot.api.widgets.Widgets;
 import net.runelite.api.Client;
@@ -57,8 +59,8 @@ public class Tiles
 	public static Tile getAt(int worldX, int worldY, int plane)
 	{
 		Client client = Game.getClient();
-		int correctedX = worldX < Constants.REGION_SIZE ? worldX + client.getBaseX() : worldX;
-		int correctedY = worldY < Constants.REGION_SIZE ? worldY + client.getBaseY() : worldY;
+		int correctedX = worldX < Constants.SCENE_SIZE ? worldX + client.getBaseX() : worldX;
+		int correctedY = worldY < Constants.SCENE_SIZE ? worldY + client.getBaseY() : worldY;
 
 		if (!WorldPoint.isInScene(client, correctedX, correctedY))
 		{
@@ -69,6 +71,16 @@ public class Tiles
 		int y = correctedY - client.getBaseY();
 
 		return client.getScene().getTiles()[plane][x][y];
+	}
+
+	public static Tile getAt(RegionPoint regionPoint)
+	{
+		return getAt(regionPoint.toWorld());
+	}
+
+	public static Tile getAt(ScenePoint scenePoint)
+	{
+		return Game.getClient().getScene().getTiles()[scenePoint.getPlane()][scenePoint.getX()][scenePoint.getY()];
 	}
 
 	public static Tile getHoveredTile()

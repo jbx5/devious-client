@@ -24,6 +24,7 @@
  */
 package net.runelite.mixins;
 
+import dev.hoot.api.events.NPCCompositionChanged;
 import net.runelite.api.AnimationID;
 import net.runelite.api.NPCComposition;
 import net.runelite.api.Perspective;
@@ -42,7 +43,6 @@ import net.runelite.rs.api.RSNPC;
 import net.runelite.rs.api.RSNPCComposition;
 
 import java.awt.*;
-import java.util.HashMap;
 
 @Mixin(RSNPC.class)
 public abstract class RSNPCMixin implements RSNPC
@@ -53,44 +53,41 @@ public abstract class RSNPCMixin implements RSNPC
 	@Inject
 	private int npcIndex;
 
-	@Shadow("npcDefCache")
-	private static HashMap<Integer, RSNPCComposition> npcDefCache;
+	@Inject
+	@Override
+	public int getTransformedId()
+	{
+		RSNPCComposition composition = getComposition();
+		if (composition != null && composition.getConfigs() != null)
+		{
+			composition = composition.transform();
+		}
+		return composition == null ? -1 : composition.getId();
+	}
 
-//	@Inject
-//	@Override
-//	public int getId()
-//	{
-//		RSNPCComposition composition = getComposition();
-//		if (composition != null && composition.getConfigs() != null)
-//		{
-//			composition = composition.transform();
-//		}
-//		return composition == null ? -1 : composition.getId();
-//	}
-//
-//	@Inject
-//	@Override
-//	public String getName()
-//	{
-//		RSNPCComposition composition = getComposition();
-//		if (composition != null && composition.getConfigs() != null)
-//		{
-//			composition = composition.transform();
-//		}
-//		return composition == null ? null : composition.getName().replace('\u00A0', ' ');
-//	}
-//
-//	@Inject
-//	@Override
-//	public int getCombatLevel()
-//	{
-//		RSNPCComposition composition = getComposition();
-//		if (composition != null && composition.getConfigs() != null)
-//		{
-//			composition = composition.transform();
-//		}
-//		return composition == null ? -1 : composition.getCombatLevel();
-//	}
+	@Inject
+	@Override
+	public String getTransformedName()
+	{
+		RSNPCComposition composition = getComposition();
+		if (composition != null && composition.getConfigs() != null)
+		{
+			composition = composition.transform();
+		}
+		return composition == null ? null : composition.getName().replace('\u00A0', ' ');
+	}
+
+	@Inject
+	@Override
+	public int getTransformedLevel()
+	{
+		RSNPCComposition composition = getComposition();
+		if (composition != null && composition.getConfigs() != null)
+		{
+			composition = composition.transform();
+		}
+		return composition == null ? -1 : composition.getCombatLevel();
+	}
 
 	@Inject
 	@Override
@@ -110,12 +107,17 @@ public abstract class RSNPCMixin implements RSNPC
 	@Inject
 	public void onDefinitionChanged(RSNPCComposition composition)
 	{
+		if (composition != null)
+		{
+			composition.setIndex(getIndex());
+			client.getCallbacks().postDeferred(new NPCCompositionChanged(getIndex()));
+		}
+
 		if (composition == null)
 		{
 			client.getCallbacks().post(new NpcDespawned(this));
-			npcDefCache.remove(getIndex());
 		}
-		else if (this.getId() != -1)
+		else if (this.getTransformedId() != -1)
 		{
 			RSNPCComposition oldComposition = getComposition();
 			if (oldComposition == null)
@@ -161,18 +163,6 @@ public abstract class RSNPCMixin implements RSNPC
 			setPoseFrame(poseFrame);
 			setSpotAnimFrame(spotAnimFrame);
 		}
-	}
-
-	@Inject
-	@Override
-	public NPCComposition getTransformedComposition()
-	{
-		RSNPCComposition composition = getComposition();
-		if (composition != null && composition.getConfigs() != null)
-		{
-			composition = composition.transform();
-		}
-		return composition;
 	}
 
 	@Inject

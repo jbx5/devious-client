@@ -755,4 +755,9 @@ public class WorldArea
 	{
 		return new WorldPoint(x + (width / 2), y + (height / 2), plane);
 	}
+
+	public WorldArea offset(int offset)
+	{
+		return new WorldArea(x - offset, y - offset, width + (2 * offset), height + (2 * offset), plane);
+	}
 }

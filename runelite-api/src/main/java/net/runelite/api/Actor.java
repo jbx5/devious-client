@@ -283,6 +283,18 @@ public interface Actor extends Renderable, SceneEntity
 	void setGraphic(int graphic);
 
 	/**
+	 * Get the height of the graphic/spotanim on the actor
+	 * @return
+	 */
+	int getGraphicHeight();
+
+	/**
+	 * Set the height of the graphic/spotanim on the actor
+	 * @param height
+	 */
+	void setGraphicHeight(int height);
+
+	/**
 	 * Get the frame of the currently playing spotanim
 	 *
 	 * @return

@@ -296,7 +296,7 @@ public class OverlayUtil
 			renderPolygon(graphics, poly, color);
 		}
 
-		String[] lines = text.split("\n");
+		String[] lines = text.split("</br>");
 		int lineLength = Integer.MIN_VALUE;
 		String largestLine = "";
 

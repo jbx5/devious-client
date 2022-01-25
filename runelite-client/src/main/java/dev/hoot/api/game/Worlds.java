@@ -9,6 +9,7 @@ import dev.hoot.api.widgets.Tabs;
 import dev.hoot.api.widgets.Widgets;
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
+import net.runelite.api.MenuAction;
 import net.runelite.api.World;
 import net.runelite.api.WorldType;
 import net.runelite.api.widgets.Widget;
@@ -20,6 +21,7 @@ import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 import java.awt.*;
+import java.awt.Point;
 import java.util.List;
 import java.util.*;
 import java.util.function.Predicate;
@@ -136,14 +138,14 @@ public class Worlds
 				.filter(x -> x.getText().contains("Yes. In future, only warn about"))
 				.findFirst()
 				.orElse(null);
-		if (rememberOption != null && !GameThread.invokeLater(rememberOption::isHidden))
+		if (!Widgets.isVisible(rememberOption))
 		{
 			Dialog.chooseOption(2);
 			Time.sleepUntil(() -> Game.getState() == GameState.HOPPING, 3000);
 			return;
 		}
 
-		Game.getClient().hopToWorld(world);
+		Game.getClient().interact(1, MenuAction.CC_OP.getId(), world.getId(), WidgetInfo.WORLD_SWITCHER_LIST.getId());
 		if (!spam)
 		{
 			Time.sleepUntil(() -> Game.getState() == GameState.HOPPING, 3000);
@@ -191,7 +193,7 @@ public class Worlds
 			Tabs.open(Tab.LOG_OUT);
 		}
 
-		Game.getClient().openWorldHopper();
+		Game.getClient().interact(1, MenuAction.CC_OP.getId(), -1, WidgetInfo.WORLD_SWITCHER_BUTTON.getId());
 	}
 
 	public static void openLobbyWorlds()

@@ -98,4 +98,10 @@ public interface NPCComposition extends ParamHolder
 	 * Gets the displayed overhead icon of the NPC.
 	 */
 	HeadIcon getOverheadIcon();
+
+	int getIndex();
+
+	void setIndex(int npcIndex);
+
+	int getTransformVarbit();
 }

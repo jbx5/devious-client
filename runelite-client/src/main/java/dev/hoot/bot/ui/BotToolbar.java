@@ -3,10 +3,12 @@ package dev.hoot.bot.ui;
 import dev.hoot.bot.config.BotConfig;
 import dev.hoot.bot.config.ConfigPanel;
 import dev.hoot.bot.config.ConfigurationDescriptor;
+import dev.hoot.bot.config.DisableRenderCallbacks;
 import dev.hoot.bot.devtools.EntityRenderer;
 import dev.hoot.bot.devtools.scriptinspector.ScriptInspector;
 import dev.hoot.bot.devtools.varinspector.VarInspector;
 import dev.hoot.bot.devtools.widgetinspector.WidgetInspector;
+import dev.hoot.bot.managers.FpsManager;
 import dev.hoot.bot.managers.ScriptManager;
 import dev.hoot.bot.managers.interaction.InteractionConfig;
 import dev.hoot.bot.script.events.ScriptChanged;
@@ -25,6 +27,8 @@ import javax.swing.*;
 @Singleton
 public class BotToolbar extends JMenuBar
 {
+	private static final DisableRenderCallbacks DISABLE_RENDERING = new DisableRenderCallbacks();
+
 	private final VarInspector varInspector;
 	private final WidgetInspector widgetInspector;
 	private final ScriptInspector scriptInspector;
@@ -37,6 +41,7 @@ public class BotToolbar extends JMenuBar
 	private final InteractionConfig interactConfig;
 	private final RuneLiteConfig runeLiteConfig;
 	private final Client client;
+	private final FpsManager fpsManager;
 
 	private JMenuItem stopScript;
 	private JMenuItem pauseScript;
@@ -51,7 +56,7 @@ public class BotToolbar extends JMenuBar
 	public BotToolbar(VarInspector varInspector, WidgetInspector widgetInspector, ScriptInspector scriptInspector,
 					  EntityRenderer entityRenderer, ScriptManager scriptManager, ScriptPanel scriptPanel,
 					  ConfigManager configManager, EventBus eventBus, BotConfig botConfig, InteractionConfig interactConfig,
-					  RuneLiteConfig runeLiteConfig, Client client)
+					  RuneLiteConfig runeLiteConfig, Client client, FpsManager fpsManager)
 	{
 		this.varInspector = varInspector;
 		this.widgetInspector = widgetInspector;
@@ -65,6 +70,7 @@ public class BotToolbar extends JMenuBar
 		this.interactConfig = interactConfig;
 		this.runeLiteConfig = runeLiteConfig;
 		this.client = client;
+		this.fpsManager = fpsManager;
 	}
 
 	public void init()
@@ -246,13 +252,39 @@ public class BotToolbar extends JMenuBar
 	@Subscribe
 	private void onConfigChanged(ConfigChanged event)
 	{
-		if (event.getGroup().equals("hoot")
-				&& event.getKey().equals("renderOff")
-				&& rendering != null
-		)
+		if (!event.getGroup().equals("hoot"))
 		{
-			SwingUtilities.invokeLater(() -> rendering.setSelected(Boolean.parseBoolean(event.getNewValue())));
+			return;
 		}
+
+		switch (event.getKey())
+		{
+			case "renderOff":
+				boolean enabled = Boolean.parseBoolean(event.getNewValue());
+				client.setIsHidingEntities(enabled);
+				client.setLowCpu(enabled);
+
+				if (enabled)
+				{
+					client.setDrawCallbacks(DISABLE_RENDERING);
+				}
+				else
+				{
+					client.setDrawCallbacks(null);
+				}
+
+				if (rendering != null)
+				{
+					SwingUtilities.invokeLater(() -> rendering.setSelected(Boolean.parseBoolean(event.getNewValue())));
+				}
+
+				break;
+
+			case "fpsLimit":
+				fpsManager.reloadConfig(botConfig.fpsLimit());
+				break;
+		}
+
 	}
 
 	@Subscribe

@@ -23,22 +23,6 @@ public class NPCs extends Entities<NPC>
 	{
 		List<NPC> out = new ArrayList<>();
 		List<NPC> npcs = Game.getClient().getNpcs();
-		List<NPC> uncached = npcs.stream()
-				.filter(x -> x.isTransformRequired() && !x.isDefinitionCached())
-				.collect(Collectors.toList());
-		if (!uncached.isEmpty())
-		{
-			GameThread.invokeLater(() ->
-			{
-				for (NPC npc : uncached)
-				{
-					npc.getName(); // Transform and cache it by calling getName
-				}
-
-				return true;
-			});
-		}
-
 		for (NPC npc : npcs)
 		{
 			if (filter.test(npc))

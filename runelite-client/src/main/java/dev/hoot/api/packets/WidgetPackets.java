@@ -163,7 +163,7 @@ public class WidgetPackets
 	{
 		Client client = Game.getClient();
 		ClientPacket clientPacket = Game.getClientPacket();
-		PacketBufferNode packetBufferNode = Game.getClient().preparePacket(clientPacket.IF_BUTTON5(), client.getPacketWriter().getIsaacCipher());
+		PacketBufferNode packetBufferNode = Game.getClient().preparePacket(clientPacket.IF_BUTTON6(), client.getPacketWriter().getIsaacCipher());
 		packetBufferNode.getPacketBuffer().writeInt(widgetId);
 		packetBufferNode.getPacketBuffer().writeShort(childId);
 		packetBufferNode.getPacketBuffer().writeShort(itemId);

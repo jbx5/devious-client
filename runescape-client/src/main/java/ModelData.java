@@ -1482,8 +1482,11 @@ public class ModelData extends Renderable {
 	}
 
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "()Lge;")
-	public ModelData method3751() {
+	@ObfuscatedSignature(
+		descriptor = "()Lge;"
+	)
+	@Export("copyModelData")
+	public ModelData copyModelData() {
 		ModelData var1 = new ModelData();
 		if (this.faceRenderTypes != null) {
 			var1.faceRenderTypes = new byte[this.faceCount];

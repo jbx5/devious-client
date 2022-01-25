@@ -35,6 +35,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import dev.hoot.api.MouseHandler;
+import dev.hoot.api.events.AutomatedInteraction;
 import net.runelite.api.packets.ClientPacket;
 import net.runelite.api.packets.IsaacCipher;
 import net.runelite.api.packets.PacketBufferNode;
@@ -188,6 +189,18 @@ public interface Client extends GameEngine
 	 * This will call {@link System#exit} when it is done
 	 */
 	void stopNow();
+
+	/**
+	 * Gets the login screen world select state.
+	 *
+	 * @return the world select state
+	 */
+	boolean isWorldSelectOpen();
+
+	/**
+	 * Sets the login screen world select state.
+	 */
+	void setWorldSelectOpen(boolean open);
 
 	/**
 	 * Gets the current logged in username.
@@ -461,6 +474,11 @@ public interface Client extends GameEngine
 	 * Gets the config index.
 	 */
 	IndexDataBase getIndexConfig();
+
+	/**
+	 * Gets an index by id
+	 */
+	IndexDataBase getIndex(int id);
 
 	/**
 	 * Returns the x-axis base coordinate.
@@ -1098,18 +1116,38 @@ public interface Client extends GameEngine
 	LocalPoint getLocalDestinationLocation();
 
 	/**
+	 * Create a projectile.
+	 * @param id projectile/spotanim id
+	 * @param plane plane the projectile is on
+	 * @param startX local x coordinate the projectile starts at
+	 * @param startY local y coordinate the projectile starts at
+	 * @param startZ local z coordinate the projectile starts at - includes tile height
+	 * @param startCycle cycle the project starts
+	 * @param endCycle cycle the projectile ends
+	 * @param slope
+	 * @param startHeight start height of projectile - excludes tile height
+	 * @param endHeight end height of projectile - excludes tile height
+	 * @param target optional actor target
+	 * @param targetX target x - if an actor target is supplied should be the target x
+	 * @param targetY taret y - if an actor target is supplied should be the target y
+	 * @return the new projectile
+	 */
+	Projectile createProjectile(int id, int plane, int startX, int startY, int startZ, int startCycle, int endCycle,
+		int slope, int startHeight, int endHeight, @Nullable Actor target, int targetX, int targetY);
+
+	/**
 	 * Gets a list of all projectiles currently spawned.
 	 *
 	 * @return all projectiles
 	 */
-	List<Projectile> getProjectiles();
+	Deque<Projectile> getProjectiles();
 
 	/**
 	 * Gets a list of all graphics objects currently drawn.
 	 *
 	 * @return all graphics objects
 	 */
-	List<GraphicsObject> getGraphicsObjects();
+	Deque<GraphicsObject> getGraphicsObjects();
 
 	/**
 	 * Creates a RuneLiteObject, which is a modified {@link GraphicsObject}
@@ -1117,7 +1155,26 @@ public interface Client extends GameEngine
 	RuneLiteObject createRuneLiteObject();
 
 	/**
-	 * Loads a model from the cache
+	 * Loads an unlit model from the cache. The returned model shares
+	 * data such as faces, face colors, face transparencies, and vertex points with
+	 * other models. If you want to mutate these you MUST call the relevant {@code cloneX}
+	 * method.
+	 *
+	 * @see ModelData#cloneColors()
+	 *
+	 * @param id the ID of the model
+	 * @return the model or null if it is loading or nonexistent
+	 */
+	@Nullable
+	ModelData loadModelData(int id);
+
+	ModelData mergeModels(ModelData[] models, int length);
+	ModelData mergeModels(ModelData ...models);
+
+	/**
+	 * Loads and lights a model from the cache
+	 *
+	 * This is equivalent to {@code loadModelData(id).light()}
 	 *
 	 * @param id the ID of the model
 	 * @return the model or null if it is loading or nonexistent
@@ -2371,7 +2428,13 @@ public interface Client extends GameEngine
 	}
 
 	void interact(final int identifier, final int opcode, final int param0, final int param1, int clickX, int clickY,
-				  long entityTag);
+				  long entityTag, int selectedItemId);
+
+	default void interact(final int identifier, final int opcode, final int param0, final int param1, int clickX, int clickY,
+				  long entityTag)
+	{
+		interact(identifier, opcode, param0, param1, clickX, clickY, entityTag, -1);
+	}
 
 	int getMouseLastPressedX();
 
@@ -2421,13 +2484,9 @@ public interface Client extends GameEngine
 
 	void setLowCpu(boolean enabled);
 
-	void uncacheNPC(int id);
-
 	void uncacheItem(int id);
 
 	void uncacheObject(int id);
-
-	void clearNPCCache();
 
 	void clearItemCache();
 
@@ -2442,10 +2501,6 @@ public interface Client extends GameEngine
 	int getDestinationX();
 
 	int getDestinationY();
-
-	boolean isWorldSelectOpen();
-
-	void setWorldSelectOpen(boolean open);
 
 	void setWindowedMode(int mode);
 
@@ -2490,4 +2545,16 @@ public interface Client extends GameEngine
 	int[] getMenuArguments2();
 
 	void setMenuOpen(boolean open);
+
+	default void clearDefinitionCaches()
+	{
+		clearItemCache();
+		clearObjectCache();
+	}
+
+	void setPendingAutomation(AutomatedInteraction entry);
+
+	AutomatedInteraction getPendingAutomation();
+
+	VarbitComposition getVarbitComposition(int varbitId);
 }
