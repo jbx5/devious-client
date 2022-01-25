@@ -143,6 +143,46 @@ public class DefinitionManager
     }
 
     @Subscribe
+    private void onItemSpawn(ItemSpawned event)
+    {
+        client.cacheItem(event.getItem().getId(), client.getItemDefinition(event.getItem().getId()));
+    }
+
+    @Subscribe
+    private void onItemContainerChanged(ItemContainerChanged event)
+    {
+        ItemContainer container = event.getItemContainer();
+        if (container == null)
+        {
+            return;
+        }
+
+        for (Item item : container.getItems())
+        {
+            if (item == null)
+            {
+                continue;
+            }
+
+            client.cacheItem(item.getId(), client.getItemDefinition(item.getId()));
+        }
+    }
+
+    @Subscribe
+    public void onGameStateChanged(GameStateChanged gameStateChanged)
+    {
+        switch (gameStateChanged.getGameState())
+        {
+            case LOGIN_SCREEN:
+                client.clearDefinitionCaches();
+                break;
+            case HOPPING:
+                client.clearDefinitionCaches();
+                break;
+        }
+    }
+
+    @Subscribe
     private void onVarbitChanged(VarbitChanged e)
     {
         var changedVarbits = VARBITS.get(e.getIndex());

@@ -31,8 +31,6 @@ public class Inventory extends Items
 			return items;
 		}
 
-		Inventory.cacheItems(container);
-
 		for (Item item : container.getItems())
 		{
 			if (item.getId() != -1 && item.getName() != null && !item.getName().equals("null"))
@@ -159,25 +157,5 @@ public class Inventory extends Items
 	public static int getFreeSlots()
 	{
 		return 28 - getAll().size();
-	}
-
-	public static void cacheItems(ItemContainer container)
-	{
-		List<Item> uncached = Arrays.stream(container.getItems())
-				.filter(x -> !Game.getClient().isItemDefinitionCached(x.getId()))
-				.collect(Collectors.toList());
-
-		if (!uncached.isEmpty())
-		{
-			GameThread.invokeLater(() ->
-			{
-				for (Item item : uncached)
-				{
-					Game.getClient().getItemComposition(item.getId());
-				}
-
-				return null;
-			});
-		}
 	}
 }

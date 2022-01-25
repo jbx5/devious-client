@@ -29,8 +29,6 @@ public class Equipment extends Items
 			return items;
 		}
 
-		Inventory.cacheItems(container);
-
 		Item[] containerItems = container.getItems();
 		for (int i = 0, containerItemsLength = containerItems.length; i < containerItemsLength; i++)
 		{

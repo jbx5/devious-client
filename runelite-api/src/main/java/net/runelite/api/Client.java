@@ -2486,11 +2486,9 @@ public interface Client extends GameEngine
 
 	void uncacheItem(int id);
 
-	void uncacheObject(int id);
+	void cacheItem(int id, ItemComposition item);
 
 	void clearItemCache();
-
-	void clearObjectCache();
 
 	void processDialog(int widgetUid, int menuIndex);
 
@@ -2549,7 +2547,6 @@ public interface Client extends GameEngine
 	default void clearDefinitionCaches()
 	{
 		clearItemCache();
-		clearObjectCache();
 	}
 
 	void setPendingAutomation(AutomatedInteraction entry);

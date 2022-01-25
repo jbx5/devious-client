@@ -148,6 +148,13 @@ public abstract class HClientMixin implements RSClient
 
 	@Inject
 	@Override
+	public void cacheItem(int id, ItemComposition item)
+	{
+		itemDefCache.put(id, (RSItemComposition) item);
+	}
+
+	@Inject
+	@Override
 	public void clearItemCache()
 	{
 		itemDefCache.clear();
