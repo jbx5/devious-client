@@ -57,49 +57,61 @@ public class InteractionManager
 				+ " | TAG=" + e.getEntityTag();
 
 		log.debug("[Automated] {}", debug);
-		Point randomPoint = getClickPoint(e);
+		Point clickPoint = getClickPoint(e);
 		MouseHandler mouseHandler = client.getMouseHandler();
 
 		if (config.clickSwap())
 		{
-			Time.sleep(Constants.CLIENT_TICK_LENGTH);
-			if (!interactReady())
+			try
 			{
-				throw new InteractionException("Interacting too fast, consider slowing down consecutive interactions");
-			}
-
-			client.setPendingAutomation(e);
-
-			log.debug("Sending click to [{}, {}]", randomPoint.x, randomPoint.y);
-
-			long tag = e.getEntityTag();
-			if (tag != -1337)
-			{
-				long[] entitiesAtMouse = client.getEntitiesAtMouse();
-				int count = client.getEntitiesAtMouseCount();
-				if (count < 1000)
+				if (!interactReady())
 				{
-					entitiesAtMouse[count] = tag;
-					client.setEntitiesAtMouseCount(count + 1);
+					throw new InteractionException("Interacting too fast");
 				}
-			}
 
-			if (config.naturalMouse())
-			{
-				naturalMouse.moveTo(randomPoint.x, randomPoint.y);
-			}
-			else
-			{
-				mouseHandler.sendMovement(randomPoint.x, randomPoint.y);
-			}
+				client.setPendingAutomation(e);
 
-			mouseHandler.sendClick(randomPoint.x, randomPoint.y);
+				log.debug("Sending click to [{}, {}]", clickPoint.x, clickPoint.y);
+
+				long tag = e.getEntityTag();
+				if (tag != -1337)
+				{
+					long[] entitiesAtMouse = client.getEntitiesAtMouse();
+					int count = client.getEntitiesAtMouseCount();
+					if (count < 1000)
+					{
+						entitiesAtMouse[count] = tag;
+						client.setEntitiesAtMouseCount(count + 1);
+					}
+				}
+
+				if (config.naturalMouse())
+				{
+					naturalMouse.moveTo(clickPoint.x, clickPoint.y);
+				}
+				else
+				{
+					mouseHandler.sendMovement(clickPoint.x, clickPoint.y);
+				}
+
+				mouseHandler.sendClick(clickPoint.x, clickPoint.y);
+			}
+			catch (InteractionException ex)
+			{
+				log.error("Interaction failed: {}", ex.getMessage());
+				client.setPendingAutomation(null);
+			}
+			finally
+			{
+				long duration = System.currentTimeMillis() - e.getTimestamp();
+				Time.sleep(Constants.CLIENT_TICK_LENGTH + duration);
+			}
 		}
 		else
 		{
-			mouseHandler.sendMovement(randomPoint.x, randomPoint.y);
-			mouseHandler.sendClick(randomPoint.x, randomPoint.y, 1337);
-			processAction(e, randomPoint.x, randomPoint.y);
+			mouseHandler.sendMovement(clickPoint.x, clickPoint.y);
+			mouseHandler.sendClick(clickPoint.x, clickPoint.y, 1337);
+			processAction(e, clickPoint.x, clickPoint.y);
 		}
 	}
 
@@ -108,8 +120,10 @@ public class InteractionManager
 	{
 		if (e.isAutomated() && e.getMenuAction() == MenuAction.WALK)
 		{
-			e.setMenuAction(MenuAction.CANCEL);
 			Movement.setDestination(e.getParam0(), e.getParam1());
+			e.setMenuAction(MenuAction.CANCEL);
+			e.setParam0(0);
+			e.setParam1(0);
 		}
 
 		String action = "O=" + e.getMenuOption()
@@ -165,7 +179,7 @@ public class InteractionManager
 		}
 
 		Rectangle bounds = client.getCanvas().getBounds();
-		Point randomPoint = new Point(Rand.nextInt(2, bounds.width), Rand.nextInt(2, bounds.height));
+		Point randomPoint = new Point(Rand.nextInt(0, bounds.width), Rand.nextInt(0, bounds.height));
 		if (clickInsideMinimap(randomPoint))
 		{
 			return getClickPoint(e);

@@ -2428,7 +2428,13 @@ public interface Client extends GameEngine
 	}
 
 	void interact(final int identifier, final int opcode, final int param0, final int param1, int clickX, int clickY,
-				  long entityTag);
+				  long entityTag, int selectedItemId);
+
+	default void interact(final int identifier, final int opcode, final int param0, final int param1, int clickX, int clickY,
+				  long entityTag)
+	{
+		interact(identifier, opcode, param0, param1, clickX, clickY, entityTag, -1);
+	}
 
 	int getMouseLastPressedX();
 
@@ -2478,15 +2484,9 @@ public interface Client extends GameEngine
 
 	void setLowCpu(boolean enabled);
 
-	void uncacheNPC(int id);
-
-	void cacheNPC(int index, NPCComposition composition);
-
 	void uncacheItem(int id);
 
 	void uncacheObject(int id);
-
-	void clearNPCCache();
 
 	void clearItemCache();
 
@@ -2550,7 +2550,6 @@ public interface Client extends GameEngine
 	{
 		clearItemCache();
 		clearObjectCache();
-		clearNPCCache();
 	}
 
 	void setPendingAutomation(AutomatedInteraction entry);

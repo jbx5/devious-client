@@ -6,11 +6,12 @@ import dev.hoot.api.game.Game;
 import dev.hoot.api.game.Vars;
 import dev.hoot.api.movement.pathfinder.BankLocation;
 import dev.hoot.api.movement.pathfinder.Walker;
-import dev.hoot.api.packets.MovementPackets;
 import dev.hoot.api.scene.Tiles;
 import dev.hoot.api.widgets.Widgets;
+import net.runelite.api.Client;
 import net.runelite.api.Locatable;
 import net.runelite.api.MenuAction;
+import net.runelite.api.Perspective;
 import net.runelite.api.Player;
 import net.runelite.api.Point;
 import net.runelite.api.Tile;
@@ -34,22 +35,21 @@ public class Movement
 	private static final int STAMINA_VARBIT = 25;
 	private static final int RUN_VARP = 173;
 
-	public static void setDestination(int worldX, int worldY)
+	public static void setDestination(int sceneX, int sceneY)
 	{
-		MovementPackets.sendMovement(worldX, worldY, Movement.isRunEnabled());
-		Game.getClient().setDestinationX(worldX - Game.getClient().getBaseX());
-		Game.getClient().setDestinationY(worldY - Game.getClient().getBaseY());
+		Game.getClient().setSelectedSceneTileX(sceneX);
+		Game.getClient().setSelectedSceneTileY(sceneY);
+		Game.getClient().setViewportWalking(true);
 	}
 
 	public static WorldPoint getDestination()
 	{
-		LocalPoint local = Game.getClient().getLocalDestinationLocation();
-		if (local == null)
-		{
-			return null;
-		}
-
-		return WorldPoint.fromLocal(Game.getClient(), local);
+		Client client = Game.getClient();
+		return new WorldPoint(
+				client.getDestinationX() + client.getBaseX(),
+				client.getDestinationY() + client.getBaseY(),
+				client.getPlane()
+		);
 	}
 
 	public static boolean isWalking()
@@ -61,14 +61,10 @@ public class Movement
 				&& destination.distanceTo(local.getLocalLocation()) > 4;
 	}
 
-	public static void walk(Point point)
-	{
-		Game.getClient().interact(0, MenuAction.WALK.getId(), point.getX(), point.getY());
-	}
-
 	public static void walk(WorldPoint worldPoint)
 	{
-		Player local = Game.getClient().getLocalPlayer();
+		Client client = Game.getClient();
+		Player local = client.getLocalPlayer();
 		if (local == null)
 		{
 			return;
@@ -93,7 +89,20 @@ public class Movement
 			walkPoint = nearestInScene.getWorldLocation();
 		}
 
-		Game.getClient().interact(0, MenuAction.WALK.getId(), walkPoint.getX(), walkPoint.getY());
+		int sceneX = walkPoint.getX() - client.getBaseX();
+		int sceneY = walkPoint.getY() - client.getBaseY();
+		Point canv = Perspective.localToCanvas(client, LocalPoint.fromScene(sceneX, sceneY), client.getPlane());
+		int x = canv != null ? canv.getX() : -1;
+		int y = canv != null ? canv.getY() : -1;
+
+		client.interact(
+				0,
+				MenuAction.WALK.getId(),
+				sceneX,
+				sceneY,
+				x,
+				y
+		);
 	}
 
 	public static void walk(WorldArea worldArea)

@@ -49,10 +49,10 @@ public abstract class HClientMixin implements RSClient
 	@Inject
 	@Override
 	public void interact(final int identifier, final int opcode, final int param0, final int param1,
-						 final int screenX, final int screenY, long entityTag)
+						 final int screenX, final int screenY, long entityTag, int selectedItemId)
 	{
 		AutomatedInteraction event = new AutomatedInteraction("Automated", "", identifier, MenuAction.of(opcode),
-				param0, param1, screenX, screenY, entityTag);
+				param0, param1, screenX, screenY, entityTag, selectedItemId);
 
 		client.getCallbacks().post(event);
 	}
@@ -297,27 +297,25 @@ public abstract class HClientMixin implements RSClient
 			opcode -= 2000;
 		}
 
+		MenuOptionClicked menuOptionClicked;
 		AutomatedInteraction replacement = automatedMenu.get();
 		if (replacement != null)
 		{
-			param0 = replacement.getParam0();
-			param1 = replacement.getParam1();
-			opcode = replacement.getOpcode().getId();
-			id = replacement.getIdentifier();
-			option = replacement.getOption();
-			target = replacement.getTarget();
+			menuOptionClicked = replacement.toMenuOptionClicked();
 		}
-
-		final MenuOptionClicked menuOptionClicked = new MenuOptionClicked();
-		menuOptionClicked.setParam0(param0);
-		menuOptionClicked.setMenuOption(option);
-		menuOptionClicked.setMenuTarget(target);
-		menuOptionClicked.setMenuAction(MenuAction.of(opcode));
-		menuOptionClicked.setId(id);
-		menuOptionClicked.setParam1(param1);
-		menuOptionClicked.setSelectedItemIndex(client.getSelectedItemSlot());
-		menuOptionClicked.setCanvasX(canvasX);
-		menuOptionClicked.setCanvasY(canvasY);
+		else
+		{
+			menuOptionClicked = new MenuOptionClicked();
+			menuOptionClicked.setParam0(param0);
+			menuOptionClicked.setMenuOption(option);
+			menuOptionClicked.setMenuTarget(target);
+			menuOptionClicked.setMenuAction(MenuAction.of(opcode));
+			menuOptionClicked.setId(id);
+			menuOptionClicked.setParam1(param1);
+			menuOptionClicked.setSelectedItemIndex(client.getSelectedItemSlot());
+			menuOptionClicked.setCanvasX(canvasX);
+			menuOptionClicked.setCanvasY(canvasY);
+		}
 
 		client.getCallbacks().post(menuOptionClicked);
 
@@ -353,6 +351,11 @@ public abstract class HClientMixin implements RSClient
 	@Override
 	public void setPendingAutomation(AutomatedInteraction replacement)
 	{
+		if (lastMenuChange + 20 > System.currentTimeMillis() && replacement != null)
+		{
+			return;
+		}
+
 		lastMenuChange = System.currentTimeMillis();
 		automatedMenu.set(replacement);
 	}
@@ -361,7 +364,7 @@ public abstract class HClientMixin implements RSClient
 	@Override
 	public AutomatedInteraction getPendingAutomation()
 	{
-		if (lastMenuChange + 100 < System.currentTimeMillis())
+		if (lastMenuChange + 100 < System.currentTimeMillis() && automatedMenu.get() != null)
 		{
 			automatedMenu.set(null);
 		}
