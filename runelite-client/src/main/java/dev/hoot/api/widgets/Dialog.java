@@ -34,7 +34,7 @@ public class Dialog
 
 	public static boolean isOpen()
 	{
-		return !Widgets.isVisible(SCROLL_BAR.get());
+		return SCROLL_BAR.get() == null || !SCROLL_BAR.get().isVisible();
 	}
 
 	public static boolean canContinue()

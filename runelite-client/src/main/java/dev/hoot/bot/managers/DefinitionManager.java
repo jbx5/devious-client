@@ -5,9 +5,37 @@ import com.google.common.collect.Multimap;
 import dev.hoot.api.events.NPCCompositionChanged;
 import dev.hoot.api.game.Game;
 import dev.hoot.api.game.Vars;
+import dev.hoot.api.widgets.Widgets;
 import lombok.extern.slf4j.Slf4j;
-import net.runelite.api.*;
-import net.runelite.api.events.*;
+import net.runelite.api.Client;
+import net.runelite.api.IndexDataBase;
+import net.runelite.api.Item;
+import net.runelite.api.ItemContainer;
+import net.runelite.api.NPC;
+import net.runelite.api.NPCComposition;
+import net.runelite.api.ObjectComposition;
+import net.runelite.api.TileObject;
+import net.runelite.api.VarbitComposition;
+import net.runelite.api.events.DecorativeObjectChanged;
+import net.runelite.api.events.DecorativeObjectDespawned;
+import net.runelite.api.events.DecorativeObjectSpawned;
+import net.runelite.api.events.GameObjectChanged;
+import net.runelite.api.events.GameObjectDespawned;
+import net.runelite.api.events.GameObjectSpawned;
+import net.runelite.api.events.GameStateChanged;
+import net.runelite.api.events.GroundObjectChanged;
+import net.runelite.api.events.GroundObjectDespawned;
+import net.runelite.api.events.GroundObjectSpawned;
+import net.runelite.api.events.ItemContainerChanged;
+import net.runelite.api.events.ItemSpawned;
+import net.runelite.api.events.VarbitChanged;
+import net.runelite.api.events.WallObjectDespawned;
+import net.runelite.api.events.WallObjectSpawned;
+import net.runelite.api.events.WidgetClosed;
+import net.runelite.api.events.WidgetHiddenChanged;
+import net.runelite.api.events.WidgetLoaded;
+import net.runelite.api.widgets.Widget;
+import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.client.callback.ClientThread;
 import net.runelite.client.eventbus.Subscribe;
 
@@ -165,6 +193,28 @@ public class DefinitionManager
     }
 
     @Subscribe
+    private void onWidgetHiddenChanged(WidgetHiddenChanged event)
+    {
+        checkWidget(event.getWidget());
+    }
+
+    @Subscribe
+    private void onWidgetLoaded(WidgetLoaded event)
+    {
+        for (Widget widget : Widgets.get(event.getGroupId())) {
+            checkWidget(widget);
+        }
+    }
+
+    @Subscribe
+    private void onWidgetClosed(WidgetClosed event)
+    {
+        for (Widget widget : Widgets.get(event.getGroupId())) {
+            checkWidget(widget);
+        }
+    }
+
+    @Subscribe
     private void onGameStateChanged(GameStateChanged gameStateChanged)
     {
         switch (gameStateChanged.getGameState())
@@ -225,6 +275,47 @@ public class DefinitionManager
                     log.debug("Object {} transformed", entityId);
                 }
             }
+        }
+    }
+
+    private void checkWidget(Widget widget)
+    {
+        if (widget == null)
+        {
+            return;
+        }
+
+        boolean hidden = widget.isHidden();
+        widget.setVisible(!hidden);
+        if (!hidden)
+        {
+            int itemId = widget.getItemId();
+            log.trace("Widget {}, {} is now visible", WidgetInfo.TO_GROUP(widget.getId()), WidgetInfo.TO_CHILD(widget.getId()));
+            if (itemId != -1)
+            {
+                if (!client.isItemDefinitionCached(itemId))
+                {
+                    log.debug("Caching item {} from widget", itemId);
+                    client.cacheItem(itemId, client.getItemDefinition(itemId));
+                }
+            }
+        }
+
+        checkWidgetChildren(widget.getDynamicChildren());
+        checkWidgetChildren(widget.getStaticChildren());
+        checkWidgetChildren(widget.getNestedChildren());
+    }
+
+    private void checkWidgetChildren(Widget[] widgets)
+    {
+        if (widgets == null)
+        {
+            return;
+        }
+
+        for (Widget widget : widgets)
+        {
+            checkWidget(widget);
         }
     }
 

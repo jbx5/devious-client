@@ -20,7 +20,7 @@ public abstract class HWidgetMixin implements RSWidget
 	private static RSClient client;
 
 	@Inject
-	private boolean visible;
+	private boolean visible = isHidden();
 
 	@Inject
 	@Override
@@ -121,17 +121,6 @@ public abstract class HWidgetMixin implements RSWidget
 	@FieldHook("isHidden")
 	public void onHiddenChanged(int idx)
 	{
-		boolean hidden = isHidden();
-		setVisible(!hidden);
-		if (!hidden)
-		{
-			int itemId = getItemId();
-			if (itemId != -1)
-			{
-				client.cacheItem(itemId, client.getItemDefinition(itemId));
-			}
-		}
-
-		broadcastHidden(hidden);
+		broadcastHidden(isHidden());
 	}
 }

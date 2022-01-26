@@ -53,7 +53,13 @@ public class Item implements Interactable, Identifiable, EntityNameable
 	@Override
 	public String getName()
 	{
-		return Text.removeTags(Text.sanitize(getComposition().getName()));
+		String name = getComposition().getName();
+		if (name == null)
+		{
+			return "null";
+		}
+
+		return Text.removeTags(Text.sanitize(name));
 	}
 
 	@Override

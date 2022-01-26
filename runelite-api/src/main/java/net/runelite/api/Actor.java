@@ -53,7 +53,7 @@ public interface Actor extends Renderable, SceneEntity
 	 *
 	 * @return the name
 	 */
-	@Nullable
+//	@Nullable
 	String getName();
 
 	/**

@@ -47,7 +47,7 @@ public abstract class HTileObjectMixin implements TileObject
 	public String getName()
 	{
 		RSObjectComposition def = (RSObjectComposition) getTransformedComposition();
-		return def == null ? null : Text.removeTags(Text.sanitize(def.getName()));
+		return def == null ? "null" : Text.removeTags(Text.sanitize(def.getName()));
 	}
 
 	@Inject

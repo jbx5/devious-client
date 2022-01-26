@@ -34,7 +34,7 @@ public abstract class HNpcMixin implements RSNPC
 	public String getName()
 	{
 		RSNPCComposition composition = getTransformedComposition();
-		return composition == null ? null : Text.removeTags(Text.sanitize(composition.getName()));
+		return composition == null ? "null" : Text.removeTags(Text.sanitize(composition.getName()));
 	}
 
 	@Inject

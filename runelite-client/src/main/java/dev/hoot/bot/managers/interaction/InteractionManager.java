@@ -8,6 +8,7 @@ import dev.hoot.api.game.GameThread;
 import dev.hoot.api.input.naturalmouse.NaturalMouse;
 import dev.hoot.api.movement.Movement;
 import dev.hoot.api.widgets.DialogOption;
+import dev.hoot.api.widgets.Widgets;
 import dev.hoot.bot.managers.DefinitionManager;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
@@ -15,6 +16,8 @@ import net.runelite.api.Constants;
 import net.runelite.api.MenuAction;
 import net.runelite.api.events.DialogProcessed;
 import net.runelite.api.events.MenuOptionClicked;
+import net.runelite.api.widgets.Widget;
+import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
 
@@ -205,6 +208,24 @@ public class InteractionManager
 
 	private Rectangle getMinimap()
 	{
+		Widget minimap = Widgets.get(WidgetInfo.FIXED_VIEWPORT_MINIMAP_DRAW_AREA);
+		if (Widgets.isVisible(minimap))
+		{
+			return minimap.getBounds();
+		}
+
+		Widget minimap1 = Widgets.get(WidgetInfo.RESIZABLE_MINIMAP_DRAW_AREA);
+		if (Widgets.isVisible(minimap1))
+		{
+			return minimap1.getBounds();
+		}
+
+		Widget minimap2 = Widgets.get(WidgetInfo.RESIZABLE_MINIMAP_STONES_DRAW_AREA);
+		if (Widgets.isVisible(minimap2))
+		{
+			return minimap2.getBounds();
+		}
+
 		Rectangle bounds = client.getCanvas().getBounds();
 		return new Rectangle(bounds.width - MINIMAP_WIDTH, 0, MINIMAP_WIDTH, MINIMAP_HEIGHT);
 	}

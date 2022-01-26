@@ -82,7 +82,13 @@ public abstract class HTileItemMixin implements RSTileItem
 	@Override
 	public String getName()
 	{
-		return Text.removeTags(Text.sanitize(getComposition().getName()));
+		String name = getComposition().getName();
+		if (name == null)
+		{
+			return "null";
+		}
+
+		return Text.removeTags(Text.sanitize(name));
 	}
 
 	@Inject

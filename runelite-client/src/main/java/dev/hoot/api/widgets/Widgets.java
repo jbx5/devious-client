@@ -30,7 +30,13 @@ public class Widgets
 
 	public static List<Widget> get(int group)
 	{
-		Widget[] widgets = Game.getClient().getWidgets()[group];
+		Widget[][] all = Game.getClient().getWidgets();
+		if (all == null)
+		{
+			return Collections.emptyList();
+		}
+
+		Widget[] widgets = all[group];
 		if (widgets == null)
 		{
 			return Collections.emptyList();
