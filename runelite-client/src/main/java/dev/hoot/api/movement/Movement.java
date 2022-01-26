@@ -76,7 +76,7 @@ public class Movement
 		if (destinationTile == null)
 		{
 			logger.debug("Destination {} is not in scene", worldPoint);
-			Tile nearestInScene = Tiles.getTiles()
+			Tile nearestInScene = Tiles.getAll()
 					.stream()
 					.min(Comparator.comparingInt(x -> x.getWorldLocation().distanceTo(local.getWorldLocation())))
 					.orElse(null);
@@ -192,6 +192,11 @@ public class Movement
 	public static boolean isStaminaBoosted()
 	{
 		return Vars.getBit(STAMINA_VARBIT) == 1;
+	}
+
+	public static int getRunEnergy()
+	{
+		return Game.getClient().getEnergy();
 	}
 
 	public static int calculateDistance(WorldPoint destination)

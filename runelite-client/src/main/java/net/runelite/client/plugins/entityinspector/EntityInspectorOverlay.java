@@ -4,7 +4,6 @@ import dev.hoot.api.SceneEntity;
 import dev.hoot.api.coords.RegionPoint;
 import dev.hoot.api.coords.ScenePoint;
 import dev.hoot.api.entities.*;
-import dev.hoot.api.game.GameThread;
 import dev.hoot.api.scene.Tiles;
 import dev.hoot.api.utils.DrawUtils;
 import dev.hoot.api.widgets.Widgets;
@@ -330,7 +329,7 @@ public class EntityInspectorOverlay extends Overlay
 	public void renderInventory(Graphics2D graphics)
 	{
 		Widget inventoryWidget = Widgets.get(WidgetInfo.INVENTORY);
-		if (inventoryWidget == null || GameThread.invokeLater(inventoryWidget::isHidden))
+		if (!Widgets.isVisible(inventoryWidget))
 		{
 			return;
 		}

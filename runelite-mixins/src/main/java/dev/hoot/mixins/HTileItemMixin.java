@@ -45,13 +45,6 @@ public abstract class HTileItemMixin implements RSTileItem
 		interact(getId(), getActionId(action));
 	}
 
-	@Override
-	@Inject
-	public void interact(String action)
-	{
-		interact(getActions().indexOf(action));
-	}
-
 	@Inject
 	@Override
 	public String[] getRawActions()

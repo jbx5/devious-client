@@ -1,6 +1,5 @@
 package dev.hoot.api.widgets;
 
-import dev.hoot.api.game.GameThread;
 import dev.hoot.api.input.Keyboard;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetID;
@@ -15,8 +14,7 @@ public class Production
 
 	public static boolean isOpen()
 	{
-		Widget widget = Widgets.get(WidgetInfo.MULTI_SKILL_MENU);
-		return widget != null && !GameThread.invokeLater(widget::isHidden);
+		return Widgets.isVisible(Widgets.get(WidgetInfo.MULTI_SKILL_MENU));
 	}
 
 	public static void chooseOption(String option)
@@ -27,7 +25,7 @@ public class Production
 		}
 
 		Widget optionsWidget = OPTIONS.get();
-		if (optionsWidget == null || GameThread.invokeLater(optionsWidget::isHidden))
+		if (!Widgets.isVisible(optionsWidget))
 		{
 			return;
 		}
@@ -47,7 +45,7 @@ public class Production
 	public static void selectOtherQuantity()
 	{
 		Widget otherQuantity = OTHER_QUANTITY.get();
-		if (otherQuantity != null && !GameThread.invokeLater(otherQuantity::isHidden))
+		if (Widgets.isVisible(otherQuantity))
 		{
 			otherQuantity.interact(0);
 		}

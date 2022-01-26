@@ -2,7 +2,6 @@ package dev.hoot.api.items;
 
 import dev.hoot.api.commons.Predicates;
 import dev.hoot.api.game.Game;
-import dev.hoot.api.game.GameThread;
 import dev.hoot.api.game.Vars;
 import dev.hoot.api.widgets.Dialog;
 import dev.hoot.api.widgets.Widgets;
@@ -36,14 +35,12 @@ public class Trade
 
 	public static boolean isSecondScreenOpen()
 	{
-		Widget accept = ACCEPT_2.get();
-		return accept != null && !GameThread.invokeLater(accept::isHidden);
+		return Widgets.isVisible(ACCEPT_2.get());
 	}
 
 	public static boolean isFirstScreenOpen()
 	{
-		Widget accept = ACCEPT_1.get();
-		return accept != null && !GameThread.invokeLater(accept::isHidden);
+		return Widgets.isVisible(ACCEPT_1.get());
 	}
 
 	public static void accept()
@@ -55,7 +52,7 @@ public class Trade
 	public static void acceptFirstScreen()
 	{
 		Widget button = ACCEPT_1.get();
-		if (button != null && !GameThread.invokeLater(button::isHidden))
+		if (Widgets.isVisible(button))
 		{
 			button.interact("Accept");
 		}
@@ -64,7 +61,7 @@ public class Trade
 	public static void acceptSecondScreen()
 	{
 		Widget button = ACCEPT_2.get();
-		if (button != null && !GameThread.invokeLater(button::isHidden))
+		if (Widgets.isVisible(button))
 		{
 			button.interact("Accept");
 		}
@@ -79,7 +76,7 @@ public class Trade
 	public static void declineFirstScreen()
 	{
 		Widget button = DECLINE_1.get();
-		if (button != null && !GameThread.invokeLater(button::isHidden))
+		if (Widgets.isVisible(button))
 		{
 			button.interact("Decline");
 		}
@@ -88,7 +85,7 @@ public class Trade
 	public static void declineSecondScreen()
 	{
 		Widget button = DECLINE_2.get();
-		if (button != null && !GameThread.invokeLater(button::isHidden))
+		if (Widgets.isVisible(button))
 		{
 			button.interact("Decline");
 		}

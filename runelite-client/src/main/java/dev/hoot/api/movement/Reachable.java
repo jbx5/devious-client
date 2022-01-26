@@ -1,7 +1,6 @@
 package dev.hoot.api.movement;
 
 import dev.hoot.api.game.Game;
-import dev.hoot.api.game.GameThread;
 import dev.hoot.api.scene.Tiles;
 import net.runelite.api.CollisionData;
 import net.runelite.api.GameObject;

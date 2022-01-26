@@ -2,7 +2,6 @@ package dev.hoot.api.movement.pathfinder;
 
 import dev.hoot.api.entities.Players;
 import dev.hoot.api.game.Game;
-import dev.hoot.api.game.GameThread;
 import dev.hoot.api.game.Worlds;
 import dev.hoot.api.input.Keyboard;
 import dev.hoot.api.items.Equipment;
@@ -211,7 +210,7 @@ public class TeleportLoader
 		if (inv != null)
 		{
 			Widget baseWidget = Widgets.get(187, 3);
-			if (baseWidget != null && GameThread.invokeLater(() -> !baseWidget.isHidden()))
+			if (Widgets.isVisible(baseWidget))
 			{
 				Widget[] children = baseWidget.getChildren();
 				if (children == null)

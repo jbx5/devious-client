@@ -4,8 +4,8 @@ import dev.hoot.api.entities.NPCs;
 import dev.hoot.api.entities.Players;
 import dev.hoot.api.entities.TileObjects;
 import dev.hoot.api.game.Game;
-import dev.hoot.api.game.GameThread;
 import dev.hoot.api.widgets.Dialog;
+import dev.hoot.api.widgets.Widgets;
 import net.runelite.api.NPC;
 import net.runelite.api.TileObject;
 import net.runelite.api.widgets.Widget;
@@ -61,7 +61,7 @@ public class DeathEvent extends BlockingEvent
 					.filter(x -> !completedDialogs.contains(x))
 					.findFirst()
 					.orElse(null);
-			if (incompleteDialog != null && !GameThread.invokeLater(incompleteDialog::isHidden))
+			if (Widgets.isVisible(incompleteDialog))
 			{
 				Dialog.chooseOption(Dialog.getOptions().indexOf(incompleteDialog) + 1);
 			}

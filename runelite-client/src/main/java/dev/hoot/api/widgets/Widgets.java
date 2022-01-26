@@ -1,7 +1,6 @@
 package dev.hoot.api.widgets;
 
 import dev.hoot.api.game.Game;
-import dev.hoot.api.game.GameThread;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
 
@@ -83,6 +82,6 @@ public class Widgets
 
 	public static boolean isVisible(Widget widget)
 	{
-		return widget != null && !GameThread.invokeLater(widget::isHidden);
+		return widget != null && widget.isVisible();
 	}
 }

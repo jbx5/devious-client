@@ -12,7 +12,7 @@ import java.awt.*;
 
 public class CoordUtils
 {
-	public static Point mapWorldPointToGraphicsPoint(WorldPoint worldPoint)
+	public static Point worldPointToWorldMap(WorldPoint worldPoint)
 	{
 		RenderOverview ro = Game.getClient().getRenderOverview();
 
@@ -55,12 +55,12 @@ public class CoordUtils
 		return null;
 	}
 
-	public static WorldPoint calculateMapPoint(Point point)
+	public static WorldPoint worldMapToWorldPoint(Point point)
 	{
 		float zoom = Game.getClient().getRenderOverview().getWorldMapZoom();
 		RenderOverview renderOverview = Game.getClient().getRenderOverview();
 		final WorldPoint mapPoint = new WorldPoint(renderOverview.getWorldMapPosition().getX(), renderOverview.getWorldMapPosition().getY(), 0);
-		final Point middle = mapWorldPointToGraphicsPoint(mapPoint);
+		final Point middle = worldPointToWorldMap(mapPoint);
 		if (middle == null)
 		{
 			return null;

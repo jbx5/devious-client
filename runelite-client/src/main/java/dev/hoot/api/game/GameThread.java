@@ -1,9 +1,8 @@
 package dev.hoot.api.game;
 
+import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.client.callback.ClientThread;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 import java.util.concurrent.Callable;
@@ -12,9 +11,9 @@ import java.util.concurrent.FutureTask;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
+@Slf4j
 public class GameThread
 {
-	private static final Logger log = LoggerFactory.getLogger(GameThread.class);
 	private static final long TIMEOUT = 1000;
 
 	@Inject
@@ -58,7 +57,7 @@ public class GameThread
 		catch (ExecutionException | InterruptedException | TimeoutException e)
 		{
 			e.printStackTrace();
-			throw new RuntimeException("Lookup on client thread timed out after " + TIMEOUT + " ms");
+			throw new RuntimeException("Client thread invoke timed out after " + TIMEOUT + " ms");
 		}
 	}
 }

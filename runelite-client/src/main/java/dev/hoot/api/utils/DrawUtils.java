@@ -40,8 +40,8 @@ public class DrawUtils
 		float pixelsPerTile = ro.getWorldMapZoom();
 		int tileCenterPixel = (int) Math.ceil(pixelsPerTile / 2);
 
-		Point tile = CoordUtils.mapWorldPointToGraphicsPoint(point);
-		Point bottomRightTile = CoordUtils.mapWorldPointToGraphicsPoint(point.dx(1).dy(-1));
+		Point tile = CoordUtils.worldPointToWorldMap(point);
+		Point bottomRightTile = CoordUtils.worldPointToWorldMap(point.dx(1).dy(-1));
 
 		if (tile == null || bottomRightTile == null)
 		{
@@ -102,7 +102,7 @@ public class DrawUtils
 	public static void drawCollisions(Graphics2D graphics2D, CollisionMap collisionMap)
 	{
 		Client client = Game.getClient();
-		List<Tile> tiles = Tiles.getTiles();
+		List<Tile> tiles = Tiles.getAll();
 
 		if (tiles.isEmpty())
 		{

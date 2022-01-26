@@ -5,6 +5,7 @@ import net.runelite.api.util.Text;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public interface Interactable
@@ -23,7 +24,39 @@ public interface Interactable
 		return Arrays.stream(getRawActions()).map(Text::removeTags).collect(Collectors.toList());
 	}
 
-	void interact(String action);
+	default void interact(Predicate<String> predicate)
+	{
+		String[] raw = getRawActions();
+		if (raw == null)
+		{
+			return;
+		}
+
+		for (int i = 0; i < raw.length; i++)
+		{
+			if (predicate.test(raw[i]))
+			{
+				interact(i);
+				return;
+			}
+		}
+	}
+
+	default void interact(String action)
+	{
+		if (getActions() == null)
+		{
+			return;
+		}
+
+		int index = getActions().indexOf(action);
+		if (index == -1)
+		{
+			return;
+		}
+
+		interact(index);
+	}
 
 	void interact(int index);
 

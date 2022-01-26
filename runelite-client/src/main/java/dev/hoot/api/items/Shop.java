@@ -1,6 +1,5 @@
 package dev.hoot.api.items;
 
-import dev.hoot.api.game.GameThread;
 import dev.hoot.api.widgets.Widgets;
 import net.runelite.api.widgets.Widget;
 
@@ -17,14 +16,13 @@ public class Shop
 
 	public static boolean isOpen()
 	{
-		Widget widget = SHOP.get();
-		return widget != null && !GameThread.invokeLater(widget::isHidden);
+		return Widgets.isVisible(SHOP.get());
 	}
 
 	public static int getStock(int itemId)
 	{
 		Widget items = SHOP_ITEMS.get();
-		if (items == null || GameThread.invokeLater(items::isHidden))
+		if (!Widgets.isVisible(items))
 		{
 			return 0;
 		}

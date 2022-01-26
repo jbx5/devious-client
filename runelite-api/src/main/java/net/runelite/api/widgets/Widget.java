@@ -1098,4 +1098,8 @@ public interface Widget extends Interactable, Identifiable
 	 * Sets the Y padding between widgets, mainly for inventory items
 	 */
 	void setPaddingY(int val);
+
+	boolean isVisible();
+
+	void setVisible(boolean visible);
 }

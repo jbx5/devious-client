@@ -110,12 +110,6 @@ public class Item implements Interactable, Identifiable, EntityNameable
 	}
 
 	@Override
-	public void interact(String action)
-	{
-		interact(getActions().indexOf(action));
-	}
-
-	@Override
 	public void interact(int index)
 	{
 		switch (getType())

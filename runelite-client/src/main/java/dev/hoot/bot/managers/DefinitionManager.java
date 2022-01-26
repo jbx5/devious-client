@@ -169,13 +169,11 @@ public class DefinitionManager
     }
 
     @Subscribe
-    public void onGameStateChanged(GameStateChanged gameStateChanged)
+    private void onGameStateChanged(GameStateChanged gameStateChanged)
     {
         switch (gameStateChanged.getGameState())
         {
             case LOGIN_SCREEN:
-                client.clearDefinitionCaches();
-                break;
             case HOPPING:
                 client.clearDefinitionCaches();
                 break;

@@ -68,13 +68,13 @@ public class RegionOverlay extends Overlay
 				for (Transport transport : transports)
 				{
 					DrawUtils.drawOnMap(graphics, transport.getDestination(), Color.magenta);
-					Point center = CoordUtils.mapWorldPointToGraphicsPoint(transport.getSource());
+					Point center = CoordUtils.worldPointToWorldMap(transport.getSource());
 					if (center == null)
 					{
 						continue;
 					}
 
-					Point linkCenter = CoordUtils.mapWorldPointToGraphicsPoint(transport.getDestination());
+					Point linkCenter = CoordUtils.worldPointToWorldMap(transport.getDestination());
 					if (linkCenter == null)
 					{
 						continue;
@@ -179,7 +179,7 @@ public class RegionOverlay extends Overlay
 		float zoom = client.getRenderOverview().getWorldMapZoom();
 		RenderOverview renderOverview = client.getRenderOverview();
 		final WorldPoint mapPoint = new WorldPoint(renderOverview.getWorldMapPosition().getX(), renderOverview.getWorldMapPosition().getY(), 0);
-		final Point middle = CoordUtils.mapWorldPointToGraphicsPoint(mapPoint);
+		final Point middle = CoordUtils.worldPointToWorldMap(mapPoint);
 		if (middle == null)
 		{
 			return null;

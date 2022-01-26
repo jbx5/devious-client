@@ -1,7 +1,5 @@
 package dev.hoot.api.entities;
 
-import dev.hoot.api.game.Game;
-import dev.hoot.api.game.GameThread;
 import dev.hoot.api.scene.Tiles;
 import net.runelite.api.Tile;
 import net.runelite.api.TileItem;
@@ -21,6 +19,11 @@ public class TileItems extends TileEntities<TileItem>
 	}
 
 	private static final TileItems TILE_ITEMS = new TileItems();
+
+	public static List<TileItem> getAll()
+	{
+		return getAll(x -> true);
+	}
 
 	public static List<TileItem> getAll(Predicate<TileItem> filter)
 	{
@@ -270,7 +273,7 @@ public class TileItems extends TileEntities<TileItem>
 	@Override
 	protected List<TileItem> all(Predicate<? super TileItem> filter)
 	{
-		return Tiles.getTiles().stream()
+		return Tiles.getAll().stream()
 				.flatMap(tile -> at(tile, filter).stream())
 				.collect(Collectors.toList());
 	}
@@ -291,11 +294,6 @@ public class TileItems extends TileEntities<TileItem>
 				if (item == null || item.getId() == -1)
 				{
 					continue;
-				}
-
-				if (!Game.getClient().isItemDefinitionCached(item.getId()))
-				{
-					GameThread.invokeLater(() -> Game.getClient().getItemComposition(item.getId()));
 				}
 
 				if (!filter.test(item))

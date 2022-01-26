@@ -60,13 +60,6 @@ public abstract class HTileObjectMixin implements TileObject
 
 	@Override
 	@Inject
-	public void interact(String action)
-	{
-		interact(getActions().indexOf(action));
-	}
-
-	@Override
-	@Inject
 	public int getActionId(int action)
 	{
 		switch (action)

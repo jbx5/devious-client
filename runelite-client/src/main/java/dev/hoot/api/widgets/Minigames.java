@@ -51,7 +51,7 @@ public class Minigames
 		if (!isOpen())
 		{
 			Widget widget = MINIGAMES_TAB_BUTTON.get();
-			if (widget != null && !GameThread.invokeLater(widget::isHidden))
+			if (Widgets.isVisible(widget))
 			{
 				widget.interact("Grouping");
 				return false;
@@ -63,8 +63,7 @@ public class Minigames
 
 	public static boolean isOpen()
 	{
-		Widget minigamesButton = Widgets.get(WidgetInfo.MINIGAME_TELEPORT_BUTTON);
-		return minigamesButton != null && !GameThread.invokeLater(minigamesButton::isHidden);
+		return Widgets.isVisible(Widgets.get(WidgetInfo.MINIGAME_TELEPORT_BUTTON));
 	}
 
 	public static boolean isTabOpen()
@@ -118,7 +117,7 @@ public class Minigames
 		public static Destination getCurrent()
 		{
 			Widget selectedTeleport = MINIGAMES_DESTINATION.get();
-			if (selectedTeleport != null && !GameThread.invokeLater(selectedTeleport::isHidden))
+			if (Widgets.isVisible(selectedTeleport))
 			{
 				return byName(selectedTeleport.getText());
 			}

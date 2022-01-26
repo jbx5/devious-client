@@ -75,13 +75,6 @@ public abstract class HPlayerMixin extends RSPlayerMixin implements RSPlayer
 
 	@Inject
 	@Override
-	public void interact(String action)
-	{
-		interact(getActions().indexOf(action));
-	}
-
-	@Inject
-	@Override
 	public void interact(int index, int menuAction)
 	{
 		interact(getIndex(), menuAction, 0, 0);

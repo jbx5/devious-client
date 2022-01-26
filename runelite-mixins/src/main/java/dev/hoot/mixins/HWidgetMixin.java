@@ -2,6 +2,7 @@ package dev.hoot.mixins;
 
 import net.runelite.api.MenuAction;
 import net.runelite.api.Point;
+import net.runelite.api.mixins.FieldHook;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Shadow;
@@ -17,6 +18,9 @@ public abstract class HWidgetMixin implements RSWidget
 {
 	@Shadow("client")
 	private static RSClient client;
+
+	@Inject
+	private boolean visible;
 
 	@Inject
 	@Override
@@ -39,13 +43,6 @@ public abstract class HWidgetMixin implements RSWidget
 			default:
 				throw new IllegalArgumentException("Widget: no identifier for " + actionIndex);
 		}
-	}
-
-	@Inject
-	@Override
-	public void interact(String action)
-	{
-		interact(getActions().indexOf(action));
 	}
 
 	@Inject
@@ -106,5 +103,26 @@ public abstract class HWidgetMixin implements RSWidget
 		}
 
 		return getCanvasLocation();
+	}
+
+	@Inject
+	public boolean isVisible()
+	{
+		return visible;
+	}
+
+	@Inject
+	public void setVisible(boolean visible)
+	{
+		this.visible = visible;
+	}
+
+	@Inject
+	@FieldHook("isHidden")
+	public void onHiddenChanged(int idx)
+	{
+		boolean hidden = isHidden();
+		setVisible(!hidden);
+		broadcastHidden(hidden);
 	}
 }

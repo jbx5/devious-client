@@ -116,7 +116,7 @@ public class ScriptThread extends Thread
 	}
 
 	@Subscribe
-	public void onGameTick(GameTick event)
+	public void tickCounter(GameTick event)
 	{
 		ticks.incrementAndGet();
 	}

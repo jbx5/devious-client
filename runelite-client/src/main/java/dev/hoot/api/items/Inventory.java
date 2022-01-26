@@ -1,17 +1,14 @@
 package dev.hoot.api.items;
 
 import dev.hoot.api.game.Game;
-import dev.hoot.api.game.GameThread;
 import net.runelite.api.InventoryID;
 import net.runelite.api.Item;
 import net.runelite.api.ItemContainer;
 import net.runelite.api.widgets.WidgetInfo;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 public class Inventory extends Items
 {

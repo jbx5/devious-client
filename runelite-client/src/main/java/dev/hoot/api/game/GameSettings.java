@@ -64,7 +64,7 @@ public class GameSettings
 			for (Display display : values())
 			{
 				Widget widget = display.getWidgetSupplier().get();
-				if (widget != null && !GameThread.invokeLater(widget::isHidden))
+				if (Widgets.isVisible(widget))
 				{
 					return display;
 				}
