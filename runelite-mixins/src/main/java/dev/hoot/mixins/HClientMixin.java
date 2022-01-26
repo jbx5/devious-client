@@ -273,15 +273,14 @@ public abstract class HClientMixin implements RSClient
 			opcode -= 2000;
 		}
 
-		MenuOptionClicked menuOptionClicked;
+		MenuOptionClicked menuOptionClicked = new MenuOptionClicked();
 		AutomatedInteraction replacement = automatedMenu.get();
 		if (replacement != null)
 		{
-			menuOptionClicked = replacement.toMenuOptionClicked();
+			menuOptionClicked.setMenuEntry(replacement.toMenuEntry(client));
 		}
 		else
 		{
-			menuOptionClicked = new MenuOptionClicked();
 			menuOptionClicked.setParam0(param0);
 			menuOptionClicked.setMenuOption(option);
 			menuOptionClicked.setMenuTarget(target);

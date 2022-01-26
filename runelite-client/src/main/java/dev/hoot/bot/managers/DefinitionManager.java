@@ -62,11 +62,7 @@ public class DefinitionManager
                 && composition.getConfigs() != null)
         {
             VARBIT_TO_ENTITYID.put(composition.getTransformVarbit(), event.getNpcIndex());
-
-            if (Vars.getBit(composition.getTransformVarbit()) != 0)
-            {
-                npc.setTransformedComposition(composition.transform());
-            }
+            npc.setTransformedComposition(composition.transform());
         }
     }
 
@@ -199,15 +195,15 @@ public class DefinitionManager
                 NPC npc = client.getCachedNPCs()[entityId];
                 if (npc != null && npc.getComposition() != null)
                 {
+                    npc.setTransformedComposition(npc.getComposition().transform());
+
                     if (configValue == 0)
                     {
                         log.debug("NPC {} reverted to default state", entityId);
-                        npc.setTransformedComposition(null);
                     }
                     else
                     {
                         log.debug("NPC {} transformed", entityId);
-                        npc.setTransformedComposition(npc.getComposition().transform());
                     }
 
                     return;
@@ -249,15 +245,7 @@ public class DefinitionManager
         {
             VARBIT_TO_ENTITYID.put(composition.getTransformVarbit(), object.getId());
             TRANSFORMING_OBJECTS.put(object.getId(), object);
-
-            if (Vars.getBit(composition.getTransformVarbit()) != 0)
-            {
-                object.setTransformedComposition(composition.getImpostor());
-            }
-            else
-            {
-                object.setTransformedComposition(composition);
-            }
+            object.setTransformedComposition(composition.getImpostor());
         }
         else
         {

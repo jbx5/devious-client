@@ -123,6 +123,15 @@ public abstract class HWidgetMixin implements RSWidget
 	{
 		boolean hidden = isHidden();
 		setVisible(!hidden);
+		if (!hidden)
+		{
+			int itemId = getItemId();
+			if (itemId != -1)
+			{
+				client.cacheItem(itemId, client.getItemDefinition(itemId));
+			}
+		}
+
 		broadcastHidden(hidden);
 	}
 }
