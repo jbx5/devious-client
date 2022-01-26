@@ -1,24 +1,36 @@
 package dev.hoot.api.input.naturalmouse;
 
-import dev.hoot.api.game.Game;
 import dev.hoot.api.input.Mouse;
 import dev.hoot.api.input.naturalmouse.api.MouseInfoAccessor;
 import dev.hoot.api.input.naturalmouse.api.MouseMotionFactory;
 import dev.hoot.api.input.naturalmouse.api.SystemCalls;
-import dev.hoot.api.input.naturalmouse.support.*;
+import dev.hoot.api.input.naturalmouse.support.DefaultMouseMotionNature;
+import dev.hoot.api.input.naturalmouse.support.DefaultNoiseProvider;
+import dev.hoot.api.input.naturalmouse.support.DefaultOvershootManager;
+import dev.hoot.api.input.naturalmouse.support.DefaultSpeedManager;
+import dev.hoot.api.input.naturalmouse.support.Flow;
+import dev.hoot.api.input.naturalmouse.support.MouseMotionNature;
+import dev.hoot.api.input.naturalmouse.support.SinusoidalDeviationProvider;
 import dev.hoot.api.input.naturalmouse.util.FlowTemplates;
 import dev.hoot.api.input.naturalmouse.util.Pair;
 import lombok.Getter;
 import lombok.Setter;
+import net.runelite.api.Client;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
+@Singleton
 public class NaturalMouse
 {
+    @Inject
+    private Client client;
+
     private final ThreadLocalRandom random = ThreadLocalRandom.current();
     private final MouseMotionNature nature;
 
@@ -36,7 +48,8 @@ public class NaturalMouse
             new Flow(FlowTemplates.random())
     );
 
-    public NaturalMouse()
+    @Inject
+    private NaturalMouse()
     {
         nature = new DefaultMouseMotionNature();
         nature.setSystemCalls(new SystemCallsImpl());
@@ -98,7 +111,7 @@ public class NaturalMouse
         }
     }
 
-    private static class SystemCallsImpl implements SystemCalls
+    private class SystemCallsImpl implements SystemCalls
     {
         @Override
         public long currentTimeMillis()
@@ -115,13 +128,13 @@ public class NaturalMouse
         @Override
         public Dimension getScreenSize()
         {
-            return Game.getClient().getCanvas().getSize();
+            return client.getCanvas().getSize();
         }
 
         @Override
         public void setMousePosition(int x, int y)
         {
-            Game.getClient().getMouseHandler().sendMovement(x, y);
+            client.getMouseHandler().sendMovement(x, y);
         }
     }
 }

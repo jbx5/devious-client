@@ -15,6 +15,7 @@ import net.runelite.api.widgets.Widget;
 import net.runelite.rs.api.*;
 
 import javax.annotation.Nonnull;
+import java.time.Instant;
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -43,6 +44,9 @@ public abstract class HClientMixin implements RSClient
 
 	@Inject
 	private static long lastMenuChange = -1;
+
+	@Inject
+	private static Instant lastInteractionTime = Instant.ofEpochMilli(0);
 
 	@Inject
 	@Override
@@ -277,7 +281,8 @@ public abstract class HClientMixin implements RSClient
 		AutomatedInteraction replacement = automatedMenu.get();
 		if (replacement != null)
 		{
-			menuOptionClicked.setMenuEntry(replacement.toMenuEntry(client));
+			menuOptionClicked = replacement.toMenuOptionClicked();
+			lastInteractionTime = Instant.now();
 		}
 		else
 		{
@@ -345,5 +350,11 @@ public abstract class HClientMixin implements RSClient
 		}
 
 		return automatedMenu.get();
+	}
+
+	@Inject
+	public Instant getLastInteractionTime()
+	{
+		return lastInteractionTime;
 	}
 }

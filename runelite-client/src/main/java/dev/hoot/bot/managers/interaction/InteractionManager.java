@@ -28,7 +28,9 @@ public class InteractionManager
 {
 	private static final int MINIMAP_WIDTH = 250;
 	private static final int MINIMAP_HEIGHT = 180;
-	private final NaturalMouse naturalMouse = new NaturalMouse();
+
+	@Inject
+	private NaturalMouse naturalMouse;
 
 	@Inject
 	private InteractionConfig config;

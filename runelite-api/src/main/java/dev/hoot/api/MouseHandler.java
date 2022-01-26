@@ -24,9 +24,9 @@ public interface MouseHandler extends MouseListener, MouseMotionListener, FocusL
 
 	long getLastPressedMillis();
 
-	void setCurrentX(int x);
+	void setMouseX(int x);
 
-	void setCurrentY(int y);
+	void setMouseY(int y);
 
 	void setCurrentMillis(long millis);
 

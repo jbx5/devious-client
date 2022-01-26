@@ -43,8 +43,8 @@ public abstract class HMouseHandlerMixin implements RSMouseHandler
 	{
 		client.setFocused(true);
 		setIdleCycles(0);
-		setCurrentX(x = correctX(x));
-		setCurrentY(y = correctY(y));
+		setMouseX(x = correctX(x));
+		setMouseY(y = correctY(y));
 		setCurrentMillis(System.currentTimeMillis());
 
 		mouseMoved(new MouseEvent(client.getCanvas(), MouseEvent.MOUSE_MOVED, client.getCurrentTime(), 0, x, y, 0, false));

@@ -44,11 +44,11 @@ public interface RSMouseHandler extends MouseHandler
 
 	@Import("MouseHandler_xVolatile")
 	@Override
-	void setCurrentX(int x);
+	void setMouseX(int x);
 
 	@Import("MouseHandler_yVolatile")
 	@Override
-	void setCurrentY(int y);
+	void setMouseY(int y);
 
 	@Import("MouseHandler_lastMovedVolatile")
 	@Override
