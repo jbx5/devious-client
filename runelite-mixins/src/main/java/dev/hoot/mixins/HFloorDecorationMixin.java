@@ -14,14 +14,14 @@ public abstract class HFloorDecorationMixin implements RSFloorDecoration
 
     @Override
     @Inject
-    public ObjectComposition getTransformedDefinition()
+    public ObjectComposition getTransformedComposition()
     {
         return transformedFloorDecoration;
     }
 
     @Override
     @Inject
-    public void setTransformedDefinition(ObjectComposition composition)
+    public void setTransformedComposition(ObjectComposition composition)
     {
         transformedFloorDecoration = (RSObjectComposition) composition;
     }

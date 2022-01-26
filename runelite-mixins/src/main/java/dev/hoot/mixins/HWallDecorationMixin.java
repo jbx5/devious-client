@@ -10,19 +10,19 @@ import net.runelite.rs.api.RSWallDecoration;
 public abstract class HWallDecorationMixin implements RSWallDecoration
 {
     @Inject
-    private RSObjectComposition transformedDecorativeObject = null;
+    private RSObjectComposition transformedComposition = null;
 
     @Override
     @Inject
-    public ObjectComposition getTransformedDefinition()
+    public ObjectComposition getTransformedComposition()
     {
-        return transformedDecorativeObject;
+        return transformedComposition;
     }
 
     @Override
     @Inject
-    public void setTransformedDefinition(ObjectComposition composition)
+    public void setTransformedComposition(ObjectComposition composition)
     {
-        transformedDecorativeObject = (RSObjectComposition) composition;
+        transformedComposition = (RSObjectComposition) composition;
     }
 }

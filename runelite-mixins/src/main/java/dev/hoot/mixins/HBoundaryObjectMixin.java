@@ -10,19 +10,19 @@ import net.runelite.rs.api.RSObjectComposition;
 public abstract class HBoundaryObjectMixin implements RSBoundaryObject
 {
     @Inject
-    private RSObjectComposition transformedWallObject = null;
+    private RSObjectComposition transformedComposition = null;
 
     @Override
     @Inject
-    public ObjectComposition getTransformedDefinition()
+    public ObjectComposition getTransformedComposition()
     {
-        return transformedWallObject;
+        return transformedComposition;
     }
 
     @Override
     @Inject
-    public void setTransformedDefinition(ObjectComposition composition)
+    public void setTransformedComposition(ObjectComposition composition)
     {
-        transformedWallObject = (RSObjectComposition) composition;
+        transformedComposition = (RSObjectComposition) composition;
     }
 }

@@ -46,7 +46,7 @@ public abstract class HTileObjectMixin implements TileObject
 	@Override
 	public String getName()
 	{
-		RSObjectComposition def = (RSObjectComposition) getTransformedDefinition();
+		RSObjectComposition def = (RSObjectComposition) getTransformedComposition();
 		return def == null ? null : Text.removeTags(Text.sanitize(def.getName()));
 	}
 
@@ -54,7 +54,7 @@ public abstract class HTileObjectMixin implements TileObject
 	@Override
 	public String[] getRawActions()
 	{
-		RSObjectComposition def = (RSObjectComposition) getTransformedDefinition();
+		RSObjectComposition def = (RSObjectComposition) getTransformedComposition();
 		return def == null ? null : def.getActions();
 	}
 

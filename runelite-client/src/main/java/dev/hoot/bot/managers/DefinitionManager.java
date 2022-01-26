@@ -220,7 +220,7 @@ public class DefinitionManager
             TileObject cachedObject = TRANSFORMING_OBJECTS.get(entityId);
             if (objectComposition != null && cachedObject != null)
             {
-                cachedObject.setTransformedDefinition(objectComposition.getImpostor());
+                cachedObject.setTransformedComposition(objectComposition.getImpostor());
 
                 if (configValue == 0)
                 {
@@ -254,16 +254,16 @@ public class DefinitionManager
 
             if (Vars.getBit(composition.getTransformVarbit()) != 0)
             {
-                object.setTransformedDefinition(composition.getImpostor());
+                object.setTransformedComposition(composition.getImpostor());
             }
             else
             {
-                object.setTransformedDefinition(composition);
+                object.setTransformedComposition(composition);
             }
         }
         else
         {
-            object.setTransformedDefinition(composition);
+            object.setTransformedComposition(composition);
         }
     }
 }

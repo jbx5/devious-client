@@ -19,7 +19,7 @@ public abstract class HGameObjectMixin implements RSGameObject
 	private static RSClient client;
 
 	@Inject
-	private RSObjectComposition transformedGameObject = null;
+	private RSObjectComposition transformedComposition = null;
 
 	@Inject
 	@Override
@@ -47,14 +47,14 @@ public abstract class HGameObjectMixin implements RSGameObject
 	}
 
 	@Inject
-	public RSObjectComposition getTransformedDefinition()
+	public RSObjectComposition getTransformedComposition()
 	{
-		return transformedGameObject;
+		return transformedComposition;
 	}
 
 	@Inject
-	public void setTransformedDefinition(ObjectComposition composition)
+	public void setTransformedComposition(ObjectComposition composition)
 	{
-		transformedGameObject = (RSObjectComposition) composition;
+		transformedComposition = (RSObjectComposition) composition;
 	}
 }
