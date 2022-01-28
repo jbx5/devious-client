@@ -3,7 +3,7 @@ package dev.hoot.bot.managers.interaction;
 import dev.hoot.api.MouseHandler;
 import dev.hoot.api.commons.Rand;
 import dev.hoot.api.commons.Time;
-import dev.hoot.api.events.AutomatedInteraction;
+import dev.hoot.api.events.AutomatedMenu;
 import dev.hoot.api.game.GameThread;
 import dev.hoot.api.input.naturalmouse.NaturalMouse;
 import dev.hoot.api.movement.Movement;
@@ -49,7 +49,7 @@ public class InteractionManager
 	}
 
 	@Subscribe
-	public void onInvokeMenuAction(AutomatedInteraction e)
+	public void onInvokeMenuAction(AutomatedMenu e)
 	{
 		String debug = "O=" + e.getOption()
 				+ " | T=" + e.getTarget()
@@ -157,13 +157,13 @@ public class InteractionManager
 		}
 	}
 
-	private void processAction(AutomatedInteraction entry, int x, int y)
+	private void processAction(AutomatedMenu entry, int x, int y)
 	{
 		GameThread.invoke(() -> client.invokeMenuAction(entry.getOption(), entry.getTarget(), entry.getIdentifier(),
 				entry.getOpcode().getId(), entry.getParam0(), entry.getParam1(), x, y));
 	}
 
-	private Point getClickPoint(AutomatedInteraction e)
+	private Point getClickPoint(AutomatedMenu e)
 	{
 		if (config.interactType() == InteractType.OFF_SCREEN)
 		{

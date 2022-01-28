@@ -36,7 +36,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import dev.hoot.api.MouseHandler;
-import dev.hoot.api.events.AutomatedInteraction;
+import dev.hoot.api.events.AutomatedMenu;
 import net.runelite.api.packets.ClientPacket;
 import net.runelite.api.packets.IsaacCipher;
 import net.runelite.api.packets.PacketBufferNode;
@@ -2428,14 +2428,14 @@ public interface Client extends GameEngine
 		interact(identifier, opcode, param0, param1, clickX, clickY, -1337);
 	}
 
-	void interact(final int identifier, final int opcode, final int param0, final int param1, int clickX, int clickY,
-				  long entityTag, int selectedItemId);
-
 	default void interact(final int identifier, final int opcode, final int param0, final int param1, int clickX, int clickY,
 				  long entityTag)
 	{
-		interact(identifier, opcode, param0, param1, clickX, clickY, entityTag, -1);
+		interact(new AutomatedMenu(identifier, MenuAction.of(opcode),
+				param0, param1, clickY, clickY, entityTag));
 	}
+
+	void interact(AutomatedMenu automatedMenu);
 
 	int getMouseLastPressedX();
 
@@ -2545,9 +2545,9 @@ public interface Client extends GameEngine
 
 	void setMenuOpen(boolean open);
 
-	void setPendingAutomation(AutomatedInteraction entry);
+	void setPendingAutomation(AutomatedMenu entry);
 
-	AutomatedInteraction getPendingAutomation();
+	AutomatedMenu getPendingAutomation();
 
 	VarbitComposition getVarbitComposition(int varbitId);
 

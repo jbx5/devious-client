@@ -27,6 +27,7 @@ package net.runelite.api;
 import dev.hoot.api.EntityNameable;
 import dev.hoot.api.Identifiable;
 import dev.hoot.api.Interactable;
+import dev.hoot.api.events.AutomatedMenu;
 import lombok.Data;
 import net.runelite.api.util.Text;
 import net.runelite.api.widgets.*;
@@ -91,7 +92,7 @@ public class Item implements Interactable, Identifiable, EntityNameable
 	}
 
 	@Override
-	public int getActionId(int action)
+	public int getActionOpcode(int action)
 	{
 		switch (action)
 		{
@@ -118,35 +119,7 @@ public class Item implements Interactable, Identifiable, EntityNameable
 	@Override
 	public void interact(int index)
 	{
-		switch (getType())
-		{
-			case TRADE:
-			case TRADE_INVENTORY:
-				Widget widget = client.getWidget(widgetId);
-				if (widget != null)
-				{
-					Widget itemChild = widget.getChild(slot);
-					if (itemChild != null)
-					{
-						itemChild.interact(index);
-					}
-				}
-				break;
-			case EQUIPMENT:
-				interact(index, index > 4 ? MenuAction.CC_OP_LOW_PRIORITY.getId()
-						: MenuAction.CC_OP.getId());
-				break;
-			case BANK:
-			case BANK_INVENTORY:
-				interact(index, MenuAction.CC_OP.getId());
-				break;
-			case INVENTORY:
-				interact(getId(), getActionId(index));
-				break;
-			case UNKNOWN:
-				client.getLogger().error("Couldn't determine item type for: {}, widgetid: {}", id, widgetId);
-				break;
-		}
+		client.interact(getMenu(index));
 	}
 
 	public void drop()
@@ -155,42 +128,15 @@ public class Item implements Interactable, Identifiable, EntityNameable
 	}
 
 	@Override
-	public void interact(int index, int menuAction)
+	public void interact(int index, int opcode)
 	{
-		switch (getType())
-		{
-			case TRADE:
-			case TRADE_INVENTORY:
-				Widget itemWidget = client.getWidget(widgetId);
-				if (itemWidget == null)
-				{
-					return;
-				}
-				itemWidget.interact(index, menuAction);
-				break;
-			case EQUIPMENT:
-				interact(index + 1, menuAction, actionParam, widgetId);
-				break;
-			case BANK:
-				interact(index, menuAction, getSlot(), WidgetInfo.BANK_ITEM_CONTAINER.getPackedId());
-				break;
-			case BANK_INVENTORY:
-				interact(index, menuAction, getSlot(), WidgetInfo.BANK_INVENTORY_ITEMS_CONTAINER.getPackedId());
-				break;
-			case INVENTORY:
-				interact(getId(), menuAction, actionParam, widgetId);
-				break;
-			case UNKNOWN:
-				client.getLogger().error("Couldn't determine item type for: {}, widgetid: {}", id, widgetId);
-				break;
-		}
+		client.interact(getMenu(index, opcode));
 	}
 
 	@Override
 	public void interact(int identifier, int opcode, int param0, int param1)
 	{
-		Point screenLoc = getScreenCoords();
-		client.interact(identifier, opcode, param0, param1, screenLoc.getX(), screenLoc.getY());
+		client.interact(getMenu(identifier, opcode, param0, param1));
 	}
 
 	public void useOn(Interactable entity)
@@ -379,7 +325,8 @@ public class Item implements Interactable, Identifiable, EntityNameable
 		return getComposition().getPrice();
 	}
 
-	private Point getScreenCoords()
+	@Override
+	public Point getClickPoint()
 	{
 		Widget widget = client.getWidget(widgetId);
 		if (widget == null)
@@ -428,5 +375,69 @@ public class Item implements Interactable, Identifiable, EntityNameable
 		}
 
 		return widget.getCanvasLocation();
+	}
+
+	@Override
+	public AutomatedMenu getMenu(int actionIndex)
+	{
+		switch (getType())
+		{
+			case TRADE:
+			case TRADE_INVENTORY:
+				Widget widget = client.getWidget(widgetId);
+				if (widget != null)
+				{
+					Widget itemChild = widget.getChild(slot);
+					if (itemChild != null)
+					{
+						return itemChild.getMenu(actionIndex);
+					}
+				}
+
+				break;
+			case EQUIPMENT:
+				return getMenu(actionIndex, actionIndex > 4 ? MenuAction.CC_OP_LOW_PRIORITY.getId()
+						: MenuAction.CC_OP.getId());
+			case BANK:
+			case BANK_INVENTORY:
+				return getMenu(actionIndex, MenuAction.CC_OP.getId());
+			case INVENTORY:
+				return getMenu(getId(), getActionOpcode(actionIndex));
+			case UNKNOWN:
+				client.getLogger().error("Couldn't determine item type for: {}, widgetid: {}", id, widgetId);
+				break;
+		}
+
+		return null;
+	}
+
+	@Override
+	public AutomatedMenu getMenu(int actionIndex, int opcode)
+	{
+		switch (getType())
+		{
+			case TRADE:
+			case TRADE_INVENTORY:
+				Widget itemWidget = client.getWidget(widgetId);
+				if (itemWidget == null)
+				{
+					return null;
+				}
+
+				return itemWidget.getMenu(actionIndex, opcode);
+			case EQUIPMENT:
+				return getMenu(actionIndex + 1, opcode, actionParam, widgetId);
+			case BANK:
+				return getMenu(actionIndex, opcode, getSlot(), WidgetInfo.BANK_ITEM_CONTAINER.getPackedId());
+			case BANK_INVENTORY:
+				return getMenu(actionIndex, opcode, getSlot(), WidgetInfo.BANK_INVENTORY_ITEMS_CONTAINER.getPackedId());
+			case INVENTORY:
+				return getMenu(getId(), opcode, actionParam, widgetId);
+			case UNKNOWN:
+				client.getLogger().error("Couldn't determine item type for: {}, widgetid: {}", id, widgetId);
+				break;
+		}
+
+		return null;
 	}
 }

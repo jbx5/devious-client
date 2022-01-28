@@ -1,5 +1,6 @@
 package dev.hoot.mixins;
 
+import dev.hoot.api.events.AutomatedMenu;
 import net.runelite.api.MenuAction;
 import net.runelite.api.NPCComposition;
 import net.runelite.api.Perspective;
@@ -55,7 +56,7 @@ public abstract class HNpcMixin implements RSNPC
 
 	@Override
 	@Inject
-	public int getActionId(int action)
+	public int getActionOpcode(int action)
 	{
 		switch (action)
 		{
@@ -78,25 +79,21 @@ public abstract class HNpcMixin implements RSNPC
 	@Inject
 	public void interact(int action)
 	{
-		interact(getIndex(), getActionId(action));
+		interact(getIndex(), getActionOpcode(action));
 	}
 
 	@Override
 	@Inject
 	public void interact(int identifier, int opcode, int param0, int param1)
 	{
-		Point screenCoords = getScreenCoords();
-		int x = screenCoords != null ? screenCoords.getX() : -1;
-		int y = screenCoords != null ? screenCoords.getY() : -1;
-
-		client.interact(identifier, opcode, param0, param1, x, y, getTag());
+		client.interact(getMenu(identifier, opcode, param0, param1));
 	}
 
 	@Inject
 	@Override
-	public void interact(int index, int menuAction)
+	public void interact(int index, int opcode)
 	{
-		interact(getIndex(), menuAction, 0, 0);
+		interact(getIndex(), opcode, 0, 0);
 	}
 
 	@Inject
@@ -107,7 +104,7 @@ public abstract class HNpcMixin implements RSNPC
 	}
 
 	@Inject
-	private Point getScreenCoords()
+	public Point getClickPoint()
 	{
 		return Perspective.localToCanvas(client, getLocalLocation(), client.getPlane());
 	}
@@ -128,5 +125,17 @@ public abstract class HNpcMixin implements RSNPC
 	public RSNPCComposition getTransformedComposition()
 	{
 		return transformedComposition == null ? getComposition() : transformedComposition;
+	}
+
+	@Inject
+	public AutomatedMenu getMenu(int actionIndex)
+	{
+		return getMenu(getIndex(), getActionOpcode(actionIndex));
+	}
+
+	@Inject
+	public AutomatedMenu getMenu(int actionIndex, int opcode)
+	{
+		return getMenu(getIndex(), opcode, 0, 0);
 	}
 }

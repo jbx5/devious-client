@@ -1,5 +1,6 @@
 package dev.hoot.mixins;
 
+import dev.hoot.api.events.AutomatedMenu;
 import net.runelite.api.GameObject;
 import net.runelite.api.MenuAction;
 import net.runelite.api.Point;
@@ -60,7 +61,7 @@ public abstract class HTileObjectMixin implements TileObject
 
 	@Override
 	@Inject
-	public int getActionId(int action)
+	public int getActionOpcode(int action)
 	{
 		switch (action)
 		{
@@ -83,25 +84,30 @@ public abstract class HTileObjectMixin implements TileObject
 	@Inject
 	public void interact(int action)
 	{
-		interact(getId(), getActionId(action));
+		interact(getId(), getActionOpcode(action));
 	}
 
 	@Inject
 	@Override
 	public void interact(int identifier, int opcode, int param0, int param1)
 	{
+		client.interact(getMenu(identifier, opcode, param0, param1));
+	}
+
+	@Inject
+	public Point getClickPoint()
+	{
 		Point screenCoords = getCanvasLocation();
 		int x = screenCoords != null ? screenCoords.getX() : -1;
 		int y = screenCoords != null ? screenCoords.getY() : -1;
-
-		client.interact(identifier, opcode, param0, param1, x, y, getTag());
+		return new Point(x, y);
 	}
 
 	@Inject
 	@Override
-	public void interact(int index, int menuAction)
+	public void interact(int index, int opcode)
 	{
-		interact(getId(), menuAction, menuPoint().getX(), menuPoint().getY());
+		interact(getId(), opcode, menuPoint().getX(), menuPoint().getY());
 	}
 
 	@Inject
@@ -109,5 +115,17 @@ public abstract class HTileObjectMixin implements TileObject
 	public long getTag()
 	{
 		return getHash();
+	}
+
+	@Inject
+	public AutomatedMenu getMenu(int actionIndex)
+	{
+		return getMenu(getId(), getActionOpcode(actionIndex));
+	}
+
+	@Inject
+	public AutomatedMenu getMenu(int actionIndex, int opcode)
+	{
+		return getMenu(getId(), opcode, menuPoint().getX(), menuPoint().getY());
 	}
 }

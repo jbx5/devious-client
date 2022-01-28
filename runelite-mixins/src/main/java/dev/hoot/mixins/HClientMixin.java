@@ -40,7 +40,7 @@ public abstract class HClientMixin implements RSClient
 	private static final int[] previousExp = new int[23];
 
 	@Inject
-	private static final AtomicReference<AutomatedInteraction> automatedMenu = new AtomicReference<>(null);
+	private static final AtomicReference<AutomatedMenu> automatedMenu = new AtomicReference<>(null);
 
 	@Inject
 	private static long lastMenuChange = -1;
@@ -48,15 +48,10 @@ public abstract class HClientMixin implements RSClient
 	@Inject
 	private static Instant lastInteractionTime = Instant.ofEpochMilli(0);
 
-	@Inject
 	@Override
-	public void interact(final int identifier, final int opcode, final int param0, final int param1,
-						 final int screenX, final int screenY, long entityTag, int selectedItemId)
+	public void interact(AutomatedMenu automatedMenu)
 	{
-		AutomatedInteraction event = new AutomatedInteraction("Automated", "", identifier, MenuAction.of(opcode),
-				param0, param1, screenX, screenY, entityTag, selectedItemId);
-
-		client.getCallbacks().post(event);
+		client.getCallbacks().post(automatedMenu);
 	}
 
 	@Inject
@@ -278,7 +273,7 @@ public abstract class HClientMixin implements RSClient
 		}
 
 		MenuOptionClicked menuOptionClicked = new MenuOptionClicked();
-		AutomatedInteraction replacement = automatedMenu.get();
+		AutomatedMenu replacement = automatedMenu.get();
 		if (replacement != null)
 		{
 			menuOptionClicked = replacement.toMenuOptionClicked();
@@ -329,7 +324,7 @@ public abstract class HClientMixin implements RSClient
 
 	@Inject
 	@Override
-	public void setPendingAutomation(AutomatedInteraction replacement)
+	public void setPendingAutomation(AutomatedMenu replacement)
 	{
 		if (lastMenuChange + 20 > System.currentTimeMillis() && replacement != null)
 		{
@@ -342,7 +337,7 @@ public abstract class HClientMixin implements RSClient
 
 	@Inject
 	@Override
-	public AutomatedInteraction getPendingAutomation()
+	public AutomatedMenu getPendingAutomation()
 	{
 		if (lastMenuChange + 100 < System.currentTimeMillis() && automatedMenu.get() != null)
 		{

@@ -1,5 +1,6 @@
 package dev.hoot.mixins;
 
+import dev.hoot.api.events.AutomatedMenu;
 import net.runelite.api.MenuAction;
 import net.runelite.api.Perspective;
 import net.runelite.api.Point;
@@ -34,7 +35,7 @@ public abstract class HPlayerMixin extends RSPlayerMixin implements RSPlayer
 
 	@Inject
 	@Override
-	public int getActionId(int action)
+	public int getActionOpcode(int action)
 	{
 		switch (action)
 		{
@@ -70,31 +71,30 @@ public abstract class HPlayerMixin extends RSPlayerMixin implements RSPlayer
 	@Inject
 	public void interact(int action)
 	{
-		interact(getIndex(), getActionId(action));
+		interact(getIndex(), getActionOpcode(action));
 	}
 
 	@Inject
 	@Override
-	public void interact(int index, int menuAction)
+	public void interact(int index, int opcode)
 	{
-		interact(getIndex(), menuAction, 0, 0);
+		interact(getIndex(), opcode, 0, 0);
 	}
 
 	@Inject
 	@Override
 	public void interact(int identifier, int opcode, int param0, int param1)
 	{
-		Point screenCoords = getScreenCoords();
-		int x = screenCoords != null ? screenCoords.getX() : -1;
-		int y = screenCoords != null ? screenCoords.getY() : -1;
-
-		client.interact(identifier, opcode, param0, param1, x, y, getTag());
+		client.interact(getMenu(identifier, opcode, param0, param1));
 	}
 
 	@Inject
-	private Point getScreenCoords()
+	public Point getClickPoint()
 	{
-		return Perspective.localToCanvas(client, getLocalLocation(), client.getPlane());
+		Point screenCoords = Perspective.localToCanvas(client, getLocalLocation(), client.getPlane());
+		int x = screenCoords != null ? screenCoords.getX() : -1;
+		int y = screenCoords != null ? screenCoords.getY() : -1;
+		return new Point(x, y);
 	}
 
 	@Inject
@@ -110,5 +110,17 @@ public abstract class HPlayerMixin extends RSPlayerMixin implements RSPlayer
 	public long getTag()
 	{
 		return client.calculateTag(0, 0, 0, false, getIndex());
+	}
+
+	@Inject
+	public AutomatedMenu getMenu(int actionIndex)
+	{
+		return getMenu(getIndex(), getActionOpcode(actionIndex));
+	}
+
+	@Inject
+	public AutomatedMenu getMenu(int actionIndex, int opcode)
+	{
+		return getMenu(actionIndex, opcode, 0, 0);
 	}
 }

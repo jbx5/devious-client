@@ -1,5 +1,7 @@
 package dev.hoot.api;
 
+import dev.hoot.api.events.AutomatedMenu;
+import net.runelite.api.Point;
 import net.runelite.api.util.Text;
 
 import java.util.Arrays;
@@ -10,9 +12,11 @@ import java.util.stream.Collectors;
 
 public interface Interactable
 {
+	Point getClickPoint();
+
 	String[] getRawActions();
 
-	int getActionId(int action);
+	int getActionOpcode(int action);
 
 	default List<String> getActions()
 	{
@@ -60,9 +64,9 @@ public interface Interactable
 
 	void interact(int index);
 
-	void interact(final int identifier, final int opcode, final int param0, final int param1);
+	void interact(int index, int opcode);
 
-	void interact(int index, int menuAction);
+	void interact(int identifier, int opcode, int param0, int param1);
 
 	default boolean hasAction(String... actions)
 	{
@@ -78,5 +82,27 @@ public interface Interactable
 		}
 
 		return Arrays.stream(actions).anyMatch(x -> getActions().contains(x));
+	}
+
+	default AutomatedMenu getMenu(String action)
+	{
+		return getMenu(getActions().indexOf(action));
+	}
+
+	AutomatedMenu getMenu(int actionIndex);
+
+	AutomatedMenu getMenu(int actionIndex, int opcode);
+
+	default AutomatedMenu getMenu(int identifier, int opcode, int param0, int param1)
+	{
+		if (this instanceof SceneEntity)
+		{
+			return new AutomatedMenu(identifier, opcode, param0, param1, ((SceneEntity) this).getTag());
+		}
+		else
+		{
+			Point clickPoint = getClickPoint();
+			return new AutomatedMenu(identifier, opcode, param0, param1, clickPoint.getX(), clickPoint.getY());
+		}
 	}
 }
