@@ -335,11 +335,13 @@ public class Item implements Interactable, Identifiable, EntityNameable
 	private Rectangle getBounds()
 	{
 		Widget widget = client.getWidget(getWidgetId());
-		if (widget == null) {
+		if (widget == null)
+		{
 			return new Rectangle(-1, -1, 0, 0);
 		}
 
-		if (getType() != Item.Type.EQUIPMENT) {
+		if (getType() != Item.Type.EQUIPMENT)
+		{
 			Widget slot = widget.getChild(getSlot());
 			if (slot != null) {
 				return slot.getBounds() != null ? slot.getBounds() : new Rectangle(-1, -1, 0, 0);
@@ -347,7 +349,8 @@ public class Item implements Interactable, Identifiable, EntityNameable
 		}
 
 		Rectangle bounds = widget.getBounds();
-		if (bounds != null) {
+		if (bounds != null)
+		{
 			Rectangle itemBounds = widget.getWidgetItem(getSlot()).getCanvasBounds();
 			return itemBounds != null ? itemBounds : new Rectangle(-1, -1, 0, 0);
 		}

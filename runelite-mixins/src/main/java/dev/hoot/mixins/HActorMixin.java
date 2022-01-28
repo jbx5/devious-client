@@ -27,9 +27,12 @@ public abstract class HActorMixin implements RSActor
     private Rectangle getBounds()
     {
         Shape shape = Perspective.getClickbox(client, getModel(), 0, getLocalLocation());
-        if (shape != null) {
+        if (shape != null)
+        {
             return shape.getBounds();
-        } else {
+        }
+        else
+        {
             return getCanvasTilePoly().getBounds();
         }
     }
