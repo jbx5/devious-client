@@ -1,6 +1,7 @@
 package dev.hoot.mixins;
 
 import dev.hoot.api.events.AutomatedMenu;
+import dev.hoot.api.util.Randomizer;
 import net.runelite.api.MenuAction;
 import net.runelite.api.Point;
 import net.runelite.api.mixins.FieldHook;
@@ -10,9 +11,6 @@ import net.runelite.api.mixins.Shadow;
 import net.runelite.api.widgets.WidgetType;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSWidget;
-
-import java.awt.*;
-import java.util.concurrent.ThreadLocalRandom;
 
 @Mixin(RSWidget.class)
 public abstract class HWidgetMixin implements RSWidget
@@ -88,21 +86,7 @@ public abstract class HWidgetMixin implements RSWidget
 	@Inject
 	public Point getClickPoint()
 	{
-		Rectangle bounds = getBounds();
-		if (bounds != null)
-		{
-			ThreadLocalRandom random = ThreadLocalRandom.current();
-			try
-			{
-				return new Point(random.nextInt(bounds.x, bounds.x + bounds.width), random.nextInt(bounds.y, bounds.y + bounds.height));
-			}
-			catch (IllegalArgumentException e)
-			{
-				return new Point(-1, -1);
-			}
-		}
-
-		return getCanvasLocation();
+		return Randomizer.getRandomPointIn(getBounds());
 	}
 
 	@Inject

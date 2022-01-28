@@ -2,8 +2,6 @@ package dev.hoot.mixins;
 
 import dev.hoot.api.events.AutomatedMenu;
 import net.runelite.api.MenuAction;
-import net.runelite.api.Perspective;
-import net.runelite.api.Point;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Shadow;
@@ -86,15 +84,6 @@ public abstract class HPlayerMixin extends RSPlayerMixin implements RSPlayer
 	public void interact(int identifier, int opcode, int param0, int param1)
 	{
 		client.interact(getMenu(identifier, opcode, param0, param1));
-	}
-
-	@Inject
-	public Point getClickPoint()
-	{
-		Point screenCoords = Perspective.localToCanvas(client, getLocalLocation(), client.getPlane());
-		int x = screenCoords != null ? screenCoords.getX() : -1;
-		int y = screenCoords != null ? screenCoords.getY() : -1;
-		return new Point(x, y);
 	}
 
 	@Inject
