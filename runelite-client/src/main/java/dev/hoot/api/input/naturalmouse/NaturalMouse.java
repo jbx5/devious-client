@@ -137,4 +137,30 @@ public class NaturalMouse
             client.getMouseHandler().sendMovement(x, y);
         }
     }
+
+    public void moveOffScreen()
+    {
+        // 1 in 4 chance of moving off screen
+        if (random.nextInt(4) == 0)
+        {
+            // Edges of the screen
+            int horizontal = random.nextBoolean() ? -1 : client.getCanvasWidth() + 1;
+            int vertical = random.nextBoolean() ? -1 : client.getCanvasHeight() + 1;
+
+            boolean exitHorizontally = random.nextBoolean();
+            if (exitHorizontally)
+            {
+                moveTo(horizontal, random.nextInt(0, client.getCanvasHeight() + 1));
+            }
+            else
+            {
+                moveTo(random.nextInt(0, client.getCanvasWidth() + 1), vertical);
+            }
+
+            if (random.nextInt(4) == 0)
+            {
+                client.setFocused(false);
+            }
+        }
+    }
 }

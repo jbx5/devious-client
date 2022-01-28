@@ -63,11 +63,13 @@ public abstract class LoopedPlugin extends Plugin
                     break;
                 }
 
-                if (interactionConfig.naturalMouse()
+                if (interactionConfig.mouseOffScreen()
+                        && interactionConfig.naturalMouse()
                         && client.getLastInteractionTime().plusMillis(Rand.nextInt(2_000, 10_000)).isBefore(Instant.now())
-                    && client.getMouseHandler().getCurrentX() != -1 && client.getMouseHandler().getCurrentY() != -1)
+                        && client.getMouseHandler().getCurrentX() != -1
+                        && client.getMouseHandler().getCurrentY() != -1)
                 {
-                    naturalMouse.moveTo(-1, -1);
+                    naturalMouse.moveOffScreen();
                 }
 
             } catch (Exception e) {

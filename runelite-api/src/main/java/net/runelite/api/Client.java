@@ -2545,11 +2545,6 @@ public interface Client extends GameEngine
 
 	void setMenuOpen(boolean open);
 
-	default void clearDefinitionCaches()
-	{
-		clearItemCache();
-	}
-
 	void setPendingAutomation(AutomatedInteraction entry);
 
 	AutomatedInteraction getPendingAutomation();

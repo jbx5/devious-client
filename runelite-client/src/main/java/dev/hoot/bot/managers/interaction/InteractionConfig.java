@@ -40,11 +40,23 @@ public interface InteractionConfig extends Config
 	}
 
 	@ConfigItem(
+			keyName = "mouseOffScreen",
+			name = "Mouse off screen when idle",
+			description = "Move the mouse off screen if idle",
+			section = interactionManager,
+			position = 3
+	)
+	default boolean mouseOffScreen()
+	{
+		return false;
+	}
+
+	@ConfigItem(
 			keyName = "interactType",
 			name = "Interact click type",
 			description = "Type of clicks to send to the server",
 			section = interactionManager,
-			position = 3
+			position = 4
 	)
 	default InteractType interactType()
 	{
@@ -56,7 +68,7 @@ public interface InteractionConfig extends Config
 			name = "Draw mouse events",
 			description = "Draws the sent mouse events on screen",
 			section = interactionManager,
-			position = 4
+			position = 5
 	)
 	default boolean drawMouse()
 	{

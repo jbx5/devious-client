@@ -1,6 +1,7 @@
 package net.runelite.client.plugins.interaction;
 
 import dev.hoot.bot.managers.interaction.InteractionConfig;
+import lombok.extern.slf4j.Slf4j;
 import net.runelite.client.input.MouseListener;
 import net.runelite.client.ui.overlay.Overlay;
 import net.runelite.client.ui.overlay.OverlayLayer;
@@ -14,6 +15,7 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 
 @Singleton
+@Slf4j
 public class InteractionOverlay extends Overlay implements MouseListener
 {
 	private final InteractionConfig config;
@@ -77,6 +79,7 @@ public class InteractionOverlay extends Overlay implements MouseListener
 	public MouseEvent mouseEntered(MouseEvent mouseEvent)
 	{
 		lastMove = mouseEvent.getPoint();
+		log.info("Mouse entered {}", mouseEvent.getPoint());
 		return mouseEvent;
 	}
 
@@ -84,6 +87,7 @@ public class InteractionOverlay extends Overlay implements MouseListener
 	public MouseEvent mouseExited(MouseEvent mouseEvent)
 	{
 		lastMove = mouseEvent.getPoint();
+		log.info("Mouse exited {}", mouseEvent.getPoint());
 		return mouseEvent;
 	}
 

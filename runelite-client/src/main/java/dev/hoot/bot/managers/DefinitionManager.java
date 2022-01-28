@@ -221,7 +221,7 @@ public class DefinitionManager
         {
             case LOGIN_SCREEN:
             case HOPPING:
-                client.clearDefinitionCaches();
+                client.clearItemCache();
                 break;
         }
     }
