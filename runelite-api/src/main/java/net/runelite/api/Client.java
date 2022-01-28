@@ -2417,22 +2417,21 @@ public interface Client extends GameEngine
 	 * Unethical
 	 */
 
-	default void interact(final int identifier, final int opcode, final int param0, final int param1)
+	default void interact(int identifier, int opcode, int param0, int param1)
 	{
 		interact(identifier, opcode, param0, param1, -1, -1);
 	}
 
-	default void interact(final int identifier, final int opcode, final int param0, final int param1,
+	default void interact(int identifier, int opcode, int param0, int param1,
 						  int clickX, int clickY)
 	{
 		interact(identifier, opcode, param0, param1, clickX, clickY, -1337);
 	}
 
-	default void interact(final int identifier, final int opcode, final int param0, final int param1, int clickX, int clickY,
+	default void interact(int identifier, int opcode, int param0, int param1, int clickX, int clickY,
 				  long entityTag)
 	{
-		interact(new AutomatedMenu(identifier, MenuAction.of(opcode),
-				param0, param1, clickY, clickY, entityTag));
+		interact(new AutomatedMenu(identifier, opcode, param0, param1, clickX, clickY, entityTag));
 	}
 
 	void interact(AutomatedMenu automatedMenu);

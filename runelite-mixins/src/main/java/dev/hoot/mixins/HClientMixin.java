@@ -48,7 +48,7 @@ public abstract class HClientMixin implements RSClient
 	@Inject
 	private static Instant lastInteractionTime = Instant.ofEpochMilli(0);
 
-	@Override
+	@Inject
 	public void interact(AutomatedMenu automatedMenu)
 	{
 		client.getCallbacks().post(automatedMenu);

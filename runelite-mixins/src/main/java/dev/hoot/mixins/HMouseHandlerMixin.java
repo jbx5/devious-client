@@ -17,7 +17,7 @@ public abstract class HMouseHandlerMixin implements RSMouseHandler
 
 	@Override
 	@Inject
-	public void sendClick(int x, int y, int button)
+	public synchronized void sendClick(int x, int y, int button)
 	{
 		long time = client.getCurrentTime();
 		Canvas canvas = client.getCanvas();
@@ -27,21 +27,21 @@ public abstract class HMouseHandlerMixin implements RSMouseHandler
 
 	@Override
 	@Inject
-	public void sendMovement(int x, int y)
+	public synchronized void sendMovement(int x, int y)
 	{
 		Canvas canvas = client.getCanvas();
-		if (!canvas.contains(getCurrentX(), getCurrentY()) && canvas.contains(x, y))
-		{
-			canvas.dispatchEvent(new MouseEvent(canvas, MouseEvent.MOUSE_ENTERED, client.getCurrentTime(), 0, x, y, 0, false));
-		}
+//		if (!canvas.contains(getCurrentX(), getCurrentY()) && canvas.contains(x, y))
+//		{
+//			canvas.dispatchEvent(new MouseEvent(canvas, MouseEvent.MOUSE_ENTERED, client.getCurrentTime(), 0, x, y, 0, false));
+//		}
 
 		canvas.dispatchEvent(new MouseEvent(canvas, MouseEvent.MOUSE_MOVED, client.getCurrentTime(), 0, x, y, 0, false));
 
-		int currX = getCurrentX();
-		int currY = getCurrentY();
-		if (!canvas.contains(currX, currY))
-		{
-			canvas.dispatchEvent(new MouseEvent(canvas, MouseEvent.MOUSE_EXITED, client.getCurrentTime(), 0, currX, currY, 0, false));
-		}
+//		int currX = getCurrentX();
+//		int currY = getCurrentY();
+//		if (!canvas.contains(currX, currY))
+//		{
+//			canvas.dispatchEvent(new MouseEvent(canvas, MouseEvent.MOUSE_EXITED, client.getCurrentTime(), 0, currX, currY, 0, false));
+//		}
 	}
 }
