@@ -79,7 +79,6 @@ public class InteractionOverlay extends Overlay implements MouseListener
 	public MouseEvent mouseEntered(MouseEvent mouseEvent)
 	{
 		lastMove = mouseEvent.getPoint();
-		log.info("Mouse entered {}", mouseEvent.getPoint());
 		return mouseEvent;
 	}
 
@@ -87,7 +86,6 @@ public class InteractionOverlay extends Overlay implements MouseListener
 	public MouseEvent mouseExited(MouseEvent mouseEvent)
 	{
 		lastMove = mouseEvent.getPoint();
-		log.info("Mouse exited {}", mouseEvent.getPoint());
 		return mouseEvent;
 	}
 
