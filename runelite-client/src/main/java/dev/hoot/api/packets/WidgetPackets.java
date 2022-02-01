@@ -2,9 +2,11 @@ package dev.hoot.api.packets;
 
 import dev.hoot.api.game.Game;
 import net.runelite.api.Client;
+import net.runelite.api.Item;
 import net.runelite.api.packets.ClientPacket;
 import net.runelite.api.packets.PacketBufferNode;
 import net.runelite.api.widgets.Widget;
+import net.runelite.api.widgets.WidgetInfo;
 
 import java.util.List;
 
@@ -59,6 +61,60 @@ public class WidgetPackets
 	public static void widgetTenthOption(Widget widget)
 	{
 		WidgetPackets.queueWidgetAction10Packet(widget.getId(), widget.getItemId(), widget.getIndex());
+	}
+
+	public static void widgetItemAction(WidgetInfo container, Item item, String action)
+	{
+		List<String> actions = item.getActions();
+		if (actions == null)
+		{
+			return;
+		}
+
+		int index = actions.indexOf(action);
+
+		widgetItemAction(container, item, index);
+	}
+
+	public static void widgetItemAction(WidgetInfo container, Item item, int index)
+	{
+		int widgetPackedId = container.getPackedId();
+		int itemId = item.getId();
+		int itemSlot = item.getSlot();
+
+		switch (index)
+		{
+			case 0:
+				WidgetPackets.queueWidgetAction1Packet(widgetPackedId, itemId, itemSlot);
+				break;
+			case 1:
+				WidgetPackets.queueWidgetAction2Packet(widgetPackedId, itemId, itemSlot);
+				break;
+			case 2:
+				WidgetPackets.queueWidgetAction3Packet(widgetPackedId, itemId, itemSlot);
+				break;
+			case 3:
+				WidgetPackets.queueWidgetAction4Packet(widgetPackedId, itemId, itemSlot);
+				break;
+			case 4:
+				WidgetPackets.queueWidgetAction5Packet(widgetPackedId, itemId, itemSlot);
+				break;
+			case 5:
+				WidgetPackets.queueWidgetAction6Packet(widgetPackedId, itemId, itemSlot);
+				break;
+			case 6:
+				WidgetPackets.queueWidgetAction7Packet(widgetPackedId, itemId, itemSlot);
+				break;
+			case 7:
+				WidgetPackets.queueWidgetAction8Packet(widgetPackedId, itemId, itemSlot);
+				break;
+			case 8:
+				WidgetPackets.queueWidgetAction9Packet(widgetPackedId, itemId, itemSlot);
+				break;
+			case 9:
+				WidgetPackets.queueWidgetAction10Packet(widgetPackedId, itemId, itemSlot);
+				break;
+		}
 	}
 
 	public static void widgetAction(Widget widget, String action)
