@@ -1,17 +1,14 @@
 package dev.hoot.api.items;
 
 import dev.hoot.api.game.Game;
-import dev.hoot.api.game.GameThread;
 import net.runelite.api.InventoryID;
 import net.runelite.api.Item;
 import net.runelite.api.ItemContainer;
 import net.runelite.api.widgets.WidgetInfo;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 public class Inventory extends Items
 {
@@ -30,8 +27,6 @@ public class Inventory extends Items
 		{
 			return items;
 		}
-
-		Inventory.cacheItems(container);
 
 		for (Item item : container.getItems())
 		{
@@ -159,25 +154,5 @@ public class Inventory extends Items
 	public static int getFreeSlots()
 	{
 		return 28 - getAll().size();
-	}
-
-	public static void cacheItems(ItemContainer container)
-	{
-		List<Item> uncached = Arrays.stream(container.getItems())
-				.filter(x -> !Game.getClient().isItemDefinitionCached(x.getId()))
-				.collect(Collectors.toList());
-
-		if (!uncached.isEmpty())
-		{
-			GameThread.invokeLater(() ->
-			{
-				for (Item item : uncached)
-				{
-					Game.getClient().getItemComposition(item.getId());
-				}
-
-				return null;
-			});
-		}
 	}
 }

@@ -3,11 +3,12 @@ package dev.hoot.bot.managers.interaction;
 import dev.hoot.api.MouseHandler;
 import dev.hoot.api.commons.Rand;
 import dev.hoot.api.commons.Time;
-import dev.hoot.api.events.AutomatedInteraction;
+import dev.hoot.api.events.AutomatedMenu;
 import dev.hoot.api.game.GameThread;
 import dev.hoot.api.input.naturalmouse.NaturalMouse;
 import dev.hoot.api.movement.Movement;
 import dev.hoot.api.widgets.DialogOption;
+import dev.hoot.api.widgets.Widgets;
 import dev.hoot.bot.managers.DefinitionManager;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
@@ -15,6 +16,8 @@ import net.runelite.api.Constants;
 import net.runelite.api.MenuAction;
 import net.runelite.api.events.DialogProcessed;
 import net.runelite.api.events.MenuOptionClicked;
+import net.runelite.api.widgets.Widget;
+import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
 
@@ -28,7 +31,9 @@ public class InteractionManager
 {
 	private static final int MINIMAP_WIDTH = 250;
 	private static final int MINIMAP_HEIGHT = 180;
-	private final NaturalMouse naturalMouse = new NaturalMouse();
+
+	@Inject
+	private NaturalMouse naturalMouse;
 
 	@Inject
 	private InteractionConfig config;
@@ -44,7 +49,7 @@ public class InteractionManager
 	}
 
 	@Subscribe
-	public void onInvokeMenuAction(AutomatedInteraction e)
+	public void onInvokeMenuAction(AutomatedMenu e)
 	{
 		String debug = "O=" + e.getOption()
 				+ " | T=" + e.getTarget()
@@ -110,6 +115,7 @@ public class InteractionManager
 		else
 		{
 			mouseHandler.sendMovement(clickPoint.x, clickPoint.y);
+			// We can't send button 1, because we're directly invoking the menuaction and button 1 would send a click.
 			mouseHandler.sendClick(clickPoint.x, clickPoint.y, 1337);
 			processAction(e, clickPoint.x, clickPoint.y);
 		}
@@ -151,13 +157,13 @@ public class InteractionManager
 		}
 	}
 
-	private void processAction(AutomatedInteraction entry, int x, int y)
+	private void processAction(AutomatedMenu entry, int x, int y)
 	{
 		GameThread.invoke(() -> client.invokeMenuAction(entry.getOption(), entry.getTarget(), entry.getIdentifier(),
 				entry.getOpcode().getId(), entry.getParam0(), entry.getParam1(), x, y));
 	}
 
-	private Point getClickPoint(AutomatedInteraction e)
+	private Point getClickPoint(AutomatedMenu e)
 	{
 		if (config.interactType() == InteractType.OFF_SCREEN)
 		{
@@ -202,6 +208,24 @@ public class InteractionManager
 
 	private Rectangle getMinimap()
 	{
+		Widget minimap = Widgets.get(WidgetInfo.FIXED_VIEWPORT_MINIMAP_DRAW_AREA);
+		if (Widgets.isVisible(minimap))
+		{
+			return minimap.getBounds();
+		}
+
+		Widget minimap1 = Widgets.get(WidgetInfo.RESIZABLE_MINIMAP_DRAW_AREA);
+		if (Widgets.isVisible(minimap1))
+		{
+			return minimap1.getBounds();
+		}
+
+		Widget minimap2 = Widgets.get(WidgetInfo.RESIZABLE_MINIMAP_STONES_DRAW_AREA);
+		if (Widgets.isVisible(minimap2))
+		{
+			return minimap2.getBounds();
+		}
+
 		Rectangle bounds = client.getCanvas().getBounds();
 		return new Rectangle(bounds.width - MINIMAP_WIDTH, 0, MINIMAP_WIDTH, MINIMAP_HEIGHT);
 	}

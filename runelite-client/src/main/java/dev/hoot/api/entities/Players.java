@@ -25,6 +25,11 @@ public class Players extends Entities<Player>
 				.collect(Collectors.toList());
 	}
 
+	public static List<Player> getAll()
+	{
+		return getAll(player -> true);
+	}
+
 	public static List<Player> getAll(Predicate<Player> filter)
 	{
 		return PLAYERS.all(filter);

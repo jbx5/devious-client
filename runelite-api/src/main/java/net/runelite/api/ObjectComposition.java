@@ -79,4 +79,6 @@ public interface ObjectComposition extends ParamHolder
 	 * with this object from.
 	 */
 	int getAccessBitMask();
+
+	int getTransformVarbit();
 }

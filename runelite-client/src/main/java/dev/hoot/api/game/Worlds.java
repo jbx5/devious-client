@@ -208,8 +208,7 @@ public class Worlds
 
 	public static boolean isHopperOpen()
 	{
-		Widget hopper = Widgets.get(WidgetInfo.WORLD_SWITCHER_LIST);
-		return hopper != null && !GameThread.invokeLater(hopper::isHidden);
+		return Widgets.isVisible(Widgets.get(WidgetInfo.WORLD_SWITCHER_LIST));
 	}
 
 	private static WorldType toApiWorldType(net.runelite.http.api.worlds.WorldType httpWorld)

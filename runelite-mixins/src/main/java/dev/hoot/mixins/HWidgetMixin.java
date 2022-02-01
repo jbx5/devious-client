@@ -1,7 +1,9 @@
 package dev.hoot.mixins;
 
+import dev.hoot.api.events.AutomatedMenu;
 import net.runelite.api.MenuAction;
 import net.runelite.api.Point;
+import net.runelite.api.mixins.FieldHook;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Shadow;
@@ -19,8 +21,11 @@ public abstract class HWidgetMixin implements RSWidget
 	private static RSClient client;
 
 	@Inject
+	private boolean visible = isHidden();
+
+	@Inject
 	@Override
-	public int getActionId(int actionIndex)
+	public int getActionOpcode(int actionIndex)
 	{
 		switch (getType())
 		{
@@ -43,31 +48,23 @@ public abstract class HWidgetMixin implements RSWidget
 
 	@Inject
 	@Override
-	public void interact(String action)
-	{
-		interact(getActions().indexOf(action));
-	}
-
-	@Inject
-	@Override
 	public void interact(int index)
 	{
-		interact(index, getActionId(index));
+		interact(index, getActionOpcode(index));
 	}
 
 	@Inject
 	@Override
-	public void interact(int index, int menuAction)
+	public void interact(int index, int opcode)
 	{
-		interact(getMenuIdentifier(index), menuAction, getIndex(), getId());
+		interact(getMenuIdentifier(index), opcode, getIndex(), getId());
 	}
 
 	@Inject
 	@Override
 	public void interact(int identifier, int opcode, int param0, int param1)
 	{
-		Point coords = getScreenCoords();
-		client.interact(identifier, opcode, param0, param1, coords.getX(), coords.getY());
+		client.interact(getMenu(identifier, opcode, param0, param1));
 	}
 
 	@Inject
@@ -89,7 +86,7 @@ public abstract class HWidgetMixin implements RSWidget
 	}
 
 	@Inject
-	private Point getScreenCoords()
+	public Point getClickPoint()
 	{
 		Rectangle bounds = getBounds();
 		if (bounds != null)
@@ -106,5 +103,36 @@ public abstract class HWidgetMixin implements RSWidget
 		}
 
 		return getCanvasLocation();
+	}
+
+	@Inject
+	public boolean isVisible()
+	{
+		return visible;
+	}
+
+	@Inject
+	public void setVisible(boolean visible)
+	{
+		this.visible = visible;
+	}
+
+	@Inject
+	@FieldHook("isHidden")
+	public void onHiddenChanged(int idx)
+	{
+		broadcastHidden(isHidden());
+	}
+
+	@Inject
+	public AutomatedMenu getMenu(int actionIndex)
+	{
+		return getMenu(actionIndex, getActionOpcode(actionIndex));
+	}
+
+	@Inject
+	public AutomatedMenu getMenu(int actionIndex, int opcode)
+	{
+		return getMenu(getMenuIdentifier(actionIndex), opcode, getIndex(), getId());
 	}
 }

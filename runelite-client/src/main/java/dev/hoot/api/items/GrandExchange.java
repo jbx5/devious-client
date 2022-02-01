@@ -35,7 +35,7 @@ public class GrandExchange
 	public static View getView()
 	{
 		Widget setupWindow = Widgets.get(WidgetInfo.GRAND_EXCHANGE_OFFER_CONTAINER);
-		if (setupWindow != null && !GameThread.invokeLater(setupWindow::isHidden))
+		if (Widgets.isVisible(setupWindow))
 		{
 			String text = setupWindow.getChild(18).getText();
 			if (text == null || text.isEmpty())
@@ -58,7 +58,7 @@ public class GrandExchange
 		}
 
 		Widget geWindow = Widgets.get(WidgetInfo.GRAND_EXCHANGE_WINDOW_CONTAINER);
-		if (geWindow != null && !GameThread.invokeLater(geWindow::isHidden))
+		if (Widgets.isVisible(geWindow))
 		{
 			return View.OFFERS;
 		}
@@ -198,7 +198,7 @@ public class GrandExchange
 			}
 
 			Widget buyButton = box.getChild(3);
-			if (buyButton == null || GameThread.invokeLater(buyButton::isHidden))
+			if (!Widgets.isVisible(buyButton))
 			{
 				continue;
 			}
@@ -231,13 +231,13 @@ public class GrandExchange
 			}
 
 			Widget abortBox = box.getChild(2);
-			if (abortBox == null || !abortBox.hasAction("Abort offer") || GameThread.invokeLater(abortBox::isHidden))
+			if (abortBox == null || !abortBox.hasAction("Abort offer") || !abortBox.isVisible())
 			{
 				continue;
 			}
 
 			Widget itemIdBox = box.getChild(18);
-			if (itemIdBox == null || GameThread.invokeLater(itemIdBox::isHidden))
+			if (itemIdBox == null || !itemIdBox.isVisible())
 			{
 				continue;
 			}
@@ -285,8 +285,7 @@ public class GrandExchange
 
 	public static boolean canCollect()
 	{
-		Widget collect = COLLECT_BUTTON.get();
-		return collect != null && !GameThread.invokeLater(collect::isHidden);
+		return Widgets.isVisible(COLLECT_BUTTON.get());
 	}
 
 	public static void collect()
@@ -297,7 +296,7 @@ public class GrandExchange
 	public static void collect(boolean toBank)
 	{
 		Widget collect = COLLECT_BUTTON.get();
-		if (collect != null && !GameThread.invokeLater(collect::isHidden))
+		if (Widgets.isVisible(collect))
 		{
 			collect.interact(toBank ? "Collect to bank" : "Collect to inventory");
 		}
@@ -306,7 +305,7 @@ public class GrandExchange
 	public static void confirm()
 	{
 		Widget confirm = CONFIRM_BUTTON.get();
-		if (confirm != null && !GameThread.invokeLater(confirm::isHidden))
+		if (Widgets.isVisible(confirm))
 		{
 			confirm.interact("Confirm");
 		}

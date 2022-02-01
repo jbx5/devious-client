@@ -22,7 +22,7 @@ import java.util.function.Predicate;
 
 public class Tiles
 {
-	public static List<Tile> getTiles(Predicate<Tile> filter)
+	public static List<Tile> getAll(Predicate<Tile> filter)
 	{
 		List<Tile> out = new ArrayList<>();
 
@@ -41,9 +41,9 @@ public class Tiles
 		return out;
 	}
 
-	public static List<Tile> getTiles()
+	public static List<Tile> getAll()
 	{
-		return getTiles(x -> true);
+		return getAll(x -> true);
 	}
 
 	public static Tile getAt(WorldPoint worldPoint)

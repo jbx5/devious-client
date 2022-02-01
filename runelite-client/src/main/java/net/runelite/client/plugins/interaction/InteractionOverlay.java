@@ -1,6 +1,7 @@
 package net.runelite.client.plugins.interaction;
 
 import dev.hoot.bot.managers.interaction.InteractionConfig;
+import lombok.extern.slf4j.Slf4j;
 import net.runelite.client.input.MouseListener;
 import net.runelite.client.ui.overlay.Overlay;
 import net.runelite.client.ui.overlay.OverlayLayer;
@@ -14,6 +15,7 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 
 @Singleton
+@Slf4j
 public class InteractionOverlay extends Overlay implements MouseListener
 {
 	private final InteractionConfig config;

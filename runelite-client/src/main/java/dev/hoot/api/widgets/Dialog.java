@@ -17,7 +17,7 @@ import java.util.function.Supplier;
 public class Dialog
 {
 
-	private static final Supplier<Widget> DIALOG = () -> Widgets.get(162, 557);
+	private static final Supplier<Widget> SCROLL_BAR = () -> Widgets.get(162, 557);
 	private static final Supplier<Widget> WEIRD_CONT = () -> Widgets.get(193, 3);
 	private static final Supplier<Widget> WEIRD_CONT_2 = () -> Widgets.get(633, 0);
 	private static final Supplier<Widget> NPC_CONT = () -> Widgets.get(WidgetID.DIALOG_NPC_GROUP_ID, 4);
@@ -34,92 +34,74 @@ public class Dialog
 
 	public static boolean isOpen()
 	{
-		Widget widget = DIALOG.get();
-		return widget == null || GameThread.invokeLater(widget::isHidden);
+		return SCROLL_BAR.get() == null || !SCROLL_BAR.get().isVisible();
 	}
 
 	public static boolean canContinue()
 	{
-		return GameThread.invokeLater(() -> canContinueNPC() || canContinuePlayer() || canContinueDeath()
-				|| canWeirdContinue() || canWeirderContinue() || canWeirdestContinue() || canContinueTutIsland() || canContinueTutIsland2()
-				|| canContinueTutIsland3() || canLevelUpContinue());
+		return canContinueNPC() || canContinuePlayer() || canContinueDeath()
+				|| canSprite2Continue() || canContinue1() || canContinue2()
+				|| canContinueTutIsland() || canContinueTutIsland2()
+				|| canContinueTutIsland3() || canLevelUpContinue();
 	}
 
 	public static boolean canLevelUpContinue()
 	{
-		Widget widget = Widgets.get(WidgetInfo.LEVEL_UP_LEVEL);
-		return widget != null && GameThread.invokeLater(() -> !widget.isHidden());
+		return Widgets.isVisible(Widgets.get(WidgetInfo.LEVEL_UP_LEVEL));
 	}
 
-	public static boolean canWeirdContinue()
+	public static boolean canSprite2Continue()
 	{
-		Widget widget = Widgets.get(WidgetInfo.DIALOG2_SPRITE_CONTINUE);
-		return widget != null && GameThread.invokeLater(() -> !widget.isHidden());
+		return Widgets.isVisible(Widgets.get(WidgetInfo.DIALOG2_SPRITE_CONTINUE));
 	}
 
-	public static boolean canWeirderContinue()
+	public static boolean canContinue1()
 	{
-		Widget widget = WEIRD_CONT.get();
-		return widget != null && GameThread.invokeLater(() -> !widget.isHidden());
+		return Widgets.isVisible(WEIRD_CONT.get());
 	}
 
-	public static boolean canWeirdestContinue()
+	public static boolean canContinue2()
 	{
-		Widget widget = WEIRD_CONT_2.get();
-		return widget != null && GameThread.invokeLater(() -> !widget.isHidden());
+		return Widgets.isVisible(WEIRD_CONT_2.get());
 	}
 
 	public static boolean canContinueNPC()
 	{
-		Widget widget = NPC_CONT.get();
-		return widget != null && GameThread.invokeLater(() -> !widget.isHidden());
+		return Widgets.isVisible(NPC_CONT.get());
 	}
 
 	public static boolean canContinuePlayer()
 	{
-		Widget widget = PLAYER_CONT.get();
-		return widget != null && GameThread.invokeLater(() -> !widget.isHidden());
+		return Widgets.isVisible(PLAYER_CONT.get());
 	}
 
 	public static boolean canContinueDeath()
 	{
 		Widget widget = DEATH_CONT.get();
-		return widget != null && GameThread.invokeLater(() ->
-				!widget.isHidden()
-						&& widget.getChild(2) != null
-						&& !widget.getChild(2).isHidden()
-		);
+		return widget != null && widget.isVisible() && widget.getChild(2) != null && !widget.getChild(2).isVisible();
 	}
 
 	public static boolean canContinueTutIsland()
 	{
-		Widget widget = TUT_CONT.get();
-		return widget != null && GameThread.invokeLater(() -> !widget.isHidden());
+		return Widgets.isVisible(TUT_CONT.get());
 	}
 
 	public static boolean canContinueTutIsland2()
 	{
 		Widget widget = Widgets.get(WidgetInfo.DIALOG_SPRITE);
 		return widget != null
-				&& GameThread.invokeLater(() ->
-				!widget.isHidden()
-						&& widget.getChild(2) != null
-						&& !widget.getChild(2).isHidden()
-		);
+				&& widget.isVisible() && widget.getChild(2) != null && widget.getChild(2).isVisible();
 	}
 
 	public static boolean canContinueTutIsland3()
 	{
 		Widget widget = Widgets.get(WidgetInfo.CHATBOX_FULL_INPUT);
-		return widget != null
-				&& GameThread.invokeLater(() -> !widget.isHidden())
-				&& widget.getText().toLowerCase().contains("continue");
+		return widget != null && widget.isVisible() && widget.getText().toLowerCase().contains("continue");
 	}
 
 	public static boolean isEnterInputOpen()
 	{
-		Widget widget = Widgets.get(WidgetInfo.CHATBOX_FULL_INPUT);
-		return widget != null && !GameThread.invokeLater(widget::isHidden) && !GrandExchange.isSearchingItem();
+		return Widgets.isVisible(Widgets.get(WidgetInfo.CHATBOX_FULL_INPUT)) && !GrandExchange.isSearchingItem();
 	}
 
 	public static void enterInput(String input)
@@ -183,7 +165,7 @@ public class Dialog
 	public static List<Widget> getOptions()
 	{
 		Widget widget = OPTIONS.get();
-		if (widget == null || GameThread.invokeLater(widget::isHidden))
+		if (!Widgets.isVisible(widget))
 		{
 			return Collections.emptyList();
 		}
@@ -209,7 +191,7 @@ public class Dialog
 		return out;
 	}
 
-	public static void quickProcess(DialogOption... dialogOption)
+	public static void invokeDialog(DialogOption... dialogOption)
 	{
 		GameThread.invokeLater(() ->
 		{

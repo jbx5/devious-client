@@ -15,6 +15,7 @@ import net.runelite.api.widgets.Widget;
 import net.runelite.rs.api.*;
 
 import javax.annotation.Nonnull;
+import java.time.Instant;
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -30,8 +31,6 @@ public abstract class HClientMixin implements RSClient
 	private static RSRuneLiteMenuEntry[] rl$menuEntries;
 
 	@Inject
-	public static HashMap<Integer, RSObjectComposition> objDefCache = new HashMap<>();
-	@Inject
 	public static HashMap<Integer, RSItemComposition> itemDefCache = new HashMap<>();
 
 	@Inject
@@ -41,20 +40,18 @@ public abstract class HClientMixin implements RSClient
 	private static final int[] previousExp = new int[23];
 
 	@Inject
-	private static final AtomicReference<AutomatedInteraction> automatedMenu = new AtomicReference<>(null);
+	private static final AtomicReference<AutomatedMenu> automatedMenu = new AtomicReference<>(null);
 
 	@Inject
 	private static long lastMenuChange = -1;
 
 	@Inject
-	@Override
-	public void interact(final int identifier, final int opcode, final int param0, final int param1,
-						 final int screenX, final int screenY, long entityTag, int selectedItemId)
-	{
-		AutomatedInteraction event = new AutomatedInteraction("Automated", "", identifier, MenuAction.of(opcode),
-				param0, param1, screenX, screenY, entityTag, selectedItemId);
+	private static Instant lastInteractionTime = Instant.ofEpochMilli(0);
 
-		client.getCallbacks().post(event);
+	@Inject
+	public void interact(AutomatedMenu automatedMenu)
+	{
+		client.getCallbacks().post(automatedMenu);
 	}
 
 	@Inject
@@ -150,9 +147,9 @@ public abstract class HClientMixin implements RSClient
 
 	@Inject
 	@Override
-	public void uncacheObject(int id)
+	public void cacheItem(int id, ItemComposition item)
 	{
-		objDefCache.remove(id);
+		itemDefCache.put(id, (RSItemComposition) item);
 	}
 
 	@Inject
@@ -160,13 +157,6 @@ public abstract class HClientMixin implements RSClient
 	public void clearItemCache()
 	{
 		itemDefCache.clear();
-	}
-
-	@Inject
-	@Override
-	public void clearObjectCache()
-	{
-		objDefCache.clear();
 	}
 
 	@Inject
@@ -181,21 +171,6 @@ public abstract class HClientMixin implements RSClient
 		}
 
 		client.getCallbacks().post(option);
-	}
-
-	@Inject
-	@Override
-	public ObjectComposition getObjectDefinition(int objectId)
-	{
-		if (objDefCache.containsKey(objectId))
-		{
-			return objDefCache.get(objectId);
-		}
-
-		assert this.isClientThread() : "getObjectDefinition must be called on client thread";
-		RSObjectComposition objectComposition = getRSObjectComposition(objectId);
-		objDefCache.put(objectId, objectComposition);
-		return objectComposition;
 	}
 
 	@Inject
@@ -297,15 +272,15 @@ public abstract class HClientMixin implements RSClient
 			opcode -= 2000;
 		}
 
-		MenuOptionClicked menuOptionClicked;
-		AutomatedInteraction replacement = automatedMenu.get();
+		MenuOptionClicked menuOptionClicked = new MenuOptionClicked();
+		AutomatedMenu replacement = automatedMenu.get();
 		if (replacement != null)
 		{
 			menuOptionClicked = replacement.toMenuOptionClicked();
+			lastInteractionTime = Instant.now();
 		}
 		else
 		{
-			menuOptionClicked = new MenuOptionClicked();
 			menuOptionClicked.setParam0(param0);
 			menuOptionClicked.setMenuOption(option);
 			menuOptionClicked.setMenuTarget(target);
@@ -349,7 +324,7 @@ public abstract class HClientMixin implements RSClient
 
 	@Inject
 	@Override
-	public void setPendingAutomation(AutomatedInteraction replacement)
+	public void setPendingAutomation(AutomatedMenu replacement)
 	{
 		if (lastMenuChange + 20 > System.currentTimeMillis() && replacement != null)
 		{
@@ -362,7 +337,7 @@ public abstract class HClientMixin implements RSClient
 
 	@Inject
 	@Override
-	public AutomatedInteraction getPendingAutomation()
+	public AutomatedMenu getPendingAutomation()
 	{
 		if (lastMenuChange + 100 < System.currentTimeMillis() && automatedMenu.get() != null)
 		{
@@ -370,5 +345,11 @@ public abstract class HClientMixin implements RSClient
 		}
 
 		return automatedMenu.get();
+	}
+
+	@Inject
+	public Instant getLastInteractionTime()
+	{
+		return lastInteractionTime;
 	}
 }

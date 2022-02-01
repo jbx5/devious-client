@@ -27,6 +27,7 @@ package net.runelite.api;
 import java.awt.Canvas;
 import java.awt.Dimension;
 import java.math.BigInteger;
+import java.time.Instant;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.Map;
@@ -35,7 +36,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import dev.hoot.api.MouseHandler;
-import dev.hoot.api.events.AutomatedInteraction;
+import dev.hoot.api.events.AutomatedMenu;
 import net.runelite.api.packets.ClientPacket;
 import net.runelite.api.packets.IsaacCipher;
 import net.runelite.api.packets.PacketBufferNode;
@@ -2416,25 +2417,24 @@ public interface Client extends GameEngine
 	 * Unethical
 	 */
 
-	default void interact(final int identifier, final int opcode, final int param0, final int param1)
+	default void interact(int identifier, int opcode, int param0, int param1)
 	{
 		interact(identifier, opcode, param0, param1, -1, -1);
 	}
 
-	default void interact(final int identifier, final int opcode, final int param0, final int param1,
+	default void interact(int identifier, int opcode, int param0, int param1,
 						  int clickX, int clickY)
 	{
 		interact(identifier, opcode, param0, param1, clickX, clickY, -1337);
 	}
 
-	void interact(final int identifier, final int opcode, final int param0, final int param1, int clickX, int clickY,
-				  long entityTag, int selectedItemId);
-
-	default void interact(final int identifier, final int opcode, final int param0, final int param1, int clickX, int clickY,
+	default void interact(int identifier, int opcode, int param0, int param1, int clickX, int clickY,
 				  long entityTag)
 	{
-		interact(identifier, opcode, param0, param1, clickX, clickY, entityTag, -1);
+		interact(new AutomatedMenu(identifier, opcode, param0, param1, clickX, clickY, entityTag));
 	}
+
+	void interact(AutomatedMenu automatedMenu);
 
 	int getMouseLastPressedX();
 
@@ -2486,11 +2486,9 @@ public interface Client extends GameEngine
 
 	void uncacheItem(int id);
 
-	void uncacheObject(int id);
+	void cacheItem(int id, ItemComposition item);
 
 	void clearItemCache();
-
-	void clearObjectCache();
 
 	void processDialog(int widgetUid, int menuIndex);
 
@@ -2546,15 +2544,11 @@ public interface Client extends GameEngine
 
 	void setMenuOpen(boolean open);
 
-	default void clearDefinitionCaches()
-	{
-		clearItemCache();
-		clearObjectCache();
-	}
+	void setPendingAutomation(AutomatedMenu entry);
 
-	void setPendingAutomation(AutomatedInteraction entry);
-
-	AutomatedInteraction getPendingAutomation();
+	AutomatedMenu getPendingAutomation();
 
 	VarbitComposition getVarbitComposition(int varbitId);
+
+	Instant getLastInteractionTime();
 }

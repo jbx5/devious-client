@@ -57,7 +57,7 @@ public class Game
 	public static int getWildyLevel()
 	{
 		Widget wildyLevelWidget = Widgets.get(WidgetInfo.PVP_WILDERNESS_LEVEL);
-		if (wildyLevelWidget == null || GameThread.invokeLater(wildyLevelWidget::isHidden))
+		if (!Widgets.isVisible(wildyLevelWidget))
 		{
 			return 0;
 		}

@@ -6,6 +6,7 @@ import net.runelite.api.mixins.Shadow;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSMouseHandler;
 
+import java.awt.Canvas;
 import java.awt.event.MouseEvent;
 
 @Mixin(RSMouseHandler.class)
@@ -16,69 +17,31 @@ public abstract class HMouseHandlerMixin implements RSMouseHandler
 
 	@Override
 	@Inject
-	public void sendClick(int x, int y, int button)
+	public synchronized void sendClick(int x, int y, int button)
 	{
-		client.setFocused(true);
-		setIdleCycles(0);
-		setLastPressedX(x = correctX(x));
-		setLastPressedY(y = correctY(y));
-		setLastPressedMillis(client.getCurrentTime());
-		setLastButton(button);
-
-		if (getLastButton() != 0)
-		{
-			setCurrentButton(button);
-		}
-
-		int click = button == 1337 ? 1 : button;
-		long currentTime = client.getCurrentTime();
-		mousePressed(new MouseEvent(client.getCanvas(), MouseEvent.MOUSE_PRESSED, currentTime, 0, x, y, 1, false, click));
-		mouseReleased(new MouseEvent(client.getCanvas(), MouseEvent.MOUSE_RELEASED, currentTime, 0, x, y, 1, false, click));
-		mouseClicked(new MouseEvent(client.getCanvas(), MouseEvent.MOUSE_CLICKED, currentTime, 0, x, y, 1, false, click));
+		long time = client.getCurrentTime();
+		Canvas canvas = client.getCanvas();
+		canvas.dispatchEvent(new MouseEvent(canvas, MouseEvent.MOUSE_PRESSED, time, 0, x, y, 1, false, button));
+		canvas.dispatchEvent(new MouseEvent(canvas, MouseEvent.MOUSE_RELEASED, time, 0, x, y, 1, false, button));
 	}
 
 	@Override
 	@Inject
-	public void sendMovement(int x, int y)
+	public synchronized void sendMovement(int x, int y)
 	{
-		client.setFocused(true);
-		setIdleCycles(0);
-		setCurrentX(x = correctX(x));
-		setCurrentY(y = correctY(y));
-		setCurrentMillis(System.currentTimeMillis());
+		Canvas canvas = client.getCanvas();
+//		if (!canvas.contains(getCurrentX(), getCurrentY()) && canvas.contains(x, y))
+//		{
+//			canvas.dispatchEvent(new MouseEvent(canvas, MouseEvent.MOUSE_ENTERED, client.getCurrentTime(), 0, x, y, 0, false));
+//		}
 
-		mouseMoved(new MouseEvent(client.getCanvas(), MouseEvent.MOUSE_MOVED, client.getCurrentTime(), 0, x, y, 0, false));
-	}
+		canvas.dispatchEvent(new MouseEvent(canvas, MouseEvent.MOUSE_MOVED, client.getCurrentTime(), 0, x, y, 0, false));
 
-	@Inject
-	public int correctX(int x)
-	{
-		if (x < 0)
-		{
-			return 0;
-		}
-
-		if (x > client.getCanvasWidth())
-		{
-			return client.getCanvasWidth();
-		}
-
-		return x;
-	}
-
-	@Inject
-	public int correctY(int y)
-	{
-		if (y < 0)
-		{
-			return 0;
-		}
-
-		if (y > client.getCanvasHeight())
-		{
-			return client.getCanvasHeight();
-		}
-
-		return y;
+//		int currX = getCurrentX();
+//		int currY = getCurrentY();
+//		if (!canvas.contains(currX, currY))
+//		{
+//			canvas.dispatchEvent(new MouseEvent(canvas, MouseEvent.MOUSE_EXITED, client.getCurrentTime(), 0, currX, currY, 0, false));
+//		}
 	}
 }

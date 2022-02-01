@@ -87,8 +87,8 @@ public abstract class Entities<T extends SceneEntity>
 				case NPC_FOURTH_OPTION:
 				case NPC_FIFTH_OPTION:
 				{
-					int id = menuEntry.getIdentifier();
-					out.add(Game.getClient().getCachedNPCs()[id]);
+					int index = menuEntry.getIdentifier();
+					out.add(Game.getClient().getCachedNPCs()[index]);
 					break;
 				}
 

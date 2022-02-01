@@ -1,14 +1,12 @@
 package dev.hoot.api.entities;
 
 import dev.hoot.api.game.Game;
-import dev.hoot.api.game.GameThread;
 import net.runelite.api.NPC;
 import net.runelite.api.coords.WorldPoint;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 public class NPCs extends Entities<NPC>
 {
@@ -32,6 +30,11 @@ public class NPCs extends Entities<NPC>
 		}
 
 		return out;
+	}
+
+	public static List<NPC> getAll()
+	{
+		return getAll(x -> true);
 	}
 
 	public static List<NPC> getAll(Predicate<NPC> filter)

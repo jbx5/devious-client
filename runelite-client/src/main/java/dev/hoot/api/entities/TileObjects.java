@@ -1,7 +1,6 @@
 package dev.hoot.api.entities;
 
 import dev.hoot.api.game.Game;
-import dev.hoot.api.game.GameThread;
 import dev.hoot.api.scene.Tiles;
 import net.runelite.api.DecorativeObject;
 import net.runelite.api.GameObject;
@@ -25,6 +24,11 @@ public class TileObjects extends TileEntities<TileObject>
 	}
 
 	private static final TileObjects TILE_OBJECTS = new TileObjects();
+
+	public static List<TileObject> getAll()
+	{
+		return getAll(x -> true);
+	}
 
 	public static List<TileObject> getAll(Predicate<TileObject> filter)
 	{
@@ -320,25 +324,9 @@ public class TileObjects extends TileEntities<TileObject>
 	protected List<TileObject> all(Predicate<? super TileObject> filter)
 	{
 		List<TileObject> out = new ArrayList<>();
-		for (Tile tile : Tiles.getTiles())
+		for (Tile tile : Tiles.getAll())
 		{
 			out.addAll(getTileObjects(tile));
-		}
-
-		List<TileObject> notCached = out.stream()
-				.filter(x -> !x.isDefinitionCached())
-				.collect(Collectors.toList());
-		if (!notCached.isEmpty())
-		{
-			GameThread.invokeLater(() ->
-			{
-				for (TileObject tileObject : notCached)
-				{
-					tileObject.getDefinition();
-				}
-
-				return true;
-			});
 		}
 
 		return out.stream()
@@ -349,22 +337,8 @@ public class TileObjects extends TileEntities<TileObject>
 	@Override
 	protected List<TileObject> at(Tile tile, Predicate<? super TileObject> pred)
 	{
-		Predicate<TileObject> filter = x ->
-		{
-			if (!x.isDefinitionCached())
-			{
-				return GameThread.invokeLater(() ->
-				{
-					x.getCachedDefinition(); // cache it
-					return pred.test(x);
-				});
-			}
-
-			return pred.test(x);
-		};
-
 		return getTileObjects(tile).stream()
-				.filter(filter)
+				.filter(pred)
 				.collect(Collectors.toList());
 	}
 }

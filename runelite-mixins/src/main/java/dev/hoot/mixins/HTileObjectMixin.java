@@ -1,5 +1,6 @@
 package dev.hoot.mixins;
 
+import dev.hoot.api.events.AutomatedMenu;
 import net.runelite.api.GameObject;
 import net.runelite.api.MenuAction;
 import net.runelite.api.Point;
@@ -17,8 +18,6 @@ import net.runelite.rs.api.RSItemLayer;
 import net.runelite.rs.api.RSObjectComposition;
 import net.runelite.rs.api.RSWallDecoration;
 
-import java.util.HashMap;
-
 @Mixins({
 		@Mixin(RSWallDecoration.class),
 		@Mixin(RSGameObject.class),
@@ -30,12 +29,6 @@ public abstract class HTileObjectMixin implements TileObject
 {
 	@Shadow("client")
 	private static RSClient client;
-
-	@javax.inject.Inject
-	private Thread clientThread;
-
-	@Shadow("objDefCache")
-	private static HashMap<Integer, RSObjectComposition> objDefCache;
 
 	@Override
 	@Inject
@@ -54,62 +47,21 @@ public abstract class HTileObjectMixin implements TileObject
 	@Override
 	public String getName()
 	{
-		RSObjectComposition def = getCachedDefinition();
-		return def == null ? null : Text.removeTags(Text.sanitize(def.getName()));
+		RSObjectComposition def = (RSObjectComposition) getTransformedComposition();
+		return def == null ? "null" : Text.removeTags(Text.sanitize(def.getName()));
 	}
 
 	@Inject
 	@Override
 	public String[] getRawActions()
 	{
-		RSObjectComposition def = getCachedDefinition();
+		RSObjectComposition def = (RSObjectComposition) getTransformedComposition();
 		return def == null ? null : def.getActions();
 	}
 
-	@Inject
-	@Override
-	public RSObjectComposition getCachedDefinition()
-	{
-		if (objDefCache.containsKey(getId()))
-		{
-			return objDefCache.get(getId());
-		}
-
-		return getDefinition();
-	}
-
-	@Inject
-	@Override
-	public boolean isDefinitionCached()
-	{
-		return objDefCache.containsKey(getId());
-	}
-
-	@Inject
-	@Override
-	public RSObjectComposition getDefinition()
-	{
-		assert client.isClientThread() : "TileObject.getDefinition must be called on client thread " + getId();
-		RSObjectComposition def = client.getRSObjectComposition(getId());
-		if (def != null && def.getImpostorIds() != null)
-		{
-			def = def.getImpostor();
-		}
-
-		objDefCache.put(getId(), def);
-		return def;
-	}
-
 	@Override
 	@Inject
-	public void interact(String action)
-	{
-		interact(getActions().indexOf(action));
-	}
-
-	@Override
-	@Inject
-	public int getActionId(int action)
+	public int getActionOpcode(int action)
 	{
 		switch (action)
 		{
@@ -132,25 +84,30 @@ public abstract class HTileObjectMixin implements TileObject
 	@Inject
 	public void interact(int action)
 	{
-		interact(getId(), getActionId(action));
+		interact(getId(), getActionOpcode(action));
 	}
 
 	@Inject
 	@Override
 	public void interact(int identifier, int opcode, int param0, int param1)
 	{
+		client.interact(getMenu(identifier, opcode, param0, param1));
+	}
+
+	@Inject
+	public Point getClickPoint()
+	{
 		Point screenCoords = getCanvasLocation();
 		int x = screenCoords != null ? screenCoords.getX() : -1;
 		int y = screenCoords != null ? screenCoords.getY() : -1;
-
-		client.interact(identifier, opcode, param0, param1, x, y, getTag());
+		return new Point(x, y);
 	}
 
 	@Inject
 	@Override
-	public void interact(int index, int menuAction)
+	public void interact(int index, int opcode)
 	{
-		interact(getId(), menuAction, menuPoint().getX(), menuPoint().getY());
+		interact(getId(), opcode, menuPoint().getX(), menuPoint().getY());
 	}
 
 	@Inject
@@ -158,5 +115,17 @@ public abstract class HTileObjectMixin implements TileObject
 	public long getTag()
 	{
 		return getHash();
+	}
+
+	@Inject
+	public AutomatedMenu getMenu(int actionIndex)
+	{
+		return getMenu(getId(), getActionOpcode(actionIndex));
+	}
+
+	@Inject
+	public AutomatedMenu getMenu(int actionIndex, int opcode)
+	{
+		return getMenu(getId(), opcode, menuPoint().getX(), menuPoint().getY());
 	}
 }

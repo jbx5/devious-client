@@ -104,7 +104,7 @@ public class WorldWalkerPlugin extends Plugin
                 .setTarget(event.getTarget())
                 .setType(MenuAction.RUNELITE)
                 .onClick(e -> {
-                    mapPoint = CoordUtils.calculateMapPoint(Game.getClient().getMouseCanvasPosition());
+                    mapPoint = CoordUtils.worldMapToWorldPoint(Game.getClient().getMouseCanvasPosition());
                     log.debug("Walking to {}", mapPoint);
                 });
     }
