@@ -1,5 +1,6 @@
 package dev.hoot.api.items;
 
+import dev.hoot.api.commons.Predicates;
 import dev.hoot.api.commons.Time;
 import dev.hoot.api.game.Game;
 import dev.hoot.api.game.Vars;
@@ -363,6 +364,31 @@ public class Bank extends Items
 		}
 
 		return items;
+	}
+
+	public static List<Item> getInventory(int... id)
+	{
+		return getInventory(Predicates.ids(id));
+	}
+
+	public static List<Item> getInventory(String... name)
+	{
+		return getInventory(Predicates.names(name));
+	}
+
+	public static Item getInventoryFirst(Predicate<Item> filter)
+	{
+		return getInventory(filter).stream().findFirst().orElse(null);
+	}
+
+	public static Item getInventoryFirst(int... id)
+	{
+		return getInventoryFirst(Predicates.ids(id));
+	}
+
+	public static Item getInventoryFirst(String... name)
+	{
+		return getInventoryFirst(Predicates.names(name));
 	}
 
 	public static List<Item> getAll(Predicate<Item> filter)
