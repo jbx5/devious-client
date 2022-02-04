@@ -44,14 +44,14 @@ public class Movement
 	private static final int STAMINA_VARBIT = 25;
 	private static final int RUN_VARP = 173;
 
-	public static final LoadingCache<WorldArea, WorldPoint> WORLD_AREA_POINT_CACHE = CacheBuilder.newBuilder()
+	public static final LoadingCache<List<WorldPoint>, WorldPoint> WORLD_AREA_POINT_CACHE = CacheBuilder.newBuilder()
 			.expireAfterWrite(5, TimeUnit.MINUTES)
 			.build(new CacheLoader<>()
 			{
 				@Override
-				public WorldPoint load(@NotNull WorldArea key)
+				public WorldPoint load(@NotNull List<WorldPoint> key)
 				{
-					List<WorldPoint> wpList = key.toWorldPointList();
+					List<WorldPoint> wpList = new ArrayList<>(key);
 					CollisionMap cm = Game.getGlobalCollisionMap();
 					wpList.removeIf(cm::fullBlock);
 					return wpList.get(Rand.nextInt(0, wpList.size() - 1));
@@ -170,7 +170,7 @@ public class Movement
 	{
 		try
 		{
-			WorldPoint wp = WORLD_AREA_POINT_CACHE.get(worldArea);
+			WorldPoint wp = WORLD_AREA_POINT_CACHE.get(worldArea.toWorldPointList());
 			return Walker.walkTo(wp, false);
 		}
 		catch (ExecutionException e)
