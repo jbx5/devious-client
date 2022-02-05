@@ -33,6 +33,8 @@ public class Walker
 	private static final int MIN_TILES_LEFT_BEFORE_RECHOOSE = 3;
 	private static final int MAX_MIN_ENERGY = 50;
 	private static final int MIN_ENERGY = 5;
+	private static final int MAX_NEAREST_SEARCH_ITERATIONS = 10;
+
 	public static final LoadingCache<WorldPoint, List<WorldPoint>> PATH_CACHE = CacheBuilder.newBuilder()
 			.expireAfterWrite(5, TimeUnit.MINUTES)
 			.build(new CacheLoader<>()
@@ -62,6 +64,12 @@ public class Walker
 		if (destination.equals(local.getWorldLocation()))
 		{
 			return true;
+		}
+
+		if (destination.isInScene(Game.getClient()))
+		{
+			Movement.walk(destination);
+			return false;
 		}
 
 		Map<WorldPoint, List<Transport>> transports = buildTransportLinks();
@@ -302,6 +310,35 @@ public class Walker
 		}
 
 		return false;
+	}
+
+	public static WorldPoint nearestWalkableTile(WorldPoint source)
+	{
+		CollisionMap cm = Game.getGlobalCollisionMap();
+
+		if (!cm.fullBlock(source))
+		{
+			return source;
+		}
+
+		int currentIteration = 1;
+		for (int k = currentIteration; k < MAX_NEAREST_SEARCH_ITERATIONS; k++)
+		{
+			for (int i = -k; i < k; i++)
+			{
+				for (int j = -k; j < k; j++)
+				{
+					WorldPoint p = source.dx(i).dy(j);
+					if (cm.fullBlock(p))
+					{
+						continue;
+					}
+					return p;
+				}
+			}
+		}
+		log.debug("Could not find a walkable tile near {}", source);
+		return null;
 	}
 
 	public static List<WorldPoint> remainingPath(List<WorldPoint> path)

@@ -3,13 +3,12 @@ package net.runelite.client.plugins.worldwalker;
 import dev.hoot.api.entities.Players;
 import dev.hoot.api.game.Game;
 import dev.hoot.api.movement.Movement;
-import dev.hoot.api.movement.pathfinder.CollisionMap;
+import dev.hoot.api.movement.pathfinder.Walker;
 import dev.hoot.api.utils.CoordUtils;
 import dev.hoot.api.widgets.Widgets;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.MenuAction;
 import net.runelite.api.Point;
-import net.runelite.api.coords.WorldArea;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.events.GameTick;
 import net.runelite.api.events.MenuEntryAdded;
@@ -20,8 +19,6 @@ import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 
 import javax.inject.Singleton;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
@@ -114,25 +111,7 @@ public class WorldWalkerPlugin extends Plugin
 
     private void setMapPoint(WorldPoint wp)
     {
-        WorldPoint dest = wp;
-        CollisionMap cm = Game.getGlobalCollisionMap();
-        if (cm.fullBlock(wp))
-        {
-            List<WorldPoint> points = new ArrayList<>();
-            for (int i = -5; i < 6; i++)
-            {
-                for (int j = -5; j < 6; j++)
-                {
-                    points.add(new WorldPoint(wp.getX() + i, wp.getY() + j, wp.getPlane()));
-                }
-            }
-            points.removeIf(cm::fullBlock);
-            if (points.size() > 0)
-            {
-                dest = points.get(0);
-            }
-        }
-        mapPoint = dest;
+        mapPoint = Walker.nearestWalkableTile(wp);
         log.debug("Walking to {}", mapPoint);
     }
 }
