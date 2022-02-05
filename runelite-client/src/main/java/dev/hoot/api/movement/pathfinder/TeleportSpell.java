@@ -372,7 +372,6 @@ public enum TeleportSpell
 		{
 			if (RunePouch.getQuantity(req.getRune()) < req.getRune().getQuantity())
 			{
-				System.out.println("Not enough " + req.getRune().name() + "/ Pouch: " + RunePouch.getQuantity(req.getRune()) + "/ Required: " + req.getRune().getQuantity());
 				return false;
 			}
 		}
