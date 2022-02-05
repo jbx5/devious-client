@@ -41,6 +41,7 @@ import net.runelite.client.eventbus.Subscribe;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -56,7 +57,7 @@ public class DefinitionManager
 
     private static final Multimap<Integer, Integer> VARBITS = HashMultimap.create();
     private static final Map<Integer, Integer> VARBIT_TO_ENTITYID = new HashMap<>();
-    private static final Map<Integer, TileObject> TRANSFORMING_OBJECTS = new HashMap<>();
+    private static final Multimap<Integer, TileObject> TRANSFORMING_OBJECTS = HashMultimap.create();
 
     public void init()
     {
@@ -97,19 +98,22 @@ public class DefinitionManager
     @Subscribe
     private void onSpawn(GameObjectSpawned event)
     {
+        log.debug("GameObject Spawned: {}", event.getGameObject().getId());
         checkTransformObject(event.getGameObject());
     }
 
     @Subscribe
     private void onChange(GameObjectChanged event)
     {
+        log.debug("GameObject Changed: {}", event.getGameObject().getId());
         checkTransformObject(event.getGameObject());
     }
 
     @Subscribe
     private void onDespawn(GameObjectDespawned event)
     {
-        TRANSFORMING_OBJECTS.remove(event.getGameObject().getId());
+        log.debug("GameObject DeSpawned: {}", event.getGameObject().getId());
+        TRANSFORMING_OBJECTS.remove(event.getGameObject().getId(), event.getGameObject());
     }
 
     @Subscribe
@@ -127,7 +131,7 @@ public class DefinitionManager
     @Subscribe
     private void onDespawn(WallObjectDespawned event)
     {
-        TRANSFORMING_OBJECTS.remove(event.getWallObject().getId());
+        TRANSFORMING_OBJECTS.remove(event.getWallObject().getId(), event.getWallObject());
     }
 
     @Subscribe
@@ -145,7 +149,7 @@ public class DefinitionManager
     @Subscribe
     private void onDespawn(DecorativeObjectDespawned event)
     {
-        TRANSFORMING_OBJECTS.remove(event.getDecorativeObject().getId());
+        TRANSFORMING_OBJECTS.remove(event.getDecorativeObject().getId(), event.getDecorativeObject());
     }
 
     @Subscribe
@@ -163,7 +167,7 @@ public class DefinitionManager
     @Subscribe
     private void onDespawn(GroundObjectDespawned event)
     {
-        TRANSFORMING_OBJECTS.remove(event.getGroundObject().getId());
+        TRANSFORMING_OBJECTS.remove(event.getGroundObject().getId(), event.getGroundObject());
     }
 
     @Subscribe
@@ -226,7 +230,7 @@ public class DefinitionManager
         }
     }
 
-    @Subscribe
+    @Subscribe(priority = Integer.MAX_VALUE)
     private void onVarbitChanged(VarbitChanged e)
     {
         var changedVarbits = VARBITS.get(e.getIndex());
@@ -239,7 +243,6 @@ public class DefinitionManager
 
             int configValue = Vars.getBit(varbitId);
             int entityId = VARBIT_TO_ENTITYID.get(varbitId);
-
             if (entityId < client.getCachedNPCs().length)
             {
                 NPC npc = client.getCachedNPCs()[entityId];
@@ -256,23 +259,32 @@ public class DefinitionManager
                         log.debug("NPC {} transformed", entityId);
                     }
 
-                    return;
+                    continue;
                 }
             }
 
             ObjectComposition objectComposition = client.getObjectDefinition(entityId);
-            TileObject cachedObject = TRANSFORMING_OBJECTS.get(entityId);
-            if (objectComposition != null && cachedObject != null)
-            {
-                cachedObject.setTransformedComposition(objectComposition.getImpostor());
+            Collection<TileObject> cachedObjects = TRANSFORMING_OBJECTS.get(entityId);
+            for (TileObject cachedObject : cachedObjects) {
+                if (objectComposition != null && cachedObject != null)
+                {
+                    ObjectComposition current = cachedObject.getTransformedComposition();
+                    ObjectComposition transformed = objectComposition.getImpostor();
+                    if (current == transformed)
+                    {
+                        continue;
+                    }
 
-                if (configValue == 0)
-                {
-                    log.debug("Object {} reverted to default state", entityId);
-                }
-                else
-                {
-                    log.debug("Object {} transformed", entityId);
+                    cachedObject.setTransformedComposition(transformed);
+
+                    if (configValue == 0)
+                    {
+                        log.debug("[{}] reverted to default state", transformed.getName());
+                    }
+                    else
+                    {
+                        log.debug("[{}: {}] transformed into [{}: {}]", objectComposition.getId(), objectComposition.getName(), transformed.getId(), transformed.getName());
+                    }
                 }
             }
         }
@@ -337,6 +349,7 @@ public class DefinitionManager
             VARBIT_TO_ENTITYID.put(composition.getTransformVarbit(), object.getId());
             TRANSFORMING_OBJECTS.put(object.getId(), object);
             object.setTransformedComposition(composition.getImpostor());
+            log.debug("Adding object [{}] [{}] to transforming objects", object.getId(), composition.getTransformVarbit());
         }
         else
         {
