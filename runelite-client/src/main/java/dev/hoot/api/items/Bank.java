@@ -27,6 +27,8 @@ public class Bank extends Items
 	}
 
 	private static final Bank BANK = new Bank();
+	private static final Inventory BANK_INVENTORY = new Inventory();
+
 	private static final int WITHDRAW_MODE_VARBIT = 3958;
 	private static final int QUANTITY_MODE_VARP = 6590;
 	private static final Supplier<Widget> MAIN_TAB = () -> Widgets.get(12, 11, 0);
@@ -199,9 +201,7 @@ public class Bank extends Items
 
 	public static void deposit(Predicate<Item> filter, int amount)
 	{
-		Item item = getInventory(filter).stream()
-				.findFirst()
-				.orElse(null);
+		Item item = Inventory.getFirst(filter);
 		if (item == null)
 		{
 			return;
@@ -223,9 +223,7 @@ public class Bank extends Items
 				Dialog.enterInput(amount);
 			}
 		}
-
 	}
-
 
 	public static void withdrawAll(String name, WithdrawMode withdrawMode)
 	{
@@ -335,59 +333,6 @@ public class Bank extends Items
 	public static boolean isNotedWithdrawMode()
 	{
 		return Vars.getBit(WITHDRAW_MODE_VARBIT) == 1;
-	}
-
-	public static List<Item> getInventory(Predicate<Item> filter)
-	{
-		List<Item> items = new ArrayList<>();
-		ItemContainer container = Game.getClient().getItemContainer(InventoryID.INVENTORY);
-		if (container == null)
-		{
-			return items;
-		}
-
-		Item[] containerItems = container.getItems();
-		for (int i = 0, containerItemsLength = containerItems.length; i < containerItemsLength; i++)
-		{
-			Item item = containerItems[i];
-			if (item.getId() != -1 && item.getName() != null && !item.getName().equals("null"))
-			{
-				item.setWidgetId(item.calculateWidgetId(WidgetInfo.BANK_INVENTORY_ITEMS_CONTAINER));
-				item.setSlot(i);
-
-				if (filter.test(item))
-				{
-					items.add(item);
-				}
-			}
-		}
-
-		return items;
-	}
-
-	public static List<Item> getInventory(int... id)
-	{
-		return getInventory(Predicates.ids(id));
-	}
-
-	public static List<Item> getInventory(String... name)
-	{
-		return getInventory(Predicates.names(name));
-	}
-
-	public static Item getInventoryFirst(Predicate<Item> filter)
-	{
-		return getInventory(filter).stream().findFirst().orElse(null);
-	}
-
-	public static Item getInventoryFirst(int... id)
-	{
-		return getInventoryFirst(Predicates.ids(id));
-	}
-
-	public static Item getInventoryFirst(String... name)
-	{
-		return getInventoryFirst(Predicates.names(name));
 	}
 
 	public static List<Item> getAll(Predicate<Item> filter)
@@ -518,6 +463,68 @@ public class Bank extends Items
 		if (Widgets.isVisible(mainTab))
 		{
 			mainTab.interact(0);
+		}
+	}
+
+	public static class Inventory extends Items
+	{
+		@Override
+		protected List<Item> all(Predicate<Item> filter)
+		{
+			List<Item> items = new ArrayList<>();
+			ItemContainer container = Game.getClient().getItemContainer(InventoryID.INVENTORY);
+			if (container == null)
+			{
+				return items;
+			}
+
+			Item[] containerItems = container.getItems();
+			for (int i = 0, containerItemsLength = containerItems.length; i < containerItemsLength; i++)
+			{
+				Item item = containerItems[i];
+				if (item.getId() != -1 && item.getName() != null && !item.getName().equals("null"))
+				{
+					item.setWidgetId(item.calculateWidgetId(WidgetInfo.BANK_INVENTORY_ITEMS_CONTAINER));
+					item.setSlot(i);
+
+					if (filter.test(item))
+					{
+						items.add(item);
+					}
+				}
+			}
+
+			return items;
+		}
+
+		public static List<Item> getAll(Predicate<Item> filter)
+		{
+			return BANK_INVENTORY.all(filter);
+		}
+
+		public static List<Item> getAll(int... ids)
+		{
+			return BANK_INVENTORY.all(ids);
+		}
+
+		public static List<Item> getAll(String... names)
+		{
+			return BANK_INVENTORY.all(Predicates.names(names));
+		}
+
+		public static Item getFirst(Predicate<Item> filter)
+		{
+			return BANK_INVENTORY.first(filter);
+		}
+
+		public static Item getFirst(int... ids)
+		{
+			return BANK_INVENTORY.first(ids);
+		}
+
+		public static Item getFirst(String... names)
+		{
+			return BANK_INVENTORY.first(names);
 		}
 	}
 
