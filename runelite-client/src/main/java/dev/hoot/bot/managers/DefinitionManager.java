@@ -98,21 +98,18 @@ public class DefinitionManager
     @Subscribe
     private void onSpawn(GameObjectSpawned event)
     {
-        log.debug("GameObject Spawned: {}", event.getGameObject().getId());
         checkTransformObject(event.getGameObject());
     }
 
     @Subscribe
     private void onChange(GameObjectChanged event)
     {
-        log.debug("GameObject Changed: {}", event.getGameObject().getId());
         checkTransformObject(event.getGameObject());
     }
 
     @Subscribe
     private void onDespawn(GameObjectDespawned event)
     {
-        log.debug("GameObject DeSpawned: {}", event.getGameObject().getId());
         TRANSFORMING_OBJECTS.remove(event.getGameObject().getId(), event.getGameObject());
     }
 
@@ -248,7 +245,14 @@ public class DefinitionManager
                 NPC npc = client.getCachedNPCs()[entityId];
                 if (npc != null && npc.getComposition() != null)
                 {
-                    npc.setTransformedComposition(npc.getComposition().transform());
+                    NPCComposition current = npc.getTransformedComposition();
+                    NPCComposition transformed = npc.getComposition().transform();
+                    if (current == transformed)
+                    {
+                        continue;
+                    }
+
+                    npc.setTransformedComposition(transformed);
 
                     if (configValue == 0)
                     {
@@ -349,7 +353,6 @@ public class DefinitionManager
             VARBIT_TO_ENTITYID.put(composition.getTransformVarbit(), object.getId());
             TRANSFORMING_OBJECTS.put(object.getId(), object);
             object.setTransformedComposition(composition.getImpostor());
-            log.debug("Adding object [{}] [{}] to transforming objects", object.getId(), composition.getTransformVarbit());
         }
         else
         {
