@@ -1,5 +1,6 @@
 package dev.hoot.api.input.naturalmouse.support;
 
+import dev.hoot.api.commons.Time;
 import dev.hoot.api.input.naturalmouse.api.SystemCalls;
 
 import java.awt.*;
@@ -17,8 +18,8 @@ public class DefaultSystemCalls implements SystemCalls {
     }
 
     @Override
-    public void sleep(long time) throws InterruptedException {
-        Thread.sleep(time);
+    public void sleep(long time) {
+        Time.sleep(time);
     }
 
     @Override

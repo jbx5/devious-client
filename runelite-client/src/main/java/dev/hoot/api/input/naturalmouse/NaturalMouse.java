@@ -1,5 +1,6 @@
 package dev.hoot.api.input.naturalmouse;
 
+import dev.hoot.api.commons.Time;
 import dev.hoot.api.input.Mouse;
 import dev.hoot.api.input.naturalmouse.api.MouseInfoAccessor;
 import dev.hoot.api.input.naturalmouse.api.MouseMotionFactory;
@@ -120,9 +121,9 @@ public class NaturalMouse
         }
 
         @Override
-        public void sleep(long time) throws InterruptedException
+        public void sleep(long time)
         {
-            Thread.sleep(time);
+            Time.sleep(time);
         }
 
         @Override

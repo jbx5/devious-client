@@ -200,7 +200,7 @@ public class MouseMotion {
         return Math.max(0, Math.min(screenSize.height - 1, value));
     }
 
-    private void sleepAround(long sleepMin, long randomPart) throws InterruptedException {
+    private void sleepAround(long sleepMin, long randomPart) {
         long sleepTime = (long) (sleepMin + random.nextDouble() * randomPart);
         if (log.isTraceEnabled() && sleepTime > 0) {
             updateMouseInfo();

@@ -56,6 +56,7 @@ import net.runelite.client.rs.ClientUpdateCheckMode;
 import net.runelite.client.ui.DrawManager;
 import net.runelite.client.ui.FatalErrorDialog;
 import net.runelite.client.ui.overlay.OverlayManager;
+import net.runelite.client.ui.overlay.tooltip.TooltipOverlay;
 import net.runelite.http.api.RuneLiteAPI;
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
@@ -64,6 +65,7 @@ import okhttp3.Response;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.Nullable;
+import javax.inject.Provider;
 import javax.inject.Singleton;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
@@ -119,6 +121,9 @@ public class Bot
 
 	@Inject
 	private OverlayManager overlayManager;
+
+	@Inject
+	private Provider<TooltipOverlay> tooltipOverlay;
 
 	@Inject
 	@Nullable
@@ -350,6 +355,8 @@ public class Bot
 		eventBus.register(botUI);
 		eventBus.register(overlayManager);
 		eventBus.register(configManager);
+
+		overlayManager.add(tooltipOverlay.get());
 
 		botUI.show();
 

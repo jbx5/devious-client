@@ -1,7 +1,13 @@
 package dev.hoot.bot.devtools;
 
 import dev.hoot.api.SceneEntity;
+import dev.hoot.api.coords.RegionPoint;
+import dev.hoot.api.coords.ScenePoint;
+import dev.hoot.api.entities.Entities;
+import dev.hoot.api.entities.NPCs;
+import dev.hoot.api.entities.Players;
 import dev.hoot.api.entities.Projectiles;
+import dev.hoot.api.entities.TileItems;
 import dev.hoot.api.entities.TileObjects;
 import dev.hoot.api.scene.Tiles;
 import dev.hoot.api.utils.DrawUtils;
@@ -13,11 +19,9 @@ import net.runelite.api.Client;
 import net.runelite.api.DecorativeObject;
 import net.runelite.api.DynamicObject;
 import net.runelite.api.GameObject;
-import net.runelite.api.GraphicsObject;
 import net.runelite.api.GroundObject;
 import net.runelite.api.ItemLayer;
 import net.runelite.api.NPC;
-import net.runelite.api.NPCComposition;
 import net.runelite.api.Node;
 import net.runelite.api.Perspective;
 import net.runelite.api.Player;
@@ -29,11 +33,14 @@ import net.runelite.api.TileItem;
 import net.runelite.api.TileObject;
 import net.runelite.api.WallObject;
 import net.runelite.api.coords.LocalPoint;
+import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.api.widgets.WidgetItem;
 import net.runelite.client.ui.FontManager;
 import net.runelite.client.ui.overlay.OverlayUtil;
+import net.runelite.client.ui.overlay.tooltip.Tooltip;
+import net.runelite.client.ui.overlay.tooltip.TooltipManager;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -57,8 +64,6 @@ public class EntityRenderer
 	private static final Color PURPLE = new Color(170, 0, 255);
 	private static final Color GRAY = new Color(158, 158, 158);
 
-	private static final int MAX_DISTANCE = 35;
-
 	@Getter
 	@Setter
 	private boolean groundObjects;
@@ -71,6 +76,9 @@ public class EntityRenderer
 	@Getter
 	@Setter
 	private boolean gameObjects;
+	@Getter
+	@Setter
+	private boolean graphicsObjects;
 	@Getter
 	@Setter
 	private boolean inventory;
@@ -96,319 +104,326 @@ public class EntityRenderer
 	@Setter
 	private boolean path;
 
+	// Configs
+	@Getter
+	@Setter
+	private boolean ids = true;
+	@Getter
+	@Setter
+	private boolean names = true;
+	@Getter
+	@Setter
+	private boolean indexes = true;
+	@Getter
+	@Setter
+	private boolean animations = true;
+	@Getter
+	@Setter
+	private boolean graphics = true;
+	@Getter
+	@Setter
+	private boolean actions = true;
+	@Getter
+	@Setter
+	private boolean worldLocations = true;
+	@Getter
+	@Setter
+	private boolean quantities = true;
+
 	private final Client client;
+	private final TooltipManager tooltipManager;
 
 	@Inject
-	public EntityRenderer(Client client)
+	public EntityRenderer(Client client, TooltipManager tooltipManager)
 	{
 		this.client = client;
+		this.tooltipManager = tooltipManager;
 	}
 
-	public void render(Graphics2D graphics, List<? extends SceneEntity> entities)
+	public void render(Graphics2D g)
 	{
-		Player player = client.getLocalPlayer();
-		if (player == null)
+		g.setFont(FONT);
+		Point mouse = client.getMouseCanvasPosition();
+
+		if (gameObjects || groundObjects || wallObjects || decorativeObjects)
 		{
-			return;
+			renderTileObjects(g, mouse);
+		}
+
+		if (tileItems)
+		{
+			renderTileItems(g, mouse);
+		}
+
+		if (npcs)
+		{
+			renderNpcs(g, mouse);
+		}
+
+		if (players)
+		{
+			renderPlayers(g, mouse);
+		}
+
+		if (projectiles)
+		{
+			renderProjectiles(g);
+		}
+
+		if (graphicsObjects)
+		{
+			renderGraphicsObjects(g);
+		}
+
+		if (inventory)
+		{
+			renderInventory(g);
 		}
 
 		Tile hoveredTile = Tiles.getHoveredTile();
-		if (isTileLocation())
-		{
-			renderTileTooltip(graphics, hoveredTile);
-		}
-
-		if (isCollisionMap())
-		{
-			DrawUtils.drawCollisions(graphics);
-		}
-
-		if (isPath())
-		{
-			DrawUtils.drawPath(graphics, hoveredTile.getWorldLocation());
-		}
-
-		if (isPlayers())
-		{
-			renderLocalPlayer(graphics, player);
-		}
-
-		if (isInventory())
-		{
-			renderInventory(graphics);
-		}
-
-		if (isProjectiles())
-		{
-			renderProjectiles(graphics);
-		}
-
-		List<TileObject> unhoverable = TileObjects.getSurrounding(player.getWorldLocation(), MAX_DISTANCE, x -> true);
-		if (isGroundObjects())
-		{
-			renderGroundObject(graphics, unhoverable);
-		}
-
-		if (isDecorativeObjects())
-		{
-			renderDecorObject(graphics, unhoverable);
-		}
-
-		if (isWallObjects())
-		{
-			renderWallObject(graphics, unhoverable);
-		}
-
-		if (entities.isEmpty())
+		if (hoveredTile == null)
 		{
 			return;
 		}
 
-		if (isPlayers())
+		if (tileLocation)
 		{
-			renderPlayers(graphics, player, entities);
+			renderTileTooltip(g, hoveredTile);
 		}
 
-		if (isNpcs())
+		if (path)
 		{
-			renderNpcs(graphics, player, entities);
+			DrawUtils.drawPath(g, hoveredTile.getWorldLocation());
 		}
 
-		if (isTileItems())
+		if (collisionMap)
 		{
-			renderGroundItems(graphics, player, entities);
-		}
-
-		if (isGameObjects())
-		{
-			renderGameObject(graphics, player, entities);
+			DrawUtils.drawCollisions(g);
 		}
 	}
 
-	public void renderPlayers(Graphics2D graphics, Player local, List<? extends SceneEntity> entities)
+	public void renderPlayers(Graphics2D graphics, Point point)
 	{
-		entities.stream()
-				.filter(p -> p instanceof Player && !p.equals(local) && p.distanceTo(local) <= MAX_DISTANCE)
-				.findFirst()
-				.ifPresent(p ->
-				{
-					Player player = (Player) p;
-					String text = "Name: " + player.getName() + "\n" +
-							"Actions: " + Arrays.toString(player.getRawActions()) + "\n" +
-							"Anim: " + player.getAnimation() + "\n" +
-							"Graphic: " + player.getGraphic() + "\n" +
-							"Loc: " + player.getWorldLocation() + "\n" +
-							"Index: " + player.getPlayerId();
-					graphics.setColor(BLUE);
-					graphics.draw(player.getConvexHull());
+		Player local = Players.getLocal();
+		List<Player> players = Players.getAll(x -> !x.equals(local));
 
-					OverlayUtil.renderActorParagraph(graphics, player, text, BLUE);
-				});
-	}
+		for (Player p : players)
+		{
+			if (p.getConvexHull() != null && p.getConvexHull().contains(point.getX(), point.getY()))
+			{
+				graphics.setColor(BLUE);
+				graphics.draw(p.getConvexHull());
 
-	public void renderLocalPlayer(Graphics2D graphics, Player local)
-	{
-		String text = "Name: " + local.getName() + "\n" +
-				"Actions: " + Arrays.toString(local.getRawActions()) + "\n" +
-				"Anim: " + local.getAnimation() + "\n" +
-				"Graphic: " + local.getGraphic() + "\n" +
-				"Loc: " + local.getWorldLocation() + "\n" +
-				"Index: " + local.getPlayerId();
+				OverlayUtil.renderActorOverlay(graphics, p, "", BLUE);
+				tooltipManager.add(new Tooltip(createInfo(p)));
+			}
+		}
 
 		graphics.setColor(CYAN);
 
-		OverlayUtil.renderActorParagraph(graphics, local, text, CYAN);
+		OverlayUtil.renderActorParagraph(graphics, local, createInfo(local), CYAN);
 		renderPlayerWireframe(graphics, local, CYAN);
 	}
 
-	public void renderNpcs(Graphics2D graphics, Player local, List<? extends SceneEntity> entities)
+	public void renderNpcs(Graphics2D graphics, Point point)
 	{
-		entities.stream()
-				.filter(n -> n instanceof NPC && n.distanceTo(local) <= MAX_DISTANCE)
-				.findFirst()
-				.ifPresent(n ->
-				{
-					NPC npc = (NPC) n;
-					NPCComposition composition = npc.getComposition();
-					Color color = composition.getCombatLevel() > 1 ? YELLOW : ORANGE;
-					if (composition.getConfigs() != null)
-					{
-						NPCComposition transformedComposition = composition.transform();
-						if (transformedComposition == null)
-						{
-							color = GRAY;
-						}
-						else
-						{
-							composition = transformedComposition;
-						}
-					}
+		List<NPC> npcs = NPCs.getAll(x -> true);
 
-					graphics.setColor(color);
-					if (npc.getConvexHull() != null && npc.getConvexHull().contains(client.getMouseCanvasPosition().getAwtPoint()))
-					{
-						graphics.draw(npc.getConvexHull());
+		for (NPC npc : npcs)
+		{
+			Color color = npc.getCombatLevel() > 1 ? YELLOW : ORANGE;
+			graphics.setColor(color);
 
-						String text = "Name: " + composition.getName() + "\n" +
-								"ID: " + composition.getId() + "\n" +
-								"Actions: " + Arrays.toString(npc.getRawActions()) + "\n" +
-								"Moving: " + npc.isMoving() + "\n" +
-								"Anim: " + npc.getAnimation() + "\n" +
-								"Graphic: " + npc.getGraphic() + "\n" +
-								"Loc: " + npc.getWorldLocation() + "\n" +
-								"Index: " + npc.getIndex();
+			if (npc.getConvexHull() != null && npc.getConvexHull().contains(point.getX(), point.getY()))
+			{
+				graphics.draw(npc.getConvexHull());
+				tooltipManager.add(new Tooltip(createInfo(npc)));
+			}
+		}
+	}
 
-						OverlayUtil.renderActorParagraph(graphics, npc, text, color);
-					}
-				});
+	public void renderTileObjects(Graphics2D graphics, Point mouse)
+	{
+		List<TileObject> tileObjects = TileObjects.getSurrounding(
+				Players.getLocal().getWorldLocation(),
+				35,
+				x -> true
+		);
+
+		for (SceneEntity tileObject : tileObjects)
+		{
+			if (tileObject instanceof GameObject && gameObjects)
+			{
+				renderGameObjects(graphics, (GameObject) tileObject, mouse);
+				continue;
+			}
+
+			if (tileObject instanceof WallObject && wallObjects)
+			{
+				renderWallObject(graphics, (WallObject) tileObject, mouse);
+				continue;
+			}
+
+			if (tileObject instanceof GroundObject && groundObjects)
+			{
+				renderGroundObject(graphics, (GroundObject) tileObject, mouse);
+				continue;
+			}
+
+			if (tileObject instanceof DecorativeObject && decorativeObjects)
+			{
+				renderDecorObject(graphics, (DecorativeObject) tileObject, mouse);
+			}
+		}
 	}
 
 	public void renderTileTooltip(Graphics2D graphics, Tile tile)
 	{
-		if (tile == null)
+		Polygon poly = Perspective.getCanvasTilePoly(client, tile.getLocalLocation());
+		if (poly != null && poly.contains(client.getMouseCanvasPosition().getX(), client.getMouseCanvasPosition().getY()))
+		{
+			WorldPoint worldLocation = tile.getWorldLocation();
+			ScenePoint scenePoint = ScenePoint.fromWorld(worldLocation);
+			String tooltip = String.format("World location: %d, %d, %d</br>" +
+							"Region ID: %d location: %d, %d</br>" +
+							"Scene location: %d, %d</br>"
+					,
+					worldLocation.getX(), worldLocation.getY(), worldLocation.getPlane(),
+					worldLocation.getRegionID(), worldLocation.getRegionX(), worldLocation.getRegionY(),
+					scenePoint.getX(), scenePoint.getY())
+					;
+			tooltipManager.add(new Tooltip(tooltip));
+			OverlayUtil.renderPolygon(graphics, poly, GREEN);
+		}
+	}
+
+	public void renderTileItems(Graphics2D graphics, Point point)
+	{
+		List<TileItem> tileItems = TileItems.getSurrounding(
+				Players.getLocal().getWorldLocation(),
+				35,
+				x -> true
+		);
+
+		for (TileItem tileItem : tileItems)
+		{
+			ItemLayer tileItemPile = tileItem.getTile().getItemLayer();
+			if (tileItemPile != null
+					&& (tileItemPile.getCanvasTilePoly() != null
+					&& tileItemPile.getCanvasTilePoly().contains(point.getX(), point.getY())))
+			{
+				Node current = tileItemPile.getBottom();
+				while (current instanceof TileItem)
+				{
+					OverlayUtil.renderTileOverlay(graphics, tileItemPile, "", RED);
+					tooltipManager.add(new Tooltip(createInfo((TileItem) current)));
+					current = current.getNext();
+				}
+			}
+		}
+	}
+
+	public void renderGameObjects(Graphics2D graphics, GameObject go, Point point)
+	{
+		if (go == null)
 		{
 			return;
 		}
 
-		Polygon poly = Perspective.getCanvasTilePoly(client, tile.getLocalLocation());
-		if (poly != null && poly.contains(client.getMouseCanvasPosition().getX(), client.getMouseCanvasPosition().getY()))
+		Shape hull = go.getConvexHull();
+		if (hull == null)
 		{
-			OverlayUtil.renderPolygon(graphics, poly, GREEN);
-			OverlayUtil.renderTextLocation(graphics, client.getMouseCanvasPosition(),
-					"World Location: " + tile.getWorldLocation().getX() + ", " + tile.getWorldLocation().getY() + ", " + client.getPlane(), Color.GREEN);
+			return;
 		}
+
+		if (!hull.contains(point.getX(), point.getY()))
+		{
+			return;
+		}
+
+		Renderable entity = go.getRenderable();
+
+		Color color = entity instanceof DynamicObject ? TURQOISE : GREEN;
+
+		graphics.setColor(color);
+		graphics.draw(hull);
+
+		OverlayUtil.renderTileOverlay(graphics, go, "", color);
+		tooltipManager.add(new Tooltip(createInfo(go)));
 	}
 
-	public void renderGroundItems(Graphics2D graphics, Player local, List<? extends SceneEntity> entities)
+	public void renderGroundObject(Graphics2D graphics, GroundObject gr, Point point)
 	{
-		entities.stream()
-				.filter(ti -> ti instanceof TileItem && ti.distanceTo(local) <= MAX_DISTANCE)
-				.findFirst()
-				.ifPresent(ti ->
-				{
-					ItemLayer tileItemPile = ((TileItem) ti).getTile().getItemLayer();
-					if (tileItemPile == null)
-					{
-						return;
-					}
+		if (gr == null)
+		{
+			return;
+		}
 
-					Node current = tileItemPile.getBottom();
-					while (current instanceof TileItem)
-					{
-						TileItem item = (TileItem) current;
+		Shape hull = gr.getConvexHull();
+		if (hull == null)
+		{
+			return;
+		}
 
-						String sb = "ID: " + item.getId() + "\n" +
-								"Qty: " + item.getQuantity() + "\n" +
-								"Loc: " + item.getTile().getWorldLocation() + "\n" +
-								"Actions: " + Arrays.toString(item.getRawActions());
-						OverlayUtil.renderTileOverlayParagraph(graphics, tileItemPile, sb, RED);
-						current = current.getNext();
-					}
-				});
+		if (!hull.contains(point.getX(), point.getY()))
+		{
+			return;
+		}
+
+		OverlayUtil.renderTileOverlay(graphics, gr, "", PURPLE);
+		tooltipManager.add(new Tooltip(createInfo(gr)));
 	}
 
-	public void renderGameObject(Graphics2D graphics, Player local, List<? extends SceneEntity> entities)
+	public void renderWallObject(Graphics2D graphics, WallObject w, Point point)
 	{
-		entities.stream()
-				.filter(g -> g instanceof GameObject && g.distanceTo(local) <= MAX_DISTANCE)
-				.findFirst()
-				.ifPresent(g ->
-				{
-					GameObject gameObject = (GameObject) g;
-					Renderable entity = gameObject.getRenderable();
-					Color color = entity instanceof DynamicObject ? TURQOISE : GREEN;
+		if (w == null)
+		{
+			return;
+		}
 
-					StringBuilder sb = new StringBuilder();
-					sb.append("ID: ").append(gameObject.getId()).append("\n");
-					if (entity instanceof DynamicObject)
-					{
-						sb.append("Anim: ").append(((DynamicObject) entity).getAnimationID()).append("\n");
-					}
-					sb.append("Loc: ").append(gameObject.getWorldLocation()).append("\n");
-					if (gameObject.hasAction())
-					{
-						sb.append("Actions: ").append(Arrays.toString(gameObject.getRawActions()));
-					}
+		Shape hull = w.getConvexHull();
+		if (hull == null)
+		{
+			return;
+		}
 
-					graphics.setColor(color);
-					graphics.draw(gameObject.getConvexHull());
+		if (!hull.contains(point.getX(), point.getY()))
+		{
+			return;
+		}
 
-					OverlayUtil.renderTileOverlayParagraph(graphics, gameObject, sb.toString(), color);
-				});
+		OverlayUtil.renderTileOverlay(graphics, w, "", GRAY);
+		tooltipManager.add(new Tooltip(createInfo(w)));
 	}
 
-	public void renderGroundObject(Graphics2D graphics, List<? extends SceneEntity> entities)
+	public void renderDecorObject(Graphics2D graphics, DecorativeObject deo, Point point)
 	{
-		entities.stream()
-				.filter(g -> g instanceof GroundObject)
-				.forEach(g ->
-				{
-					GroundObject groundObject = (GroundObject) g;
-					if (!isHovered(groundObject.getConvexHull()))
-					{
-						return;
-					}
+		if (deo == null)
+		{
+			return;
+		}
 
-					String sb = "ID: " + groundObject.getId() + "\n" +
-							"Loc: " + groundObject.getWorldLocation() + "\n";
-					if (groundObject.hasAction())
-					{
-						sb += "Actions: " + Arrays.toString(groundObject.getRawActions());
-					}
+		Shape hull = deo.getConvexHull();
+		if (hull == null)
+		{
+			return;
+		}
 
-					OverlayUtil.renderTileOverlayParagraph(graphics, groundObject, sb, PURPLE);
-				});
-	}
+		if (!hull.contains(point.getX(), point.getY()))
+		{
+			return;
+		}
 
-	public void renderWallObject(Graphics2D graphics, List<? extends SceneEntity> entities)
-	{
-		entities.stream()
-				.filter(w -> w instanceof WallObject)
-				.forEach(w ->
-				{
-					WallObject wallObject = (WallObject) w;
-					if (!isHovered(wallObject.getConvexHull()))
-					{
-						return;
-					}
+		graphics.draw(hull);
 
-					String sb = "ID: " + wallObject.getId() + "\n" +
-							"Loc: " + wallObject.getWorldLocation() + "\n";
-					if (wallObject.hasAction())
-					{
-						sb += "Actions: " + Arrays.toString(wallObject.getRawActions());
-					}
+		hull = deo.getConvexHull2();
+		if (hull != null)
+		{
+			graphics.draw(hull);
+		}
 
-					OverlayUtil.renderTileOverlayParagraph(graphics, wallObject, sb, GRAY);
-				});
-	}
-
-	public void renderDecorObject(Graphics2D graphics, List<? extends SceneEntity> entities)
-	{
-		entities.stream()
-				.filter(dec -> dec instanceof DecorativeObject)
-				.forEach(dec ->
-				{
-					DecorativeObject decorObject = (DecorativeObject) dec;
-					if (!isHovered(decorObject.getConvexHull()))
-					{
-						return;
-					}
-
-					OverlayUtil.renderTileOverlay(graphics, decorObject, "ID: " + decorObject.getId(), DEEP_PURPLE);
-
-					Shape p = decorObject.getConvexHull();
-					if (p != null)
-					{
-						graphics.draw(p);
-					}
-
-					p = decorObject.getConvexHull2();
-					if (p != null)
-					{
-						graphics.draw(p);
-					}
-				});
+		OverlayUtil.renderTileOverlay(graphics, deo, "", DEEP_PURPLE);
+		tooltipManager.add(new Tooltip(createInfo(deo)));
 	}
 
 	public void renderInventory(Graphics2D graphics)
@@ -482,12 +497,36 @@ public class EntityRenderer
 				LocalPoint projectilePoint = new LocalPoint((int) projectile.getX(), (int) projectile.getY());
 				Point textLocation = Perspective.getCanvasTextLocation(client, graphics, projectilePoint, infoString, 0);
 
-				if (textLocation != null)
+				if (textLocation == null)
 				{
-					OverlayUtil.renderTextLocation(graphics, textLocation, infoString, Color.RED);
+					continue;
 				}
+
+				OverlayUtil.renderTextLocation(graphics, textLocation, infoString, Color.RED);
 			}
 		}
+	}
+
+	public void renderGraphicsObjects(Graphics2D graphics)
+	{
+		client.getGraphicsObjects().forEach(graphicsObject ->
+		{
+			LocalPoint lp = graphicsObject.getLocation();
+			Polygon poly = Perspective.getCanvasTilePoly(client, lp);
+
+			if (poly != null)
+			{
+				OverlayUtil.renderPolygon(graphics, poly, Color.MAGENTA);
+			}
+
+			String infoString = "(ID: " + graphicsObject.getId() + ")";
+			Point textLocation = Perspective.getCanvasTextLocation(
+					client, graphics, lp, infoString, 0);
+			if (textLocation != null)
+			{
+				OverlayUtil.renderTextLocation(graphics, textLocation, infoString, Color.WHITE);
+			}
+		});
 	}
 
 	public void renderPlayerWireframe(Graphics2D graphics, Player player, Color color)
@@ -507,8 +546,156 @@ public class EntityRenderer
 		}
 	}
 
-	private boolean isHovered(Shape convexHull)
+	public String createInfo(SceneEntity interactable)
 	{
-		return convexHull != null && convexHull.contains(client.getMouseCanvasPosition().getAwtPoint());
+		StringBuilder sb = new StringBuilder();
+		if (interactable instanceof Actor)
+		{
+			if (indexes)
+			{
+				if (interactable instanceof Player)
+				{
+					sb.append("Index: ").append(((Player) interactable).getIndex()).append("</br>");
+				}
+
+				if (interactable instanceof NPC)
+				{
+					sb.append("Index: ").append(((NPC) interactable).getIndex()).append("</br>");
+				}
+			}
+
+			appendCommonFields(sb, interactable);
+
+			if (animations)
+			{
+				sb.append("Animations: ").append(((Actor) interactable).getAnimation()).append("</br>");
+			}
+
+			if (graphics)
+			{
+				sb.append("Graphic: ").append(((Actor) interactable).getGraphic()).append("</br>");
+			}
+
+			return sb.toString();
+		}
+
+		if (interactable instanceof TileObject)
+		{
+			if (ids)
+			{
+				sb.append("ID: ").append(interactable.getId()).append("</br>");
+			}
+
+			appendCommonFields(sb, interactable);
+
+			if (animations)
+			{
+				if (interactable instanceof GameObject
+						&& ((GameObject) interactable).getRenderable() instanceof DynamicObject)
+				{
+					sb.append("Animations: ").append(((DynamicObject) ((GameObject) interactable).getRenderable()).getAnimationID()).append("</br>");
+				}
+			}
+
+			return sb.toString();
+		}
+
+		if (interactable instanceof TileItem)
+		{
+			if (ids)
+			{
+				sb.append("ID: ").append(interactable.getId()).append("</br>");
+			}
+
+			if (quantities)
+			{
+				sb.append("Quantity: ").append(((TileItem) interactable).getQuantity()).append("</br>");
+			}
+
+			appendCommonFields(sb, interactable);
+			return sb.toString();
+		}
+
+		return sb.toString();
+	}
+
+	private void appendCommonFields(StringBuilder sb, SceneEntity interactable)
+	{
+		if (interactable instanceof Actor)
+		{
+			if (interactable instanceof NPC && ids)
+			{
+				sb.append("ID: ").append(interactable.getId()).append("</br>");
+			}
+
+			if (names)
+			{
+				sb.append("Name: ").append(interactable.getName()).append("</br>");
+			}
+
+			if (actions)
+			{
+				sb.append("Actions: ").append(Arrays.toString(interactable.getRawActions())).append("</br>");
+			}
+
+			if (worldLocations)
+			{
+				WorldPoint location = interactable.getWorldLocation();
+				sb.append("Location: ").append(location).append("</br>");
+				sb.append("Region: ").append(RegionPoint.fromWorld(location)).append("</br>");
+				sb.append("Scene: ").append(ScenePoint.fromWorld(location)).append("</br>");
+			}
+
+			if (interactable instanceof NPC)
+			{
+				sb.append("Transformvarbit: ").append(((NPC) interactable).getComposition().getTransformVarbit()).append("</br>");
+			}
+			return;
+		}
+
+		if (interactable instanceof TileObject)
+		{
+			if (names)
+			{
+				sb.append("Name: ").append(interactable.getName()).append("</br>");
+			}
+
+			if (actions)
+			{
+				sb.append("Actions: ").append(Arrays.toString(interactable.getRawActions())).append("</br>");
+			}
+
+			if (worldLocations)
+			{
+				WorldPoint location = interactable.getWorldLocation();
+				sb.append("Location: ").append(location).append("</br>");
+				sb.append("Region: ").append(RegionPoint.fromWorld(location)).append("</br>");
+				sb.append("Scene: ").append(ScenePoint.fromWorld(location)).append("</br>");
+			}
+
+			sb.append("Transformvarbit: ").append(client.getObjectDefinition(interactable.getId()).getTransformVarbit()).append("</br>");
+			return;
+		}
+
+		if (interactable instanceof TileItem)
+		{
+			if (names)
+			{
+				sb.append("Name: ").append(interactable.getName()).append("</br>");
+			}
+
+			if (actions)
+			{
+				sb.append("Actions: ").append(Arrays.toString(interactable.getRawActions())).append("</br>");
+			}
+
+			if (worldLocations)
+			{
+				WorldPoint location = interactable.getWorldLocation();
+				sb.append("Location: ").append(location).append("</br>");
+				sb.append("Region: ").append(RegionPoint.fromWorld(location)).append("</br>");
+				sb.append("Scene: ").append(ScenePoint.fromWorld(location)).append("</br>");
+			}
+		}
 	}
 }

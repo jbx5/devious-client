@@ -66,7 +66,7 @@ public class ScreenAdjustedNature extends DefaultMouseMotionNature {
         }
 
         @Override
-        public void sleep(long time) throws InterruptedException {
+        public void sleep(long time) {
             underlying.sleep(time);
         }
 

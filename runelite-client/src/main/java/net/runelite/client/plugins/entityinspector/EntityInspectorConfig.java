@@ -18,18 +18,6 @@ public interface EntityInspectorConfig extends Config
 	String displayedInfo = "Settings";
 
 	@ConfigItem(
-			keyName = "hover",
-			name = "Hover only",
-			description = "Show on hover",
-			section = displayedInfo,
-			position = 0
-	)
-	default boolean hover()
-	{
-		return true;
-	}
-
-	@ConfigItem(
 			keyName = "ids",
 			name = "IDs",
 			description = "Show ids",

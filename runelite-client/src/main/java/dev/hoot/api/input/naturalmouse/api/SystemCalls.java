@@ -8,7 +8,7 @@ import java.awt.*;
 public interface SystemCalls {
     long currentTimeMillis();
 
-    void sleep(long time) throws InterruptedException;
+    void sleep(long time);
 
     Dimension getScreenSize();
 
