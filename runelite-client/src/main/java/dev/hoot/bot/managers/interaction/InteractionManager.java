@@ -116,7 +116,7 @@ public class InteractionManager
 		{
 			mouseHandler.sendMovement(clickPoint.x, clickPoint.y);
 			// We can't send button 1, because we're directly invoking the menuaction and button 1 would send a click.
-			mouseHandler.sendClick(clickPoint.x, clickPoint.y, 1337);
+			mouseHandler.sendClick(-1, -1);
 			processAction(e, clickPoint.x, clickPoint.y);
 		}
 	}
