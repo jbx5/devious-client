@@ -4,7 +4,10 @@ import dev.hoot.api.commons.Rand;
 import dev.hoot.api.commons.Time;
 import dev.hoot.api.game.Game;
 import dev.hoot.api.input.naturalmouse.NaturalMouse;
+import dev.hoot.bot.managers.LoopedPluginManager;
 import dev.hoot.bot.managers.interaction.InteractionConfig;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.api.events.GameTick;
@@ -17,11 +20,8 @@ import java.time.Instant;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Slf4j
-public abstract class LoopedPlugin extends Plugin
+public abstract class LoopedPlugin extends Plugin implements Runnable
 {
-    @Inject
-    private PluginManager pluginManager;
-
     @Inject
     private Client client;
 
@@ -31,29 +31,37 @@ public abstract class LoopedPlugin extends Plugin
     @Inject
     private NaturalMouse naturalMouse;
 
+    @Inject
+    private LoopedPluginManager loopedPluginManager;
+
     private final AtomicInteger ticks = new AtomicInteger(0);
 
-    @Override
-    protected void startUp() throws Exception {
-        log.info("Started looped plugin");
-        new Thread(() -> {
-            try {
-                outerLoop();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }).start();
-    }
+    @Getter
+    @Setter
+    private boolean running;
 
     @Override
-    protected void shutDown() throws Exception {
-        log.info("Stopped looped plugin");
-    }
-
-    private void outerLoop()
+    protected void startUp() throws Exception
     {
-        log.info("Starting outerloop");
-        while (pluginManager.isPluginEnabled(this))
+        log.debug("Started looped plugin");
+
+        loopedPluginManager.submit(this);
+    }
+
+    @Override
+    protected void shutDown() throws Exception
+    {
+        log.debug("Stopped looped plugin");
+
+        loopedPluginManager.stop();
+    }
+
+    @Override
+    public void run()
+    {
+        log.debug("Starting outerloop");
+
+        while (running)
         {
             int loopSleep = 1000;
             try {
@@ -71,10 +79,13 @@ public abstract class LoopedPlugin extends Plugin
                 {
                     naturalMouse.moveOffScreen();
                 }
-
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 e.printStackTrace();
-            } finally {
+            }
+            finally
+            {
                 if (loopSleep < 0 && Game.isLoggedIn())
                 {
                     int startTicks = ticks.get();
@@ -88,7 +99,7 @@ public abstract class LoopedPlugin extends Plugin
             }
         }
 
-        log.info("Stopping outerloop");
+        log.debug("Stopping outerloop");
     }
 
     protected abstract int loop();

@@ -12,34 +12,37 @@ public class Time
 	private static final Logger logger = LoggerFactory.getLogger(Time.class);
 	private static final int DEFAULT_POLLING_RATE = 100;
 
-	public static void sleep(long ms)
+	public static boolean sleep(long ms)
 	{
 		if (Game.getClient().isClientThread())
 		{
 			logger.debug("Tried to sleep on client thread!");
-			return;
+			return false;
 		}
 
 		try
 		{
 			Thread.sleep(ms);
+			return true;
 		}
 		catch (InterruptedException e)
 		{
-			e.printStackTrace();
+			logger.debug("Sleep interrupted");
 		}
+
+		return false;
 	}
 
-	public static void sleep(int min, int max)
+	public static boolean sleep(int min, int max)
 	{
-		sleep(Rand.nextInt(min, max));
+		return sleep(Rand.nextInt(min, max));
 	}
 
 	public static void sleepUntil(BooleanSupplier supplier, int pollingRate, int timeOut)
 	{
 		if (Game.getClient().isClientThread())
 		{
-			logger.debug("Tried to sleep on client thread!");
+			logger.debug("Tried to sleepUntil on client thread!");
 			return;
 		}
 
@@ -51,7 +54,10 @@ public class Time
 				break;
 			}
 
-			sleep(pollingRate);
+			if (!sleep(pollingRate))
+			{
+				break;
+			}
 		}
 	}
 
