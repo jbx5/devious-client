@@ -5,12 +5,13 @@ import java.awt.*;
 /**
  * Abstracts ordinary static System calls away
  */
-public interface SystemCalls {
-    long currentTimeMillis();
+public interface SystemCalls
+{
+	long currentTimeMillis();
 
-    void sleep(long time);
+	void sleep(long time);
 
-    Dimension getScreenSize();
+	Dimension getScreenSize();
 
-    void setMousePosition(int x, int y);
+	void setMousePosition(int x, int y);
 }

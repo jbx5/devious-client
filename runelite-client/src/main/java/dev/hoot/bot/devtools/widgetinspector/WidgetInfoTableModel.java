@@ -2,8 +2,8 @@ package dev.hoot.bot.devtools.widgetinspector;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.inject.Inject;
-import net.runelite.client.callback.ClientThread;
 import net.runelite.api.widgets.Widget;
+import net.runelite.client.callback.ClientThread;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;

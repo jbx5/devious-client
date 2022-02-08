@@ -66,7 +66,7 @@ public class WidgetField<T>
 		}
 		else
 		{
-//            log.warn("Type {} is not supported for editing", type);
+			//            log.warn("Type {} is not supported for editing", type);
 		}
 		setter.accept(widget, (T) value);
 	}

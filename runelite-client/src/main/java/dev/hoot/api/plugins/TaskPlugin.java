@@ -9,56 +9,56 @@ import javax.inject.Inject;
 
 public abstract class TaskPlugin extends LoopedPlugin
 {
-    protected abstract Task[] getTasks();
+	protected abstract Task[] getTasks();
 
-    @Inject
-    private EventBus eventBus;
+	@Inject
+	private EventBus eventBus;
 
-    @Override
-    protected int loop()
-    {
-        for (Task task : getTasks())
-        {
-            if (task.validate())
-            {
-                int delay = task.execute();
-                if (task.isBlocking())
-                {
-                    return delay;
-                }
-            }
-        }
+	@Override
+	protected int loop()
+	{
+		for (Task task : getTasks())
+		{
+			if (task.validate())
+			{
+				int delay = task.execute();
+				if (task.isBlocking())
+				{
+					return delay;
+				}
+			}
+		}
 
-        return 1000;
-    }
+		return 1000;
+	}
 
-    @Subscribe
-    public void onPluginChanged(PluginChanged pluginChanged)
-    {
-        if (pluginChanged.getPlugin() != this)
-        {
-            return;
-        }
+	@Subscribe
+	public void onPluginChanged(PluginChanged pluginChanged)
+	{
+		if (pluginChanged.getPlugin() != this)
+		{
+			return;
+		}
 
-        if (pluginChanged.isLoaded())
-        {
-            for (Task task : getTasks())
-            {
-                if (task.subscribe())
-                {
-                    eventBus.register(task);
-                }
-            }
-        }
-        else
-        {
-            for (Task task : getTasks())
-            {
-                if (task.subscribe())
-                {
-                    eventBus.unregister(task);
-                }
-            }
-        }
-    }
+		if (pluginChanged.isLoaded())
+		{
+			for (Task task : getTasks())
+			{
+				if (task.subscribe())
+				{
+					eventBus.register(task);
+				}
+			}
+		}
+		else
+		{
+			for (Task task : getTasks())
+			{
+				if (task.subscribe())
+				{
+					eventBus.unregister(task);
+				}
+			}
+		}
+	}
 }

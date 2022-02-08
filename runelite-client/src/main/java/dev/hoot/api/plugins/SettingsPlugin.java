@@ -11,30 +11,30 @@ import javax.inject.Provider;
 
 public abstract class SettingsPlugin extends Plugin
 {
-    @Inject
-    private ConfigManager configManager;
+	@Inject
+	private ConfigManager configManager;
 
-    @Inject
-    private Provider<PluginListPanel> pluginListPanelProvider;
+	@Inject
+	private Provider<PluginListPanel> pluginListPanelProvider;
 
-    @Override
-    protected void startUp() throws Exception
-    {
-        PluginListPanel pluginListPanel = pluginListPanelProvider.get();
-        pluginListPanel.addFakePlugin(
-                new PluginConfigurationDescriptor(
-                        getPluginName(), getPluginDescription(), getPluginTags(),
-                        getConfig(), configManager.getConfigDescriptor(getConfig())
-                )
-        );
-        pluginListPanel.rebuildPluginList();
-    }
+	@Override
+	protected void startUp() throws Exception
+	{
+		PluginListPanel pluginListPanel = pluginListPanelProvider.get();
+		pluginListPanel.addFakePlugin(
+				new PluginConfigurationDescriptor(
+						getPluginName(), getPluginDescription(), getPluginTags(),
+						getConfig(), configManager.getConfigDescriptor(getConfig())
+				)
+		);
+		pluginListPanel.rebuildPluginList();
+	}
 
-    protected abstract Config getConfig();
+	protected abstract Config getConfig();
 
-    protected abstract String getPluginName();
+	protected abstract String getPluginName();
 
-    protected abstract String getPluginDescription();
+	protected abstract String getPluginDescription();
 
-    protected abstract String[] getPluginTags();
+	protected abstract String[] getPluginTags();
 }

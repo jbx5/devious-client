@@ -426,7 +426,8 @@ public enum Quest
 			return QuestState.IN_PROGRESS;
 		}
 
-		return GameThread.invokeLater(() -> {
+		return GameThread.invokeLater(() ->
+		{
 			client.runScript(ScriptID.QUEST_STATUS_GET, id);
 			switch (client.getIntStack()[0])
 			{

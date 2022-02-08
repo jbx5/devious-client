@@ -135,7 +135,8 @@ public class NPCPackets
 		client.getPacketWriter().queuePacket(packetBufferNode);
 	}
 
-    public static void spellOnNpc(int widgetId, NPC npc, boolean b) {
+	public static void spellOnNpc(int widgetId, NPC npc, boolean b)
+	{
 		queueSpellOnNpcPacket(npc.getIndex(), widgetId, b);
-    }
+	}
 }
