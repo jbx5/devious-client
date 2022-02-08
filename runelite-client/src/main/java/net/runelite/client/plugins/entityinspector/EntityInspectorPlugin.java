@@ -2,6 +2,7 @@ package net.runelite.client.plugins.entityinspector;
 
 import com.google.inject.Provides;
 import dev.hoot.api.events.PacketSent;
+import lombok.extern.slf4j.Slf4j;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.plugins.Plugin;
@@ -15,6 +16,7 @@ import javax.inject.Inject;
 		description = "Shows entity information",
 		enabledByDefault = false
 )
+@Slf4j
 public class EntityInspectorPlugin extends Plugin
 {
 	@Inject
@@ -52,6 +54,6 @@ public class EntityInspectorPlugin extends Plugin
 			return;
 		}
 
-		System.out.println(e.hexDump());
+		log.info(e.hexDump());
 	}
 }
