@@ -3,6 +3,7 @@ package net.runelite.client.plugins.worldwalker;
 import dev.hoot.api.entities.Players;
 import dev.hoot.api.game.Game;
 import dev.hoot.api.movement.Movement;
+import dev.hoot.api.movement.pathfinder.Walker;
 import dev.hoot.api.utils.CoordUtils;
 import dev.hoot.api.widgets.Widgets;
 import lombok.extern.slf4j.Slf4j;
@@ -104,8 +105,13 @@ public class WorldWalkerPlugin extends Plugin
                 .setTarget(event.getTarget())
                 .setType(MenuAction.RUNELITE)
                 .onClick(e -> {
-                    mapPoint = CoordUtils.worldMapToWorldPoint(Game.getClient().getMouseCanvasPosition());
-                    log.debug("Walking to {}", mapPoint);
+                    setMapPoint(CoordUtils.worldMapToWorldPoint(Game.getClient().getMouseCanvasPosition()));
                 });
+    }
+
+    private void setMapPoint(WorldPoint wp)
+    {
+        mapPoint = Walker.nearestWalkableTile(wp);
+        log.debug("Walking to {}", mapPoint);
     }
 }
