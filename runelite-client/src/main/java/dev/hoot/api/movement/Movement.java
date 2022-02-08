@@ -68,6 +68,11 @@ public class Movement
 	public static WorldPoint getDestination()
 	{
 		Client client = Game.getClient();
+		if (client.getDestinationX() == 0 && client.getDestinationY() == 0)
+		{
+			return null;
+		}
+
 		return new WorldPoint(
 				client.getDestinationX() + client.getBaseX(),
 				client.getDestinationY() + client.getBaseY(),
@@ -78,10 +83,10 @@ public class Movement
 	public static boolean isWalking()
 	{
 		Player local = Players.getLocal();
-		LocalPoint destination = Game.getClient().getLocalDestinationLocation();
+		WorldPoint destination = getDestination();
 		return local.isMoving()
 				&& destination != null
-				&& destination.distanceTo(local.getLocalLocation()) > 4;
+				&& destination.distanceTo(local) > 4;
 	}
 
 	public static void walk(WorldPoint worldPoint)
@@ -146,8 +151,10 @@ public class Movement
 			{
 				continue;
 			}
+
 			losPoints.add(point);
 		}
+
 		WorldPoint walkPoint = losPoints.get(Rand.nextInt(0, walkPointList.size() - 1));
 		Movement.walk(walkPoint);
 	}
@@ -263,6 +270,7 @@ public class Movement
 				distance += Math.max(Math.abs(prev.getX() - current.getX()), Math.abs(prev.getY() - current.getY()));
 			}
 		}
+
 		return distance;
 	}
 
