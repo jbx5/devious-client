@@ -67,7 +67,7 @@ public class Walker
 			return true;
 		}
 
-		if (destination.isInScene(Game.getClient()))
+		if (destination.isInScene(Game.getClient()) && Reachable.isWalkable(destination))
 		{
 			Movement.walk(destination);
 			return false;

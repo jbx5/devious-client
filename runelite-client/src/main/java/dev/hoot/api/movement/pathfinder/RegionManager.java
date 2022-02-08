@@ -87,6 +87,13 @@ public class RegionManager
 			return;
 		}
 
+		List<Direction> cardinalDirections = List.of(
+				Direction.NORTH,
+				Direction.SOUTH,
+				Direction.EAST,
+				Direction.WEST
+		);
+
 		CollisionData[] col = Game.getClient().getCollisionMaps();
 		if (col == null)
 		{
@@ -164,26 +171,32 @@ public class RegionManager
 				List<Transport> transports = transportLinks.get(tileCoords);
 				if (plane == Game.getClient().getPlane())
 				{
-					for (Direction direction : Direction.values())
+					if (tileFlag.getFlag() == CollisionDataFlag.BLOCK_MOVEMENT_FULL
+							&& cardinalDirections.stream().anyMatch(dir -> Reachable.hasDoor(tile, dir)))
 					{
-						switch (direction)
+						tileFlag.setFlag(tileFlag.getFlag() - CollisionDataFlag.BLOCK_MOVEMENT_NORTH - CollisionDataFlag.BLOCK_MOVEMENT_EAST);
+					}
+					else
+					{
+						for (Direction direction : Direction.values())
 						{
-							case NORTH:
-								if ((Reachable.hasDoor(tile, direction) || Reachable.hasDoor(northernTile, Direction.SOUTH))
-										&& !isTransport(transports, tileCoords, northernTile))
-								{
-									tileFlag.setFlag(tileFlag.getFlag() - CollisionDataFlag.BLOCK_MOVEMENT_NORTH);
-								}
-
-								break;
-							case EAST:
-								if ((Reachable.hasDoor(tile, direction) || Reachable.hasDoor(easternTile, Direction.WEST))
-										&& !isTransport(transports, tileCoords, easternTile))
-								{
-									tileFlag.setFlag(tileFlag.getFlag() - CollisionDataFlag.BLOCK_MOVEMENT_EAST);
-								}
-
-								break;
+							switch (direction)
+							{
+								case NORTH:
+									if ((Reachable.hasDoor(tile, direction) || Reachable.hasDoor(northernTile, Direction.SOUTH))
+											&& !isTransport(transports, tileCoords, northernTile))
+									{
+										tileFlag.setFlag(tileFlag.getFlag() - CollisionDataFlag.BLOCK_MOVEMENT_NORTH);
+									}
+									break;
+								case EAST:
+									if ((Reachable.hasDoor(tile, direction) || Reachable.hasDoor(easternTile, Direction.WEST))
+											&& !isTransport(transports, tileCoords, easternTile))
+									{
+										tileFlag.setFlag(tileFlag.getFlag() - CollisionDataFlag.BLOCK_MOVEMENT_EAST);
+									}
+									break;
+							}
 						}
 					}
 				}
