@@ -26,8 +26,19 @@ package dev.hoot.bot;
 
 import dev.hoot.bot.ui.BotUI;
 import lombok.extern.slf4j.Slf4j;
-import net.runelite.api.*;
-import net.runelite.api.events.*;
+import net.runelite.api.BufferProvider;
+import net.runelite.api.Client;
+import net.runelite.api.MainBufferProvider;
+import net.runelite.api.RenderOverview;
+import net.runelite.api.Renderable;
+import net.runelite.api.Skill;
+import net.runelite.api.WorldMapManager;
+import net.runelite.api.events.BeforeMenuRender;
+import net.runelite.api.events.BeforeRender;
+import net.runelite.api.events.FakeXpDrop;
+import net.runelite.api.events.GameStateChanged;
+import net.runelite.api.events.GameTick;
+import net.runelite.api.events.ScriptCallbackEvent;
 import net.runelite.api.hooks.Callbacks;
 import net.runelite.api.hooks.DrawCallbacks;
 import net.runelite.api.widgets.Widget;
@@ -316,10 +327,10 @@ public class BotHooks implements Callbacks
 			log.warn("Error during overlay rendering", ex);
 		}
 
-//		notifier.processFlash(graphics2d);
+		//		notifier.processFlash(graphics2d);
 
 		// Draw clientUI overlays
-//		botUI.paintOverlays(graphics2d);
+		//		botUI.paintOverlays(graphics2d);
 
 		if (client.isGpu())
 		{

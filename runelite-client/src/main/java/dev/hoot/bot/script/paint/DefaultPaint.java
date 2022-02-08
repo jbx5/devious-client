@@ -5,7 +5,11 @@ import com.openosrs.client.ui.overlay.components.table.TableComponent;
 import dev.hoot.api.commons.StopWatch;
 import dev.hoot.api.game.Skills;
 import net.runelite.api.Skill;
-import net.runelite.client.ui.overlay.*;
+import net.runelite.client.ui.overlay.Overlay;
+import net.runelite.client.ui.overlay.OverlayLayer;
+import net.runelite.client.ui.overlay.OverlayPosition;
+import net.runelite.client.ui.overlay.OverlayPriority;
+import net.runelite.client.ui.overlay.RenderableEntity;
 import net.runelite.client.ui.overlay.components.PanelComponent;
 import net.runelite.client.ui.overlay.components.TitleComponent;
 

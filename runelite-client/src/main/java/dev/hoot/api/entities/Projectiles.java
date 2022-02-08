@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 public class Projectiles
 {
@@ -22,8 +21,10 @@ public class Projectiles
 	public static List<Projectile> getAll(Predicate<Projectile> filter)
 	{
 		List<Projectile> out = new ArrayList<>();
-		Game.getClient().getProjectiles().forEach(p -> {
-			if (filter.test(p)) {
+		Game.getClient().getProjectiles().forEach(p ->
+		{
+			if (filter.test(p))
+			{
 				out.add(p);
 			}
 		});

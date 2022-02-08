@@ -21,9 +21,11 @@ import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 import java.awt.*;
-import java.awt.Point;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.EnumSet;
 import java.util.List;
-import java.util.*;
 import java.util.function.Predicate;
 
 public class Worlds

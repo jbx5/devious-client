@@ -3,7 +3,6 @@ package dev.hoot.bot.devtools;
 import dev.hoot.api.SceneEntity;
 import dev.hoot.api.coords.RegionPoint;
 import dev.hoot.api.coords.ScenePoint;
-import dev.hoot.api.entities.Entities;
 import dev.hoot.api.entities.NPCs;
 import dev.hoot.api.entities.Players;
 import dev.hoot.api.entities.Projectiles;
@@ -290,8 +289,7 @@ public class EntityRenderer
 					,
 					worldLocation.getX(), worldLocation.getY(), worldLocation.getPlane(),
 					worldLocation.getRegionID(), worldLocation.getRegionX(), worldLocation.getRegionY(),
-					scenePoint.getX(), scenePoint.getY())
-					;
+					scenePoint.getX(), scenePoint.getY());
 			tooltipManager.add(new Tooltip(tooltip));
 			OverlayUtil.renderPolygon(graphics, poly, GREEN);
 		}

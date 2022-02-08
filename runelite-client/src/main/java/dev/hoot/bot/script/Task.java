@@ -2,17 +2,17 @@ package dev.hoot.bot.script;
 
 public interface Task
 {
-    boolean validate();
+	boolean validate();
 
-    int execute();
+	int execute();
 
-    default boolean isBlocking()
-    {
-        return true;
-    }
+	default boolean isBlocking()
+	{
+		return true;
+	}
 
-    default boolean subscribe()
-    {
-        return false;
-    }
+	default boolean subscribe()
+	{
+		return false;
+	}
 }
