@@ -4,81 +4,73 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-
 @ObfuscatedName("cu")
 @Implements("MouseRecorder")
 public class MouseRecorder implements Runnable {
-	@ObfuscatedName("c")
-	@Export("isRunning")
-	boolean isRunning;
-	@ObfuscatedName("l")
-	@Export("lock")
-	Object lock;
-	@ObfuscatedName("s")
-	@ObfuscatedGetter(
-		intValue = 28944215
-	)
-	@Export("index")
-	int index;
-	@ObfuscatedName("e")
-	@Export("xs")
-	int[] xs;
-	@ObfuscatedName("r")
-	@Export("ys")
-	int[] ys;
-	@ObfuscatedName("o")
-	@Export("millis")
-	long[] millis;
+    @ObfuscatedName("c")
+    @Export("isRunning")
+    boolean isRunning;
 
-	MouseRecorder() {
-		this.isRunning = true; // L: 7
-		this.lock = new Object(); // L: 8
-		this.index = 0; // L: 9
-		this.xs = new int[500]; // L: 10
-		this.ys = new int[500]; // L: 11
-		this.millis = new long[500]; // L: 12
-	} // L: 14
+    @ObfuscatedName("l")
+    @Export("lock")
+    Object lock;
 
-	public void run() {
-		for (; this.isRunning; Language.method5813(50L)) { // L: 18 27
-			synchronized(this.lock) { // L: 19
-				if (this.index < 500) { // L: 20
-					this.xs[this.index] = MouseHandler.MouseHandler_x; // L: 21
-					this.ys[this.index] = MouseHandler.MouseHandler_y; // L: 22
-					this.millis[this.index] = MouseHandler.MouseHandler_millis; // L: 23
-					++this.index; // L: 24
-				}
-			}
-		}
+    @ObfuscatedName("s")
+    @ObfuscatedGetter(intValue = 28944215)
+    @Export("index")
+    int index;
 
-	} // L: 29
+    @ObfuscatedName("e")
+    @Export("xs")
+    int[] xs;
 
-	@ObfuscatedName("w")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-122"
-	)
-	public static void method2100() {
-		StructComposition.StructDefinition_cached.clear(); // L: 57
-	} // L: 58
+    @ObfuscatedName("r")
+    @Export("ys")
+    int[] ys;
 
-	@ObfuscatedName("kz")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1953012058"
-	)
-	@Export("FriendSystem_invalidateIgnoreds")
-	static final void FriendSystem_invalidateIgnoreds() {
-		Iterator var0 = Messages.Messages_hashTable.iterator(); // L: 11885
+    @ObfuscatedName("o")
+    @Export("millis")
+    long[] millis;
 
-		while (var0.hasNext()) { // L: 11890
-			Message var1 = (Message)var0.next(); // L: 11886
-			var1.clearIsFromIgnored(); // L: 11888
-		}
+    MouseRecorder() {
+        this.isRunning = true;
+        this.lock = new Object();
+        this.index = 0;
+        this.xs = new int[500];
+        this.ys = new int[500];
+        this.millis = new long[500];
+    }
 
-		if (class67.friendsChat != null) { // L: 11892
-			class67.friendsChat.invalidateIgnoreds(); // L: 11893
-		}
+    public void run() {
+        for (; this.isRunning; Language.method5813(50L)) {
+            synchronized(this.lock) {
+                if (this.index < 500) {
+                    this.xs[this.index] = MouseHandler.MouseHandler_x;
+                    this.ys[this.index] = MouseHandler.MouseHandler_y;
+                    this.millis[this.index] = MouseHandler.MouseHandler_millis;
+                    ++this.index;
+                }
+            }
+        }
+    }
 
-	} // L: 11895
+    @ObfuscatedName("w")
+    @ObfuscatedSignature(descriptor = "(B)V", garbageValue = "-122")
+    public static void method2100() {
+        StructComposition.StructDefinition_cached.clear();
+    }
+
+    @ObfuscatedName("kz")
+    @ObfuscatedSignature(descriptor = "(I)V", garbageValue = "1953012058")
+    @Export("FriendSystem_invalidateIgnoreds")
+    static final void FriendSystem_invalidateIgnoreds() {
+        Iterator var0 = Messages.Messages_hashTable.iterator();
+        while (var0.hasNext()) {
+            Message var1 = ((Message) (var0.next()));
+            var1.clearIsFromIgnored();
+        } 
+        if (class67.friendsChat != null) {
+            class67.friendsChat.invalidateIgnoreds();
+        }
+    }
 }

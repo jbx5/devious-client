@@ -24,6 +24,7 @@
  */
 package net.runelite.mixins;
 
+import dev.hoot.api.events.ResumePauseSent;
 import net.runelite.api.DialogOption;
 import net.runelite.api.events.DialogProcessed;
 import net.runelite.api.events.DynamicObjectAnimationChanged;
@@ -107,6 +108,7 @@ public abstract class RSDynamicObjectMixin implements RSDynamicObject
 	@MethodHook("resumePauseWidget")
 	public static void onDialogProcessed(int widgetUid, int menuIndex)
 	{
+		client.getCallbacks().post(new ResumePauseSent(widgetUid, menuIndex));
 		DialogOption dialogOption = DialogOption.of(widgetUid, menuIndex);
 		if (dialogOption != null)
 		{
