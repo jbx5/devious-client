@@ -148,4 +148,3 @@ public class RuneLiteProperties
 		return properties.getProperty(RUNELITE_CONFIG);
 	}
 }
-}
