@@ -518,7 +518,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 		}
 
 		this.isCanvasInvalid = false; // L: 271
-		this.field210 = DirectByteArrayCopier.method5318(); // L: 272
+		this.field210 = DirectByteArrayCopier.getServerTime(); // L: 272
 	} // L: 273
 
 	@ObfuscatedName("m")
@@ -560,7 +560,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 	)
 	@Export("clientTick")
 	void clientTick() {
-		long var1 = DirectByteArrayCopier.method5318(); // L: 336
+		long var1 = DirectByteArrayCopier.getServerTime(); // L: 336
 		long var3 = clientTickTimes[SpriteMask.field3215]; // L: 337
 		clientTickTimes[SpriteMask.field3215] = var1; // L: 338
 		SpriteMask.field3215 = SpriteMask.field3215 + 1 & 31; // L: 339
@@ -582,7 +582,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 	@Export("graphicsTick")
 	void graphicsTick() {
 		Container var1 = this.container(); // L: 348
-		long var2 = DirectByteArrayCopier.method5318(); // L: 349
+		long var2 = DirectByteArrayCopier.getServerTime(); // L: 349
 		long var4 = graphicsTickTimes[class12.field74]; // L: 350
 		graphicsTickTimes[class12.field74] = var2; // L: 351
 		class12.field74 = class12.field74 + 1 & 31; // L: 352
@@ -844,7 +844,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 
 	public final void destroy() {
 		if (this == gameEngine && !isKilled) { // L: 434
-			stopTimeMs = DirectByteArrayCopier.method5318(); // L: 435
+			stopTimeMs = DirectByteArrayCopier.getServerTime(); // L: 435
 			Language.method5813(5000L); // L: 436
 			this.kill(); // L: 437
 		}
@@ -853,7 +853,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 	public final synchronized void paint(Graphics var1) {
 		if (this == gameEngine && !isKilled) { // L: 447
 			this.fullRedraw = true; // L: 448
-			if (DirectByteArrayCopier.method5318() - this.field210 > 1000L) { // L: 449
+			if (DirectByteArrayCopier.getServerTime() - this.field210 > 1000L) { // L: 449
 				Rectangle var2 = var1.getClipBounds(); // L: 450
 				if (var2 == null || var2.width >= DirectByteArrayCopier.canvasWidth && var2.height >= NPC.canvasHeight) {
 					this.isCanvasInvalid = true; // L: 451
@@ -903,7 +903,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 
 			clock = (Clock)var8; // L: 320
 
-			while (stopTimeMs == 0L || DirectByteArrayCopier.method5318() < stopTimeMs) { // L: 321
+			while (stopTimeMs == 0L || DirectByteArrayCopier.getServerTime() < stopTimeMs) { // L: 321
 				class147.gameCyclesToDo = clock.wait(cycleDurationMillis, fiveOrOne); // L: 322
 
 				for (int var5 = 0; var5 < class147.gameCyclesToDo; ++var5) { // L: 323
@@ -962,7 +962,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 
 	public final void stop() {
 		if (this == gameEngine && !isKilled) { // L: 428
-			stopTimeMs = DirectByteArrayCopier.method5318() + 4000L; // L: 429
+			stopTimeMs = DirectByteArrayCopier.getServerTime() + 4000L; // L: 429
 		}
 	} // L: 430
 

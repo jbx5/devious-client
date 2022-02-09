@@ -32,7 +32,7 @@ public class FriendLoginUpdate extends Link {
 		descriptor = "(Lpb;I)V"
 	)
 	FriendLoginUpdate(Username var1, int var2) {
-		this.field4148 = (int)(DirectByteArrayCopier.method5318() / 1000L); // L: 109
+		this.field4148 = (int)(DirectByteArrayCopier.getServerTime() / 1000L); // L: 109
 		this.username = var1; // L: 110
 		this.world = (short)var2; // L: 111
 	} // L: 112

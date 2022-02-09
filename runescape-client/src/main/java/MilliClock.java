@@ -46,7 +46,7 @@ public class MilliClock extends Clock {
 		this.field1723 = 256; // L: 15
 		this.field1722 = 1; // L: 16
 		this.field1726 = 0; // L: 17
-		this.field1728 = DirectByteArrayCopier.method5318(); // L: 18
+		this.field1728 = DirectByteArrayCopier.getServerTime(); // L: 18
 
 		for (int var1 = 0; var1 < 10; ++var1) { // L: 19
 			this.field1725[var1] = this.field1728; // L: 20
@@ -78,7 +78,7 @@ public class MilliClock extends Clock {
 		int var4 = this.field1722; // L: 32
 		this.field1723 = 300; // L: 33
 		this.field1722 = 1;
-		this.field1728 = DirectByteArrayCopier.method5318(); // L: 35
+		this.field1728 = DirectByteArrayCopier.getServerTime(); // L: 35
 		if (0L == this.field1725[this.field1727]) {
 			this.field1723 = var3; // L: 37
 			this.field1722 = var4; // L: 38

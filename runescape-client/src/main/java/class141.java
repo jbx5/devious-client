@@ -198,7 +198,7 @@ public class class141 extends class126 {
 					} else if (var0 == ScriptOpcodes.TRADINGPOST_GETOFFERAGE) { // L: 2802
 						var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]; // L: 2803
 						var4 = (GrandExchangeEvent)class135.grandExchangeEvents.events.get(var3); // L: 2804
-						long var5 = DirectByteArrayCopier.method5318() - class140.field1626 - var4.age; // L: 2805
+						long var5 = DirectByteArrayCopier.getServerTime() - class140.field1626 - var4.age; // L: 2805
 						int var7 = (int)(var5 / 3600000L); // L: 2806
 						int var8 = (int)((var5 - (long)(var7 * 3600000)) / 60000L); // L: 2807
 						int var9 = (int)((var5 - (long)(var7 * 3600000) - (long)(var8 * 60000)) / 1000L); // L: 2808

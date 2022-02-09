@@ -425,7 +425,7 @@ public class WorldMap {
 		garbageValue = "-873462170"
 	)
 	public void method6886(int var1, int var2, boolean var3, boolean var4) {
-		long var5 = DirectByteArrayCopier.method5318(); // L: 180
+		long var5 = DirectByteArrayCopier.getServerTime(); // L: 180
 		this.method7035(var1, var2, var4, var5); // L: 181
 		if (this.hasTarget() || !var4 && !var3) { // L: 182
 			this.method7043(); // L: 196
@@ -542,7 +542,7 @@ public class WorldMap {
 	final void setWorldMapPosition(int var1, int var2, boolean var3) {
 		this.centerTileX = var1; // L: 268
 		this.centerTileY = var2; // L: 269
-		DirectByteArrayCopier.method5318(); // L: 270
+		DirectByteArrayCopier.getServerTime(); // L: 270
 		if (var3) {
 			this.method7043(); // L: 271
 		}

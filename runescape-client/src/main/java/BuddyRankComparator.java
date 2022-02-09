@@ -69,7 +69,7 @@ public class BuddyRankComparator extends AbstractUserComparator {
 		}
 
 		if (GameEngine.garbageCollector != null) { // L: 594
-			long var9 = DirectByteArrayCopier.method5318(); // L: 595
+			long var9 = DirectByteArrayCopier.getServerTime(); // L: 595
 			long var3 = GameEngine.garbageCollector.getCollectionTime(); // L: 596
 			if (GameEngine.garbageCollectorLastCollectionTime != -1L) { // L: 597
 				long var5 = var3 - GameEngine.garbageCollectorLastCollectionTime; // L: 598

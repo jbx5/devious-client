@@ -90,7 +90,7 @@ public class FriendSystem {
 	@Export("processFriendUpdates")
 	final void processFriendUpdates() {
 		for (FriendLoginUpdate var1 = (FriendLoginUpdate)this.friendsList.friendLoginUpdates.last(); var1 != null; var1 = (FriendLoginUpdate)this.friendsList.friendLoginUpdates.previous()) { // L: 46
-			if ((long)var1.field4148 < DirectByteArrayCopier.method5318() / 1000L - 5L) { // L: 47
+			if ((long)var1.field4148 < DirectByteArrayCopier.getServerTime() / 1000L - 5L) { // L: 47
 				if (var1.world > 0) {
 					LoginScreenAnimation.addGameMessage(5, "", var1.username + " has logged in."); // L: 48
 				}

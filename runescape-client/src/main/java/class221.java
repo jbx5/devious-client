@@ -199,7 +199,7 @@ public class class221 implements WorldMapSection {
 			Login.field918 = 1; // L: 2649
 		} else if (var0 == 4) { // L: 2651
 			Player.method2159(14); // L: 2653
-			Login.field914 = 0; // L: 2654
+			Login.Login_banType = 0; // L: 2654
 		} else if (var0 == 5) { // L: 2657
 			Login.field918 = 2; // L: 2658
 			UserComparator7.setLoginResponseString("Your account has not logged out from its last", "session or the server is too busy right now.", "Please try again in a few minutes."); // L: 2659
@@ -227,7 +227,7 @@ public class class221 implements WorldMapSection {
 			UserComparator7.setLoginResponseString("You are standing in a members-only area.", "To play on this world move to a free area first", "");
 		} else if (var0 == 18) { // L: 2674
 			Player.method2159(14); // L: 2676
-			Login.field914 = 1; // L: 2677
+			Login.Login_banType = 1; // L: 2677
 		} else if (var0 == 19) { // L: 2680
 			UserComparator7.setLoginResponseString("This world is running a closed Beta.", "Sorry invited players only.", "Please use a different world.");
 		} else if (var0 == 20) { // L: 2681

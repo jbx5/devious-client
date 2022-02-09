@@ -1635,7 +1635,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 	)
 	@Export("resizeGame")
 	protected final void resizeGame() {
-		field764 = DirectByteArrayCopier.method5318() + 500L; // L: 4161
+		field764 = DirectByteArrayCopier.getServerTime() + 500L; // L: 4161
 		this.resizeJS(); // L: 4162
 		if (rootInterface != -1) { // L: 4163
 			this.resizeRoot(true);
@@ -1832,7 +1832,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 			PacketBufferNode.pcmPlayer0.tryDiscard();
 		}
 
-		if ((gameState == 10 || gameState == 20 || gameState == 30) && 0L != field764 && DirectByteArrayCopier.method5318() > field764) { // L: 1010 1011
+		if ((gameState == 10 || gameState == 20 || gameState == 30) && 0L != field764 && DirectByteArrayCopier.getServerTime() > field764) { // L: 1010 1011
 			WorldMapLabelSize.setWindowedMode(class339.getWindowedMode()); // L: 1012
 		}
 
@@ -2012,7 +2012,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 	@Export("doCycleJs5")
 	void doCycleJs5() {
 		if (gameState != 1000) { // L: 1138
-			long var2 = DirectByteArrayCopier.method5318(); // L: 1141
+			long var2 = DirectByteArrayCopier.getServerTime(); // L: 1141
 			int var4 = (int)(var2 - NetCache.field3911); // L: 1142
 			NetCache.field3911 = var2; // L: 1143
 			if (var4 > 200) { // L: 1144
@@ -2289,7 +2289,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 						var11.writeInt(203); // L: 1345
 						WorldMapCacheName.js5Socket.write(var11.array, 0, 5); // L: 1346
 						++js5ConnectState; // L: 1347
-						UserComparator8.field1347 = DirectByteArrayCopier.method5318(); // L: 1348
+						UserComparator8.field1347 = DirectByteArrayCopier.getServerTime(); // L: 1348
 					}
 
 					if (js5ConnectState == 3) { // L: 1350
@@ -2301,7 +2301,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 							}
 
 							++js5ConnectState; // L: 1357
-						} else if (DirectByteArrayCopier.method5318() - UserComparator8.field1347 > 30000L) { // L: 1360
+						} else if (DirectByteArrayCopier.getServerTime() - UserComparator8.field1347 > 30000L) { // L: 1360
 							this.js5Error(-2); // L: 1361
 							return; // L: 1362
 						}
@@ -2351,7 +2351,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 										}
 
 										NetCache.NetCache_loadTime = 0; // L: 1415
-										NetCache.field3911 = DirectByteArrayCopier.method5318(); // L: 1416
+										NetCache.field3911 = DirectByteArrayCopier.getServerTime(); // L: 1416
 										FontName.js5SocketTask = null; // L: 1418
 										WorldMapCacheName.js5Socket = null; // L: 1419
 										js5ConnectState = 0; // L: 1420
@@ -3259,7 +3259,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 					var14 = class135.getPacketBufferNode(ClientPacket.field2882, packetWriter.isaacCipher); // L: 2991
 					var14.packetBuffer.writeShort(0); // L: 2992
 					var2 = var14.packetBuffer.offset; // L: 2993
-					long var19 = DirectByteArrayCopier.method5318(); // L: 2994
+					long var19 = DirectByteArrayCopier.getServerTime(); // L: 2994
 
 					for (var5 = 0; var5 < KeyHandler.field139; ++var5) { // L: 2995
 						long var21 = var19 - field685; // L: 2996
@@ -4597,7 +4597,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 				if (ServerPacket.field3025 == var1.serverPacket) { // L: 6313
 					var72 = var3.readUnsignedByte() == 1; // L: 6314
 					if (var72) { // L: 6315
-						class140.field1626 = DirectByteArrayCopier.method5318() - var3.readLong(); // L: 6316
+						class140.field1626 = DirectByteArrayCopier.getServerTime() - var3.readLong(); // L: 6316
 						class135.grandExchangeEvents = new GrandExchangeEvents(var3, true); // L: 6317
 					} else {
 						class135.grandExchangeEvents = null; // L: 6319

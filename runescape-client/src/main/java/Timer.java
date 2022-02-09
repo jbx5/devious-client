@@ -74,7 +74,7 @@ public class Timer {
 		garbageValue = "-204571477"
 	)
 	public void method6230() {
-		this.field4091 = DirectByteArrayCopier.method5318(); // L: 19
+		this.field4091 = DirectByteArrayCopier.getServerTime(); // L: 19
 	} // L: 20
 
 	@ObfuscatedName("l")
@@ -84,7 +84,7 @@ public class Timer {
 	)
 	public void method6243() {
 		if (this.field4091 != -1L) { // L: 23
-			this.field4089 = DirectByteArrayCopier.method5318() - this.field4091; // L: 24
+			this.field4089 = DirectByteArrayCopier.getServerTime() - this.field4091; // L: 24
 			this.field4091 = -1L; // L: 25
 		}
 
@@ -96,7 +96,7 @@ public class Timer {
 		garbageValue = "-1216107861"
 	)
 	public void method6232(int var1) {
-		this.field4086 = DirectByteArrayCopier.method5318(); // L: 30
+		this.field4086 = DirectByteArrayCopier.getServerTime(); // L: 30
 		this.field4090 = var1; // L: 31
 	} // L: 32
 
@@ -107,7 +107,7 @@ public class Timer {
 	)
 	public void method6240() {
 		if (this.field4086 != -1L) { // L: 35
-			this.field4088 = DirectByteArrayCopier.method5318() - this.field4086; // L: 36
+			this.field4088 = DirectByteArrayCopier.getServerTime() - this.field4086; // L: 36
 			this.field4086 = -1L; // L: 37
 		}
 

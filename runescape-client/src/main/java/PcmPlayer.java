@@ -106,7 +106,7 @@ public class PcmPlayer {
 
 	protected PcmPlayer() {
 		this.field293 = 32; // L: 22
-		this.timeMs = DirectByteArrayCopier.method5318();
+		this.timeMs = DirectByteArrayCopier.getServerTime();
 		this.field298 = 0L;
 		this.field299 = 0;
 		this.field288 = 0;
@@ -187,7 +187,7 @@ public class PcmPlayer {
 	@Export("run")
 	public final synchronized void run() {
 		if (this.samples != null) { // L: 83
-			long var1 = DirectByteArrayCopier.method5318(); // L: 84
+			long var1 = DirectByteArrayCopier.getServerTime(); // L: 84
 
 			try {
 				if (0L != this.field298) { // L: 86
@@ -294,7 +294,7 @@ public class PcmPlayer {
 			this.discard(); // L: 152
 		} catch (Exception var2) { // L: 154
 			this.close(); // L: 155
-			this.field298 = DirectByteArrayCopier.method5318() + 2000L; // L: 156
+			this.field298 = DirectByteArrayCopier.getServerTime() + 2000L; // L: 156
 		}
 
 	} // L: 158
@@ -459,7 +459,7 @@ public class PcmPlayer {
 			this.stream.fill(var1, 0, var2); // L: 261
 		}
 
-		this.timeMs = DirectByteArrayCopier.method5318(); // L: 262
+		this.timeMs = DirectByteArrayCopier.getServerTime(); // L: 262
 	} // L: 263
 
 	@ObfuscatedName("al")

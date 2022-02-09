@@ -757,7 +757,7 @@ public final class ObjectSound extends Node {
 						String var24 = ""; // L: 1908
 						var5 = ""; // L: 1909
 						String var6 = ""; // L: 1910
-						switch(Login.field914) { // L: 1911
+						switch(Login.Login_banType) { // L: 1911
 						case 0:
 							var24 = "Your account has been disabled."; // L: 1914
 							var5 = Strings.field3634; // L: 1915

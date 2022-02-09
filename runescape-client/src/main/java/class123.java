@@ -119,7 +119,7 @@ public class class123 extends class126 {
 				var3 = var3 + "; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0";
 			} else {
 				String var4 = var3 + "; Expires="; // L: 12021
-				long var6 = DirectByteArrayCopier.method5318() + 94608000000L; // L: 12023
+				long var6 = DirectByteArrayCopier.getServerTime() + 94608000000L; // L: 12023
 				Calendar.Calendar_calendar.setTime(new Date(var6)); // L: 12025
 				int var8 = Calendar.Calendar_calendar.get(7); // L: 12026
 				int var9 = Calendar.Calendar_calendar.get(5); // L: 12027

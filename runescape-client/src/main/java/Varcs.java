@@ -226,7 +226,7 @@ public class Varcs {
 		}
 
 		this.unwrittenChanges = false; // L: 137
-		this.field1298 = DirectByteArrayCopier.method5318(); // L: 138
+		this.field1298 = DirectByteArrayCopier.getServerTime(); // L: 138
 	} // L: 139
 
 	@ObfuscatedName("a")
@@ -328,7 +328,7 @@ public class Varcs {
 	)
 	@Export("tryWrite")
 	void tryWrite() {
-		if (this.unwrittenChanges && this.field1298 < DirectByteArrayCopier.method5318() - 60000L) { // L: 194
+		if (this.unwrittenChanges && this.field1298 < DirectByteArrayCopier.getServerTime() - 60000L) { // L: 194
 			this.write(); // L: 195
 		}
 

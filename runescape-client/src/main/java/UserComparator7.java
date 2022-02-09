@@ -176,10 +176,10 @@ public class UserComparator7 extends AbstractUserComparator {
 
 			if (Client.gameState != 5) { // L: 411
 				if (-1L == Login.field922) { // L: 412
-					Login.field922 = DirectByteArrayCopier.method5318() + 1000L; // L: 413
+					Login.field922 = DirectByteArrayCopier.getServerTime() + 1000L; // L: 413
 				}
 
-				long var23 = DirectByteArrayCopier.method5318(); // L: 415
+				long var23 = DirectByteArrayCopier.getServerTime(); // L: 415
 				boolean var44;
 				if (Client.archiveLoaders != null && Client.archiveLoadersDone < Client.archiveLoaders.size()) { // L: 418
 					while (true) {
@@ -967,7 +967,7 @@ public class UserComparator7 extends AbstractUserComparator {
 											}
 										} else if (Login.loginIndex == 14) { // L: 1134
 											String var39 = ""; // L: 1135
-											switch(Login.field914) { // L: 1136
+											switch(Login.Login_banType) { // L: 1136
 											case 0:
 												var39 = "https://support.runescape.com/hc/en-gb/articles/115002238729-Account-Bans"; // L: 1141
 												break; // L: 1142

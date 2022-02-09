@@ -54,7 +54,7 @@ public class DirectByteArrayCopier extends AbstractByteArrayCopier {
 		descriptor = "(I)J",
 		garbageValue = "2011171655"
 	)
-	public static final synchronized long method5318() {
+	public static final synchronized long getServerTime() {
 		long var0 = System.currentTimeMillis(); // L: 14
 		if (var0 < class261.field3087) { // L: 15
 			class261.field3083 += class261.field3087 - var0; // L: 16
