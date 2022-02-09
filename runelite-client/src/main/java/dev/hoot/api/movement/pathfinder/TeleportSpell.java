@@ -3,23 +3,22 @@ package dev.hoot.api.movement.pathfinder;
 import dev.hoot.api.game.Skills;
 import dev.hoot.api.game.Vars;
 import dev.hoot.api.game.Worlds;
-import dev.hoot.api.magic.Magic;
-import dev.hoot.api.magic.Regular;
-import dev.hoot.api.magic.Rune;
-import dev.hoot.api.magic.Spell;
+import dev.hoot.api.magic.*;
 import net.runelite.api.Skill;
 import net.runelite.api.coords.WorldPoint;
 
 public enum TeleportSpell
 {
-//	HOME_TELEPORT_REGULAR(
-//			Magic.SpellBook.REGULAR,
-//			Regular.HOME_TELEPORT,
-//			1,
-//			new WorldPoint(3221, 3218, 0),
-//			false,
-//			"Lumbridge Home Teleport"
-//	),
+	TELEPORT_TO_HOUSE(
+			Magic.SpellBook.REGULAR,
+			Regular.TELEPORT_TO_HOUSE,
+			40,
+			null,
+			true,
+			"Teleport to House",
+			new RuneRequirement(1, Rune.LAW),
+			new RuneRequirement(1, Rune.AIR),
+			new RuneRequirement(1, Rune.EARTH)),
 	VARROCK_TELEPORT(
 			Magic.SpellBook.REGULAR,
 			Regular.VARROCK_TELEPORT,
@@ -67,7 +66,196 @@ public enum TeleportSpell
 			true,
 			"Ardougne Teleport",
 			new RuneRequirement(2, Rune.LAW),
-			new RuneRequirement(2, Rune.WATER));
+			new RuneRequirement(2, Rune.WATER)),
+	WATCHTOWER_TELEPORT(
+			Magic.SpellBook.REGULAR,
+			Regular.WATCHTOWER_TELEPORT,
+			58,
+			new WorldPoint(2931, 4717, 2),
+			true,
+			"Watchtower Teleport",
+			new RuneRequirement(2, Rune.LAW),
+			new RuneRequirement(2, Rune.EARTH)),
+	TROLLHEIM_TELEPORT(
+			Magic.SpellBook.REGULAR,
+			Regular.TROLLHEIM_TELEPORT,
+			61,
+			new WorldPoint(2888,367,0),
+			true,
+			"Trollheim Teleport",
+			new RuneRequirement(2, Rune.LAW),
+			new RuneRequirement(2, Rune.FIRE)),
+	TELEPORT_TO_KOUREND(
+			Magic.SpellBook.REGULAR,
+			Regular.TELEPORT_TO_KOUREND,
+			69,
+			new WorldPoint(1643,3673,0),
+			true,
+			"Kourend Castle Teleport",
+			new RuneRequirement(2, Rune.LAW),
+			new RuneRequirement(2, Rune.SOUL),
+			new RuneRequirement(4, Rune.WATER),
+			new RuneRequirement(5, Rune.FIRE)),
+
+	// ANCIENT TELEPORTS
+	PADDEWWA_TELEPORT(
+			Magic.SpellBook.ANCIENT,
+			Ancient.PADDEWWA_TELEPORT,
+			54,
+			new WorldPoint(3098, 9883, 0),
+			true,
+			"Paddewwa Teleport",
+			new RuneRequirement(2, Rune.LAW),
+			new RuneRequirement(1, Rune.AIR),
+			new RuneRequirement(1, Rune.FIRE)),
+	SENNTISTEN_TELEPORT(
+			Magic.SpellBook.ANCIENT,
+			Ancient.SENNTISTEN_TELEPORT,
+			60,
+			new WorldPoint(3321, 3335, 0),
+			true,
+			"Senntisten Teleport",
+			new RuneRequirement(2, Rune.LAW),
+			new RuneRequirement(1, Rune.SOUL)),
+	KHARYRLL_TELEPORT(
+			Magic.SpellBook.ANCIENT,
+			Ancient.KHARYRLL_TELEPORT,
+			66,
+			new WorldPoint(3493, 3474, 0),
+			true,
+			"Kharyrll Teleport",
+			new RuneRequirement(2, Rune.LAW),
+			new RuneRequirement(1, Rune.BLOOD)),
+	LASSAR_TELEPORT(
+			Magic.SpellBook.ANCIENT,
+			Ancient.LASSAR_TELEPORT,
+			72,
+			new WorldPoint(3004, 3468, 0),
+			true,
+			"Lassar Teleport",
+			new RuneRequirement(2, Rune.LAW),
+			new RuneRequirement(4, Rune.WATER)),
+	DAREEYAK_TELEPORT(
+			Magic.SpellBook.ANCIENT,
+			Ancient.DAREEYAK_TELEPORT,
+			78,
+			null,
+			true,
+			"Dareeyak Teleport",
+			new RuneRequirement(2, Rune.LAW),
+			new RuneRequirement(2, Rune.AIR),
+			new RuneRequirement(3, Rune.FIRE)),
+	CARRALLANGER_TELEPORT(
+			Magic.SpellBook.ANCIENT,
+			Ancient.CARRALLANGER_TELEPORT,
+			84,
+			null,
+			true,
+			"Carrallanger Teleport",
+			new RuneRequirement(2, Rune.LAW),
+			new RuneRequirement(2, Rune.SOUL)),
+	ANNAKARL_TELEPORT(
+			Magic.SpellBook.ANCIENT,
+			Ancient.ANNAKARL_TELEPORT,
+			90,
+			null,
+			true,
+			"Annakarl Teleport",
+			new RuneRequirement(2, Rune.LAW),
+			new RuneRequirement(2, Rune.BLOOD)),
+	GHORROCK_TELEPORT(
+			Magic.SpellBook.ANCIENT,
+			Ancient.GHORROCK_TELEPORT,
+			96,
+			null,
+			true,
+			"Ghorrock Teleport",
+			new RuneRequirement(2, Rune.LAW),
+			new RuneRequirement(8, Rune.WATER)),
+
+	// LUNAR TELEPORTS
+	MOONCLAN_TELEPORT(
+			Magic.SpellBook.LUNAR,
+			Lunar.MOONCLAN_TELEPORT,
+			Lunar.MOONCLAN_TELEPORT.getLevel(),
+			new WorldPoint(2113, 3917, 0),
+			true,
+			"Moonclan Teleport",
+			new RuneRequirement(1, Rune.LAW),
+			new RuneRequirement(2, Rune.ASTRAL),
+			new RuneRequirement(2, Rune.EARTH)),
+	OURANIA_TELEPORT(
+			Magic.SpellBook.LUNAR,
+			Lunar.OURANIA_TELEPORT,
+			Lunar.OURANIA_TELEPORT.getLevel(),
+			new WorldPoint(2470, 3247, 0),
+			true,
+			"Ourania Teleport",
+			new RuneRequirement(1, Rune.LAW),
+			new RuneRequirement(2, Rune.ASTRAL),
+			new RuneRequirement(6, Rune.EARTH)),
+	WATERBIRTH_TELEPORT(
+			Magic.SpellBook.LUNAR,
+			Lunar.WATERBIRTH_TELEPORT,
+			Lunar.WATERBIRTH_TELEPORT.getLevel(),
+			new WorldPoint(2548, 3758, 0),
+			true,
+			"Waterbirth Teleport",
+			new RuneRequirement(1, Rune.LAW),
+			new RuneRequirement(2, Rune.ASTRAL),
+			new RuneRequirement(1, Rune.WATER)),
+	BARBARIAN_TELEPORT(
+			Magic.SpellBook.LUNAR,
+			Lunar.BARBARIAN_TELEPORT,
+			Lunar.BARBARIAN_TELEPORT.getLevel(),
+			new WorldPoint(2545, 3571, 0),
+			true,
+			"Barbarian Teleport",
+			new RuneRequirement(2, Rune.LAW),
+			new RuneRequirement(2, Rune.ASTRAL),
+			new RuneRequirement(3, Rune.FIRE)),
+	KHAZARD_TELEPORT(
+			Magic.SpellBook.LUNAR,
+			Lunar.KHAZARD_TELEPORT,
+			Lunar.KHAZARD_TELEPORT.getLevel(),
+			new WorldPoint(2637, 3168, 0),
+			true,
+			"Khazard Teleport",
+			new RuneRequirement(2, Rune.LAW),
+			new RuneRequirement(2, Rune.ASTRAL),
+			new RuneRequirement(4, Rune.WATER)),
+	FISHING_GUILD_TELEPORT(
+			Magic.SpellBook.LUNAR,
+			Lunar.FISHING_GUILD_TELEPORT,
+			Lunar.FISHING_GUILD_TELEPORT.getLevel(),
+			new WorldPoint(2610, 3389, 0),
+			true,
+			"Fishing Guild Teleport",
+			new RuneRequirement(3, Rune.LAW),
+			new RuneRequirement(3, Rune.ASTRAL),
+			new RuneRequirement(10, Rune.WATER)),
+	CATHERBY_TELEPORT(
+			Magic.SpellBook.LUNAR,
+			Lunar.CATHERBY_TELEPORT,
+			Lunar.CATHERBY_TELEPORT.getLevel(),
+			new WorldPoint(2802, 3449, 0),
+			true,
+			"Catherby Teleport",
+			new RuneRequirement(3, Rune.LAW),
+			new RuneRequirement(3, Rune.ASTRAL),
+			new RuneRequirement(10, Rune.WATER)),
+	ICE_PLATEAU_TELEPORT(
+			Magic.SpellBook.LUNAR,
+			Lunar.ICE_PLATEAU_TELEPORT,
+			Lunar.ICE_PLATEAU_TELEPORT.getLevel(),
+			null,
+			true,
+			"Ice Plateau Teleport",
+			new RuneRequirement(3, Rune.LAW),
+			new RuneRequirement(3, Rune.ASTRAL),
+			new RuneRequirement(8, Rune.WATER)),
+
+	;
 
 	private final Magic.SpellBook spellBook;
 	private final Spell spell;
@@ -150,6 +338,9 @@ public enum TeleportSpell
 
 	public boolean haveRunesAvailable()
 	{
+		if (hasRunesInPouch(requirements)) {
+			return true;
+		}
 		for (RuneRequirement req : requirements)
 		{
 			if (!req.meetsRequirements())
@@ -158,6 +349,25 @@ public enum TeleportSpell
 			}
 		}
 
+		return true;
+	}
+
+	private boolean hasRunesInPouch(RuneRequirement[] requirements)
+	{
+		boolean hasRunePouch = RunePouch.hasPouch();
+
+		if (!hasRunePouch)
+		{
+			return false;
+		}
+
+		for (RuneRequirement req : requirements)
+		{
+			if (RunePouch.getQuantity(req.getRune()) < req.getRune().getQuantity())
+			{
+				return false;
+			}
+		}
 		return true;
 	}
 }

@@ -37,6 +37,7 @@ public class Bank extends Items
 	private static final Supplier<Widget> SETTINGS_CONTAINER = () -> Widgets.get(12, 48);
 	private static final Supplier<Widget> WITHDRAW_ITEM = () -> Widgets.get(12, Component.BANK_WITHDRAW_ITEM.childId);
 	private static final Supplier<Widget> WITHDRAW_NOTE = () -> Widgets.get(12, Component.BANK_WITHDRAW_NOTE.childId);
+	private static final Supplier<Widget> EXIT = () -> Widgets.get(12, 2, 11);
 
 	@Override
 	protected List<Item> all(Predicate<Item> filter)
@@ -642,5 +643,16 @@ public class Bank extends Items
 
 			return WithdrawOption.X;
 		}
+	}
+
+	public static void close()
+	{
+		Widget exitBank = EXIT.get();
+		if (!Widgets.isVisible(exitBank))
+		{
+			return;
+		}
+
+		exitBank.interact("Close");
 	}
 }
