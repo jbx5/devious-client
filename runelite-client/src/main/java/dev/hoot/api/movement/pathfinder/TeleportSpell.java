@@ -244,16 +244,16 @@ public enum TeleportSpell
 			new RuneRequirement(3, Rune.LAW),
 			new RuneRequirement(3, Rune.ASTRAL),
 			new RuneRequirement(10, Rune.WATER)),
-	ICE_PLATEAU_TELEPORT(
-			Magic.SpellBook.LUNAR,
-			Lunar.ICE_PLATEAU_TELEPORT,
-			Lunar.ICE_PLATEAU_TELEPORT.getLevel(),
-			null,
-			true,
-			"Ice Plateau Teleport",
-			new RuneRequirement(3, Rune.LAW),
-			new RuneRequirement(3, Rune.ASTRAL),
-			new RuneRequirement(8, Rune.WATER)),
+//	ICE_PLATEAU_TELEPORT(
+//			Magic.SpellBook.LUNAR,
+//			Lunar.ICE_PLATEAU_TELEPORT,
+//			Lunar.ICE_PLATEAU_TELEPORT.getLevel(),
+//			null,
+//			true,
+//			"Ice Plateau Teleport",
+//			new RuneRequirement(3, Rune.LAW),
+//			new RuneRequirement(3, Rune.ASTRAL),
+//			new RuneRequirement(8, Rune.WATER)),
 
 	;
 
