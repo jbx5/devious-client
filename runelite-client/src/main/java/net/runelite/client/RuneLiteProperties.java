@@ -48,6 +48,7 @@ public class RuneLiteProperties
 	private static final String PLUGINHUB_BASE = "runelite.pluginhub.url";
 	private static final String PLUGINHUB_VERSION = "runelite.pluginhub.version";
 	private static final String API_BASE = "runelite.api.base";
+	private static final String RUNELITE_CONFIG = "runelite.config";
 
 	@Getter
 	private static final Properties properties = new Properties();
@@ -141,4 +142,10 @@ public class RuneLiteProperties
 	{
 		return properties.getProperty(API_BASE);
 	}
+
+	public static String getRuneLiteConfig()
+	{
+		return properties.getProperty(RUNELITE_CONFIG);
+	}
+}
 }

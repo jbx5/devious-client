@@ -1,66 +1,68 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-@ObfuscatedName("fg")
+
+@ObfuscatedName("ft")
 @Implements("VarcInt")
 public class VarcInt extends DualNode {
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "Lku;")
+	@ObfuscatedSignature(
+		descriptor = "Lkq;"
+	)
 	@Export("VarcInt_archive")
-	public static AbstractArchive VarcInt_archive;
-
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(descriptor = "Liq;")
+	static AbstractArchive VarcInt_archive;
+	@ObfuscatedName("l")
+	@ObfuscatedSignature(
+		descriptor = "Lic;"
+	)
 	@Export("VarcInt_cached")
-	public static EvictingDualNodeHashTable VarcInt_cached;
-
-	@ObfuscatedName("j")
-	@ObfuscatedGetter(intValue = -1738406105)
-	@Export("musicTrackGroupId")
-	public static int musicTrackGroupId;
-
-	@ObfuscatedName("p")
+	static EvictingDualNodeHashTable VarcInt_cached;
+	@ObfuscatedName("q")
+	static int[] field1789;
+	@ObfuscatedName("bd")
+	@ObfuscatedSignature(
+		descriptor = "Lok;"
+	)
+	@Export("loginType")
+	static LoginType loginType;
+	@ObfuscatedName("s")
 	@Export("persist")
 	public boolean persist;
-	static 
-	{
-		VarcInt_cached = new EvictingDualNodeHashTable(64);
+
+	static {
+		VarcInt_cached = new EvictingDualNodeHashTable(64); // L: 11
 	}
 
-	public VarcInt() {
-		this.persist = false;
-	}
+	VarcInt() {
+		this.persist = false; // L: 12
+	} // L: 14
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(Lpi;I)V", garbageValue = "1771326033")
-	public void method3198(Buffer var1) {
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(
+		descriptor = "(Lpi;I)V",
+		garbageValue = "-972393082"
+	)
+	void method3202(Buffer var1) {
 		while (true) {
-			int var2 = var1.readUnsignedByte();
-			if (var2 == 0) {
-				return;
+			int var2 = var1.readUnsignedByte(); // L: 32
+			if (var2 == 0) { // L: 33
+				return; // L: 36
 			}
-			this.method3197(var1, var2);
-		} 
-	}
 
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(descriptor = "(Lpi;II)V", garbageValue = "-1864154623")
-	void method3197(Buffer var1, int var2) {
-		if (var2 == 2) {
-			this.persist = true;
+			this.method3195(var1, var2); // L: 34
 		}
 	}
 
-	@ObfuscatedName("fj")
-	@ObfuscatedSignature(descriptor = "(IZZZI)Lkz;", garbageValue = "-2019338802")
-	@Export("newArchive")
-	static Archive newArchive(int var0, boolean var1, boolean var2, boolean var3) {
-		ArchiveDisk var4 = null;
-		if (JagexCache.JagexCache_dat2File != null) {
-			var4 = new ArchiveDisk(var0, JagexCache.JagexCache_dat2File, JagexCache.JagexCache_idxFiles[var0], 1000000);
+	@ObfuscatedName("e")
+	@ObfuscatedSignature(
+		descriptor = "(Lpi;IB)V",
+		garbageValue = "121"
+	)
+	void method3195(Buffer var1, int var2) {
+		if (var2 == 2) { // L: 39
+			this.persist = true; // L: 40
 		}
-		return new Archive(var4, ParamComposition.masterDisk, var0, var1, var2, var3);
-	}
+
+	} // L: 43
 }
