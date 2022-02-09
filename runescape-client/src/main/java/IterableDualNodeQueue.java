@@ -3,133 +3,113 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-
 @ObfuscatedName("li")
 @Implements("IterableDualNodeQueue")
 public class IterableDualNodeQueue implements Iterable {
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "Lnd;"
-	)
-	@Export("sentinel")
-	public DualNode sentinel;
-	@ObfuscatedName("l")
-	@ObfuscatedSignature(
-		descriptor = "Lnd;"
-	)
-	@Export("head")
-	DualNode head;
+    @ObfuscatedName("c")
+    @ObfuscatedSignature(descriptor = "Lnd;")
+    @Export("sentinel")
+    public DualNode sentinel;
 
-	public IterableDualNodeQueue() {
-		this.sentinel = new DualNode(); // L: 7
-		this.sentinel.previousDual = this.sentinel; // L: 11
-		this.sentinel.nextDual = this.sentinel; // L: 12
-	} // L: 13
+    @ObfuscatedName("l")
+    @ObfuscatedSignature(descriptor = "Lnd;")
+    @Export("head")
+    DualNode head;
 
-	@ObfuscatedName("c")
-	@Export("clear")
-	public void clear() {
-		while (this.sentinel.previousDual != this.sentinel) { // L: 16
-			this.sentinel.previousDual.removeDual(); // L: 17
-		}
+    public IterableDualNodeQueue() {
+        this.sentinel = new DualNode();
+        this.sentinel.previousDual = this.sentinel;
+        this.sentinel.nextDual = this.sentinel;
+    }
 
-	} // L: 19
+    @ObfuscatedName("c")
+    @Export("clear")
+    public void clear() {
+        while (this.sentinel.previousDual != this.sentinel) {
+            this.sentinel.previousDual.removeDual();
+        } 
+    }
 
-	@ObfuscatedName("l")
-	@ObfuscatedSignature(
-		descriptor = "(Lnd;)V"
-	)
-	@Export("add")
-	public void add(DualNode var1) {
-		if (var1.nextDual != null) { // L: 22
-			var1.removeDual();
-		}
+    @ObfuscatedName("l")
+    @ObfuscatedSignature(descriptor = "(Lnd;)V")
+    @Export("add")
+    public void add(DualNode var1) {
+        if (var1.nextDual != null) {
+            var1.removeDual();
+        }
+        var1.nextDual = this.sentinel.nextDual;
+        var1.previousDual = this.sentinel;
+        var1.nextDual.previousDual = var1;
+        var1.previousDual.nextDual = var1;
+    }
 
-		var1.nextDual = this.sentinel.nextDual; // L: 23
-		var1.previousDual = this.sentinel; // L: 24
-		var1.nextDual.previousDual = var1; // L: 25
-		var1.previousDual.nextDual = var1; // L: 26
-	} // L: 27
+    @ObfuscatedName("e")
+    @ObfuscatedSignature(descriptor = "()Lnd;")
+    @Export("removeLast")
+    public DualNode removeLast() {
+        DualNode var1 = this.sentinel.previousDual;
+        if (var1 == this.sentinel) {
+            return null;
+        } else {
+            var1.removeDual();
+            return var1;
+        }
+    }
 
-	@ObfuscatedName("e")
-	@ObfuscatedSignature(
-		descriptor = "()Lnd;"
-	)
-	@Export("removeLast")
-	public DualNode removeLast() {
-		DualNode var1 = this.sentinel.previousDual; // L: 39
-		if (var1 == this.sentinel) {
-			return null; // L: 40
-		} else {
-			var1.removeDual(); // L: 41
-			return var1; // L: 42
-		}
-	}
+    @ObfuscatedName("r")
+    @ObfuscatedSignature(descriptor = "()Lnd;")
+    @Export("last")
+    public DualNode last() {
+        return this.previousOrLast(((DualNode) (null)));
+    }
 
-	@ObfuscatedName("r")
-	@ObfuscatedSignature(
-		descriptor = "()Lnd;"
-	)
-	@Export("last")
-	public DualNode last() {
-		return this.previousOrLast((DualNode)null); // L: 46
-	}
+    @ObfuscatedName("o")
+    @ObfuscatedSignature(descriptor = "(Lnd;)Lnd;")
+    @Export("previousOrLast")
+    DualNode previousOrLast(DualNode var1) {
+        DualNode var2;
+        if (var1 == null) {
+            var2 = this.sentinel.previousDual;
+        } else {
+            var2 = var1;
+        }
+        if (var2 == this.sentinel) {
+            this.head = null;
+            return null;
+        } else {
+            this.head = var2.previousDual;
+            return var2;
+        }
+    }
 
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(
-		descriptor = "(Lnd;)Lnd;"
-	)
-	@Export("previousOrLast")
-	DualNode previousOrLast(DualNode var1) {
-		DualNode var2;
-		if (var1 == null) { // L: 52
-			var2 = this.sentinel.previousDual;
-		} else {
-			var2 = var1; // L: 53
-		}
+    @ObfuscatedName("i")
+    @ObfuscatedSignature(descriptor = "()Lnd;")
+    @Export("previous")
+    public DualNode previous() {
+        DualNode var1 = this.head;
+        if (var1 == this.sentinel) {
+            this.head = null;
+            return null;
+        } else {
+            this.head = var1.previousDual;
+            return var1;
+        }
+    }
 
-		if (var2 == this.sentinel) { // L: 54
-			this.head = null; // L: 55
-			return null; // L: 56
-		} else {
-			this.head = var2.previousDual; // L: 58
-			return var2; // L: 59
-		}
-	}
+    public Iterator iterator() {
+        return new IterableDualNodeQueueIterator(this);
+    }
 
-	@ObfuscatedName("i")
-	@ObfuscatedSignature(
-		descriptor = "()Lnd;"
-	)
-	@Export("previous")
-	public DualNode previous() {
-		DualNode var1 = this.head; // L: 64
-		if (var1 == this.sentinel) { // L: 65
-			this.head = null; // L: 66
-			return null; // L: 67
-		} else {
-			this.head = var1.previousDual; // L: 69
-			return var1; // L: 70
-		}
-	}
-
-	public Iterator iterator() {
-		return new IterableDualNodeQueueIterator(this); // L: 74
-	}
-
-	@ObfuscatedName("s")
-	@ObfuscatedSignature(
-		descriptor = "(Lnd;Lnd;)V"
-	)
-	@Export("DualNodeDeque_addBefore")
-	public static void DualNodeDeque_addBefore(DualNode var0, DualNode var1) {
-		if (var0.nextDual != null) { // L: 30
-			var0.removeDual();
-		}
-
-		var0.nextDual = var1; // L: 31
-		var0.previousDual = var1.previousDual; // L: 32
-		var0.nextDual.previousDual = var0; // L: 33
-		var0.previousDual.nextDual = var0; // L: 34
-	} // L: 35
+    @ObfuscatedName("s")
+    @ObfuscatedSignature(descriptor = "(Lnd;Lnd;)V")
+    @Export("DualNodeDeque_addBefore")
+    public static void DualNodeDeque_addBefore(DualNode var0, DualNode var1) {
+        if (var0.nextDual != null) {
+            var0.removeDual();
+        }
+        var0.nextDual = var1;
+        var0.previousDual = var1.previousDual;
+        var0.nextDual.previousDual = var0;
+        var0.previousDual.nextDual = var0;
+    }
 }
