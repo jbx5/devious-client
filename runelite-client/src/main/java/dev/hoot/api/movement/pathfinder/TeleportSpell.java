@@ -9,13 +9,6 @@ import net.runelite.api.coords.WorldPoint;
 
 public enum TeleportSpell
 {
-	HOME_TELEPORT_REGULAR(
-			Magic.SpellBook.REGULAR,
-			Regular.HOME_TELEPORT,
-			1,
-			new WorldPoint(3221, 3218, 0),
-			false,
-			"Lumbridge Home Teleport"),
 	TELEPORT_TO_HOUSE(
 			Magic.SpellBook.REGULAR,
 			Regular.TELEPORT_TO_HOUSE,

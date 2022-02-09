@@ -174,7 +174,6 @@ public class RegionManager
 								{
 									tileFlag.setFlag(tileFlag.getFlag() - CollisionDataFlag.BLOCK_MOVEMENT_NORTH);
 								}
-
 								break;
 							case EAST:
 								if ((Reachable.hasDoor(tile, direction) || Reachable.hasDoor(easternTile, Direction.WEST))
@@ -182,7 +181,6 @@ public class RegionManager
 								{
 									tileFlag.setFlag(tileFlag.getFlag() - CollisionDataFlag.BLOCK_MOVEMENT_EAST);
 								}
-
 								break;
 						}
 					}

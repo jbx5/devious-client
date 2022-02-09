@@ -41,7 +41,11 @@ import dev.hoot.bot.script.ScriptMeta;
 import dev.hoot.bot.script.paint.Paint;
 import dev.hoot.bot.ui.BotToolbar;
 import dev.hoot.bot.ui.BotUI;
-import joptsimple.*;
+import joptsimple.ArgumentAcceptingOptionSpec;
+import joptsimple.OptionParser;
+import joptsimple.OptionSet;
+import joptsimple.ValueConversionException;
+import joptsimple.ValueConverter;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
@@ -56,6 +60,7 @@ import net.runelite.client.rs.ClientUpdateCheckMode;
 import net.runelite.client.ui.DrawManager;
 import net.runelite.client.ui.FatalErrorDialog;
 import net.runelite.client.ui.overlay.OverlayManager;
+import net.runelite.client.ui.overlay.tooltip.TooltipOverlay;
 import net.runelite.http.api.RuneLiteAPI;
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
@@ -64,6 +69,7 @@ import okhttp3.Response;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.Nullable;
+import javax.inject.Provider;
 import javax.inject.Singleton;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
@@ -121,6 +127,9 @@ public class Bot
 	private OverlayManager overlayManager;
 
 	@Inject
+	private Provider<TooltipOverlay> tooltipOverlay;
+
+	@Inject
 	@Nullable
 	private Client client;
 
@@ -160,21 +169,21 @@ public class Bot
 		parser.accepts("debug", "Show extra debugging output");
 		parser.accepts("insecure-skip-tls-verification", "Disables TLS verification");
 		parser.accepts("jav_config", "jav_config url")
-			.withRequiredArg()
-			.defaultsTo(RuneLiteProperties.getJavConfig());
+				.withRequiredArg()
+				.defaultsTo(RuneLiteProperties.getJavConfig());
 
 		final ArgumentAcceptingOptionSpec<String> proxyInfo = parser
-			.accepts("proxy")
-			.withRequiredArg().ofType(String.class);
+				.accepts("proxy")
+				.withRequiredArg().ofType(String.class);
 
 		final ArgumentAcceptingOptionSpec<Integer> worldInfo = parser
-			.accepts("world")
-			.withRequiredArg().ofType(Integer.class);
+				.accepts("world")
+				.withRequiredArg().ofType(Integer.class);
 
 		final ArgumentAcceptingOptionSpec<File> configfile = parser.accepts("runelite", "Use a specified config file")
-			.withRequiredArg()
-			.withValuesConvertedBy(new ConfigFileConverter())
-			.defaultsTo(DEFAULT_CONFIG_FILE);
+				.withRequiredArg()
+				.withValuesConvertedBy(new ConfigFileConverter())
+				.defaultsTo(DEFAULT_CONFIG_FILE);
 
 		var accInfo = parser
 				.accepts("account")
@@ -262,7 +271,7 @@ public class Bot
 		{
 			final ClientLoader clientLoader = new ClientLoader(okHttpClient, ClientUpdateCheckMode.AUTO,
 					(String) options.valueOf(
-					"jav_config")
+							"jav_config")
 			);
 
 			new Thread(() ->
@@ -272,15 +281,15 @@ public class Bot
 			}, "Preloader").start();
 
 			log.info("OpenOSRS {} (RuneLite version {}, launcher version {}) starting up, args: {}",
-				OpenOSRS.SYSTEM_VERSION, RuneLiteProperties.getVersion() == null ? "unknown" : RuneLiteProperties.getVersion(),
-				RuneLiteProperties.getLauncherVersion(), args.length == 0 ? "none" : String.join(" ", args));
+					OpenOSRS.SYSTEM_VERSION, RuneLiteProperties.getVersion() == null ? "unknown" : RuneLiteProperties.getVersion(),
+					RuneLiteProperties.getLauncherVersion(), args.length == 0 ? "none" : String.join(" ", args));
 
 			final long start = System.currentTimeMillis();
 
 			injector = Guice.createInjector(new BotModule(
-				okHttpClient,
-				clientLoader,
-				options.valueOf(configfile))
+					okHttpClient,
+					clientLoader,
+					options.valueOf(configfile))
 			);
 
 			injector.getInstance(Bot.class).start(options);
@@ -294,8 +303,8 @@ public class Bot
 		{
 			log.error("Failure during startup", e);
 			SwingUtilities.invokeLater(() ->
-				new FatalErrorDialog("OpenOSRS has encountered an unexpected error during startup.")
-					.open());
+					new FatalErrorDialog("OpenOSRS has encountered an unexpected error during startup.")
+							.open());
 		}
 	}
 
@@ -351,6 +360,8 @@ public class Bot
 		eventBus.register(overlayManager);
 		eventBus.register(configManager);
 
+		overlayManager.add(tooltipOverlay.get());
+
 		botUI.show();
 
 		if (options.has("script"))
@@ -373,8 +384,8 @@ public class Bot
 			final File file;
 
 			if (Paths.get(fileName).isAbsolute()
-				|| fileName.startsWith("./")
-				|| fileName.startsWith(".\\"))
+					|| fileName.startsWith("./")
+					|| fileName.startsWith(".\\"))
 			{
 				file = new File(fileName);
 			}

@@ -3,122 +3,116 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-@ObfuscatedName("hl")
+
+@ObfuscatedName("hq")
 @Implements("GameObject")
 public final class GameObject {
-	@ObfuscatedName("fk")
-	@ObfuscatedGetter(intValue = -1234198713)
-	@Export("worldPort")
-	static int worldPort;
-
-	@ObfuscatedName("ma")
-	@ObfuscatedGetter(intValue = -1786079239)
-	@Export("menuWidth")
-	static int menuWidth;
-
+	@ObfuscatedName("bl")
+	@ObfuscatedGetter(
+		intValue = 1902581057
+	)
+	static int field2588;
 	@ObfuscatedName("c")
-	@ObfuscatedGetter(intValue = -1089622701)
+	@ObfuscatedGetter(
+		intValue = 1178433619
+	)
 	@Export("plane")
 	int plane;
-
-	@ObfuscatedName("b")
-	@ObfuscatedGetter(intValue = -465774691)
+	@ObfuscatedName("l")
+	@ObfuscatedGetter(
+		intValue = 746777845
+	)
 	@Export("height")
 	int height;
-
-	@ObfuscatedName("p")
-	@ObfuscatedGetter(intValue = 1923590497)
+	@ObfuscatedName("s")
+	@ObfuscatedGetter(
+		intValue = 1435489625
+	)
 	@Export("centerX")
 	int centerX;
-
-	@ObfuscatedName("m")
-	@ObfuscatedGetter(intValue = 1996180969)
-	@Export("orientation")
-	int orientation;
-
-	@ObfuscatedName("t")
-	@ObfuscatedGetter(intValue = 1051509529)
+	@ObfuscatedName("e")
+	@ObfuscatedGetter(
+		intValue = 1681858831
+	)
 	@Export("centerY")
 	int centerY;
-
-	@ObfuscatedName("s")
-	@ObfuscatedSignature(descriptor = "Lgt;")
+	@ObfuscatedName("r")
+	@ObfuscatedSignature(
+		descriptor = "Lgp;"
+	)
 	@Export("renderable")
 	public Renderable renderable;
-
-	@ObfuscatedName("j")
-	@ObfuscatedGetter(intValue = 1723330507)
+	@ObfuscatedName("o")
+	@ObfuscatedGetter(
+		intValue = -1594054171
+	)
+	@Export("orientation")
+	int orientation;
+	@ObfuscatedName("i")
+	@ObfuscatedGetter(
+		intValue = -1228904531
+	)
 	@Export("startX")
 	int startX;
-
 	@ObfuscatedName("w")
-	@ObfuscatedGetter(intValue = -621074209)
+	@ObfuscatedGetter(
+		intValue = -2069560973
+	)
 	@Export("endX")
 	int endX;
-
-	@ObfuscatedName("n")
-	@ObfuscatedGetter(intValue = -178409117)
+	@ObfuscatedName("v")
+	@ObfuscatedGetter(
+		intValue = -1306078651
+	)
 	@Export("startY")
 	int startY;
-
-	@ObfuscatedName("r")
-	@ObfuscatedGetter(intValue = 144998379)
+	@ObfuscatedName("a")
+	@ObfuscatedGetter(
+		intValue = -1508007581
+	)
 	@Export("endY")
 	int endY;
-
-	@ObfuscatedName("o")
-	@ObfuscatedGetter(intValue = 1469340071)
-	int field2548;
-
-	@ObfuscatedName("v")
-	@ObfuscatedGetter(intValue = 800381971)
+	@ObfuscatedName("y")
+	@ObfuscatedGetter(
+		intValue = -1775800277
+	)
+	int field2584;
+	@ObfuscatedName("u")
+	@ObfuscatedGetter(
+		intValue = 1693805361
+	)
 	@Export("lastDrawn")
 	int lastDrawn;
-
-	@ObfuscatedName("d")
-	@ObfuscatedGetter(longValue = -3336818157473405963L)
+	@ObfuscatedName("h")
+	@ObfuscatedGetter(
+		longValue = -8019980132139941379L
+	)
 	@Export("tag")
 	public long tag;
-
-	@ObfuscatedName("h")
-	@ObfuscatedGetter(intValue = -1622989155)
+	@ObfuscatedName("q")
+	@ObfuscatedGetter(
+		intValue = 1925968547
+	)
 	@Export("flags")
 	int flags;
 
 	GameObject() {
-		this.tag = 0L;
-		this.flags = 0;
-	}
+		this.tag = 0L; // L: 16
+		this.flags = 0; // L: 17
+	} // L: 19
 
-	@ObfuscatedName("aa")
-	@ObfuscatedSignature(descriptor = "(ILbn;ZI)I", garbageValue = "210014678")
-	static int method4341(int var0, Script var1, boolean var2) {
-		if (((((var0 != 6700) && (var0 != 6702)) && (var0 != 6704)) && (var0 != 6706)) && (var0 != 6708)) {
-			if (((((var0 != 6701) && (var0 != 6703)) && (var0 != 6705)) && (var0 != 6707)) && (var0 != 6709)) {
-				if (var0 == 6750) {
-					Interpreter.Interpreter_stringStack[(++class13.Interpreter_stringStackSize) - 1] = "";
-					return 1;
-				} else if (((var0 != 6751) && (var0 != 6752)) && (var0 != 6753)) {
-					if (var0 == 6754) {
-						int var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-						NPCComposition var4 = WorldMapLabelSize.getNpcDefinition(var3);
-						Interpreter.Interpreter_stringStack[(++class13.Interpreter_stringStackSize) - 1] = (var4 != null) ? var4.name : "";
-						return 1;
-					} else {
-						return 2;
-					}
-				} else {
-					Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = -1;
-					return 1;
-				}
-			} else {
-				--IsaacCipher.Interpreter_intStackSize;
-				return 1;
-			}
-		} else {
-			IsaacCipher.Interpreter_intStackSize -= 2;
-			--class13.Interpreter_stringStackSize;
-			return 1;
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "(I)[I",
+		garbageValue = "-1679068447"
+	)
+	public static int[] method4297() {
+		int[] var0 = new int[KeyHandler.field141]; // L: 279
+
+		for (int var1 = 0; var1 < KeyHandler.field141; ++var1) { // L: 280
+			var0[var1] = KeyHandler.field125[var1]; // L: 281
 		}
+
+		return var0; // L: 283
 	}
 }

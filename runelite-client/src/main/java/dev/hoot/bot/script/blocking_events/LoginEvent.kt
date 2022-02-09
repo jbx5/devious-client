@@ -4,8 +4,6 @@ import dev.hoot.api.game.Game
 import dev.hoot.api.game.Worlds
 import dev.hoot.api.input.Keyboard
 import dev.hoot.bot.Bot
-import dev.hoot.bot.Bot.gameAccount
-import dev.hoot.bot.BotModule
 import net.runelite.api.GameState
 import org.jboss.aerogear.security.otp.Totp
 import kotlin.system.exitProcess

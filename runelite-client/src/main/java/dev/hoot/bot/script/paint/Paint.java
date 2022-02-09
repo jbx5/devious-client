@@ -1,7 +1,5 @@
 package dev.hoot.bot.script.paint;
 
-import dev.hoot.api.SceneEntity;
-import dev.hoot.api.entities.Entities;
 import dev.hoot.bot.devtools.EntityRenderer;
 import dev.hoot.bot.managers.InputManager;
 import dev.hoot.bot.managers.ScriptManager;
@@ -60,9 +58,7 @@ public class Paint extends Overlay
 		g.setColor(Color.WHITE);
 		g.setFont(font);
 
-		List<? extends SceneEntity> entities = Entities.getHoveredEntities();
-
-		entityRenderer.render(g, entities);
+		entityRenderer.render(g);
 
 		if (!enabled)
 		{

@@ -1,69 +1,71 @@
-import net.runelite.mapping.ObfuscatedGetter;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-@ObfuscatedName("ms")
+
+@ObfuscatedName("mh")
 public class class338 {
-	@ObfuscatedName("d")
-	@ObfuscatedGetter(intValue = 382463389)
-	static int field4055;
-
-	@ObfuscatedName("bg")
-	@ObfuscatedSignature(descriptor = "Lko;")
-	static StudioGame field4054;
-
 	@ObfuscatedName("c")
-	public static final int method6256(double var0, double var2, double var4) {
-		double var6 = var4;
-		double var8 = var4;
-		double var10 = var4;
-		if (var2 != 0.0) {
-			double var12;
-			if (var4 < 0.5) {
-				var12 = (1.0 + var2) * var4;
-			} else {
-				var12 = (var4 + var2) - (var2 * var4);
+	@Export("writeRandomDat")
+	public static void writeRandomDat(byte[] var0, int var1, byte[] var2, int var3, int var4) {
+		if (var2 == var0) { // L: 12
+			if (var3 == var1) { // L: 13
+				return;
 			}
-			double var14 = (2.0 * var4) - var12;
-			double var16 = var0 + 0.3333333333333333;
-			if (var16 > 1.0) {
-				--var16;
-			}
-			double var20 = var0 - 0.3333333333333333;
-			if (var20 < 0.0) {
-				++var20;
-			}
-			if ((var16 * 6.0) < 1.0) {
-				var6 = (((var12 - var14) * 6.0) * var16) + var14;
-			} else if ((var16 * 2.0) < 1.0) {
-				var6 = var12;
-			} else if ((3.0 * var16) < 2.0) {
-				var6 = ((6.0 * (var12 - var14)) * (0.6666666666666666 - var16)) + var14;
-			} else {
-				var6 = var14;
-			}
-			if ((6.0 * var0) < 1.0) {
-				var8 = (((var12 - var14) * 6.0) * var0) + var14;
-			} else if ((var0 * 2.0) < 1.0) {
-				var8 = var12;
-			} else if ((var0 * 3.0) < 2.0) {
-				var8 = ((6.0 * (0.6666666666666666 - var0)) * (var12 - var14)) + var14;
-			} else {
-				var8 = var14;
-			}
-			if ((var20 * 6.0) < 1.0) {
-				var10 = var14 + ((var20 * 6.0) * (var12 - var14));
-			} else if ((var20 * 2.0) < 1.0) {
-				var10 = var12;
-			} else if ((var20 * 3.0) < 2.0) {
-				var10 = var14 + (((0.6666666666666666 - var20) * (var12 - var14)) * 6.0);
-			} else {
-				var10 = var14;
+
+			if (var3 > var1 && var3 < var4 + var1) { // L: 14
+				--var4; // L: 15
+				var1 += var4; // L: 16
+				var3 += var4; // L: 17
+				var4 = var1 - var4; // L: 18
+
+				for (var4 += 7; var1 >= var4; var2[var3--] = var0[var1--]) { // L: 19 20 28
+					var2[var3--] = var0[var1--]; // L: 21
+					var2[var3--] = var0[var1--]; // L: 22
+					var2[var3--] = var0[var1--]; // L: 23
+					var2[var3--] = var0[var1--]; // L: 24
+					var2[var3--] = var0[var1--]; // L: 25
+					var2[var3--] = var0[var1--]; // L: 26
+					var2[var3--] = var0[var1--]; // L: 27
+				}
+
+				for (var4 -= 7; var1 >= var4; var2[var3--] = var0[var1--]) { // L: 30 31
+				}
+
+				return; // L: 32
 			}
 		}
-		int var22 = ((int) (var6 * 256.0));
-		int var13 = ((int) (var8 * 256.0));
-		int var23 = ((int) (var10 * 256.0));
-		int var15 = (var23 + (var13 << 8)) + (var22 << 16);
-		return var15;
-	}
+
+		var4 += var1; // L: 35
+
+		for (var4 -= 7; var1 < var4; var2[var3++] = var0[var1++]) { // L: 36 37 45
+			var2[var3++] = var0[var1++]; // L: 38
+			var2[var3++] = var0[var1++]; // L: 39
+			var2[var3++] = var0[var1++]; // L: 40
+			var2[var3++] = var0[var1++]; // L: 41
+			var2[var3++] = var0[var1++]; // L: 42
+			var2[var3++] = var0[var1++]; // L: 43
+			var2[var3++] = var0[var1++]; // L: 44
+		}
+
+		for (var4 += 7; var1 < var4; var2[var3++] = var0[var1++]) { // L: 47 48
+		}
+
+	} // L: 49
+
+	@ObfuscatedName("a")
+	@Export("clearIntArray")
+	public static void clearIntArray(int[] var0, int var1, int var2) {
+		for (var2 = var2 + var1 - 7; var1 < var2; var0[var1++] = 0) { // L: 364 365 373
+			var0[var1++] = 0; // L: 366
+			var0[var1++] = 0; // L: 367
+			var0[var1++] = 0; // L: 368
+			var0[var1++] = 0; // L: 369
+			var0[var1++] = 0; // L: 370
+			var0[var1++] = 0; // L: 371
+			var0[var1++] = 0; // L: 372
+		}
+
+		for (var2 += 7; var1 < var2; var0[var1++] = 0) { // L: 375 376
+		}
+
+	} // L: 377
 }

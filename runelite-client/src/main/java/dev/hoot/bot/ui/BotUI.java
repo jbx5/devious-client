@@ -28,8 +28,11 @@ import com.google.common.base.Strings;
 import dev.hoot.bot.config.BotConfig;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
+import net.runelite.api.Client;
+import net.runelite.api.Constants;
+import net.runelite.api.GameState;
+import net.runelite.api.Player;
 import net.runelite.api.Point;
-import net.runelite.api.*;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.client.callback.ClientThread;
 import net.runelite.client.config.ConfigManager;
@@ -604,7 +607,8 @@ public class BotUI
 				setOpacityMethod.invoke(peerField.get(frame), opacity);
 
 			}
-			catch (NoSuchFieldException | NoSuchMethodException | ClassNotFoundException | IllegalAccessException | InvocationTargetException | NullPointerException e)
+			catch (NoSuchFieldException | NoSuchMethodException | ClassNotFoundException | IllegalAccessException |
+				   InvocationTargetException | NullPointerException e)
 			{
 				// e.printStackTrace();
 			}
