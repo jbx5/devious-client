@@ -51,7 +51,7 @@ public class GroundItemPackets {
         }
     }
 
-    public static void queueItemUseOnGroundObjectPacket(int groundItemId, int worldPointX, int worldPointY, int itemSlot, int itemId, int itemWidgetId, boolean run) {
+    public static void queueItemUseOnGroundObjectPacket(int groundItemId, int worldPointX, int worldPointY, int itemSlot, int itemId, int itemWidgetId, boolean ctrlDown) {
         Client client = Game.getClient();
         ClientPacket clientPacket = Game.getClientPacket();
         PacketBufferNode packetBufferNode = Game.getClient().preparePacket(clientPacket.OPOBJU(), client.getPacketWriter().getIsaacCipher());
@@ -60,18 +60,18 @@ public class GroundItemPackets {
         packetBufferNode.getPacketBuffer().writeShortAddLE(groundItemId);
         packetBufferNode.getPacketBuffer().writeShortAdd(worldPointX);
         packetBufferNode.getPacketBuffer().writeIntLE(itemWidgetId);
-        packetBufferNode.getPacketBuffer().writeByteSub(run ? 1 : 0);
+        packetBufferNode.getPacketBuffer().writeByteSub(ctrlDown ? 1 : 0);
         packetBufferNode.getPacketBuffer().writeShortAddLE(itemId);
         client.getPacketWriter().queuePacket(packetBufferNode);
     }
 
-    public static void queueSpellOnGroundObjectPacket(int groundItemId, int worldPointX, int worldPointY, int spellWidgetId, boolean run) {
+    public static void queueSpellOnGroundObjectPacket(int groundItemId, int worldPointX, int worldPointY, int spellWidgetId, boolean ctrlDown) {
         Client client = Game.getClient();
         ClientPacket clientPacket = Game.getClientPacket();
         PacketBufferNode packetBufferNode = Game.getClient().preparePacket(clientPacket.OPOBJT(), client.getPacketWriter().getIsaacCipher());
         packetBufferNode.getPacketBuffer().writeInt(spellWidgetId);
         packetBufferNode.getPacketBuffer().writeShortAddLE(worldPointY);
-        packetBufferNode.getPacketBuffer().writeByteSub(run ? 1 : 0);
+        packetBufferNode.getPacketBuffer().writeByteSub(ctrlDown ? 1 : 0);
         packetBufferNode.getPacketBuffer().writeShortAddLE(-1);
         packetBufferNode.getPacketBuffer().writeShortAddLE(groundItemId);
         packetBufferNode.getPacketBuffer().writeShortAdd(worldPointX);
@@ -79,58 +79,58 @@ public class GroundItemPackets {
         client.getPacketWriter().queuePacket(packetBufferNode);
     }
 
-    public static void queueGroundItemAction1Packet(int groundItemId, int worldPointX, int worldPointY, boolean run) {
+    public static void queueGroundItemAction1Packet(int groundItemId, int worldPointX, int worldPointY, boolean ctrlDown) {
         Client client = Game.getClient();
         ClientPacket clientPacket = Game.getClientPacket();
         PacketBufferNode packetBufferNode = Game.getClient().preparePacket(clientPacket.OPOBJ1(), client.getPacketWriter().getIsaacCipher());
-        packetBufferNode.getPacketBuffer().writeByte(run ? 1 : 0);
+        packetBufferNode.getPacketBuffer().writeByte(ctrlDown ? 1 : 0);
         packetBufferNode.getPacketBuffer().writeShort(worldPointY);
         packetBufferNode.getPacketBuffer().writeShortLE(groundItemId);
         packetBufferNode.getPacketBuffer().writeShort(worldPointX);
         client.getPacketWriter().queuePacket(packetBufferNode);
     }
 
-    public static void queueGroundItemAction2Packet(int groundItemId, int worldPointX, int worldPointY, boolean run) {
+    public static void queueGroundItemAction2Packet(int groundItemId, int worldPointX, int worldPointY, boolean ctrlDown) {
         Client client = Game.getClient();
         ClientPacket clientPacket = Game.getClientPacket();
         PacketBufferNode packetBufferNode = Game.getClient().preparePacket(clientPacket.OPOBJ2(), client.getPacketWriter().getIsaacCipher());
         packetBufferNode.getPacketBuffer().writeShortLE(worldPointY);
-        packetBufferNode.getPacketBuffer().writeByteAdd(run ? 1 : 0);
+        packetBufferNode.getPacketBuffer().writeByteAdd(ctrlDown ? 1 : 0);
         packetBufferNode.getPacketBuffer().writeShortAdd(worldPointX);
         packetBufferNode.getPacketBuffer().writeShortAdd(groundItemId);
         client.getPacketWriter().queuePacket(packetBufferNode);
     }
 
-    public static void queueGroundItemAction3Packet(int groundItemId, int worldPointX, int worldPointY, boolean run) {
+    public static void queueGroundItemAction3Packet(int groundItemId, int worldPointX, int worldPointY, boolean ctrlDown) {
         Client client = Game.getClient();
         ClientPacket clientPacket = Game.getClientPacket();
         PacketBufferNode packetBufferNode = Game.getClient().preparePacket(clientPacket.OPOBJ3(), client.getPacketWriter().getIsaacCipher());
         packetBufferNode.getPacketBuffer().writeShort(worldPointY);
         packetBufferNode.getPacketBuffer().writeShort(groundItemId);
         packetBufferNode.getPacketBuffer().writeShortLE(worldPointX);
-        packetBufferNode.getPacketBuffer().writeByte(run ? 1 : 0);
+        packetBufferNode.getPacketBuffer().writeByte(ctrlDown ? 1 : 0);
         client.getPacketWriter().queuePacket(packetBufferNode);
     }
 
-    public static void queueGroundItemAction4Packet(int groundItemId, int worldPointX, int worldPointY, boolean run) {
+    public static void queueGroundItemAction4Packet(int groundItemId, int worldPointX, int worldPointY, boolean ctrlDown) {
         Client client = Game.getClient();
         ClientPacket clientPacket = Game.getClientPacket();
         PacketBufferNode packetBufferNode = Game.getClient().preparePacket(clientPacket.OPOBJ4(), client.getPacketWriter().getIsaacCipher());
         packetBufferNode.getPacketBuffer().writeShortAddLE(groundItemId);
         packetBufferNode.getPacketBuffer().writeShortAdd(worldPointX);
         packetBufferNode.getPacketBuffer().writeShortAddLE(worldPointY);
-        packetBufferNode.getPacketBuffer().writeByteSub(run ? 1 : 0);
+        packetBufferNode.getPacketBuffer().writeByteSub(ctrlDown ? 1 : 0);
         client.getPacketWriter().queuePacket(packetBufferNode);
     }
 
-    public static void queueGroundItemAction5Packet(int groundItemId, int worldPointX, int worldPointY, boolean run) {
+    public static void queueGroundItemAction5Packet(int groundItemId, int worldPointX, int worldPointY, boolean ctrlDown) {
         Client client = Game.getClient();
         ClientPacket clientPacket = Game.getClientPacket();
         PacketBufferNode packetBufferNode = Game.getClient().preparePacket(clientPacket.OPOBJ5(), client.getPacketWriter().getIsaacCipher());
         packetBufferNode.getPacketBuffer().writeShortAdd(worldPointX);
         packetBufferNode.getPacketBuffer().writeShort(worldPointY);
         packetBufferNode.getPacketBuffer().writeShortLE(groundItemId);
-        packetBufferNode.getPacketBuffer().writeByteNeg(run ? 1 : 0);
+        packetBufferNode.getPacketBuffer().writeByteNeg(ctrlDown ? 1 : 0);
         client.getPacketWriter().queuePacket(packetBufferNode);
     }
 }

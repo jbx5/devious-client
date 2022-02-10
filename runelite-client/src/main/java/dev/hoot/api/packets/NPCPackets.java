@@ -54,7 +54,7 @@ public class NPCPackets {
         NPCPackets.queueSpellOnNpcPacket(npc.getIndex(), widgetId, b);
     }
 
-    public static void queueItemOnNpcPacket(int npcIndex, int itemWidgetId, int itemId, int itemSlot, boolean run) {
+    public static void queueItemOnNpcPacket(int npcIndex, int itemWidgetId, int itemId, int itemSlot, boolean ctrlDown) {
         Client client = Game.getClient();
         ClientPacket clientPacket = Game.getClientPacket();
         PacketBufferNode packetBufferNode = Game.getClient().preparePacket(clientPacket.OPNPCU(), client.getPacketWriter().getIsaacCipher());
@@ -62,64 +62,64 @@ public class NPCPackets {
         packetBufferNode.getPacketBuffer().writeShortAdd(itemSlot);
         packetBufferNode.getPacketBuffer().writeShortAdd(itemId);
         packetBufferNode.getPacketBuffer().writeIntIME(itemWidgetId);
-        packetBufferNode.getPacketBuffer().writeByteNeg(run ? 1 : 0);
+        packetBufferNode.getPacketBuffer().writeByteNeg(ctrlDown ? 1 : 0);
         client.getPacketWriter().queuePacket(packetBufferNode);
     }
 
-    public static void queueSpellOnNpcPacket(int npcIndex, int spellWidgetId, boolean run) {
+    public static void queueSpellOnNpcPacket(int npcIndex, int spellWidgetId, boolean ctrlDown) {
         Client client = Game.getClient();
         ClientPacket clientPacket = Game.getClientPacket();
         PacketBufferNode packetBufferNode = Game.getClient().preparePacket(clientPacket.OPNPCT(), client.getPacketWriter().getIsaacCipher());
         packetBufferNode.getPacketBuffer().writeShortLE(-1);
         packetBufferNode.getPacketBuffer().writeShortAdd(npcIndex);
-        packetBufferNode.getPacketBuffer().writeByteNeg(run ? 1 : 0);
+        packetBufferNode.getPacketBuffer().writeByteNeg(ctrlDown ? 1 : 0);
         packetBufferNode.getPacketBuffer().writeIntIME(spellWidgetId);
         packetBufferNode.getPacketBuffer().writeShortAddLE(-1);
         client.getPacketWriter().queuePacket(packetBufferNode);
     }
 
-    public static void queueNPCAction1Packet(int npcIndex, boolean run) {
+    public static void queueNPCAction1Packet(int npcIndex, boolean ctrlDown) {
         Client client = Game.getClient();
         ClientPacket clientPacket = Game.getClientPacket();
         PacketBufferNode packetBufferNode = Game.getClient().preparePacket(clientPacket.OPNPC1(), client.getPacketWriter().getIsaacCipher());
         packetBufferNode.getPacketBuffer().writeShortLE(npcIndex);
-        packetBufferNode.getPacketBuffer().writeByteAdd(run ? 1 : 0);
+        packetBufferNode.getPacketBuffer().writeByteAdd(ctrlDown ? 1 : 0);
         client.getPacketWriter().queuePacket(packetBufferNode);
     }
 
-    public static void queueNPCAction2Packet(int npcIndex, boolean run) {
+    public static void queueNPCAction2Packet(int npcIndex, boolean ctrlDown) {
         Client client = Game.getClient();
         ClientPacket clientPacket = Game.getClientPacket();
         PacketBufferNode packetBufferNode = Game.getClient().preparePacket(clientPacket.OPNPC2(), client.getPacketWriter().getIsaacCipher());
-        packetBufferNode.getPacketBuffer().writeByteSub(run ? 1 : 0);
+        packetBufferNode.getPacketBuffer().writeByteSub(ctrlDown ? 1 : 0);
         packetBufferNode.getPacketBuffer().writeShortAddLE(npcIndex);
         client.getPacketWriter().queuePacket(packetBufferNode);
     }
 
-    public static void queueNPCAction3Packet(int npcIndex, boolean run) {
+    public static void queueNPCAction3Packet(int npcIndex, boolean ctrlDown) {
         Client client = Game.getClient();
         ClientPacket clientPacket = Game.getClientPacket();
         PacketBufferNode packetBufferNode = Game.getClient().preparePacket(clientPacket.OPNPC3(), client.getPacketWriter().getIsaacCipher());
         packetBufferNode.getPacketBuffer().writeShortAddLE(npcIndex);
-        packetBufferNode.getPacketBuffer().writeByte(run ? 1 : 0);
+        packetBufferNode.getPacketBuffer().writeByte(ctrlDown ? 1 : 0);
         client.getPacketWriter().queuePacket(packetBufferNode);
     }
 
-    public static void queueNPCAction4Packet(int npcIndex, boolean run) {
+    public static void queueNPCAction4Packet(int npcIndex, boolean ctrlDown) {
         Client client = Game.getClient();
         ClientPacket clientPacket = Game.getClientPacket();
         PacketBufferNode packetBufferNode = Game.getClient().preparePacket(clientPacket.OPNPC4(), client.getPacketWriter().getIsaacCipher());
         packetBufferNode.getPacketBuffer().writeShortAddLE(npcIndex);
-        packetBufferNode.getPacketBuffer().writeByteNeg(run ? 1 : 0);
+        packetBufferNode.getPacketBuffer().writeByteNeg(ctrlDown ? 1 : 0);
         client.getPacketWriter().queuePacket(packetBufferNode);
     }
 
-    public static void queueNPCAction5Packet(int npcIndex, boolean run) {
+    public static void queueNPCAction5Packet(int npcIndex, boolean ctrlDown) {
         Client client = Game.getClient();
         ClientPacket clientPacket = Game.getClientPacket();
         PacketBufferNode packetBufferNode = Game.getClient().preparePacket(clientPacket.OPNPC5(), client.getPacketWriter().getIsaacCipher());
         packetBufferNode.getPacketBuffer().writeShort(npcIndex);
-        packetBufferNode.getPacketBuffer().writeByteAdd(run ? 1 : 0);
+        packetBufferNode.getPacketBuffer().writeByteAdd(ctrlDown ? 1 : 0);
         client.getPacketWriter().queuePacket(packetBufferNode);
     }
 }
