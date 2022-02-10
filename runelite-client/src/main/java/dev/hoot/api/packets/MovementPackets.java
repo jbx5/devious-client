@@ -10,20 +10,20 @@ public class MovementPackets {
         MovementPackets.sendMovement(worldX, worldY, false);
     }
 
-    public static void sendMovement(WorldPoint worldPoint, boolean run) {
-        MovementPackets.sendMovement(worldPoint.getX(), worldPoint.getY(), run);
+    public static void sendMovement(WorldPoint worldPoint, boolean ctrlDown) {
+        MovementPackets.sendMovement(worldPoint.getX(), worldPoint.getY(), ctrlDown);
     }
 
     public static void sendMovement(WorldPoint worldPoint) {
         MovementPackets.sendMovement(worldPoint, false);
     }
 
-    public static void sendMovement(int worldPointX, int worldPointY, boolean run) {
+    public static void sendMovement(int worldPointX, int worldPointY, boolean ctrlDown) {
         Client client = Game.getClient();
         ClientPacket clientPacket = Game.getClientPacket();
         PacketBufferNode packetBufferNode = Game.getClient().preparePacket(clientPacket.MOVE_GAMECLICK(), client.getPacketWriter().getIsaacCipher());
         packetBufferNode.getPacketBuffer().writeByte(5);
-        packetBufferNode.getPacketBuffer().writeByteAdd(run ? 2 : 0);
+        packetBufferNode.getPacketBuffer().writeByteAdd(ctrlDown ? 2 : 0);
         packetBufferNode.getPacketBuffer().writeShortLE(worldPointX);
         packetBufferNode.getPacketBuffer().writeShortLE(worldPointY);
         client.getPacketWriter().queuePacket(packetBufferNode);
