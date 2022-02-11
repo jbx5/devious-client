@@ -3,7 +3,13 @@ package dev.hoot.api.movement.pathfinder;
 import dev.hoot.api.game.Skills;
 import dev.hoot.api.game.Vars;
 import dev.hoot.api.game.Worlds;
-import dev.hoot.api.magic.*;
+import dev.hoot.api.magic.Ancient;
+import dev.hoot.api.magic.Lunar;
+import dev.hoot.api.magic.Magic;
+import dev.hoot.api.magic.Regular;
+import dev.hoot.api.magic.Rune;
+import dev.hoot.api.magic.RunePouch;
+import dev.hoot.api.magic.Spell;
 import net.runelite.api.Skill;
 import net.runelite.api.coords.WorldPoint;
 
@@ -80,7 +86,7 @@ public enum TeleportSpell
 			Magic.SpellBook.REGULAR,
 			Regular.TROLLHEIM_TELEPORT,
 			61,
-			new WorldPoint(2888,367,0),
+			new WorldPoint(2888, 367, 0),
 			true,
 			"Trollheim Teleport",
 			new RuneRequirement(2, Rune.LAW),
@@ -89,7 +95,7 @@ public enum TeleportSpell
 			Magic.SpellBook.REGULAR,
 			Regular.TELEPORT_TO_KOUREND,
 			69,
-			new WorldPoint(1643,3673,0),
+			new WorldPoint(1643, 3673, 0),
 			true,
 			"Kourend Castle Teleport",
 			new RuneRequirement(2, Rune.LAW),
@@ -244,16 +250,16 @@ public enum TeleportSpell
 			new RuneRequirement(3, Rune.LAW),
 			new RuneRequirement(3, Rune.ASTRAL),
 			new RuneRequirement(10, Rune.WATER)),
-//	ICE_PLATEAU_TELEPORT(
-//			Magic.SpellBook.LUNAR,
-//			Lunar.ICE_PLATEAU_TELEPORT,
-//			Lunar.ICE_PLATEAU_TELEPORT.getLevel(),
-//			null,
-//			true,
-//			"Ice Plateau Teleport",
-//			new RuneRequirement(3, Rune.LAW),
-//			new RuneRequirement(3, Rune.ASTRAL),
-//			new RuneRequirement(8, Rune.WATER)),
+	//	ICE_PLATEAU_TELEPORT(
+	//			Magic.SpellBook.LUNAR,
+	//			Lunar.ICE_PLATEAU_TELEPORT,
+	//			Lunar.ICE_PLATEAU_TELEPORT.getLevel(),
+	//			null,
+	//			true,
+	//			"Ice Plateau Teleport",
+	//			new RuneRequirement(3, Rune.LAW),
+	//			new RuneRequirement(3, Rune.ASTRAL),
+	//			new RuneRequirement(8, Rune.WATER)),
 
 	;
 
@@ -338,7 +344,8 @@ public enum TeleportSpell
 
 	public boolean haveRunesAvailable()
 	{
-		if (hasRunesInPouch(requirements)) {
+		if (hasRunesInPouch(requirements))
+		{
 			return true;
 		}
 		for (RuneRequirement req : requirements)

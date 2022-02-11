@@ -165,11 +165,11 @@ public class TeleportLoader
 				{
 					teleports.add(new Teleport(teleportSpell.getPoint(), 5, () ->
 					{
-//						if (teleportSpell == TeleportSpell.HOME_TELEPORT_REGULAR
-//								&& Players.getLocal().isAnimating())
-//						{
-//							return;
-//						}
+						//						if (teleportSpell == TeleportSpell.HOME_TELEPORT_REGULAR
+						//								&& Players.getLocal().isAnimating())
+						//						{
+						//							return;
+						//						}
 
 						Magic.cast(teleportSpell.getSpell());
 					}));

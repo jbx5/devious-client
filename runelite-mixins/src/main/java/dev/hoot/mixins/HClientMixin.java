@@ -5,12 +5,14 @@ import dev.hoot.api.events.ExperienceGained;
 import dev.hoot.api.events.LoginStateChanged;
 import dev.hoot.api.events.MenuActionProcessed;
 import dev.hoot.api.events.PlaneChanged;
+import dev.hoot.api.events.ResumePauseSent;
 import dev.hoot.api.widgets.DialogOption;
 import net.runelite.api.ItemComposition;
 import net.runelite.api.MenuAction;
 import net.runelite.api.Skill;
 import net.runelite.api.Tile;
 import net.runelite.api.TileObject;
+import net.runelite.api.events.DialogProcessed;
 import net.runelite.api.events.MenuOptionClicked;
 import net.runelite.api.events.StatChanged;
 import net.runelite.api.mixins.Copy;
@@ -172,14 +174,20 @@ public abstract class HClientMixin implements RSClient
 	@MethodHook("resumePauseWidget")
 	public static void onDialogProcessed(int widgetUid, int menuIndex)
 	{
-		DialogOption option = DialogOption.of(widgetUid, menuIndex);
-		if (option == null)
+		client.getCallbacks().post(new ResumePauseSent(widgetUid, menuIndex));
+		DialogOption dialogOption = DialogOption.of(widgetUid, menuIndex);
+		if (dialogOption != null)
 		{
-			client.getLogger().debug("Unmapped DialogOption: {} {}", widgetUid, menuIndex);
-			return;
+			client.getCallbacks().post(new DialogProcessed(dialogOption));
 		}
-
-		client.getCallbacks().post(option);
+		else
+		{
+			client.getLogger().debug(
+					"Unknown or unmapped dialog option for widgetUid: {} and menuIndex {}",
+					widgetUid,
+					menuIndex
+			);
+		}
 	}
 
 	@Inject
