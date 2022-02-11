@@ -25,7 +25,7 @@
 package net.runelite.mixins;
 
 import dev.hoot.api.events.ResumePauseSent;
-import net.runelite.api.DialogOption;
+import dev.hoot.api.widgets.DialogOption;
 import net.runelite.api.events.DialogProcessed;
 import net.runelite.api.events.DynamicObjectAnimationChanged;
 import net.runelite.api.mixins.Copy;

@@ -204,7 +204,7 @@ public class Dialog
 		{
 			for (DialogOption option : dialogOption)
 			{
-				option.process();
+				Game.getClient().processDialog(option.getWidgetUid(), option.getMenuIndex());
 			}
 
 			return true;

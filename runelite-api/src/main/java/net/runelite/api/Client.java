@@ -2554,4 +2554,6 @@ public interface Client extends GameEngine
 	VarbitComposition getVarbitComposition(int varbitId);
 
 	Instant getLastInteractionTime();
+
+	int getSelectedItemID();
 }

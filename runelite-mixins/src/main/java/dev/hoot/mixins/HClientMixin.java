@@ -1,7 +1,16 @@
 package dev.hoot.mixins;
 
-import dev.hoot.api.events.*;
-import net.runelite.api.*;
+import dev.hoot.api.events.AutomatedMenu;
+import dev.hoot.api.events.ExperienceGained;
+import dev.hoot.api.events.LoginStateChanged;
+import dev.hoot.api.events.MenuActionProcessed;
+import dev.hoot.api.events.PlaneChanged;
+import dev.hoot.api.widgets.DialogOption;
+import net.runelite.api.ItemComposition;
+import net.runelite.api.MenuAction;
+import net.runelite.api.Skill;
+import net.runelite.api.Tile;
+import net.runelite.api.TileObject;
 import net.runelite.api.events.MenuOptionClicked;
 import net.runelite.api.events.StatChanged;
 import net.runelite.api.mixins.Copy;

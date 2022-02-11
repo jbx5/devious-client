@@ -1,12 +1,12 @@
-package net.runelite.api;
+package dev.hoot.api.widgets;
 
 import javax.annotation.Nullable;
 import java.util.Arrays;
 
 public enum DialogOption
 {
-	NPC_CONTINUE(15138819, -1),
-	PLAYER_CONTINUE(14221315, -1),
+	NPC_CONTINUE(15138821, -1),
+	PLAYER_CONTINUE(14221317, -1),
 	QUEST(12648448, 0),
 	ITEM_ONE(12648448, -1),
 	ITEM_TWO(12648448, 0),
