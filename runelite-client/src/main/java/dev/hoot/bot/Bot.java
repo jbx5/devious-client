@@ -33,6 +33,7 @@ import com.google.inject.Injector;
 import com.openosrs.client.OpenOSRS;
 import dev.hoot.bot.account.GameAccount;
 import dev.hoot.bot.config.BotConfig;
+import dev.hoot.bot.managers.DefinitionManager;
 import dev.hoot.bot.managers.FpsManager;
 import dev.hoot.bot.managers.ScriptManager;
 import dev.hoot.bot.managers.interaction.InteractionManager;
@@ -148,6 +149,9 @@ public class Bot
 
 	@Inject
 	private InteractionManager interactionManager;
+
+	@Inject
+	private DefinitionManager definitionManager;
 
 	@Inject
 	private DrawManager drawManager;
@@ -350,6 +354,7 @@ public class Bot
 		eventBus.register(botToolbar);
 		eventBus.register(scriptManager);
 		eventBus.register(interactionManager);
+		eventBus.register(definitionManager);
 		overlayManager.add(paint);
 
 		initArgs(options);

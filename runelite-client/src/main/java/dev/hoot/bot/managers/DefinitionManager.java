@@ -42,9 +42,6 @@ import net.runelite.client.eventbus.Subscribe;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 @Singleton
 @Slf4j
@@ -230,9 +227,14 @@ public class DefinitionManager
 		}
 	}
 
-	@Subscribe(priority = Integer.MAX_VALUE)
+	@Subscribe
 	private void onVarbitChanged(VarbitChanged e)
 	{
+		if (VARBITS.isEmpty())
+		{
+			init();
+		}
+
 		var changedVarbits = VARBITS.get(e.getIndex());
 		for (int varbitId : changedVarbits)
 		{

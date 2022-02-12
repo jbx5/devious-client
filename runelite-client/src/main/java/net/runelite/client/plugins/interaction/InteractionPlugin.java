@@ -1,6 +1,7 @@
 package net.runelite.client.plugins.interaction;
 
 import dev.hoot.api.plugins.SettingsPlugin;
+import dev.hoot.bot.managers.DefinitionManager;
 import dev.hoot.bot.managers.interaction.InteractionConfig;
 import dev.hoot.bot.managers.interaction.InteractionManager;
 import net.runelite.client.config.Config;
@@ -27,6 +28,9 @@ public class InteractionPlugin extends SettingsPlugin
 	private InteractionManager interactionManager;
 
 	@Inject
+	private DefinitionManager definitionManager;
+
+	@Inject
 	private InteractionOverlay interactionOverlay;
 
 	@Inject
@@ -42,6 +46,7 @@ public class InteractionPlugin extends SettingsPlugin
 		overlayManager.add(interactionOverlay);
 		mouseManager.registerMouseListener(interactionOverlay);
 		eventBus.register(interactionManager);
+		eventBus.register(definitionManager);
 	}
 
 	@Override
@@ -74,5 +79,6 @@ public class InteractionPlugin extends SettingsPlugin
 		overlayManager.remove(interactionOverlay);
 		mouseManager.unregisterMouseListener(interactionOverlay);
 		eventBus.unregister(interactionManager);
+		eventBus.unregister(definitionManager);
 	}
 }
