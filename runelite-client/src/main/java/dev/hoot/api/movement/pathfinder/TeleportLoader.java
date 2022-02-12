@@ -156,7 +156,7 @@ public class TeleportLoader
 		{
 			for (TeleportSpell teleportSpell : TeleportSpell.values())
 			{
-				if (!teleportSpell.canCast())
+				if (!teleportSpell.canCast() || teleportSpell.getPoint() == null)
 				{
 					continue;
 				}
