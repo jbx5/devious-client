@@ -43,6 +43,7 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Singleton
@@ -56,7 +57,7 @@ public class DefinitionManager
 	private ClientThread clientThread;
 
 	private static final Multimap<Integer, Integer> VARBITS = HashMultimap.create();
-	private static final Map<Integer, Integer> VARBIT_TO_ENTITYID = new HashMap<>();
+	private static final Multimap<Integer, Integer> VARBIT_TO_ENTITYID = HashMultimap.create();
 	private static final Multimap<Integer, TileObject> TRANSFORMING_OBJECTS = HashMultimap.create();
 
 	public void init()
@@ -241,56 +242,59 @@ public class DefinitionManager
 			}
 
 			int configValue = Vars.getBit(varbitId);
-			int entityId = VARBIT_TO_ENTITYID.get(varbitId);
-			if (entityId < client.getCachedNPCs().length)
+			Collection<Integer> entityIds = VARBIT_TO_ENTITYID.get(varbitId);
+			for (Integer entityId : entityIds)
 			{
-				NPC npc = client.getCachedNPCs()[entityId];
-				if (npc != null && npc.getComposition() != null)
+				if (entityId < client.getCachedNPCs().length)
 				{
-					NPCComposition current = npc.getTransformedComposition();
-					NPCComposition transformed = npc.getComposition().transform();
-					if (current == transformed)
+					NPC npc = client.getCachedNPCs()[entityId];
+					if (npc != null && npc.getComposition() != null)
 					{
+						NPCComposition current = npc.getTransformedComposition();
+						NPCComposition transformed = npc.getComposition().transform();
+						if (current == transformed)
+						{
+							continue;
+						}
+
+						npc.setTransformedComposition(transformed);
+
+						if (configValue == 0)
+						{
+							log.debug("NPC {} reverted to default state", entityId);
+						}
+						else
+						{
+							log.debug("NPC {} transformed", entityId);
+						}
+
 						continue;
 					}
-
-					npc.setTransformedComposition(transformed);
-
-					if (configValue == 0)
-					{
-						log.debug("NPC {} reverted to default state", entityId);
-					}
-					else
-					{
-						log.debug("NPC {} transformed", entityId);
-					}
-
-					continue;
 				}
-			}
 
-			ObjectComposition objectComposition = client.getObjectDefinition(entityId);
-			Collection<TileObject> cachedObjects = TRANSFORMING_OBJECTS.get(entityId);
-			for (TileObject cachedObject : cachedObjects)
-			{
-				if (objectComposition != null && cachedObject != null)
+				ObjectComposition objectComposition = client.getObjectDefinition(entityId);
+				Collection<TileObject> cachedObjects = TRANSFORMING_OBJECTS.get(entityId);
+				for (TileObject cachedObject : cachedObjects)
 				{
-					ObjectComposition current = cachedObject.getTransformedComposition();
-					ObjectComposition transformed = objectComposition.getImpostor();
-					if (current == transformed)
+					if (objectComposition != null && cachedObject != null)
 					{
-						continue;
-					}
+						ObjectComposition current = cachedObject.getTransformedComposition();
+						ObjectComposition transformed = objectComposition.getImpostor();
+						if (current == transformed)
+						{
+							continue;
+						}
 
-					cachedObject.setTransformedComposition(transformed);
+						cachedObject.setTransformedComposition(transformed);
 
-					if (configValue == 0)
-					{
-						log.debug("[{}] reverted to default state", transformed.getName());
-					}
-					else
-					{
-						log.debug("[{}: {}] transformed into [{}: {}]", objectComposition.getId(), objectComposition.getName(), transformed.getId(), transformed.getName());
+						if (configValue == 0)
+						{
+							log.debug("[{}] reverted to default state", transformed.getName());
+						}
+						else
+						{
+							log.debug("[{}: {}] transformed into [{}: {}]", objectComposition.getId(), objectComposition.getName(), transformed.getId(), transformed.getName());
+						}
 					}
 				}
 			}
