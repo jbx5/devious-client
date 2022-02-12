@@ -20,12 +20,12 @@ public class PacketSent
 				packetBufferNode.getPacketBuffer().getPayload(),
 				1, packetBufferNode.getPacketBuffer().getOffset());
 
-//		for (PacketOpcode op : PacketOpcode.values()) {
-//			if (opcode == op.getOpcode()) {
-//				opcodeText = op.toString();
-//				break;
-//			}
-//		}
+		//		for (PacketOpcode op : PacketOpcode.values()) {
+		//			if (opcode == op.getOpcode()) {
+		//				opcodeText = op.toString();
+		//				break;
+		//			}
+		//		}
 
 		return "[" + opcodeText + "]\n" +
 				hexDump(
