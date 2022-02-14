@@ -14,6 +14,7 @@ import net.runelite.api.ItemContainer;
 import net.runelite.api.NPC;
 import net.runelite.api.NPCComposition;
 import net.runelite.api.ObjectComposition;
+import net.runelite.api.PlayerComposition;
 import net.runelite.api.TileObject;
 import net.runelite.api.VarbitComposition;
 import net.runelite.api.events.DecorativeObjectChanged;
@@ -28,6 +29,7 @@ import net.runelite.api.events.GroundObjectDespawned;
 import net.runelite.api.events.GroundObjectSpawned;
 import net.runelite.api.events.ItemContainerChanged;
 import net.runelite.api.events.ItemSpawned;
+import net.runelite.api.events.PlayerSpawned;
 import net.runelite.api.events.VarbitChanged;
 import net.runelite.api.events.WallObjectDespawned;
 import net.runelite.api.events.WallObjectSpawned;
@@ -93,6 +95,7 @@ public class DefinitionManager
 		}
 	}
 
+	// TileObjects
 	@Subscribe
 	private void onSpawn(GameObjectSpawned event)
 	{
@@ -165,6 +168,7 @@ public class DefinitionManager
 		TRANSFORMING_OBJECTS.remove(event.getGroundObject().getId(), event.getGroundObject());
 	}
 
+	// Items
 	@Subscribe
 	private void onItemSpawn(ItemSpawned event)
 	{
@@ -191,6 +195,27 @@ public class DefinitionManager
 		}
 	}
 
+	@Subscribe
+	private void onPlayerSpawned(PlayerSpawned event)
+	{
+		PlayerComposition playerComposition = event.getPlayer().getPlayerComposition();
+		if (playerComposition == null)
+		{
+			return;
+		}
+
+		for (int equipmentId : playerComposition.getEquipmentIds())
+		{
+			if (equipmentId < 512)
+			{
+				continue;
+			}
+
+			client.cacheItem(equipmentId, client.getItemDefinition(equipmentId));
+		}
+	}
+
+	// Widgets
 	@Subscribe
 	private void onWidgetHiddenChanged(WidgetHiddenChanged event)
 	{
@@ -318,11 +343,8 @@ public class DefinitionManager
 			log.trace("Widget {}, {} is now visible", WidgetInfo.TO_GROUP(widget.getId()), WidgetInfo.TO_CHILD(widget.getId()));
 			if (itemId != -1)
 			{
-				if (!client.isItemDefinitionCached(itemId))
-				{
-					log.debug("Caching item {} from widget", itemId);
-					client.cacheItem(itemId, client.getItemDefinition(itemId));
-				}
+				log.debug("Caching item {} from widget", itemId);
+				client.cacheItem(itemId, client.getItemDefinition(itemId));
 			}
 		}
 
