@@ -35,6 +35,7 @@ public class Equipment extends Items
 
 		Item[] containerItems = container.getItems();
 
+		// temp workaround for caching defs
 		Client client = Game.getClient();
 		List<Item> uncachedItems = Arrays.stream(containerItems)
 				.filter(i -> !client.isItemDefinitionCached(i.getId()))
