@@ -38,12 +38,12 @@ public class Time
 		return sleep(Rand.nextInt(min, max));
 	}
 
-	public static void sleepUntil(BooleanSupplier supplier, int pollingRate, int timeOut)
+	public static boolean sleepUntil(BooleanSupplier supplier, int pollingRate, int timeOut)
 	{
 		if (Game.getClient().isClientThread())
 		{
 			logger.debug("Tried to sleepUntil on client thread!");
-			return;
+			return false;
 		}
 
 		long start = System.currentTimeMillis();
@@ -51,19 +51,21 @@ public class Time
 		{
 			if (System.currentTimeMillis() > start + timeOut)
 			{
-				break;
+				return false;
 			}
 
 			if (!sleep(pollingRate))
 			{
-				break;
+				return false;
 			}
 		}
+
+		return true;
 	}
 
-	public static void sleepUntil(BooleanSupplier supplier, int timeOut)
+	public static boolean sleepUntil(BooleanSupplier supplier, int timeOut)
 	{
-		sleepUntil(supplier, DEFAULT_POLLING_RATE, timeOut);
+		return sleepUntil(supplier, DEFAULT_POLLING_RATE, timeOut);
 	}
 
 	public static String format(Duration duration)
