@@ -2144,6 +2144,16 @@ public interface Client extends GameEngine
 	 */
 	void removeFriend(String name);
 
+	/**
+	 * Add player to ignorelist
+	 */
+	void addIgnore(String name);
+
+	/**
+	 * Remove player from ignorelist
+	 */
+	void removeIgnore(String name);
+
 	void setModulus(BigInteger modulus);
 
 	BigInteger getModulus();
@@ -2273,6 +2283,16 @@ public interface Client extends GameEngine
 	 * it won't get mirrored to the other side of the screen
 	 */
 	void setLoginScreen(SpritePixels pixels);
+
+	/**
+	 * Low level control over the login screen background.
+	 * Useful when changing the login screen background every frame, for example for playing a video.
+	 * A typical update cycle would be:
+	 * 1. setLoginScreenBackground(pixels) 2. setLoginScreenLeftTitleSprite() 3. setLoginScreenRightTitleSprite()
+	 */
+	void setLoginScreenBackground(SpritePixels pixels);
+	void setLoginScreenLeftTitleSprite();
+	void setLoginScreenRightTitleSprite();
 
 	/**
 	 * Sets whether the flames on the login screen should be rendered
