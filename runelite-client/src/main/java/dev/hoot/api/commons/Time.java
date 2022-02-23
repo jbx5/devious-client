@@ -1,6 +1,7 @@
 package dev.hoot.api.commons;
 
 import dev.hoot.api.game.Game;
+import net.runelite.api.GameState;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -66,6 +67,74 @@ public class Time
 	public static boolean sleepUntil(BooleanSupplier supplier, int timeOut)
 	{
 		return sleepUntil(supplier, DEFAULT_POLLING_RATE, timeOut);
+	}
+
+	public static boolean sleepTicks(int ticks)
+	{
+		if (Game.getClient().isClientThread())
+		{
+			logger.debug("Tried to sleep on client thread!");
+			return false;
+		}
+
+		if (Game.getState() == GameState.LOGIN_SCREEN || Game.getState() == GameState.LOGIN_SCREEN_AUTHENTICATOR)
+		{
+			return false;
+		}
+
+		for (int i = 0; i < ticks; i++)
+		{
+			long start = Game.getClient().getTickCount();
+
+			while (Game.getClient().getTickCount() == start)
+			{
+				try
+				{
+					Thread.sleep(10);
+				}
+				catch (InterruptedException e)
+				{
+					logger.debug("Sleep interrupted");
+					return false;
+				}
+			}
+		}
+
+		return true;
+	}
+
+	public static boolean sleepTick()
+	{
+		return sleepTicks(1);
+	}
+
+	public static boolean sleepTicksUntil(BooleanSupplier supplier, int ticks)
+	{
+		if (Game.getClient().isClientThread())
+		{
+			logger.debug("Tried to sleep on client thread!");
+			return false;
+		}
+
+		if (Game.getState() == GameState.LOGIN_SCREEN || Game.getState() == GameState.LOGIN_SCREEN_AUTHENTICATOR)
+		{
+			return false;
+		}
+
+		for (int i = 0; i < ticks; i++)
+		{
+			if (supplier.getAsBoolean())
+			{
+				return true;
+			}
+
+			if (!sleepTick())
+			{
+				return false;
+			}
+		}
+
+		return false;
 	}
 
 	public static String format(Duration duration)
