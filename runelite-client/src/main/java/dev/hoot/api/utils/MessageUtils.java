@@ -13,7 +13,7 @@ public class MessageUtils
     @Inject
     private static ChatMessageManager chatMessageManager;
 
-    public static void sendMessage(String message, ChatColorType colorType, ChatMessageType messageType)
+    public static void addMessage(String message, ChatColorType colorType, ChatMessageType messageType)
     {
         String chatMessage = new ChatMessageBuilder()
                 .append(colorType)
@@ -27,18 +27,18 @@ public class MessageUtils
                         .build());
     }
 
-    public static void sendMesage(String message, ChatMessageType messageType)
+    public static void addMessage(String message, ChatMessageType messageType)
     {
-        sendMessage(message, ChatColorType.HIGHLIGHT, messageType);
+        addMessage(message, ChatColorType.HIGHLIGHT, messageType);
     }
 
-    public static void sendMessage(String message, ChatColorType colorType)
+    public static void addMessage(String message, ChatColorType colorType)
     {
-        sendMessage(message, colorType, ChatMessageType.CONSOLE);
+        addMessage(message, colorType, ChatMessageType.CONSOLE);
     }
 
-    public static void sendMessage(String message)
+    public static void addMessage(String message)
     {
-        sendMessage(message, ChatColorType.HIGHLIGHT, ChatMessageType.CONSOLE);
+        addMessage(message, ChatColorType.HIGHLIGHT, ChatMessageType.CONSOLE);
     }
 }
