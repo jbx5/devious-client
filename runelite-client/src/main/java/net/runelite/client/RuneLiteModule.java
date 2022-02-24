@@ -61,6 +61,7 @@ import dev.hoot.api.game.Worlds;
 import dev.hoot.api.movement.pathfinder.GlobalCollisionMap;
 import dev.hoot.api.movement.pathfinder.RegionManager;
 import dev.hoot.api.movement.pathfinder.Walker;
+import dev.hoot.api.utils.MessageUtils;
 import dev.hoot.bot.managers.interaction.InteractionConfig;
 import lombok.AllArgsConstructor;
 import net.runelite.api.Client;
@@ -160,7 +161,8 @@ public class RuneLiteModule extends AbstractModule
 				GameThread.class,
 				Game.class,
 				Prices.class,
-				Worlds.class
+				Worlds.class,
+				MessageUtils.class
 		);
 	}
 
