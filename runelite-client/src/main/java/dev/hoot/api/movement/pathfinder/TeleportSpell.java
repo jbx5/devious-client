@@ -3,13 +3,7 @@ package dev.hoot.api.movement.pathfinder;
 import dev.hoot.api.game.Skills;
 import dev.hoot.api.game.Vars;
 import dev.hoot.api.game.Worlds;
-import dev.hoot.api.magic.Ancient;
-import dev.hoot.api.magic.Lunar;
-import dev.hoot.api.magic.Magic;
-import dev.hoot.api.magic.Regular;
-import dev.hoot.api.magic.Rune;
-import dev.hoot.api.magic.RunePouch;
-import dev.hoot.api.magic.Spell;
+import dev.hoot.api.magic.*;
 import net.runelite.api.Skill;
 import net.runelite.api.coords.WorldPoint;
 
@@ -250,16 +244,141 @@ public enum TeleportSpell
 			new RuneRequirement(3, Rune.LAW),
 			new RuneRequirement(3, Rune.ASTRAL),
 			new RuneRequirement(10, Rune.WATER)),
-	//	ICE_PLATEAU_TELEPORT(
-	//			Magic.SpellBook.LUNAR,
-	//			Lunar.ICE_PLATEAU_TELEPORT,
-	//			Lunar.ICE_PLATEAU_TELEPORT.getLevel(),
-	//			null,
-	//			true,
-	//			"Ice Plateau Teleport",
-	//			new RuneRequirement(3, Rune.LAW),
-	//			new RuneRequirement(3, Rune.ASTRAL),
-	//			new RuneRequirement(8, Rune.WATER)),
+	ICE_PLATEAU_TELEPORT(
+			Magic.SpellBook.LUNAR,
+			Lunar.ICE_PLATEAU_TELEPORT,
+			Lunar.ICE_PLATEAU_TELEPORT.getLevel(),
+			null,
+			true,
+			"Ice Plateau Teleport",
+			new RuneRequirement(3, Rune.LAW),
+			new RuneRequirement(3, Rune.ASTRAL),
+			new RuneRequirement(8, Rune.WATER)),
+
+	// NECROMANCY TELEPORTS
+
+	ARCEUUS_HOME_TELEPORT(
+			Magic.SpellBook.NECROMANCY,
+			Necromancy.ARCEUUS_HOME_TELEPORT,
+			Necromancy.ARCEUUS_HOME_TELEPORT.getLevel(),
+			new WorldPoint(1699, 3882, 0),
+			true,
+			"Arceuus Home Teleport"),
+	ARCEUUS_LIBRARY_TELEPORT(
+			Magic.SpellBook.NECROMANCY,
+			Necromancy.ARCEUUS_LIBRARY_TELEPORT,
+			Necromancy.ARCEUUS_LIBRARY_TELEPORT.getLevel(),
+			new WorldPoint(1634, 3836, 0),
+			true,
+			"Arceuus Library Teleport",
+			new RuneRequirement(1, Rune.LAW),
+			new RuneRequirement(2, Rune.EARTH)),
+	DRAYNOR_MANOR_TELEPORT(
+			Magic.SpellBook.NECROMANCY,
+			Necromancy.DRAYNOR_MANOR_TELEPORT,
+			Necromancy.DRAYNOR_MANOR_TELEPORT.getLevel(),
+			new WorldPoint(3109, 3352, 0),
+			true,
+			"Arceuus Library Teleport",
+			new RuneRequirement(1, Rune.LAW),
+			new RuneRequirement(1, Rune.EARTH),
+			new RuneRequirement(1, Rune.WATER)),
+	BATTLEFRONT_TELEPORT(
+			Magic.SpellBook.NECROMANCY,
+			Necromancy.BATTLEFRONT_TELEPORT,
+			Necromancy.BATTLEFRONT_TELEPORT.getLevel(),
+			new WorldPoint(1350, 3740, 0),
+			true,
+			"Battlefront Teleport",
+			new RuneRequirement(1, Rune.LAW),
+			new RuneRequirement(1, Rune.EARTH),
+			new RuneRequirement(1, Rune.FIRE)),
+	MIND_ALTAR_TELEPORT(
+			Magic.SpellBook.NECROMANCY,
+			Necromancy.MIND_ALTAR_TELEPORT,
+			Necromancy.MIND_ALTAR_TELEPORT.getLevel(),
+			new WorldPoint(2978, 3508, 0),
+			true,
+			"Mind Altar Teleport",
+			new RuneRequirement(1, Rune.LAW),
+			new RuneRequirement(2, Rune.MIND)),
+	RESPAWN_TELEPORT(
+			Magic.SpellBook.NECROMANCY,
+			Necromancy.RESPAWN_TELEPORT,
+			Necromancy.RESPAWN_TELEPORT.getLevel(),
+			new WorldPoint(3262, 6074, 0),
+			true,
+			"Respawn Teleport",
+			new RuneRequirement(1, Rune.LAW),
+			new RuneRequirement(1, Rune.SOUL)),
+	SALVE_GRAVEYARD_TELEPORT(
+			Magic.SpellBook.NECROMANCY,
+			Necromancy.SALVE_GRAVEYARD_TELEPORT,
+			Necromancy.SALVE_GRAVEYARD_TELEPORT.getLevel(),
+			new WorldPoint(3431, 3460, 0),
+			true,
+			"Salve Graveyard Teleport",
+			new RuneRequirement(1, Rune.LAW),
+			new RuneRequirement(2, Rune.SOUL)),
+	FENKENSTRAINS_CASTLE_TELEPORT(
+			Magic.SpellBook.NECROMANCY,
+			Necromancy.FENKENSTRAINS_CASTLE_TELEPORT,
+			Necromancy.FENKENSTRAINS_CASTLE_TELEPORT.getLevel(),
+			new WorldPoint(3546, 3528, 0),
+			true,
+			"Fenkenstrain's Castle Teleport",
+			new RuneRequirement(1, Rune.LAW),
+			new RuneRequirement(1, Rune.SOUL),
+			new RuneRequirement(1, Rune.EARTH)),
+	WEST_ARDOUGNE_TELEPORT(
+			Magic.SpellBook.NECROMANCY,
+			Necromancy.WEST_ARDOUGNE_TELEPORT,
+			Necromancy.WEST_ARDOUGNE_TELEPORT.getLevel(),
+			new WorldPoint(2502, 3291, 0),
+			true,
+			"West Ardougne Teleport",
+			new RuneRequirement(2, Rune.LAW),
+			new RuneRequirement(2, Rune.SOUL)),
+	HARMONY_ISLAND_TELEPORT(
+			Magic.SpellBook.NECROMANCY,
+			Necromancy.HARMONY_ISLAND_TELEPORT,
+			Necromancy.HARMONY_ISLAND_TELEPORT.getLevel(),
+			new WorldPoint(3799, 2867, 0),
+			true,
+			"Harmony Island Teleport",
+			new RuneRequirement(1, Rune.LAW),
+			new RuneRequirement(1, Rune.SOUL),
+			new RuneRequirement(1, Rune.NATURE)),
+	CEMETERY_TELEPORT(
+			Magic.SpellBook.NECROMANCY,
+			Necromancy.CEMETERY_TELEPORT,
+			Necromancy.CEMETERY_TELEPORT.getLevel(),
+			null,
+			true,
+			"Cemetery Teleport",
+			new RuneRequirement(1, Rune.LAW),
+			new RuneRequirement(1, Rune.SOUL),
+			new RuneRequirement(1, Rune.BLOOD)),
+	BARROWS_TELEPORT(
+			Magic.SpellBook.NECROMANCY,
+			Necromancy.BARROWS_TELEPORT,
+			Necromancy.BARROWS_TELEPORT.getLevel(),
+			new WorldPoint(3563, 3313, 0),
+			true,
+			"Barrows Teleport",
+			new RuneRequirement(2, Rune.LAW),
+			new RuneRequirement(2, Rune.SOUL),
+			new RuneRequirement(1, Rune.BLOOD)),
+	APE_ATOLL_TELEPORT(
+			Magic.SpellBook.NECROMANCY,
+			Necromancy.APE_ATOLL_TELEPORT,
+			Necromancy.APE_ATOLL_TELEPORT.getLevel(),
+			new WorldPoint(2769, 9100, 0),
+			true,
+			"Ape Atoll Teleport",
+			new RuneRequirement(2, Rune.LAW),
+			new RuneRequirement(2, Rune.SOUL),
+			new RuneRequirement(2, Rune.BLOOD)),
 
 	;
 
