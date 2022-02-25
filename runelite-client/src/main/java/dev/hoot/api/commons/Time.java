@@ -11,7 +11,7 @@ import java.util.function.BooleanSupplier;
 public class Time
 {
 	private static final Logger logger = LoggerFactory.getLogger(Time.class);
-	private static final int DEFAULT_POLLING_RATE = 100;
+	private static final int DEFAULT_POLLING_RATE = 10;
 
 	public static boolean sleep(long ms)
 	{
@@ -90,7 +90,7 @@ public class Time
 			{
 				try
 				{
-					Thread.sleep(10);
+					Thread.sleep(DEFAULT_POLLING_RATE);
 				}
 				catch (InterruptedException e)
 				{
