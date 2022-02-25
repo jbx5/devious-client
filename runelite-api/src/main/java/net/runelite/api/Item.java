@@ -174,41 +174,41 @@ public class Item implements Interactable, Identifiable, EntityNameable
 	public void useOn(TileItem object)
 	{
 		client.setSelectedItemWidget(widgetId);
-		client.setSelectedItemSlot(getSlot());
-		client.setSelectedItemID(getId());
+		client.setSelectedItemSlot(slot);
+		client.setSelectedItemID(id);
 		object.interact(0, MenuAction.ITEM_USE_ON_GROUND_ITEM.getId());
 	}
 
 	public void useOn(TileObject object)
 	{
 		client.setSelectedItemWidget(widgetId);
-		client.setSelectedItemSlot(getSlot());
-		client.setSelectedItemID(getId());
+		client.setSelectedItemSlot(slot);
+		client.setSelectedItemID(id);
 		object.interact(0, MenuAction.ITEM_USE_ON_GAME_OBJECT.getId());
 	}
 
 	public void useOn(Item item)
 	{
 		client.setSelectedItemWidget(widgetId);
-		client.setSelectedItemSlot(item.getSlot());
-		client.setSelectedItemID(item.getId());
-		interact(0, MenuAction.ITEM_USE_ON_WIDGET_ITEM.getId());
+		client.setSelectedItemSlot(slot);
+		client.setSelectedItemID(id);
+		item.interact(0, MenuAction.ITEM_USE_ON_WIDGET_ITEM.getId());
 	}
 
 	public void useOn(Actor actor)
 	{
 		MenuAction menuAction = actor instanceof NPC ? MenuAction.ITEM_USE_ON_NPC : MenuAction.ITEM_USE_ON_PLAYER;
 		client.setSelectedItemWidget(widgetId);
-		client.setSelectedItemSlot(getSlot());
-		client.setSelectedItemID(getId());
+		client.setSelectedItemSlot(slot);
+		client.setSelectedItemID(id);
 		actor.interact(0, menuAction.getId());
 	}
 
 	public void useOn(Widget widget)
 	{
 		client.setSelectedItemWidget(widgetId);
-		client.setSelectedItemSlot(getSlot());
-		client.setSelectedItemID(getId());
+		client.setSelectedItemSlot(slot);
+		client.setSelectedItemID(id);
 		widget.interact(0, MenuAction.ITEM_USE_ON_WIDGET.getId());
 	}
 
