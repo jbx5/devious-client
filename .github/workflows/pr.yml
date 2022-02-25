@@ -38,7 +38,7 @@ jobs:
 
   checkstyleMain:
     name: Checkstyle main
-    needs: [pr-lint, validate]
+    needs: [validate]
     runs-on: ubuntu-latest
 
     steps:
