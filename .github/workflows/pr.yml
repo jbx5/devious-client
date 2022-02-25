@@ -5,16 +5,8 @@ on:
     types: ['opened', 'edited', 'reopened', 'synchronize']
 
 jobs:
-  validate:
-    name: Validate gradle wrapper
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2.3.4
-      - uses: gradle/wrapper-validation-action@v1.0.3
-
   build:
     name: Build
-    needs: [validate]
     runs-on: ubuntu-latest
 
     steps:
@@ -38,7 +30,6 @@ jobs:
 
   checkstyleMain:
     name: Checkstyle main
-    needs: [validate]
     runs-on: ubuntu-latest
 
     steps:
