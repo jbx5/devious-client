@@ -114,7 +114,8 @@ public class InteractionManager
 
 					MousePackets.queueClickPacket(clickPoint.x, clickPoint.y);
 
-					GameThread.invoke(() -> {
+					GameThread.invoke(() ->
+					{
 						try
 						{
 							Packets.fromAutomatedMenu(e).send();
