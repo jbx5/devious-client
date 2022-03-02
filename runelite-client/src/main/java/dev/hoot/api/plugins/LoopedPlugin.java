@@ -1,6 +1,5 @@
 package dev.hoot.api.plugins;
 
-import dev.hoot.api.commons.Rand;
 import dev.hoot.api.commons.Time;
 import dev.hoot.api.game.Game;
 import dev.hoot.api.input.naturalmouse.NaturalMouse;
@@ -15,7 +14,6 @@ import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.plugins.Plugin;
 
 import javax.inject.Inject;
-import java.time.Instant;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Slf4j
@@ -71,14 +69,14 @@ public abstract class LoopedPlugin extends Plugin implements Runnable
 					break;
 				}
 
-				if (interactionConfig.mouseOffScreen()
-						&& interactionConfig.naturalMouse()
-						&& client.getLastInteractionTime().plusMillis(Rand.nextInt(2_000, 10_000)).isBefore(Instant.now())
-						&& client.getMouseHandler().getCurrentX() != -1
-						&& client.getMouseHandler().getCurrentY() != -1)
-				{
-					naturalMouse.moveOffScreen();
-				}
+//				if (interactionConfig.mouseOffScreen()
+//						&& interactionConfig.naturalMouse()
+//						&& client.getLastInteractionTime().plusMillis(Rand.nextInt(2_000, 10_000)).isBefore(Instant.now())
+//						&& client.getMouseHandler().getCurrentX() != -1
+//						&& client.getMouseHandler().getCurrentY() != -1)
+//				{
+//					naturalMouse.moveOffScreen();
+//				}
 			}
 			catch (Exception e)
 			{

@@ -3,6 +3,7 @@ package dev.hoot.api.packets;
 import dev.hoot.api.events.AutomatedMenu;
 import dev.hoot.api.game.Game;
 import dev.hoot.api.game.GameThread;
+import dev.hoot.api.widgets.Widgets;
 import dev.hoot.bot.managers.interaction.InteractionException;
 import net.runelite.api.packets.ClientPacket;
 import net.runelite.api.packets.PacketBufferNode;
@@ -234,76 +235,94 @@ public class Packets
 						selectedItemId,
 						selectedItemSlot
 				);
-			case ITEM_USE_ON_WIDGET:
-				break;
 			case ITEM_FIRST_OPTION:
 				return ItemPackets.createFirstAction(
 						param1,
-						id,
+						-1,
 						param0
 				);
 			case ITEM_SECOND_OPTION:
 				return ItemPackets.createSecondAction(
 						param1,
-						id,
+						-1,
 						param0
 				);
 			case ITEM_THIRD_OPTION:
 				return ItemPackets.createThirdAction(
 						param1,
-						id,
+						-1,
 						param0
 				);
 			case ITEM_FOURTH_OPTION:
 				return ItemPackets.createFourthAction(
 						param1,
-						id,
+						-1,
 						param0
 				);
 			case ITEM_FIFTH_OPTION:
 				return ItemPackets.createFifthAction(
 						param1,
-						id,
+						-1,
 						param0
 				);
-			case ITEM_USE:
-				break;
 			case WIDGET_FIRST_OPTION:
-				break;
+				return WidgetPackets.createFirstAction(
+						param1,
+						-1,
+						param0
+				);
 			case WIDGET_SECOND_OPTION:
-				break;
+				return WidgetPackets.createSecondAction(
+						param1,
+						-1,
+						param0
+				);
 			case WIDGET_THIRD_OPTION:
-				break;
+				return WidgetPackets.createThirdAction(
+						param1,
+						-1,
+						param0
+				);
 			case WIDGET_FOURTH_OPTION:
-				break;
+				return WidgetPackets.createFourthAction(
+						param1,
+						-1,
+						param0
+				);
 			case WIDGET_FIFTH_OPTION:
-				break;
+				return WidgetPackets.createFifthAction(
+						param1,
+						-1,
+						param0
+				);
 			case WIDGET_TYPE_1:
-				break;
-			case WIDGET_TYPE_2:
-				break;
-			case WIDGET_TYPE_3:
-				break;
-			case WIDGET_TYPE_4:
-				break;
-			case WIDGET_TYPE_5:
-				break;
+				return WidgetPackets.createType1Action(param1);
 			case WIDGET_TYPE_6:
-				break;
+				return WidgetPackets.createContinuePacket(param1, param0);
 			case WALK:
-				break;
+				return MovementPackets.createMovement(
+						param0 + client.getBaseX(),
+						param1 + client.getBaseY(),
+						false
+				);
 			case CC_OP:
-				break;
-			case SPELL_CAST_ON_WIDGET:
-				break;
+				var widget = Widgets.fromId(param1);
+				if (widget == null)
+				{
+					break;
+				}
+
+				var child = widget.getChild(param0);
+				if (child == null)
+				{
+					break;
+				}
+
+				return WidgetPackets.createDefaultAction(id, param1, child.getItemId(), param0);
 			case CC_OP_LOW_PRIORITY:
-				break;
-			case FOLLOW:
-				break;
-			case TRADE:
 				break;
 		}
 
-		throw new InteractionException("Failed to parse packet from AutomatedMenu with opcode " + opcode);
+		throw new InteractionException("Couldn't parse packet from opcode: " + opcode);
 	}
 }
