@@ -114,15 +114,17 @@ public class InteractionManager
 
 					MousePackets.queueClickPacket(clickPoint.x, clickPoint.y);
 
-					try
-					{
-						Packets.fromAutomatedMenu(e).send();
-					}
-					catch (InteractionException ex)
-					{
-						log.debug("{}, falling back to invoke", ex.getMessage());
-						processAction(e, clickPoint.x, clickPoint.y);
-					}
+					GameThread.invoke(() -> {
+						try
+						{
+							Packets.fromAutomatedMenu(e).send();
+						}
+						catch (InteractionException ex)
+						{
+							log.debug("{}, falling back to invoke", ex.getMessage());
+							processAction(e, clickPoint.x, clickPoint.y);
+						}
+					});
 
 					break;
 			}
