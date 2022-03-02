@@ -5,4 +5,6 @@ public interface PacketBufferNode
 	PacketBuffer getPacketBuffer();
 
 	ClientPacket getClientPacket();
+
+	void send();
 }

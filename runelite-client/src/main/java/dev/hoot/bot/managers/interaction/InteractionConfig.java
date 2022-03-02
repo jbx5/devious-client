@@ -16,15 +16,15 @@ public interface InteractionConfig extends Config
 	String interactionManager = "Interaction manager";
 
 	@ConfigItem(
-			keyName = "clickSwap",
-			name = "Click-swap",
-			description = "Swaps the menuaction after clicking (may be slower)",
+			keyName = "interactMethod",
+			name = "Interact method",
+			description = "Interaction method",
 			section = interactionManager,
 			position = 1
 	)
-	default boolean clickSwap()
+	default InteractMethod interactMethod()
 	{
-		return true;
+		return InteractMethod.MOUSE_EVENTS;
 	}
 
 	@ConfigItem(
@@ -39,28 +39,28 @@ public interface InteractionConfig extends Config
 		return false;
 	}
 
-	@ConfigItem(
-			keyName = "mouseOffScreen",
-			name = "Mouse off screen when idle",
-			description = "Move the mouse off screen if idle",
-			section = interactionManager,
-			position = 3
-	)
-	default boolean mouseOffScreen()
-	{
-		return false;
-	}
+//	@ConfigItem(
+//			keyName = "mouseOffScreen",
+//			name = "Mouse off screen when idle",
+//			description = "Move the mouse off screen if idle",
+//			section = interactionManager,
+//			position = 3
+//	)
+//	default boolean mouseOffScreen()
+//	{
+//		return false;
+//	}
 
 	@ConfigItem(
-			keyName = "interactType",
-			name = "Interact click type",
+			keyName = "mouseBehavior",
+			name = "Mouse behavior",
 			description = "Type of clicks to send to the server",
 			section = interactionManager,
 			position = 4
 	)
-	default InteractType interactType()
+	default MouseBehavior mouseBehavior()
 	{
-		return InteractType.CLICKBOXES;
+		return MouseBehavior.CLICKBOXES;
 	}
 
 	@ConfigItem(
