@@ -97,22 +97,29 @@ public class InteractionManager
 					break;
 
 				case INVOKE:
-					mouseHandler.sendMovement(clickPoint.x, clickPoint.y);
-					// We can't send button 1, because we're directly invoking the menuaction and button 1 would send a click.
-					mouseHandler.sendClick(-1, -1);
+					if (config.mouseBehavior() != MouseBehavior.DISABLED)
+					{
+						mouseHandler.sendMovement(clickPoint.x, clickPoint.y);
+						// We can't send button 1, because we're directly invoking the menuaction and button 1 would send a click.
+						mouseHandler.sendClick(-1, -1);
+					}
+
 					processAction(e, clickPoint.x, clickPoint.y);
 
 				case PACKETS:
-					if (config.naturalMouse())
+					if (config.mouseBehavior() != MouseBehavior.DISABLED)
 					{
-						naturalMouse.moveTo(clickPoint.x, clickPoint.y);
-					}
-					else
-					{
-						mouseHandler.sendMovement(clickPoint.x, clickPoint.y);
-					}
+						if (config.naturalMouse())
+						{
+							naturalMouse.moveTo(clickPoint.x, clickPoint.y);
+						}
+						else
+						{
+							mouseHandler.sendMovement(clickPoint.x, clickPoint.y);
+						}
 
-					MousePackets.queueClickPacket(clickPoint.x, clickPoint.y);
+						MousePackets.queueClickPacket(clickPoint.x, clickPoint.y);
+					}
 
 					GameThread.invoke(() ->
 					{
