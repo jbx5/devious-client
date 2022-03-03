@@ -312,10 +312,10 @@ public class Packets
 					break;
 				}
 
-				var child = widget.getChild(param0);
+				var child = param0 == -1 ? null : widget.getChild(param0);
 				if (child == null)
 				{
-					break;
+					return WidgetPackets.createDefaultAction(id, param1, -1, param0);
 				}
 
 				return WidgetPackets.createDefaultAction(id, param1, child.getItemId(), param0);
