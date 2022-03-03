@@ -23,6 +23,7 @@ import javax.inject.Singleton;
 import java.awt.*;
 import java.util.Collection;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.ThreadLocalRandom;
 
 @Singleton
@@ -30,6 +31,9 @@ public class NaturalMouse
 {
 	@Inject
 	private Client client;
+
+	@Inject
+	private ExecutorService executorService;
 
 	private final ThreadLocalRandom random = ThreadLocalRandom.current();
 	private final MouseMotionNature nature;
@@ -57,6 +61,18 @@ public class NaturalMouse
 	}
 
 	public synchronized void moveTo(int dx, int dy)
+	{
+		if (!client.isClientThread())
+		{
+			move(dx, dy);
+		}
+		else
+		{
+			executorService.submit(() -> move(dx, dy));
+		}
+	}
+
+	private synchronized void move(int dx, int dy)
 	{
 		var motion = getFactory().build(dx, dy);
 		try
