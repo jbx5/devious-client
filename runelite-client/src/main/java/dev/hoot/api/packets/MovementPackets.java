@@ -44,6 +44,8 @@ public class MovementPackets
 		packetBufferNode.getPacketBuffer().writeByteAdd(ctrlDown ? 2 : 0);
 		packetBufferNode.getPacketBuffer().writeShortLE(worldPointX);
 		packetBufferNode.getPacketBuffer().writeShortLE(worldPointY);
+		client.setDestinationX(worldPointX);
+		client.setDestinationY(worldPointY);
 		return packetBufferNode;
 	}
 }
