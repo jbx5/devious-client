@@ -59,6 +59,8 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 import javax.swing.SwingUtilities;
+
+import dev.hoot.bot.Bot;
 import joptsimple.ArgumentAcceptingOptionSpec;
 import joptsimple.OptionParser;
 import joptsimple.OptionSet;
@@ -215,7 +217,7 @@ public class RuneLite
 			});
 
 		parser.accepts("help", "Show this text").forHelp();
-		OptionSet options = parser.parse(args);
+		OptionSet options = Bot.parseArgs(parser, args);
 
 		if (options.has("help"))
 		{
@@ -353,7 +355,7 @@ public class RuneLite
 			applet.setSize(Constants.GAME_FIXED_SIZE);
 
 			// Change user.home so the client places jagexcache in the .runelite directory
-			String oldHome = System.setProperty("user.home", RUNELITE_DIR.getAbsolutePath());
+			String oldHome = System.setProperty("user.home", Bot.getCacheDirectory().getAbsolutePath());
 			try
 			{
 				applet.init();
@@ -610,7 +612,7 @@ public class RuneLite
 	private static void copyJagexCache()
 	{
 		Path from = Paths.get(System.getProperty("user.home"), "jagexcache");
-		Path to = Paths.get(System.getProperty("user.home"), OPENOSRS, "jagexcache");
+		Path to = Bot.getCacheDirectory().getAbsoluteFile().toPath();
 		if (Files.exists(to) || !Files.exists(from))
 		{
 			return;
