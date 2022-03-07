@@ -67,7 +67,7 @@ public class Packets
 		var param1 = menu.getParam1();
 		var selectedItemId = client.getSelectedItemID();
 		var selectedItemSlot = client.getSelectedItemSlot();
-		var seletedItemWidget = client.getSelectedItemWidget();
+		var selectedItemWidget = client.getSelectedItemWidget();
 		var selectedSpellWidget = client.getSelectedSpellWidget();
 
 		switch (opcode)
@@ -79,7 +79,7 @@ public class Packets
 						param1 + client.getBaseY(),
 						selectedItemSlot,
 						selectedItemId,
-						seletedItemWidget,
+						selectedItemWidget,
 						false
 				);
 			case SPELL_CAST_ON_GAME_OBJECT:
@@ -128,7 +128,7 @@ public class Packets
 			case ITEM_USE_ON_NPC:
 				return NPCPackets.createItemOnNpcPacket(
 						id,
-						seletedItemWidget,
+						selectedItemWidget,
 						selectedItemId,
 						selectedItemSlot,
 						false
@@ -154,7 +154,7 @@ public class Packets
 						id,
 						selectedItemId,
 						selectedItemSlot,
-						seletedItemWidget,
+						selectedItemWidget,
 						false
 				);
 			case SPELL_CAST_ON_PLAYER:
@@ -182,7 +182,7 @@ public class Packets
 						param1 + client.getBaseY(),
 						selectedItemSlot,
 						selectedItemId,
-						seletedItemWidget,
+						selectedItemWidget,
 						false
 				);
 			case SPELL_CAST_ON_GROUND_ITEM:
@@ -238,31 +238,31 @@ public class Packets
 			case ITEM_FIRST_OPTION:
 				return ItemPackets.createFirstAction(
 						param1,
-						-1,
+						id,
 						param0
 				);
 			case ITEM_SECOND_OPTION:
 				return ItemPackets.createSecondAction(
 						param1,
-						-1,
+						id,
 						param0
 				);
 			case ITEM_THIRD_OPTION:
 				return ItemPackets.createThirdAction(
 						param1,
-						-1,
+						id,
 						param0
 				);
 			case ITEM_FOURTH_OPTION:
 				return ItemPackets.createFourthAction(
 						param1,
-						-1,
+						id,
 						param0
 				);
 			case ITEM_FIFTH_OPTION:
 				return ItemPackets.createFifthAction(
 						param1,
-						-1,
+						id,
 						param0
 				);
 			case WIDGET_FIRST_OPTION:
@@ -312,10 +312,10 @@ public class Packets
 					break;
 				}
 
-				var child = widget.getChild(param0);
+				var child = param0 == -1 ? null : widget.getChild(param0);
 				if (child == null)
 				{
-					break;
+					return WidgetPackets.createDefaultAction(id, param1, -1, param0);
 				}
 
 				return WidgetPackets.createDefaultAction(id, param1, child.getItemId(), param0);

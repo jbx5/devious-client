@@ -340,25 +340,25 @@ public class WidgetPackets
 	{
 		switch (type)
 		{
-			case 0:
-				return createFirstAction(widgetPackedId, itemId, itemSlot);
 			case 1:
-				return createSecondAction(widgetPackedId, itemId, itemSlot);
+				return createFirstAction(widgetPackedId, itemId, itemSlot);
 			case 2:
-				return createThirdAction(widgetPackedId, itemId, itemSlot);
+				return createSecondAction(widgetPackedId, itemId, itemSlot);
 			case 3:
-				return createFourthAction(widgetPackedId, itemId, itemSlot);
+				return createThirdAction(widgetPackedId, itemId, itemSlot);
 			case 4:
-				return createFifthAction(widgetPackedId, itemId, itemSlot);
+				return createFourthAction(widgetPackedId, itemId, itemSlot);
 			case 5:
-				return createSixthAction(widgetPackedId, itemId, itemSlot);
+				return createFifthAction(widgetPackedId, itemId, itemSlot);
 			case 6:
-				return createSeventhAction(widgetPackedId, itemId, itemSlot);
+				return createSixthAction(widgetPackedId, itemId, itemSlot);
 			case 7:
-				return createEighthAction(widgetPackedId, itemId, itemSlot);
+				return createSeventhAction(widgetPackedId, itemId, itemSlot);
 			case 8:
-				return createNinthAction(widgetPackedId, itemId, itemSlot);
+				return createEighthAction(widgetPackedId, itemId, itemSlot);
 			case 9:
+				return createNinthAction(widgetPackedId, itemId, itemSlot);
+			case 10:
 				return createTenthAction(widgetPackedId, itemId, itemSlot);
 		}
 

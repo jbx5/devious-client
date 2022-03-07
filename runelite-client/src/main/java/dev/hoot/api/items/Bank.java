@@ -177,9 +177,10 @@ public class Bank extends Items
 
 	public static void depositAll(String... names)
 	{
-		depositAll(false, names);
+		depositAll(x -> Arrays.stream(names).anyMatch(name -> x.getName().equals(name)));
 	}
 
+	@Deprecated
 	public static void depositAll(boolean usePackets, String... names)
 	{
 		depositAll(usePackets, x -> Arrays.stream(names).anyMatch(name -> x.getName().equals(name)));
@@ -187,9 +188,10 @@ public class Bank extends Items
 
 	public static void depositAll(int... ids)
 	{
-		depositAll(false, ids);
+		depositAll(x -> Arrays.stream(ids).anyMatch(id -> x.getId() == id));
 	}
 
+	@Deprecated
 	public static void depositAll(boolean usePackets, int... ids)
 	{
 		depositAll(usePackets, x -> Arrays.stream(ids).anyMatch(id -> x.getId() == id));
@@ -197,9 +199,16 @@ public class Bank extends Items
 
 	public static void depositAll(Predicate<Item> filter)
 	{
-		depositAll(false, filter);
+		Set<Item> items = Inventory.getAll(filter).stream().filter(Predicates.distinctByProperty(Item::getId)).collect(Collectors.toSet());
+
+		items.forEach((item) ->
+		{
+			deposit(item.getId(), Integer.MAX_VALUE);
+			Time.sleepTick();
+		});
 	}
 
+	@Deprecated
 	public static void depositAll(boolean usePackets, Predicate<Item> filter)
 	{
 		Set<Item> items = Inventory.getAll(filter).stream().filter(Predicates.distinctByProperty(Item::getId)).collect(Collectors.toSet());
@@ -220,9 +229,10 @@ public class Bank extends Items
 
 	public static void depositAllExcept(String... names)
 	{
-		depositAllExcept(false, names);
+		depositAllExcept(x -> Arrays.stream(names).anyMatch(name -> x.getName().equals(name)));
 	}
 
+	@Deprecated
 	public static void depositAllExcept(boolean usePackets, String... names)
 	{
 		depositAllExcept(usePackets, x -> Arrays.stream(names).anyMatch(name -> x.getName().equals(name)));
@@ -230,9 +240,10 @@ public class Bank extends Items
 
 	public static void depositAllExcept(int... ids)
 	{
-		depositAllExcept(false, ids);
+		depositAllExcept(x -> Arrays.stream(ids).anyMatch(id -> x.getId() == id));
 	}
 
+	@Deprecated
 	public static void depositAllExcept(boolean usePackets, int... ids)
 	{
 		depositAllExcept(usePackets, x -> Arrays.stream(ids).anyMatch(id -> x.getId() == id));
@@ -240,9 +251,10 @@ public class Bank extends Items
 
 	public static void depositAllExcept(Predicate<Item> filter)
 	{
-		depositAllExcept(false, filter);
+		depositAll(filter.negate());
 	}
 
+	@Deprecated
 	public static void depositAllExcept(boolean usePackets, Predicate<Item> filter)
 	{
 		depositAll(usePackets, filter.negate());
