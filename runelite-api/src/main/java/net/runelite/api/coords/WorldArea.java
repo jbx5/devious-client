@@ -760,4 +760,9 @@ public class WorldArea
 	{
 		return new WorldArea(x - offset, y - offset, width + (2 * offset), height + (2 * offset), plane);
 	}
+
+	public int distanceTo(Locatable locatable)
+	{
+		return distanceTo(locatable.getWorldLocation());
+	}
 }

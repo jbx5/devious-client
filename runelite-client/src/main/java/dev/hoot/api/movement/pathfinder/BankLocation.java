@@ -1,5 +1,6 @@
 package dev.hoot.api.movement.pathfinder;
 
+import dev.hoot.api.entities.Players;
 import dev.hoot.api.movement.Movement;
 import net.runelite.api.coords.WorldArea;
 
@@ -59,10 +60,17 @@ public enum BankLocation
 
 	public static BankLocation getNearest()
 	{
-		return getNearest(false);
+		return Arrays.stream(values())
+				.min(Comparator.comparingInt(x -> x.getArea().distanceTo(Players.getLocal())))
+				.orElse(null);
 	}
 
-	public static BankLocation getNearest(boolean localRegion)
+	public static BankLocation getNearestPath()
+	{
+		return getNearestPath(false);
+	}
+
+	public static BankLocation getNearestPath(boolean localRegion)
 	{
 		return Arrays.stream(values())
 				.min(Comparator.comparingInt(x -> Movement.calculateDistance(x.getArea().toWorldPoint(), localRegion)))
