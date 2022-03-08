@@ -166,11 +166,12 @@ public class Movement
 
 	public static boolean walkTo(WorldPoint worldPoint, int radius)
 	{
-		WorldPoint wp = new WorldPoint(
-				worldPoint.getX() + Rand.nextInt(-radius, radius),
-				worldPoint.getY() + Rand.nextInt(-radius, radius),
-				worldPoint.getPlane());
-		return Walker.walkTo(wp, false);
+		WorldArea worldArea = new WorldArea(
+				worldPoint.dx(-radius).dy(-radius),
+				worldPoint.dx(radius).dy(radius)
+		);
+
+		return Movement.walkTo(worldArea);
 	}
 
 	public static boolean walkTo(WorldArea worldArea)
