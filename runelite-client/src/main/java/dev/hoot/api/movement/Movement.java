@@ -142,21 +142,8 @@ public class Movement
 			return;
 		}
 
-		List<WorldPoint> walkPointList = worldArea.toWorldPointList();
-		List<WorldPoint> losPoints = new ArrayList<>();
-
-		for (WorldPoint point : walkPointList)
-		{
-			if (point.isInScene(Game.getClient()) && !Reachable.isWalkable(point))
-			{
-				continue;
-			}
-
-			losPoints.add(point);
-		}
-
-		WorldPoint walkPoint = losPoints.get(Rand.nextInt(0, walkPointList.size() - 1));
-		Movement.walk(walkPoint);
+		var points = worldArea.toWorldPointList();
+		walk(points.get(Rand.nextInt(0, points.size() - 1)));
 	}
 
 	public static void walk(Locatable locatable)
