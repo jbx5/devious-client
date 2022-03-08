@@ -1,7 +1,5 @@
 package dev.hoot.api.util;
 
-import net.runelite.api.Point;
-
 import java.awt.*;
 import java.util.concurrent.ThreadLocalRandom;
 

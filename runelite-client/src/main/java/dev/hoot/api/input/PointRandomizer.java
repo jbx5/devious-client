@@ -1,6 +1,7 @@
-package dev.hoot.api.commons;
+package dev.hoot.api.input;
 
 import dev.hoot.api.game.Game;
+import dev.hoot.api.util.Randomizer;
 import net.runelite.api.Actor;
 import net.runelite.api.Item;
 import net.runelite.api.Perspective;
@@ -9,12 +10,11 @@ import net.runelite.api.TileObject;
 import net.runelite.api.widgets.Widget;
 
 import java.awt.*;
-import java.util.concurrent.ThreadLocalRandom;
 
-public class Randomizer {
+public class PointRandomizer {
 
     public static Point getRandomPointIn(Widget widget) {
-        return getRandomPointIn(getBoundsFor(widget));
+        return Randomizer.getRandomPointIn(getBoundsFor(widget));
     }
 
     public static Rectangle getBoundsFor(Widget widget) {
@@ -22,7 +22,7 @@ public class Randomizer {
     }
 
     public static Point getRandomPointIn(TileItem item) {
-        return getRandomPointIn(getBoundsFor(item));
+        return Randomizer.getRandomPointIn(getBoundsFor(item));
     }
 
     public static Rectangle getBoundsFor(TileItem item) {
@@ -43,7 +43,7 @@ public class Randomizer {
     }
 
     public static Point getRandomPointIn(Item item) {
-        return getRandomPointIn(getBoundsFor(item));
+        return Randomizer.getRandomPointIn(getBoundsFor(item));
     }
 
     public static Rectangle getBoundsFor(Item item) {
@@ -68,7 +68,7 @@ public class Randomizer {
     }
 
     public static Point getRandomPointIn(Actor npc) {
-        return getRandomPointIn(getBoundsFor(npc));
+        return Randomizer.getRandomPointIn(getBoundsFor(npc));
     }
 
     public static Rectangle getBoundsFor(Actor npc) {
@@ -81,45 +81,20 @@ public class Randomizer {
     }
 
     public static Point getRandomPointIn(TileObject object) {
-        return getRandomPointIn(getBoundsFor(object));
+        return Randomizer.getRandomPointIn(getBoundsFor(object));
     }
 
     public static Rectangle getBoundsFor(TileObject object) {
         Shape shape = object.getClickbox();
-        if (shape != null)
-        {
+        if (shape != null) {
             return shape.getBounds();
-        }
-        else
-        {
+        } else {
             net.runelite.api.Point screenCoords = Perspective.localToCanvas(Game.getClient(), object.getLocalLocation(), Game.getClient().getPlane());
-            if (screenCoords != null)
-            {
+            if (screenCoords != null) {
                 return new Rectangle(screenCoords.getX(), screenCoords.getY(), 0, 0);
             }
             return new Rectangle(-1, -1, 0, 0);
         }
-    }
-
-    public static Point getRandomPointIn(Rectangle rect) {
-        int xDeviation = (int) Math.log(rect.getWidth() * Math.PI);
-        int yDeviation = (int) Math.log(rect.getHeight() * Math.PI);
-        return getRandomPointIn(rect, xDeviation, yDeviation);
-    }
-
-    public static Point getRandomPointIn(Rectangle rect, int xDeviation, int yDeviation) {
-        double centerX = rect.getCenterX();
-        double centerY = rect.getCenterY();
-
-        double randX = Math.max(
-                Math.min(centerX + xDeviation * ThreadLocalRandom.current().nextGaussian(), rect.getMaxX()),
-                rect.getMinX());
-
-        double randY = Math.max(
-                Math.min(centerY + yDeviation * ThreadLocalRandom.current().nextGaussian(), rect.getMaxY()),
-                rect.getMinY());
-
-        return new Point((int) randX, (int) randY);
     }
 
 }

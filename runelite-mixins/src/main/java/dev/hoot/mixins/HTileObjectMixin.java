@@ -101,7 +101,8 @@ public abstract class HTileObjectMixin implements TileObject
 	@Inject
 	public Point getClickPoint()
 	{
-		return Randomizer.getRandomPointIn(getBounds());
+		java.awt.Point point = Randomizer.getRandomPointIn(getBounds());
+		return new Point(point.x, point.y);
 	}
 
 	private Rectangle getBounds()
