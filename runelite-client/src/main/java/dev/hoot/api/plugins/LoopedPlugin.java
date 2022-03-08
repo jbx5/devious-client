@@ -1,101 +1,110 @@
 package dev.hoot.api.plugins;
 
-import dev.hoot.api.commons.Rand;
 import dev.hoot.api.commons.Time;
 import dev.hoot.api.game.Game;
 import dev.hoot.api.input.naturalmouse.NaturalMouse;
+import dev.hoot.bot.managers.LoopedPluginManager;
 import dev.hoot.bot.managers.interaction.InteractionConfig;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.api.events.GameTick;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.plugins.Plugin;
-import net.runelite.client.plugins.PluginManager;
 
 import javax.inject.Inject;
-import java.time.Instant;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Slf4j
-public abstract class LoopedPlugin extends Plugin
+public abstract class LoopedPlugin extends Plugin implements Runnable
 {
-    @Inject
-    private PluginManager pluginManager;
+	@Inject
+	private Client client;
 
-    @Inject
-    private Client client;
+	@Inject
+	private InteractionConfig interactionConfig;
 
-    @Inject
-    private InteractionConfig interactionConfig;
+	@Inject
+	private NaturalMouse naturalMouse;
 
-    @Inject
-    private NaturalMouse naturalMouse;
+	@Inject
+	private LoopedPluginManager loopedPluginManager;
 
-    private final AtomicInteger ticks = new AtomicInteger(0);
+	private final AtomicInteger ticks = new AtomicInteger(0);
 
-    @Override
-    protected void startUp() throws Exception {
-        log.info("Started looped plugin");
-        new Thread(() -> {
-            try {
-                outerLoop();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }).start();
-    }
+	@Getter
+	@Setter
+	private boolean running;
 
-    @Override
-    protected void shutDown() throws Exception {
-        log.info("Stopped looped plugin");
-    }
+	@Override
+	protected void startUp() throws Exception
+	{
+		log.debug("Started looped plugin");
 
-    private void outerLoop()
-    {
-        log.info("Starting outerloop");
-        while (pluginManager.isPluginEnabled(this))
-        {
-            int loopSleep = 1000;
-            try {
-                loopSleep = loop();
-                if (loopSleep == -1000)
-                {
-                    break;
-                }
+		loopedPluginManager.submit(this);
+	}
 
-                if (interactionConfig.mouseOffScreen()
-                        && interactionConfig.naturalMouse()
-                        && client.getLastInteractionTime().plusMillis(Rand.nextInt(2_000, 10_000)).isBefore(Instant.now())
-                        && client.getMouseHandler().getCurrentX() != -1
-                        && client.getMouseHandler().getCurrentY() != -1)
-                {
-                    naturalMouse.moveOffScreen();
-                }
+	@Override
+	protected void shutDown() throws Exception
+	{
+		log.debug("Stopped looped plugin");
 
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
-                if (loopSleep < 0 && Game.isLoggedIn())
-                {
-                    int startTicks = ticks.get();
-                    int finalLoopSleep = loopSleep;
-                    Time.sleepUntil(() -> ticks.get() - startTicks >= Math.abs(finalLoopSleep), 10, 30_000);
-                }
-                else
-                {
-                    Time.sleep(loopSleep < 0 ? 1000 : loopSleep);
-                }
-            }
-        }
+		loopedPluginManager.stop();
+	}
 
-        log.info("Stopping outerloop");
-    }
+	@Override
+	public void run()
+	{
+		log.debug("Starting outerloop");
 
-    protected abstract int loop();
+		while (running)
+		{
+			int loopSleep = 1000;
+			try
+			{
+				loopSleep = loop();
+				if (loopSleep == -1000)
+				{
+					break;
+				}
 
-    @Subscribe
-    private void tickCounter(GameTick gameTick)
-    {
-        ticks.incrementAndGet();
-    }
+//				if (interactionConfig.mouseOffScreen()
+//						&& interactionConfig.naturalMouse()
+//						&& client.getLastInteractionTime().plusMillis(Rand.nextInt(2_000, 10_000)).isBefore(Instant.now())
+//						&& client.getMouseHandler().getCurrentX() != -1
+//						&& client.getMouseHandler().getCurrentY() != -1)
+//				{
+//					naturalMouse.moveOffScreen();
+//				}
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+			}
+			finally
+			{
+				if (loopSleep < 0 && Game.isLoggedIn())
+				{
+					int startTicks = ticks.get();
+					int finalLoopSleep = loopSleep;
+					Time.sleepUntil(() -> ticks.get() - startTicks >= Math.abs(finalLoopSleep), 10, 30_000);
+				}
+				else
+				{
+					Time.sleep(loopSleep < 0 ? 1000 : loopSleep);
+				}
+			}
+		}
+
+		log.debug("Stopping outerloop");
+	}
+
+	protected abstract int loop();
+
+	@Subscribe
+	private void tickCounter(GameTick gameTick)
+	{
+		ticks.incrementAndGet();
+	}
 }

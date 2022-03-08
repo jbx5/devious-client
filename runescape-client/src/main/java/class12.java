@@ -5,304 +5,170 @@ import java.security.cert.Certificate;
 import javax.net.ssl.HandshakeCompletedListener;
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSocket;
-import net.runelite.rs.ScriptOpcodes;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 import org.bouncycastle.crypto.tls.TlsClientProtocol;
-@ObfuscatedName("d")
+@ObfuscatedName("h")
 class class12 extends SSLSocket {
-	@ObfuscatedName("i")
-	@Export("BZip2Decompressor_block")
-	static int[] BZip2Decompressor_block;
+    @ObfuscatedName("sk")
+    @ObfuscatedGetter(intValue = -536820815)
+    static int field75;
 
-	@ObfuscatedName("dj")
-	static boolean field72;
+    @ObfuscatedName("l")
+    @ObfuscatedSignature(descriptor = "Lkq;")
+    @Export("ObjectDefinition_archive")
+    static AbstractArchive ObjectDefinition_archive;
 
-	@ObfuscatedName("c")
-	Certificate[] field67;
+    @ObfuscatedName("n")
+    @ObfuscatedGetter(intValue = 708907497)
+    static int field74;
 
+    @ObfuscatedName("c")
+    Certificate[] field71;
 
-	@ObfuscatedSignature(descriptor = "Le;")
-	final class15 this$0;
+    @ObfuscatedSignature(descriptor = "Lp;")
+    final class15 this$0;
 
+    final TlsClientProtocol val$tlsClientProtocol;
 
-	final TlsClientProtocol val$tlsClientProtocol;
+    final String val$host;
 
+    @ObfuscatedSignature(descriptor = "(Lp;Lorg/bouncycastle/crypto/tls/TlsClientProtocol;Ljava/lang/String;)V")
+    class12(class15 var1, TlsClientProtocol var2, String var3) {
+        this.this$0 = var1;
+        this.val$tlsClientProtocol = var2;
+        this.val$host = var3;
+    }
 
-	final String val$host;
+    public String[] getSupportedCipherSuites() {
+        return null;
+    }
 
-	@ObfuscatedSignature(descriptor = "(Le;Lorg/bouncycastle/crypto/tls/TlsClientProtocol;Ljava/lang/String;)V")
-	class12(class15 var1, TlsClientProtocol var2, String var3) {
-		this.this$0 = var1;
-		this.val$tlsClientProtocol = var2;
-		this.val$host = var3;
-	}
+    public OutputStream getOutputStream() throws IOException {
+        return this.val$tlsClientProtocol.getOutputStream();
+    }
 
-	public void removeHandshakeCompletedListener(HandshakeCompletedListener var1) {
-	}
+    public synchronized void close() throws IOException {
+        this.val$tlsClientProtocol.close();
+    }
 
-	public String[] getSupportedCipherSuites() {
-		return null;
-	}
+    public void addHandshakeCompletedListener(HandshakeCompletedListener var1) {
+    }
 
-	public String[] getEnabledProtocols() {
-		return null;
-	}
+    public boolean getEnableSessionCreation() {
+        return false;
+    }
 
-	public boolean getNeedClientAuth() {
-		return false;
-	}
+    public String[] getEnabledCipherSuites() {
+        return null;
+    }
 
-	public SSLSession getSession() {
-		return new class17(this);
-	}
+    public String[] getEnabledProtocols() {
+        return null;
+    }
 
-	public String[] getSupportedProtocols() {
-		return null;
-	}
+    public boolean getNeedClientAuth() {
+        return false;
+    }
 
-	public void setEnabledCipherSuites(String[] var1) {
-	}
+    public boolean getUseClientMode() {
+        return false;
+    }
 
-	public boolean getWantClientAuth() {
-		return false;
-	}
+    public boolean getWantClientAuth() {
+        return false;
+    }
 
-	public void setWantClientAuth(boolean var1) {
-	}
+    public void removeHandshakeCompletedListener(HandshakeCompletedListener var1) {
+    }
 
-	public void startHandshake() throws IOException {
-		this.val$tlsClientProtocol.connect(new class13(this));
-	}
+    public void setEnabledCipherSuites(String[] var1) {
+    }
 
-	public void setNeedClientAuth(boolean var1) {
-	}
+    public void setEnabledProtocols(String[] var1) {
+    }
 
-	public InputStream getInputStream() throws IOException {
-		return this.val$tlsClientProtocol.getInputStream();
-	}
+    public void setNeedClientAuth(boolean var1) {
+    }
 
-	public void setEnabledProtocols(String[] var1) {
-	}
+    public void setUseClientMode(boolean var1) {
+    }
 
-	public OutputStream getOutputStream() throws IOException {
-		return this.val$tlsClientProtocol.getOutputStream();
-	}
+    public void startHandshake() throws IOException {
+        this.val$tlsClientProtocol.connect(new class13(this));
+    }
 
-	public boolean getEnableSessionCreation() {
-		return false;
-	}
+    public void setWantClientAuth(boolean var1) {
+    }
 
-	public void addHandshakeCompletedListener(HandshakeCompletedListener var1) {
-	}
+    public SSLSession getSession() {
+        return new class17(this);
+    }
 
-	public String[] getEnabledCipherSuites() {
-		return null;
-	}
+    public InputStream getInputStream() throws IOException {
+        return this.val$tlsClientProtocol.getInputStream();
+    }
 
-	public void setEnableSessionCreation(boolean var1) {
-	}
+    public String[] getSupportedProtocols() {
+        return null;
+    }
 
-	public boolean getUseClientMode() {
-		return false;
-	}
+    public void setEnableSessionCreation(boolean var1) {
+    }
 
-	public synchronized void close() throws IOException {
-		this.val$tlsClientProtocol.close();
-	}
+    @ObfuscatedName("o")
+    @ObfuscatedSignature(descriptor = "(Ljava/lang/Float;Ljava/lang/Float;I)V", garbageValue = "-1321795090")
+    static void method155(Float var0, Float var1) {
+        if ((var0 + class112.field1386) < 1.3333334F) {
+            float var2 = var0 - 2.0F;
+            float var3 = var0 - 1.0F;
+            float var4 = ((float) (Math.sqrt(((double) ((var2 * var2) - ((4.0F * var3) * var3))))));
+            float var5 = (var4 + (-var2)) * 0.5F;
+            if ((var1 + class112.field1386) > var5) {
+                var1 = var5 - class112.field1386;
+            } else {
+                var5 = 0.5F * ((-var2) - var4);
+                if (var1 < (class112.field1386 + var5)) {
+                    var1 = var5 + class112.field1386;
+                }
+            }
+        } else {
+            var0 = 1.3333334F - class112.field1386;
+            var1 = 0.33333334F - class112.field1386;
+        }
+    }
 
-	public void setUseClientMode(boolean var1) {
-	}
+    @ObfuscatedName("p")
+    @ObfuscatedSignature(descriptor = "(Ljava/lang/String;IB)V", garbageValue = "-3")
+    static final void method158(String var0, int var1) {
+        PacketBufferNode var2 = class135.getPacketBufferNode(ClientPacket.field2907, Client.packetWriter.isaacCipher);
+        var2.packetBuffer.writeByte(GrandExchangeEvents.stringCp1252NullTerminatedByteSize(var0) + 1);
+        var2.packetBuffer.writeStringCp1252NullTerminated(var0);
+        var2.packetBuffer.writeByte(var1);
+        Client.packetWriter.addNode(var2);
+    }
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(III)I", garbageValue = "392889295")
-	static int method189(int var0, int var1) {
-		ItemContainer var2 = ((ItemContainer) (ItemContainer.itemContainers.get(((long) (var0)))));
-		if (var2 == null) {
-			return -1;
-		} else {
-			return (var1 >= 0) && (var1 < var2.ids.length) ? var2.ids[var1] : -1;
-		}
-	}
-
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(descriptor = "(Loz;III)I", garbageValue = "-1062038297")
-	static int method158(IterableNodeHashTable var0, int var1, int var2) {
-		if (var0 == null) {
-			return var2;
-		} else {
-			IntegerNode var3 = ((IntegerNode) (var0.get(((long) (var1)))));
-			return var3 == null ? var2 : var3.integer;
-		}
-	}
-
-	@ObfuscatedName("w")
-	static boolean method188(long var0) {
-		return ((int) ((var0 >>> 16) & 1L)) == 1;
-	}
-
-	@ObfuscatedName("z")
-	@ObfuscatedSignature(descriptor = "(ILbn;ZB)I", garbageValue = "122")
-	static int method190(int var0, Script var1, boolean var2) {
-		if (var0 == ScriptOpcodes.CLIENTCLOCK) {
-			Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = Client.cycle;
-			return 1;
-		} else {
-			int var3;
-			int var4;
-			if (var0 == ScriptOpcodes.INV_GETOBJ) {
-				IsaacCipher.Interpreter_intStackSize -= 2;
-				var3 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize];
-				var4 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize + 1];
-				Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = method189(var3, var4);
-				return 1;
-			} else if (var0 == ScriptOpcodes.INV_GETNUM) {
-				IsaacCipher.Interpreter_intStackSize -= 2;
-				var3 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize];
-				var4 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize + 1];
-				Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = ReflectionCheck.ItemContainer_getCount(var3, var4);
-				return 1;
-			} else if (var0 == ScriptOpcodes.INV_TOTAL) {
-				IsaacCipher.Interpreter_intStackSize -= 2;
-				var3 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize];
-				var4 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize + 1];
-				Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = MouseRecorder.method2160(var3, var4);
-				return 1;
-			} else if (var0 == ScriptOpcodes.INV_SIZE) {
-				var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-				Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = class78.getInvDefinition(var3).size;
-				return 1;
-			} else if (var0 == ScriptOpcodes.STAT) {
-				var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-				Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = Client.currentLevels[var3];
-				return 1;
-			} else if (var0 == ScriptOpcodes.STAT_BASE) {
-				var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-				Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = Client.levels[var3];
-				return 1;
-			} else if (var0 == ScriptOpcodes.STAT_XP) {
-				var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-				Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = Client.experience[var3];
-				return 1;
-			} else {
-				int var5;
-				if (var0 == ScriptOpcodes.COORD) {
-					var3 = class20.Client_plane;
-					var4 = (class340.localPlayer.x >> 7) + class131.baseX;
-					var5 = (class340.localPlayer.y >> 7) + TileItem.baseY;
-					Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = ((var4 << 14) + var5) + (var3 << 28);
-					return 1;
-				} else if (var0 == ScriptOpcodes.COORDX) {
-					var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-					Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = (var3 >> 14) & 16383;
-					return 1;
-				} else if (var0 == ScriptOpcodes.COORDZ) {
-					var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-					Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = var3 >> 28;
-					return 1;
-				} else if (var0 == ScriptOpcodes.COORDY) {
-					var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-					Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = var3 & 16383;
-					return 1;
-				} else if (var0 == ScriptOpcodes.MAP_MEMBERS) {
-					Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = (Client.isMembersWorld) ? 1 : 0;
-					return 1;
-				} else if (var0 == ScriptOpcodes.INVOTHER_GETOBJ) {
-					IsaacCipher.Interpreter_intStackSize -= 2;
-					var3 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize] + 32768;
-					var4 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize + 1];
-					Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = method189(var3, var4);
-					return 1;
-				} else if (var0 == ScriptOpcodes.INVOTHER_GETNUM) {
-					IsaacCipher.Interpreter_intStackSize -= 2;
-					var3 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize] + 32768;
-					var4 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize + 1];
-					Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = ReflectionCheck.ItemContainer_getCount(var3, var4);
-					return 1;
-				} else if (var0 == ScriptOpcodes.INVOTHER_TOTAL) {
-					IsaacCipher.Interpreter_intStackSize -= 2;
-					var3 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize] + 32768;
-					var4 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize + 1];
-					Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = MouseRecorder.method2160(var3, var4);
-					return 1;
-				} else if (var0 == ScriptOpcodes.STAFFMODLEVEL) {
-					if (Client.staffModLevel >= 2) {
-						Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = Client.staffModLevel;
-					} else {
-						Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = 0;
-					}
-					return 1;
-				} else if (var0 == ScriptOpcodes.REBOOTTIMER) {
-					Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = Client.rebootTimer;
-					return 1;
-				} else if (var0 == ScriptOpcodes.MAP_WORLD) {
-					Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = Client.worldId;
-					return 1;
-				} else if (var0 == ScriptOpcodes.RUNENERGY_VISIBLE) {
-					Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = Client.runEnergy;
-					return 1;
-				} else if (var0 == ScriptOpcodes.RUNWEIGHT_VISIBLE) {
-					Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = Client.weight;
-					return 1;
-				} else if (var0 == ScriptOpcodes.PLAYERMOD) {
-					if (Client.playerMod) {
-						Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = 1;
-					} else {
-						Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = 0;
-					}
-					return 1;
-				} else if (var0 == ScriptOpcodes.WORLDFLAGS) {
-					Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = Client.worldProperties;
-					return 1;
-				} else if (var0 == ScriptOpcodes.MOVECOORD) {
-					IsaacCipher.Interpreter_intStackSize -= 4;
-					var3 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize];
-					var4 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize + 1];
-					var5 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize + 2];
-					int var6 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize + 3];
-					var3 += var4 << 14;
-					var3 += var5 << 28;
-					var3 += var6;
-					Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = var3;
-					return 1;
-				} else if (var0 == 3326) {
-					Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = Client.field483;
-					return 1;
-				} else if (var0 == 3327) {
-					Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = Client.field746;
-					return 1;
-				} else {
-					return 2;
-				}
-			}
-		}
-	}
-
-	@ObfuscatedName("jp")
-	@ObfuscatedSignature(descriptor = "(IIIIIIIIB)V", garbageValue = "60")
-	@Export("drawWidgets")
-	static final void drawWidgets(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7) {
-		if (class242.loadInterface(var0)) {
-			BufferedFile.field4430 = null;
-			class118.drawInterface(MouseRecorder.Widget_interfaceComponents[var0], -1, var1, var2, var3, var4, var5, var6, var7);
-			if (BufferedFile.field4430 != null) {
-				class118.drawInterface(BufferedFile.field4430, -1412584499, var1, var2, var3, var4, HitSplatDefinition.field1945, class78.field1000, var7);
-				BufferedFile.field4430 = null;
-			}
-		} else if (var7 != (-1)) {
-			Client.field504[var7] = true;
-		} else {
-			for (int var8 = 0; var8 < 100; ++var8) {
-				Client.field504[var8] = true;
-			}
-		}
-	}
-
-	@ObfuscatedName("jm")
-	@ObfuscatedSignature(descriptor = "(ZI)V", garbageValue = "1583315903")
-	@Export("setTapToDrop")
-	static void setTapToDrop(boolean var0) {
-		Client.tapToDrop = var0;
-	}
+    @ObfuscatedName("km")
+    @ObfuscatedSignature(descriptor = "(IIIILpt;Ljq;I)V", garbageValue = "-178422566")
+    @Export("worldToMinimap")
+    static final void worldToMinimap(int var0, int var1, int var2, int var3, SpritePixels var4, SpriteMask var5) {
+        int var6 = (var3 * var3) + (var2 * var2);
+        if ((var6 > 4225) && (var6 < 90000)) {
+            int var7 = Client.camAngleY & 2047;
+            int var8 = Rasterizer3D.Rasterizer3D_sine[var7];
+            int var9 = Rasterizer3D.Rasterizer3D_cosine[var7];
+            int var10 = ((var9 * var2) + (var3 * var8)) >> 16;
+            int var11 = ((var3 * var9) - (var8 * var2)) >> 16;
+            double var12 = Math.atan2(((double) (var10)), ((double) (var11)));
+            int var14 = (var5.width / 2) - 25;
+            int var15 = ((int) (Math.sin(var12) * ((double) (var14))));
+            int var16 = ((int) (Math.cos(var12) * ((double) (var14))));
+            byte var17 = 20;
+            class78.redHintArrowSprite.method7801(var15 + ((var0 + (var5.width / 2)) - (var17 / 2)), ((((var5.height / 2) + var1) - (var17 / 2)) - var16) - 10, var17, var17, 15, 15, var12, 256);
+        } else {
+            Interpreter.drawSpriteOnMinimap(var0, var1, var2, var3, var4, var5);
+        }
+    }
 }

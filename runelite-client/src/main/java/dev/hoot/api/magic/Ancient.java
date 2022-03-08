@@ -4,6 +4,7 @@ import net.runelite.api.widgets.WidgetInfo;
 
 public enum Ancient implements Spell
 {
+	// Teleport spells
 	EDGEVILLE_HOME_TELEPORT(0, WidgetInfo.SPELL_EDGEVILLE_HOME_TELEPORT),
 	PADDEWWA_TELEPORT(54, WidgetInfo.SPELL_PADDEWWA_TELEPORT),
 	SENNTISTEN_TELEPORT(60, WidgetInfo.SPELL_SENNTISTEN_TELEPORT),

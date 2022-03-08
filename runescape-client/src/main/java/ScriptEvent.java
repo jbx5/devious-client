@@ -3,143 +3,113 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-@ObfuscatedName("cp")
+@ObfuscatedName("cg")
 @Implements("ScriptEvent")
 public class ScriptEvent extends Node {
-	@ObfuscatedName("dl")
-	@ObfuscatedSignature(descriptor = "Lfk;")
-	@Export("js5SocketTask")
-	static Task js5SocketTask;
+    @ObfuscatedName("c")
+    @Export("args")
+    Object[] args;
 
-	@ObfuscatedName("c")
-	@Export("args")
-	Object[] args;
+    @ObfuscatedName("l")
+    @Export("isMouseInputEvent")
+    boolean isMouseInputEvent;
 
-	@ObfuscatedName("b")
-	@Export("isMouseInputEvent")
-	boolean isMouseInputEvent;
+    @ObfuscatedName("s")
+    @ObfuscatedSignature(descriptor = "Ljz;")
+    @Export("widget")
+    Widget widget;
 
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(descriptor = "Ljm;")
-	@Export("widget")
-	Widget widget;
+    @ObfuscatedName("e")
+    @ObfuscatedGetter(intValue = -858505837)
+    @Export("mouseX")
+    int mouseX;
 
-	@ObfuscatedName("m")
-	@ObfuscatedGetter(intValue = -1316811587)
-	@Export("mouseX")
-	int mouseX;
+    @ObfuscatedName("r")
+    @ObfuscatedGetter(intValue = 126424841)
+    @Export("mouseY")
+    int mouseY;
 
-	@ObfuscatedName("t")
-	@ObfuscatedGetter(intValue = 429308499)
-	@Export("mouseY")
-	int mouseY;
+    @ObfuscatedName("o")
+    @ObfuscatedGetter(intValue = -210169861)
+    @Export("opIndex")
+    int opIndex;
 
-	@ObfuscatedName("s")
-	@ObfuscatedGetter(intValue = 2143189111)
-	@Export("opIndex")
-	int opIndex;
+    @ObfuscatedName("i")
+    @ObfuscatedSignature(descriptor = "Ljz;")
+    @Export("dragTarget")
+    Widget dragTarget;
 
-	@ObfuscatedName("j")
-	@ObfuscatedSignature(descriptor = "Ljm;")
-	@Export("dragTarget")
-	Widget dragTarget;
+    @ObfuscatedName("w")
+    @ObfuscatedGetter(intValue = 24554727)
+    @Export("keyTyped")
+    int keyTyped;
 
-	@ObfuscatedName("w")
-	@ObfuscatedGetter(intValue = 1992981497)
-	@Export("keyTyped")
-	int keyTyped;
+    @ObfuscatedName("v")
+    @ObfuscatedGetter(intValue = -42257657)
+    @Export("keyPressed")
+    int keyPressed;
 
-	@ObfuscatedName("n")
-	@ObfuscatedGetter(intValue = 1481039273)
-	@Export("keyPressed")
-	int keyPressed;
+    @ObfuscatedName("a")
+    @Export("targetName")
+    String targetName;
 
-	@ObfuscatedName("r")
-	@Export("targetName")
-	String targetName;
+    @ObfuscatedName("y")
+    @ObfuscatedGetter(intValue = -1380078595)
+    int field1041;
 
-	@ObfuscatedName("o")
-	@ObfuscatedGetter(intValue = 2063557447)
-	int field1018;
+    @ObfuscatedName("u")
+    @ObfuscatedGetter(intValue = -465756931)
+    @Export("type")
+    int type;
 
-	@ObfuscatedName("v")
-	@ObfuscatedGetter(intValue = -170521561)
-	@Export("type")
-	int type;
+    public ScriptEvent() {
+        this.type = 76;
+    }
 
-	public ScriptEvent() {
-		this.type = 76;
-	}
+    @ObfuscatedName("c")
+    @ObfuscatedSignature(descriptor = "([Ljava/lang/Object;I)V", garbageValue = "476436061")
+    @Export("setArgs")
+    public void setArgs(Object[] var1) {
+        this.args = var1;
+    }
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "([Ljava/lang/Object;B)V", garbageValue = "1")
-	@Export("setArgs")
-	public void setArgs(Object[] var1) {
-		this.args = var1;
-	}
+    @ObfuscatedName("l")
+    @ObfuscatedSignature(descriptor = "(II)V", garbageValue = "1370467396")
+    @Export("setType")
+    public void setType(int var1) {
+        this.type = var1;
+    }
 
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(descriptor = "(II)V", garbageValue = "-1783513885")
-	@Export("setType")
-	public void setType(int var1) {
-		this.type = var1;
-	}
+    @ObfuscatedName("e")
+    @ObfuscatedSignature(descriptor = "([BB)V", garbageValue = "84")
+    @Export("ByteArrayPool_release")
+    public static synchronized void ByteArrayPool_release(byte[] var0) {
+        if ((var0.length == 100) && (ByteArrayPool.ByteArrayPool_smallCount < ByteArrayPool.field4073)) {
+            ByteArrayPool.ByteArrayPool_small[(++ByteArrayPool.ByteArrayPool_smallCount) - 1] = var0;
+        } else if ((var0.length == 5000) && (ByteArrayPool.ByteArrayPool_mediumCount < ByteArrayPool.field4074)) {
+            ByteArrayPool.ByteArrayPool_medium[(++ByteArrayPool.ByteArrayPool_mediumCount) - 1] = var0;
+        } else if ((var0.length == 10000) && (ByteArrayPool.ByteArrayPool_largeCount < ByteArrayPool.field4071)) {
+            ByteArrayPool.ByteArrayPool_large[(++ByteArrayPool.ByteArrayPool_largeCount) - 1] = var0;
+        } else if ((var0.length == 30000) && (ByteArrayPool.field4072 < ByteArrayPool.field4076)) {
+            ByteArrayPool.field4080[(++ByteArrayPool.field4072) - 1] = var0;
+        } else if (class113.ByteArrayPool_arrays != null) {
+            for (int var1 = 0; var1 < ByteArrayPool.ByteArrayPool_alternativeSizes.length; ++var1) {
+                if ((var0.length == ByteArrayPool.ByteArrayPool_alternativeSizes[var1]) && (ArchiveDiskActionHandler.ByteArrayPool_altSizeArrayCounts[var1] < class113.ByteArrayPool_arrays[var1].length)) {
+                    class113.ByteArrayPool_arrays[var1][ArchiveDiskActionHandler.ByteArrayPool_altSizeArrayCounts[var1]++] = var0;
+                    return;
+                }
+            }
+        }
+    }
 
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(descriptor = "(II)Ldh;", garbageValue = "665811152")
-	static class114 method2154(int var0) {
-		class114 var1 = ((class114) (class130.findEnumerated(LoginScreenAnimation.method2251(), var0)));
-		if (var1 == null) {
-			var1 = class114.field1390;
-		}
-		return var1;
-	}
-
-	@ObfuscatedName("n")
-	@ObfuscatedSignature(descriptor = "(B)V", garbageValue = "-37")
-	static final void method2152() {
-		Object var10000 = null;
-		String var0 = "Your friend list is full. Max of 200 for free users, and 400 for members";
-		class194.addGameMessage(30, "", var0);
-	}
-
-	@ObfuscatedName("jt")
-	@ObfuscatedSignature(descriptor = "(IIIIIIB)V", garbageValue = "95")
-	static final void method2147(int var0, int var1, int var2, int var3, int var4, int var5) {
-		int var6 = var2 - var0;
-		int var7 = var3 - var1;
-		int var8 = (var6 >= 0) ? var6 : -var6;
-		int var9 = (var7 >= 0) ? var7 : -var7;
-		int var10 = var8;
-		if (var8 < var9) {
-			var10 = var9;
-		}
-		if (var10 != 0) {
-			int var11 = (var6 << 16) / var10;
-			int var12 = (var7 << 16) / var10;
-			if (var12 <= var11) {
-				var11 = -var11;
-			} else {
-				var12 = -var12;
-			}
-			int var13 = (var5 * var12) >> 17;
-			int var14 = ((var5 * var12) + 1) >> 17;
-			int var15 = (var5 * var11) >> 17;
-			int var16 = ((var5 * var11) + 1) >> 17;
-			var0 -= Rasterizer2D.Rasterizer2D_xClipStart;
-			var1 -= Rasterizer2D.Rasterizer2D_yClipStart;
-			int var17 = var0 + var13;
-			int var18 = var0 - var14;
-			int var19 = (var0 + var6) - var14;
-			int var20 = (var0 + var6) + var13;
-			int var21 = var15 + var1;
-			int var22 = var1 - var16;
-			int var23 = (var7 + var1) - var16;
-			int var24 = (var7 + var15) + var1;
-			Rasterizer3D.method3853(var17, var18, var19);
-			Rasterizer3D.method3856(var21, var22, var23, var17, var18, var19, var4);
-			Rasterizer3D.method3853(var17, var19, var20);
-			Rasterizer3D.method3856(var21, var23, var24, var17, var19, var20, var4);
-		}
-	}
+    @ObfuscatedName("v")
+    @ObfuscatedSignature(descriptor = "(IIIZII)J", garbageValue = "2021733791")
+    @Export("calculateTag")
+    public static long calculateTag(int var0, int var1, int var2, boolean var3, int var4) {
+        long var5 = ((long) ((((var0 & 127) << 0) | ((var1 & 127) << 7)) | ((var2 & 3) << 14))) | ((((long) (var4)) & 4294967295L) << 17);
+        if (var3) {
+            var5 |= 65536L;
+        }
+        return var5;
+    }
 }

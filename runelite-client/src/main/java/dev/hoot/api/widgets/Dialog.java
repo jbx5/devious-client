@@ -17,6 +17,7 @@ import java.util.function.Supplier;
 public class Dialog
 {
 
+	private static final Supplier<Widget> SPRITE_CONT = () -> Widgets.get(193, 0);
 	private static final Supplier<Widget> SCROLL_BAR = () -> Widgets.get(162, 557);
 	private static final Supplier<Widget> WEIRD_CONT = () -> Widgets.get(193, 3);
 	private static final Supplier<Widget> WEIRD_CONT_2 = () -> Widgets.get(633, 0);
@@ -40,7 +41,8 @@ public class Dialog
 	public static boolean canContinue()
 	{
 		return canContinueNPC() || canContinuePlayer() || canContinueDeath()
-				|| canSprite2Continue() || canContinue1() || canContinue2()
+				|| canSpriteContinue() || canSprite2Continue()
+				|| canContinue1() || canContinue2()
 				|| canContinueTutIsland() || canContinueTutIsland2()
 				|| canContinueTutIsland3() || canLevelUpContinue();
 	}
@@ -48,6 +50,11 @@ public class Dialog
 	public static boolean canLevelUpContinue()
 	{
 		return Widgets.isVisible(Widgets.get(WidgetInfo.LEVEL_UP_LEVEL));
+	}
+
+	public static boolean canSpriteContinue()
+	{
+		return Widgets.isVisible(SPRITE_CONT.get());
 	}
 
 	public static boolean canSprite2Continue()
@@ -197,7 +204,7 @@ public class Dialog
 		{
 			for (DialogOption option : dialogOption)
 			{
-				option.process();
+				Game.getClient().processDialog(option.getWidgetUid(), option.getMenuIndex());
 			}
 
 			return true;

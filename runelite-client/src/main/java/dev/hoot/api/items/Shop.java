@@ -107,14 +107,12 @@ public class Shop
 
 	private static void buy(int itemId, int amount)
 	{
-		Widget container = SHOP_ITEMS.get();
-		exchange(itemId, amount, container);
+		exchange(itemId, amount, SHOP_ITEMS.get());
 	}
 
 	private static void sell(int itemId, int amount)
 	{
-		Widget container = INVENTORY.get();
-		exchange(itemId, amount, container);
+		exchange(itemId, amount, INVENTORY.get());
 	}
 
 	private static void exchange(int itemId, int amount, Widget container)

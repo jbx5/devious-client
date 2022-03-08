@@ -1,120 +1,80 @@
+import java.util.LinkedHashMap;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-@ObfuscatedName("mw")
+@ObfuscatedName("mp")
 @Implements("Friend")
 public class Friend extends Buddy {
-	@ObfuscatedName("u")
-	@ObfuscatedSignature(descriptor = "Lej;")
-	static ClanSettings field4084;
+    @ObfuscatedName("hi")
+    @Export("regionLandArchives")
+    static byte[][] regionLandArchives;
 
-	@ObfuscatedName("c")
-	boolean field4085;
+    @ObfuscatedName("c")
+    boolean field4133;
 
-	@ObfuscatedName("b")
-	boolean field4086;
+    @ObfuscatedName("l")
+    boolean field4134;
 
-	Friend() {
-	}
+    Friend() {
+    }
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(Lmw;B)I", garbageValue = "-44")
-	@Export("compareToFriend")
-	int compareToFriend(Friend var1) {
-		if ((super.world == Client.worldId) && (Client.worldId != var1.world)) {
-			return -1;
-		} else if ((Client.worldId == var1.world) && (super.world != Client.worldId)) {
-			return 1;
-		} else if ((super.world != 0) && (var1.world == 0)) {
-			return -1;
-		} else if ((var1.world != 0) && (super.world == 0)) {
-			return 1;
-		} else if (this.field4085 && (!var1.field4085)) {
-			return -1;
-		} else if ((!this.field4085) && var1.field4085) {
-			return 1;
-		} else if (this.field4086 && (!var1.field4086)) {
-			return -1;
-		} else if ((!this.field4086) && var1.field4086) {
-			return 1;
-		} else {
-			return super.world != 0 ? super.int2 - var1.int2 : var1.int2 - super.int2;
-		}
-	}
+    @ObfuscatedName("c")
+    @ObfuscatedSignature(descriptor = "(Lmp;I)I", garbageValue = "1669986775")
+    @Export("compareToFriend")
+    int compareToFriend(Friend var1) {
+        if ((super.world == Client.worldId) && (Client.worldId != var1.world)) {
+            return -1;
+        } else if ((Client.worldId == var1.world) && (super.world != Client.worldId)) {
+            return 1;
+        } else if ((super.world != 0) && (var1.world == 0)) {
+            return -1;
+        } else if ((var1.world != 0) && (super.world == 0)) {
+            return 1;
+        } else if (this.field4133 && (!var1.field4133)) {
+            return -1;
+        } else if ((!this.field4133) && var1.field4133) {
+            return 1;
+        } else if (this.field4134 && (!var1.field4134)) {
+            return -1;
+        } else if ((!this.field4134) && var1.field4134) {
+            return 1;
+        } else {
+            return super.world != 0 ? super.int2 - var1.int2 : var1.int2 - super.int2;
+        }
+    }
 
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(descriptor = "(Lmv;I)I", garbageValue = "-1921032172")
-	@Export("compareTo_user")
-	public int compareTo_user(User var1) {
-		return this.compareToFriend(((Friend) (var1)));
-	}
+    @ObfuscatedName("l")
+    @ObfuscatedSignature(descriptor = "(Lmy;I)I", garbageValue = "-1446218206")
+    @Export("compareTo_user")
+    public int compareTo_user(User var1) {
+        return this.compareToFriend(((Friend) (var1)));
+    }
 
-	public int compareTo(Object var1) {
-		return this.compareToFriend(((Friend) (var1)));
-	}
+    public int compareTo(Object var1) {
+        return this.compareToFriend(((Friend) (var1)));
+    }
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(B)Lns;", garbageValue = "28")
-	public static class365 method6296() {
-		synchronized(class365.field4189) {
-			if (class365.field4185 == 0) {
-				return new class365();
-			} else {
-				class365.field4189[--class365.field4185].method6627();
-				return class365.field4189[class365.field4185];
-			}
-		}
-	}
+    @ObfuscatedName("e")
+    @ObfuscatedSignature(descriptor = "(I)[Lnz;", garbageValue = "-2100256585")
+    static class374[] method6284() {
+        return new class374[]{ class374.field4263, class374.field4267, class374.field4264, class374.field4262 };
+    }
 
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(descriptor = "(S)V", garbageValue = "337")
-	public static void method6294() {
-		if (MouseHandler.MouseHandler_instance != null) {
-			synchronized(MouseHandler.MouseHandler_instance) {
-				MouseHandler.MouseHandler_instance = null;
-			}
-		}
-	}
-
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(descriptor = "([BIII)I", garbageValue = "-696884945")
-	public static int method6298(byte[] var0, int var1, int var2) {
-		int var3 = -1;
-		for (int var4 = var1; var4 < var2; ++var4) {
-			var3 = (var3 >>> 8) ^ Buffer.crc32Table[(var3 ^ var0[var4]) & 255];
-		}
-		var3 = ~var3;
-		return var3;
-	}
-
-	@ObfuscatedName("it")
-	@ObfuscatedSignature(descriptor = "(III)V", garbageValue = "2055581970")
-	static final void method6288(int var0, int var1) {
-		if (((Client.menuOptionsCount >= 2) || (Client.isItemSelected != 0)) || Client.isSpellSelected) {
-			if (Client.showMouseOverText) {
-				int var2 = UserComparator10.method2543();
-				String var3;
-				if ((Client.isItemSelected == 1) && (Client.menuOptionsCount < 2)) {
-					var3 = ((("Use" + " ") + Client.selectedItemName) + " ") + "->";
-				} else if (Client.isSpellSelected && (Client.menuOptionsCount < 2)) {
-					var3 = (((Client.selectedSpellActionName + " ") + Client.selectedSpellName) + " ") + "->";
-				} else {
-					String var4;
-					if (var2 < 0) {
-						var4 = "";
-					} else if (Client.menuTargets[var2].length() > 0) {
-						var4 = (Client.menuActions[var2] + " ") + Client.menuTargets[var2];
-					} else {
-						var4 = Client.menuActions[var2];
-					}
-					var3 = var4;
-				}
-				if (Client.menuOptionsCount > 2) {
-					var3 = (((((var3 + UserComparator5.colorStartTag(16777215)) + " ") + '/') + " ") + (Client.menuOptionsCount - 2)) + " more options";
-				}
-				class136.fontBold12.drawRandomAlphaAndSpacing(var3, var0 + 4, var1 + 15, 16777215, 0, Client.cycle / 1000);
-			}
-		}
-	}
+    @ObfuscatedName("fq")
+    @ObfuscatedSignature(descriptor = "(ZI)V", garbageValue = "883217738")
+    static final void method6297(boolean var0) {
+        if (var0) {
+            Client.field533 = (Login.field893) ? class122.field1498 : class122.field1496;
+        } else {
+            LinkedHashMap var1 = class424.clientPreferences.parameters;
+            String var3 = Login.Login_username;
+            int var4 = var3.length();
+            int var5 = 0;
+            for (int var6 = 0; var6 < var4; ++var6) {
+                var5 = ((var5 << 5) - var5) + var3.charAt(var6);
+            }
+            Client.field533 = (var1.containsKey(var5)) ? class122.field1494 : class122.field1495;
+        }
+    }
 }

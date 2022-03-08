@@ -1,29 +1,45 @@
+import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-@ObfuscatedName("os")
-final class class408 implements class405 {
-	@ObfuscatedName("p")
-	@ObfuscatedGetter(intValue = -271022059)
-	@Export("WorldMapElement_count")
-	public static int WorldMapElement_count;
+@ObfuscatedName("ol")
+class class408 implements Iterator {
+    @ObfuscatedName("gz")
+    @ObfuscatedSignature(descriptor = "Llv;")
+    @Export("fontBold12")
+    static Font fontBold12;
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(Ljava/lang/Object;Lpi;I)V", garbageValue = "246575309")
-	public void vmethod7273(Object var1, Buffer var2) {
-		this.method7238(((Long) (var1)), var2);
-	}
+    @ObfuscatedName("c")
+    @ObfuscatedGetter(intValue = 966614097)
+    int field4480;
 
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(descriptor = "(Lpi;B)Ljava/lang/Object;", garbageValue = "3")
-	public Object vmethod7271(Buffer var1) {
-		return var1.readLong();
-	}
+    @ObfuscatedSignature(descriptor = "Lop;")
+    final class409 this$0;
 
-	@ObfuscatedName("j")
-	@ObfuscatedSignature(descriptor = "(Ljava/lang/Long;Lpi;I)V", garbageValue = "-1540315910")
-	void method7238(Long var1, Buffer var2) {
-		var2.writeLong(var1);
-	}
+    @ObfuscatedSignature(descriptor = "(Lop;)V")
+    class408(class409 var1) {
+        this.this$0 = var1;
+    }
+
+    public boolean hasNext() {
+        return this.field4480 < this.this$0.method6782();
+    }
+
+    public Object next() {
+        int var1 = (++this.field4480) - 1;
+        class377 var2 = ((class377) (this.this$0.field4482.get(((long) (var1)))));
+        return var2 != null ? var2 : this.this$0.method7212(var1);
+    }
+
+    public void remove() {
+        throw new UnsupportedOperationException();
+    }
+
+    @ObfuscatedName("c")
+    @ObfuscatedSignature(descriptor = "(IB)Z", garbageValue = "27")
+    @Export("isWorldMapEvent")
+    public static boolean isWorldMapEvent(int var0) {
+        return (((((((var0 == 10) || (var0 == 11)) || (var0 == 12)) || (var0 == 13)) || (var0 == 14)) || (var0 == 15)) || (var0 == 16)) || (var0 == 17);
+    }
 }

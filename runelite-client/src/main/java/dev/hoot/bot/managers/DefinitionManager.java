@@ -14,6 +14,7 @@ import net.runelite.api.ItemContainer;
 import net.runelite.api.NPC;
 import net.runelite.api.NPCComposition;
 import net.runelite.api.ObjectComposition;
+import net.runelite.api.PlayerComposition;
 import net.runelite.api.TileObject;
 import net.runelite.api.VarbitComposition;
 import net.runelite.api.events.DecorativeObjectChanged;
@@ -28,6 +29,7 @@ import net.runelite.api.events.GroundObjectDespawned;
 import net.runelite.api.events.GroundObjectSpawned;
 import net.runelite.api.events.ItemContainerChanged;
 import net.runelite.api.events.ItemSpawned;
+import net.runelite.api.events.PlayerSpawned;
 import net.runelite.api.events.VarbitChanged;
 import net.runelite.api.events.WallObjectDespawned;
 import net.runelite.api.events.WallObjectSpawned;
@@ -41,306 +43,351 @@ import net.runelite.client.eventbus.Subscribe;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Collection;
 
 @Singleton
 @Slf4j
 public class DefinitionManager
 {
-    @Inject
-    private Client client;
+	@Inject
+	private Client client;
 
-    @Inject
-    private ClientThread clientThread;
+	@Inject
+	private ClientThread clientThread;
 
-    private static final Multimap<Integer, Integer> VARBITS = HashMultimap.create();
-    private static final Map<Integer, Integer> VARBIT_TO_ENTITYID = new HashMap<>();
-    private static final Map<Integer, TileObject> TRANSFORMING_OBJECTS = new HashMap<>();
+	private static final Multimap<Integer, Integer> VARBITS = HashMultimap.create();
+	private static final Multimap<Integer, Integer> VARBIT_TO_ENTITYID = HashMultimap.create();
+	private static final Multimap<Integer, TileObject> TRANSFORMING_OBJECTS = HashMultimap.create();
 
-    public void init()
-    {
-        clientThread.invoke(() ->
-        {
-            IndexDataBase indexVarbits = client.getIndexConfig();
-            final int[] varbitIds = indexVarbits.getFileIds(14);
-            for (int id : varbitIds)
-            {
-                VarbitComposition varbit = client.getVarbit(id);
-                if (varbit != null)
-                {
-                    VARBITS.put(varbit.getIndex(), id);
-                }
-            }
-        });
-    }
+	public void init()
+	{
+		clientThread.invoke(() ->
+		{
+			IndexDataBase indexVarbits = client.getIndexConfig();
+			final int[] varbitIds = indexVarbits.getFileIds(14);
+			for (int id : varbitIds)
+			{
+				VarbitComposition varbit = client.getVarbit(id);
+				if (varbit != null)
+				{
+					VARBITS.put(varbit.getIndex(), id);
+				}
+			}
+		});
+	}
 
-    @Subscribe
-    private void onNpcCompositionChanged(NPCCompositionChanged event)
-    {
-        NPC npc = Game.getClient().getCachedNPCs()[event.getNpcIndex()];
-        if (npc == null)
-        {
-            return;
-        }
+	@Subscribe
+	private void onNpcCompositionChanged(NPCCompositionChanged event)
+	{
+		NPC npc = Game.getClient().getCachedNPCs()[event.getNpcIndex()];
+		if (npc == null)
+		{
+			return;
+		}
 
-        NPCComposition composition = npc.getComposition();
-        if (composition != null
-                && composition.getTransformVarbit() != -1
-                && composition.getConfigs() != null)
-        {
-            VARBIT_TO_ENTITYID.put(composition.getTransformVarbit(), event.getNpcIndex());
-            npc.setTransformedComposition(composition.transform());
-        }
-    }
+		NPCComposition composition = npc.getComposition();
+		if (composition != null
+				&& composition.getTransformVarbit() != -1
+				&& composition.getConfigs() != null)
+		{
+			VARBIT_TO_ENTITYID.put(composition.getTransformVarbit(), event.getNpcIndex());
+			npc.setTransformedComposition(composition.transform());
+		}
+	}
 
-    @Subscribe
-    private void onSpawn(GameObjectSpawned event)
-    {
-        checkTransformObject(event.getGameObject());
-    }
+	// TileObjects
+	@Subscribe
+	private void onSpawn(GameObjectSpawned event)
+	{
+		checkTransformObject(event.getGameObject());
+	}
 
-    @Subscribe
-    private void onChange(GameObjectChanged event)
-    {
-        checkTransformObject(event.getGameObject());
-    }
+	@Subscribe
+	private void onChange(GameObjectChanged event)
+	{
+		checkTransformObject(event.getGameObject());
+	}
 
-    @Subscribe
-    private void onDespawn(GameObjectDespawned event)
-    {
-        TRANSFORMING_OBJECTS.remove(event.getGameObject().getId());
-    }
+	@Subscribe
+	private void onDespawn(GameObjectDespawned event)
+	{
+		TRANSFORMING_OBJECTS.remove(event.getGameObject().getId(), event.getGameObject());
+	}
 
-    @Subscribe
-    private void onSpawn(WallObjectSpawned event)
-    {
-        checkTransformObject(event.getWallObject());
-    }
+	@Subscribe
+	private void onSpawn(WallObjectSpawned event)
+	{
+		checkTransformObject(event.getWallObject());
+	}
 
-    @Subscribe
-    private void onChange(WallObjectSpawned event)
-    {
-        checkTransformObject(event.getWallObject());
-    }
+	@Subscribe
+	private void onChange(WallObjectSpawned event)
+	{
+		checkTransformObject(event.getWallObject());
+	}
 
-    @Subscribe
-    private void onDespawn(WallObjectDespawned event)
-    {
-        TRANSFORMING_OBJECTS.remove(event.getWallObject().getId());
-    }
+	@Subscribe
+	private void onDespawn(WallObjectDespawned event)
+	{
+		TRANSFORMING_OBJECTS.remove(event.getWallObject().getId(), event.getWallObject());
+	}
 
-    @Subscribe
-    private void onSpawn(DecorativeObjectSpawned event)
-    {
-        checkTransformObject(event.getDecorativeObject());
-    }
+	@Subscribe
+	private void onSpawn(DecorativeObjectSpawned event)
+	{
+		checkTransformObject(event.getDecorativeObject());
+	}
 
-    @Subscribe
-    private void onChange(DecorativeObjectChanged event)
-    {
-        checkTransformObject(event.getDecorativeObject());
-    }
+	@Subscribe
+	private void onChange(DecorativeObjectChanged event)
+	{
+		checkTransformObject(event.getDecorativeObject());
+	}
 
-    @Subscribe
-    private void onDespawn(DecorativeObjectDespawned event)
-    {
-        TRANSFORMING_OBJECTS.remove(event.getDecorativeObject().getId());
-    }
+	@Subscribe
+	private void onDespawn(DecorativeObjectDespawned event)
+	{
+		TRANSFORMING_OBJECTS.remove(event.getDecorativeObject().getId(), event.getDecorativeObject());
+	}
 
-    @Subscribe
-    private void onSpawn(GroundObjectSpawned event)
-    {
-        checkTransformObject(event.getGroundObject());
-    }
+	@Subscribe
+	private void onSpawn(GroundObjectSpawned event)
+	{
+		checkTransformObject(event.getGroundObject());
+	}
 
-    @Subscribe
-    private void onChange(GroundObjectChanged event)
-    {
-        checkTransformObject(event.getGroundObject());
-    }
+	@Subscribe
+	private void onChange(GroundObjectChanged event)
+	{
+		checkTransformObject(event.getGroundObject());
+	}
 
-    @Subscribe
-    private void onDespawn(GroundObjectDespawned event)
-    {
-        TRANSFORMING_OBJECTS.remove(event.getGroundObject().getId());
-    }
+	@Subscribe
+	private void onDespawn(GroundObjectDespawned event)
+	{
+		TRANSFORMING_OBJECTS.remove(event.getGroundObject().getId(), event.getGroundObject());
+	}
 
-    @Subscribe
-    private void onItemSpawn(ItemSpawned event)
-    {
-        client.cacheItem(event.getItem().getId(), client.getItemDefinition(event.getItem().getId()));
-    }
+	// Items
+	@Subscribe
+	private void onItemSpawn(ItemSpawned event)
+	{
+		client.cacheItem(event.getItem().getId(), client.getItemDefinition(event.getItem().getId()));
+	}
 
-    @Subscribe
-    private void onItemContainerChanged(ItemContainerChanged event)
-    {
-        ItemContainer container = event.getItemContainer();
-        if (container == null)
-        {
-            return;
-        }
+	@Subscribe
+	private void onItemContainerChanged(ItemContainerChanged event)
+	{
+		ItemContainer container = event.getItemContainer();
+		if (container == null)
+		{
+			return;
+		}
 
-        for (Item item : container.getItems())
-        {
-            if (item == null)
-            {
-                continue;
-            }
+		for (Item item : container.getItems())
+		{
+			if (item == null)
+			{
+				continue;
+			}
 
-            client.cacheItem(item.getId(), client.getItemDefinition(item.getId()));
-        }
-    }
+			client.cacheItem(item.getId(), client.getItemDefinition(item.getId()));
+		}
+	}
 
-    @Subscribe
-    private void onWidgetHiddenChanged(WidgetHiddenChanged event)
-    {
-        checkWidget(event.getWidget());
-    }
+	@Subscribe
+	private void onPlayerSpawned(PlayerSpawned event)
+	{
+		PlayerComposition playerComposition = event.getPlayer().getPlayerComposition();
+		if (playerComposition == null)
+		{
+			return;
+		}
 
-    @Subscribe
-    private void onWidgetLoaded(WidgetLoaded event)
-    {
-        for (Widget widget : Widgets.get(event.getGroupId())) {
-            checkWidget(widget);
-        }
-    }
+		for (int equipmentId : playerComposition.getEquipmentIds())
+		{
+			if (equipmentId < 512)
+			{
+				continue;
+			}
 
-    @Subscribe
-    private void onWidgetClosed(WidgetClosed event)
-    {
-        for (Widget widget : Widgets.get(event.getGroupId())) {
-            checkWidget(widget);
-        }
-    }
+			client.cacheItem(equipmentId, client.getItemDefinition(equipmentId));
+		}
+	}
 
-    @Subscribe
-    private void onGameStateChanged(GameStateChanged gameStateChanged)
-    {
-        switch (gameStateChanged.getGameState())
-        {
-            case LOGIN_SCREEN:
-            case HOPPING:
-                client.clearItemCache();
-                break;
-        }
-    }
+	// Widgets
+	@Subscribe
+	private void onWidgetHiddenChanged(WidgetHiddenChanged event)
+	{
+		checkWidget(event.getWidget());
+	}
 
-    @Subscribe
-    private void onVarbitChanged(VarbitChanged e)
-    {
-        var changedVarbits = VARBITS.get(e.getIndex());
-        for (int varbitId : changedVarbits)
-        {
-            if (!VARBIT_TO_ENTITYID.containsKey(varbitId))
-            {
-                continue;
-            }
+	@Subscribe
+	private void onWidgetLoaded(WidgetLoaded event)
+	{
+		for (Widget widget : Widgets.get(event.getGroupId()))
+		{
+			checkWidget(widget);
+		}
+	}
 
-            int configValue = Vars.getBit(varbitId);
-            int entityId = VARBIT_TO_ENTITYID.get(varbitId);
+	@Subscribe
+	private void onWidgetClosed(WidgetClosed event)
+	{
+		for (Widget widget : Widgets.get(event.getGroupId()))
+		{
+			checkWidget(widget);
+		}
+	}
 
-            if (entityId < client.getCachedNPCs().length)
-            {
-                NPC npc = client.getCachedNPCs()[entityId];
-                if (npc != null && npc.getComposition() != null)
-                {
-                    npc.setTransformedComposition(npc.getComposition().transform());
+	@Subscribe
+	private void onGameStateChanged(GameStateChanged gameStateChanged)
+	{
+		switch (gameStateChanged.getGameState())
+		{
+			case LOGIN_SCREEN:
+			case HOPPING:
+				client.clearItemCache();
+				break;
+		}
+	}
 
-                    if (configValue == 0)
-                    {
-                        log.debug("NPC {} reverted to default state", entityId);
-                    }
-                    else
-                    {
-                        log.debug("NPC {} transformed", entityId);
-                    }
+	@Subscribe
+	private void onVarbitChanged(VarbitChanged e)
+	{
+		if (VARBITS.isEmpty())
+		{
+			init();
+		}
 
-                    return;
-                }
-            }
+		var changedVarbits = VARBITS.get(e.getIndex());
+		for (int varbitId : changedVarbits)
+		{
+			if (!VARBIT_TO_ENTITYID.containsKey(varbitId))
+			{
+				continue;
+			}
 
-            ObjectComposition objectComposition = client.getObjectDefinition(entityId);
-            TileObject cachedObject = TRANSFORMING_OBJECTS.get(entityId);
-            if (objectComposition != null && cachedObject != null)
-            {
-                cachedObject.setTransformedComposition(objectComposition.getImpostor());
+			int configValue = Vars.getBit(varbitId);
+			Collection<Integer> entityIds = VARBIT_TO_ENTITYID.get(varbitId);
+			for (Integer entityId : entityIds)
+			{
+				if (entityId < client.getCachedNPCs().length)
+				{
+					NPC npc = client.getCachedNPCs()[entityId];
+					if (npc != null && npc.getComposition() != null)
+					{
+						NPCComposition current = npc.getTransformedComposition();
+						NPCComposition transformed = npc.getComposition().transform();
+						if (current == transformed)
+						{
+							continue;
+						}
 
-                if (configValue == 0)
-                {
-                    log.debug("Object {} reverted to default state", entityId);
-                }
-                else
-                {
-                    log.debug("Object {} transformed", entityId);
-                }
-            }
-        }
-    }
+						npc.setTransformedComposition(transformed);
 
-    private void checkWidget(Widget widget)
-    {
-        if (widget == null)
-        {
-            return;
-        }
+						if (configValue == 0)
+						{
+							log.debug("NPC {} reverted to default state", entityId);
+						}
+						else
+						{
+							log.debug("NPC {} transformed", entityId);
+						}
 
-        boolean hidden = widget.isHidden();
-        widget.setVisible(!hidden);
-        if (!hidden)
-        {
-            int itemId = widget.getItemId();
-            log.trace("Widget {}, {} is now visible", WidgetInfo.TO_GROUP(widget.getId()), WidgetInfo.TO_CHILD(widget.getId()));
-            if (itemId != -1)
-            {
-                if (!client.isItemDefinitionCached(itemId))
-                {
-                    log.debug("Caching item {} from widget", itemId);
-                    client.cacheItem(itemId, client.getItemDefinition(itemId));
-                }
-            }
-        }
+						continue;
+					}
+				}
 
-        checkWidgetChildren(widget.getDynamicChildren());
-        checkWidgetChildren(widget.getStaticChildren());
-        checkWidgetChildren(widget.getNestedChildren());
-    }
+				ObjectComposition objectComposition = client.getObjectDefinition(entityId);
+				Collection<TileObject> cachedObjects = TRANSFORMING_OBJECTS.get(entityId);
+				for (TileObject cachedObject : cachedObjects)
+				{
+					if (objectComposition != null && cachedObject != null)
+					{
+						ObjectComposition current = cachedObject.getTransformedComposition();
+						ObjectComposition transformed = objectComposition.getImpostor();
+						if (current == transformed)
+						{
+							continue;
+						}
 
-    private void checkWidgetChildren(Widget[] widgets)
-    {
-        if (widgets == null)
-        {
-            return;
-        }
+						cachedObject.setTransformedComposition(transformed);
 
-        for (Widget widget : widgets)
-        {
-            checkWidget(widget);
-        }
-    }
+						if (configValue == 0)
+						{
+							log.debug("[{}] reverted to default state", transformed.getName());
+						}
+						else
+						{
+							log.debug("[{}: {}] transformed into [{}: {}]", objectComposition.getId(), objectComposition.getName(), transformed.getId(), transformed.getName());
+						}
+					}
+				}
+			}
+		}
+	}
 
-    private void checkTransformObject(TileObject object)
-    {
-        if (object == null)
-        {
-            return;
-        }
+	private void checkWidget(Widget widget)
+	{
+		if (widget == null)
+		{
+			return;
+		}
 
-        ObjectComposition composition = client.getObjectDefinition(object.getId());
-        if (composition == null)
-        {
-            return;
-        }
+		boolean hidden = widget.isHidden();
+		widget.setVisible(!hidden);
+		if (!hidden)
+		{
+			int itemId = widget.getItemId();
+			log.trace("Widget {}, {} is now visible", WidgetInfo.TO_GROUP(widget.getId()), WidgetInfo.TO_CHILD(widget.getId()));
+			if (itemId != -1)
+			{
+				log.debug("Caching item {} from widget", itemId);
+				client.cacheItem(itemId, client.getItemDefinition(itemId));
+			}
+		}
 
-        if (composition.getImpostorIds() != null && composition.getTransformVarbit() != -1)
-        {
-            VARBIT_TO_ENTITYID.put(composition.getTransformVarbit(), object.getId());
-            TRANSFORMING_OBJECTS.put(object.getId(), object);
-            object.setTransformedComposition(composition.getImpostor());
-        }
-        else
-        {
-            object.setTransformedComposition(composition);
-        }
-    }
+		checkWidgetChildren(widget.getDynamicChildren());
+		checkWidgetChildren(widget.getStaticChildren());
+		checkWidgetChildren(widget.getNestedChildren());
+	}
+
+	private void checkWidgetChildren(Widget[] widgets)
+	{
+		if (widgets == null)
+		{
+			return;
+		}
+
+		for (Widget widget : widgets)
+		{
+			checkWidget(widget);
+		}
+	}
+
+	private void checkTransformObject(TileObject object)
+	{
+		if (object == null)
+		{
+			return;
+		}
+
+		ObjectComposition composition = client.getObjectDefinition(object.getId());
+		if (composition == null)
+		{
+			return;
+		}
+
+		if (composition.getImpostorIds() != null && composition.getTransformVarbit() != -1)
+		{
+			VARBIT_TO_ENTITYID.put(composition.getTransformVarbit(), object.getId());
+			TRANSFORMING_OBJECTS.put(object.getId(), object);
+			object.setTransformedComposition(composition.getImpostor());
+		}
+		else
+		{
+			object.setTransformedComposition(composition);
+		}
+	}
 }

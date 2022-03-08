@@ -1,229 +1,247 @@
+import net.runelite.rs.ScriptOpcodes;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-@ObfuscatedName("ha")
+@ObfuscatedName("hy")
 @Implements("WorldMapSection0")
 public class WorldMapSection0 implements WorldMapSection {
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(intValue = -1379468797)
-	@Export("oldZ")
-	int oldZ;
+    @ObfuscatedName("m")
+    @ObfuscatedSignature(descriptor = "Ley;")
+    static ClanSettings field2713;
 
-	@ObfuscatedName("b")
-	@ObfuscatedGetter(intValue = 1978034363)
-	@Export("newZ")
-	int newZ;
+    @ObfuscatedName("c")
+    @ObfuscatedGetter(intValue = 1656389005)
+    @Export("oldZ")
+    int oldZ;
 
-	@ObfuscatedName("p")
-	@ObfuscatedGetter(intValue = -1418706877)
-	@Export("oldX")
-	int oldX;
+    @ObfuscatedName("l")
+    @ObfuscatedGetter(intValue = 753980223)
+    @Export("newZ")
+    int newZ;
 
-	@ObfuscatedName("m")
-	@ObfuscatedGetter(intValue = -455262703)
-	@Export("oldY")
-	int oldY;
+    @ObfuscatedName("s")
+    @ObfuscatedGetter(intValue = -708563667)
+    @Export("oldX")
+    int oldX;
 
-	@ObfuscatedName("t")
-	@ObfuscatedGetter(intValue = -1189566559)
-	@Export("newX")
-	int newX;
+    @ObfuscatedName("e")
+    @ObfuscatedGetter(intValue = 345874997)
+    @Export("oldY")
+    int oldY;
 
-	@ObfuscatedName("s")
-	@ObfuscatedGetter(intValue = -1025005161)
-	@Export("newY")
-	int newY;
+    @ObfuscatedName("r")
+    @ObfuscatedGetter(intValue = -181019815)
+    @Export("newX")
+    int newX;
 
-	@ObfuscatedName("j")
-	@ObfuscatedGetter(intValue = -2060231737)
-	@Export("oldChunkXLow")
-	int oldChunkXLow;
+    @ObfuscatedName("o")
+    @ObfuscatedGetter(intValue = 1362481739)
+    @Export("newY")
+    int newY;
 
-	@ObfuscatedName("w")
-	@ObfuscatedGetter(intValue = -1972325381)
-	@Export("oldChunkYLow")
-	int oldChunkYLow;
+    @ObfuscatedName("i")
+    @ObfuscatedGetter(intValue = 1066473217)
+    @Export("oldChunkXLow")
+    int oldChunkXLow;
 
-	@ObfuscatedName("n")
-	@ObfuscatedGetter(intValue = -402429253)
-	@Export("oldChunkXHigh")
-	int oldChunkXHigh;
+    @ObfuscatedName("w")
+    @ObfuscatedGetter(intValue = -306855367)
+    @Export("oldChunkYLow")
+    int oldChunkYLow;
 
-	@ObfuscatedName("r")
-	@ObfuscatedGetter(intValue = 2143866963)
-	@Export("oldChunkYHigh")
-	int oldChunkYHigh;
+    @ObfuscatedName("v")
+    @ObfuscatedGetter(intValue = 1493914521)
+    @Export("oldChunkXHigh")
+    int oldChunkXHigh;
 
-	@ObfuscatedName("o")
-	@ObfuscatedGetter(intValue = -1182995105)
-	@Export("newChunkXLow")
-	int newChunkXLow;
+    @ObfuscatedName("a")
+    @ObfuscatedGetter(intValue = -502378895)
+    @Export("oldChunkYHigh")
+    int oldChunkYHigh;
 
-	@ObfuscatedName("v")
-	@ObfuscatedGetter(intValue = -1073244035)
-	@Export("newChunkYLow")
-	int newChunkYLow;
+    @ObfuscatedName("y")
+    @ObfuscatedGetter(intValue = 1039818759)
+    @Export("newChunkXLow")
+    int newChunkXLow;
 
-	@ObfuscatedName("d")
-	@ObfuscatedGetter(intValue = -1074307305)
-	@Export("newChunkXHigh")
-	int newChunkXHigh;
+    @ObfuscatedName("u")
+    @ObfuscatedGetter(intValue = 1186966869)
+    @Export("newChunkYLow")
+    int newChunkYLow;
 
-	@ObfuscatedName("h")
-	@ObfuscatedGetter(intValue = 726894699)
-	@Export("newChunkYHigh")
-	int newChunkYHigh;
+    @ObfuscatedName("h")
+    @ObfuscatedGetter(intValue = 586618761)
+    @Export("newChunkXHigh")
+    int newChunkXHigh;
 
-	WorldMapSection0() {
-	}
+    @ObfuscatedName("q")
+    @ObfuscatedGetter(intValue = -1668463027)
+    @Export("newChunkYHigh")
+    int newChunkYHigh;
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(Lhr;I)V", garbageValue = "2069930856")
-	@Export("expandBounds")
-	public void expandBounds(WorldMapArea var1) {
-		if (var1.regionLowX > this.newX) {
-			var1.regionLowX = this.newX;
-		}
-		if (var1.regionHighX < this.newX) {
-			var1.regionHighX = this.newX;
-		}
-		if (var1.regionLowY > this.newY) {
-			var1.regionLowY = this.newY;
-		}
-		if (var1.regionHighY < this.newY) {
-			var1.regionHighY = this.newY;
-		}
-	}
+    WorldMapSection0() {
+    }
 
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(descriptor = "(IIIB)Z", garbageValue = "81")
-	@Export("containsCoord")
-	public boolean containsCoord(int var1, int var2, int var3) {
-		if ((var1 >= this.oldZ) && (var1 < (this.newZ + this.oldZ))) {
-			return (((var2 >= ((this.oldX << 6) + (this.oldChunkXLow << 3))) && (var2 <= (((this.oldX << 6) + (this.oldChunkXHigh << 3)) + 7))) && (var3 >= ((this.oldY << 6) + (this.oldChunkYLow << 3)))) && (var3 <= (((this.oldY << 6) + (this.oldChunkYHigh << 3)) + 7));
-		} else {
-			return false;
-		}
-	}
+    @ObfuscatedName("c")
+    @ObfuscatedSignature(descriptor = "(Lhm;I)V", garbageValue = "806489369")
+    @Export("expandBounds")
+    public void expandBounds(WorldMapArea var1) {
+        if (var1.regionLowX > this.newX) {
+            var1.regionLowX = this.newX;
+        }
+        if (var1.regionHighX < this.newX) {
+            var1.regionHighX = this.newX;
+        }
+        if (var1.regionLowY > this.newY) {
+            var1.regionLowY = this.newY;
+        }
+        if (var1.regionHighY < this.newY) {
+            var1.regionHighY = this.newY;
+        }
+    }
 
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(descriptor = "(III)Z", garbageValue = "42159517")
-	@Export("containsPosition")
-	public boolean containsPosition(int var1, int var2) {
-		return (((var1 >= ((this.newX << 6) + (this.newChunkXLow << 3))) && (var1 <= (((this.newX << 6) + (this.newChunkXHigh << 3)) + 7))) && (var2 >= ((this.newY << 6) + (this.newChunkYLow << 3)))) && (var2 <= (((this.newY << 6) + (this.newChunkYHigh << 3)) + 7));
-	}
+    @ObfuscatedName("l")
+    @ObfuscatedSignature(descriptor = "(IIII)Z", garbageValue = "1721879281")
+    @Export("containsCoord")
+    public boolean containsCoord(int var1, int var2, int var3) {
+        if ((var1 >= this.oldZ) && (var1 < (this.newZ + this.oldZ))) {
+            return (((var2 >= ((this.oldX << 6) + (this.oldChunkXLow << 3))) && (var2 <= (((this.oldX << 6) + (this.oldChunkXHigh << 3)) + 7))) && (var3 >= ((this.oldY << 6) + (this.oldChunkYLow << 3)))) && (var3 <= (((this.oldY << 6) + (this.oldChunkYHigh << 3)) + 7));
+        } else {
+            return false;
+        }
+    }
 
-	@ObfuscatedName("m")
-	@ObfuscatedSignature(descriptor = "(IIII)[I", garbageValue = "22240711")
-	@Export("getBorderTileLengths")
-	public int[] getBorderTileLengths(int var1, int var2, int var3) {
-		if (!this.containsCoord(var1, var2, var3)) {
-			return null;
-		} else {
-			int[] var4 = new int[]{ (var2 + ((this.newX * 64) - (this.oldX * 64))) + ((this.newChunkXLow * 8) - (this.oldChunkXLow * 8)), (var3 + ((this.newY * 64) - (this.oldY * 64))) + ((this.newChunkYLow * 8) - (this.oldChunkYLow * 8)) };
-			return var4;
-		}
-	}
+    @ObfuscatedName("s")
+    @ObfuscatedSignature(descriptor = "(III)Z", garbageValue = "898039462")
+    @Export("containsPosition")
+    public boolean containsPosition(int var1, int var2) {
+        return (((var1 >= ((this.newX << 6) + (this.newChunkXLow << 3))) && (var1 <= (((this.newX << 6) + (this.newChunkXHigh << 3)) + 7))) && (var2 >= ((this.newY << 6) + (this.newChunkYLow << 3)))) && (var2 <= (((this.newY << 6) + (this.newChunkYHigh << 3)) + 7));
+    }
 
-	@ObfuscatedName("t")
-	@ObfuscatedSignature(descriptor = "(IIS)Lju;", garbageValue = "5000")
-	@Export("coord")
-	public Coord coord(int var1, int var2) {
-		if (!this.containsPosition(var1, var2)) {
-			return null;
-		} else {
-			int var3 = (((this.oldX * 64) - (this.newX * 64)) + ((this.oldChunkXLow * 8) - (this.newChunkXLow * 8))) + var1;
-			int var4 = (var2 + ((this.oldY * 64) - (this.newY * 64))) + ((this.oldChunkYLow * 8) - (this.newChunkYLow * 8));
-			return new Coord(this.oldZ, var3, var4);
-		}
-	}
+    @ObfuscatedName("e")
+    @ObfuscatedSignature(descriptor = "(IIII)[I", garbageValue = "499785766")
+    @Export("getBorderTileLengths")
+    public int[] getBorderTileLengths(int var1, int var2, int var3) {
+        if (!this.containsCoord(var1, var2, var3)) {
+            return null;
+        } else {
+            int[] var4 = new int[]{ (var2 + ((this.newX * 64) - (this.oldX * 64))) + ((this.newChunkXLow * 8) - (this.oldChunkXLow * 8)), (var3 + ((this.newY * 64) - (this.oldY * 64))) + ((this.newChunkYLow * 8) - (this.oldChunkYLow * 8)) };
+            return var4;
+        }
+    }
 
-	@ObfuscatedName("s")
-	@ObfuscatedSignature(descriptor = "(Lpi;S)V", garbageValue = "-15299")
-	@Export("read")
-	public void read(Buffer var1) {
-		this.oldZ = var1.readUnsignedByte();
-		this.newZ = var1.readUnsignedByte();
-		this.oldX = var1.readUnsignedShort();
-		this.oldChunkXLow = var1.readUnsignedByte();
-		this.oldChunkXHigh = var1.readUnsignedByte();
-		this.oldY = var1.readUnsignedShort();
-		this.oldChunkYLow = var1.readUnsignedByte();
-		this.oldChunkYHigh = var1.readUnsignedByte();
-		this.newX = var1.readUnsignedShort();
-		this.newChunkXLow = var1.readUnsignedByte();
-		this.newChunkXHigh = var1.readUnsignedByte();
-		this.newY = var1.readUnsignedShort();
-		this.newChunkYLow = var1.readUnsignedByte();
-		this.newChunkYHigh = var1.readUnsignedByte();
-		this.postRead();
-	}
+    @ObfuscatedName("r")
+    @ObfuscatedSignature(descriptor = "(IIB)Ljd;", garbageValue = "90")
+    @Export("coord")
+    public Coord coord(int var1, int var2) {
+        if (!this.containsPosition(var1, var2)) {
+            return null;
+        } else {
+            int var3 = (((this.oldX * 64) - (this.newX * 64)) + ((this.oldChunkXLow * 8) - (this.newChunkXLow * 8))) + var1;
+            int var4 = (var2 + ((this.oldY * 64) - (this.newY * 64))) + ((this.oldChunkYLow * 8) - (this.newChunkYLow * 8));
+            return new Coord(this.oldZ, var3, var4);
+        }
+    }
 
-	@ObfuscatedName("j")
-	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "-109463717")
-	@Export("postRead")
-	void postRead() {
-	}
+    @ObfuscatedName("o")
+    @ObfuscatedSignature(descriptor = "(Lpi;B)V", garbageValue = "-121")
+    @Export("read")
+    public void read(Buffer var1) {
+        this.oldZ = var1.readUnsignedByte();
+        this.newZ = var1.readUnsignedByte();
+        this.oldX = var1.readUnsignedShort();
+        this.oldChunkXLow = var1.readUnsignedByte();
+        this.oldChunkXHigh = var1.readUnsignedByte();
+        this.oldY = var1.readUnsignedShort();
+        this.oldChunkYLow = var1.readUnsignedByte();
+        this.oldChunkYHigh = var1.readUnsignedByte();
+        this.newX = var1.readUnsignedShort();
+        this.newChunkXLow = var1.readUnsignedByte();
+        this.newChunkXHigh = var1.readUnsignedByte();
+        this.newY = var1.readUnsignedShort();
+        this.newChunkYLow = var1.readUnsignedByte();
+        this.newChunkYHigh = var1.readUnsignedByte();
+        this.postRead();
+    }
 
-	@ObfuscatedName("w")
-	@ObfuscatedSignature(descriptor = "([BI)V", garbageValue = "-27466891")
-	@Export("SpriteBuffer_decode")
-	static void SpriteBuffer_decode(byte[] var0) {
-		Buffer var1 = new Buffer(var0);
-		var1.offset = var0.length - 2;
-		class440.SpriteBuffer_spriteCount = var1.readUnsignedShort();
-		class141.SpriteBuffer_xOffsets = new int[class440.SpriteBuffer_spriteCount];
-		RouteStrategy.SpriteBuffer_yOffsets = new int[class440.SpriteBuffer_spriteCount];
-		class432.SpriteBuffer_spriteWidths = new int[class440.SpriteBuffer_spriteCount];
-		class330.SpriteBuffer_spriteHeights = new int[class440.SpriteBuffer_spriteCount];
-		class369.SpriteBuffer_pixels = new byte[class440.SpriteBuffer_spriteCount][];
-		var1.offset = (var0.length - 7) - (class440.SpriteBuffer_spriteCount * 8);
-		class432.SpriteBuffer_spriteWidth = var1.readUnsignedShort();
-		class432.SpriteBuffer_spriteHeight = var1.readUnsignedShort();
-		int var2 = (var1.readUnsignedByte() & 255) + 1;
-		int var3;
-		for (var3 = 0; var3 < class440.SpriteBuffer_spriteCount; ++var3) {
-			class141.SpriteBuffer_xOffsets[var3] = var1.readUnsignedShort();
-		}
-		for (var3 = 0; var3 < class440.SpriteBuffer_spriteCount; ++var3) {
-			RouteStrategy.SpriteBuffer_yOffsets[var3] = var1.readUnsignedShort();
-		}
-		for (var3 = 0; var3 < class440.SpriteBuffer_spriteCount; ++var3) {
-			class432.SpriteBuffer_spriteWidths[var3] = var1.readUnsignedShort();
-		}
-		for (var3 = 0; var3 < class440.SpriteBuffer_spriteCount; ++var3) {
-			class330.SpriteBuffer_spriteHeights[var3] = var1.readUnsignedShort();
-		}
-		var1.offset = ((var0.length - 7) - (class440.SpriteBuffer_spriteCount * 8)) - ((var2 - 1) * 3);
-		class432.SpriteBuffer_spritePalette = new int[var2];
-		for (var3 = 1; var3 < var2; ++var3) {
-			class432.SpriteBuffer_spritePalette[var3] = var1.readMedium();
-			if (class432.SpriteBuffer_spritePalette[var3] == 0) {
-				class432.SpriteBuffer_spritePalette[var3] = 1;
-			}
-		}
-		var1.offset = 0;
-		for (var3 = 0; var3 < class440.SpriteBuffer_spriteCount; ++var3) {
-			int var4 = class432.SpriteBuffer_spriteWidths[var3];
-			int var5 = class330.SpriteBuffer_spriteHeights[var3];
-			int var6 = var5 * var4;
-			byte[] var7 = new byte[var6];
-			class369.SpriteBuffer_pixels[var3] = var7;
-			int var8 = var1.readUnsignedByte();
-			int var9;
-			if (var8 == 0) {
-				for (var9 = 0; var9 < var6; ++var9) {
-					var7[var9] = var1.readByte();
-				}
-			} else if (var8 == 1) {
-				for (var9 = 0; var9 < var4; ++var9) {
-					for (int var10 = 0; var10 < var5; ++var10) {
-						var7[var9 + (var4 * var10)] = var1.readByte();
-					}
-				}
-			}
-		}
-	}
+    @ObfuscatedName("i")
+    @ObfuscatedSignature(descriptor = "(I)V", garbageValue = "1987835372")
+    @Export("postRead")
+    void postRead() {
+    }
+
+    @ObfuscatedName("c")
+    @ObfuscatedSignature(descriptor = "(B)I", garbageValue = "-32")
+    public static int method4702() {
+        return ViewportMouse.ViewportMouse_entityCount;
+    }
+
+    @ObfuscatedName("l")
+    @ObfuscatedSignature(descriptor = "(I)Lni;", garbageValue = "-533029822")
+    public static class371 method4716() {
+        synchronized(class371.field4238) {
+            if (class296.field3510 == 0) {
+                return new class371();
+            } else {
+                class371.field4238[--class296.field3510].method6677();
+                return class371.field4238[class296.field3510];
+            }
+        }
+    }
+
+    @ObfuscatedName("r")
+    @ObfuscatedSignature(descriptor = "(ILbl;ZI)I", garbageValue = "271325473")
+    static int method4714(int var0, Script var1, boolean var2) {
+        int var3 = -1;
+        Widget var4;
+        if (var0 >= 2000) {
+            var0 -= 1000;
+            var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+            var4 = class130.getWidget(var3);
+        } else {
+            var4 = (var2) ? class16.scriptDotWidget : Interpreter.scriptActiveWidget;
+        }
+        if (var0 == ScriptOpcodes.CC_SETPOSITION) {
+            Interpreter.Interpreter_intStackSize -= 4;
+            var4.rawX = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+            var4.rawY = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+            var4.xAlignment = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 2];
+            var4.yAlignment = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 3];
+            class112.invalidateWidget(var4);
+            class414.client.alignWidget(var4);
+            if ((var3 != (-1)) && (var4.type == 0)) {
+                PcmPlayer.revalidateWidgetScroll(Widget.Widget_interfaceComponents[var3 >> 16], var4, false);
+            }
+            return 1;
+        } else if (var0 == ScriptOpcodes.CC_SETSIZE) {
+            Interpreter.Interpreter_intStackSize -= 4;
+            var4.rawWidth = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+            var4.rawHeight = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+            var4.widthAlignment = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 2];
+            var4.heightAlignment = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 3];
+            class112.invalidateWidget(var4);
+            class414.client.alignWidget(var4);
+            if ((var3 != (-1)) && (var4.type == 0)) {
+                PcmPlayer.revalidateWidgetScroll(Widget.Widget_interfaceComponents[var3 >> 16], var4, false);
+            }
+            return 1;
+        } else if (var0 == ScriptOpcodes.CC_SETHIDE) {
+            boolean var5 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize] == 1;
+            if (var5 != var4.isHidden) {
+                var4.isHidden = var5;
+                class112.invalidateWidget(var4);
+            }
+            return 1;
+        } else if (var0 == ScriptOpcodes.CC_SETNOCLICKTHROUGH) {
+            var4.noClickThrough = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize] == 1;
+            return 1;
+        } else if (var0 == ScriptOpcodes.CC_SETNOSCROLLTHROUGH) {
+            var4.noScrollThrough = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize] == 1;
+            return 1;
+        } else {
+            return 2;
+        }
+    }
 }

@@ -29,14 +29,14 @@ public class MousePackets
 		MousePackets.queueClickPacket(mouseInfo, x, y);
 	}
 
-	public static void queueClickPacket(int mouseinfo, int x, int y)
+	public static void queueClickPacket(int mouseInfo, int x, int y)
 	{
 		Client client = Game.getClient();
 		ClientPacket clientPacket = Game.getClientPacket();
-		PacketBufferNode var18 = Game.getClient().preparePacket(clientPacket.EVENT_MOUSE_CLICK(), client.getPacketWriter().getIsaacCipher());
-		var18.getPacketBuffer().writeShort(mouseinfo);
-		var18.getPacketBuffer().writeShort(x);
-		var18.getPacketBuffer().writeShort(y);
-		client.getPacketWriter().queuePacket(var18);
+		PacketBufferNode packetBufferNode = Game.getClient().preparePacket(clientPacket.EVENT_MOUSE_CLICK(), client.getPacketWriter().getIsaacCipher());
+		packetBufferNode.getPacketBuffer().writeShort(mouseInfo);
+		packetBufferNode.getPacketBuffer().writeShort(x);
+		packetBufferNode.getPacketBuffer().writeShort(y);
+		client.getPacketWriter().queuePacket(packetBufferNode);
 	}
 }

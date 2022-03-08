@@ -32,7 +32,7 @@ public class FileUtil
 	public static void serialize(String dirName, String fileName, Serializable data)
 	{
 		try (FileOutputStream fos = new FileOutputStream(new File(getDirectory(dirName), fileName));
-			ObjectOutputStream oos = new ObjectOutputStream(fos))
+			 ObjectOutputStream oos = new ObjectOutputStream(fos))
 		{
 			oos.writeObject(data);
 			oos.flush();
@@ -51,7 +51,7 @@ public class FileUtil
 	public static <T> T deserialize(String dirName, String fileName)
 	{
 		try (FileInputStream fis = new FileInputStream(new File(getDirectory(dirName), fileName));
-			ObjectInputStream ois = new ObjectInputStream(fis))
+			 ObjectInputStream ois = new ObjectInputStream(fis))
 		{
 			return (T) ois.readObject();
 		}

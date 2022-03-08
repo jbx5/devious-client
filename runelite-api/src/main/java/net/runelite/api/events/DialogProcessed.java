@@ -1,7 +1,7 @@
 package net.runelite.api.events;
 
+import dev.hoot.api.widgets.DialogOption;
 import lombok.Value;
-import net.runelite.api.DialogOption;
 
 @Value
 public class DialogProcessed

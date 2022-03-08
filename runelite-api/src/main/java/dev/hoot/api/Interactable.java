@@ -95,13 +95,15 @@ public interface Interactable
 
 	default AutomatedMenu getMenu(int identifier, int opcode, int param0, int param1)
 	{
+		Point clickPoint = getClickPoint();
+
 		if (this instanceof SceneEntity)
 		{
-			return new AutomatedMenu(identifier, opcode, param0, param1, ((SceneEntity) this).getTag());
+			return new AutomatedMenu(identifier, opcode, param0, param1, clickPoint.getX(), clickPoint.getY(),
+					((SceneEntity) this).getTag());
 		}
 		else
 		{
-			Point clickPoint = getClickPoint();
 			return new AutomatedMenu(identifier, opcode, param0, param1, clickPoint.getX(), clickPoint.getY());
 		}
 	}

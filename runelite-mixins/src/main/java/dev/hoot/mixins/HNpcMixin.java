@@ -84,6 +84,12 @@ public abstract class HNpcMixin implements RSNPC
 	@Inject
 	public void interact(int identifier, int opcode, int param0, int param1)
 	{
+		if (identifier == -1)
+		{
+			throw new IllegalStateException("Interacted NPC no longer exists " + getName() + ", cancelling " +
+					"interaction.");
+		}
+
 		client.interact(getMenu(identifier, opcode, param0, param1));
 	}
 

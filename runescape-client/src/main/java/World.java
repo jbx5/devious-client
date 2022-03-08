@@ -3,154 +3,113 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-@ObfuscatedName("bw")
+@ObfuscatedName("bi")
 @Implements("World")
 public class World {
-	@ObfuscatedName("s")
-	@ObfuscatedGetter(intValue = 63855855)
-	@Export("World_count")
-	static int World_count;
+    @ObfuscatedName("o")
+    @ObfuscatedGetter(intValue = 424514993)
+    @Export("World_count")
+    static int World_count;
 
-	@ObfuscatedName("j")
-	@ObfuscatedGetter(intValue = -951276337)
-	@Export("World_listCount")
-	static int World_listCount;
+    @ObfuscatedName("i")
+    @ObfuscatedGetter(intValue = 1627138945)
+    @Export("World_listCount")
+    static int World_listCount;
 
-	@ObfuscatedName("w")
-	@Export("World_sortOption2")
-	static int[] World_sortOption2;
+    @ObfuscatedName("w")
+    @Export("World_sortOption2")
+    static int[] World_sortOption2;
 
-	@ObfuscatedName("n")
-	@Export("World_sortOption1")
-	static int[] World_sortOption1;
+    @ObfuscatedName("v")
+    @Export("World_sortOption1")
+    static int[] World_sortOption1;
 
-	@ObfuscatedName("k")
-	@Export("ByteArrayPool_arrays")
-	public static byte[][][] ByteArrayPool_arrays;
+    @ObfuscatedName("y")
+    @ObfuscatedGetter(intValue = -1204793871)
+    @Export("id")
+    int id;
 
-	@ObfuscatedName("ai")
-	@Export("hasFocus")
-	protected static boolean hasFocus;
+    @ObfuscatedName("u")
+    @ObfuscatedGetter(intValue = -1353463065)
+    @Export("properties")
+    int properties;
 
-	@ObfuscatedName("ip")
-	@ObfuscatedSignature(descriptor = "[Lpa;")
-	@Export("modIconSprites")
-	static IndexedSprite[] modIconSprites;
+    @ObfuscatedName("h")
+    @ObfuscatedGetter(intValue = -1508326675)
+    @Export("population")
+    int population;
 
-	@ObfuscatedName("o")
-	@ObfuscatedGetter(intValue = 402163899)
-	@Export("id")
-	int id;
+    @ObfuscatedName("q")
+    @Export("host")
+    String host;
 
-	@ObfuscatedName("v")
-	@ObfuscatedGetter(intValue = 967201023)
-	@Export("properties")
-	int properties;
+    @ObfuscatedName("x")
+    @Export("activity")
+    String activity;
 
-	@ObfuscatedName("d")
-	@ObfuscatedGetter(intValue = 1525969609)
-	@Export("population")
-	int population;
+    @ObfuscatedName("p")
+    @ObfuscatedGetter(intValue = -828676327)
+    @Export("location")
+    int location;
 
-	@ObfuscatedName("h")
-	@Export("host")
-	String host;
+    @ObfuscatedName("n")
+    @ObfuscatedGetter(intValue = -190751717)
+    @Export("index")
+    int index;
 
-	@ObfuscatedName("g")
-	@Export("activity")
-	String activity;
+    static {
+        World_count = 0;
+        World_listCount = 0;
+        World_sortOption2 = new int[]{ 1, 1, 1, 1 };
+        World_sortOption1 = new int[]{ 0, 1, 2, 3 };
+    }
 
-	@ObfuscatedName("e")
-	@ObfuscatedGetter(intValue = -102724797)
-	@Export("location")
-	int location;
+    World() {
+    }
 
-	@ObfuscatedName("a")
-	@ObfuscatedGetter(intValue = 742286855)
-	@Export("index")
-	int index;
-	static 
-	{
-		World_count = 0;
-		World_listCount = 0;
-		World_sortOption2 = new int[]{ 1, 1, 1, 1 };
-		World_sortOption1 = new int[]{ 0, 1, 2, 3 };
-	}
+    @ObfuscatedName("v")
+    @ObfuscatedSignature(descriptor = "(B)Z", garbageValue = "0")
+    @Export("isMembersOnly")
+    boolean isMembersOnly() {
+        return (1 & this.properties) != 0;
+    }
 
-	World() {
-	}
+    @ObfuscatedName("a")
+    @ObfuscatedSignature(descriptor = "(I)Z", garbageValue = "-406459188")
+    boolean method1649() {
+        return (2 & this.properties) != 0;
+    }
 
-	@ObfuscatedName("r")
-	@ObfuscatedSignature(descriptor = "(B)Z", garbageValue = "16")
-	@Export("isMembersOnly")
-	boolean isMembersOnly() {
-		return (1 & this.properties) != 0;
-	}
+    @ObfuscatedName("y")
+    @ObfuscatedSignature(descriptor = "(B)Z", garbageValue = "0")
+    @Export("isPvp")
+    boolean isPvp() {
+        return (4 & this.properties) != 0;
+    }
 
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "(I)Z", garbageValue = "-624791914")
-	boolean method1696() {
-		return (2 & this.properties) != 0;
-	}
+    @ObfuscatedName("u")
+    @ObfuscatedSignature(descriptor = "(B)Z", garbageValue = "20")
+    boolean method1662() {
+        return (8 & this.properties) != 0;
+    }
 
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "(I)Z", garbageValue = "1709463484")
-	@Export("isPvp")
-	boolean isPvp() {
-		return (4 & this.properties) != 0;
-	}
+    @ObfuscatedName("h")
+    @ObfuscatedSignature(descriptor = "(I)Z", garbageValue = "-305789619")
+    @Export("isDeadman")
+    boolean isDeadman() {
+        return (536870912 & this.properties) != 0;
+    }
 
-	@ObfuscatedName("d")
-	@ObfuscatedSignature(descriptor = "(I)Z", garbageValue = "-1754892594")
-	boolean method1676() {
-		return (8 & this.properties) != 0;
-	}
+    @ObfuscatedName("q")
+    @ObfuscatedSignature(descriptor = "(I)Z", garbageValue = "-786125281")
+    @Export("isBeta")
+    boolean isBeta() {
+        return (33554432 & this.properties) != 0;
+    }
 
-	@ObfuscatedName("h")
-	@ObfuscatedSignature(descriptor = "(B)Z", garbageValue = "-24")
-	@Export("isDeadman")
-	boolean isDeadman() {
-		return (536870912 & this.properties) != 0;
-	}
-
-	@ObfuscatedName("g")
-	@ObfuscatedSignature(descriptor = "(I)Z", garbageValue = "-126940607")
-	@Export("isBeta")
-	boolean isBeta() {
-		return (33554432 & this.properties) != 0;
-	}
-
-	@ObfuscatedName("e")
-	@ObfuscatedSignature(descriptor = "(B)Z", garbageValue = "-98")
-	boolean method1679() {
-		return (1073741824 & this.properties) != 0;
-	}
-
-	@ObfuscatedName("n")
-	@ObfuscatedSignature(descriptor = "(Ljm;I[B[BI)V", garbageValue = "-1955457060")
-	@Export("Widget_setKey")
-	static final void Widget_setKey(Widget var0, int var1, byte[] var2, byte[] var3) {
-		if (var0.field3300 == null) {
-			if (var2 == null) {
-				return;
-			}
-			var0.field3300 = new byte[11][];
-			var0.field3301 = new byte[11][];
-			var0.field3302 = new int[11];
-			var0.field3303 = new int[11];
-		}
-		var0.field3300[var1] = var2;
-		if (var2 != null) {
-			var0.field3299 = true;
-		} else {
-			var0.field3299 = false;
-			for (int var4 = 0; var4 < var0.field3300.length; ++var4) {
-				if (var0.field3300[var4] != null) {
-					var0.field3299 = true;
-					break;
-				}
-			}
-		}
-		var0.field3301[var1] = var3;
-	}
+    @ObfuscatedName("x")
+    @ObfuscatedSignature(descriptor = "(B)Z", garbageValue = "63")
+    boolean method1640() {
+        return (1073741824 & this.properties) != 0;
+    }
 }

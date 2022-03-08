@@ -33,6 +33,7 @@ import com.google.inject.Injector;
 import com.openosrs.client.OpenOSRS;
 import dev.hoot.bot.account.GameAccount;
 import dev.hoot.bot.config.BotConfig;
+import dev.hoot.bot.managers.DefinitionManager;
 import dev.hoot.bot.managers.FpsManager;
 import dev.hoot.bot.managers.ScriptManager;
 import dev.hoot.bot.managers.interaction.InteractionManager;
@@ -41,7 +42,11 @@ import dev.hoot.bot.script.ScriptMeta;
 import dev.hoot.bot.script.paint.Paint;
 import dev.hoot.bot.ui.BotToolbar;
 import dev.hoot.bot.ui.BotUI;
-import joptsimple.*;
+import joptsimple.ArgumentAcceptingOptionSpec;
+import joptsimple.OptionParser;
+import joptsimple.OptionSet;
+import joptsimple.ValueConversionException;
+import joptsimple.ValueConverter;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
@@ -56,6 +61,7 @@ import net.runelite.client.rs.ClientUpdateCheckMode;
 import net.runelite.client.ui.DrawManager;
 import net.runelite.client.ui.FatalErrorDialog;
 import net.runelite.client.ui.overlay.OverlayManager;
+import net.runelite.client.ui.overlay.tooltip.TooltipOverlay;
 import net.runelite.http.api.RuneLiteAPI;
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
@@ -64,6 +70,7 @@ import okhttp3.Response;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.Nullable;
+import javax.inject.Provider;
 import javax.inject.Singleton;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
@@ -84,22 +91,25 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.cert.X509Certificate;
 import java.util.Locale;
+import java.util.Objects;
+import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Stream;
 
 import static java.nio.file.StandardCopyOption.COPY_ATTRIBUTES;
+import static net.runelite.client.RuneLite.OPENOSRS;
 import static net.runelite.client.RuneLite.USER_AGENT;
 
 @Singleton
 @Slf4j
 public class Bot
 {
-	public static final File BOT_DIR = new File(System.getProperty("user.home"), ".openosrs");
-	public static final File CACHE_DIR = new File(BOT_DIR, "cache");
-	public static final File LOGS_DIR = new File(BOT_DIR, "logs");
-	public static final File DEFAULT_CONFIG_FILE = new File(BOT_DIR, "settings.properties");
-	public static final File DATA_DIR = new File(BOT_DIR, "data");
-	public static final File SCRIPTS_DIR = new File(BOT_DIR, "scripts");
+	public static final File CLIENT_DIR = new File(System.getProperty("user.home"), ".openosrs");
+	public static final File CACHE_DIR = new File(CLIENT_DIR, "cache");
+	public static final File LOGS_DIR = new File(CLIENT_DIR, "logs");
+	public static final File DEFAULT_CONFIG_FILE = new File(CLIENT_DIR, "settings.properties");
+	public static final File DATA_DIR = new File(CLIENT_DIR, "data");
+	public static final File SCRIPTS_DIR = new File(CLIENT_DIR, "scripts");
 
 	private static final int MAX_OKHTTP_CACHE_SIZE = 20 * 1024 * 1024; // 20mb
 
@@ -119,6 +129,9 @@ public class Bot
 
 	@Inject
 	private OverlayManager overlayManager;
+
+	@Inject
+	private Provider<TooltipOverlay> tooltipOverlay;
 
 	@Inject
 	@Nullable
@@ -141,6 +154,9 @@ public class Bot
 	private InteractionManager interactionManager;
 
 	@Inject
+	private DefinitionManager definitionManager;
+
+	@Inject
 	private DrawManager drawManager;
 
 	@Inject
@@ -160,47 +176,23 @@ public class Bot
 		parser.accepts("debug", "Show extra debugging output");
 		parser.accepts("insecure-skip-tls-verification", "Disables TLS verification");
 		parser.accepts("jav_config", "jav_config url")
-			.withRequiredArg()
-			.defaultsTo(RuneLiteProperties.getJavConfig());
+				.withRequiredArg()
+				.defaultsTo(RuneLiteProperties.getJavConfig());
 
 		final ArgumentAcceptingOptionSpec<String> proxyInfo = parser
-			.accepts("proxy")
-			.withRequiredArg().ofType(String.class);
+				.accepts("proxy")
+				.withRequiredArg().ofType(String.class);
 
 		final ArgumentAcceptingOptionSpec<Integer> worldInfo = parser
-			.accepts("world")
-			.withRequiredArg().ofType(Integer.class);
+				.accepts("world")
+				.withRequiredArg().ofType(Integer.class);
 
 		final ArgumentAcceptingOptionSpec<File> configfile = parser.accepts("runelite", "Use a specified config file")
-			.withRequiredArg()
-			.withValuesConvertedBy(new ConfigFileConverter())
-			.defaultsTo(DEFAULT_CONFIG_FILE);
+				.withRequiredArg()
+				.withValuesConvertedBy(new ConfigFileConverter())
+				.defaultsTo(DEFAULT_CONFIG_FILE);
 
-		var accInfo = parser
-				.accepts("account")
-				.withRequiredArg().ofType(String.class);
-
-		parser.accepts("norender");
-
-		parser.accepts("script")
-				.withRequiredArg().ofType(String.class);
-
-		parser.accepts("scriptArgs")
-				.withRequiredArg().ofType(String.class);
-
-		OptionSet options = parser.parse(args);
-
-		if (options.has("account"))
-		{
-			var details = options.valueOf(accInfo).split(":");
-			GameAccount gameAccount = new GameAccount(details[0], details[1]);
-			if (details.length >= 3)
-			{
-				gameAccount.setAuth(details[2]);
-			}
-
-			Bot.gameAccount = gameAccount;
-		}
+		OptionSet options = parseArgs(parser, args);
 
 		if (options.has("debug"))
 		{
@@ -262,7 +254,7 @@ public class Bot
 		{
 			final ClientLoader clientLoader = new ClientLoader(okHttpClient, ClientUpdateCheckMode.AUTO,
 					(String) options.valueOf(
-					"jav_config")
+							"jav_config")
 			);
 
 			new Thread(() ->
@@ -272,15 +264,15 @@ public class Bot
 			}, "Preloader").start();
 
 			log.info("OpenOSRS {} (RuneLite version {}, launcher version {}) starting up, args: {}",
-				OpenOSRS.SYSTEM_VERSION, RuneLiteProperties.getVersion() == null ? "unknown" : RuneLiteProperties.getVersion(),
-				RuneLiteProperties.getLauncherVersion(), args.length == 0 ? "none" : String.join(" ", args));
+					OpenOSRS.SYSTEM_VERSION, RuneLiteProperties.getVersion() == null ? "unknown" : RuneLiteProperties.getVersion(),
+					RuneLiteProperties.getLauncherVersion(), args.length == 0 ? "none" : String.join(" ", args));
 
 			final long start = System.currentTimeMillis();
 
 			injector = Guice.createInjector(new BotModule(
-				okHttpClient,
-				clientLoader,
-				options.valueOf(configfile))
+					okHttpClient,
+					clientLoader,
+					options.valueOf(configfile))
 			);
 
 			injector.getInstance(Bot.class).start(options);
@@ -294,8 +286,8 @@ public class Bot
 		{
 			log.error("Failure during startup", e);
 			SwingUtilities.invokeLater(() ->
-				new FatalErrorDialog("OpenOSRS has encountered an unexpected error during startup.")
-					.open());
+					new FatalErrorDialog("OpenOSRS has encountered an unexpected error during startup.")
+							.open());
 		}
 	}
 
@@ -319,7 +311,7 @@ public class Bot
 			applet.setSize(Constants.GAME_FIXED_SIZE);
 
 			// Change user.home so the client places jagexcache in the .runelite directory
-			String oldHome = System.setProperty("user.home", Bot.BOT_DIR.getAbsolutePath());
+			String oldHome = System.setProperty("user.home", getCacheDirectory().getAbsolutePath());
 			try
 			{
 				applet.init();
@@ -341,6 +333,7 @@ public class Bot
 		eventBus.register(botToolbar);
 		eventBus.register(scriptManager);
 		eventBus.register(interactionManager);
+		eventBus.register(definitionManager);
 		overlayManager.add(paint);
 
 		initArgs(options);
@@ -350,6 +343,8 @@ public class Bot
 		eventBus.register(botUI);
 		eventBus.register(overlayManager);
 		eventBus.register(configManager);
+
+		overlayManager.add(tooltipOverlay.get());
 
 		botUI.show();
 
@@ -373,14 +368,14 @@ public class Bot
 			final File file;
 
 			if (Paths.get(fileName).isAbsolute()
-				|| fileName.startsWith("./")
-				|| fileName.startsWith(".\\"))
+					|| fileName.startsWith("./")
+					|| fileName.startsWith(".\\"))
 			{
 				file = new File(fileName);
 			}
 			else
 			{
-				file = new File(Bot.BOT_DIR, fileName);
+				file = new File(Bot.CLIENT_DIR, fileName);
 			}
 
 			if (file.exists() && (!file.isFile() || !file.canWrite()))
@@ -482,7 +477,7 @@ public class Bot
 		String launcherVersion = System.getProperty("launcher.version");
 		System.setProperty("runelite.launcher.version", launcherVersion == null ? "unknown" : launcherVersion);
 
-		BOT_DIR.mkdirs();
+		CLIENT_DIR.mkdirs();
 		SCRIPTS_DIR.mkdirs();
 		DATA_DIR.mkdirs();
 	}
@@ -490,7 +485,7 @@ public class Bot
 	private static void copyJagexCache()
 	{
 		Path from = Paths.get(System.getProperty("user.home"), "jagexcache");
-		Path to = Paths.get(System.getProperty("user.home"), ".openosrs", "jagexcache");
+		Path to = Paths.get(getCacheDirectory().getAbsolutePath(), "jagexcache");
 		if (Files.exists(to) || !Files.exists(from))
 		{
 			return;
@@ -550,5 +545,85 @@ public class Bot
 
 			scriptManager.startScript(quickStartScript, args);
 		}
+	}
+
+	private static String getCacheDir()
+	{
+		var dir = System.getProperty("unethicalite.cache-dir");
+		if (dir != null)
+		{
+			return dir;
+		}
+
+		return OPENOSRS;
+	}
+
+	public static File getCacheDirectory()
+	{
+		var dir = getCacheDir();
+		if (Objects.equals(dir, OPENOSRS))
+		{
+			return new File(CLIENT_DIR, "jagexcache");
+		}
+
+		var cacheDirs = new File(CLIENT_DIR, "custom-cache");
+		return new File(cacheDirs, dir);
+	}
+
+	public static OptionSet parseArgs(OptionParser parser, String... args)
+	{
+		var accInfo = parser
+				.accepts("account")
+				.withRequiredArg().ofType(String.class);
+
+		var cacheDirInfo = parser
+				.accepts("cache-dir")
+				.withOptionalArg().ofType(String.class);
+
+		parser.accepts("norender");
+
+		parser.accepts("script")
+				.withRequiredArg().ofType(String.class);
+
+		parser.accepts("scriptArgs")
+				.withRequiredArg().ofType(String.class);
+
+		var options = parser.parse(args);
+
+		if (options.has("account"))
+		{
+			var details = options.valueOf(accInfo).split(":");
+			GameAccount gameAccount = new GameAccount(details[0], details[1]);
+			if (details.length >= 3)
+			{
+				gameAccount.setAuth(details[2]);
+			}
+
+			Bot.gameAccount = gameAccount;
+		}
+
+		if (options.has("cache-dir"))
+		{
+			var cacheDir = options.valueOf(cacheDirInfo);
+
+			if (cacheDir != null)
+			{
+				System.setProperty("unethicalite.cache-dir", cacheDir);
+			}
+			else
+			{
+				var acc = Bot.gameAccount;
+				if (acc != null)
+				{
+					System.setProperty("unethicalite.cache-dir", acc.getUsername());
+				}
+				else
+				{
+					System.setProperty("unethicalite.cache-dir", UUID.randomUUID().toString());
+				}
+			}
+		}
+
+		return options;
 	}
 }

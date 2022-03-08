@@ -1,55 +1,76 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 @ObfuscatedName("ev")
 public class class135 extends class126 {
-	@ObfuscatedName("c")
-	String field1555;
+    @ObfuscatedName("ub")
+    @ObfuscatedSignature(descriptor = "Lke;")
+    @Export("grandExchangeEvents")
+    static GrandExchangeEvents grandExchangeEvents;
 
+    @ObfuscatedName("c")
+    String field1576;
 
-	@ObfuscatedSignature(descriptor = "Lda;")
-	final class129 this$0;
+    @ObfuscatedSignature(descriptor = "Ldk;")
+    final class129 this$0;
 
-	@ObfuscatedSignature(descriptor = "(Lda;)V")
-	class135(class129 var1) {
-		this.this$0 = var1;
-	}
+    @ObfuscatedSignature(descriptor = "(Ldk;)V")
+    class135(class129 var1) {
+        this.this$0 = var1;
+    }
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(Lpi;I)V", garbageValue = "1416770155")
-	void vmethod3029(Buffer var1) {
-		this.field1555 = var1.readStringCp1252NullTerminated();
-		var1.readInt();
-	}
+    @ObfuscatedName("c")
+    @ObfuscatedSignature(descriptor = "(Lpi;I)V", garbageValue = "703192976")
+    void vmethod3019(Buffer var1) {
+        this.field1576 = var1.readStringCp1252NullTerminated();
+        var1.readInt();
+    }
 
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(descriptor = "(Lej;I)V", garbageValue = "-1531735008")
-	void vmethod3028(ClanSettings var1) {
-		var1.name = this.field1555;
-	}
+    @ObfuscatedName("l")
+    @ObfuscatedSignature(descriptor = "(Ley;I)V", garbageValue = "750335300")
+    void vmethod3020(ClanSettings var1) {
+        var1.name = this.field1576;
+    }
 
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "-877203069")
-	public static final void method2832() {
-		ViewportMouse.ViewportMouse_isInViewport = false;
-		ViewportMouse.ViewportMouse_entityCount = 0;
-	}
+    @ObfuscatedName("c")
+    @ObfuscatedSignature(descriptor = "(Lie;Lpv;B)Lii;", garbageValue = "-119")
+    @Export("getPacketBufferNode")
+    public static PacketBufferNode getPacketBufferNode(ClientPacket var0, IsaacCipher var1) {
+        PacketBufferNode var2;
+        if (PacketBufferNode.PacketBufferNode_packetBufferNodeCount == 0) {
+            var2 = new PacketBufferNode();
+        } else {
+            var2 = PacketBufferNode.PacketBufferNode_packetBufferNodes[--PacketBufferNode.PacketBufferNode_packetBufferNodeCount];
+        }
+        var2.clientPacket = var0;
+        var2.clientPacketLength = var0.length;
+        if (var2.clientPacketLength == (-1)) {
+            var2.packetBuffer = new PacketBuffer(260);
+        } else if (var2.clientPacketLength == (-2)) {
+            var2.packetBuffer = new PacketBuffer(10000);
+        } else if (var2.clientPacketLength <= 18) {
+            var2.packetBuffer = new PacketBuffer(20);
+        } else if (var2.clientPacketLength <= 98) {
+            var2.packetBuffer = new PacketBuffer(100);
+        } else {
+            var2.packetBuffer = new PacketBuffer(260);
+        }
+        var2.packetBuffer.setIsaacCipher(var1);
+        var2.packetBuffer.writeByteIsaac(var2.clientPacket.id);
+        var2.index = 0;
+        return var2;
+    }
 
-	@ObfuscatedName("lz")
-	@ObfuscatedSignature(descriptor = "(III)V", garbageValue = "1487689727")
-	static final void method2831(int var0, int var1) {
-		ClanChannel var2 = (var0 >= 0) ? Client.currentClanChannels[var0] : UserComparator5.guestClanChannel;
-		if (((var2 != null) && (var1 >= 0)) && (var1 < var2.method2990())) {
-			ClanChannelMember var3 = ((ClanChannelMember) (var2.members.get(var1)));
-			if (var3.rank == (-1)) {
-				String var4 = var3.username.getName();
-				PacketWriter var5 = Client.packetWriter;
-				PacketBufferNode var6 = HitSplatDefinition.getPacketBufferNode(ClientPacket.ACTIVECLANCHANNEL_KICKUSER, var5.isaacCipher);
-				var6.packetBuffer.writeByte(3 + class116.stringCp1252NullTerminatedByteSize(var4));
-				var6.packetBuffer.writeByte(var0);
-				var6.packetBuffer.writeShort(var1);
-				var6.packetBuffer.writeStringCp1252NullTerminated(var4);
-				var5.addNode(var6);
-			}
-		}
-	}
+    @ObfuscatedName("s")
+    @ObfuscatedSignature(descriptor = "(II)I", garbageValue = "-1063067599")
+    @Export("Widget_unpackTargetMask")
+    public static int Widget_unpackTargetMask(int var0) {
+        return (var0 >> 11) & 63;
+    }
+
+    @ObfuscatedName("e")
+    @ObfuscatedSignature(descriptor = "(S)I", garbageValue = "-29709")
+    public static int method2834() {
+        return KeyHandler.KeyHandler_idleCycles;
+    }
 }

@@ -1,13 +1,13 @@
 package dev.hoot.bot.devtools.widgetinspector;
 
-import net.runelite.client.ui.overlay.Overlay;
-import net.runelite.client.ui.overlay.OverlayLayer;
-import net.runelite.client.ui.overlay.OverlayPosition;
-import net.runelite.client.ui.overlay.OverlayPriority;
 import net.runelite.api.Client;
 import net.runelite.api.MenuEntry;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetItem;
+import net.runelite.client.ui.overlay.Overlay;
+import net.runelite.client.ui.overlay.OverlayLayer;
+import net.runelite.client.ui.overlay.OverlayPosition;
+import net.runelite.client.ui.overlay.OverlayPriority;
 
 import javax.inject.Inject;
 import java.awt.*;

@@ -1,6 +1,7 @@
 package dev.hoot.api.commons;
 
 import dev.hoot.api.game.Game;
+import net.runelite.api.GameState;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -10,37 +11,40 @@ import java.util.function.BooleanSupplier;
 public class Time
 {
 	private static final Logger logger = LoggerFactory.getLogger(Time.class);
-	private static final int DEFAULT_POLLING_RATE = 100;
+	private static final int DEFAULT_POLLING_RATE = 10;
 
-	public static void sleep(long ms)
+	public static boolean sleep(long ms)
 	{
 		if (Game.getClient().isClientThread())
 		{
 			logger.debug("Tried to sleep on client thread!");
-			return;
+			return false;
 		}
 
 		try
 		{
 			Thread.sleep(ms);
+			return true;
 		}
 		catch (InterruptedException e)
 		{
-			e.printStackTrace();
+			logger.debug("Sleep interrupted");
 		}
+
+		return false;
 	}
 
-	public static void sleep(int min, int max)
+	public static boolean sleep(int min, int max)
 	{
-		sleep(Rand.nextInt(min, max));
+		return sleep(Rand.nextInt(min, max));
 	}
 
-	public static void sleepUntil(BooleanSupplier supplier, int pollingRate, int timeOut)
+	public static boolean sleepUntil(BooleanSupplier supplier, int pollingRate, int timeOut)
 	{
 		if (Game.getClient().isClientThread())
 		{
-			logger.debug("Tried to sleep on client thread!");
-			return;
+			logger.debug("Tried to sleepUntil on client thread!");
+			return false;
 		}
 
 		long start = System.currentTimeMillis();
@@ -48,16 +52,89 @@ public class Time
 		{
 			if (System.currentTimeMillis() > start + timeOut)
 			{
-				break;
+				return false;
 			}
 
-			sleep(pollingRate);
+			if (!sleep(pollingRate))
+			{
+				return false;
+			}
 		}
+
+		return true;
 	}
 
-	public static void sleepUntil(BooleanSupplier supplier, int timeOut)
+	public static boolean sleepUntil(BooleanSupplier supplier, int timeOut)
 	{
-		sleepUntil(supplier, DEFAULT_POLLING_RATE, timeOut);
+		return sleepUntil(supplier, DEFAULT_POLLING_RATE, timeOut);
+	}
+
+	public static boolean sleepTicks(int ticks)
+	{
+		if (Game.getClient().isClientThread())
+		{
+			logger.debug("Tried to sleep on client thread!");
+			return false;
+		}
+
+		if (Game.getState() == GameState.LOGIN_SCREEN || Game.getState() == GameState.LOGIN_SCREEN_AUTHENTICATOR)
+		{
+			return false;
+		}
+
+		for (int i = 0; i < ticks; i++)
+		{
+			long start = Game.getClient().getTickCount();
+
+			while (Game.getClient().getTickCount() == start)
+			{
+				try
+				{
+					Thread.sleep(DEFAULT_POLLING_RATE);
+				}
+				catch (InterruptedException e)
+				{
+					logger.debug("Sleep interrupted");
+					return false;
+				}
+			}
+		}
+
+		return true;
+	}
+
+	public static boolean sleepTick()
+	{
+		return sleepTicks(1);
+	}
+
+	public static boolean sleepTicksUntil(BooleanSupplier supplier, int ticks)
+	{
+		if (Game.getClient().isClientThread())
+		{
+			logger.debug("Tried to sleep on client thread!");
+			return false;
+		}
+
+		if (Game.getState() == GameState.LOGIN_SCREEN || Game.getState() == GameState.LOGIN_SCREEN_AUTHENTICATOR)
+		{
+			return false;
+		}
+
+		for (int i = 0; i < ticks; i++)
+		{
+			if (supplier.getAsBoolean())
+			{
+				return true;
+			}
+
+			if (!sleepTick())
+			{
+				return false;
+			}
+		}
+
+		return false;
 	}
 
 	public static String format(Duration duration)

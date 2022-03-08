@@ -2,10 +2,11 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-@ObfuscatedName("ll")
+@ObfuscatedName("lr")
 @Implements("MouseWheel")
 public interface MouseWheel {
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(descriptor = "(B)I", garbageValue = "48")
-	@Export("rsOrdinal")
-	int rsOrdinal();}
+    @ObfuscatedName("c")
+    @ObfuscatedSignature(descriptor = "(I)I", garbageValue = "-303340189")
+    @Export("rsOrdinal")
+    int rsOrdinal();
+}

@@ -3,49 +3,52 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-@ObfuscatedName("mi")
+@ObfuscatedName("mo")
 @Implements("Ignored")
 public class Ignored extends User {
-	@ObfuscatedName("pz")
-	@ObfuscatedSignature(descriptor = "Loo;")
-	@Export("HitSplatDefinition_cached")
-	static class404 HitSplatDefinition_cached;
+    @ObfuscatedName("c")
+    @ObfuscatedGetter(intValue = 1341966107)
+    @Export("id")
+    int id;
 
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(intValue = 1285120553)
-	@Export("id")
-	int id;
+    Ignored() {
+    }
 
-	Ignored() {
-	}
+    @ObfuscatedName("c")
+    @ObfuscatedSignature(descriptor = "(Lmo;B)I", garbageValue = "-68")
+    @Export("compareTo_ignored")
+    int compareTo_ignored(Ignored var1) {
+        return this.id - var1.id;
+    }
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(Lmi;B)I", garbageValue = "109")
-	@Export("compareTo_ignored")
-	int compareTo_ignored(Ignored var1) {
-		return this.id - var1.id;
-	}
+    @ObfuscatedName("l")
+    @ObfuscatedSignature(descriptor = "(Lmy;I)I", garbageValue = "-1446218206")
+    @Export("compareTo_user")
+    public int compareTo_user(User var1) {
+        return this.compareTo_ignored(((Ignored) (var1)));
+    }
 
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(descriptor = "(Lmv;I)I", garbageValue = "-1921032172")
-	@Export("compareTo_user")
-	public int compareTo_user(User var1) {
-		return this.compareTo_ignored(((Ignored) (var1)));
-	}
+    public int compareTo(Object var1) {
+        return this.compareTo_ignored(((Ignored) (var1)));
+    }
 
-	public int compareTo(Object var1) {
-		return this.compareTo_ignored(((Ignored) (var1)));
-	}
+    @ObfuscatedName("r")
+    @ObfuscatedSignature(descriptor = "(II)V", garbageValue = "-164861656")
+    @Export("clearItemContainer")
+    static void clearItemContainer(int var0) {
+        ItemContainer var1 = ((ItemContainer) (ItemContainer.itemContainers.get(((long) (var0)))));
+        if (var1 != null) {
+            for (int var2 = 0; var2 < var1.ids.length; ++var2) {
+                var1.ids[var2] = -1;
+                var1.quantities[var2] = 0;
+            }
+        }
+    }
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(I)J", garbageValue = "-376840192")
-	@Export("getServerTime")
-	public static synchronized final long getServerTime() {
-		long var0 = System.currentTimeMillis();
-		if (var0 < class415.field4466) {
-			class415.field4467 += class415.field4466 - var0;
-		}
-		class415.field4466 = var0;
-		return var0 + class415.field4467;
-	}
+    @ObfuscatedName("i")
+    @ObfuscatedSignature(descriptor = "(CI)Z", garbageValue = "-300276479")
+    @Export("isCharAlphabetic")
+    public static boolean isCharAlphabetic(char var0) {
+        return ((var0 >= 'A') && (var0 <= 'Z')) || ((var0 >= 'a') && (var0 <= 'z'));
+    }
 }

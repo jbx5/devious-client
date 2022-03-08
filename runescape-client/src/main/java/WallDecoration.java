@@ -1,77 +1,79 @@
-import java.security.SecureRandom;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-@ObfuscatedName("hp")
+@ObfuscatedName("hc")
 @Implements("WallDecoration")
 public final class WallDecoration {
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(intValue = -2023059781)
-	@Export("tileHeight")
-	int tileHeight;
+    @ObfuscatedName("sx")
+    @ObfuscatedGetter(intValue = 720856761)
+    static int field2573;
 
-	@ObfuscatedName("b")
-	@ObfuscatedGetter(intValue = 2111603765)
-	@Export("x")
-	int x;
+    @ObfuscatedName("c")
+    @ObfuscatedGetter(intValue = -358335925)
+    @Export("tileHeight")
+    int tileHeight;
 
-	@ObfuscatedName("p")
-	@ObfuscatedGetter(intValue = -1656810997)
-	@Export("y")
-	int y;
+    @ObfuscatedName("l")
+    @ObfuscatedGetter(intValue = -1796933097)
+    @Export("x")
+    int x;
 
-	@ObfuscatedName("m")
-	@ObfuscatedGetter(intValue = -1965519891)
-	@Export("orientation")
-	int orientation;
+    @ObfuscatedName("s")
+    @ObfuscatedGetter(intValue = -880294953)
+    @Export("y")
+    int y;
 
-	@ObfuscatedName("t")
-	@ObfuscatedGetter(intValue = 278377977)
-	@Export("orientation2")
-	int orientation2;
+    @ObfuscatedName("e")
+    @ObfuscatedGetter(intValue = -391690211)
+    @Export("orientation")
+    int orientation;
 
-	@ObfuscatedName("s")
-	@ObfuscatedGetter(intValue = 1314236601)
-	@Export("xOffset")
-	int xOffset;
+    @ObfuscatedName("r")
+    @ObfuscatedGetter(intValue = 1324715917)
+    @Export("orientation2")
+    int orientation2;
 
-	@ObfuscatedName("j")
-	@ObfuscatedGetter(intValue = -1594233985)
-	@Export("yOffset")
-	int yOffset;
+    @ObfuscatedName("o")
+    @ObfuscatedGetter(intValue = 1407951853)
+    @Export("xOffset")
+    int xOffset;
 
-	@ObfuscatedName("w")
-	@ObfuscatedSignature(descriptor = "Lgt;")
-	@Export("renderable1")
-	public Renderable renderable1;
+    @ObfuscatedName("i")
+    @ObfuscatedGetter(intValue = -341931283)
+    @Export("yOffset")
+    int yOffset;
 
-	@ObfuscatedName("n")
-	@ObfuscatedSignature(descriptor = "Lgt;")
-	@Export("renderable2")
-	public Renderable renderable2;
+    @ObfuscatedName("w")
+    @ObfuscatedSignature(descriptor = "Lgp;")
+    @Export("renderable1")
+    public Renderable renderable1;
 
-	@ObfuscatedName("r")
-	@ObfuscatedGetter(longValue = 6911018160892972427L)
-	@Export("tag")
-	public long tag;
+    @ObfuscatedName("v")
+    @ObfuscatedSignature(descriptor = "Lgp;")
+    @Export("renderable2")
+    public Renderable renderable2;
 
-	@ObfuscatedName("o")
-	@ObfuscatedGetter(intValue = 1066794937)
-	@Export("flags")
-	int flags;
+    @ObfuscatedName("a")
+    @ObfuscatedGetter(longValue = -6056572782553024927L)
+    @Export("tag")
+    public long tag;
 
-	WallDecoration() {
-		this.tag = 0L;
-		this.flags = 0;
-	}
+    @ObfuscatedName("y")
+    @ObfuscatedGetter(intValue = -179542679)
+    @Export("flags")
+    int flags;
 
-	@ObfuscatedName("m")
-	@ObfuscatedSignature(descriptor = "(B)Ljava/security/SecureRandom;", garbageValue = "-121")
-	static SecureRandom method4340() {
-		SecureRandom var0 = new SecureRandom();
-		var0.nextInt();
-		return var0;
-	}
+    WallDecoration() {
+        this.tag = 0L;
+        this.flags = 0;
+    }
+
+    @ObfuscatedName("c")
+    @ObfuscatedSignature(descriptor = "(Lkq;Lkq;B)V", garbageValue = "45")
+    public static void method4296(AbstractArchive var0, AbstractArchive var1) {
+        NPCComposition.NpcDefinition_archive = var0;
+        NPCComposition.NpcDefinition_modelArchive = var1;
+    }
 }

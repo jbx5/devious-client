@@ -50,7 +50,7 @@ public class AutomatedMenu
 		this(identifier, opcode, param0, param1, clickX, clickY, -1337);
 	}
 
-	public AutomatedMenu(int identifier, int opcode, int param0, int param1, int clickX, int clickY, int entityTag)
+	public AutomatedMenu(int identifier, int opcode, int param0, int param1, int clickX, int clickY, long entityTag)
 	{
 		this(identifier, MenuAction.of(opcode), param0, param1, clickX, clickY, entityTag);
 	}

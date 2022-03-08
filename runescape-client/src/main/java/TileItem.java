@@ -1,44 +1,74 @@
+import java.awt.Component;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-@ObfuscatedName("cz")
+@ObfuscatedName("cj")
 @Implements("TileItem")
 public final class TileItem extends Renderable {
-	@ObfuscatedName("gk")
-	@ObfuscatedGetter(intValue = -1033887581)
-	@Export("baseY")
-	static int baseY;
+    @ObfuscatedName("t")
+    @Export("userHomeDirectory")
+    static String userHomeDirectory;
 
-	@ObfuscatedName("hw")
-	@Export("regionLandArchives")
-	static byte[][] regionLandArchives;
+    @ObfuscatedName("c")
+    @ObfuscatedGetter(intValue = -1193227227)
+    @Export("id")
+    int id;
 
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(intValue = -1624584431)
-	@Export("id")
-	int id;
+    @ObfuscatedName("l")
+    @ObfuscatedGetter(intValue = -440248455)
+    @Export("quantity")
+    int quantity;
 
-	@ObfuscatedName("b")
-	@ObfuscatedGetter(intValue = -763742907)
-	@Export("quantity")
-	int quantity;
+    TileItem() {
+    }
 
-	TileItem() {
-	}
+    @ObfuscatedName("l")
+    @ObfuscatedSignature(descriptor = "(B)Lgf;", garbageValue = "39")
+    @Export("getModel")
+    protected final Model getModel() {
+        return Client.ItemDefinition_get(this.id).getModel(this.quantity);
+    }
 
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(descriptor = "(I)Lgo;", garbageValue = "202861607")
-	@Export("getModel")
-	protected final Model getModel() {
-		return UserComparator6.ItemDefinition_get(this.id).getModel(this.quantity);
-	}
+    @ObfuscatedName("c")
+    @ObfuscatedSignature(descriptor = "(Ljava/lang/CharSequence;I)Ljava/lang/String;", garbageValue = "404484711")
+    public static String method2296(CharSequence var0) {
+        int var1 = var0.length();
+        StringBuilder var2 = new StringBuilder(var1);
+        for (int var3 = 0; var3 < var1; ++var3) {
+            char var4 = var0.charAt(var3);
+            if ((((((((var4 < 'a') || (var4 > 'z')) && ((var4 < 'A') || (var4 > 'Z'))) && ((var4 < '0') || (var4 > '9'))) && (var4 != '.')) && (var4 != '-')) && (var4 != '*')) && (var4 != '_')) {
+                if (var4 == ' ') {
+                    var2.append('+');
+                } else {
+                    byte var5 = UserComparator8.charToByteCp1252(var4);
+                    var2.append('%');
+                    int var6 = (var5 >> 4) & 15;
+                    if (var6 >= 10) {
+                        var2.append(((char) (var6 + 55)));
+                    } else {
+                        var2.append(((char) (var6 + 48)));
+                    }
+                    var6 = var5 & 15;
+                    if (var6 >= 10) {
+                        var2.append(((char) (var6 + 55)));
+                    } else {
+                        var2.append(((char) (var6 + 48)));
+                    }
+                }
+            } else {
+                var2.append(var4);
+            }
+        }
+        return var2.toString();
+    }
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(Lku;Lku;B)V", garbageValue = "37")
-	public static void method2368(AbstractArchive var0, AbstractArchive var1) {
-		SpotAnimationDefinition.SpotAnimationDefinition_archive = var0;
-		SpotAnimationDefinition.SpotAnimationDefinition_modelArchive = var1;
-	}
+    @ObfuscatedName("l")
+    @ObfuscatedSignature(descriptor = "(Ljava/awt/Component;B)V", garbageValue = "17")
+    static void method2299(Component var0) {
+        var0.setFocusTraversalKeysEnabled(false);
+        var0.addKeyListener(KeyHandler.KeyHandler_instance);
+        var0.addFocusListener(KeyHandler.KeyHandler_instance);
+    }
 }

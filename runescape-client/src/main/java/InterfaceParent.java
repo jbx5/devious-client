@@ -3,86 +3,107 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-@ObfuscatedName("cl")
+@ObfuscatedName("cf")
 @Implements("InterfaceParent")
 public class InterfaceParent extends Node {
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(intValue = -1940404497)
-	@Export("group")
-	int group;
+    @ObfuscatedName("ro")
+    @ObfuscatedSignature(descriptor = "Leg;")
+    @Export("guestClanChannel")
+    static ClanChannel guestClanChannel;
 
-	@ObfuscatedName("b")
-	@ObfuscatedGetter(intValue = -1832869839)
-	@Export("type")
-	int type;
+    @ObfuscatedName("c")
+    @ObfuscatedGetter(intValue = -566809681)
+    @Export("group")
+    int group;
 
-	@ObfuscatedName("p")
-	boolean field1014;
+    @ObfuscatedName("l")
+    @ObfuscatedGetter(intValue = 597308513)
+    @Export("type")
+    int type;
 
-	InterfaceParent() {
-		this.field1014 = false;
-	}
+    @ObfuscatedName("s")
+    boolean field1040;
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(Lku;I)V", garbageValue = "-1043204065")
-	public static void method2145(AbstractArchive var0) {
-		ParamComposition.ParamDefinition_archive = var0;
-	}
+    InterfaceParent() {
+        this.field1040 = false;
+    }
 
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(descriptor = "(IB)Lfl;", garbageValue = "-64")
-	public static FloorUnderlayDefinition method2144(int var0) {
-		FloorUnderlayDefinition var1 = ((FloorUnderlayDefinition) (FloorUnderlayDefinition.FloorUnderlayDefinition_cached.get(((long) (var0)))));
-		if (var1 != null) {
-			return var1;
-		} else {
-			byte[] var2 = FloorUnderlayDefinition.FloorUnderlayDefinition_archive.takeFile(1, var0);
-			var1 = new FloorUnderlayDefinition();
-			if (var2 != null) {
-				var1.decode(new Buffer(var2), var0);
-			}
-			var1.postDecode();
-			FloorUnderlayDefinition.FloorUnderlayDefinition_cached.put(var1, ((long) (var0)));
-			return var1;
-		}
-	}
+    @ObfuscatedName("s")
+    @ObfuscatedSignature(descriptor = "(II)[B", garbageValue = "-1118992096")
+    @Export("ByteArrayPool_getArray")
+    public static synchronized byte[] ByteArrayPool_getArray(int var0) {
+        return ByteArrayPool.ByteArrayPool_getArrayBool(var0, false);
+    }
 
-	@ObfuscatedName("s")
-	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "1442239396")
-	public static void method2143() {
-		SpotAnimationDefinition.SpotAnimationDefinition_cached.clear();
-		SpotAnimationDefinition.SpotAnimationDefinition_cachedModels.clear();
-	}
+    @ObfuscatedName("o")
+    @ObfuscatedSignature(descriptor = "(IB)Z", garbageValue = "-99")
+    public static boolean method2086(int var0) {
+        return (var0 >= 0) && (var0 < 112) ? KeyHandler.KeyHandler_pressedKeys[var0] : false;
+    }
 
-	@ObfuscatedName("kw")
-	static final void method2142(double var0) {
-		Rasterizer3D.Rasterizer3D_setBrightness(var0);
-		((TextureProvider) (Rasterizer3D.Rasterizer3D_textureLoader)).setBrightness(var0);
-		VerticalAlignment.method3338();
-		SecureRandomFuture.clientPreferences.brightness = var0;
-		class127.savePreferences();
-	}
+    @ObfuscatedName("m")
+    @ObfuscatedSignature(descriptor = "(Lbi;B)V", garbageValue = "-62")
+    @Export("changeWorld")
+    static void changeWorld(World var0) {
+        if (var0.isMembersOnly() != Client.isMembersWorld) {
+            Client.isMembersWorld = var0.isMembersOnly();
+            class115.method2638(var0.isMembersOnly());
+        }
+        if (var0.properties != Client.worldProperties) {
+            class131.method2787(Message.archive8, var0.properties);
+        }
+        HealthBar.worldHost = var0.host;
+        Client.worldId = var0.id;
+        Client.worldProperties = var0.properties;
+        class346.worldPort = (Client.gameBuild == 0) ? 43594 : var0.id + 40000;
+        class297.js5Port = (Client.gameBuild == 0) ? 443 : var0.id + 50000;
+        class274.currentPort = class346.worldPort;
+    }
 
-	@ObfuscatedName("lx")
-	@ObfuscatedSignature(descriptor = "(Ljava/lang/String;ZI)Ljava/lang/String;", garbageValue = "-2059094026")
-	static String method2146(String var0, boolean var1) {
-		String var2 = (var1) ? "https://" : "http://";
-		if (Client.gameBuild == 1) {
-			var0 = var0 + "-wtrc";
-		} else if (Client.gameBuild == 2) {
-			var0 = var0 + "-wtqa";
-		} else if (Client.gameBuild == 3) {
-			var0 = var0 + "-wtwip";
-		} else if (Client.gameBuild == 5) {
-			var0 = var0 + "-wti";
-		} else if (Client.gameBuild == 4) {
-			var0 = "local";
-		}
-		String var3 = "";
-		if (class1.field3 != null) {
-			var3 = "/p=" + class1.field3;
-		}
-		String var4 = "runescape.com";
-		return ((((((((var2 + var0) + ".") + var4) + "/l=") + ScriptFrame.clientLanguage) + "/a=") + FriendLoginUpdate.field4096) + var3) + "/";
-	}
+    @ObfuscatedName("he")
+    @ObfuscatedSignature(descriptor = "(IIIIIIIB)V", garbageValue = "-22")
+    static final void method2084(int var0, int var1, int var2, int var3, int var4, int var5, int var6) {
+        var5 = class167.method3254(var5, var6);
+        int var7 = (2048 - var3) & 2047;
+        int var8 = (2048 - var4) & 2047;
+        int var9 = 0;
+        int var10 = 0;
+        int var11 = var5;
+        int var12;
+        int var13;
+        int var14;
+        if (var7 != 0) {
+            var12 = Rasterizer3D.Rasterizer3D_sine[var7];
+            var13 = Rasterizer3D.Rasterizer3D_cosine[var7];
+            var14 = ((var10 * var13) - (var12 * var5)) >> 16;
+            var11 = ((var13 * var5) + (var10 * var12)) >> 16;
+            var10 = var14;
+        }
+        if (var8 != 0) {
+            var12 = Rasterizer3D.Rasterizer3D_sine[var8];
+            var13 = Rasterizer3D.Rasterizer3D_cosine[var8];
+            var14 = ((var12 * var11) + (var9 * var13)) >> 16;
+            var11 = ((var13 * var11) - (var9 * var12)) >> 16;
+            var9 = var14;
+        }
+        if (Client.isCameraLocked) {
+            class213.field2598 = var0 - var9;
+            FriendsChat.field4141 = var1 - var10;
+            class139.field1624 = var2 - var11;
+            LoginPacket.field3062 = var3;
+            Interpreter.field854 = var4;
+        } else {
+            class414.cameraX = var0 - var9;
+            WorldMapDecoration.cameraY = var1 - var10;
+            GrandExchangeOfferOwnWorldComparator.cameraZ = var2 - var11;
+            class7.cameraPitch = var3;
+            class7.cameraYaw = var4;
+        }
+        if ((((Client.oculusOrbState == 1) && (Client.staffModLevel >= 2)) && ((Client.cycle % 50) == 0)) && (((class29.oculusOrbFocalPointX >> 7) != (WorldMapSprite.localPlayer.x >> 7)) || ((class121.oculusOrbFocalPointY >> 7) != (WorldMapSprite.localPlayer.y >> 7)))) {
+            var12 = WorldMapSprite.localPlayer.plane;
+            var13 = (class29.oculusOrbFocalPointX >> 7) + Canvas.baseX;
+            var14 = (class121.oculusOrbFocalPointY >> 7) + class118.baseY;
+            DevicePcmPlayerProvider.method361(var13, var14, var12, true);
+        }
+    }
 }

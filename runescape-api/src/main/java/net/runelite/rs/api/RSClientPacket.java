@@ -232,8 +232,4 @@ public interface RSClientPacket extends ClientPacket
 	@Import("OPPLAYER8")
 	@Override
 	RSClientPacket OPPLAYER8();
-
-//	@Import("MOUSERECORDER_DATA")
-//	@Override
-//	RSClientPacket MOUSERECORDER_DATA();
 }

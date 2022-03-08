@@ -1,6 +1,10 @@
 package dev.hoot.bot.config;
 
-import net.runelite.api.*;
+import net.runelite.api.Model;
+import net.runelite.api.Renderable;
+import net.runelite.api.SceneTileModel;
+import net.runelite.api.SceneTilePaint;
+import net.runelite.api.Texture;
 import net.runelite.api.hooks.DrawCallbacks;
 
 public class DisableRenderCallbacks implements DrawCallbacks

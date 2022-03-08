@@ -24,8 +24,6 @@
  */
 package net.runelite.mixins;
 
-import net.runelite.api.DialogOption;
-import net.runelite.api.events.DialogProcessed;
 import net.runelite.api.events.DynamicObjectAnimationChanged;
 import net.runelite.api.mixins.Copy;
 import net.runelite.api.mixins.FieldHook;
@@ -36,8 +34,8 @@ import net.runelite.api.mixins.Replace;
 import net.runelite.api.mixins.Shadow;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSDynamicObject;
-import net.runelite.rs.api.RSRenderable;
 import net.runelite.rs.api.RSModel;
+import net.runelite.rs.api.RSRenderable;
 
 @Mixin(RSDynamicObject.class)
 public abstract class RSDynamicObjectMixin implements RSDynamicObject
@@ -100,25 +98,6 @@ public abstract class RSDynamicObjectMixin implements RSDynamicObject
 	@Override
 	public int getAnimationID()
 	{
-		return (int) (getSequenceDefinition() == null ? -1 : getSequenceDefinition().getHash());
-	}
-
-	@Inject
-	@MethodHook("resumePauseWidget")
-	public static void onDialogProcessed(int widgetUid, int menuIndex)
-	{
-		DialogOption dialogOption = DialogOption.of(widgetUid, menuIndex);
-		if (dialogOption != null)
-		{
-			client.getCallbacks().post(new DialogProcessed(dialogOption));
-		}
-		else
-		{
-			client.getLogger().debug(
-					"Unknown or unmapped dialog option for widgetUid: {} and menuIndex {}",
-					widgetUid,
-					menuIndex
-			);
-		}
+		return (int) (getAnimation() == null ? -1 : getAnimation().getHash());
 	}
 }

@@ -4,166 +4,219 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-@ObfuscatedName("fr")
+@ObfuscatedName("fl")
 @Implements("ParamComposition")
 public class ParamComposition extends DualNode {
-	@ObfuscatedName("ur")
-	@ObfuscatedSignature(descriptor = "Lmy;")
-	@Export("masterDisk")
-	static ArchiveDisk masterDisk;
+    @ObfuscatedName("c")
+    @ObfuscatedSignature(descriptor = "Lkq;")
+    @Export("ParamDefinition_archive")
+    public static AbstractArchive ParamDefinition_archive;
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "Lku;")
-	@Export("ParamDefinition_archive")
-	static AbstractArchive ParamDefinition_archive;
+    @ObfuscatedName("l")
+    @ObfuscatedSignature(descriptor = "Lic;")
+    @Export("ParamDefinition_cached")
+    static EvictingDualNodeHashTable ParamDefinition_cached;
 
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(descriptor = "Liq;")
-	@Export("ParamDefinition_cached")
-	public static EvictingDualNodeHashTable ParamDefinition_cached;
+    @ObfuscatedName("ol")
+    @ObfuscatedGetter(intValue = 448976703)
+    static int field1938;
 
-	@ObfuscatedName("p")
-	@Export("type")
-	char type;
+    @ObfuscatedName("s")
+    @Export("type")
+    char type;
 
-	@ObfuscatedName("m")
-	@ObfuscatedGetter(intValue = -871462947)
-	@Export("defaultInt")
-	public int defaultInt;
+    @ObfuscatedName("e")
+    @ObfuscatedGetter(intValue = -223058499)
+    @Export("defaultInt")
+    public int defaultInt;
 
-	@ObfuscatedName("t")
-	@Export("defaultStr")
-	public String defaultStr;
+    @ObfuscatedName("r")
+    @Export("defaultStr")
+    public String defaultStr;
 
-	@ObfuscatedName("s")
-	@Export("autoDisable")
-	boolean autoDisable;
-	static 
-	{
-		ParamDefinition_cached = new EvictingDualNodeHashTable(64);
-	}
+    @ObfuscatedName("o")
+    @Export("autoDisable")
+    boolean autoDisable;
 
-	ParamComposition() {
-		this.autoDisable = true;
-	}
+    static {
+        ParamDefinition_cached = new EvictingDualNodeHashTable(64);
+    }
 
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "630650762")
-	@Export("postDecode")
-	void postDecode() {
-	}
+    ParamComposition() {
+        this.autoDisable = true;
+    }
 
-	@ObfuscatedName("m")
-	@ObfuscatedSignature(descriptor = "(Lpi;B)V", garbageValue = "-46")
-	@Export("decode")
-	void decode(Buffer var1) {
-		while (true) {
-			int var2 = var1.readUnsignedByte();
-			if (var2 == 0) {
-				return;
-			}
-			this.decodeNext(var1, var2);
-		} 
-	}
+    @ObfuscatedName("l")
+    @ObfuscatedSignature(descriptor = "(B)V", garbageValue = "-14")
+    @Export("postDecode")
+    void postDecode() {
+    }
 
-	@ObfuscatedName("t")
-	@ObfuscatedSignature(descriptor = "(Lpi;II)V", garbageValue = "-1961413058")
-	@Export("decodeNext")
-	void decodeNext(Buffer var1, int var2) {
-		if (var2 == 1) {
-			this.type = class279.method5406(var1.readByte());
-		} else if (var2 == 2) {
-			this.defaultInt = var1.readInt();
-		} else if (var2 == 4) {
-			this.autoDisable = false;
-		} else if (var2 == 5) {
-			this.defaultStr = var1.readStringCp1252NullTerminated();
-		}
-	}
+    @ObfuscatedName("s")
+    @ObfuscatedSignature(descriptor = "(Lpi;I)V", garbageValue = "1681074183")
+    @Export("decode")
+    void decode(Buffer var1) {
+        while (true) {
+            int var2 = var1.readUnsignedByte();
+            if (var2 == 0) {
+                return;
+            }
+            this.decodeNext(var1, var2);
+        } 
+    }
 
-	@ObfuscatedName("s")
-	@ObfuscatedSignature(descriptor = "(I)Z", garbageValue = "404236453")
-	@Export("isString")
-	public boolean isString() {
-		return this.type == 's';
-	}
+    @ObfuscatedName("e")
+    @ObfuscatedSignature(descriptor = "(Lpi;II)V", garbageValue = "1518510708")
+    @Export("decodeNext")
+    void decodeNext(Buffer var1, int var2) {
+        if (var2 == 1) {
+            byte var4 = var1.readByte();
+            int var5 = var4 & 255;
+            if (var5 == 0) {
+                throw new IllegalArgumentException("" + Integer.toString(var5, 16));
+            }
+            if ((var5 >= 128) && (var5 < 160)) {
+                char var6 = class333.cp1252AsciiExtension[var5 - 128];
+                if (var6 == 0) {
+                    var6 = '?';
+                }
+                var5 = var6;
+            }
+            char var3 = ((char) (var5));
+            this.type = var3;
+        } else if (var2 == 2) {
+            this.defaultInt = var1.readInt();
+        } else if (var2 == 4) {
+            this.autoDisable = false;
+        } else if (var2 == 5) {
+            this.defaultStr = var1.readStringCp1252NullTerminated();
+        }
+    }
 
-	@ObfuscatedName("x")
-	@ObfuscatedSignature(descriptor = "(ILbn;ZI)I", garbageValue = "-893226045")
-	static int method3397(int var0, Script var1, boolean var2) {
-		if (var0 == ScriptOpcodes.SOUND_SYNTH) {
-			IsaacCipher.Interpreter_intStackSize -= 3;
-			LoginScreenAnimation.queueSoundEffect(Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize], Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize + 1], Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize + 2]);
-			return 1;
-		} else if (var0 == ScriptOpcodes.SOUND_SONG) {
-			class18.playSong(Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize]);
-			return 1;
-		} else if (var0 == ScriptOpcodes.SOUND_JINGLE) {
-			IsaacCipher.Interpreter_intStackSize -= 2;
-			class315.method5822(Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize], Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize + 1]);
-			return 1;
-		} else {
-			int var3;
-			int var4;
-			if (((((var0 != 3209) && (var0 != 3181)) && (var0 != 3203)) && (var0 != 3205)) && (var0 != 3207)) {
-				if (((((var0 != 3210) && (var0 != 3182)) && (var0 != 3204)) && (var0 != 3206)) && (var0 != 3208)) {
-					return var0 == 3211 ? 1 : 2;
-				} else {
-					var3 = 0;
-					var4 = 0;
-					if (var0 == 3210) {
-						var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-					} else if (var0 == 3182) {
-						var3 = 6;
-					} else if (var0 == 3204) {
-						var3 = 7;
-					} else if (var0 == 3206) {
-						var3 = 8;
-					} else if (var0 == 3208) {
-						var3 = 9;
-					}
-					if (var3 == 6) {
-						float var5 = 200.0F * (((float) (SecureRandomFuture.clientPreferences.brightness)) - 0.5F);
-						var4 = 100 - Math.round(var5);
-					} else if (var3 == 7) {
-						var4 = Math.round(((float) (SecureRandomFuture.clientPreferences.musicVolume)) / 2.55F);
-					} else if (var3 == 8) {
-						var4 = Math.round(((float) (SecureRandomFuture.clientPreferences.soundEffectsVolume)) / 1.27F);
-					} else if (var3 == 9) {
-						var4 = Math.round(((float) (SecureRandomFuture.clientPreferences.areaSoundEffectsVolume)) / 1.27F);
-					}
-					Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = var4;
-					return 1;
-				}
-			} else {
-				var3 = 0;
-				var4 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-				if (var0 == 3209) {
-					var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-				} else if (var0 == 3181) {
-					var3 = 6;
-				} else if (var0 == 3203) {
-					var3 = 7;
-				} else if (var0 == 3205) {
-					var3 = 8;
-				} else if (var0 == 3207) {
-					var3 = 9;
-				}
-				if (var3 == 6) {
-					var4 = 100 - Math.min(Math.max(var4, 0), 100);
-					InterfaceParent.method2142(((double) (0.5F + (((float) (var4)) / 200.0F))));
-				} else if (var3 == 7) {
-					var4 = Math.min(Math.max(var4, 0), 100);
-					Varcs.method2426(Math.round(((float) (var4)) * 2.55F));
-				} else if (var3 == 8) {
-					var4 = Math.min(Math.max(var4, 0), 100);
-					class20.updateSoundEffectVolume(Math.round(((float) (var4)) * 1.27F));
-				} else if (var3 == 9) {
-					var4 = Math.min(Math.max(var4, 0), 100);
-					Players.method2383(Math.round(1.27F * ((float) (var4))));
-				}
-				return 1;
-			}
-		}
-	}
+    @ObfuscatedName("r")
+    @ObfuscatedSignature(descriptor = "(I)Z", garbageValue = "-1954682272")
+    @Export("isString")
+    public boolean isString() {
+        return this.type == 's';
+    }
+
+    @ObfuscatedName("c")
+    @ObfuscatedSignature(descriptor = "(Ljava/lang/CharSequence;I)J", garbageValue = "1598733625")
+    static long method3381(CharSequence var0) {
+        long var1 = 0L;
+        int var3 = var0.length();
+        for (int var4 = 0; var4 < var3; ++var4) {
+            var1 *= 37L;
+            char var5 = var0.charAt(var4);
+            if ((var5 >= 'A') && (var5 <= 'Z')) {
+                var1 += ((long) ((var5 + 1) - 65));
+            } else if ((var5 >= 'a') && (var5 <= 'z')) {
+                var1 += ((long) ((var5 + 1) - 97));
+            } else if ((var5 >= '0') && (var5 <= '9')) {
+                var1 += ((long) ((var5 + 27) - 48));
+            }
+            if (var1 >= 177917621779460413L) {
+                break;
+            }
+        }
+        while ((0L == (var1 % 37L)) && (var1 != 0L)) {
+            var1 /= 37L;
+        } 
+        return var1;
+    }
+
+    @ObfuscatedName("l")
+    @ObfuscatedSignature(descriptor = "(IB)Lfg;", garbageValue = "21")
+    @Export("getObjectDefinition")
+    public static ObjectComposition getObjectDefinition(int var0) {
+        ObjectComposition var1 = ((ObjectComposition) (ObjectComposition.ObjectDefinition_cached.get(((long) (var0)))));
+        if (var1 != null) {
+            return var1;
+        } else {
+            byte[] var2 = class12.ObjectDefinition_archive.takeFile(6, var0);
+            var1 = new ObjectComposition();
+            var1.id = var0;
+            if (var2 != null) {
+                var1.decode(new Buffer(var2));
+            }
+            var1.postDecode();
+            if (var1.isSolid) {
+                var1.interactType = 0;
+                var1.boolean1 = false;
+            }
+            ObjectComposition.ObjectDefinition_cached.put(var1, ((long) (var0)));
+            return var1;
+        }
+    }
+
+    @ObfuscatedName("b")
+    @ObfuscatedSignature(descriptor = "(ILbl;ZB)I", garbageValue = "98")
+    static int method3370(int var0, Script var1, boolean var2) {
+        int var3;
+        int var6;
+        int var9;
+        if (var0 == ScriptOpcodes.ENUM_STRING) {
+            Interpreter.Interpreter_intStackSize -= 2;
+            var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+            var9 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+            EnumComposition var10 = UserList.getEnum(var3);
+            if (var10.outputType != 's') {
+            }
+            for (var6 = 0; var6 < var10.outputCount; ++var6) {
+                if (var9 == var10.keys[var6]) {
+                    Interpreter.Interpreter_stringStack[(++BufferedNetSocket.Interpreter_stringStackSize) - 1] = var10.strVals[var6];
+                    var10 = null;
+                    break;
+                }
+            }
+            if (var10 != null) {
+                Interpreter.Interpreter_stringStack[(++BufferedNetSocket.Interpreter_stringStackSize) - 1] = var10.defaultStr;
+            }
+            return 1;
+        } else if (var0 != ScriptOpcodes.ENUM) {
+            if (var0 == ScriptOpcodes.ENUM_GETOUTPUTCOUNT) {
+                var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+                EnumComposition var4 = UserList.getEnum(var3);
+                Interpreter.Interpreter_intStack[(++Interpreter.Interpreter_intStackSize) - 1] = var4.size();
+                return 1;
+            } else {
+                return 2;
+            }
+        } else {
+            Interpreter.Interpreter_intStackSize -= 4;
+            var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+            var9 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+            int var5 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 2];
+            var6 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 3];
+            EnumComposition var7 = UserList.getEnum(var5);
+            if ((var3 == var7.inputType) && (var9 == var7.outputType)) {
+                for (int var8 = 0; var8 < var7.outputCount; ++var8) {
+                    if (var6 == var7.keys[var8]) {
+                        if (var9 == 115) {
+                            Interpreter.Interpreter_stringStack[(++BufferedNetSocket.Interpreter_stringStackSize) - 1] = var7.strVals[var8];
+                        } else {
+                            Interpreter.Interpreter_intStack[(++Interpreter.Interpreter_intStackSize) - 1] = var7.intVals[var8];
+                        }
+                        var7 = null;
+                        break;
+                    }
+                }
+                if (var7 != null) {
+                    if (var9 == 115) {
+                        Interpreter.Interpreter_stringStack[(++BufferedNetSocket.Interpreter_stringStackSize) - 1] = var7.defaultStr;
+                    } else {
+                        Interpreter.Interpreter_intStack[(++Interpreter.Interpreter_intStackSize) - 1] = var7.defaultInt;
+                    }
+                }
+                return 1;
+            } else {
+                if (var9 == 115) {
+                    Interpreter.Interpreter_stringStack[(++BufferedNetSocket.Interpreter_stringStackSize) - 1] = "null";
+                } else {
+                    Interpreter.Interpreter_intStack[(++Interpreter.Interpreter_intStackSize) - 1] = 0;
+                }
+                return 1;
+            }
+        }
+    }
 }

@@ -1,13 +1,18 @@
 package dev.hoot.api.movement;
 
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
 import dev.hoot.api.commons.Rand;
 import dev.hoot.api.entities.Players;
 import dev.hoot.api.game.Game;
 import dev.hoot.api.game.Vars;
 import dev.hoot.api.movement.pathfinder.BankLocation;
+import dev.hoot.api.movement.pathfinder.CollisionMap;
 import dev.hoot.api.movement.pathfinder.Walker;
 import dev.hoot.api.scene.Tiles;
 import dev.hoot.api.widgets.Widgets;
+import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.api.Locatable;
 import net.runelite.api.MenuAction;
@@ -20,6 +25,7 @@ import net.runelite.api.coords.WorldArea;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,13 +33,30 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
 
+@Slf4j
 public class Movement
 {
 	private static final Logger logger = LoggerFactory.getLogger(Movement.class);
 
 	private static final int STAMINA_VARBIT = 25;
 	private static final int RUN_VARP = 173;
+
+	public static final LoadingCache<List<WorldPoint>, WorldPoint> WORLD_AREA_POINT_CACHE = CacheBuilder.newBuilder()
+			.expireAfterWrite(5, TimeUnit.MINUTES)
+			.build(new CacheLoader<>()
+			{
+				@Override
+				public WorldPoint load(@NotNull List<WorldPoint> key)
+				{
+					List<WorldPoint> wpList = new ArrayList<>(key);
+					CollisionMap cm = Game.getGlobalCollisionMap();
+					wpList.removeIf(cm::fullBlock);
+					return wpList.get(Rand.nextInt(0, wpList.size() - 1));
+				}
+			});
 
 	public static void setDestination(int sceneX, int sceneY)
 	{
@@ -45,6 +68,11 @@ public class Movement
 	public static WorldPoint getDestination()
 	{
 		Client client = Game.getClient();
+		if (client.getDestinationX() == 0 && client.getDestinationY() == 0)
+		{
+			return null;
+		}
+
 		return new WorldPoint(
 				client.getDestinationX() + client.getBaseX(),
 				client.getDestinationY() + client.getBaseY(),
@@ -55,10 +83,10 @@ public class Movement
 	public static boolean isWalking()
 	{
 		Player local = Players.getLocal();
-		LocalPoint destination = Game.getClient().getLocalDestinationLocation();
+		WorldPoint destination = getDestination();
 		return local.isMoving()
 				&& destination != null
-				&& destination.distanceTo(local.getLocalLocation()) > 4;
+				&& destination.distanceTo(local) > 4;
 	}
 
 	public static void walk(WorldPoint worldPoint)
@@ -114,19 +142,8 @@ public class Movement
 			return;
 		}
 
-		List<WorldPoint> walkPointList = worldArea.toWorldPointList();
-		List<WorldPoint> losPoints = new ArrayList<>();
-
-		for (WorldPoint point : walkPointList)
-		{
-			if (!Reachable.isWalkable(point))
-			{
-				continue;
-			}
-			losPoints.add(point);
-		}
-		WorldPoint walkPoint = losPoints.get(Rand.nextInt(0, walkPointList.size() - 1));
-		Movement.walk(walkPoint);
+		var points = worldArea.toWorldPointList();
+		walk(points.get(Rand.nextInt(0, points.size() - 1)));
 	}
 
 	public static void walk(Locatable locatable)
@@ -136,18 +153,26 @@ public class Movement
 
 	public static boolean walkTo(WorldPoint worldPoint, int radius)
 	{
-		WorldPoint wp = new WorldPoint(
-				worldPoint.getX() + Rand.nextInt(-radius, radius),
-				worldPoint.getY() + Rand.nextInt(-radius, radius),
-				worldPoint.getPlane());
-		return Walker.walkTo(wp, false);
+		WorldArea worldArea = new WorldArea(
+				worldPoint.dx(-radius).dy(-radius),
+				worldPoint.dx(radius).dy(radius)
+		);
+
+		return Movement.walkTo(worldArea);
 	}
 
 	public static boolean walkTo(WorldArea worldArea)
 	{
-		List<WorldPoint> wpList = worldArea.toWorldPointList();
-		WorldPoint wp = wpList.get(Rand.nextInt(0, wpList.size() - 1));
-		return Walker.walkTo(wp, false);
+		try
+		{
+			WorldPoint wp = WORLD_AREA_POINT_CACHE.get(worldArea.toWorldPointList());
+			return Walker.walkTo(wp, false);
+		}
+		catch (ExecutionException e)
+		{
+			log.error("Failed to get cached WorldPoint", e);
+			return false;
+		}
 	}
 
 	public static boolean walkTo(WorldPoint worldPoint)
@@ -162,7 +187,7 @@ public class Movement
 
 	public static boolean walkTo(BankLocation bankLocation)
 	{
-		return walkTo(bankLocation.getArea().toWorldPoint());
+		return walkTo(bankLocation.getArea());
 	}
 
 	public static boolean walkTo(int x, int y)
@@ -233,6 +258,7 @@ public class Movement
 				distance += Math.max(Math.abs(prev.getX() - current.getX()), Math.abs(prev.getY() - current.getY()));
 			}
 		}
+
 		return distance;
 	}
 

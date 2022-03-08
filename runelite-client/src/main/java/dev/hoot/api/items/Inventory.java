@@ -62,23 +62,7 @@ public class Inventory extends Items
 
 	public static List<Item> getAll(String... names)
 	{
-		return getAll(x ->
-		{
-			if (x.getName() == null)
-			{
-				return false;
-			}
-
-			for (String name : names)
-			{
-				if (name.equals(x.getName()))
-				{
-					return true;
-				}
-			}
-
-			return false;
-		});
+		return INVENTORY.all(names);
 	}
 
 	public static Item getFirst(Predicate<Item> filter)

@@ -13,9 +13,9 @@ public class MovementPackets
 		MovementPackets.sendMovement(worldX, worldY, false);
 	}
 
-	public static void sendMovement(WorldPoint worldPoint, boolean run)
+	public static void sendMovement(WorldPoint worldPoint, boolean ctrlDown)
 	{
-		MovementPackets.sendMovement(worldPoint.getX(), worldPoint.getY(), run);
+		MovementPackets.sendMovement(worldPoint.getX(), worldPoint.getY(), ctrlDown);
 	}
 
 	public static void sendMovement(WorldPoint worldPoint)
@@ -23,15 +23,31 @@ public class MovementPackets
 		MovementPackets.sendMovement(worldPoint, false);
 	}
 
-	public static void sendMovement(int worldPointX, int worldPointY, boolean run)
+	public static void sendMovement(int worldPointX, int worldPointY, boolean ctrlDown)
 	{
 		Client client = Game.getClient();
 		ClientPacket clientPacket = Game.getClientPacket();
 		PacketBufferNode packetBufferNode = Game.getClient().preparePacket(clientPacket.MOVE_GAMECLICK(), client.getPacketWriter().getIsaacCipher());
 		packetBufferNode.getPacketBuffer().writeByte(5);
-		packetBufferNode.getPacketBuffer().writeByte(run ? 2 : 0);
-		packetBufferNode.getPacketBuffer().writeShortAddLE(worldPointY);
-		packetBufferNode.getPacketBuffer().writeShortAdd(worldPointX);
+		packetBufferNode.getPacketBuffer().writeByteAdd(ctrlDown ? 2 : 0);
+		packetBufferNode.getPacketBuffer().writeShortLE(worldPointX);
+		packetBufferNode.getPacketBuffer().writeShortLE(worldPointY);
+		client.setDestinationX(worldPointX - client.getBaseX());
+		client.setDestinationY(worldPointY - client.getBaseY());
 		client.getPacketWriter().queuePacket(packetBufferNode);
+	}
+
+	public static PacketBufferNode createMovement(int worldPointX, int worldPointY, boolean ctrlDown)
+	{
+		Client client = Game.getClient();
+		ClientPacket clientPacket = Game.getClientPacket();
+		PacketBufferNode packetBufferNode = Game.getClient().preparePacket(clientPacket.MOVE_GAMECLICK(), client.getPacketWriter().getIsaacCipher());
+		packetBufferNode.getPacketBuffer().writeByte(5);
+		packetBufferNode.getPacketBuffer().writeByteAdd(ctrlDown ? 2 : 0);
+		packetBufferNode.getPacketBuffer().writeShortLE(worldPointX);
+		packetBufferNode.getPacketBuffer().writeShortLE(worldPointY);
+		client.setDestinationX(worldPointX - client.getBaseX());
+		client.setDestinationY(worldPointY - client.getBaseY());
+		return packetBufferNode;
 	}
 }

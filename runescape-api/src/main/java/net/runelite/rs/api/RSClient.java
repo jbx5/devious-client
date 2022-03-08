@@ -1694,4 +1694,8 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("isMenuOpen")
 	@Override
 	void setMenuOpen(boolean open);
+
+	@Import("selectedItemId")
+	@Override
+	int getSelectedItemID();
 }

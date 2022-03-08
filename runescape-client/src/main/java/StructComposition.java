@@ -2,114 +2,111 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-@ObfuscatedName("fp")
+@ObfuscatedName("fe")
 @Implements("StructComposition")
 public class StructComposition extends DualNode {
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(descriptor = "Liq;")
-	@Export("StructDefinition_cached")
-	static EvictingDualNodeHashTable StructDefinition_cached;
+    @ObfuscatedName("c")
+    @ObfuscatedSignature(descriptor = "Lkq;")
+    @Export("StructDefinition_archive")
+    static AbstractArchive StructDefinition_archive;
 
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(descriptor = "Loz;")
-	@Export("params")
-	IterableNodeHashTable params;
-	static 
-	{
-		StructDefinition_cached = new EvictingDualNodeHashTable(64);
-	}
+    @ObfuscatedName("l")
+    @ObfuscatedSignature(descriptor = "Lic;")
+    @Export("StructDefinition_cached")
+    static EvictingDualNodeHashTable StructDefinition_cached;
 
-	StructComposition() {
-	}
+    @ObfuscatedName("s")
+    @ObfuscatedSignature(descriptor = "Lon;")
+    @Export("params")
+    IterableNodeHashTable params;
 
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "-1697114474")
-	@Export("postDecode")
-	void postDecode() {
-	}
+    static {
+        StructDefinition_cached = new EvictingDualNodeHashTable(64);
+    }
 
-	@ObfuscatedName("m")
-	@ObfuscatedSignature(descriptor = "(Lpi;I)V", garbageValue = "260928351")
-	@Export("decode")
-	void decode(Buffer var1) {
-		while (true) {
-			int var2 = var1.readUnsignedByte();
-			if (var2 == 0) {
-				return;
-			}
-			this.decodeNext(var1, var2);
-		} 
-	}
+    StructComposition() {
+    }
 
-	@ObfuscatedName("t")
-	@ObfuscatedSignature(descriptor = "(Lpi;IB)V", garbageValue = "76")
-	@Export("decodeNext")
-	void decodeNext(Buffer var1, int var2) {
-		if (var2 == 249) {
-			this.params = Canvas.readStringIntParameters(var1, this.params);
-		}
-	}
+    @ObfuscatedName("s")
+    @ObfuscatedSignature(descriptor = "(I)V", garbageValue = "-708046744")
+    @Export("postDecode")
+    void postDecode() {
+    }
 
-	@ObfuscatedName("s")
-	@ObfuscatedSignature(descriptor = "(III)I", garbageValue = "-1808649424")
-	@Export("getIntParam")
-	public int getIntParam(int var1, int var2) {
-		return class12.method158(this.params, var1, var2);
-	}
+    @ObfuscatedName("e")
+    @ObfuscatedSignature(descriptor = "(Lpi;I)V", garbageValue = "121791829")
+    @Export("decode")
+    void decode(Buffer var1) {
+        while (true) {
+            int var2 = var1.readUnsignedByte();
+            if (var2 == 0) {
+                return;
+            }
+            this.decodeNext(var1, var2);
+        } 
+    }
 
-	@ObfuscatedName("j")
-	@ObfuscatedSignature(descriptor = "(ILjava/lang/String;I)Ljava/lang/String;", garbageValue = "-1725182955")
-	@Export("getStringParam")
-	public String getStringParam(int var1, String var2) {
-		return Skeleton.method3948(this.params, var1, var2);
-	}
+    @ObfuscatedName("r")
+    @ObfuscatedSignature(descriptor = "(Lpi;IB)V", garbageValue = "14")
+    @Export("decodeNext")
+    void decodeNext(Buffer var1, int var2) {
+        if (var2 == 249) {
+            this.params = class297.readStringIntParameters(var1, this.params);
+        }
+    }
 
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(descriptor = "(B)V", garbageValue = "-64")
-	public static void method3444() {
-		class260.midiPcmStream.clear();
-		class260.musicPlayerStatus = 1;
-		class124.musicTrackArchive = null;
-	}
+    @ObfuscatedName("o")
+    @ObfuscatedSignature(descriptor = "(IIB)I", garbageValue = "12")
+    @Export("getIntParam")
+    public int getIntParam(int var1, int var2) {
+        return UserComparator1.method7638(this.params, var1, var2);
+    }
 
-	@ObfuscatedName("t")
-	@ObfuscatedSignature(descriptor = "(IB)Z", garbageValue = "2")
-	public static boolean method3424(int var0) {
-		return (var0 >= 0) && (var0 < 112) ? KeyHandler.field132[var0] : false;
-	}
+    @ObfuscatedName("i")
+    @ObfuscatedSignature(descriptor = "(ILjava/lang/String;I)Ljava/lang/String;", garbageValue = "121412525")
+    @Export("getStringParam")
+    public String getStringParam(int var1, String var2) {
+        return class292.method5479(this.params, var1, var2);
+    }
 
-	@ObfuscatedName("lv")
-	@ObfuscatedSignature(descriptor = "(Ljava/lang/String;ZI)V", garbageValue = "488868822")
-	@Export("findItemDefinitions")
-	static void findItemDefinitions(String var0, boolean var1) {
-		var0 = var0.toLowerCase();
-		short[] var2 = new short[16];
-		int var3 = 0;
-		for (int var4 = 0; var4 < WorldMapLabelSize.ItemDefinition_fileCount; ++var4) {
-			ItemComposition var9 = UserComparator6.ItemDefinition_get(var4);
-			if ((((!var1) || var9.isTradable) && (var9.noteTemplate == (-1))) && (var9.name.toLowerCase().indexOf(var0) != (-1))) {
-				if (var3 >= 250) {
-					GraphicsDefaults.foundItemIdCount = -1;
-					class113.foundItemIds = null;
-					return;
-				}
-				if (var3 >= var2.length) {
-					short[] var6 = new short[var2.length * 2];
-					for (int var7 = 0; var7 < var3; ++var7) {
-						var6[var7] = var2[var7];
-					}
-					var2 = var6;
-				}
-				var2[var3++] = ((short) (var4));
-			}
-		}
-		class113.foundItemIds = var2;
-		class336.foundItemIndex = 0;
-		GraphicsDefaults.foundItemIdCount = var3;
-		String[] var8 = new String[GraphicsDefaults.foundItemIdCount];
-		for (int var5 = 0; var5 < GraphicsDefaults.foundItemIdCount; ++var5) {
-			var8[var5] = UserComparator6.ItemDefinition_get(var2[var5]).name;
-		}
-		KeyHandler.method390(var8, class113.foundItemIds);
-	}
+    @ObfuscatedName("la")
+    @ObfuscatedSignature(descriptor = "(III)V", garbageValue = "2008379188")
+    static final void method3410(int var0, int var1) {
+        ClanChannel var2 = (var0 >= 0) ? Client.currentClanChannels[var0] : InterfaceParent.guestClanChannel;
+        if (((var2 != null) && (var1 >= 0)) && (var1 < var2.method2982())) {
+            ClanChannelMember var3 = ((ClanChannelMember) (var2.members.get(var1)));
+            if (var3.rank == (-1)) {
+                String var4 = var3.username.getName();
+                PacketBufferNode var5 = class135.getPacketBufferNode(ClientPacket.field2932, Client.packetWriter.isaacCipher);
+                var5.packetBuffer.writeByte(3 + GrandExchangeEvents.stringCp1252NullTerminatedByteSize(var4));
+                var5.packetBuffer.writeByte(var0);
+                var5.packetBuffer.writeShort(var1);
+                var5.packetBuffer.writeStringCp1252NullTerminated(var4);
+                Client.packetWriter.addNode(var5);
+            }
+        }
+    }
+
+    @ObfuscatedName("lx")
+    @ObfuscatedSignature(descriptor = "(Ljava/lang/String;ZS)Ljava/lang/String;", garbageValue = "10727")
+    static String method3387(String var0, boolean var1) {
+        String var2 = (var1) ? "https://" : "http://";
+        if (Client.gameBuild == 1) {
+            var0 = var0 + "-wtrc";
+        } else if (Client.gameBuild == 2) {
+            var0 = var0 + "-wtqa";
+        } else if (Client.gameBuild == 3) {
+            var0 = var0 + "-wtwip";
+        } else if (Client.gameBuild == 5) {
+            var0 = var0 + "-wti";
+        } else if (Client.gameBuild == 4) {
+            var0 = "local";
+        }
+        String var3 = "";
+        if (ReflectionCheck.field256 != null) {
+            var3 = "/p=" + ReflectionCheck.field256;
+        }
+        String var4 = "runescape.com";
+        return ((((((((var2 + var0) + ".") + var4) + "/l=") + class122.clientLanguage) + "/a=") + class87.field1218) + var3) + "/";
+    }
 }

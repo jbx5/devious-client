@@ -21,23 +21,22 @@ public class DialogPackets
 		// closes the input dialog
 	}
 
-	public static void sendNameInput(String name)
-	{
-		Client client = Game.getClient();
-		ClientPacket clientPacket = Game.getClientPacket();
-		PacketBufferNode var12 = Game.getClient().preparePacket(clientPacket.RESUME_P_NAMEDIALOG(), client.getPacketWriter().getIsaacCipher());
-		var12.getPacketBuffer().writeByte(name.length() + 1);
-		var12.getPacketBuffer().writeStringCp1252NullTerminated(name);
-		client.getPacketWriter().queuePacket(var12);
-		GameThread.invoke(() -> Game.getClient().runScript(138));
-	}
-
 	public static void sendNumberInput(int number)
 	{
 		Client client = Game.getClient();
 		ClientPacket clientPacket = Game.getClientPacket();
 		PacketBufferNode packetBufferNode = Game.getClient().preparePacket(clientPacket.RESUME_P_COUNTDIALOG(), client.getPacketWriter().getIsaacCipher());
 		packetBufferNode.getPacketBuffer().writeInt(number);
+		client.getPacketWriter().queuePacket(packetBufferNode);
+	}
+
+	public static void sendNameInput(String name)
+	{
+		Client client = Game.getClient();
+		ClientPacket clientPacket = Game.getClientPacket();
+		PacketBufferNode packetBufferNode = Game.getClient().preparePacket(clientPacket.RESUME_P_NAMEDIALOG(), client.getPacketWriter().getIsaacCipher());
+		packetBufferNode.getPacketBuffer().writeByte(name.length() + 1);
+		packetBufferNode.getPacketBuffer().writeStringCp1252NullTerminated(name);
 		client.getPacketWriter().queuePacket(packetBufferNode);
 	}
 

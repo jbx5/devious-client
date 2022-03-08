@@ -1,5 +1,5 @@
 import java.io.File;
-import java.io.RandomAccessFile;
+import java.io.IOException;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
@@ -8,109 +8,132 @@ import net.runelite.mapping.ObfuscatedSignature;
 @ObfuscatedName("hg")
 @Implements("BoundaryObject")
 public final class BoundaryObject {
-	@ObfuscatedName("sv")
-	@ObfuscatedSignature(descriptor = "Lbp;")
-	@Export("decimator")
-	static Decimator decimator;
+    @ObfuscatedName("c")
+    @ObfuscatedGetter(intValue = -695987835)
+    @Export("tileHeight")
+    int tileHeight;
 
-	@ObfuscatedName("z")
-	@ObfuscatedGetter(intValue = 1063429417)
-	@Export("canvasHeight")
-	public static int canvasHeight;
+    @ObfuscatedName("l")
+    @ObfuscatedGetter(intValue = -1300612235)
+    @Export("x")
+    int x;
 
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(intValue = 1211283293)
-	@Export("tileHeight")
-	int tileHeight;
+    @ObfuscatedName("s")
+    @ObfuscatedGetter(intValue = -190485209)
+    @Export("y")
+    int y;
 
-	@ObfuscatedName("b")
-	@ObfuscatedGetter(intValue = 392897309)
-	@Export("x")
-	int x;
+    @ObfuscatedName("e")
+    @ObfuscatedGetter(intValue = 810073207)
+    @Export("orientationA")
+    int orientationA;
 
-	@ObfuscatedName("p")
-	@ObfuscatedGetter(intValue = 1130231369)
-	@Export("y")
-	int y;
+    @ObfuscatedName("r")
+    @ObfuscatedGetter(intValue = -1356551947)
+    @Export("orientationB")
+    int orientationB;
 
-	@ObfuscatedName("m")
-	@ObfuscatedGetter(intValue = 1078743455)
-	@Export("orientationA")
-	int orientationA;
+    @ObfuscatedName("o")
+    @ObfuscatedSignature(descriptor = "Lgp;")
+    @Export("renderable1")
+    public Renderable renderable1;
 
-	@ObfuscatedName("t")
-	@ObfuscatedGetter(intValue = -1456059729)
-	@Export("orientationB")
-	int orientationB;
+    @ObfuscatedName("i")
+    @ObfuscatedSignature(descriptor = "Lgp;")
+    @Export("renderable2")
+    public Renderable renderable2;
 
-	@ObfuscatedName("s")
-	@ObfuscatedSignature(descriptor = "Lgt;")
-	@Export("renderable1")
-	public Renderable renderable1;
+    @ObfuscatedName("w")
+    @ObfuscatedGetter(longValue = -7729917977965778771L)
+    @Export("tag")
+    public long tag;
 
-	@ObfuscatedName("j")
-	@ObfuscatedSignature(descriptor = "Lgt;")
-	@Export("renderable2")
-	public Renderable renderable2;
+    @ObfuscatedName("v")
+    @ObfuscatedGetter(intValue = 318935705)
+    @Export("flags")
+    int flags;
 
-	@ObfuscatedName("w")
-	@ObfuscatedGetter(longValue = 7825076594130185971L)
-	@Export("tag")
-	public long tag;
+    BoundaryObject() {
+        this.tag = 0L;
+        this.flags = 0;
+    }
 
-	@ObfuscatedName("n")
-	@ObfuscatedGetter(intValue = -1681276427)
-	@Export("flags")
-	int flags;
+    @ObfuscatedName("l")
+    @ObfuscatedSignature(descriptor = "(Ljava/io/File;Ljava/io/File;B)V", garbageValue = "119")
+    static void method4277(File var0, File var1) {
+        try {
+            AccessFile var2 = new AccessFile(JagexCache.JagexCache_locationFile, "rw", 10000L);
+            Buffer var3 = new Buffer(500);
+            var3.writeByte(3);
+            var3.writeByte(var1 != null ? 1 : 0);
+            var3.writeCESU8(var0.getPath());
+            if (var1 != null) {
+                var3.writeCESU8("");
+            }
+            var2.write(var3.array, 0, var3.offset);
+            var2.close();
+        } catch (IOException var4) {
+            var4.printStackTrace();
+        }
+    }
 
-	BoundaryObject() {
-		this.tag = 0L;
-		this.flags = 0;
-	}
+    @ObfuscatedName("l")
+    @ObfuscatedSignature(descriptor = "(III)I", garbageValue = "602248811")
+    public static int method4275(int var0, int var1) {
+        return (((-3) - var0) << 8) + var1;
+    }
 
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(descriptor = "(Ljava/io/File;ZB)Z", garbageValue = "15")
-	public static boolean method4321(File var0, boolean var1) {
-		try {
-			RandomAccessFile var2 = new RandomAccessFile(var0, "rw");
-			int var3 = var2.read();
-			var2.seek(0L);
-			var2.write(var3);
-			var2.seek(0L);
-			var2.close();
-			if (var1) {
-				var0.delete();
-			}
-			return true;
-		} catch (Exception var4) {
-			return false;
-		}
-	}
+    @ObfuscatedName("r")
+    @ObfuscatedSignature(descriptor = "(IIIZIZI)V", garbageValue = "-1941182040")
+    @Export("doWorldSorting")
+    static void doWorldSorting(int var0, int var1, int var2, boolean var3, int var4, boolean var5) {
+        if (var0 < var1) {
+            int var6 = (var0 + var1) / 2;
+            int var7 = var0;
+            World var8 = class33.World_worlds[var6];
+            class33.World_worlds[var6] = class33.World_worlds[var1];
+            class33.World_worlds[var1] = var8;
+            for (int var9 = var0; var9 < var1; ++var9) {
+                World var11 = class33.World_worlds[var9];
+                int var12 = LoginScreenAnimation.compareWorlds(var11, var8, var2, var3);
+                int var10;
+                if (var12 != 0) {
+                    if (var3) {
+                        var10 = -var12;
+                    } else {
+                        var10 = var12;
+                    }
+                } else if (var4 == (-1)) {
+                    var10 = 0;
+                } else {
+                    int var13 = LoginScreenAnimation.compareWorlds(var11, var8, var4, var5);
+                    if (var5) {
+                        var10 = -var13;
+                    } else {
+                        var10 = var13;
+                    }
+                }
+                if (var10 <= 0) {
+                    World var14 = class33.World_worlds[var9];
+                    class33.World_worlds[var9] = class33.World_worlds[var7];
+                    class33.World_worlds[var7++] = var14;
+                }
+            }
+            class33.World_worlds[var1] = class33.World_worlds[var7];
+            class33.World_worlds[var7] = var8;
+            doWorldSorting(var0, var7 - 1, var2, var3, var4, var5);
+            doWorldSorting(var7 + 1, var1, var2, var3, var4, var5);
+        }
+    }
 
-	@ObfuscatedName("d")
-	@ObfuscatedSignature(descriptor = "(Lbw;B)V", garbageValue = "2")
-	@Export("changeWorld")
-	static void changeWorld(World var0) {
-		if (var0.isMembersOnly() != Client.isMembersWorld) {
-			Client.isMembersWorld = var0.isMembersOnly();
-			UserComparator6.method2552(var0.isMembersOnly());
-		}
-		if (var0.properties != Client.worldProperties) {
-			Archive var1 = UserComparator6.archive8;
-			int var2 = var0.properties;
-			if ((var2 & 536870912) != 0) {
-				Login.logoSprite = ClientPreferences.SpriteBuffer_getIndexedSpriteByName(var1, "logo_deadman_mode", "");
-			} else if ((var2 & 1073741824) != 0) {
-				Login.logoSprite = ClientPreferences.SpriteBuffer_getIndexedSpriteByName(var1, "logo_seasonal_mode", "");
-			} else {
-				Login.logoSprite = ClientPreferences.SpriteBuffer_getIndexedSpriteByName(var1, "logo", "");
-			}
-		}
-		class185.worldHost = var0.host;
-		Client.worldId = var0.id;
-		Client.worldProperties = var0.properties;
-		GameObject.worldPort = (Client.gameBuild == 0) ? 43594 : var0.id + 40000;
-		class133.js5Port = (Client.gameBuild == 0) ? 443 : var0.id + 50000;
-		class129.currentPort = GameObject.worldPort;
-	}
+    @ObfuscatedName("ai")
+    @ObfuscatedSignature(descriptor = "(ILjd;ZI)V", garbageValue = "1668611134")
+    static void method4276(int var0, Coord var1, boolean var2) {
+        WorldMapArea var3 = WorldMapEvent.getWorldMap().getMapArea(var0);
+        int var4 = WorldMapSprite.localPlayer.plane;
+        int var5 = (WorldMapSprite.localPlayer.x >> 7) + Canvas.baseX;
+        int var6 = (WorldMapSprite.localPlayer.y >> 7) + class118.baseY;
+        Coord var7 = new Coord(var4, var5, var6);
+        WorldMapEvent.getWorldMap().method7006(var3, var7, var1, var2);
+    }
 }

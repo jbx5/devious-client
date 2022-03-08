@@ -1,94 +1,87 @@
+import java.util.HashMap;
+import java.util.TimeZone;
 import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-@ObfuscatedName("jd")
-public class class260 {
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "Lku;")
-	@Export("musicPatchesArchive")
-	public static AbstractArchive musicPatchesArchive;
+@ObfuscatedName("jh")
+public final class class260 {
+    @ObfuscatedName("s")
+    static final HashMap field3081;
 
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(descriptor = "Lku;")
-	@Export("soundEffectsArchive")
-	public static AbstractArchive soundEffectsArchive;
+    @ObfuscatedName("w")
+    static byte[][][] field3078;
 
-	@ObfuscatedName("m")
-	@ObfuscatedSignature(descriptor = "Ljp;")
-	@Export("midiPcmStream")
-	public static MidiPcmStream midiPcmStream;
+    @ObfuscatedName("v")
+    @ObfuscatedSignature(descriptor = "Lpt;")
+    @Export("leftTitleSprite")
+    static SpritePixels leftTitleSprite;
 
-	@ObfuscatedName("t")
-	@ObfuscatedGetter(intValue = -1837592887)
-	@Export("musicPlayerStatus")
-	public static int musicPlayerStatus;
+    static {
+        field3081 = new HashMap();
+        TimeZone var0;
+        synchronized(field3081) {
+            TimeZone var2 = ((TimeZone) (field3081.get("Europe/London")));
+            if (var2 == null) {
+                var2 = TimeZone.getTimeZone("Europe/London");
+                field3081.put("Europe/London", var2);
+            }
+            var0 = var2;
+        }
+        java.util.Calendar.getInstance(var0);
+    }
 
-	@ObfuscatedName("w")
-	@ObfuscatedGetter(intValue = 1576356909)
-	@Export("musicTrackFileId")
-	public static int musicTrackFileId;
+    @ObfuscatedName("gi")
+    @ObfuscatedSignature(descriptor = "(IIB)V", garbageValue = "14")
+    static final void method5000(int var0, int var1) {
+        if (var0 < 128) {
+            var0 = 128;
+        }
+        if (var0 > 383) {
+            var0 = 383;
+        }
+        if (class7.cameraPitch < var0) {
+            class7.cameraPitch = ((((var0 - class7.cameraPitch) * WallDecoration.field2573) / 1000) + class7.cameraPitch) + WorldMapSectionType.field2723;
+            if (class7.cameraPitch > var0) {
+                class7.cameraPitch = var0;
+            }
+        }
+        if (class7.cameraPitch > var0) {
+            class7.cameraPitch -= (((class7.cameraPitch - var0) * WallDecoration.field2573) / 1000) + WorldMapSectionType.field2723;
+            if (class7.cameraPitch < var0) {
+                class7.cameraPitch = var0;
+            }
+        }
+        int var2 = var1 - class7.cameraYaw;
+        if (var2 > 1024) {
+            var2 -= 2048;
+        }
+        if (var2 < (-1024)) {
+            var2 += 2048;
+        }
+        if (var2 > 0) {
+            class7.cameraYaw = (class7.cameraYaw + WorldMapSectionType.field2723) + ((var2 * WallDecoration.field2573) / 1000);
+            class7.cameraYaw &= 2047;
+        }
+        if (var2 < 0) {
+            class7.cameraYaw -= (((-var2) * WallDecoration.field2573) / 1000) + WorldMapSectionType.field2723;
+            class7.cameraYaw &= 2047;
+        }
+        int var3 = var1 - class7.cameraYaw;
+        if (var3 > 1024) {
+            var3 -= 2048;
+        }
+        if (var3 < (-1024)) {
+            var3 += 2048;
+        }
+        if (((var3 < 0) && (var2 > 0)) || ((var3 > 0) && (var2 < 0))) {
+            class7.cameraYaw = var1;
+        }
+    }
 
-	@ObfuscatedName("r")
-	@ObfuscatedGetter(intValue = 1257628969)
-	@Export("pcmSampleLength")
-	public static int pcmSampleLength;
-
-	@ObfuscatedName("hk")
-	@ObfuscatedSignature(descriptor = "[Lpl;")
-	@Export("headIconHintSprites")
-	static SpritePixels[] headIconHintSprites;
-	static 
-	{
-		musicPlayerStatus = 0;
-	}
-
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(Ljava/lang/CharSequence;B)Ljava/lang/String;", garbageValue = "0")
-	public static String method5070(CharSequence var0) {
-		int var1 = var0.length();
-		StringBuilder var2 = new StringBuilder(var1);
-		for (int var3 = 0; var3 < var1; ++var3) {
-			char var4 = var0.charAt(var3);
-			if ((((((((var4 < 'a') || (var4 > 'z')) && ((var4 < 'A') || (var4 > 'Z'))) && ((var4 < '0') || (var4 > '9'))) && (var4 != '.')) && (var4 != '-')) && (var4 != '*')) && (var4 != '_')) {
-				if (var4 == ' ') {
-					var2.append('+');
-				} else {
-					byte var5 = class372.charToByteCp1252(var4);
-					var2.append('%');
-					int var6 = (var5 >> 4) & 15;
-					if (var6 >= 10) {
-						var2.append(((char) (var6 + 55)));
-					} else {
-						var2.append(((char) (var6 + 48)));
-					}
-					var6 = var5 & 15;
-					if (var6 >= 10) {
-						var2.append(((char) (var6 + 55)));
-					} else {
-						var2.append(((char) (var6 + 48)));
-					}
-				}
-			} else {
-				var2.append(var4);
-			}
-		}
-		return var2.toString();
-	}
-
-	@ObfuscatedName("n")
-	@ObfuscatedSignature(descriptor = "(IIII)I", garbageValue = "-68634034")
-	static final int method5069(int var0, int var1, int var2) {
-		int var3 = var0 / var2;
-		int var4 = var0 & (var2 - 1);
-		int var5 = var1 / var2;
-		int var6 = var1 & (var2 - 1);
-		int var7 = class139.method2932(var3, var5);
-		int var8 = class139.method2932(var3 + 1, var5);
-		int var9 = class139.method2932(var3, var5 + 1);
-		int var10 = class139.method2932(var3 + 1, var5 + 1);
-		int var11 = class131.method2802(var7, var8, var4, var2);
-		int var12 = class131.method2802(var9, var10, var4, var2);
-		return class131.method2802(var11, var12, var6, var2);
-	}
+    @ObfuscatedName("lq")
+    @ObfuscatedSignature(descriptor = "(Ljz;I)Z", garbageValue = "-1191528713")
+    @Export("isComponentHidden")
+    static boolean isComponentHidden(Widget var0) {
+        return var0.isHidden;
+    }
 }

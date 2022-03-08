@@ -1,3 +1,4 @@
+import net.runelite.rs.ScriptOpcodes;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
@@ -6,161 +7,169 @@ import net.runelite.mapping.ObfuscatedSignature;
 @ObfuscatedName("hh")
 @Implements("WorldMapLabelSize")
 public class WorldMapLabelSize {
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "Lhh;")
-	@Export("WorldMapLabelSize_small")
-	public static final WorldMapLabelSize WorldMapLabelSize_small;
+    @ObfuscatedName("c")
+    @ObfuscatedSignature(descriptor = "Lhh;")
+    @Export("WorldMapLabelSize_small")
+    public static final WorldMapLabelSize WorldMapLabelSize_small;
 
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(descriptor = "Lhh;")
-	@Export("WorldMapLabelSize_medium")
-	public static final WorldMapLabelSize WorldMapLabelSize_medium;
+    @ObfuscatedName("l")
+    @ObfuscatedSignature(descriptor = "Lhh;")
+    @Export("WorldMapLabelSize_medium")
+    public static final WorldMapLabelSize WorldMapLabelSize_medium;
 
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(descriptor = "Lhh;")
-	@Export("WorldMapLabelSize_large")
-	public static final WorldMapLabelSize WorldMapLabelSize_large;
+    @ObfuscatedName("s")
+    @ObfuscatedSignature(descriptor = "Lhh;")
+    @Export("WorldMapLabelSize_large")
+    public static final WorldMapLabelSize WorldMapLabelSize_large;
 
-	@ObfuscatedName("j")
-	static byte[][][] field2580;
+    @ObfuscatedName("v")
+    @Export("SpriteBuffer_pixels")
+    public static byte[][] SpriteBuffer_pixels;
 
-	@ObfuscatedName("n")
-	@ObfuscatedGetter(intValue = -1838818577)
-	@Export("ItemDefinition_fileCount")
-	public static int ItemDefinition_fileCount;
+    @ObfuscatedName("ey")
+    @ObfuscatedSignature(descriptor = "Lkz;")
+    @Export("archive6")
+    static Archive archive6;
 
-	@ObfuscatedName("m")
-	@ObfuscatedGetter(intValue = -606313299)
-	final int field2583;
+    @ObfuscatedName("eu")
+    @ObfuscatedSignature(descriptor = "Lkz;")
+    @Export("archive7")
+    static Archive archive7;
 
-	@ObfuscatedName("t")
-	@ObfuscatedGetter(intValue = -330742685)
-	final int field2578;
+    @ObfuscatedName("nq")
+    @ObfuscatedGetter(intValue = 360824335)
+    @Export("selectedSpellWidget")
+    static int selectedSpellWidget;
 
-	@ObfuscatedName("s")
-	@ObfuscatedGetter(intValue = -586299201)
-	final int field2579;
-	static 
-	{
-		WorldMapLabelSize_small = new WorldMapLabelSize(2, 0, 4);
-		WorldMapLabelSize_medium = new WorldMapLabelSize(1, 1, 2);
-		WorldMapLabelSize_large = new WorldMapLabelSize(0, 2, 0);
-	}
+    @ObfuscatedName("e")
+    @ObfuscatedGetter(intValue = -1864990741)
+    final int field2599;
 
-	WorldMapLabelSize(int var1, int var2, int var3) {
-		this.field2583 = var1;
-		this.field2578 = var2;
-		this.field2579 = var3;
-	}
+    @ObfuscatedName("r")
+    @ObfuscatedGetter(intValue = -980270199)
+    final int field2603;
 
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(descriptor = "(FI)Z", garbageValue = "714158034")
-	boolean method4370(float var1) {
-		return var1 >= ((float) (this.field2579));
-	}
+    @ObfuscatedName("o")
+    @ObfuscatedGetter(intValue = -576668207)
+    final int field2602;
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(I)[Lhh;", garbageValue = "1279044140")
-	static WorldMapLabelSize[] method4357() {
-		return new WorldMapLabelSize[]{ WorldMapLabelSize_large, WorldMapLabelSize_medium, WorldMapLabelSize_small };
-	}
+    static {
+        WorldMapLabelSize_small = new WorldMapLabelSize(0, 0, 4);
+        WorldMapLabelSize_medium = new WorldMapLabelSize(1, 1, 2);
+        WorldMapLabelSize_large = new WorldMapLabelSize(2, 2, 0);
+    }
 
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(descriptor = "(II)Lfi;", garbageValue = "-661734359")
-	@Export("getNpcDefinition")
-	public static NPCComposition getNpcDefinition(int var0) {
-		NPCComposition var1 = ((NPCComposition) (NPCComposition.NpcDefinition_cached.get(((long) (var0)))));
-		if (var1 != null) {
-			return var1;
-		} else {
-			byte[] var2 = NPCComposition.NpcDefinition_archive.takeFile(9, var0);
-			var1 = new NPCComposition();
-			var1.id = var0;
-			if (var2 != null) {
-				var1.decode(new Buffer(var2));
-			}
-			var1.postDecode();
-			NPCComposition.NpcDefinition_cached.put(var1, ((long) (var0)));
-			return var1;
-		}
-	}
+    WorldMapLabelSize(int var1, int var2, int var3) {
+        this.field2599 = var1;
+        this.field2603 = var2;
+        this.field2602 = var3;
+    }
 
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(descriptor = "(II)Lhh;", garbageValue = "-1103968142")
-	static WorldMapLabelSize method4362(int var0) {
-		WorldMapLabelSize[] var1 = method4357();
-		for (int var2 = 0; var2 < var1.length; ++var2) {
-			WorldMapLabelSize var3 = var1[var2];
-			if (var0 == var3.field2578) {
-				return var3;
-			}
-		}
-		return null;
-	}
+    @ObfuscatedName("l")
+    @ObfuscatedSignature(descriptor = "(FI)Z", garbageValue = "605395104")
+    boolean method4311(float var1) {
+        return var1 >= ((float) (this.field2602));
+    }
 
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(descriptor = "(ILbn;ZB)I", garbageValue = "0")
-	static int method4359(int var0, Script var1, boolean var2) {
-		if (var0 == 7100) {
-			++IsaacCipher.Interpreter_intStackSize;
-			return 1;
-		} else if (var0 == 7101) {
-			class13.Interpreter_stringStackSize += 2;
-			return 1;
-		} else if (((((var0 != 7102) && (var0 != 7103)) && (var0 != 7104)) && (var0 != 7105)) && (var0 != 7109)) {
-			if (var0 == 7106) {
-				++IsaacCipher.Interpreter_intStackSize;
-				return 1;
-			} else if (var0 == 7107) {
-				++IsaacCipher.Interpreter_intStackSize;
-				return 1;
-			} else if (var0 == 7108) {
-				Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = (class14.method204()) ? 1 : 0;
-				return 1;
-			} else if (var0 == 7110) {
-				Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = 0;
-				return 1;
-			} else if (var0 == 7120) {
-				--IsaacCipher.Interpreter_intStackSize;
-				Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = 0;
-				return 1;
-			} else if (var0 == 7121) {
-				IsaacCipher.Interpreter_intStackSize -= 2;
-				Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = -1;
-				return 1;
-			} else if (var0 == 7122) {
-				IsaacCipher.Interpreter_intStackSize -= 2;
-				Interpreter.Interpreter_intStack[(++IsaacCipher.Interpreter_intStackSize) - 1] = 0;
-				return 1;
-			} else {
-				return 2;
-			}
-		} else {
-			++IsaacCipher.Interpreter_intStackSize;
-			return 1;
-		}
-	}
+    @ObfuscatedName("c")
+    @ObfuscatedSignature(descriptor = "(I)[Lhh;", garbageValue = "-1884718304")
+    static WorldMapLabelSize[] method4309() {
+        return new WorldMapLabelSize[]{ WorldMapLabelSize_small, WorldMapLabelSize_large, WorldMapLabelSize_medium };
+    }
 
-	@ObfuscatedName("gq")
-	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "1715943871")
-	static void method4358() {
-		if (Varcs.worldMap != null) {
-			Varcs.worldMap.method6870(class20.Client_plane, (class340.localPlayer.x >> 7) + class131.baseX, (class340.localPlayer.y >> 7) + TileItem.baseY, false);
-			Varcs.worldMap.loadCache();
-		}
-	}
+    @ObfuscatedName("c")
+    @ObfuscatedSignature(descriptor = "(Lkq;I)V", garbageValue = "-613673460")
+    public static void method4325(AbstractArchive var0) {
+        StructComposition.StructDefinition_archive = var0;
+    }
 
-	@ObfuscatedName("ln")
-	@ObfuscatedSignature(descriptor = "(B)V", garbageValue = "-62")
-	static void method4373() {
-		if (Messages.field1273 != null) {
-			Client.field559 = Client.cycle;
-			Messages.field1273.method5795();
-			for (int var0 = 0; var0 < Client.players.length; ++var0) {
-				if (Client.players[var0] != null) {
-					Messages.field1273.method5806((Client.players[var0].x >> 7) + class131.baseX, (Client.players[var0].y >> 7) + TileItem.baseY);
-				}
-			}
-		}
-	}
+    @ObfuscatedName("s")
+    @ObfuscatedSignature(descriptor = "(IB)Lhh;", garbageValue = "81")
+    static WorldMapLabelSize method4320(int var0) {
+        WorldMapLabelSize[] var1 = method4309();
+        for (int var2 = 0; var2 < var1.length; ++var2) {
+            WorldMapLabelSize var3 = var1[var2];
+            if (var0 == var3.field2603) {
+                return var3;
+            }
+        }
+        return null;
+    }
+
+    @ObfuscatedName("o")
+    @ObfuscatedSignature(descriptor = "(II)V", garbageValue = "-2109628628")
+    static void method4324(int var0) {
+        ItemContainer var1 = ((ItemContainer) (ItemContainer.itemContainers.get(((long) (var0)))));
+        if (var1 != null) {
+            var1.remove();
+        }
+    }
+
+    @ObfuscatedName("w")
+    @ObfuscatedSignature(descriptor = "(I)V", garbageValue = "163767958")
+    static void method4317() {
+        if ((Client.Login_isUsernameRemembered && (Login.Login_username != null)) && (Login.Login_username.length() > 0)) {
+            Login.currentLoginField = 1;
+        } else {
+            Login.currentLoginField = 0;
+        }
+    }
+
+    @ObfuscatedName("p")
+    @ObfuscatedSignature(descriptor = "(ILbl;ZB)I", garbageValue = "31")
+    static int method4322(int var0, Script var1, boolean var2) {
+        Widget var3 = (var2) ? class16.scriptDotWidget : Interpreter.scriptActiveWidget;
+        if (var0 == ScriptOpcodes.CC_GETTARGETMASK) {
+            Interpreter.Interpreter_intStack[(++Interpreter.Interpreter_intStackSize) - 1] = class135.Widget_unpackTargetMask(Language.getWidgetFlags(var3));
+            return 1;
+        } else if (var0 != ScriptOpcodes.CC_GETOP) {
+            if (var0 == ScriptOpcodes.CC_GETOPBASE) {
+                if (var3.dataText == null) {
+                    Interpreter.Interpreter_stringStack[(++BufferedNetSocket.Interpreter_stringStackSize) - 1] = "";
+                } else {
+                    Interpreter.Interpreter_stringStack[(++BufferedNetSocket.Interpreter_stringStackSize) - 1] = var3.dataText;
+                }
+                return 1;
+            } else {
+                return 2;
+            }
+        } else {
+            int var4 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+            --var4;
+            if (((var3.actions != null) && (var4 < var3.actions.length)) && (var3.actions[var4] != null)) {
+                Interpreter.Interpreter_stringStack[(++BufferedNetSocket.Interpreter_stringStackSize) - 1] = var3.actions[var4];
+            } else {
+                Interpreter.Interpreter_stringStack[(++BufferedNetSocket.Interpreter_stringStackSize) - 1] = "";
+            }
+            return 1;
+        }
+    }
+
+    @ObfuscatedName("ge")
+    @ObfuscatedSignature(descriptor = "(II)V", garbageValue = "1940340272")
+    @Export("setWindowedMode")
+    static void setWindowedMode(int var0) {
+        Client.field764 = 0L;
+        if (var0 >= 2) {
+            Client.isResizable = true;
+        } else {
+            Client.isResizable = false;
+        }
+        if (class339.getWindowedMode() == 1) {
+            class414.client.setMaxCanvasSize(765, 503);
+        } else {
+            class414.client.setMaxCanvasSize(7680, 2160);
+        }
+        if (Client.gameState >= 25) {
+            DesktopPlatformInfoProvider.method6847();
+        }
+    }
+
+    @ObfuscatedName("ly")
+    @ObfuscatedSignature(descriptor = "(IB)V", garbageValue = "15")
+    static void method4321(int var0) {
+        if (var0 != Client.loginState) {
+            Client.loginState = var0;
+        }
+    }
 }

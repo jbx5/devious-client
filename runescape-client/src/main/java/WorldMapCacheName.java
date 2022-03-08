@@ -5,67 +5,103 @@ import net.runelite.mapping.ObfuscatedSignature;
 @ObfuscatedName("id")
 @Implements("WorldMapCacheName")
 public class WorldMapCacheName {
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "Lid;")
-	public static final WorldMapCacheName field2768;
+    @ObfuscatedName("c")
+    @ObfuscatedSignature(descriptor = "Lid;")
+    public static final WorldMapCacheName field2793;
 
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(descriptor = "Lid;")
-	public static final WorldMapCacheName field2763;
+    @ObfuscatedName("l")
+    @ObfuscatedSignature(descriptor = "Lid;")
+    public static final WorldMapCacheName field2790;
 
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(descriptor = "Lid;")
-	public static final WorldMapCacheName field2764;
+    @ObfuscatedName("s")
+    @ObfuscatedSignature(descriptor = "Lid;")
+    public static final WorldMapCacheName field2791;
 
-	@ObfuscatedName("m")
-	@ObfuscatedSignature(descriptor = "Lid;")
-	static final WorldMapCacheName field2765;
+    @ObfuscatedName("e")
+    @ObfuscatedSignature(descriptor = "Lid;")
+    static final WorldMapCacheName field2792;
 
-	@ObfuscatedName("t")
-	@ObfuscatedSignature(descriptor = "Lid;")
-	public static final WorldMapCacheName field2766;
+    @ObfuscatedName("r")
+    @ObfuscatedSignature(descriptor = "Lid;")
+    public static final WorldMapCacheName field2795;
 
-	@ObfuscatedName("n")
-	@ObfuscatedSignature(descriptor = "Lpl;")
-	@Export("leftTitleSprite")
-	static SpritePixels leftTitleSprite;
+    @ObfuscatedName("da")
+    @ObfuscatedSignature(descriptor = "Lmg;")
+    @Export("js5Socket")
+    static AbstractSocket js5Socket;
 
-	@ObfuscatedName("s")
-	@Export("name")
-	public final String name;
-	static 
-	{
-		field2768 = new WorldMapCacheName("details");
-		field2763 = new WorldMapCacheName("compositemap");
-		field2764 = new WorldMapCacheName("compositetexture");
-		field2765 = new WorldMapCacheName("area");
-		field2766 = new WorldMapCacheName("labels");
-	}
+    @ObfuscatedName("o")
+    @Export("name")
+    public final String name;
 
-	WorldMapCacheName(String var1) {
-		this.name = var1;
-	}
+    static {
+        field2793 = new WorldMapCacheName("details");
+        field2790 = new WorldMapCacheName("compositemap");
+        field2791 = new WorldMapCacheName("compositetexture");
+        field2792 = new WorldMapCacheName("area");
+        field2795 = new WorldMapCacheName("labels");
+    }
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(III)I", garbageValue = "-875853562")
-	public static int method4865(int var0, int var1) {
-		int var2;
-		if (var1 > var0) {
-			var2 = var0;
-			var0 = var1;
-			var1 = var2;
-		}
-		while (var1 != 0) {
-			var2 = var0 % var1;
-			var0 = var1;
-			var1 = var2;
-		} 
-		return var0;
-	}
+    WorldMapCacheName(String var1) {
+        this.name = var1;
+    }
 
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(descriptor = "(III)Z", garbageValue = "985293867")
-	public static boolean method4864(int var0, int var1) {
-		return ((var0 >> (var1 + 1)) & 1) != 0;
-	}
+    @ObfuscatedName("as")
+    @ObfuscatedSignature(descriptor = "(II)I", garbageValue = "-128254341")
+    static int method4829(int var0) {
+        return ((int) (((Math.log(((double) (var0))) / Interpreter.field850) - 7.0) * 256.0));
+    }
+
+    @ObfuscatedName("an")
+    @ObfuscatedSignature(descriptor = "(ILbl;ZI)I", garbageValue = "1334324157")
+    static int method4830(int var0, Script var1, boolean var2) {
+        if ((((((((var0 != 7000) && (var0 != 7005)) && (var0 != 7010)) && (var0 != 7015)) && (var0 != 7020)) && (var0 != 7025)) && (var0 != 7030)) && (var0 != 7035)) {
+            if ((((((var0 != 7001) && (var0 != 7002)) && (var0 != 7011)) && (var0 != 7012)) && (var0 != 7021)) && (var0 != 7022)) {
+                if (((var0 != 7003) && (var0 != 7013)) && (var0 != 7023)) {
+                    if ((((((var0 != 7006) && (var0 != 7007)) && (var0 != 7016)) && (var0 != 7017)) && (var0 != 7026)) && (var0 != 7027)) {
+                        if (((var0 != 7008) && (var0 != 7018)) && (var0 != 7028)) {
+                            if ((var0 != 7031) && (var0 != 7032)) {
+                                if (var0 == 7033) {
+                                    --BufferedNetSocket.Interpreter_stringStackSize;
+                                    return 1;
+                                } else if ((var0 != 7036) && (var0 != 7037)) {
+                                    if (var0 == 7038) {
+                                        --Interpreter.Interpreter_intStackSize;
+                                        return 1;
+                                    } else if ((((((((var0 != 7004) && (var0 != 7009)) && (var0 != 7014)) && (var0 != 7019)) && (var0 != 7024)) && (var0 != 7029)) && (var0 != 7034)) && (var0 != 7039)) {
+                                        return 2;
+                                    } else {
+                                        --Interpreter.Interpreter_intStackSize;
+                                        return 1;
+                                    }
+                                } else {
+                                    Interpreter.Interpreter_intStackSize -= 2;
+                                    return 1;
+                                }
+                            } else {
+                                --BufferedNetSocket.Interpreter_stringStackSize;
+                                --Interpreter.Interpreter_intStackSize;
+                                return 1;
+                            }
+                        } else {
+                            --Interpreter.Interpreter_intStackSize;
+                            return 1;
+                        }
+                    } else {
+                        Interpreter.Interpreter_intStackSize -= 2;
+                        return 1;
+                    }
+                } else {
+                    Interpreter.Interpreter_intStackSize -= 2;
+                    return 1;
+                }
+            } else {
+                Interpreter.Interpreter_intStackSize -= 3;
+                return 1;
+            }
+        } else {
+            Interpreter.Interpreter_intStackSize -= 5;
+            return 1;
+        }
+    }
 }

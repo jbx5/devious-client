@@ -18,9 +18,16 @@ import net.runelite.api.coords.WorldPoint;
 import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Singleton;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Predicate;
 
 @Singleton
 @Slf4j
@@ -33,6 +40,8 @@ public class Walker
 	private static final int MIN_TILES_LEFT_BEFORE_RECHOOSE = 3;
 	private static final int MAX_MIN_ENERGY = 50;
 	private static final int MIN_ENERGY = 5;
+	private static final int MAX_NEAREST_SEARCH_ITERATIONS = 10;
+
 	public static final LoadingCache<WorldPoint, List<WorldPoint>> PATH_CACHE = CacheBuilder.newBuilder()
 			.expireAfterWrite(5, TimeUnit.MINUTES)
 			.build(new CacheLoader<>()
@@ -62,6 +71,12 @@ public class Walker
 		if (destination.equals(local.getWorldLocation()))
 		{
 			return true;
+		}
+
+		if (destination.isInScene(Game.getClient()) && Reachable.isWalkable(destination))
+		{
+			Movement.walk(destination);
+			return false;
 		}
 
 		Map<WorldPoint, List<Transport>> transports = buildTransportLinks();
@@ -302,6 +317,40 @@ public class Walker
 		}
 
 		return false;
+	}
+
+	public static WorldPoint nearestWalkableTile(WorldPoint source, Predicate<WorldPoint> filter)
+	{
+		CollisionMap cm = Game.getGlobalCollisionMap();
+
+		if (!cm.fullBlock(source) && filter.test(source))
+		{
+			return source;
+		}
+
+		int currentIteration = 1;
+		for (int radius = currentIteration; radius < MAX_NEAREST_SEARCH_ITERATIONS; radius++)
+		{
+			for (int x = -radius; x < radius; x++)
+			{
+				for (int y = -radius; y < radius; y++)
+				{
+					WorldPoint p = source.dx(x).dy(y);
+					if (cm.fullBlock(p) || !filter.test(p))
+					{
+						continue;
+					}
+					return p;
+				}
+			}
+		}
+		log.debug("Could not find a walkable tile near {}", source);
+		return null;
+	}
+
+	public static WorldPoint nearestWalkableTile(WorldPoint source)
+	{
+		return nearestWalkableTile(source, x -> true);
 	}
 
 	public static List<WorldPoint> remainingPath(List<WorldPoint> path)

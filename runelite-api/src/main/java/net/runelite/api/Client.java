@@ -43,6 +43,7 @@ import net.runelite.api.packets.PacketBufferNode;
 import net.runelite.api.packets.PacketWriter;
 import net.runelite.api.annotations.VisibleForExternalPlugins;
 import net.runelite.api.clan.ClanChannel;
+import net.runelite.api.clan.ClanID;
 import net.runelite.api.clan.ClanSettings;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
@@ -50,9 +51,11 @@ import net.runelite.api.events.PlayerChanged;
 import net.runelite.api.hooks.Callbacks;
 import net.runelite.api.hooks.DrawCallbacks;
 import net.runelite.api.vars.AccountType;
+import net.runelite.api.widgets.ItemQuantityMode;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
 import org.slf4j.Logger;
+import org.intellij.lang.annotations.MagicConstant;
 
 /**
  * Represents the RuneScape client.
@@ -448,7 +451,7 @@ public interface Client extends GameEngine
 	 * @return the created sprite
 	 */
 	@Nullable
-	SpritePixels createItemSprite(int itemId, int quantity, int border, int shadowColor, int stackable, boolean noted, int scale);
+	SpritePixels createItemSprite(int itemId, int quantity, int border, int shadowColor, @MagicConstant(valuesFromClass = ItemQuantityMode.class) int stackable, boolean noted, int scale);
 
 	/**
 	 * Loads and creates the sprite images of the passed archive and file IDs.
@@ -952,7 +955,7 @@ public interface Client extends GameEngine
 	 *
 	 * @return the widget flags table
 	 */
-	HashTable getWidgetFlags();
+	HashTable<IntegerNode> getWidgetFlags();
 
 	/**
 	 * Gets the widget node component table.
@@ -2141,6 +2144,16 @@ public interface Client extends GameEngine
 	 */
 	void removeFriend(String name);
 
+	/**
+	 * Add player to ignorelist
+	 */
+	void addIgnore(String name);
+
+	/**
+	 * Remove player from ignorelist
+	 */
+	void removeIgnore(String name);
+
 	void setModulus(BigInteger modulus);
 
 	BigInteger getModulus();
@@ -2272,6 +2285,16 @@ public interface Client extends GameEngine
 	void setLoginScreen(SpritePixels pixels);
 
 	/**
+	 * Low level control over the login screen background.
+	 * Useful when changing the login screen background every frame, for example for playing a video.
+	 * A typical update cycle would be:
+	 * 1. setLoginScreenBackground(pixels) 2. setLoginScreenLeftTitleSprite() 3. setLoginScreenRightTitleSprite()
+	 */
+	void setLoginScreenBackground(SpritePixels pixels);
+	void setLoginScreenLeftTitleSprite();
+	void setLoginScreenRightTitleSprite();
+
+	/**
 	 * Sets whether the flames on the login screen should be rendered
 	 */
 	void setShouldRenderLoginScreenFire(boolean val);
@@ -2288,7 +2311,7 @@ public interface Client extends GameEngine
 	 * @return
 	 * @see KeyCode
 	 */
-	boolean isKeyPressed(int keycode);
+	boolean isKeyPressed(@MagicConstant(valuesFromClass = KeyCode.class) int keycode);
 
 	int getFollowerIndex();
 
@@ -2389,7 +2412,7 @@ public interface Client extends GameEngine
 	 * @see net.runelite.api.clan.ClanID
 	 */
 	@Nullable
-	ClanChannel getClanChannel(int clanId);
+	ClanChannel getClanChannel(@MagicConstant(valuesFromClass = ClanID.class) int clanId);
 
 	/**
 	 * Get clan settings by id
@@ -2398,7 +2421,7 @@ public interface Client extends GameEngine
 	 * @see net.runelite.api.clan.ClanID
 	 */
 	@Nullable
-	ClanSettings getClanSettings(int clanId);
+	ClanSettings getClanSettings(@MagicConstant(valuesFromClass = ClanID.class) int clanId);
 
 	void setUnlockedFps(boolean unlock);
 	void setUnlockedFpsTarget(int fps);
@@ -2417,22 +2440,21 @@ public interface Client extends GameEngine
 	 * Unethical
 	 */
 
-	default void interact(final int identifier, final int opcode, final int param0, final int param1)
+	default void interact(int identifier, int opcode, int param0, int param1)
 	{
 		interact(identifier, opcode, param0, param1, -1, -1);
 	}
 
-	default void interact(final int identifier, final int opcode, final int param0, final int param1,
+	default void interact(int identifier, int opcode, int param0, int param1,
 						  int clickX, int clickY)
 	{
 		interact(identifier, opcode, param0, param1, clickX, clickY, -1337);
 	}
 
-	default void interact(final int identifier, final int opcode, final int param0, final int param1, int clickX, int clickY,
+	default void interact(int identifier, int opcode, int param0, int param1, int clickX, int clickY,
 				  long entityTag)
 	{
-		interact(new AutomatedMenu(identifier, MenuAction.of(opcode),
-				param0, param1, clickY, clickY, entityTag));
+		interact(new AutomatedMenu(identifier, opcode, param0, param1, clickX, clickY, entityTag));
 	}
 
 	void interact(AutomatedMenu automatedMenu);
@@ -2552,4 +2574,6 @@ public interface Client extends GameEngine
 	VarbitComposition getVarbitComposition(int varbitId);
 
 	Instant getLastInteractionTime();
+
+	int getSelectedItemID();
 }

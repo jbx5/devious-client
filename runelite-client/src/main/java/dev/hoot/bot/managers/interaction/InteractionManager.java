@@ -7,9 +7,10 @@ import dev.hoot.api.events.AutomatedMenu;
 import dev.hoot.api.game.GameThread;
 import dev.hoot.api.input.naturalmouse.NaturalMouse;
 import dev.hoot.api.movement.Movement;
+import dev.hoot.api.packets.MousePackets;
+import dev.hoot.api.packets.Packets;
 import dev.hoot.api.widgets.DialogOption;
 import dev.hoot.api.widgets.Widgets;
-import dev.hoot.bot.managers.DefinitionManager;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.api.Constants;
@@ -18,7 +19,6 @@ import net.runelite.api.events.DialogProcessed;
 import net.runelite.api.events.MenuOptionClicked;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
-import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
 
 import javax.inject.Inject;
@@ -41,13 +41,6 @@ public class InteractionManager
 	@Inject
 	private Client client;
 
-	@Inject
-	InteractionManager(EventBus eventBus, DefinitionManager definitionManager)
-	{
-		definitionManager.init();
-		eventBus.register(definitionManager);
-	}
-
 	@Subscribe
 	public void onInvokeMenuAction(AutomatedMenu e)
 	{
@@ -65,66 +58,101 @@ public class InteractionManager
 		Point clickPoint = getClickPoint(e);
 		MouseHandler mouseHandler = client.getMouseHandler();
 
-		if (config.clickSwap())
+		try
 		{
-			try
+			switch (config.interactMethod())
 			{
-				if (!interactReady())
-				{
-					throw new InteractionException("Interacting too fast");
-				}
-
-				client.setPendingAutomation(e);
-
-				log.debug("Sending click to [{}, {}]", clickPoint.x, clickPoint.y);
-
-				long tag = e.getEntityTag();
-				if (tag != -1337)
-				{
-					long[] entitiesAtMouse = client.getEntitiesAtMouse();
-					int count = client.getEntitiesAtMouseCount();
-					if (count < 1000)
+				case MOUSE_EVENTS:
+					if (!interactReady())
 					{
-						entitiesAtMouse[count] = tag;
-						client.setEntitiesAtMouseCount(count + 1);
+						throw new InteractionException("Interacting too fast");
 					}
-				}
 
-				if (config.naturalMouse())
-				{
-					naturalMouse.moveTo(clickPoint.x, clickPoint.y);
-				}
-				else
-				{
-					mouseHandler.sendMovement(clickPoint.x, clickPoint.y);
-				}
+					client.setPendingAutomation(e);
 
-				mouseHandler.sendClick(clickPoint.x, clickPoint.y);
-			}
-			catch (InteractionException ex)
-			{
-				log.error("Interaction failed: {}", ex.getMessage());
-				client.setPendingAutomation(null);
-			}
-			finally
-			{
-				long duration = System.currentTimeMillis() - e.getTimestamp();
-				Time.sleep(Constants.CLIENT_TICK_LENGTH + duration);
+					log.debug("Sending click to [{}, {}]", clickPoint.x, clickPoint.y);
+
+					long tag = e.getEntityTag();
+					if (tag != -1337)
+					{
+						long[] entitiesAtMouse = client.getEntitiesAtMouse();
+						int count = client.getEntitiesAtMouseCount();
+						if (count < 1000)
+						{
+							entitiesAtMouse[count] = tag;
+							client.setEntitiesAtMouseCount(count + 1);
+						}
+					}
+
+					if (config.naturalMouse())
+					{
+						naturalMouse.moveTo(clickPoint.x, clickPoint.y);
+					}
+					else
+					{
+						mouseHandler.sendMovement(clickPoint.x, clickPoint.y);
+					}
+
+					mouseHandler.sendClick(clickPoint.x, clickPoint.y);
+					break;
+
+				case INVOKE:
+					if (config.mouseBehavior() != MouseBehavior.DISABLED)
+					{
+						mouseHandler.sendMovement(clickPoint.x, clickPoint.y);
+						mouseHandler.sendClick(-1, -1);
+					}
+
+					processAction(e, clickPoint.x, clickPoint.y);
+
+				case PACKETS:
+					if (config.mouseBehavior() != MouseBehavior.DISABLED)
+					{
+						if (config.naturalMouse())
+						{
+							naturalMouse.moveTo(clickPoint.x, clickPoint.y);
+						}
+						else
+						{
+							mouseHandler.sendMovement(clickPoint.x, clickPoint.y);
+						}
+
+						MousePackets.queueClickPacket(clickPoint.x, clickPoint.y);
+					}
+
+					GameThread.invoke(() ->
+					{
+						try
+						{
+							Packets.fromAutomatedMenu(e).send();
+						}
+						catch (InteractionException ex)
+						{
+							log.debug("{}, falling back to invoke", ex.getMessage());
+							processAction(e, clickPoint.x, clickPoint.y);
+						}
+					});
+
+					break;
 			}
 		}
-		else
+		catch (InteractionException ex)
 		{
-			mouseHandler.sendMovement(clickPoint.x, clickPoint.y);
-			// We can't send button 1, because we're directly invoking the menuaction and button 1 would send a click.
-			mouseHandler.sendClick(clickPoint.x, clickPoint.y, 1337);
-			processAction(e, clickPoint.x, clickPoint.y);
+			log.error("Interaction failed: {}", ex.getMessage());
+			client.setPendingAutomation(null);
+		}
+		finally
+		{
+			long duration = System.currentTimeMillis() - e.getTimestamp();
+			Time.sleep(Constants.CLIENT_TICK_LENGTH + duration);
 		}
 	}
 
 	@Subscribe
 	public void onMenuOptionClicked(MenuOptionClicked e)
 	{
-		if (e.isAutomated() && e.getMenuAction() == MenuAction.WALK)
+		if (e.isAutomated() && e.getMenuAction() == MenuAction.WALK
+				&& config.interactMethod() == InteractMethod.MOUSE_EVENTS)
 		{
 			Movement.setDestination(e.getParam0(), e.getParam1());
 			e.setMenuAction(MenuAction.CANCEL);
@@ -165,17 +193,17 @@ public class InteractionManager
 
 	private Point getClickPoint(AutomatedMenu e)
 	{
-		if (config.interactType() == InteractType.OFF_SCREEN)
+		if (config.mouseBehavior() == MouseBehavior.OFF_SCREEN)
 		{
 			return new Point(0, 0);
 		}
 
-		if (config.interactType() == InteractType.MOUSE_POS)
+		if (config.mouseBehavior() == MouseBehavior.MOUSE_POS)
 		{
 			return new Point(client.getMouseHandler().getCurrentX(), client.getMouseHandler().getCurrentY());
 		}
 
-		if (e.getClickX() != -1 && e.getClickY() != -1 && config.interactType() == InteractType.CLICKBOXES)
+		if (e.getClickX() != -1 && e.getClickY() != -1 && config.mouseBehavior() == MouseBehavior.CLICKBOXES)
 		{
 			Point clickPoint = new Point(e.getClickX(), e.getClickY());
 			if (!clickInsideMinimap(clickPoint))

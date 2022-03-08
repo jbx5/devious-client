@@ -1,42 +1,38 @@
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-@ObfuscatedName("nt")
-public enum class369 implements MouseWheel {
+@ObfuscatedName("nn")
+public class class369 {
+    @ObfuscatedName("c")
+    float field4226;
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "Lnt;")
-	field4220(1, 1),
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(descriptor = "Lnt;")
-	field4215(2, 2),
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(descriptor = "Lnt;")
-	field4216(0, 3),
-	@ObfuscatedName("m")
-	@ObfuscatedSignature(descriptor = "Lnt;")
-	field4214(3, 10);
-	@ObfuscatedName("n")
-	@Export("SpriteBuffer_pixels")
-	public static byte[][] SpriteBuffer_pixels;
+    @ObfuscatedName("l")
+    float field4225;
 
-	@ObfuscatedName("t")
-	@ObfuscatedGetter(intValue = 705420457)
-	final int field4218;
+    @ObfuscatedName("s")
+    float field4227;
 
-	@ObfuscatedName("s")
-	@ObfuscatedGetter(intValue = -1652306035)
-	final int field4219;
+    static {
+        new class369(0.0F, 0.0F, 0.0F);
+        new class369(1.0F, 1.0F, 1.0F);
+        new class369(1.0F, 0.0F, 0.0F);
+        new class369(0.0F, 1.0F, 0.0F);
+        new class369(0.0F, 0.0F, 1.0F);
+        DefaultsGroup.method6589(100);
+    }
 
-	class369(int var3, int var4) {
-		this.field4218 = var3;
-		this.field4219 = var4;
-	}
+    class369(float var1, float var2, float var3) {
+        this.field4226 = var1;
+        this.field4225 = var2;
+        this.field4227 = var3;
+    }
 
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(descriptor = "(B)I", garbageValue = "48")
-	@Export("rsOrdinal")
-	public int rsOrdinal() {
-		return this.field4219;
-	}}
+    @ObfuscatedName("l")
+    @ObfuscatedSignature(descriptor = "(B)F", garbageValue = "86")
+    final float method6638() {
+        return ((float) (Math.sqrt(((double) (((this.field4227 * this.field4227) + (this.field4226 * this.field4226)) + (this.field4225 * this.field4225))))));
+    }
+
+    public String toString() {
+        return (((this.field4226 + ", ") + this.field4225) + ", ") + this.field4227;
+    }
+}

@@ -1,8 +1,10 @@
 package dev.hoot.api.items;
 
+import dev.hoot.api.commons.Predicates;
 import dev.hoot.api.commons.Time;
 import dev.hoot.api.game.Game;
 import dev.hoot.api.game.Vars;
+import dev.hoot.api.packets.WidgetPackets;
 import dev.hoot.api.widgets.Dialog;
 import dev.hoot.api.widgets.Widgets;
 import net.runelite.api.InventoryID;
@@ -13,11 +15,10 @@ import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetID;
 import net.runelite.api.widgets.WidgetInfo;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 public class Bank extends Items
 {
@@ -26,6 +27,8 @@ public class Bank extends Items
 	}
 
 	private static final Bank BANK = new Bank();
+	private static final Inventory BANK_INVENTORY = new Inventory();
+
 	private static final int WITHDRAW_MODE_VARBIT = 3958;
 	private static final int QUANTITY_MODE_VARP = 6590;
 	private static final Supplier<Widget> MAIN_TAB = () -> Widgets.get(12, 11, 0);
@@ -34,6 +37,7 @@ public class Bank extends Items
 	private static final Supplier<Widget> SETTINGS_CONTAINER = () -> Widgets.get(12, 48);
 	private static final Supplier<Widget> WITHDRAW_ITEM = () -> Widgets.get(12, Component.BANK_WITHDRAW_ITEM.childId);
 	private static final Supplier<Widget> WITHDRAW_NOTE = () -> Widgets.get(12, Component.BANK_WITHDRAW_NOTE.childId);
+	private static final Supplier<Widget> EXIT = () -> Widgets.get(12, 2, 11);
 
 	@Override
 	protected List<Item> all(Predicate<Item> filter)
@@ -171,19 +175,89 @@ public class Bank extends Items
 		return getAll().isEmpty();
 	}
 
-	public static void depositAll(String name)
+	public static void depositAll(String... names)
 	{
-		depositAll(x -> Objects.equals(x.getName(), name));
+		depositAll(x -> Arrays.stream(names).anyMatch(name -> x.getName().equals(name)));
 	}
 
-	public static void depositAll(int id)
+	@Deprecated
+	public static void depositAll(boolean usePackets, String... names)
 	{
-		depositAll(x -> x.getId() == id);
+		depositAll(usePackets, x -> Arrays.stream(names).anyMatch(name -> x.getName().equals(name)));
+	}
+
+	public static void depositAll(int... ids)
+	{
+		depositAll(x -> Arrays.stream(ids).anyMatch(id -> x.getId() == id));
+	}
+
+	@Deprecated
+	public static void depositAll(boolean usePackets, int... ids)
+	{
+		depositAll(usePackets, x -> Arrays.stream(ids).anyMatch(id -> x.getId() == id));
 	}
 
 	public static void depositAll(Predicate<Item> filter)
 	{
-		deposit(filter, Integer.MAX_VALUE);
+		Set<Item> items = Inventory.getAll(filter).stream().filter(Predicates.distinctByProperty(Item::getId)).collect(Collectors.toSet());
+
+		items.forEach((item) ->
+		{
+			deposit(item.getId(), Integer.MAX_VALUE);
+			Time.sleepTick();
+		});
+	}
+
+	@Deprecated
+	public static void depositAll(boolean usePackets, Predicate<Item> filter)
+	{
+		Set<Item> items = Inventory.getAll(filter).stream().filter(Predicates.distinctByProperty(Item::getId)).collect(Collectors.toSet());
+
+		if (usePackets)
+		{
+			items.forEach((item) -> WidgetPackets.widgetItemAction(WidgetInfo.BANK_INVENTORY_ITEMS_CONTAINER, item, "Deposit-All"));
+		}
+		else
+		{
+			items.forEach((item) ->
+			{
+				deposit(item.getId(), Integer.MAX_VALUE);
+				Time.sleepTick();
+			});
+		}
+	}
+
+	public static void depositAllExcept(String... names)
+	{
+		depositAllExcept(x -> Arrays.stream(names).anyMatch(name -> x.getName().equals(name)));
+	}
+
+	@Deprecated
+	public static void depositAllExcept(boolean usePackets, String... names)
+	{
+		depositAllExcept(usePackets, x -> Arrays.stream(names).anyMatch(name -> x.getName().equals(name)));
+	}
+
+	public static void depositAllExcept(int... ids)
+	{
+		depositAllExcept(x -> Arrays.stream(ids).anyMatch(id -> x.getId() == id));
+	}
+
+	@Deprecated
+	public static void depositAllExcept(boolean usePackets, int... ids)
+	{
+		depositAllExcept(usePackets, x -> Arrays.stream(ids).anyMatch(id -> x.getId() == id));
+	}
+
+	public static void depositAllExcept(Predicate<Item> filter)
+	{
+		depositAll(filter.negate());
+	}
+
+	@Deprecated
+	public static void depositAllExcept(boolean usePackets, Predicate<Item> filter)
+	{
+		depositAll(usePackets, filter.negate());
 	}
 
 	public static void deposit(String name, int amount)
@@ -198,9 +272,7 @@ public class Bank extends Items
 
 	public static void deposit(Predicate<Item> filter, int amount)
 	{
-		Item item = getInventory(filter).stream()
-				.findFirst()
-				.orElse(null);
+		Item item = Inventory.getFirst(filter);
 		if (item == null)
 		{
 			return;
@@ -222,9 +294,7 @@ public class Bank extends Items
 				Dialog.enterInput(amount);
 			}
 		}
-
 	}
-
 
 	public static void withdrawAll(String name, WithdrawMode withdrawMode)
 	{
@@ -334,34 +404,6 @@ public class Bank extends Items
 	public static boolean isNotedWithdrawMode()
 	{
 		return Vars.getBit(WITHDRAW_MODE_VARBIT) == 1;
-	}
-
-	public static List<Item> getInventory(Predicate<Item> filter)
-	{
-		List<Item> items = new ArrayList<>();
-		ItemContainer container = Game.getClient().getItemContainer(InventoryID.INVENTORY);
-		if (container == null)
-		{
-			return items;
-		}
-
-		Item[] containerItems = container.getItems();
-		for (int i = 0, containerItemsLength = containerItems.length; i < containerItemsLength; i++)
-		{
-			Item item = containerItems[i];
-			if (item.getId() != -1 && item.getName() != null && !item.getName().equals("null"))
-			{
-				item.setWidgetId(item.calculateWidgetId(WidgetInfo.BANK_INVENTORY_ITEMS_CONTAINER));
-				item.setSlot(i);
-
-				if (filter.test(item))
-				{
-					items.add(item);
-				}
-			}
-		}
-
-		return items;
 	}
 
 	public static List<Item> getAll(Predicate<Item> filter)
@@ -495,6 +537,68 @@ public class Bank extends Items
 		}
 	}
 
+	public static class Inventory extends Items
+	{
+		@Override
+		protected List<Item> all(Predicate<Item> filter)
+		{
+			List<Item> items = new ArrayList<>();
+			ItemContainer container = Game.getClient().getItemContainer(InventoryID.INVENTORY);
+			if (container == null)
+			{
+				return items;
+			}
+
+			Item[] containerItems = container.getItems();
+			for (int i = 0, containerItemsLength = containerItems.length; i < containerItemsLength; i++)
+			{
+				Item item = containerItems[i];
+				if (item.getId() != -1 && item.getName() != null && !item.getName().equals("null"))
+				{
+					item.setWidgetId(item.calculateWidgetId(WidgetInfo.BANK_INVENTORY_ITEMS_CONTAINER));
+					item.setSlot(i);
+
+					if (filter.test(item))
+					{
+						items.add(item);
+					}
+				}
+			}
+
+			return items;
+		}
+
+		public static List<Item> getAll(Predicate<Item> filter)
+		{
+			return BANK_INVENTORY.all(filter);
+		}
+
+		public static List<Item> getAll(int... ids)
+		{
+			return BANK_INVENTORY.all(ids);
+		}
+
+		public static List<Item> getAll(String... names)
+		{
+			return BANK_INVENTORY.all(Predicates.names(names));
+		}
+
+		public static Item getFirst(Predicate<Item> filter)
+		{
+			return BANK_INVENTORY.first(filter);
+		}
+
+		public static Item getFirst(int... ids)
+		{
+			return BANK_INVENTORY.first(ids);
+		}
+
+		public static Item getFirst(String... names)
+		{
+			return BANK_INVENTORY.first(names);
+		}
+	}
+
 	public enum Component
 	{
 		BANK_REARRANGE_SWAP(WidgetID.BANK_GROUP_ID, 17),
@@ -609,5 +713,16 @@ public class Bank extends Items
 
 			return WithdrawOption.X;
 		}
+	}
+
+	public static void close()
+	{
+		Widget exitBank = EXIT.get();
+		if (!Widgets.isVisible(exitBank))
+		{
+			return;
+		}
+
+		exitBank.interact("Close");
 	}
 }
