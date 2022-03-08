@@ -100,7 +100,6 @@ public class InteractionManager
 					if (config.mouseBehavior() != MouseBehavior.DISABLED)
 					{
 						mouseHandler.sendMovement(clickPoint.x, clickPoint.y);
-						// We can't send button 1, because we're directly invoking the menuaction and button 1 would send a click.
 						mouseHandler.sendClick(-1, -1);
 					}
 
@@ -152,7 +151,8 @@ public class InteractionManager
 	@Subscribe
 	public void onMenuOptionClicked(MenuOptionClicked e)
 	{
-		if (e.isAutomated() && e.getMenuAction() == MenuAction.WALK)
+		if (e.isAutomated() && e.getMenuAction() == MenuAction.WALK
+				&& config.interactMethod() == InteractMethod.MOUSE_EVENTS)
 		{
 			Movement.setDestination(e.getParam0(), e.getParam1());
 			e.setMenuAction(MenuAction.CANCEL);

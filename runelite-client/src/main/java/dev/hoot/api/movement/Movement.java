@@ -147,7 +147,7 @@ public class Movement
 
 		for (WorldPoint point : walkPointList)
 		{
-			if (!Reachable.isWalkable(point))
+			if (point.isInScene(Game.getClient()) && !Reachable.isWalkable(point))
 			{
 				continue;
 			}
