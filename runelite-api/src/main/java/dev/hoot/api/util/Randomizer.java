@@ -3,15 +3,18 @@ package dev.hoot.api.util;
 import java.awt.*;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Randomizer {
+public class Randomizer
+{
 
-    public static Point getRandomPointIn(Rectangle rect) {
+    public static Point getRandomPointIn(Rectangle rect)
+    {
         int xDeviation = (int) Math.log(rect.getWidth() * Math.PI);
         int yDeviation = (int) Math.log(rect.getHeight() * Math.PI);
         return getRandomPointIn(rect, xDeviation, yDeviation);
     }
 
-    public static Point getRandomPointIn(Rectangle rect, int xDeviation, int yDeviation) {
+    public static Point getRandomPointIn(Rectangle rect, int xDeviation, int yDeviation)
+    {
         double centerX = rect.getCenterX();
         double centerY = rect.getCenterY();
 

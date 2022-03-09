@@ -344,7 +344,8 @@ public class Item implements Interactable, Identifiable, EntityNameable
 		if (getType() != Item.Type.EQUIPMENT)
 		{
 			Widget slot = widget.getChild(getSlot());
-			if (slot != null) {
+			if (slot != null)
+			{
 				return slot.getBounds() != null ? slot.getBounds() : new Rectangle(-1, -1, 0, 0);
 			}
 		}
