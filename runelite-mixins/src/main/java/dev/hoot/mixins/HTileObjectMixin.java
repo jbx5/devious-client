@@ -105,6 +105,7 @@ public abstract class HTileObjectMixin implements TileObject
 		return new Point(point.x, point.y);
 	}
 
+	@Inject
 	private Rectangle getBounds()
 	{
 		Shape shape = getClickbox();
