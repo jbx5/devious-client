@@ -3,8 +3,6 @@ package dev.hoot.mixins;
 import dev.hoot.api.events.AutomatedMenu;
 import net.runelite.api.MenuAction;
 import net.runelite.api.NPCComposition;
-import net.runelite.api.Perspective;
-import net.runelite.api.Point;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Shadow;
@@ -107,12 +105,6 @@ public abstract class HNpcMixin implements RSNPC
 	public String toString()
 	{
 		return getIndex() + ": " + getName() + " (" + getId() + ") at " + getWorldLocation();
-	}
-
-	@Inject
-	public Point getClickPoint()
-	{
-		return Perspective.localToCanvas(client, getLocalLocation(), client.getPlane());
 	}
 
 	@Inject
