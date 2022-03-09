@@ -153,6 +153,7 @@ public abstract class HTileItemMixin implements RSTileItem
 		return new Point(point.x, point.y);
 	}
 
+	@Inject
 	private Rectangle getBounds()
 	{
 		Shape shape = Perspective.getClickbox(client, getModel(), 0, getLocalLocation());
