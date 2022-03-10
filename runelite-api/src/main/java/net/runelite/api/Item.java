@@ -29,6 +29,7 @@ import dev.hoot.api.Identifiable;
 import dev.hoot.api.Interactable;
 import dev.hoot.api.events.AutomatedMenu;
 import lombok.Data;
+import dev.hoot.api.util.Randomizer;
 import net.runelite.api.util.Text;
 import net.runelite.api.widgets.*;
 
@@ -328,53 +329,34 @@ public class Item implements Interactable, Identifiable, EntityNameable
 	@Override
 	public Point getClickPoint()
 	{
-		Widget widget = client.getWidget(widgetId);
+		java.awt.Point point = Randomizer.getRandomPointIn(getBounds());
+		return new Point(point.x, point.y);
+	}
+
+	private Rectangle getBounds()
+	{
+		Widget widget = client.getWidget(getWidgetId());
 		if (widget == null)
 		{
-			return new Point(-1, -1);
+			return new Rectangle(-1, -1, 0, 0);
 		}
 
-		if (getType() != Type.EQUIPMENT)
+		if (getType() != Item.Type.EQUIPMENT)
 		{
 			Widget slot = widget.getChild(getSlot());
 			if (slot != null)
 			{
-				Rectangle bounds = slot.getBounds();
-				if (bounds != null)
-				{
-					try
-					{
-						return new Point(
-								random.nextInt(bounds.x, bounds.x + bounds.width),
-								random.nextInt(bounds.y, bounds.y + bounds.height)
-						);
-					}
-					catch (IllegalArgumentException e)
-					{
-						return new Point(-1, -1);
-					}
-				}
+				return slot.getBounds() != null ? slot.getBounds() : new Rectangle(-1, -1, 0, 0);
 			}
 		}
 
 		Rectangle bounds = widget.getBounds();
 		if (bounds != null)
 		{
-			try
-			{
-				Rectangle itemBounds = widget.getWidgetItem(getSlot()).getCanvasBounds();
-				return new Point(
-						random.nextInt(itemBounds.x, itemBounds.x + itemBounds.width),
-						random.nextInt(itemBounds.y, itemBounds.y + itemBounds.height)
-				);
-			}
-			catch (Exception e)
-			{
-				return new Point(-1, -1);
-			}
+			Rectangle itemBounds = widget.getWidgetItem(getSlot()).getCanvasBounds();
+			return itemBounds != null ? itemBounds : new Rectangle(-1, -1, 0, 0);
 		}
-
-		return widget.getCanvasLocation();
+		return new Rectangle(-1, -1, 0, 0);
 	}
 
 	@Override

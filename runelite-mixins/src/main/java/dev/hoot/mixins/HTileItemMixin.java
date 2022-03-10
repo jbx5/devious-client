@@ -1,6 +1,7 @@
 package dev.hoot.mixins;
 
 import dev.hoot.api.events.AutomatedMenu;
+import dev.hoot.api.util.Randomizer;
 import net.runelite.api.ItemComposition;
 import net.runelite.api.MenuAction;
 import net.runelite.api.Perspective;
@@ -11,6 +12,8 @@ import net.runelite.api.mixins.Shadow;
 import net.runelite.api.util.Text;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSTileItem;
+
+import java.awt.*;
 
 @Mixin(RSTileItem.class)
 public abstract class HTileItemMixin implements RSTileItem
@@ -146,10 +149,27 @@ public abstract class HTileItemMixin implements RSTileItem
 	@Inject
 	public Point getClickPoint()
 	{
-		Point screenCoords = Perspective.localToCanvas(client, getLocalLocation(), client.getPlane());
-		int x = screenCoords != null ? screenCoords.getX() : -1;
-		int y = screenCoords != null ? screenCoords.getY() : -1;
-		return new Point(x, y);
+		java.awt.Point point = Randomizer.getRandomPointIn(getBounds());
+		return new Point(point.x, point.y);
+	}
+
+	@Inject
+	private Rectangle getBounds()
+	{
+		Shape shape = Perspective.getClickbox(client, getModel(), 0, getLocalLocation());
+		if (shape != null)
+		{
+			return shape.getBounds();
+		}
+		else
+		{
+			Point screenCoords = Perspective.localToCanvas(client, getLocalLocation(), client.getPlane());
+			if (screenCoords != null)
+			{
+				return new Rectangle(screenCoords.getX(), screenCoords.getY(), 0, 0);
+			}
+			return new Rectangle(-1, -1, 0, 0);
+		}
 	}
 
 	@Inject
