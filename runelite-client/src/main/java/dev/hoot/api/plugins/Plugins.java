@@ -2,6 +2,8 @@ package dev.hoot.api.plugins;
 
 import dev.hoot.bot.managers.Static;
 import lombok.extern.slf4j.Slf4j;
+import net.runelite.client.RuneLite;
+import net.runelite.client.config.RuneLiteConfig;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginInstantiationException;
 import net.runelite.client.plugins.PluginManager;
@@ -17,9 +19,14 @@ public class Plugins
 		return Static.getPluginManager();
 	}
 
-	public static boolean isPluginEnabled(Plugin plugin)
+	public static boolean isEnabled(Plugin plugin)
 	{
 		return getPluginManager().isPluginEnabled(plugin);
+	}
+
+	public static boolean isEnabled(String configGroup)
+	{
+		return Static.getConfigManager().getConfiguration(RuneLiteConfig.GROUP_NAME, configGroup, Boolean.class);
 	}
 
 	public static boolean stopPlugin(Plugin plugin)
