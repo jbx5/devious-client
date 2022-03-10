@@ -7,27 +7,25 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import com.google.inject.name.Names;
 import com.openosrs.client.config.OpenOSRSConfig;
-import dev.hoot.api.game.Game;
-import dev.hoot.api.game.GameThread;
-import dev.hoot.api.game.Prices;
-import dev.hoot.api.game.Worlds;
 import dev.hoot.api.movement.pathfinder.GlobalCollisionMap;
 import dev.hoot.api.movement.pathfinder.RegionManager;
 import dev.hoot.api.movement.pathfinder.Walker;
-import dev.hoot.api.utils.MessageUtils;
 import dev.hoot.bot.config.BotConfig;
+import dev.hoot.bot.managers.Static;
 import dev.hoot.bot.managers.interaction.InteractionConfig;
-import dev.hoot.bot.script.ScriptEventBus;
+import lombok.RequiredArgsConstructor;
 import net.runelite.api.Client;
 import net.runelite.api.hooks.Callbacks;
 import net.runelite.api.packets.ClientPacket;
 import net.runelite.client.NonScheduledExecutorServiceExceptionLogger;
 import net.runelite.client.RuneLiteProperties;
+import net.runelite.client.chat.ChatMessageManager;
 import net.runelite.client.config.ChatColorConfig;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.config.RuneLiteConfig;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.game.ItemManager;
+import net.runelite.client.menus.MenuManager;
 import net.runelite.client.task.Scheduler;
 import net.runelite.client.util.DeferredEventBus;
 import net.runelite.client.util.ExecutorServiceExceptionLogger;
@@ -56,18 +54,13 @@ import java.util.function.Supplier;
 import java.util.zip.GZIPInputStream;
 
 @Singleton
+@RequiredArgsConstructor
 public class BotModule extends AbstractModule
 {
+	private final boolean developerMode;
 	private final OkHttpClient okHttpClient;
 	private final Supplier<Applet> clientLoader;
 	private final File config;
-
-	public BotModule(OkHttpClient okHttpClient, Supplier<Applet> clientLoader, File config)
-	{
-		this.okHttpClient = okHttpClient;
-		this.clientLoader = clientLoader;
-		this.config = config;
-	}
 
 	@Override
 	protected void configure()
@@ -79,10 +72,14 @@ public class BotModule extends AbstractModule
 			bindConstant().annotatedWith(Names.named(key)).to(value);
 		}
 
+		bindConstant().annotatedWith(Names.named("developerMode")).to(developerMode);
 		bindConstant().annotatedWith(Names.named("safeMode")).to(false);
 		bind(File.class).annotatedWith(Names.named("config")).toInstance(config);
 		bind(ScheduledExecutorService.class).toInstance(new ExecutorServiceExceptionLogger(Executors.newSingleThreadScheduledExecutor()));
 		bind(OkHttpClient.class).toInstance(okHttpClient);
+
+		bind(MenuManager.class);
+		bind(ChatMessageManager.class);
 		bind(ItemManager.class);
 		bind(Scheduler.class);
 
@@ -98,12 +95,7 @@ public class BotModule extends AbstractModule
 				.to(DeferredEventBus.class);
 
 		requestStaticInjection(
-				ScriptEventBus.class,
-				GameThread.class,
-				Game.class,
-				Prices.class,
-				Worlds.class,
-				MessageUtils.class
+				Static.class
 		);
 	}
 

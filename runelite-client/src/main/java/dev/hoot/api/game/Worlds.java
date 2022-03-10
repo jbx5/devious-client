@@ -6,8 +6,8 @@ import dev.hoot.api.widgets.Dialog;
 import dev.hoot.api.widgets.Tab;
 import dev.hoot.api.widgets.Tabs;
 import dev.hoot.api.widgets.Widgets;
+import dev.hoot.bot.managers.Static;
 import lombok.extern.slf4j.Slf4j;
-import net.runelite.api.Client;
 import net.runelite.api.GameState;
 import net.runelite.api.MenuAction;
 import net.runelite.api.World;
@@ -17,7 +17,6 @@ import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.client.game.WorldService;
 import net.runelite.http.api.worlds.WorldResult;
 
-import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -28,10 +27,6 @@ import java.util.function.Predicate;
 @Slf4j
 public class Worlds
 {
-	@Inject
-	private static Client client;
-
-	@Inject
 	private static WorldService worldService;
 
 	private static List<World> lookup()
@@ -45,7 +40,7 @@ public class Worlds
 
 		lookup.getWorlds().forEach(w ->
 		{
-			World world = client.createWorld();
+			World world = Static.getClient().createWorld();
 			world.setActivity(w.getActivity());
 			world.setAddress(w.getAddress());
 			world.setId(w.getId());
@@ -142,7 +137,7 @@ public class Worlds
 		}
 
 		log.debug("Hoping to world {}", world.getId());
-		client.interact(1, MenuAction.CC_OP.getId(), world.getId(), WidgetInfo.WORLD_SWITCHER_LIST.getId());
+		Static.getClient().interact(1, MenuAction.CC_OP.getId(), world.getId(), WidgetInfo.WORLD_SWITCHER_LIST.getId());
 		if (!spam)
 		{
 			Time.sleepUntil(() -> Game.getState() == GameState.HOPPING, 3000);
@@ -192,18 +187,18 @@ public class Worlds
 			Tabs.open(Tab.LOG_OUT);
 		}
 
-		client.interact(1, MenuAction.CC_OP.getId(), -1, WidgetInfo.WORLD_SWITCHER_BUTTON.getId());
+		Static.getClient().interact(1, MenuAction.CC_OP.getId(), -1, WidgetInfo.WORLD_SWITCHER_BUTTON.getId());
 	}
 
 	public static void openLobbyWorlds()
 	{
-		client.loadWorlds();
-		client.setWorldSelectOpen(true);
+		Static.getClient().loadWorlds();
+		Static.getClient().setWorldSelectOpen(true);
 	}
 
 	public static void closeLobbyWorlds()
 	{
-		client.setWorldSelectOpen(false);
+		Static.getClient().setWorldSelectOpen(false);
 	}
 
 	public static boolean isHopperOpen()
