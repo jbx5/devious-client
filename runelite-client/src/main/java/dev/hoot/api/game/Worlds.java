@@ -27,12 +27,10 @@ import java.util.function.Predicate;
 @Slf4j
 public class Worlds
 {
-	private static WorldService worldService;
-
 	private static List<World> lookup()
 	{
 		List<World> out = new ArrayList<>();
-		WorldResult lookup = worldService.getWorlds();
+		WorldResult lookup = Static.getWorldService().getWorlds();
 		if (lookup == null)
 		{
 			return Collections.emptyList();
