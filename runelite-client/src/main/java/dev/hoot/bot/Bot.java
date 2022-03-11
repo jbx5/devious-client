@@ -173,6 +173,7 @@ public class Bot
 		Locale.setDefault(Locale.ENGLISH);
 
 		final OptionParser parser = new OptionParser();
+		parser.accepts("developer-mode", "Enable developer tools");
 		parser.accepts("debug", "Show extra debugging output");
 		parser.accepts("insecure-skip-tls-verification", "Disables TLS verification");
 		parser.accepts("jav_config", "jav_config url")
@@ -270,6 +271,7 @@ public class Bot
 			final long start = System.currentTimeMillis();
 
 			injector = Guice.createInjector(new BotModule(
+					options.has("developer-mode"),
 					okHttpClient,
 					clientLoader,
 					options.valueOf(configfile))

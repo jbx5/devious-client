@@ -1,10 +1,8 @@
 package dev.hoot.api.game;
 
+import dev.hoot.bot.managers.Static;
 import lombok.extern.slf4j.Slf4j;
-import net.runelite.api.Client;
-import net.runelite.client.callback.ClientThread;
 
-import javax.inject.Inject;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
@@ -16,27 +14,21 @@ public class GameThread
 {
 	private static final long TIMEOUT = 1000;
 
-	@Inject
-	private static ClientThread clientThread;
-
-	@Inject
-	private static Client client;
-
 	public static void invoke(Runnable runnable)
 	{
-		if (client.isClientThread())
+		if (Static.getClient().isClientThread())
 		{
 			runnable.run();
 		}
 		else
 		{
-			clientThread.invokeLater(runnable);
+			Static.getClientThread().invokeLater(runnable);
 		}
 	}
 
 	public static <T> T invokeLater(Callable<T> callable)
 	{
-		if (client.isClientThread())
+		if (Static.getClient().isClientThread())
 		{
 			try
 			{
@@ -51,7 +43,7 @@ public class GameThread
 		try
 		{
 			FutureTask<T> futureTask = new FutureTask<>(callable);
-			clientThread.invokeLater(futureTask);
+			Static.getClientThread().invokeLater(futureTask);
 			return futureTask.get(TIMEOUT, TimeUnit.MILLISECONDS);
 		}
 		catch (ExecutionException | InterruptedException | TimeoutException e)

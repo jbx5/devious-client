@@ -4,6 +4,7 @@ import dev.hoot.api.movement.pathfinder.GlobalCollisionMap;
 import dev.hoot.api.widgets.Tab;
 import dev.hoot.api.widgets.Tabs;
 import dev.hoot.api.widgets.Widgets;
+import dev.hoot.bot.managers.Static;
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
 import net.runelite.api.packets.ClientPacket;
@@ -11,31 +12,25 @@ import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetID;
 import net.runelite.api.widgets.WidgetInfo;
 
-import javax.inject.Inject;
-
 public class Game
 {
 	private static final int MEMBER_DAYS_VARP = 1780;
 	private static final int CUTSCENE_VARBIT = 542;
 	private static final String LOGOUT_ACTION = "Logout";
 
-	@Inject
-	private static Client client;
-
-	@Inject
-	private static ClientPacket clientPacket;
-
-	@Inject
-	private static GlobalCollisionMap globalCollisionMap;
-
 	public static Client getClient()
 	{
-		return client;
+		return Static.getClient();
 	}
 
 	public static ClientPacket getClientPacket()
 	{
-		return clientPacket;
+		return Static.getClientPacket();
+	}
+
+	public static GlobalCollisionMap getGlobalCollisionMap()
+	{
+		return Static.getGlobalCollisionMap();
 	}
 
 	public static boolean isLoggedIn()
@@ -51,7 +46,7 @@ public class Game
 
 	public static GameState getState()
 	{
-		return client.getGameState();
+		return getClient().getGameState();
 	}
 
 	public static int getWildyLevel()
@@ -107,10 +102,5 @@ public class Game
 		{
 			Tabs.open(Tab.LOG_OUT);
 		}
-	}
-
-	public static GlobalCollisionMap getGlobalCollisionMap()
-	{
-		return globalCollisionMap;
 	}
 }

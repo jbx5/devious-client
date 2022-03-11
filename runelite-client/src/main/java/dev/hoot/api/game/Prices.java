@@ -3,8 +3,7 @@ package dev.hoot.api.game;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
-import com.google.inject.Inject;
-import net.runelite.client.game.ItemManager;
+import dev.hoot.bot.managers.Static;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,8 +14,6 @@ import java.util.concurrent.ExecutionException;
 public class Prices
 {
 	private static final Logger logger = LoggerFactory.getLogger(Prices.class);
-	@Inject
-	private static ItemManager itemManager;
 
 	private static final LoadingCache<Integer, Integer> CACHE = CacheBuilder.newBuilder()
 			.expireAfterWrite(Duration.ofMinutes(5))
@@ -26,7 +23,7 @@ public class Prices
 				public Integer load(@NotNull Integer itemId)
 				{
 					logger.debug("Caching item {} price", itemId);
-					return GameThread.invokeLater(() -> itemManager.getItemPrice(itemId));
+					return GameThread.invokeLater(() -> Static.getItemManager().getItemPrice(itemId));
 				}
 			});
 

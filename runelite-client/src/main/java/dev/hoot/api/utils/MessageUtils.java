@@ -1,17 +1,13 @@
 package dev.hoot.api.utils;
 
+import dev.hoot.bot.managers.Static;
 import net.runelite.api.ChatMessageType;
 import net.runelite.client.chat.ChatColorType;
 import net.runelite.client.chat.ChatMessageBuilder;
-import net.runelite.client.chat.ChatMessageManager;
 import net.runelite.client.chat.QueuedMessage;
-
-import javax.inject.Inject;
 
 public class MessageUtils
 {
-    @Inject
-    private static ChatMessageManager chatMessageManager;
 
     public static void addMessage(String message, ChatColorType colorType, ChatMessageType messageType)
     {
@@ -20,7 +16,7 @@ public class MessageUtils
                 .append(message)
                 .build();
 
-        chatMessageManager
+        Static.getChatMessageManager()
                 .queue(QueuedMessage.builder()
                         .type(messageType)
                         .runeLiteFormattedMessage(chatMessage)

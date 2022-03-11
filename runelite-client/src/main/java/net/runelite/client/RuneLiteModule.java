@@ -54,14 +54,10 @@ import javax.annotation.Nullable;
 import javax.inject.Named;
 import javax.inject.Singleton;
 
-import dev.hoot.api.game.Game;
-import dev.hoot.api.game.GameThread;
-import dev.hoot.api.game.Prices;
-import dev.hoot.api.game.Worlds;
 import dev.hoot.api.movement.pathfinder.GlobalCollisionMap;
 import dev.hoot.api.movement.pathfinder.RegionManager;
 import dev.hoot.api.movement.pathfinder.Walker;
-import dev.hoot.api.utils.MessageUtils;
+import dev.hoot.bot.managers.Static;
 import dev.hoot.bot.managers.interaction.InteractionConfig;
 import lombok.AllArgsConstructor;
 import net.runelite.api.Client;
@@ -158,11 +154,7 @@ public class RuneLiteModule extends AbstractModule
 				.to(DeferredEventBus.class);
 
 		requestStaticInjection(
-				GameThread.class,
-				Game.class,
-				Prices.class,
-				Worlds.class,
-				MessageUtils.class
+				Static.class
 		);
 	}
 
