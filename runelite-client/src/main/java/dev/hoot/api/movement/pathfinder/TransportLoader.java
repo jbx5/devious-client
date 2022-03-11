@@ -11,7 +11,6 @@ import dev.hoot.api.game.Worlds;
 import dev.hoot.api.items.Inventory;
 import dev.hoot.api.movement.Movement;
 import dev.hoot.api.movement.Reachable;
-import dev.hoot.api.packets.MousePackets;
 import dev.hoot.api.quests.Quest;
 import dev.hoot.api.widgets.Dialog;
 import dev.hoot.api.widgets.Widgets;
@@ -44,10 +43,10 @@ import static net.runelite.api.MenuAction.WIDGET_TYPE_6;
 public class TransportLoader
 {
 	private static final Gson GSON = new GsonBuilder().create();
-//	private static final int BUILD_DELAY_SECONDS = 5;
-//	private static Instant lastBuild = Instant.now().minusSeconds(6);
+	private static final int BUILD_DELAY_SECONDS = 5;
+	private static Instant lastBuild = Instant.now().minusSeconds(6);
 	private static final List<Transport> STATIC_TRANSPORTS = new ArrayList<>();
-//	private static List<Transport> LAST_TRANSPORT_LIST = Collections.emptyList();
+	private static List<Transport> LAST_TRANSPORT_LIST = Collections.emptyList();
 
 	private static final WorldArea MLM = new WorldArea(3714, 5633, 60, 62, 0);
 
@@ -98,13 +97,7 @@ public class TransportLoader
 
 	public static List<Transport> buildTransports()
 	{
-//		if (lastBuild.plusSeconds(BUILD_DELAY_SECONDS).isAfter(Instant.now()))
-//		{
-//			return List.copyOf(LAST_TRANSPORT_LIST);
-//		}
-//
-//		lastBuild = Instant.now();
-		List<Transport> transports = new ArrayList<>(loadStaticTransports());
+		List<Transport> transports = new ArrayList<>();
 
 		int gold = Inventory.getFirst(995) != null ? Inventory.getFirst(995).getQuantity() : 0;
 		if (gold >= 10)
@@ -165,20 +158,6 @@ public class TransportLoader
 				);
 			}
 
-			// Glarial's tomb
-			transports.add(itemUseTransport(new WorldPoint(2557, 3444, 0), new WorldPoint(2555, 9844, 0), 294, 1992));
-			transports.add(itemUseTransport(new WorldPoint(2557, 3445, 0), new WorldPoint(2555, 9844, 0), 294, 1992));
-			transports.add(itemUseTransport(new WorldPoint(2558, 3443, 0), new WorldPoint(2555, 9844, 0), 294, 1992));
-			transports.add(itemUseTransport(new WorldPoint(2559, 3443, 0), new WorldPoint(2555, 9844, 0), 294, 1992));
-			transports.add(itemUseTransport(new WorldPoint(2560, 3444, 0), new WorldPoint(2555, 9844, 0), 294, 1992));
-			transports.add(itemUseTransport(new WorldPoint(2560, 3445, 0), new WorldPoint(2555, 9844, 0), 294, 1992));
-			transports.add(itemUseTransport(new WorldPoint(2558, 3446, 0), new WorldPoint(2555, 9844, 0), 294, 1992));
-			transports.add(itemUseTransport(new WorldPoint(2559, 3446, 0), new WorldPoint(2555, 9844, 0), 294, 1992));
-
-			// Waterfall Island
-			transports.add(itemUseTransport(new WorldPoint(2512, 3476, 0), new WorldPoint(2513, 3468, 0), 954, 1996));
-			transports.add(itemUseTransport(new WorldPoint(2512, 3466, 0), new WorldPoint(2511, 3463, 0), 954, 2020));
-
 			// Crabclaw island
 			if (gold >= 10_000)
 			{
@@ -213,14 +192,6 @@ public class TransportLoader
 						"Port Piscarilius"));
 			}
 
-			// Paterdomus
-			transports.add(trapDoorTransport(new WorldPoint(3405, 3506, 0), new WorldPoint(3405, 9906, 0), 1579, 1581));
-			transports.add(trapDoorTransport(new WorldPoint(3423, 3485, 0), new WorldPoint(3440, 9887, 0), 3432, 3433));
-			transports.add(trapDoorTransport(new WorldPoint(3422, 3484, 0), new WorldPoint(3440, 9887, 0), 3432, 3433));
-
-			// Port Piscarilius
-			transports.add(npcTransport(new WorldPoint(1824, 3691, 0), new WorldPoint(3055, 3242, 1), 10727, "Port Sarim"));
-
 			// Spirit Trees
 			if (Quest.TREE_GNOME_VILLAGE.getState() == QuestState.FINISHED)
 			{
@@ -236,22 +207,6 @@ public class TransportLoader
 					}
 				}
 			}
-
-			// Magic Mushtrees
-			for (var source : MUSHTREES)
-			{
-				for (var target : MUSHTREES)
-				{
-					transports.add(mushtreeTransport(source.position, target.position, target.widget));
-				}
-			}
-
-			// Gnome stronghold
-			transports.add(objectDialogTransport(new WorldPoint(2461, 3382, 0),
-					new WorldPoint(2461, 3385, 0),
-					190,
-					"Open",
-					"Sorry, I'm a bit busy."));
 
 			// Tree Gnome Village
 			if (Quest.TREE_GNOME_VILLAGE.getState() != QuestState.NOT_STARTED)
@@ -276,18 +231,6 @@ public class TransportLoader
 				transports.add(npcTransport(new WorldPoint(2544, 3760, 0), new WorldPoint(2620, 3682, 0), 10407, "Rellekka"));
 				transports.add(npcTransport(new WorldPoint(2620, 3682, 0), new WorldPoint(2547, 3759, 0), 5937, "Waterbirth Island"));
 			}
-
-			// Fossil Island
-			transports.add(npcTransport(new WorldPoint(3362, 3445, 0),
-					new WorldPoint(3724, 3808, 0),
-					8012,
-					"Quick-Travel"));
-
-			transports.add(objectDialogTransport(new WorldPoint(3724, 3808, 0),
-					new WorldPoint(3362, 3445, 0),
-					30914,
-					"Travel",
-					"Row to the barge and travel to the Digsite."));
 
 			// Motherload Mine
 			if (MLM.contains(Players.getLocal()))
@@ -348,6 +291,23 @@ public class TransportLoader
 			}
 		}
 
+		if (lastBuild.plusSeconds(BUILD_DELAY_SECONDS).isAfter(Instant.now()))
+		{
+			transports.addAll(LAST_TRANSPORT_LIST);
+			return List.copyOf(transports);
+		}
+
+		lastBuild = Instant.now();
+		LAST_TRANSPORT_LIST = buildCachedTransportList();
+		transports.addAll(LAST_TRANSPORT_LIST);
+
+		return List.copyOf(transports);
+	}
+
+	public static List<Transport> buildCachedTransportList()
+	{
+		List<Transport> transports = new ArrayList<>(loadStaticTransports());
+
 		// Entrana
 		transports.add(npcTransport(new WorldPoint(3041, 3237, 0), new WorldPoint(2834, 3331, 1), 1166, "Take-boat"));
 		transports.add(npcTransport(new WorldPoint(2834, 3335, 0), new WorldPoint(3048, 3231, 1), 1170, "Take-boat"));
@@ -356,8 +316,57 @@ public class TransportLoader
 				1164,
 				"Well that is a risk I will have to take."));
 
-//		return List.copyOf(LAST_TRANSPORT_LIST = transports);
-		return List.copyOf(transports);
+		// Fossil Island
+		transports.add(npcTransport(new WorldPoint(3362, 3445, 0),
+				new WorldPoint(3724, 3808, 0),
+				8012,
+				"Quick-Travel"));
+
+		transports.add(objectDialogTransport(new WorldPoint(3724, 3808, 0),
+				new WorldPoint(3362, 3445, 0),
+				30914,
+				"Travel",
+				"Row to the barge and travel to the Digsite."));
+
+		// Magic Mushtrees
+		for (var source : MUSHTREES)
+		{
+			for (var target : MUSHTREES)
+			{
+				transports.add(mushtreeTransport(source.position, target.position, target.widget));
+			}
+		}
+
+		// Gnome stronghold
+		transports.add(objectDialogTransport(new WorldPoint(2461, 3382, 0),
+				new WorldPoint(2461, 3385, 0),
+				190,
+				"Open",
+				"Sorry, I'm a bit busy."));
+
+		// Paterdomus
+		transports.add(trapDoorTransport(new WorldPoint(3405, 3506, 0), new WorldPoint(3405, 9906, 0), 1579, 1581));
+		transports.add(trapDoorTransport(new WorldPoint(3423, 3485, 0), new WorldPoint(3440, 9887, 0), 3432, 3433));
+		transports.add(trapDoorTransport(new WorldPoint(3422, 3484, 0), new WorldPoint(3440, 9887, 0), 3432, 3433));
+
+		// Port Piscarilius
+		transports.add(npcTransport(new WorldPoint(1824, 3691, 0), new WorldPoint(3055, 3242, 1), 10727, "Port Sarim"));
+
+		// Glarial's tomb
+		transports.add(itemUseTransport(new WorldPoint(2557, 3444, 0), new WorldPoint(2555, 9844, 0), 294, 1992));
+		transports.add(itemUseTransport(new WorldPoint(2557, 3445, 0), new WorldPoint(2555, 9844, 0), 294, 1992));
+		transports.add(itemUseTransport(new WorldPoint(2558, 3443, 0), new WorldPoint(2555, 9844, 0), 294, 1992));
+		transports.add(itemUseTransport(new WorldPoint(2559, 3443, 0), new WorldPoint(2555, 9844, 0), 294, 1992));
+		transports.add(itemUseTransport(new WorldPoint(2560, 3444, 0), new WorldPoint(2555, 9844, 0), 294, 1992));
+		transports.add(itemUseTransport(new WorldPoint(2560, 3445, 0), new WorldPoint(2555, 9844, 0), 294, 1992));
+		transports.add(itemUseTransport(new WorldPoint(2558, 3446, 0), new WorldPoint(2555, 9844, 0), 294, 1992));
+		transports.add(itemUseTransport(new WorldPoint(2559, 3446, 0), new WorldPoint(2555, 9844, 0), 294, 1992));
+
+		// Waterfall Island
+		transports.add(itemUseTransport(new WorldPoint(2512, 3476, 0), new WorldPoint(2513, 3468, 0), 954, 1996));
+		transports.add(itemUseTransport(new WorldPoint(2512, 3466, 0), new WorldPoint(2511, 3463, 0), 954, 2020));
+
+		return transports;
 	}
 
 	public static Transport parseTransportLine(String line)
