@@ -61,7 +61,7 @@ public enum BankLocation
 	public static BankLocation getNearest()
 	{
 		return Arrays.stream(values())
-				.min(Comparator.comparingInt(x -> x.getArea().distanceTo(Players.getLocal())))
+				.min(Comparator.comparingInt(x -> x.getArea().distanceTo2D(Players.getLocal().getWorldLocation())))
 				.orElse(null);
 	}
 
