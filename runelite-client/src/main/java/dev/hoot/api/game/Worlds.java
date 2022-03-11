@@ -14,7 +14,6 @@ import net.runelite.api.World;
 import net.runelite.api.WorldType;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
-import net.runelite.client.game.WorldService;
 import net.runelite.http.api.worlds.WorldResult;
 
 import java.util.ArrayList;
