@@ -70,6 +70,7 @@ import net.runelite.client.config.ConfigManager;
 import net.runelite.client.config.RuneLiteConfig;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.game.ItemManager;
+import net.runelite.client.input.KeyManager;
 import net.runelite.client.menus.MenuManager;
 import net.runelite.client.plugins.PluginManager;
 import net.runelite.client.task.Scheduler;
@@ -141,6 +142,7 @@ public class RuneLiteModule extends AbstractModule
 		bind(Scheduler.class);
 		bind(PluginManager.class);
 		bind(SessionManager.class);
+		bind(KeyManager.class);
 
 		bind(Gson.class).toInstance(RuneLiteAPI.GSON);
 

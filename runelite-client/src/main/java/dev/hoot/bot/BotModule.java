@@ -25,6 +25,7 @@ import net.runelite.client.config.ConfigManager;
 import net.runelite.client.config.RuneLiteConfig;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.game.ItemManager;
+import net.runelite.client.input.KeyManager;
 import net.runelite.client.menus.MenuManager;
 import net.runelite.client.task.Scheduler;
 import net.runelite.client.util.DeferredEventBus;
@@ -82,6 +83,7 @@ public class BotModule extends AbstractModule
 		bind(ChatMessageManager.class);
 		bind(ItemManager.class);
 		bind(Scheduler.class);
+		bind(KeyManager.class);
 
 		bind(Gson.class).toInstance(RuneLiteAPI.GSON);
 
