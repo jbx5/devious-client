@@ -190,6 +190,21 @@ public class Bank extends Items
 		deposit(filter, Integer.MAX_VALUE);
 	}
 
+	public static void depositAllExcept(String name)
+	{
+		depositAllExcept(x -> Objects.equals(x.getName(), name));
+	}
+
+	public static void depositAllExcept(int id)
+	{
+		depositAllExcept(x -> x.getId() == id);
+	}
+
+	public static void depositAllExcept(Predicate<Item> filter)
+	{
+		depositAll(filter.negate());
+	}
+
 	public static void deposit(String name, int amount)
 	{
 		deposit(x -> Objects.equals(x.getName(), name), amount);
