@@ -4,7 +4,6 @@ import dev.hoot.api.commons.Predicates;
 import dev.hoot.api.commons.Time;
 import dev.hoot.api.game.Game;
 import dev.hoot.api.game.Vars;
-import dev.hoot.api.packets.WidgetPackets;
 import dev.hoot.api.widgets.Dialog;
 import dev.hoot.api.widgets.Widgets;
 import net.runelite.api.InventoryID;
@@ -15,10 +14,11 @@ import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetID;
 import net.runelite.api.widgets.WidgetInfo;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
 
 public class Bank extends Items
 {
@@ -175,89 +175,34 @@ public class Bank extends Items
 		return getAll().isEmpty();
 	}
 
-	public static void depositAll(String... names)
+	public static void depositAll(String name)
 	{
-		depositAll(x -> Arrays.stream(names).anyMatch(name -> x.getName().equals(name)));
+		depositAll(x -> Objects.equals(x.getName(), name));
 	}
 
-	@Deprecated
-	public static void depositAll(boolean usePackets, String... names)
+	public static void depositAll(int id)
 	{
-		depositAll(usePackets, x -> Arrays.stream(names).anyMatch(name -> x.getName().equals(name)));
-	}
-
-	public static void depositAll(int... ids)
-	{
-		depositAll(x -> Arrays.stream(ids).anyMatch(id -> x.getId() == id));
-	}
-
-	@Deprecated
-	public static void depositAll(boolean usePackets, int... ids)
-	{
-		depositAll(usePackets, x -> Arrays.stream(ids).anyMatch(id -> x.getId() == id));
+		depositAll(x -> x.getId() == id);
 	}
 
 	public static void depositAll(Predicate<Item> filter)
 	{
-		Set<Item> items = Inventory.getAll(filter).stream().filter(Predicates.distinctByProperty(Item::getId)).collect(Collectors.toSet());
-
-		items.forEach((item) ->
-		{
-			deposit(item.getId(), Integer.MAX_VALUE);
-			Time.sleepTick();
-		});
+		deposit(filter, Integer.MAX_VALUE);
 	}
 
-	@Deprecated
-	public static void depositAll(boolean usePackets, Predicate<Item> filter)
+	public static void depositAllExcept(String name)
 	{
-		Set<Item> items = Inventory.getAll(filter).stream().filter(Predicates.distinctByProperty(Item::getId)).collect(Collectors.toSet());
-
-		if (usePackets)
-		{
-			items.forEach((item) -> WidgetPackets.widgetItemAction(WidgetInfo.BANK_INVENTORY_ITEMS_CONTAINER, item, "Deposit-All"));
-		}
-		else
-		{
-			items.forEach((item) ->
-			{
-				deposit(item.getId(), Integer.MAX_VALUE);
-				Time.sleepTick();
-			});
-		}
+		depositAllExcept(x -> Objects.equals(x.getName(), name));
 	}
 
-	public static void depositAllExcept(String... names)
+	public static void depositAllExcept(int id)
 	{
-		depositAllExcept(x -> Arrays.stream(names).anyMatch(name -> x.getName().equals(name)));
-	}
-
-	@Deprecated
-	public static void depositAllExcept(boolean usePackets, String... names)
-	{
-		depositAllExcept(usePackets, x -> Arrays.stream(names).anyMatch(name -> x.getName().equals(name)));
-	}
-
-	public static void depositAllExcept(int... ids)
-	{
-		depositAllExcept(x -> Arrays.stream(ids).anyMatch(id -> x.getId() == id));
-	}
-
-	@Deprecated
-	public static void depositAllExcept(boolean usePackets, int... ids)
-	{
-		depositAllExcept(usePackets, x -> Arrays.stream(ids).anyMatch(id -> x.getId() == id));
+		depositAllExcept(x -> x.getId() == id);
 	}
 
 	public static void depositAllExcept(Predicate<Item> filter)
 	{
 		depositAll(filter.negate());
-	}
-
-	@Deprecated
-	public static void depositAllExcept(boolean usePackets, Predicate<Item> filter)
-	{
-		depositAll(usePackets, filter.negate());
 	}
 
 	public static void deposit(String name, int amount)
