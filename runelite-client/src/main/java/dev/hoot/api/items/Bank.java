@@ -15,13 +15,10 @@ import net.runelite.api.widgets.WidgetID;
 import net.runelite.api.widgets.WidgetInfo;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
 
 public class Bank extends Items
 {
@@ -178,74 +175,19 @@ public class Bank extends Items
 		return getAll().isEmpty();
 	}
 
-	public static void depositAll(String... names)
+	public static void depositAll(String name)
 	{
-		depositAll(true, names);
+		depositAll(x -> Objects.equals(x.getName(), name));
 	}
 
-	public static void depositAll(boolean delay, String... names)
+	public static void depositAll(int id)
 	{
-		depositAll(delay, x -> Arrays.stream(names).anyMatch(name -> x.getName().equals(name)));
-	}
-
-	public static void depositAll(int... ids)
-	{
-		depositAll(true, ids);
-	}
-
-	public static void depositAll(boolean delay, int... ids)
-	{
-		depositAll(delay, x -> Arrays.stream(ids).anyMatch(id -> x.getId() == id));
+		depositAll(x -> x.getId() == id);
 	}
 
 	public static void depositAll(Predicate<Item> filter)
 	{
-		depositAll(true, filter);
-	}
-
-	public static void depositAll(boolean delay, Predicate<Item> filter)
-	{
-		Set<Item> items = Inventory.getAll(filter).stream().filter(Predicates.distinctByProperty(Item::getId)).collect(Collectors.toSet());
-
-		items.forEach((item) ->
-		{
-			deposit(item.getId(), Integer.MAX_VALUE);
-
-			if (delay)
-			{
-				Time.sleepTick();
-			}
-		});
-	}
-
-	public static void depositAllExcept(String... names)
-	{
-		depositAllExcept(true, names);
-	}
-
-	public static void depositAllExcept(boolean delay, String... names)
-	{
-		depositAllExcept(delay, x -> Arrays.stream(names).anyMatch(name -> x.getName().equals(name)));
-	}
-
-	public static void depositAllExcept(int... ids)
-	{
-		depositAllExcept(true, ids);
-	}
-
-	public static void depositAllExcept(boolean delay, int... ids)
-	{
-		depositAllExcept(delay, x -> Arrays.stream(ids).anyMatch(id -> x.getId() == id));
-	}
-
-	public static void depositAllExcept(Predicate<Item> filter)
-	{
-		depositAllExcept(true, filter);
-	}
-
-	public static void depositAllExcept(boolean delay, Predicate<Item> filter)
-	{
-		depositAll(delay, filter.negate());
+		deposit(filter, Integer.MAX_VALUE);
 	}
 
 	public static void deposit(String name, int amount)
