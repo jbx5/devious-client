@@ -175,14 +175,14 @@ public class Bank extends Items
 		return getAll().isEmpty();
 	}
 
-	public static void depositAll(String name)
+	public static void depositAll(String... names)
 	{
-		depositAll(x -> Objects.equals(x.getName(), name));
+		depositAll(Predicates.names(names));
 	}
 
-	public static void depositAll(int id)
+	public static void depositAll(int... ids)
 	{
-		depositAll(x -> x.getId() == id);
+		depositAll(Predicates.ids(ids));
 	}
 
 	public static void depositAll(Predicate<Item> filter)
@@ -190,14 +190,14 @@ public class Bank extends Items
 		deposit(filter, Integer.MAX_VALUE);
 	}
 
-	public static void depositAllExcept(String name)
+	public static void depositAllExcept(String... names)
 	{
-		depositAllExcept(x -> Objects.equals(x.getName(), name));
+		depositAllExcept(Predicates.names(names));
 	}
 
-	public static void depositAllExcept(int id)
+	public static void depositAllExcept(int... ids)
 	{
-		depositAllExcept(x -> x.getId() == id);
+		depositAllExcept(Predicates.ids(ids));
 	}
 
 	public static void depositAllExcept(Predicate<Item> filter)
