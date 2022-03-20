@@ -1024,4 +1024,11 @@ public class Perspective
 		int cy = poly.getBounds().y + poly.getBounds().height / 2;
 		return new Point(cx, cy);
 	}
+
+	@Nullable
+	@ApiStatus.Internal
+	public static Shape getClickbox(@Nonnull Client client, Model model, int orientation, LocalPoint lp)
+	{
+		return getClickbox(client, model, orientation, lp.getX(), lp.getY(), client.getPlane());
+	}
 }

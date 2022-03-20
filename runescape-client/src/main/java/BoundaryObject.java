@@ -63,36 +63,6 @@ public final class BoundaryObject {
 	@Export("flags")
 	int flags;
 
-    @ObfuscatedName("e")
-    @ObfuscatedGetter(intValue = 810073207)
-    @Export("orientationA")
-    int orientationA;
-
-    @ObfuscatedName("r")
-    @ObfuscatedGetter(intValue = -1356551947)
-    @Export("orientationB")
-    int orientationB;
-
-    @ObfuscatedName("o")
-    @ObfuscatedSignature(descriptor = "Lgp;")
-    @Export("renderable1")
-    public Renderable renderable1;
-
-    @ObfuscatedName("i")
-    @ObfuscatedSignature(descriptor = "Lgp;")
-    @Export("renderable2")
-    public Renderable renderable2;
-
-    @ObfuscatedName("w")
-    @ObfuscatedGetter(longValue = -7729917977965778771L)
-    @Export("tag")
-    public long tag;
-
-    @ObfuscatedName("v")
-    @ObfuscatedGetter(intValue = 318935705)
-    @Export("flags")
-    int flags;
-
     BoundaryObject() {
         this.tag = 0L;
         this.flags = 0;
