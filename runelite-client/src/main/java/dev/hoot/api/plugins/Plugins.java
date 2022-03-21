@@ -2,7 +2,6 @@ package dev.hoot.api.plugins;
 
 import dev.hoot.bot.managers.Static;
 import lombok.extern.slf4j.Slf4j;
-import net.runelite.client.RuneLite;
 import net.runelite.client.config.RuneLiteConfig;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginInstantiationException;

@@ -8,50 +8,60 @@ import net.runelite.mapping.ObfuscatedSignature;
 @ObfuscatedName("hg")
 @Implements("BoundaryObject")
 public final class BoundaryObject {
-    @ObfuscatedName("c")
-    @ObfuscatedGetter(intValue = -695987835)
-    @Export("tileHeight")
-    int tileHeight;
-
-    @ObfuscatedName("l")
-    @ObfuscatedGetter(intValue = -1300612235)
-    @Export("x")
-    int x;
-
-    @ObfuscatedName("s")
-    @ObfuscatedGetter(intValue = -190485209)
-    @Export("y")
-    int y;
-
-    @ObfuscatedName("e")
-    @ObfuscatedGetter(intValue = 810073207)
-    @Export("orientationA")
-    int orientationA;
-
-    @ObfuscatedName("r")
-    @ObfuscatedGetter(intValue = -1356551947)
-    @Export("orientationB")
-    int orientationB;
-
-    @ObfuscatedName("o")
-    @ObfuscatedSignature(descriptor = "Lgp;")
-    @Export("renderable1")
-    public Renderable renderable1;
-
-    @ObfuscatedName("i")
-    @ObfuscatedSignature(descriptor = "Lgp;")
-    @Export("renderable2")
-    public Renderable renderable2;
-
-    @ObfuscatedName("w")
-    @ObfuscatedGetter(longValue = -7729917977965778771L)
-    @Export("tag")
-    public long tag;
-
-    @ObfuscatedName("v")
-    @ObfuscatedGetter(intValue = 318935705)
-    @Export("flags")
-    int flags;
+	@ObfuscatedName("c")
+	@ObfuscatedGetter(
+		intValue = -695987835
+	)
+	@Export("z")
+	int z;
+	@ObfuscatedName("l")
+	@ObfuscatedGetter(
+		intValue = -1300612235
+	)
+	@Export("x")
+	int x;
+	@ObfuscatedName("s")
+	@ObfuscatedGetter(
+		intValue = -190485209
+	)
+	@Export("y")
+	int y;
+	@ObfuscatedName("e")
+	@ObfuscatedGetter(
+		intValue = 810073207
+	)
+	@Export("orientationA")
+	int orientationA;
+	@ObfuscatedName("r")
+	@ObfuscatedGetter(
+		intValue = -1356551947
+	)
+	@Export("orientationB")
+	int orientationB;
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(
+		descriptor = "Lgp;"
+	)
+	@Export("renderable1")
+	public Renderable renderable1;
+	@ObfuscatedName("i")
+	@ObfuscatedSignature(
+		descriptor = "Lgp;"
+	)
+	@Export("renderable2")
+	public Renderable renderable2;
+	@ObfuscatedName("w")
+	@ObfuscatedGetter(
+		longValue = -7729917977965778771L
+	)
+	@Export("tag")
+	public long tag;
+	@ObfuscatedName("v")
+	@ObfuscatedGetter(
+		intValue = 318935705
+	)
+	@Export("flags")
+	int flags;
 
     BoundaryObject() {
         this.tag = 0L;

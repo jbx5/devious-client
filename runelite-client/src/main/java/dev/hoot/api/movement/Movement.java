@@ -54,7 +54,7 @@ public class Movement
 					List<WorldPoint> wpList = new ArrayList<>(key);
 					CollisionMap cm = Game.getGlobalCollisionMap();
 					wpList.removeIf(cm::fullBlock);
-					return wpList.get(Rand.nextInt(0, wpList.size() - 1));
+					return wpList.get(Rand.nextInt(0, wpList.size()));
 				}
 			});
 
@@ -143,7 +143,7 @@ public class Movement
 		}
 
 		var points = worldArea.toWorldPointList();
-		walk(points.get(Rand.nextInt(0, points.size() - 1)));
+		walk(points.get(Rand.nextInt(0, points.size())));
 	}
 
 	public static void walk(Locatable locatable)
