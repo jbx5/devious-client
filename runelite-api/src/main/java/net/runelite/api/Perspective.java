@@ -679,6 +679,33 @@ public class Perspective
 	 * @param client      the game client
 	 * @param model       the model to calculate a clickbox for
 	 * @param orientation the orientation of the model (0-2048, where 0 is north)
+	 * @param point       the coordinate of the tile
+	 * @return the clickable area of the model
+	 */
+	@Deprecated(since = "4.20.4", forRemoval = true)
+	public static Shape getClickbox(@Nonnull Client client, Model model, int orientation, LocalPoint point)
+	{
+		if (model == null)
+		{
+			return null;
+		}
+
+		int x = point.getX();
+		int y = point.getY();
+		int z = getTileHeight(client, point, client.getPlane());
+
+		return getClickbox(client, model, orientation, x, y, z);
+	}
+
+	/**
+	 * You don't want this. Use {@link //TileObject#getClickbox()} instead.
+	 * <p>
+	 * Get the on-screen clickable area of {@code model} as though it's for the
+	 * object on the tile at ({@code localX}, {@code localY}) and rotated to
+	 * angle {@code orientation}.
+	 * @param client      the game client
+	 * @param model       the model to calculate a clickbox for
+	 * @param orientation the orientation of the model (0-2048, where 0 is north)
 	 * @param x           x coord in local space
 	 * @param z           y coord in local space
 	 * @return the clickable area of the model
@@ -1023,12 +1050,5 @@ public class Perspective
 		int cx = poly.getBounds().x + poly.getBounds().width / 2;
 		int cy = poly.getBounds().y + poly.getBounds().height / 2;
 		return new Point(cx, cy);
-	}
-
-	@Nullable
-	@ApiStatus.Internal
-	public static Shape getClickbox(@Nonnull Client client, Model model, int orientation, LocalPoint lp)
-	{
-		return getClickbox(client, model, orientation, lp.getX(), lp.getY(), client.getPlane());
 	}
 }
