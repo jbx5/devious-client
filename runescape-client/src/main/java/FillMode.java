@@ -65,7 +65,7 @@ public enum FillMode implements MouseWheel {
 			if (var0.length() == 0) { // L: 11833
 				var3 = var3 + "; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0";
 			} else {
-				var3 = var3 + "; Expires=" + class160.method3236(WorldMapSprite.method4989() + 94608000000L) + "; Max-Age=" + 94608000L; // L: 11834
+				var3 = var3 + "; Expires=" + class160.method3236(WorldMapSprite.getServerTime() + 94608000000L) + "; Max-Age=" + 94608000L; // L: 11834
 			}
 
 			class27.method416(UserComparator10.client, "document.cookie=\"" + var3 + "\""); // L: 11835

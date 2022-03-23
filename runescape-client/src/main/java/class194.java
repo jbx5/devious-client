@@ -82,10 +82,10 @@ public class class194 {
 
 			if (Client.gameState != 5) { // L: 349
 				if (-1L == Login.field911) { // L: 350
-					Login.field911 = WorldMapSprite.method4989() + 1000L; // L: 351
+					Login.field911 = WorldMapSprite.getServerTime() + 1000L; // L: 351
 				}
 
-				long var21 = WorldMapSprite.method4989(); // L: 353
+				long var21 = WorldMapSprite.getServerTime(); // L: 353
 				if (class149.method3079() && Login.field912 == -1L) { // L: 354 355
 					Login.field912 = var21; // L: 356
 					if (Login.field912 > Login.field911) { // L: 357
@@ -1007,7 +1007,7 @@ public class class194 {
 										}
 									} else if (Login.loginIndex == 14) { // L: 1209
 										String var44 = ""; // L: 1210
-										switch(Login.field892) { // L: 1211
+										switch(Login.Login_banType) { // L: 1211
 										case 0:
 											var44 = "https://support.runescape.com/hc/en-gb/articles/115002238729-Account-Bans"; // L: 1216
 											break; // L: 1217

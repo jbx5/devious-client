@@ -65,6 +65,6 @@ public abstract class class128 extends Node {
 	)
 	static void method2841(int var0) {
 		class150.method3089(14); // L: 2073
-		Login.field892 = var0; // L: 2074
+		Login.Login_banType = var0; // L: 2074
 	} // L: 2075
 }

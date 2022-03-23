@@ -33,7 +33,7 @@ public final class WorldMapSprite {
 		descriptor = "(I)J",
 		garbageValue = "1898905069"
 	)
-	public static final synchronized long method4989() {
+	public static final synchronized long getServerTime() {
 		long var0 = System.currentTimeMillis(); // L: 14
 		if (var0 < class269.field3153) { // L: 15
 			class269.field3154 += class269.field3153 - var0; // L: 16

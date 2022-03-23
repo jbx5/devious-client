@@ -1662,7 +1662,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 	)
 	@Export("resizeGame")
 	protected final void resizeGame() {
-		field529 = WorldMapSprite.method4989() + 500L; // L: 3947
+		field529 = WorldMapSprite.getServerTime() + 500L; // L: 3947
 		this.resizeJS(); // L: 3948
 		if (rootInterface != -1) { // L: 3949
 			this.resizeRoot(true);
@@ -1836,7 +1836,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 			class290.pcmPlayer0.tryDiscard();
 		}
 
-		if ((gameState == 10 || gameState == 20 || gameState == 30) && field529 != 0L && WorldMapSprite.method4989() > field529) { // L: 1065 1066
+		if ((gameState == 10 || gameState == 20 || gameState == 30) && field529 != 0L && WorldMapSprite.getServerTime() > field529) { // L: 1065 1066
 			UserComparator6.setWindowedMode(ReflectionCheck.getWindowedMode()); // L: 1067
 		}
 
@@ -2069,7 +2069,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 						var11.writeInt(204); // L: 1240
 						ApproximateRouteStrategy.js5Socket.write(var11.array, 0, 5); // L: 1241
 						++js5ConnectState; // L: 1242
-						class29.field165 = WorldMapSprite.method4989(); // L: 1243
+						class29.field165 = WorldMapSprite.getServerTime(); // L: 1243
 					}
 
 					if (js5ConnectState == 3) { // L: 1245
@@ -2081,7 +2081,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 							}
 
 							++js5ConnectState; // L: 1252
-						} else if (WorldMapSprite.method4989() - class29.field165 > 30000L) { // L: 1255
+						} else if (WorldMapSprite.getServerTime() - class29.field165 > 30000L) { // L: 1255
 							this.js5Error(-2); // L: 1256
 							return; // L: 1257
 						}
@@ -2131,7 +2131,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 										}
 
 										NetCache.NetCache_loadTime = 0; // L: 1310
-										NetCache.field3976 = WorldMapSprite.method4989(); // L: 1311
+										NetCache.field3976 = WorldMapSprite.getServerTime(); // L: 1311
 										class194.js5SocketTask = null; // L: 1313
 										ApproximateRouteStrategy.js5Socket = null; // L: 1314
 										js5ConnectState = 0; // L: 1315
@@ -3029,7 +3029,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 							var14 = ItemContainer.getPacketBufferNode(ClientPacket.field2899, packetWriter.isaacCipher); // L: 2826
 							var14.packetBuffer.writeShort(0); // L: 2827
 							var15 = var14.packetBuffer.offset; // L: 2828
-							long var19 = WorldMapSprite.method4989(); // L: 2829
+							long var19 = WorldMapSprite.getServerTime(); // L: 2829
 
 							for (var5 = 0; var5 < KeyHandler.field132; ++var5) { // L: 2830
 								long var21 = var19 - field718; // L: 2831
@@ -4241,7 +4241,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 				if (ServerPacket.field3036 == var1.serverPacket) { // L: 5978
 					var87 = var3.readUnsignedByte() == 1; // L: 5979
 					if (var87) { // L: 5980
-						Varps.field3287 = WorldMapSprite.method4989() - var3.readLong(); // L: 5981
+						Varps.field3287 = WorldMapSprite.getServerTime() - var3.readLong(); // L: 5981
 						ReflectionCheck.grandExchangeEvents = new GrandExchangeEvents(var3, true); // L: 5982
 					} else {
 						ReflectionCheck.grandExchangeEvents = null; // L: 5984

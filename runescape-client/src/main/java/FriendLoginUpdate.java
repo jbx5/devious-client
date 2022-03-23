@@ -26,7 +26,7 @@ public class FriendLoginUpdate extends Link {
 		descriptor = "(Lqy;I)V"
 	)
 	FriendLoginUpdate(Username var1, int var2) {
-		this.field4259 = (int)(WorldMapSprite.method4989() / 1000L); // L: 109
+		this.field4259 = (int)(WorldMapSprite.getServerTime() / 1000L); // L: 109
 		this.username = var1; // L: 110
 		this.world = (short)var2; // L: 111
 	} // L: 112

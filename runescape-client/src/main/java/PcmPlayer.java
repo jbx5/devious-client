@@ -102,7 +102,7 @@ public class PcmPlayer {
 
 	protected PcmPlayer() {
 		this.field289 = 32; // L: 22
-		this.timeMs = WorldMapSprite.method4989(); // L: 23
+		this.timeMs = WorldMapSprite.getServerTime(); // L: 23
 		this.field287 = 0L; // L: 27
 		this.field288 = 0; // L: 28
 		this.field285 = 0; // L: 29
@@ -183,7 +183,7 @@ public class PcmPlayer {
 	@Export("run")
 	public final synchronized void run() {
 		if (this.samples != null) { // L: 87
-			long var1 = WorldMapSprite.method4989(); // L: 88
+			long var1 = WorldMapSprite.getServerTime(); // L: 88
 
 			try {
 				if (this.field287 != 0L) { // L: 90
@@ -290,7 +290,7 @@ public class PcmPlayer {
 			this.discard(); // L: 156
 		} catch (Exception var2) { // L: 158
 			this.close(); // L: 159
-			this.field287 = WorldMapSprite.method4989() + 2000L; // L: 160
+			this.field287 = WorldMapSprite.getServerTime() + 2000L; // L: 160
 		}
 
 	} // L: 162
@@ -455,7 +455,7 @@ public class PcmPlayer {
 			this.stream.fill(var1, 0, var2);
 		}
 
-		this.timeMs = WorldMapSprite.method4989(); // L: 266
+		this.timeMs = WorldMapSprite.getServerTime(); // L: 266
 	} // L: 267
 
 	@ObfuscatedName("au")

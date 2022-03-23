@@ -22,7 +22,7 @@ public class class65 {
 		garbageValue = "-685134646"
 	)
 	public static boolean method1875() {
-		long var0 = WorldMapSprite.method4989(); // L: 42
+		long var0 = WorldMapSprite.getServerTime(); // L: 42
 		int var2 = (int)(var0 - NetCache.field3976); // L: 43
 		NetCache.field3976 = var0; // L: 44
 		if (var2 > 200) { // L: 45

@@ -425,7 +425,7 @@ public class WorldMap {
 		garbageValue = "-42282906"
 	)
 	public void method7305(int var1, int var2, boolean var3, boolean var4) {
-		long var5 = WorldMapSprite.method4989(); // L: 180
+		long var5 = WorldMapSprite.getServerTime(); // L: 180
 		this.method7315(var1, var2, var4, var5); // L: 181
 		if (this.hasTarget() || !var4 && !var3) { // L: 182
 			this.method7499(); // L: 196
@@ -543,7 +543,7 @@ public class WorldMap {
 	final void setWorldMapPosition(int var1, int var2, boolean var3) {
 		this.centerTileX = var1; // L: 272
 		this.centerTileY = var2; // L: 273
-		WorldMapSprite.method4989(); // L: 274
+		WorldMapSprite.getServerTime(); // L: 274
 		if (var3) {
 			this.method7499(); // L: 275
 		}

@@ -453,7 +453,7 @@ public class class132 extends class128 {
 							String var14 = ""; // L: 1722
 							var5 = ""; // L: 1723
 							var6 = ""; // L: 1724
-							switch(Login.field892) { // L: 1725
+							switch(Login.Login_banType) { // L: 1725
 							case 0:
 								var14 = "Your account has been disabled."; // L: 1735
 								var5 = Strings.field3731; // L: 1736

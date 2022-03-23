@@ -74,7 +74,7 @@ public class Timer {
 		garbageValue = "2052102546"
 	)
 	public void method6594() {
-		this.field4185 = WorldMapSprite.method4989(); // L: 19
+		this.field4185 = WorldMapSprite.getServerTime(); // L: 19
 	} // L: 20
 
 	@ObfuscatedName("o")
@@ -84,7 +84,7 @@ public class Timer {
 	)
 	public void method6595() {
 		if (this.field4185 != -1L) { // L: 23
-			this.field4186 = WorldMapSprite.method4989() - this.field4185; // L: 24
+			this.field4186 = WorldMapSprite.getServerTime() - this.field4185; // L: 24
 			this.field4185 = -1L; // L: 25
 		}
 
@@ -96,7 +96,7 @@ public class Timer {
 		garbageValue = "-20934"
 	)
 	public void method6596(int var1) {
-		this.field4183 = WorldMapSprite.method4989(); // L: 30
+		this.field4183 = WorldMapSprite.getServerTime(); // L: 30
 		this.field4188 = var1; // L: 31
 	} // L: 32
 
@@ -107,7 +107,7 @@ public class Timer {
 	)
 	public void method6597() {
 		if (this.field4183 != -1L) { // L: 35
-			this.field4189 = WorldMapSprite.method4989() - this.field4183; // L: 36
+			this.field4189 = WorldMapSprite.getServerTime() - this.field4183; // L: 36
 			this.field4183 = -1L; // L: 37
 		}
 

@@ -545,7 +545,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 		}
 
 		this.isCanvasInvalid = false; // L: 302
-		this.field197 = WorldMapSprite.method4989(); // L: 303
+		this.field197 = WorldMapSprite.getServerTime(); // L: 303
 	} // L: 304
 
 	@ObfuscatedName("b")
@@ -587,7 +587,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 	)
 	@Export("clientTick")
 	void clientTick() {
-		long var1 = WorldMapSprite.method4989(); // L: 358
+		long var1 = WorldMapSprite.getServerTime(); // L: 358
 		long var3 = clientTickTimes[class82.field1071]; // L: 359
 		clientTickTimes[class82.field1071] = var1; // L: 360
 		class82.field1071 = class82.field1071 + 1 & 31; // L: 361
@@ -609,7 +609,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 	@Export("graphicsTick")
 	void graphicsTick() {
 		Container var1 = this.container(); // L: 370
-		long var2 = WorldMapSprite.method4989(); // L: 371
+		long var2 = WorldMapSprite.getServerTime(); // L: 371
 		long var4 = graphicsTickTimes[BufferedNetSocket.field4286]; // L: 372
 		graphicsTickTimes[BufferedNetSocket.field4286] = var2; // L: 373
 		BufferedNetSocket.field4286 = BufferedNetSocket.field4286 + 1 & 31; // L: 374
@@ -872,7 +872,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 	public final synchronized void paint(Graphics var1) {
 		if (this == gameEngine && !isKilled) { // L: 469
 			this.fullRedraw = true; // L: 470
-			if (WorldMapSprite.method4989() - this.field197 > 1000L) { // L: 471
+			if (WorldMapSprite.getServerTime() - this.field197 > 1000L) { // L: 471
 				Rectangle var2 = var1.getClipBounds(); // L: 472
 				if (var2 == null || var2.width >= class4.canvasWidth && var2.height >= class309.canvasHeight) {
 					this.isCanvasInvalid = true; // L: 473
@@ -884,7 +884,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 
 	public final void destroy() {
 		if (this == gameEngine && !isKilled) { // L: 456
-			stopTimeMs = WorldMapSprite.method4989(); // L: 457
+			stopTimeMs = WorldMapSprite.getServerTime(); // L: 457
 			GrandExchangeOfferTotalQuantityComparator.method6007(5000L); // L: 458
 			this.kill(); // L: 459
 		}
@@ -922,7 +922,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 			this.setUp(); // L: 341
 			class4.clock = UserComparator5.method2592(); // L: 342
 
-			while (stopTimeMs == 0L || WorldMapSprite.method4989() < stopTimeMs) { // L: 343
+			while (stopTimeMs == 0L || WorldMapSprite.getServerTime() < stopTimeMs) { // L: 343
 				class134.gameCyclesToDo = class4.clock.wait(cycleDurationMillis, fiveOrOne); // L: 344
 
 				for (int var5 = 0; var5 < class134.gameCyclesToDo; ++var5) { // L: 345
@@ -955,7 +955,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 
 	public final void stop() {
 		if (this == gameEngine && !isKilled) { // L: 450
-			stopTimeMs = WorldMapSprite.method4989() + 4000L; // L: 451
+			stopTimeMs = WorldMapSprite.getServerTime() + 4000L; // L: 451
 		}
 	} // L: 452
 

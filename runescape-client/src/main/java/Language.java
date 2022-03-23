@@ -309,7 +309,7 @@ public class Language implements MouseWheel {
 					} else if (var0 == ScriptOpcodes.TRADINGPOST_GETOFFERAGE) { // L: 3006
 						var3 = Interpreter.Interpreter_intStack[--class295.Interpreter_intStackSize]; // L: 3007
 						var4 = (GrandExchangeEvent)ReflectionCheck.grandExchangeEvents.events.get(var3); // L: 3008
-						long var5 = WorldMapSprite.method4989() - Varps.field3287 - var4.age; // L: 3009
+						long var5 = WorldMapSprite.getServerTime() - Varps.field3287 - var4.age; // L: 3009
 						int var7 = (int)(var5 / 3600000L); // L: 3010
 						int var8 = (int)((var5 - (long)(var7 * 3600000)) / 60000L); // L: 3011
 						int var9 = (int)((var5 - (long)(var7 * 3600000) - (long)(var8 * 60000)) / 1000L); // L: 3012

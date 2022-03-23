@@ -181,7 +181,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
 			MouseHandler_idleCycles = 0; // L: 63
 			MouseHandler_lastPressedXVolatile = var1.getX(); // L: 64
 			MouseHandler_lastPressedYVolatile = var1.getY(); // L: 65
-			MouseHandler_lastPressedTimeMillisVolatile = WorldMapSprite.method4989(); // L: 66
+			MouseHandler_lastPressedTimeMillisVolatile = WorldMapSprite.getServerTime(); // L: 66
 			MouseHandler_lastButtonVolatile = this.getButton(var1); // L: 67
 			if (MouseHandler_lastButtonVolatile != 0) { // L: 68
 				MouseHandler_currentButtonVolatile = MouseHandler_lastButtonVolatile;

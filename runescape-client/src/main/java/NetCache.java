@@ -180,7 +180,7 @@ public class NetCache {
 		}
 
 		if (PendingSpawn.garbageCollector != null) { // L: 616
-			long var9 = WorldMapSprite.method4989(); // L: 617
+			long var9 = WorldMapSprite.getServerTime(); // L: 617
 			long var3 = PendingSpawn.garbageCollector.getCollectionTime(); // L: 618
 			if (GameEngine.garbageCollectorLastCollectionTime != -1L) { // L: 619
 				long var5 = var3 - GameEngine.garbageCollectorLastCollectionTime; // L: 620

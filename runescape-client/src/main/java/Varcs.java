@@ -281,7 +281,7 @@ public class Varcs {
 		}
 
 		this.unwrittenChanges = false; // L: 201
-		this.field1307 = WorldMapSprite.method4989(); // L: 202
+		this.field1307 = WorldMapSprite.getServerTime(); // L: 202
 	} // L: 203
 
 	@ObfuscatedName("r")
@@ -384,7 +384,7 @@ public class Varcs {
 	)
 	@Export("tryWrite")
 	void tryWrite() {
-		if (this.unwrittenChanges && this.field1307 < WorldMapSprite.method4989() - 60000L) { // L: 262
+		if (this.unwrittenChanges && this.field1307 < WorldMapSprite.getServerTime() - 60000L) { // L: 262
 			this.write(); // L: 263
 		}
 
