@@ -1,76 +1,59 @@
-import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-@ObfuscatedName("cu")
+
+@ObfuscatedName("cr")
 @Implements("MouseRecorder")
 public class MouseRecorder implements Runnable {
-    @ObfuscatedName("c")
-    @Export("isRunning")
-    boolean isRunning;
+	@ObfuscatedName("uv")
+	@ObfuscatedGetter(
+		intValue = 270412709
+	)
+	@Export("foundItemIndex")
+	static int foundItemIndex;
+	@ObfuscatedName("v")
+	@Export("isRunning")
+	boolean isRunning;
+	@ObfuscatedName("o")
+	@Export("lock")
+	Object lock;
+	@ObfuscatedName("h")
+	@ObfuscatedGetter(
+		intValue = -154058261
+	)
+	@Export("index")
+	int index;
+	@ObfuscatedName("g")
+	@Export("xs")
+	int[] xs;
+	@ObfuscatedName("l")
+	@Export("ys")
+	int[] ys;
+	@ObfuscatedName("n")
+	@Export("millis")
+	long[] millis;
 
-    @ObfuscatedName("l")
-    @Export("lock")
-    Object lock;
+	MouseRecorder() {
+		this.isRunning = true; // L: 7
+		this.lock = new Object(); // L: 8
+		this.index = 0; // L: 9
+		this.xs = new int[500]; // L: 10
+		this.ys = new int[500]; // L: 11
+		this.millis = new long[500]; // L: 12
+	} // L: 14
 
-    @ObfuscatedName("s")
-    @ObfuscatedGetter(intValue = 28944215)
-    @Export("index")
-    int index;
+	public void run() {
+		for (; this.isRunning; GrandExchangeOfferTotalQuantityComparator.method6007(50L)) { // L: 18 27
+			synchronized(this.lock) { // L: 19
+				if (this.index < 500) { // L: 20
+					this.xs[this.index] = MouseHandler.MouseHandler_x; // L: 21
+					this.ys[this.index] = MouseHandler.MouseHandler_y; // L: 22
+					this.millis[this.index] = MouseHandler.MouseHandler_millis; // L: 23
+					++this.index; // L: 24
+				}
+			}
+		}
 
-    @ObfuscatedName("e")
-    @Export("xs")
-    int[] xs;
-
-    @ObfuscatedName("r")
-    @Export("ys")
-    int[] ys;
-
-    @ObfuscatedName("o")
-    @Export("millis")
-    long[] millis;
-
-    MouseRecorder() {
-        this.isRunning = true;
-        this.lock = new Object();
-        this.index = 0;
-        this.xs = new int[500];
-        this.ys = new int[500];
-        this.millis = new long[500];
-    }
-
-    public void run() {
-        for (; this.isRunning; Language.method5813(50L)) {
-            synchronized(this.lock) {
-                if (this.index < 500) {
-                    this.xs[this.index] = MouseHandler.MouseHandler_x;
-                    this.ys[this.index] = MouseHandler.MouseHandler_y;
-                    this.millis[this.index] = MouseHandler.MouseHandler_millis;
-                    ++this.index;
-                }
-            }
-        }
-    }
-
-    @ObfuscatedName("w")
-    @ObfuscatedSignature(descriptor = "(B)V", garbageValue = "-122")
-    public static void method2100() {
-        StructComposition.StructDefinition_cached.clear();
-    }
-
-    @ObfuscatedName("kz")
-    @ObfuscatedSignature(descriptor = "(I)V", garbageValue = "1953012058")
-    @Export("FriendSystem_invalidateIgnoreds")
-    static final void FriendSystem_invalidateIgnoreds() {
-        Iterator var0 = Messages.Messages_hashTable.iterator();
-        while (var0.hasNext()) {
-            Message var1 = ((Message) (var0.next()));
-            var1.clearIsFromIgnored();
-        } 
-        if (class67.friendsChat != null) {
-            class67.friendsChat.invalidateIgnoreds();
-        }
-    }
+	} // L: 29
 }

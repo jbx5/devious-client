@@ -3,65 +3,71 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-@ObfuscatedName("hb")
+
+@ObfuscatedName("id")
 @Implements("WorldMapID")
 public class WorldMapID {
-    @ObfuscatedName("c")
-    @ObfuscatedSignature(descriptor = "Lhb;")
-    static final WorldMapID field2773;
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "Lid;"
+	)
+	static final WorldMapID field2829;
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(
+		descriptor = "Lid;"
+	)
+	static final WorldMapID field2826;
+	@ObfuscatedName("n")
+	@ObfuscatedSignature(
+		descriptor = "Llq;"
+	)
+	@Export("ItemDefinition_archive")
+	static AbstractArchive ItemDefinition_archive;
+	@ObfuscatedName("h")
+	@ObfuscatedGetter(
+		intValue = -1857886715
+	)
+	@Export("value")
+	final int value;
 
-    @ObfuscatedName("l")
-    @ObfuscatedSignature(descriptor = "Lhb;")
-    static final WorldMapID field2771;
+	static {
+		field2829 = new WorldMapID(0); // L: 4
+		field2826 = new WorldMapID(1); // L: 5
+	}
 
-    @ObfuscatedName("a")
-    @ObfuscatedSignature(descriptor = "Lcm;")
-    @Export("World_request")
-    static UrlRequest World_request;
+	WorldMapID(int var1) {
+		this.value = var1; // L: 9
+	} // L: 10
 
-    @ObfuscatedName("s")
-    @ObfuscatedGetter(intValue = -1457945663)
-    @Export("value")
-    final int value;
+	@ObfuscatedName("g")
+	@ObfuscatedSignature(
+		descriptor = "(IB)V",
+		garbageValue = "91"
+	)
+	public static void method5000(int var0) {
+		if (var0 != -1) { // L: 261
+			if (Frames.Widget_loadedInterfaces[var0]) { // L: 262
+				class122.Widget_archive.clearFilesGroup(var0); // L: 263
+				if (EnumComposition.Widget_interfaceComponents[var0] != null) { // L: 264
+					boolean var1 = true; // L: 265
 
-    static {
-        field2773 = new WorldMapID(0);
-        field2771 = new WorldMapID(1);
-    }
+					for (int var2 = 0; var2 < EnumComposition.Widget_interfaceComponents[var0].length; ++var2) { // L: 266
+						if (EnumComposition.Widget_interfaceComponents[var0][var2] != null) { // L: 267
+							if (EnumComposition.Widget_interfaceComponents[var0][var2].type != 2) { // L: 268
+								EnumComposition.Widget_interfaceComponents[var0][var2] = null;
+							} else {
+								var1 = false; // L: 269
+							}
+						}
+					}
 
-    WorldMapID(int var1) {
-        this.value = var1;
-    }
+					if (var1) {
+						EnumComposition.Widget_interfaceComponents[var0] = null; // L: 272
+					}
 
-    @ObfuscatedName("au")
-    @ObfuscatedSignature(descriptor = "(ILbl;ZB)I", garbageValue = "-101")
-    static int method4767(int var0, Script var1, boolean var2) {
-        if (((((var0 != 6700) && (var0 != 6702)) && (var0 != 6704)) && (var0 != 6706)) && (var0 != 6708)) {
-            if (((((var0 != 6701) && (var0 != 6703)) && (var0 != 6705)) && (var0 != 6707)) && (var0 != 6709)) {
-                if (var0 == 6750) {
-                    Interpreter.Interpreter_stringStack[(++BufferedNetSocket.Interpreter_stringStackSize) - 1] = "";
-                    return 1;
-                } else if (((var0 != 6751) && (var0 != 6752)) && (var0 != 6753)) {
-                    if (var0 == 6754) {
-                        int var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-                        NPCComposition var4 = UserComparator10.getNpcDefinition(var3);
-                        Interpreter.Interpreter_stringStack[(++BufferedNetSocket.Interpreter_stringStackSize) - 1] = (var4 != null) ? var4.name : "";
-                        return 1;
-                    } else {
-                        return 2;
-                    }
-                } else {
-                    Interpreter.Interpreter_intStack[(++Interpreter.Interpreter_intStackSize) - 1] = -1;
-                    return 1;
-                }
-            } else {
-                --Interpreter.Interpreter_intStackSize;
-                return 1;
-            }
-        } else {
-            Interpreter.Interpreter_intStackSize -= 2;
-            --BufferedNetSocket.Interpreter_stringStackSize;
-            return 1;
-        }
-    }
+					Frames.Widget_loadedInterfaces[var0] = false; // L: 273
+				}
+			}
+		}
+	} // L: 274
 }

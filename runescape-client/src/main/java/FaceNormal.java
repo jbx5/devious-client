@@ -3,30 +3,38 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-@ObfuscatedName("gk")
+
+@ObfuscatedName("gc")
 @Implements("FaceNormal")
 public class FaceNormal {
-    @ObfuscatedName("c")
-    @ObfuscatedGetter(intValue = -1096643173)
-    @Export("x")
-    int x;
+	@ObfuscatedName("v")
+	@ObfuscatedGetter(
+		intValue = -1581281175
+	)
+	@Export("x")
+	int x;
+	@ObfuscatedName("o")
+	@ObfuscatedGetter(
+		intValue = -1155482083
+	)
+	@Export("y")
+	int y;
+	@ObfuscatedName("h")
+	@ObfuscatedGetter(
+		intValue = 990620569
+	)
+	@Export("z")
+	int z;
 
-    @ObfuscatedName("l")
-    @ObfuscatedGetter(intValue = 142997221)
-    @Export("y")
-    int y;
+	FaceNormal() {
+	} // L: 8
 
-    @ObfuscatedName("s")
-    @ObfuscatedGetter(intValue = 1816531673)
-    @Export("z")
-    int z;
-
-    FaceNormal() {
-    }
-
-    @ObfuscatedName("u")
-    @ObfuscatedSignature(descriptor = "(I)I", garbageValue = "-430184319")
-    static final int method4095() {
-        return ViewportMouse.ViewportMouse_x;
-    }
+	@ObfuscatedName("ao")
+	@ObfuscatedSignature(
+		descriptor = "(IB)I",
+		garbageValue = "12"
+	)
+	static int method4313(int var0) {
+		return (int)Math.pow(2.0D, (double)((float)var0 / 256.0F + 7.0F)); // L: 3837
+	}
 }

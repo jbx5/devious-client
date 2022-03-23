@@ -3,113 +3,171 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-@ObfuscatedName("bi")
+
+@ObfuscatedName("br")
 @Implements("World")
 public class World {
-    @ObfuscatedName("o")
-    @ObfuscatedGetter(intValue = 424514993)
-    @Export("World_count")
-    static int World_count;
+	@ObfuscatedName("l")
+	@ObfuscatedSignature(
+		descriptor = "[Lbr;"
+	)
+	@Export("World_worlds")
+	static World[] World_worlds;
+	@ObfuscatedName("n")
+	@ObfuscatedGetter(
+		intValue = 708983157
+	)
+	@Export("World_count")
+	static int World_count;
+	@ObfuscatedName("d")
+	@ObfuscatedGetter(
+		intValue = 1412956873
+	)
+	@Export("World_listCount")
+	static int World_listCount;
+	@ObfuscatedName("f")
+	@Export("World_sortOption2")
+	static int[] World_sortOption2;
+	@ObfuscatedName("u")
+	@Export("World_sortOption1")
+	static int[] World_sortOption1;
+	@ObfuscatedName("eo")
+	@ObfuscatedSignature(
+		descriptor = "Llu;"
+	)
+	@Export("archive10")
+	static Archive archive10;
+	@ObfuscatedName("k")
+	@ObfuscatedGetter(
+		intValue = 1791268419
+	)
+	@Export("id")
+	int id;
+	@ObfuscatedName("x")
+	@ObfuscatedGetter(
+		intValue = 1457180793
+	)
+	@Export("properties")
+	int properties;
+	@ObfuscatedName("c")
+	@ObfuscatedGetter(
+		intValue = 1283993585
+	)
+	@Export("population")
+	int population;
+	@ObfuscatedName("j")
+	@Export("host")
+	String host;
+	@ObfuscatedName("p")
+	@Export("activity")
+	String activity;
+	@ObfuscatedName("s")
+	@ObfuscatedGetter(
+		intValue = -658464583
+	)
+	@Export("location")
+	int location;
+	@ObfuscatedName("b")
+	@ObfuscatedGetter(
+		intValue = -1286682885
+	)
+	@Export("index")
+	int index;
 
-    @ObfuscatedName("i")
-    @ObfuscatedGetter(intValue = 1627138945)
-    @Export("World_listCount")
-    static int World_listCount;
+	static {
+		World_count = 0; // L: 14
+		World_listCount = 0; // L: 15
+		World_sortOption2 = new int[]{1, 1, 1, 1}; // L: 16
+		World_sortOption1 = new int[]{0, 1, 2, 3}; // L: 17
+	}
 
-    @ObfuscatedName("w")
-    @Export("World_sortOption2")
-    static int[] World_sortOption2;
+	World() {
+	} // L: 27
 
-    @ObfuscatedName("v")
-    @Export("World_sortOption1")
-    static int[] World_sortOption1;
+	@ObfuscatedName("r")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z",
+		garbageValue = "1842412760"
+	)
+	@Export("isMembersOnly")
+	boolean isMembersOnly() {
+		return (1 & this.properties) != 0; // L: 247
+	}
 
-    @ObfuscatedName("y")
-    @ObfuscatedGetter(intValue = -1204793871)
-    @Export("id")
-    int id;
+	@ObfuscatedName("k")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z",
+		garbageValue = "728871441"
+	)
+	boolean method1628() {
+		return (2 & this.properties) != 0; // L: 251
+	}
 
-    @ObfuscatedName("u")
-    @ObfuscatedGetter(intValue = -1353463065)
-    @Export("properties")
-    int properties;
+	@ObfuscatedName("x")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z",
+		garbageValue = "-1860289724"
+	)
+	@Export("isPvp")
+	boolean isPvp() {
+		return (4 & this.properties) != 0; // L: 255
+	}
 
-    @ObfuscatedName("h")
-    @ObfuscatedGetter(intValue = -1508326675)
-    @Export("population")
-    int population;
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z",
+		garbageValue = "-1727369163"
+	)
+	boolean method1612() {
+		return (8 & this.properties) != 0; // L: 259
+	}
 
-    @ObfuscatedName("q")
-    @Export("host")
-    String host;
+	@ObfuscatedName("j")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z",
+		garbageValue = "-1493123434"
+	)
+	@Export("isDeadman")
+	boolean isDeadman() {
+		return (536870912 & this.properties) != 0; // L: 263
+	}
 
-    @ObfuscatedName("x")
-    @Export("activity")
-    String activity;
+	@ObfuscatedName("p")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z",
+		garbageValue = "-1898535773"
+	)
+	@Export("isBeta")
+	boolean isBeta() {
+		return (33554432 & this.properties) != 0; // L: 267
+	}
 
-    @ObfuscatedName("p")
-    @ObfuscatedGetter(intValue = -828676327)
-    @Export("location")
-    int location;
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(
+		descriptor = "(B)Z",
+		garbageValue = "116"
+	)
+	boolean method1638() {
+		return (1073741824 & this.properties) != 0; // L: 271
+	}
 
-    @ObfuscatedName("n")
-    @ObfuscatedGetter(intValue = -190751717)
-    @Export("index")
-    int index;
+	@ObfuscatedName("d")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-200801552"
+	)
+	public static void method1655() {
+		try {
+			JagexCache.JagexCache_dat2File.close(); // L: 240
 
-    static {
-        World_count = 0;
-        World_listCount = 0;
-        World_sortOption2 = new int[]{ 1, 1, 1, 1 };
-        World_sortOption1 = new int[]{ 0, 1, 2, 3 };
-    }
+			for (int var0 = 0; var0 < JagexCache.idxCount; ++var0) { // L: 241
+				class194.JagexCache_idxFiles[var0].close();
+			}
 
-    World() {
-    }
+			JagexCache.JagexCache_idx255File.close(); // L: 242
+			JagexCache.JagexCache_randomDat.close(); // L: 243
+		} catch (Exception var2) { // L: 245
+		}
 
-    @ObfuscatedName("v")
-    @ObfuscatedSignature(descriptor = "(B)Z", garbageValue = "0")
-    @Export("isMembersOnly")
-    boolean isMembersOnly() {
-        return (1 & this.properties) != 0;
-    }
-
-    @ObfuscatedName("a")
-    @ObfuscatedSignature(descriptor = "(I)Z", garbageValue = "-406459188")
-    boolean method1649() {
-        return (2 & this.properties) != 0;
-    }
-
-    @ObfuscatedName("y")
-    @ObfuscatedSignature(descriptor = "(B)Z", garbageValue = "0")
-    @Export("isPvp")
-    boolean isPvp() {
-        return (4 & this.properties) != 0;
-    }
-
-    @ObfuscatedName("u")
-    @ObfuscatedSignature(descriptor = "(B)Z", garbageValue = "20")
-    boolean method1662() {
-        return (8 & this.properties) != 0;
-    }
-
-    @ObfuscatedName("h")
-    @ObfuscatedSignature(descriptor = "(I)Z", garbageValue = "-305789619")
-    @Export("isDeadman")
-    boolean isDeadman() {
-        return (536870912 & this.properties) != 0;
-    }
-
-    @ObfuscatedName("q")
-    @ObfuscatedSignature(descriptor = "(I)Z", garbageValue = "-786125281")
-    @Export("isBeta")
-    boolean isBeta() {
-        return (33554432 & this.properties) != 0;
-    }
-
-    @ObfuscatedName("x")
-    @ObfuscatedSignature(descriptor = "(B)Z", garbageValue = "63")
-    boolean method1640() {
-        return (1073741824 & this.properties) != 0;
-    }
+	} // L: 246
 }

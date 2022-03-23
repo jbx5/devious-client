@@ -3,163 +3,101 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-@ObfuscatedName("ki")
+
+@ObfuscatedName("lf")
 @Implements("NetFileRequest")
 public class NetFileRequest extends DualNode {
-    @ObfuscatedName("gb")
-    @ObfuscatedSignature(descriptor = "Lfw;")
-    @Export("socketTask")
-    static Task socketTask;
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "Llu;"
+	)
+	@Export("archive")
+	Archive archive;
+	@ObfuscatedName("o")
+	@ObfuscatedGetter(
+		intValue = 102733645
+	)
+	@Export("crc")
+	int crc;
+	@ObfuscatedName("h")
+	@Export("padding")
+	byte padding;
 
-    @ObfuscatedName("c")
-    @ObfuscatedSignature(descriptor = "Lkz;")
-    @Export("archive")
-    public Archive archive;
+	NetFileRequest() {
+	} // L: 10
 
-    @ObfuscatedName("l")
-    @ObfuscatedGetter(intValue = -2046840871)
-    @Export("crc")
-    public int crc;
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "(Lpd;Lpq;B)Lpq;",
+		garbageValue = "61"
+	)
+	@Export("readStringIntParameters")
+	static final IterableNodeHashTable readStringIntParameters(Buffer var0, IterableNodeHashTable var1) {
+		int var2 = var0.readUnsignedByte(); // L: 16
+		int var3;
+		if (var1 == null) { // L: 17
+			var3 = Login.method1894(var2); // L: 18
+			var1 = new IterableNodeHashTable(var3); // L: 19
+		}
 
-    @ObfuscatedName("s")
-    @Export("padding")
-    public byte padding;
+		for (var3 = 0; var3 < var2; ++var3) { // L: 21
+			boolean var4 = var0.readUnsignedByte() == 1; // L: 22
+			int var5 = var0.readMedium(); // L: 23
+			Object var6;
+			if (var4) {
+				var6 = new ObjectNode(var0.readStringCp1252NullTerminated());
+			} else {
+				var6 = new IntegerNode(var0.readInt()); // L: 26
+			}
 
-    NetFileRequest() {
-    }
+			var1.put((Node)var6, (long)var5); // L: 27
+		}
 
-    @ObfuscatedName("w")
-    @ObfuscatedSignature(descriptor = "(Lpi;J)V")
-    static void method5573(Buffer var0, long var1) {
-        var1 /= 10L;
-        if (var1 < 0L) {
-            var1 = 0L;
-        } else if (var1 > 65535L) {
-            var1 = 65535L;
-        }
-        var0.writeShort(((int) (var1)));
-    }
+		return var1; // L: 29
+	}
 
-    @ObfuscatedName("gk")
-    @ObfuscatedSignature(descriptor = "(B)V", garbageValue = "62")
-    static void method5572() {
-        if ((Client.combatTargetPlayerIndex >= 0) && (Client.players[Client.combatTargetPlayerIndex] != null)) {
-            AbstractWorldMapData.addPlayerToScene(Client.players[Client.combatTargetPlayerIndex], false);
-        }
-    }
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "(Llq;B)V",
+		garbageValue = "-69"
+	)
+	public static void method5867(AbstractArchive var0) {
+		FloorOverlayDefinition.FloorOverlayDefinition_archive = var0; // L: 24
+	} // L: 25
 
-    @ObfuscatedName("kn")
-    @ObfuscatedSignature(descriptor = "(II)V", garbageValue = "-1305407373")
-    @Export("changeGameOptions")
-    static final void changeGameOptions(int var0) {
-        WorldMapAreaData.method4855();
-        for (ObjectSound var1 = ((ObjectSound) (ObjectSound.objectSounds.last())); var1 != null; var1 = ((ObjectSound) (ObjectSound.objectSounds.previous()))) {
-            if (var1.obj != null) {
-                var1.set();
-            }
-        }
-        int var4 = PcmPlayer.VarpDefinition_get(var0).type;
-        if (var4 != 0) {
-            int var2 = Varps.Varps_main[var0];
-            if (var4 == 1) {
-                if (var2 == 1) {
-                    LoginType.method7149(0.9);
-                }
-                if (var2 == 2) {
-                    LoginType.method7149(0.8);
-                }
-                if (var2 == 3) {
-                    LoginType.method7149(0.7);
-                }
-                if (var2 == 4) {
-                    LoginType.method7149(0.6);
-                }
-            }
-            if (var4 == 3) {
-                if (var2 == 0) {
-                    class21.method299(255);
-                }
-                if (var2 == 1) {
-                    class21.method299(192);
-                }
-                if (var2 == 2) {
-                    class21.method299(128);
-                }
-                if (var2 == 3) {
-                    class21.method299(64);
-                }
-                if (var2 == 4) {
-                    class21.method299(0);
-                }
-            }
-            if (var4 == 4) {
-                if (var2 == 0) {
-                    MouseHandler.updateSoundEffectVolume(127);
-                }
-                if (var2 == 1) {
-                    MouseHandler.updateSoundEffectVolume(96);
-                }
-                if (var2 == 2) {
-                    MouseHandler.updateSoundEffectVolume(64);
-                }
-                if (var2 == 3) {
-                    MouseHandler.updateSoundEffectVolume(32);
-                }
-                if (var2 == 4) {
-                    MouseHandler.updateSoundEffectVolume(0);
-                }
-            }
-            if (var4 == 5) {
-                Client.leftClickOpensMenu = var2;
-            }
-            if (var4 == 6) {
-                Client.chatEffects = var2;
-            }
-            if (var4 == 9) {
-                Client.field669 = var2;
-            }
-            if (var4 == 10) {
-                if (var2 == 0) {
-                    UrlRequest.method2424(127);
-                }
-                if (var2 == 1) {
-                    UrlRequest.method2424(96);
-                }
-                if (var2 == 2) {
-                    UrlRequest.method2424(64);
-                }
-                if (var2 == 3) {
-                    UrlRequest.method2424(32);
-                }
-                if (var2 == 4) {
-                    UrlRequest.method2424(0);
-                }
-            }
-            if (var4 == 17) {
-                Client.followerIndex = var2 & 65535;
-            }
-            AttackOption[] var3;
-            if (var4 == 18) {
-                var3 = new AttackOption[]{ AttackOption.field1267, AttackOption.AttackOption_dependsOnCombatLevels, AttackOption.AttackOption_hidden, AttackOption.AttackOption_alwaysRightClick, AttackOption.field1263 };
-                Client.playerAttackOption = ((AttackOption) (class140.findEnumerated(var3, var2)));
-                if (Client.playerAttackOption == null) {
-                    Client.playerAttackOption = AttackOption.AttackOption_dependsOnCombatLevels;
-                }
-            }
-            if (var4 == 19) {
-                if (var2 == (-1)) {
-                    Client.combatTargetPlayerIndex = -1;
-                } else {
-                    Client.combatTargetPlayerIndex = var2 & 2047;
-                }
-            }
-            if (var4 == 22) {
-                var3 = new AttackOption[]{ AttackOption.field1267, AttackOption.AttackOption_dependsOnCombatLevels, AttackOption.AttackOption_hidden, AttackOption.AttackOption_alwaysRightClick, AttackOption.field1263 };
-                Client.npcAttackOption = ((AttackOption) (class140.findEnumerated(var3, var2)));
-                if (Client.npcAttackOption == null) {
-                    Client.npcAttackOption = AttackOption.AttackOption_dependsOnCombatLevels;
-                }
-            }
-        }
-    }
+	@ObfuscatedName("k")
+	@ObfuscatedSignature(
+		descriptor = "(CB)Z",
+		garbageValue = "59"
+	)
+	@Export("isAlphaNumeric")
+	public static boolean isAlphaNumeric(char var0) {
+		return var0 >= '0' && var0 <= '9' || var0 >= 'A' && var0 <= 'Z' || var0 >= 'a' && var0 <= 'z'; // L: 143
+	}
+
+	@ObfuscatedName("kk")
+	@ObfuscatedSignature(
+		descriptor = "(IIIILql;Lkw;I)V",
+		garbageValue = "874629723"
+	)
+	@Export("worldToMinimap")
+	static final void worldToMinimap(int var0, int var1, int var2, int var3, SpritePixels var4, SpriteMask var5) {
+		int var6 = var3 * var3 + var2 * var2; // L: 11649
+		if (var6 > 4225 && var6 < 90000) { // L: 11650
+			int var7 = Client.camAngleY & 2047; // L: 11651
+			int var8 = Rasterizer3D.Rasterizer3D_sine[var7]; // L: 11652
+			int var9 = Rasterizer3D.Rasterizer3D_cosine[var7]; // L: 11653
+			int var10 = var3 * var8 + var9 * var2 >> 16; // L: 11654
+			int var11 = var3 * var9 - var8 * var2 >> 16; // L: 11655
+			double var12 = Math.atan2((double)var10, (double)var11); // L: 11656
+			int var14 = var5.width / 2 - 25; // L: 11657
+			int var15 = (int)(Math.sin(var12) * (double)var14); // L: 11658
+			int var16 = (int)(Math.cos(var12) * (double)var14); // L: 11659
+			byte var17 = 20; // L: 11660
+			Huffman.redHintArrowSprite.method8238(var15 + (var0 + var5.width / 2 - var17 / 2), var5.height / 2 + var1 - var17 / 2 - var16 - 10, var17, var17, 15, 15, var12, 256); // L: 11661
+		} else {
+			Messages.drawSpriteOnMinimap(var0, var1, var2, var3, var4, var5); // L: 11663
+		}
+
+	} // L: 11664
 }

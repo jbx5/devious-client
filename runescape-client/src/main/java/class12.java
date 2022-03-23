@@ -10,165 +10,135 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 import org.bouncycastle.crypto.tls.TlsClientProtocol;
-@ObfuscatedName("h")
+
+@ObfuscatedName("c")
 class class12 extends SSLSocket {
-    @ObfuscatedName("sk")
-    @ObfuscatedGetter(intValue = -536820815)
-    static int field75;
+	@ObfuscatedName("sz")
+	@ObfuscatedGetter(
+		intValue = 596645521
+	)
+	static int field62;
+	@ObfuscatedName("kz")
+	@ObfuscatedSignature(
+		descriptor = "Lkn;"
+	)
+	static Widget field64;
+	@ObfuscatedName("v")
+	Certificate[] field65;
+	// $FF: synthetic field
+	@ObfuscatedSignature(
+		descriptor = "Ls;"
+	)
+	final class15 this$0;
+	// $FF: synthetic field
+	final TlsClientProtocol val$tlsClientProtocol;
+	// $FF: synthetic field
+	final String val$host;
 
-    @ObfuscatedName("l")
-    @ObfuscatedSignature(descriptor = "Lkq;")
-    @Export("ObjectDefinition_archive")
-    static AbstractArchive ObjectDefinition_archive;
+	@ObfuscatedSignature(
+		descriptor = "(Ls;Lorg/bouncycastle/crypto/tls/TlsClientProtocol;Ljava/lang/String;)V"
+	)
+	class12(class15 var1, TlsClientProtocol var2, String var3) {
+		this.this$0 = var1; // L: 88
+		this.val$tlsClientProtocol = var2;
+		this.val$host = var3;
+	}
 
-    @ObfuscatedName("n")
-    @ObfuscatedGetter(intValue = 708907497)
-    static int field74;
+	public OutputStream getOutputStream() throws IOException {
+		return this.val$tlsClientProtocol.getOutputStream(); // L: 98
+	}
 
-    @ObfuscatedName("c")
-    Certificate[] field71;
+	public void addHandshakeCompletedListener(HandshakeCompletedListener var1) {
+	} // L: 107
 
-    @ObfuscatedSignature(descriptor = "Lp;")
-    final class15 this$0;
+	public String[] getEnabledCipherSuites() {
+		return null; // L: 116
+	}
 
-    final TlsClientProtocol val$tlsClientProtocol;
+	public String[] getEnabledProtocols() {
+		return null; // L: 121
+	}
 
-    final String val$host;
+	public SSLSession getSession() {
+		return new class17(this); // L: 131
+	}
 
-    @ObfuscatedSignature(descriptor = "(Lp;Lorg/bouncycastle/crypto/tls/TlsClientProtocol;Ljava/lang/String;)V")
-    class12(class15 var1, TlsClientProtocol var2, String var3) {
-        this.this$0 = var1;
-        this.val$tlsClientProtocol = var2;
-        this.val$host = var3;
-    }
+	public String[] getSupportedProtocols() {
+		return null; // L: 241
+	}
 
-    public String[] getSupportedCipherSuites() {
-        return null;
-    }
+	public String[] getSupportedCipherSuites() {
+		return null; // L: 246
+	}
 
-    public OutputStream getOutputStream() throws IOException {
-        return this.val$tlsClientProtocol.getOutputStream();
-    }
+	public boolean getUseClientMode() {
+		return false; // L: 251
+	}
 
-    public synchronized void close() throws IOException {
-        this.val$tlsClientProtocol.close();
-    }
+	public boolean getWantClientAuth() {
+		return false; // L: 256
+	}
 
-    public void addHandshakeCompletedListener(HandshakeCompletedListener var1) {
-    }
+	public void removeHandshakeCompletedListener(HandshakeCompletedListener var1) {
+	} // L: 260
 
-    public boolean getEnableSessionCreation() {
-        return false;
-    }
+	public void setEnableSessionCreation(boolean var1) {
+	} // L: 263
 
-    public String[] getEnabledCipherSuites() {
-        return null;
-    }
+	public void setWantClientAuth(boolean var1) {
+	} // L: 278
 
-    public String[] getEnabledProtocols() {
-        return null;
-    }
+	public boolean getEnableSessionCreation() {
+		return false; // L: 111
+	}
 
-    public boolean getNeedClientAuth() {
-        return false;
-    }
+	public void setUseClientMode(boolean var1) {
+	} // L: 275
 
-    public boolean getUseClientMode() {
-        return false;
-    }
+	public void setEnabledProtocols(String[] var1) {
+	} // L: 269
 
-    public boolean getWantClientAuth() {
-        return false;
-    }
+	public void startHandshake() throws IOException {
+		this.val$tlsClientProtocol.connect(new class13(this)); // L: 282
+	} // L: 332
 
-    public void removeHandshakeCompletedListener(HandshakeCompletedListener var1) {
-    }
+	public synchronized void close() throws IOException {
+		this.val$tlsClientProtocol.close(); // L: 103
+	} // L: 104
 
-    public void setEnabledCipherSuites(String[] var1) {
-    }
+	public void setNeedClientAuth(boolean var1) {
+	} // L: 272
 
-    public void setEnabledProtocols(String[] var1) {
-    }
+	public void setEnabledCipherSuites(String[] var1) {
+	} // L: 266
 
-    public void setNeedClientAuth(boolean var1) {
-    }
+	public boolean getNeedClientAuth() {
+		return false; // L: 126
+	}
 
-    public void setUseClientMode(boolean var1) {
-    }
+	public InputStream getInputStream() throws IOException {
+		return this.val$tlsClientProtocol.getInputStream(); // L: 93
+	}
 
-    public void startHandshake() throws IOException {
-        this.val$tlsClientProtocol.connect(new class13(this));
-    }
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(
+		descriptor = "(IB)Lfd;",
+		garbageValue = "50"
+	)
+	@Export("getInvDefinition")
+	public static InvDefinition getInvDefinition(int var0) {
+		InvDefinition var1 = (InvDefinition)InvDefinition.InvDefinition_cached.get((long)var0); // L: 21
+		if (var1 != null) { // L: 22
+			return var1;
+		} else {
+			byte[] var2 = InvDefinition.InvDefinition_archive.takeFile(5, var0); // L: 23
+			var1 = new InvDefinition(); // L: 24
+			if (var2 != null) { // L: 25
+				var1.decode(new Buffer(var2));
+			}
 
-    public void setWantClientAuth(boolean var1) {
-    }
-
-    public SSLSession getSession() {
-        return new class17(this);
-    }
-
-    public InputStream getInputStream() throws IOException {
-        return this.val$tlsClientProtocol.getInputStream();
-    }
-
-    public String[] getSupportedProtocols() {
-        return null;
-    }
-
-    public void setEnableSessionCreation(boolean var1) {
-    }
-
-    @ObfuscatedName("o")
-    @ObfuscatedSignature(descriptor = "(Ljava/lang/Float;Ljava/lang/Float;I)V", garbageValue = "-1321795090")
-    static void method155(Float var0, Float var1) {
-        if ((var0 + class112.field1386) < 1.3333334F) {
-            float var2 = var0 - 2.0F;
-            float var3 = var0 - 1.0F;
-            float var4 = ((float) (Math.sqrt(((double) ((var2 * var2) - ((4.0F * var3) * var3))))));
-            float var5 = (var4 + (-var2)) * 0.5F;
-            if ((var1 + class112.field1386) > var5) {
-                var1 = var5 - class112.field1386;
-            } else {
-                var5 = 0.5F * ((-var2) - var4);
-                if (var1 < (class112.field1386 + var5)) {
-                    var1 = var5 + class112.field1386;
-                }
-            }
-        } else {
-            var0 = 1.3333334F - class112.field1386;
-            var1 = 0.33333334F - class112.field1386;
-        }
-    }
-
-    @ObfuscatedName("p")
-    @ObfuscatedSignature(descriptor = "(Ljava/lang/String;IB)V", garbageValue = "-3")
-    static final void method158(String var0, int var1) {
-        PacketBufferNode var2 = class135.getPacketBufferNode(ClientPacket.field2907, Client.packetWriter.isaacCipher);
-        var2.packetBuffer.writeByte(GrandExchangeEvents.stringCp1252NullTerminatedByteSize(var0) + 1);
-        var2.packetBuffer.writeStringCp1252NullTerminated(var0);
-        var2.packetBuffer.writeByte(var1);
-        Client.packetWriter.addNode(var2);
-    }
-
-    @ObfuscatedName("km")
-    @ObfuscatedSignature(descriptor = "(IIIILpt;Ljq;I)V", garbageValue = "-178422566")
-    @Export("worldToMinimap")
-    static final void worldToMinimap(int var0, int var1, int var2, int var3, SpritePixels var4, SpriteMask var5) {
-        int var6 = (var3 * var3) + (var2 * var2);
-        if ((var6 > 4225) && (var6 < 90000)) {
-            int var7 = Client.camAngleY & 2047;
-            int var8 = Rasterizer3D.Rasterizer3D_sine[var7];
-            int var9 = Rasterizer3D.Rasterizer3D_cosine[var7];
-            int var10 = ((var9 * var2) + (var3 * var8)) >> 16;
-            int var11 = ((var3 * var9) - (var8 * var2)) >> 16;
-            double var12 = Math.atan2(((double) (var10)), ((double) (var11)));
-            int var14 = (var5.width / 2) - 25;
-            int var15 = ((int) (Math.sin(var12) * ((double) (var14))));
-            int var16 = ((int) (Math.cos(var12) * ((double) (var14))));
-            byte var17 = 20;
-            class78.redHintArrowSprite.method7801(var15 + ((var0 + (var5.width / 2)) - (var17 / 2)), ((((var5.height / 2) + var1) - (var17 / 2)) - var16) - 10, var17, var17, 15, 15, var12, 256);
-        } else {
-            Interpreter.drawSpriteOnMinimap(var0, var1, var2, var3, var4, var5);
-        }
-    }
+			InvDefinition.InvDefinition_cached.put(var1, (long)var0); // L: 26
+			return var1; // L: 27
+		}
+	}
 }
