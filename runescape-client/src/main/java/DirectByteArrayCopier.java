@@ -42,6 +42,7 @@ public class DirectByteArrayCopier extends AbstractByteArrayCopier {
 
     @ObfuscatedName("c")
     @ObfuscatedSignature(descriptor = "(I)J", garbageValue = "2011171655")
+    @Export("getServerTime")
     public static synchronized final long getServerTime() {
         long var0 = System.currentTimeMillis();
         if (var0 < class261.field3087) {

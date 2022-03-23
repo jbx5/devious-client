@@ -51,6 +51,7 @@ public class Login {
 
     @ObfuscatedName("au")
     @ObfuscatedGetter(intValue = 2124652173)
+    @Export("Login_banType")
     static int Login_banType;
 
     @ObfuscatedName("an")

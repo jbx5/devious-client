@@ -104,6 +104,7 @@ public class InteractionManager
 					}
 
 					processAction(e, clickPoint.x, clickPoint.y);
+					break;
 
 				case PACKETS:
 					if (config.mouseBehavior() != MouseBehavior.DISABLED)
