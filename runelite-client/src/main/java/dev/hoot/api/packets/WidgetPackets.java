@@ -1,64 +1,62 @@
 package dev.hoot.api.packets;
 
 import dev.hoot.api.game.Game;
-import net.runelite.api.Item;
 import net.runelite.api.packets.PacketBufferNode;
 import net.runelite.api.widgets.Widget;
-import net.runelite.api.widgets.WidgetInfo;
 
 public class WidgetPackets
 {
-	public static void widgetFirstOption(Widget widget)
+	public static void widgetFirstOption(net.runelite.api.widgets.Widget widget)
 	{
-		WidgetPackets.queueWidgetAction1Packet(widget.getId(), widget.getItemId(), widget.getIndex());
+		queueWidgetAction1Packet(widget.getId(), widget.getItemId(), widget.getIndex());
 	}
 
-	public static void widgetSecondOption(Widget widget)
+	public static void widgetSecondOption(net.runelite.api.widgets.Widget widget)
 	{
-		WidgetPackets.queueWidgetAction2Packet(widget.getId(), widget.getItemId(), widget.getIndex());
+		queueWidgetAction2Packet(widget.getId(), widget.getItemId(), widget.getIndex());
 	}
 
-	public static void widgetThirdOption(Widget widget)
+	public static void widgetThirdOption(net.runelite.api.widgets.Widget widget)
 	{
-		WidgetPackets.queueWidgetAction3Packet(widget.getId(), widget.getItemId(), widget.getIndex());
+		queueWidgetAction3Packet(widget.getId(), widget.getItemId(), widget.getIndex());
 	}
 
-	public static void widgetFourthOption(Widget widget)
+	public static void widgetFourthOption(net.runelite.api.widgets.Widget widget)
 	{
-		WidgetPackets.queueWidgetAction4Packet(widget.getId(), widget.getItemId(), widget.getIndex());
+		queueWidgetAction4Packet(widget.getId(), widget.getItemId(), widget.getIndex());
 	}
 
-	public static void widgetFifthOption(Widget widget)
+	public static void widgetFifthOption(net.runelite.api.widgets.Widget widget)
 	{
-		WidgetPackets.queueWidgetAction5Packet(widget.getId(), widget.getItemId(), widget.getIndex());
+		queueWidgetAction5Packet(widget.getId(), widget.getItemId(), widget.getIndex());
 	}
 
-	public static void widgetSixthOption(Widget widget)
+	public static void widgetSixthOption(net.runelite.api.widgets.Widget widget)
 	{
-		WidgetPackets.queueWidgetAction6Packet(widget.getId(), widget.getItemId(), widget.getIndex());
+		queueWidgetAction6Packet(widget.getId(), widget.getItemId(), widget.getIndex());
 	}
 
-	public static void widgetSeventhOption(Widget widget)
+	public static void widgetSeventhOption(net.runelite.api.widgets.Widget widget)
 	{
-		WidgetPackets.queueWidgetAction7Packet(widget.getId(), widget.getItemId(), widget.getIndex());
+		queueWidgetAction7Packet(widget.getId(), widget.getItemId(), widget.getIndex());
 	}
 
-	public static void widgetEighthOption(Widget widget)
+	public static void widgetEighthOption(net.runelite.api.widgets.Widget widget)
 	{
-		WidgetPackets.queueWidgetAction8Packet(widget.getId(), widget.getItemId(), widget.getIndex());
+		queueWidgetAction8Packet(widget.getId(), widget.getItemId(), widget.getIndex());
 	}
 
-	public static void widgetNinthOption(Widget widget)
+	public static void widgetNinthOption(net.runelite.api.widgets.Widget widget)
 	{
-		WidgetPackets.queueWidgetAction9Packet(widget.getId(), widget.getItemId(), widget.getIndex());
+		queueWidgetAction9Packet(widget.getId(), widget.getItemId(), widget.getIndex());
 	}
 
-	public static void widgetTenthOption(Widget widget)
+	public static void widgetTenthOption(net.runelite.api.widgets.Widget widget)
 	{
-		WidgetPackets.queueWidgetAction10Packet(widget.getId(), widget.getItemId(), widget.getIndex());
+		queueWidgetAction10Packet(widget.getId(), widget.getItemId(), widget.getIndex());
 	}
 
-	public static void widgetItemAction(WidgetInfo container, Item item, String action)
+	public static void widgetItemAction(net.runelite.api.widgets.WidgetInfo container, net.runelite.api.Item item, java.lang.String action)
 	{
 		var actions = item.getActions();
 		if (actions == null)
@@ -66,10 +64,10 @@ public class WidgetPackets
 			return;
 		}
 		var index = actions.indexOf(action);
-		WidgetPackets.widgetItemAction(container, item, index);
+		widgetItemAction(container, item, index);
 	}
 
-	public static void widgetItemAction(WidgetInfo container, Item item, int index)
+	public static void widgetItemAction(net.runelite.api.widgets.WidgetInfo container, net.runelite.api.Item item, int index)
 	{
 		var widgetPackedId = container.getPackedId();
 		var itemId = item.getId();
@@ -77,34 +75,34 @@ public class WidgetPackets
 		switch (index)
 		{
 			case 0:
-				WidgetPackets.queueWidgetAction1Packet(widgetPackedId, itemId, itemSlot);
+				queueWidgetAction1Packet(widgetPackedId, itemId, itemSlot);
 				break;
 			case 1:
-				WidgetPackets.queueWidgetAction2Packet(widgetPackedId, itemId, itemSlot);
+				queueWidgetAction2Packet(widgetPackedId, itemId, itemSlot);
 				break;
 			case 2:
-				WidgetPackets.queueWidgetAction3Packet(widgetPackedId, itemId, itemSlot);
+				queueWidgetAction3Packet(widgetPackedId, itemId, itemSlot);
 				break;
 			case 3:
-				WidgetPackets.queueWidgetAction4Packet(widgetPackedId, itemId, itemSlot);
+				queueWidgetAction4Packet(widgetPackedId, itemId, itemSlot);
 				break;
 			case 4:
-				WidgetPackets.queueWidgetAction5Packet(widgetPackedId, itemId, itemSlot);
+				queueWidgetAction5Packet(widgetPackedId, itemId, itemSlot);
 				break;
 			case 5:
-				WidgetPackets.queueWidgetAction6Packet(widgetPackedId, itemId, itemSlot);
+				queueWidgetAction6Packet(widgetPackedId, itemId, itemSlot);
 				break;
 			case 6:
-				WidgetPackets.queueWidgetAction7Packet(widgetPackedId, itemId, itemSlot);
+				queueWidgetAction7Packet(widgetPackedId, itemId, itemSlot);
 				break;
 			case 7:
-				WidgetPackets.queueWidgetAction8Packet(widgetPackedId, itemId, itemSlot);
+				queueWidgetAction8Packet(widgetPackedId, itemId, itemSlot);
 				break;
 			case 8:
-				WidgetPackets.queueWidgetAction9Packet(widgetPackedId, itemId, itemSlot);
+				queueWidgetAction9Packet(widgetPackedId, itemId, itemSlot);
 				break;
 			case 9:
-				WidgetPackets.queueWidgetAction10Packet(widgetPackedId, itemId, itemSlot);
+				queueWidgetAction10Packet(widgetPackedId, itemId, itemSlot);
 				break;
 		}
 	}
@@ -120,34 +118,34 @@ public class WidgetPackets
 		switch (index)
 		{
 			case 0:
-				WidgetPackets.widgetFirstOption(widget);
+				widgetFirstOption(widget);
 				break;
 			case 1:
-				WidgetPackets.widgetSecondOption(widget);
+				widgetSecondOption(widget);
 				break;
 			case 2:
-				WidgetPackets.widgetThirdOption(widget);
+				widgetThirdOption(widget);
 				break;
 			case 3:
-				WidgetPackets.widgetFourthOption(widget);
+				widgetFourthOption(widget);
 				break;
 			case 4:
-				WidgetPackets.widgetFifthOption(widget);
+				widgetFifthOption(widget);
 				break;
 			case 5:
-				WidgetPackets.widgetSixthOption(widget);
+				widgetSixthOption(widget);
 				break;
 			case 6:
-				WidgetPackets.widgetSeventhOption(widget);
+				widgetSeventhOption(widget);
 				break;
 			case 7:
-				WidgetPackets.widgetEighthOption(widget);
+				widgetEighthOption(widget);
 				break;
 			case 8:
-				WidgetPackets.widgetNinthOption(widget);
+				widgetNinthOption(widget);
 				break;
 			case 9:
-				WidgetPackets.widgetTenthOption(widget);
+				widgetTenthOption(widget);
 				break;
 		}
 	}
@@ -207,14 +205,41 @@ public class WidgetPackets
 		createContinuePacket(widgetId, childId).send();
 	}
 
-	public static PacketBufferNode createContinuePacket(int widgetId, int childId)
+	public static PacketBufferNode createType1Action(int widgetId)
 	{
-		var client = Game.getClient();
-		var clientPacket = Game.getClientPacket();
-		var packetBufferNode = Game.getClient().preparePacket(clientPacket.RESUME_PAUSEBUTTON(), client.getPacketWriter().getIsaacCipher());
-		packetBufferNode.getPacketBuffer().writeInt(widgetId);
-		packetBufferNode.getPacketBuffer().writeShort(childId);
-		return packetBufferNode;
+		var client = dev.hoot.api.game.Game.getClient();
+		var clientPacket = dev.hoot.api.game.Game.getClientPacket();
+		var packet = client.preparePacket(clientPacket.IF_BUTTON10(), client.getPacketWriter().getIsaacCipher());
+		packet.getPacketBuffer().writeInt(widgetId);
+		return packet;
+	}
+
+	public static net.runelite.api.packets.PacketBufferNode createDefaultAction(int type, int widgetPackedId, int itemId, int itemSlot)
+	{
+		switch (type)
+		{
+			case 1:
+				return createFirstAction(widgetPackedId, itemId, itemSlot);
+			case 2:
+				return createSecondAction(widgetPackedId, itemId, itemSlot);
+			case 3:
+				return createThirdAction(widgetPackedId, itemId, itemSlot);
+			case 4:
+				return createFourthAction(widgetPackedId, itemId, itemSlot);
+			case 5:
+				return createFifthAction(widgetPackedId, itemId, itemSlot);
+			case 6:
+				return createSixthAction(widgetPackedId, itemId, itemSlot);
+			case 7:
+				return createSeventhAction(widgetPackedId, itemId, itemSlot);
+			case 8:
+				return createEighthAction(widgetPackedId, itemId, itemSlot);
+			case 9:
+				return createNinthAction(widgetPackedId, itemId, itemSlot);
+			case 10:
+				return createTenthAction(widgetPackedId, itemId, itemSlot);
+		}
+		throw new java.lang.IllegalArgumentException("Invalid widget action type: " + type);
 	}
 
 	public static PacketBufferNode createFirstAction(int widgetId, int itemId, int childId)
@@ -327,41 +352,13 @@ public class WidgetPackets
 		return packetBufferNode;
 	}
 
-	public static PacketBufferNode createType1Action(int widgetId)
+	public static PacketBufferNode createContinuePacket(int widgetId, int childId)
 	{
 		var client = Game.getClient();
 		var clientPacket = Game.getClientPacket();
-		var packet = client.preparePacket(clientPacket.IF_BUTTON10(), client.getPacketWriter().getIsaacCipher());
-		packet.getPacketBuffer().writeInt(widgetId);
-		return packet;
-	}
-
-	public static PacketBufferNode createDefaultAction(int type, int widgetPackedId, int itemId, int itemSlot)
-	{
-		switch (type)
-		{
-			case 1:
-				return createFirstAction(widgetPackedId, itemId, itemSlot);
-			case 2:
-				return createSecondAction(widgetPackedId, itemId, itemSlot);
-			case 3:
-				return createThirdAction(widgetPackedId, itemId, itemSlot);
-			case 4:
-				return createFourthAction(widgetPackedId, itemId, itemSlot);
-			case 5:
-				return createFifthAction(widgetPackedId, itemId, itemSlot);
-			case 6:
-				return createSixthAction(widgetPackedId, itemId, itemSlot);
-			case 7:
-				return createSeventhAction(widgetPackedId, itemId, itemSlot);
-			case 8:
-				return createEighthAction(widgetPackedId, itemId, itemSlot);
-			case 9:
-				return createNinthAction(widgetPackedId, itemId, itemSlot);
-			case 10:
-				return createTenthAction(widgetPackedId, itemId, itemSlot);
-		}
-
-		throw new IllegalArgumentException("Invalid widget action type: " + type);
+		var packetBufferNode = Game.getClient().preparePacket(clientPacket.RESUME_PAUSEBUTTON(), client.getPacketWriter().getIsaacCipher());
+		packetBufferNode.getPacketBuffer().writeIntIME(widgetId);
+		packetBufferNode.getPacketBuffer().writeShortLE(childId);
+		return packetBufferNode;
 	}
 }

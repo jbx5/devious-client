@@ -5,5 +5,5 @@ import net.runelite.mapping.ObfuscatedName;
 @Implements("ModelData0")
 public class ModelData0 {
 	ModelData0() {
-	} // L: 4
+	}
 }

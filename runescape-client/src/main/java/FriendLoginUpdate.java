@@ -8,35 +8,35 @@ import net.runelite.mapping.ObfuscatedSignature;
 @Implements("FriendLoginUpdate")
 public class FriendLoginUpdate extends Link {
 	@ObfuscatedName("v")
-	@ObfuscatedGetter(
-		intValue = -652045891
-	)
+	@ObfuscatedGetter(intValue = 
+	-652045891)
+
 	public int field4259;
 	@ObfuscatedName("o")
-	@ObfuscatedSignature(
-		descriptor = "Lqy;"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"Lqy;")
+
 	@Export("username")
 	public Username username;
 	@ObfuscatedName("h")
 	@Export("world")
 	public short world;
 
-	@ObfuscatedSignature(
-		descriptor = "(Lqy;I)V"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(Lqy;I)V")
+
 	FriendLoginUpdate(Username var1, int var2) {
-		this.field4259 = (int)(WorldMapSprite.getServerTime() / 1000L); // L: 109
-		this.username = var1; // L: 110
-		this.world = (short)var2; // L: 111
-	} // L: 112
+		this.field4259 = ((int) (WorldMapSprite.getServerTime() / 1000L));
+		this.username = var1;
+		this.world = ((short) (var2));
+	}
 
 	@ObfuscatedName("o")
 	static final void method6731(long var0) {
 		try {
-			Thread.sleep(var0); // L: 20
-		} catch (InterruptedException var3) { // L: 22
+			Thread.sleep(var0);
+		} catch (InterruptedException var3) {
 		}
 
-	} // L: 23
+	}
 }

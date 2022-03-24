@@ -8,89 +8,89 @@ import net.runelite.mapping.ObfuscatedSignature;
 @Implements("IterableNodeHashTableIterator")
 public class IterableNodeHashTableIterator implements Iterator {
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(
-		descriptor = "Lpq;"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"Lpq;")
+
 	@Export("hashTable")
 	IterableNodeHashTable hashTable;
 	@ObfuscatedName("o")
-	@ObfuscatedSignature(
-		descriptor = "Loz;"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"Loz;")
+
 	@Export("head")
 	Node head;
 	@ObfuscatedName("h")
 	@Export("index")
 	int index;
 	@ObfuscatedName("g")
-	@ObfuscatedSignature(
-		descriptor = "Loz;"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"Loz;")
+
 	@Export("last")
 	Node last;
 
-	@ObfuscatedSignature(
-		descriptor = "(Lpq;)V"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(Lpq;)V")
+
 	IterableNodeHashTableIterator(IterableNodeHashTable var1) {
-		this.last = null; // L: 10
-		this.hashTable = var1; // L: 13
-		this.start(); // L: 14
-	} // L: 15
+		this.last = null;
+		this.hashTable = var1;
+		this.start();
+	}
 
 	@ObfuscatedName("v")
 	@Export("start")
 	void start() {
-		this.head = this.hashTable.buckets[0].previous; // L: 18
-		this.index = 1; // L: 19
-		this.last = null; // L: 20
-	} // L: 21
+		this.head = this.hashTable.buckets[0].previous;
+		this.index = 1;
+		this.last = null;
+	}
 
 	public Object next() {
 		Node var1;
-		if (this.hashTable.buckets[this.index - 1] != this.head) { // L: 25
-			var1 = this.head; // L: 26
-			this.head = var1.previous; // L: 27
-			this.last = var1; // L: 28
-			return var1; // L: 29
+		if (this.hashTable.buckets[this.index - 1] != this.head) {
+			var1 = this.head;
+			this.head = var1.previous;
+			this.last = var1;
+			return var1;
 		} else {
 			do {
-				if (this.index >= this.hashTable.size) { // L: 31
-					return null; // L: 39
+				if (this.index >= this.hashTable.size) {
+					return null;
 				}
 
-				var1 = this.hashTable.buckets[this.index++].previous; // L: 32
-			} while(var1 == this.hashTable.buckets[this.index - 1]); // L: 33
+				var1 = this.hashTable.buckets[this.index++].previous;
+			} while (var1 == this.hashTable.buckets[this.index - 1] );
 
-			this.head = var1.previous; // L: 34
-			this.last = var1; // L: 35
-			return var1; // L: 36
+			this.head = var1.previous;
+			this.last = var1;
+			return var1;
 		}
 	}
 
 	public boolean hasNext() {
-		if (this.hashTable.buckets[this.index - 1] != this.head) { // L: 43
+		if (this.hashTable.buckets[this.index - 1] != this.head) {
 			return true;
 		} else {
-			while (this.index < this.hashTable.size) { // L: 44
-				if (this.hashTable.buckets[this.index++].previous != this.hashTable.buckets[this.index - 1]) { // L: 45
-					this.head = this.hashTable.buckets[this.index - 1].previous; // L: 46
-					return true; // L: 47
+			while (this.index < this.hashTable.size) {
+				if (this.hashTable.buckets[this.index++].previous != this.hashTable.buckets[this.index - 1]) {
+					this.head = this.hashTable.buckets[this.index - 1].previous;
+					return true;
 				}
 
-				this.head = this.hashTable.buckets[this.index - 1]; // L: 50
-			}
+				this.head = this.hashTable.buckets[this.index - 1];
+			} 
 
-			return false; // L: 53
+			return false;
 		}
 	}
 
 	public void remove() {
-		if (this.last == null) { // L: 57
+		if (this.last == null) {
 			throw new IllegalStateException();
 		} else {
-			this.last.remove(); // L: 58
-			this.last = null; // L: 59
+			this.last.remove();
+			this.last = null;
 		}
-	} // L: 60
+	}
 }

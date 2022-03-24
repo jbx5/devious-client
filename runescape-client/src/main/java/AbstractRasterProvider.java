@@ -11,44 +11,44 @@ public abstract class AbstractRasterProvider {
 	@Export("pixels")
 	public int[] pixels;
 	@ObfuscatedName("g")
-	@ObfuscatedGetter(
-		intValue = -56601375
-	)
+	@ObfuscatedGetter(intValue = 
+	-56601375)
+
 	@Export("width")
 	public int width;
 	@ObfuscatedName("l")
-	@ObfuscatedGetter(
-		intValue = 749684829
-	)
+	@ObfuscatedGetter(intValue = 
+	749684829)
+
 	@Export("height")
 	public int height;
 
 	protected AbstractRasterProvider() {
-	} // L: 8
+	}
 
 	@ObfuscatedName("o")
-	@ObfuscatedSignature(
-		descriptor = "(III)V",
-		garbageValue = "-1725746556"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(III)V", garbageValue = 
+	"-1725746556")
+
 	@Export("drawFull")
 	public abstract void drawFull(int var1, int var2);
 
 	@ObfuscatedName("h")
-	@ObfuscatedSignature(
-		descriptor = "(IIIII)V",
-		garbageValue = "-1732987846"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(IIIII)V", garbageValue = 
+	"-1732987846")
+
 	@Export("draw")
 	public abstract void draw(int var1, int var2, int var3, int var4);
 
 	@ObfuscatedName("s")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1395809863"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(I)V", garbageValue = 
+	"-1395809863")
+
 	@Export("apply")
 	public final void apply() {
-		Rasterizer2D.Rasterizer2D_replace(this.pixels, this.width, this.height); // L: 11
-	} // L: 12
+		Rasterizer2D.Rasterizer2D_replace(this.pixels, this.width, this.height);
+	}
 }

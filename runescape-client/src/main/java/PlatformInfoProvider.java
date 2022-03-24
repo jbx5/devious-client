@@ -7,10 +7,9 @@ import net.runelite.mapping.ObfuscatedSignature;
 @Implements("PlatformInfoProvider")
 public interface PlatformInfoProvider {
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(
-		descriptor = "(B)Lov;",
-		garbageValue = "0"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(B)Lov;", garbageValue = 
+	"0")
+
 	@Export("get")
-	PlatformInfo get();
-}
+	PlatformInfo get();}

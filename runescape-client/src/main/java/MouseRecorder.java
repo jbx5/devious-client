@@ -7,9 +7,9 @@ import net.runelite.mapping.ObfuscatedName;
 @Implements("MouseRecorder")
 public class MouseRecorder implements Runnable {
 	@ObfuscatedName("uv")
-	@ObfuscatedGetter(
-		intValue = 270412709
-	)
+	@ObfuscatedGetter(intValue = 
+	270412709)
+
 	@Export("foundItemIndex")
 	static int foundItemIndex;
 	@ObfuscatedName("v")
@@ -19,9 +19,9 @@ public class MouseRecorder implements Runnable {
 	@Export("lock")
 	Object lock;
 	@ObfuscatedName("h")
-	@ObfuscatedGetter(
-		intValue = -154058261
-	)
+	@ObfuscatedGetter(intValue = 
+	-154058261)
+
 	@Export("index")
 	int index;
 	@ObfuscatedName("g")
@@ -35,25 +35,25 @@ public class MouseRecorder implements Runnable {
 	long[] millis;
 
 	MouseRecorder() {
-		this.isRunning = true; // L: 7
-		this.lock = new Object(); // L: 8
-		this.index = 0; // L: 9
-		this.xs = new int[500]; // L: 10
-		this.ys = new int[500]; // L: 11
-		this.millis = new long[500]; // L: 12
-	} // L: 14
+		this.isRunning = true;
+		this.lock = new Object();
+		this.index = 0;
+		this.xs = new int[500];
+		this.ys = new int[500];
+		this.millis = new long[500];
+	}
 
 	public void run() {
-		for (; this.isRunning; GrandExchangeOfferTotalQuantityComparator.method6007(50L)) { // L: 18 27
-			synchronized(this.lock) { // L: 19
-				if (this.index < 500) { // L: 20
-					this.xs[this.index] = MouseHandler.MouseHandler_x; // L: 21
-					this.ys[this.index] = MouseHandler.MouseHandler_y; // L: 22
-					this.millis[this.index] = MouseHandler.MouseHandler_millis; // L: 23
-					++this.index; // L: 24
+		for (; this.isRunning; GrandExchangeOfferTotalQuantityComparator.method6007(50L)) {
+			synchronized(this.lock) {
+				if (this.index < 500) {
+					this.xs[this.index] = MouseHandler.MouseHandler_x;
+					this.ys[this.index] = MouseHandler.MouseHandler_y;
+					this.millis[this.index] = MouseHandler.MouseHandler_millis;
+					++this.index;
 				}
 			}
 		}
 
-	} // L: 29
+	}
 }

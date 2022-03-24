@@ -7,10 +7,9 @@ import net.runelite.mapping.ObfuscatedSignature;
 public interface OAuthApi {
 	boolean isOnLoginScreen();
 
-	@ObfuscatedSignature(
-		descriptor = "(Lcom/jagex/oldscape/pub/OtlTokenRequester;)V"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(Lcom/jagex/oldscape/pub/OtlTokenRequester;)V")
+
 	void setOtlTokenRequester(OtlTokenRequester var1);
 
-	long getAccountHash();
-}
+	long getAccountHash();}

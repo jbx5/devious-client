@@ -5,36 +5,36 @@ import net.runelite.mapping.ObfuscatedSignature;
 @ObfuscatedName("gd")
 public class class182 extends DualNode {
 	@ObfuscatedName("sm")
-	@ObfuscatedSignature(
-		descriptor = "Lao;"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"Lao;")
+
 	@Export("pcmPlayer1")
 	static PcmPlayer pcmPlayer1;
-
-	static {
-		new EvictingDualNodeHashTable(64); // L: 9
-	} // L: 10
+	static 
+	{
+		new EvictingDualNodeHashTable(64);
+	}
 
 	@ObfuscatedName("o")
-	@ObfuscatedSignature(
-		descriptor = "(II)Lgp;",
-		garbageValue = "-1343847522"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(II)Lgp;", garbageValue = 
+	"-1343847522")
+
 	@Export("getParamDefinition")
 	public static ParamComposition getParamDefinition(int var0) {
-		ParamComposition var1 = (ParamComposition)ParamComposition.ParamDefinition_cached.get((long)var0); // L: 25
-		if (var1 != null) { // L: 26
+		ParamComposition var1 = ((ParamComposition) (ParamComposition.ParamDefinition_cached.get(((long) (var0)))));
+		if (var1 != null) {
 			return var1;
 		} else {
-			byte[] var2 = ParamComposition.ParamDefinition_archive.takeFile(11, var0); // L: 27
-			var1 = new ParamComposition(); // L: 28
-			if (var2 != null) { // L: 29
+			byte[] var2 = ParamComposition.ParamDefinition_archive.takeFile(11, var0);
+			var1 = new ParamComposition();
+			if (var2 != null) {
 				var1.decode(new Buffer(var2));
 			}
 
-			var1.postDecode(); // L: 30
-			ParamComposition.ParamDefinition_cached.put(var1, (long)var0); // L: 31
-			return var1; // L: 32
+			var1.postDecode();
+			ParamComposition.ParamDefinition_cached.put(var1, ((long) (var0)));
+			return var1;
 		}
 	}
 }

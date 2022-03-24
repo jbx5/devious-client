@@ -8,21 +8,21 @@ import net.runelite.mapping.ObfuscatedSignature;
 @Implements("ArchiveDiskActionHandler")
 public class ArchiveDiskActionHandler implements Runnable {
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(
-		descriptor = "Lle;"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"Lle;")
+
 	@Export("ArchiveDiskActionHandler_requestQueue")
 	static NodeDeque ArchiveDiskActionHandler_requestQueue;
 	@ObfuscatedName("o")
-	@ObfuscatedSignature(
-		descriptor = "Lle;"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"Lle;")
+
 	@Export("ArchiveDiskActionHandler_responseQueue")
 	static NodeDeque ArchiveDiskActionHandler_responseQueue;
 	@ObfuscatedName("h")
-	@ObfuscatedGetter(
-		intValue = 538081707
-	)
+	@ObfuscatedGetter(intValue = 
+	538081707)
+
 	public static int field3940;
 	@ObfuscatedName("g")
 	@Export("ArchiveDiskActionHandler_lock")
@@ -31,67 +31,67 @@ public class ArchiveDiskActionHandler implements Runnable {
 	@Export("ArchiveDiskActionHandler_thread")
 	static Thread ArchiveDiskActionHandler_thread;
 	@ObfuscatedName("mf")
-	@ObfuscatedGetter(
-		intValue = 1748062659
-	)
+	@ObfuscatedGetter(intValue = 
+	1748062659)
+
 	@Export("menuY")
 	static int menuY;
-
-	static {
-		ArchiveDiskActionHandler_requestQueue = new NodeDeque(); // L: 9
-		ArchiveDiskActionHandler_responseQueue = new NodeDeque(); // L: 10
-		field3940 = 0; // L: 11
+	static 
+	{
+		ArchiveDiskActionHandler_requestQueue = new NodeDeque();
+		ArchiveDiskActionHandler_responseQueue = new NodeDeque();
+		field3940 = 0;
 		ArchiveDiskActionHandler_lock = new Object();
-	} // L: 12
+	}
 
 	ArchiveDiskActionHandler() {
-	} // L: 15
+	}
 
 	public void run() {
 		try {
 			while (true) {
 				ArchiveDiskAction var1;
-				synchronized(ArchiveDiskActionHandler_requestQueue) { // L: 32
-					var1 = (ArchiveDiskAction)ArchiveDiskActionHandler_requestQueue.last(); // L: 33
-				} // L: 34
+				synchronized(ArchiveDiskActionHandler_requestQueue) {
+					var1 = ((ArchiveDiskAction) (ArchiveDiskActionHandler_requestQueue.last()));
+				}
 
-				if (var1 != null) { // L: 35
-					if (var1.type == 0) { // L: 36
-						var1.archiveDisk.write((int)var1.key, var1.data, var1.data.length); // L: 37
-						synchronized(ArchiveDiskActionHandler_requestQueue) { // L: 38
-							var1.remove(); // L: 39
-						} // L: 40
-					} else if (var1.type == 1) { // L: 42
-						var1.data = var1.archiveDisk.read((int)var1.key); // L: 43
-						synchronized(ArchiveDiskActionHandler_requestQueue) { // L: 44
-							ArchiveDiskActionHandler_responseQueue.addFirst(var1); // L: 45
-						} // L: 46
+				if (var1 != null) {
+					if (var1.type == 0) {
+						var1.archiveDisk.write(((int) (var1.key)), var1.data, var1.data.length);
+						synchronized(ArchiveDiskActionHandler_requestQueue) {
+							var1.remove();
+						}
+					} else if (var1.type == 1) {
+						var1.data = var1.archiveDisk.read(((int) (var1.key)));
+						synchronized(ArchiveDiskActionHandler_requestQueue) {
+							ArchiveDiskActionHandler_responseQueue.addFirst(var1);
+						}
 					}
 
-					synchronized(ArchiveDiskActionHandler_lock) { // L: 48
-						if (field3940 <= 1) { // L: 49
-							field3940 = 0; // L: 50
-							ArchiveDiskActionHandler_lock.notifyAll(); // L: 51
-							return; // L: 52
+					synchronized(ArchiveDiskActionHandler_lock) {
+						if (field3940 <= 1) {
+							field3940 = 0;
+							ArchiveDiskActionHandler_lock.notifyAll();
+							return;
 						}
 
-						field3940 = 600; // L: 54
+						field3940 = 600;
 					}
 				} else {
-					GrandExchangeOfferTotalQuantityComparator.method6007(100L); // L: 58
-					synchronized(ArchiveDiskActionHandler_lock) { // L: 59
-						if (field3940 <= 1) { // L: 60
-							field3940 = 0; // L: 61
-							ArchiveDiskActionHandler_lock.notifyAll(); // L: 62
-							return; // L: 63
+					GrandExchangeOfferTotalQuantityComparator.method6007(100L);
+					synchronized(ArchiveDiskActionHandler_lock) {
+						if (field3940 <= 1) {
+							field3940 = 0;
+							ArchiveDiskActionHandler_lock.notifyAll();
+							return;
 						}
 
-						--field3940; // L: 65
+						--field3940;
 					}
 				}
-			}
-		} catch (Exception var13) { // L: 70
-			class301.RunException_sendStackTrace((String)null, var13); // L: 71
+			} 
+		} catch (Exception var13) {
+			class301.RunException_sendStackTrace(((String) (null)), var13);
 		}
-	} // L: 73
+	}
 }

@@ -16,96 +16,96 @@ public class Strings {
 	public static String field3870;
 	@ObfuscatedName("ke")
 	public static String field3871;
-
-	static {
+	static 
+	{
 		field3731 = "Please visit the support page for assistance.";
-		field3684 = "Please visit the support page for assistance."; // L: 99
-		field3645 = ""; // L: 299
-		field3870 = "Page has opened in a new window."; // L: 300
-		field3871 = "(Please check your popup blocker.)"; // L: 301
-	} // L: 339
+		field3684 = "Please visit the support page for assistance.";
+		field3645 = "";
+		field3870 = "Page has opened in a new window.";
+		field3871 = "(Please check your popup blocker.)";
+	}
 
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(
-		descriptor = "(Lpy;I)V",
-		garbageValue = "1995067219"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(Lpy;I)V", garbageValue = 
+	"1995067219")
+
 	@Export("updatePlayer")
 	static final void updatePlayer(PacketBuffer var0) {
-		var0.importIndex(); // L: 37
-		int var1 = Client.localPlayerIndex; // L: 38
-		Player var2 = class19.localPlayer = Client.players[var1] = new Player(); // L: 39
+		var0.importIndex();
+		int var1 = Client.localPlayerIndex;
+		Player var2 = class19.localPlayer = Client.players[var1] = new Player();
 		var2.index = var1;
-		int var3 = var0.readBits(30); // L: 41
-		byte var4 = (byte)(var3 >> 28); // L: 42
-		int var5 = var3 >> 14 & 16383; // L: 43
-		int var6 = var3 & 16383; // L: 44
-		var2.pathX[0] = var5 - ApproximateRouteStrategy.baseX; // L: 45
-		var2.x = (var2.pathX[0] << 7) + (var2.transformedSize() << 6); // L: 46
-		var2.pathY[0] = var6 - class250.baseY; // L: 47
-		var2.y = (var2.pathY[0] << 7) + (var2.transformedSize() << 6); // L: 48
-		class160.Client_plane = var2.plane = var4; // L: 49
-		if (Players.field1289[var1] != null) { // L: 50
+		int var3 = var0.readBits(30);
+		byte var4 = ((byte) (var3 >> 28));
+		int var5 = (var3 >> 14) & 16383;
+		int var6 = var3 & 16383;
+		var2.pathX[0] = var5 - ApproximateRouteStrategy.baseX;
+		var2.x = (var2.pathX[0] << 7) + (var2.transformedSize() << 6);
+		var2.pathY[0] = var6 - class250.baseY;
+		var2.y = (var2.pathY[0] << 7) + (var2.transformedSize() << 6);
+		class160.Client_plane = var2.plane = var4;
+		if (Players.field1289[var1] != null) {
 			var2.read(Players.field1289[var1]);
 		}
 
-		Players.Players_count = 0; // L: 51
-		Players.Players_indices[++Players.Players_count - 1] = var1; // L: 52
-		Players.field1288[var1] = 0; // L: 53
-		Players.Players_emptyIdxCount = 0; // L: 54
+		Players.Players_count = 0;
+		Players.Players_indices[(++Players.Players_count) - 1] = var1;
+		Players.field1288[var1] = 0;
+		Players.Players_emptyIdxCount = 0;
 
-		for (int var7 = 1; var7 < 2048; ++var7) { // L: 55
-			if (var7 != var1) { // L: 56
-				int var8 = var0.readBits(18); // L: 57
-				int var9 = var8 >> 16; // L: 58
-				int var10 = var8 >> 8 & 597; // L: 59
-				int var11 = var8 & 597; // L: 60
-				Players.Players_regions[var7] = (var10 << 14) + var11 + (var9 << 28); // L: 61
-				Players.Players_orientations[var7] = 0; // L: 62
-				Players.Players_targetIndices[var7] = -1; // L: 63
-				Players.Players_emptyIndices[++Players.Players_emptyIdxCount - 1] = var7; // L: 64
-				Players.field1288[var7] = 0; // L: 65
+		for (int var7 = 1; var7 < 2048; ++var7) {
+			if (var7 != var1) {
+				int var8 = var0.readBits(18);
+				int var9 = var8 >> 16;
+				int var10 = (var8 >> 8) & 597;
+				int var11 = var8 & 597;
+				Players.Players_regions[var7] = ((var10 << 14) + var11) + (var9 << 28);
+				Players.Players_orientations[var7] = 0;
+				Players.Players_targetIndices[var7] = -1;
+				Players.Players_emptyIndices[(++Players.Players_emptyIdxCount) - 1] = var7;
+				Players.field1288[var7] = 0;
 			}
 		}
 
-		var0.exportIndex(); // L: 67
-	} // L: 68
+		var0.exportIndex();
+	}
 
 	@ObfuscatedName("g")
-	@ObfuscatedSignature(
-		descriptor = "(IB)Lba;",
-		garbageValue = "-56"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(IB)Lba;", garbageValue = 
+	"-56")
+
 	@Export("Messages_getMessage")
 	static Message Messages_getMessage(int var0) {
-		return (Message)Messages.Messages_hashTable.get((long)var0); // L: 40
+		return ((Message) (Messages.Messages_hashTable.get(((long) (var0)))));
 	}
 
 	@ObfuscatedName("ka")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "222187307"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(I)V", garbageValue = 
+	"222187307")
+
 	static final void method5795() {
-		for (int var0 = 0; var0 < Players.Players_count; ++var0) { // L: 11680
-			Player var1 = Client.players[Players.Players_indices[var0]]; // L: 11681
-			var1.clearIsFriend(); // L: 11682
+		for (int var0 = 0; var0 < Players.Players_count; ++var0) {
+			Player var1 = Client.players[Players.Players_indices[var0]];
+			var1.clearIsFriend();
 		}
 
-		class20.method326(); // L: 11684
-		if (class230.friendsChat != null) { // L: 11685
-			class230.friendsChat.clearFriends(); // L: 11686
+		class20.method326();
+		if (class230.friendsChat != null) {
+			class230.friendsChat.clearFriends();
 		}
 
-	} // L: 11688
+	}
 
 	@ObfuscatedName("kv")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "8"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(B)V", garbageValue = 
+	"8")
+
 	static final void method5798() {
-		Client.field726 = Client.cycleCntr; // L: 11705
-		class345.ClanChat_inClanChat = true; // L: 11706
-	} // L: 11707
+		Client.field726 = Client.cycleCntr;
+		class345.ClanChat_inClanChat = true;
+	}
 }

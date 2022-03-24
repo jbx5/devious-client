@@ -16,209 +16,209 @@ public class class342 extends AbstractQueue {
 	@Export("soundSystemExecutor")
 	static ScheduledExecutorService soundSystemExecutor;
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(
-		descriptor = "[Lmt;"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"[Lmt;")
+
 	class340[] field4121;
 	@ObfuscatedName("o")
 	Map field4116;
 	@ObfuscatedName("h")
-	@ObfuscatedGetter(
-		intValue = 205859761
-	)
+	@ObfuscatedGetter(intValue = 
+	205859761)
+
 	int field4117;
 	@ObfuscatedName("g")
 	final Comparator field4118;
 	@ObfuscatedName("l")
-	@ObfuscatedGetter(
-		intValue = -116505453
-	)
+	@ObfuscatedGetter(intValue = 
+	-116505453)
+
 	int field4115;
 
 	public class342(int var1, Comparator var2) {
-		this.field4115 = 0; // L: 10
-		this.field4121 = new class340[var1]; // L: 17
-		this.field4116 = new HashMap(); // L: 18
-		this.field4118 = var2; // L: 19
-	} // L: 20
+		this.field4115 = 0;
+		this.field4121 = new class340[var1];
+		this.field4116 = new HashMap();
+		this.field4118 = var2;
+	}
 
 	public class342(int var1) {
-		this(var1, (Comparator)null); // L: 13
-	} // L: 14
+		this(var1, ((Comparator) (null)));
+	}
 
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1358753820"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(I)V", garbageValue = 
+	"1358753820")
+
 	void method6346() {
-		int var1 = (this.field4121.length << 1) + 1; // L: 23
-		this.field4121 = (class340[])((class340[])Arrays.copyOf(this.field4121, var1)); // L: 24
-	} // L: 25
+		int var1 = (this.field4121.length << 1) + 1;
+		this.field4121 = ((class340[]) ((class340[]) (Arrays.copyOf(this.field4121, var1))));
+	}
 
 	@ObfuscatedName("o")
-	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "-385967727"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(II)V", garbageValue = 
+	"-385967727")
+
 	void method6365(int var1) {
 		class340 var2;
 		int var3;
-		for (var2 = this.field4121[var1]; var1 > 0; var1 = var3) { // L: 96 97 108
-			var3 = var1 - 1 >>> 1; // L: 98
-			class340 var4 = this.field4121[var3]; // L: 99
-			if (this.field4118 != null) { // L: 100
-				if (this.field4118.compare(var2.field4107, var4.field4107) >= 0) { // L: 101
+		for (var2 = this.field4121[var1]; var1 > 0; var1 = var3) {
+			var3 = (var1 - 1) >>> 1;
+			class340 var4 = this.field4121[var3];
+			if (this.field4118 != null) {
+				if (this.field4118.compare(var2.field4107, var4.field4107) >= 0) {
 					break;
 				}
-			} else if (((Comparable)var2.field4107).compareTo(var4.field4107) >= 0) { // L: 104
+			} else if (((Comparable) (var2.field4107)).compareTo(var4.field4107) >= 0) {
 				break;
 			}
 
-			this.field4121[var1] = var4; // L: 106
-			this.field4121[var1].field4108 = var1; // L: 107
+			this.field4121[var1] = var4;
+			this.field4121[var1].field4108 = var1;
 		}
 
-		this.field4121[var1] = var2; // L: 110
-		this.field4121[var1].field4108 = var1; // L: 111
-	} // L: 112
+		this.field4121[var1] = var2;
+		this.field4121[var1].field4108 = var1;
+	}
 
 	@ObfuscatedName("h")
-	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "-2077762464"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(II)V", garbageValue = 
+	"-2077762464")
+
 	void method6351(int var1) {
-		class340 var2 = this.field4121[var1]; // L: 116
+		class340 var2 = this.field4121[var1];
 
 		int var8;
-		for (int var3 = this.field4117 >>> 1; var1 < var3; var1 = var8) { // L: 117 118 140
-			int var4 = (var1 << 1) + 1; // L: 119
-			class340 var5 = this.field4121[var4]; // L: 120
-			int var6 = (var1 << 1) + 2; // L: 121
-			class340 var7 = this.field4121[var6]; // L: 122
-			if (this.field4118 != null) { // L: 124
-				if (var6 < this.field4117 && this.field4118.compare(var5.field4107, var7.field4107) > 0) { // L: 125
+		for (int var3 = this.field4117 >>> 1; var1 < var3; var1 = var8) {
+			int var4 = (var1 << 1) + 1;
+			class340 var5 = this.field4121[var4];
+			int var6 = (var1 << 1) + 2;
+			class340 var7 = this.field4121[var6];
+			if (this.field4118 != null) {
+				if ((var6 < this.field4117) && (this.field4118.compare(var5.field4107, var7.field4107) > 0)) {
 					var8 = var6;
 				} else {
-					var8 = var4; // L: 126
+					var8 = var4;
 				}
-			} else if (var6 < this.field4117 && ((Comparable)var5.field4107).compareTo(var7.field4107) > 0) { // L: 129
+			} else if ((var6 < this.field4117) && (((Comparable) (var5.field4107)).compareTo(var7.field4107) > 0)) {
 				var8 = var6;
 			} else {
-				var8 = var4; // L: 130
+				var8 = var4;
 			}
 
-			if (this.field4118 != null) { // L: 132
-				if (this.field4118.compare(var2.field4107, this.field4121[var8].field4107) <= 0) { // L: 133
+			if (this.field4118 != null) {
+				if (this.field4118.compare(var2.field4107, this.field4121[var8].field4107) <= 0) {
 					break;
 				}
-			} else if (((Comparable)var2.field4107).compareTo(this.field4121[var8].field4107) <= 0) { // L: 136
+			} else if (((Comparable) (var2.field4107)).compareTo(this.field4121[var8].field4107) <= 0) {
 				break;
 			}
 
-			this.field4121[var1] = this.field4121[var8]; // L: 138
-			this.field4121[var1].field4108 = var1; // L: 139
+			this.field4121[var1] = this.field4121[var8];
+			this.field4121[var1].field4108 = var1;
 		}
 
-		this.field4121[var1] = var2; // L: 142
-		this.field4121[var1].field4108 = var1; // L: 143
-	} // L: 144
+		this.field4121[var1] = var2;
+		this.field4121[var1].field4108 = var1;
+	}
 
 	public boolean remove(Object var1) {
-		class340 var2 = (class340)this.field4116.remove(var1); // L: 77
-		if (var2 == null) { // L: 78
+		class340 var2 = ((class340) (this.field4116.remove(var1)));
+		if (var2 == null) {
 			return false;
 		} else {
-			++this.field4115; // L: 79
-			--this.field4117; // L: 80
-			if (var2.field4108 == this.field4117) { // L: 81
-				this.field4121[this.field4117] = null; // L: 82
-				return true; // L: 83
+			++this.field4115;
+			--this.field4117;
+			if (var2.field4108 == this.field4117) {
+				this.field4121[this.field4117] = null;
+				return true;
 			} else {
-				class340 var3 = this.field4121[this.field4117]; // L: 85
-				this.field4121[this.field4117] = null; // L: 86
-				this.field4121[var2.field4108] = var3; // L: 87
-				this.field4121[var2.field4108].field4108 = var2.field4108; // L: 88
-				this.method6351(var2.field4108); // L: 89
-				if (var3 == this.field4121[var2.field4108]) { // L: 90
+				class340 var3 = this.field4121[this.field4117];
+				this.field4121[this.field4117] = null;
+				this.field4121[var2.field4108] = var3;
+				this.field4121[var2.field4108].field4108 = var2.field4108;
+				this.method6351(var2.field4108);
+				if (var3 == this.field4121[var2.field4108]) {
 					this.method6365(var2.field4108);
 				}
 
-				return true; // L: 91
+				return true;
 			}
 		}
 	}
 
 	public Object peek() {
-		return this.field4117 == 0 ? null : this.field4121[0].field4107; // L: 54 55
+		return this.field4117 == 0 ? null : this.field4121[0].field4107;
 	}
 
 	public int size() {
-		return this.field4117; // L: 29
+		return this.field4117;
 	}
 
 	public boolean contains(Object var1) {
-		return this.field4116.containsKey(var1); // L: 148
+		return this.field4116.containsKey(var1);
 	}
 
 	public Object[] toArray() {
-		Object[] var1 = super.toArray(); // L: 154
+		Object[] var1 = super.toArray();
 		if (this.field4118 != null) {
-			Arrays.sort(var1, this.field4118); // L: 155
+			Arrays.sort(var1, this.field4118);
 		} else {
-			Arrays.sort(var1); // L: 156
+			Arrays.sort(var1);
 		}
 
-		return var1; // L: 157
+		return var1;
 	}
 
 	public Iterator iterator() {
-		return new class341(this); // L: 162
+		return new class341(this);
 	}
 
 	public Object poll() {
-		if (this.field4117 == 0) { // L: 61
+		if (this.field4117 == 0) {
 			return null;
 		} else {
-			++this.field4115; // L: 62
-			Object var1 = this.field4121[0].field4107; // L: 63
-			this.field4116.remove(var1); // L: 64
-			--this.field4117; // L: 65
+			++this.field4115;
+			Object var1 = this.field4121[0].field4107;
+			this.field4116.remove(var1);
+			--this.field4117;
 			if (this.field4117 == 0) {
-				this.field4121[this.field4117] = null; // L: 66
+				this.field4121[this.field4117] = null;
 			} else {
-				this.field4121[0] = this.field4121[this.field4117]; // L: 68
-				this.field4121[0].field4108 = 0; // L: 69
-				this.field4121[this.field4117] = null; // L: 70
-				this.method6351(0); // L: 71
+				this.field4121[0] = this.field4121[this.field4117];
+				this.field4121[0].field4108 = 0;
+				this.field4121[this.field4117] = null;
+				this.method6351(0);
 			}
 
-			return var1; // L: 73
+			return var1;
 		}
 	}
 
 	public boolean offer(Object var1) {
-		if (this.field4116.containsKey(var1)) { // L: 34
+		if (this.field4116.containsKey(var1)) {
 			throw new IllegalArgumentException("");
 		} else {
-			++this.field4115; // L: 35
-			int var2 = this.field4117; // L: 36
-			if (var2 >= this.field4121.length) { // L: 37
+			++this.field4115;
+			int var2 = this.field4117;
+			if (var2 >= this.field4121.length) {
 				this.method6346();
 			}
 
-			++this.field4117; // L: 38
-			if (var2 == 0) { // L: 39
-				this.field4121[0] = new class340(var1, 0); // L: 40
-				this.field4116.put(var1, this.field4121[0]); // L: 41
+			++this.field4117;
+			if (var2 == 0) {
+				this.field4121[0] = new class340(var1, 0);
+				this.field4116.put(var1, this.field4121[0]);
 			} else {
-				this.field4121[var2] = new class340(var1, var2); // L: 44
-				this.field4116.put(var1, this.field4121[var2]); // L: 45
-				this.method6365(var2); // L: 46
+				this.field4121[var2] = new class340(var1, var2);
+				this.field4116.put(var1, this.field4121[var2]);
+				this.method6365(var2);
 			}
 
-			return true; // L: 48
+			return true;
 		}
 	}
 }
