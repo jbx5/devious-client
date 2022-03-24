@@ -351,12 +351,12 @@ public class Item implements Interactable, Identifiable, EntityNameable
 		}
 
 		Rectangle bounds = widget.getBounds();
-		if (bounds != null)
+		if (bounds == null)
 		{
 			Rectangle itemBounds = widget.getWidgetItem(getSlot()).getCanvasBounds();
 			return itemBounds != null ? itemBounds : new Rectangle(-1, -1, 0, 0);
 		}
-		return new Rectangle(-1, -1, 0, 0);
+		return bounds;
 	}
 
 	@Override
