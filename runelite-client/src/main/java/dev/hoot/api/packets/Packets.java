@@ -300,8 +300,8 @@ public class Packets
 			case WIDGET_TYPE_6:
 				return WidgetPackets.createContinuePacket(param1, param0);
 			case WALK:
-				client.setDestinationX(param0 - client.getBaseX());
-				client.setDestinationY(param1 - client.getBaseY());
+				client.setDestinationX(param0);
+				client.setDestinationY(param1);
 				return MovementPackets.createMovement(
 						param0 + client.getBaseX(),
 						param1 + client.getBaseY(),
