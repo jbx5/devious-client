@@ -10,92 +10,92 @@ import net.runelite.mapping.ObfuscatedSignature;
 @ObfuscatedName("cs")
 public class class101 extends UrlRequester {
 	@ObfuscatedName("ft")
-	@ObfuscatedGetter(
-		intValue = 1899904271
-	)
+	@ObfuscatedGetter(intValue = 
+	1899904271)
+
 	@Export("worldPort")
 	static int worldPort;
 
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(
-		descriptor = "(Lct;I)V",
-		garbageValue = "-1783154457"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(Lct;I)V", garbageValue = 
+	"-1783154457")
+
 	void vmethod2538(UrlRequest var1) throws IOException {
-		URLConnection var2 = null; // L: 12
+		URLConnection var2 = null;
 
 		try {
 			try {
-				String var3 = var1.url.getProtocol(); // L: 14
-				if (var3.equals("http")) { // L: 15
-					var2 = this.method2536(var1); // L: 16
+				String var3 = var1.url.getProtocol();
+				if (var3.equals("http")) {
+					var2 = this.method2536(var1);
 				} else {
-					if (!var3.equals("https")) { // L: 18
-						var1.isDone0 = true; // L: 22
-						return; // L: 23
+					if (!var3.equals("https")) {
+						var1.isDone0 = true;
+						return;
 					}
 
-					var2 = this.method2537(var1); // L: 19
+					var2 = this.method2537(var1);
 				}
 
-				this.method2515(var2, var1); // L: 25
+				this.method2515(var2, var1);
 			} catch (IOException var7) {
 			}
 
 		} finally {
 			var1.isDone0 = true;
 			if (var2 != null) {
-				if (var2 instanceof HttpURLConnection) { // L: 31
-					((HttpURLConnection)var2).disconnect();
+				if (var2 instanceof HttpURLConnection) {
+					((HttpURLConnection) (var2)).disconnect();
 				} else if (var2 instanceof HttpsURLConnection) {
-					((HttpsURLConnection)var2).disconnect(); // L: 35
+					((HttpsURLConnection) (var2)).disconnect();
 				}
 			}
 
 		}
-	} // L: 39
+	}
 
 	@ObfuscatedName("w")
-	@ObfuscatedSignature(
-		descriptor = "(Lct;I)Ljava/net/URLConnection;",
-		garbageValue = "-2100261095"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(Lct;I)Ljava/net/URLConnection;", garbageValue = 
+	"-2100261095")
+
 	URLConnection method2536(UrlRequest var1) throws IOException {
-		URLConnection var2 = var1.url.openConnection(); // L: 42
-		this.method2524(var2); // L: 43
-		return var2; // L: 44
+		URLConnection var2 = var1.url.openConnection();
+		this.method2524(var2);
+		return var2;
 	}
 
 	@ObfuscatedName("a")
-	@ObfuscatedSignature(
-		descriptor = "(Lct;I)Ljava/net/URLConnection;",
-		garbageValue = "-1790312797"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(Lct;I)Ljava/net/URLConnection;", garbageValue = 
+	"-1790312797")
+
 	URLConnection method2537(UrlRequest var1) throws IOException {
-		HttpsURLConnection var2 = (HttpsURLConnection)var1.url.openConnection(); // L: 48
-		var2.setSSLSocketFactory(new class15()); // L: 49
-		this.method2524(var2); // L: 50
-		return var2; // L: 51
+		HttpsURLConnection var2 = ((HttpsURLConnection) (var1.url.openConnection()));
+		var2.setSSLSocketFactory(new class15());
+		this.method2524(var2);
+		return var2;
 	}
 
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(
-		descriptor = "(II)Lbo;",
-		garbageValue = "1275479769"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(II)Lbo;", garbageValue = 
+	"1275479769")
+
 	@Export("getScript")
 	static Script getScript(int var0) {
-		Script var1 = (Script)Script.Script_cached.get((long)var0); // L: 26
-		if (var1 != null) { // L: 27
+		Script var1 = ((Script) (Script.Script_cached.get(((long) (var0)))));
+		if (var1 != null) {
 			return var1;
 		} else {
-			byte[] var2 = class135.archive12.takeFile(var0, 0); // L: 28
-			if (var2 == null) { // L: 29
-				return null; // L: 30
+			byte[] var2 = class135.archive12.takeFile(var0, 0);
+			if (var2 == null) {
+				return null;
 			} else {
-				var1 = Message.newScript(var2); // L: 32
-				Script.Script_cached.put(var1, (long)var0); // L: 33
-				return var1; // L: 34
+				var1 = Message.newScript(var2);
+				Script.Script_cached.put(var1, ((long) (var0)));
+				return var1;
 			}
 		}
 	}

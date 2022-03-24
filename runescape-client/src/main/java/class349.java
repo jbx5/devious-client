@@ -10,49 +10,49 @@ public final class class349 {
 	static final char[] base37Table;
 	@ObfuscatedName("o")
 	static long[] field4155;
+	static 
+	{
+		base37Table = new char[]{ '_', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+		field4155 = new long[12];
 
-	static {
-		base37Table = new char[]{'_', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'}; // L: 4
-		field4155 = new long[12]; // L: 5
-
-		for (int var0 = 0; var0 < field4155.length; ++var0) { // L: 8
-			field4155[var0] = (long)Math.pow(37.0D, (double)var0);
+		for (int var0 = 0; var0 < class349.field4155.length; ++var0) {
+			field4155[var0] = ((long) (Math.pow(37.0, ((double) (var0)))));
 		}
 
-	} // L: 9
+	}
 
 	@ObfuscatedName("h")
-	@ObfuscatedSignature(
-		descriptor = "(I)Lcv;",
-		garbageValue = "77762889"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(I)Lcv;", garbageValue = 
+	"77762889")
+
 	static ClientPreferences method6537() {
-		AccessFile var0 = null; // L: 112
-		ClientPreferences var1 = new ClientPreferences(); // L: 113
+		AccessFile var0 = null;
+		ClientPreferences var1 = new ClientPreferences();
 
 		try {
-			var0 = ReflectionCheck.getPreferencesFile("", Login.field917.name, false); // L: 115
-			byte[] var2 = new byte[(int)var0.length()]; // L: 116
+			var0 = ReflectionCheck.getPreferencesFile("", Login.field917.name, false);
+			byte[] var2 = new byte[((int) (var0.length()))];
 
 			int var4;
-			for (int var3 = 0; var3 < var2.length; var3 += var4) { // L: 117 118 121
-				var4 = var0.read(var2, var3, var2.length - var3); // L: 119
-				if (var4 == -1) {
-					throw new IOException(); // L: 120
+			for (int var3 = 0; var3 < var2.length; var3 += var4) {
+				var4 = var0.read(var2, var3, var2.length - var3);
+				if (var4 == (-1)) {
+					throw new IOException();
 				}
 			}
 
-			var1 = new ClientPreferences(new Buffer(var2)); // L: 123
-		} catch (Exception var6) { // L: 125
+			var1 = new ClientPreferences(new Buffer(var2));
+		} catch (Exception var6) {
 		}
 
 		try {
-			if (var0 != null) { // L: 127
+			if (var0 != null) {
 				var0.close();
 			}
-		} catch (Exception var5) { // L: 129
+		} catch (Exception var5) {
 		}
 
-		return var1; // L: 130
+		return var1;
 	}
 }

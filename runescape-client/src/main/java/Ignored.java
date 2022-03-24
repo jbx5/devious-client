@@ -8,36 +8,36 @@ import net.runelite.mapping.ObfuscatedSignature;
 @Implements("Ignored")
 public class Ignored extends User {
 	@ObfuscatedName("v")
-	@ObfuscatedGetter(
-		intValue = -291144419
-	)
+	@ObfuscatedGetter(intValue = 
+	-291144419)
+
 	@Export("id")
 	int id;
 
 	Ignored() {
-	} // L: 6
+	}
 
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(
-		descriptor = "(Lng;I)I",
-		garbageValue = "-264858177"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(Lng;I)I", garbageValue = 
+	"-264858177")
+
 	@Export("compareTo_ignored")
 	int compareTo_ignored(Ignored var1) {
-		return this.id - var1.id; // L: 9
+		return this.id - var1.id;
 	}
 
 	@ObfuscatedName("o")
-	@ObfuscatedSignature(
-		descriptor = "(Lnc;S)I",
-		garbageValue = "-8912"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(Lnc;S)I", garbageValue = 
+	"-8912")
+
 	@Export("compareTo_user")
 	public int compareTo_user(User var1) {
-		return this.compareTo_ignored((Ignored)var1); // L: 13
+		return this.compareTo_ignored(((Ignored) (var1)));
 	}
 
 	public int compareTo(Object var1) {
-		return this.compareTo_ignored((Ignored)var1); // L: 17
+		return this.compareTo_ignored(((Ignored) (var1)));
 	}
 }

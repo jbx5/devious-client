@@ -11,77 +11,77 @@ public class ClanChannelMember {
 	@Export("rank")
 	public byte rank;
 	@ObfuscatedName("o")
-	@ObfuscatedGetter(
-		intValue = -1591925387
-	)
+	@ObfuscatedGetter(intValue = 
+	-1591925387)
+
 	@Export("world")
 	public int world;
 	@ObfuscatedName("h")
-	@ObfuscatedSignature(
-		descriptor = "Lqy;"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"Lqy;")
+
 	@Export("username")
 	public Username username;
 
 	ClanChannelMember() {
-	} // L: 10
+	}
 
 	@ObfuscatedName("h")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/CharSequence;IZI)Z",
-		garbageValue = "1411070013"
-	)
-	static boolean method2850(CharSequence var0, int var1, boolean var2) {
-		if (var1 >= 2 && var1 <= 36) { // L: 39
-			boolean var3 = false; // L: 40
-			boolean var4 = false; // L: 41
-			int var5 = 0; // L: 42
-			int var6 = var0.length(); // L: 43
+	@ObfuscatedSignature(descriptor = 
+	"(Ljava/lang/CharSequence;IZI)Z", garbageValue = 
+	"1411070013")
 
-			for (int var7 = 0; var7 < var6; ++var7) { // L: 44
-				char var8 = var0.charAt(var7); // L: 45
-				if (var7 == 0) { // L: 46
-					if (var8 == '-') { // L: 47
-						var3 = true; // L: 48
+	static boolean method2850(CharSequence var0, int var1, boolean var2) {
+		if ((var1 >= 2) && (var1 <= 36)) {
+			boolean var3 = false;
+			boolean var4 = false;
+			int var5 = 0;
+			int var6 = var0.length();
+
+			for (int var7 = 0; var7 < var6; ++var7) {
+				char var8 = var0.charAt(var7);
+				if (var7 == 0) {
+					if (var8 == '-') {
+						var3 = true;
 						continue;
 					}
 
-					if (var8 == '+') { // L: 51
+					if (var8 == '+') {
 						continue;
 					}
 				}
 
 				int var10;
-				if (var8 >= '0' && var8 <= '9') { // L: 53
+				if ((var8 >= '0') && (var8 <= '9')) {
 					var10 = var8 - '0';
-				} else if (var8 >= 'A' && var8 <= 'Z') { // L: 54
+				} else if ((var8 >= 'A') && (var8 <= 'Z')) {
 					var10 = var8 - '7';
 				} else {
-					if (var8 < 'a' || var8 > 'z') { // L: 55
-						return false; // L: 56
+					if ((var8 < 'a') || (var8 > 'z')) {
+						return false;
 					}
 
 					var10 = var8 - 'W';
 				}
 
-				if (var10 >= var1) { // L: 57
+				if (var10 >= var1) {
 					return false;
 				}
 
-				if (var3) { // L: 58
+				if (var3) {
 					var10 = -var10;
 				}
 
-				int var9 = var5 * var1 + var10; // L: 59
-				if (var9 / var1 != var5) { // L: 60
+				int var9 = (var5 * var1) + var10;
+				if ((var9 / var1) != var5) {
 					return false;
 				}
 
-				var5 = var9; // L: 61
-				var4 = true; // L: 62
+				var5 = var9;
+				var4 = true;
 			}
 
-			return var4; // L: 64
+			return var4;
 		} else {
 			throw new IllegalArgumentException("" + var1);
 		}

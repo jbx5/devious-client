@@ -8,27 +8,27 @@ import net.runelite.mapping.ObfuscatedSignature;
 @Implements("MenuAction")
 public class MenuAction {
 	@ObfuscatedName("v")
-	@ObfuscatedGetter(
-		intValue = -1395213587
-	)
+	@ObfuscatedGetter(intValue = 
+	-1395213587)
+
 	@Export("param0")
 	int param0;
 	@ObfuscatedName("o")
-	@ObfuscatedGetter(
-		intValue = 1235070557
-	)
+	@ObfuscatedGetter(intValue = 
+	1235070557)
+
 	@Export("param1")
 	int param1;
 	@ObfuscatedName("h")
-	@ObfuscatedGetter(
-		intValue = -1780359583
-	)
+	@ObfuscatedGetter(intValue = 
+	-1780359583)
+
 	@Export("opcode")
 	int opcode;
 	@ObfuscatedName("g")
-	@ObfuscatedGetter(
-		intValue = -538792745
-	)
+	@ObfuscatedGetter(intValue = 
+	-538792745)
+
 	@Export("identifier")
 	int identifier;
 	@ObfuscatedName("l")
@@ -36,24 +36,24 @@ public class MenuAction {
 	String action;
 
 	MenuAction() {
-	} // L: 11995
+	}
 
 	@ObfuscatedName("h")
-	@ObfuscatedSignature(
-		descriptor = "(CS)C",
-		garbageValue = "1843"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(CS)C", garbageValue = 
+	"1843")
+
 	static char method1877(char var0) {
-		if (var0 == 198) { // L: 119
+		if (var0 == 198) {
 			return 'E';
-		} else if (var0 == 230) { // L: 120
+		} else if (var0 == 230) {
 			return 'e';
 		} else if (var0 == 223) {
-			return 's'; // L: 121
-		} else if (var0 == 338) { // L: 122
+			return 's';
+		} else if (var0 == 338) {
 			return 'E';
 		} else {
-			return (char)(var0 == 339 ? 'e' : '\u0000'); // L: 123 124
+			return ((char) (var0 == 339 ? 'e' : '\u0000'));
 		}
 	}
 }

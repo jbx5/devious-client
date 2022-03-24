@@ -15,11 +15,11 @@ public class class260 {
 	static SecureRandom secureRandom;
 
 	@ObfuscatedName("o")
-	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "-537168296"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(II)I", garbageValue = 
+	"-537168296")
+
 	public static int method5203(int var0) {
-		return class271.field3160[var0]; // L: 35
+		return class271.field3160[var0];
 	}
 }

@@ -7,10 +7,9 @@ import net.runelite.mapping.ObfuscatedSignature;
 @Implements("Usernamed")
 public interface Usernamed {
 	@ObfuscatedName("lr")
-	@ObfuscatedSignature(
-		descriptor = "(B)Lqy;",
-		garbageValue = "4"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(B)Lqy;", garbageValue = 
+	"4")
+
 	@Export("username")
-	Username username();
-}
+	Username username();}

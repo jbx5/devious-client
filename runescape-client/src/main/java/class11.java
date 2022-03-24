@@ -1,12 +1,3 @@
-import java.awt.Desktop;
-import java.awt.Image;
-import java.awt.Desktop.Action;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.net.URI;
-import java.security.cert.CertificateException;
-import java.security.cert.CertificateFactory;
-import java.util.LinkedList;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
@@ -16,24 +7,33 @@ import org.bouncycastle.crypto.tls.CertificateRequest;
 import org.bouncycastle.crypto.tls.TlsAuthentication;
 import org.bouncycastle.crypto.tls.TlsCredentials;
 
+import java.awt.*;
+import java.awt.Desktop.Action;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.net.URI;
+import java.security.cert.CertificateException;
+import java.security.cert.CertificateFactory;
+import java.util.LinkedList;
+
 @ObfuscatedName("x")
 class class11 implements TlsAuthentication {
 	@ObfuscatedName("ab")
 	static Image field56;
 	@ObfuscatedName("my")
 	@ObfuscatedGetter(
-		intValue = -1629123777
+			intValue = -1629123777
 	)
 	@Export("menuWidth")
 	static int menuWidth;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lj;"
+			descriptor = "Lj;"
 	)
 	final class13 this$2;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lj;)V"
+			descriptor = "(Lj;)V"
 	)
 	class11(class13 var1) {
 		this.this$2 = var1; // L: 303
@@ -62,8 +62,8 @@ class class11 implements TlsAuthentication {
 
 	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;ZZS)V",
-		garbageValue = "18142"
+			descriptor = "(Ljava/lang/String;ZZS)V",
+			garbageValue = "18142"
 	)
 	@Export("openURL")
 	public static void openURL(String var0, boolean var1, boolean var2) {
@@ -91,8 +91,8 @@ class class11 implements TlsAuthentication {
 
 	@ObfuscatedName("l")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Float;Ljava/lang/Float;I)V",
-		garbageValue = "-710158938"
+			descriptor = "(Ljava/lang/Float;Ljava/lang/Float;I)V",
+			garbageValue = "-710158938"
 	)
 	static void method116(Float var0, Float var1) {
 		var1 = 1.0F - var1; // L: 305
@@ -116,8 +116,8 @@ class class11 implements TlsAuthentication {
 
 	@ObfuscatedName("hi")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIII)V",
-		garbageValue = "-1930297149"
+			descriptor = "(IIIIII)V",
+			garbageValue = "-1930297149"
 	)
 	@Export("drawObject")
 	static final void drawObject(int var0, int var1, int var2, int var3, int var4) {
@@ -266,8 +266,8 @@ class class11 implements TlsAuthentication {
 
 	@ObfuscatedName("in")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIIIIII)V",
-		garbageValue = "-1139609562"
+			descriptor = "(IIIIIIIII)V",
+			garbageValue = "-1139609562"
 	)
 	@Export("drawWidgets")
 	static final void drawWidgets(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7) {
@@ -293,8 +293,8 @@ class class11 implements TlsAuthentication {
 
 	@ObfuscatedName("jq")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Lkn;I)Ljava/lang/String;",
-		garbageValue = "1166958975"
+			descriptor = "(Ljava/lang/String;Lkn;I)Ljava/lang/String;",
+			garbageValue = "1166958975"
 	)
 	static String method114(String var0, Widget var1) {
 		if (var0.indexOf("%") != -1) { // L: 10106
@@ -315,8 +315,8 @@ class class11 implements TlsAuthentication {
 
 	@ObfuscatedName("lv")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "831054462"
+			descriptor = "(I)V",
+			garbageValue = "831054462"
 	)
 	static void method115() {
 		if (Client.oculusOrbState == 1) { // L: 11911

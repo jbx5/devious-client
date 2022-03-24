@@ -8,22 +8,22 @@ import net.runelite.mapping.ObfuscatedSignature;
 @Implements("DefaultsGroup")
 public class DefaultsGroup {
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(
-		descriptor = "Lnz;"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"Lnz;")
+
 	static final DefaultsGroup field4313;
 	@ObfuscatedName("o")
-	@ObfuscatedGetter(
-		intValue = 1008905745
-	)
+	@ObfuscatedGetter(intValue = 
+	1008905745)
+
 	@Export("group")
 	final int group;
-
-	static {
-		field4313 = new DefaultsGroup(3); // L: 4
+	static 
+	{
+		field4313 = new DefaultsGroup(3);
 	}
 
 	DefaultsGroup(int var1) {
-		this.group = var1; // L: 8
-	} // L: 9
+		this.group = var1;
+	}
 }

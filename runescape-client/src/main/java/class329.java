@@ -5,5 +5,5 @@ import net.runelite.mapping.ObfuscatedName;
 public class class329 {
 	static {
 		new HashMap();
-	} // L: 9
+	}
 }

@@ -18,93 +18,93 @@ public class UserComparator5 extends AbstractUserComparator {
 	}
 
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(
-		descriptor = "(Lnl;Lnl;I)I",
-		garbageValue = "-1157970116"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(Lnl;Lnl;I)I", garbageValue = 
+	"-1157970116")
+
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
-		if (var1.world != 0) { // L: 14
-			if (var2.world == 0) { // L: 15
+		if (var1.world != 0) {
+			if (var2.world == 0) {
 				return this.reversed ? -1 : 1;
 			}
 		} else if (var2.world != 0) {
-			return this.reversed ? 1 : -1; // L: 18
+			return this.reversed ? 1 : -1;
 		}
 
-		return this.compareUser(var1, var2); // L: 20
+		return this.compareUser(var1, var2);
 	}
 
 	public int compare(Object var1, Object var2) {
-		return this.compareBuddy((Buddy)var1, (Buddy)var2); // L: 24
+		return this.compareBuddy(((Buddy) (var1)), ((Buddy) (var2)));
 	}
 
 	@ObfuscatedName("u")
-	@ObfuscatedSignature(
-		descriptor = "(I)Lfq;",
-		garbageValue = "-2066827638"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(I)Lfq;", garbageValue = 
+	"-2066827638")
+
 	public static Clock method2592() {
 		try {
-			return new NanoClock(); // L: 8
-		} catch (Throwable var1) { // L: 10
-			return new MilliClock(); // L: 11
+			return new NanoClock();
+		} catch (Throwable var1) {
+			return new MilliClock();
 		}
 	}
 
 	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "(ILbo;ZI)I",
-		garbageValue = "-966652469"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(ILbo;ZI)I", garbageValue = 
+	"-966652469")
+
 	static int method2595(int var0, Script var1, boolean var2) {
-		if (var0 != 7000 && var0 != 7005 && var0 != 7010 && var0 != 7015 && var0 != 7020 && var0 != 7025 && var0 != 7030 && var0 != 7035) { // L: 4547
-			if (var0 != 7001 && var0 != 7002 && var0 != 7011 && var0 != 7012 && var0 != 7021 && var0 != 7022) { // L: 4551
-				if (var0 != 7003 && var0 != 7013 && var0 != 7023) { // L: 4555
-					if (var0 != 7006 && var0 != 7007 && var0 != 7016 && var0 != 7017 && var0 != 7026 && var0 != 7027) { // L: 4559
-						if (var0 != 7008 && var0 != 7018 && var0 != 7028) { // L: 4563
-							if (var0 != 7031 && var0 != 7032) { // L: 4567
-								if (var0 == 7033) { // L: 4572
-									--ChatChannel.Interpreter_stringStackSize; // L: 4573
-									return 1; // L: 4574
-								} else if (var0 != 7036 && var0 != 7037) { // L: 4576
-									if (var0 == 7038) { // L: 4580
-										--class295.Interpreter_intStackSize; // L: 4581
-										return 1; // L: 4582
-									} else if (var0 != 7004 && var0 != 7009 && var0 != 7014 && var0 != 7019 && var0 != 7024 && var0 != 7029 && var0 != 7034 && var0 != 7039) { // L: 4584
-										return 2; // L: 4588
+		if ((((((((var0 != 7000) && (var0 != 7005)) && (var0 != 7010)) && (var0 != 7015)) && (var0 != 7020)) && (var0 != 7025)) && (var0 != 7030)) && (var0 != 7035)) {
+			if ((((((var0 != 7001) && (var0 != 7002)) && (var0 != 7011)) && (var0 != 7012)) && (var0 != 7021)) && (var0 != 7022)) {
+				if (((var0 != 7003) && (var0 != 7013)) && (var0 != 7023)) {
+					if ((((((var0 != 7006) && (var0 != 7007)) && (var0 != 7016)) && (var0 != 7017)) && (var0 != 7026)) && (var0 != 7027)) {
+						if (((var0 != 7008) && (var0 != 7018)) && (var0 != 7028)) {
+							if ((var0 != 7031) && (var0 != 7032)) {
+								if (var0 == 7033) {
+									--ChatChannel.Interpreter_stringStackSize;
+									return 1;
+								} else if ((var0 != 7036) && (var0 != 7037)) {
+									if (var0 == 7038) {
+										--class295.Interpreter_intStackSize;
+										return 1;
+									} else if ((((((((var0 != 7004) && (var0 != 7009)) && (var0 != 7014)) && (var0 != 7019)) && (var0 != 7024)) && (var0 != 7029)) && (var0 != 7034)) && (var0 != 7039)) {
+										return 2;
 									} else {
-										--class295.Interpreter_intStackSize; // L: 4585
-										return 1; // L: 4586
+										--class295.Interpreter_intStackSize;
+										return 1;
 									}
 								} else {
-									class295.Interpreter_intStackSize -= 2; // L: 4577
-									return 1; // L: 4578
+									class295.Interpreter_intStackSize -= 2;
+									return 1;
 								}
 							} else {
-								--ChatChannel.Interpreter_stringStackSize; // L: 4568
-								--class295.Interpreter_intStackSize; // L: 4569
-								return 1; // L: 4570
+								--ChatChannel.Interpreter_stringStackSize;
+								--class295.Interpreter_intStackSize;
+								return 1;
 							}
 						} else {
-							--class295.Interpreter_intStackSize; // L: 4564
-							return 1; // L: 4565
+							--class295.Interpreter_intStackSize;
+							return 1;
 						}
 					} else {
-						class295.Interpreter_intStackSize -= 2; // L: 4560
-						return 1; // L: 4561
+						class295.Interpreter_intStackSize -= 2;
+						return 1;
 					}
 				} else {
-					class295.Interpreter_intStackSize -= 2; // L: 4556
-					return 1; // L: 4557
+					class295.Interpreter_intStackSize -= 2;
+					return 1;
 				}
 			} else {
-				class295.Interpreter_intStackSize -= 3; // L: 4552
-				return 1; // L: 4553
+				class295.Interpreter_intStackSize -= 3;
+				return 1;
 			}
 		} else {
-			class295.Interpreter_intStackSize -= 5; // L: 4548
-			return 1; // L: 4549
+			class295.Interpreter_intStackSize -= 5;
+			return 1;
 		}
 	}
 }
