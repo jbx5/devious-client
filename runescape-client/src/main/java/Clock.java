@@ -1,49 +1,68 @@
-import java.awt.Image;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-@ObfuscatedName("fk")
+
+@ObfuscatedName("fq")
 @Implements("Clock")
 public abstract class Clock {
-    @ObfuscatedName("aq")
-    static Image field1740;
+	Clock() {
+	}
 
-    @ObfuscatedName("ef")
-    @ObfuscatedSignature(descriptor = "Lkz;")
-    @Export("archive17")
-    static Archive archive17;
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(descriptor = 
+	"(I)V", garbageValue = 
+	"947451014")
 
-    Clock() {
-    }
+	@Export("mark")
+	public abstract void mark();
 
-    @ObfuscatedName("c")
-    @ObfuscatedSignature(descriptor = "(I)V", garbageValue = "-2049179835")
-    @Export("mark")
-    public abstract void mark();
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(descriptor = 
+	"(III)I", garbageValue = 
+	"-932830121")
 
-    @ObfuscatedName("l")
-    @ObfuscatedSignature(descriptor = "(IIB)I", garbageValue = "-113")
-    @Export("wait")
-    public abstract int wait(int var1, int var2);
+	@Export("wait")
+	public abstract int wait(int var1, int var2);
 
-    @ObfuscatedName("a")
-    @ObfuscatedSignature(descriptor = "([BI)Llv;", garbageValue = "-136888407")
-    public static Font method3125(byte[] var0) {
-        if (var0 == null) {
-            return null;
-        } else {
-            Font var1 = new Font(var0, class434.SpriteBuffer_xOffsets, class434.SpriteBuffer_yOffsets, class434.SpriteBuffer_spriteWidths, Fonts.SpriteBuffer_spriteHeights, HealthBarUpdate.SpriteBuffer_spritePalette, WorldMapLabelSize.SpriteBuffer_pixels);
-            Canvas.method365();
-            return var1;
-        }
-    }
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(descriptor = 
+	"(IIIIIIB)I", garbageValue = 
+	"-102")
 
-    @ObfuscatedName("n")
-    @ObfuscatedSignature(descriptor = "(B)V", garbageValue = "91")
-    public static void method3121() {
-        SequenceDefinition.SequenceDefinition_cached.clear();
-        SequenceDefinition.SequenceDefinition_cachedFrames.clear();
-        SequenceDefinition.SequenceDefinition_cachedModel.clear();
-    }
+	public static int method3322(int var0, int var1, int var2, int var3, int var4, int var5) {
+		if ((var5 & 1) == 1) {
+			int var6 = var3;
+			var3 = var4;
+			var4 = var6;
+		}
+
+		var2 &= 3;
+		if (var2 == 0) {
+			return var1;
+		} else if (var2 == 1) {
+			return (7 - var0) - (var3 - 1);
+		} else {
+			return var2 == 2 ? (7 - var1) - (var4 - 1) : var0;
+		}
+	}
+
+	@ObfuscatedName("k")
+	@ObfuscatedSignature(descriptor = 
+	"(I)Lqx;", garbageValue = 
+	"-183389771")
+
+	static IndexedSprite method3323() {
+		IndexedSprite var0 = new IndexedSprite();
+		var0.width = class451.SpriteBuffer_spriteWidth;
+		var0.height = class451.SpriteBuffer_spriteHeight;
+		var0.xOffset = class451.SpriteBuffer_xOffsets[0];
+		var0.yOffset = class451.SpriteBuffer_yOffsets[0];
+		var0.subWidth = class451.SpriteBuffer_spriteWidths[0];
+		var0.subHeight = class451.SpriteBuffer_spriteHeights[0];
+		var0.palette = GrandExchangeOfferUnitPriceComparator.SpriteBuffer_spritePalette;
+		var0.pixels = class460.SpriteBuffer_pixels[0];
+		RouteStrategy.method3872();
+		return var0;
+	}
 }

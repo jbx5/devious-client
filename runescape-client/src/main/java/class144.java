@@ -1,50 +1,60 @@
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-@ObfuscatedName("ew")
-public class class144 extends class126 {
-    @ObfuscatedName("ig")
-    @ObfuscatedSignature(descriptor = "[Lpg;")
-    @Export("scrollBarSprites")
-    static IndexedSprite[] scrollBarSprites;
 
-    @ObfuscatedName("c")
-    @ObfuscatedGetter(intValue = 1091689105)
-    int field1649;
+@ObfuscatedName("ek")
+public abstract class class144 extends Node {
+	class144() {
+	}
 
-    @ObfuscatedName("l")
-    @ObfuscatedGetter(intValue = -1307184813)
-    int field1647;
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(descriptor = 
+	"(Lpd;S)V", garbageValue = 
+	"3239")
 
-    @ObfuscatedSignature(descriptor = "Ldk;")
-    final class129 this$0;
+	abstract void vmethod3096(Buffer var1);
 
-    @ObfuscatedSignature(descriptor = "(Ldk;)V")
-    class144(class129 var1) {
-        this.this$0 = var1;
-    }
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(descriptor = 
+	"(Ley;B)V", garbageValue = 
+	"26")
 
-    @ObfuscatedName("c")
-    @ObfuscatedSignature(descriptor = "(Lpi;I)V", garbageValue = "703192976")
-    void vmethod3019(Buffer var1) {
-        this.field1649 = var1.readInt();
-        this.field1647 = var1.readInt();
-    }
+	abstract void vmethod3093(ClanChannel var1);
 
-    @ObfuscatedName("l")
-    @ObfuscatedSignature(descriptor = "(Ley;I)V", garbageValue = "750335300")
-    void vmethod3020(ClanSettings var1) {
-        var1.method2882(this.field1649, this.field1647);
-    }
+	@ObfuscatedName("g")
+	@ObfuscatedSignature(descriptor = 
+	"(Ljava/lang/Float;Ljava/lang/Float;I)V", garbageValue = 
+	"-413374556")
 
-    @ObfuscatedName("io")
-    @ObfuscatedSignature(descriptor = "(IB)Ljava/lang/String;", garbageValue = "1")
-    static String method2969(int var0) {
-        if (var0 < 0) {
-            return "";
-        } else {
-            return Client.menuTargets[var0].length() > 0 ? (Client.menuActions[var0] + " ") + Client.menuTargets[var0] : Client.menuActions[var0];
-        }
-    }
+	static void method3022(Float var0, Float var1) {
+		if ((var0 + class114.field1396) < 1.3333334F) {
+			float var2 = var0 - 2.0F;
+			float var3 = var0 - 1.0F;
+			float var4 = ((float) (Math.sqrt(((double) ((var2 * var2) - ((var3 * 4.0F) * var3))))));
+			float var5 = (var4 + (-var2)) * 0.5F;
+			if ((var1 + class114.field1396) > var5) {
+				var1 = var5 - class114.field1396;
+			} else {
+				var5 = ((-var2) - var4) * 0.5F;
+				if (var1 < (var5 + class114.field1396)) {
+					var1 = class114.field1396 + var5;
+				}
+			}
+		} else {
+			var0 = 1.3333334F - class114.field1396;
+			var1 = 0.33333334F - class114.field1396;
+		}
+
+	}
+
+	@ObfuscatedName("gy")
+	@ObfuscatedSignature(descriptor = 
+	"(I)V", garbageValue = 
+	"-1886110394")
+
+	static void method3014() {
+		if (((class19.localPlayer.x >> 7) == Client.destinationX) && ((class19.localPlayer.y >> 7) == Client.destinationY)) {
+			Client.destinationX = 0;
+		}
+
+	}
 }

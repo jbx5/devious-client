@@ -2,69 +2,93 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-@ObfuscatedName("mm")
+
+@ObfuscatedName("np")
 @Implements("ClanMate")
 public class ClanMate extends Buddy {
-    @ObfuscatedName("c")
-    @ObfuscatedSignature(descriptor = "Lmc;")
-    @Export("friend")
-    TriBool friend;
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(descriptor = 
+	"Lni;")
 
-    @ObfuscatedName("l")
-    @ObfuscatedSignature(descriptor = "Lmc;")
-    @Export("ignored")
-    TriBool ignored;
+	@Export("friend")
+	TriBool friend;
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(descriptor = 
+	"Lni;")
 
-    ClanMate() {
-        this.friend = TriBool.TriBool_unknown;
-        this.ignored = TriBool.TriBool_unknown;
-    }
+	@Export("ignored")
+	TriBool ignored;
 
-    @ObfuscatedName("c")
-    @ObfuscatedSignature(descriptor = "(I)V", garbageValue = "-1038154041")
-    @Export("clearIsFriend")
-    void clearIsFriend() {
-        this.friend = TriBool.TriBool_unknown;
-    }
+	ClanMate() {
+		this.friend = TriBool.TriBool_unknown;
+		this.ignored = TriBool.TriBool_unknown;
+	}
 
-    @ObfuscatedName("s")
-    @ObfuscatedSignature(descriptor = "(I)Z", garbageValue = "269588438")
-    @Export("isFriend")
-    public final boolean isFriend() {
-        if (this.friend == TriBool.TriBool_unknown) {
-            this.fillIsFriend();
-        }
-        return this.friend == TriBool.TriBool_true;
-    }
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(descriptor = 
+	"(B)V", garbageValue = 
+	"87")
 
-    @ObfuscatedName("e")
-    @ObfuscatedSignature(descriptor = "(I)V", garbageValue = "657491156")
-    @Export("fillIsFriend")
-    void fillIsFriend() {
-        this.friend = (ClanSettings.friendSystem.friendsList.contains(super.username)) ? TriBool.TriBool_true : TriBool.TriBool_false;
-    }
+	@Export("clearIsFriend")
+	void clearIsFriend() {
+		this.friend = TriBool.TriBool_unknown;
+	}
 
-    @ObfuscatedName("r")
-    @ObfuscatedSignature(descriptor = "(B)V", garbageValue = "-55")
-    @Export("clearIsIgnored")
-    void clearIsIgnored() {
-        this.ignored = TriBool.TriBool_unknown;
-    }
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(descriptor = 
+	"(I)Z", garbageValue = 
+	"1690991920")
 
-    @ObfuscatedName("q")
-    @ObfuscatedSignature(descriptor = "(I)Z", garbageValue = "-486838813")
-    @Export("isIgnored")
-    public final boolean isIgnored() {
-        if (this.ignored == TriBool.TriBool_unknown) {
-            this.fillIsIgnored();
-        }
-        return this.ignored == TriBool.TriBool_true;
-    }
+	@Export("isFriend")
+	public final boolean isFriend() {
+		if (this.friend == TriBool.TriBool_unknown) {
+			this.fillIsFriend();
+		}
 
-    @ObfuscatedName("x")
-    @ObfuscatedSignature(descriptor = "(B)V", garbageValue = "76")
-    @Export("fillIsIgnored")
-    void fillIsIgnored() {
-        this.ignored = (ClanSettings.friendSystem.ignoreList.contains(super.username)) ? TriBool.TriBool_true : TriBool.TriBool_false;
-    }
+		return this.friend == TriBool.TriBool_true;
+	}
+
+	@ObfuscatedName("g")
+	@ObfuscatedSignature(descriptor = 
+	"(S)V", garbageValue = 
+	"-15358")
+
+	@Export("fillIsFriend")
+	void fillIsFriend() {
+		this.friend = (class155.friendSystem.friendsList.contains(super.username)) ? TriBool.TriBool_true : TriBool.TriBool_false;
+	}
+
+	@ObfuscatedName("r")
+	@ObfuscatedSignature(descriptor = 
+	"(I)V", garbageValue = 
+	"-990460013")
+
+	@Export("clearIsIgnored")
+	void clearIsIgnored() {
+		this.ignored = TriBool.TriBool_unknown;
+	}
+
+	@ObfuscatedName("k")
+	@ObfuscatedSignature(descriptor = 
+	"(S)Z", garbageValue = 
+	"3800")
+
+	@Export("isIgnored")
+	public final boolean isIgnored() {
+		if (this.ignored == TriBool.TriBool_unknown) {
+			this.fillIsIgnored();
+		}
+
+		return this.ignored == TriBool.TriBool_true;
+	}
+
+	@ObfuscatedName("x")
+	@ObfuscatedSignature(descriptor = 
+	"(B)V", garbageValue = 
+	"22")
+
+	@Export("fillIsIgnored")
+	void fillIsIgnored() {
+		this.ignored = (class155.friendSystem.ignoreList.contains(super.username)) ? TriBool.TriBool_true : TriBool.TriBool_false;
+	}
 }

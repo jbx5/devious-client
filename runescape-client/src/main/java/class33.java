@@ -2,68 +2,44 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-@ObfuscatedName("ao")
+
+@ObfuscatedName("ae")
 public class class33 {
-    @ObfuscatedName("c")
-    @ObfuscatedSignature(descriptor = "Llt;")
-    @Export("reflectionChecks")
-    static IterableNodeDeque reflectionChecks;
+	@ObfuscatedName("sr")
+	@ObfuscatedGetter(intValue = 
+	-1543138447)
 
-    @ObfuscatedName("r")
-    @ObfuscatedSignature(descriptor = "[Lbi;")
-    @Export("World_worlds")
-    static World[] World_worlds;
+	static int field231;
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(descriptor = 
+	"Lld;")
 
-    @ObfuscatedName("hj")
-    @ObfuscatedGetter(intValue = -191531185)
-    static int field243;
+	@Export("reflectionChecks")
+	public static IterableNodeDeque reflectionChecks;
+	@ObfuscatedName("u")
+	@ObfuscatedGetter(intValue = 
+	-224672805)
 
-    static {
-        reflectionChecks = new IterableNodeDeque();
-    }
+	static int field237;
+	@ObfuscatedName("lf")
+	@ObfuscatedSignature(descriptor = 
+	"Lhm;")
 
-    @ObfuscatedName("r")
-    @ObfuscatedSignature(descriptor = "(I)V", garbageValue = "-1944227841")
-    public static void method626() {
-        FloorOverlayDefinition.FloorOverlayDefinition_cached.clear();
-    }
+	@Export("textureProvider")
+	static TextureProvider textureProvider;
+	static 
+	{
+		reflectionChecks = new IterableNodeDeque();
+	}
 
-    @ObfuscatedName("jv")
-    @ObfuscatedSignature(descriptor = "([Ljz;II)V", garbageValue = "1424565311")
-    @Export("runComponentCloseListeners")
-    static final void runComponentCloseListeners(Widget[] var0, int var1) {
-        for (int var2 = 0; var2 < var0.length; ++var2) {
-            Widget var3 = var0[var2];
-            if (var3 != null) {
-                if (var3.type == 0) {
-                    if (var3.children != null) {
-                        runComponentCloseListeners(var3.children, var1);
-                    }
-                    InterfaceParent var4 = ((InterfaceParent) (Client.interfaceParents.get(((long) (var3.id)))));
-                    if (var4 != null) {
-                        DevicePcmPlayerProvider.runIntfCloseListeners(var4.group, var1);
-                    }
-                }
-                ScriptEvent var5;
-                if ((var1 == 0) && (var3.onDialogAbort != null)) {
-                    var5 = new ScriptEvent();
-                    var5.widget = var3;
-                    var5.args = var3.onDialogAbort;
-                    class92.runScriptEvent(var5);
-                }
-                if ((var1 == 1) && (var3.onSubChange != null)) {
-                    if (var3.childIndex >= 0) {
-                        Widget var6 = class130.getWidget(var3.id);
-                        if ((((var6 == null) || (var6.children == null)) || (var3.childIndex >= var6.children.length)) || (var3 != var6.children[var3.childIndex])) {
-                            continue;
-                        }
-                    }
-                    var5 = new ScriptEvent();
-                    var5.widget = var3;
-                    var5.args = var3.onSubChange;
-                    class92.runScriptEvent(var5);
-                }
-            }
-        }
-    }
+	@ObfuscatedName("r")
+	@ObfuscatedSignature(descriptor = 
+	"(I)V", garbageValue = 
+	"-1943473173")
+
+	static final void method632() {
+		Object var10000 = null;
+		String var0 = "You can't add yourself to your own friend list";
+		Login.addGameMessage(30, "", var0);
+	}
 }

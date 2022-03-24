@@ -2,122 +2,115 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-@ObfuscatedName("gg")
+
+@ObfuscatedName("hd")
 @Implements("Occluder")
 public final class Occluder {
-    @ObfuscatedName("bx")
-    @ObfuscatedGetter(intValue = 261158265)
-    static int field2399;
+	@ObfuscatedName("hc")
+	@Export("regionMapArchives")
+	static byte[][] regionMapArchives;
+	@ObfuscatedName("v")
+	@ObfuscatedGetter(intValue = 
+	2118219045)
 
-    @ObfuscatedName("cg")
-    @ObfuscatedSignature(descriptor = "[Lpg;")
-    @Export("worldSelectFlagSprites")
-    static IndexedSprite[] worldSelectFlagSprites;
+	@Export("minTileX")
+	int minTileX;
+	@ObfuscatedName("o")
+	@ObfuscatedGetter(intValue = 
+	-1278987595)
 
-    @ObfuscatedName("c")
-    @ObfuscatedGetter(intValue = 222141243)
-    @Export("minTileX")
-    int minTileX;
+	@Export("maxTileX")
+	int maxTileX;
+	@ObfuscatedName("h")
+	@ObfuscatedGetter(intValue = 
+	-1725451551)
 
-    @ObfuscatedName("l")
-    @ObfuscatedGetter(intValue = -333305953)
-    @Export("maxTileX")
-    int maxTileX;
+	@Export("minTileY")
+	int minTileY;
+	@ObfuscatedName("g")
+	@ObfuscatedGetter(intValue = 
+	1053658137)
 
-    @ObfuscatedName("s")
-    @ObfuscatedGetter(intValue = 1714135331)
-    @Export("minTileY")
-    int minTileY;
+	@Export("maxTileY")
+	int maxTileY;
+	@ObfuscatedName("l")
+	@ObfuscatedGetter(intValue = 
+	-552645515)
 
-    @ObfuscatedName("e")
-    @ObfuscatedGetter(intValue = -1745150299)
-    @Export("maxTileY")
-    int maxTileY;
+	@Export("type")
+	int type;
+	@ObfuscatedName("n")
+	@ObfuscatedGetter(intValue = 
+	1118377853)
 
-    @ObfuscatedName("r")
-    @ObfuscatedGetter(intValue = 259570443)
-    @Export("type")
-    int type;
+	@Export("minX")
+	int minX;
+	@ObfuscatedName("d")
+	@ObfuscatedGetter(intValue = 
+	1442245953)
 
-    @ObfuscatedName("o")
-    @ObfuscatedGetter(intValue = 2092502509)
-    @Export("minX")
-    int minX;
+	@Export("maxX")
+	int maxX;
+	@ObfuscatedName("f")
+	@ObfuscatedGetter(intValue = 
+	-1253210515)
 
-    @ObfuscatedName("i")
-    @ObfuscatedGetter(intValue = 358389717)
-    @Export("maxX")
-    int maxX;
+	@Export("minZ")
+	int minZ;
+	@ObfuscatedName("u")
+	@ObfuscatedGetter(intValue = 
+	141469663)
 
-    @ObfuscatedName("w")
-    @ObfuscatedGetter(intValue = 275212217)
-    @Export("minZ")
-    int minZ;
+	@Export("maxZ")
+	int maxZ;
+	@ObfuscatedName("r")
+	@ObfuscatedGetter(intValue = 
+	928393647)
 
-    @ObfuscatedName("v")
-    @ObfuscatedGetter(intValue = -2070764377)
-    @Export("maxZ")
-    int maxZ;
+	@Export("minY")
+	int minY;
+	@ObfuscatedName("k")
+	@ObfuscatedGetter(intValue = 
+	-1686310297)
 
-    @ObfuscatedName("a")
-    @ObfuscatedGetter(intValue = 217573279)
-    @Export("minY")
-    int minY;
+	@Export("maxY")
+	int maxY;
+	@ObfuscatedName("x")
+	@ObfuscatedGetter(intValue = 
+	-1392704329)
 
-    @ObfuscatedName("y")
-    @ObfuscatedGetter(intValue = 909727583)
-    @Export("maxY")
-    int maxY;
+	int field2453;
+	@ObfuscatedName("c")
+	@ObfuscatedGetter(intValue = 
+	163437119)
 
-    @ObfuscatedName("u")
-    @ObfuscatedGetter(intValue = 1217030825)
-    int field2392;
+	int field2454;
+	@ObfuscatedName("j")
+	@ObfuscatedGetter(intValue = 
+	-465176021)
 
-    @ObfuscatedName("h")
-    @ObfuscatedGetter(intValue = 2016997771)
-    int field2393;
+	int field2455;
+	@ObfuscatedName("p")
+	@ObfuscatedGetter(intValue = 
+	-821512955)
 
-    @ObfuscatedName("q")
-    @ObfuscatedGetter(intValue = -1246762073)
-    int field2391;
+	int field2456;
+	@ObfuscatedName("s")
+	@ObfuscatedGetter(intValue = 
+	-1125361357)
 
-    @ObfuscatedName("x")
-    @ObfuscatedGetter(intValue = 1389189999)
-    int field2398;
+	int field2460;
+	@ObfuscatedName("b")
+	@ObfuscatedGetter(intValue = 
+	1349803663)
 
-    @ObfuscatedName("p")
-    @ObfuscatedGetter(intValue = 495561345)
-    int field2396;
+	int field2458;
+	@ObfuscatedName("w")
+	@ObfuscatedGetter(intValue = 
+	-1964398833)
 
-    @ObfuscatedName("n")
-    @ObfuscatedGetter(intValue = -1551835523)
-    int field2397;
+	int field2459;
 
-    @ObfuscatedName("m")
-    @ObfuscatedGetter(intValue = -1555042003)
-    int field2381;
-
-    Occluder() {
-    }
-
-    @ObfuscatedName("ah")
-    @ObfuscatedSignature(descriptor = "(II)V", garbageValue = "1806127120")
-    @Export("runWidgetOnLoadListener")
-    static void runWidgetOnLoadListener(int var0) {
-        if (var0 != (-1)) {
-            if (class13.loadInterface(var0)) {
-                Widget[] var1 = Widget.Widget_interfaceComponents[var0];
-                for (int var2 = 0; var2 < var1.length; ++var2) {
-                    Widget var3 = var1[var2];
-                    if (var3.onLoad != null) {
-                        ScriptEvent var4 = new ScriptEvent();
-                        var4.widget = var3;
-                        var4.args = var3.onLoad;
-                        class1.runScript(var4, 5000000, 0);
-                    }
-                }
-            }
-        }
-    }
+	Occluder() {
+	}
 }

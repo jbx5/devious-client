@@ -3,32 +3,39 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
-@ObfuscatedName("qy")
+
+@ObfuscatedName("qe")
 @Implements("RunException")
 public class RunException extends RuntimeException {
-    @ObfuscatedName("c")
-    @Export("RunException_applet")
-    public static Applet RunException_applet;
+	@ObfuscatedName("v")
+	@Export("RunException_applet")
+	public static Applet RunException_applet;
+	@ObfuscatedName("o")
+	@Export("localPlayerName")
+	public static String localPlayerName;
+	@ObfuscatedName("h")
+	@ObfuscatedGetter(intValue = 
+	261481045)
 
-    @ObfuscatedName("l")
-    @Export("localPlayerName")
-    public static String localPlayerName;
+	@Export("RunException_revision")
+	public static int RunException_revision;
+	@ObfuscatedName("g")
+	@ObfuscatedGetter(intValue = 
+	-1885069325)
 
-    @ObfuscatedName("e")
-    @ObfuscatedGetter(intValue = -942468637)
-    @Export("clientType")
-    public static int clientType;
+	@Export("clientType")
+	public static int clientType;
+	@ObfuscatedName("d")
+	static byte[][][] field4754;
+	@ObfuscatedName("l")
+	@Export("message")
+	String message;
+	@ObfuscatedName("n")
+	@Export("throwable")
+	Throwable throwable;
 
-    @ObfuscatedName("r")
-    @Export("message")
-    String message;
-
-    @ObfuscatedName("o")
-    @Export("throwable")
-    Throwable throwable;
-
-    RunException(Throwable var1, String var2) {
-        this.message = var2;
-        this.throwable = var1;
-    }
+	RunException(Throwable var1, String var2) {
+		this.message = var2;
+		this.throwable = var1;
+	}
 }

@@ -2,32 +2,43 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
-@ObfuscatedName("hj")
+import net.runelite.mapping.ObfuscatedSignature;
+
+@ObfuscatedName("ij")
 @Implements("WorldMapDecoration")
 public class WorldMapDecoration {
-    @ObfuscatedName("ie")
-    @ObfuscatedGetter(intValue = 1763303349)
-    @Export("cameraY")
-    static int cameraY;
+	@ObfuscatedName("v")
+	@ObfuscatedGetter(intValue = 
+	-536072233)
 
-    @ObfuscatedName("c")
-    @ObfuscatedGetter(intValue = -1640877419)
-    @Export("objectDefinitionId")
-    final int objectDefinitionId;
+	@Export("objectDefinitionId")
+	final int objectDefinitionId;
+	@ObfuscatedName("o")
+	@ObfuscatedGetter(intValue = 
+	1607146609)
 
-    @ObfuscatedName("l")
-    @ObfuscatedGetter(intValue = 387612235)
-    @Export("decoration")
-    final int decoration;
+	@Export("decoration")
+	final int decoration;
+	@ObfuscatedName("h")
+	@ObfuscatedGetter(intValue = 
+	-179610333)
 
-    @ObfuscatedName("s")
-    @ObfuscatedGetter(intValue = -1048320277)
-    @Export("rotation")
-    final int rotation;
+	@Export("rotation")
+	final int rotation;
 
-    WorldMapDecoration(int var1, int var2, int var3) {
-        this.objectDefinitionId = var1;
-        this.decoration = var2;
-        this.rotation = var3;
-    }
+	WorldMapDecoration(int var1, int var2, int var3) {
+		this.objectDefinitionId = var1;
+		this.decoration = var2;
+		this.rotation = var3;
+	}
+
+	@ObfuscatedName("x")
+	@ObfuscatedSignature(descriptor = 
+	"(I)V", garbageValue = 
+	"-323833461")
+
+	public static void method4988() {
+		NPCComposition.NpcDefinition_cached.clear();
+		NPCComposition.NpcDefinition_cachedModels.clear();
+	}
 }

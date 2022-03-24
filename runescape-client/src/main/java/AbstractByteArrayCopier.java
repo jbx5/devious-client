@@ -2,46 +2,78 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-@ObfuscatedName("jc")
+
+@ObfuscatedName("jz")
 @Implements("AbstractByteArrayCopier")
 public abstract class AbstractByteArrayCopier {
-    @ObfuscatedName("u")
-    @Export("Tiles_lightness")
-    static int[] Tiles_lightness;
+	@ObfuscatedName("l")
+	@ObfuscatedSignature(descriptor = 
+	"Lqx;")
 
-    AbstractByteArrayCopier() {
-    }
+	@Export("titleboxSprite")
+	static IndexedSprite titleboxSprite;
 
-    @ObfuscatedName("s")
-    @ObfuscatedSignature(descriptor = "(I)[B", garbageValue = "1552068154")
-    @Export("get")
-    abstract byte[] get();
+	AbstractByteArrayCopier() {
+	}
 
-    @ObfuscatedName("e")
-    @ObfuscatedSignature(descriptor = "([BB)V", garbageValue = "46")
-    @Export("set")
-    public abstract void set(byte[] var1);
+	@ObfuscatedName("g")
+	@ObfuscatedSignature(descriptor = 
+	"(B)[B", garbageValue = 
+	"-16")
 
-    @ObfuscatedName("l")
-    public static String method5309(long var0) {
-        if ((var0 > 0L) && (var0 < 6582952005840035281L)) {
-            if ((var0 % 37L) == 0L) {
-                return null;
-            } else {
-                int var2 = 0;
-                for (long var3 = var0; var3 != 0L; var3 /= 37L) {
-                    ++var2;
-                }
-                StringBuilder var5 = new StringBuilder(var2);
-                while (var0 != 0L) {
-                    long var6 = var0;
-                    var0 /= 37L;
-                    var5.append(class337.base37Table[((int) (var6 - (37L * var0)))]);
-                } 
-                return var5.reverse().toString();
-            }
-        } else {
-            return null;
-        }
-    }
+	@Export("get")
+	abstract byte[] get();
+
+	@ObfuscatedName("l")
+	@ObfuscatedSignature(descriptor = 
+	"([BI)V", garbageValue = 
+	"-308662955")
+
+	@Export("set")
+	public abstract void set(byte[] var1);
+
+	@ObfuscatedName("x")
+	@ObfuscatedSignature(descriptor = 
+	"(Ljava/lang/String;B)Ljava/lang/String;", garbageValue = 
+	"127")
+
+	public static String method5528(String var0) {
+		int var1 = var0.length();
+		char[] var2 = new char[var1];
+		byte var3 = 2;
+
+		for (int var4 = 0; var4 < var1; ++var4) {
+			char var5 = var0.charAt(var4);
+			if (var3 == 0) {
+				var5 = Character.toLowerCase(var5);
+			} else if ((var3 == 2) || Character.isUpperCase(var5)) {
+				char var6;
+				if ((var5 != 181) && (var5 != 402)) {
+					var6 = Character.toTitleCase(var5);
+				} else {
+					var6 = var5;
+				}
+
+				var5 = var6;
+			}
+
+			if (Character.isLetter(var5)) {
+				var3 = 0;
+			} else if (((var5 != '.') && (var5 != '?')) && (var5 != '!')) {
+				if (Character.isSpaceChar(var5)) {
+					if (var3 != 2) {
+						var3 = 1;
+					}
+				} else {
+					var3 = 1;
+				}
+			} else {
+				var3 = 2;
+			}
+
+			var2[var4] = var5;
+		}
+
+		return new String(var2);
+	}
 }

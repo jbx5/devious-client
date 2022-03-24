@@ -1,74 +1,60 @@
-import java.awt.Component;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-@ObfuscatedName("cj")
+
+@ObfuscatedName("cq")
 @Implements("TileItem")
 public final class TileItem extends Renderable {
-    @ObfuscatedName("t")
-    @Export("userHomeDirectory")
-    static String userHomeDirectory;
+	@ObfuscatedName("u")
+	public static short[] field1281;
+	@ObfuscatedName("em")
+	@ObfuscatedSignature(descriptor = 
+	"Llu;")
 
-    @ObfuscatedName("c")
-    @ObfuscatedGetter(intValue = -1193227227)
-    @Export("id")
-    int id;
+	@Export("archive0")
+	static Archive archive0;
+	@ObfuscatedName("v")
+	@ObfuscatedGetter(intValue = 
+	914537933)
 
-    @ObfuscatedName("l")
-    @ObfuscatedGetter(intValue = -440248455)
-    @Export("quantity")
-    int quantity;
+	@Export("id")
+	int id;
+	@ObfuscatedName("o")
+	@ObfuscatedGetter(intValue = 
+	-1079489497)
 
-    TileItem() {
-    }
+	@Export("quantity")
+	int quantity;
 
-    @ObfuscatedName("l")
-    @ObfuscatedSignature(descriptor = "(B)Lgf;", garbageValue = "39")
-    @Export("getModel")
-    protected final Model getModel() {
-        return Client.ItemDefinition_get(this.id).getModel(this.quantity);
-    }
+	TileItem() {
+	}
 
-    @ObfuscatedName("c")
-    @ObfuscatedSignature(descriptor = "(Ljava/lang/CharSequence;I)Ljava/lang/String;", garbageValue = "404484711")
-    public static String method2296(CharSequence var0) {
-        int var1 = var0.length();
-        StringBuilder var2 = new StringBuilder(var1);
-        for (int var3 = 0; var3 < var1; ++var3) {
-            char var4 = var0.charAt(var3);
-            if ((((((((var4 < 'a') || (var4 > 'z')) && ((var4 < 'A') || (var4 > 'Z'))) && ((var4 < '0') || (var4 > '9'))) && (var4 != '.')) && (var4 != '-')) && (var4 != '*')) && (var4 != '_')) {
-                if (var4 == ' ') {
-                    var2.append('+');
-                } else {
-                    byte var5 = UserComparator8.charToByteCp1252(var4);
-                    var2.append('%');
-                    int var6 = (var5 >> 4) & 15;
-                    if (var6 >= 10) {
-                        var2.append(((char) (var6 + 55)));
-                    } else {
-                        var2.append(((char) (var6 + 48)));
-                    }
-                    var6 = var5 & 15;
-                    if (var6 >= 10) {
-                        var2.append(((char) (var6 + 55)));
-                    } else {
-                        var2.append(((char) (var6 + 48)));
-                    }
-                }
-            } else {
-                var2.append(var4);
-            }
-        }
-        return var2.toString();
-    }
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(descriptor = 
+	"(B)Lhx;", garbageValue = 
+	"63")
 
-    @ObfuscatedName("l")
-    @ObfuscatedSignature(descriptor = "(Ljava/awt/Component;B)V", garbageValue = "17")
-    static void method2299(Component var0) {
-        var0.setFocusTraversalKeysEnabled(false);
-        var0.addKeyListener(KeyHandler.KeyHandler_instance);
-        var0.addFocusListener(KeyHandler.KeyHandler_instance);
-    }
+	@Export("getModel")
+	protected final Model getModel() {
+		return class67.ItemDefinition_get(this.id).getModel(this.quantity);
+	}
+
+	@ObfuscatedName("l")
+	@ObfuscatedSignature(descriptor = 
+	"(II)V", garbageValue = 
+	"-902066173")
+
+	@Export("clearItemContainer")
+	static void clearItemContainer(int var0) {
+		ItemContainer var1 = ((ItemContainer) (ItemContainer.itemContainers.get(((long) (var0)))));
+		if (var1 != null) {
+			for (int var2 = 0; var2 < var1.ids.length; ++var2) {
+				var1.ids[var2] = -1;
+				var1.quantities[var2] = 0;
+			}
+
+		}
+	}
 }

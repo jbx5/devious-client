@@ -2,91 +2,103 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-@ObfuscatedName("ic")
+
+@ObfuscatedName("iq")
 @Implements("EvictingDualNodeHashTable")
 public final class EvictingDualNodeHashTable {
-    @ObfuscatedName("c")
-    @ObfuscatedSignature(descriptor = "Lnd;")
-    @Export("dualNode")
-    DualNode dualNode;
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(descriptor = 
+	"Loh;")
 
-    @ObfuscatedName("l")
-    @Export("capacity")
-    int capacity;
+	@Export("dualNode")
+	DualNode dualNode;
+	@ObfuscatedName("o")
+	@Export("capacity")
+	int capacity;
+	@ObfuscatedName("h")
+	@Export("remainingCapacity")
+	int remainingCapacity;
+	@ObfuscatedName("g")
+	@ObfuscatedSignature(descriptor = 
+	"Lpq;")
 
-    @ObfuscatedName("s")
-    @Export("remainingCapacity")
-    int remainingCapacity;
+	@Export("hashTable")
+	IterableNodeHashTable hashTable;
+	@ObfuscatedName("l")
+	@ObfuscatedSignature(descriptor = 
+	"Lmq;")
 
-    @ObfuscatedName("e")
-    @ObfuscatedSignature(descriptor = "Lon;")
-    @Export("hashTable")
-    IterableNodeHashTable hashTable;
+	@Export("deque")
+	IterableDualNodeQueue deque;
 
-    @ObfuscatedName("r")
-    @ObfuscatedSignature(descriptor = "Lli;")
-    @Export("deque")
-    IterableDualNodeQueue deque;
+	public EvictingDualNodeHashTable(int var1) {
+		this.dualNode = new DualNode();
+		this.deque = new IterableDualNodeQueue();
+		this.capacity = var1;
+		this.remainingCapacity = var1;
 
-    public EvictingDualNodeHashTable(int var1) {
-        this.dualNode = new DualNode();
-        this.deque = new IterableDualNodeQueue();
-        this.capacity = var1;
-        this.remainingCapacity = var1;
-        int var2;
-        for (var2 = 1; (var2 + var2) < var1; var2 += var2) {
-        }
-        this.hashTable = new IterableNodeHashTable(var2);
-    }
+		int var2;
+		for (var2 = 1; (var2 + var2) < var1; var2 += var2) {
+		}
 
-    @ObfuscatedName("c")
-    @ObfuscatedSignature(descriptor = "(J)Lnd;")
-    @Export("get")
-    public DualNode get(long var1) {
-        DualNode var3 = ((DualNode) (this.hashTable.get(var1)));
-        if (var3 != null) {
-            this.deque.add(var3);
-        }
-        return var3;
-    }
+		this.hashTable = new IterableNodeHashTable(var2);
+	}
 
-    @ObfuscatedName("l")
-    @Export("remove")
-    public void remove(long var1) {
-        DualNode var3 = ((DualNode) (this.hashTable.get(var1)));
-        if (var3 != null) {
-            var3.remove();
-            var3.removeDual();
-            ++this.remainingCapacity;
-        }
-    }
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(descriptor = 
+	"(J)Loh;")
 
-    @ObfuscatedName("s")
-    @ObfuscatedSignature(descriptor = "(Lnd;J)V")
-    @Export("put")
-    public void put(DualNode var1, long var2) {
-        if (this.remainingCapacity == 0) {
-            DualNode var4 = this.deque.removeLast();
-            var4.remove();
-            var4.removeDual();
-            if (var4 == this.dualNode) {
-                var4 = this.deque.removeLast();
-                var4.remove();
-                var4.removeDual();
-            }
-        } else {
-            --this.remainingCapacity;
-        }
-        this.hashTable.put(var1, var2);
-        this.deque.add(var1);
-    }
+	@Export("get")
+	public DualNode get(long var1) {
+		DualNode var3 = ((DualNode) (this.hashTable.get(var1)));
+		if (var3 != null) {
+			this.deque.add(var3);
+		}
 
-    @ObfuscatedName("e")
-    @Export("clear")
-    public void clear() {
-        this.deque.clear();
-        this.hashTable.clear();
-        this.dualNode = new DualNode();
-        this.remainingCapacity = this.capacity;
-    }
+		return var3;
+	}
+
+	@ObfuscatedName("o")
+	@Export("remove")
+	public void remove(long var1) {
+		DualNode var3 = ((DualNode) (this.hashTable.get(var1)));
+		if (var3 != null) {
+			var3.remove();
+			var3.removeDual();
+			++this.remainingCapacity;
+		}
+
+	}
+
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(descriptor = 
+	"(Loh;J)V")
+
+	@Export("put")
+	public void put(DualNode var1, long var2) {
+		if (this.remainingCapacity == 0) {
+			DualNode var4 = this.deque.removeLast();
+			var4.remove();
+			var4.removeDual();
+			if (var4 == this.dualNode) {
+				var4 = this.deque.removeLast();
+				var4.remove();
+				var4.removeDual();
+			}
+		} else {
+			--this.remainingCapacity;
+		}
+
+		this.hashTable.put(var1, var2);
+		this.deque.add(var1);
+	}
+
+	@ObfuscatedName("g")
+	@Export("clear")
+	public void clear() {
+		this.deque.clear();
+		this.hashTable.clear();
+		this.dualNode = new DualNode();
+		this.remainingCapacity = this.capacity;
+	}
 }

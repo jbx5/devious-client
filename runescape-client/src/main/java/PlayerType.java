@@ -3,72 +3,104 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-@ObfuscatedName("km")
+
+@ObfuscatedName("kj")
 @Implements("PlayerType")
 public enum PlayerType implements MouseWheel {
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(descriptor = 
+	"Lkj;")
 
-    @ObfuscatedName("c")
-    @ObfuscatedSignature(descriptor = "Lkm;")
-    @Export("PlayerType_normal")
-    PlayerType_normal(0, -1, true, false, true),
-    @ObfuscatedName("l")
-    @ObfuscatedSignature(descriptor = "Lkm;")
-    @Export("PlayerType_playerModerator")
-    PlayerType_playerModerator(1, 0, true, true, true),
-    @ObfuscatedName("s")
-    @ObfuscatedSignature(descriptor = "Lkm;")
-    @Export("PlayerType_jagexModerator")
-    PlayerType_jagexModerator(2, 1, true, true, false),
-    @ObfuscatedName("e")
-    @ObfuscatedSignature(descriptor = "Lkm;")
-    @Export("PlayerType_ironman")
-    PlayerType_ironman(3, 2, false, false, true),
-    @ObfuscatedName("r")
-    @ObfuscatedSignature(descriptor = "Lkm;")
-    @Export("PlayerType_ultimateIronman")
-    PlayerType_ultimateIronman(4, 3, false, false, true),
-    @ObfuscatedName("o")
-    @ObfuscatedSignature(descriptor = "Lkm;")
-    @Export("PlayerType_hardcoreIronman")
-    PlayerType_hardcoreIronman(5, 10, false, false, true),
-    @ObfuscatedName("i")
-    @ObfuscatedSignature(descriptor = "Lkm;")
-    field3858(6, 22, false, false, true),
-    @ObfuscatedName("w")
-    @ObfuscatedSignature(descriptor = "Lkm;")
-    field3856(7, 41, false, false, true),
-    @ObfuscatedName("v")
-    @ObfuscatedSignature(descriptor = "Lkm;")
-    field3857(8, 42, false, false, true);
-    @ObfuscatedName("a")
-    @ObfuscatedGetter(intValue = -963004919)
-    @Export("id")
-    final int id;
+	@Export("PlayerType_normal")
+	PlayerType_normal(0, -1, true, false, true),
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(descriptor = 
+	"Lkj;")
 
-    @ObfuscatedName("y")
-    @ObfuscatedGetter(intValue = 714318491)
-    @Export("modIcon")
-    public final int modIcon;
+	@Export("PlayerType_playerModerator")
+	PlayerType_playerModerator(1, 0, true, true, true),
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(descriptor = 
+	"Lkj;")
 
-    @ObfuscatedName("u")
-    @Export("isPrivileged")
-    public final boolean isPrivileged;
+	@Export("PlayerType_jagexModerator")
+	PlayerType_jagexModerator(2, 1, true, true, false),
+	@ObfuscatedName("g")
+	@ObfuscatedSignature(descriptor = 
+	"Lkj;")
 
-    @ObfuscatedName("h")
-    @Export("isUser")
-    public final boolean isUser;
+	@Export("PlayerType_ironman")
+	PlayerType_ironman(3, 2, false, false, true),
+	@ObfuscatedName("l")
+	@ObfuscatedSignature(descriptor = 
+	"Lkj;")
 
-    PlayerType(int var3, int var4, boolean var5, boolean var6, boolean var7) {
-        this.id = var3;
-        this.modIcon = var4;
-        this.isPrivileged = var6;
-        this.isUser = var7;
-    }
+	@Export("PlayerType_ultimateIronman")
+	PlayerType_ultimateIronman(4, 3, false, false, true),
+	@ObfuscatedName("n")
+	@ObfuscatedSignature(descriptor = 
+	"Lkj;")
 
-    @ObfuscatedName("c")
-    @ObfuscatedSignature(descriptor = "(I)I", garbageValue = "-303340189")
-    @Export("rsOrdinal")
-    public int rsOrdinal() {
-        return this.id;
-    }
-}
+	@Export("PlayerType_hardcoreIronman")
+	PlayerType_hardcoreIronman(5, 10, false, false, true),
+	@ObfuscatedName("d")
+	@ObfuscatedSignature(descriptor = 
+	"Lkj;")
+
+	field3919(6, 22, false, false, true),
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(descriptor = 
+	"Lkj;")
+
+	field3926(7, 41, false, false, true),
+	@ObfuscatedName("u")
+	@ObfuscatedSignature(descriptor = 
+	"Lkj;")
+
+	field3931(8, 42, false, false, true);
+
+	@ObfuscatedName("r")
+	@ObfuscatedGetter(intValue = 
+	1546749787)
+
+	@Export("id")
+	final int id;
+	@ObfuscatedName("k")
+	@ObfuscatedGetter(intValue = 
+	1126517569)
+
+	@Export("modIcon")
+	public final int modIcon;
+	@ObfuscatedName("x")
+	@Export("isPrivileged")
+	public final boolean isPrivileged;
+	@ObfuscatedName("c")
+	@Export("isUser")
+	public final boolean isUser;
+
+	PlayerType(int var3, int var4, boolean var5, boolean var6, boolean var7) {
+		this.id = var3;
+		this.modIcon = var4;
+		this.isPrivileged = var6;
+		this.isUser = var7;
+	}
+
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(descriptor = 
+	"(B)I", garbageValue = 
+	"15")
+
+	@Export("rsOrdinal")
+	public int rsOrdinal() {
+		return this.id;
+	}
+
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(descriptor = 
+	"(I)[Lqs;", garbageValue = 
+	"-1527934024")
+
+	@Export("FillMode_values")
+	public static FillMode[] FillMode_values() {
+		return new FillMode[]{ FillMode.field4695, FillMode.field4698, FillMode.SOLID };
+	}}

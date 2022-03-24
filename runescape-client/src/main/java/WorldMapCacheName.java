@@ -2,106 +2,180 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-@ObfuscatedName("id")
+
+@ObfuscatedName("ir")
 @Implements("WorldMapCacheName")
 public class WorldMapCacheName {
-    @ObfuscatedName("c")
-    @ObfuscatedSignature(descriptor = "Lid;")
-    public static final WorldMapCacheName field2793;
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(descriptor = 
+	"Lir;")
 
-    @ObfuscatedName("l")
-    @ObfuscatedSignature(descriptor = "Lid;")
-    public static final WorldMapCacheName field2790;
+	public static final WorldMapCacheName field2849;
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(descriptor = 
+	"Lir;")
 
-    @ObfuscatedName("s")
-    @ObfuscatedSignature(descriptor = "Lid;")
-    public static final WorldMapCacheName field2791;
+	public static final WorldMapCacheName field2847;
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(descriptor = 
+	"Lir;")
 
-    @ObfuscatedName("e")
-    @ObfuscatedSignature(descriptor = "Lid;")
-    static final WorldMapCacheName field2792;
+	public static final WorldMapCacheName field2846;
+	@ObfuscatedName("g")
+	@ObfuscatedSignature(descriptor = 
+	"Lir;")
 
-    @ObfuscatedName("r")
-    @ObfuscatedSignature(descriptor = "Lid;")
-    public static final WorldMapCacheName field2795;
+	static final WorldMapCacheName field2852;
+	@ObfuscatedName("l")
+	@ObfuscatedSignature(descriptor = 
+	"Lir;")
 
-    @ObfuscatedName("da")
-    @ObfuscatedSignature(descriptor = "Lmg;")
-    @Export("js5Socket")
-    static AbstractSocket js5Socket;
+	public static final WorldMapCacheName field2850;
+	@ObfuscatedName("n")
+	@Export("name")
+	public final String name;
+	static 
+	{
+		field2849 = new WorldMapCacheName("details");
+		field2847 = new WorldMapCacheName("compositemap");
+		field2846 = new WorldMapCacheName("compositetexture");
+		field2852 = new WorldMapCacheName("area");
+		field2850 = new WorldMapCacheName("labels");
+	}
 
-    @ObfuscatedName("o")
-    @Export("name")
-    public final String name;
+	WorldMapCacheName(String var1) {
+		this.name = var1;
+	}
 
-    static {
-        field2793 = new WorldMapCacheName("details");
-        field2790 = new WorldMapCacheName("compositemap");
-        field2791 = new WorldMapCacheName("compositetexture");
-        field2792 = new WorldMapCacheName("area");
-        field2795 = new WorldMapCacheName("labels");
-    }
+	@ObfuscatedName("x")
+	@ObfuscatedSignature(descriptor = 
+	"(IIIIIZI)Lql;", garbageValue = 
+	"1724872631")
 
-    WorldMapCacheName(String var1) {
-        this.name = var1;
-    }
+	@Export("getItemSprite")
+	public static final SpritePixels getItemSprite(int var0, int var1, int var2, int var3, int var4, boolean var5) {
+		if (var1 == (-1)) {
+			var4 = 0;
+		} else if ((var4 == 2) && (var1 != 1)) {
+			var4 = 1;
+		}
 
-    @ObfuscatedName("as")
-    @ObfuscatedSignature(descriptor = "(II)I", garbageValue = "-128254341")
-    static int method4829(int var0) {
-        return ((int) (((Math.log(((double) (var0))) / Interpreter.field850) - 7.0) * 256.0));
-    }
+		long var6 = ((((((long) (var3)) << 42) + ((long) (var0))) + (((long) (var1)) << 16)) + (((long) (var2)) << 38)) + (((long) (var4)) << 40);
+		SpritePixels var8;
+		if (!var5) {
+			var8 = ((SpritePixels) (ItemComposition.ItemDefinition_cachedSprites.get(var6)));
+			if (var8 != null) {
+				return var8;
+			}
+		}
 
-    @ObfuscatedName("an")
-    @ObfuscatedSignature(descriptor = "(ILbl;ZI)I", garbageValue = "1334324157")
-    static int method4830(int var0, Script var1, boolean var2) {
-        if ((((((((var0 != 7000) && (var0 != 7005)) && (var0 != 7010)) && (var0 != 7015)) && (var0 != 7020)) && (var0 != 7025)) && (var0 != 7030)) && (var0 != 7035)) {
-            if ((((((var0 != 7001) && (var0 != 7002)) && (var0 != 7011)) && (var0 != 7012)) && (var0 != 7021)) && (var0 != 7022)) {
-                if (((var0 != 7003) && (var0 != 7013)) && (var0 != 7023)) {
-                    if ((((((var0 != 7006) && (var0 != 7007)) && (var0 != 7016)) && (var0 != 7017)) && (var0 != 7026)) && (var0 != 7027)) {
-                        if (((var0 != 7008) && (var0 != 7018)) && (var0 != 7028)) {
-                            if ((var0 != 7031) && (var0 != 7032)) {
-                                if (var0 == 7033) {
-                                    --BufferedNetSocket.Interpreter_stringStackSize;
-                                    return 1;
-                                } else if ((var0 != 7036) && (var0 != 7037)) {
-                                    if (var0 == 7038) {
-                                        --Interpreter.Interpreter_intStackSize;
-                                        return 1;
-                                    } else if ((((((((var0 != 7004) && (var0 != 7009)) && (var0 != 7014)) && (var0 != 7019)) && (var0 != 7024)) && (var0 != 7029)) && (var0 != 7034)) && (var0 != 7039)) {
-                                        return 2;
-                                    } else {
-                                        --Interpreter.Interpreter_intStackSize;
-                                        return 1;
-                                    }
-                                } else {
-                                    Interpreter.Interpreter_intStackSize -= 2;
-                                    return 1;
-                                }
-                            } else {
-                                --BufferedNetSocket.Interpreter_stringStackSize;
-                                --Interpreter.Interpreter_intStackSize;
-                                return 1;
-                            }
-                        } else {
-                            --Interpreter.Interpreter_intStackSize;
-                            return 1;
-                        }
-                    } else {
-                        Interpreter.Interpreter_intStackSize -= 2;
-                        return 1;
-                    }
-                } else {
-                    Interpreter.Interpreter_intStackSize -= 2;
-                    return 1;
-                }
-            } else {
-                Interpreter.Interpreter_intStackSize -= 3;
-                return 1;
-            }
-        } else {
-            Interpreter.Interpreter_intStackSize -= 5;
-            return 1;
-        }
-    }
+		ItemComposition var9 = class67.ItemDefinition_get(var0);
+		if ((var1 > 1) && (var9.countobj != null)) {
+			int var10 = -1;
+
+			for (int var11 = 0; var11 < 10; ++var11) {
+				if ((var1 >= var9.countco[var11]) && (var9.countco[var11] != 0)) {
+					var10 = var9.countobj[var11];
+				}
+			}
+
+			if (var10 != (-1)) {
+				var9 = class67.ItemDefinition_get(var10);
+			}
+		}
+
+		Model var21 = var9.getModel(1);
+		if (var21 == null) {
+			return null;
+		} else {
+			SpritePixels var22 = null;
+			if (var9.noteTemplate != (-1)) {
+				var22 = getItemSprite(var9.note, 10, 1, 0, 0, true);
+				if (var22 == null) {
+					return null;
+				}
+			} else if (var9.notedId != (-1)) {
+				var22 = getItemSprite(var9.unnotedId, var1, var2, var3, 0, false);
+				if (var22 == null) {
+					return null;
+				}
+			} else if (var9.placeholderTemplate != (-1)) {
+				var22 = getItemSprite(var9.placeholder, var1, 0, 0, 0, false);
+				if (var22 == null) {
+					return null;
+				}
+			}
+
+			int[] var12 = Rasterizer2D.Rasterizer2D_pixels;
+			int var13 = Rasterizer2D.Rasterizer2D_width;
+			int var14 = Rasterizer2D.Rasterizer2D_height;
+			int[] var15 = new int[4];
+			Rasterizer2D.Rasterizer2D_getClipArray(var15);
+			var8 = new SpritePixels(36, 32);
+			Rasterizer2D.Rasterizer2D_replace(var8.pixels, 36, 32);
+			Rasterizer2D.Rasterizer2D_clear();
+			Rasterizer3D.Rasterizer3D_setClipFromRasterizer2D();
+			Rasterizer3D.method3997(16, 16);
+			Rasterizer3D.field2325 = false;
+			if (var9.placeholderTemplate != (-1)) {
+				var22.drawTransBgAt(0, 0);
+			}
+
+			int var16 = var9.zoom2d;
+			if (var5) {
+				var16 = ((int) (((double) (var16)) * 1.5));
+			} else if (var2 == 2) {
+				var16 = ((int) (((double) (var16)) * 1.04));
+			}
+
+			int var17 = (var16 * Rasterizer3D.Rasterizer3D_sine[var9.xan2d]) >> 16;
+			int var18 = (var16 * Rasterizer3D.Rasterizer3D_cosine[var9.xan2d]) >> 16;
+			var21.calculateBoundsCylinder();
+			var21.method4376(0, var9.yan2d, var9.zan2d, var9.xan2d, var9.offsetX2d, ((var21.height / 2) + var17) + var9.offsetY2d, var18 + var9.offsetY2d);
+			if (var9.notedId != (-1)) {
+				var22.drawTransBgAt(0, 0);
+			}
+
+			if (var2 >= 1) {
+				var8.outline(1);
+			}
+
+			if (var2 >= 2) {
+				var8.outline(16777215);
+			}
+
+			if (var3 != 0) {
+				var8.shadow(var3);
+			}
+
+			Rasterizer2D.Rasterizer2D_replace(var8.pixels, 36, 32);
+			if (var9.noteTemplate != (-1)) {
+				var22.drawTransBgAt(0, 0);
+			}
+
+			if ((var4 == 1) || ((var4 == 2) && (var9.isStackable == 1))) {
+				Font var19 = class239.ItemDefinition_fontPlain11;
+				String var20;
+				if (var1 < 100000) {
+					var20 = ("<col=ffff00>" + var1) + "</col>";
+				} else if (var1 < 10000000) {
+					var20 = (("<col=ffffff>" + (var1 / 1000)) + "K") + "</col>";
+				} else {
+					var20 = (("<col=00ff80>" + (var1 / 1000000)) + "M") + "</col>";
+				}
+
+				var19.draw(var20, 0, 9, 16776960, 1);
+			}
+
+			if (!var5) {
+				ItemComposition.ItemDefinition_cachedSprites.put(var8, var6);
+			}
+
+			Rasterizer2D.Rasterizer2D_replace(var12, var13, var14);
+			Rasterizer2D.Rasterizer2D_setClipArray(var15);
+			Rasterizer3D.Rasterizer3D_setClipFromRasterizer2D();
+			Rasterizer3D.field2325 = true;
+			return var8;
+		}
+	}
 }

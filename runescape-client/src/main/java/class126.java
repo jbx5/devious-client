@@ -1,120 +1,166 @@
-import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-@ObfuscatedName("dx")
-public abstract class class126 extends Node {
-    @ObfuscatedName("nb")
-    @ObfuscatedSignature(descriptor = "Ljz;")
-    static Widget field1516;
 
-    class126() {
-    }
+@ObfuscatedName("df")
+public class class126 extends class128 {
+	@ObfuscatedName("v")
+	@ObfuscatedGetter(longValue = 
+	-3842845710666604635L)
 
-    @ObfuscatedName("c")
-    @ObfuscatedSignature(descriptor = "(Lpi;I)V", garbageValue = "703192976")
-    abstract void vmethod3019(Buffer var1);
+	long field1526;
+	@ObfuscatedName("o")
+	String field1527;
 
-    @ObfuscatedName("l")
-    @ObfuscatedSignature(descriptor = "(Ley;I)V", garbageValue = "750335300")
-    abstract void vmethod3020(ClanSettings var1);
+	@ObfuscatedSignature(descriptor = 
+	"Lee;")
 
-    @ObfuscatedName("c")
-    @ObfuscatedSignature(descriptor = "(II)Lfr;", garbageValue = "638570064")
-    @Export("WorldMapElement_get")
-    public static WorldMapElement WorldMapElement_get(int var0) {
-        return ((var0 >= 0) && (var0 < WorldMapElement.WorldMapElement_cached.length)) && (WorldMapElement.WorldMapElement_cached[var0] != null) ? WorldMapElement.WorldMapElement_cached[var0] : new WorldMapElement(var0);
-    }
+	final class131 this$0;
 
-    @ObfuscatedName("l")
-    @ObfuscatedSignature(descriptor = "(Lkq;III)Lpt;", garbageValue = "856920976")
-    @Export("SpriteBuffer_getSprite")
-    public static SpritePixels SpriteBuffer_getSprite(AbstractArchive var0, int var1, int var2) {
-        return !class125.method2744(var0, var1, var2) ? null : SpriteMask.method5322();
-    }
+	@ObfuscatedSignature(descriptor = 
+	"(Lee;)V")
 
-    @ObfuscatedName("l")
-    @ObfuscatedSignature(descriptor = "(Ljava/lang/CharSequence;B)[B", garbageValue = "23")
-    public static byte[] method2754(CharSequence var0) {
-        int var1 = var0.length();
-        byte[] var2 = new byte[var1];
-        for (int var3 = 0; var3 < var1; ++var3) {
-            char var4 = var0.charAt(var3);
-            if (((var4 > 0) && (var4 < 128)) || ((var4 >= 160) && (var4 <= 255))) {
-                var2[var3] = ((byte) (var4));
-            } else if (var4 == 8364) {
-                var2[var3] = -128;
-            } else if (var4 == 8218) {
-                var2[var3] = -126;
-            } else if (var4 == 402) {
-                var2[var3] = -125;
-            } else if (var4 == 8222) {
-                var2[var3] = -124;
-            } else if (var4 == 8230) {
-                var2[var3] = -123;
-            } else if (var4 == 8224) {
-                var2[var3] = -122;
-            } else if (var4 == 8225) {
-                var2[var3] = -121;
-            } else if (var4 == 710) {
-                var2[var3] = -120;
-            } else if (var4 == 8240) {
-                var2[var3] = -119;
-            } else if (var4 == 352) {
-                var2[var3] = -118;
-            } else if (var4 == 8249) {
-                var2[var3] = -117;
-            } else if (var4 == 338) {
-                var2[var3] = -116;
-            } else if (var4 == 381) {
-                var2[var3] = -114;
-            } else if (var4 == 8216) {
-                var2[var3] = -111;
-            } else if (var4 == 8217) {
-                var2[var3] = -110;
-            } else if (var4 == 8220) {
-                var2[var3] = -109;
-            } else if (var4 == 8221) {
-                var2[var3] = -108;
-            } else if (var4 == 8226) {
-                var2[var3] = -107;
-            } else if (var4 == 8211) {
-                var2[var3] = -106;
-            } else if (var4 == 8212) {
-                var2[var3] = -105;
-            } else if (var4 == 732) {
-                var2[var3] = -104;
-            } else if (var4 == 8482) {
-                var2[var3] = -103;
-            } else if (var4 == 353) {
-                var2[var3] = -102;
-            } else if (var4 == 8250) {
-                var2[var3] = -101;
-            } else if (var4 == 339) {
-                var2[var3] = -100;
-            } else if (var4 == 382) {
-                var2[var3] = -98;
-            } else if (var4 == 376) {
-                var2[var3] = -97;
-            } else {
-                var2[var3] = 63;
-            }
-        }
-        return var2;
-    }
+	class126(class131 var1) {
+		this.this$0 = var1;
+		this.field1526 = -1L;
+		this.field1527 = null;
+	}
 
-    @ObfuscatedName("e")
-    @ObfuscatedSignature(descriptor = "(IZIZI)V", garbageValue = "223998791")
-    @Export("sortWorldList")
-    static void sortWorldList(int var0, boolean var1, int var2, boolean var3) {
-        if (class33.World_worlds != null) {
-            BoundaryObject.doWorldSorting(0, class33.World_worlds.length - 1, var0, var1, var2, var3);
-        }
-    }
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(descriptor = 
+	"(Lpd;B)V", garbageValue = 
+	"-73")
 
-    @ObfuscatedName("js")
-    @ObfuscatedSignature(descriptor = "(I)Z", garbageValue = "350265873")
-    @Export("getTapToDrop")
-    static boolean getTapToDrop() {
-        return Client.tapToDrop;
-    }
+	void vmethod3107(Buffer var1) {
+		if (var1.readUnsignedByte() != 255) {
+			--var1.offset;
+			this.field1526 = var1.readLong();
+		}
+
+		this.field1527 = var1.readStringCp1252NullTerminatedOrNull();
+	}
+
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(descriptor = 
+	"(Leh;I)V", garbageValue = 
+	"-1228032820")
+
+	void vmethod3104(ClanSettings var1) {
+		var1.method2918(this.field1526, this.field1527, 0);
+	}
+
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(descriptor = 
+	"(Ljava/lang/CharSequence;B)Ljava/lang/String;", garbageValue = 
+	"82")
+
+	public static String method2817(CharSequence var0) {
+		int var1 = var0.length();
+		StringBuilder var2 = new StringBuilder(var1);
+
+		for (int var3 = 0; var3 < var1; ++var3) {
+			char var4 = var0.charAt(var3);
+			if ((((((((var4 < 'a') || (var4 > 'z')) && ((var4 < 'A') || (var4 > 'Z'))) && ((var4 < '0') || (var4 > '9'))) && (var4 != '.')) && (var4 != '-')) && (var4 != '*')) && (var4 != '_')) {
+				if (var4 == ' ') {
+					var2.append('+');
+				} else {
+					byte var5 = class123.charToByteCp1252(var4);
+					var2.append('%');
+					int var6 = (var5 >> 4) & 15;
+					if (var6 >= 10) {
+						var2.append(((char) (var6 + 55)));
+					} else {
+						var2.append(((char) (var6 + 48)));
+					}
+
+					var6 = var5 & 15;
+					if (var6 >= 10) {
+						var2.append(((char) (var6 + 55)));
+					} else {
+						var2.append(((char) (var6 + 48)));
+					}
+				}
+			} else {
+				var2.append(var4);
+			}
+		}
+
+		return var2.toString();
+	}
+
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(descriptor = 
+	"(I)V", garbageValue = 
+	"-1862606861")
+
+	public static void method2819() {
+		try {
+			if (class273.musicPlayerStatus == 1) {
+				int var0 = WorldMapEvent.midiPcmStream.method5369();
+				if ((var0 > 0) && WorldMapEvent.midiPcmStream.isReady()) {
+					var0 -= class273.pcmSampleLength;
+					if (var0 < 0) {
+						var0 = 0;
+					}
+
+					WorldMapEvent.midiPcmStream.setPcmStreamVolume(var0);
+					return;
+				}
+
+				WorldMapEvent.midiPcmStream.clear();
+				WorldMapEvent.midiPcmStream.removeAll();
+				if (class147.musicTrackArchive != null) {
+					class273.musicPlayerStatus = 2;
+				} else {
+					class273.musicPlayerStatus = 0;
+				}
+
+				class273.musicTrack = null;
+				class273.soundCache = null;
+			}
+		} catch (Exception var2) {
+			var2.printStackTrace();
+			WorldMapEvent.midiPcmStream.clear();
+			class273.musicPlayerStatus = 0;
+			class273.musicTrack = null;
+			class273.soundCache = null;
+			class147.musicTrackArchive = null;
+		}
+
+	}
+
+	@ObfuscatedName("n")
+	@ObfuscatedSignature(descriptor = 
+	"(IIIB)V", garbageValue = 
+	"33")
+
+	static final void method2820(int var0, int var1, int var2) {
+		int var3;
+		for (var3 = 0; var3 < 8; ++var3) {
+			for (int var4 = 0; var4 < 8; ++var4) {
+				Tiles.Tiles_heights[var0][var3 + var1][var4 + var2] = 0;
+			}
+		}
+
+		if (var1 > 0) {
+			for (var3 = 1; var3 < 8; ++var3) {
+				Tiles.Tiles_heights[var0][var1][var3 + var2] = Tiles.Tiles_heights[var0][var1 - 1][var3 + var2];
+			}
+		}
+
+		if (var2 > 0) {
+			for (var3 = 1; var3 < 8; ++var3) {
+				Tiles.Tiles_heights[var0][var3 + var1][var2] = Tiles.Tiles_heights[var0][var3 + var1][var2 - 1];
+			}
+		}
+
+		if ((var1 > 0) && (Tiles.Tiles_heights[var0][var1 - 1][var2] != 0)) {
+			Tiles.Tiles_heights[var0][var1][var2] = Tiles.Tiles_heights[var0][var1 - 1][var2];
+		} else if ((var2 > 0) && (Tiles.Tiles_heights[var0][var1][var2 - 1] != 0)) {
+			Tiles.Tiles_heights[var0][var1][var2] = Tiles.Tiles_heights[var0][var1][var2 - 1];
+		} else if (((var1 > 0) && (var2 > 0)) && (Tiles.Tiles_heights[var0][var1 - 1][var2 - 1] != 0)) {
+			Tiles.Tiles_heights[var0][var1][var2] = Tiles.Tiles_heights[var0][var1 - 1][var2 - 1];
+		}
+
+	}
 }

@@ -8,479 +8,424 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-@ObfuscatedName("aa")
+
+@ObfuscatedName("ar")
 @Implements("MouseHandler")
 public class MouseHandler implements MouseListener , MouseMotionListener , FocusListener {
-    @ObfuscatedName("sq")
-    @ObfuscatedSignature(descriptor = "Lag;")
-    @Export("pcmPlayer1")
-    static PcmPlayer pcmPlayer1;
+	@ObfuscatedName("g")
+	@ObfuscatedSignature(descriptor = 
+	"Lar;")
 
-    @ObfuscatedName("ux")
-    @ObfuscatedSignature(descriptor = "Lom;")
-    @Export("platformInfo")
-    static PlatformInfo platformInfo;
+	@Export("MouseHandler_instance")
+	public static MouseHandler MouseHandler_instance;
+	@ObfuscatedName("l")
+	@ObfuscatedGetter(intValue = 
+	107284469)
 
-    @ObfuscatedName("e")
-    @ObfuscatedSignature(descriptor = "Laa;")
-    @Export("MouseHandler_instance")
-    public static MouseHandler MouseHandler_instance;
+	@Export("MouseHandler_idleCycles")
+	public static volatile int MouseHandler_idleCycles;
+	@ObfuscatedName("n")
+	@ObfuscatedGetter(intValue = 
+	46919017)
 
-    @ObfuscatedName("r")
-    @ObfuscatedGetter(intValue = 1073893907)
-    @Export("MouseHandler_idleCycles")
-    static volatile int MouseHandler_idleCycles;
+	@Export("MouseHandler_currentButtonVolatile")
+	public static volatile int MouseHandler_currentButtonVolatile;
+	@ObfuscatedName("d")
+	@ObfuscatedGetter(intValue = 
+	-196949191)
 
-    @ObfuscatedName("o")
-    @ObfuscatedGetter(intValue = -1694985193)
-    @Export("MouseHandler_currentButtonVolatile")
-    static volatile int MouseHandler_currentButtonVolatile;
+	@Export("MouseHandler_xVolatile")
+	public static volatile int MouseHandler_xVolatile;
+	@ObfuscatedName("f")
+	@ObfuscatedGetter(intValue = 
+	44426053)
 
-    @ObfuscatedName("i")
-    @ObfuscatedGetter(intValue = -830820655)
-    @Export("MouseHandler_xVolatile")
-    static volatile int MouseHandler_xVolatile;
+	@Export("MouseHandler_yVolatile")
+	public static volatile int MouseHandler_yVolatile;
+	@ObfuscatedName("u")
+	@ObfuscatedGetter(longValue = 
+	51726182366578667L)
 
-    @ObfuscatedName("w")
-    @ObfuscatedGetter(intValue = 668120751)
-    @Export("MouseHandler_yVolatile")
-    static volatile int MouseHandler_yVolatile;
+	@Export("MouseHandler_lastMovedVolatile")
+	public static volatile long MouseHandler_lastMovedVolatile;
+	@ObfuscatedName("r")
+	@ObfuscatedGetter(intValue = 
+	-1741182953)
 
-    @ObfuscatedName("v")
-    @ObfuscatedGetter(longValue = -3728044565388520941L)
-    @Export("MouseHandler_lastMovedVolatile")
-    static volatile long MouseHandler_lastMovedVolatile;
+	@Export("MouseHandler_currentButton")
+	public static int MouseHandler_currentButton;
+	@ObfuscatedName("k")
+	@ObfuscatedGetter(intValue = 
+	1113383001)
 
-    @ObfuscatedName("a")
-    @ObfuscatedGetter(intValue = 1322576095)
-    @Export("MouseHandler_currentButton")
-    public static int MouseHandler_currentButton;
+	@Export("MouseHandler_x")
+	public static int MouseHandler_x;
+	@ObfuscatedName("x")
+	@ObfuscatedGetter(intValue = 
+	-601944997)
 
-    @ObfuscatedName("y")
-    @ObfuscatedGetter(longValue = 3778330924173868733L)
-    @Export("MouseHandler_millis")
-    public static long MouseHandler_millis;
+	@Export("MouseHandler_y")
+	public static int MouseHandler_y;
+	@ObfuscatedName("c")
+	@ObfuscatedGetter(longValue = 
+	-3366277212682218721L)
 
-    @ObfuscatedName("u")
-    @ObfuscatedGetter(intValue = 977348605)
-    @Export("MouseHandler_x")
-    public static int MouseHandler_x;
+	@Export("MouseHandler_millis")
+	public static long MouseHandler_millis;
+	@ObfuscatedName("j")
+	@ObfuscatedGetter(intValue = 
+	-173750849)
 
-    @ObfuscatedName("h")
-    @ObfuscatedGetter(intValue = 674458539)
-    @Export("MouseHandler_y")
-    public static int MouseHandler_y;
+	@Export("MouseHandler_lastButtonVolatile")
+	public static volatile int MouseHandler_lastButtonVolatile;
+	@ObfuscatedName("p")
+	@ObfuscatedGetter(intValue = 
+	1130317715)
 
-    @ObfuscatedName("q")
-    @ObfuscatedGetter(intValue = -18952791)
-    @Export("MouseHandler_lastButtonVolatile")
-    static volatile int MouseHandler_lastButtonVolatile;
+	@Export("MouseHandler_lastPressedXVolatile")
+	public static volatile int MouseHandler_lastPressedXVolatile;
+	@ObfuscatedName("s")
+	@ObfuscatedGetter(intValue = 
+	533285241)
 
-    @ObfuscatedName("x")
-    @ObfuscatedGetter(intValue = -158816913)
-    @Export("MouseHandler_lastPressedXVolatile")
-    static volatile int MouseHandler_lastPressedXVolatile;
+	@Export("MouseHandler_lastPressedYVolatile")
+	public static volatile int MouseHandler_lastPressedYVolatile;
+	@ObfuscatedName("b")
+	@ObfuscatedGetter(longValue = 
+	-5019639506180718005L)
 
-    @ObfuscatedName("p")
-    @ObfuscatedGetter(intValue = -1161470035)
-    @Export("MouseHandler_lastPressedYVolatile")
-    static volatile int MouseHandler_lastPressedYVolatile;
+	@Export("MouseHandler_lastPressedTimeMillisVolatile")
+	public static volatile long MouseHandler_lastPressedTimeMillisVolatile;
+	@ObfuscatedName("w")
+	@ObfuscatedGetter(intValue = 
+	-1259465113)
 
-    @ObfuscatedName("n")
-    @ObfuscatedGetter(longValue = -2923617770856931813L)
-    @Export("MouseHandler_lastPressedTimeMillisVolatile")
-    static volatile long MouseHandler_lastPressedTimeMillisVolatile;
+	@Export("MouseHandler_lastButton")
+	public static int MouseHandler_lastButton;
+	@ObfuscatedName("a")
+	@ObfuscatedGetter(intValue = 
+	-416250337)
 
-    @ObfuscatedName("m")
-    @ObfuscatedGetter(intValue = -907131657)
-    @Export("MouseHandler_lastButton")
-    public static int MouseHandler_lastButton;
+	@Export("MouseHandler_lastPressedX")
+	public static int MouseHandler_lastPressedX;
+	@ObfuscatedName("m")
+	@ObfuscatedGetter(intValue = 
+	-769215047)
 
-    @ObfuscatedName("d")
-    @ObfuscatedGetter(intValue = -1454234719)
-    @Export("MouseHandler_lastPressedX")
-    public static int MouseHandler_lastPressedX;
+	@Export("MouseHandler_lastPressedY")
+	public static int MouseHandler_lastPressedY;
+	@ObfuscatedName("q")
+	@ObfuscatedGetter(longValue = 
+	4641952122808710007L)
 
-    @ObfuscatedName("j")
-    @ObfuscatedGetter(intValue = 771902181)
-    @Export("MouseHandler_lastPressedY")
-    public static int MouseHandler_lastPressedY;
+	@Export("MouseHandler_lastPressedTimeMillis")
+	public static long MouseHandler_lastPressedTimeMillis;
+	@ObfuscatedName("ei")
+	@ObfuscatedSignature(descriptor = 
+	"Llu;")
 
-    @ObfuscatedName("f")
-    @ObfuscatedGetter(longValue = 2709122788855989661L)
-    @Export("MouseHandler_lastPressedTimeMillis")
-    public static long MouseHandler_lastPressedTimeMillis;
+	@Export("archive4")
+	static Archive archive4;
+	static 
+	{
+		MouseHandler_instance = new MouseHandler();
+		MouseHandler_idleCycles = 0;
+		MouseHandler_currentButtonVolatile = 0;
+		MouseHandler_xVolatile = -1;
+		MouseHandler_yVolatile = -1;
+		MouseHandler_lastMovedVolatile = -1L;
+		MouseHandler_currentButton = 0;
+		MouseHandler_x = 0;
+		MouseHandler_y = 0;
+		MouseHandler_millis = 0L;
+		MouseHandler_lastButtonVolatile = 0;
+		MouseHandler_lastPressedXVolatile = 0;
+		MouseHandler_lastPressedYVolatile = 0;
+		MouseHandler_lastPressedTimeMillisVolatile = 0L;
+		MouseHandler_lastButton = 0;
+		MouseHandler_lastPressedX = 0;
+		MouseHandler_lastPressedY = 0;
+		MouseHandler_lastPressedTimeMillis = 0L;
+	}
 
-    @ObfuscatedName("hq")
-    @ObfuscatedGetter(intValue = 700693617)
-    static int field240;
+	MouseHandler() {
+	}
 
-    static {
-        MouseHandler_instance = new MouseHandler();
-        MouseHandler_idleCycles = 0;
-        MouseHandler_currentButtonVolatile = 0;
-        MouseHandler_xVolatile = -1;
-        MouseHandler_yVolatile = -1;
-        MouseHandler_lastMovedVolatile = -1L;
-        MouseHandler_currentButton = 0;
-        MouseHandler_x = 0;
-        MouseHandler_y = 0;
-        MouseHandler_millis = 0L;
-        MouseHandler_lastButtonVolatile = 0;
-        MouseHandler_lastPressedXVolatile = 0;
-        MouseHandler_lastPressedYVolatile = 0;
-        MouseHandler_lastPressedTimeMillisVolatile = 0L;
-        MouseHandler_lastButton = 0;
-        MouseHandler_lastPressedX = 0;
-        MouseHandler_lastPressedY = 0;
-        MouseHandler_lastPressedTimeMillis = 0L;
-    }
+	@ObfuscatedName("g")
+	@ObfuscatedSignature(descriptor = 
+	"(Ljava/awt/event/MouseEvent;B)I", garbageValue = 
+	"1")
 
-    MouseHandler() {
-    }
+	@Export("getButton")
+	final int getButton(MouseEvent var1) {
+		int var2 = var1.getButton();
+		if ((!var1.isAltDown()) && (var2 != 2)) {
+			return (!var1.isMetaDown()) && (var2 != 3) ? 1 : 2;
+		} else {
+			return 4;
+		}
+	}
 
-    @ObfuscatedName("r")
-    @ObfuscatedSignature(descriptor = "(Ljava/awt/event/MouseEvent;I)I", garbageValue = "992968755")
-    @Export("getButton")
-    final int getButton(MouseEvent var1) {
-        int var2 = var1.getButton();
-        if ((!var1.isAltDown()) && (var2 != 2)) {
-            return (!var1.isMetaDown()) && (var2 != 3) ? 1 : 2;
-        } else {
-            return 4;
-        }
-    }
+	public synchronized final void mouseMoved(MouseEvent var1) {
+		if (MouseHandler_instance != null) {
+			MouseHandler_idleCycles = 0;
+			MouseHandler_xVolatile = var1.getX();
+			MouseHandler_yVolatile = var1.getY();
+			MouseHandler_lastMovedVolatile = var1.getWhen();
+		}
 
-    public synchronized final void mouseMoved(MouseEvent var1) {
-        if (MouseHandler_instance != null) {
-            MouseHandler_idleCycles = 0;
-            MouseHandler_xVolatile = var1.getX();
-            MouseHandler_yVolatile = var1.getY();
-            MouseHandler_lastMovedVolatile = var1.getWhen();
-        }
-    }
+	}
 
-    public synchronized final void mouseEntered(MouseEvent var1) {
-        this.mouseMoved(var1);
-    }
+	public synchronized final void mousePressed(MouseEvent var1) {
+		if (MouseHandler_instance != null) {
+			MouseHandler_idleCycles = 0;
+			MouseHandler_lastPressedXVolatile = var1.getX();
+			MouseHandler_lastPressedYVolatile = var1.getY();
+			MouseHandler_lastPressedTimeMillisVolatile = WorldMapSprite.getServerTime();
+			MouseHandler_lastButtonVolatile = this.getButton(var1);
+			if (MouseHandler_lastButtonVolatile != 0) {
+				MouseHandler_currentButtonVolatile = MouseHandler_lastButtonVolatile;
+			}
+		}
 
-    public synchronized final void mousePressed(MouseEvent var1) {
-        if (MouseHandler_instance != null) {
-            MouseHandler_idleCycles = 0;
-            MouseHandler_lastPressedXVolatile = var1.getX();
-            MouseHandler_lastPressedYVolatile = var1.getY();
-            MouseHandler_lastPressedTimeMillisVolatile = DirectByteArrayCopier.getServerTime();
-            MouseHandler_lastButtonVolatile = this.getButton(var1);
-            if (MouseHandler_lastButtonVolatile != 0) {
-                MouseHandler_currentButtonVolatile = MouseHandler_lastButtonVolatile;
-            }
-        }
-        if (var1.isPopupTrigger()) {
-            var1.consume();
-        }
-    }
+		if (var1.isPopupTrigger()) {
+			var1.consume();
+		}
 
-    public synchronized final void mouseReleased(MouseEvent var1) {
-        if (MouseHandler_instance != null) {
-            MouseHandler_idleCycles = 0;
-            MouseHandler_currentButtonVolatile = 0;
-        }
-        if (var1.isPopupTrigger()) {
-            var1.consume();
-        }
-    }
+	}
 
-    public synchronized final void mouseExited(MouseEvent var1) {
-        if (MouseHandler_instance != null) {
-            MouseHandler_idleCycles = 0;
-            MouseHandler_xVolatile = -1;
-            MouseHandler_yVolatile = -1;
-            MouseHandler_lastMovedVolatile = var1.getWhen();
-        }
-    }
+	public final void mouseClicked(MouseEvent var1) {
+		if (var1.isPopupTrigger()) {
+			var1.consume();
+		}
 
-    public synchronized final void mouseDragged(MouseEvent var1) {
-        this.mouseMoved(var1);
-    }
+	}
 
-    public final void focusGained(FocusEvent var1) {
-    }
+	public synchronized final void mouseExited(MouseEvent var1) {
+		if (MouseHandler_instance != null) {
+			MouseHandler_idleCycles = 0;
+			MouseHandler_xVolatile = -1;
+			MouseHandler_yVolatile = -1;
+			MouseHandler_lastMovedVolatile = var1.getWhen();
+		}
 
-    public synchronized final void focusLost(FocusEvent var1) {
-        if (MouseHandler_instance != null) {
-            MouseHandler_currentButtonVolatile = 0;
-        }
-    }
+	}
 
-    public final void mouseClicked(MouseEvent var1) {
-        if (var1.isPopupTrigger()) {
-            var1.consume();
-        }
-    }
+	public synchronized final void mouseEntered(MouseEvent var1) {
+		this.mouseMoved(var1);
+	}
 
-    @ObfuscatedName("q")
-    @ObfuscatedSignature(descriptor = "(II)Lgu;", garbageValue = "-1943913678")
-    @Export("getFrames")
-    static Frames getFrames(int var0) {
-        Frames var1 = ((Frames) (SequenceDefinition.SequenceDefinition_cachedFrames.get(((long) (var0)))));
-        if (var1 != null) {
-            return var1;
-        } else {
-            AbstractArchive var3 = WorldMapData_0.SequenceDefinition_animationsArchive;
-            AbstractArchive var4 = SequenceDefinition.SequenceDefinition_skeletonsArchive;
-            boolean var5 = true;
-            int[] var6 = var3.getGroupFileIds(var0);
-            for (int var7 = 0; var7 < var6.length; ++var7) {
-                byte[] var8 = var3.getFile(var0, var6[var7]);
-                if (var8 == null) {
-                    var5 = false;
-                } else {
-                    int var9 = ((var8[0] & 255) << 8) | (var8[1] & 255);
-                    byte[] var10 = var4.getFile(var9, 0);
-                    if (var10 == null) {
-                        var5 = false;
-                    }
-                }
-            }
-            Frames var2;
-            if (!var5) {
-                var2 = null;
-            } else {
-                try {
-                    var2 = new Frames(var3, var4, var0, false);
-                } catch (Exception var12) {
-                    var2 = null;
-                }
-            }
-            if (var2 != null) {
-                SequenceDefinition.SequenceDefinition_cachedFrames.put(var2, ((long) (var0)));
-            }
-            return var2;
-        }
-    }
+	public final void focusGained(FocusEvent var1) {
+	}
 
-    @ObfuscatedName("hm")
-    @ObfuscatedSignature(descriptor = "(I)V", garbageValue = "-753950525")
-    static final void method615() {
-        HorizontalAlignment.method3279(false);
-        Client.field498 = 0;
-        boolean var0 = true;
-        int var1;
-        for (var1 = 0; var1 < Friend.regionLandArchives.length; ++var1) {
-            if ((Varcs.regionMapArchiveIds[var1] != (-1)) && (Friend.regionLandArchives[var1] == null)) {
-                Friend.regionLandArchives[var1] = Client.archive5.takeFile(Varcs.regionMapArchiveIds[var1], 0);
-                if (Friend.regionLandArchives[var1] == null) {
-                    var0 = false;
-                    ++Client.field498;
-                }
-            }
-            if ((WorldMapData_0.regionLandArchiveIds[var1] != (-1)) && (ReflectionCheck.regionMapArchives[var1] == null)) {
-                ReflectionCheck.regionMapArchives[var1] = Client.archive5.takeFileEncrypted(WorldMapData_0.regionLandArchiveIds[var1], 0, UserComparator8.xteaKeys[var1]);
-                if (ReflectionCheck.regionMapArchives[var1] == null) {
-                    var0 = false;
-                    ++Client.field498;
-                }
-            }
-        }
-        if (!var0) {
-            Client.field621 = 1;
-        } else {
-            Client.field559 = 0;
-            var0 = true;
-            int var3;
-            int var4;
-            for (var1 = 0; var1 < Friend.regionLandArchives.length; ++var1) {
-                byte[] var15 = ReflectionCheck.regionMapArchives[var1];
-                if (var15 != null) {
-                    var3 = ((WorldMapLabel.regions[var1] >> 8) * 64) - Canvas.baseX;
-                    var4 = ((WorldMapLabel.regions[var1] & 255) * 64) - class118.baseY;
-                    if (Client.isInInstance) {
-                        var3 = 10;
-                        var4 = 10;
-                    }
-                    var0 &= FriendSystem.method1689(var15, var3, var4);
-                }
-            }
-            if (!var0) {
-                Client.field621 = 2;
-            } else {
-                if (Client.field621 != 0) {
-                    Calendar.drawLoadingMessage(((("Loading - please wait." + ("<br>" + " (")) + 100) + "%") + ")", true);
-                }
-                class122.playPcmPlayers();
-                Decimator.scene.clear();
-                for (var1 = 0; var1 < 4; ++var1) {
-                    Client.collisionMaps[var1].clear();
-                }
-                int var2;
-                for (var1 = 0; var1 < 4; ++var1) {
-                    for (var2 = 0; var2 < 104; ++var2) {
-                        for (var3 = 0; var3 < 104; ++var3) {
-                            Tiles.Tiles_renderFlags[var1][var2][var3] = 0;
-                        }
-                    }
-                }
-                class122.playPcmPlayers();
-                UserComparator5.method2475();
-                var1 = Friend.regionLandArchives.length;
-                SequenceDefinition.method3623();
-                HorizontalAlignment.method3279(true);
-                int var5;
-                if (!Client.isInInstance) {
-                    byte[] var14;
-                    for (var2 = 0; var2 < var1; ++var2) {
-                        var3 = ((WorldMapLabel.regions[var2] >> 8) * 64) - Canvas.baseX;
-                        var4 = ((WorldMapLabel.regions[var2] & 255) * 64) - class118.baseY;
-                        var14 = Friend.regionLandArchives[var2];
-                        if (var14 != null) {
-                            class122.playPcmPlayers();
-                            Varps.method5333(var14, var3, var4, (field240 * 8) - 48, (UserComparator7.field1352 * 8) - 48, Client.collisionMaps);
-                        }
-                    }
-                    for (var2 = 0; var2 < var1; ++var2) {
-                        var3 = ((WorldMapLabel.regions[var2] >> 8) * 64) - Canvas.baseX;
-                        var4 = ((WorldMapLabel.regions[var2] & 255) * 64) - class118.baseY;
-                        var14 = Friend.regionLandArchives[var2];
-                        if ((var14 == null) && (UserComparator7.field1352 < 800)) {
-                            class122.playPcmPlayers();
-                            class7.method51(var3, var4, 64, 64);
-                        }
-                    }
-                    HorizontalAlignment.method3279(true);
-                    for (var2 = 0; var2 < var1; ++var2) {
-                        byte[] var13 = ReflectionCheck.regionMapArchives[var2];
-                        if (var13 != null) {
-                            var4 = ((WorldMapLabel.regions[var2] >> 8) * 64) - Canvas.baseX;
-                            var5 = ((WorldMapLabel.regions[var2] & 255) * 64) - class118.baseY;
-                            class122.playPcmPlayers();
-                            class78.method2083(var13, var4, var5, Decimator.scene, Client.collisionMaps);
-                        }
-                    }
-                }
-                int var6;
-                int var7;
-                int var8;
-                if (Client.isInInstance) {
-                    int var9;
-                    int var10;
-                    int var11;
-                    for (var2 = 0; var2 < 4; ++var2) {
-                        class122.playPcmPlayers();
-                        for (var3 = 0; var3 < 13; ++var3) {
-                            for (var4 = 0; var4 < 13; ++var4) {
-                                boolean var16 = false;
-                                var6 = Client.instanceChunkTemplates[var2][var3][var4];
-                                if (var6 != (-1)) {
-                                    var7 = (var6 >> 24) & 3;
-                                    var8 = (var6 >> 1) & 3;
-                                    var9 = (var6 >> 14) & 1023;
-                                    var10 = (var6 >> 3) & 2047;
-                                    var11 = ((var9 / 8) << 8) + (var10 / 8);
-                                    for (int var12 = 0; var12 < WorldMapLabel.regions.length; ++var12) {
-                                        if ((WorldMapLabel.regions[var12] == var11) && (Friend.regionLandArchives[var12] != null)) {
-                                            ViewportMouse.method4264(Friend.regionLandArchives[var12], var2, var3 * 8, var4 * 8, var7, (var9 & 7) * 8, (var10 & 7) * 8, var8, Client.collisionMaps);
-                                            var16 = true;
-                                            break;
-                                        }
-                                    }
-                                }
-                                if (!var16) {
-                                    Canvas.method370(var2, var3 * 8, var4 * 8);
-                                }
-                            }
-                        }
-                    }
-                    for (var2 = 0; var2 < 13; ++var2) {
-                        for (var3 = 0; var3 < 13; ++var3) {
-                            var4 = Client.instanceChunkTemplates[0][var2][var3];
-                            if (var4 == (-1)) {
-                                class7.method51(var2 * 8, var3 * 8, 8, 8);
-                            }
-                        }
-                    }
-                    HorizontalAlignment.method3279(true);
-                    for (var2 = 0; var2 < 4; ++var2) {
-                        class122.playPcmPlayers();
-                        for (var3 = 0; var3 < 13; ++var3) {
-                            for (var4 = 0; var4 < 13; ++var4) {
-                                var5 = Client.instanceChunkTemplates[var2][var3][var4];
-                                if (var5 != (-1)) {
-                                    var6 = (var5 >> 24) & 3;
-                                    var7 = (var5 >> 1) & 3;
-                                    var8 = (var5 >> 14) & 1023;
-                                    var9 = (var5 >> 3) & 2047;
-                                    var10 = ((var8 / 8) << 8) + (var9 / 8);
-                                    for (var11 = 0; var11 < WorldMapLabel.regions.length; ++var11) {
-                                        if ((WorldMapLabel.regions[var11] == var10) && (ReflectionCheck.regionMapArchives[var11] != null)) {
-                                            Tiles.method2031(ReflectionCheck.regionMapArchives[var11], var2, var3 * 8, var4 * 8, var6, (var8 & 7) * 8, (var9 & 7) * 8, var7, Decimator.scene, Client.collisionMaps);
-                                            break;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                HorizontalAlignment.method3279(true);
-                class122.playPcmPlayers();
-                class145.method2976(Decimator.scene, Client.collisionMaps);
-                HorizontalAlignment.method3279(true);
-                var2 = Tiles.Tiles_minPlane;
-                if (var2 > SoundSystem.Client_plane) {
-                    var2 = SoundSystem.Client_plane;
-                }
-                if (var2 < (SoundSystem.Client_plane - 1)) {
-                    var2 = SoundSystem.Client_plane - 1;
-                }
-                if (Client.isLowDetail) {
-                    Decimator.scene.init(Tiles.Tiles_minPlane);
-                } else {
-                    Decimator.scene.init(0);
-                }
-                for (var3 = 0; var3 < 104; ++var3) {
-                    for (var4 = 0; var4 < 104; ++var4) {
-                        StudioGame.updateItemPile(var3, var4);
-                    }
-                }
-                class122.playPcmPlayers();
-                class87.method2220();
-                ObjectComposition.ObjectDefinition_cachedModelData.clear();
-                PacketBufferNode var17;
-                if (class414.client.hasFrame()) {
-                    var17 = class135.getPacketBufferNode(ClientPacket.field2897, Client.packetWriter.isaacCipher);
-                    var17.packetBuffer.writeInt(1057001181);
-                    Client.packetWriter.addNode(var17);
-                }
-                if (!Client.isInInstance) {
-                    var3 = (field240 - 6) / 8;
-                    var4 = (field240 + 6) / 8;
-                    var5 = (UserComparator7.field1352 - 6) / 8;
-                    var6 = (UserComparator7.field1352 + 6) / 8;
-                    for (var7 = var3 - 1; var7 <= (var4 + 1); ++var7) {
-                        for (var8 = var5 - 1; var8 <= (var6 + 1); ++var8) {
-                            if ((((var7 < var3) || (var7 > var4)) || (var8 < var5)) || (var8 > var6)) {
-                                Client.archive5.loadRegionFromName((("m" + var7) + "_") + var8);
-                                Client.archive5.loadRegionFromName((("l" + var7) + "_") + var8);
-                            }
-                        }
-                    }
-                }
-                class111.updateGameState(30);
-                class122.playPcmPlayers();
-                class111.method2525();
-                var17 = class135.getPacketBufferNode(ClientPacket.field2883, Client.packetWriter.isaacCipher);
-                Client.packetWriter.addNode(var17);
-                GrandExchangeOfferOwnWorldComparator.method1121();
-            }
-        }
-    }
+	public synchronized final void focusLost(FocusEvent var1) {
+		if (MouseHandler_instance != null) {
+			MouseHandler_currentButtonVolatile = 0;
+		}
 
-    @ObfuscatedName("kb")
-    @ObfuscatedSignature(descriptor = "(II)V", garbageValue = "-1548132966")
-    @Export("updateSoundEffectVolume")
-    static final void updateSoundEffectVolume(int var0) {
-        var0 = Math.min(Math.max(var0, 0), 127);
-        class424.clientPreferences.soundEffectsVolume = var0;
-        GameEngine.savePreferences();
-    }
+	}
+
+	public synchronized final void mouseReleased(MouseEvent var1) {
+		if (MouseHandler_instance != null) {
+			MouseHandler_idleCycles = 0;
+			MouseHandler_currentButtonVolatile = 0;
+		}
+
+		if (var1.isPopupTrigger()) {
+			var1.consume();
+		}
+
+	}
+
+	public synchronized final void mouseDragged(MouseEvent var1) {
+		this.mouseMoved(var1);
+	}
+
+	@ObfuscatedName("g")
+	@ObfuscatedSignature(descriptor = 
+	"(ZZB)Lqx;", garbageValue = 
+	"28")
+
+	static IndexedSprite method622(boolean var0, boolean var1) {
+		return var0 ? var1 ? class143.field1639 : Skeleton.options_buttons_2Sprite : var1 ? InvDefinition.field1814 : class160.options_buttons_0Sprite;
+	}
+
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(descriptor = 
+	"(Law;I)V", garbageValue = 
+	"1699393273")
+
+	static void method621(GameEngine var0) {
+		while (class16.isKeyDown()) {
+			if (class241.field2833 == 13) {
+				Login.worldSelectOpen = false;
+				Login.leftTitleSprite.drawAt(Login.xPadding, 0);
+				class162.rightTitleSprite.drawAt(Login.xPadding + 382, 0);
+				HorizontalAlignment.logoSprite.drawAt((Login.xPadding + 382) - (HorizontalAlignment.logoSprite.subWidth / 2), 18);
+				return;
+			}
+
+			if (class241.field2833 == 96) {
+				if ((Login.worldSelectPage > 0) && (Interpreter.worldSelectLeftSprite != null)) {
+					--Login.worldSelectPage;
+				}
+			} else if (((class241.field2833 == 97) && (Login.worldSelectPage < Login.worldSelectPagesCount)) && (class124.worldSelectRightSprite != null)) {
+				++Login.worldSelectPage;
+			}
+		} 
+
+		if ((MouseHandler_lastButton == 1) || ((!UserComparator5.mouseCam) && (MouseHandler_lastButton == 4))) {
+			int var1 = Login.xPadding + 280;
+			if ((((MouseHandler_lastPressedX >= var1) && (MouseHandler_lastPressedX <= (var1 + 14))) && (MouseHandler_lastPressedY >= 4)) && (MouseHandler_lastPressedY <= 18)) {
+				Interpreter.changeWorldSelectSorting(0, 0);
+				return;
+			}
+
+			if ((((MouseHandler_lastPressedX >= (var1 + 15)) && (MouseHandler_lastPressedX <= (var1 + 80))) && (MouseHandler_lastPressedY >= 4)) && (MouseHandler_lastPressedY <= 18)) {
+				Interpreter.changeWorldSelectSorting(0, 1);
+				return;
+			}
+
+			int var2 = Login.xPadding + 390;
+			if ((((MouseHandler_lastPressedX >= var2) && (MouseHandler_lastPressedX <= (var2 + 14))) && (MouseHandler_lastPressedY >= 4)) && (MouseHandler_lastPressedY <= 18)) {
+				Interpreter.changeWorldSelectSorting(1, 0);
+				return;
+			}
+
+			if ((((MouseHandler_lastPressedX >= (var2 + 15)) && (MouseHandler_lastPressedX <= (var2 + 80))) && (MouseHandler_lastPressedY >= 4)) && (MouseHandler_lastPressedY <= 18)) {
+				Interpreter.changeWorldSelectSorting(1, 1);
+				return;
+			}
+
+			int var3 = Login.xPadding + 500;
+			if ((((MouseHandler_lastPressedX >= var3) && (MouseHandler_lastPressedX <= (var3 + 14))) && (MouseHandler_lastPressedY >= 4)) && (MouseHandler_lastPressedY <= 18)) {
+				Interpreter.changeWorldSelectSorting(2, 0);
+				return;
+			}
+
+			if ((((MouseHandler_lastPressedX >= (var3 + 15)) && (MouseHandler_lastPressedX <= (var3 + 80))) && (MouseHandler_lastPressedY >= 4)) && (MouseHandler_lastPressedY <= 18)) {
+				Interpreter.changeWorldSelectSorting(2, 1);
+				return;
+			}
+
+			int var4 = Login.xPadding + 610;
+			if ((((MouseHandler_lastPressedX >= var4) && (MouseHandler_lastPressedX <= (var4 + 14))) && (MouseHandler_lastPressedY >= 4)) && (MouseHandler_lastPressedY <= 18)) {
+				Interpreter.changeWorldSelectSorting(3, 0);
+				return;
+			}
+
+			if ((((MouseHandler_lastPressedX >= (var4 + 15)) && (MouseHandler_lastPressedX <= (var4 + 80))) && (MouseHandler_lastPressedY >= 4)) && (MouseHandler_lastPressedY <= 18)) {
+				Interpreter.changeWorldSelectSorting(3, 1);
+				return;
+			}
+
+			if ((((MouseHandler_lastPressedX >= (Login.xPadding + 708)) && (MouseHandler_lastPressedY >= 4)) && (MouseHandler_lastPressedX <= ((Login.xPadding + 708) + 50))) && (MouseHandler_lastPressedY <= 20)) {
+				Login.worldSelectOpen = false;
+				Login.leftTitleSprite.drawAt(Login.xPadding, 0);
+				class162.rightTitleSprite.drawAt(Login.xPadding + 382, 0);
+				HorizontalAlignment.logoSprite.drawAt((Login.xPadding + 382) - (HorizontalAlignment.logoSprite.subWidth / 2), 18);
+				return;
+			}
+
+			if (Login.hoveredWorldIndex != (-1)) {
+				World var5 = World.World_worlds[Login.hoveredWorldIndex];
+				ItemContainer.changeWorld(var5);
+				Login.worldSelectOpen = false;
+				Login.leftTitleSprite.drawAt(Login.xPadding, 0);
+				class162.rightTitleSprite.drawAt(Login.xPadding + 382, 0);
+				HorizontalAlignment.logoSprite.drawAt((Login.xPadding + 382) - (HorizontalAlignment.logoSprite.subWidth / 2), 18);
+				return;
+			}
+
+			if ((((((Login.worldSelectPage > 0) && (Interpreter.worldSelectLeftSprite != null)) && (MouseHandler_lastPressedX >= 0)) && (MouseHandler_lastPressedX <= Interpreter.worldSelectLeftSprite.subWidth)) && (MouseHandler_lastPressedY >= ((class309.canvasHeight / 2) - 50))) && (MouseHandler_lastPressedY <= ((class309.canvasHeight / 2) + 50))) {
+				--Login.worldSelectPage;
+			}
+
+			if ((((((Login.worldSelectPage < Login.worldSelectPagesCount) && (class124.worldSelectRightSprite != null)) && (MouseHandler_lastPressedX >= ((class4.canvasWidth - class124.worldSelectRightSprite.subWidth) - 5))) && (MouseHandler_lastPressedX <= class4.canvasWidth)) && (MouseHandler_lastPressedY >= ((class309.canvasHeight / 2) - 50))) && (MouseHandler_lastPressedY <= ((class309.canvasHeight / 2) + 50))) {
+				++Login.worldSelectPage;
+			}
+		}
+
+	}
+
+	@ObfuscatedName("fr")
+	@ObfuscatedSignature(descriptor = 
+	"(I)V", garbageValue = 
+	"797091978")
+
+	static final void method593() {
+		FloorOverlayDefinition.FloorOverlayDefinition_cached.clear();
+		FloorUnderlayDefinition.FloorUnderlayDefinition_cached.clear();
+		KitDefinition.KitDefinition_cached.clear();
+		ObjectComposition.ObjectDefinition_cached.clear();
+		ObjectComposition.ObjectDefinition_cachedModelData.clear();
+		ObjectComposition.ObjectDefinition_cachedEntities.clear();
+		ObjectComposition.ObjectDefinition_cachedModels.clear();
+		WorldMapDecoration.method4988();
+		ItemComposition.ItemDefinition_cached.clear();
+		ItemComposition.ItemDefinition_cachedModels.clear();
+		ItemComposition.ItemDefinition_cachedSprites.clear();
+		SequenceDefinition.SequenceDefinition_cached.clear();
+		SequenceDefinition.SequenceDefinition_cachedFrames.clear();
+		SequenceDefinition.SequenceDefinition_cachedModel.clear();
+		SpotAnimationDefinition.SpotAnimationDefinition_cached.clear();
+		SpotAnimationDefinition.SpotAnimationDefinition_cachedModels.clear();
+		VarbitComposition.VarbitDefinition_cached.clear();
+		FontName.method7509();
+		ScriptEvent.HitSplatDefinition_cachedSprites.method7640();
+		FontName.HitSplatDefinition_cached.method7640();
+		class146.method3040();
+		UserComparator1.method8029();
+		class141.method2995();
+		StructComposition.method3605();
+		PacketWriter.method2485();
+		PlayerComposition.PlayerAppearance_cachedModels.clear();
+		Widget.Widget_cachedSprites.clear();
+		Widget.Widget_cachedModels.clear();
+		Widget.Widget_cachedFonts.clear();
+		Widget.Widget_cachedSpriteMasks.clear();
+		((TextureProvider) (Rasterizer3D.Rasterizer3D_textureLoader)).clear();
+		Script.Script_cached.clear();
+		TileItem.archive0.clearFiles();
+		class321.archive1.clearFiles();
+		class121.archive3.clearFiles();
+		archive4.clearFiles();
+		class302.archive5.clearFiles();
+		ArchiveLoader.archive6.clearFiles();
+		class145.archive7.clearFiles();
+		WorldMapData_1.archive8.clearFiles();
+		class132.archive9.clearFiles();
+		World.archive10.clearFiles();
+		class268.archive11.clearFiles();
+		class135.archive12.clearFiles();
+	}
+
+	@ObfuscatedName("fc")
+	@ObfuscatedSignature(descriptor = 
+	"(I)V", garbageValue = 
+	"-1201561793")
+
+	@Export("playPcmPlayers")
+	static final void playPcmPlayers() {
+		if (class182.pcmPlayer1 != null) {
+			class182.pcmPlayer1.run();
+		}
+
+		if (class290.pcmPlayer0 != null) {
+			class290.pcmPlayer0.run();
+		}
+
+	}
+
+	@ObfuscatedName("jy")
+	@ObfuscatedSignature(descriptor = 
+	"(III)V", garbageValue = 
+	"1506401046")
+
+	@Export("runIntfCloseListeners")
+	static final void runIntfCloseListeners(int var0, int var1) {
+		if (MusicPatchNode2.loadInterface(var0)) {
+			ClanSettings.runComponentCloseListeners(EnumComposition.Widget_interfaceComponents[var0], var1);
+		}
+	}
 }

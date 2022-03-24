@@ -1,67 +1,99 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-@ObfuscatedName("ed")
-public class class143 {
-    @ObfuscatedName("q")
-    @ObfuscatedSignature(descriptor = "Lpg;")
-    static IndexedSprite field1638;
 
-    @ObfuscatedName("c")
-    @ObfuscatedGetter(longValue = -5735003153287195111L)
-    long field1640;
+@ObfuscatedName("ev")
+public class class143 extends class128 {
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(descriptor = 
+	"Lqx;")
 
-    @ObfuscatedName("l")
-    @ObfuscatedGetter(longValue = 4673579608958775799L)
-    long field1639;
+	static IndexedSprite field1639;
+	@ObfuscatedName("v")
+	@ObfuscatedGetter(longValue = 
+	7651930284509588633L)
 
-    @ObfuscatedName("s")
-    @ObfuscatedSignature(descriptor = "Llt;")
-    IterableNodeDeque field1642;
+	long field1636;
+	@ObfuscatedName("o")
+	String field1637;
+	@ObfuscatedName("h")
+	@ObfuscatedGetter(intValue = 
+	-1748652711)
 
-    @ObfuscatedSignature(descriptor = "(Lpi;)V")
-    public class143(Buffer var1) {
-        this.field1639 = -1L;
-        this.field1642 = new IterableNodeDeque();
-        this.method2956(var1);
-    }
+	int field1638;
 
-    @ObfuscatedName("c")
-    @ObfuscatedSignature(descriptor = "(Lpi;I)V", garbageValue = "-1523562517")
-    void method2956(Buffer var1) {
-        this.field1640 = var1.readLong();
-        this.field1639 = var1.readLong();
-        for (int var2 = var1.readUnsignedByte(); var2 != 0; var2 = var1.readUnsignedByte()) {
-            Object var3;
-            if (var2 == 1) {
-                var3 = new class138(this);
-            } else if (var2 == 4) {
-                var3 = new class149(this);
-            } else if (var2 == 3) {
-                var3 = new class134(this);
-            } else if (var2 == 2) {
-                var3 = new class132(this);
-            } else {
-                if (var2 != 5) {
-                    throw new RuntimeException("");
-                }
-                var3 = new class139(this);
-            }
-            ((class142) (var3)).vmethod3014(var1);
-            this.field1642.addFirst(((Node) (var3)));
-        }
-    }
+	@ObfuscatedSignature(descriptor = 
+	"Lee;")
 
-    @ObfuscatedName("l")
-    @ObfuscatedSignature(descriptor = "(Leg;B)V", garbageValue = "1")
-    public void method2957(ClanChannel var1) {
-        if ((var1.key == this.field1640) && (this.field1639 == var1.field1660)) {
-            for (class142 var2 = ((class142) (this.field1642.last())); var2 != null; var2 = ((class142) (this.field1642.previous()))) {
-                var2.vmethod3015(var1);
-            }
-            ++var1.field1660;
-        } else {
-            throw new RuntimeException("");
-        }
-    }
+	final class131 this$0;
+
+	@ObfuscatedSignature(descriptor = 
+	"(Lee;)V")
+
+	class143(class131 var1) {
+		this.this$0 = var1;
+		this.field1636 = -1L;
+		this.field1637 = null;
+		this.field1638 = 0;
+	}
+
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(descriptor = 
+	"(Lpd;B)V", garbageValue = 
+	"-73")
+
+	void vmethod3107(Buffer var1) {
+		if (var1.readUnsignedByte() != 255) {
+			--var1.offset;
+			this.field1636 = var1.readLong();
+		}
+
+		this.field1637 = var1.readStringCp1252NullTerminatedOrNull();
+		this.field1638 = var1.readUnsignedShort();
+	}
+
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(descriptor = 
+	"(Leh;I)V", garbageValue = 
+	"-1228032820")
+
+	void vmethod3104(ClanSettings var1) {
+		var1.method2918(this.field1636, this.field1637, this.field1638);
+	}
+
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(descriptor = 
+	"(III)Lkn;", garbageValue = 
+	"1044730683")
+
+	@Export("getWidgetChild")
+	public static Widget getWidgetChild(int var0, int var1) {
+		Widget var2 = HorizontalAlignment.getWidget(var0);
+		if (var1 == (-1)) {
+			return var2;
+		} else {
+			return ((var2 != null) && (var2.children != null)) && (var1 < var2.children.length) ? var2.children[var1] : null;
+		}
+	}
+
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(descriptor = 
+	"(II)Lgo;", garbageValue = 
+	"1616770151")
+
+	@Export("getFrames")
+	static Frames getFrames(int var0) {
+		Frames var1 = ((Frames) (SequenceDefinition.SequenceDefinition_cachedFrames.get(((long) (var0)))));
+		if (var1 != null) {
+			return var1;
+		} else {
+			var1 = class346.method6480(SequenceDefinition.SequenceDefinition_animationsArchive, DevicePcmPlayerProvider.SequenceDefinition_skeletonsArchive, var0, false);
+			if (var1 != null) {
+				SequenceDefinition.SequenceDefinition_cachedFrames.put(var1, ((long) (var0)));
+			}
+
+			return var1;
+		}
+	}
 }

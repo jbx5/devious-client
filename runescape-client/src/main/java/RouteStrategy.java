@@ -1,156 +1,226 @@
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import net.runelite.rs.Reflection;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-@ObfuscatedName("gx")
+
+@ObfuscatedName("ge")
 @Implements("RouteStrategy")
 public abstract class RouteStrategy {
-    @ObfuscatedName("un")
-    @ObfuscatedGetter(intValue = -1438474891)
-    @Export("foundItemIndex")
-    static int foundItemIndex;
+	@ObfuscatedName("v")
+	@ObfuscatedGetter(intValue = 
+	-708053839)
 
-    @ObfuscatedName("y")
-    @Export("Tiles_saturation")
-    static int[] Tiles_saturation;
+	@Export("approxDestinationX")
+	public int approxDestinationX;
+	@ObfuscatedName("o")
+	@ObfuscatedGetter(intValue = 
+	796824927)
 
-    @ObfuscatedName("nj")
-    @ObfuscatedGetter(intValue = -255672943)
-    @Export("selectedSpellFlags")
-    static int selectedSpellFlags;
+	@Export("approxDestinationY")
+	public int approxDestinationY;
+	@ObfuscatedName("h")
+	@ObfuscatedGetter(intValue = 
+	942230725)
 
-    @ObfuscatedName("c")
-    @ObfuscatedGetter(intValue = 2047758995)
-    @Export("approxDestinationX")
-    public int approxDestinationX;
+	@Export("approxDestinationSizeX")
+	public int approxDestinationSizeX;
+	@ObfuscatedName("g")
+	@ObfuscatedGetter(intValue = 
+	-2021281887)
 
-    @ObfuscatedName("l")
-    @ObfuscatedGetter(intValue = -1337324233)
-    @Export("approxDestinationY")
-    public int approxDestinationY;
+	@Export("approxDestinationSizeY")
+	public int approxDestinationSizeY;
 
-    @ObfuscatedName("s")
-    @ObfuscatedGetter(intValue = 1098221305)
-    @Export("approxDestinationSizeX")
-    public int approxDestinationSizeX;
+	protected RouteStrategy() {
+	}
 
-    @ObfuscatedName("e")
-    @ObfuscatedGetter(intValue = -816644595)
-    @Export("approxDestinationSizeY")
-    public int approxDestinationSizeY;
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(descriptor = 
+	"(IIILgf;I)Z", garbageValue = 
+	"-2070013036")
 
-    protected RouteStrategy() {
-    }
+	@Export("hasArrived")
+	protected abstract boolean hasArrived(int var1, int var2, int var3, CollisionMap var4);
 
-    @ObfuscatedName("c")
-    @ObfuscatedSignature(descriptor = "(IIILgi;S)Z", garbageValue = "-10612")
-    @Export("hasArrived")
-    public abstract boolean hasArrived(int var1, int var2, int var3, CollisionMap var4);
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(descriptor = 
+	"(Llu;II)V", garbageValue = 
+	"-1568372514")
 
-    @ObfuscatedName("e")
-    @ObfuscatedSignature(descriptor = "(Lpi;IB)V", garbageValue = "1")
-    @Export("readReflectionCheck")
-    public static void readReflectionCheck(Buffer var0, int var1) {
-        ReflectionCheck var2 = new ReflectionCheck();
-        var2.size = var0.readUnsignedByte();
-        var2.id = var0.readInt();
-        var2.operations = new int[var2.size];
-        var2.creationErrors = new int[var2.size];
-        var2.fields = new Field[var2.size];
-        var2.intReplaceValues = new int[var2.size];
-        var2.methods = new Method[var2.size];
-        var2.arguments = new byte[var2.size][][];
-        for (int var3 = 0; var3 < var2.size; ++var3) {
-            try {
-                int var4 = var0.readUnsignedByte();
-                String var5;
-                String var6;
-                int var7;
-                if (((var4 != 0) && (var4 != 1)) && (var4 != 2)) {
-                    if ((var4 == 3) || (var4 == 4)) {
-                        var5 = var0.readStringCp1252NullTerminated();
-                        var6 = var0.readStringCp1252NullTerminated();
-                        var7 = var0.readUnsignedByte();
-                        String[] var8 = new String[var7];
-                        for (int var9 = 0; var9 < var7; ++var9) {
-                            var8[var9] = var0.readStringCp1252NullTerminated();
-                        }
-                        String var20 = var0.readStringCp1252NullTerminated();
-                        byte[][] var10 = new byte[var7][];
-                        int var12;
-                        if (var4 == 3) {
-                            for (int var11 = 0; var11 < var7; ++var11) {
-                                var12 = var0.readInt();
-                                var10[var11] = new byte[var12];
-                                var0.readBytes(var10[var11], 0, var12);
-                            }
-                        }
-                        var2.operations[var3] = var4;
-                        Class[] var21 = new Class[var7];
-                        for (var12 = 0; var12 < var7; ++var12) {
-                            var21[var12] = ItemContainer.loadClassFromDescriptor(var8[var12]);
-                        }
-                        Class var22 = ItemContainer.loadClassFromDescriptor(var20);
-                        if (ItemContainer.loadClassFromDescriptor(var5).getClassLoader() == null) {
-                            throw new SecurityException();
-                        }
-                        Method[] var13 = ItemContainer.loadClassFromDescriptor(var5).getDeclaredMethods();
-                        Method[] var14 = var13;
-                        for (int var15 = 0; var15 < var14.length; ++var15) {
-                            Method var16 = var14[var15];
-                            if (Reflection.getMethodName(var16).equals(var6)) {
-                                Class[] var17 = Reflection.getParameterTypes(var16);
-                                if (var17.length == var21.length) {
-                                    boolean var18 = true;
-                                    for (int var19 = 0; var19 < var21.length; ++var19) {
-                                        if (var21[var19] != var17[var19]) {
-                                            var18 = false;
-                                            break;
-                                        }
-                                    }
-                                    if (var18 && (var22 == var16.getReturnType())) {
-                                        var2.methods[var3] = var16;
-                                    }
-                                }
-                            }
-                        }
-                        var2.arguments[var3] = var10;
-                    }
-                } else {
-                    var5 = var0.readStringCp1252NullTerminated();
-                    var6 = var0.readStringCp1252NullTerminated();
-                    var7 = 0;
-                    if (var4 == 1) {
-                        var7 = var0.readInt();
-                    }
-                    var2.operations[var3] = var4;
-                    var2.intReplaceValues[var3] = var7;
-                    if (ItemContainer.loadClassFromDescriptor(var5).getClassLoader() == null) {
-                        throw new SecurityException();
-                    }
-                    var2.fields[var3] = Reflection.findField(ItemContainer.loadClassFromDescriptor(var5), var6);
-                }
-            } catch (ClassNotFoundException var24) {
-                var2.creationErrors[var3] = -1;
-            } catch (SecurityException var25) {
-                var2.creationErrors[var3] = -2;
-            } catch (NullPointerException var26) {
-                var2.creationErrors[var3] = -3;
-            } catch (Exception var27) {
-                var2.creationErrors[var3] = -4;
-            } catch (Throwable var28) {
-                var2.creationErrors[var3] = -5;
-            }
-        }
-        class33.reflectionChecks.addFirst(var2);
-    }
+	static void method3873(Archive var0, int var1) {
+		if (class122.NetCache_reference != null) {
+			class122.NetCache_reference.offset = (var1 * 8) + 5;
+			int var2 = class122.NetCache_reference.readInt();
+			int var3 = class122.NetCache_reference.readInt();
+			var0.loadIndex(var2, var3);
+		} else {
+			TriBool.requestNetFile(((Archive) (null)), 255, 255, 0, ((byte) (0)), true);
+			NetCache.NetCache_archives[var1] = var0;
+		}
+	}
 
-    @ObfuscatedName("i")
-    static int method3679(long var0) {
-        return ((int) ((var0 >>> 14) & 3L));
-    }
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(descriptor = 
+	"(CI)Z", garbageValue = 
+	"-2126759813")
+
+	@Export("isCharPrintable")
+	public static boolean isCharPrintable(char var0) {
+		if ((var0 >= ' ') && (var0 <= '~')) {
+			return true;
+		} else if ((var0 >= 160) && (var0 <= 255)) {
+			return true;
+		} else {
+			return ((((var0 == 8364) || (var0 == 338)) || (var0 == 8212)) || (var0 == 339)) || (var0 == 376);
+		}
+	}
+
+	@ObfuscatedName("b")
+	@ObfuscatedSignature(descriptor = 
+	"(I)V", garbageValue = 
+	"-55125804")
+
+	static void method3872() {
+		class451.SpriteBuffer_xOffsets = null;
+		class451.SpriteBuffer_yOffsets = null;
+		class451.SpriteBuffer_spriteWidths = null;
+		class451.SpriteBuffer_spriteHeights = null;
+		GrandExchangeOfferUnitPriceComparator.SpriteBuffer_spritePalette = null;
+		class460.SpriteBuffer_pixels = null;
+	}
+
+	@ObfuscatedName("gc")
+	@ObfuscatedSignature(descriptor = 
+	"(I)I", garbageValue = 
+	"160319401")
+
+	static final int method3869() {
+		if (Interpreter.clientPreferences.method2255()) {
+			return class160.Client_plane;
+		} else {
+			int var0 = 3;
+			if (Language.cameraPitch < 310) {
+				int var1;
+				int var2;
+				if (Client.oculusOrbState == 1) {
+					var1 = Messages.oculusOrbFocalPointX >> 7;
+					var2 = class115.oculusOrbFocalPointY >> 7;
+				} else {
+					var1 = class19.localPlayer.x >> 7;
+					var2 = class19.localPlayer.y >> 7;
+				}
+
+				int var3 = EnumComposition.cameraX >> 7;
+				int var4 = CollisionMap.cameraZ >> 7;
+				if ((((var3 < 0) || (var4 < 0)) || (var3 >= 104)) || (var4 >= 104)) {
+					return class160.Client_plane;
+				}
+
+				if ((((var1 < 0) || (var2 < 0)) || (var1 >= 104)) || (var2 >= 104)) {
+					return class160.Client_plane;
+				}
+
+				if ((Tiles.Tiles_renderFlags[class160.Client_plane][var3][var4] & 4) != 0) {
+					var0 = class160.Client_plane;
+				}
+
+				int var5;
+				if (var1 > var3) {
+					var5 = var1 - var3;
+				} else {
+					var5 = var3 - var1;
+				}
+
+				int var6;
+				if (var2 > var4) {
+					var6 = var2 - var4;
+				} else {
+					var6 = var4 - var2;
+				}
+
+				int var7;
+				int var8;
+				if (var5 > var6) {
+					var7 = (var6 * 65536) / var5;
+					var8 = 32768;
+
+					while (var3 != var1) {
+						if (var3 < var1) {
+							++var3;
+						} else if (var3 > var1) {
+							--var3;
+						}
+
+						if ((Tiles.Tiles_renderFlags[class160.Client_plane][var3][var4] & 4) != 0) {
+							var0 = class160.Client_plane;
+						}
+
+						var8 += var7;
+						if (var8 >= 65536) {
+							var8 -= 65536;
+							if (var4 < var2) {
+								++var4;
+							} else if (var4 > var2) {
+								--var4;
+							}
+
+							if ((Tiles.Tiles_renderFlags[class160.Client_plane][var3][var4] & 4) != 0) {
+								var0 = class160.Client_plane;
+							}
+						}
+					} 
+				} else if (var6 > 0) {
+					var7 = (var5 * 65536) / var6;
+					var8 = 32768;
+
+					while (var2 != var4) {
+						if (var4 < var2) {
+							++var4;
+						} else if (var4 > var2) {
+							--var4;
+						}
+
+						if ((Tiles.Tiles_renderFlags[class160.Client_plane][var3][var4] & 4) != 0) {
+							var0 = class160.Client_plane;
+						}
+
+						var8 += var7;
+						if (var8 >= 65536) {
+							var8 -= 65536;
+							if (var3 < var1) {
+								++var3;
+							} else if (var3 > var1) {
+								--var3;
+							}
+
+							if ((Tiles.Tiles_renderFlags[class160.Client_plane][var3][var4] & 4) != 0) {
+								var0 = class160.Client_plane;
+							}
+						}
+					} 
+				}
+			}
+
+			if ((((class19.localPlayer.x >= 0) && (class19.localPlayer.y >= 0)) && (class19.localPlayer.x < 13312)) && (class19.localPlayer.y < 13312)) {
+				if ((Tiles.Tiles_renderFlags[class160.Client_plane][class19.localPlayer.x >> 7][class19.localPlayer.y >> 7] & 4) != 0) {
+					var0 = class160.Client_plane;
+				}
+
+				return var0;
+			} else {
+				return class160.Client_plane;
+			}
+		}
+	}
+
+	@ObfuscatedName("lz")
+	@ObfuscatedSignature(descriptor = 
+	"(I)V", garbageValue = 
+	"-655837204")
+
+	static final void method3875() {
+		Client.field687 = Client.cycleCntr;
+		class82.field1070 = true;
+	}
 }

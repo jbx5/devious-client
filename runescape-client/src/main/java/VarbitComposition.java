@@ -1,107 +1,131 @@
-import java.io.File;
-import java.io.IOException;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-@ObfuscatedName("fv")
+
+@ObfuscatedName("gn")
 @Implements("VarbitComposition")
 public class VarbitComposition extends DualNode {
-    @ObfuscatedName("c")
-    @ObfuscatedSignature(descriptor = "Lkq;")
-    @Export("VarbitDefinition_archive")
-    public static AbstractArchive VarbitDefinition_archive;
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(descriptor = 
+	"Llq;")
 
-    @ObfuscatedName("l")
-    @ObfuscatedSignature(descriptor = "Lic;")
-    @Export("VarbitDefinition_cached")
-    public static EvictingDualNodeHashTable VarbitDefinition_cached;
+	@Export("VarbitDefinition_archive")
+	public static AbstractArchive VarbitDefinition_archive;
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(descriptor = 
+	"Liq;")
 
-    @ObfuscatedName("o")
-    static final int[] field1929;
+	@Export("VarbitDefinition_cached")
+	public static EvictingDualNodeHashTable VarbitDefinition_cached;
+	@ObfuscatedName("n")
+	static final int[] field1983;
+	@ObfuscatedName("h")
+	@ObfuscatedGetter(intValue = 
+	-603401275)
 
-    @ObfuscatedName("s")
-    @ObfuscatedGetter(intValue = -1004826275)
-    @Export("baseVar")
-    public int baseVar;
+	@Export("baseVar")
+	public int baseVar;
+	@ObfuscatedName("g")
+	@ObfuscatedGetter(intValue = 
+	-902508973)
 
-    @ObfuscatedName("e")
-    @ObfuscatedGetter(intValue = 593245031)
-    @Export("startBit")
-    public int startBit;
+	@Export("startBit")
+	public int startBit;
+	@ObfuscatedName("l")
+	@ObfuscatedGetter(intValue = 
+	-1508398865)
 
-    @ObfuscatedName("r")
-    @ObfuscatedGetter(intValue = 1032069569)
-    @Export("endBit")
-    public int endBit;
+	@Export("endBit")
+	public int endBit;
+	static 
+	{
+		VarbitDefinition_cached = new EvictingDualNodeHashTable(64);
+		field1983 = new int[32];
+		int var0 = 2;
 
-    static {
-        VarbitDefinition_cached = new EvictingDualNodeHashTable(64);
-        field1929 = new int[32];
-        int var0 = 2;
-        for (int var1 = 0; var1 < 32; ++var1) {
-            field1929[var1] = var0 - 1;
-            var0 += var0;
-        }
-    }
+		for (int var1 = 0; var1 < 32; ++var1) {
+			field1983[var1] = var0 - 1;
+			var0 += var0;
+		}
 
-    @ObfuscatedName("l")
-    @ObfuscatedSignature(descriptor = "(Lpi;I)V", garbageValue = "2022529608")
-    @Export("decode")
-    public void decode(Buffer var1) {
-        while (true) {
-            int var2 = var1.readUnsignedByte();
-            if (var2 == 0) {
-                return;
-            }
-            this.decodeNext(var1, var2);
-        } 
-    }
+	}
 
-    @ObfuscatedName("s")
-    @ObfuscatedSignature(descriptor = "(Lpi;II)V", garbageValue = "119027723")
-    @Export("decodeNext")
-    void decodeNext(Buffer var1, int var2) {
-        if (var2 == 1) {
-            this.baseVar = var1.readUnsignedShort();
-            this.startBit = var1.readUnsignedByte();
-            this.endBit = var1.readUnsignedByte();
-        }
-    }
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(descriptor = 
+	"(Lpd;B)V", garbageValue = 
+	"58")
 
-    @ObfuscatedName("s")
-    @ObfuscatedSignature(descriptor = "(Ljava/lang/String;Ljava/lang/String;ZI)Loo;", garbageValue = "-1196339506")
-    @Export("getPreferencesFile")
-    public static AccessFile getPreferencesFile(String var0, String var1, boolean var2) {
-        File var3 = new File(UrlRequest.cacheDir, ("preferences" + var0) + ".dat");
-        if (var3.exists()) {
-            try {
-                AccessFile var10 = new AccessFile(var3, "rw", 10000L);
-                return var10;
-            } catch (IOException var9) {
-            }
-        }
-        String var4 = "";
-        if (WorldMapSectionType.cacheGamebuild == 33) {
-            var4 = "_rc";
-        } else if (WorldMapSectionType.cacheGamebuild == 34) {
-            var4 = "_wip";
-        }
-        File var5 = new File(TileItem.userHomeDirectory, (((("jagex_" + var1) + "_preferences") + var0) + var4) + ".dat");
-        AccessFile var6;
-        if ((!var2) && var5.exists()) {
-            try {
-                var6 = new AccessFile(var5, "rw", 10000L);
-                return var6;
-            } catch (IOException var8) {
-            }
-        }
-        try {
-            var6 = new AccessFile(var3, "rw", 10000L);
-            return var6;
-        } catch (IOException var7) {
-            throw new RuntimeException();
-        }
-    }
+	@Export("decode")
+	public void decode(Buffer var1) {
+		while (true) {
+			int var2 = var1.readUnsignedByte();
+			if (var2 == 0) {
+				return;
+			}
+
+			this.decodeNext(var1, var2);
+		} 
+	}
+
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(descriptor = 
+	"(Lpd;IB)V", garbageValue = 
+	"-96")
+
+	@Export("decodeNext")
+	void decodeNext(Buffer var1, int var2) {
+		if (var2 == 1) {
+			this.baseVar = var1.readUnsignedShort();
+			this.startBit = var1.readUnsignedByte();
+			this.endBit = var1.readUnsignedByte();
+		}
+
+	}
+
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(descriptor = 
+	"(Ldi;FI)F", garbageValue = 
+	"-1168558464")
+
+	static float method3555(class117 var0, float var1) {
+		if (var0 == null) {
+			return 0.0F;
+		} else {
+			float var2;
+			if (var0.field1432 == var1) {
+				var2 = 0.0F;
+			} else if (var1 == var0.field1433) {
+				var2 = 1.0F;
+			} else {
+				var2 = (var1 - var0.field1432) / (var0.field1433 - var0.field1432);
+			}
+
+			float var3;
+			if (var0.field1438) {
+				var3 = var2;
+			} else {
+				float[] var4 = new float[]{ var0.field1440[0] - var2, var0.field1440[1], var0.field1440[2], var0.field1440[3] };
+				float[] var5 = new float[5];
+				int var6 = class154.method3129(var4, 3, 0.0F, true, 1.0F, true, var5);
+				if (var6 == 1) {
+					var3 = var5[0];
+				} else {
+					var3 = 0.0F;
+				}
+			}
+
+			return ((var0.field1435[1] + (((var0.field1435[3] * var3) + var0.field1435[2]) * var3)) * var3) + var0.field1435[0];
+		}
+	}
+
+	@ObfuscatedName("u")
+	@ObfuscatedSignature(descriptor = 
+	"(IB)Z", garbageValue = 
+	"13")
+
+	public static boolean method3561(int var0) {
+		return ((var0 >> 31) & 1) != 0;
+	}
 }
