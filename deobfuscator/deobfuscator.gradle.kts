@@ -56,6 +56,10 @@ dependencies {
 }
 
 tasks {
+    test {
+        exclude("**/*")
+    }
+
     val tokens = mapOf(
             "rs.version" to ProjectVersions.rsversion.toString(),
             "vanilla.jar" to deobjars.find { it.name.startsWith("vanilla") }.toString().replace("\\", "/"),
