@@ -107,24 +107,24 @@ public class InteractionManager
 					break;
 
 				case PACKETS:
-					if (config.mouseBehavior() != MouseBehavior.DISABLED)
-					{
-						if (config.naturalMouse())
-						{
-							naturalMouse.moveTo(clickPoint.x, clickPoint.y);
-						}
-						else
-						{
-							mouseHandler.sendMovement(clickPoint.x, clickPoint.y);
-						}
-
-						MousePackets.queueClickPacket(clickPoint.x, clickPoint.y);
-					}
-
 					GameThread.invoke(() ->
 					{
 						try
 						{
+							if (config.mouseBehavior() != MouseBehavior.DISABLED)
+							{
+								if (config.naturalMouse())
+								{
+									naturalMouse.moveTo(clickPoint.x, clickPoint.y);
+								}
+								else
+								{
+									mouseHandler.sendMovement(clickPoint.x, clickPoint.y);
+								}
+
+								MousePackets.queueClickPacket(clickPoint.x, clickPoint.y);
+							}
+
 							Packets.fromAutomatedMenu(e).send();
 						}
 						catch (InteractionException ex)
