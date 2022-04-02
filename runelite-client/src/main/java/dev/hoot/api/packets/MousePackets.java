@@ -1,6 +1,7 @@
 package dev.hoot.api.packets;
 
 import dev.hoot.api.game.Game;
+import dev.hoot.api.game.GameThread;
 import net.runelite.api.packets.PacketBufferNode;
 
 public class MousePackets
@@ -24,7 +25,7 @@ public class MousePackets
 
 	public static void queueClickPacket(int mouseInfo, int x, int y)
 	{
-		createClickPacket(mouseInfo, x, y).send();
+		GameThread.invoke(() -> createClickPacket(mouseInfo, x, y).send());
 	}
 
 	public static void queueClickPacket()
