@@ -91,7 +91,7 @@ public class OverlayManager
 	 * Insertion-order sorted set of overlays
 	 * All access to this must be guarded by a lock on this OverlayManager
 	 */
-	@Getter(AccessLevel.PACKAGE)
+	@Getter
 	private final List<Overlay> overlays = new ArrayList<>();
 	@Getter
 	@Setter
@@ -139,17 +139,17 @@ public class OverlayManager
 	 * @param layer the layer
 	 * @return An immutable list of all of the overlays on that layer
 	 */
-	Collection<Overlay> getLayer(OverlayLayer layer)
+	public Collection<Overlay> getLayer(OverlayLayer layer)
 	{
 		return Collections.unmodifiableCollection(overlayMap.get(layer));
 	}
 
-	Collection<Overlay> getForInterface(int interfaceId)
+	public Collection<Overlay> getForInterface(int interfaceId)
 	{
 		return Collections.unmodifiableCollection(overlayMap.get(interfaceId << 16 | 0xffff));
 	}
 
-	Collection<Overlay> getForLayer(int layerId)
+	public Collection<Overlay> getForLayer(int layerId)
 	{
 		return Collections.unmodifiableCollection(overlayMap.get(layerId));
 	}
@@ -266,7 +266,7 @@ public class OverlayManager
 		overlay.revalidate();
 	}
 
-	synchronized void rebuildOverlayLayers()
+	public synchronized void rebuildOverlayLayers()
 	{
 		ArrayListMultimap<Object, Overlay> overlayMap = ArrayListMultimap.create();
 		for (final Overlay overlay : overlays)

@@ -24,6 +24,7 @@
  */
 package dev.hoot.bot;
 
+import dev.hoot.bot.managers.BotOverlayRenderer;
 import dev.hoot.bot.ui.BotUI;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.BufferProvider;
@@ -51,7 +52,6 @@ import net.runelite.client.input.MouseManager;
 import net.runelite.client.task.Scheduler;
 import net.runelite.client.ui.DrawManager;
 import net.runelite.client.ui.overlay.OverlayLayer;
-import net.runelite.client.ui.overlay.OverlayRenderer;
 import net.runelite.client.util.DeferredEventBus;
 import net.runelite.client.util.RSTimeUnit;
 
@@ -82,7 +82,7 @@ public class BotHooks implements Callbacks
 	private static final BeforeRender BEFORE_RENDER = new BeforeRender();
 
 	private static Client client;
-	private final OverlayRenderer renderer;
+	private final BotOverlayRenderer renderer;
 	private final EventBus eventBus;
 	private final DeferredEventBus deferredEventBus;
 	private final Scheduler scheduler;
@@ -129,7 +129,7 @@ public class BotHooks implements Callbacks
 	@Inject
 	private BotHooks(
 			Client client,
-			OverlayRenderer renderer,
+			BotOverlayRenderer renderer,
 			EventBus eventBus,
 			DeferredEventBus deferredEventBus,
 			Scheduler scheduler,

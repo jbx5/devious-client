@@ -39,11 +39,11 @@ import static net.runelite.client.ui.overlay.OverlayPosition.TOP_RIGHT;
 
 @AllArgsConstructor
 @Value
-class OverlayBounds
+public class OverlayBounds
 {
 	private final Rectangle topLeft, topCenter, topRight, bottomLeft, bottomRight, aboveChatboxRight, canvasTopRight;
 
-	OverlayBounds(OverlayBounds other)
+	public OverlayBounds(OverlayBounds other)
 	{
 		topLeft = new Rectangle(other.topLeft);
 		topCenter = new Rectangle(other.topCenter);
@@ -54,7 +54,7 @@ class OverlayBounds
 		canvasTopRight = new Rectangle(other.canvasTopRight);
 	}
 
-	OverlayBounds translated(final int x, final int y)
+	public OverlayBounds translated(final int x, final int y)
 	{
 		final OverlayBounds translated = new OverlayBounds(this);
 		translated.getTopRight().translate(x, 0);
@@ -66,7 +66,7 @@ class OverlayBounds
 		return translated;
 	}
 
-	Rectangle forPosition(OverlayPosition overlayPosition)
+	public Rectangle forPosition(OverlayPosition overlayPosition)
 	{
 		switch (overlayPosition)
 		{
@@ -89,7 +89,7 @@ class OverlayBounds
 		}
 	}
 
-	OverlayPosition fromBounds(Rectangle bounds)
+	public OverlayPosition fromBounds(Rectangle bounds)
 	{
 		if (bounds == topLeft)
 		{
@@ -125,7 +125,7 @@ class OverlayBounds
 		}
 	}
 
-	Collection<Rectangle> getBounds()
+	public Collection<Rectangle> getBounds()
 	{
 		return Arrays.asList(topLeft, topCenter, topRight, bottomLeft, bottomRight, aboveChatboxRight, canvasTopRight);
 	}

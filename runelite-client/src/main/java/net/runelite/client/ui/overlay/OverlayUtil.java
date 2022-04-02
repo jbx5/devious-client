@@ -209,7 +209,7 @@ public class OverlayUtil
 		graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 	}
 
-	static void shiftSnapCorner(OverlayPosition overlayPosition, Rectangle snapCorner, Rectangle bounds, int padding)
+	public static void shiftSnapCorner(OverlayPosition overlayPosition, Rectangle snapCorner, Rectangle bounds, int padding)
 	{
 		// translate corner for padding and also based on where the overlay bounds are now
 		int sX = snapCorner.x, sY = snapCorner.y;
