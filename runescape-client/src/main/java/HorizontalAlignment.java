@@ -398,10 +398,10 @@ public enum HorizontalAlignment implements MouseWheel {
 						Login.Login_loadingText = "Loading textures - " + "0%";
 						Login.Login_loadingPercent = 90;
 					} else {
-						class33.textureProvider = new TextureProvider(class132.archive9, WorldMapData_1.archive8, 20, Interpreter.clientPreferences.method2266(), Client.isLowDetail ? 64 : 128);
-						Rasterizer3D.Rasterizer3D_textureLoader(class33.textureProvider);
-						Rasterizer3D.Rasterizer3D_setBrightness(Interpreter.clientPreferences.method2266());
-						Client.titleLoadingStage = 100;
+						class33.textureProvider = new TextureProvider(class132.archive9, WorldMapData_1.archive8, 20, Interpreter.clientPreferences.method2266(), Client.isLowDetail ? 64 : 128); // L: 1683
+						Rasterizer3D.Rasterizer3D_setTextureLoader(class33.textureProvider); // L: 1684
+						Rasterizer3D.Rasterizer3D_setBrightness(Interpreter.clientPreferences.method2266()); // L: 1685
+						Client.titleLoadingStage = 100; // L: 1686
 					}
 				} else if (Client.titleLoadingStage == 100) {
 					var23 = class33.textureProvider.getLoadedPercentage();

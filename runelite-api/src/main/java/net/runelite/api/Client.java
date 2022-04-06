@@ -24,6 +24,7 @@
  */
 package net.runelite.api;
 
+import com.jagex.oldscape.pub.OAuthApi;
 import java.awt.Canvas;
 import java.awt.Dimension;
 import java.math.BigInteger;
@@ -60,7 +61,7 @@ import org.intellij.lang.annotations.MagicConstant;
 /**
  * Represents the RuneScape client.
  */
-public interface Client extends GameEngine
+public interface Client extends OAuthApi, GameEngine
 {
 	/**
 	 * The injected client invokes these callbacks to send events to us
@@ -207,10 +208,13 @@ public interface Client extends GameEngine
 	void setWorldSelectOpen(boolean open);
 
 	/**
+	 * DEPRECATED. See getAccountHash instead.
 	 * Gets the current logged in username.
 	 *
 	 * @return the logged in username
+	 * @see OAuthApi#getAccountHash()
 	 */
+	@Deprecated
 	String getUsername();
 
 	/**
@@ -400,6 +404,16 @@ public interface Client extends GameEngine
 	 * @return the plane
 	 */
 	int getPlane();
+
+	/**
+	 * Gets the max plane the client can render.
+	 * <p>
+	 * Unlike the plane, the ScenePlane is affected the current status of roof visibility.
+	 * <p>
+	 *
+	 * @return the plane
+	 */
+	int getScenePlane();
 
 	/**
 	 * Gets the current scene
@@ -1151,7 +1165,7 @@ public interface Client extends GameEngine
 	 * @return the new projectile
 	 */
 	Projectile createProjectile(int id, int plane, int startX, int startY, int startZ, int startCycle, int endCycle,
-		int slope, int startHeight, int endHeight, @Nullable Actor target, int targetX, int targetY);
+								int slope, int startHeight, int endHeight, @Nullable Actor target, int targetX, int targetY);
 
 	/**
 	 * Gets a list of all projectiles currently spawned.
