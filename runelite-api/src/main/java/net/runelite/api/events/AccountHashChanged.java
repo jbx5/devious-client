@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2017, Adam <Adam@sigterm.info>
+ * Copyright (c) 2022 Abex
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,62 +22,8 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.api;
+package net.runelite.api.events;
 
-import javax.annotation.Nullable;
-
-/**
- * Represents a non-player character in the game.
- */
-public interface NPC extends Actor
+public class AccountHashChanged
 {
-	/**
-	 * Gets the ID of the NPC.
-	 *
-	 * @return the ID of the NPC
-	 * //@see NpcID
-	 */
-	int getId();
-
-	@Override
-	String getName();
-
-	@Override
-	int getCombatLevel();
-
-	/**
-	 * Gets the index position of this NPC in the clients cached
-	 * NPC array.
-	 *
-	 * @return the NPC index
-	 * @see Client#getCachedNPCs()
-	 */
-	int getIndex();
-
-	/**
-	 * Gets the composition of this NPC.
-	 *
-	 * @return the composition
-	 */
-	NPCComposition getComposition();
-
-	/**
-	 * Get the composition for this NPC and transform it if required
-	 *
-	 * @return the transformed NPC
-	 */
-	@Nullable
-	NPCComposition getTransformedComposition();
-
-	void setTransformedComposition(NPCComposition composition);
-
-	int getTransformedId();
-
-	String getTransformedName();
-
-	int getTransformedLevel();
-
-	void setComposition(NPCComposition composition);
-
-	void onDefinitionChanged(NPCComposition composition);
 }

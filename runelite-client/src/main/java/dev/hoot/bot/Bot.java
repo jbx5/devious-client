@@ -53,6 +53,7 @@ import net.runelite.api.Client;
 import net.runelite.api.Constants;
 import net.runelite.client.ClassPreloader;
 import net.runelite.client.RuneLiteProperties;
+import net.runelite.client.RuntimeConfigLoader;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.game.WorldService;
@@ -253,7 +254,9 @@ public class Bot
 
 		try
 		{
+			final RuntimeConfigLoader runtimeConfigLoader = new RuntimeConfigLoader(okHttpClient);
 			final ClientLoader clientLoader = new ClientLoader(okHttpClient, ClientUpdateCheckMode.AUTO,
+					runtimeConfigLoader,
 					(String) options.valueOf(
 							"jav_config")
 			);

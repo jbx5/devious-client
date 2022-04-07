@@ -1042,16 +1042,17 @@ public class Buffer extends Node {
 	}
 
 	@ObfuscatedName("dy")
-	@ObfuscatedSignature(descriptor = 
-	"(II)V", garbageValue = 
-	"-646414330")
+	@ObfuscatedSignature(
+		descriptor = "(II)V",
+		garbageValue = "-646414330"
+	)
 	@Export("writeIntIME")
 	public void writeIntIME(int var1) {
-		this.array[(++this.offset) - 1] = ((byte) (var1 >> 8));
-		this.array[(++this.offset) - 1] = ((byte) (var1));
-		this.array[(++this.offset) - 1] = ((byte) (var1 >> 24));
-		this.array[(++this.offset) - 1] = ((byte) (var1 >> 16));
-	}
+		this.array[++this.offset - 1] = (byte)(var1 >> 8); // L: 624
+		this.array[++this.offset - 1] = (byte)var1; // L: 625
+		this.array[++this.offset - 1] = (byte)(var1 >> 24); // L: 626
+		this.array[++this.offset - 1] = (byte)(var1 >> 16); // L: 627
+	} // L: 628
 
 	@ObfuscatedName("di")
 	@ObfuscatedSignature(descriptor = 
