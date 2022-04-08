@@ -46,7 +46,7 @@ public enum Rune
 
 	public int getQuantity()
 	{
-		if (isStaffEquipped())
+		if (isStaffEquipped() || isTomeEquipped())
 		{
 			return Integer.MAX_VALUE;
 		}
@@ -56,7 +56,7 @@ public enum Rune
 						.anyMatch(name -> x.getId() == runeId || x.getName().contains(name)));
 		if (rune == null)
 		{
-			return 0;
+			return RunePouch.getQuantity(this);
 		}
 
 		return rune.getQuantity() + RunePouch.getQuantity(this);
@@ -64,9 +64,16 @@ public enum Rune
 
 	private boolean isStaffEquipped()
 	{
-		return Equipment.contains(x -> x.getName() != null && x.getName().contains(" staff") &&
-				Arrays.stream(values())
-						.anyMatch(v -> Arrays.stream(v.runeNames)
-								.anyMatch(n -> x.getName().contains(n))));
+		return Equipment.contains(x -> x.getName() != null
+				&& x.getName().contains("staff")
+				&& Arrays.stream(runeNames).anyMatch(n -> x.getName().contains(n)));
+	}
+
+	private boolean isTomeEquipped()
+	{
+		return Equipment.contains(x -> x.getName() != null
+				&& x.getName().startsWith("Tome of")
+				&& !x.getName().endsWith("(empty")
+				&& Arrays.stream(runeNames).anyMatch(n -> x.getName().contains(n.toLowerCase())));
 	}
 }
