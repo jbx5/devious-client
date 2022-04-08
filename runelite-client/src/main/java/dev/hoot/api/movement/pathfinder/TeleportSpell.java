@@ -463,10 +463,6 @@ public enum TeleportSpell
 
 	public boolean haveRunesAvailable()
 	{
-		if (hasRunesInPouch(requirements))
-		{
-			return true;
-		}
 		for (RuneRequirement req : requirements)
 		{
 			if (!req.meetsRequirements())
@@ -475,25 +471,6 @@ public enum TeleportSpell
 			}
 		}
 
-		return true;
-	}
-
-	private boolean hasRunesInPouch(RuneRequirement[] requirements)
-	{
-		boolean hasRunePouch = RunePouch.hasPouch();
-
-		if (!hasRunePouch)
-		{
-			return false;
-		}
-
-		for (RuneRequirement req : requirements)
-		{
-			if (RunePouch.getQuantity(req.getRune()) < req.getRune().getQuantity())
-			{
-				return false;
-			}
-		}
 		return true;
 	}
 }

@@ -1,10 +1,18 @@
 package dev.hoot.api.magic;
 
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
 import dev.hoot.api.game.Vars;
 import dev.hoot.api.items.Inventory;
+import lombok.extern.slf4j.Slf4j;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
 
+@Slf4j
 public class RunePouch
 {
 	private static final int SLOT_1_TYPE_BIT = 29;
@@ -23,6 +31,17 @@ public class RunePouch
 		private final int type;
 		private final int quantityVarbitIdx;
 
+		private final LoadingCache<Integer, Integer> VARBIT_CACHE = CacheBuilder.newBuilder()
+				.expireAfterWrite(1, TimeUnit.SECONDS)
+				.build(new CacheLoader<>()
+				{
+					@Override
+					public Integer load(@NotNull Integer type)
+					{
+						return Vars.getBit(type);
+					}
+				});
+
 		RuneSlot(int type, int quantityVarbitIdx)
 		{
 			this.type = type;
@@ -39,9 +58,22 @@ public class RunePouch
 			return quantityVarbitIdx;
 		}
 
+		public int getVarbit()
+		{
+			try
+			{
+				return VARBIT_CACHE.get(type);
+			}
+			catch (ExecutionException e)
+			{
+				log.error("Failed to get cached varbit", e);
+				return 0;
+			}
+		}
+
 		public String getRuneName()
 		{
-			switch (Vars.getBit(type))
+			switch (getVarbit())
 			{
 				case 1:
 					return "Air rune";

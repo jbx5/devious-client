@@ -127,7 +127,7 @@ public class Walker
 		{
 			log.debug("Casting teleport {}", teleport);
 			teleport.getHandler().run();
-			Time.sleep(5000);
+			Time.sleepUntil(() -> Players.getLocal().distanceTo(teleport.getDestination()) < 10, 5000);
 			return false;
 		}
 
