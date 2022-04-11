@@ -307,7 +307,7 @@ public class DefinitionManager
 					{
 						ObjectComposition current = cachedObject.getTransformedComposition();
 						ObjectComposition transformed = objectComposition.getImpostor();
-						if (current == transformed)
+						if (transformed == null || current == transformed)
 						{
 							continue;
 						}
