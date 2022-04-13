@@ -1,9 +1,14 @@
 package dev.hoot.api.game;
 
+import com.openosrs.client.util.WeaponMap;
+import com.openosrs.client.util.WeaponStyle;
 import dev.hoot.api.commons.Predicates;
 import dev.hoot.api.entities.NPCs;
 import dev.hoot.api.entities.Players;
+import dev.hoot.api.items.Equipment;
 import dev.hoot.api.widgets.Widgets;
+import net.runelite.api.EquipmentInventorySlot;
+import net.runelite.api.Item;
 import net.runelite.api.NPC;
 import net.runelite.api.Player;
 import net.runelite.api.Skill;
@@ -119,6 +124,20 @@ public class Combat
 	public static double getHealthPercent()
 	{
 		return ((double) getCurrentHealth() / Skills.getLevel(Skill.HITPOINTS)) * 100;
+	}
+
+	public static WeaponStyle getCurrentWeaponStyle()
+	{
+		Item weapon = Equipment.fromSlot(EquipmentInventorySlot.WEAPON);
+
+		if (weapon == null)
+		{
+			return WeaponStyle.MELEE;
+		}
+		else
+		{
+			return WeaponMap.StyleMap.getOrDefault(weapon.getId(), WeaponStyle.MELEE);
+		}
 	}
 
 	public enum AttackStyle
