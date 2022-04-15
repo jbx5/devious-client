@@ -24,12 +24,12 @@
  */
 package net.runelite.api;
 
-import dev.hoot.api.EntityNameable;
-import dev.hoot.api.Identifiable;
-import dev.hoot.api.Interactable;
-import dev.hoot.api.events.AutomatedMenu;
+import dev.unethicalite.api.EntityNameable;
+import dev.unethicalite.api.Identifiable;
+import dev.unethicalite.api.Interactable;
+import dev.unethicalite.api.events.AutomatedMenu;
 import lombok.Data;
-import dev.hoot.api.util.Randomizer;
+import dev.unethicalite.api.util.Randomizer;
 import net.runelite.api.util.Text;
 import net.runelite.api.widgets.*;
 

@@ -28,8 +28,8 @@ import java.awt.Rectangle;
 import java.util.Collection;
 import javax.annotation.Nullable;
 
-import dev.hoot.api.Identifiable;
-import dev.hoot.api.Interactable;
+import dev.unethicalite.api.Identifiable;
+import dev.unethicalite.api.Interactable;
 import net.runelite.api.FontTypeFace;
 import net.runelite.api.Point;
 import net.runelite.api.SpritePixels;

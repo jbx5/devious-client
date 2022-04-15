@@ -1,6 +1,6 @@
 package net.runelite.rs.api;
 
-import dev.hoot.api.MouseHandler;
+import dev.unethicalite.api.MouseHandler;
 import net.runelite.mapping.Import;
 
 public interface RSMouseHandler extends MouseHandler

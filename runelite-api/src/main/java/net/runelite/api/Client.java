@@ -35,8 +35,8 @@ import java.util.Set;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import dev.hoot.api.MouseHandler;
-import dev.hoot.api.events.AutomatedMenu;
+import dev.unethicalite.api.MouseHandler;
+import dev.unethicalite.api.events.AutomatedMenu;
 import net.runelite.api.packets.ClientPacket;
 import net.runelite.api.packets.IsaacCipher;
 import net.runelite.api.packets.PacketBufferNode;

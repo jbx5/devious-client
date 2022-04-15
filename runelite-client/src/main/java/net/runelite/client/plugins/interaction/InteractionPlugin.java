@@ -1,9 +1,9 @@
 package net.runelite.client.plugins.interaction;
 
-import dev.hoot.api.plugins.SettingsPlugin;
-import dev.hoot.bot.managers.DefinitionManager;
-import dev.hoot.bot.managers.interaction.InteractionConfig;
-import dev.hoot.bot.managers.interaction.InteractionManager;
+import dev.unethicalite.api.plugins.SettingsPlugin;
+import dev.unethicalite.managers.DefinitionManager;
+import dev.unethicalite.managers.interaction.InteractionConfig;
+import dev.unethicalite.managers.interaction.InteractionManager;
 import net.runelite.client.config.Config;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.input.MouseManager;

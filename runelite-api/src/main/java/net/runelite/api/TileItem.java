@@ -24,7 +24,7 @@
  */
 package net.runelite.api;
 
-import dev.hoot.api.SceneEntity;
+import dev.unethicalite.api.SceneEntity;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
 

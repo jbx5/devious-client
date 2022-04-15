@@ -43,9 +43,9 @@ interaction settings can be customized.
 - We have a simplified game api that helps developers to retrieve things such as entities, inventories, widgets, etc. from the client.
   (ex. ``Inventory.getFirst("Coins")`` ``NPCs.getNearest("Goblin")`` ``Magic.cast("Wind strike")`` etc.)
 
-### Bot environment
-- The client can also be built as a typical bot client, meaning without all the RuneLite stuff such as plugins. The bot
-environment may be ideal for people who want to run a script and preserve cpu/ram usage.
-- Check out the discord to see how to build using the bot environment.
+### Minimal environment
+- The client can also be built as a typical (unethical) third party client, meaning without all the RuneLite stuff such as plugins. 
+- The minimal environment may be ideal for people who want to run (multiple) script(s) and preserve cpu/ram usage.
+- Check out the discord to see how to build using the minimal environment.
 
 <br> There's much more that this fork offers which simply can't be fit into this small readme.

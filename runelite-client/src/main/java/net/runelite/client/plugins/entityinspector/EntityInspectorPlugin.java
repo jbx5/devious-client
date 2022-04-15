@@ -1,7 +1,7 @@
 package net.runelite.client.plugins.entityinspector;
 
 import com.google.inject.Provides;
-import dev.hoot.api.events.PacketSent;
+import dev.unethicalite.api.events.PacketSent;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;

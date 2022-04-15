@@ -1,10 +1,10 @@
 package net.runelite.client.plugins.regions;
 
 import com.google.inject.Provides;
-import dev.hoot.api.events.PlaneChanged;
-import dev.hoot.api.game.Game;
-import dev.hoot.api.movement.pathfinder.GlobalCollisionMap;
-import dev.hoot.api.movement.pathfinder.RegionManager;
+import dev.unethicalite.api.events.PlaneChanged;
+import dev.unethicalite.api.game.Game;
+import dev.unethicalite.api.movement.pathfinder.GlobalCollisionMap;
+import dev.unethicalite.api.movement.pathfinder.RegionManager;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
@@ -20,6 +20,7 @@ import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.ui.overlay.OverlayManager;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -30,6 +31,9 @@ import java.util.zip.GZIPInputStream;
 @Slf4j
 public class RegionPlugin extends Plugin
 {
+	@Inject
+	@Named("unethicalite.api.url")
+	private String apiUrl;
 
 	@Inject
 	private OverlayManager overlayManager;
@@ -155,7 +159,7 @@ public class RegionPlugin extends Plugin
 
 	private void updateCollisionMap()
 	{
-		try (InputStream is = new URL(RegionManager.API_URL + "/regions").openStream())
+		try (InputStream is = new URL(apiUrl + "/regions").openStream())
 		{
 			collisionMap.overwrite(new GlobalCollisionMap(readGzip(is.readAllBytes())));
 		}

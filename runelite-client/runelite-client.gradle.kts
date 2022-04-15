@@ -179,7 +179,7 @@ tasks {
 
     jar {
         manifest {
-            attributes(mutableMapOf("Main-Class" to if (Unethicalite.isBotBuild()) "dev.hoot.bot.Bot" else "net.runelite.client.RuneLite"))
+            attributes(mutableMapOf("Main-Class" to if (Unethicalite.isMinimalBuild()) "dev.unethicalite.client.MinimalClient" else "net.runelite.client.RuneLite"))
         }
     }
 
@@ -206,6 +206,6 @@ tasks {
 
         classpath = sourceSets["main"].runtimeClasspath
         enableAssertions = true
-        mainClass.set(if (Unethicalite.isBotBuild()) "dev.hoot.bot.Bot" else "net.runelite.client.RuneLite")
+        mainClass.set(if (Unethicalite.isMinimalBuild()) "dev.unethicalite.client.MinimalClient" else "net.runelite.client.RuneLite")
     }
 }

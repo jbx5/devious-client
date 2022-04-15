@@ -1,10 +1,11 @@
 package net.runelite.client.plugins.regions;
 
-import dev.hoot.api.SceneEntity;
-import dev.hoot.api.entities.Entities;
-import dev.hoot.api.game.Game;
-import dev.hoot.api.movement.pathfinder.RegionManager;
-import dev.hoot.api.scene.Tiles;
+import dev.unethicalite.api.SceneEntity;
+import dev.unethicalite.api.entities.Entities;
+import dev.unethicalite.api.game.Game;
+import dev.unethicalite.api.movement.pathfinder.RegionManager;
+import dev.unethicalite.api.scene.Tiles;
+import dev.unethicalite.client.config.UnethicaliteProperties;
 import net.miginfocom.swing.MigLayout;
 import net.runelite.api.GameState;
 import net.runelite.api.Tile;
@@ -153,7 +154,7 @@ public class AddTransportDialog extends JFrame
 				Request request = new Request.Builder()
 						.post(body)
 						.header("api-key", "f0bbb47b-839a-43f7-b907-eff4ab131231")
-						.url(RegionManager.API_URL + "/transports")
+						.url(UnethicaliteProperties.getApiUrl() + "/transports")
 						.build();
 				Response response = okHttpClient.newCall(request)
 						.execute();

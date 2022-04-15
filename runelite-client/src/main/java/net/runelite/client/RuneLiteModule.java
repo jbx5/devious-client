@@ -54,11 +54,11 @@ import javax.annotation.Nullable;
 import javax.inject.Named;
 import javax.inject.Singleton;
 
-import dev.hoot.api.movement.pathfinder.GlobalCollisionMap;
-import dev.hoot.api.movement.pathfinder.RegionManager;
-import dev.hoot.api.movement.pathfinder.Walker;
-import dev.hoot.bot.managers.Static;
-import dev.hoot.bot.managers.interaction.InteractionConfig;
+import dev.unethicalite.api.movement.pathfinder.GlobalCollisionMap;
+import dev.unethicalite.api.movement.pathfinder.Walker;
+import dev.unethicalite.client.config.UnethicaliteProperties;
+import dev.unethicalite.managers.Static;
+import dev.unethicalite.managers.interaction.InteractionConfig;
 import lombok.AllArgsConstructor;
 import net.runelite.api.Client;
 import net.runelite.api.hooks.Callbacks;
@@ -156,6 +156,13 @@ public class RuneLiteModule extends AbstractModule
 		requestStaticInjection(
 				Static.class
 		);
+
+		Properties unethicaliteProperties = UnethicaliteProperties.getProperties();
+		for (String key : unethicaliteProperties.stringPropertyNames())
+		{
+			String value = unethicaliteProperties.getProperty(key);
+			bindConstant().annotatedWith(Names.named(key)).to(value);
+		}
 	}
 
 	@Provides
@@ -260,9 +267,9 @@ public class RuneLiteModule extends AbstractModule
 
 	@Provides
 	@Singleton
-	GlobalCollisionMap provideGlobalCollisionMap() throws IOException
+	GlobalCollisionMap provideGlobalCollisionMap(@Named("unethicalite.api.url") String apiUrl) throws IOException
 	{
-		try (InputStream is = new URL(RegionManager.API_URL + "/regions").openStream())
+		try (InputStream is = new URL(apiUrl + "/regions").openStream())
 		{
 			return new GlobalCollisionMap(new GZIPInputStream(new ByteArrayInputStream(is.readAllBytes())).readAllBytes());
 		}

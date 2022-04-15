@@ -25,7 +25,7 @@
 package net.runelite.api;
 
 import net.runelite.api.coords.LocalPoint;
-import dev.hoot.api.Identifiable;
+import dev.unethicalite.api.Identifiable;
 
 /**
  * Represents a projectile entity. (ie. cannonball, arrow)

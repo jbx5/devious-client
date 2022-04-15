@@ -1,6 +1,6 @@
 package net.runelite.client.plugins.interaction;
 
-import dev.hoot.bot.managers.interaction.InteractionConfig;
+import dev.unethicalite.managers.interaction.InteractionConfig;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.client.input.MouseListener;
 import net.runelite.client.ui.overlay.Overlay;

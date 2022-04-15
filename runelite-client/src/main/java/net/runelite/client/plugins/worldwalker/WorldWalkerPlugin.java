@@ -1,11 +1,11 @@
 package net.runelite.client.plugins.worldwalker;
 
-import dev.hoot.api.entities.Players;
-import dev.hoot.api.game.Game;
-import dev.hoot.api.movement.Movement;
-import dev.hoot.api.movement.pathfinder.Walker;
-import dev.hoot.api.utils.CoordUtils;
-import dev.hoot.api.widgets.Widgets;
+import dev.unethicalite.api.entities.Players;
+import dev.unethicalite.api.game.Game;
+import dev.unethicalite.api.movement.Movement;
+import dev.unethicalite.api.movement.pathfinder.Walker;
+import dev.unethicalite.api.utils.CoordUtils;
+import dev.unethicalite.api.widgets.Widgets;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.MenuAction;
 import net.runelite.api.Point;

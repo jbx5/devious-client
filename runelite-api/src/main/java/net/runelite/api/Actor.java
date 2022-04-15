@@ -30,7 +30,7 @@ import java.awt.Shape;
 import java.awt.image.BufferedImage;
 import javax.annotation.Nullable;
 
-import dev.hoot.api.SceneEntity;
+import dev.unethicalite.api.SceneEntity;
 import net.runelite.api.annotations.VisibleForDevtools;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldArea;

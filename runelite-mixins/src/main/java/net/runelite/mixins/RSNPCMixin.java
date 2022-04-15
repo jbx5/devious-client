@@ -24,7 +24,7 @@
  */
 package net.runelite.mixins;
 
-import dev.hoot.api.events.NPCCompositionChanged;
+import dev.unethicalite.api.events.NPCCompositionChanged;
 import net.runelite.api.AnimationID;
 import net.runelite.api.NPCComposition;
 import net.runelite.api.Perspective;
