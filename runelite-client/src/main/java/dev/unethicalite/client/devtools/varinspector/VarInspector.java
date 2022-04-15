@@ -1,5 +1,6 @@
 package dev.unethicalite.client.devtools.varinspector;
 
+import com.google.common.collect.ImmutableMap;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
@@ -26,6 +27,7 @@ import java.awt.event.AdjustmentEvent;
 import java.awt.event.AdjustmentListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -53,6 +55,27 @@ public class VarInspector
 	}
 
 	private final static int MAX_LOG_ENTRIES = 10_000;
+	private static final int VARBITS_ARCHIVE_ID = 14;
+	private static final Map<Integer, String> VARBIT_NAMES;
+
+	static
+	{
+		ImmutableMap.Builder<Integer, String> builder = new ImmutableMap.Builder<>();
+
+		try
+		{
+			for (Field f : Varbits.class.getDeclaredFields())
+			{
+				builder.put(f.getInt(null), f.getName());
+			}
+		}
+		catch (IllegalAccessException ex)
+		{
+			log.error("error setting up varbit names", ex);
+		}
+
+		VARBIT_NAMES = builder.build();
+	}
 
 	@Inject
 	private Client client;
@@ -135,15 +158,7 @@ public class VarInspector
 					// Example: 4101 collides with 4104-4129
 					client.setVarbitValue(oldVarps2, i, neew);
 
-					String name = String.format("%d", i);
-					for (Varbits varbit : Varbits.values())
-					{
-						if (varbit.getId() == i)
-						{
-							name = String.format("%s(%d)", varbit.name(), i);
-							break;
-						}
-					}
+					final String name = VARBIT_NAMES.getOrDefault(i, Integer.toString(i));
 					addVarLog(VarType.VARBIT, name, old, neew);
 				}
 			}

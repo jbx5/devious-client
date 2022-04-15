@@ -11,11 +11,6 @@ public class Vars
 		return GameThread.invokeLater(() -> Game.getClient().getVarbitValue(Game.getClient().getVarps(), id));
 	}
 
-	public static int getBit(Varbits varbits)
-	{
-		return getBit(varbits.getId());
-	}
-
 	public static int getVarp(int id)
 	{
 		return Game.getClient().getVarpValue(Game.getClient().getVarps(), id);

@@ -475,7 +475,7 @@ public class Bank extends Items
 
 	public static boolean isTabOpen(int index)
 	{
-		return Vars.getBit(Varbits.CURRENT_BANK_TAB.getId()) == index;
+		return Vars.getBit(Varbits.CURRENT_BANK_TAB) == index;
 	}
 
 	public static void openMainTab()
