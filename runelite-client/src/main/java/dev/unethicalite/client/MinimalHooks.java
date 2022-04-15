@@ -24,7 +24,7 @@
  */
 package dev.unethicalite.client;
 
-import dev.unethicalite.managers.BotOverlayRenderer;
+import dev.unethicalite.managers.MinimalOverlayRenderer;
 import dev.unethicalite.client.ui.MinimalUI;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.BufferProvider;
@@ -82,7 +82,7 @@ public class MinimalHooks implements Callbacks
 	private static final BeforeRender BEFORE_RENDER = new BeforeRender();
 
 	private static Client client;
-	private final BotOverlayRenderer renderer;
+	private final MinimalOverlayRenderer renderer;
 	private final EventBus eventBus;
 	private final DeferredEventBus deferredEventBus;
 	private final Scheduler scheduler;
@@ -129,7 +129,7 @@ public class MinimalHooks implements Callbacks
 	@Inject
 	private MinimalHooks(
 			Client client,
-			BotOverlayRenderer renderer,
+			MinimalOverlayRenderer renderer,
 			EventBus eventBus,
 			DeferredEventBus deferredEventBus,
 			Scheduler scheduler,

@@ -73,7 +73,7 @@ import java.util.List;
 
 @Singleton
 @Slf4j
-public class BotOverlayRenderer extends MouseAdapter implements KeyListener
+public class MinimalOverlayRenderer extends MouseAdapter implements KeyListener
 {
 	private static final Marker DEDUPLICATE = MarkerFactory.getMarker("DEDUPLICATE");
 	private static final int BORDER = 5;
@@ -117,7 +117,7 @@ public class BotOverlayRenderer extends MouseAdapter implements KeyListener
 	private Overlay prevFocusedOverlay;
 
 	@Inject
-	private BotOverlayRenderer(
+	private MinimalOverlayRenderer(
 		final Client client,
 		final OverlayManager overlayManager,
 		final RuneLiteConfig runeLiteConfig,

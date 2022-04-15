@@ -1,9 +1,14 @@
 package dev.unethicalite.api.game;
 
+import com.openosrs.client.util.WeaponMap;
+import com.openosrs.client.util.WeaponStyle;
 import dev.unethicalite.api.commons.Predicates;
 import dev.unethicalite.api.entities.NPCs;
 import dev.unethicalite.api.entities.Players;
+import dev.unethicalite.api.items.Equipment;
 import dev.unethicalite.api.widgets.Widgets;
+import net.runelite.api.EquipmentInventorySlot;
+import net.runelite.api.Item;
 import net.runelite.api.NPC;
 import net.runelite.api.Player;
 import net.runelite.api.Skill;

@@ -1,10 +1,10 @@
 package dev.unethicalite.api.magic;
 
-import dev.hoot.api.game.Skills;
-import dev.hoot.api.game.Vars;
-import dev.hoot.api.game.Worlds;
-import dev.hoot.api.items.Equipment;
-import dev.hoot.api.items.Inventory;
+import dev.unethicalite.api.game.Skills;
+import dev.unethicalite.api.game.Vars;
+import dev.unethicalite.api.game.Worlds;
+import dev.unethicalite.api.items.Equipment;
+import dev.unethicalite.api.items.Inventory;
 import net.runelite.api.ItemID;
 import net.runelite.api.Skill;
 import net.runelite.api.widgets.WidgetInfo;

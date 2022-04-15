@@ -5,7 +5,7 @@ import lombok.Value;
 
 /**
  * @deprecated
- * Use {@link dev.hoot.api.magic.RuneRequirement} instead.
+ * Use {@link dev.unethicalite.api.magic.RuneRequirement} instead.
  */
 @Value
 @Deprecated

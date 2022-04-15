@@ -1,17 +1,10 @@
 package dev.unethicalite.api.movement.pathfinder;
 
-import dev.unethicalite.api.game.Skills;
-import dev.unethicalite.api.game.Vars;
-import dev.unethicalite.api.game.Worlds;
 import dev.unethicalite.api.magic.Ancient;
 import dev.unethicalite.api.magic.Lunar;
-import dev.unethicalite.api.magic.Magic;
 import dev.unethicalite.api.magic.Necromancy;
 import dev.unethicalite.api.magic.Regular;
-import dev.unethicalite.api.magic.Rune;
-import dev.unethicalite.api.magic.RunePouch;
 import dev.unethicalite.api.magic.Spell;
-import net.runelite.api.Skill;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import net.runelite.api.coords.WorldPoint;

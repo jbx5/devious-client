@@ -1,7 +1,7 @@
 package dev.unethicalite.api.magic;
 
-import dev.hoot.api.game.Skills;
-import dev.hoot.api.game.Worlds;
+import dev.unethicalite.api.game.Skills;
+import dev.unethicalite.api.game.Worlds;
 import net.runelite.api.Skill;
 import net.runelite.api.widgets.WidgetInfo;
 

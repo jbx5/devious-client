@@ -8,7 +8,6 @@ import com.google.inject.Provides;
 import com.google.inject.name.Names;
 import com.openosrs.client.config.OpenOSRSConfig;
 import dev.unethicalite.api.movement.pathfinder.GlobalCollisionMap;
-import dev.unethicalite.api.movement.pathfinder.RegionManager;
 import dev.unethicalite.api.movement.pathfinder.Walker;
 import dev.unethicalite.client.config.MinimalConfig;
 import dev.unethicalite.client.config.UnethicaliteProperties;
