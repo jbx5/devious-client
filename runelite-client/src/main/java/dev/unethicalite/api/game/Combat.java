@@ -121,6 +121,20 @@ public class Combat
 		return ((double) getCurrentHealth() / Skills.getLevel(Skill.HITPOINTS)) * 100;
 	}
 
+	public static WeaponStyle getCurrentWeaponStyle()
+	{
+		Item weapon = Equipment.fromSlot(EquipmentInventorySlot.WEAPON);
+
+		if (weapon == null)
+		{
+			return WeaponStyle.MELEE;
+		}
+		else
+		{
+			return WeaponMap.StyleMap.getOrDefault(weapon.getId(), WeaponStyle.MELEE);
+		}
+	}
+
 	public enum AttackStyle
 	{
 		FIRST(0, WidgetInfo.COMBAT_STYLE_ONE),

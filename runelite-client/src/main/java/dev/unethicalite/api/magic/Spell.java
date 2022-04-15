@@ -7,4 +7,6 @@ public interface Spell
 	int getLevel();
 
 	WidgetInfo getWidget();
+
+	boolean canCast();
 }

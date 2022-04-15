@@ -76,4 +76,8 @@ public interface NPC extends Actor
 	String getTransformedName();
 
 	int getTransformedLevel();
+
+	void setComposition(NPCComposition composition);
+
+	void onDefinitionChanged(NPCComposition composition);
 }

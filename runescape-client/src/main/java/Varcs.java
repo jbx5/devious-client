@@ -734,7 +734,6 @@ public class Varcs {
 													Client.packetWriter.addNode(var23);
 												}
 											}}
-
 								}
 							}
 

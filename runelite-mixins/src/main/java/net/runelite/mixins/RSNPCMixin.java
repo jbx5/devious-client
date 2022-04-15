@@ -103,6 +103,13 @@ public abstract class RSNPCMixin implements RSNPC
 		npcIndex = id;
 	}
 
+	@Inject
+	@Override
+	public void setComposition(NPCComposition composition)
+	{
+		setComposition((RSNPCComposition) composition);
+	}
+
 	@FieldHook(value = "definition", before = true)
 	@Inject
 	public void onDefinitionChanged(RSNPCComposition composition)

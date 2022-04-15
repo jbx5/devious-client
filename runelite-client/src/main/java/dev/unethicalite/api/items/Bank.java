@@ -31,13 +31,13 @@ public class Bank extends Items
 
 	private static final int WITHDRAW_MODE_VARBIT = 3958;
 	private static final int QUANTITY_MODE_VARP = 6590;
-	private static final Supplier<Widget> MAIN_TAB = () -> Widgets.get(12, 11, 0);
-	private static final Supplier<Widget> BANK_CAPACITY = () -> Widgets.get(12, 9);
-	private static final Supplier<Widget> RELEASE_PLACEHOLDERS = () -> Widgets.get(12, 56);
-	private static final Supplier<Widget> SETTINGS_CONTAINER = () -> Widgets.get(12, 48);
-	private static final Supplier<Widget> WITHDRAW_ITEM = () -> Widgets.get(12, Component.BANK_WITHDRAW_ITEM.childId);
-	private static final Supplier<Widget> WITHDRAW_NOTE = () -> Widgets.get(12, Component.BANK_WITHDRAW_NOTE.childId);
-	private static final Supplier<Widget> EXIT = () -> Widgets.get(12, 2, 11);
+	private static final Supplier<Widget> TAB_CONTAINER = () -> Widgets.get(WidgetInfo.BANK_TAB_CONTAINER);
+	private static final Supplier<Widget> BANK_CAPACITY = () -> Widgets.get(WidgetID.BANK_GROUP_ID, 9);
+	private static final Supplier<Widget> RELEASE_PLACEHOLDERS = () -> Widgets.get(WidgetID.BANK_GROUP_ID, 56);
+	private static final Supplier<Widget> SETTINGS_CONTAINER = () -> Widgets.get(WidgetID.BANK_GROUP_ID, 48);
+	private static final Supplier<Widget> WITHDRAW_ITEM = () -> Widgets.get(WidgetID.BANK_GROUP_ID, Component.BANK_WITHDRAW_ITEM.childId);
+	private static final Supplier<Widget> WITHDRAW_NOTE = () -> Widgets.get(WidgetID.BANK_GROUP_ID, Component.BANK_WITHDRAW_NOTE.childId);
+	private static final Supplier<Widget> EXIT = () -> Widgets.get(WidgetID.BANK_GROUP_ID, 2, 11);
 
 	@Override
 	protected List<Item> all(Predicate<Item> filter)
@@ -470,15 +470,31 @@ public class Bank extends Items
 
 	public static boolean isMainTabOpen()
 	{
-		return Vars.getBit(Varbits.CURRENT_BANK_TAB.getId()) == 0;
+		return isTabOpen(0);
+	}
+
+	public static boolean isTabOpen(int index)
+	{
+		return Vars.getBit(Varbits.CURRENT_BANK_TAB.getId()) == index;
 	}
 
 	public static void openMainTab()
 	{
-		Widget mainTab = MAIN_TAB.get();
-		if (Widgets.isVisible(mainTab))
+		openTab(0);
+	}
+
+	public static void openTab(int index)
+	{
+		if (index < 0 || index > getTabs().size())
 		{
-			mainTab.interact(0);
+			return;
+		}
+
+		Widget tabContainer = TAB_CONTAINER.get();
+
+		if (Widgets.isVisible(tabContainer) && !isTabOpen(index))
+		{
+			tabContainer.getChild(10 + index).interact(0);
 		}
 	}
 

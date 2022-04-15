@@ -31,7 +31,7 @@ public abstract class Entities<T extends SceneEntity>
 	protected T nearest(WorldPoint to, Predicate<? super T> filter)
 	{
 		return all(x -> x.getId() != -1 && filter.test(x)).stream()
-				.min(Comparator.comparingInt(t -> t.getWorldLocation().distanceTo(to)))
+				.min(Comparator.comparingDouble(t -> t.getWorldLocation().distanceToHypotenuse(to)))
 				.orElse(null);
 	}
 

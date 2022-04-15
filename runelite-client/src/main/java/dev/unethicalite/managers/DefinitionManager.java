@@ -316,11 +316,20 @@ public class DefinitionManager
 
 						if (configValue == 0)
 						{
-							log.debug("[{}] reverted to default state", transformed.getName());
+							String name = transformed != null ? transformed.getName() : current.getName();
+
+							log.debug("[{}] reverted to default state", name);
 						}
 						else
 						{
-							log.debug("[{}: {}] transformed into [{}: {}]", objectComposition.getId(), objectComposition.getName(), transformed.getId(), transformed.getName());
+							if (transformed == null)
+							{
+								log.debug("[{}: {}] transformed into [{}: {}]", objectComposition.getId(), objectComposition.getName(), null, null);
+							}
+							else
+							{
+								log.debug("[{}: {}] transformed into [{}: {}]", objectComposition.getId(), objectComposition.getName(), transformed.getId(), transformed.getName());
+							}
 						}
 					}
 				}

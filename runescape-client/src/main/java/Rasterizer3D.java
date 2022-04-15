@@ -152,7 +152,7 @@ public class Rasterizer3D extends Rasterizer2D {
 	"(Lht;)V")
 
 	@Export("Rasterizer3D_setTextureLoader")
-	public static final void Rasterizer3D_textureLoader(TextureLoader var0) {
+	public static final void Rasterizer3D_setTextureLoader(TextureLoader var0) {
 		Rasterizer3D_textureLoader = var0;
 	}
 
