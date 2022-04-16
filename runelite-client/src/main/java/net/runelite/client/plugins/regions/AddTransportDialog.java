@@ -147,17 +147,16 @@ public class AddTransportDialog extends JFrame
 
 		EXECUTOR.schedule(() ->
 		{
-			try
+			String json = RegionManager.GSON.toJson(out);
+			RequestBody body = RequestBody.create(RegionManager.JSON_MEDIATYPE, json);
+			Request request = new Request.Builder()
+					.post(body)
+					.header("api-key", "f0bbb47b-839a-43f7-b907-eff4ab131231")
+					.url(UnethicaliteProperties.getApiUrl() + "/transports")
+					.build();
+
+			try (Response response = okHttpClient.newCall(request).execute())
 			{
-				String json = RegionManager.GSON.toJson(out);
-				RequestBody body = RequestBody.create(RegionManager.JSON_MEDIATYPE, json);
-				Request request = new Request.Builder()
-						.post(body)
-						.header("api-key", "f0bbb47b-839a-43f7-b907-eff4ab131231")
-						.url(UnethicaliteProperties.getApiUrl() + "/transports")
-						.build();
-				Response response = okHttpClient.newCall(request)
-						.execute();
 				int code = response.code();
 				if (code != 200)
 				{
