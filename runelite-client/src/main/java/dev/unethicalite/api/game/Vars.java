@@ -2,7 +2,6 @@ package dev.unethicalite.api.game;
 
 import net.runelite.api.VarClientInt;
 import net.runelite.api.VarClientStr;
-import net.runelite.api.Varbits;
 
 public class Vars
 {

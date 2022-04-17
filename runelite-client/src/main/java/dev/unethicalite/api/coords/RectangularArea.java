@@ -1,14 +1,20 @@
 package dev.unethicalite.api.coords;
 
 import dev.unethicalite.api.commons.Rand;
+import lombok.Getter;
 import net.runelite.api.coords.WorldPoint;
 
 public class RectangularArea implements Area
 {
+	@Getter
 	private final int minX;
+	@Getter
 	private final int maxX;
+	@Getter
 	private final int minY;
+	@Getter
 	private final int maxY;
+	@Getter
 	private final int plane;
 
 	public RectangularArea(int x1, int y1, int x2, int y2, int plane)
@@ -41,6 +47,16 @@ public class RectangularArea implements Area
 	public RectangularArea(int x1, int y1, int x2, int y2)
 	{
 		this(x1, y1, x2, y2, 0);
+	}
+
+	public RectangularArea(WorldPoint sw, int width, int height)
+	{
+		this(sw.getX(), sw.getY(), sw.getX() + width, sw.getY() + height, sw.getPlane());
+	}
+
+	public RectangularArea(WorldPoint sw, WorldPoint ne)
+	{
+		this(sw.getX(), sw.getY(), ne.getX(), ne.getY(), sw.getPlane());
 	}
 
 	public WorldPoint getRandomTile()
