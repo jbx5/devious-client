@@ -43,6 +43,16 @@ public class RectangularArea implements Area
 		this(x1, y1, x2, y2, 0);
 	}
 
+	public RectangularArea(WorldPoint sw, int width, int height)
+	{
+		this(sw.getX(), sw.getY(), sw.getX() + width, sw.getY() + height, sw.getPlane());
+	}
+
+	public RectangularArea(WorldPoint sw, WorldPoint ne)
+	{
+		this(sw.getX(), sw.getY(), ne.getX(), ne.getY(), sw.getPlane());
+	}
+
 	public WorldPoint getRandomTile()
 	{
 		return new WorldPoint(Rand.nextInt(minX, maxX), Rand.nextInt(minY, maxY), plane);
