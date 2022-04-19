@@ -19,7 +19,7 @@ public abstract class HMouseHandlerMixin implements RSMouseHandler
 	@Inject
 	public synchronized void sendClick(int x, int y, int button)
 	{
-		long time = client.getCurrentTime();
+		long time = System.currentTimeMillis();
 		Canvas canvas = client.getCanvas();
 		canvas.dispatchEvent(new MouseEvent(canvas, MouseEvent.MOUSE_PRESSED, time, 0, x, y, 1, false, button));
 		canvas.dispatchEvent(new MouseEvent(canvas, MouseEvent.MOUSE_RELEASED, time, 0, x, y, 1, false, button));
@@ -35,7 +35,7 @@ public abstract class HMouseHandlerMixin implements RSMouseHandler
 //			canvas.dispatchEvent(new MouseEvent(canvas, MouseEvent.MOUSE_ENTERED, client.getCurrentTime(), 0, x, y, 0, false));
 //		}
 
-		canvas.dispatchEvent(new MouseEvent(canvas, MouseEvent.MOUSE_MOVED, client.getCurrentTime(), 0, x, y, 0, false));
+		canvas.dispatchEvent(new MouseEvent(canvas, MouseEvent.MOUSE_MOVED, System.currentTimeMillis(), 0, x, y, 0, false));
 
 //		int currX = getCurrentX();
 //		int currY = getCurrentY();

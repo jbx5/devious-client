@@ -71,4 +71,9 @@ public class LoopedPluginManager
 			throw new RuntimeException(e);
 		}
 	}
+
+	public boolean isRunning()
+	{
+		return currentLoop != null && currentLoop.isAlive() && plugin != null && plugin.isRunning();
+	}
 }

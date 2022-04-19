@@ -209,7 +209,7 @@ public class MinimalModule extends AbstractModule
 
 	@Provides
 	@Singleton
-	MinimalConfig provideBotConfig(ConfigManager configManager)
+	MinimalConfig provideMinimalConfig(ConfigManager configManager)
 	{
 		return configManager.getConfig(MinimalConfig.class);
 	}

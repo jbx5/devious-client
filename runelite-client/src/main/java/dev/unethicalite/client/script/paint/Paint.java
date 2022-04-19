@@ -33,6 +33,9 @@ public class Paint extends Overlay
 	@Inject
 	private InteractionConfig interactionConfig;
 
+	@Inject
+	private InputManager inputManager;
+
 	public final DefaultPaint tracker = new DefaultPaint();
 
 	@Inject
@@ -51,8 +54,10 @@ public class Paint extends Overlay
 		if (interactionConfig.drawMouse())
 		{
 			g.setFont(new Font("Tahoma", Font.BOLD, 18));
-			OverlayUtil.renderTextLocation(g, new Point(InputManager.Companion.getLastClickX() - (g.getFont().getSize() / 3), InputManager.Companion.getLastClickY() + (g.getFont().getSize() / 3)), "X", Color.WHITE);
-			OverlayUtil.renderTextLocation(g, new Point(InputManager.Companion.getLastMovedX() - (g.getFont().getSize() / 3), InputManager.Companion.getLastMovedY() + (g.getFont().getSize() / 3)), "X", Color.GREEN);
+			OverlayUtil.renderTextLocation(g, new Point(inputManager.getLastClickX() - (g.getFont().getSize() / 3),
+					inputManager.getLastClickY() + (g.getFont().getSize() / 3)), "X", Color.WHITE);
+			OverlayUtil.renderTextLocation(g, new Point(inputManager.getLastMoveX() - (g.getFont().getSize() / 3),
+					inputManager.getLastMoveY() + (g.getFont().getSize() / 3)), "X", Color.GREEN);
 		}
 
 		g.setColor(Color.WHITE);

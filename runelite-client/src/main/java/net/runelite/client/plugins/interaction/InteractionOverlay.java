@@ -1,8 +1,9 @@
 package net.runelite.client.plugins.interaction;
 
+import dev.unethicalite.managers.InputManager;
 import dev.unethicalite.managers.interaction.InteractionConfig;
 import lombok.extern.slf4j.Slf4j;
-import net.runelite.client.input.MouseListener;
+import net.runelite.api.Point;
 import net.runelite.client.ui.overlay.Overlay;
 import net.runelite.client.ui.overlay.OverlayLayer;
 import net.runelite.client.ui.overlay.OverlayPosition;
@@ -11,22 +12,24 @@ import net.runelite.client.ui.overlay.OverlayUtil;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import java.awt.*;
-import java.awt.event.MouseEvent;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Graphics2D;
 
 @Singleton
 @Slf4j
-public class InteractionOverlay extends Overlay implements MouseListener
+public class InteractionOverlay extends Overlay
 {
 	private final InteractionConfig config;
+	private final InputManager inputManager;
 
-	private Point lastClick;
-	private Point lastMove;
 
 	@Inject
-	public InteractionOverlay(InteractionConfig config)
+	public InteractionOverlay(InteractionConfig config, InputManager inputManager)
 	{
 		this.config = config;
+		this.inputManager = inputManager;
 
 		setPosition(OverlayPosition.DYNAMIC);
 		setLayer(OverlayLayer.ABOVE_WIDGETS);
@@ -40,66 +43,15 @@ public class InteractionOverlay extends Overlay implements MouseListener
 		{
 			g.setFont(new Font("Tahoma", Font.BOLD, 18));
 
-			if (lastClick != null)
-			{
-				OverlayUtil.renderTextLocation(g, new net.runelite.api.Point(lastClick.x - (g.getFont().getSize() / 3), lastClick.y + (g.getFont().getSize() / 3)), "X", Color.WHITE);
-			}
+			OverlayUtil.renderTextLocation(g, new Point(inputManager.getLastClickX() - (g.getFont().getSize() / 3),
+					inputManager.getLastClickY() + (g.getFont().getSize() / 3)), "X", Color.WHITE);
 
-			if (lastMove != null)
-			{
-				OverlayUtil.renderTextLocation(g, new net.runelite.api.Point(lastMove.x - (g.getFont().getSize() / 3), lastMove.y + (g.getFont().getSize() / 3)), "X", Color.GREEN);
-			}
+
+			OverlayUtil.renderTextLocation(g,
+					new Point(inputManager.getLastMoveX() - (g.getFont().getSize() / 3),
+					inputManager.getLastMoveY() + (g.getFont().getSize() / 3)), "X", Color.GREEN);
 		}
 
 		return null;
-	}
-
-	@Override
-	public MouseEvent mouseClicked(MouseEvent mouseEvent)
-	{
-		lastClick = mouseEvent.getPoint();
-		return mouseEvent;
-	}
-
-	@Override
-	public MouseEvent mousePressed(MouseEvent mouseEvent)
-	{
-		lastClick = mouseEvent.getPoint();
-		return mouseEvent;
-	}
-
-	@Override
-	public MouseEvent mouseReleased(MouseEvent mouseEvent)
-	{
-		lastClick = mouseEvent.getPoint();
-		return mouseEvent;
-	}
-
-	@Override
-	public MouseEvent mouseEntered(MouseEvent mouseEvent)
-	{
-		lastMove = mouseEvent.getPoint();
-		return mouseEvent;
-	}
-
-	@Override
-	public MouseEvent mouseExited(MouseEvent mouseEvent)
-	{
-		lastMove = mouseEvent.getPoint();
-		return mouseEvent;
-	}
-
-	@Override
-	public MouseEvent mouseDragged(MouseEvent mouseEvent)
-	{
-		lastMove = mouseEvent.getPoint();
-		return mouseEvent;
-	}
-
-	@Override
-	public MouseEvent mouseMoved(MouseEvent mouseEvent)
-	{
-		lastMove = mouseEvent.getPoint();
-		return mouseEvent;
 	}
 }

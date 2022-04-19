@@ -6,7 +6,6 @@ import dev.unethicalite.managers.interaction.InteractionConfig;
 import dev.unethicalite.managers.interaction.InteractionManager;
 import net.runelite.client.config.Config;
 import net.runelite.client.eventbus.EventBus;
-import net.runelite.client.input.MouseManager;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.ui.overlay.OverlayManager;
 
@@ -34,9 +33,6 @@ public class InteractionPlugin extends SettingsPlugin
 	private InteractionOverlay interactionOverlay;
 
 	@Inject
-	private MouseManager mouseManager;
-
-	@Inject
 	private InteractionConfig interactionConfig;
 
 	@Override
@@ -44,7 +40,6 @@ public class InteractionPlugin extends SettingsPlugin
 	{
 		super.startUp();
 		overlayManager.add(interactionOverlay);
-		mouseManager.registerMouseListener(interactionOverlay);
 		eventBus.register(interactionManager);
 		eventBus.register(definitionManager);
 	}
@@ -77,7 +72,6 @@ public class InteractionPlugin extends SettingsPlugin
 	public void shutDown()
 	{
 		overlayManager.remove(interactionOverlay);
-		mouseManager.unregisterMouseListener(interactionOverlay);
 		eventBus.unregister(interactionManager);
 		eventBus.unregister(definitionManager);
 	}

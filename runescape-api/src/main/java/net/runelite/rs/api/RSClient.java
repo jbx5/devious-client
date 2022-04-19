@@ -1677,10 +1677,6 @@ public interface RSClient extends RSGameEngine, Client
 	@Override
 	RSMouseHandler getMouseHandler();
 
-	@Import("getServerTime")
-	@Override
-	long getCurrentTime();
-
 	@Import("hasFocus")
 	@Override
 	boolean isFocused();

@@ -191,7 +191,7 @@ public class ScriptManager
 		script.pauseScript();
 	}
 
-	public boolean isScriptRunning()
+	public boolean isRunning()
 	{
 		return scriptThread != null && scriptThread.isAlive() &&
 				script != null && script.isRunning() && !script.isPaused();

@@ -2571,8 +2571,6 @@ public interface Client extends OAuthApi, GameEngine
 
 	MouseHandler getMouseHandler();
 
-	long getCurrentTime();
-
 	boolean isFocused();
 
 	void setFocused(boolean focused);

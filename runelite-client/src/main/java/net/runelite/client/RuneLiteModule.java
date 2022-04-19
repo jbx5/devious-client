@@ -56,6 +56,7 @@ import javax.inject.Singleton;
 
 import dev.unethicalite.api.movement.pathfinder.GlobalCollisionMap;
 import dev.unethicalite.api.movement.pathfinder.Walker;
+import dev.unethicalite.client.config.MinimalConfig;
 import dev.unethicalite.client.config.UnethicaliteProperties;
 import dev.unethicalite.managers.Static;
 import dev.unethicalite.managers.interaction.InteractionConfig;
@@ -286,6 +287,13 @@ public class RuneLiteModule extends AbstractModule
 					).readAllBytes()
 			);
 		}
+	}
+
+	@Provides
+	@Singleton
+	MinimalConfig provideMinimalConfig(ConfigManager configManager)
+	{
+		return configManager.getConfig(MinimalConfig.class);
 	}
 
 	@Provides
