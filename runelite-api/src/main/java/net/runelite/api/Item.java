@@ -281,7 +281,8 @@ public class Item implements Interactable, Identifiable, EntityNameable {
                 return getMenu(actionIndex, actionIndex > 4 ? MenuAction.CC_OP_LOW_PRIORITY.getId()
                         : MenuAction.CC_OP.getId());
             case INVENTORY:
-                return getMenu(actionIndex, actionIndex >= 4 ? MenuAction.CC_OP_LOW_PRIORITY.getId()
+                // Not sure if LOW_PRIORITY is actually downshifted or just experimental from my testing
+                return getMenu(actionIndex, actionIndex > 3 ? MenuAction.CC_OP_LOW_PRIORITY.getId()
                         : MenuAction.CC_OP.getId());
             case BANK:
             case BANK_INVENTORY:
@@ -308,6 +309,7 @@ public class Item implements Interactable, Identifiable, EntityNameable {
             case EQUIPMENT:
                 return getMenu(actionIndex + 1, opcode, actionParam, widgetId);
             case INVENTORY:
+                // +3 instead of +1 because of use and drop/destroy (i think)
                 return getMenu(actionIndex + 3, opcode, actionParam, widgetId);
             case BANK:
                 return getMenu(actionIndex, opcode, getSlot(), WidgetInfo.BANK_ITEM_CONTAINER.getPackedId());
