@@ -1284,8 +1284,8 @@ public abstract class RSClientMixin implements RSClient
 		}
 	}
 
-//	@FieldHook("experience")
-//	@Inject
+	@FieldHook("experience")
+	@Inject
 	public static void experiencedChanged(int idx)
 	{
 		Skill[] possibleSkills = Skill.values();
@@ -1676,10 +1676,15 @@ public abstract class RSClientMixin implements RSClient
 	{
 		RSRuneLiteMenuEntry menuEntry = null;
 
-		int i;
-		for (i = client.getMenuOptionCount() - 1; i >= 0; --i)
+		for (int i = client.getMenuOptionCount() - 1; i >= 0; --i)
 		{
-			if (client.getMenuOptions()[i].equals(option) && client.getMenuTargets()[i].equals(target) && client.getMenuIdentifiers()[i] == id && client.getMenuOpcodes()[i] == opcode)
+			if (client.getMenuOpcodes()[i] == opcode
+				&& client.getMenuIdentifiers()[i] == id
+				&& client.getMenuArguments1()[i] == param0
+				&& client.getMenuArguments2()[i] == param1
+				&& option.equals(client.getMenuOptions()[i])
+				&& (option.equals(target) || target.equals(client.getMenuTargets()[i]))
+			)
 			{
 				menuEntry = rl$menuEntries[i];
 				break;
@@ -1688,11 +1693,11 @@ public abstract class RSClientMixin implements RSClient
 
 		if (menuEntry == null && option.equals(target))
 		{
-			if (tmpMenuOptionsCount < 500)
+			int i;
+			if (client.getMenuOptionCount() < 500)
 			{
-				int var10000 = tmpMenuOptionsCount;
-				tmpMenuOptionsCount = (var10000 + 1);
-				i = var10000;
+				i = client.getMenuOptionCount();
+				client.setMenuOptionCount(client.getMenuOptionCount() + 1);
 			}
 			else
 			{
@@ -1707,13 +1712,17 @@ public abstract class RSClientMixin implements RSClient
 			client.getMenuArguments2()[i] = param1;
 			client.getMenuForceLeftClick()[i] = false;
 			menuEntry = rl$menuEntries[i];
+			if (menuEntry == null)
+			{
+				menuEntry = rl$menuEntries[i] = newRuneliteMenuEntry(i);
+			}
 		}
 
-		MenuOptionClicked menuOptionClicked = null;
-
+		MenuOptionClicked event;
 		if (menuEntry == null)
 		{
-			menuOptionClicked = new MenuOptionClicked(newBareRuneliteMenuEntry());
+			MenuEntry tmpEntry = client.createMenuEntry(option, target, id, opcode, param0, param1, false);
+			event = new MenuOptionClicked(tmpEntry);
 
 			if (canvasX != -1 || canvasY != -1)
 			{
@@ -1722,16 +1731,24 @@ public abstract class RSClientMixin implements RSClient
 		}
 		else
 		{
-			menuOptionClicked = new MenuOptionClicked(menuEntry);
+			client.getLogger().trace("Menu click op {} targ {} action {} id {} p0 {} p1 {}", option, target, opcode, id, param0, param1);
+			event = new MenuOptionClicked(menuEntry);
 
-			client.getCallbacks().post(menuOptionClicked);
+			client.getCallbacks().post(event);
 
 			if (menuEntry.getConsumer() != null)
 			{
-				menuEntry.getConsumer().accept(menuEntry);
+				try
+				{
+					menuEntry.getConsumer().accept(menuEntry);
+				}
+				catch (Exception ex)
+				{
+					client.getLogger().warn("exception in menu callback", ex);
+				}
 			}
 
-			if (menuOptionClicked.isConsumed())
+			if (event.isConsumed())
 			{
 				return;
 			}
@@ -1751,10 +1768,10 @@ public abstract class RSClientMixin implements RSClient
 		if (printMenuActions)
 		{
 			client.getLogger().info(
-					"|MenuAction|: MenuOption={} MenuTarget={} Id={} Opcode={}/{} Param0={} Param1={} CanvasX={} CanvasY={}",
-					menuOptionClicked.getMenuOption(), menuOptionClicked.getMenuTarget(), menuOptionClicked.getId(),
-					menuOptionClicked.getMenuAction(), opcode + (decremented ? 2000 : 0),
-					menuOptionClicked.getParam0(), menuOptionClicked.getParam1(), canvasX, canvasY
+				"|MenuAction|: MenuOption={} MenuTarget={} Id={} Opcode={}/{} Param0={} Param1={} CanvasX={} CanvasY={}",
+				event.getMenuOption(), event.getMenuTarget(), event.getId(),
+				event.getMenuAction(), opcode + (decremented ? 2000 : 0),
+				event.getParam0(), event.getParam1(), canvasX, canvasY
 			);
 
 			if (menuEntry != null)
@@ -1766,19 +1783,28 @@ public abstract class RSClientMixin implements RSClient
 			}
 		}
 
-		copy$menuAction(menuOptionClicked.getParam0(), menuOptionClicked.getParam1(),
-				menuOptionClicked.getMenuAction() == UNKNOWN ? opcode : menuOptionClicked.getMenuAction().getId(),
-				menuOptionClicked.getId(), menuOptionClicked.getMenuOption(), menuOptionClicked.getMenuTarget(),
-				canvasX, canvasY);
+		if (opcode == MenuAction.WIDGET_CONTINUE.getId())
+		{
+			Widget widget = client.getWidget(param1);
+			if (widget == null || param0 > -1 && widget.getChild(param0) == null)
+			{
+				return;
+			}
+		}
+
+		copy$menuAction(event.getParam0(), event.getParam1(),
+			event.getMenuAction() == UNKNOWN ? opcode : event.getMenuAction().getId(),
+			event.getId(), event.getMenuOption(), event.getMenuTarget(),
+			canvasX, canvasY);
 	}
 
 	@Override
 	@Inject
-	public void invokeMenuAction(String option, String target, int identifier, int opcode, int param0, int param1,
-			int canvasX, int canvasY)
+	public void invokeMenuAction(String option, String target, int identifier, int opcode, int param0, int param1)
 	{
 		assert isClientThread() : "invokeMenuAction must be called on client thread";
-		client.sendMenuAction(param0, param1, opcode, identifier, option, target, canvasX, canvasY);
+
+		client.sendMenuAction(param0, param1, opcode, identifier, option, target, 658, 384);
 	}
 
 	@FieldHook("Login_username")
@@ -2417,15 +2443,15 @@ public abstract class RSClientMixin implements RSClient
 		assert this.isClientThread() : "getObjectDefinition must be called on client thread";
 		return getRSObjectComposition(objectId);
 	}
-//
-//	@Inject
-//	@Override
-//	@Nonnull
-//	public ItemComposition getItemComposition(int id)
-//	{
-//		assert this.isClientThread() : "getItemComposition must be called on client thread";
-//		return getRSItemDefinition(id);
-//	}
+
+	@Inject
+	@Override
+	@Nonnull
+	public ItemComposition getItemComposition(int id)
+	{
+		assert this.isClientThread() : "getItemComposition must be called on client thread";
+		return getRSItemDefinition(id);
+	}
 
 	@Inject
 	@Override
