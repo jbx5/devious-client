@@ -197,6 +197,10 @@ public interface RSClient extends RSGameEngine, Client
 	@Override
 	void setDraggedOnWidget(Widget widget);
 
+	@Import("widgetDragDuration")
+	@Override
+	int getDragTime();
+
 	@Import("Widget_interfaceComponents")
 	RSWidget[][] getWidgets();
 
@@ -331,6 +335,9 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("menuOptionsCount")
 	@Override
 	void setMenuOptionCount(int menuOptionCount);
+
+	@Import("tempMenuAction")
+	RSMenuAction getTempMenuAction();
 
 	@Import("menuActions")
 	String[] getMenuOptions();

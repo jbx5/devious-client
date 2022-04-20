@@ -73,7 +73,29 @@ public class MenuOptionClicked
 	/**
 	 * Whether or not the event has been consumed by a subscriber.
 	 */
-	private boolean consumed;
+
+	/**
+	 * Test if this menu entry is an item op. "Use" and "Examine" are not considered item ops.
+	 * @return
+	 */
+	public boolean isItemOp()
+	{
+		return menuEntry.isItemOp();
+	}
+
+	/**
+	 * If this menu entry is an item op, get the item op id
+	 * @return 1-5
+	 */
+	public int getItemOp()
+	{
+		return menuEntry.getItemOp();
+	}
+
+	public Widget getWidget()
+	{
+		return menuEntry.getWidget();
+	}
 
 	private int canvasX;
 
