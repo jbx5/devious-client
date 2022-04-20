@@ -32,11 +32,11 @@ public abstract class HWidgetMixin implements RSWidget
 				return MenuAction.CC_OP.getId();
 			case WidgetType.GRAPHIC:
 				return getTargetVerb() == null || getTargetVerb().isEmpty()
-						? MenuAction.CC_OP.getId() : MenuAction.WIDGET_TYPE_2.getId();
+						? MenuAction.CC_OP.getId() : MenuAction.WIDGET_TARGET.getId();
 			case WidgetType.INVENTORY:
-				return MenuAction.WIDGET_TYPE_2.getId();
+				return MenuAction.WIDGET_TARGET.getId();
 			case WidgetType.TEXT:
-				return MenuAction.WIDGET_TYPE_6.getId();
+				return MenuAction.WIDGET_CONTINUE.getId();
 			case WidgetType.MODEL:
 				return MenuAction.WIDGET_TYPE_1.getId();
 			default:

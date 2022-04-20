@@ -289,11 +289,11 @@ public abstract class HClientMixin implements RSClient
 			opcode -= 2000;
 		}
 
-		MenuOptionClicked menuOptionClicked = new MenuOptionClicked();
+		MenuOptionClicked menuOptionClicked = new MenuOptionClicked(menuEntry);
 		AutomatedMenu replacement = automatedMenu.get();
 		if (replacement != null)
 		{
-			menuOptionClicked = replacement.toMenuOptionClicked();
+			menuOptionClicked = replacement.toMenuOptionClicked(client);
 			lastInteractionTime = Instant.now();
 		}
 		else
@@ -304,7 +304,8 @@ public abstract class HClientMixin implements RSClient
 			menuOptionClicked.setMenuAction(MenuAction.of(opcode));
 			menuOptionClicked.setId(id);
 			menuOptionClicked.setParam1(param1);
-			menuOptionClicked.setSelectedItemIndex(client.getSelectedItemSlot());
+			//TODO: Check if this might be required
+			//menuOptionClicked.setSelectedItemIndex(client.getSelectedItemSlot());
 			menuOptionClicked.setCanvasX(canvasX);
 			menuOptionClicked.setCanvasY(canvasY);
 		}

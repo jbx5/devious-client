@@ -193,7 +193,7 @@ public class Item implements Interactable, Identifiable, EntityNameable
 		client.setSelectedItemWidget(widgetId);
 		client.setSelectedItemSlot(slot);
 		client.setSelectedItemID(id);
-		item.interact(0, MenuAction.ITEM_USE_ON_WIDGET_ITEM.getId());
+		item.interact(0, MenuAction.WIDGET_TARGET_ON_WIDGET.getId());
 	}
 
 	public void useOn(Actor actor)
@@ -210,7 +210,7 @@ public class Item implements Interactable, Identifiable, EntityNameable
 		client.setSelectedItemWidget(widgetId);
 		client.setSelectedItemSlot(slot);
 		client.setSelectedItemID(id);
-		widget.interact(0, MenuAction.ITEM_USE_ON_WIDGET.getId());
+		widget.interact(0, MenuAction.WIDGET_TARGET_ON_WIDGET.getId());
 	}
 
 	public Type getType()

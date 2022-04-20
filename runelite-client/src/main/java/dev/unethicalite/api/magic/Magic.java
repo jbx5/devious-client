@@ -37,31 +37,32 @@ public class Magic
 	public static void cast(Spell spell, Item target)
 	{
 		selectSpell(spell);
-		target.interact(0, MenuAction.ITEM_USE_ON_WIDGET.getId());
+		target.interact(0, MenuAction.ITEM_USE_ON_ITEM.getId());
 	}
 
 	public static void cast(Spell spell, NPC target)
 	{
 		selectSpell(spell);
-		target.interact(0, MenuAction.SPELL_CAST_ON_NPC.getId());
+		target.interact(0, MenuAction.WIDGET_TARGET_ON_NPC.getId());
 	}
 
 	public static void cast(Spell spell, Player target)
 	{
 		selectSpell(spell);
-		target.interact(0, MenuAction.SPELL_CAST_ON_PLAYER.getId());
+		target.interact(0, MenuAction.WIDGET_TARGET_ON_PLAYER.getId());
 	}
 
 	public static void cast(Spell spell, TileItem target)
 	{
 		selectSpell(spell);
-		target.interact(0, MenuAction.SPELL_CAST_ON_GROUND_ITEM.getId());
+		target.interact(0, MenuAction.WIDGET_TARGET_ON_GROUND_ITEM.getId());
+
 	}
 
 	public static void cast(Spell spell, TileObject target)
 	{
 		selectSpell(spell);
-		target.interact(0, MenuAction.SPELL_CAST_ON_GAME_OBJECT.getId());
+		target.interact(0, MenuAction.WIDGET_TARGET_ON_GAME_OBJECT.getId());
 	}
 
 	public static void selectSpell(Spell spell)

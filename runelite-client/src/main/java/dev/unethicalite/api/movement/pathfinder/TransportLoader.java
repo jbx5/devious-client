@@ -16,11 +16,7 @@ import dev.unethicalite.api.widgets.Dialog;
 import dev.unethicalite.api.widgets.Widgets;
 import dev.unethicalite.client.config.UnethicaliteProperties;
 import lombok.Value;
-import net.runelite.api.Item;
-import net.runelite.api.NPC;
-import net.runelite.api.QuestState;
-import net.runelite.api.Skill;
-import net.runelite.api.TileObject;
+import net.runelite.api.*;
 import net.runelite.api.coords.Direction;
 import net.runelite.api.coords.WorldArea;
 import net.runelite.api.coords.WorldPoint;
@@ -34,7 +30,6 @@ import java.time.Instant;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static net.runelite.api.MenuAction.WIDGET_TYPE_6;
 
 public class TransportLoader
 {
@@ -591,7 +586,7 @@ public class TransportLoader
 						Arrays.stream(treeWidget.getDynamicChildren())
 								.filter(child -> child.getText().contains(location))
 								.findFirst()
-								.ifPresent(child -> child.interact(0, WIDGET_TYPE_6.getId(), child.getIndex(), child.getId()));
+								.ifPresent(child -> child.interact(0, MenuAction.WIDGET_CONTINUE.getId(), child.getIndex(), child.getId()));
 						return;
 					}
 
@@ -615,7 +610,7 @@ public class TransportLoader
 					Widget treeWidget = Widgets.get(widget);
 					if (Widgets.isVisible(treeWidget))
 					{
-						treeWidget.interact(0, WIDGET_TYPE_6.getId(), treeWidget.getIndex(), treeWidget.getId());
+						treeWidget.interact(0, MenuAction.WIDGET_CONTINUE.getId(), treeWidget.getIndex(), treeWidget.getId());
 						return;
 					}
 

@@ -1,6 +1,8 @@
 import java.util.function.Consumer;
 import net.runelite.api.MenuAction;
 import net.runelite.api.MenuEntry;
+import net.runelite.api.widgets.Widget;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 public class RuneLiteMenuEntry implements MenuEntry
 {
