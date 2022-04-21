@@ -8,6 +8,7 @@ import dev.unethicalite.managers.interaction.InteractionException;
 import net.runelite.api.packets.ClientPacket;
 import net.runelite.api.packets.PacketBufferNode;
 import net.runelite.api.packets.PacketWriter;
+import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
 
 public class Packets
@@ -214,24 +215,24 @@ public class Packets
 				);
 			case ITEM_USE_ON_ITEM:
 			case WIDGET_TARGET_ON_WIDGET:
-				// Selected widget is inventory so source = item and target = item
-				if (selectedWidgetSlot != -1 && selectedWidgetItemId != -1)
+				Widget targetParent = Widgets.fromId(param1);
+				assert targetParent != null;
+				Widget targetChild = targetParent.getChild(param0);
+				int childItemId = -1;
+				if (targetChild != null)
 				{
-					client.getLogger().debug("Using item on item through packet");
-					return ItemPackets.createItemOnItem(
-						selectedWidgetItemId,
-						selectedWidgetSlot,
-						id,
-						param0
-					);
+					childItemId = targetChild.getItemId();
 				}
 
-				// Selected widget is not inventory so source = spell cast (although maybe in future they will add more)
-				return ItemPackets.createSpellOnItem(
-					id,
+				return WidgetPackets.createWidgetOnWidget(
+					selectedWidget,
+					selectedWidgetSlot,
+					selectedWidgetItemId,
+					param1,
 					param0,
-					selectedWidget
+					childItemId
 				);
+
 
 			case ITEM_FIRST_OPTION:
 				return ItemPackets.createFirstAction(
