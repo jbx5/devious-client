@@ -352,7 +352,7 @@ public class DefinitionManager
 			log.trace("Widget {}, {} is now visible", WidgetInfo.TO_GROUP(widget.getId()), WidgetInfo.TO_CHILD(widget.getId()));
 			if (itemId != -1)
 			{
-				log.debug("Caching item {} from widget", itemId);
+				log.trace("Caching item {} from widget", itemId);
 				client.cacheItem(itemId, client.getItemDefinition(itemId));
 			}
 		}

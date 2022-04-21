@@ -322,7 +322,7 @@ public class Item implements Interactable, Identifiable, EntityNameable
 				return itemWidget.getMenu(actionIndex, opcode);
 			case EQUIPMENT:
 			case INVENTORY:
-				return getMenu(actionIndex + 1, opcode, actionParam, widgetId);
+				return getMenu(actionIndex == 0 ? 0 : actionIndex + 1, opcode, actionParam, widgetId);
 			case BANK:
 				return getMenu(actionIndex, opcode, getSlot(), WidgetInfo.BANK_ITEM_CONTAINER.getPackedId());
 			case BANK_INVENTORY:
