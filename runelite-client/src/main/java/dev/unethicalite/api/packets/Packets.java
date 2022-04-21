@@ -8,6 +8,7 @@ import dev.unethicalite.managers.interaction.InteractionException;
 import net.runelite.api.packets.ClientPacket;
 import net.runelite.api.packets.PacketBufferNode;
 import net.runelite.api.packets.PacketWriter;
+import net.runelite.api.widgets.WidgetInfo;
 
 public class Packets
 {
@@ -213,14 +214,24 @@ public class Packets
 				);
 			case ITEM_USE_ON_ITEM:
 			case WIDGET_TARGET_ON_WIDGET:
-				return WidgetPackets.createWidgetOnWidget(
-					selectedWidget,
-					selectedWidgetSlot,
-					selectedWidgetItemId,
-					param1,
+				// Selected widget is inventory so source = item and target = item
+				if (selectedWidget == WidgetInfo.INVENTORY.getId())
+				{
+					return ItemPackets.createItemOnItem(
+						selectedWidgetItemId,
+						selectedWidgetSlot,
+						id,
+						param0
+					);
+				}
+
+				// Selected widget is not inventory so source = spell cast (although maybe in future they will add more)
+				return ItemPackets.createSpellOnItem(
+					id,
 					param0,
-					id
+					selectedWidget
 				);
+
 			case ITEM_FIRST_OPTION:
 				return ItemPackets.createFirstAction(
 					param1,
