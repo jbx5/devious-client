@@ -65,9 +65,10 @@ public class Packets
 		var id = menu.getIdentifier();
 		var param0 = menu.getParam0();
 		var param1 = menu.getParam1();
-		var selectedItemId = client.getSelectedItemID();
-		var selectedItemSlot = client.getSelectedItemSlot();
-		var selectedItemWidget = client.getSelectedItemWidget();
+		var selectedItemId = client.getSelectedSpellItemId();
+		var selectedItemSlot = client.getSelectedSpellChildIndex();
+		// Yes, keeping both in case of a future fix in naming
+		var selectedItemWidget = client.getSelectedSpellWidget();
 		var selectedSpellWidget = client.getSelectedSpellWidget();
 
 		switch (opcode)
