@@ -103,39 +103,41 @@ public class Item implements Interactable, Identifiable, EntityNameable
 		}
 	}
 
-	private void invokeUse()
+	private void setUsed()
 	{
-		this.interact(id, MenuAction.WIDGET_TARGET.getId(), slot, widgetId);
+		client.setSelectedSpellWidget(widgetId);
+		client.setSelectedSpellChildIndex(slot);
+		client.setSelectedSpellItemId(id);
 	}
 
 	public void useOn(TileItem object)
 	{
-		invokeUse();
+		setUsed();
 		object.interact(0, MenuAction.WIDGET_TARGET_ON_GROUND_ITEM.getId());
 	}
 
 	public void useOn(TileObject object)
 	{
-		invokeUse();
+		setUsed();
 		object.interact(0, MenuAction.WIDGET_TARGET_ON_GAME_OBJECT.getId());
 	}
 
 	public void useOn(Item item)
 	{
-		invokeUse();
+		setUsed();
 		item.interact(0, MenuAction.WIDGET_TARGET_ON_WIDGET.getId());
 	}
 
 	public void useOn(Actor actor)
 	{
 		MenuAction menuAction = actor instanceof NPC ? MenuAction.WIDGET_TARGET_ON_NPC : MenuAction.WIDGET_TARGET_ON_PLAYER;
-		invokeUse();
+		setUsed();
 		actor.interact(0, menuAction.getId());
 	}
 
 	public void useOn(Widget widget)
 	{
-		invokeUse();
+		setUsed();
 		widget.interact(0, MenuAction.WIDGET_TARGET_ON_WIDGET.getId());
 	}
 
@@ -218,10 +220,6 @@ public class Item implements Interactable, Identifiable, EntityNameable
 	@Override
 	public String[] getRawActions()
 	{
-//		if (getType() == Type.INVENTORY)
-//		{
-//			return client.getItemComposition(getId()).getInventoryActions();
-//		}
 		Widget widget = client.getWidget(widgetId);
 		if (widget != null)
 		{
@@ -294,10 +292,8 @@ public class Item implements Interactable, Identifiable, EntityNameable
 
 				break;
 			case EQUIPMENT:
-				return getMenu(actionIndex, actionIndex > 4 ? MenuAction.CC_OP_LOW_PRIORITY.getId()
-					: MenuAction.CC_OP.getId());
 			case INVENTORY:
-				return getMenu(actionIndex, actionIndex >= 4 ? MenuAction.CC_OP_LOW_PRIORITY.getId()
+				return getMenu(actionIndex, actionIndex > 4 ? MenuAction.CC_OP_LOW_PRIORITY.getId()
 					: MenuAction.CC_OP.getId());
 			case BANK:
 			case BANK_INVENTORY:
@@ -325,9 +321,8 @@ public class Item implements Interactable, Identifiable, EntityNameable
 
 				return itemWidget.getMenu(actionIndex, opcode);
 			case EQUIPMENT:
-				return getMenu(actionIndex + 1, opcode, actionParam, widgetId);
 			case INVENTORY:
-				return getMenu(actionIndex + 3, opcode, actionParam, widgetId);
+				return getMenu(actionIndex + 1, opcode, actionParam, widgetId);
 			case BANK:
 				return getMenu(actionIndex, opcode, getSlot(), WidgetInfo.BANK_ITEM_CONTAINER.getPackedId());
 			case BANK_INVENTORY:
