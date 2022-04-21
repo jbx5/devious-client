@@ -9,38 +9,38 @@ import net.runelite.rs.ScriptOpcodes; import net.runelite.mapping.Export; import
 @Implements("SoundCache")
 public class SoundCache {
 	@ObfuscatedName("iz")
-	@ObfuscatedGetter(intValue = 
-	-1121856975)
+	@ObfuscatedGetter(intValue =
+		-1121856975)
 
 	@Export("selectedItemId")
 	static int selectedItemId;
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = 
-	"Llq;")
+	@ObfuscatedSignature(descriptor =
+		"Llq;")
 
 	@Export("soundEffectIndex")
 	AbstractArchive soundEffectIndex;
 	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = 
-	"Llq;")
+	@ObfuscatedSignature(descriptor =
+		"Llq;")
 
 	@Export("musicSampleIndex")
 	AbstractArchive musicSampleIndex;
 	@ObfuscatedName("h")
-	@ObfuscatedSignature(descriptor = 
-	"Lpo;")
+	@ObfuscatedSignature(descriptor =
+		"Lpo;")
 
 	@Export("musicSamples")
 	NodeHashTable musicSamples;
 	@ObfuscatedName("g")
-	@ObfuscatedSignature(descriptor = 
-	"Lpo;")
+	@ObfuscatedSignature(descriptor =
+		"Lpo;")
 
 	@Export("rawSounds")
 	NodeHashTable rawSounds;
 
-	@ObfuscatedSignature(descriptor = 
-	"(Llq;Llq;)V")
+	@ObfuscatedSignature(descriptor =
+		"(Llq;Llq;)V")
 
 	public SoundCache(AbstractArchive var1, AbstractArchive var2) {
 		this.musicSamples = new NodeHashTable(256);
@@ -50,9 +50,9 @@ public class SoundCache {
 	}
 
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = 
-	"(II[II)Laj;", garbageValue = 
-	"1563241146")
+	@ObfuscatedSignature(descriptor =
+		"(II[II)Laj;", garbageValue =
+		"1563241146")
 
 	@Export("getSoundEffect0")
 	RawSound getSoundEffect0(int var1, int var2, int[] var3) {
@@ -81,9 +81,9 @@ public class SoundCache {
 	}
 
 	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = 
-	"(II[II)Laj;", garbageValue = 
-	"-1588726679")
+	@ObfuscatedSignature(descriptor =
+		"(II[II)Laj;", garbageValue =
+		"-1588726679")
 
 	@Export("getMusicSample0")
 	RawSound getMusicSample0(int var1, int var2, int[] var3) {
@@ -118,9 +118,9 @@ public class SoundCache {
 	}
 
 	@ObfuscatedName("h")
-	@ObfuscatedSignature(descriptor = 
-	"(I[IB)Laj;", garbageValue = 
-	"1")
+	@ObfuscatedSignature(descriptor =
+		"(I[IB)Laj;", garbageValue =
+		"1")
 
 	@Export("getSoundEffect")
 	public RawSound getSoundEffect(int var1, int[] var2) {
@@ -134,9 +134,9 @@ public class SoundCache {
 	}
 
 	@ObfuscatedName("g")
-	@ObfuscatedSignature(descriptor = 
-	"(I[II)Laj;", garbageValue = 
-	"1380052230")
+	@ObfuscatedSignature(descriptor =
+		"(I[II)Laj;", garbageValue =
+		"1380052230")
 
 	@Export("getMusicSample")
 	public RawSound getMusicSample(int var1, int[] var2) {
@@ -150,9 +150,9 @@ public class SoundCache {
 	}
 
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = 
-	"(IS)Lfc;", garbageValue = 
-	"13903")
+	@ObfuscatedSignature(descriptor =
+		"(IS)Lfc;", garbageValue =
+		"13903")
 
 	@Export("VarpDefinition_get")
 	public static VarpDefinition VarpDefinition_get(int var0) {
@@ -172,9 +172,9 @@ public class SoundCache {
 	}
 
 	@ObfuscatedName("m")
-	@ObfuscatedSignature(descriptor = 
-	"(ILbo;ZB)I", garbageValue = 
-	"0")
+	@ObfuscatedSignature(descriptor =
+		"(ILbo;ZB)I", garbageValue =
+		"0")
 
 	static int method803(int var0, Script var1, boolean var2) {
 		Widget var3 = HorizontalAlignment.getWidget(Interpreter.Interpreter_intStack[--class295.Interpreter_intStackSize]);
@@ -202,9 +202,9 @@ public class SoundCache {
 	}
 
 	@ObfuscatedName("ir")
-	@ObfuscatedSignature(descriptor = 
-	"(IIIILjava/lang/String;Ljava/lang/String;III)V", garbageValue = 
-	"1183880843")
+	@ObfuscatedSignature(descriptor =
+		"(IIIILjava/lang/String;Ljava/lang/String;III)V", garbageValue =
+		"1183880843")
 
 	@Export("menuAction")
 	static final void menuAction(int var0, int var1, int var2, int var3, String var4, String var5, int var6, int var7) {
@@ -237,7 +237,7 @@ public class SoundCache {
 			Client.destinationX = var0;
 			Client.destinationY = var1;
 			var8 = ItemContainer.getPacketBufferNode(ClientPacket.OPLOCT, Client.packetWriter.isaacCipher);
-			var8.packetBuffer.writeShortAdd(Client.field688);
+			var8.packetBuffer.writeShortAdd(Client.selectedSpellItemId);
 			var8.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
 			var8.packetBuffer.writeShortAddLE(class250.baseY + var1);
 			var8.packetBuffer.writeShortAdd(Client.selectedSpellChildIndex);
@@ -331,7 +331,7 @@ public class SoundCache {
 					var9.packetBuffer.writeShort(Client.selectedSpellChildIndex);
 					var9.packetBuffer.writeShortLE(var3);
 					var9.packetBuffer.writeIntLE(class92.selectedSpellWidget);
-					var9.packetBuffer.writeShortAdd(Client.field688);
+					var9.packetBuffer.writeShortAdd(Client.selectedSpellItemId);
 					Client.packetWriter.addNode(var9);
 				}
 			} else if (var2 == 9) {
@@ -437,7 +437,7 @@ public class SoundCache {
 						var9.packetBuffer.writeShortAdd(var3);
 						var9.packetBuffer.writeByteNeg(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
 						var9.packetBuffer.writeInt(class92.selectedSpellWidget);
-						var9.packetBuffer.writeShort(Client.field688);
+						var9.packetBuffer.writeShort(Client.selectedSpellItemId);
 						Client.packetWriter.addNode(var9);
 					}
 				} else if (var2 == 16) {
@@ -464,7 +464,7 @@ public class SoundCache {
 					Client.destinationX = var0;
 					Client.destinationY = var1;
 					var8 = ItemContainer.getPacketBufferNode(ClientPacket.OPOBJT, Client.packetWriter.isaacCipher);
-					var8.packetBuffer.writeShort(Client.field688);
+					var8.packetBuffer.writeShort(Client.selectedSpellItemId);
 					var8.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
 					var8.packetBuffer.writeShortLE(var3);
 					var8.packetBuffer.writeInt(class92.selectedSpellWidget);
@@ -862,7 +862,7 @@ public class SoundCache {
 												var16 = class143.getWidgetChild(var1, var0);
 												if (var16 != null) {
 													var9 = ItemContainer.getPacketBufferNode(ClientPacket.field2932, Client.packetWriter.isaacCipher);
-													var9.packetBuffer.writeShort(Client.field688);
+													var9.packetBuffer.writeShort(Client.selectedSpellItemId);
 													var9.packetBuffer.writeIntIME(class92.selectedSpellWidget);
 													var9.packetBuffer.writeShortAdd(var16.itemId);
 													var9.packetBuffer.writeShortAddLE(Client.selectedSpellChildIndex);

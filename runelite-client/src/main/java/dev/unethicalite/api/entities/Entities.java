@@ -63,7 +63,7 @@ public abstract class Entities<T extends SceneEntity>
 			{
 				case EXAMINE_OBJECT:
 				case ITEM_USE_ON_GAME_OBJECT:
-				case SPELL_CAST_ON_GAME_OBJECT:
+				case WIDGET_TARGET_ON_GAME_OBJECT:
 				case GAME_OBJECT_FIRST_OPTION:
 				case GAME_OBJECT_SECOND_OPTION:
 				case GAME_OBJECT_THIRD_OPTION:
@@ -80,7 +80,7 @@ public abstract class Entities<T extends SceneEntity>
 
 				case EXAMINE_NPC:
 				case ITEM_USE_ON_NPC:
-				case SPELL_CAST_ON_NPC:
+				case WIDGET_TARGET_ON_NPC:
 				case NPC_FIRST_OPTION:
 				case NPC_SECOND_OPTION:
 				case NPC_THIRD_OPTION:
@@ -94,7 +94,7 @@ public abstract class Entities<T extends SceneEntity>
 
 				case EXAMINE_ITEM_GROUND:
 				case ITEM_USE_ON_GROUND_ITEM:
-				case SPELL_CAST_ON_GROUND_ITEM:
+				case WIDGET_TARGET_ON_GROUND_ITEM:
 				case GROUND_ITEM_FIRST_OPTION:
 				case GROUND_ITEM_SECOND_OPTION:
 				case GROUND_ITEM_THIRD_OPTION:
@@ -110,7 +110,7 @@ public abstract class Entities<T extends SceneEntity>
 				}
 
 				case ITEM_USE_ON_PLAYER:
-				case SPELL_CAST_ON_PLAYER:
+				case WIDGET_TARGET_ON_PLAYER:
 				case PLAYER_FIRST_OPTION:
 				case PLAYER_SECOND_OPTION:
 				case PLAYER_THIRD_OPTION:

@@ -477,8 +477,8 @@ public class WidgetInspector
 		for (int i = 0; i < menuEntries.length; i++)
 		{
 			MenuEntry entry = menuEntries[i];
-			if (entry.getOpcode() != MenuAction.ITEM_USE_ON_WIDGET.getId()
-					&& entry.getOpcode() != MenuAction.SPELL_CAST_ON_WIDGET.getId())
+			if (entry.getOpcode() != MenuAction.WIDGET_USE_ON_ITEM.getId()
+					&& entry.getOpcode() != MenuAction.WIDGET_TARGET_ON_WIDGET.getId())
 			{
 				continue;
 			}
@@ -506,7 +506,7 @@ public class WidgetInspector
 
 	Object getWidgetOrWidgetItemForMenuOption(int type, int param0, int param1)
 	{
-		if (type == MenuAction.SPELL_CAST_ON_WIDGET.getId())
+		if (type == MenuAction.WIDGET_TARGET_ON_WIDGET.getId())
 		{
 			Widget w = client.getWidget(WidgetInfo.TO_GROUP(param1), WidgetInfo.TO_CHILD(param1));
 			if (param0 != -1)
@@ -516,7 +516,7 @@ public class WidgetInspector
 
 			return w;
 		}
-		else if (type == MenuAction.ITEM_USE_ON_WIDGET.getId())
+		else if (type == MenuAction.ITEM_USE_ON_ITEM.getId())
 		{
 			Widget w = client.getWidget(WidgetInfo.TO_GROUP(param1), WidgetInfo.TO_CHILD(param1));
 			return w.getWidgetItem(param0);

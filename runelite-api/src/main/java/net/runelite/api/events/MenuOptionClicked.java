@@ -24,9 +24,12 @@
  */
 package net.runelite.api.events;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import net.runelite.api.MenuAction;
 import net.runelite.api.MenuEntry;
+import net.runelite.api.widgets.Widget;
 
 /**
  * An event where a menu option has been clicked.
@@ -39,45 +42,114 @@ import net.runelite.api.MenuEntry;
  * By default, when there is no action performed when left-clicking,
  * it seems that this event still triggers with the "Cancel" action.
  */
-@Data
+@Setter
+@Getter
+@NoArgsConstructor
 public class MenuOptionClicked
 {
-	/**
-	 * Action parameter 0. Its value depends on the menuAction.
-	 */
-	private int param0;
-	/**
-	 * Action parameter 1. Its value depends on the menuAction.
-	 */
-	private int param1;
-	/**
-	 * The option text added to the menu.
-	 */
 	private String menuOption;
-	/**
-	 * The target of the action.
-	 */
 	private String menuTarget;
-	/**
-	 * The action performed.
-	 */
-	private MenuAction menuAction;
-	/**
-	 * The ID of the object, actor, or item that the interaction targets.
-	 */
 	private int id;
-	/**
-	 * The selected item index at the time of the option click.
-	 */
+	private MenuAction menuAction;
+	private int param0;
+	private int param1;
 	private int selectedItemIndex;
+
+	private int clickX;
+	private int clickY;
 	/**
 	 * Whether or not the event has been consumed by a subscriber.
 	 */
+	@Getter
+	@Setter
 	private boolean consumed;
-
 	private int canvasX;
-
 	private int canvasY;
+	public MenuOptionClicked(MenuEntry entry)
+	{
+		this.menuOption = entry.getOption();
+		this.menuTarget = entry.getTarget();
+		this.id = entry.getIdentifier();
+		this.menuAction = entry.getType();
+		this.param0 = entry.getParam0();
+		this.param1 = entry.getParam1();
+	}
+
+	public boolean isItemOp()
+	{
+		MenuAction var1 = this.getMenuAction();
+		if (var1 == MenuAction.CC_OP || var1 == MenuAction.CC_OP_LOW_PRIORITY)
+		{
+			int var2 = this.getId();
+			int var3 = this.getParam1();
+			if (var3 == 9764864)
+			{
+				switch (var2)
+				{
+					case 2:
+					case 3:
+					case 4:
+					case 6:
+					case 7:
+						return true;
+					case 5:
+				}
+			}
+		}
+
+		return false;
+	}
+
+	public int getItemOp()
+	{
+		MenuAction var1 = this.getMenuAction();
+		if (var1 == MenuAction.CC_OP || var1 == MenuAction.CC_OP_LOW_PRIORITY)
+		{
+			int var2 = this.getId();
+			int var3 = this.getParam1();
+			if (var3 == 9764864)
+			{
+				switch (var2)
+				{
+					case 2:
+						return 1;
+					case 3:
+						return 2;
+					case 4:
+						return 3;
+					case 5:
+					default:
+						break;
+					case 6:
+						return 4;
+					case 7:
+						return 5;
+				}
+			}
+		}
+
+		return -1;
+	}
+
+	public int getItemId()
+	{
+		return -1;
+	}
+
+	public Widget getWidget()
+	{
+		return null;
+	}
+
+	public int getCanvasX()
+	{
+		return canvasX;
+	}
+
+	public int getCanvasY()
+	{
+		return canvasY;
+	}
 
 	/**
 	 * Marks the event as having been consumed.
@@ -104,29 +176,29 @@ public class MenuOptionClicked
 	@Deprecated
 	public int getActionParam()
 	{
-		return param0;
+		return getParam0();
 	}
 
 	@Deprecated
 	public void setActionParam(int i)
 	{
-		param0 = i;
+		setParam0(i);
 	}
 
 	@Deprecated
 	public int getWidgetId()
 	{
-		return param1;
+		return getParam1();
 	}
 
 	@Deprecated
 	public void setWidgetId(int i)
 	{
-		param1 = i;
+		setParam1(i);
 	}
 
 	public boolean isAutomated()
 	{
-		return "Automated".equals(menuOption);
+		return "Automated".equals(getMenuOption());
 	}
 }
