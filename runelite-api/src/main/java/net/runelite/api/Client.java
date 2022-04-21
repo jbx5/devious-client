@@ -2089,15 +2089,15 @@ public interface Client extends OAuthApi, GameEngine
 	void setSpellSelected(boolean selected);
 
 	/**
-	 * Get if an item is selected with "Use"
-	 * @return 1 if selected, else 0
+	 * @deprecated use {@link #getSelectedWidget()} instead.
 	 */
+	@Deprecated
 	int getSelectedItem();
 
 	/**
-	 * If an item is selected, this is the item index in the inventory.
-	 * @return
+	 * @deprecated use {@link #getSelectedSpellChildIndex()} instead.
 	 */
+	@Deprecated
 	int getSelectedItemIndex();
 
 	/**
@@ -2166,6 +2166,12 @@ public interface Client extends OAuthApi, GameEngine
 
 	int getSelectedSpellFlags();
 
+	void setSelectedSpellFlags(int var0);
+
+	int getSelectedSpellItemId();
+
+	void setSelectedSpellItemId(int itemId);
+
 	/**
 	 * Set whether or not player attack options will be hidden for friends
 	 */
@@ -2230,14 +2236,34 @@ public interface Client extends OAuthApi, GameEngine
 	 */
 	void insertMenuItem(String action, String target, int opcode, int identifier, int argument1, int argument2, boolean forceLeftClick);
 
+	/**
+	 * @deprecated use {@link #setSelectedSpellItemId(int)} instead.
+	 */
+	@Deprecated
 	void setSelectedItemID(int id);
 
+	/**
+	 * @deprecated use {@link #getSelectedSpellWidget()} instead.
+	 */
+	@Deprecated
 	int getSelectedItemWidget();
 
+	/**
+	 * @deprecated use {@link #setSelectedSpellWidget(int)} instead.
+	 */
+	@Deprecated
 	void setSelectedItemWidget(int widgetID);
 
+	/**
+	 * @deprecated use {@link #getSelectedSpellChildIndex()} instead.
+	 */
+	@Deprecated
 	int getSelectedItemSlot();
 
+	/**
+	 * @deprecated use {@link #setSelectedSpellChildIndex(int)} instead.
+	 */
+	@Deprecated
 	void setSelectedItemSlot(int idx);
 
 	int getSelectedSpellWidget();

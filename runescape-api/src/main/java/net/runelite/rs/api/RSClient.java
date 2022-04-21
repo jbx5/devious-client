@@ -1117,6 +1117,10 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("selectedSpellFlags")
 	int getSelectedSpellFlags();
 
+	@Override
+	@Import("selectedSpellFlags")
+	void setSelectedSpellFlags(int var0);
+
 	@Import("isSpellSelected")
 	boolean getSpellSelected();
 
@@ -1196,13 +1200,21 @@ public interface RSClient extends RSGameEngine, Client
 	@Override
 	int getSelectedSpellChildIndex();
 
-	@Import("selectedSpellWidget")
-	@Override
-	void setSelectedSpellWidget(int widgetID);
-
 	@Import("selectedSpellChildIndex")
 	@Override
 	void setSelectedSpellChildIndex(int index);
+
+	@Import("selectedSpellItemId")
+	@Override
+	int getSelectedSpellItemId();
+
+	@Import("selectedSpellItemId")
+	@Override
+	void setSelectedSpellItemId(int itemId);
+
+	@Import("selectedSpellWidget")
+	@Override
+	void setSelectedSpellWidget(int widgetID);
 
 	@Import("Sprite_drawScaled")
 	@Override
