@@ -626,7 +626,7 @@ public class SoundCache {
 								class12.field64 = HorizontalAlignment.getWidget(var1);
 								Client.field741 = var0;
 							} else if (var2 == 32) {
-								var8 = ItemContainer.getPacketBufferNode(ClientPacket.field2984, Client.packetWriter.isaacCipher);
+								var8 = ItemContainer.getPacketBufferNode(ClientPacket.OPHELDT, Client.packetWriter.isaacCipher);
 								var8.packetBuffer.writeShortAdd(var3);
 								var8.packetBuffer.writeIntIME(class92.selectedSpellWidget);
 								var8.packetBuffer.writeShortAdd(var0);
@@ -726,7 +726,7 @@ public class SoundCache {
 									class12.field64 = HorizontalAlignment.getWidget(var1);
 									Client.field741 = var0;
 								} else if (var2 == 42) {
-									var8 = ItemContainer.getPacketBufferNode(ClientPacket.field2993, Client.packetWriter.isaacCipher);
+									var8 = ItemContainer.getPacketBufferNode(ClientPacket.IF1_BUTTON4, Client.packetWriter.isaacCipher);
 									var8.packetBuffer.writeShortAddLE(var0);
 									var8.packetBuffer.writeInt(var1);
 									var8.packetBuffer.writeShortLE(var3);
@@ -861,7 +861,7 @@ public class SoundCache {
 											if (var2 == 58) {
 												var16 = class143.getWidgetChild(var1, var0);
 												if (var16 != null) {
-													var9 = ItemContainer.getPacketBufferNode(ClientPacket.field2932, Client.packetWriter.isaacCipher);
+													var9 = ItemContainer.getPacketBufferNode(ClientPacket.IF_BUTTONT, Client.packetWriter.isaacCipher);
 													var9.packetBuffer.writeShort(Client.selectedSpellItemId);
 													var9.packetBuffer.writeIntIME(class92.selectedSpellWidget);
 													var9.packetBuffer.writeShortAdd(var16.itemId);
@@ -894,7 +894,7 @@ public class SoundCache {
 												Client.mouseCrossY = var7;
 												Client.mouseCrossColor = 2;
 												Client.mouseCrossState = 0;
-												var8 = ItemContainer.getPacketBufferNode(ClientPacket.field2949, Client.packetWriter.isaacCipher);
+												var8 = ItemContainer.getPacketBufferNode(ClientPacket.OPLOC6, Client.packetWriter.isaacCipher);
 												var8.packetBuffer.writeShortAddLE(var3);
 												Client.packetWriter.addNode(var8);
 												break label638;
@@ -926,7 +926,7 @@ public class SoundCache {
 												Client.mouseCrossY = var7;
 												Client.mouseCrossColor = 2;
 												Client.mouseCrossState = 0;
-												var8 = ItemContainer.getPacketBufferNode(ClientPacket.RESUME_P_STRINGDIALOG, Client.packetWriter.isaacCipher);
+												var8 = ItemContainer.getPacketBufferNode(ClientPacket.OPOBJ6, Client.packetWriter.isaacCipher);
 												var8.packetBuffer.writeShortAdd(var3);
 												Client.packetWriter.addNode(var8);
 												break label638;
@@ -937,7 +937,7 @@ public class SoundCache {
 												if ((var16 != null) && (var16.itemQuantities[var0] >= 100000)) {
 													Login.addGameMessage(27, "", (var16.itemQuantities[var0] + " x ") + class67.ItemDefinition_get(var3).name);
 												} else {
-													var9 = ItemContainer.getPacketBufferNode(ClientPacket.RESUME_P_STRINGDIALOG, Client.packetWriter.isaacCipher);
+													var9 = ItemContainer.getPacketBufferNode(ClientPacket.OPOBJ6, Client.packetWriter.isaacCipher);
 													var9.packetBuffer.writeShortAdd(var3);
 													Client.packetWriter.addNode(var9);
 												}

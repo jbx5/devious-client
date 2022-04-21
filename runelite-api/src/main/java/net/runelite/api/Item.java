@@ -29,14 +29,15 @@ import dev.unethicalite.api.Identifiable;
 import dev.unethicalite.api.Interactable;
 import dev.unethicalite.api.events.AutomatedMenu;
 import dev.unethicalite.api.util.Randomizer;
-import java.awt.Rectangle;
-import java.util.Arrays;
-import java.util.concurrent.ThreadLocalRandom;
 import lombok.Data;
 import net.runelite.api.util.Text;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetID;
 import net.runelite.api.widgets.WidgetInfo;
+
+import java.awt.*;
+import java.util.Arrays;
+import java.util.concurrent.ThreadLocalRandom;
 
 @Data
 public class Item implements Interactable, Identifiable, EntityNameable

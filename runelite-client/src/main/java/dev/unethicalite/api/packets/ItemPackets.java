@@ -1,7 +1,5 @@
 package dev.unethicalite.api.packets;
 
-import dev.unethicalite.api.game.Game;
-import dev.unethicalite.api.widgets.Widgets;
 import net.runelite.api.InventoryID;
 import net.runelite.api.Item;
 import net.runelite.api.packets.PacketBufferNode;
@@ -32,8 +30,20 @@ public class ItemPackets
 			case 4:
 				ItemPackets.itemFifthOption(item);
 				break;
-			default:
-				WidgetPackets.widgetAction(Widgets.fromId(item.getWidgetId()), action);
+			case 5:
+				ItemPackets.itemSixthOption(item);
+				break;
+			case 6:
+				ItemPackets.itemSeventhOption(item);
+				break;
+			case 7:
+				ItemPackets.itemEighthOption(item);
+				break;
+			case 8:
+				ItemPackets.itemNinthOption(item);
+				break;
+			case 9:
+				ItemPackets.itemTenthOption(item);
 				break;
 		}
 	}
@@ -61,6 +71,32 @@ public class ItemPackets
 	public static void itemFifthOption(Item item)
 	{
 		ItemPackets.queueItemAction5Packet(item.getWidgetId(), item.getId(), item.getSlot());
+	}
+
+
+	public static void itemSixthOption(Item item)
+	{
+		ItemPackets.queueItemAction6Packet(item.getWidgetId(), item.getId(), item.getSlot());
+	}
+
+	public static void itemSeventhOption(Item item)
+	{
+		ItemPackets.queueItemAction7Packet(item.getWidgetId(), item.getId(), item.getSlot());
+	}
+
+	public static void itemEighthOption(Item item)
+	{
+		ItemPackets.queueItemAction8Packet(item.getWidgetId(), item.getId(), item.getSlot());
+	}
+
+	public static void itemNinthOption(Item item)
+	{
+		ItemPackets.queueItemAction9Packet(item.getWidgetId(), item.getId(), item.getSlot());
+	}
+
+	public static void itemTenthOption(Item item)
+	{
+		ItemPackets.queueItemAction10Packet(item.getWidgetId(), item.getId(), item.getSlot());
 	}
 
 	public static void useItemOnItem(Item item, Item item2)
@@ -107,85 +143,89 @@ public class ItemPackets
 		ItemPackets.createFifthAction(itemWidgetId, itemId, itemSlot).send();
 	}
 
+	public static void queueItemAction6Packet(int itemWidgetId, int itemId, int itemSlot)
+	{
+		ItemPackets.createSixthAction(itemWidgetId, itemId, itemSlot).send();
+	}
+
+	public static void queueItemAction7Packet(int itemWidgetId, int itemId, int itemSlot)
+	{
+		ItemPackets.createSeventhAction(itemWidgetId, itemId, itemSlot).send();
+	}
+
+	public static void queueItemAction8Packet(int itemWidgetId, int itemId, int itemSlot)
+	{
+		ItemPackets.createEighthAction(itemWidgetId, itemId, itemSlot).send();
+	}
+
+	public static void queueItemAction9Packet(int itemWidgetId, int itemId, int itemSlot)
+	{
+		ItemPackets.createNinthAction(itemWidgetId, itemId, itemSlot).send();
+	}
+
+	public static void queueItemAction10Packet(int itemWidgetId, int itemId, int itemSlot)
+	{
+		ItemPackets.createTenthAction(itemWidgetId, itemId, itemSlot).send();
+	}
+
 	public static PacketBufferNode createItemOnItem(int sourceItemId, int sourceItemSlot, int itemId, int itemSlot)
 	{
-		var client = Game.getClient();
-		var clientPacket = Game.getClientPacket();
-		var packetBufferNode = Game.getClient().preparePacket(clientPacket.OPHELDU(), client.getPacketWriter().getIsaacCipher());
-		packetBufferNode.getPacketBuffer().writeIntIME(WidgetInfo.INVENTORY.getId());
-		packetBufferNode.getPacketBuffer().writeShortLE(itemSlot);
-		packetBufferNode.getPacketBuffer().writeIntLE(WidgetInfo.INVENTORY.getId());
-		packetBufferNode.getPacketBuffer().writeShort(sourceItemId);
-		packetBufferNode.getPacketBuffer().writeShort(sourceItemSlot);
-		packetBufferNode.getPacketBuffer().writeShortLE(itemId);
-		return packetBufferNode;
+		return WidgetPackets.createWidgetOnWidget(WidgetInfo.INVENTORY.getId(),sourceItemSlot,sourceItemId,WidgetInfo.INVENTORY.getId(),itemSlot,itemId);
 	}
 
 	public static PacketBufferNode createSpellOnItem(int itemId, int itemSlot, int spellWidgetId)
 	{
-		var client = Game.getClient();
-		var clientPacket = Game.getClientPacket();
-		var packetBufferNode = Game.getClient().preparePacket(clientPacket.OPHELDT(), client.getPacketWriter().getIsaacCipher());
-		packetBufferNode.getPacketBuffer().writeShortAdd(itemId);
-		packetBufferNode.getPacketBuffer().writeIntIME(spellWidgetId);
-		packetBufferNode.getPacketBuffer().writeShortAdd(itemSlot);
-		packetBufferNode.getPacketBuffer().writeShort(-1);
-		packetBufferNode.getPacketBuffer().writeInt(WidgetInfo.INVENTORY.getId());
-		return packetBufferNode;
+		return WidgetPackets.createWidgetOnWidget(spellWidgetId,-1,-1,WidgetInfo.INVENTORY.getId(), itemSlot,itemId);
 	}
 
 	public static PacketBufferNode createFirstAction(int itemWidgetId, int itemId, int itemSlot)
 	{
-		var client = Game.getClient();
-		var clientPacket = Game.getClientPacket();
-		var packetBufferNode = Game.getClient().preparePacket(clientPacket.OPHELD1(), client.getPacketWriter().getIsaacCipher());
-		packetBufferNode.getPacketBuffer().writeShort(itemId);
-		packetBufferNode.getPacketBuffer().writeShort(itemSlot);
-		packetBufferNode.getPacketBuffer().writeIntLE(itemWidgetId);
-		return packetBufferNode;
+		return WidgetPackets.createFirstAction(itemWidgetId, itemId, itemSlot);
 	}
 
 	public static PacketBufferNode createSecondAction(int itemWidgetId, int itemId, int itemSlot)
 	{
-		var client = Game.getClient();
-		var clientPacket = Game.getClientPacket();
-		var packetBufferNode = Game.getClient().preparePacket(clientPacket.OPHELD2(), client.getPacketWriter().getIsaacCipher());
-		packetBufferNode.getPacketBuffer().writeIntLE(itemWidgetId);
-		packetBufferNode.getPacketBuffer().writeShort(itemSlot);
-		packetBufferNode.getPacketBuffer().writeShort(itemId);
-		return packetBufferNode;
+		return WidgetPackets.createSecondAction(itemWidgetId, itemId, itemSlot);
 	}
 
 	public static PacketBufferNode createThirdAction(int itemWidgetId, int itemId, int itemSlot)
 	{
-		var client = Game.getClient();
-		var clientPacket = Game.getClientPacket();
-		var packetBufferNode = Game.getClient().preparePacket(clientPacket.OPHELD3(), client.getPacketWriter().getIsaacCipher());
-		packetBufferNode.getPacketBuffer().writeShort(itemId);
-		packetBufferNode.getPacketBuffer().writeShort(itemSlot);
-		packetBufferNode.getPacketBuffer().writeIntLE(itemWidgetId);
-		return packetBufferNode;
+		return WidgetPackets.createThirdAction(itemWidgetId, itemId, itemSlot);
 	}
 
 	public static PacketBufferNode createFourthAction(int itemWidgetId, int itemId, int itemSlot)
 	{
-		var client = Game.getClient();
-		var clientPacket = Game.getClientPacket();
-		var packetBufferNode = Game.getClient().preparePacket(clientPacket.OPHELD4(), client.getPacketWriter().getIsaacCipher());
-		packetBufferNode.getPacketBuffer().writeShortLE(itemId);
-		packetBufferNode.getPacketBuffer().writeIntLE(itemWidgetId);
-		packetBufferNode.getPacketBuffer().writeShortAddLE(itemSlot);
-		return packetBufferNode;
+		return WidgetPackets.createFourthAction(itemWidgetId, itemId, itemSlot);
 	}
 
 	public static PacketBufferNode createFifthAction(int itemWidgetId, int itemId, int itemSlot)
 	{
-		var client = Game.getClient();
-		var clientPacket = Game.getClientPacket();
-		var packetBufferNode = Game.getClient().preparePacket(clientPacket.OPHELD5(), client.getPacketWriter().getIsaacCipher());
-		packetBufferNode.getPacketBuffer().writeIntIME(itemWidgetId);
-		packetBufferNode.getPacketBuffer().writeShort(itemId);
-		packetBufferNode.getPacketBuffer().writeShortAddLE(itemSlot);
-		return packetBufferNode;
+		return WidgetPackets.createFifthAction(itemWidgetId, itemId, itemSlot);
+	}
+
+
+	public static PacketBufferNode createSixthAction(int itemWidgetId, int itemId, int itemSlot)
+	{
+		return WidgetPackets.createSixthAction(itemWidgetId, itemId, itemSlot);
+	}
+
+	public static PacketBufferNode createSeventhAction(int itemWidgetId, int itemId, int itemSlot)
+	{
+		return WidgetPackets.createSeventhAction(itemWidgetId, itemId, itemSlot);
+	}
+
+	public static PacketBufferNode createEighthAction(int itemWidgetId, int itemId, int itemSlot)
+	{
+		return WidgetPackets.createEighthAction(itemWidgetId, itemId, itemSlot);
+	}
+
+	public static PacketBufferNode createNinthAction(int itemWidgetId, int itemId, int itemSlot)
+	{
+		return WidgetPackets.createNinthAction(itemWidgetId, itemId, itemSlot);
+	}
+
+	public static PacketBufferNode createTenthAction(int itemWidgetId, int itemId, int itemSlot)
+	{
+		return WidgetPackets.createTenthAction(itemWidgetId, itemId, itemSlot);
 	}
 }
