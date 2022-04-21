@@ -59,7 +59,9 @@ public class PlayerPackets
 	{
 		return createWidgetOnPlayer(playerIndex, itemId, itemSlot, itemWidgetId, ctrlDown);
 	}
-	public static PacketBufferNode createWidgetOnPlayer(int playerIndex, int widgetItemId, int widgetChildIndex,int WidgetId,	boolean ctrlDown){
+
+	public static PacketBufferNode createWidgetOnPlayer(int playerIndex, int widgetItemId, int widgetChildIndex, int WidgetId, boolean ctrlDown)
+	{
 		var client = Game.getClient();
 		var clientPacket = Game.getClientPacket();
 		var packetBufferNode = Game.getClient().preparePacket(clientPacket.OPPLAYERT(), client.getPacketWriter().getIsaacCipher());
@@ -70,9 +72,10 @@ public class PlayerPackets
 		packetBufferNode.getPacketBuffer().writeShort(widgetItemId);
 		return packetBufferNode;
 	}
+
 	public static PacketBufferNode createSpellOnPlayer(int playerIndex, int spellWidgetId, boolean ctrlDown)
 	{
-		return createWidgetOnPlayer(playerIndex,-1, -1, spellWidgetId, ctrlDown);
+		return createWidgetOnPlayer(playerIndex, -1, -1, spellWidgetId, ctrlDown);
 	}
 
 	public static PacketBufferNode createFirstAction(int playerIndex, boolean ctrlDown)

@@ -1,11 +1,10 @@
 package dev.unethicalite.api.packets;
 
+import java.util.List;
 import net.runelite.api.InventoryID;
 import net.runelite.api.Item;
 import net.runelite.api.packets.PacketBufferNode;
 import net.runelite.api.widgets.WidgetInfo;
-
-import java.util.List;
 
 public class ItemPackets
 {
@@ -170,12 +169,12 @@ public class ItemPackets
 
 	public static PacketBufferNode createItemOnItem(int sourceItemId, int sourceItemSlot, int itemId, int itemSlot)
 	{
-		return WidgetPackets.createWidgetOnWidget(WidgetInfo.INVENTORY.getId(),sourceItemSlot,sourceItemId,WidgetInfo.INVENTORY.getId(),itemSlot,itemId);
+		return WidgetPackets.createWidgetOnWidget(WidgetInfo.INVENTORY.getId(), sourceItemSlot, sourceItemId, WidgetInfo.INVENTORY.getId(), itemSlot, itemId);
 	}
 
 	public static PacketBufferNode createSpellOnItem(int itemId, int itemSlot, int spellWidgetId)
 	{
-		return WidgetPackets.createWidgetOnWidget(spellWidgetId,-1,-1,WidgetInfo.INVENTORY.getId(), itemSlot,itemId);
+		return WidgetPackets.createWidgetOnWidget(spellWidgetId, -1, -1, WidgetInfo.INVENTORY.getId(), itemSlot, itemId);
 	}
 
 	public static PacketBufferNode createFirstAction(int itemWidgetId, int itemId, int itemSlot)

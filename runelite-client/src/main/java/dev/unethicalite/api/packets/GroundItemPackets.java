@@ -1,10 +1,9 @@
 package dev.unethicalite.api.packets;
 
 import dev.unethicalite.api.game.Game;
+import java.util.List;
 import net.runelite.api.TileItem;
 import net.runelite.api.packets.PacketBufferNode;
-
-import java.util.List;
 
 public class GroundItemPackets
 {
@@ -97,7 +96,8 @@ public class GroundItemPackets
 		return createWidgetOnGroundItem(groundItemId, worldPointX, worldPointY, itemSlot, itemId, itemWidgetId, ctrlDown);
 	}
 
-	public static PacketBufferNode createWidgetOnGroundItem(int groundItemId, int worldPointX, int worldPointY, int childIndex, int itemId, int widgetId, boolean ctrlDown){
+	public static PacketBufferNode createWidgetOnGroundItem(int groundItemId, int worldPointX, int worldPointY, int childIndex, int itemId, int widgetId, boolean ctrlDown)
+	{
 		var client = Game.getClient();
 		var clientPacket = Game.getClientPacket();
 		PacketBufferNode packetBufferNode = Game.getClient().preparePacket(clientPacket.OPOBJT(), client.getPacketWriter().getIsaacCipher());
@@ -110,6 +110,7 @@ public class GroundItemPackets
 		packetBufferNode.getPacketBuffer().writeShortAdd(worldPointX);
 		return packetBufferNode;
 	}
+
 	public static PacketBufferNode createSpellOnGroundItem(int groundItemId, int worldPointX, int worldPointY, int spellWidgetId, boolean ctrlDown)
 	{
 		return createWidgetOnGroundItem(groundItemId, worldPointX, worldPointY, -1, -1, spellWidgetId, ctrlDown);

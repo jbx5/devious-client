@@ -122,7 +122,8 @@ public class ObjectPackets
 		return createWidgetOnObjectPacket(objectId, worldPointX, worldPointY, itemSlot, itemId, itemWidgetId, ctrlDown);
 	}
 
-	public static PacketBufferNode createWidgetOnObjectPacket(int objectId, int worldPointX, int worldPointY, int childIndex, int itemId, int widgetId, boolean ctrlDown){
+	public static PacketBufferNode createWidgetOnObjectPacket(int objectId, int worldPointX, int worldPointY, int childIndex, int itemId, int widgetId, boolean ctrlDown)
+	{
 		var client = Game.getClient();
 		var clientPacket = Game.getClientPacket();
 		var packetBufferNode = Game.getClient().preparePacket(clientPacket.OPLOCT(), client.getPacketWriter().getIsaacCipher());
@@ -135,6 +136,7 @@ public class ObjectPackets
 		packetBufferNode.getPacketBuffer().writeShortLE(objectId);
 		return packetBufferNode;
 	}
+
 	public static PacketBufferNode createSpellOnObjectPacket(int objectId, int worldPointX, int worldPointY, int spellWidgetId, boolean ctrlDown)
 	{
 		return createWidgetOnObjectPacket(objectId, worldPointX, worldPointY, -1, -1, spellWidgetId, ctrlDown);

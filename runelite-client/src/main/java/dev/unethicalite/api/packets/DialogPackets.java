@@ -16,7 +16,9 @@ public class DialogPackets
 		var14.getPacketBuffer().writeInt(number);
 		client.getPacketWriter().queuePacket(var14);
 		if (closeDialog)
+		{
 			GameThread.invoke(() -> Game.getClient().runScript(138));
+		}
 
 		// closes the input dialog
 	}

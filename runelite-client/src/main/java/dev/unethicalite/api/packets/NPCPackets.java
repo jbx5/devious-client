@@ -1,10 +1,9 @@
 package dev.unethicalite.api.packets;
 
 import dev.unethicalite.api.game.Game;
+import java.util.List;
 import net.runelite.api.NPC;
 import net.runelite.api.packets.PacketBufferNode;
-
-import java.util.List;
 
 public class NPCPackets
 {
@@ -102,7 +101,8 @@ public class NPCPackets
 		return createWidgetOnNpc(npcIndex, itemWidgetId, itemId, itemSlot, ctrlDown);
 	}
 
-	public static PacketBufferNode createWidgetOnNpc(int npcIndex, int itemWidgetId, int itemId, int itemSlot, boolean ctrlDown){
+	public static PacketBufferNode createWidgetOnNpc(int npcIndex, int itemWidgetId, int itemId, int itemSlot, boolean ctrlDown)
+	{
 		var client = Game.getClient();
 		var clientPacket = Game.getClientPacket();
 		var packetBufferNode = Game.getClient().preparePacket(clientPacket.OPNPCT(), client.getPacketWriter().getIsaacCipher());
@@ -113,6 +113,7 @@ public class NPCPackets
 		packetBufferNode.getPacketBuffer().writeShortAdd(itemId);
 		return packetBufferNode;
 	}
+
 	public static PacketBufferNode createSpellOnNpcPacket(int npcIndex, int spellWidgetId, boolean ctrlDown)
 	{
 		return createWidgetOnNpc(npcIndex, spellWidgetId, -1, -1, ctrlDown);
