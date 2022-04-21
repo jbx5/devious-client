@@ -215,7 +215,7 @@ public class Packets
 			case ITEM_USE_ON_ITEM:
 			case WIDGET_TARGET_ON_WIDGET:
 				// Selected widget is inventory so source = item and target = item
-				if (selectedWidget == WidgetInfo.INVENTORY.getId())
+				if (selectedWidget == WidgetInfo.INVENTORY.getPackedId())
 				{
 					return ItemPackets.createItemOnItem(
 						selectedWidgetItemId,
