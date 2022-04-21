@@ -103,39 +103,41 @@ public class Item implements Interactable, Identifiable, EntityNameable
 		}
 	}
 
-	private void invokeUse()
+	private void setUsed()
 	{
-		this.interact(id, MenuAction.WIDGET_TARGET.getId(), slot, widgetId);
+		client.setSelectedSpellWidget(widgetId);
+		client.setSelectedSpellChildIndex(slot);
+		client.setSelectedSpellItemId(id);
 	}
 
 	public void useOn(TileItem object)
 	{
-		invokeUse();
+		setUsed();
 		object.interact(0, MenuAction.WIDGET_TARGET_ON_GROUND_ITEM.getId());
 	}
 
 	public void useOn(TileObject object)
 	{
-		invokeUse();
+		setUsed();
 		object.interact(0, MenuAction.WIDGET_TARGET_ON_GAME_OBJECT.getId());
 	}
 
 	public void useOn(Item item)
 	{
-		invokeUse();
+		setUsed();
 		item.interact(0, MenuAction.WIDGET_TARGET_ON_WIDGET.getId());
 	}
 
 	public void useOn(Actor actor)
 	{
 		MenuAction menuAction = actor instanceof NPC ? MenuAction.WIDGET_TARGET_ON_NPC : MenuAction.WIDGET_TARGET_ON_PLAYER;
-		invokeUse();
+		setUsed();
 		actor.interact(0, menuAction.getId());
 	}
 
 	public void useOn(Widget widget)
 	{
-		invokeUse();
+		setUsed();
 		widget.interact(0, MenuAction.WIDGET_TARGET_ON_WIDGET.getId());
 	}
 
