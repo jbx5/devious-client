@@ -51,6 +51,8 @@ public abstract class HClientMixin implements RSClient
 	private static RSClient client;
 	@Shadow("rl$menuEntries")
 	private static RSRuneLiteMenuEntry[] rl$menuEntries;
+	@Shadow("printMenuActions")
+	private static boolean printMenuActions;
 	@Inject
 	private static boolean lowCpu;
 	@Inject
@@ -213,6 +215,24 @@ public abstract class HClientMixin implements RSClient
 		{
 			automatedMenu.set(null);
 			return;
+		}
+
+		if (printMenuActions)
+		{
+			client.getLogger().info(
+				"|MenuAction|: MenuOption={} MenuTarget={} Id={} Opcode={}/{} Param0={} Param1={} CanvasX={} CanvasY={}",
+				menuOptionClicked.getMenuOption(), menuOptionClicked.getMenuTarget(), menuOptionClicked.getId(),
+				menuOptionClicked.getMenuAction(), opcode,
+				menuOptionClicked.getParam0(), menuOptionClicked.getParam1(), canvasX, canvasY
+			);
+
+			if (menuEntry != null)
+			{
+				client.getLogger().info(
+					"|MenuEntry|: Idx={} MenuOption={} MenuTarget={} Id={} MenuAction={} Param0={} Param1={} Consumer={} IsItemOp={} ItemOp={} ItemID={} Widget={}",
+					menuEntry.getIdx(), menuEntry.getOption(), menuEntry.getTarget(), menuEntry.getIdentifier(), menuEntry.getType(), menuEntry.getParam0(), menuEntry.getParam1(), menuEntry.getConsumer(), menuEntry.isItemOp(), menuEntry.getItemOp(), menuEntry.getItemId(), menuEntry.getWidget()
+				);
+			}
 		}
 
 		copy$menuAction(menuOptionClicked.getParam0(), menuOptionClicked.getParam1(),
