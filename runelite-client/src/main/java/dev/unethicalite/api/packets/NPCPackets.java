@@ -99,28 +99,23 @@ public class NPCPackets
 
 	public static PacketBufferNode createItemOnNpcPacket(int npcIndex, int itemWidgetId, int itemId, int itemSlot, boolean ctrlDown)
 	{
-		var client = Game.getClient();
-		var clientPacket = Game.getClientPacket();
-		var packetBufferNode = Game.getClient().preparePacket(clientPacket.OPNPCU(), client.getPacketWriter().getIsaacCipher());
-		packetBufferNode.getPacketBuffer().writeShortLE(npcIndex);
-		packetBufferNode.getPacketBuffer().writeIntIME(itemWidgetId);
-		packetBufferNode.getPacketBuffer().writeShortAddLE(itemId);
-		packetBufferNode.getPacketBuffer().writeByteSub(ctrlDown ? 1 : 0);
-		packetBufferNode.getPacketBuffer().writeShortAdd(itemSlot);
-		return packetBufferNode;
+		return createWidgetOnNpc(npcIndex, itemWidgetId, itemId, itemSlot, ctrlDown);
 	}
 
-	public static PacketBufferNode createSpellOnNpcPacket(int npcIndex, int spellWidgetId, boolean ctrlDown)
-	{
+	public static PacketBufferNode createWidgetOnNpc(int npcIndex, int itemWidgetId, int itemId, int itemSlot, boolean ctrlDown){
 		var client = Game.getClient();
 		var clientPacket = Game.getClientPacket();
 		var packetBufferNode = Game.getClient().preparePacket(clientPacket.OPNPCT(), client.getPacketWriter().getIsaacCipher());
 		packetBufferNode.getPacketBuffer().writeByteNeg(ctrlDown ? 1 : 0);
-		packetBufferNode.getPacketBuffer().writeShort(-1);
+		packetBufferNode.getPacketBuffer().writeShort(itemSlot);
 		packetBufferNode.getPacketBuffer().writeShortLE(npcIndex);
-		packetBufferNode.getPacketBuffer().writeIntLE(spellWidgetId);
-		packetBufferNode.getPacketBuffer().writeShortAdd(-1);
+		packetBufferNode.getPacketBuffer().writeIntLE(itemWidgetId);
+		packetBufferNode.getPacketBuffer().writeShortAdd(itemId);
 		return packetBufferNode;
+	}
+	public static PacketBufferNode createSpellOnNpcPacket(int npcIndex, int spellWidgetId, boolean ctrlDown)
+	{
+		return createWidgetOnNpc(npcIndex, spellWidgetId, -1, -1, ctrlDown);
 	}
 
 	public static PacketBufferNode createNpcFirstActionPacket(int npcIndex, boolean ctrlDown)
