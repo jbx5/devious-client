@@ -3,6 +3,7 @@ package dev.unethicalite.api.magic;
 import dev.unethicalite.api.game.Game;
 import dev.unethicalite.api.game.Vars;
 import dev.unethicalite.api.widgets.Widgets;
+import java.util.Arrays;
 import net.runelite.api.Item;
 import net.runelite.api.MenuAction;
 import net.runelite.api.NPC;
@@ -10,8 +11,6 @@ import net.runelite.api.Player;
 import net.runelite.api.TileItem;
 import net.runelite.api.TileObject;
 import net.runelite.api.widgets.Widget;
-
-import java.util.Arrays;
 
 public class Magic
 {
@@ -37,7 +36,7 @@ public class Magic
 	public static void cast(Spell spell, Item target)
 	{
 		selectSpell(spell);
-		target.interact(0, MenuAction.ITEM_USE_ON_ITEM.getId());
+		target.interact(0, MenuAction.WIDGET_TARGET_ON_WIDGET.getId());
 	}
 
 	public static void cast(Spell spell, NPC target)
@@ -100,7 +99,7 @@ public class Magic
 		public static SpellBook getCurrent()
 		{
 			return Arrays.stream(values()).filter(x -> Vars.getBit(SPELLBOOK_VARBIT) == x.varbitValue)
-					.findFirst().orElse(null);
+				.findFirst().orElse(null);
 		}
 	}
 }

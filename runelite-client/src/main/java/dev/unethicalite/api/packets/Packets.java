@@ -9,6 +9,7 @@ import net.runelite.api.packets.ClientPacket;
 import net.runelite.api.packets.PacketBufferNode;
 import net.runelite.api.packets.PacketWriter;
 import net.runelite.api.widgets.Widget;
+import net.runelite.api.widgets.WidgetType;
 
 public class Packets
 {
@@ -221,6 +222,14 @@ public class Packets
 				if (targetChild != null)
 				{
 					childItemId = targetChild.getItemId();
+				}
+
+				Widget source = client.getWidget(selectedWidget);
+				assert source != null;
+				if (source.getType() == WidgetType.GRAPHIC)
+				{
+					selectedWidgetSlot = -1;
+					selectedWidgetItemId = -1;
 				}
 
 				return WidgetPackets.createWidgetOnWidget(
