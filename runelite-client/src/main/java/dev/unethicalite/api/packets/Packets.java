@@ -65,32 +65,26 @@ public class Packets
 		var id = menu.getIdentifier();
 		var param0 = menu.getParam0();
 		var param1 = menu.getParam1();
-		var selectedItemId = client.getSelectedSpellItemId();
-		var selectedItemSlot = client.getSelectedSpellChildIndex();
+		var selectedWidgetItemId = client.getSelectedSpellItemId();
+		var selectedWidgetSlot = client.getSelectedSpellChildIndex();
 		// Yes, keeping both in case of a future fix in naming
-		var selectedItemWidget = client.getSelectedSpellWidget();
+		var selectedWidget = client.getSelectedSpellWidget();
 		var selectedSpellWidget = client.getSelectedSpellWidget();
 
 		switch (opcode)
 		{
 			case ITEM_USE_ON_GAME_OBJECT:
-				return ObjectPackets.createItemOnObjectPacket(
-					id,
-					param0 + client.getBaseX(),
-					param1 + client.getBaseY(),
-					selectedItemSlot,
-					selectedItemId,
-					selectedItemWidget,
-					false
-				);
 			case WIDGET_TARGET_ON_GAME_OBJECT:
-				return ObjectPackets.createSpellOnObjectPacket(
+				return ObjectPackets.createWidgetOnObjectPacket(
 					id,
 					param0 + client.getBaseX(),
 					param1 + client.getBaseY(),
-					selectedSpellWidget,
+					selectedWidgetSlot,
+					selectedWidgetItemId,
+					selectedWidget,
 					false
 				);
+
 			case GAME_OBJECT_FIRST_OPTION:
 				return ObjectPackets.createObjectFirstActionPacket(
 					id,
@@ -127,19 +121,15 @@ public class Packets
 					false
 				);
 			case ITEM_USE_ON_NPC:
-				return NPCPackets.createItemOnNpcPacket(
-					id,
-					selectedItemWidget,
-					selectedItemId,
-					selectedItemSlot,
-					false
-				);
 			case WIDGET_TARGET_ON_NPC:
-				return NPCPackets.createSpellOnNpcPacket(
+				return NPCPackets.createWidgetOnNpc(
 					id,
-					selectedSpellWidget,
+					selectedWidget,
+					selectedWidgetItemId,
+					selectedWidgetSlot,
 					false
 				);
+
 			case NPC_FIRST_OPTION:
 				return NPCPackets.createNpcFirstActionPacket(id, false);
 			case NPC_SECOND_OPTION:
@@ -151,15 +141,14 @@ public class Packets
 			case NPC_FIFTH_OPTION:
 				return NPCPackets.createNpcFifthActionPacket(id, false);
 			case ITEM_USE_ON_PLAYER:
-				return PlayerPackets.createItemOnPlayerPacket(
+			case WIDGET_TARGET_ON_PLAYER:
+				return PlayerPackets.createWidgetOnPlayer(
 					id,
-					selectedItemId,
-					selectedItemSlot,
-					selectedItemWidget,
+					selectedWidgetItemId,
+					selectedWidgetSlot,
+					selectedWidget,
 					false
 				);
-			case WIDGET_TARGET_ON_PLAYER:
-				return PlayerPackets.createSpellOnPlayer(id, selectedSpellWidget, false);
 			case PLAYER_FIRST_OPTION:
 				return PlayerPackets.createFirstAction(id, false);
 			case PLAYER_SECOND_OPTION:
@@ -177,21 +166,14 @@ public class Packets
 			case PLAYER_EIGTH_OPTION:
 				return PlayerPackets.createEighthAction(id, false);
 			case ITEM_USE_ON_GROUND_ITEM:
-				return GroundItemPackets.createItemOnGroundItem(
-					id,
-					param0 + client.getBaseX(),
-					param1 + client.getBaseY(),
-					selectedItemSlot,
-					selectedItemId,
-					selectedItemWidget,
-					false
-				);
 			case WIDGET_TARGET_ON_GROUND_ITEM:
-				return GroundItemPackets.createSpellOnGroundItem(
+				return GroundItemPackets.createWidgetOnGroundItem(
 					id,
 					param0 + client.getBaseX(),
 					param1 + client.getBaseY(),
-					selectedSpellWidget,
+					selectedWidgetSlot,
+					selectedWidgetItemId,
+					selectedWidget,
 					false
 				);
 			case GROUND_ITEM_FIRST_OPTION:
@@ -230,11 +212,14 @@ public class Packets
 					false
 				);
 			case ITEM_USE_ON_ITEM:
-				return ItemPackets.createItemOnItem(
-					id,
+			case WIDGET_TARGET_ON_WIDGET:
+				return WidgetPackets.createWidgetOnWidget(
+					selectedWidget,
+					selectedWidgetSlot,
+					selectedWidgetItemId,
+					param1,
 					param0,
-					selectedItemId,
-					selectedItemSlot
+					id
 				);
 			case ITEM_FIRST_OPTION:
 				return ItemPackets.createFirstAction(
