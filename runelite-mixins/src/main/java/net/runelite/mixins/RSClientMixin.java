@@ -1284,8 +1284,8 @@ public abstract class RSClientMixin implements RSClient
 		}
 	}
 
-	@FieldHook("experience")
-	@Inject
+//	@FieldHook("experience")
+//	@Inject
 	public static void experiencedChanged(int idx)
 	{
 		Skill[] possibleSkills = Skill.values();
@@ -2443,15 +2443,15 @@ public abstract class RSClientMixin implements RSClient
 		assert this.isClientThread() : "getObjectDefinition must be called on client thread";
 		return getRSObjectComposition(objectId);
 	}
-
-	@Inject
-	@Override
-	@Nonnull
-	public ItemComposition getItemComposition(int id)
-	{
-		assert this.isClientThread() : "getItemComposition must be called on client thread";
-		return getRSItemDefinition(id);
-	}
+//
+//	@Inject
+//	@Override
+//	@Nonnull
+//	public ItemComposition getItemComposition(int id)
+//	{
+//		assert this.isClientThread() : "getItemComposition must be called on client thread";
+//		return getRSItemDefinition(id);
+//	}
 
 	@Inject
 	@Override

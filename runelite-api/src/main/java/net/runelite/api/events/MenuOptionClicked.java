@@ -57,7 +57,14 @@ public class MenuOptionClicked
 
 	private int clickX;
 	private int clickY;
-
+	/**
+	 * Whether or not the event has been consumed by a subscriber.
+	 */
+	@Getter
+	@Setter
+	private boolean consumed;
+	private int canvasX;
+	private int canvasY;
 	public MenuOptionClicked(MenuEntry entry)
 	{
 		this.menuOption = entry.getOption();
@@ -68,22 +75,17 @@ public class MenuOptionClicked
 		this.param1 = entry.getParam1();
 	}
 
-	/**
-	 * Whether or not the event has been consumed by a subscriber.
-	 */
-	@Getter
-	@Setter
-	private boolean consumed;
-	private int canvasX;
-	private int canvasY;
 	public boolean isItemOp()
 	{
 		MenuAction var1 = this.getMenuAction();
-		if (var1 == MenuAction.CC_OP || var1 == MenuAction.CC_OP_LOW_PRIORITY) {
+		if (var1 == MenuAction.CC_OP || var1 == MenuAction.CC_OP_LOW_PRIORITY)
+		{
 			int var2 = this.getId();
 			int var3 = this.getParam1();
-			if (var3 == 9764864) {
-				switch (var2) {
+			if (var3 == 9764864)
+			{
+				switch (var2)
+				{
 					case 2:
 					case 3:
 					case 4:
@@ -101,11 +103,14 @@ public class MenuOptionClicked
 	public int getItemOp()
 	{
 		MenuAction var1 = this.getMenuAction();
-		if (var1 == MenuAction.CC_OP || var1 == MenuAction.CC_OP_LOW_PRIORITY) {
+		if (var1 == MenuAction.CC_OP || var1 == MenuAction.CC_OP_LOW_PRIORITY)
+		{
 			int var2 = this.getId();
 			int var3 = this.getParam1();
-			if (var3 == 9764864) {
-				switch (var2) {
+			if (var3 == 9764864)
+			{
+				switch (var2)
+				{
 					case 2:
 						return 1;
 					case 3:
