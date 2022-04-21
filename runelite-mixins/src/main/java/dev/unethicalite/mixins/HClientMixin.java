@@ -215,15 +215,6 @@ public abstract class HClientMixin implements RSClient
 			return;
 		}
 
-		if (opcode == MenuAction.WIDGET_CONTINUE.getId())
-		{
-			Widget widget = client.getWidget(param1);
-			if (widget == null || param0 > -1 && widget.getChild(param0) == null)
-			{
-				return;
-			}
-		}
-
 		copy$menuAction(menuOptionClicked.getParam0(), menuOptionClicked.getParam1(),
 			menuOptionClicked.getMenuAction() == UNKNOWN ? opcode : menuOptionClicked.getMenuAction().getId(),
 			menuOptionClicked.getId(), menuOptionClicked.getMenuOption(), menuOptionClicked.getMenuTarget(),
