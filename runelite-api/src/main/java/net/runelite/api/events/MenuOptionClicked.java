@@ -25,6 +25,7 @@
 package net.runelite.api.events;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import net.runelite.api.MenuAction;
 import net.runelite.api.MenuEntry;
@@ -43,7 +44,9 @@ import net.runelite.api.widgets.Widget;
  */
 @Setter
 @Getter
-public class MenuOptionClicked {
+@NoArgsConstructor
+public class MenuOptionClicked
+{
 	private String menuOption;
 	private String menuTarget;
 	private int id;
@@ -55,9 +58,8 @@ public class MenuOptionClicked {
 	private int clickX;
 	private int clickY;
 
-	public MenuOptionClicked() {
-	}
-	public MenuOptionClicked(MenuEntry entry) {
+	public MenuOptionClicked(MenuEntry entry)
+	{
 		this.menuOption = entry.getOption();
 		this.menuTarget = entry.getTarget();
 		this.id = entry.getIdentifier();
@@ -74,7 +76,8 @@ public class MenuOptionClicked {
 	private boolean consumed;
 	private int canvasX;
 	private int canvasY;
-	public boolean isItemOp() {
+	public boolean isItemOp()
+	{
 		MenuAction var1 = this.getMenuAction();
 		if (var1 == MenuAction.CC_OP || var1 == MenuAction.CC_OP_LOW_PRIORITY) {
 			int var2 = this.getId();
@@ -95,7 +98,8 @@ public class MenuOptionClicked {
 		return false;
 	}
 
-	public int getItemOp() {
+	public int getItemOp()
+	{
 		MenuAction var1 = this.getMenuAction();
 		if (var1 == MenuAction.CC_OP || var1 == MenuAction.CC_OP_LOW_PRIORITY) {
 			int var2 = this.getId();
@@ -122,19 +126,23 @@ public class MenuOptionClicked {
 		return -1;
 	}
 
-	public int getItemId() {
+	public int getItemId()
+	{
 		return -1;
 	}
 
-	public Widget getWidget() {
+	public Widget getWidget()
+	{
 		return null;
 	}
 
-	public int getCanvasX() {
+	public int getCanvasX()
+	{
 		return canvasX;
 	}
 
-	public int getCanvasY() {
+	public int getCanvasY()
+	{
 		return canvasY;
 	}
 
@@ -145,11 +153,13 @@ public class MenuOptionClicked {
 	 * option being clicked and that the event will not be passed on
 	 * for handling by vanilla client code.
 	 */
-	public void consume() {
+	public void consume()
+	{
 		this.consumed = true;
 	}
 
-	public void setMenuEntry(MenuEntry entry) {
+	public void setMenuEntry(MenuEntry entry)
+	{
 		this.setMenuOption(entry.getOption());
 		this.setMenuTarget(entry.getTarget());
 		this.setId(entry.getIdentifier());
@@ -159,26 +169,31 @@ public class MenuOptionClicked {
 	}
 
 	@Deprecated
-	public int getActionParam() {
+	public int getActionParam()
+	{
 		return getParam0();
 	}
 
 	@Deprecated
-	public void setActionParam(int i) {
+	public void setActionParam(int i)
+	{
 		setParam0(i);
 	}
 
 	@Deprecated
-	public int getWidgetId() {
+	public int getWidgetId()
+	{
 		return getParam1();
 	}
 
 	@Deprecated
-	public void setWidgetId(int i) {
+	public void setWidgetId(int i)
+	{
 		setParam1(i);
 	}
 
-	public boolean isAutomated() {
+	public boolean isAutomated()
+	{
 		return "Automated".equals(getMenuOption());
 	}
 }
