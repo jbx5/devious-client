@@ -30,6 +30,8 @@ public interface ClientPacket
 
 	ClientPacket RESUME_PAUSEBUTTON();
 
+	ClientPacket IF_BUTTONT();
+
 	ClientPacket IF_BUTTON1();
 
 	ClientPacket IF_BUTTON2();

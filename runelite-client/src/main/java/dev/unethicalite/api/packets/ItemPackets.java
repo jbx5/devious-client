@@ -109,29 +109,21 @@ public class ItemPackets
 
 	public static PacketBufferNode createItemOnItem(int sourceItemId, int sourceItemSlot, int itemId, int itemSlot)
 	{
-		var client = Game.getClient();
-		var clientPacket = Game.getClientPacket();
-		var packetBufferNode = Game.getClient().preparePacket(clientPacket.OPHELDU(), client.getPacketWriter().getIsaacCipher());
-		packetBufferNode.getPacketBuffer().writeIntIME(WidgetInfo.INVENTORY.getId());
-		packetBufferNode.getPacketBuffer().writeShortLE(itemSlot);
-		packetBufferNode.getPacketBuffer().writeIntLE(WidgetInfo.INVENTORY.getId());
-		packetBufferNode.getPacketBuffer().writeShort(sourceItemId);
-		packetBufferNode.getPacketBuffer().writeShort(sourceItemSlot);
-		packetBufferNode.getPacketBuffer().writeShortLE(itemId);
-		return packetBufferNode;
+		return WidgetPackets.createWidgetOnWidget(WidgetInfo.INVENTORY.getId(),sourceItemSlot,sourceItemId,WidgetInfo.INVENTORY.getId(),itemSlot,itemId);
 	}
 
 	public static PacketBufferNode createSpellOnItem(int itemId, int itemSlot, int spellWidgetId)
 	{
-		var client = Game.getClient();
-		var clientPacket = Game.getClientPacket();
-		var packetBufferNode = Game.getClient().preparePacket(clientPacket.OPHELDT(), client.getPacketWriter().getIsaacCipher());
-		packetBufferNode.getPacketBuffer().writeShortAdd(itemId);
-		packetBufferNode.getPacketBuffer().writeIntIME(spellWidgetId);
-		packetBufferNode.getPacketBuffer().writeShortAdd(itemSlot);
-		packetBufferNode.getPacketBuffer().writeShort(-1);
-		packetBufferNode.getPacketBuffer().writeInt(WidgetInfo.INVENTORY.getId());
-		return packetBufferNode;
+		return WidgetPackets.createWidgetOnWidget(spellWidgetId,-1,-1,WidgetInfo.INVENTORY.getId(), itemSlot,itemId);
+//		var client = Game.getClient();
+//		var clientPacket = Game.getClientPacket();
+//		var packetBufferNode = Game.getClient().preparePacket(clientPacket.OPHELDT(), client.getPacketWriter().getIsaacCipher());
+//		packetBufferNode.getPacketBuffer().writeShortAdd(itemId);
+//		packetBufferNode.getPacketBuffer().writeIntIME(spellWidgetId);
+//		packetBufferNode.getPacketBuffer().writeShortAdd(itemSlot);
+//		packetBufferNode.getPacketBuffer().writeShort(-1);
+//		packetBufferNode.getPacketBuffer().writeInt(WidgetInfo.INVENTORY.getId());
+//		return packetBufferNode;
 	}
 
 	public static PacketBufferNode createFirstAction(int itemWidgetId, int itemId, int itemSlot)

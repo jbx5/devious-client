@@ -13,6 +13,10 @@ public interface RSClientPacket extends ClientPacket
 	@Override
 	int getLength();
 
+	@Import("IF_BUTTONT")
+	@Override
+	RSClientPacket IF_BUTTONT();
+
 	@Import("OPHELDT")
 	@Override
 	RSClientPacket OPHELDT();

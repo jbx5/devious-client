@@ -1,8 +1,9 @@
-import java.net.MalformedURLException;
-import java.net.URL;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 
 @ObfuscatedName("kf")
 public class class291 {
@@ -99,7 +100,7 @@ public class class291 {
 	"-35")
 
 	static void method5589() {
-		Client.packetWriter.addNode(ItemContainer.getPacketBufferNode(ClientPacket.OPHELDT, Client.packetWriter.isaacCipher));
+		Client.packetWriter.addNode(ItemContainer.getPacketBufferNode(ClientPacket.field2989, Client.packetWriter.isaacCipher));
 		Client.oculusOrbState = 0;
 	}
 }
