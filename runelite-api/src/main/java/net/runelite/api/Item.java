@@ -40,7 +40,8 @@ import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 
 @Data
-public class Item implements Interactable, Identifiable, EntityNameable {
+public class Item implements Interactable, Identifiable, EntityNameable
+{
     private static final ThreadLocalRandom random = ThreadLocalRandom.current();
 
     private final int id;
@@ -54,7 +55,8 @@ public class Item implements Interactable, Identifiable, EntityNameable {
     private int widgetId;
 
     @Override
-    public String getName() {
+    public String getName()
+    {
         String name = getComposition().getName();
         if (name == null) {
             return "null";
@@ -64,19 +66,22 @@ public class Item implements Interactable, Identifiable, EntityNameable {
     }
 
     @Override
-    public String[] getRawActions() {
+    public String[] getRawActions()
+    {
         if (getType() == Type.INVENTORY) {
             return client.getItemComposition(getId()).getInventoryActions();
         }
 
         Widget widget = client.getWidget(widgetId);
         if (widget != null) {
-            if (getType() == Type.EQUIPMENT) {
+            if (getType() == Type.EQUIPMENT)
+            {
                 return widget.getRawActions();
             }
 
             Widget itemChild = widget.getChild(slot);
-            if (itemChild != null) {
+            if (itemChild != null)
+            {
                 return itemChild.getRawActions();
             }
 
@@ -87,9 +92,11 @@ public class Item implements Interactable, Identifiable, EntityNameable {
     }
 
     @Override
-    public int getActionOpcode(int action) {
+    public int getActionOpcode(int action)
+    {
         if (action == 0) {
-            if (getRawActions()[0] == null) {
+            if (getRawActions()[0] == null)
+            {
                 return MenuAction.WIDGET_TARGET.getId();
             }
         }
@@ -99,94 +106,115 @@ public class Item implements Interactable, Identifiable, EntityNameable {
     }
 
     @Override
-    public void interact(int index) {
+    public void interact(int index)
+    {
         client.interact(getMenu(index));
     }
 
-    public void drop() {
+    public void drop()
+    {
         interact(4);
     }
 
     @Override
-    public void interact(int index, int opcode) {
+    public void interact(int index, int opcode)
+    {
         client.interact(getMenu(index, opcode));
     }
 
     @Override
-    public void interact(int identifier, int opcode, int param0, int param1) {
+    public void interact(int identifier, int opcode, int param0, int param1)
+    {
         client.interact(getMenu(identifier, opcode, param0, param1));
     }
 
-    public void useOn(Interactable entity) {
-        if (entity instanceof TileItem) {
+    public void useOn(Interactable entity)
+    {
+        if (entity instanceof TileItem)
+        {
             useOn((TileItem) entity);
             return;
         }
 
-        if (entity instanceof TileObject) {
+        if (entity instanceof TileObject)
+        {
             useOn((TileObject) entity);
             return;
         }
 
-        if (entity instanceof Item) {
+        if (entity instanceof Item)
+        {
             useOn((Item) entity);
             return;
         }
 
-        if (entity instanceof Actor) {
+        if (entity instanceof Actor)
+        {
             useOn((Actor) entity);
             return;
         }
 
-        if (entity instanceof Widget) {
+        if (entity instanceof Widget)
+        {
             useOn((Widget) entity);
         }
     }
 
-    private void invokeUse() {
+    private void invokeUse()
+    {
         this.interact(id, MenuAction.WIDGET_TARGET.getId(), slot, widgetId);
     }
-    public void useOn(TileItem object) {
+    public void useOn(TileItem object)
+    {
         invokeUse();
         object.interact(0, MenuAction.WIDGET_TARGET_ON_GROUND_ITEM.getId());
     }
 
-    public void useOn(TileObject object) {
+    public void useOn(TileObject object)
+    {
         invokeUse();
         object.interact(0, MenuAction.WIDGET_TARGET_ON_GAME_OBJECT.getId());
     }
 
-    public void useOn(Item item) {
+    public void useOn(Item item)
+    {
         invokeUse();
         item.interact(0, MenuAction.WIDGET_TARGET_ON_WIDGET.getId());
     }
 
-    public void useOn(Actor actor) {
+    public void useOn(Actor actor)
+    {
         MenuAction menuAction = actor instanceof NPC ? MenuAction.WIDGET_TARGET_ON_NPC : MenuAction.WIDGET_TARGET_ON_PLAYER;
         invokeUse();
         actor.interact(0, menuAction.getId());
     }
 
-    public void useOn(Widget widget) {
+    public void useOn(Widget widget)
+    {
         invokeUse();
         widget.interact(0, MenuAction.WIDGET_TARGET_ON_WIDGET.getId());
     }
 
-    public Type getType() {
+    public Type getType()
+    {
         return Type.get(widgetId);
     }
 
-    public int calculateWidgetId(WidgetInfo containerInfo) {
+    public int calculateWidgetId(WidgetInfo containerInfo)
+    {
         return calculateWidgetId(client.getWidget(containerInfo));
     }
 
-    public int calculateWidgetId(Widget containerWidget) {
-        if (containerWidget == null) {
+    public int calculateWidgetId(Widget containerWidget)
+    {
+        if (containerWidget == null)
+        {
             return -1;
         }
 
         Widget[] children = containerWidget.getChildren();
-        if (children == null) {
+        if (children == null)
+        {
             return -1;
         }
 
@@ -196,59 +224,73 @@ public class Item implements Interactable, Identifiable, EntityNameable {
                 .orElse(-1);
     }
 
-    public ItemComposition getComposition() {
+    public ItemComposition getComposition()
+    {
         return client.getItemComposition(getId());
     }
 
-    public boolean isTradable() {
+    public boolean isTradable()
+    {
         return getComposition().isTradeable();
     }
 
-    public boolean isStackable() {
+    public boolean isStackable()
+    {
         return getComposition().isStackable();
     }
 
-    public boolean isMembers() {
+    public boolean isMembers()
+    {
         return getComposition().isMembers();
     }
 
-    public int getNotedId() {
+    public int getNotedId()
+    {
         return getComposition().getLinkedNoteId();
     }
 
-    public boolean isNoted() {
+    public boolean isNoted()
+    {
         return getComposition().getNote() > -1;
     }
 
-    public boolean isPlaceholder() {
+    public boolean isPlaceholder()
+    {
         return getComposition().getPlaceholderTemplateId() > -1;
     }
 
-    public int getStorePrice() {
+    public int getStorePrice()
+    {
         return getComposition().getPrice();
     }
 
     @Override
-    public Point getClickPoint() {
+    public Point getClickPoint()
+    {
         java.awt.Point point = Randomizer.getRandomPointIn(getBounds());
         return new Point(point.x, point.y);
     }
 
-    private Rectangle getBounds() {
+    private Rectangle getBounds()
+    {
         Widget widget = client.getWidget(getWidgetId());
-        if (widget == null) {
+        if (widget == null)
+        {
             return new Rectangle(-1, -1, 0, 0);
         }
 
-        if (getType() != Item.Type.EQUIPMENT) {
+        if (getType() != Item.Type.EQUIPMENT)
+        {
             Widget slot = widget.getChild(getSlot());
-            if (slot != null) {
+            if (slot != null)
+            {
                 return slot.getBounds() != null ? slot.getBounds() : new Rectangle(-1, -1, 0, 0);
             }
         }
 
         Rectangle bounds = widget.getBounds();
-        if (bounds == null) {
+        if (bounds == null)
+        {
             Rectangle itemBounds = widget.getWidgetItem(getSlot()).getCanvasBounds();
             return itemBounds != null ? itemBounds : new Rectangle(-1, -1, 0, 0);
         }
@@ -256,14 +298,18 @@ public class Item implements Interactable, Identifiable, EntityNameable {
     }
 
     @Override
-    public AutomatedMenu getMenu(int actionIndex) {
-        switch (getType()) {
+    public AutomatedMenu getMenu(int actionIndex)
+    {
+        switch (getType())
+        {
             case TRADE:
             case TRADE_INVENTORY:
                 Widget widget = client.getWidget(widgetId);
-                if (widget != null) {
+                if (widget != null)
+                {
                     Widget itemChild = widget.getChild(slot);
-                    if (itemChild != null) {
+                    if (itemChild != null)
+                    {
                         return itemChild.getMenu(actionIndex);
                     }
                 }
@@ -287,7 +333,8 @@ public class Item implements Interactable, Identifiable, EntityNameable {
     }
 
     @Override
-    public AutomatedMenu getMenu(int actionIndex, int opcode) {
+    public AutomatedMenu getMenu(int actionIndex, int opcode)
+    {
         switch (getType()) {
             case TRADE:
             case TRADE_INVENTORY:
@@ -313,7 +360,8 @@ public class Item implements Interactable, Identifiable, EntityNameable {
         return null;
     }
 
-    public enum Type {
+    public enum Type
+    {
         INVENTORY(InventoryID.INVENTORY),
         EQUIPMENT(InventoryID.EQUIPMENT),
         BANK(InventoryID.BANK),
@@ -324,7 +372,8 @@ public class Item implements Interactable, Identifiable, EntityNameable {
 
         private final InventoryID inventoryID;
 
-        Type(InventoryID inventoryID) {
+        Type(InventoryID inventoryID)
+        {
             this.inventoryID = inventoryID;
         }
 
@@ -347,7 +396,8 @@ public class Item implements Interactable, Identifiable, EntityNameable {
             }
         }
 
-        public InventoryID getInventoryID() {
+        public InventoryID getInventoryID()
+        {
             return inventoryID;
         }
     }
