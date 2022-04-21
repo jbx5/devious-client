@@ -28,10 +28,12 @@ import dev.unethicalite.api.EntityNameable;
 import dev.unethicalite.api.Identifiable;
 import dev.unethicalite.api.Interactable;
 import dev.unethicalite.api.events.AutomatedMenu;
-import lombok.Data;
 import dev.unethicalite.api.util.Randomizer;
+import lombok.Data;
 import net.runelite.api.util.Text;
-import net.runelite.api.widgets.*;
+import net.runelite.api.widgets.Widget;
+import net.runelite.api.widgets.WidgetID;
+import net.runelite.api.widgets.WidgetInfo;
 
 import java.awt.*;
 import java.util.Arrays;
@@ -64,80 +66,9 @@ public class Item implements Interactable, Identifiable, EntityNameable
 		return Text.removeTags(Text.sanitize(name));
 	}
 
-	@Override
-	public String[] getRawActions()
-	{
-		if (getType() == Type.INVENTORY)
-		{
-			return client.getItemComposition(getId()).getInventoryActions();
-		}
-
-		Widget widget = client.getWidget(widgetId);
-		if (widget != null)
-		{
-			if (getType() == Type.EQUIPMENT)
-			{
-				return widget.getRawActions();
-			}
-
-			Widget itemChild = widget.getChild(slot);
-			if (itemChild != null)
-			{
-				return itemChild.getRawActions();
-			}
-
-			return widget.getRawActions();
-		}
-
-		return null;
-	}
-
-	@Override
-	public int getActionOpcode(int action)
-	{
-		switch (action)
-		{
-			case 0:
-				if (getRawActions()[0] == null)
-				{
-					return MenuAction.ITEM_USE.getId();
-				}
-
-				return MenuAction.ITEM_FIRST_OPTION.getId();
-			case 1:
-				return MenuAction.ITEM_SECOND_OPTION.getId();
-			case 2:
-				return MenuAction.ITEM_THIRD_OPTION.getId();
-			case 3:
-				return MenuAction.ITEM_FOURTH_OPTION.getId();
-			case 4:
-				return MenuAction.ITEM_FIFTH_OPTION.getId();
-			default:
-				throw new IllegalArgumentException("action = " + action);
-		}
-	}
-
-	@Override
-	public void interact(int index)
-	{
-		client.interact(getMenu(index));
-	}
-
 	public void drop()
 	{
 		interact(4);
-	}
-
-	@Override
-	public void interact(int index, int opcode)
-	{
-		client.interact(getMenu(index, opcode));
-	}
-
-	@Override
-	public void interact(int identifier, int opcode, int param0, int param1)
-	{
-		client.interact(getMenu(identifier, opcode, param0, param1));
 	}
 
 	public void useOn(Interactable entity)
@@ -172,45 +103,42 @@ public class Item implements Interactable, Identifiable, EntityNameable
 		}
 	}
 
+	private void setUsed()
+	{
+		client.setSelectedSpellWidget(widgetId);
+		client.setSelectedSpellChildIndex(slot);
+		client.setSelectedSpellItemId(id);
+	}
+
 	public void useOn(TileItem object)
 	{
-		client.setSelectedItemWidget(widgetId);
-		client.setSelectedItemSlot(slot);
-		client.setSelectedItemID(id);
-		object.interact(0, MenuAction.ITEM_USE_ON_GROUND_ITEM.getId());
+		setUsed();
+		object.interact(0, MenuAction.WIDGET_TARGET_ON_GROUND_ITEM.getId());
 	}
 
 	public void useOn(TileObject object)
 	{
-		client.setSelectedItemWidget(widgetId);
-		client.setSelectedItemSlot(slot);
-		client.setSelectedItemID(id);
-		object.interact(0, MenuAction.ITEM_USE_ON_GAME_OBJECT.getId());
+		setUsed();
+		object.interact(0, MenuAction.WIDGET_TARGET_ON_GAME_OBJECT.getId());
 	}
 
 	public void useOn(Item item)
 	{
-		client.setSelectedItemWidget(widgetId);
-		client.setSelectedItemSlot(slot);
-		client.setSelectedItemID(id);
-		item.interact(0, MenuAction.ITEM_USE_ON_WIDGET_ITEM.getId());
+		setUsed();
+		item.interact(0, MenuAction.WIDGET_TARGET_ON_WIDGET.getId());
 	}
 
 	public void useOn(Actor actor)
 	{
-		MenuAction menuAction = actor instanceof NPC ? MenuAction.ITEM_USE_ON_NPC : MenuAction.ITEM_USE_ON_PLAYER;
-		client.setSelectedItemWidget(widgetId);
-		client.setSelectedItemSlot(slot);
-		client.setSelectedItemID(id);
+		MenuAction menuAction = actor instanceof NPC ? MenuAction.WIDGET_TARGET_ON_NPC : MenuAction.WIDGET_TARGET_ON_PLAYER;
+		setUsed();
 		actor.interact(0, menuAction.getId());
 	}
 
 	public void useOn(Widget widget)
 	{
-		client.setSelectedItemWidget(widgetId);
-		client.setSelectedItemSlot(slot);
-		client.setSelectedItemID(id);
-		widget.interact(0, MenuAction.ITEM_USE_ON_WIDGET.getId());
+		setUsed();
+		widget.interact(0, MenuAction.WIDGET_TARGET_ON_WIDGET.getId());
 	}
 
 	public Type getType()
@@ -237,53 +165,9 @@ public class Item implements Interactable, Identifiable, EntityNameable
 		}
 
 		return Arrays.stream(children)
-				.filter(x -> x.getItemId() == getId()).findFirst()
-				.map(Widget::getId)
-				.orElse(-1);
-	}
-
-	public enum Type
-	{
-		INVENTORY(InventoryID.INVENTORY),
-		EQUIPMENT(InventoryID.EQUIPMENT),
-		BANK(InventoryID.BANK),
-		BANK_INVENTORY(InventoryID.INVENTORY),
-		TRADE(InventoryID.TRADE),
-		TRADE_INVENTORY(InventoryID.INVENTORY),
-		UNKNOWN(null);
-
-		private final InventoryID inventoryID;
-
-		Type(InventoryID inventoryID)
-		{
-			this.inventoryID = inventoryID;
-		}
-
-		public InventoryID getInventoryID()
-		{
-			return inventoryID;
-		}
-
-		private static Type get(int widgetId)
-		{
-			switch (WidgetInfo.TO_GROUP(widgetId))
-			{
-				case WidgetID.PLAYER_TRADE_SCREEN_GROUP_ID:
-					return TRADE;
-				case WidgetID.PLAYER_TRADE_INVENTORY_GROUP_ID:
-					return TRADE_INVENTORY;
-				case WidgetID.EQUIPMENT_GROUP_ID:
-					return EQUIPMENT;
-				case WidgetID.BANK_GROUP_ID:
-					return BANK;
-				case WidgetID.BANK_INVENTORY_GROUP_ID:
-					return BANK_INVENTORY;
-				case WidgetID.INVENTORY_GROUP_ID:
-					return INVENTORY;
-				default:
-					return UNKNOWN;
-			}
-		}
+			.filter(x -> x.getItemId() == getId()).findFirst()
+			.map(Widget::getId)
+			.orElse(-1);
 	}
 
 	public ItemComposition getComposition()
@@ -333,6 +217,124 @@ public class Item implements Interactable, Identifiable, EntityNameable
 		return new Point(point.x, point.y);
 	}
 
+	@Override
+	public String[] getRawActions()
+	{
+		Widget widget = client.getWidget(widgetId);
+		if (widget != null)
+		{
+			if (getType() == Type.EQUIPMENT)
+			{
+				return widget.getRawActions();
+			}
+
+			Widget itemChild = widget.getChild(slot);
+			if (itemChild != null)
+			{
+				return itemChild.getRawActions();
+			}
+
+			return widget.getRawActions();
+		}
+
+		return null;
+	}
+
+	@Override
+	public int getActionOpcode(int action)
+	{
+		if (action == 0)
+		{
+			if (getRawActions()[0] == null)
+			{
+				return MenuAction.WIDGET_TARGET.getId();
+			}
+		}
+
+		return action >= 4 ? MenuAction.CC_OP_LOW_PRIORITY.getId()
+			: MenuAction.CC_OP.getId();
+	}
+
+	@Override
+	public void interact(int index)
+	{
+		client.interact(getMenu(index));
+	}
+
+	@Override
+	public void interact(int index, int opcode)
+	{
+		client.interact(getMenu(index, opcode));
+	}
+
+	@Override
+	public void interact(int identifier, int opcode, int param0, int param1)
+	{
+		client.interact(getMenu(identifier, opcode, param0, param1));
+	}
+
+	@Override
+	public AutomatedMenu getMenu(int actionIndex)
+	{
+		switch (getType())
+		{
+			case TRADE:
+			case TRADE_INVENTORY:
+				Widget widget = client.getWidget(widgetId);
+				if (widget != null)
+				{
+					Widget itemChild = widget.getChild(slot);
+					if (itemChild != null)
+					{
+						return itemChild.getMenu(actionIndex);
+					}
+				}
+
+				break;
+			case EQUIPMENT:
+			case INVENTORY:
+				return getMenu(actionIndex, actionIndex > 4 ? MenuAction.CC_OP_LOW_PRIORITY.getId()
+					: MenuAction.CC_OP.getId());
+			case BANK:
+			case BANK_INVENTORY:
+				return getMenu(actionIndex, MenuAction.CC_OP.getId());
+			case UNKNOWN:
+				client.getLogger().error("Couldn't determine item type for: {}, widgetid: {}", id, widgetId);
+				break;
+		}
+
+		return null;
+	}
+
+	@Override
+	public AutomatedMenu getMenu(int actionIndex, int opcode)
+	{
+		switch (getType())
+		{
+			case TRADE:
+			case TRADE_INVENTORY:
+				Widget itemWidget = client.getWidget(widgetId);
+				if (itemWidget == null)
+				{
+					return null;
+				}
+
+				return itemWidget.getMenu(actionIndex, opcode);
+			case EQUIPMENT:
+			case INVENTORY:
+				return getMenu(actionIndex + 1, opcode, actionParam, widgetId);
+			case BANK:
+				return getMenu(actionIndex, opcode, getSlot(), WidgetInfo.BANK_ITEM_CONTAINER.getPackedId());
+			case BANK_INVENTORY:
+				return getMenu(actionIndex, opcode, getSlot(), WidgetInfo.BANK_INVENTORY_ITEMS_CONTAINER.getPackedId());
+			case UNKNOWN:
+				client.getLogger().error("Couldn't determine item type for: {}, widgetid: {}", id, widgetId);
+				break;
+		}
+
+		return null;
+	}
+
 	private Rectangle getBounds()
 	{
 		Widget widget = client.getWidget(getWidgetId());
@@ -359,67 +361,47 @@ public class Item implements Interactable, Identifiable, EntityNameable
 		return bounds;
 	}
 
-	@Override
-	public AutomatedMenu getMenu(int actionIndex)
+	public enum Type
 	{
-		switch (getType())
-		{
-			case TRADE:
-			case TRADE_INVENTORY:
-				Widget widget = client.getWidget(widgetId);
-				if (widget != null)
-				{
-					Widget itemChild = widget.getChild(slot);
-					if (itemChild != null)
-					{
-						return itemChild.getMenu(actionIndex);
-					}
-				}
+		INVENTORY(InventoryID.INVENTORY),
+		EQUIPMENT(InventoryID.EQUIPMENT),
+		BANK(InventoryID.BANK),
+		BANK_INVENTORY(InventoryID.INVENTORY),
+		TRADE(InventoryID.TRADE),
+		TRADE_INVENTORY(InventoryID.INVENTORY),
+		UNKNOWN(null);
 
-				break;
-			case EQUIPMENT:
-				return getMenu(actionIndex, actionIndex > 4 ? MenuAction.CC_OP_LOW_PRIORITY.getId()
-						: MenuAction.CC_OP.getId());
-			case BANK:
-			case BANK_INVENTORY:
-				return getMenu(actionIndex, MenuAction.CC_OP.getId());
-			case INVENTORY:
-				return getMenu(getId(), getActionOpcode(actionIndex));
-			case UNKNOWN:
-				client.getLogger().error("Couldn't determine item type for: {}, widgetid: {}", id, widgetId);
-				break;
+		private final InventoryID inventoryID;
+
+		Type(InventoryID inventoryID)
+		{
+			this.inventoryID = inventoryID;
 		}
 
-		return null;
-	}
-
-	@Override
-	public AutomatedMenu getMenu(int actionIndex, int opcode)
-	{
-		switch (getType())
+		private static Type get(int widgetId)
 		{
-			case TRADE:
-			case TRADE_INVENTORY:
-				Widget itemWidget = client.getWidget(widgetId);
-				if (itemWidget == null)
-				{
-					return null;
-				}
-
-				return itemWidget.getMenu(actionIndex, opcode);
-			case EQUIPMENT:
-				return getMenu(actionIndex + 1, opcode, actionParam, widgetId);
-			case BANK:
-				return getMenu(actionIndex, opcode, getSlot(), WidgetInfo.BANK_ITEM_CONTAINER.getPackedId());
-			case BANK_INVENTORY:
-				return getMenu(actionIndex, opcode, getSlot(), WidgetInfo.BANK_INVENTORY_ITEMS_CONTAINER.getPackedId());
-			case INVENTORY:
-				return getMenu(getId(), opcode, actionParam, widgetId);
-			case UNKNOWN:
-				client.getLogger().error("Couldn't determine item type for: {}, widgetid: {}", id, widgetId);
-				break;
+			switch (WidgetInfo.TO_GROUP(widgetId))
+			{
+				case WidgetID.PLAYER_TRADE_SCREEN_GROUP_ID:
+					return TRADE;
+				case WidgetID.PLAYER_TRADE_INVENTORY_GROUP_ID:
+					return TRADE_INVENTORY;
+				case WidgetID.EQUIPMENT_GROUP_ID:
+					return EQUIPMENT;
+				case WidgetID.BANK_GROUP_ID:
+					return BANK;
+				case WidgetID.BANK_INVENTORY_GROUP_ID:
+					return BANK_INVENTORY;
+				case WidgetID.INVENTORY_GROUP_ID:
+					return INVENTORY;
+				default:
+					return UNKNOWN;
+			}
 		}
 
-		return null;
+		public InventoryID getInventoryID()
+		{
+			return inventoryID;
+		}
 	}
 }

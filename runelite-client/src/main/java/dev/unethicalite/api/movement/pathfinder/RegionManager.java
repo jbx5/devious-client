@@ -63,15 +63,15 @@ public class RegionManager
 		{
 			executorService.schedule(() ->
 			{
-				try
+				Request request = new Request.Builder()
+					.get()
+					.header("api-key", "f0bbb47b-839a-43f7-b907-eff4ab131231")
+					.url(apiUrl + "/regions/instance/" + Players.getLocal().getWorldLocation().getRegionID())
+					.build();
+
+				try (Response response = okHttpClient.newCall(request)
+					.execute())
 				{
-					Request request = new Request.Builder()
-							.get()
-							.header("api-key", "f0bbb47b-839a-43f7-b907-eff4ab131231")
-							.url(apiUrl + "/regions/instance/" + Players.getLocal().getWorldLocation().getRegionID())
-							.build();
-					Response response = okHttpClient.newCall(request)
-							.execute();
 					int code = response.code();
 					if (code != 200)
 					{
@@ -196,17 +196,16 @@ public class RegionManager
 
 		executorService.schedule(() ->
 		{
-			try
+			String json = GSON.toJson(tileFlags);
+			RequestBody body = RequestBody.create(JSON_MEDIATYPE, json);
+			Request request = new Request.Builder()
+				.post(body)
+				.header("api-key", "f0bbb47b-839a-43f7-b907-eff4ab131231")
+				.url(apiUrl + "/regions/" + VERSION)
+				.build();
+			try (Response response = okHttpClient.newCall(request)
+					.execute())
 			{
-				String json = GSON.toJson(tileFlags);
-				RequestBody body = RequestBody.create(JSON_MEDIATYPE, json);
-				Request request = new Request.Builder()
-						.post(body)
-						.header("api-key", "f0bbb47b-839a-43f7-b907-eff4ab131231")
-						.url(apiUrl + "/regions/" + VERSION)
-						.build();
-				Response response = okHttpClient.newCall(request)
-						.execute();
 				int code = response.code();
 				if (code != 200)
 				{

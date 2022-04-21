@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019, Adam <Adam@sigterm.info>
+ * Copyright (c) 2018, OpenOSRS
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,22 +22,69 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.client.util;
+package net.runelite.mixins;
 
-public class VerificationException extends Exception
+import net.runelite.api.MenuAction;
+import net.runelite.api.mixins.Inject;
+import net.runelite.api.mixins.Mixin;
+import net.runelite.api.mixins.Shadow;
+import net.runelite.api.widgets.Widget;
+import net.runelite.rs.api.RSClient;
+import net.runelite.rs.api.RSRuneLiteMenuEntry;
+
+@Mixin(RSRuneLiteMenuEntry.class)
+public abstract class RuneLiteMenuEntryMixin implements RSRuneLiteMenuEntry
 {
-	public VerificationException(String message)
+	@Shadow("client")
+	private static RSClient client;
+
+	@Inject
+	@Override
+	public int getItemId()
 	{
-		super(message);
+		MenuAction menuAction = this.getType();
+		if (menuAction == MenuAction.CC_OP || menuAction == MenuAction.CC_OP_LOW_PRIORITY)
+		{
+			int param1 = this.getParam1();
+			int param0 = this.getParam0();
+			if (param1 == 9764864)
+			{
+				Widget widget = client.getWidget(param1);
+				if (param0 != -1)
+				{
+					widget = widget.getChild(param0);
+					return widget.getItemId();
+				}
+			}
+		}
+
+		return -1;
 	}
 
-	public VerificationException(Throwable cause)
+	@Inject
+	@Override
+	public Widget getWidget()
 	{
-		super(cause);
-	}
+		int param1 = this.getParam1();
+		int param0 = this.getParam0();
 
-	public VerificationException(String message, Throwable cause)
-	{
-		super(message, cause);
+		Widget widget = client.getWidget(param1);
+
+		if (widget == null)
+		{
+			return null;
+		}
+
+		if (param0 != -1)
+		{
+			Widget child = widget.getChild(param0);
+
+			if (child != null)
+			{
+				return child;
+			}
+		}
+
+		return widget;
 	}
 }

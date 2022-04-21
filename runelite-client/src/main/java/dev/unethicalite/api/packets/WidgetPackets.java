@@ -205,6 +205,11 @@ public class WidgetPackets
 		createContinuePacket(widgetId, childId).send();
 	}
 
+	public static void queueWidgetOnWidgetPacket(int sourceWidgetId, int sourceSlot, int sourceItemId, int destinationWidgetId, int destinationSlot, int destinationItemId)
+	{
+		createWidgetOnWidget(sourceWidgetId, sourceSlot, sourceItemId, destinationWidgetId, destinationSlot, destinationItemId).send();
+	}
+
 	public static PacketBufferNode createType1Action(int widgetId)
 	{
 		var client = Game.getClient();
@@ -349,6 +354,20 @@ public class WidgetPackets
 		packetBufferNode.getPacketBuffer().writeInt(widgetId);
 		packetBufferNode.getPacketBuffer().writeShort(childId);
 		packetBufferNode.getPacketBuffer().writeShort(itemId);
+		return packetBufferNode;
+	}
+
+	public static PacketBufferNode createWidgetOnWidget(int sourceWidgetId, int sourceSlot, int sourceItemId, int destinationWidgetId, int destinationSlot, int destinationItemId)
+	{
+		var client = Game.getClient();
+		var clientPacket = Game.getClientPacket();
+		var packetBufferNode = Game.getClient().preparePacket(clientPacket.IF_BUTTONT(), client.getPacketWriter().getIsaacCipher());
+		packetBufferNode.getPacketBuffer().writeShort(sourceItemId);
+		packetBufferNode.getPacketBuffer().writeIntIME(sourceWidgetId);
+		packetBufferNode.getPacketBuffer().writeShortAdd(destinationItemId);
+		packetBufferNode.getPacketBuffer().writeShortAddLE(sourceSlot);
+		packetBufferNode.getPacketBuffer().writeInt(destinationWidgetId);
+		packetBufferNode.getPacketBuffer().writeShortAdd(destinationSlot);
 		return packetBufferNode;
 	}
 

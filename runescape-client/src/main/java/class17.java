@@ -1,14 +1,15 @@
-import java.io.File;
-import java.security.Principal;
-import java.security.cert.Certificate;
+import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
+
 import javax.net.ssl.SSLPeerUnverifiedException;
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSessionContext;
 import javax.security.cert.X509Certificate;
-
-
-
-import net.runelite.rs.ScriptOpcodes; import net.runelite.mapping.Export; import net.runelite.mapping.ObfuscatedName; import net.runelite.mapping.ObfuscatedSignature;
+import java.io.File;
+import java.security.Principal;
+import java.security.cert.Certificate;
 
 @ObfuscatedName("w")
 class class17 implements SSLSession {
@@ -163,7 +164,7 @@ class class17 implements SSLSession {
 					return 1;
 				} else if (var0 == ScriptOpcodes.RESUME_STRINGDIALOG) {
 					var7 = Interpreter.Interpreter_stringStack[--ChatChannel.Interpreter_stringStackSize];
-					var11 = ItemContainer.getPacketBufferNode(ClientPacket.field2998, Client.packetWriter.isaacCipher);
+					var11 = ItemContainer.getPacketBufferNode(ClientPacket.RESUME_P_STRINGDIALOG, Client.packetWriter.isaacCipher);
 					var11.packetBuffer.writeByte(var7.length() + 1);
 					var11.packetBuffer.writeStringCp1252NullTerminated(var7);
 					Client.packetWriter.addNode(var11);
