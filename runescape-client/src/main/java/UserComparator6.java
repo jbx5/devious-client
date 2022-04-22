@@ -11,73 +11,58 @@ public class UserComparator6 extends AbstractUserComparator {
 	final boolean reversed;
 
 	public UserComparator6(boolean var1) {
-		this.reversed = var1;
-	}
+		this.reversed = var1; // L: 10
+	} // L: 11
 
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = 
-	"(Lnl;Lnl;B)I", garbageValue = 
-	"114")
-
+	@ObfuscatedSignature(
+		descriptor = "(Lnf;Lnf;B)I",
+		garbageValue = "-108"
+	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
-		if ((var1.world != 0) && (var2.world != 0)) {
-			return this.reversed ? var1.getUsername().compareToTyped(var2.getUsername()) : var2.getUsername().compareToTyped(var1.getUsername());
+		if (var1.world != 0 && var2.world != 0) { // L: 14
+			return this.reversed ? var1.getUsername().compareToTyped(var2.getUsername()) : var2.getUsername().compareToTyped(var1.getUsername()); // L: 15
 		} else {
-			return this.compareUser(var1, var2);
+			return this.compareUser(var1, var2); // L: 17
 		}
 	}
 
 	public int compare(Object var1, Object var2) {
-		return this.compareBuddy(((Buddy) (var1)), ((Buddy) (var2)));
+		return this.compareBuddy((Buddy)var1, (Buddy)var2); // L: 21
 	}
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = 
-	"(IIII)I", garbageValue = 
-	"551180200")
-
-	static final int method2631(int var0, int var1, int var2) {
-		int var3 = var0 / var2;
-		int var4 = var0 & (var2 - 1);
-		int var5 = var1 / var2;
-		int var6 = var1 & (var2 - 1);
-		int var7 = Language.method6137(var3, var5);
-		int var8 = Language.method6137(var3 + 1, var5);
-		int var9 = Language.method6137(var3, var5 + 1);
-		int var10 = Language.method6137(var3 + 1, var5 + 1);
-		int var12 = (65536 - Rasterizer3D.Rasterizer3D_cosine[(var4 * 1024) / var2]) >> 1;
-		int var11 = (((65536 - var12) * var7) >> 16) + ((var12 * var8) >> 16);
-		int var14 = (65536 - Rasterizer3D.Rasterizer3D_cosine[(var4 * 1024) / var2]) >> 1;
-		int var13 = (((65536 - var14) * var9) >> 16) + ((var14 * var10) >> 16);
-		int var16 = (65536 - Rasterizer3D.Rasterizer3D_cosine[(var6 * 1024) / var2]) >> 1;
-		int var15 = (((65536 - var16) * var11) >> 16) + ((var13 * var16) >> 16);
-		return var15;
-	}
-
-	@ObfuscatedName("gv")
-	@ObfuscatedSignature(descriptor = 
-	"(II)V", garbageValue = 
-	"-328819266")
-
-	@Export("setWindowedMode")
-	static void setWindowedMode(int var0) {
-		Client.field529 = 0L;
-		if (var0 >= 2) {
-			Client.isResizable = true;
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "(IB)Lgi;",
+		garbageValue = "-4"
+	)
+	public static VarbitComposition method2643(int var0) {
+		VarbitComposition var1 = (VarbitComposition)VarbitComposition.VarbitDefinition_cached.get((long)var0); // L: 28
+		if (var1 != null) { // L: 29
+			return var1;
 		} else {
-			Client.isResizable = false;
-		}
+			byte[] var2 = class11.VarbitDefinition_archive.takeFile(14, var0); // L: 30
+			var1 = new VarbitComposition(); // L: 31
+			if (var2 != null) { // L: 32
+				var1.decode(new Buffer(var2));
+			}
 
-		if (ReflectionCheck.getWindowedMode() == 1) {
-			UserComparator10.client.setMaxCanvasSize(765, 503);
-		} else {
-			UserComparator10.client.setMaxCanvasSize(7680, 2160);
+			VarbitComposition.VarbitDefinition_cached.put(var1, (long)var0); // L: 33
+			return var1; // L: 34
 		}
-
-		if (Client.gameState >= 25) {
-			class17.method228();
-		}
-
 	}
+
+	@ObfuscatedName("lv")
+	@ObfuscatedSignature(
+		descriptor = "([BII)V",
+		garbageValue = "1110458768"
+	)
+	static void method2646(byte[] var0, int var1) {
+		if (Client.randomDatData == null) { // L: 12567
+			Client.randomDatData = new byte[24];
+		}
+
+		class350.writeRandomDat(var0, var1, Client.randomDatData, 0, 24); // L: 12568
+	} // L: 12569
 }

@@ -3,108 +3,90 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dn")
+@ObfuscatedName("dd")
 @Implements("UserComparator5")
 public class UserComparator5 extends AbstractUserComparator {
-	@ObfuscatedName("do")
-	@Export("mouseCam")
-	static boolean mouseCam;
 	@ObfuscatedName("v")
 	@Export("reversed")
 	final boolean reversed;
 
 	public UserComparator5(boolean var1) {
-		this.reversed = var1;
-	}
+		this.reversed = var1; // L: 10
+	} // L: 11
 
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = 
-	"(Lnl;Lnl;I)I", garbageValue = 
-	"-1157970116")
-
+	@ObfuscatedSignature(
+		descriptor = "(Lnf;Lnf;I)I",
+		garbageValue = "-2036334399"
+	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
-		if (var1.world != 0) {
-			if (var2.world == 0) {
+		if (var1.world != 0) { // L: 14
+			if (var2.world == 0) { // L: 15
 				return this.reversed ? -1 : 1;
 			}
 		} else if (var2.world != 0) {
-			return this.reversed ? 1 : -1;
+			return this.reversed ? 1 : -1; // L: 18
 		}
 
-		return this.compareUser(var1, var2);
+		return this.compareUser(var1, var2); // L: 20
 	}
 
 	public int compare(Object var1, Object var2) {
-		return this.compareBuddy(((Buddy) (var1)), ((Buddy) (var2)));
+		return this.compareBuddy((Buddy)var1, (Buddy)var2); // L: 24
 	}
 
-	@ObfuscatedName("u")
-	@ObfuscatedSignature(descriptor = 
-	"(I)Lfq;", garbageValue = 
-	"-2066827638")
-
-	public static Clock method2592() {
-		try {
-			return new NanoClock();
-		} catch (Throwable var1) {
-			return new MilliClock();
-		}
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "(IIIB)Lqi;",
+		garbageValue = "-28"
+	)
+	static SpritePixels method2599(int var0, int var1, int var2) {
+		DemotingHashTable var3 = WorldMapRegion.WorldMapRegion_cachedSprites; // L: 38
+		long var4 = (long)(var2 << 16 | var0 << 8 | var1); // L: 41
+		return (SpritePixels)var3.get(var4); // L: 43
 	}
 
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(descriptor = 
-	"(ILbo;ZI)I", garbageValue = 
-	"-966652469")
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "(Lln;Lln;B)V",
+		garbageValue = "0"
+	)
+	public static void method2592(AbstractArchive var0, AbstractArchive var1) {
+		HealthBarDefinition.HealthBarDefinition_archive = var0; // L: 32
+		HealthBarDefinition.field1863 = var1; // L: 33
+	} // L: 34
 
-	static int method2595(int var0, Script var1, boolean var2) {
-		if ((((((((var0 != 7000) && (var0 != 7005)) && (var0 != 7010)) && (var0 != 7015)) && (var0 != 7020)) && (var0 != 7025)) && (var0 != 7030)) && (var0 != 7035)) {
-			if ((((((var0 != 7001) && (var0 != 7002)) && (var0 != 7011)) && (var0 != 7012)) && (var0 != 7021)) && (var0 != 7022)) {
-				if (((var0 != 7003) && (var0 != 7013)) && (var0 != 7023)) {
-					if ((((((var0 != 7006) && (var0 != 7007)) && (var0 != 7016)) && (var0 != 7017)) && (var0 != 7026)) && (var0 != 7027)) {
-						if (((var0 != 7008) && (var0 != 7018)) && (var0 != 7028)) {
-							if ((var0 != 7031) && (var0 != 7032)) {
-								if (var0 == 7033) {
-									--ChatChannel.Interpreter_stringStackSize;
-									return 1;
-								} else if ((var0 != 7036) && (var0 != 7037)) {
-									if (var0 == 7038) {
-										--class295.Interpreter_intStackSize;
-										return 1;
-									} else if ((((((((var0 != 7004) && (var0 != 7009)) && (var0 != 7014)) && (var0 != 7019)) && (var0 != 7024)) && (var0 != 7029)) && (var0 != 7034)) && (var0 != 7039)) {
-										return 2;
-									} else {
-										--class295.Interpreter_intStackSize;
-										return 1;
-									}
-								} else {
-									class295.Interpreter_intStackSize -= 2;
-									return 1;
-								}
-							} else {
-								--ChatChannel.Interpreter_stringStackSize;
-								--class295.Interpreter_intStackSize;
-								return 1;
-							}
-						} else {
-							--class295.Interpreter_intStackSize;
-							return 1;
-						}
-					} else {
-						class295.Interpreter_intStackSize -= 2;
-						return 1;
-					}
-				} else {
-					class295.Interpreter_intStackSize -= 2;
-					return 1;
-				}
-			} else {
-				class295.Interpreter_intStackSize -= 3;
-				return 1;
-			}
+	@ObfuscatedName("i")
+	@ObfuscatedSignature(
+		descriptor = "(III)Lbd;",
+		garbageValue = "121897231"
+	)
+	static Script method2600(int var0, int var1) {
+		Script var2 = (Script)Script.Script_cached.get((long)(var0 << 16)); // L: 56
+		if (var2 != null) { // L: 57
+			return var2; // L: 58
 		} else {
-			class295.Interpreter_intStackSize -= 5;
-			return 1;
+			String var3 = String.valueOf(var0); // L: 60
+			int var4 = class152.archive12.getGroupId(var3); // L: 61
+			if (var4 == -1) { // L: 62
+				return null; // L: 63
+			} else {
+				byte[] var5 = class152.archive12.takeFileFlat(var4); // L: 65
+				if (var5 != null) { // L: 66
+					if (var5.length <= 1) { // L: 67
+						return null; // L: 68
+					}
+
+					var2 = PcmPlayer.newScript(var5); // L: 70
+					if (var2 != null) { // L: 71
+						Script.Script_cached.put(var2, (long)(var0 << 16)); // L: 72
+						return var2; // L: 73
+					}
+				}
+
+				return null; // L: 76
+			}
 		}
 	}
 }

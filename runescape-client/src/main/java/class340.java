@@ -1,24 +1,18 @@
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("mt")
+@ObfuscatedName("mk")
 public final class class340 {
-	@ObfuscatedName("us")
-	@ObfuscatedSignature(descriptor = 
-	"Lla;")
-
-	public static class326 field4109;
 	@ObfuscatedName("v")
-	final Object field4107;
-	@ObfuscatedName("o")
-	@ObfuscatedGetter(intValue = 
-	74702637)
-
-	int field4108;
+	final Object field4096;
+	@ObfuscatedName("c")
+	@ObfuscatedGetter(
+		intValue = 1768359201
+	)
+	int field4095;
 
 	class340(Object var1, int var2) {
-		this.field4107 = var1;
-		this.field4108 = var2;
-	}
+		this.field4096 = var1; // L: 158
+		this.field4095 = var2; // L: 159
+	} // L: 160
 }

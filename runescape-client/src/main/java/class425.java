@@ -1,50 +1,50 @@
 import java.util.Iterator;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ph")
+@ObfuscatedName("pn")
 class class425 implements Iterator {
 	@ObfuscatedName("v")
-	@ObfuscatedGetter(intValue = 
-	1020132659)
-
-	int field4584;
-
-	@ObfuscatedSignature(descriptor = 
-	"Lps;")
-
+	@ObfuscatedGetter(
+		intValue = -991583815
+	)
+	int field4581;
+	// $FF: synthetic field
+	@ObfuscatedSignature(
+		descriptor = "Lpj;"
+	)
 	final class426 this$0;
 
-	@ObfuscatedSignature(descriptor = 
-	"(Lps;)V")
-
+	@ObfuscatedSignature(
+		descriptor = "(Lpj;)V"
+	)
 	class425(class426 var1) {
-		this.this$0 = var1;
+		this.this$0 = var1; // L: 50
 	}
 
 	public boolean hasNext() {
-		return this.field4584 < this.this$0.method7171();
+		return this.field4581 < this.this$0.method7113(); // L: 54
 	}
 
 	public Object next() {
-		int var1 = (++this.field4584) - 1;
-		class393 var2 = ((class393) (this.this$0.field4585.get(((long) (var1)))));
-		return var2 != null ? var2 : this.this$0.method7639(var1);
+		int var1 = ++this.field4581 - 1; // L: 58
+		class393 var2 = (class393)this.this$0.field4583.get((long)var1); // L: 59
+		return var2 != null ? var2 : this.this$0.method7543(var1); // L: 60 61
 	}
 
 	public void remove() {
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException(); // L: 65
 	}
 
-	@ObfuscatedName("g")
-	@ObfuscatedSignature(descriptor = 
-	"(IIIB)I", garbageValue = 
-	"0")
-
-	public static int method7636(int var0, int var1, int var2) {
-		int var3 = class260.method5203((var2 - var1) + 1);
-		var3 <<= var1;
-		return var0 & (~var3);
+	@ObfuscatedName("ax")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;I)I",
+		garbageValue = "-131933810"
+	)
+	@Export("stringCp1252NullTerminatedByteSize")
+	public static int stringCp1252NullTerminatedByteSize(String var0) {
+		return var0.length() + 1; // L: 117
 	}
 }

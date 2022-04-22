@@ -1,40 +1,41 @@
 import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("pl")
+@ObfuscatedName("ps")
 final class class432 implements class427 {
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(descriptor = 
-	"Lkn;")
-
-	@Export("scriptDotWidget")
-	static Widget scriptDotWidget;
+	@ObfuscatedName("nv")
+	@ObfuscatedGetter(
+		intValue = -951968351
+	)
+	@Export("selectedItemSlot")
+	static int selectedItemSlot;
 
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = 
-	"(Ljava/lang/Object;Lpd;B)V", garbageValue = 
-	"25")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/Object;Lpi;I)V",
+		garbageValue = "-700069158"
+	)
+	public void vmethod7597(Object var1, Buffer var2) {
+		this.method7601((String)var1, var2); // L: 46
+	} // L: 47
 
-	public void vmethod7681(Object var1, Buffer var2) {
-		this.method7682(((String) (var1)), var2);
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "(Lpi;I)Ljava/lang/Object;",
+		garbageValue = "-1640188252"
+	)
+	public Object vmethod7598(Buffer var1) {
+		return var1.readStringCp1252NullTerminated(); // L: 42
 	}
 
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = 
-	"(Lpd;I)Ljava/lang/Object;", garbageValue = 
-	"1821026092")
-
-	public Object vmethod7683(Buffer var1) {
-		return var1.readStringCp1252NullTerminated();
-	}
-
-	@ObfuscatedName("l")
-	@ObfuscatedSignature(descriptor = 
-	"(Ljava/lang/String;Lpd;I)V", garbageValue = 
-	"-1807705187")
-
-	void method7682(String var1, Buffer var2) {
-		var2.writeStringCp1252NullTerminated(var1);
-	}
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;Lpi;I)V",
+		garbageValue = "-1186525563"
+	)
+	void method7601(String var1, Buffer var2) {
+		var2.writeStringCp1252NullTerminated(var1); // L: 38
+	} // L: 39
 }

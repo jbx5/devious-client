@@ -1,18 +1,19 @@
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("px")
+@ObfuscatedName("pd")
 public interface class419 extends Iterable {
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = 
-	"(II)I", garbageValue = 
-	"-1911974643")
+	@ObfuscatedSignature(
+		descriptor = "(IB)I",
+		garbageValue = "1"
+	)
+	int vmethod7471(int var1);
 
-	int vmethod7559(int var1);
-
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = 
-	"(ILjava/lang/Object;I)V", garbageValue = 
-	"1473978830")
-
-	void vmethod7561(int var1, Object var2);}
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "(ILjava/lang/Object;B)V",
+		garbageValue = "-12"
+	)
+	void vmethod7464(int var1, Object var2);
+}

@@ -4,70 +4,83 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("id")
+@ObfuscatedName("hm")
 @Implements("WorldMapID")
 public class WorldMapID {
+	@ObfuscatedName("ua")
+	@ObfuscatedGetter(
+		longValue = -1968541600004373947L
+	)
+	static long field2388;
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = 
-	"Lid;")
-
-	static final WorldMapID field2829;
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = 
-	"Lid;")
-
-	static final WorldMapID field2826;
-	@ObfuscatedName("n")
-	@ObfuscatedSignature(descriptor = 
-	"Llq;")
-
-	@Export("ItemDefinition_archive")
-	static AbstractArchive ItemDefinition_archive;
-	@ObfuscatedName("h")
-	@ObfuscatedGetter(intValue = 
-	-1857886715)
-
+	@ObfuscatedSignature(
+		descriptor = "Lhm;"
+	)
+	static final WorldMapID field2383;
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "Lhm;"
+	)
+	static final WorldMapID field2387;
+	@ObfuscatedName("d")
+	@ObfuscatedSignature(
+		descriptor = "Lky;"
+	)
+	@Export("scriptDotWidget")
+	static Widget scriptDotWidget;
+	@ObfuscatedName("bd")
+	@ObfuscatedGetter(
+		intValue = 1523273113
+	)
+	static int field2386;
+	@ObfuscatedName("i")
+	@ObfuscatedGetter(
+		intValue = 171627445
+	)
 	@Export("value")
 	final int value;
-	static 
-	{
-		field2829 = new WorldMapID(0);
-		field2826 = new WorldMapID(1);
+
+	static {
+		field2383 = new WorldMapID(0); // L: 4
+		field2387 = new WorldMapID(1); // L: 5
 	}
 
 	WorldMapID(int var1) {
 		this.value = var1;
+	} // L: 10
+
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "(II)I",
+		garbageValue = "1758610928"
+	)
+	@Export("Widget_unpackTargetMask")
+	public static int Widget_unpackTargetMask(int var0) {
+		return var0 >> 11 & 63; // L: 9
 	}
 
-	@ObfuscatedName("g")
-	@ObfuscatedSignature(descriptor = 
-	"(IB)V", garbageValue = 
-	"91")
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z",
+		garbageValue = "-670115477"
+	)
+	public static boolean method4360() {
+		ReflectionCheck var0 = (ReflectionCheck)class54.reflectionChecks.last(); // L: 28
+		return var0 != null; // L: 29
+	}
 
-	public static void method5000(int var0) {
-		if (var0 != (-1)) {
-			if (Frames.Widget_loadedInterfaces[var0]) {
-				class122.Widget_archive.clearFilesGroup(var0);
-				if (EnumComposition.Widget_interfaceComponents[var0] != null) {
-					boolean var1 = true;
-
-					for (int var2 = 0; var2 < EnumComposition.Widget_interfaceComponents[var0].length; ++var2) {
-						if (EnumComposition.Widget_interfaceComponents[var0][var2] != null) {
-							if (EnumComposition.Widget_interfaceComponents[var0][var2].type != 2) {
-								EnumComposition.Widget_interfaceComponents[var0][var2] = null;
-							} else {
-								var1 = false;
-							}
-						}
-					}
-
-					if (var1) {
-						EnumComposition.Widget_interfaceComponents[var0] = null;
-					}
-
-					Frames.Widget_loadedInterfaces[var0] = false;
-				}
-			}
+	@ObfuscatedName("fn")
+	@ObfuscatedSignature(
+		descriptor = "(IZZZB)Llx;",
+		garbageValue = "-70"
+	)
+	@Export("newArchive")
+	static Archive newArchive(int var0, boolean var1, boolean var2, boolean var3) {
+		ArchiveDisk var4 = null; // L: 1972
+		if (JagexCache.JagexCache_dat2File != null) { // L: 1973
+			var4 = new ArchiveDisk(var0, JagexCache.JagexCache_dat2File, class115.JagexCache_idxFiles[var0], 1000000);
 		}
+
+		return new Archive(var4, class182.masterDisk, var0, var1, var2, var3); // L: 1974
 	}
 }

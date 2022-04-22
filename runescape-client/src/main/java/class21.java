@@ -10,112 +10,104 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("y")
 public class class21 {
-	@ObfuscatedName("n")
-	@ObfuscatedGetter(intValue = 
-	1307123935)
-
-	static int field108;
+	@ObfuscatedName("rp")
+	@ObfuscatedSignature(
+		descriptor = "Lea;"
+	)
+	@Export("guestClanChannel")
+	static ClanChannel guestClanChannel;
+	@ObfuscatedName("ta")
+	@ObfuscatedGetter(
+		intValue = 1164104803
+	)
+	static int field116;
+	@ObfuscatedName("hi")
+	@Export("regions")
+	static int[] regions;
+	@ObfuscatedName("jc")
+	@ObfuscatedGetter(
+		intValue = 98002171
+	)
+	@Export("cameraYaw")
+	static int cameraYaw;
 	@ObfuscatedName("v")
-	@ObfuscatedGetter(intValue = 
-	-300178005)
-
-	final int field103;
-	@ObfuscatedName("o")
-	final String field104;
+	@ObfuscatedGetter(
+		intValue = -824857787
+	)
+	final int field111;
+	@ObfuscatedName("c")
+	final String field109;
 
 	class21(String var1) {
-		this.field103 = 400;
-		this.field104 = "";
-	}
+		this.field111 = 400; // L: 32
+		this.field109 = ""; // L: 33
+	} // L: 34
 
 	class21(HttpURLConnection var1) throws IOException {
-		this.field103 = var1.getResponseCode();
-		var1.getResponseMessage();
-		var1.getHeaderFields();
-		StringBuilder var2 = new StringBuilder();
-		InputStream var3 = (this.field103 >= 300) ? var1.getErrorStream() : var1.getInputStream();
-		if (var3 != null) {
-			InputStreamReader var4 = new InputStreamReader(var3);
-			BufferedReader var5 = new BufferedReader(var4);
+		this.field111 = var1.getResponseCode(); // L: 14
+		var1.getResponseMessage(); // L: 15
+		var1.getHeaderFields(); // L: 16
+		StringBuilder var2 = new StringBuilder(); // L: 17
+		InputStream var3 = this.field111 >= 300 ? var1.getErrorStream() : var1.getInputStream(); // L: 18
+		if (var3 != null) { // L: 19
+			InputStreamReader var4 = new InputStreamReader(var3); // L: 20
+			BufferedReader var5 = new BufferedReader(var4); // L: 21
 
 			String var6;
-			while ((var6 = var5.readLine()) != null) {
-				var2.append(var6);
-			} 
+			while ((var6 = var5.readLine()) != null) { // L: 23
+				var2.append(var6); // L: 24
+			}
 
-			var3.close();
+			var3.close(); // L: 26
 		}
 
-		this.field104 = var2.toString();
-	}
+		this.field109 = var2.toString(); // L: 28
+	} // L: 29
 
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = 
-	"(I)I", garbageValue = 
-	"545491845")
-
-	public int method328() {
-		return this.field103;
+	@ObfuscatedSignature(
+		descriptor = "(I)I",
+		garbageValue = "716414120"
+	)
+	public int method299() {
+		return this.field111; // L: 37
 	}
 
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = 
-	"(B)Ljava/lang/String;", garbageValue = 
-	"-31")
-
-	public String method330() {
-		return this.field104;
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "(B)Ljava/lang/String;",
+		garbageValue = "11"
+	)
+	public String method297() {
+		return this.field109; // L: 41
 	}
 
-	@ObfuscatedName("ix")
-	@ObfuscatedSignature(descriptor = 
-	"(I)V", garbageValue = 
-	"-1896526262")
-
-	@Export("incrementMenuEntries")
-	static final void incrementMenuEntries() {
-		boolean var0 = false;
-
-		while (!var0) {
-			var0 = true;
-
-			for (int var1 = 0; var1 < (Client.menuOptionsCount - 1); ++var1) {
-				if ((Client.menuOpcodes[var1] < 1000) && (Client.menuOpcodes[var1 + 1] > 1000)) {
-					String var2 = Client.menuTargets[var1];
-					Client.menuTargets[var1] = Client.menuTargets[var1 + 1];
-					Client.menuTargets[var1 + 1] = var2;
-					String var3 = Client.menuActions[var1];
-					Client.menuActions[var1] = Client.menuActions[var1 + 1];
-					Client.menuActions[var1 + 1] = var3;
-					int var4 = Client.menuOpcodes[var1];
-					Client.menuOpcodes[var1] = Client.menuOpcodes[var1 + 1];
-					Client.menuOpcodes[var1 + 1] = var4;
-					var4 = Client.menuArguments1[var1];
-					Client.menuArguments1[var1] = Client.menuArguments1[var1 + 1];
-					Client.menuArguments1[var1 + 1] = var4;
-					var4 = Client.menuArguments2[var1];
-					Client.menuArguments2[var1] = Client.menuArguments2[var1 + 1];
-					Client.menuArguments2[var1 + 1] = var4;
-					var4 = Client.menuIdentifiers[var1];
-					Client.menuIdentifiers[var1] = Client.menuIdentifiers[var1 + 1];
-					Client.menuIdentifiers[var1 + 1] = var4;
-					boolean var5 = Client.menuShiftClick[var1];
-					Client.menuShiftClick[var1] = Client.menuShiftClick[var1 + 1];
-					Client.menuShiftClick[var1 + 1] = var5;
-					var0 = false;
-				}
-			}
-		} 
-
+	@ObfuscatedName("en")
+	@ObfuscatedSignature(
+		descriptor = "(I)Lov;",
+		garbageValue = "2110304027"
+	)
+	@Export("getWorldMap")
+	static WorldMap getWorldMap() {
+		return ScriptFrame.worldMap; // L: 664
 	}
 
-	@ObfuscatedName("kl")
-	@ObfuscatedSignature(descriptor = 
-	"(IB)V", garbageValue = 
-	"1")
-
-	static final void method334(int var0) {
-		var0 = Math.min(Math.max(var0, 0), 127);
-		Interpreter.clientPreferences.method2270(var0);
+	@ObfuscatedName("in")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z",
+		garbageValue = "-1923971854"
+	)
+	static final boolean method303() {
+		return Client.isMenuOpen; // L: 8651
 	}
+
+	@ObfuscatedName("if")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;Ljava/lang/String;IIIII)V",
+		garbageValue = "1636192715"
+	)
+	@Export("insertMenuItemNoShift")
+	public static final void insertMenuItemNoShift(String var0, String var1, int var2, int var3, int var4, int var5) {
+		class28.insertMenuItem(var0, var1, var2, var3, var4, var5, false); // L: 9826
+	} // L: 9827
 }

@@ -4,79 +4,75 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("lo")
+@ObfuscatedName("lw")
 @Implements("GrandExchangeOfferTotalQuantityComparator")
 final class GrandExchangeOfferTotalQuantityComparator implements Comparator {
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = 
-	"(Llm;Llm;I)I", garbageValue = 
-	"2027302078")
-
+	@ObfuscatedSignature(
+		descriptor = "(Llc;Llc;I)I",
+		garbageValue = "-1618602527"
+	)
 	@Export("compare_bridged")
 	int compare_bridged(GrandExchangeEvent var1, GrandExchangeEvent var2) {
-		return var1.grandExchangeOffer.totalQuantity < var2.grandExchangeOffer.totalQuantity ? -1 : var2.grandExchangeOffer.totalQuantity == var1.grandExchangeOffer.totalQuantity ? 0 : 1;
-	}
-
-	public boolean equals(Object var1) {
-		return super.equals(var1);
+		return var1.grandExchangeOffer.totalQuantity < var2.grandExchangeOffer.totalQuantity ? -1 : (var2.grandExchangeOffer.totalQuantity == var1.grandExchangeOffer.totalQuantity ? 0 : 1); // L: 69
 	}
 
 	public int compare(Object var1, Object var2) {
-		return this.compare_bridged(((GrandExchangeEvent) (var1)), ((GrandExchangeEvent) (var2)));
+		return this.compare_bridged((GrandExchangeEvent)var1, (GrandExchangeEvent)var2);
 	}
 
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = 
-	"(II)Lfi;", garbageValue = 
-	"1494157622")
+	public boolean equals(Object var1) {
+		return super.equals(var1); // L: 77
+	}
 
-	@Export("KitDefinition_get")
-	public static KitDefinition KitDefinition_get(int var0) {
-		KitDefinition var1 = ((KitDefinition) (KitDefinition.KitDefinition_cached.get(((long) (var0)))));
-		if (var1 != null) {
-			return var1;
-		} else {
-			byte[] var2 = KitDefinition.KitDefinition_archive.takeFile(3, var0);
-			var1 = new KitDefinition();
-			if (var2 != null) {
-				var1.decode(new Buffer(var2));
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "(I)[Ldk;",
+		garbageValue = "1223848574"
+	)
+	static class119[] method5977() {
+		return new class119[]{class119.field1449, class119.field1439, class119.field1440, class119.field1441, class119.field1442, class119.field1446, class119.field1444, class119.field1443, class119.field1455, class119.field1447, class119.field1448, class119.field1451, class119.field1450, class119.field1445, class119.field1457, class119.field1452, class119.field1454}; // L: 73
+	}
+
+	@ObfuscatedName("ie")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-1983287311"
+	)
+	@Export("incrementMenuEntries")
+	static final void incrementMenuEntries() {
+		boolean var0 = false; // L: 9793
+
+		while (!var0) { // L: 9794
+			var0 = true; // L: 9795
+
+			for (int var1 = 0; var1 < Client.menuOptionsCount - 1; ++var1) { // L: 9796
+				if (Client.menuOpcodes[var1] < 1000 && Client.menuOpcodes[var1 + 1] > 1000) { // L: 9797
+					String var2 = Client.menuTargets[var1]; // L: 9798
+					Client.menuTargets[var1] = Client.menuTargets[var1 + 1]; // L: 9799
+					Client.menuTargets[var1 + 1] = var2; // L: 9800
+					String var3 = Client.menuActions[var1]; // L: 9801
+					Client.menuActions[var1] = Client.menuActions[var1 + 1]; // L: 9802
+					Client.menuActions[var1 + 1] = var3; // L: 9803
+					int var4 = Client.menuOpcodes[var1]; // L: 9804
+					Client.menuOpcodes[var1] = Client.menuOpcodes[var1 + 1]; // L: 9805
+					Client.menuOpcodes[var1 + 1] = var4; // L: 9806
+					var4 = Client.menuArguments1[var1]; // L: 9807
+					Client.menuArguments1[var1] = Client.menuArguments1[var1 + 1]; // L: 9808
+					Client.menuArguments1[var1 + 1] = var4; // L: 9809
+					var4 = Client.menuArguments2[var1]; // L: 9810
+					Client.menuArguments2[var1] = Client.menuArguments2[var1 + 1]; // L: 9811
+					Client.menuArguments2[var1 + 1] = var4; // L: 9812
+					var4 = Client.menuIdentifiers[var1]; // L: 9813
+					Client.menuIdentifiers[var1] = Client.menuIdentifiers[var1 + 1]; // L: 9814
+					Client.menuIdentifiers[var1 + 1] = var4; // L: 9815
+					boolean var5 = Client.menuShiftClick[var1]; // L: 9816
+					Client.menuShiftClick[var1] = Client.menuShiftClick[var1 + 1]; // L: 9817
+					Client.menuShiftClick[var1 + 1] = var5; // L: 9818
+					var0 = false; // L: 9819
+				}
 			}
-
-			KitDefinition.KitDefinition_cached.put(var1, ((long) (var0)));
-			return var1;
-		}
-	}
-
-	@ObfuscatedName("v")
-	public static final void method6007(long var0) {
-		if (var0 > 0L) {
-			if (0L == (var0 % 10L)) {
-				FriendLoginUpdate.method6731(var0 - 1L);
-				FriendLoginUpdate.method6731(1L);
-			} else {
-				FriendLoginUpdate.method6731(var0);
-			}
-
-		}
-	}
-
-	@ObfuscatedName("jn")
-	@ObfuscatedSignature(descriptor = 
-	"(IS)Ljava/lang/String;", garbageValue = 
-	"-9298")
-
-	@Export("formatItemStacks")
-	static final String formatItemStacks(int var0) {
-		String var1 = Integer.toString(var0);
-
-		for (int var2 = var1.length() - 3; var2 > 0; var2 -= 3) {
-			var1 = (var1.substring(0, var2) + ",") + var1.substring(var2);
 		}
 
-		if (var1.length() > 9) {
-			return (((((((" " + ChatChannel.colorStartTag(65408)) + var1.substring(0, var1.length() - 8)) + "M") + " ") + " (") + var1) + ")") + "</col>";
-		} else {
-			return var1.length() > 6 ? (((((((" " + ChatChannel.colorStartTag(16777215)) + var1.substring(0, var1.length() - 4)) + "K") + " ") + " (") + var1) + ")") + "</col>" : ((" " + ChatChannel.colorStartTag(16776960)) + var1) + "</col>";
-		}
-	}
+	} // L: 9823
 }

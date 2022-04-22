@@ -1,60 +1,64 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ec")
+@ObfuscatedName("ej")
 public class class133 extends class128 {
+	@ObfuscatedName("hh")
+	@Export("regionLandArchiveIds")
+	static int[] regionLandArchiveIds;
 	@ObfuscatedName("v")
-	@ObfuscatedGetter(intValue = 
-	124738811)
-
-	int field1560;
-	@ObfuscatedName("o")
-	@ObfuscatedGetter(intValue = 
-	-1528369699)
-
-	int field1558;
-	@ObfuscatedName("h")
-	@ObfuscatedGetter(intValue = 
-	556051491)
-
-	int field1562;
-	@ObfuscatedName("g")
-	@ObfuscatedGetter(intValue = 
-	-387663765)
-
-	int field1561;
-
-	@ObfuscatedSignature(descriptor = 
-	"Lee;")
-
+	@ObfuscatedGetter(
+		intValue = 432924361
+	)
+	int field1556;
+	@ObfuscatedName("c")
+	@ObfuscatedGetter(
+		intValue = -2115932519
+	)
+	int field1555;
+	@ObfuscatedName("i")
+	@ObfuscatedGetter(
+		intValue = 117330729
+	)
+	int field1552;
+	@ObfuscatedName("f")
+	@ObfuscatedGetter(
+		intValue = -850318401
+	)
+	int field1550;
+	// $FF: synthetic field
+	@ObfuscatedSignature(
+		descriptor = "Les;"
+	)
 	final class131 this$0;
 
-	@ObfuscatedSignature(descriptor = 
-	"(Lee;)V")
-
+	@ObfuscatedSignature(
+		descriptor = "(Les;)V"
+	)
 	class133(class131 var1) {
-		this.this$0 = var1;
+		this.this$0 = var1; // L: 289
 	}
 
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = 
-	"(Lpd;B)V", garbageValue = 
-	"-73")
+	@ObfuscatedSignature(
+		descriptor = "(Lpi;I)V",
+		garbageValue = "-413979452"
+	)
+	void vmethod3168(Buffer var1) {
+		this.field1556 = var1.readInt(); // L: 292
+		this.field1550 = var1.readInt(); // L: 293
+		this.field1555 = var1.readUnsignedByte(); // L: 294
+		this.field1552 = var1.readUnsignedByte(); // L: 295
+	} // L: 296
 
-	void vmethod3107(Buffer var1) {
-		this.field1560 = var1.readInt();
-		this.field1561 = var1.readInt();
-		this.field1558 = var1.readUnsignedByte();
-		this.field1562 = var1.readUnsignedByte();
-	}
-
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = 
-	"(Leh;I)V", garbageValue = 
-	"-1228032820")
-
-	void vmethod3104(ClanSettings var1) {
-		var1.method2928(this.field1560, this.field1561, this.field1558, this.field1562);
-	}
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "(Lex;S)V",
+		garbageValue = "-10316"
+	)
+	void vmethod3162(ClanSettings var1) {
+		var1.method2969(this.field1556, this.field1550, this.field1555, this.field1552); // L: 299
+	} // L: 300
 }

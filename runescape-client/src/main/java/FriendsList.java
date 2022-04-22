@@ -4,171 +4,158 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("nt")
+@ObfuscatedName("nr")
 @Implements("FriendsList")
 public class FriendsList extends UserList {
-	@ObfuscatedName("h")
-	@ObfuscatedSignature(descriptor = 
-	"Lpa;")
-
+	@ObfuscatedName("i")
+	@ObfuscatedSignature(
+		descriptor = "Lpe;"
+	)
 	@Export("loginType")
 	final LoginType loginType;
-	@ObfuscatedName("g")
-	@ObfuscatedGetter(intValue = 
-	-812029461)
-
-	int field4246;
-	@ObfuscatedName("l")
-	@ObfuscatedSignature(descriptor = 
-	"Llt;")
-
+	@ObfuscatedName("f")
+	@ObfuscatedGetter(
+		intValue = -676332345
+	)
+	int field4235;
+	@ObfuscatedName("b")
+	@ObfuscatedSignature(
+		descriptor = "Llr;"
+	)
 	@Export("friendLoginUpdates")
 	public LinkDeque friendLoginUpdates;
 
-	@ObfuscatedSignature(descriptor = 
-	"(Lpa;)V")
-
+	@ObfuscatedSignature(
+		descriptor = "(Lpe;)V"
+	)
 	public FriendsList(LoginType var1) {
-		super(400);
-		this.field4246 = 1;
-		this.friendLoginUpdates = new LinkDeque();
-		this.loginType = var1;
-	}
+		super(400); // L: 18
+		this.field4235 = 1; // L: 14
+		this.friendLoginUpdates = new LinkDeque(); // L: 15
+		this.loginType = var1; // L: 19
+	} // L: 20
 
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = 
-	"(I)Lnc;", garbageValue = 
-	"-1289438305")
-
+	@ObfuscatedSignature(
+		descriptor = "(I)Lnn;",
+		garbageValue = "-2105397576"
+	)
 	@Export("newInstance")
 	User newInstance() {
-		return new Friend();
+		return new Friend(); // L: 23
 	}
 
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = 
-	"(II)[Lnc;", garbageValue = 
-	"-1075861644")
-
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "(II)[Lnn;",
+		garbageValue = "1888809026"
+	)
 	@Export("newTypedArray")
 	User[] newTypedArray(int var1) {
-		return new Friend[var1];
+		return new Friend[var1]; // L: 27
 	}
 
-	@ObfuscatedName("h")
-	@ObfuscatedSignature(descriptor = 
-	"(Lqy;ZB)Z", garbageValue = 
-	"-18")
-
+	@ObfuscatedName("i")
+	@ObfuscatedSignature(
+		descriptor = "(Lqb;ZB)Z",
+		garbageValue = "-86"
+	)
 	@Export("isFriended")
 	public boolean isFriended(Username var1, boolean var2) {
-		Friend var3 = ((Friend) (this.getByUsername(var1)));
+		Friend var3 = (Friend)this.getByUsername(var1); // L: 31
 		if (var3 == null) {
-			return false;
+			return false; // L: 32
 		} else {
-			return (!var2) || (var3.world != 0);
+			return !var2 || var3.world != 0; // L: 33
 		}
 	}
 
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = 
-	"(Lpd;II)V", garbageValue = 
-	"-311568713")
-
+	@ObfuscatedName("n")
+	@ObfuscatedSignature(
+		descriptor = "(Lpi;II)V",
+		garbageValue = "1085083645"
+	)
 	@Export("read")
 	public void read(Buffer var1, int var2) {
 		while (true) {
-			if (var1.offset < var2) {
-				boolean var3 = var1.readUnsignedByte() == 1;
-				Username var4 = new Username(var1.readStringCp1252NullTerminated(), this.loginType);
-				Username var5 = new Username(var1.readStringCp1252NullTerminated(), this.loginType);
-				int var6 = var1.readUnsignedShort();
-				int var7 = var1.readUnsignedByte();
-				int var8 = var1.readUnsignedByte();
-				boolean var9 = (var8 & 2) != 0;
-				boolean var10 = (var8 & 1) != 0;
-				if (var6 > 0) {
-					var1.readStringCp1252NullTerminated();
-					var1.readUnsignedByte();
-					var1.readInt();
+			if (var1.offset < var2) { // L: 38
+				boolean var3 = var1.readUnsignedByte() == 1; // L: 39
+				Username var4 = new Username(var1.readStringCp1252NullTerminated(), this.loginType); // L: 40
+				Username var5 = new Username(var1.readStringCp1252NullTerminated(), this.loginType); // L: 41
+				int var6 = var1.readUnsignedShort(); // L: 42
+				int var7 = var1.readUnsignedByte(); // L: 43
+				int var8 = var1.readUnsignedByte(); // L: 44
+				boolean var9 = (var8 & 2) != 0; // L: 45
+				boolean var10 = (var8 & 1) != 0; // L: 46
+				if (var6 > 0) { // L: 47
+					var1.readStringCp1252NullTerminated(); // L: 48
+					var1.readUnsignedByte(); // L: 49
+					var1.readInt(); // L: 50
 				}
 
-				var1.readStringCp1252NullTerminated();
-				if ((var4 != null) && var4.hasCleanName()) {
-					Friend var11 = ((Friend) (this.getByCurrentUsername(var4)));
-					if (var3) {
-						Friend var12 = ((Friend) (this.getByCurrentUsername(var5)));
-						if ((var12 != null) && (var11 != var12)) {
-							if (var11 != null) {
-								this.remove(var12);
+				var1.readStringCp1252NullTerminated(); // L: 52
+				if (var4 != null && var4.hasCleanName()) { // L: 53
+					Friend var11 = (Friend)this.getByCurrentUsername(var4); // L: 54
+					if (var3) { // L: 55
+						Friend var12 = (Friend)this.getByCurrentUsername(var5); // L: 56
+						if (var12 != null && var12 != var11) { // L: 57
+							if (var11 != null) { // L: 58
+								this.remove(var12); // L: 59
 							} else {
-								var11 = var12;
+								var11 = var12; // L: 62
 							}
 						}
 					}
 
-					if (var11 != null) {
-						this.changeName(var11, var4, var5);
-						if (var6 != var11.world) {
-							boolean var14 = true;
+					if (var11 != null) { // L: 66
+						this.changeName(var11, var4, var5); // L: 67
+						if (var6 != var11.world) { // L: 68
+							boolean var14 = true; // L: 69
 
-							for (FriendLoginUpdate var13 = ((FriendLoginUpdate) (this.friendLoginUpdates.last())); var13 != null; var13 = ((FriendLoginUpdate) (this.friendLoginUpdates.previous()))) {
-								if (var13.username.equals(var4)) {
-									if ((var6 != 0) && (var13.world == 0)) {
-										var13.remove();
-										var14 = false;
-									} else if ((var6 == 0) && (var13.world != 0)) {
-										var13.remove();
-										var14 = false;
+							for (FriendLoginUpdate var13 = (FriendLoginUpdate)this.friendLoginUpdates.last(); var13 != null; var13 = (FriendLoginUpdate)this.friendLoginUpdates.previous()) { // L: 70
+								if (var13.username.equals(var4)) { // L: 71
+									if (var6 != 0 && var13.world == 0) { // L: 72
+										var13.remove(); // L: 73
+										var14 = false; // L: 74
+									} else if (var6 == 0 && var13.world != 0) { // L: 76
+										var13.remove(); // L: 77
+										var14 = false; // L: 78
 									}
 								}
 							}
 
-							if (var14) {
+							if (var14) { // L: 82
 								this.friendLoginUpdates.addFirst(new FriendLoginUpdate(var4, var6));
 							}
 						}
 					} else {
-						if (this.getSize() >= 400) {
+						if (this.getSize() >= 400) { // L: 85
 							continue;
 						}
 
-						var11 = ((Friend) (this.addLast(var4, var5)));
+						var11 = (Friend)this.addLast(var4, var5); // L: 86
 					}
 
-					if (var6 != var11.world) {
-						var11.int2 = (++this.field4246) - 1;
-						if ((var11.world == (-1)) && (var6 == 0)) {
-							var11.int2 = (-(var11.int2 * 34527129)) * 942443689;
+					if (var6 != var11.world) { // L: 89
+						var11.int2 = ++this.field4235 - 1; // L: 90
+						if (var11.world == -1 && var6 == 0) { // L: 91
+							var11.int2 = -(var11.int2 * 859703757) * -1261040891;
 						}
 
-						var11.world = var6;
+						var11.world = var6; // L: 92
 					}
 
-					var11.rank = var7;
-					var11.field4256 = var9;
-					var11.field4257 = var10;
-					continue;
+					var11.rank = var7; // L: 94
+					var11.field4237 = var9; // L: 95
+					var11.field4236 = var10; // L: 96
+					continue; // L: 97
 				}
 
 				throw new IllegalStateException();
 			}
 
-			this.sort();
-			return;
-		} 
-	}
-
-	@ObfuscatedName("g")
-	@ObfuscatedSignature(descriptor = 
-	"(IZIZI)V", garbageValue = 
-	"775454330")
-
-	@Export("sortWorldList")
-	static void sortWorldList(int var0, boolean var1, int var2, boolean var3) {
-		if (World.World_worlds != null) {
-			class128.doWorldSorting(0, World.World_worlds.length - 1, var0, var1, var2, var3);
+			this.sort(); // L: 98
+			return; // L: 99
 		}
-
 	}
 }

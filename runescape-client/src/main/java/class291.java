@@ -1,106 +1,170 @@
+import java.net.MalformedURLException;
+import java.net.URL;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-
 @ObfuscatedName("kf")
 public class class291 {
-	@ObfuscatedName("s")
-	@ObfuscatedSignature(descriptor = 
-	"Lpd;")
-
-	@Export("NetCache_responseArchiveBuffer")
-	public static Buffer NetCache_responseArchiveBuffer;
+	@ObfuscatedName("et")
+	@ObfuscatedSignature(
+		descriptor = "Llx;"
+	)
+	@Export("archive14")
+	static Archive archive14;
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = 
-	"Lct;")
+	@ObfuscatedSignature(
+		descriptor = "Lcw;"
+	)
+	UrlRequest field3295;
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "Lqi;"
+	)
+	SpritePixels field3293;
 
-	UrlRequest field3302;
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = 
-	"Lql;")
-
-	SpritePixels field3305;
-
-	@ObfuscatedSignature(descriptor = 
-	"(Ljava/lang/String;Lci;)V")
-
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;Lck;)V"
+	)
 	class291(String var1, UrlRequester var2) {
 		try {
-			this.field3302 = var2.request(new URL(var1));
-		} catch (MalformedURLException var4) {
-			this.field3302 = null;
+			this.field3295 = var2.request(new URL(var1)); // L: 16
+		} catch (MalformedURLException var4) { // L: 18
+			this.field3295 = null; // L: 19
 		}
 
-	}
+	} // L: 21
 
-	@ObfuscatedSignature(descriptor = 
-	"(Lct;)V")
-
+	@ObfuscatedSignature(
+		descriptor = "(Lcw;)V"
+	)
 	class291(UrlRequest var1) {
-		this.field3302 = var1;
-	}
+		this.field3295 = var1; // L: 24
+	} // L: 25
 
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = 
-	"(B)Lql;", garbageValue = 
-	"-22")
-
-	SpritePixels method5586() {
-		if (((this.field3305 == null) && (this.field3302 != null)) && this.field3302.isDone()) {
-			if (this.field3302.getResponse() != null) {
-				this.field3305 = class29.method433(this.field3302.getResponse());
+	@ObfuscatedSignature(
+		descriptor = "(I)Lqi;",
+		garbageValue = "-159877432"
+	)
+	SpritePixels method5563() {
+		if (this.field3293 == null && this.field3295 != null && this.field3295.isDone()) { // L: 28
+			if (this.field3295.getResponse() != null) { // L: 29
+				this.field3293 = Interpreter.method1889(this.field3295.getResponse()); // L: 30
 			}
 
-			this.field3302 = null;
+			this.field3295 = null; // L: 32
 		}
 
-		return this.field3305;
+		return this.field3293; // L: 34
 	}
 
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = 
-	"(CB)Z", garbageValue = 
-	"4")
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "(CLlo;B)C",
+		garbageValue = "20"
+	)
+	@Export("standardizeChar")
+	static char standardizeChar(char var0, Language var1) {
+		if (var0 >= 192 && var0 <= 255) { // L: 117
+			if (var0 >= 192 && var0 <= 198) { // L: 118
+				return 'A';
+			}
 
-	static final boolean method5588(char var0) {
-		return (((var0 == 160) || (var0 == ' ')) || (var0 == '_')) || (var0 == '-');
-	}
+			if (var0 == 199) { // L: 119
+				return 'C';
+			}
 
-	@ObfuscatedName("gd")
-	@ObfuscatedSignature(descriptor = 
-	"(I)V", garbageValue = 
-	"-521131129")
+			if (var0 >= 200 && var0 <= 203) { // L: 120
+				return 'E';
+			}
 
-	static final void method5587() {
-		class428.method7654(class175.field1883, ReflectionCheck.field250, ModeWhere.field4080);
-		class132.method2864(WorldMapRegion.field2706, class457.field4747);
-		if (((((EnumComposition.cameraX == class175.field1883) && (ReflectionCheck.field250 == FriendSystem.cameraY)) && (CollisionMap.cameraZ == ModeWhere.field4080)) && (Language.cameraPitch == WorldMapRegion.field2706)) && (MusicPatchNode2.cameraYaw == class457.field4747)) {
-			Client.field739 = false;
-			Client.isCameraLocked = false;
-			class12.field62 = 0;
-			WorldMapSectionType.field2778 = 0;
-			class351.field4157 = 0;
-			ClanChannel.field1660 = 0;
-			JagexCache.field1737 = 0;
-			class33.field231 = 0;
-			Tiles.field996 = 0;
-			PcmPlayer.field302 = 0;
-			DevicePcmPlayerProvider.field146 = 0;
-			ClanSettings.field1608 = 0;
+			if (var0 >= 204 && var0 <= 207) { // L: 121
+				return 'I';
+			}
+
+			if (var0 == 209 && var1 != Language.Language_ES) { // L: 122
+				return 'N';
+			}
+
+			if (var0 >= 210 && var0 <= 214) { // L: 123
+				return 'O';
+			}
+
+			if (var0 >= 217 && var0 <= 220) { // L: 124
+				return 'U';
+			}
+
+			if (var0 == 221) { // L: 125
+				return 'Y';
+			}
+
+			if (var0 == 223) { // L: 126
+				return 's';
+			}
+
+			if (var0 >= 224 && var0 <= 230) { // L: 127
+				return 'a';
+			}
+
+			if (var0 == 231) { // L: 128
+				return 'c';
+			}
+
+			if (var0 >= 232 && var0 <= 235) { // L: 129
+				return 'e';
+			}
+
+			if (var0 >= 236 && var0 <= 239) { // L: 130
+				return 'i';
+			}
+
+			if (var0 == 241 && var1 != Language.Language_ES) { // L: 131
+				return 'n';
+			}
+
+			if (var0 >= 242 && var0 <= 246) { // L: 132
+				return 'o';
+			}
+
+			if (var0 >= 249 && var0 <= 252) { // L: 133
+				return 'u';
+			}
+
+			if (var0 == 253 || var0 == 255) { // L: 134
+				return 'y';
+			}
 		}
 
+		if (var0 == 338) { // L: 136
+			return 'O';
+		} else if (var0 == 339) { // L: 137
+			return 'o';
+		} else if (var0 == 376) { // L: 138
+			return 'Y';
+		} else {
+			return var0; // L: 139
+		}
 	}
 
-	@ObfuscatedName("lw")
-	@ObfuscatedSignature(descriptor = 
-	"(B)V", garbageValue = 
-	"-35")
+	@ObfuscatedName("i")
+	@ObfuscatedSignature(
+		descriptor = "(IIS)Lbe;",
+		garbageValue = "-15672"
+	)
+	@Export("Messages_getByChannelAndID")
+	static Message Messages_getByChannelAndID(int var0, int var1) {
+		ChatChannel var2 = (ChatChannel)Messages.Messages_channels.get(var0); // L: 35
+		return var2.getMessage(var1); // L: 36
+	}
 
-	static void method5589() {
-		Client.packetWriter.addNode(ItemContainer.getPacketBufferNode(ClientPacket.field2989, Client.packetWriter.isaacCipher));
-		Client.oculusOrbState = 0;
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "(I)[Lqe;",
+		garbageValue = "-868128197"
+	)
+	@Export("FillMode_values")
+	public static FillMode[] FillMode_values() {
+		return new FillMode[]{FillMode.field4694, FillMode.field4695, FillMode.SOLID}; // L: 15
 	}
 }
