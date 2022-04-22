@@ -162,17 +162,25 @@ public abstract class HClientMixin implements RSClient
 		client.getCallbacks().post(new PlaneChanged(client.getPlane()));
 	}
 
-	//	@Inject
-	//	@MethodHook("incrementMenuEntries")
-	//	public static void insertReplacement()
-	//	{
-	//		AutomatedMenu replacement = automatedMenu.getAndSet(null);
-	//		if (replacement != null)
-	//		{
-	//			client.getLogger().debug("Inserting automated menu {}", replacement);
-	//			replacement.toEntry(client);
-	//		}
-	//	}
+	@Inject
+	@MethodHook("incrementMenuEntries")
+	public static void insertReplacement()
+	{
+		AutomatedMenu replacement = automatedMenu.getAndSet(null);
+		if (replacement != null)
+		{
+			client.getLogger().debug("Inserting automated menu {}", replacement);
+			client.insertMenuItem(
+					replacement.getOption(),
+					replacement.getTarget(),
+					replacement.getOpcode().getId(),
+					replacement.getIdentifier(),
+					replacement.getParam0(),
+					replacement.getParam1(),
+					false
+			);
+		}
+	}
 
 	@Copy("menuAction")
 	@Replace("menuAction")
@@ -181,19 +189,19 @@ public abstract class HClientMixin implements RSClient
 		RSRuneLiteMenuEntry menuEntry = null;
 
 		String[] menuOptions = client.getMenuOptions();
-		//		for (int i = 0; i < menuOptions.length; i++)
-		//		{
-		//			String menuOption = menuOptions[i];
-		//			if (menuOption == null) continue;
-		//			client.getLogger().debug("Menu: {} {}", i, menuOption);
-		//		}
-		//
-		//		for (int i = 0; i < rl$menuEntries.length; i++)
-		//		{
-		//			MenuEntry menuOption = rl$menuEntries[i];
-		//			if (menuOption == null) continue;
-		//			client.getLogger().debug("RL Menu: {}. {}", i, menuOption);
-		//		}
+		for (int i = 0; i < menuOptions.length; i++)
+		{
+			String menuOption = menuOptions[i];
+			if (menuOption == null) continue;
+			client.getLogger().debug("Menu: {} {}", i, menuOption);
+		}
+
+		for (int i = 0; i < rl$menuEntries.length; i++)
+		{
+			MenuEntry menuOption = rl$menuEntries[i];
+			if (menuOption == null) continue;
+			client.getLogger().debug("RL Menu: {}. {}", i, menuOption);
+		}
 
 		for (int i = client.getMenuOptionCount() - 1; i >= 0; --i)
 		{
@@ -216,6 +224,7 @@ public abstract class HClientMixin implements RSClient
 			{
 				client.getLogger().debug("Found our automated entry, replacing menuentries.");
 				menuEntry = rl$menuEntries[i];
+				rl$menuEntries[i] = null;
 				break;
 			}
 		}
@@ -260,18 +269,9 @@ public abstract class HClientMixin implements RSClient
 		}
 		else
 		{
-			AutomatedMenu replacement = client.getPendingAutomation();
 			client.getLogger().debug("Menu click op {} targ {} action {} id {} p0 {} p1 {}", option, target, opcode, id,
 					param0, param1);
-
-			if (replacement != null)
-			{
-				event = replacement.toMenuOptionClicked();
-			}
-			else
-			{
-				event = new MenuOptionClicked(menuEntry);
-			}
+			event = new MenuOptionClicked(menuEntry);
 
 			client.getCallbacks().post(event);
 
@@ -289,7 +289,6 @@ public abstract class HClientMixin implements RSClient
 
 			if (event.isConsumed())
 			{
-				automatedMenu.set(null);
 				return;
 			}
 		}
@@ -336,7 +335,6 @@ public abstract class HClientMixin implements RSClient
 				event.getMenuAction() == UNKNOWN ? opcode : event.getMenuAction().getId(),
 				event.getId(), event.getMenuOption(), event.getMenuTarget(),
 				canvasX, canvasY);
-		automatedMenu.set(null);
 	}
 
 	@Inject

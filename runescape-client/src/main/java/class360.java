@@ -899,7 +899,7 @@ class class360 implements Comparator {
 										}
 									} else if (Login.loginIndex == 14) { // L: 1062
 										String var33 = ""; // L: 1063
-										switch(Login.field901) { // L: 1064
+										switch(Login.Login_banType) { // L: 1064
 										case 0:
 											var33 = "https://support.runescape.com/hc/en-gb/articles/115002238729-Account-Bans"; // L: 1066
 											break; // L: 1067

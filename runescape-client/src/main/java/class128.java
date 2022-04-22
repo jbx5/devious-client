@@ -722,7 +722,7 @@ public abstract class class128 extends Node {
 							String var24 = ""; // L: 1737
 							var5 = ""; // L: 1738
 							var6 = ""; // L: 1739
-							switch(Login.field901) { // L: 1740
+							switch(Login.Login_banType) { // L: 1740
 							case 0:
 								var24 = "Your account has been disabled."; // L: 1755
 								var5 = Strings.field3645; // L: 1756

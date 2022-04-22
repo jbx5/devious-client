@@ -10,6 +10,6 @@ public class class267 {
 	)
 	static void method5196(int var0) {
 		Ignored.method6828(14); // L: 1839
-		Login.field901 = var0; // L: 1840
+		Login.Login_banType = var0; // L: 1840
 	} // L: 1841
 }
