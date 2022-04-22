@@ -12,24 +12,24 @@ public class UserComparator4 implements Comparator {
 	final boolean reversed;
 
 	public UserComparator4(boolean var1) {
-		this.reversed = var1; // L: 10
-	} // L: 11
+		this.reversed = var1;
+	}
 
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(
-		descriptor = "(Lnf;Lnf;B)I",
-		garbageValue = "66"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(Lnf;Lnf;B)I", garbageValue = 
+	"66")
+
 	@Export("compare_bridged")
 	int compare_bridged(Buddy var1, Buddy var2) {
-		return this.reversed ? var1.int2 - var2.int2 : var2.int2 - var1.int2; // L: 14
+		return this.reversed ? var1.int2 - var2.int2 : var2.int2 - var1.int2;
 	}
 
 	public int compare(Object var1, Object var2) {
-		return this.compare_bridged((Buddy)var1, (Buddy)var2); // L: 18
+		return this.compare_bridged(((Buddy) (var1)), ((Buddy) (var2)));
 	}
 
 	public boolean equals(Object var1) {
-		return super.equals(var1); // L: 22
+		return super.equals(var1);
 	}
 }

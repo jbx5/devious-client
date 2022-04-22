@@ -10,26 +10,26 @@ public class DualNode extends Node {
 	@Export("keyDual")
 	public long keyDual;
 	@ObfuscatedName("cw")
-	@ObfuscatedSignature(
-		descriptor = "Loz;"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"Loz;")
+
 	@Export("previousDual")
 	public DualNode previousDual;
 	@ObfuscatedName("cx")
-	@ObfuscatedSignature(
-		descriptor = "Loz;"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"Loz;")
+
 	@Export("nextDual")
 	public DualNode nextDual;
 
 	@ObfuscatedName("de")
 	@Export("removeDual")
 	public void removeDual() {
-		if (this.nextDual != null) { // L: 9
-			this.nextDual.previousDual = this.previousDual; // L: 10
-			this.previousDual.nextDual = this.nextDual; // L: 11
-			this.previousDual = null; // L: 12
-			this.nextDual = null; // L: 13
+		if (this.nextDual != null) {
+			this.nextDual.previousDual = this.previousDual;
+			this.previousDual.nextDual = this.nextDual;
+			this.previousDual = null;
+			this.nextDual = null;
 		}
-	} // L: 14
+	}
 }

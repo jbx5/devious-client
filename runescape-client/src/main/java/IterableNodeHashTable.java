@@ -11,21 +11,21 @@ public final class IterableNodeHashTable implements Iterable {
 	@Export("size")
 	int size;
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "[Loq;"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"[Loq;")
+
 	@Export("buckets")
 	Node[] buckets;
 	@ObfuscatedName("i")
-	@ObfuscatedSignature(
-		descriptor = "Loq;"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"Loq;")
+
 	@Export("currentGet")
 	Node currentGet;
 	@ObfuscatedName("f")
-	@ObfuscatedSignature(
-		descriptor = "Loq;"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"Loq;")
+
 	@Export("current")
 	Node current;
 	@ObfuscatedName("b")
@@ -33,112 +33,112 @@ public final class IterableNodeHashTable implements Iterable {
 	int index;
 
 	public IterableNodeHashTable(int var1) {
-		this.index = 0; // L: 11
-		this.size = var1; // L: 14
-		this.buckets = new Node[var1]; // L: 15
+		this.index = 0;
+		this.size = var1;
+		this.buckets = new Node[var1];
 
-		for (int var2 = 0; var2 < var1; ++var2) { // L: 16
-			Node var3 = this.buckets[var2] = new Node(); // L: 17
-			var3.previous = var3; // L: 18
-			var3.next = var3; // L: 19
+		for (int var2 = 0; var2 < var1; ++var2) {
+			Node var3 = this.buckets[var2] = new Node();
+			var3.previous = var3;
+			var3.next = var3;
 		}
 
-	} // L: 21
+	}
 
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(
-		descriptor = "(J)Loq;"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(J)Loq;")
+
 	@Export("get")
 	public Node get(long var1) {
-		Node var3 = this.buckets[(int)(var1 & (long)(this.size - 1))]; // L: 24
+		Node var3 = this.buckets[((int) (var1 & ((long) (this.size - 1))))];
 
-		for (this.currentGet = var3.previous; var3 != this.currentGet; this.currentGet = this.currentGet.previous) { // L: 25 26 32
-			if (this.currentGet.key == var1) { // L: 27
-				Node var4 = this.currentGet; // L: 28
-				this.currentGet = this.currentGet.previous; // L: 29
-				return var4; // L: 30
+		for (this.currentGet = var3.previous; var3 != this.currentGet; this.currentGet = this.currentGet.previous) {
+			if (this.currentGet.key == var1) {
+				Node var4 = this.currentGet;
+				this.currentGet = this.currentGet.previous;
+				return var4;
 			}
 		}
 
-		this.currentGet = null; // L: 34
-		return null; // L: 35
+		this.currentGet = null;
+		return null;
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(Loq;J)V"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(Loq;J)V")
+
 	@Export("put")
 	public void put(Node var1, long var2) {
-		if (var1.next != null) { // L: 39
+		if (var1.next != null) {
 			var1.remove();
 		}
 
-		Node var4 = this.buckets[(int)(var2 & (long)(this.size - 1))]; // L: 40
-		var1.next = var4.next; // L: 41
-		var1.previous = var4; // L: 42
-		var1.next.previous = var1; // L: 43
-		var1.previous.next = var1; // L: 44
-		var1.key = var2; // L: 45
-	} // L: 46
+		Node var4 = this.buckets[((int) (var2 & ((long) (this.size - 1))))];
+		var1.next = var4.next;
+		var1.previous = var4;
+		var1.next.previous = var1;
+		var1.previous.next = var1;
+		var1.key = var2;
+	}
 
 	@ObfuscatedName("i")
 	@Export("clear")
 	public void clear() {
-		for (int var1 = 0; var1 < this.size; ++var1) { // L: 49
-			Node var2 = this.buckets[var1]; // L: 50
+		for (int var1 = 0; var1 < this.size; ++var1) {
+			Node var2 = this.buckets[var1];
 
 			while (true) {
-				Node var3 = var2.previous; // L: 52
-				if (var3 == var2) { // L: 53
+				Node var3 = var2.previous;
+				if (var3 == var2) {
 					break;
 				}
 
-				var3.remove(); // L: 54
-			}
+				var3.remove();
+			} 
 		}
 
-		this.currentGet = null; // L: 57
-		this.current = null; // L: 58
-	} // L: 59
+		this.currentGet = null;
+		this.current = null;
+	}
 
 	@ObfuscatedName("f")
-	@ObfuscatedSignature(
-		descriptor = "()Loq;"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"()Loq;")
+
 	@Export("first")
 	public Node first() {
-		this.index = 0; // L: 62
-		return this.next(); // L: 63
+		this.index = 0;
+		return this.next();
 	}
 
 	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "()Loq;"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"()Loq;")
+
 	@Export("next")
 	public Node next() {
 		Node var1;
-		if (this.index > 0 && this.buckets[this.index - 1] != this.current) { // L: 67
-			var1 = this.current; // L: 68
-			this.current = var1.previous; // L: 69
-			return var1; // L: 70
+		if ((this.index > 0) && (this.buckets[this.index - 1] != this.current)) {
+			var1 = this.current;
+			this.current = var1.previous;
+			return var1;
 		} else {
 			do {
-				if (this.index >= this.size) { // L: 72
-					return null; // L: 79
+				if (this.index >= this.size) {
+					return null;
 				}
 
-				var1 = this.buckets[this.index++].previous; // L: 73
-			} while(var1 == this.buckets[this.index - 1]); // L: 74
+				var1 = this.buckets[this.index++].previous;
+			} while (var1 == this.buckets[this.index - 1] );
 
-			this.current = var1.previous; // L: 75
-			return var1; // L: 76
+			this.current = var1.previous;
+			return var1;
 		}
 	}
 
 	public Iterator iterator() {
-		return new IterableNodeHashTableIterator(this); // L: 83
+		return new IterableNodeHashTableIterator(this);
 	}
 }

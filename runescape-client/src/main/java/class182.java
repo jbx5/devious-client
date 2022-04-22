@@ -5,19 +5,19 @@ import net.runelite.mapping.ObfuscatedSignature;
 @ObfuscatedName("gb")
 public class class182 extends DualNode {
 	@ObfuscatedName("uv")
-	@ObfuscatedSignature(
-		descriptor = "Lnw;"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"Lnw;")
+
 	@Export("masterDisk")
 	static ArchiveDisk masterDisk;
 	@ObfuscatedName("ep")
-	@ObfuscatedSignature(
-		descriptor = "Llx;"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"Llx;")
+
 	@Export("archive4")
 	static Archive archive4;
-
-	static {
-		new EvictingDualNodeHashTable(64); // L: 9
-	} // L: 10
+	static 
+	{
+		new EvictingDualNodeHashTable(64);
+	}
 }

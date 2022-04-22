@@ -6,13 +6,13 @@ import net.runelite.mapping.ObfuscatedName;
 @ObfuscatedName("lm")
 public class class329 {
 	@ObfuscatedName("fa")
-	@ObfuscatedGetter(
-		intValue = 1869767523
-	)
+	@ObfuscatedGetter(intValue = 
+	1869767523)
+
 	@Export("currentPort")
 	static int currentPort;
-
-	static {
+	static 
+	{
 		new HashMap();
 	}
 }

@@ -10,81 +10,81 @@ public class HealthBar extends Node {
 	@Export("otp")
 	static String otp;
 	@ObfuscatedName("i")
-	@ObfuscatedSignature(
-		descriptor = "Lfv;"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"Lfv;")
+
 	@Export("definition")
 	HealthBarDefinition definition;
 	@ObfuscatedName("f")
-	@ObfuscatedSignature(
-		descriptor = "Llk;"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"Llk;")
+
 	@Export("updates")
 	IterableNodeDeque updates;
 
-	@ObfuscatedSignature(
-		descriptor = "(Lfv;)V"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(Lfv;)V")
+
 	HealthBar(HealthBarDefinition var1) {
-		this.updates = new IterableNodeDeque(); // L: 12
-		this.definition = var1; // L: 15
-	} // L: 16
+		this.updates = new IterableNodeDeque();
+		this.definition = var1;
+	}
 
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(
-		descriptor = "(IIIIB)V",
-		garbageValue = "-72"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(IIIIB)V", garbageValue = 
+	"-72")
+
 	@Export("put")
 	void put(int var1, int var2, int var3, int var4) {
-		HealthBarUpdate var5 = null; // L: 19
-		int var6 = 0; // L: 20
+		HealthBarUpdate var5 = null;
+		int var6 = 0;
 
-		for (HealthBarUpdate var7 = (HealthBarUpdate)this.updates.last(); var7 != null; var7 = (HealthBarUpdate)this.updates.previous()) { // L: 21
-			++var6; // L: 22
-			if (var7.cycle == var1) { // L: 23
-				var7.set(var1, var2, var3, var4); // L: 24
-				return; // L: 25
+		for (HealthBarUpdate var7 = ((HealthBarUpdate) (this.updates.last())); var7 != null; var7 = ((HealthBarUpdate) (this.updates.previous()))) {
+			++var6;
+			if (var7.cycle == var1) {
+				var7.set(var1, var2, var3, var4);
+				return;
 			}
 
-			if (var7.cycle <= var1) { // L: 27
+			if (var7.cycle <= var1) {
 				var5 = var7;
 			}
 		}
 
-		if (var5 == null) { // L: 29
-			if (var6 < 4) { // L: 30
+		if (var5 == null) {
+			if (var6 < 4) {
 				this.updates.addLast(new HealthBarUpdate(var1, var2, var3, var4));
 			}
 
 		} else {
-			IterableNodeDeque.IterableNodeDeque_addBefore(new HealthBarUpdate(var1, var2, var3, var4), var5); // L: 33
+			IterableNodeDeque.IterableNodeDeque_addBefore(new HealthBarUpdate(var1, var2, var3, var4), var5);
 			if (var6 >= 4) {
-				this.updates.last().remove(); // L: 34
+				this.updates.last().remove();
 			}
 
 		}
-	} // L: 31 35
+	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(II)Lcp;",
-		garbageValue = "675782761"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(II)Lcp;", garbageValue = 
+	"675782761")
+
 	@Export("get")
 	HealthBarUpdate get(int var1) {
-		HealthBarUpdate var2 = (HealthBarUpdate)this.updates.last(); // L: 38
-		if (var2 != null && var2.cycle <= var1) { // L: 39
-			for (HealthBarUpdate var3 = (HealthBarUpdate)this.updates.previous(); var3 != null && var3.cycle <= var1; var3 = (HealthBarUpdate)this.updates.previous()) { // L: 40 41
-				var2.remove(); // L: 42
-				var2 = var3; // L: 43
+		HealthBarUpdate var2 = ((HealthBarUpdate) (this.updates.last()));
+		if ((var2 != null) && (var2.cycle <= var1)) {
+			for (HealthBarUpdate var3 = ((HealthBarUpdate) (this.updates.previous())); (var3 != null) && (var3.cycle <= var1); var3 = ((HealthBarUpdate) (this.updates.previous()))) {
+				var2.remove();
+				var2 = var3;
 			}
 
-			if (this.definition.int5 + var2.cycleOffset + var2.cycle > var1) { // L: 47
+			if (((this.definition.int5 + var2.cycleOffset) + var2.cycle) > var1) {
 				return var2;
 			} else {
-				var2.remove(); // L: 49
-				return null; // L: 50
+				var2.remove();
+				return null;
 			}
 		} else {
 			return null;
@@ -92,86 +92,86 @@ public class HealthBar extends Node {
 	}
 
 	@ObfuscatedName("i")
-	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "-107"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(B)Z", garbageValue = 
+	"-107")
+
 	@Export("isEmpty")
 	boolean isEmpty() {
-		return this.updates.method6164(); // L: 55
+		return this.updates.method6164();
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(IB)I",
-		garbageValue = "-31"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(IB)I", garbageValue = 
+	"-31")
+
 	public static int method2344(int var0) {
-		return class400.field4389[var0 & 16383]; // L: 28
+		return class400.field4389[var0 & 16383];
 	}
 
 	@ObfuscatedName("ai")
-	@ObfuscatedSignature(
-		descriptor = "(ILbd;ZI)I",
-		garbageValue = "1491549945"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(ILbd;ZI)I", garbageValue = 
+	"1491549945")
+
 	static int method2343(int var0, Script var1, boolean var2) {
-		if (var0 == 6800) { // L: 4511
-			Interpreter.Interpreter_stringStack[++class122.Interpreter_stringStackSize - 1] = ""; // L: 4512
-			return 1; // L: 4513
-		} else if (var0 != 6801 && var0 != 6802) { // L: 4515
-			if (var0 == 6850) { // L: 4519
-				Interpreter.Interpreter_stringStack[++class122.Interpreter_stringStackSize - 1] = ""; // L: 4520
-				return 1; // L: 4521
-			} else if (var0 != 6851 && var0 != 6852) { // L: 4523
-				if (var0 == 6853) { // L: 4527
-					Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = 0; // L: 4528
-					return 1; // L: 4529
+		if (var0 == 6800) {
+			Interpreter.Interpreter_stringStack[(++class122.Interpreter_stringStackSize) - 1] = "";
+			return 1;
+		} else if ((var0 != 6801) && (var0 != 6802)) {
+			if (var0 == 6850) {
+				Interpreter.Interpreter_stringStack[(++class122.Interpreter_stringStackSize) - 1] = "";
+				return 1;
+			} else if ((var0 != 6851) && (var0 != 6852)) {
+				if (var0 == 6853) {
+					Interpreter.Interpreter_intStack[(++Interpreter.Interpreter_intStackSize) - 1] = 0;
+					return 1;
 				} else {
-					return 2; // L: 4531
+					return 2;
 				}
 			} else {
-				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = -1; // L: 4524
-				return 1; // L: 4525
+				Interpreter.Interpreter_intStack[(++Interpreter.Interpreter_intStackSize) - 1] = -1;
+				return 1;
 			}
 		} else {
-			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = -1; // L: 4516
-			return 1; // L: 4517
+			Interpreter.Interpreter_intStack[(++Interpreter.Interpreter_intStackSize) - 1] = -1;
+			return 1;
 		}
 	}
 
 	@ObfuscatedName("il")
-	@ObfuscatedSignature(
-		descriptor = "(IIIII)V",
-		garbageValue = "-1357746428"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(IIIII)V", garbageValue = 
+	"-1357746428")
+
 	static final void method2330(int var0, int var1, int var2, int var3) {
-		for (int var4 = 0; var4 < Client.rootWidgetCount; ++var4) { // L: 8655
-			if (Client.rootWidgetWidths[var4] + Client.rootWidgetXs[var4] > var0 && Client.rootWidgetXs[var4] < var0 + var2 && Client.rootWidgetHeights[var4] + Client.rootWidgetYs[var4] > var1 && Client.rootWidgetYs[var4] < var3 + var1) { // L: 8656
+		for (int var4 = 0; var4 < Client.rootWidgetCount; ++var4) {
+			if (((((Client.rootWidgetWidths[var4] + Client.rootWidgetXs[var4]) > var0) && (Client.rootWidgetXs[var4] < (var0 + var2))) && ((Client.rootWidgetHeights[var4] + Client.rootWidgetYs[var4]) > var1)) && (Client.rootWidgetYs[var4] < (var3 + var1))) {
 				Client.field715[var4] = true;
 			}
 		}
 
-	} // L: 8658
+	}
 
 	@ObfuscatedName("lq")
-	@ObfuscatedSignature(
-		descriptor = "(IIB)V",
-		garbageValue = "-66"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(IIB)V", garbageValue = 
+	"-66")
+
 	static final void method2328(int var0, int var1) {
-		ClanChannel var2 = var0 >= 0 ? Client.currentClanChannels[var0] : class21.guestClanChannel; // L: 12409
-		if (var2 != null && var1 >= 0 && var1 < var2.method3119()) { // L: 12410
-			ClanChannelMember var3 = (ClanChannelMember)var2.members.get(var1); // L: 12411
-			if (var3.rank == -1) {
-				String var4 = var3.username.getName(); // L: 12413
-				PacketBufferNode var5 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2900, Client.packetWriter.isaacCipher); // L: 12414
-				var5.packetBuffer.writeByte(3 + class425.stringCp1252NullTerminatedByteSize(var4)); // L: 12415
-				var5.packetBuffer.writeByte(var0); // L: 12416
-				var5.packetBuffer.writeShort(var1); // L: 12417
-				var5.packetBuffer.writeStringCp1252NullTerminated(var4); // L: 12418
-				Client.packetWriter.addNode(var5); // L: 12419
+		ClanChannel var2 = (var0 >= 0) ? Client.currentClanChannels[var0] : class21.guestClanChannel;
+		if (((var2 != null) && (var1 >= 0)) && (var1 < var2.method3119())) {
+			ClanChannelMember var3 = ((ClanChannelMember) (var2.members.get(var1)));
+			if (var3.rank == (-1)) {
+				String var4 = var3.username.getName();
+				PacketBufferNode var5 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2900, Client.packetWriter.isaacCipher);
+				var5.packetBuffer.writeByte(3 + class425.stringCp1252NullTerminatedByteSize(var4));
+				var5.packetBuffer.writeByte(var0);
+				var5.packetBuffer.writeShort(var1);
+				var5.packetBuffer.writeStringCp1252NullTerminated(var4);
+				Client.packetWriter.addNode(var5);
 			}
 		}
-	} // L: 12412 12420
+	}
 }

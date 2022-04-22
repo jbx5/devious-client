@@ -5,21 +5,21 @@ import net.runelite.mapping.ObfuscatedName;
 @ObfuscatedName("qy")
 public class class451 {
 	@ObfuscatedName("v")
-	@ObfuscatedGetter(
-		intValue = -1097850827
-	)
+	@ObfuscatedGetter(intValue = 
+	-1097850827)
+
 	@Export("SpriteBuffer_spriteCount")
 	public static int SpriteBuffer_spriteCount;
 	@ObfuscatedName("c")
-	@ObfuscatedGetter(
-		intValue = 28448161
-	)
+	@ObfuscatedGetter(intValue = 
+	28448161)
+
 	@Export("SpriteBuffer_spriteWidth")
 	public static int SpriteBuffer_spriteWidth;
 	@ObfuscatedName("i")
-	@ObfuscatedGetter(
-		intValue = 972266423
-	)
+	@ObfuscatedGetter(intValue = 
+	972266423)
+
 	@Export("SpriteBuffer_spriteHeight")
 	public static int SpriteBuffer_spriteHeight;
 	@ObfuscatedName("f")

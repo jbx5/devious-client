@@ -8,47 +8,47 @@ import net.runelite.mapping.ObfuscatedSignature;
 @Implements("Ignored")
 public class Ignored extends User {
 	@ObfuscatedName("v")
-	@ObfuscatedGetter(
-		intValue = -60193045
-	)
+	@ObfuscatedGetter(intValue = 
+	-60193045)
+
 	@Export("id")
 	int id;
 
 	Ignored() {
-	} // L: 6
+	}
 
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(
-		descriptor = "(Lng;B)I",
-		garbageValue = "-48"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(Lng;B)I", garbageValue = 
+	"-48")
+
 	@Export("compareTo_ignored")
 	int compareTo_ignored(Ignored var1) {
-		return this.id - var1.id; // L: 9
+		return this.id - var1.id;
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(Lnn;I)I",
-		garbageValue = "842367957"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(Lnn;I)I", garbageValue = 
+	"842367957")
+
 	@Export("compareTo_user")
 	public int compareTo_user(User var1) {
-		return this.compareTo_ignored((Ignored)var1); // L: 13
+		return this.compareTo_ignored(((Ignored) (var1)));
 	}
 
 	public int compareTo(Object var1) {
-		return this.compareTo_ignored((Ignored)var1); // L: 17
+		return this.compareTo_ignored(((Ignored) (var1)));
 	}
 
 	@ObfuscatedName("u")
-	@ObfuscatedSignature(
-		descriptor = "(IB)V",
-		garbageValue = "127"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(IB)V", garbageValue = 
+	"127")
+
 	static void method6828(int var0) {
-		if (var0 != Login.loginIndex) { // L: 1852
-			Login.loginIndex = var0; // L: 1853
+		if (var0 != Login.loginIndex) {
+			Login.loginIndex = var0;
 		}
-	} // L: 1854
+	}
 }
