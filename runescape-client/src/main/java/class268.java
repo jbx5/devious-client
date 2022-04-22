@@ -38,7 +38,7 @@ public final class class268 {
 	)
 	@Export("resumePauseWidget")
 	static void resumePauseWidget(int var0, int var1) {
-		PacketBufferNode var2 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2952, Client.packetWriter.isaacCipher); // L: 9681
+		PacketBufferNode var2 = WorldMapSprite.getPacketBufferNode(ClientPacket.RESUME_PAUSEBUTTON, Client.packetWriter.isaacCipher); // L: 9681
 		var2.packetBuffer.writeIntME(var0); // L: 9682
 		var2.packetBuffer.method7710(var1); // L: 9683
 		Client.packetWriter.addNode(var2); // L: 9684

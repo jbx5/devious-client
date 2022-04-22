@@ -213,7 +213,7 @@ public class class20 implements Callable {
 		garbageValue = "-124"
 	)
 	static final void method294() {
-		PacketBufferNode var0 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2905, Client.packetWriter.isaacCipher); // L: 12135
+		PacketBufferNode var0 = WorldMapSprite.getPacketBufferNode(ClientPacket.CLOSE_MODAL, Client.packetWriter.isaacCipher); // L: 12135
 		Client.packetWriter.addNode(var0); // L: 12136
 		Interpreter.field842 = true; // L: 12137
 

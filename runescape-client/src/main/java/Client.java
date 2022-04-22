@@ -3275,7 +3275,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 					}
 
 					var5 = (int)var16; // L: 3126
-					var18 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2976, packetWriter.isaacCipher); // L: 3127
+					var18 = WorldMapSprite.getPacketBufferNode(ClientPacket.EVENT_MOUSE_CLICK, packetWriter.isaacCipher); // L: 3127
 					var18.packetBuffer.writeShort((var5 << 1) + (MouseHandler.MouseHandler_lastButton == 2 ? 1 : 0)); // L: 3128
 					var18.packetBuffer.writeShort(var4); // L: 3129
 					var18.packetBuffer.writeShort(var3); // L: 3130
@@ -3598,7 +3598,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 															if (Scene.shouldSendWalk()) { // L: 3421
 																var3 = Scene.Scene_selectedX; // L: 3422
 																var4 = Scene.Scene_selectedY; // L: 3423
-																var40 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2911, packetWriter.isaacCipher); // L: 3425
+																var40 = WorldMapSprite.getPacketBufferNode(ClientPacket.MOVE_GAMECLICK, packetWriter.isaacCipher); // L: 3425
 																var40.packetBuffer.writeByte(5); // L: 3426
 																var40.packetBuffer.method7710(var3 + GrandExchangeOfferOwnWorldComparator.baseX); // L: 3427
 																var40.packetBuffer.writeShort(var4 + VarcInt.baseY); // L: 3428

@@ -445,7 +445,7 @@ public final class Projectile extends Renderable {
 					var15 = class19.method288(var7);
 				}
 
-				PacketBufferNode var13 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2937, Client.packetWriter.isaacCipher); // L: 1491
+				PacketBufferNode var13 = WorldMapSprite.getPacketBufferNode(ClientPacket.RESUME_P_COUNTDIALOG, Client.packetWriter.isaacCipher); // L: 1491
 				var13.packetBuffer.writeInt(var15); // L: 1492
 				Client.packetWriter.addNode(var13); // L: 1493
 				return 1; // L: 1494
@@ -453,7 +453,7 @@ public final class Projectile extends Renderable {
 				PacketBufferNode var11;
 				if (var0 == ScriptOpcodes.RESUME_NAMEDIALOG) {
 					var7 = Interpreter.Interpreter_stringStack[--class122.Interpreter_stringStackSize]; // L: 1497
-					var11 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2992, Client.packetWriter.isaacCipher); // L: 1499
+					var11 = WorldMapSprite.getPacketBufferNode(ClientPacket.RESUME_P_NAMEDIALOG, Client.packetWriter.isaacCipher); // L: 1499
 					var11.packetBuffer.writeByte(var7.length() + 1); // L: 1500
 					var11.packetBuffer.writeStringCp1252NullTerminated(var7); // L: 1501
 					Client.packetWriter.addNode(var11); // L: 1502
@@ -504,7 +504,7 @@ public final class Projectile extends Renderable {
 						return 1; // L: 1553
 					} else if (var0 == ScriptOpcodes.RESUME_OBJDIALOG) {
 						var10 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]; // L: 1556
-						var11 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2962, Client.packetWriter.isaacCipher); // L: 1558
+						var11 = WorldMapSprite.getPacketBufferNode(ClientPacket.RESUME_P_OBJDIALOG, Client.packetWriter.isaacCipher); // L: 1558
 						var11.packetBuffer.writeShort(var10); // L: 1559
 						Client.packetWriter.addNode(var11); // L: 1560
 						return 1; // L: 1561

@@ -1111,22 +1111,22 @@ public class MidiPcmStream extends PcmStream {
 			if (var7 != null && var7 != GrandExchangeEvents.localPlayer && var7.username != null && var7.username.equals(var5)) { // L: 9613
 				PacketBufferNode var8;
 				if (var0 == 1) { // L: 9614
-					var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2913, Client.packetWriter.isaacCipher); // L: 9616
+					var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.OPPLAYER1, Client.packetWriter.isaacCipher); // L: 9616
 					var8.packetBuffer.method7710(var3[var6]); // L: 9617
 					var8.packetBuffer.method7701(0); // L: 9618
 					Client.packetWriter.addNode(var8); // L: 9619
 				} else if (var0 == 4) { // L: 9621
-					var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2939, Client.packetWriter.isaacCipher); // L: 9623
+					var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.OPPLAYER4, Client.packetWriter.isaacCipher); // L: 9623
 					var8.packetBuffer.method7804(0); // L: 9624
 					var8.packetBuffer.writeShort(var3[var6]); // L: 9625
 					Client.packetWriter.addNode(var8); // L: 9626
 				} else if (var0 == 6) { // L: 9628
-					var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2931, Client.packetWriter.isaacCipher); // L: 9630
+					var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.OPPLAYER6, Client.packetWriter.isaacCipher); // L: 9630
 					var8.packetBuffer.method7712(var3[var6]); // L: 9631
 					var8.packetBuffer.writeByte(0); // L: 9632
 					Client.packetWriter.addNode(var8); // L: 9633
 				} else if (var0 == 7) { // L: 9635
-					var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2923, Client.packetWriter.isaacCipher); // L: 9637
+					var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.OPPLAYER7, Client.packetWriter.isaacCipher); // L: 9637
 					var8.packetBuffer.writeShort(var3[var6]); // L: 9638
 					var8.packetBuffer.method7701(0); // L: 9639
 					Client.packetWriter.addNode(var8); // L: 9640

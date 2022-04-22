@@ -127,7 +127,7 @@ public class class9 implements MouseWheel {
 			Client.mouseCrossState = 0; // L: 9126
 			Client.destinationX = var0; // L: 9127
 			Client.destinationY = var1; // L: 9128
-			var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2994, Client.packetWriter.isaacCipher); // L: 9130
+			var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.OPLOCU, Client.packetWriter.isaacCipher); // L: 9130
 			var8.packetBuffer.method7710(class432.selectedItemSlot); // L: 9131
 			var8.packetBuffer.method7710(Varcs.selectedItemId); // L: 9132
 			var8.packetBuffer.method7701(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 9133
@@ -143,7 +143,7 @@ public class class9 implements MouseWheel {
 			Client.mouseCrossState = 0; // L: 9056
 			Client.destinationX = var0; // L: 9057
 			Client.destinationY = var1; // L: 9058
-			var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2977, Client.packetWriter.isaacCipher); // L: 9059
+			var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.OPLOCT, Client.packetWriter.isaacCipher); // L: 9059
 			var8.packetBuffer.method7711(Client.selectedSpellItemId); // L: 9060
 			var8.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 9061
 			var8.packetBuffer.method7712(VarcInt.baseY + var1); // L: 9062
@@ -159,7 +159,7 @@ public class class9 implements MouseWheel {
 			Client.mouseCrossState = 0; // L: 9576
 			Client.destinationX = var0; // L: 9577
 			Client.destinationY = var1; // L: 9578
-			var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2914, Client.packetWriter.isaacCipher); // L: 9580
+			var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.OPLOC1, Client.packetWriter.isaacCipher); // L: 9580
 			var8.packetBuffer.method7711(VarcInt.baseY + var1); // L: 9581
 			var8.packetBuffer.method7710(var0 + GrandExchangeOfferOwnWorldComparator.baseX); // L: 9582
 			var8.packetBuffer.writeShort(var3); // L: 9583
@@ -172,7 +172,7 @@ public class class9 implements MouseWheel {
 			Client.mouseCrossState = 0; // L: 9192
 			Client.destinationX = var0; // L: 9193
 			Client.destinationY = var1; // L: 9194
-			var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2901, Client.packetWriter.isaacCipher); // L: 9196
+			var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.OPLOC2, Client.packetWriter.isaacCipher); // L: 9196
 			var8.packetBuffer.method7703(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 9197
 			var8.packetBuffer.writeShort(VarcInt.baseY + var1); // L: 9198
 			var8.packetBuffer.method7712(var3); // L: 9199
@@ -185,7 +185,7 @@ public class class9 implements MouseWheel {
 			Client.mouseCrossState = 0; // L: 8873
 			Client.destinationX = var0; // L: 8874
 			Client.destinationY = var1; // L: 8875
-			var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2927, Client.packetWriter.isaacCipher); // L: 8877
+			var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.OPLOC3, Client.packetWriter.isaacCipher); // L: 8877
 			var8.packetBuffer.method7804(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8878
 			var8.packetBuffer.method7711(var0 + GrandExchangeOfferOwnWorldComparator.baseX); // L: 8879
 			var8.packetBuffer.writeShort(VarcInt.baseY + var1); // L: 8880
@@ -198,7 +198,7 @@ public class class9 implements MouseWheel {
 			Client.mouseCrossState = 0; // L: 8847
 			Client.destinationX = var0; // L: 8848
 			Client.destinationY = var1; // L: 8849
-			var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2895, Client.packetWriter.isaacCipher); // L: 8851
+			var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.OPLOC4, Client.packetWriter.isaacCipher); // L: 8851
 			var8.packetBuffer.method7701(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8852
 			var8.packetBuffer.method7712(var0 + GrandExchangeOfferOwnWorldComparator.baseX); // L: 8853
 			var8.packetBuffer.method7711(var3); // L: 8854
@@ -216,7 +216,7 @@ public class class9 implements MouseWheel {
 					Client.mouseCrossState = 0; // L: 9039
 					Client.destinationX = var0; // L: 9040
 					Client.destinationY = var1; // L: 9041
-					var9 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2995, Client.packetWriter.isaacCipher); // L: 9043
+					var9 = WorldMapSprite.getPacketBufferNode(ClientPacket.OPNPCU, Client.packetWriter.isaacCipher); // L: 9043
 					var9.packetBuffer.method7710(var3); // L: 9044
 					var9.packetBuffer.writeIntME(TaskHandler.selectedItemWidget); // L: 9045
 					var9.packetBuffer.method7712(Varcs.selectedItemId); // L: 9046
@@ -233,7 +233,7 @@ public class class9 implements MouseWheel {
 					Client.mouseCrossState = 0; // L: 9170
 					Client.destinationX = var0; // L: 9171
 					Client.destinationY = var1; // L: 9172
-					var9 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2930, Client.packetWriter.isaacCipher); // L: 9173
+					var9 = WorldMapSprite.getPacketBufferNode(ClientPacket.OPNPCT, Client.packetWriter.isaacCipher); // L: 9173
 					var9.packetBuffer.method7804(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 9174
 					var9.packetBuffer.writeShort(Client.selectedSpellChildIndex); // L: 9175
 					var9.packetBuffer.method7710(var3); // L: 9176
@@ -250,7 +250,7 @@ public class class9 implements MouseWheel {
 					Client.mouseCrossState = 0; // L: 9337
 					Client.destinationX = var0; // L: 9338
 					Client.destinationY = var1; // L: 9339
-					var9 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2981, Client.packetWriter.isaacCipher); // L: 9341
+					var9 = WorldMapSprite.getPacketBufferNode(ClientPacket.OPNPC1, Client.packetWriter.isaacCipher); // L: 9341
 					var9.packetBuffer.method7804(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 9342
 					var9.packetBuffer.method7710(var3); // L: 9343
 					Client.packetWriter.addNode(var9); // L: 9344
@@ -264,7 +264,7 @@ public class class9 implements MouseWheel {
 					Client.mouseCrossState = 0; // L: 8955
 					Client.destinationX = var0; // L: 8956
 					Client.destinationY = var1; // L: 8957
-					var9 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2925, Client.packetWriter.isaacCipher); // L: 8959
+					var9 = WorldMapSprite.getPacketBufferNode(ClientPacket.OPNPC2, Client.packetWriter.isaacCipher); // L: 8959
 					var9.packetBuffer.writeShort(var3); // L: 8960
 					var9.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8961
 					Client.packetWriter.addNode(var9); // L: 8962
@@ -278,7 +278,7 @@ public class class9 implements MouseWheel {
 					Client.mouseCrossState = 0; // L: 9075
 					Client.destinationX = var0; // L: 9076
 					Client.destinationY = var1; // L: 9077
-					var9 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2902, Client.packetWriter.isaacCipher); // L: 9079
+					var9 = WorldMapSprite.getPacketBufferNode(ClientPacket.OPNPC3, Client.packetWriter.isaacCipher); // L: 9079
 					var9.packetBuffer.method7710(var3); // L: 9080
 					var9.packetBuffer.method7701(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 9081
 					Client.packetWriter.addNode(var9); // L: 9082
@@ -292,7 +292,7 @@ public class class9 implements MouseWheel {
 					Client.mouseCrossState = 0; // L: 8996
 					Client.destinationX = var0; // L: 8997
 					Client.destinationY = var1; // L: 8998
-					var9 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2940, Client.packetWriter.isaacCipher); // L: 9000
+					var9 = WorldMapSprite.getPacketBufferNode(ClientPacket.OPNPC4, Client.packetWriter.isaacCipher); // L: 9000
 					var9.packetBuffer.method7804(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 9001
 					var9.packetBuffer.method7710(var3); // L: 9002
 					Client.packetWriter.addNode(var9); // L: 9003
@@ -306,7 +306,7 @@ public class class9 implements MouseWheel {
 					Client.mouseCrossState = 0; // L: 9499
 					Client.destinationX = var0; // L: 9500
 					Client.destinationY = var1; // L: 9501
-					var9 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2924, Client.packetWriter.isaacCipher); // L: 9503
+					var9 = WorldMapSprite.getPacketBufferNode(ClientPacket.OPNPC5, Client.packetWriter.isaacCipher); // L: 9503
 					var9.packetBuffer.method7710(var3); // L: 9504
 					var9.packetBuffer.method7804(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 9505
 					Client.packetWriter.addNode(var9); // L: 9506
@@ -322,7 +322,7 @@ public class class9 implements MouseWheel {
 						Client.mouseCrossState = 0; // L: 9447
 						Client.destinationX = var0; // L: 9448
 						Client.destinationY = var1; // L: 9449
-						var9 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2956, Client.packetWriter.isaacCipher); // L: 9451
+						var9 = WorldMapSprite.getPacketBufferNode(ClientPacket.OPPLAYERU, Client.packetWriter.isaacCipher); // L: 9451
 						var9.packetBuffer.method7712(Varcs.selectedItemId); // L: 9452
 						var9.packetBuffer.writeShort(var3); // L: 9453
 						var9.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 9454
@@ -339,7 +339,7 @@ public class class9 implements MouseWheel {
 						Client.mouseCrossState = 0; // L: 9546
 						Client.destinationX = var0; // L: 9547
 						Client.destinationY = var1; // L: 9548
-						var9 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2999, Client.packetWriter.isaacCipher); // L: 9549
+						var9 = WorldMapSprite.getPacketBufferNode(ClientPacket.OPPLAYERT, Client.packetWriter.isaacCipher); // L: 9549
 						var9.packetBuffer.method7710(Client.selectedSpellChildIndex); // L: 9550
 						var9.packetBuffer.method7711(var3); // L: 9551
 						var9.packetBuffer.method7804(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 9552
@@ -354,7 +354,7 @@ public class class9 implements MouseWheel {
 					Client.mouseCrossState = 0; // L: 8808
 					Client.destinationX = var0; // L: 8809
 					Client.destinationY = var1; // L: 8810
-					var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2955, Client.packetWriter.isaacCipher); // L: 8812
+					var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.OPOBJU, Client.packetWriter.isaacCipher); // L: 8812
 					var8.packetBuffer.method7703(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8813
 					var8.packetBuffer.method7711(class432.selectedItemSlot); // L: 8814
 					var8.packetBuffer.method7711(var3); // L: 8815
@@ -370,7 +370,7 @@ public class class9 implements MouseWheel {
 					Client.mouseCrossState = 0; // L: 8888
 					Client.destinationX = var0; // L: 8889
 					Client.destinationY = var1; // L: 8890
-					var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2904, Client.packetWriter.isaacCipher); // L: 8891
+					var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.OPOBJT, Client.packetWriter.isaacCipher); // L: 8891
 					var8.packetBuffer.writeShort(Client.selectedSpellItemId); // L: 8892
 					var8.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8893
 					var8.packetBuffer.method7710(var3); // L: 8894
@@ -386,7 +386,7 @@ public class class9 implements MouseWheel {
 					Client.mouseCrossState = 0; // L: 9351
 					Client.destinationX = var0; // L: 9352
 					Client.destinationY = var1; // L: 9353
-					var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2933, Client.packetWriter.isaacCipher); // L: 9355
+					var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.OPOBJ1, Client.packetWriter.isaacCipher); // L: 9355
 					var8.packetBuffer.method7703(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 9356
 					var8.packetBuffer.method7712(var3); // L: 9357
 					var8.packetBuffer.writeShort(VarcInt.baseY + var1); // L: 9358
@@ -399,7 +399,7 @@ public class class9 implements MouseWheel {
 					Client.mouseCrossState = 0; // L: 9382
 					Client.destinationX = var0; // L: 9383
 					Client.destinationY = var1; // L: 9384
-					var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2915, Client.packetWriter.isaacCipher); // L: 9386
+					var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.OPOBJ2, Client.packetWriter.isaacCipher); // L: 9386
 					var8.packetBuffer.writeShort(VarcInt.baseY + var1); // L: 9387
 					var8.packetBuffer.method7804(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 9388
 					var8.packetBuffer.writeShort(var3); // L: 9389
@@ -412,7 +412,7 @@ public class class9 implements MouseWheel {
 					Client.mouseCrossState = 0; // L: 8922
 					Client.destinationX = var0; // L: 8923
 					Client.destinationY = var1; // L: 8924
-					var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2951, Client.packetWriter.isaacCipher); // L: 8926
+					var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.OPOBJ3, Client.packetWriter.isaacCipher); // L: 8926
 					var8.packetBuffer.method7710(var0 + GrandExchangeOfferOwnWorldComparator.baseX); // L: 8927
 					var8.packetBuffer.writeShort(var3); // L: 8928
 					var8.packetBuffer.method7701(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8929
@@ -425,7 +425,7 @@ public class class9 implements MouseWheel {
 					Client.mouseCrossState = 0; // L: 9529
 					Client.destinationX = var0; // L: 9530
 					Client.destinationY = var1; // L: 9531
-					var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2942, Client.packetWriter.isaacCipher); // L: 9533
+					var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.OPOBJ4, Client.packetWriter.isaacCipher); // L: 9533
 					var8.packetBuffer.method7804(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 9534
 					var8.packetBuffer.writeShort(var0 + GrandExchangeOfferOwnWorldComparator.baseX); // L: 9535
 					var8.packetBuffer.method7712(VarcInt.baseY + var1); // L: 9536
@@ -438,7 +438,7 @@ public class class9 implements MouseWheel {
 					Client.mouseCrossState = 0; // L: 9232
 					Client.destinationX = var0; // L: 9233
 					Client.destinationY = var1; // L: 9234
-					var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2920, Client.packetWriter.isaacCipher); // L: 9236
+					var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.OPOBJ5, Client.packetWriter.isaacCipher); // L: 9236
 					var8.packetBuffer.method7701(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 9237
 					var8.packetBuffer.method7712(var0 + GrandExchangeOfferOwnWorldComparator.baseX); // L: 9238
 					var8.packetBuffer.method7710(VarcInt.baseY + var1); // L: 9239
@@ -462,7 +462,7 @@ public class class9 implements MouseWheel {
 							}
 
 							if (var11) { // L: 8970
-								var10 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2897, Client.packetWriter.isaacCipher); // L: 8972
+								var10 = WorldMapSprite.getPacketBufferNode(ClientPacket.WIDGET_TYPE_1, Client.packetWriter.isaacCipher); // L: 8972
 								var10.packetBuffer.writeInt(var1); // L: 8973
 								Client.packetWriter.addNode(var10); // L: 8974
 							}
@@ -495,7 +495,7 @@ public class class9 implements MouseWheel {
 							int var12;
 							Widget var14;
 							if (var2 == 28) {
-								var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2897, Client.packetWriter.isaacCipher); // L: 9205
+								var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.WIDGET_TYPE_1, Client.packetWriter.isaacCipher); // L: 9205
 								var8.packetBuffer.writeInt(var1); // L: 9206
 								Client.packetWriter.addNode(var8); // L: 9207
 								var14 = class127.getWidget(var1); // L: 9208
@@ -505,7 +505,7 @@ public class class9 implements MouseWheel {
 									WorldMapLabel.changeGameOptions(var12); // L: 9212
 								}
 							} else if (var2 == 29) {
-								var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2897, Client.packetWriter.isaacCipher); // L: 9560
+								var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.WIDGET_TYPE_1, Client.packetWriter.isaacCipher); // L: 9560
 								var8.packetBuffer.writeInt(var1); // L: 9561
 								Client.packetWriter.addNode(var8); // L: 9562
 								var14 = class127.getWidget(var1); // L: 9563
@@ -523,7 +523,7 @@ public class class9 implements MouseWheel {
 									class346.invalidateWidget(Client.meslayerContinueWidget); // L: 9397
 								}
 							} else if (var2 == 31) {
-								var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2971, Client.packetWriter.isaacCipher); // L: 9319
+								var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.OPHELDU, Client.packetWriter.isaacCipher); // L: 9319
 								var8.packetBuffer.writeIntME(TaskHandler.selectedItemWidget); // L: 9320
 								var8.packetBuffer.method7710(class432.selectedItemSlot); // L: 9321
 								var8.packetBuffer.method7721(var1); // L: 9322
@@ -535,7 +535,7 @@ public class class9 implements MouseWheel {
 								GrandExchangeOfferAgeComparator.field4011 = class127.getWidget(var1); // L: 9328
 								Client.field611 = var0; // L: 9329
 							} else if (var2 == 32) {
-								var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2959, Client.packetWriter.isaacCipher); // L: 9153
+								var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.OPHELDT, Client.packetWriter.isaacCipher); // L: 9153
 								var8.packetBuffer.method7711(var3); // L: 9154
 								var8.packetBuffer.writeIntME(Timer.selectedSpellWidget); // L: 9155
 								var8.packetBuffer.method7711(var0); // L: 9156
@@ -546,7 +546,7 @@ public class class9 implements MouseWheel {
 								GrandExchangeOfferAgeComparator.field4011 = class127.getWidget(var1); // L: 9161
 								Client.field611 = var0; // L: 9162
 							} else if (var2 == 33) {
-								var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2985, Client.packetWriter.isaacCipher); // L: 9260
+								var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.OPHELD1, Client.packetWriter.isaacCipher); // L: 9260
 								var8.packetBuffer.writeShort(var3); // L: 9261
 								var8.packetBuffer.writeShort(var0); // L: 9262
 								var8.packetBuffer.method7721(var1); // L: 9263
@@ -555,7 +555,7 @@ public class class9 implements MouseWheel {
 								GrandExchangeOfferAgeComparator.field4011 = class127.getWidget(var1); // L: 9266
 								Client.field611 = var0; // L: 9267
 							} else if (var2 == 34) {
-								var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2969, Client.packetWriter.isaacCipher); // L: 9589
+								var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.OPHELD2, Client.packetWriter.isaacCipher); // L: 9589
 								var8.packetBuffer.method7721(var1); // L: 9590
 								var8.packetBuffer.writeShort(var0); // L: 9591
 								var8.packetBuffer.writeShort(var3); // L: 9592
@@ -564,7 +564,7 @@ public class class9 implements MouseWheel {
 								GrandExchangeOfferAgeComparator.field4011 = class127.getWidget(var1); // L: 9595
 								Client.field611 = var0; // L: 9596
 							} else if (var2 == 35) {
-								var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2997, Client.packetWriter.isaacCipher); // L: 9462
+								var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.OPHELD3, Client.packetWriter.isaacCipher); // L: 9462
 								var8.packetBuffer.writeShort(var3); // L: 9463
 								var8.packetBuffer.writeShort(var0); // L: 9464
 								var8.packetBuffer.method7721(var1); // L: 9465
@@ -573,7 +573,7 @@ public class class9 implements MouseWheel {
 								GrandExchangeOfferAgeComparator.field4011 = class127.getWidget(var1); // L: 9468
 								Client.field611 = var0; // L: 9469
 							} else if (var2 == 36) {
-								var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2954, Client.packetWriter.isaacCipher); // L: 9113
+								var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.OPHELD4, Client.packetWriter.isaacCipher); // L: 9113
 								var8.packetBuffer.method7710(var3); // L: 9114
 								var8.packetBuffer.method7721(var1); // L: 9115
 								var8.packetBuffer.method7712(var0); // L: 9116
@@ -582,7 +582,7 @@ public class class9 implements MouseWheel {
 								GrandExchangeOfferAgeComparator.field4011 = class127.getWidget(var1); // L: 9119
 								Client.field611 = var0; // L: 9120
 							} else if (var2 == 37) {
-								var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2998, Client.packetWriter.isaacCipher); // L: 8860
+								var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.OPHELD5, Client.packetWriter.isaacCipher); // L: 8860
 								var8.packetBuffer.writeIntME(var1); // L: 8861
 								var8.packetBuffer.writeShort(var3); // L: 8862
 								var8.packetBuffer.method7712(var0); // L: 8863
@@ -608,7 +608,7 @@ public class class9 implements MouseWheel {
 								}
 
 								if (var2 == 39) {
-									var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2922, Client.packetWriter.isaacCipher); // L: 9024
+									var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.IF1_BUTTON1, Client.packetWriter.isaacCipher); // L: 9024
 									var8.packetBuffer.writeInt(var1); // L: 9025
 									var8.packetBuffer.method7711(var0); // L: 9026
 									var8.packetBuffer.method7710(var3); // L: 9027
@@ -617,7 +617,7 @@ public class class9 implements MouseWheel {
 									GrandExchangeOfferAgeComparator.field4011 = class127.getWidget(var1); // L: 9030
 									Client.field611 = var0; // L: 9031
 								} else if (var2 == 40) {
-									var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2958, Client.packetWriter.isaacCipher); // L: 9142
+									var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.IF1_BUTTON2, Client.packetWriter.isaacCipher); // L: 9142
 									var8.packetBuffer.writeIntME(var1); // L: 9143
 									var8.packetBuffer.writeShort(var0); // L: 9144
 									var8.packetBuffer.method7711(var3); // L: 9145
@@ -626,7 +626,7 @@ public class class9 implements MouseWheel {
 									GrandExchangeOfferAgeComparator.field4011 = class127.getWidget(var1); // L: 9148
 									Client.field611 = var0; // L: 9149
 								} else if (var2 == 41) {
-									var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2921, Client.packetWriter.isaacCipher); // L: 9432
+									var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.IF1_BUTTON3, Client.packetWriter.isaacCipher); // L: 9432
 									var8.packetBuffer.method7711(var3); // L: 9433
 									var8.packetBuffer.method7721(var1); // L: 9434
 									var8.packetBuffer.method7712(var0); // L: 9435
@@ -635,7 +635,7 @@ public class class9 implements MouseWheel {
 									GrandExchangeOfferAgeComparator.field4011 = class127.getWidget(var1); // L: 9438
 									Client.field611 = var0; // L: 9439
 								} else if (var2 == 42) {
-									var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2896, Client.packetWriter.isaacCipher); // L: 9484
+									var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.IF1_BUTTON4, Client.packetWriter.isaacCipher); // L: 9484
 									var8.packetBuffer.method7712(var0); // L: 9485
 									var8.packetBuffer.writeInt(var1); // L: 9486
 									var8.packetBuffer.method7710(var3); // L: 9487
@@ -661,7 +661,7 @@ public class class9 implements MouseWheel {
 										Client.mouseCrossState = 0; // L: 9291
 										Client.destinationX = var0; // L: 9292
 										Client.destinationY = var1; // L: 9293
-										var9 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2913, Client.packetWriter.isaacCipher); // L: 9295
+										var9 = WorldMapSprite.getPacketBufferNode(ClientPacket.OPPLAYER1, Client.packetWriter.isaacCipher); // L: 9295
 										var9.packetBuffer.method7710(var3); // L: 9296
 										var9.packetBuffer.method7701(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 9297
 										Client.packetWriter.addNode(var9); // L: 9298
@@ -675,7 +675,7 @@ public class class9 implements MouseWheel {
 										Client.mouseCrossState = 0; // L: 8939
 										Client.destinationX = var0; // L: 8940
 										Client.destinationY = var1; // L: 8941
-										var9 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2957, Client.packetWriter.isaacCipher); // L: 8943
+										var9 = WorldMapSprite.getPacketBufferNode(ClientPacket.OPPLAYER2, Client.packetWriter.isaacCipher); // L: 8943
 										var9.packetBuffer.method7710(var3); // L: 8944
 										var9.packetBuffer.method7804(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8945
 										Client.packetWriter.addNode(var9); // L: 8946
@@ -689,7 +689,7 @@ public class class9 implements MouseWheel {
 										Client.mouseCrossState = 0; // L: 9091
 										Client.destinationX = var0; // L: 9092
 										Client.destinationY = var1; // L: 9093
-										var9 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2964, Client.packetWriter.isaacCipher); // L: 9095
+										var9 = WorldMapSprite.getPacketBufferNode(ClientPacket.OPPLAYER3, Client.packetWriter.isaacCipher); // L: 9095
 										var9.packetBuffer.method7701(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 9096
 										var9.packetBuffer.method7711(var3); // L: 9097
 										Client.packetWriter.addNode(var9); // L: 9098
@@ -703,7 +703,7 @@ public class class9 implements MouseWheel {
 										Client.mouseCrossState = 0; // L: 9515
 										Client.destinationX = var0; // L: 9516
 										Client.destinationY = var1; // L: 9517
-										var9 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2939, Client.packetWriter.isaacCipher); // L: 9519
+										var9 = WorldMapSprite.getPacketBufferNode(ClientPacket.OPPLAYER4, Client.packetWriter.isaacCipher); // L: 9519
 										var9.packetBuffer.method7804(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 9520
 										var9.packetBuffer.writeShort(var3); // L: 9521
 										Client.packetWriter.addNode(var9); // L: 9522
@@ -717,7 +717,7 @@ public class class9 implements MouseWheel {
 										Client.mouseCrossState = 0; // L: 9420
 										Client.destinationX = var0; // L: 9421
 										Client.destinationY = var1; // L: 9422
-										var9 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2972, Client.packetWriter.isaacCipher); // L: 9424
+										var9 = WorldMapSprite.getPacketBufferNode(ClientPacket.OPPLAYER5, Client.packetWriter.isaacCipher); // L: 9424
 										var9.packetBuffer.writeShort(var3); // L: 9425
 										var9.packetBuffer.method7701(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 9426
 										Client.packetWriter.addNode(var9); // L: 9427
@@ -731,7 +731,7 @@ public class class9 implements MouseWheel {
 										Client.mouseCrossState = 0; // L: 9275
 										Client.destinationX = var0; // L: 9276
 										Client.destinationY = var1; // L: 9277
-										var9 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2931, Client.packetWriter.isaacCipher); // L: 9279
+										var9 = WorldMapSprite.getPacketBufferNode(ClientPacket.OPPLAYER6, Client.packetWriter.isaacCipher); // L: 9279
 										var9.packetBuffer.method7712(var3); // L: 9280
 										var9.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 9281
 										Client.packetWriter.addNode(var9); // L: 9282
@@ -745,7 +745,7 @@ public class class9 implements MouseWheel {
 										Client.mouseCrossState = 0; // L: 9368
 										Client.destinationX = var0; // L: 9369
 										Client.destinationY = var1; // L: 9370
-										var9 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2923, Client.packetWriter.isaacCipher); // L: 9372
+										var9 = WorldMapSprite.getPacketBufferNode(ClientPacket.OPPLAYER7, Client.packetWriter.isaacCipher); // L: 9372
 										var9.packetBuffer.writeShort(var3); // L: 9373
 										var9.packetBuffer.method7701(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 9374
 										Client.packetWriter.addNode(var9); // L: 9375
@@ -759,7 +759,7 @@ public class class9 implements MouseWheel {
 										Client.mouseCrossState = 0; // L: 9307
 										Client.destinationX = var0; // L: 9308
 										Client.destinationY = var1; // L: 9309
-										var9 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2974, Client.packetWriter.isaacCipher); // L: 9311
+										var9 = WorldMapSprite.getPacketBufferNode(ClientPacket.OPPLAYER8, Client.packetWriter.isaacCipher); // L: 9311
 										var9.packetBuffer.method7712(var3); // L: 9312
 										var9.packetBuffer.method7804(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 9313
 										Client.packetWriter.addNode(var9); // L: 9314
@@ -768,7 +768,7 @@ public class class9 implements MouseWheel {
 									if (var2 == 58) {
 										var16 = ItemComposition.getWidgetChild(var1, var0); // L: 9401
 										if (var16 != null) { // L: 9402
-											var9 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2894, Client.packetWriter.isaacCipher); // L: 9404
+											var9 = WorldMapSprite.getPacketBufferNode(ClientPacket.IF_BUTTONT, Client.packetWriter.isaacCipher); // L: 9404
 											var9.packetBuffer.writeShort(Client.selectedSpellItemId); // L: 9405
 											var9.packetBuffer.writeIntME(Timer.selectedSpellWidget); // L: 9406
 											var9.packetBuffer.method7711(var16.itemId); // L: 9407
@@ -784,7 +784,7 @@ public class class9 implements MouseWheel {
 										Client.mouseCrossState = 0; // L: 9247
 										Client.destinationX = var0; // L: 9248
 										Client.destinationY = var1; // L: 9249
-										var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2993, Client.packetWriter.isaacCipher); // L: 9251
+										var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.OPLOC5, Client.packetWriter.isaacCipher); // L: 9251
 										var8.packetBuffer.method7710(var3); // L: 9252
 										var8.packetBuffer.method7711(var0 + GrandExchangeOfferOwnWorldComparator.baseX); // L: 9253
 										var8.packetBuffer.method7804(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 9254
@@ -795,7 +795,7 @@ public class class9 implements MouseWheel {
 										Client.mouseCrossY = var7; // L: 9103
 										Client.mouseCrossColor = 2; // L: 9104
 										Client.mouseCrossState = 0; // L: 9105
-										var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2949, Client.packetWriter.isaacCipher); // L: 9107
+										var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.OPLOC6, Client.packetWriter.isaacCipher); // L: 9107
 										var8.packetBuffer.method7712(var3); // L: 9108
 										Client.packetWriter.addNode(var8); // L: 9109
 									} else if (var2 == 1003) {
@@ -821,7 +821,7 @@ public class class9 implements MouseWheel {
 										Client.mouseCrossY = var7; // L: 9220
 										Client.mouseCrossColor = 2; // L: 9221
 										Client.mouseCrossState = 0; // L: 9222
-										var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2988, Client.packetWriter.isaacCipher); // L: 9224
+										var8 = WorldMapSprite.getPacketBufferNode(ClientPacket.OPOBJ6, Client.packetWriter.isaacCipher); // L: 9224
 										var8.packetBuffer.method7711(var3); // L: 9225
 										Client.packetWriter.addNode(var8); // L: 9226
 									} else if (var2 == 1005) {
@@ -829,7 +829,7 @@ public class class9 implements MouseWheel {
 										if (var16 != null && var16.itemQuantities[var0] >= 100000) { // L: 9008
 											Actor.addGameMessage(27, "", var16.itemQuantities[var0] + " x " + class19.ItemDefinition_get(var3).name);
 										} else {
-											var9 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2988, Client.packetWriter.isaacCipher); // L: 9011
+											var9 = WorldMapSprite.getPacketBufferNode(ClientPacket.OPOBJ6, Client.packetWriter.isaacCipher); // L: 9011
 											var9.packetBuffer.method7711(var3); // L: 9012
 											Client.packetWriter.addNode(var9); // L: 9013
 										}
