@@ -97,6 +97,19 @@ public class AutomatedMenu
 		return toEntry(client, null);
 	}
 
+	public MenuEntry toBareEntry(Client client)
+	{
+		return client.createMenuEntry(
+				option,
+				target,
+				opcode.getId(),
+				identifier,
+				param0,
+				param1,
+				false
+		);
+	}
+
 	public MenuOptionClicked toMenuOptionClicked()
 	{
 		MenuOptionClicked event = new MenuOptionClicked();
