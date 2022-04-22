@@ -3,17 +3,12 @@ package dev.unethicalite.mixins;
 import dev.unethicalite.api.events.AutomatedMenu;
 import dev.unethicalite.api.events.ExperienceGained;
 import dev.unethicalite.api.events.LoginStateChanged;
-import dev.unethicalite.api.events.MenuActionProcessed;
 import dev.unethicalite.api.events.PlaneChanged;
 import dev.unethicalite.api.events.ResumePauseSent;
 import dev.unethicalite.api.widgets.DialogOption;
-import java.time.Instant;
-import java.util.HashMap;
-import java.util.concurrent.atomic.AtomicReference;
-import javax.annotation.Nonnull;
 import net.runelite.api.ItemComposition;
 import net.runelite.api.MenuAction;
-import static net.runelite.api.MenuAction.UNKNOWN;
+import net.runelite.api.MenuEntry;
 import net.runelite.api.Skill;
 import net.runelite.api.Tile;
 import net.runelite.api.TileObject;
@@ -37,6 +32,13 @@ import net.runelite.rs.api.RSProjectile;
 import net.runelite.rs.api.RSRenderable;
 import net.runelite.rs.api.RSRuneLiteMenuEntry;
 import net.runelite.rs.api.RSTile;
+
+import javax.annotation.Nonnull;
+import java.time.Instant;
+import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicReference;
+
+import static net.runelite.api.MenuAction.UNKNOWN;
 
 @Mixin(RSClient.class)
 public abstract class HClientMixin implements RSClient
@@ -94,9 +96,9 @@ public abstract class HClientMixin implements RSClient
 		else
 		{
 			client.getLogger().debug(
-				"Unknown or unmapped dialog option for widgetUid: {} and menuIndex {}",
-				widgetUid,
-				menuIndex
+					"Unknown or unmapped dialog option for widgetUid: {} and menuIndex {}",
+					widgetUid,
+					menuIndex
 			);
 		}
 	}
@@ -119,10 +121,10 @@ public abstract class HClientMixin implements RSClient
 		{
 			Skill updatedSkill = possibleSkills[idx];
 			StatChanged statChanged = new StatChanged(
-				updatedSkill,
-				client.getSkillExperience(updatedSkill),
-				client.getRealSkillLevel(updatedSkill),
-				client.getBoostedSkillLevel(updatedSkill)
+					updatedSkill,
+					client.getSkillExperience(updatedSkill),
+					client.getRealSkillLevel(updatedSkill),
+					client.getBoostedSkillLevel(updatedSkill)
 			);
 			if (previousExp[idx] == 0 && client.getSkillExperience(updatedSkill) > 0)
 			{
@@ -142,10 +144,10 @@ public abstract class HClientMixin implements RSClient
 			int gained = exp - previousExp[idx];
 
 			ExperienceGained experienceGained = new ExperienceGained(
-				updatedSkill,
-				gained,
-				exp,
-				skillLevel
+					updatedSkill,
+					gained,
+					exp,
+					skillLevel
 			);
 
 			client.getCallbacks().post(experienceGained);
@@ -160,18 +162,135 @@ public abstract class HClientMixin implements RSClient
 		client.getCallbacks().post(new PlaneChanged(client.getPlane()));
 	}
 
+	//	@Inject
+	//	@MethodHook("incrementMenuEntries")
+	//	public static void insertReplacement()
+	//	{
+	//		AutomatedMenu replacement = automatedMenu.getAndSet(null);
+	//		if (replacement != null)
+	//		{
+	//			client.getLogger().debug("Inserting automated menu {}", replacement);
+	//			replacement.toEntry(client);
+	//		}
+	//	}
+
 	@Copy("menuAction")
 	@Replace("menuAction")
 	static void copy$menuAction(int param0, int param1, int opcode, int id, String option, String target, int canvasX, int canvasY)
 	{
 		RSRuneLiteMenuEntry menuEntry = null;
 
+		String[] menuOptions = client.getMenuOptions();
+		//		for (int i = 0; i < menuOptions.length; i++)
+		//		{
+		//			String menuOption = menuOptions[i];
+		//			if (menuOption == null) continue;
+		//			client.getLogger().debug("Menu: {} {}", i, menuOption);
+		//		}
+		//
+		//		for (int i = 0; i < rl$menuEntries.length; i++)
+		//		{
+		//			MenuEntry menuOption = rl$menuEntries[i];
+		//			if (menuOption == null) continue;
+		//			client.getLogger().debug("RL Menu: {}. {}", i, menuOption);
+		//		}
+
 		for (int i = client.getMenuOptionCount() - 1; i >= 0; --i)
 		{
-			if (client.getMenuOptions()[i] == option && client.getMenuTargets()[i] == target && client.getMenuIdentifiers()[i] == id && client.getMenuOpcodes()[i] == opcode)
+			if (client.getMenuOpcodes()[i] == opcode
+					&& client.getMenuIdentifiers()[i] == id
+					&& client.getMenuArguments1()[i] == param0
+					&& client.getMenuArguments2()[i] == param1
+					&& option.equals(client.getMenuOptions()[i])
+					&& (option.equals(target) || target.equals(client.getMenuTargets()[i]))
+			)
 			{
 				menuEntry = rl$menuEntries[i];
 				break;
+			}
+		}
+
+		for (int i = 0; i < rl$menuEntries.length; i++)
+		{
+			if ("Automated".equals(client.getMenuOptions()[i]))
+			{
+				client.getLogger().debug("Found our automated entry, replacing menuentries.");
+				menuEntry = rl$menuEntries[i];
+				break;
+			}
+		}
+
+		if (menuEntry == null && option.equals(target))
+		{
+			int i;
+			if (client.getMenuOptionCount() < 500)
+			{
+				i = client.getMenuOptionCount();
+				client.setMenuOptionCount(client.getMenuOptionCount() + 1);
+			}
+			else
+			{
+				i = 0;
+			}
+
+			client.getMenuOpcodes()[i] = opcode;
+			client.getMenuIdentifiers()[i] = id;
+			client.getMenuOptions()[i] = option;
+			client.getMenuTargets()[i] = target;
+			client.getMenuArguments1()[i] = param0;
+			client.getMenuArguments2()[i] = param1;
+			client.getMenuForceLeftClick()[i] = false;
+			menuEntry = rl$menuEntries[i];
+			if (menuEntry == null)
+			{
+				menuEntry = rl$menuEntries[i] = newRlMenuEntry(i);
+			}
+		}
+
+		MenuOptionClicked event;
+		if (menuEntry == null)
+		{
+			MenuEntry tmpEntry = client.createMenuEntry(option, target, id, opcode, param0, param1, false);
+			event = new MenuOptionClicked(tmpEntry);
+
+			if (canvasX != -1 || canvasY != -1)
+			{
+				client.getLogger().warn("Unable to find clicked menu op {} targ {} action {} id {} p0 {} p1 {}", option, target, opcode, id, param0, param1);
+			}
+		}
+		else
+		{
+			AutomatedMenu replacement = client.getPendingAutomation();
+			client.getLogger().debug("Menu click op {} targ {} action {} id {} p0 {} p1 {}", option, target, opcode, id,
+					param0, param1);
+
+			if (replacement != null)
+			{
+				event = replacement.toMenuOptionClicked();
+			}
+			else
+			{
+				event = new MenuOptionClicked(menuEntry);
+			}
+
+			client.getCallbacks().post(event);
+
+			if (menuEntry.getConsumer() != null)
+			{
+				try
+				{
+					menuEntry.getConsumer().accept(menuEntry);
+				}
+				catch (Exception ex)
+				{
+					client.getLogger().warn("exception in menu callback", ex);
+				}
+			}
+
+			if (event.isConsumed())
+			{
+				automatedMenu.set(null);
+				return;
 			}
 		}
 
@@ -179,77 +298,51 @@ public abstract class HClientMixin implements RSClient
 		 * The RuneScape client may deprioritize an action in the menu by incrementing the opcode with 2000,
 		 * undo it here so we can get the correct opcode
 		 */
+		boolean decremented = false;
 		if (opcode >= 2000)
 		{
+			decremented = true;
 			opcode -= 2000;
-		}
-
-		MenuOptionClicked menuOptionClicked = new MenuOptionClicked();
-		AutomatedMenu replacement = automatedMenu.get();
-		if (replacement != null)
-		{
-			menuOptionClicked = replacement.toMenuOptionClicked();
-			lastInteractionTime = Instant.now();
-		}
-		else
-		{
-			menuOptionClicked.setParam0(param0);
-			menuOptionClicked.setMenuOption(option);
-			menuOptionClicked.setMenuTarget(target);
-			menuOptionClicked.setMenuAction(MenuAction.of(opcode));
-			menuOptionClicked.setId(id);
-			menuOptionClicked.setParam1(param1);
-			menuOptionClicked.setSelectedItemIndex(client.getSelectedItemSlot());
-			menuOptionClicked.setCanvasX(canvasX);
-			menuOptionClicked.setCanvasY(canvasY);
-		}
-
-		client.getCallbacks().post(menuOptionClicked);
-
-		if (menuEntry != null && menuEntry.getConsumer() != null)
-		{
-			menuEntry.getConsumer().accept(menuEntry);
-		}
-
-		if (menuOptionClicked.isConsumed())
-		{
-			automatedMenu.set(null);
-			return;
 		}
 
 		if (printMenuActions)
 		{
 			client.getLogger().info(
-				"|MenuAction|: MenuOption={} MenuTarget={} Id={} Opcode={}/{} Param0={} Param1={} CanvasX={} CanvasY={}",
-				menuOptionClicked.getMenuOption(), menuOptionClicked.getMenuTarget(), menuOptionClicked.getId(),
-				menuOptionClicked.getMenuAction(), opcode,
-				menuOptionClicked.getParam0(), menuOptionClicked.getParam1(), canvasX, canvasY
+					"|MenuAction|: MenuOption={} MenuTarget={} Id={} Opcode={}/{} Param0={} Param1={} CanvasX={} CanvasY={}",
+					event.getMenuOption(), event.getMenuTarget(), event.getId(),
+					event.getMenuAction(), opcode + (decremented ? 2000 : 0),
+					event.getParam0(), event.getParam1(), canvasX, canvasY
 			);
 
 			if (menuEntry != null)
 			{
 				client.getLogger().info(
-					"|MenuEntry|: Idx={} MenuOption={} MenuTarget={} Id={} MenuAction={} Param0={} Param1={} Consumer={} IsItemOp={} ItemOp={} ItemID={} Widget={}",
-					menuEntry.getIdx(), menuEntry.getOption(), menuEntry.getTarget(), menuEntry.getIdentifier(), menuEntry.getType(), menuEntry.getParam0(), menuEntry.getParam1(), menuEntry.getConsumer(), menuEntry.isItemOp(), menuEntry.getItemOp(), menuEntry.getItemId(), menuEntry.getWidget()
+						"|MenuEntry|: Idx={} MenuOption={} MenuTarget={} Id={} MenuAction={} Param0={} Param1={} Consumer={} IsItemOp={} ItemOp={} ItemID={} Widget={}",
+						menuEntry.getIdx(), menuEntry.getOption(), menuEntry.getTarget(), menuEntry.getIdentifier(), menuEntry.getType(), menuEntry.getParam0(), menuEntry.getParam1(), menuEntry.getConsumer(), menuEntry.isItemOp(), menuEntry.getItemOp(), menuEntry.getItemId(), menuEntry.getWidget()
 				);
 			}
 		}
 
-		copy$menuAction(menuOptionClicked.getParam0(), menuOptionClicked.getParam1(),
-			menuOptionClicked.getMenuAction() == UNKNOWN ? opcode : menuOptionClicked.getMenuAction().getId(),
-			menuOptionClicked.getId(), menuOptionClicked.getMenuOption(), menuOptionClicked.getMenuTarget(),
-			canvasX, canvasY);
+		if (opcode == MenuAction.WIDGET_CONTINUE.getId())
+		{
+			Widget widget = client.getWidget(param1);
+			if (widget == null || param0 > -1 && widget.getChild(param0) == null)
+			{
+				return;
+			}
+		}
+
+		copy$menuAction(event.getParam0(), event.getParam1(),
+				event.getMenuAction() == UNKNOWN ? opcode : event.getMenuAction().getId(),
+				event.getId(), event.getMenuOption(), event.getMenuTarget(),
+				canvasX, canvasY);
 		automatedMenu.set(null);
-		client.getCallbacks().post(new MenuActionProcessed(
-			menuOptionClicked.getMenuOption(),
-			menuOptionClicked.getMenuTarget(),
-			menuOptionClicked.getId(),
-			menuOptionClicked.getMenuAction(),
-			menuOptionClicked.getParam0(),
-			menuOptionClicked.getParam1(),
-			canvasX,
-			canvasY
-		));
+	}
+
+	@Inject
+	public static RSRuneLiteMenuEntry newRlMenuEntry(int idx)
+	{
+		throw new UnsupportedOperationException();
 	}
 
 	@Inject

@@ -70,8 +70,6 @@ public class InteractionManager
 
 					client.setPendingAutomation(e);
 
-					log.debug("Sending click to [{}, {}]", clickPoint.x, clickPoint.y);
-
 					long tag = e.getEntityTag();
 					if (tag != -1337)
 					{
@@ -93,6 +91,7 @@ public class InteractionManager
 						mouseHandler.sendMovement(clickPoint.x, clickPoint.y);
 					}
 
+					log.debug("Sending click to [{}, {}]", clickPoint.x, clickPoint.y);
 					mouseHandler.sendClick(clickPoint.x, clickPoint.y);
 					break;
 
