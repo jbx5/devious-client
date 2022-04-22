@@ -2,7 +2,6 @@ package dev.unethicalite.managers.interaction;
 
 import dev.unethicalite.api.MouseHandler;
 import dev.unethicalite.api.commons.Rand;
-import dev.unethicalite.api.commons.Time;
 import dev.unethicalite.api.events.AutomatedMenu;
 import dev.unethicalite.api.game.GameThread;
 import dev.unethicalite.api.input.naturalmouse.NaturalMouse;
@@ -13,7 +12,6 @@ import dev.unethicalite.api.widgets.DialogOption;
 import dev.unethicalite.api.widgets.Widgets;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
-import net.runelite.api.Constants;
 import net.runelite.api.MenuAction;
 import net.runelite.api.events.DialogProcessed;
 import net.runelite.api.events.MenuOptionClicked;
