@@ -141,11 +141,6 @@ public class InteractionManager
 			log.error("Interaction failed: {}", ex.getMessage());
 			client.setPendingAutomation(null);
 		}
-		finally
-		{
-			long duration = System.currentTimeMillis() - e.getTimestamp();
-			Time.sleep(Constants.CLIENT_TICK_LENGTH + duration);
-		}
 	}
 
 	@Subscribe

@@ -162,143 +162,16 @@ public abstract class HClientMixin implements RSClient
 		client.getCallbacks().post(new PlaneChanged(client.getPlane()));
 	}
 
-	@Copy("menuAction")
-	@Replace("menuAction")
-	static void copy$menuAction(int param0, int param1, int opcode, int id, String option, String target, int canvasX, int canvasY)
-	{
-		RSRuneLiteMenuEntry menuEntry = null;
-		for (int i = client.getMenuOptionCount() - 1; i >= 0; --i)
+	@Inject
+	@MethodHook("incrementMenuEntries")
+	public static void onIncrementMenuEntries()
+  {
+		AutomatedMenu menu = automatedMenu.getAndSet(null);
+		if (menu != null)
 		{
-			if (client.getMenuOpcodes()[i] == opcode
-					&& client.getMenuIdentifiers()[i] == id
-					&& client.getMenuArguments1()[i] == param0
-					&& client.getMenuArguments2()[i] == param1
-					&& option.equals(client.getMenuOptions()[i])
-					&& (option.equals(target) || target.equals(client.getMenuTargets()[i]))
-			)
-			{
-				menuEntry = rl$menuEntries[i];
-				break;
-			}
+			client.setDraggedWidget(null);
+			menu.toEntry(client);
 		}
-
-		if (menuEntry == null && option.equals(target))
-		{
-			int i;
-			if (client.getMenuOptionCount() < 500)
-			{
-				i = client.getMenuOptionCount();
-				client.setMenuOptionCount(client.getMenuOptionCount() + 1);
-			}
-			else
-			{
-				i = 0;
-			}
-
-			client.getMenuOpcodes()[i] = opcode;
-			client.getMenuIdentifiers()[i] = id;
-			client.getMenuOptions()[i] = option;
-			client.getMenuTargets()[i] = target;
-			client.getMenuArguments1()[i] = param0;
-			client.getMenuArguments2()[i] = param1;
-			client.getMenuForceLeftClick()[i] = false;
-			menuEntry = rl$menuEntries[i];
-			if (menuEntry == null)
-			{
-				menuEntry = rl$menuEntries[i] = (RSRuneLiteMenuEntry) client.createMenuEntry(i);
-			}
-		}
-
-		MenuOptionClicked event;
-		if (menuEntry == null)
-		{
-			MenuEntry tmpEntry = client.createMenuEntry(option, target, id, opcode, param0, param1, false);
-			event = new MenuOptionClicked(tmpEntry);
-
-			if (canvasX != -1 || canvasY != -1)
-			{
-				client.getLogger().warn("Unable to find clicked menu op {} targ {} action {} id {} p0 {} p1 {}", option, target, opcode, id, param0, param1);
-			}
-		}
-		else
-		{
-			client.getLogger().debug("Menu click op {} targ {} action {} id {} p0 {} p1 {}", option, target, opcode, id,
-					param0, param1);
-			AutomatedMenu replacement = client.getPendingAutomation();
-
-			if (replacement != null)
-			{
-				event = replacement.toMenuOptionClicked();
-			}
-			else
-			{
-				event = new MenuOptionClicked(menuEntry);
-			}
-
-			client.getCallbacks().post(event);
-
-			if (menuEntry.getConsumer() != null)
-			{
-				try
-				{
-					menuEntry.getConsumer().accept(menuEntry);
-				}
-				catch (Exception ex)
-				{
-					client.getLogger().warn("exception in menu callback", ex);
-				}
-			}
-
-			if (event.isConsumed())
-			{
-				automatedMenu.set(null);
-				return;
-			}
-		}
-
-		/*
-		 * The RuneScape client may deprioritize an action in the menu by incrementing the opcode with 2000,
-		 * undo it here so we can get the correct opcode
-		 */
-		boolean decremented = false;
-		if (opcode >= 2000)
-		{
-			decremented = true;
-			opcode -= 2000;
-		}
-
-		if (printMenuActions)
-		{
-			client.getLogger().info(
-					"|MenuAction|: MenuOption={} MenuTarget={} Id={} Opcode={}/{} Param0={} Param1={} CanvasX={} CanvasY={}",
-					event.getMenuOption(), event.getMenuTarget(), event.getId(),
-					event.getMenuAction(), opcode + (decremented ? 2000 : 0),
-					event.getParam0(), event.getParam1(), canvasX, canvasY
-			);
-
-			if (menuEntry != null)
-			{
-				client.getLogger().info(
-						"|MenuEntry|: Idx={} MenuOption={} MenuTarget={} Id={} MenuAction={} Param0={} Param1={} Consumer={} IsItemOp={} ItemOp={} ItemID={} Widget={}",
-						menuEntry.getIdx(), menuEntry.getOption(), menuEntry.getTarget(), menuEntry.getIdentifier(), menuEntry.getType(), menuEntry.getParam0(), menuEntry.getParam1(), menuEntry.getConsumer(), menuEntry.isItemOp(), menuEntry.getItemOp(), menuEntry.getItemId(), menuEntry.getWidget()
-				);
-			}
-		}
-
-		if (opcode == MenuAction.WIDGET_CONTINUE.getId())
-		{
-			Widget widget = client.getWidget(param1);
-			if (widget == null || param0 > -1 && widget.getChild(param0) == null)
-			{
-				return;
-			}
-		}
-
-		copy$menuAction(event.getParam0(), event.getParam1(),
-				event.getMenuAction() == UNKNOWN ? opcode : event.getMenuAction().getId(),
-				event.getId(), event.getMenuOption(), event.getMenuTarget(),
-				canvasX, canvasY);
-		automatedMenu.set(null);
 	}
 
 	@Inject
