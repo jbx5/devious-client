@@ -2657,4 +2657,6 @@ public interface Client extends OAuthApi, GameEngine
 	Instant getLastInteractionTime();
 
 	int getSelectedItemID();
+
+	void setDraggedWidget(Widget widget);
 }
