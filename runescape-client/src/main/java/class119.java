@@ -256,7 +256,7 @@ public class class119 implements MouseWheel {
 
 			Client var16 = class127.client;
 			var5 = ("document.cookie=\"" + var3) + "\"";
-			JSObject.getWindow(var16).eval(var5);
+			//JSObject.getWindow(var16).eval(var5);
 		} catch (Throwable var15) {
 		}
 
