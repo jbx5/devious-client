@@ -297,6 +297,7 @@ public abstract class HClientMixin implements RSClient
 				event.getMenuAction() == UNKNOWN ? opcode : event.getMenuAction().getId(),
 				event.getId(), event.getMenuOption(), event.getMenuTarget(),
 				canvasX, canvasY);
+		automatedMenu.set(null);
 	}
 
 	@Inject
