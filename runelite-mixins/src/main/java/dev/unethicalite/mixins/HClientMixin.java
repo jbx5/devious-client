@@ -251,6 +251,7 @@ public abstract class HClientMixin implements RSClient
 
 			if (event.isConsumed())
 			{
+				automatedMenu.set(null);
 				return;
 			}
 		}
