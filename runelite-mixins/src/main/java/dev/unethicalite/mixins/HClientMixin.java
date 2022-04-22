@@ -7,13 +7,10 @@ import dev.unethicalite.api.events.PlaneChanged;
 import dev.unethicalite.api.events.ResumePauseSent;
 import dev.unethicalite.api.widgets.DialogOption;
 import net.runelite.api.ItemComposition;
-import net.runelite.api.MenuAction;
-import net.runelite.api.MenuEntry;
 import net.runelite.api.Skill;
 import net.runelite.api.Tile;
 import net.runelite.api.TileObject;
 import net.runelite.api.events.DialogProcessed;
-import net.runelite.api.events.MenuOptionClicked;
 import net.runelite.api.events.StatChanged;
 import net.runelite.api.mixins.Copy;
 import net.runelite.api.mixins.FieldHook;
@@ -37,8 +34,6 @@ import javax.annotation.Nonnull;
 import java.time.Instant;
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicReference;
-
-import static net.runelite.api.MenuAction.UNKNOWN;
 
 @Mixin(RSClient.class)
 public abstract class HClientMixin implements RSClient
@@ -165,7 +160,7 @@ public abstract class HClientMixin implements RSClient
 	@Inject
 	@MethodHook("incrementMenuEntries")
 	public static void onIncrementMenuEntries()
-  {
+	{
 		AutomatedMenu menu = automatedMenu.getAndSet(null);
 		if (menu != null)
 		{
