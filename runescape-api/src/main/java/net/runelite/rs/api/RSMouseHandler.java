@@ -77,4 +77,8 @@ public interface RSMouseHandler extends MouseHandler
 	@Import("MouseHandler_lastPressedTimeMillisVolatile")
 	@Override
 	void setLastPressedMillis(long millis);
+
+	@Import("MouseHandler_lastButtonVolatile")
+	@Override
+	int getLastButtonVolatile();
 }

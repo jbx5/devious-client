@@ -82,7 +82,7 @@ public class AutomatedMenu
 
 	public MenuEntry toEntry(Client client, String option, String target, Consumer<MenuEntry> consumer)
 	{
-		return client.createMenuEntry(-1)
+		return client.createMenuEntry(-2)
 				.setOption(option)
 				.setTarget(target)
 				.setIdentifier(identifier)

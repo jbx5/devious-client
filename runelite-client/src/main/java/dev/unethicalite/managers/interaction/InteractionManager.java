@@ -143,8 +143,8 @@ public class InteractionManager
 		}
 		finally
 		{
-			long duration = System.currentTimeMillis() - e.getTimestamp();
-			Time.sleep(Constants.CLIENT_TICK_LENGTH + duration);
+//			long duration = System.currentTimeMillis() - e.getTimestamp();
+//			Time.sleep(Constants.CLIENT_TICK_LENGTH + duration);
 		}
 	}
 

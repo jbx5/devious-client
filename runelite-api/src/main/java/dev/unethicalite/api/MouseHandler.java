@@ -50,4 +50,6 @@ public interface MouseHandler extends MouseListener, MouseMotionListener, FocusL
 	}
 
 	void sendMovement(int x, int y);
+
+	int getLastButtonVolatile();
 }
