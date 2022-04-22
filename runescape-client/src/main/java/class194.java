@@ -17,25 +17,25 @@ public class class194 {
 	@Export("bufferY")
 	public static int[] bufferY;
 	@ObfuscatedName("m")
-	@ObfuscatedSignature(
-		descriptor = "Lpi;"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"Lpi;")
+
 	@Export("NetCache_responseArchiveBuffer")
 	public static Buffer NetCache_responseArchiveBuffer;
-
-	static {
-		directions = new int[128][128]; // L: 6
-		distances = new int[128][128]; // L: 7
-		bufferX = new int[4096]; // L: 11
-		bufferY = new int[4096]; // L: 12
+	static 
+	{
+		directions = new int[128][128];
+		distances = new int[128][128];
+		bufferX = new int[4096];
+		bufferY = new int[4096];
 	}
 
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(
-		descriptor = "(IIS)I",
-		garbageValue = "-32639"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(IIS)I", garbageValue = 
+	"-32639")
+
 	public static int method3890(int var0, int var1) {
-		return (int)Math.round(Math.atan2((double)var0, (double)var1) * 2607.5945876176133D) & 16383; // L: 24
+		return ((int) (Math.round(Math.atan2(((double) (var0)), ((double) (var1))) * 2607.5945876176133))) & 16383;
 	}
 }

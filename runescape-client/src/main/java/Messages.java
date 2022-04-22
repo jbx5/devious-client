@@ -13,52 +13,52 @@ public class Messages {
 	@Export("Messages_channels")
 	static final Map Messages_channels;
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "Lpt;"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"Lpt;")
+
 	@Export("Messages_hashTable")
 	static final IterableNodeHashTable Messages_hashTable;
 	@ObfuscatedName("i")
-	@ObfuscatedSignature(
-		descriptor = "Lmr;"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"Lmr;")
+
 	@Export("Messages_queue")
 	static final IterableDualNodeQueue Messages_queue;
 	@ObfuscatedName("f")
-	@ObfuscatedGetter(
-		intValue = 1887673835
-	)
+	@ObfuscatedGetter(intValue = 
+	1887673835)
+
 	@Export("Messages_count")
 	static int Messages_count;
 	@ObfuscatedName("bl")
-	@ObfuscatedSignature(
-		descriptor = "Lkt;"
-	)
-	static StudioGame field1305;
+	@ObfuscatedSignature(descriptor = 
+	"Lkt;")
 
-	static {
-		Messages_channels = new HashMap(); // L: 9
-		Messages_hashTable = new IterableNodeHashTable(1024); // L: 10
-		Messages_queue = new IterableDualNodeQueue(); // L: 11
-		Messages_count = 0; // L: 12
+	static StudioGame field1305;
+	static 
+	{
+		Messages_channels = new HashMap();
+		Messages_hashTable = new IterableNodeHashTable(1024);
+		Messages_queue = new IterableDualNodeQueue();
+		Messages_count = 0;
 	}
 
 	@ObfuscatedName("q")
-	@ObfuscatedSignature(
-		descriptor = "(ZI)V",
-		garbageValue = "-2020687752"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(ZI)V", garbageValue = 
+	"-2020687752")
+
 	@Export("Login_promptCredentials")
 	static void Login_promptCredentials(boolean var0) {
-		Login.Login_response1 = ""; // L: 1123
-		Login.Login_response2 = "Enter your username/email & password."; // L: 1124
-		Login.Login_response3 = ""; // L: 1125
-		Ignored.method6828(2); // L: 1126
-		if (var0) { // L: 1127
+		Login.Login_response1 = "";
+		Login.Login_response2 = "Enter your username/email & password.";
+		Login.Login_response3 = "";
+		Ignored.method6828(2);
+		if (var0) {
 			Login.Login_password = "";
 		}
 
-		Players.method2421(); // L: 1128
-		class12.method157(); // L: 1129
-	} // L: 1130
+		Players.method2421();
+		class12.method157();
+	}
 }

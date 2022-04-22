@@ -10,35 +10,35 @@ public abstract class PcmStream extends Node {
 	@Export("active")
 	volatile boolean active;
 	@ObfuscatedName("u")
-	@ObfuscatedSignature(
-		descriptor = "Laf;"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"Laf;")
+
 	@Export("after")
 	PcmStream after;
 	@ObfuscatedName("t")
 	int field343;
 	@ObfuscatedName("g")
-	@ObfuscatedSignature(
-		descriptor = "Lbm;"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"Lbm;")
+
 	@Export("sound")
 	AbstractSound sound;
 
 	protected PcmStream() {
-		this.active = true; // L: 11
-	} // L: 13
+		this.active = true;
+	}
 
 	@ObfuscatedName("n")
-	@ObfuscatedSignature(
-		descriptor = "()Laf;"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"()Laf;")
+
 	@Export("firstSubStream")
 	protected abstract PcmStream firstSubStream();
 
 	@ObfuscatedName("s")
-	@ObfuscatedSignature(
-		descriptor = "()Laf;"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"()Laf;")
+
 	@Export("nextSubStream")
 	protected abstract PcmStream nextSubStream();
 
@@ -55,17 +55,17 @@ public abstract class PcmStream extends Node {
 
 	@ObfuscatedName("ag")
 	int vmethod962() {
-		return 255; // L: 16
+		return 255;
 	}
 
 	@ObfuscatedName("fs")
 	@Export("update")
 	final void update(int[] var1, int var2, int var3) {
-		if (this.active) { // L: 24
+		if (this.active) {
 			this.fill(var1, var2, var3);
 		} else {
-			this.skip(var3); // L: 25
+			this.skip(var3);
 		}
 
-	} // L: 26
+	}
 }

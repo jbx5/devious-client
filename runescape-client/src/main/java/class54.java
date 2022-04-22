@@ -6,51 +6,51 @@ import net.runelite.mapping.ObfuscatedSignature;
 @ObfuscatedName("br")
 public class class54 {
 	@ObfuscatedName("sn")
-	@ObfuscatedGetter(
-		intValue = -508954501
-	)
+	@ObfuscatedGetter(intValue = 
+	-508954501)
+
 	static int field447;
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(
-		descriptor = "Llk;"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"Llk;")
+
 	@Export("reflectionChecks")
 	static IterableNodeDeque reflectionChecks;
 	@ObfuscatedName("d")
-	@ObfuscatedSignature(
-		descriptor = "Lqq;"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"Lqq;")
+
 	@Export("options_buttons_2Sprite")
 	static IndexedSprite options_buttons_2Sprite;
 	@ObfuscatedName("cz")
-	@ObfuscatedSignature(
-		descriptor = "Lqq;"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"Lqq;")
+
 	@Export("worldSelectLeftSprite")
 	static IndexedSprite worldSelectLeftSprite;
 	@ObfuscatedName("en")
-	@ObfuscatedSignature(
-		descriptor = "Llx;"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"Llx;")
+
 	@Export("archive17")
 	static Archive archive17;
 	@ObfuscatedName("ic")
-	@ObfuscatedSignature(
-		descriptor = "[Lqi;"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"[Lqi;")
+
 	@Export("mapDotSprites")
 	static SpritePixels[] mapDotSprites;
-
-	static {
-		reflectionChecks = new IterableNodeDeque(); // L: 17
+	static 
+	{
+		reflectionChecks = new IterableNodeDeque();
 	}
 
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "1793988868"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(II)I", garbageValue = 
+	"1793988868")
+
 	public static int method1078(int var0) {
-		return class271.field3155[var0]; // L: 24
+		return class271.field3155[var0];
 	}
 }

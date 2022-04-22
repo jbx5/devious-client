@@ -8,23 +8,23 @@ import net.runelite.mapping.ObfuscatedSignature;
 @Implements("NetFileRequest")
 public class NetFileRequest extends DualNode {
 	@ObfuscatedName("sd")
-	@ObfuscatedGetter(
-		intValue = -1408840155
-	)
+	@ObfuscatedGetter(intValue = 
+	-1408840155)
+
 	static int field3960;
 	@ObfuscatedName("l")
 	@Export("SpriteBuffer_spritePalette")
 	public static int[] SpriteBuffer_spritePalette;
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(
-		descriptor = "Llx;"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"Llx;")
+
 	@Export("archive")
 	public Archive archive;
 	@ObfuscatedName("c")
-	@ObfuscatedGetter(
-		intValue = 2115176963
-	)
+	@ObfuscatedGetter(intValue = 
+	2115176963)
+
 	@Export("crc")
 	public int crc;
 	@ObfuscatedName("i")
@@ -32,5 +32,5 @@ public class NetFileRequest extends DualNode {
 	public byte padding;
 
 	NetFileRequest() {
-	} // L: 10
+	}
 }

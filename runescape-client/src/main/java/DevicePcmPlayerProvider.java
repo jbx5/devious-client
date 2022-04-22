@@ -8,36 +8,36 @@ import net.runelite.mapping.ObfuscatedSignature;
 @Implements("DevicePcmPlayerProvider")
 public class DevicePcmPlayerProvider implements class45 {
 	@ObfuscatedName("sx")
-	@ObfuscatedGetter(
-		intValue = 1132145401
-	)
+	@ObfuscatedGetter(intValue = 
+	1132145401)
+
 	static int field154;
 	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "[Lbb;"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"[Lbb;")
+
 	@Export("World_worlds")
 	static World[] World_worlds;
 	@ObfuscatedName("l")
 	@Export("ItemDefinition_inMembersWorld")
 	static boolean ItemDefinition_inMembersWorld;
 	@ObfuscatedName("ns")
-	@ObfuscatedSignature(
-		descriptor = "Lky;"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"Lky;")
+
 	@Export("mousedOverWidgetIf1")
 	static Widget mousedOverWidgetIf1;
 
 	DevicePcmPlayerProvider() {
-	} // L: 7
+	}
 
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(
-		descriptor = "(I)Lay;",
-		garbageValue = "-262480710"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(I)Lay;", garbageValue = 
+	"-262480710")
+
 	@Export("player")
 	public PcmPlayer player() {
-		return new DevicePcmPlayer(); // L: 10
+		return new DevicePcmPlayer();
 	}
 }

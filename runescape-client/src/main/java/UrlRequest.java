@@ -18,83 +18,83 @@ public class UrlRequest {
 	volatile byte[] response0;
 
 	UrlRequest(URL var1) {
-		this.url = var1; // L: 114
-	} // L: 115
+		this.url = var1;
+	}
 
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "16"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(B)Z", garbageValue = 
+	"16")
+
 	@Export("isDone")
 	public boolean isDone() {
-		return this.isDone0; // L: 118
+		return this.isDone0;
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(I)[B",
-		garbageValue = "1979081265"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(I)[B", garbageValue = 
+	"1979081265")
+
 	@Export("getResponse")
 	public byte[] getResponse() {
-		return this.response0; // L: 122
+		return this.response0;
 	}
 
 	@ObfuscatedName("i")
-	@ObfuscatedSignature(
-		descriptor = "(B)Ljava/lang/String;",
-		garbageValue = "1"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(B)Ljava/lang/String;", garbageValue = 
+	"1")
+
 	public String method2554() {
-		return this.url.toString(); // L: 126
+		return this.url.toString();
 	}
 
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1489870449"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(I)V", garbageValue = 
+	"-1489870449")
+
 	public static void method2564() {
-		class54.reflectionChecks = new IterableNodeDeque(); // L: 24
-	} // L: 25
+		class54.reflectionChecks = new IterableNodeDeque();
+	}
 
 	@ObfuscatedName("ks")
-	@ObfuscatedSignature(
-		descriptor = "(III)V",
-		garbageValue = "232574947"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(III)V", garbageValue = 
+	"232574947")
+
 	static void method2551(int var0, int var1) {
-		MenuAction var2 = Interpreter.tempMenuAction; // L: 11865
-		if (var2 != null) { // L: 11867
-			class9.menuAction(var2.param0, var2.param1, var2.opcode, var2.identifier, var2.action, var2.action, var0, var1); // L: 11868
+		MenuAction var2 = Interpreter.tempMenuAction;
+		if (var2 != null) {
+			class9.menuAction(var2.param0, var2.param1, var2.opcode, var2.identifier, var2.action, var2.action, var0, var1);
 		}
 
-		Interpreter.tempMenuAction = null; // L: 11871
-	} // L: 11872
+		Interpreter.tempMenuAction = null;
+	}
 
 	@ObfuscatedName("mr")
-	@ObfuscatedSignature(
-		descriptor = "(S)V",
-		garbageValue = "1100"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"(S)V", garbageValue = 
+	"1100")
+
 	static void method2560() {
-		if (Client.field759 && GrandExchangeEvents.localPlayer != null) { // L: 12618
-			int var0 = GrandExchangeEvents.localPlayer.pathX[0]; // L: 12619
-			int var1 = GrandExchangeEvents.localPlayer.pathY[0]; // L: 12620
-			if (var0 < 0 || var1 < 0 || var0 >= 104 || var1 >= 104) { // L: 12621
+		if (Client.field759 && (GrandExchangeEvents.localPlayer != null)) {
+			int var0 = GrandExchangeEvents.localPlayer.pathX[0];
+			int var1 = GrandExchangeEvents.localPlayer.pathY[0];
+			if ((((var0 < 0) || (var1 < 0)) || (var0 >= 104)) || (var1 >= 104)) {
 				return;
 			}
 
-			class10.oculusOrbFocalPointX = GrandExchangeEvents.localPlayer.x; // L: 12622
-			int var2 = WorldMapLabel.getTileHeight(GrandExchangeEvents.localPlayer.x, GrandExchangeEvents.localPlayer.y, class18.Client_plane) - Client.camFollowHeight; // L: 12623
-			if (var2 < Decimator.field397) { // L: 12624
+			class10.oculusOrbFocalPointX = GrandExchangeEvents.localPlayer.x;
+			int var2 = WorldMapLabel.getTileHeight(GrandExchangeEvents.localPlayer.x, GrandExchangeEvents.localPlayer.y, class18.Client_plane) - Client.camFollowHeight;
+			if (var2 < Decimator.field397) {
 				Decimator.field397 = var2;
 			}
 
-			ClientPacket.oculusOrbFocalPointY = GrandExchangeEvents.localPlayer.y; // L: 12625
-			Client.field759 = false; // L: 12626
+			ClientPacket.oculusOrbFocalPointY = GrandExchangeEvents.localPlayer.y;
+			Client.field759 = false;
 		}
 
-	} // L: 12628
+	}
 }

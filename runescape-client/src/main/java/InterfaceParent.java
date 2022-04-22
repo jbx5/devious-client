@@ -8,15 +8,15 @@ import net.runelite.mapping.ObfuscatedSignature;
 @Implements("InterfaceParent")
 public class InterfaceParent extends Node {
 	@ObfuscatedName("v")
-	@ObfuscatedGetter(
-		intValue = -457481163
-	)
+	@ObfuscatedGetter(intValue = 
+	-457481163)
+
 	@Export("group")
 	int group;
 	@ObfuscatedName("c")
-	@ObfuscatedGetter(
-		intValue = 327822779
-	)
+	@ObfuscatedGetter(intValue = 
+	327822779)
+
 	@Export("type")
 	int type;
 	@ObfuscatedName("i")
@@ -27,19 +27,19 @@ public class InterfaceParent extends Node {
 	}
 
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(
-		descriptor = "([BZI)Ljava/lang/Object;",
-		garbageValue = "-886747176"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"([BZI)Ljava/lang/Object;", garbageValue = 
+	"-886747176")
+
 	public static Object method2084(byte[] var0, boolean var1) {
-		if (var0 == null) { // L: 7
+		if (var0 == null) {
 			return null;
-		} else if (var0.length > 136) { // L: 8
-			DirectByteArrayCopier var2 = new DirectByteArrayCopier(); // L: 10
-			var2.set(var0); // L: 11
-			return var2; // L: 12
+		} else if (var0.length > 136) {
+			DirectByteArrayCopier var2 = new DirectByteArrayCopier();
+			var2.set(var0);
+			return var2;
 		} else {
-			return var0; // L: 16
+			return var0;
 		}
 	}
 }

@@ -8,18 +8,18 @@ import net.runelite.mapping.ObfuscatedSignature;
 @Implements("Task")
 public class Task {
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(
-		descriptor = "Lfx;"
-	)
+	@ObfuscatedSignature(descriptor = 
+	"Lfx;")
+
 	@Export("next")
 	Task next;
 	@ObfuscatedName("b")
 	@Export("status")
 	public volatile int status;
 	@ObfuscatedName("n")
-	@ObfuscatedGetter(
-		intValue = 692855731
-	)
+	@ObfuscatedGetter(intValue = 
+	692855731)
+
 	@Export("type")
 	int type;
 	@ObfuscatedName("s")
@@ -33,6 +33,6 @@ public class Task {
 	public volatile Object result;
 
 	Task() {
-		this.status = 0; // L: 11
-	} // L: 23
+		this.status = 0;
+	}
 }
