@@ -165,7 +165,7 @@ public abstract class HClientMixin implements RSClient
 	@Inject
 	@MethodHook("incrementMenuEntries")
 	public static void onIncrementMenuEntries()
-	{
+  {
 		AutomatedMenu menu = automatedMenu.getAndSet(null);
 		if (menu != null)
 		{
