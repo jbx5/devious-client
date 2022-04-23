@@ -68,7 +68,7 @@ public class Item implements Interactable, Identifiable, EntityNameable
 
 	public void drop()
 	{
-		interact(4);
+		interact("Drop");
 	}
 
 	public void useOn(Interactable entity)
@@ -103,7 +103,7 @@ public class Item implements Interactable, Identifiable, EntityNameable
 		}
 	}
 
-	private void setUsed()
+	public void use()
 	{
 		client.setSelectedSpellWidget(widgetId);
 		client.setSelectedSpellChildIndex(slot);
@@ -112,32 +112,32 @@ public class Item implements Interactable, Identifiable, EntityNameable
 
 	public void useOn(TileItem object)
 	{
-		setUsed();
+		use();
 		object.interact(0, MenuAction.WIDGET_TARGET_ON_GROUND_ITEM.getId());
 	}
 
 	public void useOn(TileObject object)
 	{
-		setUsed();
+		use();
 		object.interact(0, MenuAction.WIDGET_TARGET_ON_GAME_OBJECT.getId());
 	}
 
 	public void useOn(Item item)
 	{
-		setUsed();
+		use();
 		item.interact(0, MenuAction.WIDGET_TARGET_ON_WIDGET.getId());
 	}
 
 	public void useOn(Actor actor)
 	{
 		MenuAction menuAction = actor instanceof NPC ? MenuAction.WIDGET_TARGET_ON_NPC : MenuAction.WIDGET_TARGET_ON_PLAYER;
-		setUsed();
+		use();
 		actor.interact(0, menuAction.getId());
 	}
 
 	public void useOn(Widget widget)
 	{
-		setUsed();
+		use();
 		widget.interact(0, MenuAction.WIDGET_TARGET_ON_WIDGET.getId());
 	}
 
