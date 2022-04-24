@@ -75,14 +75,24 @@ public class AutomatedMenu
 		this.timestamp = System.currentTimeMillis();
 	}
 
-	public MenuEntry toEntry(Client client, Consumer<MenuEntry> consumer)
+	public MenuEntry toEntry(Client client, int idx)
 	{
-		return toEntry(client, option, target, consumer);
+		return toEntry(client, idx, null);
 	}
 
-	public MenuEntry toEntry(Client client, String option, String target, Consumer<MenuEntry> consumer)
+	public MenuEntry toEntry(Client client, int idx, Consumer<MenuEntry> consumer)
 	{
-		return client.createMenuEntry(-1)
+		return toEntry(client, idx, option, target, consumer);
+	}
+
+	public MenuEntry toEntry(Client client, int idx, String option, String target)
+	{
+		return toEntry(client, idx, option, target, null);
+	}
+
+	public MenuEntry toEntry(Client client, int idx, String option, String target, Consumer<MenuEntry> consumer)
+	{
+		return client.createMenuEntry(idx)
 				.setOption(option)
 				.setTarget(target)
 				.setIdentifier(identifier)
@@ -97,13 +107,28 @@ public class AutomatedMenu
 		return toEntry(client, null);
 	}
 
+	public MenuEntry toEntry(Client client, Consumer<MenuEntry> consumer)
+	{
+		return toEntry(client, option, target, consumer);
+	}
+
+	public MenuEntry toEntry(Client client, String option, String target)
+	{
+		return toEntry(client, option, target, null);
+	}
+
+	public MenuEntry toEntry(Client client, String option, String target, Consumer<MenuEntry> consumer)
+	{
+		return toEntry(client, -1, option, target, consumer);
+	}
+
 	public MenuEntry toBareEntry(Client client)
 	{
 		return client.createMenuEntry(
 				option,
 				target,
-				opcode.getId(),
 				identifier,
+				opcode.getId(),
 				param0,
 				param1,
 				false

@@ -1,6 +1,7 @@
 package dev.unethicalite.api.items;
 
 import dev.unethicalite.api.game.Game;
+import dev.unethicalite.managers.Static;
 import net.runelite.api.InventoryID;
 import net.runelite.api.Item;
 import net.runelite.api.ItemContainer;
@@ -22,7 +23,7 @@ public class Inventory extends Items
 	protected List<Item> all(Predicate<Item> filter)
 	{
 		List<Item> items = new ArrayList<>();
-		ItemContainer container = Game.getClient().getItemContainer(InventoryID.INVENTORY);
+		ItemContainer container = Static.getClient().getItemContainer(InventoryID.INVENTORY);
 		if (container == null)
 		{
 			return items;
@@ -78,6 +79,25 @@ public class Inventory extends Items
 	public static Item getFirst(String... names)
 	{
 		return INVENTORY.first(names);
+	}
+
+	public static Item getItem(int slot)
+	{
+		ItemContainer container = Static.getClient().getItemContainer(InventoryID.INVENTORY);
+		if (container == null)
+		{
+			return null;
+		}
+
+		Item item = container.getItem(slot);
+		if (item == null || item.getId() == -1 || item.getName() == null || item.getName().equals("null"))
+		{
+			return null;
+		}
+
+		item.setActionParam(item.getSlot());
+		item.setWidgetId(WidgetInfo.INVENTORY.getPackedId());
+		return item;
 	}
 
 	public static boolean contains(Predicate<Item> filter)

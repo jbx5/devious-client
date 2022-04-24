@@ -44,7 +44,6 @@ public class InputManager implements MouseListener
 	@Override
 	public MouseEvent mousePressed(MouseEvent mouseEvent)
 	{
-		log.debug("Mouse pressed");
 		checkIfAutomated(mouseEvent);
 		setLastClick(mouseEvent.getX(), mouseEvent.getY());
 		return mouseEvent;
@@ -53,7 +52,6 @@ public class InputManager implements MouseListener
 	@Override
 	public MouseEvent mouseReleased(MouseEvent mouseEvent)
 	{
-		log.debug("Mouse released");
 		checkIfAutomated(mouseEvent);
 		setLastClick(mouseEvent.getX(), mouseEvent.getY());
 		return mouseEvent;
