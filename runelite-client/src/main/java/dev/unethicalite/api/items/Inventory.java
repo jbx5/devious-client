@@ -1,6 +1,5 @@
 package dev.unethicalite.api.items;
 
-import dev.unethicalite.api.game.Game;
 import dev.unethicalite.managers.Static;
 import net.runelite.api.InventoryID;
 import net.runelite.api.Item;
