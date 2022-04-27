@@ -100,7 +100,7 @@ subprojects {
     }
 
     apply<JavaLibraryPlugin>()
-    //apply<MavenPublishPlugin>()
+    apply<MavenPublishPlugin>()
 
     project.extra["gitCommit"] = localGitCommit
     project.extra["rootPath"] = rootDir.toString().replace("\\", "/")
@@ -123,7 +123,7 @@ subprojects {
             }
             if (System.getenv("REPO_URL") != null) {
                 maven {
-                    url = uri(System.getenv("REPO_URL"))
+                     url = uri(System.getenv("REPO_URL"))
                     credentials {
                         username = System.getenv("REPO_USERNAME")
                         password = System.getenv("REPO_PASSWORD")
