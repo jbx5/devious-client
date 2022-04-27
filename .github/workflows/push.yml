@@ -39,6 +39,7 @@ jobs:
 
       - name: Push to hosting
         run: |
+          mkdir -p runelite-client/build/bootstrap/com/openosrs/injection-annotations/1.0/ && cp injection-annotations/build/libs/injection-annotations-1.0.jar runelite-client/build/bootstrap/com/openosrs/injection-annotations/1.0/injection-annotations-1.0.jar
           cd runelite-client/build/bootstrap
           
           git config --global user.email "burakinan1@hotmail.com"
