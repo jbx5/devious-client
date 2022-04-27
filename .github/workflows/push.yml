@@ -51,3 +51,36 @@ jobs:
         run: ./gradlew assemble --console=plain
       - name: Checking code conventions
         run: ./gradlew checkstyleMain --console=plain
+
+  publish:
+    name: Publish Maven package
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Purge packages
+        uses: MobileheadHolding/github-action-purge-packages@v2.0.1
+
+      - name: Set up JDK 11
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+
+      - name: Build with Gradle
+        uses: gradle/gradle-build-action@0d13054264b0bb894ded474f08ebb30921341cee
+        with:
+          arguments: clean build -x test -x checkstyleMain
+
+      - name: Publish to GitHub Packages
+        uses: gradle/gradle-build-action@0d13054264b0bb894ded474f08ebb30921341cee
+        with:
+          arguments: runelite-client:publish runelite-api:publish
+        env:
+          REPO_URL: https://maven.pkg.github.com/unethicalite/unethicalite
+          REPO_USERNAME: buracc
+          REPO_PASSWORD: ${{ secrets.GPR_TOKEN }}
