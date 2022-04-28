@@ -2657,13 +2657,11 @@ public interface Client extends OAuthApi, GameEngine
 
 	void setPendingAutomation(AutomatedMenu entry);
 
-	AutomatedMenu getPendingAutomation();
-
 	VarbitComposition getVarbitComposition(int varbitId);
-
-	Instant getLastInteractionTime();
 
 	int getSelectedItemID();
 
 	void setDraggedWidget(Widget widget);
+
+	void setIf1DraggedWidget(Widget widget);
 }

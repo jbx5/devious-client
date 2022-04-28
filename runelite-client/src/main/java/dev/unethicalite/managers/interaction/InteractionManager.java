@@ -45,7 +45,7 @@ public class InteractionManager
 		String debug = "O=" + e.getOption()
 				+ " | T=" + e.getTarget()
 				+ " | ID=" + e.getIdentifier()
-				+ " | OP=" + e.getOpcode()
+				+ " | OP=" + e.getOpcode().getId()
 				+ " | P0=" + e.getParam0()
 				+ " | P1=" + e.getParam1()
 				+ " | X=" + e.getClickX()
@@ -61,36 +61,37 @@ public class InteractionManager
 			switch (config.interactMethod())
 			{
 				case MOUSE_EVENTS:
-					if (!interactReady())
-					{
-						throw new InteractionException("Interacting too fast");
-					}
-
-					client.setPendingAutomation(e);
-
-					long tag = e.getEntityTag();
-					if (tag != -1337)
-					{
-						long[] entitiesAtMouse = client.getEntitiesAtMouse();
-						int count = client.getEntitiesAtMouseCount();
-						if (count < 1000)
+					// We want to sync with game thread to avoid 'miss' clicks
+					GameThread.invokeLater(() -> {
+						long tag = e.getEntityTag();
+						if (tag != -1337)
 						{
-							entitiesAtMouse[count] = tag;
-							client.setEntitiesAtMouseCount(count + 1);
+							long[] entitiesAtMouse = client.getEntitiesAtMouse();
+							int count = client.getEntitiesAtMouseCount();
+							if (count < 1000)
+							{
+								entitiesAtMouse[count] = tag;
+								client.setEntitiesAtMouseCount(count + 1);
+							}
 						}
-					}
 
-					if (config.naturalMouse())
-					{
-						naturalMouse.moveTo(clickPoint.x, clickPoint.y);
-					}
-					else
-					{
-						mouseHandler.sendMovement(clickPoint.x, clickPoint.y);
-					}
+						if (config.naturalMouse())
+						{
+							naturalMouse.moveTo(clickPoint.x, clickPoint.y);
+						}
+						else
+						{
+							mouseHandler.sendMovement(clickPoint.x, clickPoint.y);
+						}
 
-					log.debug("Sending click to [{}, {}]", clickPoint.x, clickPoint.y);
-					mouseHandler.sendClick(clickPoint.x, clickPoint.y);
+						log.debug("Sending click to [{}, {}]", clickPoint.x, clickPoint.y);
+
+						client.setPendingAutomation(e);
+						log.debug("Setting pending automation {}", e);
+						mouseHandler.sendClick(clickPoint.x, clickPoint.y);
+						return null;
+					});
+
 					break;
 
 				case INVOKE:
@@ -249,10 +250,5 @@ public class InteractionManager
 
 		Rectangle bounds = client.getCanvas().getBounds();
 		return new Rectangle(bounds.width - MINIMAP_WIDTH, 0, MINIMAP_WIDTH, MINIMAP_HEIGHT);
-	}
-
-	private boolean interactReady()
-	{
-		return client.getPendingAutomation() == null;
 	}
 }

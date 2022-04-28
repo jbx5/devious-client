@@ -1737,4 +1737,8 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("clickedWidget")
 	@Override
 	void setDraggedWidget(Widget widget);
+
+	@Import("dragInventoryWidget")
+	@Override
+	void setIf1DraggedWidget(Widget widget);
 }

@@ -31,7 +31,6 @@ import net.runelite.rs.api.RSRuneLiteMenuEntry;
 import net.runelite.rs.api.RSTile;
 
 import javax.annotation.Nonnull;
-import java.time.Instant;
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -52,11 +51,6 @@ public abstract class HClientMixin implements RSClient
 	private static boolean printMenuActions;
 	@Inject
 	private static boolean lowCpu;
-	@Inject
-	private static long lastMenuChange = -1;
-
-	@Inject
-	private static Instant lastInteractionTime = Instant.ofEpochMilli(0);
 
 	@Copy("drawWidgets")
 	@Replace("drawWidgets")
@@ -165,7 +159,19 @@ public abstract class HClientMixin implements RSClient
 		if (menu != null)
 		{
 			client.setDraggedWidget(null);
-			menu.toEntry(client);
+			client.setIf1DraggedWidget(null);
+			client.setMenuOptionCount(1);
+			int idx = client.getMenuOptionCount() - 1;
+
+			client.getMenuArguments1()[idx] = menu.getParam0();
+			client.getMenuArguments2()[idx] = menu.getParam1();
+			client.getMenuOpcodes()[idx] = menu.getOpcode().getId();
+			client.getMenuIdentifiers()[idx] = menu.getIdentifier();
+			client.getMenuOptions()[idx] = menu.getOption();
+			client.getMenuTargets()[idx] = menu.getTarget();
+			client.getMenuForceLeftClick()[idx] = true;
+
+			client.getLogger().info("Inserting automated menu");
 		}
 	}
 
@@ -280,30 +286,6 @@ public abstract class HClientMixin implements RSClient
 	@Override
 	public void setPendingAutomation(AutomatedMenu replacement)
 	{
-		if (lastMenuChange + 20 > System.currentTimeMillis() && replacement != null)
-		{
-			return;
-		}
-
-		lastMenuChange = System.currentTimeMillis();
 		automatedMenu.set(replacement);
-	}
-
-	@Inject
-	@Override
-	public AutomatedMenu getPendingAutomation()
-	{
-		if (lastMenuChange + 100 < System.currentTimeMillis() && automatedMenu.get() != null)
-		{
-			automatedMenu.set(null);
-		}
-
-		return automatedMenu.get();
-	}
-
-	@Inject
-	public Instant getLastInteractionTime()
-	{
-		return lastInteractionTime;
 	}
 }
