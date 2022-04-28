@@ -39,16 +39,16 @@ jobs:
 
       - name: Push to hosting
         run: |
-          mkdir -p runelite-client/build/bootstrap/com/openosrs/injection-annotations/1.0/ && cp injection-annotations/build/libs/injection-annotations-1.0.jar runelite-client/build/bootstrap/com/openosrs/injection-annotations/1.0/injection-annotations-1.0.jar
-          cd runelite-client/build/bootstrap
+          git clone https://github.com/unethicalite/hosting.git
+          mkdir -p hosting/com/openosrs/injection-annotations/1.0/
+          cp injection-annotations/build/libs/injection-annotations-1.0.jar hosting/com/openosrs/injection-annotations/1.0/injection-annotations-1.0.jar
+          cd hosting
           
           git config --global user.email "burakinan1@hotmail.com"
           git config --global user.name "Github Actions"
-          git init
-          git checkout -b master
           git add -A
-          git commit -m 'Release'
-          git push -f https://buracc:${{ secrets.REPO_PAT }}@github.com/unethicalite/hosting.git master
+          git commit -m 'Client auto release'
+          git push https://buracc:${{ secrets.REPO_PAT }}@github.com/unethicalite/hosting.git master
 
   checkstyleMain:
     name: Checkstyle main
