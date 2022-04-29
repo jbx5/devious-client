@@ -288,4 +288,27 @@ public abstract class HClientMixin implements RSClient
 	{
 		automatedMenu.set(replacement);
 	}
+
+	@Copy("method6006")
+	@Replace("method6006")
+	public static void copy$method6006(RSActor actor)
+	{
+		// For some reason, RuneLite sets these to Int.MIN_VALUE, set them back to 0 to prevent crashes.
+		if (actor.getPoseFrame() < 0)
+		{
+			actor.setPoseFrame(0);
+		}
+
+		if (actor.getSpotAnimFrame() < 0)
+		{
+			actor.setSpotAnimFrame(0);
+		}
+
+		if (actor.getActionFrame() < 0)
+		{
+			actor.setAnimationFrame(0);
+		}
+
+		copy$method6006(actor);
+	}
 }

@@ -1,6 +1,8 @@
 package dev.unethicalite.api.util;
 
-import java.awt.*;
+import net.runelite.api.Point;
+
+import java.awt.Rectangle;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Randomizer

@@ -61,36 +61,36 @@ public class InteractionManager
 			switch (config.interactMethod())
 			{
 				case MOUSE_EVENTS:
-					// We want to sync with game thread to avoid 'miss' clicks
+					long tag = e.getEntityTag();
+					if (tag != -1337)
+					{
+						long[] entitiesAtMouse = client.getEntitiesAtMouse();
+						int count = client.getEntitiesAtMouseCount();
+						if (count < 1000)
+						{
+							entitiesAtMouse[count] = tag;
+							client.setEntitiesAtMouseCount(count + 1);
+						}
+					}
+
+
+					log.debug("Setting pending automation {}", e);
+
+					if (config.naturalMouse())
+					{
+						naturalMouse.moveTo(clickPoint.x, clickPoint.y);
+					}
+					else
+					{
+						mouseHandler.sendMovement(clickPoint.x, clickPoint.y);
+					}
+
+					mouseHandler.sendClick(clickPoint.x, clickPoint.y);
 					GameThread.invokeLater(() -> {
-						long tag = e.getEntityTag();
-						if (tag != -1337)
-						{
-							long[] entitiesAtMouse = client.getEntitiesAtMouse();
-							int count = client.getEntitiesAtMouseCount();
-							if (count < 1000)
-							{
-								entitiesAtMouse[count] = tag;
-								client.setEntitiesAtMouseCount(count + 1);
-							}
-						}
-
-						if (config.naturalMouse())
-						{
-							naturalMouse.moveTo(clickPoint.x, clickPoint.y);
-						}
-						else
-						{
-							mouseHandler.sendMovement(clickPoint.x, clickPoint.y);
-						}
-
-						log.debug("Sending click to [{}, {}]", clickPoint.x, clickPoint.y);
-
 						client.setPendingAutomation(e);
-						log.debug("Setting pending automation {}", e);
-						mouseHandler.sendClick(clickPoint.x, clickPoint.y);
 						return null;
 					});
+					log.debug("Sending click to [{}, {}]", clickPoint.x, clickPoint.y);
 
 					break;
 
@@ -98,7 +98,6 @@ public class InteractionManager
 					if (config.mouseBehavior() != MouseBehavior.DISABLED)
 					{
 						mouseHandler.sendMovement(clickPoint.x, clickPoint.y);
-						mouseHandler.sendClick(-1, -1);
 					}
 
 					processAction(e, clickPoint.x, clickPoint.y);

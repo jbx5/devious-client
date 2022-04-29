@@ -2,11 +2,14 @@ package dev.unethicalite.mixins;
 
 import dev.unethicalite.api.events.AutomatedMenu;
 import dev.unethicalite.api.util.Randomizer;
+import net.runelite.api.DecorativeObject;
 import net.runelite.api.GameObject;
+import net.runelite.api.GroundObject;
 import net.runelite.api.MenuAction;
 import net.runelite.api.Perspective;
 import net.runelite.api.Point;
 import net.runelite.api.TileObject;
+import net.runelite.api.WallObject;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Mixins;
@@ -101,8 +104,27 @@ public abstract class HTileObjectMixin implements TileObject
 	@Inject
 	public Point getClickPoint()
 	{
-		java.awt.Point point = Randomizer.getRandomPointIn(getBounds());
-		return new Point(point.x, point.y);
+		if (this instanceof GameObject)
+		{
+			return Randomizer.getRandomPointIn(((GameObject) this).getConvexHull().getBounds());
+		}
+
+		if (this instanceof WallObject)
+		{
+			return Randomizer.getRandomPointIn(((WallObject) this).getConvexHull().getBounds());
+		}
+
+		if (this instanceof DecorativeObject)
+		{
+			return Randomizer.getRandomPointIn(((DecorativeObject) this).getConvexHull().getBounds());
+		}
+
+		if (this instanceof GroundObject)
+		{
+			return Randomizer.getRandomPointIn(((GroundObject) this).getConvexHull().getBounds());
+		}
+
+		return new Point(-1, -1);
 	}
 
 	@Inject

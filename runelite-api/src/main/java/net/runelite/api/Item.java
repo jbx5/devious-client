@@ -213,8 +213,7 @@ public class Item implements Interactable, Identifiable, EntityNameable
 	@Override
 	public Point getClickPoint()
 	{
-		java.awt.Point point = Randomizer.getRandomPointIn(getBounds());
-		return new Point(point.x, point.y);
+		return Randomizer.getRandomPointIn(getBounds());
 	}
 
 	@Override
@@ -359,6 +358,7 @@ public class Item implements Interactable, Identifiable, EntityNameable
 			Rectangle itemBounds = widget.getWidgetItem(getSlot()).getCanvasBounds();
 			return itemBounds != null ? itemBounds : new Rectangle(-1, -1, 0, 0);
 		}
+
 		return bounds;
 	}
 

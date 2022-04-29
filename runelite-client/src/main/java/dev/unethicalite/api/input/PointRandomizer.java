@@ -5,11 +5,13 @@ import dev.unethicalite.api.util.Randomizer;
 import net.runelite.api.Actor;
 import net.runelite.api.Item;
 import net.runelite.api.Perspective;
+import net.runelite.api.Point;
 import net.runelite.api.TileItem;
 import net.runelite.api.TileObject;
 import net.runelite.api.widgets.Widget;
 
-import java.awt.*;
+import java.awt.Rectangle;
+import java.awt.Shape;
 
 public class PointRandomizer
 {

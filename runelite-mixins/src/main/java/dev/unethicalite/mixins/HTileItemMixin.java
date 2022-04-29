@@ -149,27 +149,18 @@ public abstract class HTileItemMixin implements RSTileItem
 	@Inject
 	public Point getClickPoint()
 	{
-		java.awt.Point point = Randomizer.getRandomPointIn(getBounds());
-		return new Point(point.x, point.y);
+		return Randomizer.getRandomPointIn(getBounds());
 	}
 
 	@Inject
 	private Rectangle getBounds()
 	{
-		Shape shape = Perspective.getClickbox(client, getModel(), 0, getLocalLocation());
-		if (shape != null)
+		Point screenCoords = Perspective.localToCanvas(client, getLocalLocation(), client.getPlane());
+		if (screenCoords != null)
 		{
-			return shape.getBounds();
+			return new Rectangle(screenCoords.getX(), screenCoords.getY(), 0, 0);
 		}
-		else
-		{
-			Point screenCoords = Perspective.localToCanvas(client, getLocalLocation(), client.getPlane());
-			if (screenCoords != null)
-			{
-				return new Rectangle(screenCoords.getX(), screenCoords.getY(), 0, 0);
-			}
-			return new Rectangle(-1, -1, 0, 0);
-		}
+		return new Rectangle(-1, -1, 0, 0);
 	}
 
 	@Inject
