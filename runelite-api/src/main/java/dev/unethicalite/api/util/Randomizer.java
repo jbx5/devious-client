@@ -30,5 +30,4 @@ public class Randomizer
 
         return new Point((int) randX, (int) randY);
     }
-
 }

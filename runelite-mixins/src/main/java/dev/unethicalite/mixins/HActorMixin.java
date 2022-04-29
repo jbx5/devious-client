@@ -18,6 +18,6 @@ public abstract class HActorMixin implements RSActor
 	@Inject
 	public Point getClickPoint()
 	{
-		return Randomizer.getRandomPointIn(getConvexHull().getBounds());
+		return Randomizer.getRandomPointIn(getCachedBounds());
 	}
 }

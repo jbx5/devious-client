@@ -1,19 +1,14 @@
 package dev.unethicalite.mixins;
 
-import dev.unethicalite.api.events.AutomatedMenu;
-import dev.unethicalite.api.util.Randomizer;
+import dev.unethicalite.api.events.MenuAutomated;
 import net.runelite.api.ItemComposition;
 import net.runelite.api.MenuAction;
-import net.runelite.api.Perspective;
-import net.runelite.api.Point;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Shadow;
 import net.runelite.api.util.Text;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSTileItem;
-
-import java.awt.*;
 
 @Mixin(RSTileItem.class)
 public abstract class HTileItemMixin implements RSTileItem
@@ -147,23 +142,6 @@ public abstract class HTileItemMixin implements RSTileItem
 	}
 
 	@Inject
-	public Point getClickPoint()
-	{
-		return Randomizer.getRandomPointIn(getBounds());
-	}
-
-	@Inject
-	private Rectangle getBounds()
-	{
-		Point screenCoords = Perspective.localToCanvas(client, getLocalLocation(), client.getPlane());
-		if (screenCoords != null)
-		{
-			return new Rectangle(screenCoords.getX(), screenCoords.getY(), 0, 0);
-		}
-		return new Rectangle(-1, -1, 0, 0);
-	}
-
-	@Inject
 	@Override
 	public long getTag()
 	{
@@ -171,13 +149,13 @@ public abstract class HTileItemMixin implements RSTileItem
 	}
 
 	@Inject
-	public AutomatedMenu getMenu(int actionIndex)
+	public MenuAutomated getMenu(int actionIndex)
 	{
 		return getMenu(getId(), getActionOpcode(actionIndex));
 	}
 
 	@Inject
-	public AutomatedMenu getMenu(int actionIndex, int opcode)
+	public MenuAutomated getMenu(int actionIndex, int opcode)
 	{
 		return getMenu(getId(), opcode,
 				getTile().getSceneLocation().getX(), getTile().getSceneLocation().getY());

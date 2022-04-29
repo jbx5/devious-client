@@ -24,6 +24,8 @@
  */
 package net.runelite.api;
 
+import java.awt.*;
+
 /**
  * Represents an object that can be rendered.
  */
@@ -45,4 +47,6 @@ public interface Renderable extends Node
 
 	void setHidden(boolean hidden);
 	boolean isHidden();
+
+	Rectangle getCachedBounds();
 }

@@ -1,6 +1,6 @@
 package dev.unethicalite.mixins;
 
-import dev.unethicalite.api.events.AutomatedMenu;
+import dev.unethicalite.api.events.MenuAutomated;
 import dev.unethicalite.api.util.Randomizer;
 import net.runelite.api.MenuAction;
 import net.runelite.api.Point;
@@ -109,13 +109,13 @@ public abstract class HWidgetMixin implements RSWidget
 	}
 
 	@Inject
-	public AutomatedMenu getMenu(int actionIndex)
+	public MenuAutomated getMenu(int actionIndex)
 	{
 		return getMenu(actionIndex, getActionOpcode(actionIndex));
 	}
 
 	@Inject
-	public AutomatedMenu getMenu(int actionIndex, int opcode)
+	public MenuAutomated getMenu(int actionIndex, int opcode)
 	{
 		return getMenu(getMenuIdentifier(actionIndex), opcode, getIndex(), getId());
 	}

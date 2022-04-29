@@ -1,15 +1,11 @@
 package dev.unethicalite.mixins;
 
-import dev.unethicalite.api.events.AutomatedMenu;
+import dev.unethicalite.api.events.MenuAutomated;
 import dev.unethicalite.api.util.Randomizer;
-import net.runelite.api.DecorativeObject;
 import net.runelite.api.GameObject;
-import net.runelite.api.GroundObject;
 import net.runelite.api.MenuAction;
-import net.runelite.api.Perspective;
 import net.runelite.api.Point;
 import net.runelite.api.TileObject;
-import net.runelite.api.WallObject;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Mixins;
@@ -22,8 +18,6 @@ import net.runelite.rs.api.RSGameObject;
 import net.runelite.rs.api.RSItemLayer;
 import net.runelite.rs.api.RSObjectComposition;
 import net.runelite.rs.api.RSWallDecoration;
-
-import java.awt.*;
 
 @Mixins({
 		@Mixin(RSWallDecoration.class),
@@ -108,41 +102,9 @@ public abstract class HTileObjectMixin implements TileObject
 		{
 			return Randomizer.getRandomPointIn(((GameObject) this).getConvexHull().getBounds());
 		}
-
-		if (this instanceof WallObject)
-		{
-			return Randomizer.getRandomPointIn(((WallObject) this).getConvexHull().getBounds());
-		}
-
-		if (this instanceof DecorativeObject)
-		{
-			return Randomizer.getRandomPointIn(((DecorativeObject) this).getConvexHull().getBounds());
-		}
-
-		if (this instanceof GroundObject)
-		{
-			return Randomizer.getRandomPointIn(((GroundObject) this).getConvexHull().getBounds());
-		}
-
-		return new Point(-1, -1);
-	}
-
-	@Inject
-	private Rectangle getBounds()
-	{
-		Shape shape = getClickbox();
-		if (shape != null)
-		{
-			return shape.getBounds();
-		}
 		else
 		{
-			Point screenCoords = Perspective.localToCanvas(client, getLocalLocation(), client.getPlane());
-			if (screenCoords != null)
-			{
-				return new Rectangle(screenCoords.getX(), screenCoords.getY(), 0, 0);
-			}
-			return new Rectangle(-1, -1, 0, 0);
+			return Randomizer.getRandomPointIn(getCanvasTilePoly().getBounds());
 		}
 	}
 
@@ -161,13 +123,13 @@ public abstract class HTileObjectMixin implements TileObject
 	}
 
 	@Inject
-	public AutomatedMenu getMenu(int actionIndex)
+	public MenuAutomated getMenu(int actionIndex)
 	{
 		return getMenu(getId(), getActionOpcode(actionIndex));
 	}
 
 	@Inject
-	public AutomatedMenu getMenu(int actionIndex, int opcode)
+	public MenuAutomated getMenu(int actionIndex, int opcode)
 	{
 		return getMenu(getId(), opcode, menuPoint().getX(), menuPoint().getY());
 	}

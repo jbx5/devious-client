@@ -1,5 +1,6 @@
 package dev.unethicalite.mixins;
 
+import dev.unethicalite.api.events.MouseAutomated;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Shadow;
@@ -17,7 +18,90 @@ public abstract class HMouseHandlerMixin implements RSMouseHandler
 
 	@Override
 	@Inject
-	public synchronized void sendClick(int x, int y, int button)
+	public void sendClick(int x, int y, int button)
+	{
+		setIdleCycles(0);
+		setLastPressedX(x);
+		setLastPressedY(y);
+		setLastPressedMillis(System.currentTimeMillis());
+		setLastButton(button);
+		if (getLastPendingButton() != 0)
+		{
+			setCurrentButton(getLastPendingButton());
+		}
+
+		client.getCallbacks().post(MouseAutomated.builder()
+				.eventType(MouseAutomated.EventType.PRESS)
+				.x(x)
+				.y(y)
+				.button(button)
+				.build()
+		);
+	}
+
+	@Override
+	@Inject
+	public void sendRelease()
+	{
+		setIdleCycles(0);
+		setCurrentButton(0);
+
+		client.getCallbacks().post(MouseAutomated.builder()
+				.eventType(MouseAutomated.EventType.RELEASE)
+				.x(getLastPressedX())
+				.y(getLastPressedY())
+				.button(getLastButton())
+				.build()
+		);
+	}
+
+	@Override
+	@Inject
+	public void sendMovement(int x, int y)
+	{
+		setIdleCycles(0);
+		setMouseX(x);
+		setMouseY(y);
+		setLastMovedMillis(System.currentTimeMillis());
+
+		client.getCallbacks().post(MouseAutomated.builder()
+				.eventType(MouseAutomated.EventType.MOVE)
+				.x(x)
+				.y(y)
+				.button(-1)
+				.build()
+		);
+	}
+
+	@Override
+	@Inject
+	public void sendExit()
+	{
+		setIdleCycles(0);
+		setMouseX(-1);
+		setMouseY(-1);
+		setLastMovedMillis(System.currentTimeMillis());
+
+		client.getCallbacks().post(MouseAutomated.builder()
+				.eventType(MouseAutomated.EventType.EXIT)
+				.x(-1)
+				.y(-1)
+				.button(-1)
+				.build()
+		);
+	}
+
+	@Override
+	@Inject
+	public void sendFocusLost()
+	{
+		setCurrentButton(0);
+		client.setFocused(false);
+	}
+
+	@Override
+	@Inject
+	public synchronized void sendClickMouseEvent(int x, int y, int button)
 	{
 		long time = System.currentTimeMillis();
 		Canvas canvas = client.getCanvas();
@@ -31,23 +115,11 @@ public abstract class HMouseHandlerMixin implements RSMouseHandler
 
 	@Override
 	@Inject
-	public synchronized void sendMovement(int x, int y)
+	public synchronized void sendMovementMouseEvent(int x, int y)
 	{
 		Canvas canvas = client.getCanvas();
-//		if (!canvas.contains(getCurrentX(), getCurrentY()) && canvas.contains(x, y))
-//		{
-//			canvas.dispatchEvent(new MouseEvent(canvas, MouseEvent.MOUSE_ENTERED, client.getCurrentTime(), 0, x, y, 0, false));
-//		}
-
 		MouseEvent move = new MouseEvent(canvas, MouseEvent.MOUSE_MOVED, System.currentTimeMillis(), 0, x, y, 0, false);
 		move.setSource("unethicalite");
 		canvas.dispatchEvent(move);
-
-//		int currX = getCurrentX();
-//		int currY = getCurrentY();
-//		if (!canvas.contains(currX, currY))
-//		{
-//			canvas.dispatchEvent(new MouseEvent(canvas, MouseEvent.MOUSE_EXITED, client.getCurrentTime(), 0, currX, currY, 0, false));
-//		}
 	}
 }
