@@ -24,6 +24,9 @@
  */
 package net.runelite.mixins;
 
+import net.runelite.api.DialogOption;
+import net.runelite.api.ObjectID;
+import net.runelite.api.events.DialogProcessed;
 import net.runelite.api.events.DynamicObjectAnimationChanged;
 import net.runelite.api.mixins.Copy;
 import net.runelite.api.mixins.FieldHook;
@@ -34,8 +37,8 @@ import net.runelite.api.mixins.Replace;
 import net.runelite.api.mixins.Shadow;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSDynamicObject;
-import net.runelite.rs.api.RSModel;
 import net.runelite.rs.api.RSRenderable;
+import net.runelite.rs.api.RSModel;
 
 @Mixin(RSDynamicObject.class)
 public abstract class RSDynamicObjectMixin implements RSDynamicObject
@@ -73,7 +76,7 @@ public abstract class RSDynamicObjectMixin implements RSDynamicObject
 	@Inject
 	public void onAnimCycleCountChanged(int idx)
 	{
-		if (client.isInterpolateObjectAnimations())
+		if (client.isInterpolateObjectAnimations() && this.getId() != ObjectID.WATER_WHEEL_26671)
 		{
 			// sets the packed anim frame with the frame cycle
 			int objectFrameCycle = client.getGameCycle() - getAnimCycleCount();
@@ -99,5 +102,24 @@ public abstract class RSDynamicObjectMixin implements RSDynamicObject
 	public int getAnimationID()
 	{
 		return (int) (getAnimation() == null ? -1 : getAnimation().getHash());
+	}
+
+	@Inject
+	@MethodHook("resumePauseWidget")
+	public static void onDialogProcessed(int widgetUid, int menuIndex)
+	{
+		DialogOption dialogOption = DialogOption.of(widgetUid, menuIndex);
+		if (dialogOption != null)
+		{
+			client.getCallbacks().post(new DialogProcessed(dialogOption));
+		}
+		else
+		{
+			client.getLogger().debug(
+					"Unknown or unmapped dialog option for widgetUid: {} and menuIndex {}",
+					widgetUid,
+					menuIndex
+			);
+		}
 	}
 }
