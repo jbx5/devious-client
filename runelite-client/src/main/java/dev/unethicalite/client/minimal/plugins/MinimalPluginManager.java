@@ -1,15 +1,19 @@
 package dev.unethicalite.client.minimal.plugins;
 
+import com.google.inject.Key;
 import dev.unethicalite.api.input.Keyboard;
 import dev.unethicalite.api.plugins.Plugins;
+import dev.unethicalite.api.plugins.Script;
 import dev.unethicalite.client.minimal.MinimalClient;
 import dev.unethicalite.client.minimal.config.MinimalConfig;
-import dev.unethicalite.api.plugins.Script;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.GameTick;
+import net.runelite.client.config.Config;
+import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.game.WorldService;
 import net.runelite.client.plugins.Plugin;
@@ -52,11 +56,17 @@ public class MinimalPluginManager
 	private PluginManager pluginManager;
 
 	@Inject
+	private ConfigManager configManager;
+
+	@Inject
 	private WorldService worldService;
 
 	private String[] args = null;
 	private PluginEntry pluginEntry = null;
+	@Getter
 	private Plugin plugin = null;
+	@Getter
+	private Config config = null;
 
 	private long randomDelay = 0;
 	private boolean worldSet;
@@ -136,16 +146,37 @@ public class MinimalPluginManager
 	{
 		try
 		{
+			plugin = pluginManager.loadPlugins(List.of(entry.getScriptClass()), null)
+					.stream().findFirst().orElse(null);
+			if (plugin == null || !Plugins.startPlugin(plugin))
+			{
+				return;
+			}
+
 			pluginEntry = entry;
 			args = scriptArgs;
-			plugin = pluginManager.loadPlugins(List.of(entry.getScriptClass()), null)
-					.stream().findFirst().orElseThrow();
-			Plugins.startPlugin(plugin);
+
 			pluginManager.add(plugin);
+
+			for (Key<?> key : plugin.getInjector().getBindings().keySet())
+			{
+				Class<?> type = key.getTypeLiteral().getRawType();
+				if (Config.class.isAssignableFrom(type))
+				{
+					if (type.getPackageName().startsWith(plugin.getClass().getPackageName()))
+					{
+						config = (Config) plugin.getInjector().getInstance(key);
+						configManager.setDefaultConfiguration(config, false);
+					}
+				}
+			}
+
 			if (plugin instanceof Script)
 			{
 				((Script) plugin).onStart(scriptArgs);
 			}
+
+			client.getCallbacks().post(new MinimalPluginChanged(plugin, MinimalPluginState.STARTED));
 		}
 		catch (PluginInstantiationException e)
 		{
@@ -155,8 +186,17 @@ public class MinimalPluginManager
 
 	public void stopPlugin()
 	{
-		Plugins.stopPlugin(plugin);
+		if (!Plugins.stopPlugin(plugin))
+		{
+			return;
+		}
+
+		client.getCallbacks().post(new MinimalPluginChanged(plugin, MinimalPluginState.STARTED));
 		pluginManager.remove(plugin);
+		plugin = null;
+		pluginEntry = null;
+		args = null;
+		config = null;
 	}
 
 	public void restartPlugin()
@@ -180,15 +220,10 @@ public class MinimalPluginManager
 		return plugin != null && plugin instanceof Script;
 	}
 
-	public Plugin getPlugin()
-	{
-		return plugin;
-	}
-
 	@Subscribe
-	private void onScriptChanged(MinimalPluginChanged e)
+	private void onMinimalPluginChanged(MinimalPluginChanged e)
 	{
-		log.info("Minimal Plugin state changed: {} [{}]", e.getName(), e.getState());
+		log.info("Minimal Plugin state changed: {} [{}]", e.getPlugin().getName(), e.getState());
 
 		if (e.getState() == MinimalPluginState.RESTARTING)
 		{

@@ -1,10 +1,11 @@
 package dev.unethicalite.client.minimal.plugins;
 
 import lombok.Value;
+import net.runelite.client.plugins.Plugin;
 
 @Value
 public class MinimalPluginChanged
 {
-	String name;
+	Plugin plugin;
 	MinimalPluginState state;
 }

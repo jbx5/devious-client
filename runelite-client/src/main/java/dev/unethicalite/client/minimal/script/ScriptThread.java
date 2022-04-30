@@ -61,7 +61,7 @@ public class ScriptThread extends Thread
 					if (script.isRestart())
 					{
 						script.setRestart(false);
-						Game.getClient().getCallbacks().post(new MinimalPluginChanged(script.getClass().getSimpleName(), MinimalPluginState.RESTARTING));
+						Game.getClient().getCallbacks().post(new MinimalPluginChanged(script, MinimalPluginState.RESTARTING));
 						continue;
 					}
 
@@ -107,13 +107,13 @@ public class ScriptThread extends Thread
 		script.getPaint().clear();
 
 		script.onStart(startArgs);
-		Game.getClient().getCallbacks().post(new MinimalPluginChanged(script.getClass().getSimpleName(), MinimalPluginState.STARTED));
+		Game.getClient().getCallbacks().post(new MinimalPluginChanged(script, MinimalPluginState.STARTED));
 	}
 
 	private void onStop()
 	{
 		script.onStop();
-		Game.getClient().getCallbacks().post(new MinimalPluginChanged(script.getClass().getSimpleName(), MinimalPluginState.STOPPED));
+		Game.getClient().getCallbacks().post(new MinimalPluginChanged(script, MinimalPluginState.STOPPED));
 		ScriptEventBus.clear();
 		script.getPaint().clear();
 	}

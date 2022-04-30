@@ -76,11 +76,11 @@ public abstract class Script extends LoopedPlugin
 		paused = !paused;
 		if (!paused)
 		{
-			Game.getClient().getCallbacks().post(new MinimalPluginChanged(getClass().getSimpleName(), MinimalPluginState.STARTED));
+			Game.getClient().getCallbacks().post(new MinimalPluginChanged(this, MinimalPluginState.STARTED));
 		}
 		else
 		{
-			Game.getClient().getCallbacks().post(new MinimalPluginChanged(getClass().getSimpleName(), MinimalPluginState.PAUSED));
+			Game.getClient().getCallbacks().post(new MinimalPluginChanged(this, MinimalPluginState.PAUSED));
 		}
 	}
 

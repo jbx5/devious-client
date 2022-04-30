@@ -1,5 +1,6 @@
 package dev.unethicalite.client.minimal.ui;
 
+import dev.unethicalite.api.plugins.Script;
 import dev.unethicalite.client.minimal.config.MinimalConfig;
 import dev.unethicalite.client.minimal.config.ConfigPanel;
 import dev.unethicalite.client.minimal.config.ConfigurationDescriptor;
@@ -34,7 +35,7 @@ public class MinimalToolbar extends JMenuBar
 	private final ScriptInspector scriptInspector;
 	private final EntityRenderer entityRenderer;
 	private final MinimalPluginManager minimalPluginManager;
-	private final ScriptPanel scriptPanel;
+	private final MinimalPluginsPanel minimalPluginsPanel;
 	private final ConfigManager configManager;
 	private final EventBus eventBus;
 	private final MinimalConfig minimalConfig;
@@ -43,9 +44,10 @@ public class MinimalToolbar extends JMenuBar
 	private final Client client;
 	private final FpsManager fpsManager;
 
-	private JMenuItem stopScript;
+	private JMenuItem pluginConfig;
+	private JMenuItem stopPlugin;
 	private JMenuItem pauseScript;
-	private JMenuItem restartScript;
+	private JMenuItem restartPlugin;
 	private JRadioButton rendering;
 
 	private ConfigPanel botConfigPanel;
@@ -54,7 +56,7 @@ public class MinimalToolbar extends JMenuBar
 
 	@Inject
 	public MinimalToolbar(VarInspector varInspector, WidgetInspector widgetInspector, ScriptInspector scriptInspector,
-						  EntityRenderer entityRenderer, MinimalPluginManager minimalPluginManager, ScriptPanel scriptPanel,
+						  EntityRenderer entityRenderer, MinimalPluginManager minimalPluginManager, MinimalPluginsPanel minimalPluginsPanel,
 						  ConfigManager configManager, EventBus eventBus, MinimalConfig minimalConfig, InteractionConfig interactConfig,
 						  RuneLiteConfig runeLiteConfig, Client client, FpsManager fpsManager)
 	{
@@ -63,7 +65,7 @@ public class MinimalToolbar extends JMenuBar
 		this.scriptInspector = scriptInspector;
 		this.entityRenderer = entityRenderer;
 		this.minimalPluginManager = minimalPluginManager;
-		this.scriptPanel = scriptPanel;
+		this.minimalPluginsPanel = minimalPluginsPanel;
 		this.configManager = configManager;
 		this.eventBus = eventBus;
 		this.minimalConfig = minimalConfig;
@@ -105,10 +107,10 @@ public class MinimalToolbar extends JMenuBar
 
 		SwingUtilities.invokeLater(() ->
 		{
-			JMenuItem scripts = new JMenuItem("Scripts");
+			JMenuItem scripts = new JMenuItem("Plugins");
 			scripts.addActionListener(e ->
 			{
-				scriptPanel.open();
+				minimalPluginsPanel.open();
 			});
 			scripts.setMaximumSize(scripts.getPreferredSize());
 			add(scripts);
@@ -212,6 +214,18 @@ public class MinimalToolbar extends JMenuBar
 			developer.add(tileLocationBtn);
 			add(developer);
 
+			pluginConfig = new JMenuItem("Plugin config");
+			pluginConfig.addActionListener(e ->
+			{
+				if (minimalPluginManager.getPlugin() != null && minimalPluginManager.getConfig() != null)
+				{
+					// open/close the config
+				}
+			});
+			pluginConfig.setVisible(false);
+			pluginConfig.setMaximumSize(pluginConfig.getPreferredSize());
+			add(pluginConfig);
+
 			pauseScript = new JMenuItem("Pause script");
 			pauseScript.addActionListener(e ->
 			{
@@ -224,29 +238,29 @@ public class MinimalToolbar extends JMenuBar
 			pauseScript.setMaximumSize(pauseScript.getPreferredSize());
 			add(pauseScript);
 
-			stopScript = new JMenuItem("Stop script");
-			stopScript.addActionListener(e ->
+			stopPlugin = new JMenuItem("Stop script");
+			stopPlugin.addActionListener(e ->
 			{
 				if (minimalPluginManager.getPlugin() != null)
 				{
 					minimalPluginManager.stopPlugin();
 				}
 			});
-			stopScript.setVisible(false);
-			stopScript.setMaximumSize(stopScript.getPreferredSize());
-			add(stopScript);
+			stopPlugin.setVisible(false);
+			stopPlugin.setMaximumSize(stopPlugin.getPreferredSize());
+			add(stopPlugin);
 
-			restartScript = new JMenuItem("Restart script");
-			restartScript.addActionListener(e ->
+			restartPlugin = new JMenuItem("Restart script");
+			restartPlugin.addActionListener(e ->
 			{
 				if (minimalPluginManager.getPlugin() != null)
 				{
 					minimalPluginManager.restartPlugin();
 				}
 			});
-			restartScript.setVisible(false);
-			restartScript.setMaximumSize(restartScript.getPreferredSize());
-			add(restartScript);
+			restartPlugin.setVisible(false);
+			restartPlugin.setMaximumSize(restartPlugin.getPreferredSize());
+			add(restartPlugin);
 		});
 	}
 
@@ -289,11 +303,14 @@ public class MinimalToolbar extends JMenuBar
 	}
 
 	@Subscribe
-	private void onScriptChanged(MinimalPluginChanged event)
+	private void onMinimalPluginChanged(MinimalPluginChanged event)
 	{
-		stopScript.setVisible(event.getState() == MinimalPluginState.STARTED || event.getState() == MinimalPluginState.PAUSED);
-		pauseScript.setVisible(event.getState() == MinimalPluginState.STARTED || event.getState() == MinimalPluginState.PAUSED);
-		restartScript.setVisible(event.getState() == MinimalPluginState.STARTED || event.getState() == MinimalPluginState.PAUSED);
+		pluginConfig.setVisible(event.getState() == MinimalPluginState.STARTED || event.getState() == MinimalPluginState.PAUSED);
+		stopPlugin.setVisible(event.getState() == MinimalPluginState.STARTED || event.getState() == MinimalPluginState.PAUSED);
+		pauseScript.setVisible(event.getPlugin() instanceof Script &&
+				(event.getState() == MinimalPluginState.STARTED || event.getState() == MinimalPluginState.PAUSED)
+		);
+		restartPlugin.setVisible(event.getState() == MinimalPluginState.STARTED || event.getState() == MinimalPluginState.PAUSED);
 
 		if (event.getState() == MinimalPluginState.PAUSED)
 		{

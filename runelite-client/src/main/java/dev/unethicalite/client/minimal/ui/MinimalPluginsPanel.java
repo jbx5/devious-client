@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Singleton
-public class ScriptPanel
+public class MinimalPluginsPanel
 {
 
 	@Inject
