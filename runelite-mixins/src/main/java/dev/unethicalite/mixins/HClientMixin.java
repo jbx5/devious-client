@@ -1,16 +1,13 @@
 package dev.unethicalite.mixins;
 
-import dev.unethicalite.api.events.MenuAutomated;
 import dev.unethicalite.api.events.ExperienceGained;
 import dev.unethicalite.api.events.LoginStateChanged;
+import dev.unethicalite.api.events.MenuAutomated;
 import dev.unethicalite.api.events.PlaneChanged;
-import dev.unethicalite.api.events.ResumePauseSent;
-import dev.unethicalite.api.widgets.DialogOption;
 import net.runelite.api.ItemComposition;
 import net.runelite.api.Skill;
 import net.runelite.api.Tile;
 import net.runelite.api.TileObject;
-import net.runelite.api.events.DialogProcessed;
 import net.runelite.api.events.StatChanged;
 import net.runelite.api.mixins.Copy;
 import net.runelite.api.mixins.FieldHook;
@@ -69,26 +66,6 @@ public abstract class HClientMixin implements RSClient
 		if (!lowCpu)
 		{
 			copy$drawModelComponents(var0, var1);
-		}
-	}
-
-	@Inject
-	@MethodHook("resumePauseWidget")
-	public static void onDialogProcessed(int widgetUid, int menuIndex)
-	{
-		client.getCallbacks().post(new ResumePauseSent(widgetUid, menuIndex));
-		DialogOption dialogOption = DialogOption.of(widgetUid, menuIndex);
-		if (dialogOption != null)
-		{
-			client.getCallbacks().post(new DialogProcessed(dialogOption));
-		}
-		else
-		{
-			client.getLogger().debug(
-					"Unknown or unmapped dialog option for widgetUid: {} and menuIndex {}",
-					widgetUid,
-					menuIndex
-			);
 		}
 	}
 

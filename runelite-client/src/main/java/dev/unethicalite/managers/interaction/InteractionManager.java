@@ -9,7 +9,7 @@ import dev.unethicalite.api.game.GameThread;
 import dev.unethicalite.api.input.naturalmouse.NaturalMouse;
 import dev.unethicalite.api.movement.Movement;
 import dev.unethicalite.api.packets.Packets;
-import dev.unethicalite.api.widgets.DialogOption;
+import net.runelite.api.DialogOption;
 import dev.unethicalite.api.widgets.Widgets;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;

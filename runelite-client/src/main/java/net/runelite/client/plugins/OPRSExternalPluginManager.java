@@ -69,6 +69,8 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.inject.Singleton;
 import javax.swing.JOptionPane;
+
+import dev.unethicalite.client.plugins.PrivateUpdateRepository;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -199,7 +201,7 @@ public class OPRSExternalPluginManager
 			}
 			else
 			{
-				repositories.add(new OPRSUpdateRepository("repository-testing", url, pluginsJson, token));
+				repositories.add(new PrivateUpdateRepository("repository-testing", url, pluginsJson, token));
 			}
 		}
 		else
@@ -210,7 +212,7 @@ public class OPRSExternalPluginManager
 			}
 			else
 			{
-				repositories.add(new OPRSUpdateRepository("repository-testing", url, token));
+				repositories.add(new PrivateUpdateRepository("repository-testing", url, token));
 			}
 		}
 		DefaultPluginManager testPluginManager = new DefaultPluginManager(EXTERNALPLUGIN_DIR.toPath());
@@ -333,18 +335,18 @@ public class OPRSExternalPluginManager
 					}
 					else
 					{
-						repositories.add(new OPRSUpdateRepository(id, new URL(url), token));
+						repositories.add(new PrivateUpdateRepository(id, new URL(url), token));
 					}
 				}
 				else
 				{
 					if (token.isEmpty())
 					{
-						repositories.add(new DefaultUpdateRepository(id, new URL(url), pluginJson));
+						repositories.add(new OPRSUpdateRepository(id, new URL(url), pluginJson));
 					}
 					else
 					{
-						repositories.add(new PluginRepository(id, new URL(url), pluginJson, token));
+						repositories.add(new PrivateUpdateRepository(id, new URL(url), pluginJson, token));
 					}
 				}
 			}
@@ -383,14 +385,14 @@ public class OPRSExternalPluginManager
 					token = split[2];
 				}
 
-				UpdateRepository defaultRepo;
+				OPRSUpdateRepository defaultRepo;
 				if (token.isEmpty())
 				{
 					defaultRepo = new OPRSUpdateRepository(id, new URL(url));
 				}
 				else
 				{
-					defaultRepo = new OPRSUpdateRepository(id, new URL(url), token);
+					defaultRepo = new PrivateUpdateRepository(id, new URL(url), token);
 				}
 				repositories.add(defaultRepo);
 				log.debug("Added Repo: {}", defaultRepo.getUrl());
@@ -438,7 +440,7 @@ public class OPRSExternalPluginManager
 			}
 			else
 			{
-				respository = new OPRSUpdateRepository(key, url, pluginsJson, token);
+				respository = new PrivateUpdateRepository(key, url, pluginsJson, token);
 			}
 		}
 		else
@@ -449,7 +451,7 @@ public class OPRSExternalPluginManager
 			}
 			else
 			{
-				respository = new OPRSUpdateRepository(key, url, token);
+				respository = new PrivateUpdateRepository(key, url, token);
 			}
 		}
 
@@ -469,9 +471,9 @@ public class OPRSExternalPluginManager
 	{
 		String config = updateManager.getRepositories().stream()
 			.map(r -> {
-				if (r instanceof PluginRepository)
+				if (r instanceof PrivateUpdateRepository)
 				{
-					return r.getId() + "|" + urlToStringEncoded(r.getUrl()) + "|" + ((PluginRepository) r).getToken();
+					return r.getId() + "|" + urlToStringEncoded(r.getUrl()) + "|" + ((PrivateUpdateRepository) r).getToken();
 				}
 				return r.getId() + "|" + urlToStringEncoded(r.getUrl());
 			})

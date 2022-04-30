@@ -5,6 +5,7 @@ import dev.unethicalite.api.game.Game;
 import dev.unethicalite.api.game.GameThread;
 import dev.unethicalite.api.input.Keyboard;
 import dev.unethicalite.api.items.GrandExchange;
+import net.runelite.api.DialogOption;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetID;
 import net.runelite.api.widgets.WidgetInfo;

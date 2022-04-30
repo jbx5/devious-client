@@ -1,4 +1,4 @@
-package net.runelite.client.plugins;
+package dev.unethicalite.client.plugins;
 
 import java.io.IOException;
 import java.net.URL;
@@ -15,11 +15,11 @@ import okio.Okio;
 import org.pf4j.update.SimpleFileDownloader;
 
 @Slf4j
-public class UnethicalFileDownloader extends SimpleFileDownloader
+public class PrivateFileDownloader extends SimpleFileDownloader
 {
 	private final String token;
 
-	public UnethicalFileDownloader(String token)
+	public PrivateFileDownloader(String token)
 	{
 		this.token = token;
 	}

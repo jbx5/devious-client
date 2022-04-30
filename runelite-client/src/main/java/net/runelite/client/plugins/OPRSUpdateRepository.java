@@ -33,7 +33,7 @@ public class OPRSUpdateRepository implements UpdateRepository
 	private final URL url;
 	private String pluginsJsonFileName;
 
-	private Map<String, PluginInfo> plugins;
+	protected Map<String, PluginInfo> plugins;
 
 	public OPRSUpdateRepository(String id, URL url)
 	{
@@ -76,7 +76,7 @@ public class OPRSUpdateRepository implements UpdateRepository
 		return getPlugins().get(id);
 	}
 
-	private void initPlugins()
+	public void initPlugins()
 	{
 		Reader pluginsJsonReader;
 		try

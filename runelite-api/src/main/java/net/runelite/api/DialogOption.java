@@ -1,4 +1,4 @@
-package dev.unethicalite.api.widgets;
+package net.runelite.api;
 
 import javax.annotation.Nullable;
 import java.util.Arrays;

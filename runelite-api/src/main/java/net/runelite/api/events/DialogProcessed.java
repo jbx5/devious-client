@@ -1,6 +1,6 @@
 package net.runelite.api.events;
 
-import dev.unethicalite.api.widgets.DialogOption;
+import net.runelite.api.DialogOption;
 import lombok.Value;
 
 @Value
