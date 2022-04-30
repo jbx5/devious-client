@@ -24,11 +24,13 @@ public interface MouseHandler extends MouseListener, MouseMotionListener, FocusL
 
 	long getLastPressedMillis();
 
+	int getLastPendingButton();
+
 	void setMouseX(int x);
 
 	void setMouseY(int y);
 
-	void setCurrentMillis(long millis);
+	void setLastMovedMillis(long millis);
 
 	void setCurrentButton(int button);
 
@@ -44,12 +46,20 @@ public interface MouseHandler extends MouseListener, MouseMotionListener, FocusL
 
 	void sendClick(int x, int y, int button);
 
-	default void sendClick(int x, int y)
-	{
-		sendClick(x, y, 1);
-	}
+	void sendRelease();
+
+	void sendExit();
+
+	void sendFocusLost();
 
 	void sendMovement(int x, int y);
 
-	int getLastButtonVolatile();
+	void sendClickMouseEvent(int x, int y, int button);
+
+	default void sendClickMouseEvent(int x, int y)
+	{
+		sendClickMouseEvent(x, y, 1);
+	}
+
+	void sendMovementMouseEvent(int x, int y);
 }

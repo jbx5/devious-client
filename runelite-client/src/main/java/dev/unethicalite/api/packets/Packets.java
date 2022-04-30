@@ -1,6 +1,6 @@
 package dev.unethicalite.api.packets;
 
-import dev.unethicalite.api.events.AutomatedMenu;
+import dev.unethicalite.api.events.MenuAutomated;
 import dev.unethicalite.api.game.Game;
 import dev.unethicalite.api.game.GameThread;
 import dev.unethicalite.api.widgets.Widgets;
@@ -59,7 +59,7 @@ public class Packets
 		GameThread.invoke(() -> Game.getClient().getPacketWriter().queuePacket(packet));
 	}
 
-	public static PacketBufferNode fromAutomatedMenu(AutomatedMenu menu)
+	public static PacketBufferNode fromAutomatedMenu(MenuAutomated menu)
 	{
 		var opcode = menu.getOpcode();
 		var client = Game.getClient();

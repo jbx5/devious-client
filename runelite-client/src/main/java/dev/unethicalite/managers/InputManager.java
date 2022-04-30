@@ -1,7 +1,10 @@
 package dev.unethicalite.managers;
 
+import dev.unethicalite.api.events.MouseAutomated;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
+import net.runelite.client.eventbus.EventBus;
+import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.input.MouseListener;
 import net.runelite.client.input.MouseManager;
 
@@ -26,10 +29,15 @@ public class InputManager implements MouseListener
 	private int lastMoveY = -1;
 
 	@Inject
-	public InputManager(ScriptManager scriptManager, LoopedPluginManager loopedPluginManager, MouseManager manager)
+	public InputManager(
+			ScriptManager scriptManager,
+			LoopedPluginManager loopedPluginManager,
+			MouseManager manager,
+			EventBus eventBus)
 	{
 		this.scriptManager = scriptManager;
 		this.loopedPluginManager = loopedPluginManager;
+		eventBus.register(this);
 		manager.registerMouseListener(this);
 	}
 
@@ -87,6 +95,23 @@ public class InputManager implements MouseListener
 		checkIfAutomated(mouseEvent);
 		setLastMove(mouseEvent.getX(), mouseEvent.getY());
 		return mouseEvent;
+	}
+
+	@Subscribe
+	private void onMouseAutomated(MouseAutomated event)
+	{
+		switch (event.getEventType())
+		{
+			case PRESS:
+			case RELEASE:
+				setLastClick(event.getX(), event.getY());
+				break;
+
+			case EXIT:
+			case MOVE:
+				setLastMove(event.getX(), event.getY());
+				break;
+		}
 	}
 
 	private void setLastClick(int x, int y)

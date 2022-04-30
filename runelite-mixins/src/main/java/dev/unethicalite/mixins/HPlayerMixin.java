@@ -1,6 +1,6 @@
 package dev.unethicalite.mixins;
 
-import dev.unethicalite.api.events.AutomatedMenu;
+import dev.unethicalite.api.events.MenuAutomated;
 import net.runelite.api.MenuAction;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
@@ -102,13 +102,13 @@ public abstract class HPlayerMixin extends RSPlayerMixin implements RSPlayer
 	}
 
 	@Inject
-	public AutomatedMenu getMenu(int actionIndex)
+	public MenuAutomated getMenu(int actionIndex)
 	{
 		return getMenu(getIndex(), getActionOpcode(actionIndex));
 	}
 
 	@Inject
-	public AutomatedMenu getMenu(int actionIndex, int opcode)
+	public MenuAutomated getMenu(int actionIndex, int opcode)
 	{
 		return getMenu(actionIndex, opcode, 0, 0);
 	}

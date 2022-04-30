@@ -27,7 +27,7 @@ package net.runelite.api;
 import dev.unethicalite.api.EntityNameable;
 import dev.unethicalite.api.Identifiable;
 import dev.unethicalite.api.Interactable;
-import dev.unethicalite.api.events.AutomatedMenu;
+import dev.unethicalite.api.events.MenuAutomated;
 import dev.unethicalite.api.util.Randomizer;
 import lombok.Data;
 import net.runelite.api.util.Text;
@@ -213,8 +213,7 @@ public class Item implements Interactable, Identifiable, EntityNameable
 	@Override
 	public Point getClickPoint()
 	{
-		java.awt.Point point = Randomizer.getRandomPointIn(getBounds());
-		return new Point(point.x, point.y);
+		return Randomizer.getRandomPointIn(getBounds());
 	}
 
 	@Override
@@ -274,7 +273,7 @@ public class Item implements Interactable, Identifiable, EntityNameable
 	}
 
 	@Override
-	public AutomatedMenu getMenu(int actionIndex)
+	public MenuAutomated getMenu(int actionIndex)
 	{
 		switch (getType())
 		{
@@ -307,7 +306,7 @@ public class Item implements Interactable, Identifiable, EntityNameable
 	}
 
 	@Override
-	public AutomatedMenu getMenu(int actionIndex, int opcode)
+	public MenuAutomated getMenu(int actionIndex, int opcode)
 	{
 		switch (getType())
 		{
@@ -359,6 +358,7 @@ public class Item implements Interactable, Identifiable, EntityNameable
 			Rectangle itemBounds = widget.getWidgetItem(getSlot()).getCanvasBounds();
 			return itemBounds != null ? itemBounds : new Rectangle(-1, -1, 0, 0);
 		}
+
 		return bounds;
 	}
 

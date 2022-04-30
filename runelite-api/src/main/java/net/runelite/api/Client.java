@@ -28,17 +28,18 @@ import com.jagex.oldscape.pub.OAuthApi;
 import java.awt.Canvas;
 import java.awt.Dimension;
 import java.math.BigInteger;
-import java.time.Instant;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+
+import dev.unethicalite.api.SceneEntity;
 import net.runelite.api.annotations.Varbit;
 
 import dev.unethicalite.api.MouseHandler;
-import dev.unethicalite.api.events.AutomatedMenu;
+import dev.unethicalite.api.events.MenuAutomated;
 import net.runelite.api.packets.ClientPacket;
 import net.runelite.api.packets.IsaacCipher;
 import net.runelite.api.packets.PacketBufferNode;
@@ -2538,16 +2539,26 @@ public interface Client extends OAuthApi, GameEngine
 	default void interact(int identifier, int opcode, int param0, int param1,
 						  int clickX, int clickY)
 	{
-		interact(identifier, opcode, param0, param1, clickX, clickY, -1337);
+		interact(identifier, opcode, param0, param1, clickX, clickY, null);
 	}
 
 	default void interact(int identifier, int opcode, int param0, int param1, int clickX, int clickY,
-				  long entityTag)
+				  SceneEntity sceneEntity)
 	{
-		interact(new AutomatedMenu(identifier, opcode, param0, param1, clickX, clickY, entityTag));
+		interact(
+				MenuAutomated.builder()
+						.identifier(identifier)
+						.opcode(MenuAction.of(opcode))
+						.param0(param0)
+						.param1(param1)
+						.clickX(clickX)
+						.clickY(clickY)
+						.entity(sceneEntity)
+						.build()
+		);
 	}
 
-	void interact(AutomatedMenu automatedMenu);
+	void interact(MenuAutomated menuAutomated);
 
 	int getMouseLastPressedX();
 
@@ -2655,7 +2666,7 @@ public interface Client extends OAuthApi, GameEngine
 
 	void setMenuOpen(boolean open);
 
-	void setPendingAutomation(AutomatedMenu entry);
+	void setPendingAutomation(MenuAutomated entry);
 
 	VarbitComposition getVarbitComposition(int varbitId);
 

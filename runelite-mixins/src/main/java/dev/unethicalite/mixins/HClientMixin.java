@@ -1,6 +1,6 @@
 package dev.unethicalite.mixins;
 
-import dev.unethicalite.api.events.AutomatedMenu;
+import dev.unethicalite.api.events.MenuAutomated;
 import dev.unethicalite.api.events.ExperienceGained;
 import dev.unethicalite.api.events.LoginStateChanged;
 import dev.unethicalite.api.events.PlaneChanged;
@@ -40,7 +40,7 @@ public abstract class HClientMixin implements RSClient
 	@Inject
 	private static final int[] previousExp = new int[23];
 	@Inject
-	private static final AtomicReference<AutomatedMenu> automatedMenu = new AtomicReference<>(null);
+	private static final AtomicReference<MenuAutomated> automatedMenu = new AtomicReference<>(null);
 	@Inject
 	public static HashMap<Integer, RSItemComposition> itemDefCache = new HashMap<>();
 	@Shadow("client")
@@ -155,7 +155,7 @@ public abstract class HClientMixin implements RSClient
 	@MethodHook("incrementMenuEntries")
 	public static void onIncrementMenuEntries()
 	{
-		AutomatedMenu menu = automatedMenu.getAndSet(null);
+		MenuAutomated menu = automatedMenu.getAndSet(null);
 		if (menu != null)
 		{
 			client.setDraggedWidget(null);
@@ -192,9 +192,9 @@ public abstract class HClientMixin implements RSClient
 	}
 
 	@Inject
-	public void interact(AutomatedMenu automatedMenu)
+	public void interact(MenuAutomated menuAutomated)
 	{
-		client.getCallbacks().post(automatedMenu);
+		client.getCallbacks().post(menuAutomated);
 	}
 
 	@Inject
@@ -284,8 +284,31 @@ public abstract class HClientMixin implements RSClient
 
 	@Inject
 	@Override
-	public void setPendingAutomation(AutomatedMenu replacement)
+	public void setPendingAutomation(MenuAutomated replacement)
 	{
 		automatedMenu.set(replacement);
+	}
+
+	@Copy("method6006")
+	@Replace("method6006")
+	public static void copy$method6006(RSActor actor)
+	{
+		// For some reason, RuneLite sets these to Int.MIN_VALUE, set them back to 0 to prevent crashes.
+		if (actor.getPoseFrame() < 0)
+		{
+			actor.setPoseFrame(0);
+		}
+
+		if (actor.getSpotAnimFrame() < 0)
+		{
+			actor.setSpotAnimFrame(0);
+		}
+
+		if (actor.getActionFrame() < 0)
+		{
+			actor.setAnimationFrame(0);
+		}
+
+		copy$method6006(actor);
 	}
 }

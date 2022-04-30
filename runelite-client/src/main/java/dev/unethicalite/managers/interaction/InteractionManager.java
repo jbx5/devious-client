@@ -1,12 +1,13 @@
 package dev.unethicalite.managers.interaction;
 
 import dev.unethicalite.api.MouseHandler;
+import dev.unethicalite.api.SceneEntity;
 import dev.unethicalite.api.commons.Rand;
-import dev.unethicalite.api.events.AutomatedMenu;
+import dev.unethicalite.api.commons.Time;
+import dev.unethicalite.api.events.MenuAutomated;
 import dev.unethicalite.api.game.GameThread;
 import dev.unethicalite.api.input.naturalmouse.NaturalMouse;
 import dev.unethicalite.api.movement.Movement;
-import dev.unethicalite.api.packets.MousePackets;
 import dev.unethicalite.api.packets.Packets;
 import dev.unethicalite.api.widgets.DialogOption;
 import dev.unethicalite.api.widgets.Widgets;
@@ -40,68 +41,67 @@ public class InteractionManager
 	private Client client;
 
 	@Subscribe
-	public void onInvokeMenuAction(AutomatedMenu e)
+	public void onInvokeMenuAction(MenuAutomated event)
 	{
-		String debug = "O=" + e.getOption()
-				+ " | T=" + e.getTarget()
-				+ " | ID=" + e.getIdentifier()
-				+ " | OP=" + e.getOpcode().getId()
-				+ " | P0=" + e.getParam0()
-				+ " | P1=" + e.getParam1()
-				+ " | X=" + e.getClickX()
-				+ " | Y=" + e.getClickY()
-				+ " | TAG=" + e.getEntityTag();
+		String debug = "O=" + event.getOption()
+				+ " | T=" + event.getTarget()
+				+ " | ID=" + event.getIdentifier()
+				+ " | OP=" + event.getOpcode().getId()
+				+ " | P0=" + event.getParam0()
+				+ " | P1=" + event.getParam1()
+				+ " | X=" + event.getClickX()
+				+ " | Y=" + event.getClickY();
 
 		log.debug("[Automated] {}", debug);
-		Point clickPoint = getClickPoint(e);
+		Point clickPoint = getClickPoint(event);
 		MouseHandler mouseHandler = client.getMouseHandler();
 
 		try
 		{
+			SceneEntity entity;
 			switch (config.interactMethod())
 			{
 				case MOUSE_EVENTS:
-					// We want to sync with game thread to avoid 'miss' clicks
-					GameThread.invokeLater(() -> {
-						long tag = e.getEntityTag();
-						if (tag != -1337)
+					entity = event.getEntity();
+					if (entity != null && config.mouseBehavior() == MouseBehavior.CLICKBOXES)
+					{
+						clickPoint = entity.getClickPoint().getAwtPoint();
+					}
+
+					if (config.naturalMouse())
+					{
+						naturalMouse.moveTo(clickPoint.x, clickPoint.y);
+					}
+
+					Point finalClickPoint = clickPoint;
+					GameThread.invoke(() ->
+					{
+						client.setPendingAutomation(event);
+
+						if (entity != null)
 						{
 							long[] entitiesAtMouse = client.getEntitiesAtMouse();
 							int count = client.getEntitiesAtMouseCount();
 							if (count < 1000)
 							{
-								entitiesAtMouse[count] = tag;
+								entitiesAtMouse[count] = entity.getTag();
 								client.setEntitiesAtMouseCount(count + 1);
 							}
 						}
 
-						if (config.naturalMouse())
+						if (!config.naturalMouse())
 						{
-							naturalMouse.moveTo(clickPoint.x, clickPoint.y);
-						}
-						else
-						{
-							mouseHandler.sendMovement(clickPoint.x, clickPoint.y);
+							mouseHandler.sendMovement(finalClickPoint.x, finalClickPoint.y);
 						}
 
-						log.debug("Sending click to [{}, {}]", clickPoint.x, clickPoint.y);
-
-						client.setPendingAutomation(e);
-						log.debug("Setting pending automation {}", e);
-						mouseHandler.sendClick(clickPoint.x, clickPoint.y);
-						return null;
+						log.debug("Sending click to [{}, {}]", finalClickPoint.x, finalClickPoint.y);
+						mouseHandler.sendClick(finalClickPoint.x, finalClickPoint.y, 1);
 					});
 
 					break;
 
 				case INVOKE:
-					if (config.mouseBehavior() != MouseBehavior.DISABLED)
-					{
-						mouseHandler.sendMovement(clickPoint.x, clickPoint.y);
-						mouseHandler.sendClick(-1, -1);
-					}
-
-					processAction(e, clickPoint.x, clickPoint.y);
+					processAction(event, clickPoint.x, clickPoint.y);
 					break;
 
 				case PACKETS:
@@ -109,26 +109,12 @@ public class InteractionManager
 					{
 						try
 						{
-							if (config.mouseBehavior() != MouseBehavior.DISABLED)
-							{
-								if (config.naturalMouse())
-								{
-									naturalMouse.moveTo(clickPoint.x, clickPoint.y);
-								}
-								else
-								{
-									mouseHandler.sendMovement(clickPoint.x, clickPoint.y);
-								}
-
-								MousePackets.queueClickPacket(clickPoint.x, clickPoint.y);
-							}
-
-							Packets.fromAutomatedMenu(e).send();
+							Packets.fromAutomatedMenu(event).send();
 						}
 						catch (InteractionException ex)
 						{
 							log.debug("{}, falling back to invoke", ex.getMessage());
-							processAction(e, clickPoint.x, clickPoint.y);
+							processAction(event, -1, -1);
 						}
 					});
 
@@ -139,6 +125,11 @@ public class InteractionManager
 		{
 			log.error("Interaction failed: {}", ex.getMessage());
 			client.setPendingAutomation(null);
+		}
+		finally
+		{
+			Time.sleep(10, 20);
+			mouseHandler.sendRelease();
 		}
 	}
 
@@ -179,13 +170,13 @@ public class InteractionManager
 		}
 	}
 
-	private void processAction(AutomatedMenu entry, int x, int y)
+	private void processAction(MenuAutomated entry, int x, int y)
 	{
 		GameThread.invoke(() -> client.invokeMenuAction(entry.getOption(), entry.getTarget(), entry.getIdentifier(),
 				entry.getOpcode().getId(), entry.getParam0(), entry.getParam1(), x, y));
 	}
 
-	private Point getClickPoint(AutomatedMenu e)
+	private Point getClickPoint(MenuAutomated event)
 	{
 		if (config.mouseBehavior() == MouseBehavior.OFF_SCREEN)
 		{
@@ -197,9 +188,9 @@ public class InteractionManager
 			return new Point(client.getMouseHandler().getCurrentX(), client.getMouseHandler().getCurrentY());
 		}
 
-		if (e.getClickX() != -1 && e.getClickY() != -1 && config.mouseBehavior() == MouseBehavior.CLICKBOXES)
+		if (event.getClickX() != -1 && event.getClickY() != -1 && config.mouseBehavior() == MouseBehavior.CLICKBOXES)
 		{
-			Point clickPoint = new Point(e.getClickX(), e.getClickY());
+			Point clickPoint = new Point(event.getClickX(), event.getClickY());
 			if (!clickInsideMinimap(clickPoint))
 			{
 				return clickPoint;
@@ -210,7 +201,7 @@ public class InteractionManager
 		Point randomPoint = new Point(Rand.nextInt(0, bounds.width), Rand.nextInt(0, bounds.height));
 		if (clickInsideMinimap(randomPoint))
 		{
-			return getClickPoint(e);
+			return getClickPoint(event);
 		}
 
 		return randomPoint;

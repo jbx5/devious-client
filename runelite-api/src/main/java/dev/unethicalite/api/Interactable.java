@@ -1,6 +1,7 @@
 package dev.unethicalite.api;
 
-import dev.unethicalite.api.events.AutomatedMenu;
+import dev.unethicalite.api.events.MenuAutomated;
+import net.runelite.api.MenuAction;
 import net.runelite.api.Point;
 import net.runelite.api.util.Text;
 
@@ -84,27 +85,38 @@ public interface Interactable
 		return Arrays.stream(actions).anyMatch(x -> getActions().contains(x));
 	}
 
-	default AutomatedMenu getMenu(String action)
+	default MenuAutomated getMenu(String action)
 	{
 		return getMenu(getActions().indexOf(action));
 	}
 
-	AutomatedMenu getMenu(int actionIndex);
+	MenuAutomated getMenu(int actionIndex);
 
-	AutomatedMenu getMenu(int actionIndex, int opcode);
+	MenuAutomated getMenu(int actionIndex, int opcode);
 
-	default AutomatedMenu getMenu(int identifier, int opcode, int param0, int param1)
+	default MenuAutomated getMenu(int identifier, int opcode, int param0, int param1)
 	{
-		Point clickPoint = getClickPoint();
-
 		if (this instanceof SceneEntity)
 		{
-			return new AutomatedMenu(identifier, opcode, param0, param1, clickPoint.getX(), clickPoint.getY(),
-					((SceneEntity) this).getTag());
+			return MenuAutomated.builder()
+					.identifier(identifier)
+					.opcode(MenuAction.of(opcode))
+					.param0(param0)
+					.param1(param1)
+					.entity((SceneEntity) this)
+					.build();
 		}
 		else
 		{
-			return new AutomatedMenu(identifier, opcode, param0, param1, clickPoint.getX(), clickPoint.getY());
+			Point clickPoint = getClickPoint();
+			return MenuAutomated.builder()
+					.identifier(identifier)
+					.opcode(MenuAction.of(opcode))
+					.param0(param0)
+					.param1(param1)
+					.clickX(clickPoint.getX())
+					.clickY(clickPoint.getY())
+					.build();
 		}
 	}
 }

@@ -1,6 +1,6 @@
 package dev.unethicalite.mixins;
 
-import dev.unethicalite.api.events.AutomatedMenu;
+import dev.unethicalite.api.events.MenuAutomated;
 import net.runelite.api.MenuAction;
 import net.runelite.api.NPCComposition;
 import net.runelite.api.mixins.Inject;
@@ -126,13 +126,13 @@ public abstract class HNpcMixin implements RSNPC
 	}
 
 	@Inject
-	public AutomatedMenu getMenu(int actionIndex)
+	public MenuAutomated getMenu(int actionIndex)
 	{
 		return getMenu(getIndex(), getActionOpcode(actionIndex));
 	}
 
 	@Inject
-	public AutomatedMenu getMenu(int actionIndex, int opcode)
+	public MenuAutomated getMenu(int actionIndex, int opcode)
 	{
 		return getMenu(getIndex(), opcode, 0, 0);
 	}
