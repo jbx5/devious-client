@@ -1,4 +1,4 @@
-name: Unethicalite - CI (push)
+name: Unethicalite - Master (push)
 
 on:
   push:
