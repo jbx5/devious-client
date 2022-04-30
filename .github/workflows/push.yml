@@ -3,7 +3,7 @@ name: Unethicalite - CI (push)
 on:
   push:
     branches:
-      - master
+      - development
 
 jobs:
   build:
