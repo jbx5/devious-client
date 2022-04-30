@@ -219,7 +219,7 @@ public class MinimalToolbar extends JMenuBar
 			{
 				if (minimalPluginManager.getPlugin() != null && minimalPluginManager.getConfig() != null)
 				{
-					// open/close the config
+					// todo: open/close an (external) config panel
 				}
 			});
 			pluginConfig.setVisible(false);
