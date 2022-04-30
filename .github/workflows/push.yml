@@ -35,7 +35,7 @@ jobs:
         run: ./gradlew build --stacktrace -x test -x checkstyleMain --console=plain
 
       - name: Bootstrap
-        run: ./gradlew bootstrapStable -x test -x checkstyleMain --console=plain
+        run: ./gradlew bootstrapNightly -x test -x checkstyleMain --console=plain
 
       - name: Push to hosting
         run: |
@@ -46,7 +46,7 @@ jobs:
           git config --global user.email "burakinan1@hotmail.com"
           git config --global user.name "Github Actions"
           git add -A
-          git commit -m 'Client auto release'
+          git commit -m 'client: nightly auto release'
           git push https://buracc:${{ secrets.REPO_PAT }}@github.com/unethicalite/hosting.git master
 
   checkstyleMain:
