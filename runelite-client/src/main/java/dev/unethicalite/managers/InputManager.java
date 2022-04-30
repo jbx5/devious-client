@@ -1,6 +1,7 @@
 package dev.unethicalite.managers;
 
 import dev.unethicalite.api.events.MouseAutomated;
+import dev.unethicalite.client.minimal.plugins.MinimalPluginManager;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.client.eventbus.EventBus;
@@ -16,7 +17,7 @@ import java.awt.event.MouseEvent;
 @Slf4j
 public class InputManager implements MouseListener
 {
-	private final ScriptManager scriptManager;
+	private final MinimalPluginManager minimalPluginManager;
 	private final LoopedPluginManager loopedPluginManager;
 
 	@Getter
@@ -30,12 +31,12 @@ public class InputManager implements MouseListener
 
 	@Inject
 	public InputManager(
-			ScriptManager scriptManager,
+			MinimalPluginManager minimalPluginManager,
 			LoopedPluginManager loopedPluginManager,
 			MouseManager manager,
 			EventBus eventBus)
 	{
-		this.scriptManager = scriptManager;
+		this.minimalPluginManager = minimalPluginManager;
 		this.loopedPluginManager = loopedPluginManager;
 		eventBus.register(this);
 		manager.registerMouseListener(this);
@@ -128,7 +129,8 @@ public class InputManager implements MouseListener
 
 	private void checkIfAutomated(MouseEvent mouseEvent)
 	{
-		if ((loopedPluginManager.isRunning() || scriptManager.isRunning()) && mouseEvent.getSource() != "unethicalite")
+		if ((loopedPluginManager.isPluginRegistered() || minimalPluginManager.isScriptRunning())
+				&& mouseEvent.getSource() != "unethicalite")
 		{
 			mouseEvent.consume();
 		}

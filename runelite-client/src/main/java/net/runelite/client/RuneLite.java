@@ -63,7 +63,7 @@ import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 import javax.swing.SwingUtilities;
 
-import dev.unethicalite.client.MinimalClient;
+import dev.unethicalite.client.minimal.MinimalClient;
 import joptsimple.ArgumentAcceptingOptionSpec;
 import joptsimple.OptionParser;
 import joptsimple.OptionSet;

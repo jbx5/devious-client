@@ -39,6 +39,7 @@ import net.runelite.api.events.WidgetLoaded;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.client.callback.ClientThread;
+import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
 
 import javax.inject.Inject;
@@ -58,6 +59,12 @@ public class DefinitionManager
 	private static final Multimap<Integer, Integer> VARBITS = HashMultimap.create();
 	private static final Multimap<Integer, Integer> VARBIT_TO_ENTITYID = HashMultimap.create();
 	private static final Multimap<Integer, TileObject> TRANSFORMING_OBJECTS = HashMultimap.create();
+
+	@Inject
+	DefinitionManager(EventBus eventBus)
+	{
+		eventBus.register(this);
+	}
 
 	public void init()
 	{
