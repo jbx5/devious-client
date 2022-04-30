@@ -40,8 +40,8 @@ jobs:
       - name: Push to hosting
         run: |
           git clone https://github.com/unethicalite/hosting.git
-          mkdir -p hosting/com/openosrs/injection-annotations/1.0/
-          cp injection-annotations/build/libs/injection-annotations-1.0.jar hosting/com/openosrs/injection-annotations/1.0/injection-annotations-1.0.jar
+#          mkdir -p hosting/com/openosrs/injection-annotations/1.1/
+#          cp injection-annotations/build/libs/injection-annotations-1.1.jar hosting/com/openosrs/injection-annotations/1.1/injection-annotations-1.0.jar
           cp -r runelite-client/build/bootstrap hosting
           cd hosting
           
