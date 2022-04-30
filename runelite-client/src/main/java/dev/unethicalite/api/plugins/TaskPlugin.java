@@ -1,7 +1,5 @@
 package dev.unethicalite.api.plugins;
 
-import dev.unethicalite.api.plugins.script.Task;
-
 public abstract class TaskPlugin extends LoopedPlugin
 {
 	public abstract Task[] getTasks();

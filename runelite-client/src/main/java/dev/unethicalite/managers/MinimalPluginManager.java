@@ -1,4 +1,4 @@
-package dev.unethicalite.client.minimal.plugins;
+package dev.unethicalite.managers;
 
 import com.google.inject.Key;
 import dev.unethicalite.api.input.Keyboard;
@@ -6,6 +6,10 @@ import dev.unethicalite.api.plugins.Plugins;
 import dev.unethicalite.api.plugins.Script;
 import dev.unethicalite.client.minimal.MinimalClient;
 import dev.unethicalite.client.minimal.config.MinimalConfig;
+import dev.unethicalite.client.minimal.plugins.MinimalClassLoader;
+import dev.unethicalite.client.minimal.plugins.MinimalPluginChanged;
+import dev.unethicalite.client.minimal.plugins.MinimalPluginState;
+import dev.unethicalite.client.minimal.plugins.PluginEntry;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
@@ -172,7 +176,9 @@ public class MinimalPluginManager
 
 			if (plugin instanceof Script)
 			{
-				((Script) plugin).onStart(scriptArgs);
+				Script script = (Script) plugin;
+				script.onStart(scriptArgs);
+				script.getPaint().clear();
 			}
 
 			client.getCallbacks().post(new MinimalPluginChanged(plugin, MinimalPluginState.STARTED));
@@ -188,6 +194,13 @@ public class MinimalPluginManager
 		if (!Plugins.stopPlugin(plugin))
 		{
 			return;
+		}
+
+		if (plugin instanceof Script)
+		{
+			Script script = (Script) plugin;
+			script.onStop();
+			script.getPaint().clear();
 		}
 
 		client.getCallbacks().post(new MinimalPluginChanged(plugin, MinimalPluginState.STOPPED));

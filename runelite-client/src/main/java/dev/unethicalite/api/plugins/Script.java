@@ -1,12 +1,12 @@
 package dev.unethicalite.api.plugins;
 
 import dev.unethicalite.api.game.Game;
-import dev.unethicalite.api.plugins.LoopedPlugin;
-import dev.unethicalite.client.minimal.script.blocking_events.BlockingEvent;
-import dev.unethicalite.client.minimal.script.blocking_events.BlockingEventManager;
+import dev.unethicalite.client.script.blocking_events.BlockingEvent;
+import dev.unethicalite.client.script.blocking_events.BlockingEventManager;
 import dev.unethicalite.client.minimal.plugins.MinimalPluginChanged;
 import dev.unethicalite.client.minimal.plugins.MinimalPluginState;
-import dev.unethicalite.client.minimal.script.paint.Paint;
+import dev.unethicalite.client.script.paint.Paint;
+import net.runelite.api.GameState;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,6 +19,7 @@ public abstract class Script extends LoopedPlugin
 
 	private boolean restart;
 	private boolean paused;
+	private boolean onLogin;
 
 	public Script()
 	{
@@ -54,6 +55,20 @@ public abstract class Script extends LoopedPlugin
 		if (paused)
 		{
 			return 1000;
+		}
+
+		if (restart)
+		{
+			restart = false;
+			Game.getClient().getCallbacks().post(new MinimalPluginChanged(this, MinimalPluginState.RESTARTING));
+			return 1000;
+		}
+
+		if (Game.getState() == GameState.LOGGED_IN && !onLogin)
+		{
+			onLogin = true;
+			onLogin();
+			return 100;
 		}
 
 		if (!blockingEventManager.getBlockingEvents().isEmpty())

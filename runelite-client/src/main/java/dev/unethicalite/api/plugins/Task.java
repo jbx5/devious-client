@@ -1,4 +1,4 @@
-package dev.unethicalite.api.plugins.script;
+package dev.unethicalite.api.plugins;
 
 public interface Task
 {

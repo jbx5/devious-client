@@ -4,7 +4,7 @@ import dev.unethicalite.api.plugins.LoopedPlugin;
 import dev.unethicalite.api.plugins.Plugins;
 import dev.unethicalite.api.plugins.SettingsPlugin;
 import dev.unethicalite.api.plugins.TaskPlugin;
-import dev.unethicalite.api.plugins.script.Task;
+import dev.unethicalite.api.plugins.Task;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.EventBus;

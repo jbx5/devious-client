@@ -1,4 +1,4 @@
-package dev.unethicalite.client.minimal.script.blocking_events
+package dev.unethicalite.client.script.blocking_events
 
 import dev.unethicalite.api.game.Game
 import dev.unethicalite.api.widgets.Widgets

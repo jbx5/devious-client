@@ -1,8 +1,8 @@
-package dev.unethicalite.client.minimal.script.paint;
+package dev.unethicalite.client.script.paint;
 
 import dev.unethicalite.client.devtools.EntityRenderer;
 import dev.unethicalite.managers.InputManager;
-import dev.unethicalite.client.minimal.plugins.MinimalPluginManager;
+import dev.unethicalite.managers.MinimalPluginManager;
 import dev.unethicalite.managers.interaction.InteractionConfig;
 import net.runelite.api.Point;
 import net.runelite.client.ui.overlay.Overlay;

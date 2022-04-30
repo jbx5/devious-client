@@ -10,7 +10,7 @@ import dev.unethicalite.client.devtools.scriptinspector.ScriptInspector;
 import dev.unethicalite.client.devtools.varinspector.VarInspector;
 import dev.unethicalite.client.devtools.widgetinspector.WidgetInspector;
 import dev.unethicalite.managers.FpsManager;
-import dev.unethicalite.client.minimal.plugins.MinimalPluginManager;
+import dev.unethicalite.managers.MinimalPluginManager;
 import dev.unethicalite.managers.interaction.InteractionConfig;
 import dev.unethicalite.client.minimal.plugins.MinimalPluginChanged;
 import dev.unethicalite.client.minimal.plugins.MinimalPluginState;

@@ -1,7 +1,6 @@
 package dev.unethicalite.managers;
 
 import dev.unethicalite.api.events.MouseAutomated;
-import dev.unethicalite.client.minimal.plugins.MinimalPluginManager;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.client.eventbus.EventBus;

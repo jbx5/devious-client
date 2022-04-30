@@ -1,4 +1,4 @@
-package dev.unethicalite.client.minimal.script.paint;
+package dev.unethicalite.client.script.paint;
 
 import com.openosrs.client.ui.overlay.components.table.TableAlignment;
 import com.openosrs.client.ui.overlay.components.table.TableComponent;
