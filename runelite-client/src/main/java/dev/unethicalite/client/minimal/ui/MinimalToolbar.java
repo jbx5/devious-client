@@ -219,7 +219,16 @@ public class MinimalToolbar extends JMenuBar
 			{
 				if (minimalPluginManager.getPlugin() != null && minimalPluginManager.getConfig() != null)
 				{
-					// todo: open/close an (external) config panel
+					new ConfigPanel(
+							configManager,
+							eventBus,
+							new ConfigurationDescriptor(
+									minimalPluginManager.getPlugin().getName(),
+									"",
+									configManager.getConfigDescriptor(minimalPluginManager.getConfig())
+							),
+							client
+					).init().open();
 				}
 			});
 			pluginConfig.setVisible(false);
@@ -311,6 +320,10 @@ public class MinimalToolbar extends JMenuBar
 				(event.getState() == MinimalPluginState.STARTED || event.getState() == MinimalPluginState.PAUSED)
 		);
 		restartPlugin.setVisible(event.getState() == MinimalPluginState.STARTED || event.getState() == MinimalPluginState.PAUSED);
+		if (event.getState() == MinimalPluginState.STARTED)
+		{
+			pluginConfig.setText(event.getPlugin().getName());
+		}
 
 		if (event.getState() == MinimalPluginState.PAUSED)
 		{

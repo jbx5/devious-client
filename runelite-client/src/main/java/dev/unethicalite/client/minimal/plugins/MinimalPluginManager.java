@@ -94,7 +94,6 @@ public class MinimalPluginManager
 					continue;
 				}
 
-
 				try (JarFile jar = new JarFile(file);
 					 MinimalClassLoader ucl = new MinimalClassLoader(new URL[]{file.toURI().toURL()}))
 				{
@@ -191,7 +190,7 @@ public class MinimalPluginManager
 			return;
 		}
 
-		client.getCallbacks().post(new MinimalPluginChanged(plugin, MinimalPluginState.STARTED));
+		client.getCallbacks().post(new MinimalPluginChanged(plugin, MinimalPluginState.STOPPED));
 		pluginManager.remove(plugin);
 		plugin = null;
 		pluginEntry = null;
