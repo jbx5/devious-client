@@ -39,17 +39,17 @@ public interface InteractionConfig extends Config
 		return false;
 	}
 
-//	@ConfigItem(
-//			keyName = "mouseOffScreen",
-//			name = "Mouse off screen when idle",
-//			description = "Move the mouse off screen if idle",
-//			section = interactionManager,
-//			position = 3
-//	)
-//	default boolean mouseOffScreen()
-//	{
-//		return false;
-//	}
+	@ConfigItem(
+			keyName = "disableMouse",
+			name = "Disable manual input",
+			description = "Disables manual input if a script/looped plugin is running",
+			section = interactionManager,
+			position = 3
+	)
+	default boolean disableMouse()
+	{
+		return true;
+	}
 
 	@ConfigItem(
 			keyName = "mouseBehavior",

@@ -18,23 +18,28 @@ public abstract class LoopedPlugin extends Plugin implements Runnable
 
 	@Getter
 	@Setter
-	private boolean running;
+	private volatile int loopSleep = 1000;
+
+	private volatile boolean running;
 
 	protected abstract int loop();
 
 	@Override
 	public void run()
 	{
+		running = true;
+
 		while (running)
 		{
-			int loopSleep = 1000;
 			try
 			{
-				loopSleep = this instanceof Script ? ((Script) this).outerLoop() : loop();
 				if (loopSleep == -1000)
 				{
-					break;
+					running = false;
+					continue;
 				}
+
+				loopSleep = this instanceof Script ? ((Script) this).outerLoop() : loop();
 			}
 			catch (Exception e)
 			{
@@ -54,6 +59,16 @@ public abstract class LoopedPlugin extends Plugin implements Runnable
 				}
 			}
 		}
+	}
+
+	public boolean isRunning()
+	{
+		return running;
+	}
+
+	public void stop()
+	{
+		loopSleep = -1000;
 	}
 
 	@Subscribe
