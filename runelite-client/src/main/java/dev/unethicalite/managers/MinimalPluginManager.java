@@ -65,10 +65,11 @@ public class MinimalPluginManager
 	@Inject
 	private WorldService worldService;
 
-	private String[] args = null;
 	private PluginEntry pluginEntry = null;
+
 	@Getter
 	private Plugin plugin = null;
+
 	@Getter
 	private Config config = null;
 
@@ -145,7 +146,7 @@ public class MinimalPluginManager
 		return plugins;
 	}
 
-	public void startPlugin(PluginEntry entry, String... scriptArgs)
+	public void startPlugin(PluginEntry entry)
 	{
 		try
 		{
@@ -157,7 +158,6 @@ public class MinimalPluginManager
 			}
 
 			pluginEntry = entry;
-			args = scriptArgs;
 
 			pluginManager.add(plugin);
 
@@ -172,13 +172,6 @@ public class MinimalPluginManager
 						configManager.setDefaultConfiguration(config, false);
 					}
 				}
-			}
-
-			if (plugin instanceof Script)
-			{
-				Script script = (Script) plugin;
-				script.onStart(scriptArgs);
-				script.getPaint().clear();
 			}
 
 			client.getCallbacks().post(new MinimalPluginChanged(plugin, MinimalPluginState.STARTED));
@@ -196,25 +189,17 @@ public class MinimalPluginManager
 			return;
 		}
 
-		if (plugin instanceof Script)
-		{
-			Script script = (Script) plugin;
-			script.onStop();
-			script.getPaint().clear();
-		}
-
 		client.getCallbacks().post(new MinimalPluginChanged(plugin, MinimalPluginState.STOPPED));
 		pluginManager.remove(plugin);
 		plugin = null;
 		pluginEntry = null;
-		args = null;
 		config = null;
 	}
 
 	public void restartPlugin()
 	{
 		stopPlugin();
-		startPlugin(pluginEntry, args);
+		startPlugin(pluginEntry);
 	}
 
 	public void pauseScript()

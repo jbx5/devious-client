@@ -1,8 +1,10 @@
 package dev.unethicalite.managers;
 
 import dev.unethicalite.api.movement.pathfinder.GlobalCollisionMap;
+import dev.unethicalite.client.script.paint.Paint;
 import dev.unethicalite.managers.interaction.InteractionManager;
 import lombok.Getter;
+import lombok.Setter;
 import net.runelite.api.Client;
 import net.runelite.api.packets.ClientPacket;
 import net.runelite.client.callback.ClientThread;
@@ -20,6 +22,10 @@ import javax.inject.Singleton;
 @Singleton
 public class Static
 {
+	@Getter
+	@Setter
+	private static String[] scriptArgs = new String[0];
+
 	@Inject
 	@Getter
 	private static EventBus eventBus;
@@ -71,4 +77,8 @@ public class Static
 	@Inject
 	@Getter
 	private static InteractionManager interactionManager;
+
+	@Inject
+	@Getter
+	private static Paint paint;
 }

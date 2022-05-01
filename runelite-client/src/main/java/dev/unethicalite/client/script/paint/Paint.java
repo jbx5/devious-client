@@ -7,6 +7,7 @@ import dev.unethicalite.managers.interaction.InteractionConfig;
 import net.runelite.api.Point;
 import net.runelite.client.ui.overlay.Overlay;
 import net.runelite.client.ui.overlay.OverlayLayer;
+import net.runelite.client.ui.overlay.OverlayManager;
 import net.runelite.client.ui.overlay.OverlayPosition;
 import net.runelite.client.ui.overlay.OverlayPriority;
 import net.runelite.client.ui.overlay.OverlayUtil;
@@ -39,11 +40,13 @@ public class Paint extends Overlay
 	public final DefaultPaint tracker = new DefaultPaint();
 
 	@Inject
-	public Paint()
+	public Paint(OverlayManager overlayManager)
 	{
 		setPosition(OverlayPosition.DYNAMIC);
 		setLayer(OverlayLayer.ABOVE_WIDGETS);
 		setPriority(OverlayPriority.LOW);
+
+		overlayManager.add(this);
 	}
 
 	@Override
@@ -92,11 +95,9 @@ public class Paint extends Overlay
 	public void setEnabled(boolean enabled)
 	{
 		this.enabled = enabled;
-		clear();
 
 		if (enabled)
 		{
-			tracker.submit(minimalPluginManager.getPlugin().getClass().getSimpleName(), new Statistic(true, () -> ""));
 			submit(tracker.getTracker());
 		}
 	}

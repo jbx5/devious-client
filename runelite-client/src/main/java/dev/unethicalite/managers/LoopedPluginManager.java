@@ -2,6 +2,7 @@ package dev.unethicalite.managers;
 
 import dev.unethicalite.api.plugins.LoopedPlugin;
 import dev.unethicalite.api.plugins.Plugins;
+import dev.unethicalite.api.plugins.Script;
 import dev.unethicalite.api.plugins.SettingsPlugin;
 import dev.unethicalite.api.plugins.Task;
 import dev.unethicalite.api.plugins.TaskPlugin;
@@ -17,6 +18,7 @@ import net.runelite.client.plugins.config.PluginListPanel;
 import javax.inject.Inject;
 import javax.inject.Provider;
 import javax.inject.Singleton;
+import java.util.concurrent.Executors;
 
 @Singleton
 @Slf4j
@@ -59,13 +61,31 @@ public class LoopedPluginManager
 			loopedPlugin.stop();
 		}
 
+		if (loopedPlugin instanceof Script)
+		{
+			Script script = (Script) loopedPlugin;
+			script.onStop();
+			script.getPaint().clear();
+		}
+
+		if (loopedPlugin instanceof TaskPlugin)
+		{
+			for (Task task : ((TaskPlugin) loopedPlugin).getTasks())
+			{
+				if (task.subscribe())
+				{
+					eventBus.unregister(task);
+				}
+			}
+		}
+
 		currentLoop = null;
 		loopedPlugin = null;
 	}
 
-	public void submit(Runnable runnable)
+	public void submit(Plugin plugin)
 	{
-		if (!(runnable instanceof LoopedPlugin))
+		if (!(plugin instanceof LoopedPlugin))
 		{
 			log.error("Only LoopedPlugins may be submitted to the LoopedPluginManager");
 			return;
@@ -74,13 +94,32 @@ public class LoopedPluginManager
 		if (currentLoop != null && currentLoop.isAlive())
 		{
 			log.debug("A plugin is already running, stopping it");
-			unregister();
+			Executors.newSingleThreadExecutor().execute(this::unregister);
 		}
 
-		log.debug("Registering {} as a LoopedPlugin", runnable.getClass().getSimpleName());
+		log.debug("Registering {} as a LoopedPlugin", plugin.getClass().getSimpleName());
 
-		loopedPlugin = (LoopedPlugin) runnable;
-		currentLoop = new Thread(runnable);
+		loopedPlugin = (LoopedPlugin) plugin;
+
+		if (loopedPlugin instanceof TaskPlugin)
+		{
+			for (Task task : ((TaskPlugin) loopedPlugin).getTasks())
+			{
+				if (task.subscribe())
+				{
+					eventBus.register(task);
+				}
+			}
+		}
+
+		if (plugin instanceof Script)
+		{
+			Script script = (Script) plugin;
+			script.getPaint().clear();
+			script.onStart(Static.getScriptArgs());
+		}
+
+		currentLoop = new Thread(loopedPlugin);
 		currentLoop.start();
 	}
 
@@ -93,52 +132,36 @@ public class LoopedPluginManager
 	private void onPluginChanged(PluginChanged pluginChanged)
 	{
 		Plugin plugin = pluginChanged.getPlugin();
-		if (plugin instanceof LoopedPlugin)
+		if (pluginChanged.isLoaded())
 		{
-			if (pluginChanged.isLoaded())
+			if (plugin instanceof SettingsPlugin)
 			{
-				submit((LoopedPlugin) plugin);
-				if (plugin instanceof TaskPlugin)
-				{
-					for (Task task : ((TaskPlugin) plugin).getTasks())
-					{
-						if (task.subscribe())
-						{
-							eventBus.register(task);
-						}
-					}
-				}
+				SettingsPlugin settingsPlugin = (SettingsPlugin) plugin;
+				PluginListPanel pluginListPanel = pluginListPanelProvider.get();
+				pluginListPanel.addFakePlugin(
+						new PluginConfigurationDescriptor(
+								settingsPlugin.getPluginName(),
+								settingsPlugin.getPluginDescription(),
+								settingsPlugin.getPluginTags(),
+								settingsPlugin.getConfig(),
+								configManager.getConfigDescriptor(settingsPlugin.getConfig())
+						)
+				);
+				pluginListPanel.rebuildPluginList();
+				return;
 			}
-			else
+
+			if (plugin instanceof LoopedPlugin)
 			{
-				unregister();
-				if (plugin instanceof TaskPlugin)
-				{
-					for (Task task : ((TaskPlugin) plugin).getTasks())
-					{
-						if (task.subscribe())
-						{
-							eventBus.unregister(task);
-						}
-					}
-				}
+				submit(plugin);
 			}
 		}
-
-		if (plugin instanceof SettingsPlugin)
+		else
 		{
-			SettingsPlugin settingsPlugin = (SettingsPlugin) plugin;
-			PluginListPanel pluginListPanel = pluginListPanelProvider.get();
-			pluginListPanel.addFakePlugin(
-					new PluginConfigurationDescriptor(
-							settingsPlugin.getPluginName(),
-							settingsPlugin.getPluginDescription(),
-							settingsPlugin.getPluginTags(),
-							settingsPlugin.getConfig(),
-							configManager.getConfigDescriptor(settingsPlugin.getConfig())
-					)
-			);
-			pluginListPanel.rebuildPluginList();
+			if (plugin instanceof LoopedPlugin && plugin == this.loopedPlugin)
+			{
+				unregister();
+			}
 		}
 	}
 }

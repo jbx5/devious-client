@@ -33,14 +33,14 @@ import com.google.inject.Injector;
 import com.openosrs.client.OpenOSRS;
 import dev.unethicalite.api.account.GameAccount;
 import dev.unethicalite.client.minimal.config.MinimalConfig;
-import dev.unethicalite.managers.MinimalPluginManager;
-import dev.unethicalite.managers.DefinitionManager;
-import dev.unethicalite.managers.FpsManager;
-import dev.unethicalite.managers.interaction.InteractionManager;
 import dev.unethicalite.client.minimal.plugins.PluginEntry;
-import dev.unethicalite.client.script.paint.Paint;
 import dev.unethicalite.client.minimal.ui.MinimalToolbar;
 import dev.unethicalite.client.minimal.ui.MinimalUI;
+import dev.unethicalite.managers.DefinitionManager;
+import dev.unethicalite.managers.FpsManager;
+import dev.unethicalite.managers.MinimalPluginManager;
+import dev.unethicalite.managers.Static;
+import dev.unethicalite.managers.interaction.InteractionManager;
 import joptsimple.ArgumentAcceptingOptionSpec;
 import joptsimple.OptionParser;
 import joptsimple.OptionSet;
@@ -145,9 +145,6 @@ public class MinimalClient
 	@Inject
 	@Nullable
 	private Applet applet;
-
-	@Inject
-	private Paint paint;
 
 	@Inject
 	private MinimalPluginManager minimalPluginManager;
@@ -342,7 +339,6 @@ public class MinimalClient
 		eventBus.register(minimalPluginManager);
 		eventBus.register(interactionManager);
 		eventBus.register(definitionManager);
-		overlayManager.add(paint);
 
 		initArgs(options);
 
@@ -535,11 +531,10 @@ public class MinimalClient
 		if (options.has("script"))
 		{
 			String script = (String) options.valueOf("script");
-			String[] args = new String[0];
 
 			if (options.has("scriptArgs"))
 			{
-				args = ((String) options.valueOf("scriptArgs")).split(",");
+				Static.setScriptArgs(((String) options.valueOf("scriptArgs")).split(","));
 			}
 
 			PluginEntry quickStartScript = minimalPluginManager.loadPlugins()
@@ -551,7 +546,7 @@ public class MinimalClient
 				return;
 			}
 
-			minimalPluginManager.startPlugin(quickStartScript, args);
+			minimalPluginManager.startPlugin(quickStartScript);
 		}
 	}
 

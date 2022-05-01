@@ -43,20 +43,12 @@ public class MinimalPluginsPanel
 			//north
 			Panel northPanel = new Panel(new GridLayout(1, 0));
 
-			//south
-			JTextField args = new JTextField();
-			JPanel argsPanel = new JPanel(new MigLayout("", "[][grow, fill]"));
-			frame.add(argsPanel, BorderLayout.SOUTH);
-			argsPanel.add(new JLabel("Script args:"));
-			argsPanel.add(args, BorderLayout.CENTER);
-
 			//startButton
 			JButton startButton = new JButton(new ImageIcon(ImageUtil.loadImageResource(MinimalModule.class, "play_arrow_white_18x18.png")));
 			startButton.addActionListener(e ->
 			{
 				PluginEntry selected = pluginList.getSelectedValue();
-				minimalPluginManager.startPlugin(selected, args.getText().isBlank() || !selected.isScript() ?
-						new String[]{} : args.getText().split(","));
+				minimalPluginManager.startPlugin(selected);
 				frame.setVisible(false);
 			});
 			northPanel.add(startButton);
