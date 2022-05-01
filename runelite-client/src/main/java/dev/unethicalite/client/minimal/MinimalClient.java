@@ -22,7 +22,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package dev.unethicalite.client;
+package dev.unethicalite.client.minimal;
 
 import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.Logger;
@@ -32,16 +32,15 @@ import com.google.inject.Inject;
 import com.google.inject.Injector;
 import com.openosrs.client.OpenOSRS;
 import dev.unethicalite.api.account.GameAccount;
-import dev.unethicalite.client.config.MinimalConfig;
+import dev.unethicalite.client.minimal.config.MinimalConfig;
+import dev.unethicalite.managers.MinimalPluginManager;
 import dev.unethicalite.managers.DefinitionManager;
 import dev.unethicalite.managers.FpsManager;
-import dev.unethicalite.managers.ScriptManager;
 import dev.unethicalite.managers.interaction.InteractionManager;
-import dev.unethicalite.client.script.ScriptEntry;
-import dev.unethicalite.client.script.ScriptMeta;
+import dev.unethicalite.client.minimal.plugins.PluginEntry;
 import dev.unethicalite.client.script.paint.Paint;
-import dev.unethicalite.client.ui.MinimalToolbar;
-import dev.unethicalite.client.ui.MinimalUI;
+import dev.unethicalite.client.minimal.ui.MinimalToolbar;
+import dev.unethicalite.client.minimal.ui.MinimalUI;
 import joptsimple.ArgumentAcceptingOptionSpec;
 import joptsimple.OptionParser;
 import joptsimple.OptionSet;
@@ -52,11 +51,13 @@ import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.api.Constants;
 import net.runelite.client.ClassPreloader;
+import net.runelite.client.RuneLite;
 import net.runelite.client.RuneLiteProperties;
 import net.runelite.client.RuntimeConfigLoader;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.game.WorldService;
+import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.rs.ClientLoader;
 import net.runelite.client.rs.ClientUpdateCheckMode;
 import net.runelite.client.ui.DrawManager;
@@ -149,7 +150,7 @@ public class MinimalClient
 	private Paint paint;
 
 	@Inject
-	private ScriptManager scriptManager;
+	private MinimalPluginManager minimalPluginManager;
 
 	@Inject
 	private InteractionManager interactionManager;
@@ -282,6 +283,8 @@ public class MinimalClient
 
 			injector.getInstance(MinimalClient.class).start(options);
 
+			RuneLite.setInjector(injector);
+
 			final long end = System.currentTimeMillis();
 			final RuntimeMXBean rb = ManagementFactory.getRuntimeMXBean();
 			final long uptime = rb.getUptime();
@@ -336,7 +339,7 @@ public class MinimalClient
 		drawManager.registerEveryFrameListener(fpsManager);
 		fpsManager.reloadConfig(minimalConfig.fpsLimit());
 		eventBus.register(minimalToolbar);
-		eventBus.register(scriptManager);
+		eventBus.register(minimalPluginManager);
 		eventBus.register(interactionManager);
 		eventBus.register(definitionManager);
 		overlayManager.add(paint);
@@ -539,16 +542,16 @@ public class MinimalClient
 				args = ((String) options.valueOf("scriptArgs")).split(",");
 			}
 
-			ScriptEntry quickStartScript = scriptManager.loadScripts()
-					.stream().filter(x -> x.getScriptClass().getAnnotation(ScriptMeta.class).value().equals(script))
+			PluginEntry quickStartScript = minimalPluginManager.loadPlugins()
+					.stream().filter(x -> x.getScriptClass().getAnnotation(PluginDescriptor.class).name().equals(script))
 					.findFirst()
 					.orElse(null);
-			if (quickStartScript == null)
+			if (quickStartScript == null || !quickStartScript.isScript())
 			{
 				return;
 			}
 
-			scriptManager.startScript(quickStartScript, args);
+			minimalPluginManager.startPlugin(quickStartScript, args);
 		}
 	}
 

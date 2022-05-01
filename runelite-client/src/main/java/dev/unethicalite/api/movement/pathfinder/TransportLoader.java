@@ -14,7 +14,7 @@ import dev.unethicalite.api.movement.Reachable;
 import dev.unethicalite.api.quests.Quest;
 import dev.unethicalite.api.widgets.Dialog;
 import dev.unethicalite.api.widgets.Widgets;
-import dev.unethicalite.client.config.UnethicaliteProperties;
+import dev.unethicalite.client.minimal.config.UnethicaliteProperties;
 import lombok.Value;
 import net.runelite.api.*;
 import net.runelite.api.coords.Direction;

@@ -18,6 +18,7 @@ import net.runelite.api.events.DialogProcessed;
 import net.runelite.api.events.MenuOptionClicked;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
+import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
 
 import javax.inject.Inject;
@@ -39,6 +40,12 @@ public class InteractionManager
 
 	@Inject
 	private Client client;
+
+	@Inject
+	InteractionManager(EventBus eventBus)
+	{
+		eventBus.register(this);
+	}
 
 	@Subscribe
 	public void onInvokeMenuAction(MenuAutomated event)

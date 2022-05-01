@@ -1,4 +1,4 @@
-package dev.unethicalite.client.config;
+package dev.unethicalite.client.minimal.config;
 
 import com.google.common.base.Strings;
 import com.google.common.collect.ComparisonChain;
@@ -114,7 +114,7 @@ public class ConfigPanel extends PluginPanel
 		}
 	}
 
-	public void init()
+	public ConfigPanel init()
 	{
 		String name = configurationDescriptor.getName();
 		title.setText(name);
@@ -130,6 +130,7 @@ public class ConfigPanel extends PluginPanel
 		frame.add(this);
 
 		frame.pack();
+		return this;
 	}
 
 	private void rebuild()

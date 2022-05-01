@@ -1,4 +1,4 @@
-package dev.unethicalite.client.config;
+package dev.unethicalite.client.minimal.config;
 
 import net.runelite.api.Model;
 import net.runelite.api.Renderable;

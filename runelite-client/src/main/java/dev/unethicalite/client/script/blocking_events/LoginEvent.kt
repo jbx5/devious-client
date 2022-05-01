@@ -3,7 +3,7 @@ package dev.unethicalite.client.script.blocking_events
 import dev.unethicalite.api.game.Game
 import dev.unethicalite.api.game.Worlds
 import dev.unethicalite.api.input.Keyboard
-import dev.unethicalite.client.MinimalClient
+import dev.unethicalite.client.minimal.MinimalClient
 import net.runelite.api.GameState
 import org.jboss.aerogear.security.otp.Totp
 import kotlin.system.exitProcess

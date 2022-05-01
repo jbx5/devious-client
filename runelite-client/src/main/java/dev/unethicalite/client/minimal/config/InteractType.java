@@ -1,4 +1,4 @@
-package dev.unethicalite.client.config;
+package dev.unethicalite.client.minimal.config;
 
 public enum InteractType
 {

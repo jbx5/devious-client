@@ -1,41 +1,63 @@
 package dev.unethicalite.managers;
 
 import dev.unethicalite.api.plugins.LoopedPlugin;
+import dev.unethicalite.api.plugins.Plugins;
+import dev.unethicalite.api.plugins.SettingsPlugin;
+import dev.unethicalite.api.plugins.TaskPlugin;
+import dev.unethicalite.api.plugins.Task;
 import lombok.extern.slf4j.Slf4j;
-import net.runelite.client.plugins.PluginInstantiationException;
-import net.runelite.client.plugins.PluginManager;
+import net.runelite.client.config.ConfigManager;
+import net.runelite.client.eventbus.EventBus;
+import net.runelite.client.eventbus.Subscribe;
+import net.runelite.client.events.PluginChanged;
+import net.runelite.client.plugins.Plugin;
+import net.runelite.client.plugins.config.PluginConfigurationDescriptor;
+import net.runelite.client.plugins.config.PluginListPanel;
 
 import javax.inject.Inject;
+import javax.inject.Provider;
 import javax.inject.Singleton;
 
 @Singleton
 @Slf4j
 public class LoopedPluginManager
 {
-	@Inject
-	private PluginManager pluginManager;
+	private final EventBus eventBus;
 
-	private LoopedPlugin plugin = null;
+	@Inject
+	private ConfigManager configManager;
+
+	@Inject
+	private Provider<PluginListPanel> pluginListPanelProvider;
+
+	private LoopedPlugin loopedPlugin = null;
 	private Thread currentLoop = null;
 
-	public void stop()
+	@Inject
+	LoopedPluginManager(EventBus eventBus)
 	{
-		if (currentLoop == null || plugin == null)
+		this.eventBus = eventBus;
+		eventBus.register(this);
+	}
+
+	public void unregister()
+	{
+		if (currentLoop == null || loopedPlugin == null)
 		{
 			return;
 		}
 
 		currentLoop.interrupt();
 
-		while (currentLoop.isAlive() || plugin.isRunning())
+		while (currentLoop.isAlive() || loopedPlugin.isRunning())
 		{
-			plugin.setRunning(false);
+			loopedPlugin.setRunning(false);
 		}
 
-		stopPlugin();
+		Plugins.stopPlugin(loopedPlugin);
 
 		currentLoop = null;
-		plugin = null;
+		loopedPlugin = null;
 	}
 
 	public void submit(Runnable runnable)
@@ -48,32 +70,75 @@ public class LoopedPluginManager
 
 		if (currentLoop != null && currentLoop.isAlive())
 		{
-			stop();
+			log.debug("A plugin is already running, stopping it");
+			unregister();
 		}
 
 		log.debug("Registering {} as a LoopedPlugin", runnable.getClass().getSimpleName());
 
-		plugin = (LoopedPlugin) runnable;
-		plugin.setRunning(true);
+		loopedPlugin = (LoopedPlugin) runnable;
+		loopedPlugin.setRunning(true);
 		currentLoop = new Thread(runnable);
 		currentLoop.start();
 	}
 
-	private void stopPlugin()
+	public boolean isPluginRegistered()
 	{
-		try
-		{
-			pluginManager.setPluginEnabled(plugin, false);
-			pluginManager.stopPlugin(plugin);
-		}
-		catch (PluginInstantiationException e)
-		{
-			throw new RuntimeException(e);
-		}
+		return currentLoop != null && currentLoop.isAlive() && loopedPlugin != null && loopedPlugin.isRunning();
 	}
 
-	public boolean isRunning()
+	@Subscribe
+	private void onPluginChanged(PluginChanged pluginChanged)
 	{
-		return currentLoop != null && currentLoop.isAlive() && plugin != null && plugin.isRunning();
+		Plugin plugin = pluginChanged.getPlugin();
+		if (plugin instanceof LoopedPlugin)
+		{
+			if (pluginChanged.isLoaded())
+			{
+				log.debug("Started looped plugin");
+				submit((LoopedPlugin) plugin);
+				if (plugin instanceof TaskPlugin)
+				{
+					for (Task task : ((TaskPlugin) plugin).getTasks())
+					{
+						if (task.subscribe())
+						{
+							eventBus.register(task);
+						}
+					}
+				}
+			}
+			else
+			{
+				log.debug("Stopped looped plugin");
+				unregister();
+				if (plugin instanceof TaskPlugin)
+				{
+					for (Task task : ((TaskPlugin) plugin).getTasks())
+					{
+						if (task.subscribe())
+						{
+							eventBus.unregister(task);
+						}
+					}
+				}
+			}
+		}
+
+		if (plugin instanceof SettingsPlugin)
+		{
+			SettingsPlugin settingsPlugin = (SettingsPlugin) plugin;
+			PluginListPanel pluginListPanel = pluginListPanelProvider.get();
+			pluginListPanel.addFakePlugin(
+					new PluginConfigurationDescriptor(
+							settingsPlugin.getPluginName(),
+							settingsPlugin.getPluginDescription(),
+							settingsPlugin.getPluginTags(),
+							settingsPlugin.getConfig(),
+							configManager.getConfigDescriptor(settingsPlugin.getConfig())
+					)
+			);
+			pluginListPanel.rebuildPluginList();
+		}
 	}
 }

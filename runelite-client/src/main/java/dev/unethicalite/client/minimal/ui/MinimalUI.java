@@ -22,10 +22,10 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package dev.unethicalite.client.ui;
+package dev.unethicalite.client.minimal.ui;
 
 import com.google.common.base.Strings;
-import dev.unethicalite.client.config.MinimalConfig;
+import dev.unethicalite.client.minimal.config.MinimalConfig;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;

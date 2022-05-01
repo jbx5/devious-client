@@ -1,21 +1,29 @@
 package dev.unethicalite.managers;
 
+import com.google.inject.Key;
 import dev.unethicalite.api.input.Keyboard;
-import dev.unethicalite.client.MinimalClient;
-import dev.unethicalite.client.config.MinimalConfig;
-import dev.unethicalite.client.script.Script;
-import dev.unethicalite.client.script.ScriptEntry;
-import dev.unethicalite.client.script.ScriptMeta;
-import dev.unethicalite.client.script.ScriptThread;
-import dev.unethicalite.client.script.events.ScriptChanged;
-import dev.unethicalite.client.script.events.ScriptState;
+import dev.unethicalite.api.plugins.Plugins;
+import dev.unethicalite.api.plugins.Script;
+import dev.unethicalite.client.minimal.MinimalClient;
+import dev.unethicalite.client.minimal.config.MinimalConfig;
+import dev.unethicalite.client.minimal.plugins.MinimalClassLoader;
+import dev.unethicalite.client.minimal.plugins.MinimalPluginChanged;
+import dev.unethicalite.client.minimal.plugins.MinimalPluginState;
+import dev.unethicalite.client.minimal.plugins.PluginEntry;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.GameTick;
+import net.runelite.client.config.Config;
+import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.game.WorldService;
+import net.runelite.client.plugins.Plugin;
+import net.runelite.client.plugins.PluginDescriptor;
+import net.runelite.client.plugins.PluginInstantiationException;
+import net.runelite.client.plugins.PluginManager;
 import net.runelite.client.util.WorldUtil;
 import net.runelite.http.api.worlds.World;
 import net.runelite.http.api.worlds.WorldResult;
@@ -24,7 +32,6 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.awt.event.KeyEvent;
 import java.io.File;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
 import java.net.URL;
 import java.util.ArrayList;
@@ -36,8 +43,10 @@ import java.util.jar.JarFile;
 
 @Singleton
 @Slf4j
-public class ScriptManager
+public class MinimalPluginManager
 {
+	private static final File PLUGINS_DIR = new File(MinimalClient.CLIENT_DIR, "plugins");
+
 	@Inject
 	private MinimalConfig minimalConfig;
 
@@ -48,31 +57,39 @@ public class ScriptManager
 	private Client client;
 
 	@Inject
+	private PluginManager pluginManager;
+
+	@Inject
+	private ConfigManager configManager;
+
+	@Inject
 	private WorldService worldService;
 
 	private String[] args = null;
-	private ScriptEntry scriptEntry = null;
-	private ScriptThread scriptThread = null;
-	private Script script = null;
+	private PluginEntry pluginEntry = null;
+	@Getter
+	private Plugin plugin = null;
+	@Getter
+	private Config config = null;
 
 	private long randomDelay = 0;
 	private boolean worldSet;
 
-	public List<ScriptEntry> loadScripts()
+	public List<PluginEntry> loadPlugins()
 	{
-		return loadScripts(MinimalClient.SCRIPTS_DIR);
+		return loadPlugins(PLUGINS_DIR);
 	}
 
-	public List<ScriptEntry> loadScripts(File dir)
+	public List<PluginEntry> loadPlugins(File dir)
 	{
-		List<ScriptEntry> scripts = new ArrayList<>();
+		List<PluginEntry> plugins = new ArrayList<>();
 
 		try
 		{
 			File[] files = dir.listFiles();
 			if (files == null)
 			{
-				return scripts;
+				return plugins;
 			}
 			for (File file : files)
 			{
@@ -81,8 +98,8 @@ public class ScriptManager
 					continue;
 				}
 
-				JarFile jar = new JarFile(file);
-				try (ScriptClassLoader ucl = new ScriptClassLoader(new URL[]{file.toURI().toURL()}))
+				try (JarFile jar = new JarFile(file);
+					 MinimalClassLoader ucl = new MinimalClassLoader(new URL[]{file.toURI().toURL()}))
 				{
 					var elems = jar.entries();
 
@@ -101,15 +118,16 @@ public class ScriptManager
 						try
 						{
 							var clazz = ucl.loadClass(name);
-							if (!Script.class.isAssignableFrom(clazz)
+							if (!Plugin.class.isAssignableFrom(clazz)
 									|| Modifier.isAbstract(clazz.getModifiers())
-									|| clazz.getAnnotation(ScriptMeta.class) == null)
+									|| clazz.getAnnotation(PluginDescriptor.class) == null)
 							{
 								continue;
 							}
 
-							Class<? extends Script> scriptClass = (Class<? extends Script>) clazz;
-							scripts.add(new ScriptEntry(scriptClass, scriptClass.getAnnotationsByType(ScriptMeta.class)[0]));
+							Class<? extends Plugin> scriptClass = (Class<? extends Plugin>) clazz;
+							plugins.add(new PluginEntry(scriptClass,
+									scriptClass.getAnnotationsByType(PluginDescriptor.class)[0]));
 						}
 						catch (Exception | NoClassDefFoundError e)
 						{
@@ -124,92 +142,104 @@ public class ScriptManager
 			e.printStackTrace();
 		}
 
-		return scripts;
+		return plugins;
 	}
 
-	public void startScript(ScriptEntry entry, String... scriptArgs)
+	public void startPlugin(PluginEntry entry, String... scriptArgs)
 	{
-		if (scriptThread != null && scriptThread.isAlive())
-		{
-			return;
-		}
-
 		try
 		{
-			scriptThread = new ScriptThread(entry, scriptArgs);
-			scriptThread.start();
-			script = scriptThread.getScript();
+			plugin = pluginManager.loadPlugins(List.of(entry.getScriptClass()), null)
+					.stream().findFirst().orElse(null);
+			if (plugin == null || !Plugins.startPlugin(plugin))
+			{
+				return;
+			}
+
+			pluginEntry = entry;
 			args = scriptArgs;
-			scriptEntry = entry;
+
+			pluginManager.add(plugin);
+
+			for (Key<?> key : plugin.getInjector().getBindings().keySet())
+			{
+				Class<?> type = key.getTypeLiteral().getRawType();
+				if (Config.class.isAssignableFrom(type))
+				{
+					if (type.getPackageName().startsWith(plugin.getClass().getPackageName()))
+					{
+						config = (Config) plugin.getInjector().getInstance(key);
+						configManager.setDefaultConfiguration(config, false);
+					}
+				}
+			}
+
+			if (plugin instanceof Script)
+			{
+				Script script = (Script) plugin;
+				script.onStart(scriptArgs);
+				script.getPaint().clear();
+			}
+
+			client.getCallbacks().post(new MinimalPluginChanged(plugin, MinimalPluginState.STARTED));
 		}
-		catch (NoSuchMethodException | InvocationTargetException | InstantiationException | IllegalAccessException e)
+		catch (PluginInstantiationException e)
 		{
-			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
 	}
 
-	public void stopScript()
+	public void stopPlugin()
 	{
-		if (scriptThread == null || script == null)
+		if (!Plugins.stopPlugin(plugin))
 		{
 			return;
 		}
 
-		while (scriptThread.isAlive() || script.isRunning())
+		if (plugin instanceof Script)
 		{
-			script.stopLooping();
+			Script script = (Script) plugin;
+			script.onStop();
+			script.getPaint().clear();
 		}
 
-		script = null;
-		scriptThread = null;
+		client.getCallbacks().post(new MinimalPluginChanged(plugin, MinimalPluginState.STOPPED));
+		pluginManager.remove(plugin);
+		plugin = null;
+		pluginEntry = null;
+		args = null;
+		config = null;
 	}
 
-	public void restartScript()
+	public void restartPlugin()
 	{
-		while (scriptThread != null)
-		{
-			stopScript();
-		}
-
-		if (args != null && scriptEntry != null)
-		{
-			ScriptEntry reloaded = loadScripts().stream()
-					.filter(x -> x.getMeta().equals(scriptEntry.getMeta()))
-					.findFirst()
-					.orElse(null);
-			startScript(reloaded, args);
-		}
+		stopPlugin();
+		startPlugin(pluginEntry, args);
 	}
 
 	public void pauseScript()
 	{
-		if (script == null)
+		if (plugin == null || (!(plugin instanceof Script)))
 		{
 			return;
 		}
 
-		script.pauseScript();
+		((Script) plugin).pauseScript();
 	}
 
-	public boolean isRunning()
+	public boolean isScriptRunning()
 	{
-		return scriptThread != null && scriptThread.isAlive() &&
-				script != null && script.isRunning() && !script.isPaused();
-	}
-
-	public Script getBotScript()
-	{
-		return script;
+		return plugin != null && plugin instanceof Script;
 	}
 
 	@Subscribe
-	private void onScriptChanged(ScriptChanged e)
+	private void onMinimalPluginChanged(MinimalPluginChanged e)
 	{
-		log.info("Script state changed: {} [{}]", e.getName(), e.getState());
+		log.info("Minimal Plugin state changed: {} [{}]", e.getPlugin().getName(), e.getState());
 
-		if (e.getState() == ScriptState.RESTARTING)
+		if (e.getState() == MinimalPluginState.RESTARTING)
 		{
-			executorService.execute(this::restartScript);
+			executorService.execute(this::restartPlugin);
 		}
 	}
 

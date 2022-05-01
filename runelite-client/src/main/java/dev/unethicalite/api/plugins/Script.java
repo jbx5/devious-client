@@ -1,24 +1,25 @@
-package dev.unethicalite.client.script;
+package dev.unethicalite.api.plugins;
 
 import dev.unethicalite.api.game.Game;
 import dev.unethicalite.client.script.blocking_events.BlockingEvent;
 import dev.unethicalite.client.script.blocking_events.BlockingEventManager;
-import dev.unethicalite.client.script.events.ScriptChanged;
-import dev.unethicalite.client.script.events.ScriptState;
+import dev.unethicalite.client.minimal.plugins.MinimalPluginChanged;
+import dev.unethicalite.client.minimal.plugins.MinimalPluginState;
 import dev.unethicalite.client.script.paint.Paint;
+import net.runelite.api.GameState;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 
-public abstract class Script
+public abstract class Script extends LoopedPlugin
 {
 	protected final Logger logger;
-	private volatile int loopSleep = 0;
 	private volatile boolean looping = true;
 
 	private boolean restart;
 	private boolean paused;
+	private boolean onLogin;
 
 	public Script()
 	{
@@ -31,7 +32,7 @@ public abstract class Script
 
 	protected abstract int loop();
 
-	protected abstract void onStart(String... args);
+	public abstract void onStart(String... args);
 
 	public void onStop()
 	{
@@ -45,15 +46,29 @@ public abstract class Script
 
 	public int outerLoop()
 	{
-		loopSleep = 0;
+		int loopSleep;
 		if (!looping)
 		{
-			return -1;
+			return -1000;
 		}
 
 		if (paused)
 		{
-			return loopSleep != 0 ? loopSleep : 1000;
+			return 1000;
+		}
+
+		if (restart)
+		{
+			restart = false;
+			Game.getClient().getCallbacks().post(new MinimalPluginChanged(this, MinimalPluginState.RESTARTING));
+			return 1000;
+		}
+
+		if (Game.getState() == GameState.LOGGED_IN && !onLogin)
+		{
+			onLogin = true;
+			onLogin();
+			return 100;
 		}
 
 		if (!blockingEventManager.getBlockingEvents().isEmpty())
@@ -76,11 +91,11 @@ public abstract class Script
 		paused = !paused;
 		if (!paused)
 		{
-			Game.getClient().getCallbacks().post(new ScriptChanged(getClass().getSimpleName(), ScriptState.STARTED));
+			Game.getClient().getCallbacks().post(new MinimalPluginChanged(this, MinimalPluginState.STARTED));
 		}
 		else
 		{
-			Game.getClient().getCallbacks().post(new ScriptChanged(getClass().getSimpleName(), ScriptState.PAUSED));
+			Game.getClient().getCallbacks().post(new MinimalPluginChanged(this, MinimalPluginState.PAUSED));
 		}
 	}
 

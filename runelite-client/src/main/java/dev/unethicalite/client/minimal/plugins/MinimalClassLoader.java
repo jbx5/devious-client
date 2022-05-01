@@ -1,4 +1,4 @@
-package dev.unethicalite.managers;
+package dev.unethicalite.client.minimal.plugins;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -8,15 +8,15 @@ import java.lang.invoke.MethodHandles;
 import java.net.URL;
 import java.net.URLClassLoader;
 
-public class ScriptClassLoader extends URLClassLoader implements ReflectUtil.PrivateLookupableClassLoader
+public class MinimalClassLoader extends URLClassLoader implements ReflectUtil.PrivateLookupableClassLoader
 {
 	@Getter
 	@Setter
 	private MethodHandles.Lookup lookup;
 
-	public ScriptClassLoader(URL[] urls)
+	public MinimalClassLoader(URL[] urls)
 	{
-		super(urls, ScriptClassLoader.class.getClassLoader());
+		super(urls, MinimalClassLoader.class.getClassLoader());
 		ReflectUtil.installLookupHelper(this);
 	}
 

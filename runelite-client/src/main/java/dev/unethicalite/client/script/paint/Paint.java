@@ -2,7 +2,7 @@ package dev.unethicalite.client.script.paint;
 
 import dev.unethicalite.client.devtools.EntityRenderer;
 import dev.unethicalite.managers.InputManager;
-import dev.unethicalite.managers.ScriptManager;
+import dev.unethicalite.managers.MinimalPluginManager;
 import dev.unethicalite.managers.interaction.InteractionConfig;
 import net.runelite.api.Point;
 import net.runelite.client.ui.overlay.Overlay;
@@ -25,7 +25,7 @@ public class Paint extends Overlay
 	private boolean enabled = false;
 
 	@Inject
-	private ScriptManager scriptManager;
+	private MinimalPluginManager minimalPluginManager;
 
 	@Inject
 	private EntityRenderer entityRenderer;
@@ -96,7 +96,7 @@ public class Paint extends Overlay
 
 		if (enabled)
 		{
-			tracker.submit(scriptManager.getBotScript().getClass().getSimpleName(), new Statistic(true, () -> ""));
+			tracker.submit(minimalPluginManager.getPlugin().getClass().getSimpleName(), new Statistic(true, () -> ""));
 			submit(tracker.getTracker());
 		}
 	}

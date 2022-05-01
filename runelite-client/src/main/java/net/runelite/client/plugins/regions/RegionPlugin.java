@@ -4,7 +4,7 @@ import com.google.inject.Provides;
 import dev.unethicalite.api.events.PlaneChanged;
 import dev.unethicalite.api.game.Game;
 import dev.unethicalite.api.movement.pathfinder.GlobalCollisionMap;
-import dev.unethicalite.api.movement.pathfinder.RegionManager;
+import dev.unethicalite.managers.RegionManager;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;

@@ -1,10 +1,12 @@
-package dev.unethicalite.api.movement.pathfinder;
+package dev.unethicalite.managers;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import dev.unethicalite.api.entities.Players;
 import dev.unethicalite.api.game.Game;
 import dev.unethicalite.api.movement.Reachable;
+import dev.unethicalite.api.movement.pathfinder.Transport;
+import dev.unethicalite.api.movement.pathfinder.Walker;
 import dev.unethicalite.api.scene.Tiles;
 import net.runelite.api.CollisionData;
 import net.runelite.api.CollisionDataFlag;

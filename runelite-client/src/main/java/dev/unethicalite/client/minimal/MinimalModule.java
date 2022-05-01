@@ -1,4 +1,4 @@
-package dev.unethicalite.client;
+package dev.unethicalite.client.minimal;
 
 import com.google.common.base.Strings;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
@@ -9,8 +9,8 @@ import com.google.inject.name.Names;
 import com.openosrs.client.config.OpenOSRSConfig;
 import dev.unethicalite.api.movement.pathfinder.GlobalCollisionMap;
 import dev.unethicalite.api.movement.pathfinder.Walker;
-import dev.unethicalite.client.config.MinimalConfig;
-import dev.unethicalite.client.config.UnethicaliteProperties;
+import dev.unethicalite.client.minimal.config.MinimalConfig;
+import dev.unethicalite.client.minimal.config.UnethicaliteProperties;
 import dev.unethicalite.managers.Static;
 import dev.unethicalite.managers.interaction.InteractionConfig;
 import lombok.RequiredArgsConstructor;

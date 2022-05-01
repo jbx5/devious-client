@@ -1,8 +1,8 @@
-package dev.unethicalite.client.ui;
+package dev.unethicalite.client.minimal.ui;
 
-import dev.unethicalite.client.MinimalModule;
-import dev.unethicalite.managers.ScriptManager;
-import dev.unethicalite.client.script.ScriptEntry;
+import dev.unethicalite.client.minimal.MinimalModule;
+import dev.unethicalite.managers.MinimalPluginManager;
+import dev.unethicalite.client.minimal.plugins.PluginEntry;
 import net.miginfocom.swing.MigLayout;
 import net.runelite.api.Client;
 import net.runelite.client.util.ImageUtil;
@@ -15,16 +15,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Singleton
-public class ScriptPanel
+public class MinimalPluginsPanel
 {
 
 	@Inject
 	private Client client;
 
 	@Inject
-	private ScriptManager scriptManager;
+	private MinimalPluginManager minimalPluginManager;
 
-	private JList<ScriptEntry> scriptList;
+	private JList<PluginEntry> pluginList;
 	private JFrame frame;
 
 	public void open()
@@ -33,7 +33,7 @@ public class ScriptPanel
 		{
 			frame = new JFrame("Scripts");
 			frame.setAlwaysOnTop(true);
-			scriptList = new JList<>();
+			pluginList = new JList<>();
 			frame.setLayout(new BorderLayout());
 			frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			frame.setPreferredSize(new Dimension(500, 300));
@@ -54,21 +54,23 @@ public class ScriptPanel
 			JButton startButton = new JButton(new ImageIcon(ImageUtil.loadImageResource(MinimalModule.class, "play_arrow_white_18x18.png")));
 			startButton.addActionListener(e ->
 			{
-				scriptManager.startScript(scriptList.getSelectedValue(), args.getText().isBlank() ? new String[]{} : args.getText().split(","));
+				PluginEntry selected = pluginList.getSelectedValue();
+				minimalPluginManager.startPlugin(selected, args.getText().isBlank() || !selected.isScript() ?
+						new String[]{} : args.getText().split(","));
 				frame.setVisible(false);
 			});
 			northPanel.add(startButton);
 
 			//pauseButton
 			JButton pauseButton = new JButton(new ImageIcon(ImageUtil.loadImageResource(MinimalModule.class, "pause_white_18x18.png")));
-			pauseButton.addActionListener(e -> scriptManager.pauseScript());
+			pauseButton.addActionListener(e -> minimalPluginManager.pauseScript());
 			northPanel.add(pauseButton);
 
 			//stopButton
 			JButton stopButton = new JButton(new ImageIcon(ImageUtil.loadImageResource(MinimalModule.class, "stop_white_18x18.png")));
 			stopButton.addActionListener(e ->
 			{
-				scriptManager.stopScript();
+				minimalPluginManager.stopPlugin();
 				loadScripts();
 			});
 			northPanel.add(stopButton);
@@ -84,7 +86,7 @@ public class ScriptPanel
 			Panel centerPanel = new Panel(new GridLayout(0, 1));
 
 			//scriptScrollPane
-			JScrollPane scriptScrollPane = new JScrollPane(scriptList);
+			JScrollPane scriptScrollPane = new JScrollPane(pluginList);
 			scriptScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 			centerPanel.add(scriptScrollPane);
 			frame.setLocationRelativeTo(client.getCanvas());
@@ -96,16 +98,16 @@ public class ScriptPanel
 		frame.setVisible(!frame.isVisible());
 	}
 
-	public List<ScriptEntry> loadScripts()
+	public List<PluginEntry> loadScripts()
 	{
-		List<ScriptEntry> scriptListEntries = new ArrayList<>(scriptManager.loadScripts());
-		scriptList.setListData(scriptListEntries.toArray(new ScriptEntry[0]));
+		List<PluginEntry> scriptListEntries = new ArrayList<>(minimalPluginManager.loadPlugins());
+		pluginList.setListData(scriptListEntries.toArray(new PluginEntry[0]));
 		return scriptListEntries;
 	}
 
 	public void reloadScript()
 	{
 		loadScripts();
-		scriptManager.restartScript();
+		minimalPluginManager.restartPlugin();
 	}
 }
