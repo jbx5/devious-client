@@ -6,6 +6,7 @@ import dev.unethicalite.client.script.blocking_events.BlockingEventManager;
 import dev.unethicalite.client.minimal.plugins.MinimalPluginChanged;
 import dev.unethicalite.client.minimal.plugins.MinimalPluginState;
 import dev.unethicalite.client.script.paint.Paint;
+import lombok.Getter;
 import net.runelite.api.GameState;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +16,6 @@ import javax.inject.Inject;
 public abstract class Script extends LoopedPlugin
 {
 	protected final Logger logger;
-	private volatile boolean looping = true;
 
 	private boolean restart;
 	private boolean paused;
@@ -27,7 +27,10 @@ public abstract class Script extends LoopedPlugin
 	}
 
 	@Inject
+	@Getter
 	private Paint paint;
+
+	@Getter
 	private final BlockingEventManager blockingEventManager = new BlockingEventManager();
 
 	protected abstract int loop();
@@ -47,11 +50,6 @@ public abstract class Script extends LoopedPlugin
 	public int outerLoop()
 	{
 		int loopSleep;
-		if (!looping)
-		{
-			return -1000;
-		}
-
 		if (paused)
 		{
 			return 1000;
@@ -99,16 +97,6 @@ public abstract class Script extends LoopedPlugin
 		}
 	}
 
-	public boolean isRunning()
-	{
-		return looping;
-	}
-
-	public boolean stopLooping()
-	{
-		return looping = false;
-	}
-
 	public boolean isRestart()
 	{
 		return restart;
@@ -127,15 +115,5 @@ public abstract class Script extends LoopedPlugin
 	public void setPaused(boolean paused)
 	{
 		this.paused = paused;
-	}
-
-	public Paint getPaint()
-	{
-		return paint;
-	}
-
-	public BlockingEventManager getBlockingEventManager()
-	{
-		return blockingEventManager;
 	}
 }

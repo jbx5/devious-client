@@ -3,8 +3,8 @@ package dev.unethicalite.managers;
 import dev.unethicalite.api.plugins.LoopedPlugin;
 import dev.unethicalite.api.plugins.Plugins;
 import dev.unethicalite.api.plugins.SettingsPlugin;
-import dev.unethicalite.api.plugins.TaskPlugin;
 import dev.unethicalite.api.plugins.Task;
+import dev.unethicalite.api.plugins.TaskPlugin;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.EventBus;
@@ -47,14 +47,17 @@ public class LoopedPluginManager
 			return;
 		}
 
+		if (Plugins.stopPlugin(loopedPlugin))
+		{
+			return;
+		}
+
 		currentLoop.interrupt();
 
 		while (currentLoop.isAlive() || loopedPlugin.isRunning())
 		{
-			loopedPlugin.setRunning(false);
+			loopedPlugin.stop();
 		}
-
-		Plugins.stopPlugin(loopedPlugin);
 
 		currentLoop = null;
 		loopedPlugin = null;
@@ -77,7 +80,6 @@ public class LoopedPluginManager
 		log.debug("Registering {} as a LoopedPlugin", runnable.getClass().getSimpleName());
 
 		loopedPlugin = (LoopedPlugin) runnable;
-		loopedPlugin.setRunning(true);
 		currentLoop = new Thread(runnable);
 		currentLoop.start();
 	}
@@ -95,7 +97,6 @@ public class LoopedPluginManager
 		{
 			if (pluginChanged.isLoaded())
 			{
-				log.debug("Started looped plugin");
 				submit((LoopedPlugin) plugin);
 				if (plugin instanceof TaskPlugin)
 				{
@@ -110,7 +111,6 @@ public class LoopedPluginManager
 			}
 			else
 			{
-				log.debug("Stopped looped plugin");
 				unregister();
 				if (plugin instanceof TaskPlugin)
 				{
