@@ -1,6 +1,7 @@
 package dev.unethicalite.managers;
 
 import dev.unethicalite.api.movement.pathfinder.GlobalCollisionMap;
+import dev.unethicalite.managers.interaction.InteractionManager;
 import lombok.Getter;
 import net.runelite.api.Client;
 import net.runelite.api.packets.ClientPacket;
@@ -62,4 +63,12 @@ public class Static
 	@Inject
 	@Getter
 	private static KeyManager keyManager;
+
+	@Inject
+	@Getter
+	private static DefinitionManager definitionManager;
+
+	@Inject
+	@Getter
+	private static InteractionManager interactionManager;
 }
