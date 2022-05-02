@@ -1,9 +1,8 @@
 package dev.unethicalite.client.minimal.ui;
 
 import dev.unethicalite.client.minimal.MinimalModule;
-import dev.unethicalite.managers.MinimalPluginManager;
 import dev.unethicalite.client.minimal.plugins.PluginEntry;
-import net.miginfocom.swing.MigLayout;
+import dev.unethicalite.managers.MinimalPluginManager;
 import net.runelite.api.Client;
 import net.runelite.client.util.ImageUtil;
 

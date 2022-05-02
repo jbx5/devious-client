@@ -1,8 +1,6 @@
 package dev.unethicalite.api.items;
 
 import dev.unethicalite.api.game.Game;
-import dev.unethicalite.api.game.GameThread;
-import net.runelite.api.Client;
 import net.runelite.api.EquipmentInventorySlot;
 import net.runelite.api.InventoryID;
 import net.runelite.api.Item;
@@ -10,10 +8,8 @@ import net.runelite.api.ItemContainer;
 import net.runelite.api.widgets.WidgetInfo;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 public class Equipment extends Items
 {
@@ -35,23 +31,7 @@ public class Equipment extends Items
 
 		Item[] containerItems = container.getItems();
 
-		// temp workaround for caching defs
-		Client client = Game.getClient();
-		List<Item> uncachedItems = Arrays.stream(containerItems)
-				.filter(i -> !client.isItemDefinitionCached(i.getId()))
-				.collect(Collectors.toList());
-		if (!uncachedItems.isEmpty())
-		{
-			GameThread.invokeLater(() -> {
-				for (Item uncachedItem : uncachedItems)
-				{
-					int id = uncachedItem.getId();
-					client.cacheItem(id, client.getItemComposition(id));
-				}
-
-				return null;
-			});
-		}
+		cacheUncachedItems(containerItems);
 
 		for (int i = 0, containerItemsLength = containerItems.length; i < containerItemsLength; i++)
 		{

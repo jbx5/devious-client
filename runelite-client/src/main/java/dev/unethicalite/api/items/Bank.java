@@ -50,6 +50,9 @@ public class Bank extends Items
 		}
 
 		Item[] containerItems = container.getItems();
+
+		cacheUncachedItems(containerItems);
+
 		for (int i = 0, containerItemsLength = containerItems.length; i < containerItemsLength; i++)
 		{
 			Item item = containerItems[i];

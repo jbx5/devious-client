@@ -1,10 +1,15 @@
 package dev.unethicalite.api.items;
 
 import dev.unethicalite.api.commons.Predicates;
+import dev.unethicalite.api.game.Game;
+import dev.unethicalite.api.game.GameThread;
+import net.runelite.api.Client;
 import net.runelite.api.Item;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public abstract class Items
 {
@@ -63,5 +68,25 @@ public abstract class Items
 	protected int count(boolean stacks, String... names)
 	{
 		return all(names).stream().mapToInt(x -> stacks ? x.getQuantity() : 1).sum();
+	}
+
+	protected void cacheUncachedItems(Item[] items)
+	{
+		Client client = Game.getClient();
+		List<Item> uncachedItems = Arrays.stream(items)
+				.filter(i -> !client.isItemDefinitionCached(i.getId()))
+				.collect(Collectors.toList());
+		if (!uncachedItems.isEmpty())
+		{
+			GameThread.invokeLater(() -> {
+				for (Item uncachedItem : uncachedItems)
+				{
+					int id = uncachedItem.getId();
+					client.cacheItem(id, client.getItemComposition(id));
+				}
+
+				return null;
+			});
+		}
 	}
 }

@@ -28,8 +28,13 @@ public class Inventory extends Items
 			return items;
 		}
 
-		for (Item item : container.getItems())
+		Item[] containerItems = container.getItems();
+
+		cacheUncachedItems(containerItems);
+
+		for (int i = 0, containerItemsLength = containerItems.length; i < containerItemsLength; i++)
 		{
+			Item item = containerItems[i];
 			if (item.getId() != -1 && item.getName() != null && !item.getName().equals("null"))
 			{
 				item.setActionParam(item.getSlot());
