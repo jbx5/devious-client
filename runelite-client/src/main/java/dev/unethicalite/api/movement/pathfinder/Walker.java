@@ -122,8 +122,9 @@ public class Walker
 
 		WorldPoint startPosition = path.get(0);
 		Teleport teleport = teleports.get(startPosition);
+		boolean offPath = path.stream().noneMatch(t -> t.distanceTo(local.getWorldLocation()) <= 5);
 
-		if (teleport != null)
+		if (teleport != null && offPath)
 		{
 			log.debug("Casting teleport {}", teleport);
 			teleport.getHandler().run();
@@ -132,7 +133,7 @@ public class Walker
 		}
 
 		// Refresh path if our direction changed
-		if (!local.isAnimating() && !path.contains(local.getWorldLocation()))
+		if (!local.isAnimating() && offPath)
 		{
 			log.debug("Direction changed, resetting cached path towards {}", destination);
 			if (!localRegion)
@@ -386,7 +387,7 @@ public class Walker
 
 		log.debug("Calculating path towards {}", destination);
 
-		return new Pathfinder(collisionMap, transports, startPoints,
+		return new AStarPathfinder(collisionMap, transports, startPoints,
 				destination).find();
 	}
 
