@@ -13,7 +13,7 @@ import java.util.Arrays;
 
 public enum SpellBook
 {
-	REGULAR(0),
+	STANDARD(0),
 	ANCIENT(1),
 	LUNAR(2),
 	NECROMANCY(3);
@@ -616,7 +616,7 @@ public enum SpellBook
 		@Override
 		public boolean canCast()
 		{
-			if (Magic.SpellBook.getCurrent() != Magic.SpellBook.REGULAR)
+			if (getCurrent() != STANDARD)
 			{
 				return false;
 			}
@@ -905,7 +905,7 @@ public enum SpellBook
 
 		public boolean canCast()
 		{
-			if (Magic.SpellBook.getCurrent() != Magic.SpellBook.ANCIENT)
+			if (getCurrent() != ANCIENT)
 			{
 				return false;
 			}
@@ -1274,7 +1274,7 @@ public enum SpellBook
 
 		public boolean canCast()
 		{
-			if (Magic.SpellBook.getCurrent() != Magic.SpellBook.LUNAR)
+			if (getCurrent() != LUNAR)
 			{
 				return false;
 			}
@@ -1626,7 +1626,7 @@ public enum SpellBook
 
 		public boolean canCast()
 		{
-			if (Magic.SpellBook.getCurrent() != Magic.SpellBook.NECROMANCY)
+			if (getCurrent() != NECROMANCY)
 			{
 				return false;
 			}

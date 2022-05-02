@@ -3,7 +3,6 @@ package dev.unethicalite.api.magic;
 import dev.unethicalite.api.game.Game;
 import dev.unethicalite.api.game.Vars;
 import dev.unethicalite.api.widgets.Widgets;
-import java.util.Arrays;
 import net.runelite.api.Item;
 import net.runelite.api.MenuAction;
 import net.runelite.api.NPC;
@@ -14,7 +13,6 @@ import net.runelite.api.widgets.Widget;
 
 public class Magic
 {
-	private static final int SPELLBOOK_VARBIT = 4070;
 	private static final int AUTOCAST_VARP = 108;
 
 	public static boolean isAutoCasting()
@@ -79,27 +77,6 @@ public class Magic
 		if (widget != null)
 		{
 			widget.interact(0);
-		}
-	}
-
-	public enum SpellBook
-	{
-		REGULAR(0),
-		ANCIENT(1),
-		LUNAR(2),
-		NECROMANCY(3);
-
-		private final int varbitValue;
-
-		SpellBook(int varbitValue)
-		{
-			this.varbitValue = varbitValue;
-		}
-
-		public static SpellBook getCurrent()
-		{
-			return Arrays.stream(values()).filter(x -> Vars.getBit(SPELLBOOK_VARBIT) == x.varbitValue)
-				.findFirst().orElse(null);
 		}
 	}
 }
