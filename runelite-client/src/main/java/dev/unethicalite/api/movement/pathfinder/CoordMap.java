@@ -1,6 +1,5 @@
 package dev.unethicalite.api.movement.pathfinder;
 
-import lombok.Getter;
 import net.runelite.api.coords.WorldPoint;
 
 import java.util.Comparator;
