@@ -139,7 +139,10 @@ public class AStarPathfinder implements PathingAlgorithm
 				result.put(neighbor, 1f);
 			}
 		}
-		catch (Exception ignored) {}
+		catch (Exception ignored)
+		{
+
+		}
 
 		try
 		{
@@ -149,7 +152,10 @@ public class AStarPathfinder implements PathingAlgorithm
 				result.put(neighbor, 1f);
 			}
 		}
-		catch (Exception ignored) {}
+		catch (Exception ignored)
+		{
+
+		}
 
 		try
 		{
@@ -159,7 +165,10 @@ public class AStarPathfinder implements PathingAlgorithm
 				result.put(neighbor, 1f);
 			}
 		}
-		catch (Exception ignored) {}
+		catch (Exception ignored)
+		{
+
+		}
 
 		try
 		{
@@ -169,7 +178,10 @@ public class AStarPathfinder implements PathingAlgorithm
 				result.put(neighbor, 1f);
 			}
 		}
-		catch (Exception ignored) {}
+		catch (Exception ignored)
+		{
+
+		}
 
 		try
 		{
@@ -179,7 +191,10 @@ public class AStarPathfinder implements PathingAlgorithm
 				result.put(neighbor, 1f);
 			}
 		}
-		catch (Exception ignored) {}
+		catch (Exception ignored)
+		{
+
+		}
 
 		try
 		{
@@ -189,7 +204,10 @@ public class AStarPathfinder implements PathingAlgorithm
 				result.put(neighbor, 1f);
 			}
 		}
-		catch (Exception ignored) {}
+		catch (Exception ignored)
+		{
+
+		}
 
 		try
 		{
@@ -199,7 +217,10 @@ public class AStarPathfinder implements PathingAlgorithm
 				result.put(neighbor, 1f);
 			}
 		}
-		catch (Exception ignored) {}
+		catch (Exception ignored)
+		{
+
+		}
 
 		try
 		{
@@ -209,7 +230,10 @@ public class AStarPathfinder implements PathingAlgorithm
 				result.put(neighbor, 1f);
 			}
 		}
-		catch (Exception ignored) {}
+		catch (Exception ignored)
+		{
+
+		}
 
 		return result;
 	}
