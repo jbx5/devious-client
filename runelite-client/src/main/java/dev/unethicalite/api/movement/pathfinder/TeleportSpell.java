@@ -1,5 +1,7 @@
 package dev.unethicalite.api.movement.pathfinder;
 
+import com.openosrs.client.game.WorldLocation;
+import dev.unethicalite.api.game.House;
 import dev.unethicalite.api.magic.Ancient;
 import dev.unethicalite.api.magic.Lunar;
 import dev.unethicalite.api.magic.Necromancy;
@@ -179,5 +181,15 @@ public enum TeleportSpell
 	public boolean canCast()
 	{
 		return spell.canCast();
+	}
+
+	public WorldPoint getPoint()
+	{
+		if (this == TELEPORT_TO_HOUSE)
+		{
+			return House.getOutsideLocation();
+		}
+
+		return point;
 	}
 }

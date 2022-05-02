@@ -7,6 +7,7 @@ import dev.unethicalite.api.input.Keyboard;
 import dev.unethicalite.api.items.Equipment;
 import dev.unethicalite.api.items.Inventory;
 import dev.unethicalite.api.magic.Magic;
+import dev.unethicalite.api.magic.Spell;
 import dev.unethicalite.api.widgets.Dialog;
 import dev.unethicalite.api.widgets.Widgets;
 import net.runelite.api.Item;
@@ -165,13 +166,20 @@ public class TeleportLoader
 				{
 					teleports.add(new Teleport(teleportSpell.getPoint(), 5, () ->
 					{
-						//						if (teleportSpell == TeleportSpell.HOME_TELEPORT_REGULAR
-						//								&& Players.getLocal().isAnimating())
-						//						{
-						//							return;
-						//						}
-
-						Magic.cast(teleportSpell.getSpell());
+						final Spell spell = teleportSpell.getSpell();
+						if (teleportSpell == TeleportSpell.TELEPORT_TO_HOUSE)
+						{
+							// Tele to outside
+							Widget widget = Widgets.get(spell.getWidget());
+							if (widget == null)
+							{
+								return;
+							}
+							widget.interact(1);
+						} else
+						{
+							Magic.cast(spell);
+						}
 					}));
 				}
 			}
