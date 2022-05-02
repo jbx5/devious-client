@@ -87,7 +87,7 @@ public class AStarPathfinder implements PathingAlgorithm
 		}
 
 		LinkedList<WorldPoint> result = new LinkedList<>();
-		WorldPoint node = destination;
+		WorldPoint node = predecessors.getNearestWorldPointTo(destination).orElse(destination);
 		while (node != null)
 		{
 			result.add(0, node);
@@ -131,52 +131,108 @@ public class AStarPathfinder implements PathingAlgorithm
 			//TODO: Add transport costs
 		}
 
-		if (collisionMap.w(position.getX(), position.getY(), position.getPlane()))
+		try
 		{
-			WorldPoint neighbor = position.dx(-1);
-			result.put(neighbor, 1f);
+			if (collisionMap.w(position.getX(), position.getY(), position.getPlane()))
+			{
+				WorldPoint neighbor = position.dx(-1);
+				result.put(neighbor, 1f);
+			}
+		}
+		catch (Exception ignored)
+		{
+
 		}
 
-		if (collisionMap.e(position.getX(), position.getY(), position.getPlane()))
+		try
 		{
-			WorldPoint neighbor = position.dx(1);
-			result.put(neighbor, 1f);
+			if (collisionMap.e(position.getX(), position.getY(), position.getPlane()))
+			{
+				WorldPoint neighbor = position.dx(1);
+				result.put(neighbor, 1f);
+			}
+		}
+		catch (Exception ignored)
+		{
+
 		}
 
-		if (collisionMap.s(position.getX(), position.getY(), position.getPlane()))
+		try
 		{
-			WorldPoint neighbor = position.dy(-1);
-			result.put(neighbor, 1f);
+			if (collisionMap.s(position.getX(), position.getY(), position.getPlane()))
+			{
+				WorldPoint neighbor = position.dy(-1);
+				result.put(neighbor, 1f);
+			}
+		}
+		catch (Exception ignored)
+		{
+
 		}
 
-		if (collisionMap.n(position.getX(), position.getY(), position.getPlane()))
+		try
 		{
-			WorldPoint neighbor = position.dy(1);
-			result.put(neighbor, 1f);
+			if (collisionMap.n(position.getX(), position.getY(), position.getPlane()))
+			{
+				WorldPoint neighbor = position.dy(1);
+				result.put(neighbor, 1f);
+			}
+		}
+		catch (Exception ignored)
+		{
+
 		}
 
-		if (collisionMap.sw(position.getX(), position.getY(), position.getPlane()))
+		try
 		{
-			WorldPoint neighbor = position.dx(-1).dy(-1);
-			result.put(neighbor, 1f);
+			if (collisionMap.sw(position.getX(), position.getY(), position.getPlane()))
+			{
+				WorldPoint neighbor = position.dx(-1).dy(-1);
+				result.put(neighbor, 1f);
+			}
+		}
+		catch (Exception ignored)
+		{
+
 		}
 
-		if (collisionMap.se(position.getX(), position.getY(), position.getPlane()))
+		try
 		{
-			WorldPoint neighbor = position.dx(1).dy(-1);
-			result.put(neighbor, 1f);
+			if (collisionMap.se(position.getX(), position.getY(), position.getPlane()))
+			{
+				WorldPoint neighbor = position.dx(1).dy(-1);
+				result.put(neighbor, 1f);
+			}
+		}
+		catch (Exception ignored)
+		{
+
 		}
 
-		if (collisionMap.nw(position.getX(), position.getY(), position.getPlane()))
+		try
 		{
-			WorldPoint neighbor = position.dx(-1).dy(1);
-			result.put(neighbor, 1f);
+			if (collisionMap.nw(position.getX(), position.getY(), position.getPlane()))
+			{
+				WorldPoint neighbor = position.dx(-1).dy(1);
+				result.put(neighbor, 1f);
+			}
+		}
+		catch (Exception ignored)
+		{
+
 		}
 
-		if (collisionMap.ne(position.getX(), position.getY(), position.getPlane()))
+		try
 		{
-			WorldPoint neighbor = position.dx(1).dy(1);
-			result.put(neighbor, 1f);
+			if (collisionMap.ne(position.getX(), position.getY(), position.getPlane()))
+			{
+				WorldPoint neighbor = position.dx(1).dy(1);
+				result.put(neighbor, 1f);
+			}
+		}
+		catch (Exception ignored)
+		{
+
 		}
 
 		return result;

@@ -2,8 +2,10 @@ package dev.unethicalite.api.movement.pathfinder;
 
 import net.runelite.api.coords.WorldPoint;
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 public class CoordMap
 {
@@ -119,5 +121,10 @@ public class CoordMap
 		}
 
 		return region;
+	}
+
+	public Optional<WorldPoint> getNearestWorldPointTo(WorldPoint destination)
+	{
+		return custom.keySet().stream().min(Comparator.comparing(point -> point.distanceTo2DHypotenuse(destination)));
 	}
 }
