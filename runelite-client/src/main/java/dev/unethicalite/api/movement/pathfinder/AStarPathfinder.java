@@ -18,6 +18,7 @@ public class AStarPathfinder implements PathingAlgorithm
 {
 
 	private static final int MAX_EXPLORATION_FACTOR = 2;
+	private static final long TIMEOUT = 3000;
 	private final CollisionMap collisionMap;
 	private final Map<WorldPoint, List<Transport>> transportCoords;
 	private final List<WorldPoint> startCoords;
@@ -58,8 +59,13 @@ public class AStarPathfinder implements PathingAlgorithm
 			visiting.add(start);
 		}
 
+		long start = System.currentTimeMillis();
 		while (!visiting.isEmpty())
 		{
+			if (System.currentTimeMillis() - start > TIMEOUT)
+			{
+				return null;
+			}
 			final WorldPoint current = visiting.poll();
 			final int distance = distanceMap.get(current);
 			final Map<WorldPoint, Float> neighbours = getNeighbours(current);
