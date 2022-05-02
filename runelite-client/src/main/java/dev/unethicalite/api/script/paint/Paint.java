@@ -1,4 +1,4 @@
-package dev.unethicalite.client.script.paint;
+package dev.unethicalite.api.script.paint;
 
 import dev.unethicalite.client.devtools.EntityRenderer;
 import dev.unethicalite.managers.InputManager;

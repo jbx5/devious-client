@@ -1,4 +1,4 @@
-package dev.unethicalite.client.script.blocking_events;
+package dev.unethicalite.api.script.blocking_events;
 
 import dev.unethicalite.api.entities.NPCs;
 import dev.unethicalite.api.entities.Players;

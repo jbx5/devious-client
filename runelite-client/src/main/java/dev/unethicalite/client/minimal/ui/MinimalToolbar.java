@@ -9,7 +9,7 @@ import dev.unethicalite.client.devtools.EntityRenderer;
 import dev.unethicalite.client.devtools.scriptinspector.ScriptInspector;
 import dev.unethicalite.client.devtools.varinspector.VarInspector;
 import dev.unethicalite.client.devtools.widgetinspector.WidgetInspector;
-import dev.unethicalite.managers.FpsManager;
+import dev.unethicalite.managers.MinimalFpsManager;
 import dev.unethicalite.managers.MinimalPluginManager;
 import dev.unethicalite.managers.interaction.InteractionConfig;
 import dev.unethicalite.client.minimal.plugins.MinimalPluginChanged;
@@ -42,7 +42,7 @@ public class MinimalToolbar extends JMenuBar
 	private final InteractionConfig interactConfig;
 	private final RuneLiteConfig runeLiteConfig;
 	private final Client client;
-	private final FpsManager fpsManager;
+	private final MinimalFpsManager minimalFpsManager;
 
 	private JMenuItem pluginConfig;
 	private JMenuItem stopPlugin;
@@ -58,7 +58,7 @@ public class MinimalToolbar extends JMenuBar
 	public MinimalToolbar(VarInspector varInspector, WidgetInspector widgetInspector, ScriptInspector scriptInspector,
 						  EntityRenderer entityRenderer, MinimalPluginManager minimalPluginManager, MinimalPluginsPanel minimalPluginsPanel,
 						  ConfigManager configManager, EventBus eventBus, MinimalConfig minimalConfig, InteractionConfig interactConfig,
-						  RuneLiteConfig runeLiteConfig, Client client, FpsManager fpsManager)
+						  RuneLiteConfig runeLiteConfig, Client client, MinimalFpsManager minimalFpsManager)
 	{
 		this.varInspector = varInspector;
 		this.widgetInspector = widgetInspector;
@@ -72,7 +72,7 @@ public class MinimalToolbar extends JMenuBar
 		this.interactConfig = interactConfig;
 		this.runeLiteConfig = runeLiteConfig;
 		this.client = client;
-		this.fpsManager = fpsManager;
+		this.minimalFpsManager = minimalFpsManager;
 	}
 
 	public void init()
@@ -305,7 +305,7 @@ public class MinimalToolbar extends JMenuBar
 				break;
 
 			case "fpsLimit":
-				fpsManager.reloadConfig(minimalConfig.fpsLimit());
+				minimalFpsManager.reloadConfig(minimalConfig.fpsLimit());
 				break;
 		}
 

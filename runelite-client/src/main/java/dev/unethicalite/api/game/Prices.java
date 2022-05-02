@@ -3,7 +3,7 @@ package dev.unethicalite.api.game;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
-import dev.unethicalite.managers.Static;
+import dev.unethicalite.client.Static;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

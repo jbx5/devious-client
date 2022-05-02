@@ -1,4 +1,4 @@
-package dev.unethicalite.client.script.paint;
+package dev.unethicalite.api.script.paint;
 
 import dev.unethicalite.api.commons.NumericFormat;
 import dev.unethicalite.api.commons.StopWatch;

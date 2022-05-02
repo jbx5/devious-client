@@ -6,6 +6,7 @@ import dev.unethicalite.api.plugins.Script;
 import dev.unethicalite.api.plugins.SettingsPlugin;
 import dev.unethicalite.api.plugins.Task;
 import dev.unethicalite.api.plugins.TaskPlugin;
+import dev.unethicalite.client.Static;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.EventBus;

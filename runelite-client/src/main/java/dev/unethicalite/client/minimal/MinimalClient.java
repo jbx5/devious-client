@@ -37,9 +37,9 @@ import dev.unethicalite.client.minimal.plugins.PluginEntry;
 import dev.unethicalite.client.minimal.ui.MinimalToolbar;
 import dev.unethicalite.client.minimal.ui.MinimalUI;
 import dev.unethicalite.managers.DefinitionManager;
-import dev.unethicalite.managers.FpsManager;
+import dev.unethicalite.managers.MinimalFpsManager;
 import dev.unethicalite.managers.MinimalPluginManager;
-import dev.unethicalite.managers.Static;
+import dev.unethicalite.client.Static;
 import dev.unethicalite.managers.interaction.InteractionManager;
 import joptsimple.ArgumentAcceptingOptionSpec;
 import joptsimple.OptionParser;
@@ -159,7 +159,7 @@ public class MinimalClient
 	private DrawManager drawManager;
 
 	@Inject
-	private FpsManager fpsManager;
+	private MinimalFpsManager minimalFpsManager;
 
 	@Inject
 	private MinimalConfig minimalConfig;
@@ -333,8 +333,8 @@ public class MinimalClient
 		configManager.load();
 
 		minimalToolbar.init();
-		drawManager.registerEveryFrameListener(fpsManager);
-		fpsManager.reloadConfig(minimalConfig.fpsLimit());
+		drawManager.registerEveryFrameListener(minimalFpsManager);
+		minimalFpsManager.reloadConfig(minimalConfig.fpsLimit());
 		eventBus.register(minimalToolbar);
 		eventBus.register(minimalPluginManager);
 		eventBus.register(interactionManager);
@@ -528,14 +528,14 @@ public class MinimalClient
 
 	private void quickLaunch(OptionSet options)
 	{
+		if (options.has("scriptArgs"))
+		{
+			Static.setScriptArgs(((String) options.valueOf("scriptArgs")).split(","));
+		}
+
 		if (options.has("script"))
 		{
 			String script = (String) options.valueOf("script");
-
-			if (options.has("scriptArgs"))
-			{
-				Static.setScriptArgs(((String) options.valueOf("scriptArgs")).split(","));
-			}
 
 			PluginEntry quickStartScript = minimalPluginManager.loadPlugins()
 					.stream().filter(x -> x.getScriptClass().getAnnotation(PluginDescriptor.class).name().equals(script))

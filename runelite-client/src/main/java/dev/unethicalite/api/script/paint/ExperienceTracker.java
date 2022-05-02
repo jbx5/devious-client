@@ -1,4 +1,4 @@
-package dev.unethicalite.client.script.paint;
+package dev.unethicalite.api.script.paint;
 
 import dev.unethicalite.api.game.Skills;
 import lombok.Value;
