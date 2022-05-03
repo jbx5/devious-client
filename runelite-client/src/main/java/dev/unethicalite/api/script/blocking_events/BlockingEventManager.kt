@@ -1,4 +1,4 @@
-package dev.unethicalite.client.script.blocking_events
+package dev.unethicalite.api.script.blocking_events
 
 class BlockingEventManager {
 

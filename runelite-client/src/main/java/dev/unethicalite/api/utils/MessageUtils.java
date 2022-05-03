@@ -1,6 +1,6 @@
 package dev.unethicalite.api.utils;
 
-import dev.unethicalite.managers.Static;
+import dev.unethicalite.client.Static;
 import net.runelite.api.ChatMessageType;
 import net.runelite.client.chat.ChatColorType;
 import net.runelite.client.chat.ChatMessageBuilder;

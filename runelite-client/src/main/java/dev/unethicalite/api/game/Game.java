@@ -4,7 +4,7 @@ import dev.unethicalite.api.movement.pathfinder.GlobalCollisionMap;
 import dev.unethicalite.api.widgets.Tab;
 import dev.unethicalite.api.widgets.Tabs;
 import dev.unethicalite.api.widgets.Widgets;
-import dev.unethicalite.managers.Static;
+import dev.unethicalite.client.Static;
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
 import net.runelite.api.packets.ClientPacket;
@@ -18,16 +18,19 @@ public class Game
 	private static final int CUTSCENE_VARBIT = 542;
 	private static final String LOGOUT_ACTION = "Logout";
 
+	@Deprecated
 	public static Client getClient()
 	{
 		return Static.getClient();
 	}
 
+	@Deprecated
 	public static ClientPacket getClientPacket()
 	{
 		return Static.getClientPacket();
 	}
 
+	@Deprecated
 	public static GlobalCollisionMap getGlobalCollisionMap()
 	{
 		return Static.getGlobalCollisionMap();

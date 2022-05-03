@@ -1,11 +1,11 @@
 package dev.unethicalite.api.plugins;
 
 import dev.unethicalite.api.game.Game;
-import dev.unethicalite.client.script.blocking_events.BlockingEvent;
-import dev.unethicalite.client.script.blocking_events.BlockingEventManager;
+import dev.unethicalite.api.script.blocking_events.BlockingEvent;
+import dev.unethicalite.api.script.blocking_events.BlockingEventManager;
 import dev.unethicalite.client.minimal.plugins.MinimalPluginChanged;
 import dev.unethicalite.client.minimal.plugins.MinimalPluginState;
-import dev.unethicalite.client.script.paint.Paint;
+import dev.unethicalite.api.script.paint.Paint;
 import lombok.Getter;
 import net.runelite.api.GameState;
 import org.slf4j.Logger;

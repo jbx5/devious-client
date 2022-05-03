@@ -3,7 +3,7 @@ package dev.unethicalite.managers;
 import javax.inject.Singleton;
 
 @Singleton
-public class FpsManager implements Runnable
+public class MinimalFpsManager implements Runnable
 {
 	private static final int SAMPLE_SIZE = 4;
 
