@@ -1,7 +1,6 @@
 package dev.unethicalite.managers;
 
 import dev.unethicalite.api.plugins.LoopedPlugin;
-import dev.unethicalite.api.plugins.Plugins;
 import dev.unethicalite.api.plugins.Script;
 import dev.unethicalite.api.plugins.SettingsPlugin;
 import dev.unethicalite.api.plugins.Task;
@@ -49,13 +48,6 @@ public class LoopedPluginManager
 		{
 			return;
 		}
-
-		if (Plugins.stopPlugin(loopedPlugin))
-		{
-			return;
-		}
-
-		currentLoop.interrupt();
 
 		while (currentLoop.isAlive() || loopedPlugin.isRunning())
 		{

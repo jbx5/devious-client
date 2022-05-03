@@ -32,6 +32,7 @@ public class Plugins
 	{
 		try
 		{
+			getPluginManager().remove(plugin);
 			getPluginManager().setPluginEnabled(plugin, false);
 			return getPluginManager().stopPlugin(plugin);
 		}

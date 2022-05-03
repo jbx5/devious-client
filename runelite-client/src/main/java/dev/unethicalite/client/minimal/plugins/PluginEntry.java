@@ -5,11 +5,14 @@ import lombok.Value;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 
+import java.util.jar.Manifest;
+
 @Value
 public class PluginEntry
 {
 	Class<? extends Plugin> scriptClass;
 	PluginDescriptor meta;
+	Manifest manifest;
 
 	@Override
 	public String toString()

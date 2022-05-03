@@ -32,15 +32,13 @@ import com.google.inject.Inject;
 import com.google.inject.Injector;
 import com.openosrs.client.OpenOSRS;
 import dev.unethicalite.api.account.GameAccount;
+import dev.unethicalite.client.Static;
 import dev.unethicalite.client.minimal.config.MinimalConfig;
 import dev.unethicalite.client.minimal.plugins.PluginEntry;
 import dev.unethicalite.client.minimal.ui.MinimalToolbar;
 import dev.unethicalite.client.minimal.ui.MinimalUI;
-import dev.unethicalite.managers.DefinitionManager;
 import dev.unethicalite.managers.MinimalFpsManager;
 import dev.unethicalite.managers.MinimalPluginManager;
-import dev.unethicalite.client.Static;
-import dev.unethicalite.managers.interaction.InteractionManager;
 import joptsimple.ArgumentAcceptingOptionSpec;
 import joptsimple.OptionParser;
 import joptsimple.OptionSet;
@@ -148,12 +146,6 @@ public class MinimalClient
 
 	@Inject
 	private MinimalPluginManager minimalPluginManager;
-
-	@Inject
-	private InteractionManager interactionManager;
-
-	@Inject
-	private DefinitionManager definitionManager;
 
 	@Inject
 	private DrawManager drawManager;
@@ -337,8 +329,6 @@ public class MinimalClient
 		minimalFpsManager.reloadConfig(minimalConfig.fpsLimit());
 		eventBus.register(minimalToolbar);
 		eventBus.register(minimalPluginManager);
-		eventBus.register(interactionManager);
-		eventBus.register(definitionManager);
 
 		initArgs(options);
 

@@ -127,8 +127,13 @@ public class MinimalPluginManager
 							}
 
 							Class<? extends Plugin> scriptClass = (Class<? extends Plugin>) clazz;
-							plugins.add(new PluginEntry(scriptClass,
-									scriptClass.getAnnotationsByType(PluginDescriptor.class)[0]));
+							plugins.add(
+									new PluginEntry(
+											scriptClass,
+											scriptClass.getAnnotationsByType(PluginDescriptor.class)[0],
+											jar.getManifest()
+									)
+							);
 						}
 						catch (Exception | NoClassDefFoundError e)
 						{
@@ -152,14 +157,13 @@ public class MinimalPluginManager
 		{
 			plugin = pluginManager.loadPlugins(List.of(entry.getScriptClass()), null)
 					.stream().findFirst().orElse(null);
+			log.debug("Loaded plugin: {}", plugin);
 			if (plugin == null || !Plugins.startPlugin(plugin))
 			{
 				return;
 			}
 
 			pluginEntry = entry;
-
-			pluginManager.add(plugin);
 
 			for (Key<?> key : plugin.getInjector().getBindings().keySet())
 			{
@@ -190,7 +194,6 @@ public class MinimalPluginManager
 		}
 
 		client.getCallbacks().post(new MinimalPluginChanged(plugin, MinimalPluginState.STOPPED));
-		pluginManager.remove(plugin);
 		plugin = null;
 		pluginEntry = null;
 		config = null;
