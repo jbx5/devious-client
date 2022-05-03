@@ -2,10 +2,6 @@ package dev.unethicalite.api.movement.pathfinder;
 
 import dev.unethicalite.api.game.Game;
 import dev.unethicalite.api.movement.Reachable;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import net.runelite.api.coords.WorldPoint;
-
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,10 +9,13 @@ import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import net.runelite.api.coords.WorldPoint;
 
 @Slf4j
 @RequiredArgsConstructor
-public class Pathfinder
+public class DFSPathfinder implements PathingAlgorithm
 {
 	private final CollisionMap collisionMap;
 	private final Map<WorldPoint, List<Transport>> transportCoords;
