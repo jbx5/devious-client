@@ -14,6 +14,7 @@ import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.game.ItemManager;
 import net.runelite.client.game.WorldService;
+import net.runelite.client.input.KeyManager;
 import net.runelite.client.plugins.PluginManager;
 
 import javax.inject.Inject;
@@ -65,6 +66,10 @@ public class Static
 	@Inject
 	@Getter
 	private static ConfigManager configManager;
+
+	@Inject
+	@Getter
+	private static KeyManager keyManager;
 
 	@Inject
 	@Getter
