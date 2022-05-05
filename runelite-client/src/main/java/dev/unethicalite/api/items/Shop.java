@@ -132,7 +132,7 @@ public class Shop
 		{
 			if (item.getItemId() == itemId)
 			{
-				String action = item.getActions().stream()
+				String action = Arrays.stream(item.getActions())
 						.filter(x -> x != null && x.contains(String.valueOf(amount)))
 						.findFirst()
 						.orElse(null);

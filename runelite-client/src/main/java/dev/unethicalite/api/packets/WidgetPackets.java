@@ -58,12 +58,7 @@ public class WidgetPackets
 
 	public static void widgetItemAction(net.runelite.api.widgets.WidgetInfo container, net.runelite.api.Item item, java.lang.String action)
 	{
-		var actions = item.getActions();
-		if (actions == null)
-		{
-			return;
-		}
-		var index = actions.indexOf(action);
+		var index = item.getActionIndex(action);
 		widgetItemAction(container, item, index);
 	}
 
@@ -109,12 +104,7 @@ public class WidgetPackets
 
 	public static void widgetAction(Widget widget, String action)
 	{
-		var actions = widget.getActions();
-		if (actions == null)
-		{
-			return;
-		}
-		var index = actions.indexOf(action);
+		var index = widget.getActionIndex(action);
 		switch (index)
 		{
 			case 0:

@@ -97,7 +97,7 @@ public abstract class TileObjectQuery<EntityType extends TileObject, QueryType> 
 		{
 			for (String action : actions)
 			{
-				List<String> objectActions = object.getActions();
+				String[] objectActions = object.getActions();
 				for (String objectAction : objectActions)
 				{
 					if (objectAction != null && objectAction.equals(action))

@@ -1,7 +1,6 @@
 package dev.unethicalite.api.packets;
 
 import dev.unethicalite.api.game.Game;
-import java.util.List;
 import net.runelite.api.TileItem;
 import net.runelite.api.packets.PacketBufferNode;
 
@@ -34,8 +33,7 @@ public class GroundItemPackets
 
 	public static void groundItemAction(TileItem item, String action, boolean ctrlDown)
 	{
-		List<String> actions = item.getActions();
-		int index = actions.indexOf(action);
+		int index = item.getActionIndex(action);
 		switch (index)
 		{
 			case 0:

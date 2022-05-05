@@ -34,8 +34,7 @@ public class NPCPackets
 
 	public static void npcAction(NPC npc, String action, boolean ctrlDown)
 	{
-		List<String> actions = npc.getActions();
-		int index = actions.indexOf(action);
+		int index = npc.getActionIndex(action);
 		switch (index)
 		{
 			case 0:

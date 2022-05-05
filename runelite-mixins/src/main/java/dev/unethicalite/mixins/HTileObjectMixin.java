@@ -19,6 +19,8 @@ import net.runelite.rs.api.RSItemLayer;
 import net.runelite.rs.api.RSObjectComposition;
 import net.runelite.rs.api.RSWallDecoration;
 
+import java.util.Arrays;
+
 @Mixins({
 		@Mixin(RSWallDecoration.class),
 		@Mixin(RSGameObject.class),
@@ -54,10 +56,10 @@ public abstract class HTileObjectMixin implements TileObject
 
 	@Inject
 	@Override
-	public String[] getRawActions()
+	public String[] getActions()
 	{
 		RSObjectComposition def = (RSObjectComposition) getTransformedComposition();
-		return def == null ? null : def.getActions();
+		return def == null ? null : Arrays.stream(def.getActions()).map(Text::removeTags).toArray(String[]::new);
 	}
 
 	@Override

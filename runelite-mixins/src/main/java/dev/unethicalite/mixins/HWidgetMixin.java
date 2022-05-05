@@ -8,9 +8,12 @@ import net.runelite.api.mixins.FieldHook;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Shadow;
+import net.runelite.api.util.Text;
 import net.runelite.api.widgets.WidgetType;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSWidget;
+
+import java.util.Arrays;
 
 @Mixin(RSWidget.class)
 public abstract class HWidgetMixin implements RSWidget
@@ -99,6 +102,13 @@ public abstract class HWidgetMixin implements RSWidget
 	public void setVisible(boolean visible)
 	{
 		this.visible = visible;
+	}
+
+	@Override
+	@Inject
+	public String[] getActions()
+	{
+		return Arrays.stream(getRawActions()).map(Text::removeTags).toArray(String[]::new);
 	}
 
 	@Inject

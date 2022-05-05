@@ -11,6 +11,8 @@ import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSNPC;
 import net.runelite.rs.api.RSNPCComposition;
 
+import java.util.Arrays;
+
 @Mixin(RSNPC.class)
 public abstract class HNpcMixin implements RSNPC
 {
@@ -46,10 +48,11 @@ public abstract class HNpcMixin implements RSNPC
 
 	@Inject
 	@Override
-	public String[] getRawActions()
+	public String[] getActions()
 	{
 		RSNPCComposition composition = getTransformedComposition();
-		return composition == null ? null : composition.getActions();
+		return composition == null ? null :
+				Arrays.stream(composition.getActions()).map(Text::removeTags).toArray(String[]::new);
 	}
 
 	@Override
