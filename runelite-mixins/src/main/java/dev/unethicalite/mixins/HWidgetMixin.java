@@ -13,8 +13,6 @@ import net.runelite.api.widgets.WidgetType;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSWidget;
 
-import java.util.Arrays;
-
 @Mixin(RSWidget.class)
 public abstract class HWidgetMixin implements RSWidget
 {
@@ -108,7 +106,19 @@ public abstract class HWidgetMixin implements RSWidget
 	@Inject
 	public String[] getActions()
 	{
-		return Arrays.stream(getRawActions()).map(Text::removeTags).toArray(String[]::new);
+		String[] rawActions = getRawActions();
+		if (rawActions == null)
+		{
+			return null;
+		}
+
+		String[] sanitized = new String[rawActions.length];
+		for (int i = 0; i < rawActions.length; i++)
+		{
+			sanitized[i] = Text.removeTags(Text.sanitize(rawActions[i]));
+		}
+
+		return sanitized;
 	}
 
 	@Inject

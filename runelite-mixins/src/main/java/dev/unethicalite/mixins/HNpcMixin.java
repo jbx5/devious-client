@@ -51,8 +51,18 @@ public abstract class HNpcMixin implements RSNPC
 	public String[] getActions()
 	{
 		RSNPCComposition composition = getTransformedComposition();
-		return composition == null ? null :
-				Arrays.stream(composition.getActions()).map(Text::removeTags).toArray(String[]::new);
+		if (composition == null)
+		{
+			return null;
+		}
+
+		String[] sanitized = new String[composition.getActions().length];
+		for (int i = 0; i < composition.getActions().length; i++)
+		{
+			sanitized[i] = Text.removeTags(Text.sanitize(composition.getActions()[i]));
+		}
+
+		return sanitized;
 	}
 
 	@Override

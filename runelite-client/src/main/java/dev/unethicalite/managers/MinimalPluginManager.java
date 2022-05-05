@@ -137,7 +137,7 @@ public class MinimalPluginManager
 						}
 						catch (Exception | NoClassDefFoundError e)
 						{
-							log.error("Failed to load class: " + name, e.getMessage());
+							log.error("Failed to load class: {}", name, e);
 						}
 					}
 				}

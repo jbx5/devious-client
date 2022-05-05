@@ -10,8 +10,6 @@ import net.runelite.api.util.Text;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSTileItem;
 
-import java.util.Arrays;
-
 @Mixin(RSTileItem.class)
 public abstract class HTileItemMixin implements RSTileItem
 {
@@ -50,7 +48,14 @@ public abstract class HTileItemMixin implements RSTileItem
 	@Override
 	public String[] getActions()
 	{
-		return Arrays.stream(getComposition().getGroundActions()).map(Text::removeTags).toArray(String[]::new);
+		String[] actions = getComposition().getGroundActions();
+		String[] sanitized = new String[actions.length];
+		for (int i = 0; i < actions.length; i++)
+		{
+			sanitized[i] = Text.removeTags(Text.sanitize(actions[i]));
+		}
+
+		return sanitized;
 	}
 
 	@Inject

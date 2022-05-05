@@ -10,8 +10,6 @@ import net.runelite.mixins.RSPlayerMixin;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSPlayer;
 
-import java.util.Arrays;
-
 @Mixin(RSPlayer.class)
 public abstract class HPlayerMixin extends RSPlayerMixin implements RSPlayer
 {
@@ -65,7 +63,13 @@ public abstract class HPlayerMixin extends RSPlayerMixin implements RSPlayer
 	@Override
 	public String[] getActions()
 	{
-		return Arrays.stream(client.getPlayerOptions()).map(Text::removeTags).toArray(String[]::new);
+		String[] sanitized = new String[client.getPlayerOptions().length];
+		for (int i = 0; i < sanitized.length; i++)
+		{
+			sanitized[i] = Text.removeTags(Text.sanitize(client.getPlayerOptions()[i]));
+		}
+
+		return sanitized;
 	}
 
 	@Override
