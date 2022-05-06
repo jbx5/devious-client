@@ -115,7 +115,7 @@ public abstract class HWidgetMixin implements RSWidget
 		String[] sanitized = new String[rawActions.length];
 		for (int i = 0; i < rawActions.length; i++)
 		{
-			sanitized[i] = Text.removeTags(Text.sanitize(rawActions[i]));
+			sanitized[i] = Text.standardize(rawActions[i]);
 		}
 
 		return sanitized;

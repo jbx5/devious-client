@@ -66,7 +66,7 @@ public abstract class HPlayerMixin extends RSPlayerMixin implements RSPlayer
 		String[] sanitized = new String[client.getPlayerOptions().length];
 		for (int i = 0; i < sanitized.length; i++)
 		{
-			sanitized[i] = Text.removeTags(Text.sanitize(client.getPlayerOptions()[i]));
+			sanitized[i] = Text.standardize(client.getPlayerOptions()[i]);
 		}
 
 		return sanitized;

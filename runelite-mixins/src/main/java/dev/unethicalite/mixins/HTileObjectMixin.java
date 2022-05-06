@@ -65,7 +65,7 @@ public abstract class HTileObjectMixin implements TileObject
 		String[] sanitized = new String[def.getActions().length];
 		for (int i = 0; i < sanitized.length; i++)
 		{
-			sanitized[i] = Text.removeTags(Text.sanitize(def.getActions()[i]));
+			sanitized[i] = Text.standardize(def.getActions()[i]);
 		}
 
 		return sanitized;

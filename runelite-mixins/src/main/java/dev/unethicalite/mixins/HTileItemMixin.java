@@ -52,7 +52,7 @@ public abstract class HTileItemMixin implements RSTileItem
 		String[] sanitized = new String[actions.length];
 		for (int i = 0; i < actions.length; i++)
 		{
-			sanitized[i] = Text.removeTags(Text.sanitize(actions[i]));
+			sanitized[i] = Text.standardize(actions[i]);
 		}
 
 		return sanitized;

@@ -57,7 +57,7 @@ public abstract class HNpcMixin implements RSNPC
 		String[] sanitized = new String[composition.getActions().length];
 		for (int i = 0; i < composition.getActions().length; i++)
 		{
-			sanitized[i] = Text.removeTags(Text.sanitize(composition.getActions()[i]));
+			sanitized[i] = Text.standardize(composition.getActions()[i]);
 		}
 
 		return sanitized;
