@@ -518,11 +518,6 @@ public class MinimalClient
 
 	private void quickLaunch(OptionSet options)
 	{
-		if (options.has("scriptArgs"))
-		{
-			Static.setScriptArgs(((String) options.valueOf("scriptArgs")).split(","));
-		}
-
 		if (options.has("script"))
 		{
 			String script = (String) options.valueOf("script");
@@ -593,6 +588,11 @@ public class MinimalClient
 			}
 
 			MinimalClient.gameAccount = gameAccount;
+		}
+
+		if (options.has("scriptArgs"))
+		{
+			Static.setScriptArgs(((String) options.valueOf("scriptArgs")).split(","));
 		}
 
 		if (options.has("cache-dir"))

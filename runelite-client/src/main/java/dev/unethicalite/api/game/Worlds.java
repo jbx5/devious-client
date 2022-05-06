@@ -101,6 +101,11 @@ public class Worlds
 	public static World getRandom(Predicate<World> filter)
 	{
 		List<World> all = getAll(filter);
+		if (all.isEmpty())
+		{
+			return null;
+		}
+
 		return all.get(Rand.nextInt(0, all.size()));
 	}
 
