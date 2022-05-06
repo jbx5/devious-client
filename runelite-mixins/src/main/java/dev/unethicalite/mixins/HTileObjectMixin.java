@@ -54,10 +54,21 @@ public abstract class HTileObjectMixin implements TileObject
 
 	@Inject
 	@Override
-	public String[] getRawActions()
+	public String[] getActions()
 	{
 		RSObjectComposition def = (RSObjectComposition) getTransformedComposition();
-		return def == null ? null : def.getActions();
+		if (def == null)
+		{
+			return null;
+		}
+
+		String[] sanitized = new String[def.getActions().length];
+		for (int i = 0; i < sanitized.length; i++)
+		{
+			sanitized[i] = Text.removeTags(Text.sanitize(def.getActions()[i]));
+		}
+
+		return sanitized;
 	}
 
 	@Override

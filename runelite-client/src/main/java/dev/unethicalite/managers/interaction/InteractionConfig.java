@@ -48,7 +48,7 @@ public interface InteractionConfig extends Config
 	)
 	default boolean disableMouse()
 	{
-		return true;
+		return false;
 	}
 
 	@ConfigItem(

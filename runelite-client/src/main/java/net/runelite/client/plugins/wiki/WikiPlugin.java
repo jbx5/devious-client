@@ -403,7 +403,7 @@ public class WikiPlugin extends Plugin
 				return;
 			}
 
-			String action = Stream.of(w.getRawActions())
+			String action = Stream.of(w.getActions())
 				.filter(s -> s != null && !s.isEmpty())
 				.findFirst().orElse(null);
 			if (action == null)

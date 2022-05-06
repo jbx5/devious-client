@@ -26,6 +26,7 @@ import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.Objects;
@@ -228,7 +229,7 @@ public class AddTransportDialog extends JFrame
 			}
 
 			SceneEntity transport = entities.stream().filter(o -> o.getActions() != null
-							&& o.getActions().stream().anyMatch(Objects::nonNull))
+							&& o.hasAction(Objects::nonNull))
 					.findFirst().orElse(null);
 			if (transport == null)
 			{
@@ -238,7 +239,7 @@ public class AddTransportDialog extends JFrame
 			objNameText.setText(transport.getName());
 			objIdText.setText(String.valueOf(transport.getId()));
 
-			transport.getActions().stream().filter(Objects::nonNull).findFirst().ifPresent(actionText::setText);
+			Arrays.stream(transport.getActions()).filter(Objects::nonNull).findFirst().ifPresent(actionText::setText);
 		}
 	}
 }

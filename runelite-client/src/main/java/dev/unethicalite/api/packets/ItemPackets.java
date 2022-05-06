@@ -1,6 +1,5 @@
 package dev.unethicalite.api.packets;
 
-import java.util.List;
 import net.runelite.api.InventoryID;
 import net.runelite.api.Item;
 import net.runelite.api.packets.PacketBufferNode;
@@ -10,8 +9,7 @@ public class ItemPackets
 {
 	public static void itemAction(Item item, String action)
 	{
-		List<String> actions = item.getActions();
-		int index = actions.indexOf(action);
+		int index = item.getActionIndex(action);
 		switch (index)
 		{
 			case 0:

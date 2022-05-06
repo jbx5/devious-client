@@ -633,7 +633,7 @@ public class EntityRenderer
 
 			if (actions)
 			{
-				sb.append("Actions: ").append(Arrays.toString(interactable.getRawActions())).append("</br>");
+				sb.append("Actions: ").append(Arrays.toString(interactable.getActions())).append("</br>");
 			}
 
 			if (worldLocations)
@@ -660,7 +660,7 @@ public class EntityRenderer
 
 			if (actions)
 			{
-				sb.append("Actions: ").append(Arrays.toString(interactable.getRawActions())).append("</br>");
+				sb.append("Actions: ").append(Arrays.toString(interactable.getActions())).append("</br>");
 			}
 
 			if (worldLocations)
@@ -684,7 +684,7 @@ public class EntityRenderer
 
 			if (actions)
 			{
-				sb.append("Actions: ").append(Arrays.toString(interactable.getRawActions())).append("</br>");
+				sb.append("Actions: ").append(Arrays.toString(interactable.getActions())).append("</br>");
 			}
 
 			if (worldLocations)

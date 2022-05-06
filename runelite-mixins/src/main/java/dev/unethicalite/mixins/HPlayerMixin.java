@@ -5,6 +5,7 @@ import net.runelite.api.MenuAction;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Shadow;
+import net.runelite.api.util.Text;
 import net.runelite.mixins.RSPlayerMixin;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSPlayer;
@@ -60,9 +61,15 @@ public abstract class HPlayerMixin extends RSPlayerMixin implements RSPlayer
 
 	@Inject
 	@Override
-	public String[] getRawActions()
+	public String[] getActions()
 	{
-		return client.getPlayerOptions();
+		String[] sanitized = new String[client.getPlayerOptions().length];
+		for (int i = 0; i < sanitized.length; i++)
+		{
+			sanitized[i] = Text.removeTags(Text.sanitize(client.getPlayerOptions()[i]));
+		}
+
+		return sanitized;
 	}
 
 	@Override

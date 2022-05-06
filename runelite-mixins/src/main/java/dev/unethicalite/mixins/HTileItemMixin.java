@@ -46,9 +46,16 @@ public abstract class HTileItemMixin implements RSTileItem
 
 	@Inject
 	@Override
-	public String[] getRawActions()
+	public String[] getActions()
 	{
-		return getComposition().getGroundActions();
+		String[] actions = getComposition().getGroundActions();
+		String[] sanitized = new String[actions.length];
+		for (int i = 0; i < actions.length; i++)
+		{
+			sanitized[i] = Text.removeTags(Text.sanitize(actions[i]));
+		}
+
+		return sanitized;
 	}
 
 	@Inject

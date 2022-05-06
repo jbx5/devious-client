@@ -1,7 +1,6 @@
 package dev.unethicalite.api.packets;
 
 import dev.unethicalite.api.game.Game;
-import java.util.List;
 import net.runelite.api.NPC;
 import net.runelite.api.packets.PacketBufferNode;
 
@@ -34,8 +33,7 @@ public class NPCPackets
 
 	public static void npcAction(NPC npc, String action, boolean ctrlDown)
 	{
-		List<String> actions = npc.getActions();
-		int index = actions.indexOf(action);
+		int index = npc.getActionIndex(action);
 		switch (index)
 		{
 			case 0:

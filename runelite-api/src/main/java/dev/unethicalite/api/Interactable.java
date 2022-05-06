@@ -3,35 +3,36 @@ package dev.unethicalite.api;
 import dev.unethicalite.api.events.MenuAutomated;
 import net.runelite.api.MenuAction;
 import net.runelite.api.Point;
-import net.runelite.api.util.Text;
 
 import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 public interface Interactable
 {
 	Point getClickPoint();
 
-	String[] getRawActions();
+	String[] getActions();
 
 	int getActionOpcode(int action);
 
-	default List<String> getActions()
-	{
-		if (getRawActions() == null)
-		{
-			return null;
-		}
+	MenuAutomated getMenu(int actionIndex);
 
-		return Arrays.stream(getRawActions()).map(Text::removeTags).collect(Collectors.toList());
+	MenuAutomated getMenu(int actionIndex, int opcode);
+
+	void interact(int index);
+
+	void interact(int index, int opcode);
+
+	void interact(int identifier, int opcode, int param0, int param1);
+
+	default int getActionIndex(String action)
+	{
+		return Arrays.asList(getActions()).indexOf(action);
 	}
 
 	default void interact(Predicate<String> predicate)
 	{
-		String[] raw = getRawActions();
+		String[] raw = getActions();
 		if (raw == null)
 		{
 			return;
@@ -54,7 +55,7 @@ public interface Interactable
 			return;
 		}
 
-		int index = getActions().indexOf(action);
+		int index = getActionIndex(action);
 		if (index == -1)
 		{
 			return;
@@ -63,36 +64,26 @@ public interface Interactable
 		interact(index);
 	}
 
-	void interact(int index);
-
-	void interact(int index, int opcode);
-
-	void interact(int identifier, int opcode, int param0, int param1);
-
-	default boolean hasAction(String... actions)
+	default boolean hasAction(Predicate<String> filter)
 	{
-		String[] raw = getRawActions();
+		String[] raw = getActions();
 		if (raw == null)
 		{
 			return false;
 		}
 
-		if (actions.length == 0)
-		{
-			return Arrays.stream(raw).anyMatch(Objects::nonNull);
-		}
+		return Arrays.stream(raw).anyMatch(filter);
+	}
 
-		return Arrays.stream(actions).anyMatch(x -> getActions().contains(x));
+	default boolean hasAction(String... actions)
+	{
+		return Arrays.stream(actions).anyMatch(this::hasAction);
 	}
 
 	default MenuAutomated getMenu(String action)
 	{
-		return getMenu(getActions().indexOf(action));
+		return getMenu(getActionIndex(action));
 	}
-
-	MenuAutomated getMenu(int actionIndex);
-
-	MenuAutomated getMenu(int actionIndex, int opcode);
 
 	default MenuAutomated getMenu(int identifier, int opcode, int param0, int param1)
 	{

@@ -52,8 +52,7 @@ public class ObjectPackets
 
 	public static void tileObjectAction(TileObject object, java.lang.String action, boolean ctrlDown)
 	{
-		java.util.List<java.lang.String> actions = object.getActions();
-		int index = actions.indexOf(action);
+		int index = object.getActionIndex(action);
 		switch (index)
 		{
 			case 0:
