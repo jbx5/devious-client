@@ -11,8 +11,6 @@ import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSNPC;
 import net.runelite.rs.api.RSNPCComposition;
 
-import java.util.Arrays;
-
 @Mixin(RSNPC.class)
 public abstract class HNpcMixin implements RSNPC
 {

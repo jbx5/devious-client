@@ -1,7 +1,6 @@
 package dev.unethicalite.api.packets;
 
 import dev.unethicalite.api.game.Game;
-import java.util.List;
 import net.runelite.api.NPC;
 import net.runelite.api.packets.PacketBufferNode;
 
