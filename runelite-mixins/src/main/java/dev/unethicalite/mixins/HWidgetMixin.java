@@ -2,13 +2,13 @@ package dev.unethicalite.mixins;
 
 import dev.unethicalite.api.events.MenuAutomated;
 import dev.unethicalite.api.util.Randomizer;
+import dev.unethicalite.api.util.Text;
 import net.runelite.api.MenuAction;
 import net.runelite.api.Point;
 import net.runelite.api.mixins.FieldHook;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Shadow;
-import net.runelite.api.util.Text;
 import net.runelite.api.widgets.WidgetType;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSWidget;
@@ -115,7 +115,7 @@ public abstract class HWidgetMixin implements RSWidget
 		String[] sanitized = new String[rawActions.length];
 		for (int i = 0; i < rawActions.length; i++)
 		{
-			sanitized[i] = Text.standardize(rawActions[i]);
+			sanitized[i] = Text.sanitize(rawActions[i]);
 		}
 
 		return sanitized;

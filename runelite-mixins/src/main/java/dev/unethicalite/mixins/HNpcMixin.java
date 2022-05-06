@@ -1,12 +1,12 @@
 package dev.unethicalite.mixins;
 
 import dev.unethicalite.api.events.MenuAutomated;
+import dev.unethicalite.api.util.Text;
 import net.runelite.api.MenuAction;
 import net.runelite.api.NPCComposition;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Shadow;
-import net.runelite.api.util.Text;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSNPC;
 import net.runelite.rs.api.RSNPCComposition;
@@ -33,7 +33,7 @@ public abstract class HNpcMixin implements RSNPC
 	public String getName()
 	{
 		RSNPCComposition composition = getTransformedComposition();
-		return composition == null ? "null" : Text.removeTags(Text.sanitize(composition.getName()));
+		return composition == null ? "null" : Text.sanitize(composition.getName());
 	}
 
 	@Inject
@@ -57,7 +57,7 @@ public abstract class HNpcMixin implements RSNPC
 		String[] sanitized = new String[composition.getActions().length];
 		for (int i = 0; i < composition.getActions().length; i++)
 		{
-			sanitized[i] = Text.standardize(composition.getActions()[i]);
+			sanitized[i] = Text.sanitize(composition.getActions()[i]);
 		}
 
 		return sanitized;

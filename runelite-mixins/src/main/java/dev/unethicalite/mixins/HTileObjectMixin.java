@@ -2,6 +2,7 @@ package dev.unethicalite.mixins;
 
 import dev.unethicalite.api.events.MenuAutomated;
 import dev.unethicalite.api.util.Randomizer;
+import dev.unethicalite.api.util.Text;
 import net.runelite.api.GameObject;
 import net.runelite.api.MenuAction;
 import net.runelite.api.Point;
@@ -10,7 +11,6 @@ import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Mixins;
 import net.runelite.api.mixins.Shadow;
-import net.runelite.api.util.Text;
 import net.runelite.rs.api.RSBoundaryObject;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSFloorDecoration;
@@ -49,7 +49,7 @@ public abstract class HTileObjectMixin implements TileObject
 	public String getName()
 	{
 		RSObjectComposition def = (RSObjectComposition) getTransformedComposition();
-		return def == null ? "null" : Text.removeTags(Text.sanitize(def.getName()));
+		return def == null ? "null" : Text.sanitize(def.getName());
 	}
 
 	@Inject
@@ -65,7 +65,7 @@ public abstract class HTileObjectMixin implements TileObject
 		String[] sanitized = new String[def.getActions().length];
 		for (int i = 0; i < sanitized.length; i++)
 		{
-			sanitized[i] = Text.standardize(def.getActions()[i]);
+			sanitized[i] = dev.unethicalite.api.util.Text.sanitize(def.getActions()[i]);
 		}
 
 		return sanitized;

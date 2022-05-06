@@ -1,12 +1,12 @@
 package dev.unethicalite.mixins;
 
 import dev.unethicalite.api.events.MenuAutomated;
+import dev.unethicalite.api.util.Text;
 import net.runelite.api.ItemComposition;
 import net.runelite.api.MenuAction;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Shadow;
-import net.runelite.api.util.Text;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSTileItem;
 
@@ -52,7 +52,7 @@ public abstract class HTileItemMixin implements RSTileItem
 		String[] sanitized = new String[actions.length];
 		for (int i = 0; i < actions.length; i++)
 		{
-			sanitized[i] = Text.standardize(actions[i]);
+			sanitized[i] = Text.sanitize(actions[i]);
 		}
 
 		return sanitized;
@@ -90,7 +90,7 @@ public abstract class HTileItemMixin implements RSTileItem
 			return "null";
 		}
 
-		return Text.removeTags(Text.sanitize(name));
+		return Text.sanitize(name);
 	}
 
 	@Inject
