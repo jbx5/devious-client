@@ -1,9 +1,11 @@
 package dev.unethicalite.api.items;
 
 import dev.unethicalite.api.commons.Predicates;
-import dev.unethicalite.api.game.Game;
 import dev.unethicalite.api.game.GameThread;
+import dev.unethicalite.client.Static;
+import lombok.Getter;
 import net.runelite.api.Client;
+import net.runelite.api.InventoryID;
 import net.runelite.api.Item;
 
 import java.util.Arrays;
@@ -13,6 +15,14 @@ import java.util.stream.Collectors;
 
 public abstract class Items
 {
+	@Getter
+	private final InventoryID inventoryID;
+
+	protected Items(InventoryID inventoryID)
+	{
+		this.inventoryID = inventoryID;
+	}
+
 	protected abstract List<Item> all(Predicate<Item> filter);
 
 	protected List<Item> all(String... names)
@@ -72,13 +82,14 @@ public abstract class Items
 
 	protected void cacheUncachedItems(Item[] items)
 	{
-		Client client = Game.getClient();
+		Client client = Static.getClient();
 		List<Item> uncachedItems = Arrays.stream(items)
 				.filter(i -> !client.isItemDefinitionCached(i.getId()))
 				.collect(Collectors.toList());
 		if (!uncachedItems.isEmpty())
 		{
-			GameThread.invokeLater(() -> {
+			GameThread.invokeLater(() ->
+			{
 				for (Item uncachedItem : uncachedItems)
 				{
 					int id = uncachedItem.getId();

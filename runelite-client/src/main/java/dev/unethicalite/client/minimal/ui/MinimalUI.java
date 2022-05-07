@@ -25,7 +25,7 @@
 package dev.unethicalite.client.minimal.ui;
 
 import com.google.common.base.Strings;
-import dev.unethicalite.client.minimal.config.MinimalConfig;
+import dev.unethicalite.client.config.UnethicaliteConfig;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
@@ -104,7 +104,7 @@ public class MinimalUI
 	private MinimalToolbar minimalToolbar;
 
 	@Inject
-	private MinimalConfig minimalConfig;
+	private UnethicaliteConfig minimalConfig;
 
 	@Inject
 	private MinimalUI(

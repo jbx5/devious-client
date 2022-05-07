@@ -4,8 +4,8 @@ import com.google.inject.Key;
 import dev.unethicalite.api.input.Keyboard;
 import dev.unethicalite.api.plugins.Plugins;
 import dev.unethicalite.api.plugins.Script;
+import dev.unethicalite.client.config.UnethicaliteConfig;
 import dev.unethicalite.client.minimal.MinimalClient;
-import dev.unethicalite.client.minimal.config.MinimalConfig;
 import dev.unethicalite.client.minimal.plugins.MinimalClassLoader;
 import dev.unethicalite.client.minimal.plugins.MinimalPluginChanged;
 import dev.unethicalite.client.minimal.plugins.MinimalPluginState;
@@ -48,7 +48,7 @@ public class MinimalPluginManager
 	private static final File PLUGINS_DIR = new File(MinimalClient.CLIENT_DIR, "plugins");
 
 	@Inject
-	private MinimalConfig minimalConfig;
+	private UnethicaliteConfig minimalConfig;
 
 	@Inject
 	private ExecutorService executorService;

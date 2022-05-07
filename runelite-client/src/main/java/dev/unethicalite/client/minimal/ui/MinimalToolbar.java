@@ -1,19 +1,18 @@
 package dev.unethicalite.client.minimal.ui;
 
 import dev.unethicalite.api.plugins.Script;
-import dev.unethicalite.client.minimal.config.MinimalConfig;
-import dev.unethicalite.client.minimal.config.ConfigPanel;
-import dev.unethicalite.client.minimal.config.ConfigurationDescriptor;
-import dev.unethicalite.client.minimal.config.DisableRenderCallbacks;
 import dev.unethicalite.client.devtools.EntityRenderer;
 import dev.unethicalite.client.devtools.scriptinspector.ScriptInspector;
 import dev.unethicalite.client.devtools.varinspector.VarInspector;
 import dev.unethicalite.client.devtools.widgetinspector.WidgetInspector;
-import dev.unethicalite.managers.MinimalFpsManager;
-import dev.unethicalite.managers.MinimalPluginManager;
-import dev.unethicalite.managers.interaction.InteractionConfig;
+import dev.unethicalite.client.minimal.config.ConfigPanel;
+import dev.unethicalite.client.minimal.config.ConfigurationDescriptor;
+import dev.unethicalite.client.minimal.config.DisableRenderCallbacks;
+import dev.unethicalite.client.config.UnethicaliteConfig;
 import dev.unethicalite.client.minimal.plugins.MinimalPluginChanged;
 import dev.unethicalite.client.minimal.plugins.MinimalPluginState;
+import dev.unethicalite.managers.MinimalFpsManager;
+import dev.unethicalite.managers.MinimalPluginManager;
 import net.runelite.api.Client;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.config.RuneLiteConfig;
@@ -38,8 +37,7 @@ public class MinimalToolbar extends JMenuBar
 	private final MinimalPluginsPanel minimalPluginsPanel;
 	private final ConfigManager configManager;
 	private final EventBus eventBus;
-	private final MinimalConfig minimalConfig;
-	private final InteractionConfig interactConfig;
+	private final UnethicaliteConfig unethicaliteConfig;
 	private final RuneLiteConfig runeLiteConfig;
 	private final Client client;
 	private final MinimalFpsManager minimalFpsManager;
@@ -50,14 +48,13 @@ public class MinimalToolbar extends JMenuBar
 	private JMenuItem restartPlugin;
 	private JRadioButton rendering;
 
-	private ConfigPanel botConfigPanel;
-	private ConfigPanel interactConfigPanel;
+	private ConfigPanel unethicaliteConfigPanel;
 	private ConfigPanel clientConfigPanel;
 
 	@Inject
 	public MinimalToolbar(VarInspector varInspector, WidgetInspector widgetInspector, ScriptInspector scriptInspector,
 						  EntityRenderer entityRenderer, MinimalPluginManager minimalPluginManager, MinimalPluginsPanel minimalPluginsPanel,
-						  ConfigManager configManager, EventBus eventBus, MinimalConfig minimalConfig, InteractionConfig interactConfig,
+						  ConfigManager configManager, EventBus eventBus, UnethicaliteConfig unethicaliteConfig,
 						  RuneLiteConfig runeLiteConfig, Client client, MinimalFpsManager minimalFpsManager)
 	{
 		this.varInspector = varInspector;
@@ -68,8 +65,7 @@ public class MinimalToolbar extends JMenuBar
 		this.minimalPluginsPanel = minimalPluginsPanel;
 		this.configManager = configManager;
 		this.eventBus = eventBus;
-		this.minimalConfig = minimalConfig;
-		this.interactConfig = interactConfig;
+		this.unethicaliteConfig = unethicaliteConfig;
 		this.runeLiteConfig = runeLiteConfig;
 		this.client = client;
 		this.minimalFpsManager = minimalFpsManager;
@@ -77,25 +73,16 @@ public class MinimalToolbar extends JMenuBar
 
 	public void init()
 	{
-		configManager.setDefaultConfiguration(minimalConfig, false);
-		configManager.setDefaultConfiguration(interactConfig, false);
+		configManager.setDefaultConfiguration(unethicaliteConfig, false);
 		configManager.setDefaultConfiguration(runeLiteConfig, false);
 
 		ConfigurationDescriptor minimal = new ConfigurationDescriptor(
 				"Unethicalite",
 				"Unethicalite settings",
-				configManager.getConfigDescriptor(minimalConfig)
+				configManager.getConfigDescriptor(unethicaliteConfig)
 		);
-		botConfigPanel = new ConfigPanel(configManager, eventBus, minimal, client);
-		botConfigPanel.init();
-
-		ConfigurationDescriptor interact = new ConfigurationDescriptor(
-				"Interact",
-				"Interact settings",
-				configManager.getConfigDescriptor(interactConfig)
-		);
-		interactConfigPanel = new ConfigPanel(configManager, eventBus, interact, client);
-		interactConfigPanel.init();
+		unethicaliteConfigPanel = new ConfigPanel(configManager, eventBus, minimal, client);
+		unethicaliteConfigPanel.init();
 
 		ConfigurationDescriptor cl = new ConfigurationDescriptor(
 				"Client",
@@ -119,16 +106,9 @@ public class MinimalToolbar extends JMenuBar
 			JMenuItem botSettings = new JMenuItem("Unethicalite Settings");
 			botSettings.addActionListener(e ->
 			{
-				botConfigPanel.open();
+				unethicaliteConfigPanel.open();
 			});
 			settingsMenu.add(botSettings);
-
-			JMenuItem interactSettings = new JMenuItem("Interact Settings");
-			interactSettings.addActionListener(e ->
-			{
-				interactConfigPanel.open();
-			});
-			settingsMenu.add(interactSettings);
 
 			JMenuItem clientSettings = new JMenuItem("Client Settings");
 			clientSettings.addActionListener(e ->
@@ -139,22 +119,23 @@ public class MinimalToolbar extends JMenuBar
 			add(settingsMenu);
 
 			rendering = new JRadioButton("Toggle rendering");
-			rendering.addActionListener(e -> configManager.setConfiguration("unethicalite-minimal", "renderOff",
+			rendering.addActionListener(e -> configManager.setConfiguration("unethicalite", "renderOff",
 					rendering.isSelected()));
 			JMenu debug = new JMenu("Debug");
-			rendering.setSelected(configManager.getConfiguration("unethicalite-minimal", "renderOff", Boolean.class));
+			rendering.setSelected(configManager.getConfiguration("unethicalite", "renderOff", Boolean.class));
 			add(rendering);
 
 			JRadioButton mouseDebug = new JRadioButton("Mouse debug");
-			mouseDebug.addActionListener(e -> configManager.setConfiguration("interaction", "drawMouse", mouseDebug.isSelected()));
+			mouseDebug.addActionListener(e -> configManager.setConfiguration("unethicalite", "drawMouse",
+					mouseDebug.isSelected()));
 			debug.add(mouseDebug);
 
 			JRadioButton menuActionDebug = new JRadioButton("MenuAction debug");
-			menuActionDebug.addActionListener(e -> configManager.setConfiguration("interaction", "debugInteractions", menuActionDebug.isSelected()));
+			menuActionDebug.addActionListener(e -> configManager.setConfiguration("unethicalite", "debugInteractions", menuActionDebug.isSelected()));
 			debug.add(menuActionDebug);
 
 			JRadioButton dialogDebug = new JRadioButton("Dialog debug");
-			dialogDebug.addActionListener(e -> configManager.setConfiguration("interaction", "debugDialogs", dialogDebug.isSelected()));
+			dialogDebug.addActionListener(e -> configManager.setConfiguration("unethicalite", "debugDialogs", dialogDebug.isSelected()));
 			debug.add(dialogDebug);
 
 			JRadioButton collisionDebug = new JRadioButton("Collision map");
@@ -276,7 +257,7 @@ public class MinimalToolbar extends JMenuBar
 	@Subscribe
 	private void onConfigChanged(ConfigChanged event)
 	{
-		if (!event.getGroup().equals("unethicalite-minimal"))
+		if (!event.getGroup().equals("unethicalite"))
 		{
 			return;
 		}
@@ -305,7 +286,7 @@ public class MinimalToolbar extends JMenuBar
 				break;
 
 			case "fpsLimit":
-				minimalFpsManager.reloadConfig(minimalConfig.fpsLimit());
+				minimalFpsManager.reloadConfig(unethicaliteConfig.fpsLimit());
 				break;
 		}
 

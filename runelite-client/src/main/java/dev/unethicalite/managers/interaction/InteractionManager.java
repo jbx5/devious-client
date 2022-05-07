@@ -9,11 +9,14 @@ import dev.unethicalite.api.game.GameThread;
 import dev.unethicalite.api.input.naturalmouse.NaturalMouse;
 import dev.unethicalite.api.movement.Movement;
 import dev.unethicalite.api.packets.Packets;
-import net.runelite.api.DialogOption;
 import dev.unethicalite.api.widgets.Widgets;
+import dev.unethicalite.client.config.UnethicaliteConfig;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
+import net.runelite.api.DialogOption;
 import net.runelite.api.MenuAction;
+import net.runelite.api.Perspective;
+import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.events.DialogProcessed;
 import net.runelite.api.events.MenuOptionClicked;
 import net.runelite.api.widgets.Widget;
@@ -36,7 +39,7 @@ public class InteractionManager
 	private NaturalMouse naturalMouse;
 
 	@Inject
-	private InteractionConfig config;
+	private UnethicaliteConfig config;
 
 	@Inject
 	private Client client;
@@ -50,16 +53,19 @@ public class InteractionManager
 	@Subscribe
 	public void onInvokeMenuAction(MenuAutomated event)
 	{
-		String debug = "O=" + event.getOption()
-				+ " | T=" + event.getTarget()
-				+ " | ID=" + event.getIdentifier()
-				+ " | OP=" + event.getOpcode().getId()
-				+ " | P0=" + event.getParam0()
-				+ " | P1=" + event.getParam1()
-				+ " | X=" + event.getClickX()
-				+ " | Y=" + event.getClickY();
+		if (config.debugMenuActions())
+		{
+			String debug = "O=" + event.getOption()
+					+ " | T=" + event.getTarget()
+					+ " | ID=" + event.getIdentifier()
+					+ " | OP=" + event.getOpcode().getId()
+					+ " | P0=" + event.getParam0()
+					+ " | P1=" + event.getParam1()
+					+ " | X=" + event.getClickX()
+					+ " | Y=" + event.getClickY();
 
-		log.debug("[Automated] {}", debug);
+			log.debug("[Automated] {}", debug);
+		}
 		Point clickPoint = getClickPoint(event);
 		MouseHandler mouseHandler = client.getMouseHandler();
 
@@ -73,6 +79,16 @@ public class InteractionManager
 					if (entity != null && config.mouseBehavior() == MouseBehavior.CLICKBOXES)
 					{
 						clickPoint = entity.getClickPoint().getAwtPoint();
+					}
+
+					if (event.getOpcode() == MenuAction.WALK && clickOffScreen(clickPoint))
+					{
+						net.runelite.api.Point newPoint = Perspective.localToMinimap(client,
+								LocalPoint.fromScene(event.getParam0(), event.getParam1()));
+						if (newPoint != null)
+						{
+							clickPoint = newPoint.getAwtPoint();
+						}
 					}
 
 					if (config.naturalMouse())
@@ -120,7 +136,7 @@ public class InteractionManager
 						}
 						catch (InteractionException ex)
 						{
-							log.debug("{}, falling back to invoke", ex.getMessage());
+							log.error("Packet interaction failed, falling back to invoke", ex);
 							processAction(event, -1, -1);
 						}
 					});
@@ -152,20 +168,28 @@ public class InteractionManager
 			e.setParam1(0);
 		}
 
-		String action = "O=" + e.getMenuOption()
-				+ " | T=" + e.getMenuTarget()
-				+ " | ID=" + e.getId()
-				+ " | OP=" + e.getMenuAction().getId()
-				+ " | P0=" + e.getParam0()
-				+ " | P1=" + e.getParam1()
-				+ " | X=" + e.getCanvasX()
-				+ " | Y=" + e.getCanvasY();
-		log.debug("[Menu Action] {}", action);
+		if (config.debugMenuActions())
+		{
+			String action = "O=" + e.getMenuOption()
+					+ " | T=" + e.getMenuTarget()
+					+ " | ID=" + e.getId()
+					+ " | OP=" + e.getMenuAction().getId()
+					+ " | P0=" + e.getParam0()
+					+ " | P1=" + e.getParam1()
+					+ " | X=" + e.getCanvasX()
+					+ " | Y=" + e.getCanvasY();
+			log.debug("[Menu Action] {}", action);
+		}
 	}
 
 	@Subscribe
 	public void onDialogProcessed(DialogProcessed e)
 	{
+		if (!config.debugDialogs())
+		{
+			return;
+		}
+
 		DialogOption dialogOption = DialogOption.of(e.getDialogOption().getWidgetUid(), e.getDialogOption().getMenuIndex());
 		if (dialogOption != null)
 		{
@@ -216,14 +240,7 @@ public class InteractionManager
 
 	private boolean clickInsideMinimap(Point point)
 	{
-		Rectangle minimap = getMinimap();
-		if (minimap.contains(point))
-		{
-			log.debug("Click {} was inside minimap", point);
-			return true;
-		}
-
-		return false;
+		return getMinimap().contains(point);
 	}
 
 	private Rectangle getMinimap()
@@ -248,5 +265,11 @@ public class InteractionManager
 
 		Rectangle bounds = client.getCanvas().getBounds();
 		return new Rectangle(bounds.width - MINIMAP_WIDTH, 0, MINIMAP_WIDTH, MINIMAP_HEIGHT);
+	}
+
+	private boolean clickOffScreen(Point point)
+	{
+		return point.x < 0 || point.y < 0
+				|| point.x > client.getViewportWidth() || point.y > client.getViewportHeight();
 	}
 }

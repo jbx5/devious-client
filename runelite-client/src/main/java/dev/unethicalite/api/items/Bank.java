@@ -24,6 +24,7 @@ public class Bank extends Items
 {
 	private Bank()
 	{
+		super(InventoryID.BANK);
 	}
 
 	private static final Bank BANK = new Bank();
@@ -503,6 +504,11 @@ public class Bank extends Items
 
 	public static class Inventory extends Items
 	{
+		public Inventory()
+		{
+			super(InventoryID.BANK);
+		}
+
 		@Override
 		protected List<Item> all(Predicate<Item> filter)
 		{

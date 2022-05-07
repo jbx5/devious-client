@@ -14,6 +14,7 @@ public class Inventory extends Items
 {
 	private Inventory()
 	{
+		super(InventoryID.INVENTORY);
 	}
 
 	private static final Inventory INVENTORY = new Inventory();

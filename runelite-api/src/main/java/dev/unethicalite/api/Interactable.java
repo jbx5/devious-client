@@ -1,5 +1,6 @@
 package dev.unethicalite.api;
 
+import dev.unethicalite.api.commons.Predicates;
 import dev.unethicalite.api.events.MenuAutomated;
 import net.runelite.api.MenuAction;
 import net.runelite.api.Point;
@@ -77,7 +78,7 @@ public interface Interactable
 
 	default boolean hasAction(String... actions)
 	{
-		return Arrays.stream(actions).anyMatch(this::hasAction);
+		return hasAction(Predicates.texts(actions));
 	}
 
 	default MenuAutomated getMenu(String action)

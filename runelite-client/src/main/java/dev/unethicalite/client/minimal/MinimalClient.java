@@ -33,7 +33,7 @@ import com.google.inject.Injector;
 import com.openosrs.client.OpenOSRS;
 import dev.unethicalite.api.account.GameAccount;
 import dev.unethicalite.client.Static;
-import dev.unethicalite.client.minimal.config.MinimalConfig;
+import dev.unethicalite.client.config.UnethicaliteConfig;
 import dev.unethicalite.client.minimal.plugins.PluginEntry;
 import dev.unethicalite.client.minimal.ui.MinimalToolbar;
 import dev.unethicalite.client.minimal.ui.MinimalUI;
@@ -154,7 +154,7 @@ public class MinimalClient
 	private MinimalFpsManager minimalFpsManager;
 
 	@Inject
-	private MinimalConfig minimalConfig;
+	private UnethicaliteConfig minimalConfig;
 
 	@Inject
 	private WorldService worldService;
@@ -512,7 +512,7 @@ public class MinimalClient
 	{
 		if (options.has("norender"))
 		{
-			configManager.setConfiguration("unethicalite-minimal", "renderOff", true);
+			configManager.setConfiguration("unethicalite", "renderOff", true);
 		}
 	}
 

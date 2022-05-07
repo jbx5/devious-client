@@ -15,6 +15,7 @@ public class Equipment extends Items
 {
 	private Equipment()
 	{
+		super(InventoryID.EQUIPMENT);
 	}
 
 	private static final Equipment EQUIPMENT = new Equipment();
