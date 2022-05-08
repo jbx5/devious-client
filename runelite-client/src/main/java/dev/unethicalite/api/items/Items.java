@@ -7,9 +7,12 @@ import lombok.Getter;
 import net.runelite.api.Client;
 import net.runelite.api.InventoryID;
 import net.runelite.api.Item;
+import net.runelite.api.ItemContainer;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -17,13 +20,45 @@ public abstract class Items
 {
 	@Getter
 	private final InventoryID inventoryID;
+	private final Function<Item, Boolean> modification;
 
-	protected Items(InventoryID inventoryID)
+	protected Items(InventoryID inventoryID, Function<Item, Boolean> modification)
 	{
 		this.inventoryID = inventoryID;
+		this.modification = modification;
 	}
 
-	protected abstract List<Item> all(Predicate<Item> filter);
+	protected List<Item> all(Predicate<Item> filter)
+	{
+		List<Item> items = new ArrayList<>();
+		ItemContainer container = getItemContainer();
+		if (container == null)
+		{
+			return items;
+		}
+
+		Item[] containerItems = container.getItems();
+
+		cacheUncachedItems(containerItems);
+
+		for (int i = 0; i < containerItems.length; i++)
+		{
+			Item item = containerItems[i];
+			if (item == null || item.getId() == -1 || "null".equals(item.getName()))
+			{
+				continue;
+			}
+
+			item.setSlot(i);
+
+			if (filter.test(item) && modification.apply(item))
+			{
+				items.add(item);
+			}
+		}
+
+		return items;
+	}
 
 	protected List<Item> all(String... names)
 	{
@@ -99,5 +134,10 @@ public abstract class Items
 				return null;
 			});
 		}
+	}
+
+	protected ItemContainer getItemContainer()
+	{
+		return Static.getClient().getItemContainer(inventoryID);
 	}
 }
