@@ -86,7 +86,9 @@ open class BootstrapTask @Inject constructor(@Input val type: String) : DefaultT
             "-XX:CompileThreshold=1500",
             "-Xincgc",
             "-XX:+UseConcMarkSweepGC",
-            "-XX:+UseParNewGC"
+            "-XX:+UseParNewGC",
+            "-Dawt.useSystemAAFontSettings=on",
+            "-Dswing.aatext=true"
     )
 
     @Input
@@ -94,7 +96,9 @@ open class BootstrapTask @Inject constructor(@Input val type: String) : DefaultT
             "-XX:+DisableAttachMechanism",
             "-Xmx512m",
             "-Xss2m",
-            "-XX:CompileThreshold=1500"
+            "-XX:CompileThreshold=1500",
+            "-Dawt.useSystemAAFontSettings=on",
+            "-Dswing.aatext=true"
     )
 
     @Input
@@ -104,7 +108,9 @@ open class BootstrapTask @Inject constructor(@Input val type: String) : DefaultT
             "-Xss2m",
             "-XX:CompileThreshold=1500",
             "--add-opens=java.desktop/sun.awt=ALL-UNNAMED",
-            "--add-opens=java.desktop/com.apple.eawt=ALL-UNNAMED"
+            "--add-opens=java.desktop/com.apple.eawt=ALL-UNNAMED",
+            "-Dawt.useSystemAAFontSettings=on",
+            "-Dswing.aatext=true"
     )
 
     @Input
@@ -113,7 +119,9 @@ open class BootstrapTask @Inject constructor(@Input val type: String) : DefaultT
             "-Xmx512m",
             "-Xss2m",
             "-XX:CompileThreshold=1500",
-            "--add-opens=java.desktop/sun.awt=ALL-UNNAMED"
+            "--add-opens=java.desktop/sun.awt=ALL-UNNAMED",
+            "-Dawt.useSystemAAFontSettings=on",
+            "-Dswing.aatext=true"
     )
 
     @Input
@@ -267,6 +275,12 @@ open class BootstrapTask @Inject constructor(@Input val type: String) : DefaultT
 
         val bootstrapDir = File("${project.buildDir}/bootstrap")
         bootstrapDir.mkdirs()
+
+        if (type == "stable") {
+            File(bootstrapDir, "bootstrap-openosrs.json").printWriter().use { out ->
+                out.println(prettyJson)
+            }
+        }
 
         File(bootstrapDir, "bootstrap-${type}.json").printWriter().use { out ->
             out.println(prettyJson)
