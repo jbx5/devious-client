@@ -2,7 +2,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.Socket;
 import java.net.URL;
-import java.security.SecureRandom; import java.util.ArrayList;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -1773,21 +1773,21 @@ public final class Client extends GameEngine implements Usernamed , OAuthApi {
 					Archive.load();
 					UserComparator9.method2619();
 				} else if (gameState == 5) {
-					class360.method6592(this, class13.fontPlain12);
+					class360.loginScreen(this, class13.fontPlain12);
 					Archive.load();
 					UserComparator9.method2619();
 				} else if ((gameState != 10) && (gameState != 11)) {
 					if (gameState == 20) {
-						class360.method6592(this, class13.fontPlain12);
+						class360.loginScreen(this, class13.fontPlain12);
 						this.doCycleLoggedOut();
 					} else if (gameState == 50) {
-						class360.method6592(this, class13.fontPlain12);
+						class360.loginScreen(this, class13.fontPlain12);
 						this.doCycleLoggedOut();
 					} else if (gameState == 25) {
 						FriendSystem.method1715();
 					}
 				} else {
-					class360.method6592(this, class13.fontPlain12);
+					class360.loginScreen(this, class13.fontPlain12);
 				}
 
 				if (gameState == 30) {

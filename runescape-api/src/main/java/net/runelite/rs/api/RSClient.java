@@ -1661,22 +1661,6 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("Login_banType")
 	int getBanType();
 
-	@Import("MouseHandler_lastPressedX")
-	@Override
-	int getMouseLastPressedX();
-
-	@Import("MouseHandler_lastPressedX")
-	@Override
-	void setMouseLastPressedX(int x);
-
-	@Import("MouseHandler_lastPressedY")
-	@Override
-	int getMouseLastPressedY();
-
-	@Import("MouseHandler_lastPressedY")
-	@Override
-	void setMouseLastPressedY(int y);
-
 	@Import("packetWriter")
 	@Override
 	RSPacketWriter getPacketWriter();
