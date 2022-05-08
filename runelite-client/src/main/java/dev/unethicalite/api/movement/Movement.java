@@ -12,6 +12,7 @@ import dev.unethicalite.api.movement.pathfinder.CollisionMap;
 import dev.unethicalite.api.movement.pathfinder.Walker;
 import dev.unethicalite.api.scene.Tiles;
 import dev.unethicalite.api.widgets.Widgets;
+import dev.unethicalite.client.Static;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.api.Locatable;
@@ -52,7 +53,7 @@ public class Movement
 				public WorldPoint load(@NotNull List<WorldPoint> key)
 				{
 					List<WorldPoint> wpList = new ArrayList<>(key);
-					CollisionMap cm = Game.getGlobalCollisionMap();
+					CollisionMap cm = Static.getGlobalCollisionMap();
 					wpList.removeIf(cm::fullBlock);
 					return wpList.get(Rand.nextInt(0, wpList.size()));
 				}
@@ -60,14 +61,14 @@ public class Movement
 
 	public static void setDestination(int sceneX, int sceneY)
 	{
-		Game.getClient().setSelectedSceneTileX(sceneX);
-		Game.getClient().setSelectedSceneTileY(sceneY);
-		Game.getClient().setViewportWalking(true);
+		Static.getClient().setSelectedSceneTileX(sceneX);
+		Static.getClient().setSelectedSceneTileY(sceneY);
+		Static.getClient().setViewportWalking(true);
 	}
 
 	public static WorldPoint getDestination()
 	{
-		Client client = Game.getClient();
+		Client client = Static.getClient();
 		if (client.getDestinationX() == 0 && client.getDestinationY() == 0)
 		{
 			return null;
@@ -91,7 +92,7 @@ public class Movement
 
 	public static void walk(WorldPoint worldPoint)
 	{
-		Client client = Game.getClient();
+		Client client = Static.getClient();
 		Player local = client.getLocalPlayer();
 		if (local == null)
 		{

@@ -1,12 +1,11 @@
 package dev.unethicalite.api.items;
 
-import dev.unethicalite.client.Static;
+import dev.unethicalite.api.query.items.ItemQuery;
 import net.runelite.api.InventoryID;
 import net.runelite.api.Item;
 import net.runelite.api.ItemContainer;
 import net.runelite.api.widgets.WidgetInfo;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -14,39 +13,19 @@ public class Inventory extends Items
 {
 	private Inventory()
 	{
+		super(InventoryID.INVENTORY, item ->
+		{
+			item.setActionParam(item.getSlot());
+			item.setWidgetId(WidgetInfo.INVENTORY.getPackedId());
+			return true;
+		});
 	}
 
 	private static final Inventory INVENTORY = new Inventory();
 
-	@Override
-	protected List<Item> all(Predicate<Item> filter)
+	public static ItemQuery query()
 	{
-		List<Item> items = new ArrayList<>();
-		ItemContainer container = Static.getClient().getItemContainer(InventoryID.INVENTORY);
-		if (container == null)
-		{
-			return items;
-		}
-
-		Item[] containerItems = container.getItems();
-
-		cacheUncachedItems(containerItems);
-
-		for (Item item : containerItems)
-		{
-			if (item.getId() != -1 && item.getName() != null && !item.getName().equals("null"))
-			{
-				item.setActionParam(item.getSlot());
-				item.setWidgetId(WidgetInfo.INVENTORY.getPackedId());
-
-				if (filter.test(item))
-				{
-					items.add(item);
-				}
-			}
-		}
-
-		return items;
+		return new ItemQuery(Inventory::getAll);
 	}
 
 	public static List<Item> getAll(Predicate<Item> filter)
@@ -86,7 +65,7 @@ public class Inventory extends Items
 
 	public static Item getItem(int slot)
 	{
-		ItemContainer container = Static.getClient().getItemContainer(InventoryID.INVENTORY);
+		ItemContainer container = INVENTORY.getItemContainer();
 		if (container == null)
 		{
 			return null;

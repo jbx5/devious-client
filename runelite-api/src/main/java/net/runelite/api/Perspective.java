@@ -351,7 +351,7 @@ public class Perspective
 				minimapDrawWidget = client.getWidget(WidgetInfo.FIXED_VIEWPORT_MINIMAP_DRAW_AREA);
 			}
 
-			if (minimapDrawWidget == null || minimapDrawWidget.isHidden())
+			if (minimapDrawWidget == null || !minimapDrawWidget.isVisible())
 			{
 				return null;
 			}

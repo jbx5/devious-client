@@ -70,6 +70,11 @@ public interface TileItem extends Renderable, SceneEntity
 
 	default LocalPoint getLocalLocation()
 	{
+		if (getTile() == null)
+		{
+			return null;
+		}
+
 		return getTile().getLocalLocation();
 	}
 

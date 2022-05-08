@@ -1,6 +1,7 @@
 package dev.unethicalite.api.entities;
 
 import dev.unethicalite.api.game.Game;
+import dev.unethicalite.api.query.entities.TileObjectQuery;
 import dev.unethicalite.api.scene.Tiles;
 import net.runelite.api.DecorativeObject;
 import net.runelite.api.GameObject;
@@ -19,11 +20,16 @@ import java.util.stream.Collectors;
 
 public class TileObjects extends TileEntities<TileObject>
 {
+	private static final TileObjects TILE_OBJECTS = new TileObjects();
+
 	private TileObjects()
 	{
 	}
 
-	private static final TileObjects TILE_OBJECTS = new TileObjects();
+	public static TileObjectQuery query()
+	{
+		return new TileObjectQuery(TileObjects::getAll);
+	}
 
 	public static List<TileObject> getAll()
 	{

@@ -1,7 +1,7 @@
-package net.runelite.client.plugins.interaction;
+package net.runelite.client.plugins.unethicalite.interaction;
 
+import dev.unethicalite.client.config.UnethicaliteConfig;
 import dev.unethicalite.managers.InputManager;
-import dev.unethicalite.managers.interaction.InteractionConfig;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Point;
 import net.runelite.client.ui.overlay.Overlay;
@@ -12,21 +12,18 @@ import net.runelite.client.ui.overlay.OverlayUtil;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Graphics2D;
+import java.awt.*;
 
 @Singleton
 @Slf4j
 public class InteractionOverlay extends Overlay
 {
-	private final InteractionConfig config;
+	private final UnethicaliteConfig config;
 	private final InputManager inputManager;
 
 
 	@Inject
-	public InteractionOverlay(InteractionConfig config, InputManager inputManager)
+	public InteractionOverlay(UnethicaliteConfig config, InputManager inputManager)
 	{
 		this.config = config;
 		this.inputManager = inputManager;
@@ -49,7 +46,7 @@ public class InteractionOverlay extends Overlay
 
 			OverlayUtil.renderTextLocation(g,
 					new Point(inputManager.getLastMoveX() - (g.getFont().getSize() / 3),
-					inputManager.getLastMoveY() + (g.getFont().getSize() / 3)), "X", Color.GREEN);
+							inputManager.getLastMoveY() + (g.getFont().getSize() / 3)), "X", Color.GREEN);
 		}
 
 		return null;

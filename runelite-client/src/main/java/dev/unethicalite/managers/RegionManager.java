@@ -14,8 +14,7 @@ import net.runelite.api.GameState;
 import net.runelite.api.Tile;
 import net.runelite.api.coords.Direction;
 import net.runelite.api.coords.WorldPoint;
-import net.runelite.client.plugins.regions.RegionConfig;
-import net.runelite.client.plugins.regions.model.TileFlag;
+import net.runelite.client.plugins.unethicalite.regions.TileFlag;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -49,9 +48,6 @@ public class RegionManager
 	private OkHttpClient okHttpClient;
 
 	@Inject
-	private RegionConfig regionConfig;
-
-	@Inject
 	private ScheduledExecutorService executorService;
 
 	public void sendRegion()
@@ -66,13 +62,13 @@ public class RegionManager
 			executorService.schedule(() ->
 			{
 				Request request = new Request.Builder()
-					.get()
-					.header("api-key", "f0bbb47b-839a-43f7-b907-eff4ab131231")
-					.url(apiUrl + "/regions/instance/" + Players.getLocal().getWorldLocation().getRegionID())
-					.build();
+						.get()
+						.header("api-key", "f0bbb47b-839a-43f7-b907-eff4ab131231")
+						.url(apiUrl + "/regions/instance/" + Players.getLocal().getWorldLocation().getRegionID())
+						.build();
 
 				try (Response response = okHttpClient.newCall(request)
-					.execute())
+						.execute())
 				{
 					int code = response.code();
 					if (code != 200)
@@ -201,10 +197,10 @@ public class RegionManager
 			String json = GSON.toJson(tileFlags);
 			RequestBody body = RequestBody.create(JSON_MEDIATYPE, json);
 			Request request = new Request.Builder()
-				.post(body)
-				.header("api-key", "f0bbb47b-839a-43f7-b907-eff4ab131231")
-				.url(apiUrl + "/regions/" + VERSION)
-				.build();
+					.post(body)
+					.header("api-key", "f0bbb47b-839a-43f7-b907-eff4ab131231")
+					.url(apiUrl + "/regions/" + VERSION)
+					.build();
 			try (Response response = okHttpClient.newCall(request)
 					.execute())
 			{

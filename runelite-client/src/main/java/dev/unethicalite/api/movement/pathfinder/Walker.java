@@ -10,6 +10,15 @@ import dev.unethicalite.api.game.Game;
 import dev.unethicalite.api.movement.Movement;
 import dev.unethicalite.api.movement.Reachable;
 import dev.unethicalite.api.scene.Tiles;
+import dev.unethicalite.client.Static;
+import lombok.extern.slf4j.Slf4j;
+import net.runelite.api.Player;
+import net.runelite.api.Tile;
+import net.runelite.api.WallObject;
+import net.runelite.api.coords.WorldPoint;
+import org.jetbrains.annotations.NotNull;
+
+import javax.inject.Singleton;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -20,13 +29,6 @@ import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Predicate;
-import javax.inject.Singleton;
-import lombok.extern.slf4j.Slf4j;
-import net.runelite.api.Player;
-import net.runelite.api.Tile;
-import net.runelite.api.WallObject;
-import net.runelite.api.coords.WorldPoint;
-import org.jetbrains.annotations.NotNull;
 
 @Singleton
 @Slf4j
@@ -49,7 +51,7 @@ public class Walker
 			return true;
 		}
 
-		if (destination.isInScene(Game.getClient()) && Reachable.isWalkable(destination))
+		if (destination.isInScene(Static.getClient()) && Reachable.isWalkable(destination))
 		{
 			Movement.walk(destination);
 			return false;
@@ -125,17 +127,19 @@ public class Walker
 		}
 
 		return walkAlong(destination, path, transports);
-	}	public static final LoadingCache<WorldPoint, List<WorldPoint>> PATH_CACHE = CacheBuilder.newBuilder()
-		.expireAfterWrite(5, TimeUnit.MINUTES)
-		.build(new CacheLoader<>()
-		{
-			@Override
-			public List<WorldPoint> load(@NotNull WorldPoint key)
+	}
+
+	public static final LoadingCache<WorldPoint, List<WorldPoint>> PATH_CACHE = CacheBuilder.newBuilder()
+			.expireAfterWrite(5, TimeUnit.MINUTES)
+			.build(new CacheLoader<>()
 			{
-				log.debug("Loading path to {}", key);
-				return buildPath(key, false);
-			}
-		});
+				@Override
+				public List<WorldPoint> load(@NotNull WorldPoint key)
+				{
+					log.debug("Loading path to {}", key);
+					return buildPath(key, false);
+				}
+			});
 
 	public static boolean walkAlong(WorldPoint destination, List<WorldPoint> path, Map<WorldPoint, List<Transport>> transports)
 	{
@@ -162,17 +166,19 @@ public class Walker
 		}
 
 		return false;
-	}	public static final LoadingCache<WorldPoint, List<WorldPoint>> LOCAL_PATH_CACHE = CacheBuilder.newBuilder()
-		.expireAfterWrite(5, TimeUnit.MINUTES)
-		.build(new CacheLoader<>()
-		{
-			@Override
-			public List<WorldPoint> load(@NotNull WorldPoint key)
+	}
+
+	public static final LoadingCache<WorldPoint, List<WorldPoint>> LOCAL_PATH_CACHE = CacheBuilder.newBuilder()
+			.expireAfterWrite(5, TimeUnit.MINUTES)
+			.build(new CacheLoader<>()
 			{
-				log.debug("Loading local path to {}", key);
-				return buildPath(key, true);
-			}
-		});
+				@Override
+				public List<WorldPoint> load(@NotNull WorldPoint key)
+				{
+					log.debug("Loading local path to {}", key);
+					return buildPath(key, true);
+				}
+			});
 
 	public static boolean stepAlong(List<WorldPoint> path)
 	{
@@ -298,7 +304,7 @@ public class Walker
 				wall.interact("Open");
 				log.debug("Handling door {}", wall.getWorldLocation());
 				Time.sleepUntil(() -> tileA.getWallObject() == null
-					|| !wall.hasAction("Open"), 2000);
+						|| !wall.hasAction("Open"), 2000);
 				return true;
 			}
 
@@ -308,7 +314,7 @@ public class Walker
 				wall.interact("Open");
 				log.debug("Handling door {}", wall.getWorldLocation());
 				Time.sleepUntil(() -> tileB.getWallObject() == null
-					|| !wall.hasAction("Open"), 2000);
+						|| !wall.hasAction("Open"), 2000);
 				return true;
 			}
 		}
@@ -318,7 +324,7 @@ public class Walker
 
 	public static WorldPoint nearestWalkableTile(WorldPoint source, Predicate<WorldPoint> filter)
 	{
-		CollisionMap cm = Game.getGlobalCollisionMap();
+		CollisionMap cm = Static.getGlobalCollisionMap();
 
 		if (!cm.fullBlock(source) && filter.test(source))
 		{
@@ -352,14 +358,14 @@ public class Walker
 
 	public static List<WorldPoint> remainingPath(List<WorldPoint> path)
 	{
-		Player local = Game.getClient().getLocalPlayer();
+		Player local = Static.getClient().getLocalPlayer();
 		if (local == null)
 		{
 			return Collections.emptyList();
 		}
 
 		var nearest = path.stream().min(Comparator.comparingInt(x -> x.distanceTo(local.getWorldLocation())))
-			.orElse(null);
+				.orElse(null);
 		if (nearest == null)
 		{
 			return Collections.emptyList();
@@ -369,10 +375,10 @@ public class Walker
 	}
 
 	public static List<WorldPoint> calculatePath(
-		List<WorldPoint> startPoints,
-		WorldPoint destination,
-		Map<WorldPoint, List<Transport>> transports,
-		boolean local
+			List<WorldPoint> startPoints,
+			WorldPoint destination,
+			Map<WorldPoint, List<Transport>> transports,
+			boolean local
 	)
 	{
 		CollisionMap collisionMap = local ? new LocalCollisionMap() : Game.getGlobalCollisionMap();
@@ -384,7 +390,7 @@ public class Walker
 		log.debug("Calculating path towards {}", destination);
 
 		List<WorldPoint> path = new AStarPathfinder(collisionMap, transports, startPoints,
-			destination).find();
+				destination).find();
 
 		// Timed out falling back to DFS
 		if (path == null)
@@ -398,6 +404,11 @@ public class Walker
 	public static Map<WorldPoint, List<Transport>> buildTransportLinks()
 	{
 		Map<WorldPoint, List<Transport>> out = new HashMap<>();
+		if (!Static.getUnethicaliteConfig().useTransports())
+		{
+			return out;
+		}
+
 		for (Transport transport : TransportLoader.buildTransports())
 		{
 			out.computeIfAbsent(transport.getSource(), x -> new ArrayList<>()).add(transport);
@@ -420,12 +431,17 @@ public class Walker
 	public static LinkedHashMap<WorldPoint, Teleport> buildTeleportLinks(WorldPoint destination)
 	{
 		LinkedHashMap<WorldPoint, Teleport> out = new LinkedHashMap<>();
+		if (!Static.getUnethicaliteConfig().useTeleports())
+		{
+			return out;
+		}
+
 		Player local = Players.getLocal();
 
 		for (Teleport teleport : TeleportLoader.buildTeleports())
 		{
 			if (teleport.getDestination().distanceTo(local.getWorldLocation()) > 50
-				&& local.getWorldLocation().distanceTo(destination) > teleport.getDestination().distanceTo(destination) + 20)
+					&& local.getWorldLocation().distanceTo(destination) > teleport.getDestination().distanceTo(destination) + 20)
 			{
 				out.putIfAbsent(teleport.getDestination(), teleport);
 			}
@@ -433,8 +449,4 @@ public class Walker
 
 		return out;
 	}
-
-
-
-
 }

@@ -1,4 +1,4 @@
-package net.runelite.client.plugins.regions;
+package net.runelite.client.plugins.unethicalite.regions;
 
 import dev.unethicalite.api.movement.pathfinder.GlobalCollisionMap;
 import dev.unethicalite.api.movement.pathfinder.Transport;
@@ -8,6 +8,7 @@ import dev.unethicalite.api.scene.Tiles;
 import dev.unethicalite.api.utils.CoordUtils;
 import dev.unethicalite.api.utils.DrawUtils;
 import dev.unethicalite.api.widgets.Widgets;
+import dev.unethicalite.client.config.UnethicaliteConfig;
 import net.runelite.api.Client;
 import net.runelite.api.MenuAction;
 import net.runelite.api.Point;
@@ -23,17 +24,19 @@ import net.runelite.client.ui.overlay.OverlayPosition;
 import net.runelite.client.ui.overlay.OverlayPriority;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 
+@Singleton
 public class RegionOverlay extends Overlay
 {
 	private static final Color RED_TRANSLUCENT = new Color(255, 0, 0, 128);
 
-	private final RegionConfig regionConfig;
+	private final UnethicaliteConfig regionConfig;
 	private final GlobalCollisionMap collisionMap;
 	private final Client client;
 	private final ExecutorService executorService;
@@ -41,7 +44,7 @@ public class RegionOverlay extends Overlay
 	private List<WorldPoint> path = new ArrayList<>();
 
 	@Inject
-	public RegionOverlay(RegionConfig regionConfig, GlobalCollisionMap collisionMap, Client client, ExecutorService executorService)
+	public RegionOverlay(UnethicaliteConfig regionConfig, GlobalCollisionMap collisionMap, Client client, ExecutorService executorService)
 	{
 		this.regionConfig = regionConfig;
 		this.collisionMap = collisionMap;

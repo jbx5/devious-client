@@ -1,6 +1,7 @@
 package dev.unethicalite.api.entities;
 
-import dev.unethicalite.api.game.Game;
+import dev.unethicalite.api.query.entities.NPCQuery;
+import dev.unethicalite.client.Static;
 import net.runelite.api.NPC;
 import net.runelite.api.coords.WorldPoint;
 
@@ -20,7 +21,7 @@ public class NPCs extends Entities<NPC>
 	protected List<NPC> all(Predicate<? super NPC> filter)
 	{
 		List<NPC> out = new ArrayList<>();
-		List<NPC> npcs = Game.getClient().getNpcs();
+		List<NPC> npcs = Static.getClient().getNpcs();
 		for (NPC npc : npcs)
 		{
 			if (filter.test(npc))
@@ -30,6 +31,11 @@ public class NPCs extends Entities<NPC>
 		}
 
 		return out;
+	}
+
+	public static NPCQuery query()
+	{
+		return new NPCQuery(NPCs::getAll);
 	}
 
 	public static List<NPC> getAll()

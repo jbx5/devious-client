@@ -29,6 +29,22 @@ public class Predicates
 		};
 	}
 
+	public static Predicate<String> texts(String... texts)
+	{
+		return t ->
+		{
+			for (String text : texts)
+			{
+				if (t != null && t.equals(text))
+				{
+					return true;
+				}
+			}
+
+			return false;
+		};
+	}
+
 	public static <T extends EntityNameable> Predicate<T> names(Collection<String> names)
 	{
 		return t -> names.contains(t.getName());

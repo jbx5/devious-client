@@ -1,4 +1,4 @@
-package net.runelite.client.plugins.regions.model;
+package net.runelite.client.plugins.unethicalite.regions;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

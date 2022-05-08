@@ -1,6 +1,5 @@
-package net.runelite.client.plugins.regions;
+package net.runelite.client.plugins.unethicalite.regions;
 
-import com.google.inject.Provides;
 import dev.unethicalite.api.events.PlaneChanged;
 import dev.unethicalite.api.game.Game;
 import dev.unethicalite.api.movement.pathfinder.GlobalCollisionMap;
@@ -12,37 +11,27 @@ import net.runelite.api.GameState;
 import net.runelite.api.events.ClientTick;
 import net.runelite.api.events.ConfigButtonClicked;
 import net.runelite.api.events.GameStateChanged;
-import net.runelite.client.config.ConfigManager;
-import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
-import net.runelite.client.plugins.Plugin;
-import net.runelite.client.plugins.PluginDescriptor;
-import net.runelite.client.ui.overlay.OverlayManager;
 
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.inject.Singleton;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.zip.GZIPInputStream;
 
-@PluginDescriptor(name = "Regions")
+@Singleton
 @Slf4j
-public class RegionPlugin extends Plugin
+public class RegionHandler
 {
 	@Inject
 	@Named("unethicalite.api.url")
 	private String apiUrl;
 
 	@Inject
-	private OverlayManager overlayManager;
-
-	@Inject
-	private RegionOverlay overlay;
-
-	@Inject
-	private AddTransportDialog transportDialog;
+	private Client client;
 
 	@Inject
 	private RegionManager regionManager;
@@ -51,33 +40,11 @@ public class RegionPlugin extends Plugin
 	private GlobalCollisionMap collisionMap;
 
 	@Inject
-	private EventBus eventBus;
-
-	@Inject
-	private Client client;
+	private AddTransportDialog transportDialog;
 
 	public static boolean selectingSourceTile = false;
 	public static boolean selectingDestinationTile = false;
 	public static boolean selectingObject = false;
-
-	@Override
-	public void startUp()
-	{
-		eventBus.register(transportDialog);
-		eventBus.register(overlay);
-
-		updateCollisionMap();
-
-		overlayManager.add(overlay);
-	}
-
-	@Override
-	public void shutDown()
-	{
-		overlayManager.remove(overlay);
-		eventBus.unregister(transportDialog);
-		eventBus.unregister(overlay);
-	}
 
 	@Subscribe
 	public void onClientTick(ClientTick e)
@@ -113,17 +80,17 @@ public class RegionPlugin extends Plugin
 	@Subscribe
 	public void onConfigButtonClicked(ConfigButtonClicked e)
 	{
-		if (!e.getGroup().equals("regions"))
+		if (!e.getGroup().equals("unethicalite"))
 		{
 			return;
 		}
 
 		switch (e.getKey())
 		{
-			case "download":
+			case "downloadCollisionData":
 				updateCollisionMap();
 				break;
-			case "transport":
+			case "addTransportData":
 				if (transportDialog == null)
 				{
 					log.error("Add transport UI was not loaded somehow");
@@ -172,12 +139,6 @@ public class RegionPlugin extends Plugin
 	private byte[] readGzip(byte[] input) throws IOException
 	{
 		return new GZIPInputStream(new ByteArrayInputStream(input)).readAllBytes();
-	}
-
-	@Provides
-	public RegionConfig provideConfig(ConfigManager configManager)
-	{
-		return configManager.getConfig(RegionConfig.class);
 	}
 
 	enum TileSelection

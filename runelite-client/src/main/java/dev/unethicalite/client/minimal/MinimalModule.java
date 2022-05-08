@@ -9,10 +9,9 @@ import com.google.inject.name.Names;
 import com.openosrs.client.config.OpenOSRSConfig;
 import dev.unethicalite.api.movement.pathfinder.GlobalCollisionMap;
 import dev.unethicalite.api.movement.pathfinder.Walker;
-import dev.unethicalite.client.minimal.config.MinimalConfig;
-import dev.unethicalite.client.minimal.config.UnethicaliteProperties;
 import dev.unethicalite.client.Static;
-import dev.unethicalite.managers.interaction.InteractionConfig;
+import dev.unethicalite.client.config.UnethicaliteConfig;
+import dev.unethicalite.client.minimal.config.UnethicaliteProperties;
 import lombok.RequiredArgsConstructor;
 import net.runelite.api.Client;
 import net.runelite.api.hooks.Callbacks;
@@ -209,15 +208,8 @@ public class MinimalModule extends AbstractModule
 
 	@Provides
 	@Singleton
-	MinimalConfig provideMinimalConfig(ConfigManager configManager)
+	UnethicaliteConfig provideUnethicaliteConfig(ConfigManager configManager)
 	{
-		return configManager.getConfig(MinimalConfig.class);
-	}
-
-	@Provides
-	@Singleton
-	InteractionConfig provideInteractionConfig(ConfigManager configManager)
-	{
-		return configManager.getConfig(InteractionConfig.class);
+		return configManager.getConfig(UnethicaliteConfig.class);
 	}
 }

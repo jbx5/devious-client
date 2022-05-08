@@ -1,7 +1,7 @@
 package dev.unethicalite.managers;
 
 import dev.unethicalite.api.events.MouseAutomated;
-import dev.unethicalite.managers.interaction.InteractionConfig;
+import dev.unethicalite.client.config.UnethicaliteConfig;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.client.eventbus.EventBus;
@@ -19,7 +19,7 @@ public class InputManager implements MouseListener
 {
 	private final MinimalPluginManager minimalPluginManager;
 	private final LoopedPluginManager loopedPluginManager;
-	private final InteractionConfig interactionConfig;
+	private final UnethicaliteConfig interactionConfig;
 
 	@Getter
 	private int lastClickX = -1;
@@ -35,7 +35,7 @@ public class InputManager implements MouseListener
 			MinimalPluginManager minimalPluginManager,
 			LoopedPluginManager loopedPluginManager,
 			MouseManager manager,
-			EventBus eventBus, InteractionConfig interactionConfig)
+			EventBus eventBus, UnethicaliteConfig interactionConfig)
 	{
 		this.minimalPluginManager = minimalPluginManager;
 		this.loopedPluginManager = loopedPluginManager;

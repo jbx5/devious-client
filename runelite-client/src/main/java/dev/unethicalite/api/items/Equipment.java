@@ -1,70 +1,48 @@
 package dev.unethicalite.api.items;
 
-import dev.unethicalite.api.game.Game;
+import dev.unethicalite.api.query.items.ItemQuery;
 import net.runelite.api.EquipmentInventorySlot;
 import net.runelite.api.InventoryID;
 import net.runelite.api.Item;
-import net.runelite.api.ItemContainer;
 import net.runelite.api.widgets.WidgetInfo;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
 public class Equipment extends Items
 {
-	private Equipment()
-	{
-	}
-
 	private static final Equipment EQUIPMENT = new Equipment();
 
-	@Override
-	protected List<Item> all(Predicate<Item> filter)
+	private Equipment()
 	{
-		List<Item> items = new ArrayList<>();
-		ItemContainer container = Game.getClient().getItemContainer(InventoryID.EQUIPMENT);
-		if (container == null)
+		super(InventoryID.EQUIPMENT, item ->
 		{
-			return items;
-		}
+			WidgetInfo widgetInfo = getEquipmentWidgetInfo(item.getSlot());
+			item.setActionParam(-1);
 
-		Item[] containerItems = container.getItems();
-
-		cacheUncachedItems(containerItems);
-
-		for (int i = 0, containerItemsLength = containerItems.length; i < containerItemsLength; i++)
-		{
-			Item item = containerItems[i];
-			if (item.getId() != -1 && item.getName() != null && !item.getName().equals("null"))
+			if (widgetInfo != null)
 			{
-				WidgetInfo widgetInfo = getEquipmentWidgetInfo(item.getSlot());
-				item.setActionParam(-1);
-				item.setSlot(i);
-
-				if (widgetInfo != null)
-				{
-					item.setWidgetId(widgetInfo.getPackedId());
-
-					if (filter.test(item))
-					{
-						items.add(item);
-					}
-				}
+				item.setWidgetId(widgetInfo.getPackedId());
+				return true;
 			}
-		}
 
-		return items;
+			return false;
+		});
 	}
 
-	public static List<Item> getAll(Predicate<Item> filter)
+	public static ItemQuery query()
 	{
-		return EQUIPMENT.all(filter);
+		return new ItemQuery(Equipment::getAll);
 	}
 
 	public static List<Item> getAll()
 	{
 		return getAll(x -> true);
+	}
+
+	public static List<Item> getAll(Predicate<Item> filter)
+	{
+		return EQUIPMENT.all(filter);
 	}
 
 	public static List<Item> getAll(int... ids)

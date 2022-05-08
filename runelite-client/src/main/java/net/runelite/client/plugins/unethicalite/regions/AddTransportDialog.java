@@ -1,18 +1,17 @@
-package net.runelite.client.plugins.regions;
+package net.runelite.client.plugins.unethicalite.regions;
 
 import dev.unethicalite.api.SceneEntity;
 import dev.unethicalite.api.entities.Entities;
 import dev.unethicalite.api.game.Game;
-import dev.unethicalite.managers.RegionManager;
 import dev.unethicalite.api.scene.Tiles;
 import dev.unethicalite.client.minimal.config.UnethicaliteProperties;
+import dev.unethicalite.managers.RegionManager;
 import net.miginfocom.swing.MigLayout;
 import net.runelite.api.GameState;
 import net.runelite.api.Tile;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.events.MenuOptionClicked;
 import net.runelite.client.eventbus.Subscribe;
-import net.runelite.client.plugins.regions.model.TransportLink;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -52,9 +51,6 @@ public class AddTransportDialog extends JFrame
 
 	@Inject
 	private OkHttpClient okHttpClient;
-
-	@Inject
-	private RegionConfig regionConfig;
 
 	public AddTransportDialog()
 	{
@@ -105,9 +101,9 @@ public class AddTransportDialog extends JFrame
 		JButton submit = new JButton("Submit");
 		listPanel.add(submit);
 
-		fromButton.addActionListener(a -> RegionPlugin.selectingSourceTile = true);
-		toButton.addActionListener(a -> RegionPlugin.selectingDestinationTile = true);
-		selectObject.addActionListener(a -> RegionPlugin.selectingObject = true);
+		fromButton.addActionListener(a -> RegionHandler.selectingSourceTile = true);
+		toButton.addActionListener(a -> RegionHandler.selectingDestinationTile = true);
+		selectObject.addActionListener(a -> RegionHandler.selectingObject = true);
 
 		addLink.addActionListener(a -> addLink());
 		submit.addActionListener(a -> submit());
@@ -185,11 +181,11 @@ public class AddTransportDialog extends JFrame
 	@Subscribe
 	public void onMenuOptionClicked(MenuOptionClicked e)
 	{
-		RegionPlugin.selectingSourceTile = false;
-		RegionPlugin.selectingDestinationTile = false;
-		RegionPlugin.selectingObject = false;
+		RegionHandler.selectingSourceTile = false;
+		RegionHandler.selectingDestinationTile = false;
+		RegionHandler.selectingObject = false;
 
-		if (e.getId() == RegionPlugin.TileSelection.SOURCE.getId())
+		if (e.getId() == RegionHandler.TileSelection.SOURCE.getId())
 		{
 			e.consume();
 			Tile hovered = Tiles.getHoveredTile();
@@ -204,7 +200,7 @@ public class AddTransportDialog extends JFrame
 			return;
 		}
 
-		if (e.getId() == RegionPlugin.TileSelection.DESTINATION.getId())
+		if (e.getId() == RegionHandler.TileSelection.DESTINATION.getId())
 		{
 			e.consume();
 			Tile hovered = Tiles.getHoveredTile();
@@ -219,7 +215,7 @@ public class AddTransportDialog extends JFrame
 			return;
 		}
 
-		if (e.getId() == RegionPlugin.TileSelection.OBJECT.getId())
+		if (e.getId() == RegionHandler.TileSelection.OBJECT.getId())
 		{
 			e.consume();
 			List<? extends SceneEntity> entities = Entities.getHoveredEntities();
