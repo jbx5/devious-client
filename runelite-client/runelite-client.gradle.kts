@@ -122,6 +122,7 @@ dependencies {
     implementation("org.jboss.aerogear:aerogear-otp-java:1.0.0")
     implementation("io.socket:engine.io-client:1.0.0")
     implementation("io.socket:socket.io-client:1.0.0")
+    implementation("com.github.kwhat:jnativehook:2.2.2")
 }
 
 fun formatDate(date: Date?) = with(date ?: Date()) {

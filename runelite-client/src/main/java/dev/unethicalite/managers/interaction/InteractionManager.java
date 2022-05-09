@@ -5,6 +5,7 @@ import dev.unethicalite.api.SceneEntity;
 import dev.unethicalite.api.commons.Rand;
 import dev.unethicalite.api.commons.Time;
 import dev.unethicalite.api.events.MenuAutomated;
+import dev.unethicalite.api.events.NativeMouseInput;
 import dev.unethicalite.api.game.GameThread;
 import dev.unethicalite.api.input.naturalmouse.NaturalMouse;
 import dev.unethicalite.api.movement.Movement;
@@ -44,6 +45,8 @@ public class InteractionManager
 	@Inject
 	private Client client;
 
+	private volatile MenuAutomated queuedMenu = null;
+
 	@Inject
 	InteractionManager(EventBus eventBus)
 	{
@@ -74,6 +77,15 @@ public class InteractionManager
 			SceneEntity entity;
 			switch (config.interactMethod())
 			{
+				case CLICK_FORWARDING:
+					if (queuedMenu != null)
+					{
+						break;
+					}
+
+					queuedMenu = event;
+					break;
+
 				case MOUSE_EVENTS:
 					entity = event.getEntity();
 					if (entity != null && config.mouseBehavior() == MouseBehavior.CLICKBOXES)
@@ -151,8 +163,11 @@ public class InteractionManager
 		}
 		finally
 		{
-			Time.sleep(10, 20);
-			mouseHandler.sendRelease();
+			if (config.interactMethod() == InteractMethod.MOUSE_EVENTS)
+			{
+				Time.sleep(10, 20);
+				mouseHandler.sendRelease();
+			}
 		}
 	}
 
@@ -179,6 +194,53 @@ public class InteractionManager
 					+ " | X=" + e.getCanvasX()
 					+ " | Y=" + e.getCanvasY();
 			log.debug("[Menu Action] {}", action);
+		}
+	}
+
+	@Subscribe
+	public void onNativeMouseInput(NativeMouseInput event)
+	{
+		if (queuedMenu == null)
+		{
+			return;
+		}
+
+		MouseHandler mouseHandler = client.getMouseHandler();
+
+		// TODO translate screen X Y to canvas X Y
+
+		switch (event.getType())
+		{
+			case PRESS:
+				GameThread.invoke(() ->
+				{
+					client.setPendingAutomation(queuedMenu);
+					SceneEntity entity = queuedMenu.getEntity();
+
+					if (entity != null)
+					{
+						long[] entitiesAtMouse = client.getEntitiesAtMouse();
+						int count = client.getEntitiesAtMouseCount();
+						if (count < 1000)
+						{
+							entitiesAtMouse[count] = entity.getTag();
+							client.setEntitiesAtMouseCount(count + 1);
+						}
+					}
+
+					log.debug("Forwarding click to [{}, {}]", event.getX(), event.getY());
+					mouseHandler.sendClick(event.getX(), event.getY(), 1);
+					queuedMenu = null;
+				});
+				break;
+
+			case RELEASE:
+				mouseHandler.sendRelease();
+				break;
+
+			case MOVEMENT:
+				mouseHandler.sendMovement(event.getX(), event.getY());
+				break;
 		}
 	}
 
