@@ -10,6 +10,11 @@ public class Randomizer
 
     public static Point getRandomPointIn(Rectangle rect)
     {
+        if (rect == null)
+        {
+            return new Point(0, 0);
+        }
+
         int xDeviation = (int) Math.log(rect.getWidth() * Math.PI);
         int yDeviation = (int) Math.log(rect.getHeight() * Math.PI);
         return getRandomPointIn(rect, xDeviation, yDeviation);
