@@ -48,6 +48,8 @@ public abstract class HClientMixin implements RSClient
 	private static boolean printMenuActions;
 	@Inject
 	private static boolean lowCpu;
+	@Inject
+	private static volatile MenuAutomated queuedMenu;
 
 	@Copy("drawWidgets")
 	@Replace("drawWidgets")
@@ -264,26 +266,15 @@ public abstract class HClientMixin implements RSClient
 		automatedMenu.set(replacement);
 	}
 
-	@Copy("method6006")
-	@Replace("method6006")
-	public static void copy$method6006(RSActor actor)
+	@Inject
+	public void setQueuedMenu(MenuAutomated menuAutomated)
 	{
-		// For some reason, RuneLite sets these to Int.MIN_VALUE, set them back to 0 to prevent crashes.
-		if (actor.getPoseFrame() < 0)
-		{
-			actor.setPoseFrame(0);
-		}
+		queuedMenu = menuAutomated;
+	}
 
-		if (actor.getSpotAnimFrame() < 0)
-		{
-			actor.setSpotAnimFrame(0);
-		}
-
-		if (actor.getActionFrame() < 0)
-		{
-			actor.setAnimationFrame(0);
-		}
-
-		copy$method6006(actor);
+	@Inject
+	public MenuAutomated getQueuedMenu()
+	{
+		return queuedMenu;
 	}
 }

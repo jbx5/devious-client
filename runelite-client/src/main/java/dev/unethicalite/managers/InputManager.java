@@ -1,9 +1,15 @@
 package dev.unethicalite.managers;
 
+import com.github.kwhat.jnativehook.GlobalScreen;
+import com.github.kwhat.jnativehook.NativeHookException;
+import com.github.kwhat.jnativehook.mouse.NativeMouseEvent;
+import com.github.kwhat.jnativehook.mouse.NativeMouseInputListener;
 import dev.unethicalite.api.events.MouseAutomated;
+import dev.unethicalite.api.events.NativeMouseInput;
 import dev.unethicalite.client.config.UnethicaliteConfig;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
+import net.runelite.api.Client;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.input.MouseListener;
@@ -15,8 +21,9 @@ import java.awt.event.MouseEvent;
 
 @Singleton
 @Slf4j
-public class InputManager implements MouseListener
+public class InputManager implements MouseListener, NativeMouseInputListener
 {
+	private final Client client;
 	private final MinimalPluginManager minimalPluginManager;
 	private final LoopedPluginManager loopedPluginManager;
 	private final UnethicaliteConfig interactionConfig;
@@ -35,13 +42,20 @@ public class InputManager implements MouseListener
 			MinimalPluginManager minimalPluginManager,
 			LoopedPluginManager loopedPluginManager,
 			MouseManager manager,
-			EventBus eventBus, UnethicaliteConfig interactionConfig)
+			EventBus eventBus,
+			Client client,
+			UnethicaliteConfig interactionConfig
+	) throws NativeHookException
 	{
 		this.minimalPluginManager = minimalPluginManager;
 		this.loopedPluginManager = loopedPluginManager;
+		this.client = client;
 		this.interactionConfig = interactionConfig;
 		eventBus.register(this);
 		manager.registerMouseListener(this);
+		GlobalScreen.registerNativeHook();
+		GlobalScreen.addNativeMouseListener(this);
+		GlobalScreen.addNativeMouseMotionListener(this);
 	}
 
 	@Override
@@ -115,6 +129,50 @@ public class InputManager implements MouseListener
 				setLastMove(event.getX(), event.getY());
 				break;
 		}
+	}
+
+	@Override
+	public void nativeMouseClicked(NativeMouseEvent nativeEvent)
+	{
+		client.getCallbacks().post(new NativeMouseInput(
+				nativeEvent.getX(),
+				nativeEvent.getY(),
+				nativeEvent.getButton(),
+				NativeMouseInput.Type.CLICK
+		));
+	}
+
+	@Override
+	public void nativeMousePressed(NativeMouseEvent nativeEvent)
+	{
+		client.getCallbacks().post(new NativeMouseInput(
+				nativeEvent.getX(),
+				nativeEvent.getY(),
+				nativeEvent.getButton(),
+				NativeMouseInput.Type.PRESS
+		));
+	}
+
+	@Override
+	public void nativeMouseReleased(NativeMouseEvent nativeEvent)
+	{
+		client.getCallbacks().post(new NativeMouseInput(
+				nativeEvent.getX(),
+				nativeEvent.getY(),
+				nativeEvent.getButton(),
+				NativeMouseInput.Type.RELEASE
+		));
+	}
+
+	@Override
+	public void nativeMouseMoved(NativeMouseEvent nativeEvent)
+	{
+		client.getCallbacks().post(new NativeMouseInput(
+				nativeEvent.getX(),
+				nativeEvent.getY(),
+				nativeEvent.getButton(),
+				NativeMouseInput.Type.MOVEMENT
+		));
 	}
 
 	private void setLastClick(int x, int y)

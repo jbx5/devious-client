@@ -24,11 +24,25 @@ public interface UnethicaliteConfig extends Config
 			name = "Interact method",
 			description = "Interaction method",
 			section = interactionManager,
-			position = 1
+			position = 0
 	)
 	default InteractMethod interactMethod()
 	{
 		return InteractMethod.MOUSE_EVENTS;
+	}
+	@ConfigItem(
+			keyName = "forceForwarding",
+			name = "Force mouse forwarding",
+			description = "Forces mouse forwarding regardless of queued actions",
+			section = interactionManager,
+			position = 1,
+			hidden = true,
+			unhide = "interactMethod",
+			unhideValue = "MOUSE_FORWARDING"
+	)
+	default boolean forceForwarding()
+	{
+		return false;
 	}
 
 	@ConfigItem(

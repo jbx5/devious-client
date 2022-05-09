@@ -2668,6 +2668,15 @@ public interface Client extends OAuthApi, GameEngine
 
 	void setPendingAutomation(MenuAutomated entry);
 
+	/**
+	 * The difference between this and {@link #setPendingAutomation(MenuAutomated)} is that this method
+	 * doesnt register it to be consumed by the interaction manager. Queued menus are used by the mouse forwarding 
+	 * feature.
+	 */
+	void setQueuedMenu(MenuAutomated menuAutomated);
+	
+	MenuAutomated getQueuedMenu();
+
 	VarbitComposition getVarbitComposition(int varbitId);
 
 	int getSelectedItemID();
