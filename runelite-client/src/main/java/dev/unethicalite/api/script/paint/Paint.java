@@ -55,7 +55,7 @@ public class Paint extends Overlay
 	{
 		Font font = g.getFont();
 
-		if (Objects.equals("minimal", System.getProperty("unethicalite.build")))
+		if (Objects.equals("minimal", System.getenv("unethicalite.build")))
 		{
 			if (interactionConfig.drawMouse())
 			{

@@ -131,7 +131,7 @@ public class MinimalToolbar extends JMenuBar
 			debug.add(mouseDebug);
 
 			JRadioButton menuActionDebug = new JRadioButton("MenuAction debug");
-			menuActionDebug.addActionListener(e -> configManager.setConfiguration("unethicalite", "debugInteractions", menuActionDebug.isSelected()));
+			menuActionDebug.addActionListener(e -> configManager.setConfiguration("unethicalite", "debugMenuAction", menuActionDebug.isSelected()));
 			debug.add(menuActionDebug);
 
 			JRadioButton dialogDebug = new JRadioButton("Dialog debug");
