@@ -1,14 +1,13 @@
 package dev.unethicalite.client.minimal.ui;
 
 import dev.unethicalite.api.plugins.Script;
+import dev.unethicalite.client.config.UnethicaliteConfig;
 import dev.unethicalite.client.devtools.EntityRenderer;
 import dev.unethicalite.client.devtools.scriptinspector.ScriptInspector;
 import dev.unethicalite.client.devtools.varinspector.VarInspector;
 import dev.unethicalite.client.devtools.widgetinspector.WidgetInspector;
-import dev.unethicalite.client.minimal.config.ConfigPanel;
-import dev.unethicalite.client.minimal.config.ConfigurationDescriptor;
 import dev.unethicalite.client.minimal.config.DisableRenderCallbacks;
-import dev.unethicalite.client.config.UnethicaliteConfig;
+import dev.unethicalite.client.minimal.config.MinimalConfigPanel;
 import dev.unethicalite.client.minimal.plugins.MinimalPluginChanged;
 import dev.unethicalite.client.minimal.plugins.MinimalPluginState;
 import dev.unethicalite.managers.MinimalFpsManager;
@@ -19,6 +18,8 @@ import net.runelite.client.config.RuneLiteConfig;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.events.ConfigChanged;
+import net.runelite.client.plugins.config.PluginConfigurationDescriptor;
+import net.runelite.client.ui.components.colorpicker.ColorPickerManager;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -41,6 +42,7 @@ public class MinimalToolbar extends JMenuBar
 	private final RuneLiteConfig runeLiteConfig;
 	private final Client client;
 	private final MinimalFpsManager minimalFpsManager;
+	private final ColorPickerManager colorPickerManager;
 
 	private JMenuItem pluginConfig;
 	private JMenuItem stopPlugin;
@@ -48,14 +50,14 @@ public class MinimalToolbar extends JMenuBar
 	private JMenuItem restartPlugin;
 	private JRadioButton rendering;
 
-	private ConfigPanel unethicaliteConfigPanel;
-	private ConfigPanel clientConfigPanel;
+	private MinimalConfigPanel unethicaliteConfigPanel;
+	private MinimalConfigPanel clientConfigPanel;
 
 	@Inject
 	public MinimalToolbar(VarInspector varInspector, WidgetInspector widgetInspector, ScriptInspector scriptInspector,
 						  EntityRenderer entityRenderer, MinimalPluginManager minimalPluginManager, MinimalPluginsPanel minimalPluginsPanel,
 						  ConfigManager configManager, EventBus eventBus, UnethicaliteConfig unethicaliteConfig,
-						  RuneLiteConfig runeLiteConfig, Client client, MinimalFpsManager minimalFpsManager)
+						  RuneLiteConfig runeLiteConfig, Client client, MinimalFpsManager minimalFpsManager, ColorPickerManager colorPickerManager)
 	{
 		this.varInspector = varInspector;
 		this.widgetInspector = widgetInspector;
@@ -69,6 +71,7 @@ public class MinimalToolbar extends JMenuBar
 		this.runeLiteConfig = runeLiteConfig;
 		this.client = client;
 		this.minimalFpsManager = minimalFpsManager;
+		this.colorPickerManager = colorPickerManager;
 	}
 
 	public void init()
@@ -76,21 +79,25 @@ public class MinimalToolbar extends JMenuBar
 		configManager.setDefaultConfiguration(unethicaliteConfig, false);
 		configManager.setDefaultConfiguration(runeLiteConfig, false);
 
-		ConfigurationDescriptor minimal = new ConfigurationDescriptor(
+		PluginConfigurationDescriptor minimal = new PluginConfigurationDescriptor(
 				"Unethicalite",
 				"Unethicalite settings",
+				new String[]{},
+				unethicaliteConfig,
 				configManager.getConfigDescriptor(unethicaliteConfig)
 		);
-		unethicaliteConfigPanel = new ConfigPanel(configManager, eventBus, minimal, client);
-		unethicaliteConfigPanel.init();
+		unethicaliteConfigPanel = new MinimalConfigPanel(configManager, colorPickerManager, eventBus);
+		unethicaliteConfigPanel.init(minimal);
 
-		ConfigurationDescriptor cl = new ConfigurationDescriptor(
+		PluginConfigurationDescriptor cl = new PluginConfigurationDescriptor(
 				"Client",
 				"Client settings",
+				new String[]{},
+				runeLiteConfig,
 				configManager.getConfigDescriptor(runeLiteConfig)
 		);
-		clientConfigPanel = new ConfigPanel(configManager, eventBus, cl, client);
-		clientConfigPanel.init();
+		clientConfigPanel = new MinimalConfigPanel(configManager, colorPickerManager, eventBus);
+		clientConfigPanel.init(cl);
 
 		SwingUtilities.invokeLater(() ->
 		{
@@ -200,16 +207,23 @@ public class MinimalToolbar extends JMenuBar
 			{
 				if (minimalPluginManager.getPlugin() != null && minimalPluginManager.getConfig() != null)
 				{
-					new ConfigPanel(
+					MinimalConfigPanel panel = new MinimalConfigPanel(
 							configManager,
-							eventBus,
-							new ConfigurationDescriptor(
+							colorPickerManager,
+							eventBus
+					);
+
+					panel.init(
+							new PluginConfigurationDescriptor(
 									minimalPluginManager.getPlugin().getName(),
 									"",
+									new String[]{},
+									minimalPluginManager.getConfig(),
 									configManager.getConfigDescriptor(minimalPluginManager.getConfig())
-							),
-							client
-					).init().open();
+							)
+					);
+
+					panel.open();
 				}
 			});
 			pluginConfig.setVisible(false);

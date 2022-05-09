@@ -51,7 +51,7 @@ public abstract class Items
 
 			item.setSlot(i);
 
-			if (filter.test(item) && modification.apply(item))
+			if (modification.apply(item) && filter.test(item))
 			{
 				items.add(item);
 			}

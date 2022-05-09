@@ -7,6 +7,7 @@ import dev.unethicalite.api.plugins.Task;
 import dev.unethicalite.api.plugins.TaskPlugin;
 import dev.unethicalite.client.Static;
 import lombok.extern.slf4j.Slf4j;
+import net.runelite.api.Client;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
@@ -31,6 +32,9 @@ public class LoopedPluginManager
 
 	@Inject
 	private Provider<PluginListPanel> pluginListPanelProvider;
+
+	@Inject
+	private Client client;
 
 	private LoopedPlugin loopedPlugin = null;
 	private Thread currentLoop = null;
@@ -74,6 +78,8 @@ public class LoopedPluginManager
 
 		currentLoop = null;
 		loopedPlugin = null;
+
+		client.setQueuedMenu(null);
 	}
 
 	public void submit(Plugin plugin)

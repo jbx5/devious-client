@@ -49,8 +49,6 @@ public class InteractionManager
 	@Inject
 	private Client client;
 
-	private volatile MenuAutomated queuedMenu = null;
-
 	@Inject
 	InteractionManager(EventBus eventBus)
 	{
@@ -82,12 +80,12 @@ public class InteractionManager
 			switch (config.interactMethod())
 			{
 				case MOUSE_FORWARDING:
-					if (queuedMenu != null)
+					if (client.getQueuedMenu() != null)
 					{
 						break;
 					}
 
-					queuedMenu = event;
+					client.setQueuedMenu(event);
 					break;
 
 				case MOUSE_EVENTS:
@@ -194,7 +192,8 @@ public class InteractionManager
 	@Subscribe
 	public void onNativeMouseInput(NativeMouseInput event)
 	{
-		if (queuedMenu == null || config.interactMethod() != InteractMethod.MOUSE_FORWARDING)
+		if ((client.getQueuedMenu() == null && !config.forceForwarding())
+				|| config.interactMethod() != InteractMethod.MOUSE_FORWARDING)
 		{
 			return;
 		}
@@ -255,14 +254,26 @@ public class InteractionManager
 		switch (event.getType())
 		{
 			case PRESS:
+				int button = event.getButton();
+				MenuAutomated queuedMenu = client.getQueuedMenu();
+
+				if (queuedMenu == null)
+				{
+					if (config.forceForwarding())
+					{
+						mouseHandler.sendClick(x, y, button);
+					}
+
+					return;
+				}
+
 				GameThread.invoke(() ->
 				{
-					int button = event.getButton();
 					if (button == 1)
 					{
 						client.setPendingAutomation(queuedMenu);
 						setHoveredEntity(queuedMenu.getEntity());
-						queuedMenu = null;
+						client.setQueuedMenu(null);
 					}
 
 					log.debug(
