@@ -207,7 +207,12 @@ public class InteractionManager
 
 		MouseHandler mouseHandler = client.getMouseHandler();
 
-		// TODO translate screen X Y to canvas X Y
+		GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+		double screenWidth = gd.getDisplayMode().getWidth();
+		double screenHeight = gd.getDisplayMode().getHeight();
+
+		int x = (int) (event.getX() * ((double) client.getCanvasWidth() / screenWidth));
+		int y = (int) (event.getY() * ((double) client.getCanvasHeight() / screenHeight));
 
 		switch (event.getType())
 		{
@@ -228,8 +233,8 @@ public class InteractionManager
 						}
 					}
 
-					log.debug("Forwarding click to [{}, {}]", event.getX(), event.getY());
-					mouseHandler.sendClick(event.getX(), event.getY(), 1);
+					log.debug("Forwarding click from [{}, {}] to [{}, {}]", event.getX(), event.getY(), x, y);
+					mouseHandler.sendClick(x, y, 1);
 					queuedMenu = null;
 				});
 				break;
@@ -239,7 +244,7 @@ public class InteractionManager
 				break;
 
 			case MOVEMENT:
-				mouseHandler.sendMovement(event.getX(), event.getY());
+				mouseHandler.sendMovement(x, y);
 				break;
 		}
 	}
