@@ -1,9 +1,11 @@
 package dev.unethicalite.mixins;
 
 import dev.unethicalite.api.events.MenuAutomated;
+import dev.unethicalite.api.util.Randomizer;
 import dev.unethicalite.api.util.Text;
 import net.runelite.api.ItemComposition;
 import net.runelite.api.MenuAction;
+import net.runelite.api.Point;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Shadow;
@@ -91,6 +93,12 @@ public abstract class HTileItemMixin implements RSTileItem
 		}
 
 		return Text.sanitize(name);
+	}
+
+	@Inject
+	public Point getClickPoint()
+	{
+		return Randomizer.getRandomPointIn(getCachedBounds());
 	}
 
 	@Inject

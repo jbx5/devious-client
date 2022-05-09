@@ -111,7 +111,7 @@ public abstract class HTileObjectMixin implements TileObject
 	{
 		if (this instanceof GameObject)
 		{
-			return Randomizer.getRandomPointIn(((GameObject) this).getConvexHull().getBounds());
+			return Randomizer.getRandomPointIn(((GameObject) this).getRenderable().getCachedBounds());
 		}
 		else
 		{
