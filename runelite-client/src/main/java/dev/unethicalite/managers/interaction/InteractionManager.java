@@ -12,6 +12,7 @@ import dev.unethicalite.api.movement.Movement;
 import dev.unethicalite.api.packets.Packets;
 import dev.unethicalite.api.widgets.Widgets;
 import dev.unethicalite.client.config.UnethicaliteConfig;
+import dev.unethicalite.client.minimal.ui.MinimalUI;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.api.DialogOption;
@@ -24,10 +25,13 @@ import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
+import net.runelite.client.ui.ClientUI;
+import net.runelite.client.ui.ContainableFrame;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.awt.*;
+import java.util.Arrays;
 
 @Singleton
 @Slf4j
@@ -77,7 +81,7 @@ public class InteractionManager
 			SceneEntity entity;
 			switch (config.interactMethod())
 			{
-				case CLICK_FORWARDING:
+				case MOUSE_FORWARDING:
 					if (queuedMenu != null)
 					{
 						break;
@@ -112,17 +116,7 @@ public class InteractionManager
 					GameThread.invoke(() ->
 					{
 						client.setPendingAutomation(event);
-
-						if (entity != null)
-						{
-							long[] entitiesAtMouse = client.getEntitiesAtMouse();
-							int count = client.getEntitiesAtMouseCount();
-							if (count < 1000)
-							{
-								entitiesAtMouse[count] = entity.getTag();
-								client.setEntitiesAtMouseCount(count + 1);
-							}
-						}
+						setHoveredEntity(entity);
 
 						if (!config.naturalMouse())
 						{
@@ -200,43 +194,90 @@ public class InteractionManager
 	@Subscribe
 	public void onNativeMouseInput(NativeMouseInput event)
 	{
-		if (queuedMenu == null)
+		if (queuedMenu == null || config.interactMethod() != InteractMethod.MOUSE_FORWARDING)
 		{
 			return;
 		}
 
 		MouseHandler mouseHandler = client.getMouseHandler();
+		if (mouseHandler == null)
+		{
+			return;
+		}
 
-		GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
-		double screenWidth = gd.getDisplayMode().getWidth();
-		double screenHeight = gd.getDisplayMode().getHeight();
+		double eventX = event.getX();
+		double eventY = event.getY();
 
-		int x = (int) (event.getX() * ((double) client.getCanvasWidth() / screenWidth));
-		int y = (int) (event.getY() * ((double) client.getCanvasHeight() / screenHeight));
+		ContainableFrame frame = MinimalUI.getFrame() != null ? MinimalUI.getFrame() : ClientUI.getFrame();
+
+		if (frame.getBounds().contains(eventX, eventY))
+		{
+			return;
+		}
+
+		GraphicsDevice screen = Arrays.stream(GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices())
+				.filter(device -> device.getDefaultConfiguration().getBounds().contains(event.getX(), event.getY()))
+				.findFirst()
+				.orElse(null);
+		if (screen == null)
+		{
+			log.debug("Screen not found  to forward mouse event");
+			return;
+		}
+
+		double screenWidth = screen.getDisplayMode().getWidth();
+		double screenHeight = screen.getDisplayMode().getHeight();
+
+		if (eventX < 0)
+		{
+			eventX = screenWidth + eventX;
+		}
+		else if (eventX > screenWidth)
+		{
+			eventX = eventX - screenWidth;
+		}
+
+		if (eventY < 0)
+		{
+			eventY = screenHeight + eventY;
+		}
+		else if (eventY > screenHeight)
+		{
+			eventY = eventY - screenHeight;
+		}
+
+		int finalEventX = (int) eventX;
+		int finalEventY = (int) eventY;
+
+		int x = (int) (finalEventX * ((double) client.getCanvasWidth() / screenWidth));
+		int y = (int) (finalEventY * ((double) client.getCanvasHeight() / screenHeight));
 
 		switch (event.getType())
 		{
 			case PRESS:
 				GameThread.invoke(() ->
 				{
-					client.setPendingAutomation(queuedMenu);
-					SceneEntity entity = queuedMenu.getEntity();
-
-					if (entity != null)
+					int button = event.getButton();
+					if (button == 1)
 					{
-						long[] entitiesAtMouse = client.getEntitiesAtMouse();
-						int count = client.getEntitiesAtMouseCount();
-						if (count < 1000)
-						{
-							entitiesAtMouse[count] = entity.getTag();
-							client.setEntitiesAtMouseCount(count + 1);
-						}
+						client.setPendingAutomation(queuedMenu);
+						setHoveredEntity(queuedMenu.getEntity());
+						queuedMenu = null;
 					}
 
-					log.debug("Forwarding click from [{}, {}] to [{}, {}]", event.getX(), event.getY(), x, y);
-					mouseHandler.sendClick(x, y, 1);
-					queuedMenu = null;
+					log.debug(
+							"Forwarding mouse press [{}] from [{}, {}, {}] to canvas [{}, {}]",
+							button,
+							screen.getIDstring(),
+							finalEventX,
+							finalEventY,
+							x,
+							y
+					);
+
+					mouseHandler.sendClick(x, y, button);
 				});
+
 				break;
 
 			case RELEASE:
@@ -265,6 +306,20 @@ public class InteractionManager
 		else
 		{
 			log.debug("Unknown or unmapped dialog {}", e);
+		}
+	}
+
+	private void setHoveredEntity(SceneEntity entity)
+	{
+		if (entity != null)
+		{
+			long[] entitiesAtMouse = client.getEntitiesAtMouse();
+			int count = client.getEntitiesAtMouseCount();
+			if (count < 1000)
+			{
+				entitiesAtMouse[count] = entity.getTag();
+				client.setEntitiesAtMouseCount(count + 1);
+			}
 		}
 	}
 
