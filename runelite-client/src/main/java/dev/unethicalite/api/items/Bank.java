@@ -202,21 +202,14 @@ public class Bank extends Items
 			return;
 		}
 
-		WithdrawOption withdrawOption = WithdrawOption.ofAmount(item, amount);
+		String action = getAction(item, amount, false);
 
+		item.interact(action);
 
-		if (withdrawOption == WithdrawOption.X && item.hasAction("Deposit-" + amount))
+		if (action.equals("Withdraw-X"))
 		{
-			item.interact(WithdrawOption.LAST_QUANTITY.getMenuIndex() + 1);
-		}
-		else
-		{
-			item.interact(withdrawOption.menuIndex + 1);
-
-			if (withdrawOption == WithdrawOption.X)
-			{
-				Dialog.enterInput(amount);
-			}
+			Time.sleepUntil(Dialog::isEnterInputOpen, 1200);
+			Dialog.enterInput(amount);
 		}
 	}
 
@@ -254,7 +247,8 @@ public class Bank extends Items
 			return;
 		}
 
-		WithdrawOption withdrawOption = WithdrawOption.ofAmount(item, amount);
+		String action = getAction(item, amount, true);
+
 		if (withdrawMode == WithdrawMode.NOTED && !isNotedWithdrawMode())
 		{
 			setWithdrawMode(true);
@@ -267,20 +261,12 @@ public class Bank extends Items
 			Time.sleepUntil(() -> !isNotedWithdrawMode(), 1200);
 		}
 
-		if (withdrawOption == WithdrawOption.X && item.hasAction("Withdraw-" + amount))
+		item.interact(action);
+		if (action.equals("Withdraw-X"))
 		{
-			item.interact(WithdrawOption.LAST_QUANTITY.getMenuIndex());
+			Time.sleepUntil(Dialog::isEnterInputOpen, 1200);
+			Dialog.enterInput(amount);
 		}
-		else
-		{
-			item.interact(withdrawOption.getMenuIndex());
-			if (withdrawOption == WithdrawOption.X)
-			{
-				Time.sleepUntil(Dialog::isEnterInputOpen, 1200);
-				Dialog.enterInput(amount);
-			}
-		}
-
 	}
 
 	public static void withdrawLastQuantity(String name, WithdrawMode withdrawMode)
@@ -529,6 +515,34 @@ public class Bank extends Items
 		}
 	}
 
+	private static String getAction(Item item, int amount, Boolean withdraw) {
+		String action = withdraw ? "Withdraw" : "Deposit";
+		if (amount == 1)
+		{
+			action += "-1";
+		} else if (amount == 5)
+		{
+			action +="-5";
+		} else if (amount == 10)
+		{
+			action +="-10";
+		} else if (amount >= item.getQuantity())
+		{
+			action +="-All";
+		} else
+		{
+			if (item.hasAction(action + "-" + amount))
+			{
+				action += "-" + amount;
+			}
+			else
+			{
+				action += "-X";
+			}
+		}
+		return action;
+	}
+
 	public enum Component
 	{
 		BANK_REARRANGE_SWAP(WidgetID.BANK_GROUP_ID, 17),
@@ -599,8 +613,13 @@ public class Bank extends Items
 
 	private enum WithdrawOption
 	{
-		ONE(2), FIVE(3), TEN(4), LAST_QUANTITY(5), X(6),
-		ALL(7), ALL_BUT_1(8);
+		ONE(2),
+		FIVE(3),
+		TEN(4),
+		LAST_QUANTITY(5),
+		X(6),
+		ALL(7),
+		ALL_BUT_1(8);
 
 		private final int menuIndex;
 
