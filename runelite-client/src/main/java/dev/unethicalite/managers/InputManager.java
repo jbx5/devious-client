@@ -12,12 +12,14 @@ import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
+import net.runelite.client.events.ConfigChanged;
 import net.runelite.client.input.MouseListener;
 import net.runelite.client.input.MouseManager;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.awt.event.MouseEvent;
+import java.util.Objects;
 
 @Singleton
 @Slf4j
@@ -54,8 +56,6 @@ public class InputManager implements MouseListener, NativeMouseInputListener
 		eventBus.register(this);
 		manager.registerMouseListener(this);
 		GlobalScreen.registerNativeHook();
-		GlobalScreen.addNativeMouseListener(this);
-		GlobalScreen.addNativeMouseMotionListener(this);
 	}
 
 	@Override
@@ -173,6 +173,31 @@ public class InputManager implements MouseListener, NativeMouseInputListener
 				nativeEvent.getButton(),
 				NativeMouseInput.Type.MOVEMENT
 		));
+	}
+
+	@Subscribe
+	private void onConfigChanged(ConfigChanged event)
+	{
+		if (!event.getGroup().equals("unethicalite"))
+		{
+			return;
+		}
+
+		if (!event.getKey().equals("interactMethod"))
+		{
+			return;
+		}
+
+		if (Objects.equals(event.getNewValue(), "MOUSE_FORWARDING"))
+		{
+			GlobalScreen.addNativeMouseListener(this);
+			GlobalScreen.addNativeMouseMotionListener(this);
+		}
+		else if (Objects.equals(event.getOldValue(), "MOUSE_FORWARDING"))
+		{
+			GlobalScreen.removeNativeMouseListener(this);
+			GlobalScreen.removeNativeMouseMotionListener(this);
+		}
 	}
 
 	private void setLastClick(int x, int y)
