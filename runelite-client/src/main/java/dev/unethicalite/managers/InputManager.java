@@ -20,6 +20,7 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.awt.event.MouseEvent;
 import java.util.Objects;
+import java.util.logging.Logger;
 
 @Singleton
 @Slf4j
@@ -56,6 +57,7 @@ public class InputManager implements MouseListener, NativeMouseInputListener
 		eventBus.register(this);
 		manager.registerMouseListener(this);
 		GlobalScreen.registerNativeHook();
+		Logger.getLogger(GlobalScreen.class.getPackage().getName()).setLevel(java.util.logging.Level.OFF);
 	}
 
 	@Override

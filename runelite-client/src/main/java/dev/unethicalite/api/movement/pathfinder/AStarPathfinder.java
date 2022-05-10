@@ -8,6 +8,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
+
+import dev.unethicalite.client.Static;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.coords.WorldPoint;
@@ -16,7 +18,6 @@ import net.runelite.api.coords.WorldPoint;
 @RequiredArgsConstructor
 public class AStarPathfinder implements PathingAlgorithm
 {
-
 	private static final int MAX_EXPLORATION_FACTOR = 2;
 	private static final long TIMEOUT = 3000;
 	private final CollisionMap collisionMap;
@@ -28,6 +29,12 @@ public class AStarPathfinder implements PathingAlgorithm
 
 	public List<WorldPoint> find()
 	{
+		if (destination.isInScene(Static.getClient()))
+		{
+			// DFS if destination is in scene
+			return null;
+		}
+
 		if (startCoords.isEmpty())
 		{
 			return Collections.emptyList();
