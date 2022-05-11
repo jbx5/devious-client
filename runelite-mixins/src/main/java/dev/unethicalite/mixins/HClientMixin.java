@@ -12,7 +12,6 @@ import net.runelite.api.events.StatChanged;
 import net.runelite.api.mixins.Copy;
 import net.runelite.api.mixins.FieldHook;
 import net.runelite.api.mixins.Inject;
-import net.runelite.api.mixins.MethodHook;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Replace;
 import net.runelite.api.mixins.Shadow;
@@ -48,6 +47,8 @@ public abstract class HClientMixin implements RSClient
 	private static boolean printMenuActions;
 	@Inject
 	private static boolean lowCpu;
+	@Inject
+	private static volatile MenuAutomated queuedMenu;
 
 	@Copy("drawWidgets")
 	@Replace("drawWidgets")
@@ -128,9 +129,9 @@ public abstract class HClientMixin implements RSClient
 		client.getCallbacks().post(new PlaneChanged(client.getPlane()));
 	}
 
-	@Inject
-	@MethodHook("incrementMenuEntries")
-	public static void onIncrementMenuEntries()
+	@Replace("menu")
+	@Copy("menu")
+	public void copy$menu()
 	{
 		MenuAutomated menu = automatedMenu.getAndSet(null);
 		if (menu != null)
@@ -147,9 +148,9 @@ public abstract class HClientMixin implements RSClient
 			client.getMenuOptions()[idx] = menu.getOption();
 			client.getMenuTargets()[idx] = menu.getTarget();
 			client.getMenuForceLeftClick()[idx] = true;
-
-			client.getLogger().info("Inserting automated menu");
 		}
+
+		copy$menu();
 	}
 
 	@Inject
@@ -266,26 +267,15 @@ public abstract class HClientMixin implements RSClient
 		automatedMenu.set(replacement);
 	}
 
-	@Copy("method6006")
-	@Replace("method6006")
-	public static void copy$method6006(RSActor actor)
+	@Inject
+	public void setQueuedMenu(MenuAutomated menuAutomated)
 	{
-		// For some reason, RuneLite sets these to Int.MIN_VALUE, set them back to 0 to prevent crashes.
-		if (actor.getPoseFrame() < 0)
-		{
-			actor.setPoseFrame(0);
-		}
+		queuedMenu = menuAutomated;
+	}
 
-		if (actor.getSpotAnimFrame() < 0)
-		{
-			actor.setSpotAnimFrame(0);
-		}
-
-		if (actor.getActionFrame() < 0)
-		{
-			actor.setAnimationFrame(0);
-		}
-
-		copy$method6006(actor);
+	@Inject
+	public MenuAutomated getQueuedMenu()
+	{
+		return queuedMenu;
 	}
 }

@@ -628,10 +628,10 @@ public interface Widget extends Interactable, Identifiable
 		@MagicConstant(valuesFromClass = WidgetSizeMode.class) int widthMode,
 		@MagicConstant(valuesFromClass = WidgetSizeMode.class) int heightMode);
 
-//	/**
-//	 * Gets the menu options available on the widget as a sparse array.
-//	 */
-//	String[] getActions();
+	/**
+	 * Gets the menu options available on the widget as a sparse array.
+	 */
+	String[] getActions();
 
 	/**
 	 * Creates a dynamic widget child

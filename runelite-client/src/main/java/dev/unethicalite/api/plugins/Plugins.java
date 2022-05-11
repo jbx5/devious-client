@@ -1,6 +1,6 @@
 package dev.unethicalite.api.plugins;
 
-import dev.unethicalite.managers.Static;
+import dev.unethicalite.client.Static;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.client.config.RuneLiteConfig;
 import net.runelite.client.plugins.Plugin;
@@ -32,6 +32,7 @@ public class Plugins
 	{
 		try
 		{
+			getPluginManager().remove(plugin);
 			getPluginManager().setPluginEnabled(plugin, false);
 			return getPluginManager().stopPlugin(plugin);
 		}

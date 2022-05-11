@@ -4,125 +4,114 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gi")
+@ObfuscatedName("ge")
 @Implements("VarbitComposition")
 public class VarbitComposition extends DualNode {
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = 
-	"Lig;")
-
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(
+		descriptor = "Llp;"
+	)
+	@Export("VarbitDefinition_archive")
+	public static AbstractArchive VarbitDefinition_archive;
+	@ObfuscatedName("q")
+	@ObfuscatedSignature(
+		descriptor = "Lir;"
+	)
 	@Export("VarbitDefinition_cached")
 	public static EvictingDualNodeHashTable VarbitDefinition_cached;
-	@ObfuscatedName("n")
-	static final int[] field1970;
-	@ObfuscatedName("i")
-	@ObfuscatedGetter(intValue = 
-	-775301691)
-
+	@ObfuscatedName("m")
+	static final int[] field2039;
+	@ObfuscatedName("l")
+	@ObfuscatedGetter(
+		intValue = 449659853
+	)
 	@Export("baseVar")
 	public int baseVar;
-	@ObfuscatedName("f")
-	@ObfuscatedGetter(intValue = 
-	1129048987)
-
+	@ObfuscatedName("k")
+	@ObfuscatedGetter(
+		intValue = -1293091049
+	)
 	@Export("startBit")
 	public int startBit;
-	@ObfuscatedName("b")
-	@ObfuscatedGetter(intValue = 
-	153132931)
-
+	@ObfuscatedName("a")
+	@ObfuscatedGetter(
+		intValue = -1571653715
+	)
 	@Export("endBit")
 	public int endBit;
-	static 
-	{
-		VarbitDefinition_cached = new EvictingDualNodeHashTable(64);
-		field1970 = new int[32];
-		int var0 = 2;
 
-		for (int var1 = 0; var1 < 32; ++var1) {
-			field1970[var1] = var0 - 1;
-			var0 += var0;
+	static {
+		VarbitDefinition_cached = new EvictingDualNodeHashTable(64); // L: 11
+		field2039 = new int[32]; // L: 15
+		int var0 = 2; // L: 18
+
+		for (int var1 = 0; var1 < 32; ++var1) { // L: 19
+			field2039[var1] = var0 - 1; // L: 20
+			var0 += var0; // L: 21
 		}
 
-	}
+	} // L: 23
 
 	VarbitComposition() {
-	}
+	} // L: 25
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = 
-	"(Lpi;I)V", garbageValue = 
-	"391271030")
-
+	@ObfuscatedName("q")
+	@ObfuscatedSignature(
+		descriptor = "(Lpx;I)V",
+		garbageValue = "1433634569"
+	)
 	@Export("decode")
 	void decode(Buffer var1) {
 		while (true) {
-			int var2 = var1.readUnsignedByte();
-			if (var2 == 0) {
-				return;
+			int var2 = var1.readUnsignedByte(); // L: 39
+			if (var2 == 0) { // L: 40
+				return; // L: 43
 			}
 
-			this.decodeNext(var1, var2);
-		} 
+			this.decodeNext(var1, var2); // L: 41
+		}
 	}
 
-	@ObfuscatedName("i")
-	@ObfuscatedSignature(descriptor = 
-	"(Lpi;II)V", garbageValue = 
-	"-467631265")
-
+	@ObfuscatedName("l")
+	@ObfuscatedSignature(
+		descriptor = "(Lpx;II)V",
+		garbageValue = "1729188867"
+	)
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
-		if (var2 == 1) {
-			this.baseVar = var1.readUnsignedShort();
-			this.startBit = var1.readUnsignedByte();
-			this.endBit = var1.readUnsignedByte();
+		if (var2 == 1) { // L: 46
+			this.baseVar = var1.readUnsignedShort(); // L: 47
+			this.startBit = var1.readUnsignedByte(); // L: 48
+			this.endBit = var1.readUnsignedByte(); // L: 49
 		}
 
+	} // L: 52
+
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "(IIIZIB)J",
+		garbageValue = "-48"
+	)
+	@Export("calculateTag")
+	public static long calculateTag(int var0, int var1, int var2, boolean var3, int var4) {
+		long var5 = (long)((var0 & 127) << 0 | (var1 & 127) << 7 | (var2 & 3) << 14) | ((long)var4 & 4294967295L) << 17; // L: 88
+		if (var3) { // L: 89
+			var5 |= 65536L;
+		}
+
+		return var5; // L: 90
 	}
 
-	@ObfuscatedName("hq")
-	@ObfuscatedSignature(descriptor = 
-	"(IIII)V", garbageValue = 
-	"-1670747147")
-
-	@Export("worldToScreen")
-	static final void worldToScreen(int var0, int var1, int var2) {
-		if ((((var0 >= 128) && (var1 >= 128)) && (var0 <= 13056)) && (var1 <= 13056)) {
-			int var3 = WorldMapLabel.getTileHeight(var0, var1, class18.Client_plane) - var2;
-			var0 -= WorldMapLabelSize.cameraX;
-			var3 -= ItemContainer.cameraY;
-			var1 -= class154.cameraZ;
-			int var4 = Rasterizer3D.Rasterizer3D_sine[class147.cameraPitch];
-			int var5 = Rasterizer3D.Rasterizer3D_cosine[class147.cameraPitch];
-			int var6 = Rasterizer3D.Rasterizer3D_sine[class21.cameraYaw];
-			int var7 = Rasterizer3D.Rasterizer3D_cosine[class21.cameraYaw];
-			int var8 = ((var0 * var7) + (var6 * var1)) >> 16;
-			var1 = ((var7 * var1) - (var0 * var6)) >> 16;
-			var0 = var8;
-			var8 = ((var5 * var3) - (var4 * var1)) >> 16;
-			var1 = ((var5 * var1) + (var3 * var4)) >> 16;
-			if (var1 >= 50) {
-				Client.viewportTempX = ((var0 * Client.viewportZoom) / var1) + (Client.viewportWidth / 2);
-				Client.viewportTempY = (Client.viewportHeight / 2) + ((var8 * Client.viewportZoom) / var1);
-			} else {
-				Client.viewportTempX = -1;
-				Client.viewportTempY = -1;
-			}
-
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(
+		descriptor = "(IIIB)I",
+		garbageValue = "-113"
+	)
+	static int method3489(int var0, int var1, int var2) {
+		if ((Tiles.Tiles_renderFlags[var0][var1][var2] & 8) != 0) { // L: 912
+			return 0;
 		} else {
-			Client.viewportTempX = -1;
-			Client.viewportTempY = -1;
+			return var0 > 0 && (Tiles.Tiles_renderFlags[1][var1][var2] & 2) != 0 ? var0 - 1 : var0; // L: 913
 		}
-	}
-
-	@ObfuscatedName("ko")
-	@ObfuscatedSignature(descriptor = 
-	"(I)I", garbageValue = 
-	"1667758885")
-
-	static final int method3578() {
-		float var0 = 200.0F * (((float) (class131.clientPreferences.method2240())) - 0.5F);
-		return 100 - Math.round(var0);
 	}
 }

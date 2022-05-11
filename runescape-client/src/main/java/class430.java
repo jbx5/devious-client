@@ -1,62 +1,41 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
+import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
 
+@ObfuscatedName("pp")
+final class class430 implements class429 {
+	@ObfuscatedName("k")
+	@ObfuscatedGetter(
+		intValue = -1505376757
+	)
+	@Export("clientType")
+	public static int clientType;
 
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/Object;Lpx;I)V",
+		garbageValue = "-2139027116"
+	)
+	public void vmethod7440(Object var1, Buffer var2) {
+		this.method7399((Integer)var1, var2); // L: 21
+	} // L: 22
 
-import net.runelite.rs.Reflection; import net.runelite.mapping.Export; import net.runelite.mapping.ObfuscatedName; import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("pc")
-final class class430 implements class427 {
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = 
-	"(Ljava/lang/Object;Lpi;I)V", garbageValue = 
-	"-700069158")
-
-	public void vmethod7597(Object var1, Buffer var2) {
-		this.method7570(((Long) (var1)), var2);
-	}
-
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = 
-	"(Lpi;I)Ljava/lang/Object;", garbageValue = 
-	"-1640188252")
-
-	public Object vmethod7598(Buffer var1) {
-		return var1.readLong();
+	@ObfuscatedName("q")
+	@ObfuscatedSignature(
+		descriptor = "(Lpx;I)Ljava/lang/Object;",
+		garbageValue = "352015354"
+	)
+	public Object vmethod7436(Buffer var1) {
+		return var1.readInt(); // L: 17
 	}
 
 	@ObfuscatedName("s")
-	@ObfuscatedSignature(descriptor = 
-	"(Ljava/lang/Long;Lpi;B)V", garbageValue = 
-	"-28")
-
-	void method7570(Long var1, Buffer var2) {
-		var2.writeLong(var1);
-	}
-
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(descriptor = 
-	"(Ljava/lang/String;I)Ljava/lang/Class;", garbageValue = 
-	"1539194584")
-
-	@Export("loadClassFromDescriptor")
-	static Class loadClassFromDescriptor(String var0) throws ClassNotFoundException {
-		if (var0.equals("B")) {
-			return Byte.TYPE;
-		} else if (var0.equals("I")) {
-			return Integer.TYPE;
-		} else if (var0.equals("S")) {
-			return Short.TYPE;
-		} else if (var0.equals("J")) {
-			return Long.TYPE;
-		} else if (var0.equals("Z")) {
-			return Boolean.TYPE;
-		} else if (var0.equals("F")) {
-			return Float.TYPE;
-		} else if (var0.equals("D")) {
-			return Double.TYPE;
-		} else if (var0.equals("C")) {
-			return Character.TYPE;
-		} else {
-			return var0.equals("void") ? Void.TYPE : Reflection.findClass(var0);
-		}
-	}
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/Integer;Lpx;I)V",
+		garbageValue = "819909184"
+	)
+	void method7399(Integer var1, Buffer var2) {
+		var2.writeInt(var1); // L: 12
+	} // L: 13
 }

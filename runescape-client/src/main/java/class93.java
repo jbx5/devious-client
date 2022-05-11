@@ -1,161 +1,113 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cq")
+@ObfuscatedName("cf")
 public class class93 {
-	@ObfuscatedName("ti")
-	@ObfuscatedGetter(intValue = 
-	-1393536385)
-
-	static int field1253;
-	@ObfuscatedName("k")
-	@ObfuscatedSignature(descriptor = 
-	"Lqq;")
-
-	static IndexedSprite field1254;
-	@ObfuscatedName("or")
-	@ObfuscatedGetter(intValue = 
-	1900010659)
-
-	static int field1252;
-	@ObfuscatedName("v")
-	@ObfuscatedGetter(intValue = 
-	479487429)
-
-	int field1251;
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(intValue = 
-	1483191049)
-
-	int field1248;
 	@ObfuscatedName("i")
-	@ObfuscatedGetter(intValue = 
-	1476000165)
-
-	int field1247;
-	@ObfuscatedName("f")
-	@ObfuscatedGetter(intValue = 
-	-602846795)
-
-	int field1250;
+	@ObfuscatedSignature(
+		descriptor = "Llp;"
+	)
+	@Export("Widget_fontsArchive")
+	static AbstractArchive Widget_fontsArchive;
+	@ObfuscatedName("bd")
+	static String field1280;
+	@ObfuscatedName("o")
+	@ObfuscatedGetter(
+		intValue = -504702499
+	)
+	int field1281;
+	@ObfuscatedName("q")
+	@ObfuscatedGetter(
+		intValue = 517872849
+	)
+	int field1276;
+	@ObfuscatedName("l")
+	@ObfuscatedGetter(
+		intValue = -1558357321
+	)
+	int field1278;
+	@ObfuscatedName("k")
+	@ObfuscatedGetter(
+		intValue = -1244522073
+	)
+	int field1279;
 
 	class93(int var1, int var2, int var3, int var4) {
-		this.field1251 = var1;
-		this.field1248 = var2;
-		this.field1247 = var3;
-		this.field1250 = var4;
+		this.field1281 = var1; // L: 10
+		this.field1276 = var2; // L: 11
+		this.field1278 = var3; // L: 12
+		this.field1279 = var4; // L: 13
+	} // L: 14
+
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(
+		descriptor = "(I)I",
+		garbageValue = "279766476"
+	)
+	int method2379() {
+		return this.field1281; // L: 17
 	}
 
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = 
-	"(B)I", garbageValue = 
-	"70")
-
-	int method2370() {
-		return this.field1251;
-	}
-
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = 
-	"(I)I", garbageValue = 
-	"194991061")
-
+	@ObfuscatedName("q")
+	@ObfuscatedSignature(
+		descriptor = "(I)I",
+		garbageValue = "-1644349592"
+	)
 	int method2380() {
-		return this.field1248;
+		return this.field1276; // L: 21
 	}
 
-	@ObfuscatedName("i")
-	@ObfuscatedSignature(descriptor = 
-	"(I)I", garbageValue = 
-	"1753372833")
-
-	int method2372() {
-		return this.field1247;
+	@ObfuscatedName("l")
+	@ObfuscatedSignature(
+		descriptor = "(B)I",
+		garbageValue = "0"
+	)
+	int method2389() {
+		return this.field1278; // L: 25
 	}
 
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = 
-	"(I)I", garbageValue = 
-	"1314673051")
-
-	int method2373() {
-		return this.field1250;
+	@ObfuscatedName("k")
+	@ObfuscatedSignature(
+		descriptor = "(I)I",
+		garbageValue = "1608300695"
+	)
+	int method2382() {
+		return this.field1279; // L: 29
 	}
 
-	@ObfuscatedName("v")
-	public static final void method2384(long var0) {
-		if (var0 > 0L) {
-			if (0L == (var0 % 10L)) {
-				long var2 = var0 - 1L;
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(
+		descriptor = "(Llp;Llp;ZI)V",
+		garbageValue = "-14189171"
+	)
+	public static void method2392(AbstractArchive var0, AbstractArchive var1, boolean var2) {
+		ObjectComposition.ObjectDefinition_archive = var0; // L: 73
+		ObjectComposition.ObjectDefinition_modelsArchive = var1; // L: 74
+		ObjectComposition.ObjectDefinition_isLowDetail = var2; // L: 75
+	} // L: 76
 
-				try {
-					Thread.sleep(var2);
-				} catch (InterruptedException var8) {
-				}
-
-				try {
-					Thread.sleep(1L);
-				} catch (InterruptedException var7) {
-				}
-			} else {
-				try {
-					Thread.sleep(var0);
-				} catch (InterruptedException var6) {
-				}
-			}
-
-		}
-	}
-
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = 
-	"(Lln;Ljava/lang/String;Ljava/lang/String;I)[Lqq;", garbageValue = 
-	"18034657")
-
-	public static IndexedSprite[] method2386(AbstractArchive var0, String var1, String var2) {
-		int var3 = var0.getGroupId(var1);
-		int var4 = var0.getFileId(var3, var2);
-		byte[] var7 = var0.takeFile(var3, var4);
-		boolean var6;
-		if (var7 == null) {
-			var6 = false;
-		} else {
-			WorldMapArea.SpriteBuffer_decode(var7);
-			var6 = true;
+	@ObfuscatedName("it")
+	@ObfuscatedSignature(
+		descriptor = "(IIIII)V",
+		garbageValue = "-536546120"
+	)
+	@Export("selectSpell")
+	static void selectSpell(int var0, int var1, int var2, int var3) {
+		Widget var4 = ApproximateRouteStrategy.getWidgetChild(var0, var1); // L: 9770
+		if (var4 != null && var4.onTargetEnter != null) { // L: 9771
+			ScriptEvent var5 = new ScriptEvent(); // L: 9772
+			var5.widget = var4; // L: 9773
+			var5.args = var4.onTargetEnter; // L: 9774
+			class144.runScriptEvent(var5); // L: 9775
 		}
 
-		IndexedSprite[] var5;
-		if (!var6) {
-			var5 = null;
-		} else {
-			IndexedSprite[] var8 = new IndexedSprite[class451.SpriteBuffer_spriteCount];
-
-			for (int var9 = 0; var9 < class451.SpriteBuffer_spriteCount; ++var9) {
-				IndexedSprite var10 = var8[var9] = new IndexedSprite();
-				var10.width = class451.SpriteBuffer_spriteWidth;
-				var10.height = class451.SpriteBuffer_spriteHeight;
-				var10.xOffset = class451.SpriteBuffer_xOffsets[var9];
-				var10.yOffset = class271.SpriteBuffer_yOffsets[var9];
-				var10.subWidth = class451.SpriteBuffer_spriteWidths[var9];
-				var10.subHeight = class451.SpriteBuffer_spriteHeights[var9];
-				var10.palette = NetFileRequest.SpriteBuffer_spritePalette;
-				var10.pixels = FriendLoginUpdate.SpriteBuffer_pixels[var9];
-			}
-
-			ArchiveDiskActionHandler.method5813();
-			var5 = var8;
-		}
-
-		return var5;
-	}
-
-	@ObfuscatedName("hd")
-	@ObfuscatedSignature(descriptor = 
-	"(Lcb;II)V", garbageValue = 
-	"-314734464")
-
-	static final void method2376(Actor var0, int var1) {
-		VarbitComposition.worldToScreen(var0.x, var0.y, var1);
-	}
+		Client.selectedSpellItemId = var3; // L: 9777
+		Client.isSpellSelected = true; // L: 9778
+		ArchiveDiskActionHandler.selectedSpellWidget = var0; // L: 9779
+		Client.selectedSpellChildIndex = var1; // L: 9780
+		class113.selectedSpellFlags = var2; // L: 9781
+		GrandExchangeOfferTotalQuantityComparator.invalidateWidget(var4); // L: 9782
+	} // L: 9783
 }

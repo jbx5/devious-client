@@ -10,6 +10,7 @@ import dev.unethicalite.api.game.Game;
 import dev.unethicalite.api.movement.Movement;
 import dev.unethicalite.api.movement.Reachable;
 import dev.unethicalite.api.scene.Tiles;
+import dev.unethicalite.client.Static;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Player;
 import net.runelite.api.Tile;
@@ -42,29 +43,6 @@ public class Walker
 	private static final int MIN_ENERGY = 5;
 	private static final int MAX_NEAREST_SEARCH_ITERATIONS = 10;
 
-	public static final LoadingCache<WorldPoint, List<WorldPoint>> PATH_CACHE = CacheBuilder.newBuilder()
-			.expireAfterWrite(5, TimeUnit.MINUTES)
-			.build(new CacheLoader<>()
-			{
-				@Override
-				public List<WorldPoint> load(@NotNull WorldPoint key)
-				{
-					log.debug("Loading path to {}", key);
-					return buildPath(key, false);
-				}
-			});
-	public static final LoadingCache<WorldPoint, List<WorldPoint>> LOCAL_PATH_CACHE = CacheBuilder.newBuilder()
-			.expireAfterWrite(5, TimeUnit.MINUTES)
-			.build(new CacheLoader<>()
-			{
-				@Override
-				public List<WorldPoint> load(@NotNull WorldPoint key)
-				{
-					log.debug("Loading local path to {}", key);
-					return buildPath(key, true);
-				}
-			});
-
 	public static boolean walkTo(WorldPoint destination, boolean localRegion)
 	{
 		Player local = Players.getLocal();
@@ -73,7 +51,7 @@ public class Walker
 			return true;
 		}
 
-		if (destination.isInScene(Game.getClient()) && Reachable.isWalkable(destination))
+		if (destination.isInScene(Static.getClient()) && Reachable.isWalkable(destination))
 		{
 			Movement.walk(destination);
 			return false;
@@ -122,8 +100,9 @@ public class Walker
 
 		WorldPoint startPosition = path.get(0);
 		Teleport teleport = teleports.get(startPosition);
+		boolean offPath = path.stream().noneMatch(t -> t.distanceTo(local.getWorldLocation()) <= 5);
 
-		if (teleport != null)
+		if (teleport != null && offPath)
 		{
 			log.debug("Casting teleport {}", teleport);
 			teleport.getHandler().run();
@@ -132,7 +111,7 @@ public class Walker
 		}
 
 		// Refresh path if our direction changed
-		if (!local.isAnimating() && !path.contains(local.getWorldLocation()))
+		if (!local.isAnimating() && offPath)
 		{
 			log.debug("Direction changed, resetting cached path towards {}", destination);
 			if (!localRegion)
@@ -149,6 +128,18 @@ public class Walker
 
 		return walkAlong(destination, path, transports);
 	}
+
+	public static final LoadingCache<WorldPoint, List<WorldPoint>> PATH_CACHE = CacheBuilder.newBuilder()
+			.expireAfterWrite(5, TimeUnit.MINUTES)
+			.build(new CacheLoader<>()
+			{
+				@Override
+				public List<WorldPoint> load(@NotNull WorldPoint key)
+				{
+					log.debug("Loading path to {}", key);
+					return buildPath(key, false);
+				}
+			});
 
 	public static boolean walkAlong(WorldPoint destination, List<WorldPoint> path, Map<WorldPoint, List<Transport>> transports)
 	{
@@ -176,6 +167,18 @@ public class Walker
 
 		return false;
 	}
+
+	public static final LoadingCache<WorldPoint, List<WorldPoint>> LOCAL_PATH_CACHE = CacheBuilder.newBuilder()
+			.expireAfterWrite(5, TimeUnit.MINUTES)
+			.build(new CacheLoader<>()
+			{
+				@Override
+				public List<WorldPoint> load(@NotNull WorldPoint key)
+				{
+					log.debug("Loading local path to {}", key);
+					return buildPath(key, true);
+				}
+			});
 
 	public static boolean stepAlong(List<WorldPoint> path)
 	{
@@ -321,7 +324,7 @@ public class Walker
 
 	public static WorldPoint nearestWalkableTile(WorldPoint source, Predicate<WorldPoint> filter)
 	{
-		CollisionMap cm = Game.getGlobalCollisionMap();
+		CollisionMap cm = Static.getGlobalCollisionMap();
 
 		if (!cm.fullBlock(source) && filter.test(source))
 		{
@@ -355,7 +358,7 @@ public class Walker
 
 	public static List<WorldPoint> remainingPath(List<WorldPoint> path)
 	{
-		Player local = Game.getClient().getLocalPlayer();
+		Player local = Static.getClient().getLocalPlayer();
 		if (local == null)
 		{
 			return Collections.emptyList();
@@ -386,13 +389,26 @@ public class Walker
 
 		log.debug("Calculating path towards {}", destination);
 
-		return new Pathfinder(collisionMap, transports, startPoints,
+		List<WorldPoint> path = new AStarPathfinder(collisionMap, transports, startPoints,
 				destination).find();
+
+		// Timed out falling back to DFS
+		if (path == null)
+		{
+			return new DFSPathfinder(collisionMap, transports, startPoints, destination).find();
+		}
+
+		return path;
 	}
 
 	public static Map<WorldPoint, List<Transport>> buildTransportLinks()
 	{
 		Map<WorldPoint, List<Transport>> out = new HashMap<>();
+		if (!Static.getUnethicaliteConfig().useTransports())
+		{
+			return out;
+		}
+
 		for (Transport transport : TransportLoader.buildTransports())
 		{
 			out.computeIfAbsent(transport.getSource(), x -> new ArrayList<>()).add(transport);
@@ -415,6 +431,11 @@ public class Walker
 	public static LinkedHashMap<WorldPoint, Teleport> buildTeleportLinks(WorldPoint destination)
 	{
 		LinkedHashMap<WorldPoint, Teleport> out = new LinkedHashMap<>();
+		if (!Static.getUnethicaliteConfig().useTeleports())
+		{
+			return out;
+		}
+
 		Player local = Players.getLocal();
 
 		for (Teleport teleport : TeleportLoader.buildTeleports())

@@ -7,78 +7,87 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("nx")
+@ObfuscatedName("np")
 @Implements("BufferedSource")
 public class BufferedSource implements Runnable {
-	@ObfuscatedName("v")
+	@ObfuscatedName("uf")
+	@ObfuscatedSignature(
+		descriptor = "Lbd;"
+	)
+	@Export("friendSystem")
+	public static FriendSystem friendSystem;
+	@ObfuscatedName("j")
+	@Export("userHomeDirectory")
+	static String userHomeDirectory;
+	@ObfuscatedName("o")
 	@Export("thread")
 	Thread thread;
-	@ObfuscatedName("c")
+	@ObfuscatedName("q")
 	@Export("inputStream")
 	InputStream inputStream;
-	@ObfuscatedName("i")
-	@ObfuscatedGetter(intValue = 
-	1631784043)
-
+	@ObfuscatedName("l")
+	@ObfuscatedGetter(
+		intValue = 1611590211
+	)
 	@Export("capacity")
 	int capacity;
-	@ObfuscatedName("f")
+	@ObfuscatedName("k")
 	@Export("buffer")
 	byte[] buffer;
-	@ObfuscatedName("b")
-	@ObfuscatedGetter(intValue = 
-	1349825787)
-
+	@ObfuscatedName("a")
+	@ObfuscatedGetter(
+		intValue = 1886855287
+	)
 	@Export("position")
 	int position;
-	@ObfuscatedName("n")
-	@ObfuscatedGetter(intValue = 
-	1219370145)
-
+	@ObfuscatedName("m")
+	@ObfuscatedGetter(
+		intValue = 360959185
+	)
 	@Export("limit")
 	int limit;
-	@ObfuscatedName("s")
+	@ObfuscatedName("p")
 	@Export("exception")
 	IOException exception;
 
 	BufferedSource(InputStream var1, int var2) {
-		this.position = 0;
-		this.limit = 0;
-		this.inputStream = var1;
-		this.capacity = var2 + 1;
-		this.buffer = new byte[this.capacity];
-		this.thread = new Thread(this);
-		this.thread.setDaemon(true);
-		this.thread.start();
-	}
+		this.position = 0; // L: 66
+		this.limit = 0; // L: 67
+		this.inputStream = var1; // L: 71
+		this.capacity = var2 + 1; // L: 72
+		this.buffer = new byte[this.capacity]; // L: 73
+		this.thread = new Thread(this); // L: 74
+		this.thread.setDaemon(true); // L: 75
+		this.thread.start(); // L: 76
+	} // L: 77
 
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = 
-	"(IB)Z", garbageValue = 
-	"0")
-
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(
+		descriptor = "(II)Z",
+		garbageValue = "-916314557"
+	)
 	@Export("isAvailable")
 	boolean isAvailable(int var1) throws IOException {
-		if (var1 == 0) {
+		if (var1 == 0) { // L: 113
 			return true;
-		} else if ((var1 > 0) && (var1 < this.capacity)) {
-			synchronized(this) {
+		} else if (var1 > 0 && var1 < this.capacity) { // L: 114
+			synchronized(this) { // L: 115
 				int var3;
-				if (this.position <= this.limit) {
+				if (this.position <= this.limit) { // L: 117
 					var3 = this.limit - this.position;
 				} else {
-					var3 = (this.capacity - this.position) + this.limit;
+					var3 = this.capacity - this.position + this.limit; // L: 118
 				}
 
-				if (var3 < var1) {
-					if (this.exception != null) {
+				if (var3 < var1) { // L: 119
+					if (this.exception != null) { // L: 120
 						throw new IOException(this.exception.toString());
 					} else {
-						this.notifyAll();
-						return false;
+						this.notifyAll(); // L: 121
+						return false; // L: 122
 					}
 				} else {
-					return true;
+					return true; // L: 124
 				}
 			}
 		} else {
@@ -86,87 +95,87 @@ public class BufferedSource implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = 
-	"(I)I", garbageValue = 
-	"412570779")
-
+	@ObfuscatedName("q")
+	@ObfuscatedSignature(
+		descriptor = "(I)I",
+		garbageValue = "377483853"
+	)
 	@Export("available")
 	int available() throws IOException {
-		synchronized(this) {
+		synchronized(this) { // L: 129
 			int var2;
-			if (this.position <= this.limit) {
+			if (this.position <= this.limit) { // L: 131
 				var2 = this.limit - this.position;
 			} else {
-				var2 = (this.capacity - this.position) + this.limit;
+				var2 = this.capacity - this.position + this.limit; // L: 132
 			}
 
-			if ((var2 <= 0) && (this.exception != null)) {
-				throw new IOException(this.exception.toString());
+			if (var2 <= 0 && this.exception != null) { // L: 133
+				throw new IOException(this.exception.toString()); // L: 134
 			} else {
-				this.notifyAll();
-				return var2;
+				this.notifyAll(); // L: 136
+				return var2; // L: 137
 			}
 		}
 	}
 
-	@ObfuscatedName("i")
-	@ObfuscatedSignature(descriptor = 
-	"(I)I", garbageValue = 
-	"-1010089751")
-
+	@ObfuscatedName("l")
+	@ObfuscatedSignature(
+		descriptor = "(B)I",
+		garbageValue = "-18"
+	)
 	@Export("readUnsignedByte")
 	int readUnsignedByte() throws IOException {
-		synchronized(this) {
-			if (this.position == this.limit) {
-				if (this.exception != null) {
+		synchronized(this) { // L: 142
+			if (this.limit == this.position) { // L: 143
+				if (this.exception != null) { // L: 144
 					throw new IOException(this.exception.toString());
 				} else {
-					return -1;
+					return -1; // L: 145
 				}
 			} else {
-				int var2 = this.buffer[this.position] & 255;
-				this.position = (this.position + 1) % this.capacity;
-				this.notifyAll();
-				return var2;
+				int var2 = this.buffer[this.position] & 255; // L: 147
+				this.position = (this.position + 1) % this.capacity; // L: 148
+				this.notifyAll(); // L: 149
+				return var2; // L: 150
 			}
 		}
 	}
 
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = 
-	"([BIII)I", garbageValue = 
-	"-2005340605")
-
+	@ObfuscatedName("k")
+	@ObfuscatedSignature(
+		descriptor = "([BIII)I",
+		garbageValue = "-720858367"
+	)
 	@Export("read")
 	int read(byte[] var1, int var2, int var3) throws IOException {
-		if (((var3 >= 0) && (var2 >= 0)) && ((var3 + var2) <= var1.length)) {
-			synchronized(this) {
+		if (var3 >= 0 && var2 >= 0 && var3 + var2 <= var1.length) { // L: 155
+			synchronized(this) { // L: 156
 				int var5;
-				if (this.position <= this.limit) {
+				if (this.position <= this.limit) { // L: 158
 					var5 = this.limit - this.position;
 				} else {
-					var5 = (this.capacity - this.position) + this.limit;
+					var5 = this.capacity - this.position + this.limit; // L: 159
 				}
 
-				if (var3 > var5) {
+				if (var3 > var5) { // L: 160
 					var3 = var5;
 				}
 
-				if ((var3 == 0) && (this.exception != null)) {
+				if (var3 == 0 && this.exception != null) { // L: 161
 					throw new IOException(this.exception.toString());
 				} else {
-					if ((var3 + this.position) <= this.capacity) {
-						System.arraycopy(this.buffer, this.position, var1, var2, var3);
+					if (var3 + this.position <= this.capacity) { // L: 162
+						System.arraycopy(this.buffer, this.position, var1, var2, var3); // L: 163
 					} else {
-						int var6 = this.capacity - this.position;
-						System.arraycopy(this.buffer, this.position, var1, var2, var6);
-						System.arraycopy(this.buffer, 0, var1, var6 + var2, var3 - var6);
+						int var6 = this.capacity - this.position; // L: 166
+						System.arraycopy(this.buffer, this.position, var1, var2, var6); // L: 167
+						System.arraycopy(this.buffer, 0, var1, var6 + var2, var3 - var6); // L: 168
 					}
 
-					this.position = (var3 + this.position) % this.capacity;
-					this.notifyAll();
-					return var3;
+					this.position = (var3 + this.position) % this.capacity; // L: 170
+					this.notifyAll(); // L: 171
+					return var3; // L: 172
 				}
 			}
 		} else {
@@ -174,380 +183,108 @@ public class BufferedSource implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(descriptor = 
-	"(I)V", garbageValue = 
-	"202162946")
-
+	@ObfuscatedName("a")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-1309478376"
+	)
 	@Export("close")
 	void close() {
-		synchronized(this) {
+		synchronized(this) { // L: 177
 			if (this.exception == null) {
-				this.exception = new IOException("");
+				this.exception = new IOException(""); // L: 178
 			}
 
-			this.notifyAll();
+			this.notifyAll(); // L: 179
 		}
 
 		try {
-			this.thread.join();
-		} catch (InterruptedException var3) {
+			this.thread.join(); // L: 182
+		} catch (InterruptedException var3) { // L: 184
 		}
 
-	}
+	} // L: 185
 
 	public void run() {
 		while (true) {
 			int var1;
-			synchronized(this) {
+			synchronized(this) { // L: 82
 				while (true) {
-					if (this.exception != null) {
+					if (this.exception != null) { // L: 84
 						return;
 					}
 
-					if (this.position == 0) {
-						var1 = (this.capacity - this.limit) - 1;
-					} else if (this.position <= this.limit) {
+					if (this.position == 0) { // L: 85
+						var1 = this.capacity - this.limit - 1;
+					} else if (this.position <= this.limit) { // L: 86
 						var1 = this.capacity - this.limit;
 					} else {
-						var1 = (this.position - this.limit) - 1;
+						var1 = this.position - this.limit - 1; // L: 87
 					}
 
-					if (var1 > 0) {
+					if (var1 > 0) { // L: 88
 						break;
 					}
 
 					try {
-						this.wait();
-					} catch (InterruptedException var10) {
+						this.wait(); // L: 90
+					} catch (InterruptedException var10) { // L: 92
 					}
-				} 
+				}
 			}
 
 			int var7;
 			try {
-				var7 = this.inputStream.read(this.buffer, this.limit, var1);
-				if (var7 == (-1)) {
-					throw new EOFException();
+				var7 = this.inputStream.read(this.buffer, this.limit, var1); // L: 97
+				if (var7 == -1) {
+					throw new EOFException(); // L: 98
 				}
-			} catch (IOException var11) {
+			} catch (IOException var11) { // L: 100
 				IOException var3 = var11;
-				synchronized(this) {
-					this.exception = var3;
-					return;
+				synchronized(this) { // L: 101
+					this.exception = var3; // L: 102
+					return; // L: 103
 				}
 			}
 
-			synchronized(this) {
-				this.limit = (var7 + this.limit) % this.capacity;
-			}
-		} 
+			synchronized(this) { // L: 106
+				this.limit = (var7 + this.limit) % this.capacity; // L: 107
+			} // L: 108
+		}
 	}
 
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = 
-	"(ILjava/lang/String;Llo;II)Ljd;", garbageValue = 
-	"1218587295")
-
-	public static PacketBufferNode method6908(int var0, String var1, Language var2, int var3) {
-		PacketBufferNode var4 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2918, Client.packetWriter.isaacCipher);
-		var4.packetBuffer.writeByte(0);
-		int var5 = var4.packetBuffer.offset;
-		var4.packetBuffer.writeByte(var0);
-		String var6 = var1.toLowerCase();
-		byte var7 = 0;
-		if (var6.startsWith("yellow:")) {
-			var7 = 0;
-			var1 = var1.substring("yellow:".length());
-		} else if (var6.startsWith("red:")) {
-			var7 = 1;
-			var1 = var1.substring("red:".length());
-		} else if (var6.startsWith("green:")) {
-			var7 = 2;
-			var1 = var1.substring("green:".length());
-		} else if (var6.startsWith("cyan:")) {
-			var7 = 3;
-			var1 = var1.substring("cyan:".length());
-		} else if (var6.startsWith("purple:")) {
-			var7 = 4;
-			var1 = var1.substring("purple:".length());
-		} else if (var6.startsWith("white:")) {
-			var7 = 5;
-			var1 = var1.substring("white:".length());
-		} else if (var6.startsWith("flash1:")) {
-			var7 = 6;
-			var1 = var1.substring("flash1:".length());
-		} else if (var6.startsWith("flash2:")) {
-			var7 = 7;
-			var1 = var1.substring("flash2:".length());
-		} else if (var6.startsWith("flash3:")) {
-			var7 = 8;
-			var1 = var1.substring("flash3:".length());
-		} else if (var6.startsWith("glow1:")) {
-			var7 = 9;
-			var1 = var1.substring("glow1:".length());
-		} else if (var6.startsWith("glow2:")) {
-			var7 = 10;
-			var1 = var1.substring("glow2:".length());
-		} else if (var6.startsWith("glow3:")) {
-			var7 = 11;
-			var1 = var1.substring("glow3:".length());
-		} else if (var2 != Language.Language_EN) {
-			if (var6.startsWith("yellow:")) {
-				var7 = 0;
-				var1 = var1.substring("yellow:".length());
-			} else if (var6.startsWith("red:")) {
-				var7 = 1;
-				var1 = var1.substring("red:".length());
-			} else if (var6.startsWith("green:")) {
-				var7 = 2;
-				var1 = var1.substring("green:".length());
-			} else if (var6.startsWith("cyan:")) {
-				var7 = 3;
-				var1 = var1.substring("cyan:".length());
-			} else if (var6.startsWith("purple:")) {
-				var7 = 4;
-				var1 = var1.substring("purple:".length());
-			} else if (var6.startsWith("white:")) {
-				var7 = 5;
-				var1 = var1.substring("white:".length());
-			} else if (var6.startsWith("flash1:")) {
-				var7 = 6;
-				var1 = var1.substring("flash1:".length());
-			} else if (var6.startsWith("flash2:")) {
-				var7 = 7;
-				var1 = var1.substring("flash2:".length());
-			} else if (var6.startsWith("flash3:")) {
-				var7 = 8;
-				var1 = var1.substring("flash3:".length());
-			} else if (var6.startsWith("glow1:")) {
-				var7 = 9;
-				var1 = var1.substring("glow1:".length());
-			} else if (var6.startsWith("glow2:")) {
-				var7 = 10;
-				var1 = var1.substring("glow2:".length());
-			} else if (var6.startsWith("glow3:")) {
-				var7 = 11;
-				var1 = var1.substring("glow3:".length());
-			}
-		}
-
-		var6 = var1.toLowerCase();
-		byte var8 = 0;
-		if (var6.startsWith("wave:")) {
-			var8 = 1;
-			var1 = var1.substring("wave:".length());
-		} else if (var6.startsWith("wave2:")) {
-			var8 = 2;
-			var1 = var1.substring("wave2:".length());
-		} else if (var6.startsWith("shake:")) {
-			var8 = 3;
-			var1 = var1.substring("shake:".length());
-		} else if (var6.startsWith("scroll:")) {
-			var8 = 4;
-			var1 = var1.substring("scroll:".length());
-		} else if (var6.startsWith("slide:")) {
-			var8 = 5;
-			var1 = var1.substring("slide:".length());
-		} else if (var2 != Language.Language_EN) {
-			if (var6.startsWith("wave:")) {
-				var8 = 1;
-				var1 = var1.substring("wave:".length());
-			} else if (var6.startsWith("wave2:")) {
-				var8 = 2;
-				var1 = var1.substring("wave2:".length());
-			} else if (var6.startsWith("shake:")) {
-				var8 = 3;
-				var1 = var1.substring("shake:".length());
-			} else if (var6.startsWith("scroll:")) {
-				var8 = 4;
-				var1 = var1.substring("scroll:".length());
-			} else if (var6.startsWith("slide:")) {
-				var8 = 5;
-				var1 = var1.substring("slide:".length());
-			}
-		}
-
-		var4.packetBuffer.writeByte(var7);
-		var4.packetBuffer.writeByte(var8);
-		class282.method5489(var4.packetBuffer, var1);
-		if (var0 == class296.field3492.rsOrdinal()) {
-			var4.packetBuffer.writeByte(var3);
-		}
-
-		var4.packetBuffer.writeLengthByte(var4.packetBuffer.offset - var5);
-		return var4;
-	}
-
-	@ObfuscatedName("jb")
-	@ObfuscatedSignature(descriptor = 
-	"(Lky;II)I", garbageValue = 
-	"-965040804")
-
-	static final int method6907(Widget var0, int var1) {
-		if ((var0.cs1Instructions != null) && (var1 < var0.cs1Instructions.length)) {
-			try {
-				int[] var2 = var0.cs1Instructions[var1];
-				int var3 = 0;
-				int var4 = 0;
-				byte var5 = 0;
-
-				while (true) {
-					int var6 = var2[var4++];
-					int var7 = 0;
-					byte var8 = 0;
-					if (var6 == 0) {
-						return var3;
-					}
-
-					if (var6 == 1) {
-						var7 = Client.currentLevels[var2[var4++]];
-					}
-
-					if (var6 == 2) {
-						var7 = Client.levels[var2[var4++]];
-					}
-
-					if (var6 == 3) {
-						var7 = Client.experience[var2[var4++]];
-					}
-
-					int var9;
-					Widget var10;
-					int var11;
-					int var12;
-					if (var6 == 4) {
-						var9 = var2[var4++] << 16;
-						var9 += var2[var4++];
-						var10 = class127.getWidget(var9);
-						var11 = var2[var4++];
-						if ((var11 != (-1)) && ((!class19.ItemDefinition_get(var11).isMembersOnly) || Client.isMembersWorld)) {
-							for (var12 = 0; var12 < var10.itemIds.length; ++var12) {
-								if ((var11 + 1) == var10.itemIds[var12]) {
-									var7 += var10.itemQuantities[var12];
-								}
-							}
-						}
-					}
-
-					if (var6 == 5) {
-						var7 = Varps.Varps_main[var2[var4++]];
-					}
-
-					if (var6 == 6) {
-						var7 = Skills.Skills_experienceTable[Client.levels[var2[var4++]] - 1];
-					}
-
-					if (var6 == 7) {
-						var7 = (Varps.Varps_main[var2[var4++]] * 100) / 46875;
-					}
-
-					if (var6 == 8) {
-						var7 = GrandExchangeEvents.localPlayer.combatLevel;
-					}
-
-					if (var6 == 9) {
-						for (var9 = 0; var9 < 25; ++var9) {
-							if (Skills.Skills_enabled[var9]) {
-								var7 += Client.levels[var9];
-							}
-						}
-					}
-
-					if (var6 == 10) {
-						var9 = var2[var4++] << 16;
-						var9 += var2[var4++];
-						var10 = class127.getWidget(var9);
-						var11 = var2[var4++];
-						if ((var11 != (-1)) && ((!class19.ItemDefinition_get(var11).isMembersOnly) || Client.isMembersWorld)) {
-							for (var12 = 0; var12 < var10.itemIds.length; ++var12) {
-								if ((var11 + 1) == var10.itemIds[var12]) {
-									var7 = 999999999;
-									break;
-								}
-							}
-						}
-					}
-
-					if (var6 == 11) {
-						var7 = Client.runEnergy;
-					}
-
-					if (var6 == 12) {
-						var7 = Client.weight;
-					}
-
-					if (var6 == 13) {
-						var9 = Varps.Varps_main[var2[var4++]];
-						int var13 = var2[var4++];
-						var7 = ((var9 & (1 << var13)) != 0) ? 1 : 0;
-					}
-
-					if (var6 == 14) {
-						var9 = var2[var4++];
-						var7 = SecureRandomCallable.getVarbit(var9);
-					}
-
-					if (var6 == 15) {
-						var8 = 1;
-					}
-
-					if (var6 == 16) {
-						var8 = 2;
-					}
-
-					if (var6 == 17) {
-						var8 = 3;
-					}
-
-					if (var6 == 18) {
-						var7 = (GrandExchangeEvents.localPlayer.x >> 7) + GrandExchangeOfferOwnWorldComparator.baseX;
-					}
-
-					if (var6 == 19) {
-						var7 = (GrandExchangeEvents.localPlayer.y >> 7) + VarcInt.baseY;
-					}
-
-					if (var6 == 20) {
-						var7 = var2[var4++];
-					}
-
-					if (var8 == 0) {
-						if (var5 == 0) {
-							var3 += var7;
-						}
-
-						if (var5 == 1) {
-							var3 -= var7;
-						}
-
-						if ((var5 == 2) && (var7 != 0)) {
-							var3 /= var7;
-						}
-
-						if (var5 == 3) {
-							var3 *= var7;
-						}
-
-						var5 = 0;
-					} else {
-						var5 = var8;
-					}
-				} 
-			} catch (Exception var14) {
-				return -1;
-			}
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(
+		descriptor = "(CI)Z",
+		garbageValue = "-1918735565"
+	)
+	static final boolean method6702(char var0) {
+		if (Character.isISOControl(var0)) { // L: 16
+			return false;
+		} else if (class78.isAlphaNumeric(var0)) { // L: 17
+			return true;
 		} else {
-			return -2;
+			char[] var1 = class424.field4621; // L: 19
+
+			int var2;
+			char var3;
+			for (var2 = 0; var2 < var1.length; ++var2) { // L: 20
+				var3 = var1[var2]; // L: 21
+				if (var0 == var3) { // L: 22
+					return true;
+				}
+			}
+
+			var1 = class424.field4623; // L: 26
+
+			for (var2 = 0; var2 < var1.length; ++var2) { // L: 27
+				var3 = var1[var2]; // L: 28
+				if (var0 == var3) { // L: 29
+					return true;
+				}
+			}
+
+			return false; // L: 32
 		}
-	}
-
-	@ObfuscatedName("mn")
-	@ObfuscatedSignature(descriptor = 
-	"(I)Z", garbageValue = 
-	"-1931509382")
-
-	static boolean method6889() {
-		return class131.clientPreferences.method2249() >= Client.field617;
 	}
 }

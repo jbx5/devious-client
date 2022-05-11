@@ -24,6 +24,9 @@ import java.util.Objects;
 
 public class PrivateUpdateRepository extends OPRSUpdateRepository
 {
+	private static final String DEFAULT_PLUGINS_JSON_FILENAME = "plugins.json";
+	private static final Logger log = LoggerFactory.getLogger(org.pf4j.update.DefaultUpdateRepository.class);
+
 	@Getter
 	private final String token;
 
@@ -37,10 +40,6 @@ public class PrivateUpdateRepository extends OPRSUpdateRepository
 		super(id, url, pluginsJsonFileName);
 		this.token = token;
 	}
-
-
-	private static final String DEFAULT_PLUGINS_JSON_FILENAME = "plugins.json";
-	private static final Logger log = LoggerFactory.getLogger(org.pf4j.update.DefaultUpdateRepository.class);
 
 	public void initPlugins()
 	{

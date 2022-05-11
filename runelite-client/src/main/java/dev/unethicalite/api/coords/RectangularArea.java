@@ -1,6 +1,7 @@
 package dev.unethicalite.api.coords;
 
 import dev.unethicalite.api.commons.Rand;
+import dev.unethicalite.api.entities.Players;
 import lombok.Getter;
 import net.runelite.api.coords.WorldPoint;
 
@@ -67,6 +68,48 @@ public class RectangularArea implements Area
 	public WorldPoint getCenter()
 	{
 		return new WorldPoint((minX + maxX) / 2, (minY + maxY) / 2, plane);
+	}
+
+	public WorldPoint getNearest()
+	{
+		final WorldPoint current = Players.getLocal().getWorldLocation();
+
+		if (contains(current))
+		{
+			return current;
+		}
+
+		int x;
+
+		if (current.getX() <= minX)
+		{
+			x = minX;
+		}
+		else if (current.getX() >= maxX)
+		{
+			x = maxX;
+		}
+		else
+		{
+			x = current.getX();
+		}
+
+		int y;
+
+		if (current.getY() <= minY)
+		{
+			y = minY;
+		}
+		else if (current.getY() >= maxY)
+		{
+			y = maxY;
+		}
+		else
+		{
+			y = current.getY();
+		}
+
+		return new WorldPoint(x, y, plane);
 	}
 
 	@Override

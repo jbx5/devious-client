@@ -1,5 +1,6 @@
 package dev.unethicalite.api.entities;
 
+import dev.unethicalite.api.query.entities.TileItemQuery;
 import dev.unethicalite.api.scene.Tiles;
 import net.runelite.api.Tile;
 import net.runelite.api.TileItem;
@@ -14,11 +15,16 @@ import java.util.stream.Collectors;
 
 public class TileItems extends TileEntities<TileItem>
 {
+	private static final TileItems TILE_ITEMS = new TileItems();
+
 	private TileItems()
 	{
 	}
 
-	private static final TileItems TILE_ITEMS = new TileItems();
+	public static TileItemQuery query()
+	{
+		return new TileItemQuery(TileItems::getAll);
+	}
 
 	public static List<TileItem> getAll()
 	{

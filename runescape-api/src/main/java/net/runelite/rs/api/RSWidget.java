@@ -98,9 +98,9 @@ public interface RSWidget extends Widget
 	@Override
 	RSWidget setAnimationId(int animationId);
 
-	@Import("actions")
-	@Override
-	String[] getRawActions();
+//	@Import("actions")
+//	@Override
+//	String[] getActions();
 
 	@Import("itemActions")
 	@Override
@@ -616,4 +616,7 @@ public interface RSWidget extends Widget
 	RSWidget setLineHeight(int height);
 
 	void broadcastHidden(boolean hidden);
+
+	@Import("actions")
+	String[] getRawActions();
 }

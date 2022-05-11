@@ -5,24 +5,33 @@ import dev.unethicalite.api.SceneEntity;
 import dev.unethicalite.api.commons.Rand;
 import dev.unethicalite.api.commons.Time;
 import dev.unethicalite.api.events.MenuAutomated;
+import dev.unethicalite.api.events.NativeMouseInput;
 import dev.unethicalite.api.game.GameThread;
 import dev.unethicalite.api.input.naturalmouse.NaturalMouse;
 import dev.unethicalite.api.movement.Movement;
 import dev.unethicalite.api.packets.Packets;
-import net.runelite.api.DialogOption;
 import dev.unethicalite.api.widgets.Widgets;
+import dev.unethicalite.client.config.UnethicaliteConfig;
+import dev.unethicalite.client.minimal.ui.MinimalUI;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
+import net.runelite.api.DialogOption;
 import net.runelite.api.MenuAction;
+import net.runelite.api.Perspective;
+import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.events.DialogProcessed;
 import net.runelite.api.events.MenuOptionClicked;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
+import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
+import net.runelite.client.ui.ClientUI;
+import net.runelite.client.ui.ContainableFrame;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.awt.*;
+import java.util.Arrays;
 
 @Singleton
 @Slf4j
@@ -35,24 +44,33 @@ public class InteractionManager
 	private NaturalMouse naturalMouse;
 
 	@Inject
-	private InteractionConfig config;
+	private UnethicaliteConfig config;
 
 	@Inject
 	private Client client;
 
+	@Inject
+	InteractionManager(EventBus eventBus)
+	{
+		eventBus.register(this);
+	}
+
 	@Subscribe
 	public void onInvokeMenuAction(MenuAutomated event)
 	{
-		String debug = "O=" + event.getOption()
-				+ " | T=" + event.getTarget()
-				+ " | ID=" + event.getIdentifier()
-				+ " | OP=" + event.getOpcode().getId()
-				+ " | P0=" + event.getParam0()
-				+ " | P1=" + event.getParam1()
-				+ " | X=" + event.getClickX()
-				+ " | Y=" + event.getClickY();
+		if (config.debugMenuActions())
+		{
+			String debug = "O=" + event.getOption()
+					+ " | T=" + event.getTarget()
+					+ " | ID=" + event.getIdentifier()
+					+ " | OP=" + event.getOpcode().getId()
+					+ " | P0=" + event.getParam0()
+					+ " | P1=" + event.getParam1()
+					+ " | X=" + event.getClickX()
+					+ " | Y=" + event.getClickY();
 
-		log.debug("[Automated] {}", debug);
+			log.debug("[Automated] {}", debug);
+		}
 		Point clickPoint = getClickPoint(event);
 		MouseHandler mouseHandler = client.getMouseHandler();
 
@@ -61,11 +79,30 @@ public class InteractionManager
 			SceneEntity entity;
 			switch (config.interactMethod())
 			{
+				case MOUSE_FORWARDING:
+					if (client.getQueuedMenu() != null)
+					{
+						break;
+					}
+
+					client.setQueuedMenu(event);
+					break;
+
 				case MOUSE_EVENTS:
 					entity = event.getEntity();
 					if (entity != null && config.mouseBehavior() == MouseBehavior.CLICKBOXES)
 					{
 						clickPoint = entity.getClickPoint().getAwtPoint();
+					}
+
+					if (event.getOpcode() == MenuAction.WALK && clickOffScreen(clickPoint))
+					{
+						net.runelite.api.Point newPoint = Perspective.localToMinimap(client,
+								LocalPoint.fromScene(event.getParam0(), event.getParam1()));
+						if (newPoint != null)
+						{
+							clickPoint = newPoint.getAwtPoint();
+						}
 					}
 
 					if (config.naturalMouse())
@@ -77,17 +114,7 @@ public class InteractionManager
 					GameThread.invoke(() ->
 					{
 						client.setPendingAutomation(event);
-
-						if (entity != null)
-						{
-							long[] entitiesAtMouse = client.getEntitiesAtMouse();
-							int count = client.getEntitiesAtMouseCount();
-							if (count < 1000)
-							{
-								entitiesAtMouse[count] = entity.getTag();
-								client.setEntitiesAtMouseCount(count + 1);
-							}
-						}
+						setHoveredEntity(entity);
 
 						if (!config.naturalMouse())
 						{
@@ -113,7 +140,7 @@ public class InteractionManager
 						}
 						catch (InteractionException ex)
 						{
-							log.debug("{}, falling back to invoke", ex.getMessage());
+							log.error("Packet interaction failed, falling back to invoke", ex);
 							processAction(event, -1, -1);
 						}
 					});
@@ -128,8 +155,11 @@ public class InteractionManager
 		}
 		finally
 		{
-			Time.sleep(10, 20);
-			mouseHandler.sendRelease();
+			if (config.interactMethod() == InteractMethod.MOUSE_EVENTS)
+			{
+				Time.sleep(10, 20);
+				mouseHandler.sendRelease();
+			}
 		}
 	}
 
@@ -145,20 +175,140 @@ public class InteractionManager
 			e.setParam1(0);
 		}
 
-		String action = "O=" + e.getMenuOption()
-				+ " | T=" + e.getMenuTarget()
-				+ " | ID=" + e.getId()
-				+ " | OP=" + e.getMenuAction().getId()
-				+ " | P0=" + e.getParam0()
-				+ " | P1=" + e.getParam1()
-				+ " | X=" + e.getCanvasX()
-				+ " | Y=" + e.getCanvasY();
-		log.debug("[Menu Action] {}", action);
+		if (config.debugMenuActions())
+		{
+			String action = "O=" + e.getMenuOption()
+					+ " | T=" + e.getMenuTarget()
+					+ " | ID=" + e.getId()
+					+ " | OP=" + e.getMenuAction().getId()
+					+ " | P0=" + e.getParam0()
+					+ " | P1=" + e.getParam1()
+					+ " | X=" + e.getCanvasX()
+					+ " | Y=" + e.getCanvasY();
+			log.debug("[Menu Action] {}", action);
+		}
+	}
+
+	@Subscribe
+	public void onNativeMouseInput(NativeMouseInput event)
+	{
+		if ((client.getQueuedMenu() == null && !config.forceForwarding())
+				|| config.interactMethod() != InteractMethod.MOUSE_FORWARDING)
+		{
+			return;
+		}
+
+		MouseHandler mouseHandler = client.getMouseHandler();
+		if (mouseHandler == null)
+		{
+			return;
+		}
+
+		double eventX = event.getX();
+		double eventY = event.getY();
+
+		ContainableFrame frame = MinimalUI.getFrame() != null ? MinimalUI.getFrame() : ClientUI.getFrame();
+
+		if (frame.getBounds().contains(eventX, eventY))
+		{
+			return;
+		}
+
+		GraphicsDevice screen = Arrays.stream(GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices())
+				.filter(device -> device.getDefaultConfiguration().getBounds().contains(event.getX(), event.getY()))
+				.findFirst()
+				.orElse(null);
+		if (screen == null)
+		{
+			log.debug("Screen not found  to forward mouse event");
+			return;
+		}
+
+		double screenWidth = screen.getDisplayMode().getWidth();
+		double screenHeight = screen.getDisplayMode().getHeight();
+
+		if (eventX < 0)
+		{
+			eventX = screenWidth + eventX;
+		}
+		else if (eventX > screenWidth)
+		{
+			eventX = eventX - screenWidth;
+		}
+
+		if (eventY < 0)
+		{
+			eventY = screenHeight + eventY;
+		}
+		else if (eventY > screenHeight)
+		{
+			eventY = eventY - screenHeight;
+		}
+
+		int finalEventX = (int) eventX;
+		int finalEventY = (int) eventY;
+
+		int x = (int) (finalEventX * ((double) client.getCanvasWidth() / screenWidth));
+		int y = (int) (finalEventY * ((double) client.getCanvasHeight() / screenHeight));
+
+		switch (event.getType())
+		{
+			case PRESS:
+				int button = event.getButton();
+				MenuAutomated queuedMenu = client.getQueuedMenu();
+
+				if (queuedMenu == null)
+				{
+					if (config.forceForwarding())
+					{
+						mouseHandler.sendClick(x, y, button);
+					}
+
+					return;
+				}
+
+				GameThread.invoke(() ->
+				{
+					if (button == 1)
+					{
+						client.setPendingAutomation(queuedMenu);
+						setHoveredEntity(queuedMenu.getEntity());
+						client.setQueuedMenu(null);
+					}
+
+					log.debug(
+							"Forwarding mouse press [{}] from [{}, {}, {}] to canvas [{}, {}]",
+							button,
+							screen.getIDstring(),
+							finalEventX,
+							finalEventY,
+							x,
+							y
+					);
+
+					mouseHandler.sendClick(x, y, button);
+				});
+
+				break;
+
+			case RELEASE:
+				mouseHandler.sendRelease();
+				break;
+
+			case MOVEMENT:
+				mouseHandler.sendMovement(x, y);
+				break;
+		}
 	}
 
 	@Subscribe
 	public void onDialogProcessed(DialogProcessed e)
 	{
+		if (!config.debugDialogs())
+		{
+			return;
+		}
+
 		DialogOption dialogOption = DialogOption.of(e.getDialogOption().getWidgetUid(), e.getDialogOption().getMenuIndex());
 		if (dialogOption != null)
 		{
@@ -167,6 +317,20 @@ public class InteractionManager
 		else
 		{
 			log.debug("Unknown or unmapped dialog {}", e);
+		}
+	}
+
+	private void setHoveredEntity(SceneEntity entity)
+	{
+		if (entity != null)
+		{
+			long[] entitiesAtMouse = client.getEntitiesAtMouse();
+			int count = client.getEntitiesAtMouseCount();
+			if (count < 1000)
+			{
+				entitiesAtMouse[count] = entity.getTag();
+				client.setEntitiesAtMouseCount(count + 1);
+			}
 		}
 	}
 
@@ -209,14 +373,7 @@ public class InteractionManager
 
 	private boolean clickInsideMinimap(Point point)
 	{
-		Rectangle minimap = getMinimap();
-		if (minimap.contains(point))
-		{
-			log.debug("Click {} was inside minimap", point);
-			return true;
-		}
-
-		return false;
+		return getMinimap().contains(point);
 	}
 
 	private Rectangle getMinimap()
@@ -241,5 +398,11 @@ public class InteractionManager
 
 		Rectangle bounds = client.getCanvas().getBounds();
 		return new Rectangle(bounds.width - MINIMAP_WIDTH, 0, MINIMAP_WIDTH, MINIMAP_HEIGHT);
+	}
+
+	private boolean clickOffScreen(Point point)
+	{
+		return point.x < 0 || point.y < 0
+				|| point.x > client.getViewportWidth() || point.y > client.getViewportHeight();
 	}
 }

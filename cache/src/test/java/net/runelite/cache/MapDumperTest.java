@@ -27,6 +27,11 @@ package net.runelite.cache;
 import com.google.common.io.Files;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 import net.runelite.cache.definitions.LocationsDefinition;
 import net.runelite.cache.definitions.MapDefinition;
 import net.runelite.cache.definitions.loaders.LocationsLoader;
@@ -42,13 +47,6 @@ import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
 
 public class MapDumperTest
 {
@@ -67,7 +65,6 @@ public class MapDumperTest
 		File base = StoreLocation.LOCATION,
 			outDir = folder.newFolder();
 		XteaKeyManager keyManager = new XteaKeyManager();
-		keyManager.loadKeys(new URL("https://xtea.openosrs.dev/get").openStream());
 
 		try (Store store = new Store(base))
 		{
@@ -78,7 +75,7 @@ public class MapDumperTest
 
 			for (int i = 0; i < MAX_REGIONS; i++)
 			{
-				Integer[] keysTmp = keyManager.getKeys(i);
+				int[] keys = keyManager.getKey(i);
 
 				int x = i >> 8;
 				int y = i & 0xFF;
@@ -97,9 +94,8 @@ public class MapDumperTest
 
 				Files.write(data, new File(outDir, "m" + x + "_" + y + ".dat"));
 
-				if (keysTmp != null)
+				if (keys != null)
 				{
-					int[] keys = {keysTmp[0], keysTmp[1], keysTmp[2], keysTmp[3]};
 					try
 					{
 						data = land.decompress(storage.loadArchive(land), keys);
@@ -124,7 +120,6 @@ public class MapDumperTest
 		Storage storage = store.getStorage();
 		Index index = store.getIndex(IndexType.MAPS);
 		XteaKeyManager keyManager = new XteaKeyManager();
-		keyManager.loadKeys(new URL("https://xtea.openosrs.dev/get").openStream());
 
 		for (int i = 0; i < MAX_REGIONS; ++i)
 		{
@@ -145,10 +140,9 @@ public class MapDumperTest
 			MapDefinition mapDef = new MapLoader().load(x, y, data);
 			LocationsDefinition locDef = null;
 
-			Integer[] keysTmp = keyManager.getKeys(i);
-			if (keysTmp != null)
+			int[] keys = keyManager.getKey(i);
+			if (keys != null)
 			{
-				int[] keys = {keysTmp[0], keysTmp[1], keysTmp[2], keysTmp[3]};
 				try
 				{
 					data = land.decompress(storage.loadArchive(land), keys);
@@ -172,8 +166,7 @@ public class MapDumperTest
 	public void dumpJson() throws IOException
 	{
 		File base = StoreLocation.LOCATION,
-			outDir = new File(System.getProperty("user.home"), "regions-dump");
-		outDir.mkdirs();
+			outDir = folder.newFolder();
 
 		try (Store store = new Store(base))
 		{

@@ -6,7 +6,7 @@ import dev.unethicalite.api.widgets.Dialog;
 import dev.unethicalite.api.widgets.Tab;
 import dev.unethicalite.api.widgets.Tabs;
 import dev.unethicalite.api.widgets.Widgets;
-import dev.unethicalite.managers.Static;
+import dev.unethicalite.client.Static;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.GameState;
 import net.runelite.api.MenuAction;
@@ -101,6 +101,11 @@ public class Worlds
 	public static World getRandom(Predicate<World> filter)
 	{
 		List<World> all = getAll(filter);
+		if (all.isEmpty())
+		{
+			return null;
+		}
+
 		return all.get(Rand.nextInt(0, all.size()));
 	}
 

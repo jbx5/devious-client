@@ -1,6 +1,7 @@
 package dev.unethicalite.mixins;
 
 import dev.unethicalite.api.events.MenuAutomated;
+import dev.unethicalite.api.util.Text;
 import net.runelite.api.MenuAction;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
@@ -60,9 +61,15 @@ public abstract class HPlayerMixin extends RSPlayerMixin implements RSPlayer
 
 	@Inject
 	@Override
-	public String[] getRawActions()
+	public String[] getActions()
 	{
-		return client.getPlayerOptions();
+		String[] sanitized = new String[client.getPlayerOptions().length];
+		for (int i = 0; i < sanitized.length; i++)
+		{
+			sanitized[i] = Text.sanitize(client.getPlayerOptions()[i]);
+		}
+
+		return sanitized;
 	}
 
 	@Override

@@ -4,167 +4,96 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kf")
+@ObfuscatedName("kk")
 public class class291 {
-	@ObfuscatedName("et")
-	@ObfuscatedSignature(descriptor = 
-	"Llx;")
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(
+		descriptor = "Lcb;"
+	)
+	UrlRequest field3356;
+	@ObfuscatedName("q")
+	@ObfuscatedSignature(
+		descriptor = "Lqr;"
+	)
+	SpritePixels field3357;
 
-	@Export("archive14")
-	static Archive archive14;
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = 
-	"Lcw;")
-
-	UrlRequest field3295;
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = 
-	"Lqi;")
-
-	SpritePixels field3293;
-
-	@ObfuscatedSignature(descriptor = 
-	"(Ljava/lang/String;Lck;)V")
-
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;Lce;)V"
+	)
 	class291(String var1, UrlRequester var2) {
 		try {
-			this.field3295 = var2.request(new URL(var1));
+			this.field3356 = var2.request(new URL(var1)); // L: 16
 		} catch (MalformedURLException var4) {
-			this.field3295 = null;
+			this.field3356 = null;
 		}
 
 	}
 
-	@ObfuscatedSignature(descriptor = 
-	"(Lcw;)V")
-
+	@ObfuscatedSignature(
+		descriptor = "(Lcb;)V"
+	)
 	class291(UrlRequest var1) {
-		this.field3295 = var1;
+		this.field3356 = var1; // L: 24
 	}
 
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = 
-	"(I)Lqi;", garbageValue = 
-	"-159877432")
-
-	SpritePixels method5563() {
-		if (((this.field3293 == null) && (this.field3295 != null)) && this.field3295.isDone()) {
-			if (this.field3295.getResponse() != null) {
-				this.field3293 = Interpreter.method1889(this.field3295.getResponse());
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(
+		descriptor = "(I)Lqr;",
+		garbageValue = "1905006321"
+	)
+	SpritePixels method5391() {
+		if (this.field3357 == null && this.field3356 != null && this.field3356.isDone()) { // L: 28
+			if (this.field3356.getResponse() != null) { // L: 29
+				this.field3357 = Frames.method4217(this.field3356.getResponse()); // L: 30
 			}
 
-			this.field3295 = null;
+			this.field3356 = null; // L: 32
 		}
 
-		return this.field3293;
+		return this.field3357; // L: 34
 	}
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = 
-	"(CLlo;B)C", garbageValue = 
-	"20")
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(
+		descriptor = "([Llk;II)Llk;",
+		garbageValue = "-1552191752"
+	)
+	@Export("findEnumerated")
+	public static MouseWheel findEnumerated(MouseWheel[] var0, int var1) {
+		MouseWheel[] var2 = var0; // L: 17
 
-	@Export("standardizeChar")
-	static char standardizeChar(char var0, Language var1) {
-		if ((var0 >= 192) && (var0 <= 255)) {
-			if ((var0 >= 192) && (var0 <= 198)) {
-				return 'A';
-			}
-
-			if (var0 == 199) {
-				return 'C';
-			}
-
-			if ((var0 >= 200) && (var0 <= 203)) {
-				return 'E';
-			}
-
-			if ((var0 >= 204) && (var0 <= 207)) {
-				return 'I';
-			}
-
-			if ((var0 == 209) && (var1 != Language.Language_ES)) {
-				return 'N';
-			}
-
-			if ((var0 >= 210) && (var0 <= 214)) {
-				return 'O';
-			}
-
-			if ((var0 >= 217) && (var0 <= 220)) {
-				return 'U';
-			}
-
-			if (var0 == 221) {
-				return 'Y';
-			}
-
-			if (var0 == 223) {
-				return 's';
-			}
-
-			if ((var0 >= 224) && (var0 <= 230)) {
-				return 'a';
-			}
-
-			if (var0 == 231) {
-				return 'c';
-			}
-
-			if ((var0 >= 232) && (var0 <= 235)) {
-				return 'e';
-			}
-
-			if ((var0 >= 236) && (var0 <= 239)) {
-				return 'i';
-			}
-
-			if ((var0 == 241) && (var1 != Language.Language_ES)) {
-				return 'n';
-			}
-
-			if ((var0 >= 242) && (var0 <= 246)) {
-				return 'o';
-			}
-
-			if ((var0 >= 249) && (var0 <= 252)) {
-				return 'u';
-			}
-
-			if ((var0 == 253) || (var0 == 255)) {
-				return 'y';
+		for (int var3 = 0; var3 < var2.length; ++var3) { // L: 18
+			MouseWheel var4 = var2[var3]; // L: 19
+			if (var1 == var4.rsOrdinal()) {
+				return var4; // L: 21
 			}
 		}
 
-		if (var0 == 338) {
-			return 'O';
-		} else if (var0 == 339) {
-			return 'o';
-		} else if (var0 == 376) {
-			return 'Y';
-		} else {
-			return var0;
+		return null; // L: 25
+	}
+
+	@ObfuscatedName("kl")
+	@ObfuscatedSignature(
+		descriptor = "(IB)V",
+		garbageValue = "16"
+	)
+	static final void method5390(int var0) {
+		var0 = Math.min(Math.max(var0, 0), 255); // L: 12054
+		if (var0 != class12.clientPreferences.method2248()) { // L: 12055
+			if (class12.clientPreferences.method2248() == 0 && Client.currentTrackGroupId != -1) { // L: 12056
+				UserComparator8.method2574(AbstractUserComparator.archive6, Client.currentTrackGroupId, 0, var0, false); // L: 12057
+				Client.playingJingle = false; // L: 12058
+			} else if (var0 == 0) { // L: 12060
+				ApproximateRouteStrategy.method1110(); // L: 12061
+				Client.playingJingle = false; // L: 12062
+			} else if (class273.musicPlayerStatus != 0) { // L: 12065
+				Clock.musicTrackVolume = var0;
+			} else {
+				class273.midiPcmStream.setPcmStreamVolume(var0); // L: 12066
+			}
+
+			class12.clientPreferences.method2234(var0); // L: 12068
 		}
-	}
 
-	@ObfuscatedName("i")
-	@ObfuscatedSignature(descriptor = 
-	"(IIS)Lbe;", garbageValue = 
-	"-15672")
-
-	@Export("Messages_getByChannelAndID")
-	static Message Messages_getByChannelAndID(int var0, int var1) {
-		ChatChannel var2 = ((ChatChannel) (Messages.Messages_channels.get(var0)));
-		return var2.getMessage(var1);
-	}
-
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = 
-	"(I)[Lqe;", garbageValue = 
-	"-868128197")
-
-	@Export("FillMode_values")
-	public static FillMode[] FillMode_values() {
-		return new FillMode[]{ FillMode.field4694, FillMode.field4695, FillMode.SOLID };
-	}
+	} // L: 12070
 }

@@ -242,7 +242,7 @@ public class ScriptInspector
 			leftSide.add(bottomLeftRow, BorderLayout.SOUTH);
 			frame.add(leftSide, BorderLayout.CENTER);
 
-			String blacklistConfig = configManager.getConfiguration("unethicalite-minimal", "devtools.blacklist");
+			String blacklistConfig = configManager.getConfiguration("unethicalite", "devtools.blacklist");
 
 			if (blacklistConfig == null)
 			{
@@ -258,7 +258,7 @@ public class ScriptInspector
 				blacklist = new HashSet<>(Lists.transform(Text.fromCSV(DEFAULT_BLACKLIST), Integer::parseInt));
 			}
 
-			String highlightsConfig = configManager.getConfiguration("unethicalite-minimal", "devtools.highlights");
+			String highlightsConfig = configManager.getConfiguration("unethicalite", "devtools.highlights");
 
 			if (highlightsConfig == null)
 			{
@@ -329,9 +329,9 @@ public class ScriptInspector
 
 	public void close()
 	{
-		configManager.setConfiguration("unethicalite-minimal", "devtools.highlights",
+		configManager.setConfiguration("unethicalite", "devtools.highlights",
 				Text.toCSV(Lists.transform(new ArrayList<>(highlights), String::valueOf)));
-		configManager.setConfiguration("unethicalite-minimal", "devtools.blacklist",
+		configManager.setConfiguration("unethicalite", "devtools.blacklist",
 				Text.toCSV(Lists.transform(new ArrayList<>(blacklist), String::valueOf)));
 		currentNode = null;
 		eventBus.unregister(this);

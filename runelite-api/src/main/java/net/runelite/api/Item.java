@@ -217,23 +217,23 @@ public class Item implements Interactable, Identifiable, EntityNameable
 	}
 
 	@Override
-	public String[] getRawActions()
+	public String[] getActions()
 	{
 		Widget widget = client.getWidget(widgetId);
 		if (widget != null)
 		{
 			if (getType() == Type.EQUIPMENT)
 			{
-				return widget.getRawActions();
+				return widget.getActions();
 			}
 
 			Widget itemChild = widget.getChild(slot);
 			if (itemChild != null)
 			{
-				return itemChild.getRawActions();
+				return itemChild.getActions();
 			}
 
-			return widget.getRawActions();
+			return widget.getActions();
 		}
 
 		return null;
@@ -244,7 +244,7 @@ public class Item implements Interactable, Identifiable, EntityNameable
 	{
 		if (action == 0)
 		{
-			if (getRawActions()[0] == null)
+			if (getActions()[0] == null)
 			{
 				return MenuAction.WIDGET_TARGET.getId();
 			}

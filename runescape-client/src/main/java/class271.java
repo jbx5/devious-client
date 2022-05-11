@@ -1,115 +1,76 @@
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+import net.runelite.mapping.ObfuscatedGetter;
+import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
 
-
-
-import net.runelite.rs.ScriptOpcodes; import net.runelite.mapping.Export; import net.runelite.mapping.ObfuscatedName; import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("jw")
+@ObfuscatedName("jo")
 public class class271 {
-	@ObfuscatedName("v")
-	static int[] field3155;
-	@ObfuscatedName("b")
-	@Export("SpriteBuffer_yOffsets")
-	public static int[] SpriteBuffer_yOffsets;
-	@ObfuscatedName("k")
-	@ObfuscatedSignature(descriptor = 
-	"Lly;")
+	@ObfuscatedName("tr")
+	@ObfuscatedGetter(
+		intValue = -2079311097
+	)
+	static int field3221;
+	@ObfuscatedName("o")
+	static int[] field3220;
 
-	@Export("NetCache_currentResponse")
-	public static NetFileRequest NetCache_currentResponse;
-	static 
-	{
+	static {
 		new Object();
-		field3155 = new int[33];
-		field3155[0] = 0;
-		int var0 = 2;
+		field3220 = new int[33]; // L: 8
+		field3220[0] = 0; // L: 11
+		int var0 = 2; // L: 12
 
-		for (int var1 = 1; var1 < 33; ++var1) {
-			field3155[var1] = var0 - 1;
-			var0 += var0;
+		for (int var1 = 1; var1 < 33; ++var1) { // L: 13
+			field3220[var1] = var0 - 1; // L: 14
+			var0 += var0; // L: 15
 		}
 
-	}
+	} // L: 17
 
-	@ObfuscatedName("y")
-	@ObfuscatedSignature(descriptor = 
-	"(ILbd;ZB)I", garbageValue = 
-	"27")
-
-	static int method5220(int var0, Script var1, boolean var2) {
-		Widget var3;
-		if (var0 == ScriptOpcodes.IF_GETINVOBJECT) {
-			var3 = class127.getWidget(Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]);
-			Interpreter.Interpreter_intStack[(++Interpreter.Interpreter_intStackSize) - 1] = var3.itemId;
-			return 1;
-		} else if (var0 == ScriptOpcodes.IF_GETINVCOUNT) {
-			var3 = class127.getWidget(Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]);
-			if (var3.itemId != (-1)) {
-				Interpreter.Interpreter_intStack[(++Interpreter.Interpreter_intStackSize) - 1] = var3.itemQuantity;
-			} else {
-				Interpreter.Interpreter_intStack[(++Interpreter.Interpreter_intStackSize) - 1] = 0;
+	@ObfuscatedName("j")
+	@ObfuscatedSignature(
+		descriptor = "(Lfs;IIB)Lal;",
+		garbageValue = "-29"
+	)
+	public static final PcmPlayer method5045(TaskHandler var0, int var1, int var2) {
+		if (PcmPlayer.field300 == 0) { // L: 52
+			throw new IllegalStateException();
+		} else if (var1 >= 0 && var1 < 2) { // L: 53
+			if (var2 < 256) { // L: 54
+				var2 = 256;
 			}
 
-			return 1;
-		} else if (var0 == ScriptOpcodes.IF_HASSUB) {
-			int var5 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-			InterfaceParent var4 = ((InterfaceParent) (Client.interfaceParents.get(((long) (var5)))));
-			if (var4 != null) {
-				Interpreter.Interpreter_intStack[(++Interpreter.Interpreter_intStackSize) - 1] = 1;
-			} else {
-				Interpreter.Interpreter_intStack[(++Interpreter.Interpreter_intStackSize) - 1] = 0;
-			}
-
-			return 1;
-		} else if (var0 == ScriptOpcodes.IF_GETTOP) {
-			Interpreter.Interpreter_intStack[(++Interpreter.Interpreter_intStackSize) - 1] = Client.rootInterface;
-			return 1;
-		} else if (var0 == 1707) {
-			var3 = class127.getWidget(Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]);
-			Interpreter.Interpreter_intStack[(++Interpreter.Interpreter_intStackSize) - 1] = (var3.method5690()) ? 1 : 0;
-			return 1;
-		} else if (var0 == 1708) {
-			var3 = class127.getWidget(Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]);
-			return UserComparator9.method2617(var3);
-		} else if (var0 == 1708) {
-			var3 = class127.getWidget(Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]);
-			return class305.method5782(var3);
-		} else {
-			return 2;
-		}
-	}
-
-	@ObfuscatedName("ad")
-	@ObfuscatedSignature(descriptor = 
-	"(ILbd;ZI)I", garbageValue = 
-	"1452863306")
-
-	static int method5221(int var0, Script var1, boolean var2) {
-		if (((((var0 != 6700) && (var0 != 6702)) && (var0 != 6704)) && (var0 != 6706)) && (var0 != 6708)) {
-			if (((((var0 != 6701) && (var0 != 6703)) && (var0 != 6705)) && (var0 != 6707)) && (var0 != 6709)) {
-				if (var0 == 6750) {
-					Interpreter.Interpreter_stringStack[(++class122.Interpreter_stringStackSize) - 1] = "";
-					return 1;
-				} else if (((var0 != 6751) && (var0 != 6752)) && (var0 != 6753)) {
-					if (var0 == 6754) {
-						int var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-						NPCComposition var4 = KeyHandler.getNpcDefinition(var3);
-						Interpreter.Interpreter_stringStack[(++class122.Interpreter_stringStackSize) - 1] = (var4 != null) ? var4.name : "";
-						return 1;
-					} else {
-						return 2;
-					}
-				} else {
-					Interpreter.Interpreter_intStack[(++Interpreter.Interpreter_intStackSize) - 1] = -1;
-					return 1;
+			try {
+				PcmPlayer var3 = PcmPlayer.pcmPlayerProvider.player(); // L: 56
+				var3.samples = new int[(ArchiveDiskAction.PcmPlayer_stereo ? 2 : 1) * 256]; // L: 57
+				var3.field287 = var2; // L: 58
+				var3.init(); // L: 59
+				var3.capacity = (var2 & -1024) + 1024; // L: 60
+				if (var3.capacity > 16384) { // L: 61
+					var3.capacity = 16384;
 				}
-			} else {
-				--Interpreter.Interpreter_intStackSize;
-				return 1;
+
+				var3.open(var3.capacity); // L: 62
+				if (class29.field172 > 0 && MusicPatchPcmStream.soundSystem == null) { // L: 63
+					MusicPatchPcmStream.soundSystem = new SoundSystem(); // L: 64
+					InterfaceParent.soundSystemExecutor = Executors.newScheduledThreadPool(1); // L: 65
+					InterfaceParent.soundSystemExecutor.scheduleAtFixedRate(MusicPatchPcmStream.soundSystem, 0L, 10L, TimeUnit.MILLISECONDS); // L: 66
+				}
+
+				if (MusicPatchPcmStream.soundSystem != null) { // L: 68
+					if (MusicPatchPcmStream.soundSystem.players[var1] != null) { // L: 69
+						throw new IllegalArgumentException();
+					}
+
+					MusicPatchPcmStream.soundSystem.players[var1] = var3; // L: 70
+				}
+
+				return var3; // L: 72
+			} catch (Throwable var4) { // L: 74
+				return new PcmPlayer(); // L: 75
 			}
 		} else {
-			Interpreter.Interpreter_intStackSize -= 2;
-			--class122.Interpreter_stringStackSize;
-			return 1;
+			throw new IllegalArgumentException();
 		}
 	}
 }

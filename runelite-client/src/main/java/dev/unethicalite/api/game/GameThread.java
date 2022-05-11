@@ -1,6 +1,6 @@
 package dev.unethicalite.api.game;
 
-import dev.unethicalite.managers.Static;
+import dev.unethicalite.client.Static;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.concurrent.Callable;

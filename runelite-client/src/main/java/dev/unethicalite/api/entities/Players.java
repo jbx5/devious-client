@@ -1,6 +1,8 @@
 package dev.unethicalite.api.entities;
 
 import dev.unethicalite.api.game.Game;
+import dev.unethicalite.api.query.entities.PlayerQuery;
+import dev.unethicalite.client.Static;
 import net.runelite.api.Player;
 import net.runelite.api.coords.WorldPoint;
 
@@ -19,10 +21,15 @@ public class Players extends Entities<Player>
 	@Override
 	protected List<Player> all(Predicate<? super Player> filter)
 	{
-		return Game.getClient().getPlayers()
+		return Static.getClient().getPlayers()
 				.stream()
 				.filter(filter)
 				.collect(Collectors.toList());
+	}
+
+	public static PlayerQuery query()
+	{
+		return new PlayerQuery(Players::getAll);
 	}
 
 	public static List<Player> getAll()

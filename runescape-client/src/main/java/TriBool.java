@@ -4,75 +4,53 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ni")
+@ObfuscatedName("nq")
 @Implements("TriBool")
 public class TriBool {
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = 
-	"Lni;")
-
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(
+		descriptor = "Lnq;"
+	)
 	@Export("TriBool_unknown")
 	public static final TriBool TriBool_unknown;
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = 
-	"Lni;")
-
+	@ObfuscatedName("q")
+	@ObfuscatedSignature(
+		descriptor = "Lnq;"
+	)
 	@Export("TriBool_true")
 	public static final TriBool TriBool_true;
-	@ObfuscatedName("i")
-	@ObfuscatedSignature(descriptor = 
-	"Lni;")
-
+	@ObfuscatedName("l")
+	@ObfuscatedSignature(
+		descriptor = "Lnq;"
+	)
 	@Export("TriBool_false")
 	public static final TriBool TriBool_false;
-	@ObfuscatedName("s")
-	@ObfuscatedGetter(intValue = 
-	355454995)
+	@ObfuscatedName("w")
+	@ObfuscatedGetter(
+		intValue = 1003527319
+	)
+	static int field4339;
 
-	@Export("gameCyclesToDo")
-	static int gameCyclesToDo;
-	static 
-	{
-		TriBool_unknown = new TriBool();
-		TriBool_true = new TriBool();
-		TriBool_false = new TriBool();
+	static {
+		TriBool_unknown = new TriBool(); // L: 4
+		TriBool_true = new TriBool(); // L: 5
+		TriBool_false = new TriBool(); // L: 6
 	}
 
 	TriBool() {
-	}
+	} // L: 8
 
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = 
-	"(IB)Lfc;", garbageValue = 
-	"-12")
-
-	public static VarcInt method6839(int var0) {
-		VarcInt var1 = ((VarcInt) (VarcInt.VarcInt_cached.get(((long) (var0)))));
-		if (var1 != null) {
-			return var1;
+	@ObfuscatedName("la")
+	@ObfuscatedSignature(
+		descriptor = "(Lki;B)Ljava/lang/String;",
+		garbageValue = "-92"
+	)
+	@Export("Widget_getSpellActionName")
+	static String Widget_getSpellActionName(Widget var0) {
+		if (WorldMapSection1.Widget_unpackTargetMask(UrlRequester.getWidgetFlags(var0)) == 0) { // L: 12521
+			return null;
 		} else {
-			byte[] var2 = class384.VarcInt_archive.takeFile(19, var0);
-			var1 = new VarcInt();
-			if (var2 != null) {
-				var1.method3414(new Buffer(var2));
-			}
-
-			VarcInt.VarcInt_cached.put(var1, ((long) (var0)));
-			return var1;
+			return var0.spellActionName != null && var0.spellActionName.trim().length() != 0 ? var0.spellActionName : null; // L: 12522 12523 12525
 		}
-	}
-
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(descriptor = 
-	"(II)Ldf;", garbageValue = 
-	"-468677079")
-
-	static class118 method6838(int var0) {
-		class118 var1 = ((class118) (MusicPatchPcmStream.findEnumerated(class18.method258(), var0)));
-		if (var1 == null) {
-			var1 = class118.field1433;
-		}
-
-		return var1;
 	}
 }

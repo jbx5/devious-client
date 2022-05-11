@@ -2,6 +2,7 @@ package dev.unethicalite.mixins;
 
 import dev.unethicalite.api.events.MenuAutomated;
 import dev.unethicalite.api.util.Randomizer;
+import dev.unethicalite.api.util.Text;
 import net.runelite.api.MenuAction;
 import net.runelite.api.Point;
 import net.runelite.api.mixins.FieldHook;
@@ -99,6 +100,25 @@ public abstract class HWidgetMixin implements RSWidget
 	public void setVisible(boolean visible)
 	{
 		this.visible = visible;
+	}
+
+	@Override
+	@Inject
+	public String[] getActions()
+	{
+		String[] rawActions = getRawActions();
+		if (rawActions == null)
+		{
+			return null;
+		}
+
+		String[] sanitized = new String[rawActions.length];
+		for (int i = 0; i < rawActions.length; i++)
+		{
+			sanitized[i] = Text.sanitize(rawActions[i]);
+		}
+
+		return sanitized;
 	}
 
 	@Inject

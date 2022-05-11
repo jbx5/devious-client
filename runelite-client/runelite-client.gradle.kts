@@ -68,7 +68,7 @@ dependencies {
     implementation(group = "com.jakewharton.rxrelay3", name = "rxrelay", version = "3.0.1")
     implementation(group = "com.squareup.okhttp3", name = "okhttp", version = "4.9.1")
     implementation(group = "io.reactivex.rxjava3", name = "rxjava", version = "3.1.2")
-    implementation(group = "org.jgroups", name = "jgroups", version = "5.1.9.Final")
+    implementation(group = "org.jgroups", name = "jgroups", version = "5.2.2.Final")
     implementation(group = "net.java.dev.jna", name = "jna", version = "5.9.0")
     implementation(group = "net.java.dev.jna", name = "jna-platform", version = "5.9.0")
     implementation(group = "net.runelite", name = "discord", version = "1.4")
@@ -122,6 +122,7 @@ dependencies {
     implementation("org.jboss.aerogear:aerogear-otp-java:1.0.0")
     implementation("io.socket:engine.io-client:1.0.0")
     implementation("io.socket:socket.io-client:1.0.0")
+    implementation("com.github.kwhat:jnativehook:2.2.2")
 }
 
 fun formatDate(date: Date?) = with(date ?: Date()) {
@@ -179,7 +180,7 @@ tasks {
 
     jar {
         manifest {
-            attributes(mutableMapOf("Main-Class" to if (Unethicalite.isMinimalBuild()) "dev.unethicalite.client.MinimalClient" else "net.runelite.client.RuneLite"))
+            attributes(mutableMapOf("Main-Class" to if (Unethicalite.isMinimalBuild()) "dev.unethicalite.client.minimal.MinimalClient" else "net.runelite.client.RuneLite"))
         }
     }
 
@@ -206,6 +207,6 @@ tasks {
 
         classpath = sourceSets["main"].runtimeClasspath
         enableAssertions = true
-        mainClass.set(if (Unethicalite.isMinimalBuild()) "dev.unethicalite.client.MinimalClient" else "net.runelite.client.RuneLite")
+        mainClass.set(if (Unethicalite.isMinimalBuild()) "dev.unethicalite.client.minimal.MinimalClient" else "net.runelite.client.RuneLite")
     }
 }

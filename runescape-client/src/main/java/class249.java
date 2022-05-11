@@ -1,4 +1,5 @@
 import net.runelite.mapping.ObfuscatedName;
 
-@ObfuscatedName("ib")
-public interface class249 extends class251 {}
+@ObfuscatedName("if")
+public interface class249 extends class251 {
+}

@@ -2,19 +2,18 @@ package dev.unethicalite.api.items;
 
 import dev.unethicalite.api.commons.Predicates;
 import dev.unethicalite.api.commons.Time;
-import dev.unethicalite.api.game.Game;
 import dev.unethicalite.api.game.Vars;
+import dev.unethicalite.api.query.items.ItemQuery;
 import dev.unethicalite.api.widgets.Dialog;
 import dev.unethicalite.api.widgets.Widgets;
+import dev.unethicalite.client.Static;
 import net.runelite.api.InventoryID;
 import net.runelite.api.Item;
-import net.runelite.api.ItemContainer;
 import net.runelite.api.Varbits;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetID;
 import net.runelite.api.widgets.WidgetInfo;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Predicate;
@@ -24,6 +23,11 @@ public class Bank extends Items
 {
 	private Bank()
 	{
+		super(InventoryID.BANK, item ->
+		{
+			item.setWidgetId(item.calculateWidgetId(WidgetInfo.BANK_ITEM_CONTAINER));
+			return true;
+		});
 	}
 
 	private static final Bank BANK = new Bank();
@@ -39,35 +43,10 @@ public class Bank extends Items
 	private static final Supplier<Widget> WITHDRAW_NOTE = () -> Widgets.get(WidgetID.BANK_GROUP_ID, Component.BANK_WITHDRAW_NOTE.childId);
 	private static final Supplier<Widget> EXIT = () -> Widgets.get(WidgetID.BANK_GROUP_ID, 2, 11);
 
-	@Override
-	protected List<Item> all(Predicate<Item> filter)
+	public static ItemQuery query()
 	{
-		List<Item> items = new ArrayList<>();
-		ItemContainer container = Game.getClient().getItemContainer(InventoryID.BANK);
-		if (container == null)
-		{
-			return items;
-		}
-
-		Item[] containerItems = container.getItems();
-		for (int i = 0, containerItemsLength = containerItems.length; i < containerItemsLength; i++)
-		{
-			Item item = containerItems[i];
-			if (item.getId() != -1 && item.getName() != null && !item.getName().equals("null"))
-			{
-				item.setWidgetId(item.calculateWidgetId(WidgetInfo.BANK_ITEM_CONTAINER));
-				item.setSlot(i);
-
-				if (filter.test(item))
-				{
-					items.add(item);
-				}
-			}
-		}
-
-		return items;
+		return new ItemQuery(Bank::getAll);
 	}
-
 
 	public static void setQuantityMode(QuantityMode quantityMode)
 	{
@@ -223,21 +202,15 @@ public class Bank extends Items
 			return;
 		}
 
-		WithdrawOption withdrawOption = WithdrawOption.ofAmount(item, amount);
+		String action = getAction(item, amount, false);
+		int actionIndex = item.getActionIndex(action);
 
+		item.interact(actionIndex + 1);
 
-		if (withdrawOption == WithdrawOption.X && item.hasAction("Deposit-" + amount))
+		if (action.equals("Deposit-X"))
 		{
-			item.interact(WithdrawOption.LAST_QUANTITY.getMenuIndex() + 1);
-		}
-		else
-		{
-			item.interact(withdrawOption.menuIndex + 1);
-
-			if (withdrawOption == WithdrawOption.X)
-			{
-				Dialog.enterInput(amount);
-			}
+			Time.sleepUntil(Dialog::isEnterInputOpen, 1200);
+			Dialog.enterInput(amount);
 		}
 	}
 
@@ -275,7 +248,9 @@ public class Bank extends Items
 			return;
 		}
 
-		WithdrawOption withdrawOption = WithdrawOption.ofAmount(item, amount);
+		String action = getAction(item, amount, true);
+		int actionIndex = item.getActionIndex(action);
+
 		if (withdrawMode == WithdrawMode.NOTED && !isNotedWithdrawMode())
 		{
 			setWithdrawMode(true);
@@ -288,20 +263,12 @@ public class Bank extends Items
 			Time.sleepUntil(() -> !isNotedWithdrawMode(), 1200);
 		}
 
-		if (withdrawOption == WithdrawOption.X && item.hasAction("Withdraw-" + amount))
+		item.interact(actionIndex + 1);
+		if (action.equals("Withdraw-X"))
 		{
-			item.interact(WithdrawOption.LAST_QUANTITY.getMenuIndex());
+			Time.sleepUntil(Dialog::isEnterInputOpen, 1200);
+			Dialog.enterInput(amount);
 		}
-		else
-		{
-			item.interact(withdrawOption.getMenuIndex());
-			if (withdrawOption == WithdrawOption.X)
-			{
-				Time.sleepUntil(Dialog::isEnterInputOpen, 1200);
-				Dialog.enterInput(amount);
-			}
-		}
-
 	}
 
 	public static void withdrawLastQuantity(String name, WithdrawMode withdrawMode)
@@ -446,7 +413,7 @@ public class Bank extends Items
 		for (int i = 0; i < getTabs().size(); i++)
 		{
 			Widget tab = getTabs().get(i);
-			Game.getClient().interact(6, 1007, 11 + i, tab.getId());
+			Static.getClient().interact(6, 1007, 11 + i, tab.getId());
 		}
 	}
 
@@ -465,7 +432,7 @@ public class Bank extends Items
 			return;
 		}
 
-		Game.getClient().interact(6, 1007, tabIdx, tab.getId());
+		Static.getClient().interact(6, 1007, tabIdx, tab.getId());
 	}
 
 	public static boolean isMainTabOpen()
@@ -500,33 +467,23 @@ public class Bank extends Items
 
 	public static class Inventory extends Items
 	{
-		@Override
-		protected List<Item> all(Predicate<Item> filter)
+		public Inventory()
 		{
-			List<Item> items = new ArrayList<>();
-			ItemContainer container = Game.getClient().getItemContainer(InventoryID.INVENTORY);
-			if (container == null)
+			super(InventoryID.INVENTORY, item ->
 			{
-				return items;
-			}
+				item.setWidgetId(item.calculateWidgetId(WidgetInfo.BANK_INVENTORY_ITEMS_CONTAINER));
+				return true;
+			});
+		}
 
-			Item[] containerItems = container.getItems();
-			for (int i = 0, containerItemsLength = containerItems.length; i < containerItemsLength; i++)
-			{
-				Item item = containerItems[i];
-				if (item.getId() != -1 && item.getName() != null && !item.getName().equals("null"))
-				{
-					item.setWidgetId(item.calculateWidgetId(WidgetInfo.BANK_INVENTORY_ITEMS_CONTAINER));
-					item.setSlot(i);
+		public static ItemQuery query()
+		{
+			return new ItemQuery(Bank.Inventory::getAll);
+		}
 
-					if (filter.test(item))
-					{
-						items.add(item);
-					}
-				}
-			}
-
-			return items;
+		public static List<Item> getAll()
+		{
+			return getAll(x -> true);
 		}
 
 		public static List<Item> getAll(Predicate<Item> filter)
@@ -558,6 +515,39 @@ public class Bank extends Items
 		{
 			return BANK_INVENTORY.first(names);
 		}
+	}
+
+	private static String getAction(Item item, int amount, Boolean withdraw)
+	{
+		String action = withdraw ? "Withdraw" : "Deposit";
+		if (amount == 1)
+		{
+			action += "-1";
+		}
+		else if (amount == 5)
+		{
+			action += "-5";
+		}
+		else if (amount == 10)
+		{
+			action += "-10";
+		}
+		else if (amount >= item.getQuantity())
+		{
+			action += "-All";
+		}
+		else
+		{
+			if (item.hasAction(action + "-" + amount))
+			{
+				action += "-" + amount;
+			}
+			else
+			{
+				action += "-X";
+			}
+		}
+		return action;
 	}
 
 	public enum Component
@@ -630,8 +620,13 @@ public class Bank extends Items
 
 	private enum WithdrawOption
 	{
-		ONE(2), FIVE(3), TEN(4), LAST_QUANTITY(5), X(6),
-		ALL(7), ALL_BUT_1(8);
+		ONE(2),
+		FIVE(3),
+		TEN(4),
+		LAST_QUANTITY(5),
+		X(6),
+		ALL(7),
+		ALL_BUT_1(8);
 
 		private final int menuIndex;
 

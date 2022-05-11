@@ -44,6 +44,11 @@ public abstract class HRenderableMixin implements RSRenderable
 			if (model != null)
 			{
 				LocalPoint localPoint = locatable.getLocalLocation();
+				if (localPoint == null)
+				{
+					return;
+				}
+
 				Shape convexHull = model.getConvexHull(localPoint.getX(), localPoint.getY(), 0,
 						Perspective.getTileHeight(client, localPoint, locatable.getWorldLocation().getPlane()));
 				if (convexHull != null)

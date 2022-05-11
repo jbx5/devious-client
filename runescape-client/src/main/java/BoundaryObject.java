@@ -4,69 +4,66 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ij")
+@ObfuscatedName("hc")
 @Implements("BoundaryObject")
 public final class BoundaryObject {
-	@ObfuscatedName("g")
-	@Export("ByteArrayPool_arrays")
-	static byte[][][] ByteArrayPool_arrays;
-	@ObfuscatedName("v")
-	@ObfuscatedGetter(intValue = 
-	-1523942229)
-
+	@ObfuscatedName("o")
+	@ObfuscatedGetter(
+		intValue = 1657313425
+	)
 	@Export("z")
 	int z;
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(intValue = 
-	-361735633)
-
+	@ObfuscatedName("q")
+	@ObfuscatedGetter(
+		intValue = -1880399519
+	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("i")
-	@ObfuscatedGetter(intValue = 
-	436509427)
-
+	@ObfuscatedName("l")
+	@ObfuscatedGetter(
+		intValue = -1024241781
+	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("f")
-	@ObfuscatedGetter(intValue = 
-	-1245875017)
-
+	@ObfuscatedName("k")
+	@ObfuscatedGetter(
+		intValue = 291661833
+	)
 	@Export("orientationA")
 	int orientationA;
-	@ObfuscatedName("b")
-	@ObfuscatedGetter(intValue = 
-	1804141061)
-
+	@ObfuscatedName("a")
+	@ObfuscatedGetter(
+		intValue = -40246503
+	)
 	@Export("orientationB")
 	int orientationB;
-	@ObfuscatedName("n")
-	@ObfuscatedSignature(descriptor = 
-	"Lix;")
-
+	@ObfuscatedName("m")
+	@ObfuscatedSignature(
+		descriptor = "Lgx;"
+	)
 	@Export("renderable1")
 	public Renderable renderable1;
-	@ObfuscatedName("s")
-	@ObfuscatedSignature(descriptor = 
-	"Lix;")
-
+	@ObfuscatedName("p")
+	@ObfuscatedSignature(
+		descriptor = "Lgx;"
+	)
 	@Export("renderable2")
 	public Renderable renderable2;
-	@ObfuscatedName("l")
-	@ObfuscatedGetter(longValue = 
-	-3781054410051402755L)
-
+	@ObfuscatedName("s")
+	@ObfuscatedGetter(
+		longValue = 5476522096528305987L
+	)
 	@Export("tag")
 	public long tag;
-	@ObfuscatedName("q")
-	@ObfuscatedGetter(intValue = 
-	2053587143)
-
+	@ObfuscatedName("r")
+	@ObfuscatedGetter(
+		intValue = -214248861
+	)
 	@Export("flags")
 	int flags;
 
 	BoundaryObject() {
-		this.tag = 0L;
-		this.flags = 0;
-	}
+		this.tag = 0L; // L: 11
+		this.flags = 0; // L: 12
+	} // L: 14
 }

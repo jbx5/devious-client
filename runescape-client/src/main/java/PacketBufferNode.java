@@ -4,90 +4,99 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jd")
+@ObfuscatedName("jm")
 @Implements("PacketBufferNode")
 public class PacketBufferNode extends Node {
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(descriptor = 
-	"[Ljd;")
-
+	@ObfuscatedName("tc")
+	@ObfuscatedGetter(
+		intValue = -1437445359
+	)
+	static int field3083;
+	@ObfuscatedName("a")
+	@ObfuscatedSignature(
+		descriptor = "[Ljm;"
+	)
 	@Export("PacketBufferNode_packetBufferNodes")
-	public static PacketBufferNode[] PacketBufferNode_packetBufferNodes;
-	@ObfuscatedName("n")
-	@ObfuscatedGetter(intValue = 
-	294123919)
-
+	static PacketBufferNode[] PacketBufferNode_packetBufferNodes;
+	@ObfuscatedName("m")
+	@ObfuscatedGetter(
+		intValue = 1074664569
+	)
 	@Export("PacketBufferNode_packetBufferNodeCount")
-	public static int PacketBufferNode_packetBufferNodeCount;
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = 
-	"Ljl;")
-
+	static int PacketBufferNode_packetBufferNodeCount;
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(
+		descriptor = "Ljj;"
+	)
 	@Export("clientPacket")
-	public ClientPacket clientPacket;
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(intValue = 
-	-147579925)
-
+	ClientPacket clientPacket;
+	@ObfuscatedName("q")
+	@ObfuscatedGetter(
+		intValue = 974252711
+	)
 	@Export("clientPacketLength")
-	public int clientPacketLength;
-	@ObfuscatedName("i")
-	@ObfuscatedSignature(descriptor = 
-	"Lpz;")
-
+	int clientPacketLength;
+	@ObfuscatedName("l")
+	@ObfuscatedSignature(
+		descriptor = "Lpc;"
+	)
 	@Export("packetBuffer")
 	public PacketBuffer packetBuffer;
-	@ObfuscatedName("f")
-	@ObfuscatedGetter(intValue = 
-	843582305)
-
+	@ObfuscatedName("k")
+	@ObfuscatedGetter(
+		intValue = 1838555649
+	)
 	@Export("index")
 	public int index;
-	static 
-	{
-		PacketBufferNode_packetBufferNodes = new PacketBufferNode[300];
-		PacketBufferNode_packetBufferNodeCount = 0;
+
+	static {
+		PacketBufferNode_packetBufferNodes = new PacketBufferNode[300]; // L: 13
+		PacketBufferNode_packetBufferNodeCount = 0; // L: 14
 	}
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = 
-	"(I)V", garbageValue = 
-	"2142638680")
+	PacketBufferNode() {
+	} // L: 19
 
+	@ObfuscatedName("k")
+	@ObfuscatedSignature(
+		descriptor = "(S)V",
+		garbageValue = "11589"
+	)
 	@Export("release")
 	public void release() {
-		if (PacketBufferNode_packetBufferNodeCount < PacketBufferNode.PacketBufferNode_packetBufferNodes.length) {
-			PacketBufferNode_packetBufferNodes[(++PacketBufferNode_packetBufferNodeCount) - 1] = this;
+		if (PacketBufferNode_packetBufferNodeCount < PacketBufferNode_packetBufferNodes.length) { // L: 50
+			PacketBufferNode_packetBufferNodes[++PacketBufferNode_packetBufferNodeCount - 1] = this; // L: 51
 		}
-	}
+	} // L: 52
 
-	@ObfuscatedName("n")
-	@ObfuscatedSignature(descriptor = 
-	"(II)Z", garbageValue = 
-	"-1834860972")
-
-	public static boolean method5187(int var0) {
-		return (var0 >= 0) && (var0 < 112) ? KeyHandler.KeyHandler_pressedKeys[var0] : false;
-	}
-
-	@ObfuscatedName("ho")
-	@ObfuscatedSignature(descriptor = 
-	"(Lcz;I)Z", garbageValue = 
-	"71882365")
-
-	static boolean method5188(Player var0) {
-		if (Client.drawPlayerNames == 0) {
-			return false;
-		} else if (GrandExchangeEvents.localPlayer == var0) {
-			return class6.method36();
-		} else {
-			boolean var1 = NPCComposition.method3531() || (Varcs.method2441() && var0.isFriend());
-			if (!var1) {
-				boolean var2 = (Client.drawPlayerNames & 2) != 0;
-				var1 = var2 && var0.isFriendsChatMember();
+	@ObfuscatedName("k")
+	@ObfuscatedSignature(
+		descriptor = "([BIIII[Lgh;I)V",
+		garbageValue = "-148866965"
+	)
+	static final void method5009(byte[] var0, int var1, int var2, int var3, int var4, CollisionMap[] var5) {
+		int var7;
+		int var8;
+		for (int var6 = 0; var6 < 4; ++var6) { // L: 93
+			for (var7 = 0; var7 < 64; ++var7) { // L: 94
+				for (var8 = 0; var8 < 64; ++var8) { // L: 95
+					if (var7 + var1 > 0 && var7 + var1 < 103 && var8 + var2 > 0 && var8 + var2 < 103) { // L: 96
+						int[] var10000 = var5[var6].flags[var7 + var1];
+						var10000[var8 + var2] &= -16777217;
+					}
+				}
 			}
-
-			return var1;
 		}
-	}
+
+		Buffer var10 = new Buffer(var0); // L: 100
+
+		for (var7 = 0; var7 < 4; ++var7) { // L: 101
+			for (var8 = 0; var8 < 64; ++var8) { // L: 102
+				for (int var9 = 0; var9 < 64; ++var9) { // L: 103
+					class67.loadTerrain(var10, var7, var8 + var1, var9 + var2, var3, var4, 0); // L: 104
+				}
+			}
+		}
+
+	} // L: 108
 }

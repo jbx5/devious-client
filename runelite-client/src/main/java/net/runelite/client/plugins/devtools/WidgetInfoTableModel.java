@@ -142,7 +142,7 @@ public class WidgetInfoTableModel extends AbstractTableModel
 		List<WidgetField<?>> out = new ArrayList<>();
 
 		out.add(new WidgetField<>("Id", Widget::getId));
-		out.add(new WidgetField<>("Actions", Widget::getRawActions));
+		out.add(new WidgetField<>("Actions", Widget::getActions));
 		out.add(new WidgetField<>("Type", Widget::getType, Widget::setType, Integer.class));
 		out.add(new WidgetField<>("ContentType", Widget::getContentType, Widget::setContentType, Integer.class));
 		out.add(new WidgetField<>("ParentId", Widget::getParentId));
