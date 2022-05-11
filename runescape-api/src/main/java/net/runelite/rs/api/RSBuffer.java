@@ -5,6 +5,18 @@ import net.runelite.mapping.Import;
 
 public interface RSBuffer extends Buffer, RSNode
 {
+	public static final String WRITEINT = "writeInt";
+	public static final String WRITESHORTLE = "method7550";
+	public static final String WRITESHORTADD = "method7551";
+	public static final String WRITEBYTE = "writeByte";
+	public static final String WRITEINTME = "method7565";
+	public static final String WRITEINTIME = "writeIntME";
+	public static final String WRITEBYTEADD = "method7687";
+	public static final String WRITEBYTESUB = "method7596";
+	public static final String WRITEINTLE = "method7563";
+	public static final String WRITESHORTADDLE = "method7641";
+	public static final String WRITEBYTENEG = "method7542";
+	public static final String WRITESHORT = "writeShort";
 	@Import("array")
 	byte[] getPayload();
 
@@ -38,17 +50,17 @@ public interface RSBuffer extends Buffer, RSNode
 //	@Import("writeBuffer")
 //	void writeBuffer(Buffer i);
 //
-//	@Import("writeByte")
-//	void writeByte(int i);
+	@Import(WRITEBYTE)
+	void writeByte(int i);
 //
-//	@Import("writeByteAdd")
-//	void writeByteAdd(int i);
+	@Import(WRITEBYTEADD)
+	void writeByteAdd(int i);
 //
-//	@Import("writeByteNeg")
-//	void writeByteNeg(int i);
+	@Import(WRITEBYTENEG)
+	void writeByteNeg(int i);
 //
-//	@Import("writeByteSub")
-//	void writeByteSub(int i);
+	@Import(WRITEBYTESUB)
+	void writeByteSub(int i);
 //
 //	@Import("writeBytes")
 //	void writeBytes(byte[] var1, int var2, int var3);
@@ -59,17 +71,17 @@ public interface RSBuffer extends Buffer, RSNode
 //	@Import("writeCrc")
 //	int writeCrc(int i);
 //
-//	@Import("writeInt")
-//	void writeInt(int i);
+	@Import(WRITEINT)
+	void writeInt(int i);
 //
-//	@Import("writeIntIME")
-//	void writeIntIME(int i);
+	@Import(WRITEINTIME)
+	void writeIntIME(int i);
 //
-//	@Import("writeIntLE")
-//	void writeIntLE(int i);
+	@Import(WRITEINTLE)
+	void writeIntLE(int i);
 //
-//	@Import("writeIntME")
-//	void writeIntME(int i);
+	@Import(WRITEINTME)
+	void writeIntME(int i);
 //
 //	@Import("writeLengthByte")
 //	void writeLengthByte(int i);
@@ -89,26 +101,26 @@ public interface RSBuffer extends Buffer, RSNode
 //	@Import("writeMedium")
 //	void writeMedium(int i);
 //
-//	@Import("writeShort")
-//	void writeShort(int i);
+	@Import(WRITESHORT)
+	void writeShort(int i);
 //
-//	@Import("writeShortAdd")
-//	void writeShortAdd(int i);
+	@Import(WRITESHORTADD)
+	void writeShortAdd(int i);
 //
-//	@Import("writeShortAddLE")
-//	void writeShortAddLE(int i);
+	@Import(WRITESHORTADDLE)
+	void writeShortAddLE(int i);
 //
-//	@Import("writeShortLE")
-//	void writeShortLE(int i);
+	@Import(WRITESHORTLE)
+	void writeShortLE(int i);
 //
 //	@Import("writeSmartByteShort")
 //	void writeSmartByteShort(int i);
 //
-//	@Import("writeStringCp1252NullCircumfixed")
-//	void writeStringCp1252NullCircumfixed(String i);
+	@Import("writeStringCp1252NullCircumfixed")
+	void writeStringCp1252NullCircumfixed(String i);
 //
-//	@Import("writeStringCp1252NullTerminated")
-//	void writeStringCp1252NullTerminated(String i);
+	@Import("writeStringCp1252NullTerminated")
+	void writeStringCp1252NullTerminated(String i);
 //
 //	@Import("writeVarInt")
 //	void writeVarInt(int i);
