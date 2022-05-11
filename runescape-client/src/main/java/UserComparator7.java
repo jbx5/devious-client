@@ -3,53 +3,57 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dj")
+@ObfuscatedName("dp")
 @Implements("UserComparator7")
 public class UserComparator7 extends AbstractUserComparator {
-	@ObfuscatedName("v")
+	@ObfuscatedName("hv")
+	@ObfuscatedSignature(
+		descriptor = "Lce;"
+	)
+	@Export("urlRequester")
+	static UrlRequester urlRequester;
+	@ObfuscatedName("o")
 	@Export("reversed")
 	final boolean reversed;
 
 	public UserComparator7(boolean var1) {
-		this.reversed = var1;
-	}
+		this.reversed = var1; // L: 10
+	} // L: 11
 
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = 
-	"(Lnf;Lnf;I)I", garbageValue = 
-	"1628043901")
-
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(
+		descriptor = "(Lns;Lns;B)I",
+		garbageValue = "-76"
+	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
-		if ((var1.world != 0) && (var2.world != 0)) {
-			return this.reversed ? var1.int2 - var2.int2 : var2.int2 - var1.int2;
+		if (var1.world != 0 && var2.world != 0) { // L: 14
+			return this.reversed ? var1.int2 - var2.int2 : var2.int2 - var1.int2; // L: 15
 		} else {
-			return this.compareUser(var1, var2);
+			return this.compareUser(var1, var2); // L: 17
 		}
 	}
 
 	public int compare(Object var1, Object var2) {
-		return this.compareBuddy(((Buddy) (var1)), ((Buddy) (var2)));
+		return this.compareBuddy((Buddy)var1, (Buddy)var2); // L: 21
 	}
 
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = 
-	"(Lln;Lln;Lln;B)V", garbageValue = 
-	"1")
+	@ObfuscatedName("q")
+	@ObfuscatedSignature(
+		descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;S)V",
+		garbageValue = "-27109"
+	)
+	@Export("addChatMessage")
+	static void addChatMessage(int var0, String var1, String var2, String var3) {
+		ChatChannel var4 = (ChatChannel)Messages.Messages_channels.get(var0); // L: 23
+		if (var4 == null) { // L: 24
+			var4 = new ChatChannel(); // L: 25
+			Messages.Messages_channels.put(var0, var4); // L: 26
+		}
 
-	public static void method2590(AbstractArchive var0, AbstractArchive var1, AbstractArchive var2) {
-		HitSplatDefinition.HitSplatDefinition_archive = var0;
-		class282.field3261 = var1;
-		class349.HitSplatDefinition_fontsArchive = var2;
-	}
-
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = 
-	"(IB)Lfe;", garbageValue = 
-	"-59")
-
-	@Export("WorldMapElement_get")
-	public static WorldMapElement WorldMapElement_get(int var0) {
-		return ((var0 >= 0) && (var0 < WorldMapElement.WorldMapElement_cached.length)) && (WorldMapElement.WorldMapElement_cached[var0] != null) ? WorldMapElement.WorldMapElement_cached[var0] : new WorldMapElement(var0);
-	}
+		Message var5 = var4.addMessage(var0, var1, var2, var3); // L: 28
+		Messages.Messages_hashTable.put(var5, (long)var5.count); // L: 29
+		Messages.Messages_queue.add(var5); // L: 30
+		Client.chatCycle = Client.cycleCntr; // L: 31
+	} // L: 32
 }

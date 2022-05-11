@@ -4,43 +4,26 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("nu")
+@ObfuscatedName("ny")
 @Implements("DefaultsGroup")
 public class DefaultsGroup {
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = 
-	"Lnu;")
-
-	static final DefaultsGroup field4311;
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(intValue = 
-	-1482438781)
-
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(
+		descriptor = "Lny;"
+	)
+	static final DefaultsGroup field4370;
+	@ObfuscatedName("q")
+	@ObfuscatedGetter(
+		intValue = 1549368493
+	)
 	@Export("group")
 	final int group;
-	static 
-	{
-		field4311 = new DefaultsGroup(3);
+
+	static {
+		field4370 = new DefaultsGroup(3); // L: 4
 	}
 
 	DefaultsGroup(int var1) {
-		this.group = var1;
-	}
-
-	@ObfuscatedName("lj")
-	@ObfuscatedSignature(descriptor = 
-	"(Lpi;II)V", garbageValue = 
-	"1715985756")
-
-	static void method6936(Buffer var0, int var1) {
-		UserComparator6.method2646(var0.array, var1);
-		if (JagexCache.JagexCache_randomDat != null) {
-			try {
-				JagexCache.JagexCache_randomDat.seek(0L);
-				JagexCache.JagexCache_randomDat.write(var0.array, var1, 24);
-			} catch (Exception var3) {
-			}
-		}
-
-	}
+		this.group = var1; // L: 8
+	} // L: 9
 }

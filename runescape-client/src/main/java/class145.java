@@ -1,150 +1,101 @@
-import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("er")
+@ObfuscatedName("ee")
 public class class145 {
-	@ObfuscatedName("eq")
-	@ObfuscatedSignature(descriptor = 
-	"Llx;")
+	@ObfuscatedName("ik")
+	@ObfuscatedGetter(
+		intValue = -627241765
+	)
+	static int field1690;
+	@ObfuscatedName("o")
+	@ObfuscatedGetter(
+		longValue = -4087609161665050259L
+	)
+	long field1683;
+	@ObfuscatedName("q")
+	@ObfuscatedGetter(
+		longValue = 1088515563671951847L
+	)
+	long field1688;
+	@ObfuscatedName("l")
+	@ObfuscatedSignature(
+		descriptor = "Llo;"
+	)
+	IterableNodeDeque field1685;
 
-	@Export("archive8")
-	static Archive archive8;
-	@ObfuscatedName("v")
-	@ObfuscatedGetter(longValue = 
-	-8660248817658951919L)
-
-	long field1633;
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(longValue = 
-	945677273558696457L)
-
-	long field1635;
-	@ObfuscatedName("i")
-	@ObfuscatedSignature(descriptor = 
-	"Llk;")
-
-	IterableNodeDeque field1632;
-
-	@ObfuscatedSignature(descriptor = 
-	"(Lpi;)V")
-
+	@ObfuscatedSignature(
+		descriptor = "(Lpx;)V"
+	)
 	public class145(Buffer var1) {
-		this.field1635 = -1L;
-		this.field1632 = new IterableNodeDeque();
-		this.method3084(var1);
-	}
+		this.field1688 = -1L; // L: 10
+		this.field1685 = new IterableNodeDeque(); // L: 11
+		this.method2985(var1); // L: 19
+	} // L: 20
 
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = 
-	"(Lpi;I)V", garbageValue = 
-	"1488842408")
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(
+		descriptor = "(Lpx;B)V",
+		garbageValue = "-84"
+	)
+	void method2985(Buffer var1) {
+		this.field1683 = var1.readLong(); // L: 23
+		this.field1688 = var1.readLong(); // L: 24
 
-	void method3084(Buffer var1) {
-		this.field1633 = var1.readLong();
-		this.field1635 = var1.readLong();
-
-		for (int var2 = var1.readUnsignedByte(); var2 != 0; var2 = var1.readUnsignedByte()) {
+		for (int var2 = var1.readUnsignedByte(); var2 != 0; var2 = var1.readUnsignedByte()) { // L: 25 26 36
 			Object var3;
-			if (var2 == 1) {
+			if (var2 == 1) { // L: 28
 				var3 = new class140(this);
 			} else if (var2 == 4) {
-				var3 = new class151(this);
-			} else if (var2 == 3) {
+				var3 = new class151(this); // L: 29
+			} else if (var2 == 3) { // L: 30
 				var3 = new class136(this);
-			} else if (var2 == 2) {
+			} else if (var2 == 2) { // L: 31
 				var3 = new class134(this);
 			} else {
-				if (var2 != 5) {
-					throw new RuntimeException("");
+				if (var2 != 5) { // L: 32
+					throw new RuntimeException(""); // L: 33
 				}
 
 				var3 = new class141(this);
 			}
 
-			((class144) (var3)).vmethod3152(var1);
-			this.field1632.addFirst(((Node) (var3)));
+			((class144)var3).vmethod3037(var1); // L: 34
+			this.field1685.addFirst((Node)var3); // L: 35
 		}
 
-	}
+	} // L: 38
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = 
-	"(Lea;I)V", garbageValue = 
-	"1969966641")
-
-	public void method3086(ClanChannel var1) {
-		if ((var1.key == this.field1633) && (var1.field1656 == this.field1635)) {
-			for (class144 var2 = ((class144) (this.field1632.last())); var2 != null; var2 = ((class144) (this.field1632.previous()))) {
-				var2.vmethod3153(var1);
+	@ObfuscatedName("q")
+	@ObfuscatedSignature(
+		descriptor = "(Let;I)V",
+		garbageValue = "1678529975"
+	)
+	public void method2987(ClanChannel var1) {
+		if (this.field1683 == var1.key && var1.field1709 == this.field1688) { // L: 41
+			for (class144 var2 = (class144)this.field1685.last(); var2 != null; var2 = (class144)this.field1685.previous()) { // L: 42
+				var2.vmethod3032(var1); // L: 43
 			}
 
-			++var1.field1656;
+			++var1.field1709; // L: 45
 		} else {
 			throw new RuntimeException("");
 		}
-	}
+	} // L: 46
 
-	@ObfuscatedName("l")
-	@ObfuscatedSignature(descriptor = 
-	"(IIZI)Ljava/lang/String;", garbageValue = 
-	"803323107")
-
-	static String method3085(int var0, int var1, boolean var2) {
-		if ((var1 >= 2) && (var1 <= 36)) {
-			if (var2 && (var0 >= 0)) {
-				int var3 = 2;
-
-				for (int var4 = var0 / var1; var4 != 0; ++var3) {
-					var4 /= var1;
-				}
-
-				char[] var5 = new char[var3];
-				var5[0] = '+';
-
-				for (int var6 = var3 - 1; var6 > 0; --var6) {
-					int var7 = var0;
-					var0 /= var1;
-					int var8 = var7 - (var0 * var1);
-					if (var8 >= 10) {
-						var5[var6] = ((char) (var8 + 87));
-					} else {
-						var5[var6] = ((char) (var8 + 48));
-					}
-				}
-
-				return new String(var5);
-			} else {
-				return Integer.toString(var0, var1);
-			}
-		} else {
-			throw new IllegalArgumentException("" + var1);
-		}
-	}
-
-	@ObfuscatedName("aa")
-	@ObfuscatedSignature(descriptor = 
-	"(IB)V", garbageValue = 
-	"-62")
-
-	@Export("runWidgetOnLoadListener")
-	static void runWidgetOnLoadListener(int var0) {
-		if (var0 != (-1)) {
-			if (class155.loadInterface(var0)) {
-				Widget[] var1 = Widget.Widget_interfaceComponents[var0];
-
-				for (int var2 = 0; var2 < var1.length; ++var2) {
-					Widget var3 = var1[var2];
-					if (var3.onLoad != null) {
-						ScriptEvent var4 = new ScriptEvent();
-						var4.widget = var3;
-						var4.args = var3.onLoad;
-						Interpreter.runScript(var4, 5000000, 0);
-					}
-				}
-
+	@ObfuscatedName("js")
+	@ObfuscatedSignature(
+		descriptor = "(II)Z",
+		garbageValue = "708009599"
+	)
+	static boolean method2991(int var0) {
+		for (int var1 = 0; var1 < Client.field719; ++var1) { // L: 11734
+			if (Client.field721[var1] == var0) { // L: 11735
+				return true;
 			}
 		}
+
+		return false; // L: 11737
 	}
 }

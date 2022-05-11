@@ -4,106 +4,102 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jv")
+@ObfuscatedName("jn")
 @Implements("LoginPacket")
 public class LoginPacket implements class261 {
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = 
-	"Ljv;")
-
-	public static final LoginPacket field3137;
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = 
-	"Ljv;")
-
-	static final LoginPacket field3131;
-	@ObfuscatedName("i")
-	@ObfuscatedSignature(descriptor = 
-	"Ljv;")
-
-	public static final LoginPacket field3132;
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = 
-	"Ljv;")
-
-	public static final LoginPacket field3133;
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(descriptor = 
-	"Ljv;")
-
-	public static final LoginPacket field3134;
-	@ObfuscatedName("n")
-	@ObfuscatedSignature(descriptor = 
-	"Ljv;")
-
-	static final LoginPacket field3130;
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(
+		descriptor = "Ljn;"
+	)
+	public static final LoginPacket field3192;
+	@ObfuscatedName("q")
+	@ObfuscatedSignature(
+		descriptor = "Ljn;"
+	)
+	static final LoginPacket field3196;
 	@ObfuscatedName("l")
-	@ObfuscatedSignature(descriptor = 
-	"[Ljv;")
-
+	@ObfuscatedSignature(
+		descriptor = "Ljn;"
+	)
+	public static final LoginPacket field3193;
+	@ObfuscatedName("k")
+	@ObfuscatedSignature(
+		descriptor = "Ljn;"
+	)
+	public static final LoginPacket field3194;
+	@ObfuscatedName("a")
+	@ObfuscatedSignature(
+		descriptor = "Ljn;"
+	)
+	public static final LoginPacket field3195;
+	@ObfuscatedName("m")
+	@ObfuscatedSignature(
+		descriptor = "Ljn;"
+	)
+	static final LoginPacket field3191;
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(
+		descriptor = "[Ljn;"
+	)
 	@Export("LoginPacket_indexedValues")
 	static final LoginPacket[] LoginPacket_indexedValues;
-	@ObfuscatedName("s")
-	@ObfuscatedGetter(intValue = 
-	696686347)
-
+	@ObfuscatedName("p")
+	@ObfuscatedGetter(
+		intValue = -1526221881
+	)
 	@Export("id")
 	public final int id;
-	static 
-	{
-		field3137 = new LoginPacket(14, 0);
-		field3131 = new LoginPacket(15, 4);
-		field3132 = new LoginPacket(16, -2);
-		field3133 = new LoginPacket(18, -2);
-		field3134 = new LoginPacket(19, -2);
-		field3130 = new LoginPacket(27, 0);
-		LoginPacket_indexedValues = new LoginPacket[32];
-		LoginPacket[] var0 = class127.method2836();
 
-		for (int var1 = 0; var1 < var0.length; ++var1) {
-			LoginPacket_indexedValues[var0[var1].id] = var0[var1];
+	static {
+		field3192 = new LoginPacket(14, 0); // L: 5
+		field3196 = new LoginPacket(15, 4); // L: 6
+		field3193 = new LoginPacket(16, -2); // L: 7
+		field3194 = new LoginPacket(18, -2); // L: 8
+		field3195 = new LoginPacket(19, -2); // L: 9
+		field3191 = new LoginPacket(27, 0); // L: 10
+		LoginPacket_indexedValues = new LoginPacket[32]; // L: 12
+		LoginPacket[] var0 = UserList.method6607(); // L: 15
+
+		for (int var1 = 0; var1 < var0.length; ++var1) { // L: 16
+			LoginPacket_indexedValues[var0[var1].id] = var0[var1]; // L: 17
 		}
 
-	}
+	} // L: 19
 
-	@ObfuscatedSignature(descriptor = 
-	"(II)V", garbageValue = 
-	"0")
-
+	@ObfuscatedSignature(
+		descriptor = "(II)V",
+		garbageValue = "0"
+	)
 	LoginPacket(int var1, int var2) {
-		this.id = var1;
+		this.id = var1; // L: 26
+	} // L: 27
+
+	@ObfuscatedName("l")
+	public static boolean method5022(long var0) {
+		return 0L != var0 && !class129.method2816(var0); // L: 52
 	}
 
-	@ObfuscatedName("i")
-	@ObfuscatedSignature(descriptor = 
-	"(Lpz;I)I", garbageValue = 
-	"-1030532734")
+	@ObfuscatedName("l")
+	@ObfuscatedSignature(
+		descriptor = "(Lpx;B)Ljava/lang/String;",
+		garbageValue = "120"
+	)
+	public static String method5025(Buffer var0) {
+		String var1;
+		try {
+			int var2 = var0.readUShortSmart(); // L: 67
+			if (var2 > 32767) { // L: 68
+				var2 = 32767;
+			}
 
-	static int method5195(PacketBuffer var0) {
-		int var1 = var0.readBits(2);
-		int var2;
-		if (var1 == 0) {
-			var2 = 0;
-		} else if (var1 == 1) {
-			var2 = var0.readBits(5);
-		} else if (var1 == 2) {
-			var2 = var0.readBits(8);
-		} else {
-			var2 = var0.readBits(11);
+			byte[] var3 = new byte[var2]; // L: 69
+			var0.offset += class282.huffman.decompress(var0.array, var0.offset, var3, 0, var2); // L: 70
+			String var4 = EnumComposition.decodeStringCp1252(var3, 0, var2); // L: 71
+			var1 = var4; // L: 72
+		} catch (Exception var6) { // L: 74
+			var1 = "Cabbage"; // L: 75
 		}
 
-		return var2;
-	}
-
-	@ObfuscatedName("gl")
-	@ObfuscatedSignature(descriptor = 
-	"(B)V", garbageValue = 
-	"16")
-
-	static void method5192() {
-		if (Client.renderSelf) {
-			ArchiveLoader.addPlayerToScene(GrandExchangeEvents.localPlayer, false);
-		}
-
+		return var1; // L: 78
 	}
 }

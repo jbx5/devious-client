@@ -4,64 +4,62 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kl")
+@ObfuscatedName("kt")
 @Implements("GameBuild")
 public class GameBuild {
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = 
-	"Lkl;")
-
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(
+		descriptor = "Lkt;"
+	)
 	@Export("LIVE")
 	static final GameBuild LIVE;
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = 
-	"Lkl;")
-
+	@ObfuscatedName("q")
+	@ObfuscatedSignature(
+		descriptor = "Lkt;"
+	)
 	@Export("BUILDLIVE")
 	static final GameBuild BUILDLIVE;
-	@ObfuscatedName("i")
-	@ObfuscatedSignature(descriptor = 
-	"Lkl;")
-
+	@ObfuscatedName("l")
+	@ObfuscatedSignature(
+		descriptor = "Lkt;"
+	)
 	@Export("RC")
 	static final GameBuild RC;
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = 
-	"Lkl;")
-
+	@ObfuscatedName("k")
+	@ObfuscatedSignature(
+		descriptor = "Lkt;"
+	)
 	@Export("WIP")
 	static final GameBuild WIP;
-	@ObfuscatedName("dk")
-	@Export("mouseCam")
-	static boolean mouseCam;
-	@ObfuscatedName("b")
+	@ObfuscatedName("a")
 	@Export("name")
 	public final String name;
-	@ObfuscatedName("n")
-	@ObfuscatedGetter(intValue = 
-	-21967843)
-
+	@ObfuscatedName("m")
+	@ObfuscatedGetter(
+		intValue = -1924800269
+	)
 	@Export("buildId")
 	final int buildId;
-	static 
-	{
-		LIVE = new GameBuild("LIVE", 0);
-		BUILDLIVE = new GameBuild("BUILDLIVE", 3);
-		RC = new GameBuild("RC", 1);
-		WIP = new GameBuild("WIP", 2);
+
+	static {
+		LIVE = new GameBuild("LIVE", 0); // L: 5
+		BUILDLIVE = new GameBuild("BUILDLIVE", 3); // L: 6
+		RC = new GameBuild("RC", 1); // L: 7
+		WIP = new GameBuild("WIP", 2); // L: 8
 	}
 
 	GameBuild(String var1, int var2) {
-		this.name = var1;
-		this.buildId = var2;
-	}
+		this.name = var1; // L: 13
+		this.buildId = var2; // L: 14
+	} // L: 15
 
-	@ObfuscatedName("id")
-	@ObfuscatedSignature(descriptor = 
-	"(I)I", garbageValue = 
-	"-733827758")
-
-	static final int method5773() {
-		return Client.menuOptionsCount - 1;
+	@ObfuscatedName("kp")
+	@ObfuscatedSignature(
+		descriptor = "(I)I",
+		garbageValue = "206667436"
+	)
+	static final int method5586() {
+		float var0 = 200.0F * ((float)class12.clientPreferences.method2225() - 0.5F); // L: 12049
+		return 100 - Math.round(var0); // L: 12050
 	}
 }
