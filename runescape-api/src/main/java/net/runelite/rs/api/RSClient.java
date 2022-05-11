@@ -1667,7 +1667,7 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("Login_response3")
 	String getLoginResponse3();
 
-	@Import("Login_banType")
+	@Import("field887")
 	int getBanType();
 
 	@Import("packetWriter")
