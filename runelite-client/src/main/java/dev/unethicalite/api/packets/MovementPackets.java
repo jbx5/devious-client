@@ -33,9 +33,9 @@ public class MovementPackets
 		var clientPacket = Game.getClientPacket();
 		var packetBufferNode = Game.getClient().preparePacket(clientPacket.MOVE_GAMECLICK(), client.getPacketWriter().getIsaacCipher());
 		packetBufferNode.getPacketBuffer().writeByte(5);
-		packetBufferNode.getPacketBuffer().writeShortLE(worldPointX);
-		packetBufferNode.getPacketBuffer().writeShort(worldPointY);
 		packetBufferNode.getPacketBuffer().writeByteSub(ctrlDown ? 2 : 0);
+		packetBufferNode.getPacketBuffer().writeShortAddLE(worldPointY);
+		packetBufferNode.getPacketBuffer().writeShort(worldPointX);
 		return packetBufferNode;
 	}
 }
