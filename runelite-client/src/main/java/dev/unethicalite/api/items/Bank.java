@@ -517,21 +517,26 @@ public class Bank extends Items
 		}
 	}
 
-	private static String getAction(Item item, int amount, Boolean withdraw) {
+	private static String getAction(Item item, int amount, Boolean withdraw)
+	{
 		String action = withdraw ? "Withdraw" : "Deposit";
 		if (amount == 1)
 		{
 			action += "-1";
-		} else if (amount == 5)
+		}
+		else if (amount == 5)
 		{
-			action +="-5";
-		} else if (amount == 10)
+			action += "-5";
+		}
+		else if (amount == 10)
 		{
-			action +="-10";
-		} else if (amount >= item.getQuantity())
+			action += "-10";
+		}
+		else if (amount >= item.getQuantity())
 		{
-			action +="-All";
-		} else
+			action += "-All";
+		}
+		else
 		{
 			if (item.hasAction(action + "-" + amount))
 			{
