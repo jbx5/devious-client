@@ -3,53 +3,10 @@ package net.runelite.rs.api;
 import net.runelite.api.packets.ClientPacket;
 import net.runelite.mapping.Import;
 
+import static dev.unethicalite.api.packets.PacketFields.*;
+
 public interface RSClientPacket extends ClientPacket
 {
-	public static final String OPOBJ1 = "field3013";
-	public static final String IF_BUTTON9 = "field3015";
-	public static final String RESUME_PAUSEBUTTON = "field2967";
-	public static final String RESUME_P_COUNTDIALOG = "field2972";
-	public static final String IF_BUTTON8 = "field2989";
-	public static final String OPOBJ5 = "field2978";
-	public static final String IF_BUTTON5 = "field2960";
-	public static final String OPOBJ4 = "field2976";
-	public static final String IF_BUTTON4 = "field2956";
-	public static final String OPOBJ3 = "field2997";
-	public static final String IF_BUTTON7 = "field3002";
-	public static final String OPOBJ2 = "field2987";
-	public static final String IF_BUTTON6 = "field2968";
-	public static final String OPLOCT = "field3057";
-	public static final String OPNPCT = "field2984";
-	public static final String OPPLAYERT = "field3022";
-	public static final String RESUME_P_NAMEDIALOG = "field3048";
-	public static final String RESUME_P_STRINGDIALOG = "field3033";
-	public static final String OPOBJT = "field3010";
-	public static final String IF_BUTTONT = "field2963";
-	public static final String OPNPC2 = "field3030";
-	public static final String OPPLAYER6 = "field2969";
-	public static final String OPNPC3 = "field3036";
-	public static final String OPPLAYER7 = "field2980";
-	public static final String OPLOC2 = "field3049";
-	public static final String OPPLAYER8 = "field3019";
-	public static final String OPLOC1 = "field2990";
-	public static final String OPNPC1 = "field3004";
-	public static final String OPLOC4 = "field2999";
-	public static final String OPPLAYER2 = "field2975";
-	public static final String OPLOC3 = "field3041";
-	public static final String OPPLAYER3 = "field3003";
-	public static final String OPNPC4 = "field2977";
-	public static final String OPPLAYER4 = "field2962";
-	public static final String OPNPC5 = "field3046";
-	public static final String OPPLAYER5 = "field2995";
-	public static final String OPLOC5 = "field2994";
-	public static final String CLOSE_MODAL = "field3001";
-	public static final String OPPLAYER1 = "field2965";
-	public static final String MOVE_GAMECLICK = "field2957";
-	public static final String IF_BUTTON1 = "field3006";
-	public static final String IF_BUTTON3 = "field3011";
-	public static final String IF_BUTTON2 = "field3032";
-	public static final String EVENT_MOUSE_CLICK = "field3051";
-	public static final String IF_BUTTON10 = "field3043";
 	@Import("id")
 	@Override
 	int getId();
