@@ -31,21 +31,6 @@ jobs:
       - name: Assembling
         run: ./gradlew assemble --console=plain
 
-      - name: Update packet API
-        run: |
-          ls
-          cd ..
-          ls
-          git clone https://buracc:${{ secrets.REPO_PAT }}@github.com/unethicalite/unethicalite-packet-updater.git
-          ls
-          cd unethicalite-packet-updater
-          mvn org.codehaus.mojo:exec-maven-plugin:1.5.0:java -Dexec.mainClass="net.unethicalite.updater.Updater" -Dexec.args="../unethicalite"
-          cd ..
-          cp -r ./unethicalite-packet-updater/mapper-output/. ./unethicalite/runelite-client/src/main/java/dev/unethicalite/api/packets/.
-          
-          ls ./unethicalite-packet-updater/mapper-output/
-          ls ./unethicalite/runelite-client/src/main/java/dev/unethicalite/api/packets/
-
       - name: Building
         run: ./gradlew build --stacktrace -x test -x checkstyleMain --console=plain
 
