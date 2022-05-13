@@ -26,6 +26,7 @@ package net.runelite.api.coords;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.Predicate;
 import lombok.Getter;
 import net.runelite.api.Client;
@@ -764,5 +765,11 @@ public class WorldArea
 	public int distanceTo(Locatable locatable)
 	{
 		return distanceTo(locatable.getWorldLocation());
+	}
+
+	public WorldPoint getRandom()
+	{
+		return new WorldPoint(ThreadLocalRandom.current().nextInt(x, x + width),
+				ThreadLocalRandom.current().nextInt(y, y + height), plane);
 	}
 }
