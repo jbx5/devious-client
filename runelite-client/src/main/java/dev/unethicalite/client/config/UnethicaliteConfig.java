@@ -30,6 +30,7 @@ public interface UnethicaliteConfig extends Config
 	{
 		return InteractMethod.MOUSE_EVENTS;
 	}
+
 	@ConfigItem(
 			keyName = "forceForwarding",
 			name = "Force mouse forwarding",
@@ -46,11 +47,29 @@ public interface UnethicaliteConfig extends Config
 	}
 
 	@ConfigItem(
+			keyName = "forwardLeftClick",
+			name = "Forward all clicks as left click",
+			description = "Converts all clicks to left mouse button and forwards them as a left click",
+			section = interactionManager,
+			position = 1,
+			hidden = true,
+			unhide = "interactMethod",
+			unhideValue = "MOUSE_FORWARDING"
+	)
+	default boolean forwardLeftClick()
+	{
+		return false;
+	}
+
+	@ConfigItem(
 			keyName = "naturalMouse",
 			name = "Natural mouse",
 			description = "Uses the 'natural mouse' algorithm to move and click",
 			section = interactionManager,
-			position = 2
+			position = 2,
+			hidden = true,
+			unhide = "interactMethod",
+			unhideValue = "MOUSE_EVENTS"
 	)
 	default boolean naturalMouse()
 	{
@@ -74,7 +93,10 @@ public interface UnethicaliteConfig extends Config
 			name = "Mouse behavior",
 			description = "Type of clicks to send to the server",
 			section = interactionManager,
-			position = 4
+			position = 4,
+			hidden = true,
+			unhide = "interactMethod",
+			unhideValue = "MOUSE_EVENTS"
 	)
 	default MouseBehavior mouseBehavior()
 	{

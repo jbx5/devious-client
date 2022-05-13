@@ -254,7 +254,7 @@ public class InteractionManager
 		switch (event.getType())
 		{
 			case PRESS:
-				int button = event.getButton();
+				int button = config.forwardLeftClick() ? 1 : event.getButton();
 				MenuAutomated queuedMenu = client.getQueuedMenu();
 
 				if (queuedMenu == null)
