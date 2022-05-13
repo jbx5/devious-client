@@ -73,7 +73,6 @@ public class MinimalPluginManager
 	@Getter
 	private Config config = null;
 
-	private long randomDelay = 0;
 	private boolean worldSet;
 
 	public List<PluginEntry> loadPlugins()
@@ -232,16 +231,6 @@ public class MinimalPluginManager
 	}
 
 	@Subscribe
-	private void onGameTick(GameTick e)
-	{
-		if (minimalConfig.neverLog() && checkIdle())
-		{
-			randomDelay = randomDelay();
-			executorService.submit(this::pressKey);
-		}
-	}
-
-	@Subscribe
 	private void onGameStateChanged(GameStateChanged e)
 	{
 		if (worldSet || e.getGameState() != GameState.LOGIN_SCREEN)
@@ -252,33 +241,6 @@ public class MinimalPluginManager
 		Optional<Integer> worldArg = Optional.ofNullable(System.getProperty("cli.world")).map(Integer::parseInt);
 		worldArg.ifPresent(this::setWorld);
 		worldSet = true;
-	}
-
-	private boolean checkIdle()
-	{
-		int idleClientTicks = client.getKeyboardIdleTicks();
-		if (client.getMouseIdleTicks() < idleClientTicks)
-		{
-			idleClientTicks = client.getMouseIdleTicks();
-		}
-
-		return idleClientTicks >= randomDelay;
-	}
-
-	private long randomDelay()
-	{
-		return (long) clamp(Math.round(ThreadLocalRandom.current().nextGaussian() * 8000));
-	}
-
-	private double clamp(double value)
-	{
-		return Math.max(1.0, Math.min(13000.0, value));
-	}
-
-	private void pressKey()
-	{
-		Keyboard.pressed(KeyEvent.VK_UP);
-		Keyboard.released(KeyEvent.VK_UP);
 	}
 
 	private void setWorld(int cliWorld)

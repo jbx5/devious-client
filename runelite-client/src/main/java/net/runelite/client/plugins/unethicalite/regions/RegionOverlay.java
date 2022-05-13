@@ -162,8 +162,9 @@ public class RegionOverlay extends Overlay
 					.setTarget("Calculate path")
 					.setType(MenuAction.RUNELITE_OVERLAY)
 					.onClick(e ->
+							executorService.execute(() ->
 								path = Walker.buildPath(clickPoint.getWorldLocation(), false)
-							);
+							));
 		}
 		else
 		{
