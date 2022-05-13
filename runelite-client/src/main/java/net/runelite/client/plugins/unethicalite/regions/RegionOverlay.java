@@ -9,10 +9,12 @@ import dev.unethicalite.api.utils.CoordUtils;
 import dev.unethicalite.api.utils.DrawUtils;
 import dev.unethicalite.api.widgets.Widgets;
 import dev.unethicalite.client.config.UnethicaliteConfig;
+import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.api.MenuAction;
 import net.runelite.api.Point;
 import net.runelite.api.RenderOverview;
+import net.runelite.api.Tile;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.events.MenuOpened;
 import net.runelite.api.widgets.Widget;
@@ -32,6 +34,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 
 @Singleton
+@Slf4j
 public class RegionOverlay extends Overlay
 {
 	private static final Color RED_TRANSLUCENT = new Color(255, 0, 0, 128);
@@ -136,45 +139,55 @@ public class RegionOverlay extends Overlay
 	}
 
 	@Subscribe
-	public void onMenuEntryAdded(MenuOpened event)
+	public void onMenuOpened(MenuOpened event)
 	{
-		Widget worldMap = Widgets.get(WidgetInfo.WORLD_MAP_VIEW);
-		if (worldMap == null)
+		if (!regionConfig.pathOverlay())
 		{
 			return;
 		}
 
 		Point mouse = client.getMouseCanvasPosition();
-		if (!worldMap.getBounds().contains(mouse.getX(), mouse.getY()))
+
+		Widget worldMap = Widgets.get(WidgetInfo.WORLD_MAP_VIEW);
+		if (worldMap == null)
 		{
-			return;
+			Tile clickPoint = Tiles.getHoveredTile();
+			if (clickPoint == null)
+			{
+				return;
+			}
+
+			client.createMenuEntry(1)
+					.setOption("<col=00ff00>Debug:</col>")
+					.setTarget("Calculate path")
+					.setType(MenuAction.RUNELITE_OVERLAY)
+					.onClick(e ->
+								path = Walker.buildPath(clickPoint.getWorldLocation(), false)
+							);
 		}
+		else
+		{
+			if (!worldMap.getBounds().contains(mouse.getX(), mouse.getY()))
+			{
+				return;
+			}
 
-		client.createMenuEntry(-1)
-				.setOption("Set")
-				.setTarget("<col=00ff00>Destination")
-				.setType(MenuAction.RUNELITE_OVERLAY)
-				.onClick(e ->
-				{
-					Point click = client.getMouseCanvasPosition();
-					WorldPoint clickPoint = calculateMapPoint(click);
-					if (clickPoint == null)
+			client.createMenuEntry(1)
+					.setOption("<col=00ff00>Debug:</col>")
+					.setTarget("Calculate path")
+					.setType(MenuAction.RUNELITE_OVERLAY)
+					.onClick(e ->
 					{
-						return;
-					}
+						WorldPoint clickPoint = calculateMapPoint(mouse);
+						if (clickPoint == null)
+						{
+							return;
+						}
 
-					executorService.execute(() ->
-					{
-						try
-						{
-							path = Walker.PATH_CACHE.get(clickPoint);
-						}
-						catch (ExecutionException ex)
-						{
-							ex.printStackTrace();
-						}
+						executorService.execute(() ->
+								path = Walker.buildPath(clickPoint, false));
 					});
-				});
+		}
 	}
 
 	private WorldPoint calculateMapPoint(Point point)
