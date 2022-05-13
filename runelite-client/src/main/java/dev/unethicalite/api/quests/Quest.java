@@ -347,6 +347,7 @@ public enum Quest
 
 	private final QuestVarbits varbit;
 
+	@Getter
 	private final QuestVarPlayer varPlayer;
 
 	private final int completeValue;

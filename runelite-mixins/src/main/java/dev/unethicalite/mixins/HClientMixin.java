@@ -5,6 +5,7 @@ import dev.unethicalite.api.events.LoginStateChanged;
 import dev.unethicalite.api.events.MenuAutomated;
 import dev.unethicalite.api.events.PlaneChanged;
 import net.runelite.api.ItemComposition;
+import net.runelite.api.MenuAction;
 import net.runelite.api.Skill;
 import net.runelite.api.Tile;
 import net.runelite.api.TileObject;
@@ -172,6 +173,17 @@ public abstract class HClientMixin implements RSClient
 	@Inject
 	public void interact(MenuAutomated menuAutomated)
 	{
+		if (menuAutomated.getOpcode() == MenuAction.WALK)
+		{
+			client.setSelectedSceneTileX(menuAutomated.getParam0());
+			client.setSelectedSceneTileY(menuAutomated.getParam1());
+			client.setViewportWalking(true);
+
+			menuAutomated.setOpcode(MenuAction.CANCEL);
+			menuAutomated.setParam0(0);
+			menuAutomated.setParam1(0);
+		}
+
 		client.getCallbacks().post(menuAutomated);
 	}
 

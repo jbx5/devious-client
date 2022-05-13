@@ -285,7 +285,7 @@ public class Walker
 
 				if (transport != null && local.getWorldLocation().distanceTo(transport.getSource()) <= transport.getSourceRadius())
 				{
-					log.debug("Trying to use transport at {}", transport.getSource());
+					log.debug("Trying to use transport {}", transport);
 					transport.getHandler().run();
 					Time.sleep(2800);
 					return true;

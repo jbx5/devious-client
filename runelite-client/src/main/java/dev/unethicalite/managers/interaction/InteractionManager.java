@@ -8,7 +8,6 @@ import dev.unethicalite.api.events.MenuAutomated;
 import dev.unethicalite.api.events.NativeMouseInput;
 import dev.unethicalite.api.game.GameThread;
 import dev.unethicalite.api.input.naturalmouse.NaturalMouse;
-import dev.unethicalite.api.movement.Movement;
 import dev.unethicalite.api.packets.Packets;
 import dev.unethicalite.api.widgets.Widgets;
 import dev.unethicalite.client.config.UnethicaliteConfig;
@@ -166,15 +165,6 @@ public class InteractionManager
 	@Subscribe
 	public void onMenuOptionClicked(MenuOptionClicked e)
 	{
-		if (e.isAutomated() && e.getMenuAction() == MenuAction.WALK
-				&& config.interactMethod() == InteractMethod.MOUSE_EVENTS)
-		{
-			Movement.setDestination(e.getParam0(), e.getParam1());
-			e.setMenuAction(MenuAction.CANCEL);
-			e.setParam0(0);
-			e.setParam1(0);
-		}
-
 		if (config.debugMenuActions())
 		{
 			String action = "O=" + e.getMenuOption()

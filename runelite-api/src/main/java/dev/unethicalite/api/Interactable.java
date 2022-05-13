@@ -65,6 +65,11 @@ public interface Interactable
 		interact(index);
 	}
 
+	default void interact(String... actions)
+	{
+		interact(Predicates.texts(actions));
+	}
+
 	default boolean hasAction(Predicate<String> filter)
 	{
 		String[] raw = getActions();

@@ -129,7 +129,7 @@ public interface UnethicaliteConfig extends Config
 
 	@ConfigItem(
 			keyName = "debugDialogs",
-			name = "Debug dialog interacions",
+			name = "Debug dialog interactions",
 			description = "Debugs chat dialog actions to console",
 			section = interactionManager,
 			position = 7
