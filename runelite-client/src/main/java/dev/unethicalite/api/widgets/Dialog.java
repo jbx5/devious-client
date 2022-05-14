@@ -1,10 +1,9 @@
 package dev.unethicalite.api.widgets;
 
-import dev.unethicalite.api.commons.Time;
-import dev.unethicalite.api.game.Game;
 import dev.unethicalite.api.game.GameThread;
 import dev.unethicalite.api.input.Keyboard;
 import dev.unethicalite.api.items.GrandExchange;
+import dev.unethicalite.api.packets.DialogPackets;
 import dev.unethicalite.client.Static;
 import net.runelite.api.DialogOption;
 import net.runelite.api.widgets.Widget;
@@ -32,7 +31,7 @@ public class Dialog
 	// Tutorial island continue dialogs
 	public static void continueTutorial()
 	{
-		GameThread.invoke(() -> Game.getClient().runScript(299, 1, 1, 1));
+		GameThread.invoke(() -> Static.getClient().runScript(299, 1, 1, 1));
 	}
 
 	public static boolean isOpen()
@@ -115,16 +114,20 @@ public class Dialog
 
 	public static void enterInput(String input)
 	{
-		Time.sleepUntil(Dialog::isEnterInputOpen, 2000);
-		if (isEnterInputOpen())
+		GameThread.invoke(() ->
 		{
-			Keyboard.type(input, true);
-		}
+			DialogPackets.sendNameInput(input);
+			close();
+		});
 	}
 
 	public static void enterInput(int input)
 	{
-		enterInput(String.valueOf(input));
+		GameThread.invoke(() ->
+		{
+			DialogPackets.sendNumberInput(input);
+			close();
+		});
 	}
 
 	public static boolean isViewingOptions()
@@ -220,5 +223,10 @@ public class Dialog
 			Static.getClient().processDialog(widgetId, menuIndex);
 			return true;
 		});
+	}
+
+	public static void close()
+	{
+		GameThread.invoke(() -> Static.getClient().runScript(138));
 	}
 }

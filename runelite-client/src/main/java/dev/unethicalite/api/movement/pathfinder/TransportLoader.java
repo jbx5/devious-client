@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import dev.unethicalite.api.entities.NPCs;
 import dev.unethicalite.api.entities.Players;
 import dev.unethicalite.api.entities.TileObjects;
+import dev.unethicalite.api.game.GameThread;
 import dev.unethicalite.api.game.Skills;
 import dev.unethicalite.api.game.Vars;
 import dev.unethicalite.api.game.Worlds;
@@ -16,6 +17,7 @@ import dev.unethicalite.api.widgets.Dialog;
 import dev.unethicalite.api.widgets.Widgets;
 import dev.unethicalite.client.minimal.config.UnethicaliteProperties;
 import lombok.Value;
+import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Item;
 import net.runelite.api.MenuAction;
 import net.runelite.api.NPC;
@@ -40,7 +42,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-
+@Slf4j
 public class TransportLoader
 {
 	private static final Gson GSON = new GsonBuilder().create();
@@ -129,17 +131,6 @@ public class TransportLoader
 					TileObjects.getFirstAt(3268, 3227, 0, 44598),
 					princeAliCompleted ? 0 : 3)
 			);
-		}
-
-		// Lumbridge castle dining room, ignore if RFD is in progress.
-		if (Quest.RECIPE_FOR_DISASTER.getState() != QuestState.IN_PROGRESS)
-		{
-			transports.add(objectTransport(new WorldPoint(3213, 3221, 0), new WorldPoint(3212, 3221, 0), 12349, "Open"));
-			transports.add(objectTransport(new WorldPoint(3212, 3221, 0), new WorldPoint(3213, 3221, 0), 12349, "Open"));
-			transports.add(objectTransport(new WorldPoint(3213, 3222, 0), new WorldPoint(3212, 3222, 0), 12350, "Open"));
-			transports.add(objectTransport(new WorldPoint(3212, 3222, 0), new WorldPoint(3213, 3222, 0), 12350, "Open"));
-			transports.add(objectTransport(new WorldPoint(3207, 3218, 0), new WorldPoint(3207, 3217, 0), 12348, "Open"));
-			transports.add(objectTransport(new WorldPoint(3207, 3217, 0), new WorldPoint(3207, 3218, 0), 12348, "Open"));
 		}
 
 		if (Worlds.inMembersWorld())
@@ -280,18 +271,32 @@ public class TransportLoader
 						"Climb"));
 			}
 
-			// Digsite gate
-			if (Vars.getBit(3637) >= 153)
+			GameThread.invoke(() ->
 			{
-				transports.add(objectTransport(new WorldPoint(3295, 3429, 0), new WorldPoint(3296, 3429, 0), 24561,
-						"Open"));
-				transports.add(objectTransport(new WorldPoint(3296, 3429, 0), new WorldPoint(3295, 3429, 0), 24561,
-						"Open"));
-				transports.add(objectTransport(new WorldPoint(3295, 3428, 0), new WorldPoint(3296, 3428, 0), 24561,
-						"Open"));
-				transports.add(objectTransport(new WorldPoint(3296, 3428, 0), new WorldPoint(3295, 3428, 0), 24561,
-						"Open"));
-			}
+				// Lumbridge castle dining room, ignore if RFD is in progress.
+				if (Quest.RECIPE_FOR_DISASTER.getState() != QuestState.IN_PROGRESS)
+				{
+					transports.add(objectTransport(new WorldPoint(3213, 3221, 0), new WorldPoint(3212, 3221, 0), 12349, "Open"));
+					transports.add(objectTransport(new WorldPoint(3212, 3221, 0), new WorldPoint(3213, 3221, 0), 12349, "Open"));
+					transports.add(objectTransport(new WorldPoint(3213, 3222, 0), new WorldPoint(3212, 3222, 0), 12350, "Open"));
+					transports.add(objectTransport(new WorldPoint(3212, 3222, 0), new WorldPoint(3213, 3222, 0), 12350, "Open"));
+					transports.add(objectTransport(new WorldPoint(3207, 3218, 0), new WorldPoint(3207, 3217, 0), 12348, "Open"));
+					transports.add(objectTransport(new WorldPoint(3207, 3217, 0), new WorldPoint(3207, 3218, 0), 12348, "Open"));
+				}
+
+				// Digsite gate
+				if (Vars.getBit(3637) >= 153)
+				{
+					transports.add(objectTransport(new WorldPoint(3295, 3429, 0), new WorldPoint(3296, 3429, 0), 24561,
+							"Open"));
+					transports.add(objectTransport(new WorldPoint(3296, 3429, 0), new WorldPoint(3295, 3429, 0), 24561,
+							"Open"));
+					transports.add(objectTransport(new WorldPoint(3295, 3428, 0), new WorldPoint(3296, 3428, 0), 24561,
+							"Open"));
+					transports.add(objectTransport(new WorldPoint(3296, 3428, 0), new WorldPoint(3295, 3428, 0), 24561,
+							"Open"));
+				}
+			});
 		}
 
 		if (lastBuild.plusSeconds(BUILD_DELAY_SECONDS).isAfter(Instant.now()))

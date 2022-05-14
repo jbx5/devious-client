@@ -209,7 +209,6 @@ public class Bank extends Items
 
 		if (action.equals("Deposit-X"))
 		{
-			Time.sleepUntil(Dialog::isEnterInputOpen, 1200);
 			Dialog.enterInput(amount);
 		}
 	}
@@ -266,7 +265,6 @@ public class Bank extends Items
 		item.interact(actionIndex + 1);
 		if (action.equals("Withdraw-X"))
 		{
-			Time.sleepUntil(Dialog::isEnterInputOpen, 1200);
 			Dialog.enterInput(amount);
 		}
 	}

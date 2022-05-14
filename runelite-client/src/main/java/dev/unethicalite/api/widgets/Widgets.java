@@ -1,6 +1,8 @@
 package dev.unethicalite.api.widgets;
 
 import dev.unethicalite.api.game.Game;
+import dev.unethicalite.api.query.widgets.WidgetQuery;
+import dev.unethicalite.client.Static;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
 
@@ -12,15 +14,19 @@ import java.util.stream.Collectors;
 
 public class Widgets
 {
+	public static WidgetQuery query(int group)
+	{
+		return new WidgetQuery(() -> get(group));
+	}
 
 	public static Widget get(WidgetInfo widgetInfo)
 	{
-		return Game.getClient().getWidget(widgetInfo);
+		return Static.getClient().getWidget(widgetInfo);
 	}
 
 	public static Widget get(int group, int id)
 	{
-		return Game.getClient().getWidget(group, id);
+		return Static.getClient().getWidget(group, id);
 	}
 
 	public static Widget get(int group, int id, int child)
@@ -30,7 +36,7 @@ public class Widgets
 
 	public static List<Widget> get(int group)
 	{
-		Widget[][] all = Game.getClient().getWidgets();
+		Widget[][] all = Static.getClient().getWidgets();
 		if (all == null)
 		{
 			return Collections.emptyList();

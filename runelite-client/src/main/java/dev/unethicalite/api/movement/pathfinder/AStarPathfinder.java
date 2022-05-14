@@ -31,7 +31,7 @@ public class AStarPathfinder implements PathingAlgorithm
 	{
 		if (destination.isInScene(Static.getClient()))
 		{
-			// DFS if destination is in scene
+			log.debug("Destination is in scene, skipping A*");
 			return null;
 		}
 
@@ -140,7 +140,7 @@ public class AStarPathfinder implements PathingAlgorithm
 		for (Transport transport : transportCoords.getOrDefault(position, new ArrayList<>()))
 		{
 			final WorldPoint transportDest = transport.getDestination();
-			result.put(transportDest, 5f);
+			result.put(transportDest, 1f);
 			//TODO: Add transport costs
 		}
 
