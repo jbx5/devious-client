@@ -424,14 +424,15 @@ public class Walker
 	)
 	{
 		List<WorldPoint> path;
-		path = new AStarPathfinder(collisionMap, transports, startPoints,
-				destination).find();
+
+		long start = System.currentTimeMillis();
+		path = new ParallelShortestPathFinder(transports, collisionMap).search(startPoints, destination);
 
 		// Timed out falling back to DFS
 		if (path == null)
 		{
 			start = System.currentTimeMillis();
-			log.debug("Falling back");
+			log.debug("Falling back to DFS");
 			return new DFSPathfinder(collisionMap, transports, startPoints, destination).find();
 		}
 
