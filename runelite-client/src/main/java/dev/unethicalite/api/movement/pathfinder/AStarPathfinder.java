@@ -1,25 +1,33 @@
 package dev.unethicalite.api.movement.pathfinder;
 
 import dev.unethicalite.api.entities.Players;
+import dev.unethicalite.client.Static;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
-
-import dev.unethicalite.client.Static;
+import java.util.Queue;
+import java.util.Set;
+import java.util.Stack;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import net.runelite.api.World;
+import net.runelite.api.coords.Direction;
 import net.runelite.api.coords.WorldPoint;
 
 @Slf4j
 @RequiredArgsConstructor
 public class AStarPathfinder implements PathingAlgorithm
 {
-	private static final int MAX_EXPLORATION_FACTOR = 2;
+	private static final int MAX_EXPLORATION_FACTOR = 5;
 	private static final long TIMEOUT = 3000;
+	private static final int MAX_DESTINATION_BLOOM = 6;
+	private static final int DEFAULT_TRANSPORT_COST = 20;
 	private final CollisionMap collisionMap;
 	private final Map<WorldPoint, List<Transport>> transportCoords;
 	private final List<WorldPoint> startCoords;
@@ -29,6 +37,7 @@ public class AStarPathfinder implements PathingAlgorithm
 
 	public List<WorldPoint> find()
 	{
+		long startTime = System.currentTimeMillis();
 		if (destination.isInScene(Static.getClient()))
 		{
 			log.debug("Destination is in scene, skipping A*");
@@ -40,9 +49,16 @@ public class AStarPathfinder implements PathingAlgorithm
 			return Collections.emptyList();
 		}
 
+		//WorldPoint destination = getUnblockedDestination();
+		WorldPoint destination = this.destination;
+		if (destination == null)
+		{
+			return null;
+		}
+
 		transportCoords.forEach((k, v) -> transportRegions.put(k.getRegionID(), v));
 
-		long startTime = System.currentTimeMillis();
+
 		final Map<WorldPoint, Integer> distanceMap = new HashMap<>();
 		final Map<WorldPoint, Integer> approximatedDistanceMap = new HashMap<>();
 
@@ -66,13 +82,17 @@ public class AStarPathfinder implements PathingAlgorithm
 			visiting.add(start);
 		}
 
+		log.debug("Starting A* after initialization of {} ms", System.currentTimeMillis() - startTime);
 		long start = System.currentTimeMillis();
 		while (!visiting.isEmpty())
 		{
 			if (System.currentTimeMillis() - start > TIMEOUT)
 			{
-				return null;
+				break;
 			}
+
+			final double maxExploration = distanceMap.containsKey(destination)
+				? distanceMap.get(destination) * Math.sqrt(MAX_EXPLORATION_FACTOR) : approximatedDistanceMap.get(destination) * MAX_EXPLORATION_FACTOR;
 			final WorldPoint current = visiting.poll();
 			final int distance = distanceMap.get(current);
 			final Map<WorldPoint, Float> neighbours = getNeighbours(current);
@@ -88,7 +108,7 @@ public class AStarPathfinder implements PathingAlgorithm
 
 				int approx = newDistance + heuristicTransports(neighbour, destination);
 				approximatedDistanceMap.put(neighbour, approx);
-				if (approx > approximatedDistanceMap.get(destination) * MAX_EXPLORATION_FACTOR)
+				if (approx > maxExploration)
 				{
 					continue;
 				}
@@ -99,15 +119,20 @@ public class AStarPathfinder implements PathingAlgorithm
 			}
 		}
 
+		if (!predecessors.containsKey(destination))
+		{
+			return null;
+		}
+
 		LinkedList<WorldPoint> result = new LinkedList<>();
-		WorldPoint node = predecessors.getNearestWorldPointTo(destination).orElse(destination);
+		WorldPoint node = predecessors.get(destination);
 		while (node != null)
 		{
 			result.add(0, node);
 			node = predecessors.get(node);
 		}
 
-		log.debug("Found path from {} to {} (length {}), in {} ms", Players.getLocal().getWorldLocation(), destination, result.size(), System.currentTimeMillis() - startTime);
+		log.debug("Found path from {} to {} (length {}), in {} ms", Players.getLocal().getWorldLocation(), destination, result.size(), System.currentTimeMillis() - start);
 		return result;
 	}
 
@@ -120,7 +145,13 @@ public class AStarPathfinder implements PathingAlgorithm
 	{
 		int hScore = heuristic(a, b);
 		int tScore = transportBased(a, b);
-		return Math.min(hScore, tScore);
+		int tImprovement = hScore - tScore;
+		if (tImprovement > DEFAULT_TRANSPORT_COST)
+		{
+			return tScore;
+		}
+
+		return hScore;
 	}
 
 	private int transportBased(WorldPoint a, WorldPoint b)
@@ -133,6 +164,41 @@ public class AStarPathfinder implements PathingAlgorithm
 			.orElse(Integer.MAX_VALUE);
 	}
 
+	private WorldPoint getUnblockedDestination()
+	{
+		WorldPoint destination = this.destination;
+		Stack<WorldPoint> destinations = new Stack<>();
+		destinations.add(destination);
+		Set<WorldPoint> checked = new HashSet<>();
+		while (!destinations.isEmpty())
+		{
+			WorldPoint current = destinations.pop();
+			if (checked.contains(current))
+			{
+				continue;
+			}
+
+			checked.add(current);
+			if (!collisionMap.fullBlock(current))
+			{
+				return current;
+			}
+
+			final float bloom = current.distanceTo2D(destination);
+			if (bloom > MAX_DESTINATION_BLOOM)
+			{
+				break;
+			}
+
+			destinations.add(current.dx(-1));
+			destinations.add(current.dx(1));
+			destinations.add(current.dy(-1));
+			destinations.add(current.dy(1));
+		}
+
+		return destination;
+	}
+
 
 	private Map<WorldPoint, Float> getNeighbours(WorldPoint position)
 	{
@@ -140,7 +206,7 @@ public class AStarPathfinder implements PathingAlgorithm
 		for (Transport transport : transportCoords.getOrDefault(position, new ArrayList<>()))
 		{
 			final WorldPoint transportDest = transport.getDestination();
-			result.put(transportDest, 1f);
+			result.put(transportDest, 2f);
 			//TODO: Add transport costs
 		}
 
