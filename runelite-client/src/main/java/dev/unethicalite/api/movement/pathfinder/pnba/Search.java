@@ -15,7 +15,8 @@ import static java.lang.Math.addExact;
 import static java.util.Comparator.comparingInt;
 
 @Value
-class Search implements Runnable {
+class Search implements Runnable
+{
     WorldPoint start;
     WorldPoint end;
     AtomicBoolean finished;
@@ -55,13 +56,15 @@ class Search implements Runnable {
         var x = start;
         while (!finished.get())
         {
-            if (!visited(x)) {
+            if (!visited(x))
+            {
                 visit(x);
             }
             if (nodesToVisit.isEmpty())
             {
                 finished.set(true);
-            } else
+            }
+            else
             {
                 x = nodesToVisit.poll();
             }
@@ -71,10 +74,12 @@ class Search implements Runnable {
     private void visit(WorldPoint x)
     {
         var xPath = paths1.get(x);
-        if (shouldExpand(xPath)) {
+        if (shouldExpand(xPath))
+        {
             for (var y : connectedNodes(x))
             {
-                if (!visited(y)) {
+                if (!visited(y))
+                {
                     var yPathOld = paths1.get(y);
                     var newTotalDistanceToY = addExact(xPath.getDistanceTravelled(), 1);
                     if (yPathOld == null || newTotalDistanceToY < yPathOld.getDistanceTravelled())

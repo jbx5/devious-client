@@ -6,7 +6,8 @@ import net.runelite.api.coords.WorldPoint;
 import java.util.Collection;
 
 @Value
-class Path {
+class Path
+{
     WorldPoint value;
     Path previous;
     int distanceTravelled;

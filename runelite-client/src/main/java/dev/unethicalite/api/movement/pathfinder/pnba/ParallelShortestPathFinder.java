@@ -20,7 +20,8 @@ import static java.util.Collections.reverse;
 
 @Value
 @AllArgsConstructor
-public class ParallelShortestPathFinder {
+public class ParallelShortestPathFinder
+{
 
     CollisionMap collisionMap;
     Map<WorldPoint, List<Transport>> transportCoords;
@@ -41,18 +42,20 @@ public class ParallelShortestPathFinder {
 
         return start.stream()
                     .map(s -> pool.submit(() -> search(s, end, finished, visited, bestCompletePath)))
-                    .map(fut -> {
-                        List<WorldPoint> out;
-                        try
-                        {
-                            out = fut.get();
+                    .map(fut ->
+                         {
+                            List<WorldPoint> out;
+                            try
+                            {
+                                out = fut.get();
+                            }
+                            catch (Exception e)
+                            {
+                                out = List.of();
+                            }
+                            return out;
                         }
-                        catch (Exception e)
-                        {
-                            out = List.of();
-                        }
-                        return out;
-                    })
+                    )
                     .min(Comparator.comparingInt(List::size))
                     .orElse(null);
 
@@ -122,7 +125,8 @@ public class ParallelShortestPathFinder {
             try
             {
                 future.get();
-            } catch (InterruptedException | ExecutionException e)
+            }
+            catch (InterruptedException | ExecutionException e)
             {
                 throw new RuntimeException(e);
             }
@@ -159,6 +163,7 @@ public class ParallelShortestPathFinder {
         }
         catch (Exception ignored)
         {
+
         }
 
         try
@@ -171,9 +176,11 @@ public class ParallelShortestPathFinder {
         }
         catch (Exception ignored)
         {
+
         }
 
-        try {
+        try
+        {
             if (collisionMap.s(position.getX(), position.getY(), position.getPlane()))
             {
                 WorldPoint neighbor = position.dy(-1);
@@ -182,6 +189,7 @@ public class ParallelShortestPathFinder {
         }
         catch (Exception ignored)
         {
+
         }
 
         try
@@ -194,6 +202,7 @@ public class ParallelShortestPathFinder {
         }
         catch (Exception ignored)
         {
+
         }
 
         try
@@ -206,6 +215,7 @@ public class ParallelShortestPathFinder {
         }
         catch (Exception ignored)
         {
+
         }
 
         try
@@ -218,6 +228,7 @@ public class ParallelShortestPathFinder {
         }
         catch (Exception ignored)
         {
+
         }
 
         try
@@ -230,6 +241,7 @@ public class ParallelShortestPathFinder {
         }
         catch (Exception ignored)
         {
+
         }
 
         try
@@ -242,6 +254,7 @@ public class ParallelShortestPathFinder {
         }
         catch (Exception ignored)
         {
+
         }
 
         return result;
