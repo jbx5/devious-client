@@ -9,6 +9,7 @@ import dev.unethicalite.api.entities.Players;
 import dev.unethicalite.api.game.Game;
 import dev.unethicalite.api.movement.Movement;
 import dev.unethicalite.api.movement.Reachable;
+import dev.unethicalite.api.movement.pathfinder.pnba.ParallelShortestPathFinder;
 import dev.unethicalite.api.scene.Tiles;
 import dev.unethicalite.client.Static;
 import lombok.extern.slf4j.Slf4j;
@@ -429,9 +430,12 @@ public class Walker
 		// Timed out falling back to DFS
 		if (path == null)
 		{
+			start = System.currentTimeMillis();
+			log.debug("Falling back");
 			return new DFSPathfinder(collisionMap, transports, startPoints, destination).find();
 		}
 
+		log.debug("Found path from {} to {} (length {}), in {} ms", Players.getLocal().getWorldLocation(), destination, path.size(), System.currentTimeMillis() - start);
 		return path;
 	}
 
