@@ -54,7 +54,8 @@ public class ParallelShortestPathFinder
 
     private List<WorldPoint> search(WorldPoint start,
                                     WorldPoint end,
-                                    AtomicBoolean allDone) {
+                                    AtomicBoolean allDone)
+    {
         Map<WorldPoint, Path> paths1 = new ConcurrentHashMap<>();
         Map<WorldPoint, Path> paths2 = new ConcurrentHashMap<>();
 
