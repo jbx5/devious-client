@@ -25,6 +25,7 @@
 package net.runelite.client.ui.overlay;
 
 import com.google.common.base.MoreObjects;
+import com.google.common.collect.ImmutableList;
 import com.google.common.primitives.Ints;
 import java.awt.Color;
 import java.awt.Composite;
@@ -36,11 +37,11 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.awt.Stroke;
-import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.geom.AffineTransform;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -61,7 +62,6 @@ import net.runelite.client.config.RuneLiteConfig;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.events.OverlayMenuClicked;
-import net.runelite.client.input.KeyListener;
 import net.runelite.client.input.KeyManager;
 import net.runelite.client.input.MouseAdapter;
 import net.runelite.client.input.MouseManager;
@@ -70,12 +70,13 @@ import net.runelite.client.ui.JagexColors;
 import net.runelite.client.ui.overlay.tooltip.Tooltip;
 import net.runelite.client.ui.overlay.tooltip.TooltipManager;
 import net.runelite.client.util.ColorUtil;
+import net.runelite.client.util.HotkeyListener;
 import org.slf4j.Marker;
 import org.slf4j.MarkerFactory;
 
 @Singleton
 @Slf4j
-public class OverlayRenderer extends MouseAdapter implements KeyListener
+public class OverlayRenderer extends MouseAdapter
 {
 	private static final Marker DEDUPLICATE = MarkerFactory.getMarker("DEDUPLICATE");
 	private static final int BORDER = 5;
@@ -119,6 +120,8 @@ public class OverlayRenderer extends MouseAdapter implements KeyListener
 	private Overlay focusedOverlay;
 	private Overlay prevFocusedOverlay;
 
+	private final HotkeyListener hotkeyListener;
+
 	@Inject
 	private OverlayRenderer(
 		final Client client,
@@ -136,7 +139,27 @@ public class OverlayRenderer extends MouseAdapter implements KeyListener
 		this.clientUI = clientUI;
 		this.tooltipManager = tooltipManager;
 		this.eventBus = eventBus;
-		keyManager.registerKeyListener(this);
+
+		this.hotkeyListener = new HotkeyListener(runeLiteConfig::dragHotkey)
+		{
+			@Override
+			public void hotkeyPressed()
+			{
+				inOverlayManagingMode = true;
+			}
+
+			@Override
+			public void hotkeyReleased()
+			{
+				if (inOverlayManagingMode)
+				{
+					inOverlayManagingMode = false;
+					resetOverlayManagementMode();
+				}
+			}
+		};
+
+		keyManager.registerKeyListener(hotkeyListener);
 		mouseManager.registerMouseListener(this);
 		eventBus.register(this);
 	}
@@ -520,22 +543,24 @@ public class OverlayRenderer extends MouseAdapter implements KeyListener
 	{
 		synchronized (overlayManager)
 		{
-			for (Overlay overlay : overlayManager.getOverlays())
-			{
-				if (overlay.getPosition() == OverlayPosition.DYNAMIC || overlay.getPosition() == OverlayPosition.TOOLTIP)
-				{
-					// never allow moving dynamic or tooltip overlays
-					continue;
-				}
-
-				final Rectangle bounds = overlay.getBounds();
-				if (bounds.contains(mousePoint))
-				{
-					return overlay;
-				}
-			}
+			// render order is roughly: under -> manual -> above -> always on top
+			final List<OverlayLayer> layerOrder = ImmutableList.of(OverlayLayer.UNDER_WIDGETS, OverlayLayer.MANUAL, OverlayLayer.ABOVE_WIDGETS, OverlayLayer.ALWAYS_ON_TOP);
+			return overlayManager.getOverlays()
+				.stream()
+				// ABOVE_SCENE overlays aren't managed
+				.filter(c -> layerOrder.contains(c.getLayer()))
+				// never allow moving dynamic or tooltip overlays
+				.filter(c -> c.getPosition() != OverlayPosition.DYNAMIC && c.getPosition() != OverlayPosition.TOOLTIP)
+				.sorted(
+					Comparator.<Overlay>comparingInt(c -> layerOrder.indexOf(c.getLayer()))
+						.thenComparing(OverlayManager.OVERLAY_COMPARATOR)
+						// pick order is reversed from render order
+						.reversed()
+				)
+				.filter(o -> o.getBounds().contains(mousePoint))
+				.findFirst()
+				.orElse(null);
 		}
-		return null;
 	}
 
 	@Override
@@ -729,30 +754,6 @@ public class OverlayRenderer extends MouseAdapter implements KeyListener
 		resetOverlayManagementMode();
 		mouseEvent.consume();
 		return mouseEvent;
-	}
-
-	@Override
-	public void keyTyped(KeyEvent e)
-	{
-	}
-
-	@Override
-	public void keyPressed(KeyEvent e)
-	{
-		if (e.isAltDown())
-		{
-			inOverlayManagingMode = true;
-		}
-	}
-
-	@Override
-	public void keyReleased(KeyEvent e)
-	{
-		if (!e.isAltDown() && inOverlayManagingMode)
-		{
-			inOverlayManagingMode = false;
-			resetOverlayManagementMode();
-		}
 	}
 
 	private void safeRender(Client client, Overlay overlay, OverlayLayer layer, Graphics2D graphics, Point point)
