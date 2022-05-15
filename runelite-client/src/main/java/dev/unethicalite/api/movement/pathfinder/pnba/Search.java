@@ -20,6 +20,7 @@ class Search implements Runnable
     WorldPoint start;
     WorldPoint end;
     AtomicBoolean finished;
+    AtomicBoolean allDone;
     Set<WorldPoint> visited;
     AtomicStampedReference<WorldPoint> bestCompletePath;
     Map<WorldPoint, Path> paths1;
@@ -31,6 +32,7 @@ class Search implements Runnable
     Search(WorldPoint start,
            WorldPoint end,
            AtomicBoolean finished,
+           AtomicBoolean allDone,
            Set<WorldPoint> visited,
            AtomicStampedReference<WorldPoint> bestCompletePath,
            Map<WorldPoint, Path> paths1,
@@ -41,6 +43,7 @@ class Search implements Runnable
         this.start = start;
         this.end = end;
         this.finished = finished;
+        this.allDone = allDone;
         this.visited = visited;
         this.bestCompletePath = bestCompletePath;
         this.paths1 = paths1;
@@ -54,7 +57,7 @@ class Search implements Runnable
     public void run()
     {
         var x = start;
-        while (!finished.get())
+        while (!finished.get() && !allDone.get())
         {
             if (!visited(x))
             {

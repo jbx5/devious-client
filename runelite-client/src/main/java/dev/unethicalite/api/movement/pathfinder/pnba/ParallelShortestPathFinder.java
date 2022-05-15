@@ -5,43 +5,33 @@ import dev.unethicalite.api.movement.pathfinder.CollisionMap;
 import dev.unethicalite.api.movement.pathfinder.Transport;
 import lombok.AllArgsConstructor;
 import lombok.Value;
+import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.coords.WorldPoint;
 
 import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ForkJoinPool;
-import java.util.concurrent.Future;
+import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicStampedReference;
-import java.util.function.Function;
 
 import static java.util.Collections.reverse;
 
+@Slf4j
 @Value
 @AllArgsConstructor
 public class ParallelShortestPathFinder
 {
 
-    CollisionMap collisionMap;
     Map<WorldPoint, List<Transport>> transportCoords;
-    Function<Runnable, Future<?>> executor;
-
-    public ParallelShortestPathFinder(Map<WorldPoint, List<Transport>> transportCoords, CollisionMap collisionMap)
-    {
-        this(collisionMap, transportCoords, a -> ForkJoinPool.commonPool().submit(a));
-    }
+    CollisionMap collisionMap;
+    ExecutorService pool = ForkJoinPool.commonPool();
 
     public List<WorldPoint> search(List<WorldPoint> start, WorldPoint end)
     {
-        var finished = new AtomicBoolean(false);
-        var visited = ConcurrentHashMap.<WorldPoint>newKeySet();
-        var bestCompletePath = new AtomicStampedReference<WorldPoint>(null, Integer.MAX_VALUE);
 
-        ForkJoinPool pool = ForkJoinPool.commonPool();
+        AtomicBoolean allDone = new AtomicBoolean(false);
 
         return start.stream()
-                    .map(s -> pool.submit(() -> search(s, end, finished, visited, bestCompletePath)))
+                    .map(s -> pool.submit(() -> search(s, end, allDone)))
                     .map(fut ->
                          {
                             List<WorldPoint> out;
@@ -56,6 +46,7 @@ public class ParallelShortestPathFinder
                             return out;
                         }
                     )
+                    .filter(l -> !l.isEmpty())
                     .min(Comparator.comparingInt(List::size))
                     .orElse(null);
 
@@ -63,28 +54,30 @@ public class ParallelShortestPathFinder
 
     private List<WorldPoint> search(WorldPoint start,
                                     WorldPoint end,
-                                    AtomicBoolean finished,
-                                    Set<WorldPoint> visited,
-                                    AtomicStampedReference<WorldPoint> bestCompletePath)
-    {
-        var paths1 = new ConcurrentHashMap<WorldPoint, Path>();
-        var paths2 = new ConcurrentHashMap<WorldPoint, Path>();
+                                    AtomicBoolean allDone) {
+        Map<WorldPoint, Path> paths1 = new ConcurrentHashMap<>();
+        Map<WorldPoint, Path> paths2 = new ConcurrentHashMap<>();
+
+        AtomicBoolean finished = new AtomicBoolean(false);
+        Set<WorldPoint> visited = ConcurrentHashMap.newKeySet();
+        AtomicStampedReference<WorldPoint> bestCompletePath = new AtomicStampedReference<>(null, Integer.MAX_VALUE);
 
         paths1.put(start, new Path(start, heuristic(start, end)));
         paths2.put(end, new Path(end, heuristic(start, end)));
 
-        var result1 = new ArrayList<WorldPoint>();
-        Future<?> future = executor.apply(() -> {
+        List<WorldPoint> result1 = new ArrayList<>();
+        Future<?> future = pool.submit(() -> {
             new Search(start,
                        end,
                        finished,
+                       allDone,
                        visited,
                        bestCompletePath,
                        paths1,
                        paths2,
                        this::getNeighbours,
                        this::heuristic).run();
-            var commonNode = bestCompletePath.getReference();
+            WorldPoint commonNode = bestCompletePath.getReference();
             if (commonNode != null)
             {
                 Path previous = paths1.get(commonNode).getPrevious();
@@ -96,22 +89,26 @@ public class ParallelShortestPathFinder
             }
         });
 
-        var result2 = new ArrayList<WorldPoint>();
+        List<WorldPoint>  result2 = new ArrayList<WorldPoint>();
         new Search(end,
                    start,
                    finished,
+                   allDone,
                    visited,
                    bestCompletePath,
                    paths2,
                    paths1,
                    this::getNeighbours,
                    this::heuristic).run();
-        var commonNode = bestCompletePath.getReference();
+
+        WorldPoint commonNode = bestCompletePath.getReference();
         if (commonNode == null)
         {
             future.cancel(true);
             return ImmutableList.of();
         }
+
+        allDone.set(true);
 
         Path p = paths2.get(commonNode);
         p.collectInto(result2);

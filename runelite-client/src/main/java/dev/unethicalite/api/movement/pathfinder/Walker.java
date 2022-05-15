@@ -433,7 +433,7 @@ public class Walker
 		{
 			start = System.currentTimeMillis();
 			log.debug("Falling back to DFS");
-			return new DFSPathfinder(collisionMap, transports, startPoints, destination).find();
+			path = new DFSPathfinder(collisionMap, transports, startPoints, destination).find();
 		}
 
 		log.debug("Found path from {} to {} (length {}), in {} ms", Players.getLocal().getWorldLocation(), destination, path.size(), System.currentTimeMillis() - start);
