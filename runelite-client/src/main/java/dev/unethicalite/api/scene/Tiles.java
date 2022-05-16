@@ -83,6 +83,20 @@ public class Tiles
 		return Game.getClient().getScene().getTiles()[scenePoint.getPlane()][scenePoint.getX()][scenePoint.getY()];
 	}
 
+	public static List<Tile> getSurrounding(WorldPoint worldPoint, int radius)
+	{
+		List<Tile> out = new ArrayList<>();
+		for (int x = -radius; x <= radius; x++)
+		{
+			for (int y = -radius; y <= radius; y++)
+			{
+				out.add(getAt(worldPoint.dx(x).dx(y)));
+			}
+		}
+
+		return out;
+	}
+
 	public static Tile getHoveredTile()
 	{
 		return Game.getClient().getSelectedSceneTile();

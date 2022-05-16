@@ -79,11 +79,6 @@ public class InteractionManager
 			switch (config.interactMethod())
 			{
 				case MOUSE_FORWARDING:
-					if (client.getQueuedMenu() != null)
-					{
-						break;
-					}
-
 					client.setQueuedMenu(event);
 					break;
 
@@ -182,8 +177,7 @@ public class InteractionManager
 	@Subscribe
 	public void onNativeMouseInput(NativeMouseInput event)
 	{
-		if ((client.getQueuedMenu() == null && !config.forceForwarding())
-				|| config.interactMethod() != InteractMethod.MOUSE_FORWARDING)
+		if (!canForwardMouseEvent(event))
 		{
 			return;
 		}
@@ -204,13 +198,23 @@ public class InteractionManager
 			return;
 		}
 
-		GraphicsDevice screen = Arrays.stream(GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices())
+		GraphicsDevice[] monitors = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
+		if (config.selectedMonitor() && config.selectedMonitorId() > monitors.length)
+		{
+			log.error(
+					"Specified {} monitor, but only {} monitors are available",
+					config.selectedMonitorId(),
+					monitors.length
+			);
+			return;
+		}
+		GraphicsDevice screen = Arrays.stream(monitors)
 				.filter(device -> device.getDefaultConfiguration().getBounds().contains(event.getX(), event.getY()))
 				.findFirst()
 				.orElse(null);
 		if (screen == null)
 		{
-			log.debug("Screen not found  to forward mouse event");
+			log.debug("Screen not found to forward mouse event");
 			return;
 		}
 
@@ -233,6 +237,17 @@ public class InteractionManager
 		else if (eventY > screenHeight)
 		{
 			eventY = eventY - screenHeight;
+		}
+
+		if (config.selectedMonitor() && screen != monitors[config.selectedMonitorId() - 1])
+		{
+			eventX = -1;
+			eventY = -1;
+		}
+
+		if (event.getType() != NativeMouseInput.Type.MOVEMENT && eventX == -1 && eventY == -1)
+		{
+			return;
 		}
 
 		int finalEventX = (int) eventX;
@@ -394,5 +409,25 @@ public class InteractionManager
 	{
 		return point.x < 0 || point.y < 0
 				|| point.x > client.getViewportWidth() || point.y > client.getViewportHeight();
+	}
+
+	private boolean canForwardMouseEvent(NativeMouseInput event)
+	{
+		if (config.interactMethod() != InteractMethod.MOUSE_FORWARDING)
+		{
+			return false;
+		}
+
+		if (config.forceForwardMovement() && event.getType() == NativeMouseInput.Type.MOVEMENT)
+		{
+			return true;
+		}
+
+		if (config.forceForwarding())
+		{
+			return true;
+		}
+
+		return client.getQueuedMenu() != null;
 	}
 }
