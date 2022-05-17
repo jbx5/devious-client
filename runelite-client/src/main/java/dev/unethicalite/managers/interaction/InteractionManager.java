@@ -193,6 +193,11 @@ public class InteractionManager
 
 		ContainableFrame frame = MinimalUI.getFrame() != null ? MinimalUI.getFrame() : ClientUI.getFrame();
 
+		if (frame == null)
+		{
+			return;
+		}
+
 		if (frame.getBounds().contains(eventX, eventY))
 		{
 			return;

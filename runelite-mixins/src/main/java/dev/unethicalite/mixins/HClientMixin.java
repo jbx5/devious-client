@@ -13,6 +13,7 @@ import net.runelite.api.events.StatChanged;
 import net.runelite.api.mixins.Copy;
 import net.runelite.api.mixins.FieldHook;
 import net.runelite.api.mixins.Inject;
+import net.runelite.api.mixins.MethodHook;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Replace;
 import net.runelite.api.mixins.Shadow;
@@ -130,9 +131,9 @@ public abstract class HClientMixin implements RSClient
 		client.getCallbacks().post(new PlaneChanged(client.getPlane()));
 	}
 
-	@Replace("menu")
-	@Copy("menu")
-	public void copy$menu()
+	@Inject
+	@MethodHook("menu")
+	public void menu()
 	{
 		MenuAutomated menu = automatedMenu.getAndSet(null);
 		if (menu != null)
@@ -150,8 +151,6 @@ public abstract class HClientMixin implements RSClient
 			client.getMenuTargets()[idx] = menu.getTarget();
 			client.getMenuForceLeftClick()[idx] = true;
 		}
-
-		copy$menu();
 	}
 
 	@Inject
