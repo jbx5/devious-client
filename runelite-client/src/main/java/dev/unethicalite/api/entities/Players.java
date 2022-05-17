@@ -1,6 +1,5 @@
 package dev.unethicalite.api.entities;
 
-import dev.unethicalite.api.game.Game;
 import dev.unethicalite.api.query.entities.PlayerQuery;
 import dev.unethicalite.client.Static;
 import net.runelite.api.Player;
@@ -69,15 +68,15 @@ public class Players extends Entities<Player>
 
 	public static Player getHintArrowed()
 	{
-		return Game.getClient().getHintArrowPlayer();
+		return Static.getClient().getHintArrowPlayer();
 	}
 
 	public static Player getLocal()
 	{
-		Player local = Game.getClient().getLocalPlayer();
+		Player local = Static.getClient().getLocalPlayer();
 		if (local == null)
 		{
-			throw new IllegalStateException("Local player was null");
+			throw new IllegalStateException("Local player was null, are you logged in?");
 		}
 
 		return local;

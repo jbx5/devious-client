@@ -160,6 +160,24 @@ public class InteractionManager
 	@Subscribe
 	public void onMenuOptionClicked(MenuOptionClicked e)
 	{
+		if (e.isAutomated() && e.getMenuAction() == MenuAction.WALK)
+		{
+			client.setSelectedSceneTileX(e.getParam0());
+			client.setSelectedSceneTileY(e.getParam1());
+			client.setViewportWalking(true);
+
+			e.consume();
+
+			client.invokeMenuAction(
+					"Automated",
+					"",
+					0,
+					MenuAction.CANCEL.getId(),
+					0,
+					0
+			);
+		}
+
 		if (config.debugMenuActions())
 		{
 			String action = "O=" + e.getMenuOption()
@@ -219,7 +237,6 @@ public class InteractionManager
 				.orElse(null);
 		if (screen == null)
 		{
-			log.debug("Screen not found to forward mouse event");
 			return;
 		}
 
@@ -258,20 +275,29 @@ public class InteractionManager
 		int finalEventX = (int) eventX;
 		int finalEventY = (int) eventY;
 
-		int x = (int) (finalEventX * ((double) client.getCanvasWidth() / screenWidth));
-		int y = (int) (finalEventY * ((double) client.getCanvasHeight() / screenHeight));
+		int canvasX = (int) (finalEventX * ((double) client.getCanvasWidth() / screenWidth));
+		int canvasY = (int) (finalEventY * ((double) client.getCanvasHeight() / screenHeight));
+
+		MenuAutomated queuedMenu = client.getQueuedMenu();
+
+		if (event.getType() == NativeMouseInput.Type.PRESS
+				&& queuedMenu != null
+				&& queuedMenu.getOpcode() != MenuAction.WALK
+				&& clickInsideMinimap(new Point(canvasX, canvasY)))
+		{
+			return;
+		}
 
 		switch (event.getType())
 		{
 			case PRESS:
 				int button = config.forwardLeftClick() ? 1 : event.getButton();
-				MenuAutomated queuedMenu = client.getQueuedMenu();
 
 				if (queuedMenu == null)
 				{
 					if (config.forceForwarding())
 					{
-						mouseHandler.sendClick(x, y, button);
+						mouseHandler.sendClick(canvasX, canvasY, button);
 					}
 
 					return;
@@ -292,11 +318,11 @@ public class InteractionManager
 							screen.getIDstring(),
 							finalEventX,
 							finalEventY,
-							x,
-							y
+							canvasX,
+							canvasY
 					);
 
-					mouseHandler.sendClick(x, y, button);
+					mouseHandler.sendClick(canvasX, canvasY, button);
 				});
 
 				break;
@@ -306,7 +332,7 @@ public class InteractionManager
 				break;
 
 			case MOVEMENT:
-				mouseHandler.sendMovement(x, y);
+				mouseHandler.sendMovement(canvasX, canvasY);
 				break;
 		}
 	}
