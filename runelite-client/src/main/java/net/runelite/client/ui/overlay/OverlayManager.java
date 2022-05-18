@@ -322,7 +322,7 @@ public class OverlayManager
 		}
 		else
 		{
-			log.info("Resetting preferred location of non-movable overlay {} (class {})", overlay.getName(), overlay.getClass().getName());
+			log.debug("Resetting preferred location of non-movable overlay {} (class {})", overlay.getName(), overlay.getClass().getName());
 			saveOverlayLocation(overlay);
 		}
 
@@ -334,7 +334,7 @@ public class OverlayManager
 		}
 		else
 		{
-			log.info("Resetting preferred position of non-snappable overlay {} (class {})", overlay.getName(), overlay.getClass().getName());
+			log.debug("Resetting preferred position of non-snappable overlay {} (class {})", overlay.getName(), overlay.getClass().getName());
 			saveOverlayPosition(overlay);
 		}
 	}

@@ -210,7 +210,7 @@ public class Bank extends Items
 		String action = getAction(item, amount, false);
 		int actionIndex = item.getActionIndex(action);
 
-		item.interact(actionIndex + 1);
+		item.interact(actionIndex);
 
 		if (action.equals("Deposit-X"))
 		{
@@ -535,7 +535,11 @@ public class Bank extends Items
 		{
 			action += "-10";
 		}
-		else if (amount >= item.getQuantity())
+		else if (withdraw && amount >= item.getQuantity())
+		{
+			action += "-All";
+		}
+		else if (!withdraw && amount >= dev.unethicalite.api.items.Inventory.getCount(true, item.getId()))
 		{
 			action += "-All";
 		}
