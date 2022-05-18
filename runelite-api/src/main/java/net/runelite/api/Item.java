@@ -292,11 +292,10 @@ public class Item implements Interactable, Identifiable, EntityNameable
 				break;
 			case EQUIPMENT:
 			case INVENTORY:
-				return getMenu(actionIndex, actionIndex > 4 ? MenuAction.CC_OP_LOW_PRIORITY.getId()
-					: MenuAction.CC_OP.getId());
 			case BANK:
 			case BANK_INVENTORY:
-				return getMenu(actionIndex, MenuAction.CC_OP.getId());
+				return getMenu(actionIndex, actionIndex > 4 ? MenuAction.CC_OP_LOW_PRIORITY.getId()
+					: MenuAction.CC_OP.getId());
 			case UNKNOWN:
 				client.getLogger().error("Couldn't determine item type for: {}, widgetid: {}", id, widgetId);
 				break;
@@ -326,7 +325,7 @@ public class Item implements Interactable, Identifiable, EntityNameable
 			case BANK:
 				return getMenu(actionIndex, opcode, getSlot(), WidgetInfo.BANK_ITEM_CONTAINER.getPackedId());
 			case BANK_INVENTORY:
-				return getMenu(actionIndex, opcode, getSlot(), WidgetInfo.BANK_INVENTORY_ITEMS_CONTAINER.getPackedId());
+				return getMenu(actionIndex == 0 ? 0 : actionIndex + 1, opcode, getSlot(), WidgetInfo.BANK_INVENTORY_ITEMS_CONTAINER.getPackedId());
 			case UNKNOWN:
 				client.getLogger().error("Couldn't determine item type for: {}, widgetid: {}", id, widgetId);
 				break;
