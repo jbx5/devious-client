@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 public class TileObjects extends TileEntities<TileObject>
@@ -28,7 +29,12 @@ public class TileObjects extends TileEntities<TileObject>
 
 	public static TileObjectQuery query()
 	{
-		return new TileObjectQuery(TileObjects::getAll);
+		return query(TileObjects::getAll);
+	}
+
+	public static TileObjectQuery query(Supplier<List<TileObject>> supplier)
+	{
+		return new TileObjectQuery(supplier);
 	}
 
 	public static List<TileObject> getAll()

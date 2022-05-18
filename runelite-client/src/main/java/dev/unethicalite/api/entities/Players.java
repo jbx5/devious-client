@@ -7,6 +7,7 @@ import net.runelite.api.coords.WorldPoint;
 
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 public class Players extends Entities<Player>
@@ -28,7 +29,12 @@ public class Players extends Entities<Player>
 
 	public static PlayerQuery query()
 	{
-		return new PlayerQuery(Players::getAll);
+		return query(Players::getAll);
+	}
+
+	public static PlayerQuery query(Supplier<List<Player>> supplier)
+	{
+		return new PlayerQuery(supplier);
 	}
 
 	public static List<Player> getAll()

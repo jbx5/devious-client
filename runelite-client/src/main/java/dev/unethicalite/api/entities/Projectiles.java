@@ -2,6 +2,7 @@ package dev.unethicalite.api.entities;
 
 import dev.unethicalite.api.commons.Predicates;
 import dev.unethicalite.api.game.Game;
+import dev.unethicalite.client.Static;
 import net.runelite.api.Actor;
 import net.runelite.api.Projectile;
 import net.runelite.api.coords.LocalPoint;
@@ -21,7 +22,7 @@ public class Projectiles
 	public static List<Projectile> getAll(Predicate<Projectile> filter)
 	{
 		List<Projectile> out = new ArrayList<>();
-		Game.getClient().getProjectiles().forEach(p ->
+		Static.getClient().getProjectiles().forEach(p ->
 		{
 			if (filter.test(p))
 			{
@@ -41,7 +42,7 @@ public class Projectiles
 	{
 		return getAll(filter).stream()
 				.min(Comparator.comparingInt(p ->
-						WorldPoint.fromLocal(Game.getClient(), (int) p.getX(), (int) p.getY(), Game.getClient().getPlane())
+						WorldPoint.fromLocal(Static.getClient(), (int) p.getX(), (int) p.getY(), Static.getClient().getPlane())
 								.distanceTo(Players.getLocal().getWorldLocation()))
 				)
 				.orElse(null);
@@ -59,7 +60,7 @@ public class Projectiles
 
 	public static Projectile getNearest(WorldPoint startPoint)
 	{
-		LocalPoint localPoint = LocalPoint.fromWorld(Game.getClient(), startPoint);
+		LocalPoint localPoint = LocalPoint.fromWorld(Static.getClient(), startPoint);
 		if (localPoint == null)
 		{
 			return null;

@@ -45,7 +45,12 @@ public class Bank extends Items
 
 	public static ItemQuery query()
 	{
-		return new ItemQuery(Bank::getAll);
+		return query(Bank::getAll);
+	}
+
+	public static ItemQuery query(Supplier<List<Item>> supplier)
+	{
+		return new ItemQuery(supplier);
 	}
 
 	public static void setQuantityMode(QuantityMode quantityMode)
