@@ -62,6 +62,21 @@ public interface UnethicaliteConfig extends Config
 	}
 
 	@ConfigItem(
+			keyName = "forwardKeystrokes",
+			name = "Forward keystrokes as clicks",
+			description = "Converts keystrokes to mouse clicks and forwards them to the client",
+			section = interactionManager,
+			position = 1,
+			hidden = true,
+			unhide = "interactMethod",
+			unhideValue = "MOUSE_FORWARDING"
+	)
+	default boolean forwardKeystrokes()
+	{
+		return false;
+	}
+
+	@ConfigItem(
 			keyName = "selectedMonitorsOnly",
 			name = "Forward from specific monitors",
 			description = "Forwards mouse events from selected monitors only",

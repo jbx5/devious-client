@@ -5,6 +5,7 @@ import dev.unethicalite.api.SceneEntity;
 import dev.unethicalite.api.commons.Rand;
 import dev.unethicalite.api.commons.Time;
 import dev.unethicalite.api.events.MenuAutomated;
+import dev.unethicalite.api.events.NativeKeyInput;
 import dev.unethicalite.api.events.NativeMouseInput;
 import dev.unethicalite.api.game.GameThread;
 import dev.unethicalite.api.input.naturalmouse.NaturalMouse;
@@ -338,6 +339,23 @@ public class InteractionManager
 			case MOVEMENT:
 				mouseHandler.sendMovement(canvasX, canvasY);
 				break;
+		}
+	}
+
+	@Subscribe
+	public void onNativeKeyInput(NativeKeyInput event)
+	{
+		if (config.forwardKeystrokes())
+		{
+			Point mouse = MouseInfo.getPointerInfo().getLocation();
+			client.getCallbacks().post(
+					new NativeMouseInput(
+							mouse.x,
+							mouse.y,
+							1,
+							NativeMouseInput.Type.PRESS
+					)
+			);
 		}
 	}
 
