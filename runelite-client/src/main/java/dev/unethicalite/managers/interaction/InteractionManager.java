@@ -31,6 +31,8 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.awt.*;
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Singleton
 @Slf4j
@@ -221,27 +223,19 @@ public class InteractionManager
 			return;
 		}
 
-		GraphicsDevice[] monitors = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
-		if (config.selectedMonitor() && config.selectedMonitorId() > monitors.length)
-		{
-			log.error(
-					"Specified {} monitor, but only {} monitors are available",
-					config.selectedMonitorId(),
-					monitors.length
-			);
-			return;
-		}
-		GraphicsDevice screen = Arrays.stream(monitors)
+
+		List<GraphicsDevice> monitors = Arrays.asList(GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices());
+		GraphicsDevice currentMonitor = monitors.stream()
 				.filter(device -> device.getDefaultConfiguration().getBounds().contains(event.getX(), event.getY()))
 				.findFirst()
 				.orElse(null);
-		if (screen == null)
+		if (currentMonitor == null)
 		{
 			return;
 		}
 
-		double screenWidth = screen.getDisplayMode().getWidth();
-		double screenHeight = screen.getDisplayMode().getHeight();
+		double screenWidth = currentMonitor.getDisplayMode().getWidth();
+		double screenHeight = currentMonitor.getDisplayMode().getHeight();
 
 		if (eventX < 0)
 		{
@@ -261,7 +255,12 @@ public class InteractionManager
 			eventY = eventY - screenHeight;
 		}
 
-		if (config.selectedMonitor() && screen != monitors[config.selectedMonitorId() - 1])
+		List<Integer> monitorIds = Arrays.stream(config.selectedMonitorIds().split(","))
+				.map(String::trim)
+				.map(Integer::parseInt)
+				.collect(Collectors.toList());
+		int currentMonitorId = monitors.indexOf(currentMonitor) + 1;
+		if (config.selectedMonitorsOnly() && !monitorIds.contains(currentMonitorId))
 		{
 			eventX = -1;
 			eventY = -1;
@@ -315,7 +314,7 @@ public class InteractionManager
 					log.debug(
 							"Forwarding mouse press [{}] from [{}, {}, {}] to canvas [{}, {}]",
 							button,
-							screen.getIDstring(),
+							currentMonitor.getIDstring(),
 							finalEventX,
 							finalEventY,
 							canvasX,

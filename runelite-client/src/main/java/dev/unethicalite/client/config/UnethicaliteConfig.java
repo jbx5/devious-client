@@ -62,33 +62,33 @@ public interface UnethicaliteConfig extends Config
 	}
 
 	@ConfigItem(
-			keyName = "selectedMonitor",
-			name = "Forward specific monitor",
-			description = "Forwards mouse events from a selected monitor only",
+			keyName = "selectedMonitorsOnly",
+			name = "Forward from specific monitors",
+			description = "Forwards mouse events from selected monitors only",
 			section = interactionManager,
 			position = 1,
 			hidden = true,
 			unhide = "interactMethod",
 			unhideValue = "MOUSE_FORWARDING"
 	)
-	default boolean selectedMonitor()
+	default boolean selectedMonitorsOnly()
 	{
 		return false;
 	}
 
 	@Range(min = 1, max = 10)
 	@ConfigItem(
-			keyName = "selectedMonitorId",
-			name = "Monitor ID to forward",
-			description = "Selected monitor ID",
+			keyName = "selectedMonitorIds",
+			name = "Monitor IDs",
+			description = "Selected monitor IDs",
 			section = interactionManager,
 			position = 1,
 			hidden = true,
 			unhide = "selectedMonitor"
 	)
-	default int selectedMonitorId()
+	default String selectedMonitorIds()
 	{
-		return 1;
+		return "1,2";
 	}
 
 	@ConfigItem(
