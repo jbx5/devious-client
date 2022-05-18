@@ -1,7 +1,6 @@
 package dev.unethicalite.api.entities;
 
 import dev.unethicalite.api.commons.Predicates;
-import dev.unethicalite.api.game.Game;
 import dev.unethicalite.client.Static;
 import net.runelite.api.Actor;
 import net.runelite.api.Projectile;
