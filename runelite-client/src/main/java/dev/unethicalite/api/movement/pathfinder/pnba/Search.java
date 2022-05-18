@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicStampedReference;
 import java.util.function.Function;
 import java.util.function.ToIntBiFunction;
@@ -20,7 +21,7 @@ class Search implements Runnable
     WorldPoint start;
     WorldPoint end;
     AtomicBoolean finished;
-    AtomicBoolean allDone;
+    AtomicInteger bestPathLength;
     Set<WorldPoint> visited;
     AtomicStampedReference<WorldPoint> bestCompletePath;
     Map<WorldPoint, Path> paths1;
@@ -32,7 +33,7 @@ class Search implements Runnable
     Search(WorldPoint start,
            WorldPoint end,
            AtomicBoolean finished,
-           AtomicBoolean allDone,
+           AtomicInteger bestPathLength,
            Set<WorldPoint> visited,
            AtomicStampedReference<WorldPoint> bestCompletePath,
            Map<WorldPoint, Path> paths1,
@@ -43,7 +44,7 @@ class Search implements Runnable
         this.start = start;
         this.end = end;
         this.finished = finished;
-        this.allDone = allDone;
+        this.bestPathLength = bestPathLength;
         this.visited = visited;
         this.bestCompletePath = bestCompletePath;
         this.paths1 = paths1;
@@ -57,7 +58,7 @@ class Search implements Runnable
     public void run()
     {
         var x = start;
-        while (!finished.get() && !allDone.get())
+        while (!finished.get() && bestPathLength.get() > start.distanceTo2D(end))
         {
             if (!visited(x))
             {
@@ -73,7 +74,6 @@ class Search implements Runnable
             }
         }
     }
-
     private void visit(WorldPoint x)
     {
         var xPath = paths1.get(x);
