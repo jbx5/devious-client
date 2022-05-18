@@ -223,7 +223,6 @@ public class InteractionManager
 			return;
 		}
 
-
 		List<GraphicsDevice> monitors = Arrays.asList(GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices());
 		GraphicsDevice currentMonitor = monitors.stream()
 				.filter(device -> device.getDefaultConfiguration().getBounds().contains(event.getX(), event.getY()))
@@ -268,6 +267,12 @@ public class InteractionManager
 
 		if (event.getType() != NativeMouseInput.Type.MOVEMENT && eventX == -1 && eventY == -1)
 		{
+			if (client.isFocused())
+			{
+				log.debug("Setting client unfocused");
+				mouseHandler.sendFocusLost();
+			}
+
 			return;
 		}
 

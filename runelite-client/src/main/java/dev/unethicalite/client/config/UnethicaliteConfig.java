@@ -84,7 +84,7 @@ public interface UnethicaliteConfig extends Config
 			section = interactionManager,
 			position = 1,
 			hidden = true,
-			unhide = "selectedMonitor"
+			unhide = "selectedMonitorsOnly"
 	)
 	default String selectedMonitorIds()
 	{
