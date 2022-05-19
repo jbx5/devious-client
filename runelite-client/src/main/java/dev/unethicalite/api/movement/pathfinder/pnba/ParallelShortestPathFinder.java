@@ -78,8 +78,10 @@ public class ParallelShortestPathFinder
                        bestCompletePath,
                        paths1,
                        paths2,
-                       this::getNeighbours,
-                       this::heuristic).run();
+                       this::heuristic,
+                       transportCoords,
+                       false,
+                       collisionMap).run();
             WorldPoint commonNode = bestCompletePath.getReference();
             if (commonNode != null)
             {
@@ -101,8 +103,10 @@ public class ParallelShortestPathFinder
                    bestCompletePath,
                    paths2,
                    paths1,
-                   this::getNeighbours,
-                   this::heuristic).run();
+                   this::heuristic,
+                   transportCoords,
+                   true,
+                   collisionMap).run();
 
         WorldPoint commonNode = bestCompletePath.getReference();
         if (commonNode == null)
@@ -150,121 +154,5 @@ public class ParallelShortestPathFinder
     private int heuristic(WorldPoint a, WorldPoint b)
     {
         return (int) (a.distanceTo2DHypotenuse(b));
-    }
-
-    private List<WorldPoint> getNeighbours(WorldPoint position)
-    {
-        final List<WorldPoint> result = new ArrayList<>();
-        for (Transport transport : transportCoords.getOrDefault(position, new ArrayList<>()))
-        {
-            final WorldPoint transportDest = transport.getDestination();
-            result.add(transportDest);
-        }
-
-        try
-        {
-            if (collisionMap.w(position.getX(), position.getY(), position.getPlane()))
-            {
-                WorldPoint neighbor = position.dx(-1);
-                result.add(neighbor);
-            }
-        }
-        catch (Exception ignored)
-        {
-
-        }
-
-        try
-        {
-            if (collisionMap.e(position.getX(), position.getY(), position.getPlane()))
-            {
-                WorldPoint neighbor = position.dx(1);
-                result.add(neighbor);
-            }
-        }
-        catch (Exception ignored)
-        {
-
-        }
-
-        try
-        {
-            if (collisionMap.s(position.getX(), position.getY(), position.getPlane()))
-            {
-                WorldPoint neighbor = position.dy(-1);
-                result.add(neighbor);
-            }
-        }
-        catch (Exception ignored)
-        {
-
-        }
-
-        try
-        {
-            if (collisionMap.n(position.getX(), position.getY(), position.getPlane()))
-            {
-                WorldPoint neighbor = position.dy(1);
-                result.add(neighbor);
-            }
-        }
-        catch (Exception ignored)
-        {
-
-        }
-
-        try
-        {
-            if (collisionMap.sw(position.getX(), position.getY(), position.getPlane()))
-            {
-                WorldPoint neighbor = position.dx(-1).dy(-1);
-                result.add(neighbor);
-            }
-        }
-        catch (Exception ignored)
-        {
-
-        }
-
-        try
-        {
-            if (collisionMap.se(position.getX(), position.getY(), position.getPlane()))
-            {
-                WorldPoint neighbor = position.dx(1).dy(-1);
-                result.add(neighbor);
-            }
-        }
-        catch (Exception ignored)
-        {
-
-        }
-
-        try
-        {
-            if (collisionMap.nw(position.getX(), position.getY(), position.getPlane()))
-            {
-                WorldPoint neighbor = position.dx(-1).dy(1);
-                result.add(neighbor);
-            }
-        }
-        catch (Exception ignored)
-        {
-
-        }
-
-        try
-        {
-            if (collisionMap.ne(position.getX(), position.getY(), position.getPlane()))
-            {
-                WorldPoint neighbor = position.dx(1).dy(1);
-                result.add(neighbor);
-            }
-        }
-        catch (Exception ignored)
-        {
-
-        }
-
-        return result;
     }
 }
