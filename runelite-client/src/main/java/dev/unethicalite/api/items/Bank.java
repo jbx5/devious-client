@@ -31,7 +31,6 @@ public class Bank extends Items
 	}
 
 	private static final Bank BANK = new Bank();
-	private static final Inventory BANK_INVENTORY = new Inventory();
 
 	private static final int WITHDRAW_MODE_VARBIT = 3958;
 	private static final int QUANTITY_MODE_VARP = 6590;
@@ -465,58 +464,6 @@ public class Bank extends Items
 		if (Widgets.isVisible(tabContainer) && !isTabOpen(index))
 		{
 			tabContainer.getChild(10 + index).interact(0);
-		}
-	}
-
-	public static class Inventory extends Items
-	{
-		public Inventory()
-		{
-			super(InventoryID.INVENTORY, item ->
-			{
-				item.setWidgetId(item.calculateWidgetId(WidgetInfo.BANK_INVENTORY_ITEMS_CONTAINER));
-				return true;
-			});
-		}
-
-		public static ItemQuery query()
-		{
-			return new ItemQuery(Bank.Inventory::getAll);
-		}
-
-		public static List<Item> getAll()
-		{
-			return getAll(x -> true);
-		}
-
-		public static List<Item> getAll(Predicate<Item> filter)
-		{
-			return BANK_INVENTORY.all(filter);
-		}
-
-		public static List<Item> getAll(int... ids)
-		{
-			return BANK_INVENTORY.all(ids);
-		}
-
-		public static List<Item> getAll(String... names)
-		{
-			return BANK_INVENTORY.all(Predicates.names(names));
-		}
-
-		public static Item getFirst(Predicate<Item> filter)
-		{
-			return BANK_INVENTORY.first(filter);
-		}
-
-		public static Item getFirst(int... ids)
-		{
-			return BANK_INVENTORY.first(ids);
-		}
-
-		public static Item getFirst(String... names)
-		{
-			return BANK_INVENTORY.first(names);
 		}
 	}
 

@@ -3,7 +3,6 @@ package dev.unethicalite.api.items;
 import dev.unethicalite.api.query.items.ItemQuery;
 import net.runelite.api.InventoryID;
 import net.runelite.api.Item;
-import net.runelite.api.ItemContainer;
 import net.runelite.api.widgets.WidgetInfo;
 
 import java.util.List;
@@ -17,7 +16,14 @@ public class Inventory extends Items
 		super(InventoryID.INVENTORY, item ->
 		{
 			item.setActionParam(item.getSlot());
-			item.setWidgetId(WidgetInfo.INVENTORY.getPackedId());
+			if (Bank.isOpen())
+			{
+				item.setWidgetId(item.calculateWidgetId(WidgetInfo.BANK_INVENTORY_ITEMS_CONTAINER));
+			}
+			else
+			{
+				item.setWidgetId(WidgetInfo.INVENTORY.getPackedId());
+			}
 			return true;
 		});
 	}
@@ -71,21 +77,7 @@ public class Inventory extends Items
 
 	public static Item getItem(int slot)
 	{
-		ItemContainer container = INVENTORY.getItemContainer();
-		if (container == null)
-		{
-			return null;
-		}
-
-		Item item = container.getItem(slot);
-		if (item == null || item.getId() == -1 || item.getName() == null || item.getName().equals("null"))
-		{
-			return null;
-		}
-
-		item.setActionParam(item.getSlot());
-		item.setWidgetId(WidgetInfo.INVENTORY.getPackedId());
-		return item;
+		return INVENTORY.first(x -> x.getSlot() == slot);
 	}
 
 	public static boolean contains(Predicate<Item> filter)
