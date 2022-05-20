@@ -75,7 +75,7 @@ class Search implements Runnable
     public void run()
     {
         var x = start;
-        while (!finished.get() && bestPathLength.get() > start.distanceTo2D(end))
+        while (!finished.get() && bestPathLength.get() > paths1.get(x).getDistanceTravelled())
         {
             if (!visited(x))
             {
