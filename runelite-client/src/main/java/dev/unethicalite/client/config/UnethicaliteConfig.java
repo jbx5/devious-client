@@ -47,6 +47,66 @@ public interface UnethicaliteConfig extends Config
 	}
 
 	@ConfigItem(
+			keyName = "forceForwardMovement",
+			name = "Always forward movement",
+			description = "Always forward mouse movement regardless of queued actions",
+			section = interactionManager,
+			position = 1,
+			hidden = true,
+			unhide = "interactMethod",
+			unhideValue = "MOUSE_FORWARDING"
+	)
+	default boolean forceForwardMovement()
+	{
+		return false;
+	}
+
+	@ConfigItem(
+			keyName = "forwardKeystrokes",
+			name = "Forward keystrokes as clicks",
+			description = "Converts keystrokes to mouse clicks and forwards them to the client",
+			section = interactionManager,
+			position = 1,
+			hidden = true,
+			unhide = "interactMethod",
+			unhideValue = "MOUSE_FORWARDING"
+	)
+	default boolean forwardKeystrokes()
+	{
+		return false;
+	}
+
+	@ConfigItem(
+			keyName = "selectedMonitorsOnly",
+			name = "Forward from specific monitors",
+			description = "Forwards mouse events from selected monitors only",
+			section = interactionManager,
+			position = 1,
+			hidden = true,
+			unhide = "interactMethod",
+			unhideValue = "MOUSE_FORWARDING"
+	)
+	default boolean selectedMonitorsOnly()
+	{
+		return false;
+	}
+
+	@Range(min = 1, max = 10)
+	@ConfigItem(
+			keyName = "selectedMonitorIds",
+			name = "Monitor IDs",
+			description = "Selected monitor IDs",
+			section = interactionManager,
+			position = 1,
+			hidden = true,
+			unhide = "selectedMonitorsOnly"
+	)
+	default String selectedMonitorIds()
+	{
+		return "1,2";
+	}
+
+	@ConfigItem(
 			keyName = "forwardLeftClick",
 			name = "Forward all clicks as left click",
 			description = "Converts all clicks to left mouse button and forwards them as a left click",

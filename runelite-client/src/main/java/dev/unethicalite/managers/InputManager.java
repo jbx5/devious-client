@@ -2,9 +2,12 @@ package dev.unethicalite.managers;
 
 import com.github.kwhat.jnativehook.GlobalScreen;
 import com.github.kwhat.jnativehook.NativeHookException;
+import com.github.kwhat.jnativehook.keyboard.NativeKeyEvent;
+import com.github.kwhat.jnativehook.keyboard.NativeKeyListener;
 import com.github.kwhat.jnativehook.mouse.NativeMouseEvent;
 import com.github.kwhat.jnativehook.mouse.NativeMouseInputListener;
 import dev.unethicalite.api.events.MouseAutomated;
+import dev.unethicalite.api.events.NativeKeyInput;
 import dev.unethicalite.api.events.NativeMouseInput;
 import dev.unethicalite.client.config.UnethicaliteConfig;
 import lombok.Getter;
@@ -24,7 +27,7 @@ import java.util.logging.Logger;
 
 @Singleton
 @Slf4j
-public class InputManager implements MouseListener, NativeMouseInputListener
+public class InputManager implements MouseListener, NativeMouseInputListener, NativeKeyListener
 {
 	private final Client client;
 	private final MinimalPluginManager minimalPluginManager;
@@ -177,6 +180,19 @@ public class InputManager implements MouseListener, NativeMouseInputListener
 		));
 	}
 
+	@Override
+	public void nativeKeyPressed(NativeKeyEvent nativeEvent)
+	{
+		client.getCallbacks().post(
+				new NativeKeyInput(
+						nativeEvent.getKeyChar(),
+						nativeEvent.getKeyCode(),
+						nativeEvent.getKeyLocation(),
+						NativeKeyInput.Type.PRESSED
+				)
+		);
+	}
+
 	@Subscribe
 	private void onConfigChanged(ConfigChanged event)
 	{
@@ -194,11 +210,13 @@ public class InputManager implements MouseListener, NativeMouseInputListener
 		{
 			GlobalScreen.addNativeMouseListener(this);
 			GlobalScreen.addNativeMouseMotionListener(this);
+			GlobalScreen.addNativeKeyListener(this);
 		}
 		else if (Objects.equals(event.getOldValue(), "MOUSE_FORWARDING"))
 		{
 			GlobalScreen.removeNativeMouseListener(this);
 			GlobalScreen.removeNativeMouseMotionListener(this);
+			GlobalScreen.removeNativeKeyListener(this);
 		}
 	}
 

@@ -1,7 +1,6 @@
 package dev.unethicalite.managers;
 
 import com.google.inject.Key;
-import dev.unethicalite.api.input.Keyboard;
 import dev.unethicalite.api.plugins.Plugins;
 import dev.unethicalite.api.plugins.Script;
 import dev.unethicalite.client.config.UnethicaliteConfig;
@@ -15,7 +14,6 @@ import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
 import net.runelite.api.events.GameStateChanged;
-import net.runelite.api.events.GameTick;
 import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
@@ -30,7 +28,6 @@ import net.runelite.http.api.worlds.WorldResult;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import java.awt.event.KeyEvent;
 import java.io.File;
 import java.lang.reflect.Modifier;
 import java.net.URL;
@@ -38,7 +35,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.ThreadLocalRandom;
 import java.util.jar.JarFile;
 
 @Singleton

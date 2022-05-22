@@ -16,7 +16,8 @@ public enum DialogOption
 	CHAT_OPTION_FOUR(14352385, 4),
 	CHAT_OPTION_FIVE(14352385, 5),
 	PLAIN_CONTINUE(15007746, -1),
-	PLAIN_CONTINUE_TWO(720900, -1);
+	PLAIN_CONTINUE_TWO(720900, -1),
+	LEVEL_UP_CONTINUE(15269891, -1);
 
 	private final int widgetUid;
 	private final int menuIndex;

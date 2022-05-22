@@ -1,6 +1,5 @@
 package dev.unethicalite.api.entities;
 
-import dev.unethicalite.api.game.Game;
 import dev.unethicalite.api.query.entities.PlayerQuery;
 import dev.unethicalite.client.Static;
 import net.runelite.api.Player;
@@ -8,6 +7,7 @@ import net.runelite.api.coords.WorldPoint;
 
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 public class Players extends Entities<Player>
@@ -29,7 +29,12 @@ public class Players extends Entities<Player>
 
 	public static PlayerQuery query()
 	{
-		return new PlayerQuery(Players::getAll);
+		return query(Players::getAll);
+	}
+
+	public static PlayerQuery query(Supplier<List<Player>> supplier)
+	{
+		return new PlayerQuery(supplier);
 	}
 
 	public static List<Player> getAll()
@@ -69,15 +74,15 @@ public class Players extends Entities<Player>
 
 	public static Player getHintArrowed()
 	{
-		return Game.getClient().getHintArrowPlayer();
+		return Static.getClient().getHintArrowPlayer();
 	}
 
 	public static Player getLocal()
 	{
-		Player local = Game.getClient().getLocalPlayer();
+		Player local = Static.getClient().getLocalPlayer();
 		if (local == null)
 		{
-			throw new IllegalStateException("Local player was null");
+			throw new IllegalStateException("Local player was null, are you logged in?");
 		}
 
 		return local;

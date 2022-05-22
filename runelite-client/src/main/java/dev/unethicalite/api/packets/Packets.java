@@ -315,6 +315,7 @@ public class Packets
 						false
 				);
 			case CC_OP:
+			case CC_OP_LOW_PRIORITY:
 				var widget = Widgets.fromId(param1);
 				if (widget == null)
 				{
@@ -328,8 +329,6 @@ public class Packets
 				}
 
 				return WidgetPackets.createDefaultAction(id, param1, child.getItemId(), param0);
-			case CC_OP_LOW_PRIORITY:
-				break;
 		}
 
 		throw new InteractionException("Couldn't parse packet from opcode: " + opcode);

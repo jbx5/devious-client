@@ -5,7 +5,6 @@ import dev.unethicalite.api.events.LoginStateChanged;
 import dev.unethicalite.api.events.MenuAutomated;
 import dev.unethicalite.api.events.PlaneChanged;
 import net.runelite.api.ItemComposition;
-import net.runelite.api.MenuAction;
 import net.runelite.api.Skill;
 import net.runelite.api.Tile;
 import net.runelite.api.TileObject;
@@ -13,6 +12,7 @@ import net.runelite.api.events.StatChanged;
 import net.runelite.api.mixins.Copy;
 import net.runelite.api.mixins.FieldHook;
 import net.runelite.api.mixins.Inject;
+import net.runelite.api.mixins.MethodHook;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Replace;
 import net.runelite.api.mixins.Shadow;
@@ -130,9 +130,9 @@ public abstract class HClientMixin implements RSClient
 		client.getCallbacks().post(new PlaneChanged(client.getPlane()));
 	}
 
-	@Replace("menu")
-	@Copy("menu")
-	public void copy$menu()
+	@Inject
+	@MethodHook("menu")
+	public void menu()
 	{
 		MenuAutomated menu = automatedMenu.getAndSet(null);
 		if (menu != null)
@@ -150,8 +150,6 @@ public abstract class HClientMixin implements RSClient
 			client.getMenuTargets()[idx] = menu.getTarget();
 			client.getMenuForceLeftClick()[idx] = true;
 		}
-
-		copy$menu();
 	}
 
 	@Inject
@@ -173,17 +171,6 @@ public abstract class HClientMixin implements RSClient
 	@Inject
 	public void interact(MenuAutomated menuAutomated)
 	{
-		if (menuAutomated.getOpcode() == MenuAction.WALK)
-		{
-			client.setSelectedSceneTileX(menuAutomated.getParam0());
-			client.setSelectedSceneTileY(menuAutomated.getParam1());
-			client.setViewportWalking(true);
-
-			menuAutomated.setOpcode(MenuAction.CANCEL);
-			menuAutomated.setParam0(0);
-			menuAutomated.setParam1(0);
-		}
-
 		client.getCallbacks().post(menuAutomated);
 	}
 

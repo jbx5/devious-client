@@ -8,6 +8,7 @@ import net.runelite.api.widgets.WidgetInfo;
 
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 
 public class Inventory extends Items
 {
@@ -25,7 +26,12 @@ public class Inventory extends Items
 
 	public static ItemQuery query()
 	{
-		return new ItemQuery(Inventory::getAll);
+		return query(Inventory::getAll);
+	}
+
+	public static ItemQuery query(Supplier<List<Item>> supplier)
+	{
+		return new ItemQuery(supplier);
 	}
 
 	public static List<Item> getAll(Predicate<Item> filter)

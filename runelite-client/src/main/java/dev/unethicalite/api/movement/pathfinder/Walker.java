@@ -9,6 +9,7 @@ import dev.unethicalite.api.entities.Players;
 import dev.unethicalite.api.game.Game;
 import dev.unethicalite.api.movement.Movement;
 import dev.unethicalite.api.movement.Reachable;
+import dev.unethicalite.api.movement.pathfinder.pnba.ParallelShortestPathFinder;
 import dev.unethicalite.api.scene.Tiles;
 import dev.unethicalite.client.Static;
 import lombok.extern.slf4j.Slf4j;
@@ -27,7 +28,10 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 import java.util.function.Predicate;
 
 @Singleton
@@ -42,6 +46,8 @@ public class Walker
 	private static final int MAX_MIN_ENERGY = 50;
 	private static final int MIN_ENERGY = 5;
 	private static final int MAX_NEAREST_SEARCH_ITERATIONS = 10;
+
+	private static final ScheduledExecutorService EXECUTOR = Executors.newSingleThreadScheduledExecutor();
 
 	public static boolean walkTo(WorldPoint destination, boolean localRegion)
 	{
@@ -381,7 +387,7 @@ public class Walker
 			boolean local
 	)
 	{
-		CollisionMap collisionMap = local ? new LocalCollisionMap() : Game.getGlobalCollisionMap();
+		CollisionMap collisionMap = local ? new LocalCollisionMap() : Static.getGlobalCollisionMap();
 		if (collisionMap == null)
 		{
 			return Collections.emptyList();
@@ -389,15 +395,48 @@ public class Walker
 
 		log.debug("Calculating path towards {}", destination);
 
-		List<WorldPoint> path = new AStarPathfinder(collisionMap, transports, startPoints,
-				destination).find();
+		List<WorldPoint> path;
+		if (Static.getClient().isClientThread())
+		{
+			try
+			{
+				path = EXECUTOR.submit(() -> calculatePath(startPoints, collisionMap, destination, transports))
+						.get(5_000, TimeUnit.MILLISECONDS);
+			}
+			catch (InterruptedException | ExecutionException | TimeoutException e)
+			{
+				throw new RuntimeException(e);
+			}
+		}
+		else
+		{
+			path = calculatePath(startPoints, collisionMap, destination, transports);
+		}
+
+		return path;
+	}
+
+	private static List<WorldPoint> calculatePath(
+			List<WorldPoint> startPoints,
+			CollisionMap collisionMap,
+			WorldPoint destination,
+			Map<WorldPoint, List<Transport>> transports
+	)
+	{
+		List<WorldPoint> path;
+
+		long start = System.currentTimeMillis();
+		path = new ParallelShortestPathFinder(transports, collisionMap).search(startPoints, destination);
 
 		// Timed out falling back to DFS
 		if (path == null)
 		{
-			return new DFSPathfinder(collisionMap, transports, startPoints, destination).find();
+			start = System.currentTimeMillis();
+			log.debug("Falling back to DFS");
+			path = new DFSPathfinder(collisionMap, transports, startPoints, destination).find();
 		}
 
+		log.debug("Found path from {} to {} (length {}), in {} ms", Players.getLocal().getWorldLocation(), destination, path.size(), System.currentTimeMillis() - start);
 		return path;
 	}
 

@@ -20,6 +20,7 @@ public abstract class HMouseHandlerMixin implements RSMouseHandler
 	@Inject
 	public void sendClick(int x, int y, int button)
 	{
+		client.setFocused(true);
 		setIdleCycles(0);
 		setLastPressedX(x);
 		setLastPressedY(y);

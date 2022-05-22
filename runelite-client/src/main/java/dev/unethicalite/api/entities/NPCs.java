@@ -8,6 +8,7 @@ import net.runelite.api.coords.WorldPoint;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 
 public class NPCs extends Entities<NPC>
 {
@@ -35,7 +36,12 @@ public class NPCs extends Entities<NPC>
 
 	public static NPCQuery query()
 	{
-		return new NPCQuery(NPCs::getAll);
+		return query(NPCs::getAll);
+	}
+
+	public static NPCQuery query(Supplier<List<NPC>> supplier)
+	{
+		return new NPCQuery(supplier);
 	}
 
 	public static List<NPC> getAll()

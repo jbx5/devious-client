@@ -5,6 +5,7 @@ import dev.unethicalite.api.SceneEntity;
 import dev.unethicalite.api.commons.Rand;
 import dev.unethicalite.api.commons.Time;
 import dev.unethicalite.api.events.MenuAutomated;
+import dev.unethicalite.api.events.NativeKeyInput;
 import dev.unethicalite.api.events.NativeMouseInput;
 import dev.unethicalite.api.game.GameThread;
 import dev.unethicalite.api.input.naturalmouse.NaturalMouse;
@@ -31,6 +32,8 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.awt.*;
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Singleton
 @Slf4j
@@ -79,11 +82,6 @@ public class InteractionManager
 			switch (config.interactMethod())
 			{
 				case MOUSE_FORWARDING:
-					if (client.getQueuedMenu() != null)
-					{
-						break;
-					}
-
 					client.setQueuedMenu(event);
 					break;
 
@@ -165,6 +163,24 @@ public class InteractionManager
 	@Subscribe
 	public void onMenuOptionClicked(MenuOptionClicked e)
 	{
+		if (e.isAutomated() && e.getMenuAction() == MenuAction.WALK)
+		{
+			client.setSelectedSceneTileX(e.getParam0());
+			client.setSelectedSceneTileY(e.getParam1());
+			client.setViewportWalking(true);
+
+			e.consume();
+
+			client.invokeMenuAction(
+					"Automated",
+					"",
+					0,
+					MenuAction.CANCEL.getId(),
+					0,
+					0
+			);
+		}
+
 		if (config.debugMenuActions())
 		{
 			String action = "O=" + e.getMenuOption()
@@ -182,8 +198,7 @@ public class InteractionManager
 	@Subscribe
 	public void onNativeMouseInput(NativeMouseInput event)
 	{
-		if ((client.getQueuedMenu() == null && !config.forceForwarding())
-				|| config.interactMethod() != InteractMethod.MOUSE_FORWARDING)
+		if (!canForwardMouseEvent(event))
 		{
 			return;
 		}
@@ -199,23 +214,28 @@ public class InteractionManager
 
 		ContainableFrame frame = MinimalUI.getFrame() != null ? MinimalUI.getFrame() : ClientUI.getFrame();
 
+		if (frame == null)
+		{
+			return;
+		}
+
 		if (frame.getBounds().contains(eventX, eventY))
 		{
 			return;
 		}
 
-		GraphicsDevice screen = Arrays.stream(GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices())
+		List<GraphicsDevice> monitors = Arrays.asList(GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices());
+		GraphicsDevice currentMonitor = monitors.stream()
 				.filter(device -> device.getDefaultConfiguration().getBounds().contains(event.getX(), event.getY()))
 				.findFirst()
 				.orElse(null);
-		if (screen == null)
+		if (currentMonitor == null)
 		{
-			log.debug("Screen not found  to forward mouse event");
 			return;
 		}
 
-		double screenWidth = screen.getDisplayMode().getWidth();
-		double screenHeight = screen.getDisplayMode().getHeight();
+		double screenWidth = currentMonitor.getDisplayMode().getWidth();
+		double screenHeight = currentMonitor.getDisplayMode().getHeight();
 
 		if (eventX < 0)
 		{
@@ -235,23 +255,54 @@ public class InteractionManager
 			eventY = eventY - screenHeight;
 		}
 
+		List<Integer> monitorIds = Arrays.stream(config.selectedMonitorIds().split(","))
+				.map(String::trim)
+				.map(Integer::parseInt)
+				.collect(Collectors.toList());
+		int currentMonitorId = monitors.indexOf(currentMonitor) + 1;
+		if (config.selectedMonitorsOnly() && !monitorIds.contains(currentMonitorId))
+		{
+			eventX = -1;
+			eventY = -1;
+		}
+
+		if (event.getType() != NativeMouseInput.Type.MOVEMENT && eventX == -1 && eventY == -1)
+		{
+			if (client.isFocused())
+			{
+				log.debug("Setting client unfocused");
+				mouseHandler.sendFocusLost();
+			}
+
+			return;
+		}
+
 		int finalEventX = (int) eventX;
 		int finalEventY = (int) eventY;
 
-		int x = (int) (finalEventX * ((double) client.getCanvasWidth() / screenWidth));
-		int y = (int) (finalEventY * ((double) client.getCanvasHeight() / screenHeight));
+		int canvasX = (int) (finalEventX * ((double) client.getCanvasWidth() / screenWidth));
+		int canvasY = (int) (finalEventY * ((double) client.getCanvasHeight() / screenHeight));
+
+		MenuAutomated queuedMenu = client.getQueuedMenu();
+
+		if (event.getType() == NativeMouseInput.Type.PRESS
+				&& queuedMenu != null
+				&& queuedMenu.getOpcode() != MenuAction.WALK
+				&& clickInsideMinimap(new Point(canvasX, canvasY)))
+		{
+			return;
+		}
 
 		switch (event.getType())
 		{
 			case PRESS:
 				int button = config.forwardLeftClick() ? 1 : event.getButton();
-				MenuAutomated queuedMenu = client.getQueuedMenu();
 
 				if (queuedMenu == null)
 				{
 					if (config.forceForwarding())
 					{
-						mouseHandler.sendClick(x, y, button);
+						mouseHandler.sendClick(canvasX, canvasY, button);
 					}
 
 					return;
@@ -269,14 +320,14 @@ public class InteractionManager
 					log.debug(
 							"Forwarding mouse press [{}] from [{}, {}, {}] to canvas [{}, {}]",
 							button,
-							screen.getIDstring(),
+							currentMonitor.getIDstring(),
 							finalEventX,
 							finalEventY,
-							x,
-							y
+							canvasX,
+							canvasY
 					);
 
-					mouseHandler.sendClick(x, y, button);
+					mouseHandler.sendClick(canvasX, canvasY, button);
 				});
 
 				break;
@@ -286,8 +337,25 @@ public class InteractionManager
 				break;
 
 			case MOVEMENT:
-				mouseHandler.sendMovement(x, y);
+				mouseHandler.sendMovement(canvasX, canvasY);
 				break;
+		}
+	}
+
+	@Subscribe
+	public void onNativeKeyInput(NativeKeyInput event)
+	{
+		if (config.forwardKeystrokes())
+		{
+			Point mouse = MouseInfo.getPointerInfo().getLocation();
+			client.getCallbacks().post(
+					new NativeMouseInput(
+							mouse.x,
+							mouse.y,
+							1,
+							NativeMouseInput.Type.PRESS
+					)
+			);
 		}
 	}
 
@@ -394,5 +462,25 @@ public class InteractionManager
 	{
 		return point.x < 0 || point.y < 0
 				|| point.x > client.getViewportWidth() || point.y > client.getViewportHeight();
+	}
+
+	private boolean canForwardMouseEvent(NativeMouseInput event)
+	{
+		if (config.interactMethod() != InteractMethod.MOUSE_FORWARDING)
+		{
+			return false;
+		}
+
+		if (config.forceForwardMovement() && event.getType() == NativeMouseInput.Type.MOVEMENT)
+		{
+			return true;
+		}
+
+		if (config.forceForwarding())
+		{
+			return true;
+		}
+
+		return client.getQueuedMenu() != null;
 	}
 }
