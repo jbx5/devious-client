@@ -6,6 +6,9 @@ import dev.unethicalite.api.events.NPCCompositionChanged;
 import dev.unethicalite.api.game.Game;
 import dev.unethicalite.api.game.Vars;
 import dev.unethicalite.api.widgets.Widgets;
+import java.util.Collection;
+import javax.inject.Inject;
+import javax.inject.Singleton;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.api.IndexDataBase;
@@ -42,23 +45,17 @@ import net.runelite.client.callback.ClientThread;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
 
-import javax.inject.Inject;
-import javax.inject.Singleton;
-import java.util.Collection;
-
 @Singleton
 @Slf4j
 public class DefinitionManager
 {
-	@Inject
-	private Client client;
-
-	@Inject
-	private ClientThread clientThread;
-
 	private static final Multimap<Integer, Integer> VARBITS = HashMultimap.create();
 	private static final Multimap<Integer, Integer> VARBIT_TO_ENTITYID = HashMultimap.create();
 	private static final Multimap<Integer, TileObject> TRANSFORMING_OBJECTS = HashMultimap.create();
+	@Inject
+	private Client client;
+	@Inject
+	private ClientThread clientThread;
 
 	@Inject
 	DefinitionManager(EventBus eventBus)
@@ -94,10 +91,17 @@ public class DefinitionManager
 
 		NPCComposition composition = npc.getComposition();
 		if (composition != null
-				&& composition.getTransformVarbit() != -1
-				&& composition.getConfigs() != null)
+			&& composition.getConfigs() != null)
 		{
-			VARBIT_TO_ENTITYID.put(composition.getTransformVarbit(), event.getNpcIndex());
+			if (composition.getTransformVarbit() != -1)
+			{
+				VARBIT_TO_ENTITYID.put(composition.getTransformVarbit(), event.getNpcIndex());
+			}
+			else if (composition.getTransformVarp() != -1)
+			{
+				VARBIT_TO_ENTITYID.put(composition.getTransformVarp(), event.getNpcIndex());
+			}
+
 			npc.setTransformedComposition(composition.transform());
 		}
 	}
@@ -395,9 +399,17 @@ public class DefinitionManager
 			return;
 		}
 
-		if (composition.getImpostorIds() != null && composition.getTransformVarbit() != -1)
+		if (composition.getImpostorIds() != null)
 		{
-			VARBIT_TO_ENTITYID.put(composition.getTransformVarbit(), object.getId());
+			if (composition.getTransformVarbit() != -1)
+			{
+				VARBIT_TO_ENTITYID.put(composition.getTransformVarbit(), object.getId());
+			}
+			else if (composition.getVarPlayerId() != -1)
+			{
+				VARBIT_TO_ENTITYID.put(composition.getVarPlayerId(), object.getId());
+			}
+
 			TRANSFORMING_OBJECTS.put(object.getId(), object);
 			object.setTransformedComposition(composition.getImpostor());
 		}
