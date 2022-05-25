@@ -234,17 +234,39 @@ public class InteractionManager
 			return;
 		}
 
-		double screenWidth = currentMonitor.getDisplayMode().getWidth();
+		List<Integer> monitorIds = Arrays.stream(config.selectedMonitorIds().split(","))
+				.map(String::trim)
+				.map(Integer::parseInt)
+				.collect(Collectors.toList());
+
 		double screenHeight = currentMonitor.getDisplayMode().getHeight();
 
-		if (eventX < 0)
+		double trueEventX = eventX;
+		double totalWidth = 0;
+		double totalCutWidth = 0;
+		double firstMonitorWidth = 0;
+		for (int i = 0; i < monitors.size(); i++)
 		{
-			eventX = screenWidth + eventX;
+			final double width = monitors.get(i).getDisplayMode().getWidth();
+			if (config.selectedMonitorsOnly() && !monitorIds.contains(i + 1))
+			{
+				totalCutWidth += width;
+			}
+			else if (monitorIds.contains(i + 1) && firstMonitorWidth == 0)
+			{
+				firstMonitorWidth = width;
+			}
+
+			totalWidth += width;
 		}
-		else if (eventX > screenWidth)
+
+		trueEventX += firstMonitorWidth;
+		if (trueEventX > totalCutWidth)
 		{
-			eventX = eventX - screenWidth;
+			trueEventX -= totalCutWidth;
 		}
+
+		eventX = trueEventX / (totalWidth - totalCutWidth);
 
 		if (eventY < 0)
 		{
@@ -255,15 +277,14 @@ public class InteractionManager
 			eventY = eventY - screenHeight;
 		}
 
-		List<Integer> monitorIds = Arrays.stream(config.selectedMonitorIds().split(","))
-				.map(String::trim)
-				.map(Integer::parseInt)
-				.collect(Collectors.toList());
+		int canvasX = (int) (client.getCanvasWidth() * eventX);
+		int canvasY = (int) (eventY * ((double) client.getCanvasHeight() / screenHeight));
+
 		int currentMonitorId = monitors.indexOf(currentMonitor) + 1;
 		if (config.selectedMonitorsOnly() && !monitorIds.contains(currentMonitorId))
 		{
-			eventX = -1;
-			eventY = -1;
+			eventX = canvasX = -1;
+			eventY = canvasY = -1;
 		}
 
 		if (event.getType() != NativeMouseInput.Type.MOVEMENT && eventX == -1 && eventY == -1)
@@ -277,12 +298,6 @@ public class InteractionManager
 			return;
 		}
 
-		int finalEventX = (int) eventX;
-		int finalEventY = (int) eventY;
-
-		int canvasX = (int) (finalEventX * ((double) client.getCanvasWidth() / screenWidth));
-		int canvasY = (int) (finalEventY * ((double) client.getCanvasHeight() / screenHeight));
-
 		MenuAutomated queuedMenu = client.getQueuedMenu();
 
 		if (event.getType() == NativeMouseInput.Type.PRESS
@@ -292,6 +307,11 @@ public class InteractionManager
 		{
 			return;
 		}
+
+		int finalEventX = (int) eventX;
+		int finalEventY = (int) eventY;
+		int finalCanvasX = canvasX;
+		int finalCanvasY = canvasY;
 
 		switch (event.getType())
 		{
@@ -323,11 +343,11 @@ public class InteractionManager
 							currentMonitor.getIDstring(),
 							finalEventX,
 							finalEventY,
-							canvasX,
-							canvasY
+							finalCanvasX,
+							finalCanvasY
 					);
 
-					mouseHandler.sendClick(canvasX, canvasY, button);
+					mouseHandler.sendClick(finalCanvasX, finalCanvasY, button);
 				});
 
 				break;
