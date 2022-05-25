@@ -84,6 +84,40 @@ public class TeleportLoader
 						() -> jewelryTeleport("Eagles' Eyrie", NECKLACE_OF_PASSAGE)));
 				}
 
+				if (xericsTalisman())
+				{
+					teleports.add(new Teleport(new WorldPoint(1576, 3530, 0), 6,
+											   () -> jewelryTeleport("Xeric's Lookout", XERICS_TALISMAN)));
+					teleports.add(new Teleport(new WorldPoint(1752, 3566, 0), 6,
+											   () -> jewelryTeleport("Xeric's Glade", XERICS_TALISMAN)));
+					teleports.add(new Teleport(new WorldPoint(1504, 3817, 0), 6,
+											   () -> jewelryTeleport("Xeric's Inferno", XERICS_TALISMAN)));
+					teleports.add(new Teleport(new WorldPoint(1640, 3674, 0), 6,
+											   () -> jewelryTeleport("Xeric's Heart", XERICS_TALISMAN)));
+				}
+
+				if (slayerRing())
+				{
+					teleports.add(new Teleport(new WorldPoint(2432, 3423, 0), 2,
+											   () -> jewelryTeleport("Stronghold Slayer Cave", SLAYER_RING)));
+					teleports.add(new Teleport(new WorldPoint(3422, 3537, 0), 2,
+											   () -> jewelryTeleport("Slayer Tower", SLAYER_RING)));
+					teleports.add(new Teleport(new WorldPoint(2802, 10000, 0), 2,
+											   () -> jewelryTeleport("Fremennik Slayer Dungeon", SLAYER_RING)));
+					teleports.add(new Teleport(new WorldPoint(3185, 4601, 0), 2,
+											   () -> jewelryTeleport("Tarn's Lair", SLAYER_RING)));
+					teleports.add(new Teleport(new WorldPoint(2028, 4636, 0), 2,
+											   () -> jewelryTeleport("Dark Beasts", SLAYER_RING)));
+				}
+
+				if (digsitePendant())
+				{
+					teleports.add(new Teleport(new WorldPoint(3341, 3445, 0), 2,
+											   () -> jewelryTeleport("Digsite", DIGSITE_PENDANT)));
+					teleports.add(new Teleport(new WorldPoint(3549, 10456, 0), 2,
+											   () -> jewelryTeleport("Lithkren", DIGSITE_PENDANT)));
+				}
+
 				for (TeleportItem tele : TeleportItem.values())
 				{
 					if (tele.canUse() && tele.getDestination().distanceTo(Players.getLocal().getWorldLocation()) > 20)
@@ -288,5 +322,23 @@ public class TeleportLoader
 	{
 		return Inventory.getFirst(NECKLACE_OF_PASSAGE) != null
 			|| Equipment.getFirst(NECKLACE_OF_PASSAGE) != null;
+	}
+
+	public static boolean xericsTalisman()
+	{
+		return Inventory.getFirst(XERICS_TALISMAN) != null
+				|| Equipment.getFirst(XERICS_TALISMAN) != null;
+	}
+
+	public static boolean slayerRing()
+	{
+		return Inventory.getFirst(SLAYER_RING) != null
+				|| Equipment.getFirst(SLAYER_RING) != null;
+	}
+
+	public static boolean digsitePendant()
+	{
+		return Inventory.getFirst(DIGSITE_PENDANT) != null
+				|| Equipment.getFirst(DIGSITE_PENDANT) != null;
 	}
 }
