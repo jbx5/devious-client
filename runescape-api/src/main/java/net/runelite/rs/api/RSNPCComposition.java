@@ -70,6 +70,9 @@ public interface RSNPCComposition extends NPCComposition
 	@Import("params")
 	void setParams(RSIterableNodeHashTable params);
 
+	@Import("transformVarp")
+	int getTransformVarp();
+
 	@Import("transformVarbit")
 	int getTransformVarbit();
 }

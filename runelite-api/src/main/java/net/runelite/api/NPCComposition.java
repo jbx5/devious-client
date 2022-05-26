@@ -102,7 +102,9 @@ public interface NPCComposition extends ParamHolder
 	void setIndex(int npcIndex);
 
 	int getTransformVarbit();
-	
+
+	int getTransformVarp();
+
 	/**
 	 * If the npc is a follower, such as a pet. Is affected by the
 	 * "Move follower options lower down" setting.

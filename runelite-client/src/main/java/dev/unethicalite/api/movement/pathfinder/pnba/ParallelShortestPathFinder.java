@@ -11,6 +11,7 @@ import net.runelite.api.coords.WorldPoint;
 import java.util.*;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicStampedReference;
 
 import static java.util.Collections.reverse;
@@ -28,10 +29,11 @@ public class ParallelShortestPathFinder
     public List<WorldPoint> search(List<WorldPoint> start, WorldPoint end)
     {
 
-        AtomicBoolean allDone = new AtomicBoolean(false);
+        AtomicInteger bestPathLength = new AtomicInteger(Integer.MAX_VALUE);
 
         return start.stream()
-                    .map(s -> pool.submit(() -> search(s, end, allDone)))
+                    .sorted(Comparator.comparingInt(x -> x.distanceTo2D(end)))
+                    .map(s -> pool.submit(() -> search(s, end, bestPathLength)))
                     .map(fut ->
                          {
                             List<WorldPoint> out;
@@ -54,7 +56,7 @@ public class ParallelShortestPathFinder
 
     private List<WorldPoint> search(WorldPoint start,
                                     WorldPoint end,
-                                    AtomicBoolean allDone)
+                                    AtomicInteger bestPathLength)
     {
         Map<WorldPoint, Path> paths1 = new ConcurrentHashMap<>();
         Map<WorldPoint, Path> paths2 = new ConcurrentHashMap<>();
@@ -71,13 +73,15 @@ public class ParallelShortestPathFinder
             new Search(start,
                        end,
                        finished,
-                       allDone,
+                       bestPathLength,
                        visited,
                        bestCompletePath,
                        paths1,
                        paths2,
-                       this::getNeighbours,
-                       this::heuristic).run();
+                       this::heuristic,
+                       transportCoords,
+                       false,
+                       collisionMap).run();
             WorldPoint commonNode = bestCompletePath.getReference();
             if (commonNode != null)
             {
@@ -94,13 +98,15 @@ public class ParallelShortestPathFinder
         new Search(end,
                    start,
                    finished,
-                   allDone,
+                   bestPathLength,
                    visited,
                    bestCompletePath,
                    paths2,
                    paths1,
-                   this::getNeighbours,
-                   this::heuristic).run();
+                   this::heuristic,
+                   transportCoords,
+                   true,
+                   collisionMap).run();
 
         WorldPoint commonNode = bestCompletePath.getReference();
         if (commonNode == null)
@@ -108,8 +114,6 @@ public class ParallelShortestPathFinder
             future.cancel(true);
             return ImmutableList.of();
         }
-
-        allDone.set(true);
 
         Path p = paths2.get(commonNode);
         p.collectInto(result2);
@@ -131,130 +135,24 @@ public class ParallelShortestPathFinder
         }
 
         //noinspection UnstableApiUsage
-        return ImmutableList.<WorldPoint>builderWithExpectedSize(paths1.size() + paths2.size())
-                            .addAll(result1)
-                            .addAll(result2)
-                            .build();
+        List<WorldPoint> path = ImmutableList.<WorldPoint>builderWithExpectedSize(paths1.size() + paths2.size())
+                                             .addAll(result1)
+                                             .addAll(result2)
+                                             .build();
+
+        if (path.size() > bestPathLength.get())
+        {
+            return ImmutableList.of();
+        }
+        else
+        {
+            bestPathLength.set(path.size());
+            return path;
+        }
     }
 
     private int heuristic(WorldPoint a, WorldPoint b)
     {
         return (int) (a.distanceTo2DHypotenuse(b));
-    }
-
-    private List<WorldPoint> getNeighbours(WorldPoint position)
-    {
-        final List<WorldPoint> result = new ArrayList<>();
-        for (Transport transport : transportCoords.getOrDefault(position, new ArrayList<>()))
-        {
-            final WorldPoint transportDest = transport.getDestination();
-            result.add(transportDest);
-        }
-
-        try
-        {
-            if (collisionMap.w(position.getX(), position.getY(), position.getPlane()))
-            {
-                WorldPoint neighbor = position.dx(-1);
-                result.add(neighbor);
-            }
-        }
-        catch (Exception ignored)
-        {
-
-        }
-
-        try
-        {
-            if (collisionMap.e(position.getX(), position.getY(), position.getPlane()))
-            {
-                WorldPoint neighbor = position.dx(1);
-                result.add(neighbor);
-            }
-        }
-        catch (Exception ignored)
-        {
-
-        }
-
-        try
-        {
-            if (collisionMap.s(position.getX(), position.getY(), position.getPlane()))
-            {
-                WorldPoint neighbor = position.dy(-1);
-                result.add(neighbor);
-            }
-        }
-        catch (Exception ignored)
-        {
-
-        }
-
-        try
-        {
-            if (collisionMap.n(position.getX(), position.getY(), position.getPlane()))
-            {
-                WorldPoint neighbor = position.dy(1);
-                result.add(neighbor);
-            }
-        }
-        catch (Exception ignored)
-        {
-
-        }
-
-        try
-        {
-            if (collisionMap.sw(position.getX(), position.getY(), position.getPlane()))
-            {
-                WorldPoint neighbor = position.dx(-1).dy(-1);
-                result.add(neighbor);
-            }
-        }
-        catch (Exception ignored)
-        {
-
-        }
-
-        try
-        {
-            if (collisionMap.se(position.getX(), position.getY(), position.getPlane()))
-            {
-                WorldPoint neighbor = position.dx(1).dy(-1);
-                result.add(neighbor);
-            }
-        }
-        catch (Exception ignored)
-        {
-
-        }
-
-        try
-        {
-            if (collisionMap.nw(position.getX(), position.getY(), position.getPlane()))
-            {
-                WorldPoint neighbor = position.dx(-1).dy(1);
-                result.add(neighbor);
-            }
-        }
-        catch (Exception ignored)
-        {
-
-        }
-
-        try
-        {
-            if (collisionMap.ne(position.getX(), position.getY(), position.getPlane()))
-            {
-                WorldPoint neighbor = position.dx(1).dy(1);
-                result.add(neighbor);
-            }
-        }
-        catch (Exception ignored)
-        {
-
-        }
-
-        return result;
     }
 }

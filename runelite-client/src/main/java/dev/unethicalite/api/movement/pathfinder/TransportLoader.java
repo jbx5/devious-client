@@ -16,20 +16,6 @@ import dev.unethicalite.api.quests.Quest;
 import dev.unethicalite.api.widgets.Dialog;
 import dev.unethicalite.api.widgets.Widgets;
 import dev.unethicalite.client.minimal.config.UnethicaliteProperties;
-import lombok.Value;
-import lombok.extern.slf4j.Slf4j;
-import net.runelite.api.Item;
-import net.runelite.api.MenuAction;
-import net.runelite.api.NPC;
-import net.runelite.api.QuestState;
-import net.runelite.api.Skill;
-import net.runelite.api.TileObject;
-import net.runelite.api.coords.Direction;
-import net.runelite.api.coords.WorldArea;
-import net.runelite.api.coords.WorldPoint;
-import net.runelite.api.widgets.Widget;
-import net.runelite.api.widgets.WidgetInfo;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -41,32 +27,43 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
+import lombok.Value;
+import lombok.extern.slf4j.Slf4j;
+import net.runelite.api.Item;
+import net.runelite.api.MenuAction;
+import net.runelite.api.NPC;
+import net.runelite.api.Point;
+import net.runelite.api.QuestState;
+import net.runelite.api.Skill;
+import net.runelite.api.TileObject;
+import net.runelite.api.coords.Direction;
+import net.runelite.api.coords.WorldArea;
+import net.runelite.api.coords.WorldPoint;
+import net.runelite.api.widgets.Widget;
+import net.runelite.api.widgets.WidgetInfo;
 
 @Slf4j
 public class TransportLoader
 {
+	public static final List<SpiritTree> SPIRIT_TREES = List.of(
+		new SpiritTree(new WorldPoint(2542, 3170, 0), "Tree gnome Village"),
+		new SpiritTree(new WorldPoint(2461, 3444, 0), "Gnome Stronghold"),
+		new SpiritTree(new WorldPoint(2555, 3259, 0), "Battlefield of Khazard"),
+		new SpiritTree(new WorldPoint(3185, 3508, 0), "Grand Exchange"),
+		new SpiritTree(new WorldPoint(2488, 2850, 0), "Feldip Hills")
+	);
+	public static final List<MagicMushtree> MUSHTREES = List.of(
+		new MagicMushtree(new WorldPoint(3676, 3871, 0), WidgetInfo.FOSSIL_MUSHROOM_MEADOW),
+		new MagicMushtree(new WorldPoint(3764, 3879, 0), WidgetInfo.FOSSIL_MUSHROOM_HOUSE),
+		new MagicMushtree(new WorldPoint(3676, 3755, 0), WidgetInfo.FOSSIL_MUSHROOM_SWAMP),
+		new MagicMushtree(new WorldPoint(3760, 3758, 0), WidgetInfo.FOSSIL_MUSHROOM_VALLEY)
+	);
 	private static final Gson GSON = new GsonBuilder().create();
 	private static final int BUILD_DELAY_SECONDS = 5;
-	private static Instant lastBuild = Instant.now().minusSeconds(6);
 	private static final List<Transport> STATIC_TRANSPORTS = new ArrayList<>();
-	private static List<Transport> LAST_TRANSPORT_LIST = Collections.emptyList();
-
 	private static final WorldArea MLM = new WorldArea(3714, 5633, 60, 62, 0);
-
-	public static final List<SpiritTree> SPIRIT_TREES = List.of(
-			new SpiritTree(new WorldPoint(2542, 3170, 0), "Tree gnome Village"),
-			new SpiritTree(new WorldPoint(2461, 3444, 0), "Gnome Stronghold"),
-			new SpiritTree(new WorldPoint(2555, 3259, 0), "Battlefield of Khazard"),
-			new SpiritTree(new WorldPoint(3185, 3508, 0), "Grand Exchange"),
-			new SpiritTree(new WorldPoint(2488, 2850, 0), "Feldip Hills")
-	);
-
-	public static final List<MagicMushtree> MUSHTREES = List.of(
-			new MagicMushtree(new WorldPoint(3676, 3871, 0), WidgetInfo.FOSSIL_MUSHROOM_MEADOW),
-			new MagicMushtree(new WorldPoint(3764, 3879, 0), WidgetInfo.FOSSIL_MUSHROOM_HOUSE),
-			new MagicMushtree(new WorldPoint(3676, 3755, 0), WidgetInfo.FOSSIL_MUSHROOM_SWAMP),
-			new MagicMushtree(new WorldPoint(3760, 3758, 0), WidgetInfo.FOSSIL_MUSHROOM_VALLEY)
-	);
+	private static Instant lastBuild = Instant.now().minusSeconds(6);
+	private static List<Transport> LAST_TRANSPORT_LIST = Collections.emptyList();
 
 	static
 	{
@@ -108,28 +105,28 @@ public class TransportLoader
 		{
 			// The door here is weird, the transform actions and name return null
 			transports.add(objectTransport(
-					new WorldPoint(3267, 3228, 0),
-					new WorldPoint(3268, 3228, 0),
-					TileObjects.getFirstAt(3268, 3228, 0, 44599),
-					princeAliCompleted ? 0 : 3)
+				new WorldPoint(3267, 3228, 0),
+				new WorldPoint(3268, 3228, 0),
+				TileObjects.getFirstAt(3268, 3228, 0, 44599),
+				princeAliCompleted ? 0 : 3)
 			);
 			transports.add(objectTransport(
-					new WorldPoint(3268, 3228, 0),
-					new WorldPoint(3267, 3228, 0),
-					TileObjects.getFirstAt(3268, 3228, 0, 44599),
-					princeAliCompleted ? 0 : 3)
+				new WorldPoint(3268, 3228, 0),
+				new WorldPoint(3267, 3228, 0),
+				TileObjects.getFirstAt(3268, 3228, 0, 44599),
+				princeAliCompleted ? 0 : 3)
 			);
 			transports.add(objectTransport(
-					new WorldPoint(3267, 3227, 0),
-					new WorldPoint(3268, 3227, 0),
-					TileObjects.getFirstAt(3268, 3227, 0, 44598),
-					princeAliCompleted ? 0 : 3)
+				new WorldPoint(3267, 3227, 0),
+				new WorldPoint(3268, 3227, 0),
+				TileObjects.getFirstAt(3268, 3227, 0, 44598),
+				princeAliCompleted ? 0 : 3)
 			);
 			transports.add(objectTransport(
-					new WorldPoint(3268, 3227, 0),
-					new WorldPoint(3267, 3227, 0),
-					TileObjects.getFirstAt(3268, 3227, 0, 44598),
-					princeAliCompleted ? 0 : 3)
+				new WorldPoint(3268, 3227, 0),
+				new WorldPoint(3267, 3227, 0),
+				TileObjects.getFirstAt(3268, 3227, 0, 44598),
+				princeAliCompleted ? 0 : 3)
 			);
 		}
 
@@ -139,16 +136,16 @@ public class TransportLoader
 			if (Skills.getBoostedLevel(Skill.AGILITY) >= 21)
 			{
 				transports.add(objectTransport(
-						new WorldPoint(3142, 3513, 0),
-						new WorldPoint(3137, 3516, 0),
-						16530,
-						"Climb-into")
+					new WorldPoint(3142, 3513, 0),
+					new WorldPoint(3137, 3516, 0),
+					16530,
+					"Climb-into")
 				);
 				transports.add(objectTransport(
-						new WorldPoint(3137, 3516, 0),
-						new WorldPoint(3142, 3513, 0),
-						16529,
-						"Climb-into")
+					new WorldPoint(3137, 3516, 0),
+					new WorldPoint(3142, 3513, 0),
+					16529,
+					"Climb-into")
 				);
 			}
 
@@ -166,24 +163,24 @@ public class TransportLoader
 				if (Vars.getBit(8063) >= 7)
 				{
 					transports.add(npcDialogTransport(new WorldPoint(3054, 3245, 0),
-							new WorldPoint(1824, 3691, 0),
-							8484,
-							"Can you take me to Great Kourend?"));
+						new WorldPoint(1824, 3691, 0),
+						8484,
+						"Can you take me to Great Kourend?"));
 				}
 				else
 				{
 					transports.add(npcDialogTransport(new WorldPoint(3054, 3245, 0),
-							new WorldPoint(1824, 3691, 0),
-							8484,
-							"That's great, can you take me there please?"));
+						new WorldPoint(1824, 3691, 0),
+						8484,
+						"That's great, can you take me there please?"));
 				}
 			}
 			else
 			{
 				transports.add(npcTransport(new WorldPoint(3054, 3245, 0),
-						new WorldPoint(1824, 3695, 1),
-						10724,
-						"Port Piscarilius"));
+					new WorldPoint(1824, 3695, 1),
+					10724,
+					"Port Piscarilius"));
 			}
 
 			// Spirit Trees
@@ -191,12 +188,17 @@ public class TransportLoader
 			{
 				for (var source : SPIRIT_TREES)
 				{
-					if (source.location.equals("Gnome Stronghold") && Quest.THE_GRAND_TREE.getState() == QuestState.FINISHED)
+					if (source.location.equals("Gnome Stronghold") && Quest.THE_GRAND_TREE.getState() != QuestState.FINISHED)
 					{
 						continue;
 					}
 					for (var target : SPIRIT_TREES)
 					{
+						if (source == target)
+						{
+							continue;
+						}
+
 						transports.add(spritTreeTransport(source.position, target.position, target.location));
 					}
 				}
@@ -214,9 +216,9 @@ public class TransportLoader
 			{
 				// Entrance
 				transports.add(objectTransport(new WorldPoint(2328, 3496, 0), new WorldPoint(1994, 4983, 3), 19790,
-						"Enter"));
+					"Enter"));
 				transports.add(objectTransport(new WorldPoint(1994, 4983, 3), new WorldPoint(2328, 3496, 0), 19891,
-						"Exit"));
+					"Exit"));
 			}
 
 			// Waterbirth island
@@ -266,9 +268,9 @@ public class TransportLoader
 			if (Skills.getBoostedLevel(Skill.AGILITY) >= 10)
 			{
 				transports.add(objectTransport(new WorldPoint(2546, 2871, 0), new WorldPoint(2546, 2873, 0), 31757,
-						"Climb"));
+					"Climb"));
 				transports.add(objectTransport(new WorldPoint(2546, 2873, 0), new WorldPoint(2546, 2871, 0), 31757,
-						"Climb"));
+					"Climb"));
 			}
 
 			GameThread.invoke(() ->
@@ -288,13 +290,13 @@ public class TransportLoader
 				if (Vars.getBit(3637) >= 153)
 				{
 					transports.add(objectTransport(new WorldPoint(3295, 3429, 0), new WorldPoint(3296, 3429, 0), 24561,
-							"Open"));
+						"Open"));
 					transports.add(objectTransport(new WorldPoint(3296, 3429, 0), new WorldPoint(3295, 3429, 0), 24561,
-							"Open"));
+						"Open"));
 					transports.add(objectTransport(new WorldPoint(3295, 3428, 0), new WorldPoint(3296, 3428, 0), 24561,
-							"Open"));
+						"Open"));
 					transports.add(objectTransport(new WorldPoint(3296, 3428, 0), new WorldPoint(3295, 3428, 0), 24561,
-							"Open"));
+						"Open"));
 				}
 			});
 		}
@@ -320,21 +322,21 @@ public class TransportLoader
 		transports.add(npcTransport(new WorldPoint(3041, 3237, 0), new WorldPoint(2834, 3331, 1), 1166, "Take-boat"));
 		transports.add(npcTransport(new WorldPoint(2834, 3335, 0), new WorldPoint(3048, 3231, 1), 1170, "Take-boat"));
 		transports.add(npcDialogTransport(new WorldPoint(2821, 3374, 0),
-				new WorldPoint(2822, 9774, 0),
-				1164,
-				"Well that is a risk I will have to take."));
+			new WorldPoint(2822, 9774, 0),
+			1164,
+			"Well that is a risk I will have to take."));
 
 		// Fossil Island
 		transports.add(npcTransport(new WorldPoint(3362, 3445, 0),
-				new WorldPoint(3724, 3808, 0),
-				8012,
-				"Quick-Travel"));
+			new WorldPoint(3724, 3808, 0),
+			8012,
+			"Quick-Travel"));
 
 		transports.add(objectDialogTransport(new WorldPoint(3724, 3808, 0),
-				new WorldPoint(3362, 3445, 0),
-				30914,
-				new String[]{"Travel"},
-				"Row to the barge and travel to the Digsite."));
+			new WorldPoint(3362, 3445, 0),
+			30914,
+			new String[]{"Travel"},
+			"Row to the barge and travel to the Digsite."));
 
 		// Magic Mushtrees
 		for (var source : MUSHTREES)
@@ -347,10 +349,10 @@ public class TransportLoader
 
 		// Gnome stronghold
 		transports.add(objectDialogTransport(new WorldPoint(2461, 3382, 0),
-				new WorldPoint(2461, 3385, 0),
-				190,
-				new String[]{"Open"},
-				"Sorry, I'm a bit busy."));
+			new WorldPoint(2461, 3385, 0),
+			190,
+			new String[]{"Open"},
+			"Sorry, I'm a bit busy."));
 
 		// Paterdomus
 		transports.add(trapDoorTransport(new WorldPoint(3405, 3506, 0), new WorldPoint(3405, 9906, 0), 1579, 1581));
@@ -381,25 +383,25 @@ public class TransportLoader
 	{
 		String[] split = line.split(" ");
 		return objectTransport(
-				new WorldPoint(
-						Integer.parseInt(split[0]),
-						Integer.parseInt(split[1]),
-						Integer.parseInt(split[2])
-				),
-				new WorldPoint(
-						Integer.parseInt(split[3]),
-						Integer.parseInt(split[4]),
-						Integer.parseInt(split[5])
-				),
-				Integer.parseInt(split[split.length - 1]), split[6]
+			new WorldPoint(
+				Integer.parseInt(split[0]),
+				Integer.parseInt(split[1]),
+				Integer.parseInt(split[2])
+			),
+			new WorldPoint(
+				Integer.parseInt(split[3]),
+				Integer.parseInt(split[4]),
+				Integer.parseInt(split[5])
+			),
+			Integer.parseInt(split[split.length - 1]), split[6]
 		);
 	}
 
 	public static Transport trapDoorTransport(
-			WorldPoint source,
-			WorldPoint destination,
-			int closedId,
-			int openedId
+		WorldPoint source,
+		WorldPoint destination,
+		int closedId,
+		int openedId
 	)
 	{
 		return new Transport(source, destination, Integer.MAX_VALUE, 0, () ->
@@ -420,10 +422,10 @@ public class TransportLoader
 	}
 
 	public static Transport itemUseTransport(
-			WorldPoint source,
-			WorldPoint destination,
-			int itemId,
-			int objId
+		WorldPoint source,
+		WorldPoint destination,
+		int itemId,
+		int objId
 	)
 	{
 		return new Transport(source, destination, Integer.MAX_VALUE, 0, () ->
@@ -443,10 +445,10 @@ public class TransportLoader
 	}
 
 	public static Transport npcTransport(
-			WorldPoint source,
-			WorldPoint destination,
-			int npcId,
-			String... actions
+		WorldPoint source,
+		WorldPoint destination,
+		int npcId,
+		String... actions
 	)
 	{
 		return new Transport(source, destination, 10, 0, () ->
@@ -460,10 +462,10 @@ public class TransportLoader
 	}
 
 	public static Transport npcDialogTransport(
-			WorldPoint source,
-			WorldPoint destination,
-			int npcId,
-			String... chatOptions
+		WorldPoint source,
+		WorldPoint destination,
+		int npcId,
+		String... chatOptions
 	)
 	{
 		return new Transport(source, destination, 10, 0, () ->
@@ -493,7 +495,7 @@ public class TransportLoader
 	}
 
 	public static List<Transport> motherloadMineTransport(
-			WorldPoint rockfall
+		WorldPoint rockfall
 	)
 	{
 		return Arrays.stream(Direction.values()).map(dir ->
@@ -523,8 +525,8 @@ public class TransportLoader
 					return new Transport(neighbor, finalDest, Integer.MAX_VALUE, 0, () ->
 					{
 						TileObjects.getAt(rockfall, x -> x.getName().equalsIgnoreCase("Rockfall")).stream()
-								.findFirst()
-								.ifPresentOrElse(obj -> obj.interact("Mine"), () -> Movement.walk(finalDest));
+							.findFirst()
+							.ifPresentOrElse(obj -> obj.interact("Mine"), () -> Movement.walk(finalDest));
 					}, new String[]{"Mine"});
 				}
 			}
@@ -533,10 +535,10 @@ public class TransportLoader
 	}
 
 	public static Transport objectTransport(
-			WorldPoint source,
-			WorldPoint destination,
-			int objId,
-			String... actions
+		WorldPoint source,
+		WorldPoint destination,
+		int objId,
+		String... actions
 	)
 	{
 		return new Transport(source, destination, Integer.MAX_VALUE, 0, () ->
@@ -549,16 +551,16 @@ public class TransportLoader
 			}
 
 			TileObjects.getSurrounding(source, 5, x -> x.getId() == objId).stream()
-					.min(Comparator.comparingInt(o -> o.distanceTo(source)))
-					.ifPresent(obj -> obj.interact(actions));
+				.min(Comparator.comparingInt(o -> o.distanceTo(source)))
+				.ifPresent(obj -> obj.interact(actions));
 		}, actions);
 	}
 
 	public static Transport objectTransport(
-			WorldPoint source,
-			WorldPoint destination,
-			TileObject tileObject,
-			int actionIndex
+		WorldPoint source,
+		WorldPoint destination,
+		TileObject tileObject,
+		int actionIndex
 	)
 	{
 		return new Transport(source, destination, Integer.MAX_VALUE, 0, () ->
@@ -573,11 +575,11 @@ public class TransportLoader
 	}
 
 	public static Transport objectDialogTransport(
-			WorldPoint source,
-			WorldPoint destination,
-			int objId,
-			String[] actions,
-			String... chatOptions
+		WorldPoint source,
+		WorldPoint destination,
+		int objId,
+		String[] actions,
+		String... chatOptions
 	)
 	{
 		return new Transport(source, destination, Integer.MAX_VALUE, 0, () ->
@@ -609,52 +611,54 @@ public class TransportLoader
 	private static Transport spritTreeTransport(WorldPoint source, WorldPoint target, String location)
 	{
 		return new Transport(
-				source,
-				target,
-				5,
-				0,
-				() ->
+			source,
+			target,
+			5,
+			0,
+			() ->
+			{
+				Widget treeWidget = Widgets.get(187, 3);
+				if (Widgets.isVisible(treeWidget))
 				{
-					Widget treeWidget = Widgets.get(187, 3);
-					if (Widgets.isVisible(treeWidget))
-					{
-						Arrays.stream(treeWidget.getDynamicChildren())
-								.filter(child -> child.getText().contains(location))
-								.findFirst()
-								.ifPresent(child -> child.interact(0, MenuAction.WIDGET_CONTINUE.getId(), child.getIndex(), child.getId()));
-						return;
-					}
+					Arrays.stream(treeWidget.getDynamicChildren())
+						.filter(child -> child.getText().contains(location))
+						.findFirst()
+						.ifPresent(child -> child.interact(0, MenuAction.WIDGET_CONTINUE.getId(), child.getIndex(), child.getId()));
+					return;
+				}
 
-					TileObject tree = TileObjects.getNearest("Spirit tree");
-					if (tree != null)
-					{
-						tree.interact("Travel");
-					}
-				}, null);
+				TileObject tree = TileObjects.getNearest(1293, 1294, 1295);
+				if (tree != null)
+				{
+					final Point point = tree.menuPoint();
+					tree.interact(tree.getId(), MenuAction.GAME_OBJECT_FIRST_OPTION.getId(), point.getX(), point.getY());
+				}
+
+			}, new String[]{"Travel"});
 	}
 
 	private static Transport mushtreeTransport(WorldPoint source, WorldPoint target, WidgetInfo widget)
 	{
 		return new Transport(
-				source,
-				target,
-				5,
-				0,
-				() ->
+			source,
+			target,
+			5,
+			0,
+			() ->
+			{
+				Widget treeWidget = Widgets.get(widget);
+				if (Widgets.isVisible(treeWidget))
 				{
-					Widget treeWidget = Widgets.get(widget);
-					if (Widgets.isVisible(treeWidget))
-					{
-						treeWidget.interact(0, MenuAction.WIDGET_CONTINUE.getId(), treeWidget.getIndex(), treeWidget.getId());
-						return;
-					}
+					treeWidget.interact(0, MenuAction.WIDGET_CONTINUE.getId(), treeWidget.getIndex(), treeWidget.getId());
+					return;
+				}
 
-					TileObject tree = TileObjects.getNearest("Magic Mushtree");
-					if (tree != null)
-					{
-						tree.interact("Use");
-					}
-				}, new String[]{"Use"});
+				TileObject tree = TileObjects.getNearest("Magic Mushtree");
+				if (tree != null)
+				{
+					tree.interact("Use");
+				}
+			}, new String[]{"Use"});
 	}
 
 	public static class MagicMushtree
@@ -690,15 +694,15 @@ public class TransportLoader
 		String destination;
 		String action;
 
-		private Transport toModel()
-		{
-			return objectTransport(stringToWorldPoint(source), stringToWorldPoint(destination), objId, action);
-		}
-
 		private static WorldPoint stringToWorldPoint(String text)
 		{
 			Integer[] points = Arrays.stream(text.split(" ")).map(Integer::parseInt).toArray(Integer[]::new);
 			return new WorldPoint(points[0], points[1], points[2]);
+		}
+
+		private Transport toModel()
+		{
+			return objectTransport(stringToWorldPoint(source), stringToWorldPoint(destination), objId, action);
 		}
 	}
 }

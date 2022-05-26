@@ -1,15 +1,16 @@
 package dev.unethicalite.api.movement.pathfinder.pnba;
 
+import dev.unethicalite.api.movement.pathfinder.CollisionMap;
+import dev.unethicalite.api.movement.pathfinder.Transport;
 import lombok.Value;
 import net.runelite.api.coords.WorldPoint;
 
-import java.util.Map;
-import java.util.PriorityQueue;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicStampedReference;
-import java.util.function.Function;
 import java.util.function.ToIntBiFunction;
+import java.util.stream.Collectors;
 
 import static java.lang.Math.addExact;
 import static java.util.Comparator.comparingInt;
@@ -20,36 +21,53 @@ class Search implements Runnable
     WorldPoint start;
     WorldPoint end;
     AtomicBoolean finished;
-    AtomicBoolean allDone;
+    AtomicInteger bestPathLength;
     Set<WorldPoint> visited;
     AtomicStampedReference<WorldPoint> bestCompletePath;
     Map<WorldPoint, Path> paths1;
     Map<WorldPoint, Path> paths2;
-    Function<WorldPoint, Iterable<WorldPoint>> connectedNodes;
     ToIntBiFunction<WorldPoint, WorldPoint> estimatedDistance;
     PriorityQueue<WorldPoint> nodesToVisit;
+    Map<WorldPoint, List<Transport>> transportCoords;
+    CollisionMap collisionMap;
+    boolean reverse;
 
     Search(WorldPoint start,
            WorldPoint end,
            AtomicBoolean finished,
-           AtomicBoolean allDone,
+           AtomicInteger bestPathLength,
            Set<WorldPoint> visited,
            AtomicStampedReference<WorldPoint> bestCompletePath,
            Map<WorldPoint, Path> paths1,
            Map<WorldPoint, Path> paths2,
-           Function<WorldPoint, Iterable<WorldPoint>> connectedNodes,
-           ToIntBiFunction<WorldPoint, WorldPoint> estimatedDistance)
+           ToIntBiFunction<WorldPoint, WorldPoint> estimatedDistance,
+           Map<WorldPoint, List<Transport>> transportCoords,
+           boolean reverse,
+           CollisionMap collisionMap)
     {
         this.start = start;
         this.end = end;
         this.finished = finished;
-        this.allDone = allDone;
+        this.bestPathLength = bestPathLength;
         this.visited = visited;
         this.bestCompletePath = bestCompletePath;
         this.paths1 = paths1;
         this.paths2 = paths2;
-        this.connectedNodes = connectedNodes;
         this.estimatedDistance = estimatedDistance;
+        this.collisionMap = collisionMap;
+        this.reverse = reverse;
+
+        if (reverse)
+        {
+            this.transportCoords = transportCoords.values().stream()
+                                                  .flatMap(Collection::stream)
+                                                  .collect(Collectors.groupingBy(Transport::getDestination));
+        }
+        else
+        {
+            this.transportCoords = transportCoords;
+        }
+
         nodesToVisit = new PriorityQueue<>(comparingInt(x -> paths1.get(x).getDistanceTravelled()));
     }
 
@@ -57,7 +75,7 @@ class Search implements Runnable
     public void run()
     {
         var x = start;
-        while (!finished.get() && !allDone.get())
+        while (!finished.get() && bestPathLength.get() > paths1.get(x).getDistanceTravelled())
         {
             if (!visited(x))
             {
@@ -73,18 +91,20 @@ class Search implements Runnable
             }
         }
     }
-
     private void visit(WorldPoint x)
     {
         var xPath = paths1.get(x);
         if (shouldExpand(xPath))
         {
-            for (var y : connectedNodes(x))
+            for (var y : getNeighbours(x))
             {
                 if (!visited(y))
                 {
                     var yPathOld = paths1.get(y);
-                    var newTotalDistanceToY = addExact(xPath.getDistanceTravelled(), 1);
+
+                    var dist = Math.min(2, Math.abs(x.getX() - y.getX()) + Math.abs(x.getY() - y.getY()));
+                    var newTotalDistanceToY = addExact(xPath.getDistanceTravelled(), dist);
+
                     if (yPathOld == null || newTotalDistanceToY < yPathOld.getDistanceTravelled())
                     {
                         Path betterPathToY = xPath.prepend(y,
@@ -135,12 +155,6 @@ class Search implements Runnable
     {
         return visited.contains(node);
     }
-
-    private Iterable<WorldPoint> connectedNodes(WorldPoint x)
-    {
-        return connectedNodes.apply(x);
-    }
-
     private int estimateOfActualTravel(WorldPoint y)
     {
         return estimatedDistance.applyAsInt(start, y);
@@ -154,5 +168,127 @@ class Search implements Runnable
     private int bestCompleteDistance()
     {
         return bestCompletePath.getStamp();
+    }
+
+    private List<WorldPoint> getNeighbours(WorldPoint position)
+    {
+        final List<WorldPoint> result = new ArrayList<>();
+        for (Transport transport : transportCoords.getOrDefault(position, new ArrayList<>()))
+        {
+            if (reverse)
+            {
+                result.add(transport.getSource());
+            }
+            else
+            {
+                result.add(transport.getDestination());
+            }
+        }
+
+        try
+        {
+            if (collisionMap.sw(position.getX(), position.getY(), position.getPlane()))
+            {
+                WorldPoint neighbor = position.dx(-1).dy(-1);
+                result.add(neighbor);
+            }
+        }
+        catch (Exception ignored)
+        {
+
+        }
+
+        try
+        {
+            if (collisionMap.se(position.getX(), position.getY(), position.getPlane()))
+            {
+                WorldPoint neighbor = position.dx(1).dy(-1);
+                result.add(neighbor);
+            }
+        }
+        catch (Exception ignored)
+        {
+
+        }
+
+        try
+        {
+            if (collisionMap.nw(position.getX(), position.getY(), position.getPlane()))
+            {
+                WorldPoint neighbor = position.dx(-1).dy(1);
+                result.add(neighbor);
+            }
+        }
+        catch (Exception ignored)
+        {
+
+        }
+
+        try
+        {
+            if (collisionMap.ne(position.getX(), position.getY(), position.getPlane()))
+            {
+                WorldPoint neighbor = position.dx(1).dy(1);
+                result.add(neighbor);
+            }
+        }
+        catch (Exception ignored)
+        {
+
+        }
+
+        try
+        {
+            if (collisionMap.w(position.getX(), position.getY(), position.getPlane()))
+            {
+                WorldPoint neighbor = position.dx(-1);
+                result.add(neighbor);
+            }
+        }
+        catch (Exception ignored)
+        {
+
+        }
+
+        try
+        {
+            if (collisionMap.e(position.getX(), position.getY(), position.getPlane()))
+            {
+                WorldPoint neighbor = position.dx(1);
+                result.add(neighbor);
+            }
+        }
+        catch (Exception ignored)
+        {
+
+        }
+
+        try
+        {
+            if (collisionMap.s(position.getX(), position.getY(), position.getPlane()))
+            {
+                WorldPoint neighbor = position.dy(-1);
+                result.add(neighbor);
+            }
+        }
+        catch (Exception ignored)
+        {
+
+        }
+
+        try
+        {
+            if (collisionMap.n(position.getX(), position.getY(), position.getPlane()))
+            {
+                WorldPoint neighbor = position.dy(1);
+                result.add(neighbor);
+            }
+        }
+        catch (Exception ignored)
+        {
+
+        }
+
+        return result;
     }
 }

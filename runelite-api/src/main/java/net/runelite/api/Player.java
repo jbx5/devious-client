@@ -32,6 +32,13 @@ import javax.annotation.Nullable;
  */
 public interface Player extends Actor
 {
+	/**
+	 * Get the ID of the player
+	 *
+	 * @return
+	 */
+	int getId();
+
 	@Override
 	int getCombatLevel();
 
@@ -108,11 +115,6 @@ public interface Player extends Actor
 	int getIndex();
 
 	boolean isIdle();
-
-	default int getId()
-	{
-		return getPlayerId();
-	}
 
 	default boolean isAnimating()
 	{

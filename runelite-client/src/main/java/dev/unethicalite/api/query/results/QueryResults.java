@@ -23,7 +23,7 @@ public abstract class QueryResults<T, R> implements Collection<T>
 
 	public T get(int index)
 	{
-		return index >= 0 && index < results.size() - 1 ? results.get(index) : null;
+		return results.get(index);
 	}
 
 	public boolean isEmpty()
@@ -98,7 +98,7 @@ public abstract class QueryResults<T, R> implements Collection<T>
 
 	public T first()
 	{
-		return get(0);
+		return this.size() == 0 ? null : this.get(0);
 	}
 
 	public int indexOf(T o)
