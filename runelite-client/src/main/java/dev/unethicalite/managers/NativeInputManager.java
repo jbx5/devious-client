@@ -255,8 +255,8 @@ public class NativeInputManager
 
 		Rectangle firstBounds = first.getDefaultConfiguration().getBounds();
 		Rectangle secondBounds = second.getDefaultConfiguration().getBounds();
-		return firstBounds.x + firstBounds.width == secondBounds.x
-				|| secondBounds.x + secondBounds.width == firstBounds.x;
+		return (firstBounds.x + firstBounds.width == secondBounds.x
+				|| secondBounds.x + secondBounds.width == firstBounds.x);
 	}
 
 	private Rectangle getJoinedScreen(List<GraphicsDevice> sortedMonitors)

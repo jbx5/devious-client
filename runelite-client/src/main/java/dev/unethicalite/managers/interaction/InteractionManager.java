@@ -155,7 +155,7 @@ public class InteractionManager
 	@Subscribe
 	public void onMenuOptionClicked(MenuOptionClicked e)
 	{
-		if (e.isAutomated() && e.getMenuAction() == MenuAction.WALK)
+		if ("Automated".equals(e.getMenuOption()) && e.getMenuAction() == MenuAction.WALK)
 		{
 			client.setSelectedSceneTileX(e.getParam0());
 			client.setSelectedSceneTileY(e.getParam1());
@@ -180,9 +180,7 @@ public class InteractionManager
 					+ " | ID=" + e.getId()
 					+ " | OP=" + e.getMenuAction().getId()
 					+ " | P0=" + e.getParam0()
-					+ " | P1=" + e.getParam1()
-					+ " | X=" + e.getCanvasX()
-					+ " | Y=" + e.getCanvasY();
+					+ " | P1=" + e.getParam1();
 			log.debug("[Menu Action] {}", action);
 		}
 	}

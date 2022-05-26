@@ -7,7 +7,6 @@ import lombok.Setter;
 import net.runelite.api.Client;
 import net.runelite.api.MenuAction;
 import net.runelite.api.MenuEntry;
-import net.runelite.api.events.MenuOptionClicked;
 
 import java.util.function.Consumer;
 
@@ -88,19 +87,5 @@ public class MenuAutomated
 				param1,
 				false
 		);
-	}
-
-	public MenuOptionClicked toMenuOptionClicked()
-	{
-		MenuOptionClicked event = new MenuOptionClicked();
-		event.setMenuOption(option);
-		event.setMenuTarget(target);
-		event.setMenuAction(opcode);
-		event.setId(identifier);
-		event.setParam0(param0);
-		event.setParam1(param1);
-		event.setCanvasX(clickX);
-		event.setCanvasY(clickY);
-		return event;
 	}
 }
