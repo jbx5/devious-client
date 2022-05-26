@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019 Owain van Brakel <https://github.com/Owain94>
+ * Copyright (c) 2022, emerald000
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,21 +22,28 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package net.runelite.client.plugins.itemstats.special;
 
-object ProjectVersions {
-    const val launcherVersion = "3.0.0"
-    const val rlVersion = "1.8.21"
+import net.runelite.api.Client;
+import static net.runelite.api.Skill.HITPOINTS;
+import net.runelite.client.plugins.itemstats.StatBoost;
+import static net.runelite.client.plugins.itemstats.stats.Stats.RUN_ENERGY;
 
-    const val openosrsVersion = "4.28.0"
+public class NettleTeaRunEnergy extends StatBoost
+{
+	public NettleTeaRunEnergy()
+	{
+		super(RUN_ENERGY, false);
+	}
 
-    const val rsversion = 205
-    const val cacheversion = 165
-
-    const val lombokVersion = "1.18.20"
-}
-
-object Unethicalite {
-    fun isMinimalBuild(): Boolean {
-        return System.getenv("unethicalite.build")?.equals("minimal") ?: false
-    }
+	@Override
+	public int heals(Client client)
+	{
+		// Only restores run energy if your hitpoints aren't full
+		if (client.getBoostedSkillLevel(HITPOINTS) < client.getRealSkillLevel(HITPOINTS))
+		{
+			return 5;
+		}
+		return 0;
+	}
 }

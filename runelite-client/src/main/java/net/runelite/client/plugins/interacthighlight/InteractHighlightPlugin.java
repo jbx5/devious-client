@@ -43,9 +43,11 @@ import net.runelite.api.TileObject;
 import net.runelite.api.WallObject;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.GameTick;
+import net.runelite.api.events.InteractingChanged;
 import net.runelite.api.events.MenuOptionClicked;
 import net.runelite.api.events.NpcDespawned;
-import net.runelite.api.events.InteractingChanged;
+import net.runelite.api.widgets.WidgetID;
+import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.plugins.Plugin;
@@ -165,10 +167,10 @@ public class InteractHighlightPlugin extends Plugin
 			case NPC_FOURTH_OPTION:
 			case NPC_FIFTH_OPTION:
 			{
-				int id = menuOptionClicked.getId();
 				interactedObject = null;
-				interactedNpc = findNpc(id);
-				attacked = menuOptionClicked.getMenuAction() == MenuAction.NPC_SECOND_OPTION || menuOptionClicked.getMenuAction() == MenuAction.WIDGET_TARGET_ON_NPC;
+				interactedNpc = menuOptionClicked.getMenuEntry().getNpc();
+				attacked = menuOptionClicked.getMenuAction() == MenuAction.NPC_SECOND_OPTION ||
+					menuOptionClicked.getMenuAction() == MenuAction.WIDGET_TARGET_ON_NPC && WidgetInfo.TO_GROUP(client.getSelectedWidget().getId()) == WidgetID.SPELLBOOK_GROUP_ID;
 				clickTick = client.getTickCount();
 				gameCycle = client.getGameCycle();
 				break;
@@ -237,11 +239,6 @@ public class InteractHighlightPlugin extends Plugin
 			}
 		}
 		return null;
-	}
-
-	NPC findNpc(int id)
-	{
-		return client.getCachedNPCs()[id];
 	}
 
 	@Nullable
