@@ -62,24 +62,19 @@ public class NativeInputManager
 		double eventX = event.getX();
 		double eventY = event.getY();
 
-		ContainableFrame frame = MinimalUI.getFrame() != null ? MinimalUI.getFrame() : ClientUI.getFrame();
-
-		if (frame == null)
+		ContainableFrame clientWindow = MinimalUI.getFrame() != null ? MinimalUI.getFrame() : ClientUI.getFrame();
+		if (clientWindow == null)
 		{
 			return;
 		}
 
-		if (frame.getBounds().contains(eventX, eventY))
+		if (clientWindow.getBounds().contains(eventX, eventY))
 		{
 			return;
 		}
 
-		List<Integer> monitorIds = Arrays.stream(config.selectedMonitorIds().split(","))
-				.map(String::trim)
-				.map(s -> Integer.parseInt(s) - 1)
-				.collect(Collectors.toList());
-		GraphicsDevice[] devices = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
-		GraphicsDevice currentMonitor = Arrays.stream(devices)
+		GraphicsDevice[] monitors = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
+		GraphicsDevice currentMonitor = Arrays.stream(monitors)
 				.filter(device -> device.getDefaultConfiguration().getBounds().contains(event.getX(), event.getY()))
 				.findFirst()
 				.orElse(null);
@@ -88,12 +83,7 @@ public class NativeInputManager
 			return;
 		}
 
-		List<GraphicsDevice> availableMonitors = monitorIds.stream()
-				.filter(id -> !config.selectedMonitorsOnly() || id < devices.length)
-				.map(id -> GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices()[id])
-				.sorted(Comparator.comparingInt((GraphicsDevice m) -> m.getDefaultConfiguration().getBounds().x)
-						.thenComparingInt((GraphicsDevice m) -> m.getDefaultConfiguration().getBounds().y))
-				.collect(Collectors.toList());
+		List<GraphicsDevice> availableMonitors = getAvailableMonitors();
 		if (availableMonitors.isEmpty())
 		{
 			return;
@@ -269,5 +259,25 @@ public class NativeInputManager
 		}
 
 		return screen;
+	}
+
+	private List<GraphicsDevice> getAvailableMonitors()
+	{
+		GraphicsDevice[] devices = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
+		if (!config.selectedMonitorsOnly())
+		{
+			return Arrays.asList(devices);
+		}
+
+		List<Integer> monitorIds = Arrays.stream(config.selectedMonitorIds().split(","))
+				.map(String::trim)
+				.map(s -> Integer.parseInt(s) - 1)
+				.collect(Collectors.toList());
+		return monitorIds.stream()
+				.filter(id -> id < devices.length)
+				.map(id -> GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices()[id])
+				.sorted(Comparator.comparingInt((GraphicsDevice m) -> m.getDefaultConfiguration().getBounds().x)
+						.thenComparingInt((GraphicsDevice m) -> m.getDefaultConfiguration().getBounds().y))
+				.collect(Collectors.toList());
 	}
 }
