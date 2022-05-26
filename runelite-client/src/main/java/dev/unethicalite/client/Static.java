@@ -4,6 +4,7 @@ import dev.unethicalite.api.movement.pathfinder.GlobalCollisionMap;
 import dev.unethicalite.api.script.paint.Paint;
 import dev.unethicalite.client.config.UnethicaliteConfig;
 import dev.unethicalite.managers.DefinitionManager;
+import dev.unethicalite.managers.NativeInputManager;
 import dev.unethicalite.managers.NeverLogManager;
 import dev.unethicalite.managers.interaction.InteractionManager;
 import lombok.Getter;
@@ -80,6 +81,10 @@ public class Static
 	@Inject
 	@Getter
 	private static InteractionManager interactionManager;
+
+	@Inject
+	@Getter
+	private static NativeInputManager nativeInputManager;
 
 	@Inject
 	@Getter
