@@ -1,9 +1,9 @@
 package dev.unethicalite.api.packets;
 
 import dev.unethicalite.api.events.MenuAutomated;
-import dev.unethicalite.api.game.Game;
 import dev.unethicalite.api.game.GameThread;
 import dev.unethicalite.api.widgets.Widgets;
+import dev.unethicalite.client.Static;
 import dev.unethicalite.managers.interaction.InteractionException;
 import net.runelite.api.packets.ClientPacket;
 import net.runelite.api.packets.PacketBufferNode;
@@ -15,8 +15,8 @@ public class Packets
 {
 	public static void queuePacket(ClientPacket clientPacket, Object... data)
 	{
-		PacketWriter writer = Game.getClient().getPacketWriter();
-		PacketBufferNode packet = Game.getClient().preparePacket(clientPacket, writer.getIsaacCipher());
+		PacketWriter writer = Static.getClient().getPacketWriter();
+		PacketBufferNode packet = Static.getClient().preparePacket(clientPacket, writer.getIsaacCipher());
 
 		for (Object o : data)
 		{
@@ -56,13 +56,13 @@ public class Packets
 
 	public static void queuePacket(PacketBufferNode packet)
 	{
-		GameThread.invoke(() -> Game.getClient().getPacketWriter().queuePacket(packet));
+		GameThread.invoke(() -> Static.getClient().getPacketWriter().queuePacket(packet));
 	}
 
 	public static PacketBufferNode fromAutomatedMenu(MenuAutomated menu)
 	{
 		var opcode = menu.getOpcode();
-		var client = Game.getClient();
+		var client = Static.getClient();
 
 		var id = menu.getIdentifier();
 		var param0 = menu.getParam0();
@@ -314,21 +314,6 @@ public class Packets
 						param1 + client.getBaseY(),
 						false
 				);
-			case CC_OP:
-			case CC_OP_LOW_PRIORITY:
-				var widget = Widgets.fromId(param1);
-				if (widget == null)
-				{
-					break;
-				}
-
-				var child = param0 == -1 ? null : widget.getChild(param0);
-				if (child == null)
-				{
-					return WidgetPackets.createDefaultAction(id, param1, -1, param0);
-				}
-
-				return WidgetPackets.createDefaultAction(id, param1, child.getItemId(), param0);
 		}
 
 		throw new InteractionException("Couldn't parse packet from opcode: " + opcode);

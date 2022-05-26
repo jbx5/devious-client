@@ -125,7 +125,30 @@ public class InteractionManager
 					{
 						try
 						{
-							Packets.fromAutomatedMenu(event).send();
+							if (event.getOpcode() == MenuAction.CC_OP || event.getOpcode() == MenuAction.CC_OP_LOW_PRIORITY)
+							{
+								var widget = Widgets.fromId(event.getParam1());
+								if (widget == null)
+								{
+									return;
+								}
+
+								int param0 = event.getParam0();
+								int param1 = event.getParam1();
+								int id = event.getIdentifier();
+								var child = param0 == -1 ? null : widget.getChild(param0);
+								if (child == null)
+								{
+									client.invokeWidgetAction(id, param1, param0, -1, "");
+									return;
+								}
+
+								client.invokeWidgetAction(id, param1, param0, child.getItemId(), "");
+							}
+							else
+							{
+								Packets.fromAutomatedMenu(event).send();
+							}
 						}
 						catch (InteractionException ex)
 						{

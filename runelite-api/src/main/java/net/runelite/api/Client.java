@@ -2701,4 +2701,6 @@ public interface Client extends OAuthApi, GameEngine
 	void setDraggedWidget(Widget widget);
 
 	void setIf1DraggedWidget(Widget widget);
+
+	void invokeWidgetAction(int identifier, int param1, int param0, int itemId, String target);
 }
