@@ -1,11 +1,11 @@
 package net.runelite.client.plugins.unethicalite.regions;
 
-import dev.unethicalite.api.SceneEntity;
-import dev.unethicalite.api.entities.Entities;
-import dev.unethicalite.api.game.Game;
-import dev.unethicalite.api.scene.Tiles;
-import dev.unethicalite.client.minimal.config.UnethicaliteProperties;
-import dev.unethicalite.managers.RegionManager;
+import net.unethicalite.api.SceneEntity;
+import net.unethicalite.api.entities.Entities;
+import net.unethicalite.api.game.Game;
+import net.unethicalite.api.scene.Tiles;
+import net.unethicalite.client.minimal.config.UnethicaliteProperties;
+import net.unethicalite.managers.RegionManager;
 import net.miginfocom.swing.MigLayout;
 import net.runelite.api.GameState;
 import net.runelite.api.Tile;

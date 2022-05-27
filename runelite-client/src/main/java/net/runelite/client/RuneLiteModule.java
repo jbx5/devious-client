@@ -54,11 +54,11 @@ import javax.annotation.Nullable;
 import javax.inject.Named;
 import javax.inject.Singleton;
 
-import dev.unethicalite.api.movement.pathfinder.GlobalCollisionMap;
-import dev.unethicalite.api.movement.pathfinder.Walker;
-import dev.unethicalite.client.config.UnethicaliteConfig;
-import dev.unethicalite.client.minimal.config.UnethicaliteProperties;
-import dev.unethicalite.client.Static;
+import net.unethicalite.api.movement.pathfinder.GlobalCollisionMap;
+import net.unethicalite.api.movement.pathfinder.Walker;
+import net.unethicalite.client.config.UnethicaliteConfig;
+import net.unethicalite.client.minimal.config.UnethicaliteProperties;
+import net.unethicalite.client.Static;
 import lombok.AllArgsConstructor;
 import net.runelite.api.Client;
 import net.runelite.api.hooks.Callbacks;

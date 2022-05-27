@@ -1,7 +1,7 @@
 package net.runelite.client.plugins.unethicalite;
 
-import dev.unethicalite.api.plugins.SettingsPlugin;
-import dev.unethicalite.client.config.UnethicaliteConfig;
+import net.unethicalite.api.plugins.SettingsPlugin;
+import net.unethicalite.client.config.UnethicaliteConfig;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.client.plugins.unethicalite.regions.RegionHandler;
 import net.runelite.client.plugins.unethicalite.interaction.InteractionOverlay;

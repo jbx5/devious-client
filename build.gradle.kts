@@ -205,6 +205,6 @@ tasks {
 
         classpath = project(":runelite-client").sourceSets.main.get().runtimeClasspath
         enableAssertions = true
-        mainClass.set(if (Unethicalite.isMinimalBuild()) "dev.unethicalite.client.minimal.MinimalClient" else "net.runelite.client.RuneLite")
+        mainClass.set(if (Unethicalite.isMinimalBuild()) "net.unethicalite.client.minimal.MinimalClient" else "net.runelite.client.RuneLite")
     }
 }

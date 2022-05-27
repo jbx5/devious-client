@@ -29,7 +29,7 @@ import java.awt.Polygon;
 import java.awt.Shape;
 import javax.annotation.Nullable;
 
-import dev.unethicalite.api.SceneEntity;
+import net.unethicalite.api.SceneEntity;
 import net.runelite.api.coords.LocalPoint;
 
 /**

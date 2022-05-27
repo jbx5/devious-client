@@ -1,14 +1,14 @@
 package net.runelite.client.plugins.unethicalite.regions;
 
-import dev.unethicalite.api.movement.pathfinder.GlobalCollisionMap;
-import dev.unethicalite.api.movement.pathfinder.Transport;
-import dev.unethicalite.api.movement.pathfinder.TransportLoader;
-import dev.unethicalite.api.movement.pathfinder.Walker;
-import dev.unethicalite.api.scene.Tiles;
-import dev.unethicalite.api.utils.CoordUtils;
-import dev.unethicalite.api.utils.DrawUtils;
-import dev.unethicalite.api.widgets.Widgets;
-import dev.unethicalite.client.config.UnethicaliteConfig;
+import net.unethicalite.api.movement.pathfinder.GlobalCollisionMap;
+import net.unethicalite.api.movement.pathfinder.Transport;
+import net.unethicalite.api.movement.pathfinder.TransportLoader;
+import net.unethicalite.api.movement.pathfinder.Walker;
+import net.unethicalite.api.scene.Tiles;
+import net.unethicalite.api.utils.CoordUtils;
+import net.unethicalite.api.utils.DrawUtils;
+import net.unethicalite.api.widgets.Widgets;
+import net.unethicalite.client.config.UnethicaliteConfig;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.api.MenuAction;
