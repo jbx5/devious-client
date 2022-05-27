@@ -26,6 +26,7 @@ import net.runelite.rs.api.RSProjectile;
 import net.runelite.rs.api.RSRenderable;
 import net.runelite.rs.api.RSRuneLiteMenuEntry;
 import net.runelite.rs.api.RSTile;
+import net.unethicalite.api.events.WorldHopped;
 
 import javax.annotation.Nonnull;
 import java.util.HashMap;
@@ -276,5 +277,15 @@ public abstract class HClientMixin implements RSClient
 	public MenuAutomated getQueuedMenu()
 	{
 		return queuedMenu;
+	}
+
+	@Inject
+	@FieldHook("worldId")
+	public static void onWorldHopped(int idx)
+	{
+		if (client != null)
+		{
+			client.getCallbacks().post(new WorldHopped(client.getWorld()));
+		}
 	}
 }
