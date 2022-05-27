@@ -1,6 +1,6 @@
 package net.runelite.client.plugins.entityinspector;
 
-import dev.unethicalite.client.devtools.EntityRenderer;
+import net.unethicalite.client.devtools.EntityRenderer;
 import net.runelite.client.ui.overlay.Overlay;
 import net.runelite.client.ui.overlay.OverlayLayer;
 import net.runelite.client.ui.overlay.OverlayPosition;

@@ -3,7 +3,7 @@ package net.runelite.rs.api;
 import net.runelite.api.packets.ClientPacket;
 import net.runelite.mapping.Import;
 
-import static dev.unethicalite.api.packets.PacketFields.*;
+import static net.unethicalite.api.packets.PacketFields.*;
 
 public interface RSClientPacket extends ClientPacket
 {

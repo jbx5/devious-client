@@ -70,7 +70,7 @@ import javax.inject.Named;
 import javax.inject.Singleton;
 import javax.swing.JOptionPane;
 
-import dev.unethicalite.client.plugins.PrivateUpdateRepository;
+import net.unethicalite.client.plugins.PrivateUpdateRepository;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;

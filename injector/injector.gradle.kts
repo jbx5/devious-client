@@ -50,6 +50,6 @@ tasks.register<JavaExec>("inject") {
     outputs.upToDateWhen {
         false
     }
-    jvmArgs("-Dinjector.hooks=${if (Unethicalite.isMinimalBuild()) "dev/unethicalite/client/minimal/MinimalHooks" else "net/runelite/client/callback/Hooks"}")
+    jvmArgs("-Dinjector.hooks=${if (Unethicalite.isMinimalBuild()) "net/unethicalite/client/minimal/MinimalHooks" else "net/runelite/client/callback/Hooks"}")
 }
 
