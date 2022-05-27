@@ -12,6 +12,6 @@ public class NativeMouseInput
 
 	public enum Type
 	{
-		MOVEMENT, CLICK, PRESS, RELEASE
+		MOVEMENT, CLICK, PRESS, RELEASE, SCROLL
 	}
 }

@@ -133,7 +133,13 @@ public class NativeInputManager
 		MouseHandler mouseHandler = client.getMouseHandler();
 		switch (type)
 		{
+			case SCROLL:
 			case PRESS:
+				if (type == NativeMouseInput.Type.SCROLL && !config.forwardLeftClick())
+				{
+					return;
+				}
+
 				if (canvasX == -1 && canvasY == -1)
 				{
 					if (client.isFocused())

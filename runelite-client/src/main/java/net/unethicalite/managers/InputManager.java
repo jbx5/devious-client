@@ -6,6 +6,8 @@ import com.github.kwhat.jnativehook.keyboard.NativeKeyEvent;
 import com.github.kwhat.jnativehook.keyboard.NativeKeyListener;
 import com.github.kwhat.jnativehook.mouse.NativeMouseEvent;
 import com.github.kwhat.jnativehook.mouse.NativeMouseInputListener;
+import com.github.kwhat.jnativehook.mouse.NativeMouseWheelEvent;
+import com.github.kwhat.jnativehook.mouse.NativeMouseWheelListener;
 import net.unethicalite.api.events.MouseAutomated;
 import net.unethicalite.api.events.NativeKeyInput;
 import net.unethicalite.api.events.NativeMouseInput;
@@ -27,7 +29,8 @@ import java.util.logging.Logger;
 
 @Singleton
 @Slf4j
-public class InputManager implements MouseListener, NativeMouseInputListener, NativeKeyListener
+public class InputManager implements MouseListener, NativeMouseInputListener, NativeMouseWheelListener,
+		NativeKeyListener
 {
 	private final Client client;
 	private final MinimalPluginManager minimalPluginManager;
@@ -181,6 +184,28 @@ public class InputManager implements MouseListener, NativeMouseInputListener, Na
 	}
 
 	@Override
+	public void nativeMouseDragged(NativeMouseEvent nativeEvent)
+	{
+		client.getCallbacks().post(new NativeMouseInput(
+				nativeEvent.getX(),
+				nativeEvent.getY(),
+				nativeEvent.getButton(),
+				NativeMouseInput.Type.MOVEMENT
+		));
+	}
+
+	@Override
+	public void nativeMouseWheelMoved(NativeMouseWheelEvent nativeEvent)
+	{
+		client.getCallbacks().post(new NativeMouseInput(
+				nativeEvent.getX(),
+				nativeEvent.getY(),
+				nativeEvent.getButton(),
+				NativeMouseInput.Type.SCROLL
+		));
+	}
+
+	@Override
 	public void nativeKeyPressed(NativeKeyEvent nativeEvent)
 	{
 		client.getCallbacks().post(
@@ -210,12 +235,14 @@ public class InputManager implements MouseListener, NativeMouseInputListener, Na
 		{
 			GlobalScreen.addNativeMouseListener(this);
 			GlobalScreen.addNativeMouseMotionListener(this);
+			GlobalScreen.addNativeMouseWheelListener(this);
 			GlobalScreen.addNativeKeyListener(this);
 		}
 		else if (Objects.equals(event.getOldValue(), "MOUSE_FORWARDING"))
 		{
 			GlobalScreen.removeNativeMouseListener(this);
 			GlobalScreen.removeNativeMouseMotionListener(this);
+			GlobalScreen.removeNativeMouseWheelListener(this);
 			GlobalScreen.removeNativeKeyListener(this);
 		}
 	}
