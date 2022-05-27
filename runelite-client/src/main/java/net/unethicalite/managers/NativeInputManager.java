@@ -1,5 +1,12 @@
 package net.unethicalite.managers;
 
+import lombok.extern.slf4j.Slf4j;
+import net.runelite.api.Client;
+import net.runelite.api.MenuAction;
+import net.runelite.client.eventbus.EventBus;
+import net.runelite.client.eventbus.Subscribe;
+import net.runelite.client.ui.ClientUI;
+import net.runelite.client.ui.ContainableFrame;
 import net.unethicalite.api.MouseHandler;
 import net.unethicalite.api.events.MenuAutomated;
 import net.unethicalite.api.events.NativeKeyInput;
@@ -9,13 +16,6 @@ import net.unethicalite.client.config.UnethicaliteConfig;
 import net.unethicalite.client.minimal.ui.MinimalUI;
 import net.unethicalite.managers.interaction.InteractMethod;
 import net.unethicalite.managers.interaction.InteractionManager;
-import lombok.extern.slf4j.Slf4j;
-import net.runelite.api.Client;
-import net.runelite.api.MenuAction;
-import net.runelite.client.eventbus.EventBus;
-import net.runelite.client.eventbus.Subscribe;
-import net.runelite.client.ui.ClientUI;
-import net.runelite.client.ui.ContainableFrame;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -83,35 +83,37 @@ public class NativeInputManager
 			return;
 		}
 
-		List<GraphicsDevice> availableMonitors = getAvailableMonitors();
+		List<GraphicsDevice> availableMonitors = getAvailableMonitors(monitors);
 		if (availableMonitors.isEmpty())
 		{
 			return;
 		}
 
 		MenuAutomated queuedMenu = client.getQueuedMenu();
-		if (!availableMonitors.contains(currentMonitor))
-		{
-			forwardToCanvas(event.getType(), -1, -1, event.getButton(), queuedMenu);
-
-			if (event.getType() != NativeMouseInput.Type.MOVEMENT && client.isFocused())
-			{
-				log.debug("Setting client unfocused");
-				mouseHandler.sendFocusLost();
-			}
-
-			return;
-		}
-
 		Rectangle totalScreen = getJoinedScreen(getAdjacentMonitors(currentMonitor, availableMonitors));
 		eventX -= totalScreen.x;
 
 		int canvasX = (int) (eventX * ((double) client.getCanvasWidth() / totalScreen.width));
 		int canvasY = (int) (eventY * ((double) client.getCanvasHeight() / currentMonitor.getDisplayMode().getHeight()));
 
+		if (!availableMonitors.contains(currentMonitor))
+		{
+			canvasX = -1;
+			canvasY = -1;
+		}
+
 		if (event.getType() == NativeMouseInput.Type.PRESS)
 		{
-			log.debug("Total screen: {}, Click: {} {}, Canvas: {} {}", totalScreen, eventX, eventY, canvasX, canvasY);
+			log.debug(
+					"Mouse forwarded - Screen area: {} | Click: {} {} ({} {}) | Canvas: {} {}",
+					totalScreen,
+					eventX,
+					event.getX(),
+					eventY,
+					event.getY(),
+					canvasX,
+					canvasY
+			);
 		}
 
 		if (event.getType() == NativeMouseInput.Type.PRESS
@@ -132,6 +134,13 @@ public class NativeInputManager
 		switch (type)
 		{
 			case PRESS:
+				if (canvasX == -1 && canvasY == -1 && client.isFocused())
+				{
+					log.debug("Setting client unfocused");
+					mouseHandler.sendFocusLost();
+					return;
+				}
+
 				int button = config.forwardLeftClick() ? 1 : eventButton;
 
 				if (queuedMenu == null)
@@ -140,26 +149,34 @@ public class NativeInputManager
 					{
 						mouseHandler.sendClick(canvasX, canvasY, button);
 					}
-
-					return;
 				}
-
-				GameThread.invoke(() ->
+				else
 				{
-					if (button == 1)
+					GameThread.invoke(() ->
 					{
-						client.setPendingAutomation(queuedMenu);
-						interactionManager.setHoveredEntity(queuedMenu.getEntity());
-						client.setQueuedMenu(null);
-					}
+						if (button == 1)
+						{
+							client.setPendingAutomation(queuedMenu);
+							interactionManager.setHoveredEntity(queuedMenu.getEntity());
+							client.setQueuedMenu(null);
+						}
 
-					mouseHandler.sendClick(canvasX, canvasY, button);
-				});
+						mouseHandler.sendClick(canvasX, canvasY, button);
+					});
+				}
 
 				break;
 
 			case RELEASE:
-				mouseHandler.sendRelease();
+				if (canvasX == -1 && canvasY == -1 && client.isFocused())
+				{
+					mouseHandler.sendFocusLost();
+				}
+				else
+				{
+					mouseHandler.sendRelease();
+				}
+
 				break;
 
 			case MOVEMENT:
@@ -261,9 +278,8 @@ public class NativeInputManager
 		return screen;
 	}
 
-	private List<GraphicsDevice> getAvailableMonitors()
+	private List<GraphicsDevice> getAvailableMonitors(GraphicsDevice[] devices)
 	{
-		GraphicsDevice[] devices = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
 		if (!config.selectedMonitorsOnly())
 		{
 			return Arrays.asList(devices);
