@@ -134,10 +134,14 @@ public class NativeInputManager
 		switch (type)
 		{
 			case PRESS:
-				if (canvasX == -1 && canvasY == -1 && client.isFocused())
+				if (canvasX == -1 && canvasY == -1)
 				{
-					log.debug("Setting client unfocused");
-					mouseHandler.sendFocusLost();
+					if (client.isFocused())
+					{
+						log.debug("Setting client unfocused");
+						mouseHandler.sendFocusLost();
+					}
+
 					return;
 				}
 
@@ -168,9 +172,12 @@ public class NativeInputManager
 				break;
 
 			case RELEASE:
-				if (canvasX == -1 && canvasY == -1 && client.isFocused())
+				if (canvasX == -1 && canvasY == -1)
 				{
-					mouseHandler.sendFocusLost();
+					if (client.isFocused())
+					{
+						mouseHandler.sendFocusLost();
+					}
 				}
 				else
 				{
