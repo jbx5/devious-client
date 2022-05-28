@@ -1,6 +1,7 @@
 package net.runelite.client.plugins.entityinspector;
 
 import com.google.inject.Provides;
+import net.runelite.api.packets.PacketBufferNode;
 import net.unethicalite.api.events.PacketSent;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.client.config.ConfigManager;
@@ -10,6 +11,9 @@ import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.ui.overlay.OverlayManager;
 
 import javax.inject.Inject;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @PluginDescriptor(
 		name = "Entity Inspector",
@@ -52,6 +56,22 @@ public class EntityInspectorPlugin extends Plugin
 		if (!config.packets())
 		{
 			return;
+		}
+
+		if (!config.opcodes().isBlank())
+		{
+			List<Integer> opcodes = Arrays.stream(config.opcodes().split(","))
+					.map(Integer::parseInt)
+					.collect(Collectors.toList());
+			if (!opcodes.isEmpty())
+			{
+				PacketBufferNode packetBufferNode = e.getPacketBufferNode();
+				int opcode = packetBufferNode.getClientPacket() != null ? packetBufferNode.getClientPacket().getId() : -1;
+				if (!opcodes.contains(opcode))
+				{
+					return;
+				}
+			}
 		}
 
 		log.info(e.hexDump());

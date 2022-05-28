@@ -273,15 +273,36 @@ public interface EntityInspectorConfig extends Config
 		return false;
 	}
 
+	@ConfigSection(
+			name = "Packets",
+			keyName = "packets",
+			description = "",
+			position = 10,
+			closedByDefault = true
+	)
+	String packets = "Packets";
+
 	@ConfigItem(
 			keyName = "packets",
-			name = "Packets",
+			name = "Log Packets",
 			description = "Packets",
 			position = 202,
-			section = others
+			section = packets
 	)
 	default boolean packets()
 	{
 		return false;
+	}
+
+	@ConfigItem(
+			keyName = "opcodes",
+			name = "Opcodes",
+			description = "Opcodes to log",
+			position = 203,
+			section = packets
+	)
+	default String opcodes()
+	{
+		return "";
 	}
 }
