@@ -1,9 +1,10 @@
 package net.unethicalite.api;
 
-import net.unethicalite.api.commons.Predicates;
-import net.unethicalite.api.events.MenuAutomated;
+import net.runelite.api.Item;
 import net.runelite.api.MenuAction;
 import net.runelite.api.Point;
+import net.unethicalite.api.commons.Predicates;
+import net.unethicalite.api.events.MenuAutomated;
 
 import java.util.Arrays;
 import java.util.function.Predicate;
@@ -93,27 +94,28 @@ public interface Interactable
 
 	default MenuAutomated getMenu(int identifier, int opcode, int param0, int param1)
 	{
+		MenuAutomated.MenuAutomatedBuilder builder = MenuAutomated.builder()
+				.identifier(identifier)
+				.opcode(MenuAction.of(opcode))
+				.param0(param0)
+				.param1(param1);
+
 		if (this instanceof SceneEntity)
 		{
-			return MenuAutomated.builder()
-					.identifier(identifier)
-					.opcode(MenuAction.of(opcode))
-					.param0(param0)
-					.param1(param1)
-					.entity((SceneEntity) this)
-					.build();
+			builder.entity((SceneEntity) this);
 		}
 		else
 		{
 			Point clickPoint = getClickPoint();
-			return MenuAutomated.builder()
-					.identifier(identifier)
-					.opcode(MenuAction.of(opcode))
-					.param0(param0)
-					.param1(param1)
-					.clickX(clickPoint.getX())
-					.clickY(clickPoint.getY())
-					.build();
+			builder.clickX(clickPoint.getX())
+					.clickY(clickPoint.getY());
+
+			if (this instanceof Item)
+			{
+				return builder.build().setItemId(((Item) this).getId());
+			}
 		}
+
+		return builder.build();
 	}
 }

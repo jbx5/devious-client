@@ -1688,8 +1688,8 @@ public abstract class RSClientMixin implements RSClient
 		return null;
 	}
 
-	@Copy("menuAction")
-	@Replace("menuAction")
+//	@Copy("menuAction")
+//	@Replace("menuAction")
 	static void copy$menuAction(int param0, int param1, int opcode, int id, String option, String target, int canvasX, int canvasY)
 	{
 		RSRuneLiteMenuEntry menuEntry = null;

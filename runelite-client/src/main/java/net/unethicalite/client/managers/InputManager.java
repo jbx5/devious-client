@@ -1,4 +1,4 @@
-package net.unethicalite.managers;
+package net.unethicalite.client.managers;
 
 import com.github.kwhat.jnativehook.GlobalScreen;
 import com.github.kwhat.jnativehook.NativeHookException;

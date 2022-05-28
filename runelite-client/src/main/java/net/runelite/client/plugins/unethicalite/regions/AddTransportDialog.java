@@ -5,7 +5,7 @@ import net.unethicalite.api.entities.Entities;
 import net.unethicalite.api.game.Game;
 import net.unethicalite.api.scene.Tiles;
 import net.unethicalite.client.minimal.config.UnethicaliteProperties;
-import net.unethicalite.managers.RegionManager;
+import net.unethicalite.client.managers.RegionManager;
 import net.miginfocom.swing.MigLayout;
 import net.runelite.api.GameState;
 import net.runelite.api.Tile;

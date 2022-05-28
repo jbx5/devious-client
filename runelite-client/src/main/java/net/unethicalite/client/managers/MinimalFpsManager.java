@@ -1,4 +1,4 @@
-package net.unethicalite.managers;
+package net.unethicalite.client.managers;
 
 import javax.inject.Singleton;
 

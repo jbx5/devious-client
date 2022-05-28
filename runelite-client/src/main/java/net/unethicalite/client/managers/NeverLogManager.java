@@ -1,4 +1,4 @@
-package net.unethicalite.managers;
+package net.unethicalite.client.managers;
 
 import net.unethicalite.client.config.UnethicaliteConfig;
 import net.runelite.api.Client;

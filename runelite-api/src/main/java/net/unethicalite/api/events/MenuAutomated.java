@@ -88,4 +88,20 @@ public class MenuAutomated
 				false
 		);
 	}
+
+	public MenuAutomated setItemId(int itemId)
+	{
+		setTarget("ItemId=" + itemId);
+		return this;
+	}
+
+	public int getItemId()
+	{
+		if (target.matches("ItemId=\\D+"))
+		{
+			return Integer.parseInt(target.replace("ItemId=", ""));
+		}
+
+		return -1;
+	}
 }

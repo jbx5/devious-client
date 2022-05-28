@@ -1,15 +1,5 @@
-package net.unethicalite.managers.interaction;
+package net.unethicalite.client.managers.interaction;
 
-import net.unethicalite.api.MouseHandler;
-import net.unethicalite.api.SceneEntity;
-import net.unethicalite.api.commons.Rand;
-import net.unethicalite.api.commons.Time;
-import net.unethicalite.api.events.MenuAutomated;
-import net.unethicalite.api.game.GameThread;
-import net.unethicalite.api.input.naturalmouse.NaturalMouse;
-import net.unethicalite.api.packets.Packets;
-import net.unethicalite.api.widgets.Widgets;
-import net.unethicalite.client.config.UnethicaliteConfig;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.api.DialogOption;
@@ -22,10 +12,22 @@ import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
+import net.unethicalite.api.MouseHandler;
+import net.unethicalite.api.SceneEntity;
+import net.unethicalite.api.commons.Rand;
+import net.unethicalite.api.commons.Time;
+import net.unethicalite.api.events.MenuAutomated;
+import net.unethicalite.api.game.GameThread;
+import net.unethicalite.api.input.naturalmouse.NaturalMouse;
+import net.unethicalite.api.packets.Packets;
+import net.unethicalite.api.widgets.Widgets;
+import net.unethicalite.client.config.UnethicaliteConfig;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.awt.*;
+
+import static net.unethicalite.client.managers.interaction.InteractMethod.MOUSE_EVENTS;
 
 @Singleton
 @Slf4j
@@ -125,17 +127,25 @@ public class InteractionManager
 					{
 						try
 						{
+
+
 							if (event.getOpcode() == MenuAction.CC_OP || event.getOpcode() == MenuAction.CC_OP_LOW_PRIORITY)
 							{
+								int param0 = event.getParam0();
+								int param1 = event.getParam1();
+								int id = event.getIdentifier();
+								if (event.getItemId() != -1)
+								{
+									client.invokeWidgetAction(id, param1, param0, event.getItemId(), "");
+									return;
+								}
+
 								var widget = Widgets.fromId(event.getParam1());
 								if (widget == null)
 								{
 									return;
 								}
 
-								int param0 = event.getParam0();
-								int param1 = event.getParam1();
-								int id = event.getIdentifier();
 								var child = param0 == -1 ? null : widget.getChild(param0);
 								if (child == null)
 								{
@@ -167,7 +177,7 @@ public class InteractionManager
 		}
 		finally
 		{
-			if (config.interactMethod() == InteractMethod.MOUSE_EVENTS)
+			if (config.interactMethod() == MOUSE_EVENTS)
 			{
 				Time.sleep(10, 20);
 				mouseHandler.sendRelease();

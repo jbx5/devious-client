@@ -4,7 +4,7 @@ import net.unethicalite.api.events.MenuAutomated;
 import net.unethicalite.api.game.GameThread;
 import net.unethicalite.api.widgets.Widgets;
 import net.unethicalite.client.Static;
-import net.unethicalite.managers.interaction.InteractionException;
+import net.unethicalite.client.managers.interaction.InteractionException;
 import net.runelite.api.packets.ClientPacket;
 import net.runelite.api.packets.PacketBufferNode;
 import net.runelite.api.packets.PacketWriter;

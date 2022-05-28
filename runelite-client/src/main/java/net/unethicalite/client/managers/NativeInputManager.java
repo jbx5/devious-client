@@ -1,4 +1,4 @@
-package net.unethicalite.managers;
+package net.unethicalite.client.managers;
 
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
@@ -14,8 +14,8 @@ import net.unethicalite.api.events.NativeMouseInput;
 import net.unethicalite.api.game.GameThread;
 import net.unethicalite.client.config.UnethicaliteConfig;
 import net.unethicalite.client.minimal.ui.MinimalUI;
-import net.unethicalite.managers.interaction.InteractMethod;
-import net.unethicalite.managers.interaction.InteractionManager;
+import net.unethicalite.client.managers.interaction.InteractMethod;
+import net.unethicalite.client.managers.interaction.InteractionManager;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;

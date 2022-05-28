@@ -2,7 +2,7 @@ package net.unethicalite.client.minimal.ui;
 
 import net.unethicalite.client.minimal.MinimalModule;
 import net.unethicalite.client.minimal.plugins.PluginEntry;
-import net.unethicalite.managers.MinimalPluginManager;
+import net.unethicalite.client.managers.MinimalPluginManager;
 import net.runelite.api.Client;
 import net.runelite.client.util.ImageUtil;
 

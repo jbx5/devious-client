@@ -3,7 +3,7 @@ package net.runelite.client.plugins.unethicalite.regions;
 import net.unethicalite.api.events.PlaneChanged;
 import net.unethicalite.api.game.Game;
 import net.unethicalite.api.movement.pathfinder.GlobalCollisionMap;
-import net.unethicalite.managers.RegionManager;
+import net.unethicalite.client.managers.RegionManager;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;

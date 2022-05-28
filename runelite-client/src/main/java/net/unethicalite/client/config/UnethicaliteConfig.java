@@ -1,7 +1,7 @@
 package net.unethicalite.client.config;
 
-import net.unethicalite.managers.interaction.InteractMethod;
-import net.unethicalite.managers.interaction.MouseBehavior;
+import net.unethicalite.client.managers.interaction.InteractMethod;
+import net.unethicalite.client.managers.interaction.MouseBehavior;
 import net.runelite.client.config.Button;
 import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;

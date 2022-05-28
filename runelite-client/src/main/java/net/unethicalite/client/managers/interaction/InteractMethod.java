@@ -1,4 +1,4 @@
-package net.unethicalite.managers.interaction;
+package net.unethicalite.client.managers.interaction;
 
 public enum InteractMethod
 {

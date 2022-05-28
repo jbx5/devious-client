@@ -1,4 +1,4 @@
-package net.unethicalite.managers;
+package net.unethicalite.client.managers;
 
 import net.unethicalite.api.plugins.LoopedPlugin;
 import net.unethicalite.api.plugins.Script;

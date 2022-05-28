@@ -1,4 +1,4 @@
-package net.unethicalite.managers;
+package net.unethicalite.client.managers;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;

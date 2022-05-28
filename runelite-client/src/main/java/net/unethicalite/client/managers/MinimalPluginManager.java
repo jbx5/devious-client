@@ -1,4 +1,4 @@
-package net.unethicalite.managers;
+package net.unethicalite.client.managers;
 
 import com.google.inject.Key;
 import net.unethicalite.api.plugins.Plugins;
