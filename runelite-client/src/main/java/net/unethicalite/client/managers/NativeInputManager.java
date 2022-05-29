@@ -68,7 +68,7 @@ public class NativeInputManager
 			return;
 		}
 
-		if (clientWindow.getBounds().contains(eventX, eventY))
+		if (clientWindow.getBounds().contains(eventX, eventY) && clientWindow.isFocused())
 		{
 			return;
 		}
