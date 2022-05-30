@@ -144,7 +144,8 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 			}
 		}
 
-		if (itemId != -1 && opcode == MenuAction.CC_OP.getId())
+
+		if (itemId != -1 && (opcode == MenuAction.CC_OP.getId() || opcode == MenuAction.CC_OP_LOW_PRIORITY.getId()))
 		{
 			client.invokeWidgetAction(event.getId(), event.getParam1(), event.getParam0(), itemId,
 					event.getMenuTarget());
