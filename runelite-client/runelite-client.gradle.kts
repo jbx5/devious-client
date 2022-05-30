@@ -30,8 +30,8 @@ import java.util.Date
 plugins {
     id("com.github.johnrengelman.shadow") version "7.1.2"
     java
-    kotlin("jvm") version "1.5.31"
-    id("org.jetbrains.kotlin.plugin.lombok") version "1.5.31"
+    kotlin("jvm") version "1.6.21"
+    id("org.jetbrains.kotlin.plugin.lombok") version "1.6.21"
 }
 
 repositories {
@@ -174,7 +174,7 @@ tasks {
 
     jar {
         manifest {
-            attributes(mutableMapOf("Main-Class" to if (Unethicalite.isMinimalBuild()) "net.unethicalite.client.minimal.MinimalClient" else "net.runelite.client.RuneLite"))
+            attributes(mutableMapOf("Main-Class" to Unethicalite.getMainClass()))
         }
     }
 
@@ -201,6 +201,6 @@ tasks {
 
         classpath = project.sourceSets.main.get().runtimeClasspath
         enableAssertions = true
-        mainClass.set(if (Unethicalite.isMinimalBuild()) "net.unethicalite.client.minimal.MinimalClient" else "net.runelite.client.RuneLite")
+        mainClass.set(Unethicalite.getMainClass())
     }
 }

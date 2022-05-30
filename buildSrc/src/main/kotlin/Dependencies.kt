@@ -39,4 +39,8 @@ object Unethicalite {
     fun isMinimalBuild(): Boolean {
         return System.getenv("unethicalite.build")?.equals("minimal") ?: false
     }
+
+    fun getMainClass(): String {
+        return if (isMinimalBuild()) "net.unethicalite.client.minimal.MinimalClient" else "net.runelite.client.RuneLite"
+    }
 }
