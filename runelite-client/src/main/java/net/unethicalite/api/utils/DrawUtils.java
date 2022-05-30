@@ -1,6 +1,5 @@
 package net.unethicalite.api.utils;
 
-import net.unethicalite.api.game.Game;
 import net.unethicalite.api.movement.pathfinder.CollisionMap;
 import net.unethicalite.api.movement.pathfinder.Transport;
 import net.unethicalite.api.movement.pathfinder.TransportLoader;
@@ -14,6 +13,7 @@ import net.runelite.api.RenderOverview;
 import net.runelite.api.Tile;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.client.ui.overlay.OverlayUtil;
+import net.unethicalite.client.Static;
 
 import java.awt.*;
 import java.util.List;
@@ -35,7 +35,7 @@ public class DrawUtils
 
 	public static void drawOnMap(Graphics2D graphics, WorldPoint point, Color color)
 	{
-		RenderOverview ro = Game.getClient().getRenderOverview();
+		RenderOverview ro = Static.getClient().getRenderOverview();
 
 		float pixelsPerTile = ro.getWorldMapZoom();
 		int tileCenterPixel = (int) Math.ceil(pixelsPerTile / 2);
@@ -57,7 +57,7 @@ public class DrawUtils
 
 	public static void drawTransports(Graphics2D graphics2D)
 	{
-		Client client = Game.getClient();
+		Client client = Static.getClient();
 		List<Transport> transports = TransportLoader.buildTransports();
 
 		for (Transport transport : transports)
@@ -90,8 +90,8 @@ public class DrawUtils
 		{
 			List<WorldPoint> path = localRegion ? Walker.LOCAL_PATH_CACHE.get(destination)
 					: Walker.PATH_CACHE.get(destination);
-			path.forEach(tile -> tile.outline(Game.getClient(), graphics2D, Color.RED, null));
-			destination.outline(Game.getClient(), graphics2D, Color.GREEN, "Destination");
+			path.forEach(tile -> tile.outline(Static.getClient(), graphics2D, Color.RED, null));
+			destination.outline(Static.getClient(), graphics2D, Color.GREEN, "Destination");
 		}
 		catch (Exception e)
 		{
@@ -101,7 +101,7 @@ public class DrawUtils
 
 	public static void drawCollisions(Graphics2D graphics2D, CollisionMap collisionMap)
 	{
-		Client client = Game.getClient();
+		Client client = Static.getClient();
 		List<Tile> tiles = Tiles.getAll();
 
 		if (tiles.isEmpty())
@@ -183,6 +183,6 @@ public class DrawUtils
 
 	public static void drawCollisions(Graphics2D graphics2D)
 	{
-		drawCollisions(graphics2D, Game.getGlobalCollisionMap());
+		drawCollisions(graphics2D, Static.getGlobalCollisionMap());
 	}
 }

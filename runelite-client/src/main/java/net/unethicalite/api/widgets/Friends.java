@@ -1,7 +1,7 @@
 package net.unethicalite.api.widgets;
 
-import net.unethicalite.api.game.Game;
 import net.runelite.api.Friend;
+import net.unethicalite.client.Static;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,7 +12,7 @@ public class Friends
 {
 	public static List<Friend> getAll(Predicate<Friend> filter)
 	{
-		return Arrays.stream(Game.getClient().getFriendContainer().getMembers())
+		return Arrays.stream(Static.getClient().getFriendContainer().getMembers())
 				.filter(filter)
 				.collect(Collectors.toList());
 	}
@@ -100,7 +100,7 @@ public class Friends
 
 	public static boolean isAdded(String name)
 	{
-		return Game.getClient().isFriended(name, false);
+		return Static.getClient().isFriended(name, false);
 	}
 
 	public static boolean isOnline(Friend friend)
@@ -110,16 +110,16 @@ public class Friends
 
 	public static boolean isOnline(String name)
 	{
-		return Game.getClient().isFriended(name, true);
+		return Static.getClient().isFriended(name, true);
 	}
 
 	public static void add(String name)
 	{
-		Game.getClient().addFriend(name);
+		Static.getClient().addFriend(name);
 	}
 
 	public static void remove(String name)
 	{
-		Game.getClient().removeFriend(name);
+		Static.getClient().removeFriend(name);
 	}
 }

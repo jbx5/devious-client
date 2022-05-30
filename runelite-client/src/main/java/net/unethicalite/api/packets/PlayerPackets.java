@@ -2,6 +2,7 @@ package net.unethicalite.api.packets;
 
 import net.unethicalite.api.game.Game;
 import net.runelite.api.packets.PacketBufferNode;
+import net.unethicalite.client.Static;
 
 public class PlayerPackets
 {
@@ -62,9 +63,9 @@ public class PlayerPackets
 
 	public static PacketBufferNode createWidgetOnPlayer(int playerIndex, int sourceItemId, int sourceSlot, int sourceWidgetId, boolean ctrlDown)
 	{
-		var client = Game.getClient();
+		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
-		var packetBufferNode = Game.getClient().preparePacket(clientPacket.OPPLAYERT(), client.getPacketWriter().getIsaacCipher());
+		var packetBufferNode = Static.getClient().preparePacket(clientPacket.OPPLAYERT(), client.getPacketWriter().getIsaacCipher());
 		packetBufferNode.getPacketBuffer().writeInt(sourceWidgetId);
 		packetBufferNode.getPacketBuffer().writeByteSub(ctrlDown ? 1 : 0);
 		packetBufferNode.getPacketBuffer().writeShortLE(sourceItemId);
@@ -80,9 +81,9 @@ public class PlayerPackets
 
 	public static PacketBufferNode createFirstAction(int playerIndex, boolean ctrlDown)
 	{
-		var client = Game.getClient();
+		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
-		var packetBufferNode = Game.getClient().preparePacket(clientPacket.OPPLAYER1(), client.getPacketWriter().getIsaacCipher());
+		var packetBufferNode = Static.getClient().preparePacket(clientPacket.OPPLAYER1(), client.getPacketWriter().getIsaacCipher());
 		packetBufferNode.getPacketBuffer().writeShort(playerIndex);
 		packetBufferNode.getPacketBuffer().writeByteAdd(ctrlDown ? 1 : 0);
 		return packetBufferNode;
@@ -90,9 +91,9 @@ public class PlayerPackets
 
 	public static PacketBufferNode createSecondAction(int playerIndex, boolean ctrlDown)
 	{
-		var client = Game.getClient();
+		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
-		var packetBufferNode = Game.getClient().preparePacket(clientPacket.OPPLAYER2(), client.getPacketWriter().getIsaacCipher());
+		var packetBufferNode = Static.getClient().preparePacket(clientPacket.OPPLAYER2(), client.getPacketWriter().getIsaacCipher());
 		packetBufferNode.getPacketBuffer().writeShortLE(playerIndex);
 		packetBufferNode.getPacketBuffer().writeByteNeg(ctrlDown ? 1 : 0);
 		return packetBufferNode;
@@ -100,9 +101,9 @@ public class PlayerPackets
 
 	public static PacketBufferNode createThirdAction(int playerIndex, boolean ctrlDown)
 	{
-		var client = Game.getClient();
+		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
-		var packetBufferNode = Game.getClient().preparePacket(clientPacket.OPPLAYER3(), client.getPacketWriter().getIsaacCipher());
+		var packetBufferNode = Static.getClient().preparePacket(clientPacket.OPPLAYER3(), client.getPacketWriter().getIsaacCipher());
 		packetBufferNode.getPacketBuffer().writeByteSub(ctrlDown ? 1 : 0);
 		packetBufferNode.getPacketBuffer().writeShort(playerIndex);
 		return packetBufferNode;
@@ -110,9 +111,9 @@ public class PlayerPackets
 
 	public static PacketBufferNode createFourthAction(int playerIndex, boolean ctrlDown)
 	{
-		var client = Game.getClient();
+		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
-		var packetBufferNode = Game.getClient().preparePacket(clientPacket.OPPLAYER4(), client.getPacketWriter().getIsaacCipher());
+		var packetBufferNode = Static.getClient().preparePacket(clientPacket.OPPLAYER4(), client.getPacketWriter().getIsaacCipher());
 		packetBufferNode.getPacketBuffer().writeByte(ctrlDown ? 1 : 0);
 		packetBufferNode.getPacketBuffer().writeShortAddLE(playerIndex);
 		return packetBufferNode;
@@ -120,9 +121,9 @@ public class PlayerPackets
 
 	public static PacketBufferNode createFifthAction(int playerIndex, boolean ctrlDown)
 	{
-		var client = Game.getClient();
+		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
-		var packetBufferNode = Game.getClient().preparePacket(clientPacket.OPPLAYER5(), client.getPacketWriter().getIsaacCipher());
+		var packetBufferNode = Static.getClient().preparePacket(clientPacket.OPPLAYER5(), client.getPacketWriter().getIsaacCipher());
 		packetBufferNode.getPacketBuffer().writeShort(playerIndex);
 		packetBufferNode.getPacketBuffer().writeByteSub(ctrlDown ? 1 : 0);
 		return packetBufferNode;
@@ -130,9 +131,9 @@ public class PlayerPackets
 
 	public static PacketBufferNode createSixthAction(int playerIndex, boolean ctrlDown)
 	{
-		var client = Game.getClient();
+		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
-		var packetBufferNode = Game.getClient().preparePacket(clientPacket.OPPLAYER6(), client.getPacketWriter().getIsaacCipher());
+		var packetBufferNode = Static.getClient().preparePacket(clientPacket.OPPLAYER6(), client.getPacketWriter().getIsaacCipher());
 		packetBufferNode.getPacketBuffer().writeShortAddLE(playerIndex);
 		packetBufferNode.getPacketBuffer().writeByteAdd(ctrlDown ? 1 : 0);
 		return packetBufferNode;
@@ -140,9 +141,9 @@ public class PlayerPackets
 
 	public static PacketBufferNode createSeventhAction(int playerIndex, boolean ctrlDown)
 	{
-		var client = Game.getClient();
+		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
-		var packetBufferNode = Game.getClient().preparePacket(clientPacket.OPPLAYER7(), client.getPacketWriter().getIsaacCipher());
+		var packetBufferNode = Static.getClient().preparePacket(clientPacket.OPPLAYER7(), client.getPacketWriter().getIsaacCipher());
 		packetBufferNode.getPacketBuffer().writeByteSub(ctrlDown ? 1 : 0);
 		packetBufferNode.getPacketBuffer().writeShortAddLE(playerIndex);
 		return packetBufferNode;
@@ -150,9 +151,9 @@ public class PlayerPackets
 
 	public static PacketBufferNode createEighthAction(int playerIndex, boolean ctrlDown)
 	{
-		var client = Game.getClient();
+		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
-		var packetBufferNode = Game.getClient().preparePacket(clientPacket.OPPLAYER8(), client.getPacketWriter().getIsaacCipher());
+		var packetBufferNode = Static.getClient().preparePacket(clientPacket.OPPLAYER8(), client.getPacketWriter().getIsaacCipher());
 		packetBufferNode.getPacketBuffer().writeByteNeg(ctrlDown ? 1 : 0);
 		packetBufferNode.getPacketBuffer().writeShortAddLE(playerIndex);
 		return packetBufferNode;

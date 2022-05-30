@@ -2,6 +2,7 @@ package net.unethicalite.api.commons;
 
 import net.unethicalite.api.game.Game;
 import net.runelite.api.GameState;
+import net.unethicalite.client.Static;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,7 +16,7 @@ public class Time
 
 	public static boolean sleep(long ms)
 	{
-		if (Game.getClient().isClientThread())
+		if (Static.getClient().isClientThread())
 		{
 			logger.debug("Tried to sleep on client thread!");
 			return false;
@@ -41,7 +42,7 @@ public class Time
 
 	public static boolean sleepUntil(BooleanSupplier supplier, int pollingRate, int timeOut)
 	{
-		if (Game.getClient().isClientThread())
+		if (Static.getClient().isClientThread())
 		{
 			logger.debug("Tried to sleepUntil on client thread!");
 			return false;
@@ -71,7 +72,7 @@ public class Time
 
 	public static boolean sleepTicks(int ticks)
 	{
-		if (Game.getClient().isClientThread())
+		if (Static.getClient().isClientThread())
 		{
 			logger.debug("Tried to sleep on client thread!");
 			return false;
@@ -84,9 +85,9 @@ public class Time
 
 		for (int i = 0; i < ticks; i++)
 		{
-			long start = Game.getClient().getTickCount();
+			long start = Static.getClient().getTickCount();
 
-			while (Game.getClient().getTickCount() == start)
+			while (Static.getClient().getTickCount() == start)
 			{
 				try
 				{
@@ -110,7 +111,7 @@ public class Time
 
 	public static boolean sleepTicksUntil(BooleanSupplier supplier, int ticks)
 	{
-		if (Game.getClient().isClientThread())
+		if (Static.getClient().isClientThread())
 		{
 			logger.debug("Tried to sleep on client thread!");
 			return false;

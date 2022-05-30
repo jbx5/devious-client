@@ -7,6 +7,7 @@ import net.runelite.api.TileObject;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.packets.PacketBufferNode;
+import net.unethicalite.client.Static;
 
 public class ObjectPackets
 {
@@ -14,7 +15,7 @@ public class ObjectPackets
 	{
 		Point p = object.menuPoint();
 		LocalPoint lp = new LocalPoint(p.getX(), p.getY());
-		WorldPoint wp = WorldPoint.fromScene(Game.getClient(), lp.getX(), lp.getY(), object.getPlane());
+		WorldPoint wp = WorldPoint.fromScene(Static.getClient(), lp.getX(), lp.getY(), object.getPlane());
 		queueTileObjectAction1Packet(object.getId(), wp.getX(), wp.getY(), ctrlDown);
 	}
 
@@ -22,7 +23,7 @@ public class ObjectPackets
 	{
 		Point p = object.menuPoint();
 		LocalPoint lp = new LocalPoint(p.getX(), p.getY());
-		WorldPoint wp = WorldPoint.fromScene(Game.getClient(), lp.getX(), lp.getY(), object.getPlane());
+		WorldPoint wp = WorldPoint.fromScene(Static.getClient(), lp.getX(), lp.getY(), object.getPlane());
 		queueTileObjectAction2Packet(object.getId(), wp.getX(), wp.getY(), ctrlDown);
 	}
 
@@ -30,7 +31,7 @@ public class ObjectPackets
 	{
 		Point p = object.menuPoint();
 		LocalPoint lp = new LocalPoint(p.getX(), p.getY());
-		WorldPoint wp = WorldPoint.fromScene(Game.getClient(), lp.getX(), lp.getY(), object.getPlane());
+		WorldPoint wp = WorldPoint.fromScene(Static.getClient(), lp.getX(), lp.getY(), object.getPlane());
 		queueTileObjectAction3Packet(object.getId(), wp.getX(), wp.getY(), ctrlDown);
 	}
 
@@ -38,7 +39,7 @@ public class ObjectPackets
 	{
 		Point p = object.menuPoint();
 		LocalPoint lp = new LocalPoint(p.getX(), p.getY());
-		WorldPoint wp = WorldPoint.fromScene(Game.getClient(), lp.getX(), lp.getY(), object.getPlane());
+		WorldPoint wp = WorldPoint.fromScene(Static.getClient(), lp.getX(), lp.getY(), object.getPlane());
 		queueTileObjectAction4Packet(object.getId(), wp.getX(), wp.getY(), ctrlDown);
 	}
 
@@ -46,7 +47,7 @@ public class ObjectPackets
 	{
 		Point p = object.menuPoint();
 		LocalPoint lp = new LocalPoint(p.getX(), p.getY());
-		WorldPoint wp = WorldPoint.fromScene(Game.getClient(), lp.getX(), lp.getY(), object.getPlane());
+		WorldPoint wp = WorldPoint.fromScene(Static.getClient(), lp.getX(), lp.getY(), object.getPlane());
 		queueTileObjectAction5Packet(object.getId(), wp.getX(), wp.getY(), ctrlDown);
 	}
 
@@ -77,7 +78,7 @@ public class ObjectPackets
 	{
 		Point p = object.menuPoint();
 		LocalPoint lp = new LocalPoint(p.getX(), p.getY());
-		WorldPoint wp = WorldPoint.fromScene(Game.getClient(), lp.getX(), lp.getY(), object.getPlane());
+		WorldPoint wp = WorldPoint.fromScene(Static.getClient(), lp.getX(), lp.getY(), object.getPlane());
 		queueItemUseOnTileObjectPacket(object.getId(), wp.getX(), wp.getY(), item.getSlot(), item.getId(), item.getWidgetId(), false);
 	}
 
@@ -123,9 +124,9 @@ public class ObjectPackets
 
 	public static PacketBufferNode createWidgetOnObjectPacket(int objectId, int worldPointX, int worldPointY, int sourceSlot, int sourceItemId, int sourceWidgetId, boolean ctrlDown)
 	{
-		var client = Game.getClient();
+		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
-		var packetBufferNode = Game.getClient().preparePacket(clientPacket.OPLOCT(), client.getPacketWriter().getIsaacCipher());
+		var packetBufferNode = Static.getClient().preparePacket(clientPacket.OPLOCT(), client.getPacketWriter().getIsaacCipher());
 		packetBufferNode.getPacketBuffer().writeShortAdd(worldPointX);
 		packetBufferNode.getPacketBuffer().writeShort(worldPointY);
 		packetBufferNode.getPacketBuffer().writeShortAdd(sourceItemId);
@@ -143,9 +144,9 @@ public class ObjectPackets
 
 	public static PacketBufferNode createObjectFirstActionPacket(int objectId, int worldPointX, int worldPointY, boolean ctrlDown)
 	{
-		var client = Game.getClient();
+		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
-		var packetBufferNode = Game.getClient().preparePacket(clientPacket.OPLOC1(), client.getPacketWriter().getIsaacCipher());
+		var packetBufferNode = Static.getClient().preparePacket(clientPacket.OPLOC1(), client.getPacketWriter().getIsaacCipher());
 		packetBufferNode.getPacketBuffer().writeByteSub(ctrlDown ? 1 : 0);
 		packetBufferNode.getPacketBuffer().writeShortLE(objectId);
 		packetBufferNode.getPacketBuffer().writeShortAddLE(worldPointX);
@@ -155,9 +156,9 @@ public class ObjectPackets
 
 	public static PacketBufferNode createObjectSecondActionPacket(int objectId, int worldPointX, int worldPointY, boolean ctrlDown)
 	{
-		var client = Game.getClient();
+		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
-		var packetBufferNode = Game.getClient().preparePacket(clientPacket.OPLOC2(), client.getPacketWriter().getIsaacCipher());
+		var packetBufferNode = Static.getClient().preparePacket(clientPacket.OPLOC2(), client.getPacketWriter().getIsaacCipher());
 		packetBufferNode.getPacketBuffer().writeShortAddLE(objectId);
 		packetBufferNode.getPacketBuffer().writeByteSub(ctrlDown ? 1 : 0);
 		packetBufferNode.getPacketBuffer().writeShortLE(worldPointY);
@@ -167,9 +168,9 @@ public class ObjectPackets
 
 	public static PacketBufferNode createObjectThirdActionPacket(int objectId, int worldPointX, int worldPointY, boolean ctrlDown)
 	{
-		var client = Game.getClient();
+		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
-		var packetBufferNode = Game.getClient().preparePacket(clientPacket.OPLOC3(), client.getPacketWriter().getIsaacCipher());
+		var packetBufferNode = Static.getClient().preparePacket(clientPacket.OPLOC3(), client.getPacketWriter().getIsaacCipher());
 		packetBufferNode.getPacketBuffer().writeShortAddLE(worldPointY);
 		packetBufferNode.getPacketBuffer().writeByteAdd(ctrlDown ? 1 : 0);
 		packetBufferNode.getPacketBuffer().writeShort(worldPointX);
@@ -179,9 +180,9 @@ public class ObjectPackets
 
 	public static PacketBufferNode createObjectFourthActionPacket(int objectId, int worldPointX, int worldPointY, boolean ctrlDown)
 	{
-		var client = Game.getClient();
+		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
-		var packetBufferNode = Game.getClient().preparePacket(clientPacket.OPLOC4(), client.getPacketWriter().getIsaacCipher());
+		var packetBufferNode = Static.getClient().preparePacket(clientPacket.OPLOC4(), client.getPacketWriter().getIsaacCipher());
 		packetBufferNode.getPacketBuffer().writeShort(objectId);
 		packetBufferNode.getPacketBuffer().writeShort(worldPointY);
 		packetBufferNode.getPacketBuffer().writeShort(worldPointX);
@@ -191,9 +192,9 @@ public class ObjectPackets
 
 	public static PacketBufferNode createObjectFifthActionPacket(int objectId, int worldPointX, int worldPointY, boolean ctrlDown)
 	{
-		var client = Game.getClient();
+		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
-		var packetBufferNode = Game.getClient().preparePacket(clientPacket.OPLOC5(), client.getPacketWriter().getIsaacCipher());
+		var packetBufferNode = Static.getClient().preparePacket(clientPacket.OPLOC5(), client.getPacketWriter().getIsaacCipher());
 		packetBufferNode.getPacketBuffer().writeShort(worldPointY);
 		packetBufferNode.getPacketBuffer().writeShort(objectId);
 		packetBufferNode.getPacketBuffer().writeShortAddLE(worldPointX);

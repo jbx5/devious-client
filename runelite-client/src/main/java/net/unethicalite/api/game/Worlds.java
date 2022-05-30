@@ -59,7 +59,7 @@ public class Worlds
 
 		try
 		{
-			World[] worlds = Game.getClient().getWorldList();
+			World[] worlds = Static.getClient().getWorldList();
 			if (worlds == null)
 			{
 				loadWorlds();
@@ -111,7 +111,7 @@ public class Worlds
 
 	public static int getCurrentId()
 	{
-		return Game.getClient().getWorld();
+		return Static.getClient().getWorld();
 	}
 
 	public static void hopTo(World world)
@@ -154,7 +154,7 @@ public class Worlds
 
 	public static World getCurrentWorld()
 	{
-		return getFirst(Game.getClient().getWorld());
+		return getFirst(Static.getClient().getWorld());
 	}
 
 	public static boolean inMembersWorld()

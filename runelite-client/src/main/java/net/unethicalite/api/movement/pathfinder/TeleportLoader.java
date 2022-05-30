@@ -10,40 +10,29 @@ import net.unethicalite.api.magic.Magic;
 import net.unethicalite.api.magic.Spell;
 import net.unethicalite.api.widgets.Dialog;
 import net.unethicalite.api.widgets.Widgets;
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import net.runelite.api.Item;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.widgets.Widget;
+import net.unethicalite.client.Static;
+
+import static net.unethicalite.api.movement.pathfinder.MovementConstants.*;
 
 public class TeleportLoader
 {
-	private static final int BUILD_DELAY_SECONDS = 5;
-	private static final int[] RING_OF_DUELING = new int[]{2552, 2554, 2556, 2558, 2560, 2562, 2564, 2566};
-	private static final int[] GAMES_NECKLACE = new int[]{3853, 3863, 3855, 3857, 3859, 3861, 3863, 3865, 3867};
-	private static final int[] COMBAT_BRACELET = new int[]{11118, 11972, 11974, 11120, 11122, 11124};
-	private static final int[] RING_OF_WEALTH = new int[]{11980, 11982, 11984, 11986, 11988};
-	private static final int[] AMULET_OF_GLORY = new int[]{1712, 1706, 1708, 1710, 11976, 11978};
-	private static final int[] NECKLACE_OF_PASSAGE = new int[]{21146, 21149, 21151, 21153, 21155};
-	private static final int[] BURNING_AMULET = new int[]{21166, 21171, 21173, 21175, 21167};
-	private static final int[] XERICS_TALISMAN = new int[]{13393};
-	private static final int[] SLAYER_RING = new int[]{11866, 11867, 11868, 11869, 11870, 11871, 11872, 11873, 21268};
-	private static final int[] DIGSITE_PENDANT = new int[]{11190, 11191, 11192, 11193, 11194};
-	private static final int[] DRAKANS_MEDALLION = new int[]{22400};
-	private static final int[] SKILLS_NECKLACE = new int[]{11105, 11111, 11109, 11107, 11970, 11968};
-	private static Instant lastBuild = Instant.now().minusSeconds(6);
+	private static int LAST_BUILD_TICK = 0;
 	private static List<Teleport> LAST_TELEPORT_LIST = Collections.emptyList();
 
 	public static List<Teleport> buildTeleports()
 	{
-		if (lastBuild.plusSeconds(BUILD_DELAY_SECONDS).isAfter(Instant.now()))
+		if (LAST_BUILD_TICK == Static.getClient().getTickCount())
 		{
 			return LAST_TELEPORT_LIST;
 		}
 
-		lastBuild = Instant.now();
+		LAST_BUILD_TICK = Static.getClient().getTickCount();
 
 		List<Teleport> teleports = new ArrayList<>();
 		if (Worlds.inMembersWorld())

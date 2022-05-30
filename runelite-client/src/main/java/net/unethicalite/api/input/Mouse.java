@@ -2,7 +2,7 @@ package net.unethicalite.api.input;
 
 import net.unethicalite.api.commons.Rand;
 import net.unethicalite.api.commons.Time;
-import net.unethicalite.api.game.Game;
+import net.unethicalite.client.Static;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,7 +23,7 @@ public class Mouse
 
 	public static void click(int x, int y, boolean left)
 	{
-		if (Game.getClient().isClientThread())
+		if (Static.getClient().isClientThread())
 		{
 			CLICK_EXECUTOR.execute(() -> handleClick(x, y, left));
 		}
@@ -36,7 +36,7 @@ public class Mouse
 	private static void handleClick(int x, int y, boolean left)
 	{
 		long start = System.currentTimeMillis();
-		Canvas canvas = Game.getClient().getCanvas();
+		Canvas canvas = Static.getClient().getCanvas();
 
 		if (exited)
 		{
@@ -137,6 +137,6 @@ public class Mouse
 
 	public static Point getPosition()
 	{
-		return Game.getClient().getMouseCanvasPosition().getAwtPoint();
+		return Static.getClient().getMouseCanvasPosition().getAwtPoint();
 	}
 }

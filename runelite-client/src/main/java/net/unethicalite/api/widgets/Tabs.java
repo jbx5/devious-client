@@ -7,6 +7,7 @@ import net.runelite.api.GameState;
 import net.runelite.api.VarClientInt;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetID;
+import net.unethicalite.client.Static;
 
 import java.util.Arrays;
 
@@ -23,12 +24,12 @@ public class Tabs
 
 	public static void openInterface(Tab tab)
 	{
-		if (Game.getClient() == null || Game.getState() != GameState.LOGGED_IN)
+		if (Static.getClient() == null || Game.getState() != GameState.LOGGED_IN)
 		{
 			return;
 		}
 
-		GameThread.invoke(() -> Game.getClient().runScript(915, tab.getIndex()));
+		GameThread.invoke(() -> Static.getClient().runScript(915, tab.getIndex()));
 	}
 
 	public static boolean isOpen(Tab tab)

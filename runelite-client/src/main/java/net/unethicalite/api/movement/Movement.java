@@ -5,7 +5,6 @@ import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 import net.unethicalite.api.commons.Rand;
 import net.unethicalite.api.entities.Players;
-import net.unethicalite.api.game.Game;
 import net.unethicalite.api.game.Vars;
 import net.unethicalite.api.movement.pathfinder.BankLocation;
 import net.unethicalite.api.movement.pathfinder.CollisionMap;
@@ -193,7 +192,7 @@ public class Movement
 
 	public static boolean walkTo(int x, int y)
 	{
-		return walkTo(x, y, Game.getClient().getPlane());
+		return walkTo(x, y, Static.getClient().getPlane());
 	}
 
 	public static boolean walkTo(int x, int y, int plane)
@@ -222,7 +221,7 @@ public class Movement
 
 	public static int getRunEnergy()
 	{
-		return Game.getClient().getEnergy();
+		return Static.getClient().getEnergy();
 	}
 
 	public static int calculateDistance(WorldPoint destination)
@@ -285,7 +284,7 @@ public class Movement
 
 		public static boolean walkTo(int x, int y)
 		{
-			return walkTo(x, y, Game.getClient().getPlane());
+			return walkTo(x, y, Static.getClient().getPlane());
 		}
 
 		public static boolean walkTo(int x, int y, int plane)

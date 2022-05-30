@@ -1,7 +1,7 @@
 package net.unethicalite.api.input;
 
 import net.unethicalite.api.commons.Time;
-import net.unethicalite.api.game.Game;
+import net.unethicalite.client.Static;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -15,7 +15,7 @@ public class Keyboard
 
 	public static void pressed(int keyCode, char keyChar)
 	{
-		Canvas canvas = Game.getClient().getCanvas();
+		Canvas canvas = Static.getClient().getCanvas();
 		long time = System.currentTimeMillis();
 		KeyEvent event = new KeyEvent(canvas, KeyEvent.KEY_PRESSED, time, 0, keyCode, keyChar, KeyEvent.KEY_LOCATION_STANDARD);
 		canvas.dispatchEvent(event);
@@ -28,7 +28,7 @@ public class Keyboard
 
 	public static void typed(int keyCode, char keyChar)
 	{
-		Canvas canvas = Game.getClient().getCanvas();
+		Canvas canvas = Static.getClient().getCanvas();
 		long time = System.currentTimeMillis();
 		KeyEvent event = new KeyEvent(canvas, KeyEvent.KEY_TYPED, time, 0, keyCode, keyChar, KeyEvent.KEY_LOCATION_UNKNOWN);
 		canvas.dispatchEvent(event);
@@ -41,7 +41,7 @@ public class Keyboard
 
 	public static void released(int keyCode, char keyChar)
 	{
-		Canvas canvas = Game.getClient().getCanvas();
+		Canvas canvas = Static.getClient().getCanvas();
 		long time = System.currentTimeMillis();
 		KeyEvent event = new KeyEvent(canvas, KeyEvent.KEY_RELEASED, time, 0, keyCode, keyChar, KeyEvent.KEY_LOCATION_STANDARD);
 		canvas.dispatchEvent(event);
@@ -49,7 +49,7 @@ public class Keyboard
 
 	public static void type(char c)
 	{
-		Canvas canvas = Game.getClient().getCanvas();
+		Canvas canvas = Static.getClient().getCanvas();
 		long time = System.currentTimeMillis();
 		int keyCode = KeyEvent.getExtendedKeyCodeForChar(c);
 		KeyEvent pressed = new KeyEvent(canvas, KeyEvent.KEY_PRESSED, time, 0, keyCode, c, KeyEvent.KEY_LOCATION_STANDARD);

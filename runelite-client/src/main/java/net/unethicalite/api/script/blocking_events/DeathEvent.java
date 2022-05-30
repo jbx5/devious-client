@@ -3,12 +3,12 @@ package net.unethicalite.api.script.blocking_events;
 import net.unethicalite.api.entities.NPCs;
 import net.unethicalite.api.entities.Players;
 import net.unethicalite.api.entities.TileObjects;
-import net.unethicalite.api.game.Game;
 import net.unethicalite.api.widgets.Dialog;
 import net.unethicalite.api.widgets.Widgets;
 import net.runelite.api.NPC;
 import net.runelite.api.TileObject;
 import net.runelite.api.widgets.Widget;
+import net.unethicalite.client.Static;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,7 +18,7 @@ public class DeathEvent extends BlockingEvent
 	@Override
 	public boolean validate()
 	{
-		return Game.getClient().isInInstancedRegion() && NPCs.getNearest("Death") != null;
+		return Static.getClient().isInInstancedRegion() && NPCs.getNearest("Death") != null;
 	}
 
 	@Override

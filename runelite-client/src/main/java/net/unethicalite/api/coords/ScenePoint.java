@@ -1,9 +1,9 @@
 package net.unethicalite.api.coords;
 
-import net.unethicalite.api.game.Game;
 import lombok.Value;
 import net.runelite.api.Client;
 import net.runelite.api.coords.WorldPoint;
+import net.unethicalite.client.Static;
 
 @Value
 public class ScenePoint
@@ -15,7 +15,7 @@ public class ScenePoint
 	// scene > world
 	public WorldPoint toWorld()
 	{
-		Client client = Game.getClient();
+		Client client = Static.getClient();
 		return new WorldPoint(x + client.getBaseX(), y + client.getBaseY(), plane);
 	}
 
@@ -44,7 +44,7 @@ public class ScenePoint
 	// world > scene
 	public static ScenePoint fromWorld(WorldPoint worldPoint)
 	{
-		Client client = Game.getClient();
+		Client client = Static.getClient();
 		return new ScenePoint(worldPoint.getX() - client.getBaseX(), worldPoint.getY() - client.getBaseY(), 0);
 	}
 }

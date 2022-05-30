@@ -1,6 +1,5 @@
 package net.unethicalite.api.magic;
 
-import net.unethicalite.api.game.Game;
 import net.unethicalite.api.game.Vars;
 import net.unethicalite.api.widgets.Widgets;
 import net.runelite.api.Item;
@@ -10,6 +9,7 @@ import net.runelite.api.Player;
 import net.runelite.api.TileItem;
 import net.runelite.api.TileObject;
 import net.runelite.api.widgets.Widget;
+import net.unethicalite.client.Static;
 
 public class Magic
 {
@@ -67,7 +67,7 @@ public class Magic
 		Widget widget = Widgets.get(spell.getWidget());
 		if (widget != null)
 		{
-			Game.getClient().setSelectedSpellWidget(widget.getId());
+			Static.getClient().setSelectedSpellWidget(widget.getId());
 		}
 	}
 

@@ -3,6 +3,7 @@ package net.unethicalite.api.packets;
 import net.unethicalite.api.game.Game;
 import net.runelite.api.NPC;
 import net.runelite.api.packets.PacketBufferNode;
+import net.unethicalite.client.Static;
 
 public class NPCPackets
 {
@@ -101,9 +102,9 @@ public class NPCPackets
 
 	public static PacketBufferNode createWidgetOnNpc(int npcIndex, int sourceWidgetId, int sourceItemId, int sourceSlot, boolean ctrlDown)
 	{
-		var client = Game.getClient();
+		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
-		var packetBufferNode = Game.getClient().preparePacket(clientPacket.OPNPCT(), client.getPacketWriter().getIsaacCipher());
+		var packetBufferNode = Static.getClient().preparePacket(clientPacket.OPNPCT(), client.getPacketWriter().getIsaacCipher());
 		packetBufferNode.getPacketBuffer().writeShortAddLE(npcIndex);
 		packetBufferNode.getPacketBuffer().writeShort(sourceItemId);
 		packetBufferNode.getPacketBuffer().writeByteNeg(ctrlDown ? 1 : 0);
@@ -119,9 +120,9 @@ public class NPCPackets
 
 	public static PacketBufferNode createNpcFirstActionPacket(int npcIndex, boolean ctrlDown)
 	{
-		var client = Game.getClient();
+		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
-		var packetBufferNode = Game.getClient().preparePacket(clientPacket.OPNPC1(), client.getPacketWriter().getIsaacCipher());
+		var packetBufferNode = Static.getClient().preparePacket(clientPacket.OPNPC1(), client.getPacketWriter().getIsaacCipher());
 		packetBufferNode.getPacketBuffer().writeShortAdd(npcIndex);
 		packetBufferNode.getPacketBuffer().writeByte(ctrlDown ? 1 : 0);
 		return packetBufferNode;
@@ -129,9 +130,9 @@ public class NPCPackets
 
 	public static PacketBufferNode createNpcSecondActionPacket(int npcIndex, boolean ctrlDown)
 	{
-		var client = Game.getClient();
+		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
-		var packetBufferNode = Game.getClient().preparePacket(clientPacket.OPNPC2(), client.getPacketWriter().getIsaacCipher());
+		var packetBufferNode = Static.getClient().preparePacket(clientPacket.OPNPC2(), client.getPacketWriter().getIsaacCipher());
 		packetBufferNode.getPacketBuffer().writeShortLE(npcIndex);
 		packetBufferNode.getPacketBuffer().writeByteNeg(ctrlDown ? 1 : 0);
 		return packetBufferNode;
@@ -139,9 +140,9 @@ public class NPCPackets
 
 	public static PacketBufferNode createNpcThirdActionPacket(int npcIndex, boolean ctrlDown)
 	{
-		var client = Game.getClient();
+		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
-		var packetBufferNode = Game.getClient().preparePacket(clientPacket.OPNPC3(), client.getPacketWriter().getIsaacCipher());
+		var packetBufferNode = Static.getClient().preparePacket(clientPacket.OPNPC3(), client.getPacketWriter().getIsaacCipher());
 		packetBufferNode.getPacketBuffer().writeByteNeg(ctrlDown ? 1 : 0);
 		packetBufferNode.getPacketBuffer().writeShortAddLE(npcIndex);
 		return packetBufferNode;
@@ -149,9 +150,9 @@ public class NPCPackets
 
 	public static PacketBufferNode createNpcFourthActionPacket(int npcIndex, boolean ctrlDown)
 	{
-		var client = Game.getClient();
+		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
-		var packetBufferNode = Game.getClient().preparePacket(clientPacket.OPNPC4(), client.getPacketWriter().getIsaacCipher());
+		var packetBufferNode = Static.getClient().preparePacket(clientPacket.OPNPC4(), client.getPacketWriter().getIsaacCipher());
 		packetBufferNode.getPacketBuffer().writeByteSub(ctrlDown ? 1 : 0);
 		packetBufferNode.getPacketBuffer().writeShortAddLE(npcIndex);
 		return packetBufferNode;
@@ -159,9 +160,9 @@ public class NPCPackets
 
 	public static PacketBufferNode createNpcFifthActionPacket(int npcIndex, boolean ctrlDown)
 	{
-		var client = Game.getClient();
+		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
-		var packetBufferNode = Game.getClient().preparePacket(clientPacket.OPNPC5(), client.getPacketWriter().getIsaacCipher());
+		var packetBufferNode = Static.getClient().preparePacket(clientPacket.OPNPC5(), client.getPacketWriter().getIsaacCipher());
 		packetBufferNode.getPacketBuffer().writeShortLE(npcIndex);
 		packetBufferNode.getPacketBuffer().writeByteNeg(ctrlDown ? 1 : 0);
 		return packetBufferNode;

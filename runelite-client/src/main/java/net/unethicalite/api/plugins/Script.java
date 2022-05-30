@@ -3,6 +3,7 @@ package net.unethicalite.api.plugins;
 import net.unethicalite.api.game.Game;
 import net.unethicalite.api.script.blocking_events.BlockingEvent;
 import net.unethicalite.api.script.blocking_events.BlockingEventManager;
+import net.unethicalite.client.Static;
 import net.unethicalite.client.minimal.plugins.MinimalPluginChanged;
 import net.unethicalite.client.minimal.plugins.MinimalPluginState;
 import net.unethicalite.api.script.paint.Paint;
@@ -58,7 +59,7 @@ public abstract class Script extends LoopedPlugin
 		if (restart)
 		{
 			restart = false;
-			Game.getClient().getCallbacks().post(new MinimalPluginChanged(this, MinimalPluginState.RESTARTING));
+			Static.getClient().getCallbacks().post(new MinimalPluginChanged(this, MinimalPluginState.RESTARTING));
 			return 1000;
 		}
 
@@ -89,11 +90,11 @@ public abstract class Script extends LoopedPlugin
 		paused = !paused;
 		if (!paused)
 		{
-			Game.getClient().getCallbacks().post(new MinimalPluginChanged(this, MinimalPluginState.STARTED));
+			Static.getClient().getCallbacks().post(new MinimalPluginChanged(this, MinimalPluginState.STARTED));
 		}
 		else
 		{
-			Game.getClient().getCallbacks().post(new MinimalPluginChanged(this, MinimalPluginState.PAUSED));
+			Static.getClient().getCallbacks().post(new MinimalPluginChanged(this, MinimalPluginState.PAUSED));
 		}
 	}
 

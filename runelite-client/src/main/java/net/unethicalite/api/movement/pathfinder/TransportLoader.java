@@ -2,6 +2,7 @@ package net.unethicalite.api.movement.pathfinder;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import net.runelite.api.*;
 import net.unethicalite.api.entities.NPCs;
 import net.unethicalite.api.entities.Players;
 import net.unethicalite.api.entities.TileObjects;
@@ -9,17 +10,19 @@ import net.unethicalite.api.game.GameThread;
 import net.unethicalite.api.game.Skills;
 import net.unethicalite.api.game.Vars;
 import net.unethicalite.api.game.Worlds;
+import net.unethicalite.api.items.Equipment;
 import net.unethicalite.api.items.Inventory;
 import net.unethicalite.api.movement.Movement;
 import net.unethicalite.api.movement.Reachable;
+import net.unethicalite.api.movement.pathfinder.model.FairyRingLocation;
 import net.unethicalite.api.quests.Quest;
 import net.unethicalite.api.widgets.Dialog;
 import net.unethicalite.api.widgets.Widgets;
+import net.unethicalite.client.Static;
 import net.unethicalite.client.minimal.config.UnethicaliteProperties;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -29,13 +32,6 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
-import net.runelite.api.Item;
-import net.runelite.api.MenuAction;
-import net.runelite.api.NPC;
-import net.runelite.api.Point;
-import net.runelite.api.QuestState;
-import net.runelite.api.Skill;
-import net.runelite.api.TileObject;
 import net.runelite.api.coords.Direction;
 import net.runelite.api.coords.WorldArea;
 import net.runelite.api.coords.WorldPoint;
@@ -59,10 +55,9 @@ public class TransportLoader
 		new MagicMushtree(new WorldPoint(3760, 3758, 0), WidgetInfo.FOSSIL_MUSHROOM_VALLEY)
 	);
 	private static final Gson GSON = new GsonBuilder().create();
-	private static final int BUILD_DELAY_SECONDS = 5;
+	private static int LAST_BUILD_TICK = 0;
 	private static final List<Transport> STATIC_TRANSPORTS = new ArrayList<>();
 	private static final WorldArea MLM = new WorldArea(3714, 5633, 60, 62, 0);
-	private static Instant lastBuild = Instant.now().minusSeconds(6);
 	private static List<Transport> LAST_TRANSPORT_LIST = Collections.emptyList();
 
 	static
@@ -204,6 +199,12 @@ public class TransportLoader
 				}
 			}
 
+			if (Quest.THE_LOST_TRIBE.getState() == QuestState.FINISHED)
+			{
+				transports.add(npcTransport(new WorldPoint(3229, 9610, 0), new WorldPoint(3316, 9613, 0), NpcID.KAZGAR_7301, "Mines"));
+				transports.add(npcTransport(new WorldPoint(3316, 9613, 0), new WorldPoint(3229, 9610, 0), NpcID.MISTAG_7299, "Cellar"));
+			}
+
 			// Tree Gnome Village
 			if (Quest.TREE_GNOME_VILLAGE.getState() != QuestState.NOT_STARTED)
 			{
@@ -299,15 +300,31 @@ public class TransportLoader
 						"Open"));
 				}
 			});
+
+			// Fairy Rings
+			if (Equipment.contains(ItemID.DRAMEN_STAFF, ItemID.LUNAR_STAFF)
+					&& Quest.FAIRYTALE_II__CURE_A_QUEEN.getState() != QuestState.NOT_STARTED)
+			{
+				for (FairyRingLocation sourceRing : FairyRingLocation.values())
+				{
+					for (FairyRingLocation destRing : FairyRingLocation.values())
+					{
+						if (sourceRing != destRing)
+						{
+							transports.add(fairyRingTransport(sourceRing, destRing));
+						}
+					}
+				}
+			}
 		}
 
-		if (lastBuild.plusSeconds(BUILD_DELAY_SECONDS).isAfter(Instant.now()))
+		if (LAST_BUILD_TICK == Static.getClient().getTickCount())
 		{
 			transports.addAll(LAST_TRANSPORT_LIST);
 			return List.copyOf(transports);
 		}
 
-		lastBuild = Instant.now();
+		LAST_BUILD_TICK = Static.getClient().getTickCount();
 		LAST_TRANSPORT_LIST = buildCachedTransportList();
 		transports.addAll(LAST_TRANSPORT_LIST);
 
@@ -418,6 +435,31 @@ public class TransportLoader
 			{
 				closedTrapDoor.interact(0);
 			}
+		}, null);
+	}
+
+	public static Transport fairyRingTransport(
+			FairyRingLocation source,
+			FairyRingLocation destination
+	)
+	{
+		return new Transport(source.getLocation(), destination.getLocation(), Integer.MAX_VALUE, 0, () ->
+		{
+			TileObject ring = TileObjects.getNearest("Fairy ring");
+
+			if (destination == FairyRingLocation.ZANARIS)
+			{
+				ring.interact("Zanaris");
+				return;
+			}
+
+			if (Widgets.isVisible(Widgets.get(WidgetInfo.FAIRY_RING)))
+			{
+				destination.travel();
+				return;
+			}
+
+			ring.interact("Configure");
 		}, null);
 	}
 

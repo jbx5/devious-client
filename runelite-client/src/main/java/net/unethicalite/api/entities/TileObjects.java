@@ -1,6 +1,5 @@
 package net.unethicalite.api.entities;
 
-import net.unethicalite.api.game.Game;
 import net.unethicalite.api.query.entities.TileObjectQuery;
 import net.unethicalite.api.scene.Tiles;
 import net.runelite.api.DecorativeObject;
@@ -11,6 +10,7 @@ import net.runelite.api.TileObject;
 import net.runelite.api.WallObject;
 import net.runelite.api.coords.WorldArea;
 import net.runelite.api.coords.WorldPoint;
+import net.unethicalite.client.Static;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -319,7 +319,7 @@ public class TileObjects extends TileEntities<TileObject>
 			for (GameObject gameObject : gameObjects)
 			{
 				if (gameObject == null
-						|| !Game.getClient().isTileObjectValid(tile, gameObject)
+						|| !Static.getClient().isTileObjectValid(tile, gameObject)
 						|| gameObject.getId() == -1)
 				{
 					continue;

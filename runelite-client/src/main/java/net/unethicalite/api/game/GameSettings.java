@@ -7,6 +7,7 @@ import net.unethicalite.api.widgets.Widgets;
 import net.runelite.api.VarPlayer;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
+import net.unethicalite.client.Static;
 
 import java.util.function.Supplier;
 
@@ -43,17 +44,17 @@ public class GameSettings
 			switch (displayMode)
 			{
 				case FIXED:
-					GameThread.invoke(() -> Game.getClient().runScript(3998, 0));
+					GameThread.invoke(() -> Static.getClient().runScript(3998, 0));
 					break;
 				case RESIZABLE_MODERN:
-					GameThread.invoke(() -> Game.getClient().runScript(3998, 1));
+					GameThread.invoke(() -> Static.getClient().runScript(3998, 1));
 					break;
 				case RESIZABLE_CLASSIC:
 					GameThread.invoke(() ->
 					{
 						// I have no fuckin idea but it works
-						Game.getClient().runScript(441, 7602188, 7602213, 7602207, 7602209, 7602214, 7602215, 7602176);
-						Game.getClient().interact(1, 57, 2, 7602213);
+						Static.getClient().runScript(441, 7602188, 7602213, 7602207, 7602209, 7602214, 7602215, 7602176);
+						Static.getClient().interact(1, 57, 2, 7602213);
 					});
 					break;
 			}

@@ -3,6 +3,7 @@ package net.unethicalite.api.packets;
 import net.unethicalite.api.game.Game;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.packets.PacketBufferNode;
+import net.unethicalite.client.Static;
 
 public class MovementPackets
 {
@@ -23,15 +24,15 @@ public class MovementPackets
 
 	public static void sendMovement(int worldPointX, int worldPointY, boolean ctrlDown)
 	{
-		var client = Game.getClient();
+		var client = Static.getClient();
 		createMovement(worldPointX, worldPointY, ctrlDown).send();
 	}
 
 	public static PacketBufferNode createMovement(int worldPointX, int worldPointY, boolean ctrlDown)
 	{
-		var client = Game.getClient();
+		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
-		var packetBufferNode = Game.getClient().preparePacket(clientPacket.MOVE_GAMECLICK(), client.getPacketWriter().getIsaacCipher());
+		var packetBufferNode = Static.getClient().preparePacket(clientPacket.MOVE_GAMECLICK(), client.getPacketWriter().getIsaacCipher());
 		packetBufferNode.getPacketBuffer().writeByte(5);
 		packetBufferNode.getPacketBuffer().writeByteSub(ctrlDown ? 2 : 0);
 		packetBufferNode.getPacketBuffer().writeShortAddLE(worldPointY);

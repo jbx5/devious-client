@@ -1,10 +1,10 @@
 package net.unethicalite.api.widgets;
 
 import net.unethicalite.api.entities.Players;
-import net.unethicalite.api.game.Game;
 import net.unethicalite.api.game.GameThread;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
+import net.unethicalite.client.Static;
 
 import java.util.Arrays;
 import java.util.List;
@@ -23,7 +23,7 @@ public class Minigames
 		{
 			if (Destination.getCurrent() != destination)
 			{
-				GameThread.invoke(() -> Game.getClient().runScript(124, destination.index));
+				GameThread.invoke(() -> Static.getClient().runScript(124, destination.index));
 				return;
 			}
 
@@ -32,7 +32,7 @@ public class Minigames
 				return;
 			}
 
-			Game.getClient().interact(1, 57, destination.index, 4980762);
+			Static.getClient().interact(1, 57, destination.index, 4980762);
 		}
 		else
 		{

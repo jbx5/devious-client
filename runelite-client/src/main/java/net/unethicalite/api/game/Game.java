@@ -1,5 +1,8 @@
 package net.unethicalite.api.game;
 
+import lombok.Getter;
+import lombok.Setter;
+import net.unethicalite.api.account.GameAccount;
 import net.unethicalite.api.movement.pathfinder.GlobalCollisionMap;
 import net.unethicalite.api.widgets.Tab;
 import net.unethicalite.api.widgets.Tabs;
@@ -17,6 +20,10 @@ public class Game
 	private static final int MEMBER_DAYS_VARP = 1780;
 	private static final int CUTSCENE_VARBIT = 542;
 	private static final String LOGOUT_ACTION = "Logout";
+
+	@Getter
+	@Setter
+	private static GameAccount gameAccount = null;
 
 	@Deprecated
 	public static Client getClient()

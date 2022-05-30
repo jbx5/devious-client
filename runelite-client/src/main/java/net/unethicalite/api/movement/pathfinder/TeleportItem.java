@@ -30,6 +30,9 @@ public enum TeleportItem
 	PISCATORIS_TELEPORT(new WorldPoint(2342, 3647, 0), "Piscatoris teleport", ItemID.PISCATORIS_TELEPORT,
 			"Teleport"),
 
+	// Items
+	ECTOPHIAL(new WorldPoint(3659, 3523, 0), "Ectophial", ItemID.ECTOPHIAL, "Empty"),
+
 	;
 
 	private final WorldPoint destination;

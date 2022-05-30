@@ -2,11 +2,11 @@ package net.unethicalite.api.entities;
 
 import net.unethicalite.api.SceneEntity;
 import net.unethicalite.api.commons.Predicates;
-import net.unethicalite.api.game.Game;
 import net.runelite.api.MenuAction;
 import net.runelite.api.MenuEntry;
 import net.runelite.api.Tile;
 import net.runelite.api.coords.WorldPoint;
+import net.unethicalite.client.Static;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -47,7 +47,7 @@ public abstract class Entities<T extends SceneEntity>
 
 	public static List<? extends SceneEntity> getHoveredEntities()
 	{
-		MenuEntry[] menuEntries = Game.getClient().getMenuEntries();
+		MenuEntry[] menuEntries = Static.getClient().getMenuEntries();
 		if (menuEntries.length == 0)
 		{
 			return Collections.emptyList();
@@ -73,7 +73,7 @@ public abstract class Entities<T extends SceneEntity>
 					int x = menuEntry.getParam0();
 					int y = menuEntry.getParam1();
 					int id = menuEntry.getIdentifier();
-					Tile tile = Game.getClient().getScene().getTiles()[Game.getClient().getPlane()][x][y];
+					Tile tile = Static.getClient().getScene().getTiles()[Static.getClient().getPlane()][x][y];
 					out.addAll(TileObjects.getAt(tile, id));
 					break;
 				}
@@ -88,7 +88,7 @@ public abstract class Entities<T extends SceneEntity>
 				case NPC_FIFTH_OPTION:
 				{
 					int index = menuEntry.getIdentifier();
-					out.add(Game.getClient().getCachedNPCs()[index]);
+					out.add(Static.getClient().getCachedNPCs()[index]);
 					break;
 				}
 
@@ -104,7 +104,7 @@ public abstract class Entities<T extends SceneEntity>
 					int x = menuEntry.getParam0();
 					int y = menuEntry.getParam1();
 					int id = menuEntry.getIdentifier();
-					Tile tile = Game.getClient().getScene().getTiles()[Game.getClient().getPlane()][x][y];
+					Tile tile = Static.getClient().getScene().getTiles()[Static.getClient().getPlane()][x][y];
 					out.addAll(TileItems.getAt(tile, id));
 					break;
 				}
@@ -120,7 +120,7 @@ public abstract class Entities<T extends SceneEntity>
 				case PLAYER_SEVENTH_OPTION:
 				case PLAYER_EIGTH_OPTION:
 				{
-					out.add(Game.getClient().getCachedPlayers()[menuEntry.getIdentifier()]);
+					out.add(Static.getClient().getCachedPlayers()[menuEntry.getIdentifier()]);
 					break;
 				}
 

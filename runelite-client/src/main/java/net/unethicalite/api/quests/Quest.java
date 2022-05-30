@@ -1,12 +1,12 @@
 package net.unethicalite.api.quests;
 
-import net.unethicalite.api.game.Game;
 import net.unethicalite.api.game.GameThread;
 import net.unethicalite.api.game.Vars;
 import lombok.Getter;
 import net.runelite.api.Client;
 import net.runelite.api.QuestState;
 import net.runelite.api.ScriptID;
+import net.unethicalite.client.Static;
 
 import java.util.Arrays;
 import java.util.List;
@@ -407,7 +407,7 @@ public enum Quest
 
 	public QuestState getState()
 	{
-		Client client = Game.getClient();
+		Client client = Static.getClient();
 		if (getProgress() == -1)
 		{
 			return QuestState.IN_PROGRESS;

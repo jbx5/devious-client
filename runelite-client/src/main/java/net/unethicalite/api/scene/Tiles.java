@@ -2,7 +2,6 @@ package net.unethicalite.api.scene;
 
 import net.unethicalite.api.coords.RegionPoint;
 import net.unethicalite.api.coords.ScenePoint;
-import net.unethicalite.api.game.Game;
 import net.unethicalite.api.widgets.Widgets;
 import net.runelite.api.Client;
 import net.runelite.api.Constants;
@@ -13,6 +12,7 @@ import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
+import net.unethicalite.client.Static;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -30,7 +30,7 @@ public class Tiles
 		{
 			for (int y = 0; y < Constants.SCENE_SIZE; y++)
 			{
-				Tile tile = Game.getClient().getScene().getTiles()[Game.getClient().getPlane()][x][y];
+				Tile tile = Static.getClient().getScene().getTiles()[Static.getClient().getPlane()][x][y];
 				if (tile != null && filter.test(tile))
 				{
 					out.add(tile);
@@ -53,12 +53,12 @@ public class Tiles
 
 	public static Tile getAt(LocalPoint localPoint)
 	{
-		return Game.getClient().getScene().getTiles()[Game.getClient().getPlane()][localPoint.getSceneX()][localPoint.getSceneY()];
+		return Static.getClient().getScene().getTiles()[Static.getClient().getPlane()][localPoint.getSceneX()][localPoint.getSceneY()];
 	}
 
 	public static Tile getAt(int worldX, int worldY, int plane)
 	{
-		Client client = Game.getClient();
+		Client client = Static.getClient();
 		int correctedX = worldX < Constants.SCENE_SIZE ? worldX + client.getBaseX() : worldX;
 		int correctedY = worldY < Constants.SCENE_SIZE ? worldY + client.getBaseY() : worldY;
 
@@ -80,7 +80,7 @@ public class Tiles
 
 	public static Tile getAt(ScenePoint scenePoint)
 	{
-		return Game.getClient().getScene().getTiles()[scenePoint.getPlane()][scenePoint.getX()][scenePoint.getY()];
+		return Static.getClient().getScene().getTiles()[scenePoint.getPlane()][scenePoint.getX()][scenePoint.getY()];
 	}
 
 	public static List<Tile> getSurrounding(WorldPoint worldPoint, int radius)
@@ -99,7 +99,7 @@ public class Tiles
 
 	public static Tile getHoveredTile()
 	{
-		return Game.getClient().getSelectedSceneTile();
+		return Static.getClient().getSelectedSceneTile();
 	}
 
 	public static List<WorldPoint> getWorldMapTiles(int plane)
@@ -111,7 +111,7 @@ public class Tiles
 		}
 
 		List<WorldPoint> out = new ArrayList<>();
-		RenderOverview ro = Game.getClient().getRenderOverview();
+		RenderOverview ro = Static.getClient().getRenderOverview();
 
 		Rectangle worldMapRect = worldMap.getBounds();
 

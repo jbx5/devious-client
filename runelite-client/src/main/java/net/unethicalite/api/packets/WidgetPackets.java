@@ -3,6 +3,7 @@ package net.unethicalite.api.packets;
 import net.unethicalite.api.game.Game;
 import net.runelite.api.packets.PacketBufferNode;
 import net.runelite.api.widgets.Widget;
+import net.unethicalite.client.Static;
 
 public class WidgetPackets
 {
@@ -202,7 +203,7 @@ public class WidgetPackets
 
 	public static PacketBufferNode createType1Action(int widgetId)
 	{
-		var client = Game.getClient();
+		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
 		var packet = client.preparePacket(clientPacket.IF_BUTTON10(), client.getPacketWriter().getIsaacCipher());
 		packet.getPacketBuffer().writeInt(widgetId);
@@ -239,9 +240,9 @@ public class WidgetPackets
 
 	public static PacketBufferNode createFirstAction(int widgetId, int itemId, int childId)
 	{
-		var client = Game.getClient();
+		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
-		var packetBufferNode = Game.getClient().preparePacket(clientPacket.IF_BUTTON1(), client.getPacketWriter().getIsaacCipher());
+		var packetBufferNode = Static.getClient().preparePacket(clientPacket.IF_BUTTON1(), client.getPacketWriter().getIsaacCipher());
 		packetBufferNode.getPacketBuffer().writeInt(widgetId);
 		packetBufferNode.getPacketBuffer().writeShort(childId);
 		packetBufferNode.getPacketBuffer().writeShort(itemId);
@@ -250,9 +251,9 @@ public class WidgetPackets
 
 	public static PacketBufferNode createSecondAction(int widgetId, int itemId, int childId)
 	{
-		var client = Game.getClient();
+		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
-		var packetBufferNode = Game.getClient().preparePacket(clientPacket.IF_BUTTON2(), client.getPacketWriter().getIsaacCipher());
+		var packetBufferNode = Static.getClient().preparePacket(clientPacket.IF_BUTTON2(), client.getPacketWriter().getIsaacCipher());
 		packetBufferNode.getPacketBuffer().writeInt(widgetId);
 		packetBufferNode.getPacketBuffer().writeShort(childId);
 		packetBufferNode.getPacketBuffer().writeShort(itemId);
@@ -261,9 +262,9 @@ public class WidgetPackets
 
 	public static PacketBufferNode createThirdAction(int widgetId, int itemId, int childId)
 	{
-		var client = Game.getClient();
+		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
-		var packetBufferNode = Game.getClient().preparePacket(clientPacket.IF_BUTTON3(), client.getPacketWriter().getIsaacCipher());
+		var packetBufferNode = Static.getClient().preparePacket(clientPacket.IF_BUTTON3(), client.getPacketWriter().getIsaacCipher());
 		packetBufferNode.getPacketBuffer().writeInt(widgetId);
 		packetBufferNode.getPacketBuffer().writeShort(childId);
 		packetBufferNode.getPacketBuffer().writeShort(itemId);
@@ -272,9 +273,9 @@ public class WidgetPackets
 
 	public static PacketBufferNode createFourthAction(int widgetId, int itemId, int childId)
 	{
-		var client = Game.getClient();
+		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
-		var packetBufferNode = Game.getClient().preparePacket(clientPacket.IF_BUTTON4(), client.getPacketWriter().getIsaacCipher());
+		var packetBufferNode = Static.getClient().preparePacket(clientPacket.IF_BUTTON4(), client.getPacketWriter().getIsaacCipher());
 		packetBufferNode.getPacketBuffer().writeInt(widgetId);
 		packetBufferNode.getPacketBuffer().writeShort(childId);
 		packetBufferNode.getPacketBuffer().writeShort(itemId);
@@ -283,9 +284,9 @@ public class WidgetPackets
 
 	public static PacketBufferNode createFifthAction(int widgetId, int itemId, int childId)
 	{
-		var client = Game.getClient();
+		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
-		var packetBufferNode = Game.getClient().preparePacket(clientPacket.IF_BUTTON5(), client.getPacketWriter().getIsaacCipher());
+		var packetBufferNode = Static.getClient().preparePacket(clientPacket.IF_BUTTON5(), client.getPacketWriter().getIsaacCipher());
 		packetBufferNode.getPacketBuffer().writeInt(widgetId);
 		packetBufferNode.getPacketBuffer().writeShort(childId);
 		packetBufferNode.getPacketBuffer().writeShort(itemId);
@@ -294,9 +295,9 @@ public class WidgetPackets
 
 	public static PacketBufferNode createSixthAction(int widgetId, int itemId, int childId)
 	{
-		var client = Game.getClient();
+		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
-		var packetBufferNode = Game.getClient().preparePacket(clientPacket.IF_BUTTON6(), client.getPacketWriter().getIsaacCipher());
+		var packetBufferNode = Static.getClient().preparePacket(clientPacket.IF_BUTTON6(), client.getPacketWriter().getIsaacCipher());
 		packetBufferNode.getPacketBuffer().writeInt(widgetId);
 		packetBufferNode.getPacketBuffer().writeShort(childId);
 		packetBufferNode.getPacketBuffer().writeShort(itemId);
@@ -305,9 +306,9 @@ public class WidgetPackets
 
 	public static PacketBufferNode createSeventhAction(int widgetId, int itemId, int childId)
 	{
-		var client = Game.getClient();
+		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
-		var packetBufferNode = Game.getClient().preparePacket(clientPacket.IF_BUTTON7(), client.getPacketWriter().getIsaacCipher());
+		var packetBufferNode = Static.getClient().preparePacket(clientPacket.IF_BUTTON7(), client.getPacketWriter().getIsaacCipher());
 		packetBufferNode.getPacketBuffer().writeInt(widgetId);
 		packetBufferNode.getPacketBuffer().writeShort(childId);
 		packetBufferNode.getPacketBuffer().writeShort(itemId);
@@ -316,9 +317,9 @@ public class WidgetPackets
 
 	public static PacketBufferNode createEighthAction(int widgetId, int itemId, int childId)
 	{
-		var client = Game.getClient();
+		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
-		var packetBufferNode = Game.getClient().preparePacket(clientPacket.IF_BUTTON8(), client.getPacketWriter().getIsaacCipher());
+		var packetBufferNode = Static.getClient().preparePacket(clientPacket.IF_BUTTON8(), client.getPacketWriter().getIsaacCipher());
 		packetBufferNode.getPacketBuffer().writeInt(widgetId);
 		packetBufferNode.getPacketBuffer().writeShort(childId);
 		packetBufferNode.getPacketBuffer().writeShort(itemId);
@@ -327,9 +328,9 @@ public class WidgetPackets
 
 	public static PacketBufferNode createNinthAction(int widgetId, int itemId, int childId)
 	{
-		var client = Game.getClient();
+		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
-		var packetBufferNode = Game.getClient().preparePacket(clientPacket.IF_BUTTON9(), client.getPacketWriter().getIsaacCipher());
+		var packetBufferNode = Static.getClient().preparePacket(clientPacket.IF_BUTTON9(), client.getPacketWriter().getIsaacCipher());
 		packetBufferNode.getPacketBuffer().writeInt(widgetId);
 		packetBufferNode.getPacketBuffer().writeShort(childId);
 		packetBufferNode.getPacketBuffer().writeShort(itemId);
@@ -338,9 +339,9 @@ public class WidgetPackets
 
 	public static PacketBufferNode createTenthAction(int widgetId, int itemId, int childId)
 	{
-		var client = Game.getClient();
+		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
-		var packetBufferNode = Game.getClient().preparePacket(clientPacket.IF_BUTTON10(), client.getPacketWriter().getIsaacCipher());
+		var packetBufferNode = Static.getClient().preparePacket(clientPacket.IF_BUTTON10(), client.getPacketWriter().getIsaacCipher());
 		packetBufferNode.getPacketBuffer().writeInt(widgetId);
 		packetBufferNode.getPacketBuffer().writeShort(childId);
 		packetBufferNode.getPacketBuffer().writeShort(itemId);
@@ -349,9 +350,9 @@ public class WidgetPackets
 
 	public static PacketBufferNode createWidgetOnWidget(int sourceWidgetId, int sourceSlot, int sourceItemId, int destinationWidgetId, int destinationSlot, int destinationItemId)
 	{
-		var client = Game.getClient();
+		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
-		var packetBufferNode = Game.getClient().preparePacket(clientPacket.IF_BUTTONT(), client.getPacketWriter().getIsaacCipher());
+		var packetBufferNode = Static.getClient().preparePacket(clientPacket.IF_BUTTONT(), client.getPacketWriter().getIsaacCipher());
 		packetBufferNode.getPacketBuffer().writeIntME(sourceWidgetId);
 		packetBufferNode.getPacketBuffer().writeIntLE(destinationWidgetId);
 		packetBufferNode.getPacketBuffer().writeShort(destinationItemId);
@@ -363,9 +364,9 @@ public class WidgetPackets
 
 	public static PacketBufferNode createContinuePacket(int widgetId, int childId)
 	{
-		var client = Game.getClient();
+		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
-		var packetBufferNode = Game.getClient().preparePacket(clientPacket.RESUME_PAUSEBUTTON(), client.getPacketWriter().getIsaacCipher());
+		var packetBufferNode = Static.getClient().preparePacket(clientPacket.RESUME_PAUSEBUTTON(), client.getPacketWriter().getIsaacCipher());
 		packetBufferNode.getPacketBuffer().writeIntIME(widgetId);
 		packetBufferNode.getPacketBuffer().writeShortAdd(childId);
 		return packetBufferNode;

@@ -16,6 +16,7 @@ import net.runelite.api.VarPlayer;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetID;
 import net.runelite.api.widgets.WidgetInfo;
+import net.unethicalite.client.Static;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -103,7 +104,7 @@ public class GrandExchange
 
 	public static void setItem(int id)
 	{
-		GameThread.invoke(() -> Game.getClient().runScript(754, id, 84));
+		GameThread.invoke(() -> Static.getClient().runScript(754, id, 84));
 	}
 
 	public static int getPrice()
@@ -161,7 +162,7 @@ public class GrandExchange
 		Item item = Inventory.getFirst(filter);
 		if (item != null)
 		{
-			Game.getClient().interact(1, 57, item.getSlot(), 30605312);
+			Static.getClient().interact(1, 57, item.getSlot(), 30605312);
 		}
 	}
 
@@ -268,7 +269,7 @@ public class GrandExchange
 	public static List<GrandExchangeOffer> getOffers()
 	{
 		List<GrandExchangeOffer> out = new ArrayList<>();
-		GrandExchangeOffer[] offers = Game.getClient().getGrandExchangeOffers();
+		GrandExchangeOffer[] offers = Static.getClient().getGrandExchangeOffers();
 		if (offers != null)
 		{
 			for (GrandExchangeOffer offer : offers)
@@ -318,7 +319,7 @@ public class GrandExchange
 
 	public static void openItemSearch()
 	{
-		Game.getClient().interact(1, 57, 0, 30474264);
+		Static.getClient().interact(1, 57, 0, 30474264);
 	}
 
 	public static boolean sell(int itemId, int quantity, int price)

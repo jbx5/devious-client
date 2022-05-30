@@ -3,7 +3,6 @@ package net.unethicalite.client.managers;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import net.unethicalite.api.events.NPCCompositionChanged;
-import net.unethicalite.api.game.Game;
 import net.unethicalite.api.game.Vars;
 import net.unethicalite.api.widgets.Widgets;
 import java.util.Collection;
@@ -44,6 +43,7 @@ import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.client.callback.ClientThread;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
+import net.unethicalite.client.Static;
 
 @Singleton
 @Slf4j
@@ -83,7 +83,7 @@ public class DefinitionManager
 	@Subscribe
 	private void onNpcCompositionChanged(NPCCompositionChanged event)
 	{
-		NPC npc = Game.getClient().getCachedNPCs()[event.getNpcIndex()];
+		NPC npc = Static.getClient().getCachedNPCs()[event.getNpcIndex()];
 		if (npc == null)
 		{
 			return;

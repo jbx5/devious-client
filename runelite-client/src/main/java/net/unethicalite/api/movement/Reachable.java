@@ -1,6 +1,5 @@
 package net.unethicalite.api.movement;
 
-import net.unethicalite.api.game.Game;
 import net.unethicalite.api.scene.Tiles;
 import net.runelite.api.CollisionData;
 import net.runelite.api.GameObject;
@@ -11,6 +10,7 @@ import net.runelite.api.WallObject;
 import net.runelite.api.coords.Direction;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
+import net.unethicalite.client.Static;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -39,19 +39,19 @@ public class Reachable
 
 	public static int getCollisionFlag(WorldPoint point)
 	{
-		CollisionData[] collisionMaps = Game.getClient().getCollisionMaps();
+		CollisionData[] collisionMaps = Static.getClient().getCollisionMaps();
 		if (collisionMaps == null)
 		{
 			return 0xFFFFFF;
 		}
 
-		CollisionData collisionData = collisionMaps[Game.getClient().getPlane()];
+		CollisionData collisionData = collisionMaps[Static.getClient().getPlane()];
 		if (collisionData == null)
 		{
 			return 0xFFFFFF;
 		}
 
-		LocalPoint localPoint = LocalPoint.fromWorld(Game.getClient(), point);
+		LocalPoint localPoint = LocalPoint.fromWorld(Static.getClient(), point);
 		if (localPoint == null)
 		{
 			return 0xFFFFFF;
@@ -174,7 +174,7 @@ public class Reachable
 		for (Direction dir : Direction.values())
 		{
 			WorldPoint neighbour = getNeighbour(dir, current);
-			if (!neighbour.isInScene(Game.getClient()))
+			if (!neighbour.isInScene(Static.getClient()))
 			{
 				continue;
 			}
@@ -212,7 +212,7 @@ public class Reachable
 
 	public static List<WorldPoint> getVisitedTiles(WorldPoint destination, Locatable targetObject)
 	{
-		Player local = Game.getClient().getLocalPlayer();
+		Player local = Static.getClient().getLocalPlayer();
 		// Don't check if too far away
 		if (local == null || destination.distanceTo(local.getWorldLocation()) > 35)
 		{

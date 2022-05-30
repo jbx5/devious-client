@@ -32,6 +32,7 @@ import com.google.inject.Inject;
 import com.google.inject.Injector;
 import com.openosrs.client.OpenOSRS;
 import net.unethicalite.api.account.GameAccount;
+import net.unethicalite.api.game.Game;
 import net.unethicalite.client.Static;
 import net.unethicalite.client.config.UnethicaliteConfig;
 import net.unethicalite.client.minimal.plugins.PluginEntry;
@@ -112,8 +113,6 @@ public class MinimalClient
 	public static final File SCRIPTS_DIR = new File(CLIENT_DIR, "scripts");
 
 	private static final int MAX_OKHTTP_CACHE_SIZE = 20 * 1024 * 1024; // 20mb
-
-	public static GameAccount gameAccount = null;
 
 	@Getter
 	private static Injector injector;
@@ -587,7 +586,7 @@ public class MinimalClient
 				gameAccount.setAuth(details[2]);
 			}
 
-			MinimalClient.gameAccount = gameAccount;
+			Game.setGameAccount(gameAccount);
 		}
 
 		if (options.has("scriptArgs"))
@@ -605,7 +604,7 @@ public class MinimalClient
 			}
 			else
 			{
-				var acc = MinimalClient.gameAccount;
+				var acc = Game.getGameAccount();
 				if (acc != null)
 				{
 					System.setProperty("unethicalite.cache-dir", acc.getUsername());

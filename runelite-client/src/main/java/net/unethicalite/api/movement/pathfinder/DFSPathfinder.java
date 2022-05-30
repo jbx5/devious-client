@@ -1,6 +1,5 @@
 package net.unethicalite.api.movement.pathfinder;
 
-import net.unethicalite.api.game.Game;
 import net.unethicalite.api.movement.Reachable;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -12,6 +11,7 @@ import java.util.Map;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.coords.WorldPoint;
+import net.unethicalite.client.Static;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -71,7 +71,7 @@ public class DFSPathfinder implements PathingAlgorithm
 				Walker.PATH_CACHE.refresh(destination);
 			}
 
-			if ((destination.isInScene(Game.getClient())
+			if ((destination.isInScene(Static.getClient())
 					&& Reachable.isObstacle(destination) && boundary.size() > 200) || boundary.size() > 50_000)
 			{
 				log.debug("Path is too long, cancelling calculation");

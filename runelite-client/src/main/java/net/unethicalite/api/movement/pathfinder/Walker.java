@@ -6,7 +6,6 @@ import com.google.common.cache.LoadingCache;
 import net.unethicalite.api.commons.Rand;
 import net.unethicalite.api.commons.Time;
 import net.unethicalite.api.entities.Players;
-import net.unethicalite.api.game.Game;
 import net.unethicalite.api.movement.Movement;
 import net.unethicalite.api.movement.Reachable;
 import net.unethicalite.api.movement.pathfinder.pnba.ParallelShortestPathFinder;
@@ -48,6 +47,32 @@ public class Walker
 	private static final int MAX_NEAREST_SEARCH_ITERATIONS = 10;
 
 	private static final ScheduledExecutorService EXECUTOR = Executors.newSingleThreadScheduledExecutor();
+
+	public static final LoadingCache<WorldPoint, List<WorldPoint>> PATH_CACHE = CacheBuilder.newBuilder()
+			.maximumSize(5)
+			.expireAfterWrite(5, TimeUnit.MINUTES)
+			.build(new CacheLoader<>()
+			{
+				@Override
+				public List<WorldPoint> load(@NotNull WorldPoint key)
+				{
+					log.debug("Loading path to {}", key);
+					return buildPath(key, false);
+				}
+			});
+
+	public static final LoadingCache<WorldPoint, List<WorldPoint>> LOCAL_PATH_CACHE = CacheBuilder.newBuilder()
+			.maximumSize(5)
+			.expireAfterWrite(5, TimeUnit.MINUTES)
+			.build(new CacheLoader<>()
+			{
+				@Override
+				public List<WorldPoint> load(@NotNull WorldPoint key)
+				{
+					log.debug("Loading local path to {}", key);
+					return buildPath(key, true);
+				}
+			});
 
 	public static boolean walkTo(WorldPoint destination, boolean localRegion)
 	{
@@ -111,8 +136,11 @@ public class Walker
 		if (teleport != null && offPath)
 		{
 			log.debug("Casting teleport {}", teleport);
-			teleport.getHandler().run();
-			Time.sleepUntil(() -> Players.getLocal().distanceTo(teleport.getDestination()) < 10, 5000);
+			if (Players.getLocal().isIdle())
+			{
+				teleport.getHandler().run();
+			}
+			Time.sleepUntil(() -> Players.getLocal().distanceTo(teleport.getDestination()) < 10, 500);
 			return false;
 		}
 
@@ -134,18 +162,6 @@ public class Walker
 
 		return walkAlong(destination, path, transports);
 	}
-
-	public static final LoadingCache<WorldPoint, List<WorldPoint>> PATH_CACHE = CacheBuilder.newBuilder()
-			.expireAfterWrite(5, TimeUnit.MINUTES)
-			.build(new CacheLoader<>()
-			{
-				@Override
-				public List<WorldPoint> load(@NotNull WorldPoint key)
-				{
-					log.debug("Loading path to {}", key);
-					return buildPath(key, false);
-				}
-			});
 
 	public static boolean walkAlong(WorldPoint destination, List<WorldPoint> path, Map<WorldPoint, List<Transport>> transports)
 	{
@@ -173,18 +189,6 @@ public class Walker
 
 		return false;
 	}
-
-	public static final LoadingCache<WorldPoint, List<WorldPoint>> LOCAL_PATH_CACHE = CacheBuilder.newBuilder()
-			.expireAfterWrite(5, TimeUnit.MINUTES)
-			.build(new CacheLoader<>()
-			{
-				@Override
-				public List<WorldPoint> load(@NotNull WorldPoint key)
-				{
-					log.debug("Loading local path to {}", key);
-					return buildPath(key, true);
-				}
-			});
 
 	public static boolean stepAlong(List<WorldPoint> path)
 	{
@@ -242,14 +246,14 @@ public class Walker
 			return false;
 		}
 
-		if (!Movement.isRunEnabled() && (Game.getClient().getEnergy() >= Rand.nextInt(MIN_ENERGY, MAX_MIN_ENERGY) || (local.getHealthScale() > -1 && Game.getClient().getEnergy() > 0)))
+		if (!Movement.isRunEnabled() && (Static.getClient().getEnergy() >= Rand.nextInt(MIN_ENERGY, MAX_MIN_ENERGY) || (local.getHealthScale() > -1 && Static.getClient().getEnergy() > 0)))
 		{
 			Movement.toggleRun();
 			Time.sleepUntil(Movement::isRunEnabled, 2000);
 			return true;
 		}
 
-		if (!Movement.isRunEnabled() && Game.getClient().getEnergy() > 0 && Movement.isStaminaBoosted())
+		if (!Movement.isRunEnabled() && Static.getClient().getEnergy() > 0 && Movement.isStaminaBoosted())
 		{
 			Movement.toggleRun();
 			Time.sleepUntil(Movement::isRunEnabled, 2000);

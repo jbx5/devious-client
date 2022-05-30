@@ -1,14 +1,6 @@
 package net.unethicalite.client;
 
-import net.unethicalite.api.movement.pathfinder.GlobalCollisionMap;
-import net.unethicalite.api.script.paint.Paint;
-import net.unethicalite.client.config.UnethicaliteConfig;
-import net.unethicalite.client.managers.DefinitionManager;
-import net.unethicalite.client.managers.NativeInputManager;
-import net.unethicalite.client.managers.NeverLogManager;
-import net.unethicalite.client.managers.interaction.InteractionManager;
 import lombok.Getter;
-import lombok.Setter;
 import net.runelite.api.Client;
 import net.runelite.api.packets.ClientPacket;
 import net.runelite.client.callback.ClientThread;
@@ -19,6 +11,13 @@ import net.runelite.client.game.ItemManager;
 import net.runelite.client.game.WorldService;
 import net.runelite.client.input.KeyManager;
 import net.runelite.client.plugins.PluginManager;
+import net.unethicalite.api.movement.pathfinder.GlobalCollisionMap;
+import net.unethicalite.api.script.paint.Paint;
+import net.unethicalite.client.config.UnethicaliteConfig;
+import net.unethicalite.client.managers.DefinitionManager;
+import net.unethicalite.client.managers.NativeInputManager;
+import net.unethicalite.client.managers.NeverLogManager;
+import net.unethicalite.client.managers.interaction.InteractionManager;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -27,7 +26,6 @@ import javax.inject.Singleton;
 public class Static
 {
 	@Getter
-	@Setter
 	private static String[] scriptArgs = new String[0];
 
 	@Inject
@@ -97,4 +95,9 @@ public class Static
 	@Inject
 	@Getter
 	private static NeverLogManager neverLogManager;
+
+	public static void setScriptArgs(String[] scriptArgs)
+	{
+		Static.scriptArgs = scriptArgs;
+	}
 }

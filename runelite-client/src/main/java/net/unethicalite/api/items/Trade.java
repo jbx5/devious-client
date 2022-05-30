@@ -1,7 +1,6 @@
 package net.unethicalite.api.items;
 
 import net.unethicalite.api.commons.Predicates;
-import net.unethicalite.api.game.Game;
 import net.unethicalite.api.game.Vars;
 import net.unethicalite.api.widgets.Dialog;
 import net.unethicalite.api.widgets.Widgets;
@@ -12,6 +11,7 @@ import net.runelite.api.VarClientStr;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetID;
 import net.runelite.api.widgets.WidgetInfo;
+import net.unethicalite.client.Static;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -140,7 +140,7 @@ public class Trade
 	public static List<Item> getAll(boolean theirs, Predicate<Item> filter)
 	{
 		List<Item> items = new ArrayList<>();
-		ItemContainer container = Game.getClient().getItemContainer(theirs ? InventoryID.TRADEOTHER : InventoryID.TRADE);
+		ItemContainer container = Static.getClient().getItemContainer(theirs ? InventoryID.TRADEOTHER : InventoryID.TRADE);
 		if (container == null)
 		{
 			return items;
@@ -169,7 +169,7 @@ public class Trade
 	public static List<Item> getInventory(Predicate<Item> filter)
 	{
 		List<Item> items = new ArrayList<>();
-		ItemContainer container = Game.getClient().getItemContainer(InventoryID.INVENTORY);
+		ItemContainer container = Static.getClient().getItemContainer(InventoryID.INVENTORY);
 		if (container == null)
 		{
 			return items;

@@ -1,6 +1,5 @@
 package net.unethicalite.api.widgets;
 
-import net.unethicalite.api.game.Game;
 import net.unethicalite.api.query.widgets.WidgetQuery;
 import net.unethicalite.client.Static;
 import net.runelite.api.widgets.Widget;
@@ -89,7 +88,7 @@ public class Widgets
 
 	public static Widget fromId(int packedId)
 	{
-		return Game.getClient().getWidget(packedId);
+		return Static.getClient().getWidget(packedId);
 	}
 
 	public static boolean isVisible(Widget widget)

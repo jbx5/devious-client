@@ -1,6 +1,5 @@
 package net.unethicalite.api.input;
 
-import net.unethicalite.api.game.Game;
 import net.unethicalite.api.util.Randomizer;
 import net.runelite.api.Actor;
 import net.runelite.api.Item;
@@ -9,6 +8,7 @@ import net.runelite.api.Point;
 import net.runelite.api.TileItem;
 import net.runelite.api.TileObject;
 import net.runelite.api.widgets.Widget;
+import net.unethicalite.client.Static;
 
 import java.awt.Rectangle;
 import java.awt.Shape;
@@ -33,14 +33,14 @@ public class PointRandomizer
 
     public static Rectangle getBoundsFor(TileItem item)
     {
-        Shape shape = Perspective.getClickbox(Game.getClient(), item.getModel(), 0, item.getLocalLocation());
+        Shape shape = Perspective.getClickbox(Static.getClient(), item.getModel(), 0, item.getLocalLocation());
         if (shape != null)
         {
             return shape.getBounds();
         }
         else
         {
-            net.runelite.api.Point screenCoords = Perspective.localToCanvas(Game.getClient(), item.getLocalLocation(), Game.getClient().getPlane());
+            net.runelite.api.Point screenCoords = Perspective.localToCanvas(Static.getClient(), item.getLocalLocation(), Static.getClient().getPlane());
             if (screenCoords != null)
             {
                 return new Rectangle(screenCoords.getX(), screenCoords.getY(), 0, 0);
@@ -56,7 +56,7 @@ public class PointRandomizer
 
     public static Rectangle getBoundsFor(Item item)
     {
-        Widget widget = Game.getClient().getWidget(item.getWidgetId());
+        Widget widget = Static.getClient().getWidget(item.getWidgetId());
         if (widget == null)
         {
             return new Rectangle(-1, -1, 0, 0);
@@ -87,7 +87,7 @@ public class PointRandomizer
 
     public static Rectangle getBoundsFor(Actor npc)
     {
-        Shape shape = Perspective.getClickbox(Game.getClient(), npc.getModel(), 0, npc.getLocalLocation());
+        Shape shape = Perspective.getClickbox(Static.getClient(), npc.getModel(), 0, npc.getLocalLocation());
         if (shape != null)
         {
             return shape.getBounds();
@@ -112,7 +112,7 @@ public class PointRandomizer
         }
         else
         {
-            net.runelite.api.Point screenCoords = Perspective.localToCanvas(Game.getClient(), object.getLocalLocation(), Game.getClient().getPlane());
+            net.runelite.api.Point screenCoords = Perspective.localToCanvas(Static.getClient(), object.getLocalLocation(), Static.getClient().getPlane());
             if (screenCoords != null)
             {
                 return new Rectangle(screenCoords.getX(), screenCoords.getY(), 0, 0);

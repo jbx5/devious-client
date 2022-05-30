@@ -3,13 +3,14 @@ package net.unethicalite.api.packets;
 import net.unethicalite.api.game.Game;
 import net.unethicalite.api.game.GameThread;
 import net.runelite.api.packets.PacketBufferNode;
+import net.unethicalite.client.Static;
 
 public class MousePackets
 {
 	public static void queueClickPacket(int x, int y)
 	{
-		Game.getClient().setMouseLastPressedMillis(System.currentTimeMillis());
-		int mousePressedTime = ((int) (Game.getClient().getMouseLastPressedMillis() - Game.getClient().getClientMouseLastPressedMillis()));
+		Static.getClient().setMouseLastPressedMillis(System.currentTimeMillis());
+		int mousePressedTime = ((int) (Static.getClient().getMouseLastPressedMillis() - Static.getClient().getClientMouseLastPressedMillis()));
 		if (mousePressedTime < 0)
 		{
 			mousePressedTime = 0;
@@ -18,7 +19,7 @@ public class MousePackets
 		{
 			mousePressedTime = 32767;
 		}
-		Game.getClient().setClientMouseLastPressedMillis(Game.getClient().getMouseLastPressedMillis());
+		Static.getClient().setClientMouseLastPressedMillis(Static.getClient().getMouseLastPressedMillis());
 		int mouseInfo = (mousePressedTime << 1) + 1;
 		MousePackets.queueClickPacket(mouseInfo, x, y);
 	}
@@ -35,9 +36,9 @@ public class MousePackets
 
 	public static PacketBufferNode createClickPacket(int mouseInfo, int x, int y)
 	{
-		var client = Game.getClient();
+		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
-		var packetBufferNode = Game.getClient().preparePacket(clientPacket.EVENT_MOUSE_CLICK(), client.getPacketWriter().getIsaacCipher());
+		var packetBufferNode = Static.getClient().preparePacket(clientPacket.EVENT_MOUSE_CLICK(), client.getPacketWriter().getIsaacCipher());
 		packetBufferNode.getPacketBuffer().writeShort(mouseInfo);
 		packetBufferNode.getPacketBuffer().writeShort(x);
 		packetBufferNode.getPacketBuffer().writeShort(y);

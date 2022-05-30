@@ -1,12 +1,12 @@
 package net.unethicalite.api.utils;
 
-import net.unethicalite.api.game.Game;
 import net.unethicalite.api.widgets.Widgets;
 import net.runelite.api.Point;
 import net.runelite.api.RenderOverview;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
+import net.unethicalite.client.Static;
 
 import java.awt.*;
 
@@ -14,7 +14,7 @@ public class CoordUtils
 {
 	public static Point worldPointToWorldMap(WorldPoint worldPoint)
 	{
-		RenderOverview ro = Game.getClient().getRenderOverview();
+		RenderOverview ro = Static.getClient().getRenderOverview();
 
 		if (!ro.getWorldMapData().surfaceContainsPosition(worldPoint.getX(), worldPoint.getY()))
 		{
@@ -57,8 +57,8 @@ public class CoordUtils
 
 	public static WorldPoint worldMapToWorldPoint(Point point)
 	{
-		float zoom = Game.getClient().getRenderOverview().getWorldMapZoom();
-		RenderOverview renderOverview = Game.getClient().getRenderOverview();
+		float zoom = Static.getClient().getRenderOverview().getWorldMapZoom();
+		RenderOverview renderOverview = Static.getClient().getRenderOverview();
 		final WorldPoint mapPoint = new WorldPoint(renderOverview.getWorldMapPosition().getX(), renderOverview.getWorldMapPosition().getY(), 0);
 		final Point middle = worldPointToWorldMap(mapPoint);
 		if (middle == null)
