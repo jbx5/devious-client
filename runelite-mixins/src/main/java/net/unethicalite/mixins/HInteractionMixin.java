@@ -1,5 +1,6 @@
 package net.unethicalite.mixins;
 
+import net.runelite.api.MenuAction;
 import net.runelite.api.MenuEntry;
 import net.runelite.api.events.MenuOptionClicked;
 import net.runelite.api.mixins.Copy;
@@ -143,7 +144,7 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 			}
 		}
 
-		if (itemId != -1)
+		if (itemId != -1 && opcode == MenuAction.CC_OP.getId())
 		{
 			client.invokeWidgetAction(event.getId(), event.getParam1(), event.getParam0(), itemId,
 					event.getMenuTarget());
