@@ -1,16 +1,5 @@
 package net.unethicalite.client.devtools;
 
-import net.unethicalite.api.SceneEntity;
-import net.unethicalite.api.coords.RegionPoint;
-import net.unethicalite.api.coords.ScenePoint;
-import net.unethicalite.api.entities.NPCs;
-import net.unethicalite.api.entities.Players;
-import net.unethicalite.api.entities.Projectiles;
-import net.unethicalite.api.entities.TileItems;
-import net.unethicalite.api.entities.TileObjects;
-import net.unethicalite.api.scene.Tiles;
-import net.unethicalite.api.utils.DrawUtils;
-import net.unethicalite.api.widgets.Widgets;
 import lombok.Getter;
 import lombok.Setter;
 import net.runelite.api.Actor;
@@ -40,6 +29,17 @@ import net.runelite.client.ui.FontManager;
 import net.runelite.client.ui.overlay.OverlayUtil;
 import net.runelite.client.ui.overlay.tooltip.Tooltip;
 import net.runelite.client.ui.overlay.tooltip.TooltipManager;
+import net.unethicalite.api.SceneEntity;
+import net.unethicalite.api.coords.RegionPoint;
+import net.unethicalite.api.coords.ScenePoint;
+import net.unethicalite.api.entities.NPCs;
+import net.unethicalite.api.entities.Players;
+import net.unethicalite.api.entities.Projectiles;
+import net.unethicalite.api.entities.TileItems;
+import net.unethicalite.api.entities.TileObjects;
+import net.unethicalite.api.scene.Tiles;
+import net.unethicalite.api.utils.DrawUtils;
+import net.unethicalite.api.widgets.Widgets;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -647,6 +647,7 @@ public class EntityRenderer
 			if (interactable instanceof NPC)
 			{
 				sb.append("Transformvarbit: ").append(((NPC) interactable).getComposition().getTransformVarbit()).append("</br>");
+				sb.append("Transformvarp: ").append(((NPC) interactable).getComposition().getTransformVarp()).append("</br>");
 			}
 			return;
 		}
@@ -671,7 +672,10 @@ public class EntityRenderer
 				sb.append("Scene: ").append(ScenePoint.fromWorld(location)).append("</br>");
 			}
 
-			sb.append("Transformvarbit: ").append(client.getObjectDefinition(interactable.getId()).getTransformVarbit()).append("</br>");
+			sb.append("Transformvarbit: ")
+					.append(client.getObjectDefinition(interactable.getId()).getTransformVarbit()).append("</br>");
+			sb.append("Transformvarp: ")
+					.append(client.getObjectDefinition(interactable.getId()).getVarPlayerId()).append("</br>");
 			return;
 		}
 
