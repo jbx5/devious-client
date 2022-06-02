@@ -1,9 +1,5 @@
 package net.unethicalite.mixins;
 
-import net.unethicalite.api.events.ExperienceGained;
-import net.unethicalite.api.events.LoginStateChanged;
-import net.unethicalite.api.events.MenuAutomated;
-import net.unethicalite.api.events.PlaneChanged;
 import net.runelite.api.ItemComposition;
 import net.runelite.api.Skill;
 import net.runelite.api.Tile;
@@ -26,9 +22,15 @@ import net.runelite.rs.api.RSProjectile;
 import net.runelite.rs.api.RSRenderable;
 import net.runelite.rs.api.RSRuneLiteMenuEntry;
 import net.runelite.rs.api.RSTile;
+import net.unethicalite.api.events.ExperienceGained;
+import net.unethicalite.api.events.LobbyWorldSelectToggled;
+import net.unethicalite.api.events.LoginStateChanged;
+import net.unethicalite.api.events.MenuAutomated;
+import net.unethicalite.api.events.PlaneChanged;
 import net.unethicalite.api.events.WorldHopped;
 
 import javax.annotation.Nonnull;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -287,5 +289,17 @@ public abstract class HClientMixin implements RSClient
 		{
 			client.getCallbacks().post(new WorldHopped(client.getWorld()));
 		}
+	}
+
+	@FieldHook("worldSelectOpen")
+	@Inject
+	public static void worldSelectionScreenToggled(int idx)
+	{
+		if (!client.isWorldSelectOpen())
+		{
+			Arrays.fill(client.getBufferProvider().getPixels(), 0);
+		}
+
+		client.getCallbacks().post(new LobbyWorldSelectToggled(client.isWorldSelectOpen()));
 	}
 }

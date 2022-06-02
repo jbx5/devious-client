@@ -1,6 +1,5 @@
 package net.unethicalite.api.script.blocking_events;
 
-import net.runelite.api.Client;
 import net.runelite.api.MenuAction;
 import net.runelite.api.widgets.Widget;
 import net.unethicalite.api.widgets.Widgets;
@@ -17,22 +16,30 @@ public class WelcomeScreenEvent extends BlockingEvent
 	@Override
 	public int loop()
 	{
-		Client client = Static.getClient();
-		Widget old = Widgets.get(378, x -> x.hasAction("Play"));
-		if (Widgets.isVisible(old))
+		Widget playButton = getPlayButton();
+		if (playButton != null)
 		{
-			client.interact(1, MenuAction.CC_OP.getId(), -1, old.getId());
-			return -1;
-		}
-
-		Widget nu = Widgets.get(413, x -> x.hasAction("Play"));
-		if (Widgets.isVisible(nu))
-		{
-			client.interact(1, MenuAction.CC_OP.getId(), -1, nu.getId());
-			return -1;
+			Static.getClient().interact(1, MenuAction.CC_OP.getId(), -1, playButton.getId());
 		}
 
 		return -1;
+	}
+
+	public static Widget getPlayButton()
+	{
+		Widget nu = Widgets.get(413, x -> x.hasAction("Play"));
+		if (Widgets.isVisible(nu))
+		{
+			return nu;
+		}
+
+		Widget old = Widgets.get(378, x -> x.hasAction("Play"));
+		if (Widgets.isVisible(old))
+		{
+			return old;
+		}
+
+		return null;
 	}
 
 	public static boolean isWelcomeScreenOpen()

@@ -2705,4 +2705,6 @@ public interface Client extends OAuthApi, GameEngine
 	void invokeWidgetAction(int identifier, int param1, int param0, int itemId, String target);
 
 	Widget getWidgetChild(int parent, int child);
+
+	void promptCredentials(boolean clearPass);
 }

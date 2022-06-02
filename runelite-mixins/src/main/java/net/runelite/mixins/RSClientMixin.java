@@ -3062,8 +3062,8 @@ public abstract class RSClientMixin implements RSClient
 		}
 	}
 
-	@FieldHook("worldSelectOpen")
-	@Inject
+//	@FieldHook("worldSelectOpen")
+//	@Inject
 	public static void worldSelectionScreenToggled(int idx)
 	{
 		if (!client.isWorldSelectOpen())
