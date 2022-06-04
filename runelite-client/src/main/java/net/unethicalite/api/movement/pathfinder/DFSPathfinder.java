@@ -11,6 +11,7 @@ import java.util.Map;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.coords.WorldPoint;
+import net.unethicalite.api.movement.pathfinder.model.Transport;
 import net.unethicalite.client.Static;
 
 @Slf4j

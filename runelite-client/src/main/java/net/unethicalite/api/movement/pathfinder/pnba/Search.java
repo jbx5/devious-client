@@ -1,7 +1,7 @@
 package net.unethicalite.api.movement.pathfinder.pnba;
 
 import net.unethicalite.api.movement.pathfinder.CollisionMap;
-import net.unethicalite.api.movement.pathfinder.Transport;
+import net.unethicalite.api.movement.pathfinder.model.Transport;
 import lombok.Value;
 import net.runelite.api.coords.WorldPoint;
 

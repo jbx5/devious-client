@@ -6,7 +6,7 @@ import com.google.common.cache.LoadingCache;
 import net.unethicalite.api.commons.Rand;
 import net.unethicalite.api.entities.Players;
 import net.unethicalite.api.game.Vars;
-import net.unethicalite.api.movement.pathfinder.BankLocation;
+import net.unethicalite.api.movement.pathfinder.model.BankLocation;
 import net.unethicalite.api.movement.pathfinder.CollisionMap;
 import net.unethicalite.api.movement.pathfinder.Walker;
 import net.unethicalite.api.scene.Tiles;

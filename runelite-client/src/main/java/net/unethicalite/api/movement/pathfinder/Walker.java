@@ -8,6 +8,8 @@ import net.unethicalite.api.commons.Time;
 import net.unethicalite.api.entities.Players;
 import net.unethicalite.api.movement.Movement;
 import net.unethicalite.api.movement.Reachable;
+import net.unethicalite.api.movement.pathfinder.model.Teleport;
+import net.unethicalite.api.movement.pathfinder.model.Transport;
 import net.unethicalite.api.movement.pathfinder.pnba.ParallelShortestPathFinder;
 import net.unethicalite.api.scene.Tiles;
 import net.unethicalite.client.Static;

@@ -1,6 +1,7 @@
 package net.unethicalite.api.movement.pathfinder;
 
 import net.unethicalite.api.entities.Players;
+import net.unethicalite.api.movement.pathfinder.model.Transport;
 import net.unethicalite.client.Static;
 import java.util.ArrayList;
 import java.util.Collections;

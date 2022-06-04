@@ -1,4 +1,4 @@
-package net.unethicalite.api.movement.pathfinder;
+package net.unethicalite.api.movement.pathfinder.model;
 
 import net.unethicalite.api.entities.Players;
 import net.unethicalite.api.movement.Movement;

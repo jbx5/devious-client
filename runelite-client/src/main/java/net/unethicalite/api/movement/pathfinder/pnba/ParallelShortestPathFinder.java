@@ -2,7 +2,7 @@ package net.unethicalite.api.movement.pathfinder.pnba;
 
 import com.google.common.collect.ImmutableList;
 import net.unethicalite.api.movement.pathfinder.CollisionMap;
-import net.unethicalite.api.movement.pathfinder.Transport;
+import net.unethicalite.api.movement.pathfinder.model.Transport;
 import lombok.AllArgsConstructor;
 import lombok.Value;
 import lombok.extern.slf4j.Slf4j;

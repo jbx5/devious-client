@@ -1,11 +1,11 @@
-package net.unethicalite.api.movement.pathfinder;
+package net.unethicalite.api.movement.pathfinder.model;
 
 import net.runelite.api.ItemID;
 
 public class MovementConstants
 {
 
-    static final int[] RING_OF_DUELING = new int[]
+    public static final int[] RING_OF_DUELING = new int[]
             {
                     ItemID.RING_OF_DUELING8,
                     ItemID.RING_OF_DUELING7,
@@ -17,7 +17,7 @@ public class MovementConstants
                     ItemID.RING_OF_DUELING1,
             };
 
-    static final int[] GAMES_NECKLACE = new int[]
+    public static final int[] GAMES_NECKLACE = new int[]
             {
                     ItemID.GAMES_NECKLACE8,
                     ItemID.GAMES_NECKLACE7,
@@ -29,7 +29,7 @@ public class MovementConstants
                     ItemID.GAMES_NECKLACE1,
             };
 
-    static final int[] COMBAT_BRACELET = new int[]
+    public static final int[] COMBAT_BRACELET = new int[]
             {
                     ItemID.COMBAT_BRACELET1,
                     ItemID.COMBAT_BRACELET2,
@@ -39,7 +39,7 @@ public class MovementConstants
                     ItemID.COMBAT_BRACELET6,
             };
 
-    static final int[] RING_OF_WEALTH = new int[]
+    public static final int[] RING_OF_WEALTH = new int[]
             {
                     ItemID.RING_OF_WEALTH_5,
                     ItemID.RING_OF_WEALTH_4,
@@ -48,7 +48,7 @@ public class MovementConstants
                     ItemID.RING_OF_WEALTH_1,
             };
 
-    static final int[] AMULET_OF_GLORY = new int[]
+    public static final int[] AMULET_OF_GLORY = new int[]
             {
                     ItemID.AMULET_OF_GLORY6,
                     ItemID.AMULET_OF_GLORY5,
@@ -58,7 +58,7 @@ public class MovementConstants
                     ItemID.AMULET_OF_GLORY1,
             };
 
-    static final int[] NECKLACE_OF_PASSAGE = new int[]
+    public static final int[] NECKLACE_OF_PASSAGE = new int[]
             {
                     ItemID.NECKLACE_OF_PASSAGE1,
                     ItemID.NECKLACE_OF_PASSAGE2,
@@ -67,7 +67,7 @@ public class MovementConstants
                     ItemID.NECKLACE_OF_PASSAGE5,
             };
 
-    static final int[] BURNING_AMULET = new int[]
+    public static final int[] BURNING_AMULET = new int[]
             {
                     ItemID.BURNING_AMULET5,
                     ItemID.BURNING_AMULET4,
@@ -76,12 +76,12 @@ public class MovementConstants
                     ItemID.BURNING_AMULET1,
             };
 
-    static final int[] XERICS_TALISMAN = new int[]
+    public static final int[] XERICS_TALISMAN = new int[]
             {
                     ItemID.XERICS_TALISMAN
             };
 
-    static final int[] SLAYER_RING = new int[]
+    public static final int[] SLAYER_RING = new int[]
             {
                     ItemID.SLAYER_RING_ETERNAL,
                     ItemID.SLAYER_RING_8,
@@ -94,7 +94,7 @@ public class MovementConstants
                     ItemID.SLAYER_RING_1,
             };
 
-    static final int[] DIGSITE_PENDANT = new int[]
+    public static final int[] DIGSITE_PENDANT = new int[]
             {
                     ItemID.DIGSITE_PENDANT_5,
                     ItemID.DIGSITE_PENDANT_4,
@@ -103,12 +103,12 @@ public class MovementConstants
                     ItemID.DIGSITE_PENDANT_1,
             };
 
-    static final int[] DRAKANS_MEDALLION = new int[]
+    public static final int[] DRAKANS_MEDALLION = new int[]
             {
                     ItemID.DRAKANS_MEDALLION
             };
 
-    static final int[] SKILLS_NECKLACE = new int[]
+    public static final int[] SKILLS_NECKLACE = new int[]
             {
                     ItemID.SKILLS_NECKLACE6,
                     ItemID.SKILLS_NECKLACE5,

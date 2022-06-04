@@ -1,7 +1,10 @@
-package net.unethicalite.api.movement.pathfinder;
+package net.unethicalite.api.movement.pathfinder.model;
 
 import lombok.Value;
 import net.runelite.api.coords.WorldPoint;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Value
 public class Transport
@@ -11,5 +14,5 @@ public class Transport
 	int sourceRadius;
 	int destinationRadius;
 	Runnable handler;
-	String[] actions;
+	List<TransportRequirement> requirements = new ArrayList<>();
 }
