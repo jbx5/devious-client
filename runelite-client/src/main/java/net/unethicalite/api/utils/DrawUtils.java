@@ -81,16 +81,12 @@ public class DrawUtils
 
 	public static void drawPath(Graphics2D graphics2D, WorldPoint destination)
 	{
-		drawPath(graphics2D, destination, false);
-	}
-
-	public static void drawPath(Graphics2D graphics2D, WorldPoint destination, boolean localRegion)
-	{
 		try
 		{
-			List<WorldPoint> path = localRegion ? Walker.LOCAL_PATH_CACHE.get(destination)
-					: Walker.PATH_CACHE.get(destination);
-			path.forEach(tile -> tile.outline(Static.getClient(), graphics2D, Color.RED, null));
+//			if (!Walker.getCurrentPath().isLoading())
+//			{
+//				Walker.getCurrentPath().getPath().forEach(tile -> tile.outline(Static.getClient(), graphics2D, Color.RED, null));
+//			}
 			destination.outline(Static.getClient(), graphics2D, Color.GREEN, "Destination");
 		}
 		catch (Exception e)

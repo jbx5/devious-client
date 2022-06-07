@@ -1,10 +1,12 @@
 package net.unethicalite.api.movement.pathfinder.model;
 
+import lombok.Builder;
 import lombok.Value;
 import net.runelite.api.coords.WorldPoint;
 import net.unethicalite.api.movement.pathfinder.TransportLoader;
 
 @Value
+@Builder(toBuilder = true)
 public class TransportDto
 {
     WorldPoint source;

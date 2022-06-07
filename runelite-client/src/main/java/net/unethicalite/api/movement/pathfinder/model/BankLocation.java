@@ -67,13 +67,8 @@ public enum BankLocation
 
 	public static BankLocation getNearestPath()
 	{
-		return getNearestPath(false);
-	}
-
-	public static BankLocation getNearestPath(boolean localRegion)
-	{
 		return Arrays.stream(values())
-				.min(Comparator.comparingInt(x -> Movement.calculateDistance(x.getArea().toWorldPoint(), localRegion)))
+				.min(Comparator.comparingInt(x -> Movement.calculateDistance(x.getArea().toWorldPoint())))
 				.orElse(null);
 	}
 }

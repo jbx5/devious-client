@@ -19,10 +19,6 @@ import net.unethicalite.api.quests.Quest;
 import net.unethicalite.api.widgets.Dialog;
 import net.unethicalite.api.widgets.Widgets;
 import net.unethicalite.client.Static;
-//import net.unethicalite.client.minimal.config.UnethicaliteProperties;
-//import java.io.IOException;
-//import java.io.InputStream;
-//import java.net.URL;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -69,16 +65,10 @@ public class TransportLoader
 		loadStaticTransports();
 	}
 
-	private static List<Transport> loadStaticTransports()
+	public static void refreshStaticTransports()
 	{
-		if (!STATIC_TRANSPORTS.isEmpty())
-		{
-			return STATIC_TRANSPORTS;
-		}
-
-		// TODO INTENTIONALLY BROKE SO YOU MANUALLY UPDATE PATH
-		aaaaaaaaaaaaaaaaaaaaaaaaaaaa;;;;;;;;;;;;;
-		try (InputStream stream = Files.newInputStream(Paths.get("transports.json")))
+		STATIC_TRANSPORTS.clear();
+		try (InputStream stream = Walker.class.getResourceAsStream("/transports.json"))
 		{
 			TransportDto[] json = GSON.fromJson(new String(stream.readAllBytes()), TransportDto[].class);
 
@@ -94,20 +84,16 @@ public class TransportLoader
 		}
 
 		log.info("Loaded {} transports from file", STATIC_TRANSPORTS.size());
+	}
 
-//		try (InputStream txt = new URL(UnethicaliteProperties.getApiUrl() + "/transports").openStream())
-//		{
-//			TransportDto2[] json = GSON.fromJson(new String(txt.readAllBytes()), TransportDto2[].class);
-//
-//			for (TransportDto2 transportDto2 : json)
-//			{
-//				STATIC_TRANSPORTS.add(transportDto2.toModel());
-//			}
-//		}
-//		catch (IOException e)
-//		{
-//			e.printStackTrace();
-//		}
+	private static List<Transport> loadStaticTransports()
+	{
+		if (!STATIC_TRANSPORTS.isEmpty())
+		{
+			return STATIC_TRANSPORTS;
+		}
+
+		refreshStaticTransports();
 		return STATIC_TRANSPORTS;
 	}
 
@@ -120,14 +106,6 @@ public class TransportLoader
 		}
 
 		return LAST_TRANSPORT_LIST;
-//		return filterTransports(LAST_TRANSPORT_LIST);
-	}
-
-	public static List<Transport> filterTransports(List<Transport> in)
-	{
-		return in.stream()
-				.filter(it -> it.getRequirements().stream().allMatch(TransportRequirement::fulfilled))
-				.collect(Collectors.toList());
 	}
 
 	public static List<Transport> buildCachedTransportList()
@@ -167,23 +145,6 @@ public class TransportLoader
 
 		if (Worlds.inMembersWorld())
 		{
-			// Edgeville
-			if (Skills.getBoostedLevel(Skill.AGILITY) >= 21)
-			{
-				transports.add(objectTransport(
-						new WorldPoint(3142, 3513, 0),
-						new WorldPoint(3137, 3516, 0),
-						16530,
-						"Climb-into")
-				);
-				transports.add(objectTransport(
-						new WorldPoint(3137, 3516, 0),
-						new WorldPoint(3142, 3513, 0),
-						16529,
-						"Climb-into")
-				);
-			}
-
 			// Crabclaw island
 			if (gold >= 10_000)
 			{
