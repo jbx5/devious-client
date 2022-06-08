@@ -1,16 +1,14 @@
 package net.unethicalite.api.magic;
 
-import net.runelite.api.VarPlayer;
+import net.runelite.api.ItemID;
+import net.runelite.api.Skill;
+import net.runelite.api.widgets.WidgetInfo;
 import net.unethicalite.api.game.Skills;
 import net.unethicalite.api.game.Vars;
 import net.unethicalite.api.game.Worlds;
 import net.unethicalite.api.items.Equipment;
 import net.unethicalite.api.items.Inventory;
-import net.runelite.api.ItemID;
-import net.runelite.api.Skill;
-import net.runelite.api.widgets.WidgetInfo;
 
-import java.time.Instant;
 import java.util.Arrays;
 
 public enum SpellBook

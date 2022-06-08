@@ -65,7 +65,6 @@ public class TransportLoader
 
 	static
 	{
-		log.debug("Loading transports");
 		STATIC_TRANSPORTS = new ArrayList<>();
 		TransportDto[] dtos = HttpUtil.readJson(UnethicaliteProperties.getApiUrl() + "/transports",
 				TransportDto[].class);
