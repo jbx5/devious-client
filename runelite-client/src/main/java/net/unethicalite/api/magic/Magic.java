@@ -1,15 +1,19 @@
 package net.unethicalite.api.magic;
 
-import net.unethicalite.api.game.Vars;
-import net.unethicalite.api.widgets.Widgets;
 import net.runelite.api.Item;
 import net.runelite.api.MenuAction;
 import net.runelite.api.NPC;
 import net.runelite.api.Player;
 import net.runelite.api.TileItem;
 import net.runelite.api.TileObject;
+import net.runelite.api.VarPlayer;
 import net.runelite.api.widgets.Widget;
+import net.unethicalite.api.game.Vars;
+import net.unethicalite.api.widgets.Widgets;
 import net.unethicalite.client.Static;
+
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 
 public class Magic
 {
@@ -78,5 +82,15 @@ public class Magic
 		{
 			widget.interact(0);
 		}
+	}
+
+	public static Instant getLastHomeTeleportUsage()
+	{
+		return Instant.ofEpochSecond(Vars.getVarp(VarPlayer.LAST_HOME_TELEPORT.getId()) * 60L);
+	}
+
+	public static boolean isHomeTeleportOnCooldown()
+	{
+		return getLastHomeTeleportUsage().plus(30, ChronoUnit.MINUTES).isAfter(Instant.now());
 	}
 }

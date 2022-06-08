@@ -1,15 +1,19 @@
 package net.unethicalite.api.movement.pathfinder;
 
-import net.unethicalite.api.magic.Spell;
-import net.unethicalite.api.magic.SpellBook;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import net.runelite.api.coords.WorldPoint;
+import net.unethicalite.api.magic.Spell;
+import net.unethicalite.api.magic.SpellBook;
 
 @AllArgsConstructor
 @Getter
 public enum TeleportSpell
 {
+	LUMBRIDGE_HOME_TELEPORT(
+			SpellBook.Standard.HOME_TELEPORT,
+			new WorldPoint(3225, 3219, 0)
+	),
 	TELEPORT_TO_HOUSE(
 			SpellBook.Standard.TELEPORT_TO_HOUSE,
 			null
@@ -48,6 +52,10 @@ public enum TeleportSpell
 	),
 
 	// ANCIENT TELEPORTS
+	EDGEVILLE_HOME_TELEPORT(
+			SpellBook.Ancient.EDGEVILLE_HOME_TELEPORT,
+			new WorldPoint(3087, 3496, 0)
+	),
 	PADDEWWA_TELEPORT(
 			SpellBook.Ancient.PADDEWWA_TELEPORT,
 			new WorldPoint(3098, 9883, 0)
@@ -82,6 +90,10 @@ public enum TeleportSpell
 	),
 
 	// LUNAR TELEPORTS
+	LUNAR_HOME_TELEPORT(
+			SpellBook.Lunar.LUNAR_HOME_TELEPORT,
+			new WorldPoint(2094, 3914, 0)
+	),
 	MOONCLAN_TELEPORT(
 			SpellBook.Lunar.MOONCLAN_TELEPORT,
 			new WorldPoint(2113, 3917, 0)
@@ -115,7 +127,6 @@ public enum TeleportSpell
 	),
 
 	// NECROMANCY TELEPORTS
-
 	ARCEUUS_HOME_TELEPORT(
 			SpellBook.Necromancy.ARCEUUS_HOME_TELEPORT,
 			new WorldPoint(1699, 3882, 0)

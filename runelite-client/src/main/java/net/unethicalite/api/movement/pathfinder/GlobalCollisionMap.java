@@ -1,12 +1,19 @@
 package net.unethicalite.api.movement.pathfinder;
 
+import net.runelite.client.RuneLiteModule;
+import net.unethicalite.api.commons.HttpUtil;
+import org.slf4j.LoggerFactory;
+
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
 public class GlobalCollisionMap implements CollisionMap
@@ -133,6 +140,30 @@ public class GlobalCollisionMap implements CollisionMap
 	public boolean e(int x, int y, int z)
 	{
 		return get(x, y, z, 1);
+	}
+
+	public static GlobalCollisionMap fetchFromUrl(String url) throws IOException
+	{
+		byte[] bytes = HttpUtil.readBytes(url);
+		if (bytes != null)
+		{
+			return new GlobalCollisionMap(new GZIPInputStream(new ByteArrayInputStream(bytes)).readAllBytes());
+		}
+
+		try (InputStream is = Walker.class.getResourceAsStream("/regions"))
+		{
+			if (is == null)
+			{
+				// Worst case scenario: Return an empty collisionmap and build collision data during the session
+				return new GlobalCollisionMap();
+			}
+
+			LoggerFactory.getLogger(RuneLiteModule.class)
+					.warn("Failed to load global collision map, falling back to old map");
+			return new GlobalCollisionMap(
+					new GZIPInputStream(new ByteArrayInputStream(is.readAllBytes())).readAllBytes()
+			);
+		}
 	}
 }
 

@@ -1,8 +1,15 @@
 package net.unethicalite.api.movement.pathfinder;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import net.runelite.api.*;
+import net.runelite.api.Item;
+import net.runelite.api.ItemID;
+import net.runelite.api.MenuAction;
+import net.runelite.api.NPC;
+import net.runelite.api.NpcID;
+import net.runelite.api.Point;
+import net.runelite.api.QuestState;
+import net.runelite.api.Skill;
+import net.runelite.api.TileObject;
+import net.unethicalite.api.commons.HttpUtil;
 import net.unethicalite.api.entities.NPCs;
 import net.unethicalite.api.entities.Players;
 import net.unethicalite.api.entities.TileObjects;
@@ -19,10 +26,7 @@ import net.unethicalite.api.quests.Quest;
 import net.unethicalite.api.widgets.Dialog;
 import net.unethicalite.api.widgets.Widgets;
 import net.unethicalite.client.Static;
-import net.unethicalite.client.minimal.config.UnethicaliteProperties;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
+import net.unethicalite.client.config.UnethicaliteProperties;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -54,39 +58,29 @@ public class TransportLoader
 		new MagicMushtree(new WorldPoint(3676, 3755, 0), WidgetInfo.FOSSIL_MUSHROOM_SWAMP),
 		new MagicMushtree(new WorldPoint(3760, 3758, 0), WidgetInfo.FOSSIL_MUSHROOM_VALLEY)
 	);
-	private static final Gson GSON = new GsonBuilder().create();
 	private static int LAST_BUILD_TICK = 0;
-	private static final List<Transport> STATIC_TRANSPORTS = new ArrayList<>();
+	private static final List<Transport> STATIC_TRANSPORTS;
 	private static final WorldArea MLM = new WorldArea(3714, 5633, 60, 62, 0);
 	private static List<Transport> LAST_TRANSPORT_LIST = Collections.emptyList();
 
 	static
 	{
-		// Try to initialize the static transports before usage
-		loadStaticTransports();
-	}
+		STATIC_TRANSPORTS = new ArrayList<>();
+		TransportDto[] dtos = HttpUtil.readJson(UnethicaliteProperties.getApiUrl() + "/transports",
+				TransportDto[].class);
 
-	private static List<Transport> loadStaticTransports()
-	{
-		if (!STATIC_TRANSPORTS.isEmpty())
+		if (dtos != null)
 		{
-			return STATIC_TRANSPORTS;
-		}
-
-		try (InputStream txt = new URL(UnethicaliteProperties.getApiUrl() + "/transports").openStream())
-		{
-			TransportDto[] json = GSON.fromJson(new String(txt.readAllBytes()), TransportDto[].class);
-
-			for (TransportDto transportDto : json)
+			log.debug("Loaded {} transports", dtos.length);
+			for (TransportDto dto : dtos)
 			{
-				STATIC_TRANSPORTS.add(transportDto.toModel());
+				STATIC_TRANSPORTS.add(dto.toModel());
 			}
 		}
-		catch (IOException e)
-		{
-			e.printStackTrace();
-		}
+	}
 
+	private static List<Transport> getStaticTransports()
+	{
 		return STATIC_TRANSPORTS;
 	}
 
@@ -333,7 +327,7 @@ public class TransportLoader
 
 	public static List<Transport> buildCachedTransportList()
 	{
-		List<Transport> transports = new ArrayList<>(loadStaticTransports());
+		List<Transport> transports = new ArrayList<>(getStaticTransports());
 
 		// Entrana
 		transports.add(npcTransport(new WorldPoint(3041, 3237, 0), new WorldPoint(2834, 3331, 1), 1166, "Take-boat"));

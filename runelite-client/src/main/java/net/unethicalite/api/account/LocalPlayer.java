@@ -10,6 +10,11 @@ import net.unethicalite.client.Static;
 
 public class LocalPlayer
 {
+	public static Player get()
+	{
+		return Players.getLocal();
+	}
+
 	public static String getUsername()
 	{
 		return Static.getClient().getUsername();
@@ -40,14 +45,9 @@ public class LocalPlayer
 		return getMembershipDays() > 0;
 	}
 
-	public static Player getEntity()
-	{
-		return Players.getLocal();
-	}
-
 	public static String getDisplayName()
 	{
-		return getEntity().getName();
+		return get().getName();
 	}
 
 	public static AccountType getAccountType()

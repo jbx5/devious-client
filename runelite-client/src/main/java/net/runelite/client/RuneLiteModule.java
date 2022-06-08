@@ -35,12 +35,9 @@ import com.google.inject.name.Names;
 import com.openosrs.client.config.OpenOSRSConfig;
 
 import java.applet.Applet;
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.util.Map;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
 import java.util.Properties;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -49,15 +46,13 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
-import java.util.zip.GZIPInputStream;
 import javax.annotation.Nullable;
 import javax.inject.Named;
 import javax.inject.Singleton;
 
 import net.unethicalite.api.movement.pathfinder.GlobalCollisionMap;
-import net.unethicalite.api.movement.pathfinder.Walker;
 import net.unethicalite.client.config.UnethicaliteConfig;
-import net.unethicalite.client.minimal.config.UnethicaliteProperties;
+import net.unethicalite.client.config.UnethicaliteProperties;
 import net.unethicalite.client.Static;
 import lombok.AllArgsConstructor;
 import net.runelite.api.Client;
@@ -79,7 +74,6 @@ import net.runelite.http.api.RuneLiteAPI;
 import okhttp3.HttpUrl;
 import net.runelite.api.packets.ClientPacket;
 import okhttp3.OkHttpClient;
-import org.slf4j.LoggerFactory;
 
 @AllArgsConstructor
 public class RuneLiteModule extends AbstractModule
@@ -269,28 +263,12 @@ public class RuneLiteModule extends AbstractModule
 	@Singleton
 	GlobalCollisionMap provideGlobalCollisionMap(@Named("unethicalite.api.url") String apiUrl) throws IOException
 	{
-		try (InputStream is = new URL(apiUrl + "/regions").openStream())
-		{
-			return new GlobalCollisionMap(new GZIPInputStream(new ByteArrayInputStream(is.readAllBytes())).readAllBytes());
-		}
-		catch (IOException e)
-		{
-			// Fallback to old map
-			LoggerFactory.getLogger(RuneLiteModule.class)
-					.warn("Failed to load global collision map, falling back to old map", e);
-			return new GlobalCollisionMap(
-					new GZIPInputStream(
-							new ByteArrayInputStream(
-									Walker.class.getResourceAsStream("/regions").readAllBytes()
-							)
-					).readAllBytes()
-			);
-		}
+		return GlobalCollisionMap.fetchFromUrl(apiUrl + "/regions");
 	}
 
 	@Provides
 	@Singleton
-	UnethicaliteConfig provideInteractionConfig(ConfigManager configManager)
+	UnethicaliteConfig provideUnethicaliteConfig(ConfigManager configManager)
 	{
 		return configManager.getConfig(UnethicaliteConfig.class);
 	}
