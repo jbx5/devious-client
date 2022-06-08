@@ -391,7 +391,7 @@ public class Walker
 			boolean local
 	)
 	{
-		CollisionMap collisionMap = local ? new LocalCollisionMap() : Static.getGlobalCollisionMap();
+		CollisionMap collisionMap = local ? new LocalCollisionMap(false) : Static.getGlobalCollisionMap();
 		if (collisionMap == null)
 		{
 			return Collections.emptyList();

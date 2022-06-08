@@ -8,6 +8,14 @@ import net.runelite.api.coords.WorldPoint;
 
 public class LocalCollisionMap implements CollisionMap
 {
+	private final boolean blockDoors;
+
+	public LocalCollisionMap(boolean blockDoors)
+	{
+		this.blockDoors = blockDoors;
+	}
+
+
 	@Override
 	public boolean n(int x, int y, int z)
 	{
@@ -22,7 +30,9 @@ public class LocalCollisionMap implements CollisionMap
 
 		if (currentTile != null
 				&& destinationTile != null
-				&& (Reachable.isDoored(currentTile, destinationTile) || Reachable.isDoored(destinationTile, currentTile)))
+				&& (Reachable.isDoored(currentTile, destinationTile) || Reachable.isDoored(destinationTile, currentTile))
+				&& !blockDoors
+		)
 		{
 			return !Reachable.isObstacle(destinationTile.getWorldLocation());
 		}
@@ -44,7 +54,9 @@ public class LocalCollisionMap implements CollisionMap
 
 		if (currentTile != null
 				&& destinationTile != null
-				&& (Reachable.isDoored(currentTile, destinationTile) || Reachable.isDoored(destinationTile, currentTile)))
+				&& (Reachable.isDoored(currentTile, destinationTile) || Reachable.isDoored(destinationTile, currentTile))
+				&& !blockDoors
+		)
 		{
 			return !Reachable.isObstacle(destinationTile.getWorldLocation());
 		}

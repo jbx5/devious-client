@@ -1,5 +1,9 @@
 package net.unethicalite.api.movement;
 
+import net.unethicalite.api.account.LocalPlayer;
+import net.unethicalite.api.movement.pathfinder.CollisionMap;
+import net.unethicalite.api.movement.pathfinder.DFSPathfinder;
+import net.unethicalite.api.movement.pathfinder.LocalCollisionMap;
 import net.unethicalite.api.scene.Tiles;
 import net.runelite.api.CollisionData;
 import net.runelite.api.GameObject;
@@ -13,9 +17,11 @@ import net.runelite.api.coords.WorldPoint;
 import net.unethicalite.client.Static;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Reachable
@@ -212,9 +218,9 @@ public class Reachable
 
 	public static List<WorldPoint> getVisitedTiles(WorldPoint destination, Locatable targetObject)
 	{
-		Player local = Static.getClient().getLocalPlayer();
+		Player local = LocalPlayer.get();
 		// Don't check if too far away
-		if (local == null || destination.distanceTo(local.getWorldLocation()) > 35)
+		if (!destination.isInScene(Static.getClient()))
 		{
 			return Collections.emptyList();
 		}
@@ -254,9 +260,99 @@ public class Reachable
 		return visitedTiles;
 	}
 
-	public static boolean isInteractable(Locatable locatable)
+	public static List<WorldPoint> getObjectNeighbours(Locatable locatable, CollisionMap collisionMap)
 	{
-		return getVisitedTiles(locatable.getWorldLocation(), locatable).contains(locatable.getWorldLocation());
+		if (locatable instanceof GameObject)
+		{
+			List<WorldPoint> area = ((GameObject) locatable).getWorldArea().toWorldPointList();
+			return area.stream()
+					.flatMap(wp ->
+							Arrays.stream(Direction.values())
+									.map(d -> Reachable.getNeighbour(d, wp))
+									.filter(n -> !area.contains(n))
+									.filter(n -> !Reachable.isWalled(n, wp))
+					)
+					.filter(n -> !collisionMap.fullBlock(n))
+					.collect(Collectors.toList());
+		}
+
+		if (locatable instanceof WallObject)
+		{
+			List<WorldPoint> neighbours = new ArrayList<>();
+			neighbours.add(locatable.getWorldLocation());
+			Direction blockDirection = getWallBlockDirection((WallObject) locatable, collisionMap);
+			if (blockDirection != null)
+			{
+				switch (blockDirection)
+				{
+					case NORTH:
+						neighbours.add(locatable.getWorldLocation().dy(1));
+						break;
+					case SOUTH:
+						neighbours.add(locatable.getWorldLocation().dy(-1));
+						break;
+					case EAST:
+						neighbours.add(locatable.getWorldLocation().dx(1));
+						break;
+					case WEST:
+						neighbours.add(locatable.getWorldLocation().dx(-1));
+						break;
+				}
+			}
+			return neighbours;
+		}
+
+		return Arrays.stream(Direction.values())
+				.map(d -> Reachable.getNeighbour(d, locatable.getWorldLocation()))
+				.filter(n -> !collisionMap.fullBlock(n))
+				.filter(n -> !Reachable.isWalled(n, locatable.getWorldLocation()))
+				.collect(Collectors.toList());
+	}
+
+
+	public static Direction getWallBlockDirection(WallObject wallObject, CollisionMap collisionMap)
+	{
+		WorldPoint worldPoint = wallObject.getWorldLocation();
+		if (!collisionMap.s(worldPoint))
+		{
+			return Direction.SOUTH;
+		}
+
+		if (!collisionMap.n(worldPoint))
+		{
+			return Direction.NORTH;
+		}
+
+		if (!collisionMap.w(worldPoint))
+		{
+			return Direction.WEST;
+		}
+
+		if (!collisionMap.e(worldPoint))
+		{
+			return Direction.EAST;
+		}
+
+		return null;
+	}
+
+	public static boolean isInteractable(Locatable targetObject)
+	{
+		if (!targetObject.getWorldLocation().isInScene(Static.getClient()))
+		{
+			return false;
+		}
+
+		WorldPoint local = LocalPlayer.get().getWorldLocation();
+
+		CollisionMap collisionMap = new LocalCollisionMap(true);
+
+		return new DFSPathfinder(
+				collisionMap,
+				Map.of(),
+				getObjectNeighbours(targetObject, collisionMap),
+				local
+		).find().contains(local);
 	}
 
 	public static boolean isWalkable(WorldPoint worldPoint)
