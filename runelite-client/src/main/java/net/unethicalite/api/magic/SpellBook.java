@@ -1,5 +1,6 @@
 package net.unethicalite.api.magic;
 
+import net.runelite.api.VarPlayer;
 import net.unethicalite.api.game.Skills;
 import net.unethicalite.api.game.Vars;
 import net.unethicalite.api.game.Worlds;
@@ -9,6 +10,7 @@ import net.runelite.api.ItemID;
 import net.runelite.api.Skill;
 import net.runelite.api.widgets.WidgetInfo;
 
+import java.time.Instant;
 import java.util.Arrays;
 
 public enum SpellBook
@@ -626,6 +628,11 @@ public enum SpellBook
 				return false;
 			}
 
+			if (this == HOME_TELEPORT)
+			{
+				return Magic.isHomeTeleportOnCooldown();
+			}
+
 			if (level > Skills.getLevel(Skill.MAGIC) || level > Skills.getBoostedLevel(Skill.MAGIC))
 			{
 				return false;
@@ -913,6 +920,11 @@ public enum SpellBook
 			if (!Worlds.inMembersWorld())
 			{
 				return false;
+			}
+
+			if (this == EDGEVILLE_HOME_TELEPORT)
+			{
+				return Magic.isHomeTeleportOnCooldown();
 			}
 
 			if (level > Skills.getLevel(Skill.MAGIC) || level > Skills.getBoostedLevel(Skill.MAGIC))
@@ -1284,6 +1296,11 @@ public enum SpellBook
 				return false;
 			}
 
+			if (this == LUNAR_HOME_TELEPORT)
+			{
+				return Magic.isHomeTeleportOnCooldown();
+			}
+
 			if (level > Skills.getLevel(Skill.MAGIC) || level > Skills.getBoostedLevel(Skill.MAGIC))
 			{
 				return false;
@@ -1634,6 +1651,11 @@ public enum SpellBook
 			if (!Worlds.inMembersWorld())
 			{
 				return false;
+			}
+
+			if (this == ARCEUUS_HOME_TELEPORT)
+			{
+				return Magic.isHomeTeleportOnCooldown();
 			}
 
 			if (level > Skills.getLevel(Skill.MAGIC) || level > Skills.getBoostedLevel(Skill.MAGIC))
