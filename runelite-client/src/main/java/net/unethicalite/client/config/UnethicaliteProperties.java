@@ -1,4 +1,4 @@
-package net.unethicalite.client.minimal.config;
+package net.unethicalite.client.config;
 
 import lombok.Getter;
 

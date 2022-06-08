@@ -39,7 +39,6 @@ public class RegionManager
 	public static final MediaType JSON_MEDIATYPE = MediaType.parse("application/json");
 	public static final Gson GSON = new GsonBuilder().create();
 	private static final Logger logger = LoggerFactory.getLogger(RegionManager.class);
-	private static final int VERSION = 3;
 
 	@Inject
 	@Named("unethicalite.api.url")
@@ -198,8 +197,7 @@ public class RegionManager
 			RequestBody body = RequestBody.create(JSON_MEDIATYPE, json);
 			Request request = new Request.Builder()
 					.post(body)
-					.header("api-key", "f0bbb47b-839a-43f7-b907-eff4ab131231")
-					.url(apiUrl + "/regions/" + VERSION)
+					.url(apiUrl + "/regions")
 					.build();
 			try (Response response = okHttpClient.newCall(request)
 					.execute())

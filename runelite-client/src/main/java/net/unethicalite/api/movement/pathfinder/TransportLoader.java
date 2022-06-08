@@ -1,8 +1,14 @@
 package net.unethicalite.api.movement.pathfinder;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import net.runelite.api.*;
+import net.runelite.api.Item;
+import net.runelite.api.ItemID;
+import net.runelite.api.MenuAction;
+import net.runelite.api.NPC;
+import net.runelite.api.NpcID;
+import net.runelite.api.Point;
+import net.runelite.api.QuestState;
+import net.runelite.api.Skill;
+import net.runelite.api.TileObject;
 import net.unethicalite.api.commons.HttpUtil;
 import net.unethicalite.api.entities.NPCs;
 import net.unethicalite.api.entities.Players;
@@ -20,7 +26,7 @@ import net.unethicalite.api.quests.Quest;
 import net.unethicalite.api.widgets.Dialog;
 import net.unethicalite.api.widgets.Widgets;
 import net.unethicalite.client.Static;
-import net.unethicalite.client.minimal.config.UnethicaliteProperties;
+import net.unethicalite.client.config.UnethicaliteProperties;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -59,8 +65,9 @@ public class TransportLoader
 
 	static
 	{
+		log.debug("Loading transports");
 		STATIC_TRANSPORTS = new ArrayList<>();
-		TransportDto[] dtos = HttpUtil.readFromUrl(UnethicaliteProperties.getApiUrl() + "/transports",
+		TransportDto[] dtos = HttpUtil.readJson(UnethicaliteProperties.getApiUrl() + "/transports",
 				TransportDto[].class);
 
 		if (dtos != null)

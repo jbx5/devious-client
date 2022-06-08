@@ -8,16 +8,14 @@ import com.google.inject.Provides;
 import com.google.inject.name.Names;
 import com.openosrs.client.config.OpenOSRSConfig;
 import net.unethicalite.api.movement.pathfinder.GlobalCollisionMap;
-import net.unethicalite.api.movement.pathfinder.Walker;
 import net.unethicalite.client.Static;
 import net.unethicalite.client.config.UnethicaliteConfig;
-import net.unethicalite.client.minimal.config.UnethicaliteProperties;
+import net.unethicalite.client.config.UnethicaliteProperties;
 import lombok.RequiredArgsConstructor;
 import net.runelite.api.Client;
 import net.runelite.api.hooks.Callbacks;
 import net.runelite.api.packets.ClientPacket;
 import net.runelite.client.NonScheduledExecutorServiceExceptionLogger;
-import net.runelite.client.RuneLiteModule;
 import net.runelite.client.RuneLiteProperties;
 import net.runelite.client.chat.ChatMessageManager;
 import net.runelite.client.config.ChatColorConfig;
@@ -32,17 +30,13 @@ import net.runelite.client.util.ExecutorServiceExceptionLogger;
 import net.runelite.http.api.RuneLiteAPI;
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
-import org.slf4j.LoggerFactory;
 
 import javax.annotation.Nullable;
 import javax.inject.Named;
 import javax.inject.Singleton;
 import java.applet.Applet;
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
 import java.util.Properties;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -51,7 +45,6 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
-import java.util.zip.GZIPInputStream;
 
 @Singleton
 @RequiredArgsConstructor
@@ -187,23 +180,7 @@ public class MinimalModule extends AbstractModule
 	@Singleton
 	GlobalCollisionMap provideGlobalCollisionMap(@Named("unethicalite.api.url") String apiUrl) throws IOException
 	{
-		try (InputStream is = new URL(apiUrl + "/regions").openStream())
-		{
-			return new GlobalCollisionMap(new GZIPInputStream(new ByteArrayInputStream(is.readAllBytes())).readAllBytes());
-		}
-		catch (IOException e)
-		{
-			// Fallback to old map
-			LoggerFactory.getLogger(RuneLiteModule.class)
-					.warn("Failed to load global collision map, falling back to old map", e);
-			return new GlobalCollisionMap(
-					new GZIPInputStream(
-							new ByteArrayInputStream(
-									Walker.class.getResourceAsStream("/regions").readAllBytes()
-							)
-					).readAllBytes()
-			);
-		}
+		return GlobalCollisionMap.fetchFromUrl(apiUrl + "/regions");
 	}
 
 	@Provides
