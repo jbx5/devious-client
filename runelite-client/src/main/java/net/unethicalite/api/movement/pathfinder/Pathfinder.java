@@ -84,6 +84,9 @@ public class Pathfinder implements Callable<List<WorldPoint>> {
         int bestDistance = Integer.MAX_VALUE;
 
         while (!boundary.isEmpty()) {
+            if (Thread.interrupted()) {
+                return List.of();
+            }
 
             if (visited.size() >= 5_000_000) {
                 return nearest.path();
