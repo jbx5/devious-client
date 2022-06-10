@@ -714,7 +714,7 @@ public class TransportLoader
 					return;
 				}
 
-				TileObject tree = TileObjects.getNearest(1293, 1294, 1295);
+				TileObject tree = TileObjects.getFirstSurrounding(source, 5, 1293, 1294, 1295);
 				if (tree != null)
 				{
 					final Point point = tree.menuPoint();
@@ -740,7 +740,7 @@ public class TransportLoader
 					return;
 				}
 
-				TileObject tree = TileObjects.getNearest("Magic Mushtree");
+				TileObject tree = TileObjects.getFirstSurrounding(source, 5, "Magic Mushtree");
 				if (tree != null)
 				{
 					tree.interact("Use");

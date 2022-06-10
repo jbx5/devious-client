@@ -79,7 +79,7 @@ public class GrandExchange
 
 	public static void openBank()
 	{
-		TileObject bank = TileObjects.getNearest(x -> x.getName() != null
+		TileObject bank = TileObjects.getFirstSurrounding(3163, 3490, 0, 5, x -> x.getName() != null
 				&& x.getName().toLowerCase().contains("exchange booth") && x.hasAction("Bank"));
 		if (bank != null)
 		{
@@ -150,7 +150,7 @@ public class GrandExchange
 
 	public static void open()
 	{
-		TileObject booth = TileObjects.getNearest(x -> x.hasAction("Exchange"));
+		TileObject booth = TileObjects.getFirstSurrounding(3163, 3490, 0, 5, x -> x.hasAction("Exchange"));
 		if (booth != null)
 		{
 			booth.interact("Exchange");
