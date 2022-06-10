@@ -20,7 +20,6 @@ import javax.inject.Singleton;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
 import java.util.zip.GZIPInputStream;
 
 @Singleton
@@ -149,14 +148,14 @@ public class RegionHandler
 
 	private void updateCollisionMap()
 	{
-		try (InputStream is = new URL(apiUrl + "/regions").openStream())
-		{
-			collisionMap.overwrite(new GlobalCollisionMap(readGzip(is.readAllBytes())));
-		}
-		catch (IOException e)
-		{
-			log.error("Error downloading collision data: {}", e.getMessage());
-		}
+//		try (InputStream is = new URL(apiUrl + "/regions").openStream())
+//		{
+//			collisionMap.overwrite(new GlobalCollisionMap(readGzip(is.readAllBytes())));
+//		}
+//		catch (IOException e)
+//		{
+//			log.error("Error downloading collision data: {}", e.getMessage());
+//		}
 	}
 
 	private byte[] readGzip(byte[] input) throws IOException

@@ -1,15 +1,8 @@
 package net.unethicalite.api.movement.pathfinder;
 
-import net.runelite.api.Item;
-import net.runelite.api.ItemID;
-import net.runelite.api.MenuAction;
-import net.runelite.api.NPC;
-import net.runelite.api.NpcID;
-import net.runelite.api.Point;
-import net.runelite.api.QuestState;
-import net.runelite.api.Skill;
-import net.runelite.api.TileObject;
-import net.unethicalite.api.commons.HttpUtil;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import net.runelite.api.*;
 import net.unethicalite.api.entities.NPCs;
 import net.unethicalite.api.entities.Players;
 import net.unethicalite.api.entities.TileObjects;
@@ -21,12 +14,13 @@ import net.unethicalite.api.items.Equipment;
 import net.unethicalite.api.items.Inventory;
 import net.unethicalite.api.movement.Movement;
 import net.unethicalite.api.movement.Reachable;
-import net.unethicalite.api.movement.pathfinder.model.FairyRingLocation;
+import net.unethicalite.api.movement.pathfinder.model.*;
 import net.unethicalite.api.quests.Quest;
 import net.unethicalite.api.widgets.Dialog;
 import net.unethicalite.api.widgets.Widgets;
 import net.unethicalite.client.Static;
-import net.unethicalite.client.config.UnethicaliteProperties;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -34,7 +28,6 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.coords.Direction;
 import net.runelite.api.coords.WorldArea;
@@ -58,35 +51,73 @@ public class TransportLoader
 		new MagicMushtree(new WorldPoint(3676, 3755, 0), WidgetInfo.FOSSIL_MUSHROOM_SWAMP),
 		new MagicMushtree(new WorldPoint(3760, 3758, 0), WidgetInfo.FOSSIL_MUSHROOM_VALLEY)
 	);
+	private static final Gson GSON = new GsonBuilder().create();
 	private static int LAST_BUILD_TICK = 0;
-	private static final List<Transport> STATIC_TRANSPORTS;
+
+	private static final List<Transport> ALL_STATIC_TRANSPORTS = new ArrayList<>();
+	private static final List<Transport> FILTERED_STATIC_TRANSPORTS = new ArrayList<>();
+
 	private static final WorldArea MLM = new WorldArea(3714, 5633, 60, 62, 0);
 	private static List<Transport> LAST_TRANSPORT_LIST = Collections.emptyList();
 
 	static
 	{
-		STATIC_TRANSPORTS = new ArrayList<>();
-		TransportDto[] dtos = HttpUtil.readJson(UnethicaliteProperties.getApiUrl() + "/transports",
-				TransportDto[].class);
-
-		if (dtos != null)
-		{
-			log.debug("Loaded {} transports", dtos.length);
-			for (TransportDto dto : dtos)
-			{
-				STATIC_TRANSPORTS.add(dto.toModel());
-			}
-		}
+		loadAllStaticTransports();
 	}
 
-	private static List<Transport> getStaticTransports()
+	private static void loadAllStaticTransports()
 	{
-		return STATIC_TRANSPORTS;
+		try (InputStream stream = Walker.class.getResourceAsStream("/transports.json"))
+		{
+			TransportDto[] json = GSON.fromJson(new String(stream.readAllBytes()), TransportDto[].class);
+
+			List<Transport> list = Arrays.stream(json)
+					.map(TransportDto::toTransport)
+					.collect(Collectors.toList());
+			ALL_STATIC_TRANSPORTS.addAll(list);
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+
+		log.debug("Loaded {} transports from file", ALL_STATIC_TRANSPORTS.size());
+	}
+
+	private static List<Transport> loadStaticTransports()
+	{
+		if (!FILTERED_STATIC_TRANSPORTS.isEmpty())
+		{
+			return FILTERED_STATIC_TRANSPORTS;
+		}
+
+		refreshStaticTransports();
+		return FILTERED_STATIC_TRANSPORTS;
+	}
+
+	public static void refreshStaticTransports()
+	{
+		FILTERED_STATIC_TRANSPORTS.clear();
+		List<Transport> list = ALL_STATIC_TRANSPORTS.stream()
+				.filter(it -> it.getRequirements().stream().allMatch(TransportRequirement::fulfilled))
+				.collect(Collectors.toList());
+		FILTERED_STATIC_TRANSPORTS.addAll(list);
 	}
 
 	public static List<Transport> buildTransports()
 	{
-		List<Transport> transports = new ArrayList<>();
+		if (LAST_BUILD_TICK != Static.getClient().getTickCount())
+		{
+			LAST_BUILD_TICK = Static.getClient().getTickCount();
+			LAST_TRANSPORT_LIST = buildCachedTransportList();
+		}
+
+		return LAST_TRANSPORT_LIST;
+	}
+
+	public static List<Transport> buildCachedTransportList()
+	{
+		List<Transport> transports = new ArrayList<>(loadStaticTransports());
 
 		boolean princeAliCompleted = Vars.getVarp(Quest.PRINCE_ALI_RESCUE.getVarPlayer().getId()) >= 110;
 		int gold = Inventory.getFirst(995) != null ? Inventory.getFirst(995).getQuantity() : 0;
@@ -94,50 +125,33 @@ public class TransportLoader
 		{
 			// The door here is weird, the transform actions and name return null
 			transports.add(objectTransport(
-				new WorldPoint(3267, 3228, 0),
-				new WorldPoint(3268, 3228, 0),
-				TileObjects.getFirstAt(3268, 3228, 0, 44599),
-				princeAliCompleted ? 0 : 3)
+					new WorldPoint(3267, 3228, 0),
+					new WorldPoint(3268, 3228, 0),
+					TileObjects.getFirstAt(3268, 3228, 0, 44599),
+					princeAliCompleted ? 0 : 3)
 			);
 			transports.add(objectTransport(
-				new WorldPoint(3268, 3228, 0),
-				new WorldPoint(3267, 3228, 0),
-				TileObjects.getFirstAt(3268, 3228, 0, 44599),
-				princeAliCompleted ? 0 : 3)
+					new WorldPoint(3268, 3228, 0),
+					new WorldPoint(3267, 3228, 0),
+					TileObjects.getFirstAt(3268, 3228, 0, 44599),
+					princeAliCompleted ? 0 : 3)
 			);
 			transports.add(objectTransport(
-				new WorldPoint(3267, 3227, 0),
-				new WorldPoint(3268, 3227, 0),
-				TileObjects.getFirstAt(3268, 3227, 0, 44598),
-				princeAliCompleted ? 0 : 3)
+					new WorldPoint(3267, 3227, 0),
+					new WorldPoint(3268, 3227, 0),
+					TileObjects.getFirstAt(3268, 3227, 0, 44598),
+					princeAliCompleted ? 0 : 3)
 			);
 			transports.add(objectTransport(
-				new WorldPoint(3268, 3227, 0),
-				new WorldPoint(3267, 3227, 0),
-				TileObjects.getFirstAt(3268, 3227, 0, 44598),
-				princeAliCompleted ? 0 : 3)
+					new WorldPoint(3268, 3227, 0),
+					new WorldPoint(3267, 3227, 0),
+					TileObjects.getFirstAt(3268, 3227, 0, 44598),
+					princeAliCompleted ? 0 : 3)
 			);
 		}
 
 		if (Worlds.inMembersWorld())
 		{
-			// Edgeville
-			if (Skills.getBoostedLevel(Skill.AGILITY) >= 21)
-			{
-				transports.add(objectTransport(
-					new WorldPoint(3142, 3513, 0),
-					new WorldPoint(3137, 3516, 0),
-					16530,
-					"Climb-into")
-				);
-				transports.add(objectTransport(
-					new WorldPoint(3137, 3516, 0),
-					new WorldPoint(3142, 3513, 0),
-					16529,
-					"Climb-into")
-				);
-			}
-
 			// Crabclaw island
 			if (gold >= 10_000)
 			{
@@ -152,24 +166,24 @@ public class TransportLoader
 				if (Vars.getBit(8063) >= 7)
 				{
 					transports.add(npcDialogTransport(new WorldPoint(3054, 3245, 0),
-						new WorldPoint(1824, 3691, 0),
-						8484,
-						"Can you take me to Great Kourend?"));
+							new WorldPoint(1824, 3691, 0),
+							8484,
+							"Can you take me to Great Kourend?"));
 				}
 				else
 				{
 					transports.add(npcDialogTransport(new WorldPoint(3054, 3245, 0),
-						new WorldPoint(1824, 3691, 0),
-						8484,
-						"That's great, can you take me there please?"));
+							new WorldPoint(1824, 3691, 0),
+							8484,
+							"That's great, can you take me there please?"));
 				}
 			}
 			else
 			{
 				transports.add(npcTransport(new WorldPoint(3054, 3245, 0),
-					new WorldPoint(1824, 3695, 1),
-					10724,
-					"Port Piscarilius"));
+						new WorldPoint(1824, 3695, 1),
+						10724,
+						"Port Piscarilius"));
 			}
 
 			// Spirit Trees
@@ -211,9 +225,9 @@ public class TransportLoader
 			{
 				// Entrance
 				transports.add(objectTransport(new WorldPoint(2328, 3496, 0), new WorldPoint(1994, 4983, 3), 19790,
-					"Enter"));
+						"Enter"));
 				transports.add(objectTransport(new WorldPoint(1994, 4983, 3), new WorldPoint(2328, 3496, 0), 19891,
-					"Exit"));
+						"Exit"));
 			}
 
 			// Waterbirth island
@@ -263,9 +277,9 @@ public class TransportLoader
 			if (Skills.getBoostedLevel(Skill.AGILITY) >= 10)
 			{
 				transports.add(objectTransport(new WorldPoint(2546, 2871, 0), new WorldPoint(2546, 2873, 0), 31757,
-					"Climb"));
+						"Climb"));
 				transports.add(objectTransport(new WorldPoint(2546, 2873, 0), new WorldPoint(2546, 2871, 0), 31757,
-					"Climb"));
+						"Climb"));
 			}
 
 			GameThread.invoke(() ->
@@ -285,13 +299,13 @@ public class TransportLoader
 				if (Vars.getBit(3637) >= 153)
 				{
 					transports.add(objectTransport(new WorldPoint(3295, 3429, 0), new WorldPoint(3296, 3429, 0), 24561,
-						"Open"));
+							"Open"));
 					transports.add(objectTransport(new WorldPoint(3296, 3429, 0), new WorldPoint(3295, 3429, 0), 24561,
-						"Open"));
+							"Open"));
 					transports.add(objectTransport(new WorldPoint(3295, 3428, 0), new WorldPoint(3296, 3428, 0), 24561,
-						"Open"));
+							"Open"));
 					transports.add(objectTransport(new WorldPoint(3296, 3428, 0), new WorldPoint(3295, 3428, 0), 24561,
-						"Open"));
+							"Open"));
 				}
 			});
 
@@ -311,23 +325,6 @@ public class TransportLoader
 				}
 			}
 		}
-
-		if (LAST_BUILD_TICK == Static.getClient().getTickCount())
-		{
-			transports.addAll(LAST_TRANSPORT_LIST);
-			return List.copyOf(transports);
-		}
-
-		LAST_BUILD_TICK = Static.getClient().getTickCount();
-		LAST_TRANSPORT_LIST = buildCachedTransportList();
-		transports.addAll(LAST_TRANSPORT_LIST);
-
-		return List.copyOf(transports);
-	}
-
-	public static List<Transport> buildCachedTransportList()
-	{
-		List<Transport> transports = new ArrayList<>(getStaticTransports());
 
 		// Entrana
 		transports.add(npcTransport(new WorldPoint(3041, 3237, 0), new WorldPoint(2834, 3331, 1), 1166, "Take-boat"));
@@ -429,7 +426,7 @@ public class TransportLoader
 			{
 				closedTrapDoor.interact(0);
 			}
-		}, null);
+		});
 	}
 
 	public static Transport fairyRingTransport(
@@ -454,7 +451,7 @@ public class TransportLoader
 			}
 
 			ring.interact("Configure");
-		}, null);
+		});
 	}
 
 	public static Transport itemUseTransport(
@@ -477,7 +474,7 @@ public class TransportLoader
 			{
 				item.useOn(transport);
 			}
-		}, null);
+		});
 	}
 
 	public static Transport npcTransport(
@@ -494,7 +491,7 @@ public class TransportLoader
 			{
 				npc.interact(actions);
 			}
-		}, actions);
+		});
 	}
 
 	public static Transport npcDialogTransport(
@@ -527,7 +524,7 @@ public class TransportLoader
 			{
 				npc.interact(0);
 			}
-		}, null);
+		});
 	}
 
 	public static List<Transport> motherloadMineTransport(
@@ -563,7 +560,7 @@ public class TransportLoader
 						TileObjects.getAt(rockfall, x -> x.getName().equalsIgnoreCase("Rockfall")).stream()
 							.findFirst()
 							.ifPresentOrElse(obj -> obj.interact("Mine"), () -> Movement.walk(finalDest));
-					}, new String[]{"Mine"});
+					});
 				}
 			}
 			return null;
@@ -571,10 +568,10 @@ public class TransportLoader
 	}
 
 	public static Transport objectTransport(
-		WorldPoint source,
-		WorldPoint destination,
-		int objId,
-		String... actions
+			WorldPoint source,
+			WorldPoint destination,
+			int objId,
+			String actions
 	)
 	{
 		return new Transport(source, destination, Integer.MAX_VALUE, 0, () ->
@@ -587,9 +584,34 @@ public class TransportLoader
 			}
 
 			TileObjects.getSurrounding(source, 5, x -> x.getId() == objId).stream()
-				.min(Comparator.comparingInt(o -> o.distanceTo(source)))
-				.ifPresent(obj -> obj.interact(actions));
-		}, actions);
+					.min(Comparator.comparingInt(o -> o.distanceTo(source)))
+					.ifPresent(obj -> obj.interact(actions));
+		});
+	}
+
+	public static Transport objectTransport(
+			WorldPoint source,
+			WorldPoint destination,
+			int objId,
+			String actions,
+			TransportRequirement... requirements
+	)
+	{
+		Transport transport = new Transport(source, destination, Integer.MAX_VALUE, 0, () ->
+		{
+			TileObject first = TileObjects.getFirstAt(source, objId);
+			if (first != null)
+			{
+				first.interact(actions);
+				return;
+			}
+
+			TileObjects.getSurrounding(source, 5, x -> x.getId() == objId).stream()
+					.min(Comparator.comparingInt(o -> o.distanceTo(source)))
+					.ifPresent(obj -> obj.interact(actions));
+		});
+		transport.getRequirements().addAll(Arrays.asList(requirements));
+		return transport;
 	}
 
 	public static Transport objectTransport(
@@ -607,7 +629,7 @@ public class TransportLoader
 			}
 
 			tileObject.interact(actionIndex);
-		}, null);
+		});
 	}
 
 	public static Transport objectDialogTransport(
@@ -641,7 +663,7 @@ public class TransportLoader
 			{
 				transport.interact(actions);
 			}
-		}, actions);
+		});
 	}
 
 	private static Transport spritTreeTransport(WorldPoint source, WorldPoint target, String location)
@@ -670,7 +692,7 @@ public class TransportLoader
 					tree.interact(tree.getId(), MenuAction.GAME_OBJECT_FIRST_OPTION.getId(), point.getX(), point.getY());
 				}
 
-			}, new String[]{"Travel"});
+			});
 	}
 
 	private static Transport mushtreeTransport(WorldPoint source, WorldPoint target, WidgetInfo widget)
@@ -694,7 +716,7 @@ public class TransportLoader
 				{
 					tree.interact("Use");
 				}
-			}, new String[]{"Use"});
+			});
 	}
 
 	public static class MagicMushtree
@@ -718,27 +740,6 @@ public class TransportLoader
 		{
 			this.position = position;
 			this.location = location;
-		}
-	}
-
-	@Value
-	private static class TransportDto
-	{
-		int objId;
-		String objName;
-		String source;
-		String destination;
-		String action;
-
-		private static WorldPoint stringToWorldPoint(String text)
-		{
-			Integer[] points = Arrays.stream(text.split(" ")).map(Integer::parseInt).toArray(Integer[]::new);
-			return new WorldPoint(points[0], points[1], points[2]);
-		}
-
-		private Transport toModel()
-		{
-			return objectTransport(stringToWorldPoint(source), stringToWorldPoint(destination), objId, action);
 		}
 	}
 }

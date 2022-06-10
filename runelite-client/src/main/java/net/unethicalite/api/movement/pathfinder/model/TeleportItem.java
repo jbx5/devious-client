@@ -1,4 +1,4 @@
-package net.unethicalite.api.movement.pathfinder;
+package net.unethicalite.api.movement.pathfinder.model;
 
 import net.unethicalite.api.game.Vars;
 import net.unethicalite.api.items.Inventory;

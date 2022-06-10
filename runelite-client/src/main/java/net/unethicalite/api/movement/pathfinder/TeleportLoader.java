@@ -8,6 +8,9 @@ import net.unethicalite.api.items.Equipment;
 import net.unethicalite.api.items.Inventory;
 import net.unethicalite.api.magic.Magic;
 import net.unethicalite.api.magic.Spell;
+import net.unethicalite.api.movement.pathfinder.model.Teleport;
+import net.unethicalite.api.movement.pathfinder.model.TeleportItem;
+import net.unethicalite.api.movement.pathfinder.model.TeleportSpell;
 import net.unethicalite.api.widgets.Dialog;
 import net.unethicalite.api.widgets.Widgets;
 import java.util.ArrayList;
@@ -18,7 +21,7 @@ import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.widgets.Widget;
 import net.unethicalite.client.Static;
 
-import static net.unethicalite.api.movement.pathfinder.MovementConstants.*;
+import static net.unethicalite.api.movement.pathfinder.model.MovementConstants.*;
 
 public class TeleportLoader
 {

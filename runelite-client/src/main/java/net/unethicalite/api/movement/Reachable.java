@@ -1,9 +1,9 @@
 package net.unethicalite.api.movement;
 
-import net.unethicalite.api.account.LocalPlayer;
+import net.unethicalite.api.entities.Players;
 import net.unethicalite.api.movement.pathfinder.CollisionMap;
-import net.unethicalite.api.movement.pathfinder.DFSPathfinder;
 import net.unethicalite.api.movement.pathfinder.LocalCollisionMap;
+import net.unethicalite.api.movement.pathfinder.Pathfinder;
 import net.unethicalite.api.scene.Tiles;
 import net.runelite.api.CollisionData;
 import net.runelite.api.GameObject;
@@ -16,12 +16,7 @@ import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
 import net.unethicalite.client.Static;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Reachable
@@ -218,7 +213,7 @@ public class Reachable
 
 	public static List<WorldPoint> getVisitedTiles(WorldPoint destination, Locatable targetObject)
 	{
-		Player local = LocalPlayer.get();
+		Player local = Players.getLocal();
 		// Don't check if too far away
 		if (!destination.isInScene(Static.getClient()))
 		{
@@ -343,11 +338,11 @@ public class Reachable
 			return false;
 		}
 
-		WorldPoint local = LocalPlayer.get().getWorldLocation();
+		WorldPoint local = Players.getLocal().getWorldLocation();
 
 		CollisionMap collisionMap = new LocalCollisionMap(true);
 
-		return new DFSPathfinder(
+		return new Pathfinder(
 				collisionMap,
 				Map.of(),
 				getObjectNeighbours(targetObject, collisionMap),

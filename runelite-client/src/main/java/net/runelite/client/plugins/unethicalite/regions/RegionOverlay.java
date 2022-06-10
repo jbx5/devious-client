@@ -1,13 +1,14 @@
 package net.runelite.client.plugins.unethicalite.regions;
 
-import net.unethicalite.api.movement.pathfinder.GlobalCollisionMap;
-import net.unethicalite.api.movement.pathfinder.Transport;
-import net.unethicalite.api.movement.pathfinder.TransportLoader;
-import net.unethicalite.api.movement.pathfinder.Walker;
+import net.unethicalite.api.entities.Players;
+import net.unethicalite.api.movement.pathfinder.*;
+import net.unethicalite.api.movement.pathfinder.model.Teleport;
+import net.unethicalite.api.movement.pathfinder.model.Transport;
 import net.unethicalite.api.scene.Tiles;
 import net.unethicalite.api.utils.CoordUtils;
 import net.unethicalite.api.utils.DrawUtils;
 import net.unethicalite.api.widgets.Widgets;
+import net.unethicalite.client.Static;
 import net.unethicalite.client.config.UnethicaliteConfig;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
@@ -30,6 +31,7 @@ import javax.inject.Singleton;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutorService;
 
 @Singleton
@@ -160,10 +162,16 @@ public class RegionOverlay extends Overlay
 					.setOption("<col=00ff00>Debug:</col>")
 					.setTarget("Calculate path")
 					.setType(MenuAction.RUNELITE_OVERLAY)
-					.onClick(e ->
-							executorService.execute(() ->
-								path = Walker.buildPath(clickPoint.getWorldLocation(), false)
-							));
+					.onClick(e -> {
+								Map <WorldPoint, Teleport > teleports = Walker.buildTeleportLinks(clickPoint.getWorldLocation());
+								List<WorldPoint> startPoints = new ArrayList<>(teleports.keySet());
+								startPoints.add(Players.getLocal().getWorldLocation());
+								executorService.execute(() -> {
+											path = new Pathfinder(Static.getGlobalCollisionMap(), Walker.buildTransportLinks(), startPoints, clickPoint.getWorldLocation()).find();
+										}
+								);
+							}
+					);
 		}
 		else
 		{
@@ -183,9 +191,13 @@ public class RegionOverlay extends Overlay
 						{
 							return;
 						}
-
-						executorService.execute(() ->
-								path = Walker.buildPath(clickPoint, false));
+						Map <WorldPoint, Teleport > teleports = Walker.buildTeleportLinks(clickPoint);
+						List<WorldPoint> startPoints = new ArrayList<>(teleports.keySet());
+						startPoints.add(Players.getLocal().getWorldLocation());
+						executorService.execute(() -> {
+							path = new Pathfinder(Static.getGlobalCollisionMap(), Walker.buildTransportLinks(), startPoints, clickPoint).find();
+								}
+						);
 					});
 		}
 	}

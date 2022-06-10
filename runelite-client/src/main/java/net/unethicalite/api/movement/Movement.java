@@ -6,7 +6,7 @@ import com.google.common.cache.LoadingCache;
 import net.unethicalite.api.commons.Rand;
 import net.unethicalite.api.entities.Players;
 import net.unethicalite.api.game.Vars;
-import net.unethicalite.api.movement.pathfinder.BankLocation;
+import net.unethicalite.api.movement.pathfinder.model.BankLocation;
 import net.unethicalite.api.movement.pathfinder.CollisionMap;
 import net.unethicalite.api.movement.pathfinder.Walker;
 import net.unethicalite.api.scene.Tiles;
@@ -45,6 +45,7 @@ public class Movement
 	private static final int RUN_VARP = 173;
 
 	public static final LoadingCache<List<WorldPoint>, WorldPoint> WORLD_AREA_POINT_CACHE = CacheBuilder.newBuilder()
+			.maximumSize(5)
 			.expireAfterWrite(5, TimeUnit.MINUTES)
 			.build(new CacheLoader<>()
 			{
@@ -166,7 +167,7 @@ public class Movement
 		try
 		{
 			WorldPoint wp = WORLD_AREA_POINT_CACHE.get(worldArea.toWorldPointList());
-			return Walker.walkTo(wp, false);
+			return Walker.walkTo(wp);
 		}
 		catch (ExecutionException e)
 		{
@@ -177,7 +178,7 @@ public class Movement
 
 	public static boolean walkTo(WorldPoint worldPoint)
 	{
-		return Walker.walkTo(worldPoint, false);
+		return Walker.walkTo(worldPoint);
 	}
 
 	public static boolean walkTo(Locatable locatable)
@@ -226,12 +227,7 @@ public class Movement
 
 	public static int calculateDistance(WorldPoint destination)
 	{
-		return calculateDistance(destination, false);
-	}
-
-	public static int calculateDistance(WorldPoint destination, boolean localRegion)
-	{
-		List<WorldPoint> path = Walker.buildPath(destination, localRegion);
+		List<WorldPoint> path = Walker.buildPath(destination);
 
 		if (path.size() < 2)
 		{
@@ -260,36 +256,5 @@ public class Movement
 		}
 
 		return distance;
-	}
-
-	/**
-	 * Uses the regional collisionmap
-	 */
-	public static class Local
-	{
-		public static boolean walkTo(WorldPoint worldPoint)
-		{
-			return Walker.walkTo(worldPoint, true);
-		}
-
-		public static boolean walkTo(Locatable locatable)
-		{
-			return walkTo(locatable.getWorldLocation());
-		}
-
-		public static boolean walkTo(BankLocation bankLocation)
-		{
-			return walkTo(bankLocation.getArea().toWorldPoint());
-		}
-
-		public static boolean walkTo(int x, int y)
-		{
-			return walkTo(x, y, Static.getClient().getPlane());
-		}
-
-		public static boolean walkTo(int x, int y, int plane)
-		{
-			return walkTo(new WorldPoint(x, y, plane));
-		}
 	}
 }

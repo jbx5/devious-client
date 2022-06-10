@@ -1,4 +1,4 @@
-package net.unethicalite.api.movement.pathfinder;
+package net.unethicalite.api.movement.pathfinder.model;
 
 import lombok.Value;
 import net.runelite.api.coords.WorldPoint;
