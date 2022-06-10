@@ -26,7 +26,7 @@ import java.util.function.Predicate;
 @Slf4j
 public class Walker
 {
-	private static final int MAX_INTERACT_DISTANCE = 20;
+	public static final int MAX_INTERACT_DISTANCE = 20;
 	private static final int MIN_TILES_WALKED_IN_STEP = 7;
 	private static final int MAX_TILES_WALKED_IN_STEP = 14;
 	private static final int MIN_TILES_WALKED_BEFORE_RECHOOSE = 10;
@@ -190,10 +190,15 @@ public class Walker
 			WorldPoint a = path.get(i);
 			WorldPoint b = path.get(i + 1);
 
-			if (a.distanceTo(b) > 1)
+			Tile tileA = Tiles.getAt(a);
+			Tile tileB = Tiles.getAt(b);
+
+			if (a.distanceTo(b) > 1
+					|| (tileA != null && tileB != null && Reachable.isWalled(tileA, tileB)))
 			{
 				Transport transport = transports.values().stream()
 						.flatMap(Collection::stream)
+						.filter(x -> x.getSource().equals(a))
 						.filter(x -> x.getDestination().equals(b))
 						.findFirst()
 						.orElse(null);
@@ -207,13 +212,11 @@ public class Walker
 				}
 			}
 
-			Tile tileA = Tiles.getAt(a);
 			if (tileA == null)
 			{
 				return false;
 			}
 
-			Tile tileB = Tiles.getAt(b);
 			if (tileB == null)
 			{
 				return false;

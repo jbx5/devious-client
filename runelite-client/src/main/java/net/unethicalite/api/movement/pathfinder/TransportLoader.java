@@ -152,6 +152,22 @@ public class TransportLoader
 
 		if (Worlds.inMembersWorld())
 		{
+			//Shamans
+			transports.add(objectTransport(new WorldPoint(1312, 3685, 0), new WorldPoint(1312, 10086, 0), 34405, "Enter"));
+			/**
+			 * Doors for shamans
+			 */
+			transports.add(objectTransport(new WorldPoint(1293, 10090, 0), new WorldPoint(1293, 10093, 0), 34642, "Pass"));
+			transports.add(objectTransport(new WorldPoint(1293, 10093, 0), new WorldPoint(1293, 10091, 0), 34642, "Pass"));
+			transports.add(objectTransport(new WorldPoint(1296, 10096, 0), new WorldPoint(1298, 10096, 0), 34642, "Pass"));
+			transports.add(objectTransport(new WorldPoint(1298, 10096, 0), new WorldPoint(1296, 10096, 0), 34642, "Pass"));
+			transports.add(objectTransport(new WorldPoint(1307, 10096, 0), new WorldPoint(1309, 10096, 0), 34642, "Pass"));
+			transports.add(objectTransport(new WorldPoint(1309, 10096, 0), new WorldPoint(1307, 10096, 0), 34642, "Pass"));
+			transports.add(objectTransport(new WorldPoint(1316, 10096, 0), new WorldPoint(1318, 10096, 0), 34642, "Pass"));
+			transports.add(objectTransport(new WorldPoint(1318, 10096, 0), new WorldPoint(1316, 10096, 0), 34642, "Pass"));
+			transports.add(objectTransport(new WorldPoint(1324, 10096, 0), new WorldPoint(1326, 10096, 0), 34642, "Pass"));
+			transports.add(objectTransport(new WorldPoint(1326, 10096, 0), new WorldPoint(1324, 10096, 0), 34642, "Pass"));
+
 			// Crabclaw island
 			if (gold >= 10_000)
 			{
@@ -436,11 +452,24 @@ public class TransportLoader
 	{
 		return new Transport(source.getLocation(), destination.getLocation(), Integer.MAX_VALUE, 0, () ->
 		{
-			TileObject ring = TileObjects.getNearest("Fairy ring");
+			log.debug("Looking for fairy ring at {} to {}", source.getLocation(), destination.getLocation());
+			TileObject ring = TileObjects.getFirstSurrounding(source.getLocation(), 5, "Fairy ring");
+
+			if (ring == null)
+			{
+				log.debug("Fairy ring at {} is null", source.getLocation());
+				return;
+			}
 
 			if (destination == FairyRingLocation.ZANARIS)
 			{
 				ring.interact("Zanaris");
+				return;
+			}
+
+			if (ring.hasAction(a -> a != null && a.contains(destination.getCode())))
+			{
+				ring.interact(a -> a != null && a.contains(destination.getCode()));
 				return;
 			}
 
