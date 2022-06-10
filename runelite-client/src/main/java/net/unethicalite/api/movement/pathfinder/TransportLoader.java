@@ -21,8 +21,6 @@ import net.unethicalite.api.widgets.Widgets;
 import net.unethicalite.client.Static;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -55,46 +53,54 @@ public class TransportLoader
 	);
 	private static final Gson GSON = new GsonBuilder().create();
 	private static int LAST_BUILD_TICK = 0;
-	private static final List<Transport> STATIC_TRANSPORTS = new ArrayList<>();
+
+	private static final List<Transport> ALL_STATIC_TRANSPORTS = new ArrayList<>();
+	private static final List<Transport> FILTERED_STATIC_TRANSPORTS = new ArrayList<>();
+
 	private static final WorldArea MLM = new WorldArea(3714, 5633, 60, 62, 0);
 	private static List<Transport> LAST_TRANSPORT_LIST = Collections.emptyList();
 
 	static
 	{
-		// Try to initialize the static transports before usage
-		loadStaticTransports();
+		loadAllStaticTransports();
 	}
 
-	public static void refreshStaticTransports()
+	private static void loadAllStaticTransports()
 	{
-		STATIC_TRANSPORTS.clear();
 		try (InputStream stream = Walker.class.getResourceAsStream("/transports.json"))
 		{
 			TransportDto[] json = GSON.fromJson(new String(stream.readAllBytes()), TransportDto[].class);
 
 			List<Transport> list = Arrays.stream(json)
 					.map(TransportDto::toTransport)
-					.filter(it -> it.getRequirements().stream().allMatch(TransportRequirement::fulfilled))
 					.collect(Collectors.toList());
-			STATIC_TRANSPORTS.addAll(list);
+			ALL_STATIC_TRANSPORTS.addAll(list);
 		}
 		catch (IOException e)
 		{
 			e.printStackTrace();
 		}
 
-		log.info("Loaded {} transports from file", STATIC_TRANSPORTS.size());
+		log.debug("Loaded {} transports from file", ALL_STATIC_TRANSPORTS.size());
 	}
 
 	private static List<Transport> loadStaticTransports()
 	{
-		if (!STATIC_TRANSPORTS.isEmpty())
+		if (!FILTERED_STATIC_TRANSPORTS.isEmpty())
 		{
-			return STATIC_TRANSPORTS;
+			return FILTERED_STATIC_TRANSPORTS;
 		}
 
 		refreshStaticTransports();
-		return STATIC_TRANSPORTS;
+		return FILTERED_STATIC_TRANSPORTS;
+	}
+
+	public static void refreshStaticTransports() {
+		FILTERED_STATIC_TRANSPORTS.clear();
+		List<Transport> list = ALL_STATIC_TRANSPORTS.stream()
+				.filter(it -> it.getRequirements().stream().allMatch(TransportRequirement::fulfilled))
+				.collect(Collectors.toList());
+		FILTERED_STATIC_TRANSPORTS.addAll(list);
 	}
 
 	public static List<Transport> buildTransports()
