@@ -306,12 +306,24 @@ public interface UnethicaliteConfig extends Config
 
 	@ConfigItem(
 			keyName = "downloadCollisionData",
-			name = "Update collision data",
+			name = "Download collision data",
 			description = "Downloads new collision data from the server and updates the currently used collision map",
 			position = 5,
 			section = pathfinderSection
 	)
 	default Button download()
+	{
+		return new Button();
+	}
+
+	@ConfigItem(
+			keyName = "localCollisionData",
+			name = "Load cached collision data",
+			description = "Loads the locally stored collision data",
+			position = 6,
+			section = pathfinderSection
+	)
+	default Button reload()
 	{
 		return new Button();
 	}

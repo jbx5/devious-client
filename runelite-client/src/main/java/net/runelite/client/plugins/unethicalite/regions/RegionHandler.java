@@ -1,9 +1,5 @@
 package net.runelite.client.plugins.unethicalite.regions;
 
-import net.unethicalite.api.events.PlaneChanged;
-import net.unethicalite.api.game.Game;
-import net.unethicalite.api.movement.pathfinder.GlobalCollisionMap;
-import net.unethicalite.client.managers.RegionManager;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
@@ -12,6 +8,11 @@ import net.runelite.api.events.ClientTick;
 import net.runelite.api.events.ConfigButtonClicked;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.client.eventbus.Subscribe;
+import net.unethicalite.api.events.PlaneChanged;
+import net.unethicalite.api.game.Game;
+import net.unethicalite.api.movement.pathfinder.GlobalCollisionMap;
+import net.unethicalite.api.movement.pathfinder.Walker;
+import net.unethicalite.client.managers.RegionManager;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -90,6 +91,9 @@ public class RegionHandler
 			case "downloadCollisionData":
 				updateCollisionMap();
 				break;
+			case "localCollisionData":
+				loadCachedCollisionMap();
+				break;
 			case "addTransportData":
 				if (transportDialog == null)
 				{
@@ -122,6 +126,25 @@ public class RegionHandler
 		}
 
 		regionManager.sendRegion();
+	}
+
+	private void loadCachedCollisionMap()
+	{
+		try (InputStream is = Walker.class.getResourceAsStream("/regions"))
+		{
+			if (is == null)
+			{
+				return;
+			}
+
+			collisionMap.overwrite(new GlobalCollisionMap(
+					new GZIPInputStream(new ByteArrayInputStream(is.readAllBytes())).readAllBytes()
+			));
+		}
+		catch (IOException e)
+		{
+			throw new RuntimeException(e);
+		}
 	}
 
 	private void updateCollisionMap()
