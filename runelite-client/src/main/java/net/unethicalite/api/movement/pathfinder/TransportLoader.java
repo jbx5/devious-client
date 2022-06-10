@@ -95,7 +95,8 @@ public class TransportLoader
 		return FILTERED_STATIC_TRANSPORTS;
 	}
 
-	public static void refreshStaticTransports() {
+	public static void refreshStaticTransports()
+	{
 		FILTERED_STATIC_TRANSPORTS.clear();
 		List<Transport> list = ALL_STATIC_TRANSPORTS.stream()
 				.filter(it -> it.getRequirements().stream().allMatch(TransportRequirement::fulfilled))

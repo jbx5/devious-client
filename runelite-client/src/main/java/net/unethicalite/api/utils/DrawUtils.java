@@ -3,7 +3,6 @@ package net.unethicalite.api.utils;
 import net.unethicalite.api.movement.pathfinder.CollisionMap;
 import net.unethicalite.api.movement.pathfinder.model.Transport;
 import net.unethicalite.api.movement.pathfinder.TransportLoader;
-import net.unethicalite.api.movement.pathfinder.Walker;
 import net.unethicalite.api.scene.Tiles;
 import net.runelite.api.Client;
 import net.runelite.api.Locatable;

@@ -190,7 +190,8 @@ public class Walker
 			WorldPoint a = path.get(i);
 			WorldPoint b = path.get(i + 1);
 
-			if (a.distanceTo(b) > 1) {
+			if (a.distanceTo(b) > 1)
+			{
 				Transport transport = transports.values().stream()
 						.flatMap(Collection::stream)
 						.filter(x -> x.getDestination().equals(b))
@@ -299,24 +300,30 @@ public class Walker
 			WorldPoint destination
 	)
 	{
-		if (pathFuture == null) {
+		if (pathFuture == null)
+		{
 			pathFuture = executor.submit(new Pathfinder(Static.getGlobalCollisionMap(), buildTransportLinks(), startPoints, destination));
 			currentDestination = destination;
 		}
 
-		if (!destination.equals(currentDestination)) {
+		if (!destination.equals(currentDestination))
+		{
 			pathFuture.cancel(true);
 			pathFuture = executor.submit(new Pathfinder(Static.getGlobalCollisionMap(), buildTransportLinks(), startPoints, destination));
 			currentDestination = destination;
 		}
 
-		if (!pathFuture.isDone()) {
+		if (!pathFuture.isDone())
+		{
 			return List.of();
 		}
 
-		try {
+		try
+		{
 			return pathFuture.get();
-		} catch (Exception e) {
+		}
+		catch (Exception e)
+		{
 			log.error("Error getting path", e);
 			return List.of();
 		}
