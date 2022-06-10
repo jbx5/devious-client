@@ -94,7 +94,8 @@ public class NativeInputManager
 		eventX -= totalScreen.x;
 
 		int canvasX = (int) (eventX * ((double) client.getCanvasWidth() / totalScreen.width));
-		int canvasY = (int) (eventY * ((double) client.getCanvasHeight() / currentMonitor.getDisplayMode().getHeight()));
+		int canvasY =
+				(int) (eventY * ((double) client.getCanvasHeight() / currentMonitor.getDefaultConfiguration().getBounds().height));
 
 		if (!availableMonitors.contains(currentMonitor))
 		{

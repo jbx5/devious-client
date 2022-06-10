@@ -1,9 +1,5 @@
 package net.unethicalite.api.movement.pathfinder;
 
-import net.runelite.client.RuneLiteModule;
-import net.unethicalite.api.commons.HttpUtil;
-import org.slf4j.LoggerFactory;
-
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -144,11 +140,11 @@ public class GlobalCollisionMap implements CollisionMap
 
 	public static GlobalCollisionMap fetchFromUrl(String url) throws IOException
 	{
-		byte[] bytes = HttpUtil.readBytes(url);
-		if (bytes != null)
-		{
-			return new GlobalCollisionMap(new GZIPInputStream(new ByteArrayInputStream(bytes)).readAllBytes());
-		}
+//		byte[] bytes = HttpUtil.readBytes(url);
+//		if (bytes != null)
+//		{
+//			return new GlobalCollisionMap(new GZIPInputStream(new ByteArrayInputStream(bytes)).readAllBytes());
+//		}
 
 		try (InputStream is = Walker.class.getResourceAsStream("/regions"))
 		{
@@ -158,8 +154,6 @@ public class GlobalCollisionMap implements CollisionMap
 				return new GlobalCollisionMap();
 			}
 
-			LoggerFactory.getLogger(RuneLiteModule.class)
-					.warn("Failed to load global collision map, falling back to old map");
 			return new GlobalCollisionMap(
 					new GZIPInputStream(new ByteArrayInputStream(is.readAllBytes())).readAllBytes()
 			);
