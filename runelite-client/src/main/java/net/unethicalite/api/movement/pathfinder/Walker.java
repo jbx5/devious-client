@@ -196,8 +196,7 @@ public class Walker
 			if (a.distanceTo(b) > 1
 					|| (tileA != null && tileB != null && Reachable.isWalled(tileA, tileB)))
 			{
-				Transport transport = transports.values().stream()
-						.flatMap(Collection::stream)
+				Transport transport = transports.getOrDefault(a, List.of()).stream()
 						.filter(x -> x.getSource().equals(a))
 						.filter(x -> x.getDestination().equals(b))
 						.findFirst()
