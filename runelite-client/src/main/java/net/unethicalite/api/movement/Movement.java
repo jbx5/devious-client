@@ -5,10 +5,11 @@ import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 import net.unethicalite.api.commons.Rand;
 import net.unethicalite.api.entities.Players;
+import net.unethicalite.api.events.MovementAutomated;
 import net.unethicalite.api.game.Vars;
 import net.unethicalite.api.movement.pathfinder.model.BankLocation;
 import net.unethicalite.api.movement.pathfinder.CollisionMap;
-import net.unethicalite.api.movement.pathfinder.Walker;
+import net.unethicalite.client.managers.WalkerManager;
 import net.unethicalite.api.scene.Tiles;
 import net.unethicalite.api.widgets.Widgets;
 import net.unethicalite.client.Static;
@@ -167,7 +168,8 @@ public class Movement
 		try
 		{
 			WorldPoint wp = WORLD_AREA_POINT_CACHE.get(worldArea.toWorldPointList());
-			return Walker.walkTo(wp);
+			Static.getClient().getCallbacks().post(new MovementAutomated(wp));
+			return true;
 		}
 		catch (ExecutionException e)
 		{
@@ -178,7 +180,8 @@ public class Movement
 
 	public static boolean walkTo(WorldPoint worldPoint)
 	{
-		return Walker.walkTo(worldPoint);
+		Static.getClient().getCallbacks().post(new MovementAutomated(worldPoint));
+		return true;
 	}
 
 	public static boolean walkTo(Locatable locatable)
@@ -227,7 +230,7 @@ public class Movement
 
 	public static int calculateDistance(WorldPoint destination)
 	{
-		List<WorldPoint> path = Walker.buildPath(destination);
+		List<WorldPoint> path = WalkerManager.buildPath(destination);
 
 		if (path.size() < 2)
 		{

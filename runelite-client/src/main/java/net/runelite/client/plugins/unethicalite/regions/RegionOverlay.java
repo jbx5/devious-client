@@ -25,6 +25,7 @@ import net.runelite.client.ui.overlay.Overlay;
 import net.runelite.client.ui.overlay.OverlayLayer;
 import net.runelite.client.ui.overlay.OverlayPosition;
 import net.runelite.client.ui.overlay.OverlayPriority;
+import net.unethicalite.client.managers.WalkerManager;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -163,11 +164,11 @@ public class RegionOverlay extends Overlay
 					.setTarget("Calculate path")
 					.setType(MenuAction.RUNELITE_OVERLAY)
 					.onClick(e -> {
-								Map <WorldPoint, Teleport > teleports = Walker.buildTeleportLinks(clickPoint.getWorldLocation());
+								Map <WorldPoint, Teleport > teleports = WalkerManager.buildTeleportLinks(clickPoint.getWorldLocation());
 								List<WorldPoint> startPoints = new ArrayList<>(teleports.keySet());
 								startPoints.add(Players.getLocal().getWorldLocation());
 								executorService.execute(() -> {
-											path = new Pathfinder(Static.getGlobalCollisionMap(), Walker.buildTransportLinks(), startPoints, clickPoint.getWorldLocation()).find();
+											path = new Pathfinder(Static.getGlobalCollisionMap(), WalkerManager.buildTransportLinks(), startPoints, clickPoint.getWorldLocation()).find();
 										}
 								);
 							}
@@ -191,11 +192,11 @@ public class RegionOverlay extends Overlay
 						{
 							return;
 						}
-						Map <WorldPoint, Teleport > teleports = Walker.buildTeleportLinks(clickPoint);
+						Map <WorldPoint, Teleport > teleports = WalkerManager.buildTeleportLinks(clickPoint);
 						List<WorldPoint> startPoints = new ArrayList<>(teleports.keySet());
 						startPoints.add(Players.getLocal().getWorldLocation());
 						executorService.execute(() -> {
-							path = new Pathfinder(Static.getGlobalCollisionMap(), Walker.buildTransportLinks(), startPoints, clickPoint).find();
+							path = new Pathfinder(Static.getGlobalCollisionMap(), WalkerManager.buildTransportLinks(), startPoints, clickPoint).find();
 								}
 						);
 					});

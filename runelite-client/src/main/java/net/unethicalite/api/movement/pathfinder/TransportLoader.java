@@ -34,6 +34,7 @@ import net.runelite.api.coords.WorldArea;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
+import net.unethicalite.client.managers.WalkerManager;
 
 @Slf4j
 public class TransportLoader
@@ -67,7 +68,7 @@ public class TransportLoader
 
 	private static void loadAllStaticTransports()
 	{
-		try (InputStream stream = Walker.class.getResourceAsStream("/transports.json"))
+		try (InputStream stream = WalkerManager.class.getResourceAsStream("/transports.json"))
 		{
 			TransportDto[] json = GSON.fromJson(new String(stream.readAllBytes()), TransportDto[].class);
 

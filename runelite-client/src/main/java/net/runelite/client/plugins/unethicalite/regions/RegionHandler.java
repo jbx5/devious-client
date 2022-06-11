@@ -11,7 +11,7 @@ import net.runelite.client.eventbus.Subscribe;
 import net.unethicalite.api.events.PlaneChanged;
 import net.unethicalite.api.game.Game;
 import net.unethicalite.api.movement.pathfinder.GlobalCollisionMap;
-import net.unethicalite.api.movement.pathfinder.Walker;
+import net.unethicalite.client.managers.WalkerManager;
 import net.unethicalite.client.managers.RegionManager;
 
 import javax.inject.Inject;
@@ -129,7 +129,7 @@ public class RegionHandler
 
 	private void loadCachedCollisionMap()
 	{
-		try (InputStream is = Walker.class.getResourceAsStream("/regions"))
+		try (InputStream is = WalkerManager.class.getResourceAsStream("/regions"))
 		{
 			if (is == null)
 			{
