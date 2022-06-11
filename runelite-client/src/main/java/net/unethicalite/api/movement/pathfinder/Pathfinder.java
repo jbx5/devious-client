@@ -2,6 +2,7 @@ package net.unethicalite.api.movement.pathfinder;
 
 import lombok.Data;
 import lombok.Value;
+import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.coords.WorldPoint;
 import net.unethicalite.api.movement.pathfinder.model.Transport;
 
@@ -10,6 +11,7 @@ import java.util.concurrent.Callable;
 import java.util.stream.Collectors;
 
 @Data
+@Slf4j
 public class Pathfinder implements Callable<List<WorldPoint>>
 {
     final CollisionMap map;
@@ -93,6 +95,14 @@ public class Pathfinder implements Callable<List<WorldPoint>>
     }
 
     public List<WorldPoint> find()
+    {
+        long startTime = System.currentTimeMillis();
+        List<WorldPoint> path = calculate();
+        log.info("Path calculation took {} ms", System.currentTimeMillis() - startTime);
+        return path;
+    }
+
+    private List<WorldPoint> calculate()
     {
         boundary.addAll(start);
 

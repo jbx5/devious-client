@@ -29,8 +29,6 @@ public class Walker
 	public static final int MAX_INTERACT_DISTANCE = 20;
 	private static final int MIN_TILES_WALKED_IN_STEP = 7;
 	private static final int MAX_TILES_WALKED_IN_STEP = 14;
-	private static final int MIN_TILES_WALKED_BEFORE_RECHOOSE = 10;
-	private static final int MIN_TILES_LEFT_BEFORE_RECHOOSE = 3;
 	private static final int MAX_MIN_ENERGY = 50;
 	private static final int MIN_ENERGY = 5;
 	private static final int MAX_NEAREST_SEARCH_ITERATIONS = 10;
@@ -98,7 +96,7 @@ public class Walker
 		return stepAlong(remainingPath);
 	}
 
-	public static boolean  stepAlong(List<WorldPoint> path)
+	public static boolean stepAlong(List<WorldPoint> path)
 	{
 		List<WorldPoint> reachablePath = reachablePath(path);
 		if (reachablePath.isEmpty())
@@ -169,13 +167,6 @@ public class Walker
 		}
 
 		return true;
-	}
-
-	public static int recalculateDistance(int targetDistance)
-	{
-		int rechoose = MIN_TILES_WALKED_BEFORE_RECHOOSE + Rand.nextInt(0, targetDistance - MIN_TILES_WALKED_BEFORE_RECHOOSE + 1);
-		rechoose = Math.min(rechoose, targetDistance - MIN_TILES_LEFT_BEFORE_RECHOOSE);
-		return rechoose;
 	}
 
 	public static boolean handleTransports(List<WorldPoint> path, Map<WorldPoint, List<Transport>> transports)
@@ -331,6 +322,16 @@ public class Walker
 		}
 	}
 
+	public static List<WorldPoint> buildPath(WorldPoint destination)
+	{
+		Player local = Players.getLocal();
+		LinkedHashMap<WorldPoint, Teleport> teleports = buildTeleportLinks(destination);
+		List<WorldPoint> startPoints = new ArrayList<>(teleports.keySet());
+		startPoints.add(local.getWorldLocation());
+
+		return calculatePath(startPoints, destination);
+	}
+
 	public static Map<WorldPoint, List<Transport>> buildTransportLinks()
 	{
 		Map<WorldPoint, List<Transport>> out = new HashMap<>();
@@ -345,16 +346,6 @@ public class Walker
 		}
 
 		return out;
-	}
-
-	public static List<WorldPoint> buildPath(WorldPoint destination)
-	{
-		Player local = Players.getLocal();
-		LinkedHashMap<WorldPoint, Teleport> teleports = buildTeleportLinks(destination);
-		List<WorldPoint> startPoints = new ArrayList<>(teleports.keySet());
-		startPoints.add(local.getWorldLocation());
-
-		return calculatePath(startPoints, destination);
 	}
 
 	public static LinkedHashMap<WorldPoint, Teleport> buildTeleportLinks(WorldPoint destination)

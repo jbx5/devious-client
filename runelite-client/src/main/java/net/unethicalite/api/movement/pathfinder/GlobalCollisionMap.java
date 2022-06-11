@@ -140,17 +140,10 @@ public class GlobalCollisionMap implements CollisionMap
 
 	public static GlobalCollisionMap fetchFromUrl(String url) throws IOException
 	{
-//		byte[] bytes = HttpUtil.readBytes(url);
-//		if (bytes != null)
-//		{
-//			return new GlobalCollisionMap(new GZIPInputStream(new ByteArrayInputStream(bytes)).readAllBytes());
-//		}
-
 		try (InputStream is = Walker.class.getResourceAsStream("/regions"))
 		{
 			if (is == null)
 			{
-				// Worst case scenario: Return an empty collisionmap and build collision data during the session
 				return new GlobalCollisionMap();
 			}
 
