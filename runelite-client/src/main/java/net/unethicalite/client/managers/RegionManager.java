@@ -5,8 +5,8 @@ import com.google.gson.GsonBuilder;
 import net.unethicalite.api.entities.Players;
 import net.unethicalite.api.game.Game;
 import net.unethicalite.api.movement.Reachable;
-import net.unethicalite.api.movement.pathfinder.TransportLoader;
 import net.unethicalite.api.movement.pathfinder.model.Transport;
+import net.unethicalite.api.movement.pathfinder.Walker;
 import net.unethicalite.api.scene.Tiles;
 import net.runelite.api.CollisionData;
 import net.runelite.api.CollisionDataFlag;
@@ -95,7 +95,7 @@ public class RegionManager
 		}
 
 		List<TileFlag> tileFlags = new ArrayList<>();
-		Map<WorldPoint, List<Transport>> transportLinks = TransportLoader.buildTransportLinks();
+		Map<WorldPoint, List<Transport>> transportLinks = Walker.buildTransportLinks();
 		int plane = Static.getClient().getPlane();
 		CollisionData data = col[plane];
 		if (data == null)

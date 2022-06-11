@@ -78,7 +78,7 @@ public class DrawUtils
 		}
 	}
 
-	public static void drawPath(Graphics2D graphics2D, List<WorldPoint> path, WorldPoint destination)
+	public static void drawPath(Graphics2D graphics2D, WorldPoint destination)
 	{
 		try
 		{
@@ -86,7 +86,6 @@ public class DrawUtils
 //			{
 //				Walker.getCurrentPath().getPath().forEach(tile -> tile.outline(Static.getClient(), graphics2D, Color.RED, null));
 //			}
-			path.forEach(tile -> tile.outline(Static.getClient(), graphics2D, Color.RED));
 			destination.outline(Static.getClient(), graphics2D, Color.GREEN, "Destination");
 		}
 		catch (Exception e)

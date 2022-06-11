@@ -37,7 +37,6 @@ import net.unethicalite.api.entities.Players;
 import net.unethicalite.api.entities.Projectiles;
 import net.unethicalite.api.entities.TileItems;
 import net.unethicalite.api.entities.TileObjects;
-import net.unethicalite.api.movement.pathfinder.model.PathfinderPath;
 import net.unethicalite.api.scene.Tiles;
 import net.unethicalite.api.utils.DrawUtils;
 import net.unethicalite.api.widgets.Widgets;
@@ -63,9 +62,6 @@ public class EntityRenderer
 	private static final Color DEEP_PURPLE = new Color(98, 0, 234);
 	private static final Color PURPLE = new Color(170, 0, 255);
 	private static final Color GRAY = new Color(158, 158, 158);
-
-	@Setter
-	private PathfinderPath currentPath = null;
 
 	@Getter
 	@Setter
@@ -194,9 +190,9 @@ public class EntityRenderer
 			renderTileTooltip(g, hoveredTile);
 		}
 
-		if (path && currentPath != null)
+		if (path)
 		{
-			DrawUtils.drawPath(g, currentPath.getTiles(), currentPath.getDestination());
+			DrawUtils.drawPath(g, hoveredTile.getWorldLocation());
 		}
 
 		if (collisionMap)

@@ -1,7 +1,5 @@
 package net.unethicalite.api.movement.pathfinder;
 
-import net.unethicalite.client.managers.WalkerManager;
-
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -142,17 +140,10 @@ public class GlobalCollisionMap implements CollisionMap
 
 	public static GlobalCollisionMap fetchFromUrl(String url) throws IOException
 	{
-//		byte[] bytes = HttpUtil.readBytes(url);
-//		if (bytes != null)
-//		{
-//			return new GlobalCollisionMap(new GZIPInputStream(new ByteArrayInputStream(bytes)).readAllBytes());
-//		}
-
-		try (InputStream is = WalkerManager.class.getResourceAsStream("/regions"))
+		try (InputStream is = Walker.class.getResourceAsStream("/regions"))
 		{
 			if (is == null)
 			{
-				// Worst case scenario: Return an empty collisionmap and build collision data during the session
 				return new GlobalCollisionMap();
 			}
 

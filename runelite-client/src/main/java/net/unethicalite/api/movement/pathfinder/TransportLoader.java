@@ -2,15 +2,7 @@ package net.unethicalite.api.movement.pathfinder;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import net.runelite.api.Item;
-import net.runelite.api.ItemID;
-import net.runelite.api.MenuAction;
-import net.runelite.api.NPC;
-import net.runelite.api.NpcID;
-import net.runelite.api.Point;
-import net.runelite.api.QuestState;
-import net.runelite.api.Skill;
-import net.runelite.api.TileObject;
+import net.runelite.api.*;
 import net.unethicalite.api.entities.NPCs;
 import net.unethicalite.api.entities.Players;
 import net.unethicalite.api.entities.TileObjects;
@@ -33,9 +25,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
@@ -44,7 +34,6 @@ import net.runelite.api.coords.WorldArea;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
-import net.unethicalite.client.managers.WalkerManager;
 
 @Slf4j
 public class TransportLoader
@@ -78,7 +67,7 @@ public class TransportLoader
 
 	private static void loadAllStaticTransports()
 	{
-		try (InputStream stream = WalkerManager.class.getResourceAsStream("/transports.json"))
+		try (InputStream stream = Walker.class.getResourceAsStream("/transports.json"))
 		{
 			TransportDto[] json = GSON.fromJson(new String(stream.readAllBytes()), TransportDto[].class);
 
@@ -124,24 +113,6 @@ public class TransportLoader
 		}
 
 		return LAST_TRANSPORT_LIST;
-	}
-
-	public static Map<WorldPoint, List<Transport>> buildTransportLinks()
-	{
-		Map<WorldPoint, List<Transport>> out = new HashMap<>();
-		if (!Static.getUnethicaliteConfig().useTransports())
-		{
-			return out;
-		}
-
-		for (Transport transport : buildTransports())
-		{
-			out.computeIfAbsent(transport.getSource(), x -> new ArrayList<>()).add(transport);
-		}
-
-		log.debug("Loaded {} transports", out.size());
-
-		return out;
 	}
 
 	public static List<Transport> buildCachedTransportList()
