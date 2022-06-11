@@ -1,5 +1,6 @@
 package net.unethicalite.api.movement.pathfinder;
 
+import net.runelite.api.Player;
 import net.unethicalite.api.entities.Players;
 import net.unethicalite.api.game.Game;
 import net.unethicalite.api.game.Worlds;
@@ -15,6 +16,7 @@ import net.unethicalite.api.widgets.Dialog;
 import net.unethicalite.api.widgets.Widgets;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.List;
 import net.runelite.api.Item;
 import net.runelite.api.coords.WorldPoint;
@@ -272,6 +274,28 @@ public class TeleportLoader
 		{
 			equipped.interact(target);
 		}
+	}
+
+	public static LinkedHashMap<WorldPoint, Teleport> buildTeleportLinks(WorldPoint destination)
+	{
+		LinkedHashMap<WorldPoint, Teleport> out = new LinkedHashMap<>();
+		if (!Static.getUnethicaliteConfig().useTeleports())
+		{
+			return out;
+		}
+
+		Player local = Players.getLocal();
+
+		for (Teleport teleport : buildTeleports())
+		{
+			if (teleport.getDestination().distanceTo(local.getWorldLocation()) > 50
+					&& local.getWorldLocation().distanceTo(destination) > teleport.getDestination().distanceTo(destination) + 20)
+			{
+				out.putIfAbsent(teleport.getDestination(), teleport);
+			}
+		}
+
+		return out;
 	}
 
 	public static boolean ringOfDueling()
