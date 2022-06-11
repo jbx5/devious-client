@@ -14,6 +14,7 @@ import net.runelite.client.plugins.PluginManager;
 import net.unethicalite.api.movement.pathfinder.GlobalCollisionMap;
 import net.unethicalite.api.script.paint.Paint;
 import net.unethicalite.client.config.UnethicaliteConfig;
+import net.unethicalite.client.devtools.EntityRenderer;
 import net.unethicalite.client.managers.DefinitionManager;
 import net.unethicalite.client.managers.NativeInputManager;
 import net.unethicalite.client.managers.NeverLogManager;
@@ -95,6 +96,10 @@ public class Static
 	@Inject
 	@Getter
 	private static NeverLogManager neverLogManager;
+
+	@Inject
+	@Getter
+	private static EntityRenderer entityRenderer;
 
 	public static void setScriptArgs(String[] scriptArgs)
 	{

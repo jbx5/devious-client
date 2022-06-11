@@ -1,4 +1,4 @@
-package net.runelite.client.plugins.unethicalite.regions;
+package net.runelite.client.plugins.unethicaldevtools;
 
 import net.unethicalite.api.entities.Players;
 import net.unethicalite.api.movement.pathfinder.*;
@@ -9,7 +9,6 @@ import net.unethicalite.api.utils.CoordUtils;
 import net.unethicalite.api.utils.DrawUtils;
 import net.unethicalite.api.widgets.Widgets;
 import net.unethicalite.client.Static;
-import net.unethicalite.client.config.UnethicaliteConfig;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.api.MenuAction;
@@ -40,7 +39,7 @@ public class RegionOverlay extends Overlay
 {
 	private static final Color RED_TRANSLUCENT = new Color(255, 0, 0, 128);
 
-	private final UnethicaliteConfig regionConfig;
+	private final UnethicalDevToolsConfig config;
 	private final GlobalCollisionMap collisionMap;
 	private final Client client;
 	private final ExecutorService executorService;
@@ -48,9 +47,9 @@ public class RegionOverlay extends Overlay
 	private List<WorldPoint> path = new ArrayList<>();
 
 	@Inject
-	public RegionOverlay(UnethicaliteConfig regionConfig, GlobalCollisionMap collisionMap, Client client, ExecutorService executorService)
+	public RegionOverlay(UnethicalDevToolsConfig config, GlobalCollisionMap collisionMap, Client client, ExecutorService executorService)
 	{
-		this.regionConfig = regionConfig;
+		this.config = config;
 		this.collisionMap = collisionMap;
 		this.client = client;
 		this.executorService = executorService;
@@ -69,7 +68,7 @@ public class RegionOverlay extends Overlay
 			Rectangle mapBounds = worldMap.getBounds();
 			graphics.setClip(mapBounds);
 
-			if (regionConfig.transportsOverlay())
+			if (config.transportsOverlay())
 			{
 				List<Transport> transports = TransportLoader.buildTransports();
 				for (Transport transport : transports)
@@ -91,9 +90,9 @@ public class RegionOverlay extends Overlay
 				}
 			}
 
-			if (regionConfig.collisionOverlay())
+			if (config.collisionOverlay())
 			{
-				List<WorldPoint> worldMapTiles = Tiles.getWorldMapTiles(regionConfig.collisionOverlayPlane());
+				List<WorldPoint> worldMapTiles = Tiles.getWorldMapTiles(config.collisionOverlayPlane());
 				for (WorldPoint worldMapTile : worldMapTiles)
 				{
 					if (worldMapTile != null && collisionMap.fullBlock(worldMapTile))
@@ -103,7 +102,7 @@ public class RegionOverlay extends Overlay
 				}
 			}
 
-			if (regionConfig.pathOverlay() && !path.isEmpty())
+			if (config.pathOverlay() && !path.isEmpty())
 			{
 				for (WorldPoint tile : path)
 				{
@@ -116,17 +115,17 @@ public class RegionOverlay extends Overlay
 			return null;
 		}
 
-		if (regionConfig.transportsOverlay())
+		if (config.transportsOverlay())
 		{
 			DrawUtils.drawTransports(graphics);
 		}
 
-		if (regionConfig.collisionOverlay())
+		if (config.collisionOverlay())
 		{
 			DrawUtils.drawCollisions(graphics);
 		}
 
-		if (regionConfig.pathOverlay() && !path.isEmpty())
+		if (config.pathOverlay() && !path.isEmpty())
 		{
 			for (WorldPoint tile : path)
 			{
@@ -142,7 +141,7 @@ public class RegionOverlay extends Overlay
 	@Subscribe
 	public void onMenuOpened(MenuOpened event)
 	{
-		if (!regionConfig.pathOverlay())
+		if (!config.pathOverlay())
 		{
 			return;
 		}

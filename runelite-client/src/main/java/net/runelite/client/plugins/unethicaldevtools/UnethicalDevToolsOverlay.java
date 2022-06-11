@@ -1,4 +1,4 @@
-package net.runelite.client.plugins.entityinspector;
+package net.runelite.client.plugins.unethicaldevtools;
 
 import net.unethicalite.client.devtools.EntityRenderer;
 import net.runelite.client.ui.overlay.Overlay;
@@ -7,15 +7,16 @@ import net.runelite.client.ui.overlay.OverlayPosition;
 import net.runelite.client.ui.overlay.OverlayPriority;
 
 import javax.inject.Inject;
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.Graphics2D;
 
-public class EntityInspectorOverlay extends Overlay
+public class UnethicalDevToolsOverlay extends Overlay
 {
-	private final EntityInspectorConfig config;
+	private final UnethicalDevToolsConfig config;
 	private final EntityRenderer entityRenderer;
 
 	@Inject
-	private EntityInspectorOverlay(EntityInspectorConfig config, EntityRenderer entityRenderer)
+	private UnethicalDevToolsOverlay(UnethicalDevToolsConfig config, EntityRenderer entityRenderer)
 	{
 		this.config = config;
 		this.entityRenderer = entityRenderer;
@@ -50,6 +51,7 @@ public class EntityInspectorOverlay extends Overlay
 		entityRenderer.setGroundObjects(config.groundObjects());
 		entityRenderer.setTileItems(config.tileItems());
 		entityRenderer.setWallObjects(config.wallObjects());
+		entityRenderer.setPath(config.path());
 
 		entityRenderer.render(g);
 		return null;

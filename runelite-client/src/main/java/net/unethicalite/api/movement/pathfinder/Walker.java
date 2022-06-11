@@ -48,6 +48,8 @@ public class Walker
 		LinkedHashMap<WorldPoint, Teleport> teleports = buildTeleportLinks(destination);
 		List<WorldPoint> path = buildPath(destination);
 
+		Static.getEntityRenderer().setCurrentPath(path);
+
 		if (path == null)
 		{
 			log.error("Path is null");

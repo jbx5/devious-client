@@ -1,12 +1,13 @@
-package net.runelite.client.plugins.entityinspector;
+package net.runelite.client.plugins.unethicaldevtools;
 
 import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
 import net.runelite.client.config.ConfigSection;
+import net.runelite.client.config.Range;
 
 @ConfigGroup("entityinspector")
-public interface EntityInspectorConfig extends Config
+public interface UnethicalDevToolsConfig extends Config
 {
 	@ConfigSection(
 			keyName = "settings",
@@ -263,7 +264,7 @@ public interface EntityInspectorConfig extends Config
 
 	@ConfigItem(
 			keyName = "path",
-			name = "Path",
+			name = "Last path",
 			description = "Render calculated Path",
 			position = 200,
 			section = others
@@ -304,5 +305,108 @@ public interface EntityInspectorConfig extends Config
 	default String opcodes()
 	{
 		return "";
+	}
+
+	@ConfigSection(
+			name = "Regions",
+			keyName = "regions",
+			description = "",
+			position = 4,
+			closedByDefault = true
+	)
+	String regions = "regions";
+
+	@Range(max = 3)
+	@ConfigItem(
+			keyName = "collisionOverlayPlane",
+			name = "Collision overlay plane",
+			description = "Collision overlay plane",
+			position = 1,
+			section = regions
+	)
+	default int collisionOverlayPlane()
+	{
+		return 0;
+	}
+
+	@ConfigItem(
+			keyName = "collisionOverlay",
+			name = "Show collision overlay",
+			description = "Show collision overlay",
+			position = 2,
+			section = regions
+	)
+	default boolean collisionOverlay()
+	{
+		return false;
+	}
+
+	@ConfigItem(
+			keyName = "transportsOverlay",
+			name = "Show transports overlay",
+			description = "Show transports overlay",
+			position = 3,
+			section = regions
+	)
+	default boolean transportsOverlay()
+	{
+		return false;
+	}
+
+	@ConfigItem(
+			keyName = "pathOverlay",
+			name = "Show path overlay",
+			description = "Show path overlay",
+			position = 4,
+			section = regions
+	)
+	default boolean pathOverlay()
+	{
+		return false;
+	}
+
+	@ConfigSection(
+			keyName = "interaction",
+			name = "Interaction",
+			description = "",
+			position = 5,
+			closedByDefault = true
+	)
+	String interaction = "interaction";
+
+	@ConfigItem(
+			keyName = "drawMouse",
+			name = "Draw mouse events",
+			description = "Draws the sent mouse events on screen",
+			section = interaction,
+			position = 7
+	)
+	default boolean drawMouse()
+	{
+		return false;
+	}
+
+	@ConfigItem(
+			keyName = "debugMenuAction",
+			name = "Debug menu actions",
+			description = "Debugs attempted menu actions to the console",
+			section = interaction,
+			position = 8
+	)
+	default boolean debugMenuActions()
+	{
+		return false;
+	}
+
+	@ConfigItem(
+			keyName = "debugDialogs",
+			name = "Debug dialog interactions",
+			description = "Debugs chat dialog actions to console",
+			section = interaction,
+			position = 9
+	)
+	default boolean debugDialogs()
+	{
+		return false;
 	}
 }

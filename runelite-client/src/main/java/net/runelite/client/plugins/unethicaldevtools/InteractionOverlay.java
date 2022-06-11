@@ -1,6 +1,5 @@
-package net.runelite.client.plugins.unethicalite.interaction;
+package net.runelite.client.plugins.unethicaldevtools;
 
-import net.unethicalite.client.config.UnethicaliteConfig;
 import net.unethicalite.client.managers.InputManager;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Point;
@@ -12,18 +11,20 @@ import net.runelite.client.ui.overlay.OverlayUtil;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Graphics2D;
 
 @Singleton
 @Slf4j
 public class InteractionOverlay extends Overlay
 {
-	private final UnethicaliteConfig config;
+	private final UnethicalDevToolsConfig config;
 	private final InputManager inputManager;
 
-
 	@Inject
-	public InteractionOverlay(UnethicaliteConfig config, InputManager inputManager)
+	public InteractionOverlay(UnethicalDevToolsConfig config, InputManager inputManager)
 	{
 		this.config = config;
 		this.inputManager = inputManager;

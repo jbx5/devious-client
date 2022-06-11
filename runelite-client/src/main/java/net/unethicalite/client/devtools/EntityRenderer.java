@@ -132,6 +132,9 @@ public class EntityRenderer
 	private final Client client;
 	private final TooltipManager tooltipManager;
 
+	@Setter
+	private List<WorldPoint> currentPath = null;
+
 	@Inject
 	public EntityRenderer(Client client, TooltipManager tooltipManager)
 	{
@@ -190,9 +193,9 @@ public class EntityRenderer
 			renderTileTooltip(g, hoveredTile);
 		}
 
-		if (path)
+		if (path && currentPath != null)
 		{
-			DrawUtils.drawPath(g, hoveredTile.getWorldLocation());
+			DrawUtils.drawPath(g, currentPath);
 		}
 
 		if (collisionMap)

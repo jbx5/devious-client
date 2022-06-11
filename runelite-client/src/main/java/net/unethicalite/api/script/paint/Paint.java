@@ -1,10 +1,9 @@
 package net.unethicalite.api.script.paint;
 
-import net.unethicalite.client.config.UnethicaliteConfig;
+import net.runelite.client.config.ConfigManager;
 import net.unethicalite.client.devtools.EntityRenderer;
 import net.unethicalite.client.minimal.ui.MinimalUI;
 import net.unethicalite.client.managers.InputManager;
-import net.unethicalite.client.managers.MinimalPluginManager;
 import net.runelite.api.Point;
 import net.runelite.client.ui.overlay.Overlay;
 import net.runelite.client.ui.overlay.OverlayLayer;
@@ -16,7 +15,10 @@ import net.runelite.client.ui.overlay.RenderableEntity;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,13 +29,10 @@ public class Paint extends Overlay
 	private boolean enabled = false;
 
 	@Inject
-	private MinimalPluginManager minimalPluginManager;
-
-	@Inject
 	private EntityRenderer entityRenderer;
 
 	@Inject
-	private UnethicaliteConfig interactionConfig;
+	private ConfigManager configManager;
 
 	@Inject
 	private InputManager inputManager;
@@ -57,7 +56,7 @@ public class Paint extends Overlay
 
 		if (MinimalUI.getFrame() != null)
 		{
-			if (interactionConfig.drawMouse())
+			if (configManager.getConfiguration("unethicalite", "drawMouse", Boolean.class))
 			{
 				g.setFont(new Font("Tahoma", Font.BOLD, 18));
 				OverlayUtil.renderTextLocation(g, new Point(inputManager.getLastClickX() - (g.getFont().getSize() / 3),

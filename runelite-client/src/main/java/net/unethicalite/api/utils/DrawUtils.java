@@ -78,20 +78,9 @@ public class DrawUtils
 		}
 	}
 
-	public static void drawPath(Graphics2D graphics2D, WorldPoint destination)
+	public static void drawPath(Graphics2D graphics2D, List<WorldPoint> path)
 	{
-		try
-		{
-//			if (!Walker.getCurrentPath().isLoading())
-//			{
-//				Walker.getCurrentPath().getPath().forEach(tile -> tile.outline(Static.getClient(), graphics2D, Color.RED, null));
-//			}
-			destination.outline(Static.getClient(), graphics2D, Color.GREEN, "Destination");
-		}
-		catch (Exception e)
-		{
-			// ignored
-		}
+		path.forEach(t -> t.outline(Static.getClient(), graphics2D, Color.RED));
 	}
 
 	public static void drawCollisions(Graphics2D graphics2D, CollisionMap collisionMap)

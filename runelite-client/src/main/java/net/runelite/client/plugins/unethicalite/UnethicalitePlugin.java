@@ -1,21 +1,18 @@
 package net.runelite.client.plugins.unethicalite;
 
+import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.InventoryID;
 import net.runelite.api.events.ItemContainerChanged;
 import net.runelite.api.events.WidgetLoaded;
 import net.runelite.api.widgets.WidgetInfo;
+import net.runelite.client.config.Config;
+import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
+import net.runelite.client.plugins.PluginDescriptor;
+import net.runelite.client.plugins.unethicalite.regions.RegionHandler;
 import net.unethicalite.api.movement.pathfinder.TransportLoader;
 import net.unethicalite.api.plugins.SettingsPlugin;
 import net.unethicalite.client.config.UnethicaliteConfig;
-import lombok.extern.slf4j.Slf4j;
-import net.runelite.client.plugins.unethicalite.regions.RegionHandler;
-import net.runelite.client.plugins.unethicalite.interaction.InteractionOverlay;
-import net.runelite.client.plugins.unethicalite.regions.RegionOverlay;
-import net.runelite.client.config.Config;
-import net.runelite.client.eventbus.EventBus;
-import net.runelite.client.plugins.PluginDescriptor;
-import net.runelite.client.ui.overlay.OverlayManager;
 
 import javax.inject.Inject;
 import java.util.Set;
@@ -40,35 +37,18 @@ public class UnethicalitePlugin extends SettingsPlugin
 	private EventBus eventBus;
 
 	@Inject
-	private OverlayManager overlayManager;
-
-	@Inject
-	private InteractionOverlay interactionOverlay;
-
-	@Inject
-	private RegionOverlay regionOverlay;
-
-	@Inject
 	private RegionHandler regionHandler;
 
 	@Override
 	protected void startUp() throws Exception
 	{
-		eventBus.register(regionOverlay);
 		eventBus.register(regionHandler);
-
-		overlayManager.add(interactionOverlay);
-		overlayManager.add(regionOverlay);
 	}
 
 	@Override
 	protected void shutDown() throws Exception
 	{
-		eventBus.unregister(regionOverlay);
 		eventBus.unregister(regionHandler);
-
-		overlayManager.remove(interactionOverlay);
-		overlayManager.remove(regionOverlay);
 	}
 
 	@Override

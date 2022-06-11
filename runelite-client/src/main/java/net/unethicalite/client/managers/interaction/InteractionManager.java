@@ -54,19 +54,6 @@ public class InteractionManager
 	@Subscribe
 	public void onInvokeMenuAction(MenuAutomated event)
 	{
-		if (config.debugMenuActions())
-		{
-			String debug = "O=" + event.getOption()
-					+ " | T=" + event.getTarget()
-					+ " | ID=" + event.getIdentifier()
-					+ " | OP=" + event.getOpcode().getId()
-					+ " | P0=" + event.getParam0()
-					+ " | P1=" + event.getParam1()
-					+ " | X=" + event.getClickX()
-					+ " | Y=" + event.getClickY();
-
-			log.debug("[Automated] {}", debug);
-		}
 		Point clickPoint = getClickPoint(event);
 		MouseHandler mouseHandler = client.getMouseHandler();
 
@@ -204,37 +191,6 @@ public class InteractionManager
 					0,
 					0
 			);
-		}
-
-		if (config.debugMenuActions())
-		{
-			String action = "O=" + e.getMenuOption()
-					+ " | T=" + e.getMenuTarget()
-					+ " | ID=" + e.getId()
-					+ " | OP=" + e.getMenuAction().getId()
-					+ " | P0=" + e.getParam0()
-					+ " | P1=" + e.getParam1();
-			log.debug("[Menu Action] {}", action);
-		}
-	}
-
-
-	@Subscribe
-	public void onDialogProcessed(DialogProcessed e)
-	{
-		if (!config.debugDialogs())
-		{
-			return;
-		}
-
-		DialogOption dialogOption = DialogOption.of(e.getDialogOption().getWidgetUid(), e.getDialogOption().getMenuIndex());
-		if (dialogOption != null)
-		{
-			log.debug("Dialog processed {}", dialogOption);
-		}
-		else
-		{
-			log.debug("Unknown or unmapped dialog {}", e);
 		}
 	}
 
