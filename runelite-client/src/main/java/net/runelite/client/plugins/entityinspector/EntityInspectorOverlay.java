@@ -50,7 +50,6 @@ public class EntityInspectorOverlay extends Overlay
 		entityRenderer.setGroundObjects(config.groundObjects());
 		entityRenderer.setTileItems(config.tileItems());
 		entityRenderer.setWallObjects(config.wallObjects());
-		entityRenderer.setPath(config.path());
 
 		entityRenderer.render(g);
 		return null;

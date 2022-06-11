@@ -1,37 +1,22 @@
-package net.unethicalite.client.managers;
+package net.unethicalite.api.movement.pathfinder;
 
+import net.unethicalite.api.commons.Rand;
+import net.unethicalite.api.commons.Time;
+import net.unethicalite.api.entities.Players;
+import net.unethicalite.api.movement.Movement;
+import net.unethicalite.api.movement.Reachable;
+import net.unethicalite.api.movement.pathfinder.model.Teleport;
+import net.unethicalite.api.movement.pathfinder.model.Transport;
+import net.unethicalite.api.scene.Tiles;
+import net.unethicalite.client.Static;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Player;
 import net.runelite.api.Tile;
 import net.runelite.api.WallObject;
 import net.runelite.api.coords.WorldPoint;
-import net.runelite.client.eventbus.EventBus;
-import net.runelite.client.eventbus.Subscribe;
-import net.unethicalite.api.commons.Rand;
-import net.unethicalite.api.commons.Time;
-import net.unethicalite.api.entities.Players;
-import net.unethicalite.api.events.MovementAutomated;
-import net.unethicalite.api.movement.Movement;
-import net.unethicalite.api.movement.Reachable;
-import net.unethicalite.api.movement.pathfinder.CollisionMap;
-import net.unethicalite.api.movement.pathfinder.Pathfinder;
-import net.unethicalite.api.movement.pathfinder.TeleportLoader;
-import net.unethicalite.api.movement.pathfinder.TransportLoader;
-import net.unethicalite.api.movement.pathfinder.model.PathfinderPath;
-import net.unethicalite.api.movement.pathfinder.model.Teleport;
-import net.unethicalite.api.movement.pathfinder.model.Transport;
-import net.unethicalite.api.scene.Tiles;
-import net.unethicalite.client.Static;
 
-import javax.inject.Inject;
 import javax.inject.Singleton;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
@@ -39,7 +24,7 @@ import java.util.function.Predicate;
 
 @Singleton
 @Slf4j
-public class WalkerManager
+public class Walker
 {
 	public static final int MAX_INTERACT_DISTANCE = 20;
 	private static final int MIN_TILES_WALKED_IN_STEP = 7;
@@ -53,59 +38,33 @@ public class WalkerManager
 	private static final ExecutorService executor = Executors.newSingleThreadExecutor();
 	private static Future<List<WorldPoint>> pathFuture = null;
 	private static WorldPoint currentDestination = null;
-
-	private PathfinderPath cachedPath = null;
-
-	@Inject
-	WalkerManager(EventBus eventBus)
-	{
-		eventBus.register(this);
-	}
-
-	@Subscribe
-	public void onMovementAutomated(MovementAutomated e)
+	public static boolean walkTo(WorldPoint destination)
 	{
 		Player local = Players.getLocal();
-		if (e.getDestination().equals(local.getWorldLocation()))
+		if (destination.equals(local.getWorldLocation()))
 		{
-			return;
+			return true;
 		}
 
-		if (cachedPath == null
-				|| (!cachedPath.getTiles().contains(Players.getLocal().getWorldLocation())
-				|| !cachedPath.getDestination().equals(e.getDestination())))
-		{
-			cachedPath = new PathfinderPath(buildPath(e.getDestination()), e.getDestination());
-		}
-
-		walk(cachedPath);
-	}
-
-	public void walk(PathfinderPath path)
-	{
-		Player local = Players.getLocal();
 		Map<WorldPoint, List<Transport>> transports = buildTransportLinks();
-		LinkedHashMap<WorldPoint, Teleport> teleports = buildTeleportLinks(path.getDestination());
+		LinkedHashMap<WorldPoint, Teleport> teleports = buildTeleportLinks(destination);
+		List<WorldPoint> path = buildPath(destination);
 
-		Static.getEntityRenderer().setCurrentPath(path);
-
-		List<WorldPoint> tilePath = path.getTiles();
-
-		if (tilePath == null)
+		if (path == null)
 		{
-			log.error("Path was null");
-			return;
+			log.error("Path is null");
+			return false;
 		}
 
-		if (tilePath.isEmpty())
+		if (path.isEmpty())
 		{
 			log.error("Path was empty");
-			return;
+			return false;
 		}
 
-		WorldPoint startPosition = tilePath.get(0);
+		WorldPoint startPosition = path.get(0);
 		Teleport teleport = teleports.get(startPosition);
-		boolean offPath = tilePath.stream().noneMatch(t -> t.distanceTo(local.getWorldLocation()) <= 5);
+		boolean offPath = path.stream().noneMatch(t -> t.distanceTo(local.getWorldLocation()) <= 5);
 
 		if (teleport != null && offPath)
 		{
@@ -114,23 +73,20 @@ public class WalkerManager
 			{
 				teleport.getHandler().run();
 			}
-
 			Time.sleepUntil(() -> Players.getLocal().distanceTo(teleport.getDestination()) < 10, 500);
-			return;
+			return false;
 		}
 
 		// Refresh path if our direction changed
 		if (!local.isAnimating() && offPath)
 		{
-			log.debug("Movement direction changed");
-			tilePath = buildPath(path.getDestination());
-			cachedPath = new PathfinderPath(tilePath, path.getDestination());
+			path = buildPath(destination);
 		}
 
-		walk(tilePath, transports);
+		return walkAlong(path, transports);
 	}
 
-	public static boolean walk(List<WorldPoint> path, Map<WorldPoint, List<Transport>> transports)
+	public static boolean walkAlong(List<WorldPoint> path, Map<WorldPoint, List<Transport>> transports)
 	{
 		List<WorldPoint> remainingPath = remainingPath(path);
 
@@ -142,7 +98,7 @@ public class WalkerManager
 		return stepAlong(remainingPath);
 	}
 
-	public static boolean stepAlong(List<WorldPoint> path)
+	public static boolean  stepAlong(List<WorldPoint> path)
 	{
 		List<WorldPoint> reachablePath = reachablePath(path);
 		if (reachablePath.isEmpty())
@@ -388,23 +344,17 @@ public class WalkerManager
 			out.computeIfAbsent(transport.getSource(), x -> new ArrayList<>()).add(transport);
 		}
 
-		log.debug("Loaded {} transports", out.size());
-
 		return out;
 	}
 
 	public static List<WorldPoint> buildPath(WorldPoint destination)
 	{
-		log.debug("Calculating a path towards {}", destination);
-		long start = System.currentTimeMillis();
 		Player local = Players.getLocal();
 		LinkedHashMap<WorldPoint, Teleport> teleports = buildTeleportLinks(destination);
 		List<WorldPoint> startPoints = new ArrayList<>(teleports.keySet());
 		startPoints.add(local.getWorldLocation());
 
-		List<WorldPoint> path = calculatePath(startPoints, destination);
-		log.debug("Path calculation took {} ms", System.currentTimeMillis() - start);
-		return path;
+		return calculatePath(startPoints, destination);
 	}
 
 	public static LinkedHashMap<WorldPoint, Teleport> buildTeleportLinks(WorldPoint destination)

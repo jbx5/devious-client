@@ -218,6 +218,7 @@ public class InteractionManager
 		}
 	}
 
+
 	@Subscribe
 	public void onDialogProcessed(DialogProcessed e)
 	{
