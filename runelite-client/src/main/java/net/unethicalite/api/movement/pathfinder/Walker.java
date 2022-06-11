@@ -3,7 +3,6 @@ package net.unethicalite.api.movement.pathfinder;
 import net.unethicalite.api.commons.Rand;
 import net.unethicalite.api.commons.Time;
 import net.unethicalite.api.entities.Players;
-import net.unethicalite.api.game.Game;
 import net.unethicalite.api.movement.Movement;
 import net.unethicalite.api.movement.Reachable;
 import net.unethicalite.api.movement.pathfinder.model.Teleport;
