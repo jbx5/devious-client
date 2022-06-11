@@ -7,10 +7,8 @@ import net.unethicalite.api.commons.Rand;
 import net.unethicalite.api.entities.Players;
 import net.unethicalite.api.events.MovementAutomated;
 import net.unethicalite.api.game.Vars;
-import net.unethicalite.api.movement.pathfinder.TeleportLoader;
 import net.unethicalite.api.movement.pathfinder.model.BankLocation;
 import net.unethicalite.api.movement.pathfinder.CollisionMap;
-import net.unethicalite.api.movement.pathfinder.model.Teleport;
 import net.unethicalite.client.managers.WalkerManager;
 import net.unethicalite.api.scene.Tiles;
 import net.unethicalite.api.widgets.Widgets;
@@ -35,18 +33,15 @@ import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
-import java.util.function.Predicate;
 
 @Slf4j
 public class Movement
 {
 	private static final Logger logger = LoggerFactory.getLogger(Movement.class);
 
-	private static final int MAX_NEAREST_SEARCH_ITERATIONS = 10;
 	private static final int STAMINA_VARBIT = 25;
 	private static final int RUN_VARP = 173;
 
@@ -235,7 +230,7 @@ public class Movement
 
 	public static int calculateDistance(WorldPoint destination)
 	{
-		List<WorldPoint> path = buildPath(destination);
+		List<WorldPoint> path = WalkerManager.buildPath(destination);
 
 		if (path.size() < 2)
 		{
@@ -264,54 +259,5 @@ public class Movement
 		}
 
 		return distance;
-	}
-
-	public static List<WorldPoint> buildPath(WorldPoint destination)
-	{
-		log.debug("Calculating a path towards {}", destination);
-		long start = System.currentTimeMillis();
-		Player local = Players.getLocal();
-		LinkedHashMap<WorldPoint, Teleport> teleports = TeleportLoader.buildTeleportLinks(destination);
-		List<WorldPoint> startPoints = new ArrayList<>(teleports.keySet());
-		startPoints.add(local.getWorldLocation());
-
-		List<WorldPoint> path = WalkerManager.calculatePath(startPoints, destination);
-		log.debug("Path calculation took {} ms", System.currentTimeMillis() - start);
-		return path;
-	}
-
-	public static WorldPoint nearestWalkableTile(WorldPoint source)
-	{
-		return nearestWalkableTile(source, x -> true);
-	}
-
-	public static WorldPoint nearestWalkableTile(WorldPoint source, Predicate<WorldPoint> filter)
-	{
-		CollisionMap cm = Static.getGlobalCollisionMap();
-
-		if (!cm.fullBlock(source) && filter.test(source))
-		{
-			return source;
-		}
-
-		int currentIteration = 1;
-		for (int radius = currentIteration; radius < MAX_NEAREST_SEARCH_ITERATIONS; radius++)
-		{
-			for (int x = -radius; x < radius; x++)
-			{
-				for (int y = -radius; y < radius; y++)
-				{
-					WorldPoint p = source.dx(x).dy(y);
-					if (cm.fullBlock(p) || !filter.test(p))
-					{
-						continue;
-					}
-					return p;
-				}
-			}
-		}
-
-		log.debug("Could not find a walkable tile near {}", source);
-		return null;
 	}
 }
