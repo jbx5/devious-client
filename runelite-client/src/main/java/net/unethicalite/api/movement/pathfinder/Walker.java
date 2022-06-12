@@ -1,5 +1,6 @@
 package net.unethicalite.api.movement.pathfinder;
 
+import net.runelite.client.plugins.unethicalite.UnethicalitePlugin;
 import net.unethicalite.api.commons.Rand;
 import net.unethicalite.api.commons.Time;
 import net.unethicalite.api.entities.Players;
@@ -38,6 +39,13 @@ public class Walker
 	private static WorldPoint currentDestination = null;
 	public static boolean walkTo(WorldPoint destination)
 	{
+
+		if (!UnethicalitePlugin.isPathfinderReady())
+		{
+			log.info("Waiting for inventory and equipment to load");
+			return false;
+		}
+
 		Player local = Players.getLocal();
 		if (destination.equals(local.getWorldLocation()))
 		{
@@ -199,7 +207,6 @@ public class Walker
 				{
 					log.debug("Trying to use transport {}", transport);
 					transport.getHandler().run();
-					Time.sleepTick();
 					return true;
 				}
 			}
