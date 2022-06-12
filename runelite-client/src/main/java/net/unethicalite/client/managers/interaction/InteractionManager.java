@@ -2,11 +2,9 @@ package net.unethicalite.client.managers.interaction;
 
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
-import net.runelite.api.DialogOption;
 import net.runelite.api.MenuAction;
 import net.runelite.api.Perspective;
 import net.runelite.api.coords.LocalPoint;
-import net.runelite.api.events.DialogProcessed;
 import net.runelite.api.events.MenuOptionClicked;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
