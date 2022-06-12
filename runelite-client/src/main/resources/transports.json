@@ -158,5 +158,229 @@
     "objectName": "Crushed barricade",
     "objectId": 6878,
     "requirement": []
+  },
+  {
+    "source": {
+      "x": 2522,
+      "y": 3595,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2522,
+      "y": 3597,
+      "plane": 0
+    },
+    "action": "Jump-across",
+    "objectName": "Basalt rock",
+    "objectId": 4551,
+    "requirement": []
+  },
+  {
+    "source": {
+      "x": 2522,
+      "y": 3600,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2522,
+      "y": 3602,
+      "plane": 0
+    },
+    "action": "Jump-across",
+    "objectName": "Basalt rock",
+    "objectId": 4553,
+    "requirement": []
+  },
+  {
+    "source": {
+      "x": 2518,
+      "y": 3611,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2516,
+      "y": 3611,
+      "plane": 0
+    },
+    "action": "Jump-across",
+    "objectName": "Basalt rock",
+    "objectId": 4555,
+    "requirement": []
+  },
+  {
+    "source": {
+      "x": 2514,
+      "y": 3613,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2514,
+      "y": 3615,
+      "plane": 0
+    },
+    "action": "Jump-across",
+    "objectName": "Basalt rock",
+    "objectId": 4557,
+    "requirement": []
+  },
+  {
+    "source": {
+      "x": 2514,
+      "y": 3617,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2514,
+      "y": 3619,
+      "plane": 0
+    },
+    "action": "Jump-to",
+    "objectName": "Rocky shore",
+    "objectId": 4559,
+    "requirement": []
+  },
+  {
+    "source": {
+      "x": 2514,
+      "y": 3619,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2514,
+      "y": 3617,
+      "plane": 0
+    },
+    "action": "Jump-across",
+    "objectName": "Basalt rock",
+    "objectId": 4558,
+    "requirement": []
+  },
+  {
+    "source": {
+      "x": 2514,
+      "y": 3615,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2514,
+      "y": 3613,
+      "plane": 0
+    },
+    "action": "Jump-across",
+    "objectName": "Basalt rock",
+    "objectId": 4556,
+    "requirement": []
+  },
+  {
+    "source": {
+      "x": 2516,
+      "y": 3611,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2518,
+      "y": 3611,
+      "plane": 0
+    },
+    "action": "Jump-across",
+    "objectName": "Basalt rock",
+    "objectId": 4554,
+    "requirement": []
+  },
+  {
+    "source": {
+      "x": 2522,
+      "y": 3602,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2522,
+      "y": 3600,
+      "plane": 0
+    },
+    "action": "Jump-across",
+    "objectName": "Basalt rock",
+    "objectId": 4552,
+    "requirement": []
+  },
+  {
+    "source": {
+      "x": 2522,
+      "y": 3597,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2522,
+      "y": 3595,
+      "plane": 0
+    },
+    "action": "Jump-to",
+    "objectName": "Beach",
+    "objectId": 4550,
+    "requirement": []
+  },
+  {
+    "source": {
+      "x": 2599,
+      "y": 3608,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2595,
+      "y": 3608,
+      "plane": 0
+    },
+    "action": "Cross",
+    "objectName": "Broken bridge",
+    "objectId": 4616,
+    "requirement":[{"type":"QUEST","quest":"HORROR_FROM_THE_DEEP","questState":["FINISHED"]}]
+  },
+  {
+    "source": {
+      "x": 2595,
+      "y": 3608,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2599,
+      "y": 3608,
+      "plane": 0
+    },
+    "action": "Cross",
+    "objectName": "Broken bridge",
+    "objectId": 4615,
+    "requirement":[{"type":"QUEST","quest":"HORROR_FROM_THE_DEEP","questState":["FINISHED"]}]
+  },
+  {
+    "source": {
+      "x": 2722,
+      "y": 3596,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2722,
+      "y": 3592,
+      "plane": 0
+    },
+    "action": "Walk-across",
+    "objectName": "Log balance",
+    "objectId": 16540,
+    "requirement":[{"type":"SKILL","level":48,"skill":"AGILITY"}]
+  },
+  {
+    "source": {
+      "x": 2722,
+      "y": 3592,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2722,
+      "y": 3596,
+      "plane": 0
+    },
+    "action": "Walk-across",
+    "objectName": "Log balance",
+    "objectId": 16542,
+    "requirement":[{"type":"SKILL","level":48,"skill":"AGILITY"}]
   }
 ]

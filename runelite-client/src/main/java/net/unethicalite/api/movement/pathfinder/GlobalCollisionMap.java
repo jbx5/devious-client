@@ -112,7 +112,7 @@ public class GlobalCollisionMap implements CollisionMap
 
 		if (region == null)
 		{
-			return true;
+			return false;
 		}
 
 		int regionX = x % 64;
