@@ -207,6 +207,7 @@ public class Walker
 				{
 					log.debug("Trying to use transport {}", transport);
 					transport.getHandler().run();
+					Time.sleepTick();
 					return true;
 				}
 			}
