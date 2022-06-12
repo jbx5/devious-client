@@ -19,7 +19,7 @@ open class BootstrapTask @Inject constructor(@Input val type: String) : DefaultT
     val launcherArguments = arrayOf(
             "-XX:+DisableAttachMechanism",
             "-Drunelite.launcher.nojvm=true",
-            "-Xmx512m",
+            "-Xmx1g",
             "-Xss2m",
             "-XX:CompileThreshold=1500",
             "-Xincgc",
@@ -31,7 +31,7 @@ open class BootstrapTask @Inject constructor(@Input val type: String) : DefaultT
     val launcherJvm11Arguments = arrayOf(
             "-XX:+DisableAttachMechanism",
             "-Drunelite.launcher.nojvm=true",
-            "-Xmx512m",
+            "-Xmx1g",
             "-Xss2m",
             "-XX:CompileThreshold=1500"
     )
@@ -41,7 +41,7 @@ open class BootstrapTask @Inject constructor(@Input val type: String) : DefaultT
             "-XX:+DisableAttachMechanism",
             "-Drunelite.launcher.nojvm=true",
             "-Drunelite.launcher.blacklistedDlls=RTSSHooks.dll,RTSSHooks64.dll,NahimicOSD.dll,k_fps32.dll,k_fps64.dll",
-            "-Xmx512m",
+            "-Xmx1g",
             "-Xss2m",
             "-XX:CompileThreshold=1500"
     )
@@ -50,7 +50,7 @@ open class BootstrapTask @Inject constructor(@Input val type: String) : DefaultT
     val launcherJvm17Arguments = arrayOf(
             "-XX:+DisableAttachMechanism",
             "-Drunelite.launcher.nojvm=true",
-            "-Xmx512m",
+            "-Xmx1g",
             "-Xss2m",
             "-XX:CompileThreshold=1500",
             "--add-opens=java.desktop/sun.awt=ALL-UNNAMED"
@@ -60,7 +60,7 @@ open class BootstrapTask @Inject constructor(@Input val type: String) : DefaultT
     val launcherJvm17MacArguments = arrayOf(
             "-XX:+DisableAttachMechanism",
             "-Drunelite.launcher.nojvm=true",
-            "-Xmx512m",
+            "-Xmx1g",
             "-Xss2m",
             "-XX:CompileThreshold=1500",
             "--add-opens=java.desktop/sun.awt=ALL-UNNAMED",
@@ -72,7 +72,7 @@ open class BootstrapTask @Inject constructor(@Input val type: String) : DefaultT
             "-XX:+DisableAttachMechanism",
             "-Drunelite.launcher.nojvm=true",
             "-Drunelite.launcher.blacklistedDlls=RTSSHooks.dll,RTSSHooks64.dll,NahimicOSD.dll,k_fps32.dll,k_fps64.dll",
-            "-Xmx512m",
+            "-Xmx1g",
             "-Xss2m",
             "-XX:CompileThreshold=1500",
             "--add-opens=java.desktop/sun.awt=ALL-UNNAMED"
@@ -81,7 +81,7 @@ open class BootstrapTask @Inject constructor(@Input val type: String) : DefaultT
     @Input
     val clientJvmArguments = arrayOf(
             "-XX:+DisableAttachMechanism",
-            "-Xmx512m",
+            "-Xmx1g",
             "-Xss2m",
             "-XX:CompileThreshold=1500",
             "-Xincgc",
@@ -94,7 +94,7 @@ open class BootstrapTask @Inject constructor(@Input val type: String) : DefaultT
     @Input
     val clientJvm9Arguments = arrayOf(
             "-XX:+DisableAttachMechanism",
-            "-Xmx512m",
+            "-Xmx1g",
             "-Xss2m",
             "-XX:CompileThreshold=1500",
             "-Dawt.useSystemAAFontSettings=on",
@@ -104,7 +104,7 @@ open class BootstrapTask @Inject constructor(@Input val type: String) : DefaultT
     @Input
     val clientJvm17MacArguments = arrayOf(
             "-XX:+DisableAttachMechanism",
-            "-Xmx512m",
+            "-Xmx1g",
             "-Xss2m",
             "-XX:CompileThreshold=1500",
             "--add-opens=java.desktop/sun.awt=ALL-UNNAMED",
@@ -116,7 +116,7 @@ open class BootstrapTask @Inject constructor(@Input val type: String) : DefaultT
     @Input
     val clientJvm17Arguments = arrayOf(
             "-XX:+DisableAttachMechanism",
-            "-Xmx512m",
+            "-Xmx1g",
             "-Xss2m",
             "-XX:CompileThreshold=1500",
             "--add-opens=java.desktop/sun.awt=ALL-UNNAMED",
