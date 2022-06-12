@@ -1,9 +1,5 @@
 package net.runelite.client.plugins.unethicalite.regions;
 
-import dev.unethicalite.api.events.PlaneChanged;
-import dev.unethicalite.api.game.Game;
-import dev.unethicalite.api.movement.pathfinder.GlobalCollisionMap;
-import dev.unethicalite.managers.RegionManager;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
@@ -12,6 +8,11 @@ import net.runelite.api.events.ClientTick;
 import net.runelite.api.events.ConfigButtonClicked;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.client.eventbus.Subscribe;
+import net.unethicalite.api.events.PlaneChanged;
+import net.unethicalite.api.game.Game;
+import net.unethicalite.api.movement.pathfinder.GlobalCollisionMap;
+import net.unethicalite.api.movement.pathfinder.Walker;
+import net.unethicalite.client.managers.RegionManager;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -19,7 +20,6 @@ import javax.inject.Singleton;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
 import java.util.zip.GZIPInputStream;
 
 @Singleton
@@ -90,6 +90,9 @@ public class RegionHandler
 			case "downloadCollisionData":
 				updateCollisionMap();
 				break;
+			case "localCollisionData":
+				loadCachedCollisionMap();
+				break;
 			case "addTransportData":
 				if (transportDialog == null)
 				{
@@ -124,16 +127,35 @@ public class RegionHandler
 		regionManager.sendRegion();
 	}
 
-	private void updateCollisionMap()
+	private void loadCachedCollisionMap()
 	{
-		try (InputStream is = new URL(apiUrl + "/regions").openStream())
+		try (InputStream is = Walker.class.getResourceAsStream("/regions"))
 		{
-			collisionMap.overwrite(new GlobalCollisionMap(readGzip(is.readAllBytes())));
+			if (is == null)
+			{
+				return;
+			}
+
+			collisionMap.overwrite(new GlobalCollisionMap(
+					new GZIPInputStream(new ByteArrayInputStream(is.readAllBytes())).readAllBytes()
+			));
 		}
 		catch (IOException e)
 		{
-			log.error("Error downloading collision data: {}", e.getMessage());
+			throw new RuntimeException(e);
 		}
+	}
+
+	private void updateCollisionMap()
+	{
+//		try (InputStream is = new URL(apiUrl + "/regions").openStream())
+//		{
+//			collisionMap.overwrite(new GlobalCollisionMap(readGzip(is.readAllBytes())));
+//		}
+//		catch (IOException e)
+//		{
+//			log.error("Error downloading collision data: {}", e.getMessage());
+//		}
 	}
 
 	private byte[] readGzip(byte[] input) throws IOException

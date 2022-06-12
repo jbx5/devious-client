@@ -1749,4 +1749,10 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("dragInventoryWidget")
 	@Override
 	void setIf1DraggedWidget(Widget widget);
+
+	@Import("widgetDefaultMenuAction")
+	void invokeWidgetAction(int identifier, int param1, int param0, int itemId, String target);
+
+	@Import("getWidgetChild")
+	RSWidget getWidgetChild(int parent, int child);
 }

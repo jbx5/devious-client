@@ -61,7 +61,7 @@ import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 import javax.swing.SwingUtilities;
 
-import dev.unethicalite.client.minimal.MinimalClient;
+import net.unethicalite.client.minimal.MinimalClient;
 import joptsimple.ArgumentAcceptingOptionSpec;
 import joptsimple.OptionParser;
 import joptsimple.OptionSet;
@@ -362,6 +362,7 @@ public class RuneLite
 			// Client size must be set prior to init
 			applet.setSize(Constants.GAME_FIXED_SIZE);
 
+			System.setProperty("jagex.disableBouncyCastle", "true");
 			// Change user.home so the client places jagexcache in the .runelite directory
 			String oldHome = System.setProperty("user.home", MinimalClient.getCacheDirectory().getAbsolutePath());
 			try

@@ -28,10 +28,10 @@ import java.text.SimpleDateFormat
 import java.util.Date
 
 plugins {
-    id("com.github.johnrengelman.shadow") version "6.1.0"
+    id("com.github.johnrengelman.shadow") version "7.1.2"
     java
-    kotlin("jvm") version "1.5.31"
-    id("org.jetbrains.kotlin.plugin.lombok") version "1.5.31"
+    kotlin("jvm") version "1.6.21"
+    id("org.jetbrains.kotlin.plugin.lombok") version "1.6.21"
 }
 
 repositories {
@@ -146,10 +146,6 @@ tasks {
     }
 
     processResources {
-        finalizedBy("filterResources")
-    }
-
-    register<Copy>("filterResources") {
         val tokens = mapOf(
                 "project.version" to ProjectVersions.rlVersion,
                 "rs.version" to ProjectVersions.rsversion.toString(),
@@ -160,12 +156,10 @@ tasks {
 
         inputs.properties(tokens)
 
-        from("src/main/resources/")
-        include("**/*.properties")
-        into("${buildDir}/resources/main")
-
-        filter(ReplaceTokens::class, "tokens" to tokens)
-        filteringCharset = "UTF-8"
+        filesMatching("**/*.properties") {
+            filter(ReplaceTokens::class, "tokens" to tokens)
+            filteringCharset = "UTF-8"
+        }
     }
 
     register<Copy>("packInjectedClient") {
@@ -180,7 +174,7 @@ tasks {
 
     jar {
         manifest {
-            attributes(mutableMapOf("Main-Class" to if (Unethicalite.isMinimalBuild()) "dev.unethicalite.client.minimal.MinimalClient" else "net.runelite.client.RuneLite"))
+            attributes(mutableMapOf("Main-Class" to Unethicalite.getMainClass()))
         }
     }
 
@@ -205,8 +199,8 @@ tasks {
     register<JavaExec>("RuneLite.main()") {
         group = "openosrs"
 
-        classpath = sourceSets["main"].runtimeClasspath
+        classpath = project.sourceSets.main.get().runtimeClasspath
         enableAssertions = true
-        mainClass.set(if (Unethicalite.isMinimalBuild()) "dev.unethicalite.client.minimal.MinimalClient" else "net.runelite.client.RuneLite")
+        mainClass.set(Unethicalite.getMainClass())
     }
 }

@@ -742,7 +742,7 @@ public class ClientUI
 	 */
 	public boolean isFocused()
 	{
-		return frame.isFocused() || dev.unethicalite.client.Static.getClient().isFocused();
+		return frame.isFocused() || net.unethicalite.client.Static.getClient().isFocused();
 	}
 
 	/**

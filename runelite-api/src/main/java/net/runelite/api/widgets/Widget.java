@@ -28,8 +28,8 @@ import java.awt.Rectangle;
 import java.util.Collection;
 import javax.annotation.Nullable;
 
-import dev.unethicalite.api.Identifiable;
-import dev.unethicalite.api.Interactable;
+import net.unethicalite.api.Identifiable;
+import net.unethicalite.api.Interactable;
 import net.runelite.api.FontTypeFace;
 import net.runelite.api.Point;
 import net.runelite.api.SpritePixels;
@@ -481,6 +481,7 @@ public interface Widget extends Interactable, Identifiable
 	 *
 	 * @return any items displayed, or null if there are no items
 	 */
+	@Deprecated
 	Collection<WidgetItem> getWidgetItems();
 
 	/**
@@ -491,6 +492,7 @@ public interface Widget extends Interactable, Identifiable
 	 * does not exist
 	 * @throws IndexOutOfBoundsException if the index is out of bounds
 	 */
+	@Deprecated
 	WidgetItem getWidgetItem(int index);
 
 	/**

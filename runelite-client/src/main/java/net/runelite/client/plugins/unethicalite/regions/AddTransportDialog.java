@@ -1,11 +1,11 @@
 package net.runelite.client.plugins.unethicalite.regions;
 
-import dev.unethicalite.api.SceneEntity;
-import dev.unethicalite.api.entities.Entities;
-import dev.unethicalite.api.game.Game;
-import dev.unethicalite.api.scene.Tiles;
-import dev.unethicalite.client.minimal.config.UnethicaliteProperties;
-import dev.unethicalite.managers.RegionManager;
+import net.unethicalite.api.SceneEntity;
+import net.unethicalite.api.entities.Entities;
+import net.unethicalite.api.game.Game;
+import net.unethicalite.api.scene.Tiles;
+import net.unethicalite.client.config.UnethicaliteProperties;
+import net.unethicalite.client.managers.RegionManager;
 import net.miginfocom.swing.MigLayout;
 import net.runelite.api.GameState;
 import net.runelite.api.Tile;
@@ -21,9 +21,17 @@ import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import javax.swing.*;
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Enumeration;
