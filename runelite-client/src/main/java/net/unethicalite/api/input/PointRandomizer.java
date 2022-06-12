@@ -37,7 +37,7 @@ public class PointRandomizer
         if (shape != null)
         {
             return shape.getBounds();
-        }
+        } 
         else
         {
             net.runelite.api.Point screenCoords = Perspective.localToCanvas(Static.getClient(), item.getLocalLocation(), Static.getClient().getPlane());

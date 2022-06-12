@@ -24,6 +24,7 @@
  */
 package net.unethicalite.client.minimal;
 
+import net.runelite.client.callback.Hooks;
 import net.unethicalite.client.minimal.overlay.MinimalOverlayRenderer;
 import net.unethicalite.client.minimal.ui.MinimalUI;
 import lombok.extern.slf4j.Slf4j;
@@ -63,6 +64,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 import java.awt.image.BufferedImage;
 import java.awt.image.VolatileImage;
+import java.util.ArrayList;
 import java.util.List;
 
 import static net.runelite.api.widgets.WidgetInfo.WORLD_MAP_VIEW;
@@ -102,6 +104,14 @@ public class MinimalHooks implements Callbacks
 
 	private static MainBufferProvider lastMainBufferProvider;
 	private static Graphics2D lastGraphics;
+
+	private final List<RenderableDrawListener> renderableDrawListeners = new ArrayList<>();
+
+	@FunctionalInterface
+	public interface RenderableDrawListener
+	{
+		boolean draw(Renderable renderable, boolean ui);
+	}
 
 	/**
 	 * Get the Graphics2D for the MainBufferProvider image
@@ -306,6 +316,36 @@ public class MinimalHooks implements Callbacks
 	public void keyTyped(KeyEvent keyEvent)
 	{
 		keyManager.processKeyTyped(keyEvent);
+	}
+
+	public void registerRenderableDrawListener(RenderableDrawListener listener)
+	{
+		renderableDrawListeners.add(listener);
+	}
+
+	public void unregisterRenderableDrawListener(RenderableDrawListener listener)
+	{
+		renderableDrawListeners.remove(listener);
+	}
+
+	@Override
+	public boolean draw(Renderable renderable, boolean drawingUi)
+	{
+		try
+		{
+			for (RenderableDrawListener renderableDrawListener : renderableDrawListeners)
+			{
+				if (!renderableDrawListener.draw(renderable, drawingUi))
+				{
+					return false;
+				}
+			}
+		}
+		catch (Exception ex)
+		{
+			log.error("exception from renderable draw listener", ex);
+		}
+		return true;
 	}
 
 	@Override

@@ -280,7 +280,6 @@ public class MinimalToolbar extends JMenuBar
 		{
 			case "renderOff":
 				boolean enabled = Boolean.parseBoolean(event.getNewValue());
-				client.setIsHidingEntities(enabled);
 				client.setLowCpu(enabled);
 
 				if (enabled)
