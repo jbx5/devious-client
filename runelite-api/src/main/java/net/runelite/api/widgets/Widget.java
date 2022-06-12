@@ -481,6 +481,7 @@ public interface Widget extends Interactable, Identifiable
 	 *
 	 * @return any items displayed, or null if there are no items
 	 */
+	@Deprecated
 	Collection<WidgetItem> getWidgetItems();
 
 	/**
@@ -491,6 +492,7 @@ public interface Widget extends Interactable, Identifiable
 	 * does not exist
 	 * @throws IndexOutOfBoundsException if the index is out of bounds
 	 */
+	@Deprecated
 	WidgetItem getWidgetItem(int index);
 
 	/**
