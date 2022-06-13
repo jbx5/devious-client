@@ -1755,4 +1755,7 @@ public interface RSClient extends RSGameEngine, Client
 
 	@Import("getWidgetChild")
 	RSWidget getWidgetChild(int parent, int child);
+
+	@Import("ServerPacket_values")
+	RSServerPacket[] getServerPackets();
 }

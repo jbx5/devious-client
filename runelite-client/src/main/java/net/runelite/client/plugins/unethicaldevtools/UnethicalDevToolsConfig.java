@@ -285,12 +285,24 @@ public interface UnethicalDevToolsConfig extends Config
 
 	@ConfigItem(
 			keyName = "packets",
-			name = "Log Packets",
+			name = "Log Client Packets",
 			description = "Packets",
 			position = 202,
 			section = packets
 	)
 	default boolean packets()
+	{
+		return false;
+	}
+
+	@ConfigItem(
+			keyName = "packets",
+			name = "Log Server Packets",
+			description = "Packets",
+			position = 203,
+			section = packets
+	)
+	default boolean serverPackets()
 	{
 		return false;
 	}

@@ -1,3 +1,12 @@
 package net.runelite.rs.api;
 
-public interface RSAbstractSocket {}
+import net.runelite.mapping.Import;
+
+public interface RSAbstractSocket
+{
+	@Import("isAvailable")
+	boolean isAvailable(int num);
+
+	@Import("read")
+	int read(byte[] var1, int var2, int var3);
+}

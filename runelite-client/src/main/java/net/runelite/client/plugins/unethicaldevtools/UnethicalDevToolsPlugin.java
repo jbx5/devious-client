@@ -14,6 +14,7 @@ import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.ui.overlay.OverlayManager;
+import net.unethicalite.api.events.ServerPacketReceived;
 
 import javax.inject.Inject;
 import java.util.Arrays;
@@ -149,5 +150,16 @@ public class UnethicalDevToolsPlugin extends Plugin
 		{
 			log.debug("Unknown or unmapped dialog {}", e);
 		}
+	}
+
+	@Subscribe
+	public void onServerPacketReceived(ServerPacketReceived e)
+	{
+		if (e.getServerPacket() == null || !config.serverPackets())
+		{
+			return;
+		}
+
+		log.debug("Server packet received: {}, length: {}", e.getServerPacket().getId(), e.getServerPacket().getLength());
 	}
 }
