@@ -382,5 +382,37 @@
     "objectName": "Log balance",
     "objectId": 16542,
     "requirement":[{"type":"SKILL","level":48,"skill":"AGILITY"}]
+  },
+  {
+    "source": {
+      "x": 3633,
+      "y": 9503,
+      "plane": 0
+    },
+    "destination": {
+      "x": 3637,
+      "y": 9503,
+      "plane": 0
+    },
+    "action": "Climb",
+    "objectName": "Rubble",
+    "objectId": 43724,
+    "requirement":[{"type":"SKILL","level":56,"skill":"AGILITY"}]
+  },
+  {
+    "source": {
+      "x": 3637,
+      "y": 9503,
+      "plane": 0
+    },
+    "destination": {
+      "x": 3633,
+      "y": 9503,
+      "plane": 0
+    },
+    "action": "Climb",
+    "objectName": "Rubble",
+    "objectId": 43726,
+    "requirement":[{"type":"SKILL","level":56,"skill":"AGILITY"}]
   }
 ]
