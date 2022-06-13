@@ -1,9 +1,7 @@
 package net.runelite.client.plugins.unethicalite;
 
 import lombok.extern.slf4j.Slf4j;
-import net.runelite.api.GameState;
 import net.runelite.api.InventoryID;
-import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.ItemContainerChanged;
 import net.runelite.api.events.WidgetLoaded;
 import net.runelite.api.widgets.WidgetInfo;
@@ -27,21 +25,12 @@ import java.util.Set;
 public class UnethicalitePlugin extends SettingsPlugin
 {
 
-	private static boolean INVENTORY_LOADED = false;
-	private static boolean EQUIPMENT_LOADED = false;
+	private static boolean INVENTORY_CHANGED = false;
+	private static boolean EQUIPMENT_CHANGED = false;
 
 	private static final Set<Integer> REFRESH_WIDGET_IDS = Set.of(
 			WidgetInfo.QUEST_COMPLETED_NAME_TEXT.getGroupId(),
 			WidgetInfo.LEVEL_UP_LEVEL.getGroupId()
-	);
-
-	private static final Set<GameState> RESET_GAME_STATES = Set.of(
-			GameState.UNKNOWN,
-			GameState.STARTING,
-			GameState.LOGIN_SCREEN,
-			GameState.LOGIN_SCREEN_AUTHENTICATOR,
-			GameState.CONNECTION_LOST,
-			GameState.HOPPING
 	);
 
 	@Inject
@@ -103,29 +92,21 @@ public class UnethicalitePlugin extends SettingsPlugin
 	{
 		if (event.getContainerId() == InventoryID.INVENTORY.getId())
 		{
-			INVENTORY_LOADED = true;
+			INVENTORY_CHANGED = true;
 			TransportLoader.refreshStaticTransports();
 		}
 		if (event.getContainerId() == InventoryID.EQUIPMENT.getId())
 		{
-			EQUIPMENT_LOADED = true;
+			EQUIPMENT_CHANGED = true;
 			TransportLoader.refreshStaticTransports();
 		}
 	}
 
-	@Subscribe
-	public void onGameStateChanged(GameStateChanged event)
+	public static boolean shouldRefreshPath()
 	{
-		if (RESET_GAME_STATES.contains(event.getGameState()))
-		{
-			log.info("Resetting pathfinder loaded state");
-			EQUIPMENT_LOADED = false;
-			INVENTORY_LOADED = false;
-		}
-	}
-
-	public static boolean isPathfinderReady()
-	{
-		return INVENTORY_LOADED && EQUIPMENT_LOADED;
+		boolean refreshPath = INVENTORY_CHANGED || EQUIPMENT_CHANGED;
+		EQUIPMENT_CHANGED = false;
+		INVENTORY_CHANGED = false;
+		return refreshPath;
 	}
 }
