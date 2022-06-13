@@ -25,6 +25,9 @@ public interface RSBuffer extends Buffer, RSNode
 	@Import("readUnsignedShort")
 	int readUnsignedShort();
 
+	@Import("readMedium")
+	int readMedium();
+
 	@Import("readShort")
 	int readShort();
 

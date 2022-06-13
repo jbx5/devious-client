@@ -298,7 +298,7 @@ public interface UnethicalDevToolsConfig extends Config
 	@ConfigItem(
 			keyName = "serverPackets",
 			name = "Log Server Packets",
-			description = "Packets",
+			description = "Server Packets",
 			position = 203,
 			section = packets
 	)
@@ -317,6 +317,18 @@ public interface UnethicalDevToolsConfig extends Config
 	default String opcodes()
 	{
 		return "";
+	}
+
+	@ConfigItem(
+			keyName = "hexDump",
+			name = "Hex dump",
+			description = "Create a hex dump of the payload",
+			position = 205,
+			section = packets
+	)
+	default boolean hexDump()
+	{
+		return false;
 	}
 
 	@ConfigSection(

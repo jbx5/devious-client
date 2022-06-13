@@ -1,3 +1,3 @@
 package net.runelite.rs.api;
 
-public interface RSBufferedNetSocket {}
+public interface RSBufferedNetSocket extends RSAbstractSocket {}
