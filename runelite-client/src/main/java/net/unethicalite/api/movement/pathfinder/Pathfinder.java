@@ -96,14 +96,6 @@ public class Pathfinder implements Callable<List<WorldPoint>>
 
     public List<WorldPoint> find()
     {
-        long startTime = System.currentTimeMillis();
-        List<WorldPoint> path = calculate();
-        log.info("Path calculation took {} ms", System.currentTimeMillis() - startTime);
-        return path;
-    }
-
-    private List<WorldPoint> calculate()
-    {
         boundary.addAll(start);
 
         int bestDistance = Integer.MAX_VALUE;
@@ -147,7 +139,10 @@ public class Pathfinder implements Callable<List<WorldPoint>>
     @Override
     public List<WorldPoint> call() throws Exception
     {
-        return find();
+        long startTime = System.currentTimeMillis();
+        List<WorldPoint> path = find();
+        log.debug("Path calculation took {} ms", System.currentTimeMillis() - startTime);
+        return path;
     }
 
     @Value
