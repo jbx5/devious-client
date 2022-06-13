@@ -155,11 +155,11 @@ public class UnethicalDevToolsPlugin extends Plugin
 	@Subscribe
 	public void onServerPacketReceived(ServerPacketReceived e)
 	{
-		if (e.getServerPacket() == null || !config.serverPackets())
+		if (!config.serverPackets())
 		{
 			return;
 		}
 
-		log.debug("Server packet received: {}, length: {}", e.getServerPacket().getId(), e.getServerPacket().getLength());
+		log.debug("Server packet received: {}, length: {}", e.getId(), e.getLength());
 	}
 }

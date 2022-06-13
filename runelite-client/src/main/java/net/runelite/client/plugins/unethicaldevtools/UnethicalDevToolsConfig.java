@@ -296,7 +296,7 @@ public interface UnethicalDevToolsConfig extends Config
 	}
 
 	@ConfigItem(
-			keyName = "packets",
+			keyName = "serverPackets",
 			name = "Log Server Packets",
 			description = "Packets",
 			position = 203,
@@ -311,7 +311,7 @@ public interface UnethicalDevToolsConfig extends Config
 			keyName = "opcodes",
 			name = "Opcodes",
 			description = "Opcodes to log",
-			position = 203,
+			position = 204,
 			section = packets
 	)
 	default String opcodes()

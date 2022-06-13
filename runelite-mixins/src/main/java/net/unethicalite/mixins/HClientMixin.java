@@ -357,7 +357,36 @@ public abstract class HClientMixin implements RSClient
 			packetWriter.setServerPacketLength(packetWriter.getServerPacket().getLength());
 		}
 
-		client.getCallbacks().post(new ServerPacketReceived(packetWriter.getServerPacket()));
+		if (packetWriter.getServerPacketLength() == -1)
+		{
+			if (!socket.isAvailable(1))
+			{
+				return false;
+			}
+
+			packetWriter.getSocket().read(packetBuffer.getPayload(), 0, 1);
+			packetWriter.setServerPacketLength(packetBuffer.getPayload()[0] & 255);
+		}
+
+		if (packetWriter.getServerPacketLength() == -2)
+		{
+			if (!socket.isAvailable(2))
+			{
+				return false;
+			}
+
+			packetWriter.getSocket().read(packetBuffer.getPayload(), 0, 2);
+			packetBuffer.setOffset(0);
+			packetWriter.setServerPacketLength(packetBuffer.readUnsignedShort());
+		}
+
+		if (!socket.isAvailable(packetWriter.getServerPacketLength()))
+		{
+			return false;
+		}
+
+		client.getCallbacks().post(new ServerPacketReceived(packetWriter.getServerPacket().getId(),
+				packetWriter.getServerPacketLength()));
 
 		return copy$onServerPacketRead(packetWriter);
 	}

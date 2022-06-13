@@ -19,6 +19,9 @@ public interface RSPacketWriter extends PacketWriter
 	void setServerPacket(RSServerPacket serverPacket);
 
 	@Import("serverPacketLength")
+	int getServerPacketLength();
+
+	@Import("serverPacketLength")
 	void setServerPacketLength(int length);
 
 	@Import("socket")
