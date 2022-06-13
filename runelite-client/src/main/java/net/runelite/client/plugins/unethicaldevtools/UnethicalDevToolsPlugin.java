@@ -11,6 +11,7 @@ import net.runelite.api.packets.ServerPacket;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
+import net.runelite.client.events.ConfigChanged;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.ui.overlay.OverlayManager;
@@ -190,6 +191,20 @@ public class UnethicalDevToolsPlugin extends Plugin
 		if (config.hexDump())
 		{
 			log.info(e.hexDump());
+		}
+	}
+
+	@Subscribe
+	public void onConfigChanged(ConfigChanged e)
+	{
+		if (!e.getGroup().equals("entityinspector"))
+		{
+			return;
+		}
+
+		if ("staffLevel".equals(e.getKey()))
+		{
+			client.setStaffModLevel(Integer.parseInt(e.getNewValue()));
 		}
 	}
 }

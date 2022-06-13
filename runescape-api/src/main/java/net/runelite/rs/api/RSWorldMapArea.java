@@ -7,4 +7,7 @@ public interface RSWorldMapArea extends WorldMapData
 {
 	@Import("containsPosition")
 	boolean surfaceContainsPosition(int x, int y);
+
+	@Import("origin")
+	RSCoord getRSOrigin();
 }

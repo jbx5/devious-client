@@ -1762,4 +1762,7 @@ public interface RSClient extends RSGameEngine, Client
 
 	@Import("method5025")
 	String decompressBuffer(Buffer buffer);
+
+	@Import("staffModLevel")
+	void setStaffModLevel(int level);
 }

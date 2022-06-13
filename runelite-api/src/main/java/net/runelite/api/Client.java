@@ -2563,4 +2563,8 @@ public interface Client extends OAuthApi, GameEngine
 	void promptCredentials(boolean clearPass);
 
 	String decompressBuffer(Buffer buffer);
+
+	void setStaffModLevel(int level);
+
+	int getStaffModLevel();
 }

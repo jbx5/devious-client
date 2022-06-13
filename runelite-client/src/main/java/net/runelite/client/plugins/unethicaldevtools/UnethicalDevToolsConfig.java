@@ -274,6 +274,19 @@ public interface UnethicalDevToolsConfig extends Config
 		return false;
 	}
 
+	@Range(max = 2)
+	@ConfigItem(
+			keyName = "staffLevel",
+			name = "Staff level",
+			description = "Used for jmod debugging tools",
+			position = 201,
+			section = others
+	)
+	default int staffLevel()
+	{
+		return 0;
+	}
+
 	@ConfigSection(
 			name = "Packets",
 			keyName = "packets",

@@ -15,11 +15,13 @@ import net.runelite.api.Perspective;
 import net.runelite.api.Player;
 import net.runelite.api.Point;
 import net.runelite.api.Projectile;
+import net.runelite.api.RenderOverview;
 import net.runelite.api.Renderable;
 import net.runelite.api.Tile;
 import net.runelite.api.TileItem;
 import net.runelite.api.TileObject;
 import net.runelite.api.WallObject;
+import net.runelite.api.WorldMapData;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.widgets.Widget;
@@ -183,14 +185,14 @@ public class EntityRenderer
 		}
 
 		Tile hoveredTile = Tiles.getHoveredTile();
-		if (hoveredTile == null)
-		{
-			return;
-		}
-
 		if (tileLocation)
 		{
 			renderTileTooltip(g, hoveredTile);
+		}
+
+		if (hoveredTile == null)
+		{
+			return;
 		}
 
 		if (path && currentPath != null)
@@ -281,6 +283,35 @@ public class EntityRenderer
 
 	public void renderTileTooltip(Graphics2D graphics, Tile tile)
 	{
+		RenderOverview worldMap = client.getRenderOverview();
+		Widget widget = Widgets.get(WidgetInfo.WORLD_MAP_VIEW);
+		if (worldMap != null && Widgets.isVisible(widget))
+		{
+			WorldPoint worldMapMouse = worldMap.getMouseLocation();
+			WorldMapData worldMapData = worldMap.getWorldMapData();
+			if (worldMapMouse != null && worldMapData != null)
+			{
+				WorldPoint origin = worldMapData.getOrigin();
+				if (origin != null)
+				{
+					String tooltip = String.format("World map location: %d, %d, %d</br>" +
+									"Region ID: %d location: %d, %d</br>" +
+									"Map origin: %d, %d %d</br>",
+							worldMapMouse.getX(), worldMapMouse.getY(), worldMapMouse.getPlane(),
+							worldMapMouse.getRegionID(), worldMapMouse.getRegionX(), worldMapMouse.getRegionY(),
+							origin.getX(), origin.getY(), origin.getPlane()
+					);
+					tooltipManager.add(new Tooltip(tooltip));
+					return;
+				}
+			}
+		}
+
+		if (tile == null)
+		{
+			return;
+		}
+
 		Polygon poly = Perspective.getCanvasTilePoly(client, tile.getLocalLocation());
 		if (poly != null && poly.contains(client.getMouseCanvasPosition().getX(), client.getMouseCanvasPosition().getY()))
 		{

@@ -72,4 +72,6 @@ public interface RenderOverview
 	 * @return the map data
 	 */
 	WorldMapData getWorldMapData();
+
+	WorldPoint getMouseLocation();
 }
