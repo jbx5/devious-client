@@ -53,4 +53,10 @@ public interface RSWorldMap extends RenderOverview
 
 	@Import("mouseCoord")
 	RSCoord getMouseCoord();
+
+	@Import("getDisplayX")
+	int getDisplayX();
+
+	@Import("getDisplayY")
+	int getDisplayY();
 }

@@ -10,4 +10,13 @@ public interface RSWorldMapArea extends WorldMapData
 
 	@Import("origin")
 	RSCoord getRSOrigin();
+
+	@Import("coord")
+	RSCoord coord(int x, int y);
+
+	@Import("getRegionLowX")
+	int getRegionLowX();
+
+	@Import("getRegionLowY")
+	int getRegionLowY();
 }
