@@ -124,7 +124,7 @@ public class PlayerPackets
 		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
 		var packetBufferNode = Static.getClient().preparePacket(clientPacket.OPPLAYER5(), client.getPacketWriter().getIsaacCipher());
-		packetBufferNode.getPacketBuffer().writeShort(playerIndex);
+		packetBufferNode.getPacketBuffer().writeShortLE(playerIndex);	// Old: packetBufferNode.getPacketBuffer().writeShort(playerIndex);
 		packetBufferNode.getPacketBuffer().writeByte(ctrlDown ? 1 : 0);	// Old: packetBufferNode.getPacketBuffer().writeByteSub(ctrlDown ? 1 : 0);
 		return packetBufferNode;
 	}
