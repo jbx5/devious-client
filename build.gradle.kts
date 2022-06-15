@@ -32,12 +32,12 @@ buildscript {
         maven(url = "https://raw.githubusercontent.com/open-osrs/hosting/master")
     }
     dependencies {
-        classpath("org.ajoberstar.grgit:grgit-core:4.1.0")
+        classpath("org.ajoberstar.grgit:grgit-core:4.1.1")
     }
 }
 
 plugins {
-    id("org.ajoberstar.grgit") version "4.1.0"
+    id("org.ajoberstar.grgit") version "4.1.1"
 
     application
 }

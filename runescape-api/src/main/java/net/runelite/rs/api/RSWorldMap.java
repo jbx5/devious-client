@@ -50,4 +50,13 @@ public interface RSWorldMap extends RenderOverview
 	@Import("getCurrentMapArea")
 	@Override
 	RSWorldMapArea getWorldMapData();
+
+	@Import("mouseCoord")
+	RSCoord getMouseCoord();
+
+	@Import("getDisplayX")
+	int getDisplayX();
+
+	@Import("getDisplayY")
+	int getDisplayY();
 }

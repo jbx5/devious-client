@@ -72,4 +72,38 @@ public interface RenderOverview
 	 * @return the map data
 	 */
 	WorldMapData getWorldMapData();
+
+	WorldPoint getMouseLocation();
+
+	int getX(int canvasX);
+
+	int getY(int canvasY);
+
+	Integer getCanvasX(int worldX);
+
+	Integer getCanvasY(int worldY);
+
+	WorldPoint getWorldPoint(int canvasX, int canvasY);
+
+	WorldPoint getWorldPointFromMap(int mapX, int mapY);
+
+	int getWorldMapDisplayWidth();
+
+	int getWorldMapDisplayHeight();
+
+	int getWorldMapDisplayX();
+
+	int getWorldMapDisplayY();
+
+	int getWorldMapX(int worldX);
+
+	int getWorldMapY(int worldY);
+
+	int getDisplayX();
+
+	int getDisplayY();
+
+	int getWorldMapX();
+
+	int getWorldMapY();
 }

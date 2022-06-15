@@ -33,6 +33,16 @@ public interface Buffer extends Node
 
 	int getOffset();
 
+	void setOffset(int offset);
+
+	String readStringCp1252NullTerminated();
+
+	int readUnsignedShort();
+
+	int readMedium();
+
+	int readUnsignedByte();
+
 	/**
 	 * Use this api to write to byte buffers
 	 */

@@ -24,6 +24,8 @@
  */
 package net.runelite.api;
 
+import net.runelite.api.coords.WorldPoint;
+
 /**
  * Represents data on the world map.
  */
@@ -38,4 +40,6 @@ public interface WorldMapData
 	 * @return true if the coordinate is on the surface, false otherwise
 	 */
 	boolean surfaceContainsPosition(int x, int y);
+
+	WorldPoint getOrigin();
 }

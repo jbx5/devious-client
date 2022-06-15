@@ -274,6 +274,19 @@ public interface UnethicalDevToolsConfig extends Config
 		return false;
 	}
 
+	@Range(max = 2)
+	@ConfigItem(
+			keyName = "staffLevel",
+			name = "Staff level",
+			description = "Used for jmod debugging tools",
+			position = 201,
+			section = others
+	)
+	default int staffLevel()
+	{
+		return 0;
+	}
+
 	@ConfigSection(
 			name = "Packets",
 			keyName = "packets",
@@ -285,7 +298,7 @@ public interface UnethicalDevToolsConfig extends Config
 
 	@ConfigItem(
 			keyName = "packets",
-			name = "Log Packets",
+			name = "Log Client Packets",
 			description = "Packets",
 			position = 202,
 			section = packets
@@ -296,15 +309,39 @@ public interface UnethicalDevToolsConfig extends Config
 	}
 
 	@ConfigItem(
+			keyName = "serverPackets",
+			name = "Log Server Packets",
+			description = "Server Packets",
+			position = 203,
+			section = packets
+	)
+	default boolean serverPackets()
+	{
+		return false;
+	}
+
+	@ConfigItem(
 			keyName = "opcodes",
 			name = "Opcodes",
 			description = "Opcodes to log",
-			position = 203,
+			position = 204,
 			section = packets
 	)
 	default String opcodes()
 	{
 		return "";
+	}
+
+	@ConfigItem(
+			keyName = "hexDump",
+			name = "Hex dump",
+			description = "Create a hex dump of the payload",
+			position = 205,
+			section = packets
+	)
+	default boolean hexDump()
+	{
+		return false;
 	}
 
 	@ConfigSection(

@@ -1,19 +1,23 @@
 package net.runelite.client.plugins.unethicaldevtools;
 
 import com.google.inject.Provides;
+import lombok.extern.slf4j.Slf4j;
+import net.runelite.api.Client;
 import net.runelite.api.DialogOption;
 import net.runelite.api.events.DialogProcessed;
 import net.runelite.api.events.MenuOptionClicked;
 import net.runelite.api.packets.PacketBufferNode;
-import net.runelite.client.eventbus.EventBus;
-import net.unethicalite.api.events.MenuAutomated;
-import net.unethicalite.api.events.PacketSent;
-import lombok.extern.slf4j.Slf4j;
+import net.runelite.api.packets.ServerPacket;
 import net.runelite.client.config.ConfigManager;
+import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
+import net.runelite.client.events.ConfigChanged;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.ui.overlay.OverlayManager;
+import net.unethicalite.api.events.MenuAutomated;
+import net.unethicalite.api.events.PacketSent;
+import net.unethicalite.api.events.ServerPacketReceived;
 
 import javax.inject.Inject;
 import java.util.Arrays;
@@ -46,6 +50,9 @@ public class UnethicalDevToolsPlugin extends Plugin
 	@Inject
 	private EventBus eventBus;
 
+	@Inject
+	private Client client;
+
 	@Override
 	public void startUp()
 	{
@@ -70,33 +77,6 @@ public class UnethicalDevToolsPlugin extends Plugin
 	public UnethicalDevToolsConfig getConfig(ConfigManager configManager)
 	{
 		return configManager.getConfig(UnethicalDevToolsConfig.class);
-	}
-
-	@Subscribe
-	public void onPacketSent(PacketSent e)
-	{
-		if (!config.packets())
-		{
-			return;
-		}
-
-		if (!config.opcodes().isBlank())
-		{
-			List<Integer> opcodes = Arrays.stream(config.opcodes().split(","))
-					.map(Integer::parseInt)
-					.collect(Collectors.toList());
-			if (!opcodes.isEmpty())
-			{
-				PacketBufferNode packetBufferNode = e.getPacketBufferNode();
-				int opcode = packetBufferNode.getClientPacket() != null ? packetBufferNode.getClientPacket().getId() : -1;
-				if (!opcodes.contains(opcode))
-				{
-					return;
-				}
-			}
-		}
-
-		log.info(e.hexDump());
 	}
 
 	@Subscribe
@@ -148,6 +128,83 @@ public class UnethicalDevToolsPlugin extends Plugin
 		else
 		{
 			log.debug("Unknown or unmapped dialog {}", e);
+		}
+	}
+
+	@Subscribe
+	public void onPacketSent(PacketSent e)
+	{
+		if (!config.packets())
+		{
+			return;
+		}
+
+		PacketBufferNode packetBufferNode = e.getPacketBufferNode();
+		int opcode = packetBufferNode.getClientPacket() != null ? packetBufferNode.getClientPacket().getId() : -1;
+
+		if (!config.opcodes().isBlank())
+		{
+			List<Integer> opcodes = Arrays.stream(config.opcodes().split(","))
+					.map(Integer::parseInt)
+					.collect(Collectors.toList());
+			if (!opcodes.isEmpty())
+			{
+				if (!opcodes.contains(opcode))
+				{
+					return;
+				}
+			}
+		}
+
+		log.info("Packet sent: {}, length: {}", opcode, e.getPacketBufferNode().getClientPacket().getLength());
+		if (config.hexDump())
+		{
+			log.info(e.hexDump());
+		}
+	}
+
+	@Subscribe
+	public void onServerPacketReceived(ServerPacketReceived e)
+	{
+		if (!config.serverPackets())
+		{
+			return;
+		}
+
+		ServerPacket serverPacket = e.getServerPacket();
+		if (!config.opcodes().isBlank())
+		{
+			List<Integer> opcodes = Arrays.stream(config.opcodes().split(","))
+					.map(Integer::parseInt)
+					.collect(Collectors.toList());
+			if (!opcodes.isEmpty())
+			{
+				if (!opcodes.contains(serverPacket.getId()))
+				{
+					return;
+				}
+			}
+		}
+
+
+		log.info("Packet received: {}, length: {}", serverPacket.getId(), e.getLength());
+		if (config.hexDump())
+		{
+			log.info(e.hexDump());
+		}
+	}
+
+	@Subscribe
+	public void onConfigChanged(ConfigChanged e)
+	{
+		if (!e.getGroup().equals("entityinspector"))
+		{
+			return;
+		}
+
+		if ("staffLevel".equals(e.getKey()))
+		{
+			client.setStaffModLevel(Integer.parseInt(e.getNewValue()));
 		}
 	}
 }

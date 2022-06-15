@@ -13,22 +13,11 @@ public class PacketSent
 
 	public String hexDump()
 	{
-		int opcode = packetBufferNode.getClientPacket() != null ? packetBufferNode.getClientPacket().getId() : -1;
-		String opcodeText = String.valueOf(opcode);
-
 		byte[] payload = Arrays.copyOfRange(
 				packetBufferNode.getPacketBuffer().getPayload(),
 				1, packetBufferNode.getPacketBuffer().getOffset());
 
-		//		for (PacketOpcode op : PacketOpcode.values()) {
-		//			if (opcode == op.getOpcode()) {
-		//				opcodeText = op.toString();
-		//				break;
-		//			}
-		//		}
-
-		return "[" + opcodeText + "]\n" +
-				hexDump(
+		return hexDump(
 						payload,
 						0,
 						getPacketBufferNode().getPacketBuffer().getOffset()

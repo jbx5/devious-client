@@ -29,6 +29,7 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
@@ -92,7 +93,7 @@ public class RegionOverlay extends Overlay
 
 			if (config.collisionOverlay())
 			{
-				List<WorldPoint> worldMapTiles = Tiles.getWorldMapTiles(config.collisionOverlayPlane());
+				Collection<WorldPoint> worldMapTiles = Tiles.getWorldMapTiles();
 				for (WorldPoint worldMapTile : worldMapTiles)
 				{
 					if (worldMapTile != null && collisionMap.fullBlock(worldMapTile))

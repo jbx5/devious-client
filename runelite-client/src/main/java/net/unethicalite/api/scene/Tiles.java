@@ -17,7 +17,9 @@ import net.unethicalite.client.Static;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.function.Predicate;
 
 public class Tiles
@@ -100,6 +102,36 @@ public class Tiles
 	public static Tile getHoveredTile()
 	{
 		return Static.getClient().getSelectedSceneTile();
+	}
+
+	public static Set<WorldPoint> getWorldMapTiles()
+	{
+		Widget worldMap = Widgets.get(WidgetInfo.WORLD_MAP_VIEW);
+		if (worldMap == null)
+		{
+			return Collections.emptySet();
+		}
+
+		RenderOverview ro = Static.getClient().getRenderOverview();
+		Set<WorldPoint> out = new HashSet<>();
+		int topLeftX = ro.getWorldMapX() - (ro.getWorldMapDisplayWidth() / 2);
+		int topLeftY = ro.getWorldMapY() - (ro.getWorldMapDisplayHeight() / 2);
+
+		for (int x = topLeftX; x < topLeftX + ro.getWorldMapDisplayWidth(); x++)
+		{
+			for (int y = topLeftY; y < topLeftY + ro.getWorldMapDisplayHeight(); y++)
+			{
+				WorldPoint worldPoint = ro.getWorldPointFromMap(x, y);
+				if (worldPoint == null)
+				{
+					continue;
+				}
+
+				out.add(worldPoint);
+			}
+		}
+
+		return out;
 	}
 
 	public static List<WorldPoint> getWorldMapTiles(int plane)

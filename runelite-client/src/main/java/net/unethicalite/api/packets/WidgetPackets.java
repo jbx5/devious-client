@@ -7,57 +7,57 @@ import net.unethicalite.client.Static;
 
 public class WidgetPackets
 {
-	public static void widgetFirstOption(net.runelite.api.widgets.Widget widget)
+	public static void widgetFirstOption(Widget widget)
 	{
 		queueWidgetAction1Packet(widget.getId(), widget.getItemId(), widget.getIndex());
 	}
 
-	public static void widgetSecondOption(net.runelite.api.widgets.Widget widget)
+	public static void widgetSecondOption(Widget widget)
 	{
 		queueWidgetAction2Packet(widget.getId(), widget.getItemId(), widget.getIndex());
 	}
 
-	public static void widgetThirdOption(net.runelite.api.widgets.Widget widget)
+	public static void widgetThirdOption(Widget widget)
 	{
 		queueWidgetAction3Packet(widget.getId(), widget.getItemId(), widget.getIndex());
 	}
 
-	public static void widgetFourthOption(net.runelite.api.widgets.Widget widget)
+	public static void widgetFourthOption(Widget widget)
 	{
 		queueWidgetAction4Packet(widget.getId(), widget.getItemId(), widget.getIndex());
 	}
 
-	public static void widgetFifthOption(net.runelite.api.widgets.Widget widget)
+	public static void widgetFifthOption(Widget widget)
 	{
 		queueWidgetAction5Packet(widget.getId(), widget.getItemId(), widget.getIndex());
 	}
 
-	public static void widgetSixthOption(net.runelite.api.widgets.Widget widget)
+	public static void widgetSixthOption(Widget widget)
 	{
 		queueWidgetAction6Packet(widget.getId(), widget.getItemId(), widget.getIndex());
 	}
 
-	public static void widgetSeventhOption(net.runelite.api.widgets.Widget widget)
+	public static void widgetSeventhOption(Widget widget)
 	{
 		queueWidgetAction7Packet(widget.getId(), widget.getItemId(), widget.getIndex());
 	}
 
-	public static void widgetEighthOption(net.runelite.api.widgets.Widget widget)
+	public static void widgetEighthOption(Widget widget)
 	{
 		queueWidgetAction8Packet(widget.getId(), widget.getItemId(), widget.getIndex());
 	}
 
-	public static void widgetNinthOption(net.runelite.api.widgets.Widget widget)
+	public static void widgetNinthOption(Widget widget)
 	{
 		queueWidgetAction9Packet(widget.getId(), widget.getItemId(), widget.getIndex());
 	}
 
-	public static void widgetTenthOption(net.runelite.api.widgets.Widget widget)
+	public static void widgetTenthOption(Widget widget)
 	{
 		queueWidgetAction10Packet(widget.getId(), widget.getItemId(), widget.getIndex());
 	}
 
-	public static void widgetItemAction(net.runelite.api.widgets.WidgetInfo container, net.runelite.api.Item item, java.lang.String action)
+	public static void widgetItemAction(net.runelite.api.widgets.WidgetInfo container, net.runelite.api.Item item, String action)
 	{
 		var index = item.getActionIndex(action);
 		widgetItemAction(container, item, index);
@@ -210,7 +210,7 @@ public class WidgetPackets
 		return packet;
 	}
 
-	public static net.runelite.api.packets.PacketBufferNode createDefaultAction(int type, int widgetPackedId, int itemId, int itemSlot)
+	public static PacketBufferNode createDefaultAction(int type, int widgetPackedId, int itemId, int itemSlot)
 	{
 		switch (type)
 		{
@@ -235,7 +235,7 @@ public class WidgetPackets
 			case 10:
 				return createTenthAction(widgetPackedId, itemId, itemSlot);
 		}
-		throw new java.lang.IllegalArgumentException("Invalid widget action type: " + type);
+		throw new IllegalArgumentException("Invalid widget action type: " + type);
 	}
 
 	public static PacketBufferNode createFirstAction(int widgetId, int itemId, int childId)
@@ -353,12 +353,12 @@ public class WidgetPackets
 		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
 		var packetBufferNode = Static.getClient().preparePacket(clientPacket.IF_BUTTONT(), client.getPacketWriter().getIsaacCipher());
-		packetBufferNode.getPacketBuffer().writeIntME(sourceWidgetId);
-		packetBufferNode.getPacketBuffer().writeIntLE(destinationWidgetId);
-		packetBufferNode.getPacketBuffer().writeShort(destinationItemId);
-		packetBufferNode.getPacketBuffer().writeShortAdd(sourceSlot);
-		packetBufferNode.getPacketBuffer().writeShortLE(destinationSlot);
-		packetBufferNode.getPacketBuffer().writeShortAddLE(sourceItemId);
+		packetBufferNode.getPacketBuffer().writeShortAddLE(sourceItemId);	// Old: packetBufferNode.getPacketBuffer().writeIntME(sourceWidgetId);
+		packetBufferNode.getPacketBuffer().writeShortAdd(sourceSlot);	// Old: packetBufferNode.getPacketBuffer().writeIntLE(destinationWidgetId);
+		packetBufferNode.getPacketBuffer().writeIntLE(sourceWidgetId);	// Old: packetBufferNode.getPacketBuffer().writeShort(destinationItemId);
+		packetBufferNode.getPacketBuffer().writeShortAddLE(destinationItemId);	// Old: packetBufferNode.getPacketBuffer().writeShortAdd(sourceSlot);
+		packetBufferNode.getPacketBuffer().writeShort(destinationSlot);	// Old: packetBufferNode.getPacketBuffer().writeShortLE(destinationSlot);
+		packetBufferNode.getPacketBuffer().writeIntIME(destinationWidgetId);	// Old: packetBufferNode.getPacketBuffer().writeShortAddLE(sourceItemId);
 		return packetBufferNode;
 	}
 
@@ -367,8 +367,8 @@ public class WidgetPackets
 		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
 		var packetBufferNode = Static.getClient().preparePacket(clientPacket.RESUME_PAUSEBUTTON(), client.getPacketWriter().getIsaacCipher());
-		packetBufferNode.getPacketBuffer().writeIntIME(widgetId);
-		packetBufferNode.getPacketBuffer().writeShortAdd(childId);
+		packetBufferNode.getPacketBuffer().writeShortLE(childId);	// Old: packetBufferNode.getPacketBuffer().writeIntIME(widgetId);
+		packetBufferNode.getPacketBuffer().writeIntIME(widgetId);	// Old: packetBufferNode.getPacketBuffer().writeShortAdd(childId);
 		return packetBufferNode;
 	}
 }

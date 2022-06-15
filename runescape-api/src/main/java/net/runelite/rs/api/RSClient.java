@@ -1667,7 +1667,7 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("Login_response3")
 	String getLoginResponse3();
 
-	@Import("field887")
+	@Import("field897")
 	int getBanType();
 
 	@Import("packetWriter")
@@ -1755,4 +1755,10 @@ public interface RSClient extends RSGameEngine, Client
 
 	@Import("getWidgetChild")
 	RSWidget getWidgetChild(int parent, int child);
+
+	@Import("ServerPacket_values")
+	RSServerPacket[] getServerPackets();
+
+	@Import("staffModLevel")
+	void setStaffModLevel(int level);
 }
