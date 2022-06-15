@@ -11,6 +11,7 @@ import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.plugins.unethicalite.regions.RegionHandler;
 import net.unethicalite.api.movement.pathfinder.TransportLoader;
+import net.unethicalite.api.movement.pathfinder.model.JewelryBox;
 import net.unethicalite.api.plugins.SettingsPlugin;
 import net.unethicalite.client.config.UnethicaliteConfig;
 
@@ -35,6 +36,7 @@ public class UnethicalitePlugin extends SettingsPlugin
 
 	@Inject
 	private UnethicaliteConfig config;
+	private static UnethicaliteConfig staticConfig = null;
 
 	@Inject
 	private EventBus eventBus;
@@ -45,12 +47,14 @@ public class UnethicalitePlugin extends SettingsPlugin
 	@Override
 	protected void startUp() throws Exception
 	{
+		staticConfig = config;
 		eventBus.register(regionHandler);
 	}
 
 	@Override
 	protected void shutDown() throws Exception
 	{
+		staticConfig = null;
 		eventBus.unregister(regionHandler);
 	}
 
@@ -108,5 +112,32 @@ public class UnethicalitePlugin extends SettingsPlugin
 		EQUIPMENT_CHANGED = false;
 		INVENTORY_CHANGED = false;
 		return refreshPath;
+	}
+
+	public static boolean usePoh()
+	{
+		return staticConfig != null && staticConfig.usePoh();
+	}
+	public static boolean hasMountedGlory()
+	{
+		return staticConfig != null && staticConfig.hasMountedGlory();
+	}
+
+	public static boolean hasMountedDigsitePendant()
+	{
+		return staticConfig != null && staticConfig.hasMountedDigsitePendant();
+	}
+
+	public static boolean hasMountedMythicalCape()
+	{
+		return staticConfig != null && staticConfig.hasMountedMythicalCape();
+	}
+	public static boolean hasMountedXericsTalisman()
+	{
+		return staticConfig != null && staticConfig.hasMountedXericsTalisman();
+	}
+	public static JewelryBox hasJewelryBox()
+	{
+		return staticConfig == null ? JewelryBox.NONE : staticConfig.hasJewelryBox();
 	}
 }
