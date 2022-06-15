@@ -27,7 +27,6 @@ package net.runelite.rs.api;
 import java.math.BigInteger;
 import java.util.Map;
 import net.runelite.api.AmbientSoundEffect;
-import net.runelite.api.Buffer;
 import net.runelite.api.Client;
 import net.runelite.api.Deque;
 import net.runelite.api.ModelData;
@@ -1668,7 +1667,7 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("Login_response3")
 	String getLoginResponse3();
 
-	@Import("field887")
+	@Import("field897")
 	int getBanType();
 
 	@Import("packetWriter")
@@ -1759,9 +1758,6 @@ public interface RSClient extends RSGameEngine, Client
 
 	@Import("ServerPacket_values")
 	RSServerPacket[] getServerPackets();
-
-	@Import("method5025")
-	String decompressBuffer(Buffer buffer);
 
 	@Import("staffModLevel")
 	void setStaffModLevel(int level);

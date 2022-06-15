@@ -39,8 +39,8 @@ public class DrawUtils
 		float pixelsPerTile = ro.getWorldMapZoom();
 		int tileCenterPixel = (int) Math.ceil(pixelsPerTile / 2);
 
-		Point tile = CoordUtils.worldPointToWorldMap(point);
-		Point bottomRightTile = CoordUtils.worldPointToWorldMap(point.dx(1).dy(-1));
+		Point tile = new Point(ro.getCanvasX(point.getX()), ro.getCanvasY(point.getY()));
+		Point bottomRightTile = new Point(ro.getCanvasX(point.dx(1).dy(-1).getX()), ro.getCanvasY(point.dx(1).dy(-1).getY()));
 
 		if (tile == null || bottomRightTile == null)
 		{

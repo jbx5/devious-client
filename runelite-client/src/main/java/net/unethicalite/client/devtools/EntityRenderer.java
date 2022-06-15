@@ -294,7 +294,8 @@ public class EntityRenderer
 				WorldPoint origin = worldMapData.getOrigin();
 				if (origin != null)
 				{
-					String tooltip = String.format("World map location: %d, %d, %d</br>" +
+					String tooltip = String.format(
+							"World map location: %d, %d, %d</br>" +
 									"Region ID: %d location: %d, %d</br>" +
 									"Map origin: %d, %d %d</br>",
 							worldMapMouse.getX(), worldMapMouse.getY(), worldMapMouse.getPlane(),
