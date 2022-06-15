@@ -9,9 +9,6 @@ public interface RSPacketBuffer extends RSBuffer, PacketBuffer
 	@Override
 	RSIsaacCipher getIsaacCipher();
 
-	@Import("method7495")
-	boolean getUnknown1();
-
 	@Import("readSmartByteShortIsaac")
 	int readSmartByteShortIsaac();
 }
