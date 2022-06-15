@@ -343,7 +343,7 @@ public class TeleportLoader
 	{
 		return new Teleport(destination, 10, () ->
 		{
-			if (!Players.getLocal().isIdle() || Game.getClient().getGameState() == GameState.LOADING)
+			if (!Players.getLocal().isIdle() || Static.getClient().getGameState() == GameState.LOADING)
 			{
 				return;
 			}
@@ -372,7 +372,7 @@ public class TeleportLoader
 			char action
 	)
 	{
-		return new Teleport(destination,10, () ->
+		return new Teleport(destination, 10, () ->
 		{
 			if (!Players.getLocal().isIdle() || Static.getClient().getGameState() == GameState.LOADING)
 			{
