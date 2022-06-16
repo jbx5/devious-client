@@ -342,12 +342,14 @@ public class Reachable
 
 		CollisionMap collisionMap = new LocalCollisionMap(true);
 
-		return new Pathfinder(
+		List<WorldPoint> path = new Pathfinder(
 				collisionMap,
 				Map.of(),
-				getObjectNeighbours(targetObject, collisionMap),
-				local
-		).find().contains(local);
+				List.of(local),
+				targetObject.getWorldLocation()
+		).find(16384);
+
+		return !path.isEmpty() && targetObject.distanceTo(path.get(path.size() - 1)) <= 2;
 	}
 
 	public static boolean isWalkable(WorldPoint worldPoint)
