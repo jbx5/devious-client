@@ -94,7 +94,8 @@ public class Pathfinder implements Callable<List<WorldPoint>>
         boundary.add(new Node(neighbor, node));
     }
 
-    public List<WorldPoint> find() {
+    public List<WorldPoint> find()
+    {
         return find(5_000_000);
     }
 
