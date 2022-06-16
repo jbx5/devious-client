@@ -79,10 +79,6 @@ public interface RenderOverview
 
 	int getY(int canvasY);
 
-	Integer getCanvasX(int worldX);
-
-	Integer getCanvasY(int worldY);
-
 	WorldPoint getWorldPoint(int canvasX, int canvasY);
 
 	WorldPoint getWorldPointFromMap(int mapX, int mapY);

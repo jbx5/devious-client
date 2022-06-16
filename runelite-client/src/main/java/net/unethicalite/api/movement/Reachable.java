@@ -1,9 +1,6 @@
 package net.unethicalite.api.movement;
 
-import net.unethicalite.api.entities.Players;
-import net.unethicalite.api.movement.pathfinder.CollisionMap;
-import net.unethicalite.api.movement.pathfinder.LocalCollisionMap;
-import net.unethicalite.api.movement.pathfinder.Pathfinder;
+import net.unethicalite.api.Positionable;
 import net.unethicalite.api.scene.Tiles;
 import net.runelite.api.CollisionData;
 import net.runelite.api.GameObject;
@@ -16,12 +13,15 @@ import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
 import net.unethicalite.client.Static;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class Reachable
 {
-	private static final int MAX_ATTEMPTED_TILES = 1000;
+	private static final int MAX_ATTEMPTED_TILES = 64 * 64;
 
 	public static boolean check(int flag, int checkFlag)
 	{
@@ -169,19 +169,21 @@ public class Reachable
 		}
 	}
 
-	public static List<WorldPoint> getNeighbours(WorldPoint current, Locatable targetObject)
+	public static List<WorldPoint> getNeighbours(Positionable destination, Positionable current)
 	{
 		List<WorldPoint> out = new ArrayList<>();
+		WorldPoint dest = current instanceof WorldPoint ? (WorldPoint) current : current.getWorldLocation();
 		for (Direction dir : Direction.values())
 		{
-			WorldPoint neighbour = getNeighbour(dir, current);
+			WorldPoint neighbour = getNeighbour(dir, dest);
 			if (!neighbour.isInScene(Static.getClient()))
 			{
 				continue;
 			}
 
-			if (targetObject != null)
+			if (destination instanceof Locatable)
 			{
+				Locatable targetObject = (Locatable) destination;
 				boolean containsPoint;
 				if (targetObject instanceof GameObject)
 				{
@@ -193,14 +195,14 @@ public class Reachable
 				}
 
 				if (containsPoint
-						&& (!isWalled(dir, getCollisionFlag(current)) || targetObject instanceof WallObject))
+						&& (!isWalled(dir, getCollisionFlag(dest)) || targetObject instanceof WallObject))
 				{
 					out.add(neighbour);
 					continue;
 				}
 			}
 
-			if (!canWalk(dir, getCollisionFlag(current), getCollisionFlag(neighbour)))
+			if (!canWalk(dir, getCollisionFlag(dest), getCollisionFlag(neighbour)))
 			{
 				continue;
 			}
@@ -211,11 +213,11 @@ public class Reachable
 		return out;
 	}
 
-	public static List<WorldPoint> getVisitedTiles(WorldPoint destination, Locatable targetObject)
+	public static List<WorldPoint> getVisitedTiles(Positionable destination)
 	{
-		Player local = Players.getLocal();
-		// Don't check if too far away
-		if (!destination.isInScene(Static.getClient()))
+		Player local = Static.getClient().getLocalPlayer();
+		WorldPoint dest = destination instanceof WorldPoint ? (WorldPoint) destination : destination.getWorldLocation();
+		if (local == null || !dest.isInScene(Static.getClient()))
 		{
 			return Collections.emptyList();
 		}
@@ -223,7 +225,7 @@ public class Reachable
 		List<WorldPoint> visitedTiles = new ArrayList<>();
 		LinkedList<WorldPoint> queue = new LinkedList<>();
 
-		if (local.getWorldLocation().getPlane() != destination.getPlane())
+		if (local.getWorldLocation().getPlane() != dest.getPlane())
 		{
 			return visitedTiles;
 		}
@@ -232,7 +234,6 @@ public class Reachable
 
 		while (!queue.isEmpty())
 		{
-			// Stop if too many attempts, for performance
 			if (visitedTiles.size() > MAX_ATTEMPTED_TILES)
 			{
 				return visitedTiles;
@@ -241,12 +242,12 @@ public class Reachable
 			WorldPoint current = queue.pop();
 			visitedTiles.add(current);
 
-			if (current.equals(destination))
+			if (current.equals(dest))
 			{
 				return visitedTiles;
 			}
 
-			List<WorldPoint> neighbours = getNeighbours(current, targetObject)
+			List<WorldPoint> neighbours = getNeighbours(destination, current)
 					.stream().filter(x -> !visitedTiles.contains(x) && !queue.contains(x))
 					.collect(Collectors.toList());
 			queue.addAll(neighbours);
@@ -255,103 +256,29 @@ public class Reachable
 		return visitedTiles;
 	}
 
-	public static List<WorldPoint> getObjectNeighbours(Locatable locatable, CollisionMap collisionMap)
+	/*
+	 * Temp, for compatibility
+	 */
+	public static List<WorldPoint> getVisitedTiles(Locatable locatable)
 	{
-		if (locatable instanceof GameObject)
-		{
-			List<WorldPoint> area = ((GameObject) locatable).getWorldArea().toWorldPointList();
-			return area.stream()
-					.flatMap(wp ->
-							Arrays.stream(Direction.values())
-									.map(d -> Reachable.getNeighbour(d, wp))
-									.filter(n -> !area.contains(n))
-									.filter(n -> !Reachable.isWalled(n, wp))
-					)
-					.filter(n -> !collisionMap.fullBlock(n))
-					.collect(Collectors.toList());
-		}
-
-		if (locatable instanceof WallObject)
-		{
-			List<WorldPoint> neighbours = new ArrayList<>();
-			neighbours.add(locatable.getWorldLocation());
-			Direction blockDirection = getWallBlockDirection((WallObject) locatable, collisionMap);
-			if (blockDirection != null)
-			{
-				switch (blockDirection)
-				{
-					case NORTH:
-						neighbours.add(locatable.getWorldLocation().dy(1));
-						break;
-					case SOUTH:
-						neighbours.add(locatable.getWorldLocation().dy(-1));
-						break;
-					case EAST:
-						neighbours.add(locatable.getWorldLocation().dx(1));
-						break;
-					case WEST:
-						neighbours.add(locatable.getWorldLocation().dx(-1));
-						break;
-				}
-			}
-			return neighbours;
-		}
-
-		return Arrays.stream(Direction.values())
-				.map(d -> Reachable.getNeighbour(d, locatable.getWorldLocation()))
-				.filter(n -> !collisionMap.fullBlock(n))
-				.filter(n -> !Reachable.isWalled(n, locatable.getWorldLocation()))
-				.collect(Collectors.toList());
+		return getVisitedTiles((Positionable) locatable);
 	}
 
-
-	public static Direction getWallBlockDirection(WallObject wallObject, CollisionMap collisionMap)
+	/*
+	 * Temp, for compatibility
+	 */
+	public static List<WorldPoint> getVisitedTiles(WorldPoint worldPoint)
 	{
-		WorldPoint worldPoint = wallObject.getWorldLocation();
-		if (!collisionMap.s(worldPoint))
-		{
-			return Direction.SOUTH;
-		}
-
-		if (!collisionMap.n(worldPoint))
-		{
-			return Direction.NORTH;
-		}
-
-		if (!collisionMap.w(worldPoint))
-		{
-			return Direction.WEST;
-		}
-
-		if (!collisionMap.e(worldPoint))
-		{
-			return Direction.EAST;
-		}
-
-		return null;
+		return getVisitedTiles((Positionable) worldPoint);
 	}
 
-	public static boolean isInteractable(Locatable targetObject)
+	public static boolean isInteractable(Locatable locatable)
 	{
-		if (!targetObject.getWorldLocation().isInScene(Static.getClient()))
-		{
-			return false;
-		}
-
-		WorldPoint local = Players.getLocal().getWorldLocation();
-
-		CollisionMap collisionMap = new LocalCollisionMap(true);
-
-		return new Pathfinder(
-				collisionMap,
-				Map.of(),
-				getObjectNeighbours(targetObject, collisionMap),
-				local
-		).find().contains(local);
+		return getVisitedTiles(locatable).contains(locatable.getWorldLocation());
 	}
 
 	public static boolean isWalkable(WorldPoint worldPoint)
 	{
-		return getVisitedTiles(worldPoint, null).contains(worldPoint);
+		return getVisitedTiles(worldPoint).contains(worldPoint);
 	}
 }

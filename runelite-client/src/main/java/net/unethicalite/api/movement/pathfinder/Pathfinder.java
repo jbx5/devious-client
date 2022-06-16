@@ -96,6 +96,11 @@ public class Pathfinder implements Callable<List<WorldPoint>>
 
     public List<WorldPoint> find()
     {
+        return find(5_000_000);
+    }
+
+    public List<WorldPoint> find(int maxSearch)
+    {
         boundary.addAll(start);
 
         int bestDistance = Integer.MAX_VALUE;
@@ -107,7 +112,7 @@ public class Pathfinder implements Callable<List<WorldPoint>>
                 return List.of();
             }
 
-            if (visited.size() >= 5_000_000)
+            if (visited.size() >= maxSearch)
             {
                 return nearest.path();
             }

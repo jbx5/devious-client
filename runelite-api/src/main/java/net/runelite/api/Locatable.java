@@ -27,7 +27,7 @@ package net.runelite.api;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
 
-public interface Locatable
+public interface Locatable extends net.unethicalite.api.Positionable
 {
 	/**
 	 * Gets the server-side location of the actor.
@@ -54,5 +54,20 @@ public interface Locatable
 	default int distanceTo(WorldPoint point)
 	{
 		return point.distanceTo(getWorldLocation());
+	}
+
+	default int getX()
+	{
+		return getWorldLocation().getX();
+	}
+
+	default int getY()
+	{
+		return getWorldLocation().getY();
+	}
+
+	default int getPlane()
+	{
+		return getWorldLocation().getPlane();
 	}
 }

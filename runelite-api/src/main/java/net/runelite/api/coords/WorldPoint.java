@@ -46,7 +46,7 @@ import net.runelite.api.Tile;
  * instance.
  */
 @Value
-public class WorldPoint
+public class WorldPoint implements net.unethicalite.api.Positionable
 {
 	private static final int[] REGION_MIRRORS = {
 		// Prifddinas
