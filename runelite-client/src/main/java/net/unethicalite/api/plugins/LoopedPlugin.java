@@ -1,22 +1,24 @@
 package net.unethicalite.api.plugins;
 
-import net.unethicalite.api.commons.Time;
-import net.unethicalite.api.game.Game;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.events.GameTick;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.plugins.Plugin;
+import net.unethicalite.api.commons.Time;
+import net.unethicalite.api.game.Game;
 
-import java.util.concurrent.Executors;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Slf4j
 public abstract class LoopedPlugin extends Plugin implements Runnable
 {
-	private static final ScheduledExecutorService EXECUTOR = Executors.newSingleThreadScheduledExecutor();
+	private static final ScheduledExecutorService EXECUTOR = new LoggableExecutor(1);
 	private final AtomicInteger ticks = new AtomicInteger(0);
 
 	private volatile int nextSleep = 1000;
@@ -72,10 +74,6 @@ public abstract class LoopedPlugin extends Plugin implements Runnable
 
 				currentSleep = this instanceof Script ? ((Script) this).outerLoop() : loop();
 			}
-			catch (Exception e)
-			{
-				log.error("Error in loop", e);
-			}
 			finally
 			{
 				if (sleepUntil == 0)
@@ -102,6 +100,47 @@ public abstract class LoopedPlugin extends Plugin implements Runnable
 	public void stop()
 	{
 		task.cancel(true);
+	}
+
+	private static class LoggableExecutor extends ScheduledThreadPoolExecutor
+	{
+		public LoggableExecutor(int corePoolSize)
+		{
+			super(corePoolSize);
+		}
+
+		protected void afterExecute(Runnable r, Throwable t)
+		{
+			super.afterExecute(r, t);
+			if (t == null && r instanceof Future<?>)
+			{
+				try
+				{
+					Future<?> future = (Future<?>) r;
+					if (future.isDone())
+					{
+						future.get();
+					}
+				}
+				catch (CancellationException ce)
+				{
+					t = ce;
+				}
+				catch (ExecutionException ee)
+				{
+					t = ee.getCause();
+				}
+				catch (InterruptedException ie)
+				{
+					Thread.currentThread().interrupt();
+				}
+			}
+
+			if (t != null)
+			{
+				log.error("Error in loop", t);
+			}
+		}
 	}
 
 	@Subscribe
