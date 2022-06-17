@@ -49,6 +49,8 @@ public class UnethicalitePlugin extends SettingsPlugin
 	{
 		staticConfig = config;
 		eventBus.register(regionHandler);
+
+		TransportLoader.init();
 	}
 
 	@Override

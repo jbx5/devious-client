@@ -17,7 +17,13 @@ import net.runelite.api.WallObject;
 import net.runelite.api.coords.WorldPoint;
 
 import javax.inject.Singleton;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
@@ -199,7 +205,7 @@ public class Walker
 
 				if (transport != null)
 				{
-					log.debug("Trying to use transport {}", transport);
+					log.debug("Trying to use transport at {} to move {} -> {}", transport.getSource(), a, b);
 					transport.getHandler().run();
 					Time.sleepTick();
 					return true;
