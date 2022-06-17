@@ -1,9 +1,11 @@
 package net.unethicalite.api.movement.pathfinder;
 
+import net.runelite.api.TileObject;
 import net.runelite.client.plugins.unethicalite.UnethicalitePlugin;
 import net.unethicalite.api.commons.Rand;
 import net.unethicalite.api.commons.Time;
 import net.unethicalite.api.entities.Players;
+import net.unethicalite.api.entities.TileObjects;
 import net.unethicalite.api.movement.Movement;
 import net.unethicalite.api.movement.Reachable;
 import net.unethicalite.api.movement.pathfinder.model.Teleport;
@@ -17,10 +19,17 @@ import net.runelite.api.WallObject;
 import net.runelite.api.coords.WorldPoint;
 
 import javax.inject.Singleton;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Predicate;
 
 @Singleton
@@ -39,13 +48,6 @@ public class Walker
 	private static WorldPoint currentDestination = null;
 	public static boolean walkTo(WorldPoint destination)
 	{
-
-		if (!UnethicalitePlugin.isPathfinderReady())
-		{
-			log.info("Waiting for inventory and equipment to load");
-			return false;
-		}
-
 		Player local = Players.getLocal();
 		if (destination.equals(local.getWorldLocation()))
 		{
@@ -205,7 +207,7 @@ public class Walker
 
 				if (transport != null)
 				{
-					log.debug("Trying to use transport {}", transport);
+					log.debug("Trying to use transport at {} to move {} -> {}", transport.getSource(), a, b);
 					transport.getHandler().run();
 					Time.sleepTick();
 					return true;
@@ -215,6 +217,18 @@ public class Walker
 			if (tileA == null)
 			{
 				return false;
+			}
+
+			if (Math.abs(a.getX() - b.getX()) + Math.abs(a.getY() + b.getY()) > 1 && a.getPlane() == b.getPlane())
+			{
+				TileObject wall = TileObjects.getFirstAt(tileA, "Door");
+				if (wall != null && wall.hasAction("Open"))
+				{
+					log.debug("Handling diagonal door {}", wall.getWorldLocation());
+					wall.interact("Open");
+					Time.sleepUntil(() -> !wall.hasAction("Open"), 2000);
+					return true;
+				}
 			}
 
 			if (tileB == null)
@@ -309,25 +323,20 @@ public class Walker
 			currentDestination = destination;
 		}
 
-		if (!destination.equals(currentDestination))
+		if (!destination.equals(currentDestination) || UnethicalitePlugin.shouldRefreshPath())
 		{
 			pathFuture.cancel(true);
 			pathFuture = executor.submit(new Pathfinder(Static.getGlobalCollisionMap(), buildTransportLinks(), startPoints, destination));
 			currentDestination = destination;
 		}
 
-		if (!pathFuture.isDone())
-		{
-			return List.of();
-		}
-
 		try
 		{
-			return pathFuture.get();
+			// 16-17ms for 60fps, 6-7ms for 144fps
+			return pathFuture.get(10, TimeUnit.MILLISECONDS);
 		}
 		catch (Exception e)
 		{
-			log.error("Error getting path", e);
 			return List.of();
 		}
 	}

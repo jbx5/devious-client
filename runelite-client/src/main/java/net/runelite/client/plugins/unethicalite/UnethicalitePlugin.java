@@ -1,9 +1,7 @@
 package net.runelite.client.plugins.unethicalite;
 
 import lombok.extern.slf4j.Slf4j;
-import net.runelite.api.GameState;
 import net.runelite.api.InventoryID;
-import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.ItemContainerChanged;
 import net.runelite.api.events.WidgetLoaded;
 import net.runelite.api.widgets.WidgetInfo;
@@ -13,6 +11,7 @@ import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.plugins.unethicalite.regions.RegionHandler;
 import net.unethicalite.api.movement.pathfinder.TransportLoader;
+import net.unethicalite.api.movement.pathfinder.model.JewelryBox;
 import net.unethicalite.api.plugins.SettingsPlugin;
 import net.unethicalite.client.config.UnethicaliteConfig;
 
@@ -27,25 +26,17 @@ import java.util.Set;
 public class UnethicalitePlugin extends SettingsPlugin
 {
 
-	private static boolean INVENTORY_LOADED = false;
-	private static boolean EQUIPMENT_LOADED = false;
+	private static boolean INVENTORY_CHANGED = false;
+	private static boolean EQUIPMENT_CHANGED = false;
 
 	private static final Set<Integer> REFRESH_WIDGET_IDS = Set.of(
 			WidgetInfo.QUEST_COMPLETED_NAME_TEXT.getGroupId(),
 			WidgetInfo.LEVEL_UP_LEVEL.getGroupId()
 	);
 
-	private static final Set<GameState> RESET_GAME_STATES = Set.of(
-			GameState.UNKNOWN,
-			GameState.STARTING,
-			GameState.LOGIN_SCREEN,
-			GameState.LOGIN_SCREEN_AUTHENTICATOR,
-			GameState.CONNECTION_LOST,
-			GameState.HOPPING
-	);
-
 	@Inject
 	private UnethicaliteConfig config;
+	private static UnethicaliteConfig staticConfig = null;
 
 	@Inject
 	private EventBus eventBus;
@@ -56,12 +47,16 @@ public class UnethicalitePlugin extends SettingsPlugin
 	@Override
 	protected void startUp() throws Exception
 	{
+		staticConfig = config;
 		eventBus.register(regionHandler);
+
+		TransportLoader.init();
 	}
 
 	@Override
 	protected void shutDown() throws Exception
 	{
+		staticConfig = null;
 		eventBus.unregister(regionHandler);
 	}
 
@@ -103,29 +98,48 @@ public class UnethicalitePlugin extends SettingsPlugin
 	{
 		if (event.getContainerId() == InventoryID.INVENTORY.getId())
 		{
-			INVENTORY_LOADED = true;
+			INVENTORY_CHANGED = true;
 			TransportLoader.refreshStaticTransports();
 		}
 		if (event.getContainerId() == InventoryID.EQUIPMENT.getId())
 		{
-			EQUIPMENT_LOADED = true;
+			EQUIPMENT_CHANGED = true;
 			TransportLoader.refreshStaticTransports();
 		}
 	}
 
-	@Subscribe
-	public void onGameStateChanged(GameStateChanged event)
+	public static boolean shouldRefreshPath()
 	{
-		if (RESET_GAME_STATES.contains(event.getGameState()))
-		{
-			log.info("Resetting pathfinder loaded state");
-			EQUIPMENT_LOADED = false;
-			INVENTORY_LOADED = false;
-		}
+		boolean refreshPath = INVENTORY_CHANGED || EQUIPMENT_CHANGED;
+		EQUIPMENT_CHANGED = false;
+		INVENTORY_CHANGED = false;
+		return refreshPath;
 	}
 
-	public static boolean isPathfinderReady()
+	public static boolean usePoh()
 	{
-		return INVENTORY_LOADED && EQUIPMENT_LOADED;
+		return staticConfig != null && staticConfig.usePoh();
+	}
+	public static boolean hasMountedGlory()
+	{
+		return staticConfig != null && staticConfig.hasMountedGlory();
+	}
+
+	public static boolean hasMountedDigsitePendant()
+	{
+		return staticConfig != null && staticConfig.hasMountedDigsitePendant();
+	}
+
+	public static boolean hasMountedMythicalCape()
+	{
+		return staticConfig != null && staticConfig.hasMountedMythicalCape();
+	}
+	public static boolean hasMountedXericsTalisman()
+	{
+		return staticConfig != null && staticConfig.hasMountedXericsTalisman();
+	}
+	public static JewelryBox hasJewelryBox()
+	{
+		return staticConfig == null ? JewelryBox.NONE : staticConfig.hasJewelryBox();
 	}
 }

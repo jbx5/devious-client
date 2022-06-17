@@ -1,9 +1,12 @@
 package net.unethicalite.api.movement.pathfinder.model;
 
 import net.runelite.api.ItemID;
+import net.runelite.api.coords.WorldPoint;
 
 public class MovementConstants
 {
+
+    public static WorldPoint HOUSE_POINT = new WorldPoint(10000, 4000, 1);
 
     public static final int[] RING_OF_DUELING = new int[]
             {

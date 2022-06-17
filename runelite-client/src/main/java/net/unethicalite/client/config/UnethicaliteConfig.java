@@ -1,5 +1,6 @@
 package net.unethicalite.client.config;
 
+import net.unethicalite.api.movement.pathfinder.model.JewelryBox;
 import net.unethicalite.client.managers.interaction.InteractMethod;
 import net.unethicalite.client.managers.interaction.MouseBehavior;
 import net.runelite.client.config.Button;
@@ -240,6 +241,78 @@ public interface UnethicaliteConfig extends Config
 	default Button transport()
 	{
 		return new Button();
+	}
+
+	@ConfigItem(
+			keyName = "usePoh",
+			name = "Use POH",
+			description = "",
+			position = 3,
+			section = pathfinderSection
+	)
+	default boolean usePoh()
+	{
+		return false;
+	}
+
+	@ConfigItem(
+			keyName = "hasMountedGlory",
+			name = "Mounted Glory",
+			description = "",
+			position = 4,
+			section = pathfinderSection
+	)
+	default boolean hasMountedGlory()
+	{
+		return false;
+	}
+
+	@ConfigItem(
+			keyName = "hasMountedDigsitePendant",
+			name = "Mounted Digsite Pendant",
+			description = "",
+			position = 4,
+			section = pathfinderSection
+	)
+	default boolean hasMountedDigsitePendant()
+	{
+		return false;
+	}
+
+	@ConfigItem(
+			keyName = "hasMountedMythicalCape",
+			name = "Mounted Mythical Cape",
+			description = "",
+			position = 4,
+			section = pathfinderSection
+	)
+	default boolean hasMountedMythicalCape()
+	{
+		return false;
+	}
+
+	@ConfigItem(
+			keyName = "hasMountedXericsTalisman",
+			name = "Mounted Xerics Talisman",
+			description = "",
+			position = 4,
+			section = pathfinderSection
+	)
+	default boolean hasMountedXericsTalisman()
+	{
+		return false;
+	}
+
+	@ConfigItem(
+			keyName = "hasJewelryBox",
+			name = "Jewelry Box",
+			description = "",
+			position = 4,
+			section = pathfinderSection
+	)
+	default JewelryBox hasJewelryBox()
+	{
+		return JewelryBox.NONE;
 	}
 
 	@ConfigSection(

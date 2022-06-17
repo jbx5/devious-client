@@ -2,7 +2,22 @@ package net.unethicalite.api.movement.pathfinder;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import net.runelite.api.*;
+import lombok.extern.slf4j.Slf4j;
+import net.runelite.api.Item;
+import net.runelite.api.ItemID;
+import net.runelite.api.MenuAction;
+import net.runelite.api.NPC;
+import net.runelite.api.NpcID;
+import net.runelite.api.Point;
+import net.runelite.api.QuestState;
+import net.runelite.api.Skill;
+import net.runelite.api.TileObject;
+import net.runelite.api.coords.Direction;
+import net.runelite.api.coords.WorldArea;
+import net.runelite.api.coords.WorldPoint;
+import net.runelite.api.widgets.Widget;
+import net.runelite.api.widgets.WidgetInfo;
+import net.unethicalite.api.commons.HttpUtil;
 import net.unethicalite.api.entities.NPCs;
 import net.unethicalite.api.entities.Players;
 import net.unethicalite.api.entities.TileObjects;
@@ -14,11 +29,18 @@ import net.unethicalite.api.items.Equipment;
 import net.unethicalite.api.items.Inventory;
 import net.unethicalite.api.movement.Movement;
 import net.unethicalite.api.movement.Reachable;
-import net.unethicalite.api.movement.pathfinder.model.*;
+import net.unethicalite.api.movement.pathfinder.model.FairyRingLocation;
+import net.unethicalite.api.movement.pathfinder.model.Transport;
+import net.unethicalite.api.movement.pathfinder.model.TransportDto;
+import net.unethicalite.api.movement.pathfinder.model.TransportRequirement;
 import net.unethicalite.api.quests.Quest;
 import net.unethicalite.api.widgets.Dialog;
 import net.unethicalite.api.widgets.Widgets;
 import net.unethicalite.client.Static;
+import net.unethicalite.client.config.UnethicaliteProperties;
+
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -28,28 +50,22 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-import lombok.extern.slf4j.Slf4j;
-import net.runelite.api.coords.Direction;
-import net.runelite.api.coords.WorldArea;
-import net.runelite.api.coords.WorldPoint;
-import net.runelite.api.widgets.Widget;
-import net.runelite.api.widgets.WidgetInfo;
 
 @Slf4j
 public class TransportLoader
 {
 	public static final List<SpiritTree> SPIRIT_TREES = List.of(
-		new SpiritTree(new WorldPoint(2542, 3170, 0), "Tree gnome Village"),
-		new SpiritTree(new WorldPoint(2461, 3444, 0), "Gnome Stronghold"),
-		new SpiritTree(new WorldPoint(2555, 3259, 0), "Battlefield of Khazard"),
-		new SpiritTree(new WorldPoint(3185, 3508, 0), "Grand Exchange"),
-		new SpiritTree(new WorldPoint(2488, 2850, 0), "Feldip Hills")
+			new SpiritTree(new WorldPoint(2542, 3170, 0), "Tree gnome Village"),
+			new SpiritTree(new WorldPoint(2461, 3444, 0), "Gnome Stronghold"),
+			new SpiritTree(new WorldPoint(2555, 3259, 0), "Battlefield of Khazard"),
+			new SpiritTree(new WorldPoint(3185, 3508, 0), "Grand Exchange"),
+			new SpiritTree(new WorldPoint(2488, 2850, 0), "Feldip Hills")
 	);
 	public static final List<MagicMushtree> MUSHTREES = List.of(
-		new MagicMushtree(new WorldPoint(3676, 3871, 0), WidgetInfo.FOSSIL_MUSHROOM_MEADOW),
-		new MagicMushtree(new WorldPoint(3764, 3879, 0), WidgetInfo.FOSSIL_MUSHROOM_HOUSE),
-		new MagicMushtree(new WorldPoint(3676, 3755, 0), WidgetInfo.FOSSIL_MUSHROOM_SWAMP),
-		new MagicMushtree(new WorldPoint(3760, 3758, 0), WidgetInfo.FOSSIL_MUSHROOM_VALLEY)
+			new MagicMushtree(new WorldPoint(3676, 3871, 0), WidgetInfo.FOSSIL_MUSHROOM_MEADOW),
+			new MagicMushtree(new WorldPoint(3764, 3879, 0), WidgetInfo.FOSSIL_MUSHROOM_HOUSE),
+			new MagicMushtree(new WorldPoint(3676, 3755, 0), WidgetInfo.FOSSIL_MUSHROOM_SWAMP),
+			new MagicMushtree(new WorldPoint(3760, 3758, 0), WidgetInfo.FOSSIL_MUSHROOM_VALLEY)
 	);
 	private static final Gson GSON = new GsonBuilder().create();
 	private static int LAST_BUILD_TICK = 0;
@@ -60,28 +76,78 @@ public class TransportLoader
 	private static final WorldArea MLM = new WorldArea(3714, 5633, 60, 62, 0);
 	private static List<Transport> LAST_TRANSPORT_LIST = Collections.emptyList();
 
+	private static final File TRANSPORTS_FILE_CACHE;
+
 	static
 	{
-		loadAllStaticTransports();
-	}
-
-	private static void loadAllStaticTransports()
-	{
-		try (InputStream stream = Walker.class.getResourceAsStream("/transports.json"))
+		try
 		{
-			TransportDto[] json = GSON.fromJson(new String(stream.readAllBytes()), TransportDto[].class);
-
-			List<Transport> list = Arrays.stream(json)
-					.map(TransportDto::toTransport)
-					.collect(Collectors.toList());
-			ALL_STATIC_TRANSPORTS.addAll(list);
+			TRANSPORTS_FILE_CACHE = File.createTempFile("unethicalite", "transports");
 		}
 		catch (IOException e)
 		{
-			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
+
+	public static void init()
+	{
+		try (var fileWriter = new FileWriter(TRANSPORTS_FILE_CACHE))
+		{
+			TransportDto[] json = loadAllStaticTransports();
+			if (json == null)
+			{
+				log.debug("Transport json was null, not caching to file.");
+				return;
+			}
+
+			GSON.toJson(json, fileWriter);
+			log.debug("Cached transports to {}", TRANSPORTS_FILE_CACHE.toPath());
+		}
+		catch (IOException e)
+		{
+			log.error("Failed to write transports to cache file.", e);
+		}
+	}
+
+	private static TransportDto[] loadAllStaticTransports()
+	{
+		log.info("Loading transports");
+		TransportDto[] json = HttpUtil.readJson(UnethicaliteProperties.getApiUrl() + "/transports",
+				TransportDto[].class);
+		if (json == null)
+		{
+			log.warn("Could not retrieve transport data from backend, falling back to cached.");
+
+			try (InputStream stream = Walker.class.getResourceAsStream("/transports.json"))
+			{
+				if (stream == null)
+				{
+					log.error("Failed to load transports.");
+					return null;
+				}
+
+				json = GSON.fromJson(new String(stream.readAllBytes()), TransportDto[].class);
+			}
+			catch (IOException e)
+			{
+				log.error("Failed to load cached transports.", e);
+			}
 		}
 
-		log.debug("Loaded {} transports from file", ALL_STATIC_TRANSPORTS.size());
+		if (json == null)
+		{
+			log.error("No transports have been loaded.");
+			return null;
+		}
+
+		List<Transport> list = Arrays.stream(json)
+				.map(TransportDto::toTransport)
+				.collect(Collectors.toList());
+		ALL_STATIC_TRANSPORTS.addAll(list);
+
+		log.info("Loaded {} transports", ALL_STATIC_TRANSPORTS.size());
+		return json;
 	}
 
 	private static List<Transport> loadStaticTransports()
@@ -346,21 +412,21 @@ public class TransportLoader
 		transports.add(npcTransport(new WorldPoint(3041, 3237, 0), new WorldPoint(2834, 3331, 1), 1166, "Take-boat"));
 		transports.add(npcTransport(new WorldPoint(2834, 3335, 0), new WorldPoint(3048, 3231, 1), 1170, "Take-boat"));
 		transports.add(npcDialogTransport(new WorldPoint(2821, 3374, 0),
-			new WorldPoint(2822, 9774, 0),
-			1164,
-			"Well that is a risk I will have to take."));
+				new WorldPoint(2822, 9774, 0),
+				1164,
+				"Well that is a risk I will have to take."));
 
 		// Fossil Island
 		transports.add(npcTransport(new WorldPoint(3362, 3445, 0),
-			new WorldPoint(3724, 3808, 0),
-			8012,
-			"Quick-Travel"));
+				new WorldPoint(3724, 3808, 0),
+				8012,
+				"Quick-Travel"));
 
 		transports.add(objectDialogTransport(new WorldPoint(3724, 3808, 0),
-			new WorldPoint(3362, 3445, 0),
-			30914,
-			new String[]{"Travel"},
-			"Row to the barge and travel to the Digsite."));
+				new WorldPoint(3362, 3445, 0),
+				30914,
+				new String[]{"Travel"},
+				"Row to the barge and travel to the Digsite."));
 
 		// Magic Mushtrees
 		for (var source : MUSHTREES)
@@ -373,10 +439,10 @@ public class TransportLoader
 
 		// Gnome stronghold
 		transports.add(objectDialogTransport(new WorldPoint(2461, 3382, 0),
-			new WorldPoint(2461, 3385, 0),
-			190,
-			new String[]{"Open"},
-			"Sorry, I'm a bit busy."));
+				new WorldPoint(2461, 3385, 0),
+				190,
+				new String[]{"Open"},
+				"Sorry, I'm a bit busy."));
 
 		// Paterdomus
 		transports.add(trapDoorTransport(new WorldPoint(3405, 3506, 0), new WorldPoint(3405, 9906, 0), 1579, 1581));
@@ -407,25 +473,25 @@ public class TransportLoader
 	{
 		String[] split = line.split(" ");
 		return objectTransport(
-			new WorldPoint(
-				Integer.parseInt(split[0]),
-				Integer.parseInt(split[1]),
-				Integer.parseInt(split[2])
-			),
-			new WorldPoint(
-				Integer.parseInt(split[3]),
-				Integer.parseInt(split[4]),
-				Integer.parseInt(split[5])
-			),
-			Integer.parseInt(split[split.length - 1]), split[6]
+				new WorldPoint(
+						Integer.parseInt(split[0]),
+						Integer.parseInt(split[1]),
+						Integer.parseInt(split[2])
+				),
+				new WorldPoint(
+						Integer.parseInt(split[3]),
+						Integer.parseInt(split[4]),
+						Integer.parseInt(split[5])
+				),
+				Integer.parseInt(split[split.length - 1]), split[6]
 		);
 	}
 
 	public static Transport trapDoorTransport(
-		WorldPoint source,
-		WorldPoint destination,
-		int closedId,
-		int openedId
+			WorldPoint source,
+			WorldPoint destination,
+			int closedId,
+			int openedId
 	)
 	{
 		return new Transport(source, destination, Integer.MAX_VALUE, 0, () ->
@@ -484,10 +550,10 @@ public class TransportLoader
 	}
 
 	public static Transport itemUseTransport(
-		WorldPoint source,
-		WorldPoint destination,
-		int itemId,
-		int objId
+			WorldPoint source,
+			WorldPoint destination,
+			int itemId,
+			int objId
 	)
 	{
 		return new Transport(source, destination, Integer.MAX_VALUE, 0, () ->
@@ -507,10 +573,10 @@ public class TransportLoader
 	}
 
 	public static Transport npcTransport(
-		WorldPoint source,
-		WorldPoint destination,
-		int npcId,
-		String... actions
+			WorldPoint source,
+			WorldPoint destination,
+			int npcId,
+			String... actions
 	)
 	{
 		return new Transport(source, destination, 10, 0, () ->
@@ -524,10 +590,10 @@ public class TransportLoader
 	}
 
 	public static Transport npcDialogTransport(
-		WorldPoint source,
-		WorldPoint destination,
-		int npcId,
-		String... chatOptions
+			WorldPoint source,
+			WorldPoint destination,
+			int npcId,
+			String... chatOptions
 	)
 	{
 		return new Transport(source, destination, 10, 0, () ->
@@ -557,7 +623,7 @@ public class TransportLoader
 	}
 
 	public static List<Transport> motherloadMineTransport(
-		WorldPoint rockfall
+			WorldPoint rockfall
 	)
 	{
 		return Arrays.stream(Direction.values()).map(dir ->
@@ -587,8 +653,8 @@ public class TransportLoader
 					return new Transport(neighbor, finalDest, Integer.MAX_VALUE, 0, () ->
 					{
 						TileObjects.getAt(rockfall, x -> x.getName().equalsIgnoreCase("Rockfall")).stream()
-							.findFirst()
-							.ifPresentOrElse(obj -> obj.interact("Mine"), () -> Movement.walk(finalDest));
+								.findFirst()
+								.ifPresentOrElse(obj -> obj.interact("Mine"), () -> Movement.walk(finalDest));
 					});
 				}
 			}
@@ -644,10 +710,10 @@ public class TransportLoader
 	}
 
 	public static Transport objectTransport(
-		WorldPoint source,
-		WorldPoint destination,
-		TileObject tileObject,
-		int actionIndex
+			WorldPoint source,
+			WorldPoint destination,
+			TileObject tileObject,
+			int actionIndex
 	)
 	{
 		return new Transport(source, destination, Integer.MAX_VALUE, 0, () ->
@@ -662,11 +728,11 @@ public class TransportLoader
 	}
 
 	public static Transport objectDialogTransport(
-		WorldPoint source,
-		WorldPoint destination,
-		int objId,
-		String[] actions,
-		String... chatOptions
+			WorldPoint source,
+			WorldPoint destination,
+			int objId,
+			String[] actions,
+			String... chatOptions
 	)
 	{
 		return new Transport(source, destination, Integer.MAX_VALUE, 0, () ->
@@ -698,54 +764,54 @@ public class TransportLoader
 	private static Transport spritTreeTransport(WorldPoint source, WorldPoint target, String location)
 	{
 		return new Transport(
-			source,
-			target,
-			5,
-			0,
-			() ->
-			{
-				Widget treeWidget = Widgets.get(187, 3);
-				if (Widgets.isVisible(treeWidget))
+				source,
+				target,
+				5,
+				0,
+				() ->
 				{
-					Arrays.stream(treeWidget.getDynamicChildren())
-						.filter(child -> child.getText().contains(location))
-						.findFirst()
-						.ifPresent(child -> child.interact(0, MenuAction.WIDGET_CONTINUE.getId(), child.getIndex(), child.getId()));
-					return;
-				}
+					Widget treeWidget = Widgets.get(187, 3);
+					if (Widgets.isVisible(treeWidget))
+					{
+						Arrays.stream(treeWidget.getDynamicChildren())
+								.filter(child -> child.getText().contains(location))
+								.findFirst()
+								.ifPresent(child -> child.interact(0, MenuAction.WIDGET_CONTINUE.getId(), child.getIndex(), child.getId()));
+						return;
+					}
 
-				TileObject tree = TileObjects.getFirstSurrounding(source, 5, 1293, 1294, 1295);
-				if (tree != null)
-				{
-					final Point point = tree.menuPoint();
-					tree.interact(tree.getId(), MenuAction.GAME_OBJECT_FIRST_OPTION.getId(), point.getX(), point.getY());
-				}
+					TileObject tree = TileObjects.getFirstSurrounding(source, 5, 1293, 1294, 1295);
+					if (tree != null)
+					{
+						final Point point = tree.menuPoint();
+						tree.interact(tree.getId(), MenuAction.GAME_OBJECT_FIRST_OPTION.getId(), point.getX(), point.getY());
+					}
 
-			});
+				});
 	}
 
 	private static Transport mushtreeTransport(WorldPoint source, WorldPoint target, WidgetInfo widget)
 	{
 		return new Transport(
-			source,
-			target,
-			5,
-			0,
-			() ->
-			{
-				Widget treeWidget = Widgets.get(widget);
-				if (Widgets.isVisible(treeWidget))
+				source,
+				target,
+				5,
+				0,
+				() ->
 				{
-					treeWidget.interact(0, MenuAction.WIDGET_CONTINUE.getId(), treeWidget.getIndex(), treeWidget.getId());
-					return;
-				}
+					Widget treeWidget = Widgets.get(widget);
+					if (Widgets.isVisible(treeWidget))
+					{
+						treeWidget.interact(0, MenuAction.WIDGET_CONTINUE.getId(), treeWidget.getIndex(), treeWidget.getId());
+						return;
+					}
 
-				TileObject tree = TileObjects.getFirstSurrounding(source, 5, "Magic Mushtree");
-				if (tree != null)
-				{
-					tree.interact("Use");
-				}
-			});
+					TileObject tree = TileObjects.getFirstSurrounding(source, 5, "Magic Mushtree");
+					if (tree != null)
+					{
+						tree.interact("Use");
+					}
+				});
 	}
 
 	public static class MagicMushtree

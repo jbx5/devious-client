@@ -1,6 +1,13 @@
 package net.unethicalite.api.movement.pathfinder;
 
+import net.runelite.api.GameState;
+import net.runelite.api.ObjectID;
+import net.runelite.api.TileObject;
+import net.runelite.api.widgets.WidgetID;
+import net.runelite.api.widgets.WidgetInfo;
+import net.runelite.client.plugins.unethicalite.UnethicalitePlugin;
 import net.unethicalite.api.entities.Players;
+import net.unethicalite.api.entities.TileObjects;
 import net.unethicalite.api.game.Game;
 import net.unethicalite.api.game.Worlds;
 import net.unethicalite.api.input.Keyboard;
@@ -178,6 +185,61 @@ public class TeleportLoader
 			}
 		}
 
+
+
+		if (UnethicalitePlugin.usePoh() && (TeleportSpell.TELEPORT_TO_HOUSE.canCast() || TileObjects.getNearest(ObjectID.PORTAL_4525) != null))
+		{
+			if (UnethicalitePlugin.hasMountedGlory())
+			{
+				teleports.add(mountedPohTeleport(new WorldPoint(3087, 3496, 0), ObjectID.AMULET_OF_GLORY, "Edgeville"));
+				teleports.add(mountedPohTeleport(new WorldPoint(2918, 3176, 0), ObjectID.AMULET_OF_GLORY, "Karamja"));
+				teleports.add(mountedPohTeleport(new WorldPoint(3105, 3251, 0), ObjectID.AMULET_OF_GLORY, "Draynor Village"));
+				teleports.add(mountedPohTeleport(new WorldPoint(3293, 3163, 0), ObjectID.AMULET_OF_GLORY, "Al Kharid"));
+			}
+
+			if (UnethicalitePlugin.hasMountedDigsitePendant())
+			{
+				teleports.add(pohDigsitePendantTeleport(new WorldPoint(3341, 3445, 0), 1));
+				teleports.add(pohDigsitePendantTeleport(new WorldPoint(3766, 3870, 1), 2));
+				teleports.add(pohDigsitePendantTeleport(new WorldPoint(3549, 10456, 0), 3));
+			}
+
+			switch (UnethicalitePlugin.hasJewelryBox())
+			{
+				case ORNATE:
+					teleports.add(pohWidgetTeleport(new WorldPoint(2538, 3863, 0), 'j'));
+					teleports.add(pohWidgetTeleport(new WorldPoint(3163, 3478, 0), 'k'));
+					teleports.add(pohWidgetTeleport(new WorldPoint(2996, 3375, 0), 'l'));
+					teleports.add(pohWidgetTeleport(new WorldPoint(2828, 10166, 0), 'm'));
+					teleports.add(pohWidgetTeleport(new WorldPoint(3087, 3496, 0), 'n'));
+					teleports.add(pohWidgetTeleport(new WorldPoint(2918, 3176, 0), 'o'));
+					teleports.add(pohWidgetTeleport(new WorldPoint(3105, 3251, 0), 'p'));
+					teleports.add(pohWidgetTeleport(new WorldPoint(3293, 3163, 0), 'q'));
+				case FANCY:
+					teleports.add(pohWidgetTeleport(new WorldPoint(2882, 3548, 0), '9'));
+					teleports.add(pohWidgetTeleport(new WorldPoint(3191, 3367, 0), 'a'));
+					teleports.add(pohWidgetTeleport(new WorldPoint(3052, 3488, 0), 'b'));
+					teleports.add(pohWidgetTeleport(new WorldPoint(2655, 3441, 0), 'c'));
+					teleports.add(pohWidgetTeleport(new WorldPoint(2611, 3390, 0), 'd'));
+					teleports.add(pohWidgetTeleport(new WorldPoint(3050, 9763, 0), 'e'));
+					teleports.add(pohWidgetTeleport(new WorldPoint(2933, 3295, 0), 'f'));
+					teleports.add(pohWidgetTeleport(new WorldPoint(3143, 3440, 0), 'g'));
+					teleports.add(pohWidgetTeleport(new WorldPoint(1662, 3505, 0), 'h'));
+					teleports.add(pohWidgetTeleport(new WorldPoint(1249, 3718, 0), 'i'));
+				case BASIC:
+					teleports.add(pohWidgetTeleport(new WorldPoint(3315, 3235, 0), '1'));
+					teleports.add(pohWidgetTeleport(new WorldPoint(2440, 3090, 0), '2'));
+					teleports.add(pohWidgetTeleport(new WorldPoint(3151, 3635, 0), '3'));
+					teleports.add(pohWidgetTeleport(new WorldPoint(2898, 3553, 0), '4'));
+					teleports.add(pohWidgetTeleport(new WorldPoint(2520, 3571, 0), '5'));
+					teleports.add(pohWidgetTeleport(new WorldPoint(2964, 4382, 2), '6'));
+					teleports.add(pohWidgetTeleport(new WorldPoint(3244, 9501, 2), '7'));
+					teleports.add(pohWidgetTeleport(new WorldPoint(1624, 3938, 0), '8'));
+					break;
+				default:
+			}
+		}
+
 		if (Game.getWildyLevel() <= 20)
 		{
 			for (TeleportSpell teleportSpell : TeleportSpell.values())
@@ -272,6 +334,88 @@ public class TeleportLoader
 		{
 			equipped.interact(target);
 		}
+	}
+
+	public static Teleport pohDigsitePendantTeleport(
+			WorldPoint destination,
+			int action
+	)
+	{
+		return new Teleport(destination, 10, () ->
+		{
+			if (!Players.getLocal().isIdle() || Static.getClient().getGameState() == GameState.LOADING)
+			{
+				return;
+			}
+
+			if (Widgets.isVisible(Widgets.get(WidgetInfo.ADVENTURE_LOG)))
+			{
+				Keyboard.type(action);
+				return;
+			}
+
+			TileObject digsitePendant = TileObjects.getNearest("Digsite Pendant");
+			if (digsitePendant != null)
+			{
+				digsitePendant.interact("Teleport menu");
+				return;
+			}
+
+			Magic.cast(TeleportSpell.TELEPORT_TO_HOUSE.getSpell());
+
+		});
+	}
+
+
+	public static Teleport pohWidgetTeleport(
+			WorldPoint destination,
+			char action
+	)
+	{
+		return new Teleport(destination, 10, () ->
+		{
+			if (!Players.getLocal().isIdle() || Static.getClient().getGameState() == GameState.LOADING)
+			{
+				return;
+			}
+
+			if (Widgets.isVisible(Widgets.get(WidgetID.JEWELLERY_BOX_GROUP_ID, 0)))
+			{
+				Keyboard.type(action);
+				return;
+			}
+
+			TileObject box = TileObjects.getNearest(to -> to.getName() != null && to.getName().contains("Jewellery Box"));
+			if (box != null)
+			{
+				box.interact("Teleport Menu");
+				return;
+			}
+			Magic.cast(TeleportSpell.TELEPORT_TO_HOUSE.getSpell());
+		});
+	}
+
+	public static Teleport mountedPohTeleport(
+			WorldPoint destination,
+			int objId,
+			String action
+	)
+	{
+		return new Teleport(destination, 10, () ->
+		{
+			if (!Players.getLocal().isIdle() || Static.getClient().getGameState() == GameState.LOADING)
+			{
+				return;
+			}
+
+			TileObject first = TileObjects.getNearest(objId);
+			if (first != null)
+			{
+				first.interact(action);
+				return;
+			}
+			Magic.cast(TeleportSpell.TELEPORT_TO_HOUSE.getSpell());
+		});
 	}
 
 	public static boolean ringOfDueling()
