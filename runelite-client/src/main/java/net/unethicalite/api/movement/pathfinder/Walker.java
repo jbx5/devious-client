@@ -1,9 +1,11 @@
 package net.unethicalite.api.movement.pathfinder;
 
+import net.runelite.api.TileObject;
 import net.runelite.client.plugins.unethicalite.UnethicalitePlugin;
 import net.unethicalite.api.commons.Rand;
 import net.unethicalite.api.commons.Time;
 import net.unethicalite.api.entities.Players;
+import net.unethicalite.api.entities.TileObjects;
 import net.unethicalite.api.movement.Movement;
 import net.unethicalite.api.movement.Reachable;
 import net.unethicalite.api.movement.pathfinder.model.Teleport;
@@ -215,6 +217,18 @@ public class Walker
 			if (tileA == null)
 			{
 				return false;
+			}
+
+			if (Math.abs(a.getX() - b.getX()) + Math.abs(a.getY() + b.getY()) > 1 && a.getPlane() == b.getPlane())
+			{
+				TileObject wall = TileObjects.getFirstAt(tileA, "Door");
+				if (wall != null && wall.hasAction("Open"))
+				{
+					log.debug("Handling diagonal door {}", wall.getWorldLocation());
+					wall.interact("Open");
+					Time.sleepUntil(() -> !wall.hasAction("Open"), 2000);
+					return true;
+				}
 			}
 
 			if (tileB == null)
