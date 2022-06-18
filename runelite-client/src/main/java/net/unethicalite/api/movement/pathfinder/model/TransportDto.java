@@ -14,10 +14,10 @@ public class TransportDto
     String action;
     String objectName;
     Integer objectId;
-    TransportRequirement[] requirements;
+    TransportRequirement[] requirement;
 
     public Transport toTransport()
     {
-        return TransportLoader.objectTransport(source, destination, objectId, action, requirements);
+        return TransportLoader.objectTransport(source, destination, objectId, action, requirement);
     }
 }
