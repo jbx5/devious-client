@@ -6,17 +6,24 @@ import net.runelite.api.events.ItemContainerChanged;
 import net.runelite.api.events.WidgetLoaded;
 import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.client.config.Config;
+import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.plugins.PluginDescriptor;
+import net.runelite.client.plugins.hiscore.HiscorePanel;
 import net.runelite.client.plugins.unethicalite.regions.RegionHandler;
+import net.runelite.client.ui.ClientToolbar;
+import net.runelite.client.ui.NavigationButton;
+import net.runelite.client.util.ImageUtil;
 import net.unethicalite.api.movement.pathfinder.TransportLoader;
 import net.unethicalite.api.movement.pathfinder.model.JewelryBox;
 import net.unethicalite.api.plugins.SettingsPlugin;
 import net.unethicalite.client.config.UnethicaliteConfig;
 
 import javax.inject.Inject;
+import java.awt.image.BufferedImage;
 import java.util.Set;
+import java.util.concurrent.ExecutorService;
 
 @PluginDescriptor(
 		name = "Unethicalite",
@@ -36,6 +43,7 @@ public class UnethicalitePlugin extends SettingsPlugin
 
 	@Inject
 	private UnethicaliteConfig config;
+
 	private static UnethicaliteConfig staticConfig = null;
 
 	@Inject
@@ -44,20 +52,49 @@ public class UnethicalitePlugin extends SettingsPlugin
 	@Inject
 	private RegionHandler regionHandler;
 
+	@Inject
+	private ExecutorService executorService;
+
+	@Inject
+	private ClientToolbar clientToolbar;
+
+	@Inject
+	private ConfigManager configManager;
+
+	private UnethicalitePanel unethicalitePanel;
+	private NavigationButton navButton;
+
 	@Override
 	protected void startUp() throws Exception
 	{
 		staticConfig = config;
 		eventBus.register(regionHandler);
 
-		TransportLoader.init();
+		unethicalitePanel = new UnethicalitePanel(config, configManager);
+
+		eventBus.register(unethicalitePanel);
+
+		final BufferedImage icon = ImageUtil.loadImageResource(getClass(), "openosrs.png");
+
+		navButton = NavigationButton.builder()
+				.tooltip("Unethicalite")
+				.icon(icon)
+				.priority(-1)
+				.panel(unethicalitePanel)
+				.build();
+
+		clientToolbar.addNavigation(navButton);
+
+		executorService.submit(TransportLoader::init);
 	}
 
 	@Override
 	protected void shutDown() throws Exception
 	{
 		staticConfig = null;
+		clientToolbar.removeNavigation(navButton);
 		eventBus.unregister(regionHandler);
+		eventBus.unregister(unethicalitePanel);
 	}
 
 	@Override

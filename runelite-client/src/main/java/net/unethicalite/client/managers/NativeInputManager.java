@@ -106,12 +106,13 @@ public class NativeInputManager
 		if (event.getType() == NativeMouseInput.Type.PRESS)
 		{
 			log.debug(
-					"Mouse forwarded - Screen area: {} | Click: {} {} ({} {}) | Canvas: {} {}",
+					"Mouse forwarded - Screen area: {} | Click: {} {} ({} {}) | Button {} | Canvas: {} {}",
 					totalScreen,
 					eventX,
 					event.getX(),
 					eventY,
 					event.getY(),
+					event.getButton(),
 					canvasX,
 					canvasY
 			);
@@ -152,6 +153,17 @@ public class NativeInputManager
 					return;
 				}
 
+				if (!config.forwardMovement())
+				{
+					String coordsText = config.clickLocation();
+					if (coordsText.matches("^\\d{0,5} \\d{0,5}$"))
+					{
+						String[] split = coordsText.split(" ");
+						canvasX = Integer.parseInt(split[0]);
+						canvasY = Integer.parseInt(split[1]);
+					}
+				}
+
 				int button = config.forwardLeftClick() ? 1 : eventButton;
 
 				if (queuedMenu == null)
@@ -163,6 +175,9 @@ public class NativeInputManager
 				}
 				else
 				{
+					final int clickX = canvasX;
+					final int clickY = canvasY;
+
 					GameThread.invoke(() ->
 					{
 						if (button == 1)
@@ -172,7 +187,7 @@ public class NativeInputManager
 							client.setQueuedMenu(null);
 						}
 
-						mouseHandler.sendClick(canvasX, canvasY, button);
+						mouseHandler.sendClick(clickX, clickY, button);
 					});
 				}
 
@@ -194,6 +209,11 @@ public class NativeInputManager
 				break;
 
 			case MOVEMENT:
+				if (!config.forwardMovement())
+				{
+					return;
+				}
+
 				mouseHandler.sendMovement(canvasX, canvasY);
 				break;
 		}
@@ -223,7 +243,18 @@ public class NativeInputManager
 			return false;
 		}
 
-		if (config.forceForwardMovement() && event.getType() == NativeMouseInput.Type.MOVEMENT)
+		if (config.selectedButtonsOnly() && event.isButton())
+		{
+			List<Integer> buttons = Arrays.stream(config.selectedButtonIds().split(","))
+					.map(Integer::parseInt)
+					.collect(Collectors.toList());
+			if (!buttons.contains(event.getButton()))
+			{
+				return false;
+			}
+		}
+
+		if (config.forwardMovement() && config.forceForwardMovement() && event.getType() == NativeMouseInput.Type.MOVEMENT)
 		{
 			return true;
 		}
