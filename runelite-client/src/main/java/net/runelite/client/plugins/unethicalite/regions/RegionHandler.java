@@ -39,9 +39,6 @@ public class RegionHandler
 	@Inject
 	private GlobalCollisionMap collisionMap;
 
-	@Inject
-	private AddTransportDialog transportDialog;
-
 	public static boolean selectingSourceTile = false;
 	public static boolean selectingDestinationTile = false;
 	public static boolean selectingObject = false;
@@ -92,15 +89,6 @@ public class RegionHandler
 				break;
 			case "localCollisionData":
 				loadCachedCollisionMap();
-				break;
-			case "addTransportData":
-				if (transportDialog == null)
-				{
-					log.error("Add transport UI was not loaded somehow");
-					return;
-				}
-
-				transportDialog.display();
 				break;
 		}
 	}

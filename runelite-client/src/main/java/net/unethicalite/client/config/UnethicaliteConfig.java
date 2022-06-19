@@ -240,18 +240,6 @@ public interface UnethicaliteConfig extends Config
 	}
 
 	@ConfigItem(
-			keyName = "addTransportData",
-			name = "Add new transport",
-			description = "Add new transport",
-			position = 6,
-			section = pathfinderSection
-	)
-	default Button transport()
-	{
-		return new Button();
-	}
-
-	@ConfigItem(
 			keyName = "usePoh",
 			name = "Use POH",
 			description = "",
