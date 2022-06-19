@@ -8,6 +8,8 @@ import net.runelite.api.coords.WorldPoint;
 public enum TeleportItem
 {
 	// Tabs
+	WATERBIRTH_TELEPORT_TAB(new WorldPoint(2546, 3757, 0), "Waterbirth teleport", ItemID.WATERBIRTH_TELEPORT, "Break"),
+	KHAZARD_TELEPORT_TAB(new WorldPoint(2637, 3166, 0), "Khazard teleport", ItemID.KHAZARD_TELEPORT, "Break"),
 	VARROCK_TELEPORT_TAB(new WorldPoint(3212, 3424, 0), "Varrock teleport", ItemID.VARROCK_TELEPORT, "Break"),
 	LUMBRIDGE_TELEPORT_TAB(new WorldPoint(3225, 3219, 0), "Lumbridge teleport", ItemID.LUMBRIDGE_TELEPORT, "Break"),
 	FALADOR_TELEPORT_TAB(new WorldPoint(2966, 3379, 0), "Falador teleport", ItemID.FALADOR_TELEPORT, "Break"),
@@ -28,6 +30,16 @@ public enum TeleportItem
 	FELDIP_HILLS_TELEPORT(new WorldPoint(2541, 2925, 0), "Feldip hills teleport", ItemID.FELDIP_HILLS_TELEPORT,
 			"Teleport"),
 	PISCATORIS_TELEPORT(new WorldPoint(2342, 3647, 0), "Piscatoris teleport", ItemID.PISCATORIS_TELEPORT,
+			"Teleport"),
+	MORTTON_TELEPORT(new WorldPoint(3488, 3288, 0), "Mort'ton teleport", ItemID.MORTTON_TELEPORT,
+			"Teleport"),
+	DIGSITE_TELEPORT(new WorldPoint(3324, 3412, 0), "Digsite teleport", ItemID.DIGSITE_TELEPORT,
+			"Teleport"),
+	NARDAH_TELEPORT(new WorldPoint(3420, 2917, 0), "Nardah teleport", ItemID.NARDAH_TELEPORT,
+			"Teleport"),
+	LUMBERYARD_TELEPORT(new WorldPoint(3302, 3486, 0), "Lumberyard teleport", ItemID.LUMBERYARD_TELEPORT,
+			"Teleport"),
+	TAI_BWO_TELEPORT(new WorldPoint(2789, 3066, 0), "Tai bwo wannai teleport", ItemID.TAI_BWO_WANNAI_TELEPORT,
 			"Teleport"),
 
 	// Items
