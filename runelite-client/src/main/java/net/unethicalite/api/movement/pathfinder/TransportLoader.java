@@ -220,7 +220,8 @@ public class TransportLoader
 		if (Worlds.inMembersWorld())
 		{
 			//morytania
-			if(Quest.IN_SEARCH_OF_THE_MYREQUE.getState() == QuestState.FINISHED && (ringOfCharos || gold >= 10)) {
+			if (Quest.IN_SEARCH_OF_THE_MYREQUE.getState() == QuestState.FINISHED && (ringOfCharos || gold >= 10)) 
+			{
 				transports.add(objectTransport(new WorldPoint(3522, 3285, 0), new WorldPoint(3498, 3380, 0), 6969,
 						"Quick-board"));
 			}
