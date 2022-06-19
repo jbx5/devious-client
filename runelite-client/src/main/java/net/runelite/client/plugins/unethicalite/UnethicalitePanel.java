@@ -34,9 +34,9 @@ public class UnethicalitePanel extends PluginPanel
 	private final UnethicaliteConfig config;
 	private final ConfigManager configManager;
 
-	private final JPanel interactionContainer = new JPanel(new MigLayout("debug"));
+	private final JPanel interactionContainer = new JPanel(new MigLayout());
 
-	UnethicalitePanel(UnethicaliteConfig config, ConfigManager configManager)
+	public UnethicalitePanel(UnethicaliteConfig config, ConfigManager configManager)
 	{
 		this.config = config;
 		this.configManager = configManager;

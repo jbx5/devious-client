@@ -50,7 +50,7 @@ public class InteractionManager
 	}
 
 	@Subscribe
-	public void onInvokeMenuAction(MenuAutomated event)
+	public void onMenuAutomated(MenuAutomated event)
 	{
 		Point clickPoint = getClickPoint(event);
 		MouseHandler mouseHandler = client.getMouseHandler();
