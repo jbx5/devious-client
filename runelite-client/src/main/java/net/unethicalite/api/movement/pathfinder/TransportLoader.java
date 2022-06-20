@@ -184,7 +184,7 @@ public class TransportLoader
 	public static List<Transport> buildCachedTransportList()
 	{
 		List<Transport> transports = new ArrayList<>(loadStaticTransports());
-
+		
 		boolean princeAliCompleted = Vars.getVarp(Quest.PRINCE_ALI_RESCUE.getVarPlayer().getId()) >= 110;
 		int gold = Inventory.getFirst(995) != null ? Inventory.getFirst(995).getQuantity() : 0;
 		if (gold >= 10 || princeAliCompleted)
@@ -218,6 +218,17 @@ public class TransportLoader
 
 		if (Worlds.inMembersWorld())
 		{
+			boolean ringOfCharos = Equipment.contains(ItemID.RING_OF_CHAROS, ItemID.RING_OF_CHAROSA);
+			
+			//morytania
+			if (Quest.IN_SEARCH_OF_THE_MYREQUE.getState() == QuestState.FINISHED && (ringOfCharos || gold >= 10))
+			{
+				transports.add(objectTransport(new WorldPoint(3522, 3285, 0), new WorldPoint(3498, 3380, 0), 6969,
+						"Quick-board"));
+			}
+			transports.add(objectTransport(new WorldPoint(3498, 3380, 0), new WorldPoint(3522, 3285, 0), 6970,
+					"Board"));
+
 			//Shamans
 			transports.add(objectTransport(new WorldPoint(1312, 3685, 0), new WorldPoint(1312, 10086, 0), 34405, "Enter"));
 			/**

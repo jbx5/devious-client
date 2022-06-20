@@ -68,7 +68,6 @@ public class Walker
 
 		if (path.isEmpty())
 		{
-			log.error("Path was empty");
 			return false;
 		}
 
@@ -337,6 +336,7 @@ public class Walker
 		}
 		catch (Exception e)
 		{
+			log.debug("Path is loading");
 			return List.of();
 		}
 	}
