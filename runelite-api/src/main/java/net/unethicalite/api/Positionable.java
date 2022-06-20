@@ -4,14 +4,14 @@ import net.runelite.api.coords.WorldPoint;
 
 public interface Positionable
 {
-	int getX();
+	int getWorldX();
 
-	int getY();
+	int getWorldY();
 
 	int getPlane();
 
 	default WorldPoint getWorldLocation()
 	{
-		return new WorldPoint(getX(), getY(), getPlane());
+		return new WorldPoint(getWorldX(), getWorldY(), getPlane());
 	}
 }

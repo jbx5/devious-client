@@ -56,12 +56,12 @@ public interface Locatable extends net.unethicalite.api.Positionable
 		return point.distanceTo(getWorldLocation());
 	}
 
-	default int getX()
+	default int getWorldX()
 	{
 		return getWorldLocation().getX();
 	}
 
-	default int getY()
+	default int getWorldY()
 	{
 		return getWorldLocation().getY();
 	}
