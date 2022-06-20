@@ -1,6 +1,8 @@
 package net.unethicalite.api.magic;
 
 import net.runelite.api.ItemID;
+import net.runelite.api.Quest;
+import net.runelite.api.QuestState;
 import net.runelite.api.Skill;
 import net.runelite.api.widgets.WidgetInfo;
 import net.unethicalite.api.game.Skills;
@@ -8,6 +10,7 @@ import net.unethicalite.api.game.Vars;
 import net.unethicalite.api.game.Worlds;
 import net.unethicalite.api.items.Equipment;
 import net.unethicalite.api.items.Inventory;
+import net.unethicalite.client.Static;
 
 import java.util.Arrays;
 
@@ -637,6 +640,11 @@ public enum SpellBook
 			}
 
 			if (this == ARDOUGNE_TELEPORT && Vars.getVarp(165) < 30)
+			{
+				return false;
+			}
+
+			if (this == TROLLHEIM_TELEPORT && Quest.EADGARS_RUSE.getState(Static.getClient()) != QuestState.FINISHED)
 			{
 				return false;
 			}
