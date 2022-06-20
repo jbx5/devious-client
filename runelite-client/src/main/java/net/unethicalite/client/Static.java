@@ -3,6 +3,7 @@ package net.unethicalite.client;
 import lombok.Getter;
 import net.runelite.api.Client;
 import net.runelite.api.packets.ClientPacket;
+import net.runelite.api.packets.ServerPacket;
 import net.runelite.client.callback.ClientThread;
 import net.runelite.client.chat.ChatMessageManager;
 import net.runelite.client.config.ConfigManager;
@@ -56,6 +57,10 @@ public class Static
 	@Inject
 	@Getter
 	private static ClientPacket clientPacket;
+
+	@Inject
+	@Getter
+	private static ServerPacket serverPacket;
 
 	@Inject
 	@Getter

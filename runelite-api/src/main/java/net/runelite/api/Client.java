@@ -35,6 +35,7 @@ import java.util.Set;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import net.runelite.api.packets.ServerPacket;
 import net.unethicalite.api.SceneEntity;
 import net.runelite.api.annotations.Varbit;
 
@@ -2512,6 +2513,8 @@ public interface Client extends OAuthApi, GameEngine
 	void setLoginIndex(int index);
 
 	ClientPacket createClientPacket(int opcode, int length);
+
+	ServerPacket createServerPacket(int opcode, int length);
 
 	String getPassword();
 

@@ -18,6 +18,7 @@ import net.runelite.client.ui.overlay.OverlayManager;
 import net.unethicalite.api.events.MenuAutomated;
 import net.unethicalite.api.events.PacketSent;
 import net.unethicalite.api.events.ServerPacketReceived;
+import net.unethicalite.client.Static;
 
 import javax.inject.Inject;
 import java.util.Arrays;
@@ -186,8 +187,10 @@ public class UnethicalDevToolsPlugin extends Plugin
 			}
 		}
 
+		String packetName = Static.getServerPacket().getServerPackets().get(serverPacket);
+		String id = packetName != null ? packetName : String.valueOf(serverPacket.getId());
 
-		log.info("Packet received: {}, length: {}", serverPacket.getId(), e.getLength());
+		log.info("Packet received: {}, length: {}", id, e.getLength());
 		if (config.hexDump())
 		{
 			log.info(e.hexDump());

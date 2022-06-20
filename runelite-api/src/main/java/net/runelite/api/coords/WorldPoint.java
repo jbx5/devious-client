@@ -647,4 +647,16 @@ public class WorldPoint implements net.unethicalite.api.Positionable
 	{
 		return new WorldArea(this, width, height);
 	}
+
+	@Override
+	public int getWorldX()
+	{
+		return x;
+	}
+
+	@Override
+	public int getWorldY()
+	{
+		return y;
+	}
 }

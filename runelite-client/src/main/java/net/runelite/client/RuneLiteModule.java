@@ -50,6 +50,7 @@ import javax.annotation.Nullable;
 import javax.inject.Named;
 import javax.inject.Singleton;
 
+import net.runelite.api.packets.ServerPacket;
 import net.unethicalite.api.movement.pathfinder.GlobalCollisionMap;
 import net.unethicalite.client.config.UnethicaliteConfig;
 import net.unethicalite.client.config.UnethicaliteProperties;
@@ -257,6 +258,15 @@ public class RuneLiteModule extends AbstractModule
 	{
 		assert client != null;
 		return client.createClientPacket(-1, -1);
+	}
+
+	@Provides
+	@Singleton
+	@Nullable
+	ServerPacket provideServerPacket(@Nullable Client client)
+	{
+		assert client != null;
+		return client.createServerPacket(-1, -1);
 	}
 
 	@Provides
