@@ -6,6 +6,7 @@ import net.runelite.api.Client;
 import net.runelite.api.DialogOption;
 import net.runelite.api.events.DialogProcessed;
 import net.runelite.api.events.MenuOptionClicked;
+import net.runelite.api.packets.ClientPacket;
 import net.runelite.api.packets.PacketBufferNode;
 import net.runelite.api.packets.ServerPacket;
 import net.runelite.client.config.ConfigManager;
@@ -157,7 +158,16 @@ public class UnethicalDevToolsPlugin extends Plugin
 			}
 		}
 
-		log.info("Packet sent: {}, length: {}", opcode, e.getPacketBufferNode().getClientPacket().getLength());
+		ClientPacket packet = packetBufferNode.getClientPacket();
+		if (packet == null)
+		{
+			return;
+		}
+
+		String packetName = Static.getClientPacket().getClientPackets().get(packet);
+		String id = packetName != null ? packetName : String.valueOf(opcode);
+
+		log.info("Packet sent: {}, length: {}", id, e.getPacketBufferNode().getClientPacket().getLength());
 		if (config.hexDump())
 		{
 			log.info(e.hexDump());

@@ -3,8 +3,6 @@ package net.runelite.rs.api;
 import net.runelite.api.packets.ClientPacket;
 import net.runelite.mapping.Import;
 
-import static net.unethicalite.api.packets.PacketFields.*;
-
 public interface RSClientPacket extends ClientPacket
 {
 	@Import("id")
@@ -15,183 +13,141 @@ public interface RSClientPacket extends ClientPacket
 	@Override
 	int getLength();
 
-	@Import(IF_BUTTONT)
-	@Override
-	RSClientPacket IF_BUTTONT();
-
-	@Import(OPNPCT)
-	@Override
-	RSClientPacket OPNPCT();
-
-	@Import(EVENT_MOUSE_CLICK)
-	@Override
-	RSClientPacket EVENT_MOUSE_CLICK();
-
-	@Import(OPLOCT)
-	@Override
-	RSClientPacket OPLOCT();
-
-	@Import(RESUME_PAUSEBUTTON)
-	@Override
-	RSClientPacket RESUME_PAUSEBUTTON();
-
-	@Import(IF_BUTTON1)
-	@Override
-	RSClientPacket IF_BUTTON1();
-
-	@Import(IF_BUTTON2)
-	@Override
-	RSClientPacket IF_BUTTON2();
-
-	@Import(IF_BUTTON3)
-	@Override
-	RSClientPacket IF_BUTTON3();
-
-	@Import(IF_BUTTON4)
-	@Override
-	RSClientPacket IF_BUTTON4();
-
-	@Import(IF_BUTTON5)
-	@Override
-	RSClientPacket IF_BUTTON5();
-
-	@Import(IF_BUTTON6)
-	@Override
-	RSClientPacket IF_BUTTON6();
-
-	@Import(IF_BUTTON7)
-	@Override
-	RSClientPacket IF_BUTTON7();
-
-	@Import(IF_BUTTON8)
-	@Override
-	RSClientPacket IF_BUTTON8();
-
-	@Import(IF_BUTTON9)
-	@Override
-	RSClientPacket IF_BUTTON9();
-
-	@Import(IF_BUTTON10)
-	@Override
-	RSClientPacket IF_BUTTON10();
-
-	@Import(OPLOC1)
-	@Override
-	RSClientPacket OPLOC1();
-
-	@Import(OPLOC2)
-	@Override
-	RSClientPacket OPLOC2();
-
-	@Import(OPLOC3)
-	@Override
-	RSClientPacket OPLOC3();
-
-	@Import(OPLOC4)
-	@Override
-	RSClientPacket OPLOC4();
-
-	@Import(OPLOC5)
-	@Override
-	RSClientPacket OPLOC5();
-
-	@Import(OPOBJ1)
-	@Override
+	@Import("field2909")
 	RSClientPacket OPOBJ1();
 
-	@Import(OPOBJ2)
-	@Override
-	RSClientPacket OPOBJ2();
+	@Import("field2974")
+	RSClientPacket IF_BUTTON9();
 
-	@Import(OPOBJ3)
-	@Override
-	RSClientPacket OPOBJ3();
+	@Import("field2995")
+	RSClientPacket RESUME_PAUSEBUTTON();
 
-	@Import(OPOBJ4)
-	@Override
-	RSClientPacket OPOBJ4();
-
-	@Import(OPOBJ5)
-	@Override
-	RSClientPacket OPOBJ5();
-
-	@Import(MOVE_GAMECLICK)
-	@Override
-	RSClientPacket MOVE_GAMECLICK();
-
-	@Import(RESUME_P_COUNTDIALOG)
-	@Override
+	@Import("field2946")
 	RSClientPacket RESUME_P_COUNTDIALOG();
 
-	@Import(RESUME_P_STRINGDIALOG)
-	@Override
-	RSClientPacket RESUME_P_STRINGDIALOG();
+	@Import("field2996")
+	RSClientPacket IF_BUTTON8();
 
-	@Import(RESUME_P_NAMEDIALOG)
-	@Override
-	RSClientPacket RESUME_P_NAMEDIALOG();
+	@Import("field2961")
+	RSClientPacket OPOBJ5();
 
-	@Import(OPNPC1)
-	@Override
-	RSClientPacket OPNPC1();
+	@Import("field2905")
+	RSClientPacket IF_BUTTON5();
 
-	@Import(OPNPC2)
-	@Override
-	RSClientPacket OPNPC2();
+	@Import("field2955")
+	RSClientPacket OPOBJ4();
 
-	@Import(OPNPC3)
-	@Override
-	RSClientPacket OPNPC3();
+	@Import("field2915")
+	RSClientPacket IF_BUTTON4();
 
-	@Import(OPNPC4)
-	@Override
-	RSClientPacket OPNPC4();
+	@Import("field2920")
+	RSClientPacket OPOBJ3();
 
-	@Import(OPNPC5)
-	@Override
-	RSClientPacket OPNPC5();
+	@Import("field2963")
+	RSClientPacket IF_BUTTON7();
 
-	@Import(CLOSE_MODAL)
-	@Override
-	RSClientPacket CLOSE_MODAL();
+	@Import("field2919")
+	RSClientPacket OPOBJ2();
 
-	@Import(OPOBJT)
-	@Override
-	RSClientPacket OPOBJT();
+	@Import("field2954")
+	RSClientPacket IF_BUTTON6();
 
-	@Import(OPPLAYERT)
-	@Override
+	@Import("field2992")
+	RSClientPacket OPLOCT();
+
+	@Import("field2911")
+	RSClientPacket OPNPCT();
+
+	@Import("field2924")
 	RSClientPacket OPPLAYERT();
 
-	@Import(OPPLAYER1)
-	@Override
-	RSClientPacket OPPLAYER1();
+	@Import("field2928")
+	RSClientPacket RESUME_P_NAMEDIALOG();
 
-	@Import(OPPLAYER2)
-	@Override
-	RSClientPacket OPPLAYER2();
+	@Import("field2985")
+	RSClientPacket RESUME_P_STRINGDIALOG();
 
-	@Import(OPPLAYER3)
-	@Override
-	RSClientPacket OPPLAYER3();
+	@Import("field2980")
+	RSClientPacket OPOBJT();
 
-	@Import(OPPLAYER4)
-	@Override
-	RSClientPacket OPPLAYER4();
+	@Import("field2925")
+	RSClientPacket IF_BUTTONT();
 
-	@Import(OPPLAYER5)
-	@Override
-	RSClientPacket OPPLAYER5();
+	@Import("field2927")
+	RSClientPacket RESUME_P_OBJDIALOG();
 
-	@Import(OPPLAYER6)
-	@Override
+	@Import("field2948")
+	RSClientPacket OPNPC2();
+
+	@Import("field2965")
 	RSClientPacket OPPLAYER6();
 
-	@Import(OPPLAYER7)
-	@Override
+	@Import("field2984")
+	RSClientPacket OPNPC3();
+
+	@Import("field2947")
 	RSClientPacket OPPLAYER7();
 
-	@Import(OPPLAYER8)
-	@Override
+	@Import("field3003")
+	RSClientPacket OPLOC2();
+
+	@Import("field2959")
 	RSClientPacket OPPLAYER8();
+
+	@Import("field3005")
+	RSClientPacket OPLOC1();
+
+	@Import("field2939")
+	RSClientPacket OPNPC1();
+
+	@Import("field2936")
+	RSClientPacket OPLOC4();
+
+	@Import("field2994")
+	RSClientPacket OPPLAYER2();
+
+	@Import("field3009")
+	RSClientPacket OPLOC3();
+
+	@Import("field2986")
+	RSClientPacket OPPLAYER3();
+
+	@Import("field2940")
+	RSClientPacket OPNPC4();
+
+	@Import("field2991")
+	RSClientPacket OPPLAYER4();
+
+	@Import("field2907")
+	RSClientPacket OPNPC5();
+
+	@Import("field2953")
+	RSClientPacket OPPLAYER5();
+
+	@Import("field2937")
+	RSClientPacket OPLOC5();
+
+	@Import("field2987")
+	RSClientPacket CLOSE_MODAL();
+
+	@Import("field2970")
+	RSClientPacket OPPLAYER1();
+
+	@Import("field2962")
+	RSClientPacket MOVE_GAMECLICK();
+
+	@Import("field2934")
+	RSClientPacket IF_BUTTON1();
+
+	@Import("field2930")
+	RSClientPacket IF_BUTTON3();
+
+	@Import("field2983")
+	RSClientPacket IF_BUTTON2();
+
+	@Import("field2957")
+	RSClientPacket EVENT_MOUSE_CLICK();
+
+	@Import("field2952")
+	RSClientPacket IF_BUTTON10();
 }
