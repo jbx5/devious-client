@@ -132,7 +132,7 @@ public class ObjectPackets
 		packetBufferNode.getPacketBuffer().writeShortAddLE(worldPointX);	// Old: packetBufferNode.getPacketBuffer().writeShortAdd(sourceItemId);
 		packetBufferNode.getPacketBuffer().writeShortLE(sourceSlot);	// Old: packetBufferNode.getPacketBuffer().writeShortAdd(sourceSlot);
 		packetBufferNode.getPacketBuffer().writeByteNeg(ctrlDown ? 1 : 0);	// Old: packetBufferNode.getPacketBuffer().writeShortAddLE(objectId);
-		packetBufferNode.getPacketBuffer().writeIntME(sourceWidgetId);	// Old: packetBufferNode.getPacketBuffer().writeByteAdd(ctrlDown ? 1 : 0);
+		packetBufferNode.getPacketBuffer().writeShortLE(sourceWidgetId);	// Old: packetBufferNode.getPacketBuffer().writeByteAdd(ctrlDown ? 1 : 0);
 		packetBufferNode.getPacketBuffer().writeShortAdd(sourceItemId);	// Old: packetBufferNode.getPacketBuffer().writeIntIME(sourceWidgetId);
 		return packetBufferNode;
 	}

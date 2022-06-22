@@ -84,7 +84,7 @@ public class class122 extends DualNode {
 
 		for (int var4 = 0; var4 < var3; ++var4) { // L: 63
 			class118 var5 = class82.method2116(var1.readUnsignedByte()); // L: 64
-			int var6 = var1.readShortSmart(); // L: 65
+			int var6 = var1.readShortSmartSub64(); // L: 65
 			class119 var7 = class19.method254(var1.readUnsignedByte()); // L: 66
 			class117 var8 = new class117(); // L: 67
 			var8.method2702(var1, var2); // L: 68

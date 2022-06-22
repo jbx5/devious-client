@@ -17,7 +17,7 @@ public class PacketSent
 				packetBufferNode.getPacketBuffer().getPayload(),
 				1, packetBufferNode.getPacketBuffer().getOffset());
 
-		return hexDump(
+		return "\n" + hexDump(
 						payload,
 						0,
 						getPacketBufferNode().getPacketBuffer().getOffset()

@@ -167,7 +167,7 @@ public class UnethicalDevToolsPlugin extends Plugin
 		String packetName = Static.getClientPacket().getClientPackets().get(packet);
 		String id = packetName != null ? packetName : String.valueOf(opcode);
 
-		log.info("Packet sent: {}, length: {}", id, e.getPacketBufferNode().getClientPacket().getLength());
+		log.info("Packet sent: [{}] {}, length: {}", opcode, id, e.getPacketBufferNode().getClientPacket().getLength());
 		if (config.hexDump())
 		{
 			log.info(e.hexDump());
@@ -200,10 +200,15 @@ public class UnethicalDevToolsPlugin extends Plugin
 		String packetName = Static.getServerPacket().getServerPackets().get(serverPacket);
 		String id = packetName != null ? packetName : String.valueOf(serverPacket.getId());
 
-		log.info("Packet received: {}, length: {}", id, e.getLength());
+		log.info("Packet received: [{}] {}, length: {}", serverPacket.getId(), id, e.getLength());
 		if (config.hexDump())
 		{
 			log.info(e.hexDump());
+		}
+
+		if (config.consumePacket())
+		{
+			e.setConsumed(true);
 		}
 	}
 

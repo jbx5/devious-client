@@ -573,17 +573,17 @@ public class ModelData extends Renderable {
 			var54 = var2.readUnsignedByte(); // L: 188
 			var55 = 0; // L: 189
 			if ((var54 & 1) != 0) { // L: 190
-				var55 = var3.readShortSmart();
+				var55 = var3.readShortSmartSub64();
 			}
 
 			var56 = 0; // L: 191
 			if ((var54 & 2) != 0) { // L: 192
-				var56 = var4.readShortSmart();
+				var56 = var4.readShortSmartSub64();
 			}
 
 			var57 = 0; // L: 193
 			if ((var54 & 4) != 0) { // L: 194
-				var57 = var5.readShortSmart();
+				var57 = var5.readShortSmartSub64();
 			}
 
 			this.verticesX[var53] = var50 + var55; // L: 195
@@ -656,9 +656,9 @@ public class ModelData extends Renderable {
 		for (var57 = 0; var57 < var10; ++var57) { // L: 236
 			var58 = var3.readUnsignedByte(); // L: 237
 			if (var58 == 1) { // L: 238
-				var53 = var2.readShortSmart() + var56; // L: 239
-				var54 = var2.readShortSmart() + var53; // L: 241
-				var55 = var2.readShortSmart() + var54; // L: 243
+				var53 = var2.readShortSmartSub64() + var56; // L: 239
+				var54 = var2.readShortSmartSub64() + var53; // L: 241
+				var55 = var2.readShortSmartSub64() + var54; // L: 243
 				var56 = var55; // L: 244
 				this.indices1[var57] = var53; // L: 245
 				this.indices2[var57] = var54; // L: 246
@@ -667,7 +667,7 @@ public class ModelData extends Renderable {
 
 			if (var58 == 2) { // L: 249
 				var54 = var55; // L: 250
-				var55 = var2.readShortSmart() + var56; // L: 251
+				var55 = var2.readShortSmartSub64() + var56; // L: 251
 				var56 = var55; // L: 252
 				this.indices1[var57] = var53; // L: 253
 				this.indices2[var57] = var54; // L: 254
@@ -676,7 +676,7 @@ public class ModelData extends Renderable {
 
 			if (var58 == 3) { // L: 257
 				var53 = var55; // L: 258
-				var55 = var2.readShortSmart() + var56; // L: 259
+				var55 = var2.readShortSmartSub64() + var56; // L: 259
 				var56 = var55; // L: 260
 				this.indices1[var57] = var53; // L: 261
 				this.indices2[var57] = var54; // L: 262
@@ -687,7 +687,7 @@ public class ModelData extends Renderable {
 				int var59 = var53; // L: 266
 				var53 = var54; // L: 267
 				var54 = var59; // L: 268
-				var55 = var2.readShortSmart() + var56; // L: 269
+				var55 = var2.readShortSmartSub64() + var56; // L: 269
 				var56 = var55; // L: 270
 				this.indices1[var57] = var53; // L: 271
 				this.indices2[var57] = var59; // L: 272
@@ -848,17 +848,17 @@ public class ModelData extends Renderable {
 			var41 = var4.readUnsignedByte(); // L: 390
 			var42 = 0; // L: 391
 			if ((var41 & 1) != 0) { // L: 392
-				var42 = var5.readShortSmart();
+				var42 = var5.readShortSmartSub64();
 			}
 
 			var43 = 0; // L: 393
 			if ((var41 & 2) != 0) { // L: 394
-				var43 = var6.readShortSmart();
+				var43 = var6.readShortSmartSub64();
 			}
 
 			var44 = 0; // L: 395
 			if ((var41 & 4) != 0) { // L: 396
-				var44 = var7.readShortSmart();
+				var44 = var7.readShortSmartSub64();
 			}
 
 			this.verticesX[var40] = var37 + var42; // L: 397
@@ -940,9 +940,9 @@ public class ModelData extends Renderable {
 		for (var44 = 0; var44 < var10; ++var44) { // L: 451
 			var45 = var5.readUnsignedByte(); // L: 452
 			if (var45 == 1) { // L: 453
-				var40 = var4.readShortSmart() + var43; // L: 454
-				var41 = var4.readShortSmart() + var40; // L: 456
-				var42 = var4.readShortSmart() + var41; // L: 458
+				var40 = var4.readShortSmartSub64() + var43; // L: 454
+				var41 = var4.readShortSmartSub64() + var40; // L: 456
+				var42 = var4.readShortSmartSub64() + var41; // L: 458
 				var43 = var42; // L: 459
 				this.indices1[var44] = var40; // L: 460
 				this.indices2[var44] = var41; // L: 461
@@ -951,7 +951,7 @@ public class ModelData extends Renderable {
 
 			if (var45 == 2) { // L: 464
 				var41 = var42; // L: 465
-				var42 = var4.readShortSmart() + var43; // L: 466
+				var42 = var4.readShortSmartSub64() + var43; // L: 466
 				var43 = var42; // L: 467
 				this.indices1[var44] = var40; // L: 468
 				this.indices2[var44] = var41; // L: 469
@@ -960,7 +960,7 @@ public class ModelData extends Renderable {
 
 			if (var45 == 3) { // L: 472
 				var40 = var42; // L: 473
-				var42 = var4.readShortSmart() + var43; // L: 474
+				var42 = var4.readShortSmartSub64() + var43; // L: 474
 				var43 = var42; // L: 475
 				this.indices1[var44] = var40; // L: 476
 				this.indices2[var44] = var41; // L: 477
@@ -971,7 +971,7 @@ public class ModelData extends Renderable {
 				var46 = var40; // L: 481
 				var40 = var41; // L: 482
 				var41 = var46; // L: 483
-				var42 = var4.readShortSmart() + var43; // L: 484
+				var42 = var4.readShortSmartSub64() + var43; // L: 484
 				var43 = var42; // L: 485
 				this.indices1[var44] = var40; // L: 486
 				this.indices2[var44] = var46; // L: 487
@@ -1186,17 +1186,17 @@ public class ModelData extends Renderable {
 			var52 = var2.readUnsignedByte(); // L: 623
 			var53 = 0; // L: 624
 			if ((var52 & 1) != 0) { // L: 625
-				var53 = var3.readShortSmart();
+				var53 = var3.readShortSmartSub64();
 			}
 
 			var54 = 0; // L: 626
 			if ((var52 & 2) != 0) { // L: 627
-				var54 = var4.readShortSmart();
+				var54 = var4.readShortSmartSub64();
 			}
 
 			var55 = 0; // L: 628
 			if ((var52 & 4) != 0) { // L: 629
-				var55 = var5.readShortSmart();
+				var55 = var5.readShortSmartSub64();
 			}
 
 			this.verticesX[var51] = var48 + var53; // L: 630
@@ -1256,9 +1256,9 @@ public class ModelData extends Renderable {
 		for (var55 = 0; var55 < var10; ++var55) { // L: 660
 			var56 = var3.readUnsignedByte(); // L: 661
 			if (var56 == 1) { // L: 662
-				var51 = var2.readShortSmart() + var54; // L: 663
-				var52 = var2.readShortSmart() + var51; // L: 665
-				var53 = var2.readShortSmart() + var52; // L: 667
+				var51 = var2.readShortSmartSub64() + var54; // L: 663
+				var52 = var2.readShortSmartSub64() + var51; // L: 665
+				var53 = var2.readShortSmartSub64() + var52; // L: 667
 				var54 = var53; // L: 668
 				this.indices1[var55] = var51; // L: 669
 				this.indices2[var55] = var52; // L: 670
@@ -1267,7 +1267,7 @@ public class ModelData extends Renderable {
 
 			if (var56 == 2) { // L: 673
 				var52 = var53; // L: 674
-				var53 = var2.readShortSmart() + var54; // L: 675
+				var53 = var2.readShortSmartSub64() + var54; // L: 675
 				var54 = var53; // L: 676
 				this.indices1[var55] = var51; // L: 677
 				this.indices2[var55] = var52; // L: 678
@@ -1276,7 +1276,7 @@ public class ModelData extends Renderable {
 
 			if (var56 == 3) { // L: 681
 				var51 = var53; // L: 682
-				var53 = var2.readShortSmart() + var54; // L: 683
+				var53 = var2.readShortSmartSub64() + var54; // L: 683
 				var54 = var53; // L: 684
 				this.indices1[var55] = var51; // L: 685
 				this.indices2[var55] = var52; // L: 686
@@ -1287,7 +1287,7 @@ public class ModelData extends Renderable {
 				int var57 = var51; // L: 690
 				var51 = var52; // L: 691
 				var52 = var57; // L: 692
-				var53 = var2.readShortSmart() + var54; // L: 693
+				var53 = var2.readShortSmartSub64() + var54; // L: 693
 				var54 = var53; // L: 694
 				this.indices1[var55] = var51; // L: 695
 				this.indices2[var55] = var57; // L: 696
@@ -1444,17 +1444,17 @@ public class ModelData extends Renderable {
 			var39 = var4.readUnsignedByte(); // L: 808
 			var40 = 0; // L: 809
 			if ((var39 & 1) != 0) { // L: 810
-				var40 = var5.readShortSmart();
+				var40 = var5.readShortSmartSub64();
 			}
 
 			var41 = 0; // L: 811
 			if ((var39 & 2) != 0) { // L: 812
-				var41 = var6.readShortSmart();
+				var41 = var6.readShortSmartSub64();
 			}
 
 			var42 = 0; // L: 813
 			if ((var39 & 4) != 0) { // L: 814
-				var42 = var7.readShortSmart();
+				var42 = var7.readShortSmartSub64();
 			}
 
 			this.verticesX[var38] = var35 + var40; // L: 815
@@ -1523,9 +1523,9 @@ public class ModelData extends Renderable {
 		for (var42 = 0; var42 < var10; ++var42) { // L: 858
 			var43 = var5.readUnsignedByte(); // L: 859
 			if (var43 == 1) { // L: 860
-				var38 = var4.readShortSmart() + var41; // L: 861
-				var39 = var4.readShortSmart() + var38; // L: 863
-				var40 = var4.readShortSmart() + var39; // L: 865
+				var38 = var4.readShortSmartSub64() + var41; // L: 861
+				var39 = var4.readShortSmartSub64() + var38; // L: 863
+				var40 = var4.readShortSmartSub64() + var39; // L: 865
 				var41 = var40; // L: 866
 				this.indices1[var42] = var38; // L: 867
 				this.indices2[var42] = var39; // L: 868
@@ -1534,7 +1534,7 @@ public class ModelData extends Renderable {
 
 			if (var43 == 2) { // L: 871
 				var39 = var40; // L: 872
-				var40 = var4.readShortSmart() + var41; // L: 873
+				var40 = var4.readShortSmartSub64() + var41; // L: 873
 				var41 = var40; // L: 874
 				this.indices1[var42] = var38; // L: 875
 				this.indices2[var42] = var39; // L: 876
@@ -1543,7 +1543,7 @@ public class ModelData extends Renderable {
 
 			if (var43 == 3) { // L: 879
 				var38 = var40; // L: 880
-				var40 = var4.readShortSmart() + var41; // L: 881
+				var40 = var4.readShortSmartSub64() + var41; // L: 881
 				var41 = var40; // L: 882
 				this.indices1[var42] = var38; // L: 883
 				this.indices2[var42] = var39; // L: 884
@@ -1554,7 +1554,7 @@ public class ModelData extends Renderable {
 				var44 = var38; // L: 888
 				var38 = var39; // L: 889
 				var39 = var44; // L: 890
-				var40 = var4.readShortSmart() + var41; // L: 891
+				var40 = var4.readShortSmartSub64() + var41; // L: 891
 				var41 = var40; // L: 892
 				this.indices1[var42] = var38; // L: 893
 				this.indices2[var42] = var44; // L: 894

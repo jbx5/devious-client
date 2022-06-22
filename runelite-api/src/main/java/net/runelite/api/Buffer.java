@@ -43,6 +43,8 @@ public interface Buffer extends Node
 
 	int readUnsignedByte();
 
+	int readInt();
+
 	/**
 	 * Use this api to write to byte buffers
 	 */
@@ -70,8 +72,6 @@ public interface Buffer extends Node
 	void writeIntIME(int i);
 
 	void writeIntLE(int i);
-
-	void writeIntME(int i);
 
 	void writeLengthByte(int i);
 

@@ -49,10 +49,10 @@ public final class WorldMapSprite {
 		int var7;
 		if (class262.field3022 == var0) { // L: 7490
 			var2 = var1.readUnsignedShort(); // L: 7491
-			var3 = var1.method7767(); // L: 7492
+			var3 = var1.readUnsignedByteSub(); // L: 7492
 			var4 = (var3 >> 4 & 7) + class10.field53; // L: 7493
 			var5 = (var3 & 7) + class298.field3558; // L: 7494
-			var6 = var1.method7767(); // L: 7495
+			var6 = var1.readUnsignedByteSub(); // L: 7495
 			var7 = var1.readUnsignedShort(); // L: 7496
 			if (var4 >= 0 && var5 >= 0 && var4 < 104 && var5 < 104) { // L: 7497
 				var4 = var4 * 128 + 64; // L: 7498
@@ -64,11 +64,11 @@ public final class WorldMapSprite {
 		} else {
 			int var8;
 			if (class262.field3023 == var0) { // L: 7505
-				var2 = var1.method7765(); // L: 7506
+				var2 = var1.readUnsignedByteAdd(); // L: 7506
 				var3 = var2 >> 2; // L: 7507
 				var4 = var2 & 3; // L: 7508
 				var5 = Client.field582[var3]; // L: 7509
-				var6 = var1.method7765(); // L: 7510
+				var6 = var1.readUnsignedByteAdd(); // L: 7510
 				var7 = (var6 >> 4 & 7) + class10.field53; // L: 7511
 				var8 = (var6 & 7) + class298.field3558; // L: 7512
 				if (var7 >= 0 && var8 >= 0 && var7 < 104 && var8 < 104) { // L: 7513
@@ -87,14 +87,14 @@ public final class WorldMapSprite {
 					var3 = var1.readUnsignedShort(); // L: 7520
 					var4 = var1.readUnsignedShort(); // L: 7521
 					var5 = var1.readUnsignedByte(); // L: 7522
-					var6 = var1.method7813(); // L: 7523
-					var7 = var1.method7767(); // L: 7524
-					var8 = var1.method7765(); // L: 7525
+					var6 = var1.readShortAdd(); // L: 7523
+					var7 = var1.readUnsignedByteSub(); // L: 7524
+					var8 = var1.readUnsignedByteAdd(); // L: 7525
 					var9 = (var8 >> 4 & 7) + class10.field53; // L: 7526
 					var10 = (var8 & 7) + class298.field3558; // L: 7527
-					var11 = var1.method7765() * 4; // L: 7528
-					byte var40 = var1.method7952(); // L: 7529
-					var13 = var1.method7776(); // L: 7530
+					var11 = var1.readUnsignedByteAdd() * 4; // L: 7528
+					byte var40 = var1.readByteSub(); // L: 7529
+					var13 = var1.readUnsignedShortAddLE(); // L: 7530
 					var14 = var1.readByte(); // L: 7531
 					int var41 = var14 + var9; // L: 7532
 					var12 = var40 + var10; // L: 7533
@@ -110,10 +110,10 @@ public final class WorldMapSprite {
 
 				} else {
 					if (class262.field3020 == var0) { // L: 7545
-						var2 = var1.method7765(); // L: 7546
+						var2 = var1.readUnsignedByteAdd(); // L: 7546
 						var3 = var2 >> 4 & 15; // L: 7547
 						var4 = var2 & 7; // L: 7548
-						var5 = var1.method7767(); // L: 7549
+						var5 = var1.readUnsignedByteSub(); // L: 7549
 						var6 = var1.readUnsignedShort(); // L: 7550
 						var7 = var1.readUnsignedByte(); // L: 7551
 						var8 = (var7 >> 4 & 7) + class10.field53; // L: 7552
@@ -135,8 +135,8 @@ public final class WorldMapSprite {
 						var2 = var1.readUnsignedByte(); // L: 7569
 						var3 = (var2 >> 4 & 7) + class10.field53; // L: 7570
 						var4 = (var2 & 7) + class298.field3558; // L: 7571
-						var5 = var1.method7774(); // L: 7572
-						var6 = var1.method7774(); // L: 7573
+						var5 = var1.readUnsignedShortLE(); // L: 7572
+						var6 = var1.readUnsignedShortLE(); // L: 7573
 						var7 = var1.readUnsignedShort(); // L: 7574
 						if (var3 >= 0 && var4 >= 0 && var3 < 104 && var4 < 104) { // L: 7575
 							NodeDeque var34 = Client.groundItems[PacketWriter.Client_plane][var3][var4]; // L: 7576
@@ -156,10 +156,10 @@ public final class WorldMapSprite {
 						TileItem var32;
 						if (class262.field3019 == var0) { // L: 7591
 							var2 = var1.readUnsignedShort(); // L: 7592
-							var3 = var1.method7767(); // L: 7593
+							var3 = var1.readUnsignedByteSub(); // L: 7593
 							var4 = (var3 >> 4 & 7) + class10.field53; // L: 7594
 							var5 = (var3 & 7) + class298.field3558; // L: 7595
-							var6 = var1.method7775(); // L: 7596
+							var6 = var1.readUnsignedShortAdd(); // L: 7596
 							if (var4 >= 0 && var5 >= 0 && var4 < 104 && var5 < 104) { // L: 7597
 								var32 = new TileItem(); // L: 7598
 								var32.id = var2; // L: 7599
@@ -174,20 +174,20 @@ public final class WorldMapSprite {
 
 						} else {
 							if (class262.field3024 == var0) { // L: 7607
-								var2 = var1.method7765(); // L: 7608
+								var2 = var1.readUnsignedByteAdd(); // L: 7608
 								var3 = (var2 >> 4 & 7) + class10.field53; // L: 7609
 								var4 = (var2 & 7) + class298.field3558; // L: 7610
-								byte var37 = var1.method7952(); // L: 7611
-								var6 = var1.method7775(); // L: 7612
-								byte var38 = var1.method7952(); // L: 7613
-								byte var39 = var1.method7768(); // L: 7614
-								var9 = var1.method7767(); // L: 7615
+								byte var37 = var1.readByteSub(); // L: 7611
+								var6 = var1.readUnsignedShortAdd(); // L: 7612
+								byte var38 = var1.readByteSub(); // L: 7613
+								byte var39 = var1.readByteAdd(); // L: 7614
+								var9 = var1.readUnsignedByteSub(); // L: 7615
 								var10 = var9 >> 2; // L: 7616
 								var11 = var9 & 3; // L: 7617
 								var12 = Client.field582[var10]; // L: 7618
-								var13 = var1.method7776(); // L: 7619
-								var14 = var1.method7769(); // L: 7620
-								int var15 = var1.method7775(); // L: 7621
+								var13 = var1.readUnsignedShortAddLE(); // L: 7619
+								var14 = var1.readByteNeg(); // L: 7620
+								int var15 = var1.readUnsignedShortAdd(); // L: 7621
 								int var16 = var1.readUnsignedShort(); // L: 7622
 								Player var17;
 								if (var15 == Client.localPlayerIndex) { // L: 7624
@@ -247,11 +247,11 @@ public final class WorldMapSprite {
 							}
 
 							if (class262.field3015 == var0) { // L: 7672
-								var2 = var1.method7765(); // L: 7673
+								var2 = var1.readUnsignedByteAdd(); // L: 7673
 								var3 = var2 >> 2; // L: 7674
 								var4 = var2 & 3; // L: 7675
 								var5 = Client.field582[var3]; // L: 7676
-								var6 = var1.method7774(); // L: 7677
+								var6 = var1.readUnsignedShortLE(); // L: 7677
 								var7 = var1.readUnsignedByte(); // L: 7678
 								var8 = (var7 >> 4 & 7) + class10.field53; // L: 7679
 								var9 = (var7 & 7) + class298.field3558; // L: 7680
@@ -308,21 +308,21 @@ public final class WorldMapSprite {
 								}
 
 							} else if (class262.field3018 == var0) { // L: 7718
-								var2 = var1.method7766(); // L: 7719
+								var2 = var1.readUnsignedByteNeg(); // L: 7719
 								var3 = var2 >> 2; // L: 7720
 								var4 = var2 & 3; // L: 7721
 								var5 = Client.field582[var3]; // L: 7722
-								var6 = var1.method7765(); // L: 7723
+								var6 = var1.readUnsignedByteAdd(); // L: 7723
 								var7 = (var6 >> 4 & 7) + class10.field53; // L: 7724
 								var8 = (var6 & 7) + class298.field3558; // L: 7725
-								var9 = var1.method7774(); // L: 7726
+								var9 = var1.readUnsignedShortLE(); // L: 7726
 								if (var7 >= 0 && var8 >= 0 && var7 < 104 && var8 < 104) { // L: 7727
 									Canvas.updatePendingSpawn(PacketWriter.Client_plane, var7, var8, var5, var9, var3, var4, 0, -1); // L: 7728
 								}
 
 							} else if (class262.field3016 == var0) { // L: 7732
 								var2 = var1.readUnsignedShort(); // L: 7733
-								var3 = var1.method7766(); // L: 7734
+								var3 = var1.readUnsignedByteNeg(); // L: 7734
 								var4 = (var3 >> 4 & 7) + class10.field53; // L: 7735
 								var5 = (var3 & 7) + class298.field3558; // L: 7736
 								if (var4 >= 0 && var5 >= 0 && var4 < 104 && var5 < 104) { // L: 7737

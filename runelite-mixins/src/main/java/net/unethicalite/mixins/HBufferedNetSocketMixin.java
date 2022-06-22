@@ -43,7 +43,8 @@ public abstract class HBufferedNetSocketMixin implements RSBufferedNetSocket
 					received = new ServerPacketReceived(
 							serverPacket,
 							length,
-							bufferCopy
+							bufferCopy,
+							false
 					);
 				}
 			}
@@ -52,6 +53,15 @@ public abstract class HBufferedNetSocketMixin implements RSBufferedNetSocket
 		if (received != null)
 		{
 			client.getCallbacks().post(received);
+
+			if (received.isConsumed())
+			{
+				packetWriter.setServerPacket(
+						client.createServerPacket(-1, -1)
+								.SET_PRIVCHATMODE()
+				);
+				Arrays.fill(packetWriter.getPacketBuffer().getPayload(), 0, length, (byte) 0);
+			}
 		}
 
 		return rtn;

@@ -26,8 +26,8 @@ public class WorldMapData_0 extends AbstractWorldMapData {
 			super.regionYLow = var1.readUnsignedShort(); // L: 16
 			super.regionX = var1.readUnsignedShort(); // L: 17
 			super.regionY = var1.readUnsignedShort(); // L: 18
-			super.groupId = var1.method7752(); // L: 19
-			super.fileId = var1.method7752(); // L: 20
+			super.groupId = var1.readNullableLargeSmart(); // L: 19
+			super.fileId = var1.readNullableLargeSmart(); // L: 20
 		}
 	} // L: 21
 

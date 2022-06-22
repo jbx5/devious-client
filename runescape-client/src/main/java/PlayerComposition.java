@@ -605,7 +605,7 @@ public class PlayerComposition {
 			var4.packetBuffer.writeByte(var3); // L: 169
 		}
 
-		var4.packetBuffer.method7935(var4.packetBuffer.offset - var5); // L: 171
+		var4.packetBuffer.writeLengthByte(var4.packetBuffer.offset - var5); // L: 171
 		return var4; // L: 172
 	}
 }

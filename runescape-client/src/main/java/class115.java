@@ -406,7 +406,7 @@ public class class115 {
 							PacketBufferNode var6 = EnumComposition.getPacketBufferNode(ClientPacket.field2951, Client.packetWriter.isaacCipher); // L: 1580
 							var6.packetBuffer.writeShort(1 + ScriptEvent.stringCp1252NullTerminatedByteSize(var4) + ScriptEvent.stringCp1252NullTerminatedByteSize(var5)); // L: 1581
 							var6.packetBuffer.writeStringCp1252NullTerminated(var5); // L: 1582
-							var6.packetBuffer.method7762(var10); // L: 1583
+							var6.packetBuffer.writeByteAdd(var10); // L: 1583
 							var6.packetBuffer.writeStringCp1252NullTerminated(var4); // L: 1584
 							Client.packetWriter.addNode(var6); // L: 1585
 							return 1; // L: 1586

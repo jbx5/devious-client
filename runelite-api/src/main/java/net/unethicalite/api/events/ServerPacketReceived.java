@@ -14,12 +14,13 @@ public class ServerPacketReceived
 	private ServerPacket serverPacket;
 	private int length;
 	private Buffer buffer;
+	private boolean consumed;
 
 	public String hexDump()
 	{
 		byte[] payload = Arrays.copyOfRange(buffer.getPayload(), 0, buffer.getPayload().length);
 
-		return PacketSent.hexDump(
+		return "\n" + PacketSent.hexDump(
 						payload,
 						0,
 						buffer.getPayload().length

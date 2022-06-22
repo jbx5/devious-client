@@ -86,19 +86,19 @@ public class Animation {
 				}
 
 				if ((var9 & 1) != 0) { // L: 47
-					field2308[var7] = var4.readShortSmart();
+					field2308[var7] = var4.readShortSmartSub64();
 				} else {
 					field2308[var7] = var11; // L: 48
 				}
 
 				if ((var9 & 2) != 0) { // L: 49
-					field2305[var7] = var4.readShortSmart();
+					field2305[var7] = var4.readShortSmartSub64();
 				} else {
 					field2305[var7] = var11; // L: 50
 				}
 
 				if ((var9 & 4) != 0) { // L: 51
-					field2304[var7] = var4.readShortSmart();
+					field2304[var7] = var4.readShortSmartSub64();
 				} else {
 					field2304[var7] = var11; // L: 52
 				}

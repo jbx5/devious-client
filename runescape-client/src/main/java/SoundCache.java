@@ -223,23 +223,23 @@ public class SoundCache {
 			}
 
 			if ((var4 & 1024) != 0) { // L: 8075
-				var3.field1189 = Client.cycle + var0.method7775(); // L: 8076
-				var3.field1135 = Client.cycle + var0.method7774(); // L: 8077
+				var3.field1189 = Client.cycle + var0.readUnsignedShortAdd(); // L: 8076
+				var3.field1135 = Client.cycle + var0.readUnsignedShortLE(); // L: 8077
 				var3.field1191 = var0.readByte(); // L: 8078
-				var3.field1192 = var0.method7769(); // L: 8079
-				var3.field1193 = var0.method7952(); // L: 8080
-				var3.field1133 = (byte)var0.method7767(); // L: 8081
+				var3.field1192 = var0.readByteNeg(); // L: 8079
+				var3.field1193 = var0.readByteSub(); // L: 8080
+				var3.field1133 = (byte)var0.readUnsignedByteSub(); // L: 8081
 			}
 
 			int var6;
 			int var7;
 			if ((var4 & 16) != 0) { // L: 8083
-				var5 = var0.method7774(); // L: 8084
+				var5 = var0.readUnsignedShortLE(); // L: 8084
 				if (var5 == 65535) { // L: 8085
 					var5 = -1; // L: 8086
 				}
 
-				var6 = var0.method7766(); // L: 8088
+				var6 = var0.readUnsignedByteNeg(); // L: 8088
 				if (var5 == var3.sequence && var5 != -1) { // L: 8089
 					var7 = ScriptFrame.SequenceDefinition_get(var5).field2174; // L: 8090
 					if (var7 == 1) { // L: 8091
@@ -263,8 +263,8 @@ public class SoundCache {
 			}
 
 			if ((var4 & 2) != 0) { // L: 8111
-				var3.spotAnimation = var0.method7775(); // L: 8112
-				var5 = var0.method7785(); // L: 8113
+				var3.spotAnimation = var0.readUnsignedShortAdd(); // L: 8112
+				var5 = var0.readUnsignedIntLE(); // L: 8113
 				var3.spotAnimationHeight = var5 >> 16; // L: 8114
 				var3.field1178 = (var5 & 65535) + Client.cycle; // L: 8115
 				var3.spotAnimationFrame = 0; // L: 8116
@@ -313,8 +313,8 @@ public class SoundCache {
 						var9 = var0.readUShortSmart(); // L: 8148
 						if (var9 != 32767) { // L: 8149
 							var10 = var0.readUShortSmart(); // L: 8150
-							var11 = var0.method7767(); // L: 8151
-							int var12 = var9 > 0 ? var0.method7767() : var11; // L: 8152
+							var11 = var0.readUnsignedByteSub(); // L: 8151
+							int var12 = var9 > 0 ? var0.readUnsignedByteSub() : var11; // L: 8152
 							var3.addHealthBar(var8, Client.cycle, var9, var10, var11, var12); // L: 8153
 						} else {
 							var3.removeHealthBar(var8); // L: 8155
@@ -328,11 +328,11 @@ public class SoundCache {
 			}
 
 			if ((var4 & 2048) != 0) { // L: 8162
-				var3.field1204 = var0.method7787(); // L: 8163
+				var3.field1204 = var0.readUnsignedIntME(); // L: 8163
 			}
 
 			if ((var4 & 8) != 0) { // L: 8165
-				var3.definition = BuddyRankComparator.getNpcDefinition(var0.method7776()); // L: 8166
+				var3.definition = BuddyRankComparator.getNpcDefinition(var0.readUnsignedShortAddLE()); // L: 8166
 				var3.field1205 = var3.definition.size; // L: 8167
 				var3.field1129 = var3.definition.rotation; // L: 8168
 				var3.walkSequence = var3.definition.walkSequence; // L: 8169
@@ -345,20 +345,20 @@ public class SoundCache {
 			}
 
 			if ((var4 & 128) != 0) { // L: 8177
-				var3.targetIndex = var0.method7776(); // L: 8178
+				var3.targetIndex = var0.readUnsignedShortAddLE(); // L: 8178
 				if (var3.targetIndex == 65535) { // L: 8179
 					var3.targetIndex = -1;
 				}
 			}
 
 			if (class101.field1366 && (var4 & 256) != 0 || !class101.field1366 && (var4 & 64) != 0) { // L: 8181
-				var3.field1140 = var0.method7952(); // L: 8182
-				var3.field1182 = var0.method7769(); // L: 8183
-				var3.field1181 = var0.method7768(); // L: 8184
-				var3.field1183 = var0.method7768(); // L: 8185
-				var3.field1184 = var0.method7776() + Client.cycle; // L: 8186
-				var3.field1194 = var0.method7775() + Client.cycle; // L: 8187
-				var3.field1186 = var0.method7776(); // L: 8188
+				var3.field1140 = var0.readByteSub(); // L: 8182
+				var3.field1182 = var0.readByteNeg(); // L: 8183
+				var3.field1181 = var0.readByteAdd(); // L: 8184
+				var3.field1183 = var0.readByteAdd(); // L: 8185
+				var3.field1184 = var0.readUnsignedShortAddLE() + Client.cycle; // L: 8186
+				var3.field1194 = var0.readUnsignedShortAdd() + Client.cycle; // L: 8187
+				var3.field1186 = var0.readUnsignedShortAddLE(); // L: 8188
 				var3.pathLength = 1; // L: 8189
 				var3.field1203 = 0; // L: 8190
 				var3.field1140 += var3.pathX[0]; // L: 8191
@@ -368,10 +368,10 @@ public class SoundCache {
 			}
 
 			if ((var4 & 1) != 0) { // L: 8196
-				var5 = var0.method7776(); // L: 8197
-				var6 = var0.method7775(); // L: 8198
+				var5 = var0.readUnsignedShortAddLE(); // L: 8197
+				var6 = var0.readUnsignedShortAdd(); // L: 8198
 				if (class101.field1366) { // L: 8199
-					var3.field1161 = var0.method7766() == 1; // L: 8200
+					var3.field1161 = var0.readUnsignedByteNeg() == 1; // L: 8200
 				}
 
 				var7 = var3.x - (var5 - class28.baseX - class28.baseX) * 64; // L: 8202

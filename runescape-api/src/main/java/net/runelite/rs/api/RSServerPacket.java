@@ -144,6 +144,9 @@ public interface RSServerPacket extends ServerPacket
 	@Import("field3093")
 	RSServerPacket RUNCLIENTSCRIPT();
 
+	@Import("field3096")
+	RSServerPacket SET_PRIVCHATMODE();
+
 	@Import("field3069")
 	RSServerPacket MESSAGE_GAME();
 

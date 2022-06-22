@@ -93,7 +93,7 @@ public class UserComparator10 extends AbstractUserComparator {
 
 		label68:
 		while (true) {
-			int var6 = var4.method7770(); // L: 192
+			int var6 = var4.readIncrSmallSmart(); // L: 192
 			if (var6 == 0) { // L: 193
 				return var3; // L: 224
 			}

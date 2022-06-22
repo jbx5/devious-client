@@ -412,7 +412,7 @@ public class Instrument {
 			}
 
 			this.oscillatorVolume[var3] = var4; // L: 221
-			this.oscillatorPitch[var3] = var1.readShortSmart(); // L: 222
+			this.oscillatorPitch[var3] = var1.readShortSmartSub64(); // L: 222
 			this.oscillatorDelays[var3] = var1.readUShortSmart(); // L: 223
 		}
 

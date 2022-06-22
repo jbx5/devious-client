@@ -130,13 +130,13 @@ public class Coord {
 					Client.packetWriter.addNode(var8); // L: 9526
 				} else if (var0 == 4) { // L: 9528
 					var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2991, Client.packetWriter.isaacCipher); // L: 9530
-					var8.packetBuffer.method7762(0); // L: 9531
-					var8.packetBuffer.method7863(var3[var6]); // L: 9532
+					var8.packetBuffer.writeByteAdd(0); // L: 9531
+					var8.packetBuffer.writeShortAdd(var3[var6]); // L: 9532
 					Client.packetWriter.addNode(var8); // L: 9533
 				} else if (var0 == 6) { // L: 9535
 					var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2965, Client.packetWriter.isaacCipher); // L: 9537
-					var8.packetBuffer.writeIntME(var3[var6]); // L: 9538
-					var8.packetBuffer.method7762(0); // L: 9539
+					var8.packetBuffer.writeShortLE(var3[var6]); // L: 9538
+					var8.packetBuffer.writeByteAdd(0); // L: 9539
 					Client.packetWriter.addNode(var8); // L: 9540
 				} else if (var0 == 7) { // L: 9542
 					var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2947, Client.packetWriter.isaacCipher); // L: 9544

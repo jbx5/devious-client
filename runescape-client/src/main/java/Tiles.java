@@ -105,7 +105,7 @@ public final class Tiles {
 		int var11 = -1; // L: 261
 
 		while (true) {
-			int var12 = var10.method7770(); // L: 263
+			int var12 = var10.readIncrSmallSmart(); // L: 263
 			if (var12 == 0) { // L: 264
 				return; // L: 291
 			}

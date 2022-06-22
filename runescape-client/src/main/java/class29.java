@@ -305,12 +305,12 @@ public class class29 {
 											var22 = var9.method5630(); // L: 11260
 											if (var22 != null) { // L: 11261
 												PacketBufferNode var23 = EnumComposition.getPacketBufferNode(ClientPacket.field3012, Client.packetWriter.isaacCipher); // L: 11262
-												var23.packetBuffer.method7783(var22[0]); // L: 11263
+												var23.packetBuffer.writeIntIME(var22[0]); // L: 11263
 												var23.packetBuffer.writeInt(var9.method5709()); // L: 11264
-												var23.packetBuffer.method7929(var9.childIndex); // L: 11265
+												var23.packetBuffer.writeShortAddLE(var9.childIndex); // L: 11265
 												var23.packetBuffer.writeInt(var22[1]); // L: 11266
-												var23.packetBuffer.method7783(var22[2]); // L: 11267
-												var23.packetBuffer.method7784(var9.id); // L: 11268
+												var23.packetBuffer.writeIntIME(var22[2]); // L: 11267
+												var23.packetBuffer.writeIntME(var9.id); // L: 11268
 												Client.packetWriter.addNode(var23); // L: 11269
 											}
 										}

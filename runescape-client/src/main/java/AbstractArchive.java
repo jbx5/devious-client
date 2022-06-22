@@ -133,7 +133,7 @@ public abstract class AbstractArchive {
 
 			int var6 = var4.readUnsignedByte(); // L: 50
 			if (var5 >= 7) { // L: 51
-				this.groupCount = var4.method7715();
+				this.groupCount = var4.readLargeSmart();
 			} else {
 				this.groupCount = var4.readUnsignedShort(); // L: 52
 			}
@@ -144,7 +144,7 @@ public abstract class AbstractArchive {
 			int var9;
 			if (var5 >= 7) { // L: 56
 				for (var9 = 0; var9 < this.groupCount; ++var9) { // L: 57
-					this.groupIds[var9] = var7 += var4.method7715(); // L: 58
+					this.groupIds[var9] = var7 += var4.readLargeSmart(); // L: 58
 					if (this.groupIds[var9] > var8) { // L: 59
 						var8 = this.groupIds[var9];
 					}
@@ -200,7 +200,7 @@ public abstract class AbstractArchive {
 					this.fileIds[var10] = new int[var11]; // L: 88
 
 					for (var13 = 0; var13 < var11; ++var13) { // L: 89
-						var14 = this.fileIds[var10][var13] = var7 += var4.method7715(); // L: 90
+						var14 = this.fileIds[var10][var13] = var7 += var4.readLargeSmart(); // L: 90
 						if (var14 > var12) { // L: 91
 							var12 = var14;
 						}

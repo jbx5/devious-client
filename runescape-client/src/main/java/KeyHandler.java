@@ -340,10 +340,10 @@ public final class KeyHandler implements KeyListener, FocusListener {
 			var14 = (InterfaceParent.oculusOrbFocalPointX >> 7) + class28.baseX; // L: 5520
 			var15 = (class141.oculusOrbFocalPointY >> 7) + WorldMapLabelSize.baseY; // L: 5521
 			PacketBufferNode var16 = EnumComposition.getPacketBufferNode(ClientPacket.field2966, Client.packetWriter.isaacCipher); // L: 5524
-			var16.packetBuffer.method7763(var13); // L: 5525
-			var16.packetBuffer.writeIntME(var15); // L: 5526
-			var16.packetBuffer.method7760(Client.field635); // L: 5527
-			var16.packetBuffer.writeIntME(var14); // L: 5528
+			var16.packetBuffer.writeByteNeg(var13); // L: 5525
+			var16.packetBuffer.writeShortLE(var15); // L: 5526
+			var16.packetBuffer.writeIntLE(Client.field635); // L: 5527
+			var16.packetBuffer.writeShortLE(var14); // L: 5528
 			Client.packetWriter.addNode(var16); // L: 5529
 		}
 

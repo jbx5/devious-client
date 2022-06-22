@@ -64,7 +64,7 @@ public class VertexNormal {
 		int var6 = -1; // L: 229
 
 		while (true) {
-			int var7 = var5.method7770(); // L: 231
+			int var7 = var5.readIncrSmallSmart(); // L: 231
 			if (var7 == 0) { // L: 232
 				return; // L: 256
 			}

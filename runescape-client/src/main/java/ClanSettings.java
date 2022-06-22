@@ -1055,8 +1055,8 @@ public class ClanSettings {
 							int var15;
 							if ((var6 & 4) != 0) { // L: 223
 								var8 = var0.readUnsignedShort(); // L: 224
-								PlayerType var9 = (PlayerType)Actor.findEnumerated(SoundSystem.PlayerType_values(), var0.method7766()); // L: 225
-								boolean var10 = var0.method7766() == 1; // L: 226
+								PlayerType var9 = (PlayerType)Actor.findEnumerated(SoundSystem.PlayerType_values(), var0.readUnsignedByteNeg()); // L: 225
+								boolean var10 = var0.readUnsignedByteNeg() == 1; // L: 226
 								var11 = var0.readUnsignedByte(); // L: 227
 								var12 = var0.offset; // L: 228
 								if (var5.username != null && var5.appearance != null) { // L: 229
@@ -1067,7 +1067,7 @@ public class ClanSettings {
 
 									if (!var13 && Client.field607 == 0 && !var5.isHidden) { // L: 234
 										Players.field1317.offset = 0; // L: 235
-										var0.method7828(Players.field1317.array, 0, var11); // L: 236
+										var0.readBytesAdd(Players.field1317.array, 0, var11); // L: 236
 										Players.field1317.offset = 0; // L: 237
 										String var14 = AbstractFont.escapeBrackets(ArchiveDiskAction.method5777(class134.method2904(Players.field1317))); // L: 238
 										var5.overheadText = var14.trim(); // L: 239
@@ -1094,7 +1094,7 @@ public class ClanSettings {
 							}
 
 							if ((var6 & 8192) != 0) { // L: 254
-								var5.spotAnimation = var0.method7776(); // L: 255
+								var5.spotAnimation = var0.readUnsignedShortAddLE(); // L: 255
 								var8 = var0.readInt(); // L: 256
 								var5.spotAnimationHeight = var8 >> 16; // L: 257
 								var5.field1178 = (var8 & 65535) + Client.cycle; // L: 258
@@ -1110,12 +1110,12 @@ public class ClanSettings {
 							}
 
 							if ((var6 & 1024) != 0) { // L: 264
-								var5.field1140 = var0.method7952(); // L: 265
+								var5.field1140 = var0.readByteSub(); // L: 265
 								var5.field1182 = var0.readByte(); // L: 266
-								var5.field1181 = var0.method7952(); // L: 267
-								var5.field1183 = var0.method7768(); // L: 268
-								var5.field1184 = var0.method7774() + Client.cycle; // L: 269
-								var5.field1194 = var0.method7776() + Client.cycle; // L: 270
+								var5.field1181 = var0.readByteSub(); // L: 267
+								var5.field1183 = var0.readByteAdd(); // L: 268
+								var5.field1184 = var0.readUnsignedShortLE() + Client.cycle; // L: 269
+								var5.field1194 = var0.readUnsignedShortAddLE() + Client.cycle; // L: 270
 								var5.field1186 = var0.readUnsignedShort(); // L: 271
 								if (var5.field1088) { // L: 272
 									var5.field1140 += var5.tileX; // L: 273
@@ -1135,7 +1135,7 @@ public class ClanSettings {
 							}
 
 							if ((var6 & 8) != 0) { // L: 288
-								var5.field1165 = var0.method7775(); // L: 289
+								var5.field1165 = var0.readUnsignedShortAdd(); // L: 289
 								if (var5.pathLength == 0) { // L: 290
 									var5.orientation = var5.field1165; // L: 291
 									var5.field1165 = -1; // L: 292
@@ -1145,7 +1145,7 @@ public class ClanSettings {
 							if ((var6 & 256) != 0) { // L: 295
 								class192[] var16 = Players.field1304; // L: 296
 								class192[] var18 = new class192[]{class192.field2212, class192.field2208, class192.field2209, class192.field2211}; // L: 300
-								var16[var4] = (class192)Actor.findEnumerated(var18, var0.method7952()); // L: 302
+								var16[var4] = (class192)Actor.findEnumerated(var18, var0.readByteSub()); // L: 302
 							}
 
 							if ((var6 & 1) != 0) { // L: 304
@@ -1169,12 +1169,12 @@ public class ClanSettings {
 									var8 = -1;
 								}
 
-								var17 = var0.method7766(); // L: 321
+								var17 = var0.readUnsignedByteNeg(); // L: 321
 								class65.performPlayerAnimation(var5, var8, var17); // L: 322
 							}
 
 							if ((var6 & 32) != 0) { // L: 324
-								var8 = var0.method7767(); // L: 325
+								var8 = var0.readUnsignedByteSub(); // L: 325
 								int var19;
 								int var23;
 								int var24;
@@ -1200,15 +1200,15 @@ public class ClanSettings {
 									}
 								}
 
-								var17 = var0.method7767(); // L: 347
+								var17 = var0.readUnsignedByteSub(); // L: 347
 								if (var17 > 0) { // L: 348
 									for (var23 = 0; var23 < var17; ++var23) { // L: 349
 										var11 = var0.readUShortSmart(); // L: 350
 										var12 = var0.readUShortSmart(); // L: 351
 										if (var12 != 32767) { // L: 352
 											var24 = var0.readUShortSmart(); // L: 353
-											var19 = var0.method7766(); // L: 354
-											var15 = var12 > 0 ? var0.method7766() : var19; // L: 355
+											var19 = var0.readUnsignedByteNeg(); // L: 354
+											var15 = var12 > 0 ? var0.readUnsignedByteNeg() : var19; // L: 355
 											var5.addHealthBar(var11, Client.cycle, var12, var24, var19, var15); // L: 356
 										} else {
 											var5.removeHealthBar(var11); // L: 358
@@ -1218,30 +1218,30 @@ public class ClanSettings {
 							}
 
 							if ((var6 & 64) != 0) { // L: 362
-								var5.targetIndex = var0.method7774(); // L: 363
+								var5.targetIndex = var0.readUnsignedShortLE(); // L: 363
 								if (var5.targetIndex == 65535) { // L: 364
 									var5.targetIndex = -1;
 								}
 							}
 
 							if ((var6 & 512) != 0) { // L: 366
-								var5.field1189 = Client.cycle + var0.method7774(); // L: 367
-								var5.field1135 = Client.cycle + var0.method7776(); // L: 368
-								var5.field1191 = var0.method7769(); // L: 369
-								var5.field1192 = var0.method7952(); // L: 370
-								var5.field1193 = var0.method7769(); // L: 371
+								var5.field1189 = Client.cycle + var0.readUnsignedShortLE(); // L: 367
+								var5.field1135 = Client.cycle + var0.readUnsignedShortAddLE(); // L: 368
+								var5.field1191 = var0.readByteNeg(); // L: 369
+								var5.field1192 = var0.readByteSub(); // L: 370
+								var5.field1193 = var0.readByteNeg(); // L: 371
 								var5.field1133 = (byte)var0.readUnsignedByte(); // L: 372
 							}
 
 							if ((var6 & 16384) != 0) { // L: 374
-								var7 = var0.method7952(); // L: 375
+								var7 = var0.readByteSub(); // L: 375
 							}
 
 							if ((var6 & 16) != 0) { // L: 377
 								var8 = var0.readUnsignedByte(); // L: 378
 								byte[] var21 = new byte[var8]; // L: 379
 								Buffer var26 = new Buffer(var21); // L: 380
-								var0.method7828(var21, 0, var8); // L: 381
+								var0.readBytesAdd(var21, 0, var8); // L: 381
 								Players.field1307[var4] = var26; // L: 382
 								var5.read(var26); // L: 383
 							}
