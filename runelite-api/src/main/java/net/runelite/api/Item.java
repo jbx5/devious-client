@@ -325,7 +325,7 @@ public class Item implements Interactable, Identifiable, EntityNameable
 			case BANK:
 				return getMenu(actionIndex, opcode, getSlot(), WidgetInfo.BANK_ITEM_CONTAINER.getPackedId());
 			case BANK_INVENTORY:
-				return getMenu(actionIndex == 0 ? 0 : actionIndex + 1, opcode, getSlot(), WidgetInfo.BANK_INVENTORY_ITEMS_CONTAINER.getPackedId());
+				return getMenu(actionIndex + 1, opcode, getSlot(), WidgetInfo.BANK_INVENTORY_ITEMS_CONTAINER.getPackedId());
 			case UNKNOWN:
 				client.getLogger().error("Couldn't determine item type for: {}, widgetid: {}", id, widgetId);
 				break;
