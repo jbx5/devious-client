@@ -9,6 +9,7 @@ import net.runelite.client.plugins.unethicalite.UnethicalitePlugin;
 import net.unethicalite.api.entities.Players;
 import net.unethicalite.api.entities.TileObjects;
 import net.unethicalite.api.game.Game;
+import net.unethicalite.api.game.GameThread;
 import net.unethicalite.api.game.Worlds;
 import net.unethicalite.api.input.Keyboard;
 import net.unethicalite.api.items.Equipment;
@@ -36,6 +37,11 @@ public class TeleportLoader
 	private static List<Teleport> LAST_TELEPORT_LIST = Collections.emptyList();
 
 	public static List<Teleport> buildTeleports()
+	{
+		return GameThread.invokeLater(TeleportLoader::buildTeleportsInternal);
+	}
+
+	private static List<Teleport> buildTeleportsInternal()
 	{
 		if (LAST_BUILD_TICK == Static.getClient().getTickCount())
 		{
