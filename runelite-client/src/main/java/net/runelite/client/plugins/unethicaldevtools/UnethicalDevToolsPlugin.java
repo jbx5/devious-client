@@ -18,6 +18,7 @@ import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.ui.overlay.OverlayManager;
 import net.unethicalite.api.events.MenuAutomated;
 import net.unethicalite.api.events.PacketSent;
+import net.unethicalite.api.events.ServerPacketProcessed;
 import net.unethicalite.api.events.ServerPacketReceived;
 import net.unethicalite.client.Static;
 
@@ -177,6 +178,21 @@ public class UnethicalDevToolsPlugin extends Plugin
 	@Subscribe
 	public void onServerPacketReceived(ServerPacketReceived e)
 	{
+		if (e.getServerPacket() != null && config.consumePacket())
+		{
+			List<Integer> opcodes = Arrays.stream(config.opcodes().split(","))
+					.map(Integer::parseInt)
+					.collect(Collectors.toList());
+			if (opcodes.contains(e.getServerPacket().getId()))
+			{
+				e.setConsumed(true);
+			}
+		}
+	}
+
+	@Subscribe
+	public void onServerPacketProcessed(ServerPacketProcessed e)
+	{
 		if (!config.serverPackets())
 		{
 			return;
@@ -204,11 +220,6 @@ public class UnethicalDevToolsPlugin extends Plugin
 		if (config.hexDump())
 		{
 			log.info(e.hexDump());
-		}
-
-		if (config.consumePacket())
-		{
-			e.setConsumed(true);
 		}
 	}
 

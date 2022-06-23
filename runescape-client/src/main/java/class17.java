@@ -1,151 +1,137 @@
-import java.security.Principal;
 import java.security.cert.Certificate;
-import javax.net.ssl.SSLPeerUnverifiedException;
-import javax.net.ssl.SSLSession;
-import javax.net.ssl.SSLSessionContext;
-import javax.security.cert.X509Certificate;
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-
+import javax.net.ssl.SSLPeerUnverifiedException;
+import net.runelite.mapping.ObfuscatedGetter;
+import javax.net.ssl.SSLSessionContext;
+import javax.net.ssl.SSLSession;
+import javax.security.cert.X509Certificate;
+import java.security.Principal;
+import net.runelite.mapping.Export;
 @ObfuscatedName("x")
 class class17 implements SSLSession {
 	@ObfuscatedName("x")
 	@Export("ByteArrayPool_altSizeArrayCounts")
 	public static int[] ByteArrayPool_altSizeArrayCounts;
+
 	@ObfuscatedName("bt")
-	@ObfuscatedGetter(
-		intValue = 1069442965
-	)
+	@ObfuscatedGetter(intValue = 1069442965)
 	static int field99;
-	// $FF: synthetic field
-	@ObfuscatedSignature(
-		descriptor = "Lz;"
-	)
+
+	@ObfuscatedSignature(descriptor = "Lz;")
 	final class12 this$1;
 
-	@ObfuscatedSignature(
-		descriptor = "(Lz;)V"
-	)
+	@ObfuscatedSignature(descriptor = "(Lz;)V")
 	class17(class12 var1) {
-		this.this$1 = var1; // L: 134
+		this.this$1 = var1;
 	}
 
 	public int getApplicationBufferSize() {
-		return 0; // L: 137
+		return 0;
 	}
 
 	public Principal getPeerPrincipal() throws SSLPeerUnverifiedException {
-		return null; // L: 197
+		return null;
 	}
 
 	public byte[] getId() {
-		throw new UnsupportedOperationException(); // L: 152
+		throw new UnsupportedOperationException();
 	}
 
 	public long getLastAccessedTime() {
-		throw new UnsupportedOperationException(); // L: 157
+		throw new UnsupportedOperationException();
 	}
 
 	public Certificate[] getLocalCertificates() {
-		throw new UnsupportedOperationException(); // L: 162
+		throw new UnsupportedOperationException();
 	}
 
 	public int getPacketBufferSize() {
-		throw new UnsupportedOperationException(); // L: 172
+		throw new UnsupportedOperationException();
 	}
 
 	public Certificate[] getPeerCertificates() throws SSLPeerUnverifiedException {
-		return this.this$1.field63; // L: 182
+		return this.this$1.field63;
 	}
 
 	public String getPeerHost() {
-		throw new UnsupportedOperationException(); // L: 187
+		throw new UnsupportedOperationException();
 	}
 
 	public int getPeerPort() {
-		return 0; // L: 192
+		return 0;
 	}
 
 	public String getProtocol() {
-		throw new UnsupportedOperationException(); // L: 202
+		throw new UnsupportedOperationException();
 	}
 
 	public Object getValue(String var1) {
-		throw new UnsupportedOperationException(); // L: 212
+		throw new UnsupportedOperationException();
 	}
 
 	public void invalidate() {
-		throw new UnsupportedOperationException(); // L: 222
+		throw new UnsupportedOperationException();
 	}
 
 	public boolean isValid() {
-		throw new UnsupportedOperationException(); // L: 227
+		throw new UnsupportedOperationException();
 	}
 
 	public void putValue(String var1, Object var2) {
-		throw new UnsupportedOperationException(); // L: 232
+		throw new UnsupportedOperationException();
 	}
 
 	public X509Certificate[] getPeerCertificateChain() throws SSLPeerUnverifiedException {
-		return null; // L: 177
+		return null;
 	}
 
 	public SSLSessionContext getSessionContext() {
-		throw new UnsupportedOperationException(); // L: 207
+		throw new UnsupportedOperationException();
 	}
 
 	public long getCreationTime() {
-		throw new UnsupportedOperationException(); // L: 147
+		throw new UnsupportedOperationException();
 	}
 
 	public void removeValue(String var1) {
-		throw new UnsupportedOperationException(); // L: 237
+		throw new UnsupportedOperationException();
 	}
 
 	public Principal getLocalPrincipal() {
-		throw new UnsupportedOperationException(); // L: 167
+		throw new UnsupportedOperationException();
 	}
 
 	public String[] getValueNames() {
-		throw new UnsupportedOperationException(); // L: 217
+		throw new UnsupportedOperationException();
 	}
 
 	public String getCipherSuite() {
-		throw new UnsupportedOperationException(); // L: 142
+		throw new UnsupportedOperationException();
 	}
 
 	@ObfuscatedName("f")
-	@ObfuscatedSignature(
-		descriptor = "(IIII)I",
-		garbageValue = "1793849187"
-	)
+	@ObfuscatedSignature(descriptor = "(IIII)I", garbageValue = "1793849187")
 	public static int method232(int var0, int var1, int var2) {
-		int var3 = VarpDefinition.method3374(var2 - var1 + 1); // L: 43
-		var3 <<= var1; // L: 44
-		var0 |= var3; // L: 45
-		return var0; // L: 46
+		int var3 = VarpDefinition.method3374(var2 - var1 + 1);
+		var3 <<= var1;
+		var0 |= var3;
+		return var0;
 	}
 
 	@ObfuscatedName("kt")
-	@ObfuscatedSignature(
-		descriptor = "(IB)V",
-		garbageValue = "113"
-	)
+	@ObfuscatedSignature(descriptor = "(IB)V", garbageValue = "113")
 	@Export("Widget_resetModelFrames")
 	static final void Widget_resetModelFrames(int var0) {
-		if (WorldMapSection2.loadInterface(var0)) { // L: 11760
-			Widget[] var1 = SoundCache.Widget_interfaceComponents[var0]; // L: 11761
-
-			for (int var2 = 0; var2 < var1.length; ++var2) { // L: 11762
-				Widget var3 = var1[var2]; // L: 11763
-				if (var3 != null) { // L: 11764
-					var3.modelFrame = 0; // L: 11765
-					var3.modelFrameCycle = 0; // L: 11766
+		if (WorldMapSection2.loadInterface(var0)) {
+			Widget[] var1 = SoundCache.Widget_interfaceComponents[var0];
+			for (int var2 = 0; var2 < var1.length; ++var2) {
+				Widget var3 = var1[var2];
+				if (var3 != null) {
+					var3.modelFrame = 0;
+					var3.modelFrameCycle = 0;
 				}
 			}
-
 		}
-	} // L: 11768
+	}
 }

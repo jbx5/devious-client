@@ -10,7 +10,7 @@ import net.runelite.rs.api.RSBufferedNetSocket;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSPacketWriter;
 import net.runelite.rs.api.RSServerPacket;
-import net.unethicalite.api.events.ServerPacketReceived;
+import net.unethicalite.api.events.ServerPacketProcessed;
 
 import java.util.Arrays;
 
@@ -27,7 +27,7 @@ public abstract class HBufferedNetSocketMixin implements RSBufferedNetSocket
 		int rtn = copy$read(payload, offset, length);
 
 		RSPacketWriter packetWriter = client.getPacketWriter();
-		ServerPacketReceived received = null;
+		ServerPacketProcessed received = null;
 		if (packetWriter != null)
 		{
 			RSServerPacket serverPacket = packetWriter.getServerPacket();
@@ -40,11 +40,10 @@ public abstract class HBufferedNetSocketMixin implements RSBufferedNetSocket
 					byte[] copy = Arrays.copyOf(buffer.getPayload(), length);
 					Buffer bufferCopy = client.createBuffer(copy);
 
-					received = new ServerPacketReceived(
+					received = new ServerPacketProcessed(
 							serverPacket,
 							length,
-							bufferCopy,
-							false
+							bufferCopy
 					);
 				}
 			}
@@ -53,15 +52,6 @@ public abstract class HBufferedNetSocketMixin implements RSBufferedNetSocket
 		if (received != null)
 		{
 			client.getCallbacks().post(received);
-
-			if (received.isConsumed())
-			{
-				packetWriter.setServerPacket(
-						client.createServerPacket(-1, -1)
-								.SET_PRIVCHATMODE()
-				);
-				Arrays.fill(packetWriter.getPacketBuffer().getPayload(), 0, length, (byte) 0);
-			}
 		}
 
 		return rtn;

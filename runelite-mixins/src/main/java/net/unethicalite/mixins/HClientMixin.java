@@ -13,20 +13,25 @@ import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Replace;
 import net.runelite.api.mixins.Shadow;
 import net.runelite.api.widgets.Widget;
+import net.runelite.rs.api.RSAbstractSocket;
 import net.runelite.rs.api.RSActor;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSGameObject;
 import net.runelite.rs.api.RSGraphicsObject;
 import net.runelite.rs.api.RSItemComposition;
+import net.runelite.rs.api.RSPacketBuffer;
+import net.runelite.rs.api.RSPacketWriter;
 import net.runelite.rs.api.RSProjectile;
 import net.runelite.rs.api.RSRenderable;
 import net.runelite.rs.api.RSRuneLiteMenuEntry;
+import net.runelite.rs.api.RSServerPacket;
 import net.runelite.rs.api.RSTile;
 import net.unethicalite.api.events.ExperienceGained;
 import net.unethicalite.api.events.LobbyWorldSelectToggled;
 import net.unethicalite.api.events.LoginStateChanged;
 import net.unethicalite.api.events.MenuAutomated;
 import net.unethicalite.api.events.PlaneChanged;
+import net.unethicalite.api.events.ServerPacketReceived;
 import net.unethicalite.api.events.WorldHopped;
 
 import javax.annotation.Nonnull;
@@ -301,5 +306,97 @@ public abstract class HClientMixin implements RSClient
 		}
 
 		client.getCallbacks().post(new LobbyWorldSelectToggled(client.isWorldSelectOpen()));
+	}
+
+	@Replace("method1120")
+	@Copy("method1120")
+	public boolean copy$onServerPacketRead(RSPacketWriter packetWriter)
+	{
+		RSAbstractSocket socket = packetWriter.getSocket();
+		RSPacketBuffer packetBuffer = packetWriter.getPacketBuffer();
+		if (socket == null)
+		{
+			return false;
+		}
+
+		if (packetWriter.getServerPacket() == null)
+		{
+			if (packetWriter.getUnknown1())
+			{
+				if (!socket.isAvailable(1))
+				{
+					return false;
+				}
+
+				socket.read(packetWriter.getPacketBuffer().getPayload(), 0, 1);
+				packetWriter.setUnknown2(0);
+				packetWriter.setUnknown1(false);
+			}
+
+			packetBuffer.setOffset(0);
+			if (packetBuffer.getUnknown1())
+			{
+				if (!socket.isAvailable(1))
+				{
+					return false;
+				}
+
+				socket.read(packetBuffer.getPayload(), 1, 1);
+				packetWriter.setUnknown2(0);
+			}
+
+			packetWriter.setUnknown1(true);
+			RSServerPacket[] serverPackets = client.getServerPackets();
+			int packetId = packetBuffer.readSmartByteShortIsaac();
+			if (packetId < 0 || packetId >= serverPackets.length)
+			{
+				return false;
+			}
+
+			packetWriter.setServerPacket(serverPackets[packetId]);
+			packetWriter.setServerPacketLength(packetWriter.getServerPacket().getLength());
+		}
+
+		if (packetWriter.getServerPacketLength() == -1)
+		{
+			if (!socket.isAvailable(1))
+			{
+				return false;
+			}
+
+			packetWriter.getSocket().read(packetBuffer.getPayload(), 0, 1);
+			packetWriter.setServerPacketLength(packetBuffer.getPayload()[0] & 255);
+		}
+
+		if (packetWriter.getServerPacketLength() == -2)
+		{
+			if (!socket.isAvailable(2))
+			{
+				return false;
+			}
+
+			packetWriter.getSocket().read(packetBuffer.getPayload(), 0, 2);
+			packetBuffer.setOffset(0);
+			packetWriter.setServerPacketLength(packetBuffer.readUnsignedShort());
+		}
+
+		if (!socket.isAvailable(packetWriter.getServerPacketLength()))
+		{
+			return false;
+		}
+
+		ServerPacketReceived event = new ServerPacketReceived(
+				packetWriter.getServerPacket(),
+				false
+		);
+
+		client.getCallbacks().post(event);
+
+		if (event.isConsumed())
+		{
+			return true;
+		}
+
+		return copy$onServerPacketRead(packetWriter);
 	}
 }
