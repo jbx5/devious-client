@@ -1,8 +1,8 @@
 package net.unethicalite.api.packets;
 
+import net.runelite.api.packets.PacketBufferNode;
 import net.unethicalite.api.game.Game;
 import net.unethicalite.api.game.GameThread;
-import net.runelite.api.packets.PacketBufferNode;
 import net.unethicalite.client.Static;
 
 public class MousePackets

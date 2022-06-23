@@ -70,7 +70,6 @@ public class ItemPackets
 		ItemPackets.queueItemAction5Packet(item.getWidgetId(), item.getId(), item.getSlot());
 	}
 
-
 	public static void itemSixthOption(Item item)
 	{
 		ItemPackets.queueItemAction6Packet(item.getWidgetId(), item.getId(), item.getSlot());
@@ -98,7 +97,7 @@ public class ItemPackets
 
 	public static void useItemOnItem(Item item, Item item2)
 	{
-		if ((item.getType().getInventoryID() != InventoryID.INVENTORY) || (item2.getType().getInventoryID() != InventoryID.INVENTORY))
+		if (item.getType().getInventoryID() != InventoryID.INVENTORY || item2.getType().getInventoryID() != InventoryID.INVENTORY)
 		{
 			return;
 		}
@@ -199,7 +198,6 @@ public class ItemPackets
 	{
 		return WidgetPackets.createFifthAction(itemWidgetId, itemId, itemSlot);
 	}
-
 
 	public static PacketBufferNode createSixthAction(int itemWidgetId, int itemId, int itemSlot)
 	{

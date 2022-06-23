@@ -1,7 +1,6 @@
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
-
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.Export;
 @ObfuscatedName("ib")
 @Implements("DirectWrapper")
 public class DirectWrapper extends Wrapper {

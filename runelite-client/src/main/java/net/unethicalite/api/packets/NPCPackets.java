@@ -1,8 +1,8 @@
 package net.unethicalite.api.packets;
 
-import net.unethicalite.api.game.Game;
 import net.runelite.api.NPC;
 import net.runelite.api.packets.PacketBufferNode;
+import net.unethicalite.api.game.Game;
 import net.unethicalite.client.Static;
 
 public class NPCPackets
@@ -105,11 +105,11 @@ public class NPCPackets
 		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
 		var packetBufferNode = Static.getClient().preparePacket(clientPacket.OPNPCT(), client.getPacketWriter().getIsaacCipher());
-		packetBufferNode.getPacketBuffer().writeIntLE(sourceWidgetId);	// Old: packetBufferNode.getPacketBuffer().writeShortAddLE(npcIndex);
-		packetBufferNode.getPacketBuffer().writeShort(sourceSlot);	// Old: packetBufferNode.getPacketBuffer().writeShort(sourceItemId);
-		packetBufferNode.getPacketBuffer().writeShort(sourceItemId);	// Old: packetBufferNode.getPacketBuffer().writeByteNeg(ctrlDown ? 1 : 0);
-		packetBufferNode.getPacketBuffer().writeShortAddLE(npcIndex);	// Old: packetBufferNode.getPacketBuffer().writeShortAdd(sourceSlot);
-		packetBufferNode.getPacketBuffer().writeByte(ctrlDown ? 1 : 0);	// Old: packetBufferNode.getPacketBuffer().writeIntLE(sourceWidgetId);
+		packetBufferNode.getPacketBuffer().writeIntLE(sourceWidgetId);
+		packetBufferNode.getPacketBuffer().writeShort(sourceSlot);
+		packetBufferNode.getPacketBuffer().writeShort(sourceItemId);
+		packetBufferNode.getPacketBuffer().writeShortAddLE(npcIndex);
+		packetBufferNode.getPacketBuffer().writeByte(ctrlDown ? 1 : 0);
 		return packetBufferNode;
 	}
 
@@ -124,7 +124,7 @@ public class NPCPackets
 		var clientPacket = Game.getClientPacket();
 		var packetBufferNode = Static.getClient().preparePacket(clientPacket.OPNPC1(), client.getPacketWriter().getIsaacCipher());
 		packetBufferNode.getPacketBuffer().writeShortAdd(npcIndex);
-		packetBufferNode.getPacketBuffer().writeByteSub(ctrlDown ? 1 : 0);	// Old: packetBufferNode.getPacketBuffer().writeByte(ctrlDown ? 1 : 0);
+		packetBufferNode.getPacketBuffer().writeByteSub(ctrlDown ? 1 : 0);
 		return packetBufferNode;
 	}
 
@@ -133,8 +133,8 @@ public class NPCPackets
 		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
 		var packetBufferNode = Static.getClient().preparePacket(clientPacket.OPNPC2(), client.getPacketWriter().getIsaacCipher());
-		packetBufferNode.getPacketBuffer().writeByteNeg(ctrlDown ? 1 : 0);	// Old: packetBufferNode.getPacketBuffer().writeShortLE(npcIndex);
-		packetBufferNode.getPacketBuffer().writeShortLE(npcIndex);	// Old: packetBufferNode.getPacketBuffer().writeByteNeg(ctrlDown ? 1 : 0);
+		packetBufferNode.getPacketBuffer().writeByteNeg(ctrlDown ? 1 : 0);
+		packetBufferNode.getPacketBuffer().writeShortLE(npcIndex);
 		return packetBufferNode;
 	}
 
@@ -143,8 +143,8 @@ public class NPCPackets
 		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
 		var packetBufferNode = Static.getClient().preparePacket(clientPacket.OPNPC3(), client.getPacketWriter().getIsaacCipher());
-		packetBufferNode.getPacketBuffer().writeShortAdd(npcIndex);	// Old: packetBufferNode.getPacketBuffer().writeByteNeg(ctrlDown ? 1 : 0);
-		packetBufferNode.getPacketBuffer().writeByteAdd(ctrlDown ? 1 : 0);	// Old: packetBufferNode.getPacketBuffer().writeShortAddLE(npcIndex);
+		packetBufferNode.getPacketBuffer().writeShortAdd(npcIndex);
+		packetBufferNode.getPacketBuffer().writeByteAdd(ctrlDown ? 1 : 0);
 		return packetBufferNode;
 	}
 
@@ -153,8 +153,8 @@ public class NPCPackets
 		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
 		var packetBufferNode = Static.getClient().preparePacket(clientPacket.OPNPC4(), client.getPacketWriter().getIsaacCipher());
-		packetBufferNode.getPacketBuffer().writeShort(npcIndex);	// Old: packetBufferNode.getPacketBuffer().writeByteSub(ctrlDown ? 1 : 0);
-		packetBufferNode.getPacketBuffer().writeByteSub(ctrlDown ? 1 : 0);	// Old: packetBufferNode.getPacketBuffer().writeShortAddLE(npcIndex);
+		packetBufferNode.getPacketBuffer().writeShort(npcIndex);
+		packetBufferNode.getPacketBuffer().writeByteSub(ctrlDown ? 1 : 0);
 		return packetBufferNode;
 	}
 
@@ -163,8 +163,8 @@ public class NPCPackets
 		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
 		var packetBufferNode = Static.getClient().preparePacket(clientPacket.OPNPC5(), client.getPacketWriter().getIsaacCipher());
-		packetBufferNode.getPacketBuffer().writeShortAddLE(npcIndex);	// Old: packetBufferNode.getPacketBuffer().writeShortLE(npcIndex);
-		packetBufferNode.getPacketBuffer().writeByte(ctrlDown ? 1 : 0);	// Old: packetBufferNode.getPacketBuffer().writeByteNeg(ctrlDown ? 1 : 0);
+		packetBufferNode.getPacketBuffer().writeShortAddLE(npcIndex);
+		packetBufferNode.getPacketBuffer().writeByte(ctrlDown ? 1 : 0);
 		return packetBufferNode;
 	}
 }

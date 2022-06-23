@@ -1,27 +1,21 @@
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-
 @ObfuscatedName("mr")
 public final class class342 {
 	@ObfuscatedName("fw")
-	@ObfuscatedSignature(
-		descriptor = "(S)Z",
-		garbageValue = "208"
-	)
+	@ObfuscatedSignature(descriptor = "(S)Z", garbageValue = "208")
 	static boolean method6312() {
-		if (Client.archiveLoaders != null && Client.archiveLoadersDone < Client.archiveLoaders.size()) { // L: 1634
-			while (Client.archiveLoadersDone < Client.archiveLoaders.size()) { // L: 1635
-				ArchiveLoader var0 = (ArchiveLoader)Client.archiveLoaders.get(Client.archiveLoadersDone); // L: 1636
-				if (!var0.isLoaded()) { // L: 1637
+		if (Client.archiveLoaders != null && Client.archiveLoadersDone < Client.archiveLoaders.size()) {
+			while (Client.archiveLoadersDone < Client.archiveLoaders.size()) {
+				ArchiveLoader var0 = ((ArchiveLoader) (Client.archiveLoaders.get(Client.archiveLoadersDone)));
+				if (!var0.isLoaded()) {
 					return false;
 				}
-
-				++Client.archiveLoadersDone; // L: 1638
-			}
-
-			return true; // L: 1640
+				++Client.archiveLoadersDone;
+			} 
+			return true;
 		} else {
-			return true; // L: 1639
+			return true;
 		}
 	}
 }
