@@ -196,8 +196,17 @@ public class MinimalPluginManager
 
 	public void restartPlugin()
 	{
+		String currentPlugin = pluginEntry.toString();
 		stopPlugin();
-		startPlugin(pluginEntry);
+		List<PluginEntry> plugins = loadPlugins();
+		PluginEntry newEntry = plugins.stream()
+				.filter(e -> e.toString().equals(currentPlugin))
+				.findFirst().orElse(null);
+		if (newEntry == null)
+		{
+			return;
+		}
+		startPlugin(newEntry);
 	}
 
 	public void pauseScript()
