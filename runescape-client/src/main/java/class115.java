@@ -266,7 +266,7 @@ public class class115 {
 						if (class114.isNumber(var7)) {
 							var15 = FaceNormal.method4344(var7);
 						}
-						PacketBufferNode var13 = EnumComposition.getPacketBufferNode(ClientPacket.field2946, Client.packetWriter.isaacCipher);
+						PacketBufferNode var13 = EnumComposition.getPacketBufferNode(ClientPacket.RESUME_P_COUNTDIALOG, Client.packetWriter.isaacCipher);
 						var13.packetBuffer.writeInt(var15);
 						Client.packetWriter.addNode(var13);
 						return 1;
@@ -274,7 +274,7 @@ public class class115 {
 						PacketBufferNode var11;
 						if (var0 == ScriptOpcodes.RESUME_NAMEDIALOG) {
 							var7 = Interpreter.Interpreter_stringStack[--Interpreter.Interpreter_stringStackSize];
-							var11 = EnumComposition.getPacketBufferNode(ClientPacket.field2928, Client.packetWriter.isaacCipher);
+							var11 = EnumComposition.getPacketBufferNode(ClientPacket.RESUME_P_NAMEDIALOG, Client.packetWriter.isaacCipher);
 							var11.packetBuffer.writeByte(var7.length() + 1);
 							var11.packetBuffer.writeStringCp1252NullTerminated(var7);
 							Client.packetWriter.addNode(var11);
@@ -282,7 +282,7 @@ public class class115 {
 						} else
 							if (var0 == ScriptOpcodes.RESUME_STRINGDIALOG) {
 								var7 = Interpreter.Interpreter_stringStack[--Interpreter.Interpreter_stringStackSize];
-								var11 = EnumComposition.getPacketBufferNode(ClientPacket.field2985, Client.packetWriter.isaacCipher);
+								var11 = EnumComposition.getPacketBufferNode(ClientPacket.RESUME_P_STRINGDIALOG, Client.packetWriter.isaacCipher);
 								var11.packetBuffer.writeByte(var7.length() + 1);
 								var11.packetBuffer.writeStringCp1252NullTerminated(var7);
 								Client.packetWriter.addNode(var11);
@@ -333,7 +333,7 @@ public class class115 {
 														} else
 															if (var0 == ScriptOpcodes.RESUME_OBJDIALOG) {
 																var10 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
-																var11 = EnumComposition.getPacketBufferNode(ClientPacket.field2927, Client.packetWriter.isaacCipher);
+																var11 = EnumComposition.getPacketBufferNode(ClientPacket.RESUME_P_OBJDIALOG, Client.packetWriter.isaacCipher);
 																var11.packetBuffer.writeShort(var10);
 																Client.packetWriter.addNode(var11);
 																return 1;

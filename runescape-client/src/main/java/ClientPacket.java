@@ -100,7 +100,7 @@ public class ClientPacket implements class260 {
 
 	@ObfuscatedName("o")
 	@ObfuscatedSignature(descriptor = "Lju;")
-	public static final ClientPacket field2928;
+	public static final ClientPacket RESUME_P_NAMEDIALOG;
 
 	@ObfuscatedName("m")
 	@ObfuscatedSignature(descriptor = "Lju;")
@@ -248,7 +248,7 @@ public class ClientPacket implements class260 {
 
 	@ObfuscatedName("bc")
 	@ObfuscatedSignature(descriptor = "Lju;")
-	public static final ClientPacket field2946;
+	public static final ClientPacket RESUME_P_COUNTDIALOG;
 
 	@ObfuscatedName("bl")
 	@ObfuscatedSignature(descriptor = "Lju;")
@@ -300,7 +300,7 @@ public class ClientPacket implements class260 {
 
 	@ObfuscatedName("bx")
 	@ObfuscatedSignature(descriptor = "Lju;")
-	public static final ClientPacket field2927;
+	public static final ClientPacket RESUME_P_OBJDIALOG;
 
 	@ObfuscatedName("bm")
 	@ObfuscatedSignature(descriptor = "Lju;")
@@ -328,7 +328,7 @@ public class ClientPacket implements class260 {
 
 	@ObfuscatedName("cw")
 	@ObfuscatedSignature(descriptor = "Lju;")
-	public static final ClientPacket field2985;
+	public static final ClientPacket RESUME_P_STRINGDIALOG;
 
 	@ObfuscatedName("cx")
 	@ObfuscatedSignature(descriptor = "Lju;")
@@ -472,7 +472,7 @@ public class ClientPacket implements class260 {
 		IF_BUTTONT = new ClientPacket(20, 16);
 		IF_BUTTON6 = new ClientPacket(21, 8);
 		OPOBJ3 = new ClientPacket(22, 7);
-		field2928 = new ClientPacket(23, -1);
+		RESUME_P_NAMEDIALOG = new ClientPacket(23, -1);
 		field2908 = new ClientPacket(24, 11);
 		OPPLAYER4 = new ClientPacket(25, 3);
 		field2931 = new ClientPacket(26, -1);
@@ -509,7 +509,7 @@ public class ClientPacket implements class260 {
 		field2968 = new ClientPacket(57, 8);
 		IF_BUTTON7 = new ClientPacket(58, 8);
 		field2964 = new ClientPacket(59, -1);
-		field2946 = new ClientPacket(60, 4);
+		RESUME_P_COUNTDIALOG = new ClientPacket(60, 4);
 		OPNPC5 = new ClientPacket(61, 3);
 		field3013 = new ClientPacket(62, -1);
 		MOVE_GAMECLICK = new ClientPacket(63, -1);
@@ -522,14 +522,14 @@ public class ClientPacket implements class260 {
 		RESUME_PAUSEBUTTON = new ClientPacket(70, 6);
 		field2976 = new ClientPacket(71, 2);
 		field2932 = new ClientPacket(72, -2);
-		field2927 = new ClientPacket(73, 2);
+		RESUME_P_OBJDIALOG = new ClientPacket(73, 2);
 		field2979 = new ClientPacket(74, 15);
 		OPOBJT = new ClientPacket(75, 15);
 		field2967 = new ClientPacket(76, 8);
 		field2982 = new ClientPacket(77, -1);
 		IF_BUTTON2 = new ClientPacket(78, 8);
 		OPNPC3 = new ClientPacket(79, 3);
-		field2985 = new ClientPacket(80, -1);
+		RESUME_P_STRINGDIALOG = new ClientPacket(80, -1);
 		OPPLAYER3 = new ClientPacket(81, 3);
 		CLOSE_MODAL = new ClientPacket(82, 0);
 		field2988 = new ClientPacket(83, 8);

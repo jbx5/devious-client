@@ -138,4 +138,16 @@ public interface RSClientPacket extends ClientPacket
 
 	@Import("OPNPCT")
 	RSClientPacket OPNPCT();
+
+	@Import("RESUME_P_COUNTDIALOG")
+	RSClientPacket RESUME_P_COUNTDIALOG();
+
+	@Import("RESUME_P_STRINGDIALOG")
+	RSClientPacket RESUME_P_STRINGDIALOG();
+
+	@Import("RESUME_P_NAMEDIALOG")
+	RSClientPacket RESUME_P_NAMEDIALOG();
+
+	@Import("RESUME_P_OBJDIALOG")
+	RSClientPacket RESUME_P_OBJDIALOG();
 }
