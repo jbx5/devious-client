@@ -1,7 +1,7 @@
 package net.unethicalite.api.magic;
 
 import net.runelite.api.ItemID;
-import net.runelite.api.Quest;
+import net.runelite.api.Skill;
 import net.runelite.api.widgets.WidgetInfo;
 import net.unethicalite.api.game.Skills;
 import net.unethicalite.api.game.Vars;
