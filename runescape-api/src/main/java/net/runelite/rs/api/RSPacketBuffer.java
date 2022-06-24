@@ -11,4 +11,19 @@ public interface RSPacketBuffer extends RSBuffer, PacketBuffer
 
 	@Import("readSmartByteShortIsaac")
 	int readSmartByteShortIsaac();
+
+	@Import("bitsRemaining")
+	int bitsRemaining(int var1);
+
+	@Import("exportIndex")
+	void exportIndex();
+
+	@Import("readBits")
+	int readBits(int var1);
+
+	@Import("importIndex")
+	void importIndex();
+
+	@Import("method7674")
+	boolean getUnknown1();
 }

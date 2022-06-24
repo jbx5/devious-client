@@ -1,128 +1,120 @@
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.security.cert.Certificate;
 import javax.net.ssl.HandshakeCompletedListener;
-import javax.net.ssl.SSLSession;
-import javax.net.ssl.SSLSocket;
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
+import java.io.OutputStream;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.mapping.ObfuscatedGetter;
 import org.bouncycastle.crypto.tls.TlsClientProtocol;
-
+import java.io.InputStream;
+import java.io.IOException;
+import javax.net.ssl.SSLSocket;
+import javax.net.ssl.SSLSession;
+import net.runelite.mapping.Export;
 @ObfuscatedName("z")
 class class12 extends SSLSocket {
 	@ObfuscatedName("sw")
-	@ObfuscatedGetter(
-		intValue = 731084091
-	)
+	@ObfuscatedGetter(intValue = 731084091)
 	static int field65;
+
 	@ObfuscatedName("lm")
-	@ObfuscatedSignature(
-		descriptor = "Lhk;"
-	)
+	@ObfuscatedSignature(descriptor = "Lhk;")
 	@Export("textureProvider")
 	static TextureProvider textureProvider;
+
 	@ObfuscatedName("pw")
-	@ObfuscatedSignature(
-		descriptor = "[Lkb;"
-	)
+	@ObfuscatedSignature(descriptor = "[Lkb;")
 	static Widget[] field62;
+
 	@ObfuscatedName("c")
 	Certificate[] field63;
-	// $FF: synthetic field
-	@ObfuscatedSignature(
-		descriptor = "Lk;"
-	)
+
+	@ObfuscatedSignature(descriptor = "Lk;")
 	final class15 this$0;
-	// $FF: synthetic field
+
 	final TlsClientProtocol val$tlsClientProtocol;
-	// $FF: synthetic field
+
 	final String val$host;
 
-	@ObfuscatedSignature(
-		descriptor = "(Lk;Lorg/bouncycastle/crypto/tls/TlsClientProtocol;Ljava/lang/String;)V"
-	)
+	@ObfuscatedSignature(descriptor = "(Lk;Lorg/bouncycastle/crypto/tls/TlsClientProtocol;Ljava/lang/String;)V")
 	class12(class15 var1, TlsClientProtocol var2, String var3) {
-		this.this$0 = var1; // L: 91
+		this.this$0 = var1;
 		this.val$tlsClientProtocol = var2;
 		this.val$host = var3;
 	}
 
 	public OutputStream getOutputStream() throws IOException {
-		return this.val$tlsClientProtocol.getOutputStream(); // L: 101
+		return this.val$tlsClientProtocol.getOutputStream();
 	}
 
 	public InputStream getInputStream() throws IOException {
-		return this.val$tlsClientProtocol.getInputStream(); // L: 96
+		return this.val$tlsClientProtocol.getInputStream();
 	}
 
 	public void setWantClientAuth(boolean var1) {
-	} // L: 281
+	}
 
 	public synchronized void close() throws IOException {
-		this.val$tlsClientProtocol.close(); // L: 106
-	} // L: 107
+		this.val$tlsClientProtocol.close();
+	}
 
 	public void addHandshakeCompletedListener(HandshakeCompletedListener var1) {
-	} // L: 110
+	}
 
 	public String[] getEnabledCipherSuites() {
-		return null; // L: 119
+		return null;
 	}
 
 	public String[] getSupportedCipherSuites() {
-		return null; // L: 249
+		return null;
 	}
 
 	public boolean getNeedClientAuth() {
-		return false; // L: 129
+		return false;
 	}
 
 	public SSLSession getSession() {
-		return new class17(this); // L: 134
+		return new class17(this);
 	}
 
 	public boolean getEnableSessionCreation() {
-		return false; // L: 114
+		return false;
 	}
 
 	public boolean getUseClientMode() {
-		return false; // L: 254
+		return false;
 	}
 
 	public void removeHandshakeCompletedListener(HandshakeCompletedListener var1) {
-	} // L: 263
+	}
 
 	public void setEnableSessionCreation(boolean var1) {
-	} // L: 266
+	}
 
 	public void setEnabledCipherSuites(String[] var1) {
-	} // L: 269
+	}
 
 	public void setNeedClientAuth(boolean var1) {
-	} // L: 275
+	}
 
 	public void setUseClientMode(boolean var1) {
-	} // L: 278
+	}
 
 	public String[] getEnabledProtocols() {
-		return null; // L: 124
+		return null;
 	}
 
 	public String[] getSupportedProtocols() {
-		return null; // L: 244
+		return null;
 	}
 
 	public boolean getWantClientAuth() {
-		return false; // L: 259
+		return false;
 	}
 
 	public void startHandshake() throws IOException {
-		this.val$tlsClientProtocol.connect(new class13(this)); // L: 285
-	} // L: 335
+		this.val$tlsClientProtocol.connect(new class13(this));
+	}
 
 	public void setEnabledProtocols(String[] var1) {
-	} // L: 272
+	}
 }

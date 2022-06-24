@@ -25,11 +25,27 @@
  */
 package net.runelite.client.game;
 
+import java.util.Set;
+import javax.annotation.Nullable;
+import javax.inject.Inject;
+import javax.inject.Singleton;
 import net.runelite.api.NPC;
+import net.runelite.api.NPCComposition;
 import net.runelite.api.NpcID;
+import net.runelite.client.RuntimeConfig;
+import org.apache.commons.lang3.ArrayUtils;
 
+@Singleton
 public class NpcUtil
 {
+	private final RuntimeConfig runtimeConfig;
+
+	@Inject
+	private NpcUtil(@Nullable RuntimeConfig runtimeConfig)
+	{
+		this.runtimeConfig = runtimeConfig;
+	}
+
 	/**
 	 * Returns whether an NPC is dying and can no longer be interacted with, or if it is still alive or in some special
 	 * state where it can be 0hp without dying. (For example, Gargoyles and other slayer monsters with item weaknesses
@@ -38,7 +54,7 @@ public class NpcUtil
 	 * @param npc NPC to check whether it is dying
 	 * @return {@code true} if the NPC is dying
 	 */
-	public static boolean isDying(final NPC npc)
+	public boolean isDying(final NPC npc)
 	{
 		final int id = npc.getId();
 		switch (id)
@@ -69,17 +85,41 @@ public class NpcUtil
 			case NpcID.ANCIENT_ZYGOMITE:
 			case NpcID.ROCKSLUG:
 			case NpcID.ROCKSLUG_422:
+			case NpcID.GIANT_ROCKSLUG:
 			case NpcID.DESERT_LIZARD:
 			case NpcID.DESERT_LIZARD_460:
 			case NpcID.DESERT_LIZARD_461:
+			case NpcID.LIZARD:
+			case NpcID.SMALL_LIZARD:
+			case NpcID.SMALL_LIZARD_463:
 			case NpcID.GROWTHLING:
-			case NpcID.KALPHITE_QUEEN_963:
-			case NpcID.KALPHITE_QUEEN_965:
-			case NpcID.VETION:
-			case NpcID.VETION_REBORN:
+			case NpcID.KALPHITE_QUEEN_963: // KQ's first form sometimes regenerates 1hp after reaching 0hp, thus not dying
 				return false;
+			// These NPCs transform and have their `isDead()` reset to `false` despite actually being dead in these forms
+			case NpcID.DRAKE_8613:
+			case NpcID.GUARDIAN_DRAKE_10401:
+			case NpcID.ALCHEMICAL_HYDRA_8634:
+			case NpcID.NEX_11282:
+				return true;
 			default:
-				return npc.isDead();
+				if (runtimeConfig != null)
+				{
+					Set<Integer> ignoredNpcs = runtimeConfig.getIgnoreDeadNpcs();
+					if (ignoredNpcs != null && ignoredNpcs.contains(id))
+					{
+						return false;
+					}
+
+					Set<Integer> forceDeadNpcs = runtimeConfig.getForceDeadNpcs();
+					if (forceDeadNpcs != null && forceDeadNpcs.contains(id))
+					{
+						return true;
+					}
+				}
+
+				final NPCComposition npcComposition = npc.getTransformedComposition();
+				boolean hasAttack = npcComposition != null && ArrayUtils.contains(npcComposition.getActions(), "Attack");
+				return hasAttack && npc.isDead();
 		}
 	}
 }

@@ -12,159 +12,187 @@ public interface RSServerPacket extends ServerPacket
 	@Import("length")
 	@Override
 	int getLength();
-	@Import("field3123")
+
+	@Import("GRAPHICSOBJECT_SPAWN")
 	RSServerPacket GRAPHICSOBJECT_SPAWN();
 
-	@Import("field3075")
+	@Import("LOGOUT")
 	RSServerPacket LOGOUT();
 
-	@Import("field3045")
+	@Import("MESSAGE_FRIENDS_CHAT")
 	RSServerPacket MESSAGE_FRIENDS_CHAT();
 
-	@Import("field3068")
+	@Import("CAM_RESET")
 	RSServerPacket CAM_RESET();
 
-	@Import("field3090")
+	@Import("PLAYER_INFO")
 	RSServerPacket PLAYER_INFO();
 
-	@Import("field3103")
+	@Import("HINT_ARROW")
 	RSServerPacket HINT_ARROW();
 
-	@Import("field3095")
+	@Import("IF_SETHIDE")
 	RSServerPacket IF_SETHIDE();
 
-	@Import("field3129")
+	@Import("IF_SETPLAYERHEAD")
 	RSServerPacket IF_SETPLAYERHEAD();
 
-	@Import("field3043")
+	@Import("IF_SETSCROLLPOS")
 	RSServerPacket IF_SETSCROLLPOS();
 
-	@Import("field3106")
+	@Import("NPC_INFO_LARGE_VIEWPORT_1")
 	RSServerPacket NPC_INFO_LARGE_VIEWPORT_1();
 
-	@Import("field3079")
+	@Import("UPDATE_REBOOT_TIMER")
 	RSServerPacket UPDATE_REBOOT_TIMER();
 
-	@Import("field3094")
+	@Import("UPDATE_STOCKMARKET_SLOT")
 	RSServerPacket UPDATE_STOCKMARKET_SLOT();
 
-	@Import("field3097")
+	@Import("NPC_INFO_SMALL_VIEWPORT_2")
 	RSServerPacket NPC_INFO_SMALL_VIEWPORT_2();
 
-	@Import("field3089")
+	@Import("UPDATE_FRIENDLIST")
 	RSServerPacket UPDATE_FRIENDLIST();
 
-	@Import("field3073")
+	@Import("MINIMAP_TOGGLE")
 	RSServerPacket MINIMAP_TOGGLE();
 
-	@Import("field3056")
+	@Import("NPC_INFO_SMALL_VIEWPORT_1")
 	RSServerPacket NPC_INFO_SMALL_VIEWPORT_1();
 
-	@Import("field3102")
+	@Import("NPC_SPOTANIM")
 	RSServerPacket NPC_SPOTANIM();
 
-	@Import("field3127")
+	@Import("RESET_CLIENT_VARCACHE")
 	RSServerPacket RESET_CLIENT_VARCACHE();
 
-	@Import("field3060")
+	@Import("IF_SETOBJECT")
 	RSServerPacket IF_SETOBJECT();
 
-	@Import("field3099")
+	@Import("VARP_SMALL")
+	RSServerPacket VARP_SMALL();
+
+	@Import("UPDATE_INV_FULL")
 	RSServerPacket UPDATE_INV_FULL();
 
-	@Import("field3066")
+	@Import("UPDATE_IGNORELIST")
 	RSServerPacket UPDATE_IGNORELIST();
 
-	@Import("field3105")
+	@Import("UPDATE_ZONE_PARTIAL_ENCLOSED")
 	RSServerPacket UPDATE_ZONE_PARTIAL_ENCLOSED();
 
-	@Import("field3082")
+	@Import("REBUILD_NORMAL")
 	RSServerPacket REBUILD_NORMAL();
 
-	@Import("field3119")
+	@Import("IF_MOVESUB")
 	RSServerPacket IF_MOVESUB();
 
-	@Import("field3137")
+	@Import("REFLECTION_CHECKER")
 	RSServerPacket REFLECTION_CHECKER();
 
-	@Import("field3116")
+	@Import("PROJECTILE_SPAWN")
 	RSServerPacket PROJECTILE_SPAWN();
 
-	@Import("field3121")
+	@Import("CAM_LOOKAT")
 	RSServerPacket CAM_LOOKAT();
 
-	@Import("field3061")
+	@Import("MINIMAP_FLAG_SET")
 	RSServerPacket MINIMAP_FLAG_SET();
 
-	@Import("field3057")
+	@Import("NPC_SET_SEQUENCE")
 	RSServerPacket NPC_SET_SEQUENCE();
 
-	@Import("field3136")
+	@Import("MESSAGE_PRIVATE_ECHO")
 	RSServerPacket MESSAGE_PRIVATE_ECHO();
 
-	@Import("field3142")
+	@Import("UPDATE_ZONE_FULL_FOLLOWS")
 	RSServerPacket UPDATE_ZONE_FULL_FOLLOWS();
 
-	@Import("field3080")
+	@Import("VARP_LARGE")
+	RSServerPacket VARP_LARGE();
+
+	@Import("UPDATE_INV_CLEAR")
 	RSServerPacket UPDATE_INV_CLEAR();
 
-	@Import("field3107")
+	@Import("LOGOUT_FULL")
 	RSServerPacket LOGOUT_FULL();
 
-	@Import("field3101")
+	@Import("MIDI_SONG")
 	RSServerPacket MIDI_SONG();
 
-	@Import("field3055")
+	@Import("TRIGGER_ONDIALOG_ABORT")
 	RSServerPacket TRIGGER_ONDIALOG_ABORT();
 
-	@Import("field3114")
+	@Import("IF_SETANGLE")
+	RSServerPacket IF_SETANGLE();
+
+	@Import("SET_PLAYER_OP")
 	RSServerPacket SET_PLAYER_OP();
 
-	@Import("field3041")
+	@Import("UPDATE_INV_PARTIAL")
+	RSServerPacket UPDATE_INV_PARTIAL();
+
+	@Import("IF_SETNPCHEAD")
+	RSServerPacket IF_SETNPCHEAD();
+
+	@Import("IF_SETMODEL")
+	RSServerPacket IF_SETMODEL();
+
+	@Import("IF_SETCOLOUR")
 	RSServerPacket IF_SETCOLOUR();
 
-	@Import("field3083")
+	@Import("MESSAGE_PRIVATE")
 	RSServerPacket MESSAGE_PRIVATE();
 
-	@Import("field3046")
+	@Import("REBUILD_REGION")
 	RSServerPacket REBUILD_REGION();
 
-	@Import("field3091")
+	@Import("UPDATE_STAT")
 	RSServerPacket UPDATE_STAT();
 
-	@Import("field3078")
+	@Import("IF_CLOSESUB")
 	RSServerPacket IF_CLOSESUB();
 
-	@Import("field3049")
+	@Import("PING_STATISTICS_REQUEST")
 	RSServerPacket PING_STATISTICS_REQUEST();
 
-	@Import("field3120")
+	@Import("UPDATE_INV_STOP_TRANSIT")
+	RSServerPacket UPDATE_INV_STOP_TRANSIT();
+
+	@Import("URL_OPEN")
 	RSServerPacket URL_OPEN();
 
-	@Import("field3093")
+	@Import("RUNCLIENTSCRIPT")
 	RSServerPacket RUNCLIENTSCRIPT();
 
-	@Import("field3069")
+	@Import("MESSAGE_GAME")
 	RSServerPacket MESSAGE_GAME();
 
-	@Import("field3047")
+	@Import("CAM_SETANGLE")
 	RSServerPacket CAM_SETANGLE();
 
-	@Import("field3052")
+	@Import("PLAYER_SPOTANIM")
 	RSServerPacket PLAYER_SPOTANIM();
 
-	@Import("field3108")
+	@Import("CHAT_FILTER_SETTINGS")
 	RSServerPacket CHAT_FILTER_SETTINGS();
 
-	@Import("field3058")
+	@Import("SYNC_CLIENT_VARCACHE")
+	RSServerPacket SYNC_CLIENT_VARCACHE();
+
+	@Import("NPC_INFO_LARGE_VIEWPORT_2")
 	RSServerPacket NPC_INFO_LARGE_VIEWPORT_2();
 
-	@Import("field3087")
+	@Import("IF_SETPOSITION")
 	RSServerPacket IF_SETPOSITION();
 
-	@Import("field3092")
+	@Import("UPDATE_UID192")
 	RSServerPacket UPDATE_UID192();
 
-	@Import("field3104")
+	@Import("DYNAMICOBJECT_SPAWN")
 	RSServerPacket DYNAMICOBJECT_SPAWN();
+
+	@Import("SET_PRIVCHATMODE")
+	RSServerPacket SET_PRIVCHATMODE();
 }

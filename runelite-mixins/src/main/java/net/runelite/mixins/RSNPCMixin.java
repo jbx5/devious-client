@@ -138,6 +138,7 @@ public abstract class RSNPCMixin implements RSNPC
 				return;
 			}
 
+			setDead(false);
 			client.getCallbacks().postDeferred(new NpcChanged(this, oldComposition));
 		}
 	}

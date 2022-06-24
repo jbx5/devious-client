@@ -220,7 +220,9 @@ public class Walker
 
 			if (Math.abs(a.getX() - b.getX()) + Math.abs(a.getY() + b.getY()) > 1 && a.getPlane() == b.getPlane())
 			{
-				TileObject wall = TileObjects.getFirstAt(tileA, "Door");
+				TileObject wall = TileObjects.getFirstAt(tileA, it ->
+						!(it instanceof WallObject) && it.getName() != null && it.getName().equals("Door")
+				);
 				if (wall != null && wall.hasAction("Open"))
 				{
 					log.debug("Handling diagonal door {}", wall.getWorldLocation());

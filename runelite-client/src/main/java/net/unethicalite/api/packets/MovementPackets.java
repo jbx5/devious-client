@@ -1,8 +1,8 @@
 package net.unethicalite.api.packets;
 
-import net.unethicalite.api.game.Game;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.packets.PacketBufferNode;
+import net.unethicalite.api.game.Game;
 import net.unethicalite.client.Static;
 
 public class MovementPackets
@@ -34,9 +34,9 @@ public class MovementPackets
 		var clientPacket = Game.getClientPacket();
 		var packetBufferNode = Static.getClient().preparePacket(clientPacket.MOVE_GAMECLICK(), client.getPacketWriter().getIsaacCipher());
 		packetBufferNode.getPacketBuffer().writeByte(5);
-		packetBufferNode.getPacketBuffer().writeByte(ctrlDown ? 2 : 0);	// Old: packetBufferNode.getPacketBuffer().writeByteSub(ctrlDown ? 2 : 0);
-		packetBufferNode.getPacketBuffer().writeShort(worldPointX);	// Old: packetBufferNode.getPacketBuffer().writeShortAddLE(worldPointY);
-		packetBufferNode.getPacketBuffer().writeShortLE(worldPointY);	// Old: packetBufferNode.getPacketBuffer().writeShort(worldPointX);
+		packetBufferNode.getPacketBuffer().writeByte(ctrlDown ? 2 : 0);
+		packetBufferNode.getPacketBuffer().writeShort(worldPointX);
+		packetBufferNode.getPacketBuffer().writeShortLE(worldPointY);
 		return packetBufferNode;
 	}
 }

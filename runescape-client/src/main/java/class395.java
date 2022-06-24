@@ -1,5 +1,3 @@
 import net.runelite.mapping.ObfuscatedName;
-
 @ObfuscatedName("ol")
-public interface class395 {
-}
+public interface class395 {}

@@ -12,6 +12,7 @@ import net.runelite.client.game.ItemManager;
 import net.runelite.client.game.WorldService;
 import net.runelite.client.input.KeyManager;
 import net.runelite.client.plugins.PluginManager;
+import net.runelite.client.ui.overlay.OverlayManager;
 import net.unethicalite.api.movement.pathfinder.GlobalCollisionMap;
 import net.unethicalite.api.script.paint.Paint;
 import net.unethicalite.client.config.UnethicaliteConfig;
@@ -105,6 +106,10 @@ public class Static
 	@Inject
 	@Getter
 	private static EntityRenderer entityRenderer;
+
+	@Inject
+	@Getter
+	private static OverlayManager overlayManager;
 
 	public static void setScriptArgs(String[] scriptArgs)
 	{

@@ -1,10 +1,10 @@
 package net.unethicalite.api.packets;
 
-import net.unethicalite.api.game.Game;
-import net.unethicalite.api.game.GameThread;
 import net.runelite.api.Client;
 import net.runelite.api.packets.ClientPacket;
 import net.runelite.api.packets.PacketBufferNode;
+import net.unethicalite.api.game.Game;
+import net.unethicalite.api.game.GameThread;
 import net.unethicalite.client.Static;
 
 public class DialogPackets
@@ -20,8 +20,6 @@ public class DialogPackets
 		{
 			GameThread.invoke(() -> Static.getClient().runScript(138));
 		}
-
-		// closes the input dialog
 	}
 
 	public static void sendNumberInput(int number)
