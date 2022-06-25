@@ -41,11 +41,9 @@ public class class129 extends class128 {
 			var1 = (var0 & 127) * var1 / 128;
 			if (var1 < 2) {
 				var1 = 2;
-			} else
-				if (var1 > 126) {
-					var1 = 126;
-				}
-
+			} else if (var1 > 126) {
+				var1 = 126;
+			}
 			return (var0 & 65408) + var1;
 		}
 	}

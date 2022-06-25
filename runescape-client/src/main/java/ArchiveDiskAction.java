@@ -59,20 +59,16 @@ public class ArchiveDiskAction extends Node {
 							var6 = Reflection.getInt(var5, ((Object) (null)));
 							var0.writeByte(0);
 							var0.writeInt(var6);
-						} else
-							if (var4 == 1) {
-								var5 = var1.fields[var3];
-								Reflection.setInt(var5, ((Object) (null)), var1.intReplaceValues[var3]);
-								var0.writeByte(0);
-							} else
-								if (var4 == 2) {
-									var5 = var1.fields[var3];
-									var6 = var5.getModifiers();
-									var0.writeByte(0);
-									var0.writeInt(var6);
-								}
-
-
+						} else if (var4 == 1) {
+							var5 = var1.fields[var3];
+							Reflection.setInt(var5, ((Object) (null)), var1.intReplaceValues[var3]);
+							var0.writeByte(0);
+						} else if (var4 == 2) {
+							var5 = var1.fields[var3];
+							var6 = var5.getModifiers();
+							var0.writeByte(0);
+							var0.writeInt(var6);
+						}
 						Method var25;
 						if (var4 != 3) {
 							if (var4 == 4) {
@@ -92,19 +88,15 @@ public class ArchiveDiskAction extends Node {
 							Object var11 = Reflection.invoke(var25, ((Object) (null)), var7);
 							if (var11 == null) {
 								var0.writeByte(0);
-							} else
-								if (var11 instanceof Number) {
-									var0.writeByte(1);
-									var0.writeLong(((Number) (var11)).longValue());
-								} else
-									if (var11 instanceof String) {
-										var0.writeByte(2);
-										var0.writeStringCp1252NullTerminated(((String) (var11)));
-									} else {
-										var0.writeByte(4);
-									}
-
-
+							} else if (var11 instanceof Number) {
+								var0.writeByte(1);
+								var0.writeLong(((Number) (var11)).longValue());
+							} else if (var11 instanceof String) {
+								var0.writeByte(2);
+								var0.writeStringCp1252NullTerminated(((String) (var11)));
+							} else {
+								var0.writeByte(4);
+							}
 						}
 					} catch (ClassNotFoundException var13) {
 						var0.writeByte(-10);
@@ -148,26 +140,22 @@ public class ArchiveDiskAction extends Node {
 			char var5 = var0.charAt(var4);
 			if (var3 == 0) {
 				var5 = Character.toLowerCase(var5);
-			} else
-				if (var3 == 2 || Character.isUpperCase(var5)) {
-					var5 = class326.method6050(var5);
-				}
-
+			} else if (var3 == 2 || Character.isUpperCase(var5)) {
+				var5 = class326.method6050(var5);
+			}
 			if (Character.isLetter(var5)) {
 				var3 = 0;
-			} else
-				if (var5 != '.' && var5 != '?' && var5 != '!') {
-					if (Character.isSpaceChar(var5)) {
-						if (var3 != 2) {
-							var3 = 1;
-						}
-					} else {
+			} else if (var5 != '.' && var5 != '?' && var5 != '!') {
+				if (Character.isSpaceChar(var5)) {
+					if (var3 != 2) {
 						var3 = 1;
 					}
 				} else {
-					var3 = 2;
+					var3 = 1;
 				}
-
+			} else {
+				var3 = 2;
+			}
 			var2[var4] = var5;
 		}
 		return new String(var2);

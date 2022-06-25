@@ -173,151 +173,139 @@ public class WorldMapSection0 implements WorldMapSection {
 		if (var0 != null && var0.method2709() != 0) {
 			if (var1 < ((float) (var0.field1462[0].field1420))) {
 				return var0.field1468 == class116.field1455 ? var0.field1462[0].field1423 : InvDefinition.method3349(var0, var1, true);
-			} else
-				if (var1 > ((float) (var0.field1462[var0.method2709() - 1].field1420))) {
-					return var0.field1461 == class116.field1455 ? var0.field1462[var0.method2709() - 1].field1423 : InvDefinition.method3349(var0, var1, false);
-				} else
-					if (var0.field1459) {
-						return var0.field1462[0].field1423;
-					} else {
-						class113 var2 = var0.method2717(var1);
-						boolean var3 = false;
-						boolean var4 = false;
-						if (var2 == null) {
-							return 0.0F;
-						} else {
-							float var7;
-							if (0.0 == ((double) (var2.field1419)) && ((double) (var2.field1425)) == 0.0) {
-								var3 = true;
-							} else
-								if (Float.MAX_VALUE == var2.field1419 && Float.MAX_VALUE == var2.field1425) {
-									var4 = true;
-								} else
-									if (var2.field1426 != null) {
-										if (var0.field1472) {
-											float[] var5 = new float[4];
-											float[] var6 = new float[4];
-											var5[0] = ((float) (var2.field1420));
-											var6[0] = var2.field1423;
-											var5[1] = var5[0] + var2.field1419 * 0.33333334F;
-											var6[1] = 0.33333334F * var2.field1425 + var6[0];
-											var5[3] = ((float) (var2.field1426.field1420));
-											var6[3] = var2.field1426.field1423;
-											var5[2] = var5[3] - 0.33333334F * var2.field1426.field1421;
-											var6[2] = var6[3] - var2.field1426.field1422 * 0.33333334F;
-											if (var0.field1463) {
-												if (var0 != null) {
-													var7 = var5[3] - var5[0];
-													if (0.0 != ((double) (var7))) {
-														float var8 = var5[1] - var5[0];
-														float var9 = var5[2] - var5[0];
-														Float var10 = var8 / var7;
-														Float var11 = var9 / var7;
-														var0.field1470 = var10 == 0.33333334F && var11 == 0.6666667F;
-														float var12 = var10;
-														float var13 = var11;
-														if (((double) (var10)) < 0.0) {
-															var10 = 0.0F;
-														}
-														if (((double) (var11)) > 1.0) {
-															var11 = 1.0F;
-														}
-														if (((double) (var10)) > 1.0 || var11 < -1.0F) {
-															Float var14 = var10;
-															Float var15 = 1.0F - var11;
-															if (var10 < 0.0F) {
-																var14 = 0.0F;
-															}
-															if (var15 < 0.0F) {
-																var15 = 0.0F;
-															}
-															if (var14 > 1.0F || var15 > 1.0F) {
-																float var16 = ((float) (((double) (var14 * (var14 - 2.0F + var15))) + ((double) (var15)) * (((double) (var15)) - 2.0) + 1.0));
-																if (class114.field1429 + var16 > 0.0F) {
-																	ObjectComposition.method3690(var14, var15);
-																}
-															}
-															var15 = 1.0F - var15;
-														}
-														if (var10 != var12) {
-															var5[1] = var5[0] + var10 * var7;
-															if (((double) (var12)) != 0.0) {
-																var6[1] = var6[0] + (var6[1] - var6[0]) * var10 / var12;
-															}
-														}
-														if (var11 != var13) {
-															var5[2] = var5[0] + var11 * var7;
-															if (1.0 != ((double) (var13))) {
-																var6[2] = ((float) (((double) (var6[3])) - ((double) (var6[3] - var6[2])) * (1.0 - ((double) (var11))) / (1.0 - ((double) (var13)))));
-															}
-														}
-														var0.field1464 = var5[0];
-														var0.field1458 = var5[3];
-														class388.method7040(0.0F, var10, var11, 1.0F, var0.field1465);
-														class388.method7040(var6[0], var6[1], var6[2], var6[3], var0.field1467);
-													}
-												}
-											} else {
-												HealthBar.method2355(var0, var5, var6);
-											}
-											var0.field1472 = false;
+			} else if (var1 > ((float) (var0.field1462[var0.method2709() - 1].field1420))) {
+				return var0.field1461 == class116.field1455 ? var0.field1462[var0.method2709() - 1].field1423 : InvDefinition.method3349(var0, var1, false);
+			} else if (var0.field1459) {
+				return var0.field1462[0].field1423;
+			} else {
+				class113 var2 = var0.method2717(var1);
+				boolean var3 = false;
+				boolean var4 = false;
+				if (var2 == null) {
+					return 0.0F;
+				} else {
+					float var7;
+					if (0.0 == ((double) (var2.field1419)) && ((double) (var2.field1425)) == 0.0) {
+						var3 = true;
+					} else if (Float.MAX_VALUE == var2.field1419 && Float.MAX_VALUE == var2.field1425) {
+						var4 = true;
+					} else if (var2.field1426 != null) {
+						if (var0.field1472) {
+							float[] var5 = new float[4];
+							float[] var6 = new float[4];
+							var5[0] = ((float) (var2.field1420));
+							var6[0] = var2.field1423;
+							var5[1] = var5[0] + var2.field1419 * 0.33333334F;
+							var6[1] = 0.33333334F * var2.field1425 + var6[0];
+							var5[3] = ((float) (var2.field1426.field1420));
+							var6[3] = var2.field1426.field1423;
+							var5[2] = var5[3] - 0.33333334F * var2.field1426.field1421;
+							var6[2] = var6[3] - var2.field1426.field1422 * 0.33333334F;
+							if (var0.field1463) {
+								if (var0 != null) {
+									var7 = var5[3] - var5[0];
+									if (0.0 != ((double) (var7))) {
+										float var8 = var5[1] - var5[0];
+										float var9 = var5[2] - var5[0];
+										Float var10 = var8 / var7;
+										Float var11 = var9 / var7;
+										var0.field1470 = var10 == 0.33333334F && var11 == 0.6666667F;
+										float var12 = var10;
+										float var13 = var11;
+										if (((double) (var10)) < 0.0) {
+											var10 = 0.0F;
 										}
-									} else {
-										var3 = true;
-									}
-
-
-							if (var3) {
-								return var2.field1423;
-							} else
-								if (var4) {
-									return ((float) (var2.field1420)) != var1 && var2.field1426 != null ? var2.field1426.field1423 : var2.field1423;
-								} else {
-									float var17;
-									float var18;
-									if (var0.field1463) {
-										if (var0 == null) {
-											var18 = 0.0F;
-										} else {
-											if (var1 == var0.field1464) {
-												var17 = 0.0F;
-											} else
-												if (var0.field1458 == var1) {
-													var17 = 1.0F;
-												} else {
-													var17 = (var1 - var0.field1464) / (var0.field1458 - var0.field1464);
-												}
-
-											if (var0.field1470) {
-												var7 = var17;
-											} else {
-												float[] var19 = new float[]{ var0.field1465[0] - var17, var0.field1465[1], var0.field1465[2], var0.field1465[3] };
-												float[] var20 = new float[5];
-												int var21 = VerticalAlignment.method3534(var19, 3, 0.0F, true, 1.0F, true, var20);
-												if (var21 == 1) {
-													var7 = var20[0];
-												} else {
-													var7 = 0.0F;
+										if (((double) (var11)) > 1.0) {
+											var11 = 1.0F;
+										}
+										if (((double) (var10)) > 1.0 || var11 < -1.0F) {
+											Float var14 = var10;
+											Float var15 = 1.0F - var11;
+											if (var10 < 0.0F) {
+												var14 = 0.0F;
+											}
+											if (var15 < 0.0F) {
+												var15 = 0.0F;
+											}
+											if (var14 > 1.0F || var15 > 1.0F) {
+												float var16 = ((float) (((double) (var14 * (var14 - 2.0F + var15))) + ((double) (var15)) * (((double) (var15)) - 2.0) + 1.0));
+												if (class114.field1429 + var16 > 0.0F) {
+													ObjectComposition.method3690(var14, var15);
 												}
 											}
-											var18 = var0.field1467[0] + var7 * (var0.field1467[1] + (var0.field1467[2] + var7 * var0.field1467[3]) * var7);
+											var15 = 1.0F - var15;
 										}
-										return var18;
-									} else {
-										if (var0 == null) {
-											var18 = 0.0F;
-										} else {
-											var17 = var1 - var0.field1464;
-											var18 = var17 * ((var17 * var0.field1465[0] + var0.field1465[1]) * var17 + var0.field1465[2]) + var0.field1465[3];
+										if (var10 != var12) {
+											var5[1] = var5[0] + var10 * var7;
+											if (((double) (var12)) != 0.0) {
+												var6[1] = var6[0] + (var6[1] - var6[0]) * var10 / var12;
+											}
 										}
-										return var18;
+										if (var11 != var13) {
+											var5[2] = var5[0] + var11 * var7;
+											if (1.0 != ((double) (var13))) {
+												var6[2] = ((float) (((double) (var6[3])) - ((double) (var6[3] - var6[2])) * (1.0 - ((double) (var11))) / (1.0 - ((double) (var13)))));
+											}
+										}
+										var0.field1464 = var5[0];
+										var0.field1458 = var5[3];
+										class388.method7040(0.0F, var10, var11, 1.0F, var0.field1465);
+										class388.method7040(var6[0], var6[1], var6[2], var6[3], var0.field1467);
 									}
 								}
-
+							} else {
+								HealthBar.method2355(var0, var5, var6);
+							}
+							var0.field1472 = false;
+						}
+					} else {
+						var3 = true;
+					}
+					if (var3) {
+						return var2.field1423;
+					} else if (var4) {
+						return ((float) (var2.field1420)) != var1 && var2.field1426 != null ? var2.field1426.field1423 : var2.field1423;
+					} else {
+						float var17;
+						float var18;
+						if (var0.field1463) {
+							if (var0 == null) {
+								var18 = 0.0F;
+							} else {
+								if (var1 == var0.field1464) {
+									var17 = 0.0F;
+								} else if (var0.field1458 == var1) {
+									var17 = 1.0F;
+								} else {
+									var17 = (var1 - var0.field1464) / (var0.field1458 - var0.field1464);
+								}
+								if (var0.field1470) {
+									var7 = var17;
+								} else {
+									float[] var19 = new float[]{ var0.field1465[0] - var17, var0.field1465[1], var0.field1465[2], var0.field1465[3] };
+									float[] var20 = new float[5];
+									int var21 = VerticalAlignment.method3534(var19, 3, 0.0F, true, 1.0F, true, var20);
+									if (var21 == 1) {
+										var7 = var20[0];
+									} else {
+										var7 = 0.0F;
+									}
+								}
+								var18 = var0.field1467[0] + var7 * (var0.field1467[1] + (var0.field1467[2] + var7 * var0.field1467[3]) * var7);
+							}
+							return var18;
+						} else {
+							if (var0 == null) {
+								var18 = 0.0F;
+							} else {
+								var17 = var1 - var0.field1464;
+								var18 = var17 * ((var17 * var0.field1465[0] + var0.field1465[1]) * var17 + var0.field1465[2]) + var0.field1465[3];
+							}
+							return var18;
 						}
 					}
-
-
+				}
+			}
 		} else {
 			return 0.0F;
 		}

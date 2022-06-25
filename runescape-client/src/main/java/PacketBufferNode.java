@@ -167,14 +167,12 @@ public class PacketBufferNode extends Node {
 			if (class19.clientPreferences.method2258() == 0 && Client.currentTrackGroupId != -1) {
 				AttackOption.method2410(class121.archive6, Client.currentTrackGroupId, 0, var0, false);
 				Client.playingJingle = false;
-			} else
-				if (var0 == 0) {
-					ReflectionCheck.method579();
-					Client.playingJingle = false;
-				} else {
-					Decimator.method1005(var0);
-				}
-
+			} else if (var0 == 0) {
+				ReflectionCheck.method579();
+				Client.playingJingle = false;
+			} else {
+				Decimator.method1005(var0);
+			}
 			class19.clientPreferences.method2297(var0);
 		}
 	}

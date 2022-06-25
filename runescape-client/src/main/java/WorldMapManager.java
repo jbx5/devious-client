@@ -384,13 +384,11 @@ public final class WorldMapManager {
 		float var3 = ((float) (var1)) / ((float) (var2));
 		if (var3 > 8.0F) {
 			return 8.0F;
-		} else
-			if (var3 < 1.0F) {
-				return 1.0F;
-			} else {
-				int var4 = Math.round(var3);
-				return Math.abs(((float) (var4)) - var3) < 0.05F ? ((float) (var4)) : var3;
-			}
-
+		} else if (var3 < 1.0F) {
+			return 1.0F;
+		} else {
+			int var4 = Math.round(var3);
+			return Math.abs(((float) (var4)) - var3) < 0.05F ? ((float) (var4)) : var3;
+		}
 	}
 }

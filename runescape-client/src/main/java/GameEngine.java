@@ -407,7 +407,7 @@ public abstract class GameEngine extends Applet implements Runnable , FocusListe
 	@ObfuscatedName("b")
 	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "1260783779")
 	@Export("addCanvas")
-	final synchronized void addCanvas() {
+	synchronized final void addCanvas() {
 		Container var1 = this.container();
 		if (this.canvas != null) {
 			this.canvas.removeFocusListener(this);
@@ -546,7 +546,7 @@ public abstract class GameEngine extends Applet implements Runnable , FocusListe
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "1520335833")
 	@Export("kill")
-	final synchronized void kill() {
+	synchronized final void kill() {
 		if (!isKilled) {
 			isKilled = true;
 			try {
@@ -704,7 +704,7 @@ public abstract class GameEngine extends Applet implements Runnable , FocusListe
 		}
 	}
 
-	public final synchronized void paint(Graphics var1) {
+	public synchronized final void paint(Graphics var1) {
 		if (this == gameEngine && !isKilled) {
 			this.fullRedraw = true;
 			if (class115.method2692() - this.field185 > 1000L) {

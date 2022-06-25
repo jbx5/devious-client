@@ -175,13 +175,11 @@ public class Buffer extends Node {
 			char var12 = var1.charAt(var5);
 			if (var12 <= 127) {
 				++var4;
-			} else
-				if (var12 <= 2047) {
-					var4 += 2;
-				} else {
-					var4 += 3;
-				}
-
+			} else if (var12 <= 2047) {
+				var4 += 2;
+			} else {
+				var4 += 3;
+			}
 		}
 		this.array[++this.offset - 1] = 0;
 		this.writeVarInt(var4);
@@ -194,16 +192,14 @@ public class Buffer extends Node {
 			char var11 = var1.charAt(var10);
 			if (var11 <= 127) {
 				var6[var9++] = ((byte) (var11));
-			} else
-				if (var11 <= 2047) {
-					var6[var9++] = ((byte) (192 | var11 >> 6));
-					var6[var9++] = ((byte) (128 | var11 & '?'));
-				} else {
-					var6[var9++] = ((byte) (224 | var11 >> '\f'));
-					var6[var9++] = ((byte) (128 | var11 >> 6 & 63));
-					var6[var9++] = ((byte) (128 | var11 & '?'));
-				}
-
+			} else if (var11 <= 2047) {
+				var6[var9++] = ((byte) (192 | var11 >> 6));
+				var6[var9++] = ((byte) (128 | var11 & '?'));
+			} else {
+				var6[var9++] = ((byte) (224 | var11 >> '\f'));
+				var6[var9++] = ((byte) (128 | var11 >> 6 & 63));
+				var6[var9++] = ((byte) (128 | var11 & '?'));
+			}
 		}
 		var5 = var9 - var7;
 		this.offset = (var5 * 1978245093 + var4) * -1883142675;
@@ -266,13 +262,11 @@ public class Buffer extends Node {
 	public void writeSmartByteShort(int var1) {
 		if (var1 >= 0 && var1 < 128) {
 			this.writeByte(var1);
-		} else
-			if (var1 >= 0 && var1 < 32768) {
-				this.writeShort(var1 + 32768);
-			} else {
-				throw new IllegalArgumentException();
-			}
-
+		} else if (var1 >= 0 && var1 < 32768) {
+			this.writeShort(var1 + 32768);
+		} else {
+			throw new IllegalArgumentException();
+		}
 	}
 
 	@ObfuscatedName("bk")
@@ -431,48 +425,40 @@ public class Buffer extends Node {
 						} else {
 							var11 = var10;
 						}
-					} else
-						if (var10 < 192) {
+					} else if (var10 < 192) {
+						var11 = 65533;
+					} else if (var10 < 224) {
+						if (var8 < var9 && (var4[var8] & 192) == 128) {
+							var11 = (var10 & 31) << 6 | var4[var8++] & 63;
+							if (var11 < 128) {
+								var11 = 65533;
+							}
+						} else {
 							var11 = 65533;
-						} else
-							if (var10 < 224) {
-								if (var8 < var9 && (var4[var8] & 192) == 128) {
-									var11 = (var10 & 31) << 6 | var4[var8++] & 63;
-									if (var11 < 128) {
-										var11 = 65533;
-									}
-								} else {
-									var11 = 65533;
-								}
-							} else
-								if (var10 < 240) {
-									if (var8 + 1 < var9 && (var4[var8] & 192) == 128 && (var4[var8 + 1] & 192) == 128) {
-										var11 = (var10 & 15) << 12 | (var4[var8++] & 63) << 6 | var4[var8++] & 63;
-										if (var11 < 2048) {
-											var11 = 65533;
-										}
-									} else {
-										var11 = 65533;
-									}
-								} else
-									if (var10 < 248) {
-										if (var8 + 2 < var9 && (var4[var8] & 192) == 128 && (var4[var8 + 1] & 192) == 128 && (var4[var8 + 2] & 192) == 128) {
-											var11 = (var10 & 7) << 18 | (var4[var8++] & 63) << 12 | (var4[var8++] & 63) << 6 | var4[var8++] & 63;
-											if (var11 >= 65536 && var11 <= 1114111) {
-												var11 = 65533;
-											} else {
-												var11 = 65533;
-											}
-										} else {
-											var11 = 65533;
-										}
-									} else {
-										var11 = 65533;
-									}
-
-
-
-
+						}
+					} else if (var10 < 240) {
+						if (var8 + 1 < var9 && (var4[var8] & 192) == 128 && (var4[var8 + 1] & 192) == 128) {
+							var11 = (var10 & 15) << 12 | (var4[var8++] & 63) << 6 | var4[var8++] & 63;
+							if (var11 < 2048) {
+								var11 = 65533;
+							}
+						} else {
+							var11 = 65533;
+						}
+					} else if (var10 < 248) {
+						if (var8 + 2 < var9 && (var4[var8] & 192) == 128 && (var4[var8 + 1] & 192) == 128 && (var4[var8 + 2] & 192) == 128) {
+							var11 = (var10 & 7) << 18 | (var4[var8++] & 63) << 12 | (var4[var8++] & 63) << 6 | var4[var8++] & 63;
+							if (var11 >= 65536 && var11 <= 1114111) {
+								var11 = 65533;
+							} else {
+								var11 = 65533;
+							}
+						} else {
+							var11 = 65533;
+						}
+					} else {
+						var11 = 65533;
+					}
 				}
 				String var3 = new String(var6, 0, var7);
 				this.offset += var2;

@@ -30,15 +30,13 @@ public class class65 {
 			if (var3 == 2) {
 				var0.field1190 = 0;
 			}
-		} else
-			if (var1 == -1 || var0.sequence == -1 || ScriptFrame.SequenceDefinition_get(var1).field2183 >= ScriptFrame.SequenceDefinition_get(var0.sequence).field2183) {
-				var0.sequence = var1;
-				var0.sequenceFrame = 0;
-				var0.sequenceFrameCycle = 0;
-				var0.sequenceDelay = var2;
-				var0.field1190 = 0;
-				var0.field1203 = var0.pathLength;
-			}
-
+		} else if (var1 == -1 || var0.sequence == -1 || ScriptFrame.SequenceDefinition_get(var1).field2183 >= ScriptFrame.SequenceDefinition_get(var0.sequence).field2183) {
+			var0.sequence = var1;
+			var0.sequenceFrame = 0;
+			var0.sequenceFrameCycle = 0;
+			var0.sequenceDelay = var2;
+			var0.field1190 = 0;
+			var0.field1203 = var0.pathLength;
+		}
 	}
 }

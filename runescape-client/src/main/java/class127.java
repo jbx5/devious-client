@@ -212,20 +212,14 @@ public class class127 extends class128 {
 	static char method2848(char var0) {
 		if (var0 == 198) {
 			return 'E';
-		} else
-			if (var0 == 230) {
-				return 'e';
-			} else
-				if (var0 == 223) {
-					return 's';
-				} else
-					if (var0 == 338) {
-						return 'E';
-					} else {
-						return ((char) (var0 == 339 ? 'e' : '\u0000'));
-					}
-
-
-
+		} else if (var0 == 230) {
+			return 'e';
+		} else if (var0 == 223) {
+			return 's';
+		} else if (var0 == 338) {
+			return 'E';
+		} else {
+			return ((char) (var0 == 339 ? 'e' : '\u0000'));
+		}
 	}
 }

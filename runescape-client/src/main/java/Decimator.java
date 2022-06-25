@@ -94,13 +94,11 @@ public class Decimator {
 				int var10 = var3[var6] + 32768 >> 16;
 				if (var10 < -128) {
 					var1[var6] = -128;
-				} else
-					if (var10 > 127) {
-						var1[var6] = 127;
-					} else {
-						var1[var6] = ((byte) (var10));
-					}
-
+				} else if (var10 > 127) {
+					var1[var6] = 127;
+				} else {
+					var1[var6] = ((byte) (var10));
+				}
 			}
 		}
 		return var1;
@@ -165,212 +163,192 @@ public class Decimator {
 			class446.Interpreter_intStackSize -= 3;
 			SoundSystem.queueSoundEffect(Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize], Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize + 1], Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize + 2]);
 			return 1;
-		} else
-			if (var0 == ScriptOpcodes.SOUND_SONG) {
-				class16.playSong(Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize]);
-				return 1;
-			} else
-				if (var0 == ScriptOpcodes.SOUND_JINGLE) {
-					class446.Interpreter_intStackSize -= 2;
-					PcmPlayer.method719(Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize], Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize + 1]);
-					return 1;
+		} else if (var0 == ScriptOpcodes.SOUND_SONG) {
+			class16.playSong(Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize]);
+			return 1;
+		} else if (var0 == ScriptOpcodes.SOUND_JINGLE) {
+			class446.Interpreter_intStackSize -= 2;
+			PcmPlayer.method719(Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize], Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize + 1]);
+			return 1;
+		} else {
+			class83 var3;
+			class82 var4;
+			int var5;
+			int var6;
+			String var7;
+			if (var0 != 3212 && var0 != 3213 && var0 != 3209 && var0 != 3181 && var0 != 3203 && var0 != 3205 && var0 != 3207) {
+				if (var0 != 3214 && var0 != 3215 && var0 != 3210 && var0 != 3182 && var0 != 3204 && var0 != 3206 && var0 != 3208) {
+					return var0 == 3211 ? 1 : 2;
 				} else {
-					class83 var3;
-					class82 var4;
-					int var5;
-					int var6;
-					String var7;
-					if (var0 != 3212 && var0 != 3213 && var0 != 3209 && var0 != 3181 && var0 != 3203 && var0 != 3205 && var0 != 3207) {
-						if (var0 != 3214 && var0 != 3215 && var0 != 3210 && var0 != 3182 && var0 != 3204 && var0 != 3206 && var0 != 3208) {
-							return var0 == 3211 ? 1 : 2;
-						} else {
-							var3 = class83.field1074;
-							var4 = class82.field1069;
-							boolean var8 = false;
-							if (var0 == 3214) {
-								var6 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
-								var3 = ((class83) (Actor.findEnumerated(MilliClock.method3310(), var6)));
-								if (var3 == null) {
-									throw new RuntimeException(String.format("Unrecognized device option %d", var6));
-								}
-							}
-							if (var0 == 3215) {
-								var6 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
-								var4 = ((class82) (Actor.findEnumerated(WorldMapData_1.method4867(), var6)));
-								if (var4 == null) {
-									throw new RuntimeException(String.format("Unrecognized game option %d", var6));
-								}
-							}
-							if (var0 == 3210) {
-								var6 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
-								var3 = ((class83) (Actor.findEnumerated(MilliClock.method3310(), var6)));
-								if (var3 == null) {
-									var4 = ((class82) (Actor.findEnumerated(WorldMapData_1.method4867(), var6)));
-									if (var4 == null) {
-										throw new RuntimeException(String.format("Unrecognized client option %d", var6));
-									}
-								}
-							} else
-								if (var0 == 3182) {
-									var3 = class83.field1079;
-								} else
-									if (var0 == 3204) {
-										var4 = class82.field1067;
-									} else
-										if (var0 == 3206) {
-											var4 = class82.field1068;
-										} else
-											if (var0 == 3208) {
-												var4 = class82.field1073;
-											}
-
-
-
-
-							if (var4 == class82.field1069) {
-								switch (var3.field1080) {
-									case 1 :
-										var5 = (class19.clientPreferences.method2247()) ? 1 : 0;
-										break;
-									case 2 :
-										var5 = (class19.clientPreferences.method2317()) ? 1 : 0;
-										break;
-									case 3 :
-										var5 = (class19.clientPreferences.method2252()) ? 1 : 0;
-										break;
-									case 4 :
-										var5 = class19.clientPreferences.method2243();
-										break;
-									case 5 :
-										var5 = class193.method3919();
-										break;
-									default :
-										var7 = String.format("Unkown device option: %s.", var3.toString());
-										throw new RuntimeException(var7);
-								}
-							} else {
-								switch (var4.field1065) {
-									case 1 :
-										var5 = (class19.clientPreferences.method2245()) ? 1 : 0;
-										break;
-									case 2 :
-										var6 = class19.clientPreferences.method2258();
-										var5 = Math.round(((float) (var6 * 100)) / 255.0F);
-										break;
-									case 3 :
-										var6 = class19.clientPreferences.method2241();
-										var5 = Math.round(((float) (var6 * 100)) / 127.0F);
-										break;
-									case 4 :
-										var6 = class19.clientPreferences.method2262();
-										var5 = Math.round(((float) (var6 * 100)) / 127.0F);
-										break;
-									default :
-										var7 = String.format("Unkown game option: %s.", var4.toString());
-										throw new RuntimeException(var7);
-								}
-							}
-							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var5;
-							return 1;
+					var3 = class83.field1074;
+					var4 = class82.field1069;
+					boolean var8 = false;
+					if (var0 == 3214) {
+						var6 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+						var3 = ((class83) (Actor.findEnumerated(MilliClock.method3310(), var6)));
+						if (var3 == null) {
+							throw new RuntimeException(String.format("Unrecognized device option %d", var6));
 						}
-					} else {
-						var3 = class83.field1074;
-						var4 = class82.field1069;
-						var5 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
-						if (var0 == 3212) {
-							var6 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
-							var3 = ((class83) (Actor.findEnumerated(MilliClock.method3310(), var6)));
-							if (var3 == null) {
-								throw new RuntimeException(String.format("Unrecognized device option %d", var6));
-							}
+					}
+					if (var0 == 3215) {
+						var6 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+						var4 = ((class82) (Actor.findEnumerated(WorldMapData_1.method4867(), var6)));
+						if (var4 == null) {
+							throw new RuntimeException(String.format("Unrecognized game option %d", var6));
 						}
-						if (var0 == 3213) {
-							var6 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+					}
+					if (var0 == 3210) {
+						var6 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+						var3 = ((class83) (Actor.findEnumerated(MilliClock.method3310(), var6)));
+						if (var3 == null) {
 							var4 = ((class82) (Actor.findEnumerated(WorldMapData_1.method4867(), var6)));
 							if (var4 == null) {
-								throw new RuntimeException(String.format("Unrecognized game option %d", var6));
+								throw new RuntimeException(String.format("Unrecognized client option %d", var6));
 							}
 						}
-						if (var0 == 3209) {
-							var6 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
-							var3 = ((class83) (Actor.findEnumerated(MilliClock.method3310(), var6)));
-							if (var3 == null) {
-								var4 = ((class82) (Actor.findEnumerated(WorldMapData_1.method4867(), var6)));
-								if (var4 == null) {
-									throw new RuntimeException(String.format("Unrecognized client option %d", var6));
-								}
-							}
-						} else
-							if (var0 == 3181) {
-								var3 = class83.field1079;
-							} else
-								if (var0 == 3203) {
-									var4 = class82.field1067;
-								} else
-									if (var0 == 3205) {
-										var4 = class82.field1068;
-									} else
-										if (var0 == 3207) {
-											var4 = class82.field1073;
-										}
-
-
-
-
-						if (var4 == class82.field1069) {
-							switch (var3.field1080) {
-								case 1 :
-									class19.clientPreferences.method2246(var5 == 1);
-									break;
-								case 2 :
-									class19.clientPreferences.method2248(var5 == 1);
-									break;
-								case 3 :
-									class19.clientPreferences.method2250(var5 == 1);
-									break;
-								case 4 :
-									if (var5 < 0) {
-										var5 = 0;
-									}
-									class19.clientPreferences.method2330(var5);
-									break;
-								case 5 :
-									WorldMapEvent.method5120(var5);
-									break;
-								default :
-									var7 = String.format("Unkown device option: %s.", var3.toString());
-									throw new RuntimeException(var7);
-							}
-						} else {
-							switch (var4.field1065) {
-								case 1 :
-									class19.clientPreferences.method2339(var5 == 1);
-									break;
-								case 2 :
-									var5 = Math.min(Math.max(var5, 0), 100);
-									var6 = Math.round(((float) (var5 * 255)) / 100.0F);
-									PacketBufferNode.method5196(var6);
-									break;
-								case 3 :
-									var5 = Math.min(Math.max(var5, 0), 100);
-									var6 = Math.round(((float) (var5 * 127)) / 100.0F);
-									WorldMapData_0.method4563(var6);
-									break;
-								case 4 :
-									var5 = Math.min(Math.max(var5, 0), 100);
-									var6 = Math.round(((float) (var5 * 127)) / 100.0F);
-									WorldMapEvent.method5121(var6);
-									break;
-								default :
-									var7 = String.format("Unkown game option: %s.", var4.toString());
-									throw new RuntimeException(var7);
-							}
+					} else if (var0 == 3182) {
+						var3 = class83.field1079;
+					} else if (var0 == 3204) {
+						var4 = class82.field1067;
+					} else if (var0 == 3206) {
+						var4 = class82.field1068;
+					} else if (var0 == 3208) {
+						var4 = class82.field1073;
+					}
+					if (var4 == class82.field1069) {
+						switch (var3.field1080) {
+							case 1 :
+								var5 = (class19.clientPreferences.method2247()) ? 1 : 0;
+								break;
+							case 2 :
+								var5 = (class19.clientPreferences.method2317()) ? 1 : 0;
+								break;
+							case 3 :
+								var5 = (class19.clientPreferences.method2252()) ? 1 : 0;
+								break;
+							case 4 :
+								var5 = class19.clientPreferences.method2243();
+								break;
+							case 5 :
+								var5 = class193.method3919();
+								break;
+							default :
+								var7 = String.format("Unkown device option: %s.", var3.toString());
+								throw new RuntimeException(var7);
 						}
-						return 1;
+					} else {
+						switch (var4.field1065) {
+							case 1 :
+								var5 = (class19.clientPreferences.method2245()) ? 1 : 0;
+								break;
+							case 2 :
+								var6 = class19.clientPreferences.method2258();
+								var5 = Math.round(((float) (var6 * 100)) / 255.0F);
+								break;
+							case 3 :
+								var6 = class19.clientPreferences.method2241();
+								var5 = Math.round(((float) (var6 * 100)) / 127.0F);
+								break;
+							case 4 :
+								var6 = class19.clientPreferences.method2262();
+								var5 = Math.round(((float) (var6 * 100)) / 127.0F);
+								break;
+							default :
+								var7 = String.format("Unkown game option: %s.", var4.toString());
+								throw new RuntimeException(var7);
+						}
+					}
+					Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var5;
+					return 1;
+				}
+			} else {
+				var3 = class83.field1074;
+				var4 = class82.field1069;
+				var5 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+				if (var0 == 3212) {
+					var6 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+					var3 = ((class83) (Actor.findEnumerated(MilliClock.method3310(), var6)));
+					if (var3 == null) {
+						throw new RuntimeException(String.format("Unrecognized device option %d", var6));
 					}
 				}
-
-
+				if (var0 == 3213) {
+					var6 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+					var4 = ((class82) (Actor.findEnumerated(WorldMapData_1.method4867(), var6)));
+					if (var4 == null) {
+						throw new RuntimeException(String.format("Unrecognized game option %d", var6));
+					}
+				}
+				if (var0 == 3209) {
+					var6 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+					var3 = ((class83) (Actor.findEnumerated(MilliClock.method3310(), var6)));
+					if (var3 == null) {
+						var4 = ((class82) (Actor.findEnumerated(WorldMapData_1.method4867(), var6)));
+						if (var4 == null) {
+							throw new RuntimeException(String.format("Unrecognized client option %d", var6));
+						}
+					}
+				} else if (var0 == 3181) {
+					var3 = class83.field1079;
+				} else if (var0 == 3203) {
+					var4 = class82.field1067;
+				} else if (var0 == 3205) {
+					var4 = class82.field1068;
+				} else if (var0 == 3207) {
+					var4 = class82.field1073;
+				}
+				if (var4 == class82.field1069) {
+					switch (var3.field1080) {
+						case 1 :
+							class19.clientPreferences.method2246(var5 == 1);
+							break;
+						case 2 :
+							class19.clientPreferences.method2248(var5 == 1);
+							break;
+						case 3 :
+							class19.clientPreferences.method2250(var5 == 1);
+							break;
+						case 4 :
+							if (var5 < 0) {
+								var5 = 0;
+							}
+							class19.clientPreferences.method2330(var5);
+							break;
+						case 5 :
+							WorldMapEvent.method5120(var5);
+							break;
+						default :
+							var7 = String.format("Unkown device option: %s.", var3.toString());
+							throw new RuntimeException(var7);
+					}
+				} else {
+					switch (var4.field1065) {
+						case 1 :
+							class19.clientPreferences.method2339(var5 == 1);
+							break;
+						case 2 :
+							var5 = Math.min(Math.max(var5, 0), 100);
+							var6 = Math.round(((float) (var5 * 255)) / 100.0F);
+							PacketBufferNode.method5196(var6);
+							break;
+						case 3 :
+							var5 = Math.min(Math.max(var5, 0), 100);
+							var6 = Math.round(((float) (var5 * 127)) / 100.0F);
+							WorldMapData_0.method4563(var6);
+							break;
+						case 4 :
+							var5 = Math.min(Math.max(var5, 0), 100);
+							var6 = Math.round(((float) (var5 * 127)) / 100.0F);
+							WorldMapEvent.method5121(var6);
+							break;
+						default :
+							var7 = String.format("Unkown game option: %s.", var4.toString());
+							throw new RuntimeException(var7);
+					}
+				}
+				return 1;
+			}
+		}
 	}
 
 	@ObfuscatedName("ht")
@@ -410,45 +388,33 @@ public class Decimator {
 						var11[var12 + 512] = var10;
 						var11[var12 + 1024] = var10;
 						var11[var12 + 1536] = var10;
-					} else
-						if (var8 == 1) {
-							var11[var12] = var10;
-							var11[var12 + 1] = var10;
-							var11[var12 + 2] = var10;
-							var11[var12 + 3] = var10;
-						} else
-							if (var8 == 2) {
-								var11[var12 + 3] = var10;
-								var11[var12 + 512 + 3] = var10;
-								var11[var12 + 1024 + 3] = var10;
-								var11[var12 + 1536 + 3] = var10;
-							} else
-								if (var8 == 3) {
-									var11[var12 + 1536] = var10;
-									var11[var12 + 1536 + 1] = var10;
-									var11[var12 + 1536 + 2] = var10;
-									var11[var12 + 1536 + 3] = var10;
-								}
-
-
-
+					} else if (var8 == 1) {
+						var11[var12] = var10;
+						var11[var12 + 1] = var10;
+						var11[var12 + 2] = var10;
+						var11[var12 + 3] = var10;
+					} else if (var8 == 2) {
+						var11[var12 + 3] = var10;
+						var11[var12 + 512 + 3] = var10;
+						var11[var12 + 1024 + 3] = var10;
+						var11[var12 + 1536 + 3] = var10;
+					} else if (var8 == 3) {
+						var11[var12 + 1536] = var10;
+						var11[var12 + 1536 + 1] = var10;
+						var11[var12 + 1536 + 2] = var10;
+						var11[var12 + 1536 + 3] = var10;
+					}
 				}
 				if (var9 == 3) {
 					if (var8 == 0) {
 						var11[var12] = var10;
-					} else
-						if (var8 == 1) {
-							var11[var12 + 3] = var10;
-						} else
-							if (var8 == 2) {
-								var11[var12 + 1536 + 3] = var10;
-							} else
-								if (var8 == 3) {
-									var11[var12 + 1536] = var10;
-								}
-
-
-
+					} else if (var8 == 1) {
+						var11[var12 + 3] = var10;
+					} else if (var8 == 2) {
+						var11[var12 + 1536 + 3] = var10;
+					} else if (var8 == 3) {
+						var11[var12 + 1536] = var10;
+					}
 				}
 				if (var9 == 2) {
 					if (var8 == 3) {
@@ -456,28 +422,22 @@ public class Decimator {
 						var11[var12 + 512] = var10;
 						var11[var12 + 1024] = var10;
 						var11[var12 + 1536] = var10;
-					} else
-						if (var8 == 0) {
-							var11[var12] = var10;
-							var11[var12 + 1] = var10;
-							var11[var12 + 2] = var10;
-							var11[var12 + 3] = var10;
-						} else
-							if (var8 == 1) {
-								var11[var12 + 3] = var10;
-								var11[var12 + 512 + 3] = var10;
-								var11[var12 + 1024 + 3] = var10;
-								var11[var12 + 1536 + 3] = var10;
-							} else
-								if (var8 == 2) {
-									var11[var12 + 1536] = var10;
-									var11[var12 + 1536 + 1] = var10;
-									var11[var12 + 1536 + 2] = var10;
-									var11[var12 + 1536 + 3] = var10;
-								}
-
-
-
+					} else if (var8 == 0) {
+						var11[var12] = var10;
+						var11[var12 + 1] = var10;
+						var11[var12 + 2] = var10;
+						var11[var12 + 3] = var10;
+					} else if (var8 == 1) {
+						var11[var12 + 3] = var10;
+						var11[var12 + 512 + 3] = var10;
+						var11[var12 + 1024 + 3] = var10;
+						var11[var12 + 1536 + 3] = var10;
+					} else if (var8 == 2) {
+						var11[var12 + 1536] = var10;
+						var11[var12 + 1536 + 1] = var10;
+						var11[var12 + 1536 + 2] = var10;
+						var11[var12 + 1536 + 3] = var10;
+					}
 				}
 			}
 		}
@@ -496,27 +456,25 @@ public class Decimator {
 					var19 = (var24.sizeY * 4 - var20.subHeight) / 2;
 					var20.drawAt(var1 * 4 + var13 + 48, var19 + (104 - var2 - var24.sizeY) * 4 + 48);
 				}
-			} else
-				if (var9 == 9) {
-					var12 = 15658734;
-					if (Canvas.method322(var5)) {
-						var12 = 15597568;
-					}
-					int[] var18 = FloorUnderlayDefinition.sceneMinimapSprite.pixels;
-					var19 = var1 * 4 + (103 - var2) * 2048 + 24624;
-					if (var8 != 0 && var8 != 2) {
-						var18[var19] = var12;
-						var18[var19 + 1 + 512] = var12;
-						var18[var19 + 1024 + 2] = var12;
-						var18[var19 + 1536 + 3] = var12;
-					} else {
-						var18[var19 + 1536] = var12;
-						var18[var19 + 1 + 1024] = var12;
-						var18[var19 + 512 + 2] = var12;
-						var18[var19 + 3] = var12;
-					}
+			} else if (var9 == 9) {
+				var12 = 15658734;
+				if (Canvas.method322(var5)) {
+					var12 = 15597568;
 				}
-
+				int[] var18 = FloorUnderlayDefinition.sceneMinimapSprite.pixels;
+				var19 = var1 * 4 + (103 - var2) * 2048 + 24624;
+				if (var8 != 0 && var8 != 2) {
+					var18[var19] = var12;
+					var18[var19 + 1 + 512] = var12;
+					var18[var19 + 1024 + 2] = var12;
+					var18[var19 + 1536 + 3] = var12;
+				} else {
+					var18[var19 + 1536] = var12;
+					var18[var19 + 1 + 1024] = var12;
+					var18[var19 + 512 + 2] = var12;
+					var18[var19 + 3] = var12;
+				}
+			}
 		}
 		var5 = class356.scene.getFloorDecorationTag(var0, var1, var2);
 		if (var5 != 0L) {
@@ -541,26 +499,18 @@ public class Decimator {
 		int var5 = var0.height;
 		if (var0.widthAlignment == 0) {
 			var0.width = var0.rawWidth;
-		} else
-			if (var0.widthAlignment == 1) {
-				var0.width = var1 - var0.rawWidth;
-			} else
-				if (var0.widthAlignment == 2) {
-					var0.width = var0.rawWidth * var1 >> 14;
-				}
-
-
+		} else if (var0.widthAlignment == 1) {
+			var0.width = var1 - var0.rawWidth;
+		} else if (var0.widthAlignment == 2) {
+			var0.width = var0.rawWidth * var1 >> 14;
+		}
 		if (var0.heightAlignment == 0) {
 			var0.height = var0.rawHeight;
-		} else
-			if (var0.heightAlignment == 1) {
-				var0.height = var2 - var0.rawHeight;
-			} else
-				if (var0.heightAlignment == 2) {
-					var0.height = var2 * var0.rawHeight >> 14;
-				}
-
-
+		} else if (var0.heightAlignment == 1) {
+			var0.height = var2 - var0.rawHeight;
+		} else if (var0.heightAlignment == 2) {
+			var0.height = var2 * var0.rawHeight >> 14;
+		}
 		if (var0.widthAlignment == 4) {
 			var0.width = var0.height * var0.field3385 / var0.field3386;
 		}

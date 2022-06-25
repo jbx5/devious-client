@@ -149,7 +149,7 @@ public class MouseHandler implements MouseListener , MouseMotionListener , Focus
 		}
 	}
 
-	public final synchronized void mouseMoved(MouseEvent var1) {
+	public synchronized final void mouseMoved(MouseEvent var1) {
 		if (MouseHandler_instance != null) {
 			MouseHandler_idleCycles = 0;
 			MouseHandler_xVolatile = var1.getX();
@@ -158,7 +158,7 @@ public class MouseHandler implements MouseListener , MouseMotionListener , Focus
 		}
 	}
 
-	public final synchronized void mousePressed(MouseEvent var1) {
+	public synchronized final void mousePressed(MouseEvent var1) {
 		if (MouseHandler_instance != null) {
 			MouseHandler_idleCycles = 0;
 			MouseHandler_lastPressedXVolatile = var1.getX();
@@ -180,7 +180,7 @@ public class MouseHandler implements MouseListener , MouseMotionListener , Focus
 		}
 	}
 
-	public final synchronized void mouseReleased(MouseEvent var1) {
+	public synchronized final void mouseReleased(MouseEvent var1) {
 		if (MouseHandler_instance != null) {
 			MouseHandler_idleCycles = 0;
 			MouseHandler_currentButtonVolatile = 0;
@@ -190,20 +190,20 @@ public class MouseHandler implements MouseListener , MouseMotionListener , Focus
 		}
 	}
 
-	public final synchronized void mouseDragged(MouseEvent var1) {
+	public synchronized final void mouseDragged(MouseEvent var1) {
 		this.mouseMoved(var1);
 	}
 
 	public final void focusGained(FocusEvent var1) {
 	}
 
-	public final synchronized void focusLost(FocusEvent var1) {
+	public synchronized final void focusLost(FocusEvent var1) {
 		if (MouseHandler_instance != null) {
 			MouseHandler_currentButtonVolatile = 0;
 		}
 	}
 
-	public final synchronized void mouseExited(MouseEvent var1) {
+	public synchronized final void mouseExited(MouseEvent var1) {
 		if (MouseHandler_instance != null) {
 			MouseHandler_idleCycles = 0;
 			MouseHandler_xVolatile = -1;
@@ -212,7 +212,7 @@ public class MouseHandler implements MouseListener , MouseMotionListener , Focus
 		}
 	}
 
-	public final synchronized void mouseEntered(MouseEvent var1) {
+	public synchronized final void mouseEntered(MouseEvent var1) {
 		this.mouseMoved(var1);
 	}
 
@@ -282,100 +282,88 @@ public class MouseHandler implements MouseListener , MouseMotionListener , Focus
 							throw new RuntimeException();
 						}
 					}
-				} else
-					if (var0 == 7503) {
-						class446.Interpreter_intStackSize -= 2;
-						var3 = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize];
-						var19 = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize + 1];
-						var5 = 0;
-						var20 = class285.method5516(var19);
-						var7 = HealthBarUpdate.method2199(var19);
-						class437 var25 = FriendLoginUpdate.method6631(var3);
-						class435 var9 = UserComparator6.method2626(var20);
-						int[] var10 = var9.field4668[var7];
-						Object[] var11 = var25.method7625(var7);
-						if (var11 == null && var9.field4669 != null) {
-							var11 = var9.field4669[var7];
-						}
-						if (var11 != null) {
-							var5 = var11.length / var10.length;
-						}
-						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var5;
+				} else if (var0 == 7503) {
+					class446.Interpreter_intStackSize -= 2;
+					var3 = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize];
+					var19 = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize + 1];
+					var5 = 0;
+					var20 = class285.method5516(var19);
+					var7 = HealthBarUpdate.method2199(var19);
+					class437 var25 = FriendLoginUpdate.method6631(var3);
+					class435 var9 = UserComparator6.method2626(var20);
+					int[] var10 = var9.field4668[var7];
+					Object[] var11 = var25.method7625(var7);
+					if (var11 == null && var9.field4669 != null) {
+						var11 = var9.field4669[var7];
+					}
+					if (var11 != null) {
+						var5 = var11.length / var10.length;
+					}
+					Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var5;
+					return 1;
+				} else if (var0 != 7504 && var0 != 7509) {
+					if (var0 == 7505) {
+						var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+						class437 var24 = FriendLoginUpdate.method6631(var3);
+						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var24.field4678;
 						return 1;
-					} else
-						if (var0 != 7504 && var0 != 7509) {
-							if (var0 == 7505) {
-								var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
-								class437 var24 = FriendLoginUpdate.method6631(var3);
-								Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var24.field4678;
-								return 1;
-							} else
-								if (var0 == 7506) {
-									var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
-									var19 = -1;
-									if (UrlRequest.field1373 != null && var3 >= 0 && var3 < UrlRequest.field1373.size()) {
-										var19 = ((Integer) (UrlRequest.field1373.get(var3)));
-									}
-									Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var19;
-									return 1;
-								} else
-									if (var0 != 7507 && var0 != 7510) {
-										return 2;
-									} else {
-										var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
-										var4 = class137.method2937(var3);
-										var5 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
-										var6 = class123.method2813(var5);
-										if (var6 == null) {
-											throw new RuntimeException();
-										} else
-											if (class285.method5516(var5) != Client.field588) {
-												throw new RuntimeException();
-											} else
-												if (UrlRequest.field1373 == null && UrlRequest.field1373.isEmpty()) {
-													throw new RuntimeException();
-												} else {
-													var7 = class141.method3048(var5);
-													List var8 = var6.method7619(var4, var7);
-													UrlRequest.field1373 = new LinkedList(UrlRequest.field1373);
-													if (var8 != null) {
-														UrlRequest.field1373.retainAll(var8);
-													} else {
-														UrlRequest.field1373.clear();
-													}
-													SoundSystem.field312 = UrlRequest.field1373.iterator();
-													if (var0 == 7507) {
-														Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = UrlRequest.field1373.size();
-													}
-													return 1;
-												}
-
-
-									}
-
-
-						} else {
-							--class446.Interpreter_intStackSize;
-							var3 = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize];
-							class436 var23 = WorldMapRectangle.method4988(var3);
-							if (var23 == null) {
-								throw new RuntimeException();
-							} else {
-								UrlRequest.field1373 = var23.method7619(0, 0);
-								var5 = 0;
-								if (UrlRequest.field1373 != null) {
-									Client.field588 = var3;
-									SoundSystem.field312 = UrlRequest.field1373.iterator();
-									var5 = UrlRequest.field1373.size();
-								}
-								if (var0 == 7504) {
-									Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var5;
-								}
-								return 1;
-							}
+					} else if (var0 == 7506) {
+						var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+						var19 = -1;
+						if (UrlRequest.field1373 != null && var3 >= 0 && var3 < UrlRequest.field1373.size()) {
+							var19 = ((Integer) (UrlRequest.field1373.get(var3)));
 						}
-
-
+						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var19;
+						return 1;
+					} else if (var0 != 7507 && var0 != 7510) {
+						return 2;
+					} else {
+						var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+						var4 = class137.method2937(var3);
+						var5 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+						var6 = class123.method2813(var5);
+						if (var6 == null) {
+							throw new RuntimeException();
+						} else if (class285.method5516(var5) != Client.field588) {
+							throw new RuntimeException();
+						} else if (UrlRequest.field1373 == null && UrlRequest.field1373.isEmpty()) {
+							throw new RuntimeException();
+						} else {
+							var7 = class141.method3048(var5);
+							List var8 = var6.method7619(var4, var7);
+							UrlRequest.field1373 = new LinkedList(UrlRequest.field1373);
+							if (var8 != null) {
+								UrlRequest.field1373.retainAll(var8);
+							} else {
+								UrlRequest.field1373.clear();
+							}
+							SoundSystem.field312 = UrlRequest.field1373.iterator();
+							if (var0 == 7507) {
+								Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = UrlRequest.field1373.size();
+							}
+							return 1;
+						}
+					}
+				} else {
+					--class446.Interpreter_intStackSize;
+					var3 = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize];
+					class436 var23 = WorldMapRectangle.method4988(var3);
+					if (var23 == null) {
+						throw new RuntimeException();
+					} else {
+						UrlRequest.field1373 = var23.method7619(0, 0);
+						var5 = 0;
+						if (UrlRequest.field1373 != null) {
+							Client.field588 = var3;
+							SoundSystem.field312 = UrlRequest.field1373.iterator();
+							var5 = UrlRequest.field1373.size();
+						}
+						if (var0 == 7504) {
+							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var5;
+						}
+						return 1;
+					}
+				}
 			} else {
 				if (SoundSystem.field312 != null && SoundSystem.field312.hasNext()) {
 					Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = ((Integer) (SoundSystem.field312.next()));

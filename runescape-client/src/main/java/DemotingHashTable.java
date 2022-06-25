@@ -131,15 +131,13 @@ public final class DemotingHashTable {
 					var2.removeDual();
 					this.remaining += var2.size;
 				}
-			} else
-				if (++var2.keyDual > ((long) (var1))) {
-					SoftWrapper var3 = new SoftWrapper(var2.get(), var2.size);
-					this.hashTable.put(var3, var2.key);
-					IterableDualNodeQueue.DualNodeDeque_addBefore(var3, var2);
-					var2.remove();
-					var2.removeDual();
-				}
-
+			} else if (++var2.keyDual > ((long) (var1))) {
+				SoftWrapper var3 = new SoftWrapper(var2.get(), var2.size);
+				this.hashTable.put(var3, var2.key);
+				IterableDualNodeQueue.DualNodeDeque_addBefore(var3, var2);
+				var2.remove();
+				var2.removeDual();
+			}
 		}
 	}
 

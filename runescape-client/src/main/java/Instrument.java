@@ -328,17 +328,13 @@ public class Instrument {
 	final int evaluateWave(int var1, int var2, int var3) {
 		if (var3 == 1) {
 			return (var1 & 32767) < 16384 ? var2 : -var2;
-		} else
-			if (var3 == 2) {
-				return Instrument_sine[var1 & 32767] * var2 >> 14;
-			} else
-				if (var3 == 3) {
-					return (var2 * (var1 & 32767) >> 14) - var2;
-				} else {
-					return var3 == 4 ? var2 * Instrument_noise[var1 / 2607 & 32767] : 0;
-				}
-
-
+		} else if (var3 == 2) {
+			return Instrument_sine[var1 & 32767] * var2 >> 14;
+		} else if (var3 == 3) {
+			return (var2 * (var1 & 32767) >> 14) - var2;
+		} else {
+			return var3 == 4 ? var2 * Instrument_noise[var1 / 2607 & 32767] : 0;
+		}
 	}
 
 	@ObfuscatedName("q")

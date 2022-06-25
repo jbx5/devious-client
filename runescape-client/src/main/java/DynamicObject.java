@@ -181,84 +181,54 @@ public class DynamicObject extends Renderable {
 		if (var0 == ScriptOpcodes.IF_GETSCROLLX) {
 			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.scrollX;
 			return 1;
-		} else
-			if (var0 == ScriptOpcodes.IF_GETSCROLLY) {
-				Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.scrollY;
-				return 1;
-			} else
-				if (var0 == ScriptOpcodes.IF_GETTEXT) {
-					Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var3.text;
-					return 1;
-				} else
-					if (var0 == ScriptOpcodes.IF_GETSCROLLWIDTH) {
-						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.scrollWidth;
-						return 1;
-					} else
-						if (var0 == ScriptOpcodes.IF_GETSCROLLHEIGHT) {
-							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.scrollHeight;
-							return 1;
-						} else
-							if (var0 == ScriptOpcodes.IF_GETMODELZOOM) {
-								Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.modelZoom;
-								return 1;
-							} else
-								if (var0 == ScriptOpcodes.IF_GETMODELANGLE_X) {
-									Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.modelAngleX;
-									return 1;
-								} else
-									if (var0 == ScriptOpcodes.IF_GETMODELANGLE_Z) {
-										Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.modelAngleZ;
-										return 1;
-									} else
-										if (var0 == ScriptOpcodes.IF_GETMODELANGLE_Y) {
-											Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.modelAngleY;
-											return 1;
-										} else
-											if (var0 == ScriptOpcodes.IF_GETTRANS) {
-												Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.transparencyTop;
-												return 1;
-											} else
-												if (var0 == 2610) {
-													Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.transparencyBot;
-													return 1;
-												} else
-													if (var0 == ScriptOpcodes.IF_GETCOLOUR) {
-														Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.color;
-														return 1;
-													} else
-														if (var0 == ScriptOpcodes.IF_GETFILLCOLOUR) {
-															Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.color2;
-															return 1;
-														} else
-															if (var0 == 2613) {
-																Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.fillMode.rsOrdinal();
-																return 1;
-															} else
-																if (var0 == ScriptOpcodes.IF_GETMODELTRANSPARENT) {
-																	Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = (var3.modelTransparency) ? 1 : 0;
-																	return 1;
-																} else
-																	if (var0 != 2615 && var0 != 2616) {
-																		return 2;
-																	} else {
-																		++class446.Interpreter_intStackSize;
-																		return 1;
-																	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		} else if (var0 == ScriptOpcodes.IF_GETSCROLLY) {
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.scrollY;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETTEXT) {
+			Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var3.text;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETSCROLLWIDTH) {
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.scrollWidth;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETSCROLLHEIGHT) {
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.scrollHeight;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETMODELZOOM) {
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.modelZoom;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETMODELANGLE_X) {
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.modelAngleX;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETMODELANGLE_Z) {
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.modelAngleZ;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETMODELANGLE_Y) {
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.modelAngleY;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETTRANS) {
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.transparencyTop;
+			return 1;
+		} else if (var0 == 2610) {
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.transparencyBot;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETCOLOUR) {
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.color;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETFILLCOLOUR) {
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.color2;
+			return 1;
+		} else if (var0 == 2613) {
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.fillMode.rsOrdinal();
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETMODELTRANSPARENT) {
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = (var3.modelTransparency) ? 1 : 0;
+			return 1;
+		} else if (var0 != 2615 && var0 != 2616) {
+			return 2;
+		} else {
+			++class446.Interpreter_intStackSize;
+			return 1;
+		}
 	}
 
 	@ObfuscatedName("ja")
@@ -277,37 +247,23 @@ public class DynamicObject extends Renderable {
 					String var6;
 					if (var9 < -9) {
 						var6 = class122.colorStartTag(16711680);
-					} else
-						if (var9 < -6) {
-							var6 = class122.colorStartTag(16723968);
-						} else
-							if (var9 < -3) {
-								var6 = class122.colorStartTag(16740352);
-							} else
-								if (var9 < 0) {
-									var6 = class122.colorStartTag(16756736);
-								} else
-									if (var9 > 9) {
-										var6 = class122.colorStartTag(65280);
-									} else
-										if (var9 > 6) {
-											var6 = class122.colorStartTag(4259584);
-										} else
-											if (var9 > 3) {
-												var6 = class122.colorStartTag(8453888);
-											} else
-												if (var9 > 0) {
-													var6 = class122.colorStartTag(12648192);
-												} else {
-													var6 = class122.colorStartTag(16776960);
-												}
-
-
-
-
-
-
-
+					} else if (var9 < -6) {
+						var6 = class122.colorStartTag(16723968);
+					} else if (var9 < -3) {
+						var6 = class122.colorStartTag(16740352);
+					} else if (var9 < 0) {
+						var6 = class122.colorStartTag(16756736);
+					} else if (var9 > 9) {
+						var6 = class122.colorStartTag(65280);
+					} else if (var9 > 6) {
+						var6 = class122.colorStartTag(4259584);
+					} else if (var9 > 3) {
+						var6 = class122.colorStartTag(8453888);
+					} else if (var9 > 0) {
+						var6 = class122.colorStartTag(12648192);
+					} else {
+						var6 = class122.colorStartTag(16776960);
+					}
 					var4 = var5 + var6 + " " + " (" + "level-" + var0.combatLevel + ")" + var0.actions[2];
 				} else {
 					var4 = var0.actions[0] + var0.username + var0.actions[1] + " " + " (" + "skill-" + var0.skillLevel + ")" + var0.actions[2];
@@ -315,45 +271,39 @@ public class DynamicObject extends Renderable {
 				int var10;
 				if (Client.isItemSelected == 1) {
 					class4.insertMenuItemNoShift("Use", Client.selectedItemName + " " + "->" + " " + class122.colorStartTag(16777215) + var4, 14, var1, var2, var3);
-				} else
-					if (Client.isSpellSelected) {
-						if ((HealthBar.selectedSpellFlags & 8) == 8) {
-							class4.insertMenuItemNoShift(Client.selectedSpellActionName, Client.selectedSpellName + " " + "->" + " " + class122.colorStartTag(16777215) + var4, 15, var1, var2, var3);
-						}
-					} else {
-						for (var10 = 7; var10 >= 0; --var10) {
-							if (Client.playerMenuActions[var10] != null) {
-								short var11 = 0;
-								if (Client.playerMenuActions[var10].equalsIgnoreCase("Attack")) {
-									if (Client.playerAttackOption == AttackOption.AttackOption_hidden) {
-										continue;
-									}
-									if (AttackOption.AttackOption_alwaysRightClick == Client.playerAttackOption || AttackOption.AttackOption_dependsOnCombatLevels == Client.playerAttackOption && var0.combatLevel > class101.localPlayer.combatLevel) {
+				} else if (Client.isSpellSelected) {
+					if ((HealthBar.selectedSpellFlags & 8) == 8) {
+						class4.insertMenuItemNoShift(Client.selectedSpellActionName, Client.selectedSpellName + " " + "->" + " " + class122.colorStartTag(16777215) + var4, 15, var1, var2, var3);
+					}
+				} else {
+					for (var10 = 7; var10 >= 0; --var10) {
+						if (Client.playerMenuActions[var10] != null) {
+							short var11 = 0;
+							if (Client.playerMenuActions[var10].equalsIgnoreCase("Attack")) {
+								if (Client.playerAttackOption == AttackOption.AttackOption_hidden) {
+									continue;
+								}
+								if (AttackOption.AttackOption_alwaysRightClick == Client.playerAttackOption || AttackOption.AttackOption_dependsOnCombatLevels == Client.playerAttackOption && var0.combatLevel > class101.localPlayer.combatLevel) {
+									var11 = 2000;
+								}
+								if (class101.localPlayer.team != 0 && var0.team != 0) {
+									if (var0.team == class101.localPlayer.team) {
 										var11 = 2000;
+									} else {
+										var11 = 0;
 									}
-									if (class101.localPlayer.team != 0 && var0.team != 0) {
-										if (var0.team == class101.localPlayer.team) {
-											var11 = 2000;
-										} else {
-											var11 = 0;
-										}
-									} else
-										if (Client.playerAttackOption == AttackOption.field1294 && var0.isClanMember()) {
-											var11 = 2000;
-										}
-
-								} else
-									if (Client.playerOptionsPriorities[var10]) {
-										var11 = 2000;
-									}
-
-								boolean var12 = false;
-								var7 = Client.playerMenuOpcodes[var10] + var11;
-								class4.insertMenuItemNoShift(Client.playerMenuActions[var10], class122.colorStartTag(16777215) + var4, var7, var1, var2, var3);
+								} else if (Client.playerAttackOption == AttackOption.field1294 && var0.isClanMember()) {
+									var11 = 2000;
+								}
+							} else if (Client.playerOptionsPriorities[var10]) {
+								var11 = 2000;
 							}
+							boolean var12 = false;
+							var7 = Client.playerMenuOpcodes[var10] + var11;
+							class4.insertMenuItemNoShift(Client.playerMenuActions[var10], class122.colorStartTag(16777215) + var4, var7, var1, var2, var3);
 						}
 					}
-
+				}
 				for (var10 = 0; var10 < Client.menuOptionsCount; ++var10) {
 					if (Client.menuOpcodes[var10] == 23) {
 						Client.menuTargets[var10] = class122.colorStartTag(16777215) + var4;

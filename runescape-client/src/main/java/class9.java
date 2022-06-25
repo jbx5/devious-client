@@ -136,68 +136,66 @@ public class class9 implements MouseWheel {
 								if (var0.id != ModeWhere.selectedItemWidget || var13 != EnumComposition.selectedItemSlot) {
 									class4.insertMenuItemNoShift("Use", Client.selectedItemName + " " + "->" + " " + class122.colorStartTag(16748608) + var8.name, 31, var8.id, var13, var0.id);
 								}
-							} else
-								if (Client.isSpellSelected && class120.method2759(class124.getWidgetFlags(var0))) {
-									if ((HealthBar.selectedSpellFlags & 16) == 16) {
-										class4.insertMenuItemNoShift(Client.selectedSpellActionName, Client.selectedSpellName + " " + "->" + " " + class122.colorStartTag(16748608) + var8.name, 32, var8.id, var13, var0.id);
-									}
-								} else {
-									String[] var9 = var8.inventoryActions;
-									int var10 = -1;
-									if (Client.shiftClickDrop) {
-										boolean var11 = Client.tapToDrop || KeyHandler.KeyHandler_pressedKeys[81];
-										if (var11) {
-											var10 = var8.getShiftClickIndex();
-										}
-									}
-									int var16;
-									if (class120.method2759(class124.getWidgetFlags(var0))) {
-										for (var16 = 4; var16 >= 3; --var16) {
-											if (var16 != var10) {
-												class150.addWidgetItemMenuItem(var0, var8, var13, var16, false);
-											}
-										}
-									}
-									if (FontName.method7386(class124.getWidgetFlags(var0))) {
-										class4.insertMenuItemNoShift("Use", class122.colorStartTag(16748608) + var8.name, 38, var8.id, var13, var0.id);
-									}
-									if (class120.method2759(class124.getWidgetFlags(var0))) {
-										for (var16 = 2; var16 >= 0; --var16) {
-											if (var10 != var16) {
-												class150.addWidgetItemMenuItem(var0, var8, var13, var16, false);
-											}
-										}
-										if (var10 >= 0) {
-											class150.addWidgetItemMenuItem(var0, var8, var13, var10, true);
-										}
-									}
-									var9 = var0.itemActions;
-									if (var9 != null) {
-										for (var16 = 4; var16 >= 0; --var16) {
-											if (var9[var16] != null) {
-												byte var12 = 0;
-												if (var16 == 0) {
-													var12 = 39;
-												}
-												if (var16 == 1) {
-													var12 = 40;
-												}
-												if (var16 == 2) {
-													var12 = 41;
-												}
-												if (var16 == 3) {
-													var12 = 42;
-												}
-												if (var16 == 4) {
-													var12 = 43;
-												}
-												class4.insertMenuItemNoShift(var9[var16], class122.colorStartTag(16748608) + var8.name, var12, var8.id, var13, var0.id);
-											}
-										}
-									}
-									class4.insertMenuItemNoShift("Examine", class122.colorStartTag(16748608) + var8.name, 1005, var8.id, var13, var0.id);
+							} else if (Client.isSpellSelected && class120.method2759(class124.getWidgetFlags(var0))) {
+								if ((HealthBar.selectedSpellFlags & 16) == 16) {
+									class4.insertMenuItemNoShift(Client.selectedSpellActionName, Client.selectedSpellName + " " + "->" + " " + class122.colorStartTag(16748608) + var8.name, 32, var8.id, var13, var0.id);
 								}
-
+							} else {
+								String[] var9 = var8.inventoryActions;
+								int var10 = -1;
+								if (Client.shiftClickDrop) {
+									boolean var11 = Client.tapToDrop || KeyHandler.KeyHandler_pressedKeys[81];
+									if (var11) {
+										var10 = var8.getShiftClickIndex();
+									}
+								}
+								int var16;
+								if (class120.method2759(class124.getWidgetFlags(var0))) {
+									for (var16 = 4; var16 >= 3; --var16) {
+										if (var16 != var10) {
+											class150.addWidgetItemMenuItem(var0, var8, var13, var16, false);
+										}
+									}
+								}
+								if (FontName.method7386(class124.getWidgetFlags(var0))) {
+									class4.insertMenuItemNoShift("Use", class122.colorStartTag(16748608) + var8.name, 38, var8.id, var13, var0.id);
+								}
+								if (class120.method2759(class124.getWidgetFlags(var0))) {
+									for (var16 = 2; var16 >= 0; --var16) {
+										if (var10 != var16) {
+											class150.addWidgetItemMenuItem(var0, var8, var13, var16, false);
+										}
+									}
+									if (var10 >= 0) {
+										class150.addWidgetItemMenuItem(var0, var8, var13, var10, true);
+									}
+								}
+								var9 = var0.itemActions;
+								if (var9 != null) {
+									for (var16 = 4; var16 >= 0; --var16) {
+										if (var9[var16] != null) {
+											byte var12 = 0;
+											if (var16 == 0) {
+												var12 = 39;
+											}
+											if (var16 == 1) {
+												var12 = 40;
+											}
+											if (var16 == 2) {
+												var12 = 41;
+											}
+											if (var16 == 3) {
+												var12 = 42;
+											}
+											if (var16 == 4) {
+												var12 = 43;
+											}
+											class4.insertMenuItemNoShift(var9[var16], class122.colorStartTag(16748608) + var8.name, var12, var8.id, var13, var0.id);
+										}
+									}
+								}
+								class4.insertMenuItemNoShift("Examine", class122.colorStartTag(16748608) + var8.name, 1005, var8.id, var13, var0.id);
+							}
 						}
 					}
 					++var13;

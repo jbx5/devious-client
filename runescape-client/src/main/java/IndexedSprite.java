@@ -66,29 +66,23 @@ public final class IndexedSprite extends Rasterizer2D {
 			var5 += var1;
 			if (var5 < 0) {
 				var5 = 0;
-			} else
-				if (var5 > 255) {
-					var5 = 255;
-				}
-
+			} else if (var5 > 255) {
+				var5 = 255;
+			}
 			int var6 = this.palette[var4] >> 8 & 255;
 			var6 += var2;
 			if (var6 < 0) {
 				var6 = 0;
-			} else
-				if (var6 > 255) {
-					var6 = 255;
-				}
-
+			} else if (var6 > 255) {
+				var6 = 255;
+			}
 			int var7 = this.palette[var4] & 255;
 			var7 += var3;
 			if (var7 < 0) {
 				var7 = 0;
-			} else
-				if (var7 > 255) {
-					var7 = 255;
-				}
-
+			} else if (var7 > 255) {
+				var7 = 255;
+			}
 			this.palette[var4] = var7 + (var6 << 8) + (var5 << 16);
 		}
 	}

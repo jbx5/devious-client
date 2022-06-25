@@ -33,15 +33,13 @@ public class class346 implements Iterator {
 	public Object next() {
 		if (this.field4163.field4169 != this.field4164) {
 			throw new ConcurrentModificationException();
-		} else
-			if (this.field4162 < this.field4163.field4165) {
-				Object var1 = this.field4163.field4166[this.field4162].field4159;
-				++this.field4162;
-				return var1;
-			} else {
-				throw new NoSuchElementException();
-			}
-
+		} else if (this.field4162 < this.field4163.field4165) {
+			Object var1 = this.field4163.field4166[this.field4162].field4159;
+			++this.field4162;
+			return var1;
+		} else {
+			throw new NoSuchElementException();
+		}
 	}
 
 	public void remove() {
@@ -66,11 +64,9 @@ public class class346 implements Iterator {
 	public static final SpritePixels getItemSprite(int var0, int var1, int var2, int var3, int var4, boolean var5) {
 		if (var1 == -1) {
 			var4 = 0;
-		} else
-			if (var4 == 2 && var1 != 1) {
-				var4 = 1;
-			}
-
+		} else if (var4 == 2 && var1 != 1) {
+			var4 = 1;
+		}
 		long var6 = (((long) (var4)) << 40) + (((long) (var2)) << 38) + ((long) (var0)) + (((long) (var1)) << 16) + (((long) (var3)) << 42);
 		SpritePixels var8;
 		if (!var5) {
@@ -101,21 +97,17 @@ public class class346 implements Iterator {
 				if (var20 == null) {
 					return null;
 				}
-			} else
-				if (var9.notedId != -1) {
-					var20 = getItemSprite(var9.unnotedId, var1, var2, var3, 0, false);
-					if (var20 == null) {
-						return null;
-					}
-				} else
-					if (var9.placeholderTemplate != -1) {
-						var20 = getItemSprite(var9.placeholder, var1, 0, 0, 0, false);
-						if (var20 == null) {
-							return null;
-						}
-					}
-
-
+			} else if (var9.notedId != -1) {
+				var20 = getItemSprite(var9.unnotedId, var1, var2, var3, 0, false);
+				if (var20 == null) {
+					return null;
+				}
+			} else if (var9.placeholderTemplate != -1) {
+				var20 = getItemSprite(var9.placeholder, var1, 0, 0, 0, false);
+				if (var20 == null) {
+					return null;
+				}
+			}
 			int[] var12 = Rasterizer2D.Rasterizer2D_pixels;
 			int var13 = Rasterizer2D.Rasterizer2D_width;
 			int var14 = Rasterizer2D.Rasterizer2D_height;
@@ -133,11 +125,9 @@ public class class346 implements Iterator {
 			int var16 = var9.zoom2d;
 			if (var5) {
 				var16 = ((int) (((double) (var16)) * 1.5));
-			} else
-				if (var2 == 2) {
-					var16 = ((int) (1.04 * ((double) (var16))));
-				}
-
+			} else if (var2 == 2) {
+				var16 = ((int) (1.04 * ((double) (var16))));
+			}
 			int var17 = var16 * Rasterizer3D.Rasterizer3D_sine[var9.xan2d] >> 16;
 			int var18 = var16 * Rasterizer3D.Rasterizer3D_cosine[var9.xan2d] >> 16;
 			var19.calculateBoundsCylinder();

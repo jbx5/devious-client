@@ -102,29 +102,25 @@ final class GrandExchangeOfferUnitPriceComparator implements Comparator {
 							if (var8 == 1) {
 								Client.field539[++Client.field538 - 1] = var3;
 							}
-						} else
-							if (var6 == 2) {
-								Client.npcIndices[++Client.npcCount - 1] = var3;
-								var4.npcCycle = Client.cycle;
-								if (var0.readBits(1) == 1) {
-									var7 = var0.readBits(3);
-									var4.method2361(var7, class192.field2211);
-									var8 = var0.readBits(3);
-									var4.method2361(var8, class192.field2211);
-								} else {
-									var7 = var0.readBits(3);
-									var4.method2361(var7, class192.field2209);
-								}
-								var7 = var0.readBits(1);
-								if (var7 == 1) {
-									Client.field539[++Client.field538 - 1] = var3;
-								}
-							} else
-								if (var6 == 3) {
-									Client.field616[++Client.field615 - 1] = var3;
-								}
-
-
+						} else if (var6 == 2) {
+							Client.npcIndices[++Client.npcCount - 1] = var3;
+							var4.npcCycle = Client.cycle;
+							if (var0.readBits(1) == 1) {
+								var7 = var0.readBits(3);
+								var4.method2361(var7, class192.field2211);
+								var8 = var0.readBits(3);
+								var4.method2361(var8, class192.field2211);
+							} else {
+								var7 = var0.readBits(3);
+								var4.method2361(var7, class192.field2209);
+							}
+							var7 = var0.readBits(1);
+							if (var7 == 1) {
+								Client.field539[++Client.field538 - 1] = var3;
+							}
+						} else if (var6 == 3) {
+							Client.field616[++Client.field615 - 1] = var3;
+						}
 					}
 				}
 			}

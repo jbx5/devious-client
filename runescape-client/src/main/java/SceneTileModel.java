@@ -140,125 +140,97 @@ public final class SceneTileModel {
 				var34 = var6;
 				var35 = var10;
 				var36 = var14;
-			} else
-				if (var31 == 2) {
-					var32 = var28 + var21;
-					var33 = var29;
-					var34 = var7 + var6 >> 1;
-					var35 = var11 + var10 >> 1;
-					var36 = var15 + var14 >> 1;
-				} else
-					if (var31 == 3) {
-						var32 = var28 + var20;
-						var33 = var29;
-						var34 = var7;
-						var35 = var11;
-						var36 = var15;
-					} else
-						if (var31 == 4) {
-							var32 = var28 + var20;
-							var33 = var29 + var21;
-							var34 = var8 + var7 >> 1;
-							var35 = var11 + var12 >> 1;
-							var36 = var15 + var16 >> 1;
-						} else
-							if (var31 == 5) {
-								var32 = var28 + var20;
-								var33 = var29 + var20;
-								var34 = var8;
-								var35 = var12;
-								var36 = var16;
-							} else
-								if (var31 == 6) {
-									var32 = var28 + var21;
-									var33 = var29 + var20;
-									var34 = var8 + var9 >> 1;
-									var35 = var13 + var12 >> 1;
-									var36 = var17 + var16 >> 1;
-								} else
-									if (var31 == 7) {
-										var32 = var28;
-										var33 = var29 + var20;
-										var34 = var9;
-										var35 = var13;
-										var36 = var17;
-									} else
-										if (var31 == 8) {
-											var32 = var28;
-											var33 = var29 + var21;
-											var34 = var9 + var6 >> 1;
-											var35 = var13 + var10 >> 1;
-											var36 = var17 + var14 >> 1;
-										} else
-											if (var31 == 9) {
-												var32 = var28 + var21;
-												var33 = var29 + var22;
-												var34 = var7 + var6 >> 1;
-												var35 = var11 + var10 >> 1;
-												var36 = var15 + var14 >> 1;
-											} else
-												if (var31 == 10) {
-													var32 = var28 + var23;
-													var33 = var29 + var21;
-													var34 = var8 + var7 >> 1;
-													var35 = var11 + var12 >> 1;
-													var36 = var15 + var16 >> 1;
-												} else
-													if (var31 == 11) {
-														var32 = var28 + var21;
-														var33 = var29 + var23;
-														var34 = var8 + var9 >> 1;
-														var35 = var13 + var12 >> 1;
-														var36 = var17 + var16 >> 1;
-													} else
-														if (var31 == 12) {
-															var32 = var28 + var22;
-															var33 = var29 + var21;
-															var34 = var9 + var6 >> 1;
-															var35 = var13 + var10 >> 1;
-															var36 = var17 + var14 >> 1;
-														} else
-															if (var31 == 13) {
-																var32 = var28 + var22;
-																var33 = var29 + var22;
-																var34 = var6;
-																var35 = var10;
-																var36 = var14;
-															} else
-																if (var31 == 14) {
-																	var32 = var28 + var23;
-																	var33 = var29 + var22;
-																	var34 = var7;
-																	var35 = var11;
-																	var36 = var15;
-																} else
-																	if (var31 == 15) {
-																		var32 = var28 + var23;
-																		var33 = var29 + var23;
-																		var34 = var8;
-																		var35 = var12;
-																		var36 = var16;
-																	} else {
-																		var32 = var28 + var22;
-																		var33 = var29 + var23;
-																		var34 = var9;
-																		var35 = var13;
-																		var36 = var17;
-																	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+			} else if (var31 == 2) {
+				var32 = var28 + var21;
+				var33 = var29;
+				var34 = var7 + var6 >> 1;
+				var35 = var11 + var10 >> 1;
+				var36 = var15 + var14 >> 1;
+			} else if (var31 == 3) {
+				var32 = var28 + var20;
+				var33 = var29;
+				var34 = var7;
+				var35 = var11;
+				var36 = var15;
+			} else if (var31 == 4) {
+				var32 = var28 + var20;
+				var33 = var29 + var21;
+				var34 = var8 + var7 >> 1;
+				var35 = var11 + var12 >> 1;
+				var36 = var15 + var16 >> 1;
+			} else if (var31 == 5) {
+				var32 = var28 + var20;
+				var33 = var29 + var20;
+				var34 = var8;
+				var35 = var12;
+				var36 = var16;
+			} else if (var31 == 6) {
+				var32 = var28 + var21;
+				var33 = var29 + var20;
+				var34 = var8 + var9 >> 1;
+				var35 = var13 + var12 >> 1;
+				var36 = var17 + var16 >> 1;
+			} else if (var31 == 7) {
+				var32 = var28;
+				var33 = var29 + var20;
+				var34 = var9;
+				var35 = var13;
+				var36 = var17;
+			} else if (var31 == 8) {
+				var32 = var28;
+				var33 = var29 + var21;
+				var34 = var9 + var6 >> 1;
+				var35 = var13 + var10 >> 1;
+				var36 = var17 + var14 >> 1;
+			} else if (var31 == 9) {
+				var32 = var28 + var21;
+				var33 = var29 + var22;
+				var34 = var7 + var6 >> 1;
+				var35 = var11 + var10 >> 1;
+				var36 = var15 + var14 >> 1;
+			} else if (var31 == 10) {
+				var32 = var28 + var23;
+				var33 = var29 + var21;
+				var34 = var8 + var7 >> 1;
+				var35 = var11 + var12 >> 1;
+				var36 = var15 + var16 >> 1;
+			} else if (var31 == 11) {
+				var32 = var28 + var21;
+				var33 = var29 + var23;
+				var34 = var8 + var9 >> 1;
+				var35 = var13 + var12 >> 1;
+				var36 = var17 + var16 >> 1;
+			} else if (var31 == 12) {
+				var32 = var28 + var22;
+				var33 = var29 + var21;
+				var34 = var9 + var6 >> 1;
+				var35 = var13 + var10 >> 1;
+				var36 = var17 + var14 >> 1;
+			} else if (var31 == 13) {
+				var32 = var28 + var22;
+				var33 = var29 + var22;
+				var34 = var6;
+				var35 = var10;
+				var36 = var14;
+			} else if (var31 == 14) {
+				var32 = var28 + var23;
+				var33 = var29 + var22;
+				var34 = var7;
+				var35 = var11;
+				var36 = var15;
+			} else if (var31 == 15) {
+				var32 = var28 + var23;
+				var33 = var29 + var23;
+				var34 = var8;
+				var35 = var12;
+				var36 = var16;
+			} else {
+				var32 = var28 + var22;
+				var33 = var29 + var23;
+				var34 = var9;
+				var35 = var13;
+				var36 = var17;
+			}
 			this.vertexX[var30] = var32;
 			this.vertexY[var30] = var34;
 			this.vertexZ[var30] = var33;

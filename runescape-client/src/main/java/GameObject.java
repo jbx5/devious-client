@@ -111,31 +111,23 @@ public final class GameObject {
 		if (var0 == ScriptOpcodes.CC_GETINVOBJECT) {
 			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.itemId;
 			return 1;
-		} else
-			if (var0 == ScriptOpcodes.CC_GETINVCOUNT) {
-				if (var3.itemId != -1) {
-					Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.itemQuantity;
-				} else {
-					Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;
-				}
-				return 1;
-			} else
-				if (var0 == ScriptOpcodes.CC_GETID) {
-					Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.childIndex;
-					return 1;
-				} else
-					if (var0 == 1707) {
-						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = (var3.method5680()) ? 1 : 0;
-						return 1;
-					} else
-						if (var0 == 1708) {
-							return class29.method363(var3);
-						} else {
-							return var0 == 1709 ? WorldMapSection0.method4947(var3) : 2;
-						}
-
-
-
-
+		} else if (var0 == ScriptOpcodes.CC_GETINVCOUNT) {
+			if (var3.itemId != -1) {
+				Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.itemQuantity;
+			} else {
+				Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;
+			}
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETID) {
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.childIndex;
+			return 1;
+		} else if (var0 == 1707) {
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = (var3.method5680()) ? 1 : 0;
+			return 1;
+		} else if (var0 == 1708) {
+			return class29.method363(var3);
+		} else {
+			return var0 == 1709 ? WorldMapSection0.method4947(var3) : 2;
+		}
 	}
 }

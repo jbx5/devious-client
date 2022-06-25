@@ -118,47 +118,27 @@ public class HealthBarDefinition extends DualNode {
 	void decodeNext(Buffer var1, int var2) {
 		if (var2 == 1) {
 			var1.readUnsignedShort();
-		} else
-			if (var2 == 2) {
-				this.int1 = var1.readUnsignedByte();
-			} else
-				if (var2 == 3) {
-					this.int2 = var1.readUnsignedByte();
-				} else
-					if (var2 == 4) {
-						this.int3 = 0;
-					} else
-						if (var2 == 5) {
-							this.int5 = var1.readUnsignedShort();
-						} else
-							if (var2 == 6) {
-								var1.readUnsignedByte();
-							} else
-								if (var2 == 7) {
-									this.frontSpriteID = var1.readNullableLargeSmart();
-								} else
-									if (var2 == 8) {
-										this.backSpriteID = var1.readNullableLargeSmart();
-									} else
-										if (var2 == 11) {
-											this.int3 = var1.readUnsignedShort();
-										} else
-											if (var2 == 14) {
-												this.width = var1.readUnsignedByte();
-											} else
-												if (var2 == 15) {
-													this.widthPadding = var1.readUnsignedByte();
-												}
-
-
-
-
-
-
-
-
-
-
+		} else if (var2 == 2) {
+			this.int1 = var1.readUnsignedByte();
+		} else if (var2 == 3) {
+			this.int2 = var1.readUnsignedByte();
+		} else if (var2 == 4) {
+			this.int3 = 0;
+		} else if (var2 == 5) {
+			this.int5 = var1.readUnsignedShort();
+		} else if (var2 == 6) {
+			var1.readUnsignedByte();
+		} else if (var2 == 7) {
+			this.frontSpriteID = var1.readNullableLargeSmart();
+		} else if (var2 == 8) {
+			this.backSpriteID = var1.readNullableLargeSmart();
+		} else if (var2 == 11) {
+			this.int3 = var1.readUnsignedShort();
+		} else if (var2 == 14) {
+			this.width = var1.readUnsignedByte();
+		} else if (var2 == 15) {
+			this.widthPadding = var1.readUnsignedByte();
+		}
 	}
 
 	@ObfuscatedName("f")

@@ -161,25 +161,23 @@ public class RawPcmStream extends PcmStream {
 						this.field331 = var5 + var5 - 1 - this.field331;
 						this.field332 = -this.field332;
 					} 
-				} else
-					if (this.field332 < 0) {
-						while (true) {
-							var9 = this.method799(var1, var9, var5, var3, var4.samples[this.end - 1]);
-							if (this.field331 >= var5) {
-								return;
-							}
-							this.field331 = var6 - 1 - (var6 - 1 - this.field331) % var8;
-						} 
-					} else {
-						while (true) {
-							var9 = this.method888(var1, var9, var6, var3, var4.samples[this.start]);
-							if (this.field331 < var6) {
-								return;
-							}
-							this.field331 = var5 + (this.field331 - var5) % var8;
-						} 
-					}
-
+				} else if (this.field332 < 0) {
+					while (true) {
+						var9 = this.method799(var1, var9, var5, var3, var4.samples[this.end - 1]);
+						if (this.field331 >= var5) {
+							return;
+						}
+						this.field331 = var6 - 1 - (var6 - 1 - this.field331) % var8;
+					} 
+				} else {
+					while (true) {
+						var9 = this.method888(var1, var9, var6, var3, var4.samples[this.start]);
+						if (this.field331 < var6) {
+							return;
+						}
+						this.field331 = var5 + (this.field331 - var5) % var8;
+					} 
+				}
 			} else {
 				if (this.numLoops > 0) {
 					if (this.field333) {
@@ -419,13 +417,11 @@ public class RawPcmStream extends PcmStream {
 					this.method785();
 					this.remove();
 				}
-			} else
-				if (this.field331 >= var5) {
-					this.field331 = var5;
-					this.method785();
-					this.remove();
-				}
-
+			} else if (this.field331 >= var5) {
+				this.field331 = var5;
+				this.method785();
+				this.remove();
+			}
 		}
 	}
 
@@ -536,39 +532,37 @@ public class RawPcmStream extends PcmStream {
 		if (var1 == 0) {
 			this.method779(0);
 			this.remove();
-		} else
-			if (this.field336 == 0 && this.field337 == 0) {
-				this.field342 = 0;
-				this.field343 = 0;
-				this.field335 = 0;
-				this.remove();
-			} else {
-				int var2 = -this.field335;
-				if (this.field335 > var2) {
-					var2 = this.field335;
-				}
-				if (-this.field336 > var2) {
-					var2 = -this.field336;
-				}
-				if (this.field336 > var2) {
-					var2 = this.field336;
-				}
-				if (-this.field337 > var2) {
-					var2 = -this.field337;
-				}
-				if (this.field337 > var2) {
-					var2 = this.field337;
-				}
-				if (var1 > var2) {
-					var1 = var2;
-				}
-				this.field342 = var1;
-				this.field343 = Integer.MIN_VALUE;
-				this.field344 = -this.field335 / var1;
-				this.field345 = -this.field336 / var1;
-				this.field341 = -this.field337 / var1;
+		} else if (this.field336 == 0 && this.field337 == 0) {
+			this.field342 = 0;
+			this.field343 = 0;
+			this.field335 = 0;
+			this.remove();
+		} else {
+			int var2 = -this.field335;
+			if (this.field335 > var2) {
+				var2 = this.field335;
 			}
-
+			if (-this.field336 > var2) {
+				var2 = -this.field336;
+			}
+			if (this.field336 > var2) {
+				var2 = this.field336;
+			}
+			if (-this.field337 > var2) {
+				var2 = -this.field337;
+			}
+			if (this.field337 > var2) {
+				var2 = this.field337;
+			}
+			if (var1 > var2) {
+				var1 = var2;
+			}
+			this.field342 = var1;
+			this.field343 = Integer.MIN_VALUE;
+			this.field344 = -this.field335 / var1;
+			this.field345 = -this.field336 / var1;
+			this.field341 = -this.field337 / var1;
+		}
 	}
 
 	@ObfuscatedName("n")
@@ -610,13 +604,11 @@ public class RawPcmStream extends PcmStream {
 					} else {
 						var2 = method839(((RawSound) (super.sound)).samples, var1, this.field331, var2, this.field335, this.field344, 0, var6, var3, this);
 					}
-				} else
-					if (BuddyRankComparator.PcmPlayer_stereo) {
-						var2 = method814(0, 0, ((RawSound) (super.sound)).samples, var1, this.field331, var2, this.field336, this.field337, this.field345, this.field341, 0, var6, var3, this, this.field332, var5);
-					} else {
-						var2 = method813(0, 0, ((RawSound) (super.sound)).samples, var1, this.field331, var2, this.field335, this.field344, 0, var6, var3, this, this.field332, var5);
-					}
-
+				} else if (BuddyRankComparator.PcmPlayer_stereo) {
+					var2 = method814(0, 0, ((RawSound) (super.sound)).samples, var1, this.field331, var2, this.field336, this.field337, this.field345, this.field341, 0, var6, var3, this, this.field332, var5);
+				} else {
+					var2 = method813(0, 0, ((RawSound) (super.sound)).samples, var1, this.field331, var2, this.field335, this.field344, 0, var6, var3, this, this.field332, var5);
+				}
 				this.field342 -= var2;
 				if (this.field342 != 0) {
 					return var2;
@@ -645,11 +637,9 @@ public class RawPcmStream extends PcmStream {
 		var1 = (var1 ^ var1 >> 31) + (var1 >>> 31);
 		if (this.numLoops == 0) {
 			var1 -= var1 * this.field331 / (((RawSound) (super.sound)).samples.length << 8);
-		} else
-			if (this.numLoops >= 0) {
-				var1 -= var1 * this.start / ((RawSound) (super.sound)).samples.length;
-			}
-
+		} else if (this.numLoops >= 0) {
+			var1 -= var1 * this.start / ((RawSound) (super.sound)).samples.length;
+		}
 		return var1 > 255 ? 255 : var1;
 	}
 
@@ -668,13 +658,11 @@ public class RawPcmStream extends PcmStream {
 					} else {
 						var2 = method811(((RawSound) (super.sound)).samples, var1, this.field331, var2, this.field335, this.field344, 0, var6, var3, this);
 					}
-				} else
-					if (BuddyRankComparator.PcmPlayer_stereo) {
-						var2 = method816(0, 0, ((RawSound) (super.sound)).samples, var1, this.field331, var2, this.field336, this.field337, this.field345, this.field341, 0, var6, var3, this, this.field332, var5);
-					} else {
-						var2 = method820(0, 0, ((RawSound) (super.sound)).samples, var1, this.field331, var2, this.field335, this.field344, 0, var6, var3, this, this.field332, var5);
-					}
-
+				} else if (BuddyRankComparator.PcmPlayer_stereo) {
+					var2 = method816(0, 0, ((RawSound) (super.sound)).samples, var1, this.field331, var2, this.field336, this.field337, this.field345, this.field341, 0, var6, var3, this, this.field332, var5);
+				} else {
+					var2 = method820(0, 0, ((RawSound) (super.sound)).samples, var1, this.field331, var2, this.field335, this.field344, 0, var6, var3, this, this.field332, var5);
+				}
 				this.field342 -= var2;
 				if (this.field342 != 0) {
 					return var2;
@@ -726,44 +714,38 @@ public class RawPcmStream extends PcmStream {
 			if (this.field335 < var1) {
 				this.field344 = 1;
 				this.field342 = var1 - this.field335;
-			} else
-				if (this.field335 > var1) {
-					this.field344 = -1;
-					this.field342 = this.field335 - var1;
-				} else {
-					this.field344 = 0;
-				}
-
+			} else if (this.field335 > var1) {
+				this.field344 = -1;
+				this.field342 = this.field335 - var1;
+			} else {
+				this.field344 = 0;
+			}
 			if (this.field336 < var2) {
 				this.field345 = 1;
 				if (this.field342 == 0 || this.field342 > var2 - this.field336) {
 					this.field342 = var2 - this.field336;
 				}
-			} else
-				if (this.field336 > var2) {
-					this.field345 = -1;
-					if (this.field342 == 0 || this.field342 > this.field336 - var2) {
-						this.field342 = this.field336 - var2;
-					}
-				} else {
-					this.field345 = 0;
+			} else if (this.field336 > var2) {
+				this.field345 = -1;
+				if (this.field342 == 0 || this.field342 > this.field336 - var2) {
+					this.field342 = this.field336 - var2;
 				}
-
+			} else {
+				this.field345 = 0;
+			}
 			if (this.field337 < var3) {
 				this.field341 = 1;
 				if (this.field342 == 0 || this.field342 > var3 - this.field337) {
 					this.field342 = var3 - this.field337;
 				}
-			} else
-				if (this.field337 > var3) {
-					this.field341 = -1;
-					if (this.field342 == 0 || this.field342 > this.field337 - var3) {
-						this.field342 = this.field337 - var3;
-					}
-				} else {
-					this.field341 = 0;
+			} else if (this.field337 > var3) {
+				this.field341 = -1;
+				if (this.field342 == 0 || this.field342 > this.field337 - var3) {
+					this.field342 = this.field337 - var3;
 				}
-
+			} else {
+				this.field341 = 0;
+			}
 			return false;
 		}
 	}

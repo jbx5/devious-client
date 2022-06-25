@@ -37,11 +37,9 @@ public class UserComparator5 extends AbstractUserComparator {
 			if (var2.world == 0) {
 				return this.reversed ? -1 : 1;
 			}
-		} else
-			if (var2.world != 0) {
-				return this.reversed ? 1 : -1;
-			}
-
+		} else if (var2.world != 0) {
+			return this.reversed ? 1 : -1;
+		}
 		return this.compareUser(var1, var2);
 	}
 
@@ -83,35 +81,33 @@ public class UserComparator5 extends AbstractUserComparator {
 						boolean var8;
 						if (Character.isISOControl(var7)) {
 							var8 = false;
-						} else
-							if (FloorOverlayDefinition.isAlphaNumeric(var7)) {
-								var8 = true;
-							} else {
-								char[] var9 = class423.field4622;
-								int var10 = 0;
-								label84 : while (true) {
-									char var11;
-									if (var10 >= var9.length) {
-										var9 = class423.field4625;
-										for (var10 = 0; var10 < var9.length; ++var10) {
-											var11 = var9[var10];
-											if (var11 == var7) {
-												var8 = true;
-												break label84;
-											}
+						} else if (FloorOverlayDefinition.isAlphaNumeric(var7)) {
+							var8 = true;
+						} else {
+							char[] var9 = class423.field4622;
+							int var10 = 0;
+							label84 : while (true) {
+								char var11;
+								if (var10 >= var9.length) {
+									var9 = class423.field4625;
+									for (var10 = 0; var10 < var9.length; ++var10) {
+										var11 = var9[var10];
+										if (var11 == var7) {
+											var8 = true;
+											break label84;
 										}
-										var8 = false;
-										break;
 									}
-									var11 = var9[var10];
-									if (var7 == var11) {
-										var8 = true;
-										break;
-									}
-									++var10;
-								} 
-							}
-
+									var8 = false;
+									break;
+								}
+								var11 = var9[var10];
+								if (var7 == var11) {
+									var8 = true;
+									break;
+								}
+								++var10;
+							} 
+						}
 						if (var8) {
 							char var13 = PacketBufferNode.method5203(var7);
 							if (var13 != 0) {
@@ -140,7 +136,7 @@ public class UserComparator5 extends AbstractUserComparator {
 	@ObfuscatedSignature(descriptor = "(S)V", garbageValue = "7108")
 	@Export("Clan_leaveChat")
 	static final void Clan_leaveChat() {
-		PacketBufferNode var0 = EnumComposition.getPacketBufferNode(ClientPacket.field2942, Client.packetWriter.isaacCipher);
+		PacketBufferNode var0 = EnumComposition.getPacketBufferNode(ClientPacket.CLAN_LEAVECHAT, Client.packetWriter.isaacCipher);
 		var0.packetBuffer.writeByte(0);
 		Client.packetWriter.addNode(var0);
 	}

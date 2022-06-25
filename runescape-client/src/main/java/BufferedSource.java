@@ -57,30 +57,28 @@ public class BufferedSource implements Runnable {
 	boolean isAvailable(int var1) throws IOException {
 		if (var1 == 0) {
 			return true;
-		} else
-			if (var1 > 0 && var1 < this.capacity) {
-				synchronized(this) {
-					int var3;
-					if (this.position <= this.limit) {
-						var3 = this.limit - this.position;
-					} else {
-						var3 = this.capacity - this.position + this.limit;
-					}
-					if (var3 < var1) {
-						if (this.exception != null) {
-							throw new IOException(this.exception.toString());
-						} else {
-							this.notifyAll();
-							return false;
-						}
-					} else {
-						return true;
-					}
+		} else if (var1 > 0 && var1 < this.capacity) {
+			synchronized(this) {
+				int var3;
+				if (this.position <= this.limit) {
+					var3 = this.limit - this.position;
+				} else {
+					var3 = this.capacity - this.position + this.limit;
 				}
-			} else {
-				throw new IOException();
+				if (var3 < var1) {
+					if (this.exception != null) {
+						throw new IOException(this.exception.toString());
+					} else {
+						this.notifyAll();
+						return false;
+					}
+				} else {
+					return true;
+				}
 			}
-
+		} else {
+			throw new IOException();
+		}
 	}
 
 	@ObfuscatedName("v")
@@ -184,13 +182,11 @@ public class BufferedSource implements Runnable {
 					}
 					if (this.position == 0) {
 						var1 = this.capacity - this.limit - 1;
-					} else
-						if (this.position <= this.limit) {
-							var1 = this.capacity - this.limit;
-						} else {
-							var1 = this.position - this.limit - 1;
-						}
-
+					} else if (this.position <= this.limit) {
+						var1 = this.capacity - this.limit;
+					} else {
+						var1 = this.position - this.limit - 1;
+					}
 					if (var1 > 0) {
 						break;
 					}

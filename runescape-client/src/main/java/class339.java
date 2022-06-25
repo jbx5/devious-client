@@ -18,15 +18,11 @@ public final class class339 {
 			char var5 = var0.charAt(var4);
 			if (var5 >= 'A' && var5 <= 'Z') {
 				var1 += ((long) (var5 + 1 - 65));
-			} else
-				if (var5 >= 'a' && var5 <= 'z') {
-					var1 += ((long) (var5 + 1 - 97));
-				} else
-					if (var5 >= '0' && var5 <= '9') {
-						var1 += ((long) (var5 + 27 - 48));
-					}
-
-
+			} else if (var5 >= 'a' && var5 <= 'z') {
+				var1 += ((long) (var5 + 1 - 97));
+			} else if (var5 >= '0' && var5 <= '9') {
+				var1 += ((long) (var5 + 27 - 48));
+			}
 			if (var1 >= 177917621779460413L) {
 				break;
 			}

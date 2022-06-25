@@ -59,45 +59,31 @@ public class class133 extends class128 {
 				}
 			}
 			return var4 - var5;
-		} else
-			if (var2 == 2) {
-				return var0.location - var1.location;
-			} else
-				if (var2 == 3) {
-					if (var0.activity.equals("-")) {
-						if (var1.activity.equals("-")) {
-							return 0;
-						} else {
-							return var3 ? -1 : 1;
-						}
-					} else
-						if (var1.activity.equals("-")) {
-							return var3 ? 1 : -1;
-						} else {
-							return var0.activity.compareTo(var1.activity);
-						}
-
-				} else
-					if (var2 == 4) {
-						return var0.method1594() ? var1.method1594() ? 0 : 1 : var1.method1594() ? -1 : 0;
-					} else
-						if (var2 == 5) {
-							return var0.method1628() ? var1.method1628() ? 0 : 1 : var1.method1628() ? -1 : 0;
-						} else
-							if (var2 == 6) {
-								return var0.isPvp() ? var1.isPvp() ? 0 : 1 : var1.isPvp() ? -1 : 0;
-							} else
-								if (var2 == 7) {
-									return var0.isMembersOnly() ? var1.isMembersOnly() ? 0 : 1 : var1.isMembersOnly() ? -1 : 0;
-								} else {
-									return var0.id - var1.id;
-								}
-
-
-
-
-
-
+		} else if (var2 == 2) {
+			return var0.location - var1.location;
+		} else if (var2 == 3) {
+			if (var0.activity.equals("-")) {
+				if (var1.activity.equals("-")) {
+					return 0;
+				} else {
+					return var3 ? -1 : 1;
+				}
+			} else if (var1.activity.equals("-")) {
+				return var3 ? 1 : -1;
+			} else {
+				return var0.activity.compareTo(var1.activity);
+			}
+		} else if (var2 == 4) {
+			return var0.method1594() ? var1.method1594() ? 0 : 1 : var1.method1594() ? -1 : 0;
+		} else if (var2 == 5) {
+			return var0.method1628() ? var1.method1628() ? 0 : 1 : var1.method1628() ? -1 : 0;
+		} else if (var2 == 6) {
+			return var0.isPvp() ? var1.isPvp() ? 0 : 1 : var1.isPvp() ? -1 : 0;
+		} else if (var2 == 7) {
+			return var0.isMembersOnly() ? var1.isMembersOnly() ? 0 : 1 : var1.isMembersOnly() ? -1 : 0;
+		} else {
+			return var0.id - var1.id;
+		}
 	}
 
 	@ObfuscatedName("hv")

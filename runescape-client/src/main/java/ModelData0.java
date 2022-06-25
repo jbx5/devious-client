@@ -64,67 +64,65 @@ public class ModelData0 {
 				var11.field1088 = false;
 				return true;
 			}
-		} else
-			if (var2 == 1) {
-				var3 = var0.readBits(2);
-				var4 = Players.Players_regions[var1];
-				Players.Players_regions[var1] = (((var4 >> 28) + var3 & 3) << 28) + (var4 & 268435455);
+		} else if (var2 == 1) {
+			var3 = var0.readBits(2);
+			var4 = Players.Players_regions[var1];
+			Players.Players_regions[var1] = (((var4 >> 28) + var3 & 3) << 28) + (var4 & 268435455);
+			return false;
+		} else {
+			int var5;
+			int var6;
+			if (var2 == 2) {
+				var3 = var0.readBits(5);
+				var4 = var3 >> 3;
+				var5 = var3 & 7;
+				var6 = Players.Players_regions[var1];
+				var7 = (var6 >> 28) + var4 & 3;
+				var8 = var6 >> 14 & 255;
+				var9 = var6 & 255;
+				if (var5 == 0) {
+					--var8;
+					--var9;
+				}
+				if (var5 == 1) {
+					--var9;
+				}
+				if (var5 == 2) {
+					++var8;
+					--var9;
+				}
+				if (var5 == 3) {
+					--var8;
+				}
+				if (var5 == 4) {
+					++var8;
+				}
+				if (var5 == 5) {
+					--var8;
+					++var9;
+				}
+				if (var5 == 6) {
+					++var9;
+				}
+				if (var5 == 7) {
+					++var8;
+					++var9;
+				}
+				Players.Players_regions[var1] = (var8 << 14) + var9 + (var7 << 28);
 				return false;
 			} else {
-				int var5;
-				int var6;
-				if (var2 == 2) {
-					var3 = var0.readBits(5);
-					var4 = var3 >> 3;
-					var5 = var3 & 7;
-					var6 = Players.Players_regions[var1];
-					var7 = (var6 >> 28) + var4 & 3;
-					var8 = var6 >> 14 & 255;
-					var9 = var6 & 255;
-					if (var5 == 0) {
-						--var8;
-						--var9;
-					}
-					if (var5 == 1) {
-						--var9;
-					}
-					if (var5 == 2) {
-						++var8;
-						--var9;
-					}
-					if (var5 == 3) {
-						--var8;
-					}
-					if (var5 == 4) {
-						++var8;
-					}
-					if (var5 == 5) {
-						--var8;
-						++var9;
-					}
-					if (var5 == 6) {
-						++var9;
-					}
-					if (var5 == 7) {
-						++var8;
-						++var9;
-					}
-					Players.Players_regions[var1] = (var8 << 14) + var9 + (var7 << 28);
-					return false;
-				} else {
-					var3 = var0.readBits(18);
-					var4 = var3 >> 16;
-					var5 = var3 >> 8 & 255;
-					var6 = var3 & 255;
-					var7 = Players.Players_regions[var1];
-					var8 = (var7 >> 28) + var4 & 3;
-					var9 = var5 + (var7 >> 14) & 255;
-					var10 = var6 + var7 & 255;
-					Players.Players_regions[var1] = (var9 << 14) + var10 + (var8 << 28);
-					return false;
-				}
+				var3 = var0.readBits(18);
+				var4 = var3 >> 16;
+				var5 = var3 >> 8 & 255;
+				var6 = var3 & 255;
+				var7 = Players.Players_regions[var1];
+				var8 = (var7 >> 28) + var4 & 3;
+				var9 = var5 + (var7 >> 14) & 255;
+				var10 = var6 + var7 & 255;
+				Players.Players_regions[var1] = (var9 << 14) + var10 + (var8 << 28);
+				return false;
 			}
-
+		}
 	}
 
 	@ObfuscatedName("fs")

@@ -22,37 +22,23 @@ public class Friend extends Buddy {
 	int compareToFriend(Friend var1) {
 		if (super.world == Client.worldId && Client.worldId != var1.world) {
 			return -1;
-		} else
-			if (Client.worldId == var1.world && super.world != Client.worldId) {
-				return 1;
-			} else
-				if (super.world != 0 && var1.world == 0) {
-					return -1;
-				} else
-					if (var1.world != 0 && super.world == 0) {
-						return 1;
-					} else
-						if (this.field4299 && !var1.field4299) {
-							return -1;
-						} else
-							if (!this.field4299 && var1.field4299) {
-								return 1;
-							} else
-								if (this.field4298 && !var1.field4298) {
-									return -1;
-								} else
-									if (!this.field4298 && var1.field4298) {
-										return 1;
-									} else {
-										return super.world != 0 ? super.int2 - var1.int2 : var1.int2 - super.int2;
-									}
-
-
-
-
-
-
-
+		} else if (Client.worldId == var1.world && super.world != Client.worldId) {
+			return 1;
+		} else if (super.world != 0 && var1.world == 0) {
+			return -1;
+		} else if (var1.world != 0 && super.world == 0) {
+			return 1;
+		} else if (this.field4299 && !var1.field4299) {
+			return -1;
+		} else if (!this.field4299 && var1.field4299) {
+			return 1;
+		} else if (this.field4298 && !var1.field4298) {
+			return -1;
+		} else if (!this.field4298 && var1.field4298) {
+			return 1;
+		} else {
+			return super.world != 0 ? super.int2 - var1.int2 : var1.int2 - super.int2;
+		}
 	}
 
 	@ObfuscatedName("v")
@@ -185,196 +171,102 @@ public class Friend extends Buddy {
 	static int method6619(int var0, Script var1, boolean var2) {
 		if (var0 < 1000) {
 			return JagexCache.method3271(var0, var1, var2);
-		} else
-			if (var0 < 1100) {
-				return PendingSpawn.method2180(var0, var1, var2);
-			} else
-				if (var0 < 1200) {
-					return Varcs.method2475(var0, var1, var2);
-				} else
-					if (var0 < 1300) {
-						return StructComposition.method3617(var0, var1, var2);
-					} else
-						if (var0 < 1400) {
-							return ChatChannel.method2003(var0, var1, var2);
-						} else
-							if (var0 < 1500) {
-								return ViewportMouse.method4514(var0, var1, var2);
-							} else
-								if (var0 < 1600) {
-									return class125.method2821(var0, var1, var2);
-								} else
-									if (var0 < 1700) {
-										return class1.method7(var0, var1, var2);
-									} else
-										if (var0 < 1800) {
-											return GameObject.method4553(var0, var1, var2);
-										} else
-											if (var0 < 1900) {
-												return FloorOverlayDefinition.method3817(var0, var1, var2);
-											} else
-												if (var0 < 2000) {
-													return ReflectionCheck.method576(var0, var1, var2);
-												} else
-													if (var0 < 2100) {
-														return PendingSpawn.method2180(var0, var1, var2);
-													} else
-														if (var0 < 2200) {
-															return Varcs.method2475(var0, var1, var2);
-														} else
-															if (var0 < 2300) {
-																return StructComposition.method3617(var0, var1, var2);
-															} else
-																if (var0 < 2400) {
-																	return ChatChannel.method2003(var0, var1, var2);
-																} else
-																	if (var0 < 2500) {
-																		return ViewportMouse.method4514(var0, var1, var2);
-																	} else
-																		if (var0 < 2600) {
-																			return WorldMapDecoration.method4992(var0, var1, var2);
-																		} else
-																			if (var0 < 2700) {
-																				return DynamicObject.method1987(var0, var1, var2);
-																			} else
-																				if (var0 < 2800) {
-																					return class353.method6506(var0, var1, var2);
-																				} else
-																					if (var0 < 2900) {
-																						return class238.method5001(var0, var1, var2);
-																					} else
-																						if (var0 < 3000) {
-																							return ReflectionCheck.method576(var0, var1, var2);
-																						} else
-																							if (var0 < 3200) {
-																								return class115.method2682(var0, var1, var2);
-																							} else
-																								if (var0 < 3300) {
-																									return Decimator.method1019(var0, var1, var2);
-																								} else
-																									if (var0 < 3400) {
-																										return UserComparator10.method2605(var0, var1, var2);
-																									} else
-																										if (var0 < 3500) {
-																											return class131.method2875(var0, var1, var2);
-																										} else
-																											if (var0 < 3600) {
-																												return InterfaceParent.method2097(var0, var1, var2);
-																											} else
-																												if (var0 < 3700) {
-																													return JagexCache.method3249(var0, var1, var2);
-																												} else
-																													if (var0 < 3800) {
-																														return ArchiveLoader.method2073(var0, var1, var2);
-																													} else
-																														if (var0 < 3900) {
-																															return Client.method1177(var0, var1, var2);
-																														} else
-																															if (var0 < 4000) {
-																																return WorldMapSectionType.method4953(var0, var1, var2);
-																															} else
-																																if (var0 < 4100) {
-																																	return Language.method6068(var0, var1, var2);
-																																} else
-																																	if (var0 < 4200) {
-																																		return UserComparator3.method2592(var0, var1, var2);
-																																	} else
-																																		if (var0 < 4300) {
-																																			return UserComparator6.method2628(var0, var1, var2);
-																																		} else
-																																			if (var0 < 5100) {
-																																				return class118.method2742(var0, var1, var2);
-																																			} else
-																																				if (var0 < 5400) {
-																																					return VarcInt.method3411(var0, var1, var2);
-																																				} else
-																																					if (var0 < 5600) {
-																																						return class118.method2744(var0, var1, var2);
-																																					} else
-																																						if (var0 < 5700) {
-																																							return class21.method264(var0, var1, var2);
-																																						} else
-																																							if (var0 < 6300) {
-																																								return class387.method7021(var0, var1, var2);
-																																							} else
-																																								if (var0 < 6600) {
-																																									return ParamComposition.method3574(var0, var1, var2);
-																																								} else
-																																									if (var0 < 6700) {
-																																										return UserList.method6754(var0, var1, var2);
-																																									} else
-																																										if (var0 < 6800) {
-																																											return class14.method155(var0, var1, var2);
-																																										} else
-																																											if (var0 < 6900) {
-																																												return class162.method3298(var0, var1, var2);
-																																											} else
-																																												if (var0 < 7000) {
-																																													return MilliClock.method3308(var0, var1, var2);
-																																												} else
-																																													if (var0 < 7100) {
-																																														return SpriteMask.method5524(var0, var1, var2);
-																																													} else
-																																														if (var0 < 7200) {
-																																															return class11.method96(var0, var1, var2);
-																																														} else
-																																															if (var0 < 7300) {
-																																																return WorldMapSectionType.method4948(var0, var1, var2);
-																																															} else
-																																																if (var0 < 7500) {
-																																																	return Renderable.method4339(var0, var1, var2);
-																																																} else
-																																																	if (var0 < 7600) {
-																																																		return MouseHandler.method547(var0, var1, var2);
-																																																	} else {
-																																																		return var0 < 7700 ? UserComparator3.method2590(var0, var1, var2) : 2;
-																																																	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		} else if (var0 < 1100) {
+			return PendingSpawn.method2180(var0, var1, var2);
+		} else if (var0 < 1200) {
+			return Varcs.method2475(var0, var1, var2);
+		} else if (var0 < 1300) {
+			return StructComposition.method3617(var0, var1, var2);
+		} else if (var0 < 1400) {
+			return ChatChannel.method2003(var0, var1, var2);
+		} else if (var0 < 1500) {
+			return ViewportMouse.method4514(var0, var1, var2);
+		} else if (var0 < 1600) {
+			return class125.method2821(var0, var1, var2);
+		} else if (var0 < 1700) {
+			return class1.method7(var0, var1, var2);
+		} else if (var0 < 1800) {
+			return GameObject.method4553(var0, var1, var2);
+		} else if (var0 < 1900) {
+			return FloorOverlayDefinition.method3817(var0, var1, var2);
+		} else if (var0 < 2000) {
+			return ReflectionCheck.method576(var0, var1, var2);
+		} else if (var0 < 2100) {
+			return PendingSpawn.method2180(var0, var1, var2);
+		} else if (var0 < 2200) {
+			return Varcs.method2475(var0, var1, var2);
+		} else if (var0 < 2300) {
+			return StructComposition.method3617(var0, var1, var2);
+		} else if (var0 < 2400) {
+			return ChatChannel.method2003(var0, var1, var2);
+		} else if (var0 < 2500) {
+			return ViewportMouse.method4514(var0, var1, var2);
+		} else if (var0 < 2600) {
+			return WorldMapDecoration.method4992(var0, var1, var2);
+		} else if (var0 < 2700) {
+			return DynamicObject.method1987(var0, var1, var2);
+		} else if (var0 < 2800) {
+			return class353.method6506(var0, var1, var2);
+		} else if (var0 < 2900) {
+			return class238.method5001(var0, var1, var2);
+		} else if (var0 < 3000) {
+			return ReflectionCheck.method576(var0, var1, var2);
+		} else if (var0 < 3200) {
+			return class115.method2682(var0, var1, var2);
+		} else if (var0 < 3300) {
+			return Decimator.method1019(var0, var1, var2);
+		} else if (var0 < 3400) {
+			return UserComparator10.method2605(var0, var1, var2);
+		} else if (var0 < 3500) {
+			return class131.method2875(var0, var1, var2);
+		} else if (var0 < 3600) {
+			return InterfaceParent.method2097(var0, var1, var2);
+		} else if (var0 < 3700) {
+			return JagexCache.method3249(var0, var1, var2);
+		} else if (var0 < 3800) {
+			return ArchiveLoader.method2073(var0, var1, var2);
+		} else if (var0 < 3900) {
+			return Client.method1177(var0, var1, var2);
+		} else if (var0 < 4000) {
+			return WorldMapSectionType.method4953(var0, var1, var2);
+		} else if (var0 < 4100) {
+			return Language.method6068(var0, var1, var2);
+		} else if (var0 < 4200) {
+			return UserComparator3.method2592(var0, var1, var2);
+		} else if (var0 < 4300) {
+			return UserComparator6.method2628(var0, var1, var2);
+		} else if (var0 < 5100) {
+			return class118.method2742(var0, var1, var2);
+		} else if (var0 < 5400) {
+			return VarcInt.method3411(var0, var1, var2);
+		} else if (var0 < 5600) {
+			return class118.method2744(var0, var1, var2);
+		} else if (var0 < 5700) {
+			return class21.method264(var0, var1, var2);
+		} else if (var0 < 6300) {
+			return class387.method7021(var0, var1, var2);
+		} else if (var0 < 6600) {
+			return ParamComposition.method3574(var0, var1, var2);
+		} else if (var0 < 6700) {
+			return UserList.method6754(var0, var1, var2);
+		} else if (var0 < 6800) {
+			return class14.method155(var0, var1, var2);
+		} else if (var0 < 6900) {
+			return class162.method3298(var0, var1, var2);
+		} else if (var0 < 7000) {
+			return MilliClock.method3308(var0, var1, var2);
+		} else if (var0 < 7100) {
+			return SpriteMask.method5524(var0, var1, var2);
+		} else if (var0 < 7200) {
+			return class11.method96(var0, var1, var2);
+		} else if (var0 < 7300) {
+			return WorldMapSectionType.method4948(var0, var1, var2);
+		} else if (var0 < 7500) {
+			return Renderable.method4339(var0, var1, var2);
+		} else if (var0 < 7600) {
+			return MouseHandler.method547(var0, var1, var2);
+		} else {
+			return var0 < 7700 ? UserComparator3.method2590(var0, var1, var2) : 2;
+		}
 	}
 }

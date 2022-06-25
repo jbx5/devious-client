@@ -289,15 +289,13 @@ public class LoginScreenAnimation {
 		int var2 = this.field1219.length;
 		if (this.field1235 > 0) {
 			this.method2224(this.field1235, this.field1217);
-		} else
-			if (this.field1224 > 0) {
-				this.method2224(this.field1224, this.field1222);
-			} else {
-				for (int var3 = 0; var3 < var2; ++var3) {
-					this.field1219[var3] = this.field1220[var3];
-				}
+		} else if (this.field1224 > 0) {
+			this.method2224(this.field1224, this.field1222);
+		} else {
+			for (int var3 = 0; var3 < var2; ++var3) {
+				this.field1219[var3] = this.field1220[var3];
 			}
-
+		}
 		this.method2214(var1);
 	}
 
@@ -308,13 +306,11 @@ public class LoginScreenAnimation {
 		for (int var4 = 0; var4 < var3; ++var4) {
 			if (var1 > 768) {
 				this.field1219[var4] = this.method2212(this.field1220[var4], var2[var4], 1024 - var1);
-			} else
-				if (var1 > 256) {
-					this.field1219[var4] = var2[var4];
-				} else {
-					this.field1219[var4] = this.method2212(var2[var4], this.field1220[var4], 256 - var1);
-				}
-
+			} else if (var1 > 256) {
+				this.field1219[var4] = var2[var4];
+			} else {
+				this.field1219[var4] = this.method2212(var2[var4], this.field1220[var4], 256 - var1);
+			}
 		}
 	}
 

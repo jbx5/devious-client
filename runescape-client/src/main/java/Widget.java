@@ -1165,11 +1165,9 @@ public class Widget extends Node {
 				int var5 = var1.readUnsignedByte();
 				if (var5 == 0) {
 					var3[var4] = new Integer(var1.readInt());
-				} else
-					if (var5 == 1) {
-						var3[var4] = var1.readStringCp1252NullTerminated();
-					}
-
+				} else if (var5 == 1) {
+					var3[var4] = var1.readStringCp1252NullTerminated();
+				}
 			}
 			this.hasListener = true;
 			return var3;
@@ -1395,57 +1393,55 @@ public class Widget extends Node {
 		}
 		if (var5 == 0) {
 			return null;
-		} else
-			if (var5 == 1 && var6 == -1) {
-				return null;
-			} else {
-				Model var7 = ((Model) (Widget_cachedModels.get(((long) (var6 + (var5 << 16))))));
-				if (var7 == null) {
-					ModelData var8;
-					if (var5 == 1) {
-						var8 = ModelData.ModelData_get(class126.Widget_modelsArchive, var6, 0);
-						if (var8 == null) {
-							field3366 = true;
-							return null;
-						}
-						var7 = var8.toModel(64, 768, -50, -10, -50);
+		} else if (var5 == 1 && var6 == -1) {
+			return null;
+		} else {
+			Model var7 = ((Model) (Widget_cachedModels.get(((long) (var6 + (var5 << 16))))));
+			if (var7 == null) {
+				ModelData var8;
+				if (var5 == 1) {
+					var8 = ModelData.ModelData_get(class126.Widget_modelsArchive, var6, 0);
+					if (var8 == null) {
+						field3366 = true;
+						return null;
 					}
-					if (var5 == 2) {
-						var8 = BuddyRankComparator.getNpcDefinition(var6).getModelData();
-						if (var8 == null) {
-							field3366 = true;
-							return null;
-						}
-						var7 = var8.toModel(64, 768, -50, -10, -50);
-					}
-					if (var5 == 3) {
-						if (var4 == null) {
-							return null;
-						}
-						var8 = var4.getModelData();
-						if (var8 == null) {
-							field3366 = true;
-							return null;
-						}
-						var7 = var8.toModel(64, 768, -50, -10, -50);
-					}
-					if (var5 == 4) {
-						ItemComposition var9 = EnumComposition.ItemDefinition_get(var6);
-						var8 = var9.getModelData(10);
-						if (var8 == null) {
-							field3366 = true;
-							return null;
-						}
-						var7 = var8.toModel(var9.ambient + 64, var9.contrast + 768, -50, -10, -50);
-					}
-					Widget_cachedModels.put(var7, ((long) (var6 + (var5 << 16))));
+					var7 = var8.toModel(64, 768, -50, -10, -50);
 				}
-				if (var1 != null) {
-					var7 = var1.transformWidgetModel(var7, var2);
+				if (var5 == 2) {
+					var8 = BuddyRankComparator.getNpcDefinition(var6).getModelData();
+					if (var8 == null) {
+						field3366 = true;
+						return null;
+					}
+					var7 = var8.toModel(64, 768, -50, -10, -50);
 				}
-				return var7;
+				if (var5 == 3) {
+					if (var4 == null) {
+						return null;
+					}
+					var8 = var4.getModelData();
+					if (var8 == null) {
+						field3366 = true;
+						return null;
+					}
+					var7 = var8.toModel(64, 768, -50, -10, -50);
+				}
+				if (var5 == 4) {
+					ItemComposition var9 = EnumComposition.ItemDefinition_get(var6);
+					var8 = var9.getModelData(10);
+					if (var8 == null) {
+						field3366 = true;
+						return null;
+					}
+					var7 = var8.toModel(var9.ambient + 64, var9.contrast + 768, -50, -10, -50);
+				}
+				Widget_cachedModels.put(var7, ((long) (var6 + (var5 << 16))));
 			}
-
+			if (var1 != null) {
+				var7 = var1.transformWidgetModel(var7, var2);
+			}
+			return var7;
+		}
 	}
 
 	@ObfuscatedName("h")
@@ -1528,10 +1524,8 @@ public class Widget extends Node {
 			this.field3483 = new class155();
 			if (!this.field3483.method3174(var1, var2)) {
 				this.field3483 = null;
-			} else {
-				if (this.field3403 == null || this.field3415 == null) {
-					this.method5668();
-				}
+			} else if (this.field3403 == null || this.field3415 == null) {
+				this.method5668();
 			}
 		}
 	}

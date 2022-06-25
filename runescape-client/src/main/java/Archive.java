@@ -271,21 +271,19 @@ public class Archive extends AbstractArchive {
 	int groupLoadPercent(int var1) {
 		if (super.groups[var1] != null) {
 			return 100;
-		} else
-			if (this.validGroups[var1]) {
-				return 100;
+		} else if (this.validGroups[var1]) {
+			return 100;
+		} else {
+			int var3 = this.index;
+			long var4 = ((long) ((var3 << 16) + var1));
+			int var2;
+			if (Buddy.NetCache_currentResponse != null && Buddy.NetCache_currentResponse.key == var4) {
+				var2 = ObjectSound.NetCache_responseArchiveBuffer.offset * 99 / (ObjectSound.NetCache_responseArchiveBuffer.array.length - Buddy.NetCache_currentResponse.padding) + 1;
 			} else {
-				int var3 = this.index;
-				long var4 = ((long) ((var3 << 16) + var1));
-				int var2;
-				if (Buddy.NetCache_currentResponse != null && Buddy.NetCache_currentResponse.key == var4) {
-					var2 = ObjectSound.NetCache_responseArchiveBuffer.offset * 99 / (ObjectSound.NetCache_responseArchiveBuffer.array.length - Buddy.NetCache_currentResponse.padding) + 1;
-				} else {
-					var2 = 0;
-				}
-				return var2;
+				var2 = 0;
 			}
-
+			return var2;
+		}
 	}
 
 	@ObfuscatedName("s")

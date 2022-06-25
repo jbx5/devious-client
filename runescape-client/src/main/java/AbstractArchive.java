@@ -261,14 +261,12 @@ public abstract class AbstractArchive {
 		if (var1 >= 0 && var1 < this.files.length && this.files[var1] != null && var2 >= 0 && var2 < this.files[var1].length) {
 			if (this.files[var1][var2] != null) {
 				return true;
-			} else
-				if (this.groups[var1] != null) {
-					return true;
-				} else {
-					this.loadGroup(var1);
-					return this.groups[var1] != null;
-				}
-
+			} else if (this.groups[var1] != null) {
+				return true;
+			} else {
+				this.loadGroup(var1);
+				return this.groups[var1] != null;
+			}
 		} else {
 			return false;
 		}
@@ -279,13 +277,11 @@ public abstract class AbstractArchive {
 	public boolean method5849(int var1) {
 		if (this.files.length == 1) {
 			return this.tryLoadFile(0, var1);
-		} else
-			if (this.files[var1].length == 1) {
-				return this.tryLoadFile(var1, 0);
-			} else {
-				throw new RuntimeException();
-			}
-
+		} else if (this.files[var1].length == 1) {
+			return this.tryLoadFile(var1, 0);
+		} else {
+			throw new RuntimeException();
+		}
 	}
 
 	@ObfuscatedName("bz")
@@ -323,13 +319,11 @@ public abstract class AbstractArchive {
 	public byte[] takeFileFlat(int var1) {
 		if (this.files.length == 1) {
 			return this.takeFile(0, var1);
-		} else
-			if (this.files[var1].length == 1) {
-				return this.takeFile(var1, 0);
-			} else {
-				throw new RuntimeException();
-			}
-
+		} else if (this.files[var1].length == 1) {
+			return this.takeFile(var1, 0);
+		} else {
+			throw new RuntimeException();
+		}
 	}
 
 	@ObfuscatedName("bg")
@@ -360,13 +354,11 @@ public abstract class AbstractArchive {
 	public byte[] getFileFlat(int var1) {
 		if (this.files.length == 1) {
 			return this.getFile(0, var1);
-		} else
-			if (this.files[var1].length == 1) {
-				return this.getFile(var1, 0);
-			} else {
-				throw new RuntimeException();
-			}
-
+		} else if (this.files[var1].length == 1) {
+			return this.getFile(var1, 0);
+		} else {
+			throw new RuntimeException();
+		}
 	}
 
 	@ObfuscatedName("bn")
@@ -493,13 +485,11 @@ public abstract class AbstractArchive {
 							var5[var4[var15]] = var19[var15];
 						}
 					}
-				} else
-					if (!this.shallowFiles) {
-						var5[var4[0]] = WorldMapArea.method4621(var20, false);
-					} else {
-						var5[var4[0]] = var20;
-					}
-
+				} else if (!this.shallowFiles) {
+					var5[var4[0]] = WorldMapArea.method4621(var20, false);
+				} else {
+					var5[var4[0]] = var20;
+				}
 				return true;
 			}
 		}

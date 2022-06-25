@@ -70,13 +70,11 @@ public class class141 extends class144 {
 		var2 &= 3;
 		if (var2 == 0) {
 			return var1;
-		} else
-			if (var2 == 1) {
-				return 7 - var0 - (var3 - 1);
-			} else {
-				return var2 == 2 ? 7 - var1 - (var4 - 1) : var0;
-			}
-
+		} else if (var2 == 1) {
+			return 7 - var0 - (var3 - 1);
+		} else {
+			return var2 == 2 ? 7 - var1 - (var4 - 1) : var0;
+		}
 	}
 
 	@ObfuscatedName("u")

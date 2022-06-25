@@ -155,32 +155,26 @@ public class WorldMapData_1 extends AbstractWorldMapData {
 			} else {
 				var0.spriteId2 = Client.field763;
 			}
-		} else
-			if (var1 == 325) {
-				if (Client.field535 == -1) {
-					Client.field535 = var0.spriteId2;
-					Client.field763 = var0.spriteId;
-				}
-				if (Client.playerAppearance.isFemale) {
-					var0.spriteId2 = Client.field763;
-				} else {
-					var0.spriteId2 = Client.field535;
-				}
-			} else
-				if (var1 == 327) {
-					var0.modelAngleX = 150;
-					var0.modelAngleY = ((int) (Math.sin(((double) (Client.cycle)) / 40.0) * 256.0)) & 2047;
-					var0.modelType = 5;
-					var0.modelId = 0;
-				} else
-					if (var1 == 328) {
-						var0.modelAngleX = 150;
-						var0.modelAngleY = ((int) (Math.sin(((double) (Client.cycle)) / 40.0) * 256.0)) & 2047;
-						var0.modelType = 5;
-						var0.modelId = 1;
-					}
-
-
-
+		} else if (var1 == 325) {
+			if (Client.field535 == -1) {
+				Client.field535 = var0.spriteId2;
+				Client.field763 = var0.spriteId;
+			}
+			if (Client.playerAppearance.isFemale) {
+				var0.spriteId2 = Client.field763;
+			} else {
+				var0.spriteId2 = Client.field535;
+			}
+		} else if (var1 == 327) {
+			var0.modelAngleX = 150;
+			var0.modelAngleY = ((int) (Math.sin(((double) (Client.cycle)) / 40.0) * 256.0)) & 2047;
+			var0.modelType = 5;
+			var0.modelId = 0;
+		} else if (var1 == 328) {
+			var0.modelAngleX = 150;
+			var0.modelAngleY = ((int) (Math.sin(((double) (Client.cycle)) / 40.0) * 256.0)) & 2047;
+			var0.modelType = 5;
+			var0.modelId = 1;
+		}
 	}
 }

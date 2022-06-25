@@ -33,26 +33,22 @@ public abstract class class392 extends class249 implements class449 {
 		Class var5 = var3.field4428.field4659;
 		if (var5 == Integer.class) {
 			var4.field4766 = var1.readInt();
-		} else
-			if (var5 == Long.class) {
-				var4.field4766 = var1.readLong();
-			} else
-				if (var5 == String.class) {
-					var4.field4766 = var1.readStringCp1252NullCircumfixed();
-				} else {
-					if (!class445.class.isAssignableFrom(var5)) {
-						throw new IllegalStateException();
-					}
-					try {
-						class445 var6 = ((class445) (var5.newInstance()));
-						var6.method8005(var1);
-						var4.field4766 = var6;
-					} catch (InstantiationException var7) {
-					} catch (IllegalAccessException var8) {
-					}
-				}
-
-
+		} else if (var5 == Long.class) {
+			var4.field4766 = var1.readLong();
+		} else if (var5 == String.class) {
+			var4.field4766 = var1.readStringCp1252NullCircumfixed();
+		} else {
+			if (!class445.class.isAssignableFrom(var5)) {
+				throw new IllegalStateException();
+			}
+			try {
+				class445 var6 = ((class445) (var5.newInstance()));
+				var6.method8005(var1);
+				var4.field4766 = var6;
+			} catch (InstantiationException var7) {
+			} catch (IllegalAccessException var8) {
+			}
+		}
 		return var4;
 	}
 }

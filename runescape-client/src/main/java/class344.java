@@ -66,13 +66,11 @@ public final class class344 {
 			var8 = var2.readUnsignedShort();
 			if (var8 == 3) {
 				var1.stringOperands[var7] = var2.readStringCp1252NullTerminated();
-			} else
-				if (var8 < 100 && var8 != 21 && var8 != 38 && var8 != 39) {
-					var1.intOperands[var7] = var2.readInt();
-				} else {
-					var1.intOperands[var7] = var2.readUnsignedByte();
-				}
-
+			} else if (var8 < 100 && var8 != 21 && var8 != 38 && var8 != 39) {
+				var1.intOperands[var7] = var2.readInt();
+			} else {
+				var1.intOperands[var7] = var2.readUnsignedByte();
+			}
 		}
 		return var1;
 	}

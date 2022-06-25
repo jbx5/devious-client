@@ -25,13 +25,11 @@ public class class450 {
 			class450 var2 = ((class450) (var1));
 			if (var2.field4766 == null && this.field4766 != null) {
 				return false;
-			} else
-				if (this.field4766 == null && var2.field4766 != null) {
-					return false;
-				} else {
-					return var2.field4765 == this.field4765 && var2.field4766.equals(this.field4766);
-				}
-
+			} else if (this.field4766 == null && var2.field4766 != null) {
+				return false;
+			} else {
+				return var2.field4765 == this.field4765 && var2.field4766.equals(this.field4766);
+			}
 		}
 	}
 

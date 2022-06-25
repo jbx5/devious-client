@@ -131,26 +131,24 @@ public class Texture extends Node {
 					for (var12 = 0; var12 < var5; ++var12) {
 						this.pixels[var12] = var9[var8[var12] & 255];
 					}
-				} else
-					if (var7.subWidth == 64 && var3 == 128) {
-						var12 = 0;
-						for (var13 = 0; var13 < var3; ++var13) {
-							for (var14 = 0; var14 < var3; ++var14) {
-								this.pixels[var12++] = var9[var8[(var13 >> 1 << 6) + (var14 >> 1)] & 255];
-							}
-						}
-					} else {
-						if (var7.subWidth != 128 || var3 != 64) {
-							throw new RuntimeException();
-						}
-						var12 = 0;
-						for (var13 = 0; var13 < var3; ++var13) {
-							for (var14 = 0; var14 < var3; ++var14) {
-								this.pixels[var12++] = var9[var8[(var14 << 1) + (var13 << 1 << 7)] & 255];
-							}
+				} else if (var7.subWidth == 64 && var3 == 128) {
+					var12 = 0;
+					for (var13 = 0; var13 < var3; ++var13) {
+						for (var14 = 0; var14 < var3; ++var14) {
+							this.pixels[var12++] = var9[var8[(var13 >> 1 << 6) + (var14 >> 1)] & 255];
 						}
 					}
-
+				} else {
+					if (var7.subWidth != 128 || var3 != 64) {
+						throw new RuntimeException();
+					}
+					var12 = 0;
+					for (var13 = 0; var13 < var3; ++var13) {
+						for (var14 = 0; var14 < var3; ++var14) {
+							this.pixels[var12++] = var9[var8[(var14 << 1) + (var13 << 1 << 7)] & 255];
+						}
+					}
+				}
 			}
 			if (var11 == 1) {
 			}

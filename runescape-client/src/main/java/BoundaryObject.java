@@ -75,18 +75,14 @@ public final class BoundaryObject {
 				int var5 = 0;
 				if (var1 > var4.maxX) {
 					var5 += var1 - var4.maxX;
-				} else
-					if (var1 < var4.x) {
-						var5 += var4.x - var1;
-					}
-
+				} else if (var1 < var4.x) {
+					var5 += var4.x - var1;
+				}
 				if (var2 > var4.maxY) {
 					var5 += var2 - var4.maxY;
-				} else
-					if (var2 < var4.y) {
-						var5 += var4.y - var2;
-					}
-
+				} else if (var2 < var4.y) {
+					var5 += var4.y - var2;
+				}
 				if (var5 - 64 <= var4.field812 && class19.clientPreferences.method2262() != 0 && var0 == var4.plane) {
 					var5 -= 64;
 					if (var5 < 0) {

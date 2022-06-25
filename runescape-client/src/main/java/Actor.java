@@ -445,23 +445,19 @@ public abstract class Actor extends Renderable {
 			var14 = 0;
 			if (var10 == 0) {
 				var14 = this.hitSplatCycles[0];
-			} else
-				if (var10 == 1) {
-					var14 = this.hitSplatValues[0];
-				}
-
+			} else if (var10 == 1) {
+				var14 = this.hitSplatValues[0];
+			}
 			for (int var13 = 1; var13 < 4; ++var13) {
 				if (var10 == 0) {
 					if (this.hitSplatCycles[var13] < var14) {
 						var9 = var13;
 						var14 = this.hitSplatCycles[var13];
 					}
-				} else
-					if (var10 == 1 && this.hitSplatValues[var13] < var14) {
-						var9 = var13;
-						var14 = this.hitSplatValues[var13];
-					}
-
+				} else if (var10 == 1 && this.hitSplatValues[var13] < var14) {
+					var9 = var13;
+					var14 = this.hitSplatValues[var13];
+				}
 			}
 			if (var10 == 1 && var14 >= var2) {
 				return;

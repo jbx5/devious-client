@@ -117,43 +117,37 @@ public class HealthBarUpdate extends Node {
 				if (var0 == 20) {
 					int var3 = (Client.gameState == 11) ? 4 : 0;
 					ClanSettings.method3020(ApproximateRouteStrategy.archive10, class304.archive8, false, var3);
-				} else
-					if (var0 == 11) {
-						ClanSettings.method3020(ApproximateRouteStrategy.archive10, class304.archive8, false, 4);
-					} else
-						if (var0 == 50) {
-							class101.setLoginResponseString("", "Updating date of birth...", "");
-							ClanSettings.method3020(ApproximateRouteStrategy.archive10, class304.archive8, false, 7);
-						} else
-							if (Login.clearLoginScreen) {
-								class4.titleboxSprite = null;
-								class6.titlebuttonSprite = null;
-								AbstractByteArrayCopier.runesSprite = null;
-								class16.leftTitleSprite = null;
-								Login.rightTitleSprite = null;
-								Login.logoSprite = null;
-								class145.title_muteSprite = null;
-								class345.options_buttons_0Sprite = null;
-								class228.options_buttons_2Sprite = null;
-								ScriptFrame.worldSelectBackSprites = null;
-								class126.worldSelectFlagSprites = null;
-								FriendSystem.worldSelectArrows = null;
-								class220.worldSelectStars = null;
-								UserComparator5.field1385 = null;
-								Login.loginScreenRunesAnimation.method2209();
-								class272.musicPlayerStatus = 1;
-								class272.musicTrackArchive = null;
-								class272.musicTrackGroupId = -1;
-								class151.musicTrackFileId = -1;
-								class272.musicTrackVolume = 0;
-								class11.musicTrackBoolean = false;
-								class272.pcmSampleLength = 2;
-								class115.method2693(true);
-								Login.clearLoginScreen = false;
-							}
-
-
-
+				} else if (var0 == 11) {
+					ClanSettings.method3020(ApproximateRouteStrategy.archive10, class304.archive8, false, 4);
+				} else if (var0 == 50) {
+					class101.setLoginResponseString("", "Updating date of birth...", "");
+					ClanSettings.method3020(ApproximateRouteStrategy.archive10, class304.archive8, false, 7);
+				} else if (Login.clearLoginScreen) {
+					class4.titleboxSprite = null;
+					class6.titlebuttonSprite = null;
+					AbstractByteArrayCopier.runesSprite = null;
+					class16.leftTitleSprite = null;
+					Login.rightTitleSprite = null;
+					Login.logoSprite = null;
+					class145.title_muteSprite = null;
+					class345.options_buttons_0Sprite = null;
+					class228.options_buttons_2Sprite = null;
+					ScriptFrame.worldSelectBackSprites = null;
+					class126.worldSelectFlagSprites = null;
+					FriendSystem.worldSelectArrows = null;
+					class220.worldSelectStars = null;
+					UserComparator5.field1385 = null;
+					Login.loginScreenRunesAnimation.method2209();
+					class272.musicPlayerStatus = 1;
+					class272.musicTrackArchive = null;
+					class272.musicTrackGroupId = -1;
+					class151.musicTrackFileId = -1;
+					class272.musicTrackVolume = 0;
+					class11.musicTrackBoolean = false;
+					class272.pcmSampleLength = 2;
+					class115.method2693(true);
+					Login.clearLoginScreen = false;
+				}
 			} else {
 				boolean var1 = class19.clientPreferences.method2266() >= Client.field482;
 				int var2 = (var1) ? 0 : 12;
@@ -182,7 +176,7 @@ public class HealthBarUpdate extends Node {
 	@ObfuscatedName("lb")
 	@ObfuscatedSignature(descriptor = "(S)V", garbageValue = "-12087")
 	static void method2205() {
-		Client.packetWriter.addNode(EnumComposition.getPacketBufferNode(ClientPacket.field2945, Client.packetWriter.isaacCipher));
+		Client.packetWriter.addNode(EnumComposition.getPacketBufferNode(ClientPacket.FREECAM_EXIT, Client.packetWriter.isaacCipher));
 		Client.oculusOrbState = 0;
 	}
 }

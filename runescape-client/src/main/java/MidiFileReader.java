@@ -177,22 +177,20 @@ public class MidiFileReader {
 				var10000 = this.buffer;
 				var10000.offset += var4;
 				return 1;
-			} else
-				if (var7 == 81) {
-					int var5 = this.buffer.readMedium();
-					var4 -= 3;
-					int var6 = this.trackLengths[var1];
-					this.field3241 += ((long) (var6)) * ((long) (this.field3239 - var5));
-					this.field3239 = var5;
-					var10000 = this.buffer;
-					var10000.offset += var4;
-					return 2;
-				} else {
-					var10000 = this.buffer;
-					var10000.offset += var4;
-					return 3;
-				}
-
+			} else if (var7 == 81) {
+				int var5 = this.buffer.readMedium();
+				var4 -= 3;
+				int var6 = this.trackLengths[var1];
+				this.field3241 += ((long) (var6)) * ((long) (this.field3239 - var5));
+				this.field3239 = var5;
+				var10000 = this.buffer;
+				var10000.offset += var4;
+				return 2;
+			} else {
+				var10000 = this.buffer;
+				var10000.offset += var4;
+				return 3;
+			}
 		} else {
 			byte var3 = field3233[var2 - 128];
 			var4 = var2;

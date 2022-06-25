@@ -51,23 +51,19 @@ public class class150 extends class128 {
 				String var3;
 				if (Client.isItemSelected == 1 && Client.menuOptionsCount < 2) {
 					var3 = "Use" + " " + Client.selectedItemName + " " + "->";
-				} else
-					if (Client.isSpellSelected && Client.menuOptionsCount < 2) {
-						var3 = Client.selectedSpellActionName + " " + Client.selectedSpellName + " " + "->";
+				} else if (Client.isSpellSelected && Client.menuOptionsCount < 2) {
+					var3 = Client.selectedSpellActionName + " " + Client.selectedSpellName + " " + "->";
+				} else {
+					String var4;
+					if (var2 < 0) {
+						var4 = "";
+					} else if (Client.menuTargets[var2].length() > 0) {
+						var4 = Client.menuActions[var2] + " " + Client.menuTargets[var2];
 					} else {
-						String var4;
-						if (var2 < 0) {
-							var4 = "";
-						} else
-							if (Client.menuTargets[var2].length() > 0) {
-								var4 = Client.menuActions[var2] + " " + Client.menuTargets[var2];
-							} else {
-								var4 = Client.menuActions[var2];
-							}
-
-						var3 = var4;
+						var4 = Client.menuActions[var2];
 					}
-
+					var3 = var4;
+				}
 				if (Client.menuOptionsCount > 2) {
 					var3 = var3 + class122.colorStartTag(16777215) + " " + '/' + " " + (Client.menuOptionsCount - 2) + " more options";
 				}
@@ -86,28 +82,20 @@ public class class150 extends class128 {
 		if (var5 != null && var5[var3] != null) {
 			if (var3 == 0) {
 				var6 = 33;
-			} else
-				if (var3 == 1) {
-					var6 = 34;
-				} else
-					if (var3 == 2) {
-						var6 = 35;
-					} else
-						if (var3 == 3) {
-							var6 = 36;
-						} else {
-							var6 = 37;
-						}
-
-
-
-			var7 = var5[var3];
-		} else
-			if (var3 == 4) {
+			} else if (var3 == 1) {
+				var6 = 34;
+			} else if (var3 == 2) {
+				var6 = 35;
+			} else if (var3 == 3) {
+				var6 = 36;
+			} else {
 				var6 = 37;
-				var7 = "Drop";
 			}
-
+			var7 = var5[var3];
+		} else if (var3 == 4) {
+			var6 = 37;
+			var7 = "Drop";
+		}
 		if (var6 != -1 && var7 != null) {
 			class268.insertMenuItem(var7, class122.colorStartTag(16748608) + var1.name, var6, var1.id, var2, var0.id, var4);
 		}

@@ -84,57 +84,49 @@ public class InvDefinition extends DualNode {
 						} else {
 							var11 = var5 - var11;
 						}
-					} else
-						if (var0.field1468 != class116.field1450 && var0.field1468 != class116.field1453) {
-							if (var0.field1468 == class116.field1451) {
-								var11 = var4 - var1;
-								var16 = var0.field1462[0].field1421;
-								var17 = var0.field1462[0].field1422;
-								var3 = var0.field1462[0].field1423;
-								if (0.0 != ((double) (var16))) {
-									var3 -= var17 * var11 / var16;
-								}
-								return var3;
+					} else if (var0.field1468 != class116.field1450 && var0.field1468 != class116.field1453) {
+						if (var0.field1468 == class116.field1451) {
+							var11 = var4 - var1;
+							var16 = var0.field1462[0].field1421;
+							var17 = var0.field1462[0].field1422;
+							var3 = var0.field1462[0].field1423;
+							if (0.0 != ((double) (var16))) {
+								var3 -= var17 * var11 / var16;
 							}
-						} else {
-							var11 = var5 - var11;
+							return var3;
 						}
-
-				} else
-					if (var0.field1461 == class116.field1454) {
-						if (0.0 != ((double) (var10))) {
-							var11 = var5 - var11;
-						} else {
-							var11 += var4;
+					} else {
+						var11 = var5 - var11;
+					}
+				} else if (var0.field1461 == class116.field1454) {
+					if (0.0 != ((double) (var10))) {
+						var11 = var5 - var11;
+					} else {
+						var11 += var4;
+					}
+				} else if (var0.field1461 != class116.field1450 && var0.field1461 != class116.field1453) {
+					if (var0.field1461 == class116.field1451) {
+						var11 = var1 - var5;
+						var16 = var0.field1462[var0.method2709() - 1].field1419;
+						var17 = var0.field1462[var0.method2709() - 1].field1425;
+						var3 = var0.field1462[var0.method2709() - 1].field1423;
+						if (0.0 != ((double) (var16))) {
+							var3 += var11 * var17 / var16;
 						}
-					} else
-						if (var0.field1461 != class116.field1450 && var0.field1461 != class116.field1453) {
-							if (var0.field1461 == class116.field1451) {
-								var11 = var1 - var5;
-								var16 = var0.field1462[var0.method2709() - 1].field1419;
-								var17 = var0.field1462[var0.method2709() - 1].field1425;
-								var3 = var0.field1462[var0.method2709() - 1].field1423;
-								if (0.0 != ((double) (var16))) {
-									var3 += var11 * var17 / var16;
-								}
-								return var3;
-							}
-						} else {
-							var11 += var4;
-						}
-
-
+						return var3;
+					}
+				} else {
+					var11 += var4;
+				}
 				var3 = WorldMapSection0.method4918(var0, var11);
 				float var18;
 				if (var2 && var0.field1468 == class116.field1453) {
 					var18 = var0.field1462[var0.method2709() - 1].field1423 - var0.field1462[0].field1423;
 					var3 = ((float) (((double) (var3)) - var8 * ((double) (var18))));
-				} else
-					if (!var2 && var0.field1461 == class116.field1453) {
-						var18 = var0.field1462[var0.method2709() - 1].field1423 - var0.field1462[0].field1423;
-						var3 = ((float) (((double) (var3)) + ((double) (var18)) * var8));
-					}
-
+				} else if (!var2 && var0.field1461 == class116.field1453) {
+					var18 = var0.field1462[var0.method2709() - 1].field1423 - var0.field1462[0].field1423;
+					var3 = ((float) (((double) (var3)) + ((double) (var18)) * var8));
+				}
 				return var3;
 			}
 		} else {

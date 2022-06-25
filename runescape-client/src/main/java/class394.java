@@ -64,12 +64,10 @@ public abstract class class394 implements class248 {
 	Object method7082() {
 		if (this.field4428 == class432.field4658) {
 			return 0;
-		} else
-			if (this.field4428 == class432.field4656) {
-				return -1L;
-			} else {
-				return this.field4428 == class432.field4657 ? "" : null;
-			}
-
+		} else if (this.field4428 == class432.field4656) {
+			return -1L;
+		} else {
+			return this.field4428 == class432.field4657 ? "" : null;
+		}
 	}
 }
