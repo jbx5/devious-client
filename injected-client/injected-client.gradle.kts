@@ -56,6 +56,7 @@ dependencies {
 }
 
 injector {
+    development.set(System.getenv("unethicalite.release")?.equals("development") ?: false)
     mixins.set(mixinsDep.singleFile)
     rsapi.set(rsapiDep.singleFile)
     rsclient.set(rsclientDep.singleFile)

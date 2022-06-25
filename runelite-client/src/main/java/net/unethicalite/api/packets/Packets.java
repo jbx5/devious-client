@@ -143,7 +143,7 @@ public class Packets
 					selectedWidgetSlot = -1;
 					selectedWidgetItemId = -1;
 				}
-				return WidgetPackets.createWidgetOnWidget(selectedWidget, selectedWidgetSlot, selectedWidgetItemId, param1, param0, childItemId);
+				return WidgetPackets.createWidgetOnWidget(selectedWidget, selectedWidgetSlot, selectedWidgetItemId, childItemId, param0, param1);
 			case ITEM_FIRST_OPTION:
 				return ItemPackets.createFirstAction(param1, id, param0);
 			case ITEM_SECOND_OPTION:
