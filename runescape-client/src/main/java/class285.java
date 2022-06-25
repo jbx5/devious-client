@@ -22,25 +22,23 @@ public class class285 {
 		int var4;
 		if (var0.field1184 >= Client.cycle) {
 			GrandExchangeOfferTotalQuantityComparator.method5970(var0);
-		} else
-			if (var0.field1194 >= Client.cycle) {
-				if (var0.field1194 == Client.cycle || var0.sequence == -1 || var0.sequenceDelay != 0 || var0.sequenceFrameCycle + 1 > ScriptFrame.SequenceDefinition_get(var0.sequence).frameLengths[var0.sequenceFrame]) {
-					var2 = var0.field1194 - var0.field1184;
-					var3 = Client.cycle - var0.field1184;
-					var4 = var0.field1205 * 64 + var0.field1140 * 128;
-					int var5 = var0.field1205 * 64 + var0.field1182 * 128;
-					int var6 = var0.field1205 * 64 + var0.field1181 * 128;
-					int var7 = var0.field1205 * 64 + var0.field1183 * 128;
-					var0.x = (var6 * var3 + var4 * (var2 - var3)) / var2;
-					var0.y = (var7 * var3 + var5 * (var2 - var3)) / var2;
-				}
-				var0.field1202 = 0;
-				var0.orientation = var0.field1186;
-				var0.rotation = var0.orientation;
-			} else {
-				KitDefinition.method3439(var0);
+		} else if (var0.field1194 >= Client.cycle) {
+			if (var0.field1194 == Client.cycle || var0.sequence == -1 || var0.sequenceDelay != 0 || var0.sequenceFrameCycle + 1 > ScriptFrame.SequenceDefinition_get(var0.sequence).frameLengths[var0.sequenceFrame]) {
+				var2 = var0.field1194 - var0.field1184;
+				var3 = Client.cycle - var0.field1184;
+				var4 = var0.field1205 * 64 + var0.field1140 * 128;
+				int var5 = var0.field1205 * 64 + var0.field1182 * 128;
+				int var6 = var0.field1205 * 64 + var0.field1181 * 128;
+				int var7 = var0.field1205 * 64 + var0.field1183 * 128;
+				var0.x = (var6 * var3 + var4 * (var2 - var3)) / var2;
+				var0.y = (var7 * var3 + var5 * (var2 - var3)) / var2;
 			}
-
+			var0.field1202 = 0;
+			var0.orientation = var0.field1186;
+			var0.rotation = var0.orientation;
+		} else {
+			KitDefinition.method3439(var0);
+		}
 		if (var0.x < 128 || var0.y < 128 || var0.x >= 13184 || var0.y >= 13184) {
 			var0.sequence = -1;
 			var0.spotAnimation = -1;
@@ -77,21 +75,19 @@ public class class285 {
 						var0.movementFrame = 0;
 						class120.method2761(var8, var0.movementFrame, var0.x, var0.y);
 					}
-				} else
-					if (var8.isCachedModelIdSet()) {
-						++var0.movementFrame;
-						var3 = var8.method3835();
-						if (var0.movementFrame < var3) {
-							GrandExchangeOfferWorldComparator.method5997(var8, var0.movementFrame, var0.x, var0.y);
-						} else {
-							var0.movementFrameCycle = 0;
-							var0.movementFrame = 0;
-							GrandExchangeOfferWorldComparator.method5997(var8, var0.movementFrame, var0.x, var0.y);
-						}
+				} else if (var8.isCachedModelIdSet()) {
+					++var0.movementFrame;
+					var3 = var8.method3835();
+					if (var0.movementFrame < var3) {
+						GrandExchangeOfferWorldComparator.method5997(var8, var0.movementFrame, var0.x, var0.y);
 					} else {
-						var0.movementSequence = -1;
+						var0.movementFrameCycle = 0;
+						var0.movementFrame = 0;
+						GrandExchangeOfferWorldComparator.method5997(var8, var0.movementFrame, var0.x, var0.y);
 					}
-
+				} else {
+					var0.movementSequence = -1;
+				}
 			} else {
 				var0.movementSequence = -1;
 			}
@@ -113,21 +109,17 @@ public class class285 {
 					if (var0.spotAnimationFrame >= var9.frameIds.length && (var0.spotAnimationFrame < 0 || var0.spotAnimationFrame >= var9.frameIds.length)) {
 						var0.spotAnimation = -1;
 					}
-				} else
-					if (var9.isCachedModelIdSet()) {
-						++var0.spotAnimationFrame;
-						var4 = var9.method3835();
-						if (var0.spotAnimationFrame < var4) {
-							GrandExchangeOfferWorldComparator.method5997(var9, var0.spotAnimationFrame, var0.x, var0.y);
-						} else
-							if (var0.spotAnimationFrame < 0 || var0.spotAnimationFrame >= var4) {
-								var0.spotAnimation = -1;
-							}
-
-					} else {
+				} else if (var9.isCachedModelIdSet()) {
+					++var0.spotAnimationFrame;
+					var4 = var9.method3835();
+					if (var0.spotAnimationFrame < var4) {
+						GrandExchangeOfferWorldComparator.method5997(var9, var0.spotAnimationFrame, var0.x, var0.y);
+					} else if (var0.spotAnimationFrame < 0 || var0.spotAnimationFrame >= var4) {
 						var0.spotAnimation = -1;
 					}
-
+				} else {
+					var0.spotAnimation = -1;
+				}
 			} else {
 				var0.spotAnimation = -1;
 			}
@@ -143,52 +135,44 @@ public class class285 {
 			var8 = ScriptFrame.SequenceDefinition_get(var0.sequence);
 			if (var8 == null) {
 				var0.sequence = -1;
-			} else
-				if (!var8.isCachedModelIdSet() && var8.frameIds != null) {
-					++var0.sequenceFrameCycle;
-					if (var0.sequenceFrame < var8.frameIds.length && var0.sequenceFrameCycle > var8.frameLengths[var0.sequenceFrame]) {
-						var0.sequenceFrameCycle = 1;
-						++var0.sequenceFrame;
+			} else if (!var8.isCachedModelIdSet() && var8.frameIds != null) {
+				++var0.sequenceFrameCycle;
+				if (var0.sequenceFrame < var8.frameIds.length && var0.sequenceFrameCycle > var8.frameLengths[var0.sequenceFrame]) {
+					var0.sequenceFrameCycle = 1;
+					++var0.sequenceFrame;
+					class120.method2761(var8, var0.sequenceFrame, var0.x, var0.y);
+				}
+				if (var0.sequenceFrame >= var8.frameIds.length) {
+					var0.sequenceFrame -= var8.frameCount;
+					++var0.field1190;
+					if (var0.field1190 >= var8.field2186) {
+						var0.sequence = -1;
+					} else if (var0.sequenceFrame >= 0 && var0.sequenceFrame < var8.frameIds.length) {
 						class120.method2761(var8, var0.sequenceFrame, var0.x, var0.y);
-					}
-					if (var0.sequenceFrame >= var8.frameIds.length) {
-						var0.sequenceFrame -= var8.frameCount;
-						++var0.field1190;
-						if (var0.field1190 >= var8.field2186) {
-							var0.sequence = -1;
-						} else
-							if (var0.sequenceFrame >= 0 && var0.sequenceFrame < var8.frameIds.length) {
-								class120.method2761(var8, var0.sequenceFrame, var0.x, var0.y);
-							} else {
-								var0.sequence = -1;
-							}
-
-					}
-					var0.isWalking = var8.field2182;
-				} else
-					if (var8.isCachedModelIdSet()) {
-						++var0.sequenceFrame;
-						var3 = var8.method3836().method2767();
-						if (var0.sequenceFrame < var3) {
-							GrandExchangeOfferWorldComparator.method5997(var8, var0.sequenceFrame, var0.x, var0.y);
-						} else {
-							var0.sequenceFrame -= var8.frameCount;
-							++var0.field1190;
-							if (var0.field1190 >= var8.field2186) {
-								var0.sequence = -1;
-							} else
-								if (var0.sequenceFrame >= 0 && var0.sequenceFrame < var3) {
-									GrandExchangeOfferWorldComparator.method5997(var8, var0.sequenceFrame, var0.x, var0.y);
-								} else {
-									var0.sequence = -1;
-								}
-
-						}
 					} else {
 						var0.sequence = -1;
 					}
-
-
+				}
+				var0.isWalking = var8.field2182;
+			} else if (var8.isCachedModelIdSet()) {
+				++var0.sequenceFrame;
+				var3 = var8.method3836().method2767();
+				if (var0.sequenceFrame < var3) {
+					GrandExchangeOfferWorldComparator.method5997(var8, var0.sequenceFrame, var0.x, var0.y);
+				} else {
+					var0.sequenceFrame -= var8.frameCount;
+					++var0.field1190;
+					if (var0.field1190 >= var8.field2186) {
+						var0.sequence = -1;
+					} else if (var0.sequenceFrame >= 0 && var0.sequenceFrame < var3) {
+						GrandExchangeOfferWorldComparator.method5997(var8, var0.sequenceFrame, var0.x, var0.y);
+					} else {
+						var0.sequence = -1;
+					}
+				}
+			} else {
+				var0.sequence = -1;
+			}
 		}
 		if (var0.sequenceDelay > 0) {
 			--var0.sequenceDelay;

@@ -110,53 +110,39 @@ public class SpotAnimationDefinition extends DualNode {
 	void decodeNext(Buffer var1, int var2) {
 		if (var2 == 1) {
 			this.archive = var1.readUnsignedShort();
-		} else
-			if (var2 == 2) {
-				this.sequence = var1.readUnsignedShort();
-			} else
-				if (var2 == 4) {
-					this.widthScale = var1.readUnsignedShort();
-				} else
-					if (var2 == 5) {
-						this.heightScale = var1.readUnsignedShort();
-					} else
-						if (var2 == 6) {
-							this.orientation = var1.readUnsignedShort();
-						} else
-							if (var2 == 7) {
-								this.ambient = var1.readUnsignedByte();
-							} else
-								if (var2 == 8) {
-									this.contrast = var1.readUnsignedByte();
-								} else {
-									int var3;
-									int var4;
-									if (var2 == 40) {
-										var3 = var1.readUnsignedByte();
-										this.recolorFrom = new short[var3];
-										this.recolorTo = new short[var3];
-										for (var4 = 0; var4 < var3; ++var4) {
-											this.recolorFrom[var4] = ((short) (var1.readUnsignedShort()));
-											this.recolorTo[var4] = ((short) (var1.readUnsignedShort()));
-										}
-									} else
-										if (var2 == 41) {
-											var3 = var1.readUnsignedByte();
-											this.retextureFrom = new short[var3];
-											this.retextureTo = new short[var3];
-											for (var4 = 0; var4 < var3; ++var4) {
-												this.retextureFrom[var4] = ((short) (var1.readUnsignedShort()));
-												this.retextureTo[var4] = ((short) (var1.readUnsignedShort()));
-											}
-										}
-
-								}
-
-
-
-
-
-
+		} else if (var2 == 2) {
+			this.sequence = var1.readUnsignedShort();
+		} else if (var2 == 4) {
+			this.widthScale = var1.readUnsignedShort();
+		} else if (var2 == 5) {
+			this.heightScale = var1.readUnsignedShort();
+		} else if (var2 == 6) {
+			this.orientation = var1.readUnsignedShort();
+		} else if (var2 == 7) {
+			this.ambient = var1.readUnsignedByte();
+		} else if (var2 == 8) {
+			this.contrast = var1.readUnsignedByte();
+		} else {
+			int var3;
+			int var4;
+			if (var2 == 40) {
+				var3 = var1.readUnsignedByte();
+				this.recolorFrom = new short[var3];
+				this.recolorTo = new short[var3];
+				for (var4 = 0; var4 < var3; ++var4) {
+					this.recolorFrom[var4] = ((short) (var1.readUnsignedShort()));
+					this.recolorTo[var4] = ((short) (var1.readUnsignedShort()));
+				}
+			} else if (var2 == 41) {
+				var3 = var1.readUnsignedByte();
+				this.retextureFrom = new short[var3];
+				this.retextureTo = new short[var3];
+				for (var4 = 0; var4 < var3; ++var4) {
+					this.retextureFrom[var4] = ((short) (var1.readUnsignedShort()));
+					this.retextureTo[var4] = ((short) (var1.readUnsignedShort()));
+				}
+			}
+		}
 	}
 
 	@ObfuscatedName("f")

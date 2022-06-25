@@ -171,101 +171,69 @@ public class SequenceDefinition extends DualNode {
 			for (var4 = 0; var4 < var3; ++var4) {
 				this.frameIds[var4] += var1.readUnsignedShort() << 16;
 			}
-		} else
-			if (var2 == 2) {
-				this.frameCount = var1.readUnsignedShort();
-			} else
-				if (var2 == 3) {
-					var3 = var1.readUnsignedByte();
-					this.field2180 = new int[var3 + 1];
-					for (var4 = 0; var4 < var3; ++var4) {
-						this.field2180[var4] = var1.readUnsignedByte();
-					}
-					this.field2180[var3] = 9999999;
-				} else
-					if (var2 == 4) {
-						this.field2182 = true;
-					} else
-						if (var2 == 5) {
-							this.field2183 = var1.readUnsignedByte();
-						} else
-							if (var2 == 6) {
-								this.shield = var1.readUnsignedShort();
-							} else
-								if (var2 == 7) {
-									this.weapon = var1.readUnsignedShort();
-								} else
-									if (var2 == 8) {
-										this.field2186 = var1.readUnsignedByte();
-									} else
-										if (var2 == 9) {
-											this.field2187 = var1.readUnsignedByte();
-										} else
-											if (var2 == 10) {
-												this.field2188 = var1.readUnsignedByte();
-											} else
-												if (var2 == 11) {
-													this.field2174 = var1.readUnsignedByte();
-												} else
-													if (var2 == 12) {
-														var3 = var1.readUnsignedByte();
-														this.chatFrameIds = new int[var3];
-														for (var4 = 0; var4 < var3; ++var4) {
-															this.chatFrameIds[var4] = var1.readUnsignedShort();
-														}
-														for (var4 = 0; var4 < var3; ++var4) {
-															this.chatFrameIds[var4] += var1.readUnsignedShort() << 16;
-														}
-													} else
-														if (var2 == 13) {
-															var3 = var1.readUnsignedByte();
-															this.soundEffects = new int[var3];
-															for (var4 = 0; var4 < var3; ++var4) {
-																this.soundEffects[var4] = var1.readMedium();
-															}
-														} else
-															if (var2 == 14) {
-																this.SequenceDefinition_cachedModelId = var1.readInt();
-															} else
-																if (var2 == 15) {
-																	var3 = var1.readUnsignedShort();
-																	this.field2172 = new HashMap();
-																	for (var4 = 0; var4 < var3; ++var4) {
-																		int var5 = var1.readUnsignedShort();
-																		int var6 = var1.readMedium();
-																		this.field2172.put(var5, var6);
-																	}
-																} else
-																	if (var2 == 16) {
-																		this.field2173 = var1.readUnsignedShort();
-																		this.field2164 = var1.readUnsignedShort();
-																	} else
-																		if (var2 == 17) {
-																			this.field2181 = new boolean[256];
-																			for (var3 = 0; var3 < this.field2181.length; ++var3) {
-																				this.field2181[var3] = false;
-																			}
-																			var3 = var1.readUnsignedByte();
-																			for (var4 = 0; var4 < var3; ++var4) {
-																				this.field2181[var1.readUnsignedByte()] = true;
-																			}
-																		}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		} else if (var2 == 2) {
+			this.frameCount = var1.readUnsignedShort();
+		} else if (var2 == 3) {
+			var3 = var1.readUnsignedByte();
+			this.field2180 = new int[var3 + 1];
+			for (var4 = 0; var4 < var3; ++var4) {
+				this.field2180[var4] = var1.readUnsignedByte();
+			}
+			this.field2180[var3] = 9999999;
+		} else if (var2 == 4) {
+			this.field2182 = true;
+		} else if (var2 == 5) {
+			this.field2183 = var1.readUnsignedByte();
+		} else if (var2 == 6) {
+			this.shield = var1.readUnsignedShort();
+		} else if (var2 == 7) {
+			this.weapon = var1.readUnsignedShort();
+		} else if (var2 == 8) {
+			this.field2186 = var1.readUnsignedByte();
+		} else if (var2 == 9) {
+			this.field2187 = var1.readUnsignedByte();
+		} else if (var2 == 10) {
+			this.field2188 = var1.readUnsignedByte();
+		} else if (var2 == 11) {
+			this.field2174 = var1.readUnsignedByte();
+		} else if (var2 == 12) {
+			var3 = var1.readUnsignedByte();
+			this.chatFrameIds = new int[var3];
+			for (var4 = 0; var4 < var3; ++var4) {
+				this.chatFrameIds[var4] = var1.readUnsignedShort();
+			}
+			for (var4 = 0; var4 < var3; ++var4) {
+				this.chatFrameIds[var4] += var1.readUnsignedShort() << 16;
+			}
+		} else if (var2 == 13) {
+			var3 = var1.readUnsignedByte();
+			this.soundEffects = new int[var3];
+			for (var4 = 0; var4 < var3; ++var4) {
+				this.soundEffects[var4] = var1.readMedium();
+			}
+		} else if (var2 == 14) {
+			this.SequenceDefinition_cachedModelId = var1.readInt();
+		} else if (var2 == 15) {
+			var3 = var1.readUnsignedShort();
+			this.field2172 = new HashMap();
+			for (var4 = 0; var4 < var3; ++var4) {
+				int var5 = var1.readUnsignedShort();
+				int var6 = var1.readMedium();
+				this.field2172.put(var5, var6);
+			}
+		} else if (var2 == 16) {
+			this.field2173 = var1.readUnsignedShort();
+			this.field2164 = var1.readUnsignedShort();
+		} else if (var2 == 17) {
+			this.field2181 = new boolean[256];
+			for (var3 = 0; var3 < this.field2181.length; ++var3) {
+				this.field2181[var3] = false;
+			}
+			var3 = var1.readUnsignedByte();
+			for (var4 = 0; var4 < var3; ++var4) {
+				this.field2181[var1.readUnsignedByte()] = true;
+			}
+		}
 	}
 
 	@ObfuscatedName("j")
@@ -341,27 +309,19 @@ public class SequenceDefinition extends DualNode {
 				var3 &= 3;
 				if (var3 == 1) {
 					var8.rotateY270Ccw();
-				} else
-					if (var3 == 2) {
-						var8.rotateY180();
-					} else
-						if (var3 == 3) {
-							var8.rotateY90Ccw();
-						}
-
-
+				} else if (var3 == 2) {
+					var8.rotateY180();
+				} else if (var3 == 3) {
+					var8.rotateY90Ccw();
+				}
 				var8.animate(var9, var2);
 				if (var3 == 1) {
 					var8.rotateY90Ccw();
-				} else
-					if (var3 == 2) {
-						var8.rotateY180();
-					} else
-						if (var3 == 3) {
-							var8.rotateY270Ccw();
-						}
-
-
+				} else if (var3 == 2) {
+					var8.rotateY180();
+				} else if (var3 == 3) {
+					var8.rotateY270Ccw();
+				}
 				return var8;
 			}
 		} else {
@@ -384,27 +344,19 @@ public class SequenceDefinition extends DualNode {
 				var3 &= 3;
 				if (var3 == 1) {
 					var7.rotateY270Ccw();
-				} else
-					if (var3 == 2) {
-						var7.rotateY180();
-					} else
-						if (var3 == 3) {
-							var7.rotateY90Ccw();
-						}
-
-
+				} else if (var3 == 2) {
+					var7.rotateY180();
+				} else if (var3 == 3) {
+					var7.rotateY90Ccw();
+				}
 				var7.method4404(var4, var2);
 				if (var3 == 1) {
 					var7.rotateY90Ccw();
-				} else
-					if (var3 == 2) {
-						var7.rotateY180();
-					} else
-						if (var3 == 3) {
-							var7.rotateY270Ccw();
-						}
-
-
+				} else if (var3 == 2) {
+					var7.rotateY180();
+				} else if (var3 == 3) {
+					var7.rotateY270Ccw();
+				}
 				return var7;
 			}
 		}

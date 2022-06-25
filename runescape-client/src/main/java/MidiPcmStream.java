@@ -542,166 +542,154 @@ public class MidiPcmStream extends PcmStream {
 			var4 = var1 >> 8 & 127;
 			var5 = var1 >> 16 & 127;
 			this.method5266(var3, var4, var5);
-		} else
-			if (var2 == 144) {
-				var3 = var1 & 15;
-				var4 = var1 >> 8 & 127;
-				var5 = var1 >> 16 & 127;
-				if (var5 > 0) {
-					this.method5329(var3, var4, var5);
+		} else if (var2 == 144) {
+			var3 = var1 & 15;
+			var4 = var1 >> 8 & 127;
+			var5 = var1 >> 16 & 127;
+			if (var5 > 0) {
+				this.method5329(var3, var4, var5);
+			} else {
+				this.method5266(var3, var4, 64);
+			}
+		} else if (var2 == 160) {
+			var3 = var1 & 15;
+			var4 = var1 >> 8 & 127;
+			var5 = var1 >> 16 & 127;
+			this.method5267(var3, var4, var5);
+		} else if (var2 == 176) {
+			var3 = var1 & 15;
+			var4 = var1 >> 8 & 127;
+			var5 = var1 >> 16 & 127;
+			if (var4 == 0) {
+				this.field3211[var3] = (var5 << 14) + (this.field3211[var3] & -2080769);
+			}
+			if (var4 == 32) {
+				this.field3211[var3] = (var5 << 7) + (this.field3211[var3] & -16257);
+			}
+			if (var4 == 1) {
+				this.field3203[var3] = (var5 << 7) + (this.field3203[var3] & -16257);
+			}
+			if (var4 == 33) {
+				this.field3203[var3] = var5 + (this.field3203[var3] & -128);
+			}
+			if (var4 == 5) {
+				this.field3214[var3] = (var5 << 7) + (this.field3214[var3] & -16257);
+			}
+			if (var4 == 37) {
+				this.field3214[var3] = var5 + (this.field3214[var3] & -128);
+			}
+			if (var4 == 7) {
+				this.field3206[var3] = (var5 << 7) + (this.field3206[var3] & -16257);
+			}
+			if (var4 == 39) {
+				this.field3206[var3] = var5 + (this.field3206[var3] & -128);
+			}
+			if (var4 == 10) {
+				this.field3225[var3] = (var5 << 7) + (this.field3225[var3] & -16257);
+			}
+			if (var4 == 42) {
+				this.field3225[var3] = var5 + (this.field3225[var3] & -128);
+			}
+			if (var4 == 11) {
+				this.field3208[var3] = (var5 << 7) + (this.field3208[var3] & -16257);
+			}
+			if (var4 == 43) {
+				this.field3208[var3] = var5 + (this.field3208[var3] & -128);
+			}
+			int[] var10000;
+			if (var4 == 64) {
+				if (var5 >= 64) {
+					var10000 = this.field3210;
+					var10000[var3] |= 1;
 				} else {
-					this.method5266(var3, var4, 64);
+					var10000 = this.field3210;
+					var10000[var3] &= -2;
 				}
-			} else
-				if (var2 == 160) {
-					var3 = var1 & 15;
-					var4 = var1 >> 8 & 127;
-					var5 = var1 >> 16 & 127;
-					this.method5267(var3, var4, var5);
-				} else
-					if (var2 == 176) {
-						var3 = var1 & 15;
-						var4 = var1 >> 8 & 127;
-						var5 = var1 >> 16 & 127;
-						if (var4 == 0) {
-							this.field3211[var3] = (var5 << 14) + (this.field3211[var3] & -2080769);
-						}
-						if (var4 == 32) {
-							this.field3211[var3] = (var5 << 7) + (this.field3211[var3] & -16257);
-						}
-						if (var4 == 1) {
-							this.field3203[var3] = (var5 << 7) + (this.field3203[var3] & -16257);
-						}
-						if (var4 == 33) {
-							this.field3203[var3] = var5 + (this.field3203[var3] & -128);
-						}
-						if (var4 == 5) {
-							this.field3214[var3] = (var5 << 7) + (this.field3214[var3] & -16257);
-						}
-						if (var4 == 37) {
-							this.field3214[var3] = var5 + (this.field3214[var3] & -128);
-						}
-						if (var4 == 7) {
-							this.field3206[var3] = (var5 << 7) + (this.field3206[var3] & -16257);
-						}
-						if (var4 == 39) {
-							this.field3206[var3] = var5 + (this.field3206[var3] & -128);
-						}
-						if (var4 == 10) {
-							this.field3225[var3] = (var5 << 7) + (this.field3225[var3] & -16257);
-						}
-						if (var4 == 42) {
-							this.field3225[var3] = var5 + (this.field3225[var3] & -128);
-						}
-						if (var4 == 11) {
-							this.field3208[var3] = (var5 << 7) + (this.field3208[var3] & -16257);
-						}
-						if (var4 == 43) {
-							this.field3208[var3] = var5 + (this.field3208[var3] & -128);
-						}
-						int[] var10000;
-						if (var4 == 64) {
-							if (var5 >= 64) {
-								var10000 = this.field3210;
-								var10000[var3] |= 1;
-							} else {
-								var10000 = this.field3210;
-								var10000[var3] &= -2;
-							}
-						}
-						if (var4 == 65) {
-							if (var5 >= 64) {
-								var10000 = this.field3210;
-								var10000[var3] |= 2;
-							} else {
-								this.method5274(var3);
-								var10000 = this.field3210;
-								var10000[var3] &= -3;
-							}
-						}
-						if (var4 == 99) {
-							this.field3217[var3] = (var5 << 7) + (this.field3217[var3] & 127);
-						}
-						if (var4 == 98) {
-							this.field3217[var3] = (this.field3217[var3] & 16256) + var5;
-						}
-						if (var4 == 101) {
-							this.field3217[var3] = (var5 << 7) + (this.field3217[var3] & 127) + 16384;
-						}
-						if (var4 == 100) {
-							this.field3217[var3] = (this.field3217[var3] & 16256) + var5 + 16384;
-						}
-						if (var4 == 120) {
-							this.method5358(var3);
-						}
-						if (var4 == 121) {
-							this.method5252(var3);
-						}
-						if (var4 == 123) {
-							this.method5326(var3);
-						}
-						int var6;
-						if (var4 == 6) {
-							var6 = this.field3217[var3];
-							if (var6 == 16384) {
-								this.field3218[var3] = (var5 << 7) + (this.field3218[var3] & -16257);
-							}
-						}
-						if (var4 == 38) {
-							var6 = this.field3217[var3];
-							if (var6 == 16384) {
-								this.field3218[var3] = var5 + (this.field3218[var3] & -128);
-							}
-						}
-						if (var4 == 16) {
-							this.field3229[var3] = (var5 << 7) + (this.field3229[var3] & -16257);
-						}
-						if (var4 == 48) {
-							this.field3229[var3] = var5 + (this.field3229[var3] & -128);
-						}
-						if (var4 == 81) {
-							if (var5 >= 64) {
-								var10000 = this.field3210;
-								var10000[var3] |= 4;
-							} else {
-								this.method5275(var3);
-								var10000 = this.field3210;
-								var10000[var3] &= -5;
-							}
-						}
-						if (var4 == 17) {
-							this.method5277(var3, (var5 << 7) + (this.field3220[var3] & -16257));
-						}
-						if (var4 == 49) {
-							this.method5277(var3, var5 + (this.field3220[var3] & -128));
-						}
-					} else
-						if (var2 == 192) {
-							var3 = var1 & 15;
-							var4 = var1 >> 8 & 127;
-							this.method5263(var3, var4 + this.field3211[var3]);
-						} else
-							if (var2 == 208) {
-								var3 = var1 & 15;
-								var4 = var1 >> 8 & 127;
-								this.method5362(var3, var4);
-							} else
-								if (var2 == 224) {
-									var3 = var1 & 15;
-									var4 = (var1 >> 8 & 127) + (var1 >> 9 & 16256);
-									this.method5272(var3, var4);
-								} else {
-									var2 = var1 & 255;
-									if (var2 == 255) {
-										this.method5273();
-									}
-								}
-
-
-
-
-
-
+			}
+			if (var4 == 65) {
+				if (var5 >= 64) {
+					var10000 = this.field3210;
+					var10000[var3] |= 2;
+				} else {
+					this.method5274(var3);
+					var10000 = this.field3210;
+					var10000[var3] &= -3;
+				}
+			}
+			if (var4 == 99) {
+				this.field3217[var3] = (var5 << 7) + (this.field3217[var3] & 127);
+			}
+			if (var4 == 98) {
+				this.field3217[var3] = (this.field3217[var3] & 16256) + var5;
+			}
+			if (var4 == 101) {
+				this.field3217[var3] = (var5 << 7) + (this.field3217[var3] & 127) + 16384;
+			}
+			if (var4 == 100) {
+				this.field3217[var3] = (this.field3217[var3] & 16256) + var5 + 16384;
+			}
+			if (var4 == 120) {
+				this.method5358(var3);
+			}
+			if (var4 == 121) {
+				this.method5252(var3);
+			}
+			if (var4 == 123) {
+				this.method5326(var3);
+			}
+			int var6;
+			if (var4 == 6) {
+				var6 = this.field3217[var3];
+				if (var6 == 16384) {
+					this.field3218[var3] = (var5 << 7) + (this.field3218[var3] & -16257);
+				}
+			}
+			if (var4 == 38) {
+				var6 = this.field3217[var3];
+				if (var6 == 16384) {
+					this.field3218[var3] = var5 + (this.field3218[var3] & -128);
+				}
+			}
+			if (var4 == 16) {
+				this.field3229[var3] = (var5 << 7) + (this.field3229[var3] & -16257);
+			}
+			if (var4 == 48) {
+				this.field3229[var3] = var5 + (this.field3229[var3] & -128);
+			}
+			if (var4 == 81) {
+				if (var5 >= 64) {
+					var10000 = this.field3210;
+					var10000[var3] |= 4;
+				} else {
+					this.method5275(var3);
+					var10000 = this.field3210;
+					var10000[var3] &= -5;
+				}
+			}
+			if (var4 == 17) {
+				this.method5277(var3, (var5 << 7) + (this.field3220[var3] & -16257));
+			}
+			if (var4 == 49) {
+				this.method5277(var3, var5 + (this.field3220[var3] & -128));
+			}
+		} else if (var2 == 192) {
+			var3 = var1 & 15;
+			var4 = var1 >> 8 & 127;
+			this.method5263(var3, var4 + this.field3211[var3]);
+		} else if (var2 == 208) {
+			var3 = var1 & 15;
+			var4 = var1 >> 8 & 127;
+			this.method5362(var3, var4);
+		} else if (var2 == 224) {
+			var3 = var1 & 15;
+			var4 = (var1 >> 8 & 127) + (var1 >> 9 & 16256);
+			this.method5272(var3, var4);
+		} else {
+			var2 = var1 & 255;
+			if (var2 == 255) {
+				this.method5273();
+			}
+		}
 	}
 
 	@ObfuscatedName("ah")

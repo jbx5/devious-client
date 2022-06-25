@@ -97,56 +97,40 @@ class class11 implements TlsAuthentication {
 		if (var0 == 7100) {
 			++class446.Interpreter_intStackSize;
 			return 1;
-		} else
-			if (var0 == 7101) {
-				Interpreter.Interpreter_stringStackSize += 2;
+		} else if (var0 == 7101) {
+			Interpreter.Interpreter_stringStackSize += 2;
+			return 1;
+		} else if (var0 != 7102 && var0 != 7103 && var0 != 7104 && var0 != 7105 && var0 != 7109) {
+			if (var0 == 7106) {
+				++class446.Interpreter_intStackSize;
 				return 1;
-			} else
-				if (var0 != 7102 && var0 != 7103 && var0 != 7104 && var0 != 7105 && var0 != 7109) {
-					if (var0 == 7106) {
-						++class446.Interpreter_intStackSize;
-						return 1;
-					} else
-						if (var0 == 7107) {
-							++class446.Interpreter_intStackSize;
-							return 1;
-						} else
-							if (var0 == 7108) {
-								Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = (class18.method234()) ? 1 : 0;
-								return 1;
-							} else
-								if (var0 == 7110) {
-									Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;
-									return 1;
-								} else
-									if (var0 == 7120) {
-										--class446.Interpreter_intStackSize;
-										Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;
-										return 1;
-									} else
-										if (var0 == 7121) {
-											class446.Interpreter_intStackSize -= 2;
-											Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = -1;
-											return 1;
-										} else
-											if (var0 == 7122) {
-												class446.Interpreter_intStackSize -= 2;
-												Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;
-												return 1;
-											} else {
-												return 2;
-											}
-
-
-
-
-
-
-				} else {
-					++class446.Interpreter_intStackSize;
-					return 1;
-				}
-
-
+			} else if (var0 == 7107) {
+				++class446.Interpreter_intStackSize;
+				return 1;
+			} else if (var0 == 7108) {
+				Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = (class18.method234()) ? 1 : 0;
+				return 1;
+			} else if (var0 == 7110) {
+				Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;
+				return 1;
+			} else if (var0 == 7120) {
+				--class446.Interpreter_intStackSize;
+				Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;
+				return 1;
+			} else if (var0 == 7121) {
+				class446.Interpreter_intStackSize -= 2;
+				Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = -1;
+				return 1;
+			} else if (var0 == 7122) {
+				class446.Interpreter_intStackSize -= 2;
+				Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;
+				return 1;
+			} else {
+				return 2;
+			}
+		} else {
+			++class446.Interpreter_intStackSize;
+			return 1;
+		}
 	}
 }

@@ -67,11 +67,9 @@ public class MilliClock extends Clock {
 		if (this.field1788[this.field1792] == 0L) {
 			this.field1787 = var3;
 			this.field1789 = var4;
-		} else
-			if (this.field1794 > this.field1788[this.field1792]) {
-				this.field1787 = ((int) (((long) (var1 * 2560)) / (this.field1794 - this.field1788[this.field1792])));
-			}
-
+		} else if (this.field1794 > this.field1788[this.field1792]) {
+			this.field1787 = ((int) (((long) (var1 * 2560)) / (this.field1794 - this.field1788[this.field1792])));
+		}
 		if (this.field1787 < 25) {
 			this.field1787 = 25;
 		}
@@ -153,14 +151,12 @@ public class MilliClock extends Clock {
 		if (var0 == 6900) {
 			Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = "";
 			return 1;
-		} else
-			if (var0 == 6950) {
-				Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = -1;
-				return 1;
-			} else {
-				return 2;
-			}
-
+		} else if (var0 == 6950) {
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = -1;
+			return 1;
+		} else {
+			return 2;
+		}
 	}
 
 	@ObfuscatedName("lz")

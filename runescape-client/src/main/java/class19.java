@@ -59,20 +59,18 @@ public class class19 {
 	public final class21 method249() {
 		if (this.method251()) {
 			return new class21(this.field106);
-		} else
-			if (!this.method246()) {
-				return null;
-			} else {
-				try {
-					return ((class21) (this.field107.get()));
-				} catch (Exception var3) {
-					String var2 = "Error retrieving REST request reply";
-					System.err.println(var2 + "\r\n" + var3);
-					this.method243(var2);
-					return new class21(var2);
-				}
+		} else if (!this.method246()) {
+			return null;
+		} else {
+			try {
+				return ((class21) (this.field107.get()));
+			} catch (Exception var3) {
+				String var2 = "Error retrieving REST request reply";
+				System.err.println(var2 + "\r\n" + var3);
+				this.method243(var2);
+				return new class21(var2);
 			}
-
+		}
 	}
 
 	@ObfuscatedName("e")

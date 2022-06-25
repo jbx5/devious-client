@@ -129,33 +129,29 @@ public class class16 implements ThreadFactory {
 								Login.Login_response3 = "";
 								WorldMapData_1.method4872(1);
 								class29.method357();
-							} else
-								if ((Client.worldProperties & 4) != 0) {
-									if ((Client.worldProperties & 1024) != 0) {
-										Login.Login_response1 = "This is a <col=ffff00>High Risk <col=ff0000>PvP<col=ffffff> world.";
-										Login.Login_response2 = "Players can attack each other almost everywhere";
-										Login.Login_response3 = "and the Protect Item prayer won't work.";
-									} else {
-										Login.Login_response1 = "This is a <col=ff0000>PvP<col=ffffff> world.";
-										Login.Login_response2 = "Players can attack each other";
-										Login.Login_response3 = "almost everywhere.";
-									}
-									Login.Login_response0 = "Warning!";
-									WorldMapData_1.method4872(1);
-									class29.method357();
-								} else
-									if ((Client.worldProperties & 1024) != 0) {
-										Login.Login_response1 = "This is a <col=ffff00>High Risk<col=ffffff> world.";
-										Login.Login_response2 = "The Protect Item prayer will";
-										Login.Login_response3 = "not work on this world.";
-										Login.Login_response0 = "Warning!";
-										WorldMapData_1.method4872(1);
-										class29.method357();
-									} else {
-										class135.Login_promptCredentials(false);
-									}
-
-
+							} else if ((Client.worldProperties & 4) != 0) {
+								if ((Client.worldProperties & 1024) != 0) {
+									Login.Login_response1 = "This is a <col=ffff00>High Risk <col=ff0000>PvP<col=ffffff> world.";
+									Login.Login_response2 = "Players can attack each other almost everywhere";
+									Login.Login_response3 = "and the Protect Item prayer won't work.";
+								} else {
+									Login.Login_response1 = "This is a <col=ff0000>PvP<col=ffffff> world.";
+									Login.Login_response2 = "Players can attack each other";
+									Login.Login_response3 = "almost everywhere.";
+								}
+								Login.Login_response0 = "Warning!";
+								WorldMapData_1.method4872(1);
+								class29.method357();
+							} else if ((Client.worldProperties & 1024) != 0) {
+								Login.Login_response1 = "This is a <col=ffff00>High Risk<col=ffffff> world.";
+								Login.Login_response2 = "The Protect Item prayer will";
+								Login.Login_response3 = "not work on this world.";
+								Login.Login_response0 = "Warning!";
+								WorldMapData_1.method4872(1);
+								class29.method357();
+							} else {
+								class135.Login_promptCredentials(false);
+							}
 						}
 					} else {
 						short var8;
@@ -176,11 +172,9 @@ public class class16 implements ThreadFactory {
 								}
 								if (class272.field3196 == 84) {
 									class135.Login_promptCredentials(false);
-								} else
-									if (class272.field3196 == 13) {
-										WorldMapData_1.method4872(0);
-									}
-
+								} else if (class272.field3196 == 13) {
+									WorldMapData_1.method4872(0);
+								}
 							} 
 						} else {
 							int var11;
@@ -298,26 +292,24 @@ public class class16 implements ThreadFactory {
 											} while (Login.currentLoginField != 1 );
 											if (class272.field3196 == 85 && Login.Login_password.length() > 0) {
 												Login.Login_password = Login.Login_password.substring(0, Login.Login_password.length() - 1);
-											} else
-												if (class272.field3196 == 84 || class272.field3196 == 80) {
-													Login.currentLoginField = 0;
-													if (class272.field3196 == 84) {
-														Login.Login_username = Login.Login_username.trim();
-														if (Login.Login_username.length() == 0) {
-															class101.setLoginResponseString("", "Please enter your username/email address.", "");
-															return;
-														}
-														if (Login.Login_password.length() == 0) {
-															class101.setLoginResponseString("", "Please enter your password.", "");
-															return;
-														}
-														class101.setLoginResponseString("", "Connecting to server...", "");
-														TriBool.method6791(false);
-														HealthBarUpdate.updateGameState(20);
+											} else if (class272.field3196 == 84 || class272.field3196 == 80) {
+												Login.currentLoginField = 0;
+												if (class272.field3196 == 84) {
+													Login.Login_username = Login.Login_username.trim();
+													if (Login.Login_username.length() == 0) {
+														class101.setLoginResponseString("", "Please enter your username/email address.", "");
 														return;
 													}
+													if (Login.Login_password.length() == 0) {
+														class101.setLoginResponseString("", "Please enter your password.", "");
+														return;
+													}
+													class101.setLoginResponseString("", "Connecting to server...", "");
+													TriBool.method6791(false);
+													HealthBarUpdate.updateGameState(20);
+													return;
 												}
-
+											}
 											if ((KeyHandler.KeyHandler_pressedKeys[82] || KeyHandler.KeyHandler_pressedKeys[87]) && class272.field3196 == 67) {
 												Clipboard var68 = Toolkit.getDefaultToolkit().getSystemClipboard();
 												var69 = var68.getContents(class353.client);
@@ -395,134 +387,220 @@ public class class16 implements ThreadFactory {
 									} catch (IOException var47) {
 									}
 								} 
-							} else
-								if (Login.loginIndex == 3) {
-									var50 = Login.loginBoxX + 180;
-									var8 = 276;
+							} else if (Login.loginIndex == 3) {
+								var50 = Login.loginBoxX + 180;
+								var8 = 276;
+								if (var4 == 1 && var48 >= var50 - 75 && var48 <= var50 + 75 && var49 >= var8 - 20 && var49 <= var8 + 20) {
+									class101.method2547(false);
+								}
+								var50 = Login.loginBoxX + 180;
+								var8 = 326;
+								if (var4 == 1 && var48 >= var50 - 75 && var48 <= var50 + 75 && var49 >= var8 - 20 && var49 <= var8 + 20) {
+									class101.setLoginResponseString("Please enter your username.", "If you created your account after November", "2010, this will be the creation email address.");
+									WorldMapData_1.method4872(5);
+									return;
+								}
+							} else {
+								int var10;
+								if (Login.loginIndex == 4) {
+									var50 = Login.loginBoxX + 180 - 80;
+									var8 = 321;
 									if (var4 == 1 && var48 >= var50 - 75 && var48 <= var50 + 75 && var49 >= var8 - 20 && var49 <= var8 + 20) {
-										class101.method2547(false);
-									}
-									var50 = Login.loginBoxX + 180;
-									var8 = 326;
-									if (var4 == 1 && var48 >= var50 - 75 && var48 <= var50 + 75 && var49 >= var8 - 20 && var49 <= var8 + 20) {
-										class101.setLoginResponseString("Please enter your username.", "If you created your account after November", "2010, this will be the creation email address.");
-										WorldMapData_1.method4872(5);
-										return;
-									}
-								} else {
-									int var10;
-									if (Login.loginIndex == 4) {
-										var50 = Login.loginBoxX + 180 - 80;
-										var8 = 321;
-										if (var4 == 1 && var48 >= var50 - 75 && var48 <= var50 + 75 && var49 >= var8 - 20 && var49 <= var8 + 20) {
-											World.otp.trim();
-											if (World.otp.length() != 6) {
-												class101.setLoginResponseString("", "Please enter a 6-digit PIN.", "");
-												return;
-											}
-											class240.field2846 = Integer.parseInt(World.otp);
-											World.otp = "";
-											TriBool.method6791(true);
-											class101.setLoginResponseString("", "Connecting to server...", "");
-											HealthBarUpdate.updateGameState(20);
+										World.otp.trim();
+										if (World.otp.length() != 6) {
+											class101.setLoginResponseString("", "Please enter a 6-digit PIN.", "");
 											return;
 										}
-										if (var4 == 1 && var48 >= Login.loginBoxX + 180 - 9 && var48 <= Login.loginBoxX + 180 + 130 && var49 >= 263 && var49 <= 296) {
-											Login.field895 = !Login.field895;
+										class240.field2846 = Integer.parseInt(World.otp);
+										World.otp = "";
+										TriBool.method6791(true);
+										class101.setLoginResponseString("", "Connecting to server...", "");
+										HealthBarUpdate.updateGameState(20);
+										return;
+									}
+									if (var4 == 1 && var48 >= Login.loginBoxX + 180 - 9 && var48 <= Login.loginBoxX + 180 + 130 && var49 >= 263 && var49 <= 296) {
+										Login.field895 = !Login.field895;
+									}
+									if (var4 == 1 && var48 >= Login.loginBoxX + 180 - 34 && var48 <= Login.loginBoxX + 34 + 180 && var49 >= 351 && var49 <= 363) {
+										class258.openURL(ModeWhere.method6080("secure", true) + "m=totp-authenticator/disableTOTPRequest", true, false);
+									}
+									var50 = Login.loginBoxX + 180 + 80;
+									if (var4 == 1 && var48 >= var50 - 75 && var48 <= var50 + 75 && var49 >= var8 - 20 && var49 <= var8 + 20) {
+										WorldMapData_1.method4872(0);
+										Login.Login_username = "";
+										Login.Login_password = "";
+										class240.field2846 = 0;
+										World.otp = "";
+									}
+									while (class18.isKeyDown()) {
+										boolean var9 = false;
+										for (var10 = 0; var10 < "1234567890".length(); ++var10) {
+											if (HealthBar.field1258 == "1234567890".charAt(var10)) {
+												var9 = true;
+												break;
+											}
 										}
-										if (var4 == 1 && var48 >= Login.loginBoxX + 180 - 34 && var48 <= Login.loginBoxX + 34 + 180 && var49 >= 351 && var49 <= 363) {
-											class258.openURL(ModeWhere.method6080("secure", true) + "m=totp-authenticator/disableTOTPRequest", true, false);
-										}
-										var50 = Login.loginBoxX + 180 + 80;
-										if (var4 == 1 && var48 >= var50 - 75 && var48 <= var50 + 75 && var49 >= var8 - 20 && var49 <= var8 + 20) {
+										if (class272.field3196 == 13) {
 											WorldMapData_1.method4872(0);
 											Login.Login_username = "";
 											Login.Login_password = "";
 											class240.field2846 = 0;
 											World.otp = "";
-										}
-										while (class18.isKeyDown()) {
-											boolean var9 = false;
-											for (var10 = 0; var10 < "1234567890".length(); ++var10) {
-												if (HealthBar.field1258 == "1234567890".charAt(var10)) {
-													var9 = true;
-													break;
-												}
+										} else {
+											if (class272.field3196 == 85 && World.otp.length() > 0) {
+												World.otp = World.otp.substring(0, World.otp.length() - 1);
 											}
-											if (class272.field3196 == 13) {
-												WorldMapData_1.method4872(0);
-												Login.Login_username = "";
-												Login.Login_password = "";
-												class240.field2846 = 0;
-												World.otp = "";
-											} else {
-												if (class272.field3196 == 85 && World.otp.length() > 0) {
-													World.otp = World.otp.substring(0, World.otp.length() - 1);
-												}
-												if (class272.field3196 == 84) {
-													World.otp.trim();
-													if (World.otp.length() != 6) {
-														class101.setLoginResponseString("", "Please enter a 6-digit PIN.", "");
-														return;
-													}
-													class240.field2846 = Integer.parseInt(World.otp);
-													World.otp = "";
-													TriBool.method6791(true);
-													class101.setLoginResponseString("", "Connecting to server...", "");
-													HealthBarUpdate.updateGameState(20);
+											if (class272.field3196 == 84) {
+												World.otp.trim();
+												if (World.otp.length() != 6) {
+													class101.setLoginResponseString("", "Please enter a 6-digit PIN.", "");
 													return;
 												}
-												if (var9 && World.otp.length() < 6) {
-													World.otp = World.otp + HealthBar.field1258;
-												}
+												class240.field2846 = Integer.parseInt(World.otp);
+												World.otp = "";
+												TriBool.method6791(true);
+												class101.setLoginResponseString("", "Connecting to server...", "");
+												HealthBarUpdate.updateGameState(20);
+												return;
 											}
-										} 
-									} else
-										if (Login.loginIndex == 5) {
-											var50 = Login.loginBoxX + 180 - 80;
-											var8 = 321;
-											if (var4 == 1 && var48 >= var50 - 75 && var48 <= var50 + 75 && var49 >= var8 - 20 && var49 <= var8 + 20) {
+											if (var9 && World.otp.length() < 6) {
+												World.otp = World.otp + HealthBar.field1258;
+											}
+										}
+									} 
+								} else if (Login.loginIndex == 5) {
+									var50 = Login.loginBoxX + 180 - 80;
+									var8 = 321;
+									if (var4 == 1 && var48 >= var50 - 75 && var48 <= var50 + 75 && var49 >= var8 - 20 && var49 <= var8 + 20) {
+										Login.Login_username = Login.Login_username.trim();
+										if (Login.Login_username.length() == 0) {
+											class101.setLoginResponseString("Please enter your username.", "If you created your account after November", "2010, this will be the creation email address.");
+										} else {
+											long var31;
+											try {
+												URL var26 = new URL(ModeWhere.method6080("services", false) + "m=accountappeal/login.ws");
+												URLConnection var13 = var26.openConnection();
+												var13.setRequestProperty("connection", "close");
+												var13.setDoInput(true);
+												var13.setDoOutput(true);
+												var13.setConnectTimeout(5000);
+												OutputStreamWriter var73 = new OutputStreamWriter(var13.getOutputStream());
+												var73.write("data1=req");
+												var73.flush();
+												InputStream var75 = var13.getInputStream();
+												Buffer var76 = new Buffer(new byte[1000]);
+												while (true) {
+													int var17 = var75.read(var76.array, var76.offset, 1000 - var76.offset);
+													if (var17 == -1) {
+														var76.offset = 0;
+														long var33 = var76.readLong();
+														var31 = var33;
+														break;
+													}
+													var76.offset += var17;
+													if (var76.offset >= 1000) {
+														var31 = 0L;
+														break;
+													}
+												} 
+											} catch (Exception var44) {
+												var31 = 0L;
+											}
+											int var54;
+											if (var31 == 0L) {
+												var54 = 5;
+											} else {
+												var54 = WorldMapAreaData.method5082(var31, Login.Login_username);
+											}
+											switch (var54) {
+												case 2 :
+													class101.setLoginResponseString(Strings.field3894, Strings.field3926, Strings.field3896);
+													WorldMapData_1.method4872(6);
+													break;
+												case 3 :
+													class101.setLoginResponseString("", "Error connecting to server.", "");
+													break;
+												case 4 :
+													class101.setLoginResponseString("The part of the website you are trying", "to connect to is offline at the moment.", "Please try again later.");
+													break;
+												case 5 :
+													class101.setLoginResponseString("Sorry, there was an error trying to", "log you in to this part of the website.", "Please try again later.");
+													break;
+												case 6 :
+													class101.setLoginResponseString("", "Error connecting to server.", "");
+													break;
+												case 7 :
+													class101.setLoginResponseString("You must enter a valid login to proceed. For accounts", "created after 24th November 2010, please use your", "email address. Otherwise please use your username.");
+											}
+										}
+										return;
+									}
+									var50 = Login.loginBoxX + 180 + 80;
+									if (var4 == 1 && var48 >= var50 - 75 && var48 <= var50 + 75 && var49 >= var8 - 20 && var49 <= var8 + 20) {
+										class135.Login_promptCredentials(true);
+									}
+									var53 = 361;
+									if (PcmPlayer.field294 != null) {
+										var10 = PcmPlayer.field294.highX / 2;
+										if (var4 == 1 && var48 >= PcmPlayer.field294.lowX - var10 && var48 <= var10 + PcmPlayer.field294.lowX && var49 >= var53 - 15 && var49 < var53) {
+											class258.openURL(ModeWhere.method6080("secure", true) + "m=weblogin/g=oldscape/cant_log_in", true, false);
+										}
+									}
+									while (class18.isKeyDown()) {
+										var55 = false;
+										for (var11 = 0; var11 < "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!\"ï¿½$%^&*()-_=+[{]};:\'@#~,<.>/?\\| ".length(); ++var11) {
+											if (HealthBar.field1258 == "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!\"ï¿½$%^&*()-_=+[{]};:\'@#~,<.>/?\\| ".charAt(var11)) {
+												var55 = true;
+												break;
+											}
+										}
+										if (class272.field3196 == 13) {
+											class135.Login_promptCredentials(true);
+										} else {
+											if (class272.field3196 == 85 && Login.Login_username.length() > 0) {
+												Login.Login_username = Login.Login_username.substring(0, Login.Login_username.length() - 1);
+											}
+											if (class272.field3196 == 84) {
 												Login.Login_username = Login.Login_username.trim();
 												if (Login.Login_username.length() == 0) {
 													class101.setLoginResponseString("Please enter your username.", "If you created your account after November", "2010, this will be the creation email address.");
 												} else {
-													long var31;
+													long var35;
 													try {
-														URL var26 = new URL(ModeWhere.method6080("services", false) + "m=accountappeal/login.ws");
-														URLConnection var13 = var26.openConnection();
-														var13.setRequestProperty("connection", "close");
-														var13.setDoInput(true);
-														var13.setDoOutput(true);
-														var13.setConnectTimeout(5000);
-														OutputStreamWriter var73 = new OutputStreamWriter(var13.getOutputStream());
-														var73.write("data1=req");
-														var73.flush();
-														InputStream var75 = var13.getInputStream();
-														Buffer var76 = new Buffer(new byte[1000]);
+														URL var28 = new URL(ModeWhere.method6080("services", false) + "m=accountappeal/login.ws");
+														URLConnection var29 = var28.openConnection();
+														var29.setRequestProperty("connection", "close");
+														var29.setDoInput(true);
+														var29.setDoOutput(true);
+														var29.setConnectTimeout(5000);
+														OutputStreamWriter var30 = new OutputStreamWriter(var29.getOutputStream());
+														var30.write("data1=req");
+														var30.flush();
+														InputStream var37 = var29.getInputStream();
+														Buffer var18 = new Buffer(new byte[1000]);
 														while (true) {
-															int var17 = var75.read(var76.array, var76.offset, 1000 - var76.offset);
-															if (var17 == -1) {
-																var76.offset = 0;
-																long var33 = var76.readLong();
-																var31 = var33;
+															var19 = var37.read(var18.array, var18.offset, 1000 - var18.offset);
+															if (var19 == -1) {
+																var18.offset = 0;
+																long var38 = var18.readLong();
+																var35 = var38;
 																break;
 															}
-															var76.offset += var17;
-															if (var76.offset >= 1000) {
-																var31 = 0L;
+															var18.offset += var19;
+															if (var18.offset >= 1000) {
+																var35 = 0L;
 																break;
 															}
 														} 
-													} catch (Exception var44) {
-														var31 = 0L;
+													} catch (Exception var45) {
+														var35 = 0L;
 													}
-													int var54;
-													if (var31 == 0L) {
-														var54 = 5;
+													if (var35 == 0L) {
+														var11 = 5;
 													} else {
-														var54 = WorldMapAreaData.method5082(var31, Login.Login_username);
+														var11 = WorldMapAreaData.method5082(var35, Login.Login_username);
 													}
-													switch (var54) {
+													switch (var11) {
 														case 2 :
 															class101.setLoginResponseString(Strings.field3894, Strings.field3926, Strings.field3896);
 															WorldMapData_1.method4872(6);
@@ -545,307 +623,195 @@ public class class16 implements ThreadFactory {
 												}
 												return;
 											}
+											if (var55 && Login.Login_username.length() < 320) {
+												Login.Login_username = Login.Login_username + HealthBar.field1258;
+											}
+										}
+									} 
+								} else if (Login.loginIndex != 6) {
+									if (Login.loginIndex == 7) {
+										if (VarpDefinition.field1821 && !Client.onMobile) {
+											var50 = Canvas.loginBoxCenter - 150;
+											var52 = var50 + 40 + 240 + 25;
+											var53 = 231;
+											var10 = var53 + 40;
+											if (var4 == 1 && var48 >= var50 && var48 <= var52 && var49 >= var53 && var49 <= var10) {
+												Login.field910 = class119.method2757(var50, var48);
+											}
+											var11 = Login.loginBoxX + 180 - 80;
+											short var12 = 321;
+											boolean var27;
+											if (var4 == 1 && var48 >= var11 - 75 && var48 <= var11 + 75 && var49 >= var12 - 20 && var49 <= var12 + 20) {
+												var27 = GrandExchangeOfferUnitPriceComparator.method6031();
+												if (var27) {
+													HealthBarUpdate.updateGameState(50);
+													return;
+												}
+											}
+											var11 = Login.loginBoxX + 180 + 80;
+											if (var4 == 1 && var48 >= var11 - 75 && var48 <= var11 + 75 && var49 >= var12 - 20 && var49 <= var12 + 20) {
+												Login.field911 = new String[8];
+												class135.Login_promptCredentials(true);
+											}
+											while (class18.isKeyDown()) {
+												if (class272.field3196 == 101) {
+													Login.field911[Login.field910] = null;
+												}
+												if (class272.field3196 == 85) {
+													if (Login.field911[Login.field910] == null && Login.field910 > 0) {
+														--Login.field910;
+													}
+													Login.field911[Login.field910] = null;
+												}
+												if (HealthBar.field1258 >= '0' && HealthBar.field1258 <= '9') {
+													Login.field911[Login.field910] = "" + HealthBar.field1258;
+													if (Login.field910 < 7) {
+														++Login.field910;
+													}
+												}
+												if (class272.field3196 == 84) {
+													var27 = GrandExchangeOfferUnitPriceComparator.method6031();
+													if (var27) {
+														HealthBarUpdate.updateGameState(50);
+													}
+													return;
+												}
+											} 
+										} else {
+											var50 = Login.loginBoxX + 180 - 80;
+											var8 = 321;
+											if (var4 == 1 && var48 >= var50 - 75 && var48 <= var50 + 75 && var49 >= var8 - 20 && var49 <= var8 + 20) {
+												class258.openURL(ModeWhere.method6080("secure", true) + "m=dob/set_dob.ws", true, false);
+												class101.setLoginResponseString("", "Page has opened in a new window.", "(Please check your popup blocker.)");
+												WorldMapData_1.method4872(6);
+												return;
+											}
 											var50 = Login.loginBoxX + 180 + 80;
 											if (var4 == 1 && var48 >= var50 - 75 && var48 <= var50 + 75 && var49 >= var8 - 20 && var49 <= var8 + 20) {
 												class135.Login_promptCredentials(true);
 											}
-											var53 = 361;
-											if (PcmPlayer.field294 != null) {
-												var10 = PcmPlayer.field294.highX / 2;
-												if (var4 == 1 && var48 >= PcmPlayer.field294.lowX - var10 && var48 <= var10 + PcmPlayer.field294.lowX && var49 >= var53 - 15 && var49 < var53) {
-													class258.openURL(ModeWhere.method6080("secure", true) + "m=weblogin/g=oldscape/cant_log_in", true, false);
-												}
+										}
+									} else if (Login.loginIndex == 8) {
+										var50 = Login.loginBoxX + 180 - 80;
+										var8 = 321;
+										if (var4 == 1 && var48 >= var50 - 75 && var48 <= var50 + 75 && var49 >= var8 - 20 && var49 <= var8 + 20) {
+											class258.openURL("https://www.jagex.com/terms/privacy", true, false);
+											class101.setLoginResponseString("", "Page has opened in a new window.", "(Please check your popup blocker.)");
+											WorldMapData_1.method4872(6);
+											return;
+										}
+										var50 = Login.loginBoxX + 180 + 80;
+										if (var4 == 1 && var48 >= var50 - 75 && var48 <= var50 + 75 && var49 >= var8 - 20 && var49 <= var8 + 20) {
+											class135.Login_promptCredentials(true);
+										}
+									} else if (Login.loginIndex == 9) {
+										var50 = Login.loginBoxX + 180;
+										var8 = 311;
+										if (class272.field3196 == 84 || class272.field3196 == 13 || var4 == 1 && var48 >= var50 - 75 && var48 <= var50 + 75 && var49 >= var8 - 20 && var49 <= var8 + 20) {
+											class101.method2547(false);
+										}
+									} else if (Login.loginIndex == 10) {
+										var50 = Login.loginBoxX + 180;
+										var8 = 209;
+										if (class272.field3196 == 84 || var4 == 1 && var48 >= var50 - 109 && var48 <= var50 + 109 && var49 >= var8 && var49 <= var8 + 68) {
+											class101.setLoginResponseString("", "Connecting to server...", "");
+											Client.field516 = class446.field4750;
+											TriBool.method6791(false);
+											HealthBarUpdate.updateGameState(20);
+										}
+									} else if (Login.loginIndex == 12) {
+										var50 = Canvas.loginBoxCenter;
+										var8 = 233;
+										Bounds var42 = var1.method6372(0, 30, "<col=ffd200>terms of use</col>, <col=ffd200>privacy policy</col>, and <col=ffd200>end user licence</col>", var50, var8);
+										Bounds var23 = var1.method6372(32, 32, "<col=ffd200>terms of use</col>, <col=ffd200>privacy policy</col>, and <col=ffd200>end user licence</col>", var50, var8);
+										Bounds var24 = var1.method6372(70, 34, "<col=ffd200>terms of use</col>, <col=ffd200>privacy policy</col>, and <col=ffd200>end user licence</col>", var50, var8);
+										var52 = var8 + 17;
+										Bounds var70 = var1.method6372(0, 34, "<col=ffd200>agreement (EULA)</col>.", var50, var52);
+										if (var4 == 1) {
+											if (var42.method6894(var48, var49)) {
+												class258.openURL("https://www.jagex.com/terms", true, false);
+											} else if (var23.method6894(var48, var49)) {
+												class258.openURL("https://www.jagex.com/terms/privacy", true, false);
+											} else if (var24.method6894(var48, var49) || var70.method6894(var48, var49)) {
+												class258.openURL("https://www.jagex.com/en-GB/legal/eula-runescape-oldschool", true, false);
 											}
-											while (class18.isKeyDown()) {
-												var55 = false;
-												for (var11 = 0; var11 < "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!\"ï¿½$%^&*()-_=+[{]};:\'@#~,<.>/?\\| ".length(); ++var11) {
-													if (HealthBar.field1258 == "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!\"ï¿½$%^&*()-_=+[{]};:\'@#~,<.>/?\\| ".charAt(var11)) {
-														var55 = true;
-														break;
-													}
-												}
-												if (class272.field3196 == 13) {
+										}
+										var50 = Canvas.loginBoxCenter - 80;
+										var8 = 311;
+										if (var4 == 1 && var48 >= var50 - 75 && var48 <= var50 + 75 && var49 >= var8 - 20 && var49 <= var8 + 20) {
+											class19.clientPreferences.method2307(Client.field482);
+											class101.method2547(true);
+										}
+										var50 = Canvas.loginBoxCenter + 80;
+										if (var4 == 1 && var48 >= var50 - 75 && var48 <= var50 + 75 && var49 >= var8 - 20 && var49 <= var8 + 20) {
+											Login.loginIndex = 13;
+										}
+									} else if (Login.loginIndex == 13) {
+										var50 = Canvas.loginBoxCenter;
+										var8 = 321;
+										if (var4 == 1 && var48 >= var50 - 75 && var48 <= var50 + 75 && var49 >= var8 - 20 && var49 <= var8 + 20) {
+											class101.method2547(true);
+										}
+									} else if (Login.loginIndex == 14) {
+										String var43 = "";
+										switch (Login.field897) {
+											case 0 :
+												var43 = "https://support.runescape.com/hc/en-gb/articles/115002238729-Account-Bans";
+												break;
+											case 1 :
+												var43 = "https://support.runescape.com/hc/en-gb/articles/206103939-My-account-is-locked";
+												break;
+											default :
+												class135.Login_promptCredentials(false);
+										}
+										var52 = Login.loginBoxX + 180;
+										var53 = 276;
+										if (var4 == 1 && var48 >= var52 - 75 && var48 <= var52 + 75 && var49 >= var53 - 20 && var49 <= var53 + 20) {
+											class258.openURL(var43, true, false);
+											class101.setLoginResponseString("", "Page has opened in a new window.", "(Please check your popup blocker.)");
+											WorldMapData_1.method4872(6);
+											return;
+										}
+										var52 = Login.loginBoxX + 180;
+										var53 = 326;
+										if (var4 == 1 && var48 >= var52 - 75 && var48 <= var52 + 75 && var49 >= var53 - 20 && var49 <= var53 + 20) {
+											class135.Login_promptCredentials(false);
+										}
+									} else if (Login.loginIndex == 24) {
+										var50 = Login.loginBoxX + 180;
+										var8 = 301;
+										if (var4 == 1 && var48 >= var50 - 75 && var48 <= var50 + 75 && var49 >= var8 - 20 && var49 <= var8 + 20) {
+											class101.method2547(false);
+										}
+									} else if (Login.loginIndex == 26) {
+										var50 = Login.loginBoxX + 180 - 80;
+										var8 = 321;
+										if (var4 == 1 && var48 >= var50 - 75 && var48 <= var50 + 75 && var49 >= var8 - 20 && var49 <= var8 + 20) {
+											class258.openURL(ModeWhere.method6080("secure", true) + "m=dob/set_dob.ws", true, false);
+											class101.setLoginResponseString("", "Page has opened in a new window.", "(Please check your popup blocker.)");
+											WorldMapData_1.method4872(6);
+											return;
+										}
+										var50 = Login.loginBoxX + 180 + 80;
+										if (var4 == 1 && var48 >= var50 - 75 && var48 <= var50 + 75 && var49 >= var8 - 20 && var49 <= var8 + 20) {
+											class135.Login_promptCredentials(true);
+										}
+									}
+								} else {
+									while (true) {
+										do {
+											if (!class18.isKeyDown()) {
+												var51 = 321;
+												if (var4 == 1 && var49 >= var51 - 20 && var49 <= var51 + 20) {
 													class135.Login_promptCredentials(true);
-												} else {
-													if (class272.field3196 == 85 && Login.Login_username.length() > 0) {
-														Login.Login_username = Login.Login_username.substring(0, Login.Login_username.length() - 1);
-													}
-													if (class272.field3196 == 84) {
-														Login.Login_username = Login.Login_username.trim();
-														if (Login.Login_username.length() == 0) {
-															class101.setLoginResponseString("Please enter your username.", "If you created your account after November", "2010, this will be the creation email address.");
-														} else {
-															long var35;
-															try {
-																URL var28 = new URL(ModeWhere.method6080("services", false) + "m=accountappeal/login.ws");
-																URLConnection var29 = var28.openConnection();
-																var29.setRequestProperty("connection", "close");
-																var29.setDoInput(true);
-																var29.setDoOutput(true);
-																var29.setConnectTimeout(5000);
-																OutputStreamWriter var30 = new OutputStreamWriter(var29.getOutputStream());
-																var30.write("data1=req");
-																var30.flush();
-																InputStream var37 = var29.getInputStream();
-																Buffer var18 = new Buffer(new byte[1000]);
-																while (true) {
-																	var19 = var37.read(var18.array, var18.offset, 1000 - var18.offset);
-																	if (var19 == -1) {
-																		var18.offset = 0;
-																		long var38 = var18.readLong();
-																		var35 = var38;
-																		break;
-																	}
-																	var18.offset += var19;
-																	if (var18.offset >= 1000) {
-																		var35 = 0L;
-																		break;
-																	}
-																} 
-															} catch (Exception var45) {
-																var35 = 0L;
-															}
-															if (var35 == 0L) {
-																var11 = 5;
-															} else {
-																var11 = WorldMapAreaData.method5082(var35, Login.Login_username);
-															}
-															switch (var11) {
-																case 2 :
-																	class101.setLoginResponseString(Strings.field3894, Strings.field3926, Strings.field3896);
-																	WorldMapData_1.method4872(6);
-																	break;
-																case 3 :
-																	class101.setLoginResponseString("", "Error connecting to server.", "");
-																	break;
-																case 4 :
-																	class101.setLoginResponseString("The part of the website you are trying", "to connect to is offline at the moment.", "Please try again later.");
-																	break;
-																case 5 :
-																	class101.setLoginResponseString("Sorry, there was an error trying to", "log you in to this part of the website.", "Please try again later.");
-																	break;
-																case 6 :
-																	class101.setLoginResponseString("", "Error connecting to server.", "");
-																	break;
-																case 7 :
-																	class101.setLoginResponseString("You must enter a valid login to proceed. For accounts", "created after 24th November 2010, please use your", "email address. Otherwise please use your username.");
-															}
-														}
-														return;
-													}
-													if (var55 && Login.Login_username.length() < 320) {
-														Login.Login_username = Login.Login_username + HealthBar.field1258;
-													}
 												}
-											} 
-										} else
-											if (Login.loginIndex != 6) {
-												if (Login.loginIndex == 7) {
-													if (VarpDefinition.field1821 && !Client.onMobile) {
-														var50 = Canvas.loginBoxCenter - 150;
-														var52 = var50 + 40 + 240 + 25;
-														var53 = 231;
-														var10 = var53 + 40;
-														if (var4 == 1 && var48 >= var50 && var48 <= var52 && var49 >= var53 && var49 <= var10) {
-															Login.field910 = class119.method2757(var50, var48);
-														}
-														var11 = Login.loginBoxX + 180 - 80;
-														short var12 = 321;
-														boolean var27;
-														if (var4 == 1 && var48 >= var11 - 75 && var48 <= var11 + 75 && var49 >= var12 - 20 && var49 <= var12 + 20) {
-															var27 = GrandExchangeOfferUnitPriceComparator.method6031();
-															if (var27) {
-																HealthBarUpdate.updateGameState(50);
-																return;
-															}
-														}
-														var11 = Login.loginBoxX + 180 + 80;
-														if (var4 == 1 && var48 >= var11 - 75 && var48 <= var11 + 75 && var49 >= var12 - 20 && var49 <= var12 + 20) {
-															Login.field911 = new String[8];
-															class135.Login_promptCredentials(true);
-														}
-														while (class18.isKeyDown()) {
-															if (class272.field3196 == 101) {
-																Login.field911[Login.field910] = null;
-															}
-															if (class272.field3196 == 85) {
-																if (Login.field911[Login.field910] == null && Login.field910 > 0) {
-																	--Login.field910;
-																}
-																Login.field911[Login.field910] = null;
-															}
-															if (HealthBar.field1258 >= '0' && HealthBar.field1258 <= '9') {
-																Login.field911[Login.field910] = "" + HealthBar.field1258;
-																if (Login.field910 < 7) {
-																	++Login.field910;
-																}
-															}
-															if (class272.field3196 == 84) {
-																var27 = GrandExchangeOfferUnitPriceComparator.method6031();
-																if (var27) {
-																	HealthBarUpdate.updateGameState(50);
-																}
-																return;
-															}
-														} 
-													} else {
-														var50 = Login.loginBoxX + 180 - 80;
-														var8 = 321;
-														if (var4 == 1 && var48 >= var50 - 75 && var48 <= var50 + 75 && var49 >= var8 - 20 && var49 <= var8 + 20) {
-															class258.openURL(ModeWhere.method6080("secure", true) + "m=dob/set_dob.ws", true, false);
-															class101.setLoginResponseString("", "Page has opened in a new window.", "(Please check your popup blocker.)");
-															WorldMapData_1.method4872(6);
-															return;
-														}
-														var50 = Login.loginBoxX + 180 + 80;
-														if (var4 == 1 && var48 >= var50 - 75 && var48 <= var50 + 75 && var49 >= var8 - 20 && var49 <= var8 + 20) {
-															class135.Login_promptCredentials(true);
-														}
-													}
-												} else
-													if (Login.loginIndex == 8) {
-														var50 = Login.loginBoxX + 180 - 80;
-														var8 = 321;
-														if (var4 == 1 && var48 >= var50 - 75 && var48 <= var50 + 75 && var49 >= var8 - 20 && var49 <= var8 + 20) {
-															class258.openURL("https://www.jagex.com/terms/privacy", true, false);
-															class101.setLoginResponseString("", "Page has opened in a new window.", "(Please check your popup blocker.)");
-															WorldMapData_1.method4872(6);
-															return;
-														}
-														var50 = Login.loginBoxX + 180 + 80;
-														if (var4 == 1 && var48 >= var50 - 75 && var48 <= var50 + 75 && var49 >= var8 - 20 && var49 <= var8 + 20) {
-															class135.Login_promptCredentials(true);
-														}
-													} else
-														if (Login.loginIndex == 9) {
-															var50 = Login.loginBoxX + 180;
-															var8 = 311;
-															if (class272.field3196 == 84 || class272.field3196 == 13 || var4 == 1 && var48 >= var50 - 75 && var48 <= var50 + 75 && var49 >= var8 - 20 && var49 <= var8 + 20) {
-																class101.method2547(false);
-															}
-														} else
-															if (Login.loginIndex == 10) {
-																var50 = Login.loginBoxX + 180;
-																var8 = 209;
-																if (class272.field3196 == 84 || var4 == 1 && var48 >= var50 - 109 && var48 <= var50 + 109 && var49 >= var8 && var49 <= var8 + 68) {
-																	class101.setLoginResponseString("", "Connecting to server...", "");
-																	Client.field516 = class446.field4750;
-																	TriBool.method6791(false);
-																	HealthBarUpdate.updateGameState(20);
-																}
-															} else
-																if (Login.loginIndex == 12) {
-																	var50 = Canvas.loginBoxCenter;
-																	var8 = 233;
-																	Bounds var42 = var1.method6372(0, 30, "<col=ffd200>terms of use</col>, <col=ffd200>privacy policy</col>, and <col=ffd200>end user licence</col>", var50, var8);
-																	Bounds var23 = var1.method6372(32, 32, "<col=ffd200>terms of use</col>, <col=ffd200>privacy policy</col>, and <col=ffd200>end user licence</col>", var50, var8);
-																	Bounds var24 = var1.method6372(70, 34, "<col=ffd200>terms of use</col>, <col=ffd200>privacy policy</col>, and <col=ffd200>end user licence</col>", var50, var8);
-																	var52 = var8 + 17;
-																	Bounds var70 = var1.method6372(0, 34, "<col=ffd200>agreement (EULA)</col>.", var50, var52);
-																	if (var4 == 1) {
-																		if (var42.method6894(var48, var49)) {
-																			class258.openURL("https://www.jagex.com/terms", true, false);
-																		} else
-																			if (var23.method6894(var48, var49)) {
-																				class258.openURL("https://www.jagex.com/terms/privacy", true, false);
-																			} else
-																				if (var24.method6894(var48, var49) || var70.method6894(var48, var49)) {
-																					class258.openURL("https://www.jagex.com/en-GB/legal/eula-runescape-oldschool", true, false);
-																				}
-
-
-																	}
-																	var50 = Canvas.loginBoxCenter - 80;
-																	var8 = 311;
-																	if (var4 == 1 && var48 >= var50 - 75 && var48 <= var50 + 75 && var49 >= var8 - 20 && var49 <= var8 + 20) {
-																		class19.clientPreferences.method2307(Client.field482);
-																		class101.method2547(true);
-																	}
-																	var50 = Canvas.loginBoxCenter + 80;
-																	if (var4 == 1 && var48 >= var50 - 75 && var48 <= var50 + 75 && var49 >= var8 - 20 && var49 <= var8 + 20) {
-																		Login.loginIndex = 13;
-																	}
-																} else
-																	if (Login.loginIndex == 13) {
-																		var50 = Canvas.loginBoxCenter;
-																		var8 = 321;
-																		if (var4 == 1 && var48 >= var50 - 75 && var48 <= var50 + 75 && var49 >= var8 - 20 && var49 <= var8 + 20) {
-																			class101.method2547(true);
-																		}
-																	} else
-																		if (Login.loginIndex == 14) {
-																			String var43 = "";
-																			switch (Login.field897) {
-																				case 0 :
-																					var43 = "https://support.runescape.com/hc/en-gb/articles/115002238729-Account-Bans";
-																					break;
-																				case 1 :
-																					var43 = "https://support.runescape.com/hc/en-gb/articles/206103939-My-account-is-locked";
-																					break;
-																				default :
-																					class135.Login_promptCredentials(false);
-																			}
-																			var52 = Login.loginBoxX + 180;
-																			var53 = 276;
-																			if (var4 == 1 && var48 >= var52 - 75 && var48 <= var52 + 75 && var49 >= var53 - 20 && var49 <= var53 + 20) {
-																				class258.openURL(var43, true, false);
-																				class101.setLoginResponseString("", "Page has opened in a new window.", "(Please check your popup blocker.)");
-																				WorldMapData_1.method4872(6);
-																				return;
-																			}
-																			var52 = Login.loginBoxX + 180;
-																			var53 = 326;
-																			if (var4 == 1 && var48 >= var52 - 75 && var48 <= var52 + 75 && var49 >= var53 - 20 && var49 <= var53 + 20) {
-																				class135.Login_promptCredentials(false);
-																			}
-																		} else
-																			if (Login.loginIndex == 24) {
-																				var50 = Login.loginBoxX + 180;
-																				var8 = 301;
-																				if (var4 == 1 && var48 >= var50 - 75 && var48 <= var50 + 75 && var49 >= var8 - 20 && var49 <= var8 + 20) {
-																					class101.method2547(false);
-																				}
-																			} else
-																				if (Login.loginIndex == 26) {
-																					var50 = Login.loginBoxX + 180 - 80;
-																					var8 = 321;
-																					if (var4 == 1 && var48 >= var50 - 75 && var48 <= var50 + 75 && var49 >= var8 - 20 && var49 <= var8 + 20) {
-																						class258.openURL(ModeWhere.method6080("secure", true) + "m=dob/set_dob.ws", true, false);
-																						class101.setLoginResponseString("", "Page has opened in a new window.", "(Please check your popup blocker.)");
-																						WorldMapData_1.method4872(6);
-																						return;
-																					}
-																					var50 = Login.loginBoxX + 180 + 80;
-																					if (var4 == 1 && var48 >= var50 - 75 && var48 <= var50 + 75 && var49 >= var8 - 20 && var49 <= var8 + 20) {
-																						class135.Login_promptCredentials(true);
-																					}
-																				}
-
-
-
-
-
-
-
-
-											} else {
-												while (true) {
-													do {
-														if (!class18.isKeyDown()) {
-															var51 = 321;
-															if (var4 == 1 && var49 >= var51 - 20 && var49 <= var51 + 20) {
-																class135.Login_promptCredentials(true);
-															}
-															return;
-														}
-													} while (class272.field3196 != 84 && class272.field3196 != 13 );
-													class135.Login_promptCredentials(true);
-												} 
+												return;
 											}
-
-
+										} while (class272.field3196 != 84 && class272.field3196 != 13 );
+										class135.Login_promptCredentials(true);
+									} 
 								}
-
+							}
 						}
 					}
 				}
@@ -859,19 +825,17 @@ public class class16 implements ThreadFactory {
 	static void playSong(int var0) {
 		if (var0 == -1 && !Client.playingJingle) {
 			ReflectionCheck.method579();
-		} else
-			if (var0 != -1 && var0 != Client.currentTrackGroupId && class19.clientPreferences.method2258() != 0 && !Client.playingJingle) {
-				Archive var1 = class121.archive6;
-				int var2 = class19.clientPreferences.method2258();
-				class272.musicPlayerStatus = 1;
-				class272.musicTrackArchive = var1;
-				class272.musicTrackGroupId = var0;
-				class151.musicTrackFileId = 0;
-				class272.musicTrackVolume = var2;
-				class11.musicTrackBoolean = false;
-				class272.pcmSampleLength = 2;
-			}
-
+		} else if (var0 != -1 && var0 != Client.currentTrackGroupId && class19.clientPreferences.method2258() != 0 && !Client.playingJingle) {
+			Archive var1 = class121.archive6;
+			int var2 = class19.clientPreferences.method2258();
+			class272.musicPlayerStatus = 1;
+			class272.musicTrackArchive = var1;
+			class272.musicTrackGroupId = var0;
+			class151.musicTrackFileId = 0;
+			class272.musicTrackVolume = var2;
+			class11.musicTrackBoolean = false;
+			class272.pcmSampleLength = 2;
+		}
 		Client.currentTrackGroupId = var0;
 	}
 

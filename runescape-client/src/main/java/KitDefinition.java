@@ -101,35 +101,27 @@ public class KitDefinition extends DualNode {
 				for (var4 = 0; var4 < var3; ++var4) {
 					this.models2[var4] = var1.readUnsignedShort();
 				}
-			} else
-				if (var2 == 3) {
-					this.nonSelectable = true;
-				} else
-					if (var2 == 40) {
-						var3 = var1.readUnsignedByte();
-						this.recolorFrom = new short[var3];
-						this.recolorTo = new short[var3];
-						for (var4 = 0; var4 < var3; ++var4) {
-							this.recolorFrom[var4] = ((short) (var1.readUnsignedShort()));
-							this.recolorTo[var4] = ((short) (var1.readUnsignedShort()));
-						}
-					} else
-						if (var2 == 41) {
-							var3 = var1.readUnsignedByte();
-							this.retextureFrom = new short[var3];
-							this.retextureTo = new short[var3];
-							for (var4 = 0; var4 < var3; ++var4) {
-								this.retextureFrom[var4] = ((short) (var1.readUnsignedShort()));
-								this.retextureTo[var4] = ((short) (var1.readUnsignedShort()));
-							}
-						} else
-							if (var2 >= 60 && var2 < 70) {
-								this.models[var2 - 60] = var1.readUnsignedShort();
-							}
-
-
-
-
+			} else if (var2 == 3) {
+				this.nonSelectable = true;
+			} else if (var2 == 40) {
+				var3 = var1.readUnsignedByte();
+				this.recolorFrom = new short[var3];
+				this.recolorTo = new short[var3];
+				for (var4 = 0; var4 < var3; ++var4) {
+					this.recolorFrom[var4] = ((short) (var1.readUnsignedShort()));
+					this.recolorTo[var4] = ((short) (var1.readUnsignedShort()));
+				}
+			} else if (var2 == 41) {
+				var3 = var1.readUnsignedByte();
+				this.retextureFrom = new short[var3];
+				this.retextureTo = new short[var3];
+				for (var4 = 0; var4 < var3; ++var4) {
+					this.retextureFrom[var4] = ((short) (var1.readUnsignedShort()));
+					this.retextureTo[var4] = ((short) (var1.readUnsignedShort()));
+				}
+			} else if (var2 >= 60 && var2 < 70) {
+				this.models[var2 - 60] = var1.readUnsignedShort();
+			}
 		}
 	}
 
@@ -257,34 +249,24 @@ public class KitDefinition extends DualNode {
 			if (var10 < var3) {
 				if (var2 < var4) {
 					var0.orientation = 1280;
-				} else
-					if (var2 > var4) {
-						var0.orientation = 1792;
-					} else {
-						var0.orientation = 1536;
-					}
-
-			} else
-				if (var10 > var3) {
-					if (var2 < var4) {
-						var0.orientation = 768;
-					} else
-						if (var2 > var4) {
-							var0.orientation = 256;
-						} else {
-							var0.orientation = 512;
-						}
-
-				} else
-					if (var2 < var4) {
-						var0.orientation = 1024;
-					} else
-						if (var2 > var4) {
-							var0.orientation = 0;
-						}
-
-
-
+				} else if (var2 > var4) {
+					var0.orientation = 1792;
+				} else {
+					var0.orientation = 1536;
+				}
+			} else if (var10 > var3) {
+				if (var2 < var4) {
+					var0.orientation = 768;
+				} else if (var2 > var4) {
+					var0.orientation = 256;
+				} else {
+					var0.orientation = 512;
+				}
+			} else if (var2 < var4) {
+				var0.orientation = 1024;
+			} else if (var2 > var4) {
+				var0.orientation = 0;
+			}
 			class192 var5 = var0.pathTraversed[var0.pathLength - 1];
 			if (var3 - var10 <= 256 && var3 - var10 >= -256 && var4 - var2 <= 256 && var4 - var2 >= -256) {
 				int var6 = var0.orientation - var0.rotation & 2047;
@@ -294,15 +276,11 @@ public class KitDefinition extends DualNode {
 				int var7 = var0.walkBackSequence;
 				if (var6 >= -256 && var6 <= 256) {
 					var7 = var0.walkSequence;
-				} else
-					if (var6 >= 256 && var6 < 768) {
-						var7 = var0.walkRightSequence;
-					} else
-						if (var6 >= -768 && var6 <= -256) {
-							var7 = var0.walkLeftSequence;
-						}
-
-
+				} else if (var6 >= 256 && var6 < 768) {
+					var7 = var0.walkRightSequence;
+				} else if (var6 >= -768 && var6 <= -256) {
+					var7 = var0.walkLeftSequence;
+				}
 				if (var7 == -1) {
 					var7 = var0.walkSequence;
 				}
@@ -340,73 +318,53 @@ public class KitDefinition extends DualNode {
 				}
 				if (var5 == class192.field2211) {
 					var8 <<= 1;
-				} else
-					if (var5 == class192.field2209) {
-						var8 >>= 1;
-					}
-
+				} else if (var5 == class192.field2209) {
+					var8 >>= 1;
+				}
 				if (var8 >= 8) {
 					if (var0.walkSequence == var0.movementSequence && var0.runSequence != -1) {
 						var0.movementSequence = var0.runSequence;
-					} else
-						if (var0.movementSequence == var0.walkBackSequence && var0.field1180 != -1) {
-							var0.movementSequence = var0.field1180;
-						} else
-							if (var0.walkLeftSequence == var0.movementSequence && var0.field1144 != -1) {
-								var0.movementSequence = var0.field1144;
-							} else
-								if (var0.walkRightSequence == var0.movementSequence && var0.field1145 != -1) {
-									var0.movementSequence = var0.field1145;
-								}
-
-
-
-				} else
-					if (var8 <= 1) {
-						if (var0.walkSequence == var0.movementSequence && var0.field1155 != -1) {
-							var0.movementSequence = var0.field1155;
-						} else
-							if (var0.movementSequence == var0.walkBackSequence && var0.field1179 != -1) {
-								var0.movementSequence = var0.field1179;
-							} else
-								if (var0.movementSequence == var0.walkLeftSequence && var0.field1137 != -1) {
-									var0.movementSequence = var0.field1137;
-								} else
-									if (var0.walkRightSequence == var0.movementSequence && var0.field1149 != -1) {
-										var0.movementSequence = var0.field1149;
-									}
-
-
-
+					} else if (var0.movementSequence == var0.walkBackSequence && var0.field1180 != -1) {
+						var0.movementSequence = var0.field1180;
+					} else if (var0.walkLeftSequence == var0.movementSequence && var0.field1144 != -1) {
+						var0.movementSequence = var0.field1144;
+					} else if (var0.walkRightSequence == var0.movementSequence && var0.field1145 != -1) {
+						var0.movementSequence = var0.field1145;
 					}
-
+				} else if (var8 <= 1) {
+					if (var0.walkSequence == var0.movementSequence && var0.field1155 != -1) {
+						var0.movementSequence = var0.field1155;
+					} else if (var0.movementSequence == var0.walkBackSequence && var0.field1179 != -1) {
+						var0.movementSequence = var0.field1179;
+					} else if (var0.movementSequence == var0.walkLeftSequence && var0.field1137 != -1) {
+						var0.movementSequence = var0.field1137;
+					} else if (var0.walkRightSequence == var0.movementSequence && var0.field1149 != -1) {
+						var0.movementSequence = var0.field1149;
+					}
+				}
 				if (var3 != var10 || var2 != var4) {
 					if (var10 < var3) {
 						var0.x += var8;
 						if (var0.x > var3) {
 							var0.x = var3;
 						}
-					} else
-						if (var10 > var3) {
-							var0.x -= var8;
-							if (var0.x < var3) {
-								var0.x = var3;
-							}
+					} else if (var10 > var3) {
+						var0.x -= var8;
+						if (var0.x < var3) {
+							var0.x = var3;
 						}
-
+					}
 					if (var2 < var4) {
 						var0.y += var8;
 						if (var0.y > var4) {
 							var0.y = var4;
 						}
-					} else
-						if (var2 > var4) {
-							var0.y -= var8;
-							if (var0.y < var4) {
-								var0.y = var4;
-							}
+					} else if (var2 > var4) {
+						var0.y -= var8;
+						if (var0.y < var4) {
+							var0.y = var4;
 						}
-
+					}
 				}
 				if (var3 == var0.x && var4 == var0.y) {
 					--var0.pathLength;

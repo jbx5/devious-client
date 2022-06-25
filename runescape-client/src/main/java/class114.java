@@ -53,17 +53,15 @@ public class class114 {
 				int var9;
 				if (var7 >= '0' && var7 <= '9') {
 					var9 = var7 - '0';
-				} else
-					if (var7 >= 'A' && var7 <= 'Z') {
-						var9 = var7 - '7';
-					} else {
-						if (var7 < 'a' || var7 > 'z') {
-							var1 = false;
-							break;
-						}
-						var9 = var7 - 'W';
+				} else if (var7 >= 'A' && var7 <= 'Z') {
+					var9 = var7 - '7';
+				} else {
+					if (var7 < 'a' || var7 > 'z') {
+						var1 = false;
+						break;
 					}
-
+					var9 = var7 - 'W';
+				}
 				if (var9 >= 10) {
 					var1 = false;
 					break;

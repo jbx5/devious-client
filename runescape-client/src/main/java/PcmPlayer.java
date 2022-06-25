@@ -147,14 +147,14 @@ public class PcmPlayer {
 	@ObfuscatedName("d")
 	@ObfuscatedSignature(descriptor = "(Laz;I)V", garbageValue = "-2073910324")
 	@Export("setStream")
-	public final synchronized void setStream(PcmStream var1) {
+	public synchronized final void setStream(PcmStream var1) {
 		this.stream = var1;
 	}
 
 	@ObfuscatedName("ad")
 	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "-987567305")
 	@Export("run")
-	public final synchronized void run() {
+	public synchronized final void run() {
 		if (this.samples != null) {
 			long var1 = class115.method2692();
 			try {
@@ -236,7 +236,7 @@ public class PcmPlayer {
 	@ObfuscatedName("al")
 	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "-643520817")
 	@Export("tryDiscard")
-	public final synchronized void tryDiscard() {
+	public synchronized final void tryDiscard() {
 		this.field293 = true;
 		try {
 			this.discard();
@@ -249,7 +249,7 @@ public class PcmPlayer {
 	@ObfuscatedName("ao")
 	@ObfuscatedSignature(descriptor = "(B)V", garbageValue = "2")
 	@Export("shutdown")
-	public final synchronized void shutdown() {
+	public synchronized final void shutdown() {
 		if (soundSystem != null) {
 			boolean var1 = true;
 			for (int var2 = 0; var2 < 2; ++var2) {
@@ -403,117 +403,63 @@ public class PcmPlayer {
 			char var7 = var1.charAt(var6);
 			if (var7 > 0 && var7 < 128 || var7 >= 160 && var7 <= 255) {
 				var5[var6] = ((byte) (var7));
-			} else
-				if (var7 == 8364) {
-					var5[var6] = -128;
-				} else
-					if (var7 == 8218) {
-						var5[var6] = -126;
-					} else
-						if (var7 == 402) {
-							var5[var6] = -125;
-						} else
-							if (var7 == 8222) {
-								var5[var6] = -124;
-							} else
-								if (var7 == 8230) {
-									var5[var6] = -123;
-								} else
-									if (var7 == 8224) {
-										var5[var6] = -122;
-									} else
-										if (var7 == 8225) {
-											var5[var6] = -121;
-										} else
-											if (var7 == 710) {
-												var5[var6] = -120;
-											} else
-												if (var7 == 8240) {
-													var5[var6] = -119;
-												} else
-													if (var7 == 352) {
-														var5[var6] = -118;
-													} else
-														if (var7 == 8249) {
-															var5[var6] = -117;
-														} else
-															if (var7 == 338) {
-																var5[var6] = -116;
-															} else
-																if (var7 == 381) {
-																	var5[var6] = -114;
-																} else
-																	if (var7 == 8216) {
-																		var5[var6] = -111;
-																	} else
-																		if (var7 == 8217) {
-																			var5[var6] = -110;
-																		} else
-																			if (var7 == 8220) {
-																				var5[var6] = -109;
-																			} else
-																				if (var7 == 8221) {
-																					var5[var6] = -108;
-																				} else
-																					if (var7 == 8226) {
-																						var5[var6] = -107;
-																					} else
-																						if (var7 == 8211) {
-																							var5[var6] = -106;
-																						} else
-																							if (var7 == 8212) {
-																								var5[var6] = -105;
-																							} else
-																								if (var7 == 732) {
-																									var5[var6] = -104;
-																								} else
-																									if (var7 == 8482) {
-																										var5[var6] = -103;
-																									} else
-																										if (var7 == 353) {
-																											var5[var6] = -102;
-																										} else
-																											if (var7 == 8250) {
-																												var5[var6] = -101;
-																											} else
-																												if (var7 == 339) {
-																													var5[var6] = -100;
-																												} else
-																													if (var7 == 382) {
-																														var5[var6] = -98;
-																													} else
-																														if (var7 == 376) {
-																															var5[var6] = -97;
-																														} else {
-																															var5[var6] = 63;
-																														}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+			} else if (var7 == 8364) {
+				var5[var6] = -128;
+			} else if (var7 == 8218) {
+				var5[var6] = -126;
+			} else if (var7 == 402) {
+				var5[var6] = -125;
+			} else if (var7 == 8222) {
+				var5[var6] = -124;
+			} else if (var7 == 8230) {
+				var5[var6] = -123;
+			} else if (var7 == 8224) {
+				var5[var6] = -122;
+			} else if (var7 == 8225) {
+				var5[var6] = -121;
+			} else if (var7 == 710) {
+				var5[var6] = -120;
+			} else if (var7 == 8240) {
+				var5[var6] = -119;
+			} else if (var7 == 352) {
+				var5[var6] = -118;
+			} else if (var7 == 8249) {
+				var5[var6] = -117;
+			} else if (var7 == 338) {
+				var5[var6] = -116;
+			} else if (var7 == 381) {
+				var5[var6] = -114;
+			} else if (var7 == 8216) {
+				var5[var6] = -111;
+			} else if (var7 == 8217) {
+				var5[var6] = -110;
+			} else if (var7 == 8220) {
+				var5[var6] = -109;
+			} else if (var7 == 8221) {
+				var5[var6] = -108;
+			} else if (var7 == 8226) {
+				var5[var6] = -107;
+			} else if (var7 == 8211) {
+				var5[var6] = -106;
+			} else if (var7 == 8212) {
+				var5[var6] = -105;
+			} else if (var7 == 732) {
+				var5[var6] = -104;
+			} else if (var7 == 8482) {
+				var5[var6] = -103;
+			} else if (var7 == 353) {
+				var5[var6] = -102;
+			} else if (var7 == 8250) {
+				var5[var6] = -101;
+			} else if (var7 == 339) {
+				var5[var6] = -100;
+			} else if (var7 == 382) {
+				var5[var6] = -98;
+			} else if (var7 == 376) {
+				var5[var6] = -97;
+			} else {
+				var5[var6] = 63;
+			}
 		}
 		var0.writeSmartByteShort(var5.length);
 		var0.offset += class281.huffman.compress(var5, 0, var5.length, var0.array, var0.offset);

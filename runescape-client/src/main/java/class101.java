@@ -45,11 +45,9 @@ public class class101 extends UrlRequester {
 			if (var2 != null) {
 				if (var2 instanceof HttpURLConnection) {
 					((HttpURLConnection) (var2)).disconnect();
-				} else
-					if (var2 instanceof HttpsURLConnection) {
-						((HttpsURLConnection) (var2)).disconnect();
-					}
-
+				} else if (var2 instanceof HttpsURLConnection) {
+					((HttpsURLConnection) (var2)).disconnect();
+				}
 			}
 		}
 	}
@@ -106,11 +104,9 @@ public class class101 extends UrlRequester {
 		boolean var2 = class19.clientPreferences.method2266() >= Client.field482;
 		if (!var2) {
 			var1 = 12;
-		} else
-			if (class353.client.method1102() || class353.client.method1103()) {
-				var1 = 10;
-			}
-
+		} else if (class353.client.method1102() || class353.client.method1103()) {
+			var1 = 10;
+		}
 		WorldMapData_1.method4872(var1);
 		if (var0) {
 			Login.Login_username = "";

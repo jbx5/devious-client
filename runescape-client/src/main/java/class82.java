@@ -81,39 +81,37 @@ public enum class82 implements MouseWheel {
 					}
 					if (Client.isItemSelected == 1) {
 						class4.insertMenuItemNoShift("Use", Client.selectedItemName + " " + "->" + " " + class122.colorStartTag(65535) + var18.name, 1, var17, var14, var28);
-					} else
-						if (Client.isSpellSelected) {
-							if ((HealthBar.selectedSpellFlags & 4) == 4) {
-								class4.insertMenuItemNoShift(Client.selectedSpellActionName, Client.selectedSpellName + " " + "->" + " " + class122.colorStartTag(65535) + var18.name, 2, var17, var14, var28);
-							}
-						} else {
-							String[] var19 = var18.actions;
-							if (var19 != null) {
-								for (int var20 = 4; var20 >= 0; --var20) {
-									if (var19[var20] != null) {
-										short var21 = 0;
-										if (var20 == 0) {
-											var21 = 3;
-										}
-										if (var20 == 1) {
-											var21 = 4;
-										}
-										if (var20 == 2) {
-											var21 = 5;
-										}
-										if (var20 == 3) {
-											var21 = 6;
-										}
-										if (var20 == 4) {
-											var21 = 1001;
-										}
-										class4.insertMenuItemNoShift(var19[var20], class122.colorStartTag(65535) + var18.name, var21, var17, var14, var28);
+					} else if (Client.isSpellSelected) {
+						if ((HealthBar.selectedSpellFlags & 4) == 4) {
+							class4.insertMenuItemNoShift(Client.selectedSpellActionName, Client.selectedSpellName + " " + "->" + " " + class122.colorStartTag(65535) + var18.name, 2, var17, var14, var28);
+						}
+					} else {
+						String[] var19 = var18.actions;
+						if (var19 != null) {
+							for (int var20 = 4; var20 >= 0; --var20) {
+								if (var19[var20] != null) {
+									short var21 = 0;
+									if (var20 == 0) {
+										var21 = 3;
 									}
+									if (var20 == 1) {
+										var21 = 4;
+									}
+									if (var20 == 2) {
+										var21 = 5;
+									}
+									if (var20 == 3) {
+										var21 = 6;
+									}
+									if (var20 == 4) {
+										var21 = 1001;
+									}
+									class4.insertMenuItemNoShift(var19[var20], class122.colorStartTag(65535) + var18.name, var21, var17, var14, var28);
 								}
 							}
-							class4.insertMenuItemNoShift("Examine", class122.colorStartTag(65535) + var18.name, 1002, var18.id, var14, var28);
 						}
-
+						class4.insertMenuItemNoShift("Examine", class122.colorStartTag(65535) + var18.name, 1002, var18.id, var14, var28);
+					}
 				}
 				Player var22;
 				int var29;
@@ -177,41 +175,37 @@ public enum class82 implements MouseWheel {
 							ItemComposition var39 = EnumComposition.ItemDefinition_get(var35.id);
 							if (Client.isItemSelected == 1) {
 								class4.insertMenuItemNoShift("Use", Client.selectedItemName + " " + "->" + " " + class122.colorStartTag(16748608) + var39.name, 16, var35.id, var14, var28);
-							} else
-								if (Client.isSpellSelected) {
-									if ((HealthBar.selectedSpellFlags & 1) == 1) {
-										class4.insertMenuItemNoShift(Client.selectedSpellActionName, Client.selectedSpellName + " " + "->" + " " + class122.colorStartTag(16748608) + var39.name, 17, var35.id, var14, var28);
-									}
-								} else {
-									String[] var31 = var39.groundActions;
-									for (int var32 = 4; var32 >= 0; --var32) {
-										if (var31 != null && var31[var32] != null) {
-											byte var23 = 0;
-											if (var32 == 0) {
-												var23 = 18;
-											}
-											if (var32 == 1) {
-												var23 = 19;
-											}
-											if (var32 == 2) {
-												var23 = 20;
-											}
-											if (var32 == 3) {
-												var23 = 21;
-											}
-											if (var32 == 4) {
-												var23 = 22;
-											}
-											class4.insertMenuItemNoShift(var31[var32], class122.colorStartTag(16748608) + var39.name, var23, var35.id, var14, var28);
-										} else
-											if (var32 == 2) {
-												class4.insertMenuItemNoShift("Take", class122.colorStartTag(16748608) + var39.name, 20, var35.id, var14, var28);
-											}
-
-									}
-									class4.insertMenuItemNoShift("Examine", class122.colorStartTag(16748608) + var39.name, 1004, var35.id, var14, var28);
+							} else if (Client.isSpellSelected) {
+								if ((HealthBar.selectedSpellFlags & 1) == 1) {
+									class4.insertMenuItemNoShift(Client.selectedSpellActionName, Client.selectedSpellName + " " + "->" + " " + class122.colorStartTag(16748608) + var39.name, 17, var35.id, var14, var28);
 								}
-
+							} else {
+								String[] var31 = var39.groundActions;
+								for (int var32 = 4; var32 >= 0; --var32) {
+									if (var31 != null && var31[var32] != null) {
+										byte var23 = 0;
+										if (var32 == 0) {
+											var23 = 18;
+										}
+										if (var32 == 1) {
+											var23 = 19;
+										}
+										if (var32 == 2) {
+											var23 = 20;
+										}
+										if (var32 == 3) {
+											var23 = 21;
+										}
+										if (var32 == 4) {
+											var23 = 22;
+										}
+										class4.insertMenuItemNoShift(var31[var32], class122.colorStartTag(16748608) + var39.name, var23, var35.id, var14, var28);
+									} else if (var32 == 2) {
+										class4.insertMenuItemNoShift("Take", class122.colorStartTag(16748608) + var39.name, 20, var35.id, var14, var28);
+									}
+								}
+								class4.insertMenuItemNoShift("Examine", class122.colorStartTag(16748608) + var39.name, 1004, var35.id, var14, var28);
+							}
 						}
 					}
 				}

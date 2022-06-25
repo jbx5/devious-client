@@ -61,13 +61,11 @@ public class Coord {
 	boolean equalsCoord(Coord var1) {
 		if (this.plane != var1.plane) {
 			return false;
-		} else
-			if (this.x != var1.x) {
-				return false;
-			} else {
-				return this.y == var1.y;
-			}
-
+		} else if (this.x != var1.x) {
+			return false;
+		} else {
+			return this.y == var1.y;
+		}
 	}
 
 	@ObfuscatedName("q")
@@ -109,28 +107,22 @@ public class Coord {
 					var8.packetBuffer.writeShort(var3[var6]);
 					var8.packetBuffer.writeByte(0);
 					Client.packetWriter.addNode(var8);
-				} else
-					if (var0 == 4) {
-						var8 = EnumComposition.getPacketBufferNode(ClientPacket.OPPLAYER4, Client.packetWriter.isaacCipher);
-						var8.packetBuffer.writeByteAdd(0);
-						var8.packetBuffer.writeShortAdd(var3[var6]);
-						Client.packetWriter.addNode(var8);
-					} else
-						if (var0 == 6) {
-							var8 = EnumComposition.getPacketBufferNode(ClientPacket.OPPLAYER6, Client.packetWriter.isaacCipher);
-							var8.packetBuffer.writeShortLE(var3[var6]);
-							var8.packetBuffer.writeByteAdd(0);
-							Client.packetWriter.addNode(var8);
-						} else
-							if (var0 == 7) {
-								var8 = EnumComposition.getPacketBufferNode(ClientPacket.OPPLAYER7, Client.packetWriter.isaacCipher);
-								var8.packetBuffer.writeShort(var3[var6]);
-								var8.packetBuffer.writeByte(0);
-								Client.packetWriter.addNode(var8);
-							}
-
-
-
+				} else if (var0 == 4) {
+					var8 = EnumComposition.getPacketBufferNode(ClientPacket.OPPLAYER4, Client.packetWriter.isaacCipher);
+					var8.packetBuffer.writeByteAdd(0);
+					var8.packetBuffer.writeShortAdd(var3[var6]);
+					Client.packetWriter.addNode(var8);
+				} else if (var0 == 6) {
+					var8 = EnumComposition.getPacketBufferNode(ClientPacket.OPPLAYER6, Client.packetWriter.isaacCipher);
+					var8.packetBuffer.writeShortLE(var3[var6]);
+					var8.packetBuffer.writeByteAdd(0);
+					Client.packetWriter.addNode(var8);
+				} else if (var0 == 7) {
+					var8 = EnumComposition.getPacketBufferNode(ClientPacket.OPPLAYER7, Client.packetWriter.isaacCipher);
+					var8.packetBuffer.writeShort(var3[var6]);
+					var8.packetBuffer.writeByte(0);
+					Client.packetWriter.addNode(var8);
+				}
 				var4 = true;
 				break;
 			}

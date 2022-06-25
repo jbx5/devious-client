@@ -113,13 +113,11 @@ public class Players {
 					Tiles.Tiles_overlays[var1][var2][var3] = var0.readByte();
 					Tiles.Tiles_shapes[var1][var2][var3] = ((byte) ((var7 - 2) / 4));
 					Tiles.field996[var1][var2][var3] = ((byte) (var7 - 2 + var6 & 3));
-				} else
-					if (var7 <= 81) {
-						Tiles.Tiles_renderFlags[var1][var2][var3] = ((byte) (var7 - 49));
-					} else {
-						Tiles.Tiles_underlays[var1][var2][var3] = ((byte) (var7 - 81));
-					}
-
+				} else if (var7 <= 81) {
+					Tiles.Tiles_renderFlags[var1][var2][var3] = ((byte) (var7 - 49));
+				} else {
+					Tiles.Tiles_underlays[var1][var2][var3] = ((byte) (var7 - 81));
+				}
 			} 
 		} else {
 			while (true) {
@@ -143,7 +141,7 @@ public class Players {
 	@Export("Clan_joinChat")
 	static final void Clan_joinChat(String var0) {
 		if (!var0.equals("")) {
-			PacketBufferNode var1 = EnumComposition.getPacketBufferNode(ClientPacket.field2942, Client.packetWriter.isaacCipher);
+			PacketBufferNode var1 = EnumComposition.getPacketBufferNode(ClientPacket.CLAN_LEAVECHAT, Client.packetWriter.isaacCipher);
 			var1.packetBuffer.writeByte(ScriptEvent.stringCp1252NullTerminatedByteSize(var0));
 			var1.packetBuffer.writeStringCp1252NullTerminated(var0);
 			Client.packetWriter.addNode(var1);

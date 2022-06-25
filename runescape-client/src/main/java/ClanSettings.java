@@ -231,32 +231,30 @@ public class ClanSettings {
 		}
 		if (this.useHashes != var1 > 0L) {
 			throw new RuntimeException("");
-		} else
-			if (var3 != null != this.useNames) {
-				throw new RuntimeException("");
-			} else {
-				if (var1 > 0L && (this.memberHashes == null || this.memberCount >= this.memberHashes.length) || var3 != null && (this.memberNames == null || this.memberCount >= this.memberNames.length)) {
-					this.method2950(this.memberCount + 5);
-				}
-				if (this.memberHashes != null) {
-					this.memberHashes[this.memberCount] = var1;
-				}
-				if (this.memberNames != null) {
-					this.memberNames[this.memberCount] = var3;
-				}
-				if (this.currentOwner == -1) {
-					this.currentOwner = this.memberCount;
-					this.memberRanks[this.memberCount] = 126;
-				} else {
-					this.memberRanks[this.memberCount] = 0;
-				}
-				this.field1640[this.memberCount] = 0;
-				this.field1649[this.memberCount] = var4;
-				this.field1642[this.memberCount] = false;
-				++this.memberCount;
-				this.sortedMembers = null;
+		} else if (var3 != null != this.useNames) {
+			throw new RuntimeException("");
+		} else {
+			if (var1 > 0L && (this.memberHashes == null || this.memberCount >= this.memberHashes.length) || var3 != null && (this.memberNames == null || this.memberCount >= this.memberNames.length)) {
+				this.method2950(this.memberCount + 5);
 			}
-
+			if (this.memberHashes != null) {
+				this.memberHashes[this.memberCount] = var1;
+			}
+			if (this.memberNames != null) {
+				this.memberNames[this.memberCount] = var3;
+			}
+			if (this.currentOwner == -1) {
+				this.currentOwner = this.memberCount;
+				this.memberRanks[this.memberCount] = 126;
+			} else {
+				this.memberRanks[this.memberCount] = 0;
+			}
+			this.field1640[this.memberCount] = 0;
+			this.field1649[this.memberCount] = var4;
+			this.field1642[this.memberCount] = false;
+			++this.memberCount;
+			this.sortedMembers = null;
+		}
 	}
 
 	@ObfuscatedName("w")
@@ -311,11 +309,9 @@ public class ClanSettings {
 					}
 					var1 = var3;
 					var2 = this.memberRanks[var3];
-				} else
-					if (this.field1644 == -1 && this.memberRanks[var3] == 125) {
-						this.field1644 = var3;
-					}
-
+				} else if (this.field1644 == -1 && this.memberRanks[var3] == 125) {
+					this.field1644 = var3;
+				}
 			}
 			this.currentOwner = var1;
 			if (this.currentOwner != -1) {
@@ -332,22 +328,20 @@ public class ClanSettings {
 		}
 		if (this.useHashes != var1 > 0L) {
 			throw new RuntimeException("");
-		} else
-			if (this.useNames != (var3 != null)) {
-				throw new RuntimeException("");
-			} else {
-				if (var1 > 0L && (this.bannedMemberHashes == null || this.bannedMemberCount >= this.bannedMemberHashes.length) || var3 != null && (this.bannedMemberNames == null || this.bannedMemberCount >= this.bannedMemberNames.length)) {
-					this.method2974(this.bannedMemberCount + 5);
-				}
-				if (this.bannedMemberHashes != null) {
-					this.bannedMemberHashes[this.bannedMemberCount] = var1;
-				}
-				if (this.bannedMemberNames != null) {
-					this.bannedMemberNames[this.bannedMemberCount] = var3;
-				}
-				++this.bannedMemberCount;
+		} else if (this.useNames != (var3 != null)) {
+			throw new RuntimeException("");
+		} else {
+			if (var1 > 0L && (this.bannedMemberHashes == null || this.bannedMemberCount >= this.bannedMemberHashes.length) || var3 != null && (this.bannedMemberNames == null || this.bannedMemberCount >= this.bannedMemberNames.length)) {
+				this.method2974(this.bannedMemberCount + 5);
 			}
-
+			if (this.bannedMemberHashes != null) {
+				this.bannedMemberHashes[this.bannedMemberCount] = var1;
+			}
+			if (this.bannedMemberNames != null) {
+				this.bannedMemberNames[this.bannedMemberCount] = var3;
+			}
+			++this.bannedMemberCount;
+		}
 	}
 
 	@ObfuscatedName("s")
@@ -373,15 +367,13 @@ public class ClanSettings {
 		if (var2 != 126 && var2 != 127) {
 			if (this.currentOwner == var1 && (this.field1644 == -1 || this.memberRanks[this.field1644] < 125)) {
 				return -1;
-			} else
-				if (this.memberRanks[var1] == var2) {
-					return -1;
-				} else {
-					this.memberRanks[var1] = var2;
-					this.updateOwner();
-					return var1;
-				}
-
+			} else if (this.memberRanks[var1] == var2) {
+				return -1;
+			} else {
+				this.memberRanks[var1] = var2;
+				this.updateOwner();
+				return var1;
+			}
 		} else {
 			return -1;
 		}
@@ -509,11 +501,9 @@ public class ClanSettings {
 	boolean method2968(int var1, String var2) {
 		if (var2 == null) {
 			var2 = "";
-		} else
-			if (var2.length() > 80) {
-				var2 = var2.substring(0, 80);
-			}
-
+		} else if (var2.length() > 80) {
+			var2 = var2.substring(0, 80);
+		}
 		if (this.parameters != null) {
 			Node var3 = this.parameters.get(((long) (var1)));
 			if (var3 != null) {
@@ -644,17 +634,13 @@ public class ClanSettings {
 						if (var7 == 0) {
 							int var12 = var1.readInt();
 							this.parameters.put(new IntegerNode(var12), ((long) (var6)));
-						} else
-							if (var7 == 1) {
-								long var10 = var1.readLong();
-								this.parameters.put(new class407(var10), ((long) (var6)));
-							} else
-								if (var7 == 2) {
-									String var8 = var1.readStringCp1252NullTerminated();
-									this.parameters.put(new ObjectNode(var8), ((long) (var6)));
-								}
-
-
+						} else if (var7 == 1) {
+							long var10 = var1.readLong();
+							this.parameters.put(new class407(var10), ((long) (var6)));
+						} else if (var7 == 2) {
+							String var8 = var1.readStringCp1252NullTerminated();
+							this.parameters.put(new ObjectNode(var8), ((long) (var6)));
+						}
 					} 
 				}
 			}
@@ -769,17 +755,13 @@ public class ClanSettings {
 						var8 = var0.readBits(2);
 						if (var8 == 0) {
 							var17 = 0;
-						} else
-							if (var8 == 1) {
-								var17 = var0.readBits(5);
-							} else
-								if (var8 == 2) {
-									var17 = var0.readBits(8);
-								} else {
-									var17 = var0.readBits(11);
-								}
-
-
+						} else if (var8 == 1) {
+							var17 = var0.readBits(5);
+						} else if (var8 == 2) {
+							var17 = var0.readBits(8);
+						} else {
+							var17 = var0.readBits(11);
+						}
 						var3 = var17;
 						var10000 = Players.field1311;
 						var10000[var20] = ((byte) (var10000[var20] | 2));
@@ -807,17 +789,13 @@ public class ClanSettings {
 							var8 = var0.readBits(2);
 							if (var8 == 0) {
 								var17 = 0;
-							} else
-								if (var8 == 1) {
-									var17 = var0.readBits(5);
-								} else
-									if (var8 == 2) {
-										var17 = var0.readBits(8);
-									} else {
-										var17 = var0.readBits(11);
-									}
-
-
+							} else if (var8 == 1) {
+								var17 = var0.readBits(5);
+							} else if (var8 == 2) {
+								var17 = var0.readBits(8);
+							} else {
+								var17 = var0.readBits(11);
+							}
 							var3 = var17;
 							var10000 = Players.field1311;
 							var10000[var20] = ((byte) (var10000[var20] | 2));
@@ -845,26 +823,20 @@ public class ClanSettings {
 								var8 = var0.readBits(2);
 								if (var8 == 0) {
 									var17 = 0;
-								} else
-									if (var8 == 1) {
-										var17 = var0.readBits(5);
-									} else
-										if (var8 == 2) {
-											var17 = var0.readBits(8);
-										} else {
-											var17 = var0.readBits(11);
-										}
-
-
+								} else if (var8 == 1) {
+									var17 = var0.readBits(5);
+								} else if (var8 == 2) {
+									var17 = var0.readBits(8);
+								} else {
+									var17 = var0.readBits(11);
+								}
 								var3 = var17;
 								var10000 = Players.field1311;
 								var10000[var20] = ((byte) (var10000[var20] | 2));
-							} else
-								if (ModelData0.updateExternalPlayer(var0, var20)) {
-									var10000 = Players.field1311;
-									var10000[var20] = ((byte) (var10000[var20] | 2));
-								}
-
+							} else if (ModelData0.updateExternalPlayer(var0, var20)) {
+								var10000 = Players.field1311;
+								var10000[var20] = ((byte) (var10000[var20] | 2));
+							}
 						}
 					}
 				}
@@ -886,26 +858,20 @@ public class ClanSettings {
 									var8 = var0.readBits(2);
 									if (var8 == 0) {
 										var17 = 0;
-									} else
-										if (var8 == 1) {
-											var17 = var0.readBits(5);
-										} else
-											if (var8 == 2) {
-												var17 = var0.readBits(8);
-											} else {
-												var17 = var0.readBits(11);
-											}
-
-
+									} else if (var8 == 1) {
+										var17 = var0.readBits(5);
+									} else if (var8 == 2) {
+										var17 = var0.readBits(8);
+									} else {
+										var17 = var0.readBits(11);
+									}
 									var3 = var17;
 									var10000 = Players.field1311;
 									var10000[var20] = ((byte) (var10000[var20] | 2));
-								} else
-									if (ModelData0.updateExternalPlayer(var0, var20)) {
-										var10000 = Players.field1311;
-										var10000[var20] = ((byte) (var10000[var20] | 2));
-									}
-
+								} else if (ModelData0.updateExternalPlayer(var0, var20)) {
+									var10000 = Players.field1311;
+									var10000[var20] = ((byte) (var10000[var20] | 2));
+								}
 							}
 						}
 					}
@@ -1032,11 +998,9 @@ public class ClanSettings {
 								if (var5.overheadText.charAt(0) == '~') {
 									var5.overheadText = var5.overheadText.substring(1);
 									class290.addGameMessage(2, var5.username.getName(), var5.overheadText);
-								} else
-									if (var5 == class101.localPlayer) {
-										class290.addGameMessage(2, var5.username.getName(), var5.overheadText);
-									}
-
+								} else if (var5 == class101.localPlayer) {
+									class290.addGameMessage(2, var5.username.getName(), var5.overheadText);
+								}
 								var5.isAutoChatting = false;
 								var5.overheadTextColor = 0;
 								var5.overheadTextEffect = 0;
@@ -1066,13 +1030,11 @@ public class ClanSettings {
 											var12 = var0.readUShortSmart();
 											var11 = var0.readUShortSmart();
 											var24 = var0.readUShortSmart();
-										} else
-											if (var23 != 32766) {
-												var12 = var0.readUShortSmart();
-											} else {
-												var23 = -1;
-											}
-
+										} else if (var23 != 32766) {
+											var12 = var0.readUShortSmart();
+										} else {
+											var23 = -1;
+										}
 										var19 = var0.readUShortSmart();
 										var5.addHitSplat(var23, var12, var11, var24, Client.cycle, var19);
 									}

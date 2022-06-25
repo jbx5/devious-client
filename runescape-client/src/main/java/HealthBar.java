@@ -140,16 +140,14 @@ public class HealthBar extends Node {
 				int var10;
 				if (var8 >= '0' && var8 <= '9') {
 					var10 = var8 - '0';
-				} else
-					if (var8 >= 'A' && var8 <= 'Z') {
-						var10 = var8 - '7';
-					} else {
-						if (var8 < 'a' || var8 > 'z') {
-							throw new NumberFormatException();
-						}
-						var10 = var8 - 'W';
+				} else if (var8 >= 'A' && var8 <= 'Z') {
+					var10 = var8 - '7';
+				} else {
+					if (var8 < 'a' || var8 > 'z') {
+						throw new NumberFormatException();
 					}
-
+					var10 = var8 - 'W';
+				}
 				if (var10 >= var1) {
 					throw new NumberFormatException();
 				}

@@ -51,37 +51,23 @@ public class class160 {
 							String var8;
 							if (var10 < -9) {
 								var8 = class122.colorStartTag(16711680);
-							} else
-								if (var10 < -6) {
-									var8 = class122.colorStartTag(16723968);
-								} else
-									if (var10 < -3) {
-										var8 = class122.colorStartTag(16740352);
-									} else
-										if (var10 < 0) {
-											var8 = class122.colorStartTag(16756736);
-										} else
-											if (var10 > 9) {
-												var8 = class122.colorStartTag(65280);
-											} else
-												if (var10 > 6) {
-													var8 = class122.colorStartTag(4259584);
-												} else
-													if (var10 > 3) {
-														var8 = class122.colorStartTag(8453888);
-													} else
-														if (var10 > 0) {
-															var8 = class122.colorStartTag(12648192);
-														} else {
-															var8 = class122.colorStartTag(16776960);
-														}
-
-
-
-
-
-
-
+							} else if (var10 < -6) {
+								var8 = class122.colorStartTag(16723968);
+							} else if (var10 < -3) {
+								var8 = class122.colorStartTag(16740352);
+							} else if (var10 < 0) {
+								var8 = class122.colorStartTag(16756736);
+							} else if (var10 > 9) {
+								var8 = class122.colorStartTag(65280);
+							} else if (var10 > 6) {
+								var8 = class122.colorStartTag(4259584);
+							} else if (var10 > 3) {
+								var8 = class122.colorStartTag(8453888);
+							} else if (var10 > 0) {
+								var8 = class122.colorStartTag(12648192);
+							} else {
+								var8 = class122.colorStartTag(16776960);
+							}
 							var5 = var5 + var8 + " " + " (" + "level-" + var6 + ")";
 						}
 						if (var4.isFollower && Client.followerOpsLowPriority) {
@@ -89,72 +75,70 @@ public class class160 {
 						}
 						if (Client.isItemSelected == 1) {
 							class4.insertMenuItemNoShift("Use", Client.selectedItemName + " " + "->" + " " + class122.colorStartTag(16776960) + var5, 7, var1, var2, var3);
-						} else
-							if (Client.isSpellSelected) {
-								if ((HealthBar.selectedSpellFlags & 2) == 2) {
-									class4.insertMenuItemNoShift(Client.selectedSpellActionName, Client.selectedSpellName + " " + "->" + " " + class122.colorStartTag(16776960) + var5, 8, var1, var2, var3);
+						} else if (Client.isSpellSelected) {
+							if ((HealthBar.selectedSpellFlags & 2) == 2) {
+								class4.insertMenuItemNoShift(Client.selectedSpellActionName, Client.selectedSpellName + " " + "->" + " " + class122.colorStartTag(16776960) + var5, 8, var1, var2, var3);
+							}
+						} else {
+							var6 = (var4.isFollower && Client.followerOpsLowPriority) ? 2000 : 0;
+							String[] var7 = var4.actions;
+							int var11;
+							if (var7 != null) {
+								for (var11 = 4; var11 >= 0; --var11) {
+									if (var7[var11] != null && !var7[var11].equalsIgnoreCase("Attack")) {
+										var9 = 0;
+										if (var11 == 0) {
+											var9 = var6 + 9;
+										}
+										if (var11 == 1) {
+											var9 = var6 + 10;
+										}
+										if (var11 == 2) {
+											var9 = var6 + 11;
+										}
+										if (var11 == 3) {
+											var9 = var6 + 12;
+										}
+										if (var11 == 4) {
+											var9 = var6 + 13;
+										}
+										class4.insertMenuItemNoShift(var7[var11], class122.colorStartTag(16776960) + var5, var9, var1, var2, var3);
+									}
 								}
-							} else {
-								var6 = (var4.isFollower && Client.followerOpsLowPriority) ? 2000 : 0;
-								String[] var7 = var4.actions;
-								int var11;
-								if (var7 != null) {
-									for (var11 = 4; var11 >= 0; --var11) {
-										if (var7[var11] != null && !var7[var11].equalsIgnoreCase("Attack")) {
+							}
+							if (var7 != null) {
+								for (var11 = 4; var11 >= 0; --var11) {
+									if (var7[var11] != null && var7[var11].equalsIgnoreCase("Attack")) {
+										short var12 = 0;
+										if (AttackOption.AttackOption_hidden != Client.npcAttackOption) {
+											if (AttackOption.AttackOption_alwaysRightClick == Client.npcAttackOption || Client.npcAttackOption == AttackOption.AttackOption_dependsOnCombatLevels && var4.combatLevel > class101.localPlayer.combatLevel) {
+												var12 = 2000;
+											}
 											var9 = 0;
 											if (var11 == 0) {
-												var9 = var6 + 9;
+												var9 = var12 + 9;
 											}
 											if (var11 == 1) {
-												var9 = var6 + 10;
+												var9 = var12 + 10;
 											}
 											if (var11 == 2) {
-												var9 = var6 + 11;
+												var9 = var12 + 11;
 											}
 											if (var11 == 3) {
-												var9 = var6 + 12;
+												var9 = var12 + 12;
 											}
 											if (var11 == 4) {
-												var9 = var6 + 13;
+												var9 = var12 + 13;
 											}
 											class4.insertMenuItemNoShift(var7[var11], class122.colorStartTag(16776960) + var5, var9, var1, var2, var3);
 										}
 									}
 								}
-								if (var7 != null) {
-									for (var11 = 4; var11 >= 0; --var11) {
-										if (var7[var11] != null && var7[var11].equalsIgnoreCase("Attack")) {
-											short var12 = 0;
-											if (AttackOption.AttackOption_hidden != Client.npcAttackOption) {
-												if (AttackOption.AttackOption_alwaysRightClick == Client.npcAttackOption || Client.npcAttackOption == AttackOption.AttackOption_dependsOnCombatLevels && var4.combatLevel > class101.localPlayer.combatLevel) {
-													var12 = 2000;
-												}
-												var9 = 0;
-												if (var11 == 0) {
-													var9 = var12 + 9;
-												}
-												if (var11 == 1) {
-													var9 = var12 + 10;
-												}
-												if (var11 == 2) {
-													var9 = var12 + 11;
-												}
-												if (var11 == 3) {
-													var9 = var12 + 12;
-												}
-												if (var11 == 4) {
-													var9 = var12 + 13;
-												}
-												class4.insertMenuItemNoShift(var7[var11], class122.colorStartTag(16776960) + var5, var9, var1, var2, var3);
-											}
-										}
-									}
-								}
-								if (!var4.isFollower || !Client.followerOpsLowPriority) {
-									class4.insertMenuItemNoShift("Examine", class122.colorStartTag(16776960) + var5, 1003, var1, var2, var3);
-								}
 							}
-
+							if (!var4.isFollower || !Client.followerOpsLowPriority) {
+								class4.insertMenuItemNoShift("Examine", class122.colorStartTag(16776960) + var5, 1003, var1, var2, var3);
+							}
+						}
 					}
 				}
 			}

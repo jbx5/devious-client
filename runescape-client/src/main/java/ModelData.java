@@ -326,17 +326,13 @@ public class ModelData extends Renderable {
 		var2.writeShort(-2);
 		if (var1[var1.length - 1] == -3 && var1[var1.length - 2] == -1) {
 			this.method3924(var1);
-		} else
-			if (var1[var1.length - 1] == -2 && var1[var1.length - 2] == -1) {
-				this.method3925(var1);
-			} else
-				if (var1[var1.length - 1] == -1 && var1[var1.length - 2] == -1) {
-					this.method3926(var1);
-				} else {
-					this.method3981(var1);
-				}
-
-
+		} else if (var1[var1.length - 1] == -2 && var1[var1.length - 2] == -1) {
+			this.method3925(var1);
+		} else if (var1[var1.length - 1] == -1 && var1[var1.length - 2] == -1) {
+			this.method3926(var1);
+		} else {
+			this.method3981(var1);
+		}
 	}
 
 	@ObfuscatedSignature(descriptor = "(Lgw;ZZZZ)V", garbageValue = "1")
@@ -1823,17 +1819,15 @@ public class ModelData extends Renderable {
 					var16.y += var12;
 					var16.z += var13;
 					++var16.magnitude;
-				} else
-					if (var15 == 1) {
-						if (this.faceNormals == null) {
-							this.faceNormals = new FaceNormal[this.faceCount];
-						}
-						FaceNormal var17 = this.faceNormals[var1] = new FaceNormal();
-						var17.x = var11;
-						var17.y = var12;
-						var17.z = var13;
+				} else if (var15 == 1) {
+					if (this.faceNormals == null) {
+						this.faceNormals = new FaceNormal[this.faceCount];
 					}
-
+					FaceNormal var17 = this.faceNormals[var1] = new FaceNormal();
+					var17.x = var11;
+					var17.y = var12;
+					var17.z = var13;
+				}
 			}
 		}
 	}
@@ -1968,14 +1962,12 @@ public class ModelData extends Renderable {
 						var14 = (var4 * var19.y + var5 * var19.z + var3 * var19.x) / (var7 / 2 + var7) + var1;
 						var8.faceColors1[var16] = method3946(this.faceColors[var16] & '￿', var14);
 						var8.faceColors3[var16] = -1;
-					} else
-						if (var17 == 3) {
-							var8.faceColors1[var16] = 128;
-							var8.faceColors3[var16] = -1;
-						} else {
-							var8.faceColors3[var16] = -2;
-						}
-
+					} else if (var17 == 3) {
+						var8.faceColors1[var16] = 128;
+						var8.faceColors3[var16] = -1;
+					} else {
+						var8.faceColors3[var16] = -2;
+					}
 				} else {
 					int var15 = this.faceColors[var16] & '￿';
 					if (this.vertexVertices != null && this.vertexVertices[this.indices1[var16]] != null) {
@@ -2000,40 +1992,38 @@ public class ModelData extends Renderable {
 					var14 = (var4 * var13.y + var5 * var13.z + var3 * var13.x) / (var7 * var13.magnitude) + var1;
 					var8.faceColors3[var16] = method3946(var15, var14);
 				}
-			} else
-				if (var17 != 0) {
-					if (var17 == 1) {
-						var19 = this.faceNormals[var16];
-						var14 = (var4 * var19.y + var5 * var19.z + var3 * var19.x) / (var7 / 2 + var7) + var1;
-						var8.faceColors1[var16] = method3947(var14);
-						var8.faceColors3[var16] = -1;
-					} else {
-						var8.faceColors3[var16] = -2;
-					}
-				} else {
-					if (this.vertexVertices != null && this.vertexVertices[this.indices1[var16]] != null) {
-						var13 = this.vertexVertices[this.indices1[var16]];
-					} else {
-						var13 = this.vertexNormals[this.indices1[var16]];
-					}
-					var14 = (var4 * var13.y + var5 * var13.z + var3 * var13.x) / (var7 * var13.magnitude) + var1;
+			} else if (var17 != 0) {
+				if (var17 == 1) {
+					var19 = this.faceNormals[var16];
+					var14 = (var4 * var19.y + var5 * var19.z + var3 * var19.x) / (var7 / 2 + var7) + var1;
 					var8.faceColors1[var16] = method3947(var14);
-					if (this.vertexVertices != null && this.vertexVertices[this.indices2[var16]] != null) {
-						var13 = this.vertexVertices[this.indices2[var16]];
-					} else {
-						var13 = this.vertexNormals[this.indices2[var16]];
-					}
-					var14 = (var4 * var13.y + var5 * var13.z + var3 * var13.x) / (var7 * var13.magnitude) + var1;
-					var8.faceColors2[var16] = method3947(var14);
-					if (this.vertexVertices != null && this.vertexVertices[this.indices3[var16]] != null) {
-						var13 = this.vertexVertices[this.indices3[var16]];
-					} else {
-						var13 = this.vertexNormals[this.indices3[var16]];
-					}
-					var14 = (var4 * var13.y + var5 * var13.z + var3 * var13.x) / (var7 * var13.magnitude) + var1;
-					var8.faceColors3[var16] = method3947(var14);
+					var8.faceColors3[var16] = -1;
+				} else {
+					var8.faceColors3[var16] = -2;
 				}
-
+			} else {
+				if (this.vertexVertices != null && this.vertexVertices[this.indices1[var16]] != null) {
+					var13 = this.vertexVertices[this.indices1[var16]];
+				} else {
+					var13 = this.vertexNormals[this.indices1[var16]];
+				}
+				var14 = (var4 * var13.y + var5 * var13.z + var3 * var13.x) / (var7 * var13.magnitude) + var1;
+				var8.faceColors1[var16] = method3947(var14);
+				if (this.vertexVertices != null && this.vertexVertices[this.indices2[var16]] != null) {
+					var13 = this.vertexVertices[this.indices2[var16]];
+				} else {
+					var13 = this.vertexNormals[this.indices2[var16]];
+				}
+				var14 = (var4 * var13.y + var5 * var13.z + var3 * var13.x) / (var7 * var13.magnitude) + var1;
+				var8.faceColors2[var16] = method3947(var14);
+				if (this.vertexVertices != null && this.vertexVertices[this.indices3[var16]] != null) {
+					var13 = this.vertexVertices[this.indices3[var16]];
+				} else {
+					var13 = this.vertexNormals[this.indices3[var16]];
+				}
+				var14 = (var4 * var13.y + var5 * var13.z + var3 * var13.x) / (var7 * var13.magnitude) + var1;
+				var8.faceColors3[var16] = method3947(var14);
+			}
 		}
 		this.method3972();
 		var8.verticesCount = this.verticesCount;
@@ -2144,11 +2134,9 @@ public class ModelData extends Renderable {
 		var1 = (var0 & 127) * var1 >> 7;
 		if (var1 < 2) {
 			var1 = 2;
-		} else
-			if (var1 > 126) {
-				var1 = 126;
-			}
-
+		} else if (var1 > 126) {
+			var1 = 126;
+		}
 		return (var0 & 65408) + var1;
 	}
 
@@ -2156,11 +2144,9 @@ public class ModelData extends Renderable {
 	static final int method3947(int var0) {
 		if (var0 < 2) {
 			var0 = 2;
-		} else
-			if (var0 > 126) {
-				var0 = 126;
-			}
-
+		} else if (var0 > 126) {
+			var0 = 126;
+		}
 		return var0;
 	}
 }

@@ -137,13 +137,11 @@ public class class306 {
 						}
 					} 
 					var33 = var34;
-				} else
-					if (var8 == 2) {
-						var33 = WorldMapIcon_1.method4592(var4, var5, var9, var10);
-					} else {
-						var33 = class127.method2844(var4, var5, var8, var9, var10);
-					}
-
+				} else if (var8 == 2) {
+					var33 = WorldMapIcon_1.method4592(var4, var5, var9, var10);
+				} else {
+					var33 = class127.method2844(var4, var5, var8, var9, var10);
+				}
 				int var7;
 				label346 : {
 					var14 = var4 - 64;
@@ -166,19 +164,15 @@ public class class306 {
 									int var29 = 0;
 									if (var25 < var38) {
 										var29 = var38 - var25;
-									} else
-										if (var25 > var32 + var38 - 1) {
-											var29 = var25 - (var38 + var32 - 1);
-										}
-
+									} else if (var25 > var32 + var38 - 1) {
+										var29 = var25 - (var38 + var32 - 1);
+									}
 									int var30 = 0;
 									if (var26 < var22) {
 										var30 = var22 - var26;
-									} else
-										if (var26 > var24 + var22 - 1) {
-											var30 = var26 - (var22 + var24 - 1);
-										}
-
+									} else if (var26 > var24 + var22 - 1) {
+										var30 = var26 - (var22 + var24 - 1);
+									}
 									int var31 = var30 * var30 + var29 * var29;
 									if (var31 < var36 || var36 == var31 && class193.distances[var27][var28] < var19) {
 										var36 = var31;
@@ -211,18 +205,14 @@ public class class306 {
 							}
 							if ((var19 & 2) != 0) {
 								++var16;
-							} else
-								if ((var19 & 8) != 0) {
-									--var16;
-								}
-
+							} else if ((var19 & 8) != 0) {
+								--var16;
+							}
 							if ((var19 & 1) != 0) {
 								++var35;
-							} else
-								if ((var19 & 4) != 0) {
-									--var35;
-								}
-
+							} else if ((var19 & 4) != 0) {
+								--var35;
+							}
 						}
 						var38 = 0;
 						while (var36-- > 0) {

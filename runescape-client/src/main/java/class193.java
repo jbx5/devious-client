@@ -42,13 +42,11 @@ public class class193 {
 				class14.drawInterface(class12.field62, -1412584499, var1, var2, var3, var4, UserComparator5.field1389, SecureRandomFuture.field960, var7);
 				class12.field62 = null;
 			}
+		} else if (var7 != -1) {
+			Client.field703[var7] = true;
 		} else {
-			if (var7 != -1) {
-				Client.field703[var7] = true;
-			} else {
-				for (int var8 = 0; var8 < 100; ++var8) {
-					Client.field703[var8] = true;
-				}
+			for (int var8 = 0; var8 < 100; ++var8) {
+				Client.field703[var8] = true;
 			}
 		}
 	}

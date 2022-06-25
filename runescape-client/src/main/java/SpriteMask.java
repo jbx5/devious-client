@@ -66,24 +66,20 @@ public class SpriteMask extends DualNode {
 								if (var0 == 7033) {
 									--Interpreter.Interpreter_stringStackSize;
 									return 1;
-								} else
-									if (var0 != 7036 && var0 != 7037) {
-										if (var0 == 7038) {
-											--class446.Interpreter_intStackSize;
-											return 1;
-										} else
-											if (var0 != 7004 && var0 != 7009 && var0 != 7014 && var0 != 7019 && var0 != 7024 && var0 != 7029 && var0 != 7034 && var0 != 7039) {
-												return 2;
-											} else {
-												--class446.Interpreter_intStackSize;
-												return 1;
-											}
-
+								} else if (var0 != 7036 && var0 != 7037) {
+									if (var0 == 7038) {
+										--class446.Interpreter_intStackSize;
+										return 1;
+									} else if (var0 != 7004 && var0 != 7009 && var0 != 7014 && var0 != 7019 && var0 != 7024 && var0 != 7029 && var0 != 7034 && var0 != 7039) {
+										return 2;
 									} else {
-										class446.Interpreter_intStackSize -= 2;
+										--class446.Interpreter_intStackSize;
 										return 1;
 									}
-
+								} else {
+									class446.Interpreter_intStackSize -= 2;
+									return 1;
+								}
 							} else {
 								--Interpreter.Interpreter_stringStackSize;
 								--class446.Interpreter_intStackSize;
@@ -114,7 +110,7 @@ public class SpriteMask extends DualNode {
 	@ObfuscatedName("gl")
 	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "-1187838679")
 	static void method5522() {
-		PacketBufferNode var0 = EnumComposition.getPacketBufferNode(ClientPacket.field3008, Client.packetWriter.isaacCipher);
+		PacketBufferNode var0 = EnumComposition.getPacketBufferNode(ClientPacket.EVENT_WINDOW_SETTING, Client.packetWriter.isaacCipher);
 		var0.packetBuffer.writeByte(class9.getWindowedMode());
 		var0.packetBuffer.writeShort(Script.canvasWidth);
 		var0.packetBuffer.writeShort(class78.canvasHeight);

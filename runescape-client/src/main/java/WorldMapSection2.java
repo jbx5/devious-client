@@ -145,36 +145,34 @@ public class WorldMapSection2 implements WorldMapSection {
 	public static boolean loadInterface(int var0) {
 		if (class228.Widget_loadedInterfaces[var0]) {
 			return true;
-		} else
-			if (!MusicPatchPcmStream.Widget_archive.tryLoadGroup(var0)) {
-				return false;
+		} else if (!MusicPatchPcmStream.Widget_archive.tryLoadGroup(var0)) {
+			return false;
+		} else {
+			int var1 = MusicPatchPcmStream.Widget_archive.getGroupFileCount(var0);
+			if (var1 == 0) {
+				class228.Widget_loadedInterfaces[var0] = true;
+				return true;
 			} else {
-				int var1 = MusicPatchPcmStream.Widget_archive.getGroupFileCount(var0);
-				if (var1 == 0) {
-					class228.Widget_loadedInterfaces[var0] = true;
-					return true;
-				} else {
-					if (SoundCache.Widget_interfaceComponents[var0] == null) {
-						SoundCache.Widget_interfaceComponents[var0] = new Widget[var1];
-					}
-					for (int var2 = 0; var2 < var1; ++var2) {
-						if (SoundCache.Widget_interfaceComponents[var0][var2] == null) {
-							byte[] var3 = MusicPatchPcmStream.Widget_archive.takeFile(var0, var2);
-							if (var3 != null) {
-								SoundCache.Widget_interfaceComponents[var0][var2] = new Widget();
-								SoundCache.Widget_interfaceComponents[var0][var2].id = var2 + (var0 << 16);
-								if (var3[0] == -1) {
-									SoundCache.Widget_interfaceComponents[var0][var2].decode(new Buffer(var3));
-								} else {
-									SoundCache.Widget_interfaceComponents[var0][var2].decodeLegacy(new Buffer(var3));
-								}
+				if (SoundCache.Widget_interfaceComponents[var0] == null) {
+					SoundCache.Widget_interfaceComponents[var0] = new Widget[var1];
+				}
+				for (int var2 = 0; var2 < var1; ++var2) {
+					if (SoundCache.Widget_interfaceComponents[var0][var2] == null) {
+						byte[] var3 = MusicPatchPcmStream.Widget_archive.takeFile(var0, var2);
+						if (var3 != null) {
+							SoundCache.Widget_interfaceComponents[var0][var2] = new Widget();
+							SoundCache.Widget_interfaceComponents[var0][var2].id = var2 + (var0 << 16);
+							if (var3[0] == -1) {
+								SoundCache.Widget_interfaceComponents[var0][var2].decode(new Buffer(var3));
+							} else {
+								SoundCache.Widget_interfaceComponents[var0][var2].decodeLegacy(new Buffer(var3));
 							}
 						}
 					}
-					class228.Widget_loadedInterfaces[var0] = true;
-					return true;
 				}
+				class228.Widget_loadedInterfaces[var0] = true;
+				return true;
 			}
-
+		}
 	}
 }

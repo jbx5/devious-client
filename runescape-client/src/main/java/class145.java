@@ -41,24 +41,18 @@ public class class145 {
 			Object var3;
 			if (var2 == 1) {
 				var3 = new class140(this);
-			} else
-				if (var2 == 4) {
-					var3 = new class151(this);
-				} else
-					if (var2 == 3) {
-						var3 = new class136(this);
-					} else
-						if (var2 == 2) {
-							var3 = new class134(this);
-						} else {
-							if (var2 != 5) {
-								throw new RuntimeException("");
-							}
-							var3 = new class141(this);
-						}
-
-
-
+			} else if (var2 == 4) {
+				var3 = new class151(this);
+			} else if (var2 == 3) {
+				var3 = new class136(this);
+			} else if (var2 == 2) {
+				var3 = new class134(this);
+			} else {
+				if (var2 != 5) {
+					throw new RuntimeException("");
+				}
+				var3 = new class141(this);
+			}
 			((class144) (var3)).vmethod3137(var1);
 			this.field1676.addFirst(((Node) (var3)));
 		}

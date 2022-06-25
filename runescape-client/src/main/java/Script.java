@@ -79,23 +79,19 @@ public class Script extends DualNode {
 				Object var1 = null;
 				if (var0.targetIndex < 32768) {
 					var1 = Client.npcs[var0.targetIndex];
-				} else
-					if (var0.targetIndex >= 32768) {
-						var1 = Client.players[var0.targetIndex - 32768];
-					}
-
+				} else if (var0.targetIndex >= 32768) {
+					var1 = Client.players[var0.targetIndex - 32768];
+				}
 				if (var1 != null) {
 					int var2 = var0.x - ((Actor) (var1)).x;
 					int var3 = var0.y - ((Actor) (var1)).y;
 					if (var2 != 0 || var3 != 0) {
 						var0.orientation = ((int) (Math.atan2(((double) (var2)), ((double) (var3))) * 325.949)) & 2047;
 					}
-				} else
-					if (var0.false0) {
-						var0.targetIndex = -1;
-						var0.false0 = false;
-					}
-
+				} else if (var0.false0) {
+					var0.targetIndex = -1;
+					var0.false0 = false;
+				}
 			}
 			if (var0.field1165 != -1 && (var0.pathLength == 0 || var0.field1202 > 0)) {
 				var0.orientation = var0.field1165;
@@ -154,7 +150,7 @@ public class Script extends DualNode {
 		if (Client.packetWriter.pendingWrites >= 50 || var0) {
 			Client.packetWriter.pendingWrites = 0;
 			if (!Client.hadNetworkError && Client.packetWriter.getSocket() != null) {
-				PacketBufferNode var1 = EnumComposition.getPacketBufferNode(ClientPacket.field2969, Client.packetWriter.isaacCipher);
+				PacketBufferNode var1 = EnumComposition.getPacketBufferNode(ClientPacket.NO_TIMEOUT, Client.packetWriter.isaacCipher);
 				Client.packetWriter.addNode(var1);
 				try {
 					Client.packetWriter.flush();

@@ -781,11 +781,9 @@ public class Model extends Renderable {
 							int var14 = ((int) (((float) (this.faceAlphas[var13] & 255)) + var6.method2701(var2) * 255.0F));
 							if (var14 < 0) {
 								var14 = 0;
-							} else
-								if (var14 > 255) {
-									var14 = 255;
-								}
-
+							} else if (var14 > 255) {
+								var14 = 255;
+							}
 							this.faceAlphas[var13] = ((byte) (var14));
 						}
 					}
@@ -880,11 +878,9 @@ public class Model extends Renderable {
 					if (var10 == var8 || var6.transformTypes[var10] == 0) {
 						this.transform(var6.transformTypes[var10], var6.labels[var10], var5.transformXs[var9], var5.transformYs[var9], var5.transformZs[var9]);
 					}
-				} else
-					if (var10 != var8 || var6.transformTypes[var10] == 0) {
-						this.transform(var6.transformTypes[var10], var6.labels[var10], var5.transformXs[var9], var5.transformYs[var9], var5.transformZs[var9]);
-					}
-
+				} else if (var10 != var8 || var6.transformTypes[var10] == 0) {
+					this.transform(var6.transformTypes[var10], var6.labels[var10], var5.transformXs[var9], var5.transformYs[var9], var5.transformZs[var9]);
+				}
 			}
 		}
 	}
@@ -944,108 +940,100 @@ public class Model extends Renderable {
 						}
 					}
 				}
-			} else
-				if (var1 == 2) {
+			} else if (var1 == 2) {
+				for (var7 = 0; var7 < var6; ++var7) {
+					var8 = var2[var7];
+					if (var8 < this.vertexLabels.length) {
+						var9 = this.vertexLabels[var8];
+						for (var10 = 0; var10 < var9.length; ++var10) {
+							var11 = var9[var10];
+							var10000 = this.verticesX;
+							var10000[var11] -= Model_transformTempX;
+							var10000 = this.verticesY;
+							var10000[var11] -= Model_transformTempY;
+							var10000 = this.verticesZ;
+							var10000[var11] -= Model_transformTempZ;
+							var12 = (var3 & 255) * 8;
+							int var13 = (var4 & 255) * 8;
+							int var14 = (var5 & 255) * 8;
+							int var15;
+							int var16;
+							int var17;
+							if (var14 != 0) {
+								var15 = Model_sine[var14];
+								var16 = Model_cosine[var14];
+								var17 = var15 * this.verticesY[var11] + var16 * this.verticesX[var11] >> 16;
+								this.verticesY[var11] = var16 * this.verticesY[var11] - var15 * this.verticesX[var11] >> 16;
+								this.verticesX[var11] = var17;
+							}
+							if (var12 != 0) {
+								var15 = Model_sine[var12];
+								var16 = Model_cosine[var12];
+								var17 = var16 * this.verticesY[var11] - var15 * this.verticesZ[var11] >> 16;
+								this.verticesZ[var11] = var15 * this.verticesY[var11] + var16 * this.verticesZ[var11] >> 16;
+								this.verticesY[var11] = var17;
+							}
+							if (var13 != 0) {
+								var15 = Model_sine[var13];
+								var16 = Model_cosine[var13];
+								var17 = var15 * this.verticesZ[var11] + var16 * this.verticesX[var11] >> 16;
+								this.verticesZ[var11] = var16 * this.verticesZ[var11] - var15 * this.verticesX[var11] >> 16;
+								this.verticesX[var11] = var17;
+							}
+							var10000 = this.verticesX;
+							var10000[var11] += Model_transformTempX;
+							var10000 = this.verticesY;
+							var10000[var11] += Model_transformTempY;
+							var10000 = this.verticesZ;
+							var10000[var11] += Model_transformTempZ;
+						}
+					}
+				}
+			} else if (var1 == 3) {
+				for (var7 = 0; var7 < var6; ++var7) {
+					var8 = var2[var7];
+					if (var8 < this.vertexLabels.length) {
+						var9 = this.vertexLabels[var8];
+						for (var10 = 0; var10 < var9.length; ++var10) {
+							var11 = var9[var10];
+							var10000 = this.verticesX;
+							var10000[var11] -= Model_transformTempX;
+							var10000 = this.verticesY;
+							var10000[var11] -= Model_transformTempY;
+							var10000 = this.verticesZ;
+							var10000[var11] -= Model_transformTempZ;
+							this.verticesX[var11] = var3 * this.verticesX[var11] / 128;
+							this.verticesY[var11] = var4 * this.verticesY[var11] / 128;
+							this.verticesZ[var11] = var5 * this.verticesZ[var11] / 128;
+							var10000 = this.verticesX;
+							var10000[var11] += Model_transformTempX;
+							var10000 = this.verticesY;
+							var10000[var11] += Model_transformTempY;
+							var10000 = this.verticesZ;
+							var10000[var11] += Model_transformTempZ;
+						}
+					}
+				}
+			} else if (var1 == 5) {
+				if (this.faceLabelsAlpha != null && this.faceAlphas != null) {
 					for (var7 = 0; var7 < var6; ++var7) {
 						var8 = var2[var7];
-						if (var8 < this.vertexLabels.length) {
-							var9 = this.vertexLabels[var8];
+						if (var8 < this.faceLabelsAlpha.length) {
+							var9 = this.faceLabelsAlpha[var8];
 							for (var10 = 0; var10 < var9.length; ++var10) {
 								var11 = var9[var10];
-								var10000 = this.verticesX;
-								var10000[var11] -= Model_transformTempX;
-								var10000 = this.verticesY;
-								var10000[var11] -= Model_transformTempY;
-								var10000 = this.verticesZ;
-								var10000[var11] -= Model_transformTempZ;
-								var12 = (var3 & 255) * 8;
-								int var13 = (var4 & 255) * 8;
-								int var14 = (var5 & 255) * 8;
-								int var15;
-								int var16;
-								int var17;
-								if (var14 != 0) {
-									var15 = Model_sine[var14];
-									var16 = Model_cosine[var14];
-									var17 = var15 * this.verticesY[var11] + var16 * this.verticesX[var11] >> 16;
-									this.verticesY[var11] = var16 * this.verticesY[var11] - var15 * this.verticesX[var11] >> 16;
-									this.verticesX[var11] = var17;
+								var12 = (this.faceAlphas[var11] & 255) + var3 * 8;
+								if (var12 < 0) {
+									var12 = 0;
+								} else if (var12 > 255) {
+									var12 = 255;
 								}
-								if (var12 != 0) {
-									var15 = Model_sine[var12];
-									var16 = Model_cosine[var12];
-									var17 = var16 * this.verticesY[var11] - var15 * this.verticesZ[var11] >> 16;
-									this.verticesZ[var11] = var15 * this.verticesY[var11] + var16 * this.verticesZ[var11] >> 16;
-									this.verticesY[var11] = var17;
-								}
-								if (var13 != 0) {
-									var15 = Model_sine[var13];
-									var16 = Model_cosine[var13];
-									var17 = var15 * this.verticesZ[var11] + var16 * this.verticesX[var11] >> 16;
-									this.verticesZ[var11] = var16 * this.verticesZ[var11] - var15 * this.verticesX[var11] >> 16;
-									this.verticesX[var11] = var17;
-								}
-								var10000 = this.verticesX;
-								var10000[var11] += Model_transformTempX;
-								var10000 = this.verticesY;
-								var10000[var11] += Model_transformTempY;
-								var10000 = this.verticesZ;
-								var10000[var11] += Model_transformTempZ;
+								this.faceAlphas[var11] = ((byte) (var12));
 							}
 						}
 					}
-				} else
-					if (var1 == 3) {
-						for (var7 = 0; var7 < var6; ++var7) {
-							var8 = var2[var7];
-							if (var8 < this.vertexLabels.length) {
-								var9 = this.vertexLabels[var8];
-								for (var10 = 0; var10 < var9.length; ++var10) {
-									var11 = var9[var10];
-									var10000 = this.verticesX;
-									var10000[var11] -= Model_transformTempX;
-									var10000 = this.verticesY;
-									var10000[var11] -= Model_transformTempY;
-									var10000 = this.verticesZ;
-									var10000[var11] -= Model_transformTempZ;
-									this.verticesX[var11] = var3 * this.verticesX[var11] / 128;
-									this.verticesY[var11] = var4 * this.verticesY[var11] / 128;
-									this.verticesZ[var11] = var5 * this.verticesZ[var11] / 128;
-									var10000 = this.verticesX;
-									var10000[var11] += Model_transformTempX;
-									var10000 = this.verticesY;
-									var10000[var11] += Model_transformTempY;
-									var10000 = this.verticesZ;
-									var10000[var11] += Model_transformTempZ;
-								}
-							}
-						}
-					} else
-						if (var1 == 5) {
-							if (this.faceLabelsAlpha != null && this.faceAlphas != null) {
-								for (var7 = 0; var7 < var6; ++var7) {
-									var8 = var2[var7];
-									if (var8 < this.faceLabelsAlpha.length) {
-										var9 = this.faceLabelsAlpha[var8];
-										for (var10 = 0; var10 < var9.length; ++var10) {
-											var11 = var9[var10];
-											var12 = (this.faceAlphas[var11] & 255) + var3 * 8;
-											if (var12 < 0) {
-												var12 = 0;
-											} else
-												if (var12 > 255) {
-													var12 = 255;
-												}
-
-											this.faceAlphas[var11] = ((byte) (var12));
-										}
-									}
-								}
-							}
-						}
-
-
-
+				}
+			}
 		}
 	}
 
@@ -1331,13 +1319,11 @@ public class Model extends Renderable {
 							if (var31 < 10) {
 								int[] var10000 = field2564;
 								var10000[var31] += var7;
-							} else
-								if (var31 == 10) {
-									field2562[var28] = var7;
-								} else {
-									field2508[var28] = var7;
-								}
-
+							} else if (var31 == 10) {
+								field2562[var28] = var7;
+							} else {
+								field2508[var28] = var7;
+							}
 						}
 					}
 				}
@@ -1475,21 +1461,15 @@ public class Model extends Renderable {
 			} else {
 				Rasterizer3D.method4070(var2, var3, var4, var5, var6, var7, var8, var9, var10, field2520[var11], field2520[var12], field2520[var13], field2555[var11], field2555[var12], field2555[var13], field2559[var11], field2559[var12], field2559[var13], this.faceTextures[var1]);
 			}
-		} else
-			if (this.faceColors3[var1] == -1 && this.overrideAmount > 0) {
-				Rasterizer3D.method4035(var2, var3, var4, var5, var6, var7, Model_colorPalette[this.faceColors1[var1]], this.overrideHue, this.overrideSaturation, this.overrideLuminance, this.overrideAmount);
-			} else
-				if (this.faceColors3[var1] == -1) {
-					Rasterizer3D.method4116(var2, var3, var4, var5, var6, var7, Model_colorPalette[this.faceColors1[var1]]);
-				} else
-					if (this.overrideAmount > 0) {
-						Rasterizer3D.method4032(var2, var3, var4, var5, var6, var7, var8, var9, var10, this.overrideHue, this.overrideSaturation, this.overrideLuminance, this.overrideAmount);
-					} else {
-						Rasterizer3D.method4096(var2, var3, var4, var5, var6, var7, var8, var9, var10);
-					}
-
-
-
+		} else if (this.faceColors3[var1] == -1 && this.overrideAmount > 0) {
+			Rasterizer3D.method4035(var2, var3, var4, var5, var6, var7, Model_colorPalette[this.faceColors1[var1]], this.overrideHue, this.overrideSaturation, this.overrideLuminance, this.overrideAmount);
+		} else if (this.faceColors3[var1] == -1) {
+			Rasterizer3D.method4116(var2, var3, var4, var5, var6, var7, Model_colorPalette[this.faceColors1[var1]]);
+		} else if (this.overrideAmount > 0) {
+			Rasterizer3D.method4032(var2, var3, var4, var5, var6, var7, var8, var9, var10, this.overrideHue, this.overrideSaturation, this.overrideLuminance, this.overrideAmount);
+		} else {
+			Rasterizer3D.method4096(var2, var3, var4, var5, var6, var7, var8, var9, var10);
+		}
 	}
 
 	@ObfuscatedName("ap")
@@ -1614,27 +1594,21 @@ public class Model extends Renderable {
 					Rasterizer3D.method4070(var14, var15, var16, var11, var12, var13, field2567[0], field2567[1], field2567[2], field2520[var17], field2520[var18], field2520[var19], field2555[var17], field2555[var18], field2555[var19], field2559[var17], field2559[var18], field2559[var19], var21);
 					Rasterizer3D.method4070(var14, var16, field2566[3], var11, var13, field2505[3], field2567[0], field2567[2], field2567[3], field2520[var17], field2520[var18], field2520[var19], field2555[var17], field2555[var18], field2555[var19], field2559[var17], field2559[var18], field2559[var19], var21);
 				}
-			} else
-				if (this.faceColors3[var1] == -1 && this.overrideAmount > 0) {
-					var17 = Model_colorPalette[this.faceColors1[var1]];
-					Rasterizer3D.method4035(var14, var15, var16, var11, var12, var13, var17, this.overrideHue, this.overrideSaturation, this.overrideLuminance, this.overrideAmount);
-					Rasterizer3D.method4035(var14, var16, field2566[3], var11, var13, field2505[3], var17, this.overrideHue, this.overrideSaturation, this.overrideLuminance, this.overrideAmount);
-				} else
-					if (this.faceColors3[var1] == -1) {
-						var17 = Model_colorPalette[this.faceColors1[var1]];
-						Rasterizer3D.method4116(var14, var15, var16, var11, var12, var13, var17);
-						Rasterizer3D.method4116(var14, var16, field2566[3], var11, var13, field2505[3], var17);
-					} else
-						if (this.overrideAmount > 0) {
-							Rasterizer3D.method4032(var14, var15, var16, var11, var12, var13, field2567[0], field2567[1], field2567[2], this.overrideHue, this.overrideLuminance, this.overrideSaturation, this.overrideAmount);
-							Rasterizer3D.method4032(var14, var16, field2566[3], var11, var13, field2505[3], field2567[0], field2567[2], field2567[3], this.overrideHue, this.overrideLuminance, this.overrideSaturation, this.overrideAmount);
-						} else {
-							Rasterizer3D.method4096(var14, var15, var16, var11, var12, var13, field2567[0], field2567[1], field2567[2]);
-							Rasterizer3D.method4096(var14, var16, field2566[3], var11, var13, field2505[3], field2567[0], field2567[2], field2567[3]);
-						}
-
-
-
+			} else if (this.faceColors3[var1] == -1 && this.overrideAmount > 0) {
+				var17 = Model_colorPalette[this.faceColors1[var1]];
+				Rasterizer3D.method4035(var14, var15, var16, var11, var12, var13, var17, this.overrideHue, this.overrideSaturation, this.overrideLuminance, this.overrideAmount);
+				Rasterizer3D.method4035(var14, var16, field2566[3], var11, var13, field2505[3], var17, this.overrideHue, this.overrideSaturation, this.overrideLuminance, this.overrideAmount);
+			} else if (this.faceColors3[var1] == -1) {
+				var17 = Model_colorPalette[this.faceColors1[var1]];
+				Rasterizer3D.method4116(var14, var15, var16, var11, var12, var13, var17);
+				Rasterizer3D.method4116(var14, var16, field2566[3], var11, var13, field2505[3], var17);
+			} else if (this.overrideAmount > 0) {
+				Rasterizer3D.method4032(var14, var15, var16, var11, var12, var13, field2567[0], field2567[1], field2567[2], this.overrideHue, this.overrideLuminance, this.overrideSaturation, this.overrideAmount);
+				Rasterizer3D.method4032(var14, var16, field2566[3], var11, var13, field2505[3], field2567[0], field2567[2], field2567[3], this.overrideHue, this.overrideLuminance, this.overrideSaturation, this.overrideAmount);
+			} else {
+				Rasterizer3D.method4096(var14, var15, var16, var11, var12, var13, field2567[0], field2567[1], field2567[2]);
+				Rasterizer3D.method4096(var14, var16, field2566[3], var11, var13, field2505[3], field2567[0], field2567[2], field2567[3]);
+			}
 		}
 	}
 
@@ -1774,29 +1748,19 @@ public class Model extends Renderable {
 										var45 = class340.field4138 - var39;
 										if (Math.abs(var43) > var40 + class421.field4607) {
 											var35 = false;
-										} else
-											if (Math.abs(var44) > var53 + ViewportMouse.field2590) {
-												var35 = false;
-											} else
-												if (Math.abs(var45) > var54 + class136.field1612) {
-													var35 = false;
-												} else
-													if (Math.abs(var45 * ItemComposition.field2148 - var44 * User.field4308) > var53 * class136.field1612 + var54 * ViewportMouse.field2590) {
-														var35 = false;
-													} else
-														if (Math.abs(var43 * User.field4308 - var45 * ViewportMouse.field2589) > var54 * class421.field4607 + var40 * class136.field1612) {
-															var35 = false;
-														} else
-															if (Math.abs(var44 * ViewportMouse.field2589 - var43 * ItemComposition.field2148) > var40 * ViewportMouse.field2590 + var53 * class421.field4607) {
-																var35 = false;
-															} else {
-																var35 = true;
-															}
-
-
-
-
-
+										} else if (Math.abs(var44) > var53 + ViewportMouse.field2590) {
+											var35 = false;
+										} else if (Math.abs(var45) > var54 + class136.field1612) {
+											var35 = false;
+										} else if (Math.abs(var45 * ItemComposition.field2148 - var44 * User.field4308) > var53 * class136.field1612 + var54 * ViewportMouse.field2590) {
+											var35 = false;
+										} else if (Math.abs(var43 * User.field4308 - var45 * ViewportMouse.field2589) > var54 * class421.field4607 + var40 * class136.field1612) {
+											var35 = false;
+										} else if (Math.abs(var44 * ViewportMouse.field2589 - var43 * ItemComposition.field2148) > var40 * ViewportMouse.field2590 + var53 * class421.field4607) {
+											var35 = false;
+										} else {
+											var35 = true;
+										}
 									}
 									var34 = var35;
 								} else {
