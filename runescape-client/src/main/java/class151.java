@@ -67,11 +67,9 @@ public class class151 extends class144 {
 				if (Login.worldSelectPage > 0 && class266.worldSelectLeftSprite != null) {
 					--Login.worldSelectPage;
 				}
-			} else
-				if (class272.field3196 == 97 && Login.worldSelectPage < Login.worldSelectPagesCount && SceneTilePaint.worldSelectRightSprite != null) {
-					++Login.worldSelectPage;
-				}
-
+			} else if (class272.field3196 == 97 && Login.worldSelectPage < Login.worldSelectPagesCount && SceneTilePaint.worldSelectRightSprite != null) {
+				++Login.worldSelectPage;
+			}
 		} 
 		if (MouseHandler.MouseHandler_lastButton == 1 || !class122.mouseCam && MouseHandler.MouseHandler_lastButton == 4) {
 			int var1 = Login.xPadding + 280;

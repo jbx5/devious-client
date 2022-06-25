@@ -72,118 +72,98 @@ public class UserComparator6 extends AbstractUserComparator {
 					Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = "";
 				}
 				return 1;
-			} else
-				if (var0 == ScriptOpcodes.OC_IOP) {
-					class446.Interpreter_intStackSize -= 2;
-					var3 = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize];
-					var4 = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize + 1];
-					var5 = EnumComposition.ItemDefinition_get(var3);
-					if (var4 >= 1 && var4 <= 5 && var5.inventoryActions[var4 - 1] != null) {
-						Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var5.inventoryActions[var4 - 1];
+			} else if (var0 == ScriptOpcodes.OC_IOP) {
+				class446.Interpreter_intStackSize -= 2;
+				var3 = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize];
+				var4 = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize + 1];
+				var5 = EnumComposition.ItemDefinition_get(var3);
+				if (var4 >= 1 && var4 <= 5 && var5.inventoryActions[var4 - 1] != null) {
+					Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var5.inventoryActions[var4 - 1];
+				} else {
+					Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = "";
+				}
+				return 1;
+			} else if (var0 == ScriptOpcodes.OC_COST) {
+				var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+				Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = EnumComposition.ItemDefinition_get(var3).price;
+				return 1;
+			} else if (var0 == ScriptOpcodes.OC_STACKABLE) {
+				var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+				Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = (EnumComposition.ItemDefinition_get(var3).isStackable == 1) ? 1 : 0;
+				return 1;
+			} else {
+				ItemComposition var7;
+				if (var0 == ScriptOpcodes.OC_CERT) {
+					var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+					var7 = EnumComposition.ItemDefinition_get(var3);
+					if (var7.noteTemplate == -1 && var7.note >= 0) {
+						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var7.note;
 					} else {
-						Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = "";
+						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3;
 					}
 					return 1;
-				} else
-					if (var0 == ScriptOpcodes.OC_COST) {
-						var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
-						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = EnumComposition.ItemDefinition_get(var3).price;
+				} else if (var0 == ScriptOpcodes.OC_UNCERT) {
+					var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+					var7 = EnumComposition.ItemDefinition_get(var3);
+					if (var7.noteTemplate >= 0 && var7.note >= 0) {
+						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var7.note;
+					} else {
+						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3;
+					}
+					return 1;
+				} else if (var0 == ScriptOpcodes.OC_MEMBERS) {
+					var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+					Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = (EnumComposition.ItemDefinition_get(var3).isMembersOnly) ? 1 : 0;
+					return 1;
+				} else if (var0 == ScriptOpcodes.OC_PLACEHOLDER) {
+					var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+					var7 = EnumComposition.ItemDefinition_get(var3);
+					if (var7.placeholderTemplate == -1 && var7.placeholder >= 0) {
+						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var7.placeholder;
+					} else {
+						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3;
+					}
+					return 1;
+				} else if (var0 == ScriptOpcodes.OC_UNPLACEHOLDER) {
+					var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+					var7 = EnumComposition.ItemDefinition_get(var3);
+					if (var7.placeholderTemplate >= 0 && var7.placeholder >= 0) {
+						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var7.placeholder;
+					} else {
+						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3;
+					}
+					return 1;
+				} else if (var0 == ScriptOpcodes.OC_FIND) {
+					String var6 = Interpreter.Interpreter_stringStack[--Interpreter.Interpreter_stringStackSize];
+					var4 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+					DevicePcmPlayerProvider.findItemDefinitions(var6, var4 == 1);
+					Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = HealthBarUpdate.foundItemIdCount;
+					return 1;
+				} else if (var0 != ScriptOpcodes.OC_FINDNEXT) {
+					if (var0 == ScriptOpcodes.OC_FINDRESET) {
+						TriBool.foundItemIndex = 0;
 						return 1;
-					} else
-						if (var0 == ScriptOpcodes.OC_STACKABLE) {
-							var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
-							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = (EnumComposition.ItemDefinition_get(var3).isStackable == 1) ? 1 : 0;
-							return 1;
+					} else if (var0 == 4213) {
+						var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+						var4 = EnumComposition.ItemDefinition_get(var3).getShiftClickIndex();
+						if (var4 == -1) {
+							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var4;
 						} else {
-							ItemComposition var7;
-							if (var0 == ScriptOpcodes.OC_CERT) {
-								var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
-								var7 = EnumComposition.ItemDefinition_get(var3);
-								if (var7.noteTemplate == -1 && var7.note >= 0) {
-									Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var7.note;
-								} else {
-									Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3;
-								}
-								return 1;
-							} else
-								if (var0 == ScriptOpcodes.OC_UNCERT) {
-									var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
-									var7 = EnumComposition.ItemDefinition_get(var3);
-									if (var7.noteTemplate >= 0 && var7.note >= 0) {
-										Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var7.note;
-									} else {
-										Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3;
-									}
-									return 1;
-								} else
-									if (var0 == ScriptOpcodes.OC_MEMBERS) {
-										var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
-										Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = (EnumComposition.ItemDefinition_get(var3).isMembersOnly) ? 1 : 0;
-										return 1;
-									} else
-										if (var0 == ScriptOpcodes.OC_PLACEHOLDER) {
-											var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
-											var7 = EnumComposition.ItemDefinition_get(var3);
-											if (var7.placeholderTemplate == -1 && var7.placeholder >= 0) {
-												Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var7.placeholder;
-											} else {
-												Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3;
-											}
-											return 1;
-										} else
-											if (var0 == ScriptOpcodes.OC_UNPLACEHOLDER) {
-												var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
-												var7 = EnumComposition.ItemDefinition_get(var3);
-												if (var7.placeholderTemplate >= 0 && var7.placeholder >= 0) {
-													Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var7.placeholder;
-												} else {
-													Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3;
-												}
-												return 1;
-											} else
-												if (var0 == ScriptOpcodes.OC_FIND) {
-													String var6 = Interpreter.Interpreter_stringStack[--Interpreter.Interpreter_stringStackSize];
-													var4 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
-													DevicePcmPlayerProvider.findItemDefinitions(var6, var4 == 1);
-													Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = HealthBarUpdate.foundItemIdCount;
-													return 1;
-												} else
-													if (var0 != ScriptOpcodes.OC_FINDNEXT) {
-														if (var0 == ScriptOpcodes.OC_FINDRESET) {
-															TriBool.foundItemIndex = 0;
-															return 1;
-														} else
-															if (var0 == 4213) {
-																var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
-																var4 = EnumComposition.ItemDefinition_get(var3).getShiftClickIndex();
-																if (var4 == -1) {
-																	Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var4;
-																} else {
-																	Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var4 + 1;
-																}
-																return 1;
-															} else {
-																return 2;
-															}
-
-													} else {
-														if (class10.foundItemIds != null && TriBool.foundItemIndex < HealthBarUpdate.foundItemIdCount) {
-															Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = class10.foundItemIds[++TriBool.foundItemIndex - 1] & '￿';
-														} else {
-															Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = -1;
-														}
-														return 1;
-													}
-
-
-
-
-
-
+							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var4 + 1;
 						}
-
-
-
+						return 1;
+					} else {
+						return 2;
+					}
+				} else {
+					if (class10.foundItemIds != null && TriBool.foundItemIndex < HealthBarUpdate.foundItemIdCount) {
+						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = class10.foundItemIds[++TriBool.foundItemIndex - 1] & '￿';
+					} else {
+						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = -1;
+					}
+					return 1;
+				}
+			}
 		}
 	}
 }

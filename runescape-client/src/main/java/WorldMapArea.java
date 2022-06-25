@@ -307,14 +307,12 @@ public class WorldMapArea {
 	public static Object method4621(byte[] var0, boolean var1) {
 		if (var0 == null) {
 			return null;
-		} else
-			if (var0.length > 136) {
-				DirectByteArrayCopier var2 = new DirectByteArrayCopier();
-				var2.set(var0);
-				return var2;
-			} else {
-				return var0;
-			}
-
+		} else if (var0.length > 136) {
+			DirectByteArrayCopier var2 = new DirectByteArrayCopier();
+			var2.set(var0);
+			return var2;
+		} else {
+			return var0;
+		}
 	}
 }

@@ -35,34 +35,24 @@ public class WorldMapDecoration {
 		if (var0 == ScriptOpcodes.IF_GETX) {
 			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.x;
 			return 1;
-		} else
-			if (var0 == ScriptOpcodes.IF_GETY) {
-				Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.y;
-				return 1;
-			} else
-				if (var0 == ScriptOpcodes.IF_GETWIDTH) {
-					Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.width;
-					return 1;
-				} else
-					if (var0 == ScriptOpcodes.IF_GETHEIGHT) {
-						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.height;
-						return 1;
-					} else
-						if (var0 == ScriptOpcodes.IF_GETHIDE) {
-							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = (var3.isHidden) ? 1 : 0;
-							return 1;
-						} else
-							if (var0 == ScriptOpcodes.IF_GETLAYER) {
-								Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.parentId;
-								return 1;
-							} else {
-								return 2;
-							}
-
-
-
-
-
+		} else if (var0 == ScriptOpcodes.IF_GETY) {
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.y;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETWIDTH) {
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.width;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETHEIGHT) {
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.height;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETHIDE) {
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = (var3.isHidden) ? 1 : 0;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETLAYER) {
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.parentId;
+			return 1;
+		} else {
+			return 2;
+		}
 	}
 
 	@ObfuscatedName("ig")

@@ -57,11 +57,9 @@ public class class347 extends AbstractQueue {
 				if (this.field4168.compare(var2.field4159, var4.field4159) >= 0) {
 					break;
 				}
-			} else
-				if (((Comparable) (var2.field4159)).compareTo(var4.field4159) >= 0) {
-					break;
-				}
-
+			} else if (((Comparable) (var2.field4159)).compareTo(var4.field4159) >= 0) {
+				break;
+			}
 			this.field4166[var1] = var4;
 			this.field4166[var1].field4158 = var1;
 		}
@@ -85,22 +83,18 @@ public class class347 extends AbstractQueue {
 				} else {
 					var8 = var4;
 				}
-			} else
-				if (var6 < this.field4165 && ((Comparable) (var5.field4159)).compareTo(var7.field4159) > 0) {
-					var8 = var6;
-				} else {
-					var8 = var4;
-				}
-
+			} else if (var6 < this.field4165 && ((Comparable) (var5.field4159)).compareTo(var7.field4159) > 0) {
+				var8 = var6;
+			} else {
+				var8 = var4;
+			}
 			if (this.field4168 != null) {
 				if (this.field4168.compare(var2.field4159, this.field4166[var8].field4159) <= 0) {
 					break;
 				}
-			} else
-				if (((Comparable) (var2.field4159)).compareTo(this.field4166[var8].field4159) <= 0) {
-					break;
-				}
-
+			} else if (((Comparable) (var2.field4159)).compareTo(this.field4166[var8].field4159) <= 0) {
+				break;
+			}
 			this.field4166[var1] = this.field4166[var8];
 			this.field4166[var1].field4158 = var1;
 		}

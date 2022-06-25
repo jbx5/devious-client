@@ -149,13 +149,11 @@ public class LoginType {
 						var4 = var5;
 						if (Math.abs(var7) > var16) {
 							var2 += var7;
-						} else
-							if (((double) (var17)) > 0.0) {
-								var2 += var16;
-							} else {
-								var2 -= var16;
-							}
-
+						} else if (((double) (var17)) > 0.0) {
+							var2 += var16;
+						} else {
+							var2 -= var16;
+						}
 						var5 = FileSystem.method3281(var0.field4415, var0.field4414, var2);
 						if (((double) (var5 * (var13 / Math.abs(var13)))) > 0.0) {
 							var14 = true;

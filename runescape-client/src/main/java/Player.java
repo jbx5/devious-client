@@ -318,32 +318,24 @@ public final class Player extends Actor {
 							var4.rotateY90Ccw();
 							var4.rotateY90Ccw();
 							var4.rotateY90Ccw();
-						} else
-							if (super.orientation == 1024) {
-								var4.rotateY90Ccw();
-								var4.rotateY90Ccw();
-							} else
-								if (super.orientation == 1536) {
-									var4.rotateY90Ccw();
-								}
-
-
+						} else if (super.orientation == 1024) {
+							var4.rotateY90Ccw();
+							var4.rotateY90Ccw();
+						} else if (super.orientation == 1536) {
+							var4.rotateY90Ccw();
+						}
 						var5 = new Model[]{ var3, var4 };
 						var3 = new Model(var5, 2);
 						if (super.orientation == 512) {
 							var4.rotateY90Ccw();
-						} else
-							if (super.orientation == 1024) {
-								var4.rotateY90Ccw();
-								var4.rotateY90Ccw();
-							} else
-								if (super.orientation == 1536) {
-									var4.rotateY90Ccw();
-									var4.rotateY90Ccw();
-									var4.rotateY90Ccw();
-								}
-
-
+						} else if (super.orientation == 1024) {
+							var4.rotateY90Ccw();
+							var4.rotateY90Ccw();
+						} else if (super.orientation == 1536) {
+							var4.rotateY90Ccw();
+							var4.rotateY90Ccw();
+							var4.rotateY90Ccw();
+						}
 						var4.offsetBy(super.x - this.field1095, this.tileHeight - this.tileHeight2, super.y - this.field1108);
 					}
 				}

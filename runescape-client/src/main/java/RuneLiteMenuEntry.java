@@ -169,12 +169,10 @@ public class RuneLiteMenuEntry implements MenuEntry {
 				opcodes = Client.menuOpcodes;
 				opcodes[this.idx] += 2000;
 			}
-		} else
-			if (Client.menuOpcodes[this.idx] >= 2000) {
-				opcodes = Client.menuOpcodes;
-				opcodes[this.idx] -= 2000;
-			}
-
+		} else if (Client.menuOpcodes[this.idx] >= 2000) {
+			opcodes = Client.menuOpcodes;
+			opcodes[this.idx] -= 2000;
+		}
 		return this;
 	}
 
@@ -203,71 +201,53 @@ public class RuneLiteMenuEntry implements MenuEntry {
 	public boolean equals(Object o) {
 		if (o == this) {
 			return true;
-		} else
-			if (!(o instanceof RuneLiteMenuEntry)) {
+		} else if (!(o instanceof RuneLiteMenuEntry)) {
+			return false;
+		} else {
+			RuneLiteMenuEntry menuEntry = ((RuneLiteMenuEntry) (o));
+			if (!menuEntry.instanceOf(this)) {
+				return false;
+			} else if (this.getIdentifier() != menuEntry.getIdentifier()) {
+				return false;
+			} else if (this.getParam0() != menuEntry.getParam0()) {
+				return false;
+			} else if (this.getParam1() != menuEntry.getParam1()) {
+				return false;
+			} else if (this.isForceLeftClick() != menuEntry.isForceLeftClick()) {
+				return false;
+			} else if (this.isDeprioritized() != menuEntry.isDeprioritized()) {
 				return false;
 			} else {
-				RuneLiteMenuEntry menuEntry = ((RuneLiteMenuEntry) (o));
-				if (!menuEntry.instanceOf(this)) {
-					return false;
-				} else
-					if (this.getIdentifier() != menuEntry.getIdentifier()) {
+				String option = this.getOption();
+				String menuEntryOption = menuEntry.getOption();
+				if (option == null) {
+					if (menuEntryOption != null) {
 						return false;
-					} else
-						if (this.getParam0() != menuEntry.getParam0()) {
-							return false;
-						} else
-							if (this.getParam1() != menuEntry.getParam1()) {
-								return false;
-							} else
-								if (this.isForceLeftClick() != menuEntry.isForceLeftClick()) {
-									return false;
-								} else
-									if (this.isDeprioritized() != menuEntry.isDeprioritized()) {
-										return false;
-									} else {
-										String option = this.getOption();
-										String menuEntryOption = menuEntry.getOption();
-										if (option == null) {
-											if (menuEntryOption != null) {
-												return false;
-											}
-										} else
-											if (!option.equals(menuEntryOption)) {
-												return false;
-											}
-
-										String target = this.getTarget();
-										String menuEntryTarget = menuEntry.getTarget();
-										if (target == null) {
-											if (menuEntryTarget != null) {
-												return false;
-											}
-										} else
-											if (!target.equals(menuEntryTarget)) {
-												return false;
-											}
-
-										MenuAction type = this.getType();
-										MenuAction menuEntryType = menuEntry.getType();
-										if (type == null) {
-											if (menuEntryType == null) {
-												return true;
-											}
-										} else
-											if (type.equals(menuEntryType)) {
-												return true;
-											}
-
-										return false;
-									}
-
-
-
-
-
+					}
+				} else if (!option.equals(menuEntryOption)) {
+					return false;
+				}
+				String target = this.getTarget();
+				String menuEntryTarget = menuEntry.getTarget();
+				if (target == null) {
+					if (menuEntryTarget != null) {
+						return false;
+					}
+				} else if (!target.equals(menuEntryTarget)) {
+					return false;
+				}
+				MenuAction type = this.getType();
+				MenuAction menuEntryType = menuEntry.getType();
+				if (type == null) {
+					if (menuEntryType == null) {
+						return true;
+					}
+				} else if (type.equals(menuEntryType)) {
+					return true;
+				}
+				return false;
 			}
-
+		}
 	}
 
 	@Override

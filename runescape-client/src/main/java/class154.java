@@ -39,29 +39,23 @@ public class class154 extends class165 {
 	static int method3170(int var0, int var1) {
 		if (var0 == -2) {
 			return 12345678;
-		} else
-			if (var0 == -1) {
-				if (var1 < 0) {
-					var1 = 0;
-				} else
-					if (var1 > 127) {
-						var1 = 127;
-					}
-
-				var1 = 127 - var1;
-				return var1;
-			} else {
-				var1 = (var0 & 127) * var1 / 128;
-				if (var1 < 2) {
-					var1 = 2;
-				} else
-					if (var1 > 126) {
-						var1 = 126;
-					}
-
-				return (var0 & 65408) + var1;
+		} else if (var0 == -1) {
+			if (var1 < 0) {
+				var1 = 0;
+			} else if (var1 > 127) {
+				var1 = 127;
 			}
-
+			var1 = 127 - var1;
+			return var1;
+		} else {
+			var1 = (var0 & 127) * var1 / 128;
+			if (var1 < 2) {
+				var1 = 2;
+			} else if (var1 > 126) {
+				var1 = 126;
+			}
+			return (var0 & 65408) + var1;
+		}
 	}
 
 	@ObfuscatedName("u")
@@ -106,19 +100,17 @@ public class class154 extends class165 {
 				boolean var9;
 				if (Client.drawPlayerNames == 0) {
 					var9 = false;
-				} else
-					if (var10 != class101.localPlayer) {
-						boolean var11 = (Client.drawPlayerNames & 4) != 0;
-						boolean var12 = var11;
-						if (!var11) {
-							boolean var13 = (Client.drawPlayerNames & 1) != 0;
-							var12 = var13 && var10.isFriend();
-						}
-						var9 = var12 || Language.method6070() && var10.isFriendsChatMember();
-					} else {
-						var9 = class138.method2944();
+				} else if (var10 != class101.localPlayer) {
+					boolean var11 = (Client.drawPlayerNames & 4) != 0;
+					boolean var12 = var11;
+					if (!var11) {
+						boolean var13 = (Client.drawPlayerNames & 1) != 0;
+						var12 = var13 && var10.isFriend();
 					}
-
+					var9 = var12 || Language.method6070() && var10.isFriendsChatMember();
+				} else {
+					var9 = class138.method2944();
+				}
 				if (var9) {
 					Player var77 = ((Player) (var0));
 					if (var1 < var76) {
@@ -299,11 +291,9 @@ public class class154 extends class165 {
 							continue;
 						}
 					}
-				} else
-					if (var91 < 0) {
-						continue;
-					}
-
+				} else if (var91 < 0) {
+					continue;
+				}
 				int var15 = var0.hitSplatTypes2[var79];
 				HitSplatDefinition var16 = null;
 				if (var15 >= 0) {

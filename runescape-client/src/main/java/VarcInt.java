@@ -65,48 +65,36 @@ public class VarcInt extends DualNode {
 					WorldMapLabelSize.setWindowedMode(var3);
 				}
 				return 1;
-			} else
-				if (var0 == ScriptOpcodes.GETDEFAULTWINDOWMODE) {
-					Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = class19.clientPreferences.method2268();
+			} else if (var0 == ScriptOpcodes.GETDEFAULTWINDOWMODE) {
+				Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = class19.clientPreferences.method2268();
+				return 1;
+			} else if (var0 != ScriptOpcodes.SETDEFAULTWINDOWMODE) {
+				if (var0 == 5310) {
+					--class446.Interpreter_intStackSize;
 					return 1;
-				} else
-					if (var0 != ScriptOpcodes.SETDEFAULTWINDOWMODE) {
-						if (var0 == 5310) {
-							--class446.Interpreter_intStackSize;
-							return 1;
-						} else
-							if (var0 == 5311) {
-								class446.Interpreter_intStackSize -= 2;
-								return 1;
-							} else
-								if (var0 == 5312) {
-									--class446.Interpreter_intStackSize;
-									return 1;
-								} else
-									if (var0 == 5350) {
-										Interpreter.Interpreter_stringStackSize -= 2;
-										--class446.Interpreter_intStackSize;
-										return 1;
-									} else
-										if (var0 == 5351) {
-											--Interpreter.Interpreter_stringStackSize;
-											return 1;
-										} else {
-											return 2;
-										}
-
-
-
-
-					} else {
-						var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
-						if (var3 == 1 || var3 == 2) {
-							class19.clientPreferences.method2280(var3);
-						}
-						return 1;
-					}
-
-
+				} else if (var0 == 5311) {
+					class446.Interpreter_intStackSize -= 2;
+					return 1;
+				} else if (var0 == 5312) {
+					--class446.Interpreter_intStackSize;
+					return 1;
+				} else if (var0 == 5350) {
+					Interpreter.Interpreter_stringStackSize -= 2;
+					--class446.Interpreter_intStackSize;
+					return 1;
+				} else if (var0 == 5351) {
+					--Interpreter.Interpreter_stringStackSize;
+					return 1;
+				} else {
+					return 2;
+				}
+			} else {
+				var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+				if (var3 == 1 || var3 == 2) {
+					class19.clientPreferences.method2280(var3);
+				}
+				return 1;
+			}
 		}
 	}
 }

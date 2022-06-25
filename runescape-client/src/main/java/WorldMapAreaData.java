@@ -167,45 +167,39 @@ public class WorldMapAreaData extends WorldMapArea {
 					String var24 = new String(var9.array);
 					if (var24.startsWith("OFFLINE")) {
 						return 4;
-					} else
-						if (var24.startsWith("WRONG")) {
-							return 7;
-						} else
-							if (var24.startsWith("RELOAD")) {
-								return 3;
-							} else
-								if (var24.startsWith("Not permitted for social network accounts.")) {
-									return 6;
-								} else {
-									var9.xteaDecryptAll(var6);
-									while (var9.offset > 0 && var9.array[var9.offset - 1] == 0) {
-										--var9.offset;
-									} 
-									var24 = new String(var9.array, 0, var9.offset);
-									boolean var28;
-									if (var24 == null) {
-										var28 = false;
-									} else {
-										label107 : {
-											try {
-												new URL(var24);
-											} catch (MalformedURLException var25) {
-												var28 = false;
-												break label107;
-											}
-											var28 = true;
-										}
-									}
-									if (var28) {
-										class258.openURL(var24, true, false);
-										return 2;
-									} else {
-										return 5;
-									}
+					} else if (var24.startsWith("WRONG")) {
+						return 7;
+					} else if (var24.startsWith("RELOAD")) {
+						return 3;
+					} else if (var24.startsWith("Not permitted for social network accounts.")) {
+						return 6;
+					} else {
+						var9.xteaDecryptAll(var6);
+						while (var9.offset > 0 && var9.array[var9.offset - 1] == 0) {
+							--var9.offset;
+						} 
+						var24 = new String(var9.array, 0, var9.offset);
+						boolean var28;
+						if (var24 == null) {
+							var28 = false;
+						} else {
+							label107 : {
+								try {
+									new URL(var24);
+								} catch (MalformedURLException var25) {
+									var28 = false;
+									break label107;
 								}
-
-
-
+								var28 = true;
+							}
+						}
+						if (var28) {
+							class258.openURL(var24, true, false);
+							return 2;
+						} else {
+							return 5;
+						}
+					}
 				}
 				var9.offset += var17;
 			} while (var9.offset < 1000 );

@@ -69,40 +69,34 @@ public class RuneLiteClanMember implements ClanMember {
 	public boolean equals(Object o) {
 		if (o == this) {
 			return true;
-		} else
-			if (!(o instanceof RuneLiteClanMember)) {
+		} else if (!(o instanceof RuneLiteClanMember)) {
+			return false;
+		} else {
+			RuneLiteClanMember clanMember = ((RuneLiteClanMember) (o));
+			if (!clanMember.instanceOf(this)) {
 				return false;
 			} else {
-				RuneLiteClanMember clanMember = ((RuneLiteClanMember) (o));
-				if (!clanMember.instanceOf(this)) {
+				String thisName = this.getName();
+				String objName = clanMember.getName();
+				if (thisName == null) {
+					if (objName != null) {
+						return false;
+					}
+				} else if (!thisName.equals(objName)) {
 					return false;
-				} else {
-					String thisName = this.getName();
-					String objName = clanMember.getName();
-					if (thisName == null) {
-						if (objName != null) {
-							return false;
-						}
-					} else
-						if (!thisName.equals(objName)) {
-							return false;
-						}
-
-					ClanRank thisRank = this.getRank();
-					ClanRank objRank = clanMember.getRank();
-					if (thisRank == null) {
-						if (objRank != null) {
-							return false;
-						}
-					} else
-						if (!thisRank.equals(objRank)) {
-							return false;
-						}
-
-					return true;
 				}
+				ClanRank thisRank = this.getRank();
+				ClanRank objRank = clanMember.getRank();
+				if (thisRank == null) {
+					if (objRank != null) {
+						return false;
+					}
+				} else if (!thisRank.equals(objRank)) {
+					return false;
+				}
+				return true;
 			}
-
+		}
 	}
 
 	@Override

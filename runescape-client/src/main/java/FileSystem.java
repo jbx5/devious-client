@@ -96,17 +96,13 @@ public class FileSystem {
 		}
 		if (var0 == 338) {
 			return 'O';
-		} else
-			if (var0 == 339) {
-				return 'o';
-			} else
-				if (var0 == 376) {
-					return 'Y';
-				} else {
-					return var0;
-				}
-
-
+		} else if (var0 == 339) {
+			return 'o';
+		} else if (var0 == 376) {
+			return 'Y';
+		} else {
+			return var0;
+		}
 	}
 
 	@ObfuscatedName("j")

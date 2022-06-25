@@ -101,7 +101,7 @@ public final class KeyHandler implements KeyListener , FocusListener {
 	KeyHandler() {
 	}
 
-	public final synchronized void keyPressed(KeyEvent var1) {
+	public synchronized final void keyPressed(KeyEvent var1) {
 		if (KeyHandler_instance != null) {
 			int var2 = var1.getKeyCode();
 			if (var2 >= 0 && var2 < KeyHandler.KeyHandler_keyCodes.length) {
@@ -135,7 +135,7 @@ public final class KeyHandler implements KeyListener , FocusListener {
 		}
 	}
 
-	public final synchronized void keyReleased(KeyEvent var1) {
+	public synchronized final void keyReleased(KeyEvent var1) {
 		if (KeyHandler_instance != null) {
 			int var2 = var1.getKeyCode();
 			if (var2 >= 0 && var2 < KeyHandler.KeyHandler_keyCodes.length) {
@@ -157,7 +157,7 @@ public final class KeyHandler implements KeyListener , FocusListener {
 	public final void focusGained(FocusEvent var1) {
 	}
 
-	public final synchronized void focusLost(FocusEvent var1) {
+	public synchronized final void focusLost(FocusEvent var1) {
 		if (KeyHandler_instance != null) {
 			field140 = -1;
 		}
@@ -256,11 +256,9 @@ public final class KeyHandler implements KeyListener , FocusListener {
 		int var8 = var6 - 334;
 		if (var8 < 0) {
 			var8 = 0;
-		} else
-			if (var8 > 100) {
-				var8 = 100;
-			}
-
+		} else if (var8 > 100) {
+			var8 = 100;
+		}
 		int var9 = (Client.zoomWidth - Client.zoomHeight) * var8 / 100 + Client.zoomHeight;
 		int var7 = var5 * var9 / 256;
 		var8 = 2048 - var3 & 2047;
@@ -302,7 +300,7 @@ public final class KeyHandler implements KeyListener , FocusListener {
 			var13 = class101.localPlayer.plane;
 			var14 = (InterfaceParent.oculusOrbFocalPointX >> 7) + class28.baseX;
 			var15 = (class141.oculusOrbFocalPointY >> 7) + WorldMapLabelSize.baseY;
-			PacketBufferNode var16 = EnumComposition.getPacketBufferNode(ClientPacket.field2966, Client.packetWriter.isaacCipher);
+			PacketBufferNode var16 = EnumComposition.getPacketBufferNode(ClientPacket.CLICKWORLDMAP_TELEPORT, Client.packetWriter.isaacCipher);
 			var16.packetBuffer.writeByteNeg(var13);
 			var16.packetBuffer.writeShortLE(var15);
 			var16.packetBuffer.writeIntLE(Client.field635);

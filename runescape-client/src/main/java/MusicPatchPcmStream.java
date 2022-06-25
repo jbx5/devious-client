@@ -175,14 +175,12 @@ public class MusicPatchPcmStream extends PcmStream {
 		int var6 = class133.compareWorlds(var0, var1, var2, var3);
 		if (var6 != 0) {
 			return var3 ? -var6 : var6;
-		} else
-			if (var4 == -1) {
-				return 0;
-			} else {
-				int var7 = class133.compareWorlds(var0, var1, var4, var5);
-				return var5 ? -var7 : var7;
-			}
-
+		} else if (var4 == -1) {
+			return 0;
+		} else {
+			int var7 = class133.compareWorlds(var0, var1, var4, var5);
+			return var5 ? -var7 : var7;
+		}
 	}
 
 	@ObfuscatedName("ka")

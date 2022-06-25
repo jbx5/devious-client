@@ -281,13 +281,11 @@ public class class122 extends DualNode {
 		var2 &= 3;
 		if (var2 == 0) {
 			return var0;
-		} else
-			if (var2 == 1) {
-				return var1;
-			} else {
-				return var2 == 2 ? 7 - var0 : 7 - var1;
-			}
-
+		} else if (var2 == 1) {
+			return var1;
+		} else {
+			return var2 == 2 ? 7 - var0 : 7 - var1;
+		}
 	}
 
 	@ObfuscatedName("v")

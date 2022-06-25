@@ -264,25 +264,21 @@ public class class155 {
 				byte var6;
 				if (var7.equals("centre")) {
 					var6 = 1;
-				} else
-					if (!var7.equals("bottom") && !var7.equals("right")) {
-						var6 = 0;
-					} else {
-						var6 = 2;
-					}
-
+				} else if (!var7.equals("bottom") && !var7.equals("right")) {
+					var6 = 0;
+				} else {
+					var6 = 2;
+				}
 				var4.field1773 = var6;
 				String var10 = var3.getString("align_y");
 				byte var9;
 				if (var10.equals("centre")) {
 					var9 = 1;
-				} else
-					if (!var10.equals("bottom") && !var10.equals("right")) {
-						var9 = 0;
-					} else {
-						var9 = 2;
-					}
-
+				} else if (!var10.equals("bottom") && !var10.equals("right")) {
+					var9 = 0;
+				} else {
+					var9 = 2;
+				}
 				var4.field1777 = var9;
 				var4.field1779 = var3.getInt("font");
 				var4.field1776 = class181.method3566(var3, "placement");
@@ -308,13 +304,11 @@ public class class155 {
 							String var5 = var1.getString(var2[var3]);
 							if (var5.equals("true")) {
 								this.field1734.add(new class162(this, var2[var3], 1));
-							} else
-								if (var5.equals("false")) {
-									this.field1734.add(new class162(this, var2[var3], 0));
-								} else {
-									this.field1734.add(new class154(this, var2[var3], var5));
-								}
-
+							} else if (var5.equals("false")) {
+								this.field1734.add(new class162(this, var2[var3], 0));
+							} else {
+								this.field1734.add(new class154(this, var2[var3], var5));
+							}
 						} catch (Exception var7) {
 						}
 					}
@@ -336,13 +330,11 @@ public class class155 {
 					String var5 = var1.getString(var2[var3]);
 					if (var5.equals("true")) {
 						this.field1731.put(var2[var3], 1);
-					} else
-						if (var5.equals("false")) {
-							this.field1731.put(var2[var3], 0);
-						} else {
-							this.field1724.put(var2[var3], var5);
-						}
-
+					} else if (var5.equals("false")) {
+						this.field1731.put(var2[var3], 0);
+					} else {
+						this.field1724.put(var2[var3], var5);
+					}
 				} catch (Exception var7) {
 				}
 			}

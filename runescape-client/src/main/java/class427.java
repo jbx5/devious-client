@@ -108,11 +108,9 @@ public class class427 extends class392 implements class251 {
 					while (var3 != var1) {
 						if (var3 < var1) {
 							++var3;
-						} else
-							if (var3 > var1) {
-								--var3;
-							}
-
+						} else if (var3 > var1) {
+							--var3;
+						}
 						if ((Tiles.Tiles_renderFlags[PacketWriter.Client_plane][var3][var4] & 4) != 0) {
 							var0 = PacketWriter.Client_plane;
 						}
@@ -121,48 +119,40 @@ public class class427 extends class392 implements class251 {
 							var8 -= 65536;
 							if (var4 < var2) {
 								++var4;
-							} else
-								if (var4 > var2) {
-									--var4;
-								}
-
+							} else if (var4 > var2) {
+								--var4;
+							}
 							if ((Tiles.Tiles_renderFlags[PacketWriter.Client_plane][var3][var4] & 4) != 0) {
 								var0 = PacketWriter.Client_plane;
 							}
 						}
 					} 
-				} else
-					if (var6 > 0) {
-						var7 = var5 * 65536 / var6;
-						var8 = 32768;
-						while (var4 != var2) {
-							if (var4 < var2) {
-								++var4;
-							} else
-								if (var4 > var2) {
-									--var4;
-								}
-
+				} else if (var6 > 0) {
+					var7 = var5 * 65536 / var6;
+					var8 = 32768;
+					while (var4 != var2) {
+						if (var4 < var2) {
+							++var4;
+						} else if (var4 > var2) {
+							--var4;
+						}
+						if ((Tiles.Tiles_renderFlags[PacketWriter.Client_plane][var3][var4] & 4) != 0) {
+							var0 = PacketWriter.Client_plane;
+						}
+						var8 += var7;
+						if (var8 >= 65536) {
+							var8 -= 65536;
+							if (var3 < var1) {
+								++var3;
+							} else if (var3 > var1) {
+								--var3;
+							}
 							if ((Tiles.Tiles_renderFlags[PacketWriter.Client_plane][var3][var4] & 4) != 0) {
 								var0 = PacketWriter.Client_plane;
 							}
-							var8 += var7;
-							if (var8 >= 65536) {
-								var8 -= 65536;
-								if (var3 < var1) {
-									++var3;
-								} else
-									if (var3 > var1) {
-										--var3;
-									}
-
-								if ((Tiles.Tiles_renderFlags[PacketWriter.Client_plane][var3][var4] & 4) != 0) {
-									var0 = PacketWriter.Client_plane;
-								}
-							}
-						} 
-					}
-
+						}
+					} 
+				}
 			}
 			if (class101.localPlayer.x >= 0 && class101.localPlayer.y >= 0 && class101.localPlayer.x < 13312 && class101.localPlayer.y < 13312) {
 				if ((Tiles.Tiles_renderFlags[PacketWriter.Client_plane][class101.localPlayer.x >> 7][class101.localPlayer.y >> 7] & 4) != 0) {

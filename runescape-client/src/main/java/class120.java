@@ -99,21 +99,15 @@ public class class120 implements class112 {
 						int var13 = var15.y / 32 - class101.localPlayer.y / 32;
 						if (var15.isFriend()) {
 							ParamComposition.drawSpriteOnMinimap(var1, var2, var12, var13, class9.mapDotSprites[3], var4);
-						} else
-							if (class101.localPlayer.team != 0 && var15.team != 0 && var15.team == class101.localPlayer.team) {
-								ParamComposition.drawSpriteOnMinimap(var1, var2, var12, var13, class9.mapDotSprites[4], var4);
-							} else
-								if (var15.isFriendsChatMember()) {
-									ParamComposition.drawSpriteOnMinimap(var1, var2, var12, var13, class9.mapDotSprites[5], var4);
-								} else
-									if (var15.isClanMember()) {
-										ParamComposition.drawSpriteOnMinimap(var1, var2, var12, var13, class9.mapDotSprites[6], var4);
-									} else {
-										ParamComposition.drawSpriteOnMinimap(var1, var2, var12, var13, class9.mapDotSprites[2], var4);
-									}
-
-
-
+						} else if (class101.localPlayer.team != 0 && var15.team != 0 && var15.team == class101.localPlayer.team) {
+							ParamComposition.drawSpriteOnMinimap(var1, var2, var12, var13, class9.mapDotSprites[4], var4);
+						} else if (var15.isFriendsChatMember()) {
+							ParamComposition.drawSpriteOnMinimap(var1, var2, var12, var13, class9.mapDotSprites[5], var4);
+						} else if (var15.isClanMember()) {
+							ParamComposition.drawSpriteOnMinimap(var1, var2, var12, var13, class9.mapDotSprites[6], var4);
+						} else {
+							ParamComposition.drawSpriteOnMinimap(var1, var2, var12, var13, class9.mapDotSprites[2], var4);
+						}
 					}
 				}
 				if (Client.hintArrowType != 0 && Client.cycle % 20 < 10) {

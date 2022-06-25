@@ -142,19 +142,17 @@ public class BufferedFile {
 					this.offset += ((long) (var8));
 					var2 += var8;
 				}
-			} else
-				if (var3 > 0) {
-					this.load();
-					var8 = var3;
-					if (var3 > this.readBufferLength) {
-						var8 = this.readBufferLength;
-					}
-					System.arraycopy(this.readBuffer, 0, var1, var2, var8);
-					var2 += var8;
-					var3 -= var8;
-					this.offset += ((long) (var8));
+			} else if (var3 > 0) {
+				this.load();
+				var8 = var3;
+				if (var3 > this.readBufferLength) {
+					var8 = this.readBufferLength;
 				}
-
+				System.arraycopy(this.readBuffer, 0, var1, var2, var8);
+				var2 += var8;
+				var3 -= var8;
+				this.offset += ((long) (var8));
+			}
 			if (this.writeBufferOffset != -1L) {
 				if (this.writeBufferOffset > this.offset && var3 > 0) {
 					var8 = var2 + ((int) (this.writeBufferOffset - this.offset));
@@ -171,18 +169,14 @@ public class BufferedFile {
 				long var10 = -1L;
 				if (this.writeBufferOffset >= var4 && this.writeBufferOffset < var4 + ((long) (var7))) {
 					var13 = this.writeBufferOffset;
-				} else
-					if (var4 >= this.writeBufferOffset && var4 < ((long) (this.writeBufferLength)) + this.writeBufferOffset) {
-						var13 = var4;
-					}
-
+				} else if (var4 >= this.writeBufferOffset && var4 < ((long) (this.writeBufferLength)) + this.writeBufferOffset) {
+					var13 = var4;
+				}
 				if (this.writeBufferOffset + ((long) (this.writeBufferLength)) > var4 && this.writeBufferOffset + ((long) (this.writeBufferLength)) <= ((long) (var7)) + var4) {
 					var10 = this.writeBufferOffset + ((long) (this.writeBufferLength));
-				} else
-					if (var4 + ((long) (var7)) > this.writeBufferOffset && var4 + ((long) (var7)) <= this.writeBufferOffset + ((long) (this.writeBufferLength))) {
-						var10 = ((long) (var7)) + var4;
-					}
-
+				} else if (var4 + ((long) (var7)) > this.writeBufferOffset && var4 + ((long) (var7)) <= this.writeBufferOffset + ((long) (this.writeBufferLength))) {
+					var10 = ((long) (var7)) + var4;
+				}
 				if (var13 > -1L && var10 > var13) {
 					int var12 = ((int) (var10 - var13));
 					System.arraycopy(this.writeBuffer, ((int) (var13 - this.writeBufferOffset)), var1, ((int) (var13 - var4)) + var2, var12);
@@ -269,18 +263,14 @@ public class BufferedFile {
 				long var6 = -1L;
 				if (this.offset >= this.readBufferOffset && this.offset < this.readBufferOffset + ((long) (this.readBufferLength))) {
 					var9 = this.offset;
-				} else
-					if (this.readBufferOffset >= this.offset && this.readBufferOffset < this.offset + ((long) (var3))) {
-						var9 = this.readBufferOffset;
-					}
-
+				} else if (this.readBufferOffset >= this.offset && this.readBufferOffset < this.offset + ((long) (var3))) {
+					var9 = this.readBufferOffset;
+				}
 				if (((long) (var3)) + this.offset > this.readBufferOffset && ((long) (var3)) + this.offset <= this.readBufferOffset + ((long) (this.readBufferLength))) {
 					var6 = this.offset + ((long) (var3));
-				} else
-					if (this.readBufferOffset + ((long) (this.readBufferLength)) > this.offset && this.readBufferOffset + ((long) (this.readBufferLength)) <= ((long) (var3)) + this.offset) {
-						var6 = ((long) (this.readBufferLength)) + this.readBufferOffset;
-					}
-
+				} else if (this.readBufferOffset + ((long) (this.readBufferLength)) > this.offset && this.readBufferOffset + ((long) (this.readBufferLength)) <= ((long) (var3)) + this.offset) {
+					var6 = ((long) (this.readBufferLength)) + this.readBufferOffset;
+				}
 				if (var9 > -1L && var6 > var9) {
 					int var8 = ((int) (var6 - var9));
 					System.arraycopy(var1, ((int) (((long) (var2)) + var9 - this.offset)), this.readBuffer, ((int) (var9 - this.readBufferOffset)), var8);
@@ -311,18 +301,14 @@ public class BufferedFile {
 			long var3 = -1L;
 			if (this.writeBufferOffset >= this.readBufferOffset && this.writeBufferOffset < this.readBufferOffset + ((long) (this.readBufferLength))) {
 				var1 = this.writeBufferOffset;
-			} else
-				if (this.readBufferOffset >= this.writeBufferOffset && this.readBufferOffset < this.writeBufferOffset + ((long) (this.writeBufferLength))) {
-					var1 = this.readBufferOffset;
-				}
-
+			} else if (this.readBufferOffset >= this.writeBufferOffset && this.readBufferOffset < this.writeBufferOffset + ((long) (this.writeBufferLength))) {
+				var1 = this.readBufferOffset;
+			}
 			if (this.writeBufferOffset + ((long) (this.writeBufferLength)) > this.readBufferOffset && this.writeBufferOffset + ((long) (this.writeBufferLength)) <= this.readBufferOffset + ((long) (this.readBufferLength))) {
 				var3 = ((long) (this.writeBufferLength)) + this.writeBufferOffset;
-			} else
-				if (this.readBufferOffset + ((long) (this.readBufferLength)) > this.writeBufferOffset && this.readBufferOffset + ((long) (this.readBufferLength)) <= ((long) (this.writeBufferLength)) + this.writeBufferOffset) {
-					var3 = this.readBufferOffset + ((long) (this.readBufferLength));
-				}
-
+			} else if (this.readBufferOffset + ((long) (this.readBufferLength)) > this.writeBufferOffset && this.readBufferOffset + ((long) (this.readBufferLength)) <= ((long) (this.writeBufferLength)) + this.writeBufferOffset) {
+				var3 = this.readBufferOffset + ((long) (this.readBufferLength));
+			}
 			if (var1 > -1L && var3 > var1) {
 				int var5 = ((int) (var3 - var1));
 				System.arraycopy(this.writeBuffer, ((int) (var1 - this.writeBufferOffset)), this.readBuffer, ((int) (var1 - this.readBufferOffset)), var5);

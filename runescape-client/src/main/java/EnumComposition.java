@@ -83,40 +83,32 @@ public class EnumComposition extends DualNode {
 	void decodeNext(Buffer var1, int var2) {
 		if (var2 == 1) {
 			this.inputType = ((char) (var1.readUnsignedByte()));
-		} else
-			if (var2 == 2) {
-				this.outputType = ((char) (var1.readUnsignedByte()));
-			} else
-				if (var2 == 3) {
-					this.defaultStr = var1.readStringCp1252NullTerminated();
-				} else
-					if (var2 == 4) {
-						this.defaultInt = var1.readInt();
-					} else {
-						int var3;
-						if (var2 == 5) {
-							this.outputCount = var1.readUnsignedShort();
-							this.keys = new int[this.outputCount];
-							this.strVals = new String[this.outputCount];
-							for (var3 = 0; var3 < this.outputCount; ++var3) {
-								this.keys[var3] = var1.readInt();
-								this.strVals[var3] = var1.readStringCp1252NullTerminated();
-							}
-						} else
-							if (var2 == 6) {
-								this.outputCount = var1.readUnsignedShort();
-								this.keys = new int[this.outputCount];
-								this.intVals = new int[this.outputCount];
-								for (var3 = 0; var3 < this.outputCount; ++var3) {
-									this.keys[var3] = var1.readInt();
-									this.intVals[var3] = var1.readInt();
-								}
-							}
-
-					}
-
-
-
+		} else if (var2 == 2) {
+			this.outputType = ((char) (var1.readUnsignedByte()));
+		} else if (var2 == 3) {
+			this.defaultStr = var1.readStringCp1252NullTerminated();
+		} else if (var2 == 4) {
+			this.defaultInt = var1.readInt();
+		} else {
+			int var3;
+			if (var2 == 5) {
+				this.outputCount = var1.readUnsignedShort();
+				this.keys = new int[this.outputCount];
+				this.strVals = new String[this.outputCount];
+				for (var3 = 0; var3 < this.outputCount; ++var3) {
+					this.keys[var3] = var1.readInt();
+					this.strVals[var3] = var1.readStringCp1252NullTerminated();
+				}
+			} else if (var2 == 6) {
+				this.outputCount = var1.readUnsignedShort();
+				this.keys = new int[this.outputCount];
+				this.intVals = new int[this.outputCount];
+				for (var3 = 0; var3 < this.outputCount; ++var3) {
+					this.keys[var3] = var1.readInt();
+					this.intVals[var3] = var1.readInt();
+				}
+			}
+		}
 	}
 
 	@ObfuscatedName("j")
@@ -140,21 +132,15 @@ public class EnumComposition extends DualNode {
 		var2.clientPacketLength = var0.length;
 		if (var2.clientPacketLength == -1) {
 			var2.packetBuffer = new PacketBuffer(260);
-		} else
-			if (var2.clientPacketLength == -2) {
-				var2.packetBuffer = new PacketBuffer(10000);
-			} else
-				if (var2.clientPacketLength <= 18) {
-					var2.packetBuffer = new PacketBuffer(20);
-				} else
-					if (var2.clientPacketLength <= 98) {
-						var2.packetBuffer = new PacketBuffer(100);
-					} else {
-						var2.packetBuffer = new PacketBuffer(260);
-					}
-
-
-
+		} else if (var2.clientPacketLength == -2) {
+			var2.packetBuffer = new PacketBuffer(10000);
+		} else if (var2.clientPacketLength <= 18) {
+			var2.packetBuffer = new PacketBuffer(20);
+		} else if (var2.clientPacketLength <= 98) {
+			var2.packetBuffer = new PacketBuffer(100);
+		} else {
+			var2.packetBuffer = new PacketBuffer(260);
+		}
 		var2.packetBuffer.setIsaacCipher(var1);
 		var2.packetBuffer.writeByteIsaac(var2.clientPacket.id);
 		var2.index = 0;

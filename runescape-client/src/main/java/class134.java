@@ -269,11 +269,9 @@ public class class134 extends class144 {
 									var34 += Tiles.rndLightness;
 									if (var34 < 0) {
 										var34 = 0;
-									} else
-										if (var34 > 255) {
-											var34 = 255;
-										}
-
+									} else if (var34 > 255) {
+										var34 = 255;
+									}
 									var31 = class21.hslToRgb(var32, var33, var34);
 								}
 								if (var2 > 0) {
@@ -307,25 +305,21 @@ public class class134 extends class144 {
 									if (var36 >= 0) {
 										var38 = Rasterizer3D.Rasterizer3D_textureLoader.getAverageTextureRGB(var36);
 										var37 = -1;
-									} else
-										if (var35.primaryRgb == 16711935) {
-											var37 = -2;
-											var36 = -1;
-											var38 = -2;
-										} else {
-											var37 = class21.hslToRgb(var35.hue, var35.saturation, var35.lightness);
-											var39 = var35.hue + Tiles.rndHue & 255;
-											var40 = var35.lightness + Tiles.rndLightness;
-											if (var40 < 0) {
-												var40 = 0;
-											} else
-												if (var40 > 255) {
-													var40 = 255;
-												}
-
-											var38 = class21.hslToRgb(var39, var35.saturation, var40);
+									} else if (var35.primaryRgb == 16711935) {
+										var37 = -2;
+										var36 = -1;
+										var38 = -2;
+									} else {
+										var37 = class21.hslToRgb(var35.hue, var35.saturation, var35.lightness);
+										var39 = var35.hue + Tiles.rndHue & 255;
+										var40 = var35.lightness + Tiles.rndLightness;
+										if (var40 < 0) {
+											var40 = 0;
+										} else if (var40 > 255) {
+											var40 = 255;
 										}
-
+										var38 = class21.hslToRgb(var39, var35.saturation, var40);
+									}
 									var39 = 0;
 									if (var38 != -2) {
 										var39 = Rasterizer3D.Rasterizer3D_colorPalette[ModeWhere.method6079(var38, 96)];
@@ -335,11 +329,9 @@ public class class134 extends class144 {
 										int var41 = var35.secondaryLightness + Tiles.rndLightness;
 										if (var41 < 0) {
 											var41 = 0;
-										} else
-											if (var41 > 255) {
-												var41 = 255;
-											}
-
+										} else if (var41 > 255) {
+											var41 = 255;
+										}
 										var38 = class21.hslToRgb(var40, var35.secondarySaturation, var41);
 										var39 = Rasterizer3D.Rasterizer3D_colorPalette[ModeWhere.method6079(var38, 96)];
 									}

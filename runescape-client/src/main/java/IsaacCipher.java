@@ -77,13 +77,11 @@ public final class IsaacCipher {
 				} else {
 					this.aa ^= this.aa >>> 6;
 				}
-			} else
-				if ((var1 & 1) == 0) {
-					this.aa ^= this.aa << 2;
-				} else {
-					this.aa ^= this.aa >>> 16;
-				}
-
+			} else if ((var1 & 1) == 0) {
+				this.aa ^= this.aa << 2;
+			} else {
+				this.aa ^= this.aa >>> 16;
+			}
 			this.aa += this.mm[var1 + 128 & 255];
 			int var3;
 			this.mm[var1] = var3 = this.mm[(var2 & 1020) >> 2] + this.bb + this.aa;

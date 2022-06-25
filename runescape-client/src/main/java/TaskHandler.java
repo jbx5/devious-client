@@ -123,19 +123,15 @@ public class TaskHandler implements Runnable {
 				int var5 = var1.type;
 				if (var5 == 1) {
 					var1.result = new Socket(InetAddress.getByName(((String) (var1.objectArgument))), var1.intArgument);
-				} else
-					if (var5 == 2) {
-						Thread var3 = new Thread(((Runnable) (var1.objectArgument)));
-						var3.setDaemon(true);
-						var3.start();
-						var3.setPriority(var1.intArgument);
-						var1.result = var3;
-					} else
-						if (var5 == 4) {
-							var1.result = new DataInputStream(((URL) (var1.objectArgument)).openStream());
-						}
-
-
+				} else if (var5 == 2) {
+					Thread var3 = new Thread(((Runnable) (var1.objectArgument)));
+					var3.setDaemon(true);
+					var3.start();
+					var3.setPriority(var1.intArgument);
+					var1.result = var3;
+				} else if (var5 == 4) {
+					var1.result = new DataInputStream(((URL) (var1.objectArgument)).openStream());
+				}
 				var1.status = 1;
 			} catch (ThreadDeath var6) {
 				throw var6;

@@ -190,23 +190,17 @@ public final class ObjectSound extends Node {
 					if (var2 >= var3) {
 						return false;
 					}
-				} else
-					if (var0.cs1Comparisons[var1] == 3) {
-						if (var2 <= var3) {
-							return false;
-						}
-					} else
-						if (var0.cs1Comparisons[var1] == 4) {
-							if (var2 == var3) {
-								return false;
-							}
-						} else
-							if (var2 != var3) {
-								return false;
-							}
-
-
-
+				} else if (var0.cs1Comparisons[var1] == 3) {
+					if (var2 <= var3) {
+						return false;
+					}
+				} else if (var0.cs1Comparisons[var1] == 4) {
+					if (var2 == var3) {
+						return false;
+					}
+				} else if (var2 != var3) {
+					return false;
+				}
 			}
 			return true;
 		}

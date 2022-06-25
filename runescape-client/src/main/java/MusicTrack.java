@@ -45,36 +45,24 @@ public class MusicTrack extends Node {
 				}
 				if (var15 == 23) {
 					++var5;
-				} else
-					if (var14 == 0) {
-						++var7;
-					} else
-						if (var14 == 1) {
-							++var8;
-						} else
-							if (var14 == 2) {
-								++var6;
-							} else
-								if (var14 == 3) {
-									++var9;
-								} else
-									if (var14 == 4) {
-										++var10;
-									} else
-										if (var14 == 5) {
-											++var11;
-										} else {
-											if (var14 != 6) {
-												throw new RuntimeException();
-											}
-											++var12;
-										}
-
-
-
-
-
-
+				} else if (var14 == 0) {
+					++var7;
+				} else if (var14 == 1) {
+					++var8;
+				} else if (var14 == 2) {
+					++var6;
+				} else if (var14 == 3) {
+					++var9;
+				} else if (var14 == 4) {
+					++var10;
+				} else if (var14 == 5) {
+					++var11;
+				} else {
+					if (var14 != 6) {
+						throw new RuntimeException();
+					}
+					++var12;
+				}
 			} 
 		}
 		var4 += var5 * 5;
@@ -106,49 +94,29 @@ public class MusicTrack extends Node {
 			if (var28 != 0 && var28 != 32) {
 				if (var28 == 1) {
 					++var16;
-				} else
-					if (var28 == 33) {
-						++var17;
-					} else
-						if (var28 == 7) {
-							++var18;
-						} else
-							if (var28 == 39) {
-								++var19;
-							} else
-								if (var28 == 10) {
-									++var20;
-								} else
-									if (var28 == 42) {
-										++var21;
-									} else
-										if (var28 == 99) {
-											++var22;
-										} else
-											if (var28 == 98) {
-												++var23;
-											} else
-												if (var28 == 101) {
-													++var24;
-												} else
-													if (var28 == 100) {
-														++var25;
-													} else
-														if (var28 != 64 && var28 != 65 && var28 != 120 && var28 != 121 && var28 != 123) {
-															++var27;
-														} else {
-															++var26;
-														}
-
-
-
-
-
-
-
-
-
-
+				} else if (var28 == 33) {
+					++var17;
+				} else if (var28 == 7) {
+					++var18;
+				} else if (var28 == 39) {
+					++var19;
+				} else if (var28 == 10) {
+					++var20;
+				} else if (var28 == 42) {
+					++var21;
+				} else if (var28 == 99) {
+					++var22;
+				} else if (var28 == 98) {
+					++var23;
+				} else if (var28 == 101) {
+					++var24;
+				} else if (var28 == 100) {
+					++var25;
+				} else if (var28 != 64 && var28 != 65 && var28 != 120 && var28 != 121 && var28 != 123) {
+					++var27;
+				} else {
+					++var26;
+				}
 			} else {
 				++var12;
 			}
@@ -253,114 +221,84 @@ public class MusicTrack extends Node {
 							var54 += var1.array[var38++];
 							var51.writeByte(var53 & 127);
 							var51.writeByte(var54 & 127);
-						} else
-							if (var62 == 1) {
-								if (var65) {
-									var51.writeByte(var52 + 128);
+						} else if (var62 == 1) {
+							if (var65) {
+								var51.writeByte(var52 + 128);
+							}
+							var53 += var1.array[var37++];
+							var55 += var1.array[var40++];
+							var51.writeByte(var53 & 127);
+							var51.writeByte(var55 & 127);
+						} else if (var62 == 2) {
+							if (var65) {
+								var51.writeByte(var52 + 176);
+							}
+							var28 = var28 + var1.array[var15++] & 127;
+							var51.writeByte(var28);
+							byte var66;
+							if (var28 != 0 && var28 != 32) {
+								if (var28 == 1) {
+									var66 = var1.array[var34++];
+								} else if (var28 == 33) {
+									var66 = var1.array[var41++];
+								} else if (var28 == 7) {
+									var66 = var1.array[var35++];
+								} else if (var28 == 39) {
+									var66 = var1.array[var42++];
+								} else if (var28 == 10) {
+									var66 = var1.array[var36++];
+								} else if (var28 == 42) {
+									var66 = var1.array[var43++];
+								} else if (var28 == 99) {
+									var66 = var1.array[var46++];
+								} else if (var28 == 98) {
+									var66 = var1.array[var47++];
+								} else if (var28 == 101) {
+									var66 = var1.array[var48++];
+								} else if (var28 == 100) {
+									var66 = var1.array[var49++];
+								} else if (var28 != 64 && var28 != 65 && var28 != 120 && var28 != 121 && var28 != 123) {
+									var66 = var1.array[var39++];
+								} else {
+									var66 = var1.array[var30++];
 								}
-								var53 += var1.array[var37++];
-								var55 += var1.array[var40++];
-								var51.writeByte(var53 & 127);
-								var51.writeByte(var55 & 127);
-							} else
-								if (var62 == 2) {
-									if (var65) {
-										var51.writeByte(var52 + 176);
-									}
-									var28 = var28 + var1.array[var15++] & 127;
-									var51.writeByte(var28);
-									byte var66;
-									if (var28 != 0 && var28 != 32) {
-										if (var28 == 1) {
-											var66 = var1.array[var34++];
-										} else
-											if (var28 == 33) {
-												var66 = var1.array[var41++];
-											} else
-												if (var28 == 7) {
-													var66 = var1.array[var35++];
-												} else
-													if (var28 == 39) {
-														var66 = var1.array[var42++];
-													} else
-														if (var28 == 10) {
-															var66 = var1.array[var36++];
-														} else
-															if (var28 == 42) {
-																var66 = var1.array[var43++];
-															} else
-																if (var28 == 99) {
-																	var66 = var1.array[var46++];
-																} else
-																	if (var28 == 98) {
-																		var66 = var1.array[var47++];
-																	} else
-																		if (var28 == 101) {
-																			var66 = var1.array[var48++];
-																		} else
-																			if (var28 == 100) {
-																				var66 = var1.array[var49++];
-																			} else
-																				if (var28 != 64 && var28 != 65 && var28 != 120 && var28 != 121 && var28 != 123) {
-																					var66 = var1.array[var39++];
-																				} else {
-																					var66 = var1.array[var30++];
-																				}
-
-
-
-
-
-
-
-
-
-
-									} else {
-										var66 = var1.array[var44++];
-									}
-									int var67 = var66 + var59[var28];
-									var59[var28] = var67;
-									var51.writeByte(var67 & 127);
-								} else
-									if (var62 == 3) {
-										if (var65) {
-											var51.writeByte(var52 + 224);
-										}
-										var56 += var1.array[var45++];
-										var56 += var1.array[var33++] << 7;
-										var51.writeByte(var56 & 127);
-										var51.writeByte(var56 >> 7 & 127);
-									} else
-										if (var62 == 4) {
-											if (var65) {
-												var51.writeByte(var52 + 208);
-											}
-											var57 += var1.array[var32++];
-											var51.writeByte(var57 & 127);
-										} else
-											if (var62 == 5) {
-												if (var65) {
-													var51.writeByte(var52 + 160);
-												}
-												var53 += var1.array[var37++];
-												var58 += var1.array[var31++];
-												var51.writeByte(var53 & 127);
-												var51.writeByte(var58 & 127);
-											} else {
-												if (var62 != 6) {
-													throw new RuntimeException();
-												}
-												if (var65) {
-													var51.writeByte(var52 + 192);
-												}
-												var51.writeByte(var1.array[var44++]);
-											}
-
-
-
-
-
+							} else {
+								var66 = var1.array[var44++];
+							}
+							int var67 = var66 + var59[var28];
+							var59[var28] = var67;
+							var51.writeByte(var67 & 127);
+						} else if (var62 == 3) {
+							if (var65) {
+								var51.writeByte(var52 + 224);
+							}
+							var56 += var1.array[var45++];
+							var56 += var1.array[var33++] << 7;
+							var51.writeByte(var56 & 127);
+							var51.writeByte(var56 >> 7 & 127);
+						} else if (var62 == 4) {
+							if (var65) {
+								var51.writeByte(var52 + 208);
+							}
+							var57 += var1.array[var32++];
+							var51.writeByte(var57 & 127);
+						} else if (var62 == 5) {
+							if (var65) {
+								var51.writeByte(var52 + 160);
+							}
+							var53 += var1.array[var37++];
+							var58 += var1.array[var31++];
+							var51.writeByte(var53 & 127);
+							var51.writeByte(var58 & 127);
+						} else {
+							if (var62 != 6) {
+								throw new RuntimeException();
+							}
+							if (var65) {
+								var51.writeByte(var52 + 192);
+							}
+							var51.writeByte(var1.array[var44++]);
+						}
 					}
 				} 
 			} 

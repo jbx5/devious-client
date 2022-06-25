@@ -63,34 +63,24 @@ public class class125 extends class128 {
 		if (var0 == ScriptOpcodes.CC_GETX) {
 			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.x;
 			return 1;
-		} else
-			if (var0 == ScriptOpcodes.CC_GETY) {
-				Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.y;
-				return 1;
-			} else
-				if (var0 == ScriptOpcodes.CC_GETWIDTH) {
-					Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.width;
-					return 1;
-				} else
-					if (var0 == ScriptOpcodes.CC_GETHEIGHT) {
-						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.height;
-						return 1;
-					} else
-						if (var0 == ScriptOpcodes.CC_GETHIDE) {
-							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = (var3.isHidden) ? 1 : 0;
-							return 1;
-						} else
-							if (var0 == ScriptOpcodes.CC_GETLAYER) {
-								Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.parentId;
-								return 1;
-							} else {
-								return 2;
-							}
-
-
-
-
-
+		} else if (var0 == ScriptOpcodes.CC_GETY) {
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.y;
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETWIDTH) {
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.width;
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETHEIGHT) {
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.height;
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETHIDE) {
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = (var3.isHidden) ? 1 : 0;
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETLAYER) {
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.parentId;
+			return 1;
+		} else {
+			return 2;
+		}
 	}
 
 	@ObfuscatedName("ie")

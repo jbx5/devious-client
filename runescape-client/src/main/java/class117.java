@@ -222,11 +222,9 @@ public class class117 {
 				if (class123.userHomeDirectory == null) {
 					class123.userHomeDirectory = System.getenv("USERPROFILE");
 				}
-			} else
-				if (class123.userHomeDirectory == null) {
-					class123.userHomeDirectory = System.getenv("HOME");
-				}
-
+			} else if (class123.userHomeDirectory == null) {
+				class123.userHomeDirectory = System.getenv("HOME");
+			}
 			if (class123.userHomeDirectory != null) {
 				class123.userHomeDirectory = class123.userHomeDirectory + "/";
 			}

@@ -91,18 +91,16 @@ public class class21 {
 		if (var0 == ScriptOpcodes.LOGOUT) {
 			Client.logoutTimer = 250;
 			return 1;
-		} else
-			if (var0 != 5631 && var0 != 5633) {
-				if (var0 == 5632) {
-					Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 26;
-					return 1;
-				} else {
-					return 2;
-				}
-			} else {
-				Interpreter.Interpreter_stringStackSize -= 2;
+		} else if (var0 != 5631 && var0 != 5633) {
+			if (var0 == 5632) {
+				Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 26;
 				return 1;
+			} else {
+				return 2;
 			}
-
+		} else {
+			Interpreter.Interpreter_stringStackSize -= 2;
+			return 1;
+		}
 	}
 }

@@ -37,11 +37,9 @@ public class class67 {
 		String var4 = "";
 		if (class93.cacheGamebuild == 33) {
 			var4 = "_rc";
-		} else
-			if (class93.cacheGamebuild == 34) {
-				var4 = "_wip";
-			}
-
+		} else if (class93.cacheGamebuild == 34) {
+			var4 = "_wip";
+		}
 		File var5 = new File(class123.userHomeDirectory, "jagex_" + var1 + "_preferences" + var0 + var4 + ".dat");
 		AccessFile var6;
 		if (!var2 && var5.exists()) {

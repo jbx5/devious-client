@@ -115,22 +115,14 @@ public class FloorOverlayDefinition extends DualNode {
 	void decodeNext(Buffer var1, int var2, int var3) {
 		if (var2 == 1) {
 			this.primaryRgb = var1.readMedium();
-		} else
-			if (var2 == 2) {
-				this.texture = var1.readUnsignedByte();
-			} else
-				if (var2 == 5) {
-					this.hideUnderlay = false;
-				} else
-					if (var2 == 7) {
-						this.secondaryRgb = var1.readMedium();
-					} else
-						if (var2 == 8) {
-						}
-
-
-
-
+		} else if (var2 == 2) {
+			this.texture = var1.readUnsignedByte();
+		} else if (var2 == 5) {
+			this.hideUnderlay = false;
+		} else if (var2 == 7) {
+			this.secondaryRgb = var1.readMedium();
+		} else if (var2 == 8) {
+		}
 	}
 
 	@ObfuscatedName("e")
@@ -166,15 +158,11 @@ public class FloorOverlayDefinition extends DualNode {
 			}
 			if (var2 == var10) {
 				var12 = (var4 - var6) / (var10 - var8);
-			} else
-				if (var10 == var4) {
-					var12 = (var6 - var2) / (var10 - var8) + 2.0;
-				} else
-					if (var6 == var10) {
-						var12 = 4.0 + (var2 - var4) / (var10 - var8);
-					}
-
-
+			} else if (var10 == var4) {
+				var12 = (var6 - var2) / (var10 - var8) + 2.0;
+			} else if (var6 == var10) {
+				var12 = 4.0 + (var2 - var4) / (var10 - var8);
+			}
 		}
 		var12 /= 6.0;
 		this.hue = ((int) (var12 * 256.0));
@@ -182,18 +170,14 @@ public class FloorOverlayDefinition extends DualNode {
 		this.lightness = ((int) (256.0 * var16));
 		if (this.saturation < 0) {
 			this.saturation = 0;
-		} else
-			if (this.saturation > 255) {
-				this.saturation = 255;
-			}
-
+		} else if (this.saturation > 255) {
+			this.saturation = 255;
+		}
 		if (this.lightness < 0) {
 			this.lightness = 0;
-		} else
-			if (this.lightness > 255) {
-				this.lightness = 255;
-			}
-
+		} else if (this.lightness > 255) {
+			this.lightness = 255;
+		}
 	}
 
 	@ObfuscatedName("v")
@@ -202,13 +186,11 @@ public class FloorOverlayDefinition extends DualNode {
 		var2 &= 3;
 		if (var2 == 0) {
 			return var1;
-		} else
-			if (var2 == 1) {
-				return 7 - var0;
-			} else {
-				return var2 == 2 ? 7 - var1 : var0;
-			}
-
+		} else if (var2 == 1) {
+			return 7 - var0;
+		} else {
+			return var2 == 2 ? 7 - var1 : var0;
+		}
 	}
 
 	@ObfuscatedName("q")
@@ -222,13 +204,11 @@ public class FloorOverlayDefinition extends DualNode {
 		var2 &= 3;
 		if (var2 == 0) {
 			return var0;
-		} else
-			if (var2 == 1) {
-				return var1;
-			} else {
-				return var2 == 2 ? 7 - var0 - (var3 - 1) : 7 - var1 - (var4 - 1);
-			}
-
+		} else if (var2 == 1) {
+			return var1;
+		} else {
+			return var2 == 2 ? 7 - var0 - (var3 - 1) : 7 - var1 - (var4 - 1);
+		}
 	}
 
 	@ObfuscatedName("j")
@@ -247,11 +227,9 @@ public class FloorOverlayDefinition extends DualNode {
 		var1 /= 10L;
 		if (var1 < 0L) {
 			var1 = 0L;
-		} else
-			if (var1 > 65535L) {
-				var1 = 65535L;
-			}
-
+		} else if (var1 > 65535L) {
+			var1 = 65535L;
+		}
 		var0.writeShort(((int) (var1)));
 	}
 
@@ -283,28 +261,26 @@ public class FloorOverlayDefinition extends DualNode {
 		if (var0 == ScriptOpcodes.CC_GETTARGETMASK) {
 			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = WorldMapID.Widget_unpackTargetMask(class124.getWidgetFlags(var3));
 			return 1;
-		} else
-			if (var0 != ScriptOpcodes.CC_GETOP) {
-				if (var0 == ScriptOpcodes.CC_GETOPBASE) {
-					if (var3.dataText == null) {
-						Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = "";
-					} else {
-						Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var3.dataText;
-					}
-					return 1;
-				} else {
-					return 2;
-				}
-			} else {
-				int var4 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
-				--var4;
-				if (var3.actions != null && var4 < var3.actions.length && var3.actions[var4] != null) {
-					Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var3.actions[var4];
-				} else {
+		} else if (var0 != ScriptOpcodes.CC_GETOP) {
+			if (var0 == ScriptOpcodes.CC_GETOPBASE) {
+				if (var3.dataText == null) {
 					Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = "";
+				} else {
+					Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var3.dataText;
 				}
 				return 1;
+			} else {
+				return 2;
 			}
-
+		} else {
+			int var4 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+			--var4;
+			if (var3.actions != null && var4 < var3.actions.length && var3.actions[var4] != null) {
+				Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var3.actions[var4];
+			} else {
+				Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = "";
+			}
+			return 1;
+		}
 	}
 }

@@ -88,13 +88,11 @@ public class class201 {
 		int var6;
 		if (var5 < 0) {
 			var6 = Client.field748;
-		} else
-			if (var5 >= 100) {
-				var6 = Client.field749;
-			} else {
-				var6 = (Client.field749 - Client.field748) * var5 / 100 + Client.field748;
-			}
-
+		} else if (var5 >= 100) {
+			var6 = Client.field749;
+		} else {
+			var6 = (Client.field749 - Client.field748) * var5 / 100 + Client.field748;
+		}
 		int var7 = var3 * var6 * 512 / (var2 * 334);
 		int var8;
 		int var9;
@@ -114,24 +112,22 @@ public class class201 {
 				var0 += var9;
 				var2 -= var9 * 2;
 			}
-		} else
-			if (var7 > Client.field755) {
-				var17 = Client.field755;
-				var6 = var17 * var2 * 334 / (var3 * 512);
-				if (var6 < Client.field752) {
-					var6 = Client.field752;
-					var8 = var17 * var2 * 334 / (var6 * 512);
-					var9 = (var3 - var8) / 2;
-					if (var4) {
-						Rasterizer2D.Rasterizer2D_resetClip();
-						Rasterizer2D.Rasterizer2D_fillRectangle(var0, var1, var2, var9, -16777216);
-						Rasterizer2D.Rasterizer2D_fillRectangle(var0, var3 + var1 - var9, var2, var9, -16777216);
-					}
-					var1 += var9;
-					var3 -= var9 * 2;
+		} else if (var7 > Client.field755) {
+			var17 = Client.field755;
+			var6 = var17 * var2 * 334 / (var3 * 512);
+			if (var6 < Client.field752) {
+				var6 = Client.field752;
+				var8 = var17 * var2 * 334 / (var6 * 512);
+				var9 = (var3 - var8) / 2;
+				if (var4) {
+					Rasterizer2D.Rasterizer2D_resetClip();
+					Rasterizer2D.Rasterizer2D_fillRectangle(var0, var1, var2, var9, -16777216);
+					Rasterizer2D.Rasterizer2D_fillRectangle(var0, var3 + var1 - var9, var2, var9, -16777216);
 				}
+				var1 += var9;
+				var3 -= var9 * 2;
 			}
-
+		}
 		Client.viewportZoom = var3 * var6 / 334;
 		if (var2 != Client.viewportWidth || var3 != Client.viewportHeight) {
 			int[] var16 = new int[9];
@@ -142,11 +138,9 @@ public class class201 {
 				int var14 = var3 - 334;
 				if (var14 < 0) {
 					var14 = 0;
-				} else
-					if (var14 > 100) {
-						var14 = 100;
-					}
-
+				} else if (var14 > 100) {
+					var14 = 100;
+				}
 				int var15 = (Client.zoomWidth - Client.zoomHeight) * var14 / 100 + Client.zoomHeight;
 				int var13 = var15 * var11 / 256;
 				var16[var9] = var13 * var12 >> 16;

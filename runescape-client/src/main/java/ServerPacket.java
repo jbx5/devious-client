@@ -768,43 +768,31 @@ public class ServerPacket {
 					var28 = 150 - Client.overheadTextCyclesRemaining[var20];
 					if (var28 < 50) {
 						var27 = var28 * 1280 + 16711680;
-					} else
-						if (var28 < 100) {
-							var27 = 16776960 - (var28 - 50) * 327680;
-						} else
-							if (var28 < 150) {
-								var27 = (var28 - 100) * 5 + 65280;
-							}
-
-
+					} else if (var28 < 100) {
+						var27 = 16776960 - (var28 - 50) * 327680;
+					} else if (var28 < 150) {
+						var27 = (var28 - 100) * 5 + 65280;
+					}
 				}
 				if (Client.overheadTextColors[var20] == 10) {
 					var28 = 150 - Client.overheadTextCyclesRemaining[var20];
 					if (var28 < 50) {
 						var27 = var28 * 5 + 16711680;
-					} else
-						if (var28 < 100) {
-							var27 = 16711935 - (var28 - 50) * 327680;
-						} else
-							if (var28 < 150) {
-								var27 = (var28 - 100) * 327680 + 255 - (var28 - 100) * 5;
-							}
-
-
+					} else if (var28 < 100) {
+						var27 = 16711935 - (var28 - 50) * 327680;
+					} else if (var28 < 150) {
+						var27 = (var28 - 100) * 327680 + 255 - (var28 - 100) * 5;
+					}
 				}
 				if (Client.overheadTextColors[var20] == 11) {
 					var28 = 150 - Client.overheadTextCyclesRemaining[var20];
 					if (var28 < 50) {
 						var27 = 16777215 - var28 * 327685;
-					} else
-						if (var28 < 100) {
-							var27 = (var28 - 50) * 327685 + 65280;
-						} else
-							if (var28 < 150) {
-								var27 = 16777215 - (var28 - 100) * 327680;
-							}
-
-
+					} else if (var28 < 100) {
+						var27 = (var28 - 50) * 327685 + 65280;
+					} else if (var28 < 150) {
+						var27 = 16777215 - (var28 - 100) * 327680;
+					}
 				}
 				if (Client.overheadTextEffects[var20] == 0) {
 					TileItem.fontBold12.drawCentered(var26, var0 + Client.viewportTempX, Client.viewportTempY + var1, var27, 0);
@@ -829,11 +817,9 @@ public class ServerPacket {
 					int var29 = 0;
 					if (var28 < 25) {
 						var29 = var28 - 25;
-					} else
-						if (var28 > 125) {
-							var29 = var28 - 125;
-						}
-
+					} else if (var28 > 125) {
+						var29 = var28 - 125;
+					}
 					Rasterizer2D.Rasterizer2D_expandClip(var0, Client.viewportTempY + var1 - TileItem.fontBold12.ascent - 1, var0 + var2, Client.viewportTempY + var1 + 5);
 					TileItem.fontBold12.drawCentered(var26, var0 + Client.viewportTempX, var29 + Client.viewportTempY + var1, var27, 0);
 					Rasterizer2D.Rasterizer2D_setClip(var0, var1, var0 + var2, var3 + var1);
