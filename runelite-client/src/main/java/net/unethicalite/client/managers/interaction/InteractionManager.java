@@ -112,8 +112,6 @@ public class InteractionManager
 					{
 						try
 						{
-
-
 							if (event.getOpcode() == MenuAction.CC_OP || event.getOpcode() == MenuAction.CC_OP_LOW_PRIORITY)
 							{
 								int param0 = event.getParam0();
