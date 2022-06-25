@@ -48,21 +48,17 @@ public class InterfaceParent extends Node {
 			var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
 			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = (SoundCache.method764(var3)) ? 1 : 0;
 			return 1;
-		} else
-			if (var0 == 3501) {
-				var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
-				Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = (VertexNormal.method4528(var3)) ? 1 : 0;
-				return 1;
-			} else
-				if (var0 == 3502) {
-					var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
-					Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = (SoundCache.method753(var3)) ? 1 : 0;
-					return 1;
-				} else {
-					return 2;
-				}
-
-
+		} else if (var0 == 3501) {
+			var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = (VertexNormal.method4528(var3)) ? 1 : 0;
+			return 1;
+		} else if (var0 == 3502) {
+			var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = (SoundCache.method753(var3)) ? 1 : 0;
+			return 1;
+		} else {
+			return 2;
+		}
 	}
 
 	@ObfuscatedName("il")

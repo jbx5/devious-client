@@ -33,18 +33,14 @@ public class Varps {
 	public static byte[] method5530(Object var0, boolean var1) {
 		if (var0 == null) {
 			return null;
-		} else
-			if (var0 instanceof byte[]) {
-				byte[] var3 = ((byte[]) ((byte[]) (var0)));
-				return var1 ? MusicPatch.method5432(var3) : var3;
-			} else
-				if (var0 instanceof AbstractByteArrayCopier) {
-					AbstractByteArrayCopier var2 = ((AbstractByteArrayCopier) (var0));
-					return var2.get();
-				} else {
-					throw new IllegalArgumentException();
-				}
-
-
+		} else if (var0 instanceof byte[]) {
+			byte[] var3 = ((byte[]) ((byte[]) (var0)));
+			return var1 ? MusicPatch.method5432(var3) : var3;
+		} else if (var0 instanceof AbstractByteArrayCopier) {
+			AbstractByteArrayCopier var2 = ((AbstractByteArrayCopier) (var0));
+			return var2.get();
+		} else {
+			throw new IllegalArgumentException();
+		}
 	}
 }

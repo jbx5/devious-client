@@ -393,11 +393,9 @@ public final class BZip2Decompressor {
 							do {
 								if (var46 == 0) {
 									var48 += var49;
-								} else
-									if (var46 == 1) {
-										var48 += var49 * 2;
-									}
-
+								} else if (var46 == 1) {
+									var48 += var49 * 2;
+								}
 								var49 *= 2;
 								if (var45 == 0) {
 									++var43;

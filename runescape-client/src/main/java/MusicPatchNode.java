@@ -126,12 +126,10 @@ public class MusicPatchNode extends Node {
 		int var1 = class430.field4652[var0];
 		if (var1 == 1) {
 			return class432.field4658;
-		} else
-			if (var1 == 2) {
-				return class432.field4657;
-			} else {
-				return var1 == 3 ? class432.field4656 : null;
-			}
-
+		} else if (var1 == 2) {
+			return class432.field4657;
+		} else {
+			return var1 == 3 ? class432.field4656 : null;
+		}
 	}
 }

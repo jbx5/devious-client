@@ -21,11 +21,9 @@ public class UserComparator8 extends AbstractUserComparator {
 			if (var2.world != Client.worldId) {
 				return this.reversed ? -1 : 1;
 			}
-		} else
-			if (var2.world == Client.worldId) {
-				return this.reversed ? 1 : -1;
-			}
-
+		} else if (var2.world == Client.worldId) {
+			return this.reversed ? 1 : -1;
+		}
 		return this.compareUser(var1, var2);
 	}
 
@@ -43,13 +41,11 @@ public class UserComparator8 extends AbstractUserComparator {
 			String var8;
 			if (var3 < 0) {
 				var8 = "";
-			} else
-				if (Client.menuTargets[var3].length() > 0) {
-					var8 = Client.menuActions[var3] + " " + Client.menuTargets[var3];
-				} else {
-					var8 = Client.menuActions[var3];
-				}
-
+			} else if (Client.menuTargets[var3].length() > 0) {
+				var8 = Client.menuActions[var3] + " " + Client.menuTargets[var3];
+			} else {
+				var8 = Client.menuActions[var3];
+			}
 			int var6 = var7.stringWidth(var8);
 			if (var6 > var2) {
 				var2 = var6;

@@ -24,11 +24,9 @@ public abstract class AbstractUserComparator implements Comparator {
 	final void addComparator(Comparator var1) {
 		if (this.nextComparator == null) {
 			this.nextComparator = var1;
-		} else
-			if (this.nextComparator instanceof AbstractUserComparator) {
-				((AbstractUserComparator) (this.nextComparator)).addComparator(var1);
-			}
-
+		} else if (this.nextComparator instanceof AbstractUserComparator) {
+			((AbstractUserComparator) (this.nextComparator)).addComparator(var1);
+		}
 	}
 
 	@ObfuscatedName("y")

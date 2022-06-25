@@ -123,43 +123,39 @@ public class ReflectionCheck extends Node {
 				} else {
 					throw new RuntimeException();
 				}
-			} else
-				if (var0 == ScriptOpcodes.IF_TRIGGEROP) {
-					class446.Interpreter_intStackSize -= 3;
-					int var3 = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize];
-					var4 = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize + 1];
-					int var5 = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize + 2];
-					if (var5 >= 1 && var5 <= 10) {
-						class93 var6 = new class93(var5, var3, var4, class140.getWidget(var3).itemId);
-						Interpreter.field843.add(var6);
-						return 1;
-					} else {
-						throw new RuntimeException();
-					}
-				} else {
-					return 2;
-				}
-
-		} else
-			if (Interpreter.field850 >= 10) {
-				throw new RuntimeException();
-			} else {
-				if (var0 >= 2000) {
-					var7 = class140.getWidget(Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize]);
-				} else {
-					var7 = (var2) ? class124.scriptDotWidget : GrandExchangeOfferOwnWorldComparator.scriptActiveWidget;
-				}
-				if (var7.onResize == null) {
-					return 0;
-				} else {
-					ScriptEvent var9 = new ScriptEvent();
-					var9.widget = var7;
-					var9.args = var7.onResize;
-					var9.field1056 = Interpreter.field850 + 1;
-					Client.scriptEvents.addFirst(var9);
+			} else if (var0 == ScriptOpcodes.IF_TRIGGEROP) {
+				class446.Interpreter_intStackSize -= 3;
+				int var3 = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize];
+				var4 = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize + 1];
+				int var5 = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize + 2];
+				if (var5 >= 1 && var5 <= 10) {
+					class93 var6 = new class93(var5, var3, var4, class140.getWidget(var3).itemId);
+					Interpreter.field843.add(var6);
 					return 1;
+				} else {
+					throw new RuntimeException();
 				}
+			} else {
+				return 2;
 			}
-
+		} else if (Interpreter.field850 >= 10) {
+			throw new RuntimeException();
+		} else {
+			if (var0 >= 2000) {
+				var7 = class140.getWidget(Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize]);
+			} else {
+				var7 = (var2) ? class124.scriptDotWidget : GrandExchangeOfferOwnWorldComparator.scriptActiveWidget;
+			}
+			if (var7.onResize == null) {
+				return 0;
+			} else {
+				ScriptEvent var9 = new ScriptEvent();
+				var9.widget = var7;
+				var9.args = var7.onResize;
+				var9.field1056 = Interpreter.field850 + 1;
+				Client.scriptEvents.addFirst(var9);
+				return 1;
+			}
+		}
 	}
 }

@@ -76,183 +76,121 @@ public final class Canvas extends java.awt.Canvas {
 		int var1 = Login.loginIndex;
 		if (var0 == -3) {
 			class101.setLoginResponseString("Connection timed out.", "Please try using a different world.", "");
-		} else
-			if (var0 == -2) {
-				class101.setLoginResponseString("Error connecting to server.", "Please try using a different world.", "");
-			} else
-				if (var0 == -1) {
-					class101.setLoginResponseString("No response from server.", "Please try using a different world.", "");
-				} else
-					if (var0 == 3) {
-						WorldMapData_1.method4872(3);
-						Login.field902 = 1;
-					} else
-						if (var0 == 4) {
-							WorldMapData_1.method4872(14);
-							Login.field897 = 0;
-						} else
-							if (var0 == 5) {
-								Login.field902 = 2;
-								class101.setLoginResponseString("Your account has not logged out from its last", "session or the server is too busy right now.", "Please try again in a few minutes.");
-							} else
-								if (var0 != 68 && (Client.onMobile || var0 != 6)) {
-									if (var0 == 7) {
-										class101.setLoginResponseString("This world is full.", "Please use a different world.", "");
-									} else
-										if (var0 == 8) {
-											class101.setLoginResponseString("Unable to connect.", "Login server offline.", "");
-										} else
-											if (var0 == 9) {
-												class101.setLoginResponseString("Login limit exceeded.", "Too many connections from your address.", "");
-											} else
-												if (var0 == 10) {
-													class101.setLoginResponseString("Unable to connect.", "Bad session id.", "");
-												} else
-													if (var0 == 11) {
-														class101.setLoginResponseString("We suspect someone knows your password.", "Press 'change your password' on front page.", "");
-													} else
-														if (var0 == 12) {
-															class101.setLoginResponseString("You need a members account to login to this world.", "Please subscribe, or use a different world.", "");
-														} else
-															if (var0 == 13) {
-																class101.setLoginResponseString("Could not complete login.", "Please try using a different world.", "");
-															} else
-																if (var0 == 14) {
-																	class101.setLoginResponseString("The server is being updated.", "Please wait 1 minute and try again.", "");
-																} else
-																	if (var0 == 16) {
-																		class101.setLoginResponseString("Too many login attempts.", "Please wait a few minutes before trying again.", "");
-																	} else
-																		if (var0 == 17) {
-																			class101.setLoginResponseString("To access this free world, log into a", "members world and move your character", "to a non-members area.");
-																		} else
-																			if (var0 == 18) {
-																				WorldMapData_1.method4872(14);
-																				Login.field897 = 1;
-																			} else
-																				if (var0 == 19) {
-																					class101.setLoginResponseString("This world is running a closed Beta.", "Sorry invited players only.", "Please use a different world.");
-																				} else
-																					if (var0 == 20) {
-																						class101.setLoginResponseString("Invalid loginserver requested.", "Please try using a different world.", "");
-																					} else
-																						if (var0 == 22) {
-																							class101.setLoginResponseString("Malformed login packet.", "Please try again.", "");
-																						} else
-																							if (var0 == 23) {
-																								class101.setLoginResponseString("No reply from loginserver.", "Please wait 1 minute and try again.", "");
-																							} else
-																								if (var0 == 24) {
-																									class101.setLoginResponseString("Error loading your profile.", "Please contact customer support.", "");
-																								} else
-																									if (var0 == 25) {
-																										class101.setLoginResponseString("Unexpected loginserver response.", "Please try using a different world.", "");
-																									} else
-																										if (var0 == 26) {
-																											class101.setLoginResponseString("This computers address has been blocked", "as it was used to break our rules.", "");
-																										} else
-																											if (var0 == 27) {
-																												class101.setLoginResponseString("", "Service unavailable.", "");
-																											} else
-																												if (var0 == 31) {
-																													class101.setLoginResponseString("Your account must have a displayname set", "in order to play the game.  Please set it", "via the website, or the main game.");
-																												} else
-																													if (var0 == 32) {
-																														class101.setLoginResponseString("Your attempt to log into your account was", "unsuccessful.  Don't worry, you can sort", "this out by visiting the billing system.");
-																													} else
-																														if (var0 == 37) {
-																															class101.setLoginResponseString("Your account is currently inaccessible.", "Please try again in a few minutes.", "");
-																														} else
-																															if (var0 == 38) {
-																																class101.setLoginResponseString("You need to vote to play!", "Visit runescape.com and vote,", "and then come back here!");
-																															} else
-																																if (var0 == 55) {
-																																	WorldMapData_1.method4872(8);
-																																} else {
-																																	if (var0 == 56) {
-																																		class101.setLoginResponseString("Enter the 6-digit code generated by your", "authenticator app.", "");
-																																		HealthBarUpdate.updateGameState(11);
-																																		return;
-																																	}
-																																	if (var0 == 57) {
-																																		class101.setLoginResponseString("The code you entered was incorrect.", "Please try again.", "");
-																																		HealthBarUpdate.updateGameState(11);
-																																		return;
-																																	}
-																																	if (var0 == 61) {
-																																		class101.setLoginResponseString("", "Please enter your date of birth (DD/MM/YYYY)", "");
-																																		WorldMapData_1.method4872(7);
-																																	} else {
-																																		if (var0 == 62) {
-																																			HealthBarUpdate.updateGameState(10);
-																																			WorldMapData_1.method4872(9);
-																																			class101.setLoginResponseString("Login attempt timed out.", "Please try again.", "");
-																																			return;
-																																		}
-																																		if (var0 == 63) {
-																																			HealthBarUpdate.updateGameState(10);
-																																			WorldMapData_1.method4872(9);
-																																			class101.setLoginResponseString("You were signed out.", "Please sign in again.", "");
-																																			return;
-																																		}
-																																		if (var0 == 65 || var0 == 67) {
-																																			HealthBarUpdate.updateGameState(10);
-																																			WorldMapData_1.method4872(9);
-																																			class101.setLoginResponseString("Failed to login.", "Please try again.", "");
-																																			return;
-																																		}
-																																		if (var0 == 71) {
-																																			HealthBarUpdate.updateGameState(10);
-																																			WorldMapData_1.method4872(7);
-																																			class101.setLoginResponseString("There was a problem updating your DOB.", "Please try again later. If the problem ", "persists, please contact Jagex Support.");
-																																		} else
-																																			if (var0 == 73) {
-																																				HealthBarUpdate.updateGameState(10);
-																																				WorldMapData_1.method4872(6);
-																																				class101.setLoginResponseString("Your date of birth information is waiting", "to be reviewed by our staff.", "It will be processed shortly.");
-																																			} else
-																																				if (var0 == 72) {
-																																					HealthBarUpdate.updateGameState(10);
-																																					WorldMapData_1.method4872(26);
-																																				} else {
-																																					class101.setLoginResponseString("Unexpected server response", "Please try using a different world.", "");
-																																				}
-
-
-																																	}
-																																}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-								} else {
-									class101.setLoginResponseString("RuneScape has been updated!", "Please reload this page.", "");
-								}
-
-
-
-
-
-
+		} else if (var0 == -2) {
+			class101.setLoginResponseString("Error connecting to server.", "Please try using a different world.", "");
+		} else if (var0 == -1) {
+			class101.setLoginResponseString("No response from server.", "Please try using a different world.", "");
+		} else if (var0 == 3) {
+			WorldMapData_1.method4872(3);
+			Login.field902 = 1;
+		} else if (var0 == 4) {
+			WorldMapData_1.method4872(14);
+			Login.field897 = 0;
+		} else if (var0 == 5) {
+			Login.field902 = 2;
+			class101.setLoginResponseString("Your account has not logged out from its last", "session or the server is too busy right now.", "Please try again in a few minutes.");
+		} else if (var0 != 68 && (Client.onMobile || var0 != 6)) {
+			if (var0 == 7) {
+				class101.setLoginResponseString("This world is full.", "Please use a different world.", "");
+			} else if (var0 == 8) {
+				class101.setLoginResponseString("Unable to connect.", "Login server offline.", "");
+			} else if (var0 == 9) {
+				class101.setLoginResponseString("Login limit exceeded.", "Too many connections from your address.", "");
+			} else if (var0 == 10) {
+				class101.setLoginResponseString("Unable to connect.", "Bad session id.", "");
+			} else if (var0 == 11) {
+				class101.setLoginResponseString("We suspect someone knows your password.", "Press 'change your password' on front page.", "");
+			} else if (var0 == 12) {
+				class101.setLoginResponseString("You need a members account to login to this world.", "Please subscribe, or use a different world.", "");
+			} else if (var0 == 13) {
+				class101.setLoginResponseString("Could not complete login.", "Please try using a different world.", "");
+			} else if (var0 == 14) {
+				class101.setLoginResponseString("The server is being updated.", "Please wait 1 minute and try again.", "");
+			} else if (var0 == 16) {
+				class101.setLoginResponseString("Too many login attempts.", "Please wait a few minutes before trying again.", "");
+			} else if (var0 == 17) {
+				class101.setLoginResponseString("To access this free world, log into a", "members world and move your character", "to a non-members area.");
+			} else if (var0 == 18) {
+				WorldMapData_1.method4872(14);
+				Login.field897 = 1;
+			} else if (var0 == 19) {
+				class101.setLoginResponseString("This world is running a closed Beta.", "Sorry invited players only.", "Please use a different world.");
+			} else if (var0 == 20) {
+				class101.setLoginResponseString("Invalid loginserver requested.", "Please try using a different world.", "");
+			} else if (var0 == 22) {
+				class101.setLoginResponseString("Malformed login packet.", "Please try again.", "");
+			} else if (var0 == 23) {
+				class101.setLoginResponseString("No reply from loginserver.", "Please wait 1 minute and try again.", "");
+			} else if (var0 == 24) {
+				class101.setLoginResponseString("Error loading your profile.", "Please contact customer support.", "");
+			} else if (var0 == 25) {
+				class101.setLoginResponseString("Unexpected loginserver response.", "Please try using a different world.", "");
+			} else if (var0 == 26) {
+				class101.setLoginResponseString("This computers address has been blocked", "as it was used to break our rules.", "");
+			} else if (var0 == 27) {
+				class101.setLoginResponseString("", "Service unavailable.", "");
+			} else if (var0 == 31) {
+				class101.setLoginResponseString("Your account must have a displayname set", "in order to play the game.  Please set it", "via the website, or the main game.");
+			} else if (var0 == 32) {
+				class101.setLoginResponseString("Your attempt to log into your account was", "unsuccessful.  Don't worry, you can sort", "this out by visiting the billing system.");
+			} else if (var0 == 37) {
+				class101.setLoginResponseString("Your account is currently inaccessible.", "Please try again in a few minutes.", "");
+			} else if (var0 == 38) {
+				class101.setLoginResponseString("You need to vote to play!", "Visit runescape.com and vote,", "and then come back here!");
+			} else if (var0 == 55) {
+				WorldMapData_1.method4872(8);
+			} else {
+				if (var0 == 56) {
+					class101.setLoginResponseString("Enter the 6-digit code generated by your", "authenticator app.", "");
+					HealthBarUpdate.updateGameState(11);
+					return;
+				}
+				if (var0 == 57) {
+					class101.setLoginResponseString("The code you entered was incorrect.", "Please try again.", "");
+					HealthBarUpdate.updateGameState(11);
+					return;
+				}
+				if (var0 == 61) {
+					class101.setLoginResponseString("", "Please enter your date of birth (DD/MM/YYYY)", "");
+					WorldMapData_1.method4872(7);
+				} else {
+					if (var0 == 62) {
+						HealthBarUpdate.updateGameState(10);
+						WorldMapData_1.method4872(9);
+						class101.setLoginResponseString("Login attempt timed out.", "Please try again.", "");
+						return;
+					}
+					if (var0 == 63) {
+						HealthBarUpdate.updateGameState(10);
+						WorldMapData_1.method4872(9);
+						class101.setLoginResponseString("You were signed out.", "Please sign in again.", "");
+						return;
+					}
+					if (var0 == 65 || var0 == 67) {
+						HealthBarUpdate.updateGameState(10);
+						WorldMapData_1.method4872(9);
+						class101.setLoginResponseString("Failed to login.", "Please try again.", "");
+						return;
+					}
+					if (var0 == 71) {
+						HealthBarUpdate.updateGameState(10);
+						WorldMapData_1.method4872(7);
+						class101.setLoginResponseString("There was a problem updating your DOB.", "Please try again later. If the problem ", "persists, please contact Jagex Support.");
+					} else if (var0 == 73) {
+						HealthBarUpdate.updateGameState(10);
+						WorldMapData_1.method4872(6);
+						class101.setLoginResponseString("Your date of birth information is waiting", "to be reviewed by our staff.", "It will be processed shortly.");
+					} else if (var0 == 72) {
+						HealthBarUpdate.updateGameState(10);
+						WorldMapData_1.method4872(26);
+					} else {
+						class101.setLoginResponseString("Unexpected server response", "Please try using a different world.", "");
+					}
+				}
+			}
+		} else {
+			class101.setLoginResponseString("RuneScape has been updated!", "Please reload this page.", "");
+		}
 		HealthBarUpdate.updateGameState(10);
 		int var4 = Login.loginIndex;
 		boolean var5 = var4 != var1;

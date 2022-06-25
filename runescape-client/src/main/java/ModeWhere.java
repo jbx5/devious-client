@@ -132,28 +132,22 @@ public enum ModeWhere implements MouseWheel {
 	static final int method6079(int var0, int var1) {
 		if (var0 == -2) {
 			return 12345678;
-		} else
-			if (var0 == -1) {
-				if (var1 < 2) {
-					var1 = 2;
-				} else
-					if (var1 > 126) {
-						var1 = 126;
-					}
-
-				return var1;
-			} else {
-				var1 = (var0 & 127) * var1 / 128;
-				if (var1 < 2) {
-					var1 = 2;
-				} else
-					if (var1 > 126) {
-						var1 = 126;
-					}
-
-				return (var0 & 65408) + var1;
+		} else if (var0 == -1) {
+			if (var1 < 2) {
+				var1 = 2;
+			} else if (var1 > 126) {
+				var1 = 126;
 			}
-
+			return var1;
+		} else {
+			var1 = (var0 & 127) * var1 / 128;
+			if (var1 < 2) {
+				var1 = 2;
+			} else if (var1 > 126) {
+				var1 = 126;
+			}
+			return (var0 & 65408) + var1;
+		}
 	}
 
 	@ObfuscatedName("ff")
@@ -173,23 +167,15 @@ public enum ModeWhere implements MouseWheel {
 		String var2 = (var1) ? "https://" : "http://";
 		if (Client.gameBuild == 1) {
 			var0 = var0 + "-wtrc";
-		} else
-			if (Client.gameBuild == 2) {
-				var0 = var0 + "-wtqa";
-			} else
-				if (Client.gameBuild == 3) {
-					var0 = var0 + "-wtwip";
-				} else
-					if (Client.gameBuild == 5) {
-						var0 = var0 + "-wti";
-					} else
-						if (Client.gameBuild == 4) {
-							var0 = "local";
-						}
-
-
-
-
+		} else if (Client.gameBuild == 2) {
+			var0 = var0 + "-wtqa";
+		} else if (Client.gameBuild == 3) {
+			var0 = var0 + "-wtwip";
+		} else if (Client.gameBuild == 5) {
+			var0 = var0 + "-wti";
+		} else if (Client.gameBuild == 4) {
+			var0 = "local";
+		}
 		String var3 = "";
 		if (GrandExchangeOfferTotalQuantityComparator.field4045 != null) {
 			var3 = "/p=" + GrandExchangeOfferTotalQuantityComparator.field4045;

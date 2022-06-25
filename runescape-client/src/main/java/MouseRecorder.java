@@ -79,26 +79,22 @@ public class MouseRecorder implements Runnable {
 						if (var3[var10] == 2) {
 							var11 = var0[var6].index;
 							var12 = var8.index;
-						} else
-							if (var3[var10] == 1) {
-								var11 = var0[var6].population;
-								var12 = var8.population;
-								if (var11 == -1 && var4[var10] == 1) {
-									var11 = 2001;
-								}
-								if (var12 == -1 && var4[var10] == 1) {
-									var12 = 2001;
-								}
-							} else
-								if (var3[var10] == 3) {
-									var11 = (var0[var6].isMembersOnly()) ? 1 : 0;
-									var12 = (var8.isMembersOnly()) ? 1 : 0;
-								} else {
-									var11 = var0[var6].id;
-									var12 = var8.id;
-								}
-
-
+						} else if (var3[var10] == 1) {
+							var11 = var0[var6].population;
+							var12 = var8.population;
+							if (var11 == -1 && var4[var10] == 1) {
+								var11 = 2001;
+							}
+							if (var12 == -1 && var4[var10] == 1) {
+								var12 = 2001;
+							}
+						} else if (var3[var10] == 3) {
+							var11 = (var0[var6].isMembersOnly()) ? 1 : 0;
+							var12 = (var8.isMembersOnly()) ? 1 : 0;
+						} else {
+							var11 = var0[var6].id;
+							var12 = var8.id;
+						}
 						if (var12 != var11) {
 							if ((var4[var10] != 1 || var11 <= var12) && (var4[var10] != 0 || var11 >= var12)) {
 								var9 = false;
@@ -117,26 +113,22 @@ public class MouseRecorder implements Runnable {
 						if (var3[var10] == 2) {
 							var11 = var0[var5].index;
 							var12 = var8.index;
-						} else
-							if (var3[var10] == 1) {
-								var11 = var0[var5].population;
-								var12 = var8.population;
-								if (var11 == -1 && var4[var10] == 1) {
-									var11 = 2001;
-								}
-								if (var12 == -1 && var4[var10] == 1) {
-									var12 = 2001;
-								}
-							} else
-								if (var3[var10] == 3) {
-									var11 = (var0[var5].isMembersOnly()) ? 1 : 0;
-									var12 = (var8.isMembersOnly()) ? 1 : 0;
-								} else {
-									var11 = var0[var5].id;
-									var12 = var8.id;
-								}
-
-
+						} else if (var3[var10] == 1) {
+							var11 = var0[var5].population;
+							var12 = var8.population;
+							if (var11 == -1 && var4[var10] == 1) {
+								var11 = 2001;
+							}
+							if (var12 == -1 && var4[var10] == 1) {
+								var12 = 2001;
+							}
+						} else if (var3[var10] == 3) {
+							var11 = (var0[var5].isMembersOnly()) ? 1 : 0;
+							var12 = (var8.isMembersOnly()) ? 1 : 0;
+						} else {
+							var11 = var0[var5].id;
+							var12 = var8.id;
+						}
 						if (var12 != var11) {
 							if ((var4[var10] != 1 || var11 >= var12) && (var4[var10] != 0 || var11 <= var12)) {
 								var9 = false;

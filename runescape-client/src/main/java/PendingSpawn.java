@@ -93,41 +93,33 @@ public final class PendingSpawn extends Node {
 				BufferedNetSocket.revalidateWidgetScroll(SoundCache.Widget_interfaceComponents[var3 >> 16], var4, false);
 			}
 			return 1;
-		} else
-			if (var0 == ScriptOpcodes.CC_SETSIZE) {
-				class446.Interpreter_intStackSize -= 4;
-				var4.rawWidth = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize];
-				var4.rawHeight = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize + 1];
-				var4.widthAlignment = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize + 2];
-				var4.heightAlignment = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize + 3];
+		} else if (var0 == ScriptOpcodes.CC_SETSIZE) {
+			class446.Interpreter_intStackSize -= 4;
+			var4.rawWidth = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize];
+			var4.rawHeight = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize + 1];
+			var4.widthAlignment = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize + 2];
+			var4.heightAlignment = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize + 3];
+			ChatChannel.invalidateWidget(var4);
+			class353.client.alignWidget(var4);
+			if (var3 != -1 && var4.type == 0) {
+				BufferedNetSocket.revalidateWidgetScroll(SoundCache.Widget_interfaceComponents[var3 >> 16], var4, false);
+			}
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_SETHIDE) {
+			boolean var5 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize] == 1;
+			if (var5 != var4.isHidden) {
+				var4.isHidden = var5;
 				ChatChannel.invalidateWidget(var4);
-				class353.client.alignWidget(var4);
-				if (var3 != -1 && var4.type == 0) {
-					BufferedNetSocket.revalidateWidgetScroll(SoundCache.Widget_interfaceComponents[var3 >> 16], var4, false);
-				}
-				return 1;
-			} else
-				if (var0 == ScriptOpcodes.CC_SETHIDE) {
-					boolean var5 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize] == 1;
-					if (var5 != var4.isHidden) {
-						var4.isHidden = var5;
-						ChatChannel.invalidateWidget(var4);
-					}
-					return 1;
-				} else
-					if (var0 == ScriptOpcodes.CC_SETNOCLICKTHROUGH) {
-						var4.noClickThrough = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize] == 1;
-						return 1;
-					} else
-						if (var0 == ScriptOpcodes.CC_SETNOSCROLLTHROUGH) {
-							var4.noScrollThrough = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize] == 1;
-							return 1;
-						} else {
-							return 2;
-						}
-
-
-
-
+			}
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_SETNOCLICKTHROUGH) {
+			var4.noClickThrough = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize] == 1;
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_SETNOSCROLLTHROUGH) {
+			var4.noScrollThrough = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize] == 1;
+			return 1;
+		} else {
+			return 2;
+		}
 	}
 }

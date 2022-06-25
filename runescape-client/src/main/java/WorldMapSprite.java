@@ -254,16 +254,12 @@ public final class WorldMapSprite {
 											if (var3 != 4 && var3 != 5) {
 												if (var3 == 6) {
 													var42.renderable1 = new DynamicObject(var11, 4, var4 + 4, PacketWriter.Client_plane, var8, var9, var6, false, var42.renderable1);
-												} else
-													if (var3 == 7) {
-														var42.renderable1 = new DynamicObject(var11, 4, (var4 + 2 & 3) + 4, PacketWriter.Client_plane, var8, var9, var6, false, var42.renderable1);
-													} else
-														if (var3 == 8) {
-															var42.renderable1 = new DynamicObject(var11, 4, var4 + 4, PacketWriter.Client_plane, var8, var9, var6, false, var42.renderable1);
-															var42.renderable2 = new DynamicObject(var11, 4, (var4 + 2 & 3) + 4, PacketWriter.Client_plane, var8, var9, var6, false, var42.renderable2);
-														}
-
-
+												} else if (var3 == 7) {
+													var42.renderable1 = new DynamicObject(var11, 4, (var4 + 2 & 3) + 4, PacketWriter.Client_plane, var8, var9, var6, false, var42.renderable1);
+												} else if (var3 == 8) {
+													var42.renderable1 = new DynamicObject(var11, 4, var4 + 4, PacketWriter.Client_plane, var8, var9, var6, false, var42.renderable1);
+													var42.renderable2 = new DynamicObject(var11, 4, (var4 + 2 & 3) + 4, PacketWriter.Client_plane, var8, var9, var6, false, var42.renderable2);
+												}
 											} else {
 												var42.renderable1 = new DynamicObject(var11, 4, var4, PacketWriter.Client_plane, var8, var9, var6, false, var42.renderable1);
 											}
@@ -285,43 +281,39 @@ public final class WorldMapSprite {
 										}
 									}
 								}
-							} else
-								if (class262.field3018 == var0) {
-									var2 = var1.readUnsignedByteNeg();
-									var3 = var2 >> 2;
-									var4 = var2 & 3;
-									var5 = Client.field582[var3];
-									var6 = var1.readUnsignedByteAdd();
-									var7 = (var6 >> 4 & 7) + class10.field53;
-									var8 = (var6 & 7) + class298.field3558;
-									var9 = var1.readUnsignedShortLE();
-									if (var7 >= 0 && var8 >= 0 && var7 < 104 && var8 < 104) {
-										Canvas.updatePendingSpawn(PacketWriter.Client_plane, var7, var8, var5, var9, var3, var4, 0, -1);
-									}
-								} else
-									if (class262.field3016 == var0) {
-										var2 = var1.readUnsignedShort();
-										var3 = var1.readUnsignedByteNeg();
-										var4 = (var3 >> 4 & 7) + class10.field53;
-										var5 = (var3 & 7) + class298.field3558;
-										if (var4 >= 0 && var5 >= 0 && var4 < 104 && var5 < 104) {
-											NodeDeque var31 = Client.groundItems[PacketWriter.Client_plane][var4][var5];
-											if (var31 != null) {
-												for (var32 = ((TileItem) (var31.last())); var32 != null; var32 = ((TileItem) (var31.previous()))) {
-													if ((var2 & 32767) == var32.id) {
-														var32.remove();
-														break;
-													}
-												}
-												if (var31.last() == null) {
-													Client.groundItems[PacketWriter.Client_plane][var4][var5] = null;
-												}
-												class133.updateItemPile(var4, var5);
+							} else if (class262.field3018 == var0) {
+								var2 = var1.readUnsignedByteNeg();
+								var3 = var2 >> 2;
+								var4 = var2 & 3;
+								var5 = Client.field582[var3];
+								var6 = var1.readUnsignedByteAdd();
+								var7 = (var6 >> 4 & 7) + class10.field53;
+								var8 = (var6 & 7) + class298.field3558;
+								var9 = var1.readUnsignedShortLE();
+								if (var7 >= 0 && var8 >= 0 && var7 < 104 && var8 < 104) {
+									Canvas.updatePendingSpawn(PacketWriter.Client_plane, var7, var8, var5, var9, var3, var4, 0, -1);
+								}
+							} else if (class262.field3016 == var0) {
+								var2 = var1.readUnsignedShort();
+								var3 = var1.readUnsignedByteNeg();
+								var4 = (var3 >> 4 & 7) + class10.field53;
+								var5 = (var3 & 7) + class298.field3558;
+								if (var4 >= 0 && var5 >= 0 && var4 < 104 && var5 < 104) {
+									NodeDeque var31 = Client.groundItems[PacketWriter.Client_plane][var4][var5];
+									if (var31 != null) {
+										for (var32 = ((TileItem) (var31.last())); var32 != null; var32 = ((TileItem) (var31.previous()))) {
+											if ((var2 & 32767) == var32.id) {
+												var32.remove();
+												break;
 											}
 										}
+										if (var31.last() == null) {
+											Client.groundItems[PacketWriter.Client_plane][var4][var5] = null;
+										}
+										class133.updateItemPile(var4, var5);
 									}
-
-
+								}
+							}
 						}
 					}
 				}

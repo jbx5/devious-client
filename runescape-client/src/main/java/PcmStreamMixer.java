@@ -30,14 +30,14 @@ public class PcmStreamMixer extends PcmStream {
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(descriptor = "(Laz;)V")
 	@Export("addSubStream")
-	public final synchronized void addSubStream(PcmStream var1) {
+	public synchronized final void addSubStream(PcmStream var1) {
 		this.subStreams.addLast(var1);
 	}
 
 	@ObfuscatedName("v")
 	@ObfuscatedSignature(descriptor = "(Laz;)V")
 	@Export("removeSubStream")
-	public final synchronized void removeSubStream(PcmStream var1) {
+	public synchronized final void removeSubStream(PcmStream var1) {
 		var1.remove();
 	}
 
@@ -96,7 +96,7 @@ public class PcmStreamMixer extends PcmStream {
 
 	@ObfuscatedName("y")
 	@Export("fill")
-	public final synchronized void fill(int[] var1, int var2, int var3) {
+	public synchronized final void fill(int[] var1, int var2, int var3) {
 		do {
 			if (this.field252 < 0) {
 				this.updateSubStreams(var1, var2, var3);
@@ -137,7 +137,7 @@ public class PcmStreamMixer extends PcmStream {
 
 	@ObfuscatedName("s")
 	@Export("skip")
-	public final synchronized void skip(int var1) {
+	public synchronized final void skip(int var1) {
 		do {
 			if (this.field252 < 0) {
 				this.skipSubStreams(var1);

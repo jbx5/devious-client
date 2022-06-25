@@ -13,59 +13,51 @@ public class class294 {
 			try {
 				if (!class29.field169.startsWith("win")) {
 					throw new Exception();
-				} else
-					if (!var0.startsWith("http://") && !var0.startsWith("https://")) {
-						throw new Exception();
-					} else {
-						String var13 = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789?&=,.%+-_#:/*";
-						for (int var4 = 0; var4 < var0.length(); ++var4) {
-							if (var13.indexOf(var0.charAt(var4)) == -1) {
-								throw new Exception();
-							}
+				} else if (!var0.startsWith("http://") && !var0.startsWith("https://")) {
+					throw new Exception();
+				} else {
+					String var13 = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789?&=,.%+-_#:/*";
+					for (int var4 = 0; var4 < var0.length(); ++var4) {
+						if (var13.indexOf(var0.charAt(var4)) == -1) {
+							throw new Exception();
 						}
-						Runtime.getRuntime().exec("cmd /c start \"j\" \"" + var0 + "\"");
-						return true;
 					}
-
+					Runtime.getRuntime().exec("cmd /c start \"j\" \"" + var0 + "\"");
+					return true;
+				}
 			} catch (Throwable var8) {
 				return false;
 			}
-		} else
-			if (var1 == 1) {
-				try {
-					Applet var7 = class29.field172;
-					Object[] var5 = new Object[]{ new URL(class29.field172.getCodeBase(), var0).toString() };
-					Object var3 = JSObject.getWindow(var7).call(var2, var5);
-					return var3 != null;
-				} catch (Throwable var9) {
-					return false;
-				}
-			} else
-				if (var1 == 2) {
-					try {
-						class29.field172.getAppletContext().showDocument(new URL(class29.field172.getCodeBase(), var0), "_blank");
-						return true;
-					} catch (Exception var10) {
-						return false;
-					}
-				} else
-					if (var1 == 3) {
-						try {
-							class27.method346(class29.field172, "loggedout");
-						} catch (Throwable var12) {
-						}
-						try {
-							class29.field172.getAppletContext().showDocument(new URL(class29.field172.getCodeBase(), var0), "_top");
-							return true;
-						} catch (Exception var11) {
-							return false;
-						}
-					} else {
-						throw new IllegalArgumentException();
-					}
-
-
-
+		} else if (var1 == 1) {
+			try {
+				Applet var7 = class29.field172;
+				Object[] var5 = new Object[]{ new URL(class29.field172.getCodeBase(), var0).toString() };
+				Object var3 = JSObject.getWindow(var7).call(var2, var5);
+				return var3 != null;
+			} catch (Throwable var9) {
+				return false;
+			}
+		} else if (var1 == 2) {
+			try {
+				class29.field172.getAppletContext().showDocument(new URL(class29.field172.getCodeBase(), var0), "_blank");
+				return true;
+			} catch (Exception var10) {
+				return false;
+			}
+		} else if (var1 == 3) {
+			try {
+				class27.method346(class29.field172, "loggedout");
+			} catch (Throwable var12) {
+			}
+			try {
+				class29.field172.getAppletContext().showDocument(new URL(class29.field172.getCodeBase(), var0), "_top");
+				return true;
+			} catch (Exception var11) {
+				return false;
+			}
+		} else {
+			throw new IllegalArgumentException();
+		}
 	}
 
 	@ObfuscatedName("hh")

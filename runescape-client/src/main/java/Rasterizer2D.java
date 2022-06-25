@@ -641,67 +641,65 @@ public class Rasterizer2D extends DualNode {
 			} else {
 				Rasterizer2D_drawHorizontalLine(var0 + var2, var1, -var2 + 1, var4);
 			}
-		} else
-			if (var2 == 0) {
-				if (var3 >= 0) {
-					Rasterizer2D_drawVerticalLine(var0, var1, var3 + 1, var4);
-				} else {
-					Rasterizer2D_drawVerticalLine(var0, var3 + var1, -var3 + 1, var4);
-				}
+		} else if (var2 == 0) {
+			if (var3 >= 0) {
+				Rasterizer2D_drawVerticalLine(var0, var1, var3 + 1, var4);
 			} else {
-				if (var3 + var2 < 0) {
-					var0 += var2;
-					var2 = -var2;
-					var1 += var3;
-					var3 = -var3;
-				}
-				int var5;
-				int var6;
-				if (var2 > var3) {
-					var1 <<= 16;
-					var1 += 32768;
-					var3 <<= 16;
-					var5 = ((int) (Math.floor(((double) (var3)) / ((double) (var2)) + 0.5)));
-					var2 += var0;
-					if (var0 < Rasterizer2D_xClipStart) {
-						var1 += var5 * (Rasterizer2D_xClipStart - var0);
-						var0 = Rasterizer2D_xClipStart;
-					}
-					if (var2 >= Rasterizer2D_xClipEnd) {
-						var2 = Rasterizer2D_xClipEnd - 1;
-					}
-					while (var0 <= var2) {
-						var6 = var1 >> 16;
-						if (var6 >= Rasterizer2D_yClipStart && var6 < Rasterizer2D_yClipEnd) {
-							Rasterizer2D_pixels[var0 + var6 * Rasterizer2D_width] = var4;
-						}
-						var1 += var5;
-						++var0;
-					} 
-				} else {
-					var0 <<= 16;
-					var0 += 32768;
-					var2 <<= 16;
-					var5 = ((int) (Math.floor(((double) (var2)) / ((double) (var3)) + 0.5)));
-					var3 += var1;
-					if (var1 < Rasterizer2D_yClipStart) {
-						var0 += (Rasterizer2D_yClipStart - var1) * var5;
-						var1 = Rasterizer2D_yClipStart;
-					}
-					if (var3 >= Rasterizer2D_yClipEnd) {
-						var3 = Rasterizer2D_yClipEnd - 1;
-					}
-					while (var1 <= var3) {
-						var6 = var0 >> 16;
-						if (var6 >= Rasterizer2D_xClipStart && var6 < Rasterizer2D_xClipEnd) {
-							Rasterizer2D_pixels[var6 + Rasterizer2D_width * var1] = var4;
-						}
-						var0 += var5;
-						++var1;
-					} 
-				}
+				Rasterizer2D_drawVerticalLine(var0, var3 + var1, -var3 + 1, var4);
 			}
-
+		} else {
+			if (var3 + var2 < 0) {
+				var0 += var2;
+				var2 = -var2;
+				var1 += var3;
+				var3 = -var3;
+			}
+			int var5;
+			int var6;
+			if (var2 > var3) {
+				var1 <<= 16;
+				var1 += 32768;
+				var3 <<= 16;
+				var5 = ((int) (Math.floor(((double) (var3)) / ((double) (var2)) + 0.5)));
+				var2 += var0;
+				if (var0 < Rasterizer2D_xClipStart) {
+					var1 += var5 * (Rasterizer2D_xClipStart - var0);
+					var0 = Rasterizer2D_xClipStart;
+				}
+				if (var2 >= Rasterizer2D_xClipEnd) {
+					var2 = Rasterizer2D_xClipEnd - 1;
+				}
+				while (var0 <= var2) {
+					var6 = var1 >> 16;
+					if (var6 >= Rasterizer2D_yClipStart && var6 < Rasterizer2D_yClipEnd) {
+						Rasterizer2D_pixels[var0 + var6 * Rasterizer2D_width] = var4;
+					}
+					var1 += var5;
+					++var0;
+				} 
+			} else {
+				var0 <<= 16;
+				var0 += 32768;
+				var2 <<= 16;
+				var5 = ((int) (Math.floor(((double) (var2)) / ((double) (var3)) + 0.5)));
+				var3 += var1;
+				if (var1 < Rasterizer2D_yClipStart) {
+					var0 += (Rasterizer2D_yClipStart - var1) * var5;
+					var1 = Rasterizer2D_yClipStart;
+				}
+				if (var3 >= Rasterizer2D_yClipEnd) {
+					var3 = Rasterizer2D_yClipEnd - 1;
+				}
+				while (var1 <= var3) {
+					var6 = var0 >> 16;
+					if (var6 >= Rasterizer2D_xClipStart && var6 < Rasterizer2D_xClipEnd) {
+						Rasterizer2D_pixels[var6 + Rasterizer2D_width * var1] = var4;
+					}
+					var0 += var5;
+					++var1;
+				} 
+			}
+		}
 	}
 
 	@ObfuscatedName("dj")

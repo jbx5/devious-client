@@ -116,33 +116,25 @@ public class FloorUnderlayDefinition extends DualNode {
 			}
 			if (var2 == var10) {
 				var12 = (var4 - var6) / (var10 - var8);
-			} else
-				if (var4 == var10) {
-					var12 = 2.0 + (var6 - var2) / (var10 - var8);
-				} else
-					if (var10 == var6) {
-						var12 = (var2 - var4) / (var10 - var8) + 4.0;
-					}
-
-
+			} else if (var4 == var10) {
+				var12 = 2.0 + (var6 - var2) / (var10 - var8);
+			} else if (var10 == var6) {
+				var12 = (var2 - var4) / (var10 - var8) + 4.0;
+			}
 		}
 		var12 /= 6.0;
 		this.saturation = ((int) (var14 * 256.0));
 		this.lightness = ((int) (256.0 * var16));
 		if (this.saturation < 0) {
 			this.saturation = 0;
-		} else
-			if (this.saturation > 255) {
-				this.saturation = 255;
-			}
-
+		} else if (this.saturation > 255) {
+			this.saturation = 255;
+		}
 		if (this.lightness < 0) {
 			this.lightness = 0;
-		} else
-			if (this.lightness > 255) {
-				this.lightness = 255;
-			}
-
+		} else if (this.lightness > 255) {
+			this.lightness = 255;
+		}
 		if (var16 > 0.5) {
 			this.hueMultiplier = ((int) (var14 * (1.0 - var16) * 512.0));
 		} else {

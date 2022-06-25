@@ -103,13 +103,11 @@ public class FriendSystem {
 	final boolean isFriended(Username var1, boolean var2) {
 		if (var1 == null) {
 			return false;
-		} else
-			if (var1.equals(class101.localPlayer.username)) {
-				return true;
-			} else {
-				return this.friendsList.isFriended(var1, var2);
-			}
-
+		} else if (var1.equals(class101.localPlayer.username)) {
+			return true;
+		} else {
+			return this.friendsList.isFriended(var1, var2);
+		}
 	}
 
 	@ObfuscatedName("g")
@@ -136,31 +134,25 @@ public class FriendSystem {
 					var10000 = null;
 					var4 = "Your friend list is full. Max of 200 for free users, and 400 for members";
 					class290.addGameMessage(30, "", var4);
-				} else
-					if (class101.localPlayer.username.equals(var2)) {
-						var10000 = null;
-						var4 = "You can't add yourself to your own friend list";
-						class290.addGameMessage(30, "", var4);
-					} else
-						if (this.isFriended(var2, false)) {
-							FriendLoginUpdate.method6632(var1);
-						} else
-							if (this.isIgnored(var2)) {
-								var10000 = new StringBuilder();
-								Object var10001 = null;
-								var10000 = var10000.append("Please remove ").append(var1);
-								var10001 = null;
-								var4 = var10000.append(" from your ignore list first").toString();
-								class290.addGameMessage(30, "", var4);
-							} else {
-								PacketBufferNode var3 = EnumComposition.getPacketBufferNode(ClientPacket.field2964, Client.packetWriter.isaacCipher);
-								var3.packetBuffer.writeByte(ScriptEvent.stringCp1252NullTerminatedByteSize(var1));
-								var3.packetBuffer.writeStringCp1252NullTerminated(var1);
-								Client.packetWriter.addNode(var3);
-							}
-
-
-
+				} else if (class101.localPlayer.username.equals(var2)) {
+					var10000 = null;
+					var4 = "You can't add yourself to your own friend list";
+					class290.addGameMessage(30, "", var4);
+				} else if (this.isFriended(var2, false)) {
+					FriendLoginUpdate.method6632(var1);
+				} else if (this.isIgnored(var2)) {
+					var10000 = new StringBuilder();
+					Object var10001 = null;
+					var10000 = var10000.append("Please remove ").append(var1);
+					var10001 = null;
+					var4 = var10000.append(" from your ignore list first").toString();
+					class290.addGameMessage(30, "", var4);
+				} else {
+					PacketBufferNode var3 = EnumComposition.getPacketBufferNode(ClientPacket.FRIEND_ADDUSER, Client.packetWriter.isaacCipher);
+					var3.packetBuffer.writeByte(ScriptEvent.stringCp1252NullTerminatedByteSize(var1));
+					var3.packetBuffer.writeStringCp1252NullTerminated(var1);
+					Client.packetWriter.addNode(var3);
+				}
 			}
 		}
 	}
@@ -195,18 +187,16 @@ public class FriendSystem {
 							var10001 = null;
 							var3 = var10000.append(" is already on your ignore list").toString();
 							class290.addGameMessage(30, "", var3);
-						} else
-							if (this.isFriended(var2, false)) {
-								var10000 = new StringBuilder();
-								var10001 = null;
-								var10000 = var10000.append("Please remove ").append(var1);
-								var10001 = null;
-								var3 = var10000.append(" from your friend list first").toString();
-								class290.addGameMessage(30, "", var3);
-							} else {
-								class113.method2632(var1);
-							}
-
+						} else if (this.isFriended(var2, false)) {
+							var10000 = new StringBuilder();
+							var10001 = null;
+							var10000 = var10000.append("Please remove ").append(var1);
+							var10001 = null;
+							var3 = var10000.append(" from your friend list first").toString();
+							class290.addGameMessage(30, "", var3);
+						} else {
+							class113.method2632(var1);
+						}
 					}
 				}
 			}
@@ -229,7 +219,7 @@ public class FriendSystem {
 			if (var2.hasCleanName()) {
 				if (this.friendsList.removeByUsername(var2)) {
 					Client.field689 = Client.cycleCntr;
-					PacketBufferNode var3 = EnumComposition.getPacketBufferNode(ClientPacket.field2958, Client.packetWriter.isaacCipher);
+					PacketBufferNode var3 = EnumComposition.getPacketBufferNode(ClientPacket.FRIEND_DELUSER, Client.packetWriter.isaacCipher);
 					var3.packetBuffer.writeByte(ScriptEvent.stringCp1252NullTerminatedByteSize(var1));
 					var3.packetBuffer.writeStringCp1252NullTerminated(var1);
 					Client.packetWriter.addNode(var3);
@@ -259,7 +249,7 @@ public class FriendSystem {
 			if (var2.hasCleanName()) {
 				if (this.ignoreList.removeByUsername(var2)) {
 					Client.field689 = Client.cycleCntr;
-					PacketBufferNode var3 = EnumComposition.getPacketBufferNode(ClientPacket.field2921, Client.packetWriter.isaacCipher);
+					PacketBufferNode var3 = EnumComposition.getPacketBufferNode(ClientPacket.IGNORE_DELUSER, Client.packetWriter.isaacCipher);
 					var3.packetBuffer.writeByte(ScriptEvent.stringCp1252NullTerminatedByteSize(var1));
 					var3.packetBuffer.writeStringCp1252NullTerminated(var1);
 					Client.packetWriter.addNode(var3);

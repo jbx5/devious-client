@@ -341,224 +341,148 @@ public class ObjectComposition extends DualNode {
 					}
 				}
 			}
-		} else
-			if (var2 == 2) {
-				this.name = var1.readStringCp1252NullTerminated();
-			} else
-				if (var2 == 5) {
-					var3 = var1.readUnsignedByte();
-					if (var3 > 0) {
-						if (this.modelIds != null && !ObjectDefinition_isLowDetail) {
-							var1.offset += var3 * 2;
-						} else {
-							this.models = null;
-							this.modelIds = new int[var3];
-							for (var4 = 0; var4 < var3; ++var4) {
-								this.modelIds[var4] = var1.readUnsignedShort();
-							}
-						}
+		} else if (var2 == 2) {
+			this.name = var1.readStringCp1252NullTerminated();
+		} else if (var2 == 5) {
+			var3 = var1.readUnsignedByte();
+			if (var3 > 0) {
+				if (this.modelIds != null && !ObjectDefinition_isLowDetail) {
+					var1.offset += var3 * 2;
+				} else {
+					this.models = null;
+					this.modelIds = new int[var3];
+					for (var4 = 0; var4 < var3; ++var4) {
+						this.modelIds[var4] = var1.readUnsignedShort();
 					}
-				} else
-					if (var2 == 14) {
-						this.sizeX = var1.readUnsignedByte();
-					} else
-						if (var2 == 15) {
-							this.sizeY = var1.readUnsignedByte();
-						} else
-							if (var2 == 17) {
-								this.interactType = 0;
-								this.boolean1 = false;
-							} else
-								if (var2 == 18) {
-									this.boolean1 = false;
-								} else
-									if (var2 == 19) {
-										this.int1 = var1.readUnsignedByte();
-									} else
-										if (var2 == 21) {
-											this.clipType = 0;
-										} else
-											if (var2 == 22) {
-												this.nonFlatShading = true;
-											} else
-												if (var2 == 23) {
-													this.modelClipped = true;
-												} else
-													if (var2 == 24) {
-														this.animationId = var1.readUnsignedShort();
-														if (this.animationId == 65535) {
-															this.animationId = -1;
-														}
-													} else
-														if (var2 == 27) {
-															this.interactType = 1;
-														} else
-															if (var2 == 28) {
-																this.int2 = var1.readUnsignedByte();
-															} else
-																if (var2 == 29) {
-																	this.ambient = var1.readByte();
-																} else
-																	if (var2 == 39) {
-																		this.contrast = var1.readByte() * 25;
-																	} else
-																		if (var2 >= 30 && var2 < 35) {
-																			this.actions[var2 - 30] = var1.readStringCp1252NullTerminated();
-																			if (this.actions[var2 - 30].equalsIgnoreCase("Hidden")) {
-																				this.actions[var2 - 30] = null;
-																			}
-																		} else
-																			if (var2 == 40) {
-																				var3 = var1.readUnsignedByte();
-																				this.recolorFrom = new short[var3];
-																				this.recolorTo = new short[var3];
-																				for (var4 = 0; var4 < var3; ++var4) {
-																					this.recolorFrom[var4] = ((short) (var1.readUnsignedShort()));
-																					this.recolorTo[var4] = ((short) (var1.readUnsignedShort()));
-																				}
-																			} else
-																				if (var2 == 41) {
-																					var3 = var1.readUnsignedByte();
-																					this.retextureFrom = new short[var3];
-																					this.retextureTo = new short[var3];
-																					for (var4 = 0; var4 < var3; ++var4) {
-																						this.retextureFrom[var4] = ((short) (var1.readUnsignedShort()));
-																						this.retextureTo[var4] = ((short) (var1.readUnsignedShort()));
-																					}
-																				} else
-																					if (var2 == 61) {
-																						var1.readUnsignedShort();
-																					} else
-																						if (var2 == 62) {
-																							this.isRotated = true;
-																						} else
-																							if (var2 == 64) {
-																								this.clipped = false;
-																							} else
-																								if (var2 == 65) {
-																									this.modelSizeX = var1.readUnsignedShort();
-																								} else
-																									if (var2 == 66) {
-																										this.modelHeight = var1.readUnsignedShort();
-																									} else
-																										if (var2 == 67) {
-																											this.modelSizeY = var1.readUnsignedShort();
-																										} else
-																											if (var2 == 68) {
-																												this.mapSceneId = var1.readUnsignedShort();
-																											} else
-																												if (var2 == 69) {
-																													var1.readUnsignedByte();
-																												} else
-																													if (var2 == 70) {
-																														this.offsetX = var1.readShort();
-																													} else
-																														if (var2 == 71) {
-																															this.offsetHeight = var1.readShort();
-																														} else
-																															if (var2 == 72) {
-																																this.offsetY = var1.readShort();
-																															} else
-																																if (var2 == 73) {
-																																	this.boolean2 = true;
-																																} else
-																																	if (var2 == 74) {
-																																		this.isSolid = true;
-																																	} else
-																																		if (var2 == 75) {
-																																			this.int3 = var1.readUnsignedByte();
-																																		} else
-																																			if (var2 != 77 && var2 != 92) {
-																																				if (var2 == 78) {
-																																					this.ambientSoundId = var1.readUnsignedShort();
-																																					this.int7 = var1.readUnsignedByte();
-																																				} else
-																																					if (var2 == 79) {
-																																						this.int5 = var1.readUnsignedShort();
-																																						this.int6 = var1.readUnsignedShort();
-																																						this.int7 = var1.readUnsignedByte();
-																																						var3 = var1.readUnsignedByte();
-																																						this.soundEffectIds = new int[var3];
-																																						for (var4 = 0; var4 < var3; ++var4) {
-																																							this.soundEffectIds[var4] = var1.readUnsignedShort();
-																																						}
-																																					} else
-																																						if (var2 == 81) {
-																																							this.clipType = var1.readUnsignedByte() * 256;
-																																						} else
-																																							if (var2 == 82) {
-																																								this.mapIconId = var1.readUnsignedShort();
-																																							} else
-																																								if (var2 == 89) {
-																																									this.boolean3 = false;
-																																								} else
-																																									if (var2 == 249) {
-																																										this.params = LoginScreenAnimation.readStringIntParameters(var1, this.params);
-																																									}
-
-
-
-
-
-																																			} else {
-																																				this.transformVarbit = var1.readUnsignedShort();
-																																				if (this.transformVarbit == 65535) {
-																																					this.transformVarbit = -1;
-																																				}
-																																				this.transformVarp = var1.readUnsignedShort();
-																																				if (this.transformVarp == 65535) {
-																																					this.transformVarp = -1;
-																																				}
-																																				var3 = -1;
-																																				if (var2 == 92) {
-																																					var3 = var1.readUnsignedShort();
-																																					if (var3 == 65535) {
-																																						var3 = -1;
-																																					}
-																																				}
-																																				var4 = var1.readUnsignedByte();
-																																				this.transforms = new int[var4 + 2];
-																																				for (int var5 = 0; var5 <= var4; ++var5) {
-																																					this.transforms[var5] = var1.readUnsignedShort();
-																																					if (this.transforms[var5] == 65535) {
-																																						this.transforms[var5] = -1;
-																																					}
-																																				}
-																																				this.transforms[var4 + 1] = var3;
-																																			}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+				}
+			}
+		} else if (var2 == 14) {
+			this.sizeX = var1.readUnsignedByte();
+		} else if (var2 == 15) {
+			this.sizeY = var1.readUnsignedByte();
+		} else if (var2 == 17) {
+			this.interactType = 0;
+			this.boolean1 = false;
+		} else if (var2 == 18) {
+			this.boolean1 = false;
+		} else if (var2 == 19) {
+			this.int1 = var1.readUnsignedByte();
+		} else if (var2 == 21) {
+			this.clipType = 0;
+		} else if (var2 == 22) {
+			this.nonFlatShading = true;
+		} else if (var2 == 23) {
+			this.modelClipped = true;
+		} else if (var2 == 24) {
+			this.animationId = var1.readUnsignedShort();
+			if (this.animationId == 65535) {
+				this.animationId = -1;
+			}
+		} else if (var2 == 27) {
+			this.interactType = 1;
+		} else if (var2 == 28) {
+			this.int2 = var1.readUnsignedByte();
+		} else if (var2 == 29) {
+			this.ambient = var1.readByte();
+		} else if (var2 == 39) {
+			this.contrast = var1.readByte() * 25;
+		} else if (var2 >= 30 && var2 < 35) {
+			this.actions[var2 - 30] = var1.readStringCp1252NullTerminated();
+			if (this.actions[var2 - 30].equalsIgnoreCase("Hidden")) {
+				this.actions[var2 - 30] = null;
+			}
+		} else if (var2 == 40) {
+			var3 = var1.readUnsignedByte();
+			this.recolorFrom = new short[var3];
+			this.recolorTo = new short[var3];
+			for (var4 = 0; var4 < var3; ++var4) {
+				this.recolorFrom[var4] = ((short) (var1.readUnsignedShort()));
+				this.recolorTo[var4] = ((short) (var1.readUnsignedShort()));
+			}
+		} else if (var2 == 41) {
+			var3 = var1.readUnsignedByte();
+			this.retextureFrom = new short[var3];
+			this.retextureTo = new short[var3];
+			for (var4 = 0; var4 < var3; ++var4) {
+				this.retextureFrom[var4] = ((short) (var1.readUnsignedShort()));
+				this.retextureTo[var4] = ((short) (var1.readUnsignedShort()));
+			}
+		} else if (var2 == 61) {
+			var1.readUnsignedShort();
+		} else if (var2 == 62) {
+			this.isRotated = true;
+		} else if (var2 == 64) {
+			this.clipped = false;
+		} else if (var2 == 65) {
+			this.modelSizeX = var1.readUnsignedShort();
+		} else if (var2 == 66) {
+			this.modelHeight = var1.readUnsignedShort();
+		} else if (var2 == 67) {
+			this.modelSizeY = var1.readUnsignedShort();
+		} else if (var2 == 68) {
+			this.mapSceneId = var1.readUnsignedShort();
+		} else if (var2 == 69) {
+			var1.readUnsignedByte();
+		} else if (var2 == 70) {
+			this.offsetX = var1.readShort();
+		} else if (var2 == 71) {
+			this.offsetHeight = var1.readShort();
+		} else if (var2 == 72) {
+			this.offsetY = var1.readShort();
+		} else if (var2 == 73) {
+			this.boolean2 = true;
+		} else if (var2 == 74) {
+			this.isSolid = true;
+		} else if (var2 == 75) {
+			this.int3 = var1.readUnsignedByte();
+		} else if (var2 != 77 && var2 != 92) {
+			if (var2 == 78) {
+				this.ambientSoundId = var1.readUnsignedShort();
+				this.int7 = var1.readUnsignedByte();
+			} else if (var2 == 79) {
+				this.int5 = var1.readUnsignedShort();
+				this.int6 = var1.readUnsignedShort();
+				this.int7 = var1.readUnsignedByte();
+				var3 = var1.readUnsignedByte();
+				this.soundEffectIds = new int[var3];
+				for (var4 = 0; var4 < var3; ++var4) {
+					this.soundEffectIds[var4] = var1.readUnsignedShort();
+				}
+			} else if (var2 == 81) {
+				this.clipType = var1.readUnsignedByte() * 256;
+			} else if (var2 == 82) {
+				this.mapIconId = var1.readUnsignedShort();
+			} else if (var2 == 89) {
+				this.boolean3 = false;
+			} else if (var2 == 249) {
+				this.params = LoginScreenAnimation.readStringIntParameters(var1, this.params);
+			}
+		} else {
+			this.transformVarbit = var1.readUnsignedShort();
+			if (this.transformVarbit == 65535) {
+				this.transformVarbit = -1;
+			}
+			this.transformVarp = var1.readUnsignedShort();
+			if (this.transformVarp == 65535) {
+				this.transformVarp = -1;
+			}
+			var3 = -1;
+			if (var2 == 92) {
+				var3 = var1.readUnsignedShort();
+				if (var3 == 65535) {
+					var3 = -1;
+				}
+			}
+			var4 = var1.readUnsignedByte();
+			this.transforms = new int[var4 + 2];
+			for (int var5 = 0; var5 <= var4; ++var5) {
+				this.transforms[var5] = var1.readUnsignedShort();
+				if (this.transforms[var5] == 65535) {
+					this.transforms[var5] = -1;
+				}
+			}
+			this.transforms[var4 + 1] = var3;
+		}
 	}
 
 	@ObfuscatedName("e")
@@ -571,21 +495,17 @@ public class ObjectComposition extends DualNode {
 				}
 			}
 			return true;
-		} else
-			if (this.modelIds == null) {
-				return true;
-			} else
-				if (var1 != 10) {
-					return true;
-				} else {
-					boolean var2 = true;
-					for (int var3 = 0; var3 < this.modelIds.length; ++var3) {
-						var2 &= ObjectDefinition_modelsArchive.tryLoadFile(this.modelIds[var3] & 65535, 0);
-					}
-					return var2;
-				}
-
-
+		} else if (this.modelIds == null) {
+			return true;
+		} else if (var1 != 10) {
+			return true;
+		} else {
+			boolean var2 = true;
+			for (int var3 = 0; var3 < this.modelIds.length; ++var3) {
+				var2 &= ObjectDefinition_modelsArchive.tryLoadFile(this.modelIds[var3] & 65535, 0);
+			}
+			return var2;
+		}
 	}
 
 	@ObfuscatedName("g")
@@ -635,11 +555,9 @@ public class ObjectComposition extends DualNode {
 		if (this.clipType >= 0) {
 			if (var9 instanceof Model) {
 				var9 = ((Model) (var9)).contourGround(var3, var4, var5, var6, true, this.clipType);
-			} else
-				if (var9 instanceof ModelData) {
-					var9 = ((ModelData) (var9)).method3921(var3, var4, var5, var6, true, this.clipType);
-				}
-
+			} else if (var9 instanceof ModelData) {
+				var9 = ((ModelData) (var9)).method3921(var3, var4, var5, var6, true, this.clipType);
+			}
 		}
 		return ((Renderable) (var9));
 	}
@@ -793,15 +711,11 @@ public class ObjectComposition extends DualNode {
 		var2 &= 3;
 		if (var2 == 1) {
 			var8.method3932();
-		} else
-			if (var2 == 2) {
-				var8.method3933();
-			} else
-				if (var2 == 3) {
-					var8.method3942();
-				}
-
-
+		} else if (var2 == 2) {
+			var8.method3933();
+		} else if (var2 == 3) {
+			var8.method3942();
+		}
 		if (this.recolorFrom != null) {
 			for (var7 = 0; var7 < this.recolorFrom.length; ++var7) {
 				var8.recolor(this.recolorFrom[var7], this.recolorTo[var7]);
@@ -828,11 +742,9 @@ public class ObjectComposition extends DualNode {
 		int var1 = -1;
 		if (this.transformVarbit != -1) {
 			var1 = class388.getVarbit(this.transformVarbit);
-		} else
-			if (this.transformVarp != -1) {
-				var1 = Varps.Varps_main[this.transformVarp];
-			}
-
+		} else if (this.transformVarp != -1) {
+			var1 = Varps.Varps_main[this.transformVarp];
+		}
 		int var2;
 		if (var1 >= 0 && var1 < this.transforms.length - 1) {
 			var2 = this.transforms[var1];

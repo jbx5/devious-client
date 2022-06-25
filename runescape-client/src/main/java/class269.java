@@ -27,24 +27,20 @@ public class class269 {
 			if (var5 >= var1 && var5 < var1 + 16 && var6 >= var2 && var6 < var2 + 16) {
 				var0.scrollY -= 4;
 				ChatChannel.invalidateWidget(var0);
-			} else
-				if (var5 >= var1 && var5 < var1 + 16 && var6 >= var3 + var2 - 16 && var6 < var3 + var2) {
-					var0.scrollY += 4;
-					ChatChannel.invalidateWidget(var0);
-				} else
-					if (var5 >= var1 - Client.alternativeScrollbarWidth && var5 < Client.alternativeScrollbarWidth + var1 + 16 && var6 >= var2 + 16 && var6 < var3 + var2 - 16) {
-						var7 = var3 * (var3 - 32) / var4;
-						if (var7 < 8) {
-							var7 = 8;
-						}
-						int var8 = var6 - var2 - 16 - var7 / 2;
-						int var9 = var3 - 32 - var7;
-						var0.scrollY = var8 * (var4 - var3) / var9;
-						ChatChannel.invalidateWidget(var0);
-						Client.field560 = true;
-					}
-
-
+			} else if (var5 >= var1 && var5 < var1 + 16 && var6 >= var3 + var2 - 16 && var6 < var3 + var2) {
+				var0.scrollY += 4;
+				ChatChannel.invalidateWidget(var0);
+			} else if (var5 >= var1 - Client.alternativeScrollbarWidth && var5 < Client.alternativeScrollbarWidth + var1 + 16 && var6 >= var2 + 16 && var6 < var3 + var2 - 16) {
+				var7 = var3 * (var3 - 32) / var4;
+				if (var7 < 8) {
+					var7 = 8;
+				}
+				int var8 = var6 - var2 - 16 - var7 / 2;
+				int var9 = var3 - 32 - var7;
+				var0.scrollY = var8 * (var4 - var3) / var9;
+				ChatChannel.invalidateWidget(var0);
+				Client.field560 = true;
+			}
 		}
 		if (Client.mouseWheelRotation != 0) {
 			var7 = var0.width;

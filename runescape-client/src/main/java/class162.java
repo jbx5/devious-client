@@ -69,28 +69,24 @@ public class class162 extends class165 {
 		if (var0 == 6800) {
 			Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = "";
 			return 1;
-		} else
-			if (var0 != 6801 && var0 != 6802) {
-				if (var0 == 6850) {
-					Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = "";
+		} else if (var0 != 6801 && var0 != 6802) {
+			if (var0 == 6850) {
+				Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = "";
+				return 1;
+			} else if (var0 != 6851 && var0 != 6852) {
+				if (var0 == 6853) {
+					Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;
 					return 1;
-				} else
-					if (var0 != 6851 && var0 != 6852) {
-						if (var0 == 6853) {
-							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;
-							return 1;
-						} else {
-							return 2;
-						}
-					} else {
-						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = -1;
-						return 1;
-					}
-
+				} else {
+					return 2;
+				}
 			} else {
 				Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = -1;
 				return 1;
 			}
-
+		} else {
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = -1;
+			return 1;
+		}
 	}
 }

@@ -51,14 +51,12 @@ public class ArchiveDiskActionHandler implements Runnable {
 						synchronized(ArchiveDiskActionHandler_requestQueue) {
 							var1.remove();
 						}
-					} else
-						if (var1.type == 1) {
-							var1.data = var1.archiveDisk.read(((int) (var1.key)));
-							synchronized(ArchiveDiskActionHandler_requestQueue) {
-								ArchiveDiskActionHandler_responseQueue.addFirst(var1);
-							}
+					} else if (var1.type == 1) {
+						var1.data = var1.archiveDisk.read(((int) (var1.key)));
+						synchronized(ArchiveDiskActionHandler_requestQueue) {
+							ArchiveDiskActionHandler_responseQueue.addFirst(var1);
 						}
-
+					}
 					synchronized(ArchiveDiskActionHandler_lock) {
 						if (field3971 <= 1) {
 							field3971 = 0;
@@ -272,7 +270,7 @@ public class ArchiveDiskActionHandler implements Runnable {
 				ObjectComposition.ObjectDefinition_cachedModelData.clear();
 				PacketBufferNode var17;
 				if (class353.client.hasFrame()) {
-					var17 = EnumComposition.getPacketBufferNode(ClientPacket.field3007, Client.packetWriter.isaacCipher);
+					var17 = EnumComposition.getPacketBufferNode(ClientPacket.DETECT_MODIFIED_CLIENT, Client.packetWriter.isaacCipher);
 					var17.packetBuffer.writeInt(1057001181);
 					Client.packetWriter.addNode(var17);
 				}
@@ -327,13 +325,11 @@ public class ArchiveDiskActionHandler implements Runnable {
 			String var13;
 			if (var7 < 0) {
 				var13 = "";
-			} else
-				if (Client.menuTargets[var7].length() > 0) {
-					var13 = Client.menuActions[var7] + " " + Client.menuTargets[var7];
-				} else {
-					var13 = Client.menuActions[var7];
-				}
-
+			} else if (Client.menuTargets[var7].length() > 0) {
+				var13 = Client.menuActions[var7] + " " + Client.menuTargets[var7];
+			} else {
+				var13 = Client.menuActions[var7];
+			}
 			var12.draw(var13, var0 + 3, var8, var9, 0);
 		}
 		var7 = UserComparator3.menuX;

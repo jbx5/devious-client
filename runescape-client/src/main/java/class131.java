@@ -35,64 +35,38 @@ public class class131 {
 			Object var3;
 			if (var2 == 3) {
 				var3 = new class150(this);
-			} else
-				if (var2 == 1) {
-					var3 = new class126(this);
-				} else
-					if (var2 == 13) {
-						var3 = new class143(this);
-					} else
-						if (var2 == 4) {
-							var3 = new class135(this);
-						} else
-							if (var2 == 6) {
-								var3 = new class142(this);
-							} else
-								if (var2 == 5) {
-									var3 = new class127(this);
-								} else
-									if (var2 == 2) {
-										var3 = new class132(this);
-									} else
-										if (var2 == 7) {
-											var3 = new class125(this);
-										} else
-											if (var2 == 14) {
-												var3 = new class129(this);
-											} else
-												if (var2 == 8) {
-													var3 = new class146(this);
-												} else
-													if (var2 == 9) {
-														var3 = new class152(this);
-													} else
-														if (var2 == 10) {
-															var3 = new class138(this);
-														} else
-															if (var2 == 11) {
-																var3 = new class133(this);
-															} else
-																if (var2 == 12) {
-																	var3 = new class137(this);
-																} else {
-																	if (var2 != 15) {
-																		throw new RuntimeException("");
-																	}
-																	var3 = new class147(this);
-																}
-
-
-
-
-
-
-
-
-
-
-
-
-
+			} else if (var2 == 1) {
+				var3 = new class126(this);
+			} else if (var2 == 13) {
+				var3 = new class143(this);
+			} else if (var2 == 4) {
+				var3 = new class135(this);
+			} else if (var2 == 6) {
+				var3 = new class142(this);
+			} else if (var2 == 5) {
+				var3 = new class127(this);
+			} else if (var2 == 2) {
+				var3 = new class132(this);
+			} else if (var2 == 7) {
+				var3 = new class125(this);
+			} else if (var2 == 14) {
+				var3 = new class129(this);
+			} else if (var2 == 8) {
+				var3 = new class146(this);
+			} else if (var2 == 9) {
+				var3 = new class152(this);
+			} else if (var2 == 10) {
+				var3 = new class138(this);
+			} else if (var2 == 11) {
+				var3 = new class133(this);
+			} else if (var2 == 12) {
+				var3 = new class137(this);
+			} else {
+				if (var2 != 15) {
+					throw new RuntimeException("");
+				}
+				var3 = new class147(this);
+			}
 			((class128) (var3)).vmethod3150(var1);
 			this.field1585.addFirst(((Node) (var3)));
 		}
@@ -165,53 +139,51 @@ public class class131 {
 				Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var10.defaultStr;
 			}
 			return 1;
-		} else
-			if (var0 != ScriptOpcodes.ENUM) {
-				if (var0 == ScriptOpcodes.ENUM_GETOUTPUTCOUNT) {
-					var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
-					EnumComposition var4 = UserComparator7.getEnum(var3);
-					Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var4.size();
-					return 1;
-				} else {
-					return 2;
-				}
+		} else if (var0 != ScriptOpcodes.ENUM) {
+			if (var0 == ScriptOpcodes.ENUM_GETOUTPUTCOUNT) {
+				var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+				EnumComposition var4 = UserComparator7.getEnum(var3);
+				Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var4.size();
+				return 1;
 			} else {
-				class446.Interpreter_intStackSize -= 4;
-				var3 = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize];
-				var9 = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize + 1];
-				int var5 = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize + 2];
-				var6 = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize + 3];
-				EnumComposition var7 = UserComparator7.getEnum(var5);
-				if (var3 == var7.inputType && var9 == var7.outputType) {
-					for (int var8 = 0; var8 < var7.outputCount; ++var8) {
-						if (var6 == var7.keys[var8]) {
-							if (var9 == 115) {
-								Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var7.strVals[var8];
-							} else {
-								Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var7.intVals[var8];
-							}
-							var7 = null;
-							break;
-						}
-					}
-					if (var7 != null) {
-						if (var9 == 115) {
-							Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var7.defaultStr;
-						} else {
-							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var7.defaultInt;
-						}
-					}
-					return 1;
-				} else {
-					if (var9 == 115) {
-						Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = "null";
-					} else {
-						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;
-					}
-					return 1;
-				}
+				return 2;
 			}
-
+		} else {
+			class446.Interpreter_intStackSize -= 4;
+			var3 = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize];
+			var9 = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize + 1];
+			int var5 = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize + 2];
+			var6 = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize + 3];
+			EnumComposition var7 = UserComparator7.getEnum(var5);
+			if (var3 == var7.inputType && var9 == var7.outputType) {
+				for (int var8 = 0; var8 < var7.outputCount; ++var8) {
+					if (var6 == var7.keys[var8]) {
+						if (var9 == 115) {
+							Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var7.strVals[var8];
+						} else {
+							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var7.intVals[var8];
+						}
+						var7 = null;
+						break;
+					}
+				}
+				if (var7 != null) {
+					if (var9 == 115) {
+						Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var7.defaultStr;
+					} else {
+						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var7.defaultInt;
+					}
+				}
+				return 1;
+			} else {
+				if (var9 == 115) {
+					Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = "null";
+				} else {
+					Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;
+				}
+				return 1;
+			}
+		}
 	}
 
 	@ObfuscatedName("fg")

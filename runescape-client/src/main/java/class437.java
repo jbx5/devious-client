@@ -76,11 +76,9 @@ public class class437 extends DualNode {
 				var16[var4] = var11;
 				this.field4677[var4] = var6;
 			}
-		} else
-			if (var2 == 4) {
-				this.field4678 = var1.packBytesToInt();
-			}
-
+		} else if (var2 == 4) {
+			this.field4678 = var1.packBytesToInt();
+		}
 	}
 
 	@ObfuscatedName("e")

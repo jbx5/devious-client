@@ -123,12 +123,10 @@ public abstract class AbstractWorldMapIcon {
 		WorldMapLabel var3 = this.getLabel();
 		if (var3 == null) {
 			return false;
-		} else
-			if (var1 >= this.screenX - var3.width / 2 && var1 <= var3.width / 2 + this.screenX) {
-				return var2 >= this.screenY && var2 <= this.screenY + var3.height;
-			} else {
-				return false;
-			}
-
+		} else if (var1 >= this.screenX - var3.width / 2 && var1 <= var3.width / 2 + this.screenX) {
+			return var2 >= this.screenY && var2 <= this.screenY + var3.height;
+		} else {
+			return false;
+		}
 	}
 }

@@ -87,55 +87,45 @@ public class ByteArrayPool {
 		if (var0 != 100) {
 			if (var0 < 100) {
 			}
-		} else
-			if (ByteArrayPool_smallCount > 0) {
-				var4 = ByteArrayPool_small[--ByteArrayPool_smallCount];
-				ByteArrayPool_small[ByteArrayPool_smallCount] = null;
-				return var4;
-			}
-
+		} else if (ByteArrayPool_smallCount > 0) {
+			var4 = ByteArrayPool_small[--ByteArrayPool_smallCount];
+			ByteArrayPool_small[ByteArrayPool_smallCount] = null;
+			return var4;
+		}
 		if (var0 != 5000) {
 			if (var0 < 5000) {
 			}
-		} else
-			if (ByteArrayPool_mediumCount > 0) {
-				var4 = ByteArrayPool_medium[--ByteArrayPool_mediumCount];
-				ByteArrayPool_medium[ByteArrayPool_mediumCount] = null;
-				return var4;
-			}
-
+		} else if (ByteArrayPool_mediumCount > 0) {
+			var4 = ByteArrayPool_medium[--ByteArrayPool_mediumCount];
+			ByteArrayPool_medium[ByteArrayPool_mediumCount] = null;
+			return var4;
+		}
 		if (var0 != 10000) {
 			if (var0 < 10000) {
 			}
-		} else
-			if (ByteArrayPool_largeCount > 0) {
-				var4 = ByteArrayPool_large[--ByteArrayPool_largeCount];
-				ByteArrayPool_large[ByteArrayPool_largeCount] = null;
-				return var4;
-			}
-
+		} else if (ByteArrayPool_largeCount > 0) {
+			var4 = ByteArrayPool_large[--ByteArrayPool_largeCount];
+			ByteArrayPool_large[ByteArrayPool_largeCount] = null;
+			return var4;
+		}
 		if (var0 != 30000) {
 			if (var0 < 30000) {
 			}
-		} else
-			if (field4216 > 0) {
-				var4 = field4214[--field4216];
-				field4214[field4216] = null;
-				return var4;
-			}
-
+		} else if (field4216 > 0) {
+			var4 = field4214[--field4216];
+			field4214[field4216] = null;
+			return var4;
+		}
 		if (class464.ByteArrayPool_arrays != null) {
 			for (int var2 = 0; var2 < Canvas.ByteArrayPool_alternativeSizes.length; ++var2) {
 				if (Canvas.ByteArrayPool_alternativeSizes[var2] != var0) {
 					if (var0 < Canvas.ByteArrayPool_alternativeSizes[var2]) {
 					}
-				} else
-					if (class17.ByteArrayPool_altSizeArrayCounts[var2] > 0) {
-						byte[] var3 = class464.ByteArrayPool_arrays[var2][--class17.ByteArrayPool_altSizeArrayCounts[var2]];
-						class464.ByteArrayPool_arrays[var2][class17.ByteArrayPool_altSizeArrayCounts[var2]] = null;
-						return var3;
-					}
-
+				} else if (class17.ByteArrayPool_altSizeArrayCounts[var2] > 0) {
+					byte[] var3 = class464.ByteArrayPool_arrays[var2][--class17.ByteArrayPool_altSizeArrayCounts[var2]];
+					class464.ByteArrayPool_arrays[var2][class17.ByteArrayPool_altSizeArrayCounts[var2]] = null;
+					return var3;
+				}
 			}
 		}
 		return new byte[var0];

@@ -359,25 +359,23 @@ public class Scene {
 				}
 			}
 			this.tiles[var1][var2][var3].paint = var21;
-		} else
-			if (var4 != 1) {
-				SceneTileModel var23 = new SceneTileModel(var4, var5, var6, var2, var3, var7, var8, var9, var10, var11, var12, var13, var14, var15, var16, var17, var18, var19, var20);
-				for (var22 = var1; var22 >= 0; --var22) {
-					if (this.tiles[var22][var2][var3] == null) {
-						this.tiles[var22][var2][var3] = new Tile(var22, var2, var3);
-					}
+		} else if (var4 != 1) {
+			SceneTileModel var23 = new SceneTileModel(var4, var5, var6, var2, var3, var7, var8, var9, var10, var11, var12, var13, var14, var15, var16, var17, var18, var19, var20);
+			for (var22 = var1; var22 >= 0; --var22) {
+				if (this.tiles[var22][var2][var3] == null) {
+					this.tiles[var22][var2][var3] = new Tile(var22, var2, var3);
 				}
-				this.tiles[var1][var2][var3].model = var23;
-			} else {
-				var21 = new SceneTilePaint(var15, var16, var17, var18, var6, var20, var8 == var7 && var7 == var9 && var10 == var7);
-				for (var22 = var1; var22 >= 0; --var22) {
-					if (this.tiles[var22][var2][var3] == null) {
-						this.tiles[var22][var2][var3] = new Tile(var22, var2, var3);
-					}
-				}
-				this.tiles[var1][var2][var3].paint = var21;
 			}
-
+			this.tiles[var1][var2][var3].model = var23;
+		} else {
+			var21 = new SceneTilePaint(var15, var16, var17, var18, var6, var20, var8 == var7 && var7 == var9 && var10 == var7);
+			for (var22 = var1; var22 >= 0; --var22) {
+				if (this.tiles[var22][var2][var3] == null) {
+					this.tiles[var22][var2][var3] = new Tile(var22, var2, var3);
+				}
+			}
+			this.tiles[var1][var2][var3].paint = var21;
+		}
 	}
 
 	@ObfuscatedName("g")
@@ -782,26 +780,20 @@ public class Scene {
 		Tile var6 = this.tiles[var1][var2][var3];
 		if (var6 == null) {
 			return -1;
-		} else
-			if (var6.boundaryObject != null && var6.boundaryObject.tag == var4) {
-				return var6.boundaryObject.flags & 255;
-			} else
-				if (var6.wallDecoration != null && var6.wallDecoration.tag == var4) {
-					return var6.wallDecoration.flags & 255;
-				} else
-					if (var6.floorDecoration != null && var6.floorDecoration.tag == var4) {
-						return var6.floorDecoration.flags & 255;
-					} else {
-						for (int var7 = 0; var7 < var6.gameObjectsCount; ++var7) {
-							if (var6.gameObjects[var7].tag == var4) {
-								return var6.gameObjects[var7].flags & 255;
-							}
-						}
-						return -1;
-					}
-
-
-
+		} else if (var6.boundaryObject != null && var6.boundaryObject.tag == var4) {
+			return var6.boundaryObject.flags & 255;
+		} else if (var6.wallDecoration != null && var6.wallDecoration.tag == var4) {
+			return var6.wallDecoration.flags & 255;
+		} else if (var6.floorDecoration != null && var6.floorDecoration.tag == var4) {
+			return var6.floorDecoration.flags & 255;
+		} else {
+			for (int var7 = 0; var7 < var6.gameObjectsCount; ++var7) {
+				if (var6.gameObjects[var7].tag == var4) {
+					return var6.gameObjects[var7].flags & 255;
+				}
+			}
+			return -1;
+		}
 	}
 
 	@ObfuscatedName("ap")
@@ -1012,25 +1004,19 @@ public class Scene {
 	public void draw(int var1, int var2, int var3, int var4, int var5, int var6) {
 		if (var1 < 0) {
 			var1 = 0;
-		} else
-			if (var1 >= this.xSize * 128) {
-				var1 = this.xSize * 128 - 1;
-			}
-
+		} else if (var1 >= this.xSize * 128) {
+			var1 = this.xSize * 128 - 1;
+		}
 		if (var3 < 0) {
 			var3 = 0;
-		} else
-			if (var3 >= this.ySize * 128) {
-				var3 = this.ySize * 128 - 1;
-			}
-
+		} else if (var3 >= this.ySize * 128) {
+			var3 = this.ySize * 128 - 1;
+		}
 		if (var4 < 128) {
 			var4 = 128;
-		} else
-			if (var4 > 383) {
-				var4 = 383;
-			}
-
+		} else if (var4 > 383) {
+			var4 = 383;
+		}
 		++Scene_drawnCount;
 		Scene_cameraPitchSine = Rasterizer3D.Rasterizer3D_sine[var4];
 		Scene_cameraPitchCosine = Rasterizer3D.Rasterizer3D_cosine[var4];
@@ -1276,11 +1262,9 @@ public class Scene {
 													if (!this.method4203(0, var4, var5)) {
 														this.drawTileUnderlay(var9.paint, 0, Scene_cameraPitchSine, Scene_cameraPitchCosine, Scene_cameraYawSine, Scene_cameraYawCosine, var4, var5);
 													}
-												} else
-													if (var9.model != null && !this.method4203(0, var4, var5)) {
-														this.drawTileOverlay(var9.model, Scene_cameraPitchSine, Scene_cameraPitchCosine, Scene_cameraYawSine, Scene_cameraYawCosine, var4, var5);
-													}
-
+												} else if (var9.model != null && !this.method4203(0, var4, var5)) {
+													this.drawTileOverlay(var9.model, Scene_cameraPitchSine, Scene_cameraPitchCosine, Scene_cameraYawSine, Scene_cameraYawCosine, var4, var5);
+												}
 												var10 = var9.boundaryObject;
 												if (var10 != null) {
 													var10.renderable1.draw(0, Scene_cameraPitchSine, Scene_cameraPitchCosine, Scene_cameraYawSine, Scene_cameraYawCosine, var10.x - Scene_cameraX, var10.z - Scene_cameraY, var10.y - Scene_cameraZ, var10.tag);
@@ -1300,12 +1284,10 @@ public class Scene {
 														this.drawTileUnderlay(var3.paint, var7, Scene_cameraPitchSine, Scene_cameraPitchCosine, Scene_cameraYawSine, Scene_cameraYawCosine, var4, var5);
 													}
 												}
-											} else
-												if (var3.model != null && !this.method4203(var7, var4, var5)) {
-													var20 = true;
-													this.drawTileOverlay(var3.model, Scene_cameraPitchSine, Scene_cameraPitchCosine, Scene_cameraYawSine, Scene_cameraYawCosine, var4, var5);
-												}
-
+											} else if (var3.model != null && !this.method4203(var7, var4, var5)) {
+												var20 = true;
+												this.drawTileOverlay(var3.model, Scene_cameraPitchSine, Scene_cameraPitchCosine, Scene_cameraYawSine, Scene_cameraYawCosine, var4, var5);
+											}
 											var21 = 0;
 											var11 = 0;
 											BoundaryObject var31 = var3.boundaryObject;
@@ -1313,18 +1295,14 @@ public class Scene {
 											if (var31 != null || var13 != null) {
 												if (var4 == Scene_cameraXTile) {
 													++var21;
-												} else
-													if (Scene_cameraXTile < var4) {
-														var21 += 2;
-													}
-
+												} else if (Scene_cameraXTile < var4) {
+													var21 += 2;
+												}
 												if (var5 == Scene_cameraYTile) {
 													var21 += 3;
-												} else
-													if (Scene_cameraYTile > var5) {
-														var21 += 6;
-													}
-
+												} else if (Scene_cameraYTile > var5) {
+													var21 += 6;
+												}
 												var11 = field2425[var21];
 												var3.field2326 = field2427[var21];
 											}
@@ -1334,23 +1312,19 @@ public class Scene {
 														var3.drawGameObjectEdges = 3;
 														var3.field2333 = field2416[var21];
 														var3.field2334 = 3 - var3.field2333;
-													} else
-														if (var31.orientationA == 32) {
-															var3.drawGameObjectEdges = 6;
-															var3.field2333 = field2429[var21];
-															var3.field2334 = 6 - var3.field2333;
-														} else
-															if (var31.orientationA == 64) {
-																var3.drawGameObjectEdges = 12;
-																var3.field2333 = field2430[var21];
-																var3.field2334 = 12 - var3.field2333;
-															} else {
-																var3.drawGameObjectEdges = 9;
-																var3.field2333 = field2431[var21];
-																var3.field2334 = 9 - var3.field2333;
-															}
-
-
+													} else if (var31.orientationA == 32) {
+														var3.drawGameObjectEdges = 6;
+														var3.field2333 = field2429[var21];
+														var3.field2334 = 6 - var3.field2333;
+													} else if (var31.orientationA == 64) {
+														var3.drawGameObjectEdges = 12;
+														var3.field2333 = field2430[var21];
+														var3.field2334 = 12 - var3.field2333;
+													} else {
+														var3.drawGameObjectEdges = 9;
+														var3.field2333 = field2431[var21];
+														var3.field2334 = 9 - var3.field2333;
+													}
 												} else {
 													var3.drawGameObjectEdges = 0;
 												}
@@ -1364,32 +1338,28 @@ public class Scene {
 											if (var13 != null && !this.method4205(var7, var4, var5, var13.renderable1.height)) {
 												if ((var13.orientation & var11) != 0) {
 													var13.renderable1.draw(0, Scene_cameraPitchSine, Scene_cameraPitchCosine, Scene_cameraYawSine, Scene_cameraYawCosine, var13.x - Scene_cameraX + var13.xOffset, var13.z - Scene_cameraY, var13.y - Scene_cameraZ + var13.yOffset, var13.tag);
-												} else
-													if (var13.orientation == 256) {
-														var14 = var13.x - Scene_cameraX;
-														var15 = var13.z - Scene_cameraY;
-														var16 = var13.y - Scene_cameraZ;
-														var17 = var13.orientation2;
-														if (var17 != 1 && var17 != 2) {
-															var18 = var14;
-														} else {
-															var18 = -var14;
-														}
-														int var19;
-														if (var17 != 2 && var17 != 3) {
-															var19 = var16;
-														} else {
-															var19 = -var16;
-														}
-														if (var19 < var18) {
-															var13.renderable1.draw(0, Scene_cameraPitchSine, Scene_cameraPitchCosine, Scene_cameraYawSine, Scene_cameraYawCosine, var14 + var13.xOffset, var15, var16 + var13.yOffset, var13.tag);
-														} else
-															if (var13.renderable2 != null) {
-																var13.renderable2.draw(0, Scene_cameraPitchSine, Scene_cameraPitchCosine, Scene_cameraYawSine, Scene_cameraYawCosine, var14, var15, var16, var13.tag);
-															}
-
+												} else if (var13.orientation == 256) {
+													var14 = var13.x - Scene_cameraX;
+													var15 = var13.z - Scene_cameraY;
+													var16 = var13.y - Scene_cameraZ;
+													var17 = var13.orientation2;
+													if (var17 != 1 && var17 != 2) {
+														var18 = var14;
+													} else {
+														var18 = -var14;
 													}
-
+													int var19;
+													if (var17 != 2 && var17 != 3) {
+														var19 = var16;
+													} else {
+														var19 = -var16;
+													}
+													if (var19 < var18) {
+														var13.renderable1.draw(0, Scene_cameraPitchSine, Scene_cameraPitchCosine, Scene_cameraYawSine, Scene_cameraYawCosine, var14 + var13.xOffset, var15, var16 + var13.yOffset, var13.tag);
+													} else if (var13.renderable2 != null) {
+														var13.renderable2.draw(0, Scene_cameraPitchSine, Scene_cameraPitchCosine, Scene_cameraYawSine, Scene_cameraYawCosine, var14, var15, var16, var13.tag);
+													}
+												}
 											}
 											if (var20) {
 												FloorDecoration var22 = var3.floorDecoration;
@@ -1516,17 +1486,15 @@ public class Scene {
 														if (var35.field2655 > var11) {
 															var11 = var35.field2655;
 															var25 = var24;
-														} else
-															if (var11 == var35.field2655) {
-																var15 = var35.centerX - Scene_cameraX;
-																var16 = var35.centerY - Scene_cameraZ;
-																var17 = gameObjects[var25].centerX - Scene_cameraX;
-																var18 = gameObjects[var25].centerY - Scene_cameraZ;
-																if (var15 * var15 + var16 * var16 > var17 * var17 + var18 * var18) {
-																	var25 = var24;
-																}
+														} else if (var11 == var35.field2655) {
+															var15 = var35.centerX - Scene_cameraX;
+															var16 = var35.centerY - Scene_cameraZ;
+															var17 = gameObjects[var25].centerX - Scene_cameraX;
+															var18 = gameObjects[var25].centerY - Scene_cameraZ;
+															if (var15 * var15 + var16 * var16 > var17 * var17 + var18 * var18) {
+																var25 = var24;
 															}
-
+														}
 													}
 												}
 												if (var25 == -1) {
@@ -1542,11 +1510,9 @@ public class Scene {
 														Tile var26 = var8[var14][var15];
 														if (var26.drawGameObjectEdges != 0) {
 															Scene_tilesDeque.addFirst(var26);
-														} else
-															if ((var14 != var4 || var15 != var5) && var26.drawSecondary) {
-																Scene_tilesDeque.addFirst(var26);
-															}
-
+														} else if ((var14 != var4 || var15 != var5) && var26.drawSecondary) {
+															Scene_tilesDeque.addFirst(var26);
+														}
 													}
 												}
 											} 
@@ -1599,31 +1565,27 @@ public class Scene {
 				if (var29 != null && !this.method4205(var7, var4, var5, var29.renderable1.height)) {
 					if ((var29.orientation & var3.field2326) != 0) {
 						var29.renderable1.draw(0, Scene_cameraPitchSine, Scene_cameraPitchCosine, Scene_cameraYawSine, Scene_cameraYawCosine, var29.x - Scene_cameraX + var29.xOffset, var29.z - Scene_cameraY, var29.y - Scene_cameraZ + var29.yOffset, var29.tag);
-					} else
-						if (var29.orientation == 256) {
-							var11 = var29.x - Scene_cameraX;
-							var25 = var29.z - Scene_cameraY;
-							var24 = var29.y - Scene_cameraZ;
-							var14 = var29.orientation2;
-							if (var14 != 1 && var14 != 2) {
-								var15 = var11;
-							} else {
-								var15 = -var11;
-							}
-							if (var14 != 2 && var14 != 3) {
-								var16 = var24;
-							} else {
-								var16 = -var24;
-							}
-							if (var16 >= var15) {
-								var29.renderable1.draw(0, Scene_cameraPitchSine, Scene_cameraPitchCosine, Scene_cameraYawSine, Scene_cameraYawCosine, var11 + var29.xOffset, var25, var24 + var29.yOffset, var29.tag);
-							} else
-								if (var29.renderable2 != null) {
-									var29.renderable2.draw(0, Scene_cameraPitchSine, Scene_cameraPitchCosine, Scene_cameraYawSine, Scene_cameraYawCosine, var11, var25, var24, var29.tag);
-								}
-
+					} else if (var29.orientation == 256) {
+						var11 = var29.x - Scene_cameraX;
+						var25 = var29.z - Scene_cameraY;
+						var24 = var29.y - Scene_cameraZ;
+						var14 = var29.orientation2;
+						if (var14 != 1 && var14 != 2) {
+							var15 = var11;
+						} else {
+							var15 = -var11;
 						}
-
+						if (var14 != 2 && var14 != 3) {
+							var16 = var24;
+						} else {
+							var16 = -var24;
+						}
+						if (var16 >= var15) {
+							var29.renderable1.draw(0, Scene_cameraPitchSine, Scene_cameraPitchCosine, Scene_cameraYawSine, Scene_cameraYawCosine, var11 + var29.xOffset, var25, var24 + var29.yOffset, var29.tag);
+						} else if (var29.renderable2 != null) {
+							var29.renderable2.draw(0, Scene_cameraPitchSine, Scene_cameraPitchCosine, Scene_cameraYawSine, Scene_cameraYawCosine, var11, var25, var24, var29.tag);
+						}
+					}
 				}
 				BoundaryObject var27 = var3.boundaryObject;
 				if (var27 != null) {
@@ -1735,18 +1697,16 @@ public class Scene {
 								if (var1.neColor != 12345678) {
 									Rasterizer3D.method4096(var27, var29, var25, var26, var28, var24, var1.neColor, var1.nwColor, var1.seColor);
 								}
-							} else
-								if (!Scene_isLowDetail) {
-									if (var1.isFlat) {
-										Rasterizer3D.drawTexturedTile(var27, var29, var25, var26, var28, var24, var1.neColor, var1.nwColor, var1.seColor, var10, var14, var9, var17, var18, var21, var12, var11, var15, var1.texture);
-									} else {
-										Rasterizer3D.drawTexturedTile(var27, var29, var25, var26, var28, var24, var1.neColor, var1.nwColor, var1.seColor, var13, var9, var14, var19, var21, var18, var16, var15, var11, var1.texture);
-									}
+							} else if (!Scene_isLowDetail) {
+								if (var1.isFlat) {
+									Rasterizer3D.drawTexturedTile(var27, var29, var25, var26, var28, var24, var1.neColor, var1.nwColor, var1.seColor, var10, var14, var9, var17, var18, var21, var12, var11, var15, var1.texture);
 								} else {
-									var30 = Rasterizer3D.Rasterizer3D_textureLoader.getAverageTextureRGB(var1.texture);
-									Rasterizer3D.method4096(var27, var29, var25, var26, var28, var24, method4243(var30, var1.neColor), method4243(var30, var1.nwColor), method4243(var30, var1.seColor));
+									Rasterizer3D.drawTexturedTile(var27, var29, var25, var26, var28, var24, var1.neColor, var1.nwColor, var1.seColor, var13, var9, var14, var19, var21, var18, var16, var15, var11, var1.texture);
 								}
-
+							} else {
+								var30 = Rasterizer3D.Rasterizer3D_textureLoader.getAverageTextureRGB(var1.texture);
+								Rasterizer3D.method4096(var27, var29, var25, var26, var28, var24, method4243(var30, var1.neColor), method4243(var30, var1.nwColor), method4243(var30, var1.seColor));
+							}
 						}
 						if ((var22 - var24) * (var29 - var25) - (var23 - var25) * (var28 - var24) > 0) {
 							Rasterizer3D.field2345 = false;
@@ -1761,14 +1721,12 @@ public class Scene {
 								if (var1.swColor != 12345678) {
 									Rasterizer3D.method4096(var23, var25, var29, var22, var24, var28, var1.swColor, var1.seColor, var1.nwColor);
 								}
-							} else
-								if (!Scene_isLowDetail) {
-									Rasterizer3D.drawTexturedTile(var23, var25, var29, var22, var24, var28, var1.swColor, var1.seColor, var1.nwColor, var10, var14, var9, var17, var18, var21, var12, var11, var15, var1.texture);
-								} else {
-									var30 = Rasterizer3D.Rasterizer3D_textureLoader.getAverageTextureRGB(var1.texture);
-									Rasterizer3D.method4096(var23, var25, var29, var22, var24, var28, method4243(var30, var1.swColor), method4243(var30, var1.seColor), method4243(var30, var1.nwColor));
-								}
-
+							} else if (!Scene_isLowDetail) {
+								Rasterizer3D.drawTexturedTile(var23, var25, var29, var22, var24, var28, var1.swColor, var1.seColor, var1.nwColor, var10, var14, var9, var17, var18, var21, var12, var11, var15, var1.texture);
+							} else {
+								var30 = Rasterizer3D.Rasterizer3D_textureLoader.getAverageTextureRGB(var1.texture);
+								Rasterizer3D.method4096(var23, var25, var29, var22, var24, var28, method4243(var30, var1.swColor), method4243(var30, var1.seColor), method4243(var30, var1.nwColor));
+							}
 						}
 					}
 				}
@@ -1838,11 +1796,9 @@ public class Scene {
 						int var19 = Rasterizer3D.Rasterizer3D_textureLoader.getAverageTextureRGB(var1.triangleTextureId[var9]);
 						Rasterizer3D.method4096(var16, var17, var18, var13, var14, var15, method4243(var19, var1.triangleColorA[var9]), method4243(var19, var1.triangleColorB[var9]), method4243(var19, var1.triangleColorC[var9]));
 					}
-				} else
-					if (var1.triangleColorA[var9] != 12345678) {
-						Rasterizer3D.method4096(var16, var17, var18, var13, var14, var15, var1.triangleColorA[var9], var1.triangleColorB[var9], var1.triangleColorC[var9]);
-					}
-
+				} else if (var1.triangleColorA[var9] != 12345678) {
+					Rasterizer3D.method4096(var16, var17, var18, var13, var14, var15, var1.triangleColorA[var9], var1.triangleColorB[var9], var1.triangleColorC[var9]);
+				}
 			}
 		}
 	}
@@ -1896,86 +1852,82 @@ public class Scene {
 						Scene_currentOccluders[Scene_currentOccludersCount++] = var4;
 					}
 				}
-			} else
-				if (var4.type == 2) {
-					var5 = var4.minTileY - Scene_cameraYTile + 25;
-					if (var5 >= 0 && var5 <= 50) {
-						var6 = var4.minTileX - Scene_cameraXTile + 25;
-						if (var6 < 0) {
-							var6 = 0;
+			} else if (var4.type == 2) {
+				var5 = var4.minTileY - Scene_cameraYTile + 25;
+				if (var5 >= 0 && var5 <= 50) {
+					var6 = var4.minTileX - Scene_cameraXTile + 25;
+					if (var6 < 0) {
+						var6 = 0;
+					}
+					var7 = var4.maxTileX - Scene_cameraXTile + 25;
+					if (var7 > 50) {
+						var7 = 50;
+					}
+					var13 = false;
+					while (var6 <= var7) {
+						if (visibleTiles[var6++][var5]) {
+							var13 = true;
+							break;
 						}
-						var7 = var4.maxTileX - Scene_cameraXTile + 25;
-						if (var7 > 50) {
-							var7 = 50;
-						}
-						var13 = false;
-						while (var6 <= var7) {
-							if (visibleTiles[var6++][var5]) {
-								var13 = true;
-								break;
+					} 
+					if (var13) {
+						var9 = Scene_cameraZ - var4.minZ;
+						if (var9 > 32) {
+							var4.field2470 = 3;
+						} else {
+							if (var9 >= -32) {
+								continue;
 							}
-						} 
-						if (var13) {
-							var9 = Scene_cameraZ - var4.minZ;
-							if (var9 > 32) {
-								var4.field2470 = 3;
-							} else {
-								if (var9 >= -32) {
-									continue;
+							var4.field2470 = 4;
+							var9 = -var9;
+						}
+						var4.field2472 = (var4.minX - Scene_cameraX << 8) / var9;
+						var4.field2466 = (var4.maxX - Scene_cameraX << 8) / var9;
+						var4.field2462 = (var4.minY - Scene_cameraY << 8) / var9;
+						var4.field2473 = (var4.maxY - Scene_cameraY << 8) / var9;
+						Scene_currentOccluders[Scene_currentOccludersCount++] = var4;
+					}
+				}
+			} else if (var4.type == 4) {
+				var5 = var4.minY - Scene_cameraY;
+				if (var5 > 128) {
+					var6 = var4.minTileY - Scene_cameraYTile + 25;
+					if (var6 < 0) {
+						var6 = 0;
+					}
+					var7 = var4.maxTileY - Scene_cameraYTile + 25;
+					if (var7 > 50) {
+						var7 = 50;
+					}
+					if (var6 <= var7) {
+						int var8 = var4.minTileX - Scene_cameraXTile + 25;
+						if (var8 < 0) {
+							var8 = 0;
+						}
+						var9 = var4.maxTileX - Scene_cameraXTile + 25;
+						if (var9 > 50) {
+							var9 = 50;
+						}
+						boolean var10 = false;
+						label148 : for (int var11 = var8; var11 <= var9; ++var11) {
+							for (int var12 = var6; var12 <= var7; ++var12) {
+								if (visibleTiles[var11][var12]) {
+									var10 = true;
+									break label148;
 								}
-								var4.field2470 = 4;
-								var9 = -var9;
 							}
-							var4.field2472 = (var4.minX - Scene_cameraX << 8) / var9;
-							var4.field2466 = (var4.maxX - Scene_cameraX << 8) / var9;
-							var4.field2462 = (var4.minY - Scene_cameraY << 8) / var9;
-							var4.field2473 = (var4.maxY - Scene_cameraY << 8) / var9;
+						}
+						if (var10) {
+							var4.field2470 = 5;
+							var4.field2472 = (var4.minX - Scene_cameraX << 8) / var5;
+							var4.field2466 = (var4.maxX - Scene_cameraX << 8) / var5;
+							var4.field2467 = (var4.minZ - Scene_cameraZ << 8) / var5;
+							var4.field2468 = (var4.maxZ - Scene_cameraZ << 8) / var5;
 							Scene_currentOccluders[Scene_currentOccludersCount++] = var4;
 						}
 					}
-				} else
-					if (var4.type == 4) {
-						var5 = var4.minY - Scene_cameraY;
-						if (var5 > 128) {
-							var6 = var4.minTileY - Scene_cameraYTile + 25;
-							if (var6 < 0) {
-								var6 = 0;
-							}
-							var7 = var4.maxTileY - Scene_cameraYTile + 25;
-							if (var7 > 50) {
-								var7 = 50;
-							}
-							if (var6 <= var7) {
-								int var8 = var4.minTileX - Scene_cameraXTile + 25;
-								if (var8 < 0) {
-									var8 = 0;
-								}
-								var9 = var4.maxTileX - Scene_cameraXTile + 25;
-								if (var9 > 50) {
-									var9 = 50;
-								}
-								boolean var10 = false;
-								label148 : for (int var11 = var8; var11 <= var9; ++var11) {
-									for (int var12 = var6; var12 <= var7; ++var12) {
-										if (visibleTiles[var11][var12]) {
-											var10 = true;
-											break label148;
-										}
-									}
-								}
-								if (var10) {
-									var4.field2470 = 5;
-									var4.field2472 = (var4.minX - Scene_cameraX << 8) / var5;
-									var4.field2466 = (var4.maxX - Scene_cameraX << 8) / var5;
-									var4.field2467 = (var4.minZ - Scene_cameraZ << 8) / var5;
-									var4.field2468 = (var4.maxZ - Scene_cameraZ << 8) / var5;
-									Scene_currentOccluders[Scene_currentOccludersCount++] = var4;
-								}
-							}
-						}
-					}
-
-
+				}
+			}
 		}
 	}
 
@@ -1984,21 +1936,19 @@ public class Scene {
 		int var4 = this.field2388[var1][var2][var3];
 		if (var4 == -Scene_drawnCount) {
 			return false;
-		} else
-			if (var4 == Scene_drawnCount) {
+		} else if (var4 == Scene_drawnCount) {
+			return true;
+		} else {
+			int var5 = var2 << 7;
+			int var6 = var3 << 7;
+			if (this.method4207(var5 + 1, this.tileHeights[var1][var2][var3], var6 + 1) && this.method4207(var5 + 128 - 1, this.tileHeights[var1][var2 + 1][var3], var6 + 1) && this.method4207(var5 + 128 - 1, this.tileHeights[var1][var2 + 1][var3 + 1], var6 + 128 - 1) && this.method4207(var5 + 1, this.tileHeights[var1][var2][var3 + 1], var6 + 128 - 1)) {
+				this.field2388[var1][var2][var3] = Scene_drawnCount;
 				return true;
 			} else {
-				int var5 = var2 << 7;
-				int var6 = var3 << 7;
-				if (this.method4207(var5 + 1, this.tileHeights[var1][var2][var3], var6 + 1) && this.method4207(var5 + 128 - 1, this.tileHeights[var1][var2 + 1][var3], var6 + 1) && this.method4207(var5 + 128 - 1, this.tileHeights[var1][var2 + 1][var3 + 1], var6 + 128 - 1) && this.method4207(var5 + 1, this.tileHeights[var1][var2][var3 + 1], var6 + 128 - 1)) {
-					this.field2388[var1][var2][var3] = Scene_drawnCount;
-					return true;
-				} else {
-					this.field2388[var1][var2][var3] = -Scene_drawnCount;
-					return false;
-				}
+				this.field2388[var1][var2][var3] = -Scene_drawnCount;
+				return false;
 			}
-
+		}
 	}
 
 	@ObfuscatedName("ay")
@@ -2116,25 +2066,17 @@ public class Scene {
 			}
 			if (!this.method4207(var5 + 64, var10, var6 + 64)) {
 				return false;
-			} else
-				if (var4 == 16) {
-					return this.method4207(var5, var9, var6 + 128);
-				} else
-					if (var4 == 32) {
-						return this.method4207(var5 + 128, var9, var6 + 128);
-					} else
-						if (var4 == 64) {
-							return this.method4207(var5 + 128, var9, var6);
-						} else
-							if (var4 == 128) {
-								return this.method4207(var5, var9, var6);
-							} else {
-								return true;
-							}
-
-
-
-
+			} else if (var4 == 16) {
+				return this.method4207(var5, var9, var6 + 128);
+			} else if (var4 == 32) {
+				return this.method4207(var5 + 128, var9, var6 + 128);
+			} else if (var4 == 64) {
+				return this.method4207(var5 + 128, var9, var6);
+			} else if (var4 == 128) {
+				return this.method4207(var5, var9, var6);
+			} else {
+				return true;
+			}
 		}
 	}
 
@@ -2182,13 +2124,11 @@ public class Scene {
 					int var11 = (var5 << 7) - 1;
 					if (!this.method4207(var7, var9, var11)) {
 						return false;
-					} else
-						if (!this.method4207(var10, var9, var11)) {
-							return false;
-						} else {
-							return true;
-						}
-
+					} else if (!this.method4207(var10, var9, var11)) {
+						return false;
+					} else {
+						return true;
+					}
 				}
 			}
 		}
@@ -2214,59 +2154,51 @@ public class Scene {
 						return true;
 					}
 				}
-			} else
-				if (var5.field2470 == 2) {
-					var6 = var1 - var5.minX;
-					if (var6 > 0) {
-						var7 = (var6 * var5.field2467 >> 8) + var5.minZ;
-						var8 = (var6 * var5.field2468 >> 8) + var5.maxZ;
-						var9 = (var6 * var5.field2462 >> 8) + var5.minY;
-						var10 = (var6 * var5.field2473 >> 8) + var5.maxY;
-						if (var3 >= var7 && var3 <= var8 && var2 >= var9 && var2 <= var10) {
-							return true;
-						}
+			} else if (var5.field2470 == 2) {
+				var6 = var1 - var5.minX;
+				if (var6 > 0) {
+					var7 = (var6 * var5.field2467 >> 8) + var5.minZ;
+					var8 = (var6 * var5.field2468 >> 8) + var5.maxZ;
+					var9 = (var6 * var5.field2462 >> 8) + var5.minY;
+					var10 = (var6 * var5.field2473 >> 8) + var5.maxY;
+					if (var3 >= var7 && var3 <= var8 && var2 >= var9 && var2 <= var10) {
+						return true;
 					}
-				} else
-					if (var5.field2470 == 3) {
-						var6 = var5.minZ - var3;
-						if (var6 > 0) {
-							var7 = (var6 * var5.field2472 >> 8) + var5.minX;
-							var8 = (var6 * var5.field2466 >> 8) + var5.maxX;
-							var9 = (var6 * var5.field2462 >> 8) + var5.minY;
-							var10 = (var6 * var5.field2473 >> 8) + var5.maxY;
-							if (var1 >= var7 && var1 <= var8 && var2 >= var9 && var2 <= var10) {
-								return true;
-							}
-						}
-					} else
-						if (var5.field2470 == 4) {
-							var6 = var3 - var5.minZ;
-							if (var6 > 0) {
-								var7 = (var6 * var5.field2472 >> 8) + var5.minX;
-								var8 = (var6 * var5.field2466 >> 8) + var5.maxX;
-								var9 = (var6 * var5.field2462 >> 8) + var5.minY;
-								var10 = (var6 * var5.field2473 >> 8) + var5.maxY;
-								if (var1 >= var7 && var1 <= var8 && var2 >= var9 && var2 <= var10) {
-									return true;
-								}
-							}
-						} else
-							if (var5.field2470 == 5) {
-								var6 = var2 - var5.minY;
-								if (var6 > 0) {
-									var7 = (var6 * var5.field2472 >> 8) + var5.minX;
-									var8 = (var6 * var5.field2466 >> 8) + var5.maxX;
-									var9 = (var6 * var5.field2467 >> 8) + var5.minZ;
-									var10 = (var6 * var5.field2468 >> 8) + var5.maxZ;
-									if (var1 >= var7 && var1 <= var8 && var3 >= var9 && var3 <= var10) {
-										return true;
-									}
-								}
-							}
-
-
-
-
+				}
+			} else if (var5.field2470 == 3) {
+				var6 = var5.minZ - var3;
+				if (var6 > 0) {
+					var7 = (var6 * var5.field2472 >> 8) + var5.minX;
+					var8 = (var6 * var5.field2466 >> 8) + var5.maxX;
+					var9 = (var6 * var5.field2462 >> 8) + var5.minY;
+					var10 = (var6 * var5.field2473 >> 8) + var5.maxY;
+					if (var1 >= var7 && var1 <= var8 && var2 >= var9 && var2 <= var10) {
+						return true;
+					}
+				}
+			} else if (var5.field2470 == 4) {
+				var6 = var3 - var5.minZ;
+				if (var6 > 0) {
+					var7 = (var6 * var5.field2472 >> 8) + var5.minX;
+					var8 = (var6 * var5.field2466 >> 8) + var5.maxX;
+					var9 = (var6 * var5.field2462 >> 8) + var5.minY;
+					var10 = (var6 * var5.field2473 >> 8) + var5.maxY;
+					if (var1 >= var7 && var1 <= var8 && var2 >= var9 && var2 <= var10) {
+						return true;
+					}
+				}
+			} else if (var5.field2470 == 5) {
+				var6 = var2 - var5.minY;
+				if (var6 > 0) {
+					var7 = (var6 * var5.field2472 >> 8) + var5.minX;
+					var8 = (var6 * var5.field2466 >> 8) + var5.maxX;
+					var9 = (var6 * var5.field2467 >> 8) + var5.minZ;
+					var10 = (var6 * var5.field2468 >> 8) + var5.maxZ;
+					if (var1 >= var7 && var1 <= var8 && var3 >= var9 && var3 <= var10) {
+						return true;
+					}
+				}
+			}
 		}
 		return false;
 	}
@@ -2393,11 +2325,9 @@ public class Scene {
 		var1 = (var0 & 127) * var1 >> 7;
 		if (var1 < 2) {
 			var1 = 2;
-		} else
-			if (var1 > 126) {
-				var1 = 126;
-			}
-
+		} else if (var1 > 126) {
+			var1 = 126;
+		}
 		return (var0 & 65408) + var1;
 	}
 
@@ -2406,31 +2336,25 @@ public class Scene {
 	static boolean containsBounds(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7) {
 		if (var1 < var2 && var1 < var3 && var1 < var4) {
 			return false;
-		} else
-			if (var1 > var2 && var1 > var3 && var1 > var4) {
-				return false;
-			} else
-				if (var0 < var5 && var0 < var6 && var0 < var7) {
-					return false;
-				} else
-					if (var0 > var5 && var0 > var6 && var0 > var7) {
-						return false;
-					} else {
-						int var8 = (var1 - var2) * (var6 - var5) - (var0 - var5) * (var3 - var2);
-						int var9 = (var7 - var6) * (var1 - var3) - (var0 - var6) * (var4 - var3);
-						int var10 = (var5 - var7) * (var1 - var4) - (var2 - var4) * (var0 - var7);
-						if (var8 == 0) {
-							if (var9 != 0) {
-								return var9 < 0 ? var10 <= 0 : var10 >= 0;
-							} else {
-								return true;
-							}
-						} else {
-							return var8 < 0 ? var9 <= 0 && var10 <= 0 : var9 >= 0 && var10 >= 0;
-						}
-					}
-
-
-
+		} else if (var1 > var2 && var1 > var3 && var1 > var4) {
+			return false;
+		} else if (var0 < var5 && var0 < var6 && var0 < var7) {
+			return false;
+		} else if (var0 > var5 && var0 > var6 && var0 > var7) {
+			return false;
+		} else {
+			int var8 = (var1 - var2) * (var6 - var5) - (var0 - var5) * (var3 - var2);
+			int var9 = (var7 - var6) * (var1 - var3) - (var0 - var6) * (var4 - var3);
+			int var10 = (var5 - var7) * (var1 - var4) - (var2 - var4) * (var0 - var7);
+			if (var8 == 0) {
+				if (var9 != 0) {
+					return var9 < 0 ? var10 <= 0 : var10 >= 0;
+				} else {
+					return true;
+				}
+			} else {
+				return var8 < 0 ? var9 <= 0 && var10 <= 0 : var9 >= 0 && var10 >= 0;
+			}
+		}
 	}
 }

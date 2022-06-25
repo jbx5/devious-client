@@ -54,23 +54,21 @@ public class SoundCache {
 		RawSound var7 = ((RawSound) (this.rawSounds.get(var5)));
 		if (var7 != null) {
 			return var7;
-		} else
-			if (var3 != null && var3[0] <= 0) {
+		} else if (var3 != null && var3[0] <= 0) {
+			return null;
+		} else {
+			SoundEffect var8 = SoundEffect.readSoundEffect(this.soundEffectIndex, var1, var2);
+			if (var8 == null) {
 				return null;
 			} else {
-				SoundEffect var8 = SoundEffect.readSoundEffect(this.soundEffectIndex, var1, var2);
-				if (var8 == null) {
-					return null;
-				} else {
-					var7 = var8.toRawSound();
-					this.rawSounds.put(var7, var5);
-					if (var3 != null) {
-						var3[0] -= var7.samples.length;
-					}
-					return var7;
+				var7 = var8.toRawSound();
+				this.rawSounds.put(var7, var5);
+				if (var3 != null) {
+					var3[0] -= var7.samples.length;
 				}
+				return var7;
 			}
-
+		}
 	}
 
 	@ObfuscatedName("v")
@@ -83,28 +81,26 @@ public class SoundCache {
 		RawSound var7 = ((RawSound) (this.rawSounds.get(var5)));
 		if (var7 != null) {
 			return var7;
-		} else
-			if (var3 != null && var3[0] <= 0) {
+		} else if (var3 != null && var3[0] <= 0) {
+			return null;
+		} else {
+			VorbisSample var8 = ((VorbisSample) (this.musicSamples.get(var5)));
+			if (var8 == null) {
+				var8 = VorbisSample.readMusicSample(this.musicSampleIndex, var1, var2);
+				if (var8 == null) {
+					return null;
+				}
+				this.musicSamples.put(var8, var5);
+			}
+			var7 = var8.toRawSound(var3);
+			if (var7 == null) {
 				return null;
 			} else {
-				VorbisSample var8 = ((VorbisSample) (this.musicSamples.get(var5)));
-				if (var8 == null) {
-					var8 = VorbisSample.readMusicSample(this.musicSampleIndex, var1, var2);
-					if (var8 == null) {
-						return null;
-					}
-					this.musicSamples.put(var8, var5);
-				}
-				var7 = var8.toRawSound(var3);
-				if (var7 == null) {
-					return null;
-				} else {
-					var8.remove();
-					this.rawSounds.put(var7, var5);
-					return var7;
-				}
+				var8.remove();
+				this.rawSounds.put(var7, var5);
+				return var7;
 			}
-
+		}
 	}
 
 	@ObfuscatedName("q")
@@ -113,13 +109,11 @@ public class SoundCache {
 	public RawSound getSoundEffect(int var1, int[] var2) {
 		if (this.soundEffectIndex.getGroupCount() == 1) {
 			return this.getSoundEffect0(0, var1, var2);
-		} else
-			if (this.soundEffectIndex.getGroupFileCount(var1) == 1) {
-				return this.getSoundEffect0(var1, 0, var2);
-			} else {
-				throw new RuntimeException();
-			}
-
+		} else if (this.soundEffectIndex.getGroupFileCount(var1) == 1) {
+			return this.getSoundEffect0(var1, 0, var2);
+		} else {
+			throw new RuntimeException();
+		}
 	}
 
 	@ObfuscatedName("f")
@@ -128,13 +122,11 @@ public class SoundCache {
 	public RawSound getMusicSample(int var1, int[] var2) {
 		if (this.musicSampleIndex.getGroupCount() == 1) {
 			return this.getMusicSample0(0, var1, var2);
-		} else
-			if (this.musicSampleIndex.getGroupFileCount(var1) == 1) {
-				return this.getMusicSample0(var1, 0, var2);
-			} else {
-				throw new RuntimeException();
-			}
-
+		} else if (this.musicSampleIndex.getGroupFileCount(var1) == 1) {
+			return this.getMusicSample0(var1, 0, var2);
+		} else {
+			throw new RuntimeException();
+		}
 	}
 
 	@ObfuscatedName("c")
@@ -213,16 +205,14 @@ public class SoundCache {
 					if (var7 == 2) {
 						var3.field1190 = 0;
 					}
-				} else
-					if (var5 == -1 || var3.sequence == -1 || ScriptFrame.SequenceDefinition_get(var5).field2183 >= ScriptFrame.SequenceDefinition_get(var3.sequence).field2183) {
-						var3.sequence = var5;
-						var3.sequenceFrame = 0;
-						var3.sequenceFrameCycle = 0;
-						var3.sequenceDelay = var6;
-						var3.field1190 = 0;
-						var3.field1203 = var3.pathLength;
-					}
-
+				} else if (var5 == -1 || var3.sequence == -1 || ScriptFrame.SequenceDefinition_get(var5).field2183 >= ScriptFrame.SequenceDefinition_get(var3.sequence).field2183) {
+					var3.sequence = var5;
+					var3.sequenceFrame = 0;
+					var3.sequenceFrameCycle = 0;
+					var3.sequenceDelay = var6;
+					var3.field1190 = 0;
+					var3.field1203 = var3.pathLength;
+				}
 			}
 			if ((var4 & 2) != 0) {
 				var3.spotAnimation = var0.readUnsignedShortAdd();
@@ -255,13 +245,11 @@ public class SoundCache {
 							var9 = var0.readUShortSmart();
 							var8 = var0.readUShortSmart();
 							var10 = var0.readUShortSmart();
-						} else
-							if (var7 != 32766) {
-								var9 = var0.readUShortSmart();
-							} else {
-								var7 = -1;
-							}
-
+						} else if (var7 != 32766) {
+							var9 = var0.readUShortSmart();
+						} else {
+							var7 = -1;
+						}
 						var11 = var0.readUShortSmart();
 						var3.addHitSplat(var7, var9, var8, var10, Client.cycle, var11);
 					}

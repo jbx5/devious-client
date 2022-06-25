@@ -60,13 +60,11 @@ public class Username implements Comparable {
 			Username var2 = ((Username) (var1));
 			if (this.cleanName == null) {
 				return var2.cleanName == null;
-			} else
-				if (var2.cleanName == null) {
-					return false;
-				} else {
-					return this.hashCode() != var2.hashCode() ? false : this.cleanName.equals(var2.cleanName);
-				}
-
+			} else if (var2.cleanName == null) {
+				return false;
+			} else {
+				return this.hashCode() != var2.hashCode() ? false : this.cleanName.equals(var2.cleanName);
+			}
 		} else {
 			return false;
 		}

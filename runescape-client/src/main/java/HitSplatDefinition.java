@@ -140,86 +140,58 @@ public class HitSplatDefinition extends DualNode {
 	void decodeNext(Buffer var1, int var2) {
 		if (var2 == 1) {
 			this.fontId = var1.readNullableLargeSmart();
-		} else
-			if (var2 == 2) {
-				this.textColor = var1.readMedium();
-			} else
-				if (var2 == 3) {
-					this.field2021 = var1.readNullableLargeSmart();
-				} else
-					if (var2 == 4) {
-						this.field2029 = var1.readNullableLargeSmart();
-					} else
-						if (var2 == 5) {
-							this.field2016 = var1.readNullableLargeSmart();
-						} else
-							if (var2 == 6) {
-								this.field2027 = var1.readNullableLargeSmart();
-							} else
-								if (var2 == 7) {
-									this.field2031 = var1.readShort();
-								} else
-									if (var2 == 8) {
-										this.field2034 = var1.readStringCp1252NullCircumfixed();
-									} else
-										if (var2 == 9) {
-											this.field2026 = var1.readUnsignedShort();
-										} else
-											if (var2 == 10) {
-												this.field2032 = var1.readShort();
-											} else
-												if (var2 == 11) {
-													this.field2030 = 0;
-												} else
-													if (var2 == 12) {
-														this.field2035 = var1.readUnsignedByte();
-													} else
-														if (var2 == 13) {
-															this.field2019 = var1.readShort();
-														} else
-															if (var2 == 14) {
-																this.field2030 = var1.readUnsignedShort();
-															} else
-																if (var2 == 17 || var2 == 18) {
-																	this.transformVarbit = var1.readUnsignedShort();
-																	if (this.transformVarbit == 65535) {
-																		this.transformVarbit = -1;
-																	}
-																	this.transformVarp = var1.readUnsignedShort();
-																	if (this.transformVarp == 65535) {
-																		this.transformVarp = -1;
-																	}
-																	int var3 = -1;
-																	if (var2 == 18) {
-																		var3 = var1.readUnsignedShort();
-																		if (var3 == 65535) {
-																			var3 = -1;
-																		}
-																	}
-																	int var4 = var1.readUnsignedByte();
-																	this.transforms = new int[var4 + 2];
-																	for (int var5 = 0; var5 <= var4; ++var5) {
-																		this.transforms[var5] = var1.readUnsignedShort();
-																		if (this.transforms[var5] == 65535) {
-																			this.transforms[var5] = -1;
-																		}
-																	}
-																	this.transforms[var4 + 1] = var3;
-																}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		} else if (var2 == 2) {
+			this.textColor = var1.readMedium();
+		} else if (var2 == 3) {
+			this.field2021 = var1.readNullableLargeSmart();
+		} else if (var2 == 4) {
+			this.field2029 = var1.readNullableLargeSmart();
+		} else if (var2 == 5) {
+			this.field2016 = var1.readNullableLargeSmart();
+		} else if (var2 == 6) {
+			this.field2027 = var1.readNullableLargeSmart();
+		} else if (var2 == 7) {
+			this.field2031 = var1.readShort();
+		} else if (var2 == 8) {
+			this.field2034 = var1.readStringCp1252NullCircumfixed();
+		} else if (var2 == 9) {
+			this.field2026 = var1.readUnsignedShort();
+		} else if (var2 == 10) {
+			this.field2032 = var1.readShort();
+		} else if (var2 == 11) {
+			this.field2030 = 0;
+		} else if (var2 == 12) {
+			this.field2035 = var1.readUnsignedByte();
+		} else if (var2 == 13) {
+			this.field2019 = var1.readShort();
+		} else if (var2 == 14) {
+			this.field2030 = var1.readUnsignedShort();
+		} else if (var2 == 17 || var2 == 18) {
+			this.transformVarbit = var1.readUnsignedShort();
+			if (this.transformVarbit == 65535) {
+				this.transformVarbit = -1;
+			}
+			this.transformVarp = var1.readUnsignedShort();
+			if (this.transformVarp == 65535) {
+				this.transformVarp = -1;
+			}
+			int var3 = -1;
+			if (var2 == 18) {
+				var3 = var1.readUnsignedShort();
+				if (var3 == 65535) {
+					var3 = -1;
+				}
+			}
+			int var4 = var1.readUnsignedByte();
+			this.transforms = new int[var4 + 2];
+			for (int var5 = 0; var5 <= var4; ++var5) {
+				this.transforms[var5] = var1.readUnsignedShort();
+				if (this.transforms[var5] == 65535) {
+					this.transforms[var5] = -1;
+				}
+			}
+			this.transforms[var4 + 1] = var3;
+		}
 	}
 
 	@ObfuscatedName("f")
@@ -229,11 +201,9 @@ public class HitSplatDefinition extends DualNode {
 		int var1 = -1;
 		if (this.transformVarbit != -1) {
 			var1 = class388.getVarbit(this.transformVarbit);
-		} else
-			if (this.transformVarp != -1) {
-				var1 = Varps.Varps_main[this.transformVarp];
-			}
-
+		} else if (this.transformVarp != -1) {
+			var1 = Varps.Varps_main[this.transformVarp];
+		}
 		int var2;
 		if (var1 >= 0 && var1 < this.transforms.length - 1) {
 			var2 = this.transforms[var1];
@@ -548,12 +518,10 @@ public class HitSplatDefinition extends DualNode {
 					if (var18.population == -1) {
 						var20 = "OFF";
 						var19 = false;
-					} else
-						if (var18.population > 1980) {
-							var20 = "FULL";
-							var19 = false;
-						}
-
+					} else if (var18.population > 1980) {
+						var20 = "FULL";
+						var19 = false;
+					}
 					int var22 = 0;
 					byte var21;
 					if (var18.isBeta()) {
@@ -562,38 +530,30 @@ public class HitSplatDefinition extends DualNode {
 						} else {
 							var21 = 6;
 						}
-					} else
-						if (var18.isDeadman()) {
-							var22 = 16711680;
-							if (var18.isMembersOnly()) {
-								var21 = 5;
-							} else {
-								var21 = 4;
-							}
-						} else
-							if (var18.method1597()) {
-								if (var18.isMembersOnly()) {
-									var21 = 9;
-								} else {
-									var21 = 8;
-								}
-							} else
-								if (var18.isPvp()) {
-									if (var18.isMembersOnly()) {
-										var21 = 3;
-									} else {
-										var21 = 2;
-									}
-								} else
-									if (var18.isMembersOnly()) {
-										var21 = 1;
-									} else {
-										var21 = 0;
-									}
-
-
-
-
+					} else if (var18.isDeadman()) {
+						var22 = 16711680;
+						if (var18.isMembersOnly()) {
+							var21 = 5;
+						} else {
+							var21 = 4;
+						}
+					} else if (var18.method1597()) {
+						if (var18.isMembersOnly()) {
+							var21 = 9;
+						} else {
+							var21 = 8;
+						}
+					} else if (var18.isPvp()) {
+						if (var18.isMembersOnly()) {
+							var21 = 3;
+						} else {
+							var21 = 2;
+						}
+					} else if (var18.isMembersOnly()) {
+						var21 = 1;
+					} else {
+						var21 = 0;
+					}
 					if (MouseHandler.MouseHandler_x >= var39 && MouseHandler.MouseHandler_y >= var29 && MouseHandler.MouseHandler_x < var3 + var39 && MouseHandler.MouseHandler_y < var41 + var29 && var19) {
 						Login.hoveredWorldIndex = var17;
 						ScriptFrame.worldSelectBackSprites[var21].drawTransOverlayAt(var39, var29, 128, 16777215);
@@ -683,9 +643,95 @@ public class HitSplatDefinition extends DualNode {
 					var4 = Login.loginBoxX + 180 + 80;
 					class6.titlebuttonSprite.drawAt(var4 - 73, var23 - 20);
 					var0.drawLines("Existing User", var4 - 73, var23 - 20, 144, 40, 16777215, 0, 1, 1, 0);
-				} else
-					if (Login.loginIndex == 1) {
-						var0.drawCentered(Login.Login_response0, Login.loginBoxX + 180, 201, 16776960, 0);
+				} else if (Login.loginIndex == 1) {
+					var0.drawCentered(Login.Login_response0, Login.loginBoxX + 180, 201, 16776960, 0);
+					var31 = 236;
+					var0.drawCentered(Login.Login_response1, Login.loginBoxX + 180, var31, 16777215, 0);
+					var32 = var31 + 15;
+					var0.drawCentered(Login.Login_response2, Login.loginBoxX + 180, var32, 16777215, 0);
+					var32 += 15;
+					var0.drawCentered(Login.Login_response3, Login.loginBoxX + 180, var32, 16777215, 0);
+					var32 += 15;
+					var4 = Login.loginBoxX + 180 - 80;
+					var23 = 321;
+					class6.titlebuttonSprite.drawAt(var4 - 73, var23 - 20);
+					var0.drawCentered("Continue", var4, var23 + 5, 16777215, 0);
+					var4 = Login.loginBoxX + 180 + 80;
+					class6.titlebuttonSprite.drawAt(var4 - 73, var23 - 20);
+					var0.drawCentered("Cancel", var4, var23 + 5, 16777215, 0);
+				} else if (Login.loginIndex == 2) {
+					var31 = 201;
+					var0.drawCentered(Login.Login_response1, Canvas.loginBoxCenter, var31, 16776960, 0);
+					var32 = var31 + 15;
+					var0.drawCentered(Login.Login_response2, Canvas.loginBoxCenter, var32, 16776960, 0);
+					var32 += 15;
+					var0.drawCentered(Login.Login_response3, Canvas.loginBoxCenter, var32, 16776960, 0);
+					var32 += 15;
+					var32 += 7;
+					var0.draw("Login: ", Canvas.loginBoxCenter - 110, var32, 16777215, 0);
+					var33 = 200;
+					for (var5 = class125.method2829(); var0.stringWidth(var5) > var33; var5 = var5.substring(1)) {
+					}
+					var0.draw(AbstractFont.escapeBrackets(var5) + (Login.currentLoginField == 0 & Client.cycle % 40 < 20 ? class122.colorStartTag(16776960) + "|" : ""), Canvas.loginBoxCenter - 70, var32, 16777215, 0);
+					var32 += 15;
+					for (var6 = NetCache.method5952(Login.Login_password); var0.stringWidth(var6) > var33; var6 = var6.substring(1)) {
+					}
+					var0.draw("Password: " + var6 + (Login.currentLoginField == 1 & Client.cycle % 40 < 20 ? class122.colorStartTag(16776960) + "|" : ""), Canvas.loginBoxCenter - 108, var32, 16777215, 0);
+					var32 += 15;
+					var31 = 277;
+					var7 = Canvas.loginBoxCenter + -117;
+					boolean var9 = Client.Login_isUsernameRemembered;
+					boolean var10 = Login.field912;
+					IndexedSprite var26 = (var9) ? var10 ? DynamicObject.field979 : class228.options_buttons_2Sprite : var10 ? class113.field1427 : class345.options_buttons_0Sprite;
+					var26.drawAt(var7, var31);
+					var7 = var7 + var26.subWidth + 5;
+					var1.draw("Remember username", var7, var31 + 13, 16776960, 0);
+					var7 = Canvas.loginBoxCenter + 24;
+					boolean var13 = class19.clientPreferences.method2247();
+					boolean var14 = Login.field913;
+					IndexedSprite var12 = (var13) ? var14 ? DynamicObject.field979 : class228.options_buttons_2Sprite : var14 ? class113.field1427 : class345.options_buttons_0Sprite;
+					var12.drawAt(var7, var31);
+					var7 = var7 + var12.subWidth + 5;
+					var1.draw("Hide username", var7, var31 + 13, 16776960, 0);
+					var32 = var31 + 15;
+					int var15 = Canvas.loginBoxCenter - 80;
+					short var16 = 321;
+					class6.titlebuttonSprite.drawAt(var15 - 73, var16 - 20);
+					var0.drawCentered("Login", var15, var16 + 5, 16777215, 0);
+					var15 = Canvas.loginBoxCenter + 80;
+					class6.titlebuttonSprite.drawAt(var15 - 73, var16 - 20);
+					var0.drawCentered("Cancel", var15, var16 + 5, 16777215, 0);
+					var31 = 357;
+					switch (Login.field902) {
+						case 2 :
+							TileItem.field1299 = "Having trouble logging in?";
+							break;
+						default :
+							TileItem.field1299 = "Can't login? Click here.";
+					}
+					ArchiveLoader.field1022 = new Bounds(Canvas.loginBoxCenter, var31, var1.stringWidth(TileItem.field1299), 11);
+					PcmPlayer.field294 = new Bounds(Canvas.loginBoxCenter, var31, var1.stringWidth("Still having trouble logging in?"), 11);
+					var1.drawCentered(TileItem.field1299, Canvas.loginBoxCenter, var31, 16777215, 0);
+				} else if (Login.loginIndex == 3) {
+					var31 = 201;
+					var0.drawCentered("Invalid credentials.", Login.loginBoxX + 180, var31, 16776960, 0);
+					var32 = var31 + 20;
+					var1.drawCentered("For accounts created after 24th November 2010, please use your", Login.loginBoxX + 180, var32, 16776960, 0);
+					var32 += 15;
+					var1.drawCentered("email address to login. Otherwise please login with your username.", Login.loginBoxX + 180, var32, 16776960, 0);
+					var32 += 15;
+					var4 = Login.loginBoxX + 180;
+					var23 = 276;
+					class6.titlebuttonSprite.drawAt(var4 - 73, var23 - 20);
+					var2.drawCentered("Try again", var4, var23 + 5, 16777215, 0);
+					var4 = Login.loginBoxX + 180;
+					var23 = 326;
+					class6.titlebuttonSprite.drawAt(var4 - 73, var23 - 20);
+					var2.drawCentered("Forgotten password?", var4, var23 + 5, 16777215, 0);
+				} else {
+					short var8;
+					if (Login.loginIndex == 4) {
+						var0.drawCentered("Authenticator", Login.loginBoxX + 180, 201, 16776960, 0);
 						var31 = 236;
 						var0.drawCentered(Login.Login_response1, Login.loginBoxX + 180, var31, 16777215, 0);
 						var32 = var31 + 15;
@@ -693,345 +739,231 @@ public class HitSplatDefinition extends DualNode {
 						var32 += 15;
 						var0.drawCentered(Login.Login_response3, Login.loginBoxX + 180, var32, 16777215, 0);
 						var32 += 15;
-						var4 = Login.loginBoxX + 180 - 80;
+						var0.draw("PIN: " + NetCache.method5952(World.otp) + (Client.cycle % 40 < 20 ? class122.colorStartTag(16776960) + "|" : ""), Login.loginBoxX + 180 - 108, var32, 16777215, 0);
+						var32 -= 8;
+						var0.draw("Trust this computer", Login.loginBoxX + 180 - 9, var32, 16776960, 0);
+						var32 += 15;
+						var0.draw("for 30 days: ", Login.loginBoxX + 180 - 9, var32, 16776960, 0);
+						var4 = Login.loginBoxX + 180 - 9 + var0.stringWidth("for 30 days: ") + 15;
+						var45 = var32 - var0.ascent;
+						IndexedSprite var34;
+						if (Login.field895) {
+							var34 = class228.options_buttons_2Sprite;
+						} else {
+							var34 = class345.options_buttons_0Sprite;
+						}
+						var34.drawAt(var4, var45);
+						var32 += 15;
+						var7 = Login.loginBoxX + 180 - 80;
+						var8 = 321;
+						class6.titlebuttonSprite.drawAt(var7 - 73, var8 - 20);
+						var0.drawCentered("Continue", var7, var8 + 5, 16777215, 0);
+						var7 = Login.loginBoxX + 180 + 80;
+						class6.titlebuttonSprite.drawAt(var7 - 73, var8 - 20);
+						var0.drawCentered("Cancel", var7, var8 + 5, 16777215, 0);
+						var1.drawCentered("<u=ff>Can't Log In?</u>", Login.loginBoxX + 180, var8 + 36, 255, 0);
+					} else if (Login.loginIndex == 5) {
+						var0.drawCentered("Forgotten your password?", Login.loginBoxX + 180, 201, 16776960, 0);
+						var31 = 221;
+						var2.drawCentered(Login.Login_response1, Login.loginBoxX + 180, var31, 16776960, 0);
+						var32 = var31 + 15;
+						var2.drawCentered(Login.Login_response2, Login.loginBoxX + 180, var32, 16776960, 0);
+						var32 += 15;
+						var2.drawCentered(Login.Login_response3, Login.loginBoxX + 180, var32, 16776960, 0);
+						var32 += 15;
+						var32 += 14;
+						var0.draw("Username/email: ", Login.loginBoxX + 180 - 145, var32, 16777215, 0);
+						var33 = 174;
+						for (var5 = class125.method2829(); var0.stringWidth(var5) > var33; var5 = var5.substring(1)) {
+						}
+						var0.draw(AbstractFont.escapeBrackets(var5) + (Client.cycle % 40 < 20 ? class122.colorStartTag(16776960) + "|" : ""), Login.loginBoxX + 180 - 34, var32, 16777215, 0);
+						var32 += 15;
+						var25 = Login.loginBoxX + 180 - 80;
+						short var36 = 321;
+						class6.titlebuttonSprite.drawAt(var25 - 73, var36 - 20);
+						var0.drawCentered("Recover", var25, var36 + 5, 16777215, 0);
+						var25 = Login.loginBoxX + 180 + 80;
+						class6.titlebuttonSprite.drawAt(var25 - 73, var36 - 20);
+						var0.drawCentered("Back", var25, var36 + 5, 16777215, 0);
+						var36 = 356;
+						var1.drawCentered("Still having trouble logging in?", Canvas.loginBoxCenter, var36, 268435455, 0);
+					} else if (Login.loginIndex == 6) {
+						var31 = 201;
+						var0.drawCentered(Login.Login_response1, Login.loginBoxX + 180, var31, 16776960, 0);
+						var32 = var31 + 15;
+						var0.drawCentered(Login.Login_response2, Login.loginBoxX + 180, var32, 16776960, 0);
+						var32 += 15;
+						var0.drawCentered(Login.Login_response3, Login.loginBoxX + 180, var32, 16776960, 0);
+						var32 += 15;
+						var4 = Login.loginBoxX + 180;
 						var23 = 321;
 						class6.titlebuttonSprite.drawAt(var4 - 73, var23 - 20);
-						var0.drawCentered("Continue", var4, var23 + 5, 16777215, 0);
-						var4 = Login.loginBoxX + 180 + 80;
-						class6.titlebuttonSprite.drawAt(var4 - 73, var23 - 20);
-						var0.drawCentered("Cancel", var4, var23 + 5, 16777215, 0);
-					} else
-						if (Login.loginIndex == 2) {
+						var0.drawCentered("Back", var4, var23 + 5, 16777215, 0);
+					} else if (Login.loginIndex == 7) {
+						if (VarpDefinition.field1821 && !Client.onMobile) {
 							var31 = 201;
 							var0.drawCentered(Login.Login_response1, Canvas.loginBoxCenter, var31, 16776960, 0);
 							var32 = var31 + 15;
 							var0.drawCentered(Login.Login_response2, Canvas.loginBoxCenter, var32, 16776960, 0);
 							var32 += 15;
 							var0.drawCentered(Login.Login_response3, Canvas.loginBoxCenter, var32, 16776960, 0);
-							var32 += 15;
-							var32 += 7;
-							var0.draw("Login: ", Canvas.loginBoxCenter - 110, var32, 16777215, 0);
-							var33 = 200;
-							for (var5 = class125.method2829(); var0.stringWidth(var5) > var33; var5 = var5.substring(1)) {
+							var4 = Canvas.loginBoxCenter - 150;
+							var32 += 10;
+							for (var45 = 0; var45 < 8; ++var45) {
+								class6.titlebuttonSprite.method8135(var4, var32, 30, 40);
+								boolean var47 = var45 == Login.field910 & Client.cycle % 40 < 20;
+								var0.draw((Login.field911[var45] == null ? "" : Login.field911[var45]) + (var47 ? class122.colorStartTag(16776960) + "|" : ""), var4 + 10, var32 + 27, 16777215, 0);
+								if (var45 != 1 && var45 != 3) {
+									var4 += 35;
+								} else {
+									var4 += 50;
+									var0.draw(AbstractFont.escapeBrackets("/"), var4 - 13, var32 + 27, 16777215, 0);
+								}
 							}
-							var0.draw(AbstractFont.escapeBrackets(var5) + (Login.currentLoginField == 0 & Client.cycle % 40 < 20 ? class122.colorStartTag(16776960) + "|" : ""), Canvas.loginBoxCenter - 70, var32, 16777215, 0);
-							var32 += 15;
-							for (var6 = NetCache.method5952(Login.Login_password); var0.stringWidth(var6) > var33; var6 = var6.substring(1)) {
-							}
-							var0.draw("Password: " + var6 + (Login.currentLoginField == 1 & Client.cycle % 40 < 20 ? class122.colorStartTag(16776960) + "|" : ""), Canvas.loginBoxCenter - 108, var32, 16777215, 0);
-							var32 += 15;
-							var31 = 277;
-							var7 = Canvas.loginBoxCenter + -117;
-							boolean var9 = Client.Login_isUsernameRemembered;
-							boolean var10 = Login.field912;
-							IndexedSprite var26 = (var9) ? var10 ? DynamicObject.field979 : class228.options_buttons_2Sprite : var10 ? class113.field1427 : class345.options_buttons_0Sprite;
-							var26.drawAt(var7, var31);
-							var7 = var7 + var26.subWidth + 5;
-							var1.draw("Remember username", var7, var31 + 13, 16776960, 0);
-							var7 = Canvas.loginBoxCenter + 24;
-							boolean var13 = class19.clientPreferences.method2247();
-							boolean var14 = Login.field913;
-							IndexedSprite var12 = (var13) ? var14 ? DynamicObject.field979 : class228.options_buttons_2Sprite : var14 ? class113.field1427 : class345.options_buttons_0Sprite;
-							var12.drawAt(var7, var31);
-							var7 = var7 + var12.subWidth + 5;
-							var1.draw("Hide username", var7, var31 + 13, 16776960, 0);
+							var45 = Canvas.loginBoxCenter - 80;
+							short var48 = 321;
+							class6.titlebuttonSprite.drawAt(var45 - 73, var48 - 20);
+							var0.drawCentered("Submit", var45, var48 + 5, 16777215, 0);
+							var45 = Canvas.loginBoxCenter + 80;
+							class6.titlebuttonSprite.drawAt(var45 - 73, var48 - 20);
+							var0.drawCentered("Cancel", var45, var48 + 5, 16777215, 0);
+						} else {
+							var31 = 216;
+							var0.drawCentered("Your date of birth isn't set.", Login.loginBoxX + 180, var31, 16776960, 0);
 							var32 = var31 + 15;
-							int var15 = Canvas.loginBoxCenter - 80;
-							short var16 = 321;
-							class6.titlebuttonSprite.drawAt(var15 - 73, var16 - 20);
-							var0.drawCentered("Login", var15, var16 + 5, 16777215, 0);
-							var15 = Canvas.loginBoxCenter + 80;
-							class6.titlebuttonSprite.drawAt(var15 - 73, var16 - 20);
-							var0.drawCentered("Cancel", var15, var16 + 5, 16777215, 0);
-							var31 = 357;
-							switch (Login.field902) {
-								case 2 :
-									TileItem.field1299 = "Having trouble logging in?";
-									break;
-								default :
-									TileItem.field1299 = "Can't login? Click here.";
-							}
-							ArchiveLoader.field1022 = new Bounds(Canvas.loginBoxCenter, var31, var1.stringWidth(TileItem.field1299), 11);
-							PcmPlayer.field294 = new Bounds(Canvas.loginBoxCenter, var31, var1.stringWidth("Still having trouble logging in?"), 11);
-							var1.drawCentered(TileItem.field1299, Canvas.loginBoxCenter, var31, 16777215, 0);
-						} else
-							if (Login.loginIndex == 3) {
-								var31 = 201;
-								var0.drawCentered("Invalid credentials.", Login.loginBoxX + 180, var31, 16776960, 0);
-								var32 = var31 + 20;
-								var1.drawCentered("For accounts created after 24th November 2010, please use your", Login.loginBoxX + 180, var32, 16776960, 0);
-								var32 += 15;
-								var1.drawCentered("email address to login. Otherwise please login with your username.", Login.loginBoxX + 180, var32, 16776960, 0);
-								var32 += 15;
-								var4 = Login.loginBoxX + 180;
-								var23 = 276;
-								class6.titlebuttonSprite.drawAt(var4 - 73, var23 - 20);
-								var2.drawCentered("Try again", var4, var23 + 5, 16777215, 0);
-								var4 = Login.loginBoxX + 180;
-								var23 = 326;
-								class6.titlebuttonSprite.drawAt(var4 - 73, var23 - 20);
-								var2.drawCentered("Forgotten password?", var4, var23 + 5, 16777215, 0);
-							} else {
-								short var8;
-								if (Login.loginIndex == 4) {
-									var0.drawCentered("Authenticator", Login.loginBoxX + 180, 201, 16776960, 0);
-									var31 = 236;
-									var0.drawCentered(Login.Login_response1, Login.loginBoxX + 180, var31, 16777215, 0);
-									var32 = var31 + 15;
-									var0.drawCentered(Login.Login_response2, Login.loginBoxX + 180, var32, 16777215, 0);
-									var32 += 15;
-									var0.drawCentered(Login.Login_response3, Login.loginBoxX + 180, var32, 16777215, 0);
-									var32 += 15;
-									var0.draw("PIN: " + NetCache.method5952(World.otp) + (Client.cycle % 40 < 20 ? class122.colorStartTag(16776960) + "|" : ""), Login.loginBoxX + 180 - 108, var32, 16777215, 0);
-									var32 -= 8;
-									var0.draw("Trust this computer", Login.loginBoxX + 180 - 9, var32, 16776960, 0);
-									var32 += 15;
-									var0.draw("for 30 days: ", Login.loginBoxX + 180 - 9, var32, 16776960, 0);
-									var4 = Login.loginBoxX + 180 - 9 + var0.stringWidth("for 30 days: ") + 15;
-									var45 = var32 - var0.ascent;
-									IndexedSprite var34;
-									if (Login.field895) {
-										var34 = class228.options_buttons_2Sprite;
-									} else {
-										var34 = class345.options_buttons_0Sprite;
-									}
-									var34.drawAt(var4, var45);
-									var32 += 15;
-									var7 = Login.loginBoxX + 180 - 80;
-									var8 = 321;
-									class6.titlebuttonSprite.drawAt(var7 - 73, var8 - 20);
-									var0.drawCentered("Continue", var7, var8 + 5, 16777215, 0);
-									var7 = Login.loginBoxX + 180 + 80;
-									class6.titlebuttonSprite.drawAt(var7 - 73, var8 - 20);
-									var0.drawCentered("Cancel", var7, var8 + 5, 16777215, 0);
-									var1.drawCentered("<u=ff>Can't Log In?</u>", Login.loginBoxX + 180, var8 + 36, 255, 0);
-								} else
-									if (Login.loginIndex == 5) {
-										var0.drawCentered("Forgotten your password?", Login.loginBoxX + 180, 201, 16776960, 0);
-										var31 = 221;
-										var2.drawCentered(Login.Login_response1, Login.loginBoxX + 180, var31, 16776960, 0);
-										var32 = var31 + 15;
-										var2.drawCentered(Login.Login_response2, Login.loginBoxX + 180, var32, 16776960, 0);
-										var32 += 15;
-										var2.drawCentered(Login.Login_response3, Login.loginBoxX + 180, var32, 16776960, 0);
-										var32 += 15;
-										var32 += 14;
-										var0.draw("Username/email: ", Login.loginBoxX + 180 - 145, var32, 16777215, 0);
-										var33 = 174;
-										for (var5 = class125.method2829(); var0.stringWidth(var5) > var33; var5 = var5.substring(1)) {
-										}
-										var0.draw(AbstractFont.escapeBrackets(var5) + (Client.cycle % 40 < 20 ? class122.colorStartTag(16776960) + "|" : ""), Login.loginBoxX + 180 - 34, var32, 16777215, 0);
-										var32 += 15;
-										var25 = Login.loginBoxX + 180 - 80;
-										short var36 = 321;
-										class6.titlebuttonSprite.drawAt(var25 - 73, var36 - 20);
-										var0.drawCentered("Recover", var25, var36 + 5, 16777215, 0);
-										var25 = Login.loginBoxX + 180 + 80;
-										class6.titlebuttonSprite.drawAt(var25 - 73, var36 - 20);
-										var0.drawCentered("Back", var25, var36 + 5, 16777215, 0);
-										var36 = 356;
-										var1.drawCentered("Still having trouble logging in?", Canvas.loginBoxCenter, var36, 268435455, 0);
-									} else
-										if (Login.loginIndex == 6) {
-											var31 = 201;
-											var0.drawCentered(Login.Login_response1, Login.loginBoxX + 180, var31, 16776960, 0);
-											var32 = var31 + 15;
-											var0.drawCentered(Login.Login_response2, Login.loginBoxX + 180, var32, 16776960, 0);
-											var32 += 15;
-											var0.drawCentered(Login.Login_response3, Login.loginBoxX + 180, var32, 16776960, 0);
-											var32 += 15;
-											var4 = Login.loginBoxX + 180;
-											var23 = 321;
-											class6.titlebuttonSprite.drawAt(var4 - 73, var23 - 20);
-											var0.drawCentered("Back", var4, var23 + 5, 16777215, 0);
-										} else
-											if (Login.loginIndex == 7) {
-												if (VarpDefinition.field1821 && !Client.onMobile) {
-													var31 = 201;
-													var0.drawCentered(Login.Login_response1, Canvas.loginBoxCenter, var31, 16776960, 0);
-													var32 = var31 + 15;
-													var0.drawCentered(Login.Login_response2, Canvas.loginBoxCenter, var32, 16776960, 0);
-													var32 += 15;
-													var0.drawCentered(Login.Login_response3, Canvas.loginBoxCenter, var32, 16776960, 0);
-													var4 = Canvas.loginBoxCenter - 150;
-													var32 += 10;
-													for (var45 = 0; var45 < 8; ++var45) {
-														class6.titlebuttonSprite.method8135(var4, var32, 30, 40);
-														boolean var47 = var45 == Login.field910 & Client.cycle % 40 < 20;
-														var0.draw((Login.field911[var45] == null ? "" : Login.field911[var45]) + (var47 ? class122.colorStartTag(16776960) + "|" : ""), var4 + 10, var32 + 27, 16777215, 0);
-														if (var45 != 1 && var45 != 3) {
-															var4 += 35;
-														} else {
-															var4 += 50;
-															var0.draw(AbstractFont.escapeBrackets("/"), var4 - 13, var32 + 27, 16777215, 0);
-														}
-													}
-													var45 = Canvas.loginBoxCenter - 80;
-													short var48 = 321;
-													class6.titlebuttonSprite.drawAt(var45 - 73, var48 - 20);
-													var0.drawCentered("Submit", var45, var48 + 5, 16777215, 0);
-													var45 = Canvas.loginBoxCenter + 80;
-													class6.titlebuttonSprite.drawAt(var45 - 73, var48 - 20);
-													var0.drawCentered("Cancel", var45, var48 + 5, 16777215, 0);
-												} else {
-													var31 = 216;
-													var0.drawCentered("Your date of birth isn't set.", Login.loginBoxX + 180, var31, 16776960, 0);
-													var32 = var31 + 15;
-													var2.drawCentered("Please verify your account status by", Login.loginBoxX + 180, var32, 16776960, 0);
-													var32 += 15;
-													var2.drawCentered("setting your date of birth.", Login.loginBoxX + 180, var32, 16776960, 0);
-													var32 += 15;
-													var4 = Login.loginBoxX + 180 - 80;
-													var23 = 321;
-													class6.titlebuttonSprite.drawAt(var4 - 73, var23 - 20);
-													var0.drawCentered("Set Date of Birth", var4, var23 + 5, 16777215, 0);
-													var4 = Login.loginBoxX + 180 + 80;
-													class6.titlebuttonSprite.drawAt(var4 - 73, var23 - 20);
-													var0.drawCentered("Back", var4, var23 + 5, 16777215, 0);
-												}
-											} else
-												if (Login.loginIndex == 8) {
-													var31 = 216;
-													var0.drawCentered("Sorry, but your account is not eligible to play.", Login.loginBoxX + 180, var31, 16776960, 0);
-													var32 = var31 + 15;
-													var2.drawCentered("For more information, please take a look at", Login.loginBoxX + 180, var32, 16776960, 0);
-													var32 += 15;
-													var2.drawCentered("our privacy policy.", Login.loginBoxX + 180, var32, 16776960, 0);
-													var32 += 15;
-													var4 = Login.loginBoxX + 180 - 80;
-													var23 = 321;
-													class6.titlebuttonSprite.drawAt(var4 - 73, var23 - 20);
-													var0.drawCentered("Privacy Policy", var4, var23 + 5, 16777215, 0);
-													var4 = Login.loginBoxX + 180 + 80;
-													class6.titlebuttonSprite.drawAt(var4 - 73, var23 - 20);
-													var0.drawCentered("Back", var4, var23 + 5, 16777215, 0);
-												} else
-													if (Login.loginIndex == 9) {
-														var31 = 221;
-														var0.drawCentered(Login.Login_response1, Login.loginBoxX + 180, var31, 16776960, 0);
-														var32 = var31 + 25;
-														var0.drawCentered(Login.Login_response2, Login.loginBoxX + 180, var32, 16776960, 0);
-														var32 += 25;
-														var0.drawCentered(Login.Login_response3, Login.loginBoxX + 180, var32, 16776960, 0);
-														var4 = Login.loginBoxX + 180;
-														var23 = 311;
-														class6.titlebuttonSprite.drawAt(var4 - 73, var23 - 20);
-														var0.drawCentered("Try again", var4, var23 + 5, 16777215, 0);
-													} else
-														if (Login.loginIndex == 10) {
-															var32 = Login.loginBoxX + 180;
-															var33 = 209;
-															var0.drawCentered("Welcome to RuneScape", Login.loginBoxX + 180, var33, 16776960, 0);
-															var4 = var33 + 20;
-															Login.field914.drawAt(var32 - 109, var4);
-															IgnoreList.field4284.drawAt(var32 - 48, var4 + 18);
-														} else
-															if (Login.loginIndex == 12) {
-																var32 = Canvas.loginBoxCenter;
-																var33 = 216;
-																var2.drawCentered("Before using this app, please read and accept our", var32, var33, 16777215, 0);
-																var4 = var33 + 17;
-																var2.drawCentered("<col=ffd200>terms of use</col>, <col=ffd200>privacy policy</col>, and <col=ffd200>end user licence</col>", var32, var4, 16777215, 0);
-																var4 += 17;
-																var2.drawCentered("<col=ffd200>agreement (EULA)</col>.", var32, var4, 16777215, 0);
-																var4 += 17;
-																var2.drawCentered("By accepting, you agree to these documents.", var32, var4, 16777215, 0);
-																var32 = Canvas.loginBoxCenter - 80;
-																var33 = 311;
-																class6.titlebuttonSprite.drawAt(var32 - 73, var33 - 20);
-																var0.drawCentered("Accept", var32, var33 + 5, 16777215, 0);
-																var32 = Canvas.loginBoxCenter + 80;
-																class6.titlebuttonSprite.drawAt(var32 - 73, var33 - 20);
-																var0.drawCentered("Decline", var32, var33 + 5, 16777215, 0);
-															} else
-																if (Login.loginIndex == 13) {
-																	var31 = 231;
-																	var2.drawCentered("You must accept our terms of use, privacy policy,", Login.loginBoxX + 180, var31, 16777215, 0);
-																	var32 = var31 + 20;
-																	var2.drawCentered("and end user licence agreement to continue.", Login.loginBoxX + 180, var32, 16777215, 0);
-																	var4 = Login.loginBoxX + 180;
-																	var31 = 311;
-																	class6.titlebuttonSprite.drawAt(var4 - 73, var31 - 20);
-																	var0.drawCentered("Back", var4, var31 + 5, 16777215, 0);
-																} else
-																	if (Login.loginIndex == 14) {
-																		var31 = 201;
-																		String var24 = "";
-																		var5 = "";
-																		var6 = "";
-																		switch (Login.field897) {
-																			case 0 :
-																				var24 = "Your account has been disabled.";
-																				var5 = Strings.field3670;
-																				var6 = "";
-																				break;
-																			case 1 :
-																				var24 = "Account locked as we suspect it has been stolen.";
-																				var5 = Strings.field3709;
-																				var6 = "";
-																				break;
-																			default :
-																				class135.Login_promptCredentials(false);
-																		}
-																		var0.drawCentered(var24, Login.loginBoxX + 180, var31, 16776960, 0);
-																		var32 = var31 + 15;
-																		var2.drawCentered(var5, Login.loginBoxX + 180, var32, 16776960, 0);
-																		var32 += 15;
-																		var2.drawCentered(var6, Login.loginBoxX + 180, var32, 16776960, 0);
-																		var32 += 15;
-																		var7 = Login.loginBoxX + 180;
-																		var8 = 276;
-																		class6.titlebuttonSprite.drawAt(var7 - 73, var8 - 20);
-																		var0.drawCentered("Support Page", var7, var8 + 5, 16777215, 0);
-																		var7 = Login.loginBoxX + 180;
-																		var8 = 326;
-																		class6.titlebuttonSprite.drawAt(var7 - 73, var8 - 20);
-																		var0.drawCentered("Back", var7, var8 + 5, 16777215, 0);
-																	} else
-																		if (Login.loginIndex == 24) {
-																			var31 = 221;
-																			var0.drawCentered(Login.Login_response1, Login.loginBoxX + 180, var31, 16777215, 0);
-																			var32 = var31 + 15;
-																			var0.drawCentered(Login.Login_response2, Login.loginBoxX + 180, var32, 16777215, 0);
-																			var32 += 15;
-																			var0.drawCentered(Login.Login_response3, Login.loginBoxX + 180, var32, 16777215, 0);
-																			var32 += 15;
-																			var4 = Login.loginBoxX + 180;
-																			var23 = 301;
-																			class6.titlebuttonSprite.drawAt(var4 - 73, var23 - 20);
-																			var0.drawCentered("Ok", var4, var23 + 5, 16777215, 0);
-																		} else
-																			if (Login.loginIndex == 26) {
-																				var31 = 216;
-																				var0.drawCentered("Your date of birth isn't set.", Login.loginBoxX + 180, var31, 16776960, 0);
-																				var32 = var31 + 15;
-																				var2.drawCentered("Please verify your account status by", Login.loginBoxX + 180, var32, 16776960, 0);
-																				var32 += 15;
-																				var2.drawCentered("setting your date of birth.", Login.loginBoxX + 180, var32, 16776960, 0);
-																				var32 += 15;
-																				var4 = Login.loginBoxX + 180 - 80;
-																				var23 = 321;
-																				class6.titlebuttonSprite.drawAt(var4 - 73, var23 - 20);
-																				var0.drawCentered("Set Date of Birth", var4, var23 + 5, 16777215, 0);
-																				var4 = Login.loginBoxX + 180 + 80;
-																				class6.titlebuttonSprite.drawAt(var4 - 73, var23 - 20);
-																				var0.drawCentered("Back", var4, var23 + 5, 16777215, 0);
-																			}
-
-
-
-
-
-
-
-
-
-
-
-							}
-
-
-
+							var2.drawCentered("Please verify your account status by", Login.loginBoxX + 180, var32, 16776960, 0);
+							var32 += 15;
+							var2.drawCentered("setting your date of birth.", Login.loginBoxX + 180, var32, 16776960, 0);
+							var32 += 15;
+							var4 = Login.loginBoxX + 180 - 80;
+							var23 = 321;
+							class6.titlebuttonSprite.drawAt(var4 - 73, var23 - 20);
+							var0.drawCentered("Set Date of Birth", var4, var23 + 5, 16777215, 0);
+							var4 = Login.loginBoxX + 180 + 80;
+							class6.titlebuttonSprite.drawAt(var4 - 73, var23 - 20);
+							var0.drawCentered("Back", var4, var23 + 5, 16777215, 0);
+						}
+					} else if (Login.loginIndex == 8) {
+						var31 = 216;
+						var0.drawCentered("Sorry, but your account is not eligible to play.", Login.loginBoxX + 180, var31, 16776960, 0);
+						var32 = var31 + 15;
+						var2.drawCentered("For more information, please take a look at", Login.loginBoxX + 180, var32, 16776960, 0);
+						var32 += 15;
+						var2.drawCentered("our privacy policy.", Login.loginBoxX + 180, var32, 16776960, 0);
+						var32 += 15;
+						var4 = Login.loginBoxX + 180 - 80;
+						var23 = 321;
+						class6.titlebuttonSprite.drawAt(var4 - 73, var23 - 20);
+						var0.drawCentered("Privacy Policy", var4, var23 + 5, 16777215, 0);
+						var4 = Login.loginBoxX + 180 + 80;
+						class6.titlebuttonSprite.drawAt(var4 - 73, var23 - 20);
+						var0.drawCentered("Back", var4, var23 + 5, 16777215, 0);
+					} else if (Login.loginIndex == 9) {
+						var31 = 221;
+						var0.drawCentered(Login.Login_response1, Login.loginBoxX + 180, var31, 16776960, 0);
+						var32 = var31 + 25;
+						var0.drawCentered(Login.Login_response2, Login.loginBoxX + 180, var32, 16776960, 0);
+						var32 += 25;
+						var0.drawCentered(Login.Login_response3, Login.loginBoxX + 180, var32, 16776960, 0);
+						var4 = Login.loginBoxX + 180;
+						var23 = 311;
+						class6.titlebuttonSprite.drawAt(var4 - 73, var23 - 20);
+						var0.drawCentered("Try again", var4, var23 + 5, 16777215, 0);
+					} else if (Login.loginIndex == 10) {
+						var32 = Login.loginBoxX + 180;
+						var33 = 209;
+						var0.drawCentered("Welcome to RuneScape", Login.loginBoxX + 180, var33, 16776960, 0);
+						var4 = var33 + 20;
+						Login.field914.drawAt(var32 - 109, var4);
+						IgnoreList.field4284.drawAt(var32 - 48, var4 + 18);
+					} else if (Login.loginIndex == 12) {
+						var32 = Canvas.loginBoxCenter;
+						var33 = 216;
+						var2.drawCentered("Before using this app, please read and accept our", var32, var33, 16777215, 0);
+						var4 = var33 + 17;
+						var2.drawCentered("<col=ffd200>terms of use</col>, <col=ffd200>privacy policy</col>, and <col=ffd200>end user licence</col>", var32, var4, 16777215, 0);
+						var4 += 17;
+						var2.drawCentered("<col=ffd200>agreement (EULA)</col>.", var32, var4, 16777215, 0);
+						var4 += 17;
+						var2.drawCentered("By accepting, you agree to these documents.", var32, var4, 16777215, 0);
+						var32 = Canvas.loginBoxCenter - 80;
+						var33 = 311;
+						class6.titlebuttonSprite.drawAt(var32 - 73, var33 - 20);
+						var0.drawCentered("Accept", var32, var33 + 5, 16777215, 0);
+						var32 = Canvas.loginBoxCenter + 80;
+						class6.titlebuttonSprite.drawAt(var32 - 73, var33 - 20);
+						var0.drawCentered("Decline", var32, var33 + 5, 16777215, 0);
+					} else if (Login.loginIndex == 13) {
+						var31 = 231;
+						var2.drawCentered("You must accept our terms of use, privacy policy,", Login.loginBoxX + 180, var31, 16777215, 0);
+						var32 = var31 + 20;
+						var2.drawCentered("and end user licence agreement to continue.", Login.loginBoxX + 180, var32, 16777215, 0);
+						var4 = Login.loginBoxX + 180;
+						var31 = 311;
+						class6.titlebuttonSprite.drawAt(var4 - 73, var31 - 20);
+						var0.drawCentered("Back", var4, var31 + 5, 16777215, 0);
+					} else if (Login.loginIndex == 14) {
+						var31 = 201;
+						String var24 = "";
+						var5 = "";
+						var6 = "";
+						switch (Login.field897) {
+							case 0 :
+								var24 = "Your account has been disabled.";
+								var5 = Strings.field3670;
+								var6 = "";
+								break;
+							case 1 :
+								var24 = "Account locked as we suspect it has been stolen.";
+								var5 = Strings.field3709;
+								var6 = "";
+								break;
+							default :
+								class135.Login_promptCredentials(false);
+						}
+						var0.drawCentered(var24, Login.loginBoxX + 180, var31, 16776960, 0);
+						var32 = var31 + 15;
+						var2.drawCentered(var5, Login.loginBoxX + 180, var32, 16776960, 0);
+						var32 += 15;
+						var2.drawCentered(var6, Login.loginBoxX + 180, var32, 16776960, 0);
+						var32 += 15;
+						var7 = Login.loginBoxX + 180;
+						var8 = 276;
+						class6.titlebuttonSprite.drawAt(var7 - 73, var8 - 20);
+						var0.drawCentered("Support Page", var7, var8 + 5, 16777215, 0);
+						var7 = Login.loginBoxX + 180;
+						var8 = 326;
+						class6.titlebuttonSprite.drawAt(var7 - 73, var8 - 20);
+						var0.drawCentered("Back", var7, var8 + 5, 16777215, 0);
+					} else if (Login.loginIndex == 24) {
+						var31 = 221;
+						var0.drawCentered(Login.Login_response1, Login.loginBoxX + 180, var31, 16777215, 0);
+						var32 = var31 + 15;
+						var0.drawCentered(Login.Login_response2, Login.loginBoxX + 180, var32, 16777215, 0);
+						var32 += 15;
+						var0.drawCentered(Login.Login_response3, Login.loginBoxX + 180, var32, 16777215, 0);
+						var32 += 15;
+						var4 = Login.loginBoxX + 180;
+						var23 = 301;
+						class6.titlebuttonSprite.drawAt(var4 - 73, var23 - 20);
+						var0.drawCentered("Ok", var4, var23 + 5, 16777215, 0);
+					} else if (Login.loginIndex == 26) {
+						var31 = 216;
+						var0.drawCentered("Your date of birth isn't set.", Login.loginBoxX + 180, var31, 16776960, 0);
+						var32 = var31 + 15;
+						var2.drawCentered("Please verify your account status by", Login.loginBoxX + 180, var32, 16776960, 0);
+						var32 += 15;
+						var2.drawCentered("setting your date of birth.", Login.loginBoxX + 180, var32, 16776960, 0);
+						var32 += 15;
+						var4 = Login.loginBoxX + 180 - 80;
+						var23 = 321;
+						class6.titlebuttonSprite.drawAt(var4 - 73, var23 - 20);
+						var0.drawCentered("Set Date of Birth", var4, var23 + 5, 16777215, 0);
+						var4 = Login.loginBoxX + 180 + 80;
+						class6.titlebuttonSprite.drawAt(var4 - 73, var23 - 20);
+						var0.drawCentered("Back", var4, var23 + 5, 16777215, 0);
+					}
+				}
 			}
 			if (Client.gameState >= 10) {
 				int[] var27 = new int[4];

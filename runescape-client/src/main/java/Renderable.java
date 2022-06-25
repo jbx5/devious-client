@@ -44,61 +44,43 @@ public abstract class Renderable extends DualNode {
 			--class446.Interpreter_intStackSize;
 			--Interpreter.Interpreter_stringStackSize;
 			return 1;
-		} else
-			if (var0 == 7401) {
-				--class446.Interpreter_intStackSize;
-				--Interpreter.Interpreter_stringStackSize;
-				return 1;
-			} else
-				if (var0 == 7402) {
-					class446.Interpreter_intStackSize -= 2;
-					--Interpreter.Interpreter_stringStackSize;
-					return 1;
-				} else
-					if (var0 == 7403) {
-						class446.Interpreter_intStackSize -= 2;
-						--Interpreter.Interpreter_stringStackSize;
-						return 1;
-					} else
-						if (var0 == 7404) {
-							--class446.Interpreter_intStackSize;
-							--Interpreter.Interpreter_stringStackSize;
-							return 1;
-						} else
-							if (var0 == 7405) {
-								class446.Interpreter_intStackSize -= 2;
-								return 1;
-							} else
-								if (var0 == 7406) {
-									--class446.Interpreter_intStackSize;
-									Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = "";
-									return 1;
-								} else
-									if (var0 == 7407) {
-										Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;
-										return 1;
-									} else
-										if (var0 == 7408) {
-											class446.Interpreter_intStackSize -= 2;
-											--Interpreter.Interpreter_stringStackSize;
-											Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;
-											return 1;
-										} else
-											if (var0 == 7409) {
-												--class446.Interpreter_intStackSize;
-												return 1;
-											} else {
-												return 2;
-											}
-
-
-
-
-
-
-
-
-
+		} else if (var0 == 7401) {
+			--class446.Interpreter_intStackSize;
+			--Interpreter.Interpreter_stringStackSize;
+			return 1;
+		} else if (var0 == 7402) {
+			class446.Interpreter_intStackSize -= 2;
+			--Interpreter.Interpreter_stringStackSize;
+			return 1;
+		} else if (var0 == 7403) {
+			class446.Interpreter_intStackSize -= 2;
+			--Interpreter.Interpreter_stringStackSize;
+			return 1;
+		} else if (var0 == 7404) {
+			--class446.Interpreter_intStackSize;
+			--Interpreter.Interpreter_stringStackSize;
+			return 1;
+		} else if (var0 == 7405) {
+			class446.Interpreter_intStackSize -= 2;
+			return 1;
+		} else if (var0 == 7406) {
+			--class446.Interpreter_intStackSize;
+			Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = "";
+			return 1;
+		} else if (var0 == 7407) {
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;
+			return 1;
+		} else if (var0 == 7408) {
+			class446.Interpreter_intStackSize -= 2;
+			--Interpreter.Interpreter_stringStackSize;
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;
+			return 1;
+		} else if (var0 == 7409) {
+			--class446.Interpreter_intStackSize;
+			return 1;
+		} else {
+			return 2;
+		}
 	}
 
 	@ObfuscatedName("fu")

@@ -144,12 +144,10 @@ public class WorldMapRegion {
 											break label67;
 										}
 									}
-								} else
-									if (var13.mapIconId != -1) {
-										var14 = true;
-										break label67;
-									}
-
+								} else if (var13.mapIconId != -1) {
+									var14 = true;
+									break label67;
+								}
 								var14 = false;
 							}
 							if (var14) {
@@ -396,39 +394,33 @@ public class WorldMapRegion {
 			FloorOverlayDefinition var11 = class124.method2814(var7);
 			if (var11 == null) {
 				var9 = var10;
-			} else
-				if (var11.secondaryRgb >= 0) {
-					var9 = var11.secondaryRgb | -16777216;
-				} else
-					if (var11.texture >= 0) {
-						int var12 = class154.method3170(Rasterizer3D.Rasterizer3D_textureLoader.getAverageTextureRGB(var11.texture), 96);
-						var9 = Rasterizer3D.Rasterizer3D_colorPalette[var12] | -16777216;
-					} else
-						if (var11.primaryRgb == 16711935) {
-							var9 = var10;
-						} else {
-							int var13 = var11.hue;
-							int var14 = var11.saturation;
-							int var15 = var11.lightness;
-							if (var15 > 179) {
-								var14 /= 2;
-							}
-							if (var15 > 192) {
-								var14 /= 2;
-							}
-							if (var15 > 217) {
-								var14 /= 2;
-							}
-							if (var15 > 243) {
-								var14 /= 2;
-							}
-							int var16 = (var14 / 32 << 7) + var15 / 2 + (var13 / 4 << 10);
-							int var17 = class154.method3170(var16, 96);
-							var9 = Rasterizer3D.Rasterizer3D_colorPalette[var17] | -16777216;
-						}
-
-
-
+			} else if (var11.secondaryRgb >= 0) {
+				var9 = var11.secondaryRgb | -16777216;
+			} else if (var11.texture >= 0) {
+				int var12 = class154.method3170(Rasterizer3D.Rasterizer3D_textureLoader.getAverageTextureRGB(var11.texture), 96);
+				var9 = Rasterizer3D.Rasterizer3D_colorPalette[var12] | -16777216;
+			} else if (var11.primaryRgb == 16711935) {
+				var9 = var10;
+			} else {
+				int var13 = var11.hue;
+				int var14 = var11.saturation;
+				int var15 = var11.lightness;
+				if (var15 > 179) {
+					var14 /= 2;
+				}
+				if (var15 > 192) {
+					var14 /= 2;
+				}
+				if (var15 > 217) {
+					var14 /= 2;
+				}
+				if (var15 > 243) {
+					var14 /= 2;
+				}
+				int var16 = (var14 / 32 << 7) + var15 / 2 + (var13 / 4 << 10);
+				int var17 = class154.method3170(var16, 96);
+				var9 = Rasterizer3D.Rasterizer3D_colorPalette[var17] | -16777216;
+			}
 			var8 = var9;
 		}
 		if (var7 > -1 && var3.field2796[0][var1][var2] == 0) {
@@ -454,39 +446,33 @@ public class WorldMapRegion {
 				int var7;
 				if (var9 == null) {
 					var7 = var8;
-				} else
-					if (var9.secondaryRgb >= 0) {
-						var7 = var9.secondaryRgb | -16777216;
-					} else
-						if (var9.texture >= 0) {
-							int var10 = class154.method3170(Rasterizer3D.Rasterizer3D_textureLoader.getAverageTextureRGB(var9.texture), 96);
-							var7 = Rasterizer3D.Rasterizer3D_colorPalette[var10] | -16777216;
-						} else
-							if (var9.primaryRgb == 16711935) {
-								var7 = var8;
-							} else {
-								int var11 = var9.hue;
-								int var12 = var9.saturation;
-								int var13 = var9.lightness;
-								if (var13 > 179) {
-									var12 /= 2;
-								}
-								if (var13 > 192) {
-									var12 /= 2;
-								}
-								if (var13 > 217) {
-									var12 /= 2;
-								}
-								if (var13 > 243) {
-									var12 /= 2;
-								}
-								int var14 = (var12 / 32 << 7) + var13 / 2 + (var11 / 4 << 10);
-								int var15 = class154.method3170(var14, 96);
-								var7 = Rasterizer3D.Rasterizer3D_colorPalette[var15] | -16777216;
-							}
-
-
-
+				} else if (var9.secondaryRgb >= 0) {
+					var7 = var9.secondaryRgb | -16777216;
+				} else if (var9.texture >= 0) {
+					int var10 = class154.method3170(Rasterizer3D.Rasterizer3D_textureLoader.getAverageTextureRGB(var9.texture), 96);
+					var7 = Rasterizer3D.Rasterizer3D_colorPalette[var10] | -16777216;
+				} else if (var9.primaryRgb == 16711935) {
+					var7 = var8;
+				} else {
+					int var11 = var9.hue;
+					int var12 = var9.saturation;
+					int var13 = var9.lightness;
+					if (var13 > 179) {
+						var12 /= 2;
+					}
+					if (var13 > 192) {
+						var12 /= 2;
+					}
+					if (var13 > 217) {
+						var12 /= 2;
+					}
+					if (var13 > 243) {
+						var12 /= 2;
+					}
+					int var14 = (var12 / 32 << 7) + var13 / 2 + (var11 / 4 << 10);
+					int var15 = class154.method3170(var14, 96);
+					var7 = Rasterizer3D.Rasterizer3D_colorPalette[var15] | -16777216;
+				}
 				if (var3.field2796[var5][var1][var2] == 0) {
 					Rasterizer2D.Rasterizer2D_fillRectangle(this.pixelsPerTile * var1, this.pixelsPerTile * (63 - var2), this.pixelsPerTile, this.pixelsPerTile, var7);
 				} else {

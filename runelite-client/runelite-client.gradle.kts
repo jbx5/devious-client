@@ -120,7 +120,7 @@ dependencies {
     testImplementation(group = "org.slf4j", name = "slf4j-api", version = "1.7.32")
 
     implementation("com.miglayout:miglayout:3.7.4")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.5.31")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.6.21")
     implementation("org.jboss.aerogear:aerogear-otp-java:1.0.0")
     implementation("io.socket:engine.io-client:1.0.0")
     implementation("io.socket:socket.io-client:1.0.0")
