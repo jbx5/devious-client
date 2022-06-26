@@ -9,6 +9,7 @@ import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
+import net.runelite.client.events.ConfigChanged;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.plugins.unethicalite.regions.RegionHandler;
 import net.runelite.client.ui.ClientToolbar;
@@ -34,10 +35,23 @@ public class UnethicalitePlugin extends SettingsPlugin
 
 	private static boolean INVENTORY_CHANGED = false;
 	private static boolean EQUIPMENT_CHANGED = false;
+	private static boolean CONFIG_CHANGED = false;
 
 	private static final Set<Integer> REFRESH_WIDGET_IDS = Set.of(
 			WidgetInfo.QUEST_COMPLETED_NAME_TEXT.getGroupId(),
 			WidgetInfo.LEVEL_UP_LEVEL.getGroupId()
+	);
+
+	private static final Set<String> pathfinderConfigKeys = Set.of(
+		"useTransports",
+		"useTeleports",
+		"avoidWilderness",
+		"usePoh",
+		"hasMountedGlory",
+		"hasMountedDigsitePendant",
+		"hasMountedMythicalCape",
+		"hasMountedXericsTalisman",
+		"hasJewelryBox"
 	);
 
 	@Inject
@@ -144,11 +158,30 @@ public class UnethicalitePlugin extends SettingsPlugin
 		}
 	}
 
+	@Subscribe
+	public void onConfigChanged(ConfigChanged event)
+	{
+		if (!event.getGroup().equals(UnethicaliteConfig.CONFIG_GROUP))
+		{
+			return;
+		}
+		if (pathfinderConfigKeys.contains(event.getKey()))
+		{
+			CONFIG_CHANGED = true;
+		}
+	}
+
+	public static boolean avoidWilderness()
+	{
+		return staticConfig != null && staticConfig.avoidWilderness();
+	}
+
 	public static boolean shouldRefreshPath()
 	{
-		boolean refreshPath = INVENTORY_CHANGED || EQUIPMENT_CHANGED;
+		boolean refreshPath = INVENTORY_CHANGED || EQUIPMENT_CHANGED || CONFIG_CHANGED;
 		EQUIPMENT_CHANGED = false;
 		INVENTORY_CHANGED = false;
+		CONFIG_CHANGED = false;
 		return refreshPath;
 	}
 

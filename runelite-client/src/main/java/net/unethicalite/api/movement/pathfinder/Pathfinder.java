@@ -3,6 +3,7 @@ package net.unethicalite.api.movement.pathfinder;
 import lombok.Data;
 import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
+import net.runelite.api.coords.WorldArea;
 import net.runelite.api.coords.WorldPoint;
 import net.unethicalite.api.movement.pathfinder.model.Transport;
 
@@ -14,6 +15,8 @@ import java.util.stream.Collectors;
 @Slf4j
 public class Pathfinder implements Callable<List<WorldPoint>>
 {
+    private static final WorldArea WILDERNESS_ABOVE_GROUND = new WorldArea(2944, 3523, 448, 448, 0);
+    private static final WorldArea WILDERNESS_UNDERGROUND = new WorldArea(2944, 9918, 320, 442, 0);
     final CollisionMap map;
     final Map<WorldPoint, List<Transport>> transports;
     private List<Node> start;
@@ -21,8 +24,14 @@ public class Pathfinder implements Callable<List<WorldPoint>>
     private final List<Node> boundary = new LinkedList<>();
     private final Set<WorldPoint> visited = new HashSet<>();
     private Node nearest;
+    boolean avoidWilderness;
 
-    public Pathfinder(CollisionMap collisionMap, Map<WorldPoint, List<Transport>> transports, List<WorldPoint> start, WorldPoint target)
+    private static boolean isInWilderness(WorldPoint location)
+    {
+        return location.isInArea2D(WILDERNESS_ABOVE_GROUND, WILDERNESS_UNDERGROUND);
+    }
+
+    public Pathfinder(CollisionMap collisionMap, Map<WorldPoint, List<Transport>> transports, List<WorldPoint> start, WorldPoint target, boolean avoidWilderness)
     {
         this.map = collisionMap;
         this.transports = transports;
@@ -30,6 +39,7 @@ public class Pathfinder implements Callable<List<WorldPoint>>
         this.start = new ArrayList<>();
         this.start.addAll(start.stream().map(point -> new Node(point, null)).collect(Collectors.toList()));
         this.nearest = null;
+        this.avoidWilderness = avoidWilderness;
     }
 
     private void addNeighbors(Node node)
@@ -86,6 +96,11 @@ public class Pathfinder implements Callable<List<WorldPoint>>
 
     private void addNeighbor(Node node, WorldPoint neighbor)
     {
+        if (avoidWilderness && isInWilderness(neighbor) && !isInWilderness(node.position) && !isInWilderness(target))
+        {
+            return;
+        }
+
         if (!visited.add(neighbor))
         {
             return;

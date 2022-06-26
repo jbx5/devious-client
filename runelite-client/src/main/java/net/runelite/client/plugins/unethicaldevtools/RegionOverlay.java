@@ -1,5 +1,6 @@
 package net.runelite.client.plugins.unethicaldevtools;
 
+import net.runelite.client.plugins.unethicalite.UnethicalitePlugin;
 import net.unethicalite.api.entities.Players;
 import net.unethicalite.api.movement.pathfinder.*;
 import net.unethicalite.api.movement.pathfinder.model.Teleport;
@@ -167,7 +168,7 @@ public class RegionOverlay extends Overlay
 								List<WorldPoint> startPoints = new ArrayList<>(teleports.keySet());
 								startPoints.add(Players.getLocal().getWorldLocation());
 								executorService.execute(() -> {
-											path = new Pathfinder(Static.getGlobalCollisionMap(), Walker.buildTransportLinks(), startPoints, clickPoint.getWorldLocation()).find();
+											path = new Pathfinder(Static.getGlobalCollisionMap(), Walker.buildTransportLinks(), startPoints, clickPoint.getWorldLocation(), UnethicalitePlugin.avoidWilderness()).find();
 										}
 								);
 							}
@@ -195,7 +196,7 @@ public class RegionOverlay extends Overlay
 						List<WorldPoint> startPoints = new ArrayList<>(teleports.keySet());
 						startPoints.add(Players.getLocal().getWorldLocation());
 						executorService.execute(() -> {
-							path = new Pathfinder(Static.getGlobalCollisionMap(), Walker.buildTransportLinks(), startPoints, clickPoint).find();
+							path = new Pathfinder(Static.getGlobalCollisionMap(), Walker.buildTransportLinks(), startPoints, clickPoint, UnethicalitePlugin.avoidWilderness()).find();
 								}
 						);
 					});

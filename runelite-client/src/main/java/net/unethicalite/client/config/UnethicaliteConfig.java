@@ -216,6 +216,18 @@ public interface UnethicaliteConfig extends Config
 	}
 
 	@ConfigItem(
+			keyName = "avoidWilderness",
+			name = "Avoid Wilderness",
+			description = "Avoids walking in the wilderness if the destination is not in the wildy",
+			position = 3,
+			section = pathfinderSection
+	)
+	default boolean avoidWilderness()
+	{
+		return false;
+	}
+
+	@ConfigItem(
 			keyName = "downloadCollisionData",
 			name = "Download collision data",
 			description = "Downloads new collision data from the server and updates the currently used collision map",

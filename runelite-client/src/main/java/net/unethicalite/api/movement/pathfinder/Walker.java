@@ -315,19 +315,20 @@ public class Walker
 
 	private static List<WorldPoint> calculatePath(
 			List<WorldPoint> startPoints,
-			WorldPoint destination
+			WorldPoint destination,
+			boolean avoidWilderness
 	)
 	{
 		if (pathFuture == null)
 		{
-			pathFuture = executor.submit(new Pathfinder(Static.getGlobalCollisionMap(), buildTransportLinks(), startPoints, destination));
+			pathFuture = executor.submit(new Pathfinder(Static.getGlobalCollisionMap(), buildTransportLinks(), startPoints, destination, avoidWilderness));
 			currentDestination = destination;
 		}
 
 		if (!destination.equals(currentDestination) || UnethicalitePlugin.shouldRefreshPath())
 		{
 			pathFuture.cancel(true);
-			pathFuture = executor.submit(new Pathfinder(Static.getGlobalCollisionMap(), buildTransportLinks(), startPoints, destination));
+			pathFuture = executor.submit(new Pathfinder(Static.getGlobalCollisionMap(), buildTransportLinks(), startPoints, destination, avoidWilderness));
 			currentDestination = destination;
 		}
 
@@ -343,14 +344,19 @@ public class Walker
 		}
 	}
 
-	public static List<WorldPoint> buildPath(WorldPoint destination)
+	public static List<WorldPoint> buildPath(WorldPoint destination, boolean avoidWilderness)
 	{
 		Player local = Players.getLocal();
 		LinkedHashMap<WorldPoint, Teleport> teleports = buildTeleportLinks(destination);
 		List<WorldPoint> startPoints = new ArrayList<>(teleports.keySet());
 		startPoints.add(local.getWorldLocation());
 
-		return calculatePath(startPoints, destination);
+		return calculatePath(startPoints, destination, avoidWilderness);
+	}
+
+	public static List<WorldPoint> buildPath(WorldPoint destination)
+	{
+		return buildPath(destination, UnethicalitePlugin.avoidWilderness());
 	}
 
 	public static Map<WorldPoint, List<Transport>> buildTransportLinks()
