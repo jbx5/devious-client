@@ -116,7 +116,7 @@ public class RuneLite
 	private static final int MAX_OKHTTP_CACHE_SIZE = 20 * 1024 * 1024; // 20mb
 	public static String USER_AGENT = "RuneLite/" + RuneLiteProperties.getVersion() + "-" + RuneLiteProperties.getCommit() + (RuneLiteProperties.isDirty() ? "+" : "");
 
-	@Getter
+	@Getter @lombok.Setter
 	private static Injector injector;
 
 	@Inject

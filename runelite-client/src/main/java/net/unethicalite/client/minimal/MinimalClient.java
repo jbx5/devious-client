@@ -114,9 +114,6 @@ public class MinimalClient
 
 	private static final int MAX_OKHTTP_CACHE_SIZE = 20 * 1024 * 1024; // 20mb
 
-	@Getter
-	private static Injector injector;
-
 	@Inject
 	private EventBus eventBus;
 
@@ -262,16 +259,13 @@ public class MinimalClient
 
 			final long start = System.currentTimeMillis();
 
-			injector = Guice.createInjector(new MinimalModule(
+			RuneLite.setInjector(Guice.createInjector(new MinimalModule(
 					options.has("developer-mode"),
 					okHttpClient,
 					clientLoader,
-					options.valueOf(configfile))
-			);
+					options.valueOf(configfile))));
 
-			injector.getInstance(MinimalClient.class).start(options);
-
-			RuneLite.setInjector(injector);
+			RuneLite.getInjector().getInstance(MinimalClient.class).start(options);
 
 			final long end = System.currentTimeMillis();
 			final RuntimeMXBean rb = ManagementFactory.getRuntimeMXBean();
@@ -295,7 +289,7 @@ public class MinimalClient
 		if (!isOutdated)
 		{
 			// Inject members into client
-			injector.injectMembers(client);
+			RuneLite.getInjector().injectMembers(client);
 		}
 
 		// Start the applet
@@ -345,12 +339,6 @@ public class MinimalClient
 		{
 			quickLaunch(options);
 		}
-	}
-
-	@VisibleForTesting
-	public static void setInjector(Injector injector)
-	{
-		MinimalClient.injector = injector;
 	}
 
 	private static class ConfigFileConverter implements ValueConverter<File>
