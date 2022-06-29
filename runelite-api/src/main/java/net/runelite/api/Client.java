@@ -1136,6 +1136,11 @@ public interface Client extends OAuthApi, GameEngine
 	NodeCache getStructCompositionCache();
 
 	/**
+	 * Gets a entry out of a DBTable Row
+	 */
+	Object getDBTableField(int rowID, int column, int tupleIndex, int fieldIndex);
+
+	/**
 	 * Gets an array of all world areas
 	 *
 	 * @return the world areas
