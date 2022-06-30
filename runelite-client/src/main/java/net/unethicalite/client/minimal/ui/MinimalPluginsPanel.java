@@ -46,6 +46,10 @@ public class MinimalPluginsPanel
 			JButton startButton = new JButton(new ImageIcon(ImageUtil.loadImageResource(MinimalModule.class, "play_arrow_white_18x18.png")));
 			startButton.addActionListener(e ->
 			{
+				if (minimalPluginManager.isScriptRunning())
+				{
+					minimalPluginManager.stopPlugin();
+				}
 				PluginEntry selected = pluginList.getSelectedValue();
 				minimalPluginManager.startPlugin(selected);
 				frame.setVisible(false);
