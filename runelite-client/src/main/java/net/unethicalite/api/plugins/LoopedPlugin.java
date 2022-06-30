@@ -112,6 +112,7 @@ public abstract class LoopedPlugin extends Plugin implements Runnable
 		protected void afterExecute(Runnable r, Throwable t)
 		{
 			super.afterExecute(r, t);
+
 			if (t == null && r instanceof Future<?>)
 			{
 				try
@@ -122,9 +123,9 @@ public abstract class LoopedPlugin extends Plugin implements Runnable
 						future.get();
 					}
 				}
-				catch (CancellationException ce)
+				catch (CancellationException ignored)
 				{
-					t = ce;
+
 				}
 				catch (ExecutionException ee)
 				{
