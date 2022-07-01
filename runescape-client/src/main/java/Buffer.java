@@ -1,9 +1,10 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.Implements;
+
 import java.math.BigInteger;
-import net.runelite.mapping.Export;
 @ObfuscatedName("qt")
 @Implements("Buffer")
 public class Buffer extends Node {
@@ -733,7 +734,6 @@ public class Buffer extends Node {
 
 	@ObfuscatedName("dd")
 	@ObfuscatedSignature(descriptor = "(IB)V", garbageValue = "9")
-	@Export("writeIntME")
 	public void writeShortLE(int var1) {
 		this.array[++this.offset - 1] = ((byte) (var1));
 		this.array[++this.offset - 1] = ((byte) (var1 >> 8));

@@ -1,6 +1,5 @@
 package net.unethicalite.mixins;
 
-import net.unethicalite.api.events.PacketSent;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.MethodHook;
 import net.runelite.api.mixins.Mixin;
@@ -9,6 +8,7 @@ import net.runelite.api.packets.PacketBufferNode;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSPacketBufferNode;
 import net.runelite.rs.api.RSPacketWriter;
+import net.unethicalite.api.events.PacketSent;
 
 @Mixin(RSPacketWriter.class)
 public abstract class HPacketWriterMixin implements RSPacketWriter

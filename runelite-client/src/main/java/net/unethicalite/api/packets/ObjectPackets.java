@@ -1,5 +1,6 @@
 package net.unethicalite.api.packets;
 
+import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Item;
 import net.runelite.api.Point;
 import net.runelite.api.TileObject;
@@ -9,6 +10,7 @@ import net.runelite.api.packets.PacketBufferNode;
 import net.unethicalite.api.game.Game;
 import net.unethicalite.client.Static;
 
+@Slf4j
 public class ObjectPackets
 {
 	public static void tileObjectFirstOption(TileObject object, boolean ctrlDown)
@@ -132,7 +134,7 @@ public class ObjectPackets
 		packetBufferNode.getPacketBuffer().writeShortAddLE(worldPointX);
 		packetBufferNode.getPacketBuffer().writeShortLE(sourceSlot);
 		packetBufferNode.getPacketBuffer().writeByteNeg(ctrlDown ? 1 : 0);
-		packetBufferNode.getPacketBuffer().writeShortLE(sourceWidgetId);
+		packetBufferNode.getPacketBuffer().writeIntME(sourceWidgetId);
 		packetBufferNode.getPacketBuffer().writeShortAdd(sourceItemId);
 		return packetBufferNode;
 	}

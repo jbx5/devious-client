@@ -1,15 +1,24 @@
 package net.unethicalite.client.minimal.ui;
 
-import net.unethicalite.client.minimal.MinimalModule;
-import net.unethicalite.client.minimal.plugins.PluginEntry;
-import net.unethicalite.client.managers.MinimalPluginManager;
 import net.runelite.api.Client;
 import net.runelite.client.util.ImageUtil;
+import net.unethicalite.client.managers.MinimalPluginManager;
+import net.unethicalite.client.minimal.MinimalModule;
+import net.unethicalite.client.minimal.plugins.PluginEntry;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JList;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.WindowConstants;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.awt.Panel;
 import java.util.ArrayList;
 import java.util.List;
 

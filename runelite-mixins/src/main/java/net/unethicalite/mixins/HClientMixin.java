@@ -12,6 +12,8 @@ import net.runelite.api.mixins.MethodHook;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Replace;
 import net.runelite.api.mixins.Shadow;
+import net.runelite.api.packets.ClientPacket;
+import net.runelite.api.packets.PacketBufferNode;
 import net.runelite.api.widgets.Widget;
 import net.runelite.rs.api.RSAbstractSocket;
 import net.runelite.rs.api.RSActor;
@@ -357,34 +359,6 @@ public abstract class HClientMixin implements RSClient
 			packetWriter.setServerPacketLength(packetWriter.getServerPacket().getLength());
 		}
 
-		if (packetWriter.getServerPacketLength() == -1)
-		{
-			if (!socket.isAvailable(1))
-			{
-				return false;
-			}
-
-			packetWriter.getSocket().read(packetBuffer.getPayload(), 0, 1);
-			packetWriter.setServerPacketLength(packetBuffer.getPayload()[0] & 255);
-		}
-
-		if (packetWriter.getServerPacketLength() == -2)
-		{
-			if (!socket.isAvailable(2))
-			{
-				return false;
-			}
-
-			packetWriter.getSocket().read(packetBuffer.getPayload(), 0, 2);
-			packetBuffer.setOffset(0);
-			packetWriter.setServerPacketLength(packetBuffer.readUnsignedShort());
-		}
-
-		if (!socket.isAvailable(packetWriter.getServerPacketLength()))
-		{
-			return false;
-		}
-
 		ServerPacketReceived event = new ServerPacketReceived(
 				packetWriter.getServerPacket(),
 				false
@@ -398,5 +372,12 @@ public abstract class HClientMixin implements RSClient
 		}
 
 		return copy$onServerPacketRead(packetWriter);
+	}
+
+	@Override
+	@Inject
+	public PacketBufferNode preparePacket(ClientPacket packet)
+	{
+		return preparePacket(packet, client.getPacketWriter().getIsaacCipher());
 	}
 }

@@ -29,7 +29,7 @@ public class PacketSent
 		final int width = 16;
 
 		StringBuilder builder = new StringBuilder();
-
+		builder.append(Arrays.toString(array) + "\n");
 		for (int rowOffset = offset; rowOffset < offset + length; rowOffset += width)
 		{
 			builder.append(String.format("%06d     ", rowOffset));

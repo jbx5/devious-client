@@ -1,6 +1,7 @@
 package net.runelite.client.plugins.unethicalite;
 
 import lombok.extern.slf4j.Slf4j;
+import net.runelite.api.Client;
 import net.runelite.api.InventoryID;
 import net.runelite.api.events.ItemContainerChanged;
 import net.runelite.api.events.WidgetLoaded;
@@ -12,6 +13,7 @@ import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.events.ConfigChanged;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.plugins.unethicalite.regions.RegionHandler;
+import net.runelite.client.plugins.unethicalite.ui.UnethicalitePanel;
 import net.runelite.client.ui.ClientToolbar;
 import net.runelite.client.ui.NavigationButton;
 import net.runelite.client.util.ImageUtil;
@@ -74,6 +76,9 @@ public class UnethicalitePlugin extends SettingsPlugin
 	@Inject
 	private ConfigManager configManager;
 
+	@Inject
+	private Client client;
+
 	private UnethicalitePanel unethicalitePanel;
 	private NavigationButton navButton;
 
@@ -83,7 +88,7 @@ public class UnethicalitePlugin extends SettingsPlugin
 		staticConfig = config;
 		eventBus.register(regionHandler);
 
-		unethicalitePanel = new UnethicalitePanel(config, configManager);
+		unethicalitePanel = new UnethicalitePanel(client, config, configManager);
 
 		eventBus.register(unethicalitePanel);
 

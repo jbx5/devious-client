@@ -1,7 +1,7 @@
 package net.unethicalite.client.minimal.ui;
 
 import net.miginfocom.swing.MigLayout;
-import net.runelite.client.plugins.unethicalite.UnethicalitePanel;
+import net.runelite.client.plugins.unethicalite.ui.UnethicalitePanel;
 import net.runelite.client.ui.ColorScheme;
 import net.unethicalite.api.plugins.Script;
 import net.unethicalite.client.config.UnethicaliteConfig;
@@ -26,8 +26,13 @@ import net.runelite.client.ui.components.colorpicker.ColorPickerManager;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JRadioButton;
+import javax.swing.SwingUtilities;
+import javax.swing.WindowConstants;
 
 @Singleton
 public class MinimalToolbar extends JMenuBar
@@ -103,7 +108,7 @@ public class MinimalToolbar extends JMenuBar
 		clientConfigPanel = new MinimalConfigPanel(configManager, colorPickerManager, eventBus);
 		clientConfigPanel.init(cl);
 
-		UnethicalitePanel unethicalitePanel = new UnethicalitePanel(unethicaliteConfig, configManager);
+		UnethicalitePanel unethicalitePanel = new UnethicalitePanel(client, unethicaliteConfig, configManager);
 		eventBus.register(unethicalitePanel);
 
 		JFrame interactWindow = new JFrame();

@@ -25,27 +25,8 @@
 package net.runelite.api;
 
 import com.jagex.oldscape.pub.OAuthApi;
-import java.awt.Canvas;
-import java.awt.Dimension;
-import java.math.BigInteger;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
-import net.runelite.api.packets.ServerPacket;
-import net.unethicalite.api.SceneEntity;
 import net.runelite.api.annotations.Varbit;
 import net.runelite.api.annotations.VisibleForDevtools;
-
-import net.unethicalite.api.MouseHandler;
-import net.unethicalite.api.events.MenuAutomated;
-import net.runelite.api.packets.ClientPacket;
-import net.runelite.api.packets.IsaacCipher;
-import net.runelite.api.packets.PacketBufferNode;
-import net.runelite.api.packets.PacketWriter;
 import net.runelite.api.annotations.VisibleForExternalPlugins;
 import net.runelite.api.clan.ClanChannel;
 import net.runelite.api.clan.ClanID;
@@ -55,12 +36,31 @@ import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.events.PlayerChanged;
 import net.runelite.api.hooks.Callbacks;
 import net.runelite.api.hooks.DrawCallbacks;
+import net.runelite.api.packets.ClientPacket;
+import net.runelite.api.packets.IsaacCipher;
+import net.runelite.api.packets.PacketBufferNode;
+import net.runelite.api.packets.PacketWriter;
+import net.runelite.api.packets.ServerPacket;
 import net.runelite.api.vars.AccountType;
 import net.runelite.api.widgets.ItemQuantityMode;
 import net.runelite.api.widgets.Widget;
+import net.runelite.api.widgets.WidgetConfig;
 import net.runelite.api.widgets.WidgetInfo;
-import org.slf4j.Logger;
+import net.unethicalite.api.MouseHandler;
+import net.unethicalite.api.SceneEntity;
+import net.unethicalite.api.events.MenuAutomated;
 import org.intellij.lang.annotations.MagicConstant;
+import org.slf4j.Logger;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.awt.Canvas;
+import java.awt.Dimension;
+import java.math.BigInteger;
+import java.util.EnumSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Represents the RuneScape client.
@@ -2505,10 +2505,7 @@ public interface Client extends OAuthApi, GameEngine
 	 */
 	PacketBufferNode preparePacket(ClientPacket packet, IsaacCipher isaac);
 
-	/**
-	 * The packet which is sent when sending a name input (ex. adding friends).
-	 * @return the ClientPacket which belongs to this packet
-	 */
+	PacketBufferNode preparePacket(ClientPacket packet);
 
 	void setSelectedSceneTileX(int sceneX);
 
