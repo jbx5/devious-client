@@ -162,7 +162,7 @@ tasks {
 
     jar {
         manifest {
-            attributes(mutableMapOf("Main-Class" to Unethicalite.getMainClass()))
+            attributes(mutableMapOf("Main-Class" to "net.unethicalite.client.Unethicalite"))
         }
     }
 
@@ -200,6 +200,6 @@ tasks {
 
         classpath = project.sourceSets.main.get().runtimeClasspath
         enableAssertions = true
-        mainClass.set(Unethicalite.getMainClass())
+        mainClass.set("net.unethicalite.client.Unethicalite")
     }
 }
