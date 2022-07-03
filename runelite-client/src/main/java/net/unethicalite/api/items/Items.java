@@ -123,15 +123,13 @@ public abstract class Items
 				.collect(Collectors.toList());
 		if (!uncachedItems.isEmpty())
 		{
-			GameThread.invokeLater(() ->
+			GameThread.invoke(() ->
 			{
 				for (Item uncachedItem : uncachedItems)
 				{
 					int id = uncachedItem.getId();
 					client.cacheItem(id, client.getItemComposition(id));
 				}
-
-				return null;
 			});
 		}
 	}

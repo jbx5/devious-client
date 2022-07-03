@@ -114,14 +114,20 @@ public class Dialog
 
 	public static void enterInput(String input)
 	{
-		GameThread.invoke(() -> DialogPackets.sendNameInput(input));
-		close();
+		GameThread.invoke(() ->
+		{
+			DialogPackets.sendNameInput(input);
+			close();
+		});
 	}
 
 	public static void enterInput(int input)
 	{
-		GameThread.invoke(() -> DialogPackets.sendNumberInput(input));
-		close();
+		GameThread.invoke(() ->
+		{
+			DialogPackets.sendNumberInput(input);
+			close();
+		});
 	}
 
 	public static boolean isViewingOptions()

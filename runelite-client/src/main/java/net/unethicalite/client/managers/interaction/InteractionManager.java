@@ -5,7 +5,6 @@ import net.runelite.api.Client;
 import net.runelite.api.MenuAction;
 import net.runelite.api.Perspective;
 import net.runelite.api.coords.LocalPoint;
-import net.runelite.api.events.MenuOptionClicked;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.client.eventbus.EventBus;
@@ -23,7 +22,8 @@ import net.unethicalite.client.config.UnethicaliteConfig;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import java.awt.*;
+import java.awt.Point;
+import java.awt.Rectangle;
 
 import static net.unethicalite.client.managers.interaction.InteractMethod.MOUSE_EVENTS;
 
@@ -165,28 +165,6 @@ public class InteractionManager
 				Time.sleep(10, 20);
 				mouseHandler.sendRelease();
 			}
-		}
-	}
-
-	@Subscribe
-	public void onMenuOptionClicked(MenuOptionClicked e)
-	{
-		if ("Automated".equals(e.getMenuOption()) && e.getMenuAction() == MenuAction.WALK)
-		{
-			client.setSelectedSceneTileX(e.getParam0());
-			client.setSelectedSceneTileY(e.getParam1());
-			client.setViewportWalking(true);
-
-			e.consume();
-
-			client.invokeMenuAction(
-					"Automated",
-					"",
-					0,
-					MenuAction.CANCEL.getId(),
-					0,
-					0
-			);
 		}
 	}
 
