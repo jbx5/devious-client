@@ -3,11 +3,13 @@ package net.unethicalite.client;
 import net.runelite.client.RuneLite;
 import net.unethicalite.client.minimal.MinimalClient;
 
+import java.util.Arrays;
+
 public class Unethicalite
 {
 	public static void main(String[] args) throws Exception
 	{
-		if ("minimal".equals(System.getenv("unethicalite.build")))
+		if (Arrays.asList(args).contains("--minimal"))
 		{
 			MinimalClient.main(args);
 		}

@@ -553,6 +553,7 @@ public class MinimalClient
 				.accepts("cache-dir")
 				.withOptionalArg().ofType(String.class);
 
+		parser.accepts("minimal");
 		parser.accepts("norender");
 
 		parser.accepts("script")
