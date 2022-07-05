@@ -41,6 +41,10 @@ public enum TeleportItem
 			"Teleport"),
 	TAI_BWO_TELEPORT(new WorldPoint(2789, 3066, 0), "Tai bwo wannai teleport", ItemID.TAI_BWO_WANNAI_TELEPORT,
 			"Teleport"),
+	ZULANDRA_TELEPORT(new WorldPoint(2197, 3055, 0), "Zul-andra teleport", ItemID.ZULANDRA_TELEPORT,
+			"Teleport"),
+	IORWERTH_TELEPORT(new WorldPoint(2194, 3258, 0), "Iorwerth camp teleport", ItemID.IORWERTH_CAMP_TELEPORT,
+			"Teleport"),
 
 	// Items
 	ECTOPHIAL(new WorldPoint(3659, 3523, 0), "Ectophial", ItemID.ECTOPHIAL, "Empty"),
