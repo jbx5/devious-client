@@ -91,7 +91,6 @@ import net.runelite.api.events.WidgetLoaded;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetID;
 import net.runelite.api.widgets.WidgetInfo;
-import net.runelite.client.callback.ClientThread;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.events.ConfigChanged;
@@ -174,9 +173,6 @@ public class ClueScrollPlugin extends Plugin
 	@Inject
 	@Getter
 	private Client client;
-
-	@Inject
-	private ClientThread clientThread;
 
 	@Inject
 	private ItemManager itemManager;
@@ -677,36 +673,34 @@ public class ClueScrollPlugin extends Plugin
 		{
 			resetClue(false);
 		}
+
+		final Widget clueScrollText = client.getWidget(WidgetInfo.CLUE_SCROLL_TEXT);
+
+		if (clueScrollText != null)
+		{
+			ClueScroll clueScroll = findClueScroll(clueScrollText.getText());
+			if (clueScroll != null)
+			{
+				updateClue(clueScroll);
+			}
+			else
+			{
+				log.info("Unknown clue text: {}", clueScrollText.getText());
+				resetClue(true);
+			}
+		}
 	}
 
 	@Subscribe
 	public void onWidgetLoaded(WidgetLoaded event)
 	{
-		if (event.getGroupId() >= WidgetID.BEGINNER_CLUE_MAP_CHAMPIONS_GUILD
-			&& event.getGroupId() <= WidgetID.BEGINNER_CLUE_MAP_WIZARDS_TOWER)
+		if (event.getGroupId() < WidgetID.BEGINNER_CLUE_MAP_CHAMPIONS_GUILD
+			|| event.getGroupId() > WidgetID.BEGINNER_CLUE_MAP_WIZARDS_TOWER)
 		{
-			updateClue(BeginnerMapClue.forWidgetID(event.getGroupId()));
+			return;
 		}
-		else if (event.getGroupId() == WidgetID.CLUE_SCROLL_GROUP_ID)
-		{
-			clientThread.invokeLater(() ->
-			{
-				final Widget clueScrollText = client.getWidget(WidgetInfo.CLUE_SCROLL_TEXT);
-				if (clueScrollText != null)
-				{
-					ClueScroll clueScroll = findClueScroll(clueScrollText.getText());
-					if (clueScroll != null)
-					{
-						updateClue(clueScroll);
-					}
-					else
-					{
-						log.info("Unknown clue text: {}", clueScrollText.getText());
-						resetClue(true);
-					}
-				}
-			});
-		}
+
+		updateClue(BeginnerMapClue.forWidgetID(event.getGroupId()));
 	}
 
 	@Subscribe
