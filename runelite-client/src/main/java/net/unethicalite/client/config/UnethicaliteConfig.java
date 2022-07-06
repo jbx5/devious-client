@@ -369,4 +369,35 @@ public interface UnethicaliteConfig extends Config
 	{
 		return false;
 	}
+
+	@ConfigSection(
+			name = "Data collection",
+			position = 3,
+			description = ""
+	)
+	String dataCollection = "Data collection";
+
+	@ConfigItem(
+			position = 0,
+			keyName = "session",
+			name = "Send session (online users)",
+			description = "Sends your online status & your client mode to the backend.",
+			section = dataCollection
+	)
+	default boolean session()
+	{
+		return true;
+	}
+
+	@ConfigItem(
+			position = 0,
+			keyName = "regions",
+			name = "Send region",
+			description = "Sends your local region data to the backend.",
+			section = dataCollection
+	)
+	default boolean regions()
+	{
+		return true;
+	}
 }

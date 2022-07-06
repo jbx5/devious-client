@@ -11,6 +11,7 @@ public class Unethicalite
 	{
 		if (Arrays.asList(args).contains("--minimal"))
 		{
+			System.setProperty("unethicalite.minimal", "true");
 			MinimalClient.main(args);
 		}
 		else

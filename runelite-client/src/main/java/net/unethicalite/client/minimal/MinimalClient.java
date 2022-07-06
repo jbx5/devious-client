@@ -39,6 +39,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.api.Constants;
 import net.runelite.client.ClassPreloader;
+import net.runelite.client.ClientSessionManager;
 import net.runelite.client.RuneLite;
 import net.runelite.client.RuneLiteProperties;
 import net.runelite.client.RuntimeConfigLoader;
@@ -152,6 +153,9 @@ public class MinimalClient
 
 	@Inject
 	private WorldService worldService;
+
+	@Inject
+	private ClientSessionManager clientSessionManager;
 
 	public static void main(String[] args) throws Exception
 	{
@@ -322,6 +326,10 @@ public class MinimalClient
 		eventBus.register(minimalPluginManager);
 
 		initArgs(options);
+
+		// Start client session
+		clientSessionManager.start();
+		eventBus.register(clientSessionManager);
 
 		minimalUI.init();
 

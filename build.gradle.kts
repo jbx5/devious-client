@@ -53,7 +53,7 @@ val localGitCommit: String = try {
 }
 
 allprojects {
-    group = "com.openosrs"
+    group = "net.unethicalite"
     version = ProjectVersions.openosrsVersion
     apply<MavenPublishPlugin>()
 }
