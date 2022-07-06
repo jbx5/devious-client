@@ -797,7 +797,7 @@ public final class WidgetID
 		static final int MIDDLE_ORB_COUNTER_CLOCKWISE = 22;
 		static final int RIGHT_ORB_CLOCKWISE = 23;
 		static final int RIGHT_ORB_COUNTER_CLOCKWISE = 24;
-		static final int TELEPORT_BUTTON = 26;
+		static final int TELEPORT_BUTTON = 30;
 	}
 
 	static class FairyRingCode
