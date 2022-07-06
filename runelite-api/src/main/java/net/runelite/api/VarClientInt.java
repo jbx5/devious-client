@@ -57,7 +57,7 @@ public final class VarClientInt
 	 * 0 = deadman/attackable
 	 * 1 = guarded/safe
 	 */
-	DMM_SAFEZONE(78),
+	public static final int DMM_SAFEZONE = 78;
 
 	public static final int MEMBERSHIP_STATUS = 103;
 
