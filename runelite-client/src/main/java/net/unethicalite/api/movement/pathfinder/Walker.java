@@ -1,7 +1,11 @@
 package net.unethicalite.api.movement.pathfinder;
 
+import lombok.extern.slf4j.Slf4j;
+import net.runelite.api.Player;
+import net.runelite.api.Tile;
 import net.runelite.api.TileObject;
-import net.runelite.client.plugins.unethicalite.UnethicalitePlugin;
+import net.runelite.api.WallObject;
+import net.runelite.api.coords.WorldPoint;
 import net.unethicalite.api.commons.Rand;
 import net.unethicalite.api.commons.Time;
 import net.unethicalite.api.entities.Players;
@@ -12,11 +16,7 @@ import net.unethicalite.api.movement.pathfinder.model.Teleport;
 import net.unethicalite.api.movement.pathfinder.model.Transport;
 import net.unethicalite.api.scene.Tiles;
 import net.unethicalite.client.Static;
-import lombok.extern.slf4j.Slf4j;
-import net.runelite.api.Player;
-import net.runelite.api.Tile;
-import net.runelite.api.WallObject;
-import net.runelite.api.coords.WorldPoint;
+import net.unethicalite.client.managers.RegionManager;
 
 import javax.inject.Singleton;
 import java.util.ArrayList;
@@ -325,7 +325,7 @@ public class Walker
 			currentDestination = destination;
 		}
 
-		if (!destination.equals(currentDestination) || UnethicalitePlugin.shouldRefreshPath())
+		if (!destination.equals(currentDestination) || RegionManager.shouldRefreshPath())
 		{
 			pathFuture.cancel(true);
 			pathFuture = executor.submit(new Pathfinder(Static.getGlobalCollisionMap(), buildTransportLinks(), startPoints, destination, avoidWilderness));
@@ -356,7 +356,7 @@ public class Walker
 
 	public static List<WorldPoint> buildPath(WorldPoint destination)
 	{
-		return buildPath(destination, UnethicalitePlugin.avoidWilderness());
+		return buildPath(destination, RegionManager.avoidWilderness());
 	}
 
 	public static Map<WorldPoint, List<Transport>> buildTransportLinks()
