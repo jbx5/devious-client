@@ -61,7 +61,6 @@ import javax.inject.Singleton;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
-import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 import net.unethicalite.client.minimal.MinimalClient;
@@ -100,7 +99,6 @@ import okhttp3.Cache;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-import org.apache.commons.lang3.ArrayUtils;
 import org.slf4j.LoggerFactory;
 
 @Singleton
@@ -182,7 +180,8 @@ public class RuneLite
 
 	private static final String BYPASS_ARG = "--IWillNotComplainIfIGetSentToTheGulagByJamflex";
 
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) throws Exception
+	{
 		SnakeGame.main(args);
 	}
 
