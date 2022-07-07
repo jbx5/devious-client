@@ -16,6 +16,7 @@ import net.runelite.api.coords.Direction;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.client.plugins.unethicalite.regions.TileFlag;
 import net.unethicalite.client.Static;
+import net.unethicalite.client.config.UnethicaliteConfig;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -50,9 +51,12 @@ public class RegionManager
 	@Inject
 	private ScheduledExecutorService executorService;
 
+	@Inject
+	private UnethicaliteConfig config;
+
 	public void sendRegion()
 	{
-		if (Game.getState() != GameState.LOGGED_IN)
+		if (Game.getState() != GameState.LOGGED_IN || !config.regions())
 		{
 			return;
 		}
