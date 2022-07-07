@@ -14,8 +14,10 @@ public abstract class HGameEngineMixin implements RSGameEngine
 
 	@Copy("graphicsTick")
 	@Replace("graphicsTick")
-	void copy$graphicsTick() {
-		if (!lowCpu) {
+	void copy$graphicsTick()
+	{
+		if (!lowCpu)
+		{
 			copy$graphicsTick();
 		}
 	}

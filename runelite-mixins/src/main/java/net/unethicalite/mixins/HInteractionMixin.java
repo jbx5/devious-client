@@ -116,7 +116,7 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 			}
 		}
 
-		if ("Automated".equals(option))
+		if ("Automated".equals(option) && opcode == MenuAction.WALK.getId())
 		{
 			client.setSelectedSceneTileX(param0);
 			client.setSelectedSceneTileY(param1);
