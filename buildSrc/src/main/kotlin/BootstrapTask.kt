@@ -252,7 +252,7 @@ open class BootstrapTask @Inject constructor(@Input val type: String) : DefaultT
     @TaskAction
     fun bootstrap() {
         val json = JsonBuilder(
-                "projectVersion" to ProjectVersions.openosrsVersion,
+                "projectVersion" to ProjectVersions.unethicaliteVersion,
                 "minimumLauncherVersion" to ProjectVersions.launcherVersion,
                 "launcherArguments" to launcherArguments,
                 "launcherJvm11Arguments" to launcherJvm11Arguments,

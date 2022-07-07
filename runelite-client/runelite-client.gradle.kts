@@ -164,7 +164,7 @@ tasks {
         val tokens = mapOf(
                 "project.version" to ProjectVersions.rlVersion,
                 "rs.version" to ProjectVersions.rsversion.toString(),
-                "open.osrs.version" to ProjectVersions.openosrsVersion,
+                "open.osrs.version" to ProjectVersions.unethicaliteVersion,
                 "open.osrs.builddate" to formatDate(Date()),
                 "plugin.path" to pluginPath()
         )
