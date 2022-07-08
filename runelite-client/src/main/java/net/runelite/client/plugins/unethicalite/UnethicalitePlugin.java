@@ -70,8 +70,6 @@ public class UnethicalitePlugin extends SettingsPlugin
 				.build();
 
 		clientToolbar.addNavigation(navButton);
-
-		executorService.submit(TransportLoader::init);
 	}
 
 	@Override
