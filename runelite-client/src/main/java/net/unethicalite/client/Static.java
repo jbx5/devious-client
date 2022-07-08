@@ -21,6 +21,7 @@ import net.unethicalite.client.devtools.EntityRenderer;
 import net.unethicalite.client.managers.DefinitionManager;
 import net.unethicalite.client.managers.NativeInputManager;
 import net.unethicalite.client.managers.NeverLogManager;
+import net.unethicalite.client.managers.RegionManager;
 import net.unethicalite.client.managers.interaction.InteractionManager;
 
 import javax.inject.Inject;
@@ -116,8 +117,17 @@ public class Static
 	@Getter
 	private static ClientToolbar clientToolbar;
 
+	@Inject
+	@Getter
+	private static RegionManager regionManager;
+
 	public static void setScriptArgs(String[] scriptArgs)
 	{
 		Static.scriptArgs = scriptArgs;
+	}
+
+	public static void init()
+	{
+		regionManager.init();
 	}
 }

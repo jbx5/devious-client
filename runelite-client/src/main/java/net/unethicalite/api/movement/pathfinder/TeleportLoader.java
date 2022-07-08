@@ -1,11 +1,13 @@
 package net.unethicalite.api.movement.pathfinder;
 
 import net.runelite.api.GameState;
+import net.runelite.api.Item;
 import net.runelite.api.ObjectID;
 import net.runelite.api.TileObject;
+import net.runelite.api.coords.WorldPoint;
+import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetID;
 import net.runelite.api.widgets.WidgetInfo;
-import net.runelite.client.plugins.unethicalite.UnethicalitePlugin;
 import net.unethicalite.api.entities.Players;
 import net.unethicalite.api.entities.TileObjects;
 import net.unethicalite.api.game.Game;
@@ -21,15 +23,23 @@ import net.unethicalite.api.movement.pathfinder.model.TeleportItem;
 import net.unethicalite.api.movement.pathfinder.model.TeleportSpell;
 import net.unethicalite.api.widgets.Dialog;
 import net.unethicalite.api.widgets.Widgets;
+import net.unethicalite.client.Static;
+import net.unethicalite.client.managers.RegionManager;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import net.runelite.api.Item;
-import net.runelite.api.coords.WorldPoint;
-import net.runelite.api.widgets.Widget;
-import net.unethicalite.client.Static;
 
-import static net.unethicalite.api.movement.pathfinder.model.MovementConstants.*;
+import static net.unethicalite.api.movement.pathfinder.model.MovementConstants.AMULET_OF_GLORY;
+import static net.unethicalite.api.movement.pathfinder.model.MovementConstants.COMBAT_BRACELET;
+import static net.unethicalite.api.movement.pathfinder.model.MovementConstants.DIGSITE_PENDANT;
+import static net.unethicalite.api.movement.pathfinder.model.MovementConstants.GAMES_NECKLACE;
+import static net.unethicalite.api.movement.pathfinder.model.MovementConstants.NECKLACE_OF_PASSAGE;
+import static net.unethicalite.api.movement.pathfinder.model.MovementConstants.RING_OF_DUELING;
+import static net.unethicalite.api.movement.pathfinder.model.MovementConstants.RING_OF_WEALTH;
+import static net.unethicalite.api.movement.pathfinder.model.MovementConstants.SKILLS_NECKLACE;
+import static net.unethicalite.api.movement.pathfinder.model.MovementConstants.SLAYER_RING;
+import static net.unethicalite.api.movement.pathfinder.model.MovementConstants.XERICS_TALISMAN;
 
 public class TeleportLoader
 {
@@ -193,9 +203,9 @@ public class TeleportLoader
 
 
 
-		if (UnethicalitePlugin.usePoh() && (TeleportSpell.TELEPORT_TO_HOUSE.canCast() || TileObjects.getNearest(ObjectID.PORTAL_4525) != null))
+		if (RegionManager.usePoh() && (TeleportSpell.TELEPORT_TO_HOUSE.canCast() || TileObjects.getNearest(ObjectID.PORTAL_4525) != null))
 		{
-			if (UnethicalitePlugin.hasMountedGlory())
+			if (RegionManager.hasMountedGlory())
 			{
 				teleports.add(mountedPohTeleport(new WorldPoint(3087, 3496, 0), ObjectID.AMULET_OF_GLORY, "Edgeville"));
 				teleports.add(mountedPohTeleport(new WorldPoint(2918, 3176, 0), ObjectID.AMULET_OF_GLORY, "Karamja"));
@@ -203,14 +213,14 @@ public class TeleportLoader
 				teleports.add(mountedPohTeleport(new WorldPoint(3293, 3163, 0), ObjectID.AMULET_OF_GLORY, "Al Kharid"));
 			}
 
-			if (UnethicalitePlugin.hasMountedDigsitePendant())
+			if (RegionManager.hasMountedDigsitePendant())
 			{
 				teleports.add(pohDigsitePendantTeleport(new WorldPoint(3341, 3445, 0), 1));
 				teleports.add(pohDigsitePendantTeleport(new WorldPoint(3766, 3870, 1), 2));
 				teleports.add(pohDigsitePendantTeleport(new WorldPoint(3549, 10456, 0), 3));
 			}
 
-			switch (UnethicalitePlugin.hasJewelryBox())
+			switch (RegionManager.hasJewelryBox())
 			{
 				case ORNATE:
 					teleports.add(pohWidgetTeleport(new WorldPoint(2538, 3863, 0), 'j'));

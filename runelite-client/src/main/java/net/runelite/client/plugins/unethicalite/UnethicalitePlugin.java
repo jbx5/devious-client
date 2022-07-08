@@ -2,15 +2,9 @@ package net.runelite.client.plugins.unethicalite;
 
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
-import net.runelite.api.InventoryID;
-import net.runelite.api.events.ItemContainerChanged;
-import net.runelite.api.events.WidgetLoaded;
-import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.EventBus;
-import net.runelite.client.eventbus.Subscribe;
-import net.runelite.client.events.ConfigChanged;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.plugins.unethicalite.regions.RegionHandler;
 import net.runelite.client.plugins.unethicalite.ui.UnethicalitePanel;
@@ -18,13 +12,11 @@ import net.runelite.client.ui.ClientToolbar;
 import net.runelite.client.ui.NavigationButton;
 import net.runelite.client.util.ImageUtil;
 import net.unethicalite.api.movement.pathfinder.TransportLoader;
-import net.unethicalite.api.movement.pathfinder.model.JewelryBox;
 import net.unethicalite.api.plugins.SettingsPlugin;
 import net.unethicalite.client.config.UnethicaliteConfig;
 
 import javax.inject.Inject;
 import java.awt.image.BufferedImage;
-import java.util.Set;
 import java.util.concurrent.ExecutorService;
 
 @PluginDescriptor(
@@ -35,31 +27,8 @@ import java.util.concurrent.ExecutorService;
 public class UnethicalitePlugin extends SettingsPlugin
 {
 
-	private static boolean INVENTORY_CHANGED = false;
-	private static boolean EQUIPMENT_CHANGED = false;
-	private static boolean CONFIG_CHANGED = false;
-
-	private static final Set<Integer> REFRESH_WIDGET_IDS = Set.of(
-			WidgetInfo.QUEST_COMPLETED_NAME_TEXT.getGroupId(),
-			WidgetInfo.LEVEL_UP_LEVEL.getGroupId()
-	);
-
-	private static final Set<String> pathfinderConfigKeys = Set.of(
-		"useTransports",
-		"useTeleports",
-		"avoidWilderness",
-		"usePoh",
-		"hasMountedGlory",
-		"hasMountedDigsitePendant",
-		"hasMountedMythicalCape",
-		"hasMountedXericsTalisman",
-		"hasJewelryBox"
-	);
-
 	@Inject
 	private UnethicaliteConfig config;
-
-	private static UnethicaliteConfig staticConfig = null;
 
 	@Inject
 	private EventBus eventBus;
@@ -85,7 +54,6 @@ public class UnethicalitePlugin extends SettingsPlugin
 	@Override
 	protected void startUp() throws Exception
 	{
-		staticConfig = config;
 		eventBus.register(regionHandler);
 
 		unethicalitePanel = new UnethicalitePanel(client, config, configManager);
@@ -109,7 +77,6 @@ public class UnethicalitePlugin extends SettingsPlugin
 	@Override
 	protected void shutDown() throws Exception
 	{
-		staticConfig = null;
 		clientToolbar.removeNavigation(navButton);
 		eventBus.unregister(regionHandler);
 		eventBus.unregister(unethicalitePanel);
@@ -137,83 +104,5 @@ public class UnethicalitePlugin extends SettingsPlugin
 	public String[] getPluginTags()
 	{
 		return new String[]{"unethicalite"};
-	}
-
-	@Subscribe
-	public void onWidgetLoaded(WidgetLoaded event)
-	{
-		if (REFRESH_WIDGET_IDS.contains(event.getGroupId()))
-		{
-			TransportLoader.refreshStaticTransports();
-		}
-	}
-
-	@Subscribe
-	public void onItemContainerChanged(ItemContainerChanged event)
-	{
-		if (event.getContainerId() == InventoryID.INVENTORY.getId())
-		{
-			INVENTORY_CHANGED = true;
-			TransportLoader.refreshStaticTransports();
-		}
-		if (event.getContainerId() == InventoryID.EQUIPMENT.getId())
-		{
-			EQUIPMENT_CHANGED = true;
-			TransportLoader.refreshStaticTransports();
-		}
-	}
-
-	@Subscribe
-	public void onConfigChanged(ConfigChanged event)
-	{
-		if (!event.getGroup().equals(UnethicaliteConfig.CONFIG_GROUP))
-		{
-			return;
-		}
-		if (pathfinderConfigKeys.contains(event.getKey()))
-		{
-			CONFIG_CHANGED = true;
-		}
-	}
-
-	public static boolean avoidWilderness()
-	{
-		return staticConfig != null && staticConfig.avoidWilderness();
-	}
-
-	public static boolean shouldRefreshPath()
-	{
-		boolean refreshPath = INVENTORY_CHANGED || EQUIPMENT_CHANGED || CONFIG_CHANGED;
-		EQUIPMENT_CHANGED = false;
-		INVENTORY_CHANGED = false;
-		CONFIG_CHANGED = false;
-		return refreshPath;
-	}
-
-	public static boolean usePoh()
-	{
-		return staticConfig != null && staticConfig.usePoh();
-	}
-	public static boolean hasMountedGlory()
-	{
-		return staticConfig != null && staticConfig.hasMountedGlory();
-	}
-
-	public static boolean hasMountedDigsitePendant()
-	{
-		return staticConfig != null && staticConfig.hasMountedDigsitePendant();
-	}
-
-	public static boolean hasMountedMythicalCape()
-	{
-		return staticConfig != null && staticConfig.hasMountedMythicalCape();
-	}
-	public static boolean hasMountedXericsTalisman()
-	{
-		return staticConfig != null && staticConfig.hasMountedXericsTalisman();
-	}
-	public static JewelryBox hasJewelryBox()
-	{
-		return staticConfig == null ? JewelryBox.NONE : staticConfig.hasJewelryBox();
 	}
 }

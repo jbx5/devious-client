@@ -56,8 +56,8 @@ class SessionClient
 	UUID open() throws IOException
 	{
 		HttpUrl url = sessionUrl.newBuilder()
-			.addQueryParameter("mode", Boolean.parseBoolean(System.getProperty("unethicalite.minimal")) ? "minimal" : "normal")
-			.build();
+				.addQueryParameter("mode", Boolean.parseBoolean(System.getProperty("unethicalite.minimal")) ? "minimal" : "normal")
+				.build();
 
 		Request request = new Request.Builder()
 			.post(RequestBody.create(null, new byte[0]))

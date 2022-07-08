@@ -1,15 +1,5 @@
 package net.runelite.client.plugins.unethicaldevtools;
 
-import net.runelite.client.plugins.unethicalite.UnethicalitePlugin;
-import net.unethicalite.api.entities.Players;
-import net.unethicalite.api.movement.pathfinder.*;
-import net.unethicalite.api.movement.pathfinder.model.Teleport;
-import net.unethicalite.api.movement.pathfinder.model.Transport;
-import net.unethicalite.api.scene.Tiles;
-import net.unethicalite.api.utils.CoordUtils;
-import net.unethicalite.api.utils.DrawUtils;
-import net.unethicalite.api.widgets.Widgets;
-import net.unethicalite.client.Static;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.api.MenuAction;
@@ -25,10 +15,26 @@ import net.runelite.client.ui.overlay.Overlay;
 import net.runelite.client.ui.overlay.OverlayLayer;
 import net.runelite.client.ui.overlay.OverlayPosition;
 import net.runelite.client.ui.overlay.OverlayPriority;
+import net.unethicalite.api.entities.Players;
+import net.unethicalite.api.movement.pathfinder.GlobalCollisionMap;
+import net.unethicalite.api.movement.pathfinder.Pathfinder;
+import net.unethicalite.api.movement.pathfinder.TransportLoader;
+import net.unethicalite.api.movement.pathfinder.Walker;
+import net.unethicalite.api.movement.pathfinder.model.Teleport;
+import net.unethicalite.api.movement.pathfinder.model.Transport;
+import net.unethicalite.api.scene.Tiles;
+import net.unethicalite.api.utils.CoordUtils;
+import net.unethicalite.api.utils.DrawUtils;
+import net.unethicalite.api.widgets.Widgets;
+import net.unethicalite.client.Static;
+import net.unethicalite.client.managers.RegionManager;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -168,7 +174,7 @@ public class RegionOverlay extends Overlay
 								List<WorldPoint> startPoints = new ArrayList<>(teleports.keySet());
 								startPoints.add(Players.getLocal().getWorldLocation());
 								executorService.execute(() -> {
-											path = new Pathfinder(Static.getGlobalCollisionMap(), Walker.buildTransportLinks(), startPoints, clickPoint.getWorldLocation(), UnethicalitePlugin.avoidWilderness()).find();
+											path = new Pathfinder(Static.getGlobalCollisionMap(), Walker.buildTransportLinks(), startPoints, clickPoint.getWorldLocation(), RegionManager.avoidWilderness()).find();
 										}
 								);
 							}
@@ -196,7 +202,7 @@ public class RegionOverlay extends Overlay
 						List<WorldPoint> startPoints = new ArrayList<>(teleports.keySet());
 						startPoints.add(Players.getLocal().getWorldLocation());
 						executorService.execute(() -> {
-							path = new Pathfinder(Static.getGlobalCollisionMap(), Walker.buildTransportLinks(), startPoints, clickPoint, UnethicalitePlugin.avoidWilderness()).find();
+							path = new Pathfinder(Static.getGlobalCollisionMap(), Walker.buildTransportLinks(), startPoints, clickPoint, RegionManager.avoidWilderness()).find();
 								}
 						);
 					});
