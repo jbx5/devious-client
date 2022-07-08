@@ -23,7 +23,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-group = "com.openosrs"
+group = "net.unethicalite"
 description = "RuneLite JShell"
 
 dependencies {

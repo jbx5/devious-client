@@ -23,7 +23,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-group = "com.openosrs.rs"
+group = "net.unethicalite.rs"
 description = "RuneScape Client"
 
 dependencies {
