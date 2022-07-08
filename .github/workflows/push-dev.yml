@@ -35,7 +35,7 @@ jobs:
         run: ./gradlew build --stacktrace -x test -x checkstyleMain --console=plain
 
       - name: Bootstrap
-        run: ./gradlew bootstrapNightly -x test -x checkstyleMain --console=plain
+        run: ./gradlew bootstrapSnapshot -x test -x checkstyleMain --console=plain
 
       - name: Push to hosting
         run: |
