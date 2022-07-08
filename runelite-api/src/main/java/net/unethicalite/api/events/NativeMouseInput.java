@@ -14,4 +14,9 @@ public class NativeMouseInput
 	{
 		MOVEMENT, CLICK, PRESS, RELEASE, SCROLL
 	}
+
+	public boolean isButton()
+	{
+		return type == Type.CLICK || type == Type.PRESS || type == Type.RELEASE;
+	}
 }

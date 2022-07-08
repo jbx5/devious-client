@@ -6,6 +6,7 @@ import net.runelite.api.Client;
 import net.runelite.api.DialogOption;
 import net.runelite.api.events.DialogProcessed;
 import net.runelite.api.events.MenuOptionClicked;
+import net.runelite.api.packets.ClientPacket;
 import net.runelite.api.packets.PacketBufferNode;
 import net.runelite.api.packets.ServerPacket;
 import net.runelite.client.config.ConfigManager;
@@ -17,7 +18,9 @@ import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.ui.overlay.OverlayManager;
 import net.unethicalite.api.events.MenuAutomated;
 import net.unethicalite.api.events.PacketSent;
+import net.unethicalite.api.events.ServerPacketProcessed;
 import net.unethicalite.api.events.ServerPacketReceived;
+import net.unethicalite.client.Static;
 
 import javax.inject.Inject;
 import java.util.Arrays;
@@ -156,7 +159,16 @@ public class UnethicalDevToolsPlugin extends Plugin
 			}
 		}
 
-		log.info("Packet sent: {}, length: {}", opcode, e.getPacketBufferNode().getClientPacket().getLength());
+		ClientPacket packet = packetBufferNode.getClientPacket();
+		if (packet == null)
+		{
+			return;
+		}
+
+		String packetName = Static.getClientPacket().getClientPackets().get(packet);
+		String id = packetName != null ? packetName : String.valueOf(opcode);
+
+		log.info("Packet sent: [{}] {}, length: {}", opcode, id, e.getPacketBufferNode().getClientPacket().getLength());
 		if (config.hexDump())
 		{
 			log.info(e.hexDump());
@@ -165,6 +177,21 @@ public class UnethicalDevToolsPlugin extends Plugin
 
 	@Subscribe
 	public void onServerPacketReceived(ServerPacketReceived e)
+	{
+		if (e.getServerPacket() != null && config.consumePacket())
+		{
+			List<Integer> opcodes = Arrays.stream(config.opcodes().split(","))
+					.map(Integer::parseInt)
+					.collect(Collectors.toList());
+			if (opcodes.contains(e.getServerPacket().getId()))
+			{
+				e.setConsumed(true);
+			}
+		}
+	}
+
+	@Subscribe
+	public void onServerPacketProcessed(ServerPacketProcessed e)
 	{
 		if (!config.serverPackets())
 		{
@@ -186,8 +213,10 @@ public class UnethicalDevToolsPlugin extends Plugin
 			}
 		}
 
+		String packetName = Static.getServerPacket().getServerPackets().get(serverPacket);
+		String id = packetName != null ? packetName : String.valueOf(serverPacket.getId());
 
-		log.info("Packet received: {}, length: {}", serverPacket.getId(), e.getLength());
+		log.info("Packet received: [{}] {}, length: {}", serverPacket.getId(), id, e.getLength());
 		if (config.hexDump())
 		{
 			log.info(e.hexDump());

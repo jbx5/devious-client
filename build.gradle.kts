@@ -30,14 +30,17 @@ buildscript {
         mavenLocal()
         gradlePluginPortal()
         maven(url = "https://raw.githubusercontent.com/open-osrs/hosting/master")
+        maven(url = "https://repo.runelite.net")
     }
     dependencies {
-        classpath("org.ajoberstar.grgit:grgit-core:4.1.1")
+        classpath("org.ajoberstar.grgit:grgit-core:4.1.0")
+        classpath("com.openosrs:script-assembler-plugin:1.0.1")
+        classpath("com.openosrs:injector-plugin:2.0.2")
     }
 }
 
 plugins {
-    id("org.ajoberstar.grgit") version "4.1.1"
+    id("org.ajoberstar.grgit") version "4.1.0"
 
     application
 }
@@ -50,8 +53,8 @@ val localGitCommit: String = try {
 }
 
 allprojects {
-    group = "com.openosrs"
-    version = ProjectVersions.openosrsVersion
+    group = "net.unethicalite"
+    version = ProjectVersions.unethicaliteVersion
     apply<MavenPublishPlugin>()
 }
 
@@ -123,7 +126,7 @@ subprojects {
             }
             if (System.getenv("REPO_URL") != null) {
                 maven {
-                     url = uri(System.getenv("REPO_URL"))
+                    url = uri(System.getenv("REPO_URL"))
                     credentials {
                         username = System.getenv("REPO_USERNAME")
                         password = System.getenv("REPO_PASSWORD")
@@ -205,6 +208,6 @@ tasks {
 
         classpath = project(":runelite-client").sourceSets.main.get().runtimeClasspath
         enableAssertions = true
-        mainClass.set(if (Unethicalite.isMinimalBuild()) "net.unethicalite.client.minimal.MinimalClient" else "net.runelite.client.RuneLite")
+        mainClass.set("net.unethicalite.client.Unethicalite")
     }
 }

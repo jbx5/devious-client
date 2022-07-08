@@ -29,6 +29,7 @@ import java.util.Date
 
 plugins {
     id("com.github.johnrengelman.shadow") version "7.1.2"
+    id("com.openosrs.scriptassembler")
     java
     kotlin("jvm") version "1.6.21"
     id("org.jetbrains.kotlin.plugin.lombok") version "1.6.21"
@@ -65,6 +66,7 @@ dependencies {
         exclude(group = "org.codehaus.mojo", module = "animal-sniffer-annotations")
     }
     implementation(group = "com.google.inject", name = "guice", version = "5.0.1")
+    implementation(group = "com.google.protobuf", name = "protobuf-javalite", version = "3.21.1")
     implementation(group = "com.jakewharton.rxrelay3", name = "rxrelay", version = "3.0.1")
     implementation(group = "com.squareup.okhttp3", name = "okhttp", version = "4.9.1")
     implementation(group = "io.reactivex.rxjava3", name = "rxjava", version = "3.1.2")
@@ -118,7 +120,7 @@ dependencies {
     testImplementation(group = "org.slf4j", name = "slf4j-api", version = "1.7.32")
 
     implementation("com.miglayout:miglayout:3.7.4")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.5.31")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.6.21")
     implementation("org.jboss.aerogear:aerogear-otp-java:1.0.0")
     implementation("io.socket:engine.io-client:1.0.0")
     implementation("io.socket:socket.io-client:1.0.0")
@@ -141,15 +143,11 @@ tasks {
         finalizedBy("shadowJar")
     }
 
-    compileJava {
-        // dependsOn("packInjectedClient")
-    }
-
     processResources {
         val tokens = mapOf(
                 "project.version" to ProjectVersions.rlVersion,
                 "rs.version" to ProjectVersions.rsversion.toString(),
-                "open.osrs.version" to ProjectVersions.openosrsVersion,
+                "open.osrs.version" to ProjectVersions.unethicaliteVersion,
                 "open.osrs.builddate" to formatDate(Date()),
                 "plugin.path" to pluginPath()
         )
@@ -162,19 +160,9 @@ tasks {
         }
     }
 
-    register<Copy>("packInjectedClient") {
-        dependsOn(":injector:inject")
-
-        from("build/injected/")
-        include("**/injected-client.oprs")
-        into("${buildDir}/resources/main")
-
-        outputs.upToDateWhen { false }
-    }
-
     jar {
         manifest {
-            attributes(mutableMapOf("Main-Class" to Unethicalite.getMainClass()))
+            attributes(mutableMapOf("Main-Class" to "net.unethicalite.client.Unethicalite"))
         }
     }
 
@@ -182,14 +170,25 @@ tasks {
         archiveClassifier.set("shaded")
     }
 
+    assembleScripts {
+        val inp = "${projectDir}/src/main/scripts"
+        val out = "${buildDir}/scripts/runelite"
+
+        inputs.dir(inp)
+        outputs.dir(out)
+
+        input.set(file(inp))
+        output.set(file(out))
+    }
+
     processResources {
-        dependsOn(":runelite-script-assembler-plugin:assembleMojo")
+        dependsOn("assembleScripts")
+        dependsOn(":injected-client:inject")
 
         from("${buildDir}/scripts")
 
-        dependsOn(":injector:inject")
-
-        from("build/injected")
+        from("${project(":injected-client").buildDir}/libs")
+        from("${project(":injected-client").buildDir}/resources/main")
     }
 
     withType<BootstrapTask> {
@@ -201,6 +200,6 @@ tasks {
 
         classpath = project.sourceSets.main.get().runtimeClasspath
         enableAssertions = true
-        mainClass.set(Unethicalite.getMainClass())
+        mainClass.set("net.unethicalite.client.Unethicalite")
     }
 }

@@ -25,25 +25,8 @@
 package net.runelite.api;
 
 import com.jagex.oldscape.pub.OAuthApi;
-import java.awt.Canvas;
-import java.awt.Dimension;
-import java.math.BigInteger;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
-import net.unethicalite.api.SceneEntity;
 import net.runelite.api.annotations.Varbit;
-
-import net.unethicalite.api.MouseHandler;
-import net.unethicalite.api.events.MenuAutomated;
-import net.runelite.api.packets.ClientPacket;
-import net.runelite.api.packets.IsaacCipher;
-import net.runelite.api.packets.PacketBufferNode;
-import net.runelite.api.packets.PacketWriter;
+import net.runelite.api.annotations.VisibleForDevtools;
 import net.runelite.api.annotations.VisibleForExternalPlugins;
 import net.runelite.api.clan.ClanChannel;
 import net.runelite.api.clan.ClanID;
@@ -53,12 +36,31 @@ import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.events.PlayerChanged;
 import net.runelite.api.hooks.Callbacks;
 import net.runelite.api.hooks.DrawCallbacks;
+import net.runelite.api.packets.ClientPacket;
+import net.runelite.api.packets.IsaacCipher;
+import net.runelite.api.packets.PacketBufferNode;
+import net.runelite.api.packets.PacketWriter;
+import net.runelite.api.packets.ServerPacket;
 import net.runelite.api.vars.AccountType;
 import net.runelite.api.widgets.ItemQuantityMode;
 import net.runelite.api.widgets.Widget;
+import net.runelite.api.widgets.WidgetConfig;
 import net.runelite.api.widgets.WidgetInfo;
-import org.slf4j.Logger;
+import net.unethicalite.api.MouseHandler;
+import net.unethicalite.api.SceneEntity;
+import net.unethicalite.api.events.MenuAutomated;
 import org.intellij.lang.annotations.MagicConstant;
+import org.slf4j.Logger;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.awt.Canvas;
+import java.awt.Dimension;
+import java.math.BigInteger;
+import java.util.EnumSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Represents the RuneScape client.
@@ -858,11 +860,20 @@ public interface Client extends OAuthApi, GameEngine
 	int[][] getXteaKeys();
 
 	/**
-	 * Gets an array of all client variables.
+	 * Gets an array of all client varplayers.
 	 *
 	 * @return local player variables
 	 */
 	int[] getVarps();
+
+	/**
+	 * Get an array of all server varplayers. These vars are only
+	 * modified by the server, and so represent the server's idea of
+	 * the varp values.
+	 * @return the server varps
+	 */
+	@VisibleForDevtools
+	int[] getServerVarps();
 
 	/**
 	 * Gets an array of all client variables.
@@ -878,6 +889,17 @@ public interface Client extends OAuthApi, GameEngine
 	int getVar(VarPlayer varPlayer);
 
 	/**
+	 * Gets the value corresponding to the passed player variable.
+	 * This returns the server's idea of the value, not the client's. This is
+	 * specifically the last value set by the server regardless of changes to
+	 * the var by the client.
+	 *
+	 * @param varPlayer the player variable
+	 * @return the value
+	 */
+	int getServerVar(VarPlayer varPlayer);
+
+	/**
 	 * Gets a value corresponding to the passed varbit.
 	 *
 	 * @param varbit the varbit id
@@ -888,12 +910,22 @@ public interface Client extends OAuthApi, GameEngine
 	int getVar(@Varbit int varbit);
 
 	/**
-	 * Gets a value corresponding to the passed varbit.
+	 * Gets the value of the given varbit.
 	 *
 	 * @param varbit the varbit id
 	 * @return the value
 	 */
 	int getVarbitValue(@Varbit int varbit);
+
+	/**
+	 * Gets the value of the given varbit.
+	 * This returns the server's idea of the value, not the client's. This is
+	 * specifically the last value set by the server regardless of changes to
+	 * the var by the client.
+	 * @param varbit the varbit id
+	 * @return the value
+	 */
+	int getServerVarbitValue(@Varbit int varbit);
 
 	/**
 	 * Gets an int value corresponding to the passed variable.
@@ -910,6 +942,27 @@ public interface Client extends OAuthApi, GameEngine
 	 * @return the value
 	 */
 	String getVar(VarClientStr varClientStr);
+
+	/**
+	 * Gets the value of a given VarPlayer.
+	 *
+	 * @param varpId the VarPlayer id
+	 * @return the value
+	 */
+	@VisibleForExternalPlugins
+	int getVarpValue(int varpId);
+
+	/**
+	 * Gets the value of a given VarPlayer.
+	 * This returns the server's idea of the value, not the client's. This is
+	 * specifically the last value set by the server regardless of changes to
+	 * the var by the client.
+	 *
+	 * @param varpId the VarPlayer id
+	 * @return the value
+	 */
+	@VisibleForExternalPlugins
+	int getServerVarpValue(int varpId);
 
 	/**
 	 * Gets the value of a given VarClientInt
@@ -975,8 +1028,6 @@ public interface Client extends OAuthApi, GameEngine
 	 * @see VarPlayer#getId()
 	 */
 	int getVarpValue(int[] varps, int varpId);
-
-	int getVarpValue(int i);
 
 	/**
 	 * Sets the value of a given variable.
@@ -2454,10 +2505,7 @@ public interface Client extends OAuthApi, GameEngine
 	 */
 	PacketBufferNode preparePacket(ClientPacket packet, IsaacCipher isaac);
 
-	/**
-	 * The packet which is sent when sending a name input (ex. adding friends).
-	 * @return the ClientPacket which belongs to this packet
-	 */
+	PacketBufferNode preparePacket(ClientPacket packet);
 
 	void setSelectedSceneTileX(int sceneX);
 
@@ -2513,6 +2561,8 @@ public interface Client extends OAuthApi, GameEngine
 
 	ClientPacket createClientPacket(int opcode, int length);
 
+	ServerPacket createServerPacket(int opcode, int length);
+
 	String getPassword();
 
 	long[] getEntitiesAtMouse();
@@ -2541,11 +2591,11 @@ public interface Client extends OAuthApi, GameEngine
 
 	/**
 	 * The difference between this and {@link #setPendingAutomation(MenuAutomated)} is that this method
-	 * doesnt register it to be consumed by the interaction manager. Queued menus are used by the mouse forwarding 
+	 * doesnt register it to be consumed by the interaction manager. Queued menus are used by the mouse forwarding
 	 * feature.
 	 */
 	void setQueuedMenu(MenuAutomated menuAutomated);
-	
+
 	MenuAutomated getQueuedMenu();
 
 	VarbitComposition getVarbitComposition(int varbitId);

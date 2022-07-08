@@ -11,6 +11,7 @@ import net.runelite.mixins.RSClientMixin;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSRuneLiteMenuEntry;
 
+import static net.runelite.api.MenuAction.CANCEL;
 import static net.runelite.api.MenuAction.UNKNOWN;
 
 @Mixin(RSClient.class)
@@ -113,6 +114,17 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 			{
 				return;
 			}
+		}
+
+		if ("Automated".equals(option) && opcode == MenuAction.WALK.getId())
+		{
+			client.setSelectedSceneTileX(param0);
+			client.setSelectedSceneTileY(param1);
+			client.setViewportWalking(true);
+
+			copy$menuAction(0, 0, CANCEL.getId(), 0, "Automated", "", canvasX, canvasY);
+
+			return;
 		}
 
 		/*

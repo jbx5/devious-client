@@ -24,23 +24,15 @@
  */
 
 object ProjectVersions {
-    const val launcherVersion = "3.0.0"
-    const val rlVersion = "1.8.24"
+    const val launcherVersion = "1.0.0"
+    const val rlVersion = "1.8.26"
 
-    const val openosrsVersion = "4.31.0"
+    const val openosrsVersion = "4.32.0-SNAPSHOT"
 
     const val rsversion = 206
     const val cacheversion = 165
 
     const val lombokVersion = "1.18.20"
-}
 
-object Unethicalite {
-    fun isMinimalBuild(): Boolean {
-        return System.getenv("unethicalite.build")?.equals("minimal") ?: false
-    }
-
-    fun getMainClass(): String {
-        return if (isMinimalBuild()) "net.unethicalite.client.minimal.MinimalClient" else "net.runelite.client.RuneLite"
-    }
+    const val unethicaliteVersion = "1.0.0"
 }

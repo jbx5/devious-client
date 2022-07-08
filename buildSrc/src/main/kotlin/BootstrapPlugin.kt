@@ -20,6 +20,7 @@ class BootstrapPlugin : Plugin<Project> {
 
         tasks.register<BootstrapTask>("bootstrapStaging", "staging")
         tasks.register<BootstrapTask>("bootstrapNightly", "nightly")
+        tasks.register<BootstrapTask>("bootstrapSnapshot", "snapshot")
         tasks.register<BootstrapTask>("bootstrapStable", "stable")
 
         tasks.withType<BootstrapTask> {

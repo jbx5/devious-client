@@ -17,7 +17,7 @@ public class PacketSent
 				packetBufferNode.getPacketBuffer().getPayload(),
 				1, packetBufferNode.getPacketBuffer().getOffset());
 
-		return hexDump(
+		return "\n" + hexDump(
 						payload,
 						0,
 						getPacketBufferNode().getPacketBuffer().getOffset()
@@ -29,7 +29,7 @@ public class PacketSent
 		final int width = 16;
 
 		StringBuilder builder = new StringBuilder();
-
+		builder.append(Arrays.toString(array) + "\n");
 		for (int rowOffset = offset; rowOffset < offset + length; rowOffset += width)
 		{
 			builder.append(String.format("%06d     ", rowOffset));

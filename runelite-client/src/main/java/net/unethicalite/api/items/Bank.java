@@ -25,7 +25,7 @@ public class Bank extends Items
 	{
 		super(InventoryID.BANK, item ->
 		{
-			item.setWidgetId(item.calculateWidgetId(WidgetInfo.BANK_ITEM_CONTAINER));
+			item.setWidgetId(WidgetInfo.BANK_ITEM_CONTAINER.getPackedId());
 			return true;
 		});
 	}
@@ -474,7 +474,7 @@ public class Bank extends Items
 		{
 			super(InventoryID.INVENTORY, item ->
 			{
-				item.setWidgetId(item.calculateWidgetId(WidgetInfo.BANK_INVENTORY_ITEMS_CONTAINER));
+				item.setWidgetId(WidgetInfo.BANK_INVENTORY_ITEMS_CONTAINER.getPackedId());
 				return true;
 			});
 		}

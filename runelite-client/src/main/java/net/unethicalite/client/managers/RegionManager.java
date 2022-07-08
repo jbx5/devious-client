@@ -2,9 +2,17 @@ package net.unethicalite.client.managers;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import net.runelite.api.InventoryID;
+import net.runelite.api.events.ItemContainerChanged;
+import net.runelite.api.events.WidgetLoaded;
+import net.runelite.api.widgets.WidgetInfo;
+import net.runelite.client.eventbus.Subscribe;
+import net.runelite.client.events.ConfigChanged;
 import net.unethicalite.api.entities.Players;
 import net.unethicalite.api.game.Game;
 import net.unethicalite.api.movement.Reachable;
+import net.unethicalite.api.movement.pathfinder.TransportLoader;
+import net.unethicalite.api.movement.pathfinder.model.JewelryBox;
 import net.unethicalite.api.movement.pathfinder.model.Transport;
 import net.unethicalite.api.movement.pathfinder.Walker;
 import net.unethicalite.api.scene.Tiles;
@@ -16,6 +24,7 @@ import net.runelite.api.coords.Direction;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.client.plugins.unethicalite.regions.TileFlag;
 import net.unethicalite.client.Static;
+import net.unethicalite.client.config.UnethicaliteConfig;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -30,6 +39,7 @@ import javax.inject.Singleton;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
@@ -50,9 +60,19 @@ public class RegionManager
 	@Inject
 	private ScheduledExecutorService executorService;
 
+	@Inject
+	private UnethicaliteConfig config;
+
+	private static UnethicaliteConfig staticConfig = null;
+
+	public void init()
+	{
+		staticConfig = config;
+	}
+
 	public void sendRegion()
 	{
-		if (Game.getState() != GameState.LOGGED_IN)
+		if (Game.getState() != GameState.LOGGED_IN || !config.regions())
 		{
 			return;
 		}
@@ -227,5 +247,104 @@ public class RegionManager
 		}
 
 		return transports.stream().anyMatch(t -> t.getSource().equals(from) && t.getDestination().equals(to));
+	}
+
+	private static boolean INVENTORY_CHANGED = false;
+	private static boolean EQUIPMENT_CHANGED = false;
+	private static boolean CONFIG_CHANGED = false;
+
+	private static final Set<Integer> REFRESH_WIDGET_IDS = Set.of(
+			WidgetInfo.QUEST_COMPLETED_NAME_TEXT.getGroupId(),
+			WidgetInfo.LEVEL_UP_LEVEL.getGroupId()
+	);
+
+	private static final Set<String> pathfinderConfigKeys = Set.of(
+			"useTransports",
+			"useTeleports",
+			"avoidWilderness",
+			"usePoh",
+			"hasMountedGlory",
+			"hasMountedDigsitePendant",
+			"hasMountedMythicalCape",
+			"hasMountedXericsTalisman",
+			"hasJewelryBox"
+	);
+
+	@Subscribe
+	public void onWidgetLoaded(WidgetLoaded event)
+	{
+		if (REFRESH_WIDGET_IDS.contains(event.getGroupId()))
+		{
+			TransportLoader.refreshStaticTransports();
+		}
+	}
+
+	@Subscribe
+	public void onItemContainerChanged(ItemContainerChanged event)
+	{
+		if (event.getContainerId() == InventoryID.INVENTORY.getId())
+		{
+			INVENTORY_CHANGED = true;
+			TransportLoader.refreshStaticTransports();
+		}
+		if (event.getContainerId() == InventoryID.EQUIPMENT.getId())
+		{
+			EQUIPMENT_CHANGED = true;
+			TransportLoader.refreshStaticTransports();
+		}
+	}
+
+	@Subscribe
+	public void onConfigChanged(ConfigChanged event)
+	{
+		if (!event.getGroup().equals(UnethicaliteConfig.CONFIG_GROUP))
+		{
+			return;
+		}
+		if (pathfinderConfigKeys.contains(event.getKey()))
+		{
+			CONFIG_CHANGED = true;
+		}
+	}
+
+	public static boolean avoidWilderness()
+	{
+		return staticConfig != null && staticConfig.avoidWilderness();
+	}
+
+	public static boolean shouldRefreshPath()
+	{
+		boolean refreshPath = INVENTORY_CHANGED || EQUIPMENT_CHANGED || CONFIG_CHANGED;
+		EQUIPMENT_CHANGED = false;
+		INVENTORY_CHANGED = false;
+		CONFIG_CHANGED = false;
+		return refreshPath;
+	}
+
+	public static boolean usePoh()
+	{
+		return staticConfig != null && staticConfig.usePoh();
+	}
+	public static boolean hasMountedGlory()
+	{
+		return staticConfig != null && staticConfig.hasMountedGlory();
+	}
+
+	public static boolean hasMountedDigsitePendant()
+	{
+		return staticConfig != null && staticConfig.hasMountedDigsitePendant();
+	}
+
+	public static boolean hasMountedMythicalCape()
+	{
+		return staticConfig != null && staticConfig.hasMountedMythicalCape();
+	}
+	public static boolean hasMountedXericsTalisman()
+	{
+		return staticConfig != null && staticConfig.hasMountedXericsTalisman();
+	}
+	public static JewelryBox hasJewelryBox()
+	{
+		return staticConfig == null ? JewelryBox.NONE : staticConfig.hasJewelryBox();
 	}
 }

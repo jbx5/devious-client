@@ -1,5 +1,5 @@
-import net.runelite.api.clan.ClanMember;
 import net.runelite.api.clan.ClanRank;
+import net.runelite.api.clan.ClanMember;
 public class RuneLiteClanMember implements ClanMember {
 	public final int idx;
 
@@ -57,8 +57,8 @@ public class RuneLiteClanMember implements ClanMember {
 			case 127 :
 				return ClanRank.JMOD;
 			default :
-				return ClanRank.CLAN_RANK_1;}
-
+				return ClanRank.CLAN_RANK_1;
+		}
 	}
 
 	public boolean instanceOf(Object o) {
@@ -103,13 +103,13 @@ public class RuneLiteClanMember implements ClanMember {
 	public int hashCode() {
 		byte b = 1;
 		String name = this.getName();
-		int hash = (b * 59) + (name == null ? 43 : name.hashCode());
+		int hash = b * 59 + (name == null ? 43 : name.hashCode());
 		ClanRank rank = this.getRank();
-		hash = (hash * 59) + (rank == null ? 43 : rank.hashCode());
+		hash = hash * 59 + (rank == null ? 43 : rank.hashCode());
 		return hash;
 	}
 
 	public String toString() {
-		return ((("ClanMemberImpl(getName=" + this.getName()) + ", getRank=") + this.getRank()) + ")";
+		return "ClanMemberImpl(getName=" + this.getName() + ", getRank=" + this.getRank() + ")";
 	}
 }

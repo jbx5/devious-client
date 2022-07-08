@@ -641,6 +641,11 @@ public enum SpellBook
 				return false;
 			}
 
+			if (this == TROLLHEIM_TELEPORT && Vars.getVarp(335) < 110)
+			{
+				return false;
+			}
+
 			return haveEquipment() && haveItem() && haveRunesAvailable();
 		}
 

@@ -33,6 +33,7 @@ import com.google.inject.Injector;
 import com.openosrs.client.OpenOSRS;
 import com.openosrs.client.game.PlayerManager;
 import com.openosrs.client.ui.OpenOSRSSplashScreen;
+import com.thatgamerblue.snake.SnakeGame;
 import java.applet.Applet;
 import java.io.File;
 import java.io.IOException;
@@ -48,6 +49,7 @@ import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.cert.X509Certificate;
+import java.util.Arrays;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
@@ -116,7 +118,7 @@ public class RuneLite
 	private static final int MAX_OKHTTP_CACHE_SIZE = 20 * 1024 * 1024; // 20mb
 	public static String USER_AGENT = "RuneLite/" + RuneLiteProperties.getVersion() + "-" + RuneLiteProperties.getCommit() + (RuneLiteProperties.isDirty() ? "+" : "");
 
-	@Getter
+	@Getter @lombok.Setter
 	private static Injector injector;
 
 	@Inject
@@ -176,8 +178,16 @@ public class RuneLite
 	@Nullable
 	private RuntimeConfig runtimeConfig;
 
+	private static final String BYPASS_ARG = "--IWillNotComplainIfIGetSentToTheGulagByJamflex";
+
 	public static void main(String[] args) throws Exception
 	{
+		SnakeGame.main(args);
+	}
+
+	public static void oldMain(String[] args) throws Exception
+	{
+		args = Arrays.stream(args).filter(s -> !BYPASS_ARG.equals(s)).toArray(String[]::new);
 		Locale.setDefault(Locale.ENGLISH);
 
 		final OptionParser parser = new OptionParser(false);

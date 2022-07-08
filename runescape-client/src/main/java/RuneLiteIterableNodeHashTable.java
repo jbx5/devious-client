@@ -13,7 +13,7 @@ public class RuneLiteIterableNodeHashTable implements Iterator {
 
 	@Override
 	public boolean hasNext() {
-		if ((this.it > 0) && (this.nodeHashTable.buckets[this.it - 1] != this.node)) {
+		if (this.it > 0 && this.nodeHashTable.buckets[this.it - 1] != this.node) {
 			return true;
 		} else {
 			for (int i = this.it; i < this.nodeHashTable.size; ++i) {
@@ -29,7 +29,7 @@ public class RuneLiteIterableNodeHashTable implements Iterator {
 
 	@Override
 	public Node next() {
-		if ((this.it > 0) && (this.nodeHashTable.buckets[this.it - 1] != this.node)) {
+		if (this.it > 0 && this.nodeHashTable.buckets[this.it - 1] != this.node) {
 			Node node = this.node;
 			this.node = node.previous;
 			return node;

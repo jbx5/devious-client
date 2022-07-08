@@ -1,9 +1,8 @@
-import java.util.Comparator;
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-
+import net.runelite.mapping.Implements;
+import java.util.Comparator;
+import net.runelite.mapping.Export;
 @ObfuscatedName("qq")
 @Implements("UserComparator2")
 public class UserComparator2 implements Comparator {
@@ -12,24 +11,21 @@ public class UserComparator2 implements Comparator {
 	final boolean reversed;
 
 	public UserComparator2(boolean var1) {
-		this.reversed = var1; // L: 10
-	} // L: 11
+		this.reversed = var1;
+	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(Lne;Lne;B)I",
-		garbageValue = "42"
-	)
+	@ObfuscatedSignature(descriptor = "(Lne;Lne;B)I", garbageValue = "42")
 	@Export("compare_bridged")
 	int compare_bridged(User var1, User var2) {
-		return this.reversed ? var1.getUsername().compareToTyped(var2.getUsername()) : var2.getUsername().compareToTyped(var1.getUsername()); // L: 14
+		return this.reversed ? var1.getUsername().compareToTyped(var2.getUsername()) : var2.getUsername().compareToTyped(var1.getUsername());
 	}
 
 	public boolean equals(Object var1) {
-		return super.equals(var1); // L: 22
+		return super.equals(var1);
 	}
 
 	public int compare(Object var1, Object var2) {
-		return this.compare_bridged((User)var1, (User)var2); // L: 18
+		return this.compare_bridged(((User) (var1)), ((User) (var2)));
 	}
 }

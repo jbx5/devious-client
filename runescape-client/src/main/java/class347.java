@@ -1,219 +1,196 @@
+import net.runelite.mapping.ObfuscatedName;
+import java.util.HashMap;
+import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.mapping.ObfuscatedGetter;
+import java.util.Iterator;
 import java.util.AbstractQueue;
+import java.util.Map;
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
 @ObfuscatedName("mo")
 public class class347 extends AbstractQueue {
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "[Lmn;"
-	)
+	@ObfuscatedSignature(descriptor = "[Lmn;")
 	class345[] field4166;
+
 	@ObfuscatedName("v")
 	Map field4167;
+
 	@ObfuscatedName("q")
-	@ObfuscatedGetter(
-		intValue = 1349227939
-	)
+	@ObfuscatedGetter(intValue = 1349227939)
 	int field4165;
+
 	@ObfuscatedName("f")
 	final Comparator field4168;
+
 	@ObfuscatedName("j")
-	@ObfuscatedGetter(
-		intValue = 500600827
-	)
+	@ObfuscatedGetter(intValue = 500600827)
 	int field4169;
 
 	public class347(int var1, Comparator var2) {
-		this.field4169 = 0; // L: 10
-		this.field4166 = new class345[var1]; // L: 17
-		this.field4167 = new HashMap(); // L: 18
-		this.field4168 = var2; // L: 19
-	} // L: 20
+		this.field4169 = 0;
+		this.field4166 = new class345[var1];
+		this.field4167 = new HashMap();
+		this.field4168 = var2;
+	}
 
 	public class347(int var1) {
-		this(var1, (Comparator)null); // L: 13
-	} // L: 14
+		this(var1, ((Comparator) (null)));
+	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "111"
-	)
+	@ObfuscatedSignature(descriptor = "(B)V", garbageValue = "111")
 	void method6341() {
-		int var1 = (this.field4166.length << 1) + 1; // L: 23
-		this.field4166 = (class345[])((class345[])Arrays.copyOf(this.field4166, var1)); // L: 24
-	} // L: 25
+		int var1 = (this.field4166.length << 1) + 1;
+		this.field4166 = ((class345[]) ((class345[]) (Arrays.copyOf(this.field4166, var1))));
+	}
 
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "1035999073"
-	)
+	@ObfuscatedSignature(descriptor = "(II)V", garbageValue = "1035999073")
 	void method6342(int var1) {
 		class345 var2;
 		int var3;
-		for (var2 = this.field4166[var1]; var1 > 0; var1 = var3) { // L: 96 97 108
-			var3 = var1 - 1 >>> 1; // L: 98
-			class345 var4 = this.field4166[var3]; // L: 99
-			if (this.field4168 != null) { // L: 100
-				if (this.field4168.compare(var2.field4159, var4.field4159) >= 0) { // L: 101
+		for (var2 = this.field4166[var1]; var1 > 0; var1 = var3) {
+			var3 = var1 - 1 >>> 1;
+			class345 var4 = this.field4166[var3];
+			if (this.field4168 != null) {
+				if (this.field4168.compare(var2.field4159, var4.field4159) >= 0) {
 					break;
 				}
-			} else if (((Comparable)var2.field4159).compareTo(var4.field4159) >= 0) { // L: 104
+			} else if (((Comparable) (var2.field4159)).compareTo(var4.field4159) >= 0) {
 				break;
 			}
-
-			this.field4166[var1] = var4; // L: 106
-			this.field4166[var1].field4158 = var1; // L: 107
+			this.field4166[var1] = var4;
+			this.field4166[var1].field4158 = var1;
 		}
-
-		this.field4166[var1] = var2; // L: 110
-		this.field4166[var1].field4158 = var1; // L: 111
-	} // L: 112
+		this.field4166[var1] = var2;
+		this.field4166[var1].field4158 = var1;
+	}
 
 	@ObfuscatedName("q")
-	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "1952216372"
-	)
+	@ObfuscatedSignature(descriptor = "(II)V", garbageValue = "1952216372")
 	void method6354(int var1) {
-		class345 var2 = this.field4166[var1]; // L: 116
-
+		class345 var2 = this.field4166[var1];
 		int var8;
-		for (int var3 = this.field4165 >>> 1; var1 < var3; var1 = var8) { // L: 117 118 140
-			int var4 = (var1 << 1) + 1; // L: 119
-			class345 var5 = this.field4166[var4]; // L: 120
-			int var6 = (var1 << 1) + 2; // L: 121
-			class345 var7 = this.field4166[var6]; // L: 122
-			if (this.field4168 != null) { // L: 124
-				if (var6 < this.field4165 && this.field4168.compare(var5.field4159, var7.field4159) > 0) { // L: 125
+		for (int var3 = this.field4165 >>> 1; var1 < var3; var1 = var8) {
+			int var4 = (var1 << 1) + 1;
+			class345 var5 = this.field4166[var4];
+			int var6 = (var1 << 1) + 2;
+			class345 var7 = this.field4166[var6];
+			if (this.field4168 != null) {
+				if (var6 < this.field4165 && this.field4168.compare(var5.field4159, var7.field4159) > 0) {
 					var8 = var6;
 				} else {
-					var8 = var4; // L: 126
+					var8 = var4;
 				}
-			} else if (var6 < this.field4165 && ((Comparable)var5.field4159).compareTo(var7.field4159) > 0) { // L: 129
+			} else if (var6 < this.field4165 && ((Comparable) (var5.field4159)).compareTo(var7.field4159) > 0) {
 				var8 = var6;
 			} else {
-				var8 = var4; // L: 130
+				var8 = var4;
 			}
-
-			if (this.field4168 != null) { // L: 132
-				if (this.field4168.compare(var2.field4159, this.field4166[var8].field4159) <= 0) { // L: 133
+			if (this.field4168 != null) {
+				if (this.field4168.compare(var2.field4159, this.field4166[var8].field4159) <= 0) {
 					break;
 				}
-			} else if (((Comparable)var2.field4159).compareTo(this.field4166[var8].field4159) <= 0) { // L: 136
+			} else if (((Comparable) (var2.field4159)).compareTo(this.field4166[var8].field4159) <= 0) {
 				break;
 			}
-
-			this.field4166[var1] = this.field4166[var8]; // L: 138
-			this.field4166[var1].field4158 = var1; // L: 139
+			this.field4166[var1] = this.field4166[var8];
+			this.field4166[var1].field4158 = var1;
 		}
-
-		this.field4166[var1] = var2; // L: 142
-		this.field4166[var1].field4158 = var1; // L: 143
-	} // L: 144
+		this.field4166[var1] = var2;
+		this.field4166[var1].field4158 = var1;
+	}
 
 	public boolean remove(Object var1) {
-		class345 var2 = (class345)this.field4167.remove(var1); // L: 77
-		if (var2 == null) { // L: 78
+		class345 var2 = ((class345) (this.field4167.remove(var1)));
+		if (var2 == null) {
 			return false;
 		} else {
-			++this.field4169; // L: 79
-			--this.field4165; // L: 80
-			if (var2.field4158 == this.field4165) { // L: 81
-				this.field4166[this.field4165] = null; // L: 82
-				return true; // L: 83
+			++this.field4169;
+			--this.field4165;
+			if (var2.field4158 == this.field4165) {
+				this.field4166[this.field4165] = null;
+				return true;
 			} else {
-				class345 var3 = this.field4166[this.field4165]; // L: 85
-				this.field4166[this.field4165] = null; // L: 86
-				this.field4166[var2.field4158] = var3; // L: 87
-				this.field4166[var2.field4158].field4158 = var2.field4158; // L: 88
-				this.method6354(var2.field4158); // L: 89
-				if (var3 == this.field4166[var2.field4158]) { // L: 90
+				class345 var3 = this.field4166[this.field4165];
+				this.field4166[this.field4165] = null;
+				this.field4166[var2.field4158] = var3;
+				this.field4166[var2.field4158].field4158 = var2.field4158;
+				this.method6354(var2.field4158);
+				if (var3 == this.field4166[var2.field4158]) {
 					this.method6342(var2.field4158);
 				}
-
-				return true; // L: 91
+				return true;
 			}
 		}
 	}
 
 	public Object peek() {
-		return this.field4165 == 0 ? null : this.field4166[0].field4159; // L: 54 55
+		return this.field4165 == 0 ? null : this.field4166[0].field4159;
 	}
 
 	public int size() {
-		return this.field4165; // L: 29
+		return this.field4165;
 	}
 
 	public boolean offer(Object var1) {
-		if (this.field4167.containsKey(var1)) { // L: 34
+		if (this.field4167.containsKey(var1)) {
 			throw new IllegalArgumentException("");
 		} else {
-			++this.field4169; // L: 35
-			int var2 = this.field4165; // L: 36
-			if (var2 >= this.field4166.length) { // L: 37
+			++this.field4169;
+			int var2 = this.field4165;
+			if (var2 >= this.field4166.length) {
 				this.method6341();
 			}
-
-			++this.field4165; // L: 38
-			if (var2 == 0) { // L: 39
-				this.field4166[0] = new class345(var1, 0); // L: 40
-				this.field4167.put(var1, this.field4166[0]); // L: 41
+			++this.field4165;
+			if (var2 == 0) {
+				this.field4166[0] = new class345(var1, 0);
+				this.field4167.put(var1, this.field4166[0]);
 			} else {
-				this.field4166[var2] = new class345(var1, var2); // L: 44
-				this.field4167.put(var1, this.field4166[var2]); // L: 45
-				this.method6342(var2); // L: 46
+				this.field4166[var2] = new class345(var1, var2);
+				this.field4167.put(var1, this.field4166[var2]);
+				this.method6342(var2);
 			}
-
-			return true; // L: 48
+			return true;
 		}
 	}
 
 	public Object[] toArray() {
-		Object[] var1 = super.toArray(); // L: 154
+		Object[] var1 = super.toArray();
 		if (this.field4168 != null) {
-			Arrays.sort(var1, this.field4168); // L: 155
+			Arrays.sort(var1, this.field4168);
 		} else {
-			Arrays.sort(var1); // L: 156
+			Arrays.sort(var1);
 		}
-
-		return var1; // L: 157
+		return var1;
 	}
 
 	public Object poll() {
-		if (this.field4165 == 0) { // L: 61
+		if (this.field4165 == 0) {
 			return null;
 		} else {
-			++this.field4169; // L: 62
-			Object var1 = this.field4166[0].field4159; // L: 63
-			this.field4167.remove(var1); // L: 64
-			--this.field4165; // L: 65
+			++this.field4169;
+			Object var1 = this.field4166[0].field4159;
+			this.field4167.remove(var1);
+			--this.field4165;
 			if (this.field4165 == 0) {
-				this.field4166[this.field4165] = null; // L: 66
+				this.field4166[this.field4165] = null;
 			} else {
-				this.field4166[0] = this.field4166[this.field4165]; // L: 68
-				this.field4166[0].field4158 = 0; // L: 69
-				this.field4166[this.field4165] = null; // L: 70
-				this.method6354(0); // L: 71
+				this.field4166[0] = this.field4166[this.field4165];
+				this.field4166[0].field4158 = 0;
+				this.field4166[this.field4165] = null;
+				this.method6354(0);
 			}
-
-			return var1; // L: 73
+			return var1;
 		}
 	}
 
 	public boolean contains(Object var1) {
-		return this.field4167.containsKey(var1); // L: 148
+		return this.field4167.containsKey(var1);
 	}
 
 	public Iterator iterator() {
-		return new class346(this); // L: 162
+		return new class346(this);
 	}
 }

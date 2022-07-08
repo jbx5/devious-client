@@ -735,6 +735,11 @@ public final class WidgetID
 		static final int POINTS_INFOBOX = 3;
 	}
 
+	static class ChambersOfXericStorageUnitPrivate
+	{
+		static final int PRIVATE_CHEST_ITEM_CONTAINER = 6;
+	}
+
 	static class Tob
 	{
 		static final int PARTY_INTERFACE = 5;
@@ -792,7 +797,7 @@ public final class WidgetID
 		static final int MIDDLE_ORB_COUNTER_CLOCKWISE = 22;
 		static final int RIGHT_ORB_CLOCKWISE = 23;
 		static final int RIGHT_ORB_COUNTER_CLOCKWISE = 24;
-		static final int TELEPORT_BUTTON = 26;
+		static final int TELEPORT_BUTTON = 30;
 	}
 
 	static class FairyRingCode

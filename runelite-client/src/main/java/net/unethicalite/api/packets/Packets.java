@@ -1,15 +1,15 @@
 package net.unethicalite.api.packets;
 
-import net.unethicalite.api.events.MenuAutomated;
-import net.unethicalite.api.game.GameThread;
-import net.unethicalite.api.widgets.Widgets;
-import net.unethicalite.client.Static;
-import net.unethicalite.client.managers.interaction.InteractionException;
 import net.runelite.api.packets.ClientPacket;
 import net.runelite.api.packets.PacketBufferNode;
 import net.runelite.api.packets.PacketWriter;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetType;
+import net.unethicalite.api.events.MenuAutomated;
+import net.unethicalite.api.game.GameThread;
+import net.unethicalite.api.widgets.Widgets;
+import net.unethicalite.client.Static;
+import net.unethicalite.client.managers.interaction.InteractionException;
 
 public class Packets
 {
@@ -17,7 +17,6 @@ public class Packets
 	{
 		PacketWriter writer = Static.getClient().getPacketWriter();
 		PacketBufferNode packet = Static.getClient().preparePacket(clientPacket, writer.getIsaacCipher());
-
 		for (Object o : data)
 		{
 			if (o instanceof Byte)
@@ -45,12 +44,9 @@ public class Packets
 				packet.getPacketBuffer().writeStringCp1252NullTerminated(((String) (o)));
 				continue;
 			}
-			// invalid data
 			return;
 		}
-
 		packet.send();
-
 		writer.queuePacket(packet);
 	}
 
@@ -63,75 +59,31 @@ public class Packets
 	{
 		var opcode = menu.getOpcode();
 		var client = Static.getClient();
-
 		var id = menu.getIdentifier();
 		var param0 = menu.getParam0();
 		var param1 = menu.getParam1();
 		var selectedWidgetItemId = client.getSelectedSpellItemId();
 		var selectedWidgetSlot = client.getSelectedSpellChildIndex();
-		// Yes, keeping both in case of a future fix in naming
 		var selectedWidget = client.getSelectedSpellWidget();
 		var selectedSpellWidget = client.getSelectedSpellWidget();
-
 		switch (opcode)
 		{
 			case ITEM_USE_ON_GAME_OBJECT:
 			case WIDGET_TARGET_ON_GAME_OBJECT:
-				return ObjectPackets.createWidgetOnObjectPacket(
-						id,
-						param0 + client.getBaseX(),
-						param1 + client.getBaseY(),
-						selectedWidgetSlot,
-						selectedWidgetItemId,
-						selectedWidget,
-						false
-				);
-
+				return ObjectPackets.createWidgetOnObjectPacket(id, param0 + client.getBaseX(), param1 + client.getBaseY(), selectedWidgetSlot, selectedWidgetItemId, selectedWidget, false);
 			case GAME_OBJECT_FIRST_OPTION:
-				return ObjectPackets.createObjectFirstActionPacket(
-						id,
-						param0 + client.getBaseX(),
-						param1 + client.getBaseY(),
-						false
-				);
+				return ObjectPackets.createObjectFirstActionPacket(id, param0 + client.getBaseX(), param1 + client.getBaseY(), false);
 			case GAME_OBJECT_SECOND_OPTION:
-				return ObjectPackets.createObjectSecondActionPacket(
-						id,
-						param0 + client.getBaseX(),
-						param1 + client.getBaseY(),
-						false
-				);
+				return ObjectPackets.createObjectSecondActionPacket(id, param0 + client.getBaseX(), param1 + client.getBaseY(), false);
 			case GAME_OBJECT_THIRD_OPTION:
-				return ObjectPackets.createObjectThirdActionPacket(
-						id,
-						param0 + client.getBaseX(),
-						param1 + client.getBaseY(),
-						false
-				);
+				return ObjectPackets.createObjectThirdActionPacket(id, param0 + client.getBaseX(), param1 + client.getBaseY(), false);
 			case GAME_OBJECT_FOURTH_OPTION:
-				return ObjectPackets.createObjectFourthActionPacket(
-						id,
-						param0 + client.getBaseX(),
-						param1 + client.getBaseY(),
-						false
-				);
+				return ObjectPackets.createObjectFourthActionPacket(id, param0 + client.getBaseX(), param1 + client.getBaseY(), false);
 			case GAME_OBJECT_FIFTH_OPTION:
-				return ObjectPackets.createObjectFifthActionPacket(
-						id,
-						param0 + client.getBaseX(),
-						param1 + client.getBaseY(),
-						false
-				);
+				return ObjectPackets.createObjectFifthActionPacket(id, param0 + client.getBaseX(), param1 + client.getBaseY(), false);
 			case ITEM_USE_ON_NPC:
 			case WIDGET_TARGET_ON_NPC:
-				return NPCPackets.createWidgetOnNpc(
-						id,
-						selectedWidget,
-						selectedWidgetItemId,
-						selectedWidgetSlot,
-						false
-				);
-
+				return NPCPackets.createWidgetOnNpc(id, selectedWidget, selectedWidgetItemId, selectedWidgetSlot, false);
 			case NPC_FIRST_OPTION:
 				return NPCPackets.createNpcFirstActionPacket(id, false);
 			case NPC_SECOND_OPTION:
@@ -144,13 +96,7 @@ public class Packets
 				return NPCPackets.createNpcFifthActionPacket(id, false);
 			case ITEM_USE_ON_PLAYER:
 			case WIDGET_TARGET_ON_PLAYER:
-				return PlayerPackets.createWidgetOnPlayer(
-						id,
-						selectedWidgetItemId,
-						selectedWidgetSlot,
-						selectedWidget,
-						false
-				);
+				return PlayerPackets.createWidgetOnPlayer(id, selectedWidgetItemId, selectedWidgetSlot, selectedWidget, false);
 			case PLAYER_FIRST_OPTION:
 				return PlayerPackets.createFirstAction(id, false);
 			case PLAYER_SECOND_OPTION:
@@ -169,50 +115,17 @@ public class Packets
 				return PlayerPackets.createEighthAction(id, false);
 			case ITEM_USE_ON_GROUND_ITEM:
 			case WIDGET_TARGET_ON_GROUND_ITEM:
-				return GroundItemPackets.createWidgetOnGroundItem(
-						id,
-						param0 + client.getBaseX(),
-						param1 + client.getBaseY(),
-						selectedWidgetSlot,
-						selectedWidgetItemId,
-						selectedWidget,
-						false
-				);
+				return GroundItemPackets.createWidgetOnGroundItem(id, param0 + client.getBaseX(), param1 + client.getBaseY(), selectedWidgetSlot, selectedWidgetItemId, selectedWidget, false);
 			case GROUND_ITEM_FIRST_OPTION:
-				return GroundItemPackets.createFirstAction(
-						id,
-						param0 + client.getBaseX(),
-						param1 + client.getBaseY(),
-						false
-				);
+				return GroundItemPackets.createFirstAction(id, param0 + client.getBaseX(), param1 + client.getBaseY(), false);
 			case GROUND_ITEM_SECOND_OPTION:
-				return GroundItemPackets.createSecondAction(
-						id,
-						param0 + client.getBaseX(),
-						param1 + client.getBaseY(),
-						false
-				);
+				return GroundItemPackets.createSecondAction(id, param0 + client.getBaseX(), param1 + client.getBaseY(), false);
 			case GROUND_ITEM_THIRD_OPTION:
-				return GroundItemPackets.createThirdAction(
-						id,
-						param0 + client.getBaseX(),
-						param1 + client.getBaseY(),
-						false
-				);
+				return GroundItemPackets.createThirdAction(id, param0 + client.getBaseX(), param1 + client.getBaseY(), false);
 			case GROUND_ITEM_FOURTH_OPTION:
-				return GroundItemPackets.createFourthAction(
-						id,
-						param0 + client.getBaseX(),
-						param1 + client.getBaseY(),
-						false
-				);
+				return GroundItemPackets.createFourthAction(id, param0 + client.getBaseX(), param1 + client.getBaseY(), false);
 			case GROUND_ITEM_FIFTH_OPTION:
-				return GroundItemPackets.createFifthAction(
-						id,
-						param0 + client.getBaseX(),
-						param1 + client.getBaseY(),
-						false
-				);
+				return GroundItemPackets.createFifthAction(id, param0 + client.getBaseX(), param1 + client.getBaseY(), false);
 			case ITEM_USE_ON_ITEM:
 			case WIDGET_TARGET_ON_WIDGET:
 				Widget targetParent = Widgets.fromId(param1);
@@ -223,7 +136,6 @@ public class Packets
 				{
 					childItemId = targetChild.getItemId();
 				}
-
 				Widget source = client.getWidget(selectedWidget);
 				assert source != null;
 				if (source.getType() == WidgetType.GRAPHIC)
@@ -231,77 +143,27 @@ public class Packets
 					selectedWidgetSlot = -1;
 					selectedWidgetItemId = -1;
 				}
-
-				return WidgetPackets.createWidgetOnWidget(
-						selectedWidget,
-						selectedWidgetSlot,
-						selectedWidgetItemId,
-						param1,
-						param0,
-						childItemId
-				);
-
-
+				return WidgetPackets.createWidgetOnWidget(selectedWidget, selectedWidgetSlot, selectedWidgetItemId, childItemId, param0, param1);
 			case ITEM_FIRST_OPTION:
-				return ItemPackets.createFirstAction(
-						param1,
-						id,
-						param0
-				);
+				return ItemPackets.createFirstAction(param1, id, param0);
 			case ITEM_SECOND_OPTION:
-				return ItemPackets.createSecondAction(
-						param1,
-						id,
-						param0
-				);
+				return ItemPackets.createSecondAction(param1, id, param0);
 			case ITEM_THIRD_OPTION:
-				return ItemPackets.createThirdAction(
-						param1,
-						id,
-						param0
-				);
+				return ItemPackets.createThirdAction(param1, id, param0);
 			case ITEM_FOURTH_OPTION:
-				return ItemPackets.createFourthAction(
-						param1,
-						id,
-						param0
-				);
+				return ItemPackets.createFourthAction(param1, id, param0);
 			case ITEM_FIFTH_OPTION:
-				return ItemPackets.createFifthAction(
-						param1,
-						id,
-						param0
-				);
+				return ItemPackets.createFifthAction(param1, id, param0);
 			case WIDGET_FIRST_OPTION:
-				return WidgetPackets.createFirstAction(
-						param1,
-						-1,
-						param0
-				);
+				return WidgetPackets.createFirstAction(param1, -1, param0);
 			case WIDGET_SECOND_OPTION:
-				return WidgetPackets.createSecondAction(
-						param1,
-						-1,
-						param0
-				);
+				return WidgetPackets.createSecondAction(param1, -1, param0);
 			case WIDGET_THIRD_OPTION:
-				return WidgetPackets.createThirdAction(
-						param1,
-						-1,
-						param0
-				);
+				return WidgetPackets.createThirdAction(param1, -1, param0);
 			case WIDGET_FOURTH_OPTION:
-				return WidgetPackets.createFourthAction(
-						param1,
-						-1,
-						param0
-				);
+				return WidgetPackets.createFourthAction(param1, -1, param0);
 			case WIDGET_FIFTH_OPTION:
-				return WidgetPackets.createFifthAction(
-						param1,
-						-1,
-						param0
-				);
+				return WidgetPackets.createFifthAction(param1, -1, param0);
 			case WIDGET_TYPE_1:
 				return WidgetPackets.createType1Action(param1);
 			case WIDGET_CONTINUE:
@@ -309,13 +171,8 @@ public class Packets
 			case WALK:
 				client.setDestinationX(param0);
 				client.setDestinationY(param1);
-				return MovementPackets.createMovement(
-						param0 + client.getBaseX(),
-						param1 + client.getBaseY(),
-						false
-				);
+				return MovementPackets.createMovement(param0 + client.getBaseX(), param1 + client.getBaseY(), false);
 		}
-
 		throw new InteractionException("Couldn't parse packet from opcode: " + opcode);
 	}
 }

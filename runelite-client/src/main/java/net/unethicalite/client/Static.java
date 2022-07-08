@@ -3,6 +3,7 @@ package net.unethicalite.client;
 import lombok.Getter;
 import net.runelite.api.Client;
 import net.runelite.api.packets.ClientPacket;
+import net.runelite.api.packets.ServerPacket;
 import net.runelite.client.callback.ClientThread;
 import net.runelite.client.chat.ChatMessageManager;
 import net.runelite.client.config.ConfigManager;
@@ -11,6 +12,8 @@ import net.runelite.client.game.ItemManager;
 import net.runelite.client.game.WorldService;
 import net.runelite.client.input.KeyManager;
 import net.runelite.client.plugins.PluginManager;
+import net.runelite.client.ui.ClientToolbar;
+import net.runelite.client.ui.overlay.OverlayManager;
 import net.unethicalite.api.movement.pathfinder.GlobalCollisionMap;
 import net.unethicalite.api.script.paint.Paint;
 import net.unethicalite.client.config.UnethicaliteConfig;
@@ -18,6 +21,7 @@ import net.unethicalite.client.devtools.EntityRenderer;
 import net.unethicalite.client.managers.DefinitionManager;
 import net.unethicalite.client.managers.NativeInputManager;
 import net.unethicalite.client.managers.NeverLogManager;
+import net.unethicalite.client.managers.RegionManager;
 import net.unethicalite.client.managers.interaction.InteractionManager;
 
 import javax.inject.Inject;
@@ -56,6 +60,10 @@ public class Static
 	@Inject
 	@Getter
 	private static ClientPacket clientPacket;
+
+	@Inject
+	@Getter
+	private static ServerPacket serverPacket;
 
 	@Inject
 	@Getter
@@ -101,8 +109,25 @@ public class Static
 	@Getter
 	private static EntityRenderer entityRenderer;
 
+	@Inject
+	@Getter
+	private static OverlayManager overlayManager;
+
+	@Inject
+	@Getter
+	private static ClientToolbar clientToolbar;
+
+	@Inject
+	@Getter
+	private static RegionManager regionManager;
+
 	public static void setScriptArgs(String[] scriptArgs)
 	{
 		Static.scriptArgs = scriptArgs;
+	}
+
+	public static void init()
+	{
+		regionManager.init();
 	}
 }

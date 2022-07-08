@@ -29,27 +29,17 @@ import ch.qos.logback.classic.Logger;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.inject.Guice;
 import com.google.inject.Inject;
-import com.google.inject.Injector;
 import com.openosrs.client.OpenOSRS;
-import net.unethicalite.api.account.GameAccount;
-import net.unethicalite.api.game.Game;
-import net.unethicalite.client.Static;
-import net.unethicalite.client.config.UnethicaliteConfig;
-import net.unethicalite.client.minimal.plugins.PluginEntry;
-import net.unethicalite.client.minimal.ui.MinimalToolbar;
-import net.unethicalite.client.minimal.ui.MinimalUI;
-import net.unethicalite.client.managers.MinimalFpsManager;
-import net.unethicalite.client.managers.MinimalPluginManager;
 import joptsimple.ArgumentAcceptingOptionSpec;
 import joptsimple.OptionParser;
 import joptsimple.OptionSet;
 import joptsimple.ValueConversionException;
 import joptsimple.ValueConverter;
-import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.api.Constants;
 import net.runelite.client.ClassPreloader;
+import net.runelite.client.ClientSessionManager;
 import net.runelite.client.RuneLite;
 import net.runelite.client.RuneLiteProperties;
 import net.runelite.client.RuntimeConfigLoader;
@@ -64,6 +54,15 @@ import net.runelite.client.ui.FatalErrorDialog;
 import net.runelite.client.ui.overlay.OverlayManager;
 import net.runelite.client.ui.overlay.tooltip.TooltipOverlay;
 import net.runelite.http.api.RuneLiteAPI;
+import net.unethicalite.api.account.GameAccount;
+import net.unethicalite.api.game.Game;
+import net.unethicalite.client.Static;
+import net.unethicalite.client.config.UnethicaliteConfig;
+import net.unethicalite.client.managers.MinimalFpsManager;
+import net.unethicalite.client.managers.MinimalPluginManager;
+import net.unethicalite.client.minimal.plugins.PluginEntry;
+import net.unethicalite.client.minimal.ui.MinimalToolbar;
+import net.unethicalite.client.minimal.ui.MinimalUI;
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -76,7 +75,7 @@ import javax.inject.Singleton;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
-import javax.swing.*;
+import javax.swing.SwingUtilities;
 import java.applet.Applet;
 import java.io.File;
 import java.io.IOException;
@@ -113,9 +112,6 @@ public class MinimalClient
 	public static final File SCRIPTS_DIR = new File(CLIENT_DIR, "scripts");
 
 	private static final int MAX_OKHTTP_CACHE_SIZE = 20 * 1024 * 1024; // 20mb
-
-	@Getter
-	private static Injector injector;
 
 	@Inject
 	private EventBus eventBus;
@@ -157,6 +153,9 @@ public class MinimalClient
 
 	@Inject
 	private WorldService worldService;
+
+	@Inject
+	private ClientSessionManager clientSessionManager;
 
 	public static void main(String[] args) throws Exception
 	{
@@ -262,16 +261,13 @@ public class MinimalClient
 
 			final long start = System.currentTimeMillis();
 
-			injector = Guice.createInjector(new MinimalModule(
+			RuneLite.setInjector(Guice.createInjector(new MinimalModule(
 					options.has("developer-mode"),
 					okHttpClient,
 					clientLoader,
-					options.valueOf(configfile))
-			);
+					options.valueOf(configfile))));
 
-			injector.getInstance(MinimalClient.class).start(options);
-
-			RuneLite.setInjector(injector);
+			RuneLite.getInjector().getInstance(MinimalClient.class).start(options);
 
 			final long end = System.currentTimeMillis();
 			final RuntimeMXBean rb = ManagementFactory.getRuntimeMXBean();
@@ -295,7 +291,7 @@ public class MinimalClient
 		if (!isOutdated)
 		{
 			// Inject members into client
-			injector.injectMembers(client);
+			RuneLite.getInjector().injectMembers(client);
 		}
 
 		// Start the applet
@@ -331,6 +327,10 @@ public class MinimalClient
 
 		initArgs(options);
 
+		// Start client session
+		clientSessionManager.start();
+		eventBus.register(clientSessionManager);
+
 		minimalUI.init();
 
 		eventBus.register(minimalUI);
@@ -345,12 +345,6 @@ public class MinimalClient
 		{
 			quickLaunch(options);
 		}
-	}
-
-	@VisibleForTesting
-	public static void setInjector(Injector injector)
-	{
-		MinimalClient.injector = injector;
 	}
 
 	private static class ConfigFileConverter implements ValueConverter<File>
@@ -567,6 +561,7 @@ public class MinimalClient
 				.accepts("cache-dir")
 				.withOptionalArg().ofType(String.class);
 
+		parser.accepts("minimal");
 		parser.accepts("norender");
 
 		parser.accepts("script")

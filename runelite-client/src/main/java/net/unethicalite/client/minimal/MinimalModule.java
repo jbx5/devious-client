@@ -7,6 +7,7 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import com.google.inject.name.Names;
 import com.openosrs.client.config.OpenOSRSConfig;
+import net.runelite.api.packets.ServerPacket;
 import net.unethicalite.api.movement.pathfinder.GlobalCollisionMap;
 import net.unethicalite.client.Static;
 import net.unethicalite.client.config.UnethicaliteConfig;
@@ -144,6 +145,14 @@ public class MinimalModule extends AbstractModule
 	}
 
 	@Provides
+	@Named("runelite.session")
+	HttpUrl provideSession(@Named("runelite.session") String s)
+	{
+		final String prop = System.getProperty("runelite.session.url");
+		return HttpUrl.get(Strings.isNullOrEmpty(prop) ? s : prop);
+	}
+
+	@Provides
 	@Singleton
 	OpenOSRSConfig provideOpenOSRSConfig(ConfigManager configManager)
 	{
@@ -174,6 +183,15 @@ public class MinimalModule extends AbstractModule
 	{
 		assert client != null;
 		return client.createClientPacket(-1, -1);
+	}
+
+	@Provides
+	@Singleton
+	@Nullable
+	ServerPacket provideServerPacket(@Nullable Client client)
+	{
+		assert client != null;
+		return client.createServerPacket(-1, -1);
 	}
 
 	@Provides

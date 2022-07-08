@@ -1,5 +1,6 @@
 package net.unethicalite.client.config;
 
+import net.unethicalite.api.movement.pathfinder.model.JewelryBox;
 import net.unethicalite.client.managers.interaction.InteractMethod;
 import net.unethicalite.client.managers.interaction.MouseBehavior;
 import net.runelite.client.config.Button;
@@ -9,21 +10,18 @@ import net.runelite.client.config.ConfigItem;
 import net.runelite.client.config.ConfigSection;
 import net.runelite.client.config.Range;
 
-@ConfigGroup("unethicalite")
+import static net.unethicalite.client.config.UnethicaliteConfig.CONFIG_GROUP;
+
+@ConfigGroup(CONFIG_GROUP)
 public interface UnethicaliteConfig extends Config
 {
-	@ConfigSection(
-			name = "Interaction",
-			description = "Interaction settings",
-			position = 0
-	)
-	String interactionManager = "Interaction";
+	String CONFIG_GROUP = "unethicalite";
 
 	@ConfigItem(
 			keyName = "interactMethod",
 			name = "Interact method",
 			description = "Interaction method",
-			section = interactionManager,
+			hidden = true,
 			position = 0
 	)
 	default InteractMethod interactMethod()
@@ -35,11 +33,7 @@ public interface UnethicaliteConfig extends Config
 			keyName = "forceForwarding",
 			name = "Force mouse forwarding",
 			description = "Forces mouse forwarding regardless of queued actions",
-			section = interactionManager,
-			position = 1,
-			hidden = true,
-			unhide = "interactMethod",
-			unhideValue = "MOUSE_FORWARDING"
+			hidden = true
 	)
 	default boolean forceForwarding()
 	{
@@ -47,14 +41,32 @@ public interface UnethicaliteConfig extends Config
 	}
 
 	@ConfigItem(
+			keyName = "forwardMovement",
+			name = "Forward mouse movement",
+			description = "Forward mouse movement events",
+			hidden = true
+	)
+	default boolean forwardMovement()
+	{
+		return false;
+	}
+
+	@ConfigItem(
+			keyName = "clickLocation",
+			name = "Click coordinates",
+			description = "When not forwarding, specify client window coords to click on",
+			hidden = true
+	)
+	default String clickLocation()
+	{
+		return "0 0";
+	}
+
+	@ConfigItem(
 			keyName = "forceForwardMovement",
 			name = "Always forward movement",
 			description = "Always forward mouse movement regardless of queued actions",
-			section = interactionManager,
-			position = 1,
-			hidden = true,
-			unhide = "interactMethod",
-			unhideValue = "MOUSE_FORWARDING"
+			hidden = true
 	)
 	default boolean forceForwardMovement()
 	{
@@ -65,11 +77,7 @@ public interface UnethicaliteConfig extends Config
 			keyName = "forwardKeystrokes",
 			name = "Forward keystrokes as clicks",
 			description = "Converts keystrokes to mouse clicks and forwards them to the client",
-			section = interactionManager,
-			position = 1,
-			hidden = true,
-			unhide = "interactMethod",
-			unhideValue = "MOUSE_FORWARDING"
+			hidden = true
 	)
 	default boolean forwardKeystrokes()
 	{
@@ -80,28 +88,42 @@ public interface UnethicaliteConfig extends Config
 			keyName = "selectedMonitorsOnly",
 			name = "Forward from specific monitors",
 			description = "Forwards mouse events from selected monitors only",
-			section = interactionManager,
-			position = 1,
-			hidden = true,
-			unhide = "interactMethod",
-			unhideValue = "MOUSE_FORWARDING"
+			hidden = true
 	)
 	default boolean selectedMonitorsOnly()
 	{
 		return false;
 	}
 
-	@Range(min = 1, max = 10)
 	@ConfigItem(
 			keyName = "selectedMonitorIds",
 			name = "Monitor IDs",
 			description = "Selected monitor IDs",
-			section = interactionManager,
-			position = 1,
-			hidden = true,
-			unhide = "selectedMonitorsOnly"
+			hidden = true
 	)
 	default String selectedMonitorIds()
+	{
+		return "1,2";
+	}
+
+	@ConfigItem(
+			keyName = "selectedButtonsOnly",
+			name = "Forward only specific mouse buttons",
+			description = "Forward only specific mouse buttons",
+			hidden = true
+	)
+	default boolean selectedButtonsOnly()
+	{
+		return false;
+	}
+
+	@ConfigItem(
+			keyName = "selectedButtons",
+			name = "Button IDs",
+			description = "Selected button IDs",
+			hidden = true
+	)
+	default String selectedButtonIds()
 	{
 		return "1,2";
 	}
@@ -110,11 +132,7 @@ public interface UnethicaliteConfig extends Config
 			keyName = "forwardLeftClick",
 			name = "Forward all clicks as left click",
 			description = "Converts all clicks to left mouse button and forwards them as a left click",
-			section = interactionManager,
-			position = 2,
-			hidden = true,
-			unhide = "interactMethod",
-			unhideValue = "MOUSE_FORWARDING"
+			hidden = true
 	)
 	default boolean forwardLeftClick()
 	{
@@ -125,11 +143,7 @@ public interface UnethicaliteConfig extends Config
 			keyName = "naturalMouse",
 			name = "Natural mouse",
 			description = "Uses the 'natural mouse' algorithm to move and click",
-			section = interactionManager,
-			position = 3,
-			hidden = true,
-			unhide = "interactMethod",
-			unhideValue = "MOUSE_EVENTS"
+			hidden = true
 	)
 	default boolean naturalMouse()
 	{
@@ -140,8 +154,7 @@ public interface UnethicaliteConfig extends Config
 			keyName = "disableMouse",
 			name = "Disable manual input",
 			description = "Disables manual input if a script/looped plugin is running",
-			section = interactionManager,
-			position = 4
+			hidden = true
 	)
 	default boolean disableMouse()
 	{
@@ -152,11 +165,7 @@ public interface UnethicaliteConfig extends Config
 			keyName = "mouseBehavior",
 			name = "Mouse behavior",
 			description = "Type of clicks to send to the server",
-			section = interactionManager,
-			position = 5,
-			hidden = true,
-			unhide = "interactMethod",
-			unhideValue = "MOUSE_EVENTS"
+			hidden = true
 	)
 	default MouseBehavior mouseBehavior()
 	{
@@ -164,11 +173,11 @@ public interface UnethicaliteConfig extends Config
 	}
 
 	@ConfigItem(
-			position = 6,
+			position = 22,
 			keyName = "neverLog",
 			name = "Neverlog",
 			description = "Skips idle checks",
-			section = interactionManager
+			hidden = true
 	)
 	default boolean neverLog()
 	{
@@ -207,6 +216,18 @@ public interface UnethicaliteConfig extends Config
 	}
 
 	@ConfigItem(
+			keyName = "avoidWilderness",
+			name = "Avoid Wilderness",
+			description = "Avoids walking in the wilderness if the destination is not in the wildy",
+			position = 3,
+			section = pathfinderSection
+	)
+	default boolean avoidWilderness()
+	{
+		return false;
+	}
+
+	@ConfigItem(
 			keyName = "downloadCollisionData",
 			name = "Download collision data",
 			description = "Downloads new collision data from the server and updates the currently used collision map",
@@ -231,15 +252,75 @@ public interface UnethicaliteConfig extends Config
 	}
 
 	@ConfigItem(
-			keyName = "addTransportData",
-			name = "Add new transport",
-			description = "Add new transport",
-			position = 6,
+			keyName = "usePoh",
+			name = "Use POH",
+			description = "",
+			position = 3,
 			section = pathfinderSection
 	)
-	default Button transport()
+	default boolean usePoh()
 	{
-		return new Button();
+		return false;
+	}
+
+	@ConfigItem(
+			keyName = "hasMountedGlory",
+			name = "Mounted Glory",
+			description = "",
+			position = 4,
+			section = pathfinderSection
+	)
+	default boolean hasMountedGlory()
+	{
+		return false;
+	}
+
+	@ConfigItem(
+			keyName = "hasMountedDigsitePendant",
+			name = "Mounted Digsite Pendant",
+			description = "",
+			position = 4,
+			section = pathfinderSection
+	)
+	default boolean hasMountedDigsitePendant()
+	{
+		return false;
+	}
+
+	@ConfigItem(
+			keyName = "hasMountedMythicalCape",
+			name = "Mounted Mythical Cape",
+			description = "",
+			position = 4,
+			section = pathfinderSection
+	)
+	default boolean hasMountedMythicalCape()
+	{
+		return false;
+	}
+
+	@ConfigItem(
+			keyName = "hasMountedXericsTalisman",
+			name = "Mounted Xerics Talisman",
+			description = "",
+			position = 4,
+			section = pathfinderSection
+	)
+	default boolean hasMountedXericsTalisman()
+	{
+		return false;
+	}
+
+	@ConfigItem(
+			keyName = "hasJewelryBox",
+			name = "Jewelry Box",
+			description = "",
+			position = 4,
+			section = pathfinderSection
+	)
+	default JewelryBox hasJewelryBox()
+	{
+		return JewelryBox.NONE;
 	}
 
 	@ConfigSection(
@@ -287,5 +368,36 @@ public interface UnethicaliteConfig extends Config
 	default boolean minimized()
 	{
 		return false;
+	}
+
+	@ConfigSection(
+			name = "Data collection",
+			position = 3,
+			description = ""
+	)
+	String dataCollection = "Data collection";
+
+	@ConfigItem(
+			position = 0,
+			keyName = "session",
+			name = "Send session (online users)",
+			description = "Sends your online status & your client mode to the backend.",
+			section = dataCollection
+	)
+	default boolean session()
+	{
+		return true;
+	}
+
+	@ConfigItem(
+			position = 0,
+			keyName = "regions",
+			name = "Send region",
+			description = "Sends your local region data to the backend.",
+			section = dataCollection
+	)
+	default boolean regions()
+	{
+		return true;
 	}
 }

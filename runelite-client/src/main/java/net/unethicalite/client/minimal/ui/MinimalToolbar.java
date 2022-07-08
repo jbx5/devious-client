@@ -1,5 +1,8 @@
 package net.unethicalite.client.minimal.ui;
 
+import net.miginfocom.swing.MigLayout;
+import net.runelite.client.plugins.unethicalite.ui.UnethicalitePanel;
+import net.runelite.client.ui.ColorScheme;
 import net.unethicalite.api.plugins.Script;
 import net.unethicalite.client.config.UnethicaliteConfig;
 import net.unethicalite.client.devtools.EntityRenderer;
@@ -23,7 +26,13 @@ import net.runelite.client.ui.components.colorpicker.ColorPickerManager;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JRadioButton;
+import javax.swing.SwingUtilities;
+import javax.swing.WindowConstants;
 
 @Singleton
 public class MinimalToolbar extends JMenuBar
@@ -99,6 +108,18 @@ public class MinimalToolbar extends JMenuBar
 		clientConfigPanel = new MinimalConfigPanel(configManager, colorPickerManager, eventBus);
 		clientConfigPanel.init(cl);
 
+		UnethicalitePanel unethicalitePanel = new UnethicalitePanel(client, unethicaliteConfig, configManager);
+		eventBus.register(unethicalitePanel);
+
+		JFrame interactWindow = new JFrame();
+		interactWindow.setVisible(false);
+		interactWindow.getContentPane().setBackground(ColorScheme.DARK_GRAY_COLOR);
+		interactWindow.setAlwaysOnTop(true);
+		interactWindow.setLayout(new MigLayout());
+		interactWindow.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+		interactWindow.add(unethicalitePanel);
+		interactWindow.pack();
+
 		SwingUtilities.invokeLater(() ->
 		{
 			JMenuItem scripts = new JMenuItem("Plugins");
@@ -110,12 +131,19 @@ public class MinimalToolbar extends JMenuBar
 			add(scripts);
 
 			JMenu settingsMenu = new JMenu("Settings");
-			JMenuItem botSettings = new JMenuItem("Unethicalite Settings");
-			botSettings.addActionListener(e ->
+			JMenuItem unethicaliteSettings = new JMenuItem("Unethicalite Settings");
+			unethicaliteSettings.addActionListener(e ->
 			{
 				unethicaliteConfigPanel.open();
 			});
-			settingsMenu.add(botSettings);
+			settingsMenu.add(unethicaliteSettings);
+
+			JMenuItem interactSettings = new JMenuItem("Interaction Settings");
+			interactSettings.addActionListener(e ->
+			{
+				interactWindow.setVisible(!interactWindow.isVisible());
+			});
+			settingsMenu.add(interactSettings);
 
 			JMenuItem clientSettings = new JMenuItem("Client Settings");
 			clientSettings.addActionListener(e ->

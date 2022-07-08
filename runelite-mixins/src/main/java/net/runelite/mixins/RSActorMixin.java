@@ -24,10 +24,16 @@
  */
 package net.runelite.mixins;
 
+import com.google.common.collect.ImmutableSet;
+import java.awt.Graphics2D;
+import java.awt.Polygon;
+import java.awt.image.BufferedImage;
+import java.util.Set;
 import net.runelite.api.Actor;
 import net.runelite.api.Hitsplat;
 import net.runelite.api.NPC;
 import net.runelite.api.NPCComposition;
+import net.runelite.api.NpcID;
 import net.runelite.api.Perspective;
 import net.runelite.api.Player;
 import net.runelite.api.Point;
@@ -37,14 +43,11 @@ import net.runelite.api.coords.WorldArea;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.events.ActorDeath;
 import net.runelite.api.events.AnimationChanged;
-import net.runelite.api.events.HitsplatApplied;
-import net.runelite.api.events.HealthBarUpdated;
 import net.runelite.api.events.GraphicChanged;
+import net.runelite.api.events.HealthBarUpdated;
+import net.runelite.api.events.HitsplatApplied;
 import net.runelite.api.events.InteractingChanged;
 import net.runelite.api.events.OverheadTextChanged;
-import java.awt.Graphics2D;
-import java.awt.Polygon;
-import java.awt.image.BufferedImage;
 import net.runelite.api.mixins.FieldHook;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.MethodHook;
@@ -56,6 +59,7 @@ import net.runelite.rs.api.RSHealthBar;
 import net.runelite.rs.api.RSHealthBarDefinition;
 import net.runelite.rs.api.RSHealthBarUpdate;
 import net.runelite.rs.api.RSIterableNodeDeque;
+import net.runelite.rs.api.RSNPC;
 import net.runelite.rs.api.RSNode;
 
 @Mixin(RSActor.class)
@@ -63,6 +67,9 @@ public abstract class RSActorMixin implements RSActor
 {
 	@Shadow("client")
 	private static RSClient client;
+
+	@Inject
+	private static final Set<Integer> combatInfoFilter = ImmutableSet.of(0, 2, 16, 17, 18, 19, 20, 21, 22);
 
 	@Inject
 	private boolean dead;
@@ -189,6 +196,16 @@ public abstract class RSActorMixin implements RSActor
 	@Inject
 	public void animationChanged(int idx)
 	{
+		if (this instanceof RSNPC)
+		{
+			int id = ((RSNPC) this).getId();
+
+			if (id == NpcID.CORPOREAL_BEAST && this.getAnimation() == 1676)
+			{
+				setDead(true);
+			}
+		}
+
 		AnimationChanged animationChange = new AnimationChanged();
 		animationChange.setActor(this);
 		client.getCallbacks().post(animationChange);
@@ -230,7 +247,7 @@ public abstract class RSActorMixin implements RSActor
 		int size = 1;
 		if (this instanceof NPC)
 		{
-			NPCComposition composition = ((NPC)this).getComposition();
+			NPCComposition composition = ((NPC) this).getComposition();
 			if (composition != null && composition.getConfigs() != null)
 			{
 				composition = composition.transform();
@@ -262,16 +279,35 @@ public abstract class RSActorMixin implements RSActor
 	@MethodHook("addHealthBar")
 	public void setCombatInfo(int combatInfoId, int gameCycle, int var3, int var4, int healthRatio, int health)
 	{
-		if (healthRatio == 0)
-		{
-			final ActorDeath event = new ActorDeath(this);
-			client.getCallbacks().post(event);
-
-			this.setDead(true);
-		}
-
 		final HealthBarUpdated event = new HealthBarUpdated(this, healthRatio);
 		client.getCallbacks().post(event);
+
+		if (healthRatio == 0)
+		{
+			if (isDead())
+			{
+				return;
+			}
+
+			if (!combatInfoFilter.contains(combatInfoId))
+			{
+				return;
+			}
+
+			setDead(true);
+
+			final ActorDeath actorDeath = new ActorDeath(this);
+			client.getCallbacks().post(actorDeath);
+		}
+		else if (healthRatio > 0)
+		{
+			if (this instanceof RSNPC && ((RSNPC) this).getId() == NpcID.CORPOREAL_BEAST && isDead())
+			{
+				return;
+			}
+
+			setDead(false);
+		}
 	}
 
 	/**
@@ -279,12 +315,12 @@ public abstract class RSActorMixin implements RSActor
 	 * Note that this event runs even if the hitsplat didn't show up,
 	 * i.e. the actor already had 4 visible hitsplats.
 	 *
-	 * @param type The hitsplat type (i.e. color)
-	 * @param value The value of the hitsplat (i.e. how high the hit was)
-	 * @param var3 unknown
-	 * @param var4 unknown
+	 * @param type      The hitsplat type (i.e. color)
+	 * @param value     The value of the hitsplat (i.e. how high the hit was)
+	 * @param var3      unknown
+	 * @param var4      unknown
 	 * @param gameCycle The gamecycle the hitsplat was applied on
-	 * @param duration The amount of gamecycles the hitsplat will last for
+	 * @param duration  The amount of gamecycles the hitsplat will last for
 	 */
 	@Inject
 	@MethodHook(value = "addHitSplat", end = true)
