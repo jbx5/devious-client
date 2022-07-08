@@ -19,6 +19,7 @@ import net.unethicalite.api.script.paint.Paint;
 import net.unethicalite.client.config.UnethicaliteConfig;
 import net.unethicalite.client.devtools.EntityRenderer;
 import net.unethicalite.client.managers.DefinitionManager;
+import net.unethicalite.client.managers.InventoryManager;
 import net.unethicalite.client.managers.NativeInputManager;
 import net.unethicalite.client.managers.NeverLogManager;
 import net.unethicalite.client.managers.RegionManager;
@@ -120,6 +121,10 @@ public class Static
 	@Inject
 	@Getter
 	private static RegionManager regionManager;
+
+	@Inject
+	@Getter
+	private static InventoryManager inventoryManager;
 
 	public static void setScriptArgs(String[] scriptArgs)
 	{

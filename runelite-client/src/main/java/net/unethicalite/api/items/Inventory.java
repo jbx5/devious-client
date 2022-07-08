@@ -1,10 +1,10 @@
 package net.unethicalite.api.items;
 
-import net.unethicalite.api.query.items.ItemQuery;
 import net.runelite.api.InventoryID;
 import net.runelite.api.Item;
-import net.runelite.api.ItemContainer;
 import net.runelite.api.widgets.WidgetInfo;
+import net.unethicalite.api.query.items.ItemQuery;
+import net.unethicalite.client.managers.InventoryManager;
 
 import java.util.List;
 import java.util.function.Predicate;
@@ -71,13 +71,13 @@ public class Inventory extends Items
 
 	public static Item getItem(int slot)
 	{
-		ItemContainer container = INVENTORY.getItemContainer();
+		Item[] container = InventoryManager.getCachedContainers().get(InventoryID.INVENTORY.getId());
 		if (container == null)
 		{
 			return null;
 		}
 
-		Item item = container.getItem(slot);
+		Item item = container[slot];
 		if (item == null || item.getId() == -1 || item.getName() == null || item.getName().equals("null"))
 		{
 			return null;
