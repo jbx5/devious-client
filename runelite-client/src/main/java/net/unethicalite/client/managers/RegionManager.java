@@ -68,6 +68,7 @@ public class RegionManager
 	public void init()
 	{
 		staticConfig = config;
+		executorService.submit(TransportLoader::init);
 	}
 
 	public void sendRegion()
