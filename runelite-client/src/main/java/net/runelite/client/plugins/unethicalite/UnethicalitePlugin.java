@@ -11,7 +11,6 @@ import net.runelite.client.plugins.unethicalite.ui.UnethicalitePanel;
 import net.runelite.client.ui.ClientToolbar;
 import net.runelite.client.ui.NavigationButton;
 import net.runelite.client.util.ImageUtil;
-import net.unethicalite.api.movement.pathfinder.TransportLoader;
 import net.unethicalite.api.plugins.SettingsPlugin;
 import net.unethicalite.client.config.UnethicaliteConfig;
 
@@ -70,8 +69,6 @@ public class UnethicalitePlugin extends SettingsPlugin
 				.build();
 
 		clientToolbar.addNavigation(navButton);
-
-		executorService.submit(TransportLoader::init);
 	}
 
 	@Override

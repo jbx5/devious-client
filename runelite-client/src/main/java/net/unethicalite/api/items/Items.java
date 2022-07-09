@@ -1,13 +1,13 @@
 package net.unethicalite.api.items;
 
-import net.unethicalite.api.commons.Predicates;
-import net.unethicalite.api.game.GameThread;
-import net.unethicalite.client.Static;
 import lombok.Getter;
 import net.runelite.api.Client;
 import net.runelite.api.InventoryID;
 import net.runelite.api.Item;
-import net.runelite.api.ItemContainer;
+import net.unethicalite.api.commons.Predicates;
+import net.unethicalite.api.game.GameThread;
+import net.unethicalite.client.Static;
+import net.unethicalite.client.managers.InventoryManager;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,13 +31,11 @@ public abstract class Items
 	protected List<Item> all(Predicate<Item> filter)
 	{
 		List<Item> items = new ArrayList<>();
-		ItemContainer container = getItemContainer();
-		if (container == null)
+		Item[] containerItems = InventoryManager.getCachedContainers().get(inventoryID.getId());
+		if (containerItems == null)
 		{
 			return items;
 		}
-
-		Item[] containerItems = container.getItems();
 
 		cacheUncachedItems(containerItems);
 
@@ -132,10 +130,5 @@ public abstract class Items
 				}
 			});
 		}
-	}
-
-	protected ItemContainer getItemContainer()
-	{
-		return Static.getClient().getItemContainer(inventoryID);
 	}
 }
