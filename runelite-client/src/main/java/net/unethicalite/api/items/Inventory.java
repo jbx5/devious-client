@@ -16,7 +16,6 @@ public class Inventory extends Items
 	{
 		super(InventoryID.INVENTORY, item ->
 		{
-			item.setActionParam(item.getSlot());
 			item.setWidgetId(WidgetInfo.INVENTORY.getPackedId());
 			return true;
 		});
@@ -83,7 +82,6 @@ public class Inventory extends Items
 			return null;
 		}
 
-		item.setActionParam(item.getSlot());
 		item.setWidgetId(WidgetInfo.INVENTORY.getPackedId());
 		return item;
 	}

@@ -8,14 +8,14 @@ import net.runelite.client.eventbus.Subscribe;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 @Singleton
 public class InventoryManager
 {
 	@Getter
-	private static final Map<Integer, Item[]> cachedContainers = new HashMap<>();
+	private static final Map<Integer, Item[]> cachedContainers = new ConcurrentHashMap<>();
 
 	@Inject
 	InventoryManager(EventBus eventBus)
