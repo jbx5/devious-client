@@ -1,5 +1,11 @@
 package net.unethicalite.api.items;
 
+import net.runelite.api.InventoryID;
+import net.runelite.api.Item;
+import net.runelite.api.Varbits;
+import net.runelite.api.widgets.Widget;
+import net.runelite.api.widgets.WidgetID;
+import net.runelite.api.widgets.WidgetInfo;
 import net.unethicalite.api.commons.Predicates;
 import net.unethicalite.api.commons.Time;
 import net.unethicalite.api.game.Vars;
@@ -7,12 +13,6 @@ import net.unethicalite.api.query.items.ItemQuery;
 import net.unethicalite.api.widgets.Dialog;
 import net.unethicalite.api.widgets.Widgets;
 import net.unethicalite.client.Static;
-import net.runelite.api.InventoryID;
-import net.runelite.api.Item;
-import net.runelite.api.Varbits;
-import net.runelite.api.widgets.Widget;
-import net.runelite.api.widgets.WidgetID;
-import net.runelite.api.widgets.WidgetInfo;
 
 import java.util.List;
 import java.util.Objects;
@@ -210,12 +210,12 @@ public class Bank extends Items
 		String action = getAction(item, amount, false);
 		int actionIndex = item.getActionIndex(action);
 
-		item.interact(actionIndex);
-
 		if (action.equals("Deposit-X"))
 		{
 			Dialog.enterInput(amount);
 		}
+
+		item.interact(actionIndex);
 	}
 
 	public static void withdrawAll(String name, WithdrawMode withdrawMode)
@@ -267,11 +267,12 @@ public class Bank extends Items
 			Time.sleepUntil(() -> !isNotedWithdrawMode(), 1200);
 		}
 
-		item.interact(actionIndex + 1);
 		if (action.equals("Withdraw-X"))
 		{
 			Dialog.enterInput(amount);
 		}
+
+		item.interact(actionIndex + 1);
 	}
 
 	public static void withdrawLastQuantity(String name, WithdrawMode withdrawMode)
@@ -518,6 +519,36 @@ public class Bank extends Items
 		{
 			return BANK_INVENTORY.first(names);
 		}
+
+		public static int getCount(boolean stacks, Predicate<Item> filter)
+		{
+			return BANK_INVENTORY.count(stacks, filter);
+		}
+
+		public static int getCount(boolean stacks, int... ids)
+		{
+			return BANK_INVENTORY.count(stacks, ids);
+		}
+
+		public static int getCount(boolean stacks, String... names)
+		{
+			return BANK_INVENTORY.count(stacks, names);
+		}
+
+		public static int getCount(Predicate<Item> filter)
+		{
+			return BANK_INVENTORY.count(false, filter);
+		}
+
+		public static int getCount(int... ids)
+		{
+			return BANK_INVENTORY.count(false, ids);
+		}
+
+		public static int getCount(String... names)
+		{
+			return BANK_INVENTORY.count(false, names);
+		}
 	}
 
 	private static String getAction(Item item, int amount, Boolean withdraw)
@@ -539,7 +570,7 @@ public class Bank extends Items
 		{
 			action += "-All";
 		}
-		else if (!withdraw && amount >= net.unethicalite.api.items.Inventory.getCount(true, item.getId()))
+		else if (!withdraw && amount >= Inventory.getCount(true, item.getId()))
 		{
 			action += "-All";
 		}

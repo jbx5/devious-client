@@ -19,7 +19,6 @@ public class Equipment extends Items
 		super(InventoryID.EQUIPMENT, item ->
 		{
 			WidgetInfo widgetInfo = getEquipmentWidgetInfo(item.getSlot());
-			item.setActionParam(-1);
 
 			if (widgetInfo != null)
 			{
