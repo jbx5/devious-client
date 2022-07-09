@@ -33,6 +33,7 @@ import net.runelite.api.GameState;
 import net.runelite.api.Player;
 import net.runelite.api.Point;
 import net.runelite.api.events.GameStateChanged;
+import net.runelite.client.RuneLiteProperties;
 import net.runelite.client.callback.ClientThread;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.config.RuneLiteConfig;
@@ -210,7 +211,7 @@ public class MinimalUI
 			// Try to enable fullscreen on OSX
 			OSXUtil.tryEnableFullscreen(frame);
 
-			frame.setTitle("OpenOSRS");
+			frame.setTitle(RuneLiteProperties.getTitle());
 			frame.setIconImage(ICON);
 			frame.getLayeredPane().setCursor(Cursor.getDefaultCursor()); // Prevent substance from using a resize cursor for pointing
 
