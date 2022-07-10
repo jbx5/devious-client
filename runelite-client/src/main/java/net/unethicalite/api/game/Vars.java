@@ -1,7 +1,5 @@
 package net.unethicalite.api.game;
 
-import net.runelite.api.VarClientInt;
-import net.runelite.api.VarClientStr;
 import net.unethicalite.client.Static;
 
 public class Vars
@@ -16,13 +14,13 @@ public class Vars
 		return Static.getClient().getVarpValue(Static.getClient().getVarps(), id);
 	}
 
-	public static int getVarcInt(VarClientInt varClientInt)
+	public static int getVarcInt(int varClientInt)
 	{
-		return Static.getClient().getVar(varClientInt);
+		return Static.getClient().getVarcIntValue(varClientInt);
 	}
 
-	public static String getVarcStr(VarClientStr varClientStr)
+	public static String getVarcStr(int varClientStr)
 	{
-		return Static.getClient().getVar(varClientStr);
+		return Static.getClient().getVarcStrValue(varClientStr);
 	}
 }

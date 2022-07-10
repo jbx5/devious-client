@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019, Tomas Slusny <slusnucky@gmail.com>
+ * Copyright (c) 2022, Joshua Filby <joshua@filby.me>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,18 +22,16 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.client.plugins.party.messages;
+package net.runelite.cache.definitions;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import net.runelite.api.Skill;
-import net.runelite.client.party.messages.PartyMemberMessage;
+import lombok.Data;
+import net.runelite.cache.util.ScriptVarType;
 
-@AllArgsConstructor
-@Getter
-public class SkillUpdate extends PartyMemberMessage
+@Data
+public class DBRowDefinition
 {
-	private final Skill skill;
-	private final int value;
-	private final int max;
+	private final int id;
+	private int tableId;
+	private ScriptVarType[][] columnTypes;
+	private Object[][] columnValues;
 }

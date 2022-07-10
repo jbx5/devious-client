@@ -137,18 +137,18 @@ public class MinimalModule extends AbstractModule
 	}
 
 	@Provides
-	@Named("runelite.static.base")
-	HttpUrl provideStaticBase(@Named("runelite.static.base") String s)
-	{
-		final String prop = System.getProperty("runelite.static.url");
-		return HttpUrl.get(Strings.isNullOrEmpty(prop) ? s : prop);
-	}
-
-	@Provides
 	@Named("runelite.session")
 	HttpUrl provideSession(@Named("runelite.session") String s)
 	{
 		final String prop = System.getProperty("runelite.session.url");
+		return HttpUrl.get(Strings.isNullOrEmpty(prop) ? s : prop);
+	}
+
+	@Provides
+	@Named("runelite.static.base")
+	HttpUrl provideStaticBase(@Named("runelite.static.base") String s)
+	{
+		final String prop = System.getProperty("runelite.static.url");
 		return HttpUrl.get(Strings.isNullOrEmpty(prop) ? s : prop);
 	}
 

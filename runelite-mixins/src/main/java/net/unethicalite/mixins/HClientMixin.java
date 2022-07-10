@@ -380,4 +380,11 @@ public abstract class HClientMixin implements RSClient
 	{
 		return preparePacket(packet, client.getPacketWriter().getIsaacCipher());
 	}
+
+	@Copy("openURL")
+	@Replace("openURL")
+	public static void copy$openURL(String var0, boolean var1, boolean var2)
+	{
+
+	}
 }

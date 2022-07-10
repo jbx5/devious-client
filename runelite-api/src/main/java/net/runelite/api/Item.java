@@ -24,18 +24,18 @@
  */
 package net.runelite.api;
 
-import net.unethicalite.api.EntityNameable;
-import net.unethicalite.api.Identifiable;
-import net.unethicalite.api.Interactable;
-import net.unethicalite.api.events.MenuAutomated;
-import net.unethicalite.api.util.Randomizer;
 import lombok.Data;
 import net.runelite.api.util.Text;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetID;
 import net.runelite.api.widgets.WidgetInfo;
+import net.unethicalite.api.EntityNameable;
+import net.unethicalite.api.Identifiable;
+import net.unethicalite.api.Interactable;
+import net.unethicalite.api.events.MenuAutomated;
+import net.unethicalite.api.util.Randomizer;
 
-import java.awt.*;
+import java.awt.Rectangle;
 import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -51,7 +51,6 @@ public class Item implements Interactable, Identifiable, EntityNameable
 	private int slot;
 
 	// Interaction
-	private int actionParam;
 	private int widgetId;
 
 	@Override
@@ -319,9 +318,9 @@ public class Item implements Interactable, Identifiable, EntityNameable
 
 				return itemWidget.getMenu(actionIndex, opcode);
 			case EQUIPMENT:
-				return getMenu(actionIndex + 1, opcode, actionParam, widgetId);
+				return getMenu(actionIndex + 1, opcode, -1, widgetId);
 			case INVENTORY:
-				return getMenu(actionIndex == 0 ? 0 : actionIndex + 1, opcode, actionParam, widgetId);
+				return getMenu(actionIndex == 0 ? 0 : actionIndex + 1, opcode, getSlot(), widgetId);
 			case BANK:
 				return getMenu(actionIndex, opcode, getSlot(), WidgetInfo.BANK_ITEM_CONTAINER.getPackedId());
 			case BANK_INVENTORY:
