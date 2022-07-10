@@ -167,7 +167,8 @@ open class BootstrapTask @Inject constructor(@Input val type: String) : DefaultT
                     it.file.name.contains("substance") ||
                     it.file.name.contains("gluegen") ||
                     it.file.name.contains("jogl") ||
-                    it.file.name.contains("jocl")
+                    it.file.name.contains("jocl") ||
+                    it.file.name.contains("rlawt")
             ) {
                 path = "https://repo.runelite.net/"
                 path += "${group.replace(".", "/")}/${name}/$version/${name}-$version"
