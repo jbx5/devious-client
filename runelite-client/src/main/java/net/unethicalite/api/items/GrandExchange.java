@@ -118,7 +118,7 @@ public class GrandExchange
 		if (enterPriceButton != null && enterPriceButton.getChild(12) != null)
 		{
 			enterPriceButton.getChild(12).interact("Enter price");
-			Dialog.enterInput(price);
+			Dialog.enterAmount(price);
 		}
 	}
 
@@ -133,7 +133,7 @@ public class GrandExchange
 		if (enterPriceButton != null && enterPriceButton.getChild(7) != null)
 		{
 			enterPriceButton.getChild(7).interact("Enter quantity");
-			Dialog.enterInput(quantity);
+			Dialog.enterAmount(quantity);
 		}
 	}
 

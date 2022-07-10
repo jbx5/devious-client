@@ -118,7 +118,7 @@ public class Trade
 				else
 				{
 					item.interact("Offer-X");
-					Dialog.enterInput(quantity);
+					Dialog.enterAmount(quantity);
 				}
 				break;
 		}

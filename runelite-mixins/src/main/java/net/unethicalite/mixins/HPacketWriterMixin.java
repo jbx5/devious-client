@@ -20,6 +20,7 @@ public abstract class HPacketWriterMixin implements RSPacketWriter
 	@Override
 	public void queuePacket(PacketBufferNode packetBufferNode)
 	{
+		packetBufferNode.getPacketBuffer().setAutomated(true);
 		sendPacket((RSPacketBufferNode) packetBufferNode);
 	}
 
