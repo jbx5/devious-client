@@ -20,7 +20,7 @@ public abstract class HWidgetMixin implements RSWidget
 	private static RSClient client;
 
 	@Inject
-	private boolean visible = isHidden();
+	private boolean visible = !isHidden();
 
 	@Inject
 	@Override
