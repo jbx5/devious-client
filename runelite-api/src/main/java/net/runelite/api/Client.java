@@ -25,13 +25,6 @@
 package net.runelite.api;
 
 import com.jagex.oldscape.pub.OAuthApi;
-import java.awt.Canvas;
-import java.awt.Dimension;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Map;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import net.runelite.api.annotations.VarCInt;
 import net.runelite.api.annotations.VarCStr;
 import net.runelite.api.annotations.Varbit;
@@ -2617,4 +2610,6 @@ public interface Client extends OAuthApi, GameEngine
 	void setStaffModLevel(int level);
 
 	int getStaffModLevel();
+
+	void setShowMouseOverText(boolean showMouseOverText);
 }
