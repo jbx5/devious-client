@@ -181,7 +181,8 @@ public class RuneLite
 
 	private static final String BYPASS_ARG = "--IWillNotComplainIfIGetSentToTheGulagByJamflex";
 
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) throws Exception
+	{
 		SnakeGame.main(args);
 	}
 
