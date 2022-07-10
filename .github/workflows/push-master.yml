@@ -39,15 +39,15 @@ jobs:
 
       - name: Push to hosting
         run: |
-          git clone https://github.com/unethicalite/hosting.git
-          cp -r ./runelite-client/build/bootstrap/. ./hosting
-          cd hosting
+          git clone https://github.com/unethicalite/unethicalite-hosting.git
+          cp -r ./runelite-client/build/bootstrap/. ./unethicalite-hosting
+          cd unethicalite-hosting
           
-          git config --global user.email "burakinan1@hotmail.com"
+          git config --global user.email "git@github.com"
           git config --global user.name "Github Actions"
           git add -A
           git commit -m 'Auto release - Client (Stable)'
-          git push https://buracc:${{ secrets.REPO_PAT }}@github.com/unethicalite/hosting.git master
+          git push https://buracc:${{ secrets.REPO_PAT }}@github.com/unethicalite/unethicalite-hosting.git master
 
   checkstyleMain:
     name: Checkstyle main
