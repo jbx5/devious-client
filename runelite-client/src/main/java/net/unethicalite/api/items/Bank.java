@@ -210,12 +210,12 @@ public class Bank extends Items
 		String action = getAction(item, amount, false);
 		int actionIndex = item.getActionIndex(action);
 
+		item.interact(actionIndex);
+
 		if (action.equals("Deposit-X"))
 		{
 			Dialog.enterInput(amount);
 		}
-
-		item.interact(actionIndex);
 	}
 
 	public static void withdrawAll(String name, WithdrawMode withdrawMode)
@@ -267,12 +267,12 @@ public class Bank extends Items
 			Time.sleepUntil(() -> !isNotedWithdrawMode(), 1200);
 		}
 
+		item.interact(actionIndex + 1);
+
 		if (action.equals("Withdraw-X"))
 		{
 			Dialog.enterInput(amount);
 		}
-
-		item.interact(actionIndex + 1);
 	}
 
 	public static void withdrawLastQuantity(String name, WithdrawMode withdrawMode)
