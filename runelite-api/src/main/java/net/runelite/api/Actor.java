@@ -422,6 +422,14 @@ public interface Actor extends Renderable, SceneEntity
 	 */
 	boolean isDead();
 
+	/**
+	 * Sets the dead status of this actor
+	 *
+	 * @param dead
+	 * @see #isDead()
+	 */
+	void setDead(boolean dead);
+
 	boolean isMoving();
 
 	default boolean isAnimating()

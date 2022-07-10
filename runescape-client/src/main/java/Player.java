@@ -257,13 +257,13 @@ public final class Player extends Actor {
 		if (Client.gameBuild == 0 && Client.staffModLevel >= 2) {
 			this.isHidden = false;
 		}
-		class167[] var12 = null;
+		ColorTextureOverride[] var12 = null;
 		boolean var13 = false;
 		var8 = var1.readUnsignedShort();
 		var13 = (var8 >> 15 & 1) == 1;
 		int var9;
 		if (var8 > 0 && var8 != 32768) {
-			var12 = new class167[12];
+			var12 = new ColorTextureOverride[12];
 			for (var9 = 0; var9 < 12; ++var9) {
 				int var10 = var8 >> 12 - var9 & 1;
 				if (var10 == 1) {

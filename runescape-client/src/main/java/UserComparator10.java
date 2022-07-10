@@ -31,11 +31,11 @@ public class UserComparator10 extends AbstractUserComparator {
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(descriptor = "(ILqt;I)Lfy;", garbageValue = "956626594")
-	public static class167 method2609(int var0, Buffer var1) {
+	public static ColorTextureOverride method2609(int var0, Buffer var1) {
 		int var2 = var1.readUnsignedByte();
 		boolean var3 = (var2 & 1) != 0;
 		boolean var4 = (var2 & 2) != 0;
-		class167 var5 = new class167(var0);
+		ColorTextureOverride var5 = new ColorTextureOverride(var0);
 		int var6;
 		int[] var7;
 		boolean var8;
@@ -44,12 +44,12 @@ public class UserComparator10 extends AbstractUserComparator {
 		if (var3) {
 			var6 = var1.readUnsignedByte();
 			var7 = new int[]{ var6 & 15, var6 >> 4 & 15 };
-			var8 = var5.field1814 != null && var7.length == var5.field1814.length;
+			var8 = var5.colorToReplaceWith != null && var7.length == var5.colorToReplaceWith.length;
 			for (var9 = 0; var9 < 2; ++var9) {
 				if (var7[var9] != 15) {
 					var10 = ((short) (var1.readUnsignedShort()));
 					if (var8) {
-						var5.field1814[var7[var9]] = var10;
+						var5.colorToReplaceWith[var7[var9]] = var10;
 					}
 				}
 			}
@@ -57,12 +57,12 @@ public class UserComparator10 extends AbstractUserComparator {
 		if (var4) {
 			var6 = var1.readUnsignedByte();
 			var7 = new int[]{ var6 & 15, var6 >> 4 & 15 };
-			var8 = var5.field1815 != null && var7.length == var5.field1815.length;
+			var8 = var5.textureToReplaceWith != null && var7.length == var5.textureToReplaceWith.length;
 			for (var9 = 0; var9 < 2; ++var9) {
 				if (var7[var9] != 15) {
 					var10 = ((short) (var1.readUnsignedShort()));
 					if (var8) {
-						var5.field1815[var7[var9]] = var10;
+						var5.textureToReplaceWith[var7[var9]] = var10;
 					}
 				}
 			}
