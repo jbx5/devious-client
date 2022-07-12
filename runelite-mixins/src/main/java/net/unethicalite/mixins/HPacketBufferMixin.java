@@ -11,6 +11,9 @@ public abstract class HPacketBufferMixin implements RSPacketBuffer
 	private boolean automated = false;
 
 	@Inject
+	private boolean consumed = false;
+
+	@Inject
 	public boolean isAutomated()
 	{
 		return automated;
@@ -20,5 +23,17 @@ public abstract class HPacketBufferMixin implements RSPacketBuffer
 	public void setAutomated(boolean modified)
 	{
 		this.automated = modified;
+	}
+
+	@Inject
+	public boolean isConsumed()
+	{
+		return consumed;
+	}
+
+	@Inject
+	public void consume()
+	{
+		consumed = true;
 	}
 }

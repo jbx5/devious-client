@@ -6,4 +6,7 @@ public interface RSIterableNodeDeque
 {
 	@Import("sentinel")
 	RSNode getCurrent();
+
+	@Import("last")
+	RSNode getLast();
 }

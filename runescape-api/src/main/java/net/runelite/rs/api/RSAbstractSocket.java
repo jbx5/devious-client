@@ -9,4 +9,7 @@ public interface RSAbstractSocket
 
 	@Import("read")
 	int read(byte[] var1, int var2, int var3);
+
+	@Import("write")
+	void write(byte[] var1, int var2, int var3);
 }

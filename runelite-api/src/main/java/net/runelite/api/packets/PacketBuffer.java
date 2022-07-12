@@ -9,4 +9,8 @@ public interface PacketBuffer extends Buffer
 	IsaacCipher getIsaacCipher();
 
 	boolean isAutomated();
+
+	void consume();
+
+	boolean isConsumed();
 }
