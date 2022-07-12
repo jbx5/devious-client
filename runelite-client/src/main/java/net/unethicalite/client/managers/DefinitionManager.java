@@ -113,18 +113,21 @@ public class DefinitionManager
 	@Subscribe
 	private void onSpawn(GameObjectSpawned event)
 	{
+		log.debug("Gameobject spawn");
 		checkTransformObject(event.getGameObject());
 	}
 
 	@Subscribe
 	private void onChange(GameObjectChanged event)
 	{
+		log.debug("Gameobject change");
 		checkTransformObject(event.getGameObject());
 	}
 
 	@Subscribe
 	private void onDespawn(GameObjectDespawned event)
 	{
+		log.debug("Gameobject despawn");
 		TRANSFORMING_OBJECTS.remove(event.getGameObject().getId(), event.getGameObject());
 	}
 
