@@ -25,8 +25,6 @@
  */
 package net.runelite.mixins;
 
-import java.util.ArrayList;
-import java.util.List;
 import net.runelite.api.CollisionData;
 import net.runelite.api.CollisionDataFlag;
 import net.runelite.api.Constants;
@@ -41,18 +39,14 @@ import net.runelite.api.TileItem;
 import net.runelite.api.WallObject;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
-import net.runelite.api.events.DecorativeObjectChanged;
 import net.runelite.api.events.DecorativeObjectDespawned;
 import net.runelite.api.events.DecorativeObjectSpawned;
-import net.runelite.api.events.GameObjectChanged;
 import net.runelite.api.events.GameObjectDespawned;
 import net.runelite.api.events.GameObjectSpawned;
-import net.runelite.api.events.GroundObjectChanged;
 import net.runelite.api.events.GroundObjectDespawned;
 import net.runelite.api.events.GroundObjectSpawned;
 import net.runelite.api.events.ItemDespawned;
 import net.runelite.api.events.ItemSpawned;
-import net.runelite.api.events.WallObjectChanged;
 import net.runelite.api.events.WallObjectDespawned;
 import net.runelite.api.events.WallObjectSpawned;
 import net.runelite.api.mixins.FieldHook;
@@ -63,17 +57,20 @@ import net.runelite.rs.api.RSActor;
 import net.runelite.rs.api.RSBoundaryObject;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSFloorDecoration;
-import net.runelite.rs.api.RSRenderable;
 import net.runelite.rs.api.RSGameObject;
 import net.runelite.rs.api.RSGraphicsObject;
 import net.runelite.rs.api.RSItemLayer;
 import net.runelite.rs.api.RSNode;
 import net.runelite.rs.api.RSNodeDeque;
 import net.runelite.rs.api.RSProjectile;
+import net.runelite.rs.api.RSRenderable;
 import net.runelite.rs.api.RSTile;
 import net.runelite.rs.api.RSTileItem;
 import net.runelite.rs.api.RSWallDecoration;
 import org.slf4j.Logger;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Mixin(RSTile.class)
 public abstract class RSTileMixin implements RSTile
@@ -546,14 +543,6 @@ public abstract class RSTileMixin implements RSTile
 			wallObjectSpawned.setWallObject(current);
 			client.getCallbacks().post(wallObjectSpawned);
 		}
-		else if (current != null)
-		{
-			WallObjectChanged wallObjectChanged = new WallObjectChanged();
-			wallObjectChanged.setTile(this);
-			wallObjectChanged.setPrevious(previous);
-			wallObjectChanged.setWallObject(current);
-			client.getCallbacks().post(wallObjectChanged);
-		}
 	}
 
 	@FieldHook("wallDecoration")
@@ -591,14 +580,6 @@ public abstract class RSTileMixin implements RSTile
 			decorativeObjectSpawned.setDecorativeObject(current);
 			client.getCallbacks().post(decorativeObjectSpawned);
 		}
-		else if (current != null)
-		{
-			DecorativeObjectChanged decorativeObjectChanged = new DecorativeObjectChanged();
-			decorativeObjectChanged.setTile(this);
-			decorativeObjectChanged.setPrevious(previous);
-			decorativeObjectChanged.setDecorativeObject(current);
-			client.getCallbacks().post(decorativeObjectChanged);
-		}
 	}
 
 	@FieldHook("floorDecoration")
@@ -635,14 +616,6 @@ public abstract class RSTileMixin implements RSTile
 			groundObjectSpawned.setTile(this);
 			groundObjectSpawned.setGroundObject(current);
 			client.getCallbacks().post(groundObjectSpawned);
-		}
-		else if (current != null)
-		{
-			GroundObjectChanged groundObjectChanged = new GroundObjectChanged();
-			groundObjectChanged.setTile(this);
-			groundObjectChanged.setPrevious(previous);
-			groundObjectChanged.setGroundObject(current);
-			client.getCallbacks().post(groundObjectChanged);
 		}
 	}
 
@@ -732,21 +705,6 @@ public abstract class RSTileMixin implements RSTile
 			gameObjectSpawned.setTile(this);
 			gameObjectSpawned.setGameObject(current);
 			client.getCallbacks().post(gameObjectSpawned);
-		}
-		else
-		{
-			if (currentInvalid && prevInvalid)
-			{
-				return;
-			}
-
-			logger.trace("Game object change: {} -> {}", previous.getId(), current.getId());
-
-			GameObjectChanged gameObjectsChanged = new GameObjectChanged();
-			gameObjectsChanged.setTile(this);
-			gameObjectsChanged.setPrevious(previous);
-			gameObjectsChanged.setGameObject(current);
-			client.getCallbacks().post(gameObjectsChanged);
 		}
 	}
 

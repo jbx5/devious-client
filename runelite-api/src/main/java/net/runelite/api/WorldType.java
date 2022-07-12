@@ -24,9 +24,10 @@
  */
 package net.runelite.api;
 
+import lombok.AllArgsConstructor;
+
 import java.util.Collection;
 import java.util.EnumSet;
-import lombok.AllArgsConstructor;
 
 /**
  * An enumeration of possible world types.

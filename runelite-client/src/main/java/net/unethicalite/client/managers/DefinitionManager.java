@@ -13,14 +13,11 @@ import net.runelite.api.ObjectComposition;
 import net.runelite.api.PlayerComposition;
 import net.runelite.api.TileObject;
 import net.runelite.api.VarbitComposition;
-import net.runelite.api.events.DecorativeObjectChanged;
 import net.runelite.api.events.DecorativeObjectDespawned;
 import net.runelite.api.events.DecorativeObjectSpawned;
-import net.runelite.api.events.GameObjectChanged;
 import net.runelite.api.events.GameObjectDespawned;
 import net.runelite.api.events.GameObjectSpawned;
 import net.runelite.api.events.GameStateChanged;
-import net.runelite.api.events.GroundObjectChanged;
 import net.runelite.api.events.GroundObjectDespawned;
 import net.runelite.api.events.GroundObjectSpawned;
 import net.runelite.api.events.ItemContainerChanged;
@@ -118,13 +115,6 @@ public class DefinitionManager
 	}
 
 	@Subscribe
-	private void onChange(GameObjectChanged event)
-	{
-		log.debug("Gameobject change");
-		checkTransformObject(event.getGameObject());
-	}
-
-	@Subscribe
 	private void onDespawn(GameObjectDespawned event)
 	{
 		log.debug("Gameobject despawn");
@@ -156,12 +146,6 @@ public class DefinitionManager
 	}
 
 	@Subscribe
-	private void onChange(DecorativeObjectChanged event)
-	{
-		checkTransformObject(event.getDecorativeObject());
-	}
-
-	@Subscribe
 	private void onDespawn(DecorativeObjectDespawned event)
 	{
 		TRANSFORMING_OBJECTS.remove(event.getDecorativeObject().getId(), event.getDecorativeObject());
@@ -169,12 +153,6 @@ public class DefinitionManager
 
 	@Subscribe
 	private void onSpawn(GroundObjectSpawned event)
-	{
-		checkTransformObject(event.getGroundObject());
-	}
-
-	@Subscribe
-	private void onChange(GroundObjectChanged event)
 	{
 		checkTransformObject(event.getGroundObject());
 	}
