@@ -3,15 +3,6 @@ package net.runelite.client.plugins;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
-import java.io.FileNotFoundException;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Collections;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 import org.pf4j.update.DefaultUpdateRepository;
 import org.pf4j.update.FileDownloader;
 import org.pf4j.update.FileVerifier;
@@ -22,6 +13,16 @@ import org.pf4j.update.util.LenientDateTypeAdapter;
 import org.pf4j.update.verifier.CompoundVerifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.FileNotFoundException;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Collections;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class OPRSUpdateRepository implements UpdateRepository
 {
@@ -126,6 +127,13 @@ public class OPRSUpdateRepository implements UpdateRepository
 					log.warn("Skipping release {} of plugin {} due to failure to build valid absolute URL. Url was {}{}", r.version, p.id, getUrl(), r.url);
 				}
 			}
+
+			if ("iUtils".equals(p.name) && !p.description.contains("Unethicalite"))
+			{
+				log.warn("Skipping illumine's iUtils as it's currently broken, this check will be removed once iUtils updates.");
+				continue;
+			}
+
 			p.setRepositoryId(getId());
 			plugins.put(p.id, p);
 		}
