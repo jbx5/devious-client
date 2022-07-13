@@ -68,7 +68,7 @@ public class TeleportLoader
 				if (ringOfDueling())
 				{
 					teleports.add(new Teleport(new WorldPoint(3315, 3235, 0), 6,
-						() -> jewelryTeleport("Duel Arena", RING_OF_DUELING)));
+						() -> jewelryTeleport("PvP Arena", RING_OF_DUELING)));
 					teleports.add(new Teleport(new WorldPoint(2440, 3090, 0), 2,
 						() -> jewelryTeleport("Castle Wars", RING_OF_DUELING)));
 					teleports.add(new Teleport(new WorldPoint(3151, 3635, 0), 2,
@@ -300,8 +300,12 @@ public class TeleportLoader
 		{
 			if (Dialog.isViewingOptions())
 			{
-				Dialog.chooseOption(target);
-				return;
+				Widget option = Dialog.getOptions().stream().filter(w -> w.getText().contains(target)).findFirst().orElse(null);
+				if (option != null)
+				{
+					Dialog.chooseOption(Dialog.getOptions().indexOf(option) + 1);
+					return;
+				}
 			}
 
 			inv.interact("Rub");
