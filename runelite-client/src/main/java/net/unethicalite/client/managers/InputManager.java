@@ -62,7 +62,10 @@ public class InputManager implements MouseListener, NativeMouseInputListener, Na
 		this.interactionConfig = interactionConfig;
 		eventBus.register(this);
 		manager.registerMouseListener(this);
-		GlobalScreen.registerNativeHook();
+		if (!Boolean.parseBoolean(System.getenv("disablenative")))
+		{
+			GlobalScreen.registerNativeHook();
+		}
 		Logger.getLogger(GlobalScreen.class.getPackage().getName()).setLevel(java.util.logging.Level.OFF);
 	}
 
