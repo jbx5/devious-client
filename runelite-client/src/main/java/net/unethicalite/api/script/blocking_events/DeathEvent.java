@@ -1,13 +1,12 @@
 package net.unethicalite.api.script.blocking_events;
 
+import net.runelite.api.NPC;
+import net.runelite.api.TileObject;
+import net.runelite.api.widgets.Widget;
 import net.unethicalite.api.entities.NPCs;
 import net.unethicalite.api.entities.Players;
 import net.unethicalite.api.entities.TileObjects;
 import net.unethicalite.api.widgets.Dialog;
-import net.unethicalite.api.widgets.Widgets;
-import net.runelite.api.NPC;
-import net.runelite.api.TileObject;
-import net.runelite.api.widgets.Widget;
 import net.unethicalite.client.Static;
 
 import java.util.List;
@@ -57,14 +56,9 @@ public class DeathEvent extends BlockingEvent
 				}
 			}
 
-			Widget incompleteDialog = Dialog.getOptions().stream()
+			Dialog.getOptions().stream()
 					.filter(x -> !completedDialogs.contains(x))
-					.findFirst()
-					.orElse(null);
-			if (Widgets.isVisible(incompleteDialog))
-			{
-				Dialog.chooseOption(Dialog.getOptions().indexOf(incompleteDialog) + 1);
-			}
+					.findFirst().ifPresent(incompleteDialog -> Dialog.chooseOption(Dialog.getOptions().indexOf(incompleteDialog) + 1));
 		}
 
 		return 1000;

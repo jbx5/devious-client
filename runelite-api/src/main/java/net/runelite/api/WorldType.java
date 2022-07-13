@@ -24,9 +24,10 @@
  */
 package net.runelite.api;
 
+import lombok.AllArgsConstructor;
+
 import java.util.Collection;
 import java.util.EnumSet;
-import lombok.AllArgsConstructor;
 
 /**
  * An enumeration of possible world types.
@@ -46,6 +47,10 @@ public enum WorldType
 	 * Bounty world type.
 	 */
 	BOUNTY(1 << 5),
+	/**
+	 * PVP arena world type.
+	 */
+	PVP_ARENA(1 << 6),
 	/**
 	 * Skill total world type.
 	 */

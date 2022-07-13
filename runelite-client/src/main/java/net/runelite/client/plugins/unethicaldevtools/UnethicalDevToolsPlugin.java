@@ -165,6 +165,11 @@ public class UnethicalDevToolsPlugin extends Plugin
 			return;
 		}
 
+		if (config.consumePacket())
+		{
+			e.setConsumed(true);
+		}
+
 		String packetName = Static.getClientPacket().getClientPackets().get(packet);
 		String id = packetName != null ? packetName : String.valueOf(opcode);
 

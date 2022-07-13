@@ -1,15 +1,16 @@
 package net.unethicalite.api.events;
 
-import lombok.Value;
+import lombok.Data;
 import net.runelite.api.packets.PacketBufferNode;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
-@Value
+@Data
 public class PacketSent
 {
-	PacketBufferNode packetBufferNode;
+	private final PacketBufferNode packetBufferNode;
+	private boolean consumed;
 
 	public String hexDump()
 	{

@@ -72,13 +72,13 @@ public class Production
 		return Dialog.isEnterInputOpen();
 	}
 
-	public static void enterInput(int amount)
+	public static void enterAmount(int amount)
 	{
-		Dialog.enterInput(amount);
+		Dialog.enterAmount(amount);
 	}
 
-	public static void enterInput(String input)
+	public static void enterName(String input)
 	{
-		Dialog.enterInput(input);
+		Dialog.enterName(input);
 	}
 }

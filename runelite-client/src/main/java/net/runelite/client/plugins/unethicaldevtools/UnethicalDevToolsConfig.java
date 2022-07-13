@@ -288,7 +288,7 @@ public interface UnethicalDevToolsConfig extends Config
 	}
 
 	@ConfigSection(
-			name = "Packets",
+			name = "Packet debugger",
 			keyName = "packets",
 			description = "",
 			position = 10,
@@ -298,7 +298,7 @@ public interface UnethicalDevToolsConfig extends Config
 
 	@ConfigItem(
 			keyName = "packets",
-			name = "Log Client Packets",
+			name = "Client Packets",
 			description = "Packets",
 			position = 202,
 			section = packets
@@ -310,7 +310,7 @@ public interface UnethicalDevToolsConfig extends Config
 
 	@ConfigItem(
 			keyName = "serverPackets",
-			name = "Log Server Packets",
+			name = "Server Packets",
 			description = "Server Packets",
 			position = 203,
 			section = packets

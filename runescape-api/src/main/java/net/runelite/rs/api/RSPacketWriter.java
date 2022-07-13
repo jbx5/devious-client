@@ -8,6 +8,9 @@ public interface RSPacketWriter extends PacketWriter
 	@Import("addNode")
 	void sendPacket(RSPacketBufferNode packet);
 
+	@Import("packetBufferNodes")
+	RSIterableNodeDeque getQueuedPackets();
+
 	@Import("isaacCipher")
 	@Override
 	RSIsaacCipher getIsaacCipher();
@@ -30,6 +33,9 @@ public interface RSPacketWriter extends PacketWriter
 	@Import("packetBuffer")
 	RSPacketBuffer getPacketBuffer();
 
+	@Import("buffer")
+	RSBuffer getBuffer();
+
 	@Import("field1341")
 	void setUnknown1(boolean value);
 
@@ -41,4 +47,16 @@ public interface RSPacketWriter extends PacketWriter
 
 	@Import("field1342")
 	int getUnknown2();
+
+	@Import("bufferSize")
+	int getBufferSize();
+
+	@Import("bufferSize")
+	void setBufferSize(int size);
+
+	@Import("pendingWrites")
+	int getPendingWrites();
+
+	@Import("pendingWrites")
+	void setPendingWrites(int writes);
 }

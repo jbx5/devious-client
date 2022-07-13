@@ -4,24 +4,10 @@ import net.runelite.api.Client;
 import net.runelite.api.packets.ClientPacket;
 import net.runelite.api.packets.PacketBufferNode;
 import net.unethicalite.api.game.Game;
-import net.unethicalite.api.game.GameThread;
 import net.unethicalite.client.Static;
 
 public class DialogPackets
 {
-	public static void sendNumberInput(int number, boolean closeDialog)
-	{
-		Client client = Static.getClient();
-		ClientPacket clientPacket = Game.getClientPacket();
-		PacketBufferNode var14 = Static.getClient().preparePacket(clientPacket.RESUME_COUNTDIALOG(), client.getPacketWriter().getIsaacCipher());
-		var14.getPacketBuffer().writeInt(number);
-		client.getPacketWriter().queuePacket(var14);
-		if (closeDialog)
-		{
-			GameThread.invoke(() -> Static.getClient().runScript(138));
-		}
-	}
-
 	public static void sendNumberInput(int number)
 	{
 		Client client = Static.getClient();

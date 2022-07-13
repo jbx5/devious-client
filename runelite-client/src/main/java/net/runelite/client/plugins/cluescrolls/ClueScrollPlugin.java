@@ -69,22 +69,18 @@ import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.events.ChatMessage;
 import net.runelite.api.events.CommandExecuted;
-import net.runelite.api.events.DecorativeObjectChanged;
 import net.runelite.api.events.DecorativeObjectDespawned;
 import net.runelite.api.events.DecorativeObjectSpawned;
-import net.runelite.api.events.GameObjectChanged;
 import net.runelite.api.events.GameObjectDespawned;
 import net.runelite.api.events.GameObjectSpawned;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.GameTick;
-import net.runelite.api.events.GroundObjectChanged;
 import net.runelite.api.events.GroundObjectDespawned;
 import net.runelite.api.events.GroundObjectSpawned;
 import net.runelite.api.events.ItemContainerChanged;
 import net.runelite.api.events.MenuOptionClicked;
 import net.runelite.api.events.NpcDespawned;
 import net.runelite.api.events.NpcSpawned;
-import net.runelite.api.events.WallObjectChanged;
 import net.runelite.api.events.WallObjectDespawned;
 import net.runelite.api.events.WallObjectSpawned;
 import net.runelite.api.events.WidgetLoaded;
@@ -475,12 +471,6 @@ public class ClueScrollPlugin extends Plugin
 	}
 
 	@Subscribe
-	public void onDecorativeObjectChanged(final DecorativeObjectChanged event)
-	{
-		tileObjectChangedHandler(event.getPrevious(), event.getDecorativeObject());
-	}
-
-	@Subscribe
 	public void onDecorativeObjectDespawned(final DecorativeObjectDespawned event)
 	{
 		tileObjectDespawnedHandler(event.getDecorativeObject());
@@ -490,12 +480,6 @@ public class ClueScrollPlugin extends Plugin
 	public void onDecorativeObjectSpawned(final DecorativeObjectSpawned event)
 	{
 		tileObjectSpawnedHandler(event.getDecorativeObject());
-	}
-
-	@Subscribe
-	public void onGameObjectChanged(final GameObjectChanged event)
-	{
-		tileObjectChangedHandler(event.getPrevious(), event.getGameObject());
 	}
 
 	@Subscribe
@@ -511,12 +495,6 @@ public class ClueScrollPlugin extends Plugin
 	}
 
 	@Subscribe
-	public void onGroundObjectChanged(final GroundObjectChanged event)
-	{
-		tileObjectChangedHandler(event.getPrevious(), event.getGroundObject());
-	}
-
-	@Subscribe
 	public void onGroundObjectDespawned(final GroundObjectDespawned event)
 	{
 		tileObjectDespawnedHandler(event.getGroundObject());
@@ -529,12 +507,6 @@ public class ClueScrollPlugin extends Plugin
 	}
 
 	@Subscribe
-	public void onWallObjectChanged(final WallObjectChanged event)
-	{
-		tileObjectChangedHandler(event.getPrevious(), event.getWallObject());
-	}
-
-	@Subscribe
 	public void onWallObjectDespawned(final WallObjectDespawned event)
 	{
 		tileObjectDespawnedHandler(event.getWallObject());
@@ -544,12 +516,6 @@ public class ClueScrollPlugin extends Plugin
 	public void onWallObjectSpawned(final WallObjectSpawned event)
 	{
 		tileObjectSpawnedHandler(event.getWallObject());
-	}
-
-	private void tileObjectChangedHandler(final TileObject prev, final TileObject changedTo)
-	{
-		tileObjectDespawnedHandler(prev);
-		tileObjectSpawnedHandler(changedTo);
 	}
 
 	private void tileObjectDespawnedHandler(final TileObject despawned)
