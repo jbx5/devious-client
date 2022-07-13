@@ -62260,23 +62260,6 @@
   {
     "source": {
       "x": 3405,
-      "y": 3506,
-      "plane": 0
-    },
-    "destination": {
-      "x": 3405,
-      "y": 9906,
-      "plane": 0
-    },
-    "action": "Climb-down",
-    "objectName": "Trapdoor",
-    "objectId": 1581,
-    "description": "Needs to be opened first",
-    "requirements": []
-  },
-  {
-    "source": {
-      "x": 3405,
       "y": 9906,
       "plane": 0
     },

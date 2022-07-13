@@ -113,11 +113,13 @@ public class TransportLoader
 	private static TransportDto[] loadAllStaticTransports()
 	{
 		log.info("Loading transports");
-		TransportDto[] json = HttpUtil.readJson(UnethicaliteProperties.getApiUrl() + "/transports",
-				TransportDto[].class);
-		if (json == null)
-		{
-			log.warn("Could not retrieve transport data from backend, falling back to cached.");
+		TransportDto[] json = null;
+		// TODO: Uncomment this when the trapdoor transport is removed from static transports.
+//		TransportDto[] json = HttpUtil.readJson(UnethicaliteProperties.getApiUrl() + "/transports",
+//				TransportDto[].class);
+//		if (json == null)
+//		{
+//			log.warn("Could not retrieve transport data from backend, falling back to cached.");
 
 			try (InputStream stream = Walker.class.getResourceAsStream("/transports.json"))
 			{
@@ -133,7 +135,7 @@ public class TransportLoader
 			{
 				log.error("Failed to load cached transports.", e);
 			}
-		}
+//		}
 
 		if (json == null)
 		{
