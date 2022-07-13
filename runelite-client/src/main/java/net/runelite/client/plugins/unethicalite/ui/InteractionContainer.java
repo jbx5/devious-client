@@ -42,7 +42,7 @@ public class InteractionContainer extends PanelContainer
 
 				if (!config.forwardMovement())
 				{
-					mouseFwContainer.add(createTextSection("Click location", "clicklocation", false));
+					mouseFwContainer.add(createTextSection("Click location", "clickLocation", false));
 				}
 
 				mouseFwContainer.add(createCheckBox("Always forward movement", "forceForwardMovement"), "wrap");
