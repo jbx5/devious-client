@@ -80,7 +80,7 @@ public class DefinitionManager
 		});
 	}
 
-	@Subscribe
+	@Subscribe(priority = Integer.MAX_VALUE)
 	private void onNpcCompositionChanged(NPCCompositionChanged event)
 	{
 		NPC npc = Static.getClient().getCachedNPCs()[event.getNpcIndex()];
@@ -107,68 +107,68 @@ public class DefinitionManager
 	}
 
 	// TileObjects
-	@Subscribe
+	@Subscribe(priority = Integer.MAX_VALUE)
 	private void onSpawn(GameObjectSpawned event)
 	{
 		checkTransformObject(event.getGameObject());
 	}
 
-	@Subscribe
+	@Subscribe(priority = Integer.MAX_VALUE)
 	private void onDespawn(GameObjectDespawned event)
 	{
 		TRANSFORMING_OBJECTS.remove(event.getGameObject().getId(), event.getGameObject());
 	}
 
-	@Subscribe
+	@Subscribe(priority = Integer.MAX_VALUE)
 	private void onSpawn(WallObjectSpawned event)
 	{
 		checkTransformObject(event.getWallObject());
 	}
 
-	@Subscribe
+	@Subscribe(priority = Integer.MAX_VALUE)
 	private void onChange(WallObjectSpawned event)
 	{
 		checkTransformObject(event.getWallObject());
 	}
 
-	@Subscribe
+	@Subscribe(priority = Integer.MAX_VALUE)
 	private void onDespawn(WallObjectDespawned event)
 	{
 		TRANSFORMING_OBJECTS.remove(event.getWallObject().getId(), event.getWallObject());
 	}
 
-	@Subscribe
+	@Subscribe(priority = Integer.MAX_VALUE)
 	private void onSpawn(DecorativeObjectSpawned event)
 	{
 		checkTransformObject(event.getDecorativeObject());
 	}
 
-	@Subscribe
+	@Subscribe(priority = Integer.MAX_VALUE)
 	private void onDespawn(DecorativeObjectDespawned event)
 	{
 		TRANSFORMING_OBJECTS.remove(event.getDecorativeObject().getId(), event.getDecorativeObject());
 	}
 
-	@Subscribe
+	@Subscribe(priority = Integer.MAX_VALUE)
 	private void onSpawn(GroundObjectSpawned event)
 	{
 		checkTransformObject(event.getGroundObject());
 	}
 
-	@Subscribe
+	@Subscribe(priority = Integer.MAX_VALUE)
 	private void onDespawn(GroundObjectDespawned event)
 	{
 		TRANSFORMING_OBJECTS.remove(event.getGroundObject().getId(), event.getGroundObject());
 	}
 
 	// Items
-	@Subscribe
+	@Subscribe(priority = Integer.MAX_VALUE)
 	private void onItemSpawn(ItemSpawned event)
 	{
 		client.cacheItem(event.getItem().getId(), client.getItemDefinition(event.getItem().getId()));
 	}
 
-	@Subscribe
+	@Subscribe(priority = Integer.MAX_VALUE)
 	private void onItemContainerChanged(ItemContainerChanged event)
 	{
 		ItemContainer container = event.getItemContainer();
@@ -188,7 +188,7 @@ public class DefinitionManager
 		}
 	}
 
-	@Subscribe
+	@Subscribe(priority = Integer.MAX_VALUE)
 	private void onPlayerSpawned(PlayerSpawned event)
 	{
 		PlayerComposition playerComposition = event.getPlayer().getPlayerComposition();
@@ -209,13 +209,13 @@ public class DefinitionManager
 	}
 
 	// Widgets
-	@Subscribe
+	@Subscribe(priority = Integer.MAX_VALUE)
 	private void onWidgetHiddenChanged(WidgetHiddenChanged event)
 	{
 		checkWidget(event.getWidget());
 	}
 
-	@Subscribe
+	@Subscribe(priority = Integer.MAX_VALUE)
 	private void onWidgetLoaded(WidgetLoaded event)
 	{
 		for (Widget widget : Widgets.get(event.getGroupId()))
@@ -224,7 +224,7 @@ public class DefinitionManager
 		}
 	}
 
-	@Subscribe
+	@Subscribe(priority = Integer.MAX_VALUE)
 	private void onWidgetClosed(WidgetClosed event)
 	{
 		for (Widget widget : Widgets.get(event.getGroupId()))
@@ -233,7 +233,7 @@ public class DefinitionManager
 		}
 	}
 
-	@Subscribe
+	@Subscribe(priority = Integer.MAX_VALUE)
 	private void onGameStateChanged(GameStateChanged gameStateChanged)
 	{
 		switch (gameStateChanged.getGameState())
@@ -245,7 +245,7 @@ public class DefinitionManager
 		}
 	}
 
-	@Subscribe
+	@Subscribe(priority = Integer.MAX_VALUE)
 	private void onVarbitChanged(VarbitChanged e)
 	{
 		if (VARS.isEmpty())

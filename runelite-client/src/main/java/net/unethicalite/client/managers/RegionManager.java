@@ -271,7 +271,7 @@ public class RegionManager
 			"hasJewelryBox"
 	);
 
-	@Subscribe
+	@Subscribe(priority = Integer.MAX_VALUE)
 	public void onWidgetLoaded(WidgetLoaded event)
 	{
 		if (REFRESH_WIDGET_IDS.contains(event.getGroupId()))
@@ -280,7 +280,7 @@ public class RegionManager
 		}
 	}
 
-	@Subscribe
+	@Subscribe(priority = Integer.MAX_VALUE)
 	public void onItemContainerChanged(ItemContainerChanged event)
 	{
 		if (event.getContainerId() == InventoryID.INVENTORY.getId())
