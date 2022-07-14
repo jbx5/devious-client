@@ -1,9 +1,11 @@
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.Export;
 @ObfuscatedName("px")
-public class class437 extends DualNode {
+@Implements("DbRowType")
+public class DbRowType extends DualNode {
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(descriptor = "Llh;")
 	static AbstractArchive field4675;
@@ -14,20 +16,20 @@ public class class437 extends DualNode {
 	static EvictingDualNodeHashTable DBRowType_cache;
 
 	@ObfuscatedName("q")
-	Object[][] field4676;
+	Object[][] columnTypes;
 
 	@ObfuscatedName("f")
 	int[][] field4677;
 
 	@ObfuscatedName("j")
 	@ObfuscatedGetter(intValue = 1231945791)
-	public int field4678;
+	public int tableId;
 
 	static {
 		DBRowType_cache = new EvictingDualNodeHashTable(64);
 	}
 
-	class437() {
+	DbRowType() {
 	}
 
 	@ObfuscatedName("q")
@@ -44,8 +46,8 @@ public class class437 extends DualNode {
 
 	@ObfuscatedName("f")
 	@ObfuscatedSignature(descriptor = "(IB)[Ljava/lang/Object;", garbageValue = "-23")
-	public Object[] method7625(int var1) {
-		return this.field4676 == null ? null : this.field4676[var1];
+	public Object[] getColumnType(int var1) {
+		return this.columnTypes == null ? null : this.columnTypes[var1];
 	}
 
 	@ObfuscatedName("j")
@@ -53,8 +55,8 @@ public class class437 extends DualNode {
 	void method7627(Buffer var1, int var2) {
 		if (var2 == 3) {
 			int var3 = var1.readUnsignedByte();
-			if (this.field4676 == null) {
-				this.field4676 = new Object[var3][];
+			if (this.columnTypes == null) {
+				this.columnTypes = new Object[var3][];
 				this.field4677 = new int[var3][];
 			}
 			for (int var4 = var1.readUnsignedByte(); var4 != 255; var4 = var1.readUnsignedByte()) {
@@ -63,7 +65,7 @@ public class class437 extends DualNode {
 				for (int var7 = 0; var7 < var5; ++var7) {
 					var6[var7] = var1.readUShortSmart();
 				}
-				Object[][] var16 = this.field4676;
+				Object[][] var16 = this.columnTypes;
 				int var10 = var1.readUShortSmart();
 				Object[] var11 = new Object[var6.length * var10];
 				for (int var12 = 0; var12 < var10; ++var12) {
@@ -77,7 +79,7 @@ public class class437 extends DualNode {
 				this.field4677[var4] = var6;
 			}
 		} else if (var2 == 4) {
-			this.field4678 = var1.packBytesToInt();
+			this.tableId = var1.packBytesToInt();
 		}
 	}
 

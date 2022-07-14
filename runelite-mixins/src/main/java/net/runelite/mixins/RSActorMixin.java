@@ -25,10 +25,6 @@
 package net.runelite.mixins;
 
 import com.google.common.collect.ImmutableSet;
-import java.awt.Graphics2D;
-import java.awt.Polygon;
-import java.awt.image.BufferedImage;
-import java.util.Set;
 import net.runelite.api.Actor;
 import net.runelite.api.Hitsplat;
 import net.runelite.api.NPC;
@@ -61,6 +57,11 @@ import net.runelite.rs.api.RSHealthBarUpdate;
 import net.runelite.rs.api.RSIterableNodeDeque;
 import net.runelite.rs.api.RSNPC;
 import net.runelite.rs.api.RSNode;
+
+import java.awt.Graphics2D;
+import java.awt.Polygon;
+import java.awt.image.BufferedImage;
+import java.util.Set;
 
 @Mixin(RSActor.class)
 public abstract class RSActorMixin implements RSActor
@@ -196,16 +197,6 @@ public abstract class RSActorMixin implements RSActor
 	@Inject
 	public void animationChanged(int idx)
 	{
-		if (this instanceof RSNPC)
-		{
-			int id = ((RSNPC) this).getId();
-
-			if (id == NpcID.CORPOREAL_BEAST && this.getAnimation() == 1676)
-			{
-				setDead(true);
-			}
-		}
-
 		AnimationChanged animationChange = new AnimationChanged();
 		animationChange.setActor(this);
 		client.getCallbacks().post(animationChange);

@@ -28,18 +28,18 @@ public class FriendLoginUpdate extends Link {
 
 	@ObfuscatedName("v")
 	@ObfuscatedSignature(descriptor = "(II)Lpx;", garbageValue = "-1096065009")
-	public static class437 method6631(int var0) {
-		class437 var1 = ((class437) (class437.DBRowType_cache.get(((long) (var0)))));
+	public static DbRowType getDbRowType(int var0) {
+		DbRowType var1 = ((DbRowType) (DbRowType.DBRowType_cache.get(((long) (var0)))));
 		if (var1 != null) {
 			return var1;
 		} else {
-			byte[] var2 = class437.field4675.takeFile(38, var0);
-			var1 = new class437();
+			byte[] var2 = DbRowType.field4675.takeFile(38, var0);
+			var1 = new DbRowType();
 			if (var2 != null) {
 				var1.method7635(new Buffer(var2));
 			}
 			var1.method7636();
-			class437.DBRowType_cache.put(var1, ((long) (var0)));
+			DbRowType.DBRowType_cache.put(var1, ((long) (var0)));
 			return var1;
 		}
 	}

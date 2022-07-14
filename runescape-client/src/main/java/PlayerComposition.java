@@ -56,7 +56,7 @@ public class PlayerComposition {
 
 	@ObfuscatedName("g")
 	@ObfuscatedSignature(descriptor = "[Lfy;")
-	ColorTextureOverride[] colorTextureOverrides;
+	PlayerCompositionColorTextureOverride[] playerCompositionColorTextureOverrides;
 
 	@ObfuscatedName("w")
 	boolean field3341;
@@ -72,8 +72,8 @@ public class PlayerComposition {
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(descriptor = "([I[Lfy;Z[IZII)V", garbageValue = "927894268")
-	public void method5566(int[] var1, ColorTextureOverride[] var2, boolean var3, int[] var4, boolean var5, int var6) {
-		this.colorTextureOverrides = var2;
+	public void method5566(int[] var1, PlayerCompositionColorTextureOverride[] var2, boolean var3, int[] var4, boolean var5, int var6) {
+		this.playerCompositionColorTextureOverrides = var2;
 		this.field3341 = var3;
 		this.update(var1, var4, var5, var6);
 	}
@@ -288,18 +288,18 @@ public class PlayerComposition {
 							ItemComposition var22 = EnumComposition.ItemDefinition_get(var13 - 512);
 							ModelData var15 = var22.method3721(this.isFemale);
 							if (var15 != null) {
-								if (this.colorTextureOverrides != null) {
-									ColorTextureOverride var16 = this.colorTextureOverrides[var12];
+								if (this.playerCompositionColorTextureOverrides != null) {
+									PlayerCompositionColorTextureOverride var16 = this.playerCompositionColorTextureOverrides[var12];
 									if (var16 != null) {
 										int var17;
-										if (var16.colorToReplaceWith != null && var22.recolorFrom != null && var22.recolorTo.length == var16.colorToReplaceWith.length) {
+										if (var16.playerCompositionRecolorTo != null && var22.recolorFrom != null && var22.recolorTo.length == var16.playerCompositionRecolorTo.length) {
 											for (var17 = 0; var17 < var22.recolorFrom.length; ++var17) {
-												var15.recolor(var22.recolorTo[var17], var16.colorToReplaceWith[var17]);
+												var15.recolor(var22.recolorTo[var17], var16.playerCompositionRecolorTo[var17]);
 											}
 										}
-										if (var16.textureToReplaceWith != null && var22.retextureFrom != null && var16.textureToReplaceWith.length == var22.retextureTo.length) {
+										if (var16.playerCompositionRetextureTo != null && var22.retextureFrom != null && var16.playerCompositionRetextureTo.length == var22.retextureTo.length) {
 											for (var17 = 0; var17 < var22.retextureFrom.length; ++var17) {
-												var15.retexture(var22.retextureTo[var17], var16.textureToReplaceWith[var17]);
+												var15.retexture(var22.retextureTo[var17], var16.playerCompositionRetextureTo[var17]);
 											}
 										}
 									}

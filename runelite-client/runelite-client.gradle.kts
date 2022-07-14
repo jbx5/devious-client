@@ -74,6 +74,7 @@ dependencies {
     implementation(group = "net.java.dev.jna", name = "jna", version = "5.9.0")
     implementation(group = "net.java.dev.jna", name = "jna-platform", version = "5.9.0")
     implementation(group = "net.runelite", name = "discord", version = "1.4")
+    implementation(group = "net.runelite", name = "rlawt", version = "1.3")
     implementation(group = "net.runelite.pushingpixels", name = "substance", version = "8.0.02")
     implementation(group = "net.sf.jopt-simple", name = "jopt-simple", version = "5.0.4")
     implementation(group = "org.madlonkay", name = "desktopsupport", version = "0.6.0")
@@ -93,22 +94,9 @@ dependencies {
     implementation(group = "net.runelite.jogl", name = "jogl-gldesktop-dbg", version = "2.4.0-rc-20220318")
     implementation(group = "net.runelite.jocl", name = "jocl", version = "1.0")
 
-    implementation(group = "net.runelite", name = "rlawt", version = "1.3")
-
-    implementation(group = "org.lwjgl", name = "lwjgl", version = "3.3.1")
-    implementation(group = "org.lwjgl", name = "lwjgl", version = "3.3.1", classifier = "natives-linux")
-    implementation(group = "org.lwjgl", name = "lwjgl", version = "3.3.1", classifier = "natives-macos")
-    implementation(group = "org.lwjgl", name = "lwjgl", version = "3.3.1", classifier = "natives-macos-arm64")
-    implementation(group = "org.lwjgl", name = "lwjgl", version = "3.3.1", classifier = "natives-windows-x86")
-    implementation(group = "org.lwjgl", name = "lwjgl", version = "3.3.1", classifier = "natives-windows")
-
-    implementation(group = "org.lwjgl", name = "lwjgl-opengl", version = "3.3.1")
-    implementation(group = "org.lwjgl", name = "lwjgl-opengl", version = "3.3.1", classifier = "natives-linux")
-    implementation(group = "org.lwjgl", name = "lwjgl-opengl", version = "3.3.1", classifier = "natives-macos")
-    implementation(group = "org.lwjgl", name = "lwjgl-opengl", version = "3.3.1", classifier = "natives-macos-arm64")
-    implementation(group = "org.lwjgl", name = "lwjgl-opengl", version = "3.3.1", classifier = "natives-windows-x86")
-    implementation(group = "org.lwjgl", name = "lwjgl-opengl", version = "3.3.1", classifier = "natives-windows")
-
+    implementation(platform("org.lwjgl:lwjgl-bom:3.3.1"))
+    implementation(group = "org.lwjgl", name = "lwjgl")
+    implementation(group = "org.lwjgl", name = "lwjgl-opengl")
 
     runtimeOnly(project(":runescape-api"))
     runtimeOnly(group = "net.runelite.pushingpixels", name = "trident", version = "1.5.00")
@@ -122,6 +110,18 @@ dependencies {
     runtimeOnly(group = "net.runelite.jogl", name = "jogl-rl", version = "2.4.0-rc-20220318", classifier = "natives-macosx-universal")
     runtimeOnly(group = "net.runelite.jocl", name = "jocl", version = "1.0", classifier = "macos-x64")
     runtimeOnly(group = "net.runelite.jocl", name = "jocl", version = "1.0", classifier = "macos-arm64")
+
+    runtimeOnly(group = "org.lwjgl", name = "lwjgl", classifier = "natives-linux")
+    runtimeOnly(group = "org.lwjgl", name = "lwjgl", classifier = "natives-macos")
+    runtimeOnly(group = "org.lwjgl", name = "lwjgl", classifier = "natives-macos-arm64")
+    runtimeOnly(group = "org.lwjgl", name = "lwjgl", classifier = "natives-windows-x86")
+    runtimeOnly(group = "org.lwjgl", name = "lwjgl", classifier = "natives-windows")
+
+    runtimeOnly(group = "org.lwjgl", name = "lwjgl-opengl", classifier = "natives-linux")
+    runtimeOnly(group = "org.lwjgl", name = "lwjgl-opengl", classifier = "natives-macos")
+    runtimeOnly(group = "org.lwjgl", name = "lwjgl-opengl", classifier = "natives-macos-arm64")
+    runtimeOnly(group = "org.lwjgl", name = "lwjgl-opengl", classifier = "natives-windows-x86")
+    runtimeOnly(group = "org.lwjgl", name = "lwjgl-opengl", classifier = "natives-windows")
 
     testAnnotationProcessor(group = "org.projectlombok", name = "lombok", version = ProjectVersions.lombokVersion)
 
@@ -161,6 +161,14 @@ tasks {
     }
 
     processResources {
+        dependsOn("assembleScripts")
+        dependsOn(":injected-client:inject")
+
+        from("${buildDir}/scripts")
+
+        from("${project(":injected-client").buildDir}/libs")
+        from("${project(":injected-client").buildDir}/resources/main")
+
         val tokens = mapOf(
                 "project.version" to ProjectVersions.rlVersion,
                 "rs.version" to ProjectVersions.rsversion.toString(),
@@ -196,16 +204,6 @@ tasks {
 
         input.set(file(inp))
         output.set(file(out))
-    }
-
-    processResources {
-        dependsOn("assembleScripts")
-        dependsOn(":injected-client:inject")
-
-        from("${buildDir}/scripts")
-
-        from("${project(":injected-client").buildDir}/libs")
-        from("${project(":injected-client").buildDir}/resources/main")
     }
 
     withType<BootstrapTask> {

@@ -236,9 +236,9 @@ public class MouseHandler implements MouseListener , MouseMotionListener , Focus
 					var20 = class285.method5516(var19);
 					var7 = HealthBarUpdate.method2199(var19);
 					int var21 = class141.method3048(var19);
-					class437 var26 = FriendLoginUpdate.method6631(var3);
-					class435 var27 = UserComparator6.method2626(var20);
-					int[] var28 = var27.field4668[var7];
+					DbRowType var26 = FriendLoginUpdate.getDbRowType(var3);
+					DbTableType var27 = UserComparator6.getDbTableType(var20);
+					int[] var28 = var27.types[var7];
 					int var12 = 0;
 					int var13 = var28.length;
 					if (var21 >= 0) {
@@ -248,9 +248,9 @@ public class MouseHandler implements MouseListener , MouseMotionListener , Focus
 						var12 = var21;
 						var13 = var21 + 1;
 					}
-					Object[] var14 = var26.method7625(var7);
-					if (var14 == null && var27.field4669 != null) {
-						var14 = var27.field4669[var7];
+					Object[] var14 = var26.getColumnType(var7);
+					if (var14 == null && var27.defaultValues != null) {
+						var14 = var27.defaultValues[var7];
 					}
 					int var15;
 					int var16;
@@ -289,12 +289,12 @@ public class MouseHandler implements MouseListener , MouseMotionListener , Focus
 					var5 = 0;
 					var20 = class285.method5516(var19);
 					var7 = HealthBarUpdate.method2199(var19);
-					class437 var25 = FriendLoginUpdate.method6631(var3);
-					class435 var9 = UserComparator6.method2626(var20);
-					int[] var10 = var9.field4668[var7];
-					Object[] var11 = var25.method7625(var7);
-					if (var11 == null && var9.field4669 != null) {
-						var11 = var9.field4669[var7];
+					DbRowType var25 = FriendLoginUpdate.getDbRowType(var3);
+					DbTableType var9 = UserComparator6.getDbTableType(var20);
+					int[] var10 = var9.types[var7];
+					Object[] var11 = var25.getColumnType(var7);
+					if (var11 == null && var9.defaultValues != null) {
+						var11 = var9.defaultValues[var7];
 					}
 					if (var11 != null) {
 						var5 = var11.length / var10.length;
@@ -304,8 +304,8 @@ public class MouseHandler implements MouseListener , MouseMotionListener , Focus
 				} else if (var0 != 7504 && var0 != 7509) {
 					if (var0 == 7505) {
 						var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
-						class437 var24 = FriendLoginUpdate.method6631(var3);
-						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var24.field4678;
+						DbRowType var24 = FriendLoginUpdate.getDbRowType(var3);
+						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var24.tableId;
 						return 1;
 					} else if (var0 == 7506) {
 						var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];

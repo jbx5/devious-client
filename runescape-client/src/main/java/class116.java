@@ -43,7 +43,7 @@ public enum class116 implements MouseWheel {
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(descriptor = "(Llh;S)V", garbageValue = "22259")
 	public static void method2700(AbstractArchive var0) {
-		class437.field4675 = var0;
+		DbRowType.field4675 = var0;
 	}
 
 	@ObfuscatedName("v")

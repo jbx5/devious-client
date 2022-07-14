@@ -1666,6 +1666,12 @@ public interface RSClient extends RSGameEngine, Client
 
 	@Construct
 	RSEvictingDualNodeHashTable newEvictingDualNodeHashTable(int var1);
+
+	@Import("getDbTableType")
+	RSDbTableType getDbTableType(int var0);
+
+	@Import("getDbRowType")
+	RSDbRowType getDbRowType(int var0);
 	
 	/*
 	Unethical

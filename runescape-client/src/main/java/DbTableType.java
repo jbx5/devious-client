@@ -2,7 +2,7 @@ import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 import net.runelite.mapping.Export;
 @ObfuscatedName("po")
-public class class435 extends DualNode {
+public class DbTableType extends DualNode {
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(descriptor = "Llh;")
 	static AbstractArchive field4666;
@@ -13,16 +13,16 @@ public class class435 extends DualNode {
 	static EvictingDualNodeHashTable DBTableType_cache;
 
 	@ObfuscatedName("q")
-	public int[][] field4668;
+	public int[][] types;
 
 	@ObfuscatedName("f")
-	public Object[][] field4669;
+	public Object[][] defaultValues;
 
 	static {
 		DBTableType_cache = new EvictingDualNodeHashTable(64);
 	}
 
-	class435() {
+	DbTableType() {
 	}
 
 	@ObfuscatedName("q")
@@ -42,8 +42,8 @@ public class class435 extends DualNode {
 	void method7593(Buffer var1, int var2) {
 		if (var2 == 1) {
 			int var3 = var1.readUnsignedByte();
-			if (this.field4668 == null) {
-				this.field4668 = new int[var3][];
+			if (this.types == null) {
+				this.types = new int[var3][];
 			}
 			for (int var4 = var1.readUnsignedByte(); var4 != 255; var4 = var1.readUnsignedByte()) {
 				int var5 = var4 & 127;
@@ -52,12 +52,12 @@ public class class435 extends DualNode {
 				for (int var8 = 0; var8 < var7.length; ++var8) {
 					var7[var8] = var1.readUShortSmart();
 				}
-				this.field4668[var5] = var7;
+				this.types[var5] = var7;
 				if (var6) {
-					if (this.field4669 == null) {
-						this.field4669 = new Object[this.field4668.length][];
+					if (this.defaultValues == null) {
+						this.defaultValues = new Object[this.types.length][];
 					}
-					this.field4669[var5] = Frames.method4353(var1, var7);
+					this.defaultValues[var5] = Frames.method4353(var1, var7);
 				}
 			}
 		}
