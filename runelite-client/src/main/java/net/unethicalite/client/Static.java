@@ -18,11 +18,7 @@ import net.unethicalite.api.movement.pathfinder.GlobalCollisionMap;
 import net.unethicalite.api.script.paint.Paint;
 import net.unethicalite.client.config.UnethicaliteConfig;
 import net.unethicalite.client.devtools.EntityRenderer;
-import net.unethicalite.client.managers.DefinitionManager;
-import net.unethicalite.client.managers.InventoryManager;
-import net.unethicalite.client.managers.NativeInputManager;
-import net.unethicalite.client.managers.NeverLogManager;
-import net.unethicalite.client.managers.RegionManager;
+import net.unethicalite.client.managers.*;
 import net.unethicalite.client.managers.interaction.InteractionManager;
 
 import javax.inject.Inject;
@@ -126,13 +122,12 @@ public class Static
 	@Getter
 	private static InventoryManager inventoryManager;
 
+	@Inject
+	@Getter
+	private static QuestManager questManager;
+
 	public static void setScriptArgs(String[] scriptArgs)
 	{
 		Static.scriptArgs = scriptArgs;
-	}
-
-	public static void init()
-	{
-		regionManager.init();
 	}
 }

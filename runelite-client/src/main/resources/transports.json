@@ -25525,8 +25525,8 @@
       "y": 3831,
       "plane": 1
     },
-    "action": "Climb",
-    "objectName": "Up Ladder",
+    "action": "Climb Up",
+    "objectName": "Ladder",
     "objectId": 30940,
     "description": "",
     "requirement": []
@@ -25542,8 +25542,8 @@
       "y": 3831,
       "plane": 0
     },
-    "action": "Climb",
-    "objectName": "Down Ladder",
+    "action": "Climb Down",
+    "objectName": "Ladder",
     "objectId": 30941,
     "description": "",
     "requirement": []
@@ -25559,8 +25559,8 @@
       "y": 3831,
       "plane": 1
     },
-    "action": "Climb",
-    "objectName": "Up Ladder",
+    "action": "Climb Up",
+    "objectName": "Ladder",
     "objectId": 30940,
     "description": "",
     "requirement": []
@@ -25576,8 +25576,8 @@
       "y": 3831,
       "plane": 1
     },
-    "action": "Climb",
-    "objectName": "Up Ladder",
+    "action": "Climb Up",
+    "objectName": "Ladder",
     "objectId": 30940,
     "description": "",
     "requirement": []
@@ -25593,8 +25593,8 @@
       "y": 3831,
       "plane": 0
     },
-    "action": "Climb",
-    "objectName": "Down Ladder",
+    "action": "Climb Down",
+    "objectName": "Ladder",
     "objectId": 30939,
     "description": "",
     "requirement": []
@@ -25610,8 +25610,8 @@
       "y": 3831,
       "plane": 1
     },
-    "action": "Climb",
-    "objectName": "Up Ladder",
+    "action": "Climb Up",
+    "objectName": "Ladder",
     "objectId": 30938,
     "description": "",
     "requirement": []
@@ -25627,8 +25627,8 @@
       "y": 3831,
       "plane": 1
     },
-    "action": "Climb",
-    "objectName": "Up Ladder",
+    "action": "Climb Up",
+    "objectName": "Ladder",
     "objectId": 30938,
     "description": "",
     "requirement": []
@@ -25644,8 +25644,8 @@
       "y": 3831,
       "plane": 1
     },
-    "action": "Climb",
-    "objectName": "Up Ladder",
+    "action": "Climb Up",
+    "objectName": "Ladder",
     "objectId": 30938,
     "description": "",
     "requirement": []
