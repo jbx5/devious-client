@@ -28,18 +28,6 @@ package net.runelite.mixins;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.primitives.Doubles;
-import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.EnumSet;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import net.runelite.api.Actor;
 import net.runelite.api.Animation;
 import net.runelite.api.ChatMessageType;
@@ -57,15 +45,6 @@ import net.runelite.api.IntegerNode;
 import net.runelite.api.InventoryID;
 import net.runelite.api.ItemComposition;
 import net.runelite.api.MenuAction;
-import static net.runelite.api.MenuAction.PLAYER_EIGTH_OPTION;
-import static net.runelite.api.MenuAction.PLAYER_FIFTH_OPTION;
-import static net.runelite.api.MenuAction.PLAYER_FIRST_OPTION;
-import static net.runelite.api.MenuAction.PLAYER_FOURTH_OPTION;
-import static net.runelite.api.MenuAction.PLAYER_SECOND_OPTION;
-import static net.runelite.api.MenuAction.PLAYER_SEVENTH_OPTION;
-import static net.runelite.api.MenuAction.PLAYER_SIXTH_OPTION;
-import static net.runelite.api.MenuAction.PLAYER_THIRD_OPTION;
-import static net.runelite.api.MenuAction.UNKNOWN;
 import net.runelite.api.MenuEntry;
 import net.runelite.api.MessageNode;
 import net.runelite.api.Model;
@@ -76,7 +55,6 @@ import net.runelite.api.NameableContainer;
 import net.runelite.api.NodeCache;
 import net.runelite.api.ObjectComposition;
 import net.runelite.api.Perspective;
-import static net.runelite.api.Perspective.LOCAL_TILE_SIZE;
 import net.runelite.api.Player;
 import net.runelite.api.Point;
 import net.runelite.api.Prayer;
@@ -138,9 +116,6 @@ import net.runelite.api.widgets.WidgetConfig;
 import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.api.widgets.WidgetItem;
 import net.runelite.api.widgets.WidgetType;
-import static net.runelite.mixins.CameraMixin.NEW_PITCH_MAX;
-import static net.runelite.mixins.CameraMixin.STANDARD_PITCH_MAX;
-import static net.runelite.mixins.CameraMixin.STANDARD_PITCH_MIN;
 import net.runelite.rs.api.RSAbstractArchive;
 import net.runelite.rs.api.RSArchive;
 import net.runelite.rs.api.RSBuffer;
@@ -181,6 +156,33 @@ import net.runelite.rs.api.RSWorld;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.EnumSet;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import static net.runelite.api.MenuAction.PLAYER_EIGTH_OPTION;
+import static net.runelite.api.MenuAction.PLAYER_FIFTH_OPTION;
+import static net.runelite.api.MenuAction.PLAYER_FIRST_OPTION;
+import static net.runelite.api.MenuAction.PLAYER_FOURTH_OPTION;
+import static net.runelite.api.MenuAction.PLAYER_SECOND_OPTION;
+import static net.runelite.api.MenuAction.PLAYER_SEVENTH_OPTION;
+import static net.runelite.api.MenuAction.PLAYER_SIXTH_OPTION;
+import static net.runelite.api.MenuAction.PLAYER_THIRD_OPTION;
+import static net.runelite.api.MenuAction.UNKNOWN;
+import static net.runelite.api.Perspective.LOCAL_TILE_SIZE;
+import static net.runelite.mixins.CameraMixin.NEW_PITCH_MAX;
+import static net.runelite.mixins.CameraMixin.STANDARD_PITCH_MAX;
+import static net.runelite.mixins.CameraMixin.STANDARD_PITCH_MIN;
 
 @Mixin(RSClient.class)
 public abstract class RSClientMixin implements RSClient
@@ -1556,14 +1558,14 @@ public abstract class RSClientMixin implements RSClient
 	@Inject
 	public static void canvasWidthChanged(int idx)
 	{
-		client.getCallbacks().post(CanvasSizeChanged.INSTANCE);
+		client.getCallbacks().post(new CanvasSizeChanged());
 	}
 
 	@FieldHook("canvasHeight")
 	@Inject
 	public static void canvasHeightChanged(int idx)
 	{
-		client.getCallbacks().post(CanvasSizeChanged.INSTANCE);
+		client.getCallbacks().post(new CanvasSizeChanged());
 	}
 
 	@FieldHook("hintArrowPlayerIndex")
@@ -1844,7 +1846,7 @@ public abstract class RSClientMixin implements RSClient
 	@Inject
 	public static void onUsernameChanged(int idx)
 	{
-		client.getCallbacks().post(UsernameChanged.INSTANCE);
+		client.getCallbacks().post(new UsernameChanged());
 	}
 
 	@Override
@@ -2193,7 +2195,7 @@ public abstract class RSClientMixin implements RSClient
 	@FieldHook("cycleCntr")
 	public static void onCycleCntrChanged(int idx)
 	{
-		client.getCallbacks().post(ClientTick.INSTANCE);
+		client.getCallbacks().post(new ClientTick());
 	}
 
 	@Copy("shouldLeftClickOpenMenu")

@@ -30,10 +30,4 @@ package net.runelite.api.events;
  */
 public class WidgetPositioned
 {
-	public static final WidgetPositioned INSTANCE = new WidgetPositioned();
-
-	private WidgetPositioned()
-	{
-		// noop
-	}
 }

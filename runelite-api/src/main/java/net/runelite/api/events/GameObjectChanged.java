@@ -22,9 +22,11 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.api;
+package net.runelite.api.events;
 
 import lombok.Data;
+import net.runelite.api.GameObject;
+import net.runelite.api.Tile;
 
 /**
  * An event where a {@link GameObject} on a {@link Tile} has been replaced.

@@ -22,27 +22,29 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.api;
+package net.runelite.api.events;
 
 import lombok.Data;
+import net.runelite.api.GroundObject;
+import net.runelite.api.Tile;
 
 /**
- * An event where the {@link WallObject} of a {@link Tile} has been changed.
+ * An event where the {@link GroundObject} on a {@link Tile} has been changed.
  */
 @Data
 @Deprecated(forRemoval = true)
-public class WallObjectChanged
+public class GroundObjectChanged
 {
 	/**
 	 * The affected tile.
 	 */
 	private Tile tile;
 	/**
-	 * The wall object that has been replaced.
+	 * The ground object that has been replaced.
 	 */
-	private WallObject previous;
+	private GroundObject previous;
 	/**
-	 * The new wall object on the tile.
+	 * The new ground object on the tile.
 	 */
-	private WallObject wallObject;
+	private GroundObject groundObject;
 }
