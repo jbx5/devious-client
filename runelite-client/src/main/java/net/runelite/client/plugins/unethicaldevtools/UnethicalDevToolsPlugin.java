@@ -19,7 +19,6 @@ import net.runelite.client.ui.overlay.OverlayManager;
 import net.unethicalite.api.events.MenuAutomated;
 import net.unethicalite.api.events.PacketSent;
 import net.unethicalite.api.events.ServerPacketProcessed;
-import net.unethicalite.api.events.ServerPacketReceived;
 import net.unethicalite.client.Static;
 
 import javax.inject.Inject;
@@ -165,11 +164,6 @@ public class UnethicalDevToolsPlugin extends Plugin
 			return;
 		}
 
-		if (config.consumePacket())
-		{
-			e.setConsumed(true);
-		}
-
 		String packetName = Static.getClientPacket().getClientPackets().get(packet);
 		String id = packetName != null ? packetName : String.valueOf(opcode);
 
@@ -177,21 +171,6 @@ public class UnethicalDevToolsPlugin extends Plugin
 		if (config.hexDump())
 		{
 			log.info(e.hexDump());
-		}
-	}
-
-	@Subscribe
-	public void onServerPacketReceived(ServerPacketReceived e)
-	{
-		if (e.getServerPacket() != null && config.consumePacket())
-		{
-			List<Integer> opcodes = Arrays.stream(config.opcodes().split(","))
-					.map(Integer::parseInt)
-					.collect(Collectors.toList());
-			if (opcodes.contains(e.getServerPacket().getId()))
-			{
-				e.setConsumed(true);
-			}
 		}
 	}
 

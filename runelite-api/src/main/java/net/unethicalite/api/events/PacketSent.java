@@ -10,7 +10,6 @@ import java.util.Arrays;
 public class PacketSent
 {
 	private final PacketBufferNode packetBufferNode;
-	private boolean consumed;
 
 	public String hexDump()
 	{

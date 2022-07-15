@@ -9,5 +9,4 @@ import net.runelite.api.packets.ServerPacket;
 public class ServerPacketReceived
 {
 	private ServerPacket serverPacket;
-	private boolean consumed;
 }
