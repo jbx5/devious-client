@@ -196,7 +196,7 @@ public class Walker
 			Tile tileB = Tiles.getAt(b);
 
 			if (a.distanceTo(b) > 1
-					|| (tileA != null && tileB != null && Reachable.isWalled(tileA, tileB)))
+					|| (tileA != null && tileB != null && !Reachable.isWalkable(b)))
 			{
 				Transport transport = transports.getOrDefault(a, List.of()).stream()
 						.filter(x -> x.getSource().equals(a))
