@@ -3,12 +3,22 @@ package net.unethicalite.api.movement.pathfinder;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import lombok.extern.slf4j.Slf4j;
-import net.runelite.api.*;
+import net.runelite.api.Item;
+import net.runelite.api.ItemID;
+import net.runelite.api.MenuAction;
+import net.runelite.api.NPC;
+import net.runelite.api.NpcID;
+import net.runelite.api.Point;
+import net.runelite.api.Quest;
+import net.runelite.api.QuestState;
+import net.runelite.api.Skill;
+import net.runelite.api.TileObject;
 import net.runelite.api.coords.Direction;
 import net.runelite.api.coords.WorldArea;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
+import net.unethicalite.api.commons.HttpUtil;
 import net.unethicalite.api.entities.NPCs;
 import net.unethicalite.api.entities.Players;
 import net.unethicalite.api.entities.TileObjects;
@@ -28,9 +38,8 @@ import net.unethicalite.api.quests.Quests;
 import net.unethicalite.api.widgets.Dialog;
 import net.unethicalite.api.widgets.Widgets;
 import net.unethicalite.client.Static;
+import net.unethicalite.client.config.UnethicaliteProperties;
 
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -66,50 +75,20 @@ public class TransportLoader
 	private static final WorldArea MLM = new WorldArea(3714, 5633, 60, 62, 0);
 	private static List<Transport> LAST_TRANSPORT_LIST = Collections.emptyList();
 
-	private static final File TRANSPORTS_FILE_CACHE;
-
-	static
-	{
-		try
-		{
-			TRANSPORTS_FILE_CACHE = File.createTempFile("unethicalite", "transports");
-		}
-		catch (IOException e)
-		{
-			throw new RuntimeException(e);
-		}
-	}
 
 	public static void init()
 	{
-		try (var fileWriter = new FileWriter(TRANSPORTS_FILE_CACHE))
-		{
-			TransportDto[] json = loadAllStaticTransports();
-			if (json == null)
-			{
-				log.debug("Transport json was null, not caching to file.");
-				return;
-			}
-
-			GSON.toJson(json, fileWriter);
-			log.debug("Cached transports to {}", TRANSPORTS_FILE_CACHE.toPath());
-		}
-		catch (IOException e)
-		{
-			log.error("Failed to write transports to cache file.", e);
-		}
+		loadAllStaticTransports();
 	}
 
 	private static TransportDto[] loadAllStaticTransports()
 	{
 		log.info("Loading transports");
-		TransportDto[] json = null;
-		// TODO: Uncomment this when the trapdoor transport is removed from static transports.
-//		TransportDto[] json = HttpUtil.readJson(UnethicaliteProperties.getApiUrl() + "/transports",
-//				TransportDto[].class);
-//		if (json == null)
-//		{
-//			log.warn("Could not retrieve transport data from backend, falling back to cached.");
+		TransportDto[] json = HttpUtil.readJson(UnethicaliteProperties.getApiUrl() + "/transports",
+				TransportDto[].class);
+		if (json == null)
+		{
+			log.warn("Could not retrieve transport data from backend, falling back to cached.");
 
 			try (InputStream stream = Walker.class.getResourceAsStream("/transports.json"))
 			{
@@ -125,7 +104,7 @@ public class TransportLoader
 			{
 				log.error("Failed to load cached transports.", e);
 			}
-//		}
+		}
 
 		if (json == null)
 		{
@@ -177,7 +156,8 @@ public class TransportLoader
 	{
 		List<Transport> transports = new ArrayList<>(loadStaticTransports());
 
-		return GameThread.invokeLater(() -> {
+		return GameThread.invokeLater(() ->
+		{
 			boolean princeAliCompleted = Quests.getState(Quest.PRINCE_ALI_RESCUE) == QuestState.FINISHED;
 			int gold = Inventory.getFirst(995) != null ? Inventory.getFirst(995).getQuantity() : 0;
 			if (gold >= 10 || princeAliCompleted)
