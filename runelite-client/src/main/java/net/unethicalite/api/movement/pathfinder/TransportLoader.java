@@ -454,24 +454,6 @@ public class TransportLoader
 		});
 	}
 
-	public static Transport parseTransportLine(String line)
-	{
-		String[] split = line.split(" ");
-		return objectTransport(
-				new WorldPoint(
-						Integer.parseInt(split[0]),
-						Integer.parseInt(split[1]),
-						Integer.parseInt(split[2])
-				),
-				new WorldPoint(
-						Integer.parseInt(split[3]),
-						Integer.parseInt(split[4]),
-						Integer.parseInt(split[5])
-				),
-				Integer.parseInt(split[split.length - 1]), split[6]
-		);
-	}
-
 	public static Transport trapDoorTransport(
 			WorldPoint source,
 			WorldPoint destination,
@@ -682,10 +664,12 @@ public class TransportLoader
 			TileObject first = TileObjects.getFirstAt(source, objId);
 			if (first != null)
 			{
+				log.debug("Transport found {}", first.getWorldLocation());
 				first.interact(actions);
 				return;
 			}
 
+			log.debug("Transport not found {}, {}", source, objId);
 			TileObjects.getSurrounding(source, 5, x -> x.getId() == objId).stream()
 					.min(Comparator.comparingInt(o -> o.distanceTo(source)))
 					.ifPresent(obj -> obj.interact(actions));
