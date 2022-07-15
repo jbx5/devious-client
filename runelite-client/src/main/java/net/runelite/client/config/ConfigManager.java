@@ -30,6 +30,27 @@ import com.google.common.collect.ComparisonChain;
 import com.google.common.hash.Hasher;
 import com.google.common.hash.Hashing;
 import com.google.gson.Gson;
+import lombok.NonNull;
+import lombok.extern.slf4j.Slf4j;
+import net.runelite.api.Client;
+import net.runelite.api.Player;
+import net.runelite.api.coords.WorldPoint;
+import net.runelite.api.events.AccountHashChanged;
+import net.runelite.api.events.PlayerChanged;
+import net.runelite.api.events.UsernameChanged;
+import net.runelite.api.events.WorldChanged;
+import net.runelite.client.eventbus.EventBus;
+import net.runelite.client.eventbus.Subscribe;
+import net.runelite.client.events.ConfigChanged;
+import net.runelite.client.events.RuneScapeProfileChanged;
+import net.runelite.client.plugins.OPRSExternalPluginManager;
+import net.runelite.client.plugins.Plugin;
+import net.runelite.client.util.ColorUtil;
+
+import javax.annotation.Nullable;
+import javax.inject.Inject;
+import javax.inject.Named;
+import javax.inject.Singleton;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
@@ -62,7 +83,6 @@ import java.util.Arrays;
 import java.util.Base64;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Date;
 import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -73,38 +93,8 @@ import java.util.Objects;
 import java.util.Properties;
 import java.util.Set;
 import java.util.Stack;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Future;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-import javax.inject.Inject;
-import javax.inject.Named;
-import javax.inject.Singleton;
-import lombok.NonNull;
-import lombok.extern.slf4j.Slf4j;
-import net.runelite.api.Client;
-import net.runelite.api.Player;
-import net.runelite.api.coords.WorldPoint;
-import net.runelite.api.events.AccountHashChanged;
-import net.runelite.api.events.PlayerChanged;
-import net.runelite.api.events.UsernameChanged;
-import net.runelite.api.events.WorldChanged;
-import net.runelite.client.RuneLite;
-import net.runelite.client.account.AccountSession;
-import net.runelite.client.eventbus.EventBus;
-import net.runelite.client.eventbus.Subscribe;
-import net.runelite.client.events.ClientShutdown;
-import net.runelite.client.events.ConfigChanged;
-import net.runelite.client.events.RuneScapeProfileChanged;
-import net.runelite.client.plugins.OPRSExternalPluginManager;
-import net.runelite.client.plugins.Plugin;
-import net.runelite.client.util.ColorUtil;
-import net.runelite.http.api.config.ConfigEntry;
-import net.runelite.http.api.config.Configuration;
-import okhttp3.OkHttpClient;
 
 @Singleton
 @Slf4j
@@ -126,11 +116,8 @@ public class ConfigManager
 
 	private final File settingsFileInput;
 	private final EventBus eventBus;
-	private final OkHttpClient okHttpClient;
 	private final Gson gson;
 
-	private AccountSession session;
-	private ConfigClient configClient;
 	private File propertiesFile;
 
 	@Nullable
@@ -149,42 +136,20 @@ public class ConfigManager
 	@Inject
 	public ConfigManager(
 			@Named("config") File config,
-			ScheduledExecutorService scheduledExecutorService,
 			EventBus eventBus,
-			OkHttpClient okHttpClient,
 			@Nullable Client client,
 			Gson gson)
 	{
 		this.settingsFileInput = config;
 		this.eventBus = eventBus;
-		this.okHttpClient = okHttpClient;
 		this.client = client;
 		this.propertiesFile = getPropertiesFile();
 		this.gson = gson;
-
-		scheduledExecutorService.scheduleWithFixedDelay(this::sendConfig, 30, 5 * 60, TimeUnit.SECONDS);
 	}
 
 	public String getRSProfileKey()
 	{
 		return rsProfileKey;
-	}
-
-	public final void switchSession(AccountSession session)
-	{
-		if (session == null)
-		{
-			this.session = null;
-			this.configClient = null;
-		}
-		else
-		{
-			this.session = session;
-		}
-
-		this.propertiesFile = getPropertiesFile();
-
-		load(); // load profile specific config
 	}
 
 	private File getLocalPropertiesFile()
@@ -194,16 +159,7 @@ public class ConfigManager
 
 	private File getPropertiesFile()
 	{
-		// Sessions that aren't logged in have no username
-		if (session == null || session.getUsername() == null)
-		{
-			return getLocalPropertiesFile();
-		}
-		else
-		{
-			File profileDir = new File(RuneLite.PROFILES_DIR, session.getUsername().toLowerCase());
-			return new File(profileDir, RuneLite.DEFAULT_CONFIG_FILE.getName());
-		}
+		return getLocalPropertiesFile();
 	}
 
 	public void load()
@@ -283,31 +239,6 @@ public class ConfigManager
 		swapProperties(properties, true);
 	}
 
-	public Future<Void> importLocal()
-	{
-		if (session == null)
-		{
-			// No session, no import
-			return null;
-		}
-
-		final File file = new File(propertiesFile.getParent(), propertiesFile.getName() + "." + TIME_FORMAT.format(new Date()));
-
-		try
-		{
-			saveToFile(file);
-		}
-		catch (IOException e)
-		{
-			log.warn("Backup failed, skipping import", e);
-			return null;
-		}
-
-		syncPropertiesFromFile(getLocalPropertiesFile());
-
-		return sendConfig();
-	}
-
 	private synchronized void loadFromFile()
 	{
 		consumers.clear();
@@ -339,8 +270,8 @@ public class ConfigManager
 		File tempFile = File.createTempFile("runelite", null, parent);
 
 		try (FileOutputStream out = new FileOutputStream(tempFile);
-			FileChannel channel = out.getChannel();
-			OutputStreamWriter writer = new OutputStreamWriter(out, StandardCharsets.UTF_8))
+			 FileChannel channel = out.getChannel();
+			 OutputStreamWriter writer = new OutputStreamWriter(out, StandardCharsets.UTF_8))
 		{
 			channel.lock();
 			properties.store(writer, "RuneLite configuration");
@@ -377,9 +308,9 @@ public class ConfigManager
 	public List<String> getConfigurationKeys(String prefix)
 	{
 		return properties.keySet().stream()
-			.map(String.class::cast)
-			.filter(k -> k.startsWith(prefix))
-			.collect(Collectors.toList());
+				.map(String.class::cast)
+				.filter(k -> k.startsWith(prefix))
+				.collect(Collectors.toList());
 	}
 
 	public List<String> getRSProfileConfigurationKeys(String group, String profile, String keyPrefix)
@@ -393,10 +324,10 @@ public class ConfigManager
 
 		String prefix = group + "." + profile + "." + keyPrefix;
 		return properties.keySet().stream()
-			.map(String.class::cast)
-			.filter(k -> k.startsWith(prefix))
-			.map(k -> splitKey(k)[KEY_SPLITTER_KEY])
-			.collect(Collectors.toList());
+				.map(String.class::cast)
+				.filter(k -> k.startsWith(prefix))
+				.map(k -> splitKey(k)[KEY_SPLITTER_KEY])
+				.collect(Collectors.toList());
 	}
 
 	public static String getWholeKey(String groupName, String profile, String key)
@@ -782,7 +713,7 @@ public class ConfigManager
 		}
 	}
 
-	public Object stringToObject(String str, Type type)
+	Object stringToObject(String str, Type type)
 	{
 		if (type == boolean.class || type == Boolean.class)
 		{
@@ -909,7 +840,7 @@ public class ConfigManager
 	}
 
 	@Nullable
-	public String objectToString(Object object)
+	String objectToString(Object object)
 	{
 		if (object instanceof Color)
 		{
@@ -1010,19 +941,6 @@ public class ConfigManager
 		return methods;
 	}
 
-	@Subscribe(
-		// run after plugins, in the event they save config on shutdown
-		priority = -100
-	)
-	private void onClientShutdown(ClientShutdown e)
-	{
-		Future<Void> f = sendConfig();
-		if (f != null)
-		{
-			e.waitFor(f);
-		}
-	}
-
 	public static <T extends Enum<T>> Class<T> getElementType(EnumSet<T> enumSet)
 	{
 		if (enumSet.isEmpty())
@@ -1074,41 +992,6 @@ public class ConfigManager
 			transformedString = new StringBuilder();
 		}
 		throw new RuntimeException("Failed to find Enum for " + clasz.substring(0, clasz.indexOf("{")));
-	}
-
-	@Nullable
-	private CompletableFuture<Void> sendConfig()
-	{
-		CompletableFuture<Void> future = null;
-		synchronized (pendingChanges)
-		{
-			if (pendingChanges.isEmpty())
-			{
-				return null;
-			}
-
-			if (configClient != null)
-			{
-				Configuration patch = new Configuration(pendingChanges.entrySet().stream()
-						.map(e -> new ConfigEntry(e.getKey(), e.getValue()))
-						.collect(Collectors.toList()));
-
-				future = configClient.patch(patch);
-			}
-
-			pendingChanges.clear();
-		}
-
-		try
-		{
-			saveToFile(propertiesFile);
-		}
-		catch (IOException ex)
-		{
-			log.warn("unable to save configuration file", ex);
-		}
-
-		return future;
 	}
 
 	public List<RuneScapeProfile> getRSProfiles()
@@ -1168,7 +1051,7 @@ public class ConfigManager
 			{
 				salt = new byte[15];
 				new SecureRandom()
-					.nextBytes(salt);
+						.nextBytes(salt);
 				log.info("creating new salt as there is no existing one {}", Base64.getUrlEncoder().encodeToString(salt));
 				setConfiguration(RSPROFILE_GROUP, RSPROFILE_LOGIN_SALT, salt);
 			}
@@ -1187,15 +1070,15 @@ public class ConfigManager
 		if (accountHash != RuneScapeProfile.ACCOUNT_HASH_INVALID)
 		{
 			matches = profiles.stream()
-				.filter(p -> p.getType() == type && accountHash == p.getAccountHash())
-				.collect(Collectors.toSet());
+					.filter(p -> p.getType() == type && accountHash == p.getAccountHash())
+					.collect(Collectors.toSet());
 		}
 
 		if (matches.isEmpty() && loginHash != null)
 		{
 			matches = profiles.stream()
-				.filter(p -> p.getType() == type && Arrays.equals(loginHash, p.getLoginHash()))
-				.collect(Collectors.toSet());
+					.filter(p -> p.getType() == type && Arrays.equals(loginHash, p.getLoginHash()))
+					.collect(Collectors.toSet());
 		}
 
 		if (matches.size() > 1)
@@ -1230,16 +1113,16 @@ public class ConfigManager
 		// generate the new key deterministically so if you "create" the same profile on 2 different clients it doesn't duplicate
 		Set<String> keys = profiles.stream().map(RuneScapeProfile::getKey).collect(Collectors.toSet());
 		byte[] key = accountHash == RuneScapeProfile.ACCOUNT_HASH_INVALID
-			? Arrays.copyOf(loginHash, 6)
-			: new byte[]
-			{
-				(byte) accountHash,
-				(byte) (accountHash >> 8),
-				(byte) (accountHash >> 16),
-				(byte) (accountHash >> 24),
-				(byte) (accountHash >> 32),
-				(byte) (accountHash >> 40),
-			};
+				? Arrays.copyOf(loginHash, 6)
+				: new byte[]
+				{
+						(byte) accountHash,
+						(byte) (accountHash >> 8),
+						(byte) (accountHash >> 16),
+						(byte) (accountHash >> 24),
+						(byte) (accountHash >> 32),
+						(byte) (accountHash >> 40),
+				};
 		key[0] += type.ordinal();
 		for (int i = 0; i < 0xFF; i++, key[1]++)
 		{
@@ -1247,8 +1130,8 @@ public class ConfigManager
 			if (!keys.contains(keyStr))
 			{
 				log.info("creating new profile {} for username {} account hash {} ({}) salt {}",
-					keyStr, username, accountHash, type,
-					salt == null ? "null" : Base64.getUrlEncoder().encodeToString(salt));
+						keyStr, username, accountHash, type,
+						salt == null ? "null" : Base64.getUrlEncoder().encodeToString(salt));
 
 				if (loginHash != null)
 				{

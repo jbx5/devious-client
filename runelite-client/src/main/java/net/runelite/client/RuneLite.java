@@ -33,7 +33,6 @@ import com.google.inject.Injector;
 import com.openosrs.client.OpenOSRS;
 import com.openosrs.client.game.PlayerManager;
 import com.openosrs.client.ui.OpenOSRSSplashScreen;
-import com.thatgamerblue.snake.SnakeGame;
 import joptsimple.ArgumentAcceptingOptionSpec;
 import joptsimple.OptionParser;
 import joptsimple.OptionSet;
@@ -44,7 +43,6 @@ import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.api.Constants;
-import net.runelite.client.account.SessionManager;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.discord.DiscordService;
 import net.runelite.client.eventbus.EventBus;
@@ -138,9 +136,6 @@ public class RuneLite
 	private ConfigManager configManager;
 
 	@Inject
-	private SessionManager sessionManager;
-
-	@Inject
 	private DiscordService discordService;
 
 	@Inject
@@ -182,11 +177,6 @@ public class RuneLite
 	private static final String BYPASS_ARG = "--IWillNotComplainIfIGetSentToTheGulagByJamflex";
 
 	public static void main(String[] args) throws Exception
-	{
-		SnakeGame.main(args);
-	}
-
-	public static void oldMain(String[] args) throws Exception
 	{
 		args = Arrays.stream(args).filter(s -> !BYPASS_ARG.equals(s)).toArray(String[]::new);
 		Locale.setDefault(Locale.ENGLISH);
@@ -393,9 +383,6 @@ public class RuneLite
 		// Load user configuration
 		configManager.load();
 
-		// Load the session, including saved configuration
-		sessionManager.loadSession();
-
 		// Tell the plugin manager if client is outdated or not
 		pluginManager.setOutdated(isOutdated);
 
@@ -559,6 +546,22 @@ public class RuneLite
 			.addInterceptor(chain ->
 			{
 				Request request = chain.request();
+
+				if (request.url().host().endsWith("runescape.com"))
+				{
+					return chain.proceed(request);
+				}
+
+				if (request.url().host().endsWith("openosrs.dev"))
+				{
+					Request userAgentRequest = request
+							.newBuilder()
+							.header("User-Agent", "OpenOSRS/" + OpenOSRS.SYSTEM_VERSION)
+							.build();
+
+					return chain.proceed(userAgentRequest);
+				}
+
 				if (request.header("User-Agent") != null)
 				{
 					return chain.proceed(request);

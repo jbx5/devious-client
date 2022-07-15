@@ -29,29 +29,9 @@
 package net.runelite.client.plugins.grandexchange;
 
 import com.google.common.annotations.VisibleForTesting;
-import com.google.common.hash.Hasher;
-import com.google.common.hash.Hashing;
 import com.google.common.primitives.Shorts;
 import com.google.gson.Gson;
 import com.google.inject.Provides;
-import java.awt.Color;
-import java.awt.image.BufferedImage;
-import java.net.NetworkInterface;
-import java.net.SocketException;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.EnumSet;
-import java.util.Enumeration;
-import java.util.List;
-import java.util.Locale;
-import java.util.function.ToIntFunction;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import javax.inject.Inject;
-import javax.swing.SwingUtilities;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -79,14 +59,10 @@ import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetID;
 import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.client.Notifier;
-import net.runelite.client.account.AccountSession;
-import net.runelite.client.account.SessionManager;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.config.RuneLiteConfig;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.events.ConfigChanged;
-import net.runelite.client.events.SessionClose;
-import net.runelite.client.events.SessionOpen;
 import net.runelite.client.game.ItemManager;
 import net.runelite.client.input.KeyManager;
 import net.runelite.client.input.MouseManager;
@@ -97,26 +73,37 @@ import net.runelite.client.ui.NavigationButton;
 import net.runelite.client.util.ColorUtil;
 import net.runelite.client.util.ImageUtil;
 import net.runelite.client.util.LinkBrowser;
-import net.runelite.client.util.OSType;
 import net.runelite.client.util.QuantityFormatter;
 import net.runelite.client.util.Text;
-import net.runelite.http.api.ge.GrandExchangeTrade;
 import net.runelite.http.api.item.ItemStats;
-import net.runelite.http.api.worlds.WorldType;
 import org.apache.commons.lang3.time.DurationFormatUtils;
 import org.apache.commons.text.similarity.FuzzyScore;
 
+import javax.inject.Inject;
+import javax.swing.SwingUtilities;
+import java.awt.Color;
+import java.awt.image.BufferedImage;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Locale;
+import java.util.function.ToIntFunction;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 @PluginDescriptor(
-	name = "Grand Exchange",
-	description = "Provide additional and/or easier access to Grand Exchange information",
-	tags = {"external", "integration", "notifications", "panel", "prices", "trade"}
+		name = "Grand Exchange",
+		description = "Provide additional and/or easier access to Grand Exchange information",
+		tags = {"external", "integration", "notifications", "panel", "prices", "trade"}
 )
 @Slf4j
 public class GrandExchangePlugin extends Plugin
 {
 	@VisibleForTesting
 	static final int GE_SLOTS = 8;
-	private static final int GE_LOGIN_BURST_WINDOW = 2; // ticks
 	private static final int GE_MAX_EXAMINE_LEN = 100;
 
 	private static final String BUY_LIMIT_GE_TEXT = "Buy limit: ";
@@ -167,9 +154,6 @@ public class GrandExchangePlugin extends Plugin
 	private Notifier notifier;
 
 	@Inject
-	private SessionManager sessionManager;
-
-	@Inject
 	private ConfigManager configManager;
 
 	@Inject
@@ -178,15 +162,12 @@ public class GrandExchangePlugin extends Plugin
 	@Inject
 	private RuneLiteConfig runeLiteConfig;
 
-	@Inject
-	private GrandExchangeClient grandExchangeClient;
 	private int lastLoginTick;
 
 	private boolean wasFuzzySearch;
 
 	private String machineUuid;
 	private long lastAccount;
-	private int tradeSeq;
 
 	/**
 	 * Logic from {@link org.apache.commons.text.similarity.FuzzyScore}
@@ -231,16 +212,6 @@ public class GrandExchangePlugin extends Plugin
 		return indices;
 	}
 
-	private SavedOffer getOffer(int slot)
-	{
-		String offer = configManager.getRSProfileConfiguration("geoffer", Integer.toString(slot));
-		if (offer == null)
-		{
-			return null;
-		}
-		return gson.fromJson(offer, SavedOffer.class);
-	}
-
 	private void setOffer(int slot, SavedOffer offer)
 	{
 		configManager.setRSProfileConfiguration("geoffer", Integer.toString(slot), gson.toJson(offer));
@@ -265,11 +236,11 @@ public class GrandExchangePlugin extends Plugin
 		final BufferedImage icon = ImageUtil.loadImageResource(getClass(), "ge_icon.png");
 
 		button = NavigationButton.builder()
-			.tooltip("Grand Exchange")
-			.icon(icon)
-			.priority(3)
-			.panel(panel)
-			.build();
+				.tooltip("Grand Exchange")
+				.icon(icon)
+				.priority(3)
+				.panel(panel)
+				.build();
 
 		clientToolbar.addNavigation(button);
 
@@ -277,16 +248,6 @@ public class GrandExchangePlugin extends Plugin
 		{
 			mouseManager.registerMouseListener(inputListener);
 			keyManager.registerKeyListener(inputListener);
-		}
-
-		AccountSession accountSession = sessionManager.getAccountSession();
-		if (accountSession != null)
-		{
-			grandExchangeClient.setUuid(accountSession.getUuid());
-		}
-		else
-		{
-			grandExchangeClient.setUuid(null);
 		}
 
 		lastLoginTick = -1;
@@ -300,20 +261,6 @@ public class GrandExchangePlugin extends Plugin
 		keyManager.unregisterKeyListener(inputListener);
 		machineUuid = null;
 		lastAccount = -1L;
-		tradeSeq = 0;
-	}
-
-	@Subscribe
-	public void onSessionOpen(SessionOpen sessionOpen)
-	{
-		AccountSession accountSession = sessionManager.getAccountSession();
-		grandExchangeClient.setUuid(accountSession.getUuid());
-	}
-
-	@Subscribe
-	public void onSessionClose(SessionClose sessionClose)
-	{
-		grandExchangeClient.setUuid(null);
 	}
 
 	@Subscribe
@@ -351,7 +298,7 @@ public class GrandExchangePlugin extends Plugin
 		}
 
 		log.debug("GE offer updated: state: {}, slot: {}, item: {}, qty: {}, lastLoginTick: {}",
-			offer.getState(), slot, offer.getItemId(), offer.getQuantitySold(), lastLoginTick);
+				offer.getState(), slot, offer.getItemId(), offer.getQuantitySold(), lastLoginTick);
 
 		ItemComposition offerItem = itemManager.getItemComposition(offer.getItemId());
 		boolean shouldStack = offerItem.isStackable() || offer.getTotalQuantity() > 1;
@@ -360,116 +307,7 @@ public class GrandExchangePlugin extends Plugin
 
 		updateLimitTimer(offer);
 
-		submitTrade(slot, offer);
-
 		updateConfig(slot, offer);
-	}
-
-	@VisibleForTesting
-	void submitTrade(int slot, GrandExchangeOffer offer)
-	{
-		GrandExchangeOfferState state = offer.getState();
-
-		if (state != GrandExchangeOfferState.CANCELLED_BUY && state != GrandExchangeOfferState.CANCELLED_SELL && state != GrandExchangeOfferState.BUYING && state != GrandExchangeOfferState.SELLING)
-		{
-			return;
-		}
-
-		SavedOffer savedOffer = getOffer(slot);
-		boolean login = client.getTickCount() <= lastLoginTick + GE_LOGIN_BURST_WINDOW;
-		if (savedOffer == null && (state == GrandExchangeOfferState.BUYING || state == GrandExchangeOfferState.SELLING) && offer.getQuantitySold() == 0)
-		{
-			// new offer
-			GrandExchangeTrade grandExchangeTrade = new GrandExchangeTrade();
-			grandExchangeTrade.setBuy(state == GrandExchangeOfferState.BUYING);
-			grandExchangeTrade.setItemId(offer.getItemId());
-			grandExchangeTrade.setTotal(offer.getTotalQuantity());
-			grandExchangeTrade.setOffer(offer.getPrice());
-			grandExchangeTrade.setSlot(slot);
-			grandExchangeTrade.setWorldType(getGeWorldType());
-			grandExchangeTrade.setLogin(login);
-			grandExchangeTrade.setSeq(tradeSeq++);
-			grandExchangeTrade.setResetTime(getLimitResetTime(offer.getItemId()));
-
-			log.debug("Submitting new trade: {}", grandExchangeTrade);
-			grandExchangeClient.submit(grandExchangeTrade);
-			return;
-		}
-
-		if (savedOffer == null || savedOffer.getItemId() != offer.getItemId() || savedOffer.getPrice() != offer.getPrice() || savedOffer.getTotalQuantity() != offer.getTotalQuantity())
-		{
-			// desync
-			return;
-		}
-
-		if (savedOffer.getState() == offer.getState() && savedOffer.getQuantitySold() == offer.getQuantitySold())
-		{
-			// no change
-			return;
-		}
-
-		if (state == GrandExchangeOfferState.CANCELLED_BUY || state == GrandExchangeOfferState.CANCELLED_SELL)
-		{
-			GrandExchangeTrade grandExchangeTrade = new GrandExchangeTrade();
-			grandExchangeTrade.setBuy(state == GrandExchangeOfferState.CANCELLED_BUY);
-			grandExchangeTrade.setCancel(true);
-			grandExchangeTrade.setItemId(offer.getItemId());
-			grandExchangeTrade.setQty(offer.getQuantitySold());
-			grandExchangeTrade.setTotal(offer.getTotalQuantity());
-			grandExchangeTrade.setSpent(offer.getSpent());
-			grandExchangeTrade.setOffer(offer.getPrice());
-			grandExchangeTrade.setSlot(slot);
-			grandExchangeTrade.setWorldType(getGeWorldType());
-			grandExchangeTrade.setLogin(login);
-			grandExchangeTrade.setSeq(tradeSeq++);
-			grandExchangeTrade.setResetTime(getLimitResetTime(offer.getItemId()));
-
-			log.debug("Submitting cancelled: {}", grandExchangeTrade);
-			grandExchangeClient.submit(grandExchangeTrade);
-			return;
-		}
-
-		final int qty = offer.getQuantitySold() - savedOffer.getQuantitySold();
-		final int dspent = offer.getSpent() - savedOffer.getSpent();
-		if (qty <= 0 || dspent <= 0)
-		{
-			return;
-		}
-
-		GrandExchangeTrade grandExchangeTrade = new GrandExchangeTrade();
-		grandExchangeTrade.setBuy(state == GrandExchangeOfferState.BUYING);
-		grandExchangeTrade.setItemId(offer.getItemId());
-		grandExchangeTrade.setQty(offer.getQuantitySold());
-		grandExchangeTrade.setDqty(qty);
-		grandExchangeTrade.setTotal(offer.getTotalQuantity());
-		grandExchangeTrade.setDspent(dspent);
-		grandExchangeTrade.setSpent(offer.getSpent());
-		grandExchangeTrade.setOffer(offer.getPrice());
-		grandExchangeTrade.setSlot(slot);
-		grandExchangeTrade.setWorldType(getGeWorldType());
-		grandExchangeTrade.setLogin(login);
-		grandExchangeTrade.setSeq(tradeSeq++);
-		grandExchangeTrade.setResetTime(getLimitResetTime(offer.getItemId()));
-
-		log.debug("Submitting trade: {}", grandExchangeTrade);
-		grandExchangeClient.submit(grandExchangeTrade);
-	}
-
-	private WorldType getGeWorldType()
-	{
-		EnumSet<net.runelite.api.WorldType> worldTypes = client.getWorldType();
-		if (worldTypes.contains(net.runelite.api.WorldType.SEASONAL))
-		{
-			return WorldType.SEASONAL;
-		}
-		else if (worldTypes.contains(net.runelite.api.WorldType.DEADMAN))
-		{
-			return WorldType.DEADMAN;
-		}
-		else
-		{
-			return null;
-		}
 	}
 
 	private void updateConfig(int slot, GrandExchangeOffer offer)
@@ -519,9 +357,6 @@ public class GrandExchangePlugin extends Plugin
 			case HOPPING:
 			case CONNECTION_LOST:
 				lastLoginTick = client.getTickCount();
-				break;
-			case LOGGED_IN:
-				grandExchangeClient.setMachineId(getMachineUuid());
 				break;
 		}
 	}
@@ -625,10 +460,10 @@ public class GrandExchangePlugin extends Plugin
 	}
 
 	@Subscribe(
-		// run after the bank tags plugin, and potentially anything
-		// else which wants to consume the event and override
-		// the search behavior
-		priority = -100
+			// run after the bank tags plugin, and potentially anything
+			// else which wants to consume the event and override
+			// the search behavior
+			priority = -100
 	)
 	public void onGrandExchangeSearched(GrandExchangeSearched event)
 	{
@@ -651,7 +486,7 @@ public class GrandExchangePlugin extends Plugin
 			List<Integer> ids = IntStream.range(0, client.getItemCount())
 					.mapToObj(itemManager::getItemComposition)
 					.filter(item -> item.isTradeable() && item.getNote() == -1
-						&& item.getName().toLowerCase().contains(input))
+							&& item.getName().toLowerCase().contains(input))
 					.limit(MAX_RESULT_COUNT + 1)
 					.sorted(Comparator.comparing(ItemComposition::getName))
 					.map(ItemComposition::getId)
@@ -688,7 +523,7 @@ public class GrandExchangePlugin extends Plugin
 					.filter(item -> item.isTradeable() && item.getNote() == -1)
 					.filter(item -> getScore.applyAsInt(item) > 0)
 					.sorted(Comparator.comparingInt(getScore).reversed()
-						.thenComparing(ItemComposition::getName))
+							.thenComparing(ItemComposition::getName))
 					.limit(MAX_RESULT_COUNT)
 					.map(ItemComposition::getId)
 					.collect(Collectors.toList());
@@ -771,18 +606,18 @@ public class GrandExchangePlugin extends Plugin
 	private void setLimitResetTime(int itemId)
 	{
 		Instant lastDateTime = configManager.getRSProfileConfiguration(GrandExchangeConfig.CONFIG_GROUP,
-			BUY_LIMIT_KEY + "." + itemId, Instant.class);
+				BUY_LIMIT_KEY + "." + itemId, Instant.class);
 		if (lastDateTime == null || lastDateTime.isBefore(Instant.now()))
 		{
 			configManager.setRSProfileConfiguration(GrandExchangeConfig.CONFIG_GROUP, BUY_LIMIT_KEY + "." + itemId,
-				Instant.now().plus(BUY_LIMIT_RESET));
+					Instant.now().plus(BUY_LIMIT_RESET));
 		}
 	}
 
 	private Instant getLimitResetTime(int itemId)
 	{
 		Instant lastDateTime = configManager.getRSProfileConfiguration(GrandExchangeConfig.CONFIG_GROUP,
-			BUY_LIMIT_KEY + "." + itemId, Instant.class);
+				BUY_LIMIT_KEY + "." + itemId, Instant.class);
 		if (lastDateTime == null)
 		{
 			return null;
@@ -800,8 +635,8 @@ public class GrandExchangePlugin extends Plugin
 	private void updateLimitTimer(GrandExchangeOffer offer)
 	{
 		if (offer.getState() == GrandExchangeOfferState.BOUGHT ||
-			(offer.getQuantitySold() > 0 &&
-				offer.getState() == GrandExchangeOfferState.BUYING))
+				(offer.getQuantitySold() > 0 &&
+						offer.getState() == GrandExchangeOfferState.BUYING))
 		{
 			setLimitResetTime(offer.getItemId());
 		}
@@ -884,56 +719,11 @@ public class GrandExchangePlugin extends Plugin
 	void openGeLink(String name, int itemId)
 	{
 		final String url = runeLiteConfig.useWikiItemPrices() ?
-			"https://prices.runescape.wiki/osrs/item/" + itemId :
-			"https://services.runescape.com/m=itemdb_oldschool/"
-				+ name.replaceAll(" ", "+")
-				+ "/viewitem?obj="
-				+ itemId;
+				"https://prices.runescape.wiki/osrs/item/" + itemId :
+				"https://services.runescape.com/m=itemdb_oldschool/"
+						+ name.replaceAll(" ", "+")
+						+ "/viewitem?obj="
+						+ itemId;
 		LinkBrowser.browse(url);
-	}
-
-	private String getMachineUuid()
-	{
-		long accountHash = client.getAccountHash();
-		if (lastAccount == accountHash)
-		{
-			return machineUuid;
-		}
-
-		lastAccount = accountHash;
-
-		try
-		{
-			Hasher hasher = Hashing.sha256().newHasher();
-			Runtime runtime = Runtime.getRuntime();
-
-			hasher.putByte((byte) OSType.getOSType().ordinal());
-			hasher.putByte((byte) runtime.availableProcessors());
-			hasher.putUnencodedChars(System.getProperty("os.arch", ""));
-			hasher.putUnencodedChars(System.getProperty("os.version", ""));
-			hasher.putUnencodedChars(System.getProperty("user.name", ""));
-
-			Enumeration<NetworkInterface> networkInterfaces = NetworkInterface.getNetworkInterfaces();
-			while (networkInterfaces.hasMoreElements())
-			{
-				NetworkInterface networkInterface = networkInterfaces.nextElement();
-				byte[] hardwareAddress = networkInterface.getHardwareAddress();
-				if (hardwareAddress != null)
-				{
-					hasher.putBytes(hardwareAddress);
-				}
-			}
-			hasher.putLong(accountHash);
-			machineUuid = hasher.hash().toString();
-			tradeSeq = 0;
-			return machineUuid;
-		}
-		catch (SocketException ex)
-		{
-			log.debug("unable to generate machine id", ex);
-			machineUuid = null;
-			tradeSeq = 0;
-			return null;
-		}
 	}
 }

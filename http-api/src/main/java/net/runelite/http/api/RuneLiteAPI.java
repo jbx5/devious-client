@@ -26,15 +26,9 @@ package net.runelite.http.api;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import java.awt.Color;
-import java.io.IOException;
-import java.io.InputStream;
-import java.time.Instant;
-import java.util.Properties;
-import java.util.concurrent.TimeUnit;
 import net.runelite.http.api.gson.ColorTypeAdapter;
-import net.runelite.http.api.gson.InstantTypeAdapter;
 import net.runelite.http.api.gson.IllegalReflectionExclusion;
+import net.runelite.http.api.gson.InstantTypeAdapter;
 import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
 import okhttp3.MediaType;
@@ -44,12 +38,16 @@ import okhttp3.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.awt.Color;
+import java.io.IOException;
+import java.io.InputStream;
+import java.time.Instant;
+import java.util.Properties;
+import java.util.concurrent.TimeUnit;
+
 public class RuneLiteAPI
 {
 	private static final Logger logger = LoggerFactory.getLogger(RuneLiteAPI.class);
-
-	public static final String RUNELITE_AUTH = "RUNELITE-AUTH";
-	public static final String RUNELITE_MACHINEID = "RUNELITE-MACHINEID";
 
 	public static OkHttpClient CLIENT;
 	public static final Gson GSON;
