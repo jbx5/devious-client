@@ -3,7 +3,6 @@ package net.unethicalite.client.managers.interaction;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.api.MenuAction;
-import net.runelite.api.Perspective;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.packets.ClientPacket;
 import net.runelite.api.widgets.Widget;
@@ -19,6 +18,7 @@ import net.unethicalite.api.events.PacketSent;
 import net.unethicalite.api.game.GameThread;
 import net.unethicalite.api.input.naturalmouse.NaturalMouse;
 import net.unethicalite.api.packets.Packets;
+import net.unethicalite.api.utils.CoordUtils;
 import net.unethicalite.api.widgets.Dialog;
 import net.unethicalite.api.widgets.Widgets;
 import net.unethicalite.client.Static;
@@ -77,8 +77,8 @@ public class InteractionManager
 
 					if (event.getOpcode() == MenuAction.WALK && clickOffScreen(clickPoint))
 					{
-						net.runelite.api.Point newPoint = Perspective.localToMinimap(client,
-								LocalPoint.fromScene(event.getParam0(), event.getParam1()));
+						net.runelite.api.Point newPoint = CoordUtils.localToMinimap(client,
+								LocalPoint.fromScene(event.getParam0(), event.getParam1()), 6400);
 						if (newPoint != null)
 						{
 							clickPoint = newPoint.getAwtPoint();
@@ -191,7 +191,6 @@ public class InteractionManager
 
 		if (!e.getPacketBufferNode().getPacketBuffer().isAutomated())
 		{
-			log.debug("Packet is not modified {}", e.getPacketBufferNode().getClientPacket().getId());
 			return;
 		}
 
