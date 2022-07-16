@@ -41,6 +41,7 @@ import net.runelite.api.events.UsernameChanged;
 import net.runelite.api.events.WorldChanged;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
+import net.runelite.client.events.ClientShutdown;
 import net.runelite.client.events.ConfigChanged;
 import net.runelite.client.events.RuneScapeProfileChanged;
 import net.runelite.client.plugins.OPRSExternalPluginManager;
@@ -93,6 +94,8 @@ import java.util.Objects;
 import java.util.Properties;
 import java.util.Set;
 import java.util.Stack;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Future;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
@@ -941,6 +944,19 @@ public class ConfigManager
 		return methods;
 	}
 
+	@Subscribe(
+			// run after plugins, in the event they save config on shutdown
+			priority = -100
+	)
+	private void onClientShutdown(ClientShutdown e)
+	{
+		Future<Void> f = saveConfig();
+		if (f != null)
+		{
+			e.waitFor(f);
+		}
+	}
+
 	public static <T extends Enum<T>> Class<T> getElementType(EnumSet<T> enumSet)
 	{
 		if (enumSet.isEmpty())
@@ -992,6 +1008,23 @@ public class ConfigManager
 			transformedString = new StringBuilder();
 		}
 		throw new RuntimeException("Failed to find Enum for " + clasz.substring(0, clasz.indexOf("{")));
+	}
+
+	@Nullable
+	private CompletableFuture<Void> saveConfig()
+	{
+		CompletableFuture<Void> future = null;
+
+		try
+		{
+			saveToFile(propertiesFile);
+		}
+		catch (IOException ex)
+		{
+			log.warn("unable to save configuration file", ex);
+		}
+
+		return future;
 	}
 
 	public List<RuneScapeProfile> getRSProfiles()
