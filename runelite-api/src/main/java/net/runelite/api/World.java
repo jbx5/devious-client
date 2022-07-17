@@ -135,4 +135,9 @@ public interface World
 	{
 		return !isAllPkWorld() && !isSkillTotal() && !isTournament() && !isLeague();
 	}
+
+	default boolean isPvpArena()
+	{
+		return getTypes().contains(WorldType.PVP_ARENA);
+	}
 }
