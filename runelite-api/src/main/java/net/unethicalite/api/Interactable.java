@@ -1,6 +1,5 @@
 package net.unethicalite.api;
 
-import net.runelite.api.Item;
 import net.runelite.api.MenuAction;
 import net.runelite.api.Point;
 import net.unethicalite.api.commons.Predicates;
