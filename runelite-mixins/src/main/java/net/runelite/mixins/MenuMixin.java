@@ -169,7 +169,7 @@ public abstract class MenuMixin implements RSClient
 	{
 		if (tempMenuAction != null)
 		{
-			client.getCallbacks().post(WidgetPressed.INSTANCE);
+			client.getCallbacks().post(new WidgetPressed());
 		}
 	}
 

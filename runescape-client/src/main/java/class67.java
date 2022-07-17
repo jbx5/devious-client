@@ -72,6 +72,6 @@ public class class67 {
 	@ObfuscatedName("g")
 	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "-1419146368")
 	public static void method1887() {
-		class437.DBRowType_cache.clear();
+		DbRowType.DBRowType_cache.clear();
 	}
 }

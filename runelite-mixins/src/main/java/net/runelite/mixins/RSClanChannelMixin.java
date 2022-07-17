@@ -24,7 +24,6 @@
  */
 package net.runelite.mixins;
 
-import java.util.List;
 import net.runelite.api.clan.ClanChannelMember;
 import net.runelite.api.events.ClanMemberJoined;
 import net.runelite.api.events.ClanMemberLeft;
@@ -35,6 +34,8 @@ import net.runelite.api.mixins.Shadow;
 import net.runelite.rs.api.RSClanChannel;
 import net.runelite.rs.api.RSClanChannelMember;
 import net.runelite.rs.api.RSClient;
+
+import java.util.List;
 
 @Mixin(RSClanChannel.class)
 public abstract class RSClanChannelMixin implements RSClanChannel

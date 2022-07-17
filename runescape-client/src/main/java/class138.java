@@ -40,7 +40,7 @@ public class class138 extends class128 {
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(descriptor = "(Llh;B)V", garbageValue = "4")
 	public static void method2948(AbstractArchive var0) {
-		class435.field4666 = var0;
+		DbTableType.field4666 = var0;
 	}
 
 	@ObfuscatedName("f")

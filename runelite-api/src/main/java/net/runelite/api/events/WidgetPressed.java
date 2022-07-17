@@ -33,10 +33,4 @@ import lombok.Data;
 @Data
 public class WidgetPressed
 {
-	public static final WidgetPressed INSTANCE = new WidgetPressed();
-
-	private WidgetPressed()
-	{
-		// noop
-	}
 }

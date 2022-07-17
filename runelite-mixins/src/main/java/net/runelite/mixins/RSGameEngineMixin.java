@@ -26,7 +26,6 @@ package net.runelite.mixins;
 
 import net.runelite.api.events.FocusChanged;
 import net.runelite.api.hooks.DrawCallbacks;
-import java.awt.event.FocusEvent;
 import net.runelite.api.mixins.Copy;
 import net.runelite.api.mixins.FieldHook;
 import net.runelite.api.mixins.Inject;
@@ -36,6 +35,8 @@ import net.runelite.api.mixins.Replace;
 import net.runelite.api.mixins.Shadow;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSGameEngine;
+
+import java.awt.event.FocusEvent;
 
 @Mixin(RSGameEngine.class)
 public abstract class RSGameEngineMixin implements RSGameEngine

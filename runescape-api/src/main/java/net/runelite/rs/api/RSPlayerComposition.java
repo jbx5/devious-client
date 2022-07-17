@@ -26,6 +26,6 @@ public interface RSPlayerComposition extends PlayerComposition
 	@Override
 	void setHash();
 
-	@Import("colorTextureOverrides")
-	RSColorTextureOverride[] getColorTextureOverrides();
+	@Import("playerCompositionColorTextureOverrides")
+	RSPlayerCompositionColorTextureOverride[] getColorTextureOverrides();
 }

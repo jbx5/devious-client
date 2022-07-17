@@ -34,18 +34,18 @@ public class UserComparator6 extends AbstractUserComparator {
 
 	@ObfuscatedName("v")
 	@ObfuscatedSignature(descriptor = "(IB)Lpo;", garbageValue = "20")
-	public static class435 method2626(int var0) {
-		class435 var1 = ((class435) (class435.DBTableType_cache.get(((long) (var0)))));
+	public static DbTableType getDbTableType(int var0) {
+		DbTableType var1 = ((DbTableType) (DbTableType.DBTableType_cache.get(((long) (var0)))));
 		if (var1 != null) {
 			return var1;
 		} else {
-			byte[] var2 = class435.field4666.takeFile(39, var0);
-			var1 = new class435();
+			byte[] var2 = DbTableType.field4666.takeFile(39, var0);
+			var1 = new DbTableType();
 			if (var2 != null) {
 				var1.method7592(new Buffer(var2));
 			}
 			var1.method7602();
-			class435.DBTableType_cache.put(var1, ((long) (var0)));
+			DbTableType.DBTableType_cache.put(var1, ((long) (var0)));
 			return var1;
 		}
 	}

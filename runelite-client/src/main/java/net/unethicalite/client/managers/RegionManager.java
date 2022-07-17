@@ -61,19 +61,15 @@ public class RegionManager
 	private ScheduledExecutorService executorService;
 
 	@Inject
-	private UnethicaliteConfig config;
-
-	private static UnethicaliteConfig staticConfig = null;
-
 	public void init()
 	{
-		staticConfig = config;
 		executorService.submit(TransportLoader::init);
+		Static.getEventBus().register(this);
 	}
 
 	public void sendRegion()
 	{
-		if (Game.getState() != GameState.LOGGED_IN || !config.regions())
+		if (Game.getState() != GameState.LOGGED_IN || !Static.getUnethicaliteConfig().regions())
 		{
 			return;
 		}
@@ -252,6 +248,7 @@ public class RegionManager
 
 	private static boolean INVENTORY_CHANGED = false;
 	private static boolean EQUIPMENT_CHANGED = false;
+	private static boolean SKILLS_CHANGED = false;
 	private static boolean CONFIG_CHANGED = false;
 
 	private static final Set<Integer> REFRESH_WIDGET_IDS = Set.of(
@@ -271,16 +268,17 @@ public class RegionManager
 			"hasJewelryBox"
 	);
 
-	@Subscribe
+	@Subscribe(priority = Integer.MAX_VALUE)
 	public void onWidgetLoaded(WidgetLoaded event)
 	{
 		if (REFRESH_WIDGET_IDS.contains(event.getGroupId()))
 		{
+			SKILLS_CHANGED = true;
 			TransportLoader.refreshStaticTransports();
 		}
 	}
 
-	@Subscribe
+	@Subscribe(priority = Integer.MAX_VALUE)
 	public void onItemContainerChanged(ItemContainerChanged event)
 	{
 		if (event.getContainerId() == InventoryID.INVENTORY.getId())
@@ -310,42 +308,43 @@ public class RegionManager
 
 	public static boolean avoidWilderness()
 	{
-		return staticConfig != null && staticConfig.avoidWilderness();
+		return Static.getUnethicaliteConfig().avoidWilderness();
 	}
 
 	public static boolean shouldRefreshPath()
 	{
-		boolean refreshPath = INVENTORY_CHANGED || EQUIPMENT_CHANGED || CONFIG_CHANGED;
+		boolean refreshPath = INVENTORY_CHANGED || EQUIPMENT_CHANGED || CONFIG_CHANGED || SKILLS_CHANGED;
 		EQUIPMENT_CHANGED = false;
 		INVENTORY_CHANGED = false;
+		SKILLS_CHANGED = false;
 		CONFIG_CHANGED = false;
 		return refreshPath;
 	}
 
 	public static boolean usePoh()
 	{
-		return staticConfig != null && staticConfig.usePoh();
+		return Static.getUnethicaliteConfig().usePoh();
 	}
 	public static boolean hasMountedGlory()
 	{
-		return staticConfig != null && staticConfig.hasMountedGlory();
+		return Static.getUnethicaliteConfig().hasMountedGlory();
 	}
 
 	public static boolean hasMountedDigsitePendant()
 	{
-		return staticConfig != null && staticConfig.hasMountedDigsitePendant();
+		return Static.getUnethicaliteConfig().hasMountedDigsitePendant();
 	}
 
 	public static boolean hasMountedMythicalCape()
 	{
-		return staticConfig != null && staticConfig.hasMountedMythicalCape();
+		return Static.getUnethicaliteConfig().hasMountedMythicalCape();
 	}
 	public static boolean hasMountedXericsTalisman()
 	{
-		return staticConfig != null && staticConfig.hasMountedXericsTalisman();
+		return Static.getUnethicaliteConfig().hasMountedXericsTalisman();
 	}
 	public static JewelryBox hasJewelryBox()
 	{
-		return staticConfig == null ? JewelryBox.NONE : staticConfig.hasJewelryBox();
+		return Static.getUnethicaliteConfig().hasJewelryBox();
 	}
 }

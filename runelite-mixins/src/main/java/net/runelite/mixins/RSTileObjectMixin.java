@@ -5,8 +5,6 @@ import net.runelite.api.Point;
 import net.runelite.api.TileObject;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
-import java.awt.Graphics2D;
-import java.awt.Polygon;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Mixins;
@@ -17,6 +15,9 @@ import net.runelite.rs.api.RSFloorDecoration;
 import net.runelite.rs.api.RSGameObject;
 import net.runelite.rs.api.RSItemLayer;
 import net.runelite.rs.api.RSWallDecoration;
+
+import java.awt.Graphics2D;
+import java.awt.Polygon;
 
 @Mixins({
 	@Mixin(RSWallDecoration.class),

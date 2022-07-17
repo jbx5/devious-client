@@ -89,7 +89,7 @@ public class Walker
 		// Refresh path if our direction changed
 		if (!local.isAnimating() && offPath)
 		{
-			path = buildPath(destination);
+			path = buildPath(destination, true);
 		}
 
 		return walkAlong(path, transports);
@@ -196,7 +196,7 @@ public class Walker
 			Tile tileB = Tiles.getAt(b);
 
 			if (a.distanceTo(b) > 1
-					|| (tileA != null && tileB != null && Reachable.isWalled(tileA, tileB)))
+					|| (tileA != null && tileB != null && !Reachable.isWalkable(b)))
 			{
 				Transport transport = transports.getOrDefault(a, List.of()).stream()
 						.filter(x -> x.getSource().equals(a))
@@ -316,7 +316,8 @@ public class Walker
 	private static List<WorldPoint> calculatePath(
 			List<WorldPoint> startPoints,
 			WorldPoint destination,
-			boolean avoidWilderness
+			boolean avoidWilderness,
+			boolean forced
 	)
 	{
 		if (pathFuture == null)
@@ -325,7 +326,7 @@ public class Walker
 			currentDestination = destination;
 		}
 
-		if (!destination.equals(currentDestination) || RegionManager.shouldRefreshPath())
+		if (!destination.equals(currentDestination) || RegionManager.shouldRefreshPath() || forced)
 		{
 			pathFuture.cancel(true);
 			pathFuture = executor.submit(new Pathfinder(Static.getGlobalCollisionMap(), buildTransportLinks(), startPoints, destination, avoidWilderness));
@@ -344,19 +345,24 @@ public class Walker
 		}
 	}
 
-	public static List<WorldPoint> buildPath(WorldPoint destination, boolean avoidWilderness)
+	public static List<WorldPoint> buildPath(WorldPoint destination, boolean avoidWilderness, boolean forced)
 	{
 		Player local = Players.getLocal();
 		LinkedHashMap<WorldPoint, Teleport> teleports = buildTeleportLinks(destination);
 		List<WorldPoint> startPoints = new ArrayList<>(teleports.keySet());
 		startPoints.add(local.getWorldLocation());
 
-		return calculatePath(startPoints, destination, avoidWilderness);
+		return calculatePath(startPoints, destination, avoidWilderness, forced);
 	}
 
 	public static List<WorldPoint> buildPath(WorldPoint destination)
 	{
-		return buildPath(destination, RegionManager.avoidWilderness());
+		return buildPath(destination, RegionManager.avoidWilderness(), false);
+	}
+
+	public static List<WorldPoint> buildPath(WorldPoint destination, boolean forced)
+	{
+		return buildPath(destination, RegionManager.avoidWilderness(), forced);
 	}
 
 	public static Map<WorldPoint, List<Transport>> buildTransportLinks()

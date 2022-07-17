@@ -344,18 +344,6 @@ public interface UnethicalDevToolsConfig extends Config
 		return false;
 	}
 
-	@ConfigItem(
-			keyName = "consumePacket",
-			name = "Consume packet",
-			description = "Blocks the packet from being sent/received",
-			position = 206,
-			section = packets
-	)
-	default boolean consumePacket()
-	{
-		return false;
-	}
-
 	@ConfigSection(
 			name = "Regions",
 			keyName = "regions",

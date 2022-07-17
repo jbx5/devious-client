@@ -27,6 +27,8 @@ package net.runelite.rs.api;
 import net.runelite.api.Renderable;
 import net.runelite.mapping.Import;
 
+import java.awt.Rectangle;
+
 public interface RSRenderable extends RSNode, Renderable
 {
 	@Import("height")
@@ -43,4 +45,8 @@ public interface RSRenderable extends RSNode, Renderable
 	@Import("draw")
 	@Override
 	void draw(int orientation, int pitchSin, int pitchCos, int yawSin, int yawCos, int x, int y, int z, long hash);
+
+	void updateBounds();
+
+	Rectangle getCachedBounds();
 }

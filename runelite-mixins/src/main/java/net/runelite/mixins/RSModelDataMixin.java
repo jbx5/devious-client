@@ -24,9 +24,6 @@
  */
 package net.runelite.mixins;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import net.runelite.api.Model;
 import net.runelite.api.ModelData;
 import net.runelite.api.mixins.Copy;
@@ -40,6 +37,10 @@ import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSModel;
 import net.runelite.rs.api.RSModelData;
 import net.runelite.rs.api.RSVertexNormal;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @Mixin(RSModelData.class)
 public abstract class RSModelDataMixin implements RSModelData

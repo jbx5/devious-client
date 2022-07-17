@@ -24,22 +24,22 @@
  */
 package net.runelite.rs.api;
 
-import java.math.BigInteger;
-import java.util.Map;
 import net.runelite.api.AmbientSoundEffect;
 import net.runelite.api.Client;
 import net.runelite.api.Deque;
 import net.runelite.api.ModelData;
 import net.runelite.api.SpritePixels;
 import net.runelite.api.World;
-
-import net.runelite.api.packets.ClientPacket;
-import net.runelite.api.packets.IsaacCipher;
 import net.runelite.api.clan.ClanRank;
 import net.runelite.api.clan.ClanSettings;
+import net.runelite.api.packets.ClientPacket;
+import net.runelite.api.packets.IsaacCipher;
 import net.runelite.api.widgets.Widget;
 import net.runelite.mapping.Construct;
 import net.runelite.mapping.Import;
+
+import java.math.BigInteger;
+import java.util.Map;
 
 public interface RSClient extends RSGameEngine, Client
 {
@@ -1640,6 +1640,18 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("WorldMapElement_cachedSprites")
 	RSEvictingDualNodeHashTable getSpritesCache();
 
+	@Import("DBRowType_cache")
+	RSEvictingDualNodeHashTable getDbRowTypeCache();
+
+	@Import("DBTableType_cache")
+	RSEvictingDualNodeHashTable getDbTableTypeCache();
+
+	@Import("DBTableIndex_cache")
+	RSEvictingDualNodeHashTable getDbTableIndexCache();
+
+	@Import("DBTableMasterIndex_cache")
+	RSEvictingDualNodeHashTable getDbTableMasterIndexCache();
+
 	@Construct
 	RSIterableNodeHashTable createIterableNodeHashTable(int size);
 
@@ -1654,6 +1666,12 @@ public interface RSClient extends RSGameEngine, Client
 
 	@Construct
 	RSEvictingDualNodeHashTable newEvictingDualNodeHashTable(int var1);
+
+	@Import("getDbTableType")
+	RSDbTableType getDbTableType(int var0);
+
+	@Import("getDbRowType")
+	RSDbRowType getDbRowType(int var0);
 	
 	/*
 	Unethical

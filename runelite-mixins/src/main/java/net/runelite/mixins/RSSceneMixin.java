@@ -24,12 +24,6 @@
  */
 package net.runelite.mixins;
 
-import java.util.HashSet;
-import java.util.Set;
-import static net.runelite.api.Constants.ROOF_FLAG_BETWEEN;
-import static net.runelite.api.Constants.ROOF_FLAG_DESTINATION;
-import static net.runelite.api.Constants.ROOF_FLAG_HOVERED;
-import static net.runelite.api.Constants.ROOF_FLAG_POSITION;
 import net.runelite.api.DecorativeObject;
 import net.runelite.api.GroundObject;
 import net.runelite.api.Perspective;
@@ -55,6 +49,14 @@ import net.runelite.rs.api.RSScene;
 import net.runelite.rs.api.RSSceneTileModel;
 import net.runelite.rs.api.RSTile;
 import net.runelite.rs.api.RSTileItem;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import static net.runelite.api.Constants.ROOF_FLAG_BETWEEN;
+import static net.runelite.api.Constants.ROOF_FLAG_DESTINATION;
+import static net.runelite.api.Constants.ROOF_FLAG_HOVERED;
+import static net.runelite.api.Constants.ROOF_FLAG_POSITION;
 
 @Mixin(RSScene.class)
 public abstract class RSSceneMixin implements RSScene

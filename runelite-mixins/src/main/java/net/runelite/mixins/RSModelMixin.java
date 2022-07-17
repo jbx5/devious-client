@@ -24,9 +24,6 @@
  */
 package net.runelite.mixins;
 
-import java.awt.Shape;
-import java.util.ArrayList;
-import java.util.List;
 import net.runelite.api.Model;
 import net.runelite.api.Perspective;
 import net.runelite.api.hooks.DrawCallbacks;
@@ -44,6 +41,10 @@ import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSFrames;
 import net.runelite.rs.api.RSModel;
 import net.runelite.rs.api.RSSkeleton;
+
+import java.awt.Shape;
+import java.util.ArrayList;
+import java.util.List;
 
 @Mixin(RSModel.class)
 public abstract class RSModelMixin implements RSModel

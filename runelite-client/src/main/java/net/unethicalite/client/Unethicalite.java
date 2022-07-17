@@ -16,9 +16,7 @@ public class Unethicalite
 		}
 		else
 		{
-			RuneLite.oldMain(args);
+			RuneLite.main(args);
 		}
-
-		Static.init();
 	}
 }

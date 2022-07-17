@@ -1,12 +1,13 @@
 package net.runelite.mixins;
 
-import java.awt.Dimension;
 import net.runelite.api.mixins.Copy;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Replace;
 import net.runelite.api.mixins.Shadow;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSGameEngine;
+
+import java.awt.Dimension;
 
 @Mixin(RSGameEngine.class)
 public abstract class StretchedModeMaxSizeMixin implements RSGameEngine

@@ -142,7 +142,7 @@ public class MilliClock extends Clock {
 	@ObfuscatedName("e")
 	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "-631328346")
 	public static void method3301() {
-		class435.DBTableType_cache.clear();
+		DbTableType.DBTableType_cache.clear();
 	}
 
 	@ObfuscatedName("av")

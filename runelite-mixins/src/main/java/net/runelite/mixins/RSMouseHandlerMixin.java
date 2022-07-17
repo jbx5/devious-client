@@ -1,6 +1,5 @@
 package net.runelite.mixins;
 
-import java.awt.event.MouseEvent;
 import net.runelite.api.mixins.Copy;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
@@ -8,6 +7,8 @@ import net.runelite.api.mixins.Replace;
 import net.runelite.api.mixins.Shadow;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSMouseHandler;
+
+import java.awt.event.MouseEvent;
 
 @Mixin(RSMouseHandler.class)
 public abstract class RSMouseHandlerMixin implements RSMouseHandler

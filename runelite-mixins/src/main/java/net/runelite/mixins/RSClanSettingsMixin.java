@@ -24,8 +24,6 @@
  */
 package net.runelite.mixins;
 
-import java.util.ArrayList;
-import java.util.List;
 import net.runelite.api.EnumComposition;
 import net.runelite.api.clan.ClanMember;
 import net.runelite.api.clan.ClanRank;
@@ -35,6 +33,9 @@ import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Shadow;
 import net.runelite.rs.api.RSClanSettings;
 import net.runelite.rs.api.RSClient;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Mixin(RSClanSettings.class)
 public abstract class RSClanSettingsMixin implements RSClanSettings

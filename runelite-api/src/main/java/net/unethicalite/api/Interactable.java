@@ -109,11 +109,6 @@ public interface Interactable
 			Point clickPoint = getClickPoint();
 			builder.clickX(clickPoint.getX())
 					.clickY(clickPoint.getY());
-
-			if (this instanceof Item)
-			{
-				return builder.build().setItemId(((Item) this).getId());
-			}
 		}
 
 		return builder.build();

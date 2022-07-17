@@ -30,12 +30,6 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 	@Replace("menuAction")
 	static void copy$menuAction(int param0, int param1, int opcode, int id, String option, String target, int canvasX, int canvasY)
 	{
-		int itemId = -1;
-		if (target.matches("ItemId=\\d+"))
-		{
-			itemId = Integer.parseInt(target.replace("ItemId=", ""));
-		}
-
 		RSRuneLiteMenuEntry menuEntry = null;
 
 		for (int i = client.getMenuOptionCount() - 1; i >= 0; --i)
@@ -123,7 +117,6 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 			client.setViewportWalking(true);
 
 			copy$menuAction(0, 0, CANCEL.getId(), 0, "Automated", "", canvasX, canvasY);
-
 			return;
 		}
 
@@ -157,9 +150,12 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 		}
 
 
-		if (itemId != -1 && (opcode == MenuAction.CC_OP.getId() || opcode == MenuAction.CC_OP_LOW_PRIORITY.getId()))
+		if ("Automated".equals(option)
+				&& (opcode == MenuAction.CC_OP.getId() || opcode == MenuAction.CC_OP_LOW_PRIORITY.getId())
+				&& menuEntry != null
+				&& menuEntry.getItemId() > -1)
 		{
-			client.invokeWidgetAction(event.getId(), event.getParam1(), event.getParam0(), itemId,
+			client.invokeWidgetAction(event.getId(), event.getParam1(), event.getParam0(), menuEntry.getItemId(),
 					event.getMenuTarget());
 		}
 		else

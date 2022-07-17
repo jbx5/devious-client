@@ -128,9 +128,11 @@ public class TeleportLoader
 				if (digsitePendant())
 				{
 					teleports.add(new Teleport(new WorldPoint(3341, 3445, 0), 2,
-											   () -> jewelryTeleport("Digsite", DIGSITE_PENDANT)));
+							() -> jewelryTeleport("Digsite", DIGSITE_PENDANT)));
+					teleports.add(new Teleport(new WorldPoint(3764, 3869, 1), 2,
+							() -> jewelryTeleport("Fossil Island", DIGSITE_PENDANT)));
 					teleports.add(new Teleport(new WorldPoint(3549, 10456, 0), 2,
-											   () -> jewelryTeleport("Lithkren", DIGSITE_PENDANT)));
+							() -> jewelryTeleport("Lithkren", DIGSITE_PENDANT)));
 				}
 
 				for (TeleportItem tele : TeleportItem.values())

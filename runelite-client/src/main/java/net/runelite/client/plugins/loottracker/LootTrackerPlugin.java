@@ -37,31 +37,6 @@ import com.google.common.collect.Multisets;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.google.inject.Provides;
-import java.awt.image.BufferedImage;
-import java.time.Duration;
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Future;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-import javax.inject.Inject;
-import javax.swing.SwingUtilities;
-import lombok.AccessLevel;
-import lombok.Getter;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.ChatMessageType;
@@ -78,7 +53,6 @@ import net.runelite.api.ObjectID;
 import net.runelite.api.Player;
 import net.runelite.api.Skill;
 import net.runelite.api.SpriteID;
-import net.runelite.api.WorldType;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.events.ChatMessage;
 import net.runelite.api.events.GameStateChanged;
@@ -86,8 +60,6 @@ import net.runelite.api.events.ItemContainerChanged;
 import net.runelite.api.events.MenuOptionClicked;
 import net.runelite.api.events.WidgetLoaded;
 import net.runelite.api.widgets.WidgetID;
-import net.runelite.client.account.AccountSession;
-import net.runelite.client.account.SessionManager;
 import net.runelite.client.callback.ClientThread;
 import net.runelite.client.chat.ChatColorType;
 import net.runelite.client.chat.ChatMessageBuilder;
@@ -96,35 +68,47 @@ import net.runelite.client.chat.QueuedMessage;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
-import net.runelite.client.events.ClientShutdown;
 import net.runelite.client.events.ConfigChanged;
 import net.runelite.client.events.NpcLootReceived;
 import net.runelite.client.events.PlayerLootReceived;
 import net.runelite.client.events.RuneScapeProfileChanged;
-import net.runelite.client.events.SessionClose;
-import net.runelite.client.events.SessionOpen;
 import net.runelite.client.game.ItemManager;
 import net.runelite.client.game.ItemStack;
 import net.runelite.client.game.LootManager;
 import net.runelite.client.game.SpriteManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
-import net.runelite.client.task.Schedule;
 import net.runelite.client.ui.ClientToolbar;
 import net.runelite.client.ui.NavigationButton;
 import net.runelite.client.util.ImageUtil;
 import net.runelite.client.util.QuantityFormatter;
 import net.runelite.client.util.Text;
-import net.runelite.http.api.loottracker.GameItem;
-import net.runelite.http.api.loottracker.LootAggregate;
-import net.runelite.http.api.loottracker.LootRecord;
 import net.runelite.http.api.loottracker.LootRecordType;
 import org.apache.commons.text.WordUtils;
 
+import javax.inject.Inject;
+import javax.swing.SwingUtilities;
+import java.awt.image.BufferedImage;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+
 @PluginDescriptor(
-	name = "Loot Tracker",
-	description = "Tracks loot from monsters and minigames",
-	tags = {"drops"}
+		name = "Loot Tracker",
+		description = "Tracks loot from monsters and minigames",
+		tags = {"drops"}
 )
 @Slf4j
 public class LootTrackerPlugin extends Plugin
@@ -162,50 +146,50 @@ public class LootTrackerPlugin extends Plugin
 	private static final Pattern HAM_CHEST_LOOTED_PATTERN = Pattern.compile("Your (?<key>[a-z]+) key breaks in the lock.*");
 	private static final int HAM_STOREROOM_REGION = 10321;
 	private static final Map<Integer, String> CHEST_EVENT_TYPES = new ImmutableMap.Builder<Integer, String>().
-		put(5179, "Brimstone Chest").
-		put(11573, "Crystal Chest").
-		put(12093, "Larran's big chest").
-		put(12127, "The Gauntlet").
-		put(13113, "Larran's small chest").
-		put(13151, "Elven Crystal Chest").
-		put(5277, "Stone chest").
-		put(10835, "Dorgesh-Kaan Chest").
-		put(10834, "Dorgesh-Kaan Chest").
-		put(7323, "Grubby Chest").
-		put(8593, "Isle of Souls Chest").
-		put(7827, "Dark Chest").
-		put(13117, "Rogues' Chest").
-		build();
+			put(5179, "Brimstone Chest").
+			put(11573, "Crystal Chest").
+			put(12093, "Larran's big chest").
+			put(12127, "The Gauntlet").
+			put(13113, "Larran's small chest").
+			put(13151, "Elven Crystal Chest").
+			put(5277, "Stone chest").
+			put(10835, "Dorgesh-Kaan Chest").
+			put(10834, "Dorgesh-Kaan Chest").
+			put(7323, "Grubby Chest").
+			put(8593, "Isle of Souls Chest").
+			put(7827, "Dark Chest").
+			put(13117, "Rogues' Chest").
+			build();
 
 	// Shade chest loot handling
 	private static final Pattern SHADE_CHEST_NO_KEY_PATTERN = Pattern.compile("You need a [a-z]+ key with a [a-z]+ trim to open this chest .*");
 	private static final Map<Integer, String> SHADE_CHEST_OBJECTS = new ImmutableMap.Builder<Integer, String>().
-		put(ObjectID.BRONZE_CHEST, "Bronze key red").
-		put(ObjectID.BRONZE_CHEST_4112, "Bronze key brown").
-		put(ObjectID.BRONZE_CHEST_4113, "Bronze key crimson").
-		put(ObjectID.BRONZE_CHEST_4114, "Bronze key black").
-		put(ObjectID.BRONZE_CHEST_4115, "Bronze key purple").
-		put(ObjectID.STEEL_CHEST, "Steel key red").
-		put(ObjectID.STEEL_CHEST_4117, "Steel key brown").
-		put(ObjectID.STEEL_CHEST_4118, "Steel key crimson").
-		put(ObjectID.STEEL_CHEST_4119, "Steel key black").
-		put(ObjectID.STEEL_CHEST_4120, "Steel key purple").
-		put(ObjectID.BLACK_CHEST, "Black key red").
-		put(ObjectID.BLACK_CHEST_4122, "Black key brown").
-		put(ObjectID.BLACK_CHEST_4123, "Black key crimson").
-		put(ObjectID.BLACK_CHEST_4124, "Black key black").
-		put(ObjectID.BLACK_CHEST_4125, "Black key purple").
-		put(ObjectID.SILVER_CHEST, "Silver key red").
-		put(ObjectID.SILVER_CHEST_4127, "Silver key brown").
-		put(ObjectID.SILVER_CHEST_4128, "Silver key crimson").
-		put(ObjectID.SILVER_CHEST_4129, "Silver key black").
-		put(ObjectID.SILVER_CHEST_4130, "Silver key purple").
-		put(ObjectID.GOLD_CHEST, "Gold key red").
-		put(ObjectID.GOLD_CHEST_41213, "Gold key brown").
-		put(ObjectID.GOLD_CHEST_41214, "Gold key crimson").
-		put(ObjectID.GOLD_CHEST_41215, "Gold key black").
-		put(ObjectID.GOLD_CHEST_41216, "Gold key purple").
-		build();
+			put(ObjectID.BRONZE_CHEST, "Bronze key red").
+			put(ObjectID.BRONZE_CHEST_4112, "Bronze key brown").
+			put(ObjectID.BRONZE_CHEST_4113, "Bronze key crimson").
+			put(ObjectID.BRONZE_CHEST_4114, "Bronze key black").
+			put(ObjectID.BRONZE_CHEST_4115, "Bronze key purple").
+			put(ObjectID.STEEL_CHEST, "Steel key red").
+			put(ObjectID.STEEL_CHEST_4117, "Steel key brown").
+			put(ObjectID.STEEL_CHEST_4118, "Steel key crimson").
+			put(ObjectID.STEEL_CHEST_4119, "Steel key black").
+			put(ObjectID.STEEL_CHEST_4120, "Steel key purple").
+			put(ObjectID.BLACK_CHEST, "Black key red").
+			put(ObjectID.BLACK_CHEST_4122, "Black key brown").
+			put(ObjectID.BLACK_CHEST_4123, "Black key crimson").
+			put(ObjectID.BLACK_CHEST_4124, "Black key black").
+			put(ObjectID.BLACK_CHEST_4125, "Black key purple").
+			put(ObjectID.SILVER_CHEST, "Silver key red").
+			put(ObjectID.SILVER_CHEST_4127, "Silver key brown").
+			put(ObjectID.SILVER_CHEST_4128, "Silver key crimson").
+			put(ObjectID.SILVER_CHEST_4129, "Silver key black").
+			put(ObjectID.SILVER_CHEST_4130, "Silver key purple").
+			put(ObjectID.GOLD_CHEST, "Gold key red").
+			put(ObjectID.GOLD_CHEST_41213, "Gold key brown").
+			put(ObjectID.GOLD_CHEST_41214, "Gold key crimson").
+			put(ObjectID.GOLD_CHEST_41215, "Gold key black").
+			put(ObjectID.GOLD_CHEST_41216, "Gold key purple").
+			build();
 
 	// Hallow Sepulchre Coffin handling
 	private static final String COFFIN_LOOTED_MESSAGE = "You push the coffin lid aside.";
@@ -225,16 +209,16 @@ public class LootTrackerPlugin extends Plugin
 	// Birdhouses
 	private static final Pattern BIRDHOUSE_PATTERN = Pattern.compile("You dismantle and discard the trap, retrieving (?:(?:a|\\d{1,2}) nests?, )?10 dead birds, \\d{1,3} feathers and (\\d,?\\d{1,3}) Hunter XP\\.");
 	private static final Map<Integer, String> BIRDHOUSE_XP_TO_TYPE = new ImmutableMap.Builder<Integer, String>().
-		put(280, "Regular Bird House").
-		put(420, "Oak Bird House").
-		put(560, "Willow Bird House").
-		put(700, "Teak Bird House").
-		put(820, "Maple Bird House").
-		put(960, "Mahogany Bird House").
-		put(1020, "Yew Bird House").
-		put(1140, "Magic Bird House").
-		put(1200, "Redwood Bird House").
-		build();
+			put(280, "Regular Bird House").
+			put(420, "Oak Bird House").
+			put(560, "Willow Bird House").
+			put(700, "Teak Bird House").
+			put(820, "Maple Bird House").
+			put(960, "Mahogany Bird House").
+			put(1020, "Yew Bird House").
+			put(1140, "Magic Bird House").
+			put(1200, "Redwood Bird House").
+			build();
 
 	/*
 	 * This map is used when a pickpocket target has a different name in the chat message than their in-game name.
@@ -242,8 +226,8 @@ public class LootTrackerPlugin extends Plugin
 	 * occurring when changing targets mid-pickpocket, in which case a different solution may need to be considered.
 	 */
 	private static final Multimap<String, String> PICKPOCKET_DISAMBIGUATION_MAP = ImmutableMultimap.of(
-		"H.A.M. Member", "Man",
-		"H.A.M. Member", "Woman"
+			"H.A.M. Member", "Man",
+			"H.A.M. Member", "Woman"
 	);
 
 	private static final String CASKET_EVENT = "Casket";
@@ -271,18 +255,18 @@ public class LootTrackerPlugin extends Plugin
 
 	// Implings
 	private static final Set<Integer> IMPLING_JARS = ImmutableSet.of(
-		ItemID.BABY_IMPLING_JAR,
-		ItemID.YOUNG_IMPLING_JAR,
-		ItemID.GOURMET_IMPLING_JAR,
-		ItemID.EARTH_IMPLING_JAR,
-		ItemID.ESSENCE_IMPLING_JAR,
-		ItemID.ECLECTIC_IMPLING_JAR,
-		ItemID.NATURE_IMPLING_JAR,
-		ItemID.MAGPIE_IMPLING_JAR,
-		ItemID.NINJA_IMPLING_JAR,
-		ItemID.CRYSTAL_IMPLING_JAR,
-		ItemID.DRAGON_IMPLING_JAR,
-		ItemID.LUCKY_IMPLING_JAR
+			ItemID.BABY_IMPLING_JAR,
+			ItemID.YOUNG_IMPLING_JAR,
+			ItemID.GOURMET_IMPLING_JAR,
+			ItemID.EARTH_IMPLING_JAR,
+			ItemID.ESSENCE_IMPLING_JAR,
+			ItemID.ECLECTIC_IMPLING_JAR,
+			ItemID.NATURE_IMPLING_JAR,
+			ItemID.MAGPIE_IMPLING_JAR,
+			ItemID.NINJA_IMPLING_JAR,
+			ItemID.CRYSTAL_IMPLING_JAR,
+			ItemID.DRAGON_IMPLING_JAR,
+			ItemID.LUCKY_IMPLING_JAR
 	);
 	private static final String IMPLING_CATCH_MESSAGE = "You manage to catch the impling and acquire some loot.";
 
@@ -307,9 +291,6 @@ public class LootTrackerPlugin extends Plugin
 	private ClientThread clientThread;
 
 	@Inject
-	private SessionManager sessionManager;
-
-	@Inject
 	private ScheduledExecutorService executor;
 
 	@Inject
@@ -327,10 +308,6 @@ public class LootTrackerPlugin extends Plugin
 	@Inject
 	private Gson gson;
 
-	@Getter(AccessLevel.PACKAGE)
-	@Inject
-	private LootTrackerClient lootTrackerClient;
-
 	private LootTrackerPanel panel;
 	private NavigationButton navButton;
 
@@ -344,7 +321,6 @@ public class LootTrackerPlugin extends Plugin
 	private Multiset<Integer> inventorySnapshot;
 	private InvChangeCallback inventorySnapshotCb;
 
-	private final List<LootRecord> queuedLoots = new ArrayList<>();
 	private String profileKey;
 
 	private static Collection<ItemStack> stack(Collection<ItemStack> items)
@@ -383,27 +359,6 @@ public class LootTrackerPlugin extends Plugin
 	}
 
 	@Subscribe
-	public void onSessionOpen(SessionOpen sessionOpen)
-	{
-		AccountSession accountSession = sessionManager.getAccountSession();
-		if (accountSession.getUuid() != null)
-		{
-			lootTrackerClient.setUuid(accountSession.getUuid());
-		}
-		else
-		{
-			lootTrackerClient.setUuid(null);
-		}
-	}
-
-	@Subscribe
-	public void onSessionClose(SessionClose sessionClose)
-	{
-		submitLoot();
-		lootTrackerClient.setUuid(null);
-	}
-
-	@Subscribe
 	public void onRuneScapeProfileChanged(RuneScapeProfileChanged e)
 	{
 		final String profileKey = configManager.getRSProfileKey();
@@ -424,9 +379,6 @@ public class LootTrackerPlugin extends Plugin
 	{
 		executor.execute(() ->
 		{
-			// Current queued loot is for the previous profile, so save it first with the current profile key
-			submitLoot();
-
 			this.profileKey = profileKey;
 
 			log.debug("Switched to profile {}", profileKey);
@@ -491,8 +443,8 @@ public class LootTrackerPlugin extends Plugin
 
 				// convertToLootTrackerRecord must be called on client thread
 				List<LootTrackerRecord> records = loots.stream()
-					.map(this::convertToLootTrackerRecord)
-					.collect(Collectors.toList());
+						.map(this::convertToLootTrackerRecord)
+						.collect(Collectors.toList());
 				SwingUtilities.invokeLater(() ->
 				{
 					panel.clearRecords();
@@ -536,19 +488,13 @@ public class LootTrackerPlugin extends Plugin
 		final BufferedImage icon = ImageUtil.loadImageResource(getClass(), "panel_icon.png");
 
 		navButton = NavigationButton.builder()
-			.tooltip("Loot Tracker")
-			.icon(icon)
-			.priority(5)
-			.panel(panel)
-			.build();
+				.tooltip("Loot Tracker")
+				.icon(icon)
+				.priority(5)
+				.panel(panel)
+				.build();
 
 		clientToolbar.addNavigation(navButton);
-
-		AccountSession accountSession = sessionManager.getAccountSession();
-		if (accountSession != null)
-		{
-			lootTrackerClient.setUuid(accountSession.getUuid());
-		}
 
 		String profileKey = configManager.getRSProfileKey();
 		if (profileKey != null)
@@ -560,20 +506,8 @@ public class LootTrackerPlugin extends Plugin
 	@Override
 	protected void shutDown()
 	{
-		submitLoot();
 		clientToolbar.removeNavigation(navButton);
-		lootTrackerClient.setUuid(null);
 		chestLooted = false;
-	}
-
-	@Subscribe
-	public void onClientShutdown(ClientShutdown event)
-	{
-		Future<Void> future = submitLoot();
-		if (future != null)
-		{
-			event.waitFor(future);
-		}
 	}
 
 	@Subscribe
@@ -595,19 +529,7 @@ public class LootTrackerPlugin extends Plugin
 		final LootTrackerItem[] entries = buildEntries(stack(items));
 		SwingUtilities.invokeLater(() -> panel.add(name, type, combatLevel, entries, amount));
 
-		LootRecord lootRecord = new LootRecord(name, type, metadata, toGameItems(items), Instant.now(), getLootWorldId());
-		synchronized (queuedLoots)
-		{
-			queuedLoots.add(lootRecord);
-		}
-
 		eventBus.post(new LootReceived(name, combatLevel, type, items, amount));
-	}
-
-	private Integer getLootWorldId()
-	{
-		// For the wiki to determine drop rates based on dmm brackets / identify leagues drops
-		return client.getWorldType().contains(WorldType.SEASONAL) ? client.getWorld() : null;
 	}
 
 	@Subscribe
@@ -623,8 +545,8 @@ public class LootTrackerPlugin extends Plugin
 		if (config.npcKillChatMessage())
 		{
 			final String prefix = VOWELS.contains(Character.toLowerCase(name.charAt(0)))
-				? "an"
-				: "a";
+					? "an"
+					: "a";
 
 			lootReceivedChatMessage(items, prefix + ' ' + name);
 		}
@@ -722,32 +644,32 @@ public class LootTrackerPlugin extends Plugin
 
 		// Convert container items to array of ItemStack
 		final Collection<ItemStack> items = Arrays.stream(container.getItems())
-			.filter(item -> item.getId() > 0)
-			.map(item -> new ItemStack(item.getId(), item.getQuantity(), client.getLocalPlayer().getLocalLocation()))
-			.collect(Collectors.toList());
+				.filter(item -> item.getId() > 0)
+				.map(item -> new ItemStack(item.getId(), item.getQuantity(), client.getLocalPlayer().getLocalLocation()))
+				.collect(Collectors.toList());
 
 		if (config.showRaidsLootValue() && (event.equals("Theatre of Blood") || event.equals("Chambers of Xeric")))
 		{
 			long totalValue = items.stream()
-				.filter(item -> item.getId() > -1)
-				.mapToLong(item -> config.priceType() == LootTrackerPriceType.GRAND_EXCHANGE ?
-					(long) itemManager.getItemPrice(item.getId()) * item.getQuantity() :
-					(long) itemManager.getItemComposition(item.getId()).getHaPrice() * item.getQuantity())
-				.sum();
+					.filter(item -> item.getId() > -1)
+					.mapToLong(item -> config.priceType() == LootTrackerPriceType.GRAND_EXCHANGE ?
+							(long) itemManager.getItemPrice(item.getId()) * item.getQuantity() :
+							(long) itemManager.getItemComposition(item.getId()).getHaPrice() * item.getQuantity())
+					.sum();
 
 			String chatMessage = new ChatMessageBuilder()
-				.append(ChatColorType.NORMAL)
-				.append("Your loot is worth around ")
-				.append(ChatColorType.HIGHLIGHT)
-				.append(QuantityFormatter.formatNumber(totalValue))
-				.append(ChatColorType.NORMAL)
-				.append(" coins.")
-				.build();
+					.append(ChatColorType.NORMAL)
+					.append("Your loot is worth around ")
+					.append(ChatColorType.HIGHLIGHT)
+					.append(QuantityFormatter.formatNumber(totalValue))
+					.append(ChatColorType.NORMAL)
+					.append(" coins.")
+					.build();
 
 			chatMessageManager.queue(QueuedMessage.builder()
-				.type(ChatMessageType.FRIENDSCHATNOTIFICATION)
-				.runeLiteFormattedMessage(chatMessage)
-				.build());
+					.type(ChatMessageType.FRIENDSCHATNOTIFICATION)
+					.runeLiteFormattedMessage(chatMessage)
+					.build());
 		}
 
 		if (items.isEmpty())
@@ -770,8 +692,8 @@ public class LootTrackerPlugin extends Plugin
 		final String message = event.getMessage();
 
 		if (message.equals(CHEST_LOOTED_MESSAGE) || message.equals(OTHER_CHEST_LOOTED_MESSAGE)
-			|| message.equals(DORGESH_KAAN_CHEST_LOOTED_MESSAGE) || message.startsWith(GRUBBY_CHEST_LOOTED_MESSAGE)
-			|| LARRAN_LOOTED_PATTERN.matcher(message).matches() || ROGUES_CHEST_PATTERN.matcher(message).matches())
+				|| message.equals(DORGESH_KAAN_CHEST_LOOTED_MESSAGE) || message.startsWith(GRUBBY_CHEST_LOOTED_MESSAGE)
+				|| LARRAN_LOOTED_PATTERN.matcher(message).matches() || ROGUES_CHEST_PATTERN.matcher(message).matches())
 		{
 			final int regionID = client.getLocalPlayer().getWorldLocation().getRegionID();
 			if (!CHEST_EVENT_TYPES.containsKey(regionID))
@@ -784,7 +706,7 @@ public class LootTrackerPlugin extends Plugin
 		}
 
 		if (message.equals(COFFIN_LOOTED_MESSAGE) &&
-			isPlayerWithinMapRegion(HALLOWED_SEPULCHRE_MAP_REGIONS))
+				isPlayerWithinMapRegion(HALLOWED_SEPULCHRE_MAP_REGIONS))
 		{
 			onInvChange(collectInvAndGroundItems(LootRecordType.EVENT, HALLOWED_SEPULCHRE_COFFIN_EVENT));
 			return;
@@ -916,7 +838,7 @@ public class LootTrackerPlugin extends Plugin
 	{
 		// when the wilderness chest empties, clear chest loot flag for the next key
 		if (event.getContainerId() == InventoryID.WILDERNESS_LOOT_CHEST.getId()
-			&& Arrays.stream(event.getItemContainer().getItems()).noneMatch(i -> i.getId() > -1))
+				&& Arrays.stream(event.getItemContainer().getItems()).noneMatch(i -> i.getId() > -1))
 		{
 			log.debug("Resetting chest loot flag");
 			chestLooted = false;
@@ -930,7 +852,7 @@ public class LootTrackerPlugin extends Plugin
 		final ItemContainer inventoryContainer = event.getItemContainer();
 		Multiset<Integer> currentInventory = HashMultiset.create();
 		Arrays.stream(inventoryContainer.getItems())
-			.forEach(item -> currentInventory.add(item.getId(), item.getQuantity()));
+				.forEach(item -> currentInventory.add(item.getId(), item.getQuantity()));
 
 		WorldPoint playerLocation = client.getLocalPlayer().getWorldLocation();
 		final Collection<ItemStack> groundItems = lootManager.getItemSpawns(playerLocation);
@@ -939,8 +861,8 @@ public class LootTrackerPlugin extends Plugin
 		final Multiset<Integer> diffr = Multisets.difference(inventorySnapshot, currentInventory);
 
 		final List<ItemStack> items = diff.entrySet().stream()
-			.map(e -> new ItemStack(e.getElement(), e.getCount(), client.getLocalPlayer().getLocalLocation()))
-			.collect(Collectors.toList());
+				.map(e -> new ItemStack(e.getElement(), e.getCount(), client.getLocalPlayer().getLocalLocation()))
+				.collect(Collectors.toList());
 
 		log.debug("Inv change: {} Ground items: {}", items, groundItems);
 
@@ -1036,79 +958,7 @@ public class LootTrackerPlugin extends Plugin
 	{
 		final int id = menuAction.getId();
 		return (id >= MenuAction.GAME_OBJECT_FIRST_OPTION.getId() && id <= MenuAction.GAME_OBJECT_FOURTH_OPTION.getId())
-			|| id == MenuAction.GAME_OBJECT_FIFTH_OPTION.getId();
-	}
-
-	@Schedule(
-		period = 5,
-		unit = ChronoUnit.MINUTES,
-		asynchronous = true
-	)
-	public void submitLootTask()
-	{
-		submitLoot();
-	}
-
-	@Nullable
-	private CompletableFuture<Void> submitLoot()
-	{
-		List<LootRecord> copy;
-		synchronized (queuedLoots)
-		{
-			if (queuedLoots.isEmpty())
-			{
-				return null;
-			}
-
-			copy = new ArrayList<>(queuedLoots);
-			queuedLoots.clear();
-		}
-
-		saveLoot(copy);
-
-		log.debug("Submitting {} loot records", copy.size());
-
-		return lootTrackerClient.submit(copy);
-	}
-
-	private Collection<ConfigLoot> combine(List<LootRecord> records)
-	{
-		Map<ConfigLoot, ConfigLoot> map = new HashMap<>();
-		for (LootRecord record : records)
-		{
-			ConfigLoot key = new ConfigLoot(record.getType(), record.getEventId());
-			ConfigLoot loot = map.computeIfAbsent(key, k -> key);
-			loot.kills++;
-			for (GameItem item : record.getDrops())
-			{
-				loot.add(item.getId(), item.getQty());
-			}
-		}
-		return map.values();
-	}
-
-	private void saveLoot(List<LootRecord> records)
-	{
-		Instant now = Instant.now();
-		Collection<ConfigLoot> combinedRecords = combine(records);
-		for (ConfigLoot record : combinedRecords)
-		{
-			ConfigLoot lootConfig = getLootConfig(record.type, record.name);
-			if (lootConfig == null)
-			{
-				lootConfig = record;
-			}
-			else
-			{
-				lootConfig.kills += record.kills;
-				for (int i = 0; i < record.drops.length; i += 2)
-				{
-					lootConfig.add(record.drops[i], record.drops[i + 1]);
-				}
-			}
-			lootConfig.last = now;
-			setLootConfig(lootConfig.type, lootConfig.name, lootConfig);
-		}
+				|| id == MenuAction.GAME_OBJECT_FIFTH_OPTION.getId();
 	}
 
 	private void resetEvent()
@@ -1132,7 +982,7 @@ public class LootTrackerPlugin extends Plugin
 	private InvChangeCallback collectInvItems(LootRecordType type, String event, Object metadata)
 	{
 		return (invItems, groundItems, removedItems) ->
-			addLoot(event, -1, type, metadata, invItems);
+				addLoot(event, -1, type, metadata, invItems);
 	}
 
 	private InvChangeCallback collectInvAndGroundItems(LootRecordType type, String event)
@@ -1166,7 +1016,7 @@ public class LootTrackerPlugin extends Plugin
 		if (itemContainer != null)
 		{
 			Arrays.stream(itemContainer.getItems())
-				.forEach(item -> inventorySnapshot.add(item.getId(), item.getQuantity()));
+					.forEach(item -> inventorySnapshot.add(item.getId(), item.getQuantity()));
 		}
 	}
 
@@ -1177,7 +1027,7 @@ public class LootTrackerPlugin extends Plugin
 		for (MessageNode messageNode : client.getMessages())
 		{
 			if (messageNode.getTimestamp() != timestamp
-				|| messageNode.getType() != ChatMessageType.SPAM)
+					|| messageNode.getType() != ChatMessageType.SPAM)
 			{
 				continue;
 			}
@@ -1251,41 +1101,19 @@ public class LootTrackerPlugin extends Plugin
 		final boolean ignored = ignoredItems.contains(itemComposition.getName());
 
 		return new LootTrackerItem(
-			itemId,
-			itemComposition.getName(),
-			quantity,
-			gePrice,
-			haPrice,
-			ignored);
+				itemId,
+				itemComposition.getName(),
+				quantity,
+				gePrice,
+				haPrice,
+				ignored);
 	}
 
 	private LootTrackerItem[] buildEntries(final Collection<ItemStack> itemStacks)
 	{
 		return itemStacks.stream()
-			.map(itemStack -> buildLootTrackerItem(itemStack.getId(), itemStack.getQuantity()))
-			.toArray(LootTrackerItem[]::new);
-	}
-
-	private static Collection<GameItem> toGameItems(Collection<ItemStack> items)
-	{
-		return items.stream()
-			.map(item -> new GameItem(item.getId(), item.getQuantity()))
-			.collect(Collectors.toList());
-	}
-
-	private Collection<LootTrackerRecord> convertToLootTrackerRecord(final Collection<LootAggregate> records)
-	{
-		return records.stream()
-			.sorted(Comparator.comparing(LootAggregate::getLast_time))
-			.map(record ->
-			{
-				LootTrackerItem[] drops = record.getDrops().stream().map(itemStack ->
-					buildLootTrackerItem(itemStack.getId(), itemStack.getQty())
-				).toArray(LootTrackerItem[]::new);
-
-				return new LootTrackerRecord(record.getEventId(), "", record.getType(), drops, record.getAmount());
-			})
-			.collect(Collectors.toCollection(ArrayList::new));
+				.map(itemStack -> buildLootTrackerItem(itemStack.getId(), itemStack.getQuantity()))
+				.toArray(LootTrackerItem[]::new);
 	}
 
 	private LootTrackerRecord convertToLootTrackerRecord(final ConfigLoot configLoot)
@@ -1321,54 +1149,23 @@ public class LootTrackerPlugin extends Plugin
 	private void lootReceivedChatMessage(final Collection<ItemStack> items, final String name)
 	{
 		long totalPrice = items.stream()
-			.mapToLong(is -> (long) itemManager.getItemPrice(is.getId()) * is.getQuantity())
-			.sum();
+				.mapToLong(is -> (long) itemManager.getItemPrice(is.getId()) * is.getQuantity())
+				.sum();
 
 		final String message = new ChatMessageBuilder()
-			.append(ChatColorType.HIGHLIGHT)
-			.append("You've killed ")
-			.append(name)
-			.append(" for ")
-			.append(QuantityFormatter.quantityToStackSize(totalPrice))
-			.append(" loot.")
-			.build();
+				.append(ChatColorType.HIGHLIGHT)
+				.append("You've killed ")
+				.append(name)
+				.append(" for ")
+				.append(QuantityFormatter.quantityToStackSize(totalPrice))
+				.append(" loot.")
+				.build();
 
 		chatMessageManager.queue(
-			QueuedMessage.builder()
-				.type(ChatMessageType.CONSOLE)
-				.runeLiteFormattedMessage(message)
-				.build());
-	}
-
-	ConfigLoot getLootConfig(LootRecordType type, String name)
-	{
-		String profile = profileKey;
-		if (Strings.isNullOrEmpty(profile))
-		{
-			log.debug("Trying to get loot with no profile!");
-			return null;
-		}
-
-		String json = configManager.getConfiguration(LootTrackerConfig.GROUP, profile, "drops_" + type + "_" + name);
-		if (json == null)
-		{
-			return null;
-		}
-
-		return gson.fromJson(json, ConfigLoot.class);
-	}
-
-	void setLootConfig(LootRecordType type, String name, ConfigLoot loot)
-	{
-		String profile = profileKey;
-		if (Strings.isNullOrEmpty(profile))
-		{
-			log.debug("Trying to set loot with no profile!");
-			return;
-		}
-
-		String json = gson.toJson(loot);
-		configManager.setConfiguration(LootTrackerConfig.GROUP, profile, "drops_" + type + "_" + name, json);
+				QueuedMessage.builder()
+						.type(ChatMessageType.CONSOLE)
+						.runeLiteFormattedMessage(message)
+						.build());
 	}
 
 	void removeLootConfig(LootRecordType type, String name)

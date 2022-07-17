@@ -21,8 +21,8 @@ public abstract class VarbitMixin implements RSClient
 
 	@Inject
 	private Cache<Integer, RSVarbitComposition> varbitCache = CacheBuilder.newBuilder()
-			.maximumSize(128)
-			.build();
+		.maximumSize(128)
+		.build();
 
 	@Inject
 	VarbitMixin()
@@ -115,6 +115,14 @@ public abstract class VarbitMixin implements RSClient
 
 	@Inject
 	@Override
+	public void setVarcIntValue(int varc, int value)
+	{
+		Map<Integer, Object> varcmap = getVarcMap();
+		varcmap.put(varc, value);
+	}
+
+	@Inject
+	@Override
 	public String getVarcStrValue(int varcStrId)
 	{
 		Map<Integer, Object> varcmap = getVarcMap();
@@ -123,17 +131,11 @@ public abstract class VarbitMixin implements RSClient
 	}
 
 	@Inject
-	public void setVarcIntValue(int varcIntId, int value)
+	@Override
+	public void setVarcStrValue(int varc, String value)
 	{
 		Map<Integer, Object> varcmap = getVarcMap();
-		varcmap.put(varcIntId, value);
-	}
-
-	@Inject
-	public void setVarcStrValue(int varcStrId, String value)
-	{
-		Map<Integer, Object> varcmap = getVarcMap();
-		varcmap.put(varcStrId, value);
+		varcmap.put(varc, value);
 	}
 
 	@Inject

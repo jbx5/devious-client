@@ -412,7 +412,13 @@ public abstract class RSWidgetMixin implements RSWidget
 		}
 
 		List<Widget> widgets = new ArrayList<Widget>();
-		for (RSWidget widget : client.getGroup(TO_GROUP(getId())))
+		RSWidget[] group = client.getGroup(TO_GROUP(getId()));
+		if (group == null)
+		{
+			return new Widget[0];
+		}
+
+		for (RSWidget widget : group)
 		{
 			if (widget != null && widget.getRSParentId() == getId())
 			{
@@ -527,8 +533,7 @@ public abstract class RSWidgetMixin implements RSWidget
 
 		client.getLogger().trace("Posting widget position changed");
 
-		WidgetPositioned widgetPositioned = WidgetPositioned.INSTANCE;
-		client.getCallbacks().postDeferred(widgetPositioned);
+		client.getCallbacks().postDeferred(new WidgetPositioned());
 	}
 
 	@Inject

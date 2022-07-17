@@ -43,10 +43,4 @@ package net.runelite.api.events;
  */
 public class GameTick
 {
-	public static final GameTick INSTANCE = new GameTick();
-
-	public GameTick()
-	{
-		// noop
-	}
 }

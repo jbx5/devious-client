@@ -24,13 +24,14 @@
  */
 package net.runelite.mixins;
 
-import java.math.BigInteger;
 import net.runelite.api.mixins.Copy;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Replace;
 import net.runelite.api.mixins.Shadow;
 import net.runelite.rs.api.RSBuffer;
 import net.runelite.rs.api.RSClient;
+
+import java.math.BigInteger;
 
 @Mixin(RSBuffer.class)
 public abstract class RSBufferMixin implements RSBuffer

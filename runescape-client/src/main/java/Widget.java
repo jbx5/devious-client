@@ -1,11 +1,12 @@
-import net.runelite.mapping.ObfuscatedName;
-import java.util.HashMap;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import java.util.ArrayList;
-import net.runelite.mapping.Implements;
-import java.util.Iterator;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
+import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 @ObfuscatedName("kb")
 @Implements("Widget")
 public class Widget extends Node {
@@ -16,13 +17,13 @@ public class Widget extends Node {
 
 	@ObfuscatedName("ad")
 	@ObfuscatedSignature(descriptor = "Lii;")
-	@Export("Widget_cachedModels")
-	public static EvictingDualNodeHashTable Widget_cachedModels;
+	@Export("DBTableIndex_cache")
+	public static EvictingDualNodeHashTable DBTableIndex_cache;
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(descriptor = "Lii;")
-	@Export("Widget_cachedFonts")
-	public static EvictingDualNodeHashTable Widget_cachedFonts;
+	@Export("DBTableMasterIndex_cache")
+	public static EvictingDualNodeHashTable DBTableMasterIndex_cache;
 
 	@ObfuscatedName("al")
 	@ObfuscatedSignature(descriptor = "Lii;")
@@ -708,8 +709,8 @@ public class Widget extends Node {
 
 	static {
 		Widget_cachedSprites = new EvictingDualNodeHashTable(200);
-		Widget_cachedModels = new EvictingDualNodeHashTable(50);
-		Widget_cachedFonts = new EvictingDualNodeHashTable(20);
+		DBTableIndex_cache = new EvictingDualNodeHashTable(50);
+		DBTableMasterIndex_cache = new EvictingDualNodeHashTable(20);
 		Widget_cachedSpriteMasks = new EvictingDualNodeHashTable(8);
 		field3364 = new class361(10, class359.field4260);
 		field3434 = new class361(10, class359.field4260);
@@ -1312,7 +1313,7 @@ public class Widget extends Node {
 		if (this.fontId == -1) {
 			return null;
 		} else {
-			Font var1 = ((Font) (Widget_cachedFonts.get(((long) (this.fontId)))));
+			Font var1 = ((Font) (DBTableMasterIndex_cache.get(((long) (this.fontId)))));
 			if (var1 != null) {
 				return var1;
 			} else {
@@ -1340,7 +1341,7 @@ public class Widget extends Node {
 					var2 = var6;
 				}
 				if (var2 != null) {
-					Widget_cachedFonts.put(var2, ((long) (this.fontId)));
+					DBTableMasterIndex_cache.put(var2, ((long) (this.fontId)));
 				} else {
 					field3366 = true;
 				}
@@ -1396,7 +1397,7 @@ public class Widget extends Node {
 		} else if (var5 == 1 && var6 == -1) {
 			return null;
 		} else {
-			Model var7 = ((Model) (Widget_cachedModels.get(((long) (var6 + (var5 << 16))))));
+			Model var7 = ((Model) (DBTableIndex_cache.get(((long) (var6 + (var5 << 16))))));
 			if (var7 == null) {
 				ModelData var8;
 				if (var5 == 1) {
@@ -1435,7 +1436,7 @@ public class Widget extends Node {
 					}
 					var7 = var8.toModel(var9.ambient + 64, var9.contrast + 768, -50, -10, -50);
 				}
-				Widget_cachedModels.put(var7, ((long) (var6 + (var5 << 16))));
+				DBTableIndex_cache.put(var7, ((long) (var6 + (var5 << 16))));
 			}
 			if (var1 != null) {
 				var7 = var1.transformWidgetModel(var7, var2);

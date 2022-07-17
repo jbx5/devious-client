@@ -1,9 +1,9 @@
 package net.unethicalite.mixins;
 
 import net.runelite.api.Buffer;
-import net.runelite.api.mixins.Copy;
+import net.runelite.api.mixins.Inject;
+import net.runelite.api.mixins.MethodHook;
 import net.runelite.api.mixins.Mixin;
-import net.runelite.api.mixins.Replace;
 import net.runelite.api.mixins.Shadow;
 import net.runelite.rs.api.RSBuffer;
 import net.runelite.rs.api.RSBufferedNetSocket;
@@ -20,12 +20,10 @@ public abstract class HBufferedNetSocketMixin implements RSBufferedNetSocket
 	@Shadow("client")
 	private static RSClient client;
 
-	@Copy("read")
-	@Replace("read")
-	public int copy$read(byte[] payload, int offset, int length)
+	@Inject
+	@MethodHook(value = "read", end = true)
+	public void onSocketRead(byte[] payload, int offset, int length)
 	{
-		int rtn = copy$read(payload, offset, length);
-
 		RSPacketWriter packetWriter = client.getPacketWriter();
 		ServerPacketProcessed received = null;
 		if (packetWriter != null)
@@ -53,7 +51,5 @@ public abstract class HBufferedNetSocketMixin implements RSBufferedNetSocket
 		{
 			client.getCallbacks().post(received);
 		}
-
-		return rtn;
 	}
 }

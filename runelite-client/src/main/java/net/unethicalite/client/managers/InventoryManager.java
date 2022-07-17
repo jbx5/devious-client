@@ -23,7 +23,7 @@ public class InventoryManager
 		eventBus.register(this);
 	}
 
-	@Subscribe
+	@Subscribe(priority = Integer.MAX_VALUE)
 	private void onItemContainerChanged(ItemContainerChanged e)
 	{
 		cachedContainers.put(e.getContainerId(), e.getItemContainer().getItems());

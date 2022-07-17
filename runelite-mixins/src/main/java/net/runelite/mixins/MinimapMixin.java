@@ -24,7 +24,6 @@
  */
 package net.runelite.mixins;
 
-import static net.runelite.api.Perspective.SCENE_SIZE;
 import net.runelite.api.mixins.Copy;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
@@ -33,6 +32,8 @@ import net.runelite.api.widgets.Widget;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSScene;
 import net.runelite.rs.api.RSSpritePixels;
+
+import static net.runelite.api.Perspective.SCENE_SIZE;
 
 @Mixin(RSClient.class)
 public abstract class MinimapMixin implements RSClient

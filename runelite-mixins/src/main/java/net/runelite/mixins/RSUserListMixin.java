@@ -1,6 +1,5 @@
 package net.runelite.mixins;
 
-import java.util.Arrays;
 import net.runelite.api.Nameable;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.MethodHook;
@@ -10,6 +9,8 @@ import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSUser;
 import net.runelite.rs.api.RSUserList;
 import net.runelite.rs.api.RSUsername;
+
+import java.util.Arrays;
 
 @Mixin(RSUserList.class)
 public abstract class RSUserListMixin implements RSUserList
