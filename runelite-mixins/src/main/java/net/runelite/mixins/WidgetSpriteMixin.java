@@ -1,7 +1,6 @@
 package net.runelite.mixins;
 
 import net.runelite.api.SpritePixels;
-import java.util.Map;
 import net.runelite.api.mixins.Copy;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
@@ -10,6 +9,8 @@ import net.runelite.api.mixins.Shadow;
 import net.runelite.rs.api.RSSpritePixels;
 import net.runelite.rs.api.RSUrlRequester;
 import net.runelite.rs.api.RSWidget;
+
+import java.util.Map;
 
 @Mixin(RSWidget.class)
 public abstract class WidgetSpriteMixin implements RSWidget

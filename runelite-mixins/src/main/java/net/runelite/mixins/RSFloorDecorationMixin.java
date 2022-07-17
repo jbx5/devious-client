@@ -1,6 +1,5 @@
 package net.runelite.mixins;
 
-import java.awt.Shape;
 import net.runelite.api.Model;
 import net.runelite.api.Perspective;
 import net.runelite.api.coords.LocalPoint;
@@ -8,9 +7,11 @@ import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Shadow;
 import net.runelite.rs.api.RSClient;
-import net.runelite.rs.api.RSRenderable;
 import net.runelite.rs.api.RSFloorDecoration;
 import net.runelite.rs.api.RSModel;
+import net.runelite.rs.api.RSRenderable;
+
+import java.awt.Shape;
 
 @Mixin(RSFloorDecoration.class)
 public abstract class RSFloorDecorationMixin implements RSFloorDecoration

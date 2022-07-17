@@ -1,11 +1,12 @@
 package net.runelite.mixins;
 
-import java.awt.Container;
-import java.awt.Dimension;
 import net.runelite.api.Constants;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.rs.api.RSClient;
+
+import java.awt.Container;
+import java.awt.Dimension;
 
 @Mixin(RSClient.class)
 public abstract class StretchedModeMixin implements RSClient

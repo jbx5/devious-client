@@ -29,8 +29,8 @@ buildscript {
     repositories {
         mavenLocal()
         gradlePluginPortal()
-        maven(url = "https://raw.githubusercontent.com/open-osrs/hosting/master")
         maven(url = "https://repo.runelite.net")
+        maven(url = "https://raw.githubusercontent.com/open-osrs/hosting/master")
     }
     dependencies {
         classpath("org.ajoberstar.grgit:grgit-core:4.1.0")

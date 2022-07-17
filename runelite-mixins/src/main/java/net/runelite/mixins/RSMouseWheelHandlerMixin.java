@@ -24,13 +24,14 @@
  */
 package net.runelite.mixins;
 
-import java.awt.event.MouseWheelEvent;
 import net.runelite.api.mixins.Copy;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Replace;
 import net.runelite.api.mixins.Shadow;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSMouseWheelHandler;
+
+import java.awt.event.MouseWheelEvent;
 
 @Mixin(RSMouseWheelHandler.class)
 public abstract class RSMouseWheelHandlerMixin implements RSMouseWheelHandler

@@ -24,7 +24,6 @@
  */
 package net.runelite.mixins;
 
-import net.unethicalite.api.events.NPCCompositionChanged;
 import net.runelite.api.AnimationID;
 import net.runelite.api.NPCComposition;
 import net.runelite.api.NpcID;
@@ -42,8 +41,10 @@ import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSModel;
 import net.runelite.rs.api.RSNPC;
 import net.runelite.rs.api.RSNPCComposition;
+import net.unethicalite.api.events.NPCCompositionChanged;
 
-import java.awt.*;
+import java.awt.Polygon;
+import java.awt.Shape;
 
 @Mixin(RSNPC.class)
 public abstract class RSNPCMixin implements RSNPC

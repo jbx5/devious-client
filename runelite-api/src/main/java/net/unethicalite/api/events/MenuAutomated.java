@@ -1,5 +1,7 @@
 package net.unethicalite.api.events;
 
+import net.runelite.api.widgets.Widget;
+import net.runelite.api.widgets.WidgetInfo;
 import net.unethicalite.api.SceneEntity;
 import lombok.Builder;
 import lombok.Getter;
@@ -89,17 +91,18 @@ public class MenuAutomated
 		);
 	}
 
-	public MenuAutomated setItemId(int itemId)
-	{
-		setTarget("ItemId=" + itemId);
-		return this;
-	}
-
-	public int getItemId()
-	{
-		if (target.matches("ItemId=\\D+"))
-		{
-			return Integer.parseInt(target.replace("ItemId=", ""));
+	public int getItemId(Client client) {
+		MenuAction menuAction = getOpcode();
+		if (menuAction == MenuAction.CC_OP || menuAction == MenuAction.CC_OP_LOW_PRIORITY) {
+			int param1 = this.getParam1();
+			int param0 = this.getParam0();
+			if (param1 == WidgetInfo.INVENTORY.getId()) {
+				Widget widget = client.getWidget(param1);
+				if (widget != null && param0 != -1) {
+					widget = widget.getChild(param0);
+					return widget.getItemId();
+				}
+			}
 		}
 
 		return -1;

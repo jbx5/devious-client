@@ -1,8 +1,6 @@
 package net.runelite.mixins;
 
 import net.runelite.api.events.FocusChanged;
-import java.awt.event.FocusEvent;
-import java.awt.event.KeyEvent;
 import net.runelite.api.mixins.Copy;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.MethodHook;
@@ -11,6 +9,9 @@ import net.runelite.api.mixins.Replace;
 import net.runelite.api.mixins.Shadow;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSKeyHandler;
+
+import java.awt.event.FocusEvent;
+import java.awt.event.KeyEvent;
 
 @Mixin(RSKeyHandler.class)
 public abstract class RSKeyHandlerMixin implements RSKeyHandler

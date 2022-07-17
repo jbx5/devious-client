@@ -1,11 +1,12 @@
 package net.runelite.mixins;
 
-import java.awt.geom.Area;
-import net.runelite.api.Renderable;
 import net.runelite.api.Model;
+import net.runelite.api.Renderable;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.rs.api.RSItemLayer;
+
+import java.awt.geom.Area;
 
 @Mixin(RSItemLayer.class)
 public abstract class RSItemLayerMixin implements RSItemLayer
