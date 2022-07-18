@@ -72,6 +72,7 @@ public class Magic
 		if (widget != null)
 		{
 			Static.getClient().setSelectedSpellWidget(widget.getId());
+			Static.getClient().setSelectedSpellChildIndex(-1);
 		}
 	}
 
