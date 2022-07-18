@@ -33,19 +33,19 @@ public abstract class HTileObjectMixin implements TileObject
 	private static RSClient client;
 
 	@Inject
-	public int getBaseId()
+	public int getId()
 	{
 		long hash = getHash();
 		return (int) (hash >>> 17 & 4294967295L);
 	}
 
 	@Inject
-	public int getId()
+	public int getActualId()
 	{
 		ObjectComposition transformedComposition = getTransformedComposition();
 		if (transformedComposition == null)
 		{
-			return getBaseId();
+			return getId();
 		}
 
 		return transformedComposition.getId();

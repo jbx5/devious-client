@@ -132,5 +132,5 @@ public interface TileObject extends SceneEntity
 
 	void setTransformedComposition(ObjectComposition composition);
 
-	int getBaseId();
+	int getActualId();
 }

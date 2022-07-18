@@ -1,5 +1,6 @@
 package net.unethicalite.api.commons;
 
+import net.runelite.api.TileObject;
 import net.unethicalite.api.EntityNameable;
 import net.unethicalite.api.Identifiable;
 
@@ -61,20 +62,12 @@ public class Predicates
 
 			if (caseSensitive)
 			{
-				if (t.getName().contains(subString))
-				{
-					return true;
-				}
+				return t.getName().contains(subString);
 			}
 			else
 			{
-				if (t.getName().toLowerCase().contains(subString.toLowerCase()))
-				{
-					return true;
-				}
+				return t.getName().toLowerCase().contains(subString.toLowerCase());
 			}
-
-			return false;
 		};
 	}
 
@@ -89,7 +82,7 @@ public class Predicates
 		{
 			for (int id : ids)
 			{
-				if (t.getId() == id)
+				if (t.getId() == id || (t instanceof TileObject && ((TileObject) t).getActualId() == id))
 				{
 					return true;
 				}
@@ -101,6 +94,6 @@ public class Predicates
 
 	public static <T extends Identifiable> Predicate<T> ids(Collection<Integer> ids)
 	{
-		return t -> ids.contains(t.getId());
+		return t -> t instanceof TileObject ? ids.contains(((TileObject) t).getActualId()) || ids.contains(t.getId()) : ids.contains(t.getId());
 	}
 }
