@@ -31,13 +31,13 @@ public abstract class RSTileObjectMixin implements TileObject
 	@Shadow("client")
 	private static RSClient client;
 
-	@Override
-	@Inject
-	public int getId()
-	{
-		long hash = getHash();
-		return (int) (hash >>> 17 & 4294967295L);
-	}
+//	@Override
+//	@Inject
+//	public int getId()
+//	{
+//		long hash = getHash();
+//		return (int) (hash >>> 17 & 4294967295L);
+//	}
 	
 //	@Override
 //	@Inject
