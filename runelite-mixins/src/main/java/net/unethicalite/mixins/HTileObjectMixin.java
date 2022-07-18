@@ -1,5 +1,6 @@
 package net.unethicalite.mixins;
 
+import net.runelite.api.ObjectComposition;
 import net.unethicalite.api.events.MenuAutomated;
 import net.unethicalite.api.util.Randomizer;
 import net.unethicalite.api.util.Text;
@@ -30,6 +31,18 @@ public abstract class HTileObjectMixin implements TileObject
 {
 	@Shadow("client")
 	private static RSClient client;
+
+	@Inject
+	public int getTransformedId()
+	{
+		ObjectComposition transformedComposition = getTransformedComposition();
+		if (transformedComposition == null)
+		{
+			return -1;
+		}
+
+		return transformedComposition.getId();
+	}
 
 	@Override
 	@Inject

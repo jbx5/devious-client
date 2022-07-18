@@ -617,6 +617,7 @@ public class EntityRenderer
 			if (ids)
 			{
 				sb.append("ID: ").append(interactable.getId()).append("</br>");
+				sb.append("T_ID: ").append(((TileObject) interactable).getTransformedId()).append("</br>");
 			}
 
 			appendCommonFields(sb, interactable);
