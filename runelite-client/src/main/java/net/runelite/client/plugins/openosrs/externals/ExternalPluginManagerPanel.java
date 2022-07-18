@@ -1,14 +1,14 @@
 package net.runelite.client.plugins.openosrs.externals;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
-import java.net.MalformedURLException;
-import java.net.URL;
+import lombok.extern.slf4j.Slf4j;
+import net.runelite.client.eventbus.EventBus;
+import net.runelite.client.plugins.OPRSExternalPluginManager;
+import net.runelite.client.ui.ClientUI;
+import net.runelite.client.ui.ColorScheme;
+import net.runelite.client.ui.FontManager;
+import net.runelite.client.ui.PluginPanel;
+import net.runelite.client.util.ImageUtil;
+
 import javax.inject.Inject;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -19,14 +19,15 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
-import lombok.extern.slf4j.Slf4j;
-import net.runelite.client.eventbus.EventBus;
-import net.runelite.client.plugins.OPRSExternalPluginManager;
-import net.runelite.client.ui.ClientUI;
-import net.runelite.client.ui.ColorScheme;
-import net.runelite.client.ui.FontManager;
-import net.runelite.client.ui.PluginPanel;
-import net.runelite.client.util.ImageUtil;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 @Slf4j
 public class ExternalPluginManagerPanel extends PluginPanel
@@ -108,7 +109,7 @@ public class ExternalPluginManagerPanel extends PluginPanel
 				Object[] message = {
 					"Github Repository owner:", owner,
 					"Github Repository name:", name,
-					"Github Repository token:", token
+					"Github token (empty if public repo):", token
 				};
 
 				int option =
@@ -166,7 +167,7 @@ public class ExternalPluginManagerPanel extends PluginPanel
 				Object[] message = {
 					"Repository ID:", id,
 					"Repository URL:", url,
-					"Repository token:", token
+					"Github token (empty if public repo):", token
 				};
 
 				int option =
