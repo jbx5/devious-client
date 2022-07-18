@@ -35,6 +35,7 @@ import java.util.UUID;
 
 @Slf4j
 @RequiredArgsConstructor
+@Deprecated(forRemoval = true)
 public class GrandExchangeClient
 {
 	private static final Gson GSON = RuneLiteAPI.GSON;
