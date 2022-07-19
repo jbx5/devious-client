@@ -3,7 +3,8 @@ package net.unethicalite.api.coords;
 import net.unethicalite.api.commons.Rand;
 import net.runelite.api.coords.WorldPoint;
 
-import java.awt.*;
+import java.awt.Polygon;
+import java.awt.Rectangle;
 
 public class PolygonalArea implements Area
 {
