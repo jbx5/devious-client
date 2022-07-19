@@ -175,9 +175,6 @@ public class RuneLite
 	@Nullable
 	private RuntimeConfig runtimeConfig;
 
-	@Inject
-	private SettingsManager settingsManager;
-
 	private static final String BYPASS_ARG = "--IWillNotComplainIfIGetSentToTheGulagByJamflex";
 
 	public static void main(String[] args) throws Exception
@@ -227,7 +224,7 @@ public class RuneLite
 			});
 
 		parser.accepts("help", "Show this text").forHelp();
-		OptionSet options = Unethicalite.parseArgs(parser, args);
+		OptionSet options = SettingsManager.parseArgs(parser, args);
 
 		if (options.has("help"))
 		{
@@ -323,7 +320,8 @@ public class RuneLite
 				developerMode,
 				options.has("safe-mode"),
 				options.valueOf(sessionfile),
-				options.valueOf(configfile)));
+				options.valueOf(configfile),
+				options));
 
 			injector.getInstance(RuneLite.class).start(options);
 
@@ -386,8 +384,6 @@ public class RuneLite
 
 		// Load user configuration
 		configManager.load();
-		eventBus.register(settingsManager);
-
 		// Tell the plugin manager if client is outdated or not
 		pluginManager.setOutdated(isOutdated);
 
@@ -458,8 +454,6 @@ public class RuneLite
 		SplashScreen.stop();
 
 		clientUI.show();
-
-		Unethicalite.initArgs(configManager, options);
 	}
 
 	@VisibleForTesting

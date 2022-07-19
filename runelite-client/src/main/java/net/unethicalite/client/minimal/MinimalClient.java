@@ -151,9 +151,6 @@ public class MinimalClient
 	@Inject
 	private ClientSessionManager clientSessionManager;
 
-	@Inject
-	private SettingsManager settingsManager;
-
 	public static void main(String[] args) throws Exception
 	{
 		Locale.setDefault(Locale.ENGLISH);
@@ -179,7 +176,7 @@ public class MinimalClient
 				.withValuesConvertedBy(new ConfigFileConverter())
 				.defaultsTo(DEFAULT_CONFIG_FILE);
 
-		OptionSet options = Unethicalite.parseArgs(parser, args);
+		OptionSet options = SettingsManager.parseArgs(parser, args);
 
 		if (options.has("debug"))
 		{
@@ -262,7 +259,8 @@ public class MinimalClient
 					options.has("developer-mode"),
 					okHttpClient,
 					clientLoader,
-					options.valueOf(configfile))));
+					options.valueOf(configfile),
+					options)));
 
 			RuneLite.getInjector().getInstance(MinimalClient.class).start(options);
 
@@ -321,16 +319,12 @@ public class MinimalClient
 		minimalFpsManager.reloadConfig(minimalConfig.fpsLimit());
 		eventBus.register(minimalToolbar);
 		eventBus.register(minimalPluginManager);
-		eventBus.register(settingsManager);
-
-		Unethicalite.initArgs(configManager, options);
 
 		// Start client session
 		clientSessionManager.start();
 		eventBus.register(clientSessionManager);
 
 		minimalUI.init();
-
 
 		eventBus.register(minimalUI);
 		eventBus.register(overlayManager);
@@ -342,7 +336,7 @@ public class MinimalClient
 
 		if (options.has("script"))
 		{
-			Unethicalite.quickLaunch(minimalPluginManager, options);
+			SettingsManager.quickLaunch(minimalPluginManager, options);
 		}
 	}
 
