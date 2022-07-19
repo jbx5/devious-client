@@ -27,8 +27,8 @@ public class Trade
 	private static final Supplier<Widget> ACCEPT_2 = () -> Widgets.get(WidgetInfo.SECOND_TRADING_WITH_ACCEPT_BUTTON);
 	private static final Supplier<Widget> DECLINE_1 = () -> Widgets.get(WidgetID.PLAYER_TRADE_SCREEN_GROUP_ID, 13);
 	private static final Supplier<Widget> DECLINE_2 = () -> Widgets.get(WidgetID.PLAYER_TRADE_CONFIRM_GROUP_ID, WidgetID.TradeScreen.SECOND_DECLINE_FUNC);
-	private static final Supplier<Widget> ACCEPT_STATUS_1 = () -> Widgets.get(335, 30);
-	private static final Supplier<Widget> ACCEPT_STATUS_2 = () -> Widgets.get(334, 4);
+	private static final Supplier<Widget> ACCEPT_STATUS_1 = () -> Widgets.get(WidgetID.PLAYER_TRADE_SCREEN_GROUP_ID, 30);
+	private static final Supplier<Widget> ACCEPT_STATUS_2 = () -> Widgets.get(WidgetID.PLAYER_TRADE_CONFIRM_GROUP_ID, 4);
 
 	public static boolean isOpen()
 	{
