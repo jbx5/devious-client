@@ -53,7 +53,7 @@ import net.runelite.client.events.ConfigChanged;
 import net.runelite.client.events.ExternalPluginsChanged;
 import net.runelite.client.ui.ClientUI;
 import net.runelite.client.util.SwingUtil;
-import net.unethicalite.client.Unethicalite;
+import net.unethicalite.client.Static;
 import net.unethicalite.client.plugins.PrivateUpdateRepository;
 import org.jgroups.Message;
 import org.pf4j.DefaultPluginManager;
@@ -234,7 +234,7 @@ public class OPRSExternalPluginManager
 		{
 			List.copyOf(repositories).forEach(repo ->
 			{
-				if (Unethicalite.MALICIOUS_REPO_OWNERS.contains(repo.getOwner()))
+				if (Static.getPluginRepoManager().isRepoMalicious(repo.getOwner()))
 				{
 					repositories.removeIf(x -> x.getOwner().equals(repo.getOwner()));
 					removeRepository(repo.getOwner());

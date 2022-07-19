@@ -1,24 +1,29 @@
 package net.unethicalite.client.managers;
 
+import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.events.ConfigChanged;
 import net.unethicalite.client.minimal.config.DisableRenderCallbacks;
 
 import javax.inject.Inject;
-import javax.inject.Singleton;
 
-@Singleton
+@Slf4j
 public class SettingsManager
 {
 	private static final DisableRenderCallbacks DISABLE_RENDERING = new DisableRenderCallbacks();
 
-	@Inject
-	private Client client;
+	private final Client client;
 
-	@Subscribe(priority = Integer.MAX_VALUE)
+	@Inject
+	SettingsManager(Client client) {
+		this.client = client;
+	}
+
+	@Subscribe
 	private void onConfigChanged(ConfigChanged event)
 	{
+		log.debug("Config changed: {} {}", event.getGroup(), event.getKey());
 		if (!event.getGroup().equals("unethicalite"))
 		{
 			return;

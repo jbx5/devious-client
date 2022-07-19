@@ -386,6 +386,7 @@ public class RuneLite
 
 		// Load user configuration
 		configManager.load();
+		eventBus.register(settingsManager);
 
 		// Tell the plugin manager if client is outdated or not
 		pluginManager.setOutdated(isOutdated);
@@ -423,9 +424,6 @@ public class RuneLite
 		// Initialize UI
 		clientUI.init();
 
-		eventBus.register(settingsManager);
-		Unethicalite.initArgs(options);
-
 		// Initialize Discord service
 		discordService.init();
 
@@ -460,6 +458,8 @@ public class RuneLite
 		SplashScreen.stop();
 
 		clientUI.show();
+
+		Unethicalite.initArgs(configManager, options);
 	}
 
 	@VisibleForTesting

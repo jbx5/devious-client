@@ -3,7 +3,7 @@ package net.runelite.client.plugins;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
-import net.unethicalite.client.Unethicalite;
+import net.unethicalite.client.Static;
 import org.apache.commons.lang3.StringUtils;
 import org.pf4j.update.DefaultUpdateRepository;
 import org.pf4j.update.FileDownloader;
@@ -81,7 +81,7 @@ public class OPRSUpdateRepository implements UpdateRepository
 
 	public void initPlugins()
 	{
-		if (Unethicalite.MALICIOUS_REPO_OWNERS.contains(getOwner())) return;
+		if (Static.getPluginRepoManager().isRepoMalicious(getOwner())) return;
 		Reader pluginsJsonReader;
 		try
 		{

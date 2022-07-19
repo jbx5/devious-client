@@ -321,8 +321,9 @@ public class MinimalClient
 		minimalFpsManager.reloadConfig(minimalConfig.fpsLimit());
 		eventBus.register(minimalToolbar);
 		eventBus.register(minimalPluginManager);
+		eventBus.register(settingsManager);
 
-		Unethicalite.initArgs(options);
+		Unethicalite.initArgs(configManager, options);
 
 		// Start client session
 		clientSessionManager.start();
@@ -330,7 +331,6 @@ public class MinimalClient
 
 		minimalUI.init();
 
-		eventBus.register(settingsManager);
 
 		eventBus.register(minimalUI);
 		eventBus.register(overlayManager);

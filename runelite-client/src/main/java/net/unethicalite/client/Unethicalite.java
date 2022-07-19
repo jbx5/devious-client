@@ -2,7 +2,9 @@ package net.unethicalite.client;
 
 import joptsimple.OptionParser;
 import joptsimple.OptionSet;
+import lombok.extern.slf4j.Slf4j;
 import net.runelite.client.RuneLite;
+import net.runelite.client.config.ConfigManager;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.unethicalite.api.account.GameAccount;
 import net.unethicalite.api.game.Game;
@@ -12,18 +14,15 @@ import net.unethicalite.client.minimal.plugins.PluginEntry;
 
 import java.io.File;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
 import static net.runelite.client.RuneLite.OPENOSRS;
 
+@Slf4j
 public class Unethicalite
 {
 	public static final File CLIENT_DIR = new File(System.getProperty("user.home"), ".openosrs");
-	public static final List<String> MALICIOUS_REPO_OWNERS = List.of(
-			"plugins-release"
-	);
 
 	public static void main(String[] args) throws Exception
 	{
@@ -101,11 +100,12 @@ public class Unethicalite
 		return options;
 	}
 
-	public static void initArgs(OptionSet options)
+	public static void initArgs(ConfigManager configManager, OptionSet options)
 	{
 		if (options.has("norender"))
 		{
-			Static.getConfigManager().setConfiguration("unethicalite", "renderOff", true);
+			log.debug("No render");
+			configManager.setConfiguration("unethicalite", "renderOff", true);
 		}
 	}
 
