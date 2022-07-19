@@ -24,40 +24,21 @@
  */
 package net.runelite.client;
 
-import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import com.google.common.base.Strings;
 import com.google.common.math.DoubleMath;
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import com.google.gson.Gson;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import com.google.inject.binder.ConstantBindingBuilder;
 import com.google.inject.name.Names;
 import com.openosrs.client.config.OpenOSRSConfig;
-
-import java.applet.Applet;
-import java.io.File;
-import java.util.Map;
-import java.io.IOException;
-import java.util.Properties;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import javax.inject.Named;
-import javax.inject.Singleton;
-
-import net.runelite.api.packets.ServerPacket;
-import net.unethicalite.api.movement.pathfinder.GlobalCollisionMap;
-import net.unethicalite.client.config.UnethicaliteConfig;
-import net.unethicalite.client.config.UnethicaliteProperties;
-import net.unethicalite.client.Static;
+import joptsimple.OptionSet;
 import lombok.AllArgsConstructor;
 import net.runelite.api.Client;
 import net.runelite.api.hooks.Callbacks;
+import net.runelite.api.packets.ClientPacket;
+import net.runelite.api.packets.ServerPacket;
 import net.runelite.client.account.SessionManager;
 import net.runelite.client.callback.Hooks;
 import net.runelite.client.chat.ChatMessageManager;
@@ -72,9 +53,28 @@ import net.runelite.client.task.Scheduler;
 import net.runelite.client.util.DeferredEventBus;
 import net.runelite.client.util.ExecutorServiceExceptionLogger;
 import net.runelite.http.api.RuneLiteAPI;
+import net.unethicalite.api.movement.pathfinder.GlobalCollisionMap;
+import net.unethicalite.client.Static;
+import net.unethicalite.client.config.UnethicaliteConfig;
+import net.unethicalite.client.config.UnethicaliteProperties;
 import okhttp3.HttpUrl;
-import net.runelite.api.packets.ClientPacket;
 import okhttp3.OkHttpClient;
+
+import javax.annotation.Nullable;
+import javax.inject.Named;
+import javax.inject.Singleton;
+import java.applet.Applet;
+import java.io.File;
+import java.io.IOException;
+import java.util.Map;
+import java.util.Properties;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Supplier;
 
 @AllArgsConstructor
 public class RuneLiteModule extends AbstractModule
@@ -86,6 +86,7 @@ public class RuneLiteModule extends AbstractModule
 	private final boolean safeMode;
 	private final File sessionfile;
 	private final File config;
+	private final OptionSet optionSet;
 
 	@Override
 	protected void configure()
@@ -124,6 +125,7 @@ public class RuneLiteModule extends AbstractModule
 			}
 		}
 
+		bind(OptionSet.class).annotatedWith(Names.named("clientArgs")).toInstance(optionSet);
 		bindConstant().annotatedWith(Names.named("developerMode")).to(developerMode);
 		bindConstant().annotatedWith(Names.named("safeMode")).to(safeMode);
 		bind(File.class).annotatedWith(Names.named("sessionfile")).toInstance(sessionfile);

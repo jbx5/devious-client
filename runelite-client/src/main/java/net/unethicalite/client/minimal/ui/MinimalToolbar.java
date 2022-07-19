@@ -307,18 +307,6 @@ public class MinimalToolbar extends JMenuBar
 		switch (event.getKey())
 		{
 			case "renderOff":
-				boolean enabled = Boolean.parseBoolean(event.getNewValue());
-				client.setLowCpu(enabled);
-
-				if (enabled)
-				{
-					client.setDrawCallbacks(DISABLE_RENDERING);
-				}
-				else
-				{
-					client.setDrawCallbacks(null);
-				}
-
 				if (rendering != null)
 				{
 					SwingUtilities.invokeLater(() -> rendering.setSelected(Boolean.parseBoolean(event.getNewValue())));
@@ -330,7 +318,6 @@ public class MinimalToolbar extends JMenuBar
 				minimalFpsManager.reloadConfig(unethicaliteConfig.fpsLimit());
 				break;
 		}
-
 	}
 
 	@Subscribe

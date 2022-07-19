@@ -46,7 +46,6 @@ import net.runelite.client.RuntimeConfigLoader;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.game.WorldService;
-import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.rs.ClientLoader;
 import net.runelite.client.rs.ClientUpdateCheckMode;
 import net.runelite.client.ui.DrawManager;
@@ -54,13 +53,11 @@ import net.runelite.client.ui.FatalErrorDialog;
 import net.runelite.client.ui.overlay.OverlayManager;
 import net.runelite.client.ui.overlay.tooltip.TooltipOverlay;
 import net.runelite.http.api.RuneLiteAPI;
-import net.unethicalite.api.account.GameAccount;
-import net.unethicalite.api.game.Game;
-import net.unethicalite.client.Static;
+import net.unethicalite.client.Unethicalite;
 import net.unethicalite.client.config.UnethicaliteConfig;
 import net.unethicalite.client.managers.MinimalFpsManager;
 import net.unethicalite.client.managers.MinimalPluginManager;
-import net.unethicalite.client.minimal.plugins.PluginEntry;
+import net.unethicalite.client.managers.SettingsManager;
 import net.unethicalite.client.minimal.ui.MinimalToolbar;
 import net.unethicalite.client.minimal.ui.MinimalUI;
 import okhttp3.Cache;
@@ -91,20 +88,17 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.cert.X509Certificate;
 import java.util.Locale;
-import java.util.Objects;
-import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Stream;
 
 import static java.nio.file.StandardCopyOption.COPY_ATTRIBUTES;
-import static net.runelite.client.RuneLite.OPENOSRS;
 import static net.runelite.client.RuneLite.USER_AGENT;
 
 @Singleton
 @Slf4j
 public class MinimalClient
 {
-	public static final File CLIENT_DIR = new File(System.getProperty("user.home"), ".openosrs");
+	public static final File CLIENT_DIR = Unethicalite.CLIENT_DIR;
 	public static final File CACHE_DIR = new File(CLIENT_DIR, "cache");
 	public static final File LOGS_DIR = new File(CLIENT_DIR, "logs");
 	public static final File DEFAULT_CONFIG_FILE = new File(CLIENT_DIR, "settings.properties");
@@ -182,7 +176,7 @@ public class MinimalClient
 				.withValuesConvertedBy(new ConfigFileConverter())
 				.defaultsTo(DEFAULT_CONFIG_FILE);
 
-		OptionSet options = parseArgs(parser, args);
+		OptionSet options = SettingsManager.parseArgs(parser, args);
 
 		if (options.has("debug"))
 		{
@@ -265,7 +259,8 @@ public class MinimalClient
 					options.has("developer-mode"),
 					okHttpClient,
 					clientLoader,
-					options.valueOf(configfile))));
+					options.valueOf(configfile),
+					options)));
 
 			RuneLite.getInjector().getInstance(MinimalClient.class).start(options);
 
@@ -303,7 +298,7 @@ public class MinimalClient
 			applet.setSize(Constants.GAME_FIXED_SIZE);
 
 			// Change user.home so the client places jagexcache in the .runelite directory
-			String oldHome = System.setProperty("user.home", getCacheDirectory().getAbsolutePath());
+			String oldHome = System.setProperty("user.home", Unethicalite.getCacheDirectory().getAbsolutePath());
 			try
 			{
 				applet.init();
@@ -325,8 +320,6 @@ public class MinimalClient
 		eventBus.register(minimalToolbar);
 		eventBus.register(minimalPluginManager);
 
-		initArgs(options);
-
 		// Start client session
 		clientSessionManager.start();
 		eventBus.register(clientSessionManager);
@@ -343,7 +336,7 @@ public class MinimalClient
 
 		if (options.has("script"))
 		{
-			quickLaunch(options);
+			SettingsManager.quickLaunch(minimalPluginManager, options);
 		}
 	}
 
@@ -472,7 +465,7 @@ public class MinimalClient
 	private static void copyJagexCache()
 	{
 		Path from = Paths.get(System.getProperty("user.home"), "jagexcache");
-		Path to = Paths.get(getCacheDirectory().getAbsolutePath(), "jagexcache");
+		Path to = Paths.get(Unethicalite.getCacheDirectory().getAbsolutePath(), "jagexcache");
 		if (Files.exists(to) || !Files.exists(from))
 		{
 			return;
@@ -499,118 +492,5 @@ public class MinimalClient
 		{
 			log.warn("unable to copy jagexcache", e);
 		}
-	}
-
-	private void initArgs(OptionSet options)
-	{
-		if (options.has("norender"))
-		{
-			configManager.setConfiguration("unethicalite", "renderOff", true);
-		}
-	}
-
-	private void quickLaunch(OptionSet options)
-	{
-		if (options.has("script"))
-		{
-			String script = (String) options.valueOf("script");
-
-			PluginEntry quickStartScript = minimalPluginManager.loadPlugins()
-					.stream().filter(x -> x.getScriptClass().getAnnotation(PluginDescriptor.class).name().equals(script))
-					.findFirst()
-					.orElse(null);
-			if (quickStartScript == null || !quickStartScript.isScript())
-			{
-				return;
-			}
-
-			minimalPluginManager.startPlugin(quickStartScript);
-		}
-	}
-
-	private static String getCacheDir()
-	{
-		var dir = System.getProperty("unethicalite.cache-dir");
-		if (dir != null)
-		{
-			return dir;
-		}
-
-		return OPENOSRS;
-	}
-
-	public static File getCacheDirectory()
-	{
-		var dir = getCacheDir();
-		if (Objects.equals(dir, OPENOSRS))
-		{
-			return new File(CLIENT_DIR, "jagexcache");
-		}
-
-		var cacheDirs = new File(CLIENT_DIR, "custom-cache");
-		return new File(cacheDirs, dir);
-	}
-
-	public static OptionSet parseArgs(OptionParser parser, String... args)
-	{
-		var accInfo = parser
-				.accepts("account")
-				.withRequiredArg().ofType(String.class);
-
-		var cacheDirInfo = parser
-				.accepts("cache-dir")
-				.withOptionalArg().ofType(String.class);
-
-		parser.accepts("minimal");
-		parser.accepts("norender");
-
-		parser.accepts("script")
-				.withRequiredArg().ofType(String.class);
-
-		parser.accepts("scriptArgs")
-				.withRequiredArg().ofType(String.class);
-
-		var options = parser.parse(args);
-
-		if (options.has("account"))
-		{
-			var details = options.valueOf(accInfo).split(":");
-			GameAccount gameAccount = new GameAccount(details[0], details[1]);
-			if (details.length >= 3)
-			{
-				gameAccount.setAuth(details[2]);
-			}
-
-			Game.setGameAccount(gameAccount);
-		}
-
-		if (options.has("scriptArgs"))
-		{
-			Static.setScriptArgs(((String) options.valueOf("scriptArgs")).split(","));
-		}
-
-		if (options.has("cache-dir"))
-		{
-			var cacheDir = options.valueOf(cacheDirInfo);
-
-			if (cacheDir != null)
-			{
-				System.setProperty("unethicalite.cache-dir", cacheDir);
-			}
-			else
-			{
-				var acc = Game.getGameAccount();
-				if (acc != null)
-				{
-					System.setProperty("unethicalite.cache-dir", acc.getUsername());
-				}
-				else
-				{
-					System.setProperty("unethicalite.cache-dir", UUID.randomUUID().toString());
-				}
-			}
-		}
-
-		return options;
 	}
 }

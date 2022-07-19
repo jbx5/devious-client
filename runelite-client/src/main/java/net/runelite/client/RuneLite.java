@@ -63,7 +63,8 @@ import net.runelite.client.util.WorldUtil;
 import net.runelite.http.api.RuneLiteAPI;
 import net.runelite.http.api.worlds.World;
 import net.runelite.http.api.worlds.WorldResult;
-import net.unethicalite.client.minimal.MinimalClient;
+import net.unethicalite.client.Unethicalite;
+import net.unethicalite.client.managers.SettingsManager;
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -223,7 +224,7 @@ public class RuneLite
 			});
 
 		parser.accepts("help", "Show this text").forHelp();
-		OptionSet options = MinimalClient.parseArgs(parser, args);
+		OptionSet options = SettingsManager.parseArgs(parser, args);
 
 		if (options.has("help"))
 		{
@@ -319,9 +320,10 @@ public class RuneLite
 				developerMode,
 				options.has("safe-mode"),
 				options.valueOf(sessionfile),
-				options.valueOf(configfile)));
+				options.valueOf(configfile),
+				options));
 
-			injector.getInstance(RuneLite.class).start();
+			injector.getInstance(RuneLite.class).start(options);
 
 			final long end = System.currentTimeMillis();
 			final RuntimeMXBean rb = ManagementFactory.getRuntimeMXBean();
@@ -342,7 +344,7 @@ public class RuneLite
 		}
 	}
 
-	public void start() throws Exception
+	public void start(OptionSet options) throws Exception
 	{
 		// Load RuneLite or Vanilla client
 		final boolean isOutdated = client == null;
@@ -365,7 +367,7 @@ public class RuneLite
 
 			System.setProperty("jagex.disableBouncyCastle", "true");
 			// Change user.home so the client places jagexcache in the .runelite directory
-			String oldHome = System.setProperty("user.home", MinimalClient.getCacheDirectory().getAbsolutePath());
+			String oldHome = System.setProperty("user.home", Unethicalite.getCacheDirectory().getAbsolutePath());
 			try
 			{
 				applet.init();
@@ -382,7 +384,6 @@ public class RuneLite
 
 		// Load user configuration
 		configManager.load();
-
 		// Tell the plugin manager if client is outdated or not
 		pluginManager.setOutdated(isOutdated);
 
@@ -642,7 +643,7 @@ public class RuneLite
 	private static void copyJagexCache()
 	{
 		Path from = Paths.get(System.getProperty("user.home"), "jagexcache");
-		Path to = MinimalClient.getCacheDirectory().getAbsoluteFile().toPath();
+		Path to = Unethicalite.getCacheDirectory().getAbsoluteFile().toPath();
 		if (Files.exists(to) || !Files.exists(from))
 		{
 			return;
