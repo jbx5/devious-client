@@ -61,12 +61,11 @@ public class RectangularArea implements Area
 	}
 
 	@Override
-	public WorldPoint getRandom()
+	public WorldPoint getRandomTile()
 	{
 		return new WorldPoint(Rand.nextInt(minX, maxX), Rand.nextInt(minY, maxY), plane);
 	}
 
-	@Override
 	public WorldPoint getCenter()
 	{
 		return new WorldPoint((minX + maxX) / 2, (minY + maxY) / 2, plane);

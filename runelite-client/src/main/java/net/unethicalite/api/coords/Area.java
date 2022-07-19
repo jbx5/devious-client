@@ -29,13 +29,8 @@ public interface Area
 		return contains(locatable.getWorldLocation());
 	}
 
-	default WorldPoint getRandom()
+	default WorldPoint getRandomTile()
 	{
-		return null;
-	}
-
-	default WorldPoint getCenter()
-	{
-		return null;
+		throw new UnsupportedOperationException("Not yet implemented");
 	}
 }

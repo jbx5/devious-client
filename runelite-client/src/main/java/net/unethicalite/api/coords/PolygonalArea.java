@@ -33,7 +33,7 @@ public class PolygonalArea implements Area
 	}
 
 	@Override
-	public WorldPoint getRandom()
+	public WorldPoint getRandomTile()
 	{
 		int x, y;
 		Rectangle r = polygon.getBounds();
@@ -43,12 +43,5 @@ public class PolygonalArea implements Area
 			y = Rand.nextInt(r.y, r.y + r.height);
 		} while (!polygon.contains(x, y));
 		return new WorldPoint(x, y, plane);
-	}
-
-	@Override
-	public WorldPoint getCenter()
-	{
-		Rectangle r = polygon.getBounds();
-		return new WorldPoint(r.x + r.width / 2, r.y + r.height / 2, plane);
 	}
 }
