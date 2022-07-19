@@ -28,4 +28,14 @@ public interface Area
 	{
 		return contains(locatable.getWorldLocation());
 	}
+
+	default WorldPoint getRandom()
+	{
+		return null;
+	}
+
+	default WorldPoint getCenter()
+	{
+		return null;
+	}
 }
