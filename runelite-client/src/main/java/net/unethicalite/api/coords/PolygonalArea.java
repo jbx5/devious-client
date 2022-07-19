@@ -1,12 +1,9 @@
 package net.unethicalite.api.coords;
 
-import net.runelite.api.geometry.SimplePolygon;
-import net.runelite.api.model.Jarvis;
 import net.unethicalite.api.commons.Rand;
 import net.runelite.api.coords.WorldPoint;
 
 import java.awt.*;
-import java.util.ArrayList;
 
 public class PolygonalArea implements Area
 {
@@ -36,10 +33,12 @@ public class PolygonalArea implements Area
 	}
 
 	@Override
-	public WorldPoint getRandom() {
+	public WorldPoint getRandom()
+	{
 		int x, y;
 		Rectangle r = polygon.getBounds();
-		do {
+		do
+		{
 			x = Rand.nextInt(r.x, r.x + r.width);
 			y = Rand.nextInt(r.y, r.y + r.height);
 		} while (!polygon.contains(x, y));
@@ -47,7 +46,8 @@ public class PolygonalArea implements Area
 	}
 
 	@Override
-	public WorldPoint getCenter() {
+	public WorldPoint getCenter()
+	{
 		Rectangle r = polygon.getBounds();
 		return new WorldPoint(r.x + r.width / 2, r.y + r.height / 2, plane);
 	}
