@@ -3,7 +3,7 @@ package net.unethicalite.api.input;
 import net.unethicalite.api.commons.Time;
 import net.unethicalite.client.Static;
 
-import java.awt.*;
+import java.awt.Canvas;
 import java.awt.event.KeyEvent;
 
 public class Keyboard

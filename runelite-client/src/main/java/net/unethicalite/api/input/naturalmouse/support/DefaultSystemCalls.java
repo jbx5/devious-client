@@ -3,7 +3,9 @@ package net.unethicalite.api.input.naturalmouse.support;
 import net.unethicalite.api.commons.Time;
 import net.unethicalite.api.input.naturalmouse.api.SystemCalls;
 
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.Robot;
+import java.awt.Toolkit;
 
 public class DefaultSystemCalls implements SystemCalls
 {

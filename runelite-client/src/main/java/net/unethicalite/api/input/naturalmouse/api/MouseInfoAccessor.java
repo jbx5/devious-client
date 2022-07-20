@@ -1,6 +1,6 @@
 package net.unethicalite.api.input.naturalmouse.api;
 
-import java.awt.*;
+import java.awt.Point;
 
 /**
  * Abstraction for getting mouse position.

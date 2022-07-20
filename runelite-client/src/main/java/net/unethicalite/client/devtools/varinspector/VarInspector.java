@@ -46,24 +46,6 @@ import java.util.Objects;
 @Slf4j
 public class VarInspector
 {
-	@Getter(AccessLevel.PACKAGE)
-	private enum VarType
-	{
-		VARBIT("Varbit"),
-		VARP("VarPlayer"),
-		VARCINT("VarClientInt"),
-		VARCSTR("VarClientStr");
-
-		private final String name;
-		private final JCheckBox checkBox;
-
-		VarType(String name)
-		{
-			this.name = name;
-			checkBox = new JCheckBox(name, true);
-		}
-	}
-
 	private final static int MAX_LOG_ENTRIES = 10_000;
 	private static final int VARBITS_ARCHIVE_ID = 14;
 	private static final Map<Integer, String> VARBIT_NAMES;
@@ -105,20 +87,14 @@ public class VarInspector
 
 	@Inject
 	private Client client;
-
 	@Inject
 	private EventBus eventBus;
-
 	private JPanel tracker;
-
 	private int lastTick = 0;
-
 	private int[] oldVarps = null;
 	private int[] oldVarps2 = null;
 	private int numVarbits = 10000;
-
 	private Map<Integer, Object> varcs = null;
-
 	private JFrame frame;
 
 	@Inject
@@ -373,5 +349,23 @@ public class VarInspector
 		tracker.removeAll();
 		eventBus.unregister(this);
 		frame.setVisible(false);
+	}
+
+	@Getter(AccessLevel.PACKAGE)
+	private enum VarType
+	{
+		VARBIT("Varbit"),
+		VARP("VarPlayer"),
+		VARCINT("VarClientInt"),
+		VARCSTR("VarClientStr");
+
+		private final String name;
+		private final JCheckBox checkBox;
+
+		VarType(String name)
+		{
+			this.name = name;
+			checkBox = new JCheckBox(name, true);
+		}
 	}
 }

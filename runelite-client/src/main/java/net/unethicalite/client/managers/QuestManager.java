@@ -24,44 +24,44 @@ import java.util.Map;
 @Singleton
 public class QuestManager
 {
-    @Getter
-    private static final Map<Quest, QuestState> questStates = new HashMap<>();
+	@Getter
+	private static final Map<Quest, QuestState> questStates = new HashMap<>();
 
-    private Instant lastUpdateTime = Instant.EPOCH;
+	private Instant lastUpdateTime = Instant.EPOCH;
 
-    @Inject
-    QuestManager(EventBus eventBus)
-    {
-        eventBus.register(this);
-        Arrays.stream(Quest.values()).forEach(it -> questStates.put(it, QuestState.NOT_STARTED));
-    }
+	@Inject
+	QuestManager(EventBus eventBus)
+	{
+		eventBus.register(this);
+		Arrays.stream(Quest.values()).forEach(it -> questStates.put(it, QuestState.NOT_STARTED));
+	}
 
-    private void loadQuestStates()
-    {
-        if (Game.isLoggedIn())
-        {
-            Client client = Static.getClient();
-            GameThread.invoke(() -> Arrays.stream(Quest.values()).forEach(it -> questStates.put(it, it.getState(client))));
-            lastUpdateTime = Instant.now();
-        }
-    }
+	private void loadQuestStates()
+	{
+		if (Game.isLoggedIn())
+		{
+			Client client = Static.getClient();
+			GameThread.invoke(() -> Arrays.stream(Quest.values()).forEach(it -> questStates.put(it, it.getState(client))));
+			lastUpdateTime = Instant.now();
+		}
+	}
 
-    @Subscribe(priority = Integer.MAX_VALUE)
-    public void onGameTick(GameTick event)
-    {
-        if (Duration.between(lastUpdateTime, Instant.now()).toSeconds() >= 60)
-        {
-            loadQuestStates();
-        }
-    }
+	@Subscribe(priority = Integer.MAX_VALUE)
+	public void onGameTick(GameTick event)
+	{
+		if (Duration.between(lastUpdateTime, Instant.now()).toSeconds() >= 60)
+		{
+			loadQuestStates();
+		}
+	}
 
 
-    @Subscribe(priority = Integer.MAX_VALUE)
-    public void onWidgetLoaded(WidgetLoaded event)
-    {
-        if (WidgetInfo.QUEST_COMPLETED_NAME_TEXT.getGroupId() == event.getGroupId())
-        {
-            loadQuestStates();
-        }
-    }
+	@Subscribe(priority = Integer.MAX_VALUE)
+	public void onWidgetLoaded(WidgetLoaded event)
+	{
+		if (WidgetInfo.QUEST_COMPLETED_NAME_TEXT.getGroupId() == event.getGroupId())
+		{
+			loadQuestStates();
+		}
+	}
 }

@@ -1,7 +1,6 @@
 package net.unethicalite.client.devtools.scriptinspector;
 
 import com.google.common.collect.Lists;
-import net.unethicalite.client.devtools.widgetinspector.WidgetInspector;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.extern.slf4j.Slf4j;
@@ -17,15 +16,32 @@ import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.ui.ColorScheme;
 import net.runelite.client.ui.DynamicGridLayout;
 import net.runelite.client.ui.FontManager;
+import net.unethicalite.client.devtools.widgetinspector.WidgetInspector;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import javax.swing.*;
+import javax.swing.BorderFactory;
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
+import javax.swing.JSpinner;
+import javax.swing.JTree;
+import javax.swing.ListSelectionModel;
+import javax.swing.SwingUtilities;
 import javax.swing.border.CompoundBorder;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreePath;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.event.AdjustmentEvent;
 import java.awt.event.AdjustmentListener;
 import java.awt.event.WindowAdapter;
@@ -59,51 +75,6 @@ public class ScriptInspector
 	private DefaultListModel listModel;
 	private ListState state = ListState.BLACKLIST;
 	private JFrame frame;
-
-	private enum ListState
-	{
-		BLACKLIST,
-		HIGHLIGHT
-	}
-
-	@Data
-	@EqualsAndHashCode(callSuper = true)
-	private class ScriptTreeNode extends DefaultMutableTreeNode
-	{
-		private final int scriptId;
-		private Widget source;
-		private int duplicateNumber = 1;
-
-		@Override
-		public String toString()
-		{
-			String output = Integer.toString(scriptId);
-
-			if (duplicateNumber != 1)
-			{
-				output += " (" + duplicateNumber + ")";
-			}
-
-			if (source != null)
-			{
-				int id = source.getId();
-				output += "  -  " + TO_GROUP(id) + "." + TO_CHILD(id);
-
-				if (source.getIndex() != -1)
-				{
-					output += "[" + source.getIndex() + "]";
-				}
-
-				WidgetInfo info = WidgetInspector.getWidgetInfo(id);
-				if (info != null)
-				{
-					output += " " + info.name();
-				}
-			}
-
-			return output;
-		}
-	}
 
 	@Inject
 	ScriptInspector(Client client, EventBus eventBus, ConfigManager configManager)
@@ -465,5 +436,50 @@ public class ScriptInspector
 		}
 
 		return null;
+	}
+
+	private enum ListState
+	{
+		BLACKLIST,
+		HIGHLIGHT
+	}
+
+	@Data
+	@EqualsAndHashCode(callSuper = true)
+	private class ScriptTreeNode extends DefaultMutableTreeNode
+	{
+		private final int scriptId;
+		private Widget source;
+		private int duplicateNumber = 1;
+
+		@Override
+		public String toString()
+		{
+			String output = Integer.toString(scriptId);
+
+			if (duplicateNumber != 1)
+			{
+				output += " (" + duplicateNumber + ")";
+			}
+
+			if (source != null)
+			{
+				int id = source.getId();
+				output += "  -  " + TO_GROUP(id) + "." + TO_CHILD(id);
+
+				if (source.getIndex() != -1)
+				{
+					output += "[" + source.getIndex() + "]";
+				}
+
+				WidgetInfo info = WidgetInspector.getWidgetInfo(id);
+				if (info != null)
+				{
+					output += " " + info.name();
+				}
+			}
+
+			return output;
+		}
 	}
 }

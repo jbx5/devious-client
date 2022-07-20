@@ -25,7 +25,7 @@
 
 object ProjectVersions {
     const val launcherVersion = "1.0.0"
-    const val rlVersion = "1.8.27"
+    const val rlVersion = "1.8.28"
 
     const val openosrsVersion = "4.31.2"
 
@@ -34,5 +34,5 @@ object ProjectVersions {
 
     const val lombokVersion = "1.18.20"
 
-    const val unethicaliteVersion = "1.0.4"
+    const val unethicaliteVersion = "1.0.5"
 }

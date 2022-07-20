@@ -25,19 +25,24 @@
  */
 package net.runelite.api.coords;
 
-import java.awt.*;
+import lombok.Value;
+import net.runelite.api.Client;
+import net.runelite.api.Locatable;
+import net.runelite.api.Perspective;
+import net.runelite.api.Tile;
+
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.Polygon;
+import java.awt.Stroke;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-import lombok.Value;
-import net.runelite.api.Client;
+
 import static net.runelite.api.Constants.CHUNK_SIZE;
 import static net.runelite.api.Constants.REGION_SIZE;
-
-import net.runelite.api.Locatable;
-import net.runelite.api.Perspective;
-import net.runelite.api.Tile;
 
 /**
  * A three-dimensional point representing the coordinate of a Tile.

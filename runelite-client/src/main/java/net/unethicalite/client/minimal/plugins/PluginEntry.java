@@ -1,9 +1,9 @@
 package net.unethicalite.client.minimal.plugins;
 
-import net.unethicalite.api.plugins.Script;
 import lombok.Value;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
+import net.unethicalite.api.plugins.Script;
 
 import java.util.jar.Manifest;
 

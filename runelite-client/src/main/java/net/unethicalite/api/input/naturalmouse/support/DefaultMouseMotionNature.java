@@ -1,6 +1,7 @@
 package net.unethicalite.api.input.naturalmouse.support;
 
-import java.awt.*;
+import java.awt.AWTException;
+import java.awt.Robot;
 import java.util.Random;
 
 import static net.unethicalite.api.input.naturalmouse.support.DefaultNoiseProvider.DEFAULT_NOISINESS_DIVIDER;

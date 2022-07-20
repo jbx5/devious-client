@@ -1,8 +1,5 @@
 package net.unethicalite.api.scene;
 
-import net.unethicalite.api.coords.RegionPoint;
-import net.unethicalite.api.coords.ScenePoint;
-import net.unethicalite.api.widgets.Widgets;
 import net.runelite.api.Client;
 import net.runelite.api.Constants;
 import net.runelite.api.Point;
@@ -12,9 +9,12 @@ import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
+import net.unethicalite.api.coords.RegionPoint;
+import net.unethicalite.api.coords.ScenePoint;
+import net.unethicalite.api.widgets.Widgets;
 import net.unethicalite.client.Static;
 
-import java.awt.*;
+import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;

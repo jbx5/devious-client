@@ -33,13 +33,16 @@ import com.openosrs.http.api.discord.embed.ImageEmbed;
 import com.openosrs.http.api.discord.embed.ProviderEmbed;
 import com.openosrs.http.api.discord.embed.ThumbnailEmbed;
 import com.openosrs.http.api.discord.embed.VideoEmbed;
-import java.util.ArrayList;
-import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.Singular;
 import lombok.ToString;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 @Getter
 @Setter
@@ -61,7 +64,8 @@ public class DiscordEmbed
 	VideoEmbed video;
 	ProviderEmbed provider;
 	AuthorEmbed author;
-	final List<FieldEmbed> fields = new ArrayList<>();
+	@Singular
+	List<FieldEmbed> fields = new ArrayList<>();
 
 	public DiscordEmbed(AuthorEmbed author, ThumbnailEmbed thumb, String description, FooterEmbed footer, String color, List<FieldEmbed> fields)
 	{
@@ -75,6 +79,11 @@ public class DiscordEmbed
 
 	public DiscordMessage toDiscordMessage(String username, String content, String avatarUrl)
 	{
-		return new DiscordMessage(username, content, avatarUrl, this);
+		return toDiscordMessage(username, content, avatarUrl, false);
+	}
+
+	public DiscordMessage toDiscordMessage(String username, String content, String avatarUrl, boolean textToSpeech)
+	{
+		return new DiscordMessage(username, content, avatarUrl, textToSpeech, Collections.singletonList(this));
 	}
 }

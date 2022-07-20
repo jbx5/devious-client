@@ -1,10 +1,10 @@
 package net.unethicalite.client.managers;
 
-import net.unethicalite.client.config.UnethicaliteConfig;
 import net.runelite.api.Client;
 import net.runelite.api.events.GameTick;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
+import net.unethicalite.client.config.UnethicaliteConfig;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;

@@ -27,15 +27,20 @@
 package com.openosrs.http.api.discord;
 
 import com.google.gson.annotations.SerializedName;
-import java.util.ArrayList;
-import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.Singular;
 import lombok.ToString;
+
+import java.util.List;
 
 @Getter
 @Setter
+@Builder
 @ToString
+@AllArgsConstructor
 public class DiscordMessage
 {
 	String username;
@@ -44,15 +49,8 @@ public class DiscordMessage
 	String avatarUrl;
 	@SerializedName("tts")
 	boolean textToSpeech;
-	final List<DiscordEmbed> embeds = new ArrayList<>();
-
-	DiscordMessage(String username, String content, String avatar_url, DiscordEmbed embed)
-	{
-		this.username = username;
-		this.content = content;
-		this.avatarUrl = avatar_url;
-		this.embeds.add(embed);
-	}
+	@Singular
+	final List<DiscordEmbed> embeds;
 
 	public void setUsername(String username)
 	{

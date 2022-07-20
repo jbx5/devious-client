@@ -107,47 +107,47 @@ public class MinimalClient
 
 	private static final int MAX_OKHTTP_CACHE_SIZE = 20 * 1024 * 1024; // 20mb
 
+	static
+	{
+		//Fixes win10 scaling when not 100% while using Anti-Aliasing with GPU
+		System.setProperty("sun.java2d.uiScale", "1.0");
+
+		String launcherVersion = System.getProperty("launcher.version");
+		System.setProperty("runelite.launcher.version", launcherVersion == null ? "unknown" : launcherVersion);
+
+		CLIENT_DIR.mkdirs();
+		SCRIPTS_DIR.mkdirs();
+		DATA_DIR.mkdirs();
+	}
+
 	@Inject
 	private EventBus eventBus;
-
 	@Inject
 	private ConfigManager configManager;
-
 	@Inject
 	private MinimalUI minimalUI;
-
 	@Inject
 	private OverlayManager overlayManager;
-
 	@Inject
 	private Provider<TooltipOverlay> tooltipOverlay;
-
 	@Inject
 	@Nullable
 	private Client client;
-
 	@Inject
 	private MinimalToolbar minimalToolbar;
-
 	@Inject
 	@Nullable
 	private Applet applet;
-
 	@Inject
 	private MinimalPluginManager minimalPluginManager;
-
 	@Inject
 	private DrawManager drawManager;
-
 	@Inject
 	private MinimalFpsManager minimalFpsManager;
-
 	@Inject
 	private UnethicaliteConfig minimalConfig;
-
 	@Inject
 	private WorldService worldService;
-
 	@Inject
 	private ClientSessionManager clientSessionManager;
 
@@ -278,6 +278,108 @@ public class MinimalClient
 		}
 	}
 
+	@VisibleForTesting
+	static OkHttpClient buildHttpClient(boolean insecureSkipTlsVerification)
+	{
+		OkHttpClient.Builder builder = new OkHttpClient.Builder()
+				.pingInterval(30, TimeUnit.SECONDS)
+				.addNetworkInterceptor(chain ->
+				{
+					Request userAgentRequest = chain.request()
+							.newBuilder()
+							.header("User-Agent", USER_AGENT)
+							.build();
+					return chain.proceed(userAgentRequest);
+				})
+				// Setup cache
+				.cache(new Cache(new File(CACHE_DIR, "okhttp"), MAX_OKHTTP_CACHE_SIZE))
+				.addNetworkInterceptor(chain ->
+				{
+					// This has to be a network interceptor so it gets hit before the cache tries to store stuff
+					Response res = chain.proceed(chain.request());
+					if (res.code() >= 400 && "GET".equals(res.request().method()))
+					{
+						// if the request 404'd we don't want to cache it because its probably temporary
+						res = res.newBuilder()
+								.header("Cache-Control", "no-store")
+								.build();
+					}
+					return res;
+				});
+
+		if (insecureSkipTlsVerification || RuneLiteProperties.isInsecureSkipTlsVerification())
+		{
+			setupInsecureTrustManager(builder);
+		}
+
+		return builder.build();
+	}
+
+	private static void setupInsecureTrustManager(OkHttpClient.Builder okHttpClientBuilder)
+	{
+		try
+		{
+			X509TrustManager trustManager = new X509TrustManager()
+			{
+				@Override
+				public void checkClientTrusted(X509Certificate[] chain, String authType)
+				{
+				}
+
+				@Override
+				public void checkServerTrusted(X509Certificate[] chain, String authType)
+				{
+				}
+
+				@Override
+				public X509Certificate[] getAcceptedIssuers()
+				{
+					return new X509Certificate[0];
+				}
+			};
+
+			SSLContext sc = SSLContext.getInstance("SSL");
+			sc.init(null, new TrustManager[]{trustManager}, new SecureRandom());
+			okHttpClientBuilder.sslSocketFactory(sc.getSocketFactory(), trustManager);
+		}
+		catch (NoSuchAlgorithmException | KeyManagementException ex)
+		{
+			log.warn("unable to setup insecure trust manager", ex);
+		}
+	}
+
+	private static void copyJagexCache()
+	{
+		Path from = Paths.get(System.getProperty("user.home"), "jagexcache");
+		Path to = Paths.get(Unethicalite.getCacheDirectory().getAbsolutePath(), "jagexcache");
+		if (Files.exists(to) || !Files.exists(from))
+		{
+			return;
+		}
+
+		log.info("Copying jagexcache from {} to {}", from, to);
+
+		// Recursively copy path https://stackoverflow.com/a/50418060
+		try (Stream<Path> stream = Files.walk(from))
+		{
+			stream.forEach(source ->
+			{
+				try
+				{
+					Files.copy(source, to.resolve(from.relativize(source)), COPY_ATTRIBUTES);
+				}
+				catch (IOException e)
+				{
+					throw new RuntimeException(e);
+				}
+			});
+		}
+		catch (Exception e)
+		{
+			log.warn("unable to copy jagexcache", e);
+		}
+	}
+
 	public void start(OptionSet options) throws Exception
 	{
 		// Load RuneLite or Vanilla client
@@ -376,121 +478,6 @@ public class MinimalClient
 		public String valuePattern()
 		{
 			return null;
-		}
-	}
-
-	@VisibleForTesting
-	static OkHttpClient buildHttpClient(boolean insecureSkipTlsVerification)
-	{
-		OkHttpClient.Builder builder = new OkHttpClient.Builder()
-				.pingInterval(30, TimeUnit.SECONDS)
-				.addNetworkInterceptor(chain ->
-				{
-					Request userAgentRequest = chain.request()
-							.newBuilder()
-							.header("User-Agent", USER_AGENT)
-							.build();
-					return chain.proceed(userAgentRequest);
-				})
-				// Setup cache
-				.cache(new Cache(new File(CACHE_DIR, "okhttp"), MAX_OKHTTP_CACHE_SIZE))
-				.addNetworkInterceptor(chain ->
-				{
-					// This has to be a network interceptor so it gets hit before the cache tries to store stuff
-					Response res = chain.proceed(chain.request());
-					if (res.code() >= 400 && "GET".equals(res.request().method()))
-					{
-						// if the request 404'd we don't want to cache it because its probably temporary
-						res = res.newBuilder()
-								.header("Cache-Control", "no-store")
-								.build();
-					}
-					return res;
-				});
-
-		if (insecureSkipTlsVerification || RuneLiteProperties.isInsecureSkipTlsVerification())
-		{
-			setupInsecureTrustManager(builder);
-		}
-
-		return builder.build();
-	}
-
-	private static void setupInsecureTrustManager(OkHttpClient.Builder okHttpClientBuilder)
-	{
-		try
-		{
-			X509TrustManager trustManager = new X509TrustManager()
-			{
-				@Override
-				public void checkClientTrusted(X509Certificate[] chain, String authType)
-				{
-				}
-
-				@Override
-				public void checkServerTrusted(X509Certificate[] chain, String authType)
-				{
-				}
-
-				@Override
-				public X509Certificate[] getAcceptedIssuers()
-				{
-					return new X509Certificate[0];
-				}
-			};
-
-			SSLContext sc = SSLContext.getInstance("SSL");
-			sc.init(null, new TrustManager[]{trustManager}, new SecureRandom());
-			okHttpClientBuilder.sslSocketFactory(sc.getSocketFactory(), trustManager);
-		}
-		catch (NoSuchAlgorithmException | KeyManagementException ex)
-		{
-			log.warn("unable to setup insecure trust manager", ex);
-		}
-	}
-
-	static
-	{
-		//Fixes win10 scaling when not 100% while using Anti-Aliasing with GPU
-		System.setProperty("sun.java2d.uiScale", "1.0");
-
-		String launcherVersion = System.getProperty("launcher.version");
-		System.setProperty("runelite.launcher.version", launcherVersion == null ? "unknown" : launcherVersion);
-
-		CLIENT_DIR.mkdirs();
-		SCRIPTS_DIR.mkdirs();
-		DATA_DIR.mkdirs();
-	}
-
-	private static void copyJagexCache()
-	{
-		Path from = Paths.get(System.getProperty("user.home"), "jagexcache");
-		Path to = Paths.get(Unethicalite.getCacheDirectory().getAbsolutePath(), "jagexcache");
-		if (Files.exists(to) || !Files.exists(from))
-		{
-			return;
-		}
-
-		log.info("Copying jagexcache from {} to {}", from, to);
-
-		// Recursively copy path https://stackoverflow.com/a/50418060
-		try (Stream<Path> stream = Files.walk(from))
-		{
-			stream.forEach(source ->
-			{
-				try
-				{
-					Files.copy(source, to.resolve(from.relativize(source)), COPY_ATTRIBUTES);
-				}
-				catch (IOException e)
-				{
-					throw new RuntimeException(e);
-				}
-			});
-		}
-		catch (Exception e)
-		{
-			log.warn("unable to copy jagexcache", e);
 		}
 	}
 }

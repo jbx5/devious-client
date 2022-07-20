@@ -56,6 +56,10 @@
 			<property name="tokens" value="COMMA"/>
 		</module>
 		<module name="UnusedImports"/>
+		<module name="AvoidStarImport">
+			<property name="allowStaticMemberImports" value="true"/>
+			<property name="excludes" value="net.runelite.client.plugins.itemstats,net.runelite.client.plugins.skillcalculator.skills"/>
+		</module>
 	</module>
 	<module name="RegexpMultiline">
 		<property name="format" value="else[ \t]*[\r\n]+[ \t]*if"/>

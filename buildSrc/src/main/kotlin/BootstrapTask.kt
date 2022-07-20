@@ -275,15 +275,15 @@ open class BootstrapTask @Inject constructor(@Input val type: String) : DefaultT
         val bootstrapDir = File("${project.buildDir}/bootstrap")
         bootstrapDir.mkdirs()
 
-        if (type == "stable") {
-            File(bootstrapDir, "bootstrap-openosrs.json").printWriter().use { out ->
-                out.println(prettyJson)
-            }
-
-            File(bootstrapDir, "bootstrap-staging.json").printWriter().use { out ->
-                out.println(prettyJson)
-            }
-        }
+//        if (type == "stable") {
+//            File(bootstrapDir, "bootstrap-openosrs.json").printWriter().use { out ->
+//                out.println(prettyJson)
+//            }
+//
+//            File(bootstrapDir, "bootstrap-staging.json").printWriter().use { out ->
+//                out.println(prettyJson)
+//            }
+//        }
 
         File(bootstrapDir, "bootstrap-${type}.json").printWriter().use { out ->
             out.println(prettyJson)

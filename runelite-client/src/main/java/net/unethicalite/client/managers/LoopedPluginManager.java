@@ -1,11 +1,5 @@
 package net.unethicalite.client.managers;
 
-import net.unethicalite.api.plugins.LoopedPlugin;
-import net.unethicalite.api.plugins.Script;
-import net.unethicalite.api.plugins.SettingsPlugin;
-import net.unethicalite.api.plugins.Task;
-import net.unethicalite.api.plugins.TaskPlugin;
-import net.unethicalite.client.Static;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.client.config.ConfigManager;
@@ -15,6 +9,12 @@ import net.runelite.client.events.PluginChanged;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.config.PluginConfigurationDescriptor;
 import net.runelite.client.plugins.config.PluginListPanel;
+import net.unethicalite.api.plugins.LoopedPlugin;
+import net.unethicalite.api.plugins.Script;
+import net.unethicalite.api.plugins.SettingsPlugin;
+import net.unethicalite.api.plugins.Task;
+import net.unethicalite.api.plugins.TaskPlugin;
+import net.unethicalite.client.Static;
 
 import javax.inject.Inject;
 import javax.inject.Provider;

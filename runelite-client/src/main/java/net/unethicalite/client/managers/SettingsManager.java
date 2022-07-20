@@ -110,14 +110,6 @@ public class SettingsManager
 		return options;
 	}
 
-	private void initArgs()
-	{
-		if (clientArgs.has("norender"))
-		{
-			configManager.setConfiguration("unethicalite", "renderOff", true);
-		}
-	}
-
 	public static void quickLaunch(MinimalPluginManager minimalPluginManager, OptionSet options)
 	{
 		if (options.has("script"))
@@ -134,6 +126,14 @@ public class SettingsManager
 			}
 
 			minimalPluginManager.startPlugin(quickStartScript);
+		}
+	}
+
+	private void initArgs()
+	{
+		if (clientArgs.has("norender"))
+		{
+			configManager.setConfiguration("unethicalite", "renderOff", true);
 		}
 	}
 
