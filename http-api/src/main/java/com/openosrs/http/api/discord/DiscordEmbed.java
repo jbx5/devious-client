@@ -33,11 +33,16 @@ import com.openosrs.http.api.discord.embed.ImageEmbed;
 import com.openosrs.http.api.discord.embed.ProviderEmbed;
 import com.openosrs.http.api.discord.embed.ThumbnailEmbed;
 import com.openosrs.http.api.discord.embed.VideoEmbed;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.Singular;
+import lombok.ToString;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import lombok.*;
 
 @Getter
 @Setter

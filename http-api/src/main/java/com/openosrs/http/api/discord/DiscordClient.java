@@ -44,6 +44,11 @@ public class DiscordClient
 	public static final Gson gson = new Gson();
 	private static final MediaType JSON = MediaType.parse("application/json");
 
+	public void message(String url, DiscordMessage discordMessage)
+	{
+		message(HttpUrl.parse(url), discordMessage);
+	}
+
 	public void message(HttpUrl url, DiscordMessage discordMessage)
 	{
 		log.debug("Message being sent");
