@@ -28,4 +28,9 @@ public interface Area
 	{
 		return contains(locatable.getWorldLocation());
 	}
+
+	default WorldPoint getRandomTile()
+	{
+		throw new UnsupportedOperationException("Not yet implemented");
+	}
 }

@@ -44,7 +44,9 @@ public enum BankLocation
 	HALLOWED_SEPULCHRE_BANK(new WorldArea(2393, 5975, 15, 15, 0)),
 	CANIFIS_BANK(new WorldArea(3508, 3474, 6, 10, 0)),
 	BURGH_DE_ROTT_BANK(new WorldArea(3492, 3208, 10, 6, 0)),
-	VER_SINHAZA_BANK(new WorldArea(3646, 3204, 10, 13, 0));
+	VER_SINHAZA_BANK(new WorldArea(3646, 3204, 10, 13, 0)),
+	FEROX_ENCLAVE_BANK(new WorldArea(3127, 3627, 10, 6, 0)),
+	;
 
 	private final WorldArea area;
 

@@ -1,13 +1,5 @@
 package net.unethicalite.api.items;
 
-import net.unethicalite.api.commons.Predicates;
-import net.unethicalite.api.commons.Time;
-import net.unethicalite.api.entities.TileObjects;
-import net.unethicalite.api.game.Game;
-import net.unethicalite.api.game.GameThread;
-import net.unethicalite.api.game.Vars;
-import net.unethicalite.api.widgets.Dialog;
-import net.unethicalite.api.widgets.Widgets;
 import net.runelite.api.GrandExchangeOffer;
 import net.runelite.api.Item;
 import net.runelite.api.TileObject;
@@ -16,9 +8,18 @@ import net.runelite.api.VarPlayer;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetID;
 import net.runelite.api.widgets.WidgetInfo;
+import net.unethicalite.api.commons.Predicates;
+import net.unethicalite.api.commons.Time;
+import net.unethicalite.api.entities.TileObjects;
+import net.unethicalite.api.game.Game;
+import net.unethicalite.api.game.GameThread;
+import net.unethicalite.api.game.Vars;
+import net.unethicalite.api.widgets.Dialog;
+import net.unethicalite.api.widgets.Widgets;
 import net.unethicalite.client.Static;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
@@ -168,7 +169,7 @@ public class GrandExchange
 
 	public static void sell(int... ids)
 	{
-		sell(Predicates.ids(ids));
+		sell(x -> Arrays.stream(ids).anyMatch(y -> y == x.getId() || y == x.getNotedId()));
 	}
 
 	public static void sell(String... names)
@@ -378,7 +379,11 @@ public class GrandExchange
 			}
 		}
 
-		if (getItemId() != itemId)
+		int notedId = Static.getClient().isItemDefinitionCached(itemId) ?
+			Static.getClient().getItemComposition(itemId).getLinkedNoteId() :
+			GameThread.invokeLater(() -> Static.getClient().getItemComposition(itemId).getLinkedNoteId());
+
+		if (getItemId() == -1 || (getItemId() != itemId && getItemId() != notedId))
 		{
 			if (buy)
 			{
@@ -397,25 +402,22 @@ public class GrandExchange
 			return false;
 		}
 
-		if (getItemId() == itemId)
+		if (getPrice() != price)
 		{
-			if (getPrice() != price)
-			{
-				setPrice(price);
-			}
+			setPrice(price);
+		}
 
-			if (getQuantity() != quantity)
-			{
-				setQuantity(quantity);
-			}
+		if (getQuantity() != quantity)
+		{
+			setQuantity(quantity);
+		}
 
-			Time.sleepUntil(() -> getPrice() == price && getQuantity() == quantity, 3000);
+		Time.sleepUntil(() -> getPrice() == price && getQuantity() == quantity, 3000);
 
-			if (getPrice() == price && getQuantity() == quantity)
-			{
-				confirm();
-				return true;
-			}
+		if (getPrice() == price && getQuantity() == quantity)
+		{
+			confirm();
+			return true;
 		}
 
 		return false;

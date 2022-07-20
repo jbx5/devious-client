@@ -27,6 +27,8 @@ public class Trade
 	private static final Supplier<Widget> ACCEPT_2 = () -> Widgets.get(WidgetInfo.SECOND_TRADING_WITH_ACCEPT_BUTTON);
 	private static final Supplier<Widget> DECLINE_1 = () -> Widgets.get(WidgetID.PLAYER_TRADE_SCREEN_GROUP_ID, 13);
 	private static final Supplier<Widget> DECLINE_2 = () -> Widgets.get(WidgetID.PLAYER_TRADE_CONFIRM_GROUP_ID, WidgetID.TradeScreen.SECOND_DECLINE_FUNC);
+	private static final Supplier<Widget> ACCEPT_STATUS_1 = () -> Widgets.get(WidgetID.PLAYER_TRADE_SCREEN_GROUP_ID, 30);
+	private static final Supplier<Widget> ACCEPT_STATUS_2 = () -> Widgets.get(WidgetID.PLAYER_TRADE_CONFIRM_GROUP_ID, 4);
 
 	public static boolean isOpen()
 	{
@@ -89,6 +91,23 @@ public class Trade
 		{
 			button.interact("Decline");
 		}
+	}
+
+	public static boolean hasAccepted(boolean them)
+	{
+		return hasAcceptedFirstScreen(them) || hasAcceptedSecondScreen(them);
+	}
+
+	public static boolean hasAcceptedFirstScreen(boolean them)
+	{
+		Widget widget = ACCEPT_STATUS_1.get();
+		return widget != null && widget.getText().equals(them ? "Other player has accepted." : "Waiting for other player...");
+	}
+
+	public static boolean hasAcceptedSecondScreen(boolean them)
+	{
+		Widget widget = ACCEPT_STATUS_2.get();
+		return widget != null && widget.getText().equals(them ? "Other player has accepted." : "Waiting for other player...");
 	}
 
 	public static void offer(Predicate<Item> filter, int quantity)

@@ -35,13 +35,39 @@ import com.google.inject.Injector;
 import com.google.inject.Key;
 import com.google.inject.Module;
 import com.openosrs.client.OpenOSRS;
-import static com.openosrs.client.OpenOSRS.EXTERNALPLUGIN_DIR;
-import static com.openosrs.client.OpenOSRS.SYSTEM_API_VERSION;
 import com.openosrs.client.config.OpenOSRSConfig;
 import com.openosrs.client.events.OPRSPluginChanged;
 import com.openosrs.client.events.OPRSRepositoryChanged;
 import com.openosrs.client.ui.OpenOSRSSplashScreen;
 import com.openosrs.client.util.Groups;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
+import net.runelite.client.RuneLite;
+import net.runelite.client.config.Config;
+import net.runelite.client.config.ConfigManager;
+import net.runelite.client.config.RuneLiteConfig;
+import net.runelite.client.eventbus.EventBus;
+import net.runelite.client.events.ConfigChanged;
+import net.runelite.client.events.ExternalPluginsChanged;
+import net.runelite.client.ui.ClientUI;
+import net.runelite.client.util.SwingUtil;
+import net.unethicalite.client.Static;
+import net.unethicalite.client.plugins.PrivateUpdateRepository;
+import org.jgroups.Message;
+import org.pf4j.DefaultPluginManager;
+import org.pf4j.DependencyResolver;
+import org.pf4j.PluginDependency;
+import org.pf4j.PluginRuntimeException;
+import org.pf4j.PluginWrapper;
+import org.pf4j.update.PluginInfo;
+import org.pf4j.update.VerifyException;
+
+import javax.inject.Inject;
+import javax.inject.Named;
+import javax.inject.Singleton;
+import javax.swing.JOptionPane;
 import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -65,33 +91,9 @@ import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import javax.inject.Inject;
-import javax.inject.Named;
-import javax.inject.Singleton;
-import javax.swing.JOptionPane;
 
-import net.unethicalite.client.plugins.PrivateUpdateRepository;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.extern.slf4j.Slf4j;
-import net.runelite.client.RuneLite;
-import net.runelite.client.config.Config;
-import net.runelite.client.config.ConfigManager;
-import net.runelite.client.config.RuneLiteConfig;
-import net.runelite.client.eventbus.EventBus;
-import net.runelite.client.events.ConfigChanged;
-import net.runelite.client.events.ExternalPluginsChanged;
-import net.runelite.client.ui.ClientUI;
-import net.runelite.client.util.SwingUtil;
-import org.jgroups.Message;
-import org.pf4j.DefaultPluginManager;
-import org.pf4j.DependencyResolver;
-import org.pf4j.PluginDependency;
-import org.pf4j.PluginRuntimeException;
-import org.pf4j.PluginWrapper;
-import org.pf4j.update.PluginInfo;
-import org.pf4j.update.VerifyException;
+import static com.openosrs.client.OpenOSRS.EXTERNALPLUGIN_DIR;
+import static com.openosrs.client.OpenOSRS.SYSTEM_API_VERSION;
 
 @SuppressWarnings("UnstableApiUsage")
 @Slf4j
@@ -230,6 +232,15 @@ public class OPRSExternalPluginManager
 	{
 		try
 		{
+			List.copyOf(repositories).forEach(repo ->
+			{
+				if (Static.getPluginRepoManager().isRepoMalicious(repo.getOwner()))
+				{
+					repositories.removeIf(x -> x.getOwner().equals(repo.getOwner()));
+					removeRepository(repo.getOwner());
+				}
+			});
+
 			externalPluginManager.loadPlugins();
 		}
 		catch (Exception ex)
@@ -430,32 +441,32 @@ public class OPRSExternalPluginManager
 
 	public void addRepository(String key, URL url, String pluginsJson, String token)
 	{
-		OPRSUpdateRepository respository;
+		OPRSUpdateRepository repository;
 
 		if (pluginsJson != null)
 		{
 			if (token.isEmpty())
 			{
-				respository = new OPRSUpdateRepository(key, url, pluginsJson);
+				repository = new OPRSUpdateRepository(key, url, pluginsJson);
 			}
 			else
 			{
-				respository = new PrivateUpdateRepository(key, url, pluginsJson, token);
+				repository = new PrivateUpdateRepository(key, url, pluginsJson, token);
 			}
 		}
 		else
 		{
 			if (token.isEmpty())
 			{
-				respository = new OPRSUpdateRepository(key, url);
+				repository = new OPRSUpdateRepository(key, url);
 			}
 			else
 			{
-				respository = new PrivateUpdateRepository(key, url, token);
+				repository = new PrivateUpdateRepository(key, url, token);
 			}
 		}
 
-		updateManager.addRepository(respository);
+		updateManager.addRepository(repository);
 		eventBus.post(new OPRSRepositoryChanged(key, true));
 		saveConfig();
 	}

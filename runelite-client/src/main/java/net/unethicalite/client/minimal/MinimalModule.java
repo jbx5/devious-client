@@ -7,6 +7,7 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import com.google.inject.name.Names;
 import com.openosrs.client.config.OpenOSRSConfig;
+import joptsimple.OptionSet;
 import net.runelite.api.packets.ServerPacket;
 import net.unethicalite.api.movement.pathfinder.GlobalCollisionMap;
 import net.unethicalite.client.Static;
@@ -55,6 +56,7 @@ public class MinimalModule extends AbstractModule
 	private final OkHttpClient okHttpClient;
 	private final Supplier<Applet> clientLoader;
 	private final File config;
+	private final OptionSet optionSet;
 
 	@Override
 	protected void configure()
@@ -66,6 +68,7 @@ public class MinimalModule extends AbstractModule
 			bindConstant().annotatedWith(Names.named(key)).to(value);
 		}
 
+		bind(OptionSet.class).annotatedWith(Names.named("clientArgs")).toInstance(optionSet);
 		bindConstant().annotatedWith(Names.named("developerMode")).to(developerMode);
 		bindConstant().annotatedWith(Names.named("safeMode")).to(false);
 		bind(File.class).annotatedWith(Names.named("config")).toInstance(config);

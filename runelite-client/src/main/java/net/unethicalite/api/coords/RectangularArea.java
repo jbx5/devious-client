@@ -60,6 +60,7 @@ public class RectangularArea implements Area
 		this(sw.getX(), sw.getY(), ne.getX(), ne.getY(), sw.getPlane());
 	}
 
+	@Override
 	public WorldPoint getRandomTile()
 	{
 		return new WorldPoint(Rand.nextInt(minX, maxX), Rand.nextInt(minY, maxY), plane);

@@ -616,7 +616,8 @@ public class EntityRenderer
 		{
 			if (ids)
 			{
-				sb.append("ID: ").append(interactable.getId()).append("</br>");
+				sb.append("Base ID: ").append(interactable.getId()).append("</br>");
+				sb.append("Actual ID: ").append(((TileObject) interactable).getActualId()).append("</br>");
 			}
 
 			appendCommonFields(sb, interactable);

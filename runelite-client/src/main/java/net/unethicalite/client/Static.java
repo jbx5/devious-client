@@ -126,6 +126,13 @@ public class Static
 	@Getter
 	private static QuestManager questManager;
 
+	@Inject
+	@Getter
+	private static PluginRepoManager pluginRepoManager;
+
+	@Inject
+	private static SettingsManager settingsManager;
+
 	public static void setScriptArgs(String[] scriptArgs)
 	{
 		Static.scriptArgs = scriptArgs;

@@ -4,16 +4,6 @@ import com.openosrs.client.OpenOSRS;
 import com.openosrs.client.config.OpenOSRSConfig;
 import com.openosrs.client.ui.OpenOSRSSplashScreen;
 import io.reactivex.rxjava3.subjects.PublishSubject;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Future;
-import javax.inject.Inject;
-import javax.inject.Singleton;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
@@ -22,6 +12,7 @@ import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.events.ClientShutdown;
 import net.runelite.client.events.ConfigChanged;
+import net.unethicalite.client.config.UnethicaliteConfig;
 import org.jgroups.Address;
 import org.jgroups.JChannel;
 import org.jgroups.Message;
@@ -30,12 +21,25 @@ import org.jgroups.Receiver;
 import org.jgroups.View;
 import org.jgroups.util.Util;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Future;
+
 @Slf4j
 @Singleton
 public class Groups implements Receiver
 {
 	@Inject
 	private OpenOSRSConfig openOSRSConfig;
+	@Inject
+	private UnethicaliteConfig unethicaliteConfig;
 	@Inject
 	private EventBus eventBus;
 	private JChannel channel;
@@ -53,6 +57,7 @@ public class Groups implements Receiver
 
 	public boolean init()
 	{
+		if (unethicaliteConfig.disableGroups()) return false;
 		try (final InputStream is = RuneLite.class.getResourceAsStream("/udp-openosrs.xml"))
 		{
 			channel = new JChannel(is)

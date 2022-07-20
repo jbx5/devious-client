@@ -79,7 +79,11 @@ public class Game
 			return Integer.MAX_VALUE;
 		}
 		String widgetText = wildyLevelWidget.getText();
-		return Integer.parseInt(widgetText.substring(0, widgetText.indexOf('<')).replace("Level: ", ""));
+		if (widgetText.equals(""))
+		{
+			return 0;
+		}
+		return Integer.parseInt(widgetText.replace("Level: ", ""));
 	}
 
 	public static int getMembershipDays()

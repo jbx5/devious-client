@@ -1,6 +1,8 @@
 package net.unethicalite.client.managers;
 
 import lombok.Getter;
+import net.runelite.api.Client;
+import net.runelite.api.InventoryID;
 import net.runelite.api.Item;
 import net.runelite.api.events.ItemContainerChanged;
 import net.runelite.client.eventbus.EventBus;
@@ -18,6 +20,9 @@ public class InventoryManager
 	private static final Map<Integer, Item[]> cachedContainers = new ConcurrentHashMap<>();
 
 	@Inject
+	private Client client;
+
+	@Inject
 	InventoryManager(EventBus eventBus)
 	{
 		eventBus.register(this);
@@ -27,5 +32,10 @@ public class InventoryManager
 	private void onItemContainerChanged(ItemContainerChanged e)
 	{
 		cachedContainers.put(e.getContainerId(), e.getItemContainer().getItems());
+		if (e.getContainerId() == InventoryID.INVENTORY.getId())
+		{
+			// Reload inventory
+			client.runScript(6009, 9764864, 28, 1, -1);
+		}
 	}
 }

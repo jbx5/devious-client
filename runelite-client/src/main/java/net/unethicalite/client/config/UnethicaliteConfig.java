@@ -400,4 +400,23 @@ public interface UnethicaliteConfig extends Config
 	{
 		return true;
 	}
+
+	@ConfigSection(
+			name = "Other settings",
+			position = 3,
+			description = ""
+	)
+	String otherSettings = "Other settings";
+
+	@ConfigItem(
+			position = 0,
+			keyName = "disableGroups",
+			name = "Disable Groups/Party",
+			description = "Disables the Party functionality (needs a restart).",
+			section = otherSettings
+	)
+	default boolean disableGroups()
+	{
+		return false;
+	}
 }
