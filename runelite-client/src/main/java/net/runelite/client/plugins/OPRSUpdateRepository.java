@@ -131,12 +131,6 @@ public class OPRSUpdateRepository implements UpdateRepository
 				}
 			}
 
-			if ("iUtils".equals(p.name) && !p.description.contains("Unethicalite"))
-			{
-				log.warn("Skipping illumine's iUtils as it's currently broken, this check will be removed once iUtils updates.");
-				continue;
-			}
-
 			p.setRepositoryId(getId());
 			plugins.put(p.id, p);
 		}
