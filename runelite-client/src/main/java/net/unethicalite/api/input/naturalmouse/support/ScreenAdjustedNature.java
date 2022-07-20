@@ -3,7 +3,8 @@ package net.unethicalite.api.input.naturalmouse.support;
 import net.unethicalite.api.input.naturalmouse.api.MouseInfoAccessor;
 import net.unethicalite.api.input.naturalmouse.api.SystemCalls;
 
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.Point;
 
 /**
  * This nature translates mouse coordinates to specified offset and screen dimension.
@@ -44,14 +45,13 @@ public class ScreenAdjustedNature extends DefaultMouseMotionNature
 	private class ProxyMouseInfo implements MouseInfoAccessor
 	{
 		private final MouseInfoAccessor underlying;
+		// This implementation reuses the point.
+		private final Point p = new Point();
 
 		public ProxyMouseInfo(MouseInfoAccessor underlying)
 		{
 			this.underlying = underlying;
 		}
-
-		// This implementation reuses the point.
-		private final Point p = new Point();
 
 		@Override
 		public Point getMousePosition()

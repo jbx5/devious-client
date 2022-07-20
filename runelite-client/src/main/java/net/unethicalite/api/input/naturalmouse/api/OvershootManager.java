@@ -2,7 +2,7 @@ package net.unethicalite.api.input.naturalmouse.api;
 
 import net.unethicalite.api.input.naturalmouse.support.Flow;
 
-import java.awt.*;
+import java.awt.Point;
 
 /**
  * Overshoots provide a realistic way to simulate user trying to reach the destination with mouse, but miss.

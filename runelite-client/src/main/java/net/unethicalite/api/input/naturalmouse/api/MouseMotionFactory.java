@@ -26,6 +26,16 @@ public class MouseMotionFactory
 	}
 
 	/**
+	 * Get the default factory implementation.
+	 *
+	 * @return the factory
+	 */
+	public static MouseMotionFactory getDefault()
+	{
+		return defaultFactory;
+	}
+
+	/**
 	 * Builds the MouseMotion, which can be executed instantly or saved for later.
 	 *
 	 * @param xDest the end position x-coordinate for the mouse
@@ -48,16 +58,6 @@ public class MouseMotionFactory
 	public void move(int xDest, int yDest) throws InterruptedException
 	{
 		build(xDest, yDest).move();
-	}
-
-	/**
-	 * Get the default factory implementation.
-	 *
-	 * @return the factory
-	 */
-	public static MouseMotionFactory getDefault()
-	{
-		return defaultFactory;
 	}
 
 	/**
@@ -201,16 +201,6 @@ public class MouseMotionFactory
 	}
 
 	/**
-	 * see {@link MouseMotionNature#setOvershootManager(OvershootManager)}
-	 *
-	 * @param manager the manager
-	 */
-	public void setOvershootManager(OvershootManager manager)
-	{
-		nature.setOvershootManager(manager);
-	}
-
-	/**
 	 * see {@link MouseMotionNature#getOvershootManager()}
 	 *
 	 * @return the manager
@@ -218,5 +208,15 @@ public class MouseMotionFactory
 	public OvershootManager getOvershootManager()
 	{
 		return nature.getOvershootManager();
+	}
+
+	/**
+	 * see {@link MouseMotionNature#setOvershootManager(OvershootManager)}
+	 *
+	 * @param manager the manager
+	 */
+	public void setOvershootManager(OvershootManager manager)
+	{
+		nature.setOvershootManager(manager);
 	}
 }

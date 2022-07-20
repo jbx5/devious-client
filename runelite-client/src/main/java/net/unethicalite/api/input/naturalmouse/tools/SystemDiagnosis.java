@@ -5,7 +5,10 @@ import net.unethicalite.api.input.naturalmouse.api.SystemCalls;
 import net.unethicalite.api.input.naturalmouse.support.DefaultMouseInfoAccessor;
 import net.unethicalite.api.input.naturalmouse.support.DefaultSystemCalls;
 
-import java.awt.*;
+import java.awt.AWTException;
+import java.awt.Dimension;
+import java.awt.Point;
+import java.awt.Robot;
 
 public class SystemDiagnosis
 {

@@ -91,6 +91,7 @@ import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 @Singleton
 public class MinimalUI
 {
+	public static final BufferedImage ICON = ImageUtil.loadImageResource(ClientUI.class, "/openosrs.png");
 	private static final String CONFIG_GROUP = "runelite";
 	private static final String PLUS_CONFIG_GROUP = "runelite";
 	private static final String CONFIG_CLIENT_BOUNDS = "clientBounds";
@@ -99,7 +100,6 @@ public class MinimalUI
 	private static final String CONFIG_OPACITY_AMOUNT = "opacityPercentage";
 	private static final int CLIENT_WELL_HIDDEN_MARGIN = 160;
 	private static final int CLIENT_WELL_HIDDEN_MARGIN_TOP = 10;
-	public static final BufferedImage ICON = ImageUtil.loadImageResource(ClientUI.class, "/openosrs.png");
 	public static boolean allowInput = false;
 
 	@Getter
@@ -109,13 +109,12 @@ public class MinimalUI
 	private final Applet client;
 	private final ConfigManager configManager;
 	private final Provider<ClientThread> clientThreadProvider;
+	private final EventBus eventBus;
 	private JPanel container;
 	private Dimension lastClientSize;
 	private Field opacityField;
 	private Field peerField;
 	private Method setOpacityMethod;
-
-	private final EventBus eventBus;
 	private Cursor defaultCursor;
 
 	@Inject
@@ -138,6 +137,33 @@ public class MinimalUI
 		this.configManager = configManager;
 		this.clientThreadProvider = clientThreadProvider;
 		this.eventBus = eventbus;
+	}
+
+	public static int getX()
+	{
+		return frame.getX();
+	}
+
+	public static int getY()
+	{
+		return frame.getY();
+	}
+
+	public static void setupDefaults()
+	{
+		// Force heavy-weight popups/tooltips.
+		// Prevents them from being obscured by the game applet.
+		ToolTipManager.sharedInstance().setLightWeightPopupEnabled(false);
+		ToolTipManager.sharedInstance().setInitialDelay(300);
+		JPopupMenu.setDefaultLightWeightPopupEnabled(false);
+
+		// Do not render shadows under popups/tooltips.
+		// Fixes black boxes under popups that are above the game applet.
+		System.setProperty("jgoodies.popupDropShadowEnabled", "false");
+
+		// Do not fill in background on repaint. Reduces flickering when
+		// the applet is resized.
+		System.setProperty("sun.awt.noerasebackground", "true");
 	}
 
 	@Subscribe
@@ -586,16 +612,6 @@ public class MinimalUI
 		}
 	}
 
-	public static int getX()
-	{
-		return frame.getX();
-	}
-
-	public static int getY()
-	{
-		return frame.getY();
-	}
-
 	private void setOpacity()
 	{
 		SwingUtilities.invokeLater(() ->
@@ -708,22 +724,5 @@ public class MinimalUI
 	public void setTitle(String title)
 	{
 		frame.setTitle(title);
-	}
-
-	public static void setupDefaults()
-	{
-		// Force heavy-weight popups/tooltips.
-		// Prevents them from being obscured by the game applet.
-		ToolTipManager.sharedInstance().setLightWeightPopupEnabled(false);
-		ToolTipManager.sharedInstance().setInitialDelay(300);
-		JPopupMenu.setDefaultLightWeightPopupEnabled(false);
-
-		// Do not render shadows under popups/tooltips.
-		// Fixes black boxes under popups that are above the game applet.
-		System.setProperty("jgoodies.popupDropShadowEnabled", "false");
-
-		// Do not fill in background on repaint. Reduces flickering when
-		// the applet is resized.
-		System.setProperty("sun.awt.noerasebackground", "true");
 	}
 }

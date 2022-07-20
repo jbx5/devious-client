@@ -2,7 +2,7 @@ package net.unethicalite.api.input.naturalmouse.support;
 
 import net.unethicalite.api.input.naturalmouse.api.OvershootManager;
 
-import java.awt.*;
+import java.awt.Point;
 import java.util.Random;
 
 public class DefaultOvershootManager implements OvershootManager
@@ -12,13 +12,12 @@ public class DefaultOvershootManager implements OvershootManager
 	public static final int OVERSHOOT_RANDOM_MODIFIER_DIVIDER = 20;
 	public static final int MIN_DISTANCE_FOR_OVERSHOOTS = 10;
 	public static final int DEFAULT_OVERSHOOT_AMOUNT = 3;
-
+	private final Random random;
 	private long minOvershootMovementMs = MIN_OVERSHOOT_MOVEMENT_MS;
 	private long minDistanceForOvershoots = MIN_DISTANCE_FOR_OVERSHOOTS;
 	private double overshootRandomModifierDivider = OVERSHOOT_RANDOM_MODIFIER_DIVIDER;
 	private double overshootSpeedupDivider = OVERSHOOT_SPEEDUP_DIVIDER;
 	private int overshoots = DEFAULT_OVERSHOOT_AMOUNT;
-	private final Random random;
 
 	public DefaultOvershootManager(Random random)
 	{

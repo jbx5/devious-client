@@ -7,7 +7,8 @@ import net.unethicalite.api.input.naturalmouse.util.Pair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.Point;
 import java.util.ArrayDeque;
 import java.util.Iterator;
 

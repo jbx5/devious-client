@@ -45,7 +45,13 @@ import net.unethicalite.api.widgets.Widgets;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.Graphics2D;
+import java.awt.Polygon;
+import java.awt.Rectangle;
+import java.awt.Shape;
 import java.awt.geom.Rectangle2D;
 import java.util.Arrays;
 import java.util.List;
@@ -64,7 +70,8 @@ public class EntityRenderer
 	private static final Color DEEP_PURPLE = new Color(98, 0, 234);
 	private static final Color PURPLE = new Color(170, 0, 255);
 	private static final Color GRAY = new Color(158, 158, 158);
-
+	private final Client client;
+	private final TooltipManager tooltipManager;
 	@Getter
 	@Setter
 	private boolean groundObjects;
@@ -104,7 +111,6 @@ public class EntityRenderer
 	@Getter
 	@Setter
 	private boolean path;
-
 	// Configs
 	@Getter
 	@Setter
@@ -130,10 +136,6 @@ public class EntityRenderer
 	@Getter
 	@Setter
 	private boolean quantities = true;
-
-	private final Client client;
-	private final TooltipManager tooltipManager;
-
 	@Setter
 	private List<WorldPoint> currentPath = null;
 

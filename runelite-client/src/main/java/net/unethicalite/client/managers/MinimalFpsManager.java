@@ -6,11 +6,9 @@ import javax.inject.Singleton;
 public class MinimalFpsManager implements Runnable
 {
 	private static final int SAMPLE_SIZE = 4;
-
-	private long targetDelay = 0;
-
-	private long lastMillis = 0;
 	private final long[] lastDelays = new long[SAMPLE_SIZE];
+	private long targetDelay = 0;
+	private long lastMillis = 0;
 	private int lastDelayIndex = 0;
 	private long sleepDelay = 0;
 

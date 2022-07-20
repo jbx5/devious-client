@@ -1,5 +1,8 @@
 package net.unethicalite.api.input.naturalmouse;
 
+import lombok.Getter;
+import lombok.Setter;
+import net.runelite.api.Client;
 import net.unethicalite.api.commons.Time;
 import net.unethicalite.api.input.Mouse;
 import net.unethicalite.api.input.naturalmouse.api.MouseInfoAccessor;
@@ -14,13 +17,11 @@ import net.unethicalite.api.input.naturalmouse.support.MouseMotionNature;
 import net.unethicalite.api.input.naturalmouse.support.SinusoidalDeviationProvider;
 import net.unethicalite.api.input.naturalmouse.util.FlowTemplates;
 import net.unethicalite.api.input.naturalmouse.util.Pair;
-import lombok.Getter;
-import lombok.Setter;
-import net.runelite.api.Client;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.Point;
 import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -29,15 +30,12 @@ import java.util.concurrent.ThreadLocalRandom;
 @Singleton
 public class NaturalMouse
 {
-	@Inject
-	private Client client;
-
-	@Inject
-	private ExecutorService executorService;
-
 	private final ThreadLocalRandom random = ThreadLocalRandom.current();
 	private final MouseMotionNature nature;
-
+	@Inject
+	private Client client;
+	@Inject
+	private ExecutorService executorService;
 	@Getter
 	@Setter
 	private List<Flow> flows = List.of(
@@ -104,6 +102,32 @@ public class NaturalMouse
 		return factory;
 	}
 
+	public void moveOffScreen()
+	{
+		// 1 in 4 chance of moving off screen
+		if (random.nextInt(4) == 0)
+		{
+			// Edges of the screen
+			int horizontal = random.nextBoolean() ? -1 : client.getCanvasWidth() + 1;
+			int vertical = random.nextBoolean() ? -1 : client.getCanvasHeight() + 1;
+
+			boolean exitHorizontally = random.nextBoolean();
+			if (exitHorizontally)
+			{
+				moveTo(horizontal, random.nextInt(0, client.getCanvasHeight() + 1));
+			}
+			else
+			{
+				moveTo(random.nextInt(0, client.getCanvasWidth() + 1), vertical);
+			}
+
+			if (random.nextInt(4) == 0)
+			{
+				client.setFocused(false);
+			}
+		}
+	}
+
 	private static class SpeedManagerImpl extends DefaultSpeedManager
 	{
 		private SpeedManagerImpl(Collection<Flow> flows)
@@ -152,32 +176,6 @@ public class NaturalMouse
 		public void setMousePosition(int x, int y)
 		{
 			client.getMouseHandler().sendMovement(x, y);
-		}
-	}
-
-	public void moveOffScreen()
-	{
-		// 1 in 4 chance of moving off screen
-		if (random.nextInt(4) == 0)
-		{
-			// Edges of the screen
-			int horizontal = random.nextBoolean() ? -1 : client.getCanvasWidth() + 1;
-			int vertical = random.nextBoolean() ? -1 : client.getCanvasHeight() + 1;
-
-			boolean exitHorizontally = random.nextBoolean();
-			if (exitHorizontally)
-			{
-				moveTo(horizontal, random.nextInt(0, client.getCanvasHeight() + 1));
-			}
-			else
-			{
-				moveTo(random.nextInt(0, client.getCanvasWidth() + 1), vertical);
-			}
-
-			if (random.nextInt(4) == 0)
-			{
-				client.setFocused(false);
-			}
 		}
 	}
 }

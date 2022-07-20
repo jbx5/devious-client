@@ -2,27 +2,27 @@ package net.unethicalite.client.managers;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import net.runelite.api.CollisionData;
+import net.runelite.api.CollisionDataFlag;
+import net.runelite.api.GameState;
 import net.runelite.api.InventoryID;
+import net.runelite.api.Tile;
+import net.runelite.api.coords.Direction;
+import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.events.ItemContainerChanged;
 import net.runelite.api.events.WidgetLoaded;
 import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.events.ConfigChanged;
+import net.runelite.client.plugins.unethicalite.regions.TileFlag;
 import net.unethicalite.api.entities.Players;
 import net.unethicalite.api.game.Game;
 import net.unethicalite.api.movement.Reachable;
 import net.unethicalite.api.movement.pathfinder.TransportLoader;
+import net.unethicalite.api.movement.pathfinder.Walker;
 import net.unethicalite.api.movement.pathfinder.model.JewelryBox;
 import net.unethicalite.api.movement.pathfinder.model.Transport;
-import net.unethicalite.api.movement.pathfinder.Walker;
 import net.unethicalite.api.scene.Tiles;
-import net.runelite.api.CollisionData;
-import net.runelite.api.CollisionDataFlag;
-import net.runelite.api.GameState;
-import net.runelite.api.Tile;
-import net.runelite.api.coords.Direction;
-import net.runelite.api.coords.WorldPoint;
-import net.runelite.client.plugins.unethicalite.regions.TileFlag;
 import net.unethicalite.client.Static;
 import net.unethicalite.client.config.UnethicaliteConfig;
 import okhttp3.MediaType;
@@ -49,16 +49,77 @@ public class RegionManager
 	public static final MediaType JSON_MEDIATYPE = MediaType.parse("application/json");
 	public static final Gson GSON = new GsonBuilder().create();
 	private static final Logger logger = LoggerFactory.getLogger(RegionManager.class);
-
+	private static final Set<Integer> REFRESH_WIDGET_IDS = Set.of(
+			WidgetInfo.QUEST_COMPLETED_NAME_TEXT.getGroupId(),
+			WidgetInfo.LEVEL_UP_LEVEL.getGroupId()
+	);
+	private static final Set<String> pathfinderConfigKeys = Set.of(
+			"useTransports",
+			"useTeleports",
+			"avoidWilderness",
+			"usePoh",
+			"hasMountedGlory",
+			"hasMountedDigsitePendant",
+			"hasMountedMythicalCape",
+			"hasMountedXericsTalisman",
+			"hasJewelryBox"
+	);
+	private static boolean INVENTORY_CHANGED = false;
+	private static boolean EQUIPMENT_CHANGED = false;
+	private static boolean SKILLS_CHANGED = false;
+	private static boolean CONFIG_CHANGED = false;
 	@Inject
 	@Named("unethicalite.api.url")
 	private String apiUrl;
-
 	@Inject
 	private OkHttpClient okHttpClient;
-
 	@Inject
 	private ScheduledExecutorService executorService;
+
+	public static boolean avoidWilderness()
+	{
+		return Static.getUnethicaliteConfig().avoidWilderness();
+	}
+
+	public static boolean shouldRefreshPath()
+	{
+		boolean refreshPath = INVENTORY_CHANGED || EQUIPMENT_CHANGED || CONFIG_CHANGED || SKILLS_CHANGED;
+		EQUIPMENT_CHANGED = false;
+		INVENTORY_CHANGED = false;
+		SKILLS_CHANGED = false;
+		CONFIG_CHANGED = false;
+		return refreshPath;
+	}
+
+	public static boolean usePoh()
+	{
+		return Static.getUnethicaliteConfig().usePoh();
+	}
+
+	public static boolean hasMountedGlory()
+	{
+		return Static.getUnethicaliteConfig().hasMountedGlory();
+	}
+
+	public static boolean hasMountedDigsitePendant()
+	{
+		return Static.getUnethicaliteConfig().hasMountedDigsitePendant();
+	}
+
+	public static boolean hasMountedMythicalCape()
+	{
+		return Static.getUnethicaliteConfig().hasMountedMythicalCape();
+	}
+
+	public static boolean hasMountedXericsTalisman()
+	{
+		return Static.getUnethicaliteConfig().hasMountedXericsTalisman();
+	}
+
+	public static JewelryBox hasJewelryBox()
+	{
+		return Static.getUnethicaliteConfig().hasJewelryBox();
+	}
 
 	@Inject
 	public void init()
@@ -246,28 +307,6 @@ public class RegionManager
 		return transports.stream().anyMatch(t -> t.getSource().equals(from) && t.getDestination().equals(to));
 	}
 
-	private static boolean INVENTORY_CHANGED = false;
-	private static boolean EQUIPMENT_CHANGED = false;
-	private static boolean SKILLS_CHANGED = false;
-	private static boolean CONFIG_CHANGED = false;
-
-	private static final Set<Integer> REFRESH_WIDGET_IDS = Set.of(
-			WidgetInfo.QUEST_COMPLETED_NAME_TEXT.getGroupId(),
-			WidgetInfo.LEVEL_UP_LEVEL.getGroupId()
-	);
-
-	private static final Set<String> pathfinderConfigKeys = Set.of(
-			"useTransports",
-			"useTeleports",
-			"avoidWilderness",
-			"usePoh",
-			"hasMountedGlory",
-			"hasMountedDigsitePendant",
-			"hasMountedMythicalCape",
-			"hasMountedXericsTalisman",
-			"hasJewelryBox"
-	);
-
 	@Subscribe(priority = Integer.MAX_VALUE)
 	public void onWidgetLoaded(WidgetLoaded event)
 	{
@@ -304,47 +343,5 @@ public class RegionManager
 		{
 			CONFIG_CHANGED = true;
 		}
-	}
-
-	public static boolean avoidWilderness()
-	{
-		return Static.getUnethicaliteConfig().avoidWilderness();
-	}
-
-	public static boolean shouldRefreshPath()
-	{
-		boolean refreshPath = INVENTORY_CHANGED || EQUIPMENT_CHANGED || CONFIG_CHANGED || SKILLS_CHANGED;
-		EQUIPMENT_CHANGED = false;
-		INVENTORY_CHANGED = false;
-		SKILLS_CHANGED = false;
-		CONFIG_CHANGED = false;
-		return refreshPath;
-	}
-
-	public static boolean usePoh()
-	{
-		return Static.getUnethicaliteConfig().usePoh();
-	}
-	public static boolean hasMountedGlory()
-	{
-		return Static.getUnethicaliteConfig().hasMountedGlory();
-	}
-
-	public static boolean hasMountedDigsitePendant()
-	{
-		return Static.getUnethicaliteConfig().hasMountedDigsitePendant();
-	}
-
-	public static boolean hasMountedMythicalCape()
-	{
-		return Static.getUnethicaliteConfig().hasMountedMythicalCape();
-	}
-	public static boolean hasMountedXericsTalisman()
-	{
-		return Static.getUnethicaliteConfig().hasMountedXericsTalisman();
-	}
-	public static JewelryBox hasJewelryBox()
-	{
-		return Static.getUnethicaliteConfig().hasJewelryBox();
 	}
 }

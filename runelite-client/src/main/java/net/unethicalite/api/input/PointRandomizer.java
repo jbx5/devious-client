@@ -10,7 +10,8 @@ import net.runelite.api.widgets.Widget;
 import net.unethicalite.api.util.Randomizer;
 import net.unethicalite.client.Static;
 
-import java.awt.*;
+import java.awt.Rectangle;
+import java.awt.Shape;
 
 public class PointRandomizer
 {

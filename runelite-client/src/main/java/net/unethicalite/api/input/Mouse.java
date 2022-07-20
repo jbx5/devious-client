@@ -6,7 +6,8 @@ import net.unethicalite.client.Static;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.awt.*;
+import java.awt.Canvas;
+import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;

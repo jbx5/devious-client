@@ -23,11 +23,21 @@ import net.runelite.client.ui.overlay.OverlayManager;
 import net.runelite.client.util.ColorUtil;
 
 import javax.inject.Inject;
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSplitPane;
+import javax.swing.JTable;
+import javax.swing.JTree;
+import javax.swing.SwingUtilities;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreePath;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Collection;
@@ -41,9 +51,8 @@ import java.util.stream.Stream;
 @Singleton
 public class WidgetInspector
 {
-	private static final Map<Integer, WidgetInfo> widgetIdMap = new HashMap<>();
-
 	static final Color SELECTED_WIDGET_COLOR = Color.CYAN;
+	private static final Map<Integer, WidgetInfo> widgetIdMap = new HashMap<>();
 	private static final float SELECTED_WIDGET_HUE;
 
 	static
@@ -55,15 +64,12 @@ public class WidgetInspector
 
 	private final Provider<WidgetInspectorOverlay> overlay;
 	private final OverlayManager overlayManager;
-	private JTree widgetTree;
 	private final WidgetInfoTableModel infoTableModel;
-	private JCheckBox hideHidden;
 	private final ClientThread clientThread;
-
-	private DefaultMutableTreeNode root;
-
 	private final Client client;
-
+	private JTree widgetTree;
+	private JCheckBox hideHidden;
+	private DefaultMutableTreeNode root;
 	@Getter(AccessLevel.PACKAGE)
 	private Widget selectedWidget;
 
@@ -92,6 +98,22 @@ public class WidgetInspector
 		this.client = client;
 		this.clientThread = clientThread;
 		eventBus.register(this);
+	}
+
+	public static WidgetInfo getWidgetInfo(int packedId)
+	{
+		if (widgetIdMap.isEmpty())
+		{
+			//Initialize map here so it doesn't create the index
+			//until it's actually needed.
+			WidgetInfo[] widgets = WidgetInfo.values();
+			for (WidgetInfo w : widgets)
+			{
+				widgetIdMap.put(w.getPackedId(), w);
+			}
+		}
+
+		return widgetIdMap.get(packedId);
 	}
 
 	private void refreshWidgets()
@@ -253,22 +275,6 @@ public class WidgetInspector
 				widgetTree.getSelectionModel().addSelectionPath(new TreePath(fnode.getPath()));
 			});
 		});
-	}
-
-	public static WidgetInfo getWidgetInfo(int packedId)
-	{
-		if (widgetIdMap.isEmpty())
-		{
-			//Initialize map here so it doesn't create the index
-			//until it's actually needed.
-			WidgetInfo[] widgets = WidgetInfo.values();
-			for (WidgetInfo w : widgets)
-			{
-				widgetIdMap.put(w.getPackedId(), w);
-			}
-		}
-
-		return widgetIdMap.get(packedId);
 	}
 
 	public void open()

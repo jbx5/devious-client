@@ -1,9 +1,5 @@
 package net.unethicalite.api.utils;
 
-import net.unethicalite.api.movement.pathfinder.CollisionMap;
-import net.unethicalite.api.movement.pathfinder.model.Transport;
-import net.unethicalite.api.movement.pathfinder.TransportLoader;
-import net.unethicalite.api.scene.Tiles;
 import net.runelite.api.Client;
 import net.runelite.api.Locatable;
 import net.runelite.api.Perspective;
@@ -12,9 +8,15 @@ import net.runelite.api.RenderOverview;
 import net.runelite.api.Tile;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.client.ui.overlay.OverlayUtil;
+import net.unethicalite.api.movement.pathfinder.CollisionMap;
+import net.unethicalite.api.movement.pathfinder.TransportLoader;
+import net.unethicalite.api.movement.pathfinder.model.Transport;
+import net.unethicalite.api.scene.Tiles;
 import net.unethicalite.client.Static;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.Polygon;
 import java.util.List;
 
 public class DrawUtils

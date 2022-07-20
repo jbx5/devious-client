@@ -89,6 +89,8 @@ public class MinimalHooks implements Callbacks
 	private static final BeforeRender BEFORE_RENDER = new BeforeRender();
 
 	private static Client client;
+	private static MainBufferProvider lastMainBufferProvider;
+	private static Graphics2D lastGraphics;
 	private final MinimalOverlayRenderer renderer;
 	private final EventBus eventBus;
 	private final DeferredEventBus deferredEventBus;
@@ -98,48 +100,13 @@ public class MinimalHooks implements Callbacks
 	private final ClientThread clientThread;
 	private final DrawManager drawManager;
 	private final MinimalUI minimalUI;
-
+	private final List<RenderableDrawListener> renderableDrawListeners = new ArrayList<>();
 	private Dimension lastStretchedDimensions;
 	private VolatileImage stretchedImage;
 	private Graphics2D stretchedGraphics;
-
 	private long lastCheck;
 	private boolean ignoreNextNpcUpdate;
 	private boolean shouldProcessGameTick;
-
-	private static MainBufferProvider lastMainBufferProvider;
-	private static Graphics2D lastGraphics;
-
-	private final List<RenderableDrawListener> renderableDrawListeners = new ArrayList<>();
-
-	@FunctionalInterface
-	public interface RenderableDrawListener
-	{
-		boolean draw(Renderable renderable, boolean ui);
-	}
-
-	/**
-	 * Get the Graphics2D for the MainBufferProvider image
-	 * This caches the Graphics2D instance so it can be reused
-	 *
-	 * @param mainBufferProvider
-	 * @return
-	 */
-	private static Graphics2D getGraphics(MainBufferProvider mainBufferProvider)
-	{
-		if (lastGraphics == null || lastMainBufferProvider != mainBufferProvider)
-		{
-			if (lastGraphics != null)
-			{
-				log.debug("Graphics reset!");
-				lastGraphics.dispose();
-			}
-
-			lastMainBufferProvider = mainBufferProvider;
-			lastGraphics = (Graphics2D) mainBufferProvider.getImage().getGraphics();
-		}
-		return lastGraphics;
-	}
 
 	@Inject
 	private MinimalHooks(
@@ -166,6 +133,85 @@ public class MinimalHooks implements Callbacks
 		this.drawManager = drawManager;
 		this.minimalUI = minimalUI;
 		eventBus.register(this);
+	}
+
+	/**
+	 * Get the Graphics2D for the MainBufferProvider image
+	 * This caches the Graphics2D instance so it can be reused
+	 *
+	 * @param mainBufferProvider
+	 * @return
+	 */
+	private static Graphics2D getGraphics(MainBufferProvider mainBufferProvider)
+	{
+		if (lastGraphics == null || lastMainBufferProvider != mainBufferProvider)
+		{
+			if (lastGraphics != null)
+			{
+				log.debug("Graphics reset!");
+				lastGraphics.dispose();
+			}
+
+			lastMainBufferProvider = mainBufferProvider;
+			lastGraphics = (Graphics2D) mainBufferProvider.getImage().getGraphics();
+		}
+		return lastGraphics;
+	}
+
+	/**
+	 * Copy an image
+	 *
+	 * @param src
+	 * @return
+	 */
+	private static Image copy(Image src)
+	{
+		final int width = src.getWidth(null);
+		final int height = src.getHeight(null);
+		BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+		Graphics graphics = image.getGraphics();
+		graphics.drawImage(src, 0, 0, width, height, null);
+		graphics.dispose();
+		return image;
+	}
+
+	public static void clearColorBuffer(int x, int y, int width, int height, int color)
+	{
+		BufferProvider bp = client.getBufferProvider();
+		int canvasWidth = bp.getWidth();
+		int[] pixels = bp.getPixels();
+
+		int pixelPos = y * canvasWidth + x;
+		int pixelJump = canvasWidth - width;
+
+		for (int cy = y; cy < y + height; cy++)
+		{
+			for (int cx = x; cx < x + width; cx++)
+			{
+				pixels[pixelPos++] = 0;
+			}
+			pixelPos += pixelJump;
+		}
+	}
+
+	public static void renderDraw(Renderable renderable, int orientation, int pitchSin, int pitchCos, int yawSin, int yawCos, int x, int y, int z, long hash)
+	{
+		DrawCallbacks drawCallbacks = client.getDrawCallbacks();
+		if (drawCallbacks != null)
+		{
+			drawCallbacks.draw(renderable, orientation, pitchSin, pitchCos, yawSin, yawCos, x, y, z, hash);
+		}
+		else
+		{
+			renderable.draw(orientation, pitchSin, pitchCos, yawSin, yawCos, x, y, z, hash);
+		}
+	}
+
+	public static boolean drawMenu()
+	{
+		BeforeMenuRender event = new BeforeMenuRender();
+		client.getCallbacks().post(event);
+		return event.isConsumed();
 	}
 
 	@Override
@@ -436,23 +482,6 @@ public class MinimalHooks implements Callbacks
 		drawManager.processDrawComplete(() -> copy(finalImage));
 	}
 
-	/**
-	 * Copy an image
-	 *
-	 * @param src
-	 * @return
-	 */
-	private static Image copy(Image src)
-	{
-		final int width = src.getWidth(null);
-		final int height = src.getHeight(null);
-		BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-		Graphics graphics = image.getGraphics();
-		graphics.drawImage(src, 0, 0, width, height, null);
-		graphics.dispose();
-		return image;
-	}
-
 	@Override
 	public void drawScene()
 	{
@@ -575,43 +604,9 @@ public class MinimalHooks implements Callbacks
 		eventBus.post(fakeXpDrop);
 	}
 
-
-	public static void clearColorBuffer(int x, int y, int width, int height, int color)
+	@FunctionalInterface
+	public interface RenderableDrawListener
 	{
-		BufferProvider bp = client.getBufferProvider();
-		int canvasWidth = bp.getWidth();
-		int[] pixels = bp.getPixels();
-
-		int pixelPos = y * canvasWidth + x;
-		int pixelJump = canvasWidth - width;
-
-		for (int cy = y; cy < y + height; cy++)
-		{
-			for (int cx = x; cx < x + width; cx++)
-			{
-				pixels[pixelPos++] = 0;
-			}
-			pixelPos += pixelJump;
-		}
-	}
-
-	public static void renderDraw(Renderable renderable, int orientation, int pitchSin, int pitchCos, int yawSin, int yawCos, int x, int y, int z, long hash)
-	{
-		DrawCallbacks drawCallbacks = client.getDrawCallbacks();
-		if (drawCallbacks != null)
-		{
-			drawCallbacks.draw(renderable, orientation, pitchSin, pitchCos, yawSin, yawCos, x, y, z, hash);
-		}
-		else
-		{
-			renderable.draw(orientation, pitchSin, pitchCos, yawSin, yawCos, x, y, z, hash);
-		}
-	}
-
-	public static boolean drawMenu()
-	{
-		BeforeMenuRender event = new BeforeMenuRender();
-		client.getCallbacks().post(event);
-		return event.isConsumed();
+		boolean draw(Renderable renderable, boolean ui);
 	}
 }
