@@ -51,9 +51,11 @@ import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
+import net.runelite.api.events.ImageCaptured;
 import net.runelite.client.Notifier;
 import static net.runelite.client.RuneLite.SCREENSHOT_DIR;
 import net.runelite.client.config.RuneScapeProfileType;
+import net.runelite.client.eventbus.EventBus;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.HttpUrl;
@@ -76,6 +78,7 @@ public class ImageCapture
 	private final OkHttpClient okHttpClient;
 	private final Gson gson;
 	private final String imgurClientId;
+	private final EventBus eventbus;
 
 	@Inject
 	private ImageCapture(
@@ -83,6 +86,7 @@ public class ImageCapture
 		final Notifier notifier,
 		final OkHttpClient okHttpClient,
 		final Gson gson,
+		final EventBus eventbus,
 		@Named("runelite.imgur.client.id") final String imgurClientId
 	)
 	{
@@ -90,6 +94,7 @@ public class ImageCapture
 		this.notifier = notifier;
 		this.okHttpClient = okHttpClient;
 		this.gson = gson;
+		this.eventbus = eventbus;
 		this.imgurClientId = imgurClientId;
 	}
 
@@ -151,6 +156,7 @@ public class ImageCapture
 			}
 
 			ImageIO.write(screenshot, "PNG", screenshotFile);
+			eventbus.post(new ImageCaptured(fileName, subDir));
 
 			if (imageUploadStyle == ImageUploadStyle.IMGUR)
 			{
