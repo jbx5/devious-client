@@ -22,13 +22,13 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.http.api.ge;
+package net.runelite.client.plugins.grandexchange;
 
 import com.google.gson.Gson;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.http.api.RuneLiteAPI;
+import net.runelite.http.api.ge.GrandExchangeTrade;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.HttpUrl;
@@ -37,27 +37,36 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+import javax.inject.Inject;
+import javax.inject.Named;
 import java.io.IOException;
 import java.util.UUID;
 
 import static net.runelite.http.api.RuneLiteAPI.JSON;
 
 @Slf4j
-@RequiredArgsConstructor
 public class GrandExchangeClient
 {
 	private static final Gson GSON = RuneLiteAPI.GSON;
 
 	private final OkHttpClient client;
+	private final HttpUrl apiBase;
 
 	@Setter
 	private UUID uuid;
 	@Setter
 	private String machineId;
 
+	@Inject
+	private GrandExchangeClient(OkHttpClient client, @Named("runelite.api.base") HttpUrl apiBase)
+	{
+		this.client = client;
+		this.apiBase = apiBase;
+	}
+
 	public void submit(GrandExchangeTrade grandExchangeTrade)
 	{
-		final HttpUrl url = RuneLiteAPI.getApiBase().newBuilder()
+		final HttpUrl url = apiBase.newBuilder()
 			.addPathSegment("ge")
 			.build();
 
