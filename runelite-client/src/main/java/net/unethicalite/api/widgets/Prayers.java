@@ -8,6 +8,8 @@ import net.runelite.api.Varbits;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
 
+import java.util.Arrays;
+
 public class Prayers
 {
 	public static boolean isEnabled(Prayer prayer)
@@ -42,4 +44,15 @@ public class Prayers
 	{
 		return Vars.getBit(Varbits.QUICK_PRAYER) == 1;
 	}
+
+	public static boolean anyActive()
+	{
+		return Arrays.stream(Prayer.values()).anyMatch(Prayers::isEnabled);
+	}
+
+	public static void disableAll()
+	{
+		Arrays.stream(Prayer.values()).filter(Prayers::isEnabled).forEach(Prayers::toggle);
+	}
+
 }
