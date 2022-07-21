@@ -51,7 +51,7 @@ import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
-import net.runelite.api.events.ScreenshotTaken;
+import net.runelite.api.events.ImageCaptured;
 import net.runelite.client.Notifier;
 import static net.runelite.client.RuneLite.SCREENSHOT_DIR;
 import net.runelite.client.config.RuneScapeProfileType;
@@ -156,7 +156,7 @@ public class ImageCapture
 			}
 
 			ImageIO.write(screenshot, "PNG", screenshotFile);
-			eventbus.post(new ScreenshotTaken(fileName, subDir));
+			eventbus.post(new ImageCaptured(fileName, subDir));
 
 			if (imageUploadStyle == ImageUploadStyle.IMGUR)
 			{
