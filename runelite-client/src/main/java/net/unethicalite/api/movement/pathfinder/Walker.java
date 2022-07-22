@@ -6,6 +6,7 @@ import net.runelite.api.Tile;
 import net.runelite.api.TileObject;
 import net.runelite.api.WallObject;
 import net.runelite.api.coords.WorldPoint;
+import net.runelite.api.widgets.Widget;
 import net.unethicalite.api.commons.Rand;
 import net.unethicalite.api.commons.Time;
 import net.unethicalite.api.entities.Players;
@@ -15,6 +16,8 @@ import net.unethicalite.api.movement.Reachable;
 import net.unethicalite.api.movement.pathfinder.model.Teleport;
 import net.unethicalite.api.movement.pathfinder.model.Transport;
 import net.unethicalite.api.scene.Tiles;
+import net.unethicalite.api.widgets.Dialog;
+import net.unethicalite.api.widgets.Widgets;
 import net.unethicalite.client.Static;
 import net.unethicalite.client.managers.RegionManager;
 
@@ -182,6 +185,21 @@ public class Walker
 
 	public static boolean handleTransports(List<WorldPoint> path, Map<WorldPoint, List<Transport>> transports)
 	{
+
+		Widget leverWarningWidget = Widgets.get(229, 1);
+		if (Widgets.isVisible(leverWarningWidget))
+		{
+			Dialog.continueSpace();
+			return true;
+		}
+
+		if (Dialog.getOptions().stream()
+				.anyMatch(widget -> widget.getText() != null && widget.getText().contains("Eeep! The Wilderness")))
+		{
+			Dialog.chooseOption("Yes, I'm brave");
+			return true;
+		}
+
 		for (int i = 0; i < MAX_INTERACT_DISTANCE; i++)
 		{
 			if (i + 1 >= path.size())
