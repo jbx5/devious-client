@@ -76,6 +76,42 @@ public class Predicates
 		return nameContains(subString, true);
 	}
 
+	public static <T extends EntityNameable> Predicate<T> nameContains(Collection<String> subStrings, boolean caseSensitive)
+	{
+		return t ->
+		{
+			if (t.getName() == null)
+			{
+				return false;
+			}
+
+			for (String subString : subStrings)
+			{
+				if (caseSensitive)
+				{
+					if (t.getName().contains(subString))
+					{
+						return true;
+					}
+				}
+				else
+				{
+					if (t.getName().toLowerCase().contains(subString.toLowerCase()))
+					{
+						return true;
+					}
+				}
+			}
+
+			return false;
+		};
+	}
+
+	public static <T extends EntityNameable> Predicate<T> nameContains(Collection<String> subStrings)
+	{
+		return nameContains(subStrings, true);
+	}
+
 	public static <T extends Identifiable> Predicate<T> ids(int... ids)
 	{
 		return t ->
