@@ -56,7 +56,7 @@ public class Paint extends Overlay
 
 		if (MinimalUI.getFrame() != null)
 		{
-			if (configManager.getConfiguration("unethicalite", "drawMouse", Boolean.class))
+			if (configManager.getConfiguration("entityinspector", "drawMouse", Boolean.class))
 			{
 				g.setFont(new Font("Tahoma", Font.BOLD, 18));
 				OverlayUtil.renderTextLocation(g, new Point(inputManager.getLastClickX() - (g.getFont().getSize() / 3),
