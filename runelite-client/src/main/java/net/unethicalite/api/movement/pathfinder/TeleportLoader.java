@@ -312,18 +312,17 @@ public class TeleportLoader
 
 		if (inv != null)
 		{
-			if (!Dialog.isViewingOptions()) {
+			if (!Dialog.isViewingOptions())
+			{
 				inv.interact("Rub");
 				Time.sleepTicksUntil(Dialog::isViewingOptions, 2);
+				return;
 			}
-			if (Dialog.isViewingOptions())
+			Widget option = Dialog.getOptions().stream().filter(w -> w.getText().contains(target)).findFirst().orElse(null);
+			if (option != null)
 			{
-				Widget option = Dialog.getOptions().stream().filter(w -> w.getText().contains(target)).findFirst().orElse(null);
-				if (option != null)
-				{
-					Dialog.chooseOption(Dialog.getOptions().indexOf(option) + 1);
-					return;
-				}
+				Dialog.chooseOption(Dialog.getOptions().indexOf(option) + 1);
+				return;
 			}
 			return;
 		}
