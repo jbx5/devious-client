@@ -8,6 +8,7 @@ import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetID;
 import net.runelite.api.widgets.WidgetInfo;
+import net.unethicalite.api.commons.Time;
 import net.unethicalite.api.entities.Players;
 import net.unethicalite.api.entities.TileObjects;
 import net.unethicalite.api.game.Game;
@@ -40,6 +41,7 @@ import static net.unethicalite.api.movement.pathfinder.model.MovementConstants.R
 import static net.unethicalite.api.movement.pathfinder.model.MovementConstants.SKILLS_NECKLACE;
 import static net.unethicalite.api.movement.pathfinder.model.MovementConstants.SLAYER_RING;
 import static net.unethicalite.api.movement.pathfinder.model.MovementConstants.XERICS_TALISMAN;
+import static net.unethicalite.api.movement.pathfinder.model.MovementConstants.BURNING_AMULET;
 
 public class TeleportLoader
 {
@@ -200,6 +202,16 @@ public class TeleportLoader
 					teleports.add(new Teleport(new WorldPoint(3293, 3163, 0), 0,
 						() -> jewelryTeleport("Al Kharid", AMULET_OF_GLORY)));
 				}
+
+				if (burningAmulet())
+				{
+					teleports.add(new Teleport(new WorldPoint(3235, 3636, 0), 5,
+							() -> jewelryWildernessTeleport( "Chaos Temple", BURNING_AMULET)));
+					teleports.add(new Teleport(new WorldPoint(3038, 3651, 0), 5,
+							() -> jewelryWildernessTeleport("Bandit Camp", BURNING_AMULET)));
+					teleports.add(new Teleport(new WorldPoint(3028, 3842, 0), 5,
+							() -> jewelryWildernessTeleport( "Lava Maze", BURNING_AMULET)));
+				}
 			}
 		}
 
@@ -300,6 +312,10 @@ public class TeleportLoader
 
 		if (inv != null)
 		{
+			if (!Dialog.isViewingOptions()) {
+				inv.interact("Rub");
+				Time.sleepTicksUntil(Dialog::isViewingOptions, 2);
+			}
 			if (Dialog.isViewingOptions())
 			{
 				Widget option = Dialog.getOptions().stream().filter(w -> w.getText().contains(target)).findFirst().orElse(null);
@@ -309,8 +325,6 @@ public class TeleportLoader
 					return;
 				}
 			}
-
-			inv.interact("Rub");
 			return;
 		}
 
@@ -440,6 +454,13 @@ public class TeleportLoader
 		});
 	}
 
+	public static void jewelryWildernessTeleport(String target, int... ids)
+	{
+		jewelryTeleport(target, ids);
+		Time.sleepTick();
+		Dialog.chooseOption(1);
+	}
+
 	public static boolean ringOfDueling()
 	{
 		return Inventory.getFirst(RING_OF_DUELING) != null
@@ -498,5 +519,11 @@ public class TeleportLoader
 	{
 		return Inventory.getFirst(DIGSITE_PENDANT) != null
 				|| Equipment.getFirst(DIGSITE_PENDANT) != null;
+	}
+
+	public static boolean burningAmulet()
+	{
+		return Inventory.getFirst(BURNING_AMULET) != null
+				|| Equipment.getFirst(BURNING_AMULET) != null;
 	}
 }
