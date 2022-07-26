@@ -84,6 +84,7 @@ public class Walker
 			if (Players.getLocal().isIdle())
 			{
 				teleport.getHandler().run();
+				Time.sleepTick();
 			}
 			Time.sleepUntil(() -> Players.getLocal().distanceTo(teleport.getDestination()) < 10, 500);
 			return false;
@@ -224,6 +225,10 @@ public class Walker
 
 				if (transport != null)
 				{
+					if (Players.getLocal().isMoving())
+					{
+						return true;
+					}
 					log.debug("Trying to use transport at {} to move {} -> {}", transport.getSource(), a, b);
 					transport.getHandler().run();
 					Time.sleepTick();
@@ -243,6 +248,10 @@ public class Walker
 				);
 				if (wall != null && wall.hasAction("Open"))
 				{
+					if (Players.getLocal().isMoving())
+					{
+						return true;
+					}
 					log.debug("Handling diagonal door {}", wall.getWorldLocation());
 					wall.interact("Open");
 					Time.sleepUntil(() -> !wall.hasAction("Open"), 2000);
@@ -257,6 +266,10 @@ public class Walker
 
 			if (Reachable.isDoored(tileA, tileB))
 			{
+				if (Players.getLocal().isMoving())
+				{
+					return true;
+				}
 				WallObject wall = tileA.getWallObject();
 				wall.interact("Open");
 				log.debug("Handling door {}", wall.getWorldLocation());
@@ -267,6 +280,10 @@ public class Walker
 
 			if (Reachable.isDoored(tileB, tileA))
 			{
+				if (Players.getLocal().isMoving())
+				{
+					return true;
+				}
 				WallObject wall = tileB.getWallObject();
 				wall.interact("Open");
 				log.debug("Handling door {}", wall.getWorldLocation());
