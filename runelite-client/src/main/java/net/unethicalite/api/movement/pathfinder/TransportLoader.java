@@ -248,7 +248,7 @@ public class TransportLoader
 				{
 					transports.add(npcTransport(new WorldPoint(3054, 3245, 0),
 							new WorldPoint(1824, 3695, 1),
-							10724,
+							"Veos",
 							"Port Piscarilius"));
 				}
 
@@ -549,6 +549,23 @@ public class TransportLoader
 		return new Transport(source, destination, 10, 0, () ->
 		{
 			NPC npc = NPCs.getNearest(x -> x.getWorldLocation().distanceTo(source) <= 10 && x.getId() == npcId);
+			if (npc != null)
+			{
+				npc.interact(actions);
+			}
+		});
+	}
+
+	public static Transport npcTransport(
+			WorldPoint source,
+			WorldPoint destination,
+			String npcName,
+			String... actions
+	)
+	{
+		return new Transport(source, destination, 10, 0, () ->
+		{
+			NPC npc = NPCs.getNearest(x -> x.getWorldLocation().distanceTo(source) <= 10 && x.getName().equalsIgnoreCase(npcName));
 			if (npc != null)
 			{
 				npc.interact(actions);
