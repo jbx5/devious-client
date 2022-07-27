@@ -30,6 +30,7 @@ import net.unethicalite.client.managers.RegionManager;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import static net.unethicalite.api.movement.pathfinder.model.MovementConstants.AMULET_OF_GLORY;
 import static net.unethicalite.api.movement.pathfinder.model.MovementConstants.COMBAT_BRACELET;
@@ -45,6 +46,7 @@ import static net.unethicalite.api.movement.pathfinder.model.MovementConstants.B
 
 public class TeleportLoader
 {
+	private static Pattern WILDY_PATTERN = Pattern.compile("Okay, teleport to level [\\d,]* Wilderness\\.");
 	private static int LAST_BUILD_TICK = 0;
 	private static List<Teleport> LAST_TELEPORT_LIST = Collections.emptyList();
 
@@ -312,19 +314,13 @@ public class TeleportLoader
 
 		if (inv != null)
 		{
-			if (!Dialog.isViewingOptions()) {
+			if (!Dialog.isViewingOptions())
+			{
 				inv.interact("Rub");
 				Time.sleepTicksUntil(Dialog::isViewingOptions, 2);
+				return;
 			}
-			if (Dialog.isViewingOptions())
-			{
-				Widget option = Dialog.getOptions().stream().filter(w -> w.getText().contains(target)).findFirst().orElse(null);
-				if (option != null)
-				{
-					Dialog.chooseOption(Dialog.getOptions().indexOf(option) + 1);
-					return;
-				}
-			}
+			Dialog.chooseOption(target);
 			return;
 		}
 
@@ -458,7 +454,11 @@ public class TeleportLoader
 	{
 		jewelryTeleport(target, ids);
 		Time.sleepTick();
-		Dialog.chooseOption(1);
+		if (Dialog.isViewingOptions() && Dialog.getOptions().stream()
+				.anyMatch(it -> it.getText() != null && WILDY_PATTERN.matcher(it.getText()).matches()))
+		{
+			Dialog.chooseOption(1);
+		}
 	}
 
 	public static boolean ringOfDueling()
