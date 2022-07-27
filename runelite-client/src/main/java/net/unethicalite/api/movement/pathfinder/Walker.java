@@ -194,6 +194,13 @@ public class Walker
 			return true;
 		}
 
+		Widget wildyDitchWidget = Widgets.get(475, 11);
+		if (Widgets.isVisible(wildyDitchWidget))
+		{
+			wildyDitchWidget.interact("Enter Wilderness");
+			return true;
+		}
+
 		if (Dialog.getOptions().stream()
 				.anyMatch(widget -> widget.getText() != null && widget.getText().contains("Eeep! The Wilderness")))
 		{
