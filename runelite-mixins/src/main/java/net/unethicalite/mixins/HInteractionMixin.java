@@ -220,16 +220,16 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 
 		if ("Automated".equals(option)
 				&& (opcode == MenuAction.CC_OP.getId() || opcode == MenuAction.CC_OP_LOW_PRIORITY.getId())
-				&& itemId > -1)
+				&& event.getItemId() > -1)
 		{
-			client.invokeWidgetAction(event.getId(), event.getParam1(), event.getParam0(), itemId,
+			client.invokeWidgetAction(event.getId(), event.getParam1(), event.getParam0(), event.getItemId(),
 					event.getMenuTarget());
 		}
 		else
 		{
 			copy$menuAction(event.getParam0(), event.getParam1(),
 					event.getMenuAction() == UNKNOWN ? opcode : event.getMenuAction().getId(),
-					event.getId(), itemId, event.getMenuOption(), event.getMenuTarget(),
+					event.getId(), event.getItemId(), event.getMenuOption(), event.getMenuTarget(),
 					canvasX, canvasY);
 		}
 	}

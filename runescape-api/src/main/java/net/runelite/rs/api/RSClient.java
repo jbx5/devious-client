@@ -364,6 +364,9 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("menuArguments2")
 	int[] getMenuArguments2();
 
+	@Import("menuItemIds")
+	int[] getMenuItemIds();
+
 	@Import("menuShiftClick")
 	boolean[] getMenuForceLeftClick();
 

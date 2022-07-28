@@ -7,7 +7,7 @@ import net.runelite.api.Client;
 import net.runelite.api.MenuAction;
 import net.runelite.api.MenuEntry;
 import net.runelite.api.widgets.Widget;
-import net.runelite.api.widgets.WidgetInfo;
+import net.runelite.api.widgets.WidgetID;
 import net.unethicalite.api.SceneEntity;
 
 import java.util.function.Consumer;
@@ -93,19 +93,20 @@ public class MenuAutomated
 
 	public int getItemId(Client client)
 	{
-		MenuAction menuAction = getOpcode();
-		if (menuAction == MenuAction.CC_OP || menuAction == MenuAction.CC_OP_LOW_PRIORITY)
+		Widget widget = client.getWidget(param1);
+		if (widget != null)
 		{
-			int param1 = this.getParam1();
-			int param0 = this.getParam0();
-			if (param1 == WidgetInfo.INVENTORY.getId())
+			int group = param1 >>> 16;
+			Widget[] children = widget.getChildren();
+			if (children != null && children.length >= 2 && group == WidgetID.EQUIPMENT_GROUP_ID)
 			{
-				Widget widget = client.getWidget(param1);
-				if (widget != null && param0 != -1)
-				{
-					widget = widget.getChild(param0);
-					return widget.getItemId();
-				}
+				param0 = 1;
+			}
+
+			Widget child = widget.getChild(param0);
+			if (child != null)
+			{
+				return child.getItemId();
 			}
 		}
 

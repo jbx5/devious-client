@@ -155,6 +155,7 @@ public abstract class HClientMixin implements RSClient
 			client.getMenuIdentifiers()[idx] = menu.getIdentifier();
 			client.getMenuOptions()[idx] = menu.getOption();
 			client.getMenuTargets()[idx] = menu.getTarget();
+			client.getMenuItemIds()[idx] = menu.getItemId(client);
 			client.getMenuForceLeftClick()[idx] = true;
 		}
 	}
