@@ -1,36 +1,51 @@
+import java.io.DataInputStream;
+import java.net.URL;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.Export;
-@ObfuscatedName("mf")
+
+@ObfuscatedName("mr")
 public class class359 {
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "Lmf;")
-	public static final class359 field4260;
+   @ObfuscatedName("o")
+   @ObfuscatedSignature(
+      descriptor = "(Ljava/lang/String;Ljava/lang/Throwable;I)V",
+      garbageValue = "-891701215"
+   )
+   @Export("RunException_sendStackTrace")
+   public static void RunException_sendStackTrace(String var0, Throwable var1) {
+      if (var1 != null) {
+         var1.printStackTrace();
+      } else {
+         try {
+            String var2 = "";
+            if (var1 != null) {
+               var2 = Players.method2497(var1);
+            }
 
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "Lmf;")
-	static final class359 field4259;
+            if (var0 != null) {
+               if (var1 != null) {
+                  var2 = var2 + " | ";
+               }
 
-	@ObfuscatedName("e")
-	@Export("SpriteBuffer_spriteWidths")
-	public static int[] SpriteBuffer_spriteWidths;
+               var2 = var2 + var0;
+            }
 
-	@ObfuscatedName("u")
-	@ObfuscatedSignature(descriptor = "[Lpa;")
-	@Export("JagexCache_idxFiles")
-	public static BufferedFile[] JagexCache_idxFiles;
+            System.out.println("Error: " + var2);
+            var2 = var2.replace(':', '.');
+            var2 = var2.replace('@', '_');
+            var2 = var2.replace('&', '_');
+            var2 = var2.replace('#', '_');
+            if (RunException.RunException_applet == null) {
+               return;
+            }
 
-	@ObfuscatedName("q")
-	@ObfuscatedGetter(intValue = -1555727855)
-	final int field4258;
+            URL var3 = new URL(RunException.RunException_applet.getCodeBase(), "clienterror.ws?cv=" + RunException.RunException_revision + "&cs=" + class138.field1608 + "&u=" + class392.localPlayerName + "&v1=" + TaskHandler.javaVendor + "&v2=" + TaskHandler.javaVersion + "&ct=" + class133.clientType + "&e=" + var2);
+            DataInputStream var4 = new DataInputStream(var3.openStream());
+            var4.read();
+            var4.close();
+         } catch (Exception var5) {
+         }
 
-	static {
-		field4260 = new class359(1);
-		field4259 = new class359(0);
-	}
-
-	class359(int var1) {
-		this.field4258 = var1;
-	}
+      }
+   }
 }

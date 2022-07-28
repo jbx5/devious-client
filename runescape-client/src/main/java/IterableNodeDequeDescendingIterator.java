@@ -1,68 +1,77 @@
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.Implements;
 import java.util.Iterator;
 import net.runelite.mapping.Export;
-@ObfuscatedName("lx")
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
+
+@ObfuscatedName("la")
 @Implements("IterableNodeDequeDescendingIterator")
 public class IterableNodeDequeDescendingIterator implements Iterator {
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "Llk;")
-	@Export("deque")
-	IterableNodeDeque deque;
+   @ObfuscatedName("o")
+   @ObfuscatedSignature(
+      descriptor = "Lln;"
+   )
+   @Export("deque")
+   IterableNodeDeque deque;
+   @ObfuscatedName("q")
+   @ObfuscatedSignature(
+      descriptor = "Lor;"
+   )
+   Node field4146;
+   @ObfuscatedName("f")
+   @ObfuscatedSignature(
+      descriptor = "Lor;"
+   )
+   @Export("last")
+   Node last = null;
 
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "Loh;")
-	Node field4125;
+   @ObfuscatedSignature(
+      descriptor = "(Lln;)V"
+   )
+   IterableNodeDequeDescendingIterator(IterableNodeDeque var1) {
+      this.setDeque(var1);
+   }
 
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "Loh;")
-	@Export("last")
-	Node last;
+   @ObfuscatedName("o")
+   @ObfuscatedSignature(
+      descriptor = "(Lln;)V"
+   )
+   @Export("setDeque")
+   void setDeque(IterableNodeDeque var1) {
+      this.deque = var1;
+      this.start();
+   }
 
-	@ObfuscatedSignature(descriptor = "(Llk;)V")
-	IterableNodeDequeDescendingIterator(IterableNodeDeque var1) {
-		this.last = null;
-		this.setDeque(var1);
-	}
+   @ObfuscatedName("q")
+   @Export("start")
+   void start() {
+      this.field4146 = this.deque != null ? this.deque.sentinel.previous : null;
+      this.last = null;
+   }
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(Llk;)V")
-	@Export("setDeque")
-	void setDeque(IterableNodeDeque var1) {
-		this.deque = var1;
-		this.start();
-	}
+   public boolean hasNext() {
+      return this.deque.sentinel != this.field4146 && this.field4146 != null;
+   }
 
-	@ObfuscatedName("v")
-	@Export("start")
-	void start() {
-		this.field4125 = (this.deque != null) ? this.deque.sentinel.previous : null;
-		this.last = null;
-	}
+   public void remove() {
+      if (this.last == null) {
+         throw new IllegalStateException();
+      } else {
+         this.last.remove();
+         this.last = null;
+      }
+   }
 
-	public Object next() {
-		Node var1 = this.field4125;
-		if (var1 == this.deque.sentinel) {
-			var1 = null;
-			this.field4125 = null;
-		} else {
-			this.field4125 = var1.previous;
-		}
-		this.last = var1;
-		return var1;
-	}
+   public Object next() {
+      Node var1 = this.field4146;
+      if (var1 == this.deque.sentinel) {
+         var1 = null;
+         this.field4146 = null;
+      } else {
+         this.field4146 = var1.previous;
+      }
 
-	public boolean hasNext() {
-		return this.deque.sentinel != this.field4125 && this.field4125 != null;
-	}
-
-	public void remove() {
-		if (this.last == null) {
-			throw new IllegalStateException();
-		} else {
-			this.last.remove();
-			this.last = null;
-		}
-	}
+      this.last = var1;
+      return var1;
+   }
 }

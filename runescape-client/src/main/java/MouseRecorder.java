@@ -1,177 +1,95 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.Export;
-@ObfuscatedName("cx")
+
+@ObfuscatedName("cp")
 @Implements("MouseRecorder")
 public class MouseRecorder implements Runnable {
-	@ObfuscatedName("bu")
-	@ObfuscatedGetter(intValue = 1484453343)
-	static int field1064;
+   @ObfuscatedName("p")
+   static int[][][] field1060;
+   @ObfuscatedName("o")
+   @Export("isRunning")
+   boolean isRunning = true;
+   @ObfuscatedName("q")
+   @Export("lock")
+   Object lock = new Object();
+   @ObfuscatedName("f")
+   @ObfuscatedGetter(
+      intValue = -368891301
+   )
+   @Export("index")
+   int index = 0;
+   @ObfuscatedName("u")
+   @Export("xs")
+   int[] xs = new int[500];
+   @ObfuscatedName("c")
+   @Export("ys")
+   int[] ys = new int[500];
+   @ObfuscatedName("w")
+   @Export("millis")
+   long[] millis = new long[500];
 
-	@ObfuscatedName("c")
-	@Export("isRunning")
-	boolean isRunning;
+   MouseRecorder() {
+   }
 
-	@ObfuscatedName("v")
-	@Export("lock")
-	Object lock;
+   public void run() {
+      for(; this.isRunning; WorldMapDecoration.method4967(50L)) {
+         synchronized(this.lock) {
+            if (this.index < 500) {
+               this.xs[this.index] = MouseHandler.MouseHandler_x;
+               this.ys[this.index] = MouseHandler.MouseHandler_y;
+               this.millis[this.index] = MouseHandler.MouseHandler_millis;
+               ++this.index;
+            }
+         }
+      }
 
-	@ObfuscatedName("q")
-	@ObfuscatedGetter(intValue = -1641337251)
-	@Export("index")
-	int index;
+   }
 
-	@ObfuscatedName("f")
-	@Export("xs")
-	int[] xs;
+   @ObfuscatedName("q")
+   @ObfuscatedSignature(
+      descriptor = "(IB)Lfp;",
+      garbageValue = "-21"
+   )
+   @Export("VarpDefinition_get")
+   public static VarpDefinition VarpDefinition_get(int var0) {
+      VarpDefinition var1 = (VarpDefinition)VarpDefinition.VarpDefinition_cached.get((long)var0);
+      if (var1 != null) {
+         return var1;
+      } else {
+         byte[] var2 = VarpDefinition.VarpDefinition_archive.takeFile(16, var0);
+         var1 = new VarpDefinition();
+         if (var2 != null) {
+            var1.decode(new Buffer(var2));
+         }
 
-	@ObfuscatedName("j")
-	@Export("ys")
-	int[] ys;
+         VarpDefinition.VarpDefinition_cached.put(var1, (long)var0);
+         return var1;
+      }
+   }
 
-	@ObfuscatedName("e")
-	@Export("millis")
-	long[] millis;
+   @ObfuscatedName("gf")
+   @ObfuscatedSignature(
+      descriptor = "(III)V",
+      garbageValue = "-1517499028"
+   )
+   static void method2170(int var0, int var1) {
+      if (class260.clientPreferences.method2335() != 0 && var0 != -1) {
+         FriendsChat.method6678(WorldMapRegion.field2708, var0, 0, class260.clientPreferences.method2335(), false);
+         Client.playingJingle = true;
+      }
 
-	MouseRecorder() {
-		this.isRunning = true;
-		this.lock = new Object();
-		this.index = 0;
-		this.xs = new int[500];
-		this.ys = new int[500];
-		this.millis = new long[500];
-	}
+   }
 
-	public void run() {
-		for (; this.isRunning; DynamicObject.method1991(50L)) {
-			synchronized(this.lock) {
-				if (this.index < 500) {
-					this.xs[this.index] = MouseHandler.MouseHandler_x;
-					this.ys[this.index] = MouseHandler.MouseHandler_y;
-					this.millis[this.index] = MouseHandler.MouseHandler_millis;
-					++this.index;
-				}
-			}
-		}
-	}
-
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "([Lbc;II[I[IB)V", garbageValue = "0")
-	@Export("sortWorlds")
-	static void sortWorlds(World[] var0, int var1, int var2, int[] var3, int[] var4) {
-		if (var1 < var2) {
-			int var5 = var1 - 1;
-			int var6 = var2 + 1;
-			int var7 = (var2 + var1) / 2;
-			World var8 = var0[var7];
-			var0[var7] = var0[var1];
-			var0[var1] = var8;
-			while (var5 < var6) {
-				boolean var9 = true;
-				int var10;
-				int var11;
-				int var12;
-				do {
-					--var6;
-					for (var10 = 0; var10 < 4; ++var10) {
-						if (var3[var10] == 2) {
-							var11 = var0[var6].index;
-							var12 = var8.index;
-						} else if (var3[var10] == 1) {
-							var11 = var0[var6].population;
-							var12 = var8.population;
-							if (var11 == -1 && var4[var10] == 1) {
-								var11 = 2001;
-							}
-							if (var12 == -1 && var4[var10] == 1) {
-								var12 = 2001;
-							}
-						} else if (var3[var10] == 3) {
-							var11 = (var0[var6].isMembersOnly()) ? 1 : 0;
-							var12 = (var8.isMembersOnly()) ? 1 : 0;
-						} else {
-							var11 = var0[var6].id;
-							var12 = var8.id;
-						}
-						if (var12 != var11) {
-							if ((var4[var10] != 1 || var11 <= var12) && (var4[var10] != 0 || var11 >= var12)) {
-								var9 = false;
-							}
-							break;
-						}
-						if (var10 == 3) {
-							var9 = false;
-						}
-					}
-				} while (var9 );
-				var9 = true;
-				do {
-					++var5;
-					for (var10 = 0; var10 < 4; ++var10) {
-						if (var3[var10] == 2) {
-							var11 = var0[var5].index;
-							var12 = var8.index;
-						} else if (var3[var10] == 1) {
-							var11 = var0[var5].population;
-							var12 = var8.population;
-							if (var11 == -1 && var4[var10] == 1) {
-								var11 = 2001;
-							}
-							if (var12 == -1 && var4[var10] == 1) {
-								var12 = 2001;
-							}
-						} else if (var3[var10] == 3) {
-							var11 = (var0[var5].isMembersOnly()) ? 1 : 0;
-							var12 = (var8.isMembersOnly()) ? 1 : 0;
-						} else {
-							var11 = var0[var5].id;
-							var12 = var8.id;
-						}
-						if (var12 != var11) {
-							if ((var4[var10] != 1 || var11 >= var12) && (var4[var10] != 0 || var11 <= var12)) {
-								var9 = false;
-							}
-							break;
-						}
-						if (var10 == 3) {
-							var9 = false;
-						}
-					}
-				} while (var9 );
-				if (var5 < var6) {
-					World var13 = var0[var5];
-					var0[var5] = var0[var6];
-					var0[var6] = var13;
-				}
-			} 
-			sortWorlds(var0, var1, var6, var3, var4);
-			sortWorlds(var0, var6 + 1, var2, var3, var4);
-		}
-	}
-
-	@ObfuscatedName("fy")
-	@ObfuscatedSignature(descriptor = "(B)V", garbageValue = "76")
-	@Export("logOut")
-	static final void logOut() {
-		Client.packetWriter.close();
-		Projectile.method1961();
-		class356.scene.clear();
-		for (int var0 = 0; var0 < 4; ++var0) {
-			Client.collisionMaps[var0].clear();
-		}
-		System.gc();
-		class272.musicPlayerStatus = 1;
-		class272.musicTrackArchive = null;
-		class272.musicTrackGroupId = -1;
-		class151.musicTrackFileId = -1;
-		class272.musicTrackVolume = 0;
-		class11.musicTrackBoolean = false;
-		class272.pcmSampleLength = 2;
-		Client.currentTrackGroupId = -1;
-		Client.playingJingle = false;
-		Decimator.method1018();
-		HealthBarUpdate.updateGameState(10);
-	}
+   @ObfuscatedName("gu")
+   @ObfuscatedSignature(
+      descriptor = "(I)I",
+      garbageValue = "-1640370499"
+   )
+   @Export("getWindowedMode")
+   static int getWindowedMode() {
+      return Client.isResizable ? 2 : 1;
+   }
 }

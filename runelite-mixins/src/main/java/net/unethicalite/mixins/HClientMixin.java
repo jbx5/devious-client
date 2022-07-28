@@ -308,7 +308,7 @@ public abstract class HClientMixin implements RSClient
 	}
 
 	@Inject
-	@MethodHook(value = "method1120", end = true)
+	@MethodHook(value = "method1386", end = true)
 	public void onServerPacketRead(RSPacketWriter packetWriter)
 	{
 		client.getCallbacks().post(new ServerPacketReceived(packetWriter.getServerPacket()));

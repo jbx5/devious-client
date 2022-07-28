@@ -445,7 +445,7 @@ public interface RSClient extends RSGameEngine, Client
 	RSSpritePixels createRSItemSprite(int itemId, int quantity, int thickness, int borderColor, int stackable, boolean noted);
 
 	@Import("menuAction")
-	void sendMenuAction(int n2, int n3, int n4, int n5, String string, String string2, int n6, int n7);
+	void sendMenuAction(int n2, int n3, int n4, int n5, int itemId, String string, String string2, int n6, int n7);
 
 	@Import("SpriteBuffer_decode")
 	void decodeSprite(byte[] data);
@@ -1689,7 +1689,7 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("Login_response3")
 	String getLoginResponse3();
 
-	@Import("field897")
+	@Import("field906")
 	int getBanType();
 
 	@Import("packetWriter")

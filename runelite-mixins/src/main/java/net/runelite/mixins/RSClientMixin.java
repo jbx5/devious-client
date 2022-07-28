@@ -1849,7 +1849,7 @@ public abstract class RSClientMixin implements RSClient
 	{
 		assert isClientThread() : "invokeMenuAction must be called on client thread";
 
-		client.sendMenuAction(param0, param1, opcode, identifier, option, target, x, y);
+		client.sendMenuAction(param0, param1, opcode, identifier, -1, option, target, x, y);
 	}
 
 	@FieldHook("Login_username")

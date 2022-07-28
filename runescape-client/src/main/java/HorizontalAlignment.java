@@ -1,48 +1,54 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.Export;
-@ObfuscatedName("fk")
+
+@ObfuscatedName("fq")
 @Implements("HorizontalAlignment")
 public enum HorizontalAlignment implements MouseWheel {
+   @ObfuscatedName("o")
+   @ObfuscatedSignature(
+      descriptor = "Lfq;"
+   )
+   field1902(2, 0),
+   @ObfuscatedName("q")
+   @ObfuscatedSignature(
+      descriptor = "Lfq;"
+   )
+   @Export("HorizontalAlignment_centered")
+   HorizontalAlignment_centered(1, 1),
+   @ObfuscatedName("f")
+   @ObfuscatedSignature(
+      descriptor = "Lfq;"
+   )
+   field1903(0, 2);
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "Lfk;")
-	field1910(1, 0),
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "Lfk;")
-	@Export("HorizontalAlignment_centered")
-	HorizontalAlignment_centered(2, 1),
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "Lfk;")
-	field1905(0, 2);
-	@ObfuscatedName("f")
-	@ObfuscatedGetter(intValue = -571312605)
-	@Export("value")
-	public final int value;
+   @ObfuscatedName("u")
+   @ObfuscatedGetter(
+      intValue = 1574414567
+   )
+   @Export("value")
+   public final int value;
+   @ObfuscatedName("c")
+   @ObfuscatedGetter(
+      intValue = -1734271631
+   )
+   @Export("id")
+   final int id;
 
-	@ObfuscatedName("j")
-	@ObfuscatedGetter(intValue = -279458597)
-	@Export("id")
-	final int id;
+   HorizontalAlignment(int var3, int var4) {
+      this.value = var3;
+      this.id = var4;
+   }
 
-	HorizontalAlignment(int var3, int var4) {
-		this.value = var3;
-		this.id = var4;
-	}
-
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(B)I", garbageValue = "-100")
-	@Export("rsOrdinal")
-	public int rsOrdinal() {
-		return this.id;
-	}
-
-	@ObfuscatedName("jk")
-	@ObfuscatedSignature(descriptor = "(B)Z", garbageValue = "20")
-	@Export("getTapToDrop")
-	static boolean getTapToDrop() {
-		return Client.tapToDrop;
-	}
+   @ObfuscatedName("o")
+   @ObfuscatedSignature(
+      descriptor = "(I)I",
+      garbageValue = "1790946346"
+   )
+   @Export("rsOrdinal")
+   public int rsOrdinal() {
+      return this.id;
+   }
 }

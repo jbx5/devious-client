@@ -1,41 +1,88 @@
-import net.runelite.mapping.ObfuscatedName;
-import org.json.JSONException;
-import org.json.JSONObject;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import org.json.JSONArray;
 import net.runelite.mapping.Export;
-@ObfuscatedName("fq")
+import net.runelite.mapping.ObfuscatedGetter;
+import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
+
+@ObfuscatedName("fc")
 public class class181 extends DualNode {
-	@ObfuscatedName("z")
-	@ObfuscatedSignature(descriptor = "Laq;")
-	@Export("soundCache")
-	public static SoundCache soundCache;
+   @ObfuscatedName("n")
+   @ObfuscatedGetter(
+      intValue = 1417199785
+   )
+   static int field1987;
 
-	@ObfuscatedName("jj")
-	@ObfuscatedGetter(intValue = 261629217)
-	static int field1992;
+   static {
+      new EvictingDualNodeHashTable(64);
+   }
 
-	static {
-		new EvictingDualNodeHashTable(64);
-	}
+   @ObfuscatedName("u")
+   @ObfuscatedSignature(
+      descriptor = "(Llu;IIIBZI)V",
+      garbageValue = "656217552"
+   )
+   @Export("requestNetFile")
+   static void requestNetFile(Archive var0, int var1, int var2, int var3, byte var4, boolean var5) {
+      long var6 = (long)((var1 << 16) + var2);
+      NetFileRequest var8 = (NetFileRequest)NetCache.NetCache_pendingPriorityWrites.get(var6);
+      if (var8 == null) {
+         var8 = (NetFileRequest)NetCache.NetCache_pendingPriorityResponses.get(var6);
+         if (var8 == null) {
+            var8 = (NetFileRequest)NetCache.NetCache_pendingWrites.get(var6);
+            if (var8 != null) {
+               if (var5) {
+                  var8.removeDual();
+                  NetCache.NetCache_pendingPriorityWrites.put(var8, var6);
+                  --NetCache.NetCache_pendingWritesCount;
+                  ++NetCache.NetCache_pendingPriorityWritesCount;
+               }
 
-	@ObfuscatedName("x")
-	@ObfuscatedSignature(descriptor = "(Lorg/json/JSONObject;Ljava/lang/String;I)[F", garbageValue = "-1297574808")
-	static float[] method3566(JSONObject var0, String var1) throws JSONException {
-		float[] var2 = new float[4];
-		try {
-			JSONArray var3 = var0.getJSONArray(var1);
-			var2[0] = ((float) (var3.optDouble(0, 0.0)));
-			var2[1] = ((float) (var3.optDouble(1, 0.0)));
-			var2[2] = ((float) (var3.optDouble(2, 1.0)));
-			var2[3] = ((float) (var3.optDouble(3, 1.0)));
-		} catch (JSONException var4) {
-			var2[0] = 0.0F;
-			var2[1] = 0.0F;
-			var2[2] = 1.0F;
-			var2[3] = 1.0F;
-		}
-		return var2;
-	}
+            } else {
+               if (!var5) {
+                  var8 = (NetFileRequest)NetCache.NetCache_pendingResponses.get(var6);
+                  if (var8 != null) {
+                     return;
+                  }
+               }
+
+               var8 = new NetFileRequest();
+               var8.archive = var0;
+               var8.crc = var3;
+               var8.padding = var4;
+               if (var5) {
+                  NetCache.NetCache_pendingPriorityWrites.put(var8, var6);
+                  ++NetCache.NetCache_pendingPriorityWritesCount;
+               } else {
+                  NetCache.NetCache_pendingWritesQueue.addFirst(var8);
+                  NetCache.NetCache_pendingWrites.put(var8, var6);
+                  ++NetCache.NetCache_pendingWritesCount;
+               }
+
+            }
+         }
+      }
+   }
+
+   @ObfuscatedName("km")
+   @ObfuscatedSignature(
+      descriptor = "(I)V",
+      garbageValue = "1007127385"
+   )
+   static final void method3547() {
+      PacketBufferNode var0 = class433.getPacketBufferNode(ClientPacket.field2958, Client.packetWriter.isaacCipher);
+      Client.packetWriter.addNode(var0);
+      Interpreter.field840 = true;
+
+      for(InterfaceParent var1 = (InterfaceParent)Client.interfaceParents.first(); var1 != null; var1 = (InterfaceParent)Client.interfaceParents.next()) {
+         if (var1.type == 0 || var1.type == 3) {
+            Canvas.closeInterface(var1, true);
+         }
+      }
+
+      if (Client.meslayerContinueWidget != null) {
+         class220.invalidateWidget(Client.meslayerContinueWidget);
+         Client.meslayerContinueWidget = null;
+      }
+
+      Interpreter.field840 = false;
+   }
 }

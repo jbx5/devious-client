@@ -28,7 +28,7 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 
 	@Copy("menuAction")
 	@Replace("menuAction")
-	static void copy$menuAction(int param0, int param1, int opcode, int id, String option, String target, int canvasX, int canvasY)
+	static void copy$menuAction(int param0, int param1, int opcode, int id, int itemId, String option, String target, int canvasX, int canvasY)
 	{
 		RSRuneLiteMenuEntry menuEntry = null;
 
@@ -116,7 +116,7 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 			client.setSelectedSceneTileY(param1);
 			client.setViewportWalking(true);
 
-			copy$menuAction(0, 0, CANCEL.getId(), 0, "Automated", "", canvasX, canvasY);
+			copy$menuAction(0, 0, CANCEL.getId(), 0, 0, "Automated", "", canvasX, canvasY);
 			return;
 		}
 
@@ -162,7 +162,7 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 		{
 			copy$menuAction(event.getParam0(), event.getParam1(),
 					event.getMenuAction() == UNKNOWN ? opcode : event.getMenuAction().getId(),
-					event.getId(), event.getMenuOption(), event.getMenuTarget(),
+					event.getId(), itemId, event.getMenuOption(), event.getMenuTarget(),
 					canvasX, canvasY);
 		}
 	}

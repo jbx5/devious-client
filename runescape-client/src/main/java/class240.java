@@ -1,48 +1,125 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.Export;
-@ObfuscatedName("iv")
+
+@ObfuscatedName("ip")
 public class class240 {
-	@ObfuscatedName("bo")
-	@ObfuscatedGetter(intValue = 1497426191)
-	static int field2846;
+   @ObfuscatedName("gm")
+   @ObfuscatedSignature(
+      descriptor = "Lnj;"
+   )
+   static AbstractSocket field2847;
 
-	@ObfuscatedName("ip")
-	@ObfuscatedSignature(descriptor = "(I)I", garbageValue = "1536934514")
-	static final int method5005() {
-		return Client.menuOptionsCount - 1;
-	}
+   @ObfuscatedName("o")
+   @ObfuscatedSignature(
+      descriptor = "(I)[Lkf;",
+      garbageValue = "736917026"
+   )
+   static GameBuild[] method4992() {
+      return new GameBuild[]{GameBuild.RC, GameBuild.BUILDLIVE, GameBuild.LIVE, GameBuild.WIP};
+   }
 
-	@ObfuscatedName("jv")
-	@ObfuscatedSignature(descriptor = "(Lkb;III)V", garbageValue = "1978456423")
-	@Export("alignWidgetPosition")
-	static void alignWidgetPosition(Widget var0, int var1, int var2) {
-		if (var0.xAlignment == 0) {
-			var0.x = var0.rawX;
-		} else if (var0.xAlignment == 1) {
-			var0.x = var0.rawX + (var1 - var0.width) / 2;
-		} else if (var0.xAlignment == 2) {
-			var0.x = var1 - var0.width - var0.rawX;
-		} else if (var0.xAlignment == 3) {
-			var0.x = var0.rawX * var1 >> 14;
-		} else if (var0.xAlignment == 4) {
-			var0.x = (var0.rawX * var1 >> 14) + (var1 - var0.width) / 2;
-		} else {
-			var0.x = var1 - var0.width - (var0.rawX * var1 >> 14);
-		}
-		if (var0.yAlignment == 0) {
-			var0.y = var0.rawY;
-		} else if (var0.yAlignment == 1) {
-			var0.y = (var2 - var0.height) / 2 + var0.rawY;
-		} else if (var0.yAlignment == 2) {
-			var0.y = var2 - var0.height - var0.rawY;
-		} else if (var0.yAlignment == 3) {
-			var0.y = var2 * var0.rawY >> 14;
-		} else if (var0.yAlignment == 4) {
-			var0.y = (var2 * var0.rawY >> 14) + (var2 - var0.height) / 2;
-		} else {
-			var0.y = var2 - var0.height - (var2 * var0.rawY >> 14);
-		}
-	}
+   @ObfuscatedName("q")
+   @ObfuscatedSignature(
+      descriptor = "(Llc;Llc;ZII)V",
+      garbageValue = "945865856"
+   )
+   static void method4988(AbstractArchive var0, AbstractArchive var1, boolean var2, int var3) {
+      if (Login.clearLoginScreen) {
+         if (var3 == 4) {
+            UserComparator6.method2701(4);
+         }
+
+      } else {
+         if (var3 == 0) {
+            WorldMapID.method4981(var2);
+         } else {
+            UserComparator6.method2701(var3);
+         }
+
+         Rasterizer2D.Rasterizer2D_clear();
+         byte[] var4 = var0.takeFileByNames("title.jpg", "");
+         SpriteMask.leftTitleSprite = class147.method3105(var4);
+         class356.rightTitleSprite = SpriteMask.leftTitleSprite.mirrorHorizontally();
+         MilliClock.method3293(var1, Client.worldProperties);
+         class7.titleboxSprite = BufferedNetSocket.SpriteBuffer_getIndexedSpriteByName(var1, "titlebox", "");
+         class229.titlebuttonSprite = BufferedNetSocket.SpriteBuffer_getIndexedSpriteByName(var1, "titlebutton", "");
+         class342.field4165 = BufferedNetSocket.SpriteBuffer_getIndexedSpriteByName(var1, "titlebutton_large", "");
+         Login.field896 = BufferedNetSocket.SpriteBuffer_getIndexedSpriteByName(var1, "play_now_text", "");
+         BufferedNetSocket.SpriteBuffer_getIndexedSpriteByName(var1, "titlebutton_wide42,1", "");
+         Login.runesSprite = class342.method6304(var1, "runes", "");
+         Login.title_muteSprite = class342.method6304(var1, "title_mute", "");
+         class11.options_buttons_0Sprite = BufferedNetSocket.SpriteBuffer_getIndexedSpriteByName(var1, "options_radio_buttons,0", "");
+         class329.field4111 = BufferedNetSocket.SpriteBuffer_getIndexedSpriteByName(var1, "options_radio_buttons,4", "");
+         Login.options_buttons_2Sprite = BufferedNetSocket.SpriteBuffer_getIndexedSpriteByName(var1, "options_radio_buttons,2", "");
+         SoundSystem.field321 = BufferedNetSocket.SpriteBuffer_getIndexedSpriteByName(var1, "options_radio_buttons,6", "");
+         WorldMapCacheName.field2862 = class11.options_buttons_0Sprite.subWidth;
+         HealthBarDefinition.field1864 = class11.options_buttons_0Sprite.subHeight;
+         RouteStrategy.loginScreenRunesAnimation = new LoginScreenAnimation(Login.runesSprite);
+         if (var2) {
+            Login.Login_username = "";
+            Login.Login_password = "";
+            Login.field901 = new String[8];
+            Login.field912 = 0;
+         }
+
+         class260.field2908 = 0;
+         Login.otp = "";
+         Login.field893 = true;
+         Login.worldSelectOpen = false;
+         if (!class260.clientPreferences.method2316()) {
+            Archive var5 = MouseHandler.archive6;
+            int var6 = var5.getGroupId("scape main");
+            int var7 = var5.getFileId(var6, "");
+            class273.musicPlayerStatus = 1;
+            class149.musicTrackArchive = var5;
+            class273.musicTrackGroupId = var6;
+            UserComparator6.musicTrackFileId = var7;
+            class273.musicTrackVolume = 255;
+            class347.musicTrackBoolean = false;
+            FaceNormal.pcmSampleLength = 2;
+         } else {
+            class273.musicPlayerStatus = 1;
+            class149.musicTrackArchive = null;
+            class273.musicTrackGroupId = -1;
+            UserComparator6.musicTrackFileId = -1;
+            class273.musicTrackVolume = 0;
+            class347.musicTrackBoolean = false;
+            FaceNormal.pcmSampleLength = 2;
+         }
+
+         StructComposition.method3597(false);
+         Login.clearLoginScreen = true;
+         Login.xPadding = (class352.canvasWidth - 765) / 2;
+         Login.loginBoxX = Login.xPadding + 202;
+         Login.loginBoxCenter = Login.loginBoxX + 180;
+         SpriteMask.leftTitleSprite.drawAt(Login.xPadding, 0);
+         class356.rightTitleSprite.drawAt(Login.xPadding + 382, 0);
+         Canvas.logoSprite.drawAt(Login.xPadding + 382 - Canvas.logoSprite.subWidth / 2, 18);
+      }
+   }
+
+   @ObfuscatedName("lw")
+   @ObfuscatedSignature(
+      descriptor = "(Ljava/lang/String;I)V",
+      garbageValue = "1983581438"
+   )
+   @Export("clanKickUser")
+   static final void clanKickUser(String var0) {
+      if (class13.friendsChat != null) {
+         PacketBufferNode var1 = class433.getPacketBufferNode(ClientPacket.field3011, Client.packetWriter.isaacCipher);
+         var1.packetBuffer.writeByte(class92.stringCp1252NullTerminatedByteSize(var0));
+         var1.packetBuffer.writeStringCp1252NullTerminated(var0);
+         Client.packetWriter.addNode(var1);
+      }
+   }
+
+   @ObfuscatedName("ld")
+   @ObfuscatedSignature(
+      descriptor = "(IB)V",
+      garbageValue = "98"
+   )
+   static void method4994(int var0) {
+      Client.oculusOrbState = var0;
+   }
 }

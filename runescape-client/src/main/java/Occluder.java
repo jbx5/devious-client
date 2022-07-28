@@ -1,117 +1,149 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.Export;
-@ObfuscatedName("gb")
+
+@ObfuscatedName("gm")
 @Implements("Occluder")
 public final class Occluder {
-	@ObfuscatedName("uw")
-	@ObfuscatedSignature(descriptor = "Los;")
-	@Export("platformInfo")
-	static PlatformInfo platformInfo;
+   @ObfuscatedName("o")
+   @ObfuscatedGetter(
+      intValue = -1482716371
+   )
+   @Export("minTileX")
+   int minTileX;
+   @ObfuscatedName("q")
+   @ObfuscatedGetter(
+      intValue = -1640695935
+   )
+   @Export("maxTileX")
+   int maxTileX;
+   @ObfuscatedName("f")
+   @ObfuscatedGetter(
+      intValue = -396391183
+   )
+   @Export("minTileY")
+   int minTileY;
+   @ObfuscatedName("u")
+   @ObfuscatedGetter(
+      intValue = -1731725825
+   )
+   @Export("maxTileY")
+   int maxTileY;
+   @ObfuscatedName("c")
+   @ObfuscatedGetter(
+      intValue = -506320557
+   )
+   @Export("type")
+   int type;
+   @ObfuscatedName("w")
+   @ObfuscatedGetter(
+      intValue = -1764953573
+   )
+   @Export("minX")
+   int minX;
+   @ObfuscatedName("z")
+   @ObfuscatedGetter(
+      intValue = -717807795
+   )
+   @Export("maxX")
+   int maxX;
+   @ObfuscatedName("j")
+   @ObfuscatedGetter(
+      intValue = -306942895
+   )
+   @Export("minZ")
+   int minZ;
+   @ObfuscatedName("h")
+   @ObfuscatedGetter(
+      intValue = -321456317
+   )
+   @Export("maxZ")
+   int maxZ;
+   @ObfuscatedName("a")
+   @ObfuscatedGetter(
+      intValue = -1078985107
+   )
+   @Export("minY")
+   int minY;
+   @ObfuscatedName("d")
+   @ObfuscatedGetter(
+      intValue = -1953201603
+   )
+   @Export("maxY")
+   int maxY;
+   @ObfuscatedName("n")
+   @ObfuscatedGetter(
+      intValue = 769542647
+   )
+   int field2455;
+   @ObfuscatedName("x")
+   @ObfuscatedGetter(
+      intValue = 1434456367
+   )
+   int field2461;
+   @ObfuscatedName("g")
+   @ObfuscatedGetter(
+      intValue = -1684484343
+   )
+   int field2462;
+   @ObfuscatedName("p")
+   @ObfuscatedGetter(
+      intValue = 1169267657
+   )
+   int field2463;
+   @ObfuscatedName("b")
+   @ObfuscatedGetter(
+      intValue = -862949583
+   )
+   int field2464;
+   @ObfuscatedName("l")
+   @ObfuscatedGetter(
+      intValue = -1968274797
+   )
+   int field2465;
+   @ObfuscatedName("y")
+   @ObfuscatedGetter(
+      intValue = 163698799
+   )
+   int field2449;
 
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(intValue = -1913259521)
-	@Export("minTileX")
-	int minTileX;
+   Occluder() {
+   }
 
-	@ObfuscatedName("v")
-	@ObfuscatedGetter(intValue = -743836359)
-	@Export("maxTileX")
-	int maxTileX;
-
-	@ObfuscatedName("q")
-	@ObfuscatedGetter(intValue = -1643298167)
-	@Export("minTileY")
-	int minTileY;
-
-	@ObfuscatedName("f")
-	@ObfuscatedGetter(intValue = -1894194977)
-	@Export("maxTileY")
-	int maxTileY;
-
-	@ObfuscatedName("j")
-	@ObfuscatedGetter(intValue = -741467087)
-	@Export("type")
-	int type;
-
-	@ObfuscatedName("e")
-	@ObfuscatedGetter(intValue = 360875993)
-	@Export("minX")
-	int minX;
-
-	@ObfuscatedName("g")
-	@ObfuscatedGetter(intValue = -1324054405)
-	@Export("maxX")
-	int maxX;
-
-	@ObfuscatedName("w")
-	@ObfuscatedGetter(intValue = 1977577685)
-	@Export("minZ")
-	int minZ;
-
-	@ObfuscatedName("y")
-	@ObfuscatedGetter(intValue = 690008559)
-	@Export("maxZ")
-	int maxZ;
-
-	@ObfuscatedName("i")
-	@ObfuscatedGetter(intValue = 638283975)
-	@Export("minY")
-	int minY;
-
-	@ObfuscatedName("s")
-	@ObfuscatedGetter(intValue = 1747045819)
-	@Export("maxY")
-	int maxY;
-
-	@ObfuscatedName("t")
-	@ObfuscatedGetter(intValue = -1792742847)
-	int field2470;
-
-	@ObfuscatedName("z")
-	@ObfuscatedGetter(intValue = 963802065)
-	int field2472;
-
-	@ObfuscatedName("r")
-	@ObfuscatedGetter(intValue = -1423983461)
-	int field2466;
-
-	@ObfuscatedName("u")
-	@ObfuscatedGetter(intValue = 942298147)
-	int field2467;
-
-	@ObfuscatedName("k")
-	@ObfuscatedGetter(intValue = -740983489)
-	int field2468;
-
-	@ObfuscatedName("h")
-	@ObfuscatedGetter(intValue = 336673989)
-	int field2462;
-
-	@ObfuscatedName("x")
-	@ObfuscatedGetter(intValue = 680765335)
-	int field2473;
-
-	Occluder() {
-	}
-
-	@ObfuscatedName("kc")
-	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "-49313522")
-	static final void method4354() {
-		PacketBufferNode var0 = EnumComposition.getPacketBufferNode(ClientPacket.CLOSE_MODAL, Client.packetWriter.isaacCipher);
-		Client.packetWriter.addNode(var0);
-		Interpreter.field842 = true;
-		for (InterfaceParent var1 = ((InterfaceParent) (Client.interfaceParents.first())); var1 != null; var1 = ((InterfaceParent) (Client.interfaceParents.next()))) {
-			if (var1.type == 0 || var1.type == 3) {
-				MusicPatchPcmStream.closeInterface(var1, true);
-			}
-		}
-		if (Client.meslayerContinueWidget != null) {
-			ChatChannel.invalidateWidget(Client.meslayerContinueWidget);
-			Client.meslayerContinueWidget = null;
-		}
-		Interpreter.field842 = false;
-	}
+   @ObfuscatedName("av")
+   @ObfuscatedSignature(
+      descriptor = "(ILbc;ZI)I",
+      garbageValue = "-1039001452"
+   )
+   static int method4311(int var0, Script var1, boolean var2) {
+      if (var0 != 6700 && var0 != 6702 && var0 != 6704 && var0 != 6706 && var0 != 6708) {
+         if (var0 != 6701 && var0 != 6703 && var0 != 6705 && var0 != 6707 && var0 != 6709) {
+            if (var0 == 6750) {
+               Interpreter.Interpreter_stringStack[++GrandExchangeOfferAgeComparator.Interpreter_stringStackSize - 1] = "";
+               return 1;
+            } else if (var0 != 6751 && var0 != 6752 && var0 != 6753) {
+               if (var0 == 6754) {
+                  int var3 = Interpreter.Interpreter_intStack[--TaskHandler.Interpreter_intStackSize];
+                  NPCComposition var4 = class125.getNpcDefinition(var3);
+                  Interpreter.Interpreter_stringStack[++GrandExchangeOfferAgeComparator.Interpreter_stringStackSize - 1] = var4 != null ? var4.name : "";
+                  return 1;
+               } else {
+                  return 2;
+               }
+            } else {
+               Interpreter.Interpreter_intStack[++TaskHandler.Interpreter_intStackSize - 1] = -1;
+               return 1;
+            }
+         } else {
+            --TaskHandler.Interpreter_intStackSize;
+            return 1;
+         }
+      } else {
+         TaskHandler.Interpreter_intStackSize -= 2;
+         --GrandExchangeOfferAgeComparator.Interpreter_stringStackSize;
+         return 1;
+      }
+   }
 }

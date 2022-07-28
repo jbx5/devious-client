@@ -1,20 +1,20 @@
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.Export;
-@ObfuscatedName("di")
+
+@ObfuscatedName("dx")
 public class class121 {
-	@ObfuscatedName("vc")
-	@ObfuscatedSignature(descriptor = "Loe;")
-	@Export("worldMap")
-	static WorldMap worldMap;
+   @ObfuscatedName("kj")
+   @ObfuscatedSignature(
+      descriptor = "Lku;"
+   )
+   static Widget field1488;
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "Llh;")
-	@Export("WorldMapElement_archive")
-	static AbstractArchive WorldMapElement_archive;
-
-	@ObfuscatedName("en")
-	@ObfuscatedSignature(descriptor = "Llc;")
-	@Export("archive6")
-	static Archive archive6;
+   @ObfuscatedName("u")
+   @ObfuscatedSignature(
+      descriptor = "(Ljava/lang/CharSequence;I)I",
+      garbageValue = "1102606380"
+   )
+   public static int method2824(CharSequence var0) {
+      return Strings.method5775(var0, 10, true);
+   }
 }
