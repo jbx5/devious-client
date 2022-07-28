@@ -1,228 +1,276 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.Implements;
-import net.runelite.rs.ScriptOpcodes;
-import net.runelite.mapping.Export;
-@ObfuscatedName("hv")
+
+@ObfuscatedName("hg")
 @Implements("WorldMapSectionType")
 public enum WorldMapSectionType implements MouseWheel {
+   @ObfuscatedName("o")
+   @ObfuscatedSignature(
+      descriptor = "Lhg;"
+   )
+   @Export("WORLDMAPSECTIONTYPE0")
+   WORLDMAPSECTIONTYPE0(3, (byte)0),
+   @ObfuscatedName("q")
+   @ObfuscatedSignature(
+      descriptor = "Lhg;"
+   )
+   @Export("WORLDMAPSECTIONTYPE1")
+   WORLDMAPSECTIONTYPE1(2, (byte)1),
+   @ObfuscatedName("f")
+   @ObfuscatedSignature(
+      descriptor = "Lhg;"
+   )
+   @Export("WORLDMAPSECTIONTYPE2")
+   WORLDMAPSECTIONTYPE2(0, (byte)2),
+   @ObfuscatedName("u")
+   @ObfuscatedSignature(
+      descriptor = "Lhg;"
+   )
+   @Export("WORLDMAPSECTIONTYPE3")
+   WORLDMAPSECTIONTYPE3(1, (byte)3);
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "Lhv;")
-	@Export("WORLDMAPSECTIONTYPE0")
-	WORLDMAPSECTIONTYPE0(1, ((byte) (0))),
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "Lhv;")
-	@Export("WORLDMAPSECTIONTYPE1")
-	WORLDMAPSECTIONTYPE1(3, ((byte) (1))),
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "Lhv;")
-	@Export("WORLDMAPSECTIONTYPE2")
-	WORLDMAPSECTIONTYPE2(2, ((byte) (2))),
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "Lhv;")
-	@Export("WORLDMAPSECTIONTYPE3")
-	WORLDMAPSECTIONTYPE3(0, ((byte) (3)));
-	@ObfuscatedName("s")
-	public static short[] field2793;
+   @ObfuscatedName("l")
+   @Export("ByteArrayPool_alternativeSizes")
+   static int[] ByteArrayPool_alternativeSizes;
+   @ObfuscatedName("ad")
+   @ObfuscatedSignature(
+      descriptor = "Lnz;"
+   )
+   static Bounds field2781;
+   @ObfuscatedName("fb")
+   @Export("worldHost")
+   static String worldHost;
+   @ObfuscatedName("c")
+   @ObfuscatedGetter(
+      intValue = 1437983207
+   )
+   @Export("type")
+   final int type;
+   @ObfuscatedName("w")
+   @Export("id")
+   final byte id;
 
-	@ObfuscatedName("eq")
-	@ObfuscatedSignature(descriptor = "Llc;")
-	@Export("archive9")
-	static Archive archive9;
+   WorldMapSectionType(int var3, byte var4) {
+      this.type = var3;
+      this.id = var4;
+   }
 
-	@ObfuscatedName("j")
-	@ObfuscatedGetter(intValue = -2074450081)
-	@Export("type")
-	final int type;
+   @ObfuscatedName("o")
+   @ObfuscatedSignature(
+      descriptor = "(I)I",
+      garbageValue = "1790946346"
+   )
+   @Export("rsOrdinal")
+   public int rsOrdinal() {
+      return this.id;
+   }
 
-	@ObfuscatedName("e")
-	@Export("id")
-	final byte id;
+   @ObfuscatedName("u")
+   @ObfuscatedSignature(
+      descriptor = "(I)[Lhg;",
+      garbageValue = "-492719905"
+   )
+   static WorldMapSectionType[] method4928() {
+      return new WorldMapSectionType[]{WORLDMAPSECTIONTYPE0, WORLDMAPSECTIONTYPE2, WORLDMAPSECTIONTYPE1, WORLDMAPSECTIONTYPE3};
+   }
 
-	WorldMapSectionType(int var3, byte var4) {
-		this.type = var3;
-		this.id = var4;
-	}
+   @ObfuscatedName("u")
+   @ObfuscatedSignature(
+      descriptor = "(I)Z",
+      garbageValue = "-500537850"
+   )
+   @Export("isKeyDown")
+   public static final boolean isKeyDown() {
+      synchronized(KeyHandler.KeyHandler_instance) {
+         if (KeyHandler.field150 == KeyHandler.field148) {
+            return false;
+         } else {
+            SequenceDefinition.field2176 = KeyHandler.field128[KeyHandler.field148];
+            Clock.field1797 = KeyHandler.field136[KeyHandler.field148];
+            KeyHandler.field148 = KeyHandler.field148 + 1 & 127;
+            return true;
+         }
+      }
+   }
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(B)I", garbageValue = "-100")
-	@Export("rsOrdinal")
-	public int rsOrdinal() {
-		return this.id;
-	}
+   @ObfuscatedName("w")
+   @ObfuscatedSignature(
+      descriptor = "(Lqy;II)Z",
+      garbageValue = "1961067812"
+   )
+   @Export("updateExternalPlayer")
+   static boolean updateExternalPlayer(PacketBuffer var0, int var1) {
+      int var2 = var0.readBits(2);
+      int var3;
+      int var4;
+      int var7;
+      int var8;
+      int var9;
+      int var10;
+      if (var2 == 0) {
+         if (var0.readBits(1) != 0) {
+            updateExternalPlayer(var0, var1);
+         }
 
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "(B)[Lhv;", garbageValue = "0")
-	static WorldMapSectionType[] method4950() {
-		return new WorldMapSectionType[]{ WORLDMAPSECTIONTYPE1, WORLDMAPSECTIONTYPE2, WORLDMAPSECTIONTYPE3, WORLDMAPSECTIONTYPE0 };
-	}
+         var3 = var0.readBits(13);
+         var4 = var0.readBits(13);
+         boolean var12 = var0.readBits(1) == 1;
+         if (var12) {
+            Players.Players_pendingUpdateIndices[++Players.Players_pendingUpdateCount - 1] = var1;
+         }
 
-	@ObfuscatedName("ap")
-	@ObfuscatedSignature(descriptor = "(ILbi;ZI)I", garbageValue = "-803910111")
-	static int method4953(int var0, Script var1, boolean var2) {
-		int var3;
-		if (var0 == ScriptOpcodes.STOCKMARKET_GETOFFERTYPE) {
-			var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
-			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = Client.grandExchangeOffers[var3].type();
-			return 1;
-		} else if (var0 == ScriptOpcodes.STOCKMARKET_GETOFFERITEM) {
-			var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
-			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = Client.grandExchangeOffers[var3].id;
-			return 1;
-		} else if (var0 == ScriptOpcodes.STOCKMARKET_GETOFFERPRICE) {
-			var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
-			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = Client.grandExchangeOffers[var3].unitPrice;
-			return 1;
-		} else if (var0 == ScriptOpcodes.STOCKMARKET_GETOFFERCOUNT) {
-			var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
-			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = Client.grandExchangeOffers[var3].totalQuantity;
-			return 1;
-		} else if (var0 == ScriptOpcodes.STOCKMARKET_GETOFFERCOMPLETEDCOUNT) {
-			var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
-			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = Client.grandExchangeOffers[var3].currentQuantity;
-			return 1;
-		} else if (var0 == ScriptOpcodes.STOCKMARKET_GETOFFERCOMPLETEDGOLD) {
-			var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
-			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = Client.grandExchangeOffers[var3].currentPrice;
-			return 1;
-		} else {
-			int var13;
-			if (var0 == ScriptOpcodes.STOCKMARKET_ISOFFEREMPTY) {
-				var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
-				var13 = Client.grandExchangeOffers[var3].status();
-				Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = (var13 == 0) ? 1 : 0;
-				return 1;
-			} else if (var0 == ScriptOpcodes.STOCKMARKET_ISOFFERSTABLE) {
-				var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
-				var13 = Client.grandExchangeOffers[var3].status();
-				Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = (var13 == 2) ? 1 : 0;
-				return 1;
-			} else if (var0 == ScriptOpcodes.STOCKMARKET_ISOFFERFINISHED) {
-				var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
-				var13 = Client.grandExchangeOffers[var3].status();
-				Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = (var13 == 5) ? 1 : 0;
-				return 1;
-			} else if (var0 == ScriptOpcodes.STOCKMARKET_ISOFFERADDING) {
-				var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
-				var13 = Client.grandExchangeOffers[var3].status();
-				Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = (var13 == 1) ? 1 : 0;
-				return 1;
-			} else {
-				boolean var12;
-				if (var0 == ScriptOpcodes.TRADINGPOST_SORTBY_NAME) {
-					var12 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize] == 1;
-					if (class143.grandExchangeEvents != null) {
-						class143.grandExchangeEvents.sort(GrandExchangeEvents.GrandExchangeEvents_nameComparator, var12);
-					}
-					return 1;
-				} else if (var0 == ScriptOpcodes.TRADINGPOST_SORTBY_PRICE) {
-					var12 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize] == 1;
-					if (class143.grandExchangeEvents != null) {
-						class143.grandExchangeEvents.sort(GrandExchangeEvents.GrandExchangeEvents_priceComparator, var12);
-					}
-					return 1;
-				} else if (var0 == ScriptOpcodes.TRADINGPOST_SORTFILTERBY_WORLD) {
-					class446.Interpreter_intStackSize -= 2;
-					var12 = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize] == 1;
-					boolean var11 = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize + 1] == 1;
-					if (class143.grandExchangeEvents != null) {
-						Client.GrandExchangeEvents_worldComparator.filterWorlds = var11;
-						class143.grandExchangeEvents.sort(Client.GrandExchangeEvents_worldComparator, var12);
-					}
-					return 1;
-				} else if (var0 == ScriptOpcodes.TRADINGPOST_SORTBY_AGE) {
-					var12 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize] == 1;
-					if (class143.grandExchangeEvents != null) {
-						class143.grandExchangeEvents.sort(GrandExchangeEvents.GrandExchangeEvents_ageComparator, var12);
-					}
-					return 1;
-				} else if (var0 == ScriptOpcodes.TRADINGPOST_SORTBY_COUNT) {
-					var12 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize] == 1;
-					if (class143.grandExchangeEvents != null) {
-						class143.grandExchangeEvents.sort(GrandExchangeEvents.GrandExchangeEvents_quantityComparator, var12);
-					}
-					return 1;
-				} else if (var0 == ScriptOpcodes.TRADINGPOST_GETTOTALOFFERS) {
-					Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = (class143.grandExchangeEvents == null) ? 0 : class143.grandExchangeEvents.events.size();
-					return 1;
-				} else {
-					GrandExchangeEvent var4;
-					if (var0 == ScriptOpcodes.TRADINGPOST_GETOFFERWORLD) {
-						var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
-						var4 = ((GrandExchangeEvent) (class143.grandExchangeEvents.events.get(var3)));
-						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var4.world;
-						return 1;
-					} else if (var0 == ScriptOpcodes.TRADINGPOST_GETOFFERNAME) {
-						var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
-						var4 = ((GrandExchangeEvent) (class143.grandExchangeEvents.events.get(var3)));
-						Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var4.getOfferName();
-						return 1;
-					} else if (var0 == ScriptOpcodes.TRADINGPOST_GETOFFERPREVIOUSNAME) {
-						var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
-						var4 = ((GrandExchangeEvent) (class143.grandExchangeEvents.events.get(var3)));
-						Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var4.getPreviousOfferName();
-						return 1;
-					} else if (var0 == ScriptOpcodes.TRADINGPOST_GETOFFERAGE) {
-						var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
-						var4 = ((GrandExchangeEvent) (class143.grandExchangeEvents.events.get(var3)));
-						long var5 = class115.method2692() - class270.field3177 - var4.age;
-						int var7 = ((int) (var5 / 3600000L));
-						int var8 = ((int) ((var5 - ((long) (var7 * 3600000))) / 60000L));
-						int var9 = ((int) ((var5 - ((long) (var7 * 3600000)) - ((long) (var8 * 60000))) / 1000L));
-						String var10 = var7 + ":" + var8 / 10 + var8 % 10 + ":" + var9 / 10 + var9 % 10;
-						Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var10;
-						return 1;
-					} else if (var0 == ScriptOpcodes.TRADINGPOST_GETOFFERCOUNT) {
-						var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
-						var4 = ((GrandExchangeEvent) (class143.grandExchangeEvents.events.get(var3)));
-						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var4.grandExchangeOffer.totalQuantity;
-						return 1;
-					} else if (var0 == ScriptOpcodes.TRADINGPOST_GETOFFERPRICE) {
-						var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
-						var4 = ((GrandExchangeEvent) (class143.grandExchangeEvents.events.get(var3)));
-						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var4.grandExchangeOffer.unitPrice;
-						return 1;
-					} else if (var0 == ScriptOpcodes.TRADINGPOST_GETOFFERITEM) {
-						var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
-						var4 = ((GrandExchangeEvent) (class143.grandExchangeEvents.events.get(var3)));
-						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var4.grandExchangeOffer.id;
-						return 1;
-					} else {
-						return 2;
-					}
-				}
-			}
-		}
-	}
+         if (Client.players[var1] != null) {
+            throw new RuntimeException();
+         } else {
+            Player var11 = Client.players[var1] = new Player();
+            var11.index = var1;
+            if (Players.field1295[var1] != null) {
+               var11.read(Players.field1295[var1]);
+            }
 
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(descriptor = "(ILbi;ZI)I", garbageValue = "1351074150")
-	static int method4948(int var0, Script var1, boolean var2) {
-		if (var0 >= 7200 && var0 < 7204) {
-			class446.Interpreter_intStackSize -= 5;
-			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = -1;
-			return 1;
-		} else if (var0 == 7204) {
-			class446.Interpreter_intStackSize -= 6;
-			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = -1;
-			return 1;
-		} else if (var0 >= 7205 && var0 < 7209) {
-			Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize - 1] = -1;
-			return 1;
-		} else if (var0 == 7209) {
-			class446.Interpreter_intStackSize -= 2;
-			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = -1;
-			return 1;
-		} else if (var0 >= 7210 && var0 < 7214) {
-			--class446.Interpreter_intStackSize;
-			return 1;
-		} else if (var0 == 7214) {
-			class446.Interpreter_intStackSize -= 2;
-			return 1;
-		} else {
-			return 2;
-		}
-	}
+            var11.orientation = Players.Players_orientations[var1];
+            var11.targetIndex = Players.Players_targetIndices[var1];
+            var7 = Players.Players_regions[var1];
+            var8 = var7 >> 28;
+            var9 = var7 >> 14 & 255;
+            var10 = var7 & 255;
+            var11.pathTraversed[0] = Players.field1294[var1];
+            var11.plane = (byte)var8;
+            var11.resetPath((var9 << 13) + var3 - class300.baseX * 8, (var10 << 13) + var4 - Message.baseY * 64);
+            var11.field1111 = false;
+            return true;
+         }
+      } else if (var2 == 1) {
+         var3 = var0.readBits(2);
+         var4 = Players.Players_regions[var1];
+         Players.Players_regions[var1] = (((var4 >> 28) + var3 & 3) << 28) + (var4 & 268435455);
+         return false;
+      } else {
+         int var5;
+         int var6;
+         if (var2 == 2) {
+            var3 = var0.readBits(5);
+            var4 = var3 >> 3;
+            var5 = var3 & 7;
+            var6 = Players.Players_regions[var1];
+            var7 = (var6 >> 28) + var4 & 3;
+            var8 = var6 >> 14 & 255;
+            var9 = var6 & 255;
+            if (var5 == 0) {
+               --var8;
+               --var9;
+            }
+
+            if (var5 == 1) {
+               --var9;
+            }
+
+            if (var5 == 2) {
+               ++var8;
+               --var9;
+            }
+
+            if (var5 == 3) {
+               --var8;
+            }
+
+            if (var5 == 4) {
+               ++var8;
+            }
+
+            if (var5 == 5) {
+               --var8;
+               ++var9;
+            }
+
+            if (var5 == 6) {
+               ++var9;
+            }
+
+            if (var5 == 7) {
+               ++var8;
+               ++var9;
+            }
+
+            Players.Players_regions[var1] = (var8 << 14) + var9 + (var7 << 28);
+            return false;
+         } else {
+            var3 = var0.readBits(18);
+            var4 = var3 >> 16;
+            var5 = var3 >> 8 & 255;
+            var6 = var3 & 255;
+            var7 = Players.Players_regions[var1];
+            var8 = (var7 >> 28) + var4 & 3;
+            var9 = var5 + (var7 >> 14) & 255;
+            var10 = var6 + var7 & 255;
+            Players.Players_regions[var1] = (var9 << 14) + var10 + (var8 << 28);
+            return false;
+         }
+      }
+   }
+
+   @ObfuscatedName("gh")
+   @ObfuscatedSignature(
+      descriptor = "(III)V",
+      garbageValue = "-91789193"
+   )
+   static final void method4927(int var0, int var1) {
+      if (var0 < 128) {
+         var0 = 128;
+      }
+
+      if (var0 > 383) {
+         var0 = 383;
+      }
+
+      if (UserComparator9.cameraPitch < var0) {
+         UserComparator9.cameraPitch = (var0 - UserComparator9.cameraPitch) * ScriptFrame.field459 / 1000 + UserComparator9.cameraPitch + class83.field1082;
+         if (UserComparator9.cameraPitch > var0) {
+            UserComparator9.cameraPitch = var0;
+         }
+      }
+
+      if (UserComparator9.cameraPitch > var0) {
+         UserComparator9.cameraPitch -= (UserComparator9.cameraPitch - var0) * ScriptFrame.field459 / 1000 + class83.field1082;
+         if (UserComparator9.cameraPitch < var0) {
+            UserComparator9.cameraPitch = var0;
+         }
+      }
+
+      int var2 = var1 - PendingSpawn.cameraYaw;
+      if (var2 > 1024) {
+         var2 -= 2048;
+      }
+
+      if (var2 < -1024) {
+         var2 += 2048;
+      }
+
+      if (var2 > 0) {
+         PendingSpawn.cameraYaw = var2 * ScriptFrame.field459 / 1000 + PendingSpawn.cameraYaw + class83.field1082;
+         PendingSpawn.cameraYaw &= 2047;
+      }
+
+      if (var2 < 0) {
+         PendingSpawn.cameraYaw -= class83.field1082 + -var2 * ScriptFrame.field459 / 1000;
+         PendingSpawn.cameraYaw &= 2047;
+      }
+
+      int var3 = var1 - PendingSpawn.cameraYaw;
+      if (var3 > 1024) {
+         var3 -= 2048;
+      }
+
+      if (var3 < -1024) {
+         var3 += 2048;
+      }
+
+      if (var3 < 0 && var2 > 0 || var3 > 0 && var2 < 0) {
+         PendingSpawn.cameraYaw = var1;
+      }
+
+   }
 }

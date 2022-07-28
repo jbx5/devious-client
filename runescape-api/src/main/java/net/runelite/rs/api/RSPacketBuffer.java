@@ -23,7 +23,4 @@ public interface RSPacketBuffer extends RSBuffer, PacketBuffer
 
 	@Import("importIndex")
 	void importIndex();
-
-	@Import("method7674")
-	boolean getUnknown1();
 }

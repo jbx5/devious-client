@@ -1,26 +1,30 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.Export;
-@ObfuscatedName("fv")
+
+@ObfuscatedName("fl")
 @Implements("Clock")
 public abstract class Clock {
-	Clock() {
-	}
+   @ObfuscatedName("cw")
+   public static char field1797;
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "814382249")
-	@Export("mark")
-	public abstract void mark();
+   Clock() {
+   }
 
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "(IIB)I", garbageValue = "-83")
-	@Export("wait")
-	public abstract int wait(int var1, int var2);
+   @ObfuscatedName("o")
+   @ObfuscatedSignature(
+      descriptor = "(I)V",
+      garbageValue = "-972249227"
+   )
+   @Export("mark")
+   public abstract void mark();
 
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "(II)Z", garbageValue = "2013103742")
-	public static boolean method3331(int var0) {
-		return var0 >= WorldMapDecorationType.field3553.id && var0 <= WorldMapDecorationType.field3552.id;
-	}
+   @ObfuscatedName("q")
+   @ObfuscatedSignature(
+      descriptor = "(III)I",
+      garbageValue = "-1486724184"
+   )
+   @Export("wait")
+   public abstract int wait(int var1, int var2);
 }

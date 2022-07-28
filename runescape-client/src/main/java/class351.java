@@ -1,34 +1,71 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedGetter;
-@ObfuscatedName("ma")
+
+@ObfuscatedName("mu")
 public class class351 {
-	@ObfuscatedName("z")
-	public static boolean field4198;
+   @ObfuscatedName("o")
+   @Export("writeRandomDat")
+   public static void writeRandomDat(byte[] var0, int var1, byte[] var2, int var3, int var4) {
+      if (var2 == var0) {
+         if (var3 == var1) {
+            return;
+         }
 
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(intValue = 951623757)
-	int field4197;
+         if (var3 > var1 && var3 < var4 + var1) {
+            --var4;
+            var1 += var4;
+            var3 += var4;
+            var4 = var1 - var4;
 
-	@ObfuscatedName("v")
-	@ObfuscatedGetter(intValue = -658455091)
-	int field4193;
+            for(var4 += 7; var1 >= var4; var2[var3--] = var0[var1--]) {
+               var2[var3--] = var0[var1--];
+               var2[var3--] = var0[var1--];
+               var2[var3--] = var0[var1--];
+               var2[var3--] = var0[var1--];
+               var2[var3--] = var0[var1--];
+               var2[var3--] = var0[var1--];
+               var2[var3--] = var0[var1--];
+            }
 
-	@ObfuscatedName("q")
-	@ObfuscatedGetter(intValue = -1299809865)
-	int field4195;
+            for(var4 -= 7; var1 >= var4; var2[var3--] = var0[var1--]) {
+            }
 
-	@ObfuscatedName("f")
-	@ObfuscatedGetter(intValue = 156042527)
-	int field4196;
+            return;
+         }
+      }
 
-	public String toString() {
-		boolean var1 = true;
-		int var2 = 10 - Integer.toString(this.field4197).length();
-		int var3 = 10 - Integer.toString(this.field4195).length();
-		int var4 = 10 - Integer.toString(this.field4193).length();
-		String var5 = "          ".substring(10 - var2);
-		String var6 = "          ".substring(10 - var3);
-		String var7 = "          ".substring(10 - var4);
-		return "    Size: " + this.field4197 + var5 + "Created: " + this.field4193 + var7 + "Total used: " + this.field4195 + var6 + "Max-In-Use: " + this.field4196;
-	}
+      var4 += var1;
+
+      for(var4 -= 7; var1 < var4; var2[var3++] = var0[var1++]) {
+         var2[var3++] = var0[var1++];
+         var2[var3++] = var0[var1++];
+         var2[var3++] = var0[var1++];
+         var2[var3++] = var0[var1++];
+         var2[var3++] = var0[var1++];
+         var2[var3++] = var0[var1++];
+         var2[var3++] = var0[var1++];
+      }
+
+      for(var4 += 7; var1 < var4; var2[var3++] = var0[var1++]) {
+      }
+
+   }
+
+   @ObfuscatedName("a")
+   @Export("clearIntArray")
+   public static void clearIntArray(int[] var0, int var1, int var2) {
+      for(var2 = var2 + var1 - 7; var1 < var2; var0[var1++] = 0) {
+         var0[var1++] = 0;
+         var0[var1++] = 0;
+         var0[var1++] = 0;
+         var0[var1++] = 0;
+         var0[var1++] = 0;
+         var0[var1++] = 0;
+         var0[var1++] = 0;
+      }
+
+      for(var2 += 7; var1 < var2; var0[var1++] = 0) {
+      }
+
+   }
 }

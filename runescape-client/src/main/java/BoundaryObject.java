@@ -1,144 +1,198 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.Export;
-@ObfuscatedName("hi")
+
+@ObfuscatedName("hl")
 @Implements("BoundaryObject")
 public final class BoundaryObject {
-	@ObfuscatedName("tr")
-	@ObfuscatedGetter(intValue = 274182681)
-	static int field2622;
+   @ObfuscatedName("o")
+   @ObfuscatedGetter(
+      intValue = 831610123
+   )
+   @Export("z")
+   int z;
+   @ObfuscatedName("q")
+   @ObfuscatedGetter(
+      intValue = 507454547
+   )
+   @Export("x")
+   int x;
+   @ObfuscatedName("f")
+   @ObfuscatedGetter(
+      intValue = -638582784
+   )
+   @Export("y")
+   int y;
+   @ObfuscatedName("u")
+   @ObfuscatedGetter(
+      intValue = -167272539
+   )
+   @Export("orientationA")
+   int orientationA;
+   @ObfuscatedName("c")
+   @ObfuscatedGetter(
+      intValue = -62535915
+   )
+   @Export("orientationB")
+   int orientationB;
+   @ObfuscatedName("w")
+   @ObfuscatedSignature(
+      descriptor = "Lgk;"
+   )
+   @Export("renderable1")
+   public Renderable renderable1;
+   @ObfuscatedName("z")
+   @ObfuscatedSignature(
+      descriptor = "Lgk;"
+   )
+   @Export("renderable2")
+   public Renderable renderable2;
+   @ObfuscatedName("j")
+   @ObfuscatedGetter(
+      longValue = -7062648959881461387L
+   )
+   @Export("tag")
+   public long tag = 0L;
+   @ObfuscatedName("h")
+   @ObfuscatedGetter(
+      intValue = -582315537
+   )
+   @Export("flags")
+   int flags = 0;
 
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(intValue = 1257114009)
-	@Export("z")
-	int z;
+   BoundaryObject() {
+   }
 
-	@ObfuscatedName("v")
-	@ObfuscatedGetter(intValue = -655721437)
-	@Export("x")
-	int x;
+   @ObfuscatedName("q")
+   @ObfuscatedSignature(
+      descriptor = "(II)I",
+      garbageValue = "-1207780885"
+   )
+   @Export("Widget_unpackTargetMask")
+   public static int Widget_unpackTargetMask(int var0) {
+      return var0 >> 11 & 63;
+   }
 
-	@ObfuscatedName("q")
-	@ObfuscatedGetter(intValue = -1527654875)
-	@Export("y")
-	int y;
+   @ObfuscatedName("f")
+   @ObfuscatedSignature(
+      descriptor = "([Lbk;II[I[II)V",
+      garbageValue = "809053443"
+   )
+   @Export("sortWorlds")
+   static void sortWorlds(World[] var0, int var1, int var2, int[] var3, int[] var4) {
+      if (var1 < var2) {
+         int var5 = var1 - 1;
+         int var6 = var2 + 1;
+         int var7 = (var2 + var1) / 2;
+         World var8 = var0[var7];
+         var0[var7] = var0[var1];
+         var0[var1] = var8;
 
-	@ObfuscatedName("f")
-	@ObfuscatedGetter(intValue = 364149679)
-	@Export("orientationA")
-	int orientationA;
+         while(var5 < var6) {
+            boolean var9 = true;
 
-	@ObfuscatedName("j")
-	@ObfuscatedGetter(intValue = 1337588957)
-	@Export("orientationB")
-	int orientationB;
+            int var10;
+            int var11;
+            int var12;
+            do {
+               --var6;
 
-	@ObfuscatedName("e")
-	@ObfuscatedSignature(descriptor = "Lgj;")
-	@Export("renderable1")
-	public Renderable renderable1;
+               for(var10 = 0; var10 < 4; ++var10) {
+                  if (var3[var10] == 2) {
+                     var11 = var0[var6].index;
+                     var12 = var8.index;
+                  } else if (var3[var10] == 1) {
+                     var11 = var0[var6].population;
+                     var12 = var8.population;
+                     if (var11 == -1 && var4[var10] == 1) {
+                        var11 = 2001;
+                     }
 
-	@ObfuscatedName("g")
-	@ObfuscatedSignature(descriptor = "Lgj;")
-	@Export("renderable2")
-	public Renderable renderable2;
+                     if (var12 == -1 && var4[var10] == 1) {
+                        var12 = 2001;
+                     }
+                  } else if (var3[var10] == 3) {
+                     var11 = var0[var6].isMembersOnly() ? 1 : 0;
+                     var12 = var8.isMembersOnly() ? 1 : 0;
+                  } else {
+                     var11 = var0[var6].id;
+                     var12 = var8.id;
+                  }
 
-	@ObfuscatedName("w")
-	@ObfuscatedGetter(longValue = 5334859034127772709L)
-	@Export("tag")
-	public long tag;
+                  if (var11 != var12) {
+                     if ((var4[var10] != 1 || var11 <= var12) && (var4[var10] != 0 || var11 >= var12)) {
+                        var9 = false;
+                     }
+                     break;
+                  }
 
-	@ObfuscatedName("y")
-	@ObfuscatedGetter(intValue = -256459155)
-	@Export("flags")
-	int flags;
+                  if (var10 == 3) {
+                     var9 = false;
+                  }
+               }
+            } while(var9);
 
-	BoundaryObject() {
-		this.tag = 0L;
-		this.flags = 0;
-	}
+            var9 = true;
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(Lcw;B)V", garbageValue = "-14")
-	@Export("runScriptEvent")
-	public static void runScriptEvent(ScriptEvent var0) {
-		class135.runScript(var0, 500000, 475000);
-	}
+            do {
+               ++var5;
 
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "(IIIIB)V", garbageValue = "94")
-	static void method4534(int var0, int var1, int var2, int var3) {
-		for (ObjectSound var4 = ((ObjectSound) (ObjectSound.objectSounds.last())); var4 != null; var4 = ((ObjectSound) (ObjectSound.objectSounds.previous()))) {
-			if (var4.soundEffectId != -1 || var4.soundEffectIds != null) {
-				int var5 = 0;
-				if (var1 > var4.maxX) {
-					var5 += var1 - var4.maxX;
-				} else if (var1 < var4.x) {
-					var5 += var4.x - var1;
-				}
-				if (var2 > var4.maxY) {
-					var5 += var2 - var4.maxY;
-				} else if (var2 < var4.y) {
-					var5 += var4.y - var2;
-				}
-				if (var5 - 64 <= var4.field812 && class19.clientPreferences.method2262() != 0 && var0 == var4.plane) {
-					var5 -= 64;
-					if (var5 < 0) {
-						var5 = 0;
-					}
-					int var6 = (var4.field812 - var5) * class19.clientPreferences.method2262() / var4.field812;
-					if (var4.stream1 == null) {
-						if (var4.soundEffectId >= 0) {
-							SoundEffect var7 = SoundEffect.readSoundEffect(Client.archive4, var4.soundEffectId, 0);
-							if (var7 != null) {
-								RawSound var8 = var7.toRawSound().resample(WorldMapRegion.decimator);
-								RawPcmStream var9 = RawPcmStream.createRawPcmStream(var8, 100, var6);
-								var9.setNumLoops(-1);
-								class21.pcmStreamMixer.addSubStream(var9);
-								var4.stream1 = var9;
-							}
-						}
-					} else {
-						var4.stream1.method790(var6);
-					}
-					if (var4.stream2 == null) {
-						if (var4.soundEffectIds != null && (var4.field809 -= var3) <= 0) {
-							int var11 = ((int) (Math.random() * ((double) (var4.soundEffectIds.length))));
-							SoundEffect var12 = SoundEffect.readSoundEffect(Client.archive4, var4.soundEffectIds[var11], 0);
-							if (var12 != null) {
-								RawSound var13 = var12.toRawSound().resample(WorldMapRegion.decimator);
-								RawPcmStream var10 = RawPcmStream.createRawPcmStream(var13, 100, var6);
-								var10.setNumLoops(0);
-								class21.pcmStreamMixer.addSubStream(var10);
-								var4.stream2 = var10;
-								var4.field809 = var4.field819 + ((int) (Math.random() * ((double) (var4.field811 - var4.field819))));
-							}
-						}
-					} else {
-						var4.stream2.method790(var6);
-						if (!var4.stream2.hasNext()) {
-							var4.stream2 = null;
-						}
-					}
-				} else {
-					if (var4.stream1 != null) {
-						class21.pcmStreamMixer.removeSubStream(var4.stream1);
-						var4.stream1 = null;
-					}
-					if (var4.stream2 != null) {
-						class21.pcmStreamMixer.removeSubStream(var4.stream2);
-						var4.stream2 = null;
-					}
-				}
-			}
-		}
-	}
+               for(var10 = 0; var10 < 4; ++var10) {
+                  if (var3[var10] == 2) {
+                     var11 = var0[var5].index;
+                     var12 = var8.index;
+                  } else if (var3[var10] == 1) {
+                     var11 = var0[var5].population;
+                     var12 = var8.population;
+                     if (var11 == -1 && var4[var10] == 1) {
+                        var11 = 2001;
+                     }
 
-	@ObfuscatedName("fp")
-	@ObfuscatedSignature(descriptor = "(I)J", garbageValue = "-2059501837")
-	static long method4536() {
-		return Client.field612;
-	}
+                     if (var12 == -1 && var4[var10] == 1) {
+                        var12 = 2001;
+                     }
+                  } else if (var3[var10] == 3) {
+                     var11 = var0[var5].isMembersOnly() ? 1 : 0;
+                     var12 = var8.isMembersOnly() ? 1 : 0;
+                  } else {
+                     var11 = var0[var5].id;
+                     var12 = var8.id;
+                  }
+
+                  if (var12 != var11) {
+                     if ((var4[var10] != 1 || var11 >= var12) && (var4[var10] != 0 || var11 <= var12)) {
+                        var9 = false;
+                     }
+                     break;
+                  }
+
+                  if (var10 == 3) {
+                     var9 = false;
+                  }
+               }
+            } while(var9);
+
+            if (var5 < var6) {
+               World var13 = var0[var5];
+               var0[var5] = var0[var6];
+               var0[var6] = var13;
+            }
+         }
+
+         sortWorlds(var0, var1, var6, var3, var4);
+         sortWorlds(var0, var6 + 1, var2, var3, var4);
+      }
+
+   }
+
+   @ObfuscatedName("u")
+   @ObfuscatedSignature(
+      descriptor = "(I)[Lcg;",
+      garbageValue = "1721549658"
+   )
+   static class82[] method4494() {
+      return new class82[]{class82.field1065, class82.field1062, class82.field1064, class82.field1072, class82.field1069};
+   }
 }

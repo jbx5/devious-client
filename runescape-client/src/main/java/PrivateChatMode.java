@@ -1,33 +1,33 @@
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.Implements;
-@ObfuscatedName("qg")
+
+@ObfuscatedName("qb")
 @Implements("PrivateChatMode")
 public class PrivateChatMode {
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "Lqg;")
-	static final PrivateChatMode field4818;
+   @ObfuscatedName("o")
+   @ObfuscatedSignature(
+      descriptor = "Lqb;"
+   )
+   static final PrivateChatMode field4827 = new PrivateChatMode(0);
+   @ObfuscatedName("q")
+   @ObfuscatedSignature(
+      descriptor = "Lqb;"
+   )
+   public static final PrivateChatMode field4825 = new PrivateChatMode(1);
+   @ObfuscatedName("f")
+   @ObfuscatedSignature(
+      descriptor = "Lqb;"
+   )
+   static final PrivateChatMode field4828 = new PrivateChatMode(2);
+   @ObfuscatedName("u")
+   @ObfuscatedGetter(
+      intValue = 320367397
+   )
+   public final int field4826;
 
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "Lqg;")
-	public static final PrivateChatMode field4817;
-
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "Lqg;")
-	static final PrivateChatMode field4819;
-
-	@ObfuscatedName("f")
-	@ObfuscatedGetter(intValue = -2146881289)
-	public final int field4820;
-
-	static {
-		field4818 = new PrivateChatMode(0);
-		field4817 = new PrivateChatMode(1);
-		field4819 = new PrivateChatMode(2);
-	}
-
-	PrivateChatMode(int var1) {
-		this.field4820 = var1;
-	}
+   PrivateChatMode(int var1) {
+      this.field4826 = var1;
+   }
 }

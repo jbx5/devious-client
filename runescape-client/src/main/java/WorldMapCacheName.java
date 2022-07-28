@@ -1,60 +1,61 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.Export;
-@ObfuscatedName("io")
+
+@ObfuscatedName("ij")
 @Implements("WorldMapCacheName")
 public class WorldMapCacheName {
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "Lio;")
-	public static final WorldMapCacheName field2867;
+   @ObfuscatedName("o")
+   @ObfuscatedSignature(
+      descriptor = "Lij;"
+   )
+   public static final WorldMapCacheName field2867 = new WorldMapCacheName("details");
+   @ObfuscatedName("q")
+   @ObfuscatedSignature(
+      descriptor = "Lij;"
+   )
+   public static final WorldMapCacheName field2861 = new WorldMapCacheName("compositemap");
+   @ObfuscatedName("f")
+   @ObfuscatedSignature(
+      descriptor = "Lij;"
+   )
+   public static final WorldMapCacheName field2863 = new WorldMapCacheName("compositetexture");
+   @ObfuscatedName("u")
+   @ObfuscatedSignature(
+      descriptor = "Lij;"
+   )
+   static final WorldMapCacheName field2866 = new WorldMapCacheName("area");
+   @ObfuscatedName("c")
+   @ObfuscatedSignature(
+      descriptor = "Lij;"
+   )
+   public static final WorldMapCacheName field2864 = new WorldMapCacheName("labels");
+   @ObfuscatedName("by")
+   @ObfuscatedGetter(
+      intValue = 350469975
+   )
+   static int field2862;
+   @ObfuscatedName("hy")
+   @ObfuscatedGetter(
+      intValue = -1050242269
+   )
+   static int field2868;
+   @ObfuscatedName("w")
+   @Export("name")
+   public final String name;
 
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "Lio;")
-	public static final WorldMapCacheName field2865;
+   WorldMapCacheName(String var1) {
+      this.name = var1;
+   }
 
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "Lio;")
-	public static final WorldMapCacheName field2866;
-
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "Lio;")
-	static final WorldMapCacheName field2869;
-
-	@ObfuscatedName("j")
-	@ObfuscatedSignature(descriptor = "Lio;")
-	public static final WorldMapCacheName field2868;
-
-	@ObfuscatedName("e")
-	@Export("name")
-	public final String name;
-
-	static {
-		field2867 = new WorldMapCacheName("details");
-		field2865 = new WorldMapCacheName("compositemap");
-		field2866 = new WorldMapCacheName("compositetexture");
-		field2869 = new WorldMapCacheName("area");
-		field2868 = new WorldMapCacheName("labels");
-	}
-
-	WorldMapCacheName(String var1) {
-		this.name = var1;
-	}
-
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(II)Lgx;", garbageValue = "1464975473")
-	public static VarbitComposition method5054(int var0) {
-		VarbitComposition var1 = ((VarbitComposition) (VarbitComposition.VarbitDefinition_cached.get(((long) (var0)))));
-		if (var1 != null) {
-			return var1;
-		} else {
-			byte[] var2 = VarbitComposition.VarbitDefinition_archive.takeFile(14, var0);
-			var1 = new VarbitComposition();
-			if (var2 != null) {
-				var1.decode(new Buffer(var2));
-			}
-			VarbitComposition.VarbitDefinition_cached.put(var1, ((long) (var0)));
-			return var1;
-		}
-	}
+   @ObfuscatedName("aq")
+   @ObfuscatedSignature(
+      descriptor = "(II)I",
+      garbageValue = "-849774060"
+   )
+   static int method5048(int var0) {
+      return (int)((Math.log((double)var0) / Interpreter.field843 - 7.0) * 256.0);
+   }
 }

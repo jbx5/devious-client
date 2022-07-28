@@ -1,183 +1,93 @@
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.Implements;
 import java.util.Comparator;
 import net.runelite.mapping.Export;
-@ObfuscatedName("ch")
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
+
+@ObfuscatedName("cf")
 @Implements("UserComparator4")
 public class UserComparator4 implements Comparator {
-	@ObfuscatedName("e")
-	@ObfuscatedSignature(descriptor = "Llh;")
-	@Export("ItemDefinition_archive")
-	static AbstractArchive ItemDefinition_archive;
+   @ObfuscatedName("o")
+   @Export("reversed")
+   final boolean reversed;
 
-	@ObfuscatedName("ik")
-	@ObfuscatedSignature(descriptor = "[Lqe;")
-	@Export("headIconHintSprites")
-	static SpritePixels[] headIconHintSprites;
+   public UserComparator4(boolean var1) {
+      this.reversed = var1;
+   }
 
-	@ObfuscatedName("c")
-	@Export("reversed")
-	final boolean reversed;
+   @ObfuscatedName("o")
+   @ObfuscatedSignature(
+      descriptor = "(Lnh;Lnh;B)I",
+      garbageValue = "78"
+   )
+   @Export("compare_bridged")
+   int compare_bridged(Buddy var1, Buddy var2) {
+      return this.reversed ? var1.int2 - var2.int2 : var2.int2 - var1.int2;
+   }
 
-	public UserComparator4(boolean var1) {
-		this.reversed = var1;
-	}
+   public int compare(Object var1, Object var2) {
+      return this.compare_bridged((Buddy)var1, (Buddy)var2);
+   }
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(Lnm;Lnm;B)I", garbageValue = "-8")
-	@Export("compare_bridged")
-	int compare_bridged(Buddy var1, Buddy var2) {
-		return this.reversed ? var1.int2 - var2.int2 : var2.int2 - var1.int2;
-	}
+   public boolean equals(Object var1) {
+      return super.equals(var1);
+   }
 
-	public int compare(Object var1, Object var2) {
-		return this.compare_bridged(((Buddy) (var1)), ((Buddy) (var2)));
-	}
+   @ObfuscatedName("o")
+   @ObfuscatedSignature(
+      descriptor = "(Llc;B)V",
+      garbageValue = "-55"
+   )
+   public static void method2655(AbstractArchive var0) {
+      class295.StructDefinition_archive = var0;
+   }
 
-	public boolean equals(Object var1) {
-		return super.equals(var1);
-	}
+   @ObfuscatedName("q")
+   @ObfuscatedSignature(
+      descriptor = "(ILng;Llu;I)V",
+      garbageValue = "1214028762"
+   )
+   static void method2647(int var0, ArchiveDisk var1, Archive var2) {
+      byte[] var3 = null;
+      synchronized(ArchiveDiskActionHandler.ArchiveDiskActionHandler_requestQueue) {
+         for(ArchiveDiskAction var5 = (ArchiveDiskAction)ArchiveDiskActionHandler.ArchiveDiskActionHandler_requestQueue.last(); var5 != null; var5 = (ArchiveDiskAction)ArchiveDiskActionHandler.ArchiveDiskActionHandler_requestQueue.previous()) {
+            if ((long)var0 == var5.key && var1 == var5.archiveDisk && var5.type == 0) {
+               var3 = var5.data;
+               break;
+            }
+         }
+      }
 
-	@ObfuscatedName("hd")
-	@ObfuscatedSignature(descriptor = "(ZLpq;I)V", garbageValue = "1468501785")
-	@Export("updateNpcs")
-	static final void updateNpcs(boolean var0, PacketBuffer var1) {
-		Client.field615 = 0;
-		Client.field538 = 0;
-		GrandExchangeOfferUnitPriceComparator.method6024();
-		int var2;
-		while (var1.bitsRemaining(Client.packetWriter.serverPacketLength) >= 27) {
-			var2 = var1.readBits(15);
-			if (var2 == 32767) {
-				break;
-			}
-			boolean var3 = false;
-			if (Client.npcs[var2] == null) {
-				Client.npcs[var2] = new NPC();
-				var3 = true;
-			}
-			NPC var4 = Client.npcs[var2];
-			Client.npcIndices[++Client.npcCount - 1] = var2;
-			var4.npcCycle = Client.cycle;
-			int var5;
-			int var6;
-			int var7;
-			int var10;
-			if (class101.field1366) {
-				if (var0) {
-					var6 = var1.readBits(8);
-					if (var6 > 127) {
-						var6 -= 256;
-					}
-				} else {
-					var6 = var1.readBits(5);
-					if (var6 > 15) {
-						var6 -= 32;
-					}
-				}
-				boolean var8 = var1.readBits(1) == 1;
-				if (var8) {
-					var1.readBits(32);
-				}
-				var5 = var1.readBits(1);
-				int var9 = Client.defaultRotations[var1.readBits(3)];
-				if (var3) {
-					var4.orientation = var4.rotation = var9;
-				}
-				if (var0) {
-					var7 = var1.readBits(8);
-					if (var7 > 127) {
-						var7 -= 256;
-					}
-				} else {
-					var7 = var1.readBits(5);
-					if (var7 > 15) {
-						var7 -= 32;
-					}
-				}
-				var10 = var1.readBits(1);
-				if (var10 == 1) {
-					Client.field539[++Client.field538 - 1] = var2;
-				}
-				var4.definition = BuddyRankComparator.getNpcDefinition(var1.readBits(14));
-			} else {
-				int var12 = Client.defaultRotations[var1.readBits(3)];
-				if (var3) {
-					var4.orientation = var4.rotation = var12;
-				}
-				if (var0) {
-					var6 = var1.readBits(8);
-					if (var6 > 127) {
-						var6 -= 256;
-					}
-				} else {
-					var6 = var1.readBits(5);
-					if (var6 > 15) {
-						var6 -= 32;
-					}
-				}
-				boolean var13 = var1.readBits(1) == 1;
-				if (var13) {
-					var1.readBits(32);
-				}
-				if (var0) {
-					var7 = var1.readBits(8);
-					if (var7 > 127) {
-						var7 -= 256;
-					}
-				} else {
-					var7 = var1.readBits(5);
-					if (var7 > 15) {
-						var7 -= 32;
-					}
-				}
-				var5 = var1.readBits(1);
-				var10 = var1.readBits(1);
-				if (var10 == 1) {
-					Client.field539[++Client.field538 - 1] = var2;
-				}
-				var4.definition = BuddyRankComparator.getNpcDefinition(var1.readBits(14));
-			}
-			var4.field1205 = var4.definition.size;
-			var4.field1129 = var4.definition.rotation;
-			if (var4.field1129 == 0) {
-				var4.rotation = 0;
-			}
-			var4.walkSequence = var4.definition.walkSequence;
-			var4.walkBackSequence = var4.definition.walkBackSequence;
-			var4.walkLeftSequence = var4.definition.walkLeftSequence;
-			var4.walkRightSequence = var4.definition.walkRightSequence;
-			var4.idleSequence = var4.definition.idleSequence;
-			var4.turnLeftSequence = var4.definition.turnLeftSequence;
-			var4.turnRightSequence = var4.definition.turnRightSequence;
-			var4.runSequence = var4.definition.field1931;
-			var4.field1180 = var4.definition.field1944;
-			var4.field1144 = var4.definition.field1932;
-			var4.field1145 = var4.definition.field1933;
-			var4.field1155 = var4.definition.field1934;
-			var4.field1179 = var4.definition.field1935;
-			var4.field1137 = var4.definition.field1936;
-			var4.field1149 = var4.definition.field1930;
-			var4.method2362(class101.localPlayer.pathX[0] + var6, class101.localPlayer.pathY[0] + var7, var5 == 1);
-		} 
-		var1.exportIndex();
-		SoundCache.method765(var1);
-		for (var2 = 0; var2 < Client.field615; ++var2) {
-			int var11 = Client.field616[var2];
-			if (Client.npcs[var11].npcCycle != Client.cycle) {
-				Client.npcs[var11].definition = null;
-				Client.npcs[var11] = null;
-			}
-		}
-		if (var1.offset != Client.packetWriter.serverPacketLength) {
-			throw new RuntimeException(var1.offset + "," + Client.packetWriter.serverPacketLength);
-		} else {
-			for (var2 = 0; var2 < Client.npcCount; ++var2) {
-				if (Client.npcs[Client.npcIndices[var2]] == null) {
-					throw new RuntimeException(var2 + "," + Client.npcCount);
-				}
-			}
-		}
-	}
+      if (var3 != null) {
+         var2.load(var1, var0, var3, true);
+      } else {
+         byte[] var4 = var1.read(var0);
+         var2.load(var1, var0, var4, true);
+      }
+   }
+
+   @ObfuscatedName("fq")
+   @ObfuscatedSignature(
+      descriptor = "(I)V",
+      garbageValue = "2133887826"
+   )
+   static final void method2654() {
+      if (Client.logoutTimer > 0) {
+         class433.logOut();
+      } else {
+         Client.timer.method6553();
+         class82.updateGameState(40);
+         class240.field2847 = Client.packetWriter.getSocket();
+         Client.packetWriter.removeSocket();
+      }
+   }
+
+   @ObfuscatedName("jg")
+   @ObfuscatedSignature(
+      descriptor = "(Ljava/lang/String;Ljava/lang/String;IIIIII)V",
+      garbageValue = "1799333746"
+   )
+   static final void method2657(String var0, String var1, int var2, int var3, int var4, int var5, int var6) {
+      ViewportMouse.insertMenuItem(var0, var1, var2, var3, var4, var5, var6, false);
+   }
 }

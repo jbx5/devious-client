@@ -1,163 +1,190 @@
-import net.runelite.mapping.ObfuscatedName;
-import java.io.InvalidClassException;
-import net.runelite.mapping.Implements;
-import java.io.IOException;
-import java.lang.reflect.Method;
-import net.runelite.rs.Reflection;
-import java.io.OptionalDataException;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Field;
-import net.runelite.mapping.ObfuscatedSignature;
-import java.io.ByteArrayInputStream;
-import net.runelite.mapping.ObfuscatedGetter;
-import java.io.ObjectInputStream;
-import java.io.StreamCorruptedException;
 import net.runelite.mapping.Export;
-@ObfuscatedName("kv")
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
+import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
+
+@ObfuscatedName("ks")
 @Implements("ArchiveDiskAction")
 public class ArchiveDiskAction extends Node {
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(intValue = -1477037843)
-	@Export("type")
-	int type;
+   @ObfuscatedName("o")
+   @ObfuscatedGetter(
+      intValue = 16021623
+   )
+   @Export("type")
+   int type;
+   @ObfuscatedName("q")
+   @Export("data")
+   byte[] data;
+   @ObfuscatedName("f")
+   @ObfuscatedSignature(
+      descriptor = "Lng;"
+   )
+   @Export("archiveDisk")
+   ArchiveDisk archiveDisk;
+   @ObfuscatedName("u")
+   @ObfuscatedSignature(
+      descriptor = "Llu;"
+   )
+   @Export("archive")
+   Archive archive;
 
-	@ObfuscatedName("v")
-	@Export("data")
-	public byte[] data;
+   ArchiveDiskAction() {
+   }
 
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "Lnd;")
-	@Export("archiveDisk")
-	public ArchiveDisk archiveDisk;
+   @ObfuscatedName("o")
+   @ObfuscatedSignature(
+      descriptor = "(Lqw;Ljava/lang/String;I)I",
+      garbageValue = "1650594582"
+   )
+   public static int method5785(Buffer var0, String var1) {
+      int var2 = var0.offset;
+      int var4 = var1.length();
+      byte[] var5 = new byte[var4];
 
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "Llc;")
-	@Export("archive")
-	public Archive archive;
+      for(int var6 = 0; var6 < var4; ++var6) {
+         char var7 = var1.charAt(var6);
+         if (var7 > 0 && var7 < 128 || var7 >= 160 && var7 <= 255) {
+            var5[var6] = (byte)var7;
+         } else if (var7 == 8364) {
+            var5[var6] = -128;
+         } else if (var7 == 8218) {
+            var5[var6] = -126;
+         } else if (var7 == 402) {
+            var5[var6] = -125;
+         } else if (var7 == 8222) {
+            var5[var6] = -124;
+         } else if (var7 == 8230) {
+            var5[var6] = -123;
+         } else if (var7 == 8224) {
+            var5[var6] = -122;
+         } else if (var7 == 8225) {
+            var5[var6] = -121;
+         } else if (var7 == 710) {
+            var5[var6] = -120;
+         } else if (var7 == 8240) {
+            var5[var6] = -119;
+         } else if (var7 == 352) {
+            var5[var6] = -118;
+         } else if (var7 == 8249) {
+            var5[var6] = -117;
+         } else if (var7 == 338) {
+            var5[var6] = -116;
+         } else if (var7 == 381) {
+            var5[var6] = -114;
+         } else if (var7 == 8216) {
+            var5[var6] = -111;
+         } else if (var7 == 8217) {
+            var5[var6] = -110;
+         } else if (var7 == 8220) {
+            var5[var6] = -109;
+         } else if (var7 == 8221) {
+            var5[var6] = -108;
+         } else if (var7 == 8226) {
+            var5[var6] = -107;
+         } else if (var7 == 8211) {
+            var5[var6] = -106;
+         } else if (var7 == 8212) {
+            var5[var6] = -105;
+         } else if (var7 == 732) {
+            var5[var6] = -104;
+         } else if (var7 == 8482) {
+            var5[var6] = -103;
+         } else if (var7 == 353) {
+            var5[var6] = -102;
+         } else if (var7 == 8250) {
+            var5[var6] = -101;
+         } else if (var7 == 339) {
+            var5[var6] = -100;
+         } else if (var7 == 382) {
+            var5[var6] = -98;
+         } else if (var7 == 376) {
+            var5[var6] = -97;
+         } else {
+            var5[var6] = 63;
+         }
+      }
 
-	ArchiveDiskAction() {
-	}
+      var0.writeSmartByteShort(var5.length);
+      var0.offset += class18.huffman.compress(var5, 0, var5.length, var0.array, var0.offset);
+      return var0.offset - var2;
+   }
 
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "(Lpq;I)V", garbageValue = "206933702")
-	@Export("performReflectionCheck")
-	public static void performReflectionCheck(PacketBuffer var0) {
-		ReflectionCheck var1 = ((ReflectionCheck) (class33.reflectionChecks.last()));
-		if (var1 != null) {
-			int var2 = var0.offset;
-			var0.writeInt(var1.id);
-			for (int var3 = 0; var3 < var1.size; ++var3) {
-				if (var1.creationErrors[var3] != 0) {
-					var0.writeByte(var1.creationErrors[var3]);
-				} else {
-					try {
-						int var4 = var1.operations[var3];
-						Field var5;
-						int var6;
-						if (var4 == 0) {
-							var5 = var1.fields[var3];
-							var6 = Reflection.getInt(var5, ((Object) (null)));
-							var0.writeByte(0);
-							var0.writeInt(var6);
-						} else if (var4 == 1) {
-							var5 = var1.fields[var3];
-							Reflection.setInt(var5, ((Object) (null)), var1.intReplaceValues[var3]);
-							var0.writeByte(0);
-						} else if (var4 == 2) {
-							var5 = var1.fields[var3];
-							var6 = var5.getModifiers();
-							var0.writeByte(0);
-							var0.writeInt(var6);
-						}
-						Method var25;
-						if (var4 != 3) {
-							if (var4 == 4) {
-								var25 = var1.methods[var3];
-								var6 = var25.getModifiers();
-								var0.writeByte(0);
-								var0.writeInt(var6);
-							}
-						} else {
-							var25 = var1.methods[var3];
-							byte[][] var10 = var1.arguments[var3];
-							Object[] var7 = new Object[var10.length];
-							for (int var8 = 0; var8 < var10.length; ++var8) {
-								ObjectInputStream var9 = new ObjectInputStream(new ByteArrayInputStream(var10[var8]));
-								var7[var8] = var9.readObject();
-							}
-							Object var11 = Reflection.invoke(var25, ((Object) (null)), var7);
-							if (var11 == null) {
-								var0.writeByte(0);
-							} else if (var11 instanceof Number) {
-								var0.writeByte(1);
-								var0.writeLong(((Number) (var11)).longValue());
-							} else if (var11 instanceof String) {
-								var0.writeByte(2);
-								var0.writeStringCp1252NullTerminated(((String) (var11)));
-							} else {
-								var0.writeByte(4);
-							}
-						}
-					} catch (ClassNotFoundException var13) {
-						var0.writeByte(-10);
-					} catch (InvalidClassException var14) {
-						var0.writeByte(-11);
-					} catch (StreamCorruptedException var15) {
-						var0.writeByte(-12);
-					} catch (OptionalDataException var16) {
-						var0.writeByte(-13);
-					} catch (IllegalAccessException var17) {
-						var0.writeByte(-14);
-					} catch (IllegalArgumentException var18) {
-						var0.writeByte(-15);
-					} catch (InvocationTargetException var19) {
-						var0.writeByte(-16);
-					} catch (SecurityException var20) {
-						var0.writeByte(-17);
-					} catch (IOException var21) {
-						var0.writeByte(-18);
-					} catch (NullPointerException var22) {
-						var0.writeByte(-19);
-					} catch (Exception var23) {
-						var0.writeByte(-20);
-					} catch (Throwable var24) {
-						var0.writeByte(-21);
-					}
-				}
-			}
-			var0.writeCrc(var2);
-			var1.remove();
-		}
-	}
+   @ObfuscatedName("fz")
+   @ObfuscatedSignature(
+      descriptor = "(I)I",
+      garbageValue = "-1242746658"
+   )
+   static int method5786() {
+      if (Client.archiveLoaders != null && Client.archiveLoadersDone < Client.archiveLoaders.size()) {
+         int var0 = 0;
 
-	@ObfuscatedName("z")
-	@ObfuscatedSignature(descriptor = "(Ljava/lang/String;I)Ljava/lang/String;", garbageValue = "1685326414")
-	public static String method5777(String var0) {
-		int var1 = var0.length();
-		char[] var2 = new char[var1];
-		byte var3 = 2;
-		for (int var4 = 0; var4 < var1; ++var4) {
-			char var5 = var0.charAt(var4);
-			if (var3 == 0) {
-				var5 = Character.toLowerCase(var5);
-			} else if (var3 == 2 || Character.isUpperCase(var5)) {
-				var5 = class326.method6050(var5);
-			}
-			if (Character.isLetter(var5)) {
-				var3 = 0;
-			} else if (var5 != '.' && var5 != '?' && var5 != '!') {
-				if (Character.isSpaceChar(var5)) {
-					if (var3 != 2) {
-						var3 = 1;
-					}
-				} else {
-					var3 = 1;
-				}
-			} else {
-				var3 = 2;
-			}
-			var2[var4] = var5;
-		}
-		return new String(var2);
-	}
+         for(int var1 = 0; var1 <= Client.archiveLoadersDone; ++var1) {
+            var0 += ((ArchiveLoader)Client.archiveLoaders.get(var1)).loadedCount;
+         }
+
+         return var0 * 10000 / Client.field630;
+      } else {
+         return 10000;
+      }
+   }
+
+   @ObfuscatedName("id")
+   @ObfuscatedSignature(
+      descriptor = "(Lbe;III)V",
+      garbageValue = "410958599"
+   )
+   static final void method5787(MenuAction var0, int var1, int var2) {
+      if (var0 != null) {
+         class9.menuAction(var0.param0, var0.param1, var0.opcode, var0.identifier, var0.field879, var0.field880, var0.action, var1, var2);
+      }
+
+   }
+
+   @ObfuscatedName("kq")
+   @ObfuscatedSignature(
+      descriptor = "([Lku;II)V",
+      garbageValue = "-1292694171"
+   )
+   @Export("runComponentCloseListeners")
+   static final void runComponentCloseListeners(Widget[] var0, int var1) {
+      for(int var2 = 0; var2 < var0.length; ++var2) {
+         Widget var3 = var0[var2];
+         if (var3 != null) {
+            if (var3.type == 0) {
+               if (var3.children != null) {
+                  runComponentCloseListeners(var3.children, var1);
+               }
+
+               InterfaceParent var4 = (InterfaceParent)Client.interfaceParents.get((long)var3.id);
+               if (var4 != null) {
+                  class220.runIntfCloseListeners(var4.group, var1);
+               }
+            }
+
+            ScriptEvent var5;
+            if (var1 == 0 && var3.onDialogAbort != null) {
+               var5 = new ScriptEvent();
+               var5.widget = var3;
+               var5.args = var3.onDialogAbort;
+               class17.runScriptEvent(var5);
+            }
+
+            if (var1 == 1 && var3.onSubChange != null) {
+               if (var3.childIndex >= 0) {
+                  Widget var6 = FloorUnderlayDefinition.getWidget(var3.id);
+                  if (var6 == null || var6.children == null || var3.childIndex >= var6.children.length || var3 != var6.children[var3.childIndex]) {
+                     continue;
+                  }
+               }
+
+               var5 = new ScriptEvent();
+               var5.widget = var3;
+               var5.args = var3.onSubChange;
+               class17.runScriptEvent(var5);
+            }
+         }
+      }
+
+   }
 }

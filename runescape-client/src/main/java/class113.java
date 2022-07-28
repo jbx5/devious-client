@@ -1,59 +1,78 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-@ObfuscatedName("dx")
+
+@ObfuscatedName("dd")
 public class class113 {
-	@ObfuscatedName("r")
-	@ObfuscatedSignature(descriptor = "Lqu;")
-	static IndexedSprite field1427;
+   @ObfuscatedName("nl")
+   @ObfuscatedGetter(
+      intValue = -1352804003
+   )
+   @Export("selectedSpellWidget")
+   static int selectedSpellWidget;
+   @ObfuscatedName("o")
+   @ObfuscatedGetter(
+      intValue = 1280061279
+   )
+   int field1390;
+   @ObfuscatedName("q")
+   float field1389;
+   @ObfuscatedName("f")
+   float field1391 = Float.MAX_VALUE;
+   @ObfuscatedName("u")
+   float field1396 = Float.MAX_VALUE;
+   @ObfuscatedName("c")
+   float field1392 = Float.MAX_VALUE;
+   @ObfuscatedName("w")
+   float field1393 = Float.MAX_VALUE;
+   @ObfuscatedName("z")
+   @ObfuscatedSignature(
+      descriptor = "Ldd;"
+   )
+   class113 field1388;
 
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(intValue = 244154869)
-	int field1420;
+   class113() {
+   }
 
-	@ObfuscatedName("v")
-	float field1423;
+   @ObfuscatedName("o")
+   @ObfuscatedSignature(
+      descriptor = "(Lqw;II)V",
+      garbageValue = "-514505311"
+   )
+   void method2708(Buffer var1, int var2) {
+      this.field1390 = var1.readShort();
+      this.field1389 = var1.method7740();
+      this.field1391 = var1.method7740();
+      this.field1396 = var1.method7740();
+      this.field1392 = var1.method7740();
+      this.field1393 = var1.method7740();
+   }
 
-	@ObfuscatedName("q")
-	float field1421;
+   @ObfuscatedName("f")
+   @ObfuscatedSignature(
+      descriptor = "(IIB)Lbd;",
+      garbageValue = "121"
+   )
+   @Export("Messages_getByChannelAndID")
+   static Message Messages_getByChannelAndID(int var0, int var1) {
+      ChatChannel var2 = (ChatChannel)Messages.Messages_channels.get(var0);
+      return var2.getMessage(var1);
+   }
 
-	@ObfuscatedName("f")
-	float field1422;
-
-	@ObfuscatedName("j")
-	float field1419;
-
-	@ObfuscatedName("e")
-	float field1425;
-
-	@ObfuscatedName("g")
-	@ObfuscatedSignature(descriptor = "Ldx;")
-	class113 field1426;
-
-	class113() {
-		this.field1421 = Float.MAX_VALUE;
-		this.field1422 = Float.MAX_VALUE;
-		this.field1419 = Float.MAX_VALUE;
-		this.field1425 = Float.MAX_VALUE;
-	}
-
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(Lqt;IB)V", garbageValue = "-65")
-	void method2630(Buffer var1, int var2) {
-		this.field1420 = var1.readShort();
-		this.field1423 = var1.method7740();
-		this.field1421 = var1.method7740();
-		this.field1422 = var1.method7740();
-		this.field1419 = var1.method7740();
-		this.field1425 = var1.method7740();
-	}
-
-	@ObfuscatedName("z")
-	@ObfuscatedSignature(descriptor = "(Ljava/lang/String;I)V", garbageValue = "1059822722")
-	static final void method2632(String var0) {
-		PacketBufferNode var1 = EnumComposition.getPacketBufferNode(ClientPacket.field2944, Client.packetWriter.isaacCipher);
-		var1.packetBuffer.writeByte(ScriptEvent.stringCp1252NullTerminatedByteSize(var0));
-		var1.packetBuffer.writeStringCp1252NullTerminated(var0);
-		Client.packetWriter.addNode(var1);
-	}
+   @ObfuscatedName("ku")
+   @ObfuscatedSignature(
+      descriptor = "(II)V",
+      garbageValue = "-2039507809"
+   )
+   static void method2713(int var0) {
+      class136.tempMenuAction = new MenuAction();
+      class136.tempMenuAction.param0 = Client.menuArguments1[var0];
+      class136.tempMenuAction.param1 = Client.menuArguments2[var0];
+      class136.tempMenuAction.opcode = Client.menuOpcodes[var0];
+      class136.tempMenuAction.identifier = Client.menuIdentifiers[var0];
+      class136.tempMenuAction.field879 = Client.menuItemIds[var0];
+      class136.tempMenuAction.field880 = Client.menuActions[var0];
+      class136.tempMenuAction.action = Client.menuTargets[var0];
+   }
 }

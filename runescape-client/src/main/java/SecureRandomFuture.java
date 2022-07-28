@@ -1,126 +1,150 @@
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.Implements;
 import java.security.SecureRandom;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import net.runelite.mapping.Export;
-@ObfuscatedName("bw")
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
+
+@ObfuscatedName("bh")
 @Implements("SecureRandomFuture")
 public class SecureRandomFuture {
-	@ObfuscatedName("pm")
-	@ObfuscatedGetter(intValue = -1419708281)
-	static int field960;
+   @ObfuscatedName("o")
+   @Export("executor")
+   ExecutorService executor = Executors.newSingleThreadExecutor();
+   @ObfuscatedName("q")
+   @Export("future")
+   Future future;
 
-	@ObfuscatedName("c")
-	@Export("executor")
-	ExecutorService executor;
+   SecureRandomFuture() {
+      this.future = this.executor.submit(new SecureRandomCallable());
+   }
 
-	@ObfuscatedName("v")
-	@Export("future")
-	Future future;
+   @ObfuscatedName("o")
+   @ObfuscatedSignature(
+      descriptor = "(I)V",
+      garbageValue = "-2030157363"
+   )
+   @Export("shutdown")
+   void shutdown() {
+      this.executor.shutdown();
+      this.executor = null;
+   }
 
-	SecureRandomFuture() {
-		this.executor = Executors.newSingleThreadExecutor();
-		this.future = this.executor.submit(new SecureRandomCallable());
-	}
+   @ObfuscatedName("q")
+   @ObfuscatedSignature(
+      descriptor = "(I)Z",
+      garbageValue = "-1383304538"
+   )
+   @Export("isDone")
+   boolean isDone() {
+      return this.future.isDone();
+   }
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(B)V", garbageValue = "-33")
-	@Export("shutdown")
-	void shutdown() {
-		this.executor.shutdown();
-		this.executor = null;
-	}
+   @ObfuscatedName("f")
+   @ObfuscatedSignature(
+      descriptor = "(B)Ljava/security/SecureRandom;",
+      garbageValue = "-26"
+   )
+   @Export("get")
+   SecureRandom get() {
+      try {
+         return (SecureRandom)this.future.get();
+      } catch (Exception var2) {
+         return LoginScreenAnimation.method2306();
+      }
+   }
 
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "(I)Z", garbageValue = "1943813302")
-	@Export("isDone")
-	boolean isDone() {
-		return this.future.isDone();
-	}
+   @ObfuscatedName("o")
+   @ObfuscatedSignature(
+      descriptor = "(I)[Lqb;",
+      garbageValue = "-1140507063"
+   )
+   static PrivateChatMode[] method2010() {
+      return new PrivateChatMode[]{PrivateChatMode.field4828, PrivateChatMode.field4825, PrivateChatMode.field4827};
+   }
 
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "(I)Ljava/security/SecureRandom;", garbageValue = "448481251")
-	@Export("get")
-	SecureRandom get() {
-		try {
-			return ((SecureRandom) (this.future.get()));
-		} catch (Exception var2) {
-			return NetFileRequest.method5843();
-		}
-	}
+   @ObfuscatedName("j")
+   @ObfuscatedSignature(
+      descriptor = "([BIII)Z",
+      garbageValue = "-1887656692"
+   )
+   static final boolean method2022(byte[] var0, int var1, int var2) {
+      boolean var3 = true;
+      Buffer var4 = new Buffer(var0);
+      int var5 = -1;
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(IB)Lfi;", garbageValue = "81")
-	@Export("KitDefinition_get")
-	public static KitDefinition KitDefinition_get(int var0) {
-		KitDefinition var1 = ((KitDefinition) (KitDefinition.KitDefinition_cached.get(((long) (var0)))));
-		if (var1 != null) {
-			return var1;
-		} else {
-			byte[] var2 = KitDefinition.KitDefinition_archive.takeFile(3, var0);
-			var1 = new KitDefinition();
-			if (var2 != null) {
-				var1.decode(new Buffer(var2));
-			}
-			KitDefinition.KitDefinition_cached.put(var1, ((long) (var0)));
-			return var1;
-		}
-	}
+      label66:
+      while(true) {
+         int var6 = var4.method7873();
+         if (var6 == 0) {
+            return var3;
+         }
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(Llh;Llh;IZI)Lda;", garbageValue = "1850622535")
-	public static class122 method1963(AbstractArchive var0, AbstractArchive var1, int var2, boolean var3) {
-		boolean var4 = true;
-		byte[] var5 = var0.getFile(var2 >> 16 & 65535, var2 & 65535);
-		if (var5 == null) {
-			var4 = false;
-			return null;
-		} else {
-			int var6 = (var5[1] & 255) << 8 | var5[2] & 255;
-			byte[] var7;
-			if (var3) {
-				var7 = var1.getFile(0, var6);
-			} else {
-				var7 = var1.getFile(var6, 0);
-			}
-			if (var7 == null) {
-				var4 = false;
-			}
-			if (!var4) {
-				return null;
-			} else {
-				try {
-					return new class122(var0, var1, var2, var3);
-				} catch (Exception var9) {
-					return null;
-				}
-			}
-		}
-	}
+         var5 += var6;
+         int var7 = 0;
+         boolean var8 = false;
 
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V", garbageValue = "1953508485")
-	@Export("addChatMessage")
-	static void addChatMessage(int var0, String var1, String var2, String var3) {
-		ChatChannel var4 = ((ChatChannel) (Messages.Messages_channels.get(var0)));
-		if (var4 == null) {
-			var4 = new ChatChannel();
-			Messages.Messages_channels.put(var0, var4);
-		}
-		Message var5 = var4.addMessage(var0, var1, var2, var3);
-		Messages.Messages_hashTable.put(var5, ((long) (var5.count)));
-		Messages.Messages_queue.add(var5);
-		Client.chatCycle = Client.cycleCntr;
-	}
+         while(true) {
+            int var9;
+            while(!var8) {
+               var9 = var4.readUShortSmart();
+               if (var9 == 0) {
+                  continue label66;
+               }
 
-	@ObfuscatedName("ey")
-	@ObfuscatedSignature(descriptor = "(B)V", garbageValue = "7")
-	static final void method1967() {
-		Scene.Scene_isLowDetail = false;
-		Client.isLowDetail = false;
-	}
+               var7 += var9 - 1;
+               int var10 = var7 & 63;
+               int var11 = var7 >> 6 & 63;
+               int var12 = var4.readUnsignedByte() >> 2;
+               int var13 = var11 + var1;
+               int var14 = var10 + var2;
+               if (var13 > 0 && var14 > 0 && var13 < 103 && var14 < 103) {
+                  ObjectComposition var15 = WorldMapDecoration.getObjectDefinition(var5);
+                  if (var12 != 22 || !Client.isLowDetail || var15.int1 != 0 || var15.interactType == 1 || var15.boolean2) {
+                     if (!var15.needsModelFiles()) {
+                        ++Client.field609;
+                        var3 = false;
+                     }
+
+                     var8 = true;
+                  }
+               }
+            }
+
+            var9 = var4.readUShortSmart();
+            if (var9 == 0) {
+               break;
+            }
+
+            var4.readUnsignedByte();
+         }
+      }
+   }
+
+   @ObfuscatedName("hw")
+   @ObfuscatedSignature(
+      descriptor = "(IIIB)I",
+      garbageValue = "-119"
+   )
+   @Export("getTileHeight")
+   static final int getTileHeight(int var0, int var1, int var2) {
+      int var3 = var0 >> 7;
+      int var4 = var1 >> 7;
+      if (var3 >= 0 && var4 >= 0 && var3 <= 103 && var4 <= 103) {
+         int var5 = var2;
+         if (var2 < 3 && (Tiles.Tiles_renderFlags[1][var3][var4] & 2) == 2) {
+            var5 = var2 + 1;
+         }
+
+         int var6 = var0 & 127;
+         int var7 = var1 & 127;
+         int var8 = Tiles.Tiles_heights[var5][var3 + 1][var4] * var6 + (128 - var6) * Tiles.Tiles_heights[var5][var3][var4] >> 7;
+         int var9 = var6 * Tiles.Tiles_heights[var5][var3 + 1][var4 + 1] + Tiles.Tiles_heights[var5][var3][var4 + 1] * (128 - var6) >> 7;
+         return var9 * var7 + var8 * (128 - var7) >> 7;
+      } else {
+         return 0;
+      }
+   }
 }

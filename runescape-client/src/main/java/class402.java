@@ -1,19 +1,29 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
+
 @ObfuscatedName("oc")
 public class class402 {
-	@ObfuscatedName("i")
-	static final int[] field4449;
+   @ObfuscatedName("c")
+   static final int[] field4457 = new int[16384];
+   @ObfuscatedName("w")
+   static final int[] field4458 = new int[16384];
+   @ObfuscatedName("fr")
+   static String field4461;
+   @ObfuscatedName("mm")
+   @ObfuscatedGetter(
+      intValue = -552578051
+   )
+   @Export("menuWidth")
+   static int menuWidth;
 
-	@ObfuscatedName("s")
-	static final int[] field4450;
+   static {
+      double var0 = 3.834951969714103E-4;
 
-	static {
-		field4449 = new int[2048];
-		field4450 = new int[2048];
-		double var0 = 0.0030679615757712823;
-		for (int var2 = 0; var2 < 2048; ++var2) {
-			field4449[var2] = ((int) (65536.0 * Math.sin(var0 * ((double) (var2)))));
-			field4450[var2] = ((int) (65536.0 * Math.cos(((double) (var2)) * var0)));
-		}
-	}
+      for(int var2 = 0; var2 < 16384; ++var2) {
+         field4457[var2] = (int)(16384.0 * Math.sin((double)var2 * var0));
+         field4458[var2] = (int)(16384.0 * Math.cos(var0 * (double)var2));
+      }
+
+   }
 }

@@ -4,6 +4,7 @@ import net.runelite.api.MenuAction;
 import net.runelite.api.MenuEntry;
 import net.runelite.api.events.MenuOptionClicked;
 import net.runelite.api.mixins.Copy;
+import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Replace;
 import net.runelite.api.mixins.Shadow;
@@ -28,7 +29,7 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 
 	@Copy("menuAction")
 	@Replace("menuAction")
-	static void copy$menuAction(int param0, int param1, int opcode, int id, String option, String target, int canvasX, int canvasY)
+	static void copy$menuAction(int param0, int param1, int opcode, int id, int itemId, String option, String target, int canvasX, int canvasY)
 	{
 		RSRuneLiteMenuEntry menuEntry = null;
 
@@ -116,7 +117,7 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 			client.setSelectedSceneTileY(param1);
 			client.setViewportWalking(true);
 
-			copy$menuAction(0, 0, CANCEL.getId(), 0, "Automated", "", canvasX, canvasY);
+			copy$menuAction(0, 0, CANCEL.getId(), 0, 0, "Automated", "", canvasX, canvasY);
 			return;
 		}
 
@@ -162,8 +163,14 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 		{
 			copy$menuAction(event.getParam0(), event.getParam1(),
 					event.getMenuAction() == UNKNOWN ? opcode : event.getMenuAction().getId(),
-					event.getId(), event.getMenuOption(), event.getMenuTarget(),
+					event.getId(), itemId, event.getMenuOption(), event.getMenuTarget(),
 					canvasX, canvasY);
 		}
+	}
+
+	@Inject
+	public void insertMenuItem(String action, String target, int opcode, int identifier, int argument1, int argument2, boolean forceLeftClick)
+	{
+		insertMenuItem(action, target, opcode, identifier, argument1, argument2, -1, forceLeftClick);
 	}
 }

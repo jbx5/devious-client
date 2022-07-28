@@ -36,18 +36,6 @@ public interface RSPacketWriter extends PacketWriter
 	@Import("buffer")
 	RSBuffer getBuffer();
 
-	@Import("field1341")
-	void setUnknown1(boolean value);
-
-	@Import("field1341")
-	boolean getUnknown1();
-
-	@Import("field1342")
-	void setUnknown2(int value);
-
-	@Import("field1342")
-	int getUnknown2();
-
 	@Import("bufferSize")
 	int getBufferSize();
 

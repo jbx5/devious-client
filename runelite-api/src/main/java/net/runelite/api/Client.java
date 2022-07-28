@@ -2074,8 +2074,14 @@ public interface Client extends OAuthApi, GameEngine
 		invokeMenuAction(option, target, identifier, opcode, param0, param1, -1, -1);
 	}
 
+	default void invokeMenuAction(String option, String target, int identifier, int opcode, int param0, int param1,
+			int screenX, int screenY)
+	{
+		invokeMenuAction(option, target, identifier, opcode, param0, param1, -1, screenX, screenY);
+	}
+
 	void invokeMenuAction(String option, String target, int identifier, int opcode, int param0, int param1,
-			int screenX, int screenY);
+						  int itemId, int screenX, int screenY);
 
 	MouseRecorder getMouseRecorder();
 
@@ -2159,6 +2165,8 @@ public interface Client extends OAuthApi, GameEngine
 	/**
 	 * Adds a MenuEntry to the current menu.
 	 */
+	void insertMenuItem(String action, String target, int opcode, int identifier, int argument1, int argument2, int itemId, boolean forceLeftClick);
+
 	void insertMenuItem(String action, String target, int opcode, int identifier, int argument1, int argument2, boolean forceLeftClick);
 
 	/**

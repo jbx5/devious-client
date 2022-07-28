@@ -1,149 +1,147 @@
-import java.lang.management.ManagementFactory;
+import java.io.File;
+import java.util.Hashtable;
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import java.util.Hashtable;
-import net.runelite.mapping.Implements;
-import java.util.Iterator;
-import java.io.File;
-import java.lang.management.GarbageCollectorMXBean;
-import net.runelite.mapping.Export;
-@ObfuscatedName("fw")
+
+@Deprecated
+@ObfuscatedName("fv")
 @Implements("FileSystem")
 public class FileSystem {
-	@ObfuscatedName("c")
-	@Export("FileSystem_hasPermissions")
-	static boolean FileSystem_hasPermissions;
+   @ObfuscatedName("o")
+   @Export("FileSystem_hasPermissions")
+   static boolean FileSystem_hasPermissions = false;
+   @ObfuscatedName("q")
+   @Export("FileSystem_cacheDir")
+   static File FileSystem_cacheDir;
+   @ObfuscatedName("f")
+   @Export("FileSystem_cacheFiles")
+   static Hashtable FileSystem_cacheFiles = new Hashtable(16);
+   @ObfuscatedName("hh")
+   @Export("regions")
+   static int[] regions;
+   @ObfuscatedName("jo")
+   @ObfuscatedGetter(
+      intValue = -86846755
+   )
+   static int field1753;
 
-	@ObfuscatedName("v")
-	@Export("FileSystem_cacheDir")
-	static File FileSystem_cacheDir;
+   @ObfuscatedName("o")
+   @ObfuscatedSignature(
+      descriptor = "(ILjava/lang/String;Ljava/lang/String;I)V",
+      garbageValue = "-1137884034"
+   )
+   @Export("addGameMessage")
+   static void addGameMessage(int var0, String var1, String var2) {
+      Interpreter.addChatMessage(var0, var1, var2, (String)null);
+   }
 
-	@ObfuscatedName("q")
-	@Export("FileSystem_cacheFiles")
-	static Hashtable FileSystem_cacheFiles;
-
-	static {
-		FileSystem_hasPermissions = false;
-		FileSystem_cacheFiles = new Hashtable(16);
-	}
-
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "([FIFB)F", garbageValue = "-127")
-	static float method3281(float[] var0, int var1, float var2) {
-		float var3 = var0[var1];
-		for (int var4 = var1 - 1; var4 >= 0; --var4) {
-			var3 = var2 * var3 + var0[var4];
-		}
-		return var3;
-	}
-
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "(CLlb;I)C", garbageValue = "2136665955")
-	@Export("standardizeChar")
-	static char standardizeChar(char var0, Language var1) {
-		if (var0 >= 192 && var0 <= 255) {
-			if (var0 >= 192 && var0 <= 198) {
-				return 'A';
-			}
-			if (var0 == 199) {
-				return 'C';
-			}
-			if (var0 >= 200 && var0 <= 203) {
-				return 'E';
-			}
-			if (var0 >= 204 && var0 <= 207) {
-				return 'I';
-			}
-			if (var0 == 209 && var1 != Language.Language_ES) {
-				return 'N';
-			}
-			if (var0 >= 210 && var0 <= 214) {
-				return 'O';
-			}
-			if (var0 >= 217 && var0 <= 220) {
-				return 'U';
-			}
-			if (var0 == 221) {
-				return 'Y';
-			}
-			if (var0 == 223) {
-				return 's';
-			}
-			if (var0 >= 224 && var0 <= 230) {
-				return 'a';
-			}
-			if (var0 == 231) {
-				return 'c';
-			}
-			if (var0 >= 232 && var0 <= 235) {
-				return 'e';
-			}
-			if (var0 >= 236 && var0 <= 239) {
-				return 'i';
-			}
-			if (var0 == 241 && var1 != Language.Language_ES) {
-				return 'n';
-			}
-			if (var0 >= 242 && var0 <= 246) {
-				return 'o';
-			}
-			if (var0 >= 249 && var0 <= 252) {
-				return 'u';
-			}
-			if (var0 == 253 || var0 == 255) {
-				return 'y';
-			}
-		}
-		if (var0 == 338) {
-			return 'O';
-		} else if (var0 == 339) {
-			return 'o';
-		} else if (var0 == 376) {
-			return 'Y';
-		} else {
-			return var0;
-		}
-	}
-
-	@ObfuscatedName("j")
-	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "-1243687493")
-	public static void method3282() {
-		SpotAnimationDefinition.SpotAnimationDefinition_cached.clear();
-		SpotAnimationDefinition.SpotAnimationDefinition_cachedModels.clear();
-	}
-
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(descriptor = "(I)I", garbageValue = "1055608683")
-	@Export("getGcDuration")
-	protected static int getGcDuration() {
-		int var0 = 0;
-		if (class162.garbageCollector == null || !class162.garbageCollector.isValid()) {
-			try {
-				Iterator var1 = ManagementFactory.getGarbageCollectorMXBeans().iterator();
-				while (var1.hasNext()) {
-					GarbageCollectorMXBean var2 = ((GarbageCollectorMXBean) (var1.next()));
-					if (var2.isValid()) {
-						class162.garbageCollector = var2;
-						GameEngine.garbageCollectorLastCheckTimeMs = -1L;
-						GameEngine.garbageCollectorLastCollectionTime = -1L;
-					}
-				} 
-			} catch (Throwable var11) {
-			}
-		}
-		if (class162.garbageCollector != null) {
-			long var9 = class115.method2692();
-			long var3 = class162.garbageCollector.getCollectionTime();
-			if (GameEngine.garbageCollectorLastCollectionTime != -1L) {
-				long var5 = var3 - GameEngine.garbageCollectorLastCollectionTime;
-				long var7 = var9 - GameEngine.garbageCollectorLastCheckTimeMs;
-				if (0L != var7) {
-					var0 = ((int) (var5 * 100L / var7));
-				}
-			}
-			GameEngine.garbageCollectorLastCollectionTime = var3;
-			GameEngine.garbageCollectorLastCheckTimeMs = var9;
-		}
-		return var0;
-	}
+   @ObfuscatedName("f")
+   @ObfuscatedSignature(
+      descriptor = "(ILbc;ZI)I",
+      garbageValue = "2116620804"
+   )
+   static int method3276(int var0, Script var1, boolean var2) {
+      if (var0 < 1000) {
+         return class122.method2853(var0, var1, var2);
+      } else if (var0 < 1100) {
+         return class361.method6591(var0, var1, var2);
+      } else if (var0 < 1200) {
+         return SceneTilePaint.method4490(var0, var1, var2);
+      } else if (var0 < 1300) {
+         return WorldMapRectangle.method4964(var0, var1, var2);
+      } else if (var0 < 1400) {
+         return class291.method5563(var0, var1, var2);
+      } else if (var0 < 1500) {
+         return class268.method5214(var0, var1, var2);
+      } else if (var0 < 1600) {
+         return VarpDefinition.method3351(var0, var1, var2);
+      } else if (var0 < 1700) {
+         return TaskHandler.method3253(var0, var1, var2);
+      } else if (var0 < 1800) {
+         return WorldMapData_1.method4832(var0, var1, var2);
+      } else if (var0 < 1900) {
+         return DirectByteArrayCopier.method5520(var0, var1, var2);
+      } else if (var0 < 2000) {
+         return LoginScreenAnimation.method2307(var0, var1, var2);
+      } else if (var0 < 2100) {
+         return class361.method6591(var0, var1, var2);
+      } else if (var0 < 2200) {
+         return SceneTilePaint.method4490(var0, var1, var2);
+      } else if (var0 < 2300) {
+         return WorldMapRectangle.method4964(var0, var1, var2);
+      } else if (var0 < 2400) {
+         return class291.method5563(var0, var1, var2);
+      } else if (var0 < 2500) {
+         return class268.method5214(var0, var1, var2);
+      } else if (var0 < 2600) {
+         return GameEngine.method562(var0, var1, var2);
+      } else if (var0 < 2700) {
+         return ClanSettings.method2978(var0, var1, var2);
+      } else if (var0 < 2800) {
+         return BufferedNetSocket.method6883(var0, var1, var2);
+      } else if (var0 < 2900) {
+         return class12.method141(var0, var1, var2);
+      } else if (var0 < 3000) {
+         return LoginScreenAnimation.method2307(var0, var1, var2);
+      } else if (var0 < 3200) {
+         return ModeWhere.method6095(var0, var1, var2);
+      } else if (var0 < 3300) {
+         return class361.method6588(var0, var1, var2);
+      } else if (var0 < 3400) {
+         return ApproximateRouteStrategy.method1093(var0, var1, var2);
+      } else if (var0 < 3500) {
+         return class117.method2793(var0, var1, var2);
+      } else if (var0 < 3600) {
+         return ClanChannelMember.method2907(var0, var1, var2);
+      } else if (var0 < 3700) {
+         return ItemContainer.method2144(var0, var1, var2);
+      } else if (var0 < 3800) {
+         return Calendar.method5511(var0, var1, var2);
+      } else if (var0 < 3900) {
+         return SecureRandomCallable.method2120(var0, var1, var2);
+      } else if (var0 < 4000) {
+         return ObjectSound.method1770(var0, var1, var2);
+      } else if (var0 < 4100) {
+         return class122.method2852(var0, var1, var2);
+      } else if (var0 < 4200) {
+         return class193.method3906(var0, var1, var2);
+      } else if (var0 < 4300) {
+         return PacketBufferNode.method5196(var0, var1, var2);
+      } else if (var0 < 5100) {
+         return Login.method1996(var0, var1, var2);
+      } else if (var0 < 5400) {
+         return Message.method1084(var0, var1, var2);
+      } else if (var0 < 5600) {
+         return class7.method42(var0, var1, var2);
+      } else if (var0 < 5700) {
+         return ChatChannel.method2058(var0, var1, var2);
+      } else if (var0 < 6300) {
+         return ScriptFrame.method1056(var0, var1, var2);
+      } else if (var0 < 6600) {
+         return AttackOption.method2466(var0, var1, var2);
+      } else if (var0 < 6700) {
+         return WorldMapElement.method3356(var0, var1, var2);
+      } else if (var0 < 6800) {
+         return Occluder.method4311(var0, var1, var2);
+      } else if (var0 < 6900) {
+         return Login.method1940(var0, var1, var2);
+      } else if (var0 < 7000) {
+         return WorldMapLabelSize.method4539(var0, var1, var2);
+      } else if (var0 < 7100) {
+         return class271.method5246(var0, var1, var2);
+      } else if (var0 < 7200) {
+         return BuddyRankComparator.method2690(var0, var1, var2);
+      } else if (var0 < 7300) {
+         return class201.method4089(var0, var1, var2);
+      } else if (var0 < 7500) {
+         return class83.method2188(var0, var1, var2);
+      } else if (var0 < 7600) {
+         return DirectByteArrayCopier.method5523(var0, var1, var2);
+      } else {
+         return var0 < 7700 ? Login.method1999(var0, var1, var2) : 2;
+      }
+   }
 }
