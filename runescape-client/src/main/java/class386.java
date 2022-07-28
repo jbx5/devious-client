@@ -44,7 +44,7 @@ public class class386 {
       garbageValue = "-3146"
    )
    @Export("FillMode_values")
-   public static class454[] FillMode_values() {
-      return new class454[]{class454.field4783, class454.SOLID, class454.field4785};
+   public static FillMode[] FillMode_values() {
+      return new FillMode[]{FillMode.field4783, FillMode.SOLID, FillMode.field4785};
    }
 }

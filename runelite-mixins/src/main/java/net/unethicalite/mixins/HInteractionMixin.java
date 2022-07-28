@@ -4,6 +4,7 @@ import net.runelite.api.MenuAction;
 import net.runelite.api.MenuEntry;
 import net.runelite.api.events.MenuOptionClicked;
 import net.runelite.api.mixins.Copy;
+import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Replace;
 import net.runelite.api.mixins.Shadow;
@@ -165,5 +166,11 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 					event.getId(), itemId, event.getMenuOption(), event.getMenuTarget(),
 					canvasX, canvasY);
 		}
+	}
+
+	@Inject
+	public void insertMenuItem(String action, String target, int opcode, int identifier, int argument1, int argument2, boolean forceLeftClick)
+	{
+		insertMenuItem(action, target, opcode, identifier, argument1, argument2, -1, forceLeftClick);
 	}
 }

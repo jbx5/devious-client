@@ -252,7 +252,7 @@ public final class SceneTilePaint {
             return 1;
          } else if (var0 == 1125) {
             var8 = Interpreter.Interpreter_intStack[--TaskHandler.Interpreter_intStackSize];
-            class454 var6 = (class454)class271.findEnumerated(class386.FillMode_values(), var8);
+            FillMode var6 = (FillMode)class271.findEnumerated(class386.FillMode_values(), var8);
             if (var6 != null) {
                var3.fillMode = var6;
                class220.invalidateWidget(var3);

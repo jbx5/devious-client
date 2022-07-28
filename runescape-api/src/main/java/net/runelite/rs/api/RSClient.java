@@ -1185,7 +1185,7 @@ public interface RSClient extends RSGameEngine, Client
 
 	@Import("insertMenuItem")
 	@Override
-	void insertMenuItem(String action, String target, int opcode, int identifier, int argument1, int argument2, boolean forceLeftClick);
+	void insertMenuItem(String action, String target, int opcode, int identifier, int argument1, int argument2, int argument3, boolean forceLeftClick);
 
 	@Import("selectedItemId")
 	@Override
@@ -1319,7 +1319,7 @@ public interface RSClient extends RSGameEngine, Client
 	void setMouseCrossColor(int color);
 
 	@Import("leftClickOpensMenu")
-	int getLeftClickOpensMenu();
+	boolean getLeftClickOpensMenu();
 
 	@Import("showMouseOverText")
 	boolean getShowMouseOverText();

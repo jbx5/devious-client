@@ -262,10 +262,10 @@ public class NetCache {
          if ((var4 & 1024) != 0) {
             var3.spotAnimation = var0.method7774();
             var6 = var0.method7787();
-            var3.field1128 = var6 >> 16;
+            var3.spotAnimationHeight = var6 >> 16;
             var3.field1178 = (var6 & '\uffff') + Client.cycle;
             var3.spotAnimationFrame = 0;
-            var3.field1201 = 0;
+            var3.spotAnimationFrameCycle = 0;
             if (var3.field1178 > Client.cycle) {
                var3.spotAnimationFrame = -1;
             }

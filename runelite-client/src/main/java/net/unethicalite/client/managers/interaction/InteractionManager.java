@@ -176,28 +176,28 @@ public class InteractionManager
 	@Subscribe
 	private void onPacketSent(PacketSent e)
 	{
-		ClientPacket packet = e.getPacketBufferNode().getClientPacket();
-		if (packet == null)
-		{
-			return;
-		}
-
-		if (packet != Static.getClientPacket().RESUME_COUNTDIALOG()
-				&& packet != Static.getClientPacket().RESUME_NAMEDIALOG()
-				&& packet != Static.getClientPacket().RESUME_STRINGDIALOG()
-		)
-		{
-			return;
-		}
-
-		if (!e.getPacketBufferNode().getPacketBuffer().isAutomated())
-		{
-			return;
-		}
-
-
-		log.info("Closing dialog after packet sent");
-		Dialog.close();
+//		ClientPacket packet = e.getPacketBufferNode().getClientPacket();
+//		if (packet == null)
+//		{
+//			return;
+//		}
+//
+//		if (packet != Static.getClientPacket().RESUME_COUNTDIALOG()
+//				&& packet != Static.getClientPacket().RESUME_NAMEDIALOG()
+//				&& packet != Static.getClientPacket().RESUME_STRINGDIALOG()
+//		)
+//		{
+//			return;
+//		}
+//
+//		if (!e.getPacketBufferNode().getPacketBuffer().isAutomated())
+//		{
+//			return;
+//		}
+//
+//
+//		log.info("Closing dialog after packet sent");
+//		Dialog.close();
 	}
 
 	public void setHoveredEntity(SceneEntity entity)

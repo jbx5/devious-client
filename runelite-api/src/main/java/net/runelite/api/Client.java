@@ -2159,6 +2159,8 @@ public interface Client extends OAuthApi, GameEngine
 	/**
 	 * Adds a MenuEntry to the current menu.
 	 */
+	void insertMenuItem(String action, String target, int opcode, int identifier, int argument1, int argument2, int itemId, boolean forceLeftClick);
+
 	void insertMenuItem(String action, String target, int opcode, int identifier, int argument1, int argument2, boolean forceLeftClick);
 
 	/**

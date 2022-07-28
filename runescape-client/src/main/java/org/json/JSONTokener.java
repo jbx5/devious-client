@@ -6,7 +6,6 @@ import java.io.Reader;
 import java.io.StringReader;
 import net.runelite.mapping.Implements;
 
-@Implements("JSONTokener")
 public class JSONTokener {
    boolean useLastChar;
    int index;

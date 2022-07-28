@@ -601,10 +601,10 @@ public class PcmPlayer {
          if ((var4 & 1) != 0) {
             var3.spotAnimation = var0.method7774();
             var5 = var0.method7787();
-            var3.field1128 = var5 >> 16;
+            var3.spotAnimationHeight = var5 >> 16;
             var3.field1178 = (var5 & '\uffff') + Client.cycle;
             var3.spotAnimationFrame = 0;
-            var3.field1201 = 0;
+            var3.spotAnimationFrameCycle = 0;
             if (var3.field1178 > Client.cycle) {
                var3.spotAnimationFrame = -1;
             }

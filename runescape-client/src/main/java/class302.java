@@ -221,7 +221,7 @@ public class class302 {
                }
 
                if (var16 != null) {
-                  ViewportMouse.method4487(var16, var0.dataText, 57, var4 + 1, var0.childIndex, var0.id, var0.itemId, var0.prioritizeMenuEntry);
+                  ViewportMouse.insertMenuItem(var16, var0.dataText, 57, var4 + 1, var0.childIndex, var0.id, var0.itemId, var0.prioritizeMenuEntry);
                }
             }
 

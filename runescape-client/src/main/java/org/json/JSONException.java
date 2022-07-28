@@ -2,7 +2,6 @@ package org.json;
 
 import net.runelite.mapping.Implements;
 
-@Implements("JSONException")
 public class JSONException extends Exception {
    Throwable cause;
 

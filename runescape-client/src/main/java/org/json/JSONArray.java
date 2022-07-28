@@ -9,7 +9,6 @@ import java.util.Iterator;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 
-@Implements("JSONArray")
 public class JSONArray {
    ArrayList myArrayList;
 

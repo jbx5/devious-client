@@ -88,6 +88,6 @@ public class UserComparator4 implements Comparator {
       garbageValue = "1799333746"
    )
    static final void method2657(String var0, String var1, int var2, int var3, int var4, int var5, int var6) {
-      ViewportMouse.method4487(var0, var1, var2, var3, var4, var5, var6, false);
+      ViewportMouse.insertMenuItem(var0, var1, var2, var3, var4, var5, var6, false);
    }
 }

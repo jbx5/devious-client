@@ -547,7 +547,7 @@ public class class155 {
          }
 
          if (var4 == 5) {
-            Client.field604 = var2 == 1;
+            Client.leftClickOpensMenu = var2 == 1;
          }
 
          if (var4 == 6) {

@@ -410,9 +410,9 @@ public class class259 {
          if (var4 != -1) {
             SequenceDefinition var5 = class14.SequenceDefinition_get(var4);
             if (var5 != null && var5.frameIds != null && !var5.isCachedModelIdSet()) {
-               ++var0.field1201;
-               if (var0.spotAnimationFrame < var5.frameIds.length && var0.field1201 > var5.frameLengths[var0.spotAnimationFrame]) {
-                  var0.field1201 = 1;
+               ++var0.spotAnimationFrameCycle;
+               if (var0.spotAnimationFrame < var5.frameIds.length && var0.spotAnimationFrameCycle > var5.frameLengths[var0.spotAnimationFrame]) {
+                  var0.spotAnimationFrameCycle = 1;
                   ++var0.spotAnimationFrame;
                   class93.method2443(var5, var0.spotAnimationFrame, var0.x, var0.y);
                }

@@ -117,7 +117,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
    @Export("queuedSoundEffectLoops")
    static int[] queuedSoundEffectLoops;
    @ObfuscatedName("rk")
-   static long[] field669;
+   static long[] crossWorldMessageIds;
    @ObfuscatedName("sx")
    @Export("isCameraLocked")
    static boolean isCameraLocked;
@@ -125,7 +125,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
    @ObfuscatedGetter(
       intValue = -140035135
    )
-   static int field605;
+   static int crossWorldMessageIdsIndex;
    @ObfuscatedName("sn")
    @Export("queuedSoundEffectDelays")
    static int[] queuedSoundEffectDelays;
@@ -944,7 +944,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
    @Export("experience")
    static int[] experience;
    @ObfuscatedName("mu")
-   static boolean field604;
+   @Export("leftClickOpensMenu")
+   static boolean leftClickOpensMenu;
    @ObfuscatedName("mb")
    @Export("isMenuOpen")
    static boolean isMenuOpen;
@@ -967,7 +968,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
    @Export("menuIdentifiers")
    static int[] menuIdentifiers;
    @ObfuscatedName("mz")
-   static int[] field638;
+   static int[] menuItemIds;
    @ObfuscatedName("nv")
    @Export("menuActions")
    static String[] menuActions;
@@ -1476,14 +1477,14 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
       currentLevels = new int[25];
       levels = new int[25];
       experience = new int[25];
-      field604 = false;
+      leftClickOpensMenu = false;
       isMenuOpen = false;
       menuOptionsCount = 0;
       menuArguments1 = new int[500];
       menuArguments2 = new int[500];
       menuOpcodes = new int[500];
       menuIdentifiers = new int[500];
-      field638 = new int[500];
+      menuItemIds = new int[500];
       menuActions = new String[500];
       menuTargets = new String[500];
       menuShiftClick = new boolean[500];
@@ -1565,8 +1566,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
       publicChatMode = 0;
       tradeChatMode = 0;
       field719 = "";
-      field669 = new long[100];
-      field605 = 0;
+      crossWorldMessageIds = new long[100];
+      crossWorldMessageIdsIndex = 0;
       field722 = 0;
       field626 = new int[128];
       field724 = new int[128];
@@ -4136,7 +4137,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
                         break;
                      }
 
-                     if (var11 == field669[var15]) {
+                     if (var11 == crossWorldMessageIds[var15]) {
                         var65 = true;
                         break;
                      }
@@ -4146,8 +4147,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
                }
 
                if (!var65) {
-                  field669[field605] = var11;
-                  field605 = (field605 + 1) % 100;
+                  crossWorldMessageIds[crossWorldMessageIdsIndex] = var11;
+                  crossWorldMessageIdsIndex = (crossWorldMessageIdsIndex + 1) % 100;
                   var24 = AbstractFont.escapeBrackets(CollisionMap.method3870(var3));
                   var16 = var80 >= 0 ? 41 : 44;
                   if (var61.modIcon != -1) {
@@ -4201,7 +4202,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
                boolean var84 = false;
 
                for(var15 = 0; var15 < 100; ++var15) {
-                  if (var36 == field669[var15]) {
+                  if (var36 == crossWorldMessageIds[var15]) {
                      var84 = true;
                      break;
                   }
@@ -4212,8 +4213,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
                }
 
                if (!var84 && field542 == 0) {
-                  field669[field605] = var36;
-                  field605 = (field605 + 1) % 100;
+                  crossWorldMessageIds[crossWorldMessageIdsIndex] = var36;
+                  crossWorldMessageIdsIndex = (crossWorldMessageIdsIndex + 1) % 100;
                   var24 = AbstractFont.escapeBrackets(class4.method13(CollisionMap.method3870(var3)));
                   if (var81.modIcon != -1) {
                      Interpreter.addChatMessage(9, UrlRequester.method2619(var81.modIcon) + var50, var24, Script.base37DecodeLong(var29));
@@ -4432,7 +4433,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
                   var77 = true;
                } else {
                   for(var13 = 0; var13 < 100; ++var13) {
-                     if (field669[var13] == var33) {
+                     if (crossWorldMessageIds[var13] == var33) {
                         var77 = true;
                         break;
                      }
@@ -4440,8 +4441,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
                }
 
                if (!var77) {
-                  field669[field605] = var33;
-                  field605 = (field605 + 1) % 100;
+                  crossWorldMessageIds[crossWorldMessageIdsIndex] = var33;
+                  crossWorldMessageIdsIndex = (crossWorldMessageIdsIndex + 1) % 100;
                   var41 = CollisionMap.method3870(var3);
                   var38 = var80 >= 0 ? 43 : 46;
                   Interpreter.addChatMessage(var38, "", var41, var12.name);
@@ -4517,7 +4518,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
                boolean var83 = false;
 
                for(var13 = 0; var13 < 100; ++var13) {
-                  if (var43 == field669[var13]) {
+                  if (var43 == crossWorldMessageIds[var13]) {
                      var83 = true;
                      break;
                   }
@@ -4528,8 +4529,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
                }
 
                if (!var83 && field542 == 0) {
-                  field669[field605] = var43;
-                  field605 = (field605 + 1) % 100;
+                  crossWorldMessageIds[crossWorldMessageIdsIndex] = var43;
+                  crossWorldMessageIdsIndex = (crossWorldMessageIdsIndex + 1) % 100;
                   var41 = AbstractFont.escapeBrackets(class4.method13(CollisionMap.method3870(var3)));
                   byte var82;
                   if (var42.isPrivileged) {
@@ -5200,10 +5201,10 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
                var6 = var3.method7774();
                if (var55 != null) {
                   var55.spotAnimation = var6;
-                  var55.field1128 = var5 >> 16;
+                  var55.spotAnimationHeight = var5 >> 16;
                   var55.field1178 = (var5 & '\uffff') + cycle;
                   var55.spotAnimationFrame = 0;
-                  var55.field1201 = 0;
+                  var55.spotAnimationFrameCycle = 0;
                   if (var55.field1178 > cycle) {
                      var55.spotAnimationFrame = -1;
                   }
@@ -5706,10 +5707,10 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 
                if (var7 != null) {
                   var7.spotAnimation = var5;
-                  var7.field1128 = var6 >> 16;
+                  var7.spotAnimationHeight = var6 >> 16;
                   var7.field1178 = (var6 & '\uffff') + cycle;
                   var7.spotAnimationFrame = 0;
-                  var7.field1201 = 0;
+                  var7.spotAnimationFrameCycle = 0;
                   if (var7.field1178 > cycle) {
                      var7.spotAnimationFrame = -1;
                   }
@@ -5803,9 +5804,9 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
                var5 = menuIdentifiers[var2];
                menuIdentifiers[var2] = menuIdentifiers[var2 + 1];
                menuIdentifiers[var2 + 1] = var5;
-               var5 = field638[var2];
-               field638[var2] = field638[var2 + 1];
-               field638[var2 + 1] = var5;
+               var5 = menuItemIds[var2];
+               menuItemIds[var2] = menuItemIds[var2 + 1];
+               menuItemIds[var2 + 1] = var5;
                boolean var11 = menuShiftClick[var2];
                menuShiftClick[var2] = menuShiftClick[var2 + 1];
                menuShiftClick[var2 + 1] = var11;
@@ -5888,7 +5889,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
                      var4 = menuArguments2[var2];
                      var5 = menuOpcodes[var2];
                      var19 = menuIdentifiers[var2];
-                     var17 = field638[var2];
+                     var17 = menuItemIds[var2];
                      String var12 = menuActions[var2];
                      String var13 = menuTargets[var2];
                      class9.menuAction(var3, var4, var5, var19, var17, var12, var13, MouseHandler.MouseHandler_lastPressedX, MouseHandler.MouseHandler_lastPressedY);
@@ -5936,7 +5937,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
    @Export("shouldLeftClickOpenMenu")
    final boolean shouldLeftClickOpenMenu() {
       int var1 = Player.method2211();
-      boolean var2 = field604 && menuOptionsCount > 2;
+      boolean var2 = leftClickOpensMenu && menuOptionsCount > 2;
       if (!var2) {
          boolean var3;
          if (var1 < 0) {

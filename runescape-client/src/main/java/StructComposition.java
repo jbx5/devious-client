@@ -153,6 +153,6 @@ public class StructComposition extends DualNode {
    )
    @Export("insertMenuItemNoShift")
    public static final void insertMenuItemNoShift(String var0, String var1, int var2, int var3, int var4, int var5) {
-      ViewportMouse.method4487(var0, var1, var2, var3, var4, var5, -1, false);
+      ViewportMouse.insertMenuItem(var0, var1, var2, var3, var4, var5, -1, false);
    }
 }

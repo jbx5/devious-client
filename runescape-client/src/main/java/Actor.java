@@ -264,7 +264,7 @@ public abstract class Actor extends Renderable {
    @ObfuscatedGetter(
       intValue = 217193265
    )
-   int field1201 = 0;
+   int spotAnimationFrameCycle = 0;
    @ObfuscatedName("cp")
    @ObfuscatedGetter(
       intValue = 1536058191
@@ -274,7 +274,7 @@ public abstract class Actor extends Renderable {
    @ObfuscatedGetter(
       intValue = -70635727
    )
-   int field1128;
+   int spotAnimationHeight;
    @ObfuscatedName("cj")
    @ObfuscatedGetter(
       intValue = -104406783

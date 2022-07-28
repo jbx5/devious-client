@@ -498,7 +498,7 @@ public class Archive extends AbstractArchive {
       }
 
       if (var6 != -1 && var7 != null) {
-         ViewportMouse.method4487(var7, class82.colorStartTag(16748608) + var1.name, var6, 0, var2, var0.id, var1.id, var4);
+         ViewportMouse.insertMenuItem(var7, class82.colorStartTag(16748608) + var1.name, var6, 0, var2, var0.id, var1.id, var4);
       }
 
    }

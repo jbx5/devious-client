@@ -238,7 +238,7 @@ public class Widget extends Node {
       descriptor = "Lqe;"
    )
    @Export("fillMode")
-   public class454 fillMode;
+   public FillMode fillMode;
    @ObfuscatedName("bp")
    @ObfuscatedGetter(
       intValue = 1152643983
@@ -730,7 +730,7 @@ public class Widget extends Node {
    }
 
    public Widget() {
-      this.fillMode = class454.SOLID;
+      this.fillMode = FillMode.SOLID;
       this.transparencyTop = 0;
       this.transparencyBot = 0;
       this.lineWid = 1;

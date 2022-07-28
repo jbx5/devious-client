@@ -217,6 +217,6 @@ public enum class83 implements MouseWheel {
       garbageValue = "2729"
    )
    static void method2183(boolean var0) {
-      Client.field604 = var0;
+      Client.leftClickOpensMenu = var0;
    }
 }

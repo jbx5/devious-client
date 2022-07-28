@@ -200,7 +200,7 @@ public class FloorUnderlayDefinition extends DualNode {
          int var2 = Client.menuArguments2[var0];
          int var3 = Client.menuOpcodes[var0];
          int var4 = Client.menuIdentifiers[var0];
-         int var5 = Client.field638[var0];
+         int var5 = Client.menuItemIds[var0];
          String var6 = Client.menuActions[var0];
          String var7 = Client.menuTargets[var0];
          class9.menuAction(var1, var2, var3, var4, var5, var6, var7, MouseHandler.MouseHandler_lastPressedX, MouseHandler.MouseHandler_lastPressedY);

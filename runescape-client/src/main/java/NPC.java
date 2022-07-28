@@ -55,7 +55,7 @@ public final class NPC extends Actor {
             if (super.spotAnimation != -1 && super.spotAnimationFrame != -1) {
                Model var5 = class13.SpotAnimationDefinition_get(super.spotAnimation).getModel(super.spotAnimationFrame);
                if (var5 != null) {
-                  var5.offsetBy(0, -super.field1128, 0);
+                  var5.offsetBy(0, -super.spotAnimationHeight, 0);
                   Model[] var6 = new Model[]{var3, var5};
                   var3 = new Model(var6, 2);
                }
