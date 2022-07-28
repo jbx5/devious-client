@@ -2074,11 +2074,8 @@ public interface Client extends OAuthApi, GameEngine
 		invokeMenuAction(option, target, identifier, opcode, param0, param1, -1, -1);
 	}
 
-	default void invokeMenuAction(String option, String target, int identifier, int opcode, int param0, int param1,
-			int screenX, int screenY)
-	{
-		invokeMenuAction(option, target, identifier, opcode, param0, param1, -1, screenX, screenY);
-	}
+	void invokeMenuAction(String option, String target, int identifier, int opcode, int param0, int param1,
+			int screenX, int screenY);
 
 	void invokeMenuAction(String option, String target, int identifier, int opcode, int param0, int param1,
 						  int itemId, int screenX, int screenY);

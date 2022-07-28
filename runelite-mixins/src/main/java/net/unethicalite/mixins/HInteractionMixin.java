@@ -8,9 +8,12 @@ import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Replace;
 import net.runelite.api.mixins.Shadow;
+import net.runelite.api.widgets.Widget;
+import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.mixins.RSClientMixin;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSRuneLiteMenuEntry;
+import net.unethicalite.api.exception.InteractionException;
 
 import static net.runelite.api.MenuAction.CANCEL;
 import static net.runelite.api.MenuAction.UNKNOWN;
@@ -26,6 +29,77 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 
 	@Shadow("printMenuActions")
 	private static boolean printMenuActions;
+
+	@Inject
+	@Override
+	public void invokeMenuAction(String option, String target, int identifier, int opcode, int param0, int param1, int screenX, int screenY)
+	{
+		int itemId = -1;
+		if (param1 == WidgetInfo.INVENTORY.getId() || opcode == 1006)
+		{
+			itemId = getItemId(param0, param1);
+			switch (opcode)
+			{
+				case 1006:
+					itemId = 0;
+					break;
+				case 25:
+				case 31:
+				case 32:
+				case 33:
+				case 34:
+				case 35:
+				case 36:
+				case 37:
+				case 38:
+				case 39:
+				case 40:
+				case 41:
+				case 42:
+				case 43:
+				case 58:
+				case 1005:
+					if (itemId == -1)
+					{
+						throw new InteractionException("ItemID is not set on an opcode that requires it!");
+					}
+
+					break;
+
+				case 57:
+				case 1007:
+					if (identifier >= 1 && identifier <= 10 && itemId == -1)
+					{
+						throw new InteractionException("ItemID is not set on a CC_OP that requires it!");
+					}
+
+					break;
+			}
+		}
+
+		invokeMenuAction(option, target, identifier, opcode, param0, param1, itemId, screenX, screenY);
+	}
+
+	@Inject
+	private int getItemId(int param0, int param1)
+	{
+		if (param1 != WidgetInfo.INVENTORY.getId())
+		{
+			return -1;
+		}
+
+		Widget widget = client.getWidget(param1);
+		if (widget != null)
+		{
+			Widget child = widget.getChild(param0);
+			if (child != null)
+			{
+				return child.getItemId();
+			}
+		}
+
+		return -1;
+	}
 
 	@Copy("menuAction")
 	@Replace("menuAction")
@@ -83,7 +157,7 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 
 			if (canvasX != -1 || canvasY != -1)
 			{
-				client.getLogger().warn("Unable to find clicked menu op {} targ {} action {} id {} p0 {} p1 {}", option, target, opcode, id, param0, param1);
+				client.getLogger().warn("Unable to find clicked menu op {} targ {} action {} id {} p0 {} p1 {} item {}", option, target, opcode, id, param0, param1, itemId);
 			}
 		}
 		else
@@ -153,10 +227,9 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 
 		if ("Automated".equals(option)
 				&& (opcode == MenuAction.CC_OP.getId() || opcode == MenuAction.CC_OP_LOW_PRIORITY.getId())
-				&& menuEntry != null
-				&& menuEntry.getItemId() > -1)
+				&& itemId > -1)
 		{
-			client.invokeWidgetAction(event.getId(), event.getParam1(), event.getParam0(), menuEntry.getItemId(),
+			client.invokeWidgetAction(event.getId(), event.getParam1(), event.getParam0(), itemId,
 					event.getMenuTarget());
 		}
 		else
