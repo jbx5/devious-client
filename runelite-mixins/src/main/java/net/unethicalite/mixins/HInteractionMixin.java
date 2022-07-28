@@ -13,7 +13,6 @@ import net.runelite.api.widgets.WidgetID;
 import net.runelite.mixins.RSClientMixin;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSRuneLiteMenuEntry;
-import net.unethicalite.api.exception.InteractionException;
 
 import static net.runelite.api.MenuAction.CANCEL;
 import static net.runelite.api.MenuAction.UNKNOWN;
@@ -57,18 +56,22 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 			case 58:
 			case 1005:
 				itemId = getItemId(param0, param1);
+
 				break;
+
 			case 57:
 			case 1007:
 				if (identifier >= 1 && identifier <= 10)
 				{
 					itemId = getItemId(param0, param1);
 				}
+
 				break;
 		}
 
 		invokeMenuAction(option, target, identifier, opcode, param0, param1, itemId, screenX, screenY);
 	}
+
 	@Inject
 	private int getItemId(int param0, int param1)
 	{
@@ -139,8 +142,6 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 				menuEntry = rl$menuEntries[i] = newRuneliteMenuEntry(i);
 			}
 		}
-
-		client.getLogger().debug("menu op {} targ {} action {} id {} p0 {} p1 {} item {}", option, target, opcode, id, param0, param1, itemId);
 
 		MenuOptionClicked event;
 		if (menuEntry == null)
