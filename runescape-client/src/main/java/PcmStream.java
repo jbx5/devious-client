@@ -1,70 +1,63 @@
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.Export;
 @ObfuscatedName("ae")
 @Implements("PcmStream")
 public abstract class PcmStream extends Node {
-   @ObfuscatedName("w")
-   @Export("active")
-   volatile boolean active = true;
-   @ObfuscatedName("l")
-   @ObfuscatedSignature(
-      descriptor = "Lae;"
-   )
-   @Export("after")
-   PcmStream after;
-   @ObfuscatedName("y")
-   int field354;
-   @ObfuscatedName("k")
-   @ObfuscatedSignature(
-      descriptor = "Lbv;"
-   )
-   @Export("sound")
-   AbstractSound sound;
+	@ObfuscatedName("w")
+	@Export("active")
+	volatile boolean active = true;
 
-   protected PcmStream() {
-   }
+	@ObfuscatedName("l")
+	@ObfuscatedSignature(descriptor = "Lae;")
+	@Export("after")
+	PcmStream after;
 
-   @ObfuscatedName("w")
-   @ObfuscatedSignature(
-      descriptor = "()Lae;"
-   )
-   @Export("firstSubStream")
-   protected abstract PcmStream firstSubStream();
+	@ObfuscatedName("y")
+	int field354;
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      descriptor = "()Lae;"
-   )
-   @Export("nextSubStream")
-   protected abstract PcmStream nextSubStream();
+	@ObfuscatedName("k")
+	@ObfuscatedSignature(descriptor = "Lbv;")
+	@Export("sound")
+	AbstractSound sound;
 
-   @ObfuscatedName("j")
-   protected abstract int vmethod5453();
+	protected PcmStream() {
+	}
 
-   @ObfuscatedName("h")
-   @Export("fill")
-   protected abstract void fill(int[] var1, int var2, int var3);
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(descriptor = "()Lae;")
+	@Export("firstSubStream")
+	protected abstract PcmStream firstSubStream();
 
-   @ObfuscatedName("d")
-   @Export("skip")
-   protected abstract void skip(int var1);
+	@ObfuscatedName("z")
+	@ObfuscatedSignature(descriptor = "()Lae;")
+	@Export("nextSubStream")
+	protected abstract PcmStream nextSubStream();
 
-   @ObfuscatedName("at")
-   int vmethod959() {
-      return 255;
-   }
+	@ObfuscatedName("j")
+	protected abstract int vmethod5453();
 
-   @ObfuscatedName("eg")
-   @Export("update")
-   final void update(int[] var1, int var2, int var3) {
-      if (this.active) {
-         this.fill(var1, var2, var3);
-      } else {
-         this.skip(var3);
-      }
+	@ObfuscatedName("h")
+	@Export("fill")
+	protected abstract void fill(int[] var1, int var2, int var3);
 
-   }
+	@ObfuscatedName("d")
+	@Export("skip")
+	protected abstract void skip(int var1);
+
+	@ObfuscatedName("at")
+	int vmethod959() {
+		return 255;
+	}
+
+	@ObfuscatedName("eg")
+	@Export("update")
+	final void update(int[] var1, int var2, int var3) {
+		if (this.active) {
+			this.fill(var1, var2, var3);
+		} else {
+			this.skip(var3);
+		}
+	}
 }

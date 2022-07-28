@@ -4,8 +4,6 @@ import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.api.MenuAction;
 import net.runelite.api.coords.LocalPoint;
-import net.runelite.api.packets.ClientPacket;
-import net.runelite.api.packets.PacketBufferNode;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.client.eventbus.EventBus;
@@ -20,9 +18,7 @@ import net.unethicalite.api.game.GameThread;
 import net.unethicalite.api.input.naturalmouse.NaturalMouse;
 import net.unethicalite.api.packets.Packets;
 import net.unethicalite.api.utils.CoordUtils;
-import net.unethicalite.api.widgets.Dialog;
 import net.unethicalite.api.widgets.Widgets;
-import net.unethicalite.client.Static;
 import net.unethicalite.client.config.UnethicaliteConfig;
 
 import javax.inject.Inject;
@@ -146,12 +142,7 @@ public class InteractionManager
 							}
 							else
 							{
-								// todo fix when packets are updated
-								PacketBufferNode node = Packets.fromAutomatedMenu(event);
-								if (node != null)
-								{
-									node.send();
-								}
+								Packets.fromAutomatedMenu(event).send();
 							}
 						}
 						catch (InteractionException ex)

@@ -56,7 +56,6 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 			case 58:
 			case 1005:
 				itemId = getItemId(param0, param1);
-
 				break;
 
 			case 57:

@@ -1,12 +1,11 @@
-import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
-
+import net.runelite.mapping.Implements;
 @Implements("OtlTokenResponse")
 @ObfuscatedName("com/jagex/oldscape/pub/RefreshAccessTokenResponse")
 public interface OtlTokenResponse {
-   boolean isSuccess();
+	boolean isSuccess();
 
-   String getAccessToken();
+	String getAccessToken();
 
-   String getRefreshToken();
+	String getRefreshToken();
 }
