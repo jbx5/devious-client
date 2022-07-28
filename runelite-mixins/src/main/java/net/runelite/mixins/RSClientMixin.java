@@ -1845,11 +1845,11 @@ public abstract class RSClientMixin implements RSClient
 
 	@Override
 	@Inject
-	public void invokeMenuAction(String option, String target, int identifier, int opcode, int param0, int param1, int x, int y)
+	public void invokeMenuAction(String option, String target, int identifier, int opcode, int param0, int param1, int itemId, int x, int y)
 	{
 		assert isClientThread() : "invokeMenuAction must be called on client thread";
 
-		client.sendMenuAction(param0, param1, opcode, identifier, -1, option, target, x, y);
+		client.sendMenuAction(param0, param1, opcode, identifier, itemId, option, target, x, y);
 	}
 
 	@FieldHook("Login_username")
