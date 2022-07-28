@@ -34,7 +34,7 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 	@Override
 	public void invokeMenuAction(String option, String target, int identifier, int opcode, int param0, int param1, int screenX, int screenY)
 	{
-		int itemId = getItemId(param0, param1);
+		int itemId = -1;
 		switch (opcode)
 		{
 			case 1006:
@@ -56,30 +56,19 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 			case 43:
 			case 58:
 			case 1005:
-				if (itemId == -1)
-				{
-					throw new InteractionException("ItemID is not set on an opcode that requires it!");
-				}
-
+				itemId = getItemId(param0, param1);
 				break;
-
 			case 57:
 			case 1007:
-				if (identifier >= 1 && identifier <= 10 && itemId == -1)
+				if (identifier >= 1 && identifier <= 10)
 				{
-					throw new InteractionException("ItemID is not set on a CC_OP that requires it!");
+					itemId = getItemId(param0, param1);
 				}
-
-				break;
-
-			default:
-				itemId = -1;
 				break;
 		}
 
 		invokeMenuAction(option, target, identifier, opcode, param0, param1, itemId, screenX, screenY);
 	}
-
 	@Inject
 	private int getItemId(int param0, int param1)
 	{

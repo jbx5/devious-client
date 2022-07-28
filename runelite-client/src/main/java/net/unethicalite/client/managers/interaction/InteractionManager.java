@@ -5,6 +5,7 @@ import net.runelite.api.Client;
 import net.runelite.api.MenuAction;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.packets.ClientPacket;
+import net.runelite.api.packets.PacketBufferNode;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.client.eventbus.EventBus;
@@ -145,7 +146,12 @@ public class InteractionManager
 							}
 							else
 							{
-								Packets.fromAutomatedMenu(event).send();
+								// todo fix when packets are updated
+								PacketBufferNode node = Packets.fromAutomatedMenu(event);
+								if (node != null)
+								{
+									node.send();
+								}
 							}
 						}
 						catch (InteractionException ex)

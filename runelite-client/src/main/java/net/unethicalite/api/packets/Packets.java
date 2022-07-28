@@ -171,7 +171,9 @@ public class Packets
 			case WALK:
 				client.setDestinationX(param0);
 				client.setDestinationY(param1);
-				return MovementPackets.createMovement(param0 + client.getBaseX(), param1 + client.getBaseY(), false);
+				client.setViewportWalking(true);
+				return null;
+//				return MovementPackets.createMovement(param0 + client.getBaseX(), param1 + client.getBaseY(), false);
 		}
 		throw new InteractionException("Couldn't parse packet from opcode: " + opcode);
 	}
