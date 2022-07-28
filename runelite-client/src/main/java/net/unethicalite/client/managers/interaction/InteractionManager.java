@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.api.MenuAction;
 import net.runelite.api.coords.LocalPoint;
+import net.runelite.api.packets.ClientPacket;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.client.eventbus.EventBus;
@@ -18,7 +19,9 @@ import net.unethicalite.api.game.GameThread;
 import net.unethicalite.api.input.naturalmouse.NaturalMouse;
 import net.unethicalite.api.packets.Packets;
 import net.unethicalite.api.utils.CoordUtils;
+import net.unethicalite.api.widgets.Dialog;
 import net.unethicalite.api.widgets.Widgets;
+import net.unethicalite.client.Static;
 import net.unethicalite.client.config.UnethicaliteConfig;
 
 import javax.inject.Inject;
@@ -173,28 +176,28 @@ public class InteractionManager
 	@Subscribe
 	private void onPacketSent(PacketSent e)
 	{
-//		ClientPacket packet = e.getPacketBufferNode().getClientPacket();
-//		if (packet == null)
-//		{
-//			return;
-//		}
-//
-//		if (packet != Static.getClientPacket().RESUME_COUNTDIALOG()
-//				&& packet != Static.getClientPacket().RESUME_NAMEDIALOG()
-//				&& packet != Static.getClientPacket().RESUME_STRINGDIALOG()
-//		)
-//		{
-//			return;
-//		}
-//
-//		if (!e.getPacketBufferNode().getPacketBuffer().isAutomated())
-//		{
-//			return;
-//		}
-//
-//
-//		log.info("Closing dialog after packet sent");
-//		Dialog.close();
+		ClientPacket packet = e.getPacketBufferNode().getClientPacket();
+		if (packet == null)
+		{
+			return;
+		}
+
+		if (packet != Static.getClientPacket().RESUME_COUNTDIALOG()
+				&& packet != Static.getClientPacket().RESUME_NAMEDIALOG()
+				&& packet != Static.getClientPacket().RESUME_STRINGDIALOG()
+		)
+		{
+			return;
+		}
+
+		if (!e.getPacketBufferNode().getPacketBuffer().isAutomated())
+		{
+			return;
+		}
+
+
+		log.info("Closing dialog after packet sent");
+		Dialog.close();
 	}
 
 	public void setHoveredEntity(SceneEntity entity)
