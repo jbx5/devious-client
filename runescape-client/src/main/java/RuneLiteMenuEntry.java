@@ -321,12 +321,12 @@ public class RuneLiteMenuEntry implements MenuEntry {
 	}
 
 	public void setItemId(int itemId) {
-		Client.menuItemIds[idx] = itemId;
+		Client.menuItemIds[this.idx] = itemId;
 	}
 
 	@Override
 	public int getItemId() {
-		return Client.menuItemIds[idx];
+		return Client.menuItemIds[this.idx];
 	}
 
 	@Override

@@ -1061,15 +1061,20 @@ public abstract class RSClientMixin implements RSClient
 		client.getMenuArguments2()[left] = client.getMenuArguments2()[right];
 		client.getMenuArguments2()[right] = menuArgument2;
 
-		boolean menuForceLeftClick = client.getMenuForceLeftClick()[left];
-		client.getMenuForceLeftClick()[left] = client.getMenuForceLeftClick()[right];
-		client.getMenuForceLeftClick()[right] = menuForceLeftClick;
-
 		int itemId = client.getMenuItemIds()[left];
 		client.getMenuItemIds()[left] = client.getMenuItemIds()[right];
 		client.getMenuItemIds()[right] = itemId;
 
-		swapMenuEntries(left);
+		boolean menuForceLeftClick = client.getMenuForceLeftClick()[left];
+		client.getMenuForceLeftClick()[left] = client.getMenuForceLeftClick()[right];
+		client.getMenuForceLeftClick()[right] = menuForceLeftClick;
+
+		RSRuneLiteMenuEntry var2 = rl$menuEntries[left];
+		rl$menuEntries[left] = rl$menuEntries[right];
+		rl$menuEntries[right] = var2;
+
+		rl$menuEntries[left].setIdx(left);
+		rl$menuEntries[right].setIdx(right);
 	}
 
 	@Inject
