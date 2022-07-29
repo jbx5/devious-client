@@ -729,7 +729,6 @@ public class Buffer extends Node {
 
 	@ObfuscatedName("cc")
 	@ObfuscatedSignature(descriptor = "(II)V", garbageValue = "-698118384")
-	@Export("writeIntME")
 	public void writeShortAddLE(int var1) {
 		this.array[++this.offset - 1] = ((byte) (var1 + 128));
 		this.array[++this.offset - 1] = ((byte) (var1 >> 8));

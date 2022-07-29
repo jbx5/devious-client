@@ -796,7 +796,7 @@ public class class9 implements MouseWheel {
 													var10.packetBuffer.writeShortAdd(var0);
 													var10.packetBuffer.writeIntIME(var1);
 													var10.packetBuffer.writeShortLE(Client.selectedSpellItemId);
-													var10.packetBuffer.writeShortAddLE(class113.selectedSpellWidget);
+													var10.packetBuffer.writeIntME(class113.selectedSpellWidget);
 													var10.packetBuffer.writeShortAddLE(Client.selectedSpellChildIndex);
 													var10.packetBuffer.writeShort(var4);
 													Client.packetWriter.addNode(var10);

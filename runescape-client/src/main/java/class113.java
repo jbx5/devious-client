@@ -63,7 +63,7 @@ public class class113 {
 		class136.tempMenuAction.opcode = Client.menuOpcodes[var0];
 		class136.tempMenuAction.identifier = Client.menuIdentifiers[var0];
 		class136.tempMenuAction.itemId = Client.menuItemIds[var0];
-		class136.tempMenuAction.field880 = Client.menuActions[var0];
+		class136.tempMenuAction.target = Client.menuActions[var0];
 		class136.tempMenuAction.action = Client.menuTargets[var0];
 	}
 }

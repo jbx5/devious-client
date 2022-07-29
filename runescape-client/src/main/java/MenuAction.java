@@ -31,7 +31,7 @@ public class MenuAction {
 	int itemId;
 
 	@ObfuscatedName("w")
-	String field880;
+	String target;
 
 	@ObfuscatedName("z")
 	@Export("action")

@@ -144,6 +144,7 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 			client.getMenuItemIds()[i] = itemId;
 			client.getMenuForceLeftClick()[i] = false;
 			menuEntry = rl$menuEntries[i];
+
 			if (menuEntry == null)
 			{
 				menuEntry = rl$menuEntries[i] = newRuneliteMenuEntry(i);

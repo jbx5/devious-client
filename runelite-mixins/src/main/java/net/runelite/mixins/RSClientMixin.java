@@ -1008,7 +1008,7 @@ public abstract class RSClientMixin implements RSClient
 					client.getTempMenuAction().getOption().equals(client.getMenuOptions()[client.getMenuOptionCount() - 1]) &&
 					client.getTempMenuAction().getIdentifier() == client.getMenuIdentifiers()[client.getMenuOptionCount() - 1] &&
 					client.getTempMenuAction().getOpcode() == client.getMenuOpcodes()[client.getMenuOptionCount() - 1] &&
-					client.getTempMenuAction().getItemId() == client.getMenuOpcodes()[client.getMenuOptionCount() - 1];
+					client.getTempMenuAction().getItemId() == client.getMenuItemIds()[client.getMenuOptionCount() - 1];
 		}
 
 		for (int i = 0; i < menuEntries.length; ++i)
@@ -1069,12 +1069,7 @@ public abstract class RSClientMixin implements RSClient
 		client.getMenuItemIds()[left] = client.getMenuItemIds()[right];
 		client.getMenuItemIds()[right] = itemId;
 
-		RSRuneLiteMenuEntry tmpEntry = rl$menuEntries[left];
-		rl$menuEntries[left] = rl$menuEntries[right];
-		rl$menuEntries[right] = tmpEntry;
-
-		rl$menuEntries[left].setIdx(left);
-		rl$menuEntries[right].setIdx(right);
+		swapMenuEntries(left);
 	}
 
 	@Inject
