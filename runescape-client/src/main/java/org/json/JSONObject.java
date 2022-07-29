@@ -1,5 +1,7 @@
 package org.json;
 
+import net.runelite.rs.Reflection;
+
 import java.io.IOException;
 import java.io.Writer;
 import java.lang.reflect.Field;
@@ -9,14 +11,9 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.TreeSet;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.rs.Reflection;
 
-@Implements("JSONObject")
 public class JSONObject {
-   public static final Object NULL = new Null((JSONObject) null);
-   @ObfuscatedName("map")
+   public static final Object NULL = new Null();
    Map field4849;
 
    public JSONObject() {
@@ -93,12 +90,10 @@ public class JSONObject {
 
    }
 
-   @ObfuscatedName("opt")
    public Object method8386(String var1) {
       return var1 == null ? null : this.field4849.get(var1);
    }
 
-   @ObfuscatedName("get")
    public Object method8384(String var1) throws JSONException {
       Object var2 = this.method8386(var1);
       if (var2 == null) {
@@ -108,7 +103,6 @@ public class JSONObject {
       }
    }
 
-   @ObfuscatedName("put")
    public JSONObject method8392(String var1, Object var2) throws JSONException {
       if (var1 == null) {
          throw new JSONException("Null key.");
@@ -755,13 +749,8 @@ public class JSONObject {
       }
    }
 
-   static final class Null {
-      // $FF: synthetic method
-      Null(JSONObject var1) {
-         this();
-      }
-
-      Null() {
+   private static final class Null {
+      private Null() {
       }
 
       public final Object clone() {

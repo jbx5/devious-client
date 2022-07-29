@@ -6,9 +6,6 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-
 public class JSONArray {
    ArrayList myArrayList;
 
@@ -114,12 +111,10 @@ public class JSONArray {
 
    }
 
-   @ObfuscatedName("opt")
    public Object method8396(int var1) {
       return var1 >= 0 && var1 < this.length() ? this.myArrayList.get(var1) : null;
    }
 
-   @ObfuscatedName("get")
    public Object method8395(int var1) throws JSONException {
       Object var2 = this.method8396(var1);
       if (var2 == null) {
@@ -129,7 +124,6 @@ public class JSONArray {
       }
    }
 
-   @ObfuscatedName("put")
    public JSONArray method8404(Object var1) {
       this.myArrayList.add(var1);
       return this;
