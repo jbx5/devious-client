@@ -723,7 +723,7 @@ public interface Client extends OAuthApi, GameEngine
 	 * Create a new menu entry
 	 * @return the newly created menu entry
 	 */
-	MenuEntry createMenuEntry(String option, String target, int identifier, int opcode, int param1, int param2, boolean forceLeftClick);
+	MenuEntry createMenuEntry(String option, String target, int identifier, int opcode, int param1, int param2, int itemId, boolean forceLeftClick);
 
 	/**
 	 * Gets an array of currently open right-click menu entries that can be
@@ -2164,8 +2164,6 @@ public interface Client extends OAuthApi, GameEngine
 	 */
 	void insertMenuItem(String action, String target, int opcode, int identifier, int argument1, int argument2, int itemId, boolean forceLeftClick);
 
-	void insertMenuItem(String action, String target, int opcode, int identifier, int argument1, int argument2, boolean forceLeftClick);
-
 	/**
 	 * @deprecated use {@link #setSelectedSpellItemId(int)} instead.
 	 */
@@ -2617,4 +2615,8 @@ public interface Client extends OAuthApi, GameEngine
 	int getStaffModLevel();
 
 	void setShowMouseOverText(boolean showMouseOverText);
+
+	MenuEntry createMenuEntry(String option, String target, int identifier, int opcode, int param1, int param2, boolean forceLeftClick);
+
+	void insertMenuItem(String action, String target, int opcode, int identifier, int argument1, int argument2, boolean forceLeftClick);
 }

@@ -28,7 +28,7 @@ public class MenuAction {
 
 	@ObfuscatedName("c")
 	@ObfuscatedGetter(intValue = -749946813)
-	int field879;
+	int itemId;
 
 	@ObfuscatedName("w")
 	String field880;

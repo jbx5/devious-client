@@ -106,6 +106,7 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 					&& client.getMenuIdentifiers()[i] == id
 					&& client.getMenuArguments1()[i] == param0
 					&& client.getMenuArguments2()[i] == param1
+					&& client.getMenuItemIds()[i] == itemId
 					&& option.equals(client.getMenuOptions()[i])
 					&& (option.equals(target) || target.equals(client.getMenuTargets()[i]))
 			)
@@ -134,6 +135,7 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 			client.getMenuTargets()[i] = target;
 			client.getMenuArguments1()[i] = param0;
 			client.getMenuArguments2()[i] = param1;
+			client.getMenuItemIds()[i] = itemId;
 			client.getMenuForceLeftClick()[i] = false;
 			menuEntry = rl$menuEntries[i];
 			if (menuEntry == null)
@@ -235,8 +237,16 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 	}
 
 	@Inject
+	@Override
 	public void insertMenuItem(String action, String target, int opcode, int identifier, int argument1, int argument2, boolean forceLeftClick)
 	{
-		insertMenuItem(action, target, opcode, identifier, argument1, argument2, -1, forceLeftClick);
+		insertMenuItem(action, target, opcode, identifier, argument1, argument2, getItemId(argument1, argument2), forceLeftClick);
+	}
+
+	@Inject
+	@Override
+	public MenuEntry createMenuEntry(String option, String target, int identifier, int opcode, int param1, int param2, boolean forceLeftClick)
+	{
+		return createMenuEntry(option, target, identifier, opcode, param1, param2, getItemId(param1, param2), forceLeftClick);
 	}
 }
