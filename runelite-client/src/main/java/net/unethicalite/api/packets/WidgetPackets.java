@@ -356,7 +356,7 @@ public class WidgetPackets
 		packetBufferNode.getPacketBuffer().writeShortAdd(destinationSlot);
 		packetBufferNode.getPacketBuffer().writeIntIME(widgetId);
 		packetBufferNode.getPacketBuffer().writeShortLE(sourceItemId);
-		packetBufferNode.getPacketBuffer().writeShortAddLE(sourceWidgetId);
+		packetBufferNode.getPacketBuffer().writeIntME(sourceWidgetId);
 		packetBufferNode.getPacketBuffer().writeShortAddLE(sourceSlot);
 		packetBufferNode.getPacketBuffer().writeShort(itemId);
 		return packetBufferNode;
