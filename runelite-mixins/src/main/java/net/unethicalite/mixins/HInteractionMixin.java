@@ -147,7 +147,7 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 		MenuOptionClicked event;
 		if (menuEntry == null)
 		{
-			MenuEntry tmpEntry = client.createMenuEntry(option, target, id, opcode, param0, param1, false);
+			MenuEntry tmpEntry = client.createMenuEntry(option, target, id, opcode, param0, param1, itemId, false);
 			event = new MenuOptionClicked(tmpEntry);
 
 			if (canvasX != -1 || canvasY != -1)
