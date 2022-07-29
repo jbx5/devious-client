@@ -137,9 +137,9 @@ public abstract class HClientMixin implements RSClient
 		client.getCallbacks().post(new PlaneChanged(client.getPlane()));
 	}
 
+	// Used by the injector
 	@Inject
-	@MethodHook("menu")
-	public void menu()
+	public static void insertAutomatedMenu()
 	{
 		MenuAutomated menu = automatedMenu.getAndSet(null);
 		if (menu != null)
