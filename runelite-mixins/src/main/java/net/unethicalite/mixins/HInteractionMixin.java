@@ -29,9 +29,16 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 	@Shadow("printMenuActions")
 	private static boolean printMenuActions;
 
+	// Fixes old invoke
 	@Inject
 	@Override
 	public void invokeMenuAction(String option, String target, int identifier, int opcode, int param0, int param1, int screenX, int screenY)
+	{
+		invokeMenuAction(option, target, identifier, opcode, param0, param1, getItemId(identifier, opcode, param0, param1), screenX, screenY);
+	}
+
+	@Inject
+	private static int getItemId(int identifier, int opcode, int param0, int param1)
 	{
 		int itemId = -1;
 		switch (opcode)
@@ -68,11 +75,11 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 				break;
 		}
 
-		invokeMenuAction(option, target, identifier, opcode, param0, param1, itemId, screenX, screenY);
+		return itemId;
 	}
 
 	@Inject
-	private int getItemId(int param0, int param1)
+	private static int getItemId(int param0, int param1)
 	{
 		Widget widget = client.getWidget(param1);
 		if (widget != null)
@@ -99,7 +106,6 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 	static void copy$menuAction(int param0, int param1, int opcode, int id, int itemId, String option, String target, int canvasX, int canvasY)
 	{
 		RSRuneLiteMenuEntry menuEntry = null;
-
 		for (int i = client.getMenuOptionCount() - 1; i >= 0; --i)
 		{
 			if (client.getMenuOpcodes()[i] == opcode
@@ -219,13 +225,22 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 			}
 		}
 
+		// Catch invalid MenuOptionClicked modifications
+		if (event.getItemId() == -1)
+		{
+			event.setItemId(getItemId(
+					event.getId(),
+					event.getMenuAction().getId(),
+					event.getParam0(),
+					event.getParam1()
+			));
+		}
 
 		if ("Automated".equals(option)
 				&& (opcode == MenuAction.CC_OP.getId() || opcode == MenuAction.CC_OP_LOW_PRIORITY.getId())
 				&& event.getItemId() > -1)
 		{
-			client.invokeWidgetAction(event.getId(), event.getParam1(), event.getParam0(), event.getItemId(),
-					event.getMenuTarget());
+			client.invokeWidgetAction(event.getId(), event.getParam1(), event.getParam0(), event.getItemId(), event.getMenuTarget());
 		}
 		else
 		{
@@ -247,6 +262,6 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 	@Override
 	public MenuEntry createMenuEntry(String option, String target, int identifier, int opcode, int param1, int param2, boolean forceLeftClick)
 	{
-		return createMenuEntry(option, target, identifier, opcode, param1, param2, getItemId(param1, param2), forceLeftClick);
+		return createMenuEntry(option, target, identifier, opcode, param1, param2, getItemId(identifier, opcode, param1, param2), forceLeftClick);
 	}
 }
