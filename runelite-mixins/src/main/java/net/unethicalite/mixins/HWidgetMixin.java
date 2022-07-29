@@ -128,6 +128,6 @@ public abstract class HWidgetMixin implements RSWidget
 	@Inject
 	public MenuAutomated getMenu(int actionIndex, int opcode)
 	{
-		return getMenu(getMenuIdentifier(actionIndex), opcode, getIndex(), getId());
+		return getMenu(getMenuIdentifier(actionIndex), opcode, getIndex(), getId(), getItemId());
 	}
 }

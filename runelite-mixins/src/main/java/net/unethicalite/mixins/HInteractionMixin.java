@@ -204,10 +204,10 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 		if (printMenuActions)
 		{
 			client.getLogger().info(
-					"|MenuAction|: MenuOption={} MenuTarget={} Id={} Opcode={}/{} Param0={} Param1={} CanvasX={} CanvasY={}",
+					"|MenuAction|: MenuOption={} MenuTarget={} Id={} Opcode={}/{} Param0={} Param1={} CanvasX={} CanvasY={} ItemId={}",
 					event.getMenuOption(), event.getMenuTarget(), event.getId(),
 					event.getMenuAction(), opcode + (decremented ? 2000 : 0),
-					event.getParam0(), event.getParam1(), canvasX, canvasY
+					event.getParam0(), event.getParam1(), canvasX, canvasY, event.getItemId()
 			);
 
 			if (menuEntry != null)

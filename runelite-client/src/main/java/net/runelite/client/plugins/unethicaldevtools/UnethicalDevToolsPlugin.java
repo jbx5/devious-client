@@ -110,7 +110,7 @@ public class UnethicalDevToolsPlugin extends Plugin
 					+ " | OP=" + e.getMenuAction().getId()
 					+ " | P0=" + e.getParam0()
 					+ " | P1=" + e.getParam1()
-					+ " | ITEM= " + e.getItemId();
+					+ " | ITEM=" + e.getItemId();
 			log.debug("[Menu Action] {}", action);
 		}
 	}

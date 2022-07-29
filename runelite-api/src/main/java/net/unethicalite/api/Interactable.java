@@ -93,11 +93,17 @@ public interface Interactable
 
 	default MenuAutomated getMenu(int identifier, int opcode, int param0, int param1)
 	{
+		return getMenu(identifier, opcode, param0, param1, -1);
+	}
+
+	default MenuAutomated getMenu(int identifier, int opcode, int param0, int param1, int itemId)
+	{
 		MenuAutomated.MenuAutomatedBuilder builder = MenuAutomated.builder()
 				.identifier(identifier)
 				.opcode(MenuAction.of(opcode))
 				.param0(param0)
-				.param1(param1);
+				.param1(param1)
+				.itemId(itemId);
 
 		if (this instanceof SceneEntity)
 		{
