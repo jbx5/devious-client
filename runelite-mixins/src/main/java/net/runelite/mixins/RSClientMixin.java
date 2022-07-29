@@ -1145,7 +1145,7 @@ public abstract class RSClientMixin implements RSClient
 				client.getMenuArguments1()[tmpOptionsCount] = menuEntryAdded.getActionParam0();
 				client.getMenuArguments2()[tmpOptionsCount] = menuEntryAdded.getActionParam1();
 				client.getMenuForceLeftClick()[tmpOptionsCount] = menuEntryAdded.isForceLeftClick();
-				client.getMenuItemIds()[tmpOptionsCount] = menuEntryAdded.getMenuEntry().getItemId();
+				client.getMenuItemIds()[tmpOptionsCount] = menuEntryAdded.getItemId();
 			}
 		}
 	}
