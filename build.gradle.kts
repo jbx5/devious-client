@@ -31,6 +31,7 @@ buildscript {
         gradlePluginPortal()
         maven(url = "https://repo.runelite.net")
         maven(url = "https://repo.unethicalite.net/releases")
+        maven(url = "https://repo.unethicalite.net/snapshots")
         maven(url = "https://raw.githubusercontent.com/open-osrs/hosting/master")
     }
     dependencies {
