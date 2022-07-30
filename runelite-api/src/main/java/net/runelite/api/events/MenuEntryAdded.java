@@ -49,6 +49,7 @@ public class MenuEntryAdded
 		this.type = menuEntry.getType().getId();
 		this.actionParam0 = menuEntry.getParam0();
 		this.actionParam1 = menuEntry.getParam1();
+		this.itemId = menuEntry.getItemId();
 		this.forceLeftClick = false;
 	}
 
@@ -96,6 +97,12 @@ public class MenuEntryAdded
 	@EqualsAndHashCode.Include
 	@ToString.Include
 	private boolean forceLeftClick;
+
+	@Getter
+	@Setter
+	@EqualsAndHashCode.Include
+	@ToString.Include
+	private int itemId;
 
 	/**
 	 * If this is set to true client mixin will update

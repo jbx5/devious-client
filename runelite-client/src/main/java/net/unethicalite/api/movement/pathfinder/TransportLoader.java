@@ -54,7 +54,7 @@ import java.util.stream.Collectors;
 public class TransportLoader
 {
 	public static final List<SpiritTree> SPIRIT_TREES = List.of(
-			new SpiritTree(new WorldPoint(2542, 3170, 0), "Tree gnome Village"),
+			new SpiritTree(new WorldPoint(2542, 3170, 0), "Tree Gnome Village"),
 			new SpiritTree(new WorldPoint(2461, 3444, 0), "Gnome Stronghold"),
 			new SpiritTree(new WorldPoint(2555, 3259, 0), "Battlefield of Khazard"),
 			new SpiritTree(new WorldPoint(3185, 3508, 0), "Grand Exchange"),
@@ -248,7 +248,7 @@ public class TransportLoader
 				{
 					transports.add(npcTransport(new WorldPoint(3054, 3245, 0),
 							new WorldPoint(1824, 3695, 1),
-							10724,
+							"Veos",
 							"Port Piscarilius"));
 				}
 
@@ -556,6 +556,23 @@ public class TransportLoader
 		});
 	}
 
+	public static Transport npcTransport(
+			WorldPoint source,
+			WorldPoint destination,
+			String npcName,
+			String... actions
+	)
+	{
+		return new Transport(source, destination, 10, 0, () ->
+		{
+			NPC npc = NPCs.getNearest(x -> x.getWorldLocation().distanceTo(source) <= 10 && x.getName().equalsIgnoreCase(npcName));
+			if (npc != null)
+			{
+				npc.interact(actions);
+			}
+		});
+	}
+
 	public static Transport npcDialogTransport(
 			WorldPoint source,
 			WorldPoint destination,
@@ -743,7 +760,7 @@ public class TransportLoader
 					if (Widgets.isVisible(treeWidget))
 					{
 						Arrays.stream(treeWidget.getDynamicChildren())
-								.filter(child -> child.getText().contains(location))
+								.filter(child -> child.getText().toLowerCase().contains(location.toLowerCase()))
 								.findFirst()
 								.ifPresent(child -> child.interact(0, MenuAction.WIDGET_CONTINUE.getId(), child.getIndex(), child.getId()));
 						return;

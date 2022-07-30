@@ -40,7 +40,6 @@ import lombok.Setter;
 import lombok.Singular;
 import lombok.ToString;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -65,7 +64,7 @@ public class DiscordEmbed
 	ProviderEmbed provider;
 	AuthorEmbed author;
 	@Singular
-	List<FieldEmbed> fields = new ArrayList<>();
+	List<FieldEmbed> fields;
 
 	public DiscordEmbed(AuthorEmbed author, ThumbnailEmbed thumb, String description, FooterEmbed footer, String color, List<FieldEmbed> fields)
 	{

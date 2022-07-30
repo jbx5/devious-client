@@ -29,13 +29,21 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.http.api.RuneLiteAPI;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
+import java.io.IOException;
 import java.util.UUID;
+
+import static net.runelite.http.api.RuneLiteAPI.JSON;
 
 @Slf4j
 @RequiredArgsConstructor
-@Deprecated(forRemoval = true)
 public class GrandExchangeClient
 {
 	private static final Gson GSON = RuneLiteAPI.GSON;
@@ -49,6 +57,39 @@ public class GrandExchangeClient
 
 	public void submit(GrandExchangeTrade grandExchangeTrade)
 	{
+		final HttpUrl url = RuneLiteAPI.getApiBase().newBuilder()
+			.addPathSegment("ge")
+			.build();
 
+		Request.Builder builder = new Request.Builder();
+		if (uuid != null)
+		{
+			builder.header(RuneLiteAPI.RUNELITE_AUTH, uuid.toString());
+		}
+		if (machineId != null)
+		{
+			builder.header(RuneLiteAPI.RUNELITE_MACHINEID, machineId);
+		}
+
+		Request request = builder
+			.post(RequestBody.create(JSON, GSON.toJson(grandExchangeTrade)))
+			.url(url)
+			.build();
+
+		client.newCall(request).enqueue(new Callback()
+		{
+			@Override
+			public void onFailure(Call call, IOException e)
+			{
+				log.debug("unable to submit trade", e);
+			}
+
+			@Override
+			public void onResponse(Call call, Response response)
+			{
+				log.debug("Submitted trade");
+				response.close();
+			}
+		});
 	}
 }

@@ -83,7 +83,8 @@ public class Game
 		{
 			return 0;
 		}
-		return Integer.parseInt(widgetText.replace("Level: ", ""));
+		String levelText = widgetText.contains("<br>") ? widgetText.substring(0, widgetText.indexOf("<br>")) : widgetText;
+		return Integer.parseInt(levelText.replace("Level: ", ""));
 	}
 
 	public static int getMembershipDays()

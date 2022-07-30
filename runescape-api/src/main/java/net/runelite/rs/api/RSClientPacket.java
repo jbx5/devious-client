@@ -184,9 +184,6 @@ public interface RSClientPacket extends ClientPacket
 	@Import("IF_BUTTOND")
 	RSClientPacket IF_BUTTOND();
 
-	@Import("CLAN_LEAVECHAT")
-	RSClientPacket CLAN_LEAVECHAT();
-
 	@Import("OPLOCE")
 	RSClientPacket OPLOCE();
 

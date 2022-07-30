@@ -1,3 +1,3 @@
 import net.runelite.mapping.ObfuscatedName;
-@ObfuscatedName("iq")
+@ObfuscatedName("in")
 public interface class251 extends Iterable {}

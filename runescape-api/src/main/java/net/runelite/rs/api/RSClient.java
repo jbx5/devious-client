@@ -364,6 +364,9 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("menuArguments2")
 	int[] getMenuArguments2();
 
+	@Import("menuItemIds")
+	int[] getMenuItemIds();
+
 	@Import("menuShiftClick")
 	boolean[] getMenuForceLeftClick();
 
@@ -445,7 +448,7 @@ public interface RSClient extends RSGameEngine, Client
 	RSSpritePixels createRSItemSprite(int itemId, int quantity, int thickness, int borderColor, int stackable, boolean noted);
 
 	@Import("menuAction")
-	void sendMenuAction(int n2, int n3, int n4, int n5, String string, String string2, int n6, int n7);
+	void sendMenuAction(int n2, int n3, int n4, int n5, int itemId, String string, String string2, int n6, int n7);
 
 	@Import("SpriteBuffer_decode")
 	void decodeSprite(byte[] data);
@@ -1185,7 +1188,7 @@ public interface RSClient extends RSGameEngine, Client
 
 	@Import("insertMenuItem")
 	@Override
-	void insertMenuItem(String action, String target, int opcode, int identifier, int argument1, int argument2, boolean forceLeftClick);
+	void insertMenuItem(String action, String target, int opcode, int identifier, int argument1, int argument2, int argument3, boolean forceLeftClick);
 
 	@Import("selectedItemId")
 	@Override
@@ -1319,7 +1322,7 @@ public interface RSClient extends RSGameEngine, Client
 	void setMouseCrossColor(int color);
 
 	@Import("leftClickOpensMenu")
-	int getLeftClickOpensMenu();
+	boolean getLeftClickOpensMenu();
 
 	@Import("showMouseOverText")
 	boolean getShowMouseOverText();
@@ -1689,7 +1692,7 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("Login_response3")
 	String getLoginResponse3();
 
-	@Import("field897")
+	@Import("field906")
 	int getBanType();
 
 	@Import("packetWriter")

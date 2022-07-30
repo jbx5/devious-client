@@ -6,8 +6,6 @@ import lombok.Setter;
 import net.runelite.api.Client;
 import net.runelite.api.MenuAction;
 import net.runelite.api.MenuEntry;
-import net.runelite.api.widgets.Widget;
-import net.runelite.api.widgets.WidgetInfo;
 import net.unethicalite.api.SceneEntity;
 
 import java.util.function.Consumer;
@@ -29,6 +27,8 @@ public class MenuAutomated
 	private int clickX = -1;
 	@Builder.Default
 	private int clickY = -1;
+	@Builder.Default
+	private int itemId = -1;
 	private SceneEntity entity;
 
 	public MenuEntry toEntry(Client client, int idx)
@@ -87,28 +87,8 @@ public class MenuAutomated
 				opcode.getId(),
 				param0,
 				param1,
+				itemId,
 				false
 		);
-	}
-
-	public int getItemId(Client client)
-	{
-		MenuAction menuAction = getOpcode();
-		if (menuAction == MenuAction.CC_OP || menuAction == MenuAction.CC_OP_LOW_PRIORITY)
-		{
-			int param1 = this.getParam1();
-			int param0 = this.getParam0();
-			if (param1 == WidgetInfo.INVENTORY.getId())
-			{
-				Widget widget = client.getWidget(param1);
-				if (widget != null && param0 != -1)
-				{
-					widget = widget.getChild(param0);
-					return widget.getItemId();
-				}
-			}
-		}
-
-		return -1;
 	}
 }

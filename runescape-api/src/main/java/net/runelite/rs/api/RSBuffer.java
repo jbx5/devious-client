@@ -43,8 +43,8 @@ public interface RSBuffer extends Buffer, RSNode
 	@Import("readBytes")
 	void readBytes(byte[] var1, int var2, int var3);
 
-	@Import("readBytesAdd")
-	void readBytesAdd(byte[] var1, int var2, int var3);
+	@Import("readBytesLE")
+	void readBytesLE(byte[] var1, int var2, int var3);
 
 	@Import("readCESU8")
 	String readCESU8();
@@ -82,9 +82,6 @@ public interface RSBuffer extends Buffer, RSNode
 	@Import("readShortSmartSub")
 	int readShortSmartSub();
 
-	@Import("readShortSmartSub64")
-	int readShortSmartSub64();
-
 	@Import("readStringCp1252NullCircumfixed")
 	String readStringCp1252NullCircumfixed();
 
@@ -117,9 +114,6 @@ public interface RSBuffer extends Buffer, RSNode
 
 	@Import("readUnsignedIntME")
 	int readUnsignedIntME();
-
-	@Import("readUnsignedMediumLME")
-	int readUnsignedMediumLME();
 
 	@Import("readUnsignedMediumRME")
 	int readUnsignedMediumRME();

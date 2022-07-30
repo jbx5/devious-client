@@ -2,62 +2,52 @@ import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.Export;
-@ObfuscatedName("gl")
+@ObfuscatedName("gv")
 @Implements("Animation")
 public class Animation {
-	@ObfuscatedName("c")
-	static int[] field2303;
-
-	@ObfuscatedName("v")
-	static int[] field2308;
+	@ObfuscatedName("o")
+	static int[] field2294 = new int[500];
 
 	@ObfuscatedName("q")
-	static int[] field2305;
+	static int[] field2293 = new int[500];
 
 	@ObfuscatedName("f")
-	static int[] field2304;
+	static int[] field2300 = new int[500];
 
-	@ObfuscatedName("j")
-	@ObfuscatedSignature(descriptor = "Lgm;")
+	@ObfuscatedName("u")
+	static int[] field2295 = new int[500];
+
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(descriptor = "Lgn;")
 	@Export("skeleton")
-	Skeleton skeleton;
+	Skeleton skeleton = null;
 
-	@ObfuscatedName("e")
+	@ObfuscatedName("w")
 	@Export("transformCount")
-	int transformCount;
+	int transformCount = -1;
 
-	@ObfuscatedName("g")
+	@ObfuscatedName("z")
 	@Export("transformSkeletonLabels")
 	int[] transformSkeletonLabels;
 
-	@ObfuscatedName("w")
+	@ObfuscatedName("j")
 	@Export("transformXs")
 	int[] transformXs;
 
-	@ObfuscatedName("y")
+	@ObfuscatedName("h")
 	@Export("transformYs")
 	int[] transformYs;
 
-	@ObfuscatedName("i")
+	@ObfuscatedName("a")
 	@Export("transformZs")
 	int[] transformZs;
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("d")
 	@Export("hasAlphaTransform")
-	boolean hasAlphaTransform;
+	boolean hasAlphaTransform = false;
 
-	static {
-		field2303 = new int[500];
-		field2308 = new int[500];
-		field2305 = new int[500];
-		field2304 = new int[500];
-	}
-
-	@ObfuscatedSignature(descriptor = "([BLgm;)V")
+	@ObfuscatedSignature(descriptor = "([BLgn;)V")
 	Animation(byte[] var1, Skeleton var2) {
-		this.skeleton = null;
-		this.transformCount = -1;
-		this.hasAlphaTransform = false;
 		this.skeleton = var2;
 		Buffer var3 = new Buffer(var1);
 		Buffer var4 = new Buffer(var1);
@@ -73,34 +63,34 @@ public class Animation {
 				if (this.skeleton.transformTypes[var8] != 0) {
 					for (int var10 = var8 - 1; var10 > var6; --var10) {
 						if (this.skeleton.transformTypes[var10] == 0) {
-							field2303[var7] = var10;
-							field2308[var7] = 0;
-							field2305[var7] = 0;
-							field2304[var7] = 0;
+							field2294[var7] = var10;
+							field2293[var7] = 0;
+							field2300[var7] = 0;
+							field2295[var7] = 0;
 							++var7;
 							break;
 						}
 					}
 				}
-				field2303[var7] = var8;
+				field2294[var7] = var8;
 				short var11 = 0;
 				if (this.skeleton.transformTypes[var8] == 3) {
 					var11 = 128;
 				}
 				if ((var9 & 1) != 0) {
-					field2308[var7] = var4.readShortSmartSub64();
+					field2293[var7] = var4.readShortSmart();
 				} else {
-					field2308[var7] = var11;
+					field2293[var7] = var11;
 				}
 				if ((var9 & 2) != 0) {
-					field2305[var7] = var4.readShortSmartSub64();
+					field2300[var7] = var4.readShortSmart();
 				} else {
-					field2305[var7] = var11;
+					field2300[var7] = var11;
 				}
 				if ((var9 & 4) != 0) {
-					field2304[var7] = var4.readShortSmartSub64();
+					field2295[var7] = var4.readShortSmart();
 				} else {
-					field2304[var7] = var11;
+					field2295[var7] = var11;
 				}
 				var6 = var8;
 				++var7;
@@ -118,10 +108,10 @@ public class Animation {
 			this.transformYs = new int[var7];
 			this.transformZs = new int[var7];
 			for (var8 = 0; var8 < var7; ++var8) {
-				this.transformSkeletonLabels[var8] = field2303[var8];
-				this.transformXs[var8] = field2308[var8];
-				this.transformYs[var8] = field2305[var8];
-				this.transformZs[var8] = field2304[var8];
+				this.transformSkeletonLabels[var8] = field2294[var8];
+				this.transformXs[var8] = field2293[var8];
+				this.transformYs[var8] = field2300[var8];
+				this.transformZs[var8] = field2295[var8];
 			}
 		}
 	}

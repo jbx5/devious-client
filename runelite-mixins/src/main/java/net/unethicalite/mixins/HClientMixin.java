@@ -137,15 +137,13 @@ public abstract class HClientMixin implements RSClient
 		client.getCallbacks().post(new PlaneChanged(client.getPlane()));
 	}
 
+	// Used by the injector
 	@Inject
-	@MethodHook("menu")
-	public void menu()
+	public static void insertAutomatedMenu()
 	{
 		MenuAutomated menu = automatedMenu.getAndSet(null);
 		if (menu != null)
 		{
-			client.setDraggedWidget(null);
-			client.setIf1DraggedWidget(null);
 			client.setMenuOptionCount(1);
 			int idx = client.getMenuOptionCount() - 1;
 
@@ -155,6 +153,7 @@ public abstract class HClientMixin implements RSClient
 			client.getMenuIdentifiers()[idx] = menu.getIdentifier();
 			client.getMenuOptions()[idx] = menu.getOption();
 			client.getMenuTargets()[idx] = menu.getTarget();
+			client.getMenuItemIds()[idx] = menu.getItemId();
 			client.getMenuForceLeftClick()[idx] = true;
 		}
 	}
@@ -308,7 +307,7 @@ public abstract class HClientMixin implements RSClient
 	}
 
 	@Inject
-	@MethodHook(value = "method1120", end = true)
+	@MethodHook(value = "method1386", end = true)
 	public void onServerPacketRead(RSPacketWriter packetWriter)
 	{
 		client.getCallbacks().post(new ServerPacketReceived(packetWriter.getServerPacket()));

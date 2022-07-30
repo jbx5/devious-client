@@ -369,6 +369,11 @@ public abstract class RSWidgetMixin implements RSWidget
 	@Override
 	public Widget getChild(int index)
 	{
+		if (index == -1)
+		{
+			return this;
+		}
+
 		RSWidget[] widgets = getChildren();
 
 		if (widgets == null || widgets[index] == null)

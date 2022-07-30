@@ -39,6 +39,8 @@ import net.runelite.api.events.AccountHashChanged;
 import net.runelite.api.events.PlayerChanged;
 import net.runelite.api.events.UsernameChanged;
 import net.runelite.api.events.WorldChanged;
+import net.runelite.client.RuneLite;
+import net.runelite.client.account.AccountSession;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.events.ClientShutdown;
@@ -47,6 +49,9 @@ import net.runelite.client.events.RuneScapeProfileChanged;
 import net.runelite.client.plugins.OPRSExternalPluginManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.util.ColorUtil;
+import net.runelite.http.api.config.ConfigEntry;
+import net.runelite.http.api.config.Configuration;
+import okhttp3.OkHttpClient;
 
 import javax.annotation.Nullable;
 import javax.inject.Inject;
@@ -84,6 +89,7 @@ import java.util.Arrays;
 import java.util.Base64;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Date;
 import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -96,6 +102,8 @@ import java.util.Set;
 import java.util.Stack;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Future;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
@@ -119,8 +127,11 @@ public class ConfigManager
 
 	private final File settingsFileInput;
 	private final EventBus eventBus;
+	private final OkHttpClient okHttpClient;
 	private final Gson gson;
 
+	private AccountSession session;
+	private ConfigClient configClient;
 	private File propertiesFile;
 
 	@Nullable
@@ -139,20 +150,42 @@ public class ConfigManager
 	@Inject
 	public ConfigManager(
 			@Named("config") File config,
+			ScheduledExecutorService scheduledExecutorService,
 			EventBus eventBus,
+			OkHttpClient okHttpClient,
 			@Nullable Client client,
 			Gson gson)
 	{
 		this.settingsFileInput = config;
 		this.eventBus = eventBus;
+		this.okHttpClient = okHttpClient;
 		this.client = client;
 		this.propertiesFile = getPropertiesFile();
 		this.gson = gson;
+
+		scheduledExecutorService.scheduleWithFixedDelay(this::sendConfig, 30, 5 * 60, TimeUnit.SECONDS);
 	}
 
 	public String getRSProfileKey()
 	{
 		return rsProfileKey;
+	}
+
+	public final void switchSession(AccountSession session)
+	{
+		if (session == null)
+		{
+			this.session = null;
+			this.configClient = null;
+		}
+		else
+		{
+			this.session = session;
+		}
+
+		this.propertiesFile = getPropertiesFile();
+
+		load(); // load profile specific config
 	}
 
 	private File getLocalPropertiesFile()
@@ -162,7 +195,16 @@ public class ConfigManager
 
 	private File getPropertiesFile()
 	{
-		return getLocalPropertiesFile();
+		// Sessions that aren't logged in have no username
+		if (session == null || session.getUsername() == null)
+		{
+			return getLocalPropertiesFile();
+		}
+		else
+		{
+			File profileDir = new File(RuneLite.PROFILES_DIR, session.getUsername().toLowerCase());
+			return new File(profileDir, RuneLite.DEFAULT_CONFIG_FILE.getName());
+		}
 	}
 
 	public void load()
@@ -240,6 +282,31 @@ public class ConfigManager
 
 		log.debug("Loading in config from disk for upload");
 		swapProperties(properties, true);
+	}
+
+	public Future<Void> importLocal()
+	{
+		if (session == null)
+		{
+			// No session, no import
+			return null;
+		}
+
+		final File file = new File(propertiesFile.getParent(), propertiesFile.getName() + "." + TIME_FORMAT.format(new Date()));
+
+		try
+		{
+			saveToFile(file);
+		}
+		catch (IOException e)
+		{
+			log.warn("Backup failed, skipping import", e);
+			return null;
+		}
+
+		syncPropertiesFromFile(getLocalPropertiesFile());
+
+		return sendConfig();
 	}
 
 	private synchronized void loadFromFile()
@@ -716,7 +783,7 @@ public class ConfigManager
 		}
 	}
 
-	Object stringToObject(String str, Type type)
+	public Object stringToObject(String str, Type type)
 	{
 		if (type == boolean.class || type == Boolean.class)
 		{
@@ -843,7 +910,7 @@ public class ConfigManager
 	}
 
 	@Nullable
-	String objectToString(Object object)
+	public String objectToString(Object object)
 	{
 		if (object instanceof Color)
 		{
@@ -950,7 +1017,7 @@ public class ConfigManager
 	)
 	private void onClientShutdown(ClientShutdown e)
 	{
-		Future<Void> f = saveConfig();
+		Future<Void> f = sendConfig();
 		if (f != null)
 		{
 			e.waitFor(f);
@@ -1011,9 +1078,27 @@ public class ConfigManager
 	}
 
 	@Nullable
-	private CompletableFuture<Void> saveConfig()
+	private CompletableFuture<Void> sendConfig()
 	{
 		CompletableFuture<Void> future = null;
+		synchronized (pendingChanges)
+		{
+			if (pendingChanges.isEmpty())
+			{
+				return null;
+			}
+
+			if (configClient != null)
+			{
+				Configuration patch = new Configuration(pendingChanges.entrySet().stream()
+						.map(e -> new ConfigEntry(e.getKey(), e.getValue()))
+						.collect(Collectors.toList()));
+
+				future = configClient.patch(patch);
+			}
+
+			pendingChanges.clear();
+		}
 
 		try
 		{

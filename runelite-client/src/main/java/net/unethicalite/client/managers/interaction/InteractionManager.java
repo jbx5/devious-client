@@ -121,7 +121,7 @@ public class InteractionManager
 								int param0 = event.getParam0();
 								int param1 = event.getParam1();
 								int id = event.getIdentifier();
-								int itemId = event.getItemId(client);
+								int itemId = event.getItemId();
 								if (itemId != -1)
 								{
 									client.invokeWidgetAction(id, param1, param0, itemId, "");

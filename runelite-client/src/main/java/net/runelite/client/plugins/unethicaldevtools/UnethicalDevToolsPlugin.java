@@ -95,7 +95,7 @@ public class UnethicalDevToolsPlugin extends Plugin
 					+ " | X=" + e.getClickX()
 					+ " | Y=" + e.getClickY();
 
-			log.debug("[Automated] {}", debug);
+			log.info("[Automated] {}", debug);
 		}
 	}
 
@@ -109,8 +109,9 @@ public class UnethicalDevToolsPlugin extends Plugin
 					+ " | ID=" + e.getId()
 					+ " | OP=" + e.getMenuAction().getId()
 					+ " | P0=" + e.getParam0()
-					+ " | P1=" + e.getParam1();
-			log.debug("[Menu Action] {}", action);
+					+ " | P1=" + e.getParam1()
+					+ " | ITEM=" + e.getItemId();
+			log.info("[Menu Action] {}", action);
 		}
 	}
 
@@ -125,11 +126,11 @@ public class UnethicalDevToolsPlugin extends Plugin
 		DialogOption dialogOption = DialogOption.of(e.getDialogOption().getWidgetUid(), e.getDialogOption().getMenuIndex());
 		if (dialogOption != null)
 		{
-			log.debug("Dialog processed {}", dialogOption);
+			log.info("Dialog processed {}", dialogOption);
 		}
 		else
 		{
-			log.debug("Unknown or unmapped dialog {}", e);
+			log.warn("Unknown or unmapped dialog {}", e);
 		}
 	}
 

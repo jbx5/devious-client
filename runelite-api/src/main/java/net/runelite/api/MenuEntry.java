@@ -24,9 +24,10 @@
  */
 package net.runelite.api;
 
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
 import net.runelite.api.widgets.Widget;
+
+import javax.annotation.Nullable;
+import java.util.function.Consumer;
 
 /**
  * A menu entry in a right-click menu.
@@ -108,12 +109,13 @@ public interface MenuEntry
 	int getItemOp();
 
 	/**
-	 * If this menu entry is an item op, get the item id
+	 * Get the item id
 	 * @return
 	 * @see ItemID
 	 * @see NullItemID
 	 */
 	int getItemId();
+	void setItemId(int itemId);
 
 	/**
 	 * Get the widget this menu entry is on, if this is a menu entry

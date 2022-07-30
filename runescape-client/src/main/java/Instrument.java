@@ -3,127 +3,126 @@ import java.util.Random;
 import net.runelite.mapping.ObfuscatedSignature;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.Export;
-@ObfuscatedName("bp")
+@ObfuscatedName("bg")
 @Implements("Instrument")
 public class Instrument {
-	@ObfuscatedName("x")
+	@ObfuscatedName("y")
 	@Export("Instrument_samples")
 	static int[] Instrument_samples;
 
-	@ObfuscatedName("l")
+	@ObfuscatedName("k")
 	@Export("Instrument_noise")
-	static int[] Instrument_noise;
+	static int[] Instrument_noise = new int['耀'];
 
-	@ObfuscatedName("a")
+	@ObfuscatedName("v")
 	@Export("Instrument_sine")
 	static int[] Instrument_sine;
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("e")
 	@Export("Instrument_phases")
 	static int[] Instrument_phases;
 
-	@ObfuscatedName("n")
+	@ObfuscatedName("s")
 	@Export("Instrument_delays")
 	static int[] Instrument_delays;
 
-	@ObfuscatedName("o")
+	@ObfuscatedName("i")
 	@Export("Instrument_volumeSteps")
 	static int[] Instrument_volumeSteps;
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("r")
 	@Export("Instrument_pitchSteps")
 	static int[] Instrument_pitchSteps;
 
-	@ObfuscatedName("d")
+	@ObfuscatedName("m")
 	@Export("Instrument_pitchBaseSteps")
 	static int[] Instrument_pitchBaseSteps;
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "Lat;")
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(descriptor = "Laq;")
 	@Export("pitch")
 	SoundEnvelope pitch;
 
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "Lat;")
+	@ObfuscatedName("q")
+	@ObfuscatedSignature(descriptor = "Laq;")
 	@Export("volume")
 	SoundEnvelope volume;
 
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "Lat;")
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(descriptor = "Laq;")
 	@Export("pitchModifier")
 	SoundEnvelope pitchModifier;
 
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "Lat;")
+	@ObfuscatedName("u")
+	@ObfuscatedSignature(descriptor = "Laq;")
 	@Export("pitchModifierAmplitude")
 	SoundEnvelope pitchModifierAmplitude;
 
-	@ObfuscatedName("j")
-	@ObfuscatedSignature(descriptor = "Lat;")
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(descriptor = "Laq;")
 	@Export("volumeMultiplier")
 	SoundEnvelope volumeMultiplier;
 
-	@ObfuscatedName("e")
-	@ObfuscatedSignature(descriptor = "Lat;")
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(descriptor = "Laq;")
 	@Export("volumeMultiplierAmplitude")
 	SoundEnvelope volumeMultiplierAmplitude;
 
-	@ObfuscatedName("g")
-	@ObfuscatedSignature(descriptor = "Lat;")
+	@ObfuscatedName("z")
+	@ObfuscatedSignature(descriptor = "Laq;")
 	@Export("release")
 	SoundEnvelope release;
 
-	@ObfuscatedName("w")
-	@ObfuscatedSignature(descriptor = "Lat;")
+	@ObfuscatedName("j")
+	@ObfuscatedSignature(descriptor = "Laq;")
 	@Export("attack")
 	SoundEnvelope attack;
 
-	@ObfuscatedName("y")
+	@ObfuscatedName("h")
 	@Export("oscillatorVolume")
-	int[] oscillatorVolume;
+	int[] oscillatorVolume = new int[]{ 0, 0, 0, 0, 0 };
 
-	@ObfuscatedName("i")
+	@ObfuscatedName("a")
 	@Export("oscillatorPitch")
-	int[] oscillatorPitch;
+	int[] oscillatorPitch = new int[]{ 0, 0, 0, 0, 0 };
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("d")
 	@Export("oscillatorDelays")
-	int[] oscillatorDelays;
+	int[] oscillatorDelays = new int[]{ 0, 0, 0, 0, 0 };
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("n")
 	@Export("delayTime")
-	int delayTime;
+	int delayTime = 0;
 
-	@ObfuscatedName("z")
+	@ObfuscatedName("x")
 	@Export("delayDecay")
-	int delayDecay;
+	int delayDecay = 100;
 
-	@ObfuscatedName("r")
-	@ObfuscatedSignature(descriptor = "Lbz;")
+	@ObfuscatedName("g")
+	@ObfuscatedSignature(descriptor = "Lbs;")
 	@Export("filter")
 	AudioFilter filter;
 
-	@ObfuscatedName("u")
-	@ObfuscatedSignature(descriptor = "Lat;")
+	@ObfuscatedName("p")
+	@ObfuscatedSignature(descriptor = "Laq;")
 	@Export("filterEnvelope")
 	SoundEnvelope filterEnvelope;
 
-	@ObfuscatedName("k")
+	@ObfuscatedName("b")
 	@Export("duration")
-	int duration;
+	int duration = 500;
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("l")
 	@Export("offset")
-	int offset;
+	int offset = 0;
 
 	static {
-		Instrument_noise = new int[32768];
 		Random var0 = new Random(0L);
 		int var1;
 		for (var1 = 0; var1 < 32768; ++var1) {
 			Instrument_noise[var1] = (var0.nextInt() & 2) - 1;
 		}
-		Instrument_sine = new int[32768];
+		Instrument_sine = new int['耀'];
 		for (var1 = 0; var1 < 32768; ++var1) {
 			Instrument_sine[var1] = ((int) (Math.sin(((double) (var1)) / 5215.1903) * 16384.0));
 		}
@@ -136,19 +135,12 @@ public class Instrument {
 	}
 
 	Instrument() {
-		this.oscillatorVolume = new int[]{ 0, 0, 0, 0, 0 };
-		this.oscillatorPitch = new int[]{ 0, 0, 0, 0, 0 };
-		this.oscillatorDelays = new int[]{ 0, 0, 0, 0, 0 };
-		this.delayTime = 0;
-		this.delayDecay = 100;
-		this.duration = 500;
-		this.offset = 0;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("o")
 	@Export("synthesize")
 	final int[] synthesize(int var1, int var2) {
-		class350.clearIntArray(Instrument_samples, 0, var1);
+		class351.clearIntArray(Instrument_samples, 0, var1);
 		if (var2 < 10) {
 			return Instrument_samples;
 		} else {
@@ -200,7 +192,7 @@ public class Instrument {
 				if (this.volumeMultiplier != null) {
 					var14 = this.volumeMultiplier.doStep(var1);
 					var15 = this.volumeMultiplierAmplitude.doStep(var1);
-					var13 = var13 * ((this.evaluateWave(var10, var15, this.volumeMultiplier.form) >> 1) + 32768) >> 15;
+					var13 = var13 * ((this.evaluateWave(var10, var15, this.volumeMultiplier.form) >> 1) + '耀') >> 15;
 					var10 = var10 + var9 + (var14 * var8 >> 16);
 				}
 				for (var14 = 0; var14 < 5; ++var14) {
@@ -323,7 +315,7 @@ public class Instrument {
 		}
 	}
 
-	@ObfuscatedName("v")
+	@ObfuscatedName("q")
 	@Export("evaluateWave")
 	final int evaluateWave(int var1, int var2, int var3) {
 		if (var3 == 1) {
@@ -337,8 +329,8 @@ public class Instrument {
 		}
 	}
 
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "(Lqt;)V")
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(descriptor = "(Lqw;)V")
 	@Export("decode")
 	final void decode(Buffer var1) {
 		this.pitch = new SoundEnvelope();
@@ -375,7 +367,7 @@ public class Instrument {
 				break;
 			}
 			this.oscillatorVolume[var3] = var4;
-			this.oscillatorPitch[var3] = var1.readShortSmartSub64();
+			this.oscillatorPitch[var3] = var1.readShortSmart();
 			this.oscillatorDelays[var3] = var1.readUShortSmart();
 		}
 		this.delayTime = var1.readUShortSmart();
@@ -384,6 +376,6 @@ public class Instrument {
 		this.offset = var1.readUnsignedShort();
 		this.filter = new AudioFilter();
 		this.filterEnvelope = new SoundEnvelope();
-		this.filter.method1025(var1, this.filterEnvelope);
+		this.filter.method1032(var1, this.filterEnvelope);
 	}
 }

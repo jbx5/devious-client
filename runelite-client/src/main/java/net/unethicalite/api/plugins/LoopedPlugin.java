@@ -65,7 +65,7 @@ public abstract class LoopedPlugin extends Plugin implements Runnable
 				}
 
 				int currentTick = ticks.get();
-				if (sleepUntil > 0 && sleepUntil > currentTick)
+				if (sleepUntil > 0 && sleepUntil > currentTick && Game.isLoggedIn())
 				{
 					return;
 				}

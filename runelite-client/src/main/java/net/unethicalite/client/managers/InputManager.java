@@ -1,7 +1,6 @@
 package net.unethicalite.client.managers;
 
 import com.github.kwhat.jnativehook.GlobalScreen;
-import com.github.kwhat.jnativehook.NativeHookException;
 import com.github.kwhat.jnativehook.keyboard.NativeKeyEvent;
 import com.github.kwhat.jnativehook.keyboard.NativeKeyListener;
 import com.github.kwhat.jnativehook.mouse.NativeMouseEvent;
@@ -54,7 +53,7 @@ public class InputManager implements MouseListener, NativeMouseInputListener, Na
 			EventBus eventBus,
 			Client client,
 			UnethicaliteConfig interactionConfig
-	) throws NativeHookException
+	)
 	{
 		this.minimalPluginManager = minimalPluginManager;
 		this.loopedPluginManager = loopedPluginManager;
@@ -64,7 +63,14 @@ public class InputManager implements MouseListener, NativeMouseInputListener, Na
 		manager.registerMouseListener(this);
 		if (!Boolean.parseBoolean(System.getenv("disablenative")))
 		{
-			GlobalScreen.registerNativeHook();
+			try
+			{
+				GlobalScreen.registerNativeHook();
+			}
+			catch (Exception e)
+			{
+				log.error("Failed to register native hook", e);
+			}
 		}
 		Logger.getLogger(GlobalScreen.class.getPackage().getName()).setLevel(java.util.logging.Level.OFF);
 	}

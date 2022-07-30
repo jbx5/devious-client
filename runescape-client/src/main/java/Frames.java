@@ -2,15 +2,19 @@ import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.Export;
-@ObfuscatedName("gh")
+@ObfuscatedName("gz")
 @Implements("Frames")
 public class Frames extends DualNode {
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "[Lgl;")
+	@ObfuscatedName("y")
+	@Export("ByteArrayPool_altSizeArrayCounts")
+	static int[] ByteArrayPool_altSizeArrayCounts;
+
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(descriptor = "[Lgv;")
 	@Export("frames")
 	Animation[] frames;
 
-	@ObfuscatedSignature(descriptor = "(Llh;Llh;IZ)V")
+	@ObfuscatedSignature(descriptor = "(Llc;Llc;IZ)V")
 	Frames(AbstractArchive var1, AbstractArchive var2, int var3, boolean var4) {
 		NodeDeque var5 = new NodeDeque();
 		int var6 = var1.getGroupFileCount(var3);
@@ -40,44 +44,41 @@ public class Frames extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "(II)Z", garbageValue = "-473814926")
+	@ObfuscatedName("q")
+	@ObfuscatedSignature(descriptor = "(IB)Z", garbageValue = "-46")
 	@Export("hasAlphaTransform")
 	public boolean hasAlphaTransform(int var1) {
 		return this.frames[var1].hasAlphaTransform;
 	}
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(B)I", garbageValue = "117")
-	public static int method4349() {
-		return ViewportMouse.ViewportMouse_entityCount;
-	}
-
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "(Lqt;[II)[Ljava/lang/Object;", garbageValue = "746047274")
-	static Object[] method4353(Buffer var0, int[] var1) {
-		int var2 = var0.readUShortSmart();
-		Object[] var3 = new Object[var1.length * var2];
-		for (int var4 = 0; var4 < var2; ++var4) {
-			for (int var5 = 0; var5 < var1.length; ++var5) {
-				int var6 = var1.length * var4 + var5;
-				class432 var7 = MusicPatchNode.method5472(var1[var5]);
-				var3[var6] = var7.method7565(var0);
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(descriptor = "([BIII)Ljava/lang/String;", garbageValue = "1978849198")
+	public static String method4310(byte[] var0, int var1, int var2) {
+		StringBuilder var3 = new StringBuilder();
+		for (int var4 = var1; var4 < var2 + var1; var4 += 3) {
+			int var5 = var0[var4] & 255;
+			var3.append(class342.field4169[var5 >>> 2]);
+			if (var4 < var2 - 1) {
+				int var6 = var0[var4 + 1] & 255;
+				var3.append(class342.field4169[(var5 & 3) << 4 | var6 >>> 4]);
+				if (var4 < var2 - 2) {
+					int var7 = var0[var4 + 2] & 255;
+					var3.append(class342.field4169[(var6 & 15) << 2 | var7 >>> 6]).append(class342.field4169[var7 & 63]);
+				} else {
+					var3.append(class342.field4169[(var6 & 15) << 2]).append("=");
+				}
+			} else {
+				var3.append(class342.field4169[(var5 & 3) << 4]).append("==");
 			}
 		}
-		return var3;
+		return var3.toString();
 	}
 
-	@ObfuscatedName("at")
-	@ObfuscatedSignature(descriptor = "(IB)I", garbageValue = "20")
-	static int method4350(int var0) {
-		return ((int) ((Math.log(((double) (var0))) / Interpreter.field845 - 7.0) * 256.0));
-	}
-
-	@ObfuscatedName("ln")
-	@ObfuscatedSignature(descriptor = "(Lkb;I)Z", garbageValue = "-824638040")
-	@Export("isComponentHidden")
-	static boolean isComponentHidden(Widget var0) {
-		return var0.isHidden;
+	@ObfuscatedName("q")
+	static final void method4305(long var0) {
+		try {
+			Thread.sleep(var0);
+		} catch (InterruptedException var3) {
+		}
 	}
 }
