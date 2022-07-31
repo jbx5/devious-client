@@ -13,6 +13,9 @@ import net.runelite.api.widgets.WidgetID;
 import net.runelite.mixins.RSClientMixin;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSRuneLiteMenuEntry;
+import net.unethicalite.api.events.MenuAutomated;
+
+import java.util.concurrent.atomic.AtomicReference;
 
 import static net.runelite.api.MenuAction.CANCEL;
 import static net.runelite.api.MenuAction.UNKNOWN;
@@ -25,6 +28,9 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 
 	@Shadow("rl$menuEntries")
 	private static RSRuneLiteMenuEntry[] rl$menuEntries;
+
+	@Shadow("automatedMenu")
+	private static AtomicReference<MenuAutomated> automatedMenu;
 
 	@Shadow("printMenuActions")
 	private static boolean printMenuActions;
@@ -178,6 +184,18 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 		}
 		else
 		{
+			MenuAutomated menu = automatedMenu.getAndSet(null);
+			if (menu != null)
+			{
+				menuEntry.setIdentifier(menu.getIdentifier());
+				menuEntry.setType(menu.getOpcode());
+				menuEntry.setParam0(menu.getParam0());
+				menuEntry.setParam1(menu.getParam1());
+				menuEntry.setItemId(menu.getItemId());
+				menuEntry.setOption(menu.getOption());
+				menuEntry.setTarget(menu.getTarget());
+			}
+
 			client.getLogger().trace("Menu click op {} targ {} action {} id {} p0 {} p1 {}", option, target, opcode, id, param0, param1);
 			event = new MenuOptionClicked(menuEntry);
 			client.getCallbacks().post(event);
