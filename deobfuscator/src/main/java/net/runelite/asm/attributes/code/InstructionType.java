@@ -88,6 +88,8 @@ import net.runelite.asm.attributes.code.instructions.IALoad;
 import net.runelite.asm.attributes.code.instructions.IAStore;
 import net.runelite.asm.attributes.code.instructions.IAdd;
 import net.runelite.asm.attributes.code.instructions.IAnd;
+import net.runelite.asm.attributes.code.instructions.IConst_0;
+import net.runelite.asm.attributes.code.instructions.IConst_1;
 import net.runelite.asm.attributes.code.instructions.IDiv;
 import net.runelite.asm.attributes.code.instructions.IInc;
 import net.runelite.asm.attributes.code.instructions.ILoad;
@@ -167,6 +169,8 @@ public enum InstructionType
 {
 	NOP(0x00, "nop", NOP.class),
 	ACONST_NULL(0x01, "aconst_null", AConstNull.class),
+	ICONST_0(0x03, "iconst_0", IConst_0.class),
+	ICONST_1(0x04, "iconst_1", IConst_1.class),
 	BIPUSH(0x10, "bipush", BiPush.class),
 	SIPUSH(0x11, "sipush", SiPush.class),
 	LDC(-1, "ldc", LDC.class),

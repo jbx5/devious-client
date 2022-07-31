@@ -407,6 +407,6 @@ public class RuneLiteMenuEntry implements MenuEntry {
 
 	@Override
 	public String toString() {
-		return "MenuEntryImpl(getOption=" + this.getOption() + ", getTarget=" + this.getTarget() + ", getIdentifier=" + this.getIdentifier() + ", getType=" + this.getType() + ", getParam0=" + this.getParam0() + ", getParam1=" + this.getParam1() + ", isForceLeftClick=" + this.isForceLeftClick() + ", isDeprioritized=" + this.isDeprioritized() + ")";
+		return "MenuEntryImpl(getOption=" + this.getOption() + ", getTarget=" + this.getTarget() + ", getIdentifier=" + this.getIdentifier() + ", getType=" + this.getType() + ", getParam0=" + this.getParam0() + ", getParam1=" + this.getParam1() + ", getItemId=" + this.getItemId() + ", isForceLeftClick=" + this.isForceLeftClick() + ", isDeprioritized=" + this.isDeprioritized() + ")";
 	}
 }

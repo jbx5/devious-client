@@ -7,4 +7,6 @@ public interface PacketWriter
 	IsaacCipher getIsaacCipher();
 
 	ServerPacket getServerPacket();
+
+	PacketBuffer getPacketBuffer();
 }

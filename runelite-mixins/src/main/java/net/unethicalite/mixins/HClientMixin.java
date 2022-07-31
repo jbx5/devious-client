@@ -20,10 +20,12 @@ import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSGameObject;
 import net.runelite.rs.api.RSGraphicsObject;
 import net.runelite.rs.api.RSItemComposition;
+import net.runelite.rs.api.RSPacketBuffer;
 import net.runelite.rs.api.RSPacketWriter;
 import net.runelite.rs.api.RSProjectile;
 import net.runelite.rs.api.RSRenderable;
 import net.runelite.rs.api.RSRuneLiteMenuEntry;
+import net.runelite.rs.api.RSServerPacket;
 import net.runelite.rs.api.RSTile;
 import net.unethicalite.api.events.ExperienceGained;
 import net.unethicalite.api.events.LobbyWorldSelectToggled;
@@ -137,15 +139,18 @@ public abstract class HClientMixin implements RSClient
 		client.getCallbacks().post(new PlaneChanged(client.getPlane()));
 	}
 
-	// Used by the injector
 	@Inject
-	public static void insertAutomatedMenu()
+	@MethodHook("menu")
+	public void menu()
 	{
+		int idx = client.getMenuOptionCount() - 1;
+
 		MenuAutomated menu = automatedMenu.getAndSet(null);
 		if (menu != null)
 		{
+			client.setDraggedWidget(null);
+			client.setIf1DraggedWidget(null);
 			client.setMenuOptionCount(1);
-			int idx = client.getMenuOptionCount() - 1;
 
 			client.getMenuArguments1()[idx] = menu.getParam0();
 			client.getMenuArguments2()[idx] = menu.getParam1();
@@ -307,10 +312,17 @@ public abstract class HClientMixin implements RSClient
 	}
 
 	@Inject
-	@MethodHook(value = "method1386", end = true)
-	public void onServerPacketRead(RSPacketWriter packetWriter)
+	public static void onServerPacketReceived(ServerPacketReceived serverPacketReceived)
 	{
-		client.getCallbacks().post(new ServerPacketReceived(packetWriter.getServerPacket()));
+		RSPacketWriter packetWriter = client.getPacketWriter();
+		RSPacketBuffer buffer = packetWriter.getPacketBuffer();
+		RSServerPacket serverPacket = packetWriter.getServerPacket();
+
+		serverPacketReceived.setServerPacket(serverPacket);
+		serverPacketReceived.setPacketBuffer(buffer);
+		serverPacketReceived.setLength(packetWriter.getServerPacketLength());
+
+		client.getCallbacks().post(serverPacketReceived);
 	}
 
 	@Override

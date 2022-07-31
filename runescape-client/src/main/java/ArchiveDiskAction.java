@@ -119,7 +119,7 @@ public class ArchiveDiskAction extends Node {
 	@ObfuscatedSignature(descriptor = "(Lbe;III)V", garbageValue = "410958599")
 	static final void method5787(MenuAction var0, int var1, int var2) {
 		if (var0 != null) {
-			class9.menuAction(var0.param0, var0.param1, var0.opcode, var0.identifier, var0.itemId, var0.target, var0.action, var1, var2);
+			class9.menuAction(var0.param0, var0.param1, var0.opcode, var0.identifier, var0.itemId, var0.action, var0.target, var1, var2);
 		}
 	}
 

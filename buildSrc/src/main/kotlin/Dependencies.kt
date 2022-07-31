@@ -34,5 +34,5 @@ object ProjectVersions {
 
     const val lombokVersion = "1.18.20"
 
-    const val unethicaliteVersion = "1.0.6"
+    const val unethicaliteVersion = "1.0.7"
 }
