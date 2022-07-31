@@ -6,10 +6,10 @@ import net.runelite.api.packets.PacketWriter;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetType;
 import net.unethicalite.api.events.MenuAutomated;
+import net.unethicalite.api.exception.InteractionException;
 import net.unethicalite.api.game.GameThread;
 import net.unethicalite.api.widgets.Widgets;
 import net.unethicalite.client.Static;
-import net.unethicalite.client.managers.interaction.InteractionException;
 
 public class Packets
 {

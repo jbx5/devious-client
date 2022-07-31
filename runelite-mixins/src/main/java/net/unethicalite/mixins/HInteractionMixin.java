@@ -108,7 +108,7 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 	static void copy$menuAction(int param0, int param1, int opcode, int id, int itemId, String option, String target, int canvasX, int canvasY)
 	{
 		RSRuneLiteMenuEntry menuEntry = null;
-		for (int i = 499; i >= 0; --i)
+		for (int i = client.getMenuOptionCount() - 1; i >= 0; --i)
 		{
 			if (client.getMenuOpcodes()[i] == opcode
 					&& client.getMenuIdentifiers()[i] == id
@@ -116,7 +116,7 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 					&& client.getMenuArguments2()[i] == param1
 					&& client.getMenuItemIds()[i] == itemId
 					&& option.equals(client.getMenuOptions()[i])
-					&& (option.equals(target) || target.equals(client.getMenuTargets()[i]))
+					&& target.equals(client.getMenuTargets()[i])
 			)
 			{
 				menuEntry = rl$menuEntries[i];
@@ -124,7 +124,19 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 			}
 		}
 
-		if (menuEntry == null && option.equals(target))
+		boolean isTemp = false;
+		if (client.getTempMenuAction() != null)
+		{
+			isTemp = client.getTempMenuAction().getOpcode() == opcode &&
+					client.getTempMenuAction().getIdentifier() == id &&
+					client.getTempMenuAction().getOption().equals(option) &&
+					client.getTempMenuAction().getTarget().equals(target) &&
+					client.getTempMenuAction().getParam0() == param0 &&
+					client.getTempMenuAction().getParam1() == param1 &&
+					client.getTempMenuAction().getItemId() == itemId;
+		}
+
+		if (menuEntry == null && isTemp)
 		{
 			int i;
 			if (client.getMenuOptionCount() < 500)

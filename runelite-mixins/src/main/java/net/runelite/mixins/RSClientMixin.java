@@ -1003,11 +1003,12 @@ public abstract class RSClientMixin implements RSClient
 
 		if (client.getTempMenuAction() != null && client.getMenuOptionCount() > 0)
 		{
-			var2 = client.getTempMenuAction().getParam0() == client.getMenuArguments1()[client.getMenuOptionCount() - 1] &&
-					client.getTempMenuAction().getParam1() == client.getMenuArguments2()[client.getMenuOptionCount() - 1] &&
-					client.getTempMenuAction().getOption().equals(client.getMenuOptions()[client.getMenuOptionCount() - 1]) &&
+			var2 = client.getTempMenuAction().getOpcode() == client.getMenuOpcodes()[client.getMenuOptionCount() - 1] &&
 					client.getTempMenuAction().getIdentifier() == client.getMenuIdentifiers()[client.getMenuOptionCount() - 1] &&
-					client.getTempMenuAction().getOpcode() == client.getMenuOpcodes()[client.getMenuOptionCount() - 1] &&
+					client.getTempMenuAction().getOption().equals(client.getMenuOptions()[client.getMenuOptionCount() - 1]) &&
+					client.getTempMenuAction().getTarget().equals(client.getMenuTargets()[client.getMenuOptionCount() - 1]) &&
+					client.getTempMenuAction().getParam0() == client.getMenuArguments1()[client.getMenuOptionCount() - 1] &&
+					client.getTempMenuAction().getParam1() == client.getMenuArguments2()[client.getMenuOptionCount() - 1] &&
 					client.getTempMenuAction().getItemId() == client.getMenuItemIds()[client.getMenuOptionCount() - 1];
 		}
 
@@ -1025,11 +1026,12 @@ public abstract class RSClientMixin implements RSClient
 
 		if (var2 && client.getMenuOptionCount() > 0)
 		{
+			client.getTempMenuAction().setOpcode(client.getMenuOpcodes()[client.getMenuOptionCount() - 1]);
+			client.getTempMenuAction().setIdentifier(client.getMenuIdentifiers()[client.getMenuOptionCount() - 1]);
+			client.getTempMenuAction().setOption(client.getMenuOptions()[client.getMenuOptionCount() - 1]);
+			client.getTempMenuAction().setTarget(client.getMenuTargets()[client.getMenuOptionCount() - 1]);
 			client.getTempMenuAction().setParam0(client.getMenuArguments1()[client.getMenuOptionCount() - 1]);
 			client.getTempMenuAction().setParam1(client.getMenuArguments2()[client.getMenuOptionCount() - 1]);
-			client.getTempMenuAction().setOption(client.getMenuOptions()[client.getMenuOptionCount() - 1]);
-			client.getTempMenuAction().setIdentifier(client.getMenuIdentifiers()[client.getMenuOptionCount() - 1]);
-			client.getTempMenuAction().setOpcode(client.getMenuOpcodes()[client.getMenuOptionCount() - 1]);
 			client.getTempMenuAction().setItemId(client.getMenuItemIds()[client.getMenuOptionCount() - 1]);
 		}
 	}

@@ -28,14 +28,16 @@ public class MenuAction {
 
 	@ObfuscatedName("c")
 	@ObfuscatedGetter(intValue = -749946813)
+	@Export("itemId")
 	int itemId;
 
 	@ObfuscatedName("w")
-	String target;
-
-	@ObfuscatedName("z")
 	@Export("action")
 	String action;
+
+	@ObfuscatedName("z")
+	@Export("target")
+	String target;
 
 	MenuAction() {
 	}
