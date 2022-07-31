@@ -1,13 +1,14 @@
-import java.util.LinkedList;
-import net.runelite.mapping.ObfuscatedName;
-import java.util.HashMap;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.Implements;
-import java.util.Iterator;
-import java.util.List;
-import java.util.HashSet;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
+import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 @ObfuscatedName("ha")
 @Implements("WorldMapManager")
 public final class WorldMapManager {
@@ -67,7 +68,7 @@ public final class WorldMapManager {
 	int tileX;
 
 	@ObfuscatedName("x")
-	@ObfuscatedGetter(intValue = 1414469824)
+	@ObfuscatedGetter(intValue = 223427683)
 	@Export("tileY")
 	int tileY;
 
