@@ -1,8 +1,8 @@
 package net.unethicalite.api.movement.pathfinder.model;
 
+import net.runelite.api.coords.WorldArea;
 import net.unethicalite.api.entities.Players;
 import net.unethicalite.api.movement.Movement;
-import net.runelite.api.coords.WorldArea;
 
 import java.util.Arrays;
 import java.util.Comparator;

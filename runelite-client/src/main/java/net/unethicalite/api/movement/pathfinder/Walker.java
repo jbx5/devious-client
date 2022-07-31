@@ -7,10 +7,13 @@ import net.runelite.api.TileObject;
 import net.runelite.api.WallObject;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.widgets.Widget;
+import net.unethicalite.api.commons.Predicates;
 import net.unethicalite.api.commons.Rand;
 import net.unethicalite.api.commons.Time;
 import net.unethicalite.api.entities.Players;
 import net.unethicalite.api.entities.TileObjects;
+import net.unethicalite.api.items.Equipment;
+import net.unethicalite.api.items.Inventory;
 import net.unethicalite.api.movement.Movement;
 import net.unethicalite.api.movement.Reachable;
 import net.unethicalite.api.movement.pathfinder.model.Teleport;
@@ -186,17 +189,20 @@ public class Walker
 
 	public static boolean handleTransports(List<WorldPoint> path, Map<WorldPoint, List<Transport>> transports)
 	{
-
+		// Edgeville/ardy wilderness lever warning
 		Widget leverWarningWidget = Widgets.get(229, 1);
 		if (Widgets.isVisible(leverWarningWidget))
 		{
+			log.debug("Handling Wilderness lever warning widget");
 			Dialog.continueSpace();
 			return true;
 		}
 
+		// Wilderness ditch warning
 		Widget wildyDitchWidget = Widgets.get(475, 11);
 		if (Widgets.isVisible(wildyDitchWidget))
 		{
+			log.debug("Handling Wilderness warning widget");
 			wildyDitchWidget.interact("Enter Wilderness");
 			return true;
 		}
@@ -204,6 +210,7 @@ public class Walker
 		if (Dialog.getOptions().stream()
 				.anyMatch(widget -> widget.getText() != null && widget.getText().contains("Eeep! The Wilderness")))
 		{
+			log.debug("Handling wilderness warning dialog");
 			Dialog.chooseOption("Yes, I'm brave");
 			return true;
 		}
@@ -225,8 +232,7 @@ public class Walker
 					|| (tileA != null && tileB != null && !Reachable.isWalkable(b)))
 			{
 				Transport transport = transports.getOrDefault(a, List.of()).stream()
-						.filter(x -> x.getSource().equals(a))
-						.filter(x -> x.getDestination().equals(b))
+						.filter(x -> x.getSource().equals(a) && x.getDestination().equals(b))
 						.findFirst()
 						.orElse(null);
 
@@ -243,11 +249,26 @@ public class Walker
 				}
 			}
 
+			// MLM Rocks
+			TileObject rockfall = TileObjects.getFirstAt(a, "Rockfall");
+			boolean hasPickaxe = Inventory.contains(Predicates.nameContains("pickaxe")) || Equipment.contains(Predicates.nameContains("pickaxe"));
+			if (rockfall != null && hasPickaxe)
+			{
+				log.debug("Handling MLM rockfall");
+				if (!Players.getLocal().isIdle())
+				{
+					return true;
+				}
+				rockfall.interact("Mine");
+				return true;
+			}
+
 			if (tileA == null)
 			{
 				return false;
 			}
 
+			// Diagonal door bullshit
 			if (Math.abs(a.getX() - b.getX()) + Math.abs(a.getY() + b.getY()) > 1 && a.getPlane() == b.getPlane())
 			{
 				TileObject wall = TileObjects.getFirstAt(tileA, it ->
@@ -259,7 +280,7 @@ public class Walker
 					{
 						return true;
 					}
-					log.debug("Handling diagonal door {}", wall.getWorldLocation());
+					log.debug("Handling diagonal door at {}", wall.getWorldLocation());
 					wall.interact("Open");
 					Time.sleepUntil(() -> !wall.hasAction("Open"), 2000);
 					return true;
@@ -271,6 +292,7 @@ public class Walker
 				return false;
 			}
 
+			// Normal doors
 			if (Reachable.isDoored(tileA, tileB))
 			{
 				if (Players.getLocal().isMoving())
@@ -279,7 +301,7 @@ public class Walker
 				}
 				WallObject wall = tileA.getWallObject();
 				wall.interact("Open");
-				log.debug("Handling door {}", wall.getWorldLocation());
+				log.debug("Handling door at {}", wall.getWorldLocation());
 				Time.sleepUntil(() -> tileA.getWallObject() == null
 						|| !wall.hasAction("Open"), 2000);
 				return true;
@@ -293,7 +315,7 @@ public class Walker
 				}
 				WallObject wall = tileB.getWallObject();
 				wall.interact("Open");
-				log.debug("Handling door {}", wall.getWorldLocation());
+				log.debug("Handling door at {}", wall.getWorldLocation());
 				Time.sleepUntil(() -> tileB.getWallObject() == null
 						|| !wall.hasAction("Open"), 2000);
 				return true;
@@ -355,7 +377,25 @@ public class Walker
 		return path.subList(path.indexOf(nearest), path.size());
 	}
 
-	private static List<WorldPoint> calculatePath(
+	public static List<WorldPoint> calculatePath(WorldPoint destination)
+	{
+		Player local = Players.getLocal();
+		LinkedHashMap<WorldPoint, Teleport> teleports = buildTeleportLinks(destination);
+		List<WorldPoint> startPoints = new ArrayList<>(teleports.keySet());
+		startPoints.add(local.getWorldLocation());
+		return calculatePath(startPoints, destination);
+	}
+
+	public static List<WorldPoint> calculatePath(List<WorldPoint> startPoints, WorldPoint destination)
+	{
+		if (Static.getClient().isClientThread())
+		{
+			throw new RuntimeException("Calculate path cannot be called on client thread");
+		}
+		return new Pathfinder(Static.getGlobalCollisionMap(), buildTransportLinks(), startPoints, destination, RegionManager.avoidWilderness()).find();
+	}
+
+	private static List<WorldPoint> buildPath(
 			List<WorldPoint> startPoints,
 			WorldPoint destination,
 			boolean avoidWilderness,
@@ -377,8 +417,12 @@ public class Walker
 
 		try
 		{
-			// 16-17ms for 60fps, 6-7ms for 144fps
-			return pathFuture.get(10, TimeUnit.MILLISECONDS);
+			if (Static.getClient().isClientThread())
+			{
+				// 16-17ms for 60fps, 6-7ms for 144fps
+				return pathFuture.get(10, TimeUnit.MILLISECONDS);
+			}
+			return pathFuture.get();
 		}
 		catch (Exception e)
 		{
@@ -394,7 +438,7 @@ public class Walker
 		List<WorldPoint> startPoints = new ArrayList<>(teleports.keySet());
 		startPoints.add(local.getWorldLocation());
 
-		return calculatePath(startPoints, destination, avoidWilderness, forced);
+		return buildPath(startPoints, destination, avoidWilderness, forced);
 	}
 
 	public static List<WorldPoint> buildPath(WorldPoint destination)

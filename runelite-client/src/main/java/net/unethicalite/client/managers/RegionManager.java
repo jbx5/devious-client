@@ -9,6 +9,7 @@ import net.runelite.api.InventoryID;
 import net.runelite.api.Tile;
 import net.runelite.api.coords.Direction;
 import net.runelite.api.coords.WorldPoint;
+import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.ItemContainerChanged;
 import net.runelite.api.events.WidgetLoaded;
 import net.runelite.api.widgets.WidgetInfo;
@@ -18,9 +19,10 @@ import net.runelite.client.plugins.unethicalite.regions.TileFlag;
 import net.unethicalite.api.entities.Players;
 import net.unethicalite.api.game.Game;
 import net.unethicalite.api.movement.Reachable;
+import net.unethicalite.api.movement.pathfinder.TeleportLoader;
 import net.unethicalite.api.movement.pathfinder.TransportLoader;
 import net.unethicalite.api.movement.pathfinder.Walker;
-import net.unethicalite.api.movement.pathfinder.model.JewelryBox;
+import net.unethicalite.api.movement.pathfinder.model.poh.JewelryBox;
 import net.unethicalite.api.movement.pathfinder.model.Transport;
 import net.unethicalite.api.scene.Tiles;
 import net.unethicalite.client.Static;
@@ -64,6 +66,15 @@ public class RegionManager
 			"hasMountedXericsTalisman",
 			"hasJewelryBox"
 	);
+
+	private static final Set<Integer> REFRESH_VARBS = Set.of(
+
+	);
+
+	private static final Set<Integer> REFRESH_VARPS = Set.of(
+
+	);
+
 	private static boolean INVENTORY_CHANGED = false;
 	private static boolean EQUIPMENT_CHANGED = false;
 	private static boolean SKILLS_CHANGED = false;
@@ -166,10 +177,110 @@ public class RegionManager
 			return;
 		}
 
+		executorService.schedule(() ->
+		{
+			String json = GSON.toJson(getTileFlags());
+			RequestBody body = RequestBody.create(JSON_MEDIATYPE, json);
+			Request request = new Request.Builder()
+					.post(body)
+					.url(apiUrl + "/regions")
+					.build();
+			try (Response response = okHttpClient.newCall(request)
+					.execute())
+			{
+				int code = response.code();
+				if (code != 200)
+				{
+					logger.error("Request was unsuccessful: {}", code);
+					return;
+				}
+
+				logger.debug("Region saved successfully");
+			}
+			catch (Exception e)
+			{
+				logger.error("Failed to POST: {}", e.getMessage());
+				e.printStackTrace();
+			}
+		}, 5, TimeUnit.SECONDS);
+	}
+
+	@Subscribe(priority = Integer.MAX_VALUE)
+	public void onGameStateChanged(GameStateChanged event)
+	{
+		// Force a refresh ~1 second after logging in so that everything has loaded.
+		if (event.getGameState() == GameState.LOGGED_IN)
+		{
+			executorService.schedule(() -> {
+				INVENTORY_CHANGED = true;
+				TeleportLoader.refreshTeleports();
+				TransportLoader.refreshTransports();
+			}, 1000, TimeUnit.MILLISECONDS);
+		}
+	}
+
+	public boolean isTransport(List<Transport> transports, WorldPoint from, WorldPoint to)
+	{
+		if (transports == null)
+		{
+			return false;
+		}
+
+		return transports.stream().anyMatch(t -> t.getSource().equals(from) && t.getDestination().equals(to));
+	}
+
+	@Subscribe(priority = Integer.MAX_VALUE)
+	public void onWidgetLoaded(WidgetLoaded event)
+	{
+		if (REFRESH_WIDGET_IDS.contains(event.getGroupId()))
+		{
+			SKILLS_CHANGED = true;
+			TransportLoader.refreshTransports();
+			TeleportLoader.refreshTeleports();
+		}
+	}
+
+	@Subscribe(priority = Integer.MAX_VALUE)
+	public void onItemContainerChanged(ItemContainerChanged event)
+	{
+		if (event.getContainerId() == InventoryID.INVENTORY.getId())
+		{
+			INVENTORY_CHANGED = true;
+			TransportLoader.refreshTransports();
+			TeleportLoader.refreshTeleports();
+		}
+		if (event.getContainerId() == InventoryID.EQUIPMENT.getId())
+		{
+			EQUIPMENT_CHANGED = true;
+			TransportLoader.refreshTransports();
+			TeleportLoader.refreshTeleports();
+		}
+	}
+
+	@Subscribe
+	public void onConfigChanged(ConfigChanged event)
+	{
+		if (!event.getGroup().equals(UnethicaliteConfig.CONFIG_GROUP))
+		{
+			return;
+		}
+		if (pathfinderConfigKeys.contains(event.getKey()))
+		{
+			CONFIG_CHANGED = true;
+			if (Game.isLoggedIn())
+			{
+				TransportLoader.refreshTransports();
+				TeleportLoader.refreshTeleports();
+			}
+		}
+	}
+
+	public List<TileFlag> getTileFlags()
+	{
 		CollisionData[] col = Static.getClient().getCollisionMaps();
 		if (col == null)
 		{
-			return;
+			return new ArrayList<>();
 		}
 
 		List<TileFlag> tileFlags = new ArrayList<>();
@@ -178,7 +289,7 @@ public class RegionManager
 		CollisionData data = col[plane];
 		if (data == null)
 		{
-			return;
+			return new ArrayList<>();
 		}
 
 		int[][] flags = data.getFlags();
@@ -268,80 +379,6 @@ public class RegionManager
 				tileFlags.add(tileFlag);
 			}
 		}
-
-		executorService.schedule(() ->
-		{
-			String json = GSON.toJson(tileFlags);
-			RequestBody body = RequestBody.create(JSON_MEDIATYPE, json);
-			Request request = new Request.Builder()
-					.post(body)
-					.url(apiUrl + "/regions")
-					.build();
-			try (Response response = okHttpClient.newCall(request)
-					.execute())
-			{
-				int code = response.code();
-				if (code != 200)
-				{
-					logger.error("Request was unsuccessful: {}", code);
-					return;
-				}
-
-				logger.debug("Region saved successfully");
-			}
-			catch (Exception e)
-			{
-				logger.error("Failed to POST: {}", e.getMessage());
-				e.printStackTrace();
-			}
-		}, 5, TimeUnit.SECONDS);
-	}
-
-	public boolean isTransport(List<Transport> transports, WorldPoint from, WorldPoint to)
-	{
-		if (transports == null)
-		{
-			return false;
-		}
-
-		return transports.stream().anyMatch(t -> t.getSource().equals(from) && t.getDestination().equals(to));
-	}
-
-	@Subscribe(priority = Integer.MAX_VALUE)
-	public void onWidgetLoaded(WidgetLoaded event)
-	{
-		if (REFRESH_WIDGET_IDS.contains(event.getGroupId()))
-		{
-			SKILLS_CHANGED = true;
-			TransportLoader.refreshStaticTransports();
-		}
-	}
-
-	@Subscribe(priority = Integer.MAX_VALUE)
-	public void onItemContainerChanged(ItemContainerChanged event)
-	{
-		if (event.getContainerId() == InventoryID.INVENTORY.getId())
-		{
-			INVENTORY_CHANGED = true;
-			TransportLoader.refreshStaticTransports();
-		}
-		if (event.getContainerId() == InventoryID.EQUIPMENT.getId())
-		{
-			EQUIPMENT_CHANGED = true;
-			TransportLoader.refreshStaticTransports();
-		}
-	}
-
-	@Subscribe
-	public void onConfigChanged(ConfigChanged event)
-	{
-		if (!event.getGroup().equals(UnethicaliteConfig.CONFIG_GROUP))
-		{
-			return;
-		}
-		if (pathfinderConfigKeys.contains(event.getKey()))
-		{
-			CONFIG_CHANGED = true;
-		}
+		return tileFlags;
 	}
 }

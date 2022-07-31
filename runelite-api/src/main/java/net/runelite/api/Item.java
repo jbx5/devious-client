@@ -43,6 +43,8 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Item implements Interactable, Identifiable, EntityNameable
 {
 	private static final ThreadLocalRandom random = ThreadLocalRandom.current();
+	private static final int BASE_ACTION_PARAM = 451;
+	private static final int MAX_CUSTOM_ACTIONS = 8;
 
 	private final int id;
 	private final int quantity;
@@ -218,14 +220,29 @@ public class Item implements Interactable, Identifiable, EntityNameable
 	@Override
 	public String[] getActions()
 	{
+		if (getType() == Type.EQUIPMENT)
+		{
+			ItemComposition composition = getComposition();
+
+			if (composition == null)
+			{
+				return null;
+			}
+
+			String[] actions = new String[8];
+			actions[0] = "Remove";
+
+			int index = 1;
+			for (int param = BASE_ACTION_PARAM; param < (BASE_ACTION_PARAM + MAX_CUSTOM_ACTIONS) - 1; param++)
+			{
+				actions[index++] = composition.getStringValue(param);
+			}
+			return actions;
+		}
+
 		Widget widget = client.getWidget(widgetId);
 		if (widget != null)
 		{
-			if (getType() == Type.EQUIPMENT)
-			{
-				return widget.getActions();
-			}
-
 			Widget itemChild = widget.getChild(slot);
 			if (itemChild != null)
 			{

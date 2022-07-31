@@ -1,5 +1,9 @@
 package net.unethicalite.api.movement.pathfinder;
 
+import net.runelite.api.coords.Direction;
+import net.unethicalite.api.movement.Reachable;
+import net.unethicalite.client.Static;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -119,6 +123,51 @@ public class GlobalCollisionMap implements CollisionMap
 		int regionY = y % 64;
 
 		return region.get(regionX, regionY, z, w);
+	}
+
+	private GlobalCollisionMap copy()
+	{
+		return new GlobalCollisionMap(this.toBytes());
+	}
+
+	public GlobalCollisionMap withLocalCollisions()
+	{
+		GlobalCollisionMap newMap = this.copy();
+		Static.getRegionManager().getTileFlags().forEach(tileFlag ->
+		{
+			int region = tileFlag.getRegion();
+			int x = tileFlag.getX();
+			int y = tileFlag.getY();
+			int z = tileFlag.getZ();
+			int flag = tileFlag.getFlag();
+
+			if (newMap.regions[region] == null)
+			{
+				newMap.createRegion(region);
+			}
+
+			if (Reachable.isObstacle(flag))
+			{
+				newMap.set(x, y, z, 0, false);
+				newMap.set(x, y, z, 1, false);
+			}
+			else
+			{
+				newMap.set(x, y, z, 0, true);
+				newMap.set(x, y, z, 1, true);
+
+				if (Reachable.isWalled(Direction.NORTH, flag))
+				{
+					newMap.set(x, y, z, 0, false);
+				}
+
+				if (Reachable.isWalled(Direction.EAST, flag))
+				{
+					newMap.set(x, y, z, 1, false);
+				}
+			}
+		});
+		return newMap;
 	}
 
 	public void overwrite(GlobalCollisionMap globalCollisionMap)

@@ -14,6 +14,7 @@ import net.runelite.client.input.KeyManager;
 import net.runelite.client.plugins.PluginManager;
 import net.runelite.client.ui.ClientToolbar;
 import net.runelite.client.ui.overlay.OverlayManager;
+import net.unethicalite.api.movement.pathfinder.CollisionMap;
 import net.unethicalite.api.movement.pathfinder.GlobalCollisionMap;
 import net.unethicalite.api.script.paint.Paint;
 import net.unethicalite.client.config.UnethicaliteConfig;
@@ -70,7 +71,6 @@ public class Static
 	private static ServerPacket serverPacket;
 
 	@Inject
-	@Getter
 	private static GlobalCollisionMap globalCollisionMap;
 
 	@Inject
@@ -143,5 +143,10 @@ public class Static
 	public static void setScriptArgs(String[] scriptArgs)
 	{
 		Static.scriptArgs = scriptArgs;
+	}
+
+	public static CollisionMap getGlobalCollisionMap()
+	{
+		return getClient().isInInstancedRegion() ? globalCollisionMap.withLocalCollisions() : globalCollisionMap;
 	}
 }

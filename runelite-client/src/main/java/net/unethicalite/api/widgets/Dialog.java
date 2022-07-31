@@ -1,5 +1,6 @@
 package net.unethicalite.api.widgets;
 
+import net.unethicalite.api.commons.Predicates;
 import net.unethicalite.api.game.GameThread;
 import net.unethicalite.api.input.Keyboard;
 import net.unethicalite.api.items.GrandExchange;
@@ -13,6 +14,8 @@ import net.runelite.api.widgets.WidgetInfo;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 public class Dialog
@@ -198,6 +201,19 @@ public class Dialog
 		}
 
 		return out;
+	}
+
+	public static boolean hasOption(String option)
+	{
+		return hasOption(Predicates.texts(option));
+	}
+
+	public static boolean hasOption(Predicate<String> option)
+	{
+		return getOptions().stream()
+				.map(Widget::getText)
+				.filter(Objects::nonNull)
+				.anyMatch(option);
 	}
 
 	public static void invokeDialog(DialogOption... dialogOption)

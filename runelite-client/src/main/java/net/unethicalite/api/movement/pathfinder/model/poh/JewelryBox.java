@@ -1,4 +1,4 @@
-package net.unethicalite.api.movement.pathfinder.model;
+package net.unethicalite.api.movement.pathfinder.model.poh;
 
 import lombok.Getter;
 import net.runelite.api.NullObjectID;
