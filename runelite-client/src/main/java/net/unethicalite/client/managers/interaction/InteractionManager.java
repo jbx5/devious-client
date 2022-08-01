@@ -26,8 +26,6 @@ import javax.inject.Singleton;
 import java.awt.Point;
 import java.awt.Rectangle;
 
-import static net.unethicalite.client.managers.interaction.InteractMethod.MOUSE_EVENTS;
-
 @Singleton
 @Slf4j
 public class InteractionManager
@@ -102,6 +100,8 @@ public class InteractionManager
 						mouseHandler.sendClick(finalClickPoint.x, finalClickPoint.y, 1);
 					});
 
+					Time.sleep(50, 100);
+					mouseHandler.sendRelease();
 					break;
 
 				case INVOKE:
@@ -159,14 +159,6 @@ public class InteractionManager
 		{
 			log.error("Interaction failed: {}", ex.getMessage());
 			client.setPendingAutomation(null);
-		}
-		finally
-		{
-			if (config.interactMethod() == MOUSE_EVENTS)
-			{
-				Time.sleep(10, 20);
-				mouseHandler.sendRelease();
-			}
 		}
 	}
 

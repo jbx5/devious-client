@@ -222,47 +222,18 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 			}
 		}
 
-		if ("Automated".equals(option) && opcode == MenuAction.WALK.getId())
+		if ("Automated".equals(event.getMenuOption()) && event.getMenuAction() == MenuAction.WALK)
 		{
-			client.setSelectedSceneTileX(param0);
-			client.setSelectedSceneTileY(param1);
+			client.setSelectedSceneTileX(event.getParam0());
+			client.setSelectedSceneTileY(event.getParam1());
 			client.setViewportWalking(true);
 
 			copy$menuAction(0, 0, CANCEL.getId(), 0, 0, "Automated", "", canvasX, canvasY);
 			return;
 		}
 
-		/*
-		 * The RuneScape client may deprioritize an action in the menu by incrementing the opcode with 2000,
-		 * undo it here so we can get the correct opcode
-		 */
-		boolean decremented = false;
-		if (opcode >= 2000)
-		{
-			decremented = true;
-			opcode -= 2000;
-		}
-
-		if (printMenuActions)
-		{
-			client.getLogger().info(
-					"|MenuAction|: MenuOption={} MenuTarget={} Id={} Opcode={}/{} Param0={} Param1={} CanvasX={} CanvasY={} ItemId={}",
-					event.getMenuOption(), event.getMenuTarget(), event.getId(),
-					event.getMenuAction(), opcode + (decremented ? 2000 : 0),
-					event.getParam0(), event.getParam1(), canvasX, canvasY, event.getItemId()
-			);
-
-			if (menuEntry != null)
-			{
-				client.getLogger().info(
-						"|MenuEntry|: Idx={} MenuOption={} MenuTarget={} Id={} MenuAction={} Param0={} Param1={} Consumer={} IsItemOp={} ItemOp={} ItemID={} Widget={}",
-						menuEntry.getIdx(), menuEntry.getOption(), menuEntry.getTarget(), menuEntry.getIdentifier(), menuEntry.getType(), menuEntry.getParam0(), menuEntry.getParam1(), menuEntry.getConsumer(), menuEntry.isItemOp(), menuEntry.getItemOp(), menuEntry.getItemId(), menuEntry.getWidget()
-				);
-			}
-		}
-
-		if ("Automated".equals(option)
-				&& (opcode == MenuAction.CC_OP.getId() || opcode == MenuAction.CC_OP_LOW_PRIORITY.getId())
+		if ("Automated".equals(event.getMenuOption())
+				&& (event.getMenuAction() == MenuAction.CC_OP || event.getMenuAction() == MenuAction.CC_OP_LOW_PRIORITY)
 				&& event.getItemId() > -1)
 		{
 			client.invokeWidgetAction(event.getId(), event.getParam1(), event.getParam0(), event.getItemId(), event.getMenuTarget());

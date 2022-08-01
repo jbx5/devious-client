@@ -121,10 +121,10 @@ public interface TileObject extends SceneEntity
 	 */
 	String getName();
 
-//	/**
-//	 * Gets the menu actions of the object
-//	 */
-//	String[] getActions();
+	/**
+	 * Gets the menu actions of the object
+	 */
+	String[] getActions();
 
 	Point menuPoint();
 
