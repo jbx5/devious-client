@@ -3,50 +3,49 @@ import net.runelite.mapping.ObfuscatedSignature;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.Export;
-@ObfuscatedName("nm")
+@ObfuscatedName("nh")
 @Implements("Buddy")
 public class Buddy extends User {
-	@ObfuscatedName("r")
-	@ObfuscatedSignature(descriptor = "Lle;")
-	@Export("NetCache_currentResponse")
-	public static NetFileRequest NetCache_currentResponse;
+	@ObfuscatedName("h")
+	@ObfuscatedGetter(intValue = 1154494191)
+	@Export("ItemDefinition_fileCount")
+	public static int ItemDefinition_fileCount;
 
-	@ObfuscatedName("j")
-	@ObfuscatedGetter(intValue = 821675641)
+	@ObfuscatedName("c")
+	@ObfuscatedGetter(intValue = 1482789283)
 	@Export("world")
-	public int world;
+	public int world = -1;
 
-	@ObfuscatedName("e")
-	@ObfuscatedGetter(intValue = 1716524007)
+	@ObfuscatedName("w")
+	@ObfuscatedGetter(intValue = -1921385587)
 	@Export("int2")
 	public int int2;
 
-	@ObfuscatedName("g")
-	@ObfuscatedGetter(intValue = 1730087151)
+	@ObfuscatedName("z")
+	@ObfuscatedGetter(intValue = -1193472669)
 	@Export("rank")
 	public int rank;
 
 	Buddy() {
-		this.world = -1;
 	}
 
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(descriptor = "(III)V", garbageValue = "-1738253192")
+	@ObfuscatedName("at")
+	@ObfuscatedSignature(descriptor = "(IIB)V", garbageValue = "0")
 	@Export("set")
 	void set(int var1, int var2) {
 		this.world = var1;
 		this.int2 = var2;
 	}
 
-	@ObfuscatedName("av")
-	@ObfuscatedSignature(descriptor = "(I)I", garbageValue = "-983995080")
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(descriptor = "(B)I", garbageValue = "0")
 	@Export("getWorld")
 	public int getWorld() {
 		return this.world;
 	}
 
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(descriptor = "(S)Z", garbageValue = "20819")
+	@ObfuscatedName("ax")
+	@ObfuscatedSignature(descriptor = "(B)Z", garbageValue = "111")
 	@Export("hasWorld")
 	public boolean hasWorld() {
 		return this.world > 0;

@@ -3,49 +3,45 @@ import net.runelite.mapping.ObfuscatedSignature;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.Export;
-@ObfuscatedName("hk")
+@ObfuscatedName("hm")
 @Implements("TextureProvider")
 public class TextureProvider implements TextureLoader {
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "[Lgd;")
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(descriptor = "[Lgq;")
 	@Export("textures")
 	Texture[] textures;
 
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "Llo;")
-	@Export("deque")
-	NodeDeque deque;
-
 	@ObfuscatedName("q")
-	@ObfuscatedGetter(intValue = -1240613953)
+	@ObfuscatedSignature(descriptor = "Llt;")
+	@Export("deque")
+	NodeDeque deque = new NodeDeque();
+
+	@ObfuscatedName("f")
+	@ObfuscatedGetter(intValue = -683666133)
 	@Export("capacity")
 	int capacity;
 
-	@ObfuscatedName("f")
-	@ObfuscatedGetter(intValue = 131497903)
+	@ObfuscatedName("u")
+	@ObfuscatedGetter(intValue = 977186461)
 	@Export("remaining")
-	int remaining;
+	int remaining = 0;
 
-	@ObfuscatedName("j")
+	@ObfuscatedName("c")
 	@Export("brightness")
-	double brightness;
+	double brightness = 1.0;
 
-	@ObfuscatedName("e")
-	@ObfuscatedGetter(intValue = 2025819025)
+	@ObfuscatedName("w")
+	@ObfuscatedGetter(intValue = 1825733731)
 	@Export("textureSize")
-	int textureSize;
+	int textureSize = 128;
 
-	@ObfuscatedName("g")
-	@ObfuscatedSignature(descriptor = "Llh;")
+	@ObfuscatedName("z")
+	@ObfuscatedSignature(descriptor = "Llc;")
 	@Export("archive")
 	AbstractArchive archive;
 
-	@ObfuscatedSignature(descriptor = "(Llh;Llh;IDI)V")
+	@ObfuscatedSignature(descriptor = "(Llc;Llc;IDI)V")
 	public TextureProvider(AbstractArchive var1, AbstractArchive var2, int var3, double var4, int var6) {
-		this.deque = new NodeDeque();
-		this.remaining = 0;
-		this.brightness = 1.0;
-		this.textureSize = 128;
 		this.archive = var2;
 		this.capacity = var3;
 		this.remaining = this.capacity;
@@ -60,8 +56,8 @@ public class TextureProvider implements TextureLoader {
 		}
 	}
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(B)I", garbageValue = "-29")
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(descriptor = "(B)I", garbageValue = "-122")
 	@Export("getLoadedPercentage")
 	public int getLoadedPercentage() {
 		int var1 = 0;
@@ -74,7 +70,7 @@ public class TextureProvider implements TextureLoader {
 				int[] var6 = var5.fileIds;
 				for (int var7 = 0; var7 < var6.length; ++var7) {
 					int var8 = var6[var7];
-					if (this.archive.method5849(var8)) {
+					if (this.archive.method5927(var8)) {
 						++var2;
 					}
 				}
@@ -87,15 +83,15 @@ public class TextureProvider implements TextureLoader {
 		}
 	}
 
-	@ObfuscatedName("v")
+	@ObfuscatedName("q")
 	@Export("setBrightness")
 	public void setBrightness(double var1) {
 		this.brightness = var1;
 		this.clear();
 	}
 
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "(IB)[I", garbageValue = "24")
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(descriptor = "(II)[I", garbageValue = "-747714761")
 	@Export("getTexturePixels")
 	public int[] getTexturePixels(int var1) {
 		Texture var2 = this.textures[var1];
@@ -121,28 +117,28 @@ public class TextureProvider implements TextureLoader {
 		return null;
 	}
 
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "(IS)I", garbageValue = "-3917")
+	@ObfuscatedName("u")
+	@ObfuscatedSignature(descriptor = "(II)I", garbageValue = "-2057356400")
 	@Export("getAverageTextureRGB")
 	public int getAverageTextureRGB(int var1) {
 		return this.textures[var1] != null ? this.textures[var1].averageRGB : 0;
 	}
 
-	@ObfuscatedName("j")
-	@ObfuscatedSignature(descriptor = "(IB)Z", garbageValue = "-52")
-	public boolean vmethod4538(int var1) {
-		return this.textures[var1].field2293;
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(descriptor = "(IS)Z", garbageValue = "25521")
+	public boolean vmethod4498(int var1) {
+		return this.textures[var1].field2282;
 	}
 
-	@ObfuscatedName("e")
-	@ObfuscatedSignature(descriptor = "(II)Z", garbageValue = "-1596996574")
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(descriptor = "(IB)Z", garbageValue = "-30")
 	@Export("isLowDetail")
 	public boolean isLowDetail(int var1) {
 		return this.textureSize == 64;
 	}
 
-	@ObfuscatedName("g")
-	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "586737024")
+	@ObfuscatedName("z")
+	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "-1785881776")
 	@Export("clear")
 	public void clear() {
 		for (int var1 = 0; var1 < this.textures.length; ++var1) {
@@ -154,8 +150,8 @@ public class TextureProvider implements TextureLoader {
 		this.remaining = this.capacity;
 	}
 
-	@ObfuscatedName("w")
-	@ObfuscatedSignature(descriptor = "(II)V", garbageValue = "-924908553")
+	@ObfuscatedName("j")
+	@ObfuscatedSignature(descriptor = "(II)V", garbageValue = "777915167")
 	@Export("animate")
 	public void animate(int var1) {
 		for (int var2 = 0; var2 < this.textures.length; ++var2) {
@@ -163,105 +159,6 @@ public class TextureProvider implements TextureLoader {
 			if (var3 != null && var3.animationDirection != 0 && var3.isLoaded) {
 				var3.animate(var1);
 				var3.isLoaded = false;
-			}
-		}
-	}
-
-	@ObfuscatedName("ia")
-	@ObfuscatedSignature(descriptor = "(IIIILjava/lang/String;I)V", garbageValue = "-18765802")
-	@Export("widgetDefaultMenuAction")
-	static void widgetDefaultMenuAction(int var0, int var1, int var2, int var3, String var4) {
-		Widget var5 = ScriptFrame.getWidgetChild(var1, var2);
-		if (var5 != null) {
-			if (var5.onOp != null) {
-				ScriptEvent var6 = new ScriptEvent();
-				var6.widget = var5;
-				var6.opIndex = var0;
-				var6.targetName = var4;
-				var6.args = var5.onOp;
-				BoundaryObject.runScriptEvent(var6);
-			}
-			boolean var11 = true;
-			if (var5.contentType > 0) {
-				var11 = Message.method1065(var5);
-			}
-			if (var11) {
-				int var8 = class124.getWidgetFlags(var5);
-				int var9 = var0 - 1;
-				boolean var7 = (var8 >> var9 + 1 & 1) != 0;
-				if (var7) {
-					PacketBufferNode var10;
-					if (var0 == 1) {
-						var10 = EnumComposition.getPacketBufferNode(ClientPacket.IF_BUTTON1, Client.packetWriter.isaacCipher);
-						var10.packetBuffer.writeInt(var1);
-						var10.packetBuffer.writeShort(var2);
-						var10.packetBuffer.writeShort(var3);
-						Client.packetWriter.addNode(var10);
-					}
-					if (var0 == 2) {
-						var10 = EnumComposition.getPacketBufferNode(ClientPacket.IF_BUTTON2, Client.packetWriter.isaacCipher);
-						var10.packetBuffer.writeInt(var1);
-						var10.packetBuffer.writeShort(var2);
-						var10.packetBuffer.writeShort(var3);
-						Client.packetWriter.addNode(var10);
-					}
-					if (var0 == 3) {
-						var10 = EnumComposition.getPacketBufferNode(ClientPacket.IF_BUTTON3, Client.packetWriter.isaacCipher);
-						var10.packetBuffer.writeInt(var1);
-						var10.packetBuffer.writeShort(var2);
-						var10.packetBuffer.writeShort(var3);
-						Client.packetWriter.addNode(var10);
-					}
-					if (var0 == 4) {
-						var10 = EnumComposition.getPacketBufferNode(ClientPacket.IF_BUTTON4, Client.packetWriter.isaacCipher);
-						var10.packetBuffer.writeInt(var1);
-						var10.packetBuffer.writeShort(var2);
-						var10.packetBuffer.writeShort(var3);
-						Client.packetWriter.addNode(var10);
-					}
-					if (var0 == 5) {
-						var10 = EnumComposition.getPacketBufferNode(ClientPacket.IF_BUTTON5, Client.packetWriter.isaacCipher);
-						var10.packetBuffer.writeInt(var1);
-						var10.packetBuffer.writeShort(var2);
-						var10.packetBuffer.writeShort(var3);
-						Client.packetWriter.addNode(var10);
-					}
-					if (var0 == 6) {
-						var10 = EnumComposition.getPacketBufferNode(ClientPacket.IF_BUTTON6, Client.packetWriter.isaacCipher);
-						var10.packetBuffer.writeInt(var1);
-						var10.packetBuffer.writeShort(var2);
-						var10.packetBuffer.writeShort(var3);
-						Client.packetWriter.addNode(var10);
-					}
-					if (var0 == 7) {
-						var10 = EnumComposition.getPacketBufferNode(ClientPacket.IF_BUTTON7, Client.packetWriter.isaacCipher);
-						var10.packetBuffer.writeInt(var1);
-						var10.packetBuffer.writeShort(var2);
-						var10.packetBuffer.writeShort(var3);
-						Client.packetWriter.addNode(var10);
-					}
-					if (var0 == 8) {
-						var10 = EnumComposition.getPacketBufferNode(ClientPacket.IF_BUTTON8, Client.packetWriter.isaacCipher);
-						var10.packetBuffer.writeInt(var1);
-						var10.packetBuffer.writeShort(var2);
-						var10.packetBuffer.writeShort(var3);
-						Client.packetWriter.addNode(var10);
-					}
-					if (var0 == 9) {
-						var10 = EnumComposition.getPacketBufferNode(ClientPacket.IF_BUTTON9, Client.packetWriter.isaacCipher);
-						var10.packetBuffer.writeInt(var1);
-						var10.packetBuffer.writeShort(var2);
-						var10.packetBuffer.writeShort(var3);
-						Client.packetWriter.addNode(var10);
-					}
-					if (var0 == 10) {
-						var10 = EnumComposition.getPacketBufferNode(ClientPacket.IF_BUTTON10, Client.packetWriter.isaacCipher);
-						var10.packetBuffer.writeInt(var1);
-						var10.packetBuffer.writeShort(var2);
-						var10.packetBuffer.writeShort(var3);
-						Client.packetWriter.addNode(var10);
-					}
-				}
 			}
 		}
 	}

@@ -1,44 +1,57 @@
 import java.net.URL;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.Implements;
 import java.net.Socket;
+import net.runelite.rs.ScriptOpcodes;
 import java.net.InetAddress;
 import java.io.DataInputStream;
 import net.runelite.mapping.Export;
-@ObfuscatedName("fr")
+@ObfuscatedName("ff")
 @Implements("TaskHandler")
 public class TaskHandler implements Runnable {
-	@ObfuscatedName("v")
+	@ObfuscatedName("o")
+	@Export("javaVendor")
+	public static String javaVendor;
+
+	@ObfuscatedName("q")
 	@Export("javaVersion")
 	public static String javaVersion;
 
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "Lfm;")
-	@Export("current")
-	Task current;
+	@ObfuscatedName("h")
+	@ObfuscatedGetter(intValue = -1971059873)
+	@Export("Interpreter_intStackSize")
+	static int Interpreter_intStackSize;
+
+	@ObfuscatedName("eu")
+	@ObfuscatedSignature(descriptor = "Llu;")
+	@Export("archive11")
+	static Archive archive11;
 
 	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "Lfm;")
-	@Export("task")
-	Task task;
+	@ObfuscatedSignature(descriptor = "Lfz;")
+	@Export("current")
+	Task current = null;
 
-	@ObfuscatedName("j")
+	@ObfuscatedName("u")
+	@ObfuscatedSignature(descriptor = "Lfz;")
+	@Export("task")
+	Task task = null;
+
+	@ObfuscatedName("c")
 	@Export("thread")
 	Thread thread;
 
-	@ObfuscatedName("e")
+	@ObfuscatedName("w")
 	@Export("isClosed")
-	boolean isClosed;
+	boolean isClosed = false;
 
 	public TaskHandler() {
-		this.current = null;
-		this.task = null;
-		this.isClosed = false;
-		class360.javaVendor = "Unknown";
+		javaVendor = "Unknown";
 		javaVersion = "1.6";
 		try {
-			class360.javaVendor = System.getProperty("java.vendor");
+			javaVendor = System.getProperty("java.vendor");
 			javaVersion = System.getProperty("java.version");
 		} catch (Exception var2) {
 		}
@@ -49,8 +62,8 @@ public class TaskHandler implements Runnable {
 		this.thread.start();
 	}
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(B)V", garbageValue = "64")
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "1663558948")
 	@Export("close")
 	public final void close() {
 		synchronized(this) {
@@ -63,8 +76,8 @@ public class TaskHandler implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "(IIILjava/lang/Object;B)Lfm;", garbageValue = "0")
+	@ObfuscatedName("q")
+	@ObfuscatedSignature(descriptor = "(IIILjava/lang/Object;I)Lfz;", garbageValue = "2040134052")
 	@Export("newTask")
 	final Task newTask(int var1, int var2, int var3, Object var4) {
 		Task var5 = new Task();
@@ -83,15 +96,15 @@ public class TaskHandler implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "(Ljava/lang/String;IB)Lfm;", garbageValue = "-14")
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(descriptor = "(Ljava/lang/String;II)Lfz;", garbageValue = "-1762952522")
 	@Export("newSocketTask")
 	public final Task newSocketTask(String var1, int var2) {
 		return this.newTask(1, var2, 0, var1);
 	}
 
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "(Ljava/lang/Runnable;II)Lfm;", garbageValue = "966743438")
+	@ObfuscatedName("u")
+	@ObfuscatedSignature(descriptor = "(Ljava/lang/Runnable;II)Lfz;", garbageValue = "-212575664")
 	@Export("newThreadTask")
 	public final Task newThreadTask(Runnable var1, int var2) {
 		return this.newTask(2, var2, 0, var1);
@@ -141,63 +154,60 @@ public class TaskHandler implements Runnable {
 		} 
 	}
 
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "(Ljava/lang/CharSequence;I)Ljava/lang/String;", garbageValue = "-443449853")
-	public static String method3240(CharSequence var0) {
-		String var1 = class229.base37DecodeLong(class339.method6244(var0));
-		if (var1 == null) {
-			var1 = "";
-		}
-		return var1;
-	}
-
-	@ObfuscatedName("y")
-	@ObfuscatedSignature(descriptor = "(IIIZII)J", garbageValue = "608136618")
-	@Export("calculateTag")
-	public static long calculateTag(int var0, int var1, int var2, boolean var3, int var4) {
-		long var5 = ((long) ((var0 & 127) << 0 | (var1 & 127) << 7 | (var2 & 3) << 14)) | (((long) (var4)) & 4294967295L) << 17;
-		if (var3) {
-			var5 |= 65536L;
-		}
-		return var5;
-	}
-
-	@ObfuscatedName("jr")
-	@ObfuscatedSignature(descriptor = "([Lkb;IB)V", garbageValue = "79")
-	@Export("runComponentCloseListeners")
-	static final void runComponentCloseListeners(Widget[] var0, int var1) {
-		for (int var2 = 0; var2 < var0.length; ++var2) {
-			Widget var3 = var0[var2];
-			if (var3 != null) {
-				if (var3.type == 0) {
-					if (var3.children != null) {
-						runComponentCloseListeners(var3.children, var1);
-					}
-					InterfaceParent var4 = ((InterfaceParent) (Client.interfaceParents.get(((long) (var3.id)))));
-					if (var4 != null) {
-						class7.runIntfCloseListeners(var4.group, var1);
-					}
-				}
-				ScriptEvent var5;
-				if (var1 == 0 && var3.onDialogAbort != null) {
-					var5 = new ScriptEvent();
-					var5.widget = var3;
-					var5.args = var3.onDialogAbort;
-					BoundaryObject.runScriptEvent(var5);
-				}
-				if (var1 == 1 && var3.onSubChange != null) {
-					if (var3.childIndex >= 0) {
-						Widget var6 = class140.getWidget(var3.id);
-						if (var6 == null || var6.children == null || var3.childIndex >= var6.children.length || var3 != var6.children[var3.childIndex]) {
-							continue;
-						}
-					}
-					var5 = new ScriptEvent();
-					var5.widget = var3;
-					var5.args = var3.onSubChange;
-					BoundaryObject.runScriptEvent(var5);
-				}
-			}
+	@ObfuscatedName("g")
+	@ObfuscatedSignature(descriptor = "(ILbc;ZI)I", garbageValue = "784335958")
+	static int method3253(int var0, Script var1, boolean var2) {
+		Widget var3 = (var2) ? VertexNormal.scriptDotWidget : class321.scriptActiveWidget;
+		if (var0 == ScriptOpcodes.CC_GETSCROLLX) {
+			Interpreter.Interpreter_intStack[++Interpreter_intStackSize - 1] = var3.scrollX;
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETSCROLLY) {
+			Interpreter.Interpreter_intStack[++Interpreter_intStackSize - 1] = var3.scrollY;
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETTEXT) {
+			Interpreter.Interpreter_stringStack[++GrandExchangeOfferAgeComparator.Interpreter_stringStackSize - 1] = var3.text;
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETSCROLLWIDTH) {
+			Interpreter.Interpreter_intStack[++Interpreter_intStackSize - 1] = var3.scrollWidth;
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETSCROLLHEIGHT) {
+			Interpreter.Interpreter_intStack[++Interpreter_intStackSize - 1] = var3.scrollHeight;
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETMODELZOOM) {
+			Interpreter.Interpreter_intStack[++Interpreter_intStackSize - 1] = var3.modelZoom;
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETMODELANGLE_X) {
+			Interpreter.Interpreter_intStack[++Interpreter_intStackSize - 1] = var3.modelAngleX;
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETMODELANGLE_Z) {
+			Interpreter.Interpreter_intStack[++Interpreter_intStackSize - 1] = var3.modelAngleZ;
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETMODELANGLE_Y) {
+			Interpreter.Interpreter_intStack[++Interpreter_intStackSize - 1] = var3.modelAngleY;
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETTRANS) {
+			Interpreter.Interpreter_intStack[++Interpreter_intStackSize - 1] = var3.transparencyTop;
+			return 1;
+		} else if (var0 == 1610) {
+			Interpreter.Interpreter_intStack[++Interpreter_intStackSize - 1] = var3.transparencyBot;
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETCOLOUR) {
+			Interpreter.Interpreter_intStack[++Interpreter_intStackSize - 1] = var3.color;
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETFILLCOLOUR) {
+			Interpreter.Interpreter_intStack[++Interpreter_intStackSize - 1] = var3.color2;
+			return 1;
+		} else if (var0 == 1613) {
+			Interpreter.Interpreter_intStack[++Interpreter_intStackSize - 1] = var3.fillMode.rsOrdinal();
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETMODELTRANSPARENT) {
+			Interpreter.Interpreter_intStack[++Interpreter_intStackSize - 1] = (var3.modelTransparency) ? 1 : 0;
+			return 1;
+		} else if (var0 != 1615 && var0 != 1616) {
+			return 2;
+		} else {
+			++Interpreter_intStackSize;
+			return 1;
 		}
 	}
 }

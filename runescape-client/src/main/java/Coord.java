@@ -3,25 +3,30 @@ import net.runelite.mapping.ObfuscatedSignature;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.Export;
-@ObfuscatedName("kd")
+@ObfuscatedName("kp")
 @Implements("Coord")
 public class Coord {
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(intValue = 1382052049)
+	@ObfuscatedName("ne")
+	@ObfuscatedGetter(intValue = 1208888331)
+	@Export("selectedSpellFlags")
+	static int selectedSpellFlags;
+
+	@ObfuscatedName("o")
+	@ObfuscatedGetter(intValue = 1220578687)
 	@Export("plane")
 	public int plane;
 
-	@ObfuscatedName("v")
-	@ObfuscatedGetter(intValue = 798305999)
+	@ObfuscatedName("q")
+	@ObfuscatedGetter(intValue = -1712596677)
 	@Export("x")
 	public int x;
 
-	@ObfuscatedName("q")
-	@ObfuscatedGetter(intValue = -1552762679)
+	@ObfuscatedName("f")
+	@ObfuscatedGetter(intValue = -1113097037)
 	@Export("y")
 	public int y;
 
-	@ObfuscatedSignature(descriptor = "(Lkd;)V")
+	@ObfuscatedSignature(descriptor = "(Lkp;)V")
 	public Coord(Coord var1) {
 		this.plane = var1.plane;
 		this.x = var1.x;
@@ -44,8 +49,8 @@ public class Coord {
 		}
 	}
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(B)I", garbageValue = "34")
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(descriptor = "(I)I", garbageValue = "62533759")
 	@Export("packed")
 	public int packed() {
 		int var2 = this.plane;
@@ -55,8 +60,8 @@ public class Coord {
 		return var1;
 	}
 
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "(Lkd;I)Z", garbageValue = "-326273528")
+	@ObfuscatedName("q")
+	@ObfuscatedSignature(descriptor = "(Lkp;I)Z", garbageValue = "1957084070")
 	@Export("equalsCoord")
 	boolean equalsCoord(Coord var1) {
 		if (this.plane != var1.plane) {
@@ -68,11 +73,15 @@ public class Coord {
 		}
 	}
 
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "(Ljava/lang/String;I)Ljava/lang/String;", garbageValue = "65710498")
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(descriptor = "(Ljava/lang/String;B)Ljava/lang/String;", garbageValue = "37")
 	@Export("toString")
 	String toString(String var1) {
 		return this.plane + var1 + (this.x >> 6) + var1 + (this.y >> 6) + var1 + (this.x & 63) + var1 + (this.y & 63);
+	}
+
+	public String toString() {
+		return this.toString(",");
 	}
 
 	public boolean equals(Object var1) {
@@ -87,48 +96,20 @@ public class Coord {
 		return this.packed();
 	}
 
-	public String toString() {
-		return this.toString(",");
-	}
-
-	@ObfuscatedName("in")
-	@ObfuscatedSignature(descriptor = "(ILjava/lang/String;I)V", garbageValue = "1586830806")
-	static void method5549(int var0, String var1) {
-		int var2 = Players.Players_count;
-		int[] var3 = Players.Players_indices;
-		boolean var4 = false;
-		Username var5 = new Username(var1, HealthBarDefinition.loginType);
-		for (int var6 = 0; var6 < var2; ++var6) {
-			Player var7 = Client.players[var3[var6]];
-			if (var7 != null && var7 != class101.localPlayer && var7.username != null && var7.username.equals(var5)) {
-				PacketBufferNode var8;
-				if (var0 == 1) {
-					var8 = EnumComposition.getPacketBufferNode(ClientPacket.OPPLAYER1, Client.packetWriter.isaacCipher);
-					var8.packetBuffer.writeShort(var3[var6]);
-					var8.packetBuffer.writeByte(0);
-					Client.packetWriter.addNode(var8);
-				} else if (var0 == 4) {
-					var8 = EnumComposition.getPacketBufferNode(ClientPacket.OPPLAYER4, Client.packetWriter.isaacCipher);
-					var8.packetBuffer.writeByteAdd(0);
-					var8.packetBuffer.writeShortAdd(var3[var6]);
-					Client.packetWriter.addNode(var8);
-				} else if (var0 == 6) {
-					var8 = EnumComposition.getPacketBufferNode(ClientPacket.OPPLAYER6, Client.packetWriter.isaacCipher);
-					var8.packetBuffer.writeShortLE(var3[var6]);
-					var8.packetBuffer.writeByteAdd(0);
-					Client.packetWriter.addNode(var8);
-				} else if (var0 == 7) {
-					var8 = EnumComposition.getPacketBufferNode(ClientPacket.OPPLAYER7, Client.packetWriter.isaacCipher);
-					var8.packetBuffer.writeShort(var3[var6]);
-					var8.packetBuffer.writeByte(0);
-					Client.packetWriter.addNode(var8);
-				}
-				var4 = true;
-				break;
+	@ObfuscatedName("lf")
+	@ObfuscatedSignature(descriptor = "(IIZB)V", garbageValue = "-72")
+	static final void method5543(int var0, int var1, boolean var2) {
+		if (Client.currentClanChannels[var0] != null) {
+			if (var1 >= 0 && var1 < Client.currentClanChannels[var0].method3117()) {
+				ClanChannelMember var3 = ((ClanChannelMember) (Client.currentClanChannels[var0].members.get(var1)));
+				PacketBufferNode var4 = class433.getPacketBufferNode(ClientPacket.field3017, Client.packetWriter.isaacCipher);
+				var4.packetBuffer.writeByte(4 + class92.stringCp1252NullTerminatedByteSize(var3.username.getName()));
+				var4.packetBuffer.writeByte(var0);
+				var4.packetBuffer.writeShort(var1);
+				var4.packetBuffer.writeBoolean(var2);
+				var4.packetBuffer.writeStringCp1252NullTerminated(var3.username.getName());
+				Client.packetWriter.addNode(var4);
 			}
-		}
-		if (!var4) {
-			class290.addGameMessage(4, "", "Unable to find " + var1);
 		}
 	}
 }

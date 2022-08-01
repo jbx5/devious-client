@@ -1,7 +1,6 @@
 package net.unethicalite.client.managers;
 
 import com.github.kwhat.jnativehook.GlobalScreen;
-import com.github.kwhat.jnativehook.NativeHookException;
 import com.github.kwhat.jnativehook.keyboard.NativeKeyEvent;
 import com.github.kwhat.jnativehook.keyboard.NativeKeyListener;
 import com.github.kwhat.jnativehook.mouse.NativeMouseEvent;
@@ -68,7 +67,7 @@ public class InputManager implements MouseListener, NativeMouseInputListener, Na
 			{
 				GlobalScreen.registerNativeHook();
 			}
-			catch (NativeHookException e)
+			catch (Exception e)
 			{
 				log.error("Failed to register native hook", e);
 			}

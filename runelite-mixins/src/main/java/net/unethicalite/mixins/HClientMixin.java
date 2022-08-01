@@ -8,7 +8,6 @@ import net.runelite.api.events.StatChanged;
 import net.runelite.api.mixins.Copy;
 import net.runelite.api.mixins.FieldHook;
 import net.runelite.api.mixins.Inject;
-import net.runelite.api.mixins.MethodHook;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Replace;
 import net.runelite.api.mixins.Shadow;
@@ -20,10 +19,12 @@ import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSGameObject;
 import net.runelite.rs.api.RSGraphicsObject;
 import net.runelite.rs.api.RSItemComposition;
+import net.runelite.rs.api.RSPacketBuffer;
 import net.runelite.rs.api.RSPacketWriter;
 import net.runelite.rs.api.RSProjectile;
 import net.runelite.rs.api.RSRenderable;
 import net.runelite.rs.api.RSRuneLiteMenuEntry;
+import net.runelite.rs.api.RSServerPacket;
 import net.runelite.rs.api.RSTile;
 import net.unethicalite.api.events.ExperienceGained;
 import net.unethicalite.api.events.LobbyWorldSelectToggled;
@@ -135,28 +136,6 @@ public abstract class HClientMixin implements RSClient
 	public static void clientPlaneChanged(int idx)
 	{
 		client.getCallbacks().post(new PlaneChanged(client.getPlane()));
-	}
-
-	@Inject
-	@MethodHook("menu")
-	public void menu()
-	{
-		MenuAutomated menu = automatedMenu.getAndSet(null);
-		if (menu != null)
-		{
-			client.setDraggedWidget(null);
-			client.setIf1DraggedWidget(null);
-			client.setMenuOptionCount(1);
-			int idx = client.getMenuOptionCount() - 1;
-
-			client.getMenuArguments1()[idx] = menu.getParam0();
-			client.getMenuArguments2()[idx] = menu.getParam1();
-			client.getMenuOpcodes()[idx] = menu.getOpcode().getId();
-			client.getMenuIdentifiers()[idx] = menu.getIdentifier();
-			client.getMenuOptions()[idx] = menu.getOption();
-			client.getMenuTargets()[idx] = menu.getTarget();
-			client.getMenuForceLeftClick()[idx] = true;
-		}
 	}
 
 	@Inject
@@ -308,10 +287,17 @@ public abstract class HClientMixin implements RSClient
 	}
 
 	@Inject
-	@MethodHook(value = "method1120", end = true)
-	public void onServerPacketRead(RSPacketWriter packetWriter)
+	public static void onServerPacketReceived(ServerPacketReceived serverPacketReceived)
 	{
-		client.getCallbacks().post(new ServerPacketReceived(packetWriter.getServerPacket()));
+		RSPacketWriter packetWriter = client.getPacketWriter();
+		RSPacketBuffer buffer = packetWriter.getPacketBuffer();
+		RSServerPacket serverPacket = packetWriter.getServerPacket();
+
+		serverPacketReceived.setServerPacket(serverPacket);
+		serverPacketReceived.setPacketBuffer(buffer);
+		serverPacketReceived.setLength(packetWriter.getServerPacketLength());
+
+		client.getCallbacks().post(serverPacketReceived);
 	}
 
 	@Override

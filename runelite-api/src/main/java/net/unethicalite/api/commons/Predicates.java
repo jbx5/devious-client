@@ -46,6 +46,26 @@ public class Predicates
 		};
 	}
 
+	public static Predicate<String> textContains(String subString, boolean caseSensitive)
+	{
+		return t ->
+		{
+			if (caseSensitive)
+			{
+				return t.contains(subString);
+			}
+			else
+			{
+				return t.toLowerCase().contains(subString.toLowerCase());
+			}
+		};
+	}
+
+	public static Predicate<String> textContains(String subString)
+	{
+		return textContains(subString, true);
+	}
+
 	public static <T extends EntityNameable> Predicate<T> names(Collection<String> names)
 	{
 		return t -> names.contains(t.getName());

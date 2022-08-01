@@ -91,7 +91,7 @@ jobs:
       - name: Publish to Unethicalite Maven Repo
         uses: gradle/gradle-build-action@0d13054264b0bb894ded474f08ebb30921341cee
         with:
-          arguments: runelite-client:publish runelite-api:publish http-api:publish runescape-api:publish cache:publish injection-annotations:publish
+          arguments: runelite-client:publish runelite-api:publish http-api:publish runescape-api:publish cache:publish injection-annotations:publish deobfuscator:publish -x test
         env:
           REPO_URL: ${{ secrets.REPO_RELEASES_URL }}
           REPO_USERNAME: ${{ secrets.REPO_USERNAME }}

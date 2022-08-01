@@ -3,55 +3,60 @@ import net.runelite.mapping.ObfuscatedSignature;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.Export;
-@ObfuscatedName("bh")
+@ObfuscatedName("bp")
 @Implements("GraphicsObject")
 public class GraphicsObject extends Renderable {
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(intValue = 630502901)
+	@ObfuscatedName("ix")
+	@ObfuscatedGetter(intValue = 1138996141)
+	@Export("selectedItemWidget")
+	static int selectedItemWidget;
+
+	@ObfuscatedName("o")
+	@ObfuscatedGetter(intValue = -1047624505)
 	@Export("id")
 	int id;
 
-	@ObfuscatedName("v")
-	@ObfuscatedGetter(intValue = -1889786839)
+	@ObfuscatedName("q")
+	@ObfuscatedGetter(intValue = 1499775571)
 	@Export("cycleStart")
 	int cycleStart;
 
-	@ObfuscatedName("q")
-	@ObfuscatedGetter(intValue = 844498895)
+	@ObfuscatedName("f")
+	@ObfuscatedGetter(intValue = 1264391023)
 	@Export("plane")
 	int plane;
 
-	@ObfuscatedName("f")
-	@ObfuscatedGetter(intValue = 1978807023)
+	@ObfuscatedName("u")
+	@ObfuscatedGetter(intValue = -336804817)
 	@Export("x")
 	int x;
 
-	@ObfuscatedName("j")
-	@ObfuscatedGetter(intValue = 926391019)
+	@ObfuscatedName("c")
+	@ObfuscatedGetter(intValue = -1743079855)
 	@Export("y")
 	int y;
 
-	@ObfuscatedName("e")
-	@ObfuscatedGetter(intValue = 574718691)
+	@ObfuscatedName("w")
+	@ObfuscatedGetter(intValue = -1982831053)
 	@Export("z")
 	int z;
 
-	@ObfuscatedName("g")
+	@ObfuscatedName("z")
 	@ObfuscatedSignature(descriptor = "Lgc;")
 	@Export("sequenceDefinition")
 	SequenceDefinition sequenceDefinition;
 
-	@ObfuscatedName("w")
-	@ObfuscatedGetter(intValue = -1310150497)
+	@ObfuscatedName("j")
+	@ObfuscatedGetter(intValue = 1475288121)
 	@Export("frame")
 	int frame;
 
-	@ObfuscatedName("y")
-	@ObfuscatedGetter(intValue = 426269681)
+	@ObfuscatedName("h")
+	@ObfuscatedGetter(intValue = -1798816539)
 	@Export("frameCycle")
 	int frameCycle;
 
-	@ObfuscatedName("i")
+	@ObfuscatedName("a")
 	@Export("isFinished")
 	boolean isFinished;
 
@@ -65,17 +70,17 @@ public class GraphicsObject extends Renderable {
 		this.y = var4;
 		this.z = var5;
 		this.cycleStart = var7 + var6;
-		int var8 = ObjectSound.SpotAnimationDefinition_get(this.id).sequence;
+		int var8 = class13.SpotAnimationDefinition_get(this.id).sequence;
 		if (var8 != -1) {
 			this.isFinished = false;
-			this.sequenceDefinition = ScriptFrame.SequenceDefinition_get(var8);
+			this.sequenceDefinition = class14.SequenceDefinition_get(var8);
 		} else {
 			this.isFinished = true;
 		}
 	}
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(II)V", garbageValue = "-1454918275")
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(descriptor = "(II)V", garbageValue = "-453540716")
 	@Export("advance")
 	final void advance(int var1) {
 		if (!this.isFinished) {
@@ -91,18 +96,18 @@ public class GraphicsObject extends Renderable {
 				} 
 			} else {
 				this.frame += var1;
-				if (this.frame >= this.sequenceDefinition.method3835()) {
+				if (this.frame >= this.sequenceDefinition.method3812()) {
 					this.isFinished = true;
 				}
 			}
 		}
 	}
 
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "(I)Lhy;", garbageValue = "1081110576")
+	@ObfuscatedName("q")
+	@ObfuscatedSignature(descriptor = "(I)Lhd;", garbageValue = "-842208187")
 	@Export("getModel")
 	protected final Model getModel() {
-		SpotAnimationDefinition var1 = ObjectSound.SpotAnimationDefinition_get(this.id);
+		SpotAnimationDefinition var1 = class13.SpotAnimationDefinition_get(this.id);
 		Model var2;
 		if (!this.isFinished) {
 			var2 = var1.getModel(this.frame);
@@ -110,39 +115,6 @@ public class GraphicsObject extends Renderable {
 			var2 = var1.getModel(-1);
 		}
 		return var2 == null ? null : var2;
-	}
-
-	@ObfuscatedName("i")
-	@ObfuscatedSignature(descriptor = "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V", garbageValue = "337794204")
-	static void method1877(String var0, String var1, String var2) {
-		WorldMapData_1.method4872(7);
-		class101.setLoginResponseString(var0, var1, var2);
-	}
-
-	@ObfuscatedName("ki")
-	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "2056411217")
-	static void method1870() {
-		for (InterfaceParent var0 = ((InterfaceParent) (Client.interfaceParents.first())); var0 != null; var0 = ((InterfaceParent) (Client.interfaceParents.next()))) {
-			int var1 = var0.group;
-			if (WorldMapSection2.loadInterface(var1)) {
-				boolean var2 = true;
-				Widget[] var3 = SoundCache.Widget_interfaceComponents[var1];
-				int var4;
-				for (var4 = 0; var4 < var3.length; ++var4) {
-					if (var3[var4] != null) {
-						var2 = var3[var4].isIf3;
-						break;
-					}
-				}
-				if (!var2) {
-					var4 = ((int) (var0.key));
-					Widget var5 = class140.getWidget(var4);
-					if (var5 != null) {
-						ChatChannel.invalidateWidget(var5);
-					}
-				}
-			}
-		}
 	}
 
 	public GraphicsObject() {

@@ -3,12 +3,10 @@ package net.unethicalite.api.game;
 import lombok.Getter;
 import lombok.Setter;
 import net.unethicalite.api.account.GameAccount;
-import net.unethicalite.api.movement.pathfinder.GlobalCollisionMap;
 import net.unethicalite.api.widgets.Tab;
 import net.unethicalite.api.widgets.Tabs;
 import net.unethicalite.api.widgets.Widgets;
 import net.unethicalite.client.Static;
-import net.runelite.api.Client;
 import net.runelite.api.GameState;
 import net.runelite.api.packets.ClientPacket;
 import net.runelite.api.widgets.Widget;
@@ -26,21 +24,9 @@ public class Game
 	private static GameAccount gameAccount = null;
 
 	@Deprecated
-	public static Client getClient()
-	{
-		return Static.getClient();
-	}
-
-	@Deprecated
 	public static ClientPacket getClientPacket()
 	{
 		return Static.getClientPacket();
-	}
-
-	@Deprecated
-	public static GlobalCollisionMap getGlobalCollisionMap()
-	{
-		return Static.getGlobalCollisionMap();
 	}
 
 	public static boolean isLoggedIn()
@@ -56,7 +42,7 @@ public class Game
 
 	public static GameState getState()
 	{
-		return getClient().getGameState();
+		return Static.getClient().getGameState();
 	}
 
 	public static int getWildyLevel()

@@ -122,8 +122,6 @@ public interface ClientPacket
 
 	ClientPacket IF_BUTTOND();
 
-	ClientPacket CLAN_LEAVECHAT();
-
 	ClientPacket OPLOCE();
 
 	ClientPacket OPNPCE();
@@ -213,7 +211,6 @@ public interface ClientPacket
 				Map.entry(OPNPCT(), "OPNPCT"),
 				Map.entry(FRIEND_DELUSER(), "FRIEND_DELUSER"),
 				Map.entry(IF_BUTTOND(), "IF_BUTTOND"),
-				Map.entry(CLAN_LEAVECHAT(), "CLAN_LEAVECHAT"),
 				Map.entry(OPLOCE(), "OPLOCE"),
 				Map.entry(OPNPCE(), "OPNPCE"),
 				Map.entry(EVENT_CAMERA_POSITION(), "EVENT_CAMERA_POSITION"),

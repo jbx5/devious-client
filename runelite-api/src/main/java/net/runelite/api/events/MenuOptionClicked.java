@@ -24,7 +24,6 @@
  */
 package net.runelite.api.events;
 
-import javax.annotation.Nullable;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -33,6 +32,8 @@ import lombok.ToString;
 import net.runelite.api.MenuAction;
 import net.runelite.api.MenuEntry;
 import net.runelite.api.widgets.Widget;
+
+import javax.annotation.Nullable;
 
 /**
  * An event where a menu option has been clicked.
@@ -182,6 +183,11 @@ public class MenuOptionClicked
 		return menuEntry.getItemId();
 	}
 
+	public void setItemId(int itemId)
+	{
+		menuEntry.setItemId(itemId);
+	}
+
 	/**
 	 * Get the widget this menu entry is on, if this is a menu entry
 	 * with an associated widget. Such as eg, CC_OP.
@@ -239,5 +245,6 @@ public class MenuOptionClicked
 		this.setMenuAction(entry.getType());
 		this.setParam0(entry.getParam0());
 		this.setParam1(entry.getParam1());
+		this.setItemId(entry.getItemId());
 	}
 }
