@@ -82,6 +82,7 @@ public abstract class LoopedPlugin extends Plugin implements Runnable
 					{
 						int currentTick = ticks.get();
 						sleepUntil = currentTick + Math.abs(currentSleep);
+						nextSleep = 0;
 					}
 					else
 					{
