@@ -87744,26 +87744,6 @@
   },
   {
     "source": {
-      "x": 3201,
-      "y": 3169,
-      "plane": 0
-    },
-    "destination": {
-      "x": 2452,
-      "y": 4473,
-      "plane": 0
-    },
-    "action": "Use",
-    "objectId": 12094,
-    "requirements": {
-      "itemRequirements": [],
-      "skillRequirements": [],
-      "varRequirements": [],
-      "questRequirements": []
-    }
-  },
-  {
-    "source": {
       "x": 3638,
       "y": 3249,
       "plane": 0
@@ -95835,6 +95815,320 @@
           ]
         }
       ]
+    }
+  },
+  {
+    "source": {
+      "x": 2834,
+      "y": 3332,
+      "plane": 1
+    },
+    "destination": {
+      "x": 2834,
+      "y": 3335,
+      "plane": 0
+    },
+    "action": "Cross",
+    "objectId": 2415,
+    "requirements": {
+      "itemRequirements": [],
+      "skillRequirements": [],
+      "varRequirements": [],
+      "questRequirements": []
+    }
+  },
+  {
+    "source": {
+      "x": 3201,
+      "y": 3169,
+      "plane": 0
+    },
+    "destination": {
+      "x": 3202,
+      "y": 3169,
+      "plane": 0
+    },
+    "action": "Open",
+    "objectId": 2406,
+    "requirements": {
+      "itemRequirements": [],
+      "skillRequirements": [],
+      "varRequirements": [],
+      "questRequirements": []
+    }
+  },
+  {
+    "source": {
+      "x": 3201,
+      "y": 3169,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2452,
+      "y": 4465,
+      "plane": 0
+    },
+    "action": "Open",
+    "objectId": 2406,
+    "requirements": {
+      "itemRequirements": [
+        {
+          "reduction": "OR",
+          "equipped": true,
+          "ids": [
+            772,
+            9084
+          ],
+          "amount": 1
+        }
+      ],
+      "skillRequirements": [],
+      "varRequirements": [],
+      "questRequirements": []
+    }
+  },
+  {
+    "source": {
+      "x": 2677,
+      "y": 3404,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2677,
+      "y": 9804,
+      "plane": 0
+    },
+    "action": "Climb-down",
+    "objectId": 17384,
+    "requirements": {
+      "itemRequirements": [],
+      "skillRequirements": [],
+      "varRequirements": [],
+      "questRequirements": []
+    }
+  },
+  {
+    "source": {
+      "x": 2677,
+      "y": 9804,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2677,
+      "y": 3404,
+      "plane": 0
+    },
+    "action": "Climb-up",
+    "objectId": 17385,
+    "requirements": {
+      "itemRequirements": [],
+      "skillRequirements": [],
+      "varRequirements": [],
+      "questRequirements": []
+    }
+  },
+  {
+    "source": {
+      "x": 2662,
+      "y": 9802,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2662,
+      "y": 9803,
+      "plane": 0
+    },
+    "action": "Open",
+    "objectId": 89,
+    "requirements": {
+      "itemRequirements": [],
+      "skillRequirements": [],
+      "varRequirements": [],
+      "questRequirements": []
+    }
+  },
+  {
+    "source": {
+      "x": 2662,
+      "y": 9803,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2662,
+      "y": 9802,
+      "plane": 0
+    },
+    "action": "Open",
+    "objectId": 89,
+    "requirements": {
+      "itemRequirements": [],
+      "skillRequirements": [],
+      "varRequirements": [],
+      "questRequirements": []
+    }
+  },
+  {
+    "source": {
+      "x": 2641,
+      "y": 9764,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2649,
+      "y": 9805,
+      "plane": 0
+    },
+    "action": "Climb-up",
+    "objectId": 96,
+    "requirements": {
+      "itemRequirements": [],
+      "skillRequirements": [],
+      "varRequirements": [],
+      "questRequirements": []
+    }
+  },
+  {
+    "source": {
+      "x": 2661,
+      "y": 9803,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2661,
+      "y": 9802,
+      "plane": 0
+    },
+    "action": "Open",
+    "objectId": 90,
+    "requirements": {
+      "itemRequirements": [],
+      "skillRequirements": [],
+      "varRequirements": [],
+      "questRequirements": []
+    }
+  },
+  {
+    "source": {
+      "x": 2661,
+      "y": 9802,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2661,
+      "y": 9803,
+      "plane": 0
+    },
+    "action": "Open",
+    "objectId": 90,
+    "requirements": {
+      "itemRequirements": [],
+      "skillRequirements": [],
+      "varRequirements": [],
+      "questRequirements": []
+    }
+  },
+  {
+    "source": {
+      "x": 2641,
+      "y": 9741,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2649,
+      "y": 9805,
+      "plane": 0
+    },
+    "action": "Climb-up",
+    "objectId": 96,
+    "requirements": {
+      "itemRequirements": [],
+      "skillRequirements": [],
+      "varRequirements": [],
+      "questRequirements": []
+    }
+  },
+  {
+    "source": {
+      "x": 2649,
+      "y": 9805,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2641,
+      "y": 9764,
+      "plane": 0
+    },
+    "action": "Climb-down",
+    "objectId": 98,
+    "requirements": {
+      "itemRequirements": [
+        {
+          "reduction": "OR",
+          "equipped": false,
+          "ids": [
+            9804,
+            9805,
+            13280,
+            20720,
+            13140,
+            13139,
+            13138,
+            13137,
+            5014,
+            594,
+            33,
+            32,
+            4550,
+            4702,
+            9065,
+            4539,
+            4531,
+            4534,
+            4524
+          ],
+          "amount": 1
+        }
+      ],
+      "skillRequirements": [],
+      "varRequirements": [],
+      "questRequirements": []
+    }
+  },
+  {
+    "source": {
+      "x": 2649,
+      "y": 9805,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2641,
+      "y": 9764,
+      "plane": 0
+    },
+    "action": "Climb-down",
+    "objectId": 98,
+    "requirements": {
+      "itemRequirements": [
+        {
+          "reduction": "OR",
+          "equipped": true,
+          "ids": [
+            9804,
+            9805,
+            13280,
+            20720,
+            13140,
+            13139,
+            13138,
+            13137,
+            5014
+          ],
+          "amount": 1
+        }
+      ],
+      "skillRequirements": [],
+      "varRequirements": [],
+      "questRequirements": []
     }
   }
 ]
