@@ -463,14 +463,13 @@ public class TransportLoader
 	{
 		return new Transport(source, destination, 10, 0, () ->
 		{
+			if (Dialog.canContinue())
+			{
+				Dialog.continueSpace();
+				return;
+			}
 			if (Dialog.isViewingOptions())
 			{
-				if (Dialog.canContinue())
-				{
-					Dialog.continueSpace();
-					return;
-				}
-
 				if (Dialog.chooseOption(chatOptions))
 				{
 					return;
