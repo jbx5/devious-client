@@ -87744,26 +87744,6 @@
   },
   {
     "source": {
-      "x": 3201,
-      "y": 3169,
-      "plane": 0
-    },
-    "destination": {
-      "x": 2452,
-      "y": 4473,
-      "plane": 0
-    },
-    "action": "Use",
-    "objectId": 12094,
-    "requirements": {
-      "itemRequirements": [],
-      "skillRequirements": [],
-      "varRequirements": [],
-      "questRequirements": []
-    }
-  },
-  {
-    "source": {
       "x": 3638,
       "y": 3249,
       "plane": 0
@@ -95852,6 +95832,56 @@
     "objectId": 2415,
     "requirements": {
       "itemRequirements": [],
+      "skillRequirements": [],
+      "varRequirements": [],
+      "questRequirements": []
+    }
+  },
+  {
+    "source": {
+      "x": 3201,
+      "y": 3169,
+      "plane": 0
+    },
+    "destination": {
+      "x": 3202,
+      "y": 3169,
+      "plane": 0
+    },
+    "action": "Open",
+    "objectId": 2406,
+    "requirements": {
+      "itemRequirements": [],
+      "skillRequirements": [],
+      "varRequirements": [],
+      "questRequirements": []
+    }
+  },
+  {
+    "source": {
+      "x": 3201,
+      "y": 3169,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2452,
+      "y": 4465,
+      "plane": 0
+    },
+    "action": "Open",
+    "objectId": 2406,
+    "requirements": {
+      "itemRequirements": [
+        {
+          "reduction": "OR",
+          "equipped": true,
+          "ids": [
+            772,
+            9084
+          ],
+          "amount": 1
+        }
+      ],
       "skillRequirements": [],
       "varRequirements": [],
       "questRequirements": []
