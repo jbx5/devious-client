@@ -95836,5 +95836,25 @@
         }
       ]
     }
+  },
+  {
+    "source": {
+      "x": 2834,
+      "y": 3332,
+      "plane": 1
+    },
+    "destination": {
+      "x": 2834,
+      "y": 3335,
+      "plane": 0
+    },
+    "action": "Cross",
+    "objectId": 2415,
+    "requirements": {
+      "itemRequirements": [],
+      "skillRequirements": [],
+      "varRequirements": [],
+      "questRequirements": []
+    }
   }
 ]
