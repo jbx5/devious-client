@@ -12,6 +12,7 @@ import net.unethicalite.api.commons.Rand;
 import net.unethicalite.api.commons.Time;
 import net.unethicalite.api.entities.Players;
 import net.unethicalite.api.entities.TileObjects;
+import net.unethicalite.api.game.Game;
 import net.unethicalite.api.items.Equipment;
 import net.unethicalite.api.items.Inventory;
 import net.unethicalite.api.movement.Movement;
@@ -58,6 +59,12 @@ public class Walker
 		if (destination.equals(local.getWorldLocation()))
 		{
 			return true;
+		}
+
+		if (Game.isInCutscene() || Widgets.isVisible(Widgets.get(299, 0)))
+		{
+			Time.sleepTicks(2);
+			return false;
 		}
 
 		Map<WorldPoint, List<Transport>> transports = buildTransportLinks();
