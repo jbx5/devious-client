@@ -8,7 +8,6 @@ import net.runelite.api.events.StatChanged;
 import net.runelite.api.mixins.Copy;
 import net.runelite.api.mixins.FieldHook;
 import net.runelite.api.mixins.Inject;
-import net.runelite.api.mixins.MethodHook;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Replace;
 import net.runelite.api.mixins.Shadow;
@@ -137,30 +136,6 @@ public abstract class HClientMixin implements RSClient
 	public static void clientPlaneChanged(int idx)
 	{
 		client.getCallbacks().post(new PlaneChanged(client.getPlane()));
-	}
-
-	@Inject
-	@MethodHook("menu")
-	public void menu()
-	{
-		int idx = client.getMenuOptionCount() - 1;
-
-		MenuAutomated menu = automatedMenu.getAndSet(null);
-		if (menu != null)
-		{
-			client.setDraggedWidget(null);
-			client.setIf1DraggedWidget(null);
-			client.setMenuOptionCount(1);
-
-			client.getMenuArguments1()[idx] = menu.getParam0();
-			client.getMenuArguments2()[idx] = menu.getParam1();
-			client.getMenuOpcodes()[idx] = menu.getOpcode().getId();
-			client.getMenuIdentifiers()[idx] = menu.getIdentifier();
-			client.getMenuOptions()[idx] = menu.getOption();
-			client.getMenuTargets()[idx] = menu.getTarget();
-			client.getMenuItemIds()[idx] = menu.getItemId();
-			client.getMenuForceLeftClick()[idx] = true;
-		}
 	}
 
 	@Inject

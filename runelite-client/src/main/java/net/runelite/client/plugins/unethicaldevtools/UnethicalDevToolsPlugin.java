@@ -198,11 +198,6 @@ public class UnethicalDevToolsPlugin extends Plugin
 			}
 		}
 
-		if (config.consumePacket())
-		{
-			e.setConsumed(true);
-		}
-
 		String packetName = Static.getServerPacket().getServerPackets().get(serverPacket);
 		String id = packetName != null ? packetName : String.valueOf(serverPacket.getId());
 

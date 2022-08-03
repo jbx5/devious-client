@@ -16,7 +16,12 @@ public class DepositBox
 	private static final Supplier<Widget> DEPOSIT_LOOTINGBAG = () -> Widgets.get(192, 8);
 	private static final Supplier<Widget> ROOT = () -> Widgets.get(192, 1);
 	private static final Supplier<Widget> EXIT = () -> Widgets.get(192, 1, 11);
-
+	private static final Supplier<Widget> QUANTITY_ONE = () -> Widgets.get(192, 11);
+	private static final Supplier<Widget> QUANTITY_FIVE = () -> Widgets.get(192, 13);
+	private static final Supplier<Widget> QUANTITY_TEN = () -> Widgets.get(192, 15);
+	private static final Supplier<Widget> QUANTITY_X = () -> Widgets.get(192, 17);
+	private static final Supplier<Widget> QUANTITY_ALL = () -> Widgets.get(192, 19);
+	
 	public static void depositInventory()
 	{
 		Widget depositInventory = DEPOSIT_INV.get();
@@ -50,6 +55,61 @@ public class DepositBox
 		depositLootingbag.interact(0);
 	}
 
+		public static void selectQuantityOne()
+	{
+		Widget selectQuantityOne = QUANTITY_ONE.get();
+		if (!Widgets.isVisible(selectQuantityOne))
+		{
+			return;
+		}
+
+		selectQuantityOne.interact(0);
+	}
+
+	public static void selectQuantityFive()
+	{
+		Widget selectQuantityFive = QUANTITY_FIVE.get();
+		if (!Widgets.isVisible(selectQuantityFive))
+		{
+			return;
+		}
+
+		selectQuantityFive.interact(0);
+	}
+
+	public static void selectQuantityTen()
+	{
+		Widget selectQuantityTen = QUANTITY_TEN.get();
+		if (!Widgets.isVisible(selectQuantityTen))
+		{
+			return;
+		}
+
+		selectQuantityTen.interact(0);
+	}
+
+	public static void selectQuantityX()
+	{
+		Widget selectQuantityX = QUANTITY_X.get();
+		if (!Widgets.isVisible(selectQuantityX))
+		{
+			return;
+		}
+
+		selectQuantityX.interact(0);
+	}
+
+	public static void selectQuantityAll()
+	{
+		Widget selectQuantityAll = QUANTITY_ALL.get();
+		if (!Widgets.isVisible(selectQuantityAll))
+		{
+			return;
+		}
+
+		selectQuantityAll.interact(0);
+	}
+	
 	public static boolean isOpen()
 	{
 		Widget depositBox = ROOT.get();

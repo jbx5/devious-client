@@ -101,7 +101,7 @@ public class RegionHandler
 			return;
 		}
 
-		regionManager.sendRegion();
+//		regionManager.sendRegion();
 	}
 
 	@Subscribe
@@ -112,7 +112,7 @@ public class RegionHandler
 			return;
 		}
 
-		regionManager.sendRegion();
+//		regionManager.sendRegion();
 	}
 
 	private void loadCachedCollisionMap()

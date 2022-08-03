@@ -1,11 +1,31 @@
 package net.unethicalite.api.movement.pathfinder.model;
 
 import net.runelite.api.ItemID;
+import net.runelite.api.coords.WorldArea;
 import net.runelite.api.coords.WorldPoint;
+import net.runelite.api.widgets.WidgetInfo;
+import net.unethicalite.api.movement.pathfinder.TransportLoader;
+
+import java.util.List;
 
 public class MovementConstants
 {
+    public static final List<TransportLoader.SpiritTree> SPIRIT_TREES = List.of(
+            new TransportLoader.SpiritTree(new WorldPoint(2542, 3170, 0), "Tree Gnome Village"),
+            new TransportLoader.SpiritTree(new WorldPoint(2461, 3444, 0), "Gnome Stronghold"),
+            new TransportLoader.SpiritTree(new WorldPoint(2555, 3259, 0), "Battlefield of Khazard"),
+            new TransportLoader.SpiritTree(new WorldPoint(3185, 3508, 0), "Grand Exchange"),
+            new TransportLoader.SpiritTree(new WorldPoint(2488, 2850, 0), "Feldip Hills")
+    );
+    public static final List<TransportLoader.MagicMushtree> MUSHTREES = List.of(
+            new TransportLoader.MagicMushtree(new WorldPoint(3676, 3871, 0), WidgetInfo.FOSSIL_MUSHROOM_MEADOW),
+            new TransportLoader.MagicMushtree(new WorldPoint(3764, 3879, 1), WidgetInfo.FOSSIL_MUSHROOM_HOUSE),
+            new TransportLoader.MagicMushtree(new WorldPoint(3676, 3755, 0), WidgetInfo.FOSSIL_MUSHROOM_SWAMP),
+            new TransportLoader.MagicMushtree(new WorldPoint(3760, 3758, 0), WidgetInfo.FOSSIL_MUSHROOM_VALLEY)
+    );
 
+    public static final WorldArea WILDERNESS_ABOVE_GROUND = new WorldArea(2944, 3523, 448, 448, 0);
+    public static final WorldArea WILDERNESS_UNDERGROUND = new WorldArea(2944, 9918, 320, 442, 0);
     public static WorldPoint HOUSE_POINT = new WorldPoint(10000, 4000, 1);
 
     public static final int[] RING_OF_DUELING = new int[]
@@ -119,6 +139,26 @@ public class MovementConstants
                     ItemID.SKILLS_NECKLACE3,
                     ItemID.SKILLS_NECKLACE2,
                     ItemID.SKILLS_NECKLACE1,
+            };
+
+    public static final int[] TELEPORT_CRYSTAL = new int[]
+            {
+                    ItemID.ETERNAL_TELEPORT_CRYSTAL,
+                    ItemID.TELEPORT_CRYSTAL_5,
+                    ItemID.TELEPORT_CRYSTAL_4,
+                    ItemID.TELEPORT_CRYSTAL_5,
+                    ItemID.TELEPORT_CRYSTAL_2,
+                    ItemID.TELEPORT_CRYSTAL_1
+            };
+
+    public static final int[] ENCHANTED_LYRE = new int[]
+            {
+                    ItemID.ENCHANTED_LYREI,
+                    ItemID.ENCHANTED_LYRE5,
+                    ItemID.ENCHANTED_LYRE4,
+                    ItemID.ENCHANTED_LYRE3,
+                    ItemID.ENCHANTED_LYRE2,
+                    ItemID.ENCHANTED_LYRE1
             };
 
 }

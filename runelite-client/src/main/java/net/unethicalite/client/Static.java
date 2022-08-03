@@ -1,5 +1,7 @@
 package net.unethicalite.client;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
 import lombok.Getter;
 import net.runelite.api.Client;
 import net.runelite.api.packets.ClientPacket;
@@ -9,11 +11,13 @@ import net.runelite.client.chat.ChatMessageManager;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.game.ItemManager;
+import net.runelite.client.game.SpriteManager;
 import net.runelite.client.game.WorldService;
 import net.runelite.client.input.KeyManager;
 import net.runelite.client.plugins.PluginManager;
 import net.runelite.client.ui.ClientToolbar;
 import net.runelite.client.ui.overlay.OverlayManager;
+import net.unethicalite.api.movement.pathfinder.CollisionMap;
 import net.unethicalite.api.movement.pathfinder.GlobalCollisionMap;
 import net.unethicalite.api.script.paint.Paint;
 import net.unethicalite.client.config.UnethicaliteConfig;
@@ -27,9 +31,6 @@ import net.unethicalite.client.managers.QuestManager;
 import net.unethicalite.client.managers.RegionManager;
 import net.unethicalite.client.managers.SettingsManager;
 import net.unethicalite.client.managers.interaction.InteractionManager;
-
-import javax.inject.Inject;
-import javax.inject.Singleton;
 
 @Singleton
 public class Static
@@ -70,7 +71,6 @@ public class Static
 	private static ServerPacket serverPacket;
 
 	@Inject
-	@Getter
 	private static GlobalCollisionMap globalCollisionMap;
 
 	@Inject
@@ -138,10 +138,19 @@ public class Static
 	private static PluginRepoManager pluginRepoManager;
 
 	@Inject
+	@Getter
+	private static SpriteManager spriteManager;
+
+	@Inject
 	private static SettingsManager settingsManager;
 
 	public static void setScriptArgs(String[] scriptArgs)
 	{
 		Static.scriptArgs = scriptArgs;
+	}
+
+	public static CollisionMap getGlobalCollisionMap()
+	{
+		return getClient().isInInstancedRegion() ? globalCollisionMap.withLocalCollisions() : globalCollisionMap;
 	}
 }

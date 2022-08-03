@@ -12,4 +12,9 @@ public class Quests
         return QuestManager.getQuestStates().get(quest);
     }
 
+    public static boolean isFinished(Quest quest)
+    {
+        return QuestManager.getQuestStates().get(quest) == QuestState.FINISHED;
+    }
+
 }

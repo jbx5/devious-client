@@ -28,6 +28,10 @@ public class Combat
 
 	private static final int VENOM_THRESHOLD = 1000000;
 
+	private static final int ANTIFIRE = 3981;
+
+	private static final int SUPER_ANTIFIRE = 6101;
+
 	public static boolean isRetaliating()
 	{
 		return Vars.getVarp(VarPlayer.AUTO_RETALIATE.getId()) == 0;
@@ -51,6 +55,16 @@ public class Combat
 	public static int getSpecEnergy()
 	{
 		return Vars.getVarp(SPEC_ENERGY_VARP) / 10;
+	}
+
+	public static boolean isAntifired()
+	{
+		return Vars.getBit(ANTIFIRE) > 0;
+	}
+
+	public static boolean isSuperAntifired()
+	{
+		return Vars.getBit(SUPER_ANTIFIRE) > 0;
 	}
 
 	public static void toggleSpec()
