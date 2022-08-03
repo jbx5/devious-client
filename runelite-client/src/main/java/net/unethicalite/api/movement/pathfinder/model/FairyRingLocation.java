@@ -29,7 +29,7 @@ public enum FairyRingLocation
     BIQ("BIQ", new WorldPoint(3248, 3095, 0)),
     BIS("BIS", new WorldPoint(2635, 3268, 0)),
     BJP("BJP", new WorldPoint(2264, 2976, 0)),
-    BJS("BJS", new WorldPoint(2147, 3069, 0)),
+    BJS("BJS", new WorldPoint(2150, 3071, 0)),
     BKP("BKP", new WorldPoint(2384, 3037, 0)),
     BKR("BKR", new WorldPoint(3468, 3433, 0)),
     BLP("BLP", new WorldPoint(2432, 5127, 0)),

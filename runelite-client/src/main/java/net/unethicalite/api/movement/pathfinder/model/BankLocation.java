@@ -30,7 +30,7 @@ public enum BankLocation
 	CASTLE_WARS_BANK(new WorldArea(2435, 3081, 12, 18, 0)),
 	LLETYA_BANK(new WorldArea(2349, 3160, 8, 7, 0)),
 	GRAND_TREE_WEST_BANK(new WorldArea(2436, 3484, 9, 8, 1)),
-	GRAND_TREE_SOUTH_BANK(new WorldArea(2446, 3476, 8, 8, 1)),
+	GRAND_TREE_SOUTH_BANK(new WorldArea(2448, 3476, 8, 8, 1)),
 	TREE_GNOME_STRONGHOLD_BANK(new WorldArea(2441, 3414, 11, 23, 1)),
 	SHILO_VILLAGE_BANK(new WorldArea(2842, 2951, 20, 8, 0)),
 	NEITIZNOT_BANK(new WorldArea(2334, 3805, 6, 2, 0)),
