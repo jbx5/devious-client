@@ -5,8 +5,6 @@ import net.unethicalite.api.game.GameThread;
 import net.unethicalite.api.game.Vars;
 import net.runelite.api.GameState;
 import net.runelite.api.VarClientInt;
-import net.runelite.api.widgets.Widget;
-import net.runelite.api.widgets.WidgetID;
 import net.unethicalite.client.Static;
 
 import java.util.Arrays;
