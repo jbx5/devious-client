@@ -57,12 +57,12 @@ public class Combat
 		return Vars.getVarp(SPEC_ENERGY_VARP) / 10;
 	}
 
-	public static boolean isAntifire()
+	public static boolean isAntifired()
 	{
 		return Vars.getBit(ANTIFIRE) > 0;
 	}
 
-	public static boolean isSuperAntifire()
+	public static boolean isSuperAntifired()
 	{
 		return Vars.getBit(SUPER_ANTIFIRE) > 0;
 	}
