@@ -28,11 +28,6 @@ class BootstrapPlugin : Plugin<Project> {
             this.clientJar.fileProvider(provider { tasks["jar"].outputs.files.singleFile })
 
             dependsOn(bootstrapDependencies)
-            dependsOn("publish")
-            dependsOn(project(":runelite-api").tasks["publish"])
-            dependsOn(project(":runescape-api").tasks["publish"])
-            dependsOn(project(":http-api").tasks["publish"])
-            dependsOn(project(":runelite-jshell").tasks["publish"])
 
             doLast {
                 copy {
