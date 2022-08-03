@@ -87865,12 +87865,12 @@
   {
     "source": {
       "x": 2502,
-      "y": 3250,
+      "y": 3251,
       "plane": 0
     },
     "destination": {
       "x": 2502,
-      "y": 3251,
+      "y": 3250,
       "plane": 0
     },
     "action": "Open",
@@ -95884,6 +95884,86 @@
     },
     "action": "Climb-down",
     "objectId": 16679,
+    "requirements": {
+      "itemRequirements": [],
+      "skillRequirements": [],
+      "varRequirements": [],
+      "questRequirements": []
+    }
+  },
+  {
+    "source": {
+      "x": 2453,
+      "y": 3231,
+      "plane": 0
+    },
+    "destination": {
+      "x": 3015,
+      "y": 5629,
+      "plane": 0
+    },
+    "action": "Climb",
+    "objectId": 29635,
+    "requirements": {
+      "itemRequirements": [],
+      "skillRequirements": [],
+      "varRequirements": [],
+      "questRequirements": []
+    }
+  },
+  {
+    "source": {
+      "x": 3015,
+      "y": 5629,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2453,
+      "y": 3231,
+      "plane": 0
+    },
+    "action": "Climb",
+    "objectId": 29636,
+    "requirements": {
+      "itemRequirements": [],
+      "skillRequirements": [],
+      "varRequirements": [],
+      "questRequirements": []
+    }
+  },
+  {
+    "source": {
+      "x": 2569,
+      "y": 3121,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2569,
+      "y": 9525,
+      "plane": 0
+    },
+    "action": "Climb-down",
+    "objectId": 16664,
+    "requirements": {
+      "itemRequirements": [],
+      "skillRequirements": [],
+      "varRequirements": [],
+      "questRequirements": []
+    }
+  },
+  {
+    "source": {
+      "x": 2569,
+      "y": 9525,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2569,
+      "y": 3121,
+      "plane": 0
+    },
+    "action": "Climb-up",
+    "objectId": 16665,
     "requirements": {
       "itemRequirements": [],
       "skillRequirements": [],
