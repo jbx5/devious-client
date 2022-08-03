@@ -12466,66 +12466,6 @@
   },
   {
     "source": {
-      "x": 3153,
-      "y": 3923,
-      "plane": 0
-    },
-    "destination": {
-      "x": 2562,
-      "y": 3311,
-      "plane": 0
-    },
-    "action": "Pull",
-    "objectId": 1815,
-    "requirements": {
-      "itemRequirements": [],
-      "skillRequirements": [],
-      "varRequirements": [],
-      "questRequirements": []
-    }
-  },
-  {
-    "source": {
-      "x": 3153,
-      "y": 3923,
-      "plane": 0
-    },
-    "destination": {
-      "x": 2562,
-      "y": 3311,
-      "plane": 0
-    },
-    "action": "Ardougne",
-    "objectId": 1815,
-    "requirements": {
-      "itemRequirements": [],
-      "skillRequirements": [],
-      "varRequirements": [],
-      "questRequirements": []
-    }
-  },
-  {
-    "source": {
-      "x": 3153,
-      "y": 3923,
-      "plane": 0
-    },
-    "destination": {
-      "x": 3090,
-      "y": 3475,
-      "plane": 0
-    },
-    "action": "Edgeville",
-    "objectId": 1815,
-    "requirements": {
-      "itemRequirements": [],
-      "skillRequirements": [],
-      "varRequirements": [],
-      "questRequirements": []
-    }
-  },
-  {
-    "source": {
       "x": 2664,
       "y": 3333,
       "plane": 0
@@ -95802,5 +95742,87 @@
       "varRequirements": [],
       "questRequirements": []
     }
-  }
+  },
+  {
+    "source": {
+      "x": 3153,
+      "y": 3923,
+      "plane": 0
+    },
+    "destination": {
+      "x": 3090,
+      "y": 3475,
+      "plane": 0
+    },
+    "action": "Edgeville",
+    "objectId": 1815,
+    "requirements": {
+      "itemRequirements": [],
+      "skillRequirements": [],
+      "varRequirements": [
+        {
+          "comparison": "EQUAL",
+          "type": "VARBIT",
+          "var": 4507,
+          "value": 1
+        }
+      ],
+      "questRequirements": []
+    }
+  },
+  {
+    "source": {
+      "x": 3153,
+      "y": 3923,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2562,
+      "y": 3311,
+      "plane": 0
+    },
+    "action": "Pull",
+    "objectId": 1815,
+    "requirements": {
+      "itemRequirements": [],
+      "skillRequirements": [],
+      "varRequirements": [
+        {
+          "comparison": "LESS_THAN",
+          "type": "VARBIT",
+          "var": 4507,
+          "value": 1
+        }
+      ],
+      "questRequirements": []
+    }
+  },
+
+  {
+    "source": {
+      "x": 3153,
+      "y": 3923,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2562,
+      "y": 3311,
+      "plane": 0
+    },
+    "action": "Ardougne",
+    "objectId": 1815,
+    "requirements": {
+      "itemRequirements": [],
+      "skillRequirements": [],
+      "varRequirements": [
+        {
+          "comparison": "EQUAL",
+          "type": "VARBIT",
+          "var": 4507,
+          "value": 1
+        }
+      ],
+      "questRequirements": []
+    }
+  },
 ]
