@@ -39,16 +39,6 @@ class BootstrapPlugin : Plugin<Project> {
                     from(bootstrapDependencies)
                     into("${buildDir}/bootstrap/${type}/")
                 }
-                copy {
-                    from(
-                            "${buildDir}/repo/.",
-                            "${parent?.projectDir}/runelite-api/build/repo/.",
-                            "${parent?.projectDir}/http-api/build/repo/.",
-                            "${parent?.projectDir}/runescape-api/build/repo/.",
-                            "${parent?.projectDir}/runelite-jshell/build/repo/."
-                    )
-                    into("${buildDir}/bootstrap/repo/${type}")
-                }
             }
         }
     }
