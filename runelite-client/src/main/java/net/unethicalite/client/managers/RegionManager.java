@@ -49,7 +49,6 @@ import java.util.concurrent.TimeUnit;
 @Singleton
 public class RegionManager
 {
-	public static final MediaType JSON_MEDIATYPE = MediaType.parse("application/json");
 	public static final Gson GSON = new GsonBuilder().create();
 	
 	private static final Set<Integer> REFRESH_WIDGET_IDS = Set.of(
@@ -83,11 +82,6 @@ public class RegionManager
 
 	private static boolean REFRESH_PATH = false;
 
-	@Inject
-	@Named("unethicalite.api.url")
-	private String apiUrl;
-	@Inject
-	private OkHttpClient okHttpClient;
 	@Inject
 	private ScheduledExecutorService executorService;
 
@@ -138,72 +132,6 @@ public class RegionManager
 	{
 		executorService.submit(TransportLoader::init);
 		Static.getEventBus().register(this);
-	}
-
-	public void sendRegion()
-	{
-		if (Game.getState() != GameState.LOGGED_IN || !Static.getUnethicaliteConfig().regions())
-		{
-			return;
-		}
-
-		if (Static.getClient().isInInstancedRegion())
-		{
-			executorService.schedule(() ->
-			{
-				Request request = new Request.Builder()
-						.get()
-						.url(apiUrl + "/regions/instance/" + Players.getLocal().getWorldLocation().getRegionID())
-						.build();
-
-				try (Response response = okHttpClient.newCall(request)
-						.execute())
-				{
-					int code = response.code();
-					if (code != 200)
-					{
-						log.error("Instance store request was unsuccessful: {}", code);
-						return;
-					}
-
-					log.debug("Instanced region stored successfully");
-				}
-				catch (Exception e)
-				{
-					log.error("Failed to POST: {}", e.getMessage());
-					e.printStackTrace();
-				}
-			}, 5_000, TimeUnit.MILLISECONDS);
-
-			return;
-		}
-
-		executorService.schedule(() ->
-		{
-			String json = GSON.toJson(getTileFlags());
-			RequestBody body = RequestBody.create(JSON_MEDIATYPE, json);
-			Request request = new Request.Builder()
-					.post(body)
-					.url(apiUrl + "/regions")
-					.build();
-			try (Response response = okHttpClient.newCall(request)
-					.execute())
-			{
-				int code = response.code();
-				if (code != 200)
-				{
-					log.error("Request was unsuccessful: {}", code);
-					return;
-				}
-
-				log.debug("Region saved successfully");
-			}
-			catch (Exception e)
-			{
-				log.error("Failed to POST: {}", e.getMessage());
-				e.printStackTrace();
-			}
-		}, 5, TimeUnit.SECONDS);
 	}
 
 	@Subscribe(priority = Integer.MAX_VALUE)
