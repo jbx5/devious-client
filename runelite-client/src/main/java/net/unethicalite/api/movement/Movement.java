@@ -105,11 +105,9 @@ public class Movement
 		);
 	}
 
-	@Deprecated
 	public static boolean walkTo(WorldArea worldArea)
 	{
-		log.warn("WorldArea's will no longer be supported with the walker, either use a WorldPoint or handle randomizing destinations in the plugin");
-		return Walker.walkTo(worldArea.toWorldPoint());
+		return Walker.walkTo(worldArea);
 	}
 
 	public static void walk(Locatable locatable)
@@ -129,7 +127,7 @@ public class Movement
 
 	public static boolean walkTo(BankLocation bankLocation)
 	{
-		return walkTo(bankLocation.getArea().getCenter());
+		return walkTo(bankLocation.getArea());
 	}
 
 	public static boolean walkTo(int x, int y)
@@ -166,18 +164,33 @@ public class Movement
 		return Static.getClient().getEnergy();
 	}
 
-	public static int calculateDistance(WorldPoint destination)
+	public static int calculateDistance(WorldArea destination)
 	{
 		return Walker.calculatePath(destination).size();
 	}
 
-	public static int calculateDistance(WorldPoint start, WorldPoint destination)
+	public static int calculateDistance(WorldPoint start, WorldArea destination)
 	{
 		return calculateDistance(List.of(start), destination);
 	}
 
-	public static int calculateDistance(List<WorldPoint> start, WorldPoint destination)
+	public static int calculateDistance(List<WorldPoint> start, WorldArea destination)
 	{
 		return Walker.calculatePath(start, destination).size();
+	}
+
+	public static int calculateDistance(WorldPoint destination)
+	{
+		return calculateDistance(destination.toWorldArea());
+	}
+
+	public static int calculateDistance(WorldPoint start, WorldPoint destination)
+	{
+		return calculateDistance(start, destination.toWorldArea());
+	}
+
+	public static int calculateDistance(List<WorldPoint> start, WorldPoint destination)
+	{
+		return calculateDistance(start, destination.toWorldArea());
 	}
 }
