@@ -18,25 +18,18 @@ import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.events.ConfigChanged;
 import net.runelite.client.plugins.unethicalite.regions.TileFlag;
-import net.unethicalite.api.entities.Players;
 import net.unethicalite.api.game.Game;
 import net.unethicalite.api.movement.Reachable;
 import net.unethicalite.api.movement.pathfinder.TeleportLoader;
 import net.unethicalite.api.movement.pathfinder.TransportLoader;
 import net.unethicalite.api.movement.pathfinder.Walker;
-import net.unethicalite.api.movement.pathfinder.model.poh.JewelryBox;
 import net.unethicalite.api.movement.pathfinder.model.Transport;
+import net.unethicalite.api.movement.pathfinder.model.poh.JewelryBox;
 import net.unethicalite.api.scene.Tiles;
 import net.unethicalite.client.Static;
 import net.unethicalite.client.config.UnethicaliteConfig;
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
 
 import javax.inject.Inject;
-import javax.inject.Named;
 import javax.inject.Singleton;
 import java.util.ArrayList;
 import java.util.List;
@@ -47,278 +40,237 @@ import java.util.concurrent.TimeUnit;
 
 @Slf4j
 @Singleton
-public class RegionManager
-{
-	public static final Gson GSON = new GsonBuilder().create();
-	
-	private static final Set<Integer> REFRESH_WIDGET_IDS = Set.of(
-			WidgetInfo.QUEST_COMPLETED_NAME_TEXT.getGroupId(),
-			WidgetInfo.LEVEL_UP_LEVEL.getGroupId()
-	);
-	private static final Set<String> pathfinderConfigKeys = Set.of(
-			"useTransports",
-			"useTeleports",
-			"avoidWilderness",
-			"usePoh",
-			"hasMountedGlory",
-			"hasMountedDigsitePendant",
-			"hasMountedMythicalCape",
-			"hasMountedXericsTalisman",
-			"hasJewelryBox"
-	);
+public class RegionManager {
+    public static final Gson GSON = new GsonBuilder().create();
 
-	private static final Set<Integer> REFRESH_VARBS = Set.of(
-			// Static
-			4504,
-			4536,
-			4525,
-			10449,
-			10450,
-			// Hardcoded
-			3637,
-			4897,
-			8063
-	);
+    private static final Set<Integer> REFRESH_WIDGET_IDS = Set.of(
+            WidgetInfo.QUEST_COMPLETED_NAME_TEXT.getGroupId(),
+            WidgetInfo.LEVEL_UP_LEVEL.getGroupId()
+    );
+    private static final Set<String> pathfinderConfigKeys = Set.of(
+            "useTransports",
+            "useTeleports",
+            "avoidWilderness",
+            "usePoh",
+            "hasMountedGlory",
+            "hasMountedDigsitePendant",
+            "hasMountedMythicalCape",
+            "hasMountedXericsTalisman",
+            "hasJewelryBox"
+    );
 
-	private static boolean REFRESH_PATH = false;
+    private static final Set<Integer> REFRESH_VARBS = Set.of(
+            // Static
+            4504,
+            4536,
+            4525,
+            10449,
+            10450,
+            // Hardcoded
+            3637,
+            4897,
+            8063
+    );
 
-	@Inject
-	private ScheduledExecutorService executorService;
+    private static boolean REFRESH_PATH = false;
 
-	public static boolean avoidWilderness()
-	{
-		return Static.getUnethicaliteConfig().avoidWilderness();
-	}
+    @Inject
+    private ScheduledExecutorService executorService;
 
-	public static boolean shouldRefreshPath()
-	{
-		boolean refreshPath = REFRESH_PATH;
-		REFRESH_PATH = false;
-		return refreshPath;
-	}
+    public static boolean avoidWilderness() {
+        return Static.getUnethicaliteConfig().avoidWilderness();
+    }
 
-	public static boolean usePoh()
-	{
-		return Static.getUnethicaliteConfig().usePoh();
-	}
+    public static boolean shouldRefreshPath() {
+        boolean refreshPath = REFRESH_PATH;
+        REFRESH_PATH = false;
+        return refreshPath;
+    }
 
-	public static boolean hasMountedGlory()
-	{
-		return Static.getUnethicaliteConfig().hasMountedGlory();
-	}
+    public static boolean usePoh() {
+        return Static.getUnethicaliteConfig().usePoh();
+    }
 
-	public static boolean hasMountedDigsitePendant()
-	{
-		return Static.getUnethicaliteConfig().hasMountedDigsitePendant();
-	}
+    public static boolean hasMountedGlory() {
+        return Static.getUnethicaliteConfig().hasMountedGlory();
+    }
 
-	public static boolean hasMountedMythicalCape()
-	{
-		return Static.getUnethicaliteConfig().hasMountedMythicalCape();
-	}
+    public static boolean hasMountedDigsitePendant() {
+        return Static.getUnethicaliteConfig().hasMountedDigsitePendant();
+    }
 
-	public static boolean hasMountedXericsTalisman()
-	{
-		return Static.getUnethicaliteConfig().hasMountedXericsTalisman();
-	}
+    public static boolean hasMountedMythicalCape() {
+        return Static.getUnethicaliteConfig().hasMountedMythicalCape();
+    }
 
-	public static JewelryBox hasJewelryBox()
-	{
-		return Static.getUnethicaliteConfig().hasJewelryBox();
-	}
+    public static boolean hasMountedXericsTalisman() {
+        return Static.getUnethicaliteConfig().hasMountedXericsTalisman();
+    }
 
-	@Inject
-	public void init()
-	{
-		executorService.submit(TransportLoader::init);
-		Static.getEventBus().register(this);
-	}
+    public static JewelryBox hasJewelryBox() {
+        return Static.getUnethicaliteConfig().hasJewelryBox();
+    }
 
-	@Subscribe(priority = Integer.MAX_VALUE)
-	public void onGameStateChanged(GameStateChanged event)
-	{
-		// Force a refresh ~1 second after logging in so that everything has loaded.
-		if (event.getGameState() == GameState.LOGGED_IN)
-		{
-			executorService.schedule(() -> {
-				REFRESH_PATH = true;
-				TeleportLoader.refreshTeleports();
-				TransportLoader.refreshTransports();
-			}, 1000, TimeUnit.MILLISECONDS);
-		}
-	}
+    @Inject
+    public void init() {
+        executorService.submit(TransportLoader::init);
+        Static.getEventBus().register(this);
+    }
 
-	public boolean isTransport(List<Transport> transports, WorldPoint from, WorldPoint to)
-	{
-		if (transports == null)
-		{
-			return false;
-		}
+    @Subscribe(priority = Integer.MAX_VALUE)
+    public void onGameStateChanged(GameStateChanged event) {
+        // Force a refresh ~1 second after logging in so that everything has loaded.
+        if (event.getGameState() == GameState.LOGGED_IN) {
+            executorService.schedule(() -> {
+                REFRESH_PATH = true;
+                TeleportLoader.refreshTeleports();
+                TransportLoader.refreshTransports();
+            }, 1000, TimeUnit.MILLISECONDS);
+        }
+    }
 
-		return transports.stream().anyMatch(t -> t.getSource().equals(from) && t.getDestination().equals(to));
-	}
+    public boolean isTransport(List<Transport> transports, WorldPoint from, WorldPoint to) {
+        if (transports == null) {
+            return false;
+        }
 
-	@Subscribe(priority = Integer.MAX_VALUE)
-	public void onWidgetLoaded(WidgetLoaded event)
-	{
-		if (REFRESH_WIDGET_IDS.contains(event.getGroupId()))
-		{
-			REFRESH_PATH = true;
-			TransportLoader.refreshTransports();
-			TeleportLoader.refreshTeleports();
-		}
-	}
+        return transports.stream().anyMatch(t -> t.getSource().equals(from) && t.getDestination().equals(to));
+    }
 
-	@Subscribe(priority = Integer.MAX_VALUE)
-	public void onVarChanged(VarbitChanged event)
-	{
-		if (REFRESH_VARBS.contains(event.getIndex()))
-		{
-			REFRESH_PATH = true;
-			TeleportLoader.refreshTeleports();
-			TransportLoader.refreshTransports();
-		}
-	}
+    @Subscribe(priority = Integer.MAX_VALUE)
+    public void onWidgetLoaded(WidgetLoaded event) {
+        if (REFRESH_WIDGET_IDS.contains(event.getGroupId())) {
+            REFRESH_PATH = true;
+            TransportLoader.refreshTransports();
+            TeleportLoader.refreshTeleports();
+        }
+    }
 
-	@Subscribe(priority = Integer.MAX_VALUE)
-	public void onItemContainerChanged(ItemContainerChanged event)
-	{
-		if (event.getContainerId() == InventoryID.INVENTORY.getId())
-		{
-			REFRESH_PATH = true;
-			TransportLoader.refreshTransports();
-			TeleportLoader.refreshTeleports();
-		}
-		if (event.getContainerId() == InventoryID.EQUIPMENT.getId())
-		{
-			REFRESH_PATH = true;
-			TransportLoader.refreshTransports();
-			TeleportLoader.refreshTeleports();
-		}
-	}
+    @Subscribe(priority = Integer.MAX_VALUE)
+    public void onVarChanged(VarbitChanged event) {
+        if (REFRESH_VARBS.contains(event.getIndex())) {
+            REFRESH_PATH = true;
+            TeleportLoader.refreshTeleports();
+            TransportLoader.refreshTransports();
+        }
+    }
 
-	@Subscribe
-	public void onConfigChanged(ConfigChanged event)
-	{
-		if (!event.getGroup().equals(UnethicaliteConfig.CONFIG_GROUP))
-		{
-			return;
-		}
-		if (pathfinderConfigKeys.contains(event.getKey()))
-		{
-			REFRESH_PATH = true;
-			if (Game.isLoggedIn())
-			{
-				TransportLoader.refreshTransports();
-				TeleportLoader.refreshTeleports();
-			}
-		}
-	}
+    @Subscribe(priority = Integer.MAX_VALUE)
+    public void onItemContainerChanged(ItemContainerChanged event) {
+        if (event.getContainerId() == InventoryID.INVENTORY.getId()) {
+            REFRESH_PATH = true;
+            TransportLoader.refreshTransports();
+            TeleportLoader.refreshTeleports();
+        }
+        if (event.getContainerId() == InventoryID.EQUIPMENT.getId()) {
+            REFRESH_PATH = true;
+            TransportLoader.refreshTransports();
+            TeleportLoader.refreshTeleports();
+        }
+    }
 
-	public List<TileFlag> getTileFlags()
-	{
-		CollisionData[] col = Static.getClient().getCollisionMaps();
-		if (col == null)
-		{
-			return new ArrayList<>();
-		}
+    @Subscribe
+    public void onConfigChanged(ConfigChanged event) {
+        if (!event.getGroup().equals(UnethicaliteConfig.CONFIG_GROUP)) {
+            return;
+        }
+        if (pathfinderConfigKeys.contains(event.getKey())) {
+            REFRESH_PATH = true;
+            if (Game.isLoggedIn()) {
+                TransportLoader.refreshTransports();
+                TeleportLoader.refreshTeleports();
+            }
+        }
+    }
 
-		List<TileFlag> tileFlags = new ArrayList<>();
-		Map<WorldPoint, List<Transport>> transportLinks = Walker.buildTransportLinks();
-		int plane = Static.getClient().getPlane();
-		CollisionData data = col[plane];
-		if (data == null)
-		{
-			return new ArrayList<>();
-		}
+    public List<TileFlag> getTileFlags() {
+        CollisionData[] col = Static.getClient().getCollisionMaps();
+        if (col == null) {
+            return new ArrayList<>();
+        }
 
-		int[][] flags = data.getFlags();
-		for (int x = 0; x < flags.length; x++)
-		{
-			for (int y = 0; y < flags.length; y++)
-			{
-				int tileX = x + Static.getClient().getBaseX();
-				int tileY = y + Static.getClient().getBaseY();
-				int flag = flags[x][y];
+        List<TileFlag> tileFlags = new ArrayList<>();
+        Map<WorldPoint, List<Transport>> transportLinks = Walker.buildTransportLinks();
+        int plane = Static.getClient().getPlane();
+        CollisionData data = col[plane];
+        if (data == null) {
+            return new ArrayList<>();
+        }
 
-				// Stop if we reach any tiles which dont have collision data loaded
-				// Usually occurs for tiles which are loaded in the 104x104 scene, but are outside the region
-				if (flag == 0xFFFFFF)
-				{
-					continue;
-				}
+        int[][] flags = data.getFlags();
+        for (int x = 0; x < flags.length; x++) {
+            for (int y = 0; y < flags.length; y++) {
+                int tileX = x + Static.getClient().getBaseX();
+                int tileY = y + Static.getClient().getBaseY();
+                int flag = flags[x][y];
 
-				int regionId = ((tileX >> 6) << 8) | (tileY >> 6);
+                // Stop if we reach any tiles which dont have collision data loaded
+                // Usually occurs for tiles which are loaded in the 104x104 scene, but are outside the region
+                if (flag == 0xFFFFFF) {
+                    continue;
+                }
 
-				// Set the full block flag in case tiles are null (ex. on upper levels)
-				TileFlag tileFlag = new TileFlag(tileX, tileY, plane, CollisionDataFlag.BLOCK_MOVEMENT_FULL, regionId);
-				Tile tile = Tiles.getAt(tileX, tileY, plane);
-				if (tile == null)
-				{
-					tileFlags.add(tileFlag);
-					continue;
-				}
+                int regionId = ((tileX >> 6) << 8) | (tileY >> 6);
 
-				tileFlag.setFlag(flag);
-				WorldPoint tileCoords = tile.getWorldLocation();
+                // Set the full block flag in case tiles are null (ex. on upper levels)
+                TileFlag tileFlag = new TileFlag(tileX, tileY, plane, CollisionDataFlag.BLOCK_MOVEMENT_FULL, regionId);
+                Tile tile = Tiles.getAt(tileX, tileY, plane);
+                if (tile == null) {
+                    tileFlags.add(tileFlag);
+                    continue;
+                }
 
-				// Check if we are blocked by objects
-				// We don't need to parse west/south because they're checked by parsing adjacent tiles for north/east
-				// We also skip the current tile if an adjacent tile does not have their flags loaded
-				WorldPoint northernTile = tileCoords.dy(1);
-				if (Reachable.getCollisionFlag(northernTile) == 0xFFFFFF)
-				{
-					continue;
-				}
+                tileFlag.setFlag(flag);
+                WorldPoint tileCoords = tile.getWorldLocation();
 
-				if (Reachable.isObstacle(northernTile)
-						&& !Reachable.isWalled(Direction.NORTH, tileFlag.getFlag())
-				)
-				{
-					tileFlag.setFlag(tileFlag.getFlag() + CollisionDataFlag.BLOCK_MOVEMENT_NORTH);
-				}
+                // Check if we are blocked by objects
+                // We don't need to parse west/south because they're checked by parsing adjacent tiles for north/east
+                // We also skip the current tile if an adjacent tile does not have their flags loaded
+                WorldPoint northernTile = tileCoords.dy(1);
+                if (Reachable.getCollisionFlag(northernTile) == 0xFFFFFF) {
+                    continue;
+                }
 
-				WorldPoint easternTile = tileCoords.dx(1);
-				if (Reachable.getCollisionFlag(easternTile) == 0xFFFFFF)
-				{
-					continue;
-				}
+                if (Reachable.isObstacle(northernTile)
+                        && !Reachable.isWalled(Direction.NORTH, tileFlag.getFlag())
+                ) {
+                    tileFlag.setFlag(tileFlag.getFlag() + CollisionDataFlag.BLOCK_MOVEMENT_NORTH);
+                }
 
-				if (Reachable.isObstacle(easternTile)
-						&& !Reachable.isWalled(Direction.EAST, tileFlag.getFlag())
-				)
-				{
-					tileFlag.setFlag(tileFlag.getFlag() + CollisionDataFlag.BLOCK_MOVEMENT_EAST);
-				}
+                WorldPoint easternTile = tileCoords.dx(1);
+                if (Reachable.getCollisionFlag(easternTile) == 0xFFFFFF) {
+                    continue;
+                }
 
-				List<Transport> transports = transportLinks.get(tileCoords);
-				if (plane == Static.getClient().getPlane())
-				{
-					for (Direction direction : Direction.values())
-					{
-						switch (direction)
-						{
-							case NORTH:
-								if ((Reachable.hasDoor(tile, direction) || Reachable.hasDoor(northernTile, Direction.SOUTH))
-										&& !isTransport(transports, tileCoords, northernTile))
-								{
-									tileFlag.setFlag(tileFlag.getFlag() - CollisionDataFlag.BLOCK_MOVEMENT_NORTH);
-								}
-								break;
-							case EAST:
-								if ((Reachable.hasDoor(tile, direction) || Reachable.hasDoor(easternTile, Direction.WEST))
-										&& !isTransport(transports, tileCoords, easternTile))
-								{
-									tileFlag.setFlag(tileFlag.getFlag() - CollisionDataFlag.BLOCK_MOVEMENT_EAST);
-								}
-								break;
-						}
-					}
-				}
+                if (Reachable.isObstacle(easternTile)
+                        && !Reachable.isWalled(Direction.EAST, tileFlag.getFlag())
+                ) {
+                    tileFlag.setFlag(tileFlag.getFlag() + CollisionDataFlag.BLOCK_MOVEMENT_EAST);
+                }
 
-				tileFlags.add(tileFlag);
-			}
-		}
-		return tileFlags;
-	}
+                List<Transport> transports = transportLinks.get(tileCoords);
+                if (plane == Static.getClient().getPlane()) {
+                    for (Direction direction : Direction.values()) {
+                        switch (direction) {
+                            case NORTH:
+                                if ((Reachable.hasDoor(tile, direction) || Reachable.hasDoor(northernTile, Direction.SOUTH))
+                                        && !isTransport(transports, tileCoords, northernTile)) {
+                                    tileFlag.setFlag(tileFlag.getFlag() - CollisionDataFlag.BLOCK_MOVEMENT_NORTH);
+                                }
+                                break;
+                            case EAST:
+                                if ((Reachable.hasDoor(tile, direction) || Reachable.hasDoor(easternTile, Direction.WEST))
+                                        && !isTransport(transports, tileCoords, easternTile)) {
+                                    tileFlag.setFlag(tileFlag.getFlag() - CollisionDataFlag.BLOCK_MOVEMENT_EAST);
+                                }
+                                break;
+                        }
+                    }
+                }
+
+                tileFlags.add(tileFlag);
+            }
+        }
+        return tileFlags;
+    }
 }
