@@ -95850,5 +95850,45 @@
       "varRequirements": [],
       "questRequirements": []
     }
+  },
+  {
+    "source": {
+      "x": 2503,
+      "y": 3253,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2503,
+      "y": 3253,
+      "plane": 1
+    },
+    "action": "Climb-up",
+    "objectId": 16683,
+    "requirements": {
+      "itemRequirements": [],
+      "skillRequirements": [],
+      "varRequirements": [],
+      "questRequirements": []
+    }
+  },
+  {
+    "source": {
+      "x": 2503,
+      "y": 3253,
+      "plane": 1
+    },
+    "destination": {
+      "x": 2503,
+      "y": 3253,
+      "plane": 0
+    },
+    "action": "Climb-down",
+    "objectId": 16679,
+    "requirements": {
+      "itemRequirements": [],
+      "skillRequirements": [],
+      "varRequirements": [],
+      "questRequirements": []
+    }
   }
 ]
