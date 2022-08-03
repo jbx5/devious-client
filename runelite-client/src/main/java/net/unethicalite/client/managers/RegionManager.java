@@ -3,7 +3,6 @@ package net.unethicalite.client.managers;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.CollisionData;
 import net.runelite.api.CollisionDataFlag;
-import net.runelite.api.GameState;
 import net.runelite.api.InventoryID;
 import net.runelite.api.Tile;
 import net.runelite.api.coords.Direction;
@@ -70,6 +69,7 @@ public class RegionManager
 	);
 
 	private static boolean REFRESH_PATH = false;
+	private static boolean INITIAL_LOGIN = true;
 
 	@Inject
 	private ScheduledExecutorService executorService;
@@ -126,15 +126,26 @@ public class RegionManager
 	@Subscribe(priority = Integer.MAX_VALUE)
 	public void onGameStateChanged(GameStateChanged event)
 	{
-		// Force a refresh ~1 second after logging in so that everything has loaded.
-		if (event.getGameState() == GameState.LOGGED_IN)
+		switch (event.getGameState())
 		{
-			executorService.schedule(() ->
-			{
-				REFRESH_PATH = true;
-				TeleportLoader.refreshTeleports();
-				TransportLoader.refreshTransports();
-			}, 1000, TimeUnit.MILLISECONDS);
+			case UNKNOWN:
+			case STARTING:
+			case LOGIN_SCREEN:
+			case LOGIN_SCREEN_AUTHENTICATOR:
+			case CONNECTION_LOST:
+				INITIAL_LOGIN = true;
+				break;
+			case LOGGED_IN:
+				if (INITIAL_LOGIN)
+				{
+					INITIAL_LOGIN = false;
+					executorService.schedule(() ->
+					{
+						REFRESH_PATH = true;
+						TeleportLoader.refreshTeleports();
+						TransportLoader.refreshTransports();
+					}, 1000, TimeUnit.MILLISECONDS);
+				}
 		}
 	}
 

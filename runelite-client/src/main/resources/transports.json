@@ -24324,16 +24324,15 @@
     "requirements": {
       "itemRequirements": [],
       "skillRequirements": [],
-      "varRequirements": [],
-      "questRequirements": [
+      "varRequirements": [
         {
-          "quest": "FISHING_CONTEST",
-          "states": [
-            "FINISHED",
-            "IN_PROGRESS"
-          ]
+          "comparison": "GREATER_THAN_EQUAL",
+          "type": "VARP",
+          "var": 11,
+          "value": 5
         }
-      ]
+      ],
+      "questRequirements": []
     }
   },
   {
@@ -24352,16 +24351,15 @@
     "requirements": {
       "itemRequirements": [],
       "skillRequirements": [],
-      "varRequirements": [],
-      "questRequirements": [
+      "varRequirements": [
         {
-          "quest": "FISHING_CONTEST",
-          "states": [
-            "FINISHED",
-            "IN_PROGRESS"
-          ]
+          "comparison": "GREATER_THAN_EQUAL",
+          "type": "VARP",
+          "var": 11,
+          "value": 5
         }
-      ]
+      ],
+      "questRequirements": []
     }
   },
   {
@@ -24380,16 +24378,15 @@
     "requirements": {
       "itemRequirements": [],
       "skillRequirements": [],
-      "varRequirements": [],
-      "questRequirements": [
+      "varRequirements": [
         {
-          "quest": "FISHING_CONTEST",
-          "states": [
-            "FINISHED",
-            "IN_PROGRESS"
-          ]
+          "comparison": "GREATER_THAN_EQUAL",
+          "type": "VARP",
+          "var": 11,
+          "value": 5
         }
-      ]
+      ],
+      "questRequirements": []
     }
   },
   {
@@ -24408,16 +24405,15 @@
     "requirements": {
       "itemRequirements": [],
       "skillRequirements": [],
-      "varRequirements": [],
-      "questRequirements": [
+      "varRequirements": [
         {
-          "quest": "FISHING_CONTEST",
-          "states": [
-            "FINISHED",
-            "IN_PROGRESS"
-          ]
+          "comparison": "GREATER_THAN_EQUAL",
+          "type": "VARP",
+          "var": 11,
+          "value": 5
         }
-      ]
+      ],
+      "questRequirements": []
     }
   },
   {
@@ -24436,16 +24432,15 @@
     "requirements": {
       "itemRequirements": [],
       "skillRequirements": [],
-      "varRequirements": [],
-      "questRequirements": [
+      "varRequirements": [
         {
-          "quest": "FISHING_CONTEST",
-          "states": [
-            "FINISHED",
-            "IN_PROGRESS"
-          ]
+          "comparison": "GREATER_THAN_EQUAL",
+          "type": "VARP",
+          "var": 11,
+          "value": 5
         }
-      ]
+      ],
+      "questRequirements": []
     }
   },
   {
@@ -24464,16 +24459,15 @@
     "requirements": {
       "itemRequirements": [],
       "skillRequirements": [],
-      "varRequirements": [],
-      "questRequirements": [
+      "varRequirements": [
         {
-          "quest": "FISHING_CONTEST",
-          "states": [
-            "FINISHED",
-            "IN_PROGRESS"
-          ]
+          "comparison": "GREATER_THAN_EQUAL",
+          "type": "VARP",
+          "var": 11,
+          "value": 5
         }
-      ]
+      ],
+      "questRequirements": []
     }
   },
   {
@@ -24492,16 +24486,15 @@
     "requirements": {
       "itemRequirements": [],
       "skillRequirements": [],
-      "varRequirements": [],
-      "questRequirements": [
+      "varRequirements": [
         {
-          "quest": "FISHING_CONTEST",
-          "states": [
-            "FINISHED",
-            "IN_PROGRESS"
-          ]
+          "comparison": "GREATER_THAN_EQUAL",
+          "type": "VARP",
+          "var": 11,
+          "value": 5
         }
-      ]
+      ],
+      "questRequirements": []
     }
   },
   {
@@ -24520,16 +24513,15 @@
     "requirements": {
       "itemRequirements": [],
       "skillRequirements": [],
-      "varRequirements": [],
-      "questRequirements": [
+      "varRequirements": [
         {
-          "quest": "FISHING_CONTEST",
-          "states": [
-            "FINISHED",
-            "IN_PROGRESS"
-          ]
+          "comparison": "GREATER_THAN_EQUAL",
+          "type": "VARP",
+          "var": 11,
+          "value": 5
         }
-      ]
+      ],
+      "questRequirements": []
     }
   },
   {
@@ -36861,166 +36853,6 @@
     },
     "action": "Climb-up",
     "objectId": 32401,
-    "requirements": {
-      "itemRequirements": [],
-      "skillRequirements": [],
-      "varRequirements": [],
-      "questRequirements": []
-    }
-  },
-  {
-    "source": {
-      "x": 1561,
-      "y": 3596,
-      "plane": 0
-    },
-    "destination": {
-      "x": 1561,
-      "y": 3592,
-      "plane": 1
-    },
-    "action": "Climb",
-    "objectId": 27201,
-    "requirements": {
-      "itemRequirements": [],
-      "skillRequirements": [],
-      "varRequirements": [],
-      "questRequirements": []
-    }
-  },
-  {
-    "source": {
-      "x": 1561,
-      "y": 3592,
-      "plane": 1
-    },
-    "destination": {
-      "x": 1561,
-      "y": 3596,
-      "plane": 0
-    },
-    "action": "Climb",
-    "objectId": 27202,
-    "requirements": {
-      "itemRequirements": [],
-      "skillRequirements": [],
-      "varRequirements": [],
-      "questRequirements": []
-    }
-  },
-  {
-    "source": {
-      "x": 1562,
-      "y": 3596,
-      "plane": 0
-    },
-    "destination": {
-      "x": 1562,
-      "y": 3592,
-      "plane": 1
-    },
-    "action": "Climb",
-    "objectId": 27201,
-    "requirements": {
-      "itemRequirements": [],
-      "skillRequirements": [],
-      "varRequirements": [],
-      "questRequirements": []
-    }
-  },
-  {
-    "source": {
-      "x": 1562,
-      "y": 3592,
-      "plane": 1
-    },
-    "destination": {
-      "x": 1562,
-      "y": 3596,
-      "plane": 0
-    },
-    "action": "Climb",
-    "objectId": 27202,
-    "requirements": {
-      "itemRequirements": [],
-      "skillRequirements": [],
-      "varRequirements": [],
-      "questRequirements": []
-    }
-  },
-  {
-    "source": {
-      "x": 1579,
-      "y": 3590,
-      "plane": 0
-    },
-    "destination": {
-      "x": 1579,
-      "y": 3586,
-      "plane": 1
-    },
-    "action": "Climb",
-    "objectId": 27201,
-    "requirements": {
-      "itemRequirements": [],
-      "skillRequirements": [],
-      "varRequirements": [],
-      "questRequirements": []
-    }
-  },
-  {
-    "source": {
-      "x": 1579,
-      "y": 3586,
-      "plane": 1
-    },
-    "destination": {
-      "x": 1579,
-      "y": 3590,
-      "plane": 0
-    },
-    "action": "Climb",
-    "objectId": 27202,
-    "requirements": {
-      "itemRequirements": [],
-      "skillRequirements": [],
-      "varRequirements": [],
-      "questRequirements": []
-    }
-  },
-  {
-    "source": {
-      "x": 1580,
-      "y": 3590,
-      "plane": 0
-    },
-    "destination": {
-      "x": 1580,
-      "y": 3586,
-      "plane": 1
-    },
-    "action": "Climb",
-    "objectId": 27201,
-    "requirements": {
-      "itemRequirements": [],
-      "skillRequirements": [],
-      "varRequirements": [],
-      "questRequirements": []
-    }
-  },
-  {
-    "source": {
-      "x": 1580,
-      "y": 3586,
-      "plane": 1
-    },
-    "destination": {
-      "x": 1580,
-      "y": 3590,
-      "plane": 0
-    },
-    "action": "Climb",
-    "objectId": 27202,
     "requirements": {
       "itemRequirements": [],
       "skillRequirements": [],
