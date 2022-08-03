@@ -15,7 +15,7 @@ public class DepositBox
 	private static final Supplier<Widget> DEPOSIT_EQUIPS = () -> Widgets.get(192, 6);
 	private static final Supplier<Widget> DEPOSIT_LOOTINGBAG = () -> Widgets.get(192, 8);
 	private static final Supplier<Widget> ROOT = () -> Widgets.get(192, 1);
-	private static final Supplier<Widget> EXIT = () -> Widgets.get(192, 1, 11);	
+	private static final Supplier<Widget> EXIT = () -> Widgets.get(192, 1, 11);
 	private static final Supplier<Widget> QUANTITY_ONE = () -> Widgets.get(192, 11);
 	private static final Supplier<Widget> QUANTITY_FIVE = () -> Widgets.get(192, 13);
 	private static final Supplier<Widget> QUANTITY_TEN = () -> Widgets.get(192, 15);
