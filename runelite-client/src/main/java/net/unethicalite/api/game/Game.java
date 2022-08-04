@@ -40,7 +40,8 @@ public class Game
 	public static boolean isOnLoginScreen()
 	{
 		return getState() == GameState.LOGIN_SCREEN
-				|| getState() == GameState.LOGIN_SCREEN_AUTHENTICATOR;
+				|| getState() == GameState.LOGIN_SCREEN_AUTHENTICATOR
+				|| getState() == GameState.LOGGING_IN;
 	}
 
 	public static GameState getState()
