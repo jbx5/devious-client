@@ -2,7 +2,10 @@ package net.unethicalite.api.game;
 
 import lombok.Getter;
 import lombok.Setter;
+import net.runelite.api.Player;
+import net.runelite.api.coords.WorldPoint;
 import net.unethicalite.api.account.GameAccount;
+import net.unethicalite.api.entities.Players;
 import net.unethicalite.api.widgets.Tab;
 import net.unethicalite.api.widgets.Tabs;
 import net.unethicalite.api.widgets.Widgets;
@@ -68,6 +71,12 @@ public class Game
 		if (widgetText.equals(""))
 		{
 			return 0;
+		}
+		if (widgetText.equals("Level: --"))
+		{
+			Player local = Players.getLocal();
+			int y = WorldPoint.fromLocal(Static.getClient(), local.getLocalLocation()).getY();
+			return 2 + (y - 3528) / 8;
 		}
 		String levelText = widgetText.contains("<br>") ? widgetText.substring(0, widgetText.indexOf("<br>")) : widgetText;
 		return Integer.parseInt(levelText.replace("Level: ", ""));
