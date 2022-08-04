@@ -7479,22 +7479,6 @@
   },
   {
     "source": {
-      "x": 2556,
-      "y": 3073,
-      "plane": 1
-    },
-    "destination": {
-      "x": 2556,
-      "y": 3071,
-      "plane": 0
-    },
-    "action": "Jump",
-    "objectId": 17048,
-    "requirements": {
-    }
-  },
-  {
-    "source": {
       "x": 2555,
       "y": 3081,
       "plane": 0
@@ -15469,150 +15453,6 @@
   },
   {
     "source": {
-      "x": 3081,
-      "y": 3421,
-      "plane": 0
-    },
-    "destination": {
-      "x": 1859,
-      "y": 5243,
-      "plane": 0
-    },
-    "action": "Climb-down",
-    "objectId": 20790,
-    "requirements": {
-    }
-  },
-  {
-    "source": {
-      "x": 1859,
-      "y": 5243,
-      "plane": 0
-    },
-    "destination": {
-      "x": 3081,
-      "y": 3421,
-      "plane": 0
-    },
-    "action": "Climb-up",
-    "objectId": 20784,
-    "requirements": {
-    }
-  },
-  {
-    "source": {
-      "x": 1860,
-      "y": 5244,
-      "plane": 0
-    },
-    "destination": {
-      "x": 3081,
-      "y": 3421,
-      "plane": 0
-    },
-    "action": "Climb-up",
-    "objectId": 20784,
-    "requirements": {
-    }
-  },
-  {
-    "source": {
-      "x": 1858,
-      "y": 5244,
-      "plane": 0
-    },
-    "destination": {
-      "x": 3081,
-      "y": 3421,
-      "plane": 0
-    },
-    "action": "Climb-up",
-    "objectId": 20784,
-    "requirements": {
-    }
-  },
-  {
-    "source": {
-      "x": 1863,
-      "y": 5239,
-      "plane": 0
-    },
-    "destination": {
-      "x": 1914,
-      "y": 5222,
-      "plane": 0
-    },
-    "action": "Use",
-    "objectId": 20786,
-    "requirements": {
-    }
-  },
-  {
-    "source": {
-      "x": 1913,
-      "y": 5225,
-      "plane": 0
-    },
-    "destination": {
-      "x": 3081,
-      "y": 3421,
-      "plane": 0
-    },
-    "action": "Climb-up",
-    "objectId": 20784,
-    "requirements": {
-    }
-  },
-  {
-    "source": {
-      "x": 1914,
-      "y": 5226,
-      "plane": 0
-    },
-    "destination": {
-      "x": 3081,
-      "y": 3421,
-      "plane": 0
-    },
-    "action": "Climb-up",
-    "objectId": 20784,
-    "requirements": {
-    }
-  },
-  {
-    "source": {
-      "x": 1912,
-      "y": 5226,
-      "plane": 0
-    },
-    "destination": {
-      "x": 3081,
-      "y": 3421,
-      "plane": 0
-    },
-    "action": "Climb-up",
-    "objectId": 20784,
-    "requirements": {
-    }
-  },
-  {
-    "source": {
-      "x": 1913,
-      "y": 5227,
-      "plane": 0
-    },
-    "destination": {
-      "x": 3081,
-      "y": 3421,
-      "plane": 0
-    },
-    "action": "Climb-up",
-    "objectId": 20784,
-    "requirements": {
-    }
-  },
-  {
-    "source": {
       "x": 1902,
       "y": 5223,
       "plane": 0
@@ -15752,150 +15592,6 @@
     },
     "action": "Climb-up",
     "objectId": 23705,
-    "requirements": {
-    }
-  },
-  {
-    "source": {
-      "x": 2026,
-      "y": 5217,
-      "plane": 0
-    },
-    "destination": {
-      "x": 2123,
-      "y": 5252,
-      "plane": 0
-    },
-    "action": "Climb-down",
-    "objectId": 19004,
-    "requirements": {
-    }
-  },
-  {
-    "source": {
-      "x": 2119,
-      "y": 5258,
-      "plane": 0
-    },
-    "destination": {
-      "x": 2146,
-      "y": 5287,
-      "plane": 0
-    },
-    "action": "Use",
-    "objectId": 23707,
-    "requirements": {
-    }
-  },
-  {
-    "source": {
-      "x": 2150,
-      "y": 5279,
-      "plane": 0
-    },
-    "destination": {
-      "x": 2123,
-      "y": 5252,
-      "plane": 0
-    },
-    "action": "Climb-up",
-    "objectId": 23703,
-    "requirements": {
-    }
-  },
-  {
-    "source": {
-      "x": 2121,
-      "y": 5258,
-      "plane": 0
-    },
-    "destination": {
-      "x": 2146,
-      "y": 5287,
-      "plane": 0
-    },
-    "action": "Use",
-    "objectId": 23707,
-    "requirements": {
-    }
-  },
-  {
-    "source": {
-      "x": 2147,
-      "y": 5284,
-      "plane": 0
-    },
-    "destination": {
-      "x": 2358,
-      "y": 5215,
-      "plane": 0
-    },
-    "action": "Climb-down",
-    "objectId": 23706,
-    "requirements": {
-    }
-  },
-  {
-    "source": {
-      "x": 2358,
-      "y": 5215,
-      "plane": 0
-    },
-    "destination": {
-      "x": 2123,
-      "y": 5252,
-      "plane": 0
-    },
-    "action": "Climb-up",
-    "objectId": 23921,
-    "requirements": {
-    }
-  },
-  {
-    "source": {
-      "x": 2148,
-      "y": 5283,
-      "plane": 0
-    },
-    "destination": {
-      "x": 2358,
-      "y": 5215,
-      "plane": 0
-    },
-    "action": "Climb-down",
-    "objectId": 23706,
-    "requirements": {
-    }
-  },
-  {
-    "source": {
-      "x": 2357,
-      "y": 5216,
-      "plane": 0
-    },
-    "destination": {
-      "x": 2123,
-      "y": 5252,
-      "plane": 0
-    },
-    "action": "Climb-up",
-    "objectId": 23921,
-    "requirements": {
-    }
-  },
-  {
-    "source": {
-      "x": 2149,
-      "y": 5284,
-      "plane": 0
-    },
-    "destination": {
-      "x": 2358,
-      "y": 5215,
-      "plane": 0
-    },
-    "action": "Climb-down",
-    "objectId": 23706,
     "requirements": {
     }
   },
@@ -16825,38 +16521,6 @@
           "level": 38
         }
       ]
-    }
-  },
-  {
-    "source": {
-      "x": 3363,
-      "y": 3300,
-      "plane": 0
-    },
-    "destination": {
-      "x": 3363,
-      "y": 3298,
-      "plane": 0
-    },
-    "action": "Enter",
-    "objectId": 10721,
-    "requirements": {
-    }
-  },
-  {
-    "source": {
-      "x": 3363,
-      "y": 3298,
-      "plane": 0
-    },
-    "destination": {
-      "x": 3363,
-      "y": 3300,
-      "plane": 0
-    },
-    "action": "Enter",
-    "objectId": 10721,
-    "requirements": {
     }
   },
   {
@@ -33907,54 +33571,6 @@
   },
   {
     "source": {
-      "x": 3672,
-      "y": 3376,
-      "plane": 0
-    },
-    "destination": {
-      "x": 3670,
-      "y": 3375,
-      "plane": 0
-    },
-    "action": "Climb",
-    "objectId": 39541,
-    "requirements": {
-      "varRequirements": [
-        {
-          "comparison": "GREATER_THAN_EQUAL",
-          "type": "VARBIT",
-          "var": 10450,
-          "value": 1
-        }
-      ]
-    }
-  },
-  {
-    "source": {
-      "x": 3672,
-      "y": 3374,
-      "plane": 0
-    },
-    "destination": {
-      "x": 3670,
-      "y": 3375,
-      "plane": 0
-    },
-    "action": "Climb",
-    "objectId": 39541,
-    "requirements": {
-      "varRequirements": [
-        {
-          "comparison": "GREATER_THAN_EQUAL",
-          "type": "VARBIT",
-          "var": 10450,
-          "value": 1
-        }
-      ]
-    }
-  },
-  {
-    "source": {
       "x": 3666,
       "y": 3517,
       "plane": 0
@@ -49305,38 +48921,6 @@
   },
   {
     "source": {
-      "x": 3371,
-      "y": 9312,
-      "plane": 0
-    },
-    "destination": {
-      "x": 3371,
-      "y": 9313,
-      "plane": 0
-    },
-    "action": "Open",
-    "objectId": 10431,
-    "requirements": {
-    }
-  },
-  {
-    "source": {
-      "x": 3371,
-      "y": 9313,
-      "plane": 0
-    },
-    "destination": {
-      "x": 3371,
-      "y": 9312,
-      "plane": 0
-    },
-    "action": "Open",
-    "objectId": 10431,
-    "requirements": {
-    }
-  },
-  {
-    "source": {
       "x": 3373,
       "y": 9304,
       "plane": 0
@@ -54753,22 +54337,6 @@
   },
   {
     "source": {
-      "x": 3522,
-      "y": 3285,
-      "plane": 0
-    },
-    "destination": {
-      "x": 3498,
-      "y": 3380,
-      "plane": 0
-    },
-    "action": "Quick-board",
-    "objectId": 6969,
-    "requirements": {
-    }
-  },
-  {
-    "source": {
       "x": 3499,
       "y": 3380,
       "plane": 0
@@ -54780,22 +54348,6 @@
     },
     "action": "Board",
     "objectId": 6970,
-    "requirements": {
-    }
-  },
-  {
-    "source": {
-      "x": 3522,
-      "y": 3284,
-      "plane": 0
-    },
-    "destination": {
-      "x": 3498,
-      "y": 3380,
-      "plane": 0
-    },
-    "action": "Quick-board",
-    "objectId": 6969,
     "requirements": {
     }
   },
@@ -54817,22 +54369,6 @@
   },
   {
     "source": {
-      "x": 3522,
-      "y": 3286,
-      "plane": 0
-    },
-    "destination": {
-      "x": 3498,
-      "y": 3380,
-      "plane": 0
-    },
-    "action": "Quick-board",
-    "objectId": 6969,
-    "requirements": {
-    }
-  },
-  {
-    "source": {
       "x": 3500,
       "y": 3380,
       "plane": 0
@@ -54844,22 +54380,6 @@
     },
     "action": "Board",
     "objectId": 6970,
-    "requirements": {
-    }
-  },
-  {
-    "source": {
-      "x": 3522,
-      "y": 3287,
-      "plane": 0
-    },
-    "destination": {
-      "x": 3498,
-      "y": 3380,
-      "plane": 0
-    },
-    "action": "Quick-board",
-    "objectId": 6969,
     "requirements": {
     }
   },
@@ -70016,22 +69536,6 @@
   {
     "source": {
       "x": 2943,
-      "y": 3769,
-      "plane": 0
-    },
-    "destination": {
-      "x": 2950,
-      "y": 3767,
-      "plane": 0
-    },
-    "action": "Climb",
-    "objectId": 26405,
-    "requirements": {
-    }
-  },
-  {
-    "source": {
-      "x": 2943,
       "y": 3767,
       "plane": 0
     },
@@ -71927,28 +71431,6 @@
   },
   {
     "source": {
-      "x": 2324,
-      "y": 3497,
-      "plane": 0
-    },
-    "destination": {
-      "x": 2322,
-      "y": 3502,
-      "plane": 0
-    },
-    "action": "Climb",
-    "objectId": 19849,
-    "requirements": {
-      "skillRequirements": [
-        {
-          "skill": "AGILITY",
-          "level": 25
-        }
-      ]
-    }
-  },
-  {
-    "source": {
       "x": 3241,
       "y": 9524,
       "plane": 2
@@ -72155,270 +71637,6 @@
             2887
           ],
           "amount": 1
-        }
-      ]
-    }
-  },
-  {
-    "source": {
-      "x": 2907,
-      "y": 3682,
-      "plane": 0
-    },
-    "destination": {
-      "x": 2909,
-      "y": 3684,
-      "plane": 0
-    },
-    "action": "Climb",
-    "objectId": 16523,
-    "requirements": {
-      "skillRequirements": [
-        {
-          "skill": "AGILITY",
-          "level": 44
-        }
-      ]
-    }
-  },
-  {
-    "source": {
-      "x": 2909,
-      "y": 3684,
-      "plane": 0
-    },
-    "destination": {
-      "x": 2907,
-      "y": 3682,
-      "plane": 0
-    },
-    "action": "Climb",
-    "objectId": 16523,
-    "requirements": {
-      "skillRequirements": [
-        {
-          "skill": "AGILITY",
-          "level": 44
-        }
-      ]
-    }
-  },
-  {
-    "source": {
-      "x": 2903,
-      "y": 3680,
-      "plane": 0
-    },
-    "destination": {
-      "x": 2900,
-      "y": 3680,
-      "plane": 0
-    },
-    "action": "Climb",
-    "objectId": 16524,
-    "requirements": {
-      "skillRequirements": [
-        {
-          "skill": "AGILITY",
-          "level": 47
-        }
-      ]
-    }
-  },
-  {
-    "source": {
-      "x": 2900,
-      "y": 3680,
-      "plane": 0
-    },
-    "destination": {
-      "x": 2903,
-      "y": 3680,
-      "plane": 0
-    },
-    "action": "Climb",
-    "objectId": 16524,
-    "requirements": {
-      "skillRequirements": [
-        {
-          "skill": "AGILITY",
-          "level": 47
-        }
-      ]
-    }
-  },
-  {
-    "source": {
-      "x": 2915,
-      "y": 3672,
-      "plane": 0
-    },
-    "destination": {
-      "x": 2918,
-      "y": 3672,
-      "plane": 0
-    },
-    "action": "Climb",
-    "objectId": 16545,
-    "requirements": {
-      "skillRequirements": [
-        {
-          "skill": "AGILITY",
-          "level": 64
-        }
-      ]
-    }
-  },
-  {
-    "source": {
-      "x": 2921,
-      "y": 3672,
-      "plane": 0
-    },
-    "destination": {
-      "x": 2924,
-      "y": 3673,
-      "plane": 0
-    },
-    "action": "Climb",
-    "objectId": 16545,
-    "requirements": {
-      "skillRequirements": [
-        {
-          "skill": "AGILITY",
-          "level": 64
-        }
-      ]
-    }
-  },
-  {
-    "source": {
-      "x": 2924,
-      "y": 3673,
-      "plane": 0
-    },
-    "destination": {
-      "x": 2921,
-      "y": 3672,
-      "plane": 0
-    },
-    "action": "Climb",
-    "objectId": 16545,
-    "requirements": {
-      "skillRequirements": [
-        {
-          "skill": "AGILITY",
-          "level": 64
-        }
-      ]
-    }
-  },
-  {
-    "source": {
-      "x": 2918,
-      "y": 3672,
-      "plane": 0
-    },
-    "destination": {
-      "x": 2915,
-      "y": 3672,
-      "plane": 0
-    },
-    "action": "Climb",
-    "objectId": 16545,
-    "requirements": {
-      "skillRequirements": [
-        {
-          "skill": "AGILITY",
-          "level": 64
-        }
-      ]
-    }
-  },
-  {
-    "source": {
-      "x": 2869,
-      "y": 3671,
-      "plane": 0
-    },
-    "destination": {
-      "x": 2872,
-      "y": 3671,
-      "plane": 0
-    },
-    "action": "Climb",
-    "objectId": 16521,
-    "requirements": {
-      "skillRequirements": [
-        {
-          "skill": "AGILITY",
-          "level": 41
-        }
-      ]
-    }
-  },
-  {
-    "source": {
-      "x": 2872,
-      "y": 3671,
-      "plane": 0
-    },
-    "destination": {
-      "x": 2869,
-      "y": 3671,
-      "plane": 0
-    },
-    "action": "Climb",
-    "objectId": 16521,
-    "requirements": {
-      "skillRequirements": [
-        {
-          "skill": "AGILITY",
-          "level": 41
-        }
-      ]
-    }
-  },
-  {
-    "source": {
-      "x": 2877,
-      "y": 3666,
-      "plane": 0
-    },
-    "destination": {
-      "x": 2878,
-      "y": 3668,
-      "plane": 0
-    },
-    "action": "Climb",
-    "objectId": 16522,
-    "requirements": {
-      "skillRequirements": [
-        {
-          "skill": "AGILITY",
-          "level": 43
-        }
-      ]
-    }
-  },
-  {
-    "source": {
-      "x": 2878,
-      "y": 3668,
-      "plane": 0
-    },
-    "destination": {
-      "x": 2878,
-      "y": 3665,
-      "plane": 0
-    },
-    "action": "Climb",
-    "objectId": 16522,
-    "requirements": {
-      "skillRequirements": [
-        {
-          "skill": "AGILITY",
-          "level": 43
         }
       ]
     }
@@ -78506,6 +77724,206 @@
           "type": "VARBIT",
           "var": 4470,
           "value": 1
+        }
+      ]
+    }
+  },
+  {
+    "source": {
+      "x": 2542,
+      "y": 4718,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2509,
+      "y": 4689,
+      "plane": 0
+    },
+    "action": "Step-into",
+    "objectId": 2878,
+    "requirements": {
+    }
+  },
+  {
+    "source": {
+      "x": 2509,
+      "y": 4689,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2542,
+      "y": 4718,
+      "plane": 0
+    },
+    "action": "Step-into",
+    "objectId": 2879,
+    "requirements": {
+    }
+  },
+  {
+    "source": {
+      "x": 3105,
+      "y": 3956,
+      "plane": 0
+    },
+    "destination": {
+      "x": 3105,
+      "y": 3951,
+      "plane": 0
+    },
+    "action": "Pull",
+    "objectId": 9706,
+    "requirements": {
+    }
+  },
+  {
+    "source": {
+      "x": 3105,
+      "y": 3951,
+      "plane": 0
+    },
+    "destination": {
+      "x": 3105,
+      "y": 3956,
+      "plane": 0
+    },
+    "action": "Pull",
+    "objectId": 9707,
+    "requirements": {
+    }
+  },
+  {
+    "source": {
+      "x": 3522,
+      "y": 3285,
+      "plane": 0
+    },
+    "destination": {
+      "x": 3498,
+      "y": 3380,
+      "plane": 0
+    },
+    "action": "Quick-board",
+    "objectId": 6969,
+    "requirements": {
+      "itemRequirements": [
+        {
+          "reduction": "AND",
+          "equipped": false,
+          "ids": [
+            995
+          ],
+          "amount": 10
+        }
+      ],
+      "questRequirements": [
+        {
+          "quest": "IN_SEARCH_OF_THE_MYREQUE",
+          "states": [
+            "FINISHED"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "source": {
+      "x": 3522,
+      "y": 3284,
+      "plane": 0
+    },
+    "destination": {
+      "x": 3498,
+      "y": 3380,
+      "plane": 0
+    },
+    "action": "Quick-board",
+    "objectId": 6969,
+    "requirements": {
+      "itemRequirements": [
+        {
+          "reduction": "AND",
+          "equipped": false,
+          "ids": [
+            995
+          ],
+          "amount": 10
+        }
+      ],
+      "questRequirements": [
+        {
+          "quest": "IN_SEARCH_OF_THE_MYREQUE",
+          "states": [
+            "FINISHED"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "source": {
+      "x": 3522,
+      "y": 3286,
+      "plane": 0
+    },
+    "destination": {
+      "x": 3498,
+      "y": 3380,
+      "plane": 0
+    },
+    "action": "Quick-board",
+    "objectId": 6969,
+    "requirements": {
+      "itemRequirements": [
+        {
+          "reduction": "AND",
+          "equipped": false,
+          "ids": [
+            995
+          ],
+          "amount": 10
+        }
+      ],
+      "questRequirements": [
+        {
+          "quest": "IN_SEARCH_OF_THE_MYREQUE",
+          "states": [
+            "FINISHED"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "source": {
+      "x": 3522,
+      "y": 3287,
+      "plane": 0
+    },
+    "destination": {
+      "x": 3498,
+      "y": 3380,
+      "plane": 0
+    },
+    "action": "Quick-board",
+    "objectId": 6969,
+    "requirements": {
+      "itemRequirements": [
+        {
+          "reduction": "AND",
+          "equipped": false,
+          "ids": [
+            995
+          ],
+          "amount": 10
+        }
+      ],
+      "questRequirements": [
+        {
+          "quest": "IN_SEARCH_OF_THE_MYREQUE",
+          "states": [
+            "FINISHED"
+          ]
         }
       ]
     }

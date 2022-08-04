@@ -95,19 +95,22 @@ public class TransportLoader
 
 			int gold = Inventory.getFirst(995) != null ? Inventory.getFirst(995).getQuantity() : 0;
 
+			if (gold >= 30)
+			{
+				if (Quests.isFinished(Quest.PIRATES_TREASURE))
+				{
+					transports.add(npcTransport(new WorldPoint(3027, 3218, 0), new WorldPoint(2956, 3143, 1), 3644, "Pay-fare"));
+					transports.add(npcTransport(new WorldPoint(2954, 3147, 0), new WorldPoint(3032, 3217, 1), 3648, "Pay-Fare"));
+				}
+				else
+				{
+					transports.add(npcDialogTransport(new WorldPoint(3027, 3218, 0), new WorldPoint(2956, 3143, 1), 3644, "Yes please."));
+					transports.add(npcDialogTransport(new WorldPoint(2954, 3147, 0), new WorldPoint(3032, 3217, 1), 3648, "Can I journey on this ship?", "Ok"));
+				}
+			}
+
 			if (Worlds.inMembersWorld())
 			{
-				boolean ringOfCharos = Equipment.contains(ItemID.RING_OF_CHAROS, ItemID.RING_OF_CHAROSA);
-
-				//morytania
-				if (Quests.isFinished(Quest.IN_SEARCH_OF_THE_MYREQUE) && (ringOfCharos || gold >= 10))
-				{
-					transports.add(objectTransport(new WorldPoint(3522, 3285, 0), new WorldPoint(3498, 3380, 0), 6969,
-							"Quick-board"));
-				}
-				transports.add(objectTransport(new WorldPoint(3498, 3380, 0), new WorldPoint(3522, 3285, 0), 6970,
-						"Board"));
-
 				//Shamans
 				transports.add(objectTransport(new WorldPoint(1312, 3685, 0), new WorldPoint(1312, 10086, 0), 34405, "Enter"));
 				/**
