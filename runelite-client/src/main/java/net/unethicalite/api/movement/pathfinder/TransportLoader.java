@@ -24,6 +24,7 @@ import net.unethicalite.api.game.Vars;
 import net.unethicalite.api.game.Worlds;
 import net.unethicalite.api.items.Equipment;
 import net.unethicalite.api.items.Inventory;
+import net.unethicalite.api.movement.Movement;
 import net.unethicalite.api.movement.pathfinder.model.FairyRingLocation;
 import net.unethicalite.api.movement.pathfinder.model.Transport;
 import net.unethicalite.api.movement.pathfinder.model.dto.TransportDto;
@@ -31,6 +32,7 @@ import net.unethicalite.api.movement.pathfinder.model.requirement.Requirements;
 import net.unethicalite.api.quests.Quests;
 import net.unethicalite.api.widgets.Dialog;
 import net.unethicalite.api.widgets.Widgets;
+import org.apache.commons.lang3.tuple.Pair;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -40,8 +42,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static net.unethicalite.api.movement.pathfinder.model.MovementConstants.MUSHTREES;
-import static net.unethicalite.api.movement.pathfinder.model.MovementConstants.SPIRIT_TREES;
+import static net.unethicalite.api.movement.pathfinder.model.MovementConstants.*;
 
 @Slf4j
 public class TransportLoader
@@ -329,6 +330,15 @@ public class TransportLoader
 			transports.add(itemUseTransport(new WorldPoint(2512, 3476, 0), new WorldPoint(2513, 3468, 0), 954, 1996));
 			transports.add(itemUseTransport(new WorldPoint(2512, 3466, 0), new WorldPoint(2511, 3463, 0), 954, 2020));
 
+			if (Inventory.contains(SLASH_ITEMS) || Equipment.contains(SLASH_ITEMS))
+			{
+				for (Pair<WorldPoint, WorldPoint> pair : SLASH_WEB_POINTS)
+				{
+					transports.add(slashWebTransport(pair.getLeft(), pair.getRight()));
+					transports.add(slashWebTransport(pair.getRight(), pair.getLeft()));
+				}
+			}
+
 			LAST_TRANSPORT_LIST.clear();
 			LAST_TRANSPORT_LIST.addAll(filteredStatic);
 			LAST_TRANSPORT_LIST.addAll(transports);
@@ -581,6 +591,25 @@ public class TransportLoader
 			if (transport != null)
 			{
 				transport.interact(actions);
+			}
+		});
+	}
+
+	public static Transport slashWebTransport(
+			WorldPoint source,
+			WorldPoint destination
+	)
+	{
+		return new Transport(source, destination, Integer.MAX_VALUE, 0, () ->
+		{
+			TileObject transport = TileObjects.getFirstSurrounding(source, 5, it -> it.getName() != null && it.getName().contains("Web") && it.hasAction("Slash"));
+			if (transport != null)
+			{
+				transport.interact("Slash");
+			}
+			else
+			{
+				Movement.walk(destination);
 			}
 		});
 	}
