@@ -67014,7 +67014,14 @@
       "itemRequirements": [],
       "skillRequirements": [],
       "varRequirements": [],
-      "questRequirements": []
+      "questRequirements": [
+        {
+          "quest": "IN_SEARCH_OF_THE_MYREQUE",
+          "states": [
+            "FINISHED"
+          ]
+        }
+      ]
     }
   },
   {
@@ -67054,7 +67061,14 @@
       "itemRequirements": [],
       "skillRequirements": [],
       "varRequirements": [],
-      "questRequirements": []
+      "questRequirements": [
+        {
+          "quest": "IN_SEARCH_OF_THE_MYREQUE",
+          "states": [
+            "FINISHED"
+          ]
+        }
+      ]
     }
   },
   {

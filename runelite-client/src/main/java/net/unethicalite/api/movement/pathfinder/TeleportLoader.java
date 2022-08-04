@@ -52,16 +52,19 @@ public class TeleportLoader
 	private static List<Teleport> buildTimedTeleports()
 	{
 		List<Teleport> teleports = new ArrayList<>();
-		if (Game.getWildyLevel() <= 20)
+		if (Worlds.inMembersWorld())
 		{
-			// Minigames
-			if (Minigames.canTeleport())
+			if (Game.getWildyLevel() <= 20)
 			{
-				for (Minigames.Destination tp : Minigames.Destination.values())
+				// Minigames
+				if (Minigames.canTeleport())
 				{
-					if (tp.canUse())
+					for (Minigames.Destination tp : Minigames.Destination.values())
 					{
-						teleports.add(new Teleport(tp.getLocation(), 2, () -> Minigames.teleport(tp)));
+						if (tp.canUse())
+						{
+							teleports.add(new Teleport(tp.getLocation(), 2, () -> Minigames.teleport(tp)));
+						}
 					}
 				}
 			}
