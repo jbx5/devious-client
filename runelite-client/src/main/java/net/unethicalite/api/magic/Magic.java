@@ -81,7 +81,7 @@ public class Magic
 		Widget widget = Widgets.get(spell.getWidget());
 		if (widget != null)
 		{
-			widget.interact(0);
+			widget.interact(0, MenuAction.CC_OP.getId());
 		}
 	}
 
