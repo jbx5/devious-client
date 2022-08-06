@@ -76,14 +76,17 @@ public class InputManager implements MouseListener, NativeMouseInputListener, Na
 	}
 
 	@Override
+	public MouseEvent mouseClicked(MouseEvent mouseEvent)
+	{
+		checkIfAutomated(mouseEvent);
+		setLastClick(mouseEvent.getX(), mouseEvent.getY());
+		return mouseEvent;
+	}
+
+	@Override
 	public MouseEvent mousePressed(MouseEvent mouseEvent)
 	{
-		if (shouldConsume(mouseEvent) || mouseEvent.isPopupTrigger())
-		{
-			return mouseEvent;
-		}
-
-		client.getMouseHandler().sendClick(mouseEvent.getX(), mouseEvent.getY(), mouseEvent.getButton());
+		checkIfAutomated(mouseEvent);
 		setLastClick(mouseEvent.getX(), mouseEvent.getY());
 		return mouseEvent;
 	}
@@ -91,25 +94,15 @@ public class InputManager implements MouseListener, NativeMouseInputListener, Na
 	@Override
 	public MouseEvent mouseReleased(MouseEvent mouseEvent)
 	{
-		if (shouldConsume(mouseEvent) || mouseEvent.isPopupTrigger())
-		{
-			return mouseEvent;
-		}
-
-		client.getMouseHandler().sendRelease();
+		checkIfAutomated(mouseEvent);
 		setLastClick(mouseEvent.getX(), mouseEvent.getY());
 		return mouseEvent;
 	}
 
 	@Override
-	public MouseEvent mouseMoved(MouseEvent mouseEvent)
+	public MouseEvent mouseEntered(MouseEvent mouseEvent)
 	{
-		if (shouldConsume(mouseEvent))
-		{
-			return mouseEvent;
-		}
-
-		client.getMouseHandler().sendMovement(mouseEvent.getX(), mouseEvent.getY());
+		checkIfAutomated(mouseEvent);
 		setLastMove(mouseEvent.getX(), mouseEvent.getY());
 		return mouseEvent;
 	}
@@ -117,31 +110,24 @@ public class InputManager implements MouseListener, NativeMouseInputListener, Na
 	@Override
 	public MouseEvent mouseExited(MouseEvent mouseEvent)
 	{
-		if (shouldConsume(mouseEvent))
-		{
-			return mouseEvent;
-		}
-
-		client.getMouseHandler().sendExit();
+		checkIfAutomated(mouseEvent);
 		setLastMove(mouseEvent.getX(), mouseEvent.getY());
 		return mouseEvent;
 	}
 
 	@Override
-	public MouseEvent mouseEntered(MouseEvent mouseEvent)
-	{
-		return mouseMoved(mouseEvent);
-	}
-
-	@Override
 	public MouseEvent mouseDragged(MouseEvent mouseEvent)
 	{
-		return mouseMoved(mouseEvent);
+		checkIfAutomated(mouseEvent);
+		setLastMove(mouseEvent.getX(), mouseEvent.getY());
+		return mouseEvent;
 	}
 
 	@Override
-	public MouseEvent mouseClicked(MouseEvent mouseEvent)
+	public MouseEvent mouseMoved(MouseEvent mouseEvent)
 	{
+		checkIfAutomated(mouseEvent);
+		setLastMove(mouseEvent.getX(), mouseEvent.getY());
 		return mouseEvent;
 	}
 
@@ -282,13 +268,17 @@ public class InputManager implements MouseListener, NativeMouseInputListener, Na
 		lastMoveY = y;
 	}
 
-	private boolean shouldConsume(MouseEvent mouseEvent)
+	private void checkIfAutomated(MouseEvent mouseEvent)
 	{
-		mouseEvent.consume();
+		if (!interactionConfig.disableMouse())
+		{
+			return;
+		}
 
-		return interactionConfig.disableMouse()
-				&& loopedPluginManager.isPluginRegistered()
-				&& minimalPluginManager.isScriptRunning()
-				&& mouseEvent.getSource() != "unethicalite";
+		if ((loopedPluginManager.isPluginRegistered() || minimalPluginManager.isScriptRunning())
+				&& mouseEvent.getSource() != "unethicalite")
+		{
+			mouseEvent.consume();
+		}
 	}
 }

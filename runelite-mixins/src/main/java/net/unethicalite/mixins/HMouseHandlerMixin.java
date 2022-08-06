@@ -25,7 +25,7 @@ public abstract class HMouseHandlerMixin implements RSMouseHandler
 		setLastPressedX(x);
 		setLastPressedY(y);
 		setLastPressedMillis(System.currentTimeMillis());
-		setLastButton(getButton(button));
+		setLastButton(button);
 		if (getLastPendingButton() != 0)
 		{
 			setCurrentButton(getLastPendingButton());
@@ -98,12 +98,6 @@ public abstract class HMouseHandlerMixin implements RSMouseHandler
 	{
 		setCurrentButton(0);
 		client.setFocused(false);
-	}
-
-	@Inject
-	private int getButton(int button)
-	{
-		return button == 3 ? 2 : button == 2 ? 4 : button;
 	}
 
 	@Override
