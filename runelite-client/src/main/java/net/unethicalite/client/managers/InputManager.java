@@ -78,7 +78,6 @@ public class InputManager implements MouseListener, NativeMouseInputListener, Na
 	@Override
 	public MouseEvent mousePressed(MouseEvent mouseEvent)
 	{
-		log.debug("Mouse pressed {}", mouseEvent.getButton());
 		if (shouldConsume(mouseEvent) || mouseEvent.isPopupTrigger())
 		{
 			return mouseEvent;
