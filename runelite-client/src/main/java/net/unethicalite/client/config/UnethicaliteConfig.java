@@ -10,8 +10,6 @@ import net.runelite.client.config.ConfigItem;
 import net.runelite.client.config.ConfigSection;
 import net.runelite.client.config.Range;
 
-import java.util.Set;
-
 import static net.unethicalite.client.config.UnethicaliteConfig.CONFIG_GROUP;
 
 @ConfigGroup(CONFIG_GROUP)
