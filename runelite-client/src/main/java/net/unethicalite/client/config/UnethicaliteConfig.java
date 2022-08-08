@@ -1,8 +1,6 @@
 package net.unethicalite.client.config;
 
-import net.unethicalite.api.movement.pathfinder.model.poh.HousePortal;
 import net.unethicalite.api.movement.pathfinder.model.poh.JewelryBox;
-import net.unethicalite.api.movement.pathfinder.model.poh.PortalNexus;
 import net.unethicalite.client.managers.interaction.InteractMethod;
 import net.unethicalite.client.managers.interaction.MouseBehavior;
 import net.runelite.client.config.Button;
@@ -327,29 +325,29 @@ public interface UnethicaliteConfig extends Config
 		return JewelryBox.NONE;
 	}
 
-	@ConfigItem(
-			keyName = "housePortals",
-			name = "House Portals",
-			description = "",
-			position = 5,
-			section = pathfinderSection
-	)
-	default Set<HousePortal> housePortals()
-	{
-		return Set.of();
-	}
-
-	@ConfigItem(
-			keyName = "portalNexus",
-			name = "Portal Nexus",
-			description = "",
-			position = 6,
-			section = pathfinderSection
-	)
-	default Set<PortalNexus> portalNexus()
-	{
-		return Set.of();
-	}
+//	@ConfigItem(
+//			keyName = "housePortals",
+//			name = "House Portals",
+//			description = "",
+//			position = 5,
+//			section = pathfinderSection
+//	)
+//	default Set<HousePortal> housePortals()
+//	{
+//		return Set.of();
+//	}
+//
+//	@ConfigItem(
+//			keyName = "portalNexus",
+//			name = "Portal Nexus",
+//			description = "",
+//			position = 6,
+//			section = pathfinderSection
+//	)
+//	default Set<PortalNexus> portalNexus()
+//	{
+//		return Set.of();
+//	}
 
 	@ConfigSection(
 			name = "Minimal Mode",
