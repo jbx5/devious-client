@@ -5,6 +5,7 @@ import net.runelite.api.coords.WorldArea;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.widgets.WidgetInfo;
 import net.unethicalite.api.movement.pathfinder.TransportLoader;
+import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.List;
 
@@ -160,5 +161,84 @@ public class MovementConstants
                     ItemID.ENCHANTED_LYRE2,
                     ItemID.ENCHANTED_LYRE1
             };
+
+    public static final int[] SLASH_ITEMS = new int[]
+            {
+                    ItemID.KNIFE,
+                    ItemID.WILDERNESS_SWORD_1,
+                    ItemID.WILDERNESS_SWORD_2,
+                    ItemID.WILDERNESS_SWORD_3,
+                    ItemID.WILDERNESS_SWORD_4
+            };
+
+    public static final List<Pair<WorldPoint, WorldPoint>> SLASH_WEB_POINTS = List.<Pair<WorldPoint, WorldPoint>>of(
+            Pair.of(new WorldPoint(3031, 3852, 0), new WorldPoint(3029, 3852, 0)),
+            Pair.of(new WorldPoint(3148, 3727, 0), new WorldPoint(3146, 3727, 0)),
+            Pair.of(new WorldPoint(3147, 3728, 0), new WorldPoint(3147, 3726, 0)),
+            Pair.of(new WorldPoint(3164, 3736, 0), new WorldPoint(3162, 3736, 0)),
+            Pair.of(new WorldPoint(3163, 3737, 0), new WorldPoint(3163, 3735, 0)),
+            Pair.of(new WorldPoint(3183, 3734, 0), new WorldPoint(3183, 3732, 0)),
+            Pair.of(new WorldPoint(3158, 3952, 0), new WorldPoint(3158, 3950, 0)),
+            Pair.of(new WorldPoint(3210, 9899, 0), new WorldPoint(3210, 9897, 0)),
+            Pair.of(new WorldPoint(3115, 3860, 0), new WorldPoint(3115, 3858, 0)),
+            Pair.of(new WorldPoint(3093, 3957, 0), new WorldPoint(3091, 3957, 0)),
+            Pair.of(new WorldPoint(3096, 3957, 0), new WorldPoint(3094, 3957, 0)),
+            Pair.of(new WorldPoint(3105, 3959, 0), new WorldPoint(3105, 3957, 0)),
+            Pair.of(new WorldPoint(3106, 3959, 0), new WorldPoint(3106, 3957, 0)),
+            Pair.of(new WorldPoint(2654, 9767, 0), new WorldPoint(2654, 9765, 0)),
+            Pair.of(new WorldPoint(2566, 3124, 0), new WorldPoint(2564, 3124, 0)),
+            Pair.of(new WorldPoint(2565, 3125, 0), new WorldPoint(2565, 3123, 0)),
+            Pair.of(new WorldPoint(2569, 3119, 0), new WorldPoint(2569, 3117, 0)),
+            Pair.of(new WorldPoint(2570, 3119, 0), new WorldPoint(2570, 3117, 0)),
+            Pair.of(new WorldPoint(2574, 3125, 0), new WorldPoint(2574, 3123, 0)),
+            Pair.of(new WorldPoint(2631, 9248, 0), new WorldPoint(2629, 9248, 0)),
+            Pair.of(new WorldPoint(2632, 9264, 0), new WorldPoint(2630, 9264, 0)),
+            Pair.of(new WorldPoint(2628, 9231, 1), new WorldPoint(2628, 9229, 1)),
+            Pair.of(new WorldPoint(2629, 9239, 1), new WorldPoint(2629, 9237, 1)),
+            Pair.of(new WorldPoint(2647, 9118, 0), new WorldPoint(2647, 9116, 0)),
+            Pair.of(new WorldPoint(2638, 9092, 1), new WorldPoint(2638, 9090, 1)),
+            Pair.of(new WorldPoint(2653, 9124, 1), new WorldPoint(2653, 9122, 1)),
+            Pair.of(new WorldPoint(2663, 9110, 1), new WorldPoint(2663, 9108, 1)),
+            Pair.of(new WorldPoint(2633, 9200, 0), new WorldPoint(2633, 9198, 0)),
+            Pair.of(new WorldPoint(2646, 9190, 0), new WorldPoint(2644, 9190, 0)),
+            Pair.of(new WorldPoint(2648, 9199, 0), new WorldPoint(2648, 9197, 0)),
+            Pair.of(new WorldPoint(2662, 9206, 0), new WorldPoint(2662, 9204, 0)),
+            Pair.of(new WorldPoint(2666, 9160, 0), new WorldPoint(2664, 9160, 0)),
+            Pair.of(new WorldPoint(2668, 9194, 0), new WorldPoint(2666, 9194, 0)),
+            Pair.of(new WorldPoint(2541, 9069, 1), new WorldPoint(2539, 9069, 1)),
+            Pair.of(new WorldPoint(2547, 9064, 1), new WorldPoint(2547, 9062, 1)),
+            Pair.of(new WorldPoint(2551, 9054, 1), new WorldPoint(2551, 9052, 1)),
+            Pair.of(new WorldPoint(2555, 9039, 1), new WorldPoint(2553, 9039, 1)),
+            Pair.of(new WorldPoint(2604, 9273, 1), new WorldPoint(2602, 9273, 1)),
+            Pair.of(new WorldPoint(2618, 9211, 1), new WorldPoint(2618, 9209, 1)),
+            Pair.of(new WorldPoint(2620, 9205, 1), new WorldPoint(2620, 9203, 1)),
+            Pair.of(new WorldPoint(2571, 9051, 0), new WorldPoint(2569, 9051, 0)),
+            Pair.of(new WorldPoint(2570, 9052, 0), new WorldPoint(2570, 9050, 0)),
+            Pair.of(new WorldPoint(2599, 9080, 1), new WorldPoint(2597, 9080, 1)),
+            Pair.of(new WorldPoint(2608, 9079, 1), new WorldPoint(2606, 9079, 1)),
+            Pair.of(new WorldPoint(2610, 9047, 1), new WorldPoint(2610, 9045, 1)),
+            Pair.of(new WorldPoint(2613, 9057, 1), new WorldPoint(2613, 9055, 1)),
+            Pair.of(new WorldPoint(2619, 9071, 1), new WorldPoint(2617, 9071, 1)),
+            Pair.of(new WorldPoint(2618, 9072, 1), new WorldPoint(2618, 9070, 1)),
+            Pair.of(new WorldPoint(2674, 9039, 0), new WorldPoint(2674, 9037, 0)),
+            Pair.of(new WorldPoint(2633, 9049, 1), new WorldPoint(2633, 9047, 1)),
+            Pair.of(new WorldPoint(2639, 9062, 1), new WorldPoint(2637, 9062, 1)),
+            Pair.of(new WorldPoint(2638, 9063, 1), new WorldPoint(2638, 9061, 1)),
+            Pair.of(new WorldPoint(2645, 9056, 1), new WorldPoint(2643, 9056, 1)),
+            Pair.of(new WorldPoint(2655, 9073, 1), new WorldPoint(2653, 9073, 1)),
+            Pair.of(new WorldPoint(2654, 9074, 1), new WorldPoint(2654, 9072, 1)),
+            Pair.of(new WorldPoint(2657, 9082, 1), new WorldPoint(2655, 9082, 1)),
+            Pair.of(new WorldPoint(2676, 9074, 1), new WorldPoint(2674, 9074, 1)),
+            Pair.of(new WorldPoint(2678, 9061, 1), new WorldPoint(2678, 9059, 1)),
+            Pair.of(new WorldPoint(2678, 9068, 1), new WorldPoint(2678, 9066, 1)),
+            Pair.of(new WorldPoint(1833, 9945, 0), new WorldPoint(1833, 9943, 0)),
+            Pair.of(new WorldPoint(1841, 9934, 0), new WorldPoint(1841, 9932, 0)),
+            Pair.of(new WorldPoint(1843, 9933, 0), new WorldPoint(1841, 9933, 0)),
+            Pair.of(new WorldPoint(1842, 9934, 0), new WorldPoint(1842, 9932, 0)),
+            Pair.of(new WorldPoint(1849, 9935, 0), new WorldPoint(1849, 9933, 0)),
+            Pair.of(new WorldPoint(1850, 9935, 0), new WorldPoint(1850, 9933, 0)),
+            Pair.of(new WorldPoint(1848, 9919, 0), new WorldPoint(1846, 9919, 0)),
+            Pair.of(new WorldPoint(1847, 9920, 0), new WorldPoint(1847, 9918, 0))
+    );
 
 }

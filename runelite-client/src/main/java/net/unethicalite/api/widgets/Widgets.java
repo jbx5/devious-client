@@ -13,6 +13,13 @@ import java.util.stream.Collectors;
 
 public class Widgets
 {
+	public static WidgetQuery query()
+	{
+		return new WidgetQuery(() -> Arrays.stream(Static.getClient().getWidgets())
+				.flatMap(Arrays::stream)
+				.collect(Collectors.toList()));
+	}
+
 	public static WidgetQuery query(int group)
 	{
 		return new WidgetQuery(() -> get(group));

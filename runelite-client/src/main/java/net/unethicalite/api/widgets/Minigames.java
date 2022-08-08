@@ -6,7 +6,6 @@ import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Quest;
 import net.runelite.api.Skill;
 import net.runelite.api.VarPlayer;
-import net.runelite.api.Varbits;
 import net.runelite.api.coords.WorldPoint;
 import net.unethicalite.api.commons.Predicates;
 import net.unethicalite.api.entities.Players;
@@ -215,10 +214,11 @@ public class Minigames
 					return Quests.isFinished(Quest.RATCATCHERS);
 				case SHADES_OF_MORTTON:
 					return Quests.isFinished(Quest.SHADES_OF_MORTTON);
-				case TITHE_FARM:
-					return Skills.getLevel(Skill.FARMING) >= 34 && (Vars.getBit(Varbits.KOUREND_FAVOR_HOSIDIUS) / 10) >= 100;
 				case TROUBLE_BREWING:
 					return Quests.isFinished(Quest.CABIN_FEVER) && Skills.getLevel(Skill.COOKING) >= 40;
+				case TITHE_FARM:
+					return false;
+//					return Skills.getLevel(Skill.FARMING) >= 34 && (Vars.getBit(Varbits.KOUREND_FAVOR_HOSIDIUS) / 10) >= 100;
 			}
 			return false;
 		}

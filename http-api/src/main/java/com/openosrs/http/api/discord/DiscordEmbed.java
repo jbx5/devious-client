@@ -73,7 +73,7 @@ public class DiscordEmbed
 		this.description = description;
 		this.footer = footer;
 		this.color = color;
-		this.fields.addAll(fields);
+		this.fields = fields;
 	}
 
 	public DiscordMessage toDiscordMessage(String username, String content, String avatarUrl)

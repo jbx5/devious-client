@@ -8,6 +8,7 @@ import net.runelite.client.plugins.PluginInstantiationException;
 import net.runelite.client.plugins.PluginManager;
 
 import javax.inject.Singleton;
+import javax.swing.SwingUtilities;
 
 @Singleton
 @Slf4j
@@ -32,6 +33,7 @@ public class Plugins
 	{
 		try
 		{
+			assert SwingUtilities.isEventDispatchThread();
 			getPluginManager().remove(plugin);
 			getPluginManager().setPluginEnabled(plugin, false);
 			return getPluginManager().stopPlugin(plugin);

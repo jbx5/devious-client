@@ -5,6 +5,7 @@ import net.runelite.api.Player;
 import net.runelite.api.Tile;
 import net.runelite.api.TileObject;
 import net.runelite.api.WallObject;
+import net.runelite.api.coords.WorldArea;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.widgets.Widget;
 import net.unethicalite.api.commons.Predicates;
@@ -52,11 +53,17 @@ public class Walker
 
 	private static final ExecutorService executor = Executors.newSingleThreadExecutor();
 	private static Future<List<WorldPoint>> pathFuture = null;
-	private static WorldPoint currentDestination = null;
+	private static WorldArea currentDestination = null;
+
 	public static boolean walkTo(WorldPoint destination)
 	{
+		return walkTo(destination.toWorldArea());
+	}
+
+	public static boolean walkTo(WorldArea destination)
+	{
 		Player local = Players.getLocal();
-		if (destination.equals(local.getWorldLocation()))
+		if (destination.contains(local))
 		{
 			return true;
 		}
@@ -384,7 +391,7 @@ public class Walker
 		return path.subList(path.indexOf(nearest), path.size());
 	}
 
-	public static List<WorldPoint> calculatePath(WorldPoint destination)
+	public static List<WorldPoint> calculatePath(WorldArea destination)
 	{
 		Player local = Players.getLocal();
 		LinkedHashMap<WorldPoint, Teleport> teleports = buildTeleportLinks(destination);
@@ -393,7 +400,7 @@ public class Walker
 		return calculatePath(startPoints, destination);
 	}
 
-	public static List<WorldPoint> calculatePath(List<WorldPoint> startPoints, WorldPoint destination)
+	public static List<WorldPoint> calculatePath(List<WorldPoint> startPoints, WorldArea destination)
 	{
 		if (Static.getClient().isClientThread())
 		{
@@ -402,9 +409,19 @@ public class Walker
 		return new Pathfinder(Static.getGlobalCollisionMap(), buildTransportLinks(), startPoints, destination, RegionManager.avoidWilderness()).find();
 	}
 
+	public static List<WorldPoint> calculatePath(WorldPoint destination)
+	{
+		return calculatePath(destination.toWorldArea());
+	}
+
+	public static List<WorldPoint> calculatePath(List<WorldPoint> startPoints, WorldPoint destination)
+	{
+		return calculatePath(startPoints, destination.toWorldArea());
+	}
+
 	private static List<WorldPoint> buildPath(
 			List<WorldPoint> startPoints,
-			WorldPoint destination,
+			WorldArea destination,
 			boolean avoidWilderness,
 			boolean forced
 	)
@@ -415,7 +432,12 @@ public class Walker
 			currentDestination = destination;
 		}
 
-		if (!destination.equals(currentDestination) || RegionManager.shouldRefreshPath() || forced)
+		boolean sameDestination = destination.getX() == currentDestination.getX()
+			&& destination.getY() == currentDestination.getY()
+			&& destination.getPlane() == currentDestination.getPlane()
+			&& destination.getWidth() == currentDestination.getWidth()
+			&& destination.getHeight() == currentDestination.getHeight();
+		if (!sameDestination || RegionManager.shouldRefreshPath() || forced)
 		{
 			pathFuture.cancel(true);
 			pathFuture = executor.submit(new Pathfinder(Static.getGlobalCollisionMap(), buildTransportLinks(), startPoints, destination, avoidWilderness));
@@ -438,7 +460,7 @@ public class Walker
 		}
 	}
 
-	public static List<WorldPoint> buildPath(WorldPoint destination, boolean avoidWilderness, boolean forced)
+	public static List<WorldPoint> buildPath(WorldArea destination, boolean avoidWilderness, boolean forced)
 	{
 		Player local = Players.getLocal();
 		LinkedHashMap<WorldPoint, Teleport> teleports = buildTeleportLinks(destination);
@@ -448,14 +470,34 @@ public class Walker
 		return buildPath(startPoints, destination, avoidWilderness, forced);
 	}
 
-	public static List<WorldPoint> buildPath(WorldPoint destination)
+	public static List<WorldPoint> buildPath(WorldArea destination)
 	{
 		return buildPath(destination, RegionManager.avoidWilderness(), false);
 	}
 
-	public static List<WorldPoint> buildPath(WorldPoint destination, boolean forced)
+	public static List<WorldPoint> buildPath(WorldArea destination, boolean forced)
 	{
 		return buildPath(destination, RegionManager.avoidWilderness(), forced);
+	}
+
+	public static List<WorldPoint> buildPath(WorldPoint destination)
+	{
+		return buildPath(destination.toWorldArea());
+	}
+
+	public static List<WorldPoint> buildPath(WorldPoint destination, boolean forced)
+	{
+		return buildPath(destination.toWorldArea(), forced);
+	}
+
+	public static List<WorldPoint> buildPath(WorldPoint destination, boolean avoidWilderness, boolean forced)
+	{
+		return buildPath(destination.toWorldArea(), avoidWilderness, forced);
+	}
+
+	public static List<WorldPoint> buildPath(List<WorldPoint> startPoints, WorldPoint destination, boolean avoidWilderness, boolean forced)
+	{
+		return buildPath(startPoints, destination.toWorldArea(), avoidWilderness, forced);
 	}
 
 	public static Map<WorldPoint, List<Transport>> buildTransportLinks()
@@ -474,7 +516,7 @@ public class Walker
 		return out;
 	}
 
-	public static LinkedHashMap<WorldPoint, Teleport> buildTeleportLinks(WorldPoint destination)
+	public static LinkedHashMap<WorldPoint, Teleport> buildTeleportLinks(WorldArea destination)
 	{
 		LinkedHashMap<WorldPoint, Teleport> out = new LinkedHashMap<>();
 		if (!Static.getUnethicaliteConfig().useTeleports())
@@ -487,7 +529,7 @@ public class Walker
 		for (Teleport teleport : TeleportLoader.buildTeleports())
 		{
 			if (teleport.getDestination().distanceTo(local.getWorldLocation()) > 50
-					&& local.getWorldLocation().distanceTo(destination) > teleport.getDestination().distanceTo(destination) + 20)
+					&& destination.distanceTo(local) > destination.distanceTo(teleport.getDestination()) + 20)
 			{
 				out.putIfAbsent(teleport.getDestination(), teleport);
 			}

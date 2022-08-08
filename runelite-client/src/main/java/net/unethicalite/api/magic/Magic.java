@@ -78,10 +78,24 @@ public class Magic
 
 	public static void cast(Spell spell)
 	{
+		cast(spell, 0);
+	}
+
+	public static void cast(Spell spell, int actionIndex)
+	{
 		Widget widget = Widgets.get(spell.getWidget());
 		if (widget != null)
 		{
-			widget.interact(0);
+			widget.interact(actionIndex);
+		}
+	}
+
+	public static void cast(Spell spell, int actionIndex, int opcode)
+	{
+		Widget widget = Widgets.get(spell.getWidget());
+		if (widget != null)
+		{
+			widget.interact(actionIndex, opcode);
 		}
 	}
 
