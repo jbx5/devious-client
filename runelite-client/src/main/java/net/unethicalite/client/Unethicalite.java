@@ -4,10 +4,15 @@ import lombok.extern.slf4j.Slf4j;
 import net.runelite.client.RuneLite;
 import net.unethicalite.client.minimal.MinimalClient;
 
+import javax.swing.*;
 import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Objects;
 
+import static net.runelite.client.RuneLite.CACHE_DIR;
 import static net.runelite.client.RuneLite.OPENOSRS;
 
 @Slf4j
@@ -17,6 +22,18 @@ public class Unethicalite
 
 	public static void main(String[] args) throws Exception
 	{
+		if (!CACHE_DIR.exists())
+		{
+			JOptionPane.showMessageDialog(null,
+					"Please first run RuneLite on this device before using Unethicalite!",
+					"Error loading cache",
+					JOptionPane.ERROR_MESSAGE
+			);
+
+			System.exit(0);
+			return;
+		}
+
 		if (Arrays.asList(args).contains("--minimal"))
 		{
 			System.setProperty("unethicalite.minimal", "true");
