@@ -22,6 +22,7 @@ class BootstrapPlugin : Plugin<Project> {
         tasks.register<BootstrapTask>("bootstrapNightly", "nightly")
         tasks.register<BootstrapTask>("bootstrapSnapshot", "snapshot")
         tasks.register<BootstrapTask>("bootstrapStable", "stable")
+        tasks.register<BootstrapTask>("bootstrapExperimental", "experimental")
 
         tasks.withType<BootstrapTask> {
             this.group = "openosrs"
