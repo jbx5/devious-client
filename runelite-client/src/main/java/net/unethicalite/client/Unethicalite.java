@@ -4,11 +4,8 @@ import lombok.extern.slf4j.Slf4j;
 import net.runelite.client.RuneLite;
 import net.unethicalite.client.minimal.MinimalClient;
 
-import javax.swing.*;
+import javax.swing.JOptionPane;
 import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Objects;
 
