@@ -8,41 +8,49 @@ import net.runelite.mapping.Export;
 public class PlatformInfo extends Node {
 	@ObfuscatedName("ab")
 	@ObfuscatedGetter(intValue = 1829594595)
-	int field4495;
+	@Export("os")
+	int os;
 
 	@ObfuscatedName("al")
 	boolean field4496;
 
 	@ObfuscatedName("ah")
 	@ObfuscatedGetter(intValue = 1190689719)
-	int field4509;
+	@Export("osVersion")
+	int osVersion;
 
 	@ObfuscatedName("ai")
 	@ObfuscatedGetter(intValue = 20581817)
-	int field4498;
+	@Export("vendor")
+	int vendor;
 
 	@ObfuscatedName("ac")
 	@ObfuscatedGetter(intValue = 448571837)
-	int field4521;
+	@Export("javaMajor")
+	int javaMajor;
 
 	@ObfuscatedName("ap")
 	@ObfuscatedGetter(intValue = 2094209953)
-	int field4500;
+	@Export("javaMinor")
+	int javaMinor;
 
 	@ObfuscatedName("aw")
 	@ObfuscatedGetter(intValue = 576772987)
-	int field4502;
+	@Export("javaPatch")
+	int javaPatch;
 
 	@ObfuscatedName("at")
 	boolean field4494;
 
 	@ObfuscatedName("aq")
 	@ObfuscatedGetter(intValue = -411038485)
-	int field4503;
+	@Export("maxMemory")
+	int maxMemory;
 
 	@ObfuscatedName("ax")
 	@ObfuscatedGetter(intValue = -1620105907)
-	int field4512;
+	@Export("cpuCores")
+	int cpuCores;
 
 	@ObfuscatedName("aa")
 	@ObfuscatedGetter(intValue = -1817578949)
@@ -50,7 +58,8 @@ public class PlatformInfo extends Node {
 
 	@ObfuscatedName("av")
 	@ObfuscatedGetter(intValue = 1465280651)
-	int field4497;
+	@Export("clockSpeed")
+	int clockSpeed;
 
 	@ObfuscatedName("ae")
 	String field4507;
@@ -97,18 +106,18 @@ public class PlatformInfo extends Node {
 	String field4485;
 
 	PlatformInfo(int var1, boolean var2, int var3, int var4, int var5, int var6, int var7, boolean var8, int var9, int var10, int var11, int var12, String var13, String var14, String var15, String var16, int var17, int var18, int var19, int var20, String var21, String var22, int[] var23, int var24, String var25) {
-		this.field4495 = var1;
+		this.os = var1;
 		this.field4496 = var2;
-		this.field4509 = var3;
-		this.field4498 = var4;
-		this.field4521 = var5;
-		this.field4500 = var6;
-		this.field4502 = var7;
+		this.osVersion = var3;
+		this.vendor = var4;
+		this.javaMajor = var5;
+		this.javaMinor = var6;
+		this.javaPatch = var7;
 		this.field4494 = var8;
-		this.field4503 = var9;
-		this.field4512 = var10;
+		this.maxMemory = var9;
+		this.cpuCores = var10;
 		this.field4505 = var11;
-		this.field4497 = var12;
+		this.clockSpeed = var12;
 		this.field4507 = var13;
 		this.field4508 = var14;
 		this.field4516 = var15;
@@ -129,18 +138,18 @@ public class PlatformInfo extends Node {
 	@Export("write")
 	public void write(Buffer var1) {
 		var1.writeByte(8);
-		var1.writeByte(this.field4495);
+		var1.writeByte(this.os);
 		var1.writeByte(this.field4496 ? 1 : 0);
-		var1.writeShort(this.field4509);
-		var1.writeByte(this.field4498);
-		var1.writeByte(this.field4521);
-		var1.writeByte(this.field4500);
-		var1.writeByte(this.field4502);
+		var1.writeShort(this.osVersion);
+		var1.writeByte(this.vendor);
+		var1.writeByte(this.javaMajor);
+		var1.writeByte(this.javaMinor);
+		var1.writeByte(this.javaPatch);
 		var1.writeByte(this.field4494 ? 1 : 0);
-		var1.writeShort(this.field4503);
-		var1.writeByte(this.field4512);
+		var1.writeShort(this.maxMemory);
+		var1.writeByte(this.cpuCores);
 		var1.writeMedium(this.field4505);
-		var1.writeShort(this.field4497);
+		var1.writeShort(this.clockSpeed);
 		var1.writeStringCp1252NullCircumfixed(this.field4507);
 		var1.writeStringCp1252NullCircumfixed(this.field4508);
 		var1.writeStringCp1252NullCircumfixed(this.field4516);
