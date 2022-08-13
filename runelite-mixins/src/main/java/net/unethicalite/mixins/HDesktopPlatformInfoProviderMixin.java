@@ -21,7 +21,7 @@ public abstract class HDesktopPlatformInfoProviderMixin
         original.setJavaMajor(11);
         original.setJavaMinor(0);
         original.setJavaPatch(8);
-        original.setOs(1);
+        original.setOsVersion(11);
         original.setVendor(2);
         original.setCpuCores(8);
         original.setMaxMemory(513);
