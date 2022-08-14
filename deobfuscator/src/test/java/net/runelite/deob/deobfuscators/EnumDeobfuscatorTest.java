@@ -22,47 +22,34 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.deob.deobfuscators;
+package net.runelite.client.plugins.hiscore;
 
-import java.io.File;
-import java.io.IOException;
-import net.runelite.asm.ClassGroup;
-import net.runelite.deob.DeobTestProperties;
-import net.runelite.deob.TemporyFolderLocation;
-import net.runelite.deob.util.JarUtil;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Rule;
+import net.runelite.client.hiscore.HiscoreClient;
+import static net.runelite.client.plugins.hiscore.HiscorePanel.formatLevel;
+import net.runelite.client.hiscore.HiscoreEndpoint;
+import static org.junit.Assert.assertEquals;
 import org.junit.Test;
-import org.junit.rules.TemporaryFolder;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
-public class EnumDeobfuscatorTest
+public class HiscorePanelTest
 {
-	@Rule
-	public DeobTestProperties properties = new DeobTestProperties();
-
-	@Rule
-	public TemporaryFolder folder = TemporyFolderLocation.getTemporaryFolder();
-
-	private ClassGroup group;
-
-	@Before
-	public void before() throws IOException
+	@Test
+	public void testConstructor()
 	{
-		group = JarUtil.load(new File(properties.getRsClient()));
-	}
-
-	@After
-	public void after() throws IOException
-	{
-		JarUtil.save(group, folder.newFile());
+		HiscorePlugin plugin = mock(HiscorePlugin.class);
+		when(plugin.getWorldEndpoint()).thenReturn(HiscoreEndpoint.NORMAL);
+		new HiscorePanel(null, plugin, mock(HiscoreConfig.class),
+			mock(NameAutocompleter.class), mock(HiscoreClient.class));
 	}
 
 	@Test
-	@Ignore
-	public void testRun() throws Exception
+	public void testFormatLevel()
 	{
-		new EnumDeobfuscator().run(group);
+		assertEquals("398", formatLevel(398));
+		assertEquals("5000", formatLevel(5000));
+		assertEquals("7682", formatLevel(7682));
+		assertEquals("12k", formatLevel(12398));
+		assertEquals("219k", formatLevel(219824));
 	}
 }
