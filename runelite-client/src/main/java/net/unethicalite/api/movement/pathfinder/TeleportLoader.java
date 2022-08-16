@@ -21,6 +21,7 @@ import net.unethicalite.api.entities.Players;
 import net.unethicalite.api.entities.TileObjects;
 import net.unethicalite.api.game.Game;
 import net.unethicalite.api.game.GameThread;
+import net.unethicalite.api.game.Vars;
 import net.unethicalite.api.game.Worlds;
 import net.unethicalite.api.input.Keyboard;
 import net.unethicalite.api.items.Equipment;
@@ -350,6 +351,8 @@ public class TeleportLoader
 							break;
 						default:
 					}
+
+					teleports.addAll(getNexusTeleports());
 				}
 			}
 
@@ -399,6 +402,57 @@ public class TeleportLoader
 		{
 			equipped.interact(target);
 		}
+	}
+
+	public static List<Teleport> getNexusTeleports()
+	{
+		List<Teleport> result = new ArrayList<>();
+		int[] varbitArray = {
+			6672, 6673, 6674, 6675, 6676, 6677, 6678, 6679, 6680,
+			6681, 6682, 6683, 6684, 6685, 6686, 6568, 6569, 6582,
+			10092, 10093, 10094, 10095, 10096, 10097, 10098,
+			10099, 10100, 10101, 10102, 10103
+		};
+
+		for (int varbit : varbitArray)
+		{
+			int id = Vars.getBit(varbit);
+			switch (id)
+			{
+				case 1: result.add(pohNexusTeleport(new WorldPoint(3212, 3424, 0), "Varrock"));
+				case 2: result.add(pohNexusTeleport(new WorldPoint(3225, 3219, 0), "Lumbridge"));
+				case 3: result.add(pohNexusTeleport(new WorldPoint(2966, 3379, 0), "Falador"));
+				case 4: result.add(pohNexusTeleport(new WorldPoint(2757, 3479, 0), "Camelot"));
+				case 5: result.add(pohNexusTeleport(new WorldPoint(2661, 3300, 0), "Ardougne"));
+				case 6: result.add(pohNexusTeleport(new WorldPoint(2547, 3114, 0), "Watchtower"));
+				case 7: result.add(pohNexusTeleport(new WorldPoint(3319, 3334, 0), "Senntisten"));
+				case 8: result.add(pohNexusTeleport(new WorldPoint(2796, 2791, 0), "Marim"));
+				case 9: result.add(pohNexusTeleport(new WorldPoint(3494, 3473, 0), "Kharyrll"));
+				case 10: result.add(pohNexusTeleport(new WorldPoint(2113, 3915, 0), "Lunar Isle"));
+				case 11: result.add(pohNexusTeleport(new WorldPoint(1643, 3672, 0), "Kourend Castle"));
+				case 12: result.add(pohNexusTeleport(new WorldPoint(2546, 3756, 0), "Waterbirth Island"));
+				case 13: result.add(pohNexusTeleport(new WorldPoint(2611, 3389, 0), "Fishing Guild"));
+				case 14: result.add(pohNexusTeleport(new WorldPoint(3288, 3888, 0), "Annakarl")); 		//wilderness
+				case 15: result.add(pohNexusTeleport(new WorldPoint(2845, 3693, 0), "Troll Stronghold"));
+				case 16: result.add(pohNexusTeleport(new WorldPoint(2802, 3449, 0), "Catherby"));
+				case 17: result.add(pohNexusTeleport(new WorldPoint(2977, 3872, 0), "Ghorrock")); 		//wilderness
+				case 18: result.add(pohNexusTeleport(new WorldPoint(3156, 3667, 0), "Carrallangar")); 	//wilderness
+				case 19: result.add(pohNexusTeleport(new WorldPoint(2846, 3940, 0), "Weiss"));
+				case 20: result.add(pohNexusTeleport(new WorldPoint(1632, 3838, 0), "Arceuus Library"));
+				case 21: result.add(pohNexusTeleport(new WorldPoint(3108, 3352, 0), "Draynor Manor"));
+				case 22: result.add(pohNexusTeleport(new WorldPoint(1348, 3688, 0), "Battlefront"));
+				case 23: result.add(pohNexusTeleport(new WorldPoint(2980, 3509, 0), "Mind Altar"));
+				case 24: result.add(pohNexusTeleport(new WorldPoint(3433, 3461, 0), "Salve Graveyard"));
+				case 25: result.add(pohNexusTeleport(new WorldPoint(3548, 3528, 0), "Fenken' Castle"));
+				case 26: result.add(pohNexusTeleport(new WorldPoint(2500, 3291, 0), "West Ardougne"));
+				case 27: result.add(pohNexusTeleport(new WorldPoint(3797, 2865, 0), "Harmony Island"));
+				case 28: result.add(pohNexusTeleport(new WorldPoint(2979, 3762, 0), "Cementry")); 		//wilderness
+				case 29: result.add(pohNexusTeleport(new WorldPoint(3566, 3314, 0), "Barrows"));
+				case 30: result.add(pohNexusTeleport(new WorldPoint(2770, 2703, 0), "Ape Atoll Dungeon"));
+			}
+		}
+
+		return result;
 	}
 
 	public static Teleport pohNexusTeleport(WorldPoint destination, String target)
