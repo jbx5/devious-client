@@ -419,6 +419,10 @@ public class TeleportLoader
 			int id = Vars.getBit(varbit);
 			switch (id)
 			{
+				case 0:
+				{
+					break;
+				}
 				case 1:
 				{
 					result.add(pohNexusTeleport(new WorldPoint(3212, 3424, 0), "Varrock"));
