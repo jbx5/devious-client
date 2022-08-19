@@ -21,6 +21,7 @@ import net.unethicalite.api.movement.pathfinder.TeleportLoader;
 import net.unethicalite.api.movement.pathfinder.TransportLoader;
 import net.unethicalite.api.movement.pathfinder.Walker;
 import net.unethicalite.api.movement.pathfinder.model.Transport;
+import net.unethicalite.api.movement.pathfinder.model.poh.HousePortal;
 import net.unethicalite.api.movement.pathfinder.model.poh.JewelryBox;
 import net.unethicalite.api.scene.Tiles;
 import net.unethicalite.client.Static;
@@ -86,6 +87,11 @@ public class RegionManager
 		return refreshPath;
 	}
 
+	public static boolean useEquipmentJewellery()
+	{
+		return Static.getUnethicaliteConfig().useEquipmentJewellery();
+	}
+
 	public static boolean usePoh()
 	{
 		return Static.getUnethicaliteConfig().usePoh();
@@ -114,6 +120,11 @@ public class RegionManager
 	public static JewelryBox hasJewelryBox()
 	{
 		return Static.getUnethicaliteConfig().hasJewelryBox();
+	}
+
+	public static Set<HousePortal> getHousePortals()
+	{
+		return Static.getUnethicaliteConfig().housePortals();
 	}
 
 	@Inject
