@@ -347,18 +347,6 @@ public interface UnethicaliteConfig extends Config
 	{
 		return Set.of();
 	}
-//
-//	@ConfigItem(
-//			keyName = "portalNexus",
-//			name = "Portal Nexus",
-//			description = "",
-//			position = 6,
-//			section = pathfinderSection
-//	)
-//	default Set<PortalNexus> portalNexus()
-//	{
-//		return Set.of();
-//	}
 
 	@ConfigSection(
 			name = "Minimal Mode",
