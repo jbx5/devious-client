@@ -33,6 +33,8 @@ public enum TeleportItem
     YANILLE_TELEPORT_TAB(new WorldPoint(2544, 3095, 0), "Break", null, ItemID.YANILLE_TELEPORT),
     HOSIDIUS_TELEPORT_TAB(new WorldPoint(1744, 3517, 0), "Break", null, ItemID.HOSIDIUS_TELEPORT),
     SALVE_GRAVEYARD_TELEPORT_TAB(new WorldPoint(3432, 3460, 0), "Break", null, ItemID.SALVE_GRAVEYARD_TELEPORT),
+    DRAYNOR_MANOR_TELEPORT_TAB(new WorldPoint(3109, 3350, 0), "Break", null, ItemID.DRAYNOR_MANOR_TELEPORT),
+    FENKENSTRAINS_CASTLE_TELEPORT_TAB(new WorldPoint(3549, 3530, 0), "Break", null, ItemID.FENKENSTRAINS_CASTLE_TELEPORT),
 
     RIMMINGTON_TAB(new WorldPoint(2954, 3223, 0), "Break", null, ItemID.RIMMINGTON_TELEPORT),
     TAVERLEY_TAB(new WorldPoint(2894, 3466, 0), "Break", null, ItemID.TAVERLEY_TELEPORT),

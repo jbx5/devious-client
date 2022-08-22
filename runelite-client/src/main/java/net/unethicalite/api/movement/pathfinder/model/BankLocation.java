@@ -71,7 +71,7 @@ public enum BankLocation
 	public static BankLocation getNearestPath()
 	{
 		return Arrays.stream(values())
-				.min(Comparator.comparingInt(x -> Movement.calculateDistance(x.getArea().toWorldPoint())))
+				.min(Comparator.comparingInt(x -> Movement.calculateDistance(x.getArea())))
 				.orElse(null);
 	}
 }

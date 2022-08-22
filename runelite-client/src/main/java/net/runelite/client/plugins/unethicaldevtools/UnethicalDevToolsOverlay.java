@@ -38,6 +38,7 @@ public class UnethicalDevToolsOverlay extends Overlay
 		entityRenderer.setIndexes(config.indexes());
 		entityRenderer.setQuantities(config.quantities());
 		entityRenderer.setWorldLocations(config.worldLocations());
+		entityRenderer.setTrueWorldLocations(config.trueWorldLocations());
 
 		entityRenderer.setTileLocation(config.tileLocation());
 		entityRenderer.setGameObjects(config.gameObjects());
