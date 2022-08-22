@@ -1,7 +1,14 @@
 package net.unethicalite.api.movement.pathfinder;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.regex.Pattern;
 import net.runelite.api.GameState;
 import net.runelite.api.Item;
+import net.runelite.api.ItemID;
 import net.runelite.api.ObjectID;
 import net.runelite.api.Quest;
 import net.runelite.api.TileObject;
@@ -14,27 +21,25 @@ import net.unethicalite.api.entities.Players;
 import net.unethicalite.api.entities.TileObjects;
 import net.unethicalite.api.game.Game;
 import net.unethicalite.api.game.GameThread;
+import net.unethicalite.api.game.Vars;
 import net.unethicalite.api.game.Worlds;
 import net.unethicalite.api.input.Keyboard;
 import net.unethicalite.api.items.Equipment;
 import net.unethicalite.api.items.Inventory;
 import net.unethicalite.api.magic.Magic;
 import net.unethicalite.api.magic.Spell;
+import net.unethicalite.api.magic.SpellBook;
+import static net.unethicalite.api.movement.pathfinder.model.MovementConstants.*;
 import net.unethicalite.api.movement.pathfinder.model.Teleport;
 import net.unethicalite.api.movement.pathfinder.model.TeleportItem;
 import net.unethicalite.api.movement.pathfinder.model.TeleportSpell;
+import net.unethicalite.api.movement.pathfinder.model.poh.HousePortal;
 import net.unethicalite.api.quests.Quests;
 import net.unethicalite.api.widgets.Dialog;
 import net.unethicalite.api.widgets.Minigames;
 import net.unethicalite.api.widgets.Widgets;
 import net.unethicalite.client.Static;
 import net.unethicalite.client.managers.RegionManager;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Pattern;
-
-import static net.unethicalite.api.movement.pathfinder.model.MovementConstants.*;
 
 public class TeleportLoader
 {
@@ -165,7 +170,7 @@ public class TeleportLoader
 						teleports.add(new Teleport(new WorldPoint(2430, 3348, 0), 2,
 							() -> jewelryTeleport("The Outpost", NECKLACE_OF_PASSAGE)));
 						teleports.add(new Teleport(new WorldPoint(3405, 3157, 0), 2,
-							() -> jewelryTeleport("Eagles' Eyrie", NECKLACE_OF_PASSAGE)));
+							() -> jewelryTeleport("Eagle's Eyrie", NECKLACE_OF_PASSAGE)));
 					}
 
 					if (xericsTalisman())
@@ -189,8 +194,11 @@ public class TeleportLoader
 								() -> jewelryTeleport("Digsite", DIGSITE_PENDANT)));
 						teleports.add(new Teleport(new WorldPoint(3764, 3869, 1), 6,
 								() -> jewelryTeleport("Fossil Island", DIGSITE_PENDANT)));
-						teleports.add(new Teleport(new WorldPoint(3549, 10456, 0), 6,
+						if (Quests.isFinished(Quest.DRAGON_SLAYER_II))
+						{
+							teleports.add(new Teleport(new WorldPoint(3549, 10456, 0), 6,
 								() -> jewelryTeleport("Lithkren", DIGSITE_PENDANT)));
+						}
 					}
 				}
 
@@ -276,75 +284,110 @@ public class TeleportLoader
 								() -> slayerRingTeleport("Fremennik Slayer Dungeon", SLAYER_RING)));
 						teleports.add(new Teleport(new WorldPoint(3185, 4601, 0), 2,
 								() -> slayerRingTeleport("Tarn's Lair", SLAYER_RING)));
-						teleports.add(new Teleport(new WorldPoint(2028, 4636, 0), 2,
+						if (Quests.isFinished(Quest.MOURNINGS_END_PART_II))
+						{
+							teleports.add(new Teleport(new WorldPoint(2028, 4636, 0), 2,
 								() -> slayerRingTeleport("Dark Beasts", SLAYER_RING)));
+						}
 					}
 				}
+
+				if (RegionManager.usePoh() && (canEnterHouse() || TileObjects.getNearest(ObjectID.PORTAL_4525) != null))
+				{
+					if (RegionManager.hasMountedGlory())
+					{
+						teleports.add(mountedPohTeleport(new WorldPoint(3087, 3496, 0), ObjectID.AMULET_OF_GLORY, "Edgeville"));
+						teleports.add(mountedPohTeleport(new WorldPoint(2918, 3176, 0), ObjectID.AMULET_OF_GLORY, "Karamja"));
+						teleports.add(mountedPohTeleport(new WorldPoint(3105, 3251, 0), ObjectID.AMULET_OF_GLORY, "Draynor Village"));
+						teleports.add(mountedPohTeleport(new WorldPoint(3293, 3163, 0), ObjectID.AMULET_OF_GLORY, "Al Kharid"));
+					}
+
+					if (RegionManager.hasMountedDigsitePendant())
+					{
+						teleports.add(pohDigsitePendantTeleport(new WorldPoint(3341, 3445, 0), 1));
+						teleports.add(pohDigsitePendantTeleport(new WorldPoint(3766, 3870, 1), 2));
+						if (Quests.isFinished(Quest.DRAGON_SLAYER_II))
+						{
+							teleports.add(pohDigsitePendantTeleport(new WorldPoint(3549, 10456, 0), 3));
+						}
+					}
+
+					switch (RegionManager.hasJewelryBox())
+					{
+						case ORNATE:
+							if (Quests.isFinished(Quest.THRONE_OF_MISCELLANIA))
+							{
+								teleports.add(pohWidgetTeleport(new WorldPoint(2538, 3863, 0), 'j'));
+							}
+							teleports.add(pohWidgetTeleport(new WorldPoint(3163, 3478, 0), 'k'));
+							teleports.add(pohWidgetTeleport(new WorldPoint(2996, 3375, 0), 'l'));
+							if (Quests.isFinished(Quest.BETWEEN_A_ROCK))
+							{
+								teleports.add(pohWidgetTeleport(new WorldPoint(2828, 10166, 0), 'm'));
+							}
+							teleports.add(pohWidgetTeleport(new WorldPoint(3087, 3496, 0), 'n'));
+							teleports.add(pohWidgetTeleport(new WorldPoint(2918, 3176, 0), 'o'));
+							teleports.add(pohWidgetTeleport(new WorldPoint(3105, 3251, 0), 'p'));
+							teleports.add(pohWidgetTeleport(new WorldPoint(3293, 3163, 0), 'q'));
+						case FANCY:
+							teleports.add(pohWidgetTeleport(new WorldPoint(2882, 3548, 0), '9'));
+							teleports.add(pohWidgetTeleport(new WorldPoint(3191, 3367, 0), 'a'));
+							teleports.add(pohWidgetTeleport(new WorldPoint(3052, 3488, 0), 'b'));
+							teleports.add(pohWidgetTeleport(new WorldPoint(2655, 3441, 0), 'c'));
+							teleports.add(pohWidgetTeleport(new WorldPoint(2611, 3390, 0), 'd'));
+							teleports.add(pohWidgetTeleport(new WorldPoint(3050, 9763, 0), 'e'));
+							teleports.add(pohWidgetTeleport(new WorldPoint(2933, 3295, 0), 'f'));
+							teleports.add(pohWidgetTeleport(new WorldPoint(3143, 3440, 0), 'g'));
+							teleports.add(pohWidgetTeleport(new WorldPoint(1662, 3505, 0), 'h'));
+							teleports.add(pohWidgetTeleport(new WorldPoint(1249, 3718, 0), 'i'));
+						case BASIC:
+							teleports.add(pohWidgetTeleport(new WorldPoint(3315, 3235, 0), '1'));
+							teleports.add(pohWidgetTeleport(new WorldPoint(2440, 3090, 0), '2'));
+							teleports.add(pohWidgetTeleport(new WorldPoint(3151, 3635, 0), '3'));
+							teleports.add(pohWidgetTeleport(new WorldPoint(2898, 3553, 0), '4'));
+							teleports.add(pohWidgetTeleport(new WorldPoint(2520, 3571, 0), '5'));
+							teleports.add(pohWidgetTeleport(new WorldPoint(2964, 4382, 2), '6'));
+							teleports.add(pohWidgetTeleport(new WorldPoint(3244, 9501, 2), '7'));
+							teleports.add(pohWidgetTeleport(new WorldPoint(1624, 3938, 0), '8'));
+							break;
+						default:
+					}
+
+					//nexus portal
+					List<Teleport> nexusTeleports = getNexusTeleports();
+					teleports.addAll(nexusTeleports);
+
+					//normal house portals (remove duplicate teleports)
+					RegionManager.getHousePortals().stream().
+						filter(housePortal -> nexusTeleports.stream().
+							noneMatch(teleport -> teleport.getDestination().equals(housePortal.getDestination()))).
+						forEach(housePortal -> teleports.add(pohPortalTeleport(housePortal)));
+				}
 			}
 
-
-
-			if (RegionManager.usePoh() && (TeleportSpell.TELEPORT_TO_HOUSE.canCast() || TileObjects.getNearest(ObjectID.PORTAL_4525) != null))
-			{
-				if (RegionManager.hasMountedGlory())
-				{
-					teleports.add(mountedPohTeleport(new WorldPoint(3087, 3496, 0), ObjectID.AMULET_OF_GLORY, "Edgeville"));
-					teleports.add(mountedPohTeleport(new WorldPoint(2918, 3176, 0), ObjectID.AMULET_OF_GLORY, "Karamja"));
-					teleports.add(mountedPohTeleport(new WorldPoint(3105, 3251, 0), ObjectID.AMULET_OF_GLORY, "Draynor Village"));
-					teleports.add(mountedPohTeleport(new WorldPoint(3293, 3163, 0), ObjectID.AMULET_OF_GLORY, "Al Kharid"));
-				}
-
-				if (RegionManager.hasMountedDigsitePendant())
-				{
-					teleports.add(pohDigsitePendantTeleport(new WorldPoint(3341, 3445, 0), 1));
-					teleports.add(pohDigsitePendantTeleport(new WorldPoint(3766, 3870, 1), 2));
-					teleports.add(pohDigsitePendantTeleport(new WorldPoint(3549, 10456, 0), 3));
-				}
-
-				switch (RegionManager.hasJewelryBox())
-				{
-					case ORNATE:
-						if (Quests.isFinished(Quest.THRONE_OF_MISCELLANIA))
-						{
-							teleports.add(pohWidgetTeleport(new WorldPoint(2538, 3863, 0), 'j'));
-						}
-						teleports.add(pohWidgetTeleport(new WorldPoint(3163, 3478, 0), 'k'));
-						teleports.add(pohWidgetTeleport(new WorldPoint(2996, 3375, 0), 'l'));
-						if (Quests.isFinished(Quest.BETWEEN_A_ROCK))
-						{
-							teleports.add(pohWidgetTeleport(new WorldPoint(2828, 10166, 0), 'm'));
-						}
-						teleports.add(pohWidgetTeleport(new WorldPoint(3087, 3496, 0), 'n'));
-						teleports.add(pohWidgetTeleport(new WorldPoint(2918, 3176, 0), 'o'));
-						teleports.add(pohWidgetTeleport(new WorldPoint(3105, 3251, 0), 'p'));
-						teleports.add(pohWidgetTeleport(new WorldPoint(3293, 3163, 0), 'q'));
-					case FANCY:
-						teleports.add(pohWidgetTeleport(new WorldPoint(2882, 3548, 0), '9'));
-						teleports.add(pohWidgetTeleport(new WorldPoint(3191, 3367, 0), 'a'));
-						teleports.add(pohWidgetTeleport(new WorldPoint(3052, 3488, 0), 'b'));
-						teleports.add(pohWidgetTeleport(new WorldPoint(2655, 3441, 0), 'c'));
-						teleports.add(pohWidgetTeleport(new WorldPoint(2611, 3390, 0), 'd'));
-						teleports.add(pohWidgetTeleport(new WorldPoint(3050, 9763, 0), 'e'));
-						teleports.add(pohWidgetTeleport(new WorldPoint(2933, 3295, 0), 'f'));
-						teleports.add(pohWidgetTeleport(new WorldPoint(3143, 3440, 0), 'g'));
-						teleports.add(pohWidgetTeleport(new WorldPoint(1662, 3505, 0), 'h'));
-						teleports.add(pohWidgetTeleport(new WorldPoint(1249, 3718, 0), 'i'));
-					case BASIC:
-						teleports.add(pohWidgetTeleport(new WorldPoint(3315, 3235, 0), '1'));
-						teleports.add(pohWidgetTeleport(new WorldPoint(2440, 3090, 0), '2'));
-						teleports.add(pohWidgetTeleport(new WorldPoint(3151, 3635, 0), '3'));
-						teleports.add(pohWidgetTeleport(new WorldPoint(2898, 3553, 0), '4'));
-						teleports.add(pohWidgetTeleport(new WorldPoint(2520, 3571, 0), '5'));
-						teleports.add(pohWidgetTeleport(new WorldPoint(2964, 4382, 2), '6'));
-						teleports.add(pohWidgetTeleport(new WorldPoint(3244, 9501, 2), '7'));
-						teleports.add(pohWidgetTeleport(new WorldPoint(1624, 3938, 0), '8'));
-						break;
-					default:
-				}
-			}
 			LAST_TELEPORT_LIST.clear();
 			LAST_TELEPORT_LIST.addAll(teleports);
 		});
+	}
+
+	public static boolean canEnterHouse()
+	{
+		return Inventory.contains(ItemID.TELEPORT_TO_HOUSE) || TeleportSpell.TELEPORT_TO_HOUSE.canCast();
+	}
+
+	public static void enterHouse()
+	{
+		if (TeleportSpell.TELEPORT_TO_HOUSE.canCast())
+		{
+			SpellBook.Standard.TELEPORT_TO_HOUSE.cast();
+			return;
+		}
+
+		Item teleTab = Inventory.getFirst(ItemID.TELEPORT_TO_HOUSE);
+		if (teleTab != null)
+		{
+			teleTab.interact("Break");
+		}
 	}
 
 	public static void jewelryTeleport(String target, int... ids)
@@ -363,11 +406,260 @@ public class TeleportLoader
 			return;
 		}
 
+		if (!RegionManager.useEquipmentJewellery())
+		{
+			return;
+		}
+
 		Item equipped = Equipment.getFirst(ids);
 		if (equipped != null)
 		{
 			equipped.interact(target);
 		}
+	}
+
+	public static Teleport pohPortalTeleport(HousePortal housePortal)
+	{
+		return new Teleport(housePortal.getDestination(), 10, () ->
+		{
+			if (!Players.getLocal().isIdle() || Static.getClient().getGameState() == GameState.LOADING)
+			{
+				return;
+			}
+
+			TileObject portal = TileObjects.getNearest(housePortal.getPortalName());
+			if (portal != null)
+			{
+				portal.interact("Enter", "Varrock", "Seers' Village", "Watchtower");
+				return;
+			}
+
+			enterHouse();
+		});
+	}
+
+	public static List<Teleport> getNexusTeleports()
+	{
+		List<Teleport> result = new ArrayList<>();
+		int[] varbitArray = {
+			6672, 6673, 6674, 6675, 6676, 6677, 6678, 6679, 6680,
+			6681, 6682, 6683, 6684, 6685, 6686, 6568, 6569, 6582,
+			10092, 10093, 10094, 10095, 10096, 10097, 10098,
+			10099, 10100, 10101, 10102, 10103
+		};
+
+		for (int varbit : varbitArray)
+		{
+			int id = Vars.getBit(varbit);
+			switch (id)
+			{
+				case 0:
+				{
+					break;
+				}
+				case 1:
+				{
+					result.add(pohNexusTeleport(HousePortal.VARROCK));
+					break;
+				}
+				case 2:
+				{
+					result.add(pohNexusTeleport(HousePortal.LUMBRIDGE));
+					break;
+				}
+				case 3:
+				{
+					result.add(pohNexusTeleport(HousePortal.FALADOR));
+					break;
+				}
+				case 4:
+				{
+					result.add(pohNexusTeleport(HousePortal.CAMELOT));
+					break;
+				}
+				case 5:
+				{
+					result.add(pohNexusTeleport(HousePortal.EAST_ARDOUGNE));
+					break;
+				}
+				case 6:
+				{
+					result.add(pohNexusTeleport(HousePortal.WATCHTOWER));
+					break;
+				}
+				case 7:
+				{
+					result.add(pohNexusTeleport(HousePortal.SENNTISTEN));
+					break;
+				}
+				case 8:
+				{
+					result.add(pohNexusTeleport(HousePortal.MARIM));
+					break;
+				}
+				case 9:
+				{
+					result.add(pohNexusTeleport(HousePortal.KHARYRLL));
+					break;
+				}
+				case 10:
+				{
+					result.add(pohNexusTeleport(HousePortal.LUNAR_ISLE));
+					break;
+				}
+				case 11:
+				{
+					result.add(pohNexusTeleport(HousePortal.KOUREND));
+					break;
+				}
+				case 12:
+				{
+					result.add(pohNexusTeleport(HousePortal.WATERBIRTH_ISLAND));
+					break;
+				}
+				case 13:
+				{
+					result.add(pohNexusTeleport(HousePortal.FISHING_GUILD));
+					break;
+				}
+				case 14:
+				{
+					result.add(pohNexusTeleport(HousePortal.ANNAKARL)); //wilderness
+					break;
+				}
+				case 15:
+				{
+					result.add(pohNexusTeleport(HousePortal.TROLL_STRONGHOLD));
+					break;
+				}
+				case 16:
+				{
+					result.add(pohNexusTeleport(HousePortal.CATHERBY));
+					break;
+				}
+				case 17:
+				{
+					result.add(pohNexusTeleport(HousePortal.GHORROCK)); //wilderness
+					break;
+				}
+				case 18:
+				{
+					result.add(pohNexusTeleport(HousePortal.CARRALLANGAR)); //wilderness
+					break;
+				}
+				case 19:
+				{
+					result.add(pohNexusTeleport(HousePortal.WEISS));
+					break;
+				}
+				case 20:
+				{
+					result.add(pohNexusTeleport(HousePortal.ARCEUUS_LIBRARY));
+					break;
+				}
+				case 21:
+				{
+					result.add(pohNexusTeleport(HousePortal.DRAYNOR_MANOR));
+					break;
+				}
+				case 22:
+				{
+					result.add(pohNexusTeleport(HousePortal.BATTLEFRONT));
+					break;
+				}
+				case 23:
+				{
+					result.add(pohNexusTeleport(HousePortal.MIND_ALTAR));
+					break;
+				}
+				case 24:
+				{
+					result.add(pohNexusTeleport(HousePortal.SALVE_GRAVEYARD));
+					break;
+				}
+				case 25:
+				{
+					result.add(pohNexusTeleport(HousePortal.FENKENSTRAINS_CASTLE));
+					break;
+				}
+				case 26:
+				{
+					result.add(pohNexusTeleport(HousePortal.WEST_ARDOUGNE));
+					break;
+				}
+				case 27:
+				{
+					result.add(pohNexusTeleport(HousePortal.HARMONY_ISLAND));
+					break;
+				}
+				case 28:
+				{
+					result.add(pohNexusTeleport(HousePortal.CEMETERY)); //wilderness
+					break;
+				}
+				case 29:
+				{
+					result.add(pohNexusTeleport(HousePortal.BARROWS));
+					break;
+				}
+				case 30:
+				{
+					result.add(pohNexusTeleport(HousePortal.APE_ATOLL_DUNGEON));
+					break;
+				}
+			}
+		}
+
+		return result;
+	}
+
+	public static Teleport pohNexusTeleport(HousePortal housePortal)
+	{
+		WorldPoint destination = housePortal.getDestination();
+		return new Teleport(destination, 10, () ->
+		{
+			if (!Players.getLocal().isIdle() || Static.getClient().getGameState() == GameState.LOADING)
+			{
+				return;
+			}
+
+			TileObject nexusPortal = TileObjects.getNearest("Portal Nexus");
+			if (nexusPortal == null)
+			{
+				enterHouse();
+				return;
+			}
+
+			Widget teleportInterface = Widgets.get(17, 12);
+			if (teleportInterface == null || teleportInterface.isHidden())
+			{
+				nexusPortal.interact("Teleport Menu");
+				return;
+			}
+
+			Widget[] teleportChildren = teleportInterface.getDynamicChildren();
+			if (teleportChildren == null || teleportChildren.length == 0)
+			{
+				//no teleports in the portal
+				return;
+			}
+
+			Optional<Widget> optionalTeleportWidget = Arrays.stream(teleportChildren).
+				filter(Objects::nonNull).
+				filter(widget -> widget.getText() != null).
+				filter(widget -> widget.getText().contains(housePortal.getNexusTarget())).
+				findFirst();
+
+			if (optionalTeleportWidget.isEmpty())
+			{
+				//the teleport is not in the list
+				return;
+			}
+
+			Widget teleportWidget = optionalTeleportWidget.get();
+			String teleportChar = teleportWidget.getText().substring(12, 13);
+			Keyboard.type(teleportChar);
+		});
 	}
 
 	public static void jewelryPopupTeleport(String target, int... ids)
@@ -397,6 +689,11 @@ public class TeleportLoader
 			}
 
 			inv.interact("Rub");
+			return;
+		}
+
+		if (!RegionManager.useEquipmentJewellery())
+		{
 			return;
 		}
 
@@ -432,8 +729,7 @@ public class TeleportLoader
 				return;
 			}
 
-			Magic.cast(TeleportSpell.TELEPORT_TO_HOUSE.getSpell());
-
+			enterHouse();
 		});
 	}
 
@@ -474,7 +770,8 @@ public class TeleportLoader
 				box.interact("Teleport Menu");
 				return;
 			}
-			Magic.cast(TeleportSpell.TELEPORT_TO_HOUSE.getSpell());
+
+			enterHouse();
 		});
 	}
 
@@ -497,7 +794,8 @@ public class TeleportLoader
 				first.interact(action);
 				return;
 			}
-			Magic.cast(TeleportSpell.TELEPORT_TO_HOUSE.getSpell());
+
+			enterHouse();
 		});
 	}
 
@@ -516,7 +814,7 @@ public class TeleportLoader
 	{
 		Item ring = Inventory.getFirst(ids);
 
-		if (ring == null)
+		if (ring == null && RegionManager.useEquipmentJewellery())
 		{
 			ring = Equipment.getFirst(ids);
 		}
@@ -541,66 +839,66 @@ public class TeleportLoader
 	public static boolean ringOfDueling()
 	{
 		return Inventory.getFirst(RING_OF_DUELING) != null
-			|| Equipment.getFirst(RING_OF_DUELING) != null;
+			|| (RegionManager.useEquipmentJewellery() && Equipment.getFirst(RING_OF_DUELING) != null);
 	}
 
 	public static boolean gamesNecklace()
 	{
 		return Inventory.getFirst(GAMES_NECKLACE) != null
-			|| Equipment.getFirst(GAMES_NECKLACE) != null;
+			|| (RegionManager.useEquipmentJewellery() && Equipment.getFirst(GAMES_NECKLACE) != null);
 	}
 
 	public static boolean combatBracelet()
 	{
 		return Inventory.getFirst(COMBAT_BRACELET) != null
-			|| Equipment.getFirst(COMBAT_BRACELET) != null;
+			|| (RegionManager.useEquipmentJewellery() && Equipment.getFirst(COMBAT_BRACELET) != null);
 	}
 
 	public static boolean skillsNecklace()
 	{
 		return Inventory.getFirst(SKILLS_NECKLACE) != null
-			|| Equipment.getFirst(SKILLS_NECKLACE) != null;
+			|| (RegionManager.useEquipmentJewellery() && Equipment.getFirst(SKILLS_NECKLACE) != null);
 	}
 
 	public static boolean ringOfWealth()
 	{
 		return Inventory.getFirst(RING_OF_WEALTH) != null
-			|| Equipment.getFirst(RING_OF_WEALTH) != null;
+			|| (RegionManager.useEquipmentJewellery() && Equipment.getFirst(RING_OF_WEALTH) != null);
 	}
 
 	public static boolean amuletOfGlory()
 	{
 		return Inventory.getFirst(AMULET_OF_GLORY) != null
-			|| Equipment.getFirst(AMULET_OF_GLORY) != null;
+			|| (RegionManager.useEquipmentJewellery() && Equipment.getFirst(AMULET_OF_GLORY) != null);
 	}
 
 	public static boolean necklaceOfPassage()
 	{
 		return Inventory.getFirst(NECKLACE_OF_PASSAGE) != null
-			|| Equipment.getFirst(NECKLACE_OF_PASSAGE) != null;
+			|| (RegionManager.useEquipmentJewellery() && Equipment.getFirst(NECKLACE_OF_PASSAGE) != null);
 	}
 
 	public static boolean xericsTalisman()
 	{
 		return Inventory.getFirst(XERICS_TALISMAN) != null
-				|| Equipment.getFirst(XERICS_TALISMAN) != null;
+				|| (RegionManager.useEquipmentJewellery() && Equipment.getFirst(XERICS_TALISMAN) != null);
 	}
 
 	public static boolean slayerRing()
 	{
 		return Inventory.getFirst(SLAYER_RING) != null
-				|| Equipment.getFirst(SLAYER_RING) != null;
+				|| (RegionManager.useEquipmentJewellery() && Equipment.getFirst(SLAYER_RING) != null);
 	}
 
 	public static boolean digsitePendant()
 	{
 		return Inventory.getFirst(DIGSITE_PENDANT) != null
-				|| Equipment.getFirst(DIGSITE_PENDANT) != null;
+				|| (RegionManager.useEquipmentJewellery() && Equipment.getFirst(DIGSITE_PENDANT) != null);
 	}
 
 	public static boolean burningAmulet()
 	{
 		return Inventory.getFirst(BURNING_AMULET) != null
-				|| Equipment.getFirst(BURNING_AMULET) != null;
+				|| (RegionManager.useEquipmentJewellery() && Equipment.getFirst(BURNING_AMULET) != null);
 	}
 }
