@@ -1,5 +1,17 @@
 package net.unethicalite.client.devtools;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.Graphics2D;
+import java.awt.Polygon;
+import java.awt.Rectangle;
+import java.awt.Shape;
+import java.awt.geom.Rectangle2D;
+import java.util.Arrays;
+import java.util.List;
+import javax.inject.Inject;
+import javax.inject.Singleton;
 import lombok.Getter;
 import lombok.Setter;
 import net.runelite.api.Actor;
@@ -42,19 +54,7 @@ import net.unethicalite.api.entities.TileObjects;
 import net.unethicalite.api.scene.Tiles;
 import net.unethicalite.api.utils.DrawUtils;
 import net.unethicalite.api.widgets.Widgets;
-
-import javax.inject.Inject;
-import javax.inject.Singleton;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.FontMetrics;
-import java.awt.Graphics2D;
-import java.awt.Polygon;
-import java.awt.Rectangle;
-import java.awt.Shape;
-import java.awt.geom.Rectangle2D;
-import java.util.Arrays;
-import java.util.List;
+import net.unethicalite.client.Static;
 
 @Singleton
 public class EntityRenderer
@@ -136,6 +136,9 @@ public class EntityRenderer
 	@Getter
 	@Setter
 	private boolean quantities = true;
+	@Getter
+	@Setter
+	private boolean trueWorldLocations = true;
 	@Setter
 	private List<WorldPoint> currentPath = null;
 
@@ -304,6 +307,7 @@ public class EntityRenderer
 							worldMapMouse.getRegionID(), worldMapMouse.getRegionX(), worldMapMouse.getRegionY(),
 							origin.getX(), origin.getY(), origin.getPlane()
 					);
+
 					tooltipManager.add(new Tooltip(tooltip));
 					return;
 				}
@@ -320,13 +324,37 @@ public class EntityRenderer
 		{
 			WorldPoint worldLocation = tile.getWorldLocation();
 			ScenePoint scenePoint = ScenePoint.fromWorld(worldLocation);
-			String tooltip = String.format("World location: %d, %d, %d</br>" +
-							"Region ID: %d location: %d, %d</br>" +
-							"Scene location: %d, %d</br>"
+			String tooltip;
+
+			if (trueWorldLocations && Static.getClient().isInInstancedRegion())
+			{
+				WorldPoint trueWorldPoint = WorldPoint.fromLocalInstance(
+					Static.getClient(),
+					LocalPoint.fromWorld(Static.getClient(), worldLocation)
+				);
+
+				tooltip = String.format("World location: %d, %d, %d</br>" +
+						"Region ID: %d location: %d, %d</br>" +
+						"Scene location: %d, %d</br>" +
+						"True location: %d, %d, %d</br>"
+					,
+					worldLocation.getX(), worldLocation.getY(), worldLocation.getPlane(),
+					worldLocation.getRegionID(), worldLocation.getRegionX(), worldLocation.getRegionY(),
+					scenePoint.getX(), scenePoint.getY(),
+					trueWorldPoint.getX(), trueWorldPoint.getY(), trueWorldPoint.getPlane()
+				);
+			}
+			else
+			{
+				tooltip = String.format("World location: %d, %d, %d</br>" +
+						"Region ID: %d location: %d, %d</br>" +
+						"Scene location: %d, %d</br>"
 					,
 					worldLocation.getX(), worldLocation.getY(), worldLocation.getPlane(),
 					worldLocation.getRegionID(), worldLocation.getRegionX(), worldLocation.getRegionY(),
 					scenePoint.getX(), scenePoint.getY());
+			}
+
 			tooltipManager.add(new Tooltip(tooltip));
 			OverlayUtil.renderPolygon(graphics, poly, GREEN);
 		}
