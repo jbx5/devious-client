@@ -114,6 +114,18 @@ public interface UnethicalDevToolsConfig extends Config
 		return true;
 	}
 
+	@ConfigItem(
+			keyName = "trueWorldLocations",
+			name = "True world locations",
+			description = "Show true world locations in instances",
+			section = displayedInfo,
+			position = 9
+	)
+	default boolean trueWorldLocations()
+	{
+		return false;
+	}
+
 	@ConfigSection(
 			keyName = "tileObjects",
 			position = 1,

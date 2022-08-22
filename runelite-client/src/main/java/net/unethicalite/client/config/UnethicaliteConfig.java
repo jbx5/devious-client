@@ -1,20 +1,17 @@
 package net.unethicalite.client.config;
 
-import net.unethicalite.api.movement.pathfinder.model.poh.HousePortal;
-import net.unethicalite.api.movement.pathfinder.model.poh.JewelryBox;
-import net.unethicalite.api.movement.pathfinder.model.poh.PortalNexus;
-import net.unethicalite.client.managers.interaction.InteractMethod;
-import net.unethicalite.client.managers.interaction.MouseBehavior;
+import java.util.Set;
 import net.runelite.client.config.Button;
 import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
 import net.runelite.client.config.ConfigSection;
 import net.runelite.client.config.Range;
-
-import java.util.Set;
-
+import net.unethicalite.api.movement.pathfinder.model.poh.HousePortal;
+import net.unethicalite.api.movement.pathfinder.model.poh.JewelryBox;
 import static net.unethicalite.client.config.UnethicaliteConfig.CONFIG_GROUP;
+import net.unethicalite.client.managers.interaction.InteractMethod;
+import net.unethicalite.client.managers.interaction.MouseBehavior;
 
 @ConfigGroup(CONFIG_GROUP)
 public interface UnethicaliteConfig extends Config
@@ -328,25 +325,25 @@ public interface UnethicaliteConfig extends Config
 	}
 
 	@ConfigItem(
-			keyName = "housePortals",
-			name = "House Portals",
-			description = "",
-			position = 5,
-			section = pathfinderSection
+		keyName = "useEquipmentJewellery",
+		name = "Use jewellery from equipment",
+		description = "",
+		position = 4,
+		section = pathfinderSection
 	)
-	default Set<HousePortal> housePortals()
+	default boolean useEquipmentJewellery()
 	{
-		return Set.of();
+		return true;
 	}
 
 	@ConfigItem(
-			keyName = "portalNexus",
-			name = "Portal Nexus",
+			keyName = "housePortals",
+			name = "House Portals",
 			description = "",
-			position = 6,
+			position = 4,
 			section = pathfinderSection
 	)
-	default Set<PortalNexus> portalNexus()
+	default Set<HousePortal> housePortals()
 	{
 		return Set.of();
 	}

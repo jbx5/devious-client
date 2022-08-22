@@ -193,11 +193,12 @@ public class Minigames
 				case BURTHORPE_GAMES_ROOM:
 				case CASTLE_WARS:
 				case CLAN_WARS:
-				case GIANTS_FOUNDARY:
 				case LAST_MAN_STANDING:
 				case SOUL_WARS:
 				case TZHAAR_FIGHT_PIT:
 					return true;
+				case GIANTS_FOUNDARY:
+					return Quests.isFinished(Quest.SLEEPING_GIANTS);
 				case BARBARIAN_ASSAULT:
 					return Vars.getBit(3251) >= 1;
 				case BLAST_FURNACE:

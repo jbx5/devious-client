@@ -26,7 +26,10 @@ public class Dialog
 	private static final Supplier<Widget> WEIRD_CONT = () -> Widgets.get(193, 3);
 	private static final Supplier<Widget> WEIRD_CONT_2 = () -> Widgets.get(633, 0);
 	private static final Supplier<Widget> NPC_CONT = () -> Widgets.get(WidgetID.DIALOG_NPC_GROUP_ID, 4);
+	private static final Supplier<Widget> NPC_TEXT = () -> Widgets.get(WidgetID.DIALOG_NPC_GROUP_ID, 6);
 	private static final Supplier<Widget> PLAYER_CONT = () -> Widgets.get(WidgetID.DIALOG_PLAYER_GROUP_ID, 3);
+	private static final Supplier<Widget> PLAYER_NAME = () -> Widgets.get(WidgetID.DIALOG_PLAYER_GROUP_ID, 4);
+	private static final Supplier<Widget> PLAYER_TEXT = () -> Widgets.get(WidgetID.DIALOG_PLAYER_GROUP_ID, 6);
 	private static final Supplier<Widget> DEATH_CONT = () -> Widgets.get(663, 0);
 	private static final Supplier<Widget> TUT_CONT = () -> Widgets.get(229, 2);
 	private static final Supplier<Widget> OPTIONS = () -> Widgets.get(WidgetID.DIALOG_OPTION_GROUP_ID, 1);
@@ -241,5 +244,37 @@ public class Dialog
 	public static void close()
 	{
 		GameThread.invoke(() -> Static.getClient().runScript(138));
+	}
+
+	public static String getText()
+	{
+		Widget widget = null;
+
+		if (canContinueNPC())
+		{
+			widget = NPC_TEXT.get();
+		}
+		else if (canContinuePlayer())
+		{
+			widget = PLAYER_TEXT.get();
+		}
+
+		return widget == null ? "" : widget.getText();
+	}
+
+	public static String getName()
+	{
+		Widget widget = null;
+
+		if (canContinueNPC())
+		{
+			widget = NPC_CONT.get();
+		}
+		else if (canContinuePlayer())
+		{
+			widget = PLAYER_NAME.get();
+		}
+
+		return widget == null ? "" : widget.getText();
 	}
 }
