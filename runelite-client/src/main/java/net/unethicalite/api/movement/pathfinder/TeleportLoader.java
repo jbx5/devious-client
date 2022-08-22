@@ -165,7 +165,7 @@ public class TeleportLoader
 						teleports.add(new Teleport(new WorldPoint(2430, 3348, 0), 2,
 							() -> jewelryTeleport("The Outpost", NECKLACE_OF_PASSAGE)));
 						teleports.add(new Teleport(new WorldPoint(3405, 3157, 0), 2,
-							() -> jewelryTeleport("Eagles' Eyrie", NECKLACE_OF_PASSAGE)));
+							() -> jewelryTeleport("Eagle's Eyrie", NECKLACE_OF_PASSAGE)));
 					}
 
 					if (xericsTalisman())
