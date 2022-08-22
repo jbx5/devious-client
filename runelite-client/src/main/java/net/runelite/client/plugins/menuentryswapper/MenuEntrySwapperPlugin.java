@@ -35,7 +35,6 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
-import com.google.common.collect.Multimaps;
 import com.google.inject.Provides;
 import java.util.Arrays;
 import java.util.Collection;
@@ -155,10 +154,7 @@ public class MenuEntrySwapperPlugin extends Plugin
 	@Inject
 	private NpcUtil npcUtil;
 
-	private boolean configuringShiftClick = false;
-	private boolean configuringLeftClick = false;
-
-	private final Multimap<String, Swap> swaps = Multimaps.synchronizedSetMultimap(LinkedHashMultimap.create());
+	private final Multimap<String, Swap> swaps = LinkedHashMultimap.create();
 	private final ArrayListMultimap<String, Integer> optionIndexes = ArrayListMultimap.create();
 
 	@Provides
@@ -171,6 +167,7 @@ public class MenuEntrySwapperPlugin extends Plugin
 	public void startUp()
 	{
 		setupSwaps();
+		removeOldSwaps();
 	}
 
 	@Override
@@ -361,33 +358,55 @@ public class MenuEntrySwapperPlugin extends Plugin
 		swap("climb", "climb-down", () -> (shiftModifier() ? config.swapStairsShiftClick() : config.swapStairsLeftClick()) == MenuEntrySwapperConfig.StairsMode.CLIMB_DOWN);
 	}
 
-	public Swap swap(String option, String swappedOption, Supplier<Boolean> enabled)
+	private void removeOldSwaps()
 	{
-		return swap(option, alwaysTrue(), swappedOption, enabled);
+		String[] keys = {
+			"swapBattlestaves",
+			"swapPrayerBook",
+			"swapContract",
+			"claimSlime",
+			"swapDarkMage",
+			"swapCaptainKhaled",
+			"swapDecant",
+			"swapHardWoodGrove",
+			"swapHardWoodGroveParcel",
+			"swapHouseAdvertisement",
+			"swapEnchant",
+			"swapHouseTeleportSpell",
+			"swapTeleportSpell",
+			"swapStartMinigame",
+			"swapQuickleave",
+			"swapNpcContact",
+			"swapNets",
+			"swapGauntlet",
+			"swapCollectMiscellania",
+			"swapRockCake",
+			"swapRowboatDive"
+		};
+		for (String key : keys)
+		{
+			configManager.unsetConfiguration(MenuEntrySwapperConfig.GROUP, key);
+		}
 	}
 
-	public Swap swap(String option, String target, String swappedOption, Supplier<Boolean> enabled)
+	private void swap(String option, String swappedOption, Supplier<Boolean> enabled)
 	{
-		return swap(option, equalTo(target), swappedOption, enabled);
+		swap(option, alwaysTrue(), swappedOption, enabled);
 	}
 
-	public Swap swap(String option, Predicate<String> targetPredicate, String swappedOption, Supplier<Boolean> enabled)
+	private void swap(String option, String target, String swappedOption, Supplier<Boolean> enabled)
 	{
-		Swap swap = new Swap(alwaysTrue(), targetPredicate, swappedOption, enabled, true);
-		swaps.put(option, swap);
-		return swap;
+		swap(option, equalTo(target), swappedOption, enabled);
 	}
 
-	public Swap swapContains(String option, Predicate<String> targetPredicate, String swappedOption, Supplier<Boolean> enabled)
+	private void swap(String option, Predicate<String> targetPredicate, String swappedOption, Supplier<Boolean> enabled)
 	{
-		Swap swap = new Swap(alwaysTrue(), targetPredicate, swappedOption, enabled, false);
-		swaps.put(option, swap);
-		return swap;
+		swaps.put(option, new Swap(alwaysTrue(), targetPredicate, swappedOption, enabled, true));
 	}
 
-	public void remove(String option, Swap swap)
+	private void swapContains(String option, Predicate<String> targetPredicate, String swappedOption, Supplier<Boolean> enabled)
 	{
-		swaps.remove(option, swap);
+		swaps.put(option, new Swap(alwaysTrue(), targetPredicate, swappedOption, enabled, false));
 	}
 
 	@Subscribe
