@@ -43,7 +43,7 @@ public enum BankLocation
 	PORT_PISCARILIUS_BANK(new WorldArea(1794, 3784, 18, 7, 0)),
 //	HALLOWED_SEPULCHRE_BANK(new WorldArea(2393, 5975, 15, 15, 0)),
 	CANIFIS_BANK(new WorldArea(3508, 3474, 6, 10, 0)),
-	MOTHERLODE_MINE_BANK(new WorldArea(3754, 5664, 4, 3, 0)),
+//	MOTHERLODE_MINE_BANK(new WorldArea(3754, 5664, 4, 3, 0)),
 	BURGH_DE_ROTT_BANK(new WorldArea(3492, 3208, 10, 6, 0)),
 	VER_SINHAZA_BANK(new WorldArea(3646, 3204, 10, 13, 0)),
 	FEROX_ENCLAVE_BANK(new WorldArea(3127, 3627, 10, 6, 0)),
