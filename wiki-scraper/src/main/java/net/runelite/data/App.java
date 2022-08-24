@@ -25,16 +25,17 @@ package net.runelite.data;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import net.runelite.cache.fs.Store;
 import net.runelite.data.dump.MediaWiki;
 import net.runelite.data.dump.wiki.ItemLimitsDumper;
 import net.runelite.data.dump.wiki.ItemStatsDumper;
 import net.runelite.data.dump.wiki.NpcStatsDumper;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class App
 {
@@ -68,7 +69,7 @@ public class App
 
 	private static Store cacheStore() throws IOException
 	{
-		Path path = Paths.get(System.getProperty("user.home"), ".openosrs" + File.separator + "jagexcache" + File.separator + "oldschool" + File.separator + "LIVE");
+		Path path = Paths.get(System.getProperty("user.home"), ".runelite" + File.separator + "jagexcache" + File.separator + "oldschool" + File.separator + "LIVE");
 		final File jagexcache = new File(String.valueOf(path));
 
 		if (!Files.exists(path))

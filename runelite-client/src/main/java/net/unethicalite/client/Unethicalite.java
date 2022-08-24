@@ -13,7 +13,7 @@ import static net.runelite.client.RuneLite.OPENOSRS;
 @Slf4j
 public class Unethicalite
 {
-	public static final File CLIENT_DIR = new File(System.getProperty("user.home"), ".openosrs");
+	public static final File CLIENT_DIR = new File(System.getProperty("user.home"), ".runelite");
 
 	public static void main(String[] args) throws Exception
 	{
