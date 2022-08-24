@@ -100,7 +100,10 @@ tasks {
 
         classpath = project.sourceSets.main.get().runtimeClasspath
         mainClass.set("net.runelite.deob.Deob")
-        args = listOf(tokens["vanilla.jar"], "$buildDir/libs/deobfuscated-$version.jar")
+        args = listOf(
+            "${System.getProperty("user.home")}/gamepack/gamepack.jar",
+            "$buildDir/libs/deobfuscated-$version.jar"
+        )
     }
 
     register<JavaExec>("UpdateMappings\$main()") {
@@ -108,6 +111,11 @@ tasks {
 
         classpath = project.sourceSets.main.get().runtimeClasspath
         mainClass.set("net.runelite.deob.updater.UpdateMappings")
+        args = listOf(
+            "${buildDir.toString().replace("deobfuscator", "runescape-client")}/libs/runescape-client-$version.jar",
+            "$buildDir/libs/deobfuscated-$version.jar",
+            "$buildDir/libs/updated-$version.jar"
+        )
     }
 }
 
