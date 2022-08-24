@@ -3,42 +3,39 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kg")
-public enum class296 implements MouseWheel {
+@ObfuscatedName("qe")
+public enum class454 implements MouseWheel {
    @ObfuscatedName("o")
    @ObfuscatedSignature(
-      descriptor = "Lkg;"
+      descriptor = "Lqe;"
    )
-   field3533(0),
+   @Export("SOLID")
+   SOLID(0, 0),
    @ObfuscatedName("q")
    @ObfuscatedSignature(
-      descriptor = "Lkg;"
+      descriptor = "Lqe;"
    )
-   field3534(1),
+   field4785(1, 1),
    @ObfuscatedName("f")
    @ObfuscatedSignature(
-      descriptor = "Lkg;"
+      descriptor = "Lqe;"
    )
-   field3530(2),
+   field4783(2, 2);
+
    @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      descriptor = "Lkg;"
-   )
-   field3531(3),
-   @ObfuscatedName("c")
-   @ObfuscatedSignature(
-      descriptor = "Lkg;"
-   )
-   field3532(4);
-
-   @ObfuscatedName("w")
    @ObfuscatedGetter(
-      intValue = -178082109
+      intValue = 954203293
    )
-   final int field3535;
+   public final int field4786;
+   @ObfuscatedName("c")
+   @ObfuscatedGetter(
+      intValue = -1777591163
+   )
+   final int field4784;
 
-   class296(int var3) {
-      this.field3535 = var3;
+   class454(int var3, int var4) {
+      this.field4786 = var3;
+      this.field4784 = var4;
    }
 
    @ObfuscatedName("o")
@@ -48,6 +45,6 @@ public enum class296 implements MouseWheel {
    )
    @Export("rsOrdinal")
    public int rsOrdinal() {
-      return this.field3535;
+      return this.field4784;
    }
 }
