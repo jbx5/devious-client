@@ -25,11 +25,6 @@
  */
 package net.runelite.client.plugins.runepouch;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-import javax.inject.Inject;
 import net.runelite.api.Client;
 import net.runelite.api.ItemID;
 import net.runelite.api.Point;
@@ -38,8 +33,6 @@ import net.runelite.api.annotations.Varbit;
 import net.runelite.api.widgets.WidgetItem;
 import net.runelite.client.game.ItemManager;
 import net.runelite.client.game.RunepouchRune;
-import static net.runelite.client.plugins.runepouch.RunepouchConfig.RunepouchOverlayMode.BOTH;
-import static net.runelite.client.plugins.runepouch.RunepouchConfig.RunepouchOverlayMode.MOUSE_HOVER;
 import net.runelite.client.ui.FontManager;
 import net.runelite.client.ui.overlay.OverlayUtil;
 import net.runelite.client.ui.overlay.WidgetItemOverlay;
@@ -47,14 +40,23 @@ import net.runelite.client.ui.overlay.tooltip.Tooltip;
 import net.runelite.client.ui.overlay.tooltip.TooltipManager;
 import net.runelite.client.util.ColorUtil;
 
+import javax.inject.Inject;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+
+import static net.runelite.client.plugins.runepouch.RunepouchConfig.RunepouchOverlayMode.BOTH;
+import static net.runelite.client.plugins.runepouch.RunepouchConfig.RunepouchOverlayMode.MOUSE_HOVER;
+
 class RunepouchOverlay extends WidgetItemOverlay
 {
 	private static final int NUM_SLOTS = 4;
 	private static final int[] AMOUNT_VARBITS = {
-		Varbits.RUNE_POUCH_AMOUNT1, Varbits.RUNE_POUCH_AMOUNT2, Varbits.RUNE_POUCH_AMOUNT3, Varbits.RUNE_POUCH_AMOUNT4
+			Varbits.RUNE_POUCH_AMOUNT1, Varbits.RUNE_POUCH_AMOUNT2, Varbits.RUNE_POUCH_AMOUNT3, Varbits.RUNE_POUCH_AMOUNT4
 	};
 	private static final int[] RUNE_VARBITS = {
-		Varbits.RUNE_POUCH_RUNE1, Varbits.RUNE_POUCH_RUNE2, Varbits.RUNE_POUCH_RUNE3, Varbits.RUNE_POUCH_RUNE4
+			Varbits.RUNE_POUCH_RUNE1, Varbits.RUNE_POUCH_RUNE2, Varbits.RUNE_POUCH_RUNE3, Varbits.RUNE_POUCH_RUNE4
 	};
 	private static final Dimension IMAGE_SIZE = new Dimension(11, 11);
 
@@ -123,7 +125,7 @@ class RunepouchOverlay extends WidgetItemOverlay
 
 		final Point mousePos = client.getMouseCanvasPosition();
 		if (widgetItem.getCanvasBounds().contains(mousePos.getX(), mousePos.getY())
-			&& (overlayMode == MOUSE_HOVER || overlayMode == BOTH))
+				&& (overlayMode == MOUSE_HOVER || overlayMode == BOTH))
 		{
 			final StringBuilder tooltipBuilder = new StringBuilder();
 			for (int i = 0; i < NUM_SLOTS; ++i)
@@ -133,10 +135,10 @@ class RunepouchOverlay extends WidgetItemOverlay
 				if (rune != null && amount > 0)
 				{
 					tooltipBuilder
-						.append(amount)
-						.append(' ')
-						.append(ColorUtil.wrapWithColorTag(rune.getName(), Color.YELLOW))
-						.append("</br>");
+							.append(amount)
+							.append(' ')
+							.append(ColorUtil.wrapWithColorTag(rune.getName(), Color.YELLOW))
+							.append("</br>");
 				}
 			}
 
@@ -177,11 +179,11 @@ class RunepouchOverlay extends WidgetItemOverlay
 			if (image != null)
 			{
 				OverlayUtil.renderImageLocation(graphics,
-					new Point(
-						location.getX() - 1,
-						location.getY() + graphics.getFontMetrics().getHeight() * runeNum - 1
-					),
-					image);
+						new Point(
+								location.getX() - 1,
+								location.getY() + graphics.getFontMetrics().getHeight() * runeNum - 1
+						),
+						image);
 			}
 		}
 	}
@@ -206,8 +208,8 @@ class RunepouchOverlay extends WidgetItemOverlay
 			if (image != null)
 			{
 				OverlayUtil.renderImageLocation(graphics,
-					new Point(iconX, iconY),
-					image);
+						new Point(iconX, iconY),
+						image);
 			}
 
 			final int height;

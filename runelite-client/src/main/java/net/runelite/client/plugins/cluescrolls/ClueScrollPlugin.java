@@ -29,21 +29,6 @@ package net.runelite.client.plugins.cluescrolls;
 import com.google.common.base.MoreObjects;
 import com.google.inject.Binder;
 import com.google.inject.Provides;
-import java.awt.Color;
-import java.awt.FontMetrics;
-import java.awt.Graphics2D;
-import java.awt.Rectangle;
-import java.awt.geom.Area;
-import java.awt.image.BufferedImage;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import javax.inject.Inject;
-import javax.inject.Named;
 import joptsimple.internal.Strings;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
@@ -129,10 +114,26 @@ import net.runelite.client.util.ImageUtil;
 import net.runelite.client.util.Text;
 import org.apache.commons.lang3.ArrayUtils;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import javax.inject.Inject;
+import javax.inject.Named;
+import java.awt.Color;
+import java.awt.FontMetrics;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
+import java.awt.geom.Area;
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+
 @PluginDescriptor(
-	name = "Clue Scroll",
-	description = "Show answers to clue scroll riddles, anagrams, ciphers, and cryptic clues",
-	tags = {"arrow", "hints", "world", "map", "coordinates", "emotes"}
+		name = "Clue Scroll",
+		description = "Show answers to clue scroll riddles, anagrams, ciphers, and cryptic clues",
+		tags = {"arrow", "hints", "world", "map", "coordinates", "emotes"}
 )
 @PluginDependency(BankTagsPlugin.class)
 @Slf4j
@@ -143,10 +144,10 @@ public class ClueScrollPlugin extends Plugin
 	private static final Color HIGHLIGHT_FILL_COLOR = new Color(0, 255, 0, 20);
 	private static final String CLUE_TAG_NAME = "clue";
 	private static final int[] RUNEPOUCH_AMOUNT_VARBITS = {
-		Varbits.RUNE_POUCH_AMOUNT1, Varbits.RUNE_POUCH_AMOUNT2, Varbits.RUNE_POUCH_AMOUNT3, Varbits.RUNE_POUCH_AMOUNT4
+			Varbits.RUNE_POUCH_AMOUNT1, Varbits.RUNE_POUCH_AMOUNT2, Varbits.RUNE_POUCH_AMOUNT3, Varbits.RUNE_POUCH_AMOUNT4
 	};
 	private static final int[] RUNEPOUCH_RUNE_VARBITS = {
-		Varbits.RUNE_POUCH_RUNE1, Varbits.RUNE_POUCH_RUNE2, Varbits.RUNE_POUCH_RUNE3, Varbits.RUNE_POUCH_RUNE4
+			Varbits.RUNE_POUCH_RUNE1, Varbits.RUNE_POUCH_RUNE2, Varbits.RUNE_POUCH_RUNE3, Varbits.RUNE_POUCH_RUNE4
 	};
 
 	@Getter
@@ -283,9 +284,9 @@ public class ClueScrollPlugin extends Plugin
 		{
 			String text = Text.removeTags(message);
 			if (text.equals("Skill challenge completed.") ||
-				text.equals("You have completed your master level challenge!") ||
-				text.startsWith("You have completed Charlie's task,") ||
-				text.equals("You have completed this challenge scroll."))
+					text.equals("You have completed your master level challenge!") ||
+					text.startsWith("You have completed Charlie's task,") ||
+					text.equals("You have completed this challenge scroll."))
 			{
 				((SkillChallengeClue) clue).setChallengeCompleted(true);
 			}
@@ -310,8 +311,8 @@ public class ClueScrollPlugin extends Plugin
 	{
 		OverlayMenuEntry overlayMenuEntry = overlayMenuClicked.getEntry();
 		if (overlayMenuEntry.getMenuAction() == MenuAction.RUNELITE_OVERLAY
-			&& overlayMenuClicked.getEntry().getOption().equals("Reset")
-			&& overlayMenuClicked.getOverlay() == clueScrollOverlay)
+				&& overlayMenuClicked.getEntry().getOption().equals("Reset")
+				&& overlayMenuClicked.getOverlay() == clueScrollOverlay)
 		{
 			resetClue(true);
 		}
@@ -331,9 +332,9 @@ public class ClueScrollPlugin extends Plugin
 			final ItemComposition itemComposition = itemManager.getItemComposition(event.getItemId());
 
 			if (isXMarksTheSpotOrb
-				|| itemComposition.getName().startsWith("Clue scroll")
-				|| itemComposition.getName().startsWith("Challenge scroll")
-				|| itemComposition.getName().startsWith("Treasure scroll"))
+					|| itemComposition.getName().startsWith("Clue scroll")
+					|| itemComposition.getName().startsWith("Challenge scroll")
+					|| itemComposition.getName().startsWith("Treasure scroll"))
 			{
 				clueItemId = itemComposition.getId();
 				updateClue(MapClue.forItemId(clueItemId));
@@ -368,7 +369,7 @@ public class ClueScrollPlugin extends Plugin
 
 		// Add runes from rune pouch to inventoryItems
 		if (itemContainer.contains(ItemID.RUNE_POUCH) || itemContainer.contains(ItemID.RUNE_POUCH_L)
-			|| itemContainer.contains(ItemID.DIVINE_RUNE_POUCH))
+				|| itemContainer.contains(ItemID.DIVINE_RUNE_POUCH))
 		{
 			List<Item> runePouchContents = getRunepouchContents();
 
@@ -639,7 +640,7 @@ public class ClueScrollPlugin extends Plugin
 		// These clues use a single item ID, so we cannot detect step changes based on the item ID changing
 		final Widget chatDialogClueItem = client.getWidget(WidgetInfo.DIALOG_SPRITE_SPRITE);
 		if (chatDialogClueItem != null
-			&& (chatDialogClueItem.getItemId() == ItemID.CLUE_SCROLL_BEGINNER || chatDialogClueItem.getItemId() == ItemID.CLUE_SCROLL_MASTER))
+				&& (chatDialogClueItem.getItemId() == ItemID.CLUE_SCROLL_BEGINNER || chatDialogClueItem.getItemId() == ItemID.CLUE_SCROLL_MASTER))
 		{
 			resetClue(false);
 		}
@@ -649,7 +650,7 @@ public class ClueScrollPlugin extends Plugin
 	public void onWidgetLoaded(WidgetLoaded event)
 	{
 		if (event.getGroupId() >= WidgetID.BEGINNER_CLUE_MAP_CHAMPIONS_GUILD
-			&& event.getGroupId() <= WidgetID.BEGINNER_CLUE_MAP_WIZARDS_TOWER)
+				&& event.getGroupId() <= WidgetID.BEGINNER_CLUE_MAP_WIZARDS_TOWER)
 		{
 			updateClue(BeginnerMapClue.forWidgetID(event.getGroupId()));
 		}
@@ -1056,7 +1057,7 @@ public class ClueScrollPlugin extends Plugin
 		final int[] regionIds = namedObjectClue.getObjectRegions();
 
 		if (objectNames == null || objectNames.length == 0
-			|| regionIds != null && !ArrayUtils.contains(regionIds, object.getWorldLocation().getRegionID()))
+				|| regionIds != null && !ArrayUtils.contains(regionIds, object.getWorldLocation().getRegionID()))
 		{
 			return;
 		}
@@ -1102,24 +1103,24 @@ public class ClueScrollPlugin extends Plugin
 		Point windowLocation = container.getCanvasLocation();
 
 		if (windowLocation.getY() > canvasLocation.getY() + toHighlight.getHeight()
-			|| windowLocation.getY() + container.getHeight() < canvasLocation.getY())
+				|| windowLocation.getY() + container.getHeight() < canvasLocation.getY())
 		{
 			return;
 		}
 
 		// Visible area of widget
 		Area widgetArea = new Area(
-			new Rectangle(
-				canvasLocation.getX() - padding.x,
-				Math.max(canvasLocation.getY(), windowLocation.getY()) - padding.y,
-				toHighlight.getWidth() + padding.x + padding.width,
-				Math.min(
-					Math.min(windowLocation.getY() + container.getHeight() - canvasLocation.getY(), toHighlight.getHeight()),
-					Math.min(canvasLocation.getY() + toHighlight.getHeight() - windowLocation.getY(), toHighlight.getHeight())) + padding.y + padding.height
-			));
+				new Rectangle(
+						canvasLocation.getX() - padding.x,
+						Math.max(canvasLocation.getY(), windowLocation.getY()) - padding.y,
+						toHighlight.getWidth() + padding.x + padding.width,
+						Math.min(
+								Math.min(windowLocation.getY() + container.getHeight() - canvasLocation.getY(), toHighlight.getHeight()),
+								Math.min(canvasLocation.getY() + toHighlight.getHeight() - windowLocation.getY(), toHighlight.getHeight())) + padding.y + padding.height
+				));
 
 		OverlayUtil.renderHoverableArea(graphics, widgetArea, client.getMouseCanvasPosition(),
-			HIGHLIGHT_FILL_COLOR, HIGHLIGHT_BORDER_COLOR, HIGHLIGHT_HOVER_BORDER_COLOR);
+				HIGHLIGHT_FILL_COLOR, HIGHLIGHT_BORDER_COLOR, HIGHLIGHT_HOVER_BORDER_COLOR);
 
 		if (text == null)
 		{
@@ -1129,8 +1130,8 @@ public class ClueScrollPlugin extends Plugin
 		FontMetrics fontMetrics = graphics.getFontMetrics();
 
 		textComponent.setPosition(new java.awt.Point(
-			canvasLocation.getX() + toHighlight.getWidth() / 2 - fontMetrics.stringWidth(text) / 2,
-			canvasLocation.getY() + fontMetrics.getHeight()));
+				canvasLocation.getX() + toHighlight.getWidth() / 2 - fontMetrics.stringWidth(text) / 2,
+				canvasLocation.getY() + fontMetrics.getHeight()));
 		textComponent.setText(text);
 		textComponent.render(graphics);
 	}
@@ -1154,13 +1155,13 @@ public class ClueScrollPlugin extends Plugin
 		}
 		averageCentralY /= nonnullCount;
 		final int newScroll = Math.max(0, Math.min(parent.getScrollHeight(),
-			averageCentralY - parent.getHeight() / 2));
+				averageCentralY - parent.getHeight() / 2));
 
 		client.runScript(
-			ScriptID.UPDATE_SCROLLBAR,
-			scrollbar.getId(),
-			list.getId(),
-			newScroll
+				ScriptID.UPDATE_SCROLLBAR,
+				scrollbar.getId(),
+				list.getId(),
+				newScroll
 		);
 	}
 
