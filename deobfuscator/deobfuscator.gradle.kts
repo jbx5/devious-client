@@ -108,6 +108,7 @@ tasks {
 
         classpath = project.sourceSets.main.get().runtimeClasspath
         mainClass.set("net.runelite.deob.updater.UpdateMappings")
+        args = listOf(tokens["rs.client"], tokens["vanilla.jar"], "$buildDir/libs/updated-$version.jar")
     }
 }
 
