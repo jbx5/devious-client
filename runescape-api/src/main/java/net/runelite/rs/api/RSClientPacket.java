@@ -25,8 +25,8 @@ public interface RSClientPacket extends ClientPacket
 	@Import("EVENT_APPLET_FOCUS")
 	RSClientPacket EVENT_APPLET_FOCUS();
 
-	@Import("CLICKWORLDMAP_TELEPORT")
-	RSClientPacket CLICKWORLDMAP_TELEPORT();
+//	@Import("CLICKWORLDMAP_TELEPORT")
+//	RSClientPacket CLICKWORLDMAP_TELEPORT();
 
 	@Import("IF_BUTTONT")
 	RSClientPacket IF_BUTTONT();

@@ -1,16 +1,11 @@
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 import net.runelite.mapping.Implements;
-import java.io.File;
 import net.runelite.mapping.Export;
-@ObfuscatedName("dm")
+@ObfuscatedName("dd")
 @Implements("UserComparator10")
 public class UserComparator10 extends AbstractUserComparator {
-	@ObfuscatedName("c")
-	@Export("cacheDir")
-	public static File cacheDir;
-
-	@ObfuscatedName("o")
+	@ObfuscatedName("s")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -18,8 +13,8 @@ public class UserComparator10 extends AbstractUserComparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "(Lnh;Lnh;I)I", garbageValue = "-364048224")
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(descriptor = "(Lnt;Lnt;I)I", garbageValue = "-1766049214")
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
 		if (Client.worldId == var1.world && var2.world == Client.worldId) {
@@ -33,9 +28,20 @@ public class UserComparator10 extends AbstractUserComparator {
 		return this.compareBuddy(((Buddy) (var1)), ((Buddy) (var2)));
 	}
 
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "(B)[Ljz;", garbageValue = "-31")
-	public static class263[] method2689() {
-		return new class263[]{ class263.field3022, class263.field3023, class263.field3021, class263.field3025, class263.field3024, class263.field3028, class263.field3020, class263.field3026, class263.field3027, class263.field3019 };
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(descriptor = "(IB)Lfr;", garbageValue = "1")
+	public static VarcInt method2598(int var0) {
+		VarcInt var1 = ((VarcInt) (VarcInt.VarcInt_cached.get(((long) (var0)))));
+		if (var1 != null) {
+			return var1;
+		} else {
+			byte[] var2 = VarcInt.VarcInt_archive.takeFile(19, var0);
+			var1 = new VarcInt();
+			if (var2 != null) {
+				var1.method3318(new Buffer(var2));
+			}
+			VarcInt.VarcInt_cached.put(var1, ((long) (var0)));
+			return var1;
+		}
 	}
 }

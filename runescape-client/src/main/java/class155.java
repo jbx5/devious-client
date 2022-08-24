@@ -3,73 +3,68 @@ import java.util.HashMap;
 import java.net.MalformedURLException;
 import org.json.JSONException;
 import java.util.ArrayList;
+import java.io.IOException;
 import org.json.JSONArray;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.net.URL;
 import net.runelite.mapping.ObfuscatedSignature;
+import java.io.ByteArrayInputStream;
 import net.runelite.mapping.ObfuscatedGetter;
 import java.util.Iterator;
-import java.util.List;
+import java.awt.image.PixelGrabber;
 import org.json.JSONObject;
 import java.util.Map;
-import net.runelite.mapping.Export;
-@ObfuscatedName("ef")
+@ObfuscatedName("eu")
 public class class155 {
-	@ObfuscatedName("ur")
-	static List field1721;
-
-	@ObfuscatedName("ej")
-	@ObfuscatedSignature(descriptor = "Llu;")
-	@Export("archive17")
-	static Archive archive17;
-
-	@ObfuscatedName("h")
-	@ObfuscatedGetter(intValue = 106059875)
-	int field1711 = -1;
-
-	@ObfuscatedName("a")
-	String field1713;
-
-	@ObfuscatedName("d")
-	@ObfuscatedSignature(descriptor = "Lcb;")
-	UrlRequest field1717;
+	@ObfuscatedName("o")
+	@ObfuscatedGetter(intValue = -1709164427)
+	int field1704 = -1;
 
 	@ObfuscatedName("n")
-	String field1710 = null;
+	String field1705;
 
-	@ObfuscatedName("x")
-	float[] field1715 = new float[4];
+	@ObfuscatedName("d")
+	@ObfuscatedSignature(descriptor = "Lcv;")
+	UrlRequest field1706;
 
-	@ObfuscatedName("g")
-	ArrayList field1716 = new ArrayList();
+	@ObfuscatedName("a")
+	String field1707 = null;
 
-	@ObfuscatedName("p")
-	ArrayList field1722 = new ArrayList();
+	@ObfuscatedName("m")
+	float[] field1702 = new float[4];
 
-	@ObfuscatedName("b")
-	ArrayList field1718 = new ArrayList();
+	@ObfuscatedName("u")
+	ArrayList field1714 = new ArrayList();
 
 	@ObfuscatedName("l")
-	Map field1719 = new HashMap();
+	ArrayList field1710 = new ArrayList();
+
+	@ObfuscatedName("z")
+	ArrayList field1711 = new ArrayList();
+
+	@ObfuscatedName("r")
+	Map field1712 = new HashMap();
 
 	@ObfuscatedName("y")
-	Map field1720 = new HashMap();
+	Map field1715 = new HashMap();
 
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "(Ljava/lang/String;Lcc;B)Z", garbageValue = "1")
-	public boolean method3176(String var1, UrlRequester var2) {
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(descriptor = "(Ljava/lang/String;Lcu;I)Z", garbageValue = "1489180465")
+	public boolean method3163(String var1, UrlRequester var2) {
 		if (var1 != null && !var1.isEmpty()) {
 			if (var2 == null) {
 				return false;
 			} else {
-				this.method3218();
+				this.method3116();
 				try {
-					this.field1713 = var1;
-					this.field1717 = var2.request(new URL(this.field1713));
-					this.field1711 = 0;
+					this.field1705 = var1;
+					this.field1706 = var2.request(new URL(this.field1705));
+					this.field1704 = 0;
 					return true;
 				} catch (MalformedURLException var4) {
-					this.method3218();
-					this.field1711 = 100;
+					this.method3116();
+					this.field1704 = 100;
 					return false;
 				}
 			}
@@ -78,217 +73,217 @@ public class class155 {
 		}
 	}
 
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "(Lcc;B)V", garbageValue = "-121")
-	public void method3233(UrlRequester var1) {
-		switch (this.field1711) {
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(descriptor = "(Lcu;I)V", garbageValue = "631956877")
+	public void method3138(UrlRequester var1) {
+		switch (this.field1704) {
 			case 0 :
-				this.method3237(var1);
+				this.method3117(var1);
 				break;
 			case 1 :
-				this.method3188();
+				this.method3118();
 				break;
 			default :
 				return;
 		}
 	}
 
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "(B)I", garbageValue = "24")
-	public int method3178() {
-		return this.field1711;
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(descriptor = "(I)I", garbageValue = "1528603017")
+	public int method3108() {
+		return this.field1704;
 	}
 
-	@ObfuscatedName("u")
-	@ObfuscatedSignature(descriptor = "(Ljava/lang/String;I)I", garbageValue = "-997357536")
-	public int method3225(String var1) {
-		return this.field1719.containsKey(var1) ? ((Integer) (this.field1719.get(var1))) : -1;
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(descriptor = "(Ljava/lang/String;I)I", garbageValue = "1795659751")
+	public int method3109(String var1) {
+		return this.field1712.containsKey(var1) ? ((Integer) (this.field1712.get(var1))) : -1;
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(Ljava/lang/String;I)Ljava/lang/String;", garbageValue = "1079707838")
-	public String method3179(String var1) {
-		return ((String) ((String) (this.field1720.containsKey(var1) ? this.field1720.get(var1) : null)));
+	@ObfuscatedSignature(descriptor = "(Ljava/lang/String;B)Ljava/lang/String;", garbageValue = "20")
+	public String method3110(String var1) {
+		return ((String) ((String) (this.field1715.containsKey(var1) ? this.field1715.get(var1) : null)));
 	}
 
-	@ObfuscatedName("w")
-	@ObfuscatedSignature(descriptor = "(I)Ljava/util/ArrayList;", garbageValue = "-2038386823")
-	public ArrayList method3181() {
-		return this.field1722;
-	}
-
-	@ObfuscatedName("z")
-	@ObfuscatedSignature(descriptor = "(I)Ljava/util/ArrayList;", garbageValue = "-913818294")
-	public ArrayList method3182() {
-		return this.field1718;
-	}
-
-	@ObfuscatedName("j")
-	@ObfuscatedSignature(descriptor = "(I)Ljava/lang/String;", garbageValue = "-954998012")
-	public String method3219() {
+	@ObfuscatedName("q")
+	@ObfuscatedSignature(descriptor = "(I)Ljava/util/ArrayList;", garbageValue = "2023907808")
+	public ArrayList method3142() {
 		return this.field1710;
 	}
 
-	@ObfuscatedName("h")
-	@ObfuscatedSignature(descriptor = "(B)[F", garbageValue = "98")
-	public float[] method3227() {
-		return this.field1715;
+	@ObfuscatedName("i")
+	@ObfuscatedSignature(descriptor = "(B)Ljava/util/ArrayList;", garbageValue = "-114")
+	public ArrayList method3112() {
+		return this.field1711;
 	}
 
-	@ObfuscatedName("a")
-	@ObfuscatedSignature(descriptor = "(I)Ljava/util/ArrayList;", garbageValue = "-504682335")
-	public ArrayList method3185() {
-		return this.field1716;
+	@ObfuscatedName("k")
+	@ObfuscatedSignature(descriptor = "(I)Ljava/lang/String;", garbageValue = "-2023105652")
+	public String method3113() {
+		return this.field1707;
 	}
 
-	@ObfuscatedName("d")
-	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "-885915410")
-	void method3218() {
-		this.field1717 = null;
-		this.field1710 = null;
-		this.field1715[0] = 0.0F;
-		this.field1715[1] = 0.0F;
-		this.field1715[2] = 1.0F;
-		this.field1715[3] = 1.0F;
-		this.field1716.clear();
-		this.field1722.clear();
-		this.field1718.clear();
-		this.field1719.clear();
-		this.field1720.clear();
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(descriptor = "(B)[F", garbageValue = "-75")
+	public float[] method3114() {
+		return this.field1702;
 	}
 
 	@ObfuscatedName("n")
-	@ObfuscatedSignature(descriptor = "(Lcc;B)V", garbageValue = "74")
-	void method3237(UrlRequester var1) {
-		if (this.field1717 != null && this.field1717.isDone()) {
-			byte[] var2 = this.field1717.getResponse();
+	@ObfuscatedSignature(descriptor = "(I)Ljava/util/ArrayList;", garbageValue = "585836824")
+	public ArrayList method3115() {
+		return this.field1714;
+	}
+
+	@ObfuscatedName("d")
+	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "168847589")
+	void method3116() {
+		this.field1706 = null;
+		this.field1707 = null;
+		this.field1702[0] = 0.0F;
+		this.field1702[1] = 0.0F;
+		this.field1702[2] = 1.0F;
+		this.field1702[3] = 1.0F;
+		this.field1714.clear();
+		this.field1710.clear();
+		this.field1711.clear();
+		this.field1712.clear();
+		this.field1715.clear();
+	}
+
+	@ObfuscatedName("a")
+	@ObfuscatedSignature(descriptor = "(Lcu;B)V", garbageValue = "-3")
+	void method3117(UrlRequester var1) {
+		if (this.field1706 != null && this.field1706.isDone()) {
+			byte[] var2 = this.field1706.getResponse();
 			if (var2 == null) {
-				this.method3218();
-				this.field1711 = 100;
+				this.method3116();
+				this.field1704 = 100;
 			} else {
 				JSONObject var3;
 				try {
 					class400 var4 = new class400(var2);
-					var3 = var4.method7134();
+					var3 = var4.method7049();
 					var3 = var3.getJSONObject("message");
 				} catch (Exception var9) {
-					this.method3218();
-					this.field1711 = 102;
+					this.method3116();
+					this.field1704 = 102;
 					return;
 				}
 				try {
-					this.method3221(var3.getJSONArray("images"), var1);
+					this.method3119(var3.getJSONArray("images"), var1);
 				} catch (Exception var8) {
-					this.field1722.clear();
+					this.field1710.clear();
 				}
 				try {
-					this.method3190(var3.getJSONArray("labels"));
+					this.method3111(var3.getJSONArray("labels"));
 				} catch (Exception var7) {
-					this.field1718.clear();
+					this.field1711.clear();
 				}
 				try {
-					this.method3191(var3.getJSONObject("behaviour"));
+					this.method3121(var3.getJSONObject("behaviour"));
 				} catch (Exception var6) {
-					this.field1710 = null;
-					this.field1715[0] = 0.0F;
-					this.field1715[1] = 0.0F;
-					this.field1715[2] = 1.0F;
-					this.field1715[3] = 1.0F;
-					this.field1716.clear();
+					this.field1707 = null;
+					this.field1702[0] = 0.0F;
+					this.field1702[1] = 0.0F;
+					this.field1702[2] = 1.0F;
+					this.field1702[3] = 1.0F;
+					this.field1714.clear();
 				}
 				try {
-					this.method3208(var3.getJSONObject("meta"));
+					this.method3122(var3.getJSONObject("meta"));
 				} catch (Exception var5) {
-					this.field1719.clear();
-					this.field1720.clear();
+					this.field1712.clear();
+					this.field1715.clear();
 				}
-				this.field1711 = (this.field1722.size() > 0) ? 1 : 2;
-				this.field1717 = null;
+				this.field1704 = (this.field1710.size() > 0) ? 1 : 2;
+				this.field1706 = null;
 			}
 		}
 	}
 
-	@ObfuscatedName("x")
-	@ObfuscatedSignature(descriptor = "(S)V", garbageValue = "-7390")
-	void method3188() {
-		Iterator var1 = this.field1722.iterator();
+	@ObfuscatedName("m")
+	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "-1943134133")
+	void method3118() {
+		Iterator var1 = this.field1710.iterator();
 		class160 var2;
 		do {
 			if (!var1.hasNext()) {
-				var1 = this.field1722.iterator();
+				var1 = this.field1710.iterator();
 				while (var1.hasNext()) {
 					var2 = ((class160) (var1.next()));
-					if (var2.field1755 != null) {
-						byte[] var3 = var2.field1755.getResponse();
+					if (var2.field1749 != null) {
+						byte[] var3 = var2.field1749.getResponse();
 						if (var3 != null && var3.length > 0) {
-							this.field1711 = 2;
+							this.field1704 = 2;
 							return;
 						}
 					}
 				} 
-				this.method3218();
-				this.field1711 = 101;
+				this.method3116();
+				this.field1704 = 101;
 				return;
 			}
 			var2 = ((class160) (var1.next()));
-		} while (var2.field1755 == null || var2.field1755.isDone() );
+		} while (var2.field1749 == null || var2.field1749.isDone() );
 	}
 
-	@ObfuscatedName("g")
-	@ObfuscatedSignature(descriptor = "(Lorg/json/JSONArray;Lcc;I)V", garbageValue = "-2036481182")
-	void method3221(JSONArray var1, UrlRequester var2) throws JSONException {
+	@ObfuscatedName("u")
+	@ObfuscatedSignature(descriptor = "(Lorg/json/JSONArray;Lcu;B)V", garbageValue = "1")
+	void method3119(JSONArray var1, UrlRequester var2) throws JSONException {
 		if (var1 != null) {
 			for (int var3 = 0; var3 < var1.length(); ++var3) {
 				try {
 					JSONObject var4 = var1.getJSONObject(var3);
 					class160 var5 = new class160(this);
-					var5.field1755 = var2.request(new URL(var4.getString("src")));
-					var5.field1754 = UrlRequester.method2614(var4, "placement");
-					this.field1722.add(var5);
+					var5.field1749 = var2.request(new URL(var4.getString("src")));
+					var5.field1748 = class149.method3061(var4, "placement");
+					this.field1710.add(var5);
 				} catch (MalformedURLException var6) {
 				}
 			}
 		}
 	}
 
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(descriptor = "(Lorg/json/JSONArray;I)V", garbageValue = "-245308124")
-	void method3190(JSONArray var1) throws JSONException {
+	@ObfuscatedName("l")
+	@ObfuscatedSignature(descriptor = "(Lorg/json/JSONArray;I)V", garbageValue = "2030988407")
+	void method3111(JSONArray var1) throws JSONException {
 		if (var1 != null) {
 			for (int var2 = 0; var2 < var1.length(); ++var2) {
 				JSONObject var3 = var1.getJSONObject(var2);
 				class161 var4 = new class161(this);
-				var4.field1763 = var3.getString("text");
-				var4.field1760 = PacketWriter.method2599(var3.getString("align_x"));
-				var4.field1765 = PacketWriter.method2599(var3.getString("align_y"));
-				var4.field1766 = var3.getInt("font");
-				var4.field1764 = UrlRequester.method2614(var3, "placement");
-				this.field1718.add(var4);
+				var4.field1755 = var3.getString("text");
+				var4.field1758 = Renderable.method4228(var3.getString("align_x"));
+				var4.field1757 = Renderable.method4228(var3.getString("align_y"));
+				var4.field1759 = var3.getInt("font");
+				var4.field1752 = class149.method3061(var3, "placement");
+				this.field1711.add(var4);
 			}
 		}
 	}
 
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(descriptor = "(Lorg/json/JSONObject;B)V", garbageValue = "58")
-	void method3191(JSONObject var1) throws JSONException {
+	@ObfuscatedName("z")
+	@ObfuscatedSignature(descriptor = "(Lorg/json/JSONObject;B)V", garbageValue = "110")
+	void method3121(JSONObject var1) throws JSONException {
 		if (var1 != null) {
-			this.field1715 = UrlRequester.method2614(var1, "clickbounds");
-			this.field1710 = var1.getString("endpoint");
+			this.field1702 = class149.method3061(var1, "clickbounds");
+			this.field1707 = var1.getString("endpoint");
 			String[] var2 = JSONObject.getNames(var1);
 			for (int var3 = 0; var3 < var1.length(); ++var3) {
 				if (!var2[var3].equals("clickbounds") && !var2[var3].equals("endpoint")) {
 					try {
 						int var4 = var1.getInt(var2[var3]);
-						this.field1716.add(new class162(this, var2[var3], var4));
+						this.field1714.add(new class162(this, var2[var3], var4));
 					} catch (Exception var8) {
 						try {
 							String var5 = var1.getString(var2[var3]);
 							if (var5.equals("true")) {
-								this.field1716.add(new class162(this, var2[var3], 1));
+								this.field1714.add(new class162(this, var2[var3], 1));
 							} else if (var5.equals("false")) {
-								this.field1716.add(new class162(this, var2[var3], 0));
+								this.field1714.add(new class162(this, var2[var3], 0));
 							} else {
-								this.field1716.add(new class154(this, var2[var3], var5));
+								this.field1714.add(new class154(this, var2[var3], var5));
 							}
 						} catch (Exception var7) {
 						}
@@ -298,23 +293,23 @@ public class class155 {
 		}
 	}
 
-	@ObfuscatedName("l")
-	@ObfuscatedSignature(descriptor = "(Lorg/json/JSONObject;B)V", garbageValue = "112")
-	void method3208(JSONObject var1) throws JSONException {
+	@ObfuscatedName("r")
+	@ObfuscatedSignature(descriptor = "(Lorg/json/JSONObject;I)V", garbageValue = "-2113668680")
+	void method3122(JSONObject var1) throws JSONException {
 		String[] var2 = JSONObject.getNames(var1);
 		for (int var3 = 0; var3 < var1.length(); ++var3) {
 			try {
 				int var4 = var1.getInt(var2[var3]);
-				this.field1719.put(var2[var3], var4);
+				this.field1712.put(var2[var3], var4);
 			} catch (Exception var8) {
 				try {
 					String var5 = var1.getString(var2[var3]);
 					if (var5.equals("true")) {
-						this.field1719.put(var2[var3], 1);
+						this.field1712.put(var2[var3], 1);
 					} else if (var5.equals("false")) {
-						this.field1719.put(var2[var3], 0);
+						this.field1712.put(var2[var3], 0);
 					} else {
-						this.field1720.put(var2[var3], var5);
+						this.field1715.put(var2[var3], var5);
 					}
 				} catch (Exception var7) {
 				}
@@ -322,182 +317,77 @@ public class class155 {
 		}
 	}
 
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "(III)V", garbageValue = "-786854648")
-	@Export("changeWorldSelectSorting")
-	static void changeWorldSelectSorting(int var0, int var1) {
-		int[] var2 = new int[4];
-		int[] var3 = new int[4];
-		var2[0] = var0;
-		var3[0] = var1;
-		int var4 = 1;
-		for (int var5 = 0; var5 < 4; ++var5) {
-			if (World.World_sortOption1[var5] != var0) {
-				var2[var4] = World.World_sortOption1[var5];
-				var3[var4] = World.World_sortOption2[var5];
-				++var4;
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(descriptor = "([BI)Lqn;", garbageValue = "-928428496")
+	public static final SpritePixels method3172(byte[] var0) {
+		BufferedImage var1 = null;
+		try {
+			Class var2 = ImageIO.class;
+			synchronized(ImageIO.class) {
+				var1 = ImageIO.read(new ByteArrayInputStream(var0));
 			}
+			int var6 = var1.getWidth();
+			int var7 = var1.getHeight();
+			int[] var4 = new int[var6 * var7];
+			PixelGrabber var5 = new PixelGrabber(var1, 0, 0, var6, var7, var4, 0, var6);
+			var5.grabPixels();
+			return new SpritePixels(var4, var6, var7);
+		} catch (IOException var9) {
+		} catch (InterruptedException var10) {
 		}
-		World.World_sortOption1 = var2;
-		World.World_sortOption2 = var3;
-		BoundaryObject.sortWorlds(class93.World_worlds, 0, class93.World_worlds.length - 1, World.World_sortOption1, World.World_sortOption2);
+		return new SpritePixels(0, 0);
 	}
 
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "(IIIII)V", garbageValue = "-118039767")
-	static final void method3235(int var0, int var1, int var2, int var3) {
-		for (int var4 = var1; var4 <= var3 + var1; ++var4) {
-			for (int var5 = var0; var5 <= var0 + var2; ++var5) {
-				if (var5 >= 0 && var5 < 104 && var4 >= 0 && var4 < 104) {
-					Tiles.field998[0][var5][var4] = 127;
-					if (var0 == var5 && var5 > 0) {
-						Tiles.Tiles_heights[0][var5][var4] = Tiles.Tiles_heights[0][var5 - 1][var4];
-					}
-					if (var5 == var0 + var2 && var5 < 103) {
-						Tiles.Tiles_heights[0][var5][var4] = Tiles.Tiles_heights[0][var5 + 1][var4];
-					}
-					if (var4 == var1 && var4 > 0) {
-						Tiles.Tiles_heights[0][var5][var4] = Tiles.Tiles_heights[0][var5][var4 - 1];
-					}
-					if (var4 == var3 + var1 && var4 < 103) {
-						Tiles.Tiles_heights[0][var5][var4] = Tiles.Tiles_heights[0][var5][var4 + 1];
-					}
-				}
-			}
-		}
-	}
-
-	@ObfuscatedName("kd")
-	@ObfuscatedSignature(descriptor = "(B)I", garbageValue = "5")
-	static final int method3238() {
-		float var0 = 200.0F * (((float) (class260.clientPreferences.method2323())) - 0.5F);
-		return 100 - Math.round(var0);
-	}
-
-	@ObfuscatedName("ka")
-	@ObfuscatedSignature(descriptor = "(II)V", garbageValue = "-1873513824")
-	@Export("changeGameOptions")
-	static final void changeGameOptions(int var0) {
-		class424.method7495();
-		for (ObjectSound var1 = ((ObjectSound) (ObjectSound.objectSounds.last())); var1 != null; var1 = ((ObjectSound) (ObjectSound.objectSounds.previous()))) {
-			if (var1.obj != null) {
-				var1.set();
-			}
-		}
-		int var4 = MouseRecorder.VarpDefinition_get(var0).type;
-		if (var4 != 0) {
-			int var2 = Varps.Varps_main[var0];
-			if (var4 == 1) {
-				if (var2 == 1) {
-					Rasterizer3D.Rasterizer3D_setBrightness(0.9);
-					((TextureProvider) (Rasterizer3D.Rasterizer3D_textureLoader)).setBrightness(0.9);
-					ItemComposition.ItemDefinition_cachedSprites.clear();
-					class260.clientPreferences.method2322(0.9);
-				}
-				if (var2 == 2) {
-					Rasterizer3D.Rasterizer3D_setBrightness(0.8);
-					((TextureProvider) (Rasterizer3D.Rasterizer3D_textureLoader)).setBrightness(0.8);
-					ItemComposition.ItemDefinition_cachedSprites.clear();
-					class260.clientPreferences.method2322(0.8);
-				}
-				if (var2 == 3) {
-					Rasterizer3D.Rasterizer3D_setBrightness(0.7);
-					((TextureProvider) (Rasterizer3D.Rasterizer3D_textureLoader)).setBrightness(0.7);
-					ItemComposition.ItemDefinition_cachedSprites.clear();
-					class260.clientPreferences.method2322(0.7);
-				}
-				if (var2 == 4) {
-					Rasterizer3D.Rasterizer3D_setBrightness(0.6);
-					((TextureProvider) (Rasterizer3D.Rasterizer3D_textureLoader)).setBrightness(0.6);
-					ItemComposition.ItemDefinition_cachedSprites.clear();
-					class260.clientPreferences.method2322(0.6);
-				}
-			}
-			if (var4 == 3) {
-				if (var2 == 0) {
-					class228.method4875(255);
-				}
-				if (var2 == 1) {
-					class228.method4875(192);
-				}
-				if (var2 == 2) {
-					class228.method4875(128);
-				}
-				if (var2 == 3) {
-					class228.method4875(64);
-				}
-				if (var2 == 4) {
-					class228.method4875(0);
-				}
-			}
-			if (var4 == 4) {
-				if (var2 == 0) {
-					Player.method2248(127);
-				}
-				if (var2 == 1) {
-					Player.method2248(96);
-				}
-				if (var2 == 2) {
-					Player.method2248(64);
-				}
-				if (var2 == 3) {
-					Player.method2248(32);
-				}
-				if (var2 == 4) {
-					Player.method2248(0);
-				}
-			}
-			if (var4 == 5) {
-				Client.leftClickOpensMenu = var2 == 1;
-			}
-			if (var4 == 6) {
-				Client.chatEffects = var2;
-			}
-			if (var4 == 9) {
-				Client.field662 = var2;
-			}
-			if (var4 == 10) {
-				if (var2 == 0) {
-					class136.method2949(127);
-				}
-				if (var2 == 1) {
-					class136.method2949(96);
-				}
-				if (var2 == 2) {
-					class136.method2949(64);
-				}
-				if (var2 == 3) {
-					class136.method2949(32);
-				}
-				if (var2 == 4) {
-					class136.method2949(0);
-				}
-			}
-			if (var4 == 17) {
-				Client.followerIndex = var2 & '￿';
-			}
-			AttackOption[] var3;
-			if (var4 == 18) {
-				var3 = new AttackOption[]{ AttackOption.AttackOption_dependsOnCombatLevels, AttackOption.AttackOption_hidden, AttackOption.field1282, AttackOption.field1284, AttackOption.AttackOption_alwaysRightClick };
-				Client.playerAttackOption = ((AttackOption) (class271.findEnumerated(var3, var2)));
-				if (Client.playerAttackOption == null) {
-					Client.playerAttackOption = AttackOption.AttackOption_dependsOnCombatLevels;
-				}
-			}
-			if (var4 == 19) {
-				if (var2 == -1) {
-					Client.combatTargetPlayerIndex = -1;
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(descriptor = "([BIII)Ljava/lang/String;", garbageValue = "2112007443")
+	public static String method3173(byte[] var0, int var1, int var2) {
+		char[] var3 = new char[var2];
+		int var4 = 0;
+		int var5 = var1;
+		int var8;
+		for (int var6 = var2 + var1; var5 < var6; var3[var4++] = ((char) (var8))) {
+			int var7 = var0[var5++] & 255;
+			if (var7 < 128) {
+				if (var7 == 0) {
+					var8 = 65533;
 				} else {
-					Client.combatTargetPlayerIndex = var2 & 2047;
+					var8 = var7;
 				}
-			}
-			if (var4 == 22) {
-				var3 = new AttackOption[]{ AttackOption.AttackOption_dependsOnCombatLevels, AttackOption.AttackOption_hidden, AttackOption.field1282, AttackOption.field1284, AttackOption.AttackOption_alwaysRightClick };
-				Client.npcAttackOption = ((AttackOption) (class271.findEnumerated(var3, var2)));
-				if (Client.npcAttackOption == null) {
-					Client.npcAttackOption = AttackOption.AttackOption_dependsOnCombatLevels;
+			} else if (var7 < 192) {
+				var8 = 65533;
+			} else if (var7 < 224) {
+				if (var5 < var6 && (var0[var5] & 192) == 128) {
+					var8 = (var7 & 31) << 6 | var0[var5++] & 63;
+					if (var8 < 128) {
+						var8 = 65533;
+					}
+				} else {
+					var8 = 65533;
 				}
+			} else if (var7 < 240) {
+				if (var5 + 1 < var6 && (var0[var5] & 192) == 128 && (var0[var5 + 1] & 192) == 128) {
+					var8 = (var7 & 15) << 12 | (var0[var5++] & 63) << 6 | var0[var5++] & 63;
+					if (var8 < 2048) {
+						var8 = 65533;
+					}
+				} else {
+					var8 = 65533;
+				}
+			} else if (var7 < 248) {
+				if (var5 + 2 < var6 && (var0[var5] & 192) == 128 && (var0[var5 + 1] & 192) == 128 && (var0[var5 + 2] & 192) == 128) {
+					var8 = (var7 & 7) << 18 | (var0[var5++] & 63) << 12 | (var0[var5++] & 63) << 6 | var0[var5++] & 63;
+					if (var8 >= 65536 && var8 <= 1114111) {
+						var8 = 65533;
+					} else {
+						var8 = 65533;
+					}
+				} else {
+					var8 = 65533;
+				}
+			} else {
+				var8 = 65533;
 			}
 		}
+		return new String(var3, 0, var4);
 	}
 }

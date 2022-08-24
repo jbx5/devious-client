@@ -2,68 +2,54 @@ import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.Export;
-@ObfuscatedName("dd")
+@ObfuscatedName("dr")
 public class class113 {
-	@ObfuscatedName("nl")
-	@ObfuscatedGetter(intValue = -1352804003)
-	@Export("selectedSpellWidget")
-	static int selectedSpellWidget;
+	@ObfuscatedName("nt")
+	@ObfuscatedSignature(descriptor = "Lkn;")
+	@Export("mousedOverWidgetIf1")
+	static Widget mousedOverWidgetIf1;
 
-	@ObfuscatedName("o")
-	@ObfuscatedGetter(intValue = 1280061279)
-	int field1390;
+	@ObfuscatedName("s")
+	@ObfuscatedGetter(intValue = 615485545)
+	int field1400;
 
-	@ObfuscatedName("q")
-	float field1389;
-
-	@ObfuscatedName("f")
-	float field1391 = Float.MAX_VALUE;
-
-	@ObfuscatedName("u")
-	float field1396 = Float.MAX_VALUE;
-
-	@ObfuscatedName("c")
-	float field1392 = Float.MAX_VALUE;
+	@ObfuscatedName("h")
+	float field1399;
 
 	@ObfuscatedName("w")
-	float field1393 = Float.MAX_VALUE;
+	float field1403 = Float.MAX_VALUE;
 
-	@ObfuscatedName("z")
-	@ObfuscatedSignature(descriptor = "Ldd;")
-	class113 field1388;
+	@ObfuscatedName("v")
+	float field1401 = Float.MAX_VALUE;
+
+	@ObfuscatedName("c")
+	float field1402 = Float.MAX_VALUE;
+
+	@ObfuscatedName("q")
+	float field1398 = Float.MAX_VALUE;
+
+	@ObfuscatedName("i")
+	@ObfuscatedSignature(descriptor = "Ldr;")
+	class113 field1404;
 
 	class113() {
 	}
 
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "(Lqw;II)V", garbageValue = "-514505311")
-	void method2708(Buffer var1, int var2) {
-		this.field1390 = var1.readShort();
-		this.field1389 = var1.readFloat();
-		this.field1391 = var1.readFloat();
-		this.field1396 = var1.readFloat();
-		this.field1392 = var1.readFloat();
-		this.field1393 = var1.readFloat();
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(descriptor = "(Lqr;II)V", garbageValue = "439402435")
+	void method2621(Buffer var1, int var2) {
+		this.field1400 = var1.readShort();
+		this.field1399 = var1.method7740();
+		this.field1403 = var1.method7740();
+		this.field1401 = var1.method7740();
+		this.field1402 = var1.method7740();
+		this.field1398 = var1.method7740();
 	}
 
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "(IIB)Lbd;", garbageValue = "121")
-	@Export("Messages_getByChannelAndID")
-	static Message Messages_getByChannelAndID(int var0, int var1) {
-		ChatChannel var2 = ((ChatChannel) (Messages.Messages_channels.get(var0)));
-		return var2.getMessage(var1);
-	}
-
-	@ObfuscatedName("ku")
-	@ObfuscatedSignature(descriptor = "(II)V", garbageValue = "-2039507809")
-	static void method2713(int var0) {
-		class136.tempMenuAction = new MenuAction();
-		class136.tempMenuAction.param0 = Client.menuArguments1[var0];
-		class136.tempMenuAction.param1 = Client.menuArguments2[var0];
-		class136.tempMenuAction.opcode = Client.menuOpcodes[var0];
-		class136.tempMenuAction.identifier = Client.menuIdentifiers[var0];
-		class136.tempMenuAction.itemId = Client.menuItemIds[var0];
-		class136.tempMenuAction.action = Client.menuActions[var0];
-		class136.tempMenuAction.target = Client.menuTargets[var0];
+	@ObfuscatedName("n")
+	@ObfuscatedSignature(descriptor = "(CI)Z", garbageValue = "-1599367221")
+	@Export("isAlphaNumeric")
+	public static boolean isAlphaNumeric(char var0) {
+		return var0 >= '0' && var0 <= '9' || var0 >= 'A' && var0 <= 'Z' || var0 >= 'a' && var0 <= 'z';
 	}
 }

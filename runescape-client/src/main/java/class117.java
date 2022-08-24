@@ -1,180 +1,170 @@
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.rs.ScriptOpcodes;
 import net.runelite.mapping.Export;
-@ObfuscatedName("dp")
+@ObfuscatedName("dj")
 public class class117 {
-	@ObfuscatedName("et")
-	@ObfuscatedSignature(descriptor = "Llu;")
-	@Export("archive12")
-	static Archive archive12;
-
-	@ObfuscatedName("fo")
-	@ObfuscatedGetter(intValue = -605035153)
-	@Export("currentPort")
-	static int currentPort;
-
-	@ObfuscatedName("o")
-	boolean field1446;
-
-	@ObfuscatedName("q")
-	boolean field1434;
-
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "Ldy;")
-	class116 field1435;
-
-	@ObfuscatedName("u")
-	@ObfuscatedSignature(descriptor = "Ldy;")
-	class116 field1436;
-
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "[Ldd;")
-	class113[] field1437;
-
-	@ObfuscatedName("w")
-	boolean field1433;
-
-	@ObfuscatedName("z")
-	float field1439;
-
-	@ObfuscatedName("j")
-	float field1440;
+	@ObfuscatedName("s")
+	boolean field1447;
 
 	@ObfuscatedName("h")
-	float[] field1441 = new float[4];
+	boolean field1438;
 
-	@ObfuscatedName("a")
-	float[] field1442 = new float[4];
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(descriptor = "Ldg;")
+	class116 field1439;
+
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(descriptor = "Ldg;")
+	class116 field1449;
+
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(descriptor = "[Ldr;")
+	class113[] field1441;
+
+	@ObfuscatedName("q")
+	boolean field1442;
+
+	@ObfuscatedName("i")
+	float field1437;
+
+	@ObfuscatedName("k")
+	float field1444;
+
+	@ObfuscatedName("o")
+	float[] field1445 = new float[4];
+
+	@ObfuscatedName("n")
+	float[] field1440 = new float[4];
 
 	@ObfuscatedName("d")
 	boolean field1448 = true;
 
-	@ObfuscatedName("n")
-	@ObfuscatedGetter(intValue = 1623274009)
-	int field1438 = 0;
+	@ObfuscatedName("a")
+	@ObfuscatedGetter(intValue = -142194557)
+	int field1446 = 0;
 
-	@ObfuscatedName("x")
-	float[] field1445;
+	@ObfuscatedName("m")
+	float[] field1454;
 
-	@ObfuscatedName("g")
-	@ObfuscatedGetter(intValue = -1130550585)
-	int field1447;
-
-	@ObfuscatedName("p")
-	@ObfuscatedGetter(intValue = 1061946561)
-	int field1444;
-
-	@ObfuscatedName("b")
-	float field1449;
+	@ObfuscatedName("u")
+	@ObfuscatedGetter(intValue = -1852010129)
+	int field1450;
 
 	@ObfuscatedName("l")
+	@ObfuscatedGetter(intValue = -777934173)
+	int field1451;
+
+	@ObfuscatedName("z")
+	float field1452;
+
+	@ObfuscatedName("r")
 	float field1443;
 
 	class117() {
 	}
 
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "(Lqw;II)I", garbageValue = "1712190926")
-	int method2773(Buffer var1, int var2) {
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(descriptor = "(Lqr;II)I", garbageValue = "1553569592")
+	int method2685(Buffer var1, int var2) {
 		int var3 = var1.readUnsignedShort();
 		int var4 = var1.readUnsignedByte();
-		class123 var5 = ((class123) (class271.findEnumerated(class306.method5767(), var4)));
-		if (var5 == null) {
-			var5 = class123.field1510;
+		class123[] var5 = new class123[]{ class123.field1508, class123.field1515, class123.field1507, class123.field1512, class123.field1509, class123.field1518, class123.field1511, class123.field1510, class123.field1513 };
+		class123 var6 = ((class123) (GameEngine.findEnumerated(var5, var4)));
+		if (var6 == null) {
+			var6 = class123.field1513;
 		}
-		int var6 = var1.readUnsignedByte();
-		class116[] var7 = new class116[]{ class116.field1431, class116.field1423, class116.field1424, class116.field1425, class116.field1422 };
-		class116 var8 = ((class116) (class271.findEnumerated(var7, var6)));
-		if (var8 == null) {
-			var8 = class116.field1431;
-		}
-		this.field1435 = var8;
 		int var12 = var1.readUnsignedByte();
-		class116[] var9 = new class116[]{ class116.field1431, class116.field1423, class116.field1424, class116.field1425, class116.field1422 };
-		class116 var10 = ((class116) (class271.findEnumerated(var9, var12)));
+		class116[] var7 = new class116[]{ class116.field1434, class116.field1431, class116.field1428, class116.field1433, class116.field1432 };
+		class116 var8 = ((class116) (GameEngine.findEnumerated(var7, var12)));
+		if (var8 == null) {
+			var8 = class116.field1434;
+		}
+		this.field1439 = var8;
+		int var13 = var1.readUnsignedByte();
+		class116[] var9 = new class116[]{ class116.field1434, class116.field1431, class116.field1428, class116.field1433, class116.field1432 };
+		class116 var10 = ((class116) (GameEngine.findEnumerated(var9, var13)));
 		if (var10 == null) {
-			var10 = class116.field1431;
+			var10 = class116.field1434;
 		}
-		this.field1436 = var10;
-		this.field1446 = var1.readUnsignedByte() != 0;
-		this.field1437 = new class113[var3];
-		class113 var14 = null;
-		int var13;
-		for (var13 = 0; var13 < var3; ++var13) {
+		this.field1449 = var10;
+		this.field1447 = var1.readUnsignedByte() != 0;
+		this.field1441 = new class113[var3];
+		class113 var15 = null;
+		int var14;
+		for (var14 = 0; var14 < var3; ++var14) {
 			class113 var11 = new class113();
-			var11.method2708(var1, var2);
-			this.field1437[var13] = var11;
-			if (var14 != null) {
-				var14.field1388 = var11;
+			var11.method2621(var1, var2);
+			this.field1441[var14] = var11;
+			if (var15 != null) {
+				var15.field1404 = var11;
 			}
-			var14 = var11;
+			var15 = var11;
 		}
-		this.field1447 = this.field1437[0].field1390;
-		this.field1444 = this.field1437[this.method2785() - 1].field1390;
-		this.field1445 = new float[this.method2772() + 1];
-		for (var13 = this.method2769(); var13 <= this.method2775(); ++var13) {
-			this.field1445[var13 - this.method2769()] = MouseHandler.method600(this, ((float) (var13)));
+		this.field1450 = this.field1441[0].field1400;
+		this.field1451 = this.field1441[this.method2712() - 1].field1400;
+		this.field1454 = new float[this.method2686() + 1];
+		for (var14 = this.method2687(); var14 <= this.method2709(); ++var14) {
+			this.field1454[var14 - this.method2687()] = class10.method86(this, ((float) (var14)));
 		}
-		this.field1437 = null;
-		this.field1449 = MouseHandler.method600(this, ((float) (this.method2769() - 1)));
-		this.field1443 = MouseHandler.method600(this, ((float) (this.method2775() + 1)));
+		this.field1441 = null;
+		this.field1452 = class10.method86(this, ((float) (this.method2687() - 1)));
+		this.field1443 = class10.method86(this, ((float) (this.method2709() + 1)));
 		return var3;
 	}
 
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "(II)F", garbageValue = "-1139151310")
-	public float method2777(int var1) {
-		if (var1 < this.method2769()) {
-			return this.field1449;
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(descriptor = "(II)F", garbageValue = "-313022235")
+	public float method2705(int var1) {
+		if (var1 < this.method2687()) {
+			return this.field1452;
 		} else {
-			return var1 > this.method2775() ? this.field1443 : this.field1445[var1 - this.method2769()];
+			return var1 > this.method2709() ? this.field1443 : this.field1454[var1 - this.method2687()];
 		}
 	}
 
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "(B)I", garbageValue = "-24")
-	int method2769() {
-		return this.field1447;
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(descriptor = "(S)I", garbageValue = "512")
+	int method2687() {
+		return this.field1450;
 	}
 
-	@ObfuscatedName("u")
-	@ObfuscatedSignature(descriptor = "(I)I", garbageValue = "-828010612")
-	int method2775() {
-		return this.field1444;
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(descriptor = "(I)I", garbageValue = "428317719")
+	int method2709() {
+		return this.field1451;
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(I)I", garbageValue = "323526183")
-	int method2772() {
-		return this.method2775() - this.method2769();
+	@ObfuscatedSignature(descriptor = "(B)I", garbageValue = "-70")
+	int method2686() {
+		return this.method2709() - this.method2687();
 	}
 
-	@ObfuscatedName("w")
-	@ObfuscatedSignature(descriptor = "(FI)I", garbageValue = "-1662333309")
-	int method2771(float var1) {
-		if (this.field1438 < 0 || !(((float) (this.field1437[this.field1438].field1390)) <= var1) || this.field1437[this.field1438].field1388 != null && !(((float) (this.field1437[this.field1438].field1388.field1390)) > var1)) {
-			if (!(var1 < ((float) (this.method2769()))) && !(var1 > ((float) (this.method2775())))) {
-				int var2 = this.method2785();
-				int var3 = this.field1438;
+	@ObfuscatedName("q")
+	@ObfuscatedSignature(descriptor = "(FI)I", garbageValue = "1558860712")
+	int method2690(float var1) {
+		if (this.field1446 < 0 || !(((float) (this.field1441[this.field1446].field1400)) <= var1) || this.field1441[this.field1446].field1404 != null && !(((float) (this.field1441[this.field1446].field1404.field1400)) > var1)) {
+			if (!(var1 < ((float) (this.method2687()))) && !(var1 > ((float) (this.method2709())))) {
+				int var2 = this.method2712();
+				int var3 = this.field1446;
 				if (var2 > 0) {
 					int var4 = 0;
 					int var5 = var2 - 1;
 					do {
-						int var6 = var4 + var5 >> 1;
-						if (var1 < ((float) (this.field1437[var6].field1390))) {
-							if (var1 > ((float) (this.field1437[var6 - 1].field1390))) {
+						int var6 = var5 + var4 >> 1;
+						if (var1 < ((float) (this.field1441[var6].field1400))) {
+							if (var1 > ((float) (this.field1441[var6 - 1].field1400))) {
 								var3 = var6 - 1;
 								break;
 							}
 							var5 = var6 - 1;
 						} else {
-							if (!(var1 > ((float) (this.field1437[var6].field1390)))) {
+							if (!(var1 > ((float) (this.field1441[var6].field1400)))) {
 								var3 = var6;
 								break;
 							}
-							if (var1 < ((float) (this.field1437[var6 + 1].field1390))) {
+							if (var1 < ((float) (this.field1441[var6 + 1].field1400))) {
 								var3 = var6;
 								break;
 							}
@@ -182,99 +172,88 @@ public class class117 {
 						}
 					} while (var4 <= var5 );
 				}
-				if (var3 != this.field1438) {
-					this.field1438 = var3;
+				if (var3 != this.field1446) {
+					this.field1446 = var3;
 					this.field1448 = true;
 				}
-				return this.field1438;
+				return this.field1446;
 			} else {
 				return -1;
 			}
 		} else {
-			return this.field1438;
+			return this.field1446;
 		}
 	}
 
-	@ObfuscatedName("z")
-	@ObfuscatedSignature(descriptor = "(FI)Ldd;", garbageValue = "-1944565910")
-	class113 method2774(float var1) {
-		int var2 = this.method2771(var1);
-		return var2 >= 0 && var2 < this.field1437.length ? this.field1437[var2] : null;
+	@ObfuscatedName("i")
+	@ObfuscatedSignature(descriptor = "(FB)Ldr;", garbageValue = "-25")
+	class113 method2691(float var1) {
+		int var2 = this.method2690(var1);
+		return var2 >= 0 && var2 < this.field1441.length ? this.field1441[var2] : null;
 	}
 
-	@ObfuscatedName("j")
-	@ObfuscatedSignature(descriptor = "(I)I", garbageValue = "1901581488")
-	int method2785() {
-		return this.field1437 == null ? 0 : this.field1437.length;
+	@ObfuscatedName("k")
+	@ObfuscatedSignature(descriptor = "(I)I", garbageValue = "16711935")
+	int method2712() {
+		return this.field1441 == null ? 0 : this.field1441.length;
 	}
 
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(descriptor = "(ILbc;ZB)I", garbageValue = "4")
-	static int method2793(int var0, Script var1, boolean var2) {
+	@ObfuscatedName("m")
+	@ObfuscatedSignature(descriptor = "([BB)V", garbageValue = "51")
+	@Export("SpriteBuffer_decode")
+	static void SpriteBuffer_decode(byte[] var0) {
+		Buffer var1 = new Buffer(var0);
+		var1.offset = var0.length - 2;
+		class457.SpriteBuffer_spriteCount = var1.readUnsignedShort();
+		class457.SpriteBuffer_xOffsets = new int[class457.SpriteBuffer_spriteCount];
+		InterfaceParent.SpriteBuffer_yOffsets = new int[class457.SpriteBuffer_spriteCount];
+		class457.SpriteBuffer_spriteWidths = new int[class457.SpriteBuffer_spriteCount];
+		SoundCache.SpriteBuffer_spriteHeights = new int[class457.SpriteBuffer_spriteCount];
+		class181.SpriteBuffer_pixels = new byte[class457.SpriteBuffer_spriteCount][];
+		var1.offset = var0.length - 7 - class457.SpriteBuffer_spriteCount * 8;
+		class457.SpriteBuffer_spriteWidth = var1.readUnsignedShort();
+		class457.SpriteBuffer_spriteHeight = var1.readUnsignedShort();
+		int var2 = (var1.readUnsignedByte() & 255) + 1;
 		int var3;
-		int var6;
-		int var9;
-		if (var0 == ScriptOpcodes.ENUM_STRING) {
-			TaskHandler.Interpreter_intStackSize -= 2;
-			var3 = Interpreter.Interpreter_intStack[TaskHandler.Interpreter_intStackSize];
-			var9 = Interpreter.Interpreter_intStack[TaskHandler.Interpreter_intStackSize + 1];
-			EnumComposition var10 = class174.getEnum(var3);
-			if (var10.outputType != 's') {
+		for (var3 = 0; var3 < class457.SpriteBuffer_spriteCount; ++var3) {
+			class457.SpriteBuffer_xOffsets[var3] = var1.readUnsignedShort();
+		}
+		for (var3 = 0; var3 < class457.SpriteBuffer_spriteCount; ++var3) {
+			InterfaceParent.SpriteBuffer_yOffsets[var3] = var1.readUnsignedShort();
+		}
+		for (var3 = 0; var3 < class457.SpriteBuffer_spriteCount; ++var3) {
+			class457.SpriteBuffer_spriteWidths[var3] = var1.readUnsignedShort();
+		}
+		for (var3 = 0; var3 < class457.SpriteBuffer_spriteCount; ++var3) {
+			SoundCache.SpriteBuffer_spriteHeights[var3] = var1.readUnsignedShort();
+		}
+		var1.offset = var0.length - 7 - class457.SpriteBuffer_spriteCount * 8 - (var2 - 1) * 3;
+		class457.SpriteBuffer_spritePalette = new int[var2];
+		for (var3 = 1; var3 < var2; ++var3) {
+			class457.SpriteBuffer_spritePalette[var3] = var1.readMedium();
+			if (class457.SpriteBuffer_spritePalette[var3] == 0) {
+				class457.SpriteBuffer_spritePalette[var3] = 1;
 			}
-			for (var6 = 0; var6 < var10.outputCount; ++var6) {
-				if (var9 == var10.keys[var6]) {
-					Interpreter.Interpreter_stringStack[++GrandExchangeOfferAgeComparator.Interpreter_stringStackSize - 1] = var10.strVals[var6];
-					var10 = null;
-					break;
+		}
+		var1.offset = 0;
+		for (var3 = 0; var3 < class457.SpriteBuffer_spriteCount; ++var3) {
+			int var4 = class457.SpriteBuffer_spriteWidths[var3];
+			int var5 = SoundCache.SpriteBuffer_spriteHeights[var3];
+			int var6 = var4 * var5;
+			byte[] var7 = new byte[var6];
+			class181.SpriteBuffer_pixels[var3] = var7;
+			int var8 = var1.readUnsignedByte();
+			int var9;
+			if (var8 == 0) {
+				for (var9 = 0; var9 < var6; ++var9) {
+					var7[var9] = var1.readByte();
 				}
-			}
-			if (var10 != null) {
-				Interpreter.Interpreter_stringStack[++GrandExchangeOfferAgeComparator.Interpreter_stringStackSize - 1] = var10.defaultStr;
-			}
-			return 1;
-		} else if (var0 != ScriptOpcodes.ENUM) {
-			if (var0 == ScriptOpcodes.ENUM_GETOUTPUTCOUNT) {
-				var3 = Interpreter.Interpreter_intStack[--TaskHandler.Interpreter_intStackSize];
-				EnumComposition var4 = class174.getEnum(var3);
-				Interpreter.Interpreter_intStack[++TaskHandler.Interpreter_intStackSize - 1] = var4.size();
-				return 1;
-			} else {
-				return 2;
-			}
-		} else {
-			TaskHandler.Interpreter_intStackSize -= 4;
-			var3 = Interpreter.Interpreter_intStack[TaskHandler.Interpreter_intStackSize];
-			var9 = Interpreter.Interpreter_intStack[TaskHandler.Interpreter_intStackSize + 1];
-			int var5 = Interpreter.Interpreter_intStack[TaskHandler.Interpreter_intStackSize + 2];
-			var6 = Interpreter.Interpreter_intStack[TaskHandler.Interpreter_intStackSize + 3];
-			EnumComposition var7 = class174.getEnum(var5);
-			if (var3 == var7.inputType && var9 == var7.outputType) {
-				for (int var8 = 0; var8 < var7.outputCount; ++var8) {
-					if (var6 == var7.keys[var8]) {
-						if (var9 == 115) {
-							Interpreter.Interpreter_stringStack[++GrandExchangeOfferAgeComparator.Interpreter_stringStackSize - 1] = var7.strVals[var8];
-						} else {
-							Interpreter.Interpreter_intStack[++TaskHandler.Interpreter_intStackSize - 1] = var7.intVals[var8];
-						}
-						var7 = null;
-						break;
+			} else if (var8 == 1) {
+				for (var9 = 0; var9 < var4; ++var9) {
+					for (int var10 = 0; var10 < var5; ++var10) {
+						var7[var9 + var4 * var10] = var1.readByte();
 					}
 				}
-				if (var7 != null) {
-					if (var9 == 115) {
-						Interpreter.Interpreter_stringStack[++GrandExchangeOfferAgeComparator.Interpreter_stringStackSize - 1] = var7.defaultStr;
-					} else {
-						Interpreter.Interpreter_intStack[++TaskHandler.Interpreter_intStackSize - 1] = var7.defaultInt;
-					}
-				}
-				return 1;
-			} else {
-				if (var9 == 115) {
-					Interpreter.Interpreter_stringStack[++GrandExchangeOfferAgeComparator.Interpreter_stringStackSize - 1] = "null";
-				} else {
-					Interpreter.Interpreter_intStack[++TaskHandler.Interpreter_intStackSize - 1] = 0;
-				}
-				return 1;
 			}
 		}
 	}

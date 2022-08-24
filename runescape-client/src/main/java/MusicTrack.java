@@ -2,19 +2,19 @@ import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.Export;
-@ObfuscatedName("jm")
+@ObfuscatedName("ja")
 @Implements("MusicTrack")
 public class MusicTrack extends Node {
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "Lpf;")
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(descriptor = "Lpa;")
 	@Export("table")
 	NodeHashTable table;
 
-	@ObfuscatedName("q")
+	@ObfuscatedName("h")
 	@Export("midi")
 	byte[] midi;
 
-	@ObfuscatedSignature(descriptor = "(Lqw;)V")
+	@ObfuscatedSignature(descriptor = "(Lqr;)V")
 	MusicTrack(Buffer var1) {
 		var1.offset = var1.array.length - 3;
 		int var2 = var1.readUnsignedByte();
@@ -235,7 +235,7 @@ public class MusicTrack extends Node {
 							}
 							var28 = var28 + var1.array[var15++] & 127;
 							var51.writeByte(var28);
-							int var66;
+							byte var66;
 							if (var28 != 0 && var28 != 32) {
 								if (var28 == 1) {
 									var66 = var1.array[var34++];
@@ -265,9 +265,9 @@ public class MusicTrack extends Node {
 							} else {
 								var66 = var1.array[var44++];
 							}
-							var66 += var59[var28];
-							var59[var28] = var66;
-							var51.writeByte(var66 & 127);
+							int var67 = var66 + var59[var28];
+							var59[var28] = var67;
+							var51.writeByte(var67 & 127);
 						} else if (var62 == 3) {
 							if (var65) {
 								var51.writeByte(var52 + 224);
@@ -305,8 +305,8 @@ public class MusicTrack extends Node {
 		}
 	}
 
-	@ObfuscatedName("q")
-	void method5476() {
+	@ObfuscatedName("h")
+	void method5408() {
 		if (this.table == null) {
 			this.table = new NodeHashTable(16);
 			int[] var1 = new int[16];
@@ -375,14 +375,14 @@ public class MusicTrack extends Node {
 		}
 	}
 
-	@ObfuscatedName("f")
+	@ObfuscatedName("w")
 	@Export("clear")
 	void clear() {
 		this.table = null;
 	}
 
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "(Llc;II)Ljm;")
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(descriptor = "(Lls;II)Lja;")
 	@Export("readTrack")
 	public static MusicTrack readTrack(AbstractArchive var0, int var1, int var2) {
 		byte[] var3 = var0.takeFile(var1, var2);

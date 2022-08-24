@@ -3,45 +3,45 @@ import net.runelite.mapping.ObfuscatedSignature;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.Export;
-@ObfuscatedName("na")
+@ObfuscatedName("no")
 @Implements("FriendsList")
 public class FriendsList extends UserList {
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "Lpa;")
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(descriptor = "Lpl;")
 	@Export("loginType")
 	final LoginType loginType;
 
-	@ObfuscatedName("u")
-	@ObfuscatedGetter(intValue = 296114671)
-	int field4300 = 1;
+	@ObfuscatedName("v")
+	@ObfuscatedGetter(intValue = -2142591423)
+	int field4282 = 1;
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(descriptor = "Lly;")
 	@Export("friendLoginUpdates")
 	public LinkDeque friendLoginUpdates = new LinkDeque();
 
-	@ObfuscatedSignature(descriptor = "(Lpa;)V")
+	@ObfuscatedSignature(descriptor = "(Lpl;)V")
 	public FriendsList(LoginType var1) {
 		super(400);
 		this.loginType = var1;
 	}
 
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "(B)Lnd;", garbageValue = "12")
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(descriptor = "(I)Lnb;", garbageValue = "1043377845")
 	@Export("newInstance")
 	User newInstance() {
 		return new Friend();
 	}
 
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "(II)[Lnd;", garbageValue = "-1607059691")
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(descriptor = "(II)[Lnb;", garbageValue = "46467081")
 	@Export("newTypedArray")
 	User[] newTypedArray(int var1) {
 		return new Friend[var1];
 	}
 
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "(Lqi;ZB)Z", garbageValue = "32")
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(descriptor = "(Lqy;ZB)Z", garbageValue = "63")
 	@Export("isFriended")
 	public boolean isFriended(Username var1, boolean var2) {
 		Friend var3 = ((Friend) (this.getByUsername(var1)));
@@ -52,8 +52,8 @@ public class FriendsList extends UserList {
 		}
 	}
 
-	@ObfuscatedName("z")
-	@ObfuscatedSignature(descriptor = "(Lqw;II)V", garbageValue = "1143510606")
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(descriptor = "(Lqr;II)V", garbageValue = "-1824082958")
 	@Export("read")
 	public void read(Buffer var1, int var2) {
 		while (true) {
@@ -76,7 +76,7 @@ public class FriendsList extends UserList {
 					Friend var11 = ((Friend) (this.getByCurrentUsername(var4)));
 					if (var3) {
 						Friend var12 = ((Friend) (this.getByCurrentUsername(var5)));
-						if (var12 != null && var11 != var12) {
+						if (var12 != null && var12 != var11) {
 							if (var11 != null) {
 								this.remove(var12);
 							} else {
@@ -110,15 +110,15 @@ public class FriendsList extends UserList {
 						var11 = ((Friend) (this.addLast(var4, var5)));
 					}
 					if (var6 != var11.world) {
-						var11.int2 = ++this.field4300 - 1;
+						var11.int2 = ++this.field4282 - 1;
 						if (var11.world == -1 && var6 == 0) {
-							var11.int2 = -(var11.int2 * 1953873733) * -1921385587;
+							var11.int2 = -(var11.int2 * 1745645509) * 547305229;
 						}
 						var11.world = var6;
 					}
 					var11.rank = var7;
-					var11.field4312 = var9;
-					var11.field4313 = var10;
+					var11.field4294 = var9;
+					var11.field4293 = var10;
 					continue;
 				}
 				throw new IllegalStateException();

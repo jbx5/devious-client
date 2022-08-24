@@ -1,3 +1,3 @@
 import net.runelite.mapping.ObfuscatedName;
-@ObfuscatedName("on")
+@ObfuscatedName("or")
 public interface class397 extends class396 {}

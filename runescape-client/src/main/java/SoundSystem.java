@@ -1,21 +1,17 @@
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.Export;
-@ObfuscatedName("ax")
+@ObfuscatedName("ai")
 @Implements("SoundSystem")
 public class SoundSystem implements Runnable {
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(descriptor = "Lql;")
-	static IndexedSprite field321;
+	@ObfuscatedName("l")
+	@ObfuscatedSignature(descriptor = "Lkn;")
+	@Export("scriptDotWidget")
+	static Widget scriptDotWidget;
 
-	@ObfuscatedName("hu")
-	@ObfuscatedGetter(intValue = -966158451)
-	static int field319;
-
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "[Lat;")
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(descriptor = "[Laf;")
 	@Export("players")
 	volatile PcmPlayer[] players = new PcmPlayer[2];
 
@@ -31,29 +27,42 @@ public class SoundSystem implements Runnable {
 				}
 			}
 		} catch (Exception var4) {
-			class359.RunException_sendStackTrace(((String) (null)), var4);
+			class33.RunException_sendStackTrace(((String) (null)), var4);
 		}
-	}
-
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "(Llc;IIB)Lqj;", garbageValue = "-16")
-	@Export("SpriteBuffer_getSprite")
-	public static SpritePixels SpriteBuffer_getSprite(AbstractArchive var0, int var1, int var2) {
-		byte[] var4 = var0.takeFile(var1, var2);
-		boolean var3;
-		if (var4 == null) {
-			var3 = false;
-		} else {
-			class83.SpriteBuffer_decode(var4);
-			var3 = true;
-		}
-		return !var3 ? null : class362.method6608();
 	}
 
 	@ObfuscatedName("s")
-	@ObfuscatedSignature(descriptor = "(S)V", garbageValue = "255")
-	static void method768() {
-		UserComparator6.method2701(24);
-		HealthBarUpdate.setLoginResponseString("The game servers are currently being updated.", "Please wait a few minutes and try again.", "");
+	@ObfuscatedSignature(descriptor = "(IB)Ljava/lang/String;", garbageValue = "1")
+	static String method740(int var0) {
+		return "<img=" + var0 + ">";
+	}
+
+	@ObfuscatedName("ia")
+	@ObfuscatedSignature(descriptor = "(Lkn;Lgb;IIZB)V", garbageValue = "8")
+	@Export("addWidgetItemMenuItem")
+	static final void addWidgetItemMenuItem(Widget var0, ItemComposition var1, int var2, int var3, boolean var4) {
+		String[] var5 = var1.inventoryActions;
+		byte var6 = -1;
+		String var7 = null;
+		if (var5 != null && var5[var3] != null) {
+			if (var3 == 0) {
+				var6 = 33;
+			} else if (var3 == 1) {
+				var6 = 34;
+			} else if (var3 == 2) {
+				var6 = 35;
+			} else if (var3 == 3) {
+				var6 = 36;
+			} else {
+				var6 = 37;
+			}
+			var7 = var5[var3];
+		} else if (var3 == 4) {
+			var6 = 37;
+			var7 = "Drop";
+		}
+		if (var6 != -1 && var7 != null) {
+			CollisionMap.insertMenuItem(var7, Clock.colorStartTag(16748608) + var1.name, var6, 0, var2, var0.id, var1.id, var4);
+		}
 	}
 }

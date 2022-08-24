@@ -1,77 +1,39 @@
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.Export;
-@ObfuscatedName("jl")
+@ObfuscatedName("jj")
 public class class270 {
-	@ObfuscatedName("il")
-	@ObfuscatedSignature(descriptor = "[Lql;")
-	@Export("mapSceneSprites")
-	static IndexedSprite[] mapSceneSprites;
-
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "(III)I", garbageValue = "1345506166")
-	static int method5223(int var0, int var1) {
-		FloorOverlayDefinition var3 = ((FloorOverlayDefinition) (FloorOverlayDefinition.FloorOverlayDefinition_cached.get(((long) (var0)))));
-		FloorOverlayDefinition var2;
-		if (var3 != null) {
-			var2 = var3;
-		} else {
-			byte[] var4 = FloorOverlayDefinition.FloorOverlayDefinition_archive.takeFile(4, var0);
-			var3 = new FloorOverlayDefinition();
-			if (var4 != null) {
-				var3.decode(new Buffer(var4), var0);
-			}
-			var3.postDecode();
-			FloorOverlayDefinition.FloorOverlayDefinition_cached.put(var3, ((long) (var0)));
-			var2 = var3;
-		}
-		if (var2 == null) {
-			return var1;
-		} else if (var2.secondaryRgb >= 0) {
-			return var2.secondaryRgb | -16777216;
-		} else if (var2.texture >= 0) {
-			int var10 = class160.method3277(Rasterizer3D.Rasterizer3D_textureLoader.getAverageTextureRGB(var2.texture), 96);
-			return Rasterizer3D.Rasterizer3D_colorPalette[var10] | -16777216;
-		} else if (var2.primaryRgb == 16711935) {
-			return var1;
-		} else {
-			int var5 = var2.hue;
-			int var6 = var2.saturation;
-			int var7 = var2.lightness;
-			if (var7 > 179) {
-				var6 /= 2;
-			}
-			if (var7 > 192) {
-				var6 /= 2;
-			}
-			if (var7 > 217) {
-				var6 /= 2;
-			}
-			if (var7 > 243) {
-				var6 /= 2;
-			}
-			int var8 = (var6 / 32 << 7) + var7 / 2 + (var5 / 4 << 10);
-			int var9 = class160.method3277(var8, 96);
-			return Rasterizer3D.Rasterizer3D_colorPalette[var9] | -16777216;
-		}
+	@ObfuscatedName("a")
+	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "-96821068")
+	static final void method5154() {
+		class4.method20("You can't add yourself to your own friend list");
 	}
 
-	@ObfuscatedName("u")
-	@ObfuscatedSignature(descriptor = "(B)V", garbageValue = "121")
-	@Export("savePreferences")
-	static void savePreferences() {
-		AccessFile var0 = null;
-		try {
-			var0 = Actor.getPreferencesFile("", AbstractByteArrayCopier.field3293.name, true);
-			Buffer var1 = class260.clientPreferences.toBuffer();
-			var0.write(var1.array, 0, var1.offset);
-		} catch (Exception var3) {
-		}
-		try {
-			if (var0 != null) {
-				var0.closeSync(true);
+	@ObfuscatedName("gn")
+	@ObfuscatedSignature(descriptor = "(B)V", garbageValue = "46")
+	static final void method5161() {
+		for (PendingSpawn var0 = ((PendingSpawn) (Client.pendingSpawns.last())); var0 != null; var0 = ((PendingSpawn) (Client.pendingSpawns.previous()))) {
+			if (var0.hitpoints > 0) {
+				--var0.hitpoints;
 			}
-		} catch (Exception var2) {
+			if (var0.hitpoints == 0) {
+				if (var0.objectId < 0 || Client.method1576(var0.objectId, var0.field1119)) {
+					Frames.addPendingSpawnToScene(var0.plane, var0.type, var0.x, var0.y, var0.objectId, var0.field1118, var0.field1119);
+					var0.remove();
+				}
+			} else {
+				if (var0.delay > 0) {
+					--var0.delay;
+				}
+				if (var0.delay == 0 && var0.x >= 1 && var0.y >= 1 && var0.x <= 102 && var0.y <= 102 && (var0.id < 0 || Client.method1576(var0.id, var0.field1122))) {
+					Frames.addPendingSpawnToScene(var0.plane, var0.type, var0.x, var0.y, var0.id, var0.orientation, var0.field1122);
+					var0.delay = -1;
+					if (var0.id == var0.objectId && var0.objectId == -1) {
+						var0.remove();
+					} else if (var0.id == var0.objectId && var0.field1118 == var0.orientation && var0.field1122 == var0.field1119) {
+						var0.remove();
+					}
+				}
+			}
 		}
 	}
 }

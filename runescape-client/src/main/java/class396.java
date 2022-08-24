@@ -1,3 +1,3 @@
 import net.runelite.mapping.ObfuscatedName;
-@ObfuscatedName("op")
+@ObfuscatedName("ob")
 public interface class396 {}

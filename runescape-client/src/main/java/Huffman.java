@@ -1,19 +1,27 @@
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.Export;
-@ObfuscatedName("ja")
+@ObfuscatedName("jp")
 @Implements("Huffman")
 public class Huffman {
-	@ObfuscatedName("o")
+	@ObfuscatedName("c")
+	@ObfuscatedGetter(intValue = -409714973)
+	public static int field3288;
+
+	@ObfuscatedName("bg")
+	static String field3291;
+
+	@ObfuscatedName("s")
 	@Export("masks")
 	int[] masks;
 
-	@ObfuscatedName("q")
+	@ObfuscatedName("h")
 	@Export("bits")
 	byte[] bits;
 
-	@ObfuscatedName("f")
+	@ObfuscatedName("w")
 	@Export("keys")
 	int[] keys;
 
@@ -85,8 +93,8 @@ public class Huffman {
 		}
 	}
 
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "([BII[BIB)I", garbageValue = "-111")
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(descriptor = "([BII[BIB)I", garbageValue = "-11")
 	@Export("compress")
 	int compress(byte[] var1, int var2, int var3, byte[] var4, int var5) {
 		int var6 = 0;
@@ -101,7 +109,7 @@ public class Huffman {
 			int var11 = var7 >> 3;
 			int var12 = var7 & 7;
 			var6 &= -var12 >> 31;
-			int var13 = (var12 + var10 - 1 >> 3) + var11;
+			int var13 = (var10 + var12 - 1 >> 3) + var11;
 			var12 += 24;
 			var4[var11] = ((byte) (var6 |= var9 >>> var12));
 			if (var11 < var13) {
@@ -129,8 +137,8 @@ public class Huffman {
 		return (var7 + 7 >> 3) - var5;
 	}
 
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "([BI[BIII)I", garbageValue = "-1581076395")
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(descriptor = "([BI[BIIB)I", garbageValue = "2")
 	@Export("decompress")
 	int decompress(byte[] var1, int var2, byte[] var3, int var4, int var5) {
 		if (var5 == 0) {
@@ -244,18 +252,35 @@ public class Huffman {
 		}
 	}
 
-	@ObfuscatedName("u")
-	@ObfuscatedSignature(descriptor = "(Lqw;[II)[Ljava/lang/Object;", garbageValue = "-111213447")
-	static Object[] method5486(Buffer var0, int[] var1) {
-		int var2 = var0.readUShortSmart();
-		Object[] var3 = new Object[var1.length * var2];
-		for (int var4 = 0; var4 < var2; ++var4) {
-			for (int var5 = 0; var5 < var1.length; ++var5) {
-				int var6 = var1.length * var4 + var5;
-				class433 var7 = AbstractWorldMapIcon.method5044(var1[var5]);
-				var3[var6] = var7.method7602(var0);
+	@ObfuscatedName("s")
+	@Export("base37DecodeLong")
+	public static String base37DecodeLong(long var0) {
+		if (var0 > 0L && var0 < 6582952005840035281L) {
+			if (var0 % 37L == 0L) {
+				return null;
+			} else {
+				int var2 = 0;
+				for (long var3 = var0; 0L != var3; var3 /= 37L) {
+					++var2;
+				}
+				StringBuilder var5;
+				char var8;
+				for (var5 = new StringBuilder(var2); var0 != 0L; var5.append(var8)) {
+					long var6 = var0;
+					var0 /= 37L;
+					var8 = class345.base37Table[((int) (var6 - var0 * 37L))];
+					if (var8 == '_') {
+						int var9 = var5.length() - 1;
+						var5.setCharAt(var9, Character.toUpperCase(var5.charAt(var9)));
+						var8 = 160;
+					}
+				}
+				var5.reverse();
+				var5.setCharAt(0, Character.toUpperCase(var5.charAt(0)));
+				return var5.toString();
 			}
+		} else {
+			return null;
 		}
-		return var3;
 	}
 }

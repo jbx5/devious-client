@@ -2,44 +2,43 @@ import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.Implements;
-import net.runelite.rs.ScriptOpcodes;
 import net.runelite.mapping.Export;
-@ObfuscatedName("fp")
+@ObfuscatedName("fw")
 @Implements("VarpDefinition")
 public class VarpDefinition extends DualNode {
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "Llc;")
+	@ObfuscatedName("tf")
+	@ObfuscatedGetter(intValue = -1358941939)
+	static int field1805;
+
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(descriptor = "Lls;")
 	@Export("VarpDefinition_archive")
 	static AbstractArchive VarpDefinition_archive;
 
-	@ObfuscatedName("q")
-	@ObfuscatedGetter(intValue = -774409533)
-	public static int field1811;
+	@ObfuscatedName("h")
+	@ObfuscatedGetter(intValue = -1767580571)
+	public static int field1809;
 
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "Lia;")
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(descriptor = "Liz;")
 	@Export("VarpDefinition_cached")
-	static EvictingDualNodeHashTable VarpDefinition_cached = new EvictingDualNodeHashTable(64);
+	public static EvictingDualNodeHashTable VarpDefinition_cached = new EvictingDualNodeHashTable(64);
 
-	@ObfuscatedName("k")
-	@ObfuscatedGetter(intValue = 894414077)
-	static int field1813;
+	@ObfuscatedName("ip")
+	@ObfuscatedSignature(descriptor = "[Lqe;")
+	@Export("modIconSprites")
+	static IndexedSprite[] modIconSprites;
 
-	@ObfuscatedName("gg")
-	@ObfuscatedSignature(descriptor = "Lfz;")
-	@Export("socketTask")
-	static Task socketTask;
-
-	@ObfuscatedName("u")
-	@ObfuscatedGetter(intValue = 1739289855)
+	@ObfuscatedName("v")
+	@ObfuscatedGetter(intValue = -953256093)
 	@Export("type")
 	public int type = 0;
 
 	VarpDefinition() {
 	}
 
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "(Lqw;I)V", garbageValue = "1033626215")
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(descriptor = "(Lqr;I)V", garbageValue = "1926258442")
 	@Export("decode")
 	void decode(Buffer var1) {
 		while (true) {
@@ -51,8 +50,8 @@ public class VarpDefinition extends DualNode {
 		} 
 	}
 
-	@ObfuscatedName("u")
-	@ObfuscatedSignature(descriptor = "(Lqw;IB)V", garbageValue = "-67")
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(descriptor = "(Lqr;IB)V", garbageValue = "-21")
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
 		if (var2 == 5) {
@@ -60,36 +59,15 @@ public class VarpDefinition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("w")
-	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "1994115349")
-	public static void method3352() {
+	@ObfuscatedName("q")
+	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "284353290")
+	public static void method3288() {
 		FloorOverlayDefinition.FloorOverlayDefinition_cached.clear();
 	}
 
-	@ObfuscatedName("x")
-	@ObfuscatedSignature(descriptor = "(ILbc;ZI)I", garbageValue = "1253760177")
-	static int method3351(int var0, Script var1, boolean var2) {
-		Widget var3 = (var2) ? VertexNormal.scriptDotWidget : class321.scriptActiveWidget;
-		if (var0 == ScriptOpcodes.CC_GETX) {
-			Interpreter.Interpreter_intStack[++TaskHandler.Interpreter_intStackSize - 1] = var3.x;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_GETY) {
-			Interpreter.Interpreter_intStack[++TaskHandler.Interpreter_intStackSize - 1] = var3.y;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_GETWIDTH) {
-			Interpreter.Interpreter_intStack[++TaskHandler.Interpreter_intStackSize - 1] = var3.width;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_GETHEIGHT) {
-			Interpreter.Interpreter_intStack[++TaskHandler.Interpreter_intStackSize - 1] = var3.height;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_GETHIDE) {
-			Interpreter.Interpreter_intStack[++TaskHandler.Interpreter_intStackSize - 1] = (var3.isHidden) ? 1 : 0;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_GETLAYER) {
-			Interpreter.Interpreter_intStack[++TaskHandler.Interpreter_intStackSize - 1] = var3.parentId;
-			return 1;
-		} else {
-			return 2;
-		}
+	@ObfuscatedName("d")
+	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "-252579017")
+	public static void method3284() {
+		PlayerComposition.PlayerAppearance_cachedModels.clear();
 	}
 }
