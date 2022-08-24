@@ -11,7 +11,7 @@ public class Decimator {
 	static Archive field403;
 
 	@ObfuscatedName("hu")
-	@ObfuscatedGetter(intValue = 670397992)
+	@ObfuscatedGetter(intValue = 620670661)
 	@Export("baseX")
 	static int baseX;
 

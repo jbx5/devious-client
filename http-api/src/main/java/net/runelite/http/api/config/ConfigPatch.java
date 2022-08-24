@@ -1,5 +1,4 @@
 /*
- * Copyright (c) 2017, Tyler <https://github.com/tylerthardy>
  * Copyright (c) 2022, Adam <Adam@sigterm.info>
  * All rights reserved.
  *
@@ -23,45 +22,18 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.client.plugins.runepouch;
+package net.runelite.http.api.config;
 
-import java.awt.Color;
-import net.runelite.client.config.Config;
-import net.runelite.client.config.ConfigGroup;
-import net.runelite.client.config.ConfigItem;
+import lombok.Data;
 
-@ConfigGroup("runepouch")
-public interface RunepouchConfig extends Config
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
+@Data
+public class ConfigPatch
 {
-	enum RunepouchOverlayMode
-	{
-		// only show item overlay
-		INVENTORY,
-		// only show tooltip
-		MOUSE_HOVER,
-		// show both tooltip and item overlay
-		BOTH
-	}
-
-	@ConfigItem(
-		keyName = "fontcolor",
-		name = "Font Color",
-		description = "Color of the font for the number of runes in pouch",
-		position = 1
-	)
-	default Color fontColor()
-	{
-		return Color.yellow;
-	}
-
-	@ConfigItem(
-		keyName = "runePouchOverlayMode",
-		name = "Display mode",
-		description = "Configures where rune pouch overlay is displayed",
-		position = 3
-	)
-	default RunepouchOverlayMode runePouchOverlayMode()
-	{
-		return RunepouchOverlayMode.BOTH;
-	}
+	Map<String, String> edit = new HashMap<>();
+	Set<String> unset = new HashSet<>();
 }
