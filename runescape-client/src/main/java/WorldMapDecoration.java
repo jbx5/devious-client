@@ -3,25 +3,21 @@ import net.runelite.mapping.ObfuscatedSignature;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.Export;
-@ObfuscatedName("ik")
+@ObfuscatedName("if")
 @Implements("WorldMapDecoration")
 public class WorldMapDecoration {
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(descriptor = "Lez;")
-	static ClanSettings field2816;
-
-	@ObfuscatedName("o")
-	@ObfuscatedGetter(intValue = -831845423)
+	@ObfuscatedName("s")
+	@ObfuscatedGetter(intValue = 1371988127)
 	@Export("objectDefinitionId")
 	final int objectDefinitionId;
 
-	@ObfuscatedName("q")
-	@ObfuscatedGetter(intValue = 2055574461)
+	@ObfuscatedName("h")
+	@ObfuscatedGetter(intValue = -761624157)
 	@Export("decoration")
 	final int decoration;
 
-	@ObfuscatedName("f")
-	@ObfuscatedGetter(intValue = -1905026631)
+	@ObfuscatedName("w")
+	@ObfuscatedGetter(intValue = -863337605)
 	@Export("rotation")
 	final int rotation;
 
@@ -31,45 +27,26 @@ public class WorldMapDecoration {
 		this.rotation = var3;
 	}
 
-	@ObfuscatedName("o")
-	public static final void method4967(long var0) {
-		if (var0 > 0L) {
-			if (var0 % 10L == 0L) {
-				Frames.method4305(var0 - 1L);
-				Frames.method4305(1L);
-			} else {
-				Frames.method4305(var0);
-			}
-		}
-	}
-
 	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "(II)Lgx;", garbageValue = "2023361213")
-	@Export("getObjectDefinition")
-	public static ObjectComposition getObjectDefinition(int var0) {
-		ObjectComposition var1 = ((ObjectComposition) (ObjectComposition.ObjectDefinition_cached.get(((long) (var0)))));
-		if (var1 != null) {
-			return var1;
-		} else {
-			byte[] var2 = ObjectComposition.ObjectDefinition_archive.takeFile(6, var0);
-			var1 = new ObjectComposition();
-			var1.id = var0;
-			if (var2 != null) {
-				var1.decode(new Buffer(var2));
-			}
-			var1.postDecode();
-			if (var1.isSolid) {
-				var1.interactType = 0;
-				var1.boolean1 = false;
-			}
-			ObjectComposition.ObjectDefinition_cached.put(var1, ((long) (var0)));
-			return var1;
-		}
+	@ObfuscatedSignature(descriptor = "(II)I", garbageValue = "-1361182691")
+	public static int method4914(int var0) {
+		--var0;
+		var0 |= var0 >>> 1;
+		var0 |= var0 >>> 2;
+		var0 |= var0 >>> 4;
+		var0 |= var0 >>> 8;
+		var0 |= var0 >>> 16;
+		return var0 + 1;
 	}
 
-	@ObfuscatedName("u")
-	@ObfuscatedSignature(descriptor = "(II)I", garbageValue = "-1086866361")
-	public static int method4969(int var0) {
-		return class402.field4458[var0 & 16383];
+	@ObfuscatedName("kv")
+	@ObfuscatedSignature(descriptor = "(Lkn;B)Ljava/lang/String;", garbageValue = "87")
+	@Export("Widget_getSpellActionName")
+	static String Widget_getSpellActionName(Widget var0) {
+		if (ModeWhere.Widget_unpackTargetMask(class193.getWidgetFlags(var0)) == 0) {
+			return null;
+		} else {
+			return var0.spellActionName != null && var0.spellActionName.trim().length() != 0 ? var0.spellActionName : null;
+		}
 	}
 }

@@ -3,40 +3,40 @@ import net.runelite.mapping.ObfuscatedSignature;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.Export;
-@ObfuscatedName("kz")
+@ObfuscatedName("kp")
 @Implements("StudioGame")
 public enum StudioGame implements MouseWheel {
 
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "Lkz;")
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(descriptor = "Lkp;")
 	@Export("runescape")
 	runescape("runescape", "RuneScape", 0),
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "Lkz;")
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(descriptor = "Lkp;")
 	@Export("stellardawn")
 	stellardawn("stellardawn", "Stellar Dawn", 1),
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "Lkz;")
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(descriptor = "Lkp;")
 	@Export("game3")
 	game3("game3", "Game 3", 2),
-	@ObfuscatedName("u")
-	@ObfuscatedSignature(descriptor = "Lkz;")
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(descriptor = "Lkp;")
 	@Export("game4")
 	game4("game4", "Game 4", 3),
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "Lkz;")
+	@ObfuscatedSignature(descriptor = "Lkp;")
 	@Export("game5")
 	game5("game5", "Game 5", 4),
-	@ObfuscatedName("w")
-	@ObfuscatedSignature(descriptor = "Lkz;")
+	@ObfuscatedName("q")
+	@ObfuscatedSignature(descriptor = "Lkp;")
 	@Export("oldscape")
 	oldscape("oldscape", "RuneScape 2007", 5);
-	@ObfuscatedName("z")
+	@ObfuscatedName("i")
 	@Export("name")
 	public final String name;
 
-	@ObfuscatedName("j")
-	@ObfuscatedGetter(intValue = 344312613)
+	@ObfuscatedName("k")
+	@ObfuscatedGetter(intValue = -516259997)
 	@Export("id")
 	final int id;
 
@@ -45,50 +45,60 @@ public enum StudioGame implements MouseWheel {
 		this.id = var5;
 	}
 
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "(I)I", garbageValue = "1790946346")
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(descriptor = "(B)I", garbageValue = "104")
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.id;
 	}
 
-	@ObfuscatedName("u")
-	@ObfuscatedSignature(descriptor = "([BI)V", garbageValue = "886664804")
-	@Export("ByteArrayPool_release")
-	public static synchronized void ByteArrayPool_release(byte[] var0) {
-		if (var0.length == 100 && ByteArrayPool.ByteArrayPool_smallCount < ByteArrayPool.field4231) {
-			ByteArrayPool.ByteArrayPool_small[++ByteArrayPool.ByteArrayPool_smallCount - 1] = var0;
-		} else if (var0.length == 5000 && ByteArrayPool.ByteArrayPool_mediumCount < ByteArrayPool.field4232) {
-			ByteArrayPool.ByteArrayPool_medium[++ByteArrayPool.ByteArrayPool_mediumCount - 1] = var0;
-		} else if (var0.length == 10000 && ByteArrayPool.ByteArrayPool_largeCount < ByteArrayPool.field4234) {
-			ByteArrayPool.ByteArrayPool_large[++ByteArrayPool.ByteArrayPool_largeCount - 1] = var0;
-		} else if (var0.length == 30000 && ByteArrayPool.field4233 < ByteArrayPool.field4238) {
-			ByteArrayPool.field4224[++ByteArrayPool.field4233 - 1] = var0;
-		} else if (ModeWhere.ByteArrayPool_arrays != null) {
-			for (int var1 = 0; var1 < WorldMapSectionType.ByteArrayPool_alternativeSizes.length; ++var1) {
-				if (var0.length == WorldMapSectionType.ByteArrayPool_alternativeSizes[var1] && Frames.ByteArrayPool_altSizeArrayCounts[var1] < ModeWhere.ByteArrayPool_arrays[var1].length) {
-					ModeWhere.ByteArrayPool_arrays[var1][Frames.ByteArrayPool_altSizeArrayCounts[var1]++] = var0;
-					return;
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(descriptor = "(Lln;IIIBZI)V", garbageValue = "-416470101")
+	@Export("requestNetFile")
+	static void requestNetFile(Archive var0, int var1, int var2, int var3, byte var4, boolean var5) {
+		long var6 = ((long) ((var1 << 16) + var2));
+		NetFileRequest var8 = ((NetFileRequest) (NetCache.NetCache_pendingPriorityWrites.get(var6)));
+		if (var8 == null) {
+			var8 = ((NetFileRequest) (NetCache.NetCache_pendingPriorityResponses.get(var6)));
+			if (var8 == null) {
+				var8 = ((NetFileRequest) (NetCache.NetCache_pendingWrites.get(var6)));
+				if (var8 != null) {
+					if (var5) {
+						var8.removeDual();
+						NetCache.NetCache_pendingPriorityWrites.put(var8, var6);
+						--NetCache.NetCache_pendingWritesCount;
+						++NetCache.NetCache_pendingPriorityWritesCount;
+					}
+				} else {
+					if (!var5) {
+						var8 = ((NetFileRequest) (NetCache.NetCache_pendingResponses.get(var6)));
+						if (var8 != null) {
+							return;
+						}
+					}
+					var8 = new NetFileRequest();
+					var8.archive = var0;
+					var8.crc = var3;
+					var8.padding = var4;
+					if (var5) {
+						NetCache.NetCache_pendingPriorityWrites.put(var8, var6);
+						++NetCache.NetCache_pendingPriorityWritesCount;
+					} else {
+						NetCache.NetCache_pendingWritesQueue.addFirst(var8);
+						NetCache.NetCache_pendingWrites.put(var8, var6);
+						++NetCache.NetCache_pendingWritesCount;
+					}
 				}
 			}
 		}
 	}
 
-	@ObfuscatedName("hi")
-	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "-1717154967")
-	static final void method5763() {
-		for (GraphicsObject var0 = ((GraphicsObject) (Client.graphicsObjects.last())); var0 != null; var0 = ((GraphicsObject) (Client.graphicsObjects.previous()))) {
-			if (var0.plane == FriendSystem.Client_plane && !var0.isFinished) {
-				if (Client.cycle >= var0.cycleStart) {
-					var0.advance(Client.field744);
-					if (var0.isFinished) {
-						var0.remove();
-					} else {
-						Decimator.scene.drawEntity(var0.plane, var0.x, var0.y, var0.z, 60, var0, 0, -1L, false);
-					}
-				}
-			} else {
-				var0.remove();
+	@ObfuscatedName("ki")
+	@ObfuscatedSignature(descriptor = "(II)V", garbageValue = "2087155591")
+	static void method5676(int var0) {
+		for (IntegerNode var1 = ((IntegerNode) (Client.widgetFlags.first())); var1 != null; var1 = ((IntegerNode) (Client.widgetFlags.next()))) {
+			if (((long) (var0)) == (var1.key >> 48 & 65535L)) {
+				var1.remove();
 			}
 		}
 	}

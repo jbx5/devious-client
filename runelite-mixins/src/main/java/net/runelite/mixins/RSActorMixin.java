@@ -317,7 +317,7 @@ public abstract class RSActorMixin implements RSActor
 	@MethodHook(value = "addHitSplat", end = true)
 	public void applyActorHitsplat(int type, int value, int var3, int var4, int gameCycle, int duration)
 	{
-		final Hitsplat hitsplat = new Hitsplat(Hitsplat.HitsplatType.fromInteger(type), value, gameCycle + duration);
+		final Hitsplat hitsplat = new Hitsplat(type, value, gameCycle + duration);
 		final HitsplatApplied event = new HitsplatApplied();
 		event.setActor(this);
 		event.setHitsplat(hitsplat);

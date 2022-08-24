@@ -1,11 +1,13 @@
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 import net.runelite.mapping.Implements;
+import java.io.IOException;
+import java.net.Socket;
 import net.runelite.mapping.Export;
-@ObfuscatedName("dh")
+@ObfuscatedName("dw")
 @Implements("UserComparator5")
 public class UserComparator5 extends AbstractUserComparator {
-	@ObfuscatedName("o")
+	@ObfuscatedName("s")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -13,8 +15,8 @@ public class UserComparator5 extends AbstractUserComparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "(Lnh;Lnh;I)I", garbageValue = "467771479")
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(descriptor = "(Lnt;Lnt;I)I", garbageValue = "1249191377")
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
 		if (var1.world != 0) {
@@ -29,5 +31,11 @@ public class UserComparator5 extends AbstractUserComparator {
 
 	public int compare(Object var1, Object var2) {
 		return this.compareBuddy(((Buddy) (var1)), ((Buddy) (var2)));
+	}
+
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(descriptor = "(Ljava/net/Socket;IIB)Lnc;", garbageValue = "-108")
+	public static AbstractSocket method2571(Socket var0, int var1, int var2) throws IOException {
+		return new BufferedNetSocket(var0, var1, var2);
 	}
 }

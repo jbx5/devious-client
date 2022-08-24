@@ -2,38 +2,42 @@ import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.Export;
-@ObfuscatedName("ok")
+@ObfuscatedName("op")
 public enum class391 implements MouseWheel {
 
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "Lok;")
-	field4433(2, 1),
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "Lok;")
-	field4428(3, 2),
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "Lok;")
-	field4430(1, 3),
-	@ObfuscatedName("u")
-	@ObfuscatedSignature(descriptor = "Lok;")
-	field4431(0, 10);
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(intValue = -954542115)
-	final int field4432;
-
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(descriptor = "Lop;")
+	field4428(0, 1),
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(descriptor = "Lop;")
+	field4422(2, 2),
 	@ObfuscatedName("w")
-	@ObfuscatedGetter(intValue = -331698987)
-	final int field4429;
+	@ObfuscatedSignature(descriptor = "Lop;")
+	field4423(3, 3),
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(descriptor = "Lop;")
+	field4421(1, 10);
+	@ObfuscatedName("ah")
+	@Export("hasFocus")
+	protected static boolean hasFocus;
+
+	@ObfuscatedName("c")
+	@ObfuscatedGetter(intValue = 638529671)
+	final int field4424;
+
+	@ObfuscatedName("q")
+	@ObfuscatedGetter(intValue = -127163675)
+	final int field4426;
 
 	class391(int var3, int var4) {
-		this.field4432 = var3;
-		this.field4429 = var4;
+		this.field4424 = var3;
+		this.field4426 = var4;
 	}
 
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "(I)I", garbageValue = "1790946346")
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(descriptor = "(B)I", garbageValue = "104")
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
-		return this.field4429;
+		return this.field4426;
 	}
 }

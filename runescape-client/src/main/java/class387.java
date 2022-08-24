@@ -1,80 +1,99 @@
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 import net.runelite.mapping.ObfuscatedGetter;
-@ObfuscatedName("no")
+@ObfuscatedName("ni")
 public final class class387 {
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "[Lno;")
-	static class387[] field4403 = new class387[0];
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(descriptor = "[Lni;")
+	static class387[] field4397 = new class387[0];
 
-	@ObfuscatedName("q")
-	@ObfuscatedGetter(intValue = 1215158199)
-	static int field4402;
+	@ObfuscatedName("h")
+	@ObfuscatedGetter(intValue = 880421731)
+	static int field4391 = 100;
 
-	@ObfuscatedName("u")
-	float field4405;
+	@ObfuscatedName("v")
+	@ObfuscatedGetter(intValue = 360696249)
+	static int field4392;
 
 	@ObfuscatedName("c")
-	float field4404;
+	float field4393;
 
-	@ObfuscatedName("z")
-	float field4406;
+	@ObfuscatedName("q")
+	float field4395;
 
-	@ObfuscatedName("j")
-	float field4401;
+	@ObfuscatedName("i")
+	float field4394;
+
+	@ObfuscatedName("k")
+	float field4396;
 
 	static {
-		class362.method6603(100);
+		field4397 = new class387[100];
+		field4392 = 0;
 		new class387();
 	}
 
 	class387() {
-		this.method6974();
+		this.method6891();
 	}
 
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "(B)V", garbageValue = "-4")
-	public void method6987() {
-		synchronized(field4403) {
-			if (class126.field1537 < field4402 - 1) {
-				field4403[++class126.field1537 - 1] = this;
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(descriptor = "(B)V", garbageValue = "-40")
+	public void method6881() {
+		synchronized(field4397) {
+			if (field4392 < field4391 - 1) {
+				field4397[++field4392 - 1] = this;
 			}
 		}
 	}
 
-	@ObfuscatedName("u")
-	@ObfuscatedSignature(descriptor = "(FFFFI)V", garbageValue = "1337450325")
-	void method6978(float var1, float var2, float var3, float var4) {
-		this.field4405 = var1;
-		this.field4404 = var2;
-		this.field4401 = var3;
-		this.field4406 = var4;
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(descriptor = "(FFFFB)V", garbageValue = "52")
+	void method6886(float var1, float var2, float var3, float var4) {
+		this.field4393 = var1;
+		this.field4395 = var2;
+		this.field4394 = var3;
+		this.field4396 = var4;
+	}
+
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(descriptor = "(FFFFI)V", garbageValue = "-2087766706")
+	public void method6883(float var1, float var2, float var3, float var4) {
+		float var5 = ((float) (Math.sin(((double) (0.5F * var4)))));
+		float var6 = ((float) (Math.cos(((double) (0.5F * var4)))));
+		this.field4393 = var5 * var1;
+		this.field4395 = var5 * var2;
+		this.field4394 = var3 * var5;
+		this.field4396 = var6;
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(FFFFB)V", garbageValue = "-88")
-	public void method6973(float var1, float var2, float var3, float var4) {
-		float var5 = ((float) (Math.sin(((double) (var4 * 0.5F)))));
-		float var6 = ((float) (Math.cos(((double) (var4 * 0.5F)))));
-		this.field4405 = var5 * var1;
-		this.field4404 = var2 * var5;
-		this.field4401 = var5 * var3;
-		this.field4406 = var6;
+	@ObfuscatedSignature(descriptor = "(S)V", garbageValue = "1536")
+	final void method6891() {
+		this.field4394 = 0.0F;
+		this.field4395 = 0.0F;
+		this.field4393 = 0.0F;
+		this.field4396 = 1.0F;
 	}
 
-	@ObfuscatedName("w")
-	@ObfuscatedSignature(descriptor = "(S)V", garbageValue = "-23299")
-	final void method6974() {
-		this.field4401 = 0.0F;
-		this.field4404 = 0.0F;
-		this.field4405 = 0.0F;
-		this.field4406 = 1.0F;
+	@ObfuscatedName("q")
+	@ObfuscatedSignature(descriptor = "(Lni;I)V", garbageValue = "-1080183652")
+	public final void method6885(class387 var1) {
+		this.method6886(this.field4393 * var1.field4396 + this.field4396 * var1.field4393 + var1.field4395 * this.field4394 - this.field4395 * var1.field4394, var1.field4394 * this.field4393 + var1.field4395 * this.field4396 + (this.field4395 * var1.field4396 - var1.field4393 * this.field4394), var1.field4394 * this.field4396 + (this.field4394 * var1.field4396 + var1.field4393 * this.field4395 - var1.field4395 * this.field4393), var1.field4396 * this.field4396 - this.field4393 * var1.field4393 - var1.field4395 * this.field4395 - var1.field4394 * this.field4394);
 	}
 
-	@ObfuscatedName("z")
-	@ObfuscatedSignature(descriptor = "(Lno;S)V", garbageValue = "10588")
-	public final void method6970(class387 var1) {
-		this.method6978(var1.field4405 * this.field4406 + var1.field4406 * this.field4405 + var1.field4404 * this.field4401 - var1.field4401 * this.field4404, var1.field4401 * this.field4405 + this.field4406 * var1.field4404 + (this.field4404 * var1.field4406 - this.field4401 * var1.field4405), var1.field4405 * this.field4404 + var1.field4406 * this.field4401 - this.field4405 * var1.field4404 + var1.field4401 * this.field4406, var1.field4406 * this.field4406 - var1.field4405 * this.field4405 - this.field4404 * var1.field4404 - var1.field4401 * this.field4401);
+	public int hashCode() {
+		boolean var1 = true;
+		float var2 = 1.0F;
+		var2 = this.field4393 + 31.0F * var2;
+		var2 = 31.0F * var2 + this.field4395;
+		var2 = this.field4394 + 31.0F * var2;
+		var2 = this.field4396 + var2 * 31.0F;
+		return ((int) (var2));
+	}
+
+	public String toString() {
+		return this.field4393 + "," + this.field4395 + "," + this.field4394 + "," + this.field4396;
 	}
 
 	public boolean equals(Object var1) {
@@ -82,38 +101,7 @@ public final class class387 {
 			return false;
 		} else {
 			class387 var2 = ((class387) (var1));
-			return this.field4405 == var2.field4405 && this.field4404 == var2.field4404 && var2.field4401 == this.field4401 && var2.field4406 == this.field4406;
-		}
-	}
-
-	public String toString() {
-		return this.field4405 + "," + this.field4404 + "," + this.field4401 + "," + this.field4406;
-	}
-
-	public int hashCode() {
-		boolean var1 = true;
-		float var2 = 1.0F;
-		var2 = var2 * 31.0F + this.field4405;
-		var2 = this.field4404 + var2 * 31.0F;
-		var2 = 31.0F * var2 + this.field4401;
-		var2 = 31.0F * var2 + this.field4406;
-		return ((int) (var2));
-	}
-
-	@ObfuscatedName("bv")
-	@ObfuscatedSignature(descriptor = "(Lpy;B)Ljava/lang/Object;", garbageValue = "79")
-	static Object method6998(class433 var0) {
-		if (var0 == null) {
-			throw new IllegalStateException("popValueOfType() failure - null baseVarType");
-		} else {
-			switch (var0.field4670) {
-				case 1 :
-					return Interpreter.Interpreter_intStack[--TaskHandler.Interpreter_intStackSize];
-				case 2 :
-					return Interpreter.Interpreter_stringStack[--GrandExchangeOfferAgeComparator.Interpreter_stringStackSize];
-				default :
-					throw new IllegalStateException("popValueOfType() failure - unsupported type");
-			}
+			return var2.field4393 == this.field4393 && var2.field4395 == this.field4395 && this.field4394 == var2.field4394 && var2.field4396 == this.field4396;
 		}
 	}
 }

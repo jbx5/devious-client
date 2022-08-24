@@ -1,54 +1,72 @@
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.Export;
-@ObfuscatedName("fb")
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+@ObfuscatedName("fp")
 public class class162 extends class165 {
-	@ObfuscatedName("bd")
-	@ObfuscatedSignature(descriptor = "Lpa;")
-	@Export("loginType")
-	static LoginType loginType;
+	@ObfuscatedName("s")
+	@ObfuscatedGetter(intValue = -1686330275)
+	int field1762;
 
-	@ObfuscatedName("o")
-	@ObfuscatedGetter(intValue = 1315372909)
-	int field1769;
-
-	@ObfuscatedSignature(descriptor = "Lef;")
+	@ObfuscatedSignature(descriptor = "Leu;")
 	final class155 this$0;
 
-	@ObfuscatedSignature(descriptor = "(Lef;Ljava/lang/String;I)V")
+	@ObfuscatedSignature(descriptor = "(Leu;Ljava/lang/String;I)V")
 	class162(class155 var1, String var2, int var3) {
 		super(var1, var2);
 		this.this$0 = var1;
-		this.field1769 = var3;
+		this.field1762 = var3;
 	}
 
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "(B)I", garbageValue = "28")
-	public int vmethod3296() {
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(descriptor = "(I)I", garbageValue = "-2051475580")
+	public int vmethod3237() {
 		return 0;
 	}
 
-	@ObfuscatedName("j")
-	@ObfuscatedSignature(descriptor = "(B)I", garbageValue = "-116")
-	public int vmethod3298() {
-		return this.field1769;
+	@ObfuscatedName("d")
+	@ObfuscatedSignature(descriptor = "(I)I", garbageValue = "1570944667")
+	public int vmethod3239() {
+		return this.field1762;
 	}
 
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "(Llc;I)V", garbageValue = "1909536168")
-	public static void method3284(AbstractArchive var0) {
-		InvDefinition.InvDefinition_archive = var0;
-	}
-
-	@ObfuscatedName("hl")
-	@ObfuscatedSignature(descriptor = "(B)I", garbageValue = "43")
-	static final int method3283() {
-		if (class260.clientPreferences.method2312()) {
-			return FriendSystem.Client_plane;
+	@ObfuscatedName("t")
+	@ObfuscatedSignature(descriptor = "(Lfu;IIB)Laf;", garbageValue = "0")
+	public static final PcmPlayer method3227(TaskHandler var0, int var1, int var2) {
+		if (class344.field4152 * -449918071 == 0) {
+			throw new IllegalStateException();
+		} else if (var1 >= 0 && var1 < 2) {
+			if (var2 < 256) {
+				var2 = 256;
+			}
+			try {
+				PcmPlayer var3 = GrandExchangeOfferTotalQuantityComparator.pcmPlayerProvider.player();
+				var3.samples = new int[256 * (PcmPlayer.PcmPlayer_stereo ? 2 : 1)];
+				var3.field300 = var2;
+				var3.init();
+				var3.capacity = (var2 & -1024) + 1024;
+				if (var3.capacity > 16384) {
+					var3.capacity = 16384;
+				}
+				var3.open(var3.capacity);
+				if (PcmPlayer.field279 > 0 && TaskHandler.soundSystem == null) {
+					TaskHandler.soundSystem = new SoundSystem();
+					PcmPlayer.soundSystemExecutor = Executors.newScheduledThreadPool(1);
+					PcmPlayer.soundSystemExecutor.scheduleAtFixedRate(TaskHandler.soundSystem, 0L, 10L, TimeUnit.MILLISECONDS);
+				}
+				if (TaskHandler.soundSystem != null) {
+					if (TaskHandler.soundSystem.players[var1] != null) {
+						throw new IllegalArgumentException();
+					}
+					TaskHandler.soundSystem.players[var1] = var3;
+				}
+				return var3;
+			} catch (Throwable var4) {
+				return new PcmPlayer();
+			}
 		} else {
-			int var0 = SecureRandomFuture.getTileHeight(WorldMapLabelSize.cameraX, Widget.cameraZ, FriendSystem.Client_plane);
-			return var0 - class123.cameraY < 800 && (Tiles.Tiles_renderFlags[FriendSystem.Client_plane][WorldMapLabelSize.cameraX >> 7][Widget.cameraZ >> 7] & 4) != 0 ? FriendSystem.Client_plane : 3;
+			throw new IllegalArgumentException();
 		}
 	}
 }

@@ -3,29 +3,32 @@ import net.runelite.mapping.ObfuscatedSignature;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.Export;
-@ObfuscatedName("fa")
+@ObfuscatedName("fn")
 @Implements("EnumComposition")
 public class EnumComposition extends DualNode {
-	@ObfuscatedName("ua")
-	@ObfuscatedSignature(descriptor = "Lng;")
-	@Export("masterDisk")
-	static ArchiveDisk masterDisk;
-
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "Llc;")
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(descriptor = "Lls;")
 	@Export("EnumDefinition_archive")
-	static AbstractArchive EnumDefinition_archive;
+	public static AbstractArchive EnumDefinition_archive;
 
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "Lia;")
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(descriptor = "Liz;")
 	@Export("EnumDefinition_cached")
 	static EvictingDualNodeHashTable EnumDefinition_cached = new EvictingDualNodeHashTable(64);
 
-	@ObfuscatedName("f")
+	@ObfuscatedName("jk")
+	@ObfuscatedGetter(intValue = 35416535)
+	static int field1891;
+
+	@ObfuscatedName("ng")
+	@ObfuscatedSignature(descriptor = "Lkn;")
+	static Widget field1890;
+
+	@ObfuscatedName("w")
 	@Export("inputType")
 	public char inputType;
 
-	@ObfuscatedName("u")
+	@ObfuscatedName("v")
 	@Export("outputType")
 	public char outputType;
 
@@ -33,33 +36,33 @@ public class EnumComposition extends DualNode {
 	@Export("defaultStr")
 	public String defaultStr = "null";
 
-	@ObfuscatedName("w")
-	@ObfuscatedGetter(intValue = -1507640233)
+	@ObfuscatedName("q")
+	@ObfuscatedGetter(intValue = -19231955)
 	@Export("defaultInt")
 	public int defaultInt;
 
-	@ObfuscatedName("z")
-	@ObfuscatedGetter(intValue = -289473215)
+	@ObfuscatedName("i")
+	@ObfuscatedGetter(intValue = -633508893)
 	@Export("outputCount")
 	public int outputCount = 0;
 
-	@ObfuscatedName("j")
+	@ObfuscatedName("k")
 	@Export("keys")
 	public int[] keys;
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("o")
 	@Export("intVals")
 	public int[] intVals;
 
-	@ObfuscatedName("a")
+	@ObfuscatedName("n")
 	@Export("strVals")
 	public String[] strVals;
 
 	EnumComposition() {
 	}
 
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "(Lqw;I)V", garbageValue = "217482290")
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(descriptor = "(Lqr;I)V", garbageValue = "-687932105")
 	@Export("decode")
 	void decode(Buffer var1) {
 		while (true) {
@@ -71,8 +74,8 @@ public class EnumComposition extends DualNode {
 		} 
 	}
 
-	@ObfuscatedName("u")
-	@ObfuscatedSignature(descriptor = "(Lqw;II)V", garbageValue = "2103700141")
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(descriptor = "(Lqr;IB)V", garbageValue = "32")
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
 		if (var2 == 1) {
@@ -105,18 +108,17 @@ public class EnumComposition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(B)I", garbageValue = "-67")
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(descriptor = "(I)I", garbageValue = "-2141311437")
 	@Export("size")
 	public int size() {
 		return this.outputCount;
 	}
 
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "(IB)V", garbageValue = "2")
-	static void method3461(int var0) {
-		IgnoreList.field4293 = var0;
-		class388.field4409 = new class388[var0];
-		class259.field2903 = 0;
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(descriptor = "(II)Lfy;", garbageValue = "1248940994")
+	@Export("WorldMapElement_get")
+	public static WorldMapElement WorldMapElement_get(int var0) {
+		return var0 >= 0 && var0 < WorldMapElement.WorldMapElement_cached.length && WorldMapElement.WorldMapElement_cached[var0] != null ? WorldMapElement.WorldMapElement_cached[var0] : new WorldMapElement(var0);
 	}
 }

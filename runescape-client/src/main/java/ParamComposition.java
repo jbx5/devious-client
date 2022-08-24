@@ -2,26 +2,27 @@ import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.Implements;
+import java.util.Iterator;
 import net.runelite.mapping.Export;
-@ObfuscatedName("gp")
+@ObfuscatedName("gw")
 @Implements("ParamComposition")
 public class ParamComposition extends DualNode {
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "Llc;")
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(descriptor = "Lls;")
 	@Export("ParamDefinition_archive")
-	static AbstractArchive ParamDefinition_archive;
+	public static AbstractArchive ParamDefinition_archive;
 
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "Lia;")
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(descriptor = "Liz;")
 	@Export("ParamDefinition_cached")
 	public static EvictingDualNodeHashTable ParamDefinition_cached = new EvictingDualNodeHashTable(64);
 
-	@ObfuscatedName("f")
+	@ObfuscatedName("w")
 	@Export("type")
 	char type;
 
-	@ObfuscatedName("u")
-	@ObfuscatedGetter(intValue = -162748113)
+	@ObfuscatedName("v")
+	@ObfuscatedGetter(intValue = -1377513159)
 	@Export("defaultInt")
 	public int defaultInt;
 
@@ -29,21 +30,21 @@ public class ParamComposition extends DualNode {
 	@Export("defaultStr")
 	public String defaultStr;
 
-	@ObfuscatedName("w")
+	@ObfuscatedName("q")
 	@Export("autoDisable")
 	boolean autoDisable = true;
 
 	ParamComposition() {
 	}
 
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "-801851410")
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(descriptor = "(B)V", garbageValue = "15")
 	@Export("postDecode")
 	void postDecode() {
 	}
 
-	@ObfuscatedName("u")
-	@ObfuscatedSignature(descriptor = "(Lqw;I)V", garbageValue = "436104445")
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(descriptor = "(Lqr;I)V", garbageValue = "1701434931")
 	@Export("decode")
 	void decode(Buffer var1) {
 		while (true) {
@@ -55,12 +56,12 @@ public class ParamComposition extends DualNode {
 		} 
 	}
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(Lqw;II)V", garbageValue = "1998774230")
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(descriptor = "(Lqr;II)V", garbageValue = "800980186")
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
 		if (var2 == 1) {
-			this.type = class101.method2633(var1.readByte());
+			this.type = UrlRequest.method2530(var1.readByte());
 		} else if (var2 == 2) {
 			this.defaultInt = var1.readInt();
 		} else if (var2 == 4) {
@@ -70,35 +71,83 @@ public class ParamComposition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("w")
-	@ObfuscatedSignature(descriptor = "(I)Z", garbageValue = "611849620")
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(descriptor = "(I)Z", garbageValue = "-2133855469")
 	@Export("isString")
 	public boolean isString() {
 		return this.type == 's';
 	}
 
-	@ObfuscatedName("js")
-	@ObfuscatedSignature(descriptor = "(Ljava/lang/String;Lku;B)Ljava/lang/String;", garbageValue = "80")
-	static String method3572(String var0, Widget var1) {
-		if (var0.indexOf("%") != -1) {
-			for (int var2 = 1; var2 <= 5; ++var2) {
-				while (true) {
-					int var3 = var0.indexOf("%" + var2);
-					if (var3 == -1) {
-						break;
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(descriptor = "(IB)Z", garbageValue = "118")
+	@Export("loadInterface")
+	public static boolean loadInterface(int var0) {
+		if (Widget.Widget_loadedInterfaces[var0]) {
+			return true;
+		} else if (!DbRowType.Widget_archive.tryLoadGroup(var0)) {
+			return false;
+		} else {
+			int var1 = DbRowType.Widget_archive.getGroupFileCount(var0);
+			if (var1 == 0) {
+				Widget.Widget_loadedInterfaces[var0] = true;
+				return true;
+			} else {
+				if (class358.Widget_interfaceComponents[var0] == null) {
+					class358.Widget_interfaceComponents[var0] = new Widget[var1];
+				}
+				for (int var2 = 0; var2 < var1; ++var2) {
+					if (class358.Widget_interfaceComponents[var0][var2] == null) {
+						byte[] var3 = DbRowType.Widget_archive.takeFile(var0, var2);
+						if (var3 != null) {
+							class358.Widget_interfaceComponents[var0][var2] = new Widget();
+							class358.Widget_interfaceComponents[var0][var2].id = var2 + (var0 << 16);
+							if (var3[0] == -1) {
+								class358.Widget_interfaceComponents[var0][var2].decode(new Buffer(var3));
+							} else {
+								class358.Widget_interfaceComponents[var0][var2].decodeLegacy(new Buffer(var3));
+							}
+						}
 					}
-					String var4 = var0.substring(0, var3);
-					int var6 = class343.method6335(var1, var2 - 1);
-					String var5;
-					if (var6 < 999999999) {
-						var5 = Integer.toString(var6);
-					} else {
-						var5 = "*";
-					}
-					var0 = var4 + var5 + var0.substring(var3 + 2);
-				} 
+				}
+				Widget.Widget_loadedInterfaces[var0] = true;
+				return true;
 			}
 		}
-		return var0;
+	}
+
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(descriptor = "(I)Z", garbageValue = "-927717931")
+	@Export("isKeyDown")
+	public static final boolean isKeyDown() {
+		synchronized(KeyHandler.KeyHandler_instance) {
+			if (KeyHandler.field139 == KeyHandler.field141) {
+				return false;
+			} else {
+				class145.field1653 = KeyHandler.field144[KeyHandler.field139];
+				BoundaryObject.field2636 = KeyHandler.field125[KeyHandler.field139];
+				KeyHandler.field139 = KeyHandler.field139 + 1 & 127;
+				return true;
+			}
+		}
+	}
+
+	@ObfuscatedName("jm")
+	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "2065757413")
+	@Export("FriendSystem_invalidateIgnoreds")
+	static final void FriendSystem_invalidateIgnoreds() {
+		Iterator var0 = Messages.Messages_hashTable.iterator();
+		while (var0.hasNext()) {
+			Message var1 = ((Message) (var0.next()));
+			var1.clearIsFromIgnored();
+		} 
+		if (class19.friendsChat != null) {
+			class19.friendsChat.invalidateIgnoreds();
+		}
+	}
+
+	@ObfuscatedName("kl")
+	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "-1050807698")
+	static final void method3508() {
+		Client.field710 = Client.cycleCntr;
 	}
 }

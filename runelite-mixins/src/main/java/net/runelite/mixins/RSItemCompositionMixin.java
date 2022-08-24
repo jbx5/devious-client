@@ -79,4 +79,11 @@ public abstract class RSItemCompositionMixin implements RSItemComposition
 		int price = getPrice();
 		return (int) ((float) price * 0.6f);
 	}
+
+	@Inject
+	@Override
+	public String getMembersName()
+	{
+		return getName();
+	}
 }

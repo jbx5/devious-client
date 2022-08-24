@@ -1,3 +1,3 @@
 import net.runelite.mapping.ObfuscatedName;
-@ObfuscatedName("db")
+@ObfuscatedName("ds")
 public interface class112 {}

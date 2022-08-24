@@ -69,7 +69,7 @@ public class PlayerPackets
 		packetBufferNode.getPacketBuffer().writeShort(sourceSlot);
 		packetBufferNode.getPacketBuffer().writeShortAddLE(playerIndex);
 		packetBufferNode.getPacketBuffer().writeShortAdd(sourceItemId);
-		packetBufferNode.getPacketBuffer().writeShortAddLE(sourceWidgetId);
+		packetBufferNode.getPacketBuffer().writeIntME(sourceWidgetId);
 		packetBufferNode.getPacketBuffer().writeByte(ctrlDown ? 1 : 0);
 		return packetBufferNode;
 	}

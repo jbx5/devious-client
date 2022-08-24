@@ -5,26 +5,26 @@ import net.runelite.mapping.Implements;
 import java.util.List;
 import java.util.HashSet;
 import net.runelite.mapping.Export;
-@ObfuscatedName("ii")
+@ObfuscatedName("ir")
 @Implements("WorldMapAreaData")
 public class WorldMapAreaData extends WorldMapArea {
-	@ObfuscatedName("x")
+	@ObfuscatedName("m")
 	@Export("worldMapData0Set")
 	HashSet worldMapData0Set;
 
-	@ObfuscatedName("g")
+	@ObfuscatedName("u")
 	@Export("worldMapData1Set")
 	HashSet worldMapData1Set;
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("l")
 	@Export("iconList")
 	List iconList;
 
 	WorldMapAreaData() {
 	}
 
-	@ObfuscatedName("by")
-	@ObfuscatedSignature(descriptor = "(Lqw;Lqw;IZI)V", garbageValue = "376337729")
+	@ObfuscatedName("bf")
+	@ObfuscatedSignature(descriptor = "(Lqr;Lqr;IZI)V", garbageValue = "255529643")
 	@Export("init")
 	void init(Buffer var1, Buffer var2, int var3, boolean var4) {
 		this.read(var1, var3);
@@ -54,8 +54,8 @@ public class WorldMapAreaData extends WorldMapArea {
 		this.initIconsList(var2, var4);
 	}
 
-	@ObfuscatedName("bh")
-	@ObfuscatedSignature(descriptor = "(Lqw;ZI)V", garbageValue = "-2030586494")
+	@ObfuscatedName("ce")
+	@ObfuscatedSignature(descriptor = "(Lqr;ZB)V", garbageValue = "-86")
 	@Export("initIconsList")
 	void initIconsList(Buffer var1, boolean var2) {
 		this.iconList = new LinkedList();

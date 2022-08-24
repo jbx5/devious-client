@@ -1,46 +1,28 @@
 import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.Export;
-@ObfuscatedName("gg")
+@ObfuscatedName("gf")
 @Implements("FaceNormal")
 public class FaceNormal {
-	@ObfuscatedName("a")
-	@ObfuscatedGetter(intValue = -1388843001)
-	@Export("pcmSampleLength")
-	public static int pcmSampleLength;
+	@ObfuscatedName("u")
+	static int[] field2453;
 
-	@ObfuscatedName("ao")
-	static String field2446;
-
-	@ObfuscatedName("o")
-	@ObfuscatedGetter(intValue = 441859475)
+	@ObfuscatedName("s")
+	@ObfuscatedGetter(intValue = -1878115833)
 	@Export("x")
 	int x;
 
-	@ObfuscatedName("q")
-	@ObfuscatedGetter(intValue = 1924986293)
+	@ObfuscatedName("h")
+	@ObfuscatedGetter(intValue = -1558170339)
 	@Export("y")
 	int y;
 
-	@ObfuscatedName("f")
-	@ObfuscatedGetter(intValue = -1485857077)
+	@ObfuscatedName("w")
+	@ObfuscatedGetter(intValue = 307646535)
 	@Export("z")
 	int z;
 
 	FaceNormal() {
-	}
-
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "(I)I", garbageValue = "1767120472")
-	static int method4303() {
-		return Login.field930.length + Login.field907.length;
-	}
-
-	@ObfuscatedName("me")
-	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "-933849045")
-	static void method4304() {
-		class260.clientPreferences.method2319(Client.field504);
 	}
 }

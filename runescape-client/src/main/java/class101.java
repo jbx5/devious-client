@@ -5,38 +5,37 @@ import java.io.IOException;
 import java.net.URLConnection;
 import javax.net.ssl.HttpsURLConnection;
 import net.runelite.mapping.Export;
-@ObfuscatedName("cm")
+@ObfuscatedName("ca")
 public class class101 extends UrlRequester {
-	@ObfuscatedName("dn")
-	@ObfuscatedSignature(descriptor = "Lnj;")
-	@Export("js5Socket")
-	static AbstractSocket js5Socket;
+	@ObfuscatedName("j")
+	@Export("BZip2Decompressor_block")
+	static int[] BZip2Decompressor_block;
 
 	@ObfuscatedName("c")
-	final boolean field1349;
+	final boolean field1350;
 
 	public class101(boolean var1, int var2) {
 		super(var2);
-		this.field1349 = var1;
+		this.field1350 = var1;
 	}
 
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "(Lcb;B)V", garbageValue = "35")
-	void vmethod2629(UrlRequest var1) throws IOException {
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(descriptor = "(Lcv;B)V", garbageValue = "38")
+	void vmethod2504(UrlRequest var1) throws IOException {
 		URLConnection var2 = null;
 		try {
 			try {
 				String var3 = var1.url.getProtocol();
 				if (var3.equals("http")) {
-					var2 = this.method2624(var1);
+					var2 = this.method2503(var1);
 				} else {
 					if (!var3.equals("https")) {
 						var1.isDone0 = true;
 						return;
 					}
-					var2 = this.method2625(var1);
+					var2 = this.method2508(var1);
 				}
-				this.method2603(var2, var1);
+				this.method2484(var2, var1);
 			} catch (IOException var7) {
 			}
 		} finally {
@@ -51,85 +50,113 @@ public class class101 extends UrlRequester {
 		}
 	}
 
-	@ObfuscatedName("l")
-	@ObfuscatedSignature(descriptor = "(Lcb;I)Ljava/net/URLConnection;", garbageValue = "2109554710")
-	URLConnection method2624(UrlRequest var1) throws IOException {
+	@ObfuscatedName("p")
+	@ObfuscatedSignature(descriptor = "(Lcv;I)Ljava/net/URLConnection;", garbageValue = "-1350563776")
+	URLConnection method2503(UrlRequest var1) throws IOException {
 		URLConnection var2 = var1.url.openConnection();
-		this.method2602(var2);
+		this.method2483(var2);
 		return var2;
 	}
 
-	@ObfuscatedName("y")
-	@ObfuscatedSignature(descriptor = "(Lcb;S)Ljava/net/URLConnection;", garbageValue = "21713")
-	URLConnection method2625(UrlRequest var1) throws IOException {
+	@ObfuscatedName("e")
+	@ObfuscatedSignature(descriptor = "(Lcv;I)Ljava/net/URLConnection;", garbageValue = "448128952")
+	URLConnection method2508(UrlRequest var1) throws IOException {
 		HttpsURLConnection var2 = ((HttpsURLConnection) (var1.url.openConnection()));
-		if (!this.field1349) {
-			var2.setSSLSocketFactory(class15.method190());
+		if (!this.field1350) {
+			var2.setSSLSocketFactory(class15.method185());
 		}
-		this.method2602(var2);
+		this.method2483(var2);
 		return var2;
 	}
 
-	@ObfuscatedName("u")
-	@ObfuscatedSignature(descriptor = "(BI)C", garbageValue = "532547773")
-	public static char method2633(byte var0) {
-		int var1 = var0 & 255;
-		if (var1 == 0) {
-			throw new IllegalArgumentException("" + Integer.toString(var1, 16));
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(descriptor = "(IB)Lpr;", garbageValue = "-41")
+	@Export("getDbRowType")
+	public static DbRowType getDbRowType(int var0) {
+		DbRowType var1 = ((DbRowType) (DbRowType.DBRowType_cache.get(((long) (var0)))));
+		if (var1 != null) {
+			return var1;
 		} else {
-			if (var1 >= 128 && var1 < 160) {
-				char var2 = class341.cp1252AsciiExtension[var1 - 128];
-				if (var2 == 0) {
-					var2 = '?';
-				}
-				var1 = var2;
+			byte[] var2 = DbRowType.field4678.takeFile(38, var0);
+			var1 = new DbRowType();
+			if (var2 != null) {
+				var1.method7542(new Buffer(var2));
 			}
-			return ((char) (var1));
+			var1.method7549();
+			DbRowType.DBRowType_cache.put(var1, ((long) (var0)));
+			return var1;
 		}
 	}
 
-	@ObfuscatedName("ge")
-	@ObfuscatedSignature(descriptor = "(Lku;III)V", garbageValue = "1606047506")
-	@Export("checkIfMinimapClicked")
-	static final void checkIfMinimapClicked(Widget var0, int var1, int var2) {
-		if (Client.minimapState == 0 || Client.minimapState == 3) {
-			if (!Client.isMenuOpen && (MouseHandler.MouseHandler_lastButton == 1 || !ObjectSound.mouseCam && MouseHandler.MouseHandler_lastButton == 4)) {
-				SpriteMask var3 = var0.getSpriteMask(true);
-				if (var3 == null) {
-					return;
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "1809132353")
+	public static void method2502() {
+		VarbitComposition.VarbitDefinition_cached.clear();
+	}
+
+	@ObfuscatedName("an")
+	@ObfuscatedSignature(descriptor = "(ILbz;ZB)I", garbageValue = "8")
+	static int method2514(int var0, Script var1, boolean var2) {
+		if (var0 != 6700 && var0 != 6702 && var0 != 6704 && var0 != 6706 && var0 != 6708) {
+			if (var0 != 6701 && var0 != 6703 && var0 != 6705 && var0 != 6707 && var0 != 6709) {
+				if (var0 == 6750) {
+					Interpreter.Interpreter_stringStack[++UserComparator8.Interpreter_stringStackSize - 1] = "";
+					return 1;
+				} else if (var0 != 6751 && var0 != 6752 && var0 != 6753) {
+					if (var0 == 6754) {
+						int var3 = Interpreter.Interpreter_intStack[--User.Interpreter_intStackSize];
+						NPCComposition var4 = class119.getNpcDefinition(var3);
+						Interpreter.Interpreter_stringStack[++UserComparator8.Interpreter_stringStackSize - 1] = (var4 != null) ? var4.name : "";
+						return 1;
+					} else {
+						return 2;
+					}
+				} else {
+					Interpreter.Interpreter_intStack[++User.Interpreter_intStackSize - 1] = -1;
+					return 1;
 				}
-				int var4 = MouseHandler.MouseHandler_lastPressedX - var1;
-				int var5 = MouseHandler.MouseHandler_lastPressedY - var2;
-				if (var3.contains(var4, var5)) {
-					var4 -= var3.width / 2;
-					var5 -= var3.height / 2;
-					int var6 = Client.camAngleY & 2047;
-					int var7 = Rasterizer3D.Rasterizer3D_sine[var6];
-					int var8 = Rasterizer3D.Rasterizer3D_cosine[var6];
-					int var9 = var5 * var7 + var8 * var4 >> 11;
-					int var10 = var8 * var5 - var4 * var7 >> 11;
-					int var11 = var9 + class28.localPlayer.x >> 7;
-					int var12 = class28.localPlayer.y - var10 >> 7;
-					PacketBufferNode var13 = class433.getPacketBufferNode(ClientPacket.field2995, Client.packetWriter.isaacCipher);
-					var13.packetBuffer.writeByte(18);
-					var13.packetBuffer.writeShortAddLE(Message.baseY * 64 + var12);
-					var13.packetBuffer.writeByteSub(KeyHandler.KeyHandler_pressedKeys[82] ? KeyHandler.KeyHandler_pressedKeys[81] ? 2 : 1 : 0);
-					var13.packetBuffer.writeShortAdd(class300.baseX * 8 + var11);
-					var13.packetBuffer.writeByte(var4);
-					var13.packetBuffer.writeByte(var5);
-					var13.packetBuffer.writeShort(Client.camAngleY);
-					var13.packetBuffer.writeByte(57);
-					var13.packetBuffer.writeByte(0);
-					var13.packetBuffer.writeByte(0);
-					var13.packetBuffer.writeByte(89);
-					var13.packetBuffer.writeShort(class28.localPlayer.x);
-					var13.packetBuffer.writeShort(class28.localPlayer.y);
-					var13.packetBuffer.writeByte(63);
-					Client.packetWriter.addNode(var13);
-					Client.destinationX = var11;
-					Client.destinationY = var12;
-				}
+			} else {
+				--User.Interpreter_intStackSize;
+				return 1;
+			}
+		} else {
+			User.Interpreter_intStackSize -= 2;
+			--UserComparator8.Interpreter_stringStackSize;
+			return 1;
+		}
+	}
+
+	@ObfuscatedName("he")
+	@ObfuscatedSignature(descriptor = "(III)V", garbageValue = "2027845935")
+	static void method2515(int var0, int var1) {
+		int var2 = WorldMapSection2.fontBold12.stringWidth("Choose Option");
+		int var3;
+		int var4;
+		for (var3 = 0; var3 < Client.menuOptionsCount; ++var3) {
+			var4 = WorldMapSection2.fontBold12.stringWidth(ScriptFrame.method1034(var3));
+			if (var4 > var2) {
+				var2 = var4;
 			}
 		}
+		var2 += 8;
+		var3 = Client.menuOptionsCount * 15 + 22;
+		var4 = var0 - var2 / 2;
+		if (var4 + var2 > class7.canvasWidth) {
+			var4 = class7.canvasWidth - var2;
+		}
+		if (var4 < 0) {
+			var4 = 0;
+		}
+		int var5 = var1;
+		if (var3 + var1 > WallDecoration.canvasHeight) {
+			var5 = WallDecoration.canvasHeight - var3;
+		}
+		if (var5 < 0) {
+			var5 = 0;
+		}
+		MilliClock.menuX = var4;
+		class1.menuY = var5;
+		class132.menuWidth = var2;
+		WorldMapData_0.menuHeight = Client.menuOptionsCount * 15 + 22;
 	}
 }
