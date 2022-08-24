@@ -1,11 +1,15 @@
 package net.unethicalite.api.packets;
-import net.runelite.api.packets.ClientPacket;
-import net.unethicalite.client.Static;
+
 import net.runelite.api.Client;
+import net.runelite.api.packets.ClientPacket;
 import net.runelite.api.packets.PacketBufferNode;
 import net.unethicalite.api.game.Game;
-public class DialogPackets {
-	public static void sendNumberInput(int number) {
+import net.unethicalite.client.Static;
+
+public class DialogPackets
+{
+	public static void sendNumberInput(int number)
+	{
 		Client client = Static.getClient();
 		ClientPacket clientPacket = Game.getClientPacket();
 		PacketBufferNode packetBufferNode = Static.getClient().preparePacket(clientPacket.RESUME_COUNTDIALOG(), client.getPacketWriter().getIsaacCipher());
@@ -13,7 +17,8 @@ public class DialogPackets {
 		client.getPacketWriter().queuePacket(packetBufferNode);
 	}
 
-	public static void sendNameInput(String name) {
+	public static void sendNameInput(String name)
+	{
 		Client client = Static.getClient();
 		ClientPacket clientPacket = Game.getClientPacket();
 		PacketBufferNode packetBufferNode = Static.getClient().preparePacket(clientPacket.RESUME_NAMEDIALOG(), client.getPacketWriter().getIsaacCipher());
@@ -22,7 +27,8 @@ public class DialogPackets {
 		client.getPacketWriter().queuePacket(packetBufferNode);
 	}
 
-	public static void sendTextInput(String text) {
+	public static void sendTextInput(String text)
+	{
 		Client client = Static.getClient();
 		ClientPacket clientPacket = Game.getClientPacket();
 		PacketBufferNode packetBufferNode = Static.getClient().preparePacket(clientPacket.RESUME_STRINGDIALOG(), client.getPacketWriter().getIsaacCipher());
@@ -31,7 +37,8 @@ public class DialogPackets {
 		client.getPacketWriter().queuePacket(packetBufferNode);
 	}
 
-	public static void closeInterface() {
+	public static void closeInterface()
+	{
 		Client client = Static.getClient();
 		ClientPacket clientPacket = Game.getClientPacket();
 		PacketBufferNode packetBufferNode = Static.getClient().preparePacket(clientPacket.CLOSE_MODAL(), client.getPacketWriter().getIsaacCipher());
