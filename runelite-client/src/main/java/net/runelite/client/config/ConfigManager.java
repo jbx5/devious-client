@@ -49,8 +49,7 @@ import net.runelite.client.events.RuneScapeProfileChanged;
 import net.runelite.client.plugins.OPRSExternalPluginManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.util.ColorUtil;
-import net.runelite.http.api.config.ConfigEntry;
-import net.runelite.http.api.config.Configuration;
+import net.runelite.http.api.config.ConfigPatch;
 import okhttp3.OkHttpClient;
 
 import javax.annotation.Nullable;
@@ -106,29 +105,6 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import javax.inject.Inject;
-import javax.inject.Named;
-import javax.inject.Singleton;
-import lombok.NonNull;
-import lombok.extern.slf4j.Slf4j;
-import net.runelite.api.Client;
-import net.runelite.api.Player;
-import net.runelite.api.coords.WorldPoint;
-import net.runelite.api.events.AccountHashChanged;
-import net.runelite.api.events.PlayerChanged;
-import net.runelite.api.events.UsernameChanged;
-import net.runelite.api.events.WorldChanged;
-import net.runelite.client.RuneLite;
-import net.runelite.client.account.AccountSession;
-import net.runelite.client.eventbus.EventBus;
-import net.runelite.client.eventbus.Subscribe;
-import net.runelite.client.events.ClientShutdown;
-import net.runelite.client.events.ConfigChanged;
-import net.runelite.client.events.RuneScapeProfileChanged;
-import net.runelite.client.util.ColorUtil;
-import net.runelite.http.api.config.ConfigPatch;
 
 @Singleton
 @Slf4j
