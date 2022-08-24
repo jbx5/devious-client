@@ -772,16 +772,4 @@ public class WorldArea
 		return new WorldPoint(ThreadLocalRandom.current().nextInt(x, x + width),
 				ThreadLocalRandom.current().nextInt(y, y + height), plane);
 	}
-
-	@Override
-	public String toString()
-	{
-		return "WorldArea(" +
-				"x=" + x +
-				", y=" + y +
-				", width=" + width +
-				", height=" + height +
-				", plane=" + plane +
-				')';
-	}
 }
