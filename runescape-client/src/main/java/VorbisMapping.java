@@ -1,41 +1,43 @@
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.Implements;
 import net.runelite.mapping.Export;
-@ObfuscatedName("ay")
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedName;
+
+@ObfuscatedName("aa")
 @Implements("VorbisMapping")
 public class VorbisMapping {
-	@ObfuscatedName("o")
-	@Export("submaps")
-	int submaps;
+   @ObfuscatedName("s")
+   @Export("submaps")
+   int submaps;
+   @ObfuscatedName("h")
+   @Export("mappingMux")
+   int mappingMux;
+   @ObfuscatedName("w")
+   @Export("submapFloor")
+   int[] submapFloor;
+   @ObfuscatedName("v")
+   @Export("submapResidue")
+   int[] submapResidue;
 
-	@ObfuscatedName("q")
-	@Export("mappingMux")
-	int mappingMux;
+   VorbisMapping() {
+      VorbisSample.readBits(16);
+      this.submaps = VorbisSample.readBit() != 0 ? VorbisSample.readBits(4) + 1 : 1;
+      if (VorbisSample.readBit() != 0) {
+         VorbisSample.readBits(8);
+      }
 
-	@ObfuscatedName("f")
-	@Export("submapFloor")
-	int[] submapFloor;
+      VorbisSample.readBits(2);
+      if (this.submaps > 1) {
+         this.mappingMux = VorbisSample.readBits(4);
+      }
 
-	@ObfuscatedName("u")
-	@Export("submapResidue")
-	int[] submapResidue;
+      this.submapFloor = new int[this.submaps];
+      this.submapResidue = new int[this.submaps];
 
-	VorbisMapping() {
-		VorbisSample.readBits(16);
-		this.submaps = (VorbisSample.readBit() != 0) ? VorbisSample.readBits(4) + 1 : 1;
-		if (VorbisSample.readBit() != 0) {
-			VorbisSample.readBits(8);
-		}
-		VorbisSample.readBits(2);
-		if (this.submaps > 1) {
-			this.mappingMux = VorbisSample.readBits(4);
-		}
-		this.submapFloor = new int[this.submaps];
-		this.submapResidue = new int[this.submaps];
-		for (int var1 = 0; var1 < this.submaps; ++var1) {
-			VorbisSample.readBits(8);
-			this.submapFloor[var1] = VorbisSample.readBits(8);
-			this.submapResidue[var1] = VorbisSample.readBits(8);
-		}
-	}
+      for(int var1 = 0; var1 < this.submaps; ++var1) {
+         VorbisSample.readBits(8);
+         this.submapFloor[var1] = VorbisSample.readBits(8);
+         this.submapResidue[var1] = VorbisSample.readBits(8);
+      }
+
+   }
 }

@@ -1,10 +1,11 @@
 import net.runelite.mapping.ObfuscatedName;
-@ObfuscatedName("oj")
-public class class408 extends Node {
-	@ObfuscatedName("o")
-	public long field4474;
 
-	public class408(long var1) {
-		this.field4474 = var1;
-	}
+@ObfuscatedName("oq")
+public class class408 extends Node {
+   @ObfuscatedName("s")
+   public long field4465;
+
+   public class408(long var1) {
+      this.field4465 = var1;
+   }
 }

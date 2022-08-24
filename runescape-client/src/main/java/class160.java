@@ -1,44 +1,50 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-@ObfuscatedName("fk")
+
+@ObfuscatedName("ft")
 public class class160 {
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "Lcb;")
-	public UrlRequest field1755;
+   @ObfuscatedName("n")
+   @ObfuscatedGetter(
+      intValue = -942095737
+   )
+   @Export("pcmSampleLength")
+   public static int pcmSampleLength;
+   @ObfuscatedName("y")
+   @ObfuscatedGetter(
+      intValue = 128601363
+   )
+   static int field1744;
+   @ObfuscatedName("b")
+   @ObfuscatedSignature(
+      descriptor = "Lib;"
+   )
+   @Export("worldMapEvent")
+   static WorldMapEvent worldMapEvent;
+   @ObfuscatedName("fz")
+   @ObfuscatedGetter(
+      intValue = -975943677
+   )
+   static int field1751;
+   @ObfuscatedName("s")
+   @ObfuscatedSignature(
+      descriptor = "Lcv;"
+   )
+   public UrlRequest field1749;
+   @ObfuscatedName("h")
+   public float[] field1748;
+   // $FF: synthetic field
+   @ObfuscatedSignature(
+      descriptor = "Leu;"
+   )
+   final class155 this$0;
 
-	@ObfuscatedName("q")
-	public float[] field1754;
-
-	@ObfuscatedSignature(descriptor = "Lef;")
-	final class155 this$0;
-
-	@ObfuscatedSignature(descriptor = "(Lef;)V")
-	class160(class155 var1) {
-		this.this$0 = var1;
-		this.field1754 = new float[4];
-	}
-
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "(III)I", garbageValue = "-1550492132")
-	static int method3277(int var0, int var1) {
-		if (var0 == -2) {
-			return 12345678;
-		} else if (var0 == -1) {
-			if (var1 < 0) {
-				var1 = 0;
-			} else if (var1 > 127) {
-				var1 = 127;
-			}
-			var1 = 127 - var1;
-			return var1;
-		} else {
-			var1 = (var0 & 127) * var1 / 128;
-			if (var1 < 2) {
-				var1 = 2;
-			} else if (var1 > 126) {
-				var1 = 126;
-			}
-			return (var0 & 'ﾀ') + var1;
-		}
-	}
+   @ObfuscatedSignature(
+      descriptor = "(Leu;)V"
+   )
+   class160(class155 var1) {
+      this.this$0 = var1;
+      this.field1748 = new float[4];
+   }
 }

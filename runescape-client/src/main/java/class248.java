@@ -1,3 +1,5 @@
 import net.runelite.mapping.ObfuscatedName;
-@ObfuscatedName("ie")
-public interface class248 extends class250 {}
+
+@ObfuscatedName("iq")
+public interface class248 extends class250 {
+}

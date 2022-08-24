@@ -1,28 +1,32 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.Export;
-@ObfuscatedName("od")
+
+@ObfuscatedName("of")
 @Implements("Link")
 public class Link {
-	@ObfuscatedName("u")
-	@ObfuscatedSignature(descriptor = "Lod;")
-	@Export("previous")
-	public Link previous;
+   @ObfuscatedName("v")
+   @ObfuscatedSignature(
+      descriptor = "Lof;"
+   )
+   @Export("previous")
+   public Link previous;
+   @ObfuscatedName("c")
+   @ObfuscatedSignature(
+      descriptor = "Lof;"
+   )
+   @Export("next")
+   public Link next;
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "Lod;")
-	@Export("next")
-	public Link next;
-
-	@ObfuscatedName("o")
-	@Export("remove")
-	public void remove() {
-		if (this.next != null) {
-			this.next.previous = this.previous;
-			this.previous.next = this.next;
-			this.previous = null;
-			this.next = null;
-		}
-	}
+   @ObfuscatedName("s")
+   @Export("remove")
+   public void remove() {
+      if (this.next != null) {
+         this.next.previous = this.previous;
+         this.previous.next = this.next;
+         this.previous = null;
+         this.next = null;
+      }
+   }
 }
