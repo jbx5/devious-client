@@ -1,3 +1,4 @@
+import com.jagex.oldscape.pub.OAuthApi;
 import com.jagex.oldscape.pub.OtlTokenRequester;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -12,6 +13,8 @@ import java.util.LinkedHashMap;
 import java.util.Map.Entry;
 import java.util.concurrent.Future;
 
+import com.jagex.oldscape.pub.OtlTokenResponse;
+import com.jagex.oldscape.pub.RefreshAccessTokenRequester;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
@@ -970,6 +973,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
    @Export("menuIdentifiers")
    static int[] menuIdentifiers;
    @ObfuscatedName("mi")
+   @Export("menuItemIds")
    static int[] menuItemIds;
    @ObfuscatedName("nd")
    @Export("menuActions")
@@ -1346,7 +1350,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
    class19 field519;
    @ObfuscatedName("fh")
    @ObfuscatedSignature(
-      descriptor = "Lcom/jagex/oldscape/pub/RefreshAccessTokenRequester;"
+      descriptor = "Lcom/jagex/oldscape/pub/com.jagex.oldscape.pub.RefreshAccessTokenRequester;"
    )
    RefreshAccessTokenRequester field491;
    @ObfuscatedName("fs")
@@ -6170,7 +6174,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
    }
 
    @ObfuscatedSignature(
-      descriptor = "(Lcom/jagex/oldscape/pub/RefreshAccessTokenRequester;)V"
+      descriptor = "(Lcom/jagex/oldscape/pub/com.jagex.oldscape.pub.RefreshAccessTokenRequester;)V"
    )
    public void setRefreshTokenRequester(RefreshAccessTokenRequester var1) {
       if (var1 != null) {
