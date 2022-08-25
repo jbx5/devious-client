@@ -54869,36 +54869,6 @@
   },
   {
     "source": {
-      "x": 3423,
-      "y": 3485,
-      "plane": 0
-    },
-    "destination": {
-      "x": 3440,
-      "y": 9887,
-      "plane": 0
-    },
-    "action": "Climb-down",
-    "objectId": 3433,
-    "requirements": {}
-  },
-  {
-    "source": {
-      "x": 3422,
-      "y": 3484,
-      "plane": 0
-    },
-    "destination": {
-      "x": 3440,
-      "y": 9887,
-      "plane": 0
-    },
-    "action": "Climb-down",
-    "objectId": 3433,
-    "requirements": {}
-  },
-  {
-    "source": {
       "x": 3408,
       "y": 3489,
       "plane": 0
@@ -76894,96 +76864,6 @@
     },
     "action": "Climb",
     "objectId": 34531,
-    "requirements": {}
-  },
-  {
-    "source": {
-      "x": 3405,
-      "y": 3506,
-      "plane": 0
-    },
-    "destination": {
-      "x": 3405,
-      "y": 9906,
-      "plane": 0
-    },
-    "action": "Open",
-    "objectId": 1581,
-    "requirements": {}
-  },
-  {
-    "source": {
-      "x": 3405,
-      "y": 3506,
-      "plane": 0
-    },
-    "destination": {
-      "x": 3405,
-      "y": 9906,
-      "plane": 0
-    },
-    "action": "Climb-down",
-    "objectId": 1579,
-    "requirements": {}
-  },
-  {
-    "source": {
-      "x": 3423,
-      "y": 3485,
-      "plane": 0
-    },
-    "destination": {
-      "x": 3440,
-      "y": 9887,
-      "plane": 0
-    },
-    "action": "Open",
-    "objectId": 3433,
-    "requirements": {}
-  },
-  {
-    "source": {
-      "x": 3423,
-      "y": 3485,
-      "plane": 0
-    },
-    "destination": {
-      "x": 3440,
-      "y": 9887,
-      "plane": 0
-    },
-    "action": "Climb-down",
-    "objectId": 3432,
-    "requirements": {}
-  },
-  {
-    "source": {
-      "x": 3422,
-      "y": 3484,
-      "plane": 0
-    },
-    "destination": {
-      "x": 3440,
-      "y": 9887,
-      "plane": 0
-    },
-    "action": "Open",
-    "objectId": 3433,
-    "requirements": {}
-  },
-  {
-    "source": {
-      "x": 3422,
-      "y": 3484,
-      "plane": 0
-    },
-    "destination": {
-      "x": 3440,
-      "y": 9887,
-      "plane": 0
-    },
-    "action": "Climb-down",
-    "objectId": 3432,
     "requirements": {}
   }
 ]

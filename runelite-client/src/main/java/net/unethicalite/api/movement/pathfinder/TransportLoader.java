@@ -574,7 +574,7 @@ public class TransportLoader
 	{
 		return new Transport(source, destination, Integer.MAX_VALUE, 0, () ->
 		{
-			if (Dialog.isViewingOptions())
+			if (Dialog.isOpen())
 			{
 				if (Dialog.canContinue())
 				{

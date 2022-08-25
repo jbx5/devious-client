@@ -2,6 +2,7 @@ package net.unethicalite.api.items;
 
 import net.unethicalite.api.widgets.Widgets;
 import net.runelite.api.widgets.Widget;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -44,9 +45,19 @@ public class Shop
 		buy(itemId, 1);
 	}
 
+	public static void buyOne(String itemName)
+	{
+		buy(itemName, 1);
+	}
+
 	public static void buyFive(int itemId)
 	{
 		buy(itemId, 5);
+	}
+
+	public static void buyFive(String itemName)
+	{
+		buy(itemName, 5);
 	}
 
 	public static void buyTen(int itemId)
@@ -54,9 +65,19 @@ public class Shop
 		buy(itemId, 10);
 	}
 
+	public static void buyTen(String itemName)
+	{
+		buy(itemName, 10);
+	}
+
 	public static void buyFifty(int itemId)
 	{
 		buy(itemId, 50);
+	}
+
+	public static void buyFifty(String itemName)
+	{
+		buy(itemName, 50);
 	}
 
 	public static void sellOne(int itemId)
@@ -96,9 +117,9 @@ public class Shop
 
 		for (Widget item : items)
 		{
-			if (item.getId() != -1)
+			if (item.getItemId() != -1)
 			{
-				out.add(item.getId());
+				out.add(item.getItemId());
 			}
 		}
 
@@ -108,6 +129,11 @@ public class Shop
 	private static void buy(int itemId, int amount)
 	{
 		exchange(itemId, amount, SHOP_ITEMS.get());
+	}
+
+	private static void buy(String itemName, int amount)
+	{
+		exchange(itemName, amount, SHOP_ITEMS.get());
 	}
 
 	private static void sell(int itemId, int amount)
@@ -131,6 +157,39 @@ public class Shop
 		for (Widget item : items)
 		{
 			if (item.getItemId() == itemId)
+			{
+				String action = Arrays.stream(item.getActions())
+						.filter(x -> x != null && x.contains(String.valueOf(amount)))
+						.findFirst()
+						.orElse(null);
+				if (action == null)
+				{
+					return;
+				}
+
+				item.interact(action);
+				return;
+			}
+		}
+	}
+
+	private static void exchange(String itemName, int amount, Widget container)
+	{
+		if (container == null)
+		{
+			return;
+		}
+
+		Widget[] items = container.getChildren();
+		if (items == null)
+		{
+			return;
+		}
+
+		for (Widget item : items)
+		{
+			var nestedName = StringUtils.substringBetween(item.getName(), ">", "<");
+			if (nestedName != null && nestedName.equals(itemName))
 			{
 				String action = Arrays.stream(item.getActions())
 						.filter(x -> x != null && x.contains(String.valueOf(amount)))
