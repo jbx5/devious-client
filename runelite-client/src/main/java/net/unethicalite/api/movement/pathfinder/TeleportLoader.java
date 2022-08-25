@@ -63,7 +63,7 @@ public class TeleportLoader
 				if (Game.getWildyLevel() <= 20)
 				{
 					// Minigames
-					if (Minigames.canTeleport())
+					if (RegionManager.useMinigameTeleports() && Minigames.canTeleport())
 					{
 						for (Minigames.Destination tp : Minigames.Destination.values())
 						{

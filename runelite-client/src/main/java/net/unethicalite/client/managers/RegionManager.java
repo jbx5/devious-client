@@ -53,7 +53,10 @@ public class RegionManager
 			"hasMountedDigsitePendant",
 			"hasMountedMythicalCape",
 			"hasMountedXericsTalisman",
-			"hasJewelryBox"
+			"hasJewelryBox",
+			"housePortals",
+			"useEquipmentJewellery",
+			"useMinigameTeleports"
 	);
 
 	private static final Set<Integer> REFRESH_VARBS = Set.of(
@@ -120,6 +123,11 @@ public class RegionManager
 	public static JewelryBox hasJewelryBox()
 	{
 		return Static.getUnethicaliteConfig().hasJewelryBox();
+	}
+
+	public static boolean useMinigameTeleports()
+	{
+		return Static.getUnethicaliteConfig().useMinigameTeleports();
 	}
 
 	public static Set<HousePortal> getHousePortals()
