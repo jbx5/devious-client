@@ -26,19 +26,6 @@ package com.openosrs.client.ui.components;
 
 import com.openosrs.client.OpenOSRS;
 import com.openosrs.client.ui.OpenOSRSSplashScreen;
-import lombok.extern.slf4j.Slf4j;
-import net.runelite.client.RuneLiteProperties;
-import net.runelite.client.ui.ColorScheme;
-import net.runelite.client.ui.FontManager;
-import net.runelite.client.util.ImageUtil;
-import net.runelite.client.util.LinkBrowser;
-
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.MatteBorder;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -49,16 +36,27 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.MatteBorder;
+import lombok.extern.slf4j.Slf4j;
+import net.runelite.client.RuneLiteProperties;
+import net.runelite.client.ui.ColorScheme;
+import net.runelite.client.ui.FontManager;
+import net.runelite.client.util.ImageUtil;
+import net.runelite.client.util.LinkBrowser;
 
 @Slf4j
 public class InfoPanel extends JPanel
 {
-	private static final Color DARK_GREY = new Color(10, 10, 10, 255);
-
-	private static final BufferedImage TRANSPARENT_LOGO = ImageUtil.getResourceStreamFromClass(InfoPanel.class, "/openosrs.png");
 	static final Dimension PANEL_SIZE = new Dimension(200, OpenOSRSSplashScreen.FRAME_SIZE.height);
+	private static final Color DARK_GREY = new Color(10, 10, 10, 255);
+	private static final BufferedImage TRANSPARENT_LOGO = ImageUtil.getResourceStreamFromClass(InfoPanel.class, "/openosrs.png");
 	private static final Dimension VERSION_SIZE = new Dimension(PANEL_SIZE.width, 25);
-	private static final File RUNELITE_DIR = new File(System.getProperty("user.home"), ".runelite");
+	private static final File RUNELITE_DIR = new File(System.getProperty("user.home"), ".openosrs");
 	private static final File LOGS_DIR = new File(RUNELITE_DIR, "logs");
 
 	public InfoPanel()
