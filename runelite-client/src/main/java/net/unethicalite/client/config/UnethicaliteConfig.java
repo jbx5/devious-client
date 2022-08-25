@@ -337,6 +337,18 @@ public interface UnethicaliteConfig extends Config
 	}
 
 	@ConfigItem(
+		keyName = "useMinigameTeleports",
+		name = "Use minigames teleports",
+		description = "",
+		position = 4,
+		section = pathfinderSection
+	)
+	default boolean useMinigameTeleports()
+	{
+		return true;
+	}
+
+	@ConfigItem(
 			keyName = "housePortals",
 			name = "House Portals",
 			description = "",

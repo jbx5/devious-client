@@ -130,7 +130,10 @@ public class Pathfinder implements Callable<List<WorldPoint>>
 	{
 		long startTime = System.currentTimeMillis();
 		List<WorldPoint> path = find(5_000_000);
-		log.debug("Path calculation took {} ms to {}", System.currentTimeMillis() - startTime, target);
+		String targetStr = targetTiles.size() == 1 ? target.toWorldPoint().toString() :
+			String.format("WorldArea(x=%s, y=%s, width=%s, height=%s, plane=%s)",
+				target.getX(), target.getY(), target.getWidth(), target.getHeight(), target.getPlane());
+		log.debug("Path calculation took {} ms to {}", System.currentTimeMillis() - startTime, targetStr);
 		return path;
 	}
 
