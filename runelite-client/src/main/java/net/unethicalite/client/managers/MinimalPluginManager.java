@@ -152,8 +152,12 @@ public class MinimalPluginManager
 		{
 			plugin = pluginManager.loadPlugins(List.of(entry.getScriptClass()), null)
 					.stream().findFirst().orElse(null);
-			log.debug("Loaded plugin: {}", plugin);
-			if (plugin == null || !Plugins.startPlugin(plugin))
+			if (plugin == null)
+			{
+				return;
+			}
+			log.debug("Loaded plugin: {}", plugin.getName());
+			if (!Plugins.startPlugin(plugin))
 			{
 				return;
 			}
