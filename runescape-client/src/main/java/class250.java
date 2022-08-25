@@ -1,3 +1,3 @@
 import net.runelite.mapping.ObfuscatedName;
-@ObfuscatedName("im")
+@ObfuscatedName("iy")
 public interface class250 {}

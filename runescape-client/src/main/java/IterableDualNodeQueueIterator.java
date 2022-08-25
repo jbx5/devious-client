@@ -3,25 +3,25 @@ import net.runelite.mapping.ObfuscatedSignature;
 import net.runelite.mapping.Implements;
 import java.util.Iterator;
 import net.runelite.mapping.Export;
-@ObfuscatedName("my")
+@ObfuscatedName("mn")
 @Implements("IterableDualNodeQueueIterator")
 public class IterableDualNodeQueueIterator implements Iterator {
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "Lme;")
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(descriptor = "Lms;")
 	@Export("queue")
 	IterableDualNodeQueue queue;
 
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "Lob;")
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(descriptor = "Loa;")
 	@Export("head")
 	DualNode head;
 
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "Lob;")
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(descriptor = "Loa;")
 	@Export("last")
 	DualNode last = null;
 
-	@ObfuscatedSignature(descriptor = "(Lme;)V")
+	@ObfuscatedSignature(descriptor = "(Lms;)V")
 	IterableDualNodeQueueIterator(IterableDualNodeQueue var1) {
 		this.queue = var1;
 		this.head = this.queue.sentinel.previousDual;
@@ -40,12 +40,16 @@ public class IterableDualNodeQueueIterator implements Iterator {
 		return var1;
 	}
 
-	public boolean hasNext() {
-		return this.queue.sentinel != this.head;
+	public void remove() {
+		if (this.last == null) {
+			throw new IllegalStateException();
+		} else {
+			this.last.removeDual();
+			this.last = null;
+		}
 	}
 
-	public void remove() {
-		this.last.removeDual();
-		this.last = null;
+	public boolean hasNext() {
+		return this.queue.sentinel != this.head;
 	}
 }

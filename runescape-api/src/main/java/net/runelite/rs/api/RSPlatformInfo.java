@@ -5,57 +5,57 @@ import net.runelite.mapping.Import;
 public interface RSPlatformInfo
 {
 
-    @Import("vendor")
-    int getVendor();
+	@Import("vendor")
+	int getVendor();
 
-    @Import("maxMemory")
-    int getMaxMemory();
+	@Import("maxMemory")
+	int getMaxMemory();
 
-    @Import("clockSpeed")
-    int getClockSpeed();
+	@Import("clockSpeed")
+	int getClockSpeed();
 
-    @Import("cpuCores")
-    int getCpuCores();
+	@Import("cpuCores")
+	int getCpuCores();
 
-    @Import("osVersion")
-    int getOsVersion();
+	@Import("osVersion")
+	int getOsVersion();
 
-    @Import("os")
-    int getOs();
+	@Import("os")
+	int getOs();
 
-    @Import("javaMajor")
-    int getJavaMajor();
+	@Import("javaMajor")
+	int getJavaMajor();
 
-    @Import("javaMinor")
-    int getJavaMinor();
+	@Import("javaMinor")
+	int getJavaMinor();
 
-    @Import("javaPatch")
-    int getJavaPatch();
+	@Import("javaPatch")
+	int getJavaPatch();
 
-    @Import("vendor")
-    void setVendor(int vendor);
+	@Import("vendor")
+	void setVendor(int vendor);
 
-    @Import("maxMemory")
-    void setMaxMemory(int maxMemory);
+	@Import("maxMemory")
+	void setMaxMemory(int maxMemory);
 
-    @Import("clockSpeed")
-    void setClockSpeed(int clockSpeed);
+	@Import("clockSpeed")
+	void setClockSpeed(int clockSpeed);
 
-    @Import("cpuCores")
-    void setCpuCores(int cpuCores);
+	@Import("cpuCores")
+	void setCpuCores(int cpuCores);
 
-    @Import("osVersion")
-    void setOsVersion(int osVersion);
+	@Import("osVersion")
+	void setOsVersion(int osVersion);
 
-    @Import("os")
-    void setOs(int os);
+	@Import("os")
+	void setOs(int os);
 
-    @Import("javaMajor")
-    void setJavaMajor(int javaMajor);
+	@Import("javaMajor")
+	void setJavaMajor(int javaMajor);
 
-    @Import("javaMinor")
-    void setJavaMinor(int javaMinor);
+	@Import("javaMinor")
+	void setJavaMinor(int javaMinor);
 
-    @Import("javaPatch")
-    void setJavaPatch(int javaPatch);
+	@Import("javaPatch")
+	void setJavaPatch(int javaPatch);
 }

@@ -1,41 +1,38 @@
 import java.net.URL;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.Implements;
 import java.net.Socket;
-import net.runelite.rs.ScriptOpcodes;
 import java.net.InetAddress;
 import java.io.DataInputStream;
 import net.runelite.mapping.Export;
-@ObfuscatedName("ff")
+@ObfuscatedName("fu")
 @Implements("TaskHandler")
 public class TaskHandler implements Runnable {
-	@ObfuscatedName("o")
+	@ObfuscatedName("s")
 	@Export("javaVendor")
 	public static String javaVendor;
 
-	@ObfuscatedName("q")
+	@ObfuscatedName("h")
 	@Export("javaVersion")
 	public static String javaVersion;
 
-	@ObfuscatedName("h")
-	@ObfuscatedGetter(intValue = -1971059873)
-	@Export("Interpreter_intStackSize")
-	static int Interpreter_intStackSize;
+	@ObfuscatedName("n")
+	@ObfuscatedSignature(descriptor = "Lai;")
+	@Export("soundSystem")
+	static SoundSystem soundSystem;
 
-	@ObfuscatedName("eu")
-	@ObfuscatedSignature(descriptor = "Llu;")
-	@Export("archive11")
-	static Archive archive11;
+	@ObfuscatedName("hi")
+	@Export("regionLandArchives")
+	static byte[][] regionLandArchives;
 
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "Lfz;")
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(descriptor = "Lfq;")
 	@Export("current")
 	Task current = null;
 
-	@ObfuscatedName("u")
-	@ObfuscatedSignature(descriptor = "Lfz;")
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(descriptor = "Lfq;")
 	@Export("task")
 	Task task = null;
 
@@ -43,7 +40,7 @@ public class TaskHandler implements Runnable {
 	@Export("thread")
 	Thread thread;
 
-	@ObfuscatedName("w")
+	@ObfuscatedName("q")
 	@Export("isClosed")
 	boolean isClosed = false;
 
@@ -62,8 +59,8 @@ public class TaskHandler implements Runnable {
 		this.thread.start();
 	}
 
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "1663558948")
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "-1651178951")
 	@Export("close")
 	public final void close() {
 		synchronized(this) {
@@ -76,8 +73,8 @@ public class TaskHandler implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "(IIILjava/lang/Object;I)Lfz;", garbageValue = "2040134052")
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(descriptor = "(IIILjava/lang/Object;B)Lfq;", garbageValue = "-53")
 	@Export("newTask")
 	final Task newTask(int var1, int var2, int var3, Object var4) {
 		Task var5 = new Task();
@@ -96,15 +93,15 @@ public class TaskHandler implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "(Ljava/lang/String;II)Lfz;", garbageValue = "-1762952522")
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(descriptor = "(Ljava/lang/String;II)Lfq;", garbageValue = "-248279803")
 	@Export("newSocketTask")
 	public final Task newSocketTask(String var1, int var2) {
 		return this.newTask(1, var2, 0, var1);
 	}
 
-	@ObfuscatedName("u")
-	@ObfuscatedSignature(descriptor = "(Ljava/lang/Runnable;II)Lfz;", garbageValue = "-212575664")
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(descriptor = "(Ljava/lang/Runnable;II)Lfq;", garbageValue = "-1999660909")
 	@Export("newThreadTask")
 	public final Task newThreadTask(Runnable var1, int var2) {
 		return this.newTask(2, var2, 0, var1);
@@ -154,60 +151,15 @@ public class TaskHandler implements Runnable {
 		} 
 	}
 
-	@ObfuscatedName("g")
-	@ObfuscatedSignature(descriptor = "(ILbc;ZI)I", garbageValue = "784335958")
-	static int method3253(int var0, Script var1, boolean var2) {
-		Widget var3 = (var2) ? VertexNormal.scriptDotWidget : class321.scriptActiveWidget;
-		if (var0 == ScriptOpcodes.CC_GETSCROLLX) {
-			Interpreter.Interpreter_intStack[++Interpreter_intStackSize - 1] = var3.scrollX;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_GETSCROLLY) {
-			Interpreter.Interpreter_intStack[++Interpreter_intStackSize - 1] = var3.scrollY;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_GETTEXT) {
-			Interpreter.Interpreter_stringStack[++GrandExchangeOfferAgeComparator.Interpreter_stringStackSize - 1] = var3.text;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_GETSCROLLWIDTH) {
-			Interpreter.Interpreter_intStack[++Interpreter_intStackSize - 1] = var3.scrollWidth;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_GETSCROLLHEIGHT) {
-			Interpreter.Interpreter_intStack[++Interpreter_intStackSize - 1] = var3.scrollHeight;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_GETMODELZOOM) {
-			Interpreter.Interpreter_intStack[++Interpreter_intStackSize - 1] = var3.modelZoom;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_GETMODELANGLE_X) {
-			Interpreter.Interpreter_intStack[++Interpreter_intStackSize - 1] = var3.modelAngleX;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_GETMODELANGLE_Z) {
-			Interpreter.Interpreter_intStack[++Interpreter_intStackSize - 1] = var3.modelAngleZ;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_GETMODELANGLE_Y) {
-			Interpreter.Interpreter_intStack[++Interpreter_intStackSize - 1] = var3.modelAngleY;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_GETTRANS) {
-			Interpreter.Interpreter_intStack[++Interpreter_intStackSize - 1] = var3.transparencyTop;
-			return 1;
-		} else if (var0 == 1610) {
-			Interpreter.Interpreter_intStack[++Interpreter_intStackSize - 1] = var3.transparencyBot;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_GETCOLOUR) {
-			Interpreter.Interpreter_intStack[++Interpreter_intStackSize - 1] = var3.color;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_GETFILLCOLOUR) {
-			Interpreter.Interpreter_intStack[++Interpreter_intStackSize - 1] = var3.color2;
-			return 1;
-		} else if (var0 == 1613) {
-			Interpreter.Interpreter_intStack[++Interpreter_intStackSize - 1] = var3.fillMode.rsOrdinal();
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_GETMODELTRANSPARENT) {
-			Interpreter.Interpreter_intStack[++Interpreter_intStackSize - 1] = (var3.modelTransparency) ? 1 : 0;
-			return 1;
-		} else if (var0 != 1615 && var0 != 1616) {
-			return 2;
-		} else {
-			++Interpreter_intStackSize;
-			return 1;
-		}
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(descriptor = "(IIB)Z", garbageValue = "3")
+	public static boolean method3189(int var0, int var1) {
+		return (var0 >> var1 + 1 & 1) != 0;
+	}
+
+	@ObfuscatedName("ha")
+	@ObfuscatedSignature(descriptor = "(I)Z", garbageValue = "2140154660")
+	static final boolean method3190() {
+		return Client.isMenuOpen;
 	}
 }

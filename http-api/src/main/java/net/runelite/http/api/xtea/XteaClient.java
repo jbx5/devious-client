@@ -22,20 +22,14 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.http.api.xtea;
+package net.runelite.client.plugins.xtea;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
 import com.google.gson.reflect.TypeToken;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.List;
-import javax.inject.Inject;
-import javax.inject.Named;
 import lombok.extern.slf4j.Slf4j;
-import net.runelite.http.api.RuneLiteAPI;
-import static net.runelite.http.api.RuneLiteAPI.JSON;
+import net.runelite.http.api.xtea.XteaKey;
+import net.runelite.http.api.xtea.XteaRequest;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.HttpUrl;
@@ -44,31 +38,43 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.List;
+
+import static net.runelite.http.api.RuneLiteAPI.JSON;
+
 @Slf4j
 public class XteaClient
 {
 	private final OkHttpClient client;
 	private final HttpUrl apiBase;
+	private final Gson gson;
 
 	@Inject
-	public XteaClient(OkHttpClient client, @Named("runelite.api.base") HttpUrl apiBase)
+	private XteaClient(OkHttpClient client, @Named("runelite.api.base") HttpUrl apiBase, Gson gson)
 	{
 		this.client = client;
 		this.apiBase = apiBase;
+		this.gson = gson;
 	}
 
 	public void submit(XteaRequest xteaRequest)
 	{
 		HttpUrl url = apiBase.newBuilder()
-				.addPathSegment("xtea")
-				.build();
+			.addPathSegment("xtea")
+			.build();
 
 		log.debug("Built URI: {}", url);
 
 		Request request = new Request.Builder()
-				.post(RequestBody.create(JSON, RuneLiteAPI.GSON.toJson(xteaRequest)))
-				.url(url)
-				.build();
+			.post(RequestBody.create(JSON, gson.toJson(xteaRequest)))
+			.url(url)
+			.build();
 
 		client.newCall(request).enqueue(new Callback()
 		{
@@ -99,18 +105,18 @@ public class XteaClient
 	public List<XteaKey> get() throws IOException
 	{
 		HttpUrl url = apiBase.newBuilder()
-				.addPathSegment("xtea")
-				.build();
+			.addPathSegment("xtea")
+			.build();
 
 		Request request = new Request.Builder()
-				.url(url)
-				.build();
+			.url(url)
+			.build();
 
 		try (Response response = client.newCall(request).execute())
 		{
 			InputStream in = response.body().byteStream();
 			// CHECKSTYLE:OFF
-			return RuneLiteAPI.GSON.fromJson(new InputStreamReader(in, StandardCharsets.UTF_8), new TypeToken<List<XteaKey>>() { }.getType());
+			return gson.fromJson(new InputStreamReader(in, StandardCharsets.UTF_8), new TypeToken<List<XteaKey>>() { }.getType());
 			// CHECKSTYLE:ON
 		}
 		catch (JsonParseException ex)
@@ -122,18 +128,18 @@ public class XteaClient
 	public XteaKey get(int region) throws IOException
 	{
 		HttpUrl url = apiBase.newBuilder()
-				.addPathSegment("xtea")
-				.addPathSegment(Integer.toString(region))
-				.build();
+			.addPathSegment("xtea")
+			.addPathSegment(Integer.toString(region))
+			.build();
 
 		Request request = new Request.Builder()
-				.url(url)
-				.build();
+			.url(url)
+			.build();
 
 		try (Response response = client.newCall(request).execute())
 		{
 			InputStream in = response.body().byteStream();
-			return RuneLiteAPI.GSON.fromJson(new InputStreamReader(in, StandardCharsets.UTF_8), XteaKey.class);
+			return gson.fromJson(new InputStreamReader(in, StandardCharsets.UTF_8), XteaKey.class);
 		}
 		catch (JsonParseException ex)
 		{

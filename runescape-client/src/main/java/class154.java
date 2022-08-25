@@ -1,37 +1,43 @@
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-@ObfuscatedName("eg")
+@ObfuscatedName("er")
 public class class154 extends class165 {
-	@ObfuscatedName("o")
-	String field1704;
+	@ObfuscatedName("s")
+	String field1699;
 
-	@ObfuscatedSignature(descriptor = "Lef;")
+	@ObfuscatedSignature(descriptor = "Leu;")
 	final class155 this$0;
 
-	@ObfuscatedSignature(descriptor = "(Lef;Ljava/lang/String;Ljava/lang/String;)V")
+	@ObfuscatedSignature(descriptor = "(Leu;Ljava/lang/String;Ljava/lang/String;)V")
 	class154(class155 var1, String var2, String var3) {
 		super(var1, var2);
 		this.this$0 = var1;
-		this.field1704 = var3;
+		this.field1699 = var3;
 	}
 
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "(B)I", garbageValue = "28")
-	public int vmethod3296() {
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(descriptor = "(I)I", garbageValue = "-2051475580")
+	public int vmethod3237() {
 		return 1;
 	}
 
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "(I)Ljava/lang/String;", garbageValue = "545550273")
-	public String vmethod3297() {
-		return this.field1704;
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(descriptor = "(B)Ljava/lang/String;", garbageValue = "-91")
+	public String vmethod3250() {
+		return this.field1699;
 	}
 
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "(Llc;Ljava/lang/String;Ljava/lang/String;IZI)V", garbageValue = "347072849")
-	public static void method3167(AbstractArchive var0, String var1, String var2, int var3, boolean var4) {
-		int var5 = var0.getGroupId(var1);
-		int var6 = var0.getFileId(var5, var2);
-		FriendsChat.method6678(var0, var5, var6, var3, var4);
+	@ObfuscatedName("z")
+	@ObfuscatedSignature(descriptor = "(Lkn;I)I", garbageValue = "1587324314")
+	static int method3103(Widget var0) {
+		if (var0.type != 11) {
+			--UserComparator8.Interpreter_stringStackSize;
+			Interpreter.Interpreter_intStack[++User.Interpreter_intStackSize - 1] = -1;
+			return 1;
+		} else {
+			String var1 = Interpreter.Interpreter_stringStack[--UserComparator8.Interpreter_stringStackSize];
+			Interpreter.Interpreter_intStack[++User.Interpreter_intStackSize - 1] = var0.method5552(var1);
+			return 1;
+		}
 	}
 }

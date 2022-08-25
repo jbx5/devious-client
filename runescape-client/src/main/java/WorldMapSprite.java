@@ -1,16 +1,16 @@
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import java.awt.FontMetrics;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.Export;
-@ObfuscatedName("ic")
+@ObfuscatedName("ii")
 @Implements("WorldMapSprite")
 public final class WorldMapSprite {
-	@ObfuscatedName("af")
-	@Export("loginScreenFontMetrics")
-	static FontMetrics loginScreenFontMetrics;
+	@ObfuscatedName("nv")
+	@ObfuscatedSignature(descriptor = "Lba;")
+	@Export("tempMenuAction")
+	static MenuAction tempMenuAction;
 
-	@ObfuscatedName("q")
+	@ObfuscatedName("h")
 	@Export("tileColors")
 	final int[] tileColors;
 
@@ -22,8 +22,8 @@ public final class WorldMapSprite {
 		this.tileColors = var1;
 	}
 
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "(IIB)I", garbageValue = "-78")
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(descriptor = "(III)I", garbageValue = "83994940")
 	@Export("getTileColor")
 	final int getTileColor(int var1, int var2) {
 		return this.tileColors[var2 * 64 + var1];

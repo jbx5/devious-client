@@ -16,7 +16,7 @@ public interface ClientPacket
 
 	ClientPacket EVENT_APPLET_FOCUS();
 
-	ClientPacket CLICKWORLDMAP_TELEPORT();
+//	ClientPacket CLICKWORLDMAP_TELEPORT();
 
 	ClientPacket IF_BUTTONT();
 
@@ -158,7 +158,7 @@ public interface ClientPacket
 				Map.entry(RESUME_NAMEDIALOG(), "RESUME_NAMEDIALOG"),
 				Map.entry(EVENT_KEYBOARD(), "EVENT_KEYBOARD"),
 				Map.entry(EVENT_APPLET_FOCUS(), "EVENT_APPLET_FOCUS"),
-				Map.entry(CLICKWORLDMAP_TELEPORT(), "CLICKWORLDMAP_TELEPORT"),
+//				Map.entry(CLICKWORLDMAP_TELEPORT(), "CLICKWORLDMAP_TELEPORT"),
 				Map.entry(IF_BUTTONT(), "IF_BUTTONT"),
 				Map.entry(OPPLAYER6(), "OPPLAYER6"),
 				Map.entry(OPNPC2(), "OPNPC2"),

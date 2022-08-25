@@ -3,38 +3,34 @@ import net.runelite.mapping.ObfuscatedSignature;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.Export;
-@ObfuscatedName("ij")
+@ObfuscatedName("it")
 @Implements("WorldMapCacheName")
 public class WorldMapCacheName {
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "Lij;")
-	public static final WorldMapCacheName field2867 = new WorldMapCacheName("details");
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(descriptor = "Lit;")
+	public static final WorldMapCacheName field2872 = new WorldMapCacheName("details");
 
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "Lij;")
-	public static final WorldMapCacheName field2861 = new WorldMapCacheName("compositemap");
-
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "Lij;")
-	public static final WorldMapCacheName field2863 = new WorldMapCacheName("compositetexture");
-
-	@ObfuscatedName("u")
-	@ObfuscatedSignature(descriptor = "Lij;")
-	static final WorldMapCacheName field2866 = new WorldMapCacheName("area");
-
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "Lij;")
-	public static final WorldMapCacheName field2864 = new WorldMapCacheName("labels");
-
-	@ObfuscatedName("by")
-	@ObfuscatedGetter(intValue = 350469975)
-	static int field2862;
-
-	@ObfuscatedName("hy")
-	@ObfuscatedGetter(intValue = -1050242269)
-	static int field2868;
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(descriptor = "Lit;")
+	public static final WorldMapCacheName field2869 = new WorldMapCacheName("compositemap");
 
 	@ObfuscatedName("w")
+	@ObfuscatedSignature(descriptor = "Lit;")
+	public static final WorldMapCacheName field2874 = new WorldMapCacheName("compositetexture");
+
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(descriptor = "Lit;")
+	static final WorldMapCacheName field2871 = new WorldMapCacheName("area");
+
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(descriptor = "Lit;")
+	public static final WorldMapCacheName field2868 = new WorldMapCacheName("labels");
+
+	@ObfuscatedName("o")
+	@ObfuscatedGetter(intValue = -113453181)
+	static int field2870;
+
+	@ObfuscatedName("q")
 	@Export("name")
 	public final String name;
 
@@ -42,9 +38,12 @@ public class WorldMapCacheName {
 		this.name = var1;
 	}
 
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(descriptor = "(II)I", garbageValue = "-849774060")
-	static int method5048(int var0) {
-		return ((int) ((Math.log(((double) (var0))) / Interpreter.field843 - 7.0) * 256.0));
+	@ObfuscatedName("l")
+	@ObfuscatedSignature(descriptor = "(Ljava/lang/String;B)V", garbageValue = "-116")
+	static final void method4984(String var0) {
+		StringBuilder var10000 = new StringBuilder().append(var0);
+		Object var10001 = null;
+		String var1 = var10000.append(" is already on your ignore list").toString();
+		VarcInt.addGameMessage(30, "", var1);
 	}
 }

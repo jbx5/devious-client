@@ -49,8 +49,7 @@ import net.runelite.client.events.RuneScapeProfileChanged;
 import net.runelite.client.plugins.OPRSExternalPluginManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.util.ColorUtil;
-import net.runelite.http.api.config.ConfigEntry;
-import net.runelite.http.api.config.Configuration;
+import net.runelite.http.api.config.ConfigPatch;
 import okhttp3.OkHttpClient;
 
 import javax.annotation.Nullable;
@@ -209,7 +208,48 @@ public class ConfigManager
 
 	public void load()
 	{
-		loadFromFile();
+		if (session == null)
+		{
+			loadFromFile();
+			return;
+		}
+
+		Map<String, String> configuration;
+
+		try
+		{
+			configuration = configClient.get();
+		}
+		catch (IOException ex)
+		{
+			log.debug("Unable to load configuration from client, using saved configuration from disk", ex);
+			loadFromFile();
+			return;
+		}
+
+		if (configuration == null || configuration.isEmpty())
+		{
+			log.debug("No configuration from client, using saved configuration on disk");
+			loadFromFile();
+			return;
+		}
+
+		Properties newProperties = new Properties();
+		newProperties.putAll(configuration);
+
+		log.debug("Loading in config from server");
+		swapProperties(newProperties, false);
+
+		try
+		{
+			saveToFile(propertiesFile);
+
+			log.debug("Updated configuration on disk with the latest version");
+		}
+		catch (IOException ex)
+		{
+			log.warn("Unable to update configuration on disk", ex);
+		}
 	}
 
 	private void swapProperties(Properties newProperties, boolean saveToServer)
@@ -1090,9 +1130,19 @@ public class ConfigManager
 
 			if (configClient != null)
 			{
-				Configuration patch = new Configuration(pendingChanges.entrySet().stream()
-						.map(e -> new ConfigEntry(e.getKey(), e.getValue()))
-						.collect(Collectors.toList()));
+				ConfigPatch patch = new ConfigPatch();
+				for (Map.Entry<String, String> entry : pendingChanges.entrySet())
+				{
+					final String key = entry.getKey(), value = entry.getValue();
+					if (value == null)
+					{
+						patch.getUnset().add(key);
+					}
+					else
+					{
+						patch.getEdit().put(key, value);
+					}
+				}
 
 				future = configClient.patch(patch);
 			}

@@ -5,41 +5,41 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.Implements;
 import java.io.IOException;
 import net.runelite.mapping.Export;
-@ObfuscatedName("nq")
+@ObfuscatedName("nx")
 @Implements("BufferedSink")
 public class BufferedSink implements Runnable {
-	@ObfuscatedName("o")
+	@ObfuscatedName("s")
 	@Export("thread")
 	Thread thread;
 
-	@ObfuscatedName("q")
+	@ObfuscatedName("h")
 	@Export("outputStream")
 	OutputStream outputStream;
 
-	@ObfuscatedName("f")
-	@ObfuscatedGetter(intValue = 559544591)
+	@ObfuscatedName("w")
+	@ObfuscatedGetter(intValue = -190248117)
 	@Export("capacity")
 	int capacity;
 
-	@ObfuscatedName("u")
+	@ObfuscatedName("v")
 	@Export("buffer")
 	byte[] buffer;
 
 	@ObfuscatedName("c")
-	@ObfuscatedGetter(intValue = -1963796989)
+	@ObfuscatedGetter(intValue = 688533941)
 	@Export("position")
 	int position = 0;
 
-	@ObfuscatedName("w")
-	@ObfuscatedGetter(intValue = -247069637)
+	@ObfuscatedName("q")
+	@ObfuscatedGetter(intValue = -1584772581)
 	@Export("limit")
 	int limit = 0;
 
-	@ObfuscatedName("z")
+	@ObfuscatedName("i")
 	@Export("exception")
 	IOException exception;
 
-	@ObfuscatedName("j")
+	@ObfuscatedName("k")
 	@Export("closed")
 	boolean closed;
 
@@ -52,8 +52,8 @@ public class BufferedSink implements Runnable {
 		this.thread.start();
 	}
 
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "(I)Z", garbageValue = "149519694")
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(descriptor = "(B)Z", garbageValue = "-72")
 	@Export("isClosed")
 	boolean isClosed() {
 		if (this.closed) {
@@ -73,8 +73,8 @@ public class BufferedSink implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "([BIII)V", garbageValue = "-760953031")
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(descriptor = "([BIII)V", garbageValue = "-22498213")
 	@Export("write")
 	void write(byte[] var1, int var2, int var3) throws IOException {
 		if (var3 >= 0 && var2 >= 0 && var3 + var2 <= var1.length) {
@@ -108,8 +108,8 @@ public class BufferedSink implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "2135742045")
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(descriptor = "(B)V", garbageValue = "-35")
 	@Export("close")
 	void close() {
 		synchronized(this) {

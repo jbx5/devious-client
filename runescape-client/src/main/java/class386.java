@@ -1,16 +1,15 @@
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.Export;
-@ObfuscatedName("ny")
+@ObfuscatedName("nw")
 public class class386 {
-	@ObfuscatedName("o")
-	float field4400;
+	@ObfuscatedName("s")
+	float field4387;
 
-	@ObfuscatedName("q")
-	float field4396;
+	@ObfuscatedName("h")
+	float field4386;
 
-	@ObfuscatedName("f")
-	float field4398;
+	@ObfuscatedName("w")
+	float field4388;
 
 	static {
 		new class386(0.0F, 0.0F, 0.0F);
@@ -21,25 +20,18 @@ public class class386 {
 	}
 
 	class386(float var1, float var2, float var3) {
-		this.field4400 = var1;
-		this.field4396 = var2;
-		this.field4398 = var3;
+		this.field4387 = var1;
+		this.field4386 = var2;
+		this.field4388 = var3;
 	}
 
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "(I)F", garbageValue = "1827518031")
-	final float method6962() {
-		return ((float) (Math.sqrt(((double) (this.field4398 * this.field4398 + this.field4400 * this.field4400 + this.field4396 * this.field4396)))));
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(descriptor = "(I)F", garbageValue = "-181887763")
+	final float method6874() {
+		return ((float) (Math.sqrt(((double) (this.field4386 * this.field4386 + this.field4387 * this.field4387 + this.field4388 * this.field4388)))));
 	}
 
 	public String toString() {
-		return this.field4400 + ", " + this.field4396 + ", " + this.field4398;
-	}
-
-	@ObfuscatedName("u")
-	@ObfuscatedSignature(descriptor = "(S)[Lqe;", garbageValue = "-3146")
-	@Export("FillMode_values")
-	public static FillMode[] FillMode_values() {
-		return new FillMode[]{ FillMode.field4783, FillMode.SOLID, FillMode.field4785 };
+		return this.field4387 + ", " + this.field4386 + ", " + this.field4388;
 	}
 }

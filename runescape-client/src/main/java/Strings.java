@@ -2,98 +2,89 @@ import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.Export;
-@ObfuscatedName("kn")
+@ObfuscatedName("kg")
 @Implements("Strings")
 public class Strings {
-	@ObfuscatedName("cl")
-	public static String field3728 = "Please visit the support page for assistance.";
+	@ObfuscatedName("cs")
+	public static String field3742 = "Please visit the support page for assistance.";
 
-	@ObfuscatedName("ec")
-	public static String field3725 = "Please visit the support page for assistance.";
+	@ObfuscatedName("ei")
+	public static String field3746 = "Please visit the support page for assistance.";
 
-	@ObfuscatedName("ku")
-	public static String field3913 = "";
+	@ObfuscatedName("kn")
+	public static String field3894 = "";
 
-	@ObfuscatedName("kv")
-	public static String field3887 = "Page has opened in a new window.";
+	@ObfuscatedName("kj")
+	public static String field3687 = "Page has opened in a new window.";
 
-	@ObfuscatedName("kg")
-	public static String field3863 = "(Please check your popup blocker.)";
+	@ObfuscatedName("ki")
+	public static String field3762 = "(Please check your popup blocker.)";
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(Ljava/lang/CharSequence;IZI)I", garbageValue = "436171263")
-	public static int method5775(CharSequence var0, int var1, boolean var2) {
-		if (var1 >= 2 && var1 <= 36) {
-			boolean var3 = false;
-			boolean var4 = false;
-			int var5 = 0;
-			int var6 = var0.length();
-			for (int var7 = 0; var7 < var6; ++var7) {
-				int var8 = var0.charAt(var7);
-				if (var7 == 0) {
-					if (var8 == 45) {
-						var3 = true;
-						continue;
-					}
-					if (var8 == 43) {
-						continue;
-					}
-				}
-				if (var8 >= 48 && var8 <= 57) {
-					var8 -= 48;
-				} else if (var8 >= 65 && var8 <= 90) {
-					var8 -= 55;
-				} else {
-					if (var8 < 97 || var8 > 122) {
-						throw new NumberFormatException();
-					}
-					var8 -= 87;
-				}
-				if (var8 >= var1) {
-					throw new NumberFormatException();
-				}
-				if (var3) {
-					var8 = -var8;
-				}
-				int var9 = var5 * var1 + var8;
-				if (var9 / var1 != var5) {
-					throw new NumberFormatException();
-				}
-				var5 = var9;
-				var4 = true;
-			}
-			if (!var4) {
-				throw new NumberFormatException();
+	@ObfuscatedName("bq")
+	@ObfuscatedSignature(descriptor = "(ILbz;ZI)I", garbageValue = "1995278317")
+	static int method5685(int var0, Script var1, boolean var2) {
+		if (var0 == 7100) {
+			++User.Interpreter_intStackSize;
+			return 1;
+		} else if (var0 == 7101) {
+			UserComparator8.Interpreter_stringStackSize += 2;
+			return 1;
+		} else if (var0 != 7102 && var0 != 7103 && var0 != 7104 && var0 != 7105 && var0 != 7109) {
+			if (var0 == 7106) {
+				++User.Interpreter_intStackSize;
+				return 1;
+			} else if (var0 == 7107) {
+				++User.Interpreter_intStackSize;
+				return 1;
+			} else if (var0 == 7108) {
+				Interpreter.Interpreter_intStack[++User.Interpreter_intStackSize - 1] = (TaskHandler.method3190()) ? 1 : 0;
+				return 1;
+			} else if (var0 == 7110) {
+				Interpreter.Interpreter_intStack[++User.Interpreter_intStackSize - 1] = 0;
+				return 1;
+			} else if (var0 == 7120) {
+				--User.Interpreter_intStackSize;
+				Interpreter.Interpreter_intStack[++User.Interpreter_intStackSize - 1] = 0;
+				return 1;
+			} else if (var0 == 7121) {
+				User.Interpreter_intStackSize -= 2;
+				Interpreter.Interpreter_intStack[++User.Interpreter_intStackSize - 1] = -1;
+				return 1;
+			} else if (var0 == 7122) {
+				User.Interpreter_intStackSize -= 2;
+				Interpreter.Interpreter_intStack[++User.Interpreter_intStackSize - 1] = 0;
+				return 1;
 			} else {
-				return var5;
+				return 2;
 			}
 		} else {
-			throw new IllegalArgumentException("" + var1);
+			++User.Interpreter_intStackSize;
+			return 1;
 		}
 	}
 
-	@ObfuscatedName("gt")
-	@ObfuscatedSignature(descriptor = "(Lcz;III)V", garbageValue = "-1228075316")
+	@ObfuscatedName("fx")
+	@ObfuscatedSignature(descriptor = "(Lcq;III)V", garbageValue = "-624973350")
 	@Export("performPlayerAnimation")
 	static void performPlayerAnimation(Player var0, int var1, int var2) {
 		if (var0.sequence == var1 && var1 != -1) {
-			int var3 = class14.SequenceDefinition_get(var1).field2175;
+			int var3 = ByteArrayPool.SequenceDefinition_get(var1).field2181;
 			if (var3 == 1) {
 				var0.sequenceFrame = 0;
 				var0.sequenceFrameCycle = 0;
 				var0.sequenceDelay = var2;
-				var0.field1174 = 0;
+				var0.field1172 = 0;
 			}
 			if (var3 == 2) {
-				var0.field1174 = 0;
+				var0.field1172 = 0;
 			}
-		} else if (var1 == -1 || var0.sequence == -1 || class14.SequenceDefinition_get(var1).field2168 >= class14.SequenceDefinition_get(var0.sequence).field2168) {
+		} else if (var1 == -1 || var0.sequence == -1 || ByteArrayPool.SequenceDefinition_get(var1).field2157 >= ByteArrayPool.SequenceDefinition_get(var0.sequence).field2157) {
 			var0.sequence = var1;
 			var0.sequenceFrame = 0;
 			var0.sequenceFrameCycle = 0;
 			var0.sequenceDelay = var2;
-			var0.field1174 = 0;
-			var0.field1203 = var0.pathLength;
+			var0.field1172 = 0;
+			var0.field1201 = var0.pathLength;
 		}
 	}
 }

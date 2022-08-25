@@ -1,16 +1,17 @@
 package com.openosrs.client;
 
 import com.google.common.base.Strings;
+import lombok.AccessLevel;
+import lombok.Getter;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.UUID;
-import lombok.AccessLevel;
-import lombok.Getter;
 
 public class OpenOSRS
 {
-	public static final File OPENOSRS_DIR = new File(System.getProperty("user.home"), ".openosrs");
+	public static final File OPENOSRS_DIR = new File(System.getProperty("user.home"), ".runelite");
 	public static final File EXTERNALPLUGIN_DIR = new File(OPENOSRS_DIR, "plugins");
 	public static final String PLUGIN_DEVELOPMENT_PATH = "plugin.development.path";
 	public static final String SYSTEM_VERSION;
