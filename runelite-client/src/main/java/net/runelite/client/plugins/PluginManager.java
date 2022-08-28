@@ -37,6 +37,29 @@ import com.google.inject.CreationException;
 import com.google.inject.Injector;
 import com.google.inject.Key;
 import com.google.inject.Module;
+import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
+import net.runelite.client.RuneLite;
+import net.runelite.client.config.Config;
+import net.runelite.client.config.ConfigManager;
+import net.runelite.client.config.RuneLiteConfig;
+import net.runelite.client.eventbus.EventBus;
+import net.runelite.client.eventbus.Subscribe;
+import net.runelite.client.events.PluginChanged;
+import net.runelite.client.events.SessionClose;
+import net.runelite.client.events.SessionOpen;
+import net.runelite.client.task.Schedule;
+import net.runelite.client.task.ScheduledMethod;
+import net.runelite.client.task.Scheduler;
+import net.runelite.client.ui.SplashScreen;
+import net.runelite.client.util.GameEventManager;
+import net.runelite.client.util.ReflectUtil;
+
+import javax.inject.Inject;
+import javax.inject.Named;
+import javax.inject.Provider;
+import javax.inject.Singleton;
+import javax.swing.SwingUtilities;
 import java.io.File;
 import java.io.IOException;
 import java.lang.invoke.CallSite;
@@ -60,28 +83,6 @@ import java.util.Set;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.BiConsumer;
 import java.util.stream.Collectors;
-import javax.inject.Inject;
-import javax.inject.Named;
-import javax.inject.Provider;
-import javax.inject.Singleton;
-import javax.swing.SwingUtilities;
-import lombok.Setter;
-import lombok.extern.slf4j.Slf4j;
-import net.runelite.client.RuneLite;
-import net.runelite.client.config.Config;
-import net.runelite.client.config.ConfigManager;
-import net.runelite.client.config.RuneLiteConfig;
-import net.runelite.client.eventbus.EventBus;
-import net.runelite.client.eventbus.Subscribe;
-import net.runelite.client.events.PluginChanged;
-import net.runelite.client.events.SessionClose;
-import net.runelite.client.events.SessionOpen;
-import net.runelite.client.task.Schedule;
-import net.runelite.client.task.ScheduledMethod;
-import net.runelite.client.task.Scheduler;
-import net.runelite.client.ui.SplashScreen;
-import net.runelite.client.util.GameEventManager;
-import net.runelite.client.util.ReflectUtil;
 
 @Singleton
 @Slf4j
@@ -296,6 +297,11 @@ public class PluginManager
 
 			loaded++;
 			SplashScreen.stage(.80, 1, null, "Starting plugins", loaded, scannedPlugins.size(), false);
+		}
+
+		for (Plugin plugin : plugins)
+		{
+			ReflectUtil.queueInjectorAnnotationCacheInvalidation(plugin.injector);
 		}
 	}
 
