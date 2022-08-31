@@ -764,7 +764,7 @@ public abstract class RSClientMixin implements RSClient
 
 	@Inject
 	@Override
-	public int getServerVar(VarPlayer varPlayer)
+	public int getVarpValue(VarPlayer varPlayer)
 	{
 		int[] varps = getServerVarps();
 		return varps[varPlayer.getId()];
@@ -1542,7 +1542,7 @@ public abstract class RSClientMixin implements RSClient
 	public static void settingsChanged(int idx)
 	{
 		VarbitChanged varbitChanged = new VarbitChanged();
-		varbitChanged.setIndex(idx);
+		varbitChanged.setVarpId(idx);
 		client.getCallbacks().post(varbitChanged);
 	}
 
