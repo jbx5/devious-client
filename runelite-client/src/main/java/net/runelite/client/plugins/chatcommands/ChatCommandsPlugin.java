@@ -1073,7 +1073,7 @@ public class ChatCommandsPlugin extends Plugin
 
 	private boolean questPointsSubmit(ChatInput chatInput, String value)
 	{
-		final int qp = client.getVar(VarPlayer.QUEST_POINTS);
+		final int qp = client.getVarpValue(VarPlayer.QUEST_POINTS);
 		final String playerName = client.getLocalPlayer().getName();
 
 		executor.execute(() ->
@@ -1991,7 +1991,7 @@ public class ChatCommandsPlugin extends Plugin
 			case "zammy":
 			case "zamorak":
 			case "kril":
-			case "kril trutsaroth":
+			case "kril tsutsaroth":
 				return "K'ril Tsutsaroth";
 			case "arma":
 			case "kree":
@@ -2171,6 +2171,16 @@ public class ChatCommandsPlugin extends Plugin
 				return "Theatre of Blood Hard Mode 4 players";
 			case "hmt 5":
 				return "Theatre of Blood Hard Mode 5 players";
+
+			// Tombs of Amascut
+			case "toa":
+				return "Tombs of Amascut";
+			case "toa entry":
+			case "toa entry mode":
+				return "Tombs of Amascut Entry Mode";
+			case "toa expert":
+			case "toa expert mode":
+				return "Tombs of Amascut Expert Mode";
 
 			// The Gauntlet
 			case "gaunt":

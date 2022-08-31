@@ -116,6 +116,8 @@ public class TimersPlugin extends Plugin
 	private static final String PICKPOCKET_FAILURE_MESSAGE = "You fail to pick the ";
 	private static final String DODGY_NECKLACE_PROTECTION_MESSAGE = "Your dodgy necklace protects you.";
 	private static final String SHADOW_VEIL_PROTECTION_MESSAGE = "Your attempt to steal goes unnoticed.";
+	private static final String SILK_DRESSING_MESSAGE = "You quickly apply the dressing to your wounds.";
+	private static final String BLESSED_CRYSTAL_SCARAB_MESSAGE = "You crack the crystal in your hand.";
 
 	private static final Pattern DIVINE_POTION_PATTERN = Pattern.compile("You drink some of your divine (.+) potion\\.");
 	private static final int VENOM_VALUE_CUTOFF = -40; // Antivenom < -40 <= Antipoison < 0
@@ -132,16 +134,8 @@ public class TimersPlugin extends Plugin
 	private int freezeTime = -1; // time frozen, in game ticks
 
 	private TimerTimer staminaTimer;
+	private TimerTimer buffTimer;
 
-	private int lastRaidVarb;
-	private int lastVengCooldownVarb;
-	private int lastIsVengeancedVarb;
-	private int lastPoisonVarp;
-	private int lastTeleblockVarb;
-	private int lastChargeSpellVarp;
-	private int lastCorruptionVarb;
-	private int lastStaminaEffect;
-	private int lastImbuedHeartVarb;
 	private boolean imbuedHeartTimerActive;
 	private int nextPoisonTick;
 	private WorldPoint lastPoint;
@@ -183,47 +177,26 @@ public class TimersPlugin extends Plugin
 	protected void shutDown() throws Exception
 	{
 		infoBoxManager.removeIf(t -> t instanceof TimerTimer);
-		lastRaidVarb = -1;
 		lastPoint = null;
 		lastAnimation = -1;
-		lastPoisonVarp = 0;
-		lastTeleblockVarb = 0;
-		lastChargeSpellVarp = 0;
 		nextPoisonTick = 0;
 		removeTzhaarTimer();
 		staminaTimer = null;
 		imbuedHeartTimerActive = false;
-		lastImbuedHeartVarb = 0;
-		lastStaminaEffect = 0;
 	}
 
 	@Subscribe
 	public void onVarbitChanged(VarbitChanged event)
 	{
-		int raidVarb = client.getVarbitValue(Varbits.IN_RAID);
-		int vengCooldownVarb = client.getVarbitValue(Varbits.VENGEANCE_COOLDOWN);
-		int isVengeancedVarb = client.getVarbitValue(Varbits.VENGEANCE_ACTIVE);
-		int poisonVarp = client.getVar(VarPlayer.POISON);
-		int corruptionCooldownVarb = client.getVarbitValue(Varbits.CORRUPTION_COOLDOWN);
-		int imbuedHeartCooldownVarb = client.getVarbitValue(Varbits.IMBUED_HEART_COOLDOWN);
-		int staminaEffectActive = client.getVarbitValue(Varbits.RUN_SLOWED_DEPLETION_ACTIVE);
-		int staminaPotionEffectVarb = client.getVarbitValue(Varbits.STAMINA_EFFECT);
-		int enduranceRingEffectVarb = client.getVarbitValue(Varbits.RING_OF_ENDURANCE_EFFECT);
-		int teleblockVarb = client.getVarbitValue(Varbits.TELEBLOCK);
-		int chargeSpellVarp = client.getVar(VarPlayer.CHARGE_GOD_SPELL);
-
-		final int totalStaminaEffect = staminaPotionEffectVarb + enduranceRingEffectVarb;
-
-		if (lastRaidVarb != raidVarb)
+		if (event.getVarbitId() == Varbits.IN_RAID)
 		{
 			removeGameTimer(OVERLOAD_RAID);
 			removeGameTimer(PRAYER_ENHANCE);
-			lastRaidVarb = raidVarb;
 		}
 
-		if (lastVengCooldownVarb != vengCooldownVarb && config.showVengeance())
+		if (event.getVarbitId() == Varbits.VENGEANCE_COOLDOWN && config.showVengeance())
 		{
-			if (vengCooldownVarb == 1)
+			if (event.getValue() == 1)
 			{
 				createGameTimer(VENGEANCE);
 			}
@@ -231,13 +204,11 @@ public class TimersPlugin extends Plugin
 			{
 				removeGameTimer(VENGEANCE);
 			}
-
-			lastVengCooldownVarb = vengCooldownVarb;
 		}
 
-		if (lastCorruptionVarb != corruptionCooldownVarb && config.showArceuusCooldown())
+		if (event.getVarbitId() == Varbits.CORRUPTION_COOLDOWN && config.showArceuusCooldown())
 		{
-			if (corruptionCooldownVarb == 1)
+			if (event.getValue() == 1)
 			{
 				createGameTimer(CORRUPTION_COOLDOWN);
 			}
@@ -245,13 +216,11 @@ public class TimersPlugin extends Plugin
 			{
 				removeGameTimer(CORRUPTION_COOLDOWN);
 			}
-
-			lastCorruptionVarb = corruptionCooldownVarb;
 		}
 
-		if (lastIsVengeancedVarb != isVengeancedVarb && config.showVengeanceActive())
+		if (event.getVarbitId() == Varbits.VENGEANCE_ACTIVE && config.showVengeanceActive())
 		{
-			if (isVengeancedVarb == 1)
+			if (event.getValue() == 1)
 			{
 				createGameIndicator(VENGEANCE_ACTIVE);
 			}
@@ -259,15 +228,18 @@ public class TimersPlugin extends Plugin
 			{
 				removeGameIndicator(VENGEANCE_ACTIVE);
 			}
-
-			lastIsVengeancedVarb = isVengeancedVarb;
 		}
 
-		if (lastPoisonVarp != poisonVarp && config.showAntiPoison())
+		if (event.getVarpId() == VarPlayer.POISON.getId() && config.showAntiPoison())
 		{
+			final int poisonVarp = event.getValue();
 			final int tickCount = client.getTickCount();
 
-			if (nextPoisonTick - tickCount <= 0 || lastPoisonVarp == 0)
+			if (poisonVarp == 0)
+			{
+				nextPoisonTick = -1;
+			}
+			else if (nextPoisonTick - tickCount <= 0)
 			{
 				nextPoisonTick = tickCount + POISON_TICK_LENGTH;
 			}
@@ -289,12 +261,11 @@ public class TimersPlugin extends Plugin
 				removeGameTimer(ANTIPOISON);
 				createGameTimer(ANTIVENOM, duration);
 			}
-
-			lastPoisonVarp = poisonVarp;
 		}
 
-		if (lastTeleblockVarb != teleblockVarb && config.showTeleblock())
+		if (event.getVarbitId() == Varbits.TELEBLOCK && config.showTeleblock())
 		{
+			final int teleblockVarb = event.getValue();
 			if (teleblockVarb > 100)
 			{
 				// Reduce by 100 ticks because the blocking effect subsides and immunity period supervenes
@@ -304,12 +275,11 @@ public class TimersPlugin extends Plugin
 			{
 				removeGameTimer(TELEBLOCK);
 			}
-
-			lastTeleblockVarb = teleblockVarb;
 		}
 
-		if (lastChargeSpellVarp != chargeSpellVarp && config.showCharge())
+		if (event.getVarpId() == VarPlayer.CHARGE_GOD_SPELL.getId() && config.showCharge())
 		{
+			final int chargeSpellVarp = event.getValue();
 			if (chargeSpellVarp > 0)
 			{
 				createGameTimer(CHARGE, Duration.of((chargeSpellVarp * 2L), RSTimeUnit.GAME_TICKS));
@@ -318,12 +288,11 @@ public class TimersPlugin extends Plugin
 			{
 				removeGameTimer(CHARGE);
 			}
-
-			lastChargeSpellVarp = chargeSpellVarp;
 		}
 
-		if (lastImbuedHeartVarb != imbuedHeartCooldownVarb && config.showImbuedHeart())
+		if (event.getVarbitId() == Varbits.IMBUED_HEART_COOLDOWN && config.showImbuedHeart())
 		{
+			final int imbuedHeartCooldownVarb = event.getValue();
 			if (imbuedHeartCooldownVarb == 0)
 			{
 				removeGameTimer(IMBUEDHEART);
@@ -334,45 +303,77 @@ public class TimersPlugin extends Plugin
 				createGameTimer(IMBUEDHEART, Duration.of(10L * imbuedHeartCooldownVarb, RSTimeUnit.GAME_TICKS));
 				imbuedHeartTimerActive = true;
 			}
-
-			lastImbuedHeartVarb = imbuedHeartCooldownVarb;
 		}
 
-		if (event.getIndex() == VarPlayer.LAST_HOME_TELEPORT.getId() && config.showHomeMinigameTeleports())
+		if (event.getVarpId() == VarPlayer.LAST_HOME_TELEPORT.getId() && config.showHomeMinigameTeleports())
 		{
 			checkTeleport(VarPlayer.LAST_HOME_TELEPORT);
 		}
 
-		if (event.getIndex() == VarPlayer.LAST_MINIGAME_TELEPORT.getId() && config.showHomeMinigameTeleports())
+		if (event.getVarpId() == VarPlayer.LAST_MINIGAME_TELEPORT.getId() && config.showHomeMinigameTeleports())
 		{
 			checkTeleport(VarPlayer.LAST_MINIGAME_TELEPORT);
 		}
 
-		// staminaEffectActive is checked to match https://github.com/Joshua-F/cs2-scripts/blob/741271f0c3395048c1bad4af7881a13734516adf/scripts/%5Bproc%2Cbuff_bar_get_value%5D.cs2#L25
-		if (staminaEffectActive == 1 && lastStaminaEffect != totalStaminaEffect && config.showStamina())
+		if (event.getVarbitId() == Varbits.RUN_SLOWED_DEPLETION_ACTIVE
+			|| event.getVarbitId() == Varbits.STAMINA_EFFECT
+			|| event.getVarbitId() == Varbits.RING_OF_ENDURANCE_EFFECT)
 		{
-			final Duration staminaDuration = Duration.of(10L * totalStaminaEffect, RSTimeUnit.GAME_TICKS);
+			// staminaEffectActive is checked to match https://github.com/Joshua-F/cs2-scripts/blob/741271f0c3395048c1bad4af7881a13734516adf/scripts/%5Bproc%2Cbuff_bar_get_value%5D.cs2#L25
+			int staminaEffectActive = client.getVarbitValue(Varbits.RUN_SLOWED_DEPLETION_ACTIVE);
+			int staminaPotionEffectVarb = client.getVarbitValue(Varbits.STAMINA_EFFECT);
+			int enduranceRingEffectVarb = client.getVarbitValue(Varbits.RING_OF_ENDURANCE_EFFECT);
 
-			if (staminaTimer == null && totalStaminaEffect > 0)
+			final int totalStaminaEffect = staminaPotionEffectVarb + enduranceRingEffectVarb;
+			if (staminaEffectActive == 1 && config.showStamina())
 			{
-				staminaTimer = createGameTimer(STAMINA, staminaDuration);
+				final Duration staminaDuration = Duration.of(10L * totalStaminaEffect, RSTimeUnit.GAME_TICKS);
+
+				if (totalStaminaEffect == 0)
+				{
+					removeGameTimer(STAMINA);
+					staminaTimer = null;
+				}
+				else if (staminaTimer == null)
+				{
+					staminaTimer = createGameTimer(STAMINA, staminaDuration);
+				}
+				else
+				{
+					staminaTimer.updateDuration(staminaDuration);
+				}
 			}
-			else if (totalStaminaEffect == 0)
+		}
+
+		if (event.getVarbitId() == Varbits.BUFF_STAT_BOOST && config.showOverload())
+		{
+			int serverTicks = event.getValue() * 25; // from [proc,buff_bar_get_value]
+			Duration duration = Duration.of(serverTicks, RSTimeUnit.GAME_TICKS);
+			if (serverTicks == 0)
 			{
-				removeGameTimer(STAMINA);
-				staminaTimer = null;
+				removeGameTimer(SMELLING_SALTS);
+				buffTimer = null;
+			}
+			else if (buffTimer == null)
+			{
+				buffTimer = createGameTimer(SMELLING_SALTS, duration);
 			}
 			else
 			{
-				Instant endInstant = Instant.now().plus(staminaDuration);
-				int timeDifference = (int) Duration.between(staminaTimer.getEndTime(), endInstant).getSeconds();
-				if (timeDifference != 0)
-				{
-					Duration remainingDuration = Duration.between(staminaTimer.getStartTime(), endInstant);
-					staminaTimer.setDuration(remainingDuration);
-				}
+				buffTimer.updateDuration(duration);
 			}
-			lastStaminaEffect = totalStaminaEffect;
+		}
+
+		if (event.getVarbitId() == Varbits.LIQUID_ADERNALINE_ACTIVE && config.showLiquidAdrenaline())
+		{
+			if (event.getValue() == 1)
+			{
+				createGameTimer(LIQUID_ADRENALINE);
+			}
+			else
+			{
+				removeGameTimer(LIQUID_ADRENALINE);
+			}
 		}
 	}
 
@@ -412,6 +413,7 @@ public class TimersPlugin extends Plugin
 		{
 			removeGameTimer(OVERLOAD);
 			removeGameTimer(OVERLOAD_RAID);
+			removeGameTimer(SMELLING_SALTS);
 		}
 
 		if (!config.showPrayerEnhance())
@@ -494,6 +496,21 @@ public class TimersPlugin extends Plugin
 		else
 		{
 			createTzhaarTimer();
+		}
+
+		if (!config.showLiquidAdrenaline())
+		{
+			removeGameTimer(LIQUID_ADRENALINE);
+		}
+
+		if (!config.showSilkDressing())
+		{
+			removeGameTimer(SILK_DRESSING);
+		}
+
+		if (!config.showBlessedCrystalScarab())
+		{
+			removeGameTimer(BLESSED_CRYSTAL_SCARAB);
 		}
 	}
 
@@ -833,6 +850,16 @@ public class TimersPlugin extends Plugin
 				}
 			}
 		}
+
+		if (message.equals(SILK_DRESSING_MESSAGE) && config.showSilkDressing())
+		{
+			createGameTimer(SILK_DRESSING);
+		}
+
+		if (message.equals(BLESSED_CRYSTAL_SCARAB_MESSAGE) && config.showBlessedCrystalScarab())
+		{
+			createGameTimer(BLESSED_CRYSTAL_SCARAB);
+		}
 	}
 
 	private boolean isInFightCaves()
@@ -889,7 +916,7 @@ public class TimersPlugin extends Plugin
 				return;
 		}
 
-		int lastTeleport = client.getVar(varPlayer);
+		int lastTeleport = client.getVarpValue(varPlayer);
 		long lastTeleportSeconds = (long) lastTeleport * 60;
 		Instant teleportExpireInstant = Instant.ofEpochSecond(lastTeleportSeconds).plus(teleport.getDuration());
 		Duration remainingTime = Duration.between(Instant.now(), teleportExpireInstant);
