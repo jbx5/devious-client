@@ -469,6 +469,8 @@ import static net.runelite.api.ItemID.OSMUMTENS_FANG_OR;
 import static net.runelite.api.ItemID.PENANCE_SKIRT_L;
 import static net.runelite.api.ItemID.PERFECT_SHELL;
 import static net.runelite.api.ItemID.PERFECT_SNAIL_SHELL;
+import static net.runelite.api.ItemID.PHARAOHS_SCEPTRE;
+import static net.runelite.api.ItemID.PHARAOHS_SCEPTRE_UNCHARGED;
 import static net.runelite.api.ItemID.PROSPECTOR_BOOTS;
 import static net.runelite.api.ItemID.PROSPECTOR_HELMET;
 import static net.runelite.api.ItemID.PROSPECTOR_JACKET;
@@ -854,6 +856,7 @@ public enum ItemMapping
 	ITEM_BRYOPHYTAS_STAFF(BRYOPHYTAS_STAFF_UNCHARGED, BRYOPHYTAS_STAFF),
 	ITEM_RING_OF_ENDURANCE(RING_OF_ENDURANCE_UNCHARGED_24844, RING_OF_ENDURANCE),
 	ITEM_TUMEKENS_SHADOW(TUMEKENS_SHADOW_UNCHARGED, TUMEKENS_SHADOW),
+	ITEM_PHARAOHS_SCEPTRE(PHARAOHS_SCEPTRE_UNCHARGED, true, 1L, PHARAOHS_SCEPTRE),
 
 	// Tombs of Amascut gear
 	ITEM_ELIDINIS_WARD(ELIDINIS_WARD, ELIDINIS_WARD_F, ELIDINIS_WARD_OR),
