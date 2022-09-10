@@ -70,12 +70,6 @@ public interface RSBuffer extends Buffer, RSNode
 	@Import("readShort")
 	int readShort();
 
-	@Import("readShortAdd")
-	int readShortAdd();
-
-	@Import("readShortAddLE")
-	int readShortAddLE();
-
 	@Import("readShortLE")
 	int readShortLE();
 
@@ -114,9 +108,6 @@ public interface RSBuffer extends Buffer, RSNode
 
 	@Import("readUnsignedIntME")
 	int readUnsignedIntME();
-
-	@Import("readUnsignedMediumRME")
-	int readUnsignedMediumRME();
 
 	@Import("readUnsignedShort")
 	int readUnsignedShort();
