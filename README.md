@@ -1,6 +1,8 @@
 ###
 This is a fork of Unethicalite that I'm looking to actively maintain since I think this would be a nice learning experience for me.
+
 Come join my discord if you're looking to share knowledge and learn together!
+
 https://discord.gg/5sh52G36GF
 
 # Unethicalite
