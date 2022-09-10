@@ -1,12 +1,16 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.Export;
-@ObfuscatedName("ok")
+
+@ObfuscatedName("ot")
 @Implements("PlatformInfoProvider")
 public interface PlatformInfoProvider {
-	@ObfuscatedName("s")
-	@ObfuscatedSignature(descriptor = "(I)Loo;", garbageValue = "-223070483")
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "(I)Los;",
+		garbageValue = "650886261"
+	)
 	@Export("get")
 	PlatformInfo get();
 }

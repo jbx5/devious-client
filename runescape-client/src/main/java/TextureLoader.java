@@ -1,26 +1,39 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.Export;
-@ObfuscatedName("hr")
+
+@ObfuscatedName("hp")
 @Implements("TextureLoader")
 public interface TextureLoader {
-	@ObfuscatedName("w")
-	@ObfuscatedSignature(descriptor = "(II)[I", garbageValue = "897870696")
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "(II)[I",
+		garbageValue = "-2101542497"
+	)
 	@Export("getTexturePixels")
 	int[] getTexturePixels(int var1);
 
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "(II)I", garbageValue = "1656237054")
+	@ObfuscatedName("n")
+	@ObfuscatedSignature(
+		descriptor = "(IB)I",
+		garbageValue = "-14"
+	)
 	@Export("getAverageTextureRGB")
 	int getAverageTextureRGB(int var1);
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(IB)Z", garbageValue = "-73")
-	boolean vmethod4431(int var1);
+	@ObfuscatedName("k")
+	@ObfuscatedSignature(
+		descriptor = "(IB)Z",
+		garbageValue = "8"
+	)
+	boolean vmethod4653(int var1);
 
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "(II)Z", garbageValue = "1049958917")
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(
+		descriptor = "(II)Z",
+		garbageValue = "75925311"
+	)
 	@Export("isLowDetail")
 	boolean isLowDetail(int var1);
 }

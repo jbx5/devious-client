@@ -1,39 +1,43 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.Implements;
-import java.io.File;
-import net.runelite.mapping.Export;
-@ObfuscatedName("la")
+
+@ObfuscatedName("lx")
 @Implements("NetFileRequest")
 public class NetFileRequest extends DualNode {
-	@ObfuscatedName("v")
-	@Export("JagexCache_locationFile")
-	static File JagexCache_locationFile;
-
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "Lls;")
-	@Export("musicTrackArchive")
-	public static AbstractArchive musicTrackArchive;
-
-	@ObfuscatedName("hy")
-	@Export("regionLandArchiveIds")
-	static int[] regionLandArchiveIds;
-
-	@ObfuscatedName("s")
-	@ObfuscatedSignature(descriptor = "Lln;")
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "Llb;"
+	)
 	@Export("archive")
-	Archive archive;
-
-	@ObfuscatedName("h")
-	@ObfuscatedGetter(intValue = -1580363083)
+	public Archive archive;
+	@ObfuscatedName("p")
+	@ObfuscatedGetter(
+		intValue = 2101208687
+	)
 	@Export("crc")
-	int crc;
-
-	@ObfuscatedName("w")
+	public int crc;
+	@ObfuscatedName("f")
 	@Export("padding")
-	byte padding;
+	public byte padding;
 
 	NetFileRequest() {
+	} // L: 10
+
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(
+		descriptor = "(III)I",
+		garbageValue = "1754412957"
+	)
+	public static int method6004(int var0, int var1) {
+		int var2;
+		for (var2 = 0; var1 > 0; --var1) { // L: 85 86 89
+			var2 = var2 << 1 | var0 & 1; // L: 87
+			var0 >>>= 1; // L: 88
+		}
+
+		return var2; // L: 91
 	}
 }
