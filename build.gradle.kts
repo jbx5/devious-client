@@ -33,6 +33,7 @@ buildscript {
         maven(url = "https://repo.unethicalite.net/releases")
         maven(url = "https://repo.unethicalite.net/snapshots")
         maven(url = "https://raw.githubusercontent.com/open-osrs/hosting/master")
+        maven(url = "https://raw.githubusercontent.com/jbx5/hosting/master")
     }
     dependencies {
         classpath("org.ajoberstar.grgit:grgit-core:4.1.0")

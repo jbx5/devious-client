@@ -32,7 +32,7 @@ object ProjectVersions {
     const val rsversion = 208
     const val cacheversion = 165
 
-    const val lombokVersion = "1.18.20"
+    const val lombokVersion = "1.18.22"
 
     const val unethicaliteVersion = "1.0.11-SNAPSHOT"
 }
