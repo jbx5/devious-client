@@ -1,42 +1,63 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.Export;
-@ObfuscatedName("qs")
+
+@ObfuscatedName("qd")
 @Implements("AbstractRasterProvider")
 public abstract class AbstractRasterProvider {
-	@ObfuscatedName("w")
+	@ObfuscatedName("f")
 	@Export("pixels")
 	public int[] pixels;
-
-	@ObfuscatedName("v")
-	@ObfuscatedGetter(intValue = -1447914741)
+	@ObfuscatedName("n")
+	@ObfuscatedGetter(
+		intValue = 697858245
+	)
 	@Export("width")
 	public int width;
-
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(intValue = -1901266975)
+	@ObfuscatedName("k")
+	@ObfuscatedGetter(
+		intValue = -1550839689
+	)
 	@Export("height")
 	public int height;
 
 	protected AbstractRasterProvider() {
-	}
+	} // L: 8
 
-	@ObfuscatedName("h")
-	@ObfuscatedSignature(descriptor = "(IIS)V", garbageValue = "-11458")
+	@ObfuscatedName("p")
+	@ObfuscatedSignature(
+		descriptor = "(III)V",
+		garbageValue = "28507398"
+	)
 	@Export("drawFull")
 	public abstract void drawFull(int var1, int var2);
 
-	@ObfuscatedName("w")
-	@ObfuscatedSignature(descriptor = "(IIIII)V", garbageValue = "-1829560640")
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "(IIIIB)V",
+		garbageValue = "-41"
+	)
 	@Export("draw")
 	public abstract void draw(int var1, int var2, int var3, int var4);
 
-	@ObfuscatedName("e")
-	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "55493339")
+	@ObfuscatedName("b")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "-102"
+	)
 	@Export("apply")
 	public final void apply() {
-		Rasterizer2D.Rasterizer2D_replace(this.pixels, this.width, this.height);
+		Rasterizer2D.Rasterizer2D_replace(this.pixels, this.width, this.height); // L: 11
+	} // L: 12
+
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "(Llv;III)[Lqi;",
+		garbageValue = "475253810"
+	)
+	public static SpritePixels[] method8301(AbstractArchive var0, int var1, int var2) {
+		return !Occluder.method4475(var0, var1, var2) ? null : class124.method2967(); // L: 33 34
 	}
 }

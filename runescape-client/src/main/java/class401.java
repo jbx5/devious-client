@@ -1,65 +1,72 @@
-import net.runelite.mapping.ObfuscatedName;
-import java.util.Map.Entry;
-import net.runelite.mapping.ObfuscatedSignature;
 import java.io.UnsupportedEncodingException;
-import java.util.Iterator;
-import java.util.Map;
-import java.net.URLEncoder;
-@ObfuscatedName("oj")
-public class class401 implements class399 {
-	@ObfuscatedName("h")
-	final Map field4440;
+import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-	public class401(Map var1) {
-		this.field4440 = var1;
+@ObfuscatedName("om")
+public class class401 implements class400 {
+	@ObfuscatedName("f")
+	JSONObject field4474;
+
+	public class401(byte[] var1) throws UnsupportedEncodingException {
+		this.method7308(var1); // L: 17
+	} // L: 18
+
+	public class401(String var1) throws UnsupportedEncodingException {
+		this.method7306(var1); // L: 13
+	} // L: 14
+
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "(I)[B",
+		garbageValue = "-606305433"
+	)
+	public byte[] vmethod7323() throws UnsupportedEncodingException {
+		return this.field4474 == null ? new byte[0] : this.field4474.toString().getBytes("UTF-8"); // L: 50 51 53
 	}
 
-	@ObfuscatedName("s")
-	@ObfuscatedSignature(descriptor = "(B)[B", garbageValue = "57")
-	public byte[] vmethod7057() throws UnsupportedEncodingException {
-		return this.method7058().getBytes("UTF-8");
-	}
+	@ObfuscatedName("n")
+	@ObfuscatedSignature(
+		descriptor = "([BI)V",
+		garbageValue = "-65625485"
+	)
+	void method7308(byte[] var1) throws UnsupportedEncodingException {
+		String var2 = new String(var1, "UTF-8"); // L: 21
+		this.method7306(var2); // L: 22
+	} // L: 23
+
+	@ObfuscatedName("k")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;I)V",
+		garbageValue = "-2069444703"
+	)
+	void method7306(String var1) throws UnsupportedEncodingException {
+		try {
+			if (var1.charAt(0) == '{') { // L: 27
+				this.field4474 = new JSONObject(var1); // L: 28
+			} else {
+				if (var1.charAt(0) != '[') { // L: 30
+					throw new UnsupportedEncodingException("Invalid JSON passed to the JSON content builder."); // L: 36
+				}
+
+				JSONArray var2 = new JSONArray(var1); // L: 31
+				this.field4474 = new JSONObject(); // L: 32
+				this.field4474.method8392("arrayValues", var2); // L: 33
+			}
+
+		} catch (JSONException var3) { // L: 39
+			throw new UnsupportedEncodingException(var3.getMessage()); // L: 40
+		}
+	} // L: 42
 
 	@ObfuscatedName("w")
-	@ObfuscatedSignature(descriptor = "(B)Ljava/lang/String;", garbageValue = "8")
-	public String method7058() throws UnsupportedEncodingException {
-		StringBuilder var1 = new StringBuilder();
-		Iterator var2 = this.field4440.entrySet().iterator();
-		while (var2.hasNext()) {
-			Entry var3 = ((Entry) (var2.next()));
-			String var4 = URLEncoder.encode(((String) (var3.getKey())), "UTF-8");
-			String var5 = URLEncoder.encode(((String) (var3.getValue())), "UTF-8");
-			var1.append(var4).append("=").append(var5).append("&");
-		} 
-		if (var1.length() == 0) {
-			return "";
-		} else {
-			var1.deleteCharAt(var1.length() - 1);
-			var1.insert(0, "?");
-			return var1.toString();
-		}
-	}
-
-	@ObfuscatedName("s")
-	@ObfuscatedSignature(descriptor = "(Ljava/lang/Object;ZI)[B", garbageValue = "-906139153")
-	public static byte[] method7060(Object var0, boolean var1) {
-		if (var0 == null) {
-			return null;
-		} else if (var0 instanceof byte[]) {
-			byte[] var6 = ((byte[]) ((byte[]) (var0)));
-			if (var1) {
-				int var4 = var6.length;
-				byte[] var5 = new byte[var4];
-				System.arraycopy(var6, 0, var5, 0, var4);
-				return var5;
-			} else {
-				return var6;
-			}
-		} else if (var0 instanceof AbstractByteArrayCopier) {
-			AbstractByteArrayCopier var2 = ((AbstractByteArrayCopier) (var0));
-			return var2.get();
-		} else {
-			throw new IllegalArgumentException();
-		}
+	@ObfuscatedSignature(
+		descriptor = "(I)Lorg/json/JSONObject;",
+		garbageValue = "611549048"
+	)
+	public JSONObject method7307() {
+		return this.field4474; // L: 45
 	}
 }

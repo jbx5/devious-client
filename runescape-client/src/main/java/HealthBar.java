@@ -1,100 +1,115 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.Export;
-@ObfuscatedName("cj")
+
+@ObfuscatedName("cr")
 @Implements("HealthBar")
 public class HealthBar extends Node {
-	@ObfuscatedName("pm")
-	@ObfuscatedGetter(intValue = 1643162371)
-	static int field1249;
-
-	@ObfuscatedName("w")
-	@ObfuscatedSignature(descriptor = "Lfi;")
+	@ObfuscatedName("ew")
+	@ObfuscatedSignature(
+		descriptor = "Llb;"
+	)
+	@Export("archive17")
+	static Archive archive17;
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "Lfd;"
+	)
 	@Export("definition")
 	HealthBarDefinition definition;
-
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "Llx;")
+	@ObfuscatedName("n")
+	@ObfuscatedSignature(
+		descriptor = "Llz;"
+	)
 	@Export("updates")
-	IterableNodeDeque updates = new IterableNodeDeque();
+	IterableNodeDeque updates;
 
-	@ObfuscatedSignature(descriptor = "(Lfi;)V")
+	@ObfuscatedSignature(
+		descriptor = "(Lfd;)V"
+	)
 	HealthBar(HealthBarDefinition var1) {
-		this.definition = var1;
-	}
+		this.updates = new IterableNodeDeque(); // L: 12
+		this.definition = var1; // L: 15
+	} // L: 16
 
-	@ObfuscatedName("s")
-	@ObfuscatedSignature(descriptor = "(IIIIB)V", garbageValue = "106")
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "(IIIII)V",
+		garbageValue = "-1917483306"
+	)
 	@Export("put")
 	void put(int var1, int var2, int var3, int var4) {
-		HealthBarUpdate var5 = null;
-		int var6 = 0;
-		for (HealthBarUpdate var7 = ((HealthBarUpdate) (this.updates.last())); var7 != null; var7 = ((HealthBarUpdate) (this.updates.previous()))) {
-			++var6;
-			if (var7.cycle == var1) {
-				var7.set(var1, var2, var3, var4);
-				return;
+		HealthBarUpdate var5 = null; // L: 19
+		int var6 = 0; // L: 20
+
+		for (HealthBarUpdate var7 = (HealthBarUpdate)this.updates.last(); var7 != null; var7 = (HealthBarUpdate)this.updates.previous()) { // L: 21
+			++var6; // L: 22
+			if (var7.cycle == var1) { // L: 23
+				var7.set(var1, var2, var3, var4); // L: 24
+				return; // L: 25
 			}
+
 			if (var7.cycle <= var1) {
-				var5 = var7;
+				var5 = var7; // L: 27
 			}
 		}
-		if (var5 == null) {
-			if (var6 < 4) {
+
+		if (var5 == null) { // L: 29
+			if (var6 < 4) { // L: 30
 				this.updates.addLast(new HealthBarUpdate(var1, var2, var3, var4));
 			}
-		} else {
-			IterableNodeDeque.IterableNodeDeque_addBefore(new HealthBarUpdate(var1, var2, var3, var4), var5);
-			if (var6 >= 4) {
-				this.updates.last().remove();
-			}
-		}
-	}
 
-	@ObfuscatedName("h")
-	@ObfuscatedSignature(descriptor = "(II)Lcc;", garbageValue = "-741230363")
+		} else {
+			IterableNodeDeque.IterableNodeDeque_addBefore(new HealthBarUpdate(var1, var2, var3, var4), var5); // L: 33
+			if (var6 >= 4) {
+				this.updates.last().remove(); // L: 34
+			}
+
+		}
+	} // L: 31 35
+
+	@ObfuscatedName("p")
+	@ObfuscatedSignature(
+		descriptor = "(II)Lcg;",
+		garbageValue = "-160380440"
+	)
 	@Export("get")
 	HealthBarUpdate get(int var1) {
-		HealthBarUpdate var2 = ((HealthBarUpdate) (this.updates.last()));
-		if (var2 != null && var2.cycle <= var1) {
-			for (HealthBarUpdate var3 = ((HealthBarUpdate) (this.updates.previous())); var3 != null && var3.cycle <= var1; var3 = ((HealthBarUpdate) (this.updates.previous()))) {
-				var2.remove();
+		HealthBarUpdate var2 = (HealthBarUpdate)this.updates.last(); // L: 38
+		if (var2 != null && var2.cycle <= var1) { // L: 39
+			for (HealthBarUpdate var3 = (HealthBarUpdate)this.updates.previous(); var3 != null && var3.cycle <= var1; var3 = (HealthBarUpdate)this.updates.previous()) { // L: 40 41
+				var2.remove(); // L: 42
 				var2 = var3;
 			}
-			if (this.definition.int5 + var2.cycle + var2.cycleOffset > var1) {
+
+			if (this.definition.int5 + var2.cycle + var2.cycleOffset > var1) { // L: 47
 				return var2;
 			} else {
-				var2.remove();
-				return null;
+				var2.remove(); // L: 49
+				return null; // L: 50
 			}
 		} else {
 			return null;
 		}
 	}
 
-	@ObfuscatedName("w")
-	@ObfuscatedSignature(descriptor = "(I)Z", garbageValue = "1803012983")
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z",
+		garbageValue = "705872557"
+	)
 	@Export("isEmpty")
 	boolean isEmpty() {
-		return this.updates.method6073();
+		return this.updates.method6309(); // L: 55
 	}
 
-	@ObfuscatedName("s")
-	@ObfuscatedSignature(descriptor = "(II)Lgu;", garbageValue = "-1068428838")
-	public static HitSplatDefinition method2311(int var0) {
-		HitSplatDefinition var1 = ((HitSplatDefinition) (HitSplatDefinition.HitSplatDefinition_cached.get(((long) (var0)))));
-		if (var1 != null) {
-			return var1;
-		} else {
-			byte[] var2 = class430.HitSplatDefinition_archive.takeFile(32, var0);
-			var1 = new HitSplatDefinition();
-			if (var2 != null) {
-				var1.decode(new Buffer(var2));
-			}
-			HitSplatDefinition.HitSplatDefinition_cached.put(var1, ((long) (var0)));
-			return var1;
-		}
-	}
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "([Ljava/lang/String;[IS)V",
+		garbageValue = "255"
+	)
+	public static void method2495(String[] var0, int[] var1) {
+		class353.method6683(var0, var1, 0, var0.length - 1); // L: 43
+	} // L: 44
 }

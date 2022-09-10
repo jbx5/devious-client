@@ -1,76 +1,78 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.Export;
-@ObfuscatedName("hu")
+
+@ObfuscatedName("hr")
 @Implements("WorldMapData_0")
 public class WorldMapData_0 extends AbstractWorldMapData {
-	@ObfuscatedName("mx")
-	@ObfuscatedGetter(intValue = 963693657)
-	@Export("menuHeight")
-	static int menuHeight;
-
 	WorldMapData_0() {
-	}
+	} // L: 6
 
-	@ObfuscatedName("s")
-	@ObfuscatedSignature(descriptor = "(Lqr;B)V", garbageValue = "75")
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "(Lqq;B)V",
+		garbageValue = "44"
+	)
 	@Export("init")
 	void init(Buffer var1) {
-		int var2 = var1.readUnsignedByte();
-		if (var2 != WorldMapID.field2849.value) {
-			throw new IllegalStateException("");
+		int var2 = var1.readUnsignedByte(); // L: 9
+		if (var2 != WorldMapID.field2873.value) { // L: 10
+			throw new IllegalStateException(""); // L: 11
 		} else {
-			super.minPlane = var1.readUnsignedByte();
-			super.planes = var1.readUnsignedByte();
-			super.regionXLow = var1.readUnsignedShort() * 4096;
-			super.regionYLow = var1.readUnsignedShort() * 64;
-			super.regionX = var1.readUnsignedShort();
-			super.regionY = var1.readUnsignedShort();
-			super.groupId = var1.readNullableLargeSmart();
-			super.fileId = var1.readNullableLargeSmart();
+			super.minPlane = var1.readUnsignedByte(); // L: 13
+			super.planes = var1.readUnsignedByte(); // L: 14
+			super.regionXLow = var1.readUnsignedShort() * 64; // L: 15
+			super.regionYLow = var1.readUnsignedShort() * 4096; // L: 16
+			super.regionX = var1.readUnsignedShort(); // L: 17
+			super.regionY = var1.readUnsignedShort(); // L: 18
+			super.groupId = var1.readNullableLargeSmart(); // L: 19
+			super.fileId = var1.readNullableLargeSmart(); // L: 20
 		}
-	}
+	} // L: 21
 
-	@ObfuscatedName("h")
-	@ObfuscatedSignature(descriptor = "(Lqr;B)V", garbageValue = "42")
+	@ObfuscatedName("p")
+	@ObfuscatedSignature(
+		descriptor = "(Lqq;I)V",
+		garbageValue = "1696330768"
+	)
 	@Export("readGeography")
 	void readGeography(Buffer var1) {
-		super.planes = Math.min(super.planes, 4);
-		super.floorUnderlayIds = new short[1][64][64];
-		super.floorOverlayIds = new short[super.planes][64][64];
-		super.field2814 = new byte[super.planes][64][64];
-		super.field2808 = new byte[super.planes][64][64];
-		super.decorations = new WorldMapDecoration[super.planes][64][64][];
-		int var2 = var1.readUnsignedByte();
-		if (var2 != class238.field2843.value) {
-			throw new IllegalStateException("");
+		super.planes = Math.min(super.planes, 4); // L: 25
+		super.floorUnderlayIds = new short[1][64][64]; // L: 26
+		super.floorOverlayIds = new short[super.planes][64][64]; // L: 27
+		super.field2839 = new byte[super.planes][64][64]; // L: 28
+		super.field2834 = new byte[super.planes][64][64]; // L: 29
+		super.decorations = new WorldMapDecoration[super.planes][64][64][]; // L: 30
+		int var2 = var1.readUnsignedByte(); // L: 31
+		if (var2 != class239.field2866.value) { // L: 32
+			throw new IllegalStateException(""); // L: 33
 		} else {
-			int var3 = var1.readUnsignedByte();
-			int var4 = var1.readUnsignedByte();
-			if (var3 == super.regionX && var4 == super.regionY) {
-				for (int var5 = 0; var5 < 64; ++var5) {
-					for (int var6 = 0; var6 < 64; ++var6) {
-						this.readTile(var5, var6, var1);
+			int var3 = var1.readUnsignedByte(); // L: 35
+			int var4 = var1.readUnsignedByte(); // L: 36
+			if (var3 == super.regionX && var4 == super.regionY) { // L: 37
+				for (int var5 = 0; var5 < 64; ++var5) { // L: 40
+					for (int var6 = 0; var6 < 64; ++var6) { // L: 41
+						this.readTile(var5, var6, var1); // L: 42
 					}
 				}
+
 			} else {
-				throw new IllegalStateException("");
+				throw new IllegalStateException(""); // L: 38
 			}
 		}
+	} // L: 45
+
+	public int hashCode() {
+		return super.regionX | super.regionY << 8; // L: 58
 	}
 
 	public boolean equals(Object var1) {
-		if (!(var1 instanceof WorldMapData_0)) {
-			return false;
+		if (!(var1 instanceof WorldMapData_0)) { // L: 49
+			return false; // L: 50
 		} else {
-			WorldMapData_0 var2 = ((WorldMapData_0) (var1));
-			return super.regionX == var2.regionX && var2.regionY == super.regionY;
+			WorldMapData_0 var2 = (WorldMapData_0)var1; // L: 52
+			return var2.regionX == super.regionX && super.regionY == var2.regionY; // L: 53
 		}
-	}
-
-	public int hashCode() {
-		return super.regionX | super.regionY << 8;
 	}
 }

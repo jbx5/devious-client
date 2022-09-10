@@ -1,67 +1,49 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.Export;
-@ObfuscatedName("gk")
+
+@ObfuscatedName("gi")
 @Implements("FloorDecoration")
 public final class FloorDecoration {
-	@ObfuscatedName("n")
-	public static short[][] field2275;
-
-	@ObfuscatedName("fb")
-	@ObfuscatedGetter(intValue = -2009762117)
-	@Export("worldPort")
-	static int worldPort;
-
-	@ObfuscatedName("s")
-	@ObfuscatedGetter(intValue = -1439351211)
+	@ObfuscatedName("c")
+	@ObfuscatedGetter(
+		intValue = 1749648961
+	)
 	@Export("z")
 	int z;
-
-	@ObfuscatedName("h")
-	@ObfuscatedGetter(intValue = 1613157255)
+	@ObfuscatedName("p")
+	@ObfuscatedGetter(
+		intValue = -1722441719
+	)
 	@Export("x")
 	int x;
-
-	@ObfuscatedName("w")
-	@ObfuscatedGetter(intValue = -675416611)
+	@ObfuscatedName("f")
+	@ObfuscatedGetter(
+		intValue = -472964851
+	)
 	@Export("y")
 	int y;
-
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "Lgq;")
+	@ObfuscatedName("n")
+	@ObfuscatedSignature(
+		descriptor = "Lgg;"
+	)
 	@Export("renderable")
 	public Renderable renderable;
-
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(longValue = -6753090577772011297L)
+	@ObfuscatedName("k")
+	@ObfuscatedGetter(
+		longValue = 5933410536782648867L
+	)
 	@Export("tag")
 	public long tag;
-
-	@ObfuscatedName("q")
-	@ObfuscatedGetter(intValue = 861358365)
+	@ObfuscatedName("w")
+	@ObfuscatedGetter(
+		intValue = -79580845
+	)
 	@Export("flags")
 	int flags;
 
 	FloorDecoration() {
-	}
-
-	@ObfuscatedName("s")
-	@ObfuscatedSignature(descriptor = "(Lls;Lls;I)V", garbageValue = "-205483995")
-	public static void method3921(AbstractArchive var0, AbstractArchive var1) {
-		NPCComposition.NpcDefinition_archive = var0;
-		NPCComposition.NpcDefinition_modelArchive = var1;
-	}
-
-	@ObfuscatedName("i")
-	@ObfuscatedSignature(descriptor = "(IIIZII)J", garbageValue = "-2095425812")
-	@Export("calculateTag")
-	public static long calculateTag(int var0, int var1, int var2, boolean var3, int var4) {
-		long var5 = ((long) ((var0 & 127) << 0 | (var1 & 127) << 7 | (var2 & 3) << 14)) | (((long) (var4)) & 4294967295L) << 17;
-		if (var3) {
-			var5 |= 65536L;
-		}
-		return var5;
-	}
+	} // L: 11
 }

@@ -1,57 +1,70 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.Export;
-@ObfuscatedName("ka")
+
+@ObfuscatedName("kb")
 @Implements("Varps")
 public class Varps {
-	@ObfuscatedName("s")
+	@ObfuscatedName("ub")
+	@ObfuscatedSignature(
+		descriptor = "Lbr;"
+	)
+	@Export("friendSystem")
+	public static FriendSystem friendSystem;
+	@ObfuscatedName("c")
 	@Export("Varps_masks")
-	static int[] Varps_masks = new int[32];
-
-	@ObfuscatedName("h")
+	static int[] Varps_masks;
+	@ObfuscatedName("p")
 	@Export("Varps_temp")
 	public static int[] Varps_temp;
-
-	@ObfuscatedName("w")
+	@ObfuscatedName("f")
 	@Export("Varps_main")
 	public static int[] Varps_main;
 
 	static {
-		int var0 = 2;
-		for (int var1 = 0; var1 < 32; ++var1) {
-			Varps_masks[var1] = var0 - 1;
-			var0 += var0;
+		Varps_masks = new int[32]; // L: 6
+		int var0 = 2; // L: 9
+
+		for (int var1 = 0; var1 < 32; ++var1) { // L: 10
+			Varps_masks[var1] = var0 - 1; // L: 11
+			var0 += var0; // L: 12
 		}
-		Varps_temp = new int[4000];
+
+		Varps_temp = new int[4000]; // L: 16
 		Varps_main = new int[4000];
 	}
 
-	@ObfuscatedName("w")
-	@ObfuscatedSignature(descriptor = "(IIB)Lbz;", garbageValue = "8")
-	static Script method5465(int var0, int var1) {
-		Script var2 = ((Script) (Script.Script_cached.get(((long) (var0 << 16)))));
-		if (var2 != null) {
-			return var2;
-		} else {
-			String var3 = String.valueOf(var0);
-			int var4 = SequenceDefinition.archive12.getGroupId(var3);
-			if (var4 == -1) {
-				return null;
-			} else {
-				byte[] var5 = SequenceDefinition.archive12.takeFileFlat(var4);
-				if (var5 != null) {
-					if (var5.length <= 1) {
-						return null;
-					}
-					var2 = class21.newScript(var5);
-					if (var2 != null) {
-						Script.Script_cached.put(var2, ((long) (var0 << 16)));
-						return var2;
-					}
-				}
-				return null;
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "([Llq;II)Llq;",
+		garbageValue = "-1925758966"
+	)
+	@Export("findEnumerated")
+	public static MouseWheel findEnumerated(MouseWheel[] var0, int var1) {
+		MouseWheel[] var2 = var0; // L: 17
+
+		for (int var3 = 0; var3 < var2.length; ++var3) { // L: 18
+			MouseWheel var4 = var2[var3]; // L: 19
+			if (var1 == var4.rsOrdinal()) {
+				return var4; // L: 21
 			}
+		}
+
+		return null; // L: 25
+	}
+
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(
+		descriptor = "(II)I",
+		garbageValue = "-1558722409"
+	)
+	static int method5699(int var0) {
+		Message var1 = (Message)Messages.Messages_hashTable.get((long)var0); // L: 59
+		if (var1 == null) { // L: 60
+			return -1;
+		} else {
+			return var1.nextDual == Messages.Messages_queue.sentinel ? -1 : ((Message)var1.nextDual).count; // L: 61 62
 		}
 	}
 }
