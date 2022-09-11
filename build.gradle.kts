@@ -33,11 +33,12 @@ buildscript {
         maven(url = "https://repo.unethicalite.net/releases")
         maven(url = "https://repo.unethicalite.net/snapshots")
         maven(url = "https://raw.githubusercontent.com/open-osrs/hosting/master")
+        maven(url = "https://raw.githubusercontent.com/jbx5/hosting/master")
     }
     dependencies {
         classpath("org.ajoberstar.grgit:grgit-core:4.1.0")
         classpath("com.openosrs:script-assembler-plugin:1.0.1")
-        classpath("com.openosrs:injector-plugin:2.0.5.5")
+        classpath("com.openosrs:injector-plugin:2.0.5.6")
     }
 }
 

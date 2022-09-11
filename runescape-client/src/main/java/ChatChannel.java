@@ -1,130 +1,115 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.Implements;
-import net.runelite.rs.ScriptOpcodes;
-import net.runelite.mapping.Export;
-@ObfuscatedName("bi")
+
+@ObfuscatedName("bn")
 @Implements("ChatChannel")
 public class ChatChannel {
-	@ObfuscatedName("h")
-	@ObfuscatedSignature(descriptor = "[Lbb;")
+	@ObfuscatedName("uo")
+	@ObfuscatedSignature(
+		descriptor = "Lnj;"
+	)
+	@Export("masterDisk")
+	static ArchiveDisk masterDisk;
+	@ObfuscatedName("u")
+	static int[][][] field996;
+	@ObfuscatedName("ey")
+	@ObfuscatedSignature(
+		descriptor = "Llb;"
+	)
+	@Export("archive8")
+	static Archive archive8;
+	@ObfuscatedName("iv")
+	@ObfuscatedSignature(
+		descriptor = "[Lqu;"
+	)
+	@Export("scrollBarSprites")
+	static IndexedSprite[] scrollBarSprites;
+	@ObfuscatedName("p")
+	@ObfuscatedSignature(
+		descriptor = "[Lbj;"
+	)
 	@Export("messages")
-	Message[] messages = new Message[100];
-
-	@ObfuscatedName("w")
-	@ObfuscatedGetter(intValue = 639141811)
+	Message[] messages;
+	@ObfuscatedName("f")
+	@ObfuscatedGetter(
+		intValue = 561519127
+	)
 	@Export("count")
 	int count;
 
 	ChatChannel() {
-	}
+		this.messages = new Message[100]; // L: 88
+	} // L: 91
 
-	@ObfuscatedName("s")
-	@ObfuscatedSignature(descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;B)Lbb;", garbageValue = "73")
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;B)Lbj;",
+		garbageValue = "14"
+	)
 	@Export("addMessage")
 	Message addMessage(int var1, String var2, String var3, String var4) {
-		Message var5 = this.messages[99];
-		for (int var6 = this.count; var6 > 0; --var6) {
-			if (var6 != 100) {
-				this.messages[var6] = this.messages[var6 - 1];
+		Message var5 = this.messages[99]; // L: 94
+
+		for (int var6 = this.count; var6 > 0; --var6) { // L: 95
+			if (var6 != 100) { // L: 96
+				this.messages[var6] = this.messages[var6 - 1]; // L: 97
 			}
 		}
-		if (var5 == null) {
+
+		if (var5 == null) { // L: 99
 			var5 = new Message(var1, var2, var4, var3);
 		} else {
-			var5.remove();
-			var5.removeDual();
-			var5.set(var1, var2, var4, var3);
+			var5.remove(); // L: 101
+			var5.removeDual(); // L: 102
+			var5.set(var1, var2, var4, var3); // L: 103
 		}
-		this.messages[0] = var5;
-		if (this.count < 100) {
+
+		this.messages[0] = var5; // L: 105
+		if (this.count < 100) { // L: 106
 			++this.count;
 		}
-		return var5;
+
+		return var5; // L: 107
 	}
 
-	@ObfuscatedName("h")
-	@ObfuscatedSignature(descriptor = "(II)Lbb;", garbageValue = "1075069300")
+	@ObfuscatedName("p")
+	@ObfuscatedSignature(
+		descriptor = "(II)Lbj;",
+		garbageValue = "-2032102999"
+	)
 	@Export("getMessage")
 	Message getMessage(int var1) {
-		return var1 >= 0 && var1 < this.count ? this.messages[var1] : null;
+		return var1 >= 0 && var1 < this.count ? this.messages[var1] : null; // L: 111 112
 	}
 
-	@ObfuscatedName("w")
-	@ObfuscatedSignature(descriptor = "(I)I", garbageValue = "1590892673")
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "(B)I",
+		garbageValue = "1"
+	)
 	@Export("size")
 	int size() {
-		return this.count;
+		return this.count; // L: 116
 	}
 
-	@ObfuscatedName("w")
-	@ObfuscatedSignature(descriptor = "(CI)C", garbageValue = "-1255212161")
-	static char method1958(char var0) {
-		return var0 != 181 && var0 != 402 ? Character.toTitleCase(var0) : var0;
-	}
+	@ObfuscatedName("p")
+	@ObfuscatedSignature(
+		descriptor = "(IB)Lqr;",
+		garbageValue = "0"
+	)
+	public static PrivateChatMode method2146(int var0) {
+		PrivateChatMode[] var1 = class10.method106(); // L: 20
 
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(descriptor = "(ILbz;ZB)I", garbageValue = "89")
-	static int method1964(int var0, Script var1, boolean var2) {
-		Widget var3 = HitSplatDefinition.getWidget(Interpreter.Interpreter_intStack[--User.Interpreter_intStackSize]);
-		if (var0 == ScriptOpcodes.IF_GETSCROLLX) {
-			Interpreter.Interpreter_intStack[++User.Interpreter_intStackSize - 1] = var3.scrollX;
-			return 1;
-		} else if (var0 == ScriptOpcodes.IF_GETSCROLLY) {
-			Interpreter.Interpreter_intStack[++User.Interpreter_intStackSize - 1] = var3.scrollY;
-			return 1;
-		} else if (var0 == ScriptOpcodes.IF_GETTEXT) {
-			Interpreter.Interpreter_stringStack[++UserComparator8.Interpreter_stringStackSize - 1] = var3.text;
-			return 1;
-		} else if (var0 == ScriptOpcodes.IF_GETSCROLLWIDTH) {
-			Interpreter.Interpreter_intStack[++User.Interpreter_intStackSize - 1] = var3.scrollWidth;
-			return 1;
-		} else if (var0 == ScriptOpcodes.IF_GETSCROLLHEIGHT) {
-			Interpreter.Interpreter_intStack[++User.Interpreter_intStackSize - 1] = var3.scrollHeight;
-			return 1;
-		} else if (var0 == ScriptOpcodes.IF_GETMODELZOOM) {
-			Interpreter.Interpreter_intStack[++User.Interpreter_intStackSize - 1] = var3.modelZoom;
-			return 1;
-		} else if (var0 == ScriptOpcodes.IF_GETMODELANGLE_X) {
-			Interpreter.Interpreter_intStack[++User.Interpreter_intStackSize - 1] = var3.modelAngleX;
-			return 1;
-		} else if (var0 == ScriptOpcodes.IF_GETMODELANGLE_Z) {
-			Interpreter.Interpreter_intStack[++User.Interpreter_intStackSize - 1] = var3.modelAngleZ;
-			return 1;
-		} else if (var0 == ScriptOpcodes.IF_GETMODELANGLE_Y) {
-			Interpreter.Interpreter_intStack[++User.Interpreter_intStackSize - 1] = var3.modelAngleY;
-			return 1;
-		} else if (var0 == ScriptOpcodes.IF_GETTRANS) {
-			Interpreter.Interpreter_intStack[++User.Interpreter_intStackSize - 1] = var3.transparencyTop;
-			return 1;
-		} else if (var0 == 2610) {
-			Interpreter.Interpreter_intStack[++User.Interpreter_intStackSize - 1] = var3.transparencyBot;
-			return 1;
-		} else if (var0 == ScriptOpcodes.IF_GETCOLOUR) {
-			Interpreter.Interpreter_intStack[++User.Interpreter_intStackSize - 1] = var3.color;
-			return 1;
-		} else if (var0 == ScriptOpcodes.IF_GETFILLCOLOUR) {
-			Interpreter.Interpreter_intStack[++User.Interpreter_intStackSize - 1] = var3.color2;
-			return 1;
-		} else if (var0 == 2613) {
-			Interpreter.Interpreter_intStack[++User.Interpreter_intStackSize - 1] = var3.fillMode.rsOrdinal();
-			return 1;
-		} else if (var0 == ScriptOpcodes.IF_GETMODELTRANSPARENT) {
-			Interpreter.Interpreter_intStack[++User.Interpreter_intStackSize - 1] = (var3.modelTransparency) ? 1 : 0;
-			return 1;
-		} else if (var0 != 2615 && var0 != 2616) {
-			return 2;
-		} else {
-			++User.Interpreter_intStackSize;
-			return 1;
+		for (int var2 = 0; var2 < var1.length; ++var2) { // L: 21
+			PrivateChatMode var3 = var1[var2]; // L: 22
+			if (var0 == var3.field4853) { // L: 24
+				return var3;
+			}
 		}
-	}
 
-	@ObfuscatedName("hz")
-	@ObfuscatedSignature(descriptor = "(Ljava/lang/String;Ljava/lang/String;IIIII)V", garbageValue = "1547645670")
-	@Export("insertMenuItemNoShift")
-	public static final void insertMenuItemNoShift(String var0, String var1, int var2, int var3, int var4, int var5) {
-		CollisionMap.insertMenuItem(var0, var1, var2, var3, var4, var5, -1, false);
+		return null; // L: 28
 	}
 }

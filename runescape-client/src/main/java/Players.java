@@ -1,74 +1,122 @@
+import java.awt.Component;
+import java.io.IOException;
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.Export;
-@ObfuscatedName("cw")
+
+@ObfuscatedName("ck")
 @Implements("Players")
 public class Players {
-	@ObfuscatedName("w")
-	static byte[] field1297 = new byte[2048];
-
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "[Lgi;")
-	static class192[] field1298 = new class192[2048];
-
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "[Lqr;")
-	static Buffer[] field1308 = new Buffer[2048];
-
-	@ObfuscatedName("q")
-	@ObfuscatedGetter(intValue = -2113383221)
-	@Export("Players_count")
-	static int Players_count = 0;
-
-	@ObfuscatedName("i")
-	@Export("Players_indices")
-	static int[] Players_indices = new int[2048];
-
-	@ObfuscatedName("k")
-	@ObfuscatedGetter(intValue = 1667275583)
-	@Export("Players_emptyIdxCount")
-	static int Players_emptyIdxCount = 0;
-
-	@ObfuscatedName("o")
-	@Export("Players_emptyIndices")
-	static int[] Players_emptyIndices = new int[2048];
-
+	@ObfuscatedName("f")
+	static byte[] field1290;
 	@ObfuscatedName("n")
-	@Export("Players_regions")
-	static int[] Players_regions = new int[2048];
-
-	@ObfuscatedName("d")
-	@Export("Players_orientations")
-	static int[] Players_orientations = new int[2048];
-
-	@ObfuscatedName("a")
-	@Export("Players_targetIndices")
-	static int[] Players_targetIndices = new int[2048];
-
-	@ObfuscatedName("m")
-	@ObfuscatedGetter(intValue = -1903883359)
-	@Export("Players_pendingUpdateCount")
-	static int Players_pendingUpdateCount = 0;
-
-	@ObfuscatedName("u")
-	@Export("Players_pendingUpdateIndices")
-	static int[] Players_pendingUpdateIndices = new int[2048];
-
-	@ObfuscatedName("l")
-	@ObfuscatedSignature(descriptor = "Lqr;")
-	static Buffer field1309 = new Buffer(new byte[5000]);
-
+	@ObfuscatedSignature(
+		descriptor = "[Lga;"
+	)
+	static class193[] field1291;
+	@ObfuscatedName("k")
+	@ObfuscatedSignature(
+		descriptor = "[Lqq;"
+	)
+	static Buffer[] field1292;
+	@ObfuscatedName("w")
+	@ObfuscatedGetter(
+		intValue = -1742411547
+	)
+	@Export("Players_count")
+	static int Players_count;
 	@ObfuscatedName("s")
-	@ObfuscatedSignature(descriptor = "(I)[Lch;", garbageValue = "643509029")
-	static class83[] method2388() {
-		return new class83[]{ class83.field1077, class83.field1073, class83.field1076, class83.field1078, class83.field1074, class83.field1081 };
+	@Export("Players_indices")
+	static int[] Players_indices;
+	@ObfuscatedName("q")
+	@ObfuscatedGetter(
+		intValue = 842704609
+	)
+	@Export("Players_emptyIdxCount")
+	static int Players_emptyIdxCount;
+	@ObfuscatedName("m")
+	@Export("Players_emptyIndices")
+	static int[] Players_emptyIndices;
+	@ObfuscatedName("x")
+	@Export("Players_regions")
+	static int[] Players_regions;
+	@ObfuscatedName("j")
+	@Export("Players_orientations")
+	static int[] Players_orientations;
+	@ObfuscatedName("v")
+	@Export("Players_targetIndices")
+	static int[] Players_targetIndices;
+	@ObfuscatedName("h")
+	@ObfuscatedGetter(
+		intValue = 1336760617
+	)
+	@Export("Players_pendingUpdateCount")
+	static int Players_pendingUpdateCount;
+	@ObfuscatedName("t")
+	@Export("Players_pendingUpdateIndices")
+	static int[] Players_pendingUpdateIndices;
+	@ObfuscatedName("u")
+	@ObfuscatedSignature(
+		descriptor = "Lqq;"
+	)
+	static Buffer field1302;
+	@ObfuscatedName("bj")
+	@ObfuscatedSignature(
+		descriptor = "Lpn;"
+	)
+	@Export("loginType")
+	static LoginType loginType;
+
+	static {
+		field1290 = new byte[2048]; // L: 18
+		field1291 = new class193[2048]; // L: 19
+		field1292 = new Buffer[2048]; // L: 20
+		Players_count = 0; // L: 21
+		Players_indices = new int[2048]; // L: 22
+		Players_emptyIdxCount = 0; // L: 23
+		Players_emptyIndices = new int[2048]; // L: 24
+		Players_regions = new int[2048]; // L: 25
+		Players_orientations = new int[2048]; // L: 26
+		Players_targetIndices = new int[2048]; // L: 27
+		Players_pendingUpdateCount = 0; // L: 28
+		Players_pendingUpdateIndices = new int[2048]; // L: 29
+		field1302 = new Buffer(new byte[5000]); // L: 30
 	}
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(II)Z", garbageValue = "1108116744")
-	public static boolean method2383(int var0) {
-		return (var0 >> 20 & 1) != 0;
-	}
+	@ObfuscatedName("p")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/awt/Component;I)V",
+		garbageValue = "1351614638"
+	)
+	static void method2569(Component var0) {
+		var0.removeKeyListener(KeyHandler.KeyHandler_instance); // L: 155
+		var0.removeFocusListener(KeyHandler.KeyHandler_instance); // L: 156
+		KeyHandler.field131 = -1; // L: 157
+	} // L: 158
+
+	@ObfuscatedName("hg")
+	@ObfuscatedSignature(
+		descriptor = "(ZI)V",
+		garbageValue = "1280446"
+	)
+	static final void method2581(boolean var0) {
+		class14.playPcmPlayers(); // L: 5510
+		++Client.packetWriter.pendingWrites; // L: 5511
+		if (Client.packetWriter.pendingWrites >= 50 || var0) { // L: 5512
+			Client.packetWriter.pendingWrites = 0; // L: 5513
+			if (!Client.hadNetworkError && Client.packetWriter.getSocket() != null) { // L: 5514
+				PacketBufferNode var1 = class120.getPacketBufferNode(ClientPacket.OPPLAYER7, Client.packetWriter.isaacCipher); // L: 5516
+				Client.packetWriter.addNode(var1); // L: 5517
+
+				try {
+					Client.packetWriter.flush(); // L: 5519
+				} catch (IOException var3) { // L: 5521
+					Client.hadNetworkError = true; // L: 5522
+				}
+			}
+
+		}
+	} // L: 5525
 }

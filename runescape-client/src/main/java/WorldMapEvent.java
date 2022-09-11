@@ -1,105 +1,87 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.Export;
-@ObfuscatedName("ib")
+
+@ObfuscatedName("in")
 @Implements("WorldMapEvent")
 public class WorldMapEvent {
-	@ObfuscatedName("s")
-	@ObfuscatedGetter(intValue = 1706747549)
+	@ObfuscatedName("c")
+	@ObfuscatedGetter(
+		intValue = -1057426347
+	)
 	@Export("mapElement")
 	public int mapElement;
-
-	@ObfuscatedName("h")
-	@ObfuscatedSignature(descriptor = "Lku;")
+	@ObfuscatedName("p")
+	@ObfuscatedSignature(
+		descriptor = "Lkz;"
+	)
 	@Export("coord1")
 	public Coord coord1;
-
-	@ObfuscatedName("w")
-	@ObfuscatedSignature(descriptor = "Lku;")
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "Lkz;"
+	)
 	@Export("coord2")
 	public Coord coord2;
 
-	@ObfuscatedSignature(descriptor = "(ILku;Lku;)V")
+	@ObfuscatedSignature(
+		descriptor = "(ILkz;Lkz;)V"
+	)
 	public WorldMapEvent(int var1, Coord var2, Coord var3) {
-		this.mapElement = var1;
-		this.coord1 = var2;
-		this.coord2 = var3;
+		this.mapElement = var1; // L: 11
+		this.coord1 = var2; // L: 12
+		this.coord2 = var3; // L: 13
+	} // L: 14
+
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "(B)[Ljl;",
+		garbageValue = "127"
+	)
+	@Export("ServerPacket_values")
+	public static ServerPacket[] ServerPacket_values() {
+		return new ServerPacket[]{ServerPacket.NPC_INFO_LARGE_VIEWPORT_1, ServerPacket.SYNC_CLIENT_VARCACHE, ServerPacket.field3073, ServerPacket.field3074, ServerPacket.field3145, ServerPacket.CHAT_FILTER_SETTINGS, ServerPacket.field3077, ServerPacket.field3125, ServerPacket.NPC_INFO_SMALL_VIEWPORT_1, ServerPacket.field3080, ServerPacket.field3081, ServerPacket.IF_SETANGLE, ServerPacket.field3083, ServerPacket.field3084, ServerPacket.UPDATE_STOCKMARKET_SLOT, ServerPacket.field3086, ServerPacket.NPC_SPOTANIM, ServerPacket.field3071, ServerPacket.CAM_SETANGLE, ServerPacket.UPDATE_ZONE_FULL_FOLLOWS, ServerPacket.NPC_INFO_LARGE_VIEWPORT_2, ServerPacket.field3092, ServerPacket.REBUILD_REGION, ServerPacket.UPDATE_UID192, ServerPacket.MESSAGE_GAME, ServerPacket.RUNCLIENTSCRIPT, ServerPacket.field3097, ServerPacket.field3098, ServerPacket.field3099, ServerPacket.field3147, ServerPacket.SET_PLAYER_OP, ServerPacket.IF_SETOBJECT, ServerPacket.field3103, ServerPacket.UPDATE_IGNORELIST, ServerPacket.field3105, ServerPacket.UPDATE_STAT, ServerPacket.IF_SETHIDE, ServerPacket.PLAYER_SPOTANIM, ServerPacket.PLAYER_INFO, ServerPacket.UPDATE_REBOOT_TIMER, ServerPacket.field3113, ServerPacket.field3175, ServerPacket.EVENT_WORLDHOP, ServerPacket.PING_STATISTICS_REQUEST, ServerPacket.PROJECTILE_SPAWN, ServerPacket.MESSAGE_PRIVATE, ServerPacket.IF_MOVESUB, ServerPacket.MESSAGE_PRIVATE_ECHO, ServerPacket.NPC_INFO_SMALL_VIEWPORT_2, ServerPacket.field3127, ServerPacket.field3121, ServerPacket.field3151, ServerPacket.IF_SETNPCHEAD, ServerPacket.field3124, ServerPacket.field3072, ServerPacket.IF_SETPOSITION, ServerPacket.LOGOUT, ServerPacket.IF_SETMODEL, ServerPacket.UPDATE_FRIENDLIST, ServerPacket.GRAPHICSOBJECT_SPAWN, ServerPacket.field3131, ServerPacket.field3132, ServerPacket.field3133, ServerPacket.field3091, ServerPacket.IF_SETSCROLLPOS, ServerPacket.UPDATE_ZONE_PARTIAL_ENCLOSED, ServerPacket.DYNAMICOBJECT_SPAWN, ServerPacket.RESET_CLIENT_VARCACHE, ServerPacket.field3139, ServerPacket.field3140, ServerPacket.MINIMAP_FLAG_SET, ServerPacket.field3172, ServerPacket.field3143, ServerPacket.IF_SETPLAYERHEAD, ServerPacket.UPDATE_INV_STOP_TRANSIT, ServerPacket.field3146, ServerPacket.UPDATE_INV_CLEAR, ServerPacket.MINIMAP_TOGGLE, ServerPacket.VARP_LARGE, ServerPacket.LOGOUT_FULL, ServerPacket.CAM_RESET, ServerPacket.TRIGGER_ONDIALOG_ABORT, ServerPacket.field3089, ServerPacket.IF_CLOSESUB, ServerPacket.SET_PRIVCHATMODE, ServerPacket.UPDATE_INV_FULL, ServerPacket.CAM_LOOKAT, ServerPacket.VARP_SMALL, ServerPacket.IF_SETCOLOUR, ServerPacket.field3082, ServerPacket.HINT_ARROW, ServerPacket.UPDATE_INV_PARTIAL, ServerPacket.field3163, ServerPacket.field3075, ServerPacket.field3154, ServerPacket.MIDI_SONG, ServerPacket.REBUILD_NORMAL, ServerPacket.REFLECTION_CHECKER, ServerPacket.field3169, ServerPacket.NPC_SET_SEQUENCE, ServerPacket.field3171, ServerPacket.URL_OPEN, ServerPacket.MESSAGE_FRIENDS_CHAT, ServerPacket.field3108, ServerPacket.field3166, ServerPacket.field3176}; // L: 115
 	}
 
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "(B)V", garbageValue = "32")
-	public static void method5064() {
-		try {
-			if (class273.musicPlayerStatus == 1) {
-				int var0 = ItemContainer.midiPcmStream.method5237();
-				if (var0 > 0 && ItemContainer.midiPcmStream.isReady()) {
-					var0 -= class160.pcmSampleLength;
-					if (var0 < 0) {
-						var0 = 0;
-					}
-					ItemContainer.midiPcmStream.setPcmStreamVolume(var0);
-					return;
-				}
-				ItemContainer.midiPcmStream.clear();
-				ItemContainer.midiPcmStream.removeAll();
-				if (NetFileRequest.musicTrackArchive != null) {
-					class273.musicPlayerStatus = 2;
-				} else {
-					class273.musicPlayerStatus = 0;
-				}
-				Username.musicTrack = null;
-				Script.soundCache = null;
-			}
-		} catch (Exception var2) {
-			var2.printStackTrace();
-			ItemContainer.midiPcmStream.clear();
-			class273.musicPlayerStatus = 0;
-			Username.musicTrack = null;
-			Script.soundCache = null;
-			NetFileRequest.musicTrackArchive = null;
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "(II)Ldv;",
+		garbageValue = "-958717632"
+	)
+	static class119 method5257(int var0) {
+		class119[] var1 = new class119[]{class119.field1480, class119.field1470, class119.field1473, class119.field1472, class119.field1471, class119.field1474}; // L: 33
+		class119 var2 = (class119)Varps.findEnumerated(var1, var0); // L: 35
+		if (var2 == null) { // L: 36
+			var2 = class119.field1480;
 		}
+
+		return var2; // L: 37
 	}
 
-	@ObfuscatedName("hh")
-	@ObfuscatedSignature(descriptor = "(ILjava/lang/String;B)V", garbageValue = "3")
-	static void method5063(int var0, String var1) {
-		int var2 = Players.Players_count;
-		int[] var3 = Players.Players_indices;
-		boolean var4 = false;
-		Username var5 = new Username(var1, StructComposition.loginType);
-		for (int var6 = 0; var6 < var2; ++var6) {
-			Player var7 = Client.players[var3[var6]];
-			if (var7 != null && var7 != ScriptFrame.localPlayer && var7.username != null && var7.username.equals(var5)) {
-				PacketBufferNode var8;
-				if (var0 == 1) {
-					var8 = DevicePcmPlayerProvider.getPacketBufferNode(ClientPacket.OPPLAYER1, Client.packetWriter.isaacCipher);
-					var8.packetBuffer.writeByteSub(0);
-					var8.packetBuffer.writeShortAdd(var3[var6]);
-					Client.packetWriter.addNode(var8);
-				} else if (var0 == 4) {
-					var8 = DevicePcmPlayerProvider.getPacketBufferNode(ClientPacket.OPPLAYER4, Client.packetWriter.isaacCipher);
-					var8.packetBuffer.writeShortAdd(var3[var6]);
-					var8.packetBuffer.writeByteSub(0);
-					Client.packetWriter.addNode(var8);
-				} else if (var0 == 6) {
-					var8 = DevicePcmPlayerProvider.getPacketBufferNode(ClientPacket.OPPLAYER6, Client.packetWriter.isaacCipher);
-					var8.packetBuffer.writeByteAdd(0);
-					var8.packetBuffer.writeShortAdd(var3[var6]);
-					Client.packetWriter.addNode(var8);
-				} else if (var0 == 7) {
-					var8 = DevicePcmPlayerProvider.getPacketBufferNode(ClientPacket.OPPLAYER7, Client.packetWriter.isaacCipher);
-					var8.packetBuffer.writeByte(0);
-					var8.packetBuffer.writeShortAddLE(var3[var6]);
-					Client.packetWriter.addNode(var8);
+	@ObfuscatedName("hd")
+	@ObfuscatedSignature(
+		descriptor = "(Lcl;I)Z",
+		garbageValue = "2125074657"
+	)
+	static boolean method5256(Player var0) {
+		if (Client.drawPlayerNames == 0) { // L: 4796
+			return false;
+		} else {
+			boolean var1;
+			if (class67.localPlayer == var0) { // L: 4797
+				var1 = (Client.drawPlayerNames & 8) != 0; // L: 4811
+				return var1; // L: 4813
+			} else {
+				var1 = UserComparator4.method2730() || class137.method3085() && var0.isFriend(); // L: 4798
+				if (!var1) { // L: 4799
+					boolean var2 = (Client.drawPlayerNames & 2) != 0; // L: 4802
+					var1 = var2 && var0.isFriendsChatMember(); // L: 4804
 				}
-				var4 = true;
-				break;
+
+				return var1; // L: 4806
 			}
-		}
-		if (!var4) {
-			VarcInt.addGameMessage(4, "", "Unable to find " + var1);
 		}
 	}
 }
