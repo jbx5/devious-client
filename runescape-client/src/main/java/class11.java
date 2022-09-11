@@ -182,7 +182,7 @@ class class11 implements TlsAuthentication {
 		garbageValue = "304356131"
 	)
 	static void method113() {
-		Client.mouseLastLastPressedTimeMillis = 1L; // L: 2548
+		Client.mouseLastLastPressedTimeMillis = -1L; // L: 2548
 		class268.mouseRecorder.index = 0; // L: 2549
 		class92.hasFocus = true; // L: 2550
 		Client.hadFocus = true; // L: 2551

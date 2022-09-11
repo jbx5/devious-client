@@ -366,7 +366,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 	static int cycle;
 	@ObfuscatedName("df")
 	@ObfuscatedGetter(
-		longValue = 357724067631522685L
+		longValue = -357724067631522685L
 	)
 	@Export("mouseLastLastPressedTimeMillis")
 	static long mouseLastLastPressedTimeMillis;
@@ -426,7 +426,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 	static int hintArrowY;
 	@ObfuscatedName("dk")
 	@ObfuscatedGetter(
-		intValue = 1826852820
+		intValue = -1234057238
 	)
 	@Export("hintArrowHeight")
 	static int hintArrowHeight;
@@ -1391,7 +1391,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 		gameState = 0; // L: 176
 		isLoading = true; // L: 200
 		cycle = 0; // L: 201
-		mouseLastLastPressedTimeMillis = 1L; // L: 202
+		mouseLastLastPressedTimeMillis = -1L; // L: 202
 		field505 = -1; // L: 204
 		field506 = -1; // L: 205
 		field507 = -1L; // L: 206
@@ -3256,12 +3256,12 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 
 				PacketBufferNode var18;
 				if (MouseHandler.MouseHandler_lastButton == 1 || !Renderable.mouseCam && MouseHandler.MouseHandler_lastButton == 4 || MouseHandler.MouseHandler_lastButton == 2) { // L: 3034
-					long var16 = MouseHandler.MouseHandler_lastPressedTimeMillis - mouseLastLastPressedTimeMillis * -1L; // L: 3035
+					long var16 = MouseHandler.MouseHandler_lastPressedTimeMillis - mouseLastLastPressedTimeMillis; // L: 3035
 					if (var16 > 32767L) { // L: 3036
 						var16 = 32767L;
 					}
 
-					mouseLastLastPressedTimeMillis = MouseHandler.MouseHandler_lastPressedTimeMillis * -1L; // L: 3037
+					mouseLastLastPressedTimeMillis = MouseHandler.MouseHandler_lastPressedTimeMillis; // L: 3037
 					var3 = MouseHandler.MouseHandler_lastPressedY; // L: 3038
 					if (var3 < 0) { // L: 3039
 						var3 = 0;
