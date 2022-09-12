@@ -534,10 +534,6 @@ public class RuneLite
 		// to main settings
 		pluginManager.loadDefaultPluginConfiguration(null);
 
-		// Start client session
-		clientSessionManager.start();
-		eventBus.register(clientSessionManager);
-
 		SplashScreen.stage(.75, null, "Starting core interface");
 
 		// Initialize UI
