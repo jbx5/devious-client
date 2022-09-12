@@ -97,7 +97,7 @@ public class class20 implements Callable {
 			if (var1 >= 0 && var1 < Client.currentClanChannels[var0].method3265()) { // L: 11991
 				ClanChannelMember var2 = (ClanChannelMember)Client.currentClanChannels[var0].members.get(var1); // L: 11992
 				if (var2.rank == -1) { // L: 11993
-					PacketBufferNode var3 = class120.getPacketBufferNode(ClientPacket.CHAT_SETFILTER, Client.packetWriter.isaacCipher); // L: 11994
+					PacketBufferNode var3 = class120.getPacketBufferNode(ClientPacket.field2960, Client.packetWriter.isaacCipher); // L: 11994
 					var3.packetBuffer.writeByte(3 + class357.stringCp1252NullTerminatedByteSize(var2.username.getName())); // L: 11995
 					var3.packetBuffer.writeByte(var0); // L: 11996
 					var3.packetBuffer.writeShort(var1); // L: 11997

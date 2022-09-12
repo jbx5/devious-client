@@ -237,7 +237,7 @@ public class class148 extends class129 {
 	)
 	@Export("Clan_leaveChat")
 	static final void Clan_leaveChat() {
-		PacketBufferNode var0 = class120.getPacketBufferNode(ClientPacket.REFLECTION_CHECK_REPLY, Client.packetWriter.isaacCipher); // L: 11970
+		PacketBufferNode var0 = class120.getPacketBufferNode(ClientPacket.field2963, Client.packetWriter.isaacCipher); // L: 11970
 		var0.packetBuffer.writeByte(0); // L: 11971
 		Client.packetWriter.addNode(var0); // L: 11972
 	} // L: 11973

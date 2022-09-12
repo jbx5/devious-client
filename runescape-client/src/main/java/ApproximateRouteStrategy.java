@@ -169,7 +169,7 @@ public class ApproximateRouteStrategy extends RouteStrategy {
 				if (var7) { // L: 9288
 					PacketBufferNode var10;
 					if (var0 == 1) { // L: 9291
-						var10 = class120.getPacketBufferNode(ClientPacket.OPLOC3, Client.packetWriter.isaacCipher); // L: 9293
+						var10 = class120.getPacketBufferNode(ClientPacket.IF_BUTTON1, Client.packetWriter.isaacCipher); // L: 9293
 						var10.packetBuffer.writeInt(var1); // L: 9294
 						var10.packetBuffer.writeShort(var2); // L: 9295
 						var10.packetBuffer.writeShort(var3); // L: 9296
@@ -177,7 +177,7 @@ public class ApproximateRouteStrategy extends RouteStrategy {
 					}
 
 					if (var0 == 2) { // L: 9299
-						var10 = class120.getPacketBufferNode(ClientPacket.FRIEND_DELUSER, Client.packetWriter.isaacCipher); // L: 9301
+						var10 = class120.getPacketBufferNode(ClientPacket.IF_BUTTON2, Client.packetWriter.isaacCipher); // L: 9301
 						var10.packetBuffer.writeInt(var1); // L: 9302
 						var10.packetBuffer.writeShort(var2); // L: 9303
 						var10.packetBuffer.writeShort(var3); // L: 9304
@@ -185,7 +185,7 @@ public class ApproximateRouteStrategy extends RouteStrategy {
 					}
 
 					if (var0 == 3) { // L: 9307
-						var10 = class120.getPacketBufferNode(ClientPacket.PING_STATISTICS, Client.packetWriter.isaacCipher); // L: 9309
+						var10 = class120.getPacketBufferNode(ClientPacket.IF_BUTTON3, Client.packetWriter.isaacCipher); // L: 9309
 						var10.packetBuffer.writeInt(var1); // L: 9310
 						var10.packetBuffer.writeShort(var2); // L: 9311
 						var10.packetBuffer.writeShort(var3); // L: 9312
@@ -193,7 +193,7 @@ public class ApproximateRouteStrategy extends RouteStrategy {
 					}
 
 					if (var0 == 4) { // L: 9315
-						var10 = class120.getPacketBufferNode(ClientPacket.field2936, Client.packetWriter.isaacCipher); // L: 9317
+						var10 = class120.getPacketBufferNode(ClientPacket.IF_BUTTON4, Client.packetWriter.isaacCipher); // L: 9317
 						var10.packetBuffer.writeInt(var1); // L: 9318
 						var10.packetBuffer.writeShort(var2); // L: 9319
 						var10.packetBuffer.writeShort(var3); // L: 9320
@@ -201,7 +201,7 @@ public class ApproximateRouteStrategy extends RouteStrategy {
 					}
 
 					if (var0 == 5) { // L: 9323
-						var10 = class120.getPacketBufferNode(ClientPacket.NO_TIMEOUT, Client.packetWriter.isaacCipher); // L: 9325
+						var10 = class120.getPacketBufferNode(ClientPacket.IF_BUTTON5, Client.packetWriter.isaacCipher); // L: 9325
 						var10.packetBuffer.writeInt(var1); // L: 9326
 						var10.packetBuffer.writeShort(var2); // L: 9327
 						var10.packetBuffer.writeShort(var3); // L: 9328
@@ -209,7 +209,7 @@ public class ApproximateRouteStrategy extends RouteStrategy {
 					}
 
 					if (var0 == 6) { // L: 9331
-						var10 = class120.getPacketBufferNode(ClientPacket.field3014, Client.packetWriter.isaacCipher); // L: 9333
+						var10 = class120.getPacketBufferNode(ClientPacket.IF_BUTTON6, Client.packetWriter.isaacCipher); // L: 9333
 						var10.packetBuffer.writeInt(var1); // L: 9334
 						var10.packetBuffer.writeShort(var2); // L: 9335
 						var10.packetBuffer.writeShort(var3); // L: 9336
@@ -217,7 +217,7 @@ public class ApproximateRouteStrategy extends RouteStrategy {
 					}
 
 					if (var0 == 7) { // L: 9339
-						var10 = class120.getPacketBufferNode(ClientPacket.field3017, Client.packetWriter.isaacCipher); // L: 9341
+						var10 = class120.getPacketBufferNode(ClientPacket.IF_BUTTON7, Client.packetWriter.isaacCipher); // L: 9341
 						var10.packetBuffer.writeInt(var1); // L: 9342
 						var10.packetBuffer.writeShort(var2); // L: 9343
 						var10.packetBuffer.writeShort(var3); // L: 9344
@@ -225,7 +225,7 @@ public class ApproximateRouteStrategy extends RouteStrategy {
 					}
 
 					if (var0 == 8) { // L: 9347
-						var10 = class120.getPacketBufferNode(ClientPacket.EVENT_APPLET_FOCUS, Client.packetWriter.isaacCipher); // L: 9349
+						var10 = class120.getPacketBufferNode(ClientPacket.IF_BUTTON8, Client.packetWriter.isaacCipher); // L: 9349
 						var10.packetBuffer.writeInt(var1); // L: 9350
 						var10.packetBuffer.writeShort(var2); // L: 9351
 						var10.packetBuffer.writeShort(var3); // L: 9352
@@ -233,7 +233,7 @@ public class ApproximateRouteStrategy extends RouteStrategy {
 					}
 
 					if (var0 == 9) { // L: 9355
-						var10 = class120.getPacketBufferNode(ClientPacket.OPPLAYER1, Client.packetWriter.isaacCipher); // L: 9357
+						var10 = class120.getPacketBufferNode(ClientPacket.IF_BUTTON9, Client.packetWriter.isaacCipher); // L: 9357
 						var10.packetBuffer.writeInt(var1); // L: 9358
 						var10.packetBuffer.writeShort(var2); // L: 9359
 						var10.packetBuffer.writeShort(var3); // L: 9360
@@ -241,7 +241,7 @@ public class ApproximateRouteStrategy extends RouteStrategy {
 					}
 
 					if (var0 == 10) { // L: 9363
-						var10 = class120.getPacketBufferNode(ClientPacket.OPOBJ3, Client.packetWriter.isaacCipher); // L: 9365
+						var10 = class120.getPacketBufferNode(ClientPacket.IF_BUTTON10, Client.packetWriter.isaacCipher); // L: 9365
 						var10.packetBuffer.writeInt(var1); // L: 9366
 						var10.packetBuffer.writeShort(var2); // L: 9367
 						var10.packetBuffer.writeShort(var3); // L: 9368

@@ -287,7 +287,7 @@ public final class class269 {
 				ObjectComposition.ObjectDefinition_cachedModelData.clear(); // L: 5694
 				PacketBufferNode var17;
 				if (IgnoreList.client.hasFrame()) { // L: 5695
-					var17 = class120.getPacketBufferNode(ClientPacket.CHAT_SENDABUSEREPORT, Client.packetWriter.isaacCipher); // L: 5697
+					var17 = class120.getPacketBufferNode(ClientPacket.DETECT_MODIFIED_CLIENT, Client.packetWriter.isaacCipher); // L: 5697
 					var17.packetBuffer.writeInt(1057001181); // L: 5698
 					Client.packetWriter.addNode(var17); // L: 5699
 				}
@@ -311,7 +311,7 @@ public final class class269 {
 				Coord.updateGameState(30); // L: 5714
 				class14.playPcmPlayers(); // L: 5715
 				class12.method176(); // L: 5716
-				var17 = class120.getPacketBufferNode(ClientPacket.OPLOC4, Client.packetWriter.isaacCipher); // L: 5717
+				var17 = class120.getPacketBufferNode(ClientPacket.field2971, Client.packetWriter.isaacCipher); // L: 5717
 				Client.packetWriter.addNode(var17); // L: 5718
 				class18.method282(); // L: 5719
 			}

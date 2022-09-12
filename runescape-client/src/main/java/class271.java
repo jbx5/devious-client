@@ -262,7 +262,7 @@ public class class271 {
 			}
 
 			Client.tradeChatMode = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 2]; // L: 3506
-			PacketBufferNode var13 = class120.getPacketBufferNode(ClientPacket.field3000, Client.packetWriter.isaacCipher); // L: 3508
+			PacketBufferNode var13 = class120.getPacketBufferNode(ClientPacket.CHAT_SETFILTER, Client.packetWriter.isaacCipher); // L: 3508
 			var13.packetBuffer.writeByte(Client.publicChatMode); // L: 3509
 			var13.packetBuffer.writeByte(class142.privateChatMode.field4853); // L: 3510
 			var13.packetBuffer.writeByte(Client.tradeChatMode); // L: 3511
@@ -278,7 +278,7 @@ public class class271 {
 				Interpreter.Interpreter_intStackSize -= 2; // L: 3517
 				var7 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize]; // L: 3518
 				var9 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1]; // L: 3519
-				var6 = class120.getPacketBufferNode(ClientPacket.field2990, Client.packetWriter.isaacCipher); // L: 3521
+				var6 = class120.getPacketBufferNode(ClientPacket.CHAT_SENDABUSEREPORT, Client.packetWriter.isaacCipher); // L: 3521
 				var6.packetBuffer.writeByte(class357.stringCp1252NullTerminatedByteSize(var8) + 2); // L: 3522
 				var6.packetBuffer.writeStringCp1252NullTerminated(var8); // L: 3523
 				var6.packetBuffer.writeByte(var7 - 1); // L: 3524
