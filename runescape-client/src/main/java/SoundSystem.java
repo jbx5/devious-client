@@ -414,7 +414,7 @@ public class SoundSystem implements Runnable {
 			}
 
 			if (var1 == 326) { // L: 11772
-				PacketBufferNode var4 = class120.getPacketBufferNode(ClientPacket.IGNORE_DELUSER, Client.packetWriter.isaacCipher); // L: 11774
+				PacketBufferNode var4 = class120.getPacketBufferNode(ClientPacket.field2946, Client.packetWriter.isaacCipher); // L: 11774
 				Client.playerAppearance.write(var4.packetBuffer); // L: 11775
 				Client.packetWriter.addNode(var4); // L: 11776
 				return true; // L: 11777

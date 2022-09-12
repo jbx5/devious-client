@@ -120,7 +120,7 @@ public class class307 {
 			var12 = class67.localPlayer.plane; // L: 5321
 			var13 = class128.baseX * 64 + (class147.oculusOrbFocalPointX >> 7); // L: 5322
 			var14 = WorldMapData_1.baseY * 64 + (Language.oculusOrbFocalPointY >> 7); // L: 5323
-			PacketBufferNode var15 = class120.getPacketBufferNode(ClientPacket.RESUME_STRINGDIALOG, Client.packetWriter.isaacCipher); // L: 5326
+			PacketBufferNode var15 = class120.getPacketBufferNode(ClientPacket.field3045, Client.packetWriter.isaacCipher); // L: 5326
 			var15.packetBuffer.writeByteAdd(var12); // L: 5327
 			var15.packetBuffer.writeShort(var14); // L: 5328
 			var15.packetBuffer.writeIntIME(Client.field754); // L: 5329

@@ -223,22 +223,22 @@ public class PacketWriter {
 			if (var7 != null && var7 != class67.localPlayer && var7.username != null && var7.username.equals(var5)) { // L: 9194
 				PacketBufferNode var8;
 				if (var0 == 1) { // L: 9195
-					var8 = class120.getPacketBufferNode(ClientPacket.EVENT_WINDOW_SETTING, Client.packetWriter.isaacCipher); // L: 9197
+					var8 = class120.getPacketBufferNode(ClientPacket.OPPLAYER1, Client.packetWriter.isaacCipher); // L: 9197
 					var8.packetBuffer.writeShort(var3[var6]); // L: 9198
 					var8.packetBuffer.writeByteAdd(0); // L: 9199
 					Client.packetWriter.addNode(var8); // L: 9200
 				} else if (var0 == 4) { // L: 9202
-					var8 = class120.getPacketBufferNode(ClientPacket.field2975, Client.packetWriter.isaacCipher); // L: 9204
+					var8 = class120.getPacketBufferNode(ClientPacket.OPPLAYER4, Client.packetWriter.isaacCipher); // L: 9204
 					var8.packetBuffer.writeShortLE(var3[var6]); // L: 9205
 					var8.packetBuffer.writeByteSub(0); // L: 9206
 					Client.packetWriter.addNode(var8); // L: 9207
 				} else if (var0 == 6) { // L: 9209
-					var8 = class120.getPacketBufferNode(ClientPacket.field2973, Client.packetWriter.isaacCipher); // L: 9211
+					var8 = class120.getPacketBufferNode(ClientPacket.OPPLAYER6, Client.packetWriter.isaacCipher); // L: 9211
 					var8.packetBuffer.writeByteSub(0); // L: 9212
 					var8.packetBuffer.writeShortAdd(var3[var6]); // L: 9213
 					Client.packetWriter.addNode(var8); // L: 9214
 				} else if (var0 == 7) { // L: 9216
-					var8 = class120.getPacketBufferNode(ClientPacket.field2997, Client.packetWriter.isaacCipher); // L: 9218
+					var8 = class120.getPacketBufferNode(ClientPacket.OPPLAYER7, Client.packetWriter.isaacCipher); // L: 9218
 					var8.packetBuffer.writeByte(0); // L: 9219
 					var8.packetBuffer.writeShortAddLE(var3[var6]); // L: 9220
 					Client.packetWriter.addNode(var8); // L: 9221

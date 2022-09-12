@@ -107,7 +107,7 @@ public class Players {
 		if (Client.packetWriter.pendingWrites >= 50 || var0) { // L: 5512
 			Client.packetWriter.pendingWrites = 0; // L: 5513
 			if (!Client.hadNetworkError && Client.packetWriter.getSocket() != null) { // L: 5514
-				PacketBufferNode var1 = class120.getPacketBufferNode(ClientPacket.OPPLAYER7, Client.packetWriter.isaacCipher); // L: 5516
+				PacketBufferNode var1 = class120.getPacketBufferNode(ClientPacket.NO_TIMEOUT, Client.packetWriter.isaacCipher); // L: 5516
 				Client.packetWriter.addNode(var1); // L: 5517
 
 				try {

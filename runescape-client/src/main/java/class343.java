@@ -119,7 +119,7 @@ public class class343 {
 					var16 = MidiPcmStream.method5532(var7);
 				}
 
-				PacketBufferNode var14 = class120.getPacketBufferNode(ClientPacket.EVENT_MOUSE_IDLE, Client.packetWriter.isaacCipher); // L: 1475
+				PacketBufferNode var14 = class120.getPacketBufferNode(ClientPacket.RESUME_COUNTDIALOG, Client.packetWriter.isaacCipher); // L: 1475
 				var14.packetBuffer.writeInt(var16); // L: 1476
 				Client.packetWriter.addNode(var14); // L: 1477
 				return 1; // L: 1478
@@ -127,14 +127,14 @@ public class class343 {
 				PacketBufferNode var12;
 				if (var0 == ScriptOpcodes.RESUME_NAMEDIALOG) {
 					var7 = Interpreter.Interpreter_stringStack[--VarbitComposition.Interpreter_stringStackSize]; // L: 1481
-					var12 = class120.getPacketBufferNode(ClientPacket.RESUME_OBJDIALOG, Client.packetWriter.isaacCipher); // L: 1483
+					var12 = class120.getPacketBufferNode(ClientPacket.RESUME_NAMEDIALOG, Client.packetWriter.isaacCipher); // L: 1483
 					var12.packetBuffer.writeByte(var7.length() + 1); // L: 1484
 					var12.packetBuffer.writeStringCp1252NullTerminated(var7); // L: 1485
 					Client.packetWriter.addNode(var12); // L: 1486
 					return 1; // L: 1487
 				} else if (var0 == ScriptOpcodes.RESUME_STRINGDIALOG) {
 					var7 = Interpreter.Interpreter_stringStack[--VarbitComposition.Interpreter_stringStackSize]; // L: 1490
-					var12 = class120.getPacketBufferNode(ClientPacket.OPNPC5, Client.packetWriter.isaacCipher); // L: 1492
+					var12 = class120.getPacketBufferNode(ClientPacket.RESUME_STRINGDIALOG, Client.packetWriter.isaacCipher); // L: 1492
 					var12.packetBuffer.writeByte(var7.length() + 1); // L: 1493
 					var12.packetBuffer.writeStringCp1252NullTerminated(var7); // L: 1494
 					Client.packetWriter.addNode(var12); // L: 1495
@@ -178,7 +178,7 @@ public class class343 {
 						return 1; // L: 1537
 					} else if (var0 == ScriptOpcodes.RESUME_OBJDIALOG) {
 						var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]; // L: 1540
-						var12 = class120.getPacketBufferNode(ClientPacket.IF_BUTTON9, Client.packetWriter.isaacCipher); // L: 1542
+						var12 = class120.getPacketBufferNode(ClientPacket.RESUME_OBJDIALOG, Client.packetWriter.isaacCipher); // L: 1542
 						var12.packetBuffer.writeShort(var3); // L: 1543
 						Client.packetWriter.addNode(var12); // L: 1544
 						return 1; // L: 1545
@@ -192,7 +192,7 @@ public class class343 {
 						} else if (var5.length() > 500) { // L: 1553
 							return 1;
 						} else {
-							PacketBufferNode var6 = class120.getPacketBufferNode(ClientPacket.OPPLAYER3, Client.packetWriter.isaacCipher); // L: 1554
+							PacketBufferNode var6 = class120.getPacketBufferNode(ClientPacket.BUG_REPORT, Client.packetWriter.isaacCipher); // L: 1554
 							var6.packetBuffer.writeShort(1 + class357.stringCp1252NullTerminatedByteSize(var11) + class357.stringCp1252NullTerminatedByteSize(var5)); // L: 1555
 							var6.packetBuffer.writeStringCp1252NullTerminated(var5); // L: 1556
 							var6.packetBuffer.writeByte(var3); // L: 1557
@@ -500,7 +500,7 @@ public class class343 {
 			Client.field714[var0] = true;
 		}
 
-		PacketBufferNode var2 = class120.getPacketBufferNode(ClientPacket.IF_BUTTON5, Client.packetWriter.isaacCipher); // L: 2672
+		PacketBufferNode var2 = class120.getPacketBufferNode(ClientPacket.EVENT_WINDOW_SETTING, Client.packetWriter.isaacCipher); // L: 2672
 		var2.packetBuffer.writeByte(SceneTilePaint.getWindowedMode()); // L: 2673
 		var2.packetBuffer.writeShort(class123.canvasWidth); // L: 2674
 		var2.packetBuffer.writeShort(class166.canvasHeight); // L: 2675

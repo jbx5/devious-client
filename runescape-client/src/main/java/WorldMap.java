@@ -472,7 +472,7 @@ public class WorldMap {
 					}
 
 					if (var8) { // L: 225
-						PacketBufferNode var11 = class120.getPacketBufferNode(ClientPacket.IF_BUTTON6, Client.packetWriter.isaacCipher); // L: 226
+						PacketBufferNode var11 = class120.getPacketBufferNode(ClientPacket.field3014, Client.packetWriter.isaacCipher); // L: 226
 						var11.packetBuffer.writeIntLE(this.mouseCoord.packed()); // L: 227
 						Client.packetWriter.addNode(var11); // L: 228
 						this.field4591 = 0L; // L: 229
