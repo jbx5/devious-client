@@ -3456,7 +3456,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 								var18.packetBuffer.writeByteAdd(var3); // L: 3195
 								var18.packetBuffer.writeShort(var5); // L: 3196
 								var18.packetBuffer.writeIntIME(0); // L: 3197
-								var18.packetBuffer.writeShortLE(var4); // L: 3198
+								var18.packetBuffer.writeShortAddLE(var4); // L: 3198
 								packetWriter.addNode(var18); // L: 3199
 							}
 
