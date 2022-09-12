@@ -60,7 +60,7 @@ public class VertexNormal {
 		if (Client.currentClanChannels[var0] != null) { // L: 12003
 			if (var1 >= 0 && var1 < Client.currentClanChannels[var0].method3265()) { // L: 12004
 				ClanChannelMember var3 = (ClanChannelMember)Client.currentClanChannels[var0].members.get(var1); // L: 12005
-				PacketBufferNode var4 = class120.getPacketBufferNode(ClientPacket.OPOBJE, Client.packetWriter.isaacCipher); // L: 12006
+				PacketBufferNode var4 = class120.getPacketBufferNode(ClientPacket.field3000, Client.packetWriter.isaacCipher); // L: 12006
 				var4.packetBuffer.writeByte(4 + class357.stringCp1252NullTerminatedByteSize(var3.username.getName())); // L: 12007
 				var4.packetBuffer.writeByte(var0); // L: 12008
 				var4.packetBuffer.writeShort(var1); // L: 12009

@@ -185,7 +185,7 @@ public class class1 implements Callable {
 			}
 		}
 
-		PacketBufferNode var1 = class120.getPacketBufferNode(ClientPacket.EVENT_MOUSE_CLICK, Client.packetWriter.isaacCipher); // L: 3639
+		PacketBufferNode var1 = class120.getPacketBufferNode(ClientPacket.DOCHEAT, Client.packetWriter.isaacCipher); // L: 3639
 		var1.packetBuffer.writeByte(var0.length() + 1); // L: 3640
 		var1.packetBuffer.writeStringCp1252NullTerminated(var0); // L: 3641
 		Client.packetWriter.addNode(var1); // L: 3642

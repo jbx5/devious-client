@@ -644,7 +644,7 @@ public abstract class AbstractWorldMapData {
 		garbageValue = "-668830240"
 	)
 	public static void method5107(int var0, int var1, int var2, boolean var3) {
-		PacketBufferNode var4 = class120.getPacketBufferNode(ClientPacket.RESUME_STRINGDIALOG, Client.packetWriter.isaacCipher); // L: 12126
+		PacketBufferNode var4 = class120.getPacketBufferNode(ClientPacket.field3045, Client.packetWriter.isaacCipher); // L: 12126
 		var4.packetBuffer.writeByteAdd(var2); // L: 12127
 		var4.packetBuffer.writeShort(var1); // L: 12128
 		var4.packetBuffer.writeIntIME(0); // L: 12129

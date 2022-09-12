@@ -57,7 +57,7 @@ public class class137 extends class145 {
 		garbageValue = "2036973926"
 	)
 	static final void method3075(String var0, int var1) {
-		PacketBufferNode var2 = class120.getPacketBufferNode(ClientPacket.RESUME_NAMEDIALOG, Client.packetWriter.isaacCipher); // L: 228
+		PacketBufferNode var2 = class120.getPacketBufferNode(ClientPacket.FRIEND_SETRANK, Client.packetWriter.isaacCipher); // L: 228
 		var2.packetBuffer.writeByte(class357.stringCp1252NullTerminatedByteSize(var0) + 1); // L: 229
 		var2.packetBuffer.writeStringCp1252NullTerminated(var0); // L: 230
 		var2.packetBuffer.writeByteNeg(var1); // L: 231

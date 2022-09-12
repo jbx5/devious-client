@@ -3125,7 +3125,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 				int var2;
 				PacketBufferNode var14;
 				while (class153.method3318()) { // L: 2926
-					var14 = class120.getPacketBufferNode(ClientPacket.field2960, packetWriter.isaacCipher); // L: 2927
+					var14 = class120.getPacketBufferNode(ClientPacket.REFLECTION_CHECK_REPLY, packetWriter.isaacCipher); // L: 2927
 					var14.packetBuffer.writeByte(0); // L: 2928
 					var2 = var14.packetBuffer.offset; // L: 2929
 					class130.performReflectionCheck(var14.packetBuffer); // L: 2930
@@ -3134,7 +3134,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 				}
 
 				if (timer.field4265) { // L: 2934
-					var14 = class120.getPacketBufferNode(ClientPacket.IF_BUTTON8, packetWriter.isaacCipher); // L: 2936
+					var14 = class120.getPacketBufferNode(ClientPacket.LOGIN_TIMINGS, packetWriter.isaacCipher); // L: 2936
 					var14.packetBuffer.writeByte(0); // L: 2937
 					var2 = var14.packetBuffer.offset; // L: 2938
 					timer.write(var14.packetBuffer); // L: 2939
@@ -3277,7 +3277,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 					}
 
 					var5 = (int)var16; // L: 3044
-					var18 = class120.getPacketBufferNode(ClientPacket.OPOBJT, packetWriter.isaacCipher); // L: 3045
+					var18 = class120.getPacketBufferNode(ClientPacket.EVENT_MOUSE_CLICK, packetWriter.isaacCipher); // L: 3045
 					var18.packetBuffer.writeShort((MouseHandler.MouseHandler_lastButton == 2 ? 1 : 0) + (var5 << 1)); // L: 3046
 					var18.packetBuffer.writeShort(var4); // L: 3047
 					var18.packetBuffer.writeShort(var3); // L: 3048
@@ -3285,7 +3285,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 				}
 
 				if (KeyHandler.field141 > 0) { // L: 3051
-					var14 = class120.getPacketBufferNode(ClientPacket.field3023, packetWriter.isaacCipher); // L: 3052
+					var14 = class120.getPacketBufferNode(ClientPacket.EVENT_KEYBOARD, packetWriter.isaacCipher); // L: 3052
 					var14.packetBuffer.writeShort(0); // L: 3053
 					var2 = var14.packetBuffer.offset; // L: 3054
 					long var19 = Language.method6232(); // L: 3055
@@ -3316,7 +3316,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 				if (field543 && field630 <= 0) { // L: 3068
 					field630 = 20; // L: 3069
 					field543 = false; // L: 3070
-					var14 = class120.getPacketBufferNode(ClientPacket.field2940, packetWriter.isaacCipher); // L: 3072
+					var14 = class120.getPacketBufferNode(ClientPacket.EVENT_CAMERA_POSITION, packetWriter.isaacCipher); // L: 3072
 					var14.packetBuffer.writeShort(camAngleX); // L: 3073
 					var14.packetBuffer.writeShortAddLE(camAngleY); // L: 3074
 					packetWriter.addNode(var14); // L: 3075
@@ -3324,14 +3324,14 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 
 				if (class92.hasFocus && !hadFocus) { // L: 3077
 					hadFocus = true; // L: 3078
-					var14 = class120.getPacketBufferNode(ClientPacket.field3005, packetWriter.isaacCipher); // L: 3080
+					var14 = class120.getPacketBufferNode(ClientPacket.EVENT_APPLET_FOCUS, packetWriter.isaacCipher); // L: 3080
 					var14.packetBuffer.writeByte(1); // L: 3081
 					packetWriter.addNode(var14); // L: 3082
 				}
 
 				if (!class92.hasFocus && hadFocus) { // L: 3084
 					hadFocus = false; // L: 3085
-					var14 = class120.getPacketBufferNode(ClientPacket.field3005, packetWriter.isaacCipher); // L: 3087
+					var14 = class120.getPacketBufferNode(ClientPacket.EVENT_APPLET_FOCUS, packetWriter.isaacCipher); // L: 3087
 					var14.packetBuffer.writeByte(0); // L: 3088
 					packetWriter.addNode(var14); // L: 3089
 				}
@@ -3452,7 +3452,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 							if (var3 != class67.localPlayer.plane) { // L: 3189
 								var4 = class67.localPlayer.pathX[0] + class128.baseX * 64; // L: 3190
 								var5 = class67.localPlayer.pathY[0] + WorldMapData_1.baseY * 64; // L: 3191
-								var18 = class120.getPacketBufferNode(ClientPacket.RESUME_STRINGDIALOG, packetWriter.isaacCipher); // L: 3194
+								var18 = class120.getPacketBufferNode(ClientPacket.field3045, packetWriter.isaacCipher); // L: 3194
 								var18.packetBuffer.writeByteAdd(var3); // L: 3195
 								var18.packetBuffer.writeShort(var5); // L: 3196
 								var18.packetBuffer.writeIntIME(0); // L: 3197
@@ -3532,7 +3532,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 																				var38.swapItems(dragItemSlotDestination, dragItemSlotSource); // L: 3283
 																			}
 
-																			PacketBufferNode var26 = class120.getPacketBufferNode(ClientPacket.OPLOC1, packetWriter.isaacCipher); // L: 3286
+																			PacketBufferNode var26 = class120.getPacketBufferNode(ClientPacket.IF_BUTTOND, packetWriter.isaacCipher); // L: 3286
 																			var26.packetBuffer.writeByteSub(var29); // L: 3287
 																			var26.packetBuffer.writeShortAddLE(dragItemSlotSource); // L: 3288
 																			var26.packetBuffer.writeIntLE(User.dragInventoryWidget.id); // L: 3289
@@ -3556,7 +3556,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 															if (Scene.shouldSendWalk()) { // L: 3314
 																var3 = Scene.Scene_selectedX; // L: 3315
 																var4 = Scene.Scene_selectedY; // L: 3316
-																PacketBufferNode var39 = class120.getPacketBufferNode(ClientPacket.DETECT_MODIFIED_CLIENT, packetWriter.isaacCipher); // L: 3318
+																PacketBufferNode var39 = class120.getPacketBufferNode(ClientPacket.MOVE_GAMECLICK, packetWriter.isaacCipher); // L: 3318
 																var39.packetBuffer.writeByte(5); // L: 3319
 																var39.packetBuffer.writeShortAdd(class128.baseX * 64 + var3); // L: 3320
 																var39.packetBuffer.writeShort(WorldMapData_1.baseY * 64 + var4); // L: 3321
@@ -3634,14 +3634,14 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 															if (var3 > 15000 && var5 > 15000) { // L: 3376
 																logoutTimer = 250; // L: 3377
 																GraphicsDefaults.method7089(14500); // L: 3378
-																var18 = class120.getPacketBufferNode(ClientPacket.OPPLAYERT, packetWriter.isaacCipher); // L: 3380
+																var18 = class120.getPacketBufferNode(ClientPacket.EVENT_MOUSE_IDLE, packetWriter.isaacCipher); // L: 3380
 																packetWriter.addNode(var18); // L: 3381
 															}
 
 															Varps.friendSystem.processFriendUpdates(); // L: 3383
 															++packetWriter.pendingWrites; // L: 3384
 															if (packetWriter.pendingWrites > 50) { // L: 3385
-																var18 = class120.getPacketBufferNode(ClientPacket.OPPLAYER7, packetWriter.isaacCipher); // L: 3387
+																var18 = class120.getPacketBufferNode(ClientPacket.NO_TIMEOUT, packetWriter.isaacCipher); // L: 3387
 																packetWriter.addNode(var18); // L: 3388
 															}
 
@@ -5569,7 +5569,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 					var20 = var3.readInt(); // L: 7322
 					var5 = var3.readInt(); // L: 7323
 					var21 = DynamicObject.getGcDuration(); // L: 7324
-					PacketBufferNode var42 = class120.getPacketBufferNode(ClientPacket.OPPLAYER6, packetWriter.isaacCipher); // L: 7326
+					PacketBufferNode var42 = class120.getPacketBufferNode(ClientPacket.PING_STATISTICS, packetWriter.isaacCipher); // L: 7326
 					var42.packetBuffer.writeInt(var20); // L: 7327
 					var42.packetBuffer.writeInt(var5); // L: 7328
 					var42.packetBuffer.writeByte(GameEngine.fps); // L: 7329
@@ -5936,7 +5936,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 					}
 
 					if (draggedOnWidget != null && HitSplatDefinition.method3782(clickedWidget) != null) { // L: 11444
-						PacketBufferNode var9 = class120.getPacketBufferNode(ClientPacket.FREECAM_EXIT, packetWriter.isaacCipher); // L: 11446
+						PacketBufferNode var9 = class120.getPacketBufferNode(ClientPacket.OPHELDD, packetWriter.isaacCipher); // L: 11446
 						var9.packetBuffer.writeShortAddLE(clickedWidget.childIndex); // L: 11447
 						var9.packetBuffer.writeShortLE(draggedOnWidget.itemId); // L: 11448
 						var9.packetBuffer.writeShortAddLE(clickedWidget.itemId); // L: 11449

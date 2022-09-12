@@ -148,7 +148,7 @@ class class17 implements SSLSession {
 			Client.mouseCrossState = 0; // L: 8496
 			Client.destinationX = var0; // L: 8497
 			Client.destinationY = var1; // L: 8498
-			var9 = class120.getPacketBufferNode(ClientPacket.EVENT_CAMERA_POSITION, Client.packetWriter.isaacCipher); // L: 8500
+			var9 = class120.getPacketBufferNode(ClientPacket.field2973, Client.packetWriter.isaacCipher); // L: 8500
 			var9.packetBuffer.writeShort(Canvas.selectedItemId); // L: 8501
 			var9.packetBuffer.writeShortAddLE(WorldMapData_1.baseY * 64 + var1); // L: 8502
 			var9.packetBuffer.writeInt(GameObject.selectedItemWidget); // L: 8503
@@ -164,7 +164,7 @@ class class17 implements SSLSession {
 			Client.mouseCrossState = 0; // L: 8771
 			Client.destinationX = var0; // L: 8772
 			Client.destinationY = var1; // L: 8773
-			var9 = class120.getPacketBufferNode(ClientPacket.field2968, Client.packetWriter.isaacCipher); // L: 8774
+			var9 = class120.getPacketBufferNode(ClientPacket.OPLOCT, Client.packetWriter.isaacCipher); // L: 8774
 			var9.packetBuffer.writeShortAddLE(Client.selectedSpellItemId); // L: 8775
 			var9.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8776
 			var9.packetBuffer.writeShortAddLE(WorldMapData_1.baseY * 64 + var1); // L: 8777
@@ -180,7 +180,7 @@ class class17 implements SSLSession {
 			Client.mouseCrossState = 0; // L: 8841
 			Client.destinationX = var0; // L: 8842
 			Client.destinationY = var1; // L: 8843
-			var9 = class120.getPacketBufferNode(ClientPacket.OPNPCE, Client.packetWriter.isaacCipher); // L: 8845
+			var9 = class120.getPacketBufferNode(ClientPacket.OPLOC1, Client.packetWriter.isaacCipher); // L: 8845
 			var9.packetBuffer.writeShortLE(WorldMapData_1.baseY * 64 + var1); // L: 8846
 			var9.packetBuffer.writeShortLE(class128.baseX * 64 + var0); // L: 8847
 			var9.packetBuffer.writeShort(var3); // L: 8848
@@ -206,7 +206,7 @@ class class17 implements SSLSession {
 			Client.mouseCrossState = 0; // L: 8409
 			Client.destinationX = var0; // L: 8410
 			Client.destinationY = var1; // L: 8411
-			var9 = class120.getPacketBufferNode(ClientPacket.IF_BUTTON7, Client.packetWriter.isaacCipher); // L: 8413
+			var9 = class120.getPacketBufferNode(ClientPacket.OPLOC3, Client.packetWriter.isaacCipher); // L: 8413
 			var9.packetBuffer.writeByteNeg(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8414
 			var9.packetBuffer.writeShortAdd(class128.baseX * 64 + var0); // L: 8415
 			var9.packetBuffer.writeShortAdd(WorldMapData_1.baseY * 64 + var1); // L: 8416
@@ -219,7 +219,7 @@ class class17 implements SSLSession {
 			Client.mouseCrossState = 0; // L: 9024
 			Client.destinationX = var0; // L: 9025
 			Client.destinationY = var1; // L: 9026
-			var9 = class120.getPacketBufferNode(ClientPacket.field2946, Client.packetWriter.isaacCipher); // L: 9028
+			var9 = class120.getPacketBufferNode(ClientPacket.OPLOC4, Client.packetWriter.isaacCipher); // L: 9028
 			var9.packetBuffer.writeShortAddLE(class128.baseX * 64 + var0); // L: 9029
 			var9.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 9030
 			var9.packetBuffer.writeShortAdd(var3); // L: 9031
@@ -237,7 +237,7 @@ class class17 implements SSLSession {
 					Client.mouseCrossState = 0; // L: 8884
 					Client.destinationX = var0; // L: 8885
 					Client.destinationY = var1; // L: 8886
-					var10 = class120.getPacketBufferNode(ClientPacket.OPLOC5, Client.packetWriter.isaacCipher); // L: 8888
+					var10 = class120.getPacketBufferNode(ClientPacket.field2936, Client.packetWriter.isaacCipher); // L: 8888
 					var10.packetBuffer.writeInt(GameObject.selectedItemWidget); // L: 8889
 					var10.packetBuffer.writeShort(ApproximateRouteStrategy.selectedItemSlot); // L: 8890
 					var10.packetBuffer.writeShort(var3); // L: 8891
@@ -254,7 +254,7 @@ class class17 implements SSLSession {
 					Client.mouseCrossState = 0; // L: 8825
 					Client.destinationX = var0; // L: 8826
 					Client.destinationY = var1; // L: 8827
-					var10 = class120.getPacketBufferNode(ClientPacket.IF_BUTTON4, Client.packetWriter.isaacCipher); // L: 8828
+					var10 = class120.getPacketBufferNode(ClientPacket.OPNPCT, Client.packetWriter.isaacCipher); // L: 8828
 					var10.packetBuffer.writeShortLE(Client.selectedSpellChildIndex); // L: 8829
 					var10.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8830
 					var10.packetBuffer.writeIntME(ClanSettings.selectedSpellWidget); // L: 8831
@@ -271,7 +271,7 @@ class class17 implements SSLSession {
 					Client.mouseCrossState = 0; // L: 8868
 					Client.destinationX = var0; // L: 8869
 					Client.destinationY = var1; // L: 8870
-					var10 = class120.getPacketBufferNode(ClientPacket.RESUME_COUNTDIALOG, Client.packetWriter.isaacCipher); // L: 8872
+					var10 = class120.getPacketBufferNode(ClientPacket.OPNPC1, Client.packetWriter.isaacCipher); // L: 8872
 					var10.packetBuffer.writeShortAdd(var3); // L: 8873
 					var10.packetBuffer.writeByteAdd(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8874
 					Client.packetWriter.addNode(var10); // L: 8875
@@ -285,7 +285,7 @@ class class17 implements SSLSession {
 					Client.mouseCrossState = 0; // L: 8725
 					Client.destinationX = var0; // L: 8726
 					Client.destinationY = var1; // L: 8727
-					var10 = class120.getPacketBufferNode(ClientPacket.DOCHEAT, Client.packetWriter.isaacCipher); // L: 8729
+					var10 = class120.getPacketBufferNode(ClientPacket.OPNPC2, Client.packetWriter.isaacCipher); // L: 8729
 					var10.packetBuffer.writeShortLE(var3); // L: 8730
 					var10.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8731
 					Client.packetWriter.addNode(var10); // L: 8732
@@ -299,7 +299,7 @@ class class17 implements SSLSession {
 					Client.mouseCrossState = 0; // L: 8709
 					Client.destinationX = var0; // L: 8710
 					Client.destinationY = var1; // L: 8711
-					var10 = class120.getPacketBufferNode(ClientPacket.CLOSE_MODAL, Client.packetWriter.isaacCipher); // L: 8713
+					var10 = class120.getPacketBufferNode(ClientPacket.OPNPC3, Client.packetWriter.isaacCipher); // L: 8713
 					var10.packetBuffer.writeShortAddLE(var3); // L: 8714
 					var10.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8715
 					Client.packetWriter.addNode(var10); // L: 8716
@@ -313,7 +313,7 @@ class class17 implements SSLSession {
 					Client.mouseCrossState = 0; // L: 8426
 					Client.destinationX = var0; // L: 8427
 					Client.destinationY = var1; // L: 8428
-					var10 = class120.getPacketBufferNode(ClientPacket.IF_BUTTON2, Client.packetWriter.isaacCipher); // L: 8430
+					var10 = class120.getPacketBufferNode(ClientPacket.OPNPC4, Client.packetWriter.isaacCipher); // L: 8430
 					var10.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8431
 					var10.packetBuffer.writeShortAddLE(var3); // L: 8432
 					Client.packetWriter.addNode(var10); // L: 8433
@@ -327,7 +327,7 @@ class class17 implements SSLSession {
 					Client.mouseCrossState = 0; // L: 8678
 					Client.destinationX = var0; // L: 8679
 					Client.destinationY = var1; // L: 8680
-					var10 = class120.getPacketBufferNode(ClientPacket.OPLOCT, Client.packetWriter.isaacCipher); // L: 8682
+					var10 = class120.getPacketBufferNode(ClientPacket.OPNPC5, Client.packetWriter.isaacCipher); // L: 8682
 					var10.packetBuffer.writeShort(var3); // L: 8683
 					var10.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8684
 					Client.packetWriter.addNode(var10); // L: 8685
@@ -343,7 +343,7 @@ class class17 implements SSLSession {
 						Client.mouseCrossState = 0; // L: 8635
 						Client.destinationX = var0; // L: 8636
 						Client.destinationY = var1; // L: 8637
-						var10 = class120.getPacketBufferNode(ClientPacket.RESUME_PAUSEBUTTON, Client.packetWriter.isaacCipher); // L: 8639
+						var10 = class120.getPacketBufferNode(ClientPacket.field2984, Client.packetWriter.isaacCipher); // L: 8639
 						var10.packetBuffer.writeByteAdd(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8640
 						var10.packetBuffer.writeShort(ApproximateRouteStrategy.selectedItemSlot); // L: 8641
 						var10.packetBuffer.writeShortAdd(var3); // L: 8642
@@ -360,7 +360,7 @@ class class17 implements SSLSession {
 						Client.mouseCrossState = 0; // L: 8480
 						Client.destinationX = var0; // L: 8481
 						Client.destinationY = var1; // L: 8482
-						var10 = class120.getPacketBufferNode(ClientPacket.field2985, Client.packetWriter.isaacCipher); // L: 8483
+						var10 = class120.getPacketBufferNode(ClientPacket.OPPLAYERT, Client.packetWriter.isaacCipher); // L: 8483
 						var10.packetBuffer.writeShortAdd(var3); // L: 8484
 						var10.packetBuffer.writeShort(Client.selectedSpellChildIndex); // L: 8485
 						var10.packetBuffer.writeByteAdd(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8486
@@ -391,7 +391,7 @@ class class17 implements SSLSession {
 					Client.mouseCrossState = 0; // L: 8392
 					Client.destinationX = var0; // L: 8393
 					Client.destinationY = var1; // L: 8394
-					var9 = class120.getPacketBufferNode(ClientPacket.LOGIN_TIMINGS, Client.packetWriter.isaacCipher); // L: 8395
+					var9 = class120.getPacketBufferNode(ClientPacket.OPOBJT, Client.packetWriter.isaacCipher); // L: 8395
 					var9.packetBuffer.writeShortAddLE(Client.selectedSpellItemId); // L: 8396
 					var9.packetBuffer.writeShort(var3); // L: 8397
 					var9.packetBuffer.writeShortAddLE(WorldMapData_1.baseY * 64 + var1); // L: 8398
@@ -407,7 +407,7 @@ class class17 implements SSLSession {
 					Client.mouseCrossState = 0; // L: 8602
 					Client.destinationX = var0; // L: 8603
 					Client.destinationY = var1; // L: 8604
-					var9 = class120.getPacketBufferNode(ClientPacket.OPOBJ5, Client.packetWriter.isaacCipher); // L: 8606
+					var9 = class120.getPacketBufferNode(ClientPacket.OPOBJ1, Client.packetWriter.isaacCipher); // L: 8606
 					var9.packetBuffer.writeByteAdd(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8607
 					var9.packetBuffer.writeShortLE(WorldMapData_1.baseY * 64 + var1); // L: 8608
 					var9.packetBuffer.writeShort(class128.baseX * 64 + var0); // L: 8609
@@ -420,7 +420,7 @@ class class17 implements SSLSession {
 					Client.mouseCrossState = 0; // L: 8692
 					Client.destinationX = var0; // L: 8693
 					Client.destinationY = var1; // L: 8694
-					var9 = class120.getPacketBufferNode(ClientPacket.CLAN_LEAVECHAT, Client.packetWriter.isaacCipher); // L: 8696
+					var9 = class120.getPacketBufferNode(ClientPacket.OPOBJ2, Client.packetWriter.isaacCipher); // L: 8696
 					var9.packetBuffer.writeShort(var3); // L: 8697
 					var9.packetBuffer.writeByteNeg(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8698
 					var9.packetBuffer.writeShortLE(class128.baseX * 64 + var0); // L: 8699
@@ -433,7 +433,7 @@ class class17 implements SSLSession {
 					Client.mouseCrossState = 0; // L: 9055
 					Client.destinationX = var0; // L: 9056
 					Client.destinationY = var1; // L: 9057
-					var9 = class120.getPacketBufferNode(ClientPacket.field3026, Client.packetWriter.isaacCipher); // L: 9059
+					var9 = class120.getPacketBufferNode(ClientPacket.OPOBJ3, Client.packetWriter.isaacCipher); // L: 9059
 					var9.packetBuffer.writeByteAdd(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 9060
 					var9.packetBuffer.writeShortLE(class128.baseX * 64 + var0); // L: 9061
 					var9.packetBuffer.writeShortAdd(WorldMapData_1.baseY * 64 + var1); // L: 9062
@@ -446,7 +446,7 @@ class class17 implements SSLSession {
 					Client.mouseCrossState = 0; // L: 9009
 					Client.destinationX = var0; // L: 9010
 					Client.destinationY = var1; // L: 9011
-					var9 = class120.getPacketBufferNode(ClientPacket.field2954, Client.packetWriter.isaacCipher); // L: 9013
+					var9 = class120.getPacketBufferNode(ClientPacket.OPOBJ4, Client.packetWriter.isaacCipher); // L: 9013
 					var9.packetBuffer.writeShortLE(var3); // L: 9014
 					var9.packetBuffer.writeShortLE(WorldMapData_1.baseY * 64 + var1); // L: 9015
 					var9.packetBuffer.writeShortAddLE(class128.baseX * 64 + var0); // L: 9016
@@ -459,7 +459,7 @@ class class17 implements SSLSession {
 					Client.mouseCrossState = 0; // L: 8796
 					Client.destinationX = var0; // L: 8797
 					Client.destinationY = var1; // L: 8798
-					var9 = class120.getPacketBufferNode(ClientPacket.field3045, Client.packetWriter.isaacCipher); // L: 8800
+					var9 = class120.getPacketBufferNode(ClientPacket.OPOBJ5, Client.packetWriter.isaacCipher); // L: 8800
 					var9.packetBuffer.writeShortAddLE(WorldMapData_1.baseY * 64 + var1); // L: 8801
 					var9.packetBuffer.writeShortAdd(var3); // L: 8802
 					var9.packetBuffer.writeByteNeg(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8803
@@ -483,7 +483,7 @@ class class17 implements SSLSession {
 							}
 
 							if (var12) { // L: 8531
-								var11 = class120.getPacketBufferNode(ClientPacket.EVENT_KEYBOARD, Client.packetWriter.isaacCipher); // L: 8533
+								var11 = class120.getPacketBufferNode(ClientPacket.field3023, Client.packetWriter.isaacCipher); // L: 8533
 								var11.packetBuffer.writeInt(var1); // L: 8534
 								Client.packetWriter.addNode(var11); // L: 8535
 							}
@@ -516,7 +516,7 @@ class class17 implements SSLSession {
 							int var13;
 							Widget var15;
 							if (var2 == 28) {
-								var9 = class120.getPacketBufferNode(ClientPacket.EVENT_KEYBOARD, Client.packetWriter.isaacCipher); // L: 9143
+								var9 = class120.getPacketBufferNode(ClientPacket.field3023, Client.packetWriter.isaacCipher); // L: 9143
 								var9.packetBuffer.writeInt(var1); // L: 9144
 								Client.packetWriter.addNode(var9); // L: 9145
 								var15 = SpotAnimationDefinition.getWidget(var1); // L: 9146
@@ -526,7 +526,7 @@ class class17 implements SSLSession {
 									class269.changeGameOptions(var13); // L: 9150
 								}
 							} else if (var2 == 29) {
-								var9 = class120.getPacketBufferNode(ClientPacket.EVENT_KEYBOARD, Client.packetWriter.isaacCipher); // L: 8570
+								var9 = class120.getPacketBufferNode(ClientPacket.field3023, Client.packetWriter.isaacCipher); // L: 8570
 								var9.packetBuffer.writeInt(var1); // L: 8571
 								Client.packetWriter.addNode(var9); // L: 8572
 								var15 = SpotAnimationDefinition.getWidget(var1); // L: 8573
@@ -544,7 +544,7 @@ class class17 implements SSLSession {
 									class403.invalidateWidget(Client.meslayerContinueWidget); // L: 8901
 								}
 							} else if (var2 == 31) {
-								var9 = class120.getPacketBufferNode(ClientPacket.OPPLAYER2, Client.packetWriter.isaacCipher); // L: 9079
+								var9 = class120.getPacketBufferNode(ClientPacket.field2981, Client.packetWriter.isaacCipher); // L: 9079
 								var9.packetBuffer.writeInt(var1); // L: 9080
 								var9.packetBuffer.writeShort(ApproximateRouteStrategy.selectedItemSlot); // L: 9081
 								var9.packetBuffer.writeShortLE(Canvas.selectedItemId); // L: 9082
@@ -556,7 +556,7 @@ class class17 implements SSLSession {
 								DevicePcmPlayerProvider.field153 = SpotAnimationDefinition.getWidget(var1); // L: 9088
 								Client.field635 = var0; // L: 9089
 							} else if (var2 == 32) {
-								var9 = class120.getPacketBufferNode(ClientPacket.CLAN_KICKUSER, Client.packetWriter.isaacCipher); // L: 8661
+								var9 = class120.getPacketBufferNode(ClientPacket.field3037, Client.packetWriter.isaacCipher); // L: 8661
 								var9.packetBuffer.writeInt(ClanSettings.selectedSpellWidget); // L: 8662
 								var9.packetBuffer.writeShortAddLE(var0); // L: 8663
 								var9.packetBuffer.writeShort(Client.selectedSpellChildIndex); // L: 8664
@@ -576,7 +576,7 @@ class class17 implements SSLSession {
 								DevicePcmPlayerProvider.field153 = SpotAnimationDefinition.getWidget(var1); // L: 9002
 								Client.field635 = var0; // L: 9003
 							} else if (var2 == 34) {
-								var9 = class120.getPacketBufferNode(ClientPacket.OPLOCE, Client.packetWriter.isaacCipher); // L: 8541
+								var9 = class120.getPacketBufferNode(ClientPacket.field2975, Client.packetWriter.isaacCipher); // L: 8541
 								var9.packetBuffer.writeIntIME(var1); // L: 8542
 								var9.packetBuffer.writeShortLE(var0); // L: 8543
 								var9.packetBuffer.writeShortAdd(var4); // L: 8544
@@ -585,7 +585,7 @@ class class17 implements SSLSession {
 								DevicePcmPlayerProvider.field153 = SpotAnimationDefinition.getWidget(var1); // L: 8547
 								Client.field635 = var0; // L: 8548
 							} else if (var2 == 35) {
-								var9 = class120.getPacketBufferNode(ClientPacket.IF_BUTTON1, Client.packetWriter.isaacCipher); // L: 9121
+								var9 = class120.getPacketBufferNode(ClientPacket.field2990, Client.packetWriter.isaacCipher); // L: 9121
 								var9.packetBuffer.writeShortLE(var4); // L: 9122
 								var9.packetBuffer.writeIntME(var1); // L: 9123
 								var9.packetBuffer.writeShortAdd(var0); // L: 9124
@@ -594,7 +594,7 @@ class class17 implements SSLSession {
 								DevicePcmPlayerProvider.field153 = SpotAnimationDefinition.getWidget(var1); // L: 9127
 								Client.field635 = var0; // L: 9128
 							} else if (var2 == 36) {
-								var9 = class120.getPacketBufferNode(ClientPacket.IF_BUTTONT, Client.packetWriter.isaacCipher); // L: 8922
+								var9 = class120.getPacketBufferNode(ClientPacket.field2987, Client.packetWriter.isaacCipher); // L: 8922
 								var9.packetBuffer.writeShort(var0); // L: 8923
 								var9.packetBuffer.writeShortAdd(var4); // L: 8924
 								var9.packetBuffer.writeIntLE(var1); // L: 8925
@@ -603,7 +603,7 @@ class class17 implements SSLSession {
 								DevicePcmPlayerProvider.field153 = SpotAnimationDefinition.getWidget(var1); // L: 8928
 								Client.field635 = var0; // L: 8929
 							} else if (var2 == 37) {
-								var9 = class120.getPacketBufferNode(ClientPacket.IF_BUTTON3, Client.packetWriter.isaacCipher); // L: 8965
+								var9 = class120.getPacketBufferNode(ClientPacket.field2953, Client.packetWriter.isaacCipher); // L: 8965
 								var9.packetBuffer.writeShortLE(var0); // L: 8966
 								var9.packetBuffer.writeIntME(var1); // L: 8967
 								var9.packetBuffer.writeShortLE(var4); // L: 8968
@@ -629,7 +629,7 @@ class class17 implements SSLSession {
 								}
 
 								if (var2 == 39) {
-									var9 = class120.getPacketBufferNode(ClientPacket.field3028, Client.packetWriter.isaacCipher); // L: 9132
+									var9 = class120.getPacketBufferNode(ClientPacket.field2940, Client.packetWriter.isaacCipher); // L: 9132
 									var9.packetBuffer.writeShortLE(var4); // L: 9133
 									var9.packetBuffer.writeShortAdd(var0); // L: 9134
 									var9.packetBuffer.writeInt(var1); // L: 9135
@@ -638,7 +638,7 @@ class class17 implements SSLSession {
 									DevicePcmPlayerProvider.field153 = SpotAnimationDefinition.getWidget(var1); // L: 9138
 									Client.field635 = var0; // L: 9139
 								} else if (var2 == 40) {
-									var9 = class120.getPacketBufferNode(ClientPacket.OPOBJ2, Client.packetWriter.isaacCipher); // L: 9155
+									var9 = class120.getPacketBufferNode(ClientPacket.field2954, Client.packetWriter.isaacCipher); // L: 9155
 									var9.packetBuffer.writeInt(var1); // L: 9156
 									var9.packetBuffer.writeShortAdd(var0); // L: 9157
 									var9.packetBuffer.writeShortAdd(var4); // L: 9158
@@ -647,7 +647,7 @@ class class17 implements SSLSession {
 									DevicePcmPlayerProvider.field153 = SpotAnimationDefinition.getWidget(var1); // L: 9161
 									Client.field635 = var0; // L: 9162
 								} else if (var2 == 41) {
-									var9 = class120.getPacketBufferNode(ClientPacket.OPNPCT, Client.packetWriter.isaacCipher); // L: 9068
+									var9 = class120.getPacketBufferNode(ClientPacket.field3035, Client.packetWriter.isaacCipher); // L: 9068
 									var9.packetBuffer.writeInt(var1); // L: 9069
 									var9.packetBuffer.writeShortAddLE(var0); // L: 9070
 									var9.packetBuffer.writeShortAddLE(var4); // L: 9071
@@ -665,7 +665,7 @@ class class17 implements SSLSession {
 									DevicePcmPlayerProvider.field153 = SpotAnimationDefinition.getWidget(var1); // L: 8656
 									Client.field635 = var0; // L: 8657
 								} else if (var2 == 43) {
-									var9 = class120.getPacketBufferNode(ClientPacket.IF_BUTTOND, Client.packetWriter.isaacCipher); // L: 8985
+									var9 = class120.getPacketBufferNode(ClientPacket.field3017, Client.packetWriter.isaacCipher); // L: 8985
 									var9.packetBuffer.writeShortAdd(var0); // L: 8986
 									var9.packetBuffer.writeShortLE(var4); // L: 8987
 									var9.packetBuffer.writeIntIME(var1); // L: 8988
@@ -682,7 +682,7 @@ class class17 implements SSLSession {
 										Client.mouseCrossState = 0; // L: 8588
 										Client.destinationX = var0; // L: 8589
 										Client.destinationY = var1; // L: 8590
-										var10 = class120.getPacketBufferNode(ClientPacket.EVENT_WINDOW_SETTING, Client.packetWriter.isaacCipher); // L: 8592
+										var10 = class120.getPacketBufferNode(ClientPacket.OPPLAYER1, Client.packetWriter.isaacCipher); // L: 8592
 										var10.packetBuffer.writeShort(var3); // L: 8593
 										var10.packetBuffer.writeByteAdd(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8594
 										Client.packetWriter.addNode(var10); // L: 8595
@@ -696,7 +696,7 @@ class class17 implements SSLSession {
 										Client.mouseCrossState = 0; // L: 8910
 										Client.destinationX = var0; // L: 8911
 										Client.destinationY = var1; // L: 8912
-										var10 = class120.getPacketBufferNode(ClientPacket.field2981, Client.packetWriter.isaacCipher); // L: 8914
+										var10 = class120.getPacketBufferNode(ClientPacket.OPPLAYER2, Client.packetWriter.isaacCipher); // L: 8914
 										var10.packetBuffer.writeByteAdd(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8915
 										var10.packetBuffer.writeShortAddLE(var3); // L: 8916
 										Client.packetWriter.addNode(var10); // L: 8917
@@ -710,7 +710,7 @@ class class17 implements SSLSession {
 										Client.mouseCrossState = 0; // L: 8619
 										Client.destinationX = var0; // L: 8620
 										Client.destinationY = var1; // L: 8621
-										var10 = class120.getPacketBufferNode(ClientPacket.field2963, Client.packetWriter.isaacCipher); // L: 8623
+										var10 = class120.getPacketBufferNode(ClientPacket.OPPLAYER3, Client.packetWriter.isaacCipher); // L: 8623
 										var10.packetBuffer.writeByteNeg(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8624
 										var10.packetBuffer.writeShortAdd(var3); // L: 8625
 										Client.packetWriter.addNode(var10); // L: 8626
@@ -724,7 +724,7 @@ class class17 implements SSLSession {
 										Client.mouseCrossState = 0; // L: 9041
 										Client.destinationX = var0; // L: 9042
 										Client.destinationY = var1; // L: 9043
-										var10 = class120.getPacketBufferNode(ClientPacket.field2975, Client.packetWriter.isaacCipher); // L: 9045
+										var10 = class120.getPacketBufferNode(ClientPacket.OPPLAYER4, Client.packetWriter.isaacCipher); // L: 9045
 										var10.packetBuffer.writeShortLE(var3); // L: 9046
 										var10.packetBuffer.writeByteSub(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 9047
 										Client.packetWriter.addNode(var10); // L: 9048
@@ -738,7 +738,7 @@ class class17 implements SSLSession {
 										Client.mouseCrossState = 0; // L: 8741
 										Client.destinationX = var0; // L: 8742
 										Client.destinationY = var1; // L: 8743
-										var10 = class120.getPacketBufferNode(ClientPacket.field2984, Client.packetWriter.isaacCipher); // L: 8745
+										var10 = class120.getPacketBufferNode(ClientPacket.OPPLAYER5, Client.packetWriter.isaacCipher); // L: 8745
 										var10.packetBuffer.writeShortAddLE(var3); // L: 8746
 										var10.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8747
 										Client.packetWriter.addNode(var10); // L: 8748
@@ -752,7 +752,7 @@ class class17 implements SSLSession {
 										Client.mouseCrossState = 0; // L: 8757
 										Client.destinationX = var0; // L: 8758
 										Client.destinationY = var1; // L: 8759
-										var10 = class120.getPacketBufferNode(ClientPacket.field2973, Client.packetWriter.isaacCipher); // L: 8761
+										var10 = class120.getPacketBufferNode(ClientPacket.OPPLAYER6, Client.packetWriter.isaacCipher); // L: 8761
 										var10.packetBuffer.writeByteSub(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8762
 										var10.packetBuffer.writeShortAdd(var3); // L: 8763
 										Client.packetWriter.addNode(var10); // L: 8764
@@ -766,7 +766,7 @@ class class17 implements SSLSession {
 										Client.mouseCrossState = 0; // L: 8516
 										Client.destinationX = var0; // L: 8517
 										Client.destinationY = var1; // L: 8518
-										var10 = class120.getPacketBufferNode(ClientPacket.field2997, Client.packetWriter.isaacCipher); // L: 8520
+										var10 = class120.getPacketBufferNode(ClientPacket.OPPLAYER7, Client.packetWriter.isaacCipher); // L: 8520
 										var10.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8521
 										var10.packetBuffer.writeShortAddLE(var3); // L: 8522
 										Client.packetWriter.addNode(var10); // L: 8523
@@ -780,7 +780,7 @@ class class17 implements SSLSession {
 										Client.mouseCrossState = 0; // L: 8464
 										Client.destinationX = var0; // L: 8465
 										Client.destinationY = var1; // L: 8466
-										var10 = class120.getPacketBufferNode(ClientPacket.OPNPC4, Client.packetWriter.isaacCipher); // L: 8468
+										var10 = class120.getPacketBufferNode(ClientPacket.OPPLAYER8, Client.packetWriter.isaacCipher); // L: 8468
 										var10.packetBuffer.writeByteAdd(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8469
 										var10.packetBuffer.writeShortAddLE(var3); // L: 8470
 										Client.packetWriter.addNode(var10); // L: 8471
@@ -800,7 +800,7 @@ class class17 implements SSLSession {
 														class348.runScriptEvent(var19); // L: 8445
 													}
 
-													var10 = class120.getPacketBufferNode(ClientPacket.field2987, Client.packetWriter.isaacCipher); // L: 8448
+													var10 = class120.getPacketBufferNode(ClientPacket.IF_BUTTONT, Client.packetWriter.isaacCipher); // L: 8448
 													var10.packetBuffer.writeShort(var0); // L: 8449
 													var10.packetBuffer.writeIntLE(ClanSettings.selectedSpellWidget); // L: 8450
 													var10.packetBuffer.writeShortLE(Client.selectedSpellChildIndex); // L: 8451
@@ -819,7 +819,7 @@ class class17 implements SSLSession {
 												Client.mouseCrossState = 0; // L: 8952
 												Client.destinationX = var0; // L: 8953
 												Client.destinationY = var1; // L: 8954
-												var9 = class120.getPacketBufferNode(ClientPacket.field2971, Client.packetWriter.isaacCipher); // L: 8956
+												var9 = class120.getPacketBufferNode(ClientPacket.OPLOC5, Client.packetWriter.isaacCipher); // L: 8956
 												var9.packetBuffer.writeShortAdd(var3); // L: 8957
 												var9.packetBuffer.writeShortAddLE(WorldMapData_1.baseY * 64 + var1); // L: 8958
 												var9.packetBuffer.writeShortLE(class128.baseX * 64 + var0); // L: 8959
@@ -833,7 +833,7 @@ class class17 implements SSLSession {
 												Client.mouseCrossY = var8; // L: 8854
 												Client.mouseCrossColor = 2; // L: 8855
 												Client.mouseCrossState = 0; // L: 8856
-												var9 = class120.getPacketBufferNode(ClientPacket.OPPLAYER5, Client.packetWriter.isaacCipher); // L: 8858
+												var9 = class120.getPacketBufferNode(ClientPacket.OPLOCE, Client.packetWriter.isaacCipher); // L: 8858
 												var9.packetBuffer.writeShort(var3); // L: 8859
 												Client.packetWriter.addNode(var9); // L: 8860
 												break label666;
@@ -852,7 +852,7 @@ class class17 implements SSLSession {
 													}
 
 													if (var18 != null) { // L: 8940
-														var11 = class120.getPacketBufferNode(ClientPacket.field3014, Client.packetWriter.isaacCipher); // L: 8942
+														var11 = class120.getPacketBufferNode(ClientPacket.OPNPCE, Client.packetWriter.isaacCipher); // L: 8942
 														var11.packetBuffer.writeShortAdd(var18.id); // L: 8943
 														Client.packetWriter.addNode(var11); // L: 8944
 													}
@@ -865,7 +865,7 @@ class class17 implements SSLSession {
 												Client.mouseCrossY = var8; // L: 8809
 												Client.mouseCrossColor = 2; // L: 8810
 												Client.mouseCrossState = 0; // L: 8811
-												var9 = class120.getPacketBufferNode(ClientPacket.MOVE_GAMECLICK, Client.packetWriter.isaacCipher); // L: 8813
+												var9 = class120.getPacketBufferNode(ClientPacket.OPOBJE, Client.packetWriter.isaacCipher); // L: 8813
 												var9.packetBuffer.writeShort(var3); // L: 8814
 												var9.packetBuffer.writeShort(class128.baseX * 64 + var0); // L: 8815
 												var9.packetBuffer.writeShortAddLE(WorldMapData_1.baseY * 64 + var1); // L: 8816
@@ -878,7 +878,7 @@ class class17 implements SSLSession {
 												if (var17 != null && var17.itemQuantities[var0] >= 100000) { // L: 9093
 													class65.addGameMessage(27, "", var17.itemQuantities[var0] + " x " + UserComparator3.ItemDefinition_get(var4).name);
 												} else {
-													var10 = class120.getPacketBufferNode(ClientPacket.field2979, Client.packetWriter.isaacCipher); // L: 9096
+													var10 = class120.getPacketBufferNode(ClientPacket.field3005, Client.packetWriter.isaacCipher); // L: 9096
 													var10.packetBuffer.writeShortAdd(var4); // L: 9097
 													Client.packetWriter.addNode(var10); // L: 9098
 												}

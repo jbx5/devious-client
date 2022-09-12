@@ -83,7 +83,7 @@ public class class308 {
 	@Export("Clan_joinChat")
 	static final void Clan_joinChat(String var0) {
 		if (!var0.equals("")) { // L: 11960
-			PacketBufferNode var1 = class120.getPacketBufferNode(ClientPacket.REFLECTION_CHECK_REPLY, Client.packetWriter.isaacCipher); // L: 11962
+			PacketBufferNode var1 = class120.getPacketBufferNode(ClientPacket.field2963, Client.packetWriter.isaacCipher); // L: 11962
 			var1.packetBuffer.writeByte(class357.stringCp1252NullTerminatedByteSize(var0)); // L: 11963
 			var1.packetBuffer.writeStringCp1252NullTerminated(var0); // L: 11964
 			Client.packetWriter.addNode(var1); // L: 11965

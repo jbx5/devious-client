@@ -280,7 +280,7 @@ class class11 implements TlsAuthentication {
 			Client.field714[var0] = true;
 		}
 
-		PacketBufferNode var5 = class120.getPacketBufferNode(ClientPacket.IF_BUTTON5, Client.packetWriter.isaacCipher); // L: 2630
+		PacketBufferNode var5 = class120.getPacketBufferNode(ClientPacket.EVENT_WINDOW_SETTING, Client.packetWriter.isaacCipher); // L: 2630
 		var5.packetBuffer.writeByte(SceneTilePaint.getWindowedMode()); // L: 2631
 		var5.packetBuffer.writeShort(class123.canvasWidth); // L: 2632
 		var5.packetBuffer.writeShort(class166.canvasHeight); // L: 2633

@@ -85,7 +85,7 @@ public final class WallDecoration {
 		garbageValue = "-2133636009"
 	)
 	public static PacketBufferNode method4664(int var0, String var1, Language var2, int var3) {
-		PacketBufferNode var4 = class120.getPacketBufferNode(ClientPacket.OPHELDD, Client.packetWriter.isaacCipher); // L: 17
+		PacketBufferNode var4 = class120.getPacketBufferNode(ClientPacket.field3026, Client.packetWriter.isaacCipher); // L: 17
 		var4.packetBuffer.writeByte(0); // L: 18
 		int var5 = var4.packetBuffer.offset; // L: 19
 		var4.packetBuffer.writeByte(var0); // L: 20
@@ -235,7 +235,7 @@ public final class WallDecoration {
 		}
 
 		if (Client.gameState >= 25) { // L: 4270
-			PacketBufferNode var1 = class120.getPacketBufferNode(ClientPacket.IF_BUTTON5, Client.packetWriter.isaacCipher); // L: 4272
+			PacketBufferNode var1 = class120.getPacketBufferNode(ClientPacket.EVENT_WINDOW_SETTING, Client.packetWriter.isaacCipher); // L: 4272
 			var1.packetBuffer.writeByte(SceneTilePaint.getWindowedMode()); // L: 4273
 			var1.packetBuffer.writeShort(class123.canvasWidth); // L: 4274
 			var1.packetBuffer.writeShort(class166.canvasHeight); // L: 4275
