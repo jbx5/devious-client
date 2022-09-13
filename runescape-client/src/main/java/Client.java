@@ -802,7 +802,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 	static int mouseCrossY;
 	@ObfuscatedName("kn")
 	@ObfuscatedGetter(
-		intValue = -1615092235
+		intValue = 2057893668
 	)
 	@Export("mouseCrossState")
 	static int mouseCrossState;
