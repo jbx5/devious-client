@@ -366,7 +366,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 	static int cycle;
 	@ObfuscatedName("df")
 	@ObfuscatedGetter(
-		longValue = 357724067631522685L
+		longValue = -357724067631522685L
 	)
 	@Export("mouseLastLastPressedTimeMillis")
 	static long mouseLastLastPressedTimeMillis;
@@ -426,7 +426,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 	static int hintArrowY;
 	@ObfuscatedName("dk")
 	@ObfuscatedGetter(
-		intValue = 1826852820
+		intValue = -1234057238
 	)
 	@Export("hintArrowHeight")
 	static int hintArrowHeight;
