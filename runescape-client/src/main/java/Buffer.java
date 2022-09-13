@@ -1022,7 +1022,7 @@ public class Buffer extends Node {
 			descriptor = "(IB)V",
 			garbageValue = "-51"
 	)
-	public void writeMediumLE(int var1) {
+	public void method7983(int var1) {
 		this.array[++this.offset - 1] = (byte)var1;
 		this.array[++this.offset - 1] = (byte)(var1 >> 8);
 		this.array[++this.offset - 1] = (byte)(var1 >> 16);
