@@ -179,7 +179,7 @@ public class ServerPacket {
 	@ObfuscatedSignature(
 			descriptor = "Ljl;"
 	)
-	public static final ServerPacket field3165 = new ServerPacket(33, -2);
+	public static final ServerPacket NPC_INFO_LARGE_VIEWPORT_2 = new ServerPacket(33, -2);
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 			descriptor = "Ljl;"
@@ -264,7 +264,7 @@ public class ServerPacket {
 	@ObfuscatedSignature(
 			descriptor = "Ljl;"
 	)
-	public static final ServerPacket field3121 = new ServerPacket(50, -1);
+	public static final ServerPacket MESSAGE_GAME = new ServerPacket(50, -1);
 	@ObfuscatedName("au")
 	@ObfuscatedSignature(
 			descriptor = "Ljl;"
