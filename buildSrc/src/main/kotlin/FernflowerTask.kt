@@ -18,7 +18,7 @@ open class FernflowerTask: DefaultTask() {
 
     @Input
     @Optional
-    var inputJar: String? = "/home/burak/IdeaProjects/unethicalite/deobfuscator/build/libs/updated-${project.version}.jar"
+    var inputJar: String? = "../deobfuscator/build/libs/updated-${project.version}.jar"
 
     @Input
     @Optional

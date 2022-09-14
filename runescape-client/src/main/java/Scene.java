@@ -421,7 +421,7 @@ public class Scene {
 			BoundaryObject var12 = new BoundaryObject(); // L: 228
 			var12.tag = var9; // L: 229
 			var12.flags = var11; // L: 230
-			var12.x = var2 * 134217728 + 67108864; // L: 231
+			var12.x = var2 * 128 + 64; // L: 231
 			var12.y = var3 * 128 + 64; // L: 232
 			var12.z = var4; // L: 233
 			var12.renderable1 = var5; // L: 234
