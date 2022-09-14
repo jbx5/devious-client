@@ -180,6 +180,7 @@ public class RuneLite
 		parser.accepts("jav_config", "jav_config url")
 			.withRequiredArg()
 			.defaultsTo(RuneLiteProperties.getJavConfig());
+		parser.accepts("disable-telemetry", "Disable telemetry");
 
 		final ArgumentAcceptingOptionSpec<File> sessionfile = parser.accepts("sessionfile", "Use a specified session file")
 			.withRequiredArg()
@@ -575,6 +576,11 @@ public class RuneLite
 		SplashScreen.stop();
 
 		clientUI.show();
+
+		if (!options.has("disable-telemetry"))
+		{
+			injector.getInstance(TelemetryClient.class).submitTelemetry();
+		}
 
 		ReflectUtil.queueInjectorAnnotationCacheInvalidation(injector);
 		ReflectUtil.invalidateAnnotationCaches();

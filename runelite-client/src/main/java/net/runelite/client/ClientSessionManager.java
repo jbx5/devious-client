@@ -90,7 +90,10 @@ public class ClientSessionManager
 	@Subscribe
 	private void onClientShutdown(ClientShutdown e)
 	{
+		if (scheduledFuture != null)
+		{
 		scheduledFuture.cancel(true);
+		}
 
 		e.waitFor(executorService.submit(() ->
 		{

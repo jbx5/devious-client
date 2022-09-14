@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 Abex
+ * Copyright (c) 2020, Adam <Adam@sigterm.info>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,47 +22,24 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.client.config;
+package net.runelite.client.ui;
 
-import java.util.function.Predicate;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import net.runelite.api.Client;
-import net.runelite.api.WorldType;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import org.junit.Test;
 
-@Getter
-@RequiredArgsConstructor
-public enum RuneScapeProfileType
+public class ContainableFrameTest
 {
-	STANDARD(client -> true),
-	BETA(client -> client.getWorldType().contains(WorldType.NOSAVE_MODE)),
-	QUEST_SPEEDRUNNING(client -> client.getWorldType().contains(WorldType.QUEST_SPEEDRUNNING)),
-	DEADMAN(client -> client.getWorldType().contains(WorldType.DEADMAN)),
-	PVP_ARENA(client -> client.getWorldType().contains(WorldType.PVP_ARENA)),
-	TRAILBLAZER_LEAGUE,
-	DEADMAN_REBORN,
-	SHATTERED_RELICS_LEAGUE(client -> client.getWorldType().contains(WorldType.SEASONAL)),
-	;
-
-	private final Predicate<Client> test;
-
-	RuneScapeProfileType()
+	@Test
+	public void testJdk8231564()
 	{
-		this(client -> false);
-	}
-
-	public static RuneScapeProfileType getCurrent(Client client)
-	{
-		RuneScapeProfileType[] types = values();
-		for (int i = types.length - 1; i >= 0; i--)
-		{
-			RuneScapeProfileType type = types[i];
-			if (types[i].test.test(client))
-			{
-				return type;
-			}
-		}
-
-		return STANDARD;
+		assertTrue(ContainableFrame.jdk8231564("11.0.8"));
+		assertFalse(ContainableFrame.jdk8231564("11.0.7"));
+		assertFalse(ContainableFrame.jdk8231564("1.8.0_261"));
+		assertFalse(ContainableFrame.jdk8231564("12.0.0"));
+		assertFalse(ContainableFrame.jdk8231564("13.0.0"));
+		assertFalse(ContainableFrame.jdk8231564("14.0.0"));
+		assertTrue(ContainableFrame.jdk8231564("15"));
+		assertTrue(ContainableFrame.jdk8231564("11.0.16.1"));
 	}
 }
