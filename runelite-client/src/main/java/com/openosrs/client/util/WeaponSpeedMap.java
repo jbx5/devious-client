@@ -233,7 +233,7 @@ public class WeaponSpeedMap
 		SpeedMap.put(ItemID.ENCHANTED_LYRE3, 4);
 		SpeedMap.put(ItemID.ENCHANTED_LYRE4, 4);
 		SpeedMap.put(ItemID.ENCHANTED_LYRE5, 4);
-		SpeedMap.put(ItemID.EVENT_RPG, 3);
+		SpeedMap.put(ItemID.GOBLIN_PAINT_CANNON, 3);
 		SpeedMap.put(ItemID.EXCALIBUR, 5);
 		SpeedMap.put(ItemID.EXCALIBUR_8280, 5);
 		SpeedMap.put(ItemID.FREMENNIK_BLADE, 4);
