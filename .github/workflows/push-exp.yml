@@ -1,4 +1,4 @@
-name: Unethicalite - Exp (push)
+name: Devious Client - Exp (push)
 
 on:
   push:
@@ -41,7 +41,7 @@ jobs:
         run: |
           git clone https://github.com/jbx5/devious-hosting.git
           cp -r ./runelite-client/build/bootstrap/. ./devious-hosting
-          cd unethicalite-hosting
+          cd devious-hosting
           
           git config --global user.email "113217895+jbx5@users.noreply.github.com"
           git config --global user.name "Github Actions"
