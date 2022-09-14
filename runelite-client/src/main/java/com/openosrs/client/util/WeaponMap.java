@@ -247,7 +247,7 @@ public class WeaponMap
 		StyleMap.put(ItemID.ENCHANTED_LYRE3, WeaponStyle.MELEE);
 		StyleMap.put(ItemID.ENCHANTED_LYRE4, WeaponStyle.MELEE);
 		StyleMap.put(ItemID.ENCHANTED_LYRE5, WeaponStyle.MELEE);
-		StyleMap.put(ItemID.EVENT_RPG, WeaponStyle.MELEE);
+		StyleMap.put(ItemID.GOBLIN_PAINT_CANNON, WeaponStyle.MELEE);
 		StyleMap.put(ItemID.EXCALIBUR, WeaponStyle.MELEE);
 		StyleMap.put(ItemID.EXCALIBUR_8280, WeaponStyle.MELEE);
 		StyleMap.put(ItemID.FLAMTAER_HAMMER, WeaponStyle.MELEE);

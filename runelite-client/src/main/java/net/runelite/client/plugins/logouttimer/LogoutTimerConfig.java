@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 Abex
+ * Copyright (c) 2022, Adam <Adam@sigterm.info>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,47 +22,28 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.client.config;
+package net.runelite.client.plugins.logouttimer;
 
-import java.util.function.Predicate;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import net.runelite.api.Client;
-import net.runelite.api.WorldType;
+import net.runelite.client.config.Config;
+import net.runelite.client.config.ConfigGroup;
+import net.runelite.client.config.ConfigItem;
+import net.runelite.client.config.Range;
+import net.runelite.client.config.Units;
 
-@Getter
-@RequiredArgsConstructor
-public enum RuneScapeProfileType
+@ConfigGroup(LogoutTimerConfig.GROUP)
+public interface LogoutTimerConfig extends Config
 {
-	STANDARD(client -> true),
-	BETA(client -> client.getWorldType().contains(WorldType.NOSAVE_MODE)),
-	QUEST_SPEEDRUNNING(client -> client.getWorldType().contains(WorldType.QUEST_SPEEDRUNNING)),
-	DEADMAN(client -> client.getWorldType().contains(WorldType.DEADMAN)),
-	PVP_ARENA(client -> client.getWorldType().contains(WorldType.PVP_ARENA)),
-	TRAILBLAZER_LEAGUE,
-	DEADMAN_REBORN,
-	SHATTERED_RELICS_LEAGUE(client -> client.getWorldType().contains(WorldType.SEASONAL)),
-	;
+	String GROUP = "logouttimer";
 
-	private final Predicate<Client> test;
-
-	RuneScapeProfileType()
+	@ConfigItem(
+		keyName = "idleTimeout",
+		name = "Idle timeout",
+		description = "Amount of time before you are logged out for being idle"
+	)
+	@Units(Units.MINUTES)
+	@Range(min = 5, max = 25)
+	default int getIdleTimeout()
 	{
-		this(client -> false);
-	}
-
-	public static RuneScapeProfileType getCurrent(Client client)
-	{
-		RuneScapeProfileType[] types = values();
-		for (int i = types.length - 1; i >= 0; i--)
-		{
-			RuneScapeProfileType type = types[i];
-			if (types[i].test.test(client))
-			{
-				return type;
-			}
-		}
-
-		return STANDARD;
+		return 5;
 	}
 }
