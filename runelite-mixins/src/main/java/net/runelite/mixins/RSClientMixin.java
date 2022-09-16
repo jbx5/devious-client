@@ -3195,7 +3195,7 @@ public abstract class RSClientMixin implements RSClient
 	@Override
 	public void setIdleTimeout(int ticks)
 	{
-           idleTimeout = ticks;
+		idleTimeout = ticks;
 	}
 
 	@Inject
