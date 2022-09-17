@@ -5,6 +5,8 @@ Come join my discord if you're looking to share knowledge and learn together!
 
 https://discord.gg/5sh52G36GF
 
+# Launcher
+
 The client launcher can be downloaded here:
 
 https://github.com/jbx5/devious-launcher/releases
