@@ -5,6 +5,12 @@ Come join my discord if you're looking to share knowledge and learn together!
 
 https://discord.gg/5sh52G36GF
 
+# Launcher
+
+The client launcher can be downloaded here:
+
+https://github.com/jbx5/devious-launcher/releases
+
 # Unethicalite
 A non-compliant fork of OpenOSRS.
 This client is slightly modified in order to be compatible with our api. Updates to OpenOSRS are directly synced with this fork.
