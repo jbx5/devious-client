@@ -184,6 +184,11 @@ public abstract class ScriptVMMixin implements RSClient
 		{
 			try
 			{
+				int scriptId = (int) arguments[0];
+				if (scriptId == 6493)
+				{
+					return;
+				}
 				rootScriptEvent = event;
 				copy$runScript(event, maxExecutionTime, var2);
 			}
