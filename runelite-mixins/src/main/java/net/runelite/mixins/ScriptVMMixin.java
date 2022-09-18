@@ -182,15 +182,13 @@ public abstract class ScriptVMMixin implements RSClient
 		}
 		else
 		{
-			try
+			if (arguments[0] instanceof Integer)
 			{
 				int scriptId = (int) arguments[0];
 				if (scriptId == 6493)
 				{
 					return;
 				}
-			}
-			catch (ClassCastException ignored) {
 			}
 			try
 			{
