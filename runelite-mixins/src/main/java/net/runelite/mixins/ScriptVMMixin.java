@@ -189,6 +189,11 @@ public abstract class ScriptVMMixin implements RSClient
 				{
 					return;
 				}
+			}
+			catch (ClassCastException ignored) {
+			}
+			try
+			{
 				rootScriptEvent = event;
 				copy$runScript(event, maxExecutionTime, var2);
 			}
