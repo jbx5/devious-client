@@ -16,7 +16,7 @@ public final class SceneTilePaint {
 	static long field2649;
 	@ObfuscatedName("sw")
 	@ObfuscatedGetter(
-		intValue = 403292160
+		intValue = 741348224
 	)
 	static int field2638;
 	@ObfuscatedName("ah")
