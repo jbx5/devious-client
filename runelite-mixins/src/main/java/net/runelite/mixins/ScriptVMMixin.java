@@ -39,6 +39,7 @@ import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSScript;
 import net.runelite.rs.api.RSScriptEvent;
 
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -187,7 +188,13 @@ public abstract class ScriptVMMixin implements RSClient
 				int scriptId = (int) arguments[0];
 				if (scriptId == 6493)
 				{
-					return;
+					RSScript script = client.getScript(scriptId);
+					int[] opcodes = new int[]{0, 7039, 0, 7014, 0, 7009, 0, 7004, 21};
+					if (Arrays.equals(script.getInstructions(), opcodes))
+					{
+						currentScript = null;
+						return;
+					}
 				}
 			}
 			try

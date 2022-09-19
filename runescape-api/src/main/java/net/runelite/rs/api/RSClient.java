@@ -1421,6 +1421,8 @@ public interface RSClient extends RSGameEngine, Client
 
 	@Import("Script_cached")
 	RSEvictingDualNodeHashTable getScriptCache();
+	@Import("getScript")
+	RSScript getScript(int scriptID);
 
 	@Import("StructDefinition_cached")
 	RSEvictingDualNodeHashTable getRSStructCompositionCache();
