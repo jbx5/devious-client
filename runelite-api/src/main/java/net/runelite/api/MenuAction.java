@@ -296,6 +296,10 @@ public enum MenuAction
 	 */
 	RUNELITE_INFOBOX(1504),
 	/**
+	 * Parent menu of submenus
+	 */
+	RUNELITE_SUBMENU(1505),
+	/**
 	 * Menu action triggered by following a player.
 	 */
 	FOLLOW(2046),
