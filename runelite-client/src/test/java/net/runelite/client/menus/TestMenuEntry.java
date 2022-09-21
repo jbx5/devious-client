@@ -35,7 +35,7 @@ import net.runelite.api.NPC;
 import net.runelite.api.Player;
 import net.runelite.api.widgets.Widget;
 
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = false)
 public class TestMenuEntry implements MenuEntry
 {
 	private String option;
@@ -188,6 +188,48 @@ public class TestMenuEntry implements MenuEntry
 	public MenuEntry getParent()
 	{
 		return null;
+	}
+
+	@Override
+	public int getOpcode()
+	{
+		return this.type;
+	}
+
+	@Override
+	public void setOpcode(int opcode)
+	{
+		this.type = opcode;
+	}
+
+	@Override
+	public int getActionParam0()
+	{
+		return this.param0;
+	}
+
+	@Override
+	public void setActionParam0(int param0)
+	{
+		this.param0 = param0;
+	}
+
+	@Override
+	public int getActionParam1()
+	{
+		return this.param1;
+	}
+
+	@Override
+	public void setActionParam1(int param1)
+	{
+		this.param1 = param1;
+	}
+
+	@Override
+	public MenuAction getMenuAction()
+	{
+		return MenuAction.of(this.type);
 	}
 
 	@Override
