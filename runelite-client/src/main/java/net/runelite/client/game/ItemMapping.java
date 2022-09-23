@@ -80,6 +80,7 @@ import static net.runelite.api.ItemID.ANCIENT_HALO_L;
 import static net.runelite.api.ItemID.ANCIENT_WYVERN_SHIELD;
 import static net.runelite.api.ItemID.ANCIENT_WYVERN_SHIELD_21634;
 import static net.runelite.api.ItemID.ANGUISH_ORNAMENT_KIT;
+import static net.runelite.api.ItemID.ARCANE_SIGIL;
 import static net.runelite.api.ItemID.ARCHERS_RING;
 import static net.runelite.api.ItemID.ARCHERS_RING_I;
 import static net.runelite.api.ItemID.ARCHERS_RING_I_25260;
@@ -981,6 +982,7 @@ public enum ItemMapping
 	ITEM_NIGHTMARE_STAFF(NIGHTMARE_STAFF, ELDRITCH_NIGHTMARE_STAFF, HARMONISED_NIGHTMARE_STAFF, VOLATILE_NIGHTMARE_STAFF),
 	ITEM_GHARZI_RAPIER(GHRAZI_RAPIER, HOLY_GHRAZI_RAPIER),
 	ITEM_MASTER_SCROLL_BOOK(MASTER_SCROLL_BOOK_EMPTY, MASTER_SCROLL_BOOK),
+	ITEM_ARCANE_SIGIL(ARCANE_SIGIL, ELIDINIS_WARD_F, ELIDINIS_WARD_OR),
 
 	// Trouver Parchment
 	ITEM_TROUVER_PARCHMENT(
