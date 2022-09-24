@@ -67486,7 +67486,14 @@
     },
     "action": "Climb",
     "objectId": 34741,
-    "requirements": {}
+    "requirements": {
+      "skillRequirements": [
+        {
+          "skill": "AGILITY",
+          "level": 69
+        }
+      ]
+    }
   },
   {
     "source": {
@@ -67501,7 +67508,14 @@
     },
     "action": "Climb",
     "objectId": 34741,
-    "requirements": {}
+    "requirements": {
+      "skillRequirements": [
+        {
+          "skill": "AGILITY",
+          "level": 69
+        }
+      ]
+    }
   },
   {
     "source": {
@@ -67516,7 +67530,14 @@
     },
     "action": "Climb",
     "objectId": 27984,
-    "requirements": {}
+    "requirements": {
+      "skillRequirements": [
+        {
+          "skill": "AGILITY",
+          "level": 73
+        }
+      ]
+    }
   },
   {
     "source": {
