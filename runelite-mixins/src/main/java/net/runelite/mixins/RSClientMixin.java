@@ -1620,25 +1620,25 @@ public abstract class RSClientMixin implements RSClient
 	@Override
 	public boolean hasHintArrow()
 	{
-		return client.getHintArrowTargetType() != HintArrowType.NONE.getValue();
+		return client.getHintArrowTargetType() != HintArrowType.NONE;
 	}
 
 	@Inject
 	@Override
-	public HintArrowType getHintArrowType()
+	public int getHintArrowType()
 	{
 		int type = client.getHintArrowTargetType();
-		if (type == HintArrowType.NPC.getValue())
+		if (type == HintArrowType.NPC)
 		{
 			return HintArrowType.NPC;
 		}
-		else if (type == HintArrowType.PLAYER.getValue())
+		else if (type == HintArrowType.PLAYER)
 		{
 			return HintArrowType.PLAYER;
 		}
-		else if (type == HintArrowType.WORLD_POSITION.getValue())
+		else if (type == HintArrowType.COORDINATE)
 		{
-			return HintArrowType.WORLD_POSITION;
+			return HintArrowType.COORDINATE;
 		}
 		else
 		{
@@ -1650,14 +1650,14 @@ public abstract class RSClientMixin implements RSClient
 	@Override
 	public void clearHintArrow()
 	{
-		client.setHintArrowTargetType(HintArrowType.NONE.getValue());
+		client.setHintArrowTargetType(HintArrowType.NONE);
 	}
 
 	@Inject
 	@Override
 	public void setHintArrow(NPC npc)
 	{
-		client.setHintArrowTargetType(HintArrowType.NPC.getValue());
+		client.setHintArrowTargetType(HintArrowType.NPC);
 		client.setHintArrowNpcTargetIdx(npc.getIndex());
 	}
 
@@ -1665,7 +1665,7 @@ public abstract class RSClientMixin implements RSClient
 	@Override
 	public void setHintArrow(Player player)
 	{
-		client.setHintArrowTargetType(HintArrowType.PLAYER.getValue());
+		client.setHintArrowTargetType(HintArrowType.PLAYER);
 		client.setHintArrowPlayerTargetIdx(((RSPlayer) player).getId());
 		hintPlayerChanged(-1);
 	}
@@ -1674,7 +1674,19 @@ public abstract class RSClientMixin implements RSClient
 	@Override
 	public void setHintArrow(WorldPoint point)
 	{
-		client.setHintArrowTargetType(HintArrowType.WORLD_POSITION.getValue());
+		client.setHintArrowTargetType(HintArrowType.COORDINATE);
+		client.setHintArrowX(point.getX());
+		client.setHintArrowY(point.getY());
+		// position the arrow in center of the tile
+		client.setHintArrowOffsetX(LOCAL_TILE_SIZE / 2);
+		client.setHintArrowOffsetY(LOCAL_TILE_SIZE / 2);
+	}
+
+	@Inject
+	@Override
+	public void setHintArrow(LocalPoint point)
+	{
+		client.setHintArrowTargetType(HintArrowType.COORDINATE);
 		client.setHintArrowX(point.getX());
 		client.setHintArrowY(point.getY());
 		// position the arrow in center of the tile
@@ -1686,7 +1698,7 @@ public abstract class RSClientMixin implements RSClient
 	@Override
 	public WorldPoint getHintArrowPoint()
 	{
-		if (getHintArrowType() == HintArrowType.WORLD_POSITION)
+		if (getHintArrowType() == HintArrowType.COORDINATE)
 		{
 			int x = client.getHintArrowX();
 			int y = client.getHintArrowY();
