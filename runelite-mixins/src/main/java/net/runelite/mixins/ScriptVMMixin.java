@@ -183,20 +183,6 @@ public abstract class ScriptVMMixin implements RSClient
 		}
 		else
 		{
-			if (arguments[0] instanceof Integer)
-			{
-				int scriptId = (int) arguments[0];
-				if (scriptId == 6493)
-				{
-					RSScript script = client.getScript(scriptId);
-					int[] opcodes = new int[]{0, 7039, 0, 7014, 0, 7009, 0, 7004, 21};
-					if (Arrays.equals(script.getInstructions(), opcodes))
-					{
-						currentScript = null;
-						return;
-					}
-				}
-			}
 			try
 			{
 				rootScriptEvent = event;
