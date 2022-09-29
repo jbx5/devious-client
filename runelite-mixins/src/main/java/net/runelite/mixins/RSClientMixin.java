@@ -779,6 +779,7 @@ public abstract class RSClientMixin implements RSClient
 
 	@Inject
 	@Override
+	@Deprecated
 	public int getVar(VarPlayer varPlayer)
 	{
 		int[] varps = getVarps();
@@ -1598,7 +1599,7 @@ public abstract class RSClientMixin implements RSClient
 	{
 		// Setting the localInteractingIndex (aka player target index, it only applies to players)
 		// causes that player to get priority over others when rendering/menus are added
-		if (client.getVar(VarPlayer.ATTACKING_PLAYER) == -1)
+		if (client.getVarpValue(VarPlayer.ATTACKING_PLAYER) == -1)
 		{
 			client.setLocalInteractingIndex(client.getHintArrowPlayerTargetIdx() & 2047);
 		}
