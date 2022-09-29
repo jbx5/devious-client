@@ -1543,6 +1543,8 @@ public abstract class RSClientMixin implements RSClient
 	{
 		VarbitChanged varbitChanged = new VarbitChanged();
 		varbitChanged.setVarpId(idx);
+		varbitChanged.setVarbitId(idx);
+		varbitChanged.setValue(idx);
 		client.getCallbacks().post(varbitChanged);
 	}
 
