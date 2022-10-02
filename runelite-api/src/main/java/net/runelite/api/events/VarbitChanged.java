@@ -63,8 +63,4 @@ public class VarbitChanged
 	{
 		return varpId;
 	}
-	public int getVarbitId()
-	{
-		return varpId;
-	}
 }
