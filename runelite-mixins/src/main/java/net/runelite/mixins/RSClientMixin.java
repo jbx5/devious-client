@@ -1425,6 +1425,10 @@ public abstract class RSClientMixin implements RSClient
 				}
 			}
 		}
+		else if (gameState == GameState.LOGIN_SCREEN)
+		{
+			loadVarbits();
+		}
 	}
 
 
@@ -1536,7 +1540,6 @@ public abstract class RSClientMixin implements RSClient
 	@Inject
 	public static void settingsChanged(int idx)
 	{
-		loadVarbits();
 		int var1 = rl$Varps[idx];
 		int var2 = client.getVarps()[idx];
 		int var3 = var1 ^ var2;
@@ -1548,7 +1551,6 @@ public abstract class RSClientMixin implements RSClient
 		for(; var4 < rl$VarbitIds.length; ++var4) {
 			int var5 = rl$VarbitIds[var4] >> 16;
 			if (var5 != idx) {
-				System.out.println("Var5 "+var5);
 				break;
 			}
 
