@@ -292,12 +292,6 @@ public abstract class RSClientMixin implements RSClient
 	{
 		printMenuActions = yes;
 	}
-	@Inject
-	public static int[] rl$Varps = new int[4000];
-	@Inject
-	public static int[] rl$VarbitIds;
-	@Inject
-	public static int[] rl$varbitValues;
 
 	@Inject
 	@Override
@@ -1425,10 +1419,6 @@ public abstract class RSClientMixin implements RSClient
 				}
 			}
 		}
-		else if (gameState == GameState.LOGIN_SCREEN)
-		{
-			loadVarbits();
-		}
 	}
 
 
@@ -1510,71 +1500,59 @@ public abstract class RSClientMixin implements RSClient
 	}
 
 	@Inject
-	public static void loadVarbits() {
-		if (rl$VarbitIds == null) {
-			RSArchive var0 = client.getIndexConfig();
-			int[] var1 = var0.getFileIds(14);
-			rl$VarbitIds = new int[var1.length];
-			rl$varbitValues = new int[var0.getGroupFileCount(14)];
-			int var2 = 0;
-			int[] var3 = rl$VarbitIds;
-			int var4 = rl$VarbitIds.length;
-
-			for(int var5 = 0; var5 < var4; ++var5) {
-				int var6 = var3[var5];
-				VarbitComposition var7 = client.getVarbit(var6);
-				if (var7 != null) {
-					rl$VarbitIds[var2] = var7.getIndex() << 16 | var6;
-					rl$varbitValues[var6] = var7.getIndex() << 16 | var7.getMostSignificantBit() << 8 | var7.getLeastSignificantBit();
-				}
-
-				++var2;
-			}
-
-			Arrays.sort(rl$VarbitIds);
-		}
-
-	}
+	private static int numVarbits;
+	@Inject
+	private static int[] oldVarps;
 
 	@FieldHook("Varps_main")
 	@Inject
 	public static void settingsChanged(int idx)
 	{
-		int var1 = rl$Varps[idx];
-		int var2 = client.getVarps()[idx];
-		int var3 = var1 ^ var2;
-		int var4 = Arrays.binarySearch(rl$VarbitIds, idx << 16);
-		if (var4 < 0) {
-			var4 = -var4 - 1;
+		// Varp changed
+		VarbitChanged varbitChanged = new VarbitChanged();
+		varbitChanged.setVarpId(idx);
+		varbitChanged.setValue(client.getVarpValue(idx));
+		client.getCallbacks().post(varbitChanged);
+
+		// Varbit changed
+		if (numVarbits == 0)
+		{
+			numVarbits = client.getIndexConfig().getFileIds(14).length;
 		}
 
-		for(; var4 < rl$VarbitIds.length; ++var4) {
-			int var5 = rl$VarbitIds[var4] >> 16;
-			if (var5 != idx) {
+		if (oldVarps == null)
+		{
+			oldVarps = new int[client.getVarps().length];
+		}
+
+		if (Arrays.equals(oldVarps, client.getVarps()))
+		{
+			return;
+		}
+
+		for (int varbitId = 0; varbitId < numVarbits; varbitId++)
+		{
+			try
+			{
+				int oldValue = client.getVarbitValue(oldVarps, varbitId);
+				int newValue = client.getVarbitValue(client.getVarps(), varbitId);
+				if (oldValue != newValue)
+				{
+					varbitChanged.setVarpId(-1);
+					varbitChanged.setVarbitId(varbitId);
+					varbitChanged.setValue(newValue);
+					client.getCallbacks().post(varbitChanged);
+				}
+			}
+			catch (IndexOutOfBoundsException e)
+			{
+				// We don't know what the last varbit is, so we just hit the end, then set it for future iterations
+				client.getLogger().debug("Hit OOB at varbit: {}", varbitId);
+				numVarbits = varbitId;
 				break;
 			}
-
-			int var6 = rl$VarbitIds[var4] & '\uffff';
-			int var7 = rl$varbitValues[var6] >> 8 & 255;
-			int var8 = rl$varbitValues[var6] & 255;
-			int var9 = client.getVarpMasks()[var7 - var8] << var8;
-			if (((var1 ^ var2) & var9) != 0) {
-				var3 &= ~var9;
-				int var10 = (var2 & var9) >>> var8;
-				VarbitChanged varbitChanged = new VarbitChanged();
-				varbitChanged.setVarpId(idx);
-				varbitChanged.setVarbitId(var6);
-				varbitChanged.setValue(var10);
-				client.getCallbacks().post(varbitChanged);
-			}
 		}
-
-		if (var3 != 0) {
-			VarbitChanged varbitChanged = new VarbitChanged();
-			varbitChanged.setVarpId(idx);
-			varbitChanged.setValue(var2);
-			client.getCallbacks().post(varbitChanged);
-		}
+		System.arraycopy(client.getVarps(), 0, oldVarps, 0, oldVarps.length);
 	}
 
 	@FieldHook("isResizable")
