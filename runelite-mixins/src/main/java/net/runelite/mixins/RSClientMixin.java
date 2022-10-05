@@ -28,7 +28,46 @@ package net.runelite.mixins;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.primitives.Doubles;
-import net.runelite.api.*;
+import net.runelite.api.Actor;
+import net.runelite.api.Animation;
+import net.runelite.api.ChatMessageType;
+import net.runelite.api.Deque;
+import net.runelite.api.EnumComposition;
+import net.runelite.api.FriendContainer;
+import net.runelite.api.GameState;
+import net.runelite.api.GrandExchangeOffer;
+import net.runelite.api.GraphicsObject;
+import net.runelite.api.HintArrowType;
+import net.runelite.api.Ignore;
+import net.runelite.api.IndexDataBase;
+import net.runelite.api.IndexedSprite;
+import net.runelite.api.IntegerNode;
+import net.runelite.api.InventoryID;
+import net.runelite.api.ItemComposition;
+import net.runelite.api.MenuAction;
+import net.runelite.api.MenuEntry;
+import net.runelite.api.MessageNode;
+import net.runelite.api.Model;
+import net.runelite.api.ModelData;
+import net.runelite.api.NPC;
+import net.runelite.api.NPCComposition;
+import net.runelite.api.NameableContainer;
+import net.runelite.api.NodeCache;
+import net.runelite.api.ObjectComposition;
+import net.runelite.api.Perspective;
+import net.runelite.api.Player;
+import net.runelite.api.Point;
+import net.runelite.api.Prayer;
+import net.runelite.api.Projectile;
+import net.runelite.api.ScriptEvent;
+import net.runelite.api.Skill;
+import net.runelite.api.SpritePixels;
+import net.runelite.api.StructComposition;
+import net.runelite.api.Tile;
+import net.runelite.api.VarPlayer;
+import net.runelite.api.VarbitComposition;
+import net.runelite.api.Varbits;
+import net.runelite.api.WorldType;
 import net.runelite.api.clan.ClanChannel;
 import net.runelite.api.clan.ClanRank;
 import net.runelite.api.clan.ClanSettings;
@@ -1419,8 +1458,45 @@ public abstract class RSClientMixin implements RSClient
 				}
 			}
 		}
+		else if (gameState == GameState.LOGIN_SCREEN)
+		{
+			loadVarbits();
+		}
 	}
 
+	@Inject
+	private static Map<Integer, ArrayList<Integer>> varbitsMap;
+
+	@Inject
+	public static void loadVarbits()
+	{
+		// Load varbits into map<index, varbitIds>
+		if (varbitsMap == null)
+		{
+			varbitsMap = new HashMap<>();
+			RSArchive archive = client.getIndexConfig();
+			int[] fileIds = archive.getFileIds(14);
+
+			for (int i = 0; i < fileIds.length; i++)
+			{
+				VarbitComposition varbitComposition = client.getVarbit(i);
+				if (varbitComposition != null)
+				{
+					int idx = varbitComposition.getIndex();
+					if (varbitsMap.containsKey(idx))
+					{
+						varbitsMap.get(idx).add(i);
+					}
+					else
+					{
+						ArrayList<Integer> varbitIds = new ArrayList<>();
+						varbitIds.add(i);
+						varbitsMap.put(idx, varbitIds);
+					}
+				}
+			}
+		}
+	}
 
 	@FieldHook("npcs")
 	@Inject
@@ -1500,8 +1576,6 @@ public abstract class RSClientMixin implements RSClient
 	}
 
 	@Inject
-	private static int numVarbits;
-	@Inject
 	private static int[] oldVarps;
 
 	@FieldHook("Varps_main")
@@ -1515,24 +1589,21 @@ public abstract class RSClientMixin implements RSClient
 		client.getCallbacks().post(varbitChanged);
 
 		// Varbit changed
-		if (numVarbits == 0)
-		{
-			numVarbits = client.getIndexConfig().getFileIds(14).length;
-		}
-
 		if (oldVarps == null)
 		{
 			oldVarps = new int[client.getVarps().length];
 		}
 
-		if (Arrays.equals(oldVarps, client.getVarps()))
+		if (!Arrays.equals(oldVarps, client.getVarps()))
 		{
-			return;
-		}
+			ArrayList<Integer> varbitIds = varbitsMap.get(idx);
 
-		for (int varbitId = 0; varbitId < numVarbits; varbitId++)
-		{
-			try
+			if (varbitIds == null || varbitIds.isEmpty())
+			{
+				return;
+			}
+
+			for (int varbitId : varbitIds)
 			{
 				int oldValue = client.getVarbitValue(oldVarps, varbitId);
 				int newValue = client.getVarbitValue(client.getVarps(), varbitId);
@@ -1544,15 +1615,8 @@ public abstract class RSClientMixin implements RSClient
 					client.getCallbacks().post(varbitChanged);
 				}
 			}
-			catch (IndexOutOfBoundsException e)
-			{
-				// We don't know what the last varbit is, so we just hit the end, then set it for future iterations
-				client.getLogger().debug("Hit OOB at varbit: {}", varbitId);
-				numVarbits = varbitId;
-				break;
-			}
+			System.arraycopy(client.getVarps(), 0, oldVarps, 0, oldVarps.length);
 		}
-		System.arraycopy(client.getVarps(), 0, oldVarps, 0, oldVarps.length);
 	}
 
 	@FieldHook("isResizable")
