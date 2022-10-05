@@ -1457,8 +1457,45 @@ public abstract class RSClientMixin implements RSClient
 				}
 			}
 		}
+		else if (gameState == GameState.LOGIN_SCREEN)
+		{
+			loadVarbits();
+		}
 	}
 
+	@Inject
+	private static Map<Integer, ArrayList<Integer>> varbitsMap;
+
+	@Inject
+	public static void loadVarbits()
+	{
+		// Load varbits into map<index, varbitIds>
+		if (varbitsMap == null)
+		{
+			varbitsMap = new HashMap<>();
+			RSArchive archive = client.getIndexConfig();
+			int[] fileIds = archive.getFileIds(14);
+
+			for (int i = 0; i < fileIds.length; i++)
+			{
+				VarbitComposition varbitComposition = client.getVarbit(i);
+				if (varbitComposition != null)
+				{
+					int idx = varbitComposition.getIndex();
+					if (varbitsMap.containsKey(idx))
+					{
+						varbitsMap.get(idx).add(i);
+					}
+					else
+					{
+						ArrayList<Integer> varbitIds = new ArrayList<>();
+						varbitIds.add(i);
+						varbitsMap.put(idx, varbitIds);
+					}
+				}
+			}
+		}
+	}
 
 	@FieldHook("npcs")
 	@Inject
@@ -1538,8 +1575,6 @@ public abstract class RSClientMixin implements RSClient
 	}
 
 	@Inject
-	private static int numVarbits;
-	@Inject
 	private static int[] oldVarps;
 
 	@FieldHook("Varps_main")
@@ -1553,24 +1588,21 @@ public abstract class RSClientMixin implements RSClient
 		client.getCallbacks().post(varbitChanged);
 
 		// Varbit changed
-		if (numVarbits == 0)
-		{
-			numVarbits = client.getIndexConfig().getFileIds(14).length;
-		}
-
 		if (oldVarps == null)
 		{
 			oldVarps = new int[client.getVarps().length];
 		}
 
-		if (Arrays.equals(oldVarps, client.getVarps()))
+		if (!Arrays.equals(oldVarps, client.getVarps()))
 		{
-			return;
-		}
+			ArrayList<Integer> varbitIds = varbitsMap.get(idx);
 
-		for (int varbitId = 0; varbitId < numVarbits; varbitId++)
-		{
-			try
+			if (varbitIds == null || varbitIds.isEmpty())
+			{
+				return;
+			}
+
+			for (int varbitId : varbitIds)
 			{
 				int oldValue = client.getVarbitValue(oldVarps, varbitId);
 				int newValue = client.getVarbitValue(client.getVarps(), varbitId);
@@ -1582,15 +1614,8 @@ public abstract class RSClientMixin implements RSClient
 					client.getCallbacks().post(varbitChanged);
 				}
 			}
-			catch (IndexOutOfBoundsException e)
-			{
-				// We don't know what the last varbit is, so we just hit the end, then set it for future iterations
-				client.getLogger().debug("Hit OOB at varbit: {}", varbitId);
-				numVarbits = varbitId;
-				break;
-			}
+			System.arraycopy(client.getVarps(), 0, oldVarps, 0, oldVarps.length);
 		}
-		System.arraycopy(client.getVarps(), 0, oldVarps, 0, oldVarps.length);
 	}
 
 	@FieldHook("isResizable")
