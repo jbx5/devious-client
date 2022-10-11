@@ -65,6 +65,7 @@ import net.runelite.api.SpritePixels;
 import net.runelite.api.StructComposition;
 import net.runelite.api.Tile;
 import net.runelite.api.VarPlayer;
+import net.runelite.api.VarbitComposition;
 import net.runelite.api.Varbits;
 import net.runelite.api.WorldType;
 import net.runelite.api.clan.ClanChannel;
@@ -764,7 +765,7 @@ public abstract class RSClientMixin implements RSClient
 
 	@Inject
 	@Override
-	public int getServerVar(VarPlayer varPlayer)
+	public int getVarpValue(VarPlayer varPlayer)
 	{
 		int[] varps = getServerVarps();
 		return varps[varPlayer.getId()];
@@ -1457,8 +1458,45 @@ public abstract class RSClientMixin implements RSClient
 				}
 			}
 		}
+		else if (gameState == GameState.LOGIN_SCREEN)
+		{
+			loadVarbits();
+		}
 	}
 
+	@Inject
+	private static Map<Integer, ArrayList<Integer>> varbitsMap;
+
+	@Inject
+	public static void loadVarbits()
+	{
+		// Load varbits into map<index, varbitIds>
+		if (varbitsMap == null)
+		{
+			varbitsMap = new HashMap<>();
+			RSArchive archive = client.getIndexConfig();
+			int[] fileIds = archive.getFileIds(14);
+
+			for (int i = 0; i < fileIds.length; i++)
+			{
+				VarbitComposition varbitComposition = client.getVarbit(i);
+				if (varbitComposition != null)
+				{
+					int idx = varbitComposition.getIndex();
+					if (varbitsMap.containsKey(idx))
+					{
+						varbitsMap.get(idx).add(i);
+					}
+					else
+					{
+						ArrayList<Integer> varbitIds = new ArrayList<>();
+						varbitIds.add(i);
+						varbitsMap.put(idx, varbitIds);
+					}
+				}
+			}
+		}
+	}
 
 	@FieldHook("npcs")
 	@Inject
@@ -1537,13 +1575,48 @@ public abstract class RSClientMixin implements RSClient
 		client.getCallbacks().post(offerChangedEvent);
 	}
 
+	@Inject
+	private static int[] oldVarps;
+
 	@FieldHook("Varps_main")
 	@Inject
 	public static void settingsChanged(int idx)
 	{
+		// Varp changed
 		VarbitChanged varbitChanged = new VarbitChanged();
-		varbitChanged.setIndex(idx);
+		varbitChanged.setVarpId(idx);
+		varbitChanged.setValue(client.getVarpValue(idx));
 		client.getCallbacks().post(varbitChanged);
+
+		// Varbit changed
+		if (oldVarps == null)
+		{
+			oldVarps = new int[client.getVarps().length];
+		}
+
+		if (!Arrays.equals(oldVarps, client.getVarps()))
+		{
+			ArrayList<Integer> varbitIds = varbitsMap.get(idx);
+
+			if (varbitIds == null || varbitIds.isEmpty())
+			{
+				return;
+			}
+
+			for (int varbitId : varbitIds)
+			{
+				int oldValue = client.getVarbitValue(oldVarps, varbitId);
+				int newValue = client.getVarbitValue(client.getVarps(), varbitId);
+				if (oldValue != newValue)
+				{
+					varbitChanged.setVarpId(-1);
+					varbitChanged.setVarbitId(varbitId);
+					varbitChanged.setValue(newValue);
+					client.getCallbacks().post(varbitChanged);
+				}
+			}
+			System.arraycopy(client.getVarps(), 0, oldVarps, 0, oldVarps.length);
+		}
 	}
 
 	@FieldHook("isResizable")
@@ -1620,25 +1693,25 @@ public abstract class RSClientMixin implements RSClient
 	@Override
 	public boolean hasHintArrow()
 	{
-		return client.getHintArrowTargetType() != HintArrowType.NONE.getValue();
+		return client.getHintArrowTargetType() != HintArrowType.NONE;
 	}
 
 	@Inject
 	@Override
-	public HintArrowType getHintArrowType()
+	public int getHintArrowType()
 	{
 		int type = client.getHintArrowTargetType();
-		if (type == HintArrowType.NPC.getValue())
+		if (type == HintArrowType.NPC)
 		{
 			return HintArrowType.NPC;
 		}
-		else if (type == HintArrowType.PLAYER.getValue())
+		else if (type == HintArrowType.PLAYER)
 		{
 			return HintArrowType.PLAYER;
 		}
-		else if (type == HintArrowType.WORLD_POSITION.getValue())
+		else if (type == HintArrowType.COORDINATE)
 		{
-			return HintArrowType.WORLD_POSITION;
+			return HintArrowType.COORDINATE;
 		}
 		else
 		{
@@ -1650,14 +1723,14 @@ public abstract class RSClientMixin implements RSClient
 	@Override
 	public void clearHintArrow()
 	{
-		client.setHintArrowTargetType(HintArrowType.NONE.getValue());
+		client.setHintArrowTargetType(HintArrowType.NONE);
 	}
 
 	@Inject
 	@Override
 	public void setHintArrow(NPC npc)
 	{
-		client.setHintArrowTargetType(HintArrowType.NPC.getValue());
+		client.setHintArrowTargetType(HintArrowType.NPC);
 		client.setHintArrowNpcTargetIdx(npc.getIndex());
 	}
 
@@ -1665,7 +1738,7 @@ public abstract class RSClientMixin implements RSClient
 	@Override
 	public void setHintArrow(Player player)
 	{
-		client.setHintArrowTargetType(HintArrowType.PLAYER.getValue());
+		client.setHintArrowTargetType(HintArrowType.PLAYER);
 		client.setHintArrowPlayerTargetIdx(((RSPlayer) player).getId());
 		hintPlayerChanged(-1);
 	}
@@ -1674,7 +1747,19 @@ public abstract class RSClientMixin implements RSClient
 	@Override
 	public void setHintArrow(WorldPoint point)
 	{
-		client.setHintArrowTargetType(HintArrowType.WORLD_POSITION.getValue());
+		client.setHintArrowTargetType(HintArrowType.COORDINATE);
+		client.setHintArrowX(point.getX());
+		client.setHintArrowY(point.getY());
+		// position the arrow in center of the tile
+		client.setHintArrowOffsetX(LOCAL_TILE_SIZE / 2);
+		client.setHintArrowOffsetY(LOCAL_TILE_SIZE / 2);
+	}
+
+	@Inject
+	@Override
+	public void setHintArrow(LocalPoint point)
+	{
+		client.setHintArrowTargetType(HintArrowType.COORDINATE);
 		client.setHintArrowX(point.getX());
 		client.setHintArrowY(point.getY());
 		// position the arrow in center of the tile
@@ -1686,7 +1771,7 @@ public abstract class RSClientMixin implements RSClient
 	@Override
 	public WorldPoint getHintArrowPoint()
 	{
-		if (getHintArrowType() == HintArrowType.WORLD_POSITION)
+		if (getHintArrowType() == HintArrowType.COORDINATE)
 		{
 			int x = client.getHintArrowX();
 			int y = client.getHintArrowY();
@@ -3186,6 +3271,23 @@ public abstract class RSClientMixin implements RSClient
 				return columnType[tupleIndex * type.length + fieldIndex];
 			}
 		}
+	}
+
+	@Inject
+	private static int idleTimeout;
+
+	@Inject
+	@Override
+	public void setIdleTimeout(int ticks)
+	{
+		idleTimeout = ticks;
+	}
+
+	@Inject
+	@Override
+	public int getIdleTimeout()
+	{
+		return idleTimeout;
 	}
 }
 

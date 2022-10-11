@@ -33,6 +33,34 @@ import com.google.inject.Injector;
 import com.openosrs.client.OpenOSRS;
 import com.openosrs.client.game.PlayerManager;
 import com.openosrs.client.ui.OpenOSRSSplashScreen;
+import java.applet.Applet;
+import java.io.File;
+import java.io.IOException;
+import java.lang.management.ManagementFactory;
+import java.lang.management.RuntimeMXBean;
+import java.net.Authenticator;
+import java.net.PasswordAuthentication;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import static java.nio.file.StandardCopyOption.COPY_ATTRIBUTES;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.security.cert.X509Certificate;
+import java.util.Arrays;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Optional;
+import java.util.concurrent.TimeUnit;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import javax.inject.Provider;
+import javax.inject.Singleton;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
+import javax.swing.SwingUtilities;
 import joptsimple.ArgumentAcceptingOptionSpec;
 import joptsimple.OptionParser;
 import joptsimple.OptionSet;
@@ -59,6 +87,7 @@ import net.runelite.client.ui.overlay.OverlayManager;
 import net.runelite.client.ui.overlay.WidgetOverlay;
 import net.runelite.client.ui.overlay.tooltip.TooltipOverlay;
 import net.runelite.client.ui.overlay.worldmap.WorldMapOverlay;
+import net.runelite.client.util.ReflectUtil;
 import net.runelite.client.util.WorldUtil;
 import net.runelite.http.api.RuneLiteAPI;
 import net.runelite.http.api.worlds.World;
@@ -70,36 +99,6 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import org.slf4j.LoggerFactory;
-
-import javax.annotation.Nullable;
-import javax.inject.Provider;
-import javax.inject.Singleton;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
-import javax.swing.SwingUtilities;
-import java.applet.Applet;
-import java.io.File;
-import java.io.IOException;
-import java.lang.management.ManagementFactory;
-import java.lang.management.RuntimeMXBean;
-import java.net.Authenticator;
-import java.net.PasswordAuthentication;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.security.KeyManagementException;
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
-import java.security.cert.X509Certificate;
-import java.util.Arrays;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.TimeUnit;
-import java.util.stream.Stream;
-
-import static java.nio.file.StandardCopyOption.COPY_ATTRIBUTES;
 
 @Singleton
 @Slf4j
@@ -116,66 +115,57 @@ public class RuneLite
 	public static final File DEFAULT_CONFIG_FILE = new File(RUNELITE_DIR, "settings.properties");
 
 	private static final int MAX_OKHTTP_CACHE_SIZE = 20 * 1024 * 1024; // 20mb
+	private static final String BYPASS_ARG = "--IWillNotComplainIfIGetSentToTheGulagByJamflex";
 	public static String USER_AGENT = "RuneLite/" + RuneLiteProperties.getVersion() + "-" + RuneLiteProperties.getCommit() + (RuneLiteProperties.isDirty() ? "+" : "");
-
 	@Getter
 	private static Injector injector;
 
+	static
+	{
+		//Fixes win10 scaling when not 100% while using Anti-Aliasing with GPU
+		System.setProperty("sun.java2d.uiScale", "1.0");
+
+		String launcherVersion = System.getProperty("launcher.version");
+		System.setProperty("runelite.launcher.version", launcherVersion == null ? "unknown" : launcherVersion);
+	}
+
 	@Inject
 	private net.runelite.client.plugins.PluginManager pluginManager;
-
 	@Inject
 	private ExternalPluginManager externalPluginManager;
-
 	@Inject
 	private OPRSExternalPluginManager oprsExternalPluginManager;
-
 	@Inject
 	private EventBus eventBus;
-
 	@Inject
 	private ConfigManager configManager;
-
 	@Inject
 	private DiscordService discordService;
-
 	@Inject
 	private ClientSessionManager clientSessionManager;
-
 	@Inject
 	private ClientUI clientUI;
-
 	@Inject
 	private OverlayManager overlayManager;
-
 	@Inject
 	private Provider<TooltipOverlay> tooltipOverlay;
-
 	@Inject
 	private Provider<WorldMapOverlay> worldMapOverlay;
-
 	@Inject
 	private Provider<XpDropManager> xpDropManager;
-
 	@Inject
 	private Provider<PlayerManager> playerManager;
-
 	@Inject
 	private WorldService worldService;
-
 	@Inject
 	@Nullable
 	private Applet applet;
-
 	@Inject
 	@Nullable
 	private Client client;
-
 	@Inject
 	@Nullable
 	private RuntimeConfig runtimeConfig;
-
-	private static final String BYPASS_ARG = "--IWillNotComplainIfIGetSentToTheGulagByJamflex";
 
 	public static void main(String[] args) throws Exception
 	{
@@ -190,6 +180,7 @@ public class RuneLite
 		parser.accepts("jav_config", "jav_config url")
 			.withRequiredArg()
 			.defaultsTo(RuneLiteProperties.getJavConfig());
+		parser.accepts("enable-telemetry", "Enable telemetry");
 
 		final ArgumentAcceptingOptionSpec<File> sessionfile = parser.accepts("sessionfile", "Use a specified session file")
 			.withRequiredArg()
@@ -214,7 +205,7 @@ public class RuneLite
 			.withRequiredArg()
 			.ofType(ClientUpdateCheckMode.class)
 			.defaultsTo(ClientUpdateCheckMode.AUTO)
-			.withValuesConvertedBy(new EnumConverter<ClientUpdateCheckMode>(ClientUpdateCheckMode.class)
+			.withValuesConvertedBy(new EnumConverter<>(ClientUpdateCheckMode.class)
 			{
 				@Override
 				public ClientUpdateCheckMode convert(String v)
@@ -311,8 +302,12 @@ public class RuneLite
 				OpenOSRS.SYSTEM_VERSION, RuneLiteProperties.getVersion() == null ? "unknown" : RuneLiteProperties.getVersion(),
 				RuneLiteProperties.getLauncherVersion(), args.length == 0 ? "none" : String.join(" ", args));
 
-			final long start = System.currentTimeMillis();
+			final RuntimeMXBean runtime = ManagementFactory.getRuntimeMXBean();
+			// This includes arguments from _JAVA_OPTIONS, which are parsed after command line flags and applied to
+			// the global VM args
+			log.info("Java VM arguments: {}", String.join(" ", runtime.getInputArguments()));
 
+			final long start = System.currentTimeMillis();
 			injector = Guice.createInjector(new RuneLiteModule(
 				okHttpClient,
 				clientLoader,
@@ -326,8 +321,7 @@ public class RuneLite
 			injector.getInstance(RuneLite.class).start(options);
 
 			final long end = System.currentTimeMillis();
-			final RuntimeMXBean rb = ManagementFactory.getRuntimeMXBean();
-			final long uptime = rb.getUptime();
+			final long uptime = runtime.getUptime();
 			log.info("Client initialization took {}ms. Uptime: {}ms", end - start, uptime);
 		}
 		catch (Exception e)
@@ -344,199 +338,10 @@ public class RuneLite
 		}
 	}
 
-	public void start(OptionSet options) throws Exception
-	{
-		// Load RuneLite or Vanilla client
-		final boolean isOutdated = client == null;
-
-		if (!isOutdated)
-		{
-			// Inject members into client
-			injector.injectMembers(client);
-		}
-
-		setupSystemProps();
-
-		// Start the applet
-		if (applet != null)
-		{
-			copyJagexCache();
-
-			// Client size must be set prior to init
-			applet.setSize(Constants.GAME_FIXED_SIZE);
-
-			System.setProperty("jagex.disableBouncyCastle", "true");
-			// Change user.home so the client places jagexcache in the .runelite directory
-			String oldHome = System.setProperty("user.home", Unethicalite.getCacheDirectory().getAbsolutePath());
-			try
-			{
-				applet.init();
-			}
-			finally
-			{
-				System.setProperty("user.home", oldHome);
-			}
-
-			applet.start();
-		}
-
-		SplashScreen.stage(.57, null, "Loading configuration");
-
-		// Load user configuration
-		configManager.load();
-		// Tell the plugin manager if client is outdated or not
-		pluginManager.setOutdated(isOutdated);
-
-		// Load external plugin manager
-		oprsExternalPluginManager.setupInstance();
-		oprsExternalPluginManager.startExternalUpdateManager();
-		oprsExternalPluginManager.startExternalPluginManager();
-		oprsExternalPluginManager.setOutdated(isOutdated);
-
-		// Update external plugins
-		oprsExternalPluginManager.update();
-
-		// Load the plugins, but does not start them yet.
-		// This will initialize configuration
-		pluginManager.loadCorePlugins();
-		pluginManager.loadSideLoadPlugins();
-
-		oprsExternalPluginManager.loadPlugins();
-
-		externalPluginManager.loadExternalPlugins();
-
-		SplashScreen.stage(.70, null, "Finalizing configuration");
-
-		// Plugins have provided their config, so set default config
-		// to main settings
-		pluginManager.loadDefaultPluginConfiguration(null);
-
-		// Start client session
-		clientSessionManager.start();
-		eventBus.register(clientSessionManager);
-
-		SplashScreen.stage(.75, null, "Starting core interface");
-
-		// Initialize UI
-		clientUI.init();
-
-		// Initialize Discord service
-		discordService.init();
-
-		// Register event listeners
-		eventBus.register(clientUI);
-		eventBus.register(pluginManager);
-		eventBus.register(externalPluginManager);
-		eventBus.register(overlayManager);
-		eventBus.register(configManager);
-		eventBus.register(discordService);
-
-		if (!isOutdated)
-		{
-			// Add core overlays
-			WidgetOverlay.createOverlays(overlayManager, client).forEach(overlayManager::add);
-			overlayManager.add(worldMapOverlay.get());
-			overlayManager.add(tooltipOverlay.get());
-
-			playerManager.get();
-
-			// legacy method, i cant figure out how to make it work without garbage
-			eventBus.register(xpDropManager.get());
-
-			//Set the world if specified via CLI args - will not work until clientUI.init is called
-			Optional<Integer> worldArg = Optional.ofNullable(System.getProperty("cli.world")).map(Integer::parseInt);
-			worldArg.ifPresent(this::setWorld);
-		}
-
-		// Start plugins
-		pluginManager.startPlugins();
-
-		SplashScreen.stop();
-
-		clientUI.show();
-	}
-
 	@VisibleForTesting
 	public static void setInjector(Injector injector)
 	{
 		RuneLite.injector = injector;
-	}
-
-	private static class ConfigFileConverter implements ValueConverter<File>
-	{
-		@Override
-		public File convert(String fileName)
-		{
-			final File file;
-
-			if (Paths.get(fileName).isAbsolute()
-				|| fileName.startsWith("./")
-				|| fileName.startsWith(".\\"))
-			{
-				file = new File(fileName);
-			}
-			else
-			{
-				file = new File(RuneLite.RUNELITE_DIR, fileName);
-			}
-
-			if (file.exists() && (!file.isFile() || !file.canWrite()))
-			{
-				throw new ValueConversionException(String.format("File %s is not accessible", file.getAbsolutePath()));
-			}
-
-			return file;
-		}
-
-		@Override
-		public Class<? extends File> valueType()
-		{
-			return File.class;
-		}
-
-		@Override
-		public String valuePattern()
-		{
-			return null;
-		}
-	}
-
-	private void setWorld(int cliWorld)
-	{
-		int correctedWorld = cliWorld < 300 ? cliWorld + 300 : cliWorld;
-
-		if (correctedWorld <= 300 || client.getWorld() == correctedWorld)
-		{
-			return;
-		}
-
-		final WorldResult worldResult = worldService.getWorlds();
-
-		if (worldResult == null)
-		{
-			log.warn("Failed to lookup worlds.");
-			return;
-		}
-
-		final World world = worldResult.findWorld(correctedWorld);
-
-		if (world != null)
-		{
-			final net.runelite.api.World rsWorld = client.createWorld();
-			rsWorld.setActivity(world.getActivity());
-			rsWorld.setAddress(world.getAddress());
-			rsWorld.setId(world.getId());
-			rsWorld.setPlayerCount(world.getPlayers());
-			rsWorld.setLocation(world.getLocation());
-			rsWorld.setTypes(WorldUtil.toWorldTypes(world.getTypes()));
-
-			client.changeWorld(rsWorld);
-			log.debug("Applied new world {}", correctedWorld);
-		}
-		else
-		{
-			log.warn("World {} not found.", correctedWorld);
-		}
 	}
 
 	@VisibleForTesting
@@ -556,9 +361,9 @@ public class RuneLite
 				if (request.url().host().endsWith("openosrs.dev"))
 				{
 					Request userAgentRequest = request
-							.newBuilder()
-							.header("User-Agent", "OpenOSRS/" + OpenOSRS.SYSTEM_VERSION)
-							.build();
+						.newBuilder()
+						.header("User-Agent", "OpenOSRS/" + OpenOSRS.SYSTEM_VERSION)
+						.build();
 
 					return chain.proceed(userAgentRequest);
 				}
@@ -631,15 +436,6 @@ public class RuneLite
 		}
 	}
 
-	static
-	{
-		//Fixes win10 scaling when not 100% while using Anti-Aliasing with GPU
-		System.setProperty("sun.java2d.uiScale", "1.0");
-
-		String launcherVersion = System.getProperty("launcher.version");
-		System.setProperty("runelite.launcher.version", launcherVersion == null ? "unknown" : launcherVersion);
-	}
-
 	private static void copyJagexCache()
 	{
 		Path from = Paths.get(System.getProperty("user.home"), "jagexcache");
@@ -672,6 +468,162 @@ public class RuneLite
 		}
 	}
 
+	public void start(OptionSet options) throws Exception
+	{
+		// Load RuneLite or Vanilla client
+		final boolean isOutdated = client == null;
+
+		if (!isOutdated)
+		{
+			// Inject members into client
+			injector.injectMembers(client);
+		}
+
+		setupSystemProps();
+
+		// Start the applet
+		if (applet != null)
+		{
+			copyJagexCache();
+
+			// Client size must be set prior to init
+			applet.setSize(Constants.GAME_FIXED_SIZE);
+
+			System.setProperty("jagex.disableBouncyCastle", "true");
+			// Change user.home so the client places jagexcache in the .runelite directory
+			String oldHome = System.setProperty("user.home", Unethicalite.getCacheDirectory().getAbsolutePath());
+			try
+			{
+				applet.init();
+			}
+			finally
+			{
+				System.setProperty("user.home", oldHome);
+			}
+
+			applet.start();
+		}
+
+		SplashScreen.stage(.57, null, "Loading configuration");
+
+		// Load user configuration
+		configManager.load();
+		// Tell the plugin manager if client is outdated or not
+		pluginManager.setOutdated(isOutdated);
+
+		// Load external plugin manager
+		oprsExternalPluginManager.setupInstance();
+		oprsExternalPluginManager.startExternalUpdateManager();
+		oprsExternalPluginManager.startExternalPluginManager();
+		oprsExternalPluginManager.setOutdated(isOutdated);
+
+		// Update external plugins
+		oprsExternalPluginManager.update();
+
+		// Load the plugins, but does not start them yet.
+		// This will initialize configuration
+		pluginManager.loadCorePlugins();
+		pluginManager.loadSideLoadPlugins();
+
+		oprsExternalPluginManager.loadPlugins();
+
+		externalPluginManager.loadExternalPlugins();
+
+		SplashScreen.stage(.70, null, "Finalizing configuration");
+
+		// Plugins have provided their config, so set default config
+		// to main settings
+		pluginManager.loadDefaultPluginConfiguration(null);
+
+		eventBus.register(clientSessionManager);
+
+		SplashScreen.stage(.75, null, "Starting core interface");
+
+		// Initialize UI
+		clientUI.init();
+
+		// Initialize Discord service
+		discordService.init();
+
+		// Register event listeners
+		eventBus.register(clientUI);
+		eventBus.register(pluginManager);
+		eventBus.register(externalPluginManager);
+		eventBus.register(overlayManager);
+		eventBus.register(configManager);
+		eventBus.register(discordService);
+
+		if (!isOutdated)
+		{
+			// Add core overlays
+			WidgetOverlay.createOverlays(overlayManager, client).forEach(overlayManager::add);
+			overlayManager.add(worldMapOverlay.get());
+			overlayManager.add(tooltipOverlay.get());
+
+			playerManager.get();
+
+			// legacy method, i cant figure out how to make it work without garbage
+			eventBus.register(xpDropManager.get());
+
+			//Set the world if specified via CLI args - will not work until clientUI.init is called
+			Optional<Integer> worldArg = Optional.ofNullable(System.getProperty("cli.world")).map(Integer::parseInt);
+			worldArg.ifPresent(this::setWorld);
+		}
+
+		// Start plugins
+		pluginManager.startPlugins();
+
+		SplashScreen.stop();
+
+		clientUI.show();
+
+		if (options.has("enable-telemetry"))
+		{
+			injector.getInstance(TelemetryClient.class).submitTelemetry();
+		}
+
+		ReflectUtil.queueInjectorAnnotationCacheInvalidation(injector);
+		ReflectUtil.invalidateAnnotationCaches();
+	}
+
+	private void setWorld(int cliWorld)
+	{
+		int correctedWorld = cliWorld < 300 ? cliWorld + 300 : cliWorld;
+
+		if (correctedWorld <= 300 || client.getWorld() == correctedWorld)
+		{
+			return;
+		}
+
+		final WorldResult worldResult = worldService.getWorlds();
+
+		if (worldResult == null)
+		{
+			log.warn("Failed to lookup worlds.");
+			return;
+		}
+
+		final World world = worldResult.findWorld(correctedWorld);
+
+		if (world != null)
+		{
+			final net.runelite.api.World rsWorld = client.createWorld();
+			rsWorld.setActivity(world.getActivity());
+			rsWorld.setAddress(world.getAddress());
+			rsWorld.setId(world.getId());
+			rsWorld.setPlayerCount(world.getPlayers());
+			rsWorld.setLocation(world.getLocation());
+			rsWorld.setTypes(WorldUtil.toWorldTypes(world.getTypes()));
+
+			client.changeWorld(rsWorld);
+			log.debug("Applied new world {}", correctedWorld);
+		}
+		else
+		{
+			log.warn("World {} not found.", correctedWorld);
+		}
+	}
+
 	private void setupSystemProps()
 	{
 		if (runtimeConfig == null || runtimeConfig.getSysProps() == null)
@@ -684,6 +636,45 @@ public class RuneLite
 			String key = entry.getKey(), value = entry.getValue();
 			log.debug("Setting property {}={}", key, value);
 			System.setProperty(key, value);
+		}
+	}
+
+	private static class ConfigFileConverter implements ValueConverter<File>
+	{
+		@Override
+		public File convert(String fileName)
+		{
+			final File file;
+
+			if (Paths.get(fileName).isAbsolute()
+				|| fileName.startsWith("./")
+				|| fileName.startsWith(".\\"))
+			{
+				file = new File(fileName);
+			}
+			else
+			{
+				file = new File(RuneLite.RUNELITE_DIR, fileName);
+			}
+
+			if (file.exists() && (!file.isFile() || !file.canWrite()))
+			{
+				throw new ValueConversionException(String.format("File %s is not accessible", file.getAbsolutePath()));
+			}
+
+			return file;
+		}
+
+		@Override
+		public Class<? extends File> valueType()
+		{
+			return File.class;
+		}
+
+		@Override
+		public String valuePattern()
+		{
+			return null;
 		}
 	}
 }

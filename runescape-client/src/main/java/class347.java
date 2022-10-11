@@ -1,51 +1,67 @@
-import net.runelite.mapping.ObfuscatedName;
-import java.util.ConcurrentModificationException;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
+import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
+
 @ObfuscatedName("mp")
-public class class347 implements Iterator {
-	@ObfuscatedName("d")
-	@Export("musicTrackBoolean")
-	public static boolean musicTrackBoolean;
+public final class class347 {
+	@ObfuscatedName("w")
+	@ObfuscatedGetter(
+		intValue = -1428903067
+	)
+	public static int field4205;
+	@ObfuscatedName("bn")
+	@ObfuscatedGetter(
+		intValue = -582353665
+	)
+	static int field4201;
+	@ObfuscatedName("c")
+	final Object field4204;
+	@ObfuscatedName("p")
+	@ObfuscatedGetter(
+		intValue = 661897961
+	)
+	int field4206;
 
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "Lmh;")
-	class348 field4189;
+	class347(Object var1, int var2) {
+		this.field4204 = var1; // L: 170
+		this.field4206 = var2; // L: 171
+	} // L: 172
 
-	@ObfuscatedName("q")
-	@ObfuscatedGetter(intValue = -223501929)
-	int field4187 = 0;
-
-	@ObfuscatedName("f")
-	@ObfuscatedGetter(intValue = 267058179)
-	int field4188;
-
-	@ObfuscatedSignature(descriptor = "(Lmh;)V")
-	class347(class348 var1) {
-		this.field4188 = this.field4189.field4194;
-		this.field4189 = var1;
+	@ObfuscatedName("k")
+	@ObfuscatedSignature(
+		descriptor = "(II)I",
+		garbageValue = "1566177198"
+	)
+	@Export("Messages_getHistorySize")
+	static int Messages_getHistorySize(int var0) {
+		ChatChannel var1 = (ChatChannel)Messages.Messages_channels.get(var0); // L: 44
+		return var1 == null ? 0 : var1.size(); // L: 45 46
 	}
 
-	public boolean hasNext() {
-		return this.field4187 < this.field4189.field4193;
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(
+		descriptor = "(IZI)Ljava/lang/String;",
+		garbageValue = "-884152245"
+	)
+	@Export("intToString")
+	public static String intToString(int var0, boolean var1) {
+		return var1 && var0 >= 0 ? AccessFile.method7683(var0, 10, var1) : Integer.toString(var0); // L: 106 107
 	}
 
-	public Object next() {
-		if (this.field4189.field4194 != this.field4188) {
-			throw new ConcurrentModificationException();
-		} else if (this.field4187 < this.field4189.field4193) {
-			Object var1 = this.field4189.field4191[this.field4187].field4185;
-			++this.field4187;
-			return var1;
+	@ObfuscatedName("b")
+	@ObfuscatedSignature(
+		descriptor = "(Lkw;I)I",
+		garbageValue = "389867560"
+	)
+	static int method6510(Widget var0) {
+		if (var0.type != 11) { // L: 1226
+			Interpreter.Interpreter_stringStack[VarbitComposition.Interpreter_stringStackSize - 1] = ""; // L: 1227
+			return 1; // L: 1228
 		} else {
-			throw new NoSuchElementException();
+			String var1 = Interpreter.Interpreter_stringStack[--VarbitComposition.Interpreter_stringStackSize]; // L: 1230
+			Interpreter.Interpreter_stringStack[++VarbitComposition.Interpreter_stringStackSize - 1] = var0.method5792(var1); // L: 1231
+			return 1; // L: 1232
 		}
-	}
-
-	public void remove() {
-		throw new UnsupportedOperationException();
 	}
 }

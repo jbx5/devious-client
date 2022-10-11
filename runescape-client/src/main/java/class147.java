@@ -1,64 +1,76 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import java.io.ByteArrayInputStream;
-import net.runelite.mapping.ObfuscatedGetter;
-import java.io.IOException;
-import java.awt.image.PixelGrabber;
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import net.runelite.mapping.Export;
-@ObfuscatedName("ep")
-public class class147 extends class128 {
-	@ObfuscatedName("o")
-	@ObfuscatedGetter(intValue = -1773571435)
-	int field1668;
 
-	@ObfuscatedSignature(descriptor = "Lec;")
-	final class131 this$0;
+@ObfuscatedName("ef")
+public class class147 extends class129 {
+	@ObfuscatedName("q")
+	@ObfuscatedSignature(
+		descriptor = "Lqu;"
+	)
+	static IndexedSprite field1693;
+	@ObfuscatedName("v")
+	@ObfuscatedGetter(
+		intValue = -1946571271
+	)
+	static int field1689;
+	@ObfuscatedName("jo")
+	@ObfuscatedGetter(
+		intValue = -760957949
+	)
+	@Export("oculusOrbFocalPointX")
+	static int oculusOrbFocalPointX;
+	@ObfuscatedName("c")
+	@ObfuscatedGetter(
+		intValue = 1032650765
+	)
+	int field1690;
+	@ObfuscatedName("p")
+	@ObfuscatedGetter(
+		intValue = 229451587
+	)
+	int field1695;
+	// $FF: synthetic field
+	@ObfuscatedSignature(
+		descriptor = "Leo;"
+	)
+	final class132 this$0;
 
-	@ObfuscatedSignature(descriptor = "(Lec;)V")
-	class147(class131 var1) {
-		this.this$0 = var1;
-		this.field1668 = -1;
+	@ObfuscatedSignature(
+		descriptor = "(Leo;)V"
+	)
+	class147(class132 var1) {
+		this.this$0 = var1; // L: 271
 	}
 
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "(Lqw;I)V", garbageValue = "-423569520")
-	void vmethod3155(Buffer var1) {
-		this.field1668 = var1.readUnsignedShort();
-	}
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "(Lqq;B)V",
+		garbageValue = "-41"
+	)
+	void vmethod3320(Buffer var1) {
+		this.field1690 = var1.readInt(); // L: 274
+		this.field1695 = var1.readInt(); // L: 275
+	} // L: 276
+
+	@ObfuscatedName("p")
+	@ObfuscatedSignature(
+		descriptor = "(Led;I)V",
+		garbageValue = "-538131930"
+	)
+	void vmethod3313(ClanSettings var1) {
+		var1.method3126(this.field1690, this.field1695); // L: 279
+	} // L: 280
 
 	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "(Lez;I)V", garbageValue = "-1755436064")
-	void vmethod3154(ClanSettings var1) {
-		var1.method3040(this.field1668);
-	}
-
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "([BI)Lqj;", garbageValue = "-487565939")
-	public static final SpritePixels method3105(byte[] var0) {
-		BufferedImage var1 = null;
-		try {
-			Class var2 = ImageIO.class;
-			synchronized(ImageIO.class) {
-				var1 = ImageIO.read(new ByteArrayInputStream(var0));
-			}
-			int var6 = var1.getWidth();
-			int var7 = var1.getHeight();
-			int[] var4 = new int[var7 * var6];
-			PixelGrabber var5 = new PixelGrabber(var1, 0, 0, var6, var7, var4, 0, var6);
-			var5.grabPixels();
-			return new SpritePixels(var4, var6, var7);
-		} catch (IOException var9) {
-		} catch (InterruptedException var10) {
-		}
-		return new SpritePixels(0, 0);
-	}
-
-	@ObfuscatedName("j")
-	@ObfuscatedSignature(descriptor = "(CB)Z", garbageValue = "67")
-	@Export("isCharAlphabetic")
-	public static boolean isCharAlphabetic(char var0) {
-		return var0 >= 'A' && var0 <= 'Z' || var0 >= 'a' && var0 <= 'z';
+	@ObfuscatedSignature(
+		descriptor = "(B)Lbo;",
+		garbageValue = "84"
+	)
+	@Export("worldListStart")
+	static World worldListStart() {
+		World.World_listCount = 0; // L: 237
+		return NetCache.getNextWorldListWorld(); // L: 238
 	}
 }

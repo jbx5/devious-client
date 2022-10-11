@@ -1,32 +1,58 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.Export;
-@ObfuscatedName("r")
+
+@ObfuscatedName("z")
 @Implements("DevicePcmPlayerProvider")
 public class DevicePcmPlayerProvider implements class47 {
-	DevicePcmPlayerProvider() {
-	}
+	@ObfuscatedName("n")
+	@ObfuscatedSignature(
+		descriptor = "[Lqu;"
+	)
+	@Export("runesSprite")
+	static IndexedSprite[] runesSprite;
+	@ObfuscatedName("ei")
+	@ObfuscatedSignature(
+		descriptor = "Llb;"
+	)
+	@Export("archive5")
+	static Archive archive5;
+	@ObfuscatedName("ks")
+	@ObfuscatedSignature(
+		descriptor = "Lkw;"
+	)
+	static Widget field153;
 
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "(I)Lat;", garbageValue = "776593126")
+	DevicePcmPlayerProvider() {
+	} // L: 7
+
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "(I)Lad;",
+		garbageValue = "1345592536"
+	)
 	@Export("player")
 	public PcmPlayer player() {
-		return new DevicePcmPlayer();
+		return new DevicePcmPlayer(); // L: 11
 	}
 
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "(IIII)Lbc;", garbageValue = "1455168874")
-	@Export("getWorldMapScript")
-	static Script getWorldMapScript(int var0, int var1, int var2) {
-		int var3 = WorldMapDecorationType.method5755(var1, var0);
-		Script var4 = Client.method1636(var3, var0);
-		if (var4 != null) {
-			return var4;
-		} else {
-			var3 = class271.method5244(var2, var0);
-			var4 = Client.method1636(var3, var0);
-			return var4 != null ? var4 : null;
+	@ObfuscatedName("fe")
+	@ObfuscatedSignature(
+		descriptor = "(IS)V",
+		garbageValue = "14639"
+	)
+	@Export("forceDisconnect")
+	static final void forceDisconnect(int var0) {
+		ApproximateRouteStrategy.logOut(); // L: 2871
+		switch(var0) { // L: 2872
+		case 1:
+			class7.method68(); // L: 2883
+			break;
+		case 2:
+			class139.method3101(24); // L: 2876
+			SecureRandomCallable.setLoginResponseString("The game servers are currently being updated.", "Please wait a few minutes and try again.", ""); // L: 2877
 		}
-	}
+
+	} // L: 2887
 }

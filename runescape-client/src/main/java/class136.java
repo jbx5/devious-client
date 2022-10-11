@@ -1,113 +1,75 @@
+import java.util.Date;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.Export;
-@ObfuscatedName("eq")
-public class class136 extends class144 {
-	@ObfuscatedName("hr")
-	@ObfuscatedSignature(descriptor = "Lpb;")
-	@Export("WorldMapElement_fonts")
-	static Fonts WorldMapElement_fonts;
 
-	@ObfuscatedName("nx")
-	@ObfuscatedSignature(descriptor = "Lbe;")
-	@Export("tempMenuAction")
-	static MenuAction tempMenuAction;
+@ObfuscatedName("ep")
+public class class136 extends class129 {
+	@ObfuscatedName("qq")
+	@ObfuscatedSignature(
+		descriptor = "Lfv;"
+	)
+	@Export("mouseWheel")
+	static class159 mouseWheel;
+	@ObfuscatedName("c")
+	boolean field1607;
+	@ObfuscatedName("p")
+	byte field1608;
+	@ObfuscatedName("f")
+	byte field1609;
+	@ObfuscatedName("n")
+	byte field1610;
+	@ObfuscatedName("k")
+	byte field1614;
+	// $FF: synthetic field
+	@ObfuscatedSignature(
+		descriptor = "Leo;"
+	)
+	final class132 this$0;
 
-	@ObfuscatedName("o")
-	@ObfuscatedGetter(intValue = 1569891361)
-	int field1598;
-
-	@ObfuscatedSignature(descriptor = "Let;")
-	final class145 this$0;
-
-	@ObfuscatedSignature(descriptor = "(Let;)V")
-	class136(class145 var1) {
-		this.this$0 = var1;
-		this.field1598 = -1;
-	}
-
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "(Lqw;I)V", garbageValue = "-1897546377")
-	void vmethod3146(Buffer var1) {
-		this.field1598 = var1.readUnsignedShort();
-		var1.readUnsignedByte();
-		if (var1.readUnsignedByte() != 255) {
-			--var1.offset;
-			var1.readLong();
-		}
-	}
-
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "(Ley;I)V", garbageValue = "-406744366")
-	void vmethod3145(ClanChannel var1) {
-		var1.removeMember(this.field1598);
-	}
-
-	@ObfuscatedName("u")
-	@ObfuscatedSignature(descriptor = "(II)Z", garbageValue = "1572525862")
-	public static boolean method2955(int var0) {
-		return (var0 >> 21 & 1) != 0;
+	@ObfuscatedSignature(
+		descriptor = "(Leo;)V"
+	)
+	class136(class132 var1) {
+		this.this$0 = var1; // L: 248
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "([BIIIIIII[Lgr;I)V", garbageValue = "1308241235")
-	static final void method2954(byte[] var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, CollisionMap[] var8) {
-		int var10;
-		for (int var9 = 0; var9 < 8; ++var9) {
-			for (var10 = 0; var10 < 8; ++var10) {
-				if (var9 + var2 > 0 && var9 + var2 < 103 && var3 + var10 > 0 && var3 + var10 < 103) {
-					int[] var10000 = var8[var1].flags[var9 + var2];
-					var10000[var3 + var10] &= -16777217;
-				}
-			}
-		}
-		Buffer var21 = new Buffer(var0);
-		for (var10 = 0; var10 < 4; ++var10) {
-			for (int var11 = 0; var11 < 64; ++var11) {
-				for (int var12 = 0; var12 < 64; ++var12) {
-					if (var10 == var4 && var11 >= var5 && var11 < var5 + 8 && var12 >= var6 && var12 < var6 + 8) {
-						int var15 = var2 + class286.method5524(var11 & 7, var12 & 7, var7);
-						int var18 = var11 & 7;
-						int var19 = var12 & 7;
-						int var20 = var7 & 3;
-						int var17;
-						if (var20 == 0) {
-							var17 = var19;
-						} else if (var20 == 1) {
-							var17 = 7 - var18;
-						} else if (var20 == 2) {
-							var17 = 7 - var19;
-						} else {
-							var17 = var18;
-						}
-						class174.loadTerrain(var21, var1, var15, var3 + var17, 0, 0, var7);
-					} else {
-						class174.loadTerrain(var21, 0, -1, -1, 0, 0, 0);
-					}
-				}
-			}
-		}
-	}
+	@ObfuscatedSignature(
+		descriptor = "(Lqq;B)V",
+		garbageValue = "-41"
+	)
+	void vmethod3320(Buffer var1) {
+		this.field1607 = var1.readUnsignedByte() == 1; // L: 251
+		this.field1608 = var1.readByte(); // L: 252
+		this.field1609 = var1.readByte(); // L: 253
+		this.field1610 = var1.readByte(); // L: 254
+		this.field1614 = var1.readByte(); // L: 255
+	} // L: 256
 
-	@ObfuscatedName("fi")
-	@ObfuscatedSignature(descriptor = "(II)V", garbageValue = "237156850")
-	@Export("forceDisconnect")
-	static final void forceDisconnect(int var0) {
-		class433.logOut();
-		switch (var0) {
-			case 1 :
-				MenuAction.method1933();
-				break;
-			case 2 :
-				SoundSystem.method768();
-		}
-	}
+	@ObfuscatedName("p")
+	@ObfuscatedSignature(
+		descriptor = "(Led;I)V",
+		garbageValue = "-538131930"
+	)
+	void vmethod3313(ClanSettings var1) {
+		var1.allowGuests = this.field1607; // L: 259
+		var1.field1631 = this.field1608; // L: 260
+		var1.field1632 = this.field1609; // L: 261
+		var1.field1633 = this.field1610; // L: 262
+		var1.field1634 = this.field1614; // L: 263
+	} // L: 264
 
-	@ObfuscatedName("kz")
-	@ObfuscatedSignature(descriptor = "(II)V", garbageValue = "86287097")
-	static final void method2949(int var0) {
-		var0 = Math.min(Math.max(var0, 0), 127);
-		class260.clientPreferences.method2332(var0);
+	@ObfuscatedName("x")
+	@ObfuscatedSignature(
+		descriptor = "(B)Ljava/util/Date;",
+		garbageValue = "1"
+	)
+	static Date method3074() {
+		java.util.Calendar var0 = java.util.Calendar.getInstance(); // L: 1094
+		var0.set(2, 0); // L: 1095
+		var0.set(5, 1); // L: 1096
+		var0.set(1, 1900); // L: 1097
+		return var0.getTime(); // L: 1098
 	}
 }

@@ -1,46 +1,73 @@
+import java.net.URL;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-@ObfuscatedName("ch")
+
+@ObfuscatedName("cy")
 public class class78 {
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "(IB)Z", garbageValue = "1")
-	public static boolean method2157(int var0) {
-		return (var0 >> 20 & 1) != 0;
-	}
+	@ObfuscatedName("n")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;ILjava/lang/String;B)Z",
+		garbageValue = "6"
+	)
+	static boolean method2234(String var0, int var1, String var2) {
+		if (var1 == 0) { // L: 63
+			try {
+				if (!class29.field172.startsWith("win")) { // L: 65
+					throw new Exception();
+				} else if (!var0.startsWith("http://") && !var0.startsWith("https://")) { // L: 66
+					throw new Exception();
+				} else {
+					String var10 = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789?&=,.%+-_#:/*"; // L: 67
 
-	@ObfuscatedName("u")
-	@ObfuscatedSignature(descriptor = "(Lqy;I)I", garbageValue = "-808075367")
-	static int method2158(PacketBuffer var0) {
-		int var1 = var0.readBits(2);
-		int var2;
-		if (var1 == 0) {
-			var2 = 0;
-		} else if (var1 == 1) {
-			var2 = var0.readBits(5);
-		} else if (var1 == 2) {
-			var2 = var0.readBits(8);
+					for (int var4 = 0; var4 < var0.length(); ++var4) { // L: 68
+						if (var10.indexOf(var0.charAt(var4)) == -1) { // L: 69
+							throw new Exception();
+						}
+					}
+
+					Runtime.getRuntime().exec("cmd /c start \"j\" \"" + var0 + "\""); // L: 71
+					return true; // L: 72
+				}
+			} catch (Throwable var5) { // L: 74
+				return false; // L: 75
+			}
+		} else if (var1 == 1) { // L: 78
+			try {
+				Object var3 = class27.method405(class29.field179, var2, new Object[]{(new URL(class29.field179.getCodeBase(), var0)).toString()}); // L: 80
+				return var3 != null; // L: 81
+			} catch (Throwable var6) { // L: 83
+				return false; // L: 84
+			}
+		} else if (var1 == 2) { // L: 87
+			try {
+				class29.field179.getAppletContext().showDocument(new URL(class29.field179.getCodeBase(), var0), "_blank"); // L: 89
+				return true; // L: 90
+			} catch (Exception var7) { // L: 92
+				return false; // L: 93
+			}
+		} else if (var1 == 3) { // L: 96
+			try {
+				class27.method404(class29.field179, "loggedout"); // L: 98
+			} catch (Throwable var9) { // L: 100
+			}
+
+			try {
+				class29.field179.getAppletContext().showDocument(new URL(class29.field179.getCodeBase(), var0), "_top"); // L: 102
+				return true; // L: 103
+			} catch (Exception var8) { // L: 105
+				return false; // L: 106
+			}
 		} else {
-			var2 = var0.readBits(11);
-		}
-		return var2;
-	}
-
-	@ObfuscatedName("w")
-	@ObfuscatedSignature(descriptor = "(II)V", garbageValue = "695677773")
-	static void method2159(int var0) {
-		ItemContainer var1 = ((ItemContainer) (ItemContainer.itemContainers.get(((long) (var0)))));
-		if (var1 != null) {
-			var1.remove();
+			throw new IllegalArgumentException(); // L: 109
 		}
 	}
 
-	@ObfuscatedName("ml")
-	@ObfuscatedSignature(descriptor = "(II)Lpp;", garbageValue = "634380800")
-	static class437 method2156(int var0) {
-		class437 var1 = ((class437) (Client.DBTableMasterIndex_cache.get(((long) (var0)))));
-		if (var1 == null) {
-			var1 = new class437(BuddyRankComparator.field1380, var0);
-		}
-		return var1;
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "(ILbt;ZS)I",
+		garbageValue = "-16458"
+	)
+	static int method2235(int var0, Script var1, boolean var2) {
+		return 2; // L: 4443
 	}
 }

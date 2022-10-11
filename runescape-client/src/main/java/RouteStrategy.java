@@ -1,87 +1,124 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.Export;
-@ObfuscatedName("gh")
+
+@ObfuscatedName("gb")
 @Implements("RouteStrategy")
 public abstract class RouteStrategy {
-	@ObfuscatedName("l")
-	@ObfuscatedSignature(descriptor = "Lcq;")
-	@Export("loginScreenRunesAnimation")
-	static LoginScreenAnimation loginScreenRunesAnimation;
-
-	@ObfuscatedName("o")
-	@ObfuscatedGetter(intValue = -1605769727)
+	@ObfuscatedName("gt")
+	@ObfuscatedSignature(
+		descriptor = "Lnl;"
+	)
+	static AbstractSocket field2237;
+	@ObfuscatedName("c")
+	@ObfuscatedGetter(
+		intValue = -1762849059
+	)
 	@Export("approxDestinationX")
 	public int approxDestinationX;
-
-	@ObfuscatedName("q")
-	@ObfuscatedGetter(intValue = 2044245699)
+	@ObfuscatedName("p")
+	@ObfuscatedGetter(
+		intValue = 610056427
+	)
 	@Export("approxDestinationY")
 	public int approxDestinationY;
-
 	@ObfuscatedName("f")
-	@ObfuscatedGetter(intValue = 369039935)
+	@ObfuscatedGetter(
+		intValue = 410415313
+	)
 	@Export("approxDestinationSizeX")
 	public int approxDestinationSizeX;
-
-	@ObfuscatedName("u")
-	@ObfuscatedGetter(intValue = 1300151607)
+	@ObfuscatedName("n")
+	@ObfuscatedGetter(
+		intValue = 1876745509
+	)
 	@Export("approxDestinationSizeY")
 	public int approxDestinationSizeY;
 
 	protected RouteStrategy() {
-	}
+	} // L: 9
 
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "(IIILgr;I)Z", garbageValue = "309597362")
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "(IIILgj;I)Z",
+		garbageValue = "-385329000"
+	)
 	@Export("hasArrived")
-	public abstract boolean hasArrived(int var1, int var2, int var3, CollisionMap var4);
+	protected abstract boolean hasArrived(int var1, int var2, int var3, CollisionMap var4);
 
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "(II)Lfj;", garbageValue = "-1465953094")
-	@Export("KitDefinition_get")
-	public static KitDefinition KitDefinition_get(int var0) {
-		KitDefinition var1 = ((KitDefinition) (KitDefinition.KitDefinition_cached.get(((long) (var0)))));
-		if (var1 != null) {
-			return var1;
-		} else {
-			byte[] var2 = KitDefinition.KitDefinition_archive.takeFile(3, var0);
-			var1 = new KitDefinition();
-			if (var2 != null) {
-				var1.decode(new Buffer(var2));
-			}
-			KitDefinition.KitDefinition_cached.put(var1, ((long) (var0)));
-			return var1;
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "(Lqf;B)V",
+		garbageValue = "13"
+	)
+	@Export("updatePlayer")
+	static final void updatePlayer(PacketBuffer var0) {
+		var0.importIndex(); // L: 37
+		int var1 = Client.localPlayerIndex; // L: 38
+		Player var2 = class67.localPlayer = Client.players[var1] = new Player(); // L: 39
+		var2.index = var1; // L: 40
+		int var3 = var0.readBits(30); // L: 41
+		byte var4 = (byte)(var3 >> 28); // L: 42
+		int var5 = var3 >> 14 & 16383;
+		int var6 = var3 & 16383;
+		var2.pathX[0] = var5 - class128.baseX * 64;
+		var2.x = (var2.pathX[0] << 7) + (var2.transformedSize() << 6);
+		var2.pathY[0] = var6 - WorldMapData_1.baseY * 64; // L: 47
+		var2.y = (var2.pathY[0] << 7) + (var2.transformedSize() << 6);
+		Tiles.Client_plane = var2.plane = var4; // L: 49
+		if (Players.field1292[var1] != null) { // L: 50
+			var2.read(Players.field1292[var1]);
 		}
+
+		Players.Players_count = 0; // L: 51
+		Players.Players_indices[++Players.Players_count - 1] = var1; // L: 52
+		Players.field1290[var1] = 0; // L: 53
+		Players.Players_emptyIdxCount = 0; // L: 54
+
+		for (int var7 = 1; var7 < 2048; ++var7) { // L: 55
+			if (var1 != var7) { // L: 56
+				int var8 = var0.readBits(18); // L: 57
+				int var9 = var8 >> 16; // L: 58
+				int var10 = var8 >> 8 & 597; // L: 59
+				int var11 = var8 & 597; // L: 60
+				Players.Players_regions[var7] = (var10 << 14) + var11 + (var9 << 28); // L: 61
+				Players.Players_orientations[var7] = 0; // L: 62
+				Players.Players_targetIndices[var7] = -1; // L: 63
+				Players.Players_emptyIndices[++Players.Players_emptyIdxCount - 1] = var7; // L: 64
+				Players.field1290[var7] = 0; // L: 65
+			}
+		}
+
+		var0.exportIndex(); // L: 67
+	} // L: 68
+
+	@ObfuscatedName("p")
+	@ObfuscatedSignature(
+		descriptor = "(IB)I",
+		garbageValue = "7"
+	)
+	public static int method4026(int var0) {
+		var0 = (var0 & 1431655765) + (var0 >>> 1 & 1431655765); // L: 28
+		var0 = (var0 >>> 2 & 858993459) + (var0 & 858993459); // L: 29
+		var0 = var0 + (var0 >>> 4) & 252645135; // L: 30
+		var0 += var0 >>> 8; // L: 31
+		var0 += var0 >>> 16; // L: 32
+		return var0 & 255; // L: 33
 	}
 
-	@ObfuscatedName("h")
-	@ObfuscatedSignature(descriptor = "(Lku;I[B[BI)V", garbageValue = "-873901892")
-	@Export("Widget_setKey")
-	static final void Widget_setKey(Widget var0, int var1, byte[] var2, byte[] var3) {
-		if (var0.field3445 == null) {
-			if (var2 == null) {
-				return;
-			}
-			var0.field3445 = new byte[11][];
-			var0.field3446 = new byte[11][];
-			var0.field3447 = new int[11];
-			var0.field3448 = new int[11];
+	@ObfuscatedName("p")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "44720495"
+	)
+	public static void method4027() {
+		if (MouseHandler.MouseHandler_instance != null) { // L: 43
+			synchronized(MouseHandler.MouseHandler_instance) { // L: 44
+				MouseHandler.MouseHandler_instance = null; // L: 45
+			} // L: 46
 		}
-		var0.field3445[var1] = var2;
-		if (var2 != null) {
-			var0.field3444 = true;
-		} else {
-			var0.field3444 = false;
-			for (int var4 = 0; var4 < var0.field3445.length; ++var4) {
-				if (var0.field3445[var4] != null) {
-					var0.field3444 = true;
-					break;
-				}
-			}
-		}
-		var0.field3446[var1] = var3;
-	}
+
+	} // L: 48
 }

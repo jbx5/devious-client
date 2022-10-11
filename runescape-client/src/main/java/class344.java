@@ -1,105 +1,101 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.Export;
-@ObfuscatedName("ml")
-public class class344 {
-	@ObfuscatedName("vj")
-	@ObfuscatedSignature(descriptor = "Lot;")
-	@Export("worldMap")
-	static WorldMap worldMap;
 
-	@ObfuscatedName("fe")
-	static String field4179;
+@ObfuscatedName("mi")
+public final class class344 {
+	@ObfuscatedName("p")
+	@ObfuscatedSignature(
+		descriptor = "(CLlj;I)C",
+		garbageValue = "-1599076103"
+	)
+	@Export("standardizeChar")
+	static char standardizeChar(char var0, Language var1) {
+		if (var0 >= 192 && var0 <= 255) { // L: 117
+			if (var0 >= 192 && var0 <= 198) { // L: 118
+				return 'A';
+			}
 
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "(IILgh;Lgr;B)Z", garbageValue = "-94")
-	public static final boolean method6344(int var0, int var1, RouteStrategy var2, CollisionMap var3) {
-		int var4 = var0;
-		int var5 = var1;
-		int var6 = 64;
-		int var7 = 64;
-		int var8 = var0 - var6;
-		int var9 = var1 - var7;
-		class193.directions[var6][var7] = 99;
-		class193.distances[var6][var7] = 0;
-		int var10 = 0;
-		int var11 = 0;
-		class193.bufferX[var10] = var0;
-		class193.bufferY[var10++] = var1;
-		int[][] var12 = var3.flags;
-		while (var11 != var10) {
-			var4 = class193.bufferX[var11];
-			var5 = class193.bufferY[var11];
-			var11 = var11 + 1 & 4095;
-			var6 = var4 - var8;
-			var7 = var5 - var9;
-			int var13 = var4 - var3.xInset;
-			int var14 = var5 - var3.yInset;
-			if (var2.hasArrived(1, var4, var5, var3)) {
-				class352.field4222 = var4;
-				DirectByteArrayCopier.field3302 = var5;
-				return true;
+			if (var0 == 199) { // L: 119
+				return 'C';
 			}
-			int var15 = class193.distances[var6][var7] + 1;
-			if (var6 > 0 && class193.directions[var6 - 1][var7] == 0 && (var12[var13 - 1][var14] & 19136776) == 0) {
-				class193.bufferX[var10] = var4 - 1;
-				class193.bufferY[var10] = var5;
-				var10 = var10 + 1 & 4095;
-				class193.directions[var6 - 1][var7] = 2;
-				class193.distances[var6 - 1][var7] = var15;
+
+			if (var0 >= 200 && var0 <= 203) { // L: 120
+				return 'E';
 			}
-			if (var6 < 127 && class193.directions[var6 + 1][var7] == 0 && (var12[var13 + 1][var14] & 19136896) == 0) {
-				class193.bufferX[var10] = var4 + 1;
-				class193.bufferY[var10] = var5;
-				var10 = var10 + 1 & 4095;
-				class193.directions[var6 + 1][var7] = 8;
-				class193.distances[var6 + 1][var7] = var15;
+
+			if (var0 >= 204 && var0 <= 207) { // L: 121
+				return 'I';
 			}
-			if (var7 > 0 && class193.directions[var6][var7 - 1] == 0 && (var12[var13][var14 - 1] & 19136770) == 0) {
-				class193.bufferX[var10] = var4;
-				class193.bufferY[var10] = var5 - 1;
-				var10 = var10 + 1 & 4095;
-				class193.directions[var6][var7 - 1] = 1;
-				class193.distances[var6][var7 - 1] = var15;
+
+			if (var0 == 209 && var1 != Language.Language_ES) { // L: 122
+				return 'N';
 			}
-			if (var7 < 127 && class193.directions[var6][var7 + 1] == 0 && (var12[var13][var14 + 1] & 19136800) == 0) {
-				class193.bufferX[var10] = var4;
-				class193.bufferY[var10] = var5 + 1;
-				var10 = var10 + 1 & 4095;
-				class193.directions[var6][var7 + 1] = 4;
-				class193.distances[var6][var7 + 1] = var15;
+
+			if (var0 >= 210 && var0 <= 214) { // L: 123
+				return 'O';
 			}
-			if (var6 > 0 && var7 > 0 && class193.directions[var6 - 1][var7 - 1] == 0 && (var12[var13 - 1][var14 - 1] & 19136782) == 0 && (var12[var13 - 1][var14] & 19136776) == 0 && (var12[var13][var14 - 1] & 19136770) == 0) {
-				class193.bufferX[var10] = var4 - 1;
-				class193.bufferY[var10] = var5 - 1;
-				var10 = var10 + 1 & 4095;
-				class193.directions[var6 - 1][var7 - 1] = 3;
-				class193.distances[var6 - 1][var7 - 1] = var15;
+
+			if (var0 >= 217 && var0 <= 220) { // L: 124
+				return 'U';
 			}
-			if (var6 < 127 && var7 > 0 && class193.directions[var6 + 1][var7 - 1] == 0 && (var12[var13 + 1][var14 - 1] & 19136899) == 0 && (var12[var13 + 1][var14] & 19136896) == 0 && (var12[var13][var14 - 1] & 19136770) == 0) {
-				class193.bufferX[var10] = var4 + 1;
-				class193.bufferY[var10] = var5 - 1;
-				var10 = var10 + 1 & 4095;
-				class193.directions[var6 + 1][var7 - 1] = 9;
-				class193.distances[var6 + 1][var7 - 1] = var15;
+
+			if (var0 == 221) { // L: 125
+				return 'Y';
 			}
-			if (var6 > 0 && var7 < 127 && class193.directions[var6 - 1][var7 + 1] == 0 && (var12[var13 - 1][var14 + 1] & 19136824) == 0 && (var12[var13 - 1][var14] & 19136776) == 0 && (var12[var13][var14 + 1] & 19136800) == 0) {
-				class193.bufferX[var10] = var4 - 1;
-				class193.bufferY[var10] = var5 + 1;
-				var10 = var10 + 1 & 4095;
-				class193.directions[var6 - 1][var7 + 1] = 6;
-				class193.distances[var6 - 1][var7 + 1] = var15;
+
+			if (var0 == 223) { // L: 126
+				return 's';
 			}
-			if (var6 < 127 && var7 < 127 && class193.directions[var6 + 1][var7 + 1] == 0 && (var12[var13 + 1][var14 + 1] & 19136992) == 0 && (var12[var13 + 1][var14] & 19136896) == 0 && (var12[var13][var14 + 1] & 19136800) == 0) {
-				class193.bufferX[var10] = var4 + 1;
-				class193.bufferY[var10] = var5 + 1;
-				var10 = var10 + 1 & 4095;
-				class193.directions[var6 + 1][var7 + 1] = 12;
-				class193.distances[var6 + 1][var7 + 1] = var15;
+
+			if (var0 >= 224 && var0 <= 230) { // L: 127
+				return 'a';
 			}
-		} 
-		class352.field4222 = var4;
-		DirectByteArrayCopier.field3302 = var5;
-		return false;
+
+			if (var0 == 231) { // L: 128
+				return 'c';
+			}
+
+			if (var0 >= 232 && var0 <= 235) { // L: 129
+				return 'e';
+			}
+
+			if (var0 >= 236 && var0 <= 239) { // L: 130
+				return 'i';
+			}
+
+			if (var0 == 241 && var1 != Language.Language_ES) { // L: 131
+				return 'n';
+			}
+
+			if (var0 >= 242 && var0 <= 246) { // L: 132
+				return 'o';
+			}
+
+			if (var0 >= 249 && var0 <= 252) { // L: 133
+				return 'u';
+			}
+
+			if (var0 == 253 || var0 == 255) { // L: 134
+				return 'y';
+			}
+		}
+
+		if (var0 == 338) { // L: 136
+			return 'O';
+		} else if (var0 == 339) { // L: 137
+			return 'o';
+		} else {
+			return var0 == 376 ? 'Y' : var0; // L: 138
+		}
+	}
+
+	@ObfuscatedName("mh")
+	@ObfuscatedSignature(
+		descriptor = "(B)Z",
+		garbageValue = "6"
+	)
+	static boolean method6492() {
+		return Player.clientPreferences.method2409() >= Client.field497; // L: 12184
 	}
 }

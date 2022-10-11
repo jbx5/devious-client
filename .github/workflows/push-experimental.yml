@@ -1,0 +1,73 @@
+name: Devious Client - Experimental (push)
+
+on:
+  push:
+    branches:
+      - experimental
+
+jobs:
+  build:
+    name: Build and bootstrap
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2.3.4
+
+      - uses: actions/cache@v2.1.3
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle.kts') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+
+      - name: Set up JDK 11
+        uses: actions/setup-java@v1.4.3
+        with:
+          java-version: 11
+
+      - name: Assembling
+        run: ./gradlew assemble --console=plain
+
+      - name: Building
+        run: ./gradlew build --stacktrace -x test -x checkstyleMain --console=plain
+
+      - name: Bootstrap
+        run: ./gradlew bootstrapExperimental -x test -x checkstyleMain --console=plain
+
+      - name: Push to hosting
+        run: |
+          git clone https://github.com/jbx5/devious-hosting.git
+          cp -r ./runelite-client/build/bootstrap/. ./devious-hosting
+          cd devious-hosting
+          
+          git config --global user.email "113217895+jbx5@users.noreply.github.com"
+          git config --global user.name "Github Actions"
+          git add -A
+          git commit -m 'Auto release - Client (Experimental)'
+          git push https://jbx5:${{ secrets.REPO_PAT }}@github.com/jbx5/devious-hosting.git master
+
+  checkstyleMain:
+    name: Checkstyle main
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2.3.4
+      - uses: actions/cache@v2.1.3
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle.kts') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+      - name: Set up JDK 11
+        uses: actions/setup-java@v1.4.3
+        with:
+          java-version: 11
+      - name: Assembling
+        run: ./gradlew assemble --console=plain
+      - name: Checking code conventions
+        run: ./gradlew checkstyleMain --console=plain

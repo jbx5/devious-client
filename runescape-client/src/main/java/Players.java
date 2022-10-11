@@ -1,112 +1,122 @@
+import java.awt.Component;
+import java.io.IOException;
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import java.io.StringWriter;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.Implements;
-import java.io.IOException;
-import java.io.BufferedReader;
-import java.io.StringReader;
-import java.io.PrintWriter;
-import net.runelite.mapping.Export;
-@ObfuscatedName("cu")
+
+@ObfuscatedName("ck")
 @Implements("Players")
 public class Players {
 	@ObfuscatedName("f")
-	static byte[] field1293 = new byte[2048];
-
-	@ObfuscatedName("u")
-	@ObfuscatedSignature(descriptor = "[Lgl;")
-	static class192[] field1294 = new class192[2048];
-
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "[Lqw;")
-	static Buffer[] field1295 = new Buffer[2048];
-
-	@ObfuscatedName("w")
-	@ObfuscatedGetter(intValue = -568075581)
-	@Export("Players_count")
-	static int Players_count = 0;
-
-	@ObfuscatedName("z")
-	@Export("Players_indices")
-	static int[] Players_indices = new int[2048];
-
-	@ObfuscatedName("j")
-	@ObfuscatedGetter(intValue = -1632866083)
-	@Export("Players_emptyIdxCount")
-	static int Players_emptyIdxCount = 0;
-
-	@ObfuscatedName("h")
-	@Export("Players_emptyIndices")
-	static int[] Players_emptyIndices = new int[2048];
-
-	@ObfuscatedName("a")
-	@Export("Players_regions")
-	static int[] Players_regions = new int[2048];
-
-	@ObfuscatedName("d")
-	@Export("Players_orientations")
-	static int[] Players_orientations = new int[2048];
-
+	static byte[] field1290;
 	@ObfuscatedName("n")
-	@Export("Players_targetIndices")
-	static int[] Players_targetIndices = new int[2048];
-
+	@ObfuscatedSignature(
+		descriptor = "[Lga;"
+	)
+	static class193[] field1291;
+	@ObfuscatedName("k")
+	@ObfuscatedSignature(
+		descriptor = "[Lqq;"
+	)
+	static Buffer[] field1292;
+	@ObfuscatedName("w")
+	@ObfuscatedGetter(
+		intValue = -1742411547
+	)
+	@Export("Players_count")
+	static int Players_count;
+	@ObfuscatedName("s")
+	@Export("Players_indices")
+	static int[] Players_indices;
+	@ObfuscatedName("q")
+	@ObfuscatedGetter(
+		intValue = 842704609
+	)
+	@Export("Players_emptyIdxCount")
+	static int Players_emptyIdxCount;
+	@ObfuscatedName("m")
+	@Export("Players_emptyIndices")
+	static int[] Players_emptyIndices;
 	@ObfuscatedName("x")
-	@ObfuscatedGetter(intValue = 999900845)
+	@Export("Players_regions")
+	static int[] Players_regions;
+	@ObfuscatedName("j")
+	@Export("Players_orientations")
+	static int[] Players_orientations;
+	@ObfuscatedName("v")
+	@Export("Players_targetIndices")
+	static int[] Players_targetIndices;
+	@ObfuscatedName("h")
+	@ObfuscatedGetter(
+		intValue = 1336760617
+	)
 	@Export("Players_pendingUpdateCount")
-	static int Players_pendingUpdateCount = 0;
-
-	@ObfuscatedName("g")
+	static int Players_pendingUpdateCount;
+	@ObfuscatedName("t")
 	@Export("Players_pendingUpdateIndices")
-	static int[] Players_pendingUpdateIndices = new int[2048];
+	static int[] Players_pendingUpdateIndices;
+	@ObfuscatedName("u")
+	@ObfuscatedSignature(
+		descriptor = "Lqq;"
+	)
+	static Buffer field1302;
+	@ObfuscatedName("bj")
+	@ObfuscatedSignature(
+		descriptor = "Lpn;"
+	)
+	@Export("loginType")
+	static LoginType loginType;
+
+	static {
+		field1290 = new byte[2048]; // L: 18
+		field1291 = new class193[2048]; // L: 19
+		field1292 = new Buffer[2048]; // L: 20
+		Players_count = 0; // L: 21
+		Players_indices = new int[2048]; // L: 22
+		Players_emptyIdxCount = 0; // L: 23
+		Players_emptyIndices = new int[2048]; // L: 24
+		Players_regions = new int[2048]; // L: 25
+		Players_orientations = new int[2048]; // L: 26
+		Players_targetIndices = new int[2048]; // L: 27
+		Players_pendingUpdateCount = 0; // L: 28
+		Players_pendingUpdateIndices = new int[2048]; // L: 29
+		field1302 = new Buffer(new byte[5000]); // L: 30
+	}
 
 	@ObfuscatedName("p")
-	@ObfuscatedSignature(descriptor = "Lqw;")
-	static Buffer field1300 = new Buffer(new byte[5000]);
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/awt/Component;I)V",
+		garbageValue = "1351614638"
+	)
+	static void method2569(Component var0) {
+		var0.removeKeyListener(KeyHandler.KeyHandler_instance); // L: 155
+		var0.removeFocusListener(KeyHandler.KeyHandler_instance); // L: 156
+		KeyHandler.field131 = -1; // L: 157
+	} // L: 158
 
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "(Ljava/lang/Throwable;I)Ljava/lang/String;", garbageValue = "-2131774965")
-	static String method2497(Throwable var0) throws IOException {
-		String var1;
-		if (var0 instanceof RunException) {
-			RunException var2 = ((RunException) (var0));
-			var1 = var2.message + " | ";
-			var0 = var2.throwable;
-		} else {
-			var1 = "";
+	@ObfuscatedName("hg")
+	@ObfuscatedSignature(
+		descriptor = "(ZI)V",
+		garbageValue = "1280446"
+	)
+	static final void method2581(boolean var0) {
+		class14.playPcmPlayers(); // L: 5510
+		++Client.packetWriter.pendingWrites; // L: 5511
+		if (Client.packetWriter.pendingWrites >= 50 || var0) { // L: 5512
+			Client.packetWriter.pendingWrites = 0; // L: 5513
+			if (!Client.hadNetworkError && Client.packetWriter.getSocket() != null) { // L: 5514
+				PacketBufferNode var1 = class120.getPacketBufferNode(ClientPacket.NO_TIMEOUT, Client.packetWriter.isaacCipher); // L: 5516
+				Client.packetWriter.addNode(var1); // L: 5517
+
+				try {
+					Client.packetWriter.flush(); // L: 5519
+				} catch (IOException var3) { // L: 5521
+					Client.hadNetworkError = true; // L: 5522
+				}
+			}
+
 		}
-		StringWriter var12 = new StringWriter();
-		PrintWriter var3 = new PrintWriter(var12);
-		var0.printStackTrace(var3);
-		var3.close();
-		String var4 = var12.toString();
-		BufferedReader var5 = new BufferedReader(new StringReader(var4));
-		String var6 = var5.readLine();
-		while (true) {
-			while (true) {
-				String var7 = var5.readLine();
-				if (var7 == null) {
-					var1 = var1 + "| " + var6;
-					return var1;
-				}
-				int var8 = var7.indexOf(40);
-				int var9 = var7.indexOf(41, var8 + 1);
-				if (var8 >= 0 && var9 >= 0) {
-					String var10 = var7.substring(var8 + 1, var9);
-					int var11 = var10.indexOf(".java:");
-					if (var11 >= 0) {
-						var10 = var10.substring(0, var11) + var10.substring(var11 + 5);
-						var1 = var1 + var10 + ' ';
-						continue;
-					}
-					var7 = var7.substring(0, var8);
-				}
-				var7 = var7.trim();
-				var7 = var7.substring(var7.lastIndexOf(32) + 1);
-				var7 = var7.substring(var7.lastIndexOf(9) + 1);
-				var1 = var1 + var7 + ' ';
-			} 
-		} 
-	}
+	} // L: 5525
 }

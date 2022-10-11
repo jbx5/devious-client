@@ -278,7 +278,7 @@ public class DevToolsPlugin extends Plugin
 				client.queueChangedVarp(varp);
 				client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", "Set VarPlayer " + varp + " to " + value, null);
 				VarbitChanged varbitChanged = new VarbitChanged();
-				varbitChanged.setIndex(varp);
+				varbitChanged.setVarpId(varp);
 				eventBus.post(varbitChanged); // fake event
 				break;
 			}
@@ -468,8 +468,7 @@ public class DevToolsPlugin extends Plugin
 
 		if (EXAMINE_MENU_ACTIONS.contains(action))
 		{
-			MenuEntry[] entries = client.getMenuEntries();
-			MenuEntry entry = entries[entries.length - 1];
+			MenuEntry entry = event.getMenuEntry();
 
 			final int identifier = event.getIdentifier();
 			String info = "ID: ";

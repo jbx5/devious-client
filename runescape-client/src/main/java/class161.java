@@ -1,35 +1,49 @@
+import java.util.List;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-@ObfuscatedName("fu")
+
+@ObfuscatedName("fl")
 public class class161 {
-	@ObfuscatedName("u")
-	public String field1763;
-
-	@ObfuscatedName("c")
-	public float[] field1764;
-
-	@ObfuscatedName("w")
-	@ObfuscatedGetter(intValue = -129791037)
-	public int field1760;
-
+	@ObfuscatedName("un")
+	static List field1784;
 	@ObfuscatedName("z")
-	@ObfuscatedGetter(intValue = -1061883525)
-	public int field1765;
+	@ObfuscatedSignature(
+		descriptor = "Llv;"
+	)
+	@Export("Widget_fontsArchive")
+	public static AbstractArchive Widget_fontsArchive;
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "Lcm;"
+	)
+	public UrlRequest field1786;
+	@ObfuscatedName("p")
+	public float[] field1781;
+	// $FF: synthetic field
+	@ObfuscatedSignature(
+		descriptor = "Lfc;"
+	)
+	final class156 this$0;
 
-	@ObfuscatedName("j")
-	@ObfuscatedGetter(intValue = 1474188437)
-	public int field1766;
-
-	@ObfuscatedSignature(descriptor = "Lef;")
-	final class155 this$0;
-
-	@ObfuscatedSignature(descriptor = "(Lef;)V")
-	class161(class155 var1) {
+	@ObfuscatedSignature(
+		descriptor = "(Lfc;)V"
+	)
+	class161(class156 var1) {
 		this.this$0 = var1;
-		this.field1764 = new float[4];
-		this.field1760 = 1;
-		this.field1765 = 1;
-		this.field1766 = 0;
-	}
+		this.field1781 = new float[4]; // L: 308
+	} // L: 310
+
+	@ObfuscatedName("gz")
+	@ObfuscatedSignature(
+		descriptor = "(IIB)V",
+		garbageValue = "-15"
+	)
+	static void method3458(int var0, int var1) {
+		if (Player.clientPreferences.method2402() != 0 && var0 != -1) { // L: 3549
+			Message.method1164(class283.field3325, var0, 0, Player.clientPreferences.method2402(), false); // L: 3550
+			Client.playingJingle = true; // L: 3551
+		}
+
+	} // L: 3553
 }

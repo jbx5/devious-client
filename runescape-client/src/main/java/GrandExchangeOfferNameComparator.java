@@ -1,42 +1,40 @@
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.Implements;
 import java.util.Comparator;
 import net.runelite.mapping.Export;
-@ObfuscatedName("lo")
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
+
+@ObfuscatedName("lf")
 @Implements("GrandExchangeOfferNameComparator")
 final class GrandExchangeOfferNameComparator implements Comparator {
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "(Llf;Llf;I)I", garbageValue = "-1021245934")
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "(Lla;Lla;I)I",
+		garbageValue = "206382241"
+	)
 	@Export("compare_bridged")
 	int compare_bridged(GrandExchangeEvent var1, GrandExchangeEvent var2) {
-		return var1.getOfferName().compareTo(var2.getOfferName());
-	}
-
-	public int compare(Object var1, Object var2) {
-		return this.compare_bridged(((GrandExchangeEvent) (var1)), ((GrandExchangeEvent) (var2)));
+		return var1.getOfferName().compareTo(var2.getOfferName()); // L: 56
 	}
 
 	public boolean equals(Object var1) {
-		return super.equals(var1);
+		return super.equals(var1); // L: 64
 	}
 
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "(II)Lpr;", garbageValue = "459953830")
-	@Export("getDbRowType")
-	public static DbRowType getDbRowType(int var0) {
-		DbRowType var1 = ((DbRowType) (DbRowType.DBRowType_cache.get(((long) (var0)))));
-		if (var1 != null) {
-			return var1;
+	public int compare(Object var1, Object var2) {
+		return this.compare_bridged((GrandExchangeEvent)var1, (GrandExchangeEvent)var2); // L: 60
+	}
+
+	@ObfuscatedName("d")
+	@ObfuscatedSignature(
+		descriptor = "(IB)I",
+		garbageValue = "-3"
+	)
+	public static int method6147(int var0) {
+		if (var0 > 0) { // L: 184
+			return 1;
 		} else {
-			byte[] var2 = DbRowType.field4691.takeFile(38, var0);
-			var1 = new DbRowType();
-			if (var2 != null) {
-				var1.method7648(new Buffer(var2));
-			}
-			var1.method7637();
-			DbRowType.DBRowType_cache.put(var1, ((long) (var0)));
-			return var1;
+			return var0 < 0 ? -1 : 0; // L: 185 186
 		}
 	}
 }

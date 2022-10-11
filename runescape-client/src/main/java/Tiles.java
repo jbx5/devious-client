@@ -1,143 +1,150 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.Export;
+
 @ObfuscatedName("bm")
 @Implements("Tiles")
 public final class Tiles {
-	@ObfuscatedName("sl")
-	@ObfuscatedSignature(descriptor = "Lbz;")
-	@Export("decimator")
-	static Decimator decimator;
-
-	@ObfuscatedName("tm")
-	@ObfuscatedGetter(intValue = 1636500941)
-	static int field993;
-
-	@ObfuscatedName("o")
-	@Export("Tiles_heights")
-	static int[][][] Tiles_heights = new int[4][105][105];
-
-	@ObfuscatedName("q")
-	@Export("Tiles_renderFlags")
-	static byte[][][] Tiles_renderFlags = new byte[4][104][104];
-
-	@ObfuscatedName("f")
-	@ObfuscatedGetter(intValue = 2111723819)
-	@Export("Tiles_minPlane")
-	static int Tiles_minPlane = 99;
-
 	@ObfuscatedName("c")
-	@Export("Tiles_overlays")
-	static byte[][][] Tiles_overlays;
-
+	@Export("Tiles_heights")
+	static int[][][] Tiles_heights;
+	@ObfuscatedName("p")
+	@Export("Tiles_renderFlags")
+	static byte[][][] Tiles_renderFlags;
+	@ObfuscatedName("f")
+	@ObfuscatedGetter(
+		intValue = -1384721217
+	)
+	@Export("Tiles_minPlane")
+	static int Tiles_minPlane;
 	@ObfuscatedName("w")
 	@Export("Tiles_shapes")
 	static byte[][][] Tiles_shapes;
-
-	@ObfuscatedName("z")
-	static byte[][][] field997;
-
-	@ObfuscatedName("j")
-	static byte[][][] field998;
-
-	@ObfuscatedName("g")
-	static int[] field999;
-
-	@ObfuscatedName("k")
-	static final int[] field1001 = new int[]{ 1, 2, 4, 8 };
-
-	@ObfuscatedName("v")
-	static final int[] field1002 = new int[]{ 16, 32, 64, 128 };
-
-	@ObfuscatedName("t")
-	static final int[] field1008 = new int[]{ 1, 0, -1, 0 };
-
-	@ObfuscatedName("e")
-	static final int[] field1009 = new int[]{ 0, -1, 0, 1 };
-
 	@ObfuscatedName("s")
-	static final int[] field1005 = new int[]{ 1, -1, -1, 1 };
-
-	@ObfuscatedName("i")
-	static final int[] field1006 = new int[]{ -1, -1, 1, 1 };
-
-	@ObfuscatedName("r")
-	@ObfuscatedGetter(intValue = 1980482979)
-	@Export("rndHue")
-	static int rndHue = ((int) (Math.random() * 17.0)) - 8;
-
+	static byte[][][] field1001;
 	@ObfuscatedName("m")
-	@ObfuscatedGetter(intValue = -2038479341)
+	static int[][] field1002;
+	@ObfuscatedName("t")
+	static int[] field1008;
+	@ObfuscatedName("l")
+	static final int[] field1013;
+	@ObfuscatedName("e")
+	static final int[] field1005;
+	@ObfuscatedName("g")
+	static final int[] field1006;
+	@ObfuscatedName("y")
+	static final int[] field1000;
+	@ObfuscatedName("i")
+	static final int[] field1003;
+	@ObfuscatedName("r")
+	static final int[] field1009;
+	@ObfuscatedName("z")
+	@ObfuscatedGetter(
+		intValue = 2056000543
+	)
+	@Export("rndHue")
+	static int rndHue;
+	@ObfuscatedName("o")
+	@ObfuscatedGetter(
+		intValue = 533087545
+	)
 	@Export("rndLightness")
-	static int rndLightness = ((int) (Math.random() * 33.0)) - 16;
+	static int rndLightness;
+	@ObfuscatedName("lr")
+	@ObfuscatedGetter(
+		intValue = -1028329921
+	)
+	@Export("Client_plane")
+	static int Client_plane;
 
-	@ObfuscatedName("u")
-	@ObfuscatedSignature(descriptor = "(IB)J", garbageValue = "11")
-	public static long method2115(int var0) {
-		return ViewportMouse.ViewportMouse_entityTags[var0];
+	static {
+		Tiles_heights = new int[4][105][105]; // L: 16
+		Tiles_renderFlags = new byte[4][104][104]; // L: 17
+		Tiles_minPlane = 99; // L: 18
+		field1013 = new int[]{1, 2, 4, 8}; // L: 34
+		field1005 = new int[]{16, 32, 64, 128}; // L: 35
+		field1006 = new int[]{1, 0, -1, 0}; // L: 36
+		field1000 = new int[]{0, -1, 0, 1}; // L: 37
+		field1003 = new int[]{1, -1, -1, 1}; // L: 38
+		field1009 = new int[]{-1, -1, 1, 1}; // L: 39
+		rndHue = (int)(Math.random() * 17.0D) - 8; // L: 40
+		rndLightness = (int)(Math.random() * 33.0D) - 16; // L: 41
 	}
 
-	@ObfuscatedName("a")
-	@ObfuscatedSignature(descriptor = "([BIIIIIIILgo;[Lgr;)V")
-	static final void method2104(byte[] var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, Scene var8, CollisionMap[] var9) {
-		Buffer var10 = new Buffer(var0);
-		int var11 = -1;
+	@ObfuscatedName("x")
+	@ObfuscatedSignature(
+		descriptor = "([BIIIIIIILgp;[Lgj;)V"
+	)
+	static final void method2148(byte[] var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, Scene var8, CollisionMap[] var9) {
+		Buffer var10 = new Buffer(var0); // L: 284
+		int var11 = -1; // L: 285
+
 		while (true) {
-			int var12 = var10.readIncrSmallSmart();
-			if (var12 == 0) {
-				return;
+			int var12 = var10.readIncrSmallSmart(); // L: 287
+			if (var12 == 0) { // L: 288
+				return; // L: 343
 			}
-			var11 += var12;
-			int var13 = 0;
+
+			var11 += var12; // L: 289
+			int var13 = 0; // L: 290
+
 			while (true) {
-				int var14 = var10.readUShortSmart();
-				if (var14 == 0) {
+				int var14 = var10.readUShortSmart(); // L: 292
+				if (var14 == 0) { // L: 293
 					break;
 				}
-				var13 += var14 - 1;
-				int var15 = var13 & 63;
-				int var16 = var13 >> 6 & 63;
-				int var17 = var13 >> 12;
-				int var18 = var10.readUnsignedByte();
-				int var19 = var18 >> 2;
-				int var20 = var18 & 3;
-				if (var17 == var4 && var16 >= var5 && var16 < var5 + 8 && var15 >= var6 && var15 < var6 + 8) {
-					ObjectComposition var21 = WorldMapDecoration.getObjectDefinition(var11);
-					int var22 = var2 + WorldMapIcon_1.method4560(var16 & 7, var15 & 7, var7, var21.sizeX, var21.sizeY, var20);
-					int var23 = var3 + class141.method3060(var16 & 7, var15 & 7, var7, var21.sizeX, var21.sizeY, var20);
-					if (var22 > 0 && var23 > 0 && var22 < 103 && var23 < 103) {
-						int var24 = var1;
-						if ((Tiles_renderFlags[1][var22][var23] & 2) == 2) {
-							var24 = var1 - 1;
+
+				var13 += var14 - 1; // L: 294
+				int var15 = var13 & 63; // L: 295
+				int var16 = var13 >> 6 & 63; // L: 296
+				int var17 = var13 >> 12; // L: 297
+				int var18 = var10.readUnsignedByte(); // L: 298
+				int var19 = var18 >> 2; // L: 299
+				int var20 = var18 & 3; // L: 300
+				if (var17 == var4 && var16 >= var5 && var16 < var5 + 8 && var15 >= var6 && var15 < var6 + 8) { // L: 301
+					ObjectComposition var21 = PlayerComposition.getObjectDefinition(var11); // L: 302
+					int var24 = var16 & 7; // L: 305
+					int var25 = var15 & 7; // L: 306
+					int var27 = var21.sizeX; // L: 308
+					int var28 = var21.sizeY; // L: 309
+					int var29;
+					if ((var20 & 1) == 1) { // L: 311
+						var29 = var27; // L: 312
+						var27 = var28; // L: 313
+						var28 = var29; // L: 314
+					}
+
+					int var26 = var7 & 3; // L: 316
+					int var23;
+					if (var26 == 0) { // L: 317
+						var23 = var24; // L: 318
+					} else if (var26 == 1) { // L: 321
+						var23 = var25; // L: 322
+					} else if (var26 == 2) { // L: 325
+						var23 = 7 - var24 - (var27 - 1); // L: 326
+					} else {
+						var23 = 7 - var25 - (var28 - 1); // L: 329
+					}
+
+					var29 = var23 + var2; // L: 331
+					int var30 = var3 + class239.method5121(var16 & 7, var15 & 7, var7, var21.sizeX, var21.sizeY, var20); // L: 332
+					if (var29 > 0 && var30 > 0 && var29 < 103 && var30 < 103) { // L: 333
+						int var31 = var1; // L: 334
+						if ((Tiles_renderFlags[1][var29][var30] & 2) == 2) { // L: 335
+							var31 = var1 - 1;
 						}
-						CollisionMap var25 = null;
-						if (var24 >= 0) {
-							var25 = var9[var24];
+
+						CollisionMap var32 = null; // L: 336
+						if (var31 >= 0) { // L: 337
+							var32 = var9[var31];
 						}
-						class309.addObjects(var1, var22, var23, var11, var20 + var7 & 3, var19, var8, var25);
+
+						WorldMapAreaData.addObjects(var1, var29, var30, var11, var20 + var7 & 3, var19, var8, var32); // L: 338
 					}
 				}
-			} 
-		} 
-	}
-
-	@ObfuscatedName("bf")
-	@ObfuscatedSignature(descriptor = "(IB)Ljava/lang/Object;", garbageValue = "68")
-	static Object method2116(int var0) {
-		return class387.method6998(((class433) (class271.findEnumerated(class433.method7604(), var0))));
-	}
-
-	@ObfuscatedName("gw")
-	@ObfuscatedSignature(descriptor = "(Lcs;B)V", garbageValue = "35")
-	static final void method2114(Actor var0) {
-		int var1 = Math.max(1, var0.field1194 - Client.cycle);
-		int var2 = var0.field1177 * 128 + var0.field1202 * 64;
-		int var3 = var0.field1182 * 128 + var0.field1202 * 64;
-		var0.x += (var2 - var0.x) / var1;
-		var0.y += (var3 - var0.y) / var1;
-		var0.field1142 = 0;
-		var0.orientation = var0.field1186;
+			}
+		}
 	}
 }

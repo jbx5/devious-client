@@ -1,138 +1,99 @@
-import java.net.URL;
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.Export;
-@ObfuscatedName("le")
+
+@ObfuscatedName("ll")
 @Implements("ArchiveDiskActionHandler")
 public class ArchiveDiskActionHandler implements Runnable {
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "Llt;")
-	@Export("ArchiveDiskActionHandler_requestQueue")
-	static NodeDeque ArchiveDiskActionHandler_requestQueue = new NodeDeque();
-
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "Llt;")
-	@Export("ArchiveDiskActionHandler_responseQueue")
-	static NodeDeque ArchiveDiskActionHandler_responseQueue = new NodeDeque();
-
-	@ObfuscatedName("f")
-	@ObfuscatedGetter(intValue = 1401449583)
-	static int field3991 = 0;
-
-	@ObfuscatedName("u")
-	@Export("ArchiveDiskActionHandler_lock")
-	static Object ArchiveDiskActionHandler_lock = new Object();
-
+	@ObfuscatedName("tp")
+	@ObfuscatedGetter(
+		intValue = -609387083
+	)
+	static int field4010;
 	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "Llc;"
+	)
+	@Export("ArchiveDiskActionHandler_requestQueue")
+	static NodeDeque ArchiveDiskActionHandler_requestQueue;
+	@ObfuscatedName("p")
+	@ObfuscatedSignature(
+		descriptor = "Llc;"
+	)
+	@Export("ArchiveDiskActionHandler_responseQueue")
+	static NodeDeque ArchiveDiskActionHandler_responseQueue;
+	@ObfuscatedName("f")
+	@ObfuscatedGetter(
+		intValue = 2097458275
+	)
+	static int field4018;
+	@ObfuscatedName("n")
+	@Export("ArchiveDiskActionHandler_lock")
+	static Object ArchiveDiskActionHandler_lock;
+	@ObfuscatedName("k")
 	@Export("ArchiveDiskActionHandler_thread")
 	static Thread ArchiveDiskActionHandler_thread;
+	@ObfuscatedName("b")
+	@Export("ByteArrayPool_alternativeSizes")
+	static int[] ByteArrayPool_alternativeSizes;
+
+	static {
+		ArchiveDiskActionHandler_requestQueue = new NodeDeque(); // L: 9
+		ArchiveDiskActionHandler_responseQueue = new NodeDeque(); // L: 10
+		field4018 = 0; // L: 11
+		ArchiveDiskActionHandler_lock = new Object();
+	} // L: 12
 
 	ArchiveDiskActionHandler() {
-	}
+	} // L: 15
 
 	public void run() {
 		try {
 			while (true) {
 				ArchiveDiskAction var1;
-				synchronized(ArchiveDiskActionHandler_requestQueue) {
-					var1 = ((ArchiveDiskAction) (ArchiveDiskActionHandler_requestQueue.last()));
-				}
-				if (var1 != null) {
-					if (var1.type == 0) {
-						var1.archiveDisk.write(((int) (var1.key)), var1.data, var1.data.length);
-						synchronized(ArchiveDiskActionHandler_requestQueue) {
-							var1.remove();
-						}
-					} else if (var1.type == 1) {
-						var1.data = var1.archiveDisk.read(((int) (var1.key)));
-						synchronized(ArchiveDiskActionHandler_requestQueue) {
-							ArchiveDiskActionHandler_responseQueue.addFirst(var1);
-						}
+				synchronized(ArchiveDiskActionHandler_requestQueue) { // L: 94
+					var1 = (ArchiveDiskAction)ArchiveDiskActionHandler_requestQueue.last(); // L: 95
+				} // L: 96
+
+				if (var1 != null) { // L: 97
+					if (var1.type == 0) { // L: 98
+						var1.archiveDisk.write((int)var1.key, var1.data, var1.data.length); // L: 99
+						synchronized(ArchiveDiskActionHandler_requestQueue) { // L: 100
+							var1.remove(); // L: 101
+						} // L: 102
+					} else if (var1.type == 1) { // L: 104
+						var1.data = var1.archiveDisk.read((int)var1.key); // L: 105
+						synchronized(ArchiveDiskActionHandler_requestQueue) { // L: 106
+							ArchiveDiskActionHandler_responseQueue.addFirst(var1); // L: 107
+						} // L: 108
 					}
-					synchronized(ArchiveDiskActionHandler_lock) {
-						if (field3991 <= 1) {
-							field3991 = 0;
-							ArchiveDiskActionHandler_lock.notifyAll();
-							return;
+
+					synchronized(ArchiveDiskActionHandler_lock) { // L: 110
+						if (field4018 <= 1) { // L: 111
+							field4018 = 0; // L: 112
+							ArchiveDiskActionHandler_lock.notifyAll(); // L: 113
+							return; // L: 114
 						}
-						field3991 = 600;
+
+						field4018 = 600; // L: 116
 					}
 				} else {
-					WorldMapDecoration.method4967(100L);
-					synchronized(ArchiveDiskActionHandler_lock) {
-						if (field3991 <= 1) {
-							field3991 = 0;
-							ArchiveDiskActionHandler_lock.notifyAll();
-							return;
+					class28.method412(100L); // L: 120
+					synchronized(ArchiveDiskActionHandler_lock) { // L: 121
+						if (field4018 <= 1) { // L: 122
+							field4018 = 0; // L: 123
+							ArchiveDiskActionHandler_lock.notifyAll(); // L: 124
+							return; // L: 125
 						}
-						--field3991;
+
+						--field4018; // L: 127
 					}
 				}
-			} 
-		} catch (Exception var13) {
-			class359.RunException_sendStackTrace(((String) (null)), var13);
-		}
-	}
-
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "(I)Z", garbageValue = "37815092")
-	@Export("loadWorlds")
-	static boolean loadWorlds() {
-		try {
-			if (class144.World_request == null) {
-				class144.World_request = class152.urlRequester.request(new URL(GrandExchangeOfferOwnWorldComparator.field479));
-			} else if (class144.World_request.isDone()) {
-				byte[] var0 = class144.World_request.getResponse();
-				Buffer var1 = new Buffer(var0);
-				var1.readInt();
-				World.World_count = var1.readUnsignedShort();
-				class93.World_worlds = new World[World.World_count];
-				World var3;
-				for (int var2 = 0; var2 < World.World_count; var3.index = var2++) {
-					var3 = class93.World_worlds[var2] = new World();
-					var3.id = var1.readUnsignedShort();
-					var3.properties = var1.readInt();
-					var3.host = var1.readStringCp1252NullTerminated();
-					var3.activity = var1.readStringCp1252NullTerminated();
-					var3.location = var1.readUnsignedByte();
-					var3.population = var1.readShort();
-				}
-				BoundaryObject.sortWorlds(class93.World_worlds, 0, class93.World_worlds.length - 1, World.World_sortOption1, World.World_sortOption2);
-				class144.World_request = null;
-				return true;
 			}
-		} catch (Exception var4) {
-			var4.printStackTrace();
-			class144.World_request = null;
+		} catch (Exception var13) { // L: 132
+			Clock.RunException_sendStackTrace((String)null, var13); // L: 133
 		}
-		return false;
-	}
-
-	@ObfuscatedName("z")
-	@ObfuscatedSignature(descriptor = "(Ljava/lang/CharSequence;S)I", garbageValue = "-5302")
-	@Export("hashString")
-	public static int hashString(CharSequence var0) {
-		int var1 = var0.length();
-		int var2 = 0;
-		for (int var3 = 0; var3 < var1; ++var3) {
-			var2 = (var2 << 5) - var2 + Calendar.charToByteCp1252(var0.charAt(var3));
-		}
-		return var2;
-	}
-
-	@ObfuscatedName("fl")
-	@ObfuscatedSignature(descriptor = "(III)V", garbageValue = "-632726805")
-	static void method5800(int var0, int var1) {
-		int[] var2 = new int[9];
-		for (int var3 = 0; var3 < var2.length; ++var3) {
-			int var4 = var3 * 32 + 15 + 128;
-			int var5 = class152.method3152(var4);
-			int var6 = Rasterizer3D.Rasterizer3D_sine[var4];
-			var5 = HitSplatDefinition.method3637(var5, var1);
-			var2[var3] = var6 * var5 >> 16;
-		}
-		Scene.Scene_buildVisiblityMap(var2, 500, 800, var0 * 334 / var1, 334);
-	}
+	} // L: 135
 }

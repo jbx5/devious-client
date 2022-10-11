@@ -1,12 +1,13 @@
 package com.openosrs.client;
 
 import com.google.common.base.Strings;
+import lombok.AccessLevel;
+import lombok.Getter;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.UUID;
-import lombok.AccessLevel;
-import lombok.Getter;
 
 public class OpenOSRS
 {

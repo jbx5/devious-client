@@ -1,459 +1,499 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.Export;
-@ObfuscatedName("gr")
+
+@ObfuscatedName("gj")
 @Implements("CollisionMap")
 public class CollisionMap {
-	@ObfuscatedName("al")
-	@ObfuscatedGetter(intValue = -1806701647)
+	@ObfuscatedName("aa")
+	@ObfuscatedGetter(
+		intValue = -1851515471
+	)
 	@Export("xInset")
-	public int xInset = 0;
-
-	@ObfuscatedName("ah")
-	@ObfuscatedGetter(intValue = -926980497)
+	int xInset;
+	@ObfuscatedName("ak")
+	@ObfuscatedGetter(
+		intValue = 476793255
+	)
 	@Export("yInset")
-	public int yInset = 0;
-
-	@ObfuscatedName("ai")
-	@ObfuscatedGetter(intValue = 977048957)
+	int yInset;
+	@ObfuscatedName("am")
+	@ObfuscatedGetter(
+		intValue = 87280367
+	)
 	@Export("xSize")
 	int xSize;
-
-	@ObfuscatedName("ac")
-	@ObfuscatedGetter(intValue = -1210019885)
+	@ObfuscatedName("ap")
+	@ObfuscatedGetter(
+		intValue = -2072392093
+	)
 	@Export("ySize")
 	int ySize;
-
-	@ObfuscatedName("ap")
+	@ObfuscatedName("ab")
 	@Export("flags")
 	public int[][] flags;
 
 	public CollisionMap(int var1, int var2) {
-		this.xSize = var1;
-		this.ySize = var2;
-		this.flags = new int[this.xSize][this.ySize];
-		this.clear();
-	}
+		this.xInset = 0; // L: 44
+		this.yInset = 0; // L: 45
+		this.xSize = var1; // L: 46
+		this.ySize = var2; // L: 47
+		this.flags = new int[this.xSize][this.ySize]; // L: 48
+		this.clear(); // L: 49
+	} // L: 50
 
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "1920508689")
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-747644701"
+	)
 	@Export("clear")
 	public void clear() {
-		for (int var1 = 0; var1 < this.xSize; ++var1) {
-			for (int var2 = 0; var2 < this.ySize; ++var2) {
-				if (var1 != 0 && var2 != 0 && var1 < this.xSize - 5 && var2 < this.ySize - 5) {
-					this.flags[var1][var2] = 16777216;
+		for (int var1 = 0; var1 < this.xSize; ++var1) { // L: 53
+			for (int var2 = 0; var2 < this.ySize; ++var2) { // L: 54
+				if (var1 != 0 && var2 != 0 && var1 < this.xSize - 5 && var2 < this.ySize - 5) { // L: 55
+					this.flags[var1][var2] = 16777216; // L: 56
 				} else {
 					this.flags[var1][var2] = 16777215;
 				}
 			}
 		}
-	}
 
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "(IIIIZI)V", garbageValue = "-240966099")
-	public void method3878(int var1, int var2, int var3, int var4, boolean var5) {
-		var1 -= this.xInset;
-		var2 -= this.yInset;
-		if (var3 == 0) {
-			if (var4 == 0) {
-				this.setFlag(var1, var2, 128);
-				this.setFlag(var1 - 1, var2, 8);
+	} // L: 59
+
+	@ObfuscatedName("p")
+	@ObfuscatedSignature(
+		descriptor = "(IIIIZI)V",
+		garbageValue = "1296750673"
+	)
+	public void method3988(int var1, int var2, int var3, int var4, boolean var5) {
+		var1 -= this.xInset; // L: 62
+		var2 -= this.yInset; // L: 63
+		if (var3 == 0) { // L: 64
+			if (var4 == 0) { // L: 65
+				this.setFlag(var1, var2, 128); // L: 66
+				this.setFlag(var1 - 1, var2, 8); // L: 67
 			}
-			if (var4 == 1) {
-				this.setFlag(var1, var2, 2);
-				this.setFlag(var1, var2 + 1, 32);
+
+			if (var4 == 1) { // L: 69
+				this.setFlag(var1, var2, 2); // L: 70
+				this.setFlag(var1, var2 + 1, 32); // L: 71
 			}
-			if (var4 == 2) {
-				this.setFlag(var1, var2, 8);
-				this.setFlag(var1 + 1, var2, 128);
+
+			if (var4 == 2) { // L: 73
+				this.setFlag(var1, var2, 8); // L: 74
+				this.setFlag(var1 + 1, var2, 128); // L: 75
 			}
-			if (var4 == 3) {
-				this.setFlag(var1, var2, 32);
-				this.setFlag(var1, var2 - 1, 2);
-			}
-		}
-		if (var3 == 1 || var3 == 3) {
-			if (var4 == 0) {
-				this.setFlag(var1, var2, 1);
-				this.setFlag(var1 - 1, var2 + 1, 16);
-			}
-			if (var4 == 1) {
-				this.setFlag(var1, var2, 4);
-				this.setFlag(var1 + 1, var2 + 1, 64);
-			}
-			if (var4 == 2) {
-				this.setFlag(var1, var2, 16);
-				this.setFlag(var1 + 1, var2 - 1, 1);
-			}
-			if (var4 == 3) {
-				this.setFlag(var1, var2, 64);
-				this.setFlag(var1 - 1, var2 - 1, 4);
+
+			if (var4 == 3) { // L: 77
+				this.setFlag(var1, var2, 32); // L: 78
+				this.setFlag(var1, var2 - 1, 2); // L: 79
 			}
 		}
-		if (var3 == 2) {
-			if (var4 == 0) {
-				this.setFlag(var1, var2, 130);
-				this.setFlag(var1 - 1, var2, 8);
-				this.setFlag(var1, var2 + 1, 32);
+
+		if (var3 == 1 || var3 == 3) { // L: 82
+			if (var4 == 0) { // L: 83
+				this.setFlag(var1, var2, 1); // L: 84
+				this.setFlag(var1 - 1, var2 + 1, 16); // L: 85
 			}
-			if (var4 == 1) {
-				this.setFlag(var1, var2, 10);
-				this.setFlag(var1, var2 + 1, 32);
-				this.setFlag(var1 + 1, var2, 128);
+
+			if (var4 == 1) { // L: 87
+				this.setFlag(var1, var2, 4); // L: 88
+				this.setFlag(var1 + 1, var2 + 1, 64); // L: 89
 			}
-			if (var4 == 2) {
-				this.setFlag(var1, var2, 40);
-				this.setFlag(var1 + 1, var2, 128);
-				this.setFlag(var1, var2 - 1, 2);
+
+			if (var4 == 2) { // L: 91
+				this.setFlag(var1, var2, 16); // L: 92
+				this.setFlag(var1 + 1, var2 - 1, 1); // L: 93
 			}
-			if (var4 == 3) {
-				this.setFlag(var1, var2, 160);
-				this.setFlag(var1, var2 - 1, 2);
-				this.setFlag(var1 - 1, var2, 8);
-			}
-		}
-		if (var5) {
-			if (var3 == 0) {
-				if (var4 == 0) {
-					this.setFlag(var1, var2, 65536);
-					this.setFlag(var1 - 1, var2, 4096);
-				}
-				if (var4 == 1) {
-					this.setFlag(var1, var2, 1024);
-					this.setFlag(var1, var2 + 1, 16384);
-				}
-				if (var4 == 2) {
-					this.setFlag(var1, var2, 4096);
-					this.setFlag(var1 + 1, var2, 65536);
-				}
-				if (var4 == 3) {
-					this.setFlag(var1, var2, 16384);
-					this.setFlag(var1, var2 - 1, 1024);
-				}
-			}
-			if (var3 == 1 || var3 == 3) {
-				if (var4 == 0) {
-					this.setFlag(var1, var2, 512);
-					this.setFlag(var1 - 1, var2 + 1, 8192);
-				}
-				if (var4 == 1) {
-					this.setFlag(var1, var2, 2048);
-					this.setFlag(var1 + 1, var2 + 1, 32768);
-				}
-				if (var4 == 2) {
-					this.setFlag(var1, var2, 8192);
-					this.setFlag(var1 + 1, var2 - 1, 512);
-				}
-				if (var4 == 3) {
-					this.setFlag(var1, var2, 32768);
-					this.setFlag(var1 - 1, var2 - 1, 2048);
-				}
-			}
-			if (var3 == 2) {
-				if (var4 == 0) {
-					this.setFlag(var1, var2, 66560);
-					this.setFlag(var1 - 1, var2, 4096);
-					this.setFlag(var1, var2 + 1, 16384);
-				}
-				if (var4 == 1) {
-					this.setFlag(var1, var2, 5120);
-					this.setFlag(var1, var2 + 1, 16384);
-					this.setFlag(var1 + 1, var2, 65536);
-				}
-				if (var4 == 2) {
-					this.setFlag(var1, var2, 20480);
-					this.setFlag(var1 + 1, var2, 65536);
-					this.setFlag(var1, var2 - 1, 1024);
-				}
-				if (var4 == 3) {
-					this.setFlag(var1, var2, 81920);
-					this.setFlag(var1, var2 - 1, 1024);
-					this.setFlag(var1 - 1, var2, 4096);
-				}
+
+			if (var4 == 3) { // L: 95
+				this.setFlag(var1, var2, 64); // L: 96
+				this.setFlag(var1 - 1, var2 - 1, 4); // L: 97
 			}
 		}
-	}
+
+		if (var3 == 2) { // L: 100
+			if (var4 == 0) { // L: 101
+				this.setFlag(var1, var2, 130); // L: 102
+				this.setFlag(var1 - 1, var2, 8); // L: 103
+				this.setFlag(var1, var2 + 1, 32); // L: 104
+			}
+
+			if (var4 == 1) { // L: 106
+				this.setFlag(var1, var2, 10); // L: 107
+				this.setFlag(var1, var2 + 1, 32); // L: 108
+				this.setFlag(var1 + 1, var2, 128); // L: 109
+			}
+
+			if (var4 == 2) { // L: 111
+				this.setFlag(var1, var2, 40); // L: 112
+				this.setFlag(var1 + 1, var2, 128); // L: 113
+				this.setFlag(var1, var2 - 1, 2); // L: 114
+			}
+
+			if (var4 == 3) { // L: 116
+				this.setFlag(var1, var2, 160); // L: 117
+				this.setFlag(var1, var2 - 1, 2); // L: 118
+				this.setFlag(var1 - 1, var2, 8); // L: 119
+			}
+		}
+
+		if (var5) { // L: 122
+			if (var3 == 0) { // L: 123
+				if (var4 == 0) { // L: 124
+					this.setFlag(var1, var2, 65536); // L: 125
+					this.setFlag(var1 - 1, var2, 4096); // L: 126
+				}
+
+				if (var4 == 1) { // L: 128
+					this.setFlag(var1, var2, 1024); // L: 129
+					this.setFlag(var1, var2 + 1, 16384); // L: 130
+				}
+
+				if (var4 == 2) { // L: 132
+					this.setFlag(var1, var2, 4096); // L: 133
+					this.setFlag(var1 + 1, var2, 65536); // L: 134
+				}
+
+				if (var4 == 3) { // L: 136
+					this.setFlag(var1, var2, 16384); // L: 137
+					this.setFlag(var1, var2 - 1, 1024); // L: 138
+				}
+			}
+
+			if (var3 == 1 || var3 == 3) { // L: 141
+				if (var4 == 0) { // L: 142
+					this.setFlag(var1, var2, 512); // L: 143
+					this.setFlag(var1 - 1, var2 + 1, 8192); // L: 144
+				}
+
+				if (var4 == 1) { // L: 146
+					this.setFlag(var1, var2, 2048); // L: 147
+					this.setFlag(var1 + 1, var2 + 1, 32768); // L: 148
+				}
+
+				if (var4 == 2) { // L: 150
+					this.setFlag(var1, var2, 8192); // L: 151
+					this.setFlag(var1 + 1, var2 - 1, 512); // L: 152
+				}
+
+				if (var4 == 3) { // L: 154
+					this.setFlag(var1, var2, 32768); // L: 155
+					this.setFlag(var1 - 1, var2 - 1, 2048); // L: 156
+				}
+			}
+
+			if (var3 == 2) { // L: 159
+				if (var4 == 0) { // L: 160
+					this.setFlag(var1, var2, 66560); // L: 161
+					this.setFlag(var1 - 1, var2, 4096); // L: 162
+					this.setFlag(var1, var2 + 1, 16384); // L: 163
+				}
+
+				if (var4 == 1) { // L: 165
+					this.setFlag(var1, var2, 5120); // L: 166
+					this.setFlag(var1, var2 + 1, 16384); // L: 167
+					this.setFlag(var1 + 1, var2, 65536); // L: 168
+				}
+
+				if (var4 == 2) { // L: 170
+					this.setFlag(var1, var2, 20480); // L: 171
+					this.setFlag(var1 + 1, var2, 65536); // L: 172
+					this.setFlag(var1, var2 - 1, 1024); // L: 173
+				}
+
+				if (var4 == 3) { // L: 175
+					this.setFlag(var1, var2, 81920); // L: 176
+					this.setFlag(var1, var2 - 1, 1024); // L: 177
+					this.setFlag(var1 - 1, var2, 4096); // L: 178
+				}
+			}
+		}
+
+	} // L: 182
 
 	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "(IIIIZI)V", garbageValue = "898668798")
+	@ObfuscatedSignature(
+		descriptor = "(IIIIZI)V",
+		garbageValue = "-1652706905"
+	)
 	@Export("addGameObject")
 	public void addGameObject(int var1, int var2, int var3, int var4, boolean var5) {
-		int var6 = 256;
-		if (var5) {
+		int var6 = 256; // L: 185
+		if (var5) { // L: 186
 			var6 += 131072;
 		}
-		var1 -= this.xInset;
-		var2 -= this.yInset;
-		for (int var7 = var1; var7 < var3 + var1; ++var7) {
-			if (var7 >= 0 && var7 < this.xSize) {
-				for (int var8 = var2; var8 < var2 + var4; ++var8) {
-					if (var8 >= 0 && var8 < this.ySize) {
+
+		var1 -= this.xInset; // L: 187
+		var2 -= this.yInset; // L: 188
+
+		for (int var7 = var1; var7 < var3 + var1; ++var7) { // L: 189
+			if (var7 >= 0 && var7 < this.xSize) { // L: 190
+				for (int var8 = var2; var8 < var2 + var4; ++var8) { // L: 191
+					if (var8 >= 0 && var8 < this.ySize) { // L: 192
 						this.setFlag(var7, var8, var6);
 					}
 				}
 			}
 		}
-	}
 
-	@ObfuscatedName("u")
-	@ObfuscatedSignature(descriptor = "(IIB)V", garbageValue = "66")
+	} // L: 196
+
+	@ObfuscatedName("n")
+	@ObfuscatedSignature(
+		descriptor = "(III)V",
+		garbageValue = "-1272722092"
+	)
 	@Export("setBlockedByFloor")
 	public void setBlockedByFloor(int var1, int var2) {
-		var1 -= this.xInset;
-		var2 -= this.yInset;
-		int[] var10000 = this.flags[var1];
+		var1 -= this.xInset; // L: 199
+		var2 -= this.yInset; // L: 200
+		int[] var10000 = this.flags[var1]; // L: 201
 		var10000[var2] |= 2097152;
-	}
+	} // L: 202
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(IIB)V", garbageValue = "-111")
+	@ObfuscatedName("k")
+	@ObfuscatedSignature(
+		descriptor = "(III)V",
+		garbageValue = "1555623636"
+	)
 	@Export("setBlockedByFloorDec")
 	public void setBlockedByFloorDec(int var1, int var2) {
-		var1 -= this.xInset;
-		var2 -= this.yInset;
-		int[] var10000 = this.flags[var1];
+		var1 -= this.xInset; // L: 205
+		var2 -= this.yInset; // L: 206
+		int[] var10000 = this.flags[var1]; // L: 207
 		var10000[var2] |= 262144;
-	}
+	} // L: 208
 
 	@ObfuscatedName("w")
-	@ObfuscatedSignature(descriptor = "(IIII)V", garbageValue = "-1094416932")
+	@ObfuscatedSignature(
+		descriptor = "(IIII)V",
+		garbageValue = "-2043130546"
+	)
 	@Export("setFlag")
 	void setFlag(int var1, int var2, int var3) {
-		int[] var10000 = this.flags[var1];
+		int[] var10000 = this.flags[var1]; // L: 211
 		var10000[var2] |= var3;
-	}
+	} // L: 212
 
-	@ObfuscatedName("z")
-	@ObfuscatedSignature(descriptor = "(IIIIZB)V", garbageValue = "116")
-	public void method3857(int var1, int var2, int var3, int var4, boolean var5) {
-		var1 -= this.xInset;
-		var2 -= this.yInset;
-		if (var3 == 0) {
-			if (var4 == 0) {
-				this.setFlagOff(var1, var2, 128);
-				this.setFlagOff(var1 - 1, var2, 8);
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(
+		descriptor = "(IIIIZB)V",
+		garbageValue = "59"
+	)
+	public void method3995(int var1, int var2, int var3, int var4, boolean var5) {
+		var1 -= this.xInset; // L: 215
+		var2 -= this.yInset; // L: 216
+		if (var3 == 0) { // L: 217
+			if (var4 == 0) { // L: 218
+				this.setFlagOff(var1, var2, 128); // L: 219
+				this.setFlagOff(var1 - 1, var2, 8); // L: 220
 			}
-			if (var4 == 1) {
-				this.setFlagOff(var1, var2, 2);
-				this.setFlagOff(var1, var2 + 1, 32);
-			}
-			if (var4 == 2) {
-				this.setFlagOff(var1, var2, 8);
-				this.setFlagOff(var1 + 1, var2, 128);
-			}
-			if (var4 == 3) {
-				this.setFlagOff(var1, var2, 32);
-				this.setFlagOff(var1, var2 - 1, 2);
-			}
-		}
-		if (var3 == 1 || var3 == 3) {
-			if (var4 == 0) {
-				this.setFlagOff(var1, var2, 1);
-				this.setFlagOff(var1 - 1, var2 + 1, 16);
-			}
-			if (var4 == 1) {
-				this.setFlagOff(var1, var2, 4);
-				this.setFlagOff(var1 + 1, var2 + 1, 64);
-			}
-			if (var4 == 2) {
-				this.setFlagOff(var1, var2, 16);
-				this.setFlagOff(var1 + 1, var2 - 1, 1);
-			}
-			if (var4 == 3) {
-				this.setFlagOff(var1, var2, 64);
-				this.setFlagOff(var1 - 1, var2 - 1, 4);
-			}
-		}
-		if (var3 == 2) {
-			if (var4 == 0) {
-				this.setFlagOff(var1, var2, 130);
-				this.setFlagOff(var1 - 1, var2, 8);
-				this.setFlagOff(var1, var2 + 1, 32);
-			}
-			if (var4 == 1) {
-				this.setFlagOff(var1, var2, 10);
-				this.setFlagOff(var1, var2 + 1, 32);
-				this.setFlagOff(var1 + 1, var2, 128);
-			}
-			if (var4 == 2) {
-				this.setFlagOff(var1, var2, 40);
-				this.setFlagOff(var1 + 1, var2, 128);
-				this.setFlagOff(var1, var2 - 1, 2);
-			}
-			if (var4 == 3) {
-				this.setFlagOff(var1, var2, 160);
-				this.setFlagOff(var1, var2 - 1, 2);
-				this.setFlagOff(var1 - 1, var2, 8);
-			}
-		}
-		if (var5) {
-			if (var3 == 0) {
-				if (var4 == 0) {
-					this.setFlagOff(var1, var2, 65536);
-					this.setFlagOff(var1 - 1, var2, 4096);
-				}
-				if (var4 == 1) {
-					this.setFlagOff(var1, var2, 1024);
-					this.setFlagOff(var1, var2 + 1, 16384);
-				}
-				if (var4 == 2) {
-					this.setFlagOff(var1, var2, 4096);
-					this.setFlagOff(var1 + 1, var2, 65536);
-				}
-				if (var4 == 3) {
-					this.setFlagOff(var1, var2, 16384);
-					this.setFlagOff(var1, var2 - 1, 1024);
-				}
-			}
-			if (var3 == 1 || var3 == 3) {
-				if (var4 == 0) {
-					this.setFlagOff(var1, var2, 512);
-					this.setFlagOff(var1 - 1, var2 + 1, 8192);
-				}
-				if (var4 == 1) {
-					this.setFlagOff(var1, var2, 2048);
-					this.setFlagOff(var1 + 1, var2 + 1, 32768);
-				}
-				if (var4 == 2) {
-					this.setFlagOff(var1, var2, 8192);
-					this.setFlagOff(var1 + 1, var2 - 1, 512);
-				}
-				if (var4 == 3) {
-					this.setFlagOff(var1, var2, 32768);
-					this.setFlagOff(var1 - 1, var2 - 1, 2048);
-				}
-			}
-			if (var3 == 2) {
-				if (var4 == 0) {
-					this.setFlagOff(var1, var2, 66560);
-					this.setFlagOff(var1 - 1, var2, 4096);
-					this.setFlagOff(var1, var2 + 1, 16384);
-				}
-				if (var4 == 1) {
-					this.setFlagOff(var1, var2, 5120);
-					this.setFlagOff(var1, var2 + 1, 16384);
-					this.setFlagOff(var1 + 1, var2, 65536);
-				}
-				if (var4 == 2) {
-					this.setFlagOff(var1, var2, 20480);
-					this.setFlagOff(var1 + 1, var2, 65536);
-					this.setFlagOff(var1, var2 - 1, 1024);
-				}
-				if (var4 == 3) {
-					this.setFlagOff(var1, var2, 81920);
-					this.setFlagOff(var1, var2 - 1, 1024);
-					this.setFlagOff(var1 - 1, var2, 4096);
-				}
-			}
-		}
-	}
 
-	@ObfuscatedName("j")
-	@ObfuscatedSignature(descriptor = "(IIIIIZI)V", garbageValue = "971076104")
-	@Export("setFlagOffNonSquare")
-	public void setFlagOffNonSquare(int var1, int var2, int var3, int var4, int var5, boolean var6) {
-		int var7 = 256;
-		if (var6) {
-			var7 += 131072;
+			if (var4 == 1) { // L: 222
+				this.setFlagOff(var1, var2, 2); // L: 223
+				this.setFlagOff(var1, var2 + 1, 32); // L: 224
+			}
+
+			if (var4 == 2) { // L: 226
+				this.setFlagOff(var1, var2, 8); // L: 227
+				this.setFlagOff(var1 + 1, var2, 128); // L: 228
+			}
+
+			if (var4 == 3) { // L: 230
+				this.setFlagOff(var1, var2, 32); // L: 231
+				this.setFlagOff(var1, var2 - 1, 2); // L: 232
+			}
 		}
-		var1 -= this.xInset;
-		var2 -= this.yInset;
-		int var8;
-		if (var5 == 1 || var5 == 3) {
-			var8 = var3;
-			var3 = var4;
-			var4 = var8;
+
+		if (var3 == 1 || var3 == 3) { // L: 235
+			if (var4 == 0) { // L: 236
+				this.setFlagOff(var1, var2, 1); // L: 237
+				this.setFlagOff(var1 - 1, var2 + 1, 16); // L: 238
+			}
+
+			if (var4 == 1) { // L: 240
+				this.setFlagOff(var1, var2, 4); // L: 241
+				this.setFlagOff(var1 + 1, var2 + 1, 64); // L: 242
+			}
+
+			if (var4 == 2) { // L: 244
+				this.setFlagOff(var1, var2, 16); // L: 245
+				this.setFlagOff(var1 + 1, var2 - 1, 1); // L: 246
+			}
+
+			if (var4 == 3) { // L: 248
+				this.setFlagOff(var1, var2, 64); // L: 249
+				this.setFlagOff(var1 - 1, var2 - 1, 4); // L: 250
+			}
 		}
-		for (var8 = var1; var8 < var3 + var1; ++var8) {
-			if (var8 >= 0 && var8 < this.xSize) {
-				for (int var9 = var2; var9 < var2 + var4; ++var9) {
-					if (var9 >= 0 && var9 < this.ySize) {
-						this.setFlagOff(var8, var9, var7);
-					}
+
+		if (var3 == 2) { // L: 253
+			if (var4 == 0) { // L: 254
+				this.setFlagOff(var1, var2, 130); // L: 255
+				this.setFlagOff(var1 - 1, var2, 8); // L: 256
+				this.setFlagOff(var1, var2 + 1, 32); // L: 257
+			}
+
+			if (var4 == 1) { // L: 259
+				this.setFlagOff(var1, var2, 10); // L: 260
+				this.setFlagOff(var1, var2 + 1, 32); // L: 261
+				this.setFlagOff(var1 + 1, var2, 128); // L: 262
+			}
+
+			if (var4 == 2) { // L: 264
+				this.setFlagOff(var1, var2, 40); // L: 265
+				this.setFlagOff(var1 + 1, var2, 128); // L: 266
+				this.setFlagOff(var1, var2 - 1, 2); // L: 267
+			}
+
+			if (var4 == 3) { // L: 269
+				this.setFlagOff(var1, var2, 160); // L: 270
+				this.setFlagOff(var1, var2 - 1, 2); // L: 271
+				this.setFlagOff(var1 - 1, var2, 8); // L: 272
+			}
+		}
+
+		if (var5) { // L: 275
+			if (var3 == 0) { // L: 276
+				if (var4 == 0) { // L: 277
+					this.setFlagOff(var1, var2, 65536); // L: 278
+					this.setFlagOff(var1 - 1, var2, 4096); // L: 279
+				}
+
+				if (var4 == 1) { // L: 281
+					this.setFlagOff(var1, var2, 1024); // L: 282
+					this.setFlagOff(var1, var2 + 1, 16384); // L: 283
+				}
+
+				if (var4 == 2) { // L: 285
+					this.setFlagOff(var1, var2, 4096); // L: 286
+					this.setFlagOff(var1 + 1, var2, 65536); // L: 287
+				}
+
+				if (var4 == 3) { // L: 289
+					this.setFlagOff(var1, var2, 16384); // L: 290
+					this.setFlagOff(var1, var2 - 1, 1024); // L: 291
+				}
+			}
+
+			if (var3 == 1 || var3 == 3) { // L: 294
+				if (var4 == 0) { // L: 295
+					this.setFlagOff(var1, var2, 512); // L: 296
+					this.setFlagOff(var1 - 1, var2 + 1, 8192); // L: 297
+				}
+
+				if (var4 == 1) { // L: 299
+					this.setFlagOff(var1, var2, 2048); // L: 300
+					this.setFlagOff(var1 + 1, var2 + 1, 32768); // L: 301
+				}
+
+				if (var4 == 2) { // L: 303
+					this.setFlagOff(var1, var2, 8192); // L: 304
+					this.setFlagOff(var1 + 1, var2 - 1, 512); // L: 305
+				}
+
+				if (var4 == 3) { // L: 307
+					this.setFlagOff(var1, var2, 32768); // L: 308
+					this.setFlagOff(var1 - 1, var2 - 1, 2048); // L: 309
+				}
+			}
+
+			if (var3 == 2) { // L: 312
+				if (var4 == 0) { // L: 313
+					this.setFlagOff(var1, var2, 66560); // L: 314
+					this.setFlagOff(var1 - 1, var2, 4096); // L: 315
+					this.setFlagOff(var1, var2 + 1, 16384); // L: 316
+				}
+
+				if (var4 == 1) { // L: 318
+					this.setFlagOff(var1, var2, 5120); // L: 319
+					this.setFlagOff(var1, var2 + 1, 16384); // L: 320
+					this.setFlagOff(var1 + 1, var2, 65536); // L: 321
+				}
+
+				if (var4 == 2) { // L: 323
+					this.setFlagOff(var1, var2, 20480); // L: 324
+					this.setFlagOff(var1 + 1, var2, 65536); // L: 325
+					this.setFlagOff(var1, var2 - 1, 1024); // L: 326
+				}
+
+				if (var4 == 3) { // L: 328
+					this.setFlagOff(var1, var2, 81920); // L: 329
+					this.setFlagOff(var1, var2 - 1, 1024); // L: 330
+					this.setFlagOff(var1 - 1, var2, 4096); // L: 331
 				}
 			}
 		}
-	}
 
-	@ObfuscatedName("h")
-	@ObfuscatedSignature(descriptor = "(IIII)V", garbageValue = "221121668")
-	@Export("setFlagOff")
-	void setFlagOff(int var1, int var2, int var3) {
-		int[] var10000 = this.flags[var1];
-		var10000[var2] &= ~var3;
-	}
-
-	@ObfuscatedName("a")
-	@ObfuscatedSignature(descriptor = "(IIB)V", garbageValue = "84")
-	public void method3889(int var1, int var2) {
-		var1 -= this.xInset;
-		var2 -= this.yInset;
-		int[] var10000 = this.flags[var1];
-		var10000[var2] &= -262145;
-	}
+	} // L: 335
 
 	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "(Lqw;B)Ljava/lang/String;", garbageValue = "40")
-	public static String method3870(Buffer var0) {
-		String var1;
-		try {
-			int var2 = var0.readUShortSmart();
-			if (var2 > 32767) {
-				var2 = 32767;
-			}
-			byte[] var3 = new byte[var2];
-			var0.offset += class18.huffman.decompress(var0.array, var0.offset, var3, 0, var2);
-			String var4 = class269.decodeStringCp1252(var3, 0, var2);
-			var1 = var4;
-		} catch (Exception var6) {
-			var1 = "Cabbage";
+	@ObfuscatedSignature(
+		descriptor = "(IIIIIZB)V",
+		garbageValue = "18"
+	)
+	@Export("setFlagOffNonSquare")
+	public void setFlagOffNonSquare(int var1, int var2, int var3, int var4, int var5, boolean var6) {
+		int var7 = 256; // L: 338
+		if (var6) { // L: 339
+			var7 += 131072;
 		}
-		return var1;
-	}
 
-	@ObfuscatedName("w")
-	@ObfuscatedSignature(descriptor = "(B)V", garbageValue = "28")
-	public static void method3888() {
-		try {
-			if (class273.musicPlayerStatus == 1) {
-				int var0 = class273.midiPcmStream.method5305();
-				if (var0 > 0 && class273.midiPcmStream.isReady()) {
-					var0 -= FaceNormal.pcmSampleLength;
-					if (var0 < 0) {
-						var0 = 0;
-					}
-					class273.midiPcmStream.setPcmStreamVolume(var0);
-					return;
-				}
-				class273.midiPcmStream.clear();
-				class273.midiPcmStream.removeAll();
-				if (class149.musicTrackArchive != null) {
-					class273.musicPlayerStatus = 2;
-				} else {
-					class273.musicPlayerStatus = 0;
-				}
-				InterfaceParent.musicTrack = null;
-				class358.soundCache = null;
-			}
-		} catch (Exception var2) {
-			var2.printStackTrace();
-			class273.midiPcmStream.clear();
-			class273.musicPlayerStatus = 0;
-			InterfaceParent.musicTrack = null;
-			class358.soundCache = null;
-			class149.musicTrackArchive = null;
+		var1 -= this.xInset; // L: 340
+		var2 -= this.yInset; // L: 341
+		int var8;
+		if (var5 == 1 || var5 == 3) { // L: 342
+			var8 = var3; // L: 343
+			var3 = var4; // L: 344
+			var4 = var8; // L: 345
 		}
-	}
+
+		for (var8 = var1; var8 < var3 + var1; ++var8) { // L: 347
+			if (var8 >= 0 && var8 < this.xSize) { // L: 348
+				for (int var9 = var2; var9 < var2 + var4; ++var9) { // L: 349
+					if (var9 >= 0 && var9 < this.ySize) {
+						this.setFlagOff(var8, var9, var7); // L: 350
+					}
+				}
+			}
+		}
+
+	} // L: 354
+
+	@ObfuscatedName("m")
+	@ObfuscatedSignature(
+		descriptor = "(IIIB)V",
+		garbageValue = "24"
+	)
+	@Export("setFlagOff")
+	void setFlagOff(int var1, int var2, int var3) {
+		int[] var10000 = this.flags[var1]; // L: 357
+		var10000[var2] &= ~var3;
+	} // L: 358
+
+	@ObfuscatedName("x")
+	@ObfuscatedSignature(
+		descriptor = "(III)V",
+		garbageValue = "-1159863170"
+	)
+	public void method4011(int var1, int var2) {
+		var1 -= this.xInset; // L: 361
+		var2 -= this.yInset; // L: 362
+		int[] var10000 = this.flags[var1]; // L: 363
+		var10000[var2] &= -262145;
+	} // L: 364
 
 	@ObfuscatedName("p")
-	@ObfuscatedSignature(descriptor = "(B)V", garbageValue = "-45")
-	public static void method3890() {
-		ObjectComposition.ObjectDefinition_cached.clear();
-		ObjectComposition.ObjectDefinition_cachedModelData.clear();
-		ObjectComposition.ObjectDefinition_cachedEntities.clear();
-		ObjectComposition.ObjectDefinition_cachedModels.clear();
-	}
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;ZZI)V",
+		garbageValue = "2025063471"
+	)
+	@Export("openURL")
+	public static void openURL(String var0, boolean var1, boolean var2) {
+		GameEngine.method591(var0, var1, "openjs", var2); // L: 27
+	} // L: 28
 }

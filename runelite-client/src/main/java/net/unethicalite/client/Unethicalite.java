@@ -1,14 +1,12 @@
 package net.unethicalite.client;
 
-import lombok.extern.slf4j.Slf4j;
-import net.runelite.client.RuneLite;
-import net.unethicalite.client.minimal.MinimalClient;
-
 import java.io.File;
 import java.util.Arrays;
 import java.util.Objects;
-
+import lombok.extern.slf4j.Slf4j;
+import net.runelite.client.RuneLite;
 import static net.runelite.client.RuneLite.OPENOSRS;
+import net.unethicalite.client.minimal.MinimalClient;
 
 @Slf4j
 public class Unethicalite
@@ -17,6 +15,7 @@ public class Unethicalite
 
 	public static void main(String[] args) throws Exception
 	{
+
 		if (Arrays.asList(args).contains("--minimal"))
 		{
 			System.setProperty("unethicalite.minimal", "true");

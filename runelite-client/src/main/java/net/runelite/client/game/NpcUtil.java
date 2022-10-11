@@ -129,12 +129,16 @@ public class NpcUtil
 			case NpcID.KOSCHEI_THE_DEATHLESS:
 			case NpcID.KOSCHEI_THE_DEATHLESS_3898:
 			case NpcID.KOSCHEI_THE_DEATHLESS_3899:
+			case NpcID.DAMIS:
+			case NpcID.DAMIS_6346:
+			case NpcID.DAMIS_HARD:
 			case NpcID.CHOMPY_BIRD:
 			case NpcID.JUBBLY_BIRD:
 			case NpcID.ENT:
 			case NpcID.ENT_7234:
 			case NpcID.HOPELESS_CREATURE:
 			case NpcID.HOPELESS_CREATURE_1073:
+			case NpcID.WALL_BEAST:
 				return false;
 			// These NPCs have no attack options, but are the dead and uninteractable form of otherwise attackable NPCs,
 			// thus should not be considered alive.
@@ -198,10 +202,18 @@ public class NpcUtil
 			case NpcID.KOLODION_1609:
 			case NpcID.TARN_6476:
 			case NpcID.KOSCHEI_THE_DEATHLESS_3900:
+			case NpcID.DAMIS_683:
+			case NpcID.DAMIS_6347:
+			case NpcID.DAMIS_HARD_1135:
 			case NpcID.HOPELESS_CREATURE_1074:
 			// The Nightmare should be considered alive again once reaching its sleeping form
 			case NpcID.THE_NIGHTMARE:
 			case NpcID.PHOSANIS_NIGHTMARE:
+			// Skotizo's altars should be considered alive again once they "respawn" from their inactive altar forms
+			case NpcID.AWAKENED_ALTAR:
+			case NpcID.AWAKENED_ALTAR_7290:
+			case NpcID.AWAKENED_ALTAR_7292:
+			case NpcID.AWAKENED_ALTAR_7294:
 				npc.setDead(false);
 				break;
 			default:

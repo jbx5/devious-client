@@ -1,12 +1,13 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedGetter;
-@ObfuscatedName("kd")
-public class class301 {
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(intValue = 355709451)
-	public static int field3595;
+import net.runelite.mapping.ObfuscatedSignature;
 
-	static {
-		Math.sqrt(8192.0);
-	}
+@ObfuscatedName("ka")
+public final class class301 {
+	@ObfuscatedName("ep")
+	@ObfuscatedSignature(
+		descriptor = "Llb;"
+	)
+	@Export("archive7")
+	static Archive archive7;
 }

@@ -19,7 +19,7 @@ import java.awt.image.BufferedImage;
 import java.util.concurrent.ExecutorService;
 
 @PluginDescriptor(
-		name = "Unethicalite",
+		name = "Devious Client",
 		hidden = true
 )
 @Slf4j
@@ -62,7 +62,7 @@ public class UnethicalitePlugin extends SettingsPlugin
 		final BufferedImage icon = ImageUtil.loadImageResource(getClass(), "openosrs.png");
 
 		navButton = NavigationButton.builder()
-				.tooltip("Unethicalite")
+				.tooltip("Devious Client")
 				.icon(icon)
 				.priority(-1)
 				.panel(unethicalitePanel)
@@ -88,13 +88,13 @@ public class UnethicalitePlugin extends SettingsPlugin
 	@Override
 	public String getPluginName()
 	{
-		return "Unethicalite";
+		return "Devious Client";
 	}
 
 	@Override
 	public String getPluginDescription()
 	{
-		return "Unethicalite settings";
+		return "Devious Client Settings";
 	}
 
 	@Override

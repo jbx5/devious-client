@@ -131,7 +131,7 @@ class RSAppletStub implements AppletStub
 
 					SwingUtilities.invokeLater(() ->
 						new FatalErrorDialog("OldSchool RuneScape has crashed with the message: " + code + "")
-							.setTitle("OpenOSRS", "OldSchool RuneScape has crashed")
+							.setTitle("Devious Client", "OldSchool RuneScape has crashed")
 							.addHelpButtons()
 							.open());
 				}

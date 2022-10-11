@@ -1,4 +1,4 @@
-name: Unethicalite - Dev (push)
+name: Devious Client - Dev (push)
 
 on:
   push:
@@ -41,7 +41,7 @@ jobs:
         run: |
           git clone https://github.com/jbx5/devious-hosting.git
           cp -r ./runelite-client/build/bootstrap/. ./devious-hosting
-          cd unethicalite-hosting
+          cd devious-hosting
           
           git config --global user.email "113217895+jbx5@users.noreply.github.com"
           git config --global user.name "Github Actions"
@@ -88,7 +88,7 @@ jobs:
           java-version: '11'
           distribution: 'temurin'
 
-      - name: Publish to Unethicalite Maven Repo
+      - name: Publish to Devious Client Maven Repo
         uses: gradle/gradle-build-action@0d13054264b0bb894ded474f08ebb30921341cee
         with:
           arguments: runelite-client:publish runelite-api:publish http-api:publish runescape-api:publish cache:publish injection-annotations:publish deobfuscator:publish -x test

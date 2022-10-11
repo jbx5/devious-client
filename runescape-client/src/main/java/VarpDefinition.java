@@ -1,95 +1,103 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.Implements;
-import net.runelite.rs.ScriptOpcodes;
-import net.runelite.mapping.Export;
-@ObfuscatedName("fp")
+
+@ObfuscatedName("fo")
 @Implements("VarpDefinition")
 public class VarpDefinition extends DualNode {
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "Llc;")
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "Llv;"
+	)
 	@Export("VarpDefinition_archive")
-	static AbstractArchive VarpDefinition_archive;
-
-	@ObfuscatedName("q")
-	@ObfuscatedGetter(intValue = -774409533)
-	public static int field1811;
-
+	public static AbstractArchive VarpDefinition_archive;
+	@ObfuscatedName("p")
+	@ObfuscatedGetter(
+		intValue = 1908361649
+	)
+	public static int field1841;
 	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "Lia;")
+	@ObfuscatedSignature(
+		descriptor = "Lif;"
+	)
 	@Export("VarpDefinition_cached")
-	static EvictingDualNodeHashTable VarpDefinition_cached = new EvictingDualNodeHashTable(64);
-
-	@ObfuscatedName("k")
-	@ObfuscatedGetter(intValue = 894414077)
-	static int field1813;
-
-	@ObfuscatedName("gg")
-	@ObfuscatedSignature(descriptor = "Lfz;")
-	@Export("socketTask")
-	static Task socketTask;
-
-	@ObfuscatedName("u")
-	@ObfuscatedGetter(intValue = 1739289855)
+	public static EvictingDualNodeHashTable VarpDefinition_cached;
+	@ObfuscatedName("n")
+	@ObfuscatedGetter(
+		intValue = -220539481
+	)
 	@Export("type")
-	public int type = 0;
+	public int type;
 
-	VarpDefinition() {
+	static {
+		VarpDefinition_cached = new EvictingDualNodeHashTable(64); // L: 12
 	}
 
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "(Lqw;I)V", garbageValue = "1033626215")
+	VarpDefinition() {
+		this.type = 0; // L: 13
+	} // L: 15
+
+	@ObfuscatedName("p")
+	@ObfuscatedSignature(
+		descriptor = "(Lqq;S)V",
+		garbageValue = "8196"
+	)
 	@Export("decode")
 	void decode(Buffer var1) {
 		while (true) {
-			int var2 = var1.readUnsignedByte();
-			if (var2 == 0) {
-				return;
+			int var2 = var1.readUnsignedByte(); // L: 29
+			if (var2 == 0) { // L: 30
+				return; // L: 33
 			}
-			this.decodeNext(var1, var2);
-		} 
+
+			this.decodeNext(var1, var2); // L: 31
+		}
 	}
 
-	@ObfuscatedName("u")
-	@ObfuscatedSignature(descriptor = "(Lqw;IB)V", garbageValue = "-67")
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "(Lqq;II)V",
+		garbageValue = "1285334577"
+	)
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
-		if (var2 == 5) {
+		if (var2 == 5) { // L: 36
 			this.type = var1.readUnsignedShort();
 		}
-	}
 
-	@ObfuscatedName("w")
-	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "1994115349")
-	public static void method3352() {
-		FloorOverlayDefinition.FloorOverlayDefinition_cached.clear();
-	}
+	} // L: 38
 
-	@ObfuscatedName("x")
-	@ObfuscatedSignature(descriptor = "(ILbc;ZI)I", garbageValue = "1253760177")
-	static int method3351(int var0, Script var1, boolean var2) {
-		Widget var3 = (var2) ? VertexNormal.scriptDotWidget : class321.scriptActiveWidget;
-		if (var0 == ScriptOpcodes.CC_GETX) {
-			Interpreter.Interpreter_intStack[++TaskHandler.Interpreter_intStackSize - 1] = var3.x;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_GETY) {
-			Interpreter.Interpreter_intStack[++TaskHandler.Interpreter_intStackSize - 1] = var3.y;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_GETWIDTH) {
-			Interpreter.Interpreter_intStack[++TaskHandler.Interpreter_intStackSize - 1] = var3.width;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_GETHEIGHT) {
-			Interpreter.Interpreter_intStack[++TaskHandler.Interpreter_intStackSize - 1] = var3.height;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_GETHIDE) {
-			Interpreter.Interpreter_intStack[++TaskHandler.Interpreter_intStackSize - 1] = (var3.isHidden) ? 1 : 0;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_GETLAYER) {
-			Interpreter.Interpreter_intStack[++TaskHandler.Interpreter_intStackSize - 1] = var3.parentId;
-			return 1;
-		} else {
-			return 2;
+	@ObfuscatedName("k")
+	@ObfuscatedSignature(
+		descriptor = "(IB)V",
+		garbageValue = "55"
+	)
+	@Export("clearItemContainer")
+	static void clearItemContainer(int var0) {
+		ItemContainer var1 = (ItemContainer)ItemContainer.itemContainers.get((long)var0); // L: 63
+		if (var1 != null) { // L: 64
+			for (int var2 = 0; var2 < var1.ids.length; ++var2) { // L: 65
+				var1.ids[var2] = -1; // L: 66
+				var1.quantities[var2] = 0; // L: 67
+			}
+
 		}
+	} // L: 69
+
+	@ObfuscatedName("mm")
+	@ObfuscatedSignature(
+		descriptor = "(II)Lpb;",
+		garbageValue = "1112569904"
+	)
+	static class438 method3527(int var0) {
+		class438 var1 = (class438)Client.DBTableIndex_cache.get((long)var0); // L: 12201
+		if (var1 == null) { // L: 12202
+			var1 = new class438(PcmPlayer.field308, class425.method7664(var0), TaskHandler.method3414(var0)); // L: 12203
+			Client.DBTableIndex_cache.put(var1, (long)var0); // L: 12204
+		}
+
+		return var1; // L: 12206
 	}
 }

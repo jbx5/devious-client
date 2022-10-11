@@ -1,41 +1,66 @@
+import java.util.Date;
+import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.Export;
-@ObfuscatedName("z")
+
+@ObfuscatedName("s")
 public enum class6 implements MouseWheel {
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "Ls;"
+	)
+	field19(0, 0);
 
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "Lz;")
-	field14(0, 0);
-	@ObfuscatedName("qy")
-	@ObfuscatedSignature(descriptor = "Lpo;")
-	@Export("HitSplatDefinition_cached")
-	static class428 HitSplatDefinition_cached;
-
-	@ObfuscatedName("q")
-	@ObfuscatedGetter(intValue = 867944955)
-	final int field19;
-
+	@ObfuscatedName("gp")
+	@ObfuscatedGetter(
+		longValue = -1719458249049383535L
+	)
+	static long field16;
+	@ObfuscatedName("hk")
+	@ObfuscatedGetter(
+		intValue = -1990401303
+	)
+	static int field17;
+	@ObfuscatedName("ia")
+	@ObfuscatedSignature(
+		descriptor = "[Lqi;"
+	)
+	@Export("headIconPkSprites")
+	static SpritePixels[] headIconPkSprites;
+	@ObfuscatedName("p")
+	@ObfuscatedGetter(
+		intValue = -919765491
+	)
+	final int field14;
 	@ObfuscatedName("f")
-	@ObfuscatedGetter(intValue = 1103183445)
+	@ObfuscatedGetter(
+		intValue = -419063355
+	)
 	final int field15;
 
 	class6(int var3, int var4) {
-		this.field19 = var3;
-		this.field15 = var4;
-	}
+		this.field14 = var3; // L: 16
+		this.field15 = var4; // L: 17
+	} // L: 18
 
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "(I)I", garbageValue = "1790946346")
+	@ObfuscatedName("p")
+	@ObfuscatedSignature(
+		descriptor = "(B)I",
+		garbageValue = "1"
+	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
-		return this.field15;
+		return this.field15; // L: 22
 	}
 
-	@ObfuscatedName("g")
-	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "1483147000")
-	static final void method34() {
-		LoginScreenAnimation.method2279("You can't add yourself to your own ignore list");
+	@ObfuscatedName("m")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/util/Date;B)Z",
+		garbageValue = "124"
+	)
+	static boolean method50(Date var0) {
+		Date var1 = class136.method3074(); // L: 1089
+		return var0.after(var1); // L: 1090
 	}
 }

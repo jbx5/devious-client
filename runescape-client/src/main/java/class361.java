@@ -1,280 +1,300 @@
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 import net.runelite.rs.ScriptOpcodes;
-import java.util.Comparator;
-@ObfuscatedName("ms")
-class class361 implements Comparator {
-	@ObfuscatedSignature(descriptor = "Lmq;")
-	final class362 this$0;
 
-	@ObfuscatedSignature(descriptor = "(Lmq;)V")
-	class361(class362 var1) {
-		this.this$0 = var1;
-	}
-
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "(Lmz;Lmz;B)I", garbageValue = "30")
-	int method6581(class363 var1, class363 var2) {
-		if (var1.field4292 > var2.field4292) {
-			return 1;
-		} else {
-			return var1.field4292 < var2.field4292 ? -1 : 0;
-		}
-	}
-
-	public int compare(Object var1, Object var2) {
-		return this.method6581(((class363) (var1)), ((class363) (var2)));
-	}
-
-	public boolean equals(Object var1) {
-		return super.equals(var1);
-	}
-
+@ObfuscatedName("mq")
+public class class361 {
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(ILbc;ZI)I", garbageValue = "971647238")
-	static int method6591(int var0, Script var1, boolean var2) {
-		int var3 = -1;
-		Widget var4;
-		if (var0 >= 2000) {
-			var0 -= 1000;
-			var3 = Interpreter.Interpreter_intStack[--TaskHandler.Interpreter_intStackSize];
-			var4 = FloorUnderlayDefinition.getWidget(var3);
-		} else {
-			var4 = (var2) ? VertexNormal.scriptDotWidget : class321.scriptActiveWidget;
-		}
-		if (var0 == ScriptOpcodes.CC_SETPOSITION) {
-			TaskHandler.Interpreter_intStackSize -= 4;
-			var4.rawX = Interpreter.Interpreter_intStack[TaskHandler.Interpreter_intStackSize];
-			var4.rawY = Interpreter.Interpreter_intStack[TaskHandler.Interpreter_intStackSize + 1];
-			var4.xAlignment = Interpreter.Interpreter_intStack[TaskHandler.Interpreter_intStackSize + 2];
-			var4.yAlignment = Interpreter.Interpreter_intStack[TaskHandler.Interpreter_intStackSize + 3];
-			class220.invalidateWidget(var4);
-			class329.client.alignWidget(var4);
-			if (var3 != -1 && var4.type == 0) {
-				class439.revalidateWidgetScroll(Widget.Widget_interfaceComponents[var3 >> 16], var4, false);
-			}
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_SETSIZE) {
-			TaskHandler.Interpreter_intStackSize -= 4;
-			var4.rawWidth = Interpreter.Interpreter_intStack[TaskHandler.Interpreter_intStackSize];
-			var4.rawHeight = Interpreter.Interpreter_intStack[TaskHandler.Interpreter_intStackSize + 1];
-			var4.widthAlignment = Interpreter.Interpreter_intStack[TaskHandler.Interpreter_intStackSize + 2];
-			var4.heightAlignment = Interpreter.Interpreter_intStack[TaskHandler.Interpreter_intStackSize + 3];
-			class220.invalidateWidget(var4);
-			class329.client.alignWidget(var4);
-			if (var3 != -1 && var4.type == 0) {
-				class439.revalidateWidgetScroll(Widget.Widget_interfaceComponents[var3 >> 16], var4, false);
-			}
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_SETHIDE) {
-			boolean var5 = Interpreter.Interpreter_intStack[--TaskHandler.Interpreter_intStackSize] == 1;
-			if (var5 != var4.isHidden) {
-				var4.isHidden = var5;
-				class220.invalidateWidget(var4);
-			}
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_SETNOCLICKTHROUGH) {
-			var4.noClickThrough = Interpreter.Interpreter_intStack[--TaskHandler.Interpreter_intStackSize] == 1;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_SETNOSCROLLTHROUGH) {
-			var4.noScrollThrough = Interpreter.Interpreter_intStack[--TaskHandler.Interpreter_intStackSize] == 1;
-			return 1;
-		} else {
-			return 2;
-		}
+	@ObfuscatedSignature(
+		descriptor = "Lmq;"
+	)
+	public static final class361 field4300;
+	@ObfuscatedName("p")
+	@ObfuscatedSignature(
+		descriptor = "Lmq;"
+	)
+	static final class361 field4301;
+	@ObfuscatedName("f")
+	@ObfuscatedGetter(
+		intValue = -1404357375
+	)
+	final int field4302;
+
+	static {
+		field4300 = new class361(0); // L: 5
+		field4301 = new class361(1); // L: 6
 	}
 
-	@ObfuscatedName("r")
-	@ObfuscatedSignature(descriptor = "(ILbc;ZB)I", garbageValue = "-34")
-	static int method6588(int var0, Script var1, boolean var2) {
-		if (var0 == ScriptOpcodes.SOUND_SYNTH) {
-			TaskHandler.Interpreter_intStackSize -= 3;
-			class174.queueSoundEffect(Interpreter.Interpreter_intStack[TaskHandler.Interpreter_intStackSize], Interpreter.Interpreter_intStack[TaskHandler.Interpreter_intStackSize + 1], Interpreter.Interpreter_intStack[TaskHandler.Interpreter_intStackSize + 2]);
-			return 1;
-		} else if (var0 == ScriptOpcodes.SOUND_SONG) {
-			class1.playSong(Interpreter.Interpreter_intStack[--TaskHandler.Interpreter_intStackSize]);
-			return 1;
-		} else if (var0 == ScriptOpcodes.SOUND_JINGLE) {
-			TaskHandler.Interpreter_intStackSize -= 2;
-			MouseRecorder.method2170(Interpreter.Interpreter_intStack[TaskHandler.Interpreter_intStackSize], Interpreter.Interpreter_intStack[TaskHandler.Interpreter_intStackSize + 1]);
-			return 1;
+	class361(int var1) {
+		this.field4302 = var1; // L: 10
+	} // L: 11
+
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "(ILbt;ZB)I",
+		garbageValue = "6"
+	)
+	static int method6736(int var0, Script var1, boolean var2) {
+		Widget var3;
+		if (var0 >= 2000) { // L: 1022
+			var0 -= 1000; // L: 1023
+			var3 = SpotAnimationDefinition.getWidget(Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]); // L: 1024
 		} else {
-			class83 var3;
-			class82 var4;
-			int var5;
-			int var6;
-			String var7;
-			if (var0 != 3212 && var0 != 3213 && var0 != 3209 && var0 != 3181 && var0 != 3203 && var0 != 3205 && var0 != 3207) {
-				if (var0 != 3214 && var0 != 3215 && var0 != 3210 && var0 != 3182 && var0 != 3204 && var0 != 3206 && var0 != 3208) {
-					return var0 == 3211 ? 1 : 2;
-				} else {
-					var3 = class83.field1076;
-					var4 = class82.field1072;
-					boolean var8 = false;
-					if (var0 == 3214) {
-						var6 = Interpreter.Interpreter_intStack[--TaskHandler.Interpreter_intStackSize];
-						var3 = ((class83) (class271.findEnumerated(class144.method3086(), var6)));
-						if (var3 == null) {
-							throw new RuntimeException(String.format("Unrecognized device option %d", var6));
-						}
-					}
-					if (var0 == 3215) {
-						var6 = Interpreter.Interpreter_intStack[--TaskHandler.Interpreter_intStackSize];
-						var4 = ((class82) (class271.findEnumerated(BoundaryObject.method4494(), var6)));
-						if (var4 == null) {
-							throw new RuntimeException(String.format("Unrecognized game option %d", var6));
-						}
-					}
-					if (var0 == 3210) {
-						var6 = Interpreter.Interpreter_intStack[--TaskHandler.Interpreter_intStackSize];
-						var3 = ((class83) (class271.findEnumerated(class144.method3086(), var6)));
-						if (var3 == null) {
-							var4 = ((class82) (class271.findEnumerated(BoundaryObject.method4494(), var6)));
-							if (var4 == null) {
-								throw new RuntimeException(String.format("Unrecognized client option %d", var6));
-							}
-						}
-					} else if (var0 == 3182) {
-						var3 = class83.field1078;
-					} else if (var0 == 3204) {
-						var4 = class82.field1069;
-					} else if (var0 == 3206) {
-						var4 = class82.field1065;
-					} else if (var0 == 3208) {
-						var4 = class82.field1064;
-					}
-					if (var4 == class82.field1072) {
-						switch (var3.field1074) {
-							case 1 :
-								var5 = (class260.clientPreferences.method2326()) ? 1 : 0;
-								break;
-							case 2 :
-								var5 = (class260.clientPreferences.method2316()) ? 1 : 0;
-								break;
-							case 3 :
-								var5 = (class260.clientPreferences.method2339()) ? 1 : 0;
-								break;
-							case 4 :
-								var5 = class260.clientPreferences.method2321();
-								break;
-							case 5 :
-								var5 = class155.method3238();
-								break;
-							default :
-								var7 = String.format("Unkown device option: %s.", var3.toString());
-								throw new RuntimeException(var7);
-						}
-					} else {
-						switch (var4.field1067) {
-							case 1 :
-								var5 = (class260.clientPreferences.method2312()) ? 1 : 0;
-								break;
-							case 2 :
-								var6 = class260.clientPreferences.method2335();
-								var5 = Math.round(((float) (var6 * 100)) / 255.0F);
-								break;
-							case 3 :
-								var6 = class260.clientPreferences.method2348();
-								var5 = Math.round(((float) (var6 * 100)) / 127.0F);
-								break;
-							case 4 :
-								var6 = class260.clientPreferences.method2329();
-								var5 = Math.round(((float) (var6 * 100)) / 127.0F);
-								break;
-							default :
-								var7 = String.format("Unkown game option: %s.", var4.toString());
-								throw new RuntimeException(var7);
-						}
-					}
-					Interpreter.Interpreter_intStack[++TaskHandler.Interpreter_intStackSize - 1] = var5;
-					return 1;
+			var3 = var2 ? TextureProvider.scriptDotWidget : MenuAction.scriptActiveWidget; // L: 1026
+		}
+
+		String var4 = Interpreter.Interpreter_stringStack[--VarbitComposition.Interpreter_stringStackSize]; // L: 1027
+		int[] var5 = null; // L: 1028
+		if (var4.length() > 0 && var4.charAt(var4.length() - 1) == 'Y') { // L: 1029
+			int var6 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]; // L: 1030
+			if (var6 > 0) { // L: 1031
+				for (var5 = new int[var6]; var6-- > 0; var5[var6] = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]) { // L: 1032 1033
 				}
+			}
+
+			var4 = var4.substring(0, var4.length() - 1); // L: 1035
+		}
+
+		Object[] var8 = new Object[var4.length() + 1]; // L: 1037
+
+		int var7;
+		for (var7 = var8.length - 1; var7 >= 1; --var7) { // L: 1038
+			if (var4.charAt(var7 - 1) == 's') { // L: 1039
+				var8[var7] = Interpreter.Interpreter_stringStack[--VarbitComposition.Interpreter_stringStackSize];
 			} else {
-				var3 = class83.field1076;
-				var4 = class82.field1072;
-				var5 = Interpreter.Interpreter_intStack[--TaskHandler.Interpreter_intStackSize];
-				if (var0 == 3212) {
-					var6 = Interpreter.Interpreter_intStack[--TaskHandler.Interpreter_intStackSize];
-					var3 = ((class83) (class271.findEnumerated(class144.method3086(), var6)));
-					if (var3 == null) {
-						throw new RuntimeException(String.format("Unrecognized device option %d", var6));
+				var8[var7] = new Integer(Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]); // L: 1040
+			}
+		}
+
+		var7 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]; // L: 1042
+		if (var7 != -1) { // L: 1043
+			var8[0] = new Integer(var7);
+		} else {
+			var8 = null; // L: 1044
+		}
+
+		if (var0 == ScriptOpcodes.CC_SETONCLICK) { // L: 1045
+			var3.onClick = var8;
+		} else if (var0 == ScriptOpcodes.CC_SETONHOLD) { // L: 1046
+			var3.onHold = var8;
+		} else if (var0 == ScriptOpcodes.CC_SETONRELEASE) { // L: 1047
+			var3.onRelease = var8;
+		} else if (var0 == ScriptOpcodes.CC_SETONMOUSEOVER) { // L: 1048
+			var3.onMouseOver = var8;
+		} else if (var0 == ScriptOpcodes.CC_SETONMOUSELEAVE) { // L: 1049
+			var3.onMouseLeave = var8;
+		} else if (var0 == ScriptOpcodes.CC_SETONDRAG) { // L: 1050
+			var3.onDrag = var8;
+		} else if (var0 == ScriptOpcodes.CC_SETONTARGETLEAVE) { // L: 1051
+			var3.onTargetLeave = var8;
+		} else if (var0 == ScriptOpcodes.CC_SETONVARTRANSMIT) { // L: 1052
+			var3.onVarTransmit = var8; // L: 1053
+			var3.varTransmitTriggers = var5; // L: 1054
+		} else if (var0 == ScriptOpcodes.CC_SETONTIMER) { // L: 1056
+			var3.onTimer = var8;
+		} else if (var0 == ScriptOpcodes.CC_SETONOP) { // L: 1057
+			var3.onOp = var8;
+		} else if (var0 == ScriptOpcodes.CC_SETONDRAGCOMPLETE) { // L: 1058
+			var3.onDragComplete = var8;
+		} else if (var0 == ScriptOpcodes.CC_SETONCLICKREPEAT) { // L: 1059
+			var3.onClickRepeat = var8;
+		} else if (var0 == ScriptOpcodes.CC_SETONMOUSEREPEAT) { // L: 1060
+			var3.onMouseRepeat = var8;
+		} else if (var0 == ScriptOpcodes.CC_SETONINVTRANSMIT) { // L: 1061
+			var3.onInvTransmit = var8; // L: 1062
+			var3.invTransmitTriggers = var5; // L: 1063
+		} else if (var0 == ScriptOpcodes.CC_SETONSTATTRANSMIT) { // L: 1065
+			var3.onStatTransmit = var8; // L: 1066
+			var3.statTransmitTriggers = var5; // L: 1067
+		} else if (var0 == ScriptOpcodes.CC_SETONTARGETENTER) { // L: 1069
+			var3.onTargetEnter = var8;
+		} else if (var0 == ScriptOpcodes.CC_SETONSCROLLWHEEL) { // L: 1070
+			var3.onScroll = var8;
+		} else if (var0 == ScriptOpcodes.CC_SETONCHATTRANSMIT) { // L: 1071
+			var3.onChatTransmit = var8;
+		} else if (var0 == ScriptOpcodes.CC_SETONKEY) { // L: 1072
+			var3.onKey = var8;
+		} else if (var0 == ScriptOpcodes.CC_SETONFRIENDTRANSMIT) { // L: 1073
+			var3.onFriendTransmit = var8;
+		} else if (var0 == ScriptOpcodes.CC_SETONCLANTRANSMIT) { // L: 1074
+			var3.onClanTransmit = var8;
+		} else if (var0 == ScriptOpcodes.CC_SETONMISCTRANSMIT) { // L: 1075
+			var3.onMiscTransmit = var8;
+		} else if (var0 == ScriptOpcodes.CC_SETONDIALOGABORT) { // L: 1076
+			var3.onDialogAbort = var8;
+		} else if (var0 == ScriptOpcodes.CC_SETONSUBCHANGE) { // L: 1077
+			var3.onSubChange = var8;
+		} else if (var0 == ScriptOpcodes.CC_SETONSTOCKTRANSMIT) { // L: 1078
+			var3.onStockTransmit = var8;
+		} else if (var0 == 1426) { // L: 1079
+			var3.field3452 = var8;
+		} else if (var0 == ScriptOpcodes.CC_SETONRESIZE) { // L: 1080
+			var3.onResize = var8;
+		} else if (var0 == ScriptOpcodes.CC_SETONCLANSETTINGSTRANSMIT) { // L: 1081
+			var3.field3526 = var8;
+		} else if (var0 == ScriptOpcodes.CC_SETONCLANCHANNELTRANSMIT) { // L: 1082
+			var3.field3431 = var8;
+		} else if (var0 == 1430) { // L: 1083
+			var3.field3528 = var8;
+		} else if (var0 == 1431) { // L: 1084
+			var3.field3511 = var8;
+		} else if (var0 == 1434) { // L: 1085
+			var3.field3522 = var8;
+		} else {
+			if (var0 != 1435) { // L: 1086
+				return 2; // L: 1087
+			}
+
+			var3.field3506 = var8;
+		}
+
+		var3.hasListener = true; // L: 1088
+		return 1; // L: 1089
+	}
+
+	@ObfuscatedName("ai")
+	@ObfuscatedSignature(
+		descriptor = "(ILbt;ZB)I",
+		garbageValue = "7"
+	)
+	static int method6735(int var0, Script var1, boolean var2) {
+		int var3;
+		if (var0 == ScriptOpcodes.STOCKMARKET_GETOFFERTYPE) { // L: 2864
+			var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]; // L: 2865
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Client.grandExchangeOffers[var3].type(); // L: 2866
+			return 1; // L: 2867
+		} else if (var0 == ScriptOpcodes.STOCKMARKET_GETOFFERITEM) { // L: 2869
+			var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]; // L: 2870
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Client.grandExchangeOffers[var3].id; // L: 2871
+			return 1; // L: 2872
+		} else if (var0 == ScriptOpcodes.STOCKMARKET_GETOFFERPRICE) { // L: 2874
+			var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]; // L: 2875
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Client.grandExchangeOffers[var3].unitPrice; // L: 2876
+			return 1; // L: 2877
+		} else if (var0 == ScriptOpcodes.STOCKMARKET_GETOFFERCOUNT) { // L: 2879
+			var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]; // L: 2880
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Client.grandExchangeOffers[var3].totalQuantity; // L: 2881
+			return 1; // L: 2882
+		} else if (var0 == ScriptOpcodes.STOCKMARKET_GETOFFERCOMPLETEDCOUNT) { // L: 2884
+			var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]; // L: 2885
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Client.grandExchangeOffers[var3].currentQuantity; // L: 2886
+			return 1; // L: 2887
+		} else if (var0 == ScriptOpcodes.STOCKMARKET_GETOFFERCOMPLETEDGOLD) { // L: 2889
+			var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]; // L: 2890
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Client.grandExchangeOffers[var3].currentPrice; // L: 2891
+			return 1; // L: 2892
+		} else {
+			int var13;
+			if (var0 == ScriptOpcodes.STOCKMARKET_ISOFFEREMPTY) { // L: 2894
+				var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]; // L: 2895
+				var13 = Client.grandExchangeOffers[var3].status(); // L: 2896
+				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var13 == 0 ? 1 : 0; // L: 2897
+				return 1; // L: 2898
+			} else if (var0 == ScriptOpcodes.STOCKMARKET_ISOFFERSTABLE) { // L: 2900
+				var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]; // L: 2901
+				var13 = Client.grandExchangeOffers[var3].status(); // L: 2902
+				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var13 == 2 ? 1 : 0; // L: 2903
+				return 1; // L: 2904
+			} else if (var0 == ScriptOpcodes.STOCKMARKET_ISOFFERFINISHED) { // L: 2906
+				var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]; // L: 2907
+				var13 = Client.grandExchangeOffers[var3].status(); // L: 2908
+				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var13 == 5 ? 1 : 0; // L: 2909
+				return 1; // L: 2910
+			} else if (var0 == ScriptOpcodes.STOCKMARKET_ISOFFERADDING) { // L: 2912
+				var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]; // L: 2913
+				var13 = Client.grandExchangeOffers[var3].status(); // L: 2914
+				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var13 == 1 ? 1 : 0; // L: 2915
+				return 1; // L: 2916
+			} else {
+				boolean var12;
+				if (var0 == ScriptOpcodes.TRADINGPOST_SORTBY_NAME) { // L: 2918
+					var12 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize] == 1; // L: 2919
+					if (EnumComposition.grandExchangeEvents != null) { // L: 2920
+						EnumComposition.grandExchangeEvents.sort(GrandExchangeEvents.GrandExchangeEvents_nameComparator, var12); // L: 2921
 					}
-				}
-				if (var0 == 3213) {
-					var6 = Interpreter.Interpreter_intStack[--TaskHandler.Interpreter_intStackSize];
-					var4 = ((class82) (class271.findEnumerated(BoundaryObject.method4494(), var6)));
-					if (var4 == null) {
-						throw new RuntimeException(String.format("Unrecognized game option %d", var6));
+
+					return 1; // L: 2923
+				} else if (var0 == ScriptOpcodes.TRADINGPOST_SORTBY_PRICE) { // L: 2925
+					var12 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize] == 1; // L: 2926
+					if (EnumComposition.grandExchangeEvents != null) { // L: 2927
+						EnumComposition.grandExchangeEvents.sort(GrandExchangeEvents.GrandExchangeEvents_priceComparator, var12); // L: 2928
 					}
-				}
-				if (var0 == 3209) {
-					var6 = Interpreter.Interpreter_intStack[--TaskHandler.Interpreter_intStackSize];
-					var3 = ((class83) (class271.findEnumerated(class144.method3086(), var6)));
-					if (var3 == null) {
-						var4 = ((class82) (class271.findEnumerated(BoundaryObject.method4494(), var6)));
-						if (var4 == null) {
-							throw new RuntimeException(String.format("Unrecognized client option %d", var6));
-						}
+
+					return 1; // L: 2930
+				} else if (var0 == ScriptOpcodes.TRADINGPOST_SORTFILTERBY_WORLD) { // L: 2932
+					Interpreter.Interpreter_intStackSize -= 2; // L: 2933
+					var12 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize] == 1; // L: 2934
+					boolean var11 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1] == 1; // L: 2935
+					if (EnumComposition.grandExchangeEvents != null) { // L: 2936
+						Client.GrandExchangeEvents_worldComparator.filterWorlds = var11; // L: 2937
+						EnumComposition.grandExchangeEvents.sort(Client.GrandExchangeEvents_worldComparator, var12); // L: 2938
 					}
-				} else if (var0 == 3181) {
-					var3 = class83.field1078;
-				} else if (var0 == 3203) {
-					var4 = class82.field1069;
-				} else if (var0 == 3205) {
-					var4 = class82.field1065;
-				} else if (var0 == 3207) {
-					var4 = class82.field1064;
-				}
-				if (var4 == class82.field1072) {
-					switch (var3.field1074) {
-						case 1 :
-							class260.clientPreferences.method2389(var5 == 1);
-							break;
-						case 2 :
-							class260.clientPreferences.method2347(var5 == 1);
-							break;
-						case 3 :
-							class260.clientPreferences.method2338(var5 == 1);
-							break;
-						case 4 :
-							if (var5 < 0) {
-								var5 = 0;
-							}
-							class260.clientPreferences.method2320(var5);
-							break;
-						case 5 :
-							WallDecoration.method4516(var5);
-							break;
-						default :
-							var7 = String.format("Unkown device option: %s.", var3.toString());
-							throw new RuntimeException(var7);
+
+					return 1; // L: 2940
+				} else if (var0 == ScriptOpcodes.TRADINGPOST_SORTBY_AGE) { // L: 2942
+					var12 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize] == 1; // L: 2943
+					if (EnumComposition.grandExchangeEvents != null) { // L: 2944
+						EnumComposition.grandExchangeEvents.sort(GrandExchangeEvents.GrandExchangeEvents_ageComparator, var12); // L: 2945
 					}
+
+					return 1; // L: 2947
+				} else if (var0 == ScriptOpcodes.TRADINGPOST_SORTBY_COUNT) { // L: 2949
+					var12 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize] == 1; // L: 2950
+					if (EnumComposition.grandExchangeEvents != null) { // L: 2951
+						EnumComposition.grandExchangeEvents.sort(GrandExchangeEvents.GrandExchangeEvents_quantityComparator, var12); // L: 2952
+					}
+
+					return 1; // L: 2954
+				} else if (var0 == ScriptOpcodes.TRADINGPOST_GETTOTALOFFERS) { // L: 2956
+					Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = EnumComposition.grandExchangeEvents == null ? 0 : EnumComposition.grandExchangeEvents.events.size(); // L: 2957
+					return 1; // L: 2958
 				} else {
-					switch (var4.field1067) {
-						case 1 :
-							class260.clientPreferences.method2311(var5 == 1);
-							break;
-						case 2 :
-							var5 = Math.min(Math.max(var5, 0), 100);
-							var6 = Math.round(((float) (var5 * 255)) / 100.0F);
-							class228.method4875(var6);
-							break;
-						case 3 :
-							var5 = Math.min(Math.max(var5, 0), 100);
-							var6 = Math.round(((float) (var5 * 127)) / 100.0F);
-							Player.method2248(var6);
-							break;
-						case 4 :
-							var5 = Math.min(Math.max(var5, 0), 100);
-							var6 = Math.round(((float) (var5 * 127)) / 100.0F);
-							class136.method2949(var6);
-							break;
-						default :
-							var7 = String.format("Unkown game option: %s.", var4.toString());
-							throw new RuntimeException(var7);
+					GrandExchangeEvent var4;
+					if (var0 == ScriptOpcodes.TRADINGPOST_GETOFFERWORLD) { // L: 2960
+						var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]; // L: 2961
+						var4 = (GrandExchangeEvent)EnumComposition.grandExchangeEvents.events.get(var3); // L: 2962
+						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var4.world; // L: 2963
+						return 1; // L: 2964
+					} else if (var0 == ScriptOpcodes.TRADINGPOST_GETOFFERNAME) { // L: 2966
+						var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]; // L: 2967
+						var4 = (GrandExchangeEvent)EnumComposition.grandExchangeEvents.events.get(var3); // L: 2968
+						Interpreter.Interpreter_stringStack[++VarbitComposition.Interpreter_stringStackSize - 1] = var4.getOfferName(); // L: 2969
+						return 1; // L: 2970
+					} else if (var0 == ScriptOpcodes.TRADINGPOST_GETOFFERPREVIOUSNAME) { // L: 2972
+						var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]; // L: 2973
+						var4 = (GrandExchangeEvent)EnumComposition.grandExchangeEvents.events.get(var3); // L: 2974
+						Interpreter.Interpreter_stringStack[++VarbitComposition.Interpreter_stringStackSize - 1] = var4.getPreviousOfferName(); // L: 2975
+						return 1; // L: 2976
+					} else if (var0 == ScriptOpcodes.TRADINGPOST_GETOFFERAGE) { // L: 2978
+						var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]; // L: 2979
+						var4 = (GrandExchangeEvent)EnumComposition.grandExchangeEvents.events.get(var3); // L: 2980
+						long var5 = Language.method6232() - SceneTilePaint.field2649 - var4.age; // L: 2981
+						int var7 = (int)(var5 / 3600000L); // L: 2982
+						int var8 = (int)((var5 - (long)(var7 * 3600000)) / 60000L); // L: 2983
+						int var9 = (int)((var5 - (long)(var7 * 3600000) - (long)(var8 * 60000)) / 1000L); // L: 2984
+						String var10 = var7 + ":" + var8 / 10 + var8 % 10 + ":" + var9 / 10 + var9 % 10; // L: 2985
+						Interpreter.Interpreter_stringStack[++VarbitComposition.Interpreter_stringStackSize - 1] = var10; // L: 2986
+						return 1; // L: 2987
+					} else if (var0 == ScriptOpcodes.TRADINGPOST_GETOFFERCOUNT) { // L: 2989
+						var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]; // L: 2990
+						var4 = (GrandExchangeEvent)EnumComposition.grandExchangeEvents.events.get(var3); // L: 2991
+						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var4.grandExchangeOffer.totalQuantity; // L: 2992
+						return 1; // L: 2993
+					} else if (var0 == ScriptOpcodes.TRADINGPOST_GETOFFERPRICE) { // L: 2995
+						var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]; // L: 2996
+						var4 = (GrandExchangeEvent)EnumComposition.grandExchangeEvents.events.get(var3); // L: 2997
+						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var4.grandExchangeOffer.unitPrice; // L: 2998
+						return 1; // L: 2999
+					} else if (var0 == ScriptOpcodes.TRADINGPOST_GETOFFERITEM) { // L: 3001
+						var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]; // L: 3002
+						var4 = (GrandExchangeEvent)EnumComposition.grandExchangeEvents.events.get(var3); // L: 3003
+						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var4.grandExchangeOffer.id; // L: 3004
+						return 1; // L: 3005
+					} else {
+						return 2; // L: 3007
 					}
 				}
-				return 1;
 			}
 		}
 	}

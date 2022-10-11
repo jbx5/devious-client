@@ -1,128 +1,95 @@
-import java.lang.reflect.Field;
+import java.awt.Image;
+import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import java.lang.reflect.Method;
-import net.runelite.rs.Reflection;
-import net.runelite.mapping.Export;
-@ObfuscatedName("dl")
-public abstract class class128 extends Node {
-	@ObfuscatedName("x")
-	@ObfuscatedGetter(intValue = -2004580483)
-	static int field1543;
 
-	class128() {
-	}
+@ObfuscatedName("de")
+public class class128 extends class129 {
+	@ObfuscatedName("ak")
+	static Image field1561;
+	@ObfuscatedName("hd")
+	@ObfuscatedGetter(
+		intValue = -1981589143
+	)
+	@Export("baseX")
+	static int baseX;
+	@ObfuscatedName("c")
+	@ObfuscatedGetter(
+		intValue = 153057193
+	)
+	int field1558;
+	// $FF: synthetic field
+	@ObfuscatedSignature(
+		descriptor = "Leo;"
+	)
+	final class132 this$0;
 
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "(Lqw;I)V", garbageValue = "-423569520")
-	abstract void vmethod3155(Buffer var1);
+	@ObfuscatedSignature(
+		descriptor = "(Leo;)V"
+	)
+	class128(class132 var1) {
+		this.this$0 = var1;
+		this.field1558 = -1; // L: 114
+	} // L: 116
 
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "(Lez;I)V", garbageValue = "-1755436064")
-	abstract void vmethod3154(ClanSettings var1);
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "(Lqq;B)V",
+		garbageValue = "-41"
+	)
+	void vmethod3320(Buffer var1) {
+		this.field1558 = var1.readUnsignedShort(); // L: 119
+	} // L: 120
 
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "(Lqw;II)V", garbageValue = "-66679284")
-	@Export("readReflectionCheck")
-	public static void readReflectionCheck(Buffer var0, int var1) {
-		ReflectionCheck var2 = new ReflectionCheck();
-		var2.size = var0.readUnsignedByte();
-		var2.id = var0.readInt();
-		var2.operations = new int[var2.size];
-		var2.creationErrors = new int[var2.size];
-		var2.fields = new Field[var2.size];
-		var2.intReplaceValues = new int[var2.size];
-		var2.methods = new Method[var2.size];
-		var2.arguments = new byte[var2.size][][];
-		for (int var3 = 0; var3 < var2.size; ++var3) {
-			try {
-				int var4 = var0.readUnsignedByte();
-				String var5;
-				String var6;
-				int var7;
-				if (var4 != 0 && var4 != 1 && var4 != 2) {
-					if (var4 == 3 || var4 == 4) {
-						var5 = var0.readStringCp1252NullTerminated();
-						var6 = var0.readStringCp1252NullTerminated();
-						var7 = var0.readUnsignedByte();
-						String[] var8 = new String[var7];
-						for (int var9 = 0; var9 < var7; ++var9) {
-							var8[var9] = var0.readStringCp1252NullTerminated();
-						}
-						String var20 = var0.readStringCp1252NullTerminated();
-						byte[][] var10 = new byte[var7][];
-						int var12;
-						if (var4 == 3) {
-							for (int var11 = 0; var11 < var7; ++var11) {
-								var12 = var0.readInt();
-								var10[var11] = new byte[var12];
-								var0.readBytes(var10[var11], 0, var12);
-							}
-						}
-						var2.operations[var3] = var4;
-						Class[] var21 = new Class[var7];
-						for (var12 = 0; var12 < var7; ++var12) {
-							var21[var12] = class141.loadClassFromDescriptor(var8[var12]);
-						}
-						Class var22 = class141.loadClassFromDescriptor(var20);
-						if (class141.loadClassFromDescriptor(var5).getClassLoader() == null) {
-							throw new SecurityException();
-						}
-						Method[] var13 = class141.loadClassFromDescriptor(var5).getDeclaredMethods();
-						Method[] var14 = var13;
-						for (int var15 = 0; var15 < var14.length; ++var15) {
-							Method var16 = var14[var15];
-							if (Reflection.getMethodName(var16).equals(var6)) {
-								Class[] var17 = Reflection.getParameterTypes(var16);
-								if (var17.length == var21.length) {
-									boolean var18 = true;
-									for (int var19 = 0; var19 < var21.length; ++var19) {
-										if (var21[var19] != var17[var19]) {
-											var18 = false;
-											break;
-										}
-									}
-									if (var18 && var22 == var16.getReturnType()) {
-										var2.methods[var3] = var16;
-									}
-								}
-							}
-						}
-						var2.arguments[var3] = var10;
-					}
-				} else {
-					var5 = var0.readStringCp1252NullTerminated();
-					var6 = var0.readStringCp1252NullTerminated();
-					var7 = 0;
-					if (var4 == 1) {
-						var7 = var0.readInt();
-					}
-					var2.operations[var3] = var4;
-					var2.intReplaceValues[var3] = var7;
-					if (class141.loadClassFromDescriptor(var5).getClassLoader() == null) {
-						throw new SecurityException();
-					}
-					var2.fields[var3] = Reflection.findField(class141.loadClassFromDescriptor(var5), var6);
-				}
-			} catch (ClassNotFoundException var24) {
-				var2.creationErrors[var3] = -1;
-			} catch (SecurityException var25) {
-				var2.creationErrors[var3] = -2;
-			} catch (NullPointerException var26) {
-				var2.creationErrors[var3] = -3;
-			} catch (Exception var27) {
-				var2.creationErrors[var3] = -4;
-			} catch (Throwable var28) {
-				var2.creationErrors[var3] = -5;
+	@ObfuscatedName("p")
+	@ObfuscatedSignature(
+		descriptor = "(Led;I)V",
+		garbageValue = "-538131930"
+	)
+	void vmethod3313(ClanSettings var1) {
+		var1.method3146(this.field1558); // L: 123
+	} // L: 124
+
+	@ObfuscatedName("ff")
+	@ObfuscatedSignature(
+		descriptor = "(I)I",
+		garbageValue = "-371587618"
+	)
+	static int method3003() {
+		if (Client.archiveLoaders != null && Client.archiveLoadersDone < Client.archiveLoaders.size()) { // L: 1478
+			int var0 = 0; // L: 1479
+
+			for (int var1 = 0; var1 <= Client.archiveLoadersDone; ++var1) { // L: 1480
+				var0 += ((ArchiveLoader)Client.archiveLoaders.get(var1)).loadedCount; // L: 1481
 			}
+
+			return var0 * 10000 / Client.field613; // L: 1483
+		} else {
+			return 10000;
 		}
-		class33.reflectionChecks.addFirst(var2);
 	}
 
-	@ObfuscatedName("z")
-	@ObfuscatedSignature(descriptor = "(IB)I", garbageValue = "-97")
-	public static int method2897(int var0) {
-		return Language.method6087(ViewportMouse.ViewportMouse_entityTags[var0]);
-	}
+	@ObfuscatedName("id")
+	@ObfuscatedSignature(
+		descriptor = "(IIIII)V",
+		garbageValue = "1935735857"
+	)
+	@Export("selectSpell")
+	static void selectSpell(int var0, int var1, int var2, int var3) {
+		Widget var4 = JagexCache.getWidgetChild(var0, var1); // L: 9231
+		if (var4 != null && var4.onTargetEnter != null) { // L: 9232
+			ScriptEvent var5 = new ScriptEvent(); // L: 9233
+			var5.widget = var4; // L: 9234
+			var5.args = var4.onTargetEnter; // L: 9235
+			class348.runScriptEvent(var5); // L: 9236
+		}
+
+		Client.selectedSpellItemId = var3; // L: 9238
+		Client.isSpellSelected = true; // L: 9239
+		ClanSettings.selectedSpellWidget = var0; // L: 9240
+		Client.selectedSpellChildIndex = var1; // L: 9241
+		UrlRequest.selectedSpellFlags = var2; // L: 9242
+		class403.invalidateWidget(var4); // L: 9243
+	} // L: 9244
 }

@@ -1,51 +1,64 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.Export;
-@ObfuscatedName("be")
+
+@ObfuscatedName("bh")
 @Implements("MenuAction")
 public class MenuAction {
-	@ObfuscatedName("o")
-	@ObfuscatedGetter(intValue = 380314879)
+	@ObfuscatedName("t")
+	@ObfuscatedSignature(
+		descriptor = "Lkw;"
+	)
+	@Export("scriptActiveWidget")
+	static Widget scriptActiveWidget;
+	@ObfuscatedName("c")
+	@ObfuscatedGetter(
+		intValue = -1703078717
+	)
 	@Export("param0")
 	int param0;
-
-	@ObfuscatedName("q")
-	@ObfuscatedGetter(intValue = -291428413)
+	@ObfuscatedName("p")
+	@ObfuscatedGetter(
+		intValue = 476220859
+	)
 	@Export("param1")
 	int param1;
-
 	@ObfuscatedName("f")
-	@ObfuscatedGetter(intValue = -922743889)
+	@ObfuscatedGetter(
+		intValue = -1482046621
+	)
 	@Export("opcode")
 	int opcode;
-
-	@ObfuscatedName("u")
-	@ObfuscatedGetter(intValue = 1337817419)
+	@ObfuscatedName("n")
+	@ObfuscatedGetter(
+		intValue = -1192362423
+	)
 	@Export("identifier")
 	int identifier;
-
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(intValue = -749946813)
+	@ObfuscatedName("k")
+	@ObfuscatedGetter(
+		intValue = 1901856087
+	)
 	@Export("itemId")
 	int itemId;
-
 	@ObfuscatedName("w")
 	@Export("action")
 	String action;
-
-	@ObfuscatedName("z")
+	@ObfuscatedName("s")
 	@Export("target")
 	String target;
 
 	MenuAction() {
-	}
+	} // L: 12250
 
-	@ObfuscatedName("i")
-	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "-1691149719")
-	static void method1933() {
-		UserComparator6.method2701(24);
-		HealthBarUpdate.setLoginResponseString("", "You were disconnected from the server.", "");
+	@ObfuscatedName("k")
+	@ObfuscatedSignature(
+		descriptor = "(IB)Z",
+		garbageValue = "87"
+	)
+	public static boolean method2030(int var0) {
+		return (var0 >> 21 & 1) != 0; // L: 25
 	}
 }

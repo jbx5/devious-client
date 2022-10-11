@@ -1,41 +1,71 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.Implements;
-import java.io.File;
-import net.runelite.mapping.Export;
-@ObfuscatedName("dm")
+
+@ObfuscatedName("dq")
 @Implements("UserComparator10")
 public class UserComparator10 extends AbstractUserComparator {
+	@ObfuscatedName("bd")
+	@ObfuscatedGetter(
+		intValue = -13271251
+	)
+	static int field1393;
+	@ObfuscatedName("ez")
+	@ObfuscatedSignature(
+		descriptor = "Llb;"
+	)
+	@Export("archive4")
+	static Archive archive4;
+	@ObfuscatedName("er")
+	@ObfuscatedSignature(
+		descriptor = "Llb;"
+	)
+	@Export("archive19")
+	static Archive archive19;
 	@ObfuscatedName("c")
-	@Export("cacheDir")
-	public static File cacheDir;
-
-	@ObfuscatedName("o")
 	@Export("reversed")
 	final boolean reversed;
 
 	public UserComparator10(boolean var1) {
-		this.reversed = var1;
-	}
+		this.reversed = var1; // L: 11
+	} // L: 12
 
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "(Lnh;Lnh;I)I", garbageValue = "-364048224")
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "(Lnr;Lnr;I)I",
+		garbageValue = "-1298946916"
+	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
-		if (Client.worldId == var1.world && var2.world == Client.worldId) {
-			return this.reversed ? var1.int2 - var2.int2 : var2.int2 - var1.int2;
+		if (Client.worldId == var1.world && var2.world == Client.worldId) { // L: 15
+			return this.reversed ? var1.int2 - var2.int2 : var2.int2 - var1.int2; // L: 16
 		} else {
-			return this.compareUser(var1, var2);
+			return this.compareUser(var1, var2); // L: 18
 		}
 	}
 
 	public int compare(Object var1, Object var2) {
-		return this.compareBuddy(((Buddy) (var1)), ((Buddy) (var2)));
+		return this.compareBuddy((Buddy)var1, (Buddy)var2); // L: 22
 	}
 
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "(B)[Ljz;", garbageValue = "-31")
-	public static class263[] method2689() {
-		return new class263[]{ class263.field3022, class263.field3023, class263.field3021, class263.field3025, class263.field3024, class263.field3028, class263.field3020, class263.field3026, class263.field3027, class263.field3019 };
+	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "(ILbt;ZB)I",
+		garbageValue = "80"
+	)
+	static int method2782(int var0, Script var1, boolean var2) {
+		return 2; // L: 2678
+	}
+
+	@ObfuscatedName("el")
+	@ObfuscatedSignature(
+		descriptor = "(I)Lpi;",
+		garbageValue = "-1585871942"
+	)
+	@Export("getWorldMap")
+	static WorldMap getWorldMap() {
+		return Decimator.worldMap; // L: 707
 	}
 }

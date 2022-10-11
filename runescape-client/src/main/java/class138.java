@@ -1,37 +1,73 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-@ObfuscatedName("ew")
-public class class138 extends class128 {
-	@ObfuscatedName("u")
-	@ObfuscatedGetter(intValue = -788758719)
-	public static int field1608;
 
-	@ObfuscatedName("o")
-	@ObfuscatedGetter(intValue = -1493052171)
-	int field1609;
+@ObfuscatedName("ex")
+public class class138 extends class129 {
+	@ObfuscatedName("c")
+	String field1619;
+	// $FF: synthetic field
+	@ObfuscatedSignature(
+		descriptor = "Leo;"
+	)
+	final class132 this$0;
 
-	@ObfuscatedName("q")
-	String field1605;
-
-	@ObfuscatedSignature(descriptor = "Lec;")
-	final class131 this$0;
-
-	@ObfuscatedSignature(descriptor = "(Lec;)V")
-	class138(class131 var1) {
-		this.this$0 = var1;
+	@ObfuscatedSignature(
+		descriptor = "(Leo;)V"
+	)
+	class138(class132 var1) {
+		this.this$0 = var1; // L: 229
 	}
 
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "(Lqw;I)V", garbageValue = "-423569520")
-	void vmethod3155(Buffer var1) {
-		this.field1609 = var1.readInt();
-		this.field1605 = var1.readStringCp1252NullTerminated();
-	}
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "(Lqq;B)V",
+		garbageValue = "-41"
+	)
+	void vmethod3320(Buffer var1) {
+		this.field1619 = var1.readStringCp1252NullTerminated(); // L: 232
+		var1.readInt(); // L: 233
+	} // L: 234
 
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "(Lez;I)V", garbageValue = "-1755436064")
-	void vmethod3154(ClanSettings var1) {
-		var1.method2990(this.field1609, this.field1605);
+	@ObfuscatedName("p")
+	@ObfuscatedSignature(
+		descriptor = "(Led;I)V",
+		garbageValue = "-538131930"
+	)
+	void vmethod3313(ClanSettings var1) {
+		var1.name = this.field1619; // L: 237
+	} // L: 238
+
+	@ObfuscatedName("bf")
+	@ObfuscatedSignature(
+		descriptor = "([BI)[B",
+		garbageValue = "2099576217"
+	)
+	@Export("decompressBytes")
+	static final byte[] decompressBytes(byte[] var0) {
+		Buffer var1 = new Buffer(var0); // L: 452
+		int var2 = var1.readUnsignedByte(); // L: 453
+		int var3 = var1.readInt(); // L: 454
+		if (var3 < 0 || AbstractArchive.field4054 != 0 && var3 > AbstractArchive.field4054) { // L: 455
+			throw new RuntimeException(); // L: 456
+		} else if (var2 == 0) { // L: 458
+			byte[] var6 = new byte[var3]; // L: 459
+			var1.readBytes(var6, 0, var3); // L: 460
+			return var6; // L: 461
+		} else {
+			int var4 = var1.readInt(); // L: 464
+			if (var4 >= 0 && (AbstractArchive.field4054 == 0 || var4 <= AbstractArchive.field4054)) { // L: 465
+				byte[] var5 = new byte[var4]; // L: 468
+				if (var2 == 1) { // L: 469
+					BZip2Decompressor.BZip2Decompressor_decompress(var5, var4, var0, var3, 9);
+				} else {
+					AbstractArchive.gzipDecompressor.decompress(var1, var5); // L: 470
+				}
+
+				return var5; // L: 471
+			} else {
+				throw new RuntimeException(); // L: 466
+			}
+		}
 	}
 }

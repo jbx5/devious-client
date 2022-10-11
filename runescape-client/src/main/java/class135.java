@@ -1,52 +1,82 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-@ObfuscatedName("ek")
-public class class135 extends class128 {
-	@ObfuscatedName("fp")
-	@ObfuscatedGetter(intValue = 1093142301)
-	static int field1593;
 
-	@ObfuscatedName("o")
-	boolean field1592;
-
-	@ObfuscatedName("q")
-	byte field1594;
-
+@ObfuscatedName("es")
+public class class135 extends class145 {
+	@ObfuscatedName("t")
+	@ObfuscatedSignature(
+		descriptor = "Llx;"
+	)
+	@Export("NetCache_currentResponse")
+	public static NetFileRequest NetCache_currentResponse;
+	@ObfuscatedName("iy")
+	@ObfuscatedSignature(
+		descriptor = "[Lqi;"
+	)
+	@Export("headIconHintSprites")
+	static SpritePixels[] headIconHintSprites;
+	@ObfuscatedName("c")
+	@ObfuscatedGetter(
+		intValue = 593153933
+	)
+	int field1599;
+	@ObfuscatedName("p")
+	byte field1598;
 	@ObfuscatedName("f")
-	byte field1590;
+	@ObfuscatedGetter(
+		intValue = -1248744063
+	)
+	int field1600;
+	@ObfuscatedName("n")
+	String field1601;
+	// $FF: synthetic field
+	@ObfuscatedSignature(
+		descriptor = "Lem;"
+	)
+	final class146 this$0;
 
-	@ObfuscatedName("u")
-	byte field1587;
+	@ObfuscatedSignature(
+		descriptor = "(Lem;)V"
+	)
+	class135(class146 var1) {
+		this.this$0 = var1;
+		this.field1599 = -1; // L: 101
+	} // L: 106
 
 	@ObfuscatedName("c")
-	byte field1591;
+	@ObfuscatedSignature(
+		descriptor = "(Lqq;I)V",
+		garbageValue = "-64301329"
+	)
+	void vmethod3300(Buffer var1) {
+		this.field1599 = var1.readUnsignedShort(); // L: 109
+		this.field1598 = var1.readByte(); // L: 110
+		this.field1600 = var1.readUnsignedShort(); // L: 111
+		var1.readLong(); // L: 112
+		this.field1601 = var1.readStringCp1252NullTerminated(); // L: 113
+	} // L: 114
 
-	@ObfuscatedSignature(descriptor = "Lec;")
-	final class131 this$0;
+	@ObfuscatedName("p")
+	@ObfuscatedSignature(
+		descriptor = "(Ler;B)V",
+		garbageValue = "97"
+	)
+	void vmethod3302(ClanChannel var1) {
+		ClanChannelMember var2 = (ClanChannelMember)var1.members.get(this.field1599); // L: 117
+		var2.rank = this.field1598; // L: 118
+		var2.world = this.field1600; // L: 119
+		var2.username = new Username(this.field1601); // L: 120
+	} // L: 121
 
-	@ObfuscatedSignature(descriptor = "(Lec;)V")
-	class135(class131 var1) {
-		this.this$0 = var1;
-	}
-
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(descriptor = "(Lqw;I)V", garbageValue = "-423569520")
-	void vmethod3155(Buffer var1) {
-		this.field1592 = var1.readUnsignedByte() == 1;
-		this.field1594 = var1.readByte();
-		this.field1590 = var1.readByte();
-		this.field1587 = var1.readByte();
-		this.field1591 = var1.readByte();
-	}
-
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "(Lez;I)V", garbageValue = "-1755436064")
-	void vmethod3154(ClanSettings var1) {
-		var1.allowGuests = this.field1592;
-		var1.field1631 = this.field1594;
-		var1.field1619 = this.field1590;
-		var1.field1632 = this.field1587;
-		var1.field1621 = this.field1591;
-	}
+	@ObfuscatedName("jf")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;Ljava/lang/String;IIIII)V",
+		garbageValue = "-1505004044"
+	)
+	@Export("insertMenuItemNoShift")
+	public static final void insertMenuItemNoShift(String var0, String var1, int var2, int var3, int var4, int var5) {
+		class399.insertMenuItem(var0, var1, var2, var3, var4, var5, -1, false); // L: 9374
+	} // L: 9375
 }
