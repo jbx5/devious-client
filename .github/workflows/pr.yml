@@ -1,4 +1,4 @@
-name: Unethicalite - CI (PR)
+name: Devious CLient - CI (PR)
 
 on:
   pull_request:

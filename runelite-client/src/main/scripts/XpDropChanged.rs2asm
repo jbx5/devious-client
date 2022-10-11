@@ -622,66 +622,64 @@ LABEL530:
    iload                  35
    iconst                 0
    if_icmpgt              LABEL558
-   jump                   LABEL801
+   jump                   LABEL799
 LABEL558:
    iload                  16
    iconst                 0
    if_icmpgt              LABEL562
-   jump                   LABEL801
+   jump                   LABEL799
 LABEL562:
-   clientclock           
-   get_varc_int           76
-   sub                   
-   iconst                 10
-   if_icmpgt              LABEL568
-   jump                   LABEL801
-LABEL568:
+   invoke                 6065
+   iconst                 1
+   if_icmpeq              LABEL566
+   jump                   LABEL799
+LABEL566:
    get_varbit             4693
    iconst                 1
-   if_icmpeq              LABEL572
-   jump                   LABEL583
-LABEL572:
+   if_icmpeq              LABEL570
+   jump                   LABEL581
+LABEL570:
    invoke                 1972
    iconst                 0
-   if_icmpeq              LABEL576
-   jump                   LABEL583
-LABEL576:
+   if_icmpeq              LABEL574
+   jump                   LABEL581
+LABEL574:
    iconst                 495
    iconst                 495
    iconst                 25
    istore                 41
    istore                 40
    istore                 39
-   jump                   LABEL597
-LABEL583:
+   jump                   LABEL595
+LABEL581:
    get_varbit             4693
    iconst                 2
-   if_icmpeq              LABEL587
-   jump                   LABEL597
-LABEL587:
+   if_icmpeq              LABEL585
+   jump                   LABEL595
+LABEL585:
    invoke                 1972
    iconst                 0
-   if_icmpeq              LABEL591
-   jump                   LABEL597
-LABEL591:
+   if_icmpeq              LABEL589
+   jump                   LABEL595
+LABEL589:
    iconst                 496
    iconst                 496
    iconst                 25
    istore                 41
    istore                 40
    istore                 39
-LABEL597:
+LABEL595:
    iload                  8
    if_getheight          
    istore                 42
    iload                  42
    iconst                 100
-   if_icmplt              LABEL604
-   jump                   LABEL606
-LABEL604:
+   if_icmplt              LABEL602
+   jump                   LABEL604
+LABEL602:
    iconst                 100
    istore                 42
-LABEL606:
+LABEL604:
    iload                  41
    iconst                 105
    iconst                 105
@@ -694,58 +692,58 @@ LABEL606:
    iconst                 1
    add                   
    istore                 43
-LABEL618:
+LABEL616:
    iload                  37
    iload                  35
-   if_icmplt              LABEL622
-   jump                   LABEL796
-LABEL622:
+   if_icmplt              LABEL620
+   jump                   LABEL794
+LABEL620:
    iload                  38
    iconst                 0
-   if_icmpeq              LABEL626
-   jump                   LABEL635
-LABEL626:
+   if_icmpeq              LABEL624
+   jump                   LABEL633
+LABEL624:
    iload                  0
    iconst                 0
-   if_icmpeq              LABEL630
-   jump                   LABEL635
-LABEL630:
+   if_icmpeq              LABEL628
+   jump                   LABEL633
+LABEL628:
    iload                  37
    get_array_int         
    set_varc_int           72
    iconst                 1
    istore                 38
-LABEL635:
+LABEL633:
    get_varc_int           71
    iconst                 0
-   if_icmpgt              LABEL639
-   jump                   LABEL650
-LABEL639:
+   if_icmpgt              LABEL637
+   jump                   LABEL648
+LABEL637:
    get_varc_int           71
    clientclock           
    iload                  43
    sub                   
-   if_icmpgt              LABEL645
-   jump                   LABEL650
-LABEL645:
+   if_icmpgt              LABEL643
+   jump                   LABEL648
+LABEL643:
    get_varc_int           71
    iload                  43
    add                   
    istore                 44
-   jump                   LABEL652
-LABEL650:
+   jump                   LABEL650
+LABEL648:
    clientclock           
    istore                 44
-LABEL652:
+LABEL650:
    iload                  44
    clientclock           
    iload                  43
    iload                  10
    multiply              
    add                   
-   if_icmplt              LABEL660
-   jump                   LABEL793
-LABEL660:
+   if_icmplt              LABEL658
+   jump                   LABEL791
+LABEL658:
    iconst                 105
    iconst                 73
    iconst                 1163
@@ -782,27 +780,27 @@ LABEL660:
    iconst                 1
    add                   
    istore                 37
-LABEL696:
+LABEL694:
    get_varbit             4696
    iconst                 1
-   if_icmpeq              LABEL700
-   jump                   LABEL744
-LABEL700:
+   if_icmpeq              LABEL698
+   jump                   LABEL742
+LABEL698:
    iload                  37
    iload                  35
-   if_icmplt              LABEL704
-   jump                   LABEL744
-LABEL704:
+   if_icmplt              LABEL702
+   jump                   LABEL742
+LABEL702:
    iload                  45
    iconst                 5
-   if_icmplt              LABEL708
-   jump                   LABEL744
-LABEL708:
+   if_icmplt              LABEL706
+   jump                   LABEL742
+LABEL706:
    iload                  46
    iconst                 1000000
-   if_icmplt              LABEL712
-   jump                   LABEL744
-LABEL712:
+   if_icmplt              LABEL710
+   jump                   LABEL742
+LABEL710:
    iload                  46
    iload                  37
    get_array_int          1
@@ -834,8 +832,8 @@ LABEL712:
    iconst                 1
    add                   
    istore                 37
-   jump                   LABEL696
-LABEL744:
+   jump                   LABEL694
+LABEL742:
    iload                  46
    sconst                 ","
    invoke                 46
@@ -844,22 +842,22 @@ LABEL744:
    sstore                 0
    iload                  0
    iconst                 1
-   if_icmpeq              LABEL752
-   jump                   LABEL757
-LABEL752:
+   if_icmpeq              LABEL750
+   jump                   LABEL755
+LABEL750:
    sconst                 "<img=11>"
    sconst                 " "
    sload                  0
    join_string            3
    sstore                 0
-LABEL757:
+LABEL755:
    iload                  47
    iconst                 0
    cc_find               
    iconst                 1
-   if_icmpeq              LABEL763
-   jump                   LABEL778
-LABEL763:
+   if_icmpeq              LABEL761
+   jump                   LABEL776
+LABEL761:
    sload                  0
    cc_settext            
    iconst                 0
@@ -875,7 +873,7 @@ LABEL763:
    iload                  40
    sload                  0
    invoke                 996
-LABEL778:
+LABEL776:
    iconst                 1005
    iload                  47
    iload                  44
@@ -890,24 +888,24 @@ LABEL778:
    iload                  10
    mod                   
    set_varc_int           70
-   jump                   LABEL795
-LABEL793:
+   jump                   LABEL793
+LABEL791:
    iload                  35
    istore                 37
-LABEL795:
-   jump                   LABEL618
-LABEL796:
+LABEL793:
+   jump                   LABEL616
+LABEL794:
    iload                  1
    iload                  3
    iload                  8
    iload                  9
    invoke                 997
-LABEL801:
+LABEL799:
    iload                  0
    iconst                 0
-   if_icmpeq              LABEL805
-   jump                   LABEL824
-LABEL805:
+   if_icmpeq              LABEL803
+   jump                   LABEL822
+LABEL803:
    iload                  3
    iload                  4
    iload                  5
@@ -927,5 +925,5 @@ LABEL805:
    iload                  9
    iload                  10
    invoke                 1003
-LABEL824:
+LABEL822:
    return                

@@ -58,15 +58,15 @@ public class class292 {
 		garbageValue = "-3813"
 	)
 	static void method5723(int var0, int var1, int var2, ObjectComposition var3, int var4) {
-		ObjectSound var5 = new ObjectSound(); // L: 73
-		var5.plane = var0; // L: 74
-		var5.x = var1 * 128; // L: 75
-		var5.y = var2 * 16384; // L: 76
-		int var6 = var3.sizeX; // L: 77
-		int var7 = var3.sizeY; // L: 78
-		if (var4 == 1 || var4 == 3) { // L: 79
-			var6 = var3.sizeY; // L: 80
-			var7 = var3.sizeX; // L: 81
+		ObjectSound var5 = new ObjectSound();
+		var5.plane = var0;
+		var5.x = var1 * 16384;
+		var5.y = var2 * 128;
+		int var6 = var3.sizeX;
+		int var7 = var3.sizeY;
+		if (var4 == 1 || var4 == 3) {
+			var6 = var3.sizeY;
+			var7 = var3.sizeX;
 		}
 
 		var5.maxX = (var6 + var1) * 16384; // L: 83

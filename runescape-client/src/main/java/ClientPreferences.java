@@ -502,12 +502,12 @@ public class ClientPreferences {
 						}
 					}
 
-					var11 = var0.x; // L: 3876
-					var3 = var0.y; // L: 3877
-					var4 = var0.pathX[var0.pathLength - 1] * 128 + var0.field1131 * 738291136; // L: 3878
-					int var5 = var0.field1131 * 738291136 + var0.pathY[var0.pathLength - 1] * 128; // L: 3879
-					if (var11 < var4) { // L: 3880
-						if (var3 < var5) { // L: 3881
+					var11 = var0.x;
+					var3 = var0.y;
+					var4 = var0.field1131 * -360448000 + var0.pathX[var0.pathLength - 1] * 128;
+					int var5 = var0.pathY[var0.pathLength - 1] * 128 + var0.field1131 * -360448000;
+					if (var11 < var4) {
+						if (var3 < var5) {
 							var0.orientation = 1280;
 						} else if (var3 > var5) { // L: 3882
 							var0.orientation = 1792;

@@ -25,6 +25,7 @@
 package com.openosrs.client.ui.components;
 
 import com.openosrs.client.OpenOSRS;
+import com.openosrs.client.ui.OpenOSRSSplashScreen;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -45,17 +46,15 @@ import lombok.extern.slf4j.Slf4j;
 import net.runelite.client.RuneLiteProperties;
 import net.runelite.client.ui.ColorScheme;
 import net.runelite.client.ui.FontManager;
-import com.openosrs.client.ui.OpenOSRSSplashScreen;
 import net.runelite.client.util.ImageUtil;
 import net.runelite.client.util.LinkBrowser;
 
 @Slf4j
 public class InfoPanel extends JPanel
 {
-	private static final Color DARK_GREY = new Color(10, 10, 10, 255);
-
-	private static final BufferedImage TRANSPARENT_LOGO = ImageUtil.getResourceStreamFromClass(InfoPanel.class, "/openosrs.png");
 	static final Dimension PANEL_SIZE = new Dimension(200, OpenOSRSSplashScreen.FRAME_SIZE.height);
+	private static final Color DARK_GREY = new Color(10, 10, 10, 255);
+	private static final BufferedImage TRANSPARENT_LOGO = ImageUtil.getResourceStreamFromClass(InfoPanel.class, "/openosrs.png");
 	private static final Dimension VERSION_SIZE = new Dimension(PANEL_SIZE.width, 25);
 	private static final File RUNELITE_DIR = new File(System.getProperty("user.home"), ".openosrs");
 	private static final File LOGS_DIR = new File(RUNELITE_DIR, "logs");
@@ -89,7 +88,7 @@ public class InfoPanel extends JPanel
 		c.weighty = 0;
 
 		// OpenOSRS version
-		this.add(createPanelTextButton("Unethicalite Version: " + OpenOSRS.SYSTEM_VERSION), c);
+		this.add(createPanelTextButton("Devious Client Version: " + OpenOSRS.SYSTEM_VERSION), c);
 		c.gridy++;
 
 		final JLabel logsFolder = createPanelButton("Open logs folder", null, () -> LinkBrowser.openLocalFile(LOGS_DIR));

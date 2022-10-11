@@ -88,7 +88,7 @@ jobs:
           java-version: '11'
           distribution: 'temurin'
 
-      - name: Publish to Unethicalite Maven Repo
+      - name: Publish to Devious Client Maven Repo
         uses: gradle/gradle-build-action@0d13054264b0bb894ded474f08ebb30921341cee
         with:
           arguments: runelite-client:publish runelite-api:publish http-api:publish runescape-api:publish cache:publish injection-annotations:publish deobfuscator:publish -x test

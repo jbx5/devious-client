@@ -31,6 +31,9 @@ public abstract class Actor extends Renderable {
 	@Export("rotation")
 	int rotation;
 	@ObfuscatedName("ak")
+	@ObfuscatedGetter(
+		intValue = -1129314889
+	)
 	int field1131;
 	@ObfuscatedName("am")
 	@ObfuscatedGetter(
@@ -385,7 +388,7 @@ public abstract class Actor extends Renderable {
 
 	Actor() {
 		this.isWalking = false; // L: 13
-		this.field1131 = 235857927; // L: 14
+		this.field1131 = 1; // L: 14
 		this.idleSequence = -1; // L: 16
 		this.turnLeftSequence = -1; // L: 17
 		this.turnRightSequence = -1; // L: 18

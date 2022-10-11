@@ -80,6 +80,7 @@ import static net.runelite.api.ItemID.ANCIENT_HALO_L;
 import static net.runelite.api.ItemID.ANCIENT_WYVERN_SHIELD;
 import static net.runelite.api.ItemID.ANCIENT_WYVERN_SHIELD_21634;
 import static net.runelite.api.ItemID.ANGUISH_ORNAMENT_KIT;
+import static net.runelite.api.ItemID.ARCANE_SIGIL;
 import static net.runelite.api.ItemID.ARCHERS_RING;
 import static net.runelite.api.ItemID.ARCHERS_RING_I;
 import static net.runelite.api.ItemID.ARCHERS_RING_I_25260;
@@ -664,6 +665,8 @@ import static net.runelite.api.ItemID.TRIDENT_OF_THE_SEAS_E;
 import static net.runelite.api.ItemID.TRIDENT_OF_THE_SWAMP;
 import static net.runelite.api.ItemID.TRIDENT_OF_THE_SWAMP_E;
 import static net.runelite.api.ItemID.TROUVER_PARCHMENT;
+import static net.runelite.api.ItemID.TUMEKENS_SHADOW;
+import static net.runelite.api.ItemID.TUMEKENS_SHADOW_UNCHARGED;
 import static net.runelite.api.ItemID.TURQUOISE_SLAYER_HELMET;
 import static net.runelite.api.ItemID.TURQUOISE_SLAYER_HELMET_I;
 import static net.runelite.api.ItemID.TURQUOISE_SLAYER_HELMET_I_25187;
@@ -928,6 +931,7 @@ public enum ItemMapping
 	ITEM_THAMMARONS_SCEPTRE(THAMMARONS_SCEPTRE_U, THAMMARONS_SCEPTRE),
 	ITEM_BRYOPHYTAS_STAFF(BRYOPHYTAS_STAFF_UNCHARGED, BRYOPHYTAS_STAFF),
 	ITEM_RING_OF_ENDURANCE(RING_OF_ENDURANCE_UNCHARGED_24844, RING_OF_ENDURANCE),
+	ITEM_TUMEKENS_SHADOW(TUMEKENS_SHADOW_UNCHARGED, TUMEKENS_SHADOW),
 
 	// Tombs of Amascut gear
 	ITEM_ELIDINIS_WARD(ELIDINIS_WARD, ELIDINIS_WARD_F, ELIDINIS_WARD_OR),
@@ -978,6 +982,7 @@ public enum ItemMapping
 	ITEM_NIGHTMARE_STAFF(NIGHTMARE_STAFF, ELDRITCH_NIGHTMARE_STAFF, HARMONISED_NIGHTMARE_STAFF, VOLATILE_NIGHTMARE_STAFF),
 	ITEM_GHARZI_RAPIER(GHRAZI_RAPIER, HOLY_GHRAZI_RAPIER),
 	ITEM_MASTER_SCROLL_BOOK(MASTER_SCROLL_BOOK_EMPTY, MASTER_SCROLL_BOOK),
+	ITEM_ARCANE_SIGIL(ARCANE_SIGIL, ELIDINIS_WARD_F, ELIDINIS_WARD_OR),
 
 	// Trouver Parchment
 	ITEM_TROUVER_PARCHMENT(

@@ -154,7 +154,7 @@ open class BootstrapTask @Inject constructor(@Input val type: String) : DefaultT
                     it.file.name.contains("runescape-api") ||
                     it.file.name.contains("runelite-api") ||
                     it.file.name.contains("runelite-jshell")) {
-                path = "https://raw.githubusercontent.com/unethicalite/unethicalite-hosting/master/${type}/${it.file.name}"
+                path = "https://raw.githubusercontent.com/jbx5/devious-hosting/master/${type}/${it.file.name}"
             } else if (!group.contains("runelite")) {
                 path = "https://repo.maven.apache.org/maven2/" + group.replace(".", "/") + "/${name}/$version/${name}-$version"
                 if (it.classifier != null && it.classifier != "no_aop") {
@@ -240,7 +240,7 @@ open class BootstrapTask @Inject constructor(@Input val type: String) : DefaultT
         val sha = hash(cjar.readBytes())
         artifacts.add(JsonBuilder(
                 "name" to cjar.name,
-                "path" to "https://raw.githubusercontent.com/unethicalite/unethicalite-hosting/master/${type}/${cjar.name}",
+                "path" to "https://raw.githubusercontent.com/jbx5/devious-hosting/master/${type}/${cjar.name}",
                 "size" to cjar.length(),
                 "hash" to sha
         ))

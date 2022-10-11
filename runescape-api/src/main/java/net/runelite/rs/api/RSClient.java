@@ -113,6 +113,9 @@ public interface RSClient extends RSGameEngine, Client
 	@Override
 	int[] getVarps();
 
+	@Import("Varps_masks")
+	int[] getVarpMasks();
+
 	@Import("varcs")
 	RSVarcs getVarcs();
 
@@ -1421,6 +1424,8 @@ public interface RSClient extends RSGameEngine, Client
 
 	@Import("Script_cached")
 	RSEvictingDualNodeHashTable getScriptCache();
+	@Import("getScript")
+	RSScript getScript(int scriptID);
 
 	@Import("StructDefinition_cached")
 	RSEvictingDualNodeHashTable getRSStructCompositionCache();

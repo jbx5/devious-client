@@ -73,19 +73,19 @@ public final class WorldMapManager {
 	int tileX;
 	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = 1805401408
+		intValue = 2041475317
 	)
 	@Export("tileY")
 	int tileY;
 	@ObfuscatedName("t")
 	@ObfuscatedGetter(
-		intValue = -1428899776
+		intValue = 715870945
 	)
 	@Export("tileWidth")
 	int tileWidth;
 	@ObfuscatedName("u")
 	@ObfuscatedGetter(
-		intValue = -657482087
+		intValue = 870819392
 	)
 	@Export("tileHeight")
 	int tileHeight;

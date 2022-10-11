@@ -37,6 +37,8 @@ public class RuneLiteMenuEntry implements MenuEntry {
 		this.idx = idx;
 	}
 
+	private MenuEntry parent;
+
 	@Override
 	public String getOption() {
 		return Client.menuActions[this.idx];
@@ -174,6 +176,19 @@ public class RuneLiteMenuEntry implements MenuEntry {
 			opcodes[this.idx] -= 2000;
 		}
 		return this;
+	}
+
+	@Override
+	public MenuEntry setParent(MenuEntry parent)
+	{
+		this.parent = parent;
+		return parent;
+	}
+
+	@Override
+	public MenuEntry getParent()
+	{
+		return parent;
 	}
 
 	@Override
