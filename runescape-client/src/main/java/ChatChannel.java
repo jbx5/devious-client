@@ -4,112 +4,214 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bn")
+@ObfuscatedName("bs")
 @Implements("ChatChannel")
 public class ChatChannel {
-	@ObfuscatedName("uo")
-	@ObfuscatedSignature(
-		descriptor = "Lnj;"
-	)
-	@Export("masterDisk")
-	static ArchiveDisk masterDisk;
-	@ObfuscatedName("u")
-	static int[][][] field996;
-	@ObfuscatedName("ey")
-	@ObfuscatedSignature(
-		descriptor = "Llb;"
-	)
-	@Export("archive8")
-	static Archive archive8;
-	@ObfuscatedName("iv")
-	@ObfuscatedSignature(
-		descriptor = "[Lqu;"
-	)
-	@Export("scrollBarSprites")
-	static IndexedSprite[] scrollBarSprites;
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "[Lbj;"
-	)
-	@Export("messages")
-	Message[] messages;
-	@ObfuscatedName("f")
-	@ObfuscatedGetter(
-		intValue = 561519127
-	)
-	@Export("count")
-	int count;
+   @ObfuscatedName("au")
+   @Export("hasFocus")
+   protected static boolean hasFocus;
+   @ObfuscatedName("eq")
+   @ObfuscatedSignature(
+      descriptor = "Llx;"
+   )
+   @Export("archive14")
+   static Archive archive14;
+   @ObfuscatedName("f")
+   @ObfuscatedSignature(
+      descriptor = "[Lbk;"
+   )
+   @Export("messages")
+   Message[] messages = new Message[100];
+   @ObfuscatedName("c")
+   @ObfuscatedGetter(
+      intValue = -709054483
+   )
+   @Export("count")
+   int count;
 
-	ChatChannel() {
-		this.messages = new Message[100]; // L: 88
-	} // L: 91
+   ChatChannel() {
+   }
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;B)Lbj;",
-		garbageValue = "14"
-	)
-	@Export("addMessage")
-	Message addMessage(int var1, String var2, String var3, String var4) {
-		Message var5 = this.messages[99]; // L: 94
+   @ObfuscatedName("a")
+   @ObfuscatedSignature(
+      descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;I)Lbk;",
+      garbageValue = "349940904"
+   )
+   @Export("addMessage")
+   Message addMessage(int var1, String var2, String var3, String var4) {
+      Message var5 = this.messages[99];
 
-		for (int var6 = this.count; var6 > 0; --var6) { // L: 95
-			if (var6 != 100) { // L: 96
-				this.messages[var6] = this.messages[var6 - 1]; // L: 97
-			}
-		}
+      for(int var6 = this.count; var6 > 0; --var6) {
+         if (var6 != 100) {
+            this.messages[var6] = this.messages[var6 - 1];
+         }
+      }
 
-		if (var5 == null) { // L: 99
-			var5 = new Message(var1, var2, var4, var3);
-		} else {
-			var5.remove(); // L: 101
-			var5.removeDual(); // L: 102
-			var5.set(var1, var2, var4, var3); // L: 103
-		}
+      if (var5 == null) {
+         var5 = new Message(var1, var2, var4, var3);
+      } else {
+         var5.remove();
+         var5.removeDual();
+         var5.set(var1, var2, var4, var3);
+      }
 
-		this.messages[0] = var5; // L: 105
-		if (this.count < 100) { // L: 106
-			++this.count;
-		}
+      this.messages[0] = var5;
+      if (this.count < 100) {
+         ++this.count;
+      }
 
-		return var5; // L: 107
-	}
+      return var5;
+   }
 
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "(II)Lbj;",
-		garbageValue = "-2032102999"
-	)
-	@Export("getMessage")
-	Message getMessage(int var1) {
-		return var1 >= 0 && var1 < this.count ? this.messages[var1] : null; // L: 111 112
-	}
+   @ObfuscatedName("f")
+   @ObfuscatedSignature(
+      descriptor = "(II)Lbk;",
+      garbageValue = "758824821"
+   )
+   @Export("getMessage")
+   Message getMessage(int var1) {
+      return var1 >= 0 && var1 < this.count ? this.messages[var1] : null;
+   }
 
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "1"
-	)
-	@Export("size")
-	int size() {
-		return this.count; // L: 116
-	}
+   @ObfuscatedName("c")
+   @ObfuscatedSignature(
+      descriptor = "(B)I",
+      garbageValue = "-59"
+   )
+   @Export("size")
+   int size() {
+      return this.count;
+   }
 
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "(IB)Lqr;",
-		garbageValue = "0"
-	)
-	public static PrivateChatMode method2146(int var0) {
-		PrivateChatMode[] var1 = class10.method106(); // L: 20
+   @ObfuscatedName("l")
+   @ObfuscatedSignature(
+      descriptor = "(IIIIIZB)Lri;",
+      garbageValue = "-28"
+   )
+   @Export("getItemSprite")
+   public static final SpritePixels getItemSprite(int var0, int var1, int var2, int var3, int var4, boolean var5) {
+      if (var1 == -1) {
+         var4 = 0;
+      } else if (var4 == 2 && var1 != 1) {
+         var4 = 1;
+      }
 
-		for (int var2 = 0; var2 < var1.length; ++var2) { // L: 21
-			PrivateChatMode var3 = var1[var2]; // L: 22
-			if (var0 == var3.field4853) { // L: 24
-				return var3;
-			}
-		}
+      long var6 = ((long)var2 << 38) + ((long)var1 << 16) + (long)var0 + ((long)var4 << 40) + ((long)var3 << 42);
+      SpritePixels var8;
+      if (!var5) {
+         var8 = (SpritePixels)ItemComposition.ItemDefinition_cachedSprites.get(var6);
+         if (var8 != null) {
+            return var8;
+         }
+      }
 
-		return null; // L: 28
-	}
+      ItemComposition var9 = MidiPcmStream.ItemDefinition_get(var0);
+      if (var1 > 1 && var9.countobj != null) {
+         int var10 = -1;
+
+         for(int var11 = 0; var11 < 10; ++var11) {
+            if (var1 >= var9.countco[var11] && var9.countco[var11] != 0) {
+               var10 = var9.countobj[var11];
+            }
+         }
+
+         if (var10 != -1) {
+            var9 = MidiPcmStream.ItemDefinition_get(var10);
+         }
+      }
+
+      Model var21 = var9.getModel(1);
+      if (var21 == null) {
+         return null;
+      } else {
+         SpritePixels var22 = null;
+         if (var9.noteTemplate != -1) {
+            var22 = getItemSprite(var9.note, 10, 1, 0, 0, true);
+            if (var22 == null) {
+               return null;
+            }
+         } else if (var9.notedId != -1) {
+            var22 = getItemSprite(var9.unnotedId, var1, var2, var3, 0, false);
+            if (var22 == null) {
+               return null;
+            }
+         } else if (var9.placeholderTemplate != -1) {
+            var22 = getItemSprite(var9.placeholder, var1, 0, 0, 0, false);
+            if (var22 == null) {
+               return null;
+            }
+         }
+
+         int[] var12 = Rasterizer2D.Rasterizer2D_pixels;
+         int var13 = Rasterizer2D.Rasterizer2D_width;
+         int var14 = Rasterizer2D.Rasterizer2D_height;
+         int[] var15 = new int[4];
+         Rasterizer2D.Rasterizer2D_getClipArray(var15);
+         var8 = new SpritePixels(36, 32);
+         Rasterizer2D.Rasterizer2D_replace(var8.pixels, 36, 32);
+         Rasterizer2D.Rasterizer2D_clear();
+         Rasterizer3D.Rasterizer3D_setClipFromRasterizer2D();
+         Rasterizer3D.method4192(16, 16);
+         Rasterizer3D.field2414 = false;
+         if (var9.placeholderTemplate != -1) {
+            var22.drawTransBgAt(0, 0);
+         }
+
+         int var16 = var9.zoom2d;
+         if (var5) {
+            var16 = (int)((double)var16 * 1.5);
+         } else if (var2 == 2) {
+            var16 = (int)((double)var16 * 1.04);
+         }
+
+         int var17 = var16 * Rasterizer3D.Rasterizer3D_sine[var9.xan2d] >> 16;
+         int var18 = var16 * Rasterizer3D.Rasterizer3D_cosine[var9.xan2d] >> 16;
+         var21.calculateBoundsCylinder();
+         var21.method4590(0, var9.yan2d, var9.zan2d, var9.xan2d, var9.offsetX2d, var21.height / 2 + var17 + var9.offsetY2d, var18 + var9.offsetY2d);
+         if (var9.notedId != -1) {
+            var22.drawTransBgAt(0, 0);
+         }
+
+         if (var2 >= 1) {
+            var8.outline(1);
+         }
+
+         if (var2 >= 2) {
+            var8.outline(16777215);
+         }
+
+         if (var3 != 0) {
+            var8.shadow(var3);
+         }
+
+         Rasterizer2D.Rasterizer2D_replace(var8.pixels, 36, 32);
+         if (var9.noteTemplate != -1) {
+            var22.drawTransBgAt(0, 0);
+         }
+
+         if (var4 == 1 || var4 == 2 && var9.isStackable == 1) {
+            Font var19 = class139.ItemDefinition_fontPlain11;
+            String var20;
+            if (var1 < 100000) {
+               var20 = "<col=ffff00>" + var1 + "</col>";
+            } else if (var1 < 10000000) {
+               var20 = "<col=ffffff>" + var1 / 1000 + "K" + "</col>";
+            } else {
+               var20 = "<col=00ff80>" + var1 / 1000000 + "M" + "</col>";
+            }
+
+            var19.draw(var20, 0, 9, 16776960, 1);
+         }
+
+         if (!var5) {
+            ItemComposition.ItemDefinition_cachedSprites.put(var8, var6);
+         }
+
+         Rasterizer2D.Rasterizer2D_replace(var12, var13, var14);
+         Rasterizer2D.Rasterizer2D_setClipArray(var15);
+         Rasterizer3D.Rasterizer3D_setClipFromRasterizer2D();
+         Rasterizer3D.field2414 = true;
+         return var8;
+      }
+   }
 }

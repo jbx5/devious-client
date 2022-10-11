@@ -109,10 +109,10 @@ public abstract class RSSceneMixin implements RSScene
 	private static int rl$hoverY = -1;
 
 	@Inject
-	private static byte[][][] rl$underlayIds;
+	private static short[][][] rl$underlayIds;
 
 	@Inject
-	private static byte[][][] rl$overlayIds;
+	private static short[][][] rl$overlayIds;
 
 	@Inject
 	private static byte[][][] rl$tileShapes;
@@ -1195,28 +1195,28 @@ public abstract class RSSceneMixin implements RSScene
 
 	@Inject
 	@Override
-	public byte[][][] getUnderlayIds()
+	public short[][][] getUnderlayIds()
 	{
 		return rl$underlayIds;
 	}
 
 	@Inject
 	@Override
-	public void setUnderlayIds(byte[][][] underlayIds)
+	public void setUnderlayIds(short[][][] underlayIds)
 	{
 		rl$underlayIds = underlayIds;
 	}
 
 	@Inject
 	@Override
-	public byte[][][] getOverlayIds()
+	public short[][][] getOverlayIds()
 	{
 		return rl$overlayIds;
 	}
 
 	@Inject
 	@Override
-	public void setOverlayIds(byte[][][] overlayIds)
+	public void setOverlayIds(short[][][] overlayIds)
 	{
 		rl$overlayIds = overlayIds;
 	}

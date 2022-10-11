@@ -2828,8 +2828,8 @@ public abstract class RSClientMixin implements RSClient
 		{
 			RSScene scene = client.getScene();
 
-			byte[][][] underlays = client.getTileUnderlays();
-			byte[][][] overlays = client.getTileOverlays();
+			short[][][] underlays = client.getTileUnderlays();
+			short[][][] overlays = client.getTileOverlays();
 			byte[][][] tileShapes = client.getTileShapes();
 
 			scene.setUnderlayIds(Arrays.copyOf(underlays, underlays.length));

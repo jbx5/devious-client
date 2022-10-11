@@ -4,35 +4,34 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("nv")
+@ObfuscatedName("om")
 @Implements("DefaultsGroup")
 public class DefaultsGroup {
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "Lnv;"
-	)
-	static final DefaultsGroup field4406;
-	@ObfuscatedName("p")
-	@ObfuscatedGetter(
-		intValue = -1327422695
-	)
-	@Export("group")
-	final int group;
+   @ObfuscatedName("a")
+   @ObfuscatedSignature(
+      descriptor = "Lom;"
+   )
+   static final DefaultsGroup field4533 = new DefaultsGroup(3);
+   @ObfuscatedName("s")
+   @Export("Tiles_lightness")
+   static int[] Tiles_lightness;
+   @ObfuscatedName("f")
+   @ObfuscatedGetter(
+      intValue = -2076033797
+   )
+   @Export("group")
+   final int group;
 
-	static {
-		field4406 = new DefaultsGroup(3); // L: 4
-	}
+   DefaultsGroup(int var1) {
+      this.group = var1;
+   }
 
-	DefaultsGroup(int var1) {
-		this.group = var1; // L: 8
-	} // L: 9
-
-	@ObfuscatedName("n")
-	@ObfuscatedSignature(
-		descriptor = "(IB)I",
-		garbageValue = "126"
-	)
-	public static int method7084(int var0) {
-		return class403.field4486[var0 & 16383]; // L: 37
-	}
+   @ObfuscatedName("u")
+   @ObfuscatedSignature(
+      descriptor = "(Ljava/lang/String;I)V",
+      garbageValue = "1557286602"
+   )
+   static final void method7565(String var0) {
+      class11.method101(var0 + " is already on your ignore list");
+   }
 }

@@ -3,109 +3,110 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ne")
+@ObfuscatedName("np")
 @Implements("Friend")
 public class Friend extends Buddy {
-	@ObfuscatedName("c")
-	boolean field4339;
-	@ObfuscatedName("p")
-	boolean field4340;
+   @ObfuscatedName("a")
+   boolean field4472;
+   @ObfuscatedName("f")
+   boolean field4473;
 
-	Friend() {
-	} // L: 9
+   Friend() {
+   }
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(Lne;I)I",
-		garbageValue = "596588464"
-	)
-	@Export("compareToFriend")
-	int compareToFriend(Friend var1) {
-		if (super.world == Client.worldId && Client.worldId != var1.world) { // L: 12
-			return -1;
-		} else if (Client.worldId == var1.world && super.world != Client.worldId) { // L: 13
-			return 1;
-		} else if (super.world != 0 && var1.world == 0) { // L: 14
-			return -1;
-		} else if (var1.world != 0 && super.world == 0) { // L: 15
-			return 1;
-		} else if (this.field4339 && !var1.field4339) { // L: 16
-			return -1;
-		} else if (!this.field4339 && var1.field4339) {
-			return 1; // L: 17
-		} else if (this.field4340 && !var1.field4340) { // L: 18
-			return -1;
-		} else if (!this.field4340 && var1.field4340) { // L: 19
-			return 1;
-		} else {
-			return super.world != 0 ? super.int2 - var1.int2 : var1.int2 - super.int2; // L: 20 21 24
-		}
-	}
+   @ObfuscatedName("a")
+   @ObfuscatedSignature(
+      descriptor = "(Lnp;I)I",
+      garbageValue = "-1267649444"
+   )
+   @Export("compareToFriend")
+   int compareToFriend(Friend var1) {
+      if (super.world == Client.worldId && Client.worldId != var1.world) {
+         return -1;
+      } else if (Client.worldId == var1.world && super.world != Client.worldId) {
+         return 1;
+      } else if (super.world != 0 && var1.world == 0) {
+         return -1;
+      } else if (var1.world != 0 && super.world == 0) {
+         return 1;
+      } else if (this.field4472 && !var1.field4472) {
+         return -1;
+      } else if (!this.field4472 && var1.field4472) {
+         return 1;
+      } else if (this.field4473 && !var1.field4473) {
+         return -1;
+      } else if (!this.field4473 && var1.field4473) {
+         return 1;
+      } else {
+         return super.world != 0 ? super.int2 - var1.int2 : var1.int2 - super.int2;
+      }
+   }
 
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "(Lnc;I)I",
-		garbageValue = "-1401768476"
-	)
-	@Export("compareTo_user")
-	public int compareTo_user(User var1) {
-		return this.compareToFriend((Friend)var1); // L: 29
-	}
+   @ObfuscatedName("f")
+   @ObfuscatedSignature(
+      descriptor = "(Loj;I)I",
+      garbageValue = "-1675254672"
+   )
+   @Export("compareTo_user")
+   public int compareTo_user(User var1) {
+      return this.compareToFriend((Friend)var1);
+   }
 
-	public int compareTo(Object var1) {
-		return this.compareToFriend((Friend)var1); // L: 33
-	}
+   public int compareTo(Object var1) {
+      return this.compareToFriend((Friend)var1);
+   }
 
-	@ObfuscatedName("ii")
-	@ObfuscatedSignature(
-		descriptor = "(III)V",
-		garbageValue = "-2137951637"
-	)
-	@Export("updateItemPile")
-	static final void updateItemPile(int var0, int var1) {
-		NodeDeque var2 = Client.groundItems[Tiles.Client_plane][var0][var1]; // L: 7754
-		if (var2 == null) { // L: 7755
-			MusicPatchNode.scene.removeGroundItemPile(Tiles.Client_plane, var0, var1); // L: 7756
-		} else {
-			long var3 = -99999999L; // L: 7759
-			TileItem var5 = null; // L: 7760
+   @ObfuscatedName("a")
+   @ObfuscatedSignature(
+      descriptor = "(Llg;I)V",
+      garbageValue = "-1139134966"
+   )
+   public static void method7303(AbstractArchive var0) {
+      DbRowType.field4848 = var0;
+   }
 
-			TileItem var6;
-			for (var6 = (TileItem)var2.last(); var6 != null; var6 = (TileItem)var2.previous()) { // L: 7761 7762 7770
-				ItemComposition var7 = UserComparator3.ItemDefinition_get(var6.id); // L: 7763
-				long var11 = (long)var7.price; // L: 7764
-				if (var7.isStackable == 1) {
-					var11 *= (long)(var6.quantity + 1); // L: 7765
-				}
+   @ObfuscatedName("jc")
+   @ObfuscatedSignature(
+      descriptor = "(IIIIIII)V",
+      garbageValue = "34320253"
+   )
+   static final void method7293(int var0, int var1, int var2, int var3, int var4, int var5) {
+      int var6 = var2 - var0;
+      int var7 = var3 - var1;
+      int var8 = var6 >= 0 ? var6 : -var6;
+      int var9 = var7 >= 0 ? var7 : -var7;
+      int var10 = var8;
+      if (var8 < var9) {
+         var10 = var9;
+      }
 
-				if (var11 > var3) { // L: 7766
-					var3 = var11; // L: 7767
-					var5 = var6; // L: 7768
-				}
-			}
+      if (var10 != 0) {
+         int var11 = (var6 << 16) / var10;
+         int var12 = (var7 << 16) / var10;
+         if (var12 <= var11) {
+            var11 = -var11;
+         } else {
+            var12 = -var12;
+         }
 
-			if (var5 == null) { // L: 7772
-				MusicPatchNode.scene.removeGroundItemPile(Tiles.Client_plane, var0, var1); // L: 7773
-			} else {
-				var2.addLast(var5); // L: 7776
-				TileItem var13 = null; // L: 7777
-				TileItem var8 = null; // L: 7778
-
-				for (var6 = (TileItem)var2.last(); var6 != null; var6 = (TileItem)var2.previous()) { // L: 7779 7780 7785
-					if (var6.id != var5.id) { // L: 7781
-						if (var13 == null) { // L: 7782
-							var13 = var6;
-						}
-
-						if (var13.id != var6.id && var8 == null) { // L: 7783
-							var8 = var6;
-						}
-					}
-				}
-
-				long var9 = class259.calculateTag(var0, var1, 3, false, 0); // L: 7787
-				MusicPatchNode.scene.newGroundItemPile(Tiles.Client_plane, var0, var1, class120.getTileHeight(var0 * 128 + 64, var1 * 128 + 64, Tiles.Client_plane), var5, var9, var13, var8); // L: 7788
-			}
-		}
-	} // L: 7757 7774 7789
+         int var13 = var5 * var12 >> 17;
+         int var14 = var5 * var12 + 1 >> 17;
+         int var15 = var5 * var11 >> 17;
+         int var16 = var5 * var11 + 1 >> 17;
+         var0 -= Rasterizer2D.Rasterizer2D_xClipStart;
+         var1 -= Rasterizer2D.Rasterizer2D_yClipStart;
+         int var17 = var0 + var13;
+         int var18 = var0 - var14;
+         int var19 = var0 + var6 - var14;
+         int var20 = var0 + var6 + var13;
+         int var21 = var15 + var1;
+         int var22 = var1 - var16;
+         int var23 = var7 + var1 - var16;
+         int var24 = var15 + var7 + var1;
+         Rasterizer3D.method4233(var17, var18, var19);
+         Rasterizer3D.method4220(var21, var22, var23, var17, var18, var19, var4);
+         Rasterizer3D.method4233(var17, var19, var20);
+         Rasterizer3D.method4220(var21, var23, var24, var17, var19, var20, var4);
+      }
+   }
 }

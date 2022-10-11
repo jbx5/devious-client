@@ -1,91 +1,180 @@
+import java.io.File;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dm")
-public class class126 extends class129 {
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(
-		intValue = 154083721
-	)
-	int field1546;
-	@ObfuscatedName("p")
-	@ObfuscatedGetter(
-		intValue = -1409203475
-	)
-	int field1547;
-	@ObfuscatedName("f")
-	@ObfuscatedGetter(
-		intValue = 1494138605
-	)
-	int field1548;
-	@ObfuscatedName("n")
-	@ObfuscatedGetter(
-		intValue = 1504882137
-	)
-	int field1549;
-	// $FF: synthetic field
-	@ObfuscatedSignature(
-		descriptor = "Leo;"
-	)
-	final class132 this$0;
+@ObfuscatedName("dq")
+public class class126 implements MouseWheel {
+   @ObfuscatedName("a")
+   @ObfuscatedSignature(
+      descriptor = "Ldq;"
+   )
+   static final class126 field1519 = new class126(0, 0, (String)null, -1, -1);
+   @ObfuscatedName("f")
+   @ObfuscatedSignature(
+      descriptor = "Ldq;"
+   )
+   static final class126 field1529 = new class126(1, 1, (String)null, 0, 2);
+   @ObfuscatedName("c")
+   @ObfuscatedSignature(
+      descriptor = "Ldq;"
+   )
+   static final class126 field1514 = new class126(2, 2, (String)null, 1, 2);
+   @ObfuscatedName("x")
+   @ObfuscatedSignature(
+      descriptor = "Ldq;"
+   )
+   static final class126 field1525 = new class126(3, 3, (String)null, 2, 2);
+   @ObfuscatedName("h")
+   @ObfuscatedSignature(
+      descriptor = "Ldq;"
+   )
+   static final class126 field1512 = new class126(4, 4, (String)null, 3, 1);
+   @ObfuscatedName("j")
+   @ObfuscatedSignature(
+      descriptor = "Ldq;"
+   )
+   static final class126 field1517 = new class126(5, 5, (String)null, 4, 1);
+   @ObfuscatedName("y")
+   @ObfuscatedSignature(
+      descriptor = "Ldq;"
+   )
+   static final class126 field1518 = new class126(6, 6, (String)null, 5, 1);
+   @ObfuscatedName("d")
+   @ObfuscatedSignature(
+      descriptor = "Ldq;"
+   )
+   static final class126 field1513 = new class126(7, 7, (String)null, 6, 3);
+   @ObfuscatedName("n")
+   @ObfuscatedSignature(
+      descriptor = "Ldq;"
+   )
+   static final class126 field1520 = new class126(8, 8, (String)null, 7, 3);
+   @ObfuscatedName("r")
+   @ObfuscatedSignature(
+      descriptor = "Ldq;"
+   )
+   static final class126 field1524 = new class126(9, 9, (String)null, 8, 3);
+   @ObfuscatedName("l")
+   @ObfuscatedSignature(
+      descriptor = "Ldq;"
+   )
+   static final class126 field1522 = new class126(10, 10, (String)null, 0, 7);
+   @ObfuscatedName("s")
+   @ObfuscatedSignature(
+      descriptor = "Ldq;"
+   )
+   static final class126 field1523 = new class126(11, 11, (String)null, 1, 7);
+   @ObfuscatedName("p")
+   @ObfuscatedSignature(
+      descriptor = "Ldq;"
+   )
+   static final class126 field1515 = new class126(12, 12, (String)null, 2, 7);
+   @ObfuscatedName("b")
+   @ObfuscatedSignature(
+      descriptor = "Ldq;"
+   )
+   static final class126 field1528 = new class126(13, 13, (String)null, 3, 7);
+   @ObfuscatedName("o")
+   @ObfuscatedSignature(
+      descriptor = "Ldq;"
+   )
+   static final class126 field1526 = new class126(14, 14, (String)null, 4, 7);
+   @ObfuscatedName("u")
+   @ObfuscatedSignature(
+      descriptor = "Ldq;"
+   )
+   static final class126 field1532 = new class126(15, 15, (String)null, 5, 7);
+   @ObfuscatedName("z")
+   @ObfuscatedSignature(
+      descriptor = "Ldq;"
+   )
+   static final class126 field1527 = new class126(16, 16, (String)null, 0, 5);
+   @ObfuscatedName("ao")
+   @Export("fontHelvetica13")
+   static java.awt.Font fontHelvetica13;
+   @ObfuscatedName("t")
+   @ObfuscatedGetter(
+      intValue = -2084525283
+   )
+   final int field1521;
+   @ObfuscatedName("w")
+   @ObfuscatedGetter(
+      intValue = 1661889385
+   )
+   final int field1530;
+   @ObfuscatedName("m")
+   @ObfuscatedGetter(
+      intValue = 241060171
+   )
+   final int field1531;
 
-	@ObfuscatedSignature(
-		descriptor = "(Leo;)V"
-	)
-	class126(class132 var1) {
-		this.this$0 = var1;
-		this.field1546 = -1; // L: 158
-	} // L: 163
+   @ObfuscatedSignature(
+      descriptor = "(IILjava/lang/String;II)V",
+      garbageValue = "-1"
+   )
+   class126(int var1, int var2, String var3, int var4, int var5) {
+      this.field1521 = var1;
+      this.field1530 = var2;
+      this.field1531 = var4;
+   }
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(Lqq;B)V",
-		garbageValue = "-41"
-	)
-	void vmethod3320(Buffer var1) {
-		this.field1546 = var1.readUnsignedShort(); // L: 166
-		this.field1547 = var1.readInt(); // L: 167
-		this.field1548 = var1.readUnsignedByte(); // L: 168
-		this.field1549 = var1.readUnsignedByte(); // L: 169
-	} // L: 170
+   @ObfuscatedName("a")
+   @ObfuscatedSignature(
+      descriptor = "(B)I",
+      garbageValue = "0"
+   )
+   @Export("rsOrdinal")
+   public int rsOrdinal() {
+      return this.field1530;
+   }
 
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "(Led;I)V",
-		garbageValue = "-538131930"
-	)
-	void vmethod3313(ClanSettings var1) {
-		var1.method3125(this.field1546, this.field1547, this.field1548, this.field1549); // L: 173
-	} // L: 174
+   @ObfuscatedName("x")
+   @ObfuscatedSignature(
+      descriptor = "(I)I",
+      garbageValue = "1737952549"
+   )
+   int method2907() {
+      return this.field1531;
+   }
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(IB)Lgx;",
-		garbageValue = "-26"
-	)
-	public static HitSplatDefinition method2973(int var0) {
-		HitSplatDefinition var1 = (HitSplatDefinition)HitSplatDefinition.HitSplatDefinition_cached.get((long)var0); // L: 46
-		if (var1 != null) { // L: 47
-			return var1;
-		} else {
-			byte[] var2 = HitSplatDefinition.HitSplatDefinition_archive.takeFile(32, var0); // L: 48
-			var1 = new HitSplatDefinition(); // L: 49
-			if (var2 != null) { // L: 50
-				var1.decode(new Buffer(var2));
-			}
+   @ObfuscatedName("a")
+   @ObfuscatedSignature(
+      descriptor = "(Ljava/io/File;I)V",
+      garbageValue = "-1465265881"
+   )
+   public static void method2917(File var0) {
+      FileSystem.FileSystem_cacheDir = var0;
+      if (!FileSystem.FileSystem_cacheDir.exists()) {
+         throw new RuntimeException("");
+      } else {
+         FileSystem.FileSystem_hasPermissions = true;
+      }
+   }
 
-			HitSplatDefinition.HitSplatDefinition_cached.put(var1, (long)var0); // L: 51
-			return var1; // L: 52
-		}
-	}
+   @ObfuscatedName("ml")
+   @ObfuscatedSignature(
+      descriptor = "(I)V",
+      garbageValue = "-166821717"
+   )
+   static void method2911() {
+      if (Client.field500 && class296.localPlayer != null) {
+         int var0 = class296.localPlayer.pathX[0];
+         int var1 = class296.localPlayer.pathY[0];
+         if (var0 < 0 || var1 < 0 || var0 >= 104 || var1 >= 104) {
+            return;
+         }
 
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "1443487610"
-	)
-	static int method2981(int var0) {
-		return (int)((Math.log((double)var0) / Interpreter.field850 - 7.0D) * 256.0D); // L: 3780
-	}
+         class31.oculusOrbFocalPointX = class296.localPlayer.x;
+         int var2 = class132.getTileHeight(class296.localPlayer.x, class296.localPlayer.y, ApproximateRouteStrategy.Client_plane) - Client.camFollowHeight;
+         if (var2 < VarpDefinition.field1869) {
+            VarpDefinition.field1869 = var2;
+         }
+
+         PendingSpawn.oculusOrbFocalPointY = class296.localPlayer.y;
+         Client.field500 = false;
+      }
+
+   }
 }

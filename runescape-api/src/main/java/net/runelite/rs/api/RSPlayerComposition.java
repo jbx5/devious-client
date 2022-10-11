@@ -6,7 +6,7 @@ import net.runelite.mapping.Import;
 public interface RSPlayerComposition extends PlayerComposition
 {
 	@Import("isFemale")
-	boolean isFemale();
+	int isFemale();
 
 	@Import("bodyColors")
 	int[] getColors();

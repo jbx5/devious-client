@@ -1,49 +1,49 @@
-import java.util.List;
-import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fl")
-public class class161 {
-	@ObfuscatedName("un")
-	static List field1784;
-	@ObfuscatedName("z")
-	@ObfuscatedSignature(
-		descriptor = "Llv;"
-	)
-	@Export("Widget_fontsArchive")
-	public static AbstractArchive Widget_fontsArchive;
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "Lcm;"
-	)
-	public UrlRequest field1786;
-	@ObfuscatedName("p")
-	public float[] field1781;
-	// $FF: synthetic field
-	@ObfuscatedSignature(
-		descriptor = "Lfc;"
-	)
-	final class156 this$0;
+@ObfuscatedName("fc")
+public class class161 extends class172 {
+   @ObfuscatedName("a")
+   String field1763;
+   // $FF: synthetic field
+   @ObfuscatedSignature(
+      descriptor = "Lft;"
+   )
+   final class162 this$0;
 
-	@ObfuscatedSignature(
-		descriptor = "(Lfc;)V"
-	)
-	class161(class156 var1) {
-		this.this$0 = var1;
-		this.field1781 = new float[4]; // L: 308
-	} // L: 310
+   @ObfuscatedSignature(
+      descriptor = "(Lft;Ljava/lang/String;Ljava/lang/String;)V"
+   )
+   class161(class162 var1, String var2, String var3) {
+      super(var1, var2);
+      this.this$0 = var1;
+      this.field1763 = var3;
+   }
 
-	@ObfuscatedName("gz")
-	@ObfuscatedSignature(
-		descriptor = "(IIB)V",
-		garbageValue = "-15"
-	)
-	static void method3458(int var0, int var1) {
-		if (Player.clientPreferences.method2402() != 0 && var0 != -1) { // L: 3549
-			Message.method1164(class283.field3325, var0, 0, Player.clientPreferences.method2402(), false); // L: 3550
-			Client.playingJingle = true; // L: 3551
-		}
+   @ObfuscatedName("a")
+   @ObfuscatedSignature(
+      descriptor = "(I)I",
+      garbageValue = "-1797995166"
+   )
+   public int vmethod3379() {
+      return 1;
+   }
 
-	} // L: 3553
+   @ObfuscatedName("f")
+   @ObfuscatedSignature(
+      descriptor = "(I)Ljava/lang/String;",
+      garbageValue = "-1778696968"
+   )
+   public String vmethod3380() {
+      return this.field1763;
+   }
+
+   @ObfuscatedName("c")
+   @ObfuscatedSignature(
+      descriptor = "(CI)C",
+      garbageValue = "1811399890"
+   )
+   static char method3268(char var0) {
+      return var0 != 181 && var0 != 402 ? Character.toTitleCase(var0) : var0;
+   }
 }

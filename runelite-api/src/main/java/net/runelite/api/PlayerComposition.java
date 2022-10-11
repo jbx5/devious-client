@@ -38,7 +38,7 @@ public interface PlayerComposition
 	 *
 	 * @return true if the player is female
 	 */
-	boolean isFemale();
+	int isFemale();
 
 	/**
 	 * Get the body part colors for this player composition.

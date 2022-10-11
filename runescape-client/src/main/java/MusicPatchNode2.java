@@ -1,65 +1,73 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jc")
+@ObfuscatedName("jz")
 @Implements("MusicPatchNode2")
 public class MusicPatchNode2 {
-	@ObfuscatedName("by")
-	@ObfuscatedGetter(
-		intValue = -1174257603
-	)
-	static int field3223;
-	@ObfuscatedName("c")
-	byte[] field3219;
-	@ObfuscatedName("p")
-	byte[] field3212;
-	@ObfuscatedName("f")
-	@ObfuscatedGetter(
-		intValue = 2076416029
-	)
-	int field3213;
-	@ObfuscatedName("n")
-	@ObfuscatedGetter(
-		intValue = -1239433131
-	)
-	int field3217;
-	@ObfuscatedName("k")
-	@ObfuscatedGetter(
-		intValue = -1617370895
-	)
-	int field3211;
-	@ObfuscatedName("w")
-	@ObfuscatedGetter(
-		intValue = -215799583
-	)
-	int field3216;
-	@ObfuscatedName("s")
-	@ObfuscatedGetter(
-		intValue = 1225266601
-	)
-	int field3214;
-	@ObfuscatedName("q")
-	@ObfuscatedGetter(
-		intValue = 1368696359
-	)
-	int field3218;
-	@ObfuscatedName("m")
-	@ObfuscatedGetter(
-		intValue = -876009499
-	)
-	int field3222;
+   @ObfuscatedName("a")
+   byte[] field3288;
+   @ObfuscatedName("f")
+   byte[] field3286;
+   @ObfuscatedName("c")
+   @ObfuscatedGetter(
+      intValue = -1582078627
+   )
+   int field3282;
+   @ObfuscatedName("x")
+   @ObfuscatedGetter(
+      intValue = -732362687
+   )
+   int field3283;
+   @ObfuscatedName("h")
+   @ObfuscatedGetter(
+      intValue = -9953013
+   )
+   int field3284;
+   @ObfuscatedName("j")
+   @ObfuscatedGetter(
+      intValue = 1601035699
+   )
+   int field3285;
+   @ObfuscatedName("y")
+   @ObfuscatedGetter(
+      intValue = 508196383
+   )
+   int field3280;
+   @ObfuscatedName("d")
+   @ObfuscatedGetter(
+      intValue = 1320352045
+   )
+   int field3287;
+   @ObfuscatedName("n")
+   @ObfuscatedGetter(
+      intValue = 425773117
+   )
+   int field3281;
 
-	MusicPatchNode2() {
-	} // L: 14
+   MusicPatchNode2() {
+   }
 
-	@ObfuscatedName("fx")
-	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "-1909819821"
-	)
-	static int method5401(int var0) {
-		return var0 * 3 + 600; // L: 1487
-	}
+   @ObfuscatedName("s")
+   @ObfuscatedSignature(
+      descriptor = "(Ljava/lang/String;I)V",
+      garbageValue = "2092953426"
+   )
+   static final void method5441(String var0) {
+      class11.method101("Please remove " + var0 + " from your ignore list first");
+   }
+
+   @ObfuscatedName("z")
+   @ObfuscatedSignature(
+      descriptor = "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;B)V",
+      garbageValue = "69"
+   )
+   @Export("setLoginResponseString")
+   static void setLoginResponseString(String var0, String var1, String var2) {
+      Login.Login_response1 = var0;
+      Login.Login_response2 = var1;
+      Login.Login_response3 = var2;
+   }
 }
