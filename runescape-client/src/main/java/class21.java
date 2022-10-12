@@ -524,7 +524,7 @@ public class class21 {
       class139.scene.clearTempGameObjects();
       Varcs.method2612(var0, var1, var2, var3);
       if (Client.hintArrowType == 2) {
-         Skeleton.worldToScreen(Client.hintArrowSubX * 64 + (Client.hintArrowX - KeyHandler.baseX * 64 << 7), Client.hintArrowSubY * 64 + (Client.hintArrowY - class158.baseY * 64 << 7), Client.field770 * 4);
+         Skeleton.worldToScreen(Client.hintArrowSubX * 64 + (Client.hintArrowX - KeyHandler.baseX * 64 << 7), Client.hintArrowSubY * 64 + (Client.hintArrowY - class158.baseY * 64 << 7), Client.hintArrowHeight * 4);
          if (Client.viewportTempX > -1 && Client.cycle % 20 < 10) {
             class162.headIconHintSprites[0].drawTransBgAt(var0 + Client.viewportTempX - 12, Client.viewportTempY + var1 - 28);
          }

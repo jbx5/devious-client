@@ -79,21 +79,27 @@ public abstract class RSActorMixin implements RSActor
 	@Override
 	public Actor getInteracting()
 	{
-		int index = getRSInteracting();
-		if (index == -1 || index == 65535)
+		try
 		{
+			int index = getRSInteracting();
+			if (index == -1 || index == 65535) {
+				return null;
+			}
+
+			if (index < 65535) {
+				NPC[] npcs = client.getCachedNPCs();
+				return npcs[index];
+			}
+
+			index -= 65535;
+			Player[] players = client.getCachedPlayers();
+			return players[index];
+		}
+		catch (ArrayIndexOutOfBoundsException e)
+		{
+			e.printStackTrace();
 			return null;
 		}
-
-		if (index < 65535)
-		{
-			NPC[] npcs = client.getCachedNPCs();
-			return npcs[index];
-		}
-
-		index -= 65535;
-		Player[] players = client.getCachedPlayers();
-		return players[index];
 	}
 
 	@Inject

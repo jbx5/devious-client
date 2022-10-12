@@ -399,7 +399,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
    @ObfuscatedGetter(
       intValue = -701150334
    )
-   static int field770 = 0;
+   @Export("hintArrowHeight")
+   static int hintArrowHeight = 0;
    @ObfuscatedName("do")
    @ObfuscatedGetter(
       intValue = 702646592
@@ -5831,7 +5832,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
                   hintArrowType = 2;
                   hintArrowX = var3.readUnsignedShort();
                   hintArrowY = var3.readUnsignedShort();
-                  field770 = var3.readUnsignedByte() * 2;
+                  hintArrowHeight = var3.readUnsignedByte() * 2;
                }
 
                if (hintArrowType == 10) {
