@@ -6,7 +6,8 @@ import net.runelite.mapping.Import;
 import java.awt.event.FocusListener;
 import java.awt.event.KeyListener;
 
-public interface RSKeyHandler extends KeyListener, FocusListener, KeyFocusListener {
+public interface RSKeyHandler extends KeyListener, FocusListener, KeyFocusListener
+{
 
     @Import("KeyHandler_idleCycles")
     void setIdleCycles(int cycles);
