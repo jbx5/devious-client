@@ -82,7 +82,7 @@ public abstract class RSActorMixin implements RSActor
 		try
 		{
 			int index = getRSInteracting();
-			if (index == -1 || index == 65535) {
+			if (index == -1 || index > 65535) {
 				return null;
 			}
 
