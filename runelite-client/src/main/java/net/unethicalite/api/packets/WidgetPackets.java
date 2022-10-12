@@ -201,6 +201,11 @@ public class WidgetPackets
 		createWidgetOnWidget(sourceWidgetId, sourceSlot, sourceItemId, destinationWidgetId, destinationSlot, destinationItemId).send();
 	}
 
+	public static void queueResumeObjectPacket(int itemId)
+	{
+		createContinueObjectPacket(itemId).send();
+	}
+
 	public static PacketBufferNode createType1Action(int widgetId)
 	{
 		var client = Static.getClient();
@@ -353,12 +358,12 @@ public class WidgetPackets
 		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
 		var packetBufferNode = Static.getClient().preparePacket(clientPacket.IF_BUTTONT(), client.getPacketWriter().getIsaacCipher());
-		packetBufferNode.getPacketBuffer().writeShort(destinationSlot);
-		packetBufferNode.getPacketBuffer().writeIntLE(sourceWidgetId);
+		packetBufferNode.getPacketBuffer().writeShortAddLE(sourceItemId);
+		packetBufferNode.getPacketBuffer().writeShortAddLE(destinationSlot);
+		packetBufferNode.getPacketBuffer().writeIntME(sourceWidgetId);
+		packetBufferNode.getPacketBuffer().writeShort(itemId);
+		packetBufferNode.getPacketBuffer().writeIntLE(widgetId);
 		packetBufferNode.getPacketBuffer().writeShortLE(sourceSlot);
-		packetBufferNode.getPacketBuffer().writeIntIME(widgetId);
-		packetBufferNode.getPacketBuffer().writeShort(sourceItemId);
-		packetBufferNode.getPacketBuffer().writeShortLE(itemId);
 		return packetBufferNode;
 	}
 
@@ -367,8 +372,17 @@ public class WidgetPackets
 		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
 		var packetBufferNode = Static.getClient().preparePacket(clientPacket.RESUME_PAUSEBUTTON(), client.getPacketWriter().getIsaacCipher());
-		packetBufferNode.getPacketBuffer().writeShortAddLE(childId);
-		packetBufferNode.getPacketBuffer().writeIntME(widgetId);
+		packetBufferNode.getPacketBuffer().writeShortLE(childId);
+		packetBufferNode.getPacketBuffer().writeInt(widgetId);
+		return packetBufferNode;
+	}
+
+	public static PacketBufferNode createContinueObjectPacket(int itemId)
+	{
+		var client = Static.getClient();
+		var clientPacket = Game.getClientPacket();
+		var packetBufferNode = Static.getClient().preparePacket(clientPacket.RESUME_OBJDIALOG(), client.getPacketWriter().getIsaacCipher());
+		packetBufferNode.getPacketBuffer().writeShort(itemId);
 		return packetBufferNode;
 	}
 }
