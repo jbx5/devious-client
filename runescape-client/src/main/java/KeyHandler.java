@@ -46,7 +46,7 @@ public class KeyHandler implements KeyListener, FocusListener {
       intValue = 453646007
    )
    @Export("KeyHandler_idleCycles")
-   public volatile int KeyHandler_idleCycles = 0;
+   volatile int KeyHandler_idleCycles = 0;
 
    KeyHandler() {
    }

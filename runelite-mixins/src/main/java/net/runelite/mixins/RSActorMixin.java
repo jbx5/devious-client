@@ -82,18 +82,19 @@ public abstract class RSActorMixin implements RSActor
 		try
 		{
 			int index = getRSInteracting();
-			if (index == -1 || index >= 65535)
+			if (index == -1 || index == 65535 || index == 16777215)
 			{
 				return null;
 			}
 
-			if (index < 32768)
+			int var2 = client.isLargePlayerInfo() ? 65536 : '耀';
+			if (index < var2)
 			{
 				NPC[] npcs = client.getCachedNPCs();
 				return npcs[index];
 			}
 
-			index -= 32768;
+			index -= var2;
 			Player[] players = client.getCachedPlayers();
 			return players[index];
 		}

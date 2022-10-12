@@ -14,7 +14,8 @@ public class Script extends DualNode {
    @Export("Script_cached")
    static EvictingDualNodeHashTable Script_cached = new EvictingDualNodeHashTable(128);
    @ObfuscatedName("dq")
-   static boolean field972;
+   @Export("isLargePlayerInfo")
+   static boolean isLargePlayerInfo;
    @ObfuscatedName("pb")
    @ObfuscatedGetter(
       intValue = 2134394913

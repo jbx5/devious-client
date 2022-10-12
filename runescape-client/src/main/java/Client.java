@@ -5066,7 +5066,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
             }
 
             if (ServerPacket.field3233 == var1.serverPacket) {
-               Script.field972 = true;
+               Script.isLargePlayerInfo = true;
                WorldMapCacheName.updatePlayers(var3, var1.serverPacketLength);
                class377.method7197();
                var1.serverPacket = null;

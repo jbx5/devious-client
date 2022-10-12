@@ -113,7 +113,7 @@ public class class21 {
          int var6;
          if ((var4 & 16) != 0) {
             var3.targetIndex = var0.readUnsignedShortAddLE();
-            if (Script.field972) {
+            if (Script.isLargePlayerInfo) {
                var3.targetIndex += var0.readUnsignedByteSub() << 16;
                var6 = 16777215;
             } else {
