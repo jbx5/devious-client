@@ -39,6 +39,7 @@ public class KeyHandler implements KeyListener, FocusListener {
    )
    class30[] field134 = new class30[3];
    @ObfuscatedName("h")
+   @Export("field137")
    boolean[] field137 = new boolean[112];
    @ObfuscatedName("j")
    @ObfuscatedGetter(

@@ -3289,5 +3289,23 @@ public abstract class RSClientMixin implements RSClient
 	{
 		return idleTimeout;
 	}
+
+	@Inject
+	@Override
+	public int getKeyboardIdleTicks() {
+		return this.getKeyHandler().getIdleCycles();
+	}
+
+	@Inject
+	@Override
+	public void setKeyboardIdleTicks(int var1) {
+		this.getKeyHandler().setIdleCycles(var1);
+	}
+
+	@Inject
+	@Override
+	public boolean[] getPressedKeys() {
+		return this.getKeyHandler().getPressedKeys();
+	}
 }
 

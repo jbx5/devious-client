@@ -672,7 +672,7 @@ public interface RSClient extends RSGameEngine, Client
 	@Override
 	long getMouseLastPressedMillis();
 
-	/*@Import("KeyHandler_idleCycles")
+	@Import("KeyHandler_idleCycles")
 	@Override
 	void setKeyboardIdleTicks(int cycles);
 
@@ -682,7 +682,7 @@ public interface RSClient extends RSGameEngine, Client
 
 	@Import("KeyHandler_pressedKeys")
 	@Override
-	boolean[] getPressedKeys();*/
+	boolean[] getPressedKeys();
 
 	@Import("isLowDetail")
 	boolean isLowMemory();
@@ -1707,6 +1707,9 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("getPacketBufferNode")
 	@Override
 	RSPacketBufferNode preparePacket(ClientPacket packet, IsaacCipher isaac);
+
+	@Import("keyHandler")
+	RSKeyHandler getKeyHandler();
 
 	@Import("loadWorlds")
 	@Override

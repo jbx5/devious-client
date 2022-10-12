@@ -96,7 +96,8 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
    @ObfuscatedSignature(
       descriptor = "Laj;"
    )
-   protected static KeyHandler field227 = new KeyHandler();
+   @Export("keyHandler")
+   protected static KeyHandler keyHandler = new KeyHandler();
    @ObfuscatedName("ar")
    @ObfuscatedGetter(
       longValue = -5318768701372018855L
@@ -315,7 +316,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
          class4444.KeyHandler_keyCodes[520] = 59;
       }
 
-      field227.method354(this.canvas);
+      keyHandler.method354(this.canvas);
    }
 
    @ObfuscatedName("u")
@@ -324,7 +325,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
       garbageValue = "869354353"
    )
    protected final void method603() {
-      field227.method356();
+      keyHandler.method356();
    }
 
    @ObfuscatedName("z")
@@ -333,7 +334,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
       garbageValue = "12"
    )
    protected void method513(class30 var1, int var2) {
-      field227.method384(var1, var2);
+      keyHandler.method384(var1, var2);
    }
 
    @ObfuscatedName("t")
@@ -446,7 +447,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
    )
    @Export("replaceCanvas")
    final void replaceCanvas() {
-      field227.method355(this.canvas);
+      keyHandler.method355(this.canvas);
       java.awt.Canvas var1 = this.canvas;
       var1.removeMouseListener(MouseHandler.MouseHandler_instance);
       var1.removeMouseMotionListener(MouseHandler.MouseHandler_instance);
@@ -457,7 +458,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
       }
 
       this.addCanvas();
-      field227.method354(this.canvas);
+      keyHandler.method354(this.canvas);
       java.awt.Canvas var2 = this.canvas;
       var2.addMouseListener(MouseHandler.MouseHandler_instance);
       var2.addMouseMotionListener(MouseHandler.MouseHandler_instance);

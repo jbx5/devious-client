@@ -85,13 +85,13 @@ public abstract class RSActorMixin implements RSActor
 			return null;
 		}
 
-		if (index < 32768)
+		if (index < 65535)
 		{
 			NPC[] npcs = client.getCachedNPCs();
 			return npcs[index];
 		}
 
-		index -= 32768;
+		index -= 65535;
 		Player[] players = client.getCachedPlayers();
 		return players[index];
 	}

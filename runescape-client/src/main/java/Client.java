@@ -4098,7 +4098,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 
                                                    Projectile.varcs.tryWrite();
                                                    var3 = ++MouseHandler.MouseHandler_idleCycles - 1;
-                                                   var5 = GameEngine.field227.method353();
+                                                   var5 = GameEngine.keyHandler.method353();
                                                    if (var3 > 15000 && var5 > 15000) {
                                                       logoutTimer = 250;
                                                       MouseHandler.MouseHandler_idleCycles = 14500;
