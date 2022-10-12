@@ -750,7 +750,7 @@ public final class class278 {
             Client.field543 = var0.spriteId;
          }
 
-         if (Client.playerAppearance.isFemale == 1) {
+         if (Client.playerAppearance.gender == 1) {
             var0.spriteId2 = Client.field539;
          } else {
             var0.spriteId2 = Client.field543;
@@ -762,7 +762,7 @@ public final class class278 {
             Client.field543 = var0.spriteId;
          }
 
-         if (Client.playerAppearance.isFemale == 1) {
+         if (Client.playerAppearance.gender == 1) {
             var0.spriteId2 = Client.field543;
          } else {
             var0.spriteId2 = Client.field539;
