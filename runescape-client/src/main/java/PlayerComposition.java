@@ -31,8 +31,8 @@ public class PlayerComposition {
    @ObfuscatedGetter(
       intValue = 1040392237
    )
-   @Export("isFemale")
-   public int isFemale = 0;
+   @Export("gender")
+   public int gender = 0;
    @ObfuscatedName("h")
    @ObfuscatedGetter(
       intValue = -79707607
@@ -93,7 +93,7 @@ public class PlayerComposition {
 
       this.equipment = var1;
       this.bodyColors = var2;
-      this.isFemale = var3;
+      this.gender = var3;
       this.npcTransformId = var4;
       this.setHash();
    }
@@ -105,7 +105,7 @@ public class PlayerComposition {
    )
    @Export("changeAppearance")
    public void changeAppearance(int var1, boolean var2) {
-      if (var1 != 1 || this.isFemale != 1) {
+      if (var1 != 1 || this.gender != 1) {
          int var3 = this.equipment[equipmentIndices[var1]];
          if (var3 != 0) {
             var3 -= 256;
@@ -125,7 +125,7 @@ public class PlayerComposition {
                }
 
                var4 = Script.KitDefinition_get(var3);
-            } while(var4 == null || var4.nonSelectable || var1 + (this.isFemale == 1 ? 7 : 0) != var4.bodypartID);
+            } while(var4 == null || var4.nonSelectable || var1 + (this.gender == 1 ? 7 : 0) != var4.bodypartID);
 
             this.equipment[equipmentIndices[var1]] = var3 + 256;
             this.setHash();
@@ -166,7 +166,7 @@ public class PlayerComposition {
       garbageValue = "72"
    )
    public void method5732(int var1) {
-      if (this.isFemale != var1) {
+      if (this.gender != var1) {
          this.method5731((int[])null, this.bodyColors, var1, -1);
       }
    }
@@ -178,7 +178,7 @@ public class PlayerComposition {
    )
    @Export("write")
    public void write(Buffer var1) {
-      var1.writeByte(this.isFemale);
+      var1.writeByte(this.gender);
 
       int var2;
       for(var2 = 0; var2 < 7; ++var2) {
@@ -232,7 +232,7 @@ public class PlayerComposition {
       }
 
       this.hash <<= 1;
-      this.hash += (long)(this.isFemale * 568602533) * 1040392237L;
+      this.hash += (long)(this.gender * 568602533) * 1040392237L;
       this.equipment[5] = var3;
       this.equipment[9] = var4;
       if (0L != var1 && var1 != this.hash || this.field3428) {
@@ -282,7 +282,7 @@ public class PlayerComposition {
                   var9 = true;
                }
 
-               if (var11 >= 512 && !MidiPcmStream.ItemDefinition_get(var11 - 512).method3826(this.isFemale)) {
+               if (var11 >= 512 && !MidiPcmStream.ItemDefinition_get(var11 - 512).method3826(this.gender)) {
                   var9 = true;
                }
             }
@@ -313,7 +313,7 @@ public class PlayerComposition {
 
                   if (var13 >= 512) {
                      ItemComposition var22 = MidiPcmStream.ItemDefinition_get(var13 - 512);
-                     ModelData var15 = var22.method3779(this.isFemale);
+                     ModelData var15 = var22.method3779(this.gender);
                      if (var15 != null) {
                         if (this.playerCompositionColorTextureOverrides != null) {
                            PlayerCompositionColorTextureOverride var16 = this.playerCompositionColorTextureOverrides[var12];
@@ -392,7 +392,7 @@ public class PlayerComposition {
                var1 = true;
             }
 
-            if (var3 >= 512 && !MidiPcmStream.ItemDefinition_get(var3 - 512).method3824(this.isFemale)) {
+            if (var3 >= 512 && !MidiPcmStream.ItemDefinition_get(var3 - 512).method3824(this.gender)) {
                var1 = true;
             }
          }
@@ -415,7 +415,7 @@ public class PlayerComposition {
                }
 
                if (var5 >= 512) {
-                  var6 = MidiPcmStream.ItemDefinition_get(var5 - 512).method3787(this.isFemale);
+                  var6 = MidiPcmStream.ItemDefinition_get(var5 - 512).method3787(this.gender);
                   if (var6 != null) {
                      var7[var3++] = var6;
                   }

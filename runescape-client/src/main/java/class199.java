@@ -46,8 +46,7 @@ public class class199 implements class30 {
    )
    int field2258 = 0;
    @ObfuscatedName("r")
-   @Export("KeyHandler_pressedKeys")
-   boolean[] KeyHandler_pressedKeys = new boolean[112];
+   boolean[] field2251 = new boolean[112];
    @ObfuscatedName("l")
    boolean[] field2254 = new boolean[112];
    @ObfuscatedName("s")
@@ -67,7 +66,7 @@ public class class199 implements class30 {
    )
    public boolean vmethod3949(int var1) {
       this.method3952(var1);
-      this.KeyHandler_pressedKeys[var1] = true;
+      this.field2251[var1] = true;
       this.field2254[var1] = true;
       this.field2257[var1] = false;
       this.field2246[++this.field2247 - 1] = var1;
@@ -80,7 +79,7 @@ public class class199 implements class30 {
       garbageValue = "-1545920011"
    )
    public boolean vmethod3989(int var1) {
-      this.KeyHandler_pressedKeys[var1] = false;
+      this.field2251[var1] = false;
       this.field2254[var1] = false;
       this.field2257[var1] = true;
       this.field2260[++this.field2255 - 1] = var1;
@@ -172,7 +171,7 @@ public class class199 implements class30 {
       garbageValue = "-413170912"
    )
    public boolean method3956(int var1) {
-      return var1 >= 0 && var1 < 112 ? this.KeyHandler_pressedKeys[var1] : false;
+      return var1 >= 0 && var1 < 112 ? this.field2251[var1] : false;
    }
 
    @ObfuscatedName("q")

@@ -967,7 +967,7 @@ public abstract class Actor extends Renderable {
                class125.Interpreter_stringStackSize -= 2;
                var3 = Interpreter.Interpreter_stringStack[class125.Interpreter_stringStackSize];
                var4 = Interpreter.Interpreter_stringStack[class125.Interpreter_stringStackSize + 1];
-               if (class296.localPlayer.appearance != null && class296.localPlayer.appearance.isFemale != 0) {
+               if (class296.localPlayer.appearance != null && class296.localPlayer.appearance.gender != 0) {
                   Interpreter.Interpreter_stringStack[++class125.Interpreter_stringStackSize - 1] = var4;
                } else {
                   Interpreter.Interpreter_stringStack[++class125.Interpreter_stringStackSize - 1] = var3;

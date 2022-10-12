@@ -39,8 +39,8 @@ public class KeyHandler implements KeyListener, FocusListener {
    )
    class30[] field134 = new class30[3];
    @ObfuscatedName("h")
-   @Export("field137")
-   boolean[] field137 = new boolean[112];
+   @Export("keyHandler_pressedKeys")
+   boolean[] KeyHandler_pressedKeys = new boolean[112];
    @ObfuscatedName("j")
    @ObfuscatedGetter(
       intValue = 453646007
@@ -145,7 +145,7 @@ public class KeyHandler implements KeyListener, FocusListener {
       }
 
       if (var2 >= 0) {
-         this.field137[var2] = true;
+         this.KeyHandler_pressedKeys[var2] = true;
          this.field143.add(new class34(1, var2));
          this.KeyHandler_idleCycles = 0;
       }
@@ -170,7 +170,7 @@ public class KeyHandler implements KeyListener, FocusListener {
       }
 
       if (var2 >= 0) {
-         this.field137[var2] = false;
+         this.KeyHandler_pressedKeys[var2] = false;
          this.field143.add(new class34(2, var2));
       }
 
@@ -179,8 +179,8 @@ public class KeyHandler implements KeyListener, FocusListener {
 
    public final synchronized void focusLost(FocusEvent var1) {
       for(int var2 = 0; var2 < 112; ++var2) {
-         if (this.field137[var2]) {
-            this.field137[var2] = false;
+         if (this.KeyHandler_pressedKeys[var2]) {
+            this.KeyHandler_pressedKeys[var2] = false;
             this.field143.add(new class34(2, var2));
          }
       }

@@ -10,6 +10,13 @@ public abstract class RSPlayerCompositionMixin implements RSPlayerComposition
 {
 	@Inject
 	@Override
+	public boolean isFemale()
+	{
+		return getGender() == 1;
+	}
+
+	@Inject
+	@Override
 	public int getEquipmentId(KitType type)
 	{
 		int id = getEquipmentIds()[type.getIndex()];
