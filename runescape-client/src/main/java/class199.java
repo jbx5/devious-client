@@ -8,7 +8,7 @@ import net.runelite.mapping.ObfuscatedSignature;
 public class class199 implements class30 {
    @ObfuscatedName("iy")
    @ObfuscatedSignature(
-      descriptor = "[Lri;"
+           descriptor = "[Lri;"
    )
    @Export("crossSprites")
    static SpritePixels[] crossSprites;
@@ -20,34 +20,33 @@ public class class199 implements class30 {
    public int[] field2246 = new int[128];
    @ObfuscatedName("x")
    @ObfuscatedGetter(
-      intValue = -1356554437
+           intValue = -1356554437
    )
    public int field2247 = 0;
    @ObfuscatedName("h")
    int[] field2260 = new int[128];
    @ObfuscatedName("j")
    @ObfuscatedGetter(
-      intValue = -130807531
+           intValue = -130807531
    )
    int field2255 = 0;
    @ObfuscatedName("y")
    @ObfuscatedGetter(
-      intValue = -1783716615
+           intValue = -1783716615
    )
    int field2250 = 0;
    @ObfuscatedName("d")
    @ObfuscatedGetter(
-      intValue = -1510878411
+           intValue = -1510878411
    )
    int field2249 = 0;
    @ObfuscatedName("n")
    @ObfuscatedGetter(
-      intValue = -1994138379
+           intValue = -1994138379
    )
    int field2258 = 0;
    @ObfuscatedName("r")
-   @Export("KeyHandler_pressedKeys")
-   boolean[] KeyHandler_pressedKeys = new boolean[112];
+   boolean[] field2251 = new boolean[112];
    @ObfuscatedName("l")
    boolean[] field2254 = new boolean[112];
    @ObfuscatedName("s")
@@ -56,18 +55,18 @@ public class class199 implements class30 {
    public char field2256;
    @ObfuscatedName("b")
    @ObfuscatedGetter(
-      intValue = 537328019
+           intValue = 537328019
    )
    public int field2252;
 
    @ObfuscatedName("a")
    @ObfuscatedSignature(
-      descriptor = "(II)Z",
-      garbageValue = "1393279885"
+           descriptor = "(II)Z",
+           garbageValue = "1393279885"
    )
    public boolean vmethod3949(int var1) {
       this.method3952(var1);
-      this.KeyHandler_pressedKeys[var1] = true;
+      this.field2251[var1] = true;
       this.field2254[var1] = true;
       this.field2257[var1] = false;
       this.field2246[++this.field2247 - 1] = var1;
@@ -76,11 +75,11 @@ public class class199 implements class30 {
 
    @ObfuscatedName("f")
    @ObfuscatedSignature(
-      descriptor = "(II)Z",
-      garbageValue = "-1545920011"
+           descriptor = "(II)Z",
+           garbageValue = "-1545920011"
    )
    public boolean vmethod3989(int var1) {
-      this.KeyHandler_pressedKeys[var1] = false;
+      this.field2251[var1] = false;
       this.field2254[var1] = false;
       this.field2257[var1] = true;
       this.field2260[++this.field2255 - 1] = var1;
@@ -89,8 +88,8 @@ public class class199 implements class30 {
 
    @ObfuscatedName("c")
    @ObfuscatedSignature(
-      descriptor = "(CI)Z",
-      garbageValue = "1185620152"
+           descriptor = "(CI)Z",
+           garbageValue = "1185620152"
    )
    public boolean vmethod3951(char var1) {
       int var2 = this.field2249 + 1 & 127;
@@ -105,8 +104,8 @@ public class class199 implements class30 {
 
    @ObfuscatedName("x")
    @ObfuscatedSignature(
-      descriptor = "(ZB)Z",
-      garbageValue = "109"
+           descriptor = "(ZB)Z",
+           garbageValue = "109"
    )
    public boolean vmethod3953(boolean var1) {
       return false;
@@ -114,8 +113,8 @@ public class class199 implements class30 {
 
    @ObfuscatedName("u")
    @ObfuscatedSignature(
-      descriptor = "(II)V",
-      garbageValue = "-523425228"
+           descriptor = "(II)V",
+           garbageValue = "-523425228"
    )
    void method3952(int var1) {
       int var2 = this.field2249 + 1 & 127;
@@ -124,12 +123,13 @@ public class class199 implements class30 {
          this.field2253[this.field2249] = 0;
          this.field2249 = var2;
       }
+
    }
 
    @ObfuscatedName("z")
    @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "-1294780802"
+           descriptor = "(I)V",
+           garbageValue = "-1294780802"
    )
    public void method3954() {
       this.field2250 = this.field2258;
@@ -142,8 +142,8 @@ public class class199 implements class30 {
 
    @ObfuscatedName("t")
    @ObfuscatedSignature(
-      descriptor = "(B)Z",
-      garbageValue = "75"
+           descriptor = "(B)Z",
+           garbageValue = "75"
    )
    public final boolean method3981() {
       if (this.field2258 == this.field2250) {
@@ -158,8 +158,8 @@ public class class199 implements class30 {
 
    @ObfuscatedName("w")
    @ObfuscatedSignature(
-      descriptor = "(II)Z",
-      garbageValue = "-532436733"
+           descriptor = "(II)Z",
+           garbageValue = "-532436733"
    )
    public boolean method3990(int var1) {
       return var1 >= 0 && var1 < 112 ? this.field2254[var1] : false;
@@ -167,17 +167,17 @@ public class class199 implements class30 {
 
    @ObfuscatedName("m")
    @ObfuscatedSignature(
-      descriptor = "(II)Z",
-      garbageValue = "-413170912"
+           descriptor = "(II)Z",
+           garbageValue = "-413170912"
    )
    public boolean method3956(int var1) {
-      return var1 >= 0 && var1 < 112 ? this.KeyHandler_pressedKeys[var1] : false;
+      return var1 >= 0 && var1 < 112 ? this.field2251[var1] : false;
    }
 
    @ObfuscatedName("q")
    @ObfuscatedSignature(
-      descriptor = "(IB)Z",
-      garbageValue = "16"
+           descriptor = "(IB)Z",
+           garbageValue = "16"
    )
    public boolean method3966(int var1) {
       return var1 >= 0 && var1 < 112 ? this.field2257[var1] : false;
@@ -185,8 +185,8 @@ public class class199 implements class30 {
 
    @ObfuscatedName("i")
    @ObfuscatedSignature(
-      descriptor = "(I)[I",
-      garbageValue = "1388395040"
+           descriptor = "(I)[I",
+           garbageValue = "1388395040"
    )
    public int[] method3985() {
       int[] var1 = new int[this.field2247];
@@ -200,8 +200,8 @@ public class class199 implements class30 {
 
    @ObfuscatedName("e")
    @ObfuscatedSignature(
-      descriptor = "(B)[I",
-      garbageValue = "7"
+           descriptor = "(B)[I",
+           garbageValue = "7"
    )
    public int[] method3959() {
       int[] var1 = new int[this.field2255];
@@ -215,8 +215,8 @@ public class class199 implements class30 {
 
    @ObfuscatedName("x")
    @ObfuscatedSignature(
-      descriptor = "([BI)V",
-      garbageValue = "-1953754974"
+           descriptor = "([BI)V",
+           garbageValue = "-1953754974"
    )
    @Export("ByteArrayPool_release")
    public static synchronized void ByteArrayPool_release(byte[] var0) {
@@ -243,8 +243,8 @@ public class class199 implements class30 {
 
    @ObfuscatedName("s")
    @ObfuscatedSignature(
-      descriptor = "(CB)Z",
-      garbageValue = "3"
+           descriptor = "(CB)Z",
+           garbageValue = "3"
    )
    static boolean method3997(char var0) {
       return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!\"ï¿½$%^&*()-_=+[{]};:'@#~,<.>/?\\| ".indexOf(var0) != -1;
@@ -252,8 +252,8 @@ public class class199 implements class30 {
 
    @ObfuscatedName("i")
    @ObfuscatedSignature(
-      descriptor = "(Laa;I)V",
-      garbageValue = "-68845051"
+           descriptor = "(Laa;I)V",
+           garbageValue = "-68845051"
    )
    public static final void method3999(class51 var0) {
       class32.pcmPlayerProvider = var0;
