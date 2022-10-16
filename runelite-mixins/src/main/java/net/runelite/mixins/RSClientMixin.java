@@ -3274,13 +3274,45 @@ public abstract class RSClientMixin implements RSClient
 	}
 
 	@Inject
-	private static int idleTimeout;
+	private static int idleTimeout = 15000;
+
+	@Inject
+	private static volatile int idleCycles;
+
+	@Inject
+	public static volatile long lastActivityNanos = System.nanoTime();
+
+	@Inject
+	@FieldHook("MouseHandler_idleCycles")
+	public static void onIdleCyclesChanged(int paramInt)
+	{
+		if (client.getMouseIdleTicks() > 0)
+		{
+			long l = System.nanoTime() - lastActivityNanos;
+			idleCycles = (int)(l / 20000000L);
+		}
+		else
+		{
+			idleCycles = 0;
+			lastActivityNanos = System.nanoTime();
+		}
+
+		client.setMouseIdleTicks(15000 * idleCycles / idleTimeout);
+	}
 
 	@Inject
 	@Override
 	public void setIdleTimeout(int ticks)
 	{
 		idleTimeout = ticks;
+		if (idleTimeout > 75000)
+		{
+			idleTimeout = 75000;
+		}
+		else if (idleTimeout < 15000)
+		{
+			idleTimeout = 15000;
+		}
 	}
 
 	@Inject
