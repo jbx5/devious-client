@@ -25,7 +25,7 @@ public abstract class RSKeyHandlerMixin implements RSKeyHandler
 	public final synchronized void keyPressed(KeyEvent keyEvent)
 	{
 		client.getCallbacks().keyPressed(keyEvent);
-		if (!keyEvent.isConsumed())
+		if (!keyEvent.isConsumed() && this.getIdleCycles() >= 1)
 		{
 			keyPressed(keyEvent);
 		}
@@ -37,7 +37,7 @@ public abstract class RSKeyHandlerMixin implements RSKeyHandler
 	public final synchronized void keyReleased(KeyEvent keyEvent)
 	{
 		client.getCallbacks().keyReleased(keyEvent);
-		if (!keyEvent.isConsumed())
+		if (!keyEvent.isConsumed() && this.getIdleCycles() >= 1)
 		{
 			keyReleased(keyEvent);
 		}
