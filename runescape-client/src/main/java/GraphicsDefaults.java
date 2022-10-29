@@ -4,124 +4,113 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("nd")
+@ObfuscatedName("or")
 @Implements("GraphicsDefaults")
 public class GraphicsDefaults {
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(
-		intValue = -2070250657
-	)
-	@Export("compass")
-	public int compass;
-	@ObfuscatedName("p")
-	@ObfuscatedGetter(
-		intValue = 174756829
-	)
-	public int field4408;
-	@ObfuscatedName("f")
-	@ObfuscatedGetter(
-		intValue = -2076394261
-	)
-	@Export("mapScenes")
-	public int mapScenes;
-	@ObfuscatedName("n")
-	@ObfuscatedGetter(
-		intValue = -1807216755
-	)
-	@Export("headIconsPk")
-	public int headIconsPk;
-	@ObfuscatedName("k")
-	@ObfuscatedGetter(
-		intValue = 508832797
-	)
-	public int field4411;
-	@ObfuscatedName("w")
-	@ObfuscatedGetter(
-		intValue = -386379673
-	)
-	public int field4417;
-	@ObfuscatedName("s")
-	@ObfuscatedGetter(
-		intValue = -610848783
-	)
-	public int field4407;
-	@ObfuscatedName("q")
-	@ObfuscatedGetter(
-		intValue = 2141391655
-	)
-	public int field4413;
-	@ObfuscatedName("m")
-	@ObfuscatedGetter(
-		intValue = -63756691
-	)
-	public int field4414;
-	@ObfuscatedName("x")
-	@ObfuscatedGetter(
-		intValue = 2093335225
-	)
-	public int field4416;
-	@ObfuscatedName("j")
-	@ObfuscatedGetter(
-		intValue = -1786337157
-	)
-	public int field4415;
+   @ObfuscatedName("a")
+   @ObfuscatedGetter(
+      intValue = 1143172387
+   )
+   @Export("compass")
+   public int compass = -1;
+   @ObfuscatedName("f")
+   @ObfuscatedGetter(
+      intValue = -864189905
+   )
+   public int field4536 = -1;
+   @ObfuscatedName("c")
+   @ObfuscatedGetter(
+      intValue = 35824071
+   )
+   @Export("mapScenes")
+   public int mapScenes = -1;
+   @ObfuscatedName("x")
+   @ObfuscatedGetter(
+      intValue = 2039169195
+   )
+   @Export("headIconsPk")
+   public int headIconsPk = -1;
+   @ObfuscatedName("h")
+   @ObfuscatedGetter(
+      intValue = -2112358395
+   )
+   public int field4538 = -1;
+   @ObfuscatedName("j")
+   @ObfuscatedGetter(
+      intValue = -1102270247
+   )
+   public int field4539 = -1;
+   @ObfuscatedName("y")
+   @ObfuscatedGetter(
+      intValue = 1708342261
+   )
+   public int field4540 = -1;
+   @ObfuscatedName("d")
+   @ObfuscatedGetter(
+      intValue = -1036565301
+   )
+   public int field4541 = -1;
+   @ObfuscatedName("n")
+   @ObfuscatedGetter(
+      intValue = 539674131
+   )
+   public int field4542 = -1;
+   @ObfuscatedName("r")
+   @ObfuscatedGetter(
+      intValue = 178036597
+   )
+   public int field4543 = -1;
+   @ObfuscatedName("l")
+   @ObfuscatedGetter(
+      intValue = -1363465089
+   )
+   public int field4544 = -1;
 
-	public GraphicsDefaults() {
-		this.compass = -1; // L: 7
-		this.field4408 = -1; // L: 8
-		this.mapScenes = -1; // L: 9
-		this.headIconsPk = -1; // L: 10
-		this.field4411 = -1; // L: 11
-		this.field4417 = -1; // L: 12
-		this.field4407 = -1; // L: 13
-		this.field4413 = -1; // L: 14
-		this.field4414 = -1; // L: 15
-		this.field4416 = -1; // L: 16
-		this.field4415 = -1; // L: 17
-	}
+   @ObfuscatedName("a")
+   @ObfuscatedSignature(
+      descriptor = "(Llg;I)V",
+      garbageValue = "-2108438411"
+   )
+   @Export("decode")
+   public void decode(AbstractArchive var1) {
+      byte[] var2 = var1.takeFileFlat(DefaultsGroup.field4533.group);
+      Buffer var3 = new Buffer(var2);
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(Llv;I)V",
-		garbageValue = "762347808"
-	)
-	@Export("decode")
-	public void decode(AbstractArchive var1) {
-		byte[] var2 = var1.takeFileFlat(DefaultsGroup.field4406.group); // L: 20
-		Buffer var3 = new Buffer(var2); // L: 21
+      while(true) {
+         int var4 = var3.readUnsignedByte();
+         if (var4 == 0) {
+            return;
+         }
 
-		while (true) {
-			int var4 = var3.readUnsignedByte(); // L: 23
-			if (var4 == 0) { // L: 24
-				return;
-			}
+         switch (var4) {
+            case 1:
+               var3.readMedium();
+               break;
+            case 2:
+               this.compass = var3.readNullableLargeSmart();
+               this.field4536 = var3.readNullableLargeSmart();
+               this.mapScenes = var3.readNullableLargeSmart();
+               this.headIconsPk = var3.readNullableLargeSmart();
+               this.field4538 = var3.readNullableLargeSmart();
+               this.field4539 = var3.readNullableLargeSmart();
+               this.field4540 = var3.readNullableLargeSmart();
+               this.field4541 = var3.readNullableLargeSmart();
+               this.field4542 = var3.readNullableLargeSmart();
+               this.field4543 = var3.readNullableLargeSmart();
+               this.field4544 = var3.readNullableLargeSmart();
+         }
+      }
+   }
 
-			switch(var4) { // L: 25
-			case 1:
-				var3.readMedium(); // L: 28
-				break;
-			case 2:
-				this.compass = var3.readNullableLargeSmart(); // L: 33
-				this.field4408 = var3.readNullableLargeSmart(); // L: 34
-				this.mapScenes = var3.readNullableLargeSmart(); // L: 35
-				this.headIconsPk = var3.readNullableLargeSmart(); // L: 36
-				this.field4411 = var3.readNullableLargeSmart(); // L: 37
-				this.field4417 = var3.readNullableLargeSmart(); // L: 38
-				this.field4407 = var3.readNullableLargeSmart(); // L: 39
-				this.field4413 = var3.readNullableLargeSmart(); // L: 40
-				this.field4414 = var3.readNullableLargeSmart(); // L: 41
-				this.field4416 = var3.readNullableLargeSmart(); // L: 42
-				this.field4415 = var3.readNullableLargeSmart(); // L: 43
-			}
-		}
-	}
-
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "403048585"
-	)
-	public static void method7089(int var0) {
-		MouseHandler.MouseHandler_idleCycles = var0; // L: 51
-	} // L: 52
+   @ObfuscatedName("j")
+   @ObfuscatedSignature(
+      descriptor = "(IB)V",
+      garbageValue = "70"
+   )
+   static void method7570(int var0) {
+      ItemContainer var1 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
+      if (var1 != null) {
+         var1.remove();
+      }
+   }
 }

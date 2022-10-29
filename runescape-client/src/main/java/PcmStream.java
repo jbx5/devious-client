@@ -6,66 +6,65 @@ import net.runelite.mapping.ObfuscatedSignature;
 @ObfuscatedName("ay")
 @Implements("PcmStream")
 public abstract class PcmStream extends Node {
-	@ObfuscatedName("w")
-	@Export("active")
-	volatile boolean active;
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "Lay;"
-	)
-	@Export("after")
-	PcmStream after;
-	@ObfuscatedName("a")
-	int field360;
-	@ObfuscatedName("l")
-	@ObfuscatedSignature(
-		descriptor = "Lbv;"
-	)
-	@Export("sound")
-	AbstractSound sound;
+   @ObfuscatedName("u")
+   @ObfuscatedSignature(
+      descriptor = "Lay;"
+   )
+   @Export("after")
+   PcmStream after;
+   @ObfuscatedName("z")
+   int field364;
+   @ObfuscatedName("t")
+   @ObfuscatedSignature(
+      descriptor = "Lbd;"
+   )
+   @Export("sound")
+   AbstractSound sound;
+   @ObfuscatedName("w")
+   @Export("active")
+   volatile boolean active = true;
 
-	protected PcmStream() {
-		this.active = true; // L: 11
-	} // L: 13
+   protected PcmStream() {
+   }
 
-	@ObfuscatedName("w")
-	@ObfuscatedSignature(
-		descriptor = "()Lay;"
-	)
-	@Export("firstSubStream")
-	protected abstract PcmStream firstSubStream();
+   @ObfuscatedName("j")
+   @ObfuscatedSignature(
+      descriptor = "()Lay;"
+   )
+   @Export("firstSubStream")
+   protected abstract PcmStream firstSubStream();
 
-	@ObfuscatedName("s")
-	@ObfuscatedSignature(
-		descriptor = "()Lay;"
-	)
-	@Export("nextSubStream")
-	protected abstract PcmStream nextSubStream();
+   @ObfuscatedName("y")
+   @ObfuscatedSignature(
+      descriptor = "()Lay;"
+   )
+   @Export("nextSubStream")
+   protected abstract PcmStream nextSubStream();
 
-	@ObfuscatedName("q")
-	protected abstract int vmethod5612();
+   @ObfuscatedName("d")
+   protected abstract int vmethod5648();
 
-	@ObfuscatedName("m")
-	@Export("fill")
-	protected abstract void fill(int[] var1, int var2, int var3);
+   @ObfuscatedName("n")
+   @Export("fill")
+   protected abstract void fill(int[] var1, int var2, int var3);
 
-	@ObfuscatedName("j")
-	@Export("skip")
-	protected abstract void skip(int var1);
+   @ObfuscatedName("l")
+   @Export("skip")
+   protected abstract void skip(int var1);
 
-	@ObfuscatedName("af")
-	int vmethod1015() {
-		return 255; // L: 16
-	}
+   @ObfuscatedName("ae")
+   int vmethod1019() {
+      return 255;
+   }
 
-	@ObfuscatedName("fo")
-	@Export("update")
-	final void update(int[] var1, int var2, int var3) {
-		if (this.active) { // L: 24
-			this.fill(var1, var2, var3);
-		} else {
-			this.skip(var3); // L: 25
-		}
+   @ObfuscatedName("ew")
+   @Export("update")
+   final void update(int[] var1, int var2, int var3) {
+      if (this.active) {
+         this.fill(var1, var2, var3);
+      } else {
+         this.skip(var3);
+      }
 
-	} // L: 26
+   }
 }

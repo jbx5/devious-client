@@ -1,70 +1,71 @@
 import java.util.Comparator;
-import java.util.Map.Entry;
-import net.runelite.mapping.Export;
+import java.util.Map;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("l")
+@ObfuscatedName("w")
 class class18 implements Comparator {
-	// $FF: synthetic field
-	@ObfuscatedSignature(
-		descriptor = "Lj;"
-	)
-	final class10 this$0;
+   // $FF: synthetic field
+   @ObfuscatedSignature(
+      descriptor = "Ll;"
+   )
+   final class10 this$0;
 
-	@ObfuscatedSignature(
-		descriptor = "(Lj;)V"
-	)
-	class18(class10 var1) {
-		this.this$0 = var1; // L: 50
-	}
+   @ObfuscatedSignature(
+      descriptor = "(Ll;)V"
+   )
+   class18(class10 var1) {
+      this.this$0 = var1;
+   }
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/util/Map$Entry;Ljava/util/Map$Entry;I)I",
-		garbageValue = "-1228298901"
-	)
-	int method276(Entry var1, Entry var2) {
-		return ((Float)var2.getValue()).compareTo((Float)var1.getValue()); // L: 52
-	}
+   @ObfuscatedName("a")
+   @ObfuscatedSignature(
+      descriptor = "(Ljava/util/Map$Entry;Ljava/util/Map$Entry;B)I",
+      garbageValue = "-16"
+   )
+   int method261(Map.Entry var1, Map.Entry var2) {
+      return ((Float)var2.getValue()).compareTo((Float)var1.getValue());
+   }
 
-	public boolean equals(Object var1) {
-		return super.equals(var1); // L: 60
-	}
+   public boolean equals(Object var1) {
+      return super.equals(var1);
+   }
 
-	public int compare(Object var1, Object var2) {
-		return this.method276((Entry)var1, (Entry)var2); // L: 56
-	}
+   public int compare(Object var1, Object var2) {
+      return this.method261((Map.Entry)var1, (Map.Entry)var2);
+   }
 
-	@ObfuscatedName("r")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "8396800"
-	)
-	protected static final void method282() {
-		class13.clock.mark(); // L: 408
+   @ObfuscatedName("a")
+   @ObfuscatedSignature(
+      descriptor = "(I)V",
+      garbageValue = "-827032220"
+   )
+   public static void method267() {
+      class37.reflectionChecks = new IterableNodeDeque();
+   }
 
-		int var0;
-		for (var0 = 0; var0 < 32; ++var0) { // L: 409
-			GameEngine.graphicsTickTimes[var0] = 0L;
-		}
+   @ObfuscatedName("f")
+   @ObfuscatedSignature(
+      descriptor = "(Llg;IIIZB)V",
+      garbageValue = "55"
+   )
+   public static void method266(AbstractArchive var0, int var1, int var2, int var3, boolean var4) {
+      class283.musicPlayerStatus = 1;
+      DevicePcmPlayerProvider.musicTrackArchive = var0;
+      class283.musicTrackGroupId = var1;
+      class283.musicTrackFileId = var2;
+      Messages.musicTrackVolume = var3;
+      GrandExchangeEvents.musicTrackBoolean = var4;
+      class19.pcmSampleLength = 10000;
+   }
 
-		for (var0 = 0; var0 < 32; ++var0) { // L: 410
-			GameEngine.clientTickTimes[var0] = 0L;
-		}
-
-		WorldMapCacheName.gameCyclesToDo = 0; // L: 411
-	} // L: 412
-
-	@ObfuscatedName("kd")
-	@ObfuscatedSignature(
-		descriptor = "(III)V",
-		garbageValue = "-1228311382"
-	)
-	@Export("runIntfCloseListeners")
-	static final void runIntfCloseListeners(int var0, int var1) {
-		if (FloorOverlayDefinition.loadInterface(var0)) { // L: 11322
-			GameBuild.runComponentCloseListeners(Calendar.Widget_interfaceComponents[var0], var1); // L: 11323
-		}
-	} // L: 11324
+   @ObfuscatedName("l")
+   @ObfuscatedSignature(
+      descriptor = "(B)V",
+      garbageValue = "0"
+   )
+   public static void method268() {
+      NPCComposition.NpcDefinition_cached.clear();
+      NPCComposition.NpcDefinition_cachedModels.clear();
+   }
 }

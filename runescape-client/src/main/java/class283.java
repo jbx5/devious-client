@@ -1,53 +1,88 @@
 import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jk")
+@ObfuscatedName("js")
 public class class283 {
-	@ObfuscatedName("up")
-	@Export("foundItemIds")
-	static short[] foundItemIds;
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "Ljn;"
-	)
-	@Export("huffman")
-	public static Huffman huffman;
-	@ObfuscatedName("en")
-	@ObfuscatedSignature(
-		descriptor = "Llb;"
-	)
-	static Archive field3325;
+   @ObfuscatedName("a")
+   @ObfuscatedSignature(
+      descriptor = "Llg;"
+   )
+   @Export("musicPatchesArchive")
+   public static AbstractArchive musicPatchesArchive;
+   @ObfuscatedName("f")
+   @ObfuscatedSignature(
+      descriptor = "Llg;"
+   )
+   @Export("musicSamplesArchive")
+   public static AbstractArchive musicSamplesArchive;
+   @ObfuscatedName("c")
+   @ObfuscatedSignature(
+      descriptor = "Llg;"
+   )
+   @Export("soundEffectsArchive")
+   public static AbstractArchive soundEffectsArchive;
+   @ObfuscatedName("x")
+   @ObfuscatedSignature(
+      descriptor = "Ljr;"
+   )
+   @Export("midiPcmStream")
+   public static MidiPcmStream midiPcmStream;
+   @ObfuscatedName("h")
+   @ObfuscatedGetter(
+      intValue = 789238769
+   )
+   @Export("musicPlayerStatus")
+   public static int musicPlayerStatus = 0;
+   @ObfuscatedName("y")
+   @ObfuscatedGetter(
+      intValue = -432360525
+   )
+   @Export("musicTrackGroupId")
+   public static int musicTrackGroupId;
+   @ObfuscatedName("d")
+   @ObfuscatedGetter(
+      intValue = -71379071
+   )
+   @Export("musicTrackFileId")
+   public static int musicTrackFileId;
 
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(
-		descriptor = "(Llb;II)V",
-		garbageValue = "1702364125"
-	)
-	static void method5651(Archive var0, int var1) {
-		if (var0.field4028) { // L: 112
-			if (var1 <= NetCache.field4072) { // L: 113
-				throw new RuntimeException(""); // L: 114
-			}
+   @ObfuscatedName("f")
+   @ObfuscatedSignature(
+      descriptor = "(CI)Z",
+      garbageValue = "-606489254"
+   )
+   public static boolean method5443(char var0) {
+      if (var0 >= ' ' && var0 < 127 || var0 > 127 && var0 < 160 || var0 > 160 && var0 <= 255) {
+         return true;
+      } else {
+         if (var0 != 0) {
+            char[] var1 = class355.cp1252AsciiExtension;
 
-			if (var1 < NetCache.field4073) { // L: 116
-				NetCache.field4073 = var1; // L: 117
-			}
-		} else {
-			if (var1 >= NetCache.field4073) { // L: 121
-				throw new RuntimeException(""); // L: 122
-			}
+            for(int var2 = 0; var2 < var1.length; ++var2) {
+               char var3 = var1[var2];
+               if (var0 == var3) {
+                  return true;
+               }
+            }
+         }
 
-			if (var1 > NetCache.field4072) { // L: 124
-				NetCache.field4072 = var1; // L: 125
-			}
-		}
+         return false;
+      }
+   }
 
-		if (MilliClock.field1810 != null) { // L: 128
-			WorldMapID.method5123(var0, var1); // L: 129
-		} else {
-			PacketBufferNode.requestNetFile((Archive)null, 255, 255, 0, (byte)0, true); // L: 132
-			NetCache.NetCache_archives[var1] = var0; // L: 133
-		}
-	} // L: 130 134
+   @ObfuscatedName("x")
+   @ObfuscatedSignature(
+      descriptor = "(I)V",
+      garbageValue = "-638583103"
+   )
+   static void method5450() {
+      if (Client.Login_isUsernameRemembered && Login.Login_username != null && Login.Login_username.length() > 0) {
+         Login.currentLoginField = 1;
+      } else {
+         Login.currentLoginField = 0;
+      }
+
+   }
 }

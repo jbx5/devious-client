@@ -3,60 +3,57 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ky")
+@ObfuscatedName("kr")
 public enum class310 implements MouseWheel {
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "Lky;"
-	)
-	field3979(-1),
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "Lky;"
-	)
-	field3982(0),
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(
-		descriptor = "Lky;"
-	)
-	field3981(1),
-	@ObfuscatedName("n")
-	@ObfuscatedSignature(
-		descriptor = "Lky;"
-	)
-	field3980(2);
+   @ObfuscatedName("a")
+   @ObfuscatedSignature(
+      descriptor = "Lkr;"
+   )
+   field3667(0),
+   @ObfuscatedName("f")
+   @ObfuscatedSignature(
+      descriptor = "Lkr;"
+   )
+   field3662(1),
+   @ObfuscatedName("c")
+   @ObfuscatedSignature(
+      descriptor = "Lkr;"
+   )
+   field3663(2),
+   @ObfuscatedName("x")
+   @ObfuscatedSignature(
+      descriptor = "Lkr;"
+   )
+   field3664(3),
+   @ObfuscatedName("h")
+   @ObfuscatedSignature(
+      descriptor = "Lkr;"
+   )
+   field3665(4);
 
-	@ObfuscatedName("k")
-	@ObfuscatedGetter(
-		intValue = 73014485
-	)
-	final int field3983;
+   @ObfuscatedName("fr")
+   @ObfuscatedSignature(
+      descriptor = "Llx;"
+   )
+   @Export("archive19")
+   static Archive archive19;
+   @ObfuscatedName("j")
+   @ObfuscatedGetter(
+      intValue = -1504029357
+   )
+   final int field3666;
 
-	class310(int var3) {
-		this.field3983 = var3; // L: 19
-	} // L: 20
+   class310(int var3) {
+      this.field3666 = var3;
+   }
 
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "1"
-	)
-	@Export("rsOrdinal")
-	public int rsOrdinal() {
-		return this.field3983; // L: 24
-	}
-
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(
-		descriptor = "(II)Ldc;",
-		garbageValue = "-450916759"
-	)
-	static class124 method5941(int var0) {
-		class124 var1 = (class124)Varps.findEnumerated(class97.method2586(), var0); // L: 126
-		if (var1 == null) {
-			var1 = class124.field1524; // L: 127
-		}
-
-		return var1; // L: 128
-	}
+   @ObfuscatedName("a")
+   @ObfuscatedSignature(
+      descriptor = "(B)I",
+      garbageValue = "0"
+   )
+   @Export("rsOrdinal")
+   public int rsOrdinal() {
+      return this.field3666;
+   }
 }

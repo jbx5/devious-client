@@ -3,61 +3,60 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ly")
+@ObfuscatedName("mp")
 @Implements("DualNodeDeque")
 public final class DualNodeDeque {
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "Loa;"
-	)
-	@Export("sentinel")
-	DualNode sentinel;
+   @ObfuscatedName("a")
+   @ObfuscatedSignature(
+      descriptor = "Lpu;"
+   )
+   @Export("sentinel")
+   DualNode sentinel = new DualNode();
 
-	public DualNodeDeque() {
-		this.sentinel = new DualNode(); // L: 6
-		this.sentinel.previousDual = this.sentinel; // L: 9
-		this.sentinel.nextDual = this.sentinel; // L: 10
-	} // L: 11
+   public DualNodeDeque() {
+      this.sentinel.previousDual = this.sentinel;
+      this.sentinel.nextDual = this.sentinel;
+   }
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(Loa;)V"
-	)
-	@Export("addFirst")
-	public void addFirst(DualNode var1) {
-		if (var1.nextDual != null) { // L: 14
-			var1.removeDual();
-		}
+   @ObfuscatedName("a")
+   @ObfuscatedSignature(
+      descriptor = "(Lpu;)V"
+   )
+   @Export("addFirst")
+   public void addFirst(DualNode var1) {
+      if (var1.nextDual != null) {
+         var1.removeDual();
+      }
 
-		var1.nextDual = this.sentinel.nextDual; // L: 15
-		var1.previousDual = this.sentinel; // L: 16
-		var1.nextDual.previousDual = var1; // L: 17
-		var1.previousDual.nextDual = var1; // L: 18
-	} // L: 19
+      var1.nextDual = this.sentinel.nextDual;
+      var1.previousDual = this.sentinel;
+      var1.nextDual.previousDual = var1;
+      var1.previousDual.nextDual = var1;
+   }
 
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "(Loa;)V"
-	)
-	@Export("addLast")
-	public void addLast(DualNode var1) {
-		if (var1.nextDual != null) { // L: 22
-			var1.removeDual();
-		}
+   @ObfuscatedName("f")
+   @ObfuscatedSignature(
+      descriptor = "(Lpu;)V"
+   )
+   @Export("addLast")
+   public void addLast(DualNode var1) {
+      if (var1.nextDual != null) {
+         var1.removeDual();
+      }
 
-		var1.nextDual = this.sentinel; // L: 23
-		var1.previousDual = this.sentinel.previousDual; // L: 24
-		var1.nextDual.previousDual = var1; // L: 25
-		var1.previousDual.nextDual = var1; // L: 26
-	} // L: 27
+      var1.nextDual = this.sentinel;
+      var1.previousDual = this.sentinel.previousDual;
+      var1.nextDual.previousDual = var1;
+      var1.previousDual.nextDual = var1;
+   }
 
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(
-		descriptor = "()Loa;"
-	)
-	@Export("removeLast")
-	public DualNode removeLast() {
-		DualNode var1 = this.sentinel.previousDual; // L: 30
-		return var1 == this.sentinel ? null : var1; // L: 31 32
-	}
+   @ObfuscatedName("c")
+   @ObfuscatedSignature(
+      descriptor = "()Lpu;"
+   )
+   @Export("removeLast")
+   public DualNode removeLast() {
+      DualNode var1 = this.sentinel.previousDual;
+      return var1 == this.sentinel ? null : var1;
+   }
 }

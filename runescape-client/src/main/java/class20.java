@@ -4,107 +4,143 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("g")
+@ObfuscatedName("q")
 public class class20 implements Callable {
-	@ObfuscatedName("d")
-	@ObfuscatedSignature(
-		descriptor = "Lqq;"
-	)
-	@Export("NetCache_responseArchiveBuffer")
-	public static Buffer NetCache_responseArchiveBuffer;
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "Lqd;"
-	)
-	@Export("rasterProvider")
-	public static AbstractRasterProvider rasterProvider;
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "Lj;"
-	)
-	final class10 field114;
-	// $FF: synthetic field
-	@ObfuscatedSignature(
-		descriptor = "Lu;"
-	)
-	final class14 this$0;
+   @ObfuscatedName("a")
+   @ObfuscatedSignature(
+      descriptor = "Ll;"
+   )
+   final class10 field110;
+   // $FF: synthetic field
+   @ObfuscatedSignature(
+      descriptor = "Lo;"
+   )
+   final class14 this$0;
 
-	@ObfuscatedSignature(
-		descriptor = "(Lu;Lj;)V"
-	)
-	class20(class14 var1, class10 var2) {
-		this.this$0 = var1; // L: 46
-		this.field114 = var2; // L: 47
-	} // L: 48
+   @ObfuscatedSignature(
+      descriptor = "(Lo;Ll;)V"
+   )
+   class20(class14 var1, class10 var2) {
+      this.this$0 = var1;
+      this.field110 = var2;
+   }
 
-	public Object call() throws Exception {
-		try {
-			while (this.field114.method95()) { // L: 53
-				class28.method412(10L); // L: 54
-			}
-		} catch (IOException var2) { // L: 57
-			return new class21("Error servicing REST query: " + var2.getMessage()); // L: 58
-		}
+   public Object call() throws Exception {
+      try {
+         while(this.field110.method84()) {
+            class197.method3946(10L);
+         }
+      } catch (IOException var2) {
+         return new class21("Error servicing REST query: " + var2.getMessage());
+      }
 
-		return this.field114.method97(); // L: 60
-	}
+      return this.field110.method83();
+   }
 
-	@ObfuscatedName("ik")
-	@ObfuscatedSignature(
-		descriptor = "(Lcw;B)V",
-		garbageValue = "80"
-	)
-	static final void method302(PendingSpawn var0) {
-		long var1 = 0L; // L: 7692
-		int var3 = -1; // L: 7693
-		int var4 = 0; // L: 7694
-		int var5 = 0; // L: 7695
-		if (var0.type == 0) { // L: 7696
-			var1 = MusicPatchNode.scene.getBoundaryObjectTag(var0.plane, var0.x, var0.y);
-		}
+   @ObfuscatedName("h")
+   @ObfuscatedSignature(
+      descriptor = "(II)Lbk;",
+      garbageValue = "-1428844357"
+   )
+   @Export("Messages_getMessage")
+   static Message Messages_getMessage(int var0) {
+      return (Message)Messages.Messages_hashTable.get((long)var0);
+   }
 
-		if (var0.type == 1) { // L: 7697
-			var1 = MusicPatchNode.scene.getWallDecorationTag(var0.plane, var0.x, var0.y);
-		}
+   @ObfuscatedName("d")
+   @ObfuscatedSignature(
+      descriptor = "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V",
+      garbageValue = "1011849235"
+   )
+   static void method291(String var0, String var1, String var2) {
+      GrandExchangeOfferOwnWorldComparator.method1171(7);
+      MusicPatchNode2.setLoginResponseString(var0, var1, var2);
+   }
 
-		if (var0.type == 2) { // L: 7698
-			var1 = MusicPatchNode.scene.getGameObjectTag(var0.plane, var0.x, var0.y);
-		}
+   @ObfuscatedName("m")
+   @ObfuscatedSignature(
+      descriptor = "(I)V",
+      garbageValue = "-35273894"
+   )
+   static void method289() {
+      Login.worldSelectOpen = false;
+      class313.leftTitleSprite.drawAt(Login.xPadding, 0);
+      HealthBar.rightTitleSprite.drawAt(Login.xPadding + 382, 0);
+      MouseRecorder.logoSprite.drawAt(Login.xPadding + 382 - MouseRecorder.logoSprite.subWidth / 2, 18);
+   }
 
-		if (var0.type == 3) { // L: 7699
-			var1 = MusicPatchNode.scene.getFloorDecorationTag(var0.plane, var0.x, var0.y);
-		}
+   @ObfuscatedName("hf")
+   @ObfuscatedSignature(
+      descriptor = "(Lco;ZI)V",
+      garbageValue = "960632480"
+   )
+   @Export("addPlayerToScene")
+   static void addPlayerToScene(Player var0, boolean var1) {
+      if (var0 != null && var0.isVisible() && !var0.isHidden) {
+         var0.isUnanimated = false;
+         if ((Client.isLowDetail && Players.Players_count > 50 || Players.Players_count > 200) && var1 && var0.movementSequence == var0.idleSequence) {
+            var0.isUnanimated = true;
+         }
 
-		if (var1 != 0L) { // L: 7700
-			int var6 = MusicPatchNode.scene.getObjectFlags(var0.plane, var0.x, var0.y, var1); // L: 7701
-			var3 = class156.Entity_unpackID(var1); // L: 7702
-			var4 = var6 & 31; // L: 7703
-			var5 = var6 >> 6 & 3; // L: 7704
-		}
+         int var2 = var0.x >> 7;
+         int var3 = var0.y >> 7;
+         if (var2 >= 0 && var2 < 104 && var3 >= 0 && var3 < 104) {
+            long var4 = SpotAnimationDefinition.calculateTag(0, 0, 0, false, var0.index);
+            if (var0.model0 != null && Client.cycle >= var0.animationCycleStart && Client.cycle < var0.animationCycleEnd) {
+               var0.isUnanimated = false;
+               var0.tileHeight = class132.getTileHeight(var0.x, var0.y, ApproximateRouteStrategy.Client_plane);
+               var0.playerCycle = Client.cycle;
+               class139.scene.addNullableObject(ApproximateRouteStrategy.Client_plane, var0.x, var0.y, var0.tileHeight, 60, var0, var0.rotation, var4, var0.minX, var0.minY, var0.maxX, var0.maxY);
+            } else {
+               if ((var0.x & 127) == 64 && (var0.y & 127) == 64) {
+                  if (Client.tileLastDrawnActor[var2][var3] == Client.viewportDrawCount) {
+                     return;
+                  }
 
-		var0.objectId = var3; // L: 7706
-		var0.field1121 = var4; // L: 7707
-		var0.field1119 = var5; // L: 7708
-	} // L: 7709
+                  Client.tileLastDrawnActor[var2][var3] = Client.viewportDrawCount;
+               }
 
-	@ObfuscatedName("lk")
-	@ObfuscatedSignature(
-		descriptor = "(III)V",
-		garbageValue = "417114904"
-	)
-	static final void method303(int var0, int var1) {
-		if (Client.currentClanChannels[var0] != null) { // L: 11990
-			if (var1 >= 0 && var1 < Client.currentClanChannels[var0].method3265()) { // L: 11991
-				ClanChannelMember var2 = (ClanChannelMember)Client.currentClanChannels[var0].members.get(var1); // L: 11992
-				if (var2.rank == -1) { // L: 11993
-					PacketBufferNode var3 = class120.getPacketBufferNode(ClientPacket.field2960, Client.packetWriter.isaacCipher); // L: 11994
-					var3.packetBuffer.writeByte(3 + class357.stringCp1252NullTerminatedByteSize(var2.username.getName())); // L: 11995
-					var3.packetBuffer.writeByte(var0); // L: 11996
-					var3.packetBuffer.writeShort(var1); // L: 11997
-					var3.packetBuffer.writeStringCp1252NullTerminated(var2.username.getName()); // L: 11998
-					Client.packetWriter.addNode(var3); // L: 11999
-				}
-			}
-		}
-	} // L: 12000
+               var0.tileHeight = class132.getTileHeight(var0.x, var0.y, ApproximateRouteStrategy.Client_plane);
+               var0.playerCycle = Client.cycle;
+               class139.scene.drawEntity(ApproximateRouteStrategy.Client_plane, var0.x, var0.y, var0.tileHeight, 60, var0, var0.rotation, var4, var0.isWalking);
+            }
+         }
+      }
+
+   }
+
+   @ObfuscatedName("ka")
+   @ObfuscatedSignature(
+      descriptor = "(IB)V",
+      garbageValue = "101"
+   )
+   static final void method288(int var0) {
+      var0 = Math.min(Math.max(var0, 0), 255);
+      if (var0 != BufferedSink.clientPreferences.method2391()) {
+         if (BufferedSink.clientPreferences.method2391() == 0 && Client.currentTrackGroupId != -1) {
+            class18.method266(ReflectionCheck.archive6, Client.currentTrackGroupId, 0, var0, false);
+            Client.playingJingle = false;
+         } else if (var0 == 0) {
+            class283.midiPcmStream.clear();
+            class283.musicPlayerStatus = 1;
+            DevicePcmPlayerProvider.musicTrackArchive = null;
+            Client.playingJingle = false;
+         } else {
+            class248.method5162(var0);
+         }
+
+         BufferedSink.clientPreferences.method2390(var0);
+      }
+
+   }
+
+   @ObfuscatedName("me")
+   @ObfuscatedSignature(
+      descriptor = "(S)V",
+      garbageValue = "27419"
+   )
+   static void method292() {
+      Client.packetWriter.addNode(FloorUnderlayDefinition.getPacketBufferNode(ClientPacket.FREECAM_EXIT, Client.packetWriter.isaacCipher));
+      Client.oculusOrbState = 0;
+   }
 }

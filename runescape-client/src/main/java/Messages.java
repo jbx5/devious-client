@@ -6,69 +6,69 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cd")
+@ObfuscatedName("df")
 @Implements("Messages")
 public class Messages {
-	@ObfuscatedName("c")
-	@Export("Messages_channels")
-	static final Map Messages_channels;
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "Lpq;"
-	)
-	@Export("Messages_hashTable")
-	static final IterableNodeHashTable Messages_hashTable;
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(
-		descriptor = "Lmt;"
-	)
-	@Export("Messages_queue")
-	static final IterableDualNodeQueue Messages_queue;
-	@ObfuscatedName("n")
-	@ObfuscatedGetter(
-		intValue = -513745227
-	)
-	@Export("Messages_count")
-	static int Messages_count;
-	@ObfuscatedName("ha")
-	@ObfuscatedSignature(
-		descriptor = "Lch;"
-	)
-	@Export("urlRequester")
-	static UrlRequester urlRequester;
+   @ObfuscatedName("a")
+   @Export("Messages_channels")
+   static final Map Messages_channels = new HashMap();
+   @ObfuscatedName("f")
+   @ObfuscatedSignature(
+      descriptor = "Lpe;"
+   )
+   @Export("Messages_hashTable")
+   static final IterableNodeHashTable Messages_hashTable = new IterableNodeHashTable(1024);
+   @ObfuscatedName("c")
+   @ObfuscatedSignature(
+      descriptor = "Lmq;"
+   )
+   @Export("Messages_queue")
+   static final IterableDualNodeQueue Messages_queue = new IterableDualNodeQueue();
+   @ObfuscatedName("x")
+   @ObfuscatedGetter(
+      intValue = 824043359
+   )
+   @Export("Messages_count")
+   static int Messages_count = 0;
+   @ObfuscatedName("n")
+   @ObfuscatedGetter(
+      intValue = 1135032351
+   )
+   @Export("musicTrackVolume")
+   public static int musicTrackVolume;
+   @ObfuscatedName("m")
+   @ObfuscatedSignature(
+      descriptor = "Lqr;"
+   )
+   public static Buffer field1361;
 
-	static {
-		Messages_channels = new HashMap(); // L: 9
-		Messages_hashTable = new IterableNodeHashTable(1024); // L: 10
-		Messages_queue = new IterableDualNodeQueue(); // L: 11
-		Messages_count = 0; // L: 12
-	}
+   @ObfuscatedName("a")
+   @ObfuscatedSignature(
+      descriptor = "(B)V",
+      garbageValue = "26"
+   )
+   static void method2645() {
+      InvDefinition.field1862 = new int[2000];
+      int var0 = 0;
+      int var1 = 240;
 
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "([BIIB)Ljava/lang/String;",
-		garbageValue = "28"
-	)
-	static String method2651(byte[] var0, int var1, int var2) {
-		StringBuilder var3 = new StringBuilder(); // L: 62
+      int var2;
+      int var3;
+      for(var2 = 12; var0 < 16; var1 -= var2) {
+         var3 = class9.method72((double)((float)var1 / 360.0F), 0.9998999834060669, (double)((float)var0 * 0.425F / 16.0F + 0.075F));
+         InvDefinition.field1862[var0] = var3;
+         ++var0;
+      }
 
-		for (int var4 = var1; var4 < var2 + var1; var4 += 3) { // L: 63
-			int var5 = var0[var4] & 255; // L: 64
-			var3.append(class343.field4188[var5 >>> 2]); // L: 65
-			if (var4 < var2 - 1) { // L: 66
-				int var6 = var0[var4 + 1] & 255; // L: 67
-				var3.append(class343.field4188[(var5 & 3) << 4 | var6 >>> 4]); // L: 68
-				if (var4 < var2 - 2) { // L: 69
-					int var7 = var0[var4 + 2] & 255; // L: 70
-					var3.append(class343.field4188[(var6 & 15) << 2 | var7 >>> 6]).append(class343.field4188[var7 & 63]); // L: 71
-				} else {
-					var3.append(class343.field4188[(var6 & 15) << 2]).append("="); // L: 73
-				}
-			} else {
-				var3.append(class343.field4188[(var5 & 3) << 4]).append("=="); // L: 75
-			}
-		}
+      var1 = 48;
 
-		return var3.toString(); // L: 77
-	}
+      for(var2 = var1 / 6; var0 < InvDefinition.field1862.length; var1 -= var2) {
+         var3 = var0 * 2;
+
+         for(int var4 = class9.method72((double)((float)var1 / 360.0F), 0.9998999834060669, 0.5); var0 < var3 && var0 < InvDefinition.field1862.length; ++var0) {
+            InvDefinition.field1862[var0] = var4;
+         }
+      }
+
+   }
 }
