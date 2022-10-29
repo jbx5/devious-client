@@ -1,92 +1,120 @@
+import java.net.MalformedURLException;
+import java.net.URL;
 import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kh")
-public enum class297 implements MouseWheel {
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "Lkh;"
-	)
-	field3557(0),
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "Lkh;"
-	)
-	field3554(1),
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(
-		descriptor = "Lkh;"
-	)
-	field3555(2),
-	@ObfuscatedName("n")
-	@ObfuscatedSignature(
-		descriptor = "Lkh;"
-	)
-	field3556(3),
-	@ObfuscatedName("k")
-	@ObfuscatedSignature(
-		descriptor = "Lkh;"
-	)
-	field3558(4);
+@ObfuscatedName("kz")
+public class class297 {
+   @ObfuscatedName("ec")
+   @ObfuscatedSignature(
+      descriptor = "Lok;"
+   )
+   @Export("js5Socket")
+   static AbstractSocket js5Socket;
+   @ObfuscatedName("a")
+   @ObfuscatedSignature(
+      descriptor = "Lde;"
+   )
+   UrlRequest field3407;
+   @ObfuscatedName("f")
+   @ObfuscatedSignature(
+      descriptor = "Lri;"
+   )
+   SpritePixels field3406;
 
-	@ObfuscatedName("w")
-	@ObfuscatedGetter(
-		intValue = 570966065
-	)
-	final int field3553;
+   @ObfuscatedSignature(
+      descriptor = "(Ljava/lang/String;Ldk;)V"
+   )
+   class297(String var1, UrlRequester var2) {
+      try {
+         this.field3407 = var2.request(new URL(var1));
+      } catch (MalformedURLException var4) {
+         this.field3407 = null;
+      }
 
-	class297(int var3) {
-		this.field3553 = var3;
-	}
+   }
 
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "1"
-	)
-	@Export("rsOrdinal")
-	public int rsOrdinal() {
-		return this.field3553;
-	}
+   @ObfuscatedSignature(
+      descriptor = "(Lde;)V"
+   )
+   class297(UrlRequest var1) {
+      this.field3407 = var1;
+   }
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "([Ljava/lang/CharSequence;IIB)Ljava/lang/String;",
-		garbageValue = "-115"
-	)
-	public static String method5904(CharSequence[] var0, int var1, int var2) {
-		if (var2 == 0) { // L: 12
-			return "";
-		} else if (var2 == 1) { // L: 13
-			CharSequence var10 = var0[var1]; // L: 14
-			return var10 == null ? "null" : var10.toString(); // L: 15 16
-		} else {
-			int var3 = var2 + var1; // L: 18
-			int var4 = 0; // L: 19
+   @ObfuscatedName("a")
+   @ObfuscatedSignature(
+      descriptor = "(B)Lri;",
+      garbageValue = "-100"
+   )
+   SpritePixels method5722() {
+      if (this.field3406 == null && this.field3407 != null && this.field3407.isDone()) {
+         if (this.field3407.getResponse() != null) {
+            this.field3406 = KeyHandler.method394(this.field3407.getResponse());
+         }
 
-			for (int var5 = var1; var5 < var3; ++var5) { // L: 20
-				CharSequence var9 = var0[var5]; // L: 21
-				if (var9 == null) { // L: 22
-					var4 += 4;
-				} else {
-					var4 += var9.length(); // L: 23
-				}
-			}
+         this.field3407 = null;
+      }
 
-			StringBuilder var8 = new StringBuilder(var4); // L: 25
+      return this.field3406;
+   }
 
-			for (int var6 = var1; var6 < var3; ++var6) { // L: 26
-				CharSequence var7 = var0[var6]; // L: 27
-				if (var7 == null) { // L: 28
-					var8.append("null");
-				} else {
-					var8.append(var7); // L: 29
-				}
-			}
+   @ObfuscatedName("o")
+   @ObfuscatedSignature(
+      descriptor = "(II)I",
+      garbageValue = "1821514643"
+   )
+   public static int method5726(int var0) {
+      if (var0 > 0) {
+         return 1;
+      } else {
+         return var0 < 0 ? -1 : 0;
+      }
+   }
 
-			return var8.toString(); // L: 31
-		}
-	}
+   @ObfuscatedName("mx")
+   @ObfuscatedSignature(
+      descriptor = "(Ljava/lang/String;ZI)V",
+      garbageValue = "501827180"
+   )
+   @Export("findItemDefinitions")
+   static void findItemDefinitions(String var0, boolean var1) {
+      var0 = var0.toLowerCase();
+      short[] var2 = new short[16];
+      int var3 = 0;
+
+      for(int var4 = 0; var4 < WorldMapArchiveLoader.ItemDefinition_fileCount; ++var4) {
+         ItemComposition var9 = MidiPcmStream.ItemDefinition_get(var4);
+         if ((!var1 || var9.isTradable) && var9.noteTemplate == -1 && var9.name.toLowerCase().indexOf(var0) != -1) {
+            if (var3 >= 250) {
+               MilliClock.foundItemIdCount = -1;
+               Players.foundItemIds = null;
+               return;
+            }
+
+            if (var3 >= var2.length) {
+               short[] var6 = new short[var2.length * 2];
+
+               for(int var7 = 0; var7 < var3; ++var7) {
+                  var6[var7] = var2[var7];
+               }
+
+               var2 = var6;
+            }
+
+            var2[var3++] = (short)var4;
+         }
+      }
+
+      Players.foundItemIds = var2;
+      FriendLoginUpdate.foundItemIndex = 0;
+      MilliClock.foundItemIdCount = var3;
+      String[] var8 = new String[MilliClock.foundItemIdCount];
+
+      for(int var5 = 0; var5 < MilliClock.foundItemIdCount; ++var5) {
+         var8[var5] = MidiPcmStream.ItemDefinition_get(var2[var5]).name;
+      }
+
+      UserList.method7442(var8, Players.foundItemIds);
+   }
 }

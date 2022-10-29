@@ -8,6 +8,9 @@ public interface RSPlayerComposition extends PlayerComposition
 	@Import("isFemale")
 	boolean isFemale();
 
+	@Import("gender")
+	int getGender();
+
 	@Import("bodyColors")
 	int[] getColors();
 

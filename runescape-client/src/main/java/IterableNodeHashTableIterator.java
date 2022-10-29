@@ -4,93 +4,92 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ph")
+@ObfuscatedName("py")
 @Implements("IterableNodeHashTableIterator")
 public class IterableNodeHashTableIterator implements Iterator {
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "Lpq;"
-	)
-	@Export("hashTable")
-	IterableNodeHashTable hashTable;
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "Lov;"
-	)
-	@Export("head")
-	Node head;
-	@ObfuscatedName("f")
-	@Export("index")
-	int index;
-	@ObfuscatedName("n")
-	@ObfuscatedSignature(
-		descriptor = "Lov;"
-	)
-	@Export("last")
-	Node last;
+   @ObfuscatedName("a")
+   @ObfuscatedSignature(
+      descriptor = "Lpe;"
+   )
+   @Export("hashTable")
+   IterableNodeHashTable hashTable;
+   @ObfuscatedName("f")
+   @ObfuscatedSignature(
+      descriptor = "Lpk;"
+   )
+   @Export("head")
+   Node head;
+   @ObfuscatedName("c")
+   @Export("index")
+   int index;
+   @ObfuscatedName("x")
+   @ObfuscatedSignature(
+      descriptor = "Lpk;"
+   )
+   @Export("last")
+   Node last = null;
 
-	@ObfuscatedSignature(
-		descriptor = "(Lpq;)V"
-	)
-	IterableNodeHashTableIterator(IterableNodeHashTable var1) {
-		this.last = null; // L: 10
-		this.hashTable = var1; // L: 13
-		this.start(); // L: 14
-	} // L: 15
+   @ObfuscatedSignature(
+      descriptor = "(Lpe;)V"
+   )
+   IterableNodeHashTableIterator(IterableNodeHashTable var1) {
+      this.hashTable = var1;
+      this.start();
+   }
 
-	@ObfuscatedName("c")
-	@Export("start")
-	void start() {
-		this.head = this.hashTable.buckets[0].previous; // L: 18
-		this.index = 1; // L: 19
-		this.last = null; // L: 20
-	} // L: 21
+   @ObfuscatedName("a")
+   @Export("start")
+   void start() {
+      this.head = this.hashTable.buckets[0].previous;
+      this.index = 1;
+      this.last = null;
+   }
 
-	public Object next() {
-		Node var1;
-		if (this.hashTable.buckets[this.index - 1] != this.head) { // L: 25
-			var1 = this.head; // L: 26
-			this.head = var1.previous; // L: 27
-			this.last = var1; // L: 28
-			return var1; // L: 29
-		} else {
-			do {
-				if (this.index >= this.hashTable.size) { // L: 31
-					return null; // L: 39
-				}
+   public Object next() {
+      Node var1;
+      if (this.hashTable.buckets[this.index - 1] != this.head) {
+         var1 = this.head;
+         this.head = var1.previous;
+         this.last = var1;
+         return var1;
+      } else {
+         do {
+            if (this.index >= this.hashTable.size) {
+               return null;
+            }
 
-				var1 = this.hashTable.buckets[this.index++].previous; // L: 32
-			} while(var1 == this.hashTable.buckets[this.index - 1]); // L: 33
+            var1 = this.hashTable.buckets[this.index++].previous;
+         } while(var1 == this.hashTable.buckets[this.index - 1]);
 
-			this.head = var1.previous; // L: 34
-			this.last = var1; // L: 35
-			return var1; // L: 36
-		}
-	}
+         this.head = var1.previous;
+         this.last = var1;
+         return var1;
+      }
+   }
 
-	public boolean hasNext() {
-		if (this.hashTable.buckets[this.index - 1] != this.head) { // L: 43
-			return true;
-		} else {
-			while (this.index < this.hashTable.size) { // L: 44
-				if (this.hashTable.buckets[this.index++].previous != this.hashTable.buckets[this.index - 1]) { // L: 45
-					this.head = this.hashTable.buckets[this.index - 1].previous; // L: 46
-					return true; // L: 47
-				}
+   public boolean hasNext() {
+      if (this.hashTable.buckets[this.index - 1] != this.head) {
+         return true;
+      } else {
+         while(this.index < this.hashTable.size) {
+            if (this.hashTable.buckets[this.index++].previous != this.hashTable.buckets[this.index - 1]) {
+               this.head = this.hashTable.buckets[this.index - 1].previous;
+               return true;
+            }
 
-				this.head = this.hashTable.buckets[this.index - 1]; // L: 50
-			}
+            this.head = this.hashTable.buckets[this.index - 1];
+         }
 
-			return false; // L: 53
-		}
-	}
+         return false;
+      }
+   }
 
-	public void remove() {
-		if (this.last == null) { // L: 57
-			throw new IllegalStateException();
-		} else {
-			this.last.remove(); // L: 58
-			this.last = null; // L: 59
-		}
-	} // L: 60
+   public void remove() {
+      if (this.last == null) {
+         throw new IllegalStateException();
+      } else {
+         this.last.remove();
+         this.last = null;
+      }
+   }
 }

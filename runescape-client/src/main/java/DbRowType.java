@@ -4,101 +4,108 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("pl")
+@ObfuscatedName("qj")
 @Implements("DbRowType")
 public class DbRowType extends DualNode {
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "Llv;"
-	)
-	static AbstractArchive field4718;
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "Lif;"
-	)
-	@Export("DBRowType_cache")
-	public static EvictingDualNodeHashTable DBRowType_cache;
-	@ObfuscatedName("f")
-	@Export("columnTypes")
-	Object[][] columnTypes;
-	@ObfuscatedName("n")
-	int[][] field4716;
-	@ObfuscatedName("k")
-	@ObfuscatedGetter(
-		intValue = 1580984827
-	)
-	@Export("tableId")
-	public int tableId;
+   @ObfuscatedName("a")
+   @ObfuscatedSignature(
+      descriptor = "Llg;"
+   )
+   static AbstractArchive field4848;
+   @ObfuscatedName("f")
+   @ObfuscatedSignature(
+      descriptor = "Ljx;"
+   )
+   @Export("DBRowType_cache")
+   public static EvictingDualNodeHashTable DBRowType_cache = new EvictingDualNodeHashTable(64);
+   @ObfuscatedName("c")
+   @Export("columnTypes")
+   Object[][] columnTypes;
+   @ObfuscatedName("x")
+   int[][] field4846;
+   @ObfuscatedName("h")
+   @ObfuscatedGetter(
+      intValue = -116507795
+   )
+   @Export("tableId")
+   public int tableId = -1;
 
-	static {
-		DBRowType_cache = new EvictingDualNodeHashTable(64); // L: 11
-	}
+   DbRowType() {
+   }
 
-	DbRowType() {
-		this.tableId = -1; // L: 14
-	} // L: 17
+   @ObfuscatedName("c")
+   @ObfuscatedSignature(
+      descriptor = "(Lqr;B)V",
+      garbageValue = "-116"
+   )
+   void method8306(Buffer var1) {
+      while(true) {
+         int var2 = var1.readUnsignedByte();
+         if (var2 == 0) {
+            return;
+         }
 
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(
-		descriptor = "(Lqq;I)V",
-		garbageValue = "-435731106"
-	)
-	void method7830(Buffer var1) {
-		while (true) {
-			int var2 = var1.readUnsignedByte(); // L: 36
-			if (var2 == 0) { // L: 37
-				return; // L: 40
-			}
+         this.method8314(var1, var2);
+      }
+   }
 
-			this.method7826(var1, var2); // L: 38
-		}
-	}
+   @ObfuscatedName("x")
+   @ObfuscatedSignature(
+      descriptor = "(IB)[Ljava/lang/Object;",
+      garbageValue = "56"
+   )
+   @Export("getColumnType")
+   public Object[] getColumnType(int var1) {
+      return this.columnTypes == null ? null : this.columnTypes[var1];
+   }
 
-	@ObfuscatedName("n")
-	@ObfuscatedSignature(
-		descriptor = "(II)[Ljava/lang/Object;",
-		garbageValue = "906427284"
-	)
-	@Export("getColumnType")
-	public Object[] getColumnType(int var1) {
-		return this.columnTypes == null ? null : this.columnTypes[var1]; // L: 43 44
-	}
+   @ObfuscatedName("h")
+   @ObfuscatedSignature(
+      descriptor = "(Lqr;II)V",
+      garbageValue = "1603267448"
+   )
+   void method8314(Buffer var1, int var2) {
+      if (var2 == 3) {
+         int var3 = var1.readUnsignedByte();
+         if (this.columnTypes == null) {
+            this.columnTypes = new Object[var3][];
+            this.field4846 = new int[var3][];
+         }
 
-	@ObfuscatedName("k")
-	@ObfuscatedSignature(
-		descriptor = "(Lqq;II)V",
-		garbageValue = "2127843822"
-	)
-	void method7826(Buffer var1, int var2) {
-		if (var2 == 3) { // L: 48
-			int var3 = var1.readUnsignedByte(); // L: 49
-			if (this.columnTypes == null) { // L: 50
-				this.columnTypes = new Object[var3][]; // L: 51
-				this.field4716 = new int[var3][]; // L: 52
-			}
+         for(int var4 = var1.readUnsignedByte(); var4 != 255; var4 = var1.readUnsignedByte()) {
+            int var5 = var1.readUnsignedByte();
+            int[] var6 = new int[var5];
 
-			for (int var4 = var1.readUnsignedByte(); var4 != 255; var4 = var1.readUnsignedByte()) { // L: 54 55 63
-				int var5 = var1.readUnsignedByte(); // L: 56
-				int[] var6 = new int[var5]; // L: 57
+            for(int var7 = 0; var7 < var5; ++var7) {
+               var6[var7] = var1.readUShortSmart();
+            }
 
-				for (int var7 = 0; var7 < var5; ++var7) { // L: 58
-					var6[var7] = var1.readUShortSmart(); // L: 59
-				}
+            Object[][] var16 = this.columnTypes;
+            int var10 = var1.readUShortSmart();
+            Object[] var11 = new Object[var6.length * var10];
 
-				this.columnTypes[var4] = class358.method6730(var1, var6); // L: 61
-				this.field4716[var4] = var6; // L: 62
-			}
-		} else if (var2 == 4) { // L: 66
-			this.tableId = var1.packBytesToInt(); // L: 67
-		}
+            for(int var12 = 0; var12 < var10; ++var12) {
+               for(int var13 = 0; var13 < var6.length; ++var13) {
+                  int var14 = var13 + var6.length * var12;
+                  class453 var15 = class230.method4679(var6[var13]);
+                  var11[var14] = var15.method8257(var1);
+               }
+            }
 
-	} // L: 70
+            var16[var4] = var11;
+            this.field4846[var4] = var6;
+         }
+      } else if (var2 == 4) {
+         this.tableId = var1.packBytesToInt();
+      }
 
-	@ObfuscatedName("w")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1247469224"
-	)
-	void method7829() {
-	} // L: 72
+   }
+
+   @ObfuscatedName("j")
+   @ObfuscatedSignature(
+      descriptor = "(B)V",
+      garbageValue = "-62"
+   )
+   void method8309() {
+   }
 }

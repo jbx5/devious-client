@@ -3,76 +3,97 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("df")
+@ObfuscatedName("da")
 @Implements("UserComparator8")
 public class UserComparator8 extends AbstractUserComparator {
-	@ObfuscatedName("c")
-	@Export("reversed")
-	final boolean reversed;
+   @ObfuscatedName("sc")
+   @Export("ClanChat_inClanChat")
+   static boolean ClanChat_inClanChat;
+   @ObfuscatedName("e")
+   @ObfuscatedSignature(
+      descriptor = "Llg;"
+   )
+   @Export("Widget_archive")
+   public static AbstractArchive Widget_archive;
+   @ObfuscatedName("a")
+   @Export("reversed")
+   final boolean reversed;
 
-	public UserComparator8(boolean var1) {
-		this.reversed = var1; // L: 11
-	} // L: 12
+   public UserComparator8(boolean var1) {
+      this.reversed = var1;
+   }
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(Lnr;Lnr;B)I",
-		garbageValue = "-112"
-	)
-	@Export("compareBuddy")
-	int compareBuddy(Buddy var1, Buddy var2) {
-		if (Client.worldId == var1.world) { // L: 15
-			if (var2.world != Client.worldId) {
-				return this.reversed ? -1 : 1; // L: 16
-			}
-		} else if (var2.world == Client.worldId) {
-			return this.reversed ? 1 : -1; // L: 19
-		}
+   @ObfuscatedName("a")
+   @ObfuscatedSignature(
+      descriptor = "(Lof;Lof;I)I",
+      garbageValue = "-1969798784"
+   )
+   @Export("compareBuddy")
+   int compareBuddy(Buddy var1, Buddy var2) {
+      if (Client.worldId == var1.world) {
+         if (var2.world != Client.worldId) {
+            return this.reversed ? -1 : 1;
+         }
+      } else if (var2.world == Client.worldId) {
+         return this.reversed ? 1 : -1;
+      }
 
-		return this.compareUser(var1, var2); // L: 21
-	}
+      return this.compareUser(var1, var2);
+   }
 
-	public int compare(Object var1, Object var2) {
-		return this.compareBuddy((Buddy)var1, (Buddy)var2); // L: 25
-	}
+   public int compare(Object var1, Object var2) {
+      return this.compareBuddy((Buddy)var1, (Buddy)var2);
+   }
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "1857737872"
-	)
-	@Export("getVarbit")
-	public static int getVarbit(int var0) {
-		VarbitComposition var2 = (VarbitComposition)VarbitComposition.VarbitDefinition_cached.get((long)var0); // L: 26
-		VarbitComposition var1;
-		if (var2 != null) { // L: 27
-			var1 = var2; // L: 28
-		} else {
-			byte[] var3 = VarbitComposition.VarbitDefinition_archive.takeFile(14, var0); // L: 31
-			var2 = new VarbitComposition(); // L: 32
-			if (var3 != null) { // L: 33
-				var2.decode(new Buffer(var3));
-			}
+   @ObfuscatedName("a")
+   @ObfuscatedSignature(
+      descriptor = "(B)J",
+      garbageValue = "2"
+   )
+   public static final synchronized long method2748() {
+      long var0 = System.currentTimeMillis();
+      if (var0 < class279.field3267) {
+         class279.field3268 += class279.field3267 - var0;
+      }
 
-			VarbitComposition.VarbitDefinition_cached.put(var2, (long)var0); // L: 34
-			var1 = var2; // L: 35
-		}
+      class279.field3267 = var0;
+      return class279.field3268 + var0;
+   }
 
-		int var7 = var1.baseVar; // L: 38
-		int var4 = var1.startBit; // L: 39
-		int var5 = var1.endBit; // L: 40
-		int var6 = Varps.Varps_masks[var5 - var4]; // L: 41
-		return Varps.Varps_main[var7] >> var4 & var6; // L: 42
-	}
+   @ObfuscatedName("ih")
+   @ObfuscatedSignature(
+      descriptor = "(IIIII)V",
+      garbageValue = "133413802"
+   )
+   static final void method2749(int var0, int var1, int var2, int var3) {
+      for(int var4 = 0; var4 < Client.rootWidgetCount; ++var4) {
+         if (Client.rootWidgetWidths[var4] + Client.rootWidgetXs[var4] > var0 && Client.rootWidgetXs[var4] < var0 + var2 && Client.rootWidgetHeights[var4] + Client.rootWidgetYs[var4] > var1 && Client.rootWidgetYs[var4] < var3 + var1) {
+            Client.field718[var4] = true;
+         }
+      }
 
-	@ObfuscatedName("d")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "14"
-	)
-	public static void method2742() {
-		SequenceDefinition.SequenceDefinition_cached.clear(); // L: 390
-		SequenceDefinition.SequenceDefinition_cachedFrames.clear(); // L: 391
-		SequenceDefinition.SequenceDefinition_cachedModel.clear(); // L: 392
-	} // L: 393
+   }
+
+   @ObfuscatedName("jt")
+   @ObfuscatedSignature(
+      descriptor = "(Ljava/lang/String;Ljava/lang/String;IIIIIZI)V",
+      garbageValue = "-2077871201"
+   )
+   @Export("insertMenuItem")
+   static final void insertMenuItem(String var0, String var1, int var2, int var3, int var4, int var5, int var6, boolean var7) {
+      if (!Client.isMenuOpen) {
+         if (Client.menuOptionsCount < 500) {
+            Client.menuActions[Client.menuOptionsCount] = var0;
+            Client.menuTargets[Client.menuOptionsCount] = var1;
+            Client.menuOpcodes[Client.menuOptionsCount] = var2;
+            Client.menuIdentifiers[Client.menuOptionsCount] = var3;
+            Client.menuArguments1[Client.menuOptionsCount] = var4;
+            Client.menuArguments2[Client.menuOptionsCount] = var5;
+            Client.menuItemIds[Client.menuOptionsCount] = var6;
+            Client.menuShiftClick[Client.menuOptionsCount] = var7;
+            ++Client.menuOptionsCount;
+         }
+
+      }
+   }
 }

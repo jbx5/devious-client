@@ -130,7 +130,7 @@ public class Trade
 				item.interact("Offer-10");
 				break;
 			default:
-				if (quantity > item.getQuantity())
+				if (quantity > Inventory.getCount(true, item.getId()))
 				{
 					item.interact("Offer-All");
 				}

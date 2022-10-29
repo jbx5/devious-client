@@ -77,11 +77,11 @@ public interface RSScene extends Scene
 	@Import("removeFloorDecoration")
 	void removeGroundObject(int plane, int x, int y);
 
-	byte[][][] getUnderlayIds();
-	void setUnderlayIds(byte[][][] underlayIds);
+	short[][][] getUnderlayIds();
+	void setUnderlayIds(short[][][] underlayIds);
 
-	byte[][][] getOverlayIds();
-	void setOverlayIds(byte[][][] overlayIds);
+	short[][][] getOverlayIds();
+	void setOverlayIds(short[][][] overlayIds);
 
 	byte[][][] getTileShapes();
 	void setTileShapes(byte[][][] tileShapes);

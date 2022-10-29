@@ -2,58 +2,82 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ey")
-public class class141 extends class145 {
-	@ObfuscatedName("c")
-	String field1654;
-	@ObfuscatedName("p")
-	@ObfuscatedGetter(
-		intValue = 1572942225
-	)
-	int field1657;
-	@ObfuscatedName("f")
-	byte field1656;
-	// $FF: synthetic field
-	@ObfuscatedSignature(
-		descriptor = "Lem;"
-	)
-	final class146 this$0;
+@ObfuscatedName("et")
+public class class141 extends class151 {
+   @ObfuscatedName("a")
+   @ObfuscatedGetter(
+      intValue = -1972983481
+   )
+   int field1631;
+   @ObfuscatedName("f")
+   byte field1630;
+   @ObfuscatedName("c")
+   @ObfuscatedGetter(
+      intValue = 1076916533
+   )
+   int field1634;
+   @ObfuscatedName("x")
+   String field1633;
+   // $FF: synthetic field
+   @ObfuscatedSignature(
+      descriptor = "Lem;"
+   )
+   final class152 this$0;
 
-	@ObfuscatedSignature(
-		descriptor = "(Lem;)V"
-	)
-	class141(class146 var1) {
-		this.this$0 = var1;
-		this.field1654 = null; // L: 55
-	} // L: 59
+   @ObfuscatedSignature(
+      descriptor = "(Lem;)V"
+   )
+   class141(class152 var1) {
+      this.this$0 = var1;
+      this.field1631 = -1;
+   }
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(Lqq;I)V",
-		garbageValue = "-64301329"
-	)
-	void vmethod3300(Buffer var1) {
-		if (var1.readUnsignedByte() != 255) { // L: 62
-			--var1.offset; // L: 63
-			var1.readLong(); // L: 64
-		}
+   @ObfuscatedName("a")
+   @ObfuscatedSignature(
+      descriptor = "(Lqr;B)V",
+      garbageValue = "85"
+   )
+   void vmethod3238(Buffer var1) {
+      this.field1631 = var1.readUnsignedShort();
+      this.field1630 = var1.readByte();
+      this.field1634 = var1.readUnsignedShort();
+      var1.readLong();
+      this.field1633 = var1.readStringCp1252NullTerminated();
+   }
 
-		this.field1654 = var1.readStringCp1252NullTerminatedOrNull(); // L: 66
-		this.field1657 = var1.readUnsignedShort(); // L: 67
-		this.field1656 = var1.readByte(); // L: 68
-		var1.readLong(); // L: 69
-	} // L: 70
+   @ObfuscatedName("f")
+   @ObfuscatedSignature(
+      descriptor = "(Leq;I)V",
+      garbageValue = "-1303116736"
+   )
+   void vmethod3239(ClanChannel var1) {
+      ClanChannelMember var2 = (ClanChannelMember)var1.members.get(this.field1631);
+      var2.rank = this.field1630;
+      var2.world = this.field1634;
+      var2.username = new Username(this.field1633);
+   }
 
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "(Ler;B)V",
-		garbageValue = "97"
-	)
-	void vmethod3302(ClanChannel var1) {
-		ClanChannelMember var2 = new ClanChannelMember(); // L: 73
-		var2.username = new Username(this.field1654); // L: 74
-		var2.world = this.field1657; // L: 75
-		var2.rank = this.field1656; // L: 76
-		var1.addMember(var2); // L: 77
-	} // L: 78
+   @ObfuscatedName("a")
+   @ObfuscatedSignature(
+      descriptor = "(Llg;Llg;Llg;I)V",
+      garbageValue = "717052064"
+   )
+   public static void method3036(AbstractArchive var0, AbstractArchive var1, AbstractArchive var2) {
+      HitSplatDefinition.HitSplatDefinition_archive = var0;
+      HitSplatDefinition.field2057 = var1;
+      HitSplatDefinition.HitSplatDefinition_fontsArchive = var2;
+   }
+
+   @ObfuscatedName("n")
+   @ObfuscatedSignature(
+      descriptor = "(IB)J",
+      garbageValue = "-41"
+   )
+   public static long method3037(int var0) {
+      if (var0 > 63) {
+         throw new class360("Cannot generate max unsigned value for more than 63 bits as this is greater than the boundaries of a java long. Value provided: %d", new Object[]{var0});
+      } else {
+         return (long)Math.pow(2.0, (double)var0) - 1L;
+      }
+   }
 }

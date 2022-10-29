@@ -7,67 +7,80 @@ import net.runelite.mapping.ObfuscatedSignature;
 @ObfuscatedName("hw")
 @Implements("VertexNormal")
 public class VertexNormal {
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "Lcu;"
-	)
-	@Export("loginScreenRunesAnimation")
-	static LoginScreenAnimation loginScreenRunesAnimation;
-	@ObfuscatedName("p")
-	@ObfuscatedGetter(
-		intValue = -1936083837
-	)
-	@Export("x")
-	int x;
-	@ObfuscatedName("f")
-	@ObfuscatedGetter(
-		intValue = -1468539031
-	)
-	@Export("y")
-	int y;
-	@ObfuscatedName("n")
-	@ObfuscatedGetter(
-		intValue = -498232775
-	)
-	@Export("z")
-	int z;
-	@ObfuscatedName("k")
-	@ObfuscatedGetter(
-		intValue = 1111169615
-	)
-	@Export("magnitude")
-	int magnitude;
+   @ObfuscatedName("hf")
+   @ObfuscatedSignature(
+      descriptor = "Lfy;"
+   )
+   @Export("socketTask")
+   static Task socketTask;
+   @ObfuscatedName("a")
+   @ObfuscatedGetter(
+      intValue = 1046360711
+   )
+   @Export("x")
+   int x;
+   @ObfuscatedName("f")
+   @ObfuscatedGetter(
+      intValue = 1848636231
+   )
+   @Export("y")
+   int y;
+   @ObfuscatedName("x")
+   @ObfuscatedGetter(
+      intValue = -209584019
+   )
+   @Export("z")
+   int z;
+   @ObfuscatedName("h")
+   @ObfuscatedGetter(
+      intValue = -867877795
+   )
+   @Export("magnitude")
+   int magnitude;
 
-	VertexNormal() {
-	} // L: 9
+   VertexNormal() {
+   }
 
-	@ObfuscatedSignature(
-		descriptor = "(Lhw;)V"
-	)
-	VertexNormal(VertexNormal var1) {
-		this.x = var1.x; // L: 12
-		this.y = var1.y; // L: 13
-		this.z = var1.z; // L: 14
-		this.magnitude = var1.magnitude; // L: 15
-	} // L: 16
+   @ObfuscatedSignature(
+      descriptor = "(Lhw;)V"
+   )
+   VertexNormal(VertexNormal var1) {
+      this.x = var1.x;
+      this.y = var1.y;
+      this.z = var1.z;
+      this.magnitude = var1.magnitude;
+   }
 
-	@ObfuscatedName("lj")
-	@ObfuscatedSignature(
-		descriptor = "(IIZI)V",
-		garbageValue = "-2127974658"
-	)
-	static final void method4646(int var0, int var1, boolean var2) {
-		if (Client.currentClanChannels[var0] != null) { // L: 12003
-			if (var1 >= 0 && var1 < Client.currentClanChannels[var0].method3265()) { // L: 12004
-				ClanChannelMember var3 = (ClanChannelMember)Client.currentClanChannels[var0].members.get(var1); // L: 12005
-				PacketBufferNode var4 = class120.getPacketBufferNode(ClientPacket.field3000, Client.packetWriter.isaacCipher); // L: 12006
-				var4.packetBuffer.writeByte(4 + class357.stringCp1252NullTerminatedByteSize(var3.username.getName())); // L: 12007
-				var4.packetBuffer.writeByte(var0); // L: 12008
-				var4.packetBuffer.writeShort(var1); // L: 12009
-				var4.packetBuffer.writeBoolean(var2); // L: 12010
-				var4.packetBuffer.writeStringCp1252NullTerminated(var3.username.getName()); // L: 12011
-				Client.packetWriter.addNode(var4); // L: 12012
-			}
-		}
-	} // L: 12013
+   @ObfuscatedName("bu")
+   @ObfuscatedSignature(
+      descriptor = "([BI)[B",
+      garbageValue = "-546159612"
+   )
+   @Export("decompressBytes")
+   static final byte[] decompressBytes(byte[] var0) {
+      Buffer var1 = new Buffer(var0);
+      int var2 = var1.readUnsignedByte();
+      int var3 = var1.readInt();
+      if (var3 < 0 || AbstractArchive.field4157 != 0 && var3 > AbstractArchive.field4157) {
+         throw new RuntimeException();
+      } else if (var2 == 0) {
+         byte[] var6 = new byte[var3];
+         var1.readBytes(var6, 0, var3);
+         return var6;
+      } else {
+         int var4 = var1.readInt();
+         if (var4 >= 0 && (AbstractArchive.field4157 == 0 || var4 <= AbstractArchive.field4157)) {
+            byte[] var5 = new byte[var4];
+            if (var2 == 1) {
+               BZip2Decompressor.BZip2Decompressor_decompress(var5, var4, var0, var3, 9);
+            } else {
+               AbstractArchive.gzipDecompressor.decompress(var1, var5);
+            }
+
+            return var5;
+         } else {
+            throw new RuntimeException();
+         }
+      }
+   }
 }

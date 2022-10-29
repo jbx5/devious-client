@@ -2828,8 +2828,8 @@ public abstract class RSClientMixin implements RSClient
 		{
 			RSScene scene = client.getScene();
 
-			byte[][][] underlays = client.getTileUnderlays();
-			byte[][][] overlays = client.getTileOverlays();
+			short[][][] underlays = client.getTileUnderlays();
+			short[][][] overlays = client.getTileOverlays();
 			byte[][][] tileShapes = client.getTileShapes();
 
 			scene.setUnderlayIds(Arrays.copyOf(underlays, underlays.length));
@@ -3288,6 +3288,27 @@ public abstract class RSClientMixin implements RSClient
 	public int getIdleTimeout()
 	{
 		return idleTimeout;
+	}
+
+	@Inject
+	@Override
+	public int getKeyboardIdleTicks()
+	{
+		return this.getKeyHandler().getIdleCycles();
+	}
+
+	@Inject
+	@Override
+	public void setKeyboardIdleTicks(int var1)
+	{
+		this.getKeyHandler().setIdleCycles(var1);
+	}
+
+	@Inject
+	@Override
+	public boolean[] getPressedKeys()
+	{
+		return this.getKeyHandler().getPressedKeys();
 	}
 }
 

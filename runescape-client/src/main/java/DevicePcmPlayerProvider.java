@@ -1,58 +1,55 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("z")
+@ObfuscatedName("g")
 @Implements("DevicePcmPlayerProvider")
-public class DevicePcmPlayerProvider implements class47 {
-	@ObfuscatedName("n")
-	@ObfuscatedSignature(
-		descriptor = "[Lqu;"
-	)
-	@Export("runesSprite")
-	static IndexedSprite[] runesSprite;
-	@ObfuscatedName("ei")
-	@ObfuscatedSignature(
-		descriptor = "Llb;"
-	)
-	@Export("archive5")
-	static Archive archive5;
-	@ObfuscatedName("ks")
-	@ObfuscatedSignature(
-		descriptor = "Lkw;"
-	)
-	static Widget field153;
+public class DevicePcmPlayerProvider implements class51 {
+   @ObfuscatedName("j")
+   @ObfuscatedSignature(
+      descriptor = "Llg;"
+   )
+   @Export("musicTrackArchive")
+   public static AbstractArchive musicTrackArchive;
+   @ObfuscatedName("cy")
+   @ObfuscatedSignature(
+      descriptor = "Lry;"
+   )
+   @Export("worldSelectRightSprite")
+   static IndexedSprite worldSelectRightSprite;
+   @ObfuscatedName("iv")
+   @ObfuscatedGetter(
+      intValue = -1833710583
+   )
+   static int field122;
 
-	DevicePcmPlayerProvider() {
-	} // L: 7
+   DevicePcmPlayerProvider() {
+   }
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(I)Lad;",
-		garbageValue = "1345592536"
-	)
-	@Export("player")
-	public PcmPlayer player() {
-		return new DevicePcmPlayer(); // L: 11
-	}
+   @ObfuscatedName("a")
+   @ObfuscatedSignature(
+      descriptor = "(I)Lab;",
+      garbageValue = "469257339"
+   )
+   @Export("player")
+   public PcmPlayer player() {
+      return new DevicePcmPlayer();
+   }
 
-	@ObfuscatedName("fe")
-	@ObfuscatedSignature(
-		descriptor = "(IS)V",
-		garbageValue = "14639"
-	)
-	@Export("forceDisconnect")
-	static final void forceDisconnect(int var0) {
-		ApproximateRouteStrategy.logOut(); // L: 2871
-		switch(var0) { // L: 2872
-		case 1:
-			class7.method68(); // L: 2883
-			break;
-		case 2:
-			class139.method3101(24); // L: 2876
-			SecureRandomCallable.setLoginResponseString("The game servers are currently being updated.", "Please wait a few minutes and try again.", ""); // L: 2877
-		}
-
-	} // L: 2887
+   @ObfuscatedName("lx")
+   @ObfuscatedSignature(
+      descriptor = "(Ljava/lang/String;S)V",
+      garbageValue = "146"
+   )
+   @Export("clanKickUser")
+   static final void clanKickUser(String var0) {
+      if (MenuAction.friendsChat != null) {
+         PacketBufferNode var1 = FloorUnderlayDefinition.getPacketBufferNode(ClientPacket.CLAN_KICKUSER, Client.packetWriter.isaacCipher);
+         var1.packetBuffer.writeByte(Actor.stringCp1252NullTerminatedByteSize(var0));
+         var1.packetBuffer.writeStringCp1252NullTerminated(var0);
+         Client.packetWriter.addNode(var1);
+      }
+   }
 }

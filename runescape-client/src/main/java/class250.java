@@ -1,19 +1,20 @@
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("iv")
-public abstract class class250 implements class252 {
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(
-		intValue = -725677979
-	)
-	protected int field2914;
+@ObfuscatedName("iu")
+public class class250 {
+   @ObfuscatedName("fc")
+   @ObfuscatedSignature(
+      descriptor = "Llx;"
+   )
+   static Archive field2930;
 
-	@ObfuscatedSignature(
-		descriptor = "(Lkl;Llj;I)V"
-	)
-	protected class250(StudioGame var1, Language var2, int var3) {
-		this.field2914 = var3; // L: 10
-	} // L: 11
+   @ObfuscatedName("jy")
+   @ObfuscatedSignature(
+      descriptor = "(I)I",
+      garbageValue = "1910075726"
+   )
+   static final int method5167() {
+      return Client.menuOptionsCount - 1;
+   }
 }
