@@ -11,8 +11,8 @@ The client launcher can be downloaded here:
 
 https://github.com/jbx5/devious-launcher/releases
 
-# Unethicalite
-A non-compliant fork of OpenOSRS.
+# Devious Client
+A non-compliant and open source fork of OpenOSRS and Unethicalite.
 This client is slightly modified in order to be compatible with our api. Updates to OpenOSRS are directly synced with this fork.
 
 **All existing OpenOSRS or RuneLite plugins ARE compatible with this client.**
