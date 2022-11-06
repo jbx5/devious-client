@@ -349,9 +349,9 @@ public final class class278 {
                                                 Widget var28 = var0[var1 & '\uffff'];
                                                 int var29;
                                                 if (var25 + var23 < Rasterizer2D.Rasterizer2D_yClipStart && var28.scrollY > 0) {
-                                                   var29 = (Rasterizer2D.Rasterizer2D_yClipStart - var23 - var25) * Client.field558 / 3;
-                                                   if (var29 > Client.field558 * 10) {
-                                                      var29 = Client.field558 * 10;
+                                                   var29 = (Rasterizer2D.Rasterizer2D_yClipStart - var23 - var25) * Client.graphicsCycle / 3;
+                                                   if (var29 > Client.graphicsCycle * 10) {
+                                                      var29 = Client.graphicsCycle * 10;
                                                    }
 
                                                    if (var29 > var28.scrollY) {
@@ -364,9 +364,9 @@ public final class class278 {
                                                 }
 
                                                 if (var25 + var23 + 32 > Rasterizer2D.Rasterizer2D_yClipEnd && var28.scrollY < var28.scrollHeight - var28.height) {
-                                                   var29 = (var23 + var25 + 32 - Rasterizer2D.Rasterizer2D_yClipEnd) * Client.field558 / 3;
-                                                   if (var29 > Client.field558 * 10) {
-                                                      var29 = Client.field558 * 10;
+                                                   var29 = (var23 + var25 + 32 - Rasterizer2D.Rasterizer2D_yClipEnd) * Client.graphicsCycle / 3;
+                                                   if (var29 > Client.graphicsCycle * 10) {
+                                                      var29 = Client.graphicsCycle * 10;
                                                    }
 
                                                    if (var29 > var28.scrollHeight - var28.height - var28.scrollY) {
