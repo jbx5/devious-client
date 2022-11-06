@@ -582,7 +582,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
    @ObfuscatedGetter(
       intValue = -685292213
    )
-   static int field558;
+   @Export("graphicsCycle")
+   static int graphicsCycle;
    @ObfuscatedName("je")
    @ObfuscatedGetter(
       intValue = -1790452751
@@ -1455,7 +1456,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
       isInInstance = false;
       instanceChunkTemplates = new int[4][13][13];
       field565 = new int[]{0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3};
-      field558 = 0;
+      graphicsCycle = 0;
       field714 = 2301979;
       field568 = 5063219;
       field569 = 3353893;
@@ -3677,7 +3678,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
                      }
                   }
 
-                  ++field558;
+                  ++graphicsCycle;
                   if (mouseCrossColor != 0) {
                      mouseCrossState = mouseCrossState * 400 + 20;
                      if (mouseCrossState * 400 >= 400) {
@@ -4281,8 +4282,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
          }
       }
 
-      ApproximateRouteStrategy.method1163(ApproximateRouteStrategy.Client_plane, class296.localPlayer.x, class296.localPlayer.y, field558);
-      field558 = 0;
+      ApproximateRouteStrategy.method1163(ApproximateRouteStrategy.Client_plane, class296.localPlayer.x, class296.localPlayer.y, graphicsCycle);
+      graphicsCycle = 0;
    }
 
    @ObfuscatedName("im")

@@ -114,7 +114,7 @@ public class MenuAction {
                   if (var5 != -1) {
                      SequenceDefinition var6 = WorldMapElement.SequenceDefinition_get(var5);
                      if (!var6.isCachedModelIdSet()) {
-                        for(var3.modelFrameCycle += Client.field558; var3.modelFrameCycle > var6.frameLengths[var3.modelFrame]; class143.invalidateWidget(var3)) {
+                        for(var3.modelFrameCycle += Client.graphicsCycle; var3.modelFrameCycle > var6.frameLengths[var3.modelFrame]; class143.invalidateWidget(var3)) {
                            var3.modelFrameCycle -= var6.frameLengths[var3.modelFrame];
                            ++var3.modelFrame;
                            if (var3.modelFrame >= var6.frameIds.length) {
@@ -125,7 +125,7 @@ public class MenuAction {
                            }
                         }
                      } else {
-                        var3.modelFrame += Client.field558;
+                        var3.modelFrame += Client.graphicsCycle;
                         int var7 = var6.method3876();
                         if (var3.modelFrame >= var7) {
                            var3.modelFrame -= var6.frameCount;
@@ -142,8 +142,8 @@ public class MenuAction {
                if (var3.field3533 != 0 && !var3.isIf3) {
                   int var9 = var3.field3533 >> 16;
                   var5 = var3.field3533 << 16 >> 16;
-                  var9 *= Client.field558;
-                  var5 *= Client.field558;
+                  var9 *= Client.graphicsCycle;
+                  var5 *= Client.graphicsCycle;
                   var3.modelAngleX = var9 + var3.modelAngleX & 2047;
                   var3.modelAngleY = var5 + var3.modelAngleY & 2047;
                   class143.invalidateWidget(var3);

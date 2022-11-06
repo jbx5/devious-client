@@ -113,7 +113,7 @@ class class11 implements TlsAuthentication {
                   }
                }
 
-               var0.advance(Client.field558);
+               var0.advance(Client.graphicsCycle);
                class139.scene.drawEntity(ApproximateRouteStrategy.Client_plane, (int)var0.x, (int)var0.y, (int)var0.z, 60, var0, var0.yaw, -1L, false);
             }
          } else {

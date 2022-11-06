@@ -3,6 +3,7 @@ package net.runelite.rs.api;
 import net.runelite.api.DecorativeObject;
 import net.runelite.api.GameObject;
 import net.runelite.api.GroundObject;
+import net.runelite.api.Renderable;
 import net.runelite.api.Scene;
 import net.runelite.api.Tile;
 import net.runelite.api.WallObject;
@@ -88,4 +89,7 @@ public interface RSScene extends Scene
 
 	@Import("menuOpen")
 	void menuOpen(int selectedPlane, int screenX, int screenY, boolean viewportWalking);
+
+	@Import("drawEntity")
+	boolean drawEntity(int level, int x, int y, int z, int radius, Renderable renderable, int orientation, long var8, boolean drawFrontTilesFirst);
 }
