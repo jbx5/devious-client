@@ -613,11 +613,12 @@ public class NPCComposition extends DualNode {
       descriptor = "(B)V",
       garbageValue = "17"
    )
-   static final void method3558() {
+   @Export("drawGraphicsObjectEntity")
+   static final void drawGraphicsObjectEntity() {
       for(GraphicsObject var0 = (GraphicsObject)Client.graphicsObjects.last(); var0 != null; var0 = (GraphicsObject)Client.graphicsObjects.previous()) {
          if (var0.plane == ApproximateRouteStrategy.Client_plane && !var0.isFinished) {
             if (Client.cycle >= var0.cycleStart) {
-               var0.advance(Client.field558);
+               var0.advance(Client.graphicsCycle);
                if (var0.isFinished) {
                   var0.remove();
                } else {

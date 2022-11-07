@@ -66,4 +66,10 @@ public interface RSGraphicsObject extends GraphicsObject, RSRenderable
 
 	@Import("sequenceDefinition")
 	void setSequenceDefinition(RSSequenceDefinition sequenceDefinition);
+
+	@Import("advance")
+	void advance(int var1);
+
+	@Import("drawGraphicsObjectEntity")
+	void drawGraphicsObjectEntity();
 }

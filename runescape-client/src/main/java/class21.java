@@ -427,7 +427,7 @@ public class class21 {
 
       class319.addNpcsToScene(false);
       class11.method100();
-      NPCComposition.method3558();
+      NPCComposition.drawGraphicsObjectEntity();
       MouseHandler.setViewportShape(var0, var1, var2, var3, true);
       var0 = Client.viewportOffsetX;
       var1 = Client.viewportOffsetY;
@@ -530,7 +530,7 @@ public class class21 {
          }
       }
 
-      ((TextureProvider)Rasterizer3D.Rasterizer3D_textureLoader).animate(Client.field558);
+      ((TextureProvider)Rasterizer3D.Rasterizer3D_textureLoader).animate(Client.graphicsCycle);
       GameEngine.method662();
       TextureProvider.cameraX = var7;
       class31.cameraY = var8;
