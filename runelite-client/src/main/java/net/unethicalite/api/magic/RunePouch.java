@@ -7,26 +7,27 @@ import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
-
 import java.util.Arrays;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
+import static net.runelite.api.Varbits.RUNE_POUCH_AMOUNT1;
+import static net.runelite.api.Varbits.RUNE_POUCH_AMOUNT2;
+import static net.runelite.api.Varbits.RUNE_POUCH_AMOUNT3;
+import static net.runelite.api.Varbits.RUNE_POUCH_AMOUNT4;
+import static net.runelite.api.Varbits.RUNE_POUCH_RUNE1;
+import static net.runelite.api.Varbits.RUNE_POUCH_RUNE2;
+import static net.runelite.api.Varbits.RUNE_POUCH_RUNE3;
+import static net.runelite.api.Varbits.RUNE_POUCH_RUNE4;
 
 @Slf4j
 public class RunePouch
 {
-	private static final int SLOT_1_TYPE_BIT = 29;
-	private static final int SLOT_1_QUANTITY_BIT = 1624;
-	private static final int SLOT_2_TYPE_BIT = 1622;
-	private static final int SLOT_2_QUANTITY_BIT = 1625;
-	private static final int SLOT_3_TYPE_BIT = 1623;
-	private static final int SLOT_3_QUANTITY_BIT = 1626;
-
 	public enum RuneSlot
 	{
-		FIRST(SLOT_1_TYPE_BIT, SLOT_1_QUANTITY_BIT),
-		SECOND(SLOT_2_TYPE_BIT, SLOT_2_QUANTITY_BIT),
-		THIRD(SLOT_3_TYPE_BIT, SLOT_3_QUANTITY_BIT);
+		FIRST(RUNE_POUCH_RUNE1, RUNE_POUCH_AMOUNT1),
+		SECOND(RUNE_POUCH_RUNE2, RUNE_POUCH_AMOUNT2),
+		THIRD(RUNE_POUCH_RUNE3, RUNE_POUCH_AMOUNT3),
+		FOURTH(RUNE_POUCH_RUNE4, RUNE_POUCH_AMOUNT4);
 
 		private final int type;
 		private final int quantityVarbitIdx;
@@ -149,6 +150,6 @@ public class RunePouch
 
 	public static boolean hasPouch()
 	{
-		return Inventory.getFirst("Rune pouch") != null;
+		return Inventory.getFirst("Rune pouch", "Divine rune pouch") != null;
 	}
 }
