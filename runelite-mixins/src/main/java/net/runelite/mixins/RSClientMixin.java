@@ -3037,6 +3037,13 @@ public abstract class RSClientMixin implements RSClient
 	}
 
 	@Inject
+	@MethodHook(value = "doCycle", end = true)
+	protected final void doCycleEnd()
+	{
+		client.getCallbacks().tickEnd();
+	}
+
+	@Inject
 	public static void check(String name, RSEvictingDualNodeHashTable dualNodeHashTable)
 	{
 		boolean var3 = dualNodeHashTable.isTrashing();
