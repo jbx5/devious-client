@@ -1058,7 +1058,7 @@ public class MenuEntrySwapperPlugin extends Plugin
 			if (entry.getType() == MenuAction.CC_OP || entry.getType() == MenuAction.CC_OP_LOW_PRIORITY)
 			{
 				final Widget w = entry.getWidget();
-				if (w == null)
+				if (w == null || w.getActions() == null)
 				{
 					continue;
 				}
@@ -1441,11 +1441,11 @@ public class MenuEntrySwapperPlugin extends Plugin
 		// UI swaps
 		if ((menuAction == MenuAction.CC_OP || menuAction == MenuAction.CC_OP_LOW_PRIORITY)
 			&& w != null && (w.getIndex() == -1 || w.getItemId() != -1)
+			&& w.getActions() != null
 			&& !itemOp && WidgetInfo.TO_GROUP(w.getId()) != WidgetID.EQUIPMENT_GROUP_ID)
 		{
-			final String[] actions = w.getActions();
 			int numActions = 0;
-			for (String action : actions)
+			for (String action : w.getActions())
 			{
 				if (!Strings.isNullOrEmpty(action))
 				{
