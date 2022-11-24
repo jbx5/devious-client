@@ -118,7 +118,7 @@ public abstract class Entities<T extends SceneEntity>
 				case PLAYER_FIFTH_OPTION:
 				case PLAYER_SIXTH_OPTION:
 				case PLAYER_SEVENTH_OPTION:
-				case PLAYER_EIGTH_OPTION:
+				case PLAYER_EIGHTH_OPTION:
 				{
 					out.add(Static.getClient().getCachedPlayers()[menuEntry.getIdentifier()]);
 					break;

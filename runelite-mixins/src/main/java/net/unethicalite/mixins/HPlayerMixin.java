@@ -53,7 +53,7 @@ public abstract class HPlayerMixin extends RSPlayerMixin implements RSPlayer
 			case 6:
 				return MenuAction.PLAYER_SEVENTH_OPTION.getId();
 			case 7:
-				return MenuAction.PLAYER_EIGTH_OPTION.getId();
+				return MenuAction.PLAYER_EIGHTH_OPTION.getId();
 			default:
 				throw new IllegalArgumentException("action = " + action);
 		}
