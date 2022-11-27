@@ -673,7 +673,6 @@ public class MenuEntrySwapperPlugin extends Plugin
 					{
 						leftClickMenus.add(client.createMenuEntry(idx)
 							.setOption(actions[actionIdx])
-							.setTarget(entry.getTarget())
 							.setType(MenuAction.RUNELITE)
 							.onClick(npcConsumer(composition, actions, actionIdx, menuAction, false)));
 					}
@@ -682,7 +681,6 @@ public class MenuEntrySwapperPlugin extends Plugin
 					{
 						shiftClickMenus.add(client.createMenuEntry(idx)
 							.setOption(actions[actionIdx])
-							.setTarget(entry.getTarget())
 							.setType(MenuAction.RUNELITE)
 							.onClick(npcConsumer(composition, actions, actionIdx, menuAction, true)));
 					}
@@ -691,13 +689,11 @@ public class MenuEntrySwapperPlugin extends Plugin
 				// Walk here swap
 				leftClickMenus.add(client.createMenuEntry(idx)
 					.setOption("Walk here")
-					.setTarget(entry.getTarget())
 					.setType(MenuAction.RUNELITE)
 					.onClick(walkHereConsumer(false, composition)));
 
 				shiftClickMenus.add(client.createMenuEntry(idx)
 					.setOption("Walk here")
-					.setTarget(entry.getTarget())
 					.setType(MenuAction.RUNELITE)
 					.onClick(walkHereConsumer(true, composition)));
 
@@ -705,7 +701,6 @@ public class MenuEntrySwapperPlugin extends Plugin
 				{
 					leftClickMenus.add(client.createMenuEntry(idx)
 						.setOption("Reset")
-						.setTarget(entry.getTarget())
 						.setType(MenuAction.RUNELITE)
 						.onClick(npcResetConsumer(composition, false)));
 				}
@@ -714,7 +709,6 @@ public class MenuEntrySwapperPlugin extends Plugin
 				{
 					shiftClickMenus.add(client.createMenuEntry(idx)
 						.setOption("Reset")
-						.setTarget(entry.getTarget())
 						.setType(MenuAction.RUNELITE)
 						.onClick(npcResetConsumer(composition, true)));
 				}
