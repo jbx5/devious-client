@@ -1378,7 +1378,7 @@ public class MenuEntrySwapperPlugin extends Plugin
 			}
 			else if (shiftModifier() && config.objectShiftClickWalkHere())
 			{
-				menuEntry.setDeprioritized(true);
+				swap(menuEntries, "walk here", "", index, true);
 			}
 		}
 
@@ -1394,8 +1394,7 @@ public class MenuEntrySwapperPlugin extends Plugin
 			{
 				if (shiftModifier() && config.npcShiftClickWalkHere())
 				{
-					// we can achieve this by just deprioritizing the normal npc menus
-					menuEntry.setDeprioritized(true);
+					swap(menuEntries, "walk here", "", index, true);
 				}
 			}
 			else
@@ -1403,8 +1402,7 @@ public class MenuEntrySwapperPlugin extends Plugin
 				// Walk here swap
 				if (customOption == -1)
 				{
-					// we can achieve this by just deprioritizing the normal npc menus
-					menuEntry.setDeprioritized(true);
+					swap(menuEntries, "walk here", "", index, true);
 				}
 				else
 				{
@@ -1434,7 +1432,7 @@ public class MenuEntrySwapperPlugin extends Plugin
 		{
 			if (shiftModifier() && config.groundItemShiftClickWalkHere())
 			{
-				menuEntry.setDeprioritized(true);
+				swap(menuEntries, "walk here", "", index, true);
 			}
 		}
 
