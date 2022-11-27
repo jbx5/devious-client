@@ -43,6 +43,8 @@ import net.runelite.api.Item;
 import net.runelite.api.ItemComposition;
 import net.runelite.api.ItemContainer;
 import net.runelite.api.ItemID;
+import static net.runelite.api.MenuAction.RUNELITE_OVERLAY;
+import net.runelite.api.MenuEntry;
 import net.runelite.api.NPC;
 import net.runelite.api.ObjectComposition;
 import net.runelite.api.Point;
@@ -78,6 +80,7 @@ import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.events.ConfigChanged;
 import net.runelite.client.game.ItemManager;
+import net.runelite.client.game.chatbox.ChatboxPanelManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDependency;
 import net.runelite.client.plugins.PluginDescriptor;
@@ -127,6 +130,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import java.util.function.Consumer;
 
 @PluginDescriptor(
 		name = "Clue Scroll",
@@ -147,6 +151,7 @@ public class ClueScrollPlugin extends Plugin
 	private static final int[] RUNEPOUCH_RUNE_VARBITS = {
 			Varbits.RUNE_POUCH_RUNE1, Varbits.RUNE_POUCH_RUNE2, Varbits.RUNE_POUCH_RUNE3, Varbits.RUNE_POUCH_RUNE4
 	};
+	private static final String CLUE_NOTE_KEY_PREFIX = "note_";
 
 	@Getter
 	private ClueScroll clue;
@@ -172,6 +177,12 @@ public class ClueScrollPlugin extends Plugin
 
 	@Inject
 	private ClientThread clientThread;
+
+	@Inject
+	private ConfigManager configManager;
+
+	@Inject
+	private ChatboxPanelManager chatboxPanelManager;
 
 	@Inject
 	private ItemManager itemManager;
@@ -519,7 +530,7 @@ public class ClueScrollPlugin extends Plugin
 	@Subscribe
 	public void onConfigChanged(ConfigChanged event)
 	{
-		if (event.getGroup().equals("cluescroll") && !config.displayHintArrows())
+		if (event.getGroup().equals(ClueScrollConfig.GROUP) && !config.displayHintArrows())
 		{
 			client.clearHintArrow();
 		}
@@ -739,6 +750,8 @@ public class ClueScrollPlugin extends Plugin
 		{
 			client.clearHintArrow();
 		}
+
+		updateOverlayMenuEntries();
 	}
 
 	private ClueScroll findClueScroll(String rawText)
@@ -1075,6 +1088,8 @@ public class ClueScrollPlugin extends Plugin
 		// If we have a clue, save that knowledge
 		// so the clue window doesn't have to be open.
 		this.clue = clue;
+
+		updateOverlayMenuEntries();
 	}
 
 	void highlightWidget(Graphics2D graphics, Widget toHighlight, Widget container, Rectangle padding, String text)
@@ -1197,5 +1212,67 @@ public class ClueScrollPlugin extends Plugin
 		}
 
 		return false;
+	}
+
+	private void updateOverlayMenuEntries()
+	{
+		clueScrollOverlay.removeMenuEntry(RUNELITE_OVERLAY, "Set note", "Clue Scroll overlay");
+		clueScrollOverlay.removeMenuEntry(RUNELITE_OVERLAY, "Set note 1", "Clue Scroll overlay");
+		clueScrollOverlay.removeMenuEntry(RUNELITE_OVERLAY, "Set note 2", "Clue Scroll overlay");
+		clueScrollOverlay.removeMenuEntry(RUNELITE_OVERLAY, "Set note 3", "Clue Scroll overlay");
+
+		if (clue != null)
+		{
+			int[] keys = clue.getConfigKeys();
+			if (keys == null)
+			{
+				return;
+			}
+
+			if (keys.length == 1)
+			{
+				clueScrollOverlay.addMenuEntry(RUNELITE_OVERLAY, "Set note", "Clue Scroll overlay", setNoteConsumer(keys[0]));
+			}
+			else
+			{
+				for (int i = 0; i < Math.min(keys.length, 3); ++i)
+				{
+					clueScrollOverlay.addMenuEntry(RUNELITE_OVERLAY, "Set note " + (i + 1), "Clue Scroll overlay", setNoteConsumer(keys[i]));
+				}
+			}
+		}
+	}
+
+	private Consumer<MenuEntry> setNoteConsumer(int key)
+	{
+		return e -> chatboxPanelManager.openTextInput("Enter note")
+			.value(MoreObjects.firstNonNull(getClueNote(key), ""))
+			.onDone(s ->
+			{
+				if (Strings.isNullOrEmpty(s))
+				{
+					unsetClueNote(key);
+				}
+				else
+				{
+					setClueNote(key, s);
+				}
+			})
+			.build();
+	}
+
+	void setClueNote(int key, String note)
+	{
+		configManager.setConfiguration(ClueScrollConfig.GROUP, CLUE_NOTE_KEY_PREFIX + key, note);
+	}
+
+	void unsetClueNote(int key)
+	{
+		configManager.unsetConfiguration(ClueScrollConfig.GROUP, CLUE_NOTE_KEY_PREFIX + key);
+	}
+
+	public String getClueNote(int key)
+	{
+		return configManager.getConfiguration(ClueScrollConfig.GROUP, CLUE_NOTE_KEY_PREFIX + key, String.class);
 	}
 }
