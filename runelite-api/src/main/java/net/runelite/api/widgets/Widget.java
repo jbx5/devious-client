@@ -644,6 +644,7 @@ public interface Widget extends Interactable, Identifiable
 	/**
 	 * Gets the menu options available on the widget as a sparse array.
 	 */
+	@Nullable
 	String[] getActions();
 
 	/**

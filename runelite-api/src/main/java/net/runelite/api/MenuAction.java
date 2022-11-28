@@ -231,6 +231,10 @@ public enum MenuAction
 	PLAYER_FIFTH_OPTION(48),
 	PLAYER_SIXTH_OPTION(49),
 	PLAYER_SEVENTH_OPTION(50),
+	/**
+	 * @deprecated Replace EIGTH with correct spelling EIGHTH
+	 */
+	@Deprecated(since = "RuneLite API 1.9.3")
 	PLAYER_EIGTH_OPTION(51),
 
 	/**
