@@ -12233,21 +12233,6 @@
   {
     "source": {
       "x": 3096,
-      "y": 3468,
-      "plane": 0
-    },
-    "destination": {
-      "x": 3096,
-      "y": 9867,
-      "plane": 0
-    },
-    "action": "Climb-down",
-    "objectId": 1581,
-    "requirements": {}
-  },
-  {
-    "source": {
-      "x": 3096,
       "y": 9867,
       "plane": 0
     },
