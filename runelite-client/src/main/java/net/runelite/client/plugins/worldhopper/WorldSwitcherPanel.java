@@ -70,6 +70,8 @@ class WorldSwitcherPanel extends PluginPanel
 	private SubscriptionFilterMode subscriptionFilterMode;
 	@Setter(AccessLevel.PACKAGE)
 	private Set<RegionFilterMode> regionFilterMode;
+	@Setter(AccessLevel.PACKAGE)
+	private Set<WorldTypeFilter> worldTypeFilters;
 
 	WorldSwitcherPanel(WorldHopperPlugin plugin)
 	{
@@ -255,6 +257,19 @@ class WorldSwitcherPanel extends PluginPanel
 				continue;
 			}
 
+			if (!worldTypeFilters.isEmpty())
+			{
+				boolean matches = false;
+				for (WorldTypeFilter worldTypeFilter : worldTypeFilters)
+				{
+					matches |= worldTypeFilter.matches(world.getTypes());
+				}
+				if (!matches)
+				{
+					continue;
+				}
+			}
+
 			rows.add(buildRow(world, i % 2 == 0, world.getId() == plugin.getCurrentWorld() && plugin.getLastWorld() != 0, plugin.isFavorite(world)));
 		}
 
@@ -378,20 +393,20 @@ class WorldSwitcherPanel extends PluginPanel
 	private WorldTableRow buildRow(World world, boolean stripe, boolean current, boolean favorite)
 	{
 		WorldTableRow row = new WorldTableRow(world, current, favorite, plugin.getStoredPing(world),
-				plugin::hopTo,
-				(world12, add) ->
+			plugin::hopTo,
+			(world12, add) ->
+			{
+				if (add)
 				{
-					if (add)
-					{
-						plugin.addToFavorites(world12);
-					}
-					else
-					{
-						plugin.removeFromFavorites(world12);
-					}
-
-					updateList();
+					plugin.addToFavorites(world12);
 				}
+				else
+				{
+					plugin.removeFromFavorites(world12);
+				}
+
+				updateList();
+			}
 		);
 		row.setBackground(stripe ? ODD_ROW : ColorScheme.DARK_GRAY_COLOR);
 		return row;
