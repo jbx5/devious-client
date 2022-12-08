@@ -15,6 +15,19 @@ public abstract class RSNPCCompositionMixin implements RSNPCComposition
 	@Shadow("client")
 	private static RSClient client;
 
+	@Inject
+	@Override
+	public HeadIcon getOverheadIcon()
+	{
+		short[] spriteIndexes = getHeadIconSpriteIndexes();
+		int[] archiveIds = getHeadIconArchiveIds();
+		if (archiveIds == null || spriteIndexes == null)
+		{
+			return null;
+		}
+
+		return HeadIcon.values()[spriteIndexes[0]];
+	}
 
 	@FieldHook("actions")
 	@Inject

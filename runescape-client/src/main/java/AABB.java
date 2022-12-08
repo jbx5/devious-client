@@ -9,31 +9,37 @@ public class AABB {
    @ObfuscatedGetter(
       intValue = -2055361545
    )
+   @Export("xMid")
    int xMid;
    @ObfuscatedName("e")
    @ObfuscatedGetter(
       intValue = -1890114663
    )
+   @Export("yMid")
    int yMid;
    @ObfuscatedName("v")
    @ObfuscatedGetter(
       intValue = -1812849095
    )
+   @Export("zMid")
    int zMid;
    @ObfuscatedName("x")
    @ObfuscatedGetter(
       intValue = 320710353
    )
+   @Export("xMidOffset")
    int xMidOffset;
    @ObfuscatedName("m")
    @ObfuscatedGetter(
       intValue = 1128965299
    )
+   @Export("yMidOffset")
    int yMidOffset;
    @ObfuscatedName("q")
    @ObfuscatedGetter(
       intValue = 678945951
    )
+   @Export("zMidOffset")
    int zMidOffset;
 
    AABB(int var1, int var2, int var3, int var4, int var5, int var6) {

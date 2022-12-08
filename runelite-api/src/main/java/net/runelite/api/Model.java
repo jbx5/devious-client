@@ -24,7 +24,6 @@
  */
 package net.runelite.api;
 
-import javax.annotation.Nonnull;
 import java.util.HashMap;
 
 /**
