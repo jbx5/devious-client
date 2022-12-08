@@ -80,37 +80,33 @@ public class Walker
 
 		Static.getEntityRenderer().setCurrentPath(path);
 
-		if (path == null)
+		if (path == null || path.isEmpty())
 		{
-			log.error("Path is null");
-			return false;
-		}
-
-		if (path.isEmpty())
-		{
+			log.error(path == null ? "Path is null" : "Path is empty");
 			return false;
 		}
 
 		WorldPoint startPosition = path.get(0);
 		Teleport teleport = teleports.get(startPosition);
-		boolean offPath = path.stream().noneMatch(t -> t.distanceTo(local.getWorldLocation()) <= 5);
+		boolean offPath = path.stream().noneMatch(t -> t.distanceTo(local.getWorldLocation()) <= 1);
 
-		if (teleport != null && offPath)
+		// Teleport or refresh path if our direction changed
+		if (offPath)
 		{
-			log.debug("Casting teleport {}", teleport);
-			if (Players.getLocal().isIdle())
+			if (teleport != null)
 			{
-				teleport.getHandler().run();
-				Time.sleepTick();
+				log.debug("Casting teleport {}", teleport);
+				if (Players.getLocal().isIdle())
+				{
+					teleport.getHandler().run();
+					Time.sleepTick();
+				}
+				Time.sleepUntil(() -> Players.getLocal().distanceTo(teleport.getDestination()) < 10, 500);
+				return false;
 			}
-			Time.sleepUntil(() -> Players.getLocal().distanceTo(teleport.getDestination()) < 10, 500);
-			return false;
-		}
 
-		// Refresh path if our direction changed
-		if (!local.isAnimating() && offPath)
-		{
 			path = buildPath(destination, true);
+			log.debug("Refreshed path {}");
 		}
 
 		return walkAlong(path, transports);
