@@ -128,30 +128,6 @@ public interface RSModel extends RSRenderable, Model
 	@Override
 	int getRadius();
 
-	@Import("xMid")
-	@Override
-	int getCenterX();
-
-	@Import("yMid")
-	@Override
-	int getCenterY();
-
-	@Import("zMid")
-	@Override
-	int getCenterZ();
-
-	@Import("xMidOffset")
-	@Override
-	int getExtremeX();
-
-	@Import("yMidOffset")
-	@Override
-	int getExtremeY();
-
-	@Import("zMidOffset")
-	@Override
-	int getExtremeZ();
-
 	@Import("faceTextures")
 	@Override
 	short[] getFaceTextures();

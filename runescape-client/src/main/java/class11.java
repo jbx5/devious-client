@@ -3,8 +3,8 @@ import java.io.IOException;
 import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
 import java.util.LinkedList;
+import java.util.concurrent.ScheduledExecutorService;
 import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 import org.bouncycastle.crypto.tls.Certificate;
@@ -12,39 +12,25 @@ import org.bouncycastle.crypto.tls.CertificateRequest;
 import org.bouncycastle.crypto.tls.TlsAuthentication;
 import org.bouncycastle.crypto.tls.TlsCredentials;
 
-@ObfuscatedName("s")
+@ObfuscatedName("g")
 class class11 implements TlsAuthentication {
-   @ObfuscatedName("tm")
-   @ObfuscatedGetter(
-      intValue = -960217088
-   )
-   static int field62;
-   @ObfuscatedName("a")
-   @ObfuscatedSignature(
-      descriptor = "Llg;"
-   )
-   @Export("ParamDefinition_archive")
-   static AbstractArchive ParamDefinition_archive;
-   @ObfuscatedName("iu")
-   @ObfuscatedGetter(
-      intValue = -1280417715
-   )
-   static int field64;
+   @ObfuscatedName("q")
+   @Export("SpriteBuffer_spriteWidths")
+   public static int[] SpriteBuffer_spriteWidths;
+   @ObfuscatedName("r")
+   @Export("soundSystemExecutor")
+   static ScheduledExecutorService soundSystemExecutor;
    // $FF: synthetic field
    @ObfuscatedSignature(
-      descriptor = "Lb;"
+      descriptor = "Lo;"
    )
    final class13 this$2;
 
    @ObfuscatedSignature(
-      descriptor = "(Lb;)V"
+      descriptor = "(Lo;)V"
    )
    class11(class13 var1) {
       this.this$2 = var1;
-   }
-
-   public TlsCredentials getClientCredentials(CertificateRequest var1) throws IOException {
-      return null;
    }
 
    public void notifyServerCertificate(Certificate var1) throws IOException {
@@ -58,68 +44,46 @@ class class11 implements TlsAuthentication {
             var3.add(var2.generateCertificate(new ByteArrayInputStream(var6.getEncoded())));
          }
 
-         this.this$2.this$1.field67 = (java.security.cert.Certificate[])((java.security.cert.Certificate[])var3.toArray(new java.security.cert.Certificate[0]));
+         this.this$2.this$1.field69 = (java.security.cert.Certificate[])((java.security.cert.Certificate[])var3.toArray(new java.security.cert.Certificate[0]));
       } catch (CertificateException var7) {
          throw new IOException(var7);
       }
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      descriptor = "(Ljava/lang/String;I)V",
-      garbageValue = "1845295776"
-   )
-   static final void method101(String var0) {
-      MouseHandler.addGameMessage(30, "", var0);
+   public TlsCredentials getClientCredentials(CertificateRequest var1) throws IOException {
+      return null;
    }
 
-   @ObfuscatedName("i")
+   @ObfuscatedName("jk")
    @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "91255593"
+      descriptor = "(IIIIIIIIIII)V",
+      garbageValue = "-507085025"
    )
-   static void method102() {
-      GrandExchangeOfferOwnWorldComparator.method1171(24);
-      MusicPatchNode2.setLoginResponseString("", "You were disconnected from the server.", "");
-   }
+   static final void method105(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9) {
+      PendingSpawn var10 = null;
 
-   @ObfuscatedName("hy")
-   @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "-91915795"
-   )
-   static final void method100() {
-      for(Projectile var0 = (Projectile)Client.projectiles.last(); var0 != null; var0 = (Projectile)Client.projectiles.previous()) {
-         if (var0.plane == ApproximateRouteStrategy.Client_plane && Client.cycle <= var0.cycleEnd) {
-            if (Client.cycle >= var0.cycleStart) {
-               if (var0.targetIndex > 0) {
-                  NPC var1 = Client.npcs[var0.targetIndex - 1];
-                  if (var1 != null && var1.x >= 0 && var1.x < 13312 && var1.y >= 0 && var1.y < 13312) {
-                     var0.setDestination(var1.x, var1.y, class132.getTileHeight(var1.x, var1.y, var0.plane) - var0.endHeight, Client.cycle);
-                  }
-               }
-
-               if (var0.targetIndex < 0) {
-                  int var2 = -var0.targetIndex - 1;
-                  Player var3;
-                  if (var2 == Client.localPlayerIndex) {
-                     var3 = class296.localPlayer;
-                  } else {
-                     var3 = Client.players[var2];
-                  }
-
-                  if (var3 != null && var3.x >= 0 && var3.x < 13312 && var3.y >= 0 && var3.y < 13312) {
-                     var0.setDestination(var3.x, var3.y, class132.getTileHeight(var3.x, var3.y, var0.plane) - var0.endHeight, Client.cycle);
-                  }
-               }
-
-               var0.advance(Client.graphicsCycle);
-               class139.scene.drawEntity(ApproximateRouteStrategy.Client_plane, (int)var0.x, (int)var0.y, (int)var0.z, 60, var0, var0.yaw, -1L, false);
-            }
-         } else {
-            var0.remove();
+      for(PendingSpawn var11 = (PendingSpawn)Client.pendingSpawns.last(); var11 != null; var11 = (PendingSpawn)Client.pendingSpawns.previous()) {
+         if (var0 == var11.plane && var11.x == var1 && var2 == var11.y && var3 == var11.type) {
+            var10 = var11;
+            break;
          }
       }
 
+      if (var10 == null) {
+         var10 = new PendingSpawn();
+         var10.plane = var0;
+         var10.type = var3;
+         var10.x = var1;
+         var10.y = var2;
+         UserComparator4.method2809(var10);
+         Client.pendingSpawns.addFirst(var10);
+      }
+
+      var10.field1167 = var4;
+      var10.field1169 = var5;
+      var10.field1168 = var6;
+      var10.delay = var8;
+      var10.hitpoints = var9;
+      var10.method2338(var7);
    }
 }

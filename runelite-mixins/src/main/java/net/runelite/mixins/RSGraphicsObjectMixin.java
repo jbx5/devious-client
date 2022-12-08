@@ -64,47 +64,4 @@ public abstract class RSGraphicsObjectMixin implements RSGraphicsObject
 			return copy$getModel();
 		}
 	}
-
-	@Copy("drawGraphicsObjectEntity")
-	@Replace("drawGraphicsObjectEntity")
-	static final void copy$drawGraphicsObjectEntity()
-	{
-		RSNodeDeque rSNodeDeque = client.getGraphicsObjectDeque();
-		for (RSGraphicsObject rSGraphicsObject = (RSGraphicsObject)rSNodeDeque.last(); rSGraphicsObject != null; rSGraphicsObject = (RSGraphicsObject)rSNodeDeque.previous())
-		{
-			if (rSGraphicsObject.getLevel() == client.getPlane() && !rSGraphicsObject.finished())
-			{
-				if (client.getGameCycle() >= rSGraphicsObject.getStartCycle())
-				{
-					rSGraphicsObject.advance(client.getGraphicsCycle());
-					if (rSGraphicsObject.finished())
-					{
-						rSGraphicsObject.unlink();
-					}
-					else
-					{
-						int radius = 60;
-						int orientation = 0;
-						boolean drawFrontTilesFirst = false;
-						if (rSGraphicsObject instanceof RSRuneLiteObject)
-						{
-							RSRuneLiteObject rSRuneLiteObject = (RSRuneLiteObject)rSGraphicsObject;
-							radius = rSRuneLiteObject.getRadius();
-							orientation = rSRuneLiteObject.getOrientation();
-							drawFrontTilesFirst = rSRuneLiteObject.drawFrontTilesFirst();
-						}
-						client.getScene().drawEntity(rSGraphicsObject
-								.getLevel(), rSGraphicsObject
-								.getX(), rSGraphicsObject
-								.getY(), rSGraphicsObject
-								.getZ(), radius, (RSRenderable)rSGraphicsObject, orientation, -1L, drawFrontTilesFirst);
-					}
-				}
-			}
-			else
-			{
-				rSGraphicsObject.unlink();
-			}
-		}
-	}
 }

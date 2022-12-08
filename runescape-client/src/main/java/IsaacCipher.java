@@ -4,36 +4,36 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ro")
+@ObfuscatedName("rg")
 @Implements("IsaacCipher")
 public final class IsaacCipher {
    @ObfuscatedName("x")
    @ObfuscatedGetter(
-      intValue = -1558395589
+      intValue = -1242271977
    )
    @Export("valuesRemaining")
    int valuesRemaining;
-   @ObfuscatedName("h")
+   @ObfuscatedName("m")
    @Export("results")
    int[] results = new int[256];
-   @ObfuscatedName("j")
+   @ObfuscatedName("q")
    @Export("mm")
    int[] mm = new int[256];
-   @ObfuscatedName("y")
+   @ObfuscatedName("f")
    @ObfuscatedGetter(
-      intValue = -1110522631
+      intValue = 723513511
    )
    @Export("aa")
    int aa;
-   @ObfuscatedName("d")
+   @ObfuscatedName("r")
    @ObfuscatedGetter(
-      intValue = 1269969073
+      intValue = -995265903
    )
    @Export("bb")
    int bb;
-   @ObfuscatedName("n")
+   @ObfuscatedName("u")
    @ObfuscatedGetter(
-      intValue = 983803371
+      intValue = -1974254379
    )
    @Export("cc")
    int cc;
@@ -43,13 +43,13 @@ public final class IsaacCipher {
          this.results[var2] = var1[var2];
       }
 
-      this.method8962();
+      this.method9134();
    }
 
-   @ObfuscatedName("a")
+   @ObfuscatedName("h")
    @ObfuscatedSignature(
-      descriptor = "(I)I",
-      garbageValue = "69734972"
+      descriptor = "(B)I",
+      garbageValue = "-1"
    )
    @Export("nextInt")
    public final int nextInt() {
@@ -61,12 +61,12 @@ public final class IsaacCipher {
       return this.results[--this.valuesRemaining];
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("e")
    @ObfuscatedSignature(
       descriptor = "(I)I",
-      garbageValue = "-2126586353"
+      garbageValue = "-309498745"
    )
-   public final int method8963() {
+   public final int method9129() {
       if (this.valuesRemaining == 0) {
          this.generateMoreResults();
          this.valuesRemaining = 256;
@@ -75,10 +75,10 @@ public final class IsaacCipher {
       return this.results[this.valuesRemaining - 1];
    }
 
-   @ObfuscatedName("c")
+   @ObfuscatedName("v")
    @ObfuscatedSignature(
       descriptor = "(B)V",
-      garbageValue = "-19"
+      garbageValue = "1"
    )
    @Export("generateMoreResults")
    final void generateMoreResults() {
@@ -100,7 +100,7 @@ public final class IsaacCipher {
 
          this.aa += this.mm[var1 + 128 & 255];
          int var3;
-         this.mm[var1] = var3 = this.mm[(var2 & 1020) >> 2] + this.aa + this.bb;
+         this.mm[var1] = var3 = this.mm[(var2 & 1020) >> 2] + this.bb + this.aa;
          this.results[var1] = this.bb = this.mm[(var3 >> 8 & 1020) >> 2] + var2;
       }
 
@@ -109,9 +109,9 @@ public final class IsaacCipher {
    @ObfuscatedName("x")
    @ObfuscatedSignature(
       descriptor = "(I)V",
-      garbageValue = "1386190569"
+      garbageValue = "92563897"
    )
-   final void method8962() {
+   final void method9134() {
       int var9 = -1640531527;
       int var8 = -1640531527;
       int var7 = -1640531527;
@@ -237,15 +237,5 @@ public final class IsaacCipher {
 
       this.generateMoreResults();
       this.valuesRemaining = 256;
-   }
-
-   @ObfuscatedName("kv")
-   @ObfuscatedSignature(
-      descriptor = "(ZI)V",
-      garbageValue = "-1545529756"
-   )
-   @Export("setTapToDrop")
-   static void setTapToDrop(boolean var0) {
-      Client.tapToDrop = var0;
    }
 }

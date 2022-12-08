@@ -70,6 +70,4 @@ public interface RSGraphicsObject extends GraphicsObject, RSRenderable
 	@Import("advance")
 	void advance(int var1);
 
-	@Import("drawGraphicsObjectEntity")
-	void drawGraphicsObjectEntity();
 }

@@ -15,19 +15,6 @@ public abstract class RSNPCCompositionMixin implements RSNPCComposition
 	@Shadow("client")
 	private static RSClient client;
 
-	@Inject
-	@Override
-	public HeadIcon getOverheadIcon()
-	{
-		int overheadIcon = getRsOverheadIcon();
-
-		if (overheadIcon == -1)
-		{
-			return null;
-		}
-
-		return HeadIcon.values()[overheadIcon];
-	}
 
 	@FieldHook("actions")
 	@Inject

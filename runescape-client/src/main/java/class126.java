@@ -1,180 +1,456 @@
-import java.io.File;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("dq")
+@ObfuscatedName("dj")
 public class class126 implements MouseWheel {
-   @ObfuscatedName("a")
-   @ObfuscatedSignature(
-      descriptor = "Ldq;"
-   )
-   static final class126 field1519 = new class126(0, 0, (String)null, -1, -1);
-   @ObfuscatedName("f")
-   @ObfuscatedSignature(
-      descriptor = "Ldq;"
-   )
-   static final class126 field1529 = new class126(1, 1, (String)null, 0, 2);
-   @ObfuscatedName("c")
-   @ObfuscatedSignature(
-      descriptor = "Ldq;"
-   )
-   static final class126 field1514 = new class126(2, 2, (String)null, 1, 2);
-   @ObfuscatedName("x")
-   @ObfuscatedSignature(
-      descriptor = "Ldq;"
-   )
-   static final class126 field1525 = new class126(3, 3, (String)null, 2, 2);
    @ObfuscatedName("h")
    @ObfuscatedSignature(
-      descriptor = "Ldq;"
+      descriptor = "Ldj;"
    )
-   static final class126 field1512 = new class126(4, 4, (String)null, 3, 1);
-   @ObfuscatedName("j")
+   static final class126 field1565 = new class126(0, 0, (String)null, 0);
+   @ObfuscatedName("e")
    @ObfuscatedSignature(
-      descriptor = "Ldq;"
+      descriptor = "Ldj;"
    )
-   static final class126 field1517 = new class126(5, 5, (String)null, 4, 1);
-   @ObfuscatedName("y")
+   static final class126 field1563 = new class126(1, 1, (String)null, 9);
+   @ObfuscatedName("v")
    @ObfuscatedSignature(
-      descriptor = "Ldq;"
+      descriptor = "Ldj;"
    )
-   static final class126 field1518 = new class126(6, 6, (String)null, 5, 1);
-   @ObfuscatedName("d")
+   static final class126 field1567 = new class126(2, 2, (String)null, 3);
+   @ObfuscatedName("x")
    @ObfuscatedSignature(
-      descriptor = "Ldq;"
+      descriptor = "Ldj;"
    )
-   static final class126 field1513 = new class126(7, 7, (String)null, 6, 3);
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      descriptor = "Ldq;"
-   )
-   static final class126 field1520 = new class126(8, 8, (String)null, 7, 3);
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      descriptor = "Ldq;"
-   )
-   static final class126 field1524 = new class126(9, 9, (String)null, 8, 3);
-   @ObfuscatedName("l")
-   @ObfuscatedSignature(
-      descriptor = "Ldq;"
-   )
-   static final class126 field1522 = new class126(10, 10, (String)null, 0, 7);
-   @ObfuscatedName("s")
-   @ObfuscatedSignature(
-      descriptor = "Ldq;"
-   )
-   static final class126 field1523 = new class126(11, 11, (String)null, 1, 7);
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      descriptor = "Ldq;"
-   )
-   static final class126 field1515 = new class126(12, 12, (String)null, 2, 7);
-   @ObfuscatedName("b")
-   @ObfuscatedSignature(
-      descriptor = "Ldq;"
-   )
-   static final class126 field1528 = new class126(13, 13, (String)null, 3, 7);
-   @ObfuscatedName("o")
-   @ObfuscatedSignature(
-      descriptor = "Ldq;"
-   )
-   static final class126 field1526 = new class126(14, 14, (String)null, 4, 7);
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      descriptor = "Ldq;"
-   )
-   static final class126 field1532 = new class126(15, 15, (String)null, 5, 7);
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      descriptor = "Ldq;"
-   )
-   static final class126 field1527 = new class126(16, 16, (String)null, 0, 5);
-   @ObfuscatedName("ao")
-   @Export("fontHelvetica13")
-   static java.awt.Font fontHelvetica13;
-   @ObfuscatedName("t")
-   @ObfuscatedGetter(
-      intValue = -2084525283
-   )
-   final int field1521;
-   @ObfuscatedName("w")
-   @ObfuscatedGetter(
-      intValue = 1661889385
-   )
-   final int field1530;
+   static final class126 field1564 = new class126(3, 3, (String)null, 6);
    @ObfuscatedName("m")
-   @ObfuscatedGetter(
-      intValue = 241060171
-   )
-   final int field1531;
-
    @ObfuscatedSignature(
-      descriptor = "(IILjava/lang/String;II)V",
-      garbageValue = "-1"
+      descriptor = "Ldj;"
    )
-   class126(int var1, int var2, String var3, int var4, int var5) {
-      this.field1521 = var1;
-      this.field1530 = var2;
-      this.field1531 = var4;
+   static final class126 field1566 = new class126(4, 4, (String)null, 1);
+   @ObfuscatedName("q")
+   @ObfuscatedSignature(
+      descriptor = "Ldj;"
+   )
+   static final class126 field1562 = new class126(5, 5, (String)null, 3);
+   @ObfuscatedName("k")
+   @ObfuscatedSignature(
+      descriptor = "Lep;"
+   )
+   static ClanSettings field1573;
+   @ObfuscatedName("ba")
+   @ObfuscatedGetter(
+      intValue = -835148647
+   )
+   static int field1569;
+   @ObfuscatedName("f")
+   @ObfuscatedGetter(
+      intValue = 1612132921
+   )
+   final int field1568;
+   @ObfuscatedName("r")
+   @ObfuscatedGetter(
+      intValue = 1023455411
+   )
+   final int field1570;
+   @ObfuscatedName("u")
+   @ObfuscatedGetter(
+      intValue = 1522114827
+   )
+   final int field1571;
+
+   class126(int var1, int var2, String var3, int var4) {
+      this.field1568 = var1;
+      this.field1570 = var2;
+      this.field1571 = var4;
    }
 
-   @ObfuscatedName("a")
+   @ObfuscatedName("e")
    @ObfuscatedSignature(
       descriptor = "(B)I",
-      garbageValue = "0"
+      garbageValue = "96"
    )
    @Export("rsOrdinal")
    public int rsOrdinal() {
-      return this.field1530;
+      return this.field1570;
    }
 
-   @ObfuscatedName("x")
+   @ObfuscatedName("v")
    @ObfuscatedSignature(
       descriptor = "(I)I",
-      garbageValue = "1737952549"
+      garbageValue = "1367110649"
    )
-   int method2907() {
-      return this.field1531;
+   int method2974() {
+      return this.field1571;
    }
 
-   @ObfuscatedName("a")
+   @ObfuscatedName("h")
    @ObfuscatedSignature(
-      descriptor = "(Ljava/io/File;I)V",
-      garbageValue = "-1465265881"
+      descriptor = "(Lly;Lly;I)V",
+      garbageValue = "-237323188"
    )
-   public static void method2917(File var0) {
-      FileSystem.FileSystem_cacheDir = var0;
-      if (!FileSystem.FileSystem_cacheDir.exists()) {
-         throw new RuntimeException("");
+   public static void method2985(AbstractArchive var0, AbstractArchive var1) {
+      HealthBarDefinition.HealthBarDefinition_archive = var0;
+      HealthBarDefinition.field1975 = var1;
+   }
+
+   @ObfuscatedName("ax")
+   @ObfuscatedSignature(
+      descriptor = "(ILbm;ZI)I",
+      garbageValue = "1965818056"
+   )
+   static int method2986(int var0, Script var1, boolean var2) {
+      int var3;
+      if (var0 == 6600) {
+         var3 = class383.Client_plane;
+         int var15 = class154.baseX * 64 + (class155.localPlayer.x >> 7);
+         int var8 = class365.baseY * 64 + (class155.localPlayer.y >> 7);
+         Client.getWorldMap().method7999(var3, var15, var8, true);
+         return 1;
       } else {
-         FileSystem.FileSystem_hasPermissions = true;
-      }
-   }
+         WorldMapArea var9;
+         if (var0 == ScriptOpcodes.WORLDMAP_GETMAPNAME) {
+            var3 = Interpreter.Interpreter_intStack[--class87.Interpreter_intStackSize];
+            String var16 = "";
+            var9 = Client.getWorldMap().getMapArea(var3);
+            if (var9 != null) {
+               var16 = var9.getExternalName();
+            }
 
-   @ObfuscatedName("ml")
-   @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "-166821717"
-   )
-   static void method2911() {
-      if (Client.field500 && class296.localPlayer != null) {
-         int var0 = class296.localPlayer.pathX[0];
-         int var1 = class296.localPlayer.pathY[0];
-         if (var0 < 0 || var1 < 0 || var0 >= 104 || var1 >= 104) {
-            return;
+            Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var16;
+            return 1;
+         } else if (var0 == ScriptOpcodes.WORLDMAP_SETMAP) {
+            var3 = Interpreter.Interpreter_intStack[--class87.Interpreter_intStackSize];
+            Client.getWorldMap().setCurrentMapAreaId(var3);
+            return 1;
+         } else if (var0 == ScriptOpcodes.WORLDMAP_GETZOOM) {
+            Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = Client.getWorldMap().getZoomLevel();
+            return 1;
+         } else if (var0 == ScriptOpcodes.WORLDMAP_SETZOOM) {
+            var3 = Interpreter.Interpreter_intStack[--class87.Interpreter_intStackSize];
+            Client.getWorldMap().setZoomPercentage(var3);
+            return 1;
+         } else if (var0 == ScriptOpcodes.WORLDMAP_ISLOADED) {
+            Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = Client.getWorldMap().isCacheLoaded() ? 1 : 0;
+            return 1;
+         } else {
+            Coord var14;
+            if (var0 == ScriptOpcodes.WORLDMAP_JUMPTODISPLAYCOORD) {
+               var14 = new Coord(Interpreter.Interpreter_intStack[--class87.Interpreter_intStackSize]);
+               Client.getWorldMap().setWorldMapPositionTarget(var14.x, var14.y);
+               return 1;
+            } else if (var0 == ScriptOpcodes.WORLDMAP_JUMPTODISPLAYCOORD_INSTANT) {
+               var14 = new Coord(Interpreter.Interpreter_intStack[--class87.Interpreter_intStackSize]);
+               Client.getWorldMap().setWorldMapPositionTargetInstant(var14.x, var14.y);
+               return 1;
+            } else if (var0 == ScriptOpcodes.WORLDMAP_JUMPTOSOURCECOORD) {
+               var14 = new Coord(Interpreter.Interpreter_intStack[--class87.Interpreter_intStackSize]);
+               Client.getWorldMap().jumpToSourceCoord(var14.plane, var14.x, var14.y);
+               return 1;
+            } else if (var0 == ScriptOpcodes.WORLDMAP_JUMPTOSOURCECOORD_INSTANT) {
+               var14 = new Coord(Interpreter.Interpreter_intStack[--class87.Interpreter_intStackSize]);
+               Client.getWorldMap().jumpToSourceCoordInstant(var14.plane, var14.x, var14.y);
+               return 1;
+            } else if (var0 == ScriptOpcodes.WORLDMAP_GETDISPLAYPOSITION) {
+               Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = Client.getWorldMap().getDisplayX();
+               Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = Client.getWorldMap().getDisplayY();
+               return 1;
+            } else {
+               WorldMapArea var11;
+               if (var0 == ScriptOpcodes.WORLDMAP_GETCONFIGORIGIN) {
+                  var3 = Interpreter.Interpreter_intStack[--class87.Interpreter_intStackSize];
+                  var11 = Client.getWorldMap().getMapArea(var3);
+                  if (var11 == null) {
+                     Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = 0;
+                  } else {
+                     Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = var11.getOrigin().packed();
+                  }
+
+                  return 1;
+               } else if (var0 == ScriptOpcodes.WORLDMAP_GETCONFIGSIZE) {
+                  var3 = Interpreter.Interpreter_intStack[--class87.Interpreter_intStackSize];
+                  var11 = Client.getWorldMap().getMapArea(var3);
+                  if (var11 == null) {
+                     Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = 0;
+                     Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = 0;
+                  } else {
+                     Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = (var11.getRegionHighX() - var11.getRegionLowX() + 1) * 64;
+                     Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = (var11.getRegionHighY() - var11.getRegionLowY() + 1) * 64;
+                  }
+
+                  return 1;
+               } else if (var0 == ScriptOpcodes.WORLDMAP_GETCONFIGBOUNDS) {
+                  var3 = Interpreter.Interpreter_intStack[--class87.Interpreter_intStackSize];
+                  var11 = Client.getWorldMap().getMapArea(var3);
+                  if (var11 == null) {
+                     Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = 0;
+                     Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = 0;
+                     Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = 0;
+                     Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = 0;
+                  } else {
+                     Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = var11.getRegionLowX() * 64;
+                     Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = var11.getRegionLowY() * 64;
+                     Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = var11.getRegionHighX() * 64 + 64 - 1;
+                     Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = var11.getRegionHighY() * 64 + 64 - 1;
+                  }
+
+                  return 1;
+               } else if (var0 == ScriptOpcodes.WORLDMAP_GETCONFIGZOOM) {
+                  var3 = Interpreter.Interpreter_intStack[--class87.Interpreter_intStackSize];
+                  var11 = Client.getWorldMap().getMapArea(var3);
+                  if (var11 == null) {
+                     Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = -1;
+                  } else {
+                     Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = var11.getZoom();
+                  }
+
+                  return 1;
+               } else if (var0 == 6615) {
+                  var14 = Client.getWorldMap().getDisplayCoord();
+                  if (var14 == null) {
+                     Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = -1;
+                     Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = -1;
+                  } else {
+                     Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = var14.x;
+                     Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = var14.y;
+                  }
+
+                  return 1;
+               } else if (var0 == ScriptOpcodes.WORLDMAP_GETCURRENTMAP) {
+                  Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = Client.getWorldMap().currentMapAreaId();
+                  return 1;
+               } else if (var0 == ScriptOpcodes.WORLDMAP_GETDISPLAYCOORD) {
+                  var14 = new Coord(Interpreter.Interpreter_intStack[--class87.Interpreter_intStackSize]);
+                  var11 = Client.getWorldMap().getCurrentMapArea();
+                  if (var11 == null) {
+                     Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = -1;
+                     Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = -1;
+                     return 1;
+                  } else {
+                     int[] var12 = var11.position(var14.plane, var14.x, var14.y);
+                     if (var12 == null) {
+                        Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = -1;
+                        Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = -1;
+                     } else {
+                        Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = var12[0];
+                        Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = var12[1];
+                     }
+
+                     return 1;
+                  }
+               } else {
+                  Coord var5;
+                  if (var0 == 6618) {
+                     var14 = new Coord(Interpreter.Interpreter_intStack[--class87.Interpreter_intStackSize]);
+                     var11 = Client.getWorldMap().getCurrentMapArea();
+                     if (var11 == null) {
+                        Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = -1;
+                        Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = -1;
+                        return 1;
+                     } else {
+                        var5 = var11.coord(var14.x, var14.y);
+                        if (var5 == null) {
+                           Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = -1;
+                        } else {
+                           Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = var5.packed();
+                        }
+
+                        return 1;
+                     }
+                  } else {
+                     Coord var10;
+                     if (var0 == 6619) {
+                        class87.Interpreter_intStackSize -= 2;
+                        var3 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize];
+                        var10 = new Coord(Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize + 1]);
+                        AttackOption.method2608(var3, var10, false);
+                        return 1;
+                     } else if (var0 == 6620) {
+                        class87.Interpreter_intStackSize -= 2;
+                        var3 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize];
+                        var10 = new Coord(Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize + 1]);
+                        AttackOption.method2608(var3, var10, true);
+                        return 1;
+                     } else if (var0 == ScriptOpcodes.WORLDMAP_COORDINMAP) {
+                        class87.Interpreter_intStackSize -= 2;
+                        var3 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize];
+                        var10 = new Coord(Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize + 1]);
+                        var9 = Client.getWorldMap().getMapArea(var3);
+                        if (var9 == null) {
+                           Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = 0;
+                           return 1;
+                        } else {
+                           Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = var9.containsCoord(var10.plane, var10.x, var10.y) ? 1 : 0;
+                           return 1;
+                        }
+                     } else if (var0 == ScriptOpcodes.WORLDMAP_GETSIZE) {
+                        Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = Client.getWorldMap().getDisplayWith();
+                        Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = Client.getWorldMap().getDisplayHeight();
+                        return 1;
+                     } else if (var0 == 6623) {
+                        var14 = new Coord(Interpreter.Interpreter_intStack[--class87.Interpreter_intStackSize]);
+                        var11 = Client.getWorldMap().mapAreaAtCoord(var14.plane, var14.x, var14.y);
+                        if (var11 == null) {
+                           Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = -1;
+                        } else {
+                           Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = var11.getId();
+                        }
+
+                        return 1;
+                     } else if (var0 == 6624) {
+                        Client.getWorldMap().setMaxFlashCount(Interpreter.Interpreter_intStack[--class87.Interpreter_intStackSize]);
+                        return 1;
+                     } else if (var0 == 6625) {
+                        Client.getWorldMap().resetMaxFlashCount();
+                        return 1;
+                     } else if (var0 == 6626) {
+                        Client.getWorldMap().setCyclesPerFlash(Interpreter.Interpreter_intStack[--class87.Interpreter_intStackSize]);
+                        return 1;
+                     } else if (var0 == 6627) {
+                        Client.getWorldMap().resetCyclesPerFlash();
+                        return 1;
+                     } else {
+                        boolean var13;
+                        if (var0 == ScriptOpcodes.WORLDMAP_PERPETUALFLASH) {
+                           var13 = Interpreter.Interpreter_intStack[--class87.Interpreter_intStackSize] == 1;
+                           Client.getWorldMap().setPerpetualFlash(var13);
+                           return 1;
+                        } else if (var0 == ScriptOpcodes.WORLDMAP_FLASHELEMENT) {
+                           var3 = Interpreter.Interpreter_intStack[--class87.Interpreter_intStackSize];
+                           Client.getWorldMap().flashElement(var3);
+                           return 1;
+                        } else if (var0 == ScriptOpcodes.WORLDMAP_FLASHELEMENTCATEGORY) {
+                           var3 = Interpreter.Interpreter_intStack[--class87.Interpreter_intStackSize];
+                           Client.getWorldMap().flashCategory(var3);
+                           return 1;
+                        } else if (var0 == ScriptOpcodes.WORLDMAP_STOPCURRENTFLASHES) {
+                           Client.getWorldMap().stopCurrentFlashes();
+                           return 1;
+                        } else if (var0 == ScriptOpcodes.WORLDMAP_DISABLEELEMENTS) {
+                           var13 = Interpreter.Interpreter_intStack[--class87.Interpreter_intStackSize] == 1;
+                           Client.getWorldMap().setElementsDisabled(var13);
+                           return 1;
+                        } else {
+                           boolean var7;
+                           if (var0 == ScriptOpcodes.WORLDMAP_DISABLEELEMENT) {
+                              class87.Interpreter_intStackSize -= 2;
+                              var3 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize];
+                              var7 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize + 1] == 1;
+                              Client.getWorldMap().disableElement(var3, var7);
+                              return 1;
+                           } else if (var0 == ScriptOpcodes.WORLDMAP_DISABLEELEMENTCATEGORY) {
+                              class87.Interpreter_intStackSize -= 2;
+                              var3 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize];
+                              var7 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize + 1] == 1;
+                              Client.getWorldMap().setCategoryDisabled(var3, var7);
+                              return 1;
+                           } else if (var0 == ScriptOpcodes.WORLDMAP_GETDISABLEELEMENTS) {
+                              Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = Client.getWorldMap().getElementsDisabled() ? 1 : 0;
+                              return 1;
+                           } else if (var0 == ScriptOpcodes.WORLDMAP_GETDISABLEELEMENT) {
+                              var3 = Interpreter.Interpreter_intStack[--class87.Interpreter_intStackSize];
+                              Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = Client.getWorldMap().isElementDisabled(var3) ? 1 : 0;
+                              return 1;
+                           } else if (var0 == ScriptOpcodes.WORLDMAP_GETDISABLEELEMENTCATEGORY) {
+                              var3 = Interpreter.Interpreter_intStack[--class87.Interpreter_intStackSize];
+                              Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = Client.getWorldMap().isCategoryDisabled(var3) ? 1 : 0;
+                              return 1;
+                           } else if (var0 == 6638) {
+                              class87.Interpreter_intStackSize -= 2;
+                              var3 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize];
+                              var10 = new Coord(Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize + 1]);
+                              var5 = Client.getWorldMap().method8041(var3, var10);
+                              if (var5 == null) {
+                                 Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = -1;
+                              } else {
+                                 Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = var5.packed();
+                              }
+
+                              return 1;
+                           } else {
+                              AbstractWorldMapIcon var6;
+                              if (var0 == ScriptOpcodes.WORLDMAP_LISTELEMENT_START) {
+                                 var6 = Client.getWorldMap().iconStart();
+                                 if (var6 == null) {
+                                    Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = -1;
+                                    Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = -1;
+                                 } else {
+                                    Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = var6.getElement();
+                                    Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = var6.coord2.packed();
+                                 }
+
+                                 return 1;
+                              } else if (var0 == ScriptOpcodes.WORLDMAP_LISTELEMENT_NEXT) {
+                                 var6 = Client.getWorldMap().iconNext();
+                                 if (var6 == null) {
+                                    Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = -1;
+                                    Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = -1;
+                                 } else {
+                                    Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = var6.getElement();
+                                    Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = var6.coord2.packed();
+                                 }
+
+                                 return 1;
+                              } else {
+                                 WorldMapElement var4;
+                                 if (var0 == ScriptOpcodes.MEC_TEXT) {
+                                    var3 = Interpreter.Interpreter_intStack[--class87.Interpreter_intStackSize];
+                                    var4 = JagexCache.WorldMapElement_get(var3);
+                                    if (var4.name == null) {
+                                       Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = "";
+                                    } else {
+                                       Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var4.name;
+                                    }
+
+                                    return 1;
+                                 } else if (var0 == ScriptOpcodes.MEC_TEXTSIZE) {
+                                    var3 = Interpreter.Interpreter_intStack[--class87.Interpreter_intStackSize];
+                                    var4 = JagexCache.WorldMapElement_get(var3);
+                                    Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = var4.textSize;
+                                    return 1;
+                                 } else if (var0 == ScriptOpcodes.MEC_CATEGORY) {
+                                    var3 = Interpreter.Interpreter_intStack[--class87.Interpreter_intStackSize];
+                                    var4 = JagexCache.WorldMapElement_get(var3);
+                                    if (var4 == null) {
+                                       Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = -1;
+                                    } else {
+                                       Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = var4.category;
+                                    }
+
+                                    return 1;
+                                 } else if (var0 == ScriptOpcodes.MEC_SPRITE) {
+                                    var3 = Interpreter.Interpreter_intStack[--class87.Interpreter_intStackSize];
+                                    var4 = JagexCache.WorldMapElement_get(var3);
+                                    if (var4 == null) {
+                                       Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = -1;
+                                    } else {
+                                       Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = var4.sprite1;
+                                    }
+
+                                    return 1;
+                                 } else if (var0 == ScriptOpcodes.WORLDMAP_ELEMENT) {
+                                    Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = GrandExchangeOfferUnitPriceComparator.worldMapEvent.mapElement;
+                                    return 1;
+                                 } else if (var0 == 6698) {
+                                    Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = GrandExchangeOfferUnitPriceComparator.worldMapEvent.coord1.packed();
+                                    return 1;
+                                 } else if (var0 == ScriptOpcodes.WORLDMAP_ELEMENTCOORD) {
+                                    Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = GrandExchangeOfferUnitPriceComparator.worldMapEvent.coord2.packed();
+                                    return 1;
+                                 } else {
+                                    return 2;
+                                 }
+                              }
+                           }
+                        }
+                     }
+                  }
+               }
+            }
          }
-
-         class31.oculusOrbFocalPointX = class296.localPlayer.x;
-         int var2 = class132.getTileHeight(class296.localPlayer.x, class296.localPlayer.y, ApproximateRouteStrategy.Client_plane) - Client.camFollowHeight;
-         if (var2 < VarpDefinition.field1869) {
-            VarpDefinition.field1869 = var2;
-         }
-
-         PendingSpawn.oculusOrbFocalPointY = class296.localPlayer.y;
-         Client.field500 = false;
       }
-
    }
 }

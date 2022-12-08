@@ -1,50 +1,52 @@
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ej")
-public abstract class class135 extends Node {
-   class135() {
+@ObfuscatedName("eh")
+public class class135 extends class136 {
+   @ObfuscatedName("h")
+   @ObfuscatedGetter(
+      intValue = -240984025
+   )
+   int field1645;
+   // $FF: synthetic field
+   @ObfuscatedSignature(
+      descriptor = "Lem;"
+   )
+   final class139 this$0;
+
+   @ObfuscatedSignature(
+      descriptor = "(Lem;)V"
+   )
+   class135(class139 var1) {
+      this.this$0 = var1;
+      this.field1645 = -1;
    }
 
-   @ObfuscatedName("a")
+   @ObfuscatedName("h")
    @ObfuscatedSignature(
-      descriptor = "(Lqr;I)V",
-      garbageValue = "-1428026624"
+      descriptor = "(Lqy;I)V",
+      garbageValue = "1101327225"
    )
-   abstract void vmethod3254(Buffer var1);
+   void vmethod3349(Buffer var1) {
+      this.field1645 = var1.readUnsignedShort();
+   }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("e")
    @ObfuscatedSignature(
-      descriptor = "(Ler;B)V",
-      garbageValue = "-110"
+      descriptor = "(Lep;I)V",
+      garbageValue = "839088249"
    )
-   abstract void vmethod3248(ClanSettings var1);
+   void vmethod3350(ClanSettings var1) {
+      var1.method3171(this.field1645);
+   }
 
-   @ObfuscatedName("mc")
+   @ObfuscatedName("h")
    @ObfuscatedSignature(
-      descriptor = "(Ljava/lang/String;ZB)Ljava/lang/String;",
-      garbageValue = "52"
+      descriptor = "(I)[Llz;",
+      garbageValue = "-1508281250"
    )
-   static String method2990(String var0, boolean var1) {
-      String var2 = var1 ? "https://" : "http://";
-      if (Client.gameBuild == 1) {
-         var0 = var0 + "-wtrc";
-      } else if (Client.gameBuild == 2) {
-         var0 = var0 + "-wtqa";
-      } else if (Client.gameBuild == 3) {
-         var0 = var0 + "-wtwip";
-      } else if (Client.gameBuild == 5) {
-         var0 = var0 + "-wti";
-      } else if (Client.gameBuild == 4) {
-         var0 = "local";
-      }
-
-      String var3 = "";
-      if (DynamicObject.field974 != null) {
-         var3 = "/p=" + DynamicObject.field974;
-      }
-
-      String var4 = "runescape.com";
-      return var2 + var0 + "." + var4 + "/l=" + class103.clientLanguage + "/a=" + Canvas.field126 + var3 + "/";
+   static GameBuild[] method3065() {
+      return new GameBuild[]{GameBuild.RC, GameBuild.WIP, GameBuild.BUILDLIVE, GameBuild.LIVE};
    }
 }

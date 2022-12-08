@@ -3,51 +3,38 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cm")
+@ObfuscatedName("ce")
 @Implements("HealthBar")
 public class HealthBar extends Node {
-   @ObfuscatedName("so")
+   @ObfuscatedName("ex")
    @ObfuscatedSignature(
-      descriptor = "Lab;"
+      descriptor = "Lln;"
    )
-   @Export("pcmPlayer0")
-   static PcmPlayer pcmPlayer0;
-   @ObfuscatedName("r")
+   static Archive field1306;
+   @ObfuscatedName("v")
    @ObfuscatedSignature(
-      descriptor = "Lri;"
-   )
-   @Export("rightTitleSprite")
-   static SpritePixels rightTitleSprite;
-   @ObfuscatedName("in")
-   @ObfuscatedSignature(
-      descriptor = "[Lry;"
-   )
-   @Export("mapSceneSprites")
-   static IndexedSprite[] mapSceneSprites;
-   @ObfuscatedName("c")
-   @ObfuscatedSignature(
-      descriptor = "Lfb;"
+      descriptor = "Lfw;"
    )
    @Export("definition")
    HealthBarDefinition definition;
    @ObfuscatedName("x")
    @ObfuscatedSignature(
-      descriptor = "Lml;"
+      descriptor = "Lmv;"
    )
    @Export("updates")
    IterableNodeDeque updates = new IterableNodeDeque();
 
    @ObfuscatedSignature(
-      descriptor = "(Lfb;)V"
+      descriptor = "(Lfw;)V"
    )
    HealthBar(HealthBarDefinition var1) {
       this.definition = var1;
    }
 
-   @ObfuscatedName("a")
+   @ObfuscatedName("h")
    @ObfuscatedSignature(
-      descriptor = "(IIIII)V",
-      garbageValue = "721207742"
+      descriptor = "(IIIIS)V",
+      garbageValue = "-24757"
    )
    @Export("put")
    void put(int var1, int var2, int var3, int var4) {
@@ -80,10 +67,10 @@ public class HealthBar extends Node {
       }
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("e")
    @ObfuscatedSignature(
       descriptor = "(II)Lcu;",
-      garbageValue = "1855238939"
+      garbageValue = "-1494424352"
    )
    @Export("get")
    HealthBarUpdate get(int var1) {
@@ -94,7 +81,7 @@ public class HealthBar extends Node {
             var2 = var3;
          }
 
-         if (this.definition.int5 + var2.cycle + var2.cycleOffset > var1) {
+         if (this.definition.int5 + var2.cycleOffset + var2.cycle > var1) {
             return var2;
          } else {
             var2.remove();
@@ -105,26 +92,78 @@ public class HealthBar extends Node {
       }
    }
 
-   @ObfuscatedName("c")
+   @ObfuscatedName("v")
    @ObfuscatedSignature(
       descriptor = "(I)Z",
-      garbageValue = "-608099850"
+      garbageValue = "-1047690816"
    )
    @Export("isEmpty")
    boolean isEmpty() {
-      return this.updates.method6721();
+      return this.updates.method6774();
    }
 
-   @ObfuscatedName("lf")
+   @ObfuscatedName("h")
+   @ObfuscatedSignature(
+      descriptor = "(Lly;I)V",
+      garbageValue = "784434833"
+   )
+   public static void method2528(AbstractArchive var0) {
+      ParamComposition.ParamDefinition_archive = var0;
+   }
+
+   @ObfuscatedName("e")
    @ObfuscatedSignature(
       descriptor = "(I)V",
-      garbageValue = "1576682931"
+      garbageValue = "-8692175"
    )
-   static final void method2478() {
-      for(int var0 = 0; var0 < Players.Players_count; ++var0) {
-         Player var1 = Client.players[Players.Players_indices[var0]];
-         var1.clearIsInFriendsChat();
+   static void method2526() {
+      for(ObjectSound var0 = (ObjectSound)ObjectSound.objectSounds.last(); var0 != null; var0 = (ObjectSound)ObjectSound.objectSounds.previous()) {
+         if (var0.obj != null) {
+            var0.set();
+         }
       }
 
+   }
+
+   @ObfuscatedName("n")
+   @ObfuscatedSignature(
+      descriptor = "(CII)Ljava/lang/String;",
+      garbageValue = "1267412510"
+   )
+   static String method2525(char var0, int var1) {
+      char[] var2 = new char[var1];
+
+      for(int var3 = 0; var3 < var1; ++var3) {
+         var2[var3] = var0;
+      }
+
+      return new String(var2);
+   }
+
+   @ObfuscatedName("ke")
+   @ObfuscatedSignature(
+      descriptor = "(IIIIIIIII)V",
+      garbageValue = "824026775"
+   )
+   @Export("drawWidgets")
+   static final void drawWidgets(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7) {
+      if (Players.loadInterface(var0)) {
+         MouseHandler.field268 = null;
+         class34.drawInterface(class71.Widget_interfaceComponents[var0], -1, var1, var2, var3, var4, var5, var6, var7);
+         if (MouseHandler.field268 != null) {
+            class34.drawInterface(MouseHandler.field268, -1412584499, var1, var2, var3, var4, class142.field1691, HealthBarDefinition.field1989, var7);
+            MouseHandler.field268 = null;
+         }
+
+      } else {
+         if (var7 != -1) {
+            Client.field731[var7] = true;
+         } else {
+            for(int var8 = 0; var8 < 100; ++var8) {
+               Client.field731[var8] = true;
+            }
+         }
+
+      }
    }
 }

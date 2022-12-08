@@ -4,59 +4,59 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ny")
+@ObfuscatedName("ng")
 @Implements("FriendsList")
 public class FriendsList extends UserList {
-   @ObfuscatedName("c")
+   @ObfuscatedName("v")
    @ObfuscatedSignature(
-      descriptor = "Lqu;"
+      descriptor = "Lqi;"
    )
    @Export("loginType")
    final LoginType loginType;
    @ObfuscatedName("x")
    @ObfuscatedGetter(
-      intValue = -2045646185
+      intValue = 906024881
    )
-   int field4457 = 1;
-   @ObfuscatedName("h")
+   int field4506 = 1;
+   @ObfuscatedName("m")
    @ObfuscatedSignature(
-      descriptor = "Lmf;"
+      descriptor = "Lma;"
    )
    @Export("friendLoginUpdates")
    public LinkDeque friendLoginUpdates = new LinkDeque();
 
    @ObfuscatedSignature(
-      descriptor = "(Lqu;)V"
+      descriptor = "(Lqi;)V"
    )
    public FriendsList(LoginType var1) {
       super(400);
       this.loginType = var1;
    }
 
-   @ObfuscatedName("a")
+   @ObfuscatedName("h")
    @ObfuscatedSignature(
-      descriptor = "(B)Loj;",
-      garbageValue = "31"
+      descriptor = "(B)Lov;",
+      garbageValue = "47"
    )
    @Export("newInstance")
    User newInstance() {
       return new Friend();
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("e")
    @ObfuscatedSignature(
-      descriptor = "(II)[Loj;",
-      garbageValue = "-41299588"
+      descriptor = "(II)[Lov;",
+      garbageValue = "1710517567"
    )
    @Export("newTypedArray")
    User[] newTypedArray(int var1) {
       return new Friend[var1];
    }
 
-   @ObfuscatedName("c")
+   @ObfuscatedName("v")
    @ObfuscatedSignature(
-      descriptor = "(Lrg;ZI)Z",
-      garbageValue = "903458766"
+      descriptor = "(Lrp;ZS)Z",
+      garbageValue = "2000"
    )
    @Export("isFriended")
    public boolean isFriended(Username var1, boolean var2) {
@@ -68,10 +68,10 @@ public class FriendsList extends UserList {
       }
    }
 
-   @ObfuscatedName("n")
+   @ObfuscatedName("g")
    @ObfuscatedSignature(
-      descriptor = "(Lqr;II)V",
-      garbageValue = "-1997017332"
+      descriptor = "(Lqy;IB)V",
+      garbageValue = "110"
    )
    @Export("read")
    public void read(Buffer var1, int var2) {
@@ -96,7 +96,7 @@ public class FriendsList extends UserList {
                Friend var11 = (Friend)this.getByCurrentUsername(var4);
                if (var3) {
                   Friend var12 = (Friend)this.getByCurrentUsername(var5);
-                  if (var12 != null && var12 != var11) {
+                  if (var12 != null && var11 != var12) {
                      if (var11 != null) {
                         this.remove(var12);
                      } else {
@@ -135,17 +135,17 @@ public class FriendsList extends UserList {
                }
 
                if (var6 != var11.world) {
-                  var11.int2 = ++this.field4457 - 1;
+                  var11.int2 = ++this.field4506 - 1;
                   if (var11.world == -1 && var6 == 0) {
-                     var11.int2 = -(var11.int2 * 765902219) * 1732968995;
+                     var11.int2 = -(var11.int2 * -388257165) * 1595280059;
                   }
 
                   var11.world = var6;
                }
 
                var11.rank = var7;
-               var11.field4472 = var9;
-               var11.field4473 = var10;
+               var11.field4519 = var9;
+               var11.field4518 = var10;
                continue;
             }
 
@@ -155,24 +155,5 @@ public class FriendsList extends UserList {
          this.sort();
          return;
       }
-   }
-
-   @ObfuscatedName("c")
-   @ObfuscatedSignature(
-      descriptor = "(Llg;III)Lri;",
-      garbageValue = "720037522"
-   )
-   @Export("SpriteBuffer_getSprite")
-   public static SpritePixels SpriteBuffer_getSprite(AbstractArchive var0, int var1, int var2) {
-      byte[] var4 = var0.takeFile(var1, var2);
-      boolean var3;
-      if (var4 == null) {
-         var3 = false;
-      } else {
-         class335.SpriteBuffer_decode(var4);
-         var3 = true;
-      }
-
-      return !var3 ? null : class31.method466();
    }
 }

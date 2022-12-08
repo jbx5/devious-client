@@ -1,73 +1,60 @@
-import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jz")
+@ObfuscatedName("jy")
 @Implements("MusicPatchNode2")
 public class MusicPatchNode2 {
-   @ObfuscatedName("a")
-   byte[] field3288;
-   @ObfuscatedName("f")
-   byte[] field3286;
-   @ObfuscatedName("c")
+   @ObfuscatedName("tl")
    @ObfuscatedGetter(
-      intValue = -1582078627
+      intValue = 417212897
    )
-   int field3282;
+   static int field3342;
+   @ObfuscatedName("hb")
+   @ObfuscatedGetter(
+      intValue = 146773611
+   )
+   static int field3341;
+   @ObfuscatedName("h")
+   byte[] field3337;
+   @ObfuscatedName("e")
+   byte[] field3333;
+   @ObfuscatedName("v")
+   @ObfuscatedGetter(
+      intValue = 1681362453
+   )
+   int field3335;
    @ObfuscatedName("x")
    @ObfuscatedGetter(
-      intValue = -732362687
+      intValue = 1256732773
    )
-   int field3283;
-   @ObfuscatedName("h")
+   int field3340;
+   @ObfuscatedName("m")
    @ObfuscatedGetter(
-      intValue = -9953013
+      intValue = -775577851
    )
-   int field3284;
-   @ObfuscatedName("j")
+   int field3336;
+   @ObfuscatedName("q")
    @ObfuscatedGetter(
-      intValue = 1601035699
+      intValue = -1424145857
    )
-   int field3285;
-   @ObfuscatedName("y")
+   int field3332;
+   @ObfuscatedName("f")
    @ObfuscatedGetter(
-      intValue = 508196383
+      intValue = -1877072009
    )
-   int field3280;
-   @ObfuscatedName("d")
+   int field3338;
+   @ObfuscatedName("r")
    @ObfuscatedGetter(
-      intValue = 1320352045
+      intValue = -258489461
    )
-   int field3287;
-   @ObfuscatedName("n")
+   int field3339;
+   @ObfuscatedName("u")
    @ObfuscatedGetter(
-      intValue = 425773117
+      intValue = -1803880423
    )
-   int field3281;
+   int field3334;
 
    MusicPatchNode2() {
-   }
-
-   @ObfuscatedName("s")
-   @ObfuscatedSignature(
-      descriptor = "(Ljava/lang/String;I)V",
-      garbageValue = "2092953426"
-   )
-   static final void method5441(String var0) {
-      class11.method101("Please remove " + var0 + " from your ignore list first");
-   }
-
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      descriptor = "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;B)V",
-      garbageValue = "69"
-   )
-   @Export("setLoginResponseString")
-   static void setLoginResponseString(String var0, String var1, String var2) {
-      Login.Login_response1 = var0;
-      Login.Login_response2 = var1;
-      Login.Login_response3 = var2;
    }
 }

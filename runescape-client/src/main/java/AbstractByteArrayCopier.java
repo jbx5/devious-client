@@ -3,16 +3,20 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kh")
+@ObfuscatedName("kw")
 @Implements("AbstractByteArrayCopier")
 public abstract class AbstractByteArrayCopier {
+   @ObfuscatedName("m")
+   @Export("ArchiveDiskActionHandler_thread")
+   static Thread ArchiveDiskActionHandler_thread;
+
    AbstractByteArrayCopier() {
    }
 
-   @ObfuscatedName("c")
+   @ObfuscatedName("v")
    @ObfuscatedSignature(
       descriptor = "(B)[B",
-      garbageValue = "2"
+      garbageValue = "-108"
    )
    @Export("get")
    abstract byte[] get();
@@ -20,19 +24,8 @@ public abstract class AbstractByteArrayCopier {
    @ObfuscatedName("x")
    @ObfuscatedSignature(
       descriptor = "([BI)V",
-      garbageValue = "-622381156"
+      garbageValue = "-878200260"
    )
    @Export("set")
-   abstract void set(byte[] var1);
-
-   @ObfuscatedName("c")
-   public static boolean method6222(long var0) {
-      boolean var2 = var0 != 0L;
-      if (var2) {
-         boolean var3 = (int)(var0 >>> 16 & 1L) == 1;
-         var2 = !var3;
-      }
-
-      return var2;
-   }
+   public abstract void set(byte[] var1);
 }

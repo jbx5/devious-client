@@ -1,77 +1,88 @@
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fx")
-public class class159 extends class135 {
-   @ObfuscatedName("fy")
-   @ObfuscatedGetter(
-      intValue = 2000109897
-   )
-   @Export("worldPort")
-   static int worldPort;
-   @ObfuscatedName("a")
-   @ObfuscatedGetter(
-      intValue = 1382188213
-   )
-   int field1756;
-   @ObfuscatedName("f")
-   @ObfuscatedGetter(
-      longValue = 4508213619686821893L
-   )
-   long field1757;
+@ObfuscatedName("fo")
+public class class159 extends class152 {
+   @ObfuscatedName("n")
+   static int[][][] field1816;
+   @ObfuscatedName("h")
+   String field1814;
+   @ObfuscatedName("e")
+   byte field1813;
+   @ObfuscatedName("v")
+   byte field1815;
    // $FF: synthetic field
    @ObfuscatedSignature(
-      descriptor = "Lel;"
+      descriptor = "Led;"
    )
-   final class138 this$0;
+   final class153 this$0;
 
    @ObfuscatedSignature(
-      descriptor = "(Lel;)V"
+      descriptor = "(Led;)V"
    )
-   class159(class138 var1) {
+   class159(class153 var1) {
       this.this$0 = var1;
    }
 
-   @ObfuscatedName("a")
+   @ObfuscatedName("h")
    @ObfuscatedSignature(
-      descriptor = "(Lqr;I)V",
-      garbageValue = "-1428026624"
+      descriptor = "(Lqy;I)V",
+      garbageValue = "468341515"
    )
-   void vmethod3254(Buffer var1) {
-      this.field1756 = var1.readInt();
-      this.field1757 = var1.readLong();
-   }
-
-   @ObfuscatedName("f")
-   @ObfuscatedSignature(
-      descriptor = "(Ler;B)V",
-      garbageValue = "-110"
-   )
-   void vmethod3248(ClanSettings var1) {
-      var1.method3091(this.field1756, this.field1757);
-   }
-
-   @ObfuscatedName("a")
-   @ObfuscatedSignature(
-      descriptor = "(IB)Lbz;",
-      garbageValue = "68"
-   )
-   @Export("getScript")
-   static Script getScript(int var0) {
-      Script var1 = (Script)Script.Script_cached.get((long)var0);
-      if (var1 != null) {
-         return var1;
-      } else {
-         byte[] var2 = class188.archive12.takeFile(var0, 0);
-         if (var2 == null) {
-            return null;
-         } else {
-            var1 = GameEngine.newScript(var2);
-            Script.Script_cached.put(var1, (long)var0);
-            return var1;
-         }
+   void vmethod3336(Buffer var1) {
+      this.field1814 = var1.readStringCp1252NullTerminatedOrNull();
+      if (this.field1814 != null) {
+         var1.readUnsignedByte();
+         this.field1813 = var1.readByte();
+         this.field1815 = var1.readByte();
       }
+
+   }
+
+   @ObfuscatedName("e")
+   @ObfuscatedSignature(
+      descriptor = "(Lfn;I)V",
+      garbageValue = "1227548281"
+   )
+   void vmethod3337(ClanChannel var1) {
+      var1.name = this.field1814;
+      if (this.field1814 != null) {
+         var1.field1796 = this.field1813;
+         var1.field1799 = this.field1815;
+      }
+
+   }
+
+   @ObfuscatedName("v")
+   @ObfuscatedSignature(
+      descriptor = "(IIII)I",
+      garbageValue = "1927602287"
+   )
+   public static int method3346(int var0, int var1, int var2) {
+      int var3 = Actor.method2362(var2 - var1 + 1);
+      var3 <<= var1;
+      return var0 & ~var3;
+   }
+
+   @ObfuscatedName("q")
+   @ObfuscatedSignature(
+      descriptor = "(I)Z",
+      garbageValue = "1850938391"
+   )
+   public static boolean method3345() {
+      return class286.musicPlayerStatus != 0 ? true : class251.midiPcmStream.isReady();
+   }
+
+   @ObfuscatedName("l")
+   @ObfuscatedSignature(
+      descriptor = "(Ljava/lang/String;II)V",
+      garbageValue = "-141846119"
+   )
+   static final void method3339(String var0, int var1) {
+      PacketBufferNode var2 = class136.getPacketBufferNode(ClientPacket.field3089, Client.packetWriter.isaacCipher);
+      var2.packetBuffer.writeByte(class13.stringCp1252NullTerminatedByteSize(var0) + 1);
+      var2.packetBuffer.writeByteAdd(var1);
+      var2.packetBuffer.writeStringCp1252NullTerminated(var0);
+      Client.packetWriter.addNode(var2);
    }
 }

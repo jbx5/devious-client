@@ -3,35 +3,37 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("gv")
+@ObfuscatedName("gg")
 @Implements("RouteStrategy")
 public abstract class RouteStrategy {
-   @ObfuscatedName("ij")
-   @Export("regions")
-   static int[] regions;
-   @ObfuscatedName("a")
+   @ObfuscatedName("ak")
+   @ObfuscatedSignature(
+      descriptor = "Lrm;"
+   )
+   @Export("rasterProvider")
+   public static AbstractRasterProvider rasterProvider;
+   @ObfuscatedName("h")
    @ObfuscatedGetter(
-      intValue = -1816036113
+      intValue = -2015601201
    )
    @Export("approxDestinationX")
    public int approxDestinationX;
-   @ObfuscatedName("f")
+   @ObfuscatedName("e")
    @ObfuscatedGetter(
-      intValue = -639446105
+      intValue = 941706195
    )
    @Export("approxDestinationY")
    public int approxDestinationY;
-   @ObfuscatedName("c")
+   @ObfuscatedName("v")
    @ObfuscatedGetter(
-      intValue = 1855921895
+      intValue = -20945427
    )
    @Export("approxDestinationSizeX")
    public int approxDestinationSizeX;
    @ObfuscatedName("x")
    @ObfuscatedGetter(
-      intValue = 969919873
+      intValue = -390996803
    )
    @Export("approxDestinationSizeY")
    public int approxDestinationSizeY;
@@ -39,67 +41,61 @@ public abstract class RouteStrategy {
    protected RouteStrategy() {
    }
 
-   @ObfuscatedName("a")
+   @ObfuscatedName("h")
    @ObfuscatedSignature(
-      descriptor = "(IIILgr;I)Z",
-      garbageValue = "-376004430"
+      descriptor = "(IIILgw;I)Z",
+      garbageValue = "1813316312"
    )
    @Export("hasArrived")
-   public abstract boolean hasArrived(int var1, int var2, int var3, CollisionMap var4);
+   protected abstract boolean hasArrived(int var1, int var2, int var3, CollisionMap var4);
 
-   @ObfuscatedName("w")
+   @ObfuscatedName("h")
    @ObfuscatedSignature(
-      descriptor = "(ILbz;ZB)I",
-      garbageValue = "-27"
+      descriptor = "(CB)Z",
+      garbageValue = "39"
    )
-   static int method4044(int var0, Script var1, boolean var2) {
-      Widget var7;
-      if (var0 != ScriptOpcodes.CC_CALLONRESIZE && var0 != ScriptOpcodes.IF_CALLONRESIZE) {
-         int var4;
-         if (var0 == ScriptOpcodes.CC_TRIGGEROP) {
-            var7 = var2 ? class140.scriptDotWidget : class136.scriptActiveWidget;
-            var4 = Interpreter.Interpreter_intStack[--class379.Interpreter_intStackSize];
-            if (var4 >= 1 && var4 <= 10) {
-               class97 var8 = new class97(var4, var7.id, var7.childIndex, var7.itemId);
-               Interpreter.field851.add(var8);
-               return 1;
-            } else {
-               throw new RuntimeException();
-            }
-         } else if (var0 == ScriptOpcodes.IF_TRIGGEROP) {
-            class379.Interpreter_intStackSize -= 3;
-            int var3 = Interpreter.Interpreter_intStack[class379.Interpreter_intStackSize];
-            var4 = Interpreter.Interpreter_intStack[class379.Interpreter_intStackSize + 1];
-            int var5 = Interpreter.Interpreter_intStack[class379.Interpreter_intStackSize + 2];
-            if (var5 >= 1 && var5 <= 10) {
-               class97 var6 = new class97(var5, var3, var4, class281.getWidget(var3).itemId);
-               Interpreter.field851.add(var6);
-               return 1;
-            } else {
-               throw new RuntimeException();
-            }
-         } else {
-            return 2;
-         }
-      } else if (Interpreter.field839 >= 10) {
-         throw new RuntimeException();
+   public static final boolean method4181(char var0) {
+      if (Character.isISOControl(var0)) {
+         return false;
+      } else if (ObjectComposition.isAlphaNumeric(var0)) {
+         return true;
       } else {
-         if (var0 >= 2000) {
-            var7 = class281.getWidget(Interpreter.Interpreter_intStack[--class379.Interpreter_intStackSize]);
-         } else {
-            var7 = var2 ? class140.scriptDotWidget : class136.scriptActiveWidget;
+         char[] var1 = class447.field4842;
+
+         int var2;
+         char var3;
+         for(var2 = 0; var2 < var1.length; ++var2) {
+            var3 = var1[var2];
+            if (var0 == var3) {
+               return true;
+            }
          }
 
-         if (var7.onResize == null) {
-            return 0;
-         } else {
-            ScriptEvent var9 = new ScriptEvent();
-            var9.widget = var7;
-            var9.args = var7.onResize;
-            var9.field1053 = Interpreter.field839 + 1;
-            Client.scriptEvents.addFirst(var9);
-            return 1;
+         var1 = class447.field4841;
+
+         for(var2 = 0; var2 < var1.length; ++var2) {
+            var3 = var1[var2];
+            if (var0 == var3) {
+               return true;
+            }
          }
+
+         return false;
+      }
+   }
+
+   @ObfuscatedName("ij")
+   @ObfuscatedSignature(
+      descriptor = "(IIB)V",
+      garbageValue = "16"
+   )
+   static final void method4180(int var0, int var1) {
+      if (Client.hintArrowType == 2) {
+         ScriptFrame.worldToScreen(Client.hintArrowSubX * 64 + (Client.hintArrowX - class154.baseX * 64 << 7), Client.hintArrowSubY * 64 + (Client.hintArrowY - class365.baseY * 64 << 7), Client.hintArrowHeight * 4);
+         if (Client.viewportTempX > -1 && Client.cycle % 20 < 10) {
+            class358.headIconHintSprites[0].drawTransBgAt(var0 + Client.viewportTempX - 12, Client.viewportTempY + var1 - 28);
+         }
+
       }
    }
 }
