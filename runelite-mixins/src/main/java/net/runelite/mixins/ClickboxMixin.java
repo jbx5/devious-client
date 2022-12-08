@@ -1,5 +1,6 @@
 package net.runelite.mixins;
 
+import net.runelite.api.AABB;
 import net.runelite.api.Model;
 import net.runelite.api.Perspective;
 import net.runelite.api.mixins.Inject;
@@ -245,12 +246,13 @@ public abstract class ClickboxMixin implements RSClient
 		int field601 = Math.abs(field638);
 		int field38 = Math.abs(field1846);
 
-		int var38 = x + model.getCenterX();
-		int var39 = y + model.getCenterY();
-		int var40 = z + model.getCenterZ();
-		int var41 = model.getExtremeX();
-		int var42 = model.getExtremeY();
-		int var43 = model.getExtremeZ();
+		AABB aabb = model.getAABB(model.getLastOrientation());
+		int var38 = x + aabb.getCenterX();
+		int var39 = y + aabb.getCenterY();
+		int var40 = z + aabb.getCenterZ();
+		int var41 = aabb.getExtremeX();
+		int var42 = aabb.getExtremeY();
+		int var43 = aabb.getExtremeZ();
 
 		int field1861 = (var6 + var10) / 2;
 		int field2317 = (var7 + var9) / 2;

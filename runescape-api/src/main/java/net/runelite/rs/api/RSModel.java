@@ -25,6 +25,9 @@
 package net.runelite.rs.api;
 
 import java.awt.Shape;
+import java.util.HashMap;
+
+import net.runelite.api.AABB;
 import net.runelite.api.Model;
 import net.runelite.mapping.Import;
 
@@ -182,4 +185,8 @@ public interface RSModel extends RSRenderable, Model
 	@Import("overrideLuminance")
 	@Override
 	byte getOverrideLuminance();
+
+	@Import("aabb")
+	@Override
+	HashMap<Integer, AABB> getAABBMap();
 }

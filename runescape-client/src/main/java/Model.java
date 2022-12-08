@@ -180,7 +180,7 @@ public class Model extends Renderable {
    @Export("radius")
    int radius;
    @ObfuscatedName("al")
-   HashMap field2704 = new HashMap();
+   HashMap aabb = new HashMap();
    @ObfuscatedName("bs")
    @Export("overrideHue")
    public byte overrideHue;
@@ -527,7 +527,7 @@ public class Model extends Renderable {
    @ObfuscatedName("r")
    @Export("calculateBoundingBox")
    void calculateBoundingBox(int var1) {
-      if (!this.field2704.containsKey(var1)) {
+      if (!this.aabb.containsKey(var1)) {
          int var2 = 0;
          int var3 = 0;
          int var4 = 0;
@@ -582,7 +582,7 @@ public class Model extends Renderable {
             var14.zMidOffset += 8;
          }
 
-         this.field2704.put(var1, var14);
+         this.aabb.put(var1, var14);
       }
    }
 
@@ -651,7 +651,7 @@ public class Model extends Renderable {
    @Export("resetBounds")
    public void resetBounds() {
       this.boundsType = 0;
-      this.field2704.clear();
+      this.aabb.clear();
    }
 
    @ObfuscatedName("i")
@@ -1794,7 +1794,7 @@ public class Model extends Renderable {
                                  ViewportMouse.field2742 = Math.abs(ViewportMouse.field2747);
                               }
 
-                              AABB var50 = (AABB)this.field2704.get(var1);
+                              AABB var50 = (AABB)this.aabb.get(var1);
                               var40 = var50.xMid + var6;
                               var41 = var7 + var50.yMid;
                               var42 = var8 + var50.zMid;
