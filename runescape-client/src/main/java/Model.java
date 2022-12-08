@@ -180,6 +180,7 @@ public class Model extends Renderable {
    @Export("radius")
    int radius;
    @ObfuscatedName("al")
+   @Export("aabb")
    HashMap aabb = new HashMap();
    @ObfuscatedName("bs")
    @Export("overrideHue")

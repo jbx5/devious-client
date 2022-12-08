@@ -557,12 +557,14 @@ public abstract class RSModelMixin implements RSModel
 
 	@Inject
 	@Override
-	public int getLastOrientation() {
+	public int getLastOrientation()
+	{
 		return lastOrientation;
 	}
 	@Inject
 	@Override
-	public AABB getAABB(int orientation) {
+	public AABB getAABB(int orientation)
+	{
 		calculateExtreme(orientation);
 		lastOrientation = orientation;
 		return getAABBMap().get(lastOrientation);
