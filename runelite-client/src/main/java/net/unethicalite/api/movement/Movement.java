@@ -161,7 +161,7 @@ public class Movement
 
 	public static int getRunEnergy()
 	{
-		return Static.getClient().getEnergy();
+		return Static.getClient().getEnergy() / 100;
 	}
 
 	public static int calculateDistance(WorldArea destination)
