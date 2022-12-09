@@ -212,6 +212,11 @@ public class InfoPanel extends PluginPanel
 		eventBus.register(this);
 	}
 
+	void deinit()
+	{
+		eventBus.unregister(this);
+	}
+
 	/**
 	 * Builds a link panel with a given icon, text and url to redirect to.
 	 */

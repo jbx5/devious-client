@@ -7,37 +7,37 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("og")
+@ObfuscatedName("ol")
 @Implements("BufferedSource")
 public class BufferedSource implements Runnable {
-   @ObfuscatedName("a")
+   @ObfuscatedName("h")
    @Export("thread")
    Thread thread;
-   @ObfuscatedName("f")
+   @ObfuscatedName("e")
    @Export("inputStream")
    InputStream inputStream;
-   @ObfuscatedName("c")
+   @ObfuscatedName("v")
    @ObfuscatedGetter(
-      intValue = -1382594299
+      intValue = 1848700253
    )
    @Export("capacity")
    int capacity;
    @ObfuscatedName("x")
    @Export("buffer")
    byte[] buffer;
-   @ObfuscatedName("h")
+   @ObfuscatedName("m")
    @ObfuscatedGetter(
-      intValue = 1854647413
+      intValue = -1891508275
    )
    @Export("position")
    int position = 0;
-   @ObfuscatedName("j")
+   @ObfuscatedName("q")
    @ObfuscatedGetter(
-      intValue = 993907297
+      intValue = -1884298899
    )
    @Export("limit")
    int limit = 0;
-   @ObfuscatedName("y")
+   @ObfuscatedName("f")
    @Export("exception")
    IOException exception;
 
@@ -50,10 +50,10 @@ public class BufferedSource implements Runnable {
       this.thread.start();
    }
 
-   @ObfuscatedName("a")
+   @ObfuscatedName("h")
    @ObfuscatedSignature(
-      descriptor = "(IS)Z",
-      garbageValue = "29157"
+      descriptor = "(IB)Z",
+      garbageValue = "39"
    )
    @Export("isAvailable")
    boolean isAvailable(int var1) throws IOException {
@@ -84,10 +84,10 @@ public class BufferedSource implements Runnable {
       }
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("e")
    @ObfuscatedSignature(
-      descriptor = "(I)I",
-      garbageValue = "2130958003"
+      descriptor = "(B)I",
+      garbageValue = "115"
    )
    @Export("available")
    int available() throws IOException {
@@ -108,15 +108,15 @@ public class BufferedSource implements Runnable {
       }
    }
 
-   @ObfuscatedName("c")
+   @ObfuscatedName("v")
    @ObfuscatedSignature(
       descriptor = "(I)I",
-      garbageValue = "1744196611"
+      garbageValue = "1587894570"
    )
    @Export("readUnsignedByte")
    int readUnsignedByte() throws IOException {
       synchronized(this) {
-         if (this.limit == this.position) {
+         if (this.position == this.limit) {
             if (this.exception != null) {
                throw new IOException(this.exception.toString());
             } else {
@@ -133,8 +133,8 @@ public class BufferedSource implements Runnable {
 
    @ObfuscatedName("x")
    @ObfuscatedSignature(
-      descriptor = "([BIIB)I",
-      garbageValue = "74"
+      descriptor = "([BIII)I",
+      garbageValue = "-2101491252"
    )
    @Export("read")
    int read(byte[] var1, int var2, int var3) throws IOException {
@@ -172,10 +172,10 @@ public class BufferedSource implements Runnable {
       }
    }
 
-   @ObfuscatedName("h")
+   @ObfuscatedName("m")
    @ObfuscatedSignature(
       descriptor = "(I)V",
-      garbageValue = "326056098"
+      garbageValue = "1835564521"
    )
    @Export("close")
    void close() {
@@ -242,50 +242,81 @@ public class BufferedSource implements Runnable {
       }
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("e")
    @ObfuscatedSignature(
-      descriptor = "(Llg;IIB)[Lri;",
-      garbageValue = "-36"
+      descriptor = "(Lqy;Ljava/lang/String;I)I",
+      garbageValue = "-982647214"
    )
-   public static SpritePixels[] method7532(AbstractArchive var0, int var1, int var2) {
-      byte[] var4 = var0.takeFile(var1, var2);
-      boolean var3;
-      if (var4 == null) {
-         var3 = false;
-      } else {
-         class335.SpriteBuffer_decode(var4);
-         var3 = true;
-      }
+   public static int method7683(Buffer var0, String var1) {
+      int var2 = var0.offset;
+      int var4 = var1.length();
+      byte[] var5 = new byte[var4];
 
-      if (!var3) {
-         return null;
-      } else {
-         SpritePixels[] var5 = new SpritePixels[class477.SpriteBuffer_spriteCount];
-
-         for(int var6 = 0; var6 < class477.SpriteBuffer_spriteCount; ++var6) {
-            SpritePixels var7 = var5[var6] = new SpritePixels();
-            var7.width = class477.SpriteBuffer_spriteWidth;
-            var7.height = class477.SpriteBuffer_spriteHeight;
-            var7.xOffset = class451.SpriteBuffer_xOffsets[var6];
-            var7.yOffset = class319.SpriteBuffer_yOffsets[var6];
-            var7.subWidth = class450.SpriteBuffer_spriteWidths[var6];
-            var7.subHeight = class477.SpriteBuffer_spriteHeights[var6];
-            int var8 = var7.subHeight * var7.subWidth;
-            byte[] var9 = class453.SpriteBuffer_pixels[var6];
-            var7.pixels = new int[var8];
-
-            for(int var10 = 0; var10 < var8; ++var10) {
-               var7.pixels[var10] = class477.SpriteBuffer_spritePalette[var9[var10] & 255];
-            }
+      for(int var6 = 0; var6 < var4; ++var6) {
+         char var7 = var1.charAt(var6);
+         if (var7 > 0 && var7 < 128 || var7 >= 160 && var7 <= 255) {
+            var5[var6] = (byte)var7;
+         } else if (var7 == 8364) {
+            var5[var6] = -128;
+         } else if (var7 == 8218) {
+            var5[var6] = -126;
+         } else if (var7 == 402) {
+            var5[var6] = -125;
+         } else if (var7 == 8222) {
+            var5[var6] = -124;
+         } else if (var7 == 8230) {
+            var5[var6] = -123;
+         } else if (var7 == 8224) {
+            var5[var6] = -122;
+         } else if (var7 == 8225) {
+            var5[var6] = -121;
+         } else if (var7 == 710) {
+            var5[var6] = -120;
+         } else if (var7 == 8240) {
+            var5[var6] = -119;
+         } else if (var7 == 352) {
+            var5[var6] = -118;
+         } else if (var7 == 8249) {
+            var5[var6] = -117;
+         } else if (var7 == 338) {
+            var5[var6] = -116;
+         } else if (var7 == 381) {
+            var5[var6] = -114;
+         } else if (var7 == 8216) {
+            var5[var6] = -111;
+         } else if (var7 == 8217) {
+            var5[var6] = -110;
+         } else if (var7 == 8220) {
+            var5[var6] = -109;
+         } else if (var7 == 8221) {
+            var5[var6] = -108;
+         } else if (var7 == 8226) {
+            var5[var6] = -107;
+         } else if (var7 == 8211) {
+            var5[var6] = -106;
+         } else if (var7 == 8212) {
+            var5[var6] = -105;
+         } else if (var7 == 732) {
+            var5[var6] = -104;
+         } else if (var7 == 8482) {
+            var5[var6] = -103;
+         } else if (var7 == 353) {
+            var5[var6] = -102;
+         } else if (var7 == 8250) {
+            var5[var6] = -101;
+         } else if (var7 == 339) {
+            var5[var6] = -100;
+         } else if (var7 == 382) {
+            var5[var6] = -98;
+         } else if (var7 == 376) {
+            var5[var6] = -97;
+         } else {
+            var5[var6] = 63;
          }
-
-         class451.SpriteBuffer_xOffsets = null;
-         class319.SpriteBuffer_yOffsets = null;
-         class450.SpriteBuffer_spriteWidths = null;
-         class477.SpriteBuffer_spriteHeights = null;
-         class477.SpriteBuffer_spritePalette = null;
-         class453.SpriteBuffer_pixels = null;
-         return var5;
       }
+
+      var0.writeSmartByteShort(var5.length);
+      var0.offset += class308.huffman.compress(var5, 0, var5.length, var0.array, var0.offset);
+      return var0.offset - var2;
    }
 }

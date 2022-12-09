@@ -7,34 +7,34 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("on")
+@ObfuscatedName("od")
 @Implements("UserList")
 public abstract class UserList {
-   @ObfuscatedName("n")
+   @ObfuscatedName("u")
    @ObfuscatedGetter(
-      intValue = 1695015859
+      intValue = -1701166139
    )
    @Export("capacity")
    final int capacity;
-   @ObfuscatedName("r")
+   @ObfuscatedName("b")
    @ObfuscatedGetter(
-      intValue = -486443911
+      intValue = -809601657
    )
    @Export("size")
    int size = 0;
-   @ObfuscatedName("l")
+   @ObfuscatedName("j")
    @ObfuscatedSignature(
-      descriptor = "[Loj;"
+      descriptor = "[Lov;"
    )
    @Export("array")
    User[] array;
-   @ObfuscatedName("s")
+   @ObfuscatedName("g")
    @Export("usernamesMap")
    HashMap usernamesMap;
-   @ObfuscatedName("p")
+   @ObfuscatedName("i")
    @Export("previousUsernamesMap")
    HashMap previousUsernamesMap;
-   @ObfuscatedName("b")
+   @ObfuscatedName("o")
    @Export("comparator")
    Comparator comparator = null;
 
@@ -45,26 +45,26 @@ public abstract class UserList {
       this.previousUsernamesMap = new HashMap(var1 / 8);
    }
 
-   @ObfuscatedName("a")
+   @ObfuscatedName("h")
    @ObfuscatedSignature(
-      descriptor = "(B)Loj;",
-      garbageValue = "31"
+      descriptor = "(B)Lov;",
+      garbageValue = "47"
    )
    @Export("newInstance")
    abstract User newInstance();
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("e")
    @ObfuscatedSignature(
-      descriptor = "(II)[Loj;",
-      garbageValue = "-41299588"
+      descriptor = "(II)[Lov;",
+      garbageValue = "1710517567"
    )
    @Export("newTypedArray")
    abstract User[] newTypedArray(int var1);
 
-   @ObfuscatedName("ac")
+   @ObfuscatedName("ar")
    @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "-1953629195"
+      descriptor = "(S)V",
+      garbageValue = "-3750"
    )
    @Export("clear")
    public void clear() {
@@ -74,30 +74,30 @@ public abstract class UserList {
       this.previousUsernamesMap.clear();
    }
 
-   @ObfuscatedName("af")
+   @ObfuscatedName("at")
    @ObfuscatedSignature(
       descriptor = "(I)I",
-      garbageValue = "936617473"
+      garbageValue = "994958809"
    )
    @Export("getSize")
    public int getSize() {
       return this.size;
    }
 
-   @ObfuscatedName("ad")
+   @ObfuscatedName("ay")
    @ObfuscatedSignature(
       descriptor = "(I)Z",
-      garbageValue = "-1838216958"
+      garbageValue = "-1236533348"
    )
    @Export("isFull")
    public boolean isFull() {
-      return this.size == this.capacity;
+      return this.capacity == this.size;
    }
 
-   @ObfuscatedName("av")
+   @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "(Lrg;I)Z",
-      garbageValue = "-1635365855"
+      descriptor = "(Lrp;B)Z",
+      garbageValue = "-94"
    )
    @Export("contains")
    public boolean contains(Username var1) {
@@ -108,10 +108,10 @@ public abstract class UserList {
       }
    }
 
-   @ObfuscatedName("ak")
+   @ObfuscatedName("ab")
    @ObfuscatedSignature(
-      descriptor = "(Lrg;B)Loj;",
-      garbageValue = "12"
+      descriptor = "(Lrp;B)Lov;",
+      garbageValue = "-51"
    )
    @Export("getByUsername")
    public User getByUsername(Username var1) {
@@ -119,30 +119,30 @@ public abstract class UserList {
       return var2 != null ? var2 : this.getByPreviousUsername(var1);
    }
 
-   @ObfuscatedName("ae")
+   @ObfuscatedName("al")
    @ObfuscatedSignature(
-      descriptor = "(Lrg;B)Loj;",
-      garbageValue = "-16"
+      descriptor = "(Lrp;B)Lov;",
+      garbageValue = "49"
    )
    @Export("getByCurrentUsername")
    User getByCurrentUsername(Username var1) {
       return !var1.hasCleanName() ? null : (User)this.usernamesMap.get(var1);
    }
 
-   @ObfuscatedName("ap")
+   @ObfuscatedName("ag")
    @ObfuscatedSignature(
-      descriptor = "(Lrg;I)Loj;",
-      garbageValue = "2070159512"
+      descriptor = "(Lrp;I)Lov;",
+      garbageValue = "-2064272196"
    )
    @Export("getByPreviousUsername")
    User getByPreviousUsername(Username var1) {
       return !var1.hasCleanName() ? null : (User)this.previousUsernamesMap.get(var1);
    }
 
-   @ObfuscatedName("as")
+   @ObfuscatedName("az")
    @ObfuscatedSignature(
-      descriptor = "(Lrg;B)Z",
-      garbageValue = "-61"
+      descriptor = "(Lrp;B)Z",
+      garbageValue = "88"
    )
    @Export("removeByUsername")
    public final boolean removeByUsername(Username var1) {
@@ -155,10 +155,10 @@ public abstract class UserList {
       }
    }
 
-   @ObfuscatedName("aq")
+   @ObfuscatedName("ak")
    @ObfuscatedSignature(
-      descriptor = "(Loj;I)V",
-      garbageValue = "-691454376"
+      descriptor = "(Lov;I)V",
+      garbageValue = "1943466022"
    )
    @Export("remove")
    final void remove(User var1) {
@@ -169,20 +169,20 @@ public abstract class UserList {
       }
    }
 
-   @ObfuscatedName("al")
+   @ObfuscatedName("af")
    @ObfuscatedSignature(
-      descriptor = "(Lrg;I)Loj;",
-      garbageValue = "-2054707737"
+      descriptor = "(Lrp;B)Lov;",
+      garbageValue = "83"
    )
    @Export("addLastNoPreviousUsername")
    User addLastNoPreviousUsername(Username var1) {
       return this.addLast(var1, (Username)null);
    }
 
-   @ObfuscatedName("ag")
+   @ObfuscatedName("ai")
    @ObfuscatedSignature(
-      descriptor = "(Lrg;Lrg;I)Loj;",
-      garbageValue = "-645107578"
+      descriptor = "(Lrp;Lrp;B)Lov;",
+      garbageValue = "14"
    )
    @Export("addLast")
    User addLast(Username var1, Username var2) {
@@ -197,10 +197,10 @@ public abstract class UserList {
       }
    }
 
-   @ObfuscatedName("am")
+   @ObfuscatedName("ax")
    @ObfuscatedSignature(
-      descriptor = "(II)Loj;",
-      garbageValue = "221714526"
+      descriptor = "(II)Lov;",
+      garbageValue = "1687746324"
    )
    @Export("get")
    public final User get(int var1) {
@@ -211,10 +211,10 @@ public abstract class UserList {
       }
    }
 
-   @ObfuscatedName("az")
+   @ObfuscatedName("ah")
    @ObfuscatedSignature(
       descriptor = "(I)V",
-      garbageValue = "-1037280537"
+      garbageValue = "1745034831"
    )
    @Export("sort")
    public final void sort() {
@@ -226,10 +226,10 @@ public abstract class UserList {
 
    }
 
-   @ObfuscatedName("ab")
+   @ObfuscatedName("aw")
    @ObfuscatedSignature(
-      descriptor = "(Loj;Lrg;Lrg;I)V",
-      garbageValue = "165259804"
+      descriptor = "(Lov;Lrp;Lrp;I)V",
+      garbageValue = "-2046031890"
    )
    @Export("changeName")
    final void changeName(User var1, Username var2, Username var3) {
@@ -238,10 +238,10 @@ public abstract class UserList {
       this.mapPut(var1);
    }
 
-   @ObfuscatedName("ai")
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
-      descriptor = "(Loj;I)I",
-      garbageValue = "-1422965268"
+      descriptor = "(Lov;I)I",
+      garbageValue = "-2074650395"
    )
    @Export("indexOf")
    final int indexOf(User var1) {
@@ -254,10 +254,10 @@ public abstract class UserList {
       return -1;
    }
 
-   @ObfuscatedName("au")
+   @ObfuscatedName("aq")
    @ObfuscatedSignature(
-      descriptor = "(Loj;I)V",
-      garbageValue = "-641917828"
+      descriptor = "(Lov;B)V",
+      garbageValue = "0"
    )
    @Export("mapRemove")
    final void mapRemove(User var1) {
@@ -271,20 +271,20 @@ public abstract class UserList {
       }
    }
 
-   @ObfuscatedName("aw")
+   @ObfuscatedName("ap")
    @ObfuscatedSignature(
-      descriptor = "(Loj;I)V",
-      garbageValue = "-792727175"
+      descriptor = "(Lov;I)V",
+      garbageValue = "-653934670"
    )
    @Export("arrayAddLast")
    final void arrayAddLast(User var1) {
       this.array[++this.size - 1] = var1;
    }
 
-   @ObfuscatedName("at")
+   @ObfuscatedName("aa")
    @ObfuscatedSignature(
-      descriptor = "(Loj;B)V",
-      garbageValue = "-43"
+      descriptor = "(Lov;I)V",
+      garbageValue = "734290139"
    )
    @Export("mapPut")
    final void mapPut(User var1) {
@@ -298,10 +298,10 @@ public abstract class UserList {
 
    }
 
-   @ObfuscatedName("ar")
+   @ObfuscatedName("ae")
    @ObfuscatedSignature(
-      descriptor = "(II)V",
-      garbageValue = "2142344104"
+      descriptor = "(IB)V",
+      garbageValue = "2"
    )
    @Export("arrayRemove")
    final void arrayRemove(int var1) {
@@ -312,20 +312,20 @@ public abstract class UserList {
 
    }
 
-   @ObfuscatedName("ay")
+   @ObfuscatedName("ac")
    @ObfuscatedSignature(
-      descriptor = "(B)V",
-      garbageValue = "-38"
+      descriptor = "(I)V",
+      garbageValue = "-1713851061"
    )
    @Export("removeComparator")
    public final void removeComparator() {
       this.comparator = null;
    }
 
-   @ObfuscatedName("ax")
+   @ObfuscatedName("bh")
    @ObfuscatedSignature(
       descriptor = "(Ljava/util/Comparator;I)V",
-      garbageValue = "1295085332"
+      garbageValue = "1352931205"
    )
    @Export("addComparator")
    public final void addComparator(Comparator var1) {
@@ -337,93 +337,82 @@ public abstract class UserList {
 
    }
 
-   @ObfuscatedName("a")
+   @ObfuscatedName("v")
    @ObfuscatedSignature(
-      descriptor = "(Llg;Llg;ZII)V",
-      garbageValue = "-2066181658"
+      descriptor = "(CI)C",
+      garbageValue = "-852063188"
    )
-   static void method7441(AbstractArchive var0, AbstractArchive var1, boolean var2, int var3) {
-      if (Login.clearLoginScreen) {
-         if (var3 == 4) {
-            GrandExchangeOfferOwnWorldComparator.method1171(4);
-         }
-
-      } else {
-         if (var3 == 0) {
-            GrandExchangeEvents.method6463(var2);
-         } else {
-            GrandExchangeOfferOwnWorldComparator.method1171(var3);
-         }
-
-         Rasterizer2D.Rasterizer2D_clear();
-         byte[] var4 = var0.takeFileByNames("title.jpg", "");
-         class313.leftTitleSprite = KeyHandler.method394(var4);
-         HealthBar.rightTitleSprite = class313.leftTitleSprite.mirrorHorizontally();
-         int var5 = Client.worldProperties;
-         if ((var5 & 536870912) != 0) {
-            MouseRecorder.logoSprite = AbstractUserComparator.SpriteBuffer_getIndexedSpriteByName(var1, "logo_deadman_mode", "");
-         } else if ((var5 & 1073741824) != 0) {
-            MouseRecorder.logoSprite = AbstractUserComparator.SpriteBuffer_getIndexedSpriteByName(var1, "logo_seasonal_mode", "");
-         } else if ((var5 & 256) != 0) {
-            MouseRecorder.logoSprite = AbstractUserComparator.SpriteBuffer_getIndexedSpriteByName(var1, "logo_speedrunning", "");
-         } else {
-            MouseRecorder.logoSprite = AbstractUserComparator.SpriteBuffer_getIndexedSpriteByName(var1, "logo", "");
-         }
-
-         class356.titleboxSprite = AbstractUserComparator.SpriteBuffer_getIndexedSpriteByName(var1, "titlebox", "");
-         class143.titlebuttonSprite = AbstractUserComparator.SpriteBuffer_getIndexedSpriteByName(var1, "titlebutton", "");
-         class362.field4314 = AbstractUserComparator.SpriteBuffer_getIndexedSpriteByName(var1, "titlebutton_large", "");
-         class138.field1609 = AbstractUserComparator.SpriteBuffer_getIndexedSpriteByName(var1, "play_now_text", "");
-         AbstractUserComparator.SpriteBuffer_getIndexedSpriteByName(var1, "titlebutton_wide42,1", "");
-         class239.runesSprite = class410.method7741(var1, "runes", "");
-         class16.title_muteSprite = class410.method7741(var1, "title_mute", "");
-         Login.options_buttons_0Sprite = AbstractUserComparator.SpriteBuffer_getIndexedSpriteByName(var1, "options_radio_buttons,0", "");
-         MouseRecorder.field1059 = AbstractUserComparator.SpriteBuffer_getIndexedSpriteByName(var1, "options_radio_buttons,4", "");
-         class181.options_buttons_2Sprite = AbstractUserComparator.SpriteBuffer_getIndexedSpriteByName(var1, "options_radio_buttons,2", "");
-         class341.field4230 = AbstractUserComparator.SpriteBuffer_getIndexedSpriteByName(var1, "options_radio_buttons,6", "");
-         ModeWhere.field4271 = Login.options_buttons_0Sprite.subWidth;
-         Login.field915 = Login.options_buttons_0Sprite.subHeight;
-         GraphicsObject.loginScreenRunesAnimation = new LoginScreenAnimation(class239.runesSprite);
-         if (var2) {
-            Login.Login_username = "";
-            Login.Login_password = "";
-            Login.field914 = new String[8];
-            Login.field913 = 0;
-         }
-
-         class360.field4308 = 0;
-         class355.otp = "";
-         Login.field900 = true;
-         Login.worldSelectOpen = false;
-         if (!BufferedSink.clientPreferences.method2383()) {
-            FloorUnderlayDefinition.method3623(2, ReflectionCheck.archive6, "scape main", "", 255, false);
-         } else {
-            class283.musicPlayerStatus = 1;
-            DevicePcmPlayerProvider.musicTrackArchive = null;
-            class283.musicTrackGroupId = -1;
-            class283.musicTrackFileId = -1;
-            Messages.musicTrackVolume = 0;
-            GrandExchangeEvents.musicTrackBoolean = false;
-            class19.pcmSampleLength = 2;
-         }
-
-         MouseHandler.method697(false);
-         Login.clearLoginScreen = true;
-         Login.xPadding = (GameEngine.canvasWidth - 765) / 2;
-         Login.loginBoxX = Login.xPadding + 202;
-         Canvas.loginBoxCenter = Login.loginBoxX + 180;
-         class313.leftTitleSprite.drawAt(Login.xPadding, 0);
-         HealthBar.rightTitleSprite.drawAt(Login.xPadding + 382, 0);
-         MouseRecorder.logoSprite.drawAt(Login.xPadding + 382 - MouseRecorder.logoSprite.subWidth / 2, 18);
+   public static char method7589(char var0) {
+      switch (var0) {
+         case ' ':
+         case '-':
+         case '_':
+         case ' ':
+            return '_';
+         case '#':
+         case '[':
+         case ']':
+            return var0;
+         case 'À':
+         case 'Á':
+         case 'Â':
+         case 'Ã':
+         case 'Ä':
+         case 'à':
+         case 'á':
+         case 'â':
+         case 'ã':
+         case 'ä':
+            return 'a';
+         case 'Ç':
+         case 'ç':
+            return 'c';
+         case 'È':
+         case 'É':
+         case 'Ê':
+         case 'Ë':
+         case 'è':
+         case 'é':
+         case 'ê':
+         case 'ë':
+            return 'e';
+         case 'Í':
+         case 'Î':
+         case 'Ï':
+         case 'í':
+         case 'î':
+         case 'ï':
+            return 'i';
+         case 'Ñ':
+         case 'ñ':
+            return 'n';
+         case 'Ò':
+         case 'Ó':
+         case 'Ô':
+         case 'Õ':
+         case 'Ö':
+         case 'ò':
+         case 'ó':
+         case 'ô':
+         case 'õ':
+         case 'ö':
+            return 'o';
+         case 'Ù':
+         case 'Ú':
+         case 'Û':
+         case 'Ü':
+         case 'ù':
+         case 'ú':
+         case 'û':
+         case 'ü':
+            return 'u';
+         case 'ß':
+            return 'b';
+         case 'ÿ':
+         case 'Ÿ':
+            return 'y';
+         default:
+            return Character.toLowerCase(var0);
       }
-   }
-
-   @ObfuscatedName("a")
-   @ObfuscatedSignature(
-      descriptor = "([Ljava/lang/String;[SI)V",
-      garbageValue = "-2135224371"
-   )
-   public static void method7442(String[] var0, short[] var1) {
-      VarpDefinition.sortItemsByName(var0, var1, 0, var0.length - 1);
    }
 }

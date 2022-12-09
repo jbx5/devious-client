@@ -4,32 +4,38 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hv")
+@ObfuscatedName("hn")
 @Implements("Skeleton")
 public class Skeleton extends Node {
-   @ObfuscatedName("j")
+   @ObfuscatedName("lf")
+   @ObfuscatedSignature(
+      descriptor = "Lht;"
+   )
+   @Export("textureProvider")
+   static TextureProvider textureProvider;
+   @ObfuscatedName("q")
    @ObfuscatedGetter(
-      intValue = -451067503
+      intValue = 227763471
    )
    @Export("id")
    int id;
-   @ObfuscatedName("y")
+   @ObfuscatedName("f")
    @ObfuscatedGetter(
-      intValue = -1361737769
+      intValue = 15717685
    )
    @Export("count")
    int count;
-   @ObfuscatedName("d")
+   @ObfuscatedName("r")
    @Export("transformTypes")
    int[] transformTypes;
-   @ObfuscatedName("n")
+   @ObfuscatedName("u")
    @Export("labels")
    int[][] labels;
-   @ObfuscatedName("r")
+   @ObfuscatedName("b")
    @ObfuscatedSignature(
-      descriptor = "Lhh;"
+      descriptor = "Lhi;"
    )
-   class211 field2451;
+   class213 field2525;
 
    public Skeleton(int var1, byte[] var2) {
       this.id = var1;
@@ -56,62 +62,38 @@ public class Skeleton extends Node {
       if (var3.offset < var3.array.length) {
          var4 = var3.readUnsignedShort();
          if (var4 > 0) {
-            this.field2451 = new class211(var3, var4);
+            this.field2525 = new class213(var3, var4);
          }
       }
 
    }
 
-   @ObfuscatedName("a")
+   @ObfuscatedName("h")
    @ObfuscatedSignature(
       descriptor = "(I)I",
-      garbageValue = "-2136592192"
+      garbageValue = "-2112065673"
    )
-   public int method4262() {
+   public int method4426() {
       return this.count;
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("e")
    @ObfuscatedSignature(
-      descriptor = "(B)Lhh;",
-      garbageValue = "-52"
+      descriptor = "(I)Lhi;",
+      garbageValue = "736109074"
    )
-   public class211 method4263() {
-      return this.field2451;
+   public class213 method4422() {
+      return this.field2525;
    }
 
-   @ObfuscatedName("ht")
+   @ObfuscatedName("j")
    @ObfuscatedSignature(
-      descriptor = "(IIII)V",
-      garbageValue = "1488956825"
+      descriptor = "(B)V",
+      garbageValue = "81"
    )
-   @Export("worldToScreen")
-   static final void worldToScreen(int var0, int var1, int var2) {
-      if (var0 >= 128 && var1 >= 128 && var0 <= 13056 && var1 <= 13056) {
-         int var3 = class132.getTileHeight(var0, var1, ApproximateRouteStrategy.Client_plane) - var2;
-         var0 -= TextureProvider.cameraX;
-         var3 -= class31.cameraY;
-         var1 -= class313.cameraZ;
-         int var4 = Rasterizer3D.Rasterizer3D_sine[class408.cameraPitch];
-         int var5 = Rasterizer3D.Rasterizer3D_cosine[class408.cameraPitch];
-         int var6 = Rasterizer3D.Rasterizer3D_sine[WorldMapSection1.cameraYaw];
-         int var7 = Rasterizer3D.Rasterizer3D_cosine[WorldMapSection1.cameraYaw];
-         int var8 = var6 * var1 + var0 * var7 >> 16;
-         var1 = var7 * var1 - var0 * var6 >> 16;
-         var0 = var8;
-         var8 = var3 * var5 - var4 * var1 >> 16;
-         var1 = var4 * var3 + var5 * var1 >> 16;
-         if (var1 >= 50) {
-            Client.viewportTempX = var0 * Client.viewportZoom / var1 + Client.viewportWidth / 2;
-            Client.viewportTempY = Client.viewportHeight / 2 + var8 * Client.viewportZoom / var1;
-         } else {
-            Client.viewportTempX = -1;
-            Client.viewportTempY = -1;
-         }
-
-      } else {
-         Client.viewportTempX = -1;
-         Client.viewportTempY = -1;
-      }
+   static final void method4428() {
+      Object var10000 = null;
+      String var0 = "You can't add yourself to your own friend list";
+      KitDefinition.addGameMessage(30, "", var0);
    }
 }

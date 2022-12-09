@@ -3,26 +3,25 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("of")
+@ObfuscatedName("oa")
 @Implements("Buddy")
 public class Buddy extends User {
-   @ObfuscatedName("h")
+   @ObfuscatedName("m")
    @ObfuscatedGetter(
-      intValue = 1899402835
+      intValue = 1767210019
    )
    @Export("world")
    public int world = -1;
-   @ObfuscatedName("j")
+   @ObfuscatedName("q")
    @ObfuscatedGetter(
-      intValue = 1732968995
+      intValue = 1595280059
    )
    @Export("int2")
    public int int2;
-   @ObfuscatedName("y")
+   @ObfuscatedName("f")
    @ObfuscatedGetter(
-      intValue = 924228175
+      intValue = -894638573
    )
    @Export("rank")
    public int rank;
@@ -30,10 +29,10 @@ public class Buddy extends User {
    Buddy() {
    }
 
-   @ObfuscatedName("at")
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
-      descriptor = "(IIB)V",
-      garbageValue = "78"
+      descriptor = "(III)V",
+      garbageValue = "-87975301"
    )
    @Export("set")
    void set(int var1, int var2) {
@@ -41,53 +40,68 @@ public class Buddy extends User {
       this.int2 = var2;
    }
 
-   @ObfuscatedName("ar")
+   @ObfuscatedName("aq")
    @ObfuscatedSignature(
       descriptor = "(I)I",
-      garbageValue = "-949915725"
+      garbageValue = "1755298116"
    )
    @Export("getWorld")
    public int getWorld() {
       return this.world;
    }
 
-   @ObfuscatedName("ay")
+   @ObfuscatedName("ap")
    @ObfuscatedSignature(
-      descriptor = "(B)Z",
-      garbageValue = "75"
+      descriptor = "(I)Z",
+      garbageValue = "-1364221450"
    )
    @Export("hasWorld")
    public boolean hasWorld() {
       return this.world > 0;
    }
 
-   @ObfuscatedName("m")
+   @ObfuscatedName("ks")
    @ObfuscatedSignature(
-      descriptor = "(ILbz;ZI)I",
-      garbageValue = "-974133059"
+      descriptor = "(IIIIIII)V",
+      garbageValue = "-1992575835"
    )
-   static int method7457(int var0, Script var1, boolean var2) {
-      Widget var3 = class281.getWidget(Interpreter.Interpreter_intStack[--class379.Interpreter_intStackSize]);
-      if (var0 == ScriptOpcodes.IF_GETX) {
-         Interpreter.Interpreter_intStack[++class379.Interpreter_intStackSize - 1] = var3.x;
-         return 1;
-      } else if (var0 == ScriptOpcodes.IF_GETY) {
-         Interpreter.Interpreter_intStack[++class379.Interpreter_intStackSize - 1] = var3.y;
-         return 1;
-      } else if (var0 == ScriptOpcodes.IF_GETWIDTH) {
-         Interpreter.Interpreter_intStack[++class379.Interpreter_intStackSize - 1] = var3.width;
-         return 1;
-      } else if (var0 == ScriptOpcodes.IF_GETHEIGHT) {
-         Interpreter.Interpreter_intStack[++class379.Interpreter_intStackSize - 1] = var3.height;
-         return 1;
-      } else if (var0 == ScriptOpcodes.IF_GETHIDE) {
-         Interpreter.Interpreter_intStack[++class379.Interpreter_intStackSize - 1] = var3.isHidden ? 1 : 0;
-         return 1;
-      } else if (var0 == ScriptOpcodes.IF_GETLAYER) {
-         Interpreter.Interpreter_intStack[++class379.Interpreter_intStackSize - 1] = var3.parentId;
-         return 1;
-      } else {
-         return 2;
+   static final void method7626(int var0, int var1, int var2, int var3, int var4, int var5) {
+      int var6 = var2 - var0;
+      int var7 = var3 - var1;
+      int var8 = var6 >= 0 ? var6 : -var6;
+      int var9 = var7 >= 0 ? var7 : -var7;
+      int var10 = var8;
+      if (var8 < var9) {
+         var10 = var9;
+      }
+
+      if (var10 != 0) {
+         int var11 = (var6 << 16) / var10;
+         int var12 = (var7 << 16) / var10;
+         if (var12 <= var11) {
+            var11 = -var11;
+         } else {
+            var12 = -var12;
+         }
+
+         int var13 = var5 * var12 >> 17;
+         int var14 = var5 * var12 + 1 >> 17;
+         int var15 = var5 * var11 >> 17;
+         int var16 = var5 * var11 + 1 >> 17;
+         var0 -= Rasterizer2D.Rasterizer2D_xClipStart;
+         var1 -= Rasterizer2D.Rasterizer2D_yClipStart;
+         int var17 = var0 + var13;
+         int var18 = var0 - var14;
+         int var19 = var0 + var6 - var14;
+         int var20 = var0 + var6 + var13;
+         int var21 = var15 + var1;
+         int var22 = var1 - var16;
+         int var23 = var7 + var1 - var16;
+         int var24 = var15 + var7 + var1;
+         Rasterizer3D.method4321(var17, var18, var19);
+         Rasterizer3D.method4326(var21, var22, var23, var17, var18, var19, var4);
+         Rasterizer3D.method4321(var17, var19, var20);
+         Rasterizer3D.method4326(var21, var23, var24, var17, var19, var20, var4);
       }
    }
 }

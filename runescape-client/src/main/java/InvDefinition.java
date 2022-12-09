@@ -4,20 +4,29 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fu")
+@ObfuscatedName("fq")
 @Implements("InvDefinition")
 public class InvDefinition extends DualNode {
-   @ObfuscatedName("f")
+   @ObfuscatedName("h")
    @ObfuscatedSignature(
-      descriptor = "Ljx;"
+      descriptor = "Lly;"
+   )
+   @Export("InvDefinition_archive")
+   static AbstractArchive InvDefinition_archive;
+   @ObfuscatedName("e")
+   @ObfuscatedSignature(
+      descriptor = "Ljv;"
    )
    @Export("InvDefinition_cached")
    static EvictingDualNodeHashTable InvDefinition_cached = new EvictingDualNodeHashTable(64);
-   @ObfuscatedName("n")
-   static int[] field1862;
-   @ObfuscatedName("c")
+   @ObfuscatedName("if")
    @ObfuscatedGetter(
-      intValue = 481394021
+      intValue = 780032889
+   )
+   static int field1918;
+   @ObfuscatedName("v")
+   @ObfuscatedGetter(
+      intValue = -1028832281
    )
    @Export("size")
    public int size = 0;
@@ -25,10 +34,10 @@ public class InvDefinition extends DualNode {
    InvDefinition() {
    }
 
-   @ObfuscatedName("c")
+   @ObfuscatedName("v")
    @ObfuscatedSignature(
-      descriptor = "(Lqr;S)V",
-      garbageValue = "128"
+      descriptor = "(Lqy;I)V",
+      garbageValue = "232861305"
    )
    @Export("decode")
    void decode(Buffer var1) {
@@ -44,8 +53,8 @@ public class InvDefinition extends DualNode {
 
    @ObfuscatedName("x")
    @ObfuscatedSignature(
-      descriptor = "(Lqr;IB)V",
-      garbageValue = "-1"
+      descriptor = "(Lqy;IB)V",
+      garbageValue = "42"
    )
    @Export("decodeNext")
    void decodeNext(Buffer var1, int var2) {
@@ -53,14 +62,5 @@ public class InvDefinition extends DualNode {
          this.size = var1.readUnsignedShort();
       }
 
-   }
-
-   @ObfuscatedName("d")
-   @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "-1272401355"
-   )
-   public static void method3413() {
-      KitDefinition.KitDefinition_cached.clear();
    }
 }

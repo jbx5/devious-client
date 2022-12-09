@@ -1520,7 +1520,6 @@ public class GpuPlugin extends Plugin implements DrawCallbacks
 					return;
 				}
 
-				model.calculateExtreme(orientation);
 				client.checkClickbox(model, orientation, pitchSin, pitchCos, yawSin, yawCos, x, y, z, hash);
 
 				targetBufferOffset += sceneUploader.pushSortedModel(
@@ -1541,7 +1540,6 @@ public class GpuPlugin extends Plugin implements DrawCallbacks
 				return;
 			}
 
-			model.calculateExtreme(orientation);
 			client.checkClickbox(model, orientation, pitchSin, pitchCos, yawSin, yawCos, x, y, z, hash);
 
 			int tc = Math.min(MAX_TRIANGLE, model.getFaceCount());
@@ -1577,7 +1575,6 @@ public class GpuPlugin extends Plugin implements DrawCallbacks
 					return;
 				}
 
-				model.calculateExtreme(orientation);
 				client.checkClickbox(model, orientation, pitchSin, pitchCos, yawSin, yawCos, x, y, z, hash);
 
 				boolean hasUv = model.getFaceTextures() != null;

@@ -1,97 +1,118 @@
-import java.io.File;
-import java.io.RandomAccessFile;
 import javax.imageio.ImageIO;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("af")
+@ObfuscatedName("au")
 public class class31 {
-   @ObfuscatedName("tc")
+   @ObfuscatedName("tz")
    @ObfuscatedGetter(
-      intValue = -1712117609
+      intValue = 267846207
    )
-   static int field171;
-   @ObfuscatedName("jn")
+   static int field181;
+   @ObfuscatedName("h")
    @ObfuscatedGetter(
-      intValue = -1913824329
+      longValue = -9171562425366214627L
    )
-   @Export("cameraY")
-   static int cameraY;
-   @ObfuscatedName("jr")
+   static long field180;
+   @ObfuscatedName("fv")
    @ObfuscatedGetter(
-      intValue = -1710875137
+      intValue = 460402933
    )
-   @Export("oculusOrbFocalPointX")
-   static int oculusOrbFocalPointX;
+   @Export("currentPort")
+   static int currentPort;
 
    static {
       ImageIO.setUseCache(false);
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("by")
    @ObfuscatedSignature(
-      descriptor = "(Ljava/io/File;ZI)Z",
-      garbageValue = "1209207588"
+      descriptor = "(IB)V",
+      garbageValue = "1"
    )
-   public static boolean method464(File var0, boolean var1) {
-      try {
-         RandomAccessFile var2 = new RandomAccessFile(var0, "rw");
-         int var3 = var2.read();
-         var2.seek(0L);
-         var2.write(var3);
-         var2.seek(0L);
-         var2.close();
-         if (var1) {
-            var0.delete();
+   @Export("runWidgetOnLoadListener")
+   static void runWidgetOnLoadListener(int var0) {
+      if (var0 != -1) {
+         if (Players.loadInterface(var0)) {
+            Widget[] var1 = class71.Widget_interfaceComponents[var0];
+
+            for(int var2 = 0; var2 < var1.length; ++var2) {
+               Widget var3 = var1[var2];
+               if (var3.onLoad != null) {
+                  ScriptEvent var4 = new ScriptEvent();
+                  var4.widget = var3;
+                  var4.args = var3.onLoad;
+                  class125.runScript(var4, 5000000, 0);
+               }
+            }
+
          }
-
-         return true;
-      } catch (Exception var4) {
-         return false;
       }
    }
 
-   @ObfuscatedName("n")
+   @ObfuscatedName("hc")
    @ObfuscatedSignature(
-      descriptor = "(I)Lri;",
-      garbageValue = "1608391408"
+      descriptor = "(I)V",
+      garbageValue = "352173417"
    )
-   static SpritePixels method466() {
-      SpritePixels var0 = new SpritePixels();
-      var0.width = class477.SpriteBuffer_spriteWidth;
-      var0.height = class477.SpriteBuffer_spriteHeight;
-      var0.xOffset = class451.SpriteBuffer_xOffsets[0];
-      var0.yOffset = class319.SpriteBuffer_yOffsets[0];
-      var0.subWidth = class450.SpriteBuffer_spriteWidths[0];
-      var0.subHeight = class477.SpriteBuffer_spriteHeights[0];
-      int var1 = var0.subWidth * var0.subHeight;
-      byte[] var2 = class453.SpriteBuffer_pixels[0];
-      var0.pixels = new int[var1];
-
-      for(int var3 = 0; var3 < var1; ++var3) {
-         var0.pixels[var3] = class477.SpriteBuffer_spritePalette[var2[var3] & 255];
+   static final void method453() {
+      class280.method5498(class102.field1367, Frames.field2616, MusicPatchNode2.field3342);
+      class158.method3335(NPCComposition.field2067, class101.field1365);
+      if (class102.field1367 == class145.cameraX && class414.cameraY == Frames.field2616 && MusicPatchNode2.field3342 == ClanChannel.cameraZ && class97.cameraPitch == NPCComposition.field2067 && class101.field1365 == class128.cameraYaw) {
+         Client.field772 = false;
+         Client.isCameraLocked = false;
+         class109.field1442 = 0;
+         class146.field1718 = 0;
+         class104.field1398 = 0;
+         class415.field4647 = 0;
+         LoginScreenAnimation.field1283 = 0;
+         Tile.field2481 = 0;
+         field181 = 0;
+         class155.field1787 = 0;
+         class34.field208 = 0;
+         Script.field1001 = 0;
       }
 
-      class451.SpriteBuffer_xOffsets = null;
-      class319.SpriteBuffer_yOffsets = null;
-      class450.SpriteBuffer_spriteWidths = null;
-      class477.SpriteBuffer_spriteHeights = null;
-      class477.SpriteBuffer_spritePalette = null;
-      class453.SpriteBuffer_pixels = null;
-      return var0;
    }
 
-   @ObfuscatedName("lu")
+   @ObfuscatedName("it")
    @ObfuscatedSignature(
-      descriptor = "(B)V",
-      garbageValue = "71"
+      descriptor = "(I)V",
+      garbageValue = "-1979436321"
    )
-   static final void method465() {
-      for(int var0 = 0; var0 < Players.Players_count; ++var0) {
-         Player var1 = Client.players[Players.Players_indices[var0]];
-         var1.method2264();
+   static final void method454() {
+      for(Projectile var0 = (Projectile)Client.projectiles.last(); var0 != null; var0 = (Projectile)Client.projectiles.previous()) {
+         if (var0.plane == class383.Client_plane && Client.cycle <= var0.cycleEnd) {
+            if (Client.cycle >= var0.cycleStart) {
+               if (var0.targetIndex > 0) {
+                  NPC var1 = Client.npcs[var0.targetIndex - 1];
+                  if (var1 != null && var1.x >= 0 && var1.x < 13312 && var1.y >= 0 && var1.y < 13312) {
+                     var0.setDestination(var1.x, var1.y, SpotAnimationDefinition.getTileHeight(var1.x, var1.y, var0.plane) - var0.endHeight, Client.cycle);
+                  }
+               }
+
+               if (var0.targetIndex < 0) {
+                  int var2 = -var0.targetIndex - 1;
+                  Player var3;
+                  if (var2 == Client.localPlayerIndex) {
+                     var3 = class155.localPlayer;
+                  } else {
+                     var3 = Client.players[var2];
+                  }
+
+                  if (var3 != null && var3.x >= 0 && var3.x < 13312 && var3.y >= 0 && var3.y < 13312) {
+                     var0.setDestination(var3.x, var3.y, SpotAnimationDefinition.getTileHeight(var3.x, var3.y, var0.plane) - var0.endHeight, Client.cycle);
+                  }
+               }
+
+               var0.advance(Client.graphicsCycle);
+               ReflectionCheck.scene.drawEntity(class383.Client_plane, (int)var0.x, (int)var0.y, (int)var0.z, 60, var0, var0.yaw, -1L, false);
+            }
+         } else {
+            var0.remove();
+         }
       }
 
    }

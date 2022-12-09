@@ -676,6 +676,18 @@ public final class Varbits
 	public static final int COMBAT_ACHIEVEMENTS_POPUP = 12455;
 
 	/**
+	 * Combat Achievement tier completion variables
+	 *
+	 * 2 = completed
+	 */
+	public static final int COMBAT_ACHIEVEMENT_TIER_EASY = 12863;
+	public static final int COMBAT_ACHIEVEMENT_TIER_MEDIUM = 12864;
+	public static final int COMBAT_ACHIEVEMENT_TIER_HARD = 12865;
+	public static final int COMBAT_ACHIEVEMENT_TIER_ELITE = 12866;
+	public static final int COMBAT_ACHIEVEMENT_TIER_MASTER = 12867;
+	public static final int COMBAT_ACHIEVEMENT_TIER_GRANDMASTER = 12868;
+
+	/**
 	 * Show boss health overlay setting
 	 * 0 = on
 	 * 1 = off
@@ -723,6 +735,10 @@ public final class Varbits
 	public static final int TOA_RAID_LEVEL = 14380;
 	public static final int TOA_RAID_DAMAGE = 14325;
 
+	/**
+	 * Tombs of Amascut orb healths
+	 * 0=hide 1-27=% of health - 27 is 100% health and 1 is 0% health, 30=dead
+	 */
 	public static final int TOA_MEMBER_0_HEALTH = 14346;
 	public static final int TOA_MEMBER_1_HEALTH = 14347;
 	public static final int TOA_MEMBER_2_HEALTH = 14348;

@@ -377,7 +377,7 @@ public class RuneLiteMenuEntry implements MenuEntry {
 		Player[] players = client.getCachedPlayers();
 		Player player = null;
 		MenuAction menuAction = this.getType();
-		if (menuAction == MenuAction.PLAYER_FIRST_OPTION || menuAction == MenuAction.PLAYER_SECOND_OPTION || menuAction == MenuAction.PLAYER_THIRD_OPTION || menuAction == MenuAction.PLAYER_FOURTH_OPTION || menuAction == MenuAction.PLAYER_FIFTH_OPTION || menuAction == MenuAction.PLAYER_SIXTH_OPTION || menuAction == MenuAction.PLAYER_SEVENTH_OPTION || menuAction == MenuAction.PLAYER_EIGTH_OPTION || menuAction == MenuAction.WIDGET_TARGET_ON_PLAYER || menuAction == MenuAction.RUNELITE_PLAYER) {
+		if (menuAction == MenuAction.PLAYER_FIRST_OPTION || menuAction == MenuAction.PLAYER_SECOND_OPTION || menuAction == MenuAction.PLAYER_THIRD_OPTION || menuAction == MenuAction.PLAYER_FOURTH_OPTION || menuAction == MenuAction.PLAYER_FIFTH_OPTION || menuAction == MenuAction.PLAYER_SIXTH_OPTION || menuAction == MenuAction.PLAYER_SEVENTH_OPTION || menuAction == MenuAction.PLAYER_EIGHTH_OPTION || menuAction == MenuAction.WIDGET_TARGET_ON_PLAYER || menuAction == MenuAction.RUNELITE_PLAYER) {
 			int identifier = this.getIdentifier();
 			if (identifier >= 0 && identifier < players.length) {
 				player = players[identifier];

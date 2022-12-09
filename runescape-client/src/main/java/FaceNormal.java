@@ -4,30 +4,24 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hy")
+@ObfuscatedName("hz")
 @Implements("FaceNormal")
 public class FaceNormal {
-   @ObfuscatedName("tw")
-   @ObfuscatedSignature(
-      descriptor = "Lbl;"
-   )
-   @Export("decimator")
-   static Decimator decimator;
-   @ObfuscatedName("a")
+   @ObfuscatedName("h")
    @ObfuscatedGetter(
-      intValue = 1544406627
+      intValue = -1593342669
    )
    @Export("x")
    int x;
-   @ObfuscatedName("f")
+   @ObfuscatedName("e")
    @ObfuscatedGetter(
-      intValue = -1494037397
+      intValue = -2131754663
    )
    @Export("y")
    int y;
-   @ObfuscatedName("c")
+   @ObfuscatedName("v")
    @ObfuscatedGetter(
-      intValue = 685925029
+      intValue = 1522131961
    )
    @Export("z")
    int z;
@@ -35,82 +29,48 @@ public class FaceNormal {
    FaceNormal() {
    }
 
-   @ObfuscatedName("a")
+   @ObfuscatedName("ae")
    @ObfuscatedSignature(
-      descriptor = "(Lqr;Lpe;B)Lpe;",
-      garbageValue = "47"
+      descriptor = "(Ljava/lang/String;B)I",
+      garbageValue = "10"
    )
-   @Export("readStringIntParameters")
-   static final IterableNodeHashTable readStringIntParameters(Buffer var0, IterableNodeHashTable var1) {
-      int var2 = var0.readUnsignedByte();
-      int var3;
-      if (var1 == null) {
-         var3 = class37.method712(var2);
-         var1 = new IterableNodeHashTable(var3);
-      }
-
-      for(var3 = 0; var3 < var2; ++var3) {
-         boolean var4 = var0.readUnsignedByte() == 1;
-         int var5 = var0.readMedium();
-         Object var6;
-         if (var4) {
-            var6 = new ObjectNode(var0.readStringCp1252NullTerminated());
-         } else {
-            var6 = new IntegerNode(var0.readInt());
-         }
-
-         var1.put((Node)var6, (long)var5);
-      }
-
-      return var1;
+   public static int method4618(String var0) {
+      return var0.length() + 2;
    }
 
-   @ObfuscatedName("x")
+   @ObfuscatedName("gc")
    @ObfuscatedSignature(
-      descriptor = "(IIIIB)V",
-      garbageValue = "-103"
+      descriptor = "(I)V",
+      garbageValue = "1404253299"
    )
-   @Export("itemContainerSetItem")
-   static void itemContainerSetItem(int var0, int var1, int var2, int var3) {
-      ItemContainer var4 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
-      if (var4 == null) {
-         var4 = new ItemContainer();
-         ItemContainer.itemContainers.put(var4, (long)var0);
-      }
-
-      if (var4.ids.length <= var1) {
-         int[] var5 = new int[var1 + 1];
-         int[] var6 = new int[var1 + 1];
-
-         int var7;
-         for(var7 = 0; var7 < var4.ids.length; ++var7) {
-            var5[var7] = var4.ids[var7];
-            var6[var7] = var4.quantities[var7];
-         }
-
-         for(var7 = var4.ids.length; var7 < var1; ++var7) {
-            var5[var7] = -1;
-            var6[var7] = 0;
-         }
-
-         var4.ids = var5;
-         var4.quantities = var6;
-      }
-
-      var4.ids[var1] = var2;
-      var4.quantities[var1] = var3;
-   }
-
-   @ObfuscatedName("jb")
-   @ObfuscatedSignature(
-      descriptor = "(II)Ljava/lang/String;",
-      garbageValue = "320486626"
-   )
-   static String method4461(int var0) {
-      if (var0 < 0) {
-         return "";
+   static final void method4619() {
+      if (Client.logoutTimer > 0) {
+         Player.logOut();
       } else {
-         return Client.menuTargets[var0].length() > 0 ? Client.menuActions[var0] + " " + Client.menuTargets[var0] : Client.menuActions[var0];
+         Client.timer.method7330();
+         class140.updateGameState(40);
+         class14.field83 = Client.packetWriter.getSocket();
+         Client.packetWriter.removeSocket();
+      }
+   }
+
+   @ObfuscatedName("mu")
+   @ObfuscatedSignature(
+      descriptor = "(IIZI)V",
+      garbageValue = "739721891"
+   )
+   static final void method4620(int var0, int var1, boolean var2) {
+      if (Client.currentClanChannels[var0] != null) {
+         if (var1 >= 0 && var1 < Client.currentClanChannels[var0].method3312()) {
+            ClanChannelMember var3 = (ClanChannelMember)Client.currentClanChannels[var0].members.get(var1);
+            PacketBufferNode var4 = class136.getPacketBufferNode(ClientPacket.field3078, Client.packetWriter.isaacCipher);
+            var4.packetBuffer.writeByte(4 + class13.stringCp1252NullTerminatedByteSize(var3.username.getName()));
+            var4.packetBuffer.writeByte(var0);
+            var4.packetBuffer.writeShort(var1);
+            var4.packetBuffer.writeBoolean(var2);
+            var4.packetBuffer.writeStringCp1252NullTerminated(var3.username.getName());
+            Client.packetWriter.addNode(var4);
+         }
       }
    }
 }

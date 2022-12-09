@@ -4,129 +4,134 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hp")
+@ObfuscatedName("he")
 @Implements("Tile")
 public final class Tile extends Node {
-   @ObfuscatedName("a")
+   @ObfuscatedName("tx")
    @ObfuscatedGetter(
-      intValue = 681659587
+      intValue = -325316609
+   )
+   static int field2481;
+   @ObfuscatedName("h")
+   @ObfuscatedGetter(
+      intValue = -850337333
    )
    @Export("plane")
    int plane;
-   @ObfuscatedName("f")
+   @ObfuscatedName("e")
    @ObfuscatedGetter(
-      intValue = 1961417551
+      intValue = 1304974879
    )
    @Export("x")
    int x;
-   @ObfuscatedName("c")
+   @ObfuscatedName("v")
    @ObfuscatedGetter(
-      intValue = -1921469309
+      intValue = 578479025
    )
    @Export("y")
    int y;
    @ObfuscatedName("x")
    @ObfuscatedGetter(
-      intValue = 294967367
+      intValue = 2133290123
    )
    @Export("originalPlane")
    int originalPlane;
-   @ObfuscatedName("h")
+   @ObfuscatedName("m")
    @ObfuscatedSignature(
-      descriptor = "Lhr;"
+      descriptor = "Lhj;"
    )
    @Export("paint")
    SceneTilePaint paint;
-   @ObfuscatedName("j")
+   @ObfuscatedName("q")
    @ObfuscatedSignature(
-      descriptor = "Lhc;"
+      descriptor = "Lhy;"
    )
    @Export("model")
    SceneTileModel model;
-   @ObfuscatedName("y")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
-      descriptor = "Lhu;"
+      descriptor = "Lhq;"
    )
    @Export("boundaryObject")
    BoundaryObject boundaryObject;
-   @ObfuscatedName("d")
+   @ObfuscatedName("r")
    @ObfuscatedSignature(
-      descriptor = "Lhi;"
+      descriptor = "Lhb;"
    )
    @Export("wallDecoration")
    WallDecoration wallDecoration;
-   @ObfuscatedName("n")
+   @ObfuscatedName("u")
    @ObfuscatedSignature(
-      descriptor = "Lgn;"
+      descriptor = "Lhs;"
    )
    @Export("floorDecoration")
    FloorDecoration floorDecoration;
-   @ObfuscatedName("r")
+   @ObfuscatedName("b")
    @ObfuscatedSignature(
-      descriptor = "Lgz;"
+      descriptor = "Lgy;"
    )
    @Export("itemLayer")
    ItemLayer itemLayer;
-   @ObfuscatedName("l")
+   @ObfuscatedName("j")
    @ObfuscatedGetter(
-      intValue = 1646797343
+      intValue = -1327449423
    )
    @Export("gameObjectsCount")
    int gameObjectsCount;
-   @ObfuscatedName("s")
+   @ObfuscatedName("g")
    @ObfuscatedSignature(
-      descriptor = "[Lhs;"
+      descriptor = "[Lhp;"
    )
    @Export("gameObjects")
    GameObject[] gameObjects = new GameObject[5];
-   @ObfuscatedName("p")
+   @ObfuscatedName("i")
    @Export("gameObjectEdgeMasks")
    int[] gameObjectEdgeMasks = new int[5];
-   @ObfuscatedName("b")
+   @ObfuscatedName("o")
    @ObfuscatedGetter(
-      intValue = 821893467
+      intValue = 1267903553
    )
    @Export("gameObjectsEdgeMask")
    int gameObjectsEdgeMask = 0;
-   @ObfuscatedName("o")
+   @ObfuscatedName("n")
    @ObfuscatedGetter(
-      intValue = 641904321
+      intValue = 879913943
    )
    @Export("minPlane")
    int minPlane;
-   @ObfuscatedName("u")
+   @ObfuscatedName("k")
    @Export("drawPrimary")
    boolean drawPrimary;
-   @ObfuscatedName("z")
+   @ObfuscatedName("a")
    @Export("drawSecondary")
    boolean drawSecondary;
-   @ObfuscatedName("t")
+   @ObfuscatedName("s")
    @Export("drawGameObjects")
    boolean drawGameObjects;
-   @ObfuscatedName("w")
+   @ObfuscatedName("l")
    @ObfuscatedGetter(
-      intValue = 1201340535
+      intValue = 820043389
    )
    @Export("drawGameObjectEdges")
    int drawGameObjectEdges;
-   @ObfuscatedName("m")
+   @ObfuscatedName("t")
    @ObfuscatedGetter(
-      intValue = 991426263
+      intValue = -683874913
    )
-   int field2405;
-   @ObfuscatedName("q")
+   int field2477;
+   @ObfuscatedName("c")
    @ObfuscatedGetter(
-      intValue = -609957303
+      intValue = -1337126443
    )
-   int field2399;
-   @ObfuscatedName("i")
+   int field2470;
+   @ObfuscatedName("p")
    @ObfuscatedGetter(
-      intValue = 2111041405
+      intValue = 427630575
    )
-   int field2410;
-   @ObfuscatedName("e")
+   int field2479;
+   @ObfuscatedName("d")
    @ObfuscatedSignature(
-      descriptor = "Lhp;"
+      descriptor = "Lhe;"
    )
    @Export("linkedBelowTile")
    Tile linkedBelowTile;
@@ -137,13 +142,67 @@ public final class Tile extends Node {
       this.y = var3;
    }
 
-   @ObfuscatedName("kl")
+   @ObfuscatedName("h")
    @ObfuscatedSignature(
-      descriptor = "(B)Z",
-      garbageValue = "-17"
+      descriptor = "([Ljava/lang/CharSequence;IIB)Ljava/lang/String;",
+      garbageValue = "-54"
    )
-   @Export("getTapToDrop")
-   static boolean getTapToDrop() {
-      return Client.tapToDrop;
+   public static String method4311(CharSequence[] var0, int var1, int var2) {
+      if (var2 == 0) {
+         return "";
+      } else if (var2 == 1) {
+         CharSequence var10 = var0[var1];
+         return var10 == null ? "null" : var10.toString();
+      } else {
+         int var3 = var2 + var1;
+         int var4 = 0;
+
+         for(int var5 = var1; var5 < var3; ++var5) {
+            CharSequence var9 = var0[var5];
+            if (var9 == null) {
+               var4 += 4;
+            } else {
+               var4 += var9.length();
+            }
+         }
+
+         StringBuilder var8 = new StringBuilder(var4);
+
+         for(int var6 = var1; var6 < var3; ++var6) {
+            CharSequence var7 = var0[var6];
+            if (var7 == null) {
+               var8.append("null");
+            } else {
+               var8.append(var7);
+            }
+         }
+
+         return var8.toString();
+      }
+   }
+
+   @ObfuscatedName("x")
+   @ObfuscatedSignature(
+      descriptor = "(I)V",
+      garbageValue = "1595440207"
+   )
+   @Export("savePreferences")
+   static void savePreferences() {
+      AccessFile var0 = null;
+
+      try {
+         var0 = class87.getPreferencesFile("", LoginPacket.field3302.name, true);
+         Buffer var1 = StructComposition.clientPreferences.toBuffer();
+         var0.write(var1.array, 0, var1.offset);
+      } catch (Exception var3) {
+      }
+
+      try {
+         if (var0 != null) {
+            var0.closeSync(true);
+         }
+      } catch (Exception var2) {
+      }
+
    }
 }

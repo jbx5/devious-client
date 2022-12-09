@@ -4,34 +4,25 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bl")
+@ObfuscatedName("by")
 @Implements("Decimator")
 public class Decimator {
-   @ObfuscatedName("q")
-   @ObfuscatedSignature(
-      descriptor = "Lik;"
-   )
-   @Export("worldMapEvent")
-   static WorldMapEvent worldMapEvent;
-   @ObfuscatedName("jp")
-   @ObfuscatedSignature(
-      descriptor = "[Lri;"
-   )
-   @Export("mapDotSprites")
-   static SpritePixels[] mapDotSprites;
+   @ObfuscatedName("c")
+   @Export("formattedOperatingSystemName")
+   public static String formattedOperatingSystemName;
    @ObfuscatedName("x")
    @ObfuscatedGetter(
-      intValue = -938376421
+      intValue = 364790869
    )
    @Export("inputRate")
    int inputRate;
-   @ObfuscatedName("h")
+   @ObfuscatedName("m")
    @ObfuscatedGetter(
-      intValue = -319906537
+      intValue = 126236859
    )
    @Export("outputRate")
    int outputRate;
-   @ObfuscatedName("j")
+   @ObfuscatedName("q")
    @Export("table")
    int[][] table;
 
@@ -58,36 +49,36 @@ public class Decimator {
 
          for(int var7 = 0; var7 < var1; ++var7) {
             int[] var8 = this.table[var7];
-            double var9 = 6.0 + (double)var7 / (double)var1;
+            double var9 = (double)var7 / (double)var1 + 6.0;
             int var11 = (int)Math.floor(var9 - 7.0 + 1.0);
             if (var11 < 0) {
                var11 = 0;
             }
 
-            int var12 = (int)Math.ceil(var9 + 7.0);
+            int var12 = (int)Math.ceil(7.0 + var9);
             if (var12 > 14) {
                var12 = 14;
             }
 
             for(double var13 = (double)var2 / (double)var1; var11 < var12; ++var11) {
-               double var15 = Math.PI * ((double)var11 - var9);
+               double var15 = ((double)var11 - var9) * Math.PI;
                double var17 = var13;
                if (var15 < -1.0E-4 || var15 > 1.0E-4) {
                   var17 = var13 * (Math.sin(var15) / var15);
                }
 
                var17 *= 0.54 + 0.46 * Math.cos(((double)var11 - var9) * 0.2243994752564138);
-               var8[var11] = (int)Math.floor(0.5 + 65536.0 * var17);
+               var8[var11] = (int)Math.floor(0.5 + var17 * 65536.0);
             }
          }
 
       }
    }
 
-   @ObfuscatedName("a")
+   @ObfuscatedName("h")
    @ObfuscatedSignature(
-      descriptor = "([BI)[B",
-      garbageValue = "-653673417"
+      descriptor = "([BB)[B",
+      garbageValue = "77"
    )
    @Export("resample")
    byte[] resample(byte[] var1) {
@@ -105,7 +96,7 @@ public class Decimator {
 
             int var9;
             for(var9 = 0; var9 < 14; ++var9) {
-               var3[var4 + var9] += var7 * var8[var9];
+               var3[var9 + var4] += var8[var9] * var7;
             }
 
             var5 += this.outputRate;
@@ -131,24 +122,24 @@ public class Decimator {
       return var1;
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("e")
    @ObfuscatedSignature(
       descriptor = "(II)I",
-      garbageValue = "434643402"
+      garbageValue = "-1104276170"
    )
    @Export("scaleRate")
    int scaleRate(int var1) {
       if (this.table != null) {
-         var1 = (int)((long)this.outputRate * (long)var1 / (long)this.inputRate);
+         var1 = (int)((long)var1 * (long)this.outputRate / (long)this.inputRate);
       }
 
       return var1;
    }
 
-   @ObfuscatedName("c")
+   @ObfuscatedName("v")
    @ObfuscatedSignature(
-      descriptor = "(IB)I",
-      garbageValue = "-61"
+      descriptor = "(IS)I",
+      garbageValue = "-256"
    )
    @Export("scalePosition")
    int scalePosition(int var1) {
@@ -157,35 +148,5 @@ public class Decimator {
       }
 
       return var1;
-   }
-
-   @ObfuscatedName("x")
-   @ObfuscatedSignature(
-      descriptor = "(III)V",
-      garbageValue = "-1385011335"
-   )
-   static void method1108(int var0, int var1) {
-      long var2 = (long)((var0 << 16) + var1);
-      NetFileRequest var4 = (NetFileRequest)NetCache.NetCache_pendingWrites.get(var2);
-      if (var4 != null) {
-         NetCache.NetCache_pendingWritesQueue.addLast(var4);
-      }
-   }
-
-   @ObfuscatedName("gm")
-   @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "46757317"
-   )
-   static final void method1109() {
-      if (UserComparator8.ClanChat_inClanChat) {
-         if (MenuAction.friendsChat != null) {
-            MenuAction.friendsChat.sort();
-         }
-
-         HealthBar.method2478();
-         UserComparator8.ClanChat_inClanChat = false;
-      }
-
    }
 }

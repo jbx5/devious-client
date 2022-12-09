@@ -1,49 +1,51 @@
-import java.awt.Image;
+import java.awt.Component;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cb")
+@ObfuscatedName("cz")
 @Implements("AttackOption")
 public enum AttackOption implements MouseWheel {
-   @ObfuscatedName("a")
+   @ObfuscatedName("h")
    @ObfuscatedSignature(
-      descriptor = "Lcb;"
+      descriptor = "Lcz;"
    )
    @Export("AttackOption_dependsOnCombatLevels")
    AttackOption_dependsOnCombatLevels(0),
-   @ObfuscatedName("f")
+   @ObfuscatedName("e")
    @ObfuscatedSignature(
-      descriptor = "Lcb;"
+      descriptor = "Lcz;"
    )
    @Export("AttackOption_alwaysRightClick")
    AttackOption_alwaysRightClick(1),
-   @ObfuscatedName("c")
+   @ObfuscatedName("v")
    @ObfuscatedSignature(
-      descriptor = "Lcb;"
+      descriptor = "Lcz;"
    )
-   field1285(2),
+   field1347(2),
    @ObfuscatedName("x")
    @ObfuscatedSignature(
-      descriptor = "Lcb;"
+      descriptor = "Lcz;"
    )
    @Export("AttackOption_hidden")
    AttackOption_hidden(3),
-   @ObfuscatedName("h")
+   @ObfuscatedName("m")
    @ObfuscatedSignature(
-      descriptor = "Lcb;"
+      descriptor = "Lcz;"
    )
-   field1289(4);
+   field1346(4);
 
-   @ObfuscatedName("ak")
-   static Image field1295;
-   @ObfuscatedName("al")
-   protected static String field1294;
-   @ObfuscatedName("j")
+   @ObfuscatedName("mf")
    @ObfuscatedGetter(
-      intValue = 827039641
+      intValue = 1102902677
+   )
+   @Export("menuWidth")
+   static int menuWidth;
+   @ObfuscatedName("q")
+   @ObfuscatedGetter(
+      intValue = -1340490443
    )
    @Export("id")
    final int id;
@@ -52,41 +54,63 @@ public enum AttackOption implements MouseWheel {
       this.id = var3;
    }
 
-   @ObfuscatedName("a")
+   @ObfuscatedName("e")
    @ObfuscatedSignature(
       descriptor = "(B)I",
-      garbageValue = "0"
+      garbageValue = "96"
    )
    @Export("rsOrdinal")
    public int rsOrdinal() {
       return this.id;
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("h")
    @ObfuscatedSignature(
-      descriptor = "(IIIIIII)I",
-      garbageValue = "1633135416"
+      descriptor = "(Ljava/awt/Component;B)V",
+      garbageValue = "0"
    )
-   public static int method2540(int var0, int var1, int var2, int var3, int var4, int var5) {
-      if ((var5 & 1) == 1) {
-         int var6 = var3;
-         var3 = var4;
-         var4 = var6;
-      }
+   static void method2603(Component var0) {
+      var0.removeMouseListener(MouseHandler.MouseHandler_instance);
+      var0.removeMouseMotionListener(MouseHandler.MouseHandler_instance);
+      var0.removeFocusListener(MouseHandler.MouseHandler_instance);
+      MouseHandler.MouseHandler_currentButtonVolatile = 0;
+   }
 
-      var2 &= 3;
-      if (var2 == 0) {
-         return var0;
-      } else if (var2 == 1) {
-         return var1;
+   @ObfuscatedName("v")
+   @ObfuscatedSignature(
+      descriptor = "(III)Lkd;",
+      garbageValue = "-1318941452"
+   )
+   @Export("getWidgetChild")
+   public static Widget getWidgetChild(int var0, int var1) {
+      Widget var2 = PlayerCompositionColorTextureOverride.getWidget(var0);
+      if (var1 == -1) {
+         return var2;
       } else {
-         return var2 == 2 ? 7 - var0 - (var3 - 1) : 7 - var1 - (var4 - 1);
+         return var2 != null && var2.children != null && var1 < var2.children.length ? var2.children[var1] : null;
       }
    }
 
-   @ObfuscatedName("y")
-   @Export("Entity_unpackID")
-   public static int Entity_unpackID(long var0) {
-      return (int)(var0 >>> 17 & 4294967295L);
+   @ObfuscatedName("az")
+   @ObfuscatedSignature(
+      descriptor = "(IB)I",
+      garbageValue = "82"
+   )
+   static int method2610(int var0) {
+      return (int)Math.pow(2.0, (double)((float)var0 / 256.0F + 7.0F));
+   }
+
+   @ObfuscatedName("bw")
+   @ObfuscatedSignature(
+      descriptor = "(ILky;ZB)V",
+      garbageValue = "2"
+   )
+   static void method2608(int var0, Coord var1, boolean var2) {
+      WorldMapArea var3 = Client.getWorldMap().getMapArea(var0);
+      int var4 = class155.localPlayer.plane;
+      int var5 = class154.baseX * 64 + (class155.localPlayer.x >> 7);
+      int var6 = class365.baseY * 64 + (class155.localPlayer.y >> 7);
+      Coord var7 = new Coord(var4, var5, var6);
+      Client.getWorldMap().method8046(var3, var7, var1, var2);
    }
 }

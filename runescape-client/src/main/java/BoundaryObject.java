@@ -4,82 +4,66 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hu")
+@ObfuscatedName("hq")
 @Implements("BoundaryObject")
 public final class BoundaryObject {
-   @ObfuscatedName("z")
-   @Export("ByteArrayPool_alternativeSizes")
-   public static int[] ByteArrayPool_alternativeSizes;
-   @ObfuscatedName("a")
+   @ObfuscatedName("az")
+   protected static String field2787;
+   @ObfuscatedName("h")
    @ObfuscatedGetter(
-      intValue = 299140565
+      intValue = 231702347
    )
    @Export("z")
    int z;
-   @ObfuscatedName("f")
+   @ObfuscatedName("e")
    @ObfuscatedGetter(
-      intValue = 746117995
+      intValue = -395952651
    )
    @Export("x")
    int x;
-   @ObfuscatedName("c")
+   @ObfuscatedName("v")
    @ObfuscatedGetter(
-      intValue = 2113556951
+      intValue = -1849081701
    )
    @Export("y")
    int y;
    @ObfuscatedName("x")
    @ObfuscatedGetter(
-      intValue = -56851093
+      intValue = -1730515423
    )
    @Export("orientationA")
    int orientationA;
-   @ObfuscatedName("h")
+   @ObfuscatedName("m")
    @ObfuscatedGetter(
-      intValue = 1231755129
+      intValue = -1631697669
    )
    @Export("orientationB")
    int orientationB;
-   @ObfuscatedName("j")
+   @ObfuscatedName("q")
    @ObfuscatedSignature(
-      descriptor = "Lhd;"
+      descriptor = "Lhr;"
    )
    @Export("renderable1")
    public Renderable renderable1;
-   @ObfuscatedName("y")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
-      descriptor = "Lhd;"
+      descriptor = "Lhr;"
    )
    @Export("renderable2")
    public Renderable renderable2;
-   @ObfuscatedName("d")
+   @ObfuscatedName("r")
    @ObfuscatedGetter(
-      longValue = -2635937448103982411L
+      longValue = -2819561851550717281L
    )
    @Export("tag")
    public long tag = 0L;
-   @ObfuscatedName("n")
+   @ObfuscatedName("u")
    @ObfuscatedGetter(
-      intValue = -973581693
+      intValue = -403448227
    )
    @Export("flags")
    int flags = 0;
 
    BoundaryObject() {
-   }
-
-   @ObfuscatedName("s")
-   @ObfuscatedSignature(
-      descriptor = "(CIB)Ljava/lang/String;",
-      garbageValue = "8"
-   )
-   static String method4642(char var0, int var1) {
-      char[] var2 = new char[var1];
-
-      for(int var3 = 0; var3 < var1; ++var3) {
-         var2[var3] = var0;
-      }
-
-      return new String(var2);
    }
 }

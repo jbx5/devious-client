@@ -25,6 +25,9 @@
 package net.runelite.rs.api;
 
 import java.awt.Shape;
+import java.util.HashMap;
+
+import net.runelite.api.AABB;
 import net.runelite.api.Model;
 import net.runelite.mapping.Import;
 
@@ -128,30 +131,6 @@ public interface RSModel extends RSRenderable, Model
 	@Override
 	int getRadius();
 
-	@Import("xMid")
-	@Override
-	int getCenterX();
-
-	@Import("yMid")
-	@Override
-	int getCenterY();
-
-	@Import("zMid")
-	@Override
-	int getCenterZ();
-
-	@Import("xMidOffset")
-	@Override
-	int getExtremeX();
-
-	@Import("yMidOffset")
-	@Override
-	int getExtremeY();
-
-	@Import("zMidOffset")
-	@Override
-	int getExtremeZ();
-
 	@Import("faceTextures")
 	@Override
 	short[] getFaceTextures();
@@ -206,4 +185,8 @@ public interface RSModel extends RSRenderable, Model
 	@Import("overrideLuminance")
 	@Override
 	byte getOverrideLuminance();
+
+	@Import("aabb")
+	@Override
+	HashMap<Integer, AABB> getAABBMap();
 }

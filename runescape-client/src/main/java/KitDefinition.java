@@ -4,68 +4,68 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fz")
+@ObfuscatedName("fj")
 @Implements("KitDefinition")
 public class KitDefinition extends DualNode {
-   @ObfuscatedName("a")
+   @ObfuscatedName("vy")
    @ObfuscatedSignature(
-      descriptor = "Llg;"
+      descriptor = "Lpb;"
+   )
+   @Export("worldMap")
+   static WorldMap worldMap;
+   @ObfuscatedName("h")
+   @ObfuscatedSignature(
+      descriptor = "Lly;"
    )
    @Export("KitDefinition_archive")
    public static AbstractArchive KitDefinition_archive;
-   @ObfuscatedName("f")
+   @ObfuscatedName("e")
    @ObfuscatedSignature(
-      descriptor = "Llg;"
+      descriptor = "Lly;"
    )
    @Export("KitDefinition_modelsArchive")
    public static AbstractArchive KitDefinition_modelsArchive;
-   @ObfuscatedName("c")
-   @ObfuscatedGetter(
-      intValue = -1502970673
-   )
-   @Export("KitDefinition_fileCount")
-   public static int KitDefinition_fileCount;
    @ObfuscatedName("x")
    @ObfuscatedSignature(
-      descriptor = "Ljx;"
+      descriptor = "Ljv;"
    )
    @Export("KitDefinition_cached")
    static EvictingDualNodeHashTable KitDefinition_cached = new EvictingDualNodeHashTable(64);
-   @ObfuscatedName("h")
+   @ObfuscatedName("m")
    @ObfuscatedGetter(
-      intValue = 554779433
+      intValue = 984840871
    )
    @Export("bodypartID")
    public int bodypartID = -1;
-   @ObfuscatedName("j")
+   @ObfuscatedName("q")
    @Export("models2")
    int[] models2;
-   @ObfuscatedName("y")
+   @ObfuscatedName("f")
    @Export("recolorFrom")
    short[] recolorFrom;
-   @ObfuscatedName("d")
+   @ObfuscatedName("r")
    @Export("recolorTo")
    short[] recolorTo;
-   @ObfuscatedName("n")
+   @ObfuscatedName("u")
    @Export("retextureFrom")
    short[] retextureFrom;
-   @ObfuscatedName("r")
+   @ObfuscatedName("b")
    @Export("retextureTo")
    short[] retextureTo;
-   @ObfuscatedName("l")
+   @ObfuscatedName("j")
    @Export("models")
    int[] models = new int[]{-1, -1, -1, -1, -1};
-   @ObfuscatedName("s")
+   @ObfuscatedName("g")
    @Export("nonSelectable")
    public boolean nonSelectable = false;
 
    KitDefinition() {
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("e")
    @ObfuscatedSignature(
-      descriptor = "(Lqr;I)V",
-      garbageValue = "-1085321484"
+      descriptor = "(Lqy;B)V",
+      garbageValue = "1"
    )
    @Export("decode")
    void decode(Buffer var1) {
@@ -79,10 +79,10 @@ public class KitDefinition extends DualNode {
       }
    }
 
-   @ObfuscatedName("c")
+   @ObfuscatedName("v")
    @ObfuscatedSignature(
-      descriptor = "(Lqr;II)V",
-      garbageValue = "432063123"
+      descriptor = "(Lqy;IB)V",
+      garbageValue = "0"
    )
    @Export("decodeNext")
    void decodeNext(Buffer var1, int var2) {
@@ -128,7 +128,7 @@ public class KitDefinition extends DualNode {
    @ObfuscatedName("x")
    @ObfuscatedSignature(
       descriptor = "(I)Z",
-      garbageValue = "-1930999558"
+      garbageValue = "-1712752741"
    )
    @Export("ready")
    public boolean ready() {
@@ -147,10 +147,10 @@ public class KitDefinition extends DualNode {
       }
    }
 
-   @ObfuscatedName("h")
+   @ObfuscatedName("m")
    @ObfuscatedSignature(
-      descriptor = "(B)Lgs;",
-      garbageValue = "-67"
+      descriptor = "(B)Lgi;",
+      garbageValue = "32"
    )
    @Export("getModelData")
    public ModelData getModelData() {
@@ -187,12 +187,12 @@ public class KitDefinition extends DualNode {
       }
    }
 
-   @ObfuscatedName("j")
+   @ObfuscatedName("q")
    @ObfuscatedSignature(
       descriptor = "(B)Z",
-      garbageValue = "-35"
+      garbageValue = "7"
    )
-   public boolean method3470() {
+   public boolean method3589() {
       boolean var1 = true;
 
       for(int var2 = 0; var2 < 5; ++var2) {
@@ -204,10 +204,10 @@ public class KitDefinition extends DualNode {
       return var1;
    }
 
-   @ObfuscatedName("y")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
-      descriptor = "(I)Lgs;",
-      garbageValue = "-2134968834"
+      descriptor = "(I)Lgi;",
+      garbageValue = "1769518048"
    )
    @Export("getKitDefinitionModels")
    public ModelData getKitDefinitionModels() {
@@ -239,55 +239,11 @@ public class KitDefinition extends DualNode {
 
    @ObfuscatedName("h")
    @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "2120379664"
+      descriptor = "(ILjava/lang/String;Ljava/lang/String;I)V",
+      garbageValue = "1365388558"
    )
-   public static void method3476() {
-      try {
-         if (class283.musicPlayerStatus == 1) {
-            int var0 = class283.midiPcmStream.method5576();
-            if (var0 > 0 && class283.midiPcmStream.isReady()) {
-               var0 -= class19.pcmSampleLength;
-               if (var0 < 0) {
-                  var0 = 0;
-               }
-
-               class283.midiPcmStream.setPcmStreamVolume(var0);
-               return;
-            }
-
-            class283.midiPcmStream.clear();
-            class283.midiPcmStream.removeAll();
-            if (DevicePcmPlayerProvider.musicTrackArchive != null) {
-               class283.musicPlayerStatus = 2;
-            } else {
-               class283.musicPlayerStatus = 0;
-            }
-
-            class131.musicTrack = null;
-            class371.soundCache = null;
-         }
-      } catch (Exception var2) {
-         var2.printStackTrace();
-         class283.midiPcmStream.clear();
-         class283.musicPlayerStatus = 0;
-         class131.musicTrack = null;
-         class371.soundCache = null;
-         DevicePcmPlayerProvider.musicTrackArchive = null;
-      }
-
-   }
-
-   @ObfuscatedName("q")
-   @ObfuscatedSignature(
-      descriptor = "(Ljava/lang/String;IB)V",
-      garbageValue = "-125"
-   )
-   static final void method3475(String var0, int var1) {
-      PacketBufferNode var2 = FloorUnderlayDefinition.getPacketBufferNode(ClientPacket.field3074, Client.packetWriter.isaacCipher);
-      var2.packetBuffer.writeByte(Actor.stringCp1252NullTerminatedByteSize(var0) + 1);
-      var2.packetBuffer.writeByteNeg(var1);
-      var2.packetBuffer.writeStringCp1252NullTerminated(var0);
-      Client.packetWriter.addNode(var2);
+   @Export("addGameMessage")
+   static void addGameMessage(int var0, String var1, String var2) {
+      class381.addChatMessage(var0, var1, var2, (String)null);
    }
 }

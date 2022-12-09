@@ -3,48 +3,48 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("nq")
+@ObfuscatedName("nj")
 @Implements("IgnoreList")
 public class IgnoreList extends UserList {
-   @ObfuscatedName("c")
+   @ObfuscatedName("v")
    @ObfuscatedSignature(
-      descriptor = "Lqu;"
+      descriptor = "Lqi;"
    )
    @Export("loginType")
    final LoginType loginType;
 
    @ObfuscatedSignature(
-      descriptor = "(Lqu;)V"
+      descriptor = "(Lqi;)V"
    )
    public IgnoreList(LoginType var1) {
       super(400);
       this.loginType = var1;
    }
 
-   @ObfuscatedName("a")
+   @ObfuscatedName("h")
    @ObfuscatedSignature(
-      descriptor = "(B)Loj;",
-      garbageValue = "31"
+      descriptor = "(B)Lov;",
+      garbageValue = "47"
    )
    @Export("newInstance")
    User newInstance() {
       return new Ignored();
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("e")
    @ObfuscatedSignature(
-      descriptor = "(II)[Loj;",
-      garbageValue = "-41299588"
+      descriptor = "(II)[Lov;",
+      garbageValue = "1710517567"
    )
    @Export("newTypedArray")
    User[] newTypedArray(int var1) {
       return new Ignored[var1];
    }
 
-   @ObfuscatedName("c")
+   @ObfuscatedName("v")
    @ObfuscatedSignature(
-      descriptor = "(Lqr;IS)V",
-      garbageValue = "-10069"
+      descriptor = "(Lqy;II)V",
+      garbageValue = "1829255932"
    )
    @Export("read")
    public void read(Buffer var1, int var2) {

@@ -6,26 +6,26 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("iw")
+@ObfuscatedName("il")
 @Implements("WorldMapAreaData")
 public class WorldMapAreaData extends WorldMapArea {
-   @ObfuscatedName("p")
+   @ObfuscatedName("i")
    @Export("worldMapData0Set")
    HashSet worldMapData0Set;
-   @ObfuscatedName("b")
+   @ObfuscatedName("o")
    @Export("worldMapData1Set")
    HashSet worldMapData1Set;
-   @ObfuscatedName("o")
+   @ObfuscatedName("n")
    @Export("iconList")
    List iconList;
 
    WorldMapAreaData() {
    }
 
-   @ObfuscatedName("ci")
+   @ObfuscatedName("bn")
    @ObfuscatedSignature(
-      descriptor = "(Lqr;Lqr;IZB)V",
-      garbageValue = "0"
+      descriptor = "(Lqy;Lqy;IZI)V",
+      garbageValue = "-2083183142"
    )
    @Export("init")
    void init(Buffer var1, Buffer var2, int var3, boolean var4) {
@@ -64,10 +64,10 @@ public class WorldMapAreaData extends WorldMapArea {
       this.initIconsList(var2, var4);
    }
 
-   @ObfuscatedName("cq")
+   @ObfuscatedName("ba")
    @ObfuscatedSignature(
-      descriptor = "(Lqr;ZB)V",
-      garbageValue = "99"
+      descriptor = "(Lqy;ZB)V",
+      garbageValue = "31"
    )
    @Export("initIconsList")
    void initIconsList(Buffer var1, boolean var2) {
@@ -85,59 +85,43 @@ public class WorldMapAreaData extends WorldMapArea {
 
    }
 
-   @ObfuscatedName("c")
+   @ObfuscatedName("ip")
    @ObfuscatedSignature(
-      descriptor = "(IIB)I",
-      garbageValue = "-27"
+      descriptor = "(Lcj;ZB)V",
+      garbageValue = "8"
    )
-   static int method5266(int var0, int var1) {
-      ItemContainer var2 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
-      if (var2 == null) {
-         return 0;
-      } else if (var1 == -1) {
-         return 0;
-      } else {
-         int var3 = 0;
-
-         for(int var4 = 0; var4 < var2.quantities.length; ++var4) {
-            if (var2.ids[var4] == var1) {
-               var3 += var2.quantities[var4];
-            }
+   @Export("addPlayerToScene")
+   static void addPlayerToScene(Player var0, boolean var1) {
+      if (var0 != null && var0.isVisible() && !var0.isHidden) {
+         var0.isUnanimated = false;
+         if ((Client.isLowDetail && Players.Players_count > 50 || Players.Players_count > 200) && var1 && var0.movementSequence == var0.idleSequence) {
+            var0.isUnanimated = true;
          }
 
-         return var3;
-      }
-   }
-
-   @ObfuscatedName("x")
-   @ObfuscatedSignature(
-      descriptor = "(II)V",
-      garbageValue = "-55640084"
-   )
-   public static void method5265(int var0) {
-      if (var0 != -1) {
-         if (MusicPatchPcmStream.Widget_loadedInterfaces[var0]) {
-            UserComparator8.Widget_archive.clearFilesGroup(var0);
-            if (Widget.Widget_interfaceComponents[var0] != null) {
-               boolean var1 = true;
-
-               for(int var2 = 0; var2 < Widget.Widget_interfaceComponents[var0].length; ++var2) {
-                  if (Widget.Widget_interfaceComponents[var0][var2] != null) {
-                     if (Widget.Widget_interfaceComponents[var0][var2].type != 2) {
-                        Widget.Widget_interfaceComponents[var0][var2] = null;
-                     } else {
-                        var1 = false;
-                     }
+         int var2 = var0.x >> 7;
+         int var3 = var0.y >> 7;
+         if (var2 >= 0 && var2 < 104 && var3 >= 0 && var3 < 104) {
+            long var4 = GameEngine.calculateTag(0, 0, 0, false, var0.index);
+            if (var0.model0 != null && Client.cycle >= var0.animationCycleStart && Client.cycle < var0.animationCycleEnd) {
+               var0.isUnanimated = false;
+               var0.tileHeight = SpotAnimationDefinition.getTileHeight(var0.x, var0.y, class383.Client_plane);
+               var0.playerCycle = Client.cycle;
+               ReflectionCheck.scene.addNullableObject(class383.Client_plane, var0.x, var0.y, var0.tileHeight, 60, var0, var0.rotation, var4, var0.minX, var0.minY, var0.maxX, var0.maxY);
+            } else {
+               if ((var0.x & 127) == 64 && (var0.y & 127) == 64) {
+                  if (Client.tileLastDrawnActor[var2][var3] == Client.viewportDrawCount) {
+                     return;
                   }
+
+                  Client.tileLastDrawnActor[var2][var3] = Client.viewportDrawCount;
                }
 
-               if (var1) {
-                  Widget.Widget_interfaceComponents[var0] = null;
-               }
-
-               MusicPatchPcmStream.Widget_loadedInterfaces[var0] = false;
+               var0.tileHeight = SpotAnimationDefinition.getTileHeight(var0.x, var0.y, class383.Client_plane);
+               var0.playerCycle = Client.cycle;
+               ReflectionCheck.scene.drawEntity(class383.Client_plane, var0.x, var0.y, var0.tileHeight, 60, var0, var0.rotation, var4, var0.isWalking);
             }
          }
       }
+
    }
 }

@@ -3,42 +3,42 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ai")
+@ObfuscatedName("ah")
 @Implements("SoundEnvelope")
 public class SoundEnvelope {
-   @ObfuscatedName("a")
+   @ObfuscatedName("h")
    @Export("segments")
    int segments = 2;
-   @ObfuscatedName("f")
+   @ObfuscatedName("e")
    @Export("durations")
    int[] durations = new int[2];
-   @ObfuscatedName("c")
+   @ObfuscatedName("v")
    @Export("phases")
    int[] phases = new int[2];
-   @ObfuscatedName("h")
+   @ObfuscatedName("m")
    @Export("start")
    int start;
-   @ObfuscatedName("j")
+   @ObfuscatedName("q")
    @Export("end")
    int end;
-   @ObfuscatedName("y")
-   @Export("max")
-   int max;
-   @ObfuscatedName("d")
+   @ObfuscatedName("f")
    @Export("form")
    int form;
-   @ObfuscatedName("n")
+   @ObfuscatedName("r")
    @Export("ticks")
    int ticks;
-   @ObfuscatedName("r")
+   @ObfuscatedName("u")
    @Export("phaseIndex")
    int phaseIndex;
-   @ObfuscatedName("l")
+   @ObfuscatedName("b")
    @Export("step")
    int step;
-   @ObfuscatedName("s")
+   @ObfuscatedName("j")
    @Export("amplitude")
    int amplitude;
+   @ObfuscatedName("g")
+   @Export("max")
+   int max;
 
    SoundEnvelope() {
       this.durations[0] = 0;
@@ -47,9 +47,9 @@ public class SoundEnvelope {
       this.phases[1] = 65535;
    }
 
-   @ObfuscatedName("a")
+   @ObfuscatedName("h")
    @ObfuscatedSignature(
-      descriptor = "(Lqr;)V"
+      descriptor = "(Lqy;)V"
    )
    @Export("decode")
    final void decode(Buffer var1) {
@@ -59,9 +59,9 @@ public class SoundEnvelope {
       this.decodeSegments(var1);
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("e")
    @ObfuscatedSignature(
-      descriptor = "(Lqr;)V"
+      descriptor = "(Lqy;)V"
    )
    @Export("decodeSegments")
    final void decodeSegments(Buffer var1) {
@@ -76,7 +76,7 @@ public class SoundEnvelope {
 
    }
 
-   @ObfuscatedName("c")
+   @ObfuscatedName("v")
    @Export("reset")
    final void reset() {
       this.ticks = 0;

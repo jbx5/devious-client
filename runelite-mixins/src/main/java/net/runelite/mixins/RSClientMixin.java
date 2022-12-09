@@ -173,7 +173,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import static net.runelite.api.MenuAction.PLAYER_EIGTH_OPTION;
+import static net.runelite.api.MenuAction.PLAYER_EIGHTH_OPTION;
 import static net.runelite.api.MenuAction.PLAYER_FIFTH_OPTION;
 import static net.runelite.api.MenuAction.PLAYER_FIRST_OPTION;
 import static net.runelite.api.MenuAction.PLAYER_FOURTH_OPTION;
@@ -1401,7 +1401,7 @@ public abstract class RSClientMixin implements RSClient
 	{
 		// Reset the menu opcode
 		MenuAction[] playerActions = {PLAYER_FIRST_OPTION, PLAYER_SECOND_OPTION, PLAYER_THIRD_OPTION, PLAYER_FOURTH_OPTION,
-				PLAYER_FIFTH_OPTION, PLAYER_SIXTH_OPTION, PLAYER_SEVENTH_OPTION, PLAYER_EIGTH_OPTION};
+				PLAYER_FIFTH_OPTION, PLAYER_SIXTH_OPTION, PLAYER_SEVENTH_OPTION, PLAYER_EIGHTH_OPTION};
 		if (idx >= 0 && idx < playerActions.length)
 		{
 			MenuAction playerAction = playerActions[idx];
@@ -3274,13 +3274,45 @@ public abstract class RSClientMixin implements RSClient
 	}
 
 	@Inject
-	private static int idleTimeout;
+	private static int idleTimeout = 15000;
+
+	@Inject
+	private static volatile int idleCycles;
+
+	@Inject
+	public static volatile long lastActivityNanos = System.nanoTime();
+
+	@Inject
+	@FieldHook("MouseHandler_idleCycles")
+	public static void onIdleCyclesChanged(int paramInt)
+	{
+		if (client.getMouseIdleTicks() > 0)
+		{
+			long l = System.nanoTime() - lastActivityNanos;
+			idleCycles = (int)(l / 20000000L);
+		}
+		else
+		{
+			idleCycles = 0;
+			lastActivityNanos = System.nanoTime();
+		}
+
+		client.setMouseIdleTicks(15000 * idleCycles / idleTimeout);
+	}
 
 	@Inject
 	@Override
 	public void setIdleTimeout(int ticks)
 	{
 		idleTimeout = ticks;
+		if (idleTimeout > 75000)
+		{
+			idleTimeout = 75000;
+		}
+		else if (idleTimeout < 15000)
+		{
+			idleTimeout = 15000;
+		}
 	}
 
 	@Inject

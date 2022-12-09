@@ -3,32 +3,30 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.util.Hashtable;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
 import org.bouncycastle.crypto.tls.DefaultTlsClient;
 import org.bouncycastle.crypto.tls.TlsAuthentication;
 
-@ObfuscatedName("b")
+@ObfuscatedName("o")
 class class13 extends DefaultTlsClient {
-   @ObfuscatedName("io")
-   @Export("regionLandArchiveIds")
-   static int[] regionLandArchiveIds;
+   @ObfuscatedName("s")
+   @ObfuscatedGetter(
+      intValue = 1791205419
+   )
+   static int field78;
    // $FF: synthetic field
    @ObfuscatedSignature(
-      descriptor = "Lp;"
+      descriptor = "Li;"
    )
    final class12 this$1;
 
    @ObfuscatedSignature(
-      descriptor = "(Lp;)V"
+      descriptor = "(Li;)V"
    )
    class13(class12 var1) {
       this.this$1 = var1;
-   }
-
-   public TlsAuthentication getAuthentication() throws IOException {
-      return new class11(this);
    }
 
    public Hashtable getClientExtensions() throws IOException {
@@ -49,71 +47,17 @@ class class13 extends DefaultTlsClient {
       return var1;
    }
 
-   @ObfuscatedName("q")
-   @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "2120776615"
-   )
-   static void method169() {
-      GrandExchangeOfferOwnWorldComparator.method1171(24);
-      MusicPatchNode2.setLoginResponseString("The game servers are currently being updated.", "Please wait a few minutes and try again.", "");
+   public TlsAuthentication getAuthentication() throws IOException {
+      return new class11(this);
    }
 
-   @ObfuscatedName("i")
+   @ObfuscatedName("ap")
    @ObfuscatedSignature(
-      descriptor = "(ILbz;ZB)I",
-      garbageValue = "-84"
+      descriptor = "(Ljava/lang/String;I)I",
+      garbageValue = "-339253147"
    )
-   static int method172(int var0, Script var1, boolean var2) {
-      Widget var3;
-      if (var0 == ScriptOpcodes.IF_GETINVOBJECT) {
-         var3 = class281.getWidget(Interpreter.Interpreter_intStack[--class379.Interpreter_intStackSize]);
-         Interpreter.Interpreter_intStack[++class379.Interpreter_intStackSize - 1] = var3.itemId;
-         return 1;
-      } else if (var0 == ScriptOpcodes.IF_GETINVCOUNT) {
-         var3 = class281.getWidget(Interpreter.Interpreter_intStack[--class379.Interpreter_intStackSize]);
-         if (var3.itemId != -1) {
-            Interpreter.Interpreter_intStack[++class379.Interpreter_intStackSize - 1] = var3.itemQuantity;
-         } else {
-            Interpreter.Interpreter_intStack[++class379.Interpreter_intStackSize - 1] = 0;
-         }
-
-         return 1;
-      } else if (var0 == ScriptOpcodes.IF_HASSUB) {
-         int var5 = Interpreter.Interpreter_intStack[--class379.Interpreter_intStackSize];
-         InterfaceParent var4 = (InterfaceParent)Client.interfaceParents.get((long)var5);
-         if (var4 != null) {
-            Interpreter.Interpreter_intStack[++class379.Interpreter_intStackSize - 1] = 1;
-         } else {
-            Interpreter.Interpreter_intStack[++class379.Interpreter_intStackSize - 1] = 0;
-         }
-
-         return 1;
-      } else if (var0 == ScriptOpcodes.IF_GETTOP) {
-         Interpreter.Interpreter_intStack[++class379.Interpreter_intStackSize - 1] = Client.rootInterface;
-         return 1;
-      } else if (var0 == 2707) {
-         var3 = class281.getWidget(Interpreter.Interpreter_intStack[--class379.Interpreter_intStackSize]);
-         Interpreter.Interpreter_intStack[++class379.Interpreter_intStackSize - 1] = var3.method6075() ? 1 : 0;
-         return 1;
-      } else if (var0 == 2708) {
-         var3 = class281.getWidget(Interpreter.Interpreter_intStack[--class379.Interpreter_intStackSize]);
-         return class409.method7736(var3);
-      } else if (var0 == 2709) {
-         var3 = class281.getWidget(Interpreter.Interpreter_intStack[--class379.Interpreter_intStackSize]);
-         return class129.method2946(var3);
-      } else {
-         return 2;
-      }
-   }
-
-   @ObfuscatedName("gz")
-   @ObfuscatedSignature(
-      descriptor = "(I)I",
-      garbageValue = "-7344383"
-   )
-   @Export("getWindowedMode")
-   static int getWindowedMode() {
-      return Client.isResizable ? 2 : 1;
+   @Export("stringCp1252NullTerminatedByteSize")
+   public static int stringCp1252NullTerminatedByteSize(String var0) {
+      return var0.length() + 1;
    }
 }

@@ -1,37 +1,57 @@
 import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dw")
+@ObfuscatedName("dq")
 public class class121 {
-   @ObfuscatedName("sl")
-   @ObfuscatedSignature(
-      descriptor = "Ler;"
-   )
-   @Export("guestClanSettings")
-   static ClanSettings guestClanSettings;
-   @ObfuscatedName("x")
-   public static final float field1454 = Math.ulp(1.0F);
+   @ObfuscatedName("a")
+   @Export("cacheParentPaths")
+   public static String[] cacheParentPaths;
    @ObfuscatedName("h")
-   public static final float field1452;
+   @ObfuscatedGetter(
+      intValue = -1166574037
+   )
+   int field1502;
+   @ObfuscatedName("e")
+   float field1497;
+   @ObfuscatedName("v")
+   float field1496 = Float.MAX_VALUE;
+   @ObfuscatedName("x")
+   float field1499 = Float.MAX_VALUE;
+   @ObfuscatedName("m")
+   float field1500 = Float.MAX_VALUE;
+   @ObfuscatedName("q")
+   float field1498 = Float.MAX_VALUE;
+   @ObfuscatedName("f")
+   @ObfuscatedSignature(
+      descriptor = "Ldq;"
+   )
+   class121 field1501;
 
-   static {
-      field1452 = 2.0F * field1454;
+   class121() {
    }
 
-   @ObfuscatedName("au")
+   @ObfuscatedName("h")
    @ObfuscatedSignature(
-      descriptor = "(ILbz;ZB)I",
-      garbageValue = "-111"
+      descriptor = "(Lqy;II)V",
+      garbageValue = "1617793347"
    )
-   static int method2823(int var0, Script var1, boolean var2) {
-      if (var0 == 6809) {
-         int var3 = Interpreter.Interpreter_intStack[--class379.Interpreter_intStackSize];
-         ObjectComposition var4 = InterfaceParent.getObjectDefinition(var3);
-         Interpreter.Interpreter_stringStack[++class125.Interpreter_stringStackSize - 1] = var4 != null ? var4.name : "";
-         return 1;
-      } else {
-         return 2;
-      }
+   void method2884(Buffer var1, int var2) {
+      this.field1502 = var1.readShort();
+      this.field1497 = var1.method8556();
+      this.field1496 = var1.method8556();
+      this.field1499 = var1.method8556();
+      this.field1500 = var1.method8556();
+      this.field1498 = var1.method8556();
+   }
+
+   @ObfuscatedName("ia")
+   @ObfuscatedSignature(
+      descriptor = "(I)Z",
+      garbageValue = "-912452366"
+   )
+   static boolean method2887() {
+      return (Client.drawPlayerNames & 2) != 0;
    }
 }

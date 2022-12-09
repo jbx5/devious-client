@@ -1,37 +1,78 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("eg")
-public abstract class class151 extends Node {
-   class151() {
+@ObfuscatedName("ef")
+public class class151 extends class136 {
+   @ObfuscatedName("ae")
+   @ObfuscatedSignature(
+      descriptor = "Lok;"
+   )
+   static Bounds field1763;
+   @ObfuscatedName("ht")
+   @ObfuscatedSignature(
+      descriptor = "Lnv;"
+   )
+   @Export("fontPlain11")
+   static Font fontPlain11;
+   @ObfuscatedName("h")
+   @ObfuscatedGetter(
+      longValue = -1587606096227734853L
+   )
+   long field1767;
+   @ObfuscatedName("e")
+   String field1760;
+   @ObfuscatedName("v")
+   @ObfuscatedGetter(
+      intValue = -976971951
+   )
+   int field1761;
+   // $FF: synthetic field
+   @ObfuscatedSignature(
+      descriptor = "Lem;"
+   )
+   final class139 this$0;
+
+   @ObfuscatedSignature(
+      descriptor = "(Lem;)V"
+   )
+   class151(class139 var1) {
+      this.this$0 = var1;
+      this.field1767 = -1L;
+      this.field1760 = null;
+      this.field1761 = 0;
    }
 
-   @ObfuscatedName("a")
+   @ObfuscatedName("h")
    @ObfuscatedSignature(
-      descriptor = "(Lqr;B)V",
-      garbageValue = "85"
+      descriptor = "(Lqy;I)V",
+      garbageValue = "1101327225"
    )
-   abstract void vmethod3238(Buffer var1);
-
-   @ObfuscatedName("f")
-   @ObfuscatedSignature(
-      descriptor = "(Leq;I)V",
-      garbageValue = "-1303116736"
-   )
-   abstract void vmethod3239(ClanChannel var1);
-
-   @ObfuscatedName("kp")
-   @ObfuscatedSignature(
-      descriptor = "(II)Z",
-      garbageValue = "-1802358692"
-   )
-   static boolean method3180(int var0) {
-      for(int var1 = 0; var1 < Client.field679; ++var1) {
-         if (Client.field737[var1] == var0) {
-            return true;
-         }
+   void vmethod3349(Buffer var1) {
+      if (var1.readUnsignedByte() != 255) {
+         --var1.offset;
+         this.field1767 = var1.readLong();
       }
 
-      return false;
+      this.field1760 = var1.readStringCp1252NullTerminatedOrNull();
+      this.field1761 = var1.readUnsignedShort();
+   }
+
+   @ObfuscatedName("e")
+   @ObfuscatedSignature(
+      descriptor = "(Lep;I)V",
+      garbageValue = "839088249"
+   )
+   void vmethod3350(ClanSettings var1) {
+      var1.method3210(this.field1767, this.field1760, this.field1761);
+   }
+
+   @ObfuscatedName("h")
+   @ObfuscatedSignature(
+      descriptor = "(Lly;B)V",
+      garbageValue = "116"
+   )
+   public static void method3273(AbstractArchive var0) {
    }
 }
