@@ -3,30 +3,28 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("bv")
+@ObfuscatedName("bg")
 @Implements("GrandExchangeOfferOwnWorldComparator")
 public class GrandExchangeOfferOwnWorldComparator implements Comparator {
-   @ObfuscatedName("du")
+   @ObfuscatedName("cc")
    @ObfuscatedSignature(
-      descriptor = "Lcf;"
+      descriptor = "[Lrx;"
    )
-   @Export("mouseRecorder")
-   static MouseRecorder mouseRecorder;
-   @ObfuscatedName("ir")
-   @Export("regionLandArchives")
-   static byte[][] regionLandArchives;
-   @ObfuscatedName("a")
+   @Export("worldSelectBackSprites")
+   static SpritePixels[] worldSelectBackSprites;
+   @ObfuscatedName("h")
    @Export("filterWorlds")
    boolean filterWorlds;
 
    GrandExchangeOfferOwnWorldComparator() {
    }
 
-   @ObfuscatedName("a")
+   @ObfuscatedName("h")
    @ObfuscatedSignature(
-      descriptor = "(Llp;Llp;I)I",
-      garbageValue = "1853766659"
+      descriptor = "(Lmg;Lmg;B)I",
+      garbageValue = "-94"
    )
    @Export("compare_bridged")
    int compare_bridged(GrandExchangeEvent var1, GrandExchangeEvent var2) {
@@ -55,181 +53,122 @@ public class GrandExchangeOfferOwnWorldComparator implements Comparator {
       return super.equals(var1);
    }
 
+   @ObfuscatedName("h")
+   @ObfuscatedSignature(
+      descriptor = "(I)[Ljh;",
+      garbageValue = "-1399136251"
+   )
+   static LoginPacket[] method1224() {
+      return new LoginPacket[]{LoginPacket.field3300, LoginPacket.field3304, LoginPacket.field3301, LoginPacket.field3305, LoginPacket.field3303, LoginPacket.field3308};
+   }
+
    @ObfuscatedName("e")
    @ObfuscatedSignature(
-      descriptor = "(II)V",
-      garbageValue = "-1144789040"
+      descriptor = "(CB)Z",
+      garbageValue = "1"
    )
-   static void method1171(int var0) {
-      if (var0 != Login.loginIndex) {
-         Login.loginIndex = var0;
+   public static final boolean method1212(char var0) {
+      return var0 == 160 || var0 == ' ' || var0 == '_' || var0 == '-';
+   }
+
+   @ObfuscatedName("f")
+   @ObfuscatedSignature(
+      descriptor = "(ILbm;ZI)I",
+      garbageValue = "1356676967"
+   )
+   static int method1223(int var0, Script var1, boolean var2) {
+      Widget var3;
+      if (var0 >= 2000) {
+         var0 -= 1000;
+         var3 = PlayerCompositionColorTextureOverride.getWidget(Interpreter.Interpreter_intStack[--class87.Interpreter_intStackSize]);
+      } else {
+         var3 = var2 ? class190.scriptDotWidget : class360.scriptActiveWidget;
+      }
+
+      class69.invalidateWidget(var3);
+      if (var0 != ScriptOpcodes.CC_SETOBJECT && var0 != ScriptOpcodes.CC_SETOBJECT_NONUM && var0 != ScriptOpcodes.CC_SETOBJECT_ALWAYS_NUM) {
+         if (var0 == ScriptOpcodes.CC_SETNPCHEAD) {
+            var3.modelType = 2;
+            var3.modelId = Interpreter.Interpreter_intStack[--class87.Interpreter_intStackSize];
+            return 1;
+         } else if (var0 == ScriptOpcodes.CC_SETPLAYERHEAD_SELF) {
+            var3.modelType = 3;
+            var3.modelId = class155.localPlayer.appearance.getChatHeadId();
+            return 1;
+         } else {
+            return 2;
+         }
+      } else {
+         class87.Interpreter_intStackSize -= 2;
+         int var4 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize];
+         int var5 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize + 1];
+         var3.itemId = var4;
+         var3.itemQuantity = var5;
+         ItemComposition var6 = NPCComposition.ItemDefinition_get(var4);
+         var3.modelAngleX = var6.xan2d;
+         var3.modelAngleY = var6.yan2d;
+         var3.modelAngleZ = var6.zan2d;
+         var3.modelOffsetX = var6.offsetX2d;
+         var3.modelOffsetY = var6.offsetY2d;
+         var3.modelZoom = var6.zoom2d;
+         if (var0 == ScriptOpcodes.CC_SETOBJECT_NONUM) {
+            var3.itemQuantityMode = 0;
+         } else if (var0 == ScriptOpcodes.CC_SETOBJECT_ALWAYS_NUM | var6.isStackable == 1) {
+            var3.itemQuantityMode = 1;
+         } else {
+            var3.itemQuantityMode = 2;
+         }
+
+         if (var3.field3659 > 0) {
+            var3.modelZoom = var3.modelZoom * 32 / var3.field3659;
+         } else if (var3.rawWidth > 0) {
+            var3.modelZoom = var3.modelZoom * 32 / var3.rawWidth;
+         }
+
+         return 1;
       }
    }
 
-   @ObfuscatedName("gv")
+   @ObfuscatedName("jz")
    @ObfuscatedSignature(
-      descriptor = "(Lcl;I)V",
-      garbageValue = "-2103978067"
+      descriptor = "(I)V",
+      garbageValue = "-1113873989"
    )
-   static final void method1177(Actor var0) {
-      var0.isWalking = false;
-      SequenceDefinition var1;
-      int var2;
-      if (var0.movementSequence != -1) {
-         var1 = WorldMapElement.SequenceDefinition_get(var0.movementSequence);
-         if (var1 != null) {
-            if (!var1.isCachedModelIdSet() && var1.frameIds != null) {
-               ++var0.movementFrameCycle;
-               if (var0.movementFrame < var1.frameIds.length && var0.movementFrameCycle > var1.frameLengths[var0.movementFrame]) {
-                  var0.movementFrameCycle = 1;
-                  ++var0.movementFrame;
-                  ArchiveDiskActionHandler.method6292(var1, var0.movementFrame, var0.x, var0.y);
-               }
+   static final void method1219() {
+      int var0 = VarcInt.menuX;
+      int var1 = NPC.menuY;
+      int var2 = AttackOption.menuWidth;
+      int var3 = MouseHandler.menuHeight;
+      int var4 = 6116423;
+      Rasterizer2D.Rasterizer2D_fillRectangle(var0, var1, var2, var3, var4);
+      Rasterizer2D.Rasterizer2D_fillRectangle(var0 + 1, var1 + 1, var2 - 2, 16, 0);
+      Rasterizer2D.Rasterizer2D_drawRectangle(var0 + 1, var1 + 18, var2 - 2, var3 - 19, 0);
+      class146.fontBold12.draw("Choose Option", var0 + 3, var1 + 14, var4, -1);
+      int var5 = MouseHandler.MouseHandler_x;
+      int var6 = MouseHandler.MouseHandler_y;
 
-               if (var0.movementFrame >= var1.frameIds.length) {
-                  if (var1.frameCount > 0) {
-                     var0.movementFrame -= var1.frameCount;
-                     if (var1.field2227) {
-                        ++var0.field1160;
-                     }
-
-                     if (var0.movementFrame < 0 || var0.movementFrame >= var1.frameIds.length || var1.field2227 && var0.field1160 >= var1.field2228) {
-                        var0.movementFrameCycle = 0;
-                        var0.movementFrame = 0;
-                        var0.field1160 = 0;
-                     }
-                  } else {
-                     var0.movementFrameCycle = 0;
-                     var0.movementFrame = 0;
-                  }
-
-                  ArchiveDiskActionHandler.method6292(var1, var0.movementFrame, var0.x, var0.y);
-               }
-            } else if (var1.isCachedModelIdSet()) {
-               ++var0.movementFrame;
-               var2 = var1.method3876();
-               if (var0.movementFrame < var2) {
-                  AbstractSocket.method7484(var1, var0.movementFrame, var0.x, var0.y);
-               } else {
-                  if (var1.frameCount > 0) {
-                     var0.movementFrame -= var1.frameCount;
-                     if (var1.field2227) {
-                        ++var0.field1160;
-                     }
-
-                     if (var0.movementFrame < 0 || var0.movementFrame >= var2 || var1.field2227 && var0.field1160 >= var1.field2228) {
-                        var0.movementFrame = 0;
-                        var0.movementFrameCycle = 0;
-                        var0.field1160 = 0;
-                     }
-                  } else {
-                     var0.movementFrameCycle = 0;
-                     var0.movementFrame = 0;
-                  }
-
-                  AbstractSocket.method7484(var1, var0.movementFrame, var0.x, var0.y);
-               }
-            } else {
-               var0.movementSequence = -1;
-            }
-         } else {
-            var0.movementSequence = -1;
+      int var7;
+      int var8;
+      int var9;
+      for(var7 = 0; var7 < Client.menuOptionsCount; ++var7) {
+         var8 = var1 + (Client.menuOptionsCount - 1 - var7) * 15 + 31;
+         var9 = 16777215;
+         if (var5 > var0 && var5 < var2 + var0 && var6 > var8 - 13 && var6 < var8 + 3) {
+            var9 = 16776960;
          }
+
+         class146.fontBold12.draw(class34.method491(var7), var0 + 3, var8, var9, 0);
       }
 
-      if (var0.spotAnimation != -1 && Client.cycle >= var0.field1186) {
-         if (var0.spotAnimationFrame < 0) {
-            var0.spotAnimationFrame = 0;
+      var7 = VarcInt.menuX;
+      var8 = NPC.menuY;
+      var9 = AttackOption.menuWidth;
+      int var10 = MouseHandler.menuHeight;
+
+      for(int var11 = 0; var11 < Client.rootWidgetCount; ++var11) {
+         if (Client.rootWidgetWidths[var11] + Client.rootWidgetXs[var11] > var7 && Client.rootWidgetXs[var11] < var9 + var7 && Client.rootWidgetHeights[var11] + Client.rootWidgetYs[var11] > var8 && Client.rootWidgetYs[var11] < var8 + var10) {
+            Client.field732[var11] = true;
          }
-
-         int var4 = ReflectionCheck.SpotAnimationDefinition_get(var0.spotAnimation).sequence;
-         if (var4 != -1) {
-            SequenceDefinition var5 = WorldMapElement.SequenceDefinition_get(var4);
-            if (var5 != null && var5.frameIds != null && !var5.isCachedModelIdSet()) {
-               ++var0.spotAnimationFrameCycle;
-               if (var0.spotAnimationFrame < var5.frameIds.length && var0.spotAnimationFrameCycle > var5.frameLengths[var0.spotAnimationFrame]) {
-                  var0.spotAnimationFrameCycle = 1;
-                  ++var0.spotAnimationFrame;
-                  ArchiveDiskActionHandler.method6292(var5, var0.spotAnimationFrame, var0.x, var0.y);
-               }
-
-               if (var0.spotAnimationFrame >= var5.frameIds.length && (var0.spotAnimationFrame < 0 || var0.spotAnimationFrame >= var5.frameIds.length)) {
-                  var0.spotAnimation = -1;
-               }
-            } else if (var5.isCachedModelIdSet()) {
-               ++var0.spotAnimationFrame;
-               int var3 = var5.method3876();
-               if (var0.spotAnimationFrame < var3) {
-                  AbstractSocket.method7484(var5, var0.spotAnimationFrame, var0.x, var0.y);
-               } else if (var0.spotAnimationFrame < 0 || var0.spotAnimationFrame >= var3) {
-                  var0.spotAnimation = -1;
-               }
-            } else {
-               var0.spotAnimation = -1;
-            }
-         } else {
-            var0.spotAnimation = -1;
-         }
-      }
-
-      if (var0.sequence != -1 && var0.sequenceDelay <= 1) {
-         var1 = WorldMapElement.SequenceDefinition_get(var0.sequence);
-         if (var1.field2221 == 1 && var0.field1211 > 0 && var0.field1192 <= Client.cycle && var0.field1193 < Client.cycle) {
-            var0.sequenceDelay = 1;
-            return;
-         }
-      }
-
-      if (var0.sequence != -1 && var0.sequenceDelay == 0) {
-         var1 = WorldMapElement.SequenceDefinition_get(var0.sequence);
-         if (var1 != null) {
-            if (!var1.isCachedModelIdSet() && var1.frameIds != null) {
-               ++var0.sequenceFrameCycle;
-               if (var0.sequenceFrame < var1.frameIds.length && var0.sequenceFrameCycle > var1.frameLengths[var0.sequenceFrame]) {
-                  var0.sequenceFrameCycle = 1;
-                  ++var0.sequenceFrame;
-                  ArchiveDiskActionHandler.method6292(var1, var0.sequenceFrame, var0.x, var0.y);
-               }
-
-               if (var0.sequenceFrame >= var1.frameIds.length) {
-                  var0.sequenceFrame -= var1.frameCount;
-                  ++var0.field1210;
-                  if (var0.field1210 >= var1.field2228) {
-                     var0.sequence = -1;
-                  } else if (var0.sequenceFrame >= 0 && var0.sequenceFrame < var1.frameIds.length) {
-                     ArchiveDiskActionHandler.method6292(var1, var0.sequenceFrame, var0.x, var0.y);
-                  } else {
-                     var0.sequence = -1;
-                  }
-               }
-
-               var0.isWalking = var1.field2224;
-            } else if (var1.isCachedModelIdSet()) {
-               ++var0.sequenceFrame;
-               var2 = var1.method3876();
-               if (var0.sequenceFrame < var2) {
-                  AbstractSocket.method7484(var1, var0.sequenceFrame, var0.x, var0.y);
-               } else {
-                  var0.sequenceFrame -= var1.frameCount;
-                  ++var0.field1210;
-                  if (var0.field1210 >= var1.field2228) {
-                     var0.sequence = -1;
-                  } else if (var0.sequenceFrame >= 0 && var0.sequenceFrame < var2) {
-                     AbstractSocket.method7484(var1, var0.sequenceFrame, var0.x, var0.y);
-                  } else {
-                     var0.sequence = -1;
-                  }
-               }
-            } else {
-               var0.sequence = -1;
-            }
-         } else {
-            var0.sequence = -1;
-         }
-      }
-
-      if (var0.sequenceDelay > 0) {
-         --var0.sequenceDelay;
       }
 
    }

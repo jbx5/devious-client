@@ -1,38 +1,87 @@
-import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("my")
-public final class class359 {
-   @ObfuscatedName("a")
-   @Export("base37Table")
-   public static final char[] base37Table = new char[]{'_', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
-   @ObfuscatedName("f")
-   static long[] field4305 = new long[12];
+@ObfuscatedName("mp")
+public class class359 {
+   @ObfuscatedName("h")
+   static char[] field4350 = new char[64];
+   @ObfuscatedName("e")
+   static char[] field4353;
+   @ObfuscatedName("v")
+   static char[] field4352;
+   @ObfuscatedName("x")
+   static int[] field4351;
 
    static {
-      for(int var0 = 0; var0 < field4305.length; ++var0) {
-         field4305[var0] = (long)Math.pow(37.0, (double)var0);
+      int var0;
+      for(var0 = 0; var0 < 26; ++var0) {
+         field4350[var0] = (char)(var0 + 65);
       }
 
-   }
-
-   @ObfuscatedName("a")
-   @ObfuscatedSignature(
-      descriptor = "(II)Lrw;",
-      garbageValue = "-1543076313"
-   )
-   public static PrivateChatMode method6838(int var0) {
-      PrivateChatMode[] var1 = new PrivateChatMode[]{PrivateChatMode.field5002, PrivateChatMode.field5000, PrivateChatMode.field5001};
-      PrivateChatMode[] var2 = var1;
-
-      for(int var3 = 0; var3 < var2.length; ++var3) {
-         PrivateChatMode var4 = var2[var3];
-         if (var0 == var4.field4999) {
-            return var4;
-         }
+      for(var0 = 26; var0 < 52; ++var0) {
+         field4350[var0] = (char)(var0 + 97 - 26);
       }
 
-      return null;
+      for(var0 = 52; var0 < 62; ++var0) {
+         field4350[var0] = (char)(var0 + 48 - 52);
+      }
+
+      field4350[62] = '+';
+      field4350[63] = '/';
+      field4353 = new char[64];
+
+      for(var0 = 0; var0 < 26; ++var0) {
+         field4353[var0] = (char)(var0 + 65);
+      }
+
+      for(var0 = 26; var0 < 52; ++var0) {
+         field4353[var0] = (char)(var0 + 97 - 26);
+      }
+
+      for(var0 = 52; var0 < 62; ++var0) {
+         field4353[var0] = (char)(var0 + 48 - 52);
+      }
+
+      field4353[62] = '*';
+      field4353[63] = '-';
+      field4352 = new char[64];
+
+      for(var0 = 0; var0 < 26; ++var0) {
+         field4352[var0] = (char)(var0 + 65);
+      }
+
+      for(var0 = 26; var0 < 52; ++var0) {
+         field4352[var0] = (char)(var0 + 97 - 26);
+      }
+
+      for(var0 = 52; var0 < 62; ++var0) {
+         field4352[var0] = (char)(var0 + 48 - 52);
+      }
+
+      field4352[62] = '-';
+      field4352[63] = '_';
+      field4351 = new int[128];
+
+      for(var0 = 0; var0 < field4351.length; ++var0) {
+         field4351[var0] = -1;
+      }
+
+      for(var0 = 65; var0 <= 90; ++var0) {
+         field4351[var0] = var0 - 65;
+      }
+
+      for(var0 = 97; var0 <= 122; ++var0) {
+         field4351[var0] = var0 - 97 + 26;
+      }
+
+      for(var0 = 48; var0 <= 57; ++var0) {
+         field4351[var0] = var0 - 48 + 52;
+      }
+
+      int[] var2 = field4351;
+      field4351[43] = 62;
+      var2[42] = 62;
+      int[] var1 = field4351;
+      field4351[47] = 63;
+      var1[45] = 63;
    }
 }

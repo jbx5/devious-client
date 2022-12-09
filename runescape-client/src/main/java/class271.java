@@ -1,5 +1,13 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jm")
-public interface class271 {
+@ObfuscatedName("jz")
+public class class271 {
+   @ObfuscatedName("dl")
+   @ObfuscatedSignature(
+      descriptor = "Lcs;"
+   )
+   @Export("mouseRecorder")
+   static MouseRecorder mouseRecorder;
 }

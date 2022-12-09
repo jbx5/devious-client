@@ -4,68 +4,75 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cz")
+@ObfuscatedName("cr")
 @Implements("TileItem")
 public final class TileItem extends Renderable {
-   @ObfuscatedName("a")
+   @ObfuscatedName("ss")
+   @ObfuscatedSignature(
+      descriptor = "Lax;"
+   )
+   @Export("pcmPlayer0")
+   static PcmPlayer pcmPlayer0;
+   @ObfuscatedName("h")
    @ObfuscatedGetter(
-      intValue = -540814643
+      intValue = -1495440553
    )
    @Export("id")
    int id;
-   @ObfuscatedName("f")
+   @ObfuscatedName("e")
    @ObfuscatedGetter(
-      intValue = -2008483939
+      intValue = 1996619089
    )
    @Export("quantity")
    int quantity;
    @ObfuscatedName("x")
    @ObfuscatedGetter(
-      intValue = -759090005
+      intValue = -1010430043
    )
-   int field1298 = 31;
+   int field1353 = 31;
 
    TileItem() {
    }
 
-   @ObfuscatedName("a")
+   @ObfuscatedName("h")
    @ObfuscatedSignature(
-      descriptor = "(IB)V",
-      garbageValue = "62"
+      descriptor = "(II)V",
+      garbageValue = "-434295648"
    )
-   void method2545(int var1) {
-      this.field1298 = var1;
+   void method2612(int var1) {
+      this.field1353 = var1;
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("e")
    @ObfuscatedSignature(
-      descriptor = "(I)Lha;",
-      garbageValue = "-157507070"
+      descriptor = "(I)Lhh;",
+      garbageValue = "-1279733976"
    )
    @Export("getModel")
    protected final Model getModel() {
-      return MidiPcmStream.ItemDefinition_get(this.id).getModel(this.quantity);
+      return NPCComposition.ItemDefinition_get(this.id).getModel(this.quantity);
    }
 
-   @ObfuscatedName("c")
+   @ObfuscatedName("m")
    @ObfuscatedSignature(
       descriptor = "(IB)Z",
-      garbageValue = "1"
+      garbageValue = "8"
    )
-   boolean method2544(int var1) {
+   boolean method2613(int var1) {
       if (var1 >= 0 && var1 <= 4) {
-         return (this.field1298 & 1 << var1) != 0;
+         return (this.field1353 & 1 << var1) != 0;
       } else {
          return true;
       }
    }
 
-   @ObfuscatedName("c")
+   @ObfuscatedName("mh")
    @ObfuscatedSignature(
-      descriptor = "([Ljava/lang/String;[II)V",
-      garbageValue = "1484656216"
+      descriptor = "(Lqy;IB)V",
+      garbageValue = "7"
    )
-   public static void method2554(String[] var0, int[] var1) {
-      GrandExchangeOfferTotalQuantityComparator.method6472(var0, var1, 0, var0.length - 1);
+   static void method2619(Buffer var0, int var1) {
+      ArchiveLoader.method2222(var0.array, var1);
+      class125.method2940(var0, var1);
    }
 }

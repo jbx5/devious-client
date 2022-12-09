@@ -33,4 +33,5 @@ public class ItemPrice
 	private String name;
 	private int price;
 	private int wikiPrice;
+	private int wikiPriceFsw;
 }

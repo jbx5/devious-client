@@ -25,6 +25,7 @@
  */
 package net.runelite.client.game;
 
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import lombok.Getter;
@@ -83,7 +84,6 @@ import static net.runelite.api.ItemID.ANGUISH_ORNAMENT_KIT;
 import static net.runelite.api.ItemID.ARCANE_SIGIL;
 import static net.runelite.api.ItemID.ARCHERS_RING;
 import static net.runelite.api.ItemID.ARCHERS_RING_I;
-import static net.runelite.api.ItemID.ARCHERS_RING_I_25260;
 import static net.runelite.api.ItemID.ARMADYL_GODSWORD;
 import static net.runelite.api.ItemID.ARMADYL_GODSWORD_OR;
 import static net.runelite.api.ItemID.ARMADYL_GODSWORD_ORNAMENT_KIT;
@@ -95,13 +95,13 @@ import static net.runelite.api.ItemID.BANDOS_GODSWORD;
 import static net.runelite.api.ItemID.BANDOS_GODSWORD_OR;
 import static net.runelite.api.ItemID.BANDOS_GODSWORD_ORNAMENT_KIT;
 import static net.runelite.api.ItemID.BANDOS_HALO_L;
+import static net.runelite.api.ItemID.BARRONITE_MACE_L;
 import static net.runelite.api.ItemID.BASILISK_JAW;
 import static net.runelite.api.ItemID.BERSERKER_NECKLACE;
 import static net.runelite.api.ItemID.BERSERKER_NECKLACE_OR;
 import static net.runelite.api.ItemID.BERSERKER_NECKLACE_ORNAMENT_KIT;
 import static net.runelite.api.ItemID.BERSERKER_RING;
 import static net.runelite.api.ItemID.BERSERKER_RING_I;
-import static net.runelite.api.ItemID.BERSERKER_RING_I_25264;
 import static net.runelite.api.ItemID.BIRD_NEST;
 import static net.runelite.api.ItemID.BIRD_NEST_13653;
 import static net.runelite.api.ItemID.BIRD_NEST_22798;
@@ -114,49 +114,7 @@ import static net.runelite.api.ItemID.BIRD_NEST_5075;
 import static net.runelite.api.ItemID.BIRD_NEST_7413;
 import static net.runelite.api.ItemID.BLACK_DEFENDER_L;
 import static net.runelite.api.ItemID.BLACK_MASK;
-import static net.runelite.api.ItemID.BLACK_MASK_1;
-import static net.runelite.api.ItemID.BLACK_MASK_10_I;
-import static net.runelite.api.ItemID.BLACK_MASK_10_I_25266;
-import static net.runelite.api.ItemID.BLACK_MASK_1_I;
-import static net.runelite.api.ItemID.BLACK_MASK_1_I_25275;
-import static net.runelite.api.ItemID.BLACK_MASK_2;
-import static net.runelite.api.ItemID.BLACK_MASK_2_I;
-import static net.runelite.api.ItemID.BLACK_MASK_2_I_25274;
-import static net.runelite.api.ItemID.BLACK_MASK_3;
-import static net.runelite.api.ItemID.BLACK_MASK_3_I;
-import static net.runelite.api.ItemID.BLACK_MASK_3_I_25273;
-import static net.runelite.api.ItemID.BLACK_MASK_4;
-import static net.runelite.api.ItemID.BLACK_MASK_4_I;
-import static net.runelite.api.ItemID.BLACK_MASK_4_I_25272;
-import static net.runelite.api.ItemID.BLACK_MASK_5;
-import static net.runelite.api.ItemID.BLACK_MASK_5_I;
-import static net.runelite.api.ItemID.BLACK_MASK_5_I_25271;
-import static net.runelite.api.ItemID.BLACK_MASK_6;
-import static net.runelite.api.ItemID.BLACK_MASK_6_I;
-import static net.runelite.api.ItemID.BLACK_MASK_6_I_25270;
-import static net.runelite.api.ItemID.BLACK_MASK_7;
-import static net.runelite.api.ItemID.BLACK_MASK_7_I;
-import static net.runelite.api.ItemID.BLACK_MASK_7_I_25269;
-import static net.runelite.api.ItemID.BLACK_MASK_8;
-import static net.runelite.api.ItemID.BLACK_MASK_8_I;
-import static net.runelite.api.ItemID.BLACK_MASK_8_I_25268;
-import static net.runelite.api.ItemID.BLACK_MASK_9;
-import static net.runelite.api.ItemID.BLACK_MASK_9_I;
-import static net.runelite.api.ItemID.BLACK_MASK_9_I_25267;
-import static net.runelite.api.ItemID.BLACK_MASK_I;
-import static net.runelite.api.ItemID.BLACK_MASK_I_25276;
-import static net.runelite.api.ItemID.BLACK_SLAYER_HELMET;
-import static net.runelite.api.ItemID.BLACK_SLAYER_HELMET_I;
-import static net.runelite.api.ItemID.BLACK_SLAYER_HELMET_I_25179;
 import static net.runelite.api.ItemID.BLADE_OF_SAELDOR;
-import static net.runelite.api.ItemID.BLADE_OF_SAELDOR_C;
-import static net.runelite.api.ItemID.BLADE_OF_SAELDOR_C_25870;
-import static net.runelite.api.ItemID.BLADE_OF_SAELDOR_C_25872;
-import static net.runelite.api.ItemID.BLADE_OF_SAELDOR_C_25874;
-import static net.runelite.api.ItemID.BLADE_OF_SAELDOR_C_25876;
-import static net.runelite.api.ItemID.BLADE_OF_SAELDOR_C_25878;
-import static net.runelite.api.ItemID.BLADE_OF_SAELDOR_C_25880;
-import static net.runelite.api.ItemID.BLADE_OF_SAELDOR_C_25882;
 import static net.runelite.api.ItemID.BLADE_OF_SAELDOR_INACTIVE;
 import static net.runelite.api.ItemID.BONECRUSHER_NECKLACE;
 import static net.runelite.api.ItemID.BOOK_OF_BALANCE_OR;
@@ -166,14 +124,6 @@ import static net.runelite.api.ItemID.BOOK_OF_WAR_OR;
 import static net.runelite.api.ItemID.BOTTOMLESS_COMPOST_BUCKET;
 import static net.runelite.api.ItemID.BOTTOMLESS_COMPOST_BUCKET_22997;
 import static net.runelite.api.ItemID.BOW_OF_FAERDHINEN;
-import static net.runelite.api.ItemID.BOW_OF_FAERDHINEN_C;
-import static net.runelite.api.ItemID.BOW_OF_FAERDHINEN_C_25884;
-import static net.runelite.api.ItemID.BOW_OF_FAERDHINEN_C_25886;
-import static net.runelite.api.ItemID.BOW_OF_FAERDHINEN_C_25888;
-import static net.runelite.api.ItemID.BOW_OF_FAERDHINEN_C_25890;
-import static net.runelite.api.ItemID.BOW_OF_FAERDHINEN_C_25892;
-import static net.runelite.api.ItemID.BOW_OF_FAERDHINEN_C_25894;
-import static net.runelite.api.ItemID.BOW_OF_FAERDHINEN_C_25896;
 import static net.runelite.api.ItemID.BOW_OF_FAERDHINEN_INACTIVE;
 import static net.runelite.api.ItemID.BRASSICA_HALO_L;
 import static net.runelite.api.ItemID.BRONZE_DEFENDER_L;
@@ -314,8 +264,10 @@ import static net.runelite.api.ItemID.ELIDINIS_WARD;
 import static net.runelite.api.ItemID.ELIDINIS_WARD_F;
 import static net.runelite.api.ItemID.ELIDINIS_WARD_OR;
 import static net.runelite.api.ItemID.ELITE_VOID_ROBE_L;
+import static net.runelite.api.ItemID.ELITE_VOID_ROBE_LOR;
 import static net.runelite.api.ItemID.ELITE_VOID_ROBE_OR;
 import static net.runelite.api.ItemID.ELITE_VOID_TOP_L;
+import static net.runelite.api.ItemID.ELITE_VOID_TOP_LOR;
 import static net.runelite.api.ItemID.ELITE_VOID_TOP_OR;
 import static net.runelite.api.ItemID.ENSOULED_ABYSSAL_HEAD;
 import static net.runelite.api.ItemID.ENSOULED_ABYSSAL_HEAD_13508;
@@ -394,10 +346,6 @@ import static net.runelite.api.ItemID.GRANITE_MAUL;
 import static net.runelite.api.ItemID.GRANITE_MAUL_12848;
 import static net.runelite.api.ItemID.GRANITE_RING;
 import static net.runelite.api.ItemID.GRANITE_RING_I;
-import static net.runelite.api.ItemID.GRANITE_RING_I_25193;
-import static net.runelite.api.ItemID.GREEN_SLAYER_HELMET;
-import static net.runelite.api.ItemID.GREEN_SLAYER_HELMET_I;
-import static net.runelite.api.ItemID.GREEN_SLAYER_HELMET_I_25181;
 import static net.runelite.api.ItemID.GUTHANS_CHAINSKIRT;
 import static net.runelite.api.ItemID.GUTHANS_CHAINSKIRT_100;
 import static net.runelite.api.ItemID.GUTHANS_CHAINSKIRT_25;
@@ -430,9 +378,6 @@ import static net.runelite.api.ItemID.HOLY_SANGUINESTI_STAFF_UNCHARGED;
 import static net.runelite.api.ItemID.HOLY_SCYTHE_OF_VITUR;
 import static net.runelite.api.ItemID.HOLY_SCYTHE_OF_VITUR_UNCHARGED;
 import static net.runelite.api.ItemID.HYDRA_LEATHER;
-import static net.runelite.api.ItemID.HYDRA_SLAYER_HELMET;
-import static net.runelite.api.ItemID.HYDRA_SLAYER_HELMET_I;
-import static net.runelite.api.ItemID.HYDRA_SLAYER_HELMET_I_25189;
 import static net.runelite.api.ItemID.HYDRA_TAIL;
 import static net.runelite.api.ItemID.IMBUED_GUTHIX_CAPE_L;
 import static net.runelite.api.ItemID.IMBUED_GUTHIX_MAX_CAPE_L;
@@ -496,6 +441,8 @@ import static net.runelite.api.ItemID.MAGMA_HELM_UNCHARGED;
 import static net.runelite.api.ItemID.MALEDICTION_WARD;
 import static net.runelite.api.ItemID.MALEDICTION_WARD_12806;
 import static net.runelite.api.ItemID.MARK_OF_GRACE;
+import static net.runelite.api.ItemID.MASORI_ASSEMBLER_L;
+import static net.runelite.api.ItemID.MASORI_ASSEMBLER_MAX_CAPE_L;
 import static net.runelite.api.ItemID.MASTER_SCROLL_BOOK;
 import static net.runelite.api.ItemID.MASTER_SCROLL_BOOK_EMPTY;
 import static net.runelite.api.ItemID.MITHRIL_DEFENDER_L;
@@ -523,17 +470,13 @@ import static net.runelite.api.ItemID.OSMUMTENS_FANG_OR;
 import static net.runelite.api.ItemID.PENANCE_SKIRT_L;
 import static net.runelite.api.ItemID.PERFECT_SHELL;
 import static net.runelite.api.ItemID.PERFECT_SNAIL_SHELL;
+import static net.runelite.api.ItemID.PHARAOHS_SCEPTRE;
+import static net.runelite.api.ItemID.PHARAOHS_SCEPTRE_UNCHARGED;
 import static net.runelite.api.ItemID.PROSPECTOR_BOOTS;
 import static net.runelite.api.ItemID.PROSPECTOR_HELMET;
 import static net.runelite.api.ItemID.PROSPECTOR_JACKET;
 import static net.runelite.api.ItemID.PROSPECTOR_LEGS;
-import static net.runelite.api.ItemID.PURPLE_SLAYER_HELMET;
-import static net.runelite.api.ItemID.PURPLE_SLAYER_HELMET_I;
-import static net.runelite.api.ItemID.PURPLE_SLAYER_HELMET_I_25185;
 import static net.runelite.api.ItemID.RANGER_HAT_L;
-import static net.runelite.api.ItemID.RED_SLAYER_HELMET;
-import static net.runelite.api.ItemID.RED_SLAYER_HELMET_I;
-import static net.runelite.api.ItemID.RED_SLAYER_HELMET_I_25183;
 import static net.runelite.api.ItemID.RING_OF_DUELING1;
 import static net.runelite.api.ItemID.RING_OF_DUELING2;
 import static net.runelite.api.ItemID.RING_OF_DUELING3;
@@ -546,18 +489,10 @@ import static net.runelite.api.ItemID.RING_OF_ENDURANCE;
 import static net.runelite.api.ItemID.RING_OF_ENDURANCE_UNCHARGED_24844;
 import static net.runelite.api.ItemID.RING_OF_SUFFERING;
 import static net.runelite.api.ItemID.RING_OF_SUFFERING_I;
-import static net.runelite.api.ItemID.RING_OF_SUFFERING_I_25246;
-import static net.runelite.api.ItemID.RING_OF_SUFFERING_R;
-import static net.runelite.api.ItemID.RING_OF_SUFFERING_RI;
-import static net.runelite.api.ItemID.RING_OF_SUFFERING_RI_25248;
 import static net.runelite.api.ItemID.RING_OF_THE_GODS;
 import static net.runelite.api.ItemID.RING_OF_THE_GODS_I;
-import static net.runelite.api.ItemID.RING_OF_THE_GODS_I_25252;
 import static net.runelite.api.ItemID.RING_OF_WEALTH;
 import static net.runelite.api.ItemID.RING_OF_WEALTH_1;
-import static net.runelite.api.ItemID.RING_OF_WEALTH_2;
-import static net.runelite.api.ItemID.RING_OF_WEALTH_3;
-import static net.runelite.api.ItemID.RING_OF_WEALTH_4;
 import static net.runelite.api.ItemID.RING_OF_WEALTH_I;
 import static net.runelite.api.ItemID.RING_OF_WEALTH_I1;
 import static net.runelite.api.ItemID.RING_OF_WEALTH_I2;
@@ -569,6 +504,7 @@ import static net.runelite.api.ItemID.RUNE_CROSSBOW;
 import static net.runelite.api.ItemID.RUNE_CROSSBOW_OR;
 import static net.runelite.api.ItemID.RUNE_DEFENDER;
 import static net.runelite.api.ItemID.RUNE_DEFENDER_L;
+import static net.runelite.api.ItemID.RUNE_DEFENDER_LT;
 import static net.runelite.api.ItemID.RUNE_DEFENDER_ORNAMENT_KIT;
 import static net.runelite.api.ItemID.RUNE_DEFENDER_T;
 import static net.runelite.api.ItemID.RUNE_POUCH_L;
@@ -594,7 +530,6 @@ import static net.runelite.api.ItemID.SCYTHE_OF_VITUR;
 import static net.runelite.api.ItemID.SCYTHE_OF_VITUR_UNCHARGED;
 import static net.runelite.api.ItemID.SEERS_RING;
 import static net.runelite.api.ItemID.SEERS_RING_I;
-import static net.runelite.api.ItemID.SEERS_RING_I_25258;
 import static net.runelite.api.ItemID.SEREN_HALO_L;
 import static net.runelite.api.ItemID.SERPENTINE_HELM;
 import static net.runelite.api.ItemID.SERPENTINE_HELM_UNCHARGED;
@@ -608,8 +543,6 @@ import static net.runelite.api.ItemID.SKILLS_NECKLACE2;
 import static net.runelite.api.ItemID.SKILLS_NECKLACE3;
 import static net.runelite.api.ItemID.SKILLS_NECKLACE5;
 import static net.runelite.api.ItemID.SLAYER_HELMET;
-import static net.runelite.api.ItemID.SLAYER_HELMET_I;
-import static net.runelite.api.ItemID.SLAYER_HELMET_I_25177;
 import static net.runelite.api.ItemID.SNAIL_SHELL;
 import static net.runelite.api.ItemID.SOFT_CLAY;
 import static net.runelite.api.ItemID.STEAM_BATTLESTAFF;
@@ -659,7 +592,6 @@ import static net.runelite.api.ItemID.TRAILBLAZER_GRACEFUL_ORNAMENT_KIT;
 import static net.runelite.api.ItemID.TRAILBLAZER_TOOL_ORNAMENT_KIT;
 import static net.runelite.api.ItemID.TREASONOUS_RING;
 import static net.runelite.api.ItemID.TREASONOUS_RING_I;
-import static net.runelite.api.ItemID.TREASONOUS_RING_I_25256;
 import static net.runelite.api.ItemID.TRIDENT_OF_THE_SEAS;
 import static net.runelite.api.ItemID.TRIDENT_OF_THE_SEAS_E;
 import static net.runelite.api.ItemID.TRIDENT_OF_THE_SWAMP;
@@ -667,9 +599,6 @@ import static net.runelite.api.ItemID.TRIDENT_OF_THE_SWAMP_E;
 import static net.runelite.api.ItemID.TROUVER_PARCHMENT;
 import static net.runelite.api.ItemID.TUMEKENS_SHADOW;
 import static net.runelite.api.ItemID.TUMEKENS_SHADOW_UNCHARGED;
-import static net.runelite.api.ItemID.TURQUOISE_SLAYER_HELMET;
-import static net.runelite.api.ItemID.TURQUOISE_SLAYER_HELMET_I;
-import static net.runelite.api.ItemID.TURQUOISE_SLAYER_HELMET_I_25187;
 import static net.runelite.api.ItemID.TWISTED_ANCESTRAL_HAT;
 import static net.runelite.api.ItemID.TWISTED_ANCESTRAL_ROBE_BOTTOM;
 import static net.runelite.api.ItemID.TWISTED_ANCESTRAL_ROBE_TOP;
@@ -677,27 +606,18 @@ import static net.runelite.api.ItemID.TWISTED_HORNS;
 import static net.runelite.api.ItemID.TWISTED_SLAYER_HELMET;
 import static net.runelite.api.ItemID.TWISTED_SLAYER_HELMET_I;
 import static net.runelite.api.ItemID.TWISTED_SLAYER_HELMET_I_25191;
+import static net.runelite.api.ItemID.TWISTED_SLAYER_HELMET_I_26681;
 import static net.runelite.api.ItemID.TYRANNICAL_RING;
 import static net.runelite.api.ItemID.TYRANNICAL_RING_I;
-import static net.runelite.api.ItemID.TYRANNICAL_RING_I_25254;
 import static net.runelite.api.ItemID.TZHAARKETOM;
 import static net.runelite.api.ItemID.TZHAARKETOM_ORNAMENT_KIT;
 import static net.runelite.api.ItemID.TZHAARKETOM_T;
-import static net.runelite.api.ItemID.TZKAL_SLAYER_HELMET;
-import static net.runelite.api.ItemID.TZKAL_SLAYER_HELMET_I;
-import static net.runelite.api.ItemID.TZKAL_SLAYER_HELMET_I_25914;
-import static net.runelite.api.ItemID.TZTOK_SLAYER_HELMET;
-import static net.runelite.api.ItemID.TZTOK_SLAYER_HELMET_I;
-import static net.runelite.api.ItemID.TZTOK_SLAYER_HELMET_I_25902;
 import static net.runelite.api.ItemID.UNCHARGED_TOXIC_TRIDENT;
 import static net.runelite.api.ItemID.UNCHARGED_TOXIC_TRIDENT_E;
 import static net.runelite.api.ItemID.UNCHARGED_TRIDENT;
 import static net.runelite.api.ItemID.UNCHARGED_TRIDENT_E;
 import static net.runelite.api.ItemID.UNHOLY_BOOK_OR;
 import static net.runelite.api.ItemID.UNIDENTIFIED_MINERALS;
-import static net.runelite.api.ItemID.VAMPYRIC_SLAYER_HELMET;
-import static net.runelite.api.ItemID.VAMPYRIC_SLAYER_HELMET_I;
-import static net.runelite.api.ItemID.VAMPYRIC_SLAYER_HELMET_I_25908;
 import static net.runelite.api.ItemID.VERACS_BRASSARD;
 import static net.runelite.api.ItemID.VERACS_BRASSARD_100;
 import static net.runelite.api.ItemID.VERACS_BRASSARD_25;
@@ -721,24 +641,29 @@ import static net.runelite.api.ItemID.VERACS_PLATESKIRT_75;
 import static net.runelite.api.ItemID.VIGGORAS_CHAINMACE;
 import static net.runelite.api.ItemID.VIGGORAS_CHAINMACE_U;
 import static net.runelite.api.ItemID.VOID_KNIGHT_GLOVES_L;
+import static net.runelite.api.ItemID.VOID_KNIGHT_GLOVES_LOR;
 import static net.runelite.api.ItemID.VOID_KNIGHT_GLOVES_OR;
 import static net.runelite.api.ItemID.VOID_KNIGHT_MACE_L;
 import static net.runelite.api.ItemID.VOID_KNIGHT_ROBE_L;
+import static net.runelite.api.ItemID.VOID_KNIGHT_ROBE_LOR;
 import static net.runelite.api.ItemID.VOID_KNIGHT_ROBE_OR;
 import static net.runelite.api.ItemID.VOID_KNIGHT_TOP_L;
+import static net.runelite.api.ItemID.VOID_KNIGHT_TOP_LOR;
 import static net.runelite.api.ItemID.VOID_KNIGHT_TOP_OR;
 import static net.runelite.api.ItemID.VOID_MAGE_HELM_L;
+import static net.runelite.api.ItemID.VOID_MAGE_HELM_LOR;
 import static net.runelite.api.ItemID.VOID_MAGE_HELM_OR;
 import static net.runelite.api.ItemID.VOID_MELEE_HELM_L;
+import static net.runelite.api.ItemID.VOID_MELEE_HELM_LOR;
 import static net.runelite.api.ItemID.VOID_MELEE_HELM_OR;
 import static net.runelite.api.ItemID.VOID_RANGER_HELM_L;
+import static net.runelite.api.ItemID.VOID_RANGER_HELM_LOR;
 import static net.runelite.api.ItemID.VOID_RANGER_HELM_OR;
 import static net.runelite.api.ItemID.VOLATILE_NIGHTMARE_STAFF;
 import static net.runelite.api.ItemID.VOLATILE_ORB;
 import static net.runelite.api.ItemID.VOLCANIC_ABYSSAL_WHIP;
 import static net.runelite.api.ItemID.WARRIOR_RING;
 import static net.runelite.api.ItemID.WARRIOR_RING_I;
-import static net.runelite.api.ItemID.WARRIOR_RING_I_25262;
 import static net.runelite.api.ItemID.ZALCANO_SHARD;
 import static net.runelite.api.ItemID.ZAMORAK_GODSWORD;
 import static net.runelite.api.ItemID.ZAMORAK_GODSWORD_OR;
@@ -816,8 +741,8 @@ public enum ItemMapping
 	ITEM_RUNE_SCIMITAR_ORNAMENT_KIT_SARADOMIN(RUNE_SCIMITAR_ORNAMENT_KIT_SARADOMIN, RUNE_SCIMITAR_23332),
 	ITEM_RUNE_SCIMITAR_ZAMORAK(RUNE_SCIMITAR, RUNE_SCIMITAR_23334),
 	ITEM_RUNE_SCIMITAR_ORNAMENT_KIT_ZAMORAK(RUNE_SCIMITAR_ORNAMENT_KIT_ZAMORAK, RUNE_SCIMITAR_23334),
-	ITEM_RUNE_DEFENDER(RUNE_DEFENDER, RUNE_DEFENDER_T),
-	ITEM_RUNE_DEFENDER_ORNAMENT_KIT(RUNE_DEFENDER_ORNAMENT_KIT, RUNE_DEFENDER_T),
+	ITEM_RUNE_DEFENDER(RUNE_DEFENDER, RUNE_DEFENDER_T, RUNE_DEFENDER_LT),
+	ITEM_RUNE_DEFENDER_ORNAMENT_KIT(RUNE_DEFENDER_ORNAMENT_KIT, RUNE_DEFENDER_T, RUNE_DEFENDER_LT),
 	ITEM_RUNE_CROSSBOW(RUNE_CROSSBOW, RUNE_CROSSBOW_OR),
 
 	// Godsword ornament kits
@@ -846,7 +771,7 @@ public enum ItemMapping
 
 	// Other ornament kits
 	ITEM_SHATTERED_RELICS_VARIETY_ORNAMENT_KIT(SHATTERED_RELICS_VARIETY_ORNAMENT_KIT, RUNE_CROSSBOW_OR, ABYSSAL_TENTACLE_OR, ABYSSAL_WHIP_OR, BOOK_OF_BALANCE_OR, BOOK_OF_DARKNESS_OR, BOOK_OF_LAW_OR, BOOK_OF_WAR_OR, HOLY_BOOK_OR, UNHOLY_BOOK_OR),
-	ITEM_SHATTERED_RELICS_VOID_ORNAMENT_KIT(SHATTERED_RELICS_VOID_ORNAMENT_KIT, ELITE_VOID_TOP_OR, ELITE_VOID_ROBE_OR, VOID_KNIGHT_TOP_OR, VOID_KNIGHT_ROBE_OR, VOID_KNIGHT_GLOVES_OR, VOID_MAGE_HELM_OR, VOID_MELEE_HELM_OR, VOID_RANGER_HELM_OR),
+	ITEM_SHATTERED_RELICS_VOID_ORNAMENT_KIT(SHATTERED_RELICS_VOID_ORNAMENT_KIT, ELITE_VOID_TOP_OR, ELITE_VOID_ROBE_OR, VOID_KNIGHT_TOP_OR, VOID_KNIGHT_ROBE_OR, VOID_KNIGHT_GLOVES_OR, VOID_MAGE_HELM_OR, VOID_MELEE_HELM_OR, VOID_RANGER_HELM_OR, VOID_KNIGHT_TOP_LOR, VOID_KNIGHT_ROBE_LOR, VOID_KNIGHT_GLOVES_LOR, ELITE_VOID_TOP_LOR, ELITE_VOID_ROBE_LOR, VOID_MAGE_HELM_LOR, VOID_RANGER_HELM_LOR, VOID_MELEE_HELM_LOR),
 	ITEM_MYSTIC_BOOTS(MYSTIC_BOOTS, MYSTIC_BOOTS_OR),
 	ITEM_MYSTIC_GLOVES(MYSTIC_GLOVES, MYSTIC_GLOVES_OR),
 	ITEM_MYSTIC_HAT(MYSTIC_HAT, MYSTIC_HAT_OR),
@@ -884,15 +809,15 @@ public enum ItemMapping
 	ITEM_ENSOULED_DRAGON_HEAD(ENSOULED_DRAGON_HEAD_13511, ENSOULED_DRAGON_HEAD),
 
 	// Imbued rings
-	ITEM_BERSERKER_RING(BERSERKER_RING, BERSERKER_RING_I, BERSERKER_RING_I_25264),
-	ITEM_SEERS_RING(SEERS_RING, SEERS_RING_I, SEERS_RING_I_25258),
-	ITEM_WARRIOR_RING(WARRIOR_RING, WARRIOR_RING_I, WARRIOR_RING_I_25262),
-	ITEM_ARCHERS_RING(ARCHERS_RING, ARCHERS_RING_I, ARCHERS_RING_I_25260),
-	ITEM_TREASONOUS_RING(TREASONOUS_RING, TREASONOUS_RING_I, TREASONOUS_RING_I_25256),
-	ITEM_TYRANNICAL_RING(TYRANNICAL_RING, TYRANNICAL_RING_I, TYRANNICAL_RING_I_25254),
-	ITEM_RING_OF_THE_GODS(RING_OF_THE_GODS, RING_OF_THE_GODS_I, RING_OF_THE_GODS_I_25252),
-	ITEM_RING_OF_SUFFERING(RING_OF_SUFFERING, RING_OF_SUFFERING_I, RING_OF_SUFFERING_R, RING_OF_SUFFERING_RI, RING_OF_SUFFERING_I_25246, RING_OF_SUFFERING_RI_25248),
-	ITEM_GRANITE_RING(GRANITE_RING, GRANITE_RING_I, GRANITE_RING_I_25193),
+	ITEM_BERSERKER_RING(BERSERKER_RING, true, 1L, BERSERKER_RING_I),
+	ITEM_SEERS_RING(SEERS_RING, true, 1L, SEERS_RING_I),
+	ITEM_WARRIOR_RING(WARRIOR_RING, true, 1L, WARRIOR_RING_I),
+	ITEM_ARCHERS_RING(ARCHERS_RING, true, 1L, ARCHERS_RING_I),
+	ITEM_TREASONOUS_RING(TREASONOUS_RING, true, 1L, TREASONOUS_RING_I),
+	ITEM_TYRANNICAL_RING(TYRANNICAL_RING, true, 1L, TYRANNICAL_RING_I),
+	ITEM_RING_OF_THE_GODS(RING_OF_THE_GODS, true, 1L, RING_OF_THE_GODS_I),
+	ITEM_RING_OF_SUFFERING(RING_OF_SUFFERING, true, 1L, RING_OF_SUFFERING_I),
+	ITEM_GRANITE_RING(GRANITE_RING, true, 1L, GRANITE_RING_I),
 
 	// Bounty hunter
 	ITEM_GRANITE_MAUL(GRANITE_MAUL, GRANITE_MAUL_12848),
@@ -901,7 +826,7 @@ public enum ItemMapping
 	ITEM_SARADOMINS_BLESSED_SWORD(SARADOMINS_TEAR, SARADOMINS_BLESSED_SWORD),
 
 	// Jewellery with charges
-	ITEM_RING_OF_WEALTH(RING_OF_WEALTH, RING_OF_WEALTH_I, RING_OF_WEALTH_1, RING_OF_WEALTH_I1, RING_OF_WEALTH_2, RING_OF_WEALTH_I2, RING_OF_WEALTH_3, RING_OF_WEALTH_I3, RING_OF_WEALTH_4, RING_OF_WEALTH_I4, RING_OF_WEALTH_I5),
+	ITEM_RING_OF_WEALTH(RING_OF_WEALTH, true, 1L, RING_OF_WEALTH_1),
 	ITEM_RING_OF_WEALTH_SCROLL(RING_OF_WEALTH_SCROLL, RING_OF_WEALTH_I, RING_OF_WEALTH_I1, RING_OF_WEALTH_I2, RING_OF_WEALTH_I3, RING_OF_WEALTH_I4, RING_OF_WEALTH_I5),
 	ITEM_AMULET_OF_GLORY(AMULET_OF_GLORY, AMULET_OF_GLORY1, AMULET_OF_GLORY2, AMULET_OF_GLORY3, AMULET_OF_GLORY5),
 	ITEM_AMULET_OF_GLORY_T(AMULET_OF_GLORY_T, AMULET_OF_GLORY_T1, AMULET_OF_GLORY_T2, AMULET_OF_GLORY_T3, AMULET_OF_GLORY_T5),
@@ -932,6 +857,7 @@ public enum ItemMapping
 	ITEM_BRYOPHYTAS_STAFF(BRYOPHYTAS_STAFF_UNCHARGED, BRYOPHYTAS_STAFF),
 	ITEM_RING_OF_ENDURANCE(RING_OF_ENDURANCE_UNCHARGED_24844, RING_OF_ENDURANCE),
 	ITEM_TUMEKENS_SHADOW(TUMEKENS_SHADOW_UNCHARGED, TUMEKENS_SHADOW),
+	ITEM_PHARAOHS_SCEPTRE(PHARAOHS_SCEPTRE_UNCHARGED, true, 1L, PHARAOHS_SCEPTRE),
 
 	// Tombs of Amascut gear
 	ITEM_ELIDINIS_WARD(ELIDINIS_WARD, ELIDINIS_WARD_F, ELIDINIS_WARD_OR),
@@ -959,14 +885,7 @@ public enum ItemMapping
 	ITEM_DRAGON_HUNTER_CROSSBOW(DRAGON_HUNTER_CROSSBOW, DRAGON_HUNTER_CROSSBOW_B, DRAGON_HUNTER_CROSSBOW_T),
 
 	// Slayer helm/black mask
-	ITEM_BLACK_MASK(
-			BLACK_MASK, BLACK_MASK_I, BLACK_MASK_1, BLACK_MASK_1_I, BLACK_MASK_2, BLACK_MASK_2_I, BLACK_MASK_3, BLACK_MASK_3_I, BLACK_MASK_4, BLACK_MASK_4_I, BLACK_MASK_5,
-			BLACK_MASK_5_I, BLACK_MASK_6, BLACK_MASK_6_I, BLACK_MASK_7, BLACK_MASK_7_I, BLACK_MASK_8, BLACK_MASK_8_I, BLACK_MASK_9, BLACK_MASK_9_I, BLACK_MASK_10_I,
-			SLAYER_HELMET, SLAYER_HELMET_I, BLACK_SLAYER_HELMET, BLACK_SLAYER_HELMET_I, PURPLE_SLAYER_HELMET, PURPLE_SLAYER_HELMET_I, RED_SLAYER_HELMET, RED_SLAYER_HELMET_I,
-			GREEN_SLAYER_HELMET, GREEN_SLAYER_HELMET_I, TURQUOISE_SLAYER_HELMET, TURQUOISE_SLAYER_HELMET_I, TWISTED_SLAYER_HELMET, TWISTED_SLAYER_HELMET_I, HYDRA_SLAYER_HELMET, HYDRA_SLAYER_HELMET_I,
-			SLAYER_HELMET_I_25177, BLACK_SLAYER_HELMET_I_25179, GREEN_SLAYER_HELMET_I_25181, RED_SLAYER_HELMET_I_25183, PURPLE_SLAYER_HELMET_I_25185, TURQUOISE_SLAYER_HELMET_I_25187, HYDRA_SLAYER_HELMET_I_25189, TWISTED_SLAYER_HELMET_I_25191,
-			BLACK_MASK_I_25276, BLACK_MASK_1_I_25275, BLACK_MASK_2_I_25274, BLACK_MASK_3_I_25273, BLACK_MASK_4_I_25272, BLACK_MASK_5_I_25271, BLACK_MASK_6_I_25270, BLACK_MASK_7_I_25269, BLACK_MASK_8_I_25268, BLACK_MASK_9_I_25267, BLACK_MASK_10_I_25266,
-			TZTOK_SLAYER_HELMET, TZTOK_SLAYER_HELMET_I, TZTOK_SLAYER_HELMET_I_25902, VAMPYRIC_SLAYER_HELMET, VAMPYRIC_SLAYER_HELMET_I, VAMPYRIC_SLAYER_HELMET_I_25908, TZKAL_SLAYER_HELMET, TZKAL_SLAYER_HELMET_I, TZKAL_SLAYER_HELMET_I_25914),
+	ITEM_BLACK_MASK(BLACK_MASK, true, 1L, BLACK_MASK, SLAYER_HELMET),
 
 	// Revertible items
 	ITEM_HYDRA_LEATHER(HYDRA_LEATHER, FEROCIOUS_GLOVES),
@@ -975,7 +894,7 @@ public enum ItemMapping
 	ITEM_BOTTOMLESS_COMPOST_BUCKET(BOTTOMLESS_COMPOST_BUCKET, BOTTOMLESS_COMPOST_BUCKET_22997),
 	ITEM_BASILISK_JAW(BASILISK_JAW, NEITIZNOT_FACEGUARD),
 	ITEM_HELM_OF_NEITIZNOT(HELM_OF_NEITIZNOT, NEITIZNOT_FACEGUARD),
-	ITEM_TWISTED_HORNS(TWISTED_HORNS, TWISTED_SLAYER_HELMET, TWISTED_SLAYER_HELMET_I, TWISTED_SLAYER_HELMET_I_25191),
+	ITEM_TWISTED_HORNS(TWISTED_HORNS, TWISTED_SLAYER_HELMET, TWISTED_SLAYER_HELMET_I, TWISTED_SLAYER_HELMET_I_25191, TWISTED_SLAYER_HELMET_I_26681),
 	ITEM_ELDRITCH_ORB(ELDRITCH_ORB, ELDRITCH_NIGHTMARE_STAFF),
 	ITEM_HARMONISED_ORB(HARMONISED_ORB, HARMONISED_NIGHTMARE_STAFF),
 	ITEM_VOLATILE_ORB(VOLATILE_ORB, VOLATILE_NIGHTMARE_STAFF),
@@ -986,18 +905,23 @@ public enum ItemMapping
 
 	// Trouver Parchment
 	ITEM_TROUVER_PARCHMENT(
-			TROUVER_PARCHMENT, INFERNAL_MAX_CAPE_L, FIRE_MAX_CAPE_L, ASSEMBLER_MAX_CAPE_L, BRONZE_DEFENDER_L, IRON_DEFENDER_L, STEEL_DEFENDER_L, BLACK_DEFENDER_L, MITHRIL_DEFENDER_L, ADAMANT_DEFENDER_L,
-			RUNE_DEFENDER_L, DRAGON_DEFENDER_L, DECORATIVE_SWORD_L, DECORATIVE_ARMOUR_L, DECORATIVE_ARMOUR_L_24159, DECORATIVE_HELM_L, DECORATIVE_SHIELD_L, DECORATIVE_ARMOUR_L_24162, DECORATIVE_ARMOUR_L_24163, DECORATIVE_ARMOUR_L_24164,
-			DECORATIVE_ARMOUR_L_24165, DECORATIVE_ARMOUR_L_24166, DECORATIVE_ARMOUR_L_24167, DECORATIVE_ARMOUR_L_24168, SARADOMIN_HALO_L, ZAMORAK_HALO_L, GUTHIX_HALO_L, HEALER_HAT_L, FIGHTER_HAT_L, RANGER_HAT_L,
-			FIGHTER_TORSO_L, PENANCE_SKIRT_L, VOID_KNIGHT_TOP_L, ELITE_VOID_TOP_L, VOID_KNIGHT_ROBE_L, ELITE_VOID_ROBE_L, VOID_KNIGHT_MACE_L, VOID_KNIGHT_GLOVES_L, VOID_MAGE_HELM_L, VOID_RANGER_HELM_L,
-			VOID_MELEE_HELM_L, AVERNIC_DEFENDER_L, ARMADYL_HALO_L, BANDOS_HALO_L, SEREN_HALO_L, ANCIENT_HALO_L, BRASSICA_HALO_L, AVAS_ASSEMBLER_L, FIRE_CAPE_L, INFERNAL_CAPE_L, IMBUED_SARADOMIN_MAX_CAPE_L,
-			IMBUED_ZAMORAK_MAX_CAPE_L, IMBUED_GUTHIX_MAX_CAPE_L, IMBUED_SARADOMIN_CAPE_L, IMBUED_ZAMORAK_CAPE_L, IMBUED_GUTHIX_CAPE_L, RUNE_POUCH_L, RUNNER_HAT_L, DECORATIVE_BOOTS_L, DECORATIVE_FULL_HELM_L),
+		TROUVER_PARCHMENT, INFERNAL_MAX_CAPE_L, FIRE_MAX_CAPE_L, ASSEMBLER_MAX_CAPE_L, BRONZE_DEFENDER_L, IRON_DEFENDER_L, STEEL_DEFENDER_L, BLACK_DEFENDER_L, MITHRIL_DEFENDER_L, ADAMANT_DEFENDER_L,
+		RUNE_DEFENDER_L, DRAGON_DEFENDER_L, DECORATIVE_SWORD_L, DECORATIVE_ARMOUR_L, DECORATIVE_ARMOUR_L_24159, DECORATIVE_HELM_L, DECORATIVE_SHIELD_L, DECORATIVE_ARMOUR_L_24162, DECORATIVE_ARMOUR_L_24163, DECORATIVE_ARMOUR_L_24164,
+		DECORATIVE_ARMOUR_L_24165, DECORATIVE_ARMOUR_L_24166, DECORATIVE_ARMOUR_L_24167, DECORATIVE_ARMOUR_L_24168, SARADOMIN_HALO_L, ZAMORAK_HALO_L, GUTHIX_HALO_L, HEALER_HAT_L, FIGHTER_HAT_L, RANGER_HAT_L,
+		FIGHTER_TORSO_L, PENANCE_SKIRT_L, VOID_KNIGHT_TOP_L, ELITE_VOID_TOP_L, VOID_KNIGHT_ROBE_L, ELITE_VOID_ROBE_L, VOID_KNIGHT_MACE_L, VOID_KNIGHT_GLOVES_L, VOID_MAGE_HELM_L, VOID_RANGER_HELM_L,
+		VOID_MELEE_HELM_L, AVERNIC_DEFENDER_L, ARMADYL_HALO_L, BANDOS_HALO_L, SEREN_HALO_L, ANCIENT_HALO_L, BRASSICA_HALO_L, AVAS_ASSEMBLER_L, FIRE_CAPE_L, INFERNAL_CAPE_L, IMBUED_SARADOMIN_MAX_CAPE_L,
+		IMBUED_ZAMORAK_MAX_CAPE_L, IMBUED_GUTHIX_MAX_CAPE_L, IMBUED_SARADOMIN_CAPE_L, IMBUED_ZAMORAK_CAPE_L, IMBUED_GUTHIX_CAPE_L, RUNE_POUCH_L, RUNNER_HAT_L, DECORATIVE_BOOTS_L, DECORATIVE_FULL_HELM_L,
+		MASORI_ASSEMBLER_L, MASORI_ASSEMBLER_MAX_CAPE_L, RUNE_DEFENDER_LT, VOID_KNIGHT_TOP_LOR, VOID_KNIGHT_ROBE_LOR, VOID_KNIGHT_GLOVES_LOR, ELITE_VOID_TOP_LOR, ELITE_VOID_ROBE_LOR, VOID_MAGE_HELM_LOR,
+		VOID_RANGER_HELM_LOR, VOID_MELEE_HELM_LOR, BARRONITE_MACE_L),
+
 	ITEM_TROUVER_PARCHMENT_REFUND_LARGE(
-			COINS_995, 475000L, INFERNAL_MAX_CAPE_L, FIRE_MAX_CAPE_L, ASSEMBLER_MAX_CAPE_L, RUNE_DEFENDER_L, DRAGON_DEFENDER_L, DECORATIVE_SWORD_L, DECORATIVE_ARMOUR_L, DECORATIVE_ARMOUR_L_24159, DECORATIVE_HELM_L, DECORATIVE_SHIELD_L,
-			DECORATIVE_ARMOUR_L_24162, DECORATIVE_ARMOUR_L_24163, DECORATIVE_ARMOUR_L_24164, DECORATIVE_ARMOUR_L_24165, DECORATIVE_ARMOUR_L_24166, DECORATIVE_ARMOUR_L_24167, DECORATIVE_ARMOUR_L_24168, SARADOMIN_HALO_L,
-			ZAMORAK_HALO_L, GUTHIX_HALO_L, HEALER_HAT_L, FIGHTER_HAT_L, RANGER_HAT_L, FIGHTER_TORSO_L, PENANCE_SKIRT_L, VOID_KNIGHT_TOP_L, ELITE_VOID_TOP_L, VOID_KNIGHT_ROBE_L, ELITE_VOID_ROBE_L, VOID_KNIGHT_MACE_L,
-			VOID_KNIGHT_GLOVES_L, VOID_MAGE_HELM_L, VOID_RANGER_HELM_L, VOID_MELEE_HELM_L, AVERNIC_DEFENDER_L, ARMADYL_HALO_L, BANDOS_HALO_L, SEREN_HALO_L, ANCIENT_HALO_L, BRASSICA_HALO_L, AVAS_ASSEMBLER_L,
-			FIRE_CAPE_L, INFERNAL_CAPE_L, IMBUED_SARADOMIN_MAX_CAPE_L, IMBUED_ZAMORAK_MAX_CAPE_L, IMBUED_GUTHIX_MAX_CAPE_L, IMBUED_SARADOMIN_CAPE_L, IMBUED_ZAMORAK_CAPE_L, IMBUED_GUTHIX_CAPE_L, RUNE_POUCH_L, RUNNER_HAT_L, DECORATIVE_BOOTS_L, DECORATIVE_FULL_HELM_L),
+		COINS_995, 475000L, INFERNAL_MAX_CAPE_L, FIRE_MAX_CAPE_L, ASSEMBLER_MAX_CAPE_L, RUNE_DEFENDER_L, DRAGON_DEFENDER_L, DECORATIVE_SWORD_L, DECORATIVE_ARMOUR_L, DECORATIVE_ARMOUR_L_24159, DECORATIVE_HELM_L, DECORATIVE_SHIELD_L,
+		DECORATIVE_ARMOUR_L_24162, DECORATIVE_ARMOUR_L_24163, DECORATIVE_ARMOUR_L_24164, DECORATIVE_ARMOUR_L_24165, DECORATIVE_ARMOUR_L_24166, DECORATIVE_ARMOUR_L_24167, DECORATIVE_ARMOUR_L_24168, SARADOMIN_HALO_L,
+		ZAMORAK_HALO_L, GUTHIX_HALO_L, HEALER_HAT_L, FIGHTER_HAT_L, RANGER_HAT_L, FIGHTER_TORSO_L, PENANCE_SKIRT_L, VOID_KNIGHT_TOP_L, ELITE_VOID_TOP_L, VOID_KNIGHT_ROBE_L, ELITE_VOID_ROBE_L, VOID_KNIGHT_MACE_L,
+		VOID_KNIGHT_GLOVES_L, VOID_MAGE_HELM_L, VOID_RANGER_HELM_L, VOID_MELEE_HELM_L, AVERNIC_DEFENDER_L, ARMADYL_HALO_L, BANDOS_HALO_L, SEREN_HALO_L, ANCIENT_HALO_L, BRASSICA_HALO_L, AVAS_ASSEMBLER_L,
+		FIRE_CAPE_L, INFERNAL_CAPE_L, IMBUED_SARADOMIN_MAX_CAPE_L, IMBUED_ZAMORAK_MAX_CAPE_L, IMBUED_GUTHIX_MAX_CAPE_L, IMBUED_SARADOMIN_CAPE_L, IMBUED_ZAMORAK_CAPE_L, IMBUED_GUTHIX_CAPE_L, RUNE_POUCH_L, RUNNER_HAT_L, DECORATIVE_BOOTS_L, DECORATIVE_FULL_HELM_L,
+		MASORI_ASSEMBLER_L, MASORI_ASSEMBLER_MAX_CAPE_L, RUNE_DEFENDER_LT, VOID_KNIGHT_TOP_LOR, VOID_KNIGHT_ROBE_LOR, VOID_KNIGHT_GLOVES_LOR, ELITE_VOID_TOP_LOR, ELITE_VOID_ROBE_LOR, VOID_MAGE_HELM_LOR,
+		VOID_RANGER_HELM_LOR, VOID_MELEE_HELM_LOR, BARRONITE_MACE_L),
 	ITEM_TROUVER_PARCHMENT_REFUND_SMALL(COINS_995, 47500L, BRONZE_DEFENDER_L, IRON_DEFENDER_L, STEEL_DEFENDER_L, BLACK_DEFENDER_L, MITHRIL_DEFENDER_L, ADAMANT_DEFENDER_L),
 
 	// Crystal items
@@ -1005,14 +929,14 @@ public enum ItemMapping
 	ITEM_CRYSTAL_AXE(DRAGON_AXE, CRYSTAL_AXE, CRYSTAL_AXE_INACTIVE),
 	ITEM_CRYSTAL_HARPOON(DRAGON_HARPOON, CRYSTAL_HARPOON, CRYSTAL_HARPOON_INACTIVE),
 	ITEM_CRYSTAL_PICKAXE(DRAGON_PICKAXE, CRYSTAL_PICKAXE, CRYSTAL_PICKAXE_INACTIVE),
-	ITEM_BLADE_OF_SAELDOR(BLADE_OF_SAELDOR_INACTIVE, BLADE_OF_SAELDOR, BLADE_OF_SAELDOR_C, BLADE_OF_SAELDOR_C_25870, BLADE_OF_SAELDOR_C_25872, BLADE_OF_SAELDOR_C_25874, BLADE_OF_SAELDOR_C_25876, BLADE_OF_SAELDOR_C_25878, BLADE_OF_SAELDOR_C_25880, BLADE_OF_SAELDOR_C_25882),
+	ITEM_BLADE_OF_SAELDOR(BLADE_OF_SAELDOR_INACTIVE, true, 1L, BLADE_OF_SAELDOR),
 	ITEM_CRYSTAL_BOW(CRYSTAL_WEAPON_SEED, CRYSTAL_BOW, CRYSTAL_BOW_24123, CRYSTAL_BOW_INACTIVE),
 	ITEM_CRYSTAL_HALBERD(CRYSTAL_WEAPON_SEED, CRYSTAL_HALBERD, CRYSTAL_HALBERD_24125, CRYSTAL_HALBERD_INACTIVE),
 	ITEM_CRYSTAL_SHIELD(CRYSTAL_WEAPON_SEED, CRYSTAL_SHIELD, CRYSTAL_SHIELD_24127, CRYSTAL_SHIELD_INACTIVE),
 	ITEM_CRYSTAL_HELMET(CRYSTAL_ARMOUR_SEED, CRYSTAL_HELM, CRYSTAL_HELM_INACTIVE),
 	ITEM_CRYSTAL_LEGS(CRYSTAL_ARMOUR_SEED, 2L, CRYSTAL_LEGS, CRYSTAL_LEGS_INACTIVE),
 	ITEM_CRYSTAL_BODY(CRYSTAL_ARMOUR_SEED, 3L, CRYSTAL_BODY, CRYSTAL_BODY_INACTIVE),
-	ITEM_BOW_OF_FAERDHINEN(BOW_OF_FAERDHINEN_INACTIVE, BOW_OF_FAERDHINEN, BOW_OF_FAERDHINEN_C, BOW_OF_FAERDHINEN_C_25884, BOW_OF_FAERDHINEN_C_25886, BOW_OF_FAERDHINEN_C_25888, BOW_OF_FAERDHINEN_C_25890, BOW_OF_FAERDHINEN_C_25892, BOW_OF_FAERDHINEN_C_25894, BOW_OF_FAERDHINEN_C_25896),
+	ITEM_BOW_OF_FAERDHINEN(BOW_OF_FAERDHINEN_INACTIVE, true, 1L, BOW_OF_FAERDHINEN),
 
 	// Bird nests
 	ITEM_BIRD_NEST(BIRD_NEST_5075, BIRD_NEST, BIRD_NEST_5071, BIRD_NEST_5072, BIRD_NEST_5073, BIRD_NEST_5074, BIRD_NEST_7413, BIRD_NEST_13653, BIRD_NEST_22798, BIRD_NEST_22800, CLUE_NEST_EASY, CLUE_NEST_MEDIUM, CLUE_NEST_HARD, CLUE_NEST_ELITE),
@@ -1058,11 +982,12 @@ public enum ItemMapping
 	ITEM_SNAIL_SHELL(COINS_995, true, 600L, SNAIL_SHELL),
 	ITEM_TORTOISE_SHELL(COINS_995, true, 250L, TORTOISE_SHELL);
 
-	private static final Multimap<Integer, ItemMapping> MAPPINGS = HashMultimap.create();
+	@VisibleForTesting
+	static final Multimap<Integer, ItemMapping> MAPPINGS = HashMultimap.create();
 	private final int tradeableItem;
 	private final int[] untradableItems;
 	private final long quantity;
-	private final boolean untradeable;
+	private final boolean includeVariations;
 
 	static
 	{
@@ -1070,25 +995,30 @@ public enum ItemMapping
 		{
 			for (int itemId : item.untradableItems)
 			{
-				if (item.untradeable)
+				if (item.includeVariations)
 				{
-					for (final Integer variation : ItemVariationMapping.getVariations(itemId))
+					for (final Integer variation : ItemVariationMapping.getVariations(ItemVariationMapping.map(itemId)))
 					{
-						MAPPINGS.put(variation, item);
+						if (variation != item.tradeableItem)
+						{
+							MAPPINGS.put(variation, item);
+						}
 					}
 				}
-
-				MAPPINGS.put(itemId, item);
+				else
+				{
+					MAPPINGS.put(itemId, item);
+				}
 			}
 		}
 	}
 
-	ItemMapping(int tradeableItem, boolean untradeable, long quantity, int... untradableItems)
+	ItemMapping(int tradeableItem, boolean includeVariations, long quantity, int... untradableItems)
 	{
 		this.tradeableItem = tradeableItem;
 		this.untradableItems = untradableItems;
 		this.quantity = quantity;
-		this.untradeable = untradeable;
+		this.includeVariations = includeVariations;
 	}
 
 	ItemMapping(int tradeableItem, long quantity, int... untradableItems)

@@ -1,39 +1,42 @@
-import java.lang.management.GarbageCollectorMXBean;
-import java.lang.management.ManagementFactory;
-import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("iz")
+@ObfuscatedName("ii")
 @Implements("WorldMapLabel")
 public class WorldMapLabel {
-   @ObfuscatedName("a")
+   @ObfuscatedName("i")
+   @ObfuscatedSignature(
+      descriptor = "Lra;"
+   )
+   @Export("options_buttons_0Sprite")
+   static IndexedSprite options_buttons_0Sprite;
+   @ObfuscatedName("h")
    @Export("text")
    String text;
-   @ObfuscatedName("f")
+   @ObfuscatedName("e")
    @ObfuscatedGetter(
-      intValue = 1062281855
+      intValue = 1395351999
    )
    @Export("width")
    int width;
-   @ObfuscatedName("c")
+   @ObfuscatedName("v")
    @ObfuscatedGetter(
-      intValue = 128768729
+      intValue = -1987376379
    )
    @Export("height")
    int height;
    @ObfuscatedName("x")
    @ObfuscatedSignature(
-      descriptor = "Lhb;"
+      descriptor = "Liq;"
    )
    @Export("size")
    WorldMapLabelSize size;
 
    @ObfuscatedSignature(
-      descriptor = "(Ljava/lang/String;IILhb;)V"
+      descriptor = "(Ljava/lang/String;IILiq;)V"
    )
    WorldMapLabel(String var1, int var2, int var3, WorldMapLabelSize var4) {
       this.text = var1;
@@ -42,86 +45,70 @@ public class WorldMapLabel {
       this.size = var4;
    }
 
-   @ObfuscatedName("aw")
+   @ObfuscatedName("x")
    @ObfuscatedSignature(
-      descriptor = "(I)I",
-      garbageValue = "927826836"
+      descriptor = "(CLmb;B)I",
+      garbageValue = "50"
    )
-   @Export("getGcDuration")
-   protected static int getGcDuration() {
-      int var0 = 0;
-      if (WallDecoration.garbageCollector == null || !WallDecoration.garbageCollector.isValid()) {
-         try {
-            Iterator var1 = ManagementFactory.getGarbageCollectorMXBeans().iterator();
+   @Export("lowercaseChar")
+   static int lowercaseChar(char var0, Language var1) {
+      int var2 = var0 << 4;
+      if (Character.isUpperCase(var0) || Character.isTitleCase(var0)) {
+         var0 = Character.toLowerCase(var0);
+         var2 = (var0 << 4) + 1;
+      }
 
-            while(var1.hasNext()) {
-               GarbageCollectorMXBean var2 = (GarbageCollectorMXBean)var1.next();
-               if (var2.isValid()) {
-                  WallDecoration.garbageCollector = var2;
-                  GameEngine.garbageCollectorLastCheckTimeMs = -1L;
-                  GameEngine.garbageCollectorLastCollectionTime = -1L;
+      if (var0 == 241 && var1 == Language.Language_ES) {
+         var2 = 1762;
+      }
+
+      return var2;
+   }
+
+   @ObfuscatedName("lp")
+   @ObfuscatedSignature(
+      descriptor = "([Lkd;II)V",
+      garbageValue = "1544392799"
+   )
+   @Export("runComponentCloseListeners")
+   static final void runComponentCloseListeners(Widget[] var0, int var1) {
+      for(int var2 = 0; var2 < var0.length; ++var2) {
+         Widget var3 = var0[var2];
+         if (var3 != null) {
+            if (var3.type == 0) {
+               if (var3.children != null) {
+                  runComponentCloseListeners(var3.children, var1);
+               }
+
+               InterfaceParent var4 = (InterfaceParent)Client.interfaceParents.get((long)var3.id);
+               if (var4 != null) {
+                  GrandExchangeOfferAgeComparator.runIntfCloseListeners(var4.group, var1);
                }
             }
-         } catch (Throwable var11) {
-         }
-      }
 
-      if (WallDecoration.garbageCollector != null) {
-         long var9 = UserComparator8.method2748();
-         long var3 = WallDecoration.garbageCollector.getCollectionTime();
-         if (GameEngine.garbageCollectorLastCollectionTime != -1L) {
-            long var5 = var3 - GameEngine.garbageCollectorLastCollectionTime;
-            long var7 = var9 - GameEngine.garbageCollectorLastCheckTimeMs;
-            if (0L != var7) {
-               var0 = (int)(100L * var5 / var7);
+            ScriptEvent var5;
+            if (var1 == 0 && var3.onDialogAbort != null) {
+               var5 = new ScriptEvent();
+               var5.widget = var3;
+               var5.args = var3.onDialogAbort;
+               WorldMapElement.runScriptEvent(var5);
+            }
+
+            if (var1 == 1 && var3.onSubChange != null) {
+               if (var3.childIndex >= 0) {
+                  Widget var6 = PlayerCompositionColorTextureOverride.getWidget(var3.id);
+                  if (var6 == null || var6.children == null || var3.childIndex >= var6.children.length || var3 != var6.children[var3.childIndex]) {
+                     continue;
+                  }
+               }
+
+               var5 = new ScriptEvent();
+               var5.widget = var3;
+               var5.args = var3.onSubChange;
+               WorldMapElement.runScriptEvent(var5);
             }
          }
-
-         GameEngine.garbageCollectorLastCollectionTime = var3;
-         GameEngine.garbageCollectorLastCheckTimeMs = var9;
       }
 
-      return var0;
-   }
-
-   @ObfuscatedName("go")
-   @ObfuscatedSignature(
-      descriptor = "(S)V",
-      garbageValue = "5021"
-   )
-   static void method5157() {
-      if (class7.worldMap != null) {
-         class7.worldMap.method7888(ApproximateRouteStrategy.Client_plane, KeyHandler.baseX * 64 + (class296.localPlayer.x >> 7), class158.baseY * 64 + (class296.localPlayer.y >> 7), false);
-         class7.worldMap.loadCache();
-      }
-
-   }
-
-   @ObfuscatedName("hn")
-   @ObfuscatedSignature(
-      descriptor = "(Lco;I)Z",
-      garbageValue = "58335505"
-   )
-   static boolean method5159(Player var0) {
-      if (Client.drawPlayerNames == 0) {
-         return false;
-      } else if (class296.localPlayer == var0) {
-         return class453.method8254();
-      } else {
-         boolean var1 = class313.method6247();
-         boolean var2;
-         if (!var1) {
-            var2 = (Client.drawPlayerNames & 1) != 0;
-            var1 = var2 && var0.isFriend();
-         }
-
-         var2 = var1;
-         if (!var1) {
-            boolean var3 = (Client.drawPlayerNames & 2) != 0;
-            var2 = var3 && var0.isFriendsChatMember();
-         }
-
-         return var2;
-      }
    }
 }

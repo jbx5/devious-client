@@ -3,224 +3,163 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("eh")
-public class class140 extends class135 {
-   @ObfuscatedName("o")
+@ObfuscatedName("ea")
+public class class140 extends class136 {
+   @ObfuscatedName("cp")
    @ObfuscatedSignature(
-      descriptor = "Lkn;"
+      descriptor = "Lra;"
    )
-   @Export("scriptDotWidget")
-   static Widget scriptDotWidget;
-   @ObfuscatedName("a")
+   @Export("worldSelectRightSprite")
+   static IndexedSprite worldSelectRightSprite;
+   @ObfuscatedName("h")
    @ObfuscatedGetter(
-      intValue = -584515193
+      intValue = 786830149
    )
-   int field1625;
-   @ObfuscatedName("f")
-   @ObfuscatedGetter(
-      intValue = -1635278101
-   )
-   int field1622;
-   @ObfuscatedName("c")
-   @ObfuscatedGetter(
-      intValue = -1633329395
-   )
-   int field1623;
-   @ObfuscatedName("x")
-   @ObfuscatedGetter(
-      intValue = 1944544005
-   )
-   int field1624;
+   int field1676;
+   @ObfuscatedName("e")
+   byte field1677;
    // $FF: synthetic field
    @ObfuscatedSignature(
-      descriptor = "Lel;"
+      descriptor = "Lem;"
    )
-   final class138 this$0;
+   final class139 this$0;
 
    @ObfuscatedSignature(
-      descriptor = "(Lel;)V"
+      descriptor = "(Lem;)V"
    )
-   class140(class138 var1) {
+   class140(class139 var1) {
       this.this$0 = var1;
+      this.field1676 = -1;
    }
 
-   @ObfuscatedName("a")
+   @ObfuscatedName("h")
    @ObfuscatedSignature(
-      descriptor = "(Lqr;I)V",
-      garbageValue = "-1428026624"
+      descriptor = "(Lqy;I)V",
+      garbageValue = "1101327225"
    )
-   void vmethod3254(Buffer var1) {
-      this.field1625 = var1.readInt();
-      this.field1624 = var1.readInt();
-      this.field1622 = var1.readUnsignedByte();
-      this.field1623 = var1.readUnsignedByte();
+   void vmethod3349(Buffer var1) {
+      this.field1676 = var1.readUnsignedShort();
+      this.field1677 = var1.readByte();
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("e")
    @ObfuscatedSignature(
-      descriptor = "(Ler;B)V",
-      garbageValue = "-110"
+      descriptor = "(Lep;I)V",
+      garbageValue = "839088249"
    )
-   void vmethod3248(ClanSettings var1) {
-      var1.method3090(this.field1625, this.field1624, this.field1622, this.field1623);
+   void vmethod3350(ClanSettings var1) {
+      var1.method3175(this.field1676, this.field1677);
    }
 
-   @ObfuscatedName("hs")
+   @ObfuscatedName("h")
    @ObfuscatedSignature(
-      descriptor = "(Lcl;II)V",
-      garbageValue = "-1812147921"
+      descriptor = "(II)I",
+      garbageValue = "-1959996684"
    )
-   static final void method3021(Actor var0, int var1) {
-      Skeleton.worldToScreen(var0.x, var0.y, var1);
+   static int method3105(int var0) {
+      return class29.KeyHandler_keyCodes[var0];
    }
 
-   @ObfuscatedName("ij")
+   @ObfuscatedName("h")
    @ObfuscatedSignature(
-      descriptor = "(IIIIIB)V",
-      garbageValue = "-10"
+      descriptor = "(Lly;I)V",
+      garbageValue = "519981474"
    )
-   @Export("drawObject")
-   static final void drawObject(int var0, int var1, int var2, int var3, int var4) {
-      long var5 = class139.scene.getBoundaryObjectTag(var0, var1, var2);
-      int var7;
-      int var8;
-      int var9;
-      int var10;
-      int var12;
-      int var13;
-      if (0L != var5) {
-         var7 = class139.scene.getObjectFlags(var0, var1, var2, var5);
-         var8 = var7 >> 6 & 3;
-         var9 = var7 & 31;
-         var10 = var3;
-         if (AbstractByteArrayCopier.method6222(var5)) {
-            var10 = var4;
+   public static void method3098(AbstractArchive var0) {
+      class283.FloorUnderlayDefinition_archive = var0;
+   }
+
+   @ObfuscatedName("e")
+   @ObfuscatedSignature(
+      descriptor = "(IIIB)I",
+      garbageValue = "76"
+   )
+   static int method3104(int var0, int var1, int var2) {
+      return var0 << 28 | var1 << 14 | var2;
+   }
+
+   @ObfuscatedName("g")
+   @ObfuscatedSignature(
+      descriptor = "(IIIIIIII)Z",
+      garbageValue = "-1039689208"
+   )
+   static final boolean method3095(int var0, int var1, int var2, int var3, int var4, int var5, int var6) {
+      int var7 = ViewportMouse.ViewportMouse_y + var6;
+      if (var7 < var0 && var7 < var1 && var7 < var2) {
+         return false;
+      } else {
+         var7 = ViewportMouse.ViewportMouse_y - var6;
+         if (var7 > var0 && var7 > var1 && var7 > var2) {
+            return false;
+         } else {
+            var7 = ViewportMouse.ViewportMouse_x + var6;
+            if (var7 < var3 && var7 < var4 && var7 < var5) {
+               return false;
+            } else {
+               var7 = ViewportMouse.ViewportMouse_x - var6;
+               return var7 <= var3 || var7 <= var4 || var7 <= var5;
+            }
+         }
+      }
+   }
+
+   @ObfuscatedName("gp")
+   @ObfuscatedSignature(
+      descriptor = "(II)V",
+      garbageValue = "1425199157"
+   )
+   static void updateGameState(int var0) {
+      if (var0 != Client.gameState) {
+         if (Client.gameState == 30) {
+            Client.field572.method4068();
          }
 
-         int[] var11 = Calendar.sceneMinimapSprite.pixels;
-         var12 = var1 * 4 + (103 - var2) * 2048 + 24624;
-         var13 = AttackOption.Entity_unpackID(var5);
-         ObjectComposition var14 = InterfaceParent.getObjectDefinition(var13);
-         if (var14.mapSceneId != -1) {
-            IndexedSprite var15 = HealthBar.mapSceneSprites[var14.mapSceneId];
-            if (var15 != null) {
-               int var16 = (var14.sizeX * 4 - var15.subWidth) / 2;
-               int var17 = (var14.sizeY * 4 - var15.subHeight) / 2;
-               var15.drawAt(var16 + var1 * 4 + 48, (104 - var2 - var14.sizeY) * 4 + var17 + 48);
+         if (Client.gameState == 0) {
+            BuddyRankComparator.client.method527();
+         }
+
+         if (var0 == 20 || var0 == 40 || var0 == 45 || var0 == 50) {
+            class37.method709(0);
+            Client.field648 = 0;
+            Client.field541 = 0;
+            Client.timer.method7331(var0);
+            if (var0 != 20) {
+               InterfaceParent.method2251(false);
+            }
+         }
+
+         if (var0 != 20 && var0 != 40 && class14.field83 != null) {
+            class14.field83.close();
+            class14.field83 = null;
+         }
+
+         if (Client.gameState == 25) {
+            Client.field658 = 0;
+            Client.field601 = 0;
+            Client.field755 = 1;
+            Client.field786 = 0;
+            Client.field574 = 1;
+         }
+
+         if (var0 != 5 && var0 != 10) {
+            if (var0 == 20) {
+               int var3 = Client.gameState == 11 ? 4 : 0;
+               UserComparator5.method2830(ClanChannelMember.archive10, ClientPreferences.archive8, false, var3);
+            } else if (var0 == 11) {
+               UserComparator5.method2830(ClanChannelMember.archive10, ClientPreferences.archive8, false, 4);
+            } else if (var0 == 50) {
+               TaskHandler.setLoginResponseString("", "Updating date of birth...", "");
+               UserComparator5.method2830(ClanChannelMember.archive10, ClientPreferences.archive8, false, 7);
+            } else {
+               FontName.method8199();
             }
          } else {
-            if (var9 == 0 || var9 == 2) {
-               if (var8 == 0) {
-                  var11[var12] = var10;
-                  var11[var12 + 512] = var10;
-                  var11[var12 + 1024] = var10;
-                  var11[var12 + 1536] = var10;
-               } else if (var8 == 1) {
-                  var11[var12] = var10;
-                  var11[var12 + 1] = var10;
-                  var11[var12 + 2] = var10;
-                  var11[var12 + 3] = var10;
-               } else if (var8 == 2) {
-                  var11[var12 + 3] = var10;
-                  var11[var12 + 512 + 3] = var10;
-                  var11[var12 + 1024 + 3] = var10;
-                  var11[var12 + 1536 + 3] = var10;
-               } else if (var8 == 3) {
-                  var11[var12 + 1536] = var10;
-                  var11[var12 + 1536 + 1] = var10;
-                  var11[var12 + 1536 + 2] = var10;
-                  var11[var12 + 1536 + 3] = var10;
-               }
-            }
-
-            if (var9 == 3) {
-               if (var8 == 0) {
-                  var11[var12] = var10;
-               } else if (var8 == 1) {
-                  var11[var12 + 3] = var10;
-               } else if (var8 == 2) {
-                  var11[var12 + 1536 + 3] = var10;
-               } else if (var8 == 3) {
-                  var11[var12 + 1536] = var10;
-               }
-            }
-
-            if (var9 == 2) {
-               if (var8 == 3) {
-                  var11[var12] = var10;
-                  var11[var12 + 512] = var10;
-                  var11[var12 + 1024] = var10;
-                  var11[var12 + 1536] = var10;
-               } else if (var8 == 0) {
-                  var11[var12] = var10;
-                  var11[var12 + 1] = var10;
-                  var11[var12 + 2] = var10;
-                  var11[var12 + 3] = var10;
-               } else if (var8 == 1) {
-                  var11[var12 + 3] = var10;
-                  var11[var12 + 512 + 3] = var10;
-                  var11[var12 + 1024 + 3] = var10;
-                  var11[var12 + 1536 + 3] = var10;
-               } else if (var8 == 2) {
-                  var11[var12 + 1536] = var10;
-                  var11[var12 + 1536 + 1] = var10;
-                  var11[var12 + 1536 + 2] = var10;
-                  var11[var12 + 1536 + 3] = var10;
-               }
-            }
+            boolean var1 = StructComposition.clientPreferences.method2424() >= Client.field511;
+            int var2 = var1 ? 0 : 12;
+            UserComparator5.method2830(ClanChannelMember.archive10, ClientPreferences.archive8, true, var2);
          }
+
+         Client.gameState = var0;
       }
-
-      var5 = class139.scene.getGameObjectTag(var0, var1, var2);
-      if (0L != var5) {
-         var7 = class139.scene.getObjectFlags(var0, var1, var2, var5);
-         var8 = var7 >> 6 & 3;
-         var9 = var7 & 31;
-         var10 = AttackOption.Entity_unpackID(var5);
-         ObjectComposition var24 = InterfaceParent.getObjectDefinition(var10);
-         int var19;
-         if (var24.mapSceneId != -1) {
-            IndexedSprite var20 = HealthBar.mapSceneSprites[var24.mapSceneId];
-            if (var20 != null) {
-               var13 = (var24.sizeX * 4 - var20.subWidth) / 2;
-               var19 = (var24.sizeY * 4 - var20.subHeight) / 2;
-               var20.drawAt(var13 + var1 * 4 + 48, var19 + (104 - var2 - var24.sizeY) * 4 + 48);
-            }
-         } else if (var9 == 9) {
-            var12 = 15658734;
-            if (AbstractByteArrayCopier.method6222(var5)) {
-               var12 = 15597568;
-            }
-
-            int[] var18 = Calendar.sceneMinimapSprite.pixels;
-            var19 = var1 * 4 + (103 - var2) * 2048 + 24624;
-            if (var8 != 0 && var8 != 2) {
-               var18[var19] = var12;
-               var18[var19 + 1 + 512] = var12;
-               var18[var19 + 1024 + 2] = var12;
-               var18[var19 + 1536 + 3] = var12;
-            } else {
-               var18[var19 + 1536] = var12;
-               var18[var19 + 1 + 1024] = var12;
-               var18[var19 + 512 + 2] = var12;
-               var18[var19 + 3] = var12;
-            }
-         }
-      }
-
-      var5 = class139.scene.getFloorDecorationTag(var0, var1, var2);
-      if (0L != var5) {
-         var7 = AttackOption.Entity_unpackID(var5);
-         ObjectComposition var21 = InterfaceParent.getObjectDefinition(var7);
-         if (var21.mapSceneId != -1) {
-            IndexedSprite var22 = HealthBar.mapSceneSprites[var21.mapSceneId];
-            if (var22 != null) {
-               var10 = (var21.sizeX * 4 - var22.subWidth) / 2;
-               int var23 = (var21.sizeY * 4 - var22.subHeight) / 2;
-               var22.drawAt(var10 + var1 * 4 + 48, var23 + (104 - var2 - var21.sizeY) * 4 + 48);
-            }
-         }
-      }
-
    }
 }

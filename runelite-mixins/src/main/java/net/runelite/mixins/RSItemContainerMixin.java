@@ -160,4 +160,19 @@ public abstract class RSItemContainerMixin implements RSItemContainer
 	{
 		return getItemIds().length;
 	}
+
+	@Inject
+	@Override
+	public int count()
+	{
+		int count = 0;
+		for (int itemId : getItemIds())
+		{
+			if (itemId != -1)
+			{
+				count++;
+			}
+		}
+		return count;
+	}
 }

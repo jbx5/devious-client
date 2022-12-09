@@ -1801,4 +1801,7 @@ public interface RSClient extends RSGameEngine, Client
 
 	@Import("staffModLevel")
 	void setStaffModLevel(int level);
+
+	@Import("graphicsCycle")
+	int getGraphicsCycle();
 }

@@ -111,7 +111,7 @@ public class Packets
 				return PlayerPackets.createSixthAction(id, false);
 			case PLAYER_SEVENTH_OPTION:
 				return PlayerPackets.createSeventhAction(id, false);
-			case PLAYER_EIGTH_OPTION:
+			case PLAYER_EIGHTH_OPTION:
 				return PlayerPackets.createEighthAction(id, false);
 			case ITEM_USE_ON_GROUND_ITEM:
 			case WIDGET_TARGET_ON_GROUND_ITEM:

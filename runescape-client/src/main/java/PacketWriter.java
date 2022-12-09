@@ -5,93 +5,93 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dc")
+@ObfuscatedName("de")
 @Implements("PacketWriter")
 public class PacketWriter {
-   @ObfuscatedName("a")
+   @ObfuscatedName("h")
    @ObfuscatedSignature(
-      descriptor = "Lok;"
+      descriptor = "Lou;"
    )
    @Export("socket")
    AbstractSocket socket;
-   @ObfuscatedName("f")
+   @ObfuscatedName("e")
    @ObfuscatedSignature(
-      descriptor = "Lml;"
+      descriptor = "Lmv;"
    )
    @Export("packetBufferNodes")
    IterableNodeDeque packetBufferNodes = new IterableNodeDeque();
-   @ObfuscatedName("c")
+   @ObfuscatedName("v")
    @ObfuscatedGetter(
-      intValue = -2139454429
+      intValue = -1512304017
    )
    @Export("bufferSize")
    int bufferSize = 0;
    @ObfuscatedName("x")
    @ObfuscatedSignature(
-      descriptor = "Lqr;"
+      descriptor = "Lqy;"
    )
    @Export("buffer")
    Buffer buffer = new Buffer(5000);
-   @ObfuscatedName("h")
+   @ObfuscatedName("m")
    @ObfuscatedSignature(
-      descriptor = "Lro;"
+      descriptor = "Lrg;"
    )
    @Export("isaacCipher")
    public IsaacCipher isaacCipher;
-   @ObfuscatedName("j")
+   @ObfuscatedName("q")
    @ObfuscatedSignature(
-      descriptor = "Lqk;"
+      descriptor = "Lqx;"
    )
    @Export("packetBuffer")
    PacketBuffer packetBuffer = new PacketBuffer(40000);
-   @ObfuscatedName("y")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
-      descriptor = "Ljw;"
+      descriptor = "Ljf;"
    )
    @Export("serverPacket")
    ServerPacket serverPacket = null;
-   @ObfuscatedName("d")
+   @ObfuscatedName("r")
    @ObfuscatedGetter(
-      intValue = 394725867
+      intValue = 395481445
    )
    @Export("serverPacketLength")
    int serverPacketLength = 0;
-   @ObfuscatedName("n")
-   boolean field1368 = true;
-   @ObfuscatedName("r")
+   @ObfuscatedName("u")
+   boolean field1430 = true;
+   @ObfuscatedName("b")
    @ObfuscatedGetter(
-      intValue = -1601992317
+      intValue = -562413973
    )
-   int field1371 = 0;
-   @ObfuscatedName("l")
+   int field1420 = 0;
+   @ObfuscatedName("j")
    @ObfuscatedGetter(
-      intValue = 146295327
+      intValue = -1673559747
    )
    @Export("pendingWrites")
    int pendingWrites = 0;
-   @ObfuscatedName("s")
+   @ObfuscatedName("g")
    @ObfuscatedSignature(
-      descriptor = "Ljw;"
+      descriptor = "Ljf;"
    )
-   ServerPacket field1380;
-   @ObfuscatedName("p")
+   ServerPacket field1431;
+   @ObfuscatedName("i")
    @ObfuscatedSignature(
-      descriptor = "Ljw;"
+      descriptor = "Ljf;"
    )
-   ServerPacket field1373;
-   @ObfuscatedName("b")
+   ServerPacket field1432;
+   @ObfuscatedName("o")
    @ObfuscatedSignature(
-      descriptor = "Ljw;"
+      descriptor = "Ljf;"
    )
-   ServerPacket field1381;
+   ServerPacket field1433;
 
    PacketWriter() {
    }
 
-   @ObfuscatedName("a")
+   @ObfuscatedName("h")
    @ObfuscatedSignature(
       descriptor = "(I)V",
-      garbageValue = "-1136497619"
+      garbageValue = "1102121791"
    )
    @Export("clearBuffer")
    final void clearBuffer() {
@@ -99,10 +99,10 @@ public class PacketWriter {
       this.bufferSize = 0;
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("e")
    @ObfuscatedSignature(
       descriptor = "(I)V",
-      garbageValue = "-946579730"
+      garbageValue = "1736028032"
    )
    @Export("flush")
    final void flush() throws IOException {
@@ -127,10 +127,10 @@ public class PacketWriter {
 
    }
 
-   @ObfuscatedName("c")
+   @ObfuscatedName("v")
    @ObfuscatedSignature(
-      descriptor = "(Ljc;I)V",
-      garbageValue = "-292117948"
+      descriptor = "(Ljx;S)V",
+      garbageValue = "21536"
    )
    @Export("addNode")
    public final void addNode(PacketBufferNode var1) {
@@ -142,18 +142,18 @@ public class PacketWriter {
 
    @ObfuscatedName("x")
    @ObfuscatedSignature(
-      descriptor = "(Lok;B)V",
-      garbageValue = "97"
+      descriptor = "(Lou;B)V",
+      garbageValue = "41"
    )
    @Export("setSocket")
    void setSocket(AbstractSocket var1) {
       this.socket = var1;
    }
 
-   @ObfuscatedName("h")
+   @ObfuscatedName("m")
    @ObfuscatedSignature(
       descriptor = "(I)V",
-      garbageValue = "-76224096"
+      garbageValue = "-1012692446"
    )
    @Export("close")
    void close() {
@@ -164,102 +164,73 @@ public class PacketWriter {
 
    }
 
-   @ObfuscatedName("j")
+   @ObfuscatedName("q")
    @ObfuscatedSignature(
       descriptor = "(I)V",
-      garbageValue = "2141925341"
+      garbageValue = "-1728539133"
    )
    @Export("removeSocket")
    void removeSocket() {
       this.socket = null;
    }
 
-   @ObfuscatedName("y")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
-      descriptor = "(I)Lok;",
-      garbageValue = "754617906"
+      descriptor = "(B)Lou;",
+      garbageValue = "121"
    )
    @Export("getSocket")
    AbstractSocket getSocket() {
       return this.socket;
    }
 
-   @ObfuscatedName("a")
+   @ObfuscatedName("h")
    @ObfuscatedSignature(
-      descriptor = "(CI)B",
-      garbageValue = "-1601375638"
+      descriptor = "(Lly;Lly;ZII)V",
+      garbageValue = "1924558705"
    )
-   @Export("charToByteCp1252")
-   public static byte charToByteCp1252(char var0) {
-      byte var1;
-      if (var0 > 0 && var0 < 128 || var0 >= 160 && var0 <= 255) {
-         var1 = (byte)var0;
-      } else if (var0 == 8364) {
-         var1 = -128;
-      } else if (var0 == 8218) {
-         var1 = -126;
-      } else if (var0 == 402) {
-         var1 = -125;
-      } else if (var0 == 8222) {
-         var1 = -124;
-      } else if (var0 == 8230) {
-         var1 = -123;
-      } else if (var0 == 8224) {
-         var1 = -122;
-      } else if (var0 == 8225) {
-         var1 = -121;
-      } else if (var0 == 710) {
-         var1 = -120;
-      } else if (var0 == 8240) {
-         var1 = -119;
-      } else if (var0 == 352) {
-         var1 = -118;
-      } else if (var0 == 8249) {
-         var1 = -117;
-      } else if (var0 == 338) {
-         var1 = -116;
-      } else if (var0 == 381) {
-         var1 = -114;
-      } else if (var0 == 8216) {
-         var1 = -111;
-      } else if (var0 == 8217) {
-         var1 = -110;
-      } else if (var0 == 8220) {
-         var1 = -109;
-      } else if (var0 == 8221) {
-         var1 = -108;
-      } else if (var0 == 8226) {
-         var1 = -107;
-      } else if (var0 == 8211) {
-         var1 = -106;
-      } else if (var0 == 8212) {
-         var1 = -105;
-      } else if (var0 == 732) {
-         var1 = -104;
-      } else if (var0 == 8482) {
-         var1 = -103;
-      } else if (var0 == 353) {
-         var1 = -102;
-      } else if (var0 == 8250) {
-         var1 = -101;
-      } else if (var0 == 339) {
-         var1 = -100;
-      } else if (var0 == 382) {
-         var1 = -98;
-      } else if (var0 == 376) {
-         var1 = -97;
-      } else {
-         var1 = 63;
-      }
-
-      return var1;
+   public static void method2741(AbstractArchive var0, AbstractArchive var1, boolean var2, int var3) {
+      NPCComposition.NpcDefinition_archive = var0;
+      class363.field4361 = var1;
+      GrandExchangeOfferUnitPriceComparator.field4275 = var2;
+      NPCComposition.field2022 = var3;
    }
 
-   @ObfuscatedName("a")
+   @ObfuscatedName("e")
    @ObfuscatedSignature(
-      descriptor = "(II)V",
-      garbageValue = "-801264900"
+      descriptor = "(II)I",
+      garbageValue = "315974479"
    )
-   static void method2655(int var0) {
+   @Export("Widget_unpackTargetMask")
+   public static int Widget_unpackTargetMask(int var0) {
+      return var0 >> 11 & 63;
+   }
+
+   @ObfuscatedName("f")
+   @ObfuscatedSignature(
+      descriptor = "(III)I",
+      garbageValue = "1292831199"
+   )
+   public static int method2729(int var0, int var1) {
+      int var2;
+      for(var2 = 0; var1 > 0; --var1) {
+         var2 = var2 << 1 | var0 & 1;
+         var0 >>>= 1;
+      }
+
+      return var2;
+   }
+
+   @ObfuscatedName("i")
+   @ObfuscatedSignature(
+      descriptor = "(II)Ljava/lang/String;",
+      garbageValue = "1918112547"
+   )
+   static final String method2742(int var0) {
+      if (var0 < 100000) {
+         return "<col=ffff00>" + var0 + "</col>";
+      } else {
+         return var0 < 10000000 ? "<col=ffffff>" + var0 / 1000 + "K" + "</col>" : "<col=00ff80>" + var0 / 1000000 + "M" + "</col>";
+      }
    }
 }

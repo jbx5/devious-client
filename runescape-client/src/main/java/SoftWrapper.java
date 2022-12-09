@@ -3,10 +3,10 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 
-@ObfuscatedName("jh")
+@ObfuscatedName("jt")
 @Implements("SoftWrapper")
 public class SoftWrapper extends Wrapper {
-   @ObfuscatedName("a")
+   @ObfuscatedName("h")
    @Export("ref")
    SoftReference ref;
 
@@ -15,13 +15,13 @@ public class SoftWrapper extends Wrapper {
       this.ref = new SoftReference(var1);
    }
 
-   @ObfuscatedName("a")
+   @ObfuscatedName("h")
    @Export("get")
    Object get() {
       return this.ref.get();
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("e")
    @Export("isSoft")
    boolean isSoft() {
       return true;

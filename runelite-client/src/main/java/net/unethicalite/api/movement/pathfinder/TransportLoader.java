@@ -333,6 +333,9 @@ public class TransportLoader
 			transports.add(itemUseTransport(new WorldPoint(2512, 3476, 0), new WorldPoint(2513, 3468, 0), 954, 1996));
 			transports.add(itemUseTransport(new WorldPoint(2512, 3466, 0), new WorldPoint(2511, 3463, 0), 954, 2020));
 
+			// Edgeville Dungeon
+			transports.add(trapDoorTransport(new WorldPoint(3096, 3468, 0), new WorldPoint(3096, 9867, 0), 1579, 1581));
+
 			if (Inventory.contains(SLASH_ITEMS) || Equipment.contains(SLASH_ITEMS))
 			{
 				for (Pair<WorldPoint, WorldPoint> pair : SLASH_WEB_POINTS)

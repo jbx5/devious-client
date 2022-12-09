@@ -24,6 +24,9 @@
  */
 package net.runelite.api;
 
+import javax.annotation.Nonnull;
+import java.util.HashMap;
+
 /**
  * Represents an object that can be rendered.
  */
@@ -45,4 +48,7 @@ public interface Renderable extends Node
 
 	void setHidden(boolean hidden);
 	boolean isHidden();
+
+	@Nonnull
+	HashMap<Integer, AABB> getAABBMap();
 }

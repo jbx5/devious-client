@@ -1,40 +1,80 @@
-import net.runelite.mapping.Export;
+import java.io.IOException;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("lc")
+@ObfuscatedName("ls")
 public class class319 {
    @ObfuscatedName("h")
-   @Export("SpriteBuffer_yOffsets")
-   static int[] SpriteBuffer_yOffsets;
-
-   @ObfuscatedName("hd")
    @ObfuscatedSignature(
-      descriptor = "(ZB)V",
-      garbageValue = "28"
+      descriptor = "Lls;"
    )
-   @Export("addNpcsToScene")
-   static final void addNpcsToScene(boolean var0) {
-      for(int var1 = 0; var1 < Client.npcCount; ++var1) {
-         NPC var2 = Client.npcs[Client.npcIndices[var1]];
-         if (var2 != null && var2.isVisible() && var2.definition.isVisible == var0 && var2.definition.transformIsVisible()) {
-            int var3 = var2.x >> 7;
-            int var4 = var2.y >> 7;
-            if (var3 >= 0 && var3 < 104 && var4 >= 0 && var4 < 104) {
-               if (var2.field1201 == 1 && (var2.x & 127) == 64 && (var2.y & 127) == 64) {
-                  if (Client.tileLastDrawnActor[var3][var4] == Client.viewportDrawCount) {
-                     continue;
-                  }
+   static final class319 field3786 = new class319(51, 27, 800, 0, 16, 16);
+   @ObfuscatedName("e")
+   @ObfuscatedSignature(
+      descriptor = "Lls;"
+   )
+   static final class319 field3782 = new class319(25, 28, 800, 656, 40, 40);
+   @ObfuscatedName("v")
+   @ObfuscatedGetter(
+      intValue = 1826887281
+   )
+   final int field3783;
+   @ObfuscatedName("x")
+   @ObfuscatedGetter(
+      intValue = -1882364867
+   )
+   final int field3784;
 
-                  Client.tileLastDrawnActor[var3][var4] = Client.viewportDrawCount;
-               }
+   class319(int var1, int var2, int var3, int var4, int var5, int var6) {
+      this.field3783 = var5;
+      this.field3784 = var6;
+   }
 
-               long var5 = SpotAnimationDefinition.calculateTag(0, 0, 1, !var2.definition.isInteractable, Client.npcIndices[var1]);
-               var2.playerCycle = Client.cycle;
-               class139.scene.drawEntity(ApproximateRouteStrategy.Client_plane, var2.x, var2.y, class132.getTileHeight(var2.field1201 * 64 - 64 + var2.x, var2.field1201 * 64 - 64 + var2.y, ApproximateRouteStrategy.Client_plane), var2.field1201 * 64 - 64 + 60, var2, var2.rotation, var5, var2.isWalking);
+   @ObfuscatedName("v")
+   @ObfuscatedSignature(
+      descriptor = "(S)Lch;",
+      garbageValue = "-20617"
+   )
+   static ClientPreferences method6375() {
+      AccessFile var0 = null;
+      ClientPreferences var1 = new ClientPreferences();
+
+      try {
+         var0 = class87.getPreferencesFile("", LoginPacket.field3302.name, false);
+         byte[] var2 = new byte[(int)var0.length()];
+
+         int var4;
+         for(int var3 = 0; var3 < var2.length; var3 += var4) {
+            var4 = var0.read(var2, var3, var2.length - var3);
+            if (var4 == -1) {
+               throw new IOException();
             }
          }
+
+         var1 = new ClientPreferences(new Buffer(var2));
+      } catch (Exception var6) {
       }
 
+      try {
+         if (var0 != null) {
+            var0.close();
+         }
+      } catch (Exception var5) {
+      }
+
+      return var1;
+   }
+
+   @ObfuscatedName("q")
+   @ObfuscatedSignature(
+      descriptor = "(I)V",
+      garbageValue = "-1520113956"
+   )
+   static void method6378() {
+      Messages.Messages_channels.clear();
+      Messages.Messages_hashTable.clear();
+      Messages.Messages_queue.clear();
+      Messages.Messages_count = 0;
    }
 }

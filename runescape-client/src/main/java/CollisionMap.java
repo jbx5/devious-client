@@ -1,47 +1,43 @@
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gr")
+@ObfuscatedName("gw")
 @Implements("CollisionMap")
 public class CollisionMap {
-   @ObfuscatedName("cq")
-   @ObfuscatedSignature(
-      descriptor = "[Lry;"
-   )
-   @Export("worldSelectFlagSprites")
-   static IndexedSprite[] worldSelectFlagSprites;
-   @ObfuscatedName("av")
+   @ObfuscatedName("p")
    @ObfuscatedGetter(
-      intValue = 2020349675
+      intValue = 94760623
+   )
+   @Export("canvasWidth")
+   public static int canvasWidth;
+   @ObfuscatedName("at")
+   @ObfuscatedGetter(
+      intValue = 213236785
    )
    @Export("xInset")
-   public int xInset = 0;
-   @ObfuscatedName("ak")
+   int xInset = 0;
+   @ObfuscatedName("ay")
    @ObfuscatedGetter(
-      intValue = 1900924205
+      intValue = -1374720281
    )
    @Export("yInset")
-   public int yInset = 0;
-   @ObfuscatedName("ae")
+   int yInset = 0;
+   @ObfuscatedName("an")
    @ObfuscatedGetter(
-      intValue = -893901129
+      intValue = -2137393315
    )
    @Export("xSize")
    int xSize;
-   @ObfuscatedName("ap")
+   @ObfuscatedName("ab")
    @ObfuscatedGetter(
-      intValue = -592342081
+      intValue = -1805233665
    )
    @Export("ySize")
    int ySize;
-   @ObfuscatedName("as")
+   @ObfuscatedName("al")
    @Export("flags")
    public int[][] flags;
 
@@ -52,10 +48,10 @@ public class CollisionMap {
       this.clear();
    }
 
-   @ObfuscatedName("a")
+   @ObfuscatedName("h")
    @ObfuscatedSignature(
       descriptor = "(I)V",
-      garbageValue = "1126858921"
+      garbageValue = "744825171"
    )
    @Export("clear")
    public void clear() {
@@ -71,12 +67,12 @@ public class CollisionMap {
 
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("e")
    @ObfuscatedSignature(
       descriptor = "(IIIIZI)V",
-      garbageValue = "-1706440889"
+      garbageValue = "1746124243"
    )
-   public void method4002(int var1, int var2, int var3, int var4, boolean var5) {
+   public void method4142(int var1, int var2, int var3, int var4, boolean var5) {
       var1 -= this.xInset;
       var2 -= this.yInset;
       if (var3 == 0) {
@@ -223,10 +219,10 @@ public class CollisionMap {
 
    }
 
-   @ObfuscatedName("c")
+   @ObfuscatedName("v")
    @ObfuscatedSignature(
       descriptor = "(IIIIZI)V",
-      garbageValue = "1599328162"
+      garbageValue = "606945134"
    )
    @Export("addGameObject")
    public void addGameObject(int var1, int var2, int var3, int var4, boolean var5) {
@@ -252,8 +248,8 @@ public class CollisionMap {
 
    @ObfuscatedName("x")
    @ObfuscatedSignature(
-      descriptor = "(III)V",
-      garbageValue = "-1947960962"
+      descriptor = "(IIB)V",
+      garbageValue = "83"
    )
    @Export("setBlockedByFloor")
    public void setBlockedByFloor(int var1, int var2) {
@@ -263,10 +259,10 @@ public class CollisionMap {
       var10000[var2] |= 2097152;
    }
 
-   @ObfuscatedName("h")
+   @ObfuscatedName("m")
    @ObfuscatedSignature(
       descriptor = "(III)V",
-      garbageValue = "1214087717"
+      garbageValue = "352173417"
    )
    @Export("setBlockedByFloorDec")
    public void setBlockedByFloorDec(int var1, int var2) {
@@ -276,10 +272,10 @@ public class CollisionMap {
       var10000[var2] |= 262144;
    }
 
-   @ObfuscatedName("j")
+   @ObfuscatedName("q")
    @ObfuscatedSignature(
-      descriptor = "(IIII)V",
-      garbageValue = "1657151465"
+      descriptor = "(IIIB)V",
+      garbageValue = "5"
    )
    @Export("setFlag")
    void setFlag(int var1, int var2, int var3) {
@@ -287,12 +283,12 @@ public class CollisionMap {
       var10000[var2] |= var3;
    }
 
-   @ObfuscatedName("y")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
-      descriptor = "(IIIIZS)V",
-      garbageValue = "217"
+      descriptor = "(IIIIZB)V",
+      garbageValue = "10"
    )
-   public void method4025(int var1, int var2, int var3, int var4, boolean var5) {
+   public void method4147(int var1, int var2, int var3, int var4, boolean var5) {
       var1 -= this.xInset;
       var2 -= this.yInset;
       if (var3 == 0) {
@@ -439,10 +435,10 @@ public class CollisionMap {
 
    }
 
-   @ObfuscatedName("d")
+   @ObfuscatedName("r")
    @ObfuscatedSignature(
       descriptor = "(IIIIIZB)V",
-      garbageValue = "-77"
+      garbageValue = "-21"
    )
    @Export("setFlagOffNonSquare")
    public void setFlagOffNonSquare(int var1, int var2, int var3, int var4, int var5, boolean var6) {
@@ -472,10 +468,10 @@ public class CollisionMap {
 
    }
 
-   @ObfuscatedName("n")
+   @ObfuscatedName("u")
    @ObfuscatedSignature(
       descriptor = "(IIII)V",
-      garbageValue = "1419756940"
+      garbageValue = "-294771175"
    )
    @Export("setFlagOff")
    void setFlagOff(int var1, int var2, int var3) {
@@ -483,215 +479,50 @@ public class CollisionMap {
       var10000[var2] &= ~var3;
    }
 
-   @ObfuscatedName("r")
+   @ObfuscatedName("b")
    @ObfuscatedSignature(
       descriptor = "(III)V",
-      garbageValue = "1323410714"
+      garbageValue = "649174852"
    )
-   public void method4009(int var1, int var2) {
+   public void method4174(int var1, int var2) {
       var1 -= this.xInset;
       var2 -= this.yInset;
       int[] var10000 = this.flags[var1];
       var10000[var2] &= -262145;
    }
 
-   @ObfuscatedName("d")
+   @ObfuscatedName("if")
    @ObfuscatedSignature(
-      descriptor = "([BIIB)Z",
-      garbageValue = "0"
+      descriptor = "(B)V",
+      garbageValue = "-76"
    )
-   static final boolean method4036(byte[] var0, int var1, int var2) {
-      boolean var3 = true;
-      Buffer var4 = new Buffer(var0);
-      int var5 = -1;
-
-      label71:
-      while(true) {
-         int var6 = var4.readIncrSmallSmart();
-         if (var6 == 0) {
-            return var3;
-         }
-
-         var5 += var6;
-         int var7 = 0;
-         boolean var8 = false;
-
-         while(true) {
-            int var9;
-            while(!var8) {
-               var9 = var4.readUShortSmart();
-               if (var9 == 0) {
-                  continue label71;
-               }
-
-               var7 += var9 - 1;
-               int var10 = var7 & 63;
-               int var11 = var7 >> 6 & 63;
-               int var12 = var4.readUnsignedByte() >> 2;
-               int var13 = var11 + var1;
-               int var14 = var10 + var2;
-               if (var13 > 0 && var14 > 0 && var13 < 103 && var14 < 103) {
-                  ObjectComposition var15 = InterfaceParent.getObjectDefinition(var5);
-                  if (var12 != 22 || !Client.isLowDetail || var15.int1 != 0 || var15.interactType == 1 || var15.boolean2) {
-                     if (!var15.needsModelFiles()) {
-                        ++Client.field559;
-                        var3 = false;
-                     }
-
-                     var8 = true;
-                  }
-               }
-            }
-
-            var9 = var4.readUShortSmart();
-            if (var9 == 0) {
-               break;
-            }
-
-            var4.readUnsignedByte();
-         }
+   static final void method4176() {
+      Client.field691 = 0;
+      int var0 = class154.baseX * 64 + (class155.localPlayer.x >> 7);
+      int var1 = class365.baseY * 64 + (class155.localPlayer.y >> 7);
+      if (var0 >= 3053 && var0 <= 3156 && var1 >= 3056 && var1 <= 3136) {
+         Client.field691 = 1;
       }
+
+      if (var0 >= 3072 && var0 <= 3118 && var1 >= 9492 && var1 <= 9535) {
+         Client.field691 = 1;
+      }
+
+      if (Client.field691 == 1 && var0 >= 3139 && var0 <= 3199 && var1 >= 3008 && var1 <= 3062) {
+         Client.field691 = 0;
+      }
+
    }
 
-   @ObfuscatedName("n")
+   @ObfuscatedName("nx")
    @ObfuscatedSignature(
-      descriptor = "(I)Ljava/util/Date;",
-      garbageValue = "-1438921464"
+      descriptor = "(I)V",
+      garbageValue = "339045513"
    )
-   static Date method4028() throws ParseException {
-      SimpleDateFormat var0 = new SimpleDateFormat("ddMMyyyyHH", Locale.ENGLISH);
-      var0.setLenient(false);
-      StringBuilder var1 = new StringBuilder();
-      String[] var2 = Login.field914;
-
-      for(int var3 = 0; var3 < var2.length; ++var3) {
-         String var4 = var2[var3];
-         if (var4 == null) {
-            class20.method291("Date not valid.", "Please ensure all characters are populated.", "");
-            return null;
-         }
-
-         var1.append(var4);
+   static void method4157() {
+      if (Client.oculusOrbState == 1) {
+         Client.field529 = true;
       }
 
-      var1.append("12");
-      return var0.parse(var1.toString());
-   }
-
-   @ObfuscatedName("hq")
-   @ObfuscatedSignature(
-      descriptor = "(IIZI)V",
-      garbageValue = "406167973"
-   )
-   static final void method4019(int var0, int var1, boolean var2) {
-      if (!var2 || var0 != class343.field4234 || ServerPacket.field3133 != var1) {
-         class343.field4234 = var0;
-         ServerPacket.field3133 = var1;
-         class21.updateGameState(25);
-         class145.drawLoadingMessage("Loading - please wait.", true);
-         int var3 = KeyHandler.baseX * 64;
-         int var4 = class158.baseY * 64;
-         KeyHandler.baseX = (var0 - 6) * 8;
-         class158.baseY = (var1 - 6) * 8;
-         int var5 = KeyHandler.baseX * 64 - var3;
-         int var6 = class158.baseY * 64 - var4;
-         var3 = KeyHandler.baseX * 64;
-         var4 = class158.baseY * 64;
-
-         int var7;
-         int var9;
-         int[] var10000;
-         for(var7 = 0; var7 < 65536; ++var7) {
-            NPC var19 = Client.npcs[var7];
-            if (var19 != null) {
-               for(var9 = 0; var9 < 10; ++var9) {
-                  var10000 = var19.pathX;
-                  var10000[var9] -= var5;
-                  var10000 = var19.pathY;
-                  var10000[var9] -= var6;
-               }
-
-               var19.x -= var5 * 128;
-               var19.y -= var6 * 128;
-            }
-         }
-
-         for(var7 = 0; var7 < 2048; ++var7) {
-            Player var22 = Client.players[var7];
-            if (var22 != null) {
-               for(var9 = 0; var9 < 10; ++var9) {
-                  var10000 = var22.pathX;
-                  var10000[var9] -= var5;
-                  var10000 = var22.pathY;
-                  var10000[var9] -= var6;
-               }
-
-               var22.x -= var5 * 128;
-               var22.y -= var6 * 128;
-            }
-         }
-
-         byte var20 = 0;
-         byte var8 = 104;
-         byte var21 = 1;
-         if (var5 < 0) {
-            var20 = 103;
-            var8 = -1;
-            var21 = -1;
-         }
-
-         byte var10 = 0;
-         byte var11 = 104;
-         byte var12 = 1;
-         if (var6 < 0) {
-            var10 = 103;
-            var11 = -1;
-            var12 = -1;
-         }
-
-         int var14;
-         for(int var13 = var20; var8 != var13; var13 += var21) {
-            for(var14 = var10; var14 != var11; var14 += var12) {
-               int var15 = var13 + var5;
-               int var16 = var6 + var14;
-
-               for(int var17 = 0; var17 < 4; ++var17) {
-                  if (var15 >= 0 && var16 >= 0 && var15 < 104 && var16 < 104) {
-                     Client.groundItems[var17][var13][var14] = Client.groundItems[var17][var15][var16];
-                  } else {
-                     Client.groundItems[var17][var13][var14] = null;
-                  }
-               }
-            }
-         }
-
-         for(PendingSpawn var18 = (PendingSpawn)Client.pendingSpawns.last(); var18 != null; var18 = (PendingSpawn)Client.pendingSpawns.previous()) {
-            var18.x -= var5;
-            var18.y -= var6;
-            if (var18.x < 0 || var18.y < 0 || var18.x >= 104 || var18.y >= 104) {
-               var18.remove();
-            }
-         }
-
-         if (Client.destinationX != 0) {
-            Client.destinationX -= var5;
-            Client.destinationY -= var6;
-         }
-
-         Client.soundEffectCount = 0;
-         Client.isCameraLocked = false;
-         TextureProvider.cameraX -= var5 << 7;
-         class313.cameraZ -= var6 << 7;
-         class31.oculusOrbFocalPointX -= var5 << 7;
-         PendingSpawn.oculusOrbFocalPointY -= var6 << 7;
-         Client.field519 = -1;
-         Client.graphicsObjects.clear();
-         Client.projectiles.clear();
-
-         for(var14 = 0; var14 < 4; ++var14) {
-            Client.collisionMaps[var14].clear();
-         }
-
-      }
    }
 }

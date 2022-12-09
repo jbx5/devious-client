@@ -19,14 +19,14 @@ public abstract class RSNPCCompositionMixin implements RSNPCComposition
 	@Override
 	public HeadIcon getOverheadIcon()
 	{
-		int overheadIcon = getRsOverheadIcon();
-
-		if (overheadIcon == -1)
+		short[] spriteIndexes = getHeadIconSpriteIndexes();
+		int[] archiveIds = getHeadIconArchiveIds();
+		if (archiveIds == null || spriteIndexes == null)
 		{
 			return null;
 		}
 
-		return HeadIcon.values()[overheadIcon];
+		return HeadIcon.values()[spriteIndexes[0]];
 	}
 
 	@FieldHook("actions")

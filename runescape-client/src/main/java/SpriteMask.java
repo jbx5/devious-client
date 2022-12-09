@@ -4,30 +4,22 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kl")
+@ObfuscatedName("kv")
 @Implements("SpriteMask")
 public class SpriteMask extends DualNode {
-   @ObfuscatedName("j")
-   @ObfuscatedSignature(
-      descriptor = "Llg;"
-   )
-   @Export("ItemDefinition_archive")
-   public static AbstractArchive ItemDefinition_archive;
-   @ObfuscatedName("fz")
-   static String field3386;
-   @ObfuscatedName("a")
+   @ObfuscatedName("h")
    @ObfuscatedGetter(
-      intValue = -675535187
+      intValue = 1698600083
    )
    @Export("width")
    public final int width;
-   @ObfuscatedName("f")
+   @ObfuscatedName("e")
    @ObfuscatedGetter(
-      intValue = 1355858271
+      intValue = 430835713
    )
    @Export("height")
    public final int height;
-   @ObfuscatedName("c")
+   @ObfuscatedName("v")
    @Export("xWidths")
    public final int[] xWidths;
    @ObfuscatedName("x")
@@ -41,10 +33,10 @@ public class SpriteMask extends DualNode {
       this.xStarts = var4;
    }
 
-   @ObfuscatedName("a")
+   @ObfuscatedName("h")
    @ObfuscatedSignature(
       descriptor = "(III)Z",
-      garbageValue = "1742087999"
+      garbageValue = "-203203339"
    )
    @Export("contains")
    public boolean contains(int var1, int var2) {
