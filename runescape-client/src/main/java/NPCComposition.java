@@ -24,7 +24,8 @@ public class NPCComposition extends DualNode {
    @ObfuscatedGetter(
       intValue = 646794717
    )
-   static int field2022;
+   @Export("defaultHeadIconArchive")
+   static int defaultHeadIconArchive;
    @ObfuscatedName("q")
    @ObfuscatedSignature(
       descriptor = "Ljv;"
@@ -347,7 +348,7 @@ public class NPCComposition extends DualNode {
             if (GrandExchangeOfferUnitPriceComparator.field4275) {
                this.headIconArchiveIds = new int[1];
                this.headIconSpriteIndex = new short[1];
-               this.headIconArchiveIds[0] = field2022;
+               this.headIconArchiveIds[0] = defaultHeadIconArchive;
                this.headIconSpriteIndex[0] = (short)var1.readUnsignedShort();
             } else {
                var3 = var1.readUnsignedByte();
