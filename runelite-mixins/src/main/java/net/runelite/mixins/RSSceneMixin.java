@@ -45,6 +45,8 @@ import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSNode;
 import net.runelite.rs.api.RSNodeDeque;
 import net.runelite.rs.api.RSPlayer;
+import net.runelite.rs.api.RSRenderable;
+import net.runelite.rs.api.RSRuneLiteObject;
 import net.runelite.rs.api.RSScene;
 import net.runelite.rs.api.RSSceneTileModel;
 import net.runelite.rs.api.RSTile;
@@ -1303,6 +1305,60 @@ public abstract class RSSceneMixin implements RSScene
 		else
 		{
 			renderable.draw(orientation, pitchSin, pitchCos, yawSin, yawCos, x, y, z, hash);
+		}
+	}
+
+	@Copy("drawEntity")
+	@Replace("drawEntity")
+	public boolean copy$drawEntity(int level, int x, int y, int z, int radius, Renderable renderable, int orientation, long var8, boolean drawFrontTilesFirst)
+	{
+		if (renderable == null)
+		{
+			return true;
+		}
+		else
+		{
+			if (renderable instanceof RSRuneLiteObject)
+			{
+				RSRuneLiteObject rSRuneLiteObject = (RSRuneLiteObject) renderable;
+				radius = rSRuneLiteObject.getRadius();
+				orientation = rSRuneLiteObject.getOrientation();
+				drawFrontTilesFirst = rSRuneLiteObject.drawFrontTilesFirst();
+			}
+
+			int var11 = x - radius;
+			int var12 = y - radius;
+			int var13 = radius + x;
+			int var14 = y + radius;
+			if (drawFrontTilesFirst)
+			{
+				if (orientation > 640 && orientation < 1408)
+				{
+					var14 += 128;
+				}
+
+				if (orientation > 1152 && orientation < 1920)
+				{
+					var13 += 128;
+				}
+
+				if (orientation > 1664 || orientation < 384)
+				{
+					var12 -= 128;
+				}
+
+				if (orientation > 128 && orientation < 896)
+				{
+					var11 -= 128;
+				}
+			}
+
+			var11 /= 128;
+			var12 /= 128;
+			var13 /= 128;
+			var14 /= 128;
+
+			return newGameObject(level, var11, var12, var13 - var11 + 1, var14 - var12 + 1, x, y, z, (RSRenderable) renderable, orientation, true, var8, 0);
 		}
 	}
 }
