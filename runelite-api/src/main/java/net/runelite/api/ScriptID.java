@@ -276,7 +276,7 @@ public final class ScriptID
 	/**
 	 * Builds the widget for making an offer in Grand Exchange
 	 */
-	@ScriptArguments(integer = 16)
+	@ScriptArguments(integer = 17)
 	public static final int GE_OFFERS_SETUP_BUILD = 779;
 
 	/**
