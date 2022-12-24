@@ -1808,6 +1808,7 @@ public interface Client extends OAuthApi, GameEngine
 	 *
 	 * @return the number of client ticks an item has been pressed
 	 */
+	@Deprecated
 	int getItemPressedDuration();
 
 	/**
