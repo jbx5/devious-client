@@ -407,6 +407,18 @@ public class Hooks implements Callbacks
 		}
 		else
 		{
+			if (stretchedImage != null)
+			{
+				log.debug("Releasing stretched volatile image");
+
+				stretchedGraphics.dispose();
+				stretchedImage.flush();
+
+				stretchedGraphics = null;
+				stretchedImage = null;
+				lastStretchedDimensions = null;
+			}
+
 			finalImage = image;
 		}
 
