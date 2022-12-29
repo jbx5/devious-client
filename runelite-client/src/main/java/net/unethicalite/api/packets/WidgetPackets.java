@@ -206,6 +206,11 @@ public class WidgetPackets
 		createContinueObjectPacket(itemId).send();
 	}
 
+	public static void queueWidgetTypePacket(int widgetId)
+	{
+		createWidgetTypePacket(widgetId).send();
+	}
+
 	public static PacketBufferNode createType1Action(int widgetId)
 	{
 		var client = Static.getClient();
@@ -383,6 +388,22 @@ public class WidgetPackets
 		var clientPacket = Game.getClientPacket();
 		var packetBufferNode = Static.getClient().preparePacket(clientPacket.RESUME_OBJDIALOG(), client.getPacketWriter().getIsaacCipher());
 		packetBufferNode.getPacketBuffer().writeShort(itemId);
+		return packetBufferNode;
+	}
+
+	/*
+	Not entirely sure what the correct naming for this packet would be.
+	But here's an example of how it's used.
+	Example is at the tannery.
+	Each menu option appears to have it's own widget and Widget ID.
+	https://i.imgur.com/OTmM4yQ.png
+	 */
+	public static PacketBufferNode createWidgetTypePacket(int widgetId)
+	{
+		var client = Static.getClient();
+		var clientPacket = Game.getClientPacket();
+		var packetBufferNode = Static.getClient().preparePacket(clientPacket.WIDGET_TYPE(), client.getPacketWriter().getIsaacCipher());
+		packetBufferNode.getPacketBuffer().writeInt(widgetId);
 		return packetBufferNode;
 	}
 }

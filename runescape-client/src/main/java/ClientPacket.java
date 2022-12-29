@@ -336,7 +336,7 @@ public class ClientPacket implements class274 {
    @ObfuscatedSignature(
       descriptor = "Ljp;"
    )
-   public static final ClientPacket field3133 = new ClientPacket(65, 4);
+   public static final ClientPacket WIDGET_TYPE = new ClientPacket(65, 4);
    @ObfuscatedName("br")
    @ObfuscatedSignature(
       descriptor = "Ljp;"
