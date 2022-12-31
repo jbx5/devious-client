@@ -81,14 +81,14 @@ public abstract class RSPlayerMixin implements RSPlayer
 
 		if (rsName == null)
 		{
-			return "null";
+			return null;
 		}
 
 		String name = rsName.getName();
 
 		if (name == null)
 		{
-			return "null";
+			return null;
 		}
 
 		return name.replace('\u00A0', ' ');
