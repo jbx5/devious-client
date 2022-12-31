@@ -22,45 +22,20 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.api;
-
-import net.runelite.api.worldmap.WorldMap;
+package net.runelite.api.worldmap;
 
 /**
- * @see WorldMap
+ * Represents data for a worldmap surface
  */
-@Deprecated
-public interface RenderOverview extends WorldMap
+public interface WorldMapData
 {
-	WorldMapData getWorldMapData();
-
-	WorldPoint getMouseLocation();
-
-	int getX(int canvasX);
-
-	int getY(int canvasY);
-
-	WorldPoint getWorldPoint(int canvasX, int canvasY);
-
-	WorldPoint getWorldPointFromMap(int mapX, int mapY);
-
-	int getWorldMapDisplayWidth();
-
-	int getWorldMapDisplayHeight();
-
-	int getWorldMapDisplayX();
-
-	int getWorldMapDisplayY();
-
-	int getWorldMapX(int worldX);
-
-	int getWorldMapY(int worldY);
-
-	int getDisplayX();
-
-	int getDisplayY();
-
-	int getWorldMapX();
-
-	int getWorldMapY();
+	/**
+	 * Checks whether the passed coordinates are on the surface of the
+	 * world map.
+	 *
+	 * @param x x-axis coordinate
+	 * @param y y-axis coordinate
+	 * @return true if the coordinate is on the surface, false otherwise
+	 */
+	boolean surfaceContainsPosition(int x, int y);
 }
