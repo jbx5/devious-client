@@ -99,10 +99,7 @@ public abstract class LoopedPlugin extends Plugin implements Runnable
 
 	public void stop()
 	{
-		if (task != null)
-		{
-			task.cancel(true);
-		}
+		task.cancel(true);
 	}
 
 	private static class LoggableExecutor extends ScheduledThreadPoolExecutor

@@ -53,8 +53,7 @@ public class LoopedPluginManager
 			return;
 		}
 
-		while (currentLoop != null && currentLoop.isAlive()
-			|| loopedPlugin != null && loopedPlugin.isRunning())
+		while (currentLoop.isAlive() || loopedPlugin.isRunning())
 		{
 			loopedPlugin.stop();
 		}
