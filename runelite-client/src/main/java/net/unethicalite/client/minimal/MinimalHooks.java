@@ -28,10 +28,8 @@ import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.BufferProvider;
 import net.runelite.api.Client;
 import net.runelite.api.MainBufferProvider;
-import net.runelite.api.RenderOverview;
 import net.runelite.api.Renderable;
 import net.runelite.api.Skill;
-import net.runelite.api.WorldMapManager;
 import net.runelite.api.events.BeforeMenuRender;
 import net.runelite.api.events.BeforeRender;
 import net.runelite.api.events.FakeXpDrop;
@@ -42,6 +40,8 @@ import net.runelite.api.hooks.Callbacks;
 import net.runelite.api.hooks.DrawCallbacks;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetItem;
+import net.runelite.api.worldmap.WorldMap;
+import net.runelite.api.worldmap.WorldMapRenderer;
 import net.runelite.client.callback.ClientThread;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
@@ -287,19 +287,17 @@ public class MinimalHooks implements Callbacks
 			return;
 		}
 
-		RenderOverview renderOverview = client.getRenderOverview();
-
-		if (renderOverview == null)
+		WorldMap worldMap = client.getWorldMap();
+		if (worldMap == null)
 		{
 			return;
 		}
 
-		WorldMapManager manager = renderOverview.getWorldMapManager();
-
+		WorldMapRenderer manager = worldMap.getWorldMapRenderer();
 		if (manager != null && manager.isLoaded())
 		{
 			log.debug("World map was closed, reinitializing");
-			renderOverview.initializeWorldMap(renderOverview.getWorldMapData());
+			worldMap.initializeWorldMap(worldMap.getWorldMapData());
 		}
 	}
 

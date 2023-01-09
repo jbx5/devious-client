@@ -1129,6 +1129,13 @@ public interface Client extends OAuthApi, GameEngine
 	Object getDBTableField(int rowID, int column, int tupleIndex, int fieldIndex);
 
 	/**
+	 * Gets an array of all world areas
+	 *
+	 * @return the world areas
+	 */
+	MapElementConfig[] getMapElementConfigs();
+
+	/**
 	 * Get a map element config by id
 	 *
 	 * @param id the id

@@ -4,9 +4,9 @@ import net.runelite.api.Client;
 import net.runelite.api.Locatable;
 import net.runelite.api.Perspective;
 import net.runelite.api.Point;
-import net.runelite.api.RenderOverview;
 import net.runelite.api.Tile;
 import net.runelite.api.coords.WorldPoint;
+import net.runelite.api.worldmap.WorldMap;
 import net.runelite.client.ui.overlay.OverlayUtil;
 import net.unethicalite.api.movement.pathfinder.CollisionMap;
 import net.unethicalite.api.movement.pathfinder.TransportLoader;
@@ -36,9 +36,9 @@ public class DrawUtils
 
 	public static void drawOnMap(Graphics2D graphics, WorldPoint point, Color color)
 	{
-		RenderOverview ro = Static.getClient().getRenderOverview();
+		WorldMap wm = Static.getClient().getWorldMap();
 
-		float pixelsPerTile = ro.getWorldMapZoom();
+		float pixelsPerTile = wm.getWorldMapZoom();
 		int tileCenterPixel = (int) Math.ceil(pixelsPerTile / 2);
 
 		Point tile = CoordUtils.worldPointToWorldMap(point);

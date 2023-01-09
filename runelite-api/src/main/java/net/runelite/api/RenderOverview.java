@@ -33,34 +33,4 @@ import net.runelite.api.worldmap.WorldMap;
 public interface RenderOverview extends WorldMap
 {
 	WorldMapData getWorldMapData();
-
-	WorldPoint getMouseLocation();
-
-	int getX(int canvasX);
-
-	int getY(int canvasY);
-
-	WorldPoint getWorldPoint(int canvasX, int canvasY);
-
-	WorldPoint getWorldPointFromMap(int mapX, int mapY);
-
-	int getWorldMapDisplayWidth();
-
-	int getWorldMapDisplayHeight();
-
-	int getWorldMapDisplayX();
-
-	int getWorldMapDisplayY();
-
-	int getWorldMapX(int worldX);
-
-	int getWorldMapY(int worldY);
-
-	int getDisplayX();
-
-	int getDisplayY();
-
-	int getWorldMapX();
-
-	int getWorldMapY();
 }

@@ -59,6 +59,7 @@ import net.runelite.api.Player;
 import net.runelite.api.Point;
 import net.runelite.api.Prayer;
 import net.runelite.api.Projectile;
+import net.runelite.api.RenderOverview;
 import net.runelite.api.ScriptEvent;
 import net.runelite.api.Skill;
 import net.runelite.api.SpritePixels;
@@ -3341,6 +3342,13 @@ public abstract class RSClientMixin implements RSClient
 	public boolean[] getPressedKeys()
 	{
 		return this.getKeyHandler().getPressedKeys();
+	}
+
+	@Inject
+	@Override
+	public RenderOverview getRenderOverview()
+	{
+		return (RenderOverview) client.getWorldMap();
 	}
 }
 
