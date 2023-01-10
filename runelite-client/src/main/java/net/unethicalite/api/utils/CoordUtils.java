@@ -112,7 +112,7 @@ public class CoordUtils
 				return null;
 			}
 
-			final int angle = client.getMapAngle() & 0x7FF;
+			final int angle = client.getCameraYawTarget() & 0x7FF;
 
 			final int sin = SINE[angle];
 			final int cos = COSINE[angle];
