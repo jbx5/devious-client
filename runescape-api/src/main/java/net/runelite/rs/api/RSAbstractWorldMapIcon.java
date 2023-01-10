@@ -10,5 +10,5 @@ public interface RSAbstractWorldMapIcon extends WorldMapIcon
 	int getType();
 
 	@Import("coord1")
-	RSCoord getRSCoordidate();
+	RSCoord getRSCoordinate();
 }

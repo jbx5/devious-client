@@ -12,6 +12,6 @@ public abstract class RSWorldMapIconMixin implements RSAbstractWorldMapIcon
 	@Override
 	public WorldPoint getCoordinate()
 	{
-		return new WorldPoint(getRSCoordidate().getX(), getRSCoordidate().getY(), getRSCoordidate().getPlane());
+		return new WorldPoint(getRSCoordinate().getX(), getRSCoordinate().getY(), getRSCoordinate().getPlane());
 	}
 }
