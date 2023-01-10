@@ -320,7 +320,7 @@ public class ConfigManager
 			return;
 		}
 
-		log.debug("Loading in config from disk for upload");
+		log.debug("Syncing properties from {}", propertiesFile);
 		swapProperties(properties, true);
 	}
 
@@ -343,6 +343,8 @@ public class ConfigManager
 			log.warn("Backup failed, skipping import", e);
 			return null;
 		}
+
+		log.info("Importing local settings");
 
 		syncPropertiesFromFile(getLocalPropertiesFile());
 
