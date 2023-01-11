@@ -24,7 +24,6 @@
  */
 package net.runelite.client.callback;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -43,10 +42,9 @@ import javax.inject.Singleton;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.api.MainBufferProvider;
-import net.runelite.api.RenderOverview;
 import net.runelite.api.Renderable;
 import net.runelite.api.Skill;
-import net.runelite.api.WorldMapManager;
+import net.runelite.api.worldmap.WorldMapRenderer;
 import net.runelite.api.events.BeforeRender;
 import net.runelite.api.events.FakeXpDrop;
 import net.runelite.api.events.GameStateChanged;
@@ -56,6 +54,7 @@ import net.runelite.api.hooks.Callbacks;
 import net.runelite.api.widgets.Widget;
 import static net.runelite.api.widgets.WidgetInfo.WORLD_MAP_VIEW;
 import net.runelite.api.widgets.WidgetItem;
+import net.runelite.api.worldmap.WorldMap;
 import net.runelite.client.Notifier;
 import net.runelite.client.chat.ChatMessageManager;
 import net.runelite.client.eventbus.EventBus;
@@ -253,19 +252,17 @@ public class Hooks implements Callbacks
 			return;
 		}
 
-		RenderOverview renderOverview = client.getRenderOverview();
-
-		if (renderOverview == null)
+		WorldMap worldMap = client.getWorldMap();
+		if (worldMap == null)
 		{
 			return;
 		}
 
-		WorldMapManager manager = renderOverview.getWorldMapManager();
-
+		WorldMapRenderer manager = worldMap.getWorldMapRenderer();
 		if (manager != null && manager.isLoaded())
 		{
 			log.debug("World map was closed, reinitializing");
-			renderOverview.initializeWorldMap(renderOverview.getWorldMapData());
+			worldMap.initializeWorldMap(worldMap.getWorldMapData());
 		}
 	}
 
@@ -374,27 +371,36 @@ public class Hooks implements Callbacks
 			GraphicsConfiguration gc = clientUi.getGraphicsConfiguration();
 			Dimension stretchedDimensions = client.getStretchedDimensions();
 
-			if (lastStretchedDimensions == null || !lastStretchedDimensions.equals(stretchedDimensions)
-				|| (stretchedImage != null && stretchedImage.validate(gc) == VolatileImage.IMAGE_INCOMPATIBLE))
+			int status = -1;
+			if (!stretchedDimensions.equals(lastStretchedDimensions)
+				|| stretchedImage == null
+				|| (status = stretchedImage.validate(gc)) != VolatileImage.IMAGE_OK)
 			{
-				/*
-					Reuse the resulting image instance to avoid creating an extreme amount of objects
-				 */
-				stretchedImage = gc.createCompatibleVolatileImage(stretchedDimensions.width, stretchedDimensions.height);
+				log.debug("Volatile image non-OK status: {}", status);
+
+				// if IMAGE_INCOMPATIBLE the image and g2d need to be rebuilt, otherwise
+				// if IMAGE_RESTORED only the g2d needs to be rebuilt
 
 				if (stretchedGraphics != null)
 				{
 					stretchedGraphics.dispose();
 				}
+
+				if (!stretchedDimensions.equals(lastStretchedDimensions)
+					|| stretchedImage == null
+					|| status == VolatileImage.IMAGE_INCOMPATIBLE)
+				{
+					if (stretchedImage != null)
+					{
+						// VolatileImage javadocs says this proactively releases the resources used by the VolatileImage
+						stretchedImage.flush();
+					}
+
+					stretchedImage = gc.createCompatibleVolatileImage(stretchedDimensions.width, stretchedDimensions.height);
+					lastStretchedDimensions = stretchedDimensions;
+				}
+
 				stretchedGraphics = (Graphics2D) stretchedImage.getGraphics();
-
-				lastStretchedDimensions = stretchedDimensions;
-
-				/*
-					Fill Canvas before drawing stretched image to prevent artifacts.
-				*/
-				graphics.setColor(Color.BLACK);
-				graphics.fillRect(0, 0, client.getCanvas().getWidth(), client.getCanvas().getHeight());
 			}
 
 			stretchedGraphics.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
@@ -407,6 +413,18 @@ public class Hooks implements Callbacks
 		}
 		else
 		{
+			if (stretchedImage != null)
+			{
+				log.debug("Releasing stretched volatile image");
+
+				stretchedGraphics.dispose();
+				stretchedImage.flush();
+
+				stretchedGraphics = null;
+				stretchedImage = null;
+				lastStretchedDimensions = null;
+			}
+
 			finalImage = image;
 		}
 

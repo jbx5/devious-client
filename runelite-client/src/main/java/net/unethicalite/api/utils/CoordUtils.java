@@ -2,11 +2,11 @@ package net.unethicalite.api.utils;
 
 import net.runelite.api.Client;
 import net.runelite.api.Point;
-import net.runelite.api.RenderOverview;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
+import net.runelite.api.worldmap.WorldMap;
 import net.unethicalite.api.widgets.Widgets;
 import net.unethicalite.client.Static;
 
@@ -21,14 +21,14 @@ public class CoordUtils
 {
 	public static Point worldPointToWorldMap(WorldPoint worldPoint)
 	{
-		RenderOverview ro = Static.getClient().getRenderOverview();
+		WorldMap wm = Static.getClient().getWorldMap();
 
-		if (!ro.getWorldMapData().surfaceContainsPosition(worldPoint.getX(), worldPoint.getY()))
+		if (!wm.getWorldMapData().surfaceContainsPosition(worldPoint.getX(), worldPoint.getY()))
 		{
 			return null;
 		}
 
-		float pixelsPerTile = ro.getWorldMapZoom();
+		float pixelsPerTile = wm.getWorldMapZoom();
 
 		Widget map = Widgets.get(WidgetInfo.WORLD_MAP_VIEW);
 		if (map != null)
@@ -38,7 +38,7 @@ public class CoordUtils
 			int widthInTiles = (int) Math.ceil(worldMapRect.getWidth() / pixelsPerTile);
 			int heightInTiles = (int) Math.ceil(worldMapRect.getHeight() / pixelsPerTile);
 
-			Point worldMapPosition = ro.getWorldMapPosition();
+			Point worldMapPosition = wm.getWorldMapPosition();
 
 			//Offset in tiles from anchor sides
 			int yTileMax = worldMapPosition.getY() - heightInTiles / 2;
@@ -64,9 +64,9 @@ public class CoordUtils
 
 	public static WorldPoint worldMapToWorldPoint(Point point)
 	{
-		float zoom = Static.getClient().getRenderOverview().getWorldMapZoom();
-		RenderOverview renderOverview = Static.getClient().getRenderOverview();
-		final WorldPoint mapPoint = new WorldPoint(renderOverview.getWorldMapPosition().getX(), renderOverview.getWorldMapPosition().getY(), 0);
+		float zoom = Static.getClient().getWorldMap().getWorldMapZoom();
+		WorldMap worldMap = Static.getClient().getWorldMap();
+		final WorldPoint mapPoint = new WorldPoint(worldMap.getWorldMapPosition().getX(), worldMap.getWorldMapPosition().getY(), 0);
 		final Point middle = worldPointToWorldMap(mapPoint);
 		if (middle == null)
 		{
@@ -112,7 +112,7 @@ public class CoordUtils
 				return null;
 			}
 
-			final int angle = client.getMapAngle() & 0x7FF;
+			final int angle = client.getCameraYawTarget() & 0x7FF;
 
 			final int sin = SINE[angle];
 			final int cos = COSINE[angle];

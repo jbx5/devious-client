@@ -5,18 +5,18 @@ import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.rs.api.RSWorldMap;
-import net.runelite.rs.api.RSWorldMapManager;
+import net.runelite.rs.api.RSWorldMapRenderer;
 
 @Mixin(RSWorldMap.class)
 public abstract class RSWorldMapMixin implements RSWorldMap
 {
-	@Override
 	@Inject
+	@Override
 	public Point getWorldMapPosition()
 	{
-		RSWorldMapManager worldMapManager = getWorldMapManager();
-		int worldX = getWorldMapX() + worldMapManager.getSurfaceOffsetX();
-		int worldY = getWorldMapY() + worldMapManager.getSurfaceOffsetY();
+		RSWorldMapRenderer worldMapRenderer = getWorldMapRenderer();
+		int worldX = getWorldMapX() + worldMapRenderer.getSurfaceOffsetX();
+		int worldY = getWorldMapY() + worldMapRenderer.getSurfaceOffsetY();
 		return new Point(worldX, worldY);
 	}
 
@@ -25,5 +25,4 @@ public abstract class RSWorldMapMixin implements RSWorldMap
 	{
 		setWorldMapPositionTarget(worldPoint.getX(), worldPoint.getY());
 	}
-
 }

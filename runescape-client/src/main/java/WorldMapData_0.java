@@ -430,7 +430,7 @@ public class WorldMapData_0 extends AbstractWorldMapData {
                      }
 
                      if (var12) {
-                        var13 = class136.getPacketBufferNode(ClientPacket.field3133, Client.packetWriter.isaacCipher);
+                        var13 = class136.getPacketBufferNode(ClientPacket.WIDGET_TYPE, Client.packetWriter.isaacCipher);
                         var13.packetBuffer.writeInt(var1);
                         Client.packetWriter.addNode(var13);
                      }
@@ -463,7 +463,7 @@ public class WorldMapData_0 extends AbstractWorldMapData {
                      int var11;
                      Widget var15;
                      if (var2 == 28) {
-                        var9 = class136.getPacketBufferNode(ClientPacket.field3133, Client.packetWriter.isaacCipher);
+                        var9 = class136.getPacketBufferNode(ClientPacket.WIDGET_TYPE, Client.packetWriter.isaacCipher);
                         var9.packetBuffer.writeInt(var1);
                         Client.packetWriter.addNode(var9);
                         var15 = PlayerCompositionColorTextureOverride.getWidget(var1);
@@ -473,7 +473,7 @@ public class WorldMapData_0 extends AbstractWorldMapData {
                            MouseRecorder.changeGameOptions(var11);
                         }
                      } else if (var2 == 29) {
-                        var9 = class136.getPacketBufferNode(ClientPacket.field3133, Client.packetWriter.isaacCipher);
+                        var9 = class136.getPacketBufferNode(ClientPacket.WIDGET_TYPE, Client.packetWriter.isaacCipher);
                         var9.packetBuffer.writeInt(var1);
                         Client.packetWriter.addNode(var9);
                         var15 = PlayerCompositionColorTextureOverride.getWidget(var1);

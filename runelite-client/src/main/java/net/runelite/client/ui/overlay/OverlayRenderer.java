@@ -56,6 +56,8 @@ import net.runelite.api.events.FocusChanged;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.api.widgets.WidgetItem;
+import net.runelite.client.chat.ChatMessageManager;
+import net.runelite.client.chat.QueuedMessage;
 import net.runelite.client.config.RuneLiteConfig;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
@@ -87,12 +89,14 @@ public class OverlayRenderer extends MouseAdapter
 	private static final Color MOVING_OVERLAY_ACTIVE_COLOR = new Color(255, 255, 0, 200);
 	private static final Color MOVING_OVERLAY_TARGET_COLOR = Color.RED;
 	private static final Color MOVING_OVERLAY_RESIZING_COLOR = new Color(255, 0, 255, 200);
+
 	private final Client client;
 	private final OverlayManager overlayManager;
 	private final TooltipManager tooltipManager;
 	private final RuneLiteConfig runeLiteConfig;
 	private final ClientUI clientUI;
 	private final EventBus eventBus;
+	private final ChatMessageManager chatMessageManager;
 
 	// Overlay movement variables
 	private final Point overlayOffset = new Point();
@@ -113,12 +117,11 @@ public class OverlayRenderer extends MouseAdapter
 	private boolean chatboxHidden;
 	private boolean isResizeable;
 	private OverlayBounds emptySnapCorners, snapCorners;
+	private boolean dragWarn;
 
 	// focused overlay
 	private Overlay focusedOverlay;
 	private Overlay prevFocusedOverlay;
-
-	private final HotkeyListener hotkeyListener;
 
 	@Inject
 	private OverlayRenderer(
@@ -129,7 +132,9 @@ public class OverlayRenderer extends MouseAdapter
 		final KeyManager keyManager,
 		final TooltipManager tooltipManager,
 		final ClientUI clientUI,
-		final EventBus eventBus)
+		final EventBus eventBus,
+		final ChatMessageManager chatMessageManager
+	)
 	{
 		this.client = client;
 		this.overlayManager = overlayManager;
@@ -137,8 +142,9 @@ public class OverlayRenderer extends MouseAdapter
 		this.clientUI = clientUI;
 		this.tooltipManager = tooltipManager;
 		this.eventBus = eventBus;
+		this.chatMessageManager = chatMessageManager;
 
-		this.hotkeyListener = new HotkeyListener(runeLiteConfig::dragHotkey)
+		HotkeyListener hotkeyListener = new HotkeyListener(runeLiteConfig::dragHotkey)
 		{
 			@Override
 			public void hotkeyPressed()
@@ -189,7 +195,7 @@ public class OverlayRenderer extends MouseAdapter
 		}
 
 		final boolean shift = client.isKeyPressed(KeyCode.KC_SHIFT);
-		if (!shift && runeLiteConfig.menuEntryShift())
+		if (!shift)
 		{
 			return;
 		}
@@ -685,6 +691,16 @@ public class OverlayRenderer extends MouseAdapter
 					break;
 				}
 			}
+		}
+
+		if (inOverlayDraggingMode && currentManagedOverlay instanceof WidgetOverlay && !dragWarn)
+		{
+			dragWarn = true;
+			chatMessageManager.queue(QueuedMessage.builder()
+				.type(ChatMessageType.CONSOLE)
+				.runeLiteFormattedMessage("You've repositioned one of the in-game interfaces. Hold " + runeLiteConfig.dragHotkey() +
+					" and drag to reposition the interface again, or " + runeLiteConfig.dragHotkey() + " and right click to reset.")
+				.build());
 		}
 
 		overlayManager.saveOverlay(currentManagedOverlay);

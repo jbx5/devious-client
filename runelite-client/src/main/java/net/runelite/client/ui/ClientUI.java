@@ -48,6 +48,7 @@ import java.awt.Window;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -577,21 +578,23 @@ public class ClientUI
 						GraphicsConfiguration gc = findDisplayFromBounds(clientBounds);
 						if (gc != null)
 						{
-							double scale = gc.getDefaultTransform().getScaleX();
+							AffineTransform transform = gc.getDefaultTransform();
+							double scaleX = transform.getScaleX();
+							double scaleY = transform.getScaleY();
 
 							// When Windows screen scaling is on, the position/bounds will be wrong when they are set.
 							// The bounds saved in shutdown are the full, non-scaled co-ordinates.
 							// On MacOS the scaling is already applied and the position/bounds are correct on at least
-							// - 2015 x64 MBP JDK11 Mohave
+							// - 2015 x64 MBP JDK11 Mojave
 							// - 2020 m1 MBP JDK17 Big Sur
 							// Adjusting the scaling further results in the client position being incorrect
-							if (scale != 1 && OSType.getOSType() != OSType.MacOS)
+							if ((scaleX != 1 || scaleY != 1) && OSType.getOSType() != OSType.MacOS)
 							{
 								clientBounds.setRect(
-									clientBounds.getX() / scale,
-									clientBounds.getY() / scale,
-									clientBounds.getWidth() / scale,
-									clientBounds.getHeight() / scale);
+									clientBounds.getX() / scaleX,
+									clientBounds.getY() / scaleY,
+									clientBounds.getWidth() / scaleX,
+									clientBounds.getHeight() / scaleY);
 
 								frame.setMinimumSize(clientBounds.getSize());
 								frame.setBounds(clientBounds);

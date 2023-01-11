@@ -225,4 +225,7 @@ public interface RSClientPacket extends ClientPacket
 
 	@Import("IF_BUTTON10")
 	RSClientPacket IF_BUTTON10();
+
+	@Import("WIDGET_TYPE")
+	RSClientPacket WIDGET_TYPE();
 }

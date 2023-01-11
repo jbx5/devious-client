@@ -150,6 +150,8 @@ public interface ClientPacket
 
 	ClientPacket IF_BUTTON10();
 
+	ClientPacket WIDGET_TYPE();
+
 	default Map<ClientPacket, String> getClientPackets()
 	{
 		//noinspection RedundantTypeArguments (explicit type arguments speedup compilation and analysis time)
@@ -224,7 +226,8 @@ public interface ClientPacket
 				Map.entry(IF_BUTTON3(), "IF_BUTTON3"),
 				Map.entry(IF_BUTTON2(), "IF_BUTTON2"),
 				Map.entry(EVENT_MOUSE_CLICK(), "EVENT_MOUSE_CLICK"),
-				Map.entry(IF_BUTTON10(), "IF_BUTTON10")
+				Map.entry(IF_BUTTON10(), "IF_BUTTON10"),
+				Map.entry(WIDGET_TYPE(), "WIDGET_TYPE")
 		);
 	}
 }

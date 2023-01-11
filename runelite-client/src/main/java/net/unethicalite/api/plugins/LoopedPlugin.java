@@ -35,15 +35,9 @@ public abstract class LoopedPlugin extends Plugin implements Runnable
 	{
 		task = EXECUTOR.schedule(loopTask(), nextSleep, TimeUnit.MILLISECONDS);
 
-		while (task != null && !task.isCancelled())
+		while (isRunning())
 		{
-			if (task.isCancelled())
-			{
-				task = null;
-				return;
-			}
-
-			if (task == null || task.isDone())
+			if (task.isDone())
 			{
 				task = EXECUTOR.schedule(loopTask(), nextSleep, TimeUnit.MILLISECONDS);
 				continue;
@@ -51,6 +45,7 @@ public abstract class LoopedPlugin extends Plugin implements Runnable
 
 			Time.sleep(10);
 		}
+		task = null;
 	}
 
 	private Runnable loopTask()
@@ -99,7 +94,10 @@ public abstract class LoopedPlugin extends Plugin implements Runnable
 
 	public void stop()
 	{
-		task.cancel(true);
+		if (isRunning())
+		{
+			task.cancel(true);
+		}
 	}
 
 	private static class LoggableExecutor extends ScheduledThreadPoolExecutor

@@ -27,18 +27,18 @@ import net.runelite.api.Perspective;
 import net.runelite.api.Player;
 import net.runelite.api.Point;
 import net.runelite.api.Projectile;
-import net.runelite.api.RenderOverview;
 import net.runelite.api.Renderable;
 import net.runelite.api.Tile;
 import net.runelite.api.TileItem;
 import net.runelite.api.TileObject;
 import net.runelite.api.WallObject;
-import net.runelite.api.WorldMapData;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.api.widgets.WidgetItem;
+import net.runelite.api.worldmap.WorldMap;
+import net.runelite.api.worldmap.WorldMapData;
 import net.runelite.client.ui.FontManager;
 import net.runelite.client.ui.overlay.OverlayUtil;
 import net.runelite.client.ui.overlay.tooltip.Tooltip;
@@ -288,7 +288,7 @@ public class EntityRenderer
 
 	public void renderTileTooltip(Graphics2D graphics, Tile tile)
 	{
-		RenderOverview worldMap = client.getRenderOverview();
+		WorldMap worldMap = client.getWorldMap();
 		Widget widget = Widgets.get(WidgetInfo.WORLD_MAP_VIEW);
 		if (worldMap != null && Widgets.isVisible(widget))
 		{

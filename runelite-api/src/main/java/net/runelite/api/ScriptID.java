@@ -276,7 +276,7 @@ public final class ScriptID
 	/**
 	 * Builds the widget for making an offer in Grand Exchange
 	 */
-	@ScriptArguments(integer = 16)
+	@ScriptArguments(integer = 17)
 	public static final int GE_OFFERS_SETUP_BUILD = 779;
 
 	/**
@@ -452,4 +452,7 @@ public final class ScriptID
 
 	@ScriptArguments(integer = 7)
 	public static final int ORBS_UPDATE_RUNENERGY = 447;
+
+	@ScriptArguments(integer = 9)
+	public static final int WORLDMAP_LOADMAP = 1712;
 }

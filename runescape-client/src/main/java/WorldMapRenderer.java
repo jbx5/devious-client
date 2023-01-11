@@ -10,8 +10,8 @@ import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("ie")
-@Implements("WorldMapManager")
-public final class WorldMapManager {
+@Implements("WorldMapRenderer")
+public final class WorldMapRenderer {
    @ObfuscatedName("h")
    @Export("loaded")
    boolean loaded = false;
@@ -65,7 +65,7 @@ public final class WorldMapManager {
    final HashMap fonts;
    @ObfuscatedName("g")
    @ObfuscatedGetter(
-      intValue = -1541978688
+      intValue = 579886359
    )
    @Export("tileX")
    int tileX;
@@ -77,7 +77,7 @@ public final class WorldMapManager {
    int tileY;
    @ObfuscatedName("o")
    @ObfuscatedGetter(
-      intValue = -198896320
+      intValue = 936416341
    )
    @Export("tileWidth")
    int tileWidth;
@@ -97,7 +97,7 @@ public final class WorldMapManager {
    @ObfuscatedSignature(
       descriptor = "([Lra;Ljava/util/HashMap;Lly;Lly;)V"
    )
-   public WorldMapManager(IndexedSprite[] var1, HashMap var2, AbstractArchive var3, AbstractArchive var4) {
+   public WorldMapRenderer(IndexedSprite[] var1, HashMap var2, AbstractArchive var3, AbstractArchive var4) {
       this.mapSceneSprites = var1;
       this.fonts = var2;
       this.geographyArchive = var3;
