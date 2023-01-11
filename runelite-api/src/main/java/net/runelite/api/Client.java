@@ -47,6 +47,8 @@ import net.runelite.api.widgets.ItemQuantityMode;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetConfig;
 import net.runelite.api.widgets.WidgetInfo;
+import net.runelite.api.worldmap.MapElementConfig;
+import net.runelite.api.worldmap.WorldMap;
 import net.unethicalite.api.MouseHandler;
 import net.unethicalite.api.SceneEntity;
 import net.unethicalite.api.events.MenuAutomated;
@@ -789,15 +791,10 @@ public interface Client extends OAuthApi, GameEngine
 	 * Gets the angle of the map, or target camera yaw.
 	 *
 	 * @return the map angle
+	 * @see #getCameraYawTarget()
 	 */
+	@Deprecated
 	int getMapAngle();
-
-	/**
-	 * Set the target camera yaw
-	 *
-	 * @param cameraYawTarget
-	 */
-	void setCameraYawTarget(int cameraYawTarget);
 
 	/**
 	 * Checks whether the client window is currently resized.
@@ -1132,6 +1129,13 @@ public interface Client extends OAuthApi, GameEngine
 	 * @return the world areas
 	 */
 	MapElementConfig[] getMapElementConfigs();
+
+	/**
+	 * Get a map element config by id
+	 *
+	 * @param id the id
+	 */
+	MapElementConfig getMapElementConfig(int id);
 
 	/**
 	 * Gets a sprite of the map scene
@@ -1521,6 +1525,40 @@ public interface Client extends OAuthApi, GameEngine
 	Preferences getPreferences();
 
 	/**
+	 * Get the target camera yaw.
+	 * The target yaw is the yaw the camera should use based on player input.
+	 * The actual camera yaw, from {@link #getCameraYaw()}, is what the camera
+	 * is actually using, which can be overridden by eg. cutscenes.
+	 *
+	 * @return the target camera yaw
+	 */
+	int getCameraYawTarget();
+
+	/**
+	 * Get the target camera pitch
+	 * The target pitch is the pitch the camera should use based on player input.
+	 * The actual camera pitch, from {@link #getCameraPitch()} ()}, is what the camera
+	 * is actually using, which can be overridden by eg. cutscenes.
+	 *
+	 * @return the target camera pitch
+	 */
+	int getCameraPitchTarget();
+
+	/**
+	 * Set the target camera yaw
+	 *
+	 * @param cameraYawTarget target camera yaw
+	 */
+	void setCameraYawTarget(int cameraYawTarget);
+
+	/**
+	 * Set the target camera pitch
+	 *
+	 * @param cameraPitchTarget target camera pitch
+	 */
+	void setCameraPitchTarget(int cameraPitchTarget);
+
+	/**
 	 * Sets whether the camera pitch can exceed the normal limits set
 	 * by the RuneScape client.
 	 *
@@ -1542,8 +1580,15 @@ public interface Client extends OAuthApi, GameEngine
 	 * Gets the world map overview.
 	 *
 	 * @return the world map overview
+	 * @see #getWorldMap()
 	 */
+	@Deprecated
 	RenderOverview getRenderOverview();
+
+	/**
+	 * Get the world map
+	 */
+	WorldMap getWorldMap();
 
 	/**
 	 * Checks whether the client is in stretched mode.
@@ -1808,6 +1853,7 @@ public interface Client extends OAuthApi, GameEngine
 	 *
 	 * @return the number of client ticks an item has been pressed
 	 */
+	@Deprecated
 	int getItemPressedDuration();
 
 	/**

@@ -1,13 +1,17 @@
 package net.runelite.rs.api;
 
-import net.runelite.api.WorldMapManager;
+import net.runelite.api.worldmap.WorldMapRenderer;
 import net.runelite.mapping.Import;
 
-public interface RSWorldMapManager extends WorldMapManager
+public interface RSWorldMapRenderer extends WorldMapRenderer
 {
 	@Import("isLoaded")
 	@Override
 	boolean isLoaded();
+
+	@Import("regions")
+	@Override
+	RSWorldMapRegion[][] getMapRegions();
 
 	@Import("tileX")
 	int getSurfaceOffsetX();

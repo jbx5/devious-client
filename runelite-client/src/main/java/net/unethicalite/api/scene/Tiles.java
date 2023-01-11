@@ -3,12 +3,12 @@ package net.unethicalite.api.scene;
 import net.runelite.api.Client;
 import net.runelite.api.Constants;
 import net.runelite.api.Point;
-import net.runelite.api.RenderOverview;
 import net.runelite.api.Tile;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
+import net.runelite.api.worldmap.WorldMap;
 import net.unethicalite.api.coords.RegionPoint;
 import net.unethicalite.api.coords.ScenePoint;
 import net.unethicalite.api.widgets.Widgets;
@@ -112,16 +112,16 @@ public class Tiles
 			return Collections.emptySet();
 		}
 
-		RenderOverview ro = Static.getClient().getRenderOverview();
+		WorldMap wm = Static.getClient().getWorldMap();
 		Set<WorldPoint> out = new HashSet<>();
-		int topLeftX = ro.getWorldMapX() - (ro.getWorldMapDisplayWidth() / 2);
-		int topLeftY = ro.getWorldMapY() - (ro.getWorldMapDisplayHeight() / 2);
+		int topLeftX = wm.getWorldMapX() - (wm.getWorldMapDisplayWidth() / 2);
+		int topLeftY = wm.getWorldMapY() - (wm.getWorldMapDisplayHeight() / 2);
 
-		for (int x = topLeftX; x < topLeftX + ro.getWorldMapDisplayWidth(); x++)
+		for (int x = topLeftX; x < topLeftX + wm.getWorldMapDisplayWidth(); x++)
 		{
-			for (int y = topLeftY; y < topLeftY + ro.getWorldMapDisplayHeight(); y++)
+			for (int y = topLeftY; y < topLeftY + wm.getWorldMapDisplayHeight(); y++)
 			{
-				WorldPoint worldPoint = ro.getWorldPointFromMap(x, y);
+				WorldPoint worldPoint = wm.getWorldPointFromMap(x, y);
 				if (worldPoint == null)
 				{
 					continue;
@@ -143,15 +143,15 @@ public class Tiles
 		}
 
 		List<WorldPoint> out = new ArrayList<>();
-		RenderOverview ro = Static.getClient().getRenderOverview();
+		WorldMap wm = Static.getClient().getWorldMap();
 
 		Rectangle worldMapRect = worldMap.getBounds();
 
-		float pixelsPerTile = ro.getWorldMapZoom();
+		float pixelsPerTile = wm.getWorldMapZoom();
 		int widthInTiles = (int) Math.ceil(worldMapRect.getWidth() / pixelsPerTile);
 		int heightInTiles = (int) Math.ceil(worldMapRect.getHeight() / pixelsPerTile);
 
-		Point worldMapPosition = ro.getWorldMapPosition();
+		Point worldMapPosition = wm.getWorldMapPosition();
 		int leftX = worldMapPosition.getX() - (widthInTiles / 2);
 		int rightX = leftX + widthInTiles;
 		int topY = worldMapPosition.getY() + (heightInTiles / 2);

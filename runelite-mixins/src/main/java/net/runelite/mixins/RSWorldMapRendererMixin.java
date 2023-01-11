@@ -4,10 +4,10 @@ import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Replace;
 import net.runelite.api.mixins.Shadow;
 import net.runelite.rs.api.RSClient;
-import net.runelite.rs.api.RSWorldMapManager;
+import net.runelite.rs.api.RSWorldMapRenderer;
 
-@Mixin(RSWorldMapManager.class)
-public abstract class RSWorldMapManagerMixin implements RSWorldMapManager
+@Mixin(RSWorldMapRenderer.class)
+public abstract class RSWorldMapRendererMixin implements RSWorldMapRenderer
 {
 	@Shadow("client")
 	static RSClient client;
@@ -28,7 +28,6 @@ public abstract class RSWorldMapManagerMixin implements RSWorldMapManager
 	@Override
 	public float getPixelsPerTile(int graphicsDiff, int worldDiff)
 	{
-		return client.getRenderOverview().getWorldMapZoom();
+		return client.getWorldMap().getWorldMapZoom();
 	}
-
 }

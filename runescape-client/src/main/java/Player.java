@@ -29,6 +29,7 @@ public final class Player extends Actor {
    @ObfuscatedGetter(
       intValue = -1022197567
    )
+   @Export("headIconPrayer")
    int headIconPrayer = -1;
    @ObfuscatedName("q")
    @Export("actions")

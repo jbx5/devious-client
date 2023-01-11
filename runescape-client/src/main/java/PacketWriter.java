@@ -193,7 +193,7 @@ public class PacketWriter {
       NPCComposition.NpcDefinition_archive = var0;
       class363.field4361 = var1;
       GrandExchangeOfferUnitPriceComparator.field4275 = var2;
-      NPCComposition.field2022 = var3;
+      NPCComposition.defaultHeadIconArchive = var3;
    }
 
    @ObfuscatedName("e")
