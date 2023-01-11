@@ -36,8 +36,8 @@ public class LoopedPluginManager
 	@Inject
 	private Client client;
 
-	private LoopedPlugin loopedPlugin = null;
-	private Thread currentLoop = null;
+	private LoopedPlugin loopedPlugin;
+	private Thread currentLoop;
 
 	@Inject
 	LoopedPluginManager(EventBus eventBus)
@@ -48,16 +48,12 @@ public class LoopedPluginManager
 
 	public void unregister()
 	{
-		if (currentLoop == null || loopedPlugin == null)
+		if (!isPluginRegistered())
 		{
 			return;
 		}
 
-		while (currentLoop != null && currentLoop.isAlive()
-			|| loopedPlugin != null && loopedPlugin.isRunning())
-		{
-			loopedPlugin.stop();
-		}
+		loopedPlugin.stop();
 
 		if (loopedPlugin instanceof Script)
 		{
@@ -79,7 +75,6 @@ public class LoopedPluginManager
 
 		currentLoop = null;
 		loopedPlugin = null;
-
 		client.setQueuedMenu(null);
 	}
 
