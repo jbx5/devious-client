@@ -1,10 +1,10 @@
 package net.runelite.rs.api;
 
-import net.runelite.api.RenderOverview;
-import net.runelite.api.WorldMapData;
+import net.runelite.api.worldmap.WorldMap;
+import net.runelite.api.worldmap.WorldMapData;
 import net.runelite.mapping.Import;
 
-public interface RSWorldMap extends RenderOverview
+public interface RSWorldMap extends WorldMap
 {
 	@Import("centerTileX")
 	int getWorldMapX();
@@ -39,13 +39,13 @@ public interface RSWorldMap extends RenderOverview
 	@Import("setWorldMapPositionTarget")
 	void setWorldMapPositionTarget(int worldPointX, int worldPointY);
 
-	@Import("worldMapManager")
+	@Import("worldMapRenderer")
 	@Override
-	RSWorldMapManager getWorldMapManager();
+	RSWorldMapRenderer getWorldMapRenderer();
 
-	@Import("initializeWorldMapManager")
+	@Import("initializeWorldMap")
 	@Override
-	void initializeWorldMap(WorldMapData var1);
+	void initializeWorldMap(WorldMapData worldMapData);
 
 	@Import("getCurrentMapArea")
 	@Override

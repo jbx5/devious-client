@@ -89,14 +89,6 @@ public interface RSClient extends RSGameEngine, Client
 	@Override
 	int getFPS();
 
-	@Import("camAngleY")
-	@Override
-	int getMapAngle();
-
-	@Import("camAngleY")
-	@Override
-	void setCameraYawTarget(int cameraYawTarget);
-
 	@Import("Tiles_heights")
 	@Override
 	int[][][] getTileHeights();
@@ -588,6 +580,10 @@ public interface RSClient extends RSGameEngine, Client
 	@Override
 	RSWorldMapElement[] getMapElementConfigs();
 
+	@Import("WorldMapElement_get")
+	@Override
+	RSWorldMapElement getMapElementConfig(int id);
+
 	@Import("mapSceneSprites")
 	@Override
 	RSIndexedSprite[] getMapScene();
@@ -748,6 +744,18 @@ public interface RSClient extends RSGameEngine, Client
 	@Override
 	RSClientPreferences getPreferences();
 
+	@Import("camAngleY")
+	@Override
+	int getMapAngle();
+
+	@Import("camAngleY")
+	@Override
+	int getCameraYawTarget();
+
+	@Import("camAngleY")
+	@Override
+	void setCameraYawTarget(int cameraYawTarget);
+
 	/**
 	 * This is the pitch the user has set the camera to.
 	 * It should be between 128 and (pitchUnlimiter?512:383) JAUs(1).
@@ -757,9 +765,11 @@ public interface RSClient extends RSGameEngine, Client
 	 * (1) JAU - Jagex Angle Unit; 1/1024 of a revolution
 	 */
 	@Import("camAngleX")
+	@Override
 	int getCameraPitchTarget();
 
 	@Import("camAngleX")
+	@Override
 	void setCameraPitchTarget(int pitch);
 
 	@Import("Scene_cameraPitchSine")
@@ -806,7 +816,8 @@ public interface RSClient extends RSGameEngine, Client
 	int getCenterY();
 
 	@Import("getWorldMap")
-	RSWorldMap getRenderOverview();
+	@Override
+	RSWorldMap getWorldMap();
 
 	@Import("changeWorld")
 	@Override

@@ -35,12 +35,12 @@ public final class WorldMapRectangle {
    @ObfuscatedSignature(
       descriptor = "Lie;"
    )
-   final WorldMapManager this$0;
+   final WorldMapRenderer this$0;
 
    @ObfuscatedSignature(
       descriptor = "(Lie;)V"
    )
-   WorldMapRectangle(WorldMapManager var1) {
+   WorldMapRectangle(WorldMapRenderer var1) {
       this.this$0 = var1;
    }
 }
