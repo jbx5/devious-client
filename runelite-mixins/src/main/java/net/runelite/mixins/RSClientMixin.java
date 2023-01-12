@@ -3348,7 +3348,7 @@ public abstract class RSClientMixin implements RSClient
 	@Override
 	public RenderOverview getRenderOverview()
 	{
-		return (RenderOverview) client.getWorldMap();
+		return client.getWorldMap();
 	}
 }
 
