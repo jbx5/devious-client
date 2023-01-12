@@ -1,10 +1,11 @@
 package net.runelite.rs.api;
 
+import net.runelite.api.RenderOverview;
 import net.runelite.api.worldmap.WorldMap;
 import net.runelite.api.worldmap.WorldMapData;
 import net.runelite.mapping.Import;
 
-public interface RSWorldMap extends WorldMap
+public interface RSWorldMap extends WorldMap, RenderOverview
 {
 	@Import("centerTileX")
 	int getWorldMapX();
