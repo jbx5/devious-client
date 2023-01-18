@@ -30,54 +30,6 @@ import com.google.common.collect.ComparisonChain;
 import com.google.common.hash.Hasher;
 import com.google.common.hash.Hashing;
 import com.google.gson.Gson;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Proxy;
-import java.lang.reflect.Type;
-import java.nio.channels.FileChannel;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.AtomicMoveNotSupportedException;
-import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
-import java.security.SecureRandom;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Arrays;
-import java.util.Base64;
-import java.util.Collections;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Properties;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Future;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import javax.inject.Inject;
-import javax.inject.Named;
-import javax.inject.Singleton;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
@@ -93,10 +45,66 @@ import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.events.ClientShutdown;
 import net.runelite.client.events.ConfigChanged;
-import net.runelite.client.events.ConfigSync;
 import net.runelite.client.events.RuneScapeProfileChanged;
+import net.runelite.client.plugins.OPRSExternalPluginManager;
+import net.runelite.client.plugins.Plugin;
 import net.runelite.client.util.ColorUtil;
 import net.runelite.http.api.config.ConfigPatch;
+import okhttp3.OkHttpClient;
+
+import javax.annotation.Nullable;
+import javax.inject.Inject;
+import javax.inject.Named;
+import javax.inject.Singleton;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Proxy;
+import java.lang.reflect.Type;
+import java.nio.channels.FileChannel;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.AtomicMoveNotSupportedException;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
+import java.security.SecureRandom;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Base64;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Date;
+import java.util.EnumSet;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Properties;
+import java.util.Set;
+import java.util.Stack;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Future;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 @Singleton
 @Slf4j
@@ -118,11 +126,11 @@ public class ConfigManager
 
 	private final File settingsFileInput;
 	private final EventBus eventBus;
+	private final OkHttpClient okHttpClient;
 	private final Gson gson;
-	@Nonnull
-	private final ConfigClient configClient;
 
 	private AccountSession session;
+	private ConfigClient configClient;
 	private File propertiesFile;
 
 	@Nullable
@@ -130,6 +138,7 @@ public class ConfigManager
 
 	private final ConfigInvocationHandler handler = new ConfigInvocationHandler(this);
 	private final Map<String, String> pendingChanges = new HashMap<>();
+	private final Map<String, Consumer<? super Plugin>> consumers = new HashMap<>();
 
 	private Properties properties = new Properties();
 
@@ -139,19 +148,19 @@ public class ConfigManager
 
 	@Inject
 	public ConfigManager(
-		@Named("config") File config,
-		ScheduledExecutorService scheduledExecutorService,
-		EventBus eventBus,
-		@Nullable Client client,
-		Gson gson,
-		ConfigClient configClient)
+			@Named("config") File config,
+			ScheduledExecutorService scheduledExecutorService,
+			EventBus eventBus,
+			OkHttpClient okHttpClient,
+			@Nullable Client client,
+			Gson gson)
 	{
 		this.settingsFileInput = config;
 		this.eventBus = eventBus;
+		this.okHttpClient = okHttpClient;
 		this.client = client;
 		this.propertiesFile = getPropertiesFile();
 		this.gson = gson;
-		this.configClient = configClient;
 
 		scheduledExecutorService.scheduleWithFixedDelay(this::sendConfig, 30, 5 * 60, TimeUnit.SECONDS);
 	}
@@ -163,18 +172,14 @@ public class ConfigManager
 
 	public final void switchSession(AccountSession session)
 	{
-		// Ensure existing config is saved
-		sendConfig();
-
 		if (session == null)
 		{
 			this.session = null;
-			configClient.setUuid(null);
+			this.configClient = null;
 		}
 		else
 		{
 			this.session = session;
-			configClient.setUuid(session.getUuid());
 		}
 
 		this.propertiesFile = getPropertiesFile();
@@ -348,6 +353,8 @@ public class ConfigManager
 
 	private synchronized void loadFromFile()
 	{
+		consumers.clear();
+
 		Properties newProperties = new Properties();
 		try (FileInputStream in = new FileInputStream(propertiesFile))
 		{
@@ -375,8 +382,8 @@ public class ConfigManager
 		File tempFile = File.createTempFile("runelite", null, parent);
 
 		try (FileOutputStream out = new FileOutputStream(tempFile);
-			FileChannel channel = out.getChannel();
-			OutputStreamWriter writer = new OutputStreamWriter(out, StandardCharsets.UTF_8))
+			 FileChannel channel = out.getChannel();
+			 OutputStreamWriter writer = new OutputStreamWriter(out, StandardCharsets.UTF_8))
 		{
 			channel.lock();
 			properties.store(writer, "RuneLite configuration");
@@ -403,9 +410,9 @@ public class ConfigManager
 		}
 
 		T t = (T) Proxy.newProxyInstance(clazz.getClassLoader(), new Class<?>[]
-			{
-				clazz
-			}, handler);
+				{
+						clazz
+				}, handler);
 
 		return t;
 	}
@@ -413,9 +420,9 @@ public class ConfigManager
 	public synchronized List<String> getConfigurationKeys(String prefix)
 	{
 		return properties.keySet().stream()
-			.map(String.class::cast)
-			.filter(k -> k.startsWith(prefix))
-			.collect(Collectors.toList());
+				.map(String.class::cast)
+				.filter(k -> k.startsWith(prefix))
+				.collect(Collectors.toList());
 	}
 
 	public synchronized List<String> getRSProfileConfigurationKeys(String group, String profile, String keyPrefix)
@@ -429,10 +436,10 @@ public class ConfigManager
 
 		String prefix = group + "." + profile + "." + keyPrefix;
 		return properties.keySet().stream()
-			.map(String.class::cast)
-			.filter(k -> k.startsWith(prefix))
-			.map(k -> splitKey(k)[KEY_SPLITTER_KEY])
-			.collect(Collectors.toList());
+				.map(String.class::cast)
+				.filter(k -> k.startsWith(prefix))
+				.map(k -> splitKey(k)[KEY_SPLITTER_KEY])
+				.collect(Collectors.toList());
 	}
 
 	public static String getWholeKey(String groupName, String profile, String key)
@@ -551,6 +558,12 @@ public class ConfigManager
 
 	public <T> void setConfiguration(String groupName, String key, T value)
 	{
+		// do not save consumers for buttons, they cannot be changed anyway
+		if (value instanceof Consumer)
+		{
+			return;
+		}
+
 		setConfiguration(groupName, null, key, value);
 	}
 
@@ -650,46 +663,70 @@ public class ConfigManager
 			throw new IllegalArgumentException("Not a config group");
 		}
 
-		final List<ConfigSectionDescriptor> sections = Arrays.stream(inter.getDeclaredFields())
-			.filter(m -> m.isAnnotationPresent(ConfigSection.class) && m.getType() == String.class)
-			.map(m ->
-			{
-				try
+		final List<ConfigSectionDescriptor> sections = getAllDeclaredInterfaceFields(inter).stream()
+				.filter(m -> m.isAnnotationPresent(ConfigSection.class) && m.getType() == String.class)
+				.map(m ->
 				{
-					return new ConfigSectionDescriptor(
-						String.valueOf(m.get(inter)),
-						m.getDeclaredAnnotation(ConfigSection.class)
-					);
-				}
-				catch (IllegalAccessException e)
+					try
+					{
+						return new ConfigSectionDescriptor(
+								String.valueOf(m.get(inter)),
+								m.getDeclaredAnnotation(ConfigSection.class)
+						);
+					}
+					catch (IllegalAccessException e)
+					{
+						log.warn("Unable to load section {}::{}", inter.getSimpleName(), m.getName());
+						return null;
+					}
+				})
+				.filter(Objects::nonNull)
+				.sorted((a, b) -> ComparisonChain.start()
+						.compare(a.getSection().position(), b.getSection().position())
+						.compare(a.getSection().name(), b.getSection().name())
+						.result())
+				.collect(Collectors.toList());
+
+		final List<ConfigTitleDescriptor> titles = getAllDeclaredInterfaceFields(inter).stream()
+				.filter(m -> m.isAnnotationPresent(ConfigTitle.class) && m.getType() == String.class)
+				.map(m ->
 				{
-					log.warn("Unable to load section {}::{}", inter.getSimpleName(), m.getName());
-					return null;
-				}
-			})
-			.filter(Objects::nonNull)
-			.sorted((a, b) -> ComparisonChain.start()
-				.compare(a.getSection().position(), b.getSection().position())
-				.compare(a.getSection().name(), b.getSection().name())
-				.result())
-			.collect(Collectors.toList());
+					try
+					{
+						return new ConfigTitleDescriptor(
+								String.valueOf(m.get(inter)),
+								m.getDeclaredAnnotation(ConfigTitle.class)
+						);
+					}
+					catch (IllegalAccessException e)
+					{
+						log.warn("Unable to load title {}::{}", inter.getSimpleName(), m.getName());
+						return null;
+					}
+				})
+				.filter(Objects::nonNull)
+				.sorted((a, b) -> ComparisonChain.start()
+						.compare(a.getTitle().position(), b.getTitle().position())
+						.compare(a.getTitle().name(), b.getTitle().name())
+						.result())
+				.collect(Collectors.toList());
 
 		final List<ConfigItemDescriptor> items = Arrays.stream(inter.getMethods())
-			.filter(m -> m.getParameterCount() == 0 && m.isAnnotationPresent(ConfigItem.class))
-			.map(m -> new ConfigItemDescriptor(
-				m.getDeclaredAnnotation(ConfigItem.class),
-				m.getGenericReturnType(),
-				m.getDeclaredAnnotation(Range.class),
-				m.getDeclaredAnnotation(Alpha.class),
-				m.getDeclaredAnnotation(Units.class)
-			))
-			.sorted((a, b) -> ComparisonChain.start()
-				.compare(a.getItem().position(), b.getItem().position())
-				.compare(a.getItem().name(), b.getItem().name())
-				.result())
-			.collect(Collectors.toList());
+				.filter(m -> m.getParameterCount() == 0 && m.isAnnotationPresent(ConfigItem.class))
+				.map(m -> new ConfigItemDescriptor(
+						m.getDeclaredAnnotation(ConfigItem.class),
+						m.getGenericReturnType(),
+						m.getDeclaredAnnotation(Range.class),
+						m.getDeclaredAnnotation(Alpha.class),
+						m.getDeclaredAnnotation(Units.class)
+				))
+				.sorted((a, b) -> ComparisonChain.start()
+						.compare(a.getItem().position(), b.getItem().position())
+						.compare(a.getItem().name(), b.getItem().name())
+						.result())
+				.collect(Collectors.toList());
 
-		return new ConfigDescriptor(group, sections, items);
+		return new ConfigDescriptor(group, sections, titles, items);
 	}
 
 	/**
@@ -707,7 +744,7 @@ public class ConfigManager
 			return;
 		}
 
-		for (Method method : clazz.getDeclaredMethods())
+		for (Method method : getAllDeclaredInterfaceMethods(clazz))
 		{
 			ConfigItem item = method.getAnnotation(ConfigItem.class);
 
@@ -717,59 +754,78 @@ public class ConfigManager
 				continue;
 			}
 
-			if (!method.isDefault())
+			if (method.getReturnType().isAssignableFrom(Consumer.class))
 			{
-				if (override)
+				Object defaultValue;
+				try
 				{
-					String current = getConfiguration(group.value(), item.keyName());
-					// only unset if already set
+					defaultValue = ConfigInvocationHandler.callDefaultMethod(proxy, method, null);
+				}
+				catch (Throwable ex)
+				{
+					log.warn(null, ex);
+					continue;
+				}
+
+				log.debug("Registered consumer: {}.{}", group.value(), item.keyName());
+				consumers.put(group.value() + "." + item.keyName(), (Consumer) defaultValue);
+			}
+			else
+			{
+				if (!method.isDefault())
+				{
+					if (override)
+					{
+						String current = getConfiguration(group.value(), item.keyName());
+						// only unset if already set
+						if (current != null)
+						{
+							unsetConfiguration(group.value(), item.keyName());
+						}
+					}
+					continue;
+				}
+
+				if (!override)
+				{
+					// This checks if it is set and is also unmarshallable to the correct type; so
+					// we will overwrite invalid config values with the default
+					Object current = getConfiguration(group.value(), item.keyName(), method.getGenericReturnType());
 					if (current != null)
 					{
-						unsetConfiguration(group.value(), item.keyName());
+						continue; // something else is already set
 					}
 				}
-				continue;
-			}
 
-			if (!override)
-			{
-				// This checks if it is set and is also unmarshallable to the correct type; so
-				// we will overwrite invalid config values with the default
-				Object current = getConfiguration(group.value(), item.keyName(), method.getGenericReturnType());
-				if (current != null)
+				Object defaultValue;
+				try
 				{
-					continue; // something else is already set
+					defaultValue = ConfigInvocationHandler.callDefaultMethod(proxy, method, null);
 				}
-			}
+				catch (Throwable ex)
+				{
+					log.warn(null, ex);
+					continue;
+				}
 
-			Object defaultValue;
-			try
-			{
-				defaultValue = ConfigInvocationHandler.callDefaultMethod(proxy, method, null);
-			}
-			catch (Throwable ex)
-			{
-				log.warn(null, ex);
-				continue;
-			}
+				String current = getConfiguration(group.value(), item.keyName());
+				String valueString = objectToString(defaultValue);
+				// null and the empty string are treated identically in sendConfig and treated as an unset
+				// If a config value defaults to "" and the current value is null, it will cause an extra
+				// unset to be sent, so treat them as equal
+				if (Objects.equals(current, valueString) || (Strings.isNullOrEmpty(current) && Strings.isNullOrEmpty(valueString)))
+				{
+					continue; // already set to the default value
+				}
 
-			String current = getConfiguration(group.value(), item.keyName());
-			String valueString = objectToString(defaultValue);
-			// null and the empty string are treated identically in sendConfig and treated as an unset
-			// If a config value defaults to "" and the current value is null, it will cause an extra
-			// unset to be sent, so treat them as equal
-			if (Objects.equals(current, valueString) || (Strings.isNullOrEmpty(current) && Strings.isNullOrEmpty(valueString)))
-			{
-				continue; // already set to the default value
+				log.debug("Setting default configuration value for {}.{} to {}", group.value(), item.keyName(), defaultValue);
+
+				setConfiguration(group.value(), item.keyName(), valueString);
 			}
-
-			log.debug("Setting default configuration value for {}.{} to {}", group.value(), item.keyName(), defaultValue);
-
-			setConfiguration(group.value(), item.keyName(), valueString);
 		}
 	}
 
-	Object stringToObject(String str, Type type)
+	public Object stringToObject(String str, Type type)
 	{
 		if (type == boolean.class || type == Boolean.class)
 		{
@@ -857,11 +913,46 @@ public class ConfigManager
 				return gson.fromJson(str, parameterizedType);
 			}
 		}
+		if (type == EnumSet.class)
+		{
+			try
+			{
+				String substring = str.substring(str.indexOf("{") + 1, str.length() - 1);
+				String[] splitStr = substring.split(", ");
+				Class<? extends Enum> enumClass = null;
+				if (!str.contains("{"))
+				{
+					return null;
+				}
+
+				enumClass = findEnumClass(str, OPRSExternalPluginManager.pluginClassLoaders);
+
+				EnumSet enumSet = EnumSet.noneOf(enumClass);
+				for (String s : splitStr)
+				{
+					try
+					{
+						enumSet.add(Enum.valueOf(enumClass, s.replace("[", "").replace("]", "")));
+					}
+					catch (IllegalArgumentException ignore)
+					{
+						return EnumSet.noneOf(enumClass);
+					}
+				}
+				return enumSet;
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+				return null;
+			}
+		}
+
 		return str;
 	}
 
 	@Nullable
-	String objectToString(Object object)
+	public String objectToString(Object object)
 	{
 		if (object instanceof Color)
 		{
@@ -908,6 +999,15 @@ public class ConfigManager
 		{
 			return Base64.getUrlEncoder().encodeToString((byte[]) object);
 		}
+		if (object instanceof EnumSet)
+		{
+			if (((EnumSet) object).size() == 0)
+			{
+				return getElementType((EnumSet) object).getCanonicalName() + "{}";
+			}
+
+			return ((EnumSet) object).toArray()[0].getClass().getCanonicalName() + "{" + object.toString() + "}";
+		}
 		if (object instanceof Set)
 		{
 			return gson.toJson(object, Set.class);
@@ -915,9 +1015,47 @@ public class ConfigManager
 		return object == null ? null : object.toString();
 	}
 
+	/**
+	 * Does DFS on a class's interfaces to find all of its implemented fields.
+	 */
+	private Collection<Field> getAllDeclaredInterfaceFields(Class<?> clazz)
+	{
+		Collection<Field> methods = new HashSet<>();
+		Stack<Class<?>> interfaces = new Stack<>();
+		interfaces.push(clazz);
+
+		while (!interfaces.isEmpty())
+		{
+			Class<?> interfaze = interfaces.pop();
+			Collections.addAll(methods, interfaze.getDeclaredFields());
+			Collections.addAll(interfaces, interfaze.getInterfaces());
+		}
+
+		return methods;
+	}
+
+	/**
+	 * Does DFS on a class's interfaces to find all of its implemented methods.
+	 */
+	private Collection<Method> getAllDeclaredInterfaceMethods(Class<?> clazz)
+	{
+		Collection<Method> methods = new HashSet<>();
+		Stack<Class<?>> interfaces = new Stack<>();
+		interfaces.push(clazz);
+
+		while (!interfaces.isEmpty())
+		{
+			Class<?> interfaze = interfaces.pop();
+			Collections.addAll(methods, interfaze.getDeclaredMethods());
+			Collections.addAll(interfaces, interfaze.getInterfaces());
+		}
+
+		return methods;
+	}
+
 	@Subscribe(
-		// run after plugins, in the event they save config on shutdown
-		priority = -100
+			// run after plugins, in the event they save config on shutdown
+			priority = -100
 	)
 	private void onClientShutdown(ClientShutdown e)
 	{
@@ -928,11 +1066,62 @@ public class ConfigManager
 		}
 	}
 
+	public static <T extends Enum<T>> Class<T> getElementType(EnumSet<T> enumSet)
+	{
+		if (enumSet.isEmpty())
+		{
+			enumSet = EnumSet.complementOf(enumSet);
+		}
+		return enumSet.iterator().next().getDeclaringClass();
+	}
+
+	public static Class<? extends Enum> findEnumClass(String clasz, ArrayList<ClassLoader> classLoaders)
+	{
+		StringBuilder transformedString = new StringBuilder();
+		for (ClassLoader cl : classLoaders)
+		{
+			try
+			{
+				String[] strings = clasz.substring(0, clasz.indexOf("{")).split("\\.");
+				int i = 0;
+				while (i != strings.length)
+				{
+					if (i == 0)
+					{
+						transformedString.append(strings[i]);
+					}
+					else if (i == strings.length - 1)
+					{
+						transformedString.append("$").append(strings[i]);
+					}
+					else
+					{
+						transformedString.append(".").append(strings[i]);
+					}
+					i++;
+				}
+				return (Class<? extends Enum>) cl.loadClass(transformedString.toString());
+			}
+			catch (Exception e2)
+			{
+				// Will likely fail a lot
+			}
+			try
+			{
+				return (Class<? extends Enum>) cl.loadClass(clasz.substring(0, clasz.indexOf("{")));
+			}
+			catch (Exception e)
+			{
+				// Will likely fail a lot
+			}
+			transformedString = new StringBuilder();
+		}
+		throw new RuntimeException("Failed to find Enum for " + clasz.substring(0, clasz.indexOf("{")));
+	}
+
 	@Nullable
 	private CompletableFuture<Void> sendConfig()
 	{
-		eventBus.post(new ConfigSync());
-
 		CompletableFuture<Void> future = null;
 		synchronized (pendingChanges)
 		{
@@ -941,7 +1130,7 @@ public class ConfigManager
 				return null;
 			}
 
-			if (session != null)
+			if (configClient != null)
 			{
 				ConfigPatch patch = new ConfigPatch();
 				for (Map.Entry<String, String> entry : pendingChanges.entrySet())
@@ -1000,20 +1189,20 @@ public class ConfigManager
 		}
 
 		return profileKeys.stream()
-			.map(key ->
-			{
-				Long accid = getConfiguration(RSPROFILE_GROUP, key, RSPROFILE_ACCOUNT_HASH, long.class);
-				RuneScapeProfile prof = new RuneScapeProfile(
-					getConfiguration(RSPROFILE_GROUP, key, RSPROFILE_DISPLAY_NAME),
-					getConfiguration(RSPROFILE_GROUP, key, RSPROFILE_TYPE, RuneScapeProfileType.class),
-					getConfiguration(RSPROFILE_GROUP, key, RSPROFILE_LOGIN_HASH, byte[].class),
-					accid == null ? RuneScapeProfile.ACCOUNT_HASH_INVALID : accid,
-					key
-				);
+				.map(key ->
+				{
+					Long accid = getConfiguration(RSPROFILE_GROUP, key, RSPROFILE_ACCOUNT_HASH, long.class);
+					RuneScapeProfile prof = new RuneScapeProfile(
+							getConfiguration(RSPROFILE_GROUP, key, RSPROFILE_DISPLAY_NAME),
+							getConfiguration(RSPROFILE_GROUP, key, RSPROFILE_TYPE, RuneScapeProfileType.class),
+							getConfiguration(RSPROFILE_GROUP, key, RSPROFILE_LOGIN_HASH, byte[].class),
+							accid == null ? RuneScapeProfile.ACCOUNT_HASH_INVALID : accid,
+							key
+					);
 
-				return prof;
-			})
-			.collect(Collectors.toList());
+					return prof;
+				})
+				.collect(Collectors.toList());
 	}
 
 	private synchronized RuneScapeProfile findRSProfile(List<RuneScapeProfile> profiles, RuneScapeProfileType type, String displayName, boolean create)
@@ -1035,7 +1224,7 @@ public class ConfigManager
 			{
 				salt = new byte[15];
 				new SecureRandom()
-					.nextBytes(salt);
+						.nextBytes(salt);
 				log.info("creating new salt as there is no existing one {}", Base64.getUrlEncoder().encodeToString(salt));
 				setConfiguration(RSPROFILE_GROUP, RSPROFILE_LOGIN_SALT, salt);
 			}
@@ -1054,15 +1243,15 @@ public class ConfigManager
 		if (accountHash != RuneScapeProfile.ACCOUNT_HASH_INVALID)
 		{
 			matches = profiles.stream()
-				.filter(p -> p.getType() == type && accountHash == p.getAccountHash())
-				.collect(Collectors.toSet());
+					.filter(p -> p.getType() == type && accountHash == p.getAccountHash())
+					.collect(Collectors.toSet());
 		}
 
 		if (matches.isEmpty() && loginHash != null)
 		{
 			matches = profiles.stream()
-				.filter(p -> p.getType() == type && Arrays.equals(loginHash, p.getLoginHash()))
-				.collect(Collectors.toSet());
+					.filter(p -> p.getType() == type && Arrays.equals(loginHash, p.getLoginHash()))
+					.collect(Collectors.toSet());
 		}
 
 		if (matches.size() > 1)
@@ -1097,16 +1286,16 @@ public class ConfigManager
 		// generate the new key deterministically so if you "create" the same profile on 2 different clients it doesn't duplicate
 		Set<String> keys = profiles.stream().map(RuneScapeProfile::getKey).collect(Collectors.toSet());
 		byte[] key = accountHash == RuneScapeProfile.ACCOUNT_HASH_INVALID
-			? Arrays.copyOf(loginHash, 6)
-			: new byte[]
-			{
-				(byte) accountHash,
-				(byte) (accountHash >> 8),
-				(byte) (accountHash >> 16),
-				(byte) (accountHash >> 24),
-				(byte) (accountHash >> 32),
-				(byte) (accountHash >> 40),
-			};
+				? Arrays.copyOf(loginHash, 6)
+				: new byte[]
+				{
+						(byte) accountHash,
+						(byte) (accountHash >> 8),
+						(byte) (accountHash >> 16),
+						(byte) (accountHash >> 24),
+						(byte) (accountHash >> 32),
+						(byte) (accountHash >> 40),
+				};
 		key[0] += type.ordinal();
 		for (int i = 0; i < 0xFF; i++, key[1]++)
 		{
@@ -1114,8 +1303,8 @@ public class ConfigManager
 			if (!keys.contains(keyStr))
 			{
 				log.info("creating new profile {} for username {} account hash {} ({}) salt {}",
-					keyStr, username, accountHash, type,
-					salt == null ? "null" : Base64.getUrlEncoder().encodeToString(salt));
+						keyStr, username, accountHash, type,
+						salt == null ? "null" : Base64.getUrlEncoder().encodeToString(salt));
 
 				if (loginHash != null)
 				{
@@ -1212,5 +1401,13 @@ public class ConfigManager
 			key = key.substring(i + 1);
 		}
 		return new String[]{group, profile, key};
+	}
+
+	/**
+	 * Retrieves a consumer from config group and key name
+	 */
+	public Consumer<? super Plugin> getConsumer(final String configGroup, final String keyName)
+	{
+		return consumers.getOrDefault(configGroup + "." + keyName, (p) -> log.error("Failed to retrieve consumer with name {}.{}", configGroup, keyName));
 	}
 }
