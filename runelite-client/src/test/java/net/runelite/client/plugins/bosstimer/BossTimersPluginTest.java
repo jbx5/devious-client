@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018, Adam <Adam@sigterm.info>
+ * Copyright (c) 2023, Enriath <ikada@protonmail.ch>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,14 +22,20 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.client.chat;
+package net.runelite.client.plugins.bosstimer;
 
-import net.runelite.client.events.ChatboxInput;
-import net.runelite.client.events.PrivateMessageInput;
+import net.runelite.api.Constants;
+import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 
-public interface ChatboxInputListener
+public class BossTimersPluginTest
 {
-	boolean onChatboxInput(ChatboxInput chatboxInput);
-
-	boolean onPrivateMessageInput(PrivateMessageInput privateMessageInput);
+	@Test
+	public void testTimers()
+	{
+		for (Boss boss : Boss.values())
+		{
+			assertEquals(boss.name(), 0, boss.getSpawnTime().toMillis() % Constants.GAME_TICK_LENGTH);
+		}
+	}
 }
