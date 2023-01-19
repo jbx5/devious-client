@@ -174,6 +174,10 @@ public class SessionManager
 
 		log.debug("Logging out of account {}", accountSession.getUsername());
 
+		// Restore config prior to deleting session so that pending config changes get saved correctly
+		configManager.switchSession(null);
+
+		// Delete session
 		accountClient.setUuid(accountSession.getUuid());
 		try
 		{
@@ -185,9 +189,6 @@ public class SessionManager
 		}
 
 		accountSession = null; // No more account
-
-		// Restore config
-		configManager.switchSession(null);
 
 		eventBus.post(new SessionClose());
 	}

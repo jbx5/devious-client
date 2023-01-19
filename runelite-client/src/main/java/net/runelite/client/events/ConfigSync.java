@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018, Adam <Adam@sigterm.info>
+ * Copyright (c) 2023, Adam <Adam@sigterm.info>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,14 +22,13 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.client.chat;
+package net.runelite.client.events;
 
-import net.runelite.client.events.ChatboxInput;
-import net.runelite.client.events.PrivateMessageInput;
-
-public interface ChatboxInputListener
+/**
+ * An event called when config is synced to disk/the server.
+ * This is typically every few minutes, but can be called when
+ * account sessions change.
+ */
+public class ConfigSync
 {
-	boolean onChatboxInput(ChatboxInput chatboxInput);
-
-	boolean onPrivateMessageInput(PrivateMessageInput privateMessageInput);
 }
