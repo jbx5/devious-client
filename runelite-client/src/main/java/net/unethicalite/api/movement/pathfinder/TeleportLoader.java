@@ -74,37 +74,38 @@ public class TeleportLoader
 						}
 					}
 				}
+			}
 
-				for (TeleportSpell teleportSpell : TeleportSpell.values())
+			for (TeleportSpell teleportSpell : TeleportSpell.values())
+			{
+				if (!teleportSpell.canCast() || teleportSpell.getPoint() == null)
 				{
-					if (!teleportSpell.canCast() || teleportSpell.getPoint() == null)
-					{
-						continue;
-					}
+					continue;
+				}
 
-					if (teleportSpell.getPoint().distanceTo(Players.getLocal().getWorldLocation()) > 50)
+				if (teleportSpell.getPoint().distanceTo(Players.getLocal().getWorldLocation()) > 50)
+				{
+					teleports.add(new Teleport(teleportSpell.getPoint(), 5, () ->
 					{
-						teleports.add(new Teleport(teleportSpell.getPoint(), 5, () ->
+						final Spell spell = teleportSpell.getSpell();
+						if (teleportSpell == TeleportSpell.TELEPORT_TO_HOUSE)
 						{
-							final Spell spell = teleportSpell.getSpell();
-							if (teleportSpell == TeleportSpell.TELEPORT_TO_HOUSE)
+							// Tele to outside
+							Widget widget = Widgets.get(spell.getWidget());
+							if (widget == null)
 							{
-								// Tele to outside
-								Widget widget = Widgets.get(spell.getWidget());
-								if (widget == null)
-								{
-									return;
-								}
-								widget.interact(1);
+								return;
 							}
-							else
-							{
-								Magic.cast(spell);
-							}
-						}));
-					}
+							widget.interact(1);
+						}
+						else
+						{
+							Magic.cast(spell);
+						}
+					}));
 				}
 			}
+
 			return teleports;
 		});
 	}

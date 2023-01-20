@@ -1,16 +1,15 @@
 package net.unethicalite.api.movement.pathfinder;
 
 import lombok.extern.slf4j.Slf4j;
-import net.runelite.api.Player;
-import net.runelite.api.Tile;
-import net.runelite.api.TileObject;
-import net.runelite.api.WallObject;
+import net.runelite.api.*;
+import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldArea;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.widgets.Widget;
 import net.unethicalite.api.commons.Predicates;
 import net.unethicalite.api.commons.Rand;
 import net.unethicalite.api.commons.Time;
+import net.unethicalite.api.entities.NPCs;
 import net.unethicalite.api.entities.Players;
 import net.unethicalite.api.entities.TileObjects;
 import net.unethicalite.api.game.Game;
@@ -65,6 +64,7 @@ public class Walker
 		Player local = Players.getLocal();
 		if (destination.contains(local))
 		{
+			currentDestination = null;
 			return true;
 		}
 
@@ -88,7 +88,8 @@ public class Walker
 
 		WorldPoint startPosition = path.get(0);
 		Teleport teleport = teleports.get(startPosition);
-		boolean offPath = path.stream().noneMatch(t -> t.distanceTo(local.getWorldLocation()) <= 1);
+		WorldPoint localWP = local.getWorldLocation();
+		boolean offPath = path.stream().noneMatch(t -> t.distanceTo(localWP) <= 5 && canPathTo(localWP, t));
 
 		// Teleport or refresh path if our direction changed
 		if (offPath)
@@ -106,7 +107,7 @@ public class Walker
 			}
 
 			path = buildPath(destination, true);
-			log.debug("Refreshed path {}");
+			log.debug("Refreshed path {}", path.size() - 1);
 		}
 
 		return walkAlong(path, transports);
@@ -180,18 +181,34 @@ public class Walker
 			return false;
 		}
 
-		if (!Movement.isRunEnabled() && (Static.getClient().getEnergy() >= Rand.nextInt(MIN_ENERGY, MAX_MIN_ENERGY) || (local.getHealthScale() > -1 && Static.getClient().getEnergy() > 0)))
+		if (!Movement.isRunEnabled() && (Movement.getRunEnergy() >= Rand.nextInt(MIN_ENERGY, MAX_MIN_ENERGY) || (local.getHealthScale() > -1 && Movement.getRunEnergy() > 0)))
 		{
 			Movement.toggleRun();
 			Time.sleepUntil(Movement::isRunEnabled, 2000);
 			return true;
 		}
 
-		if (!Movement.isRunEnabled() && Static.getClient().getEnergy() > 0 && Movement.isStaminaBoosted())
+		if (!Movement.isRunEnabled() && Movement.getRunEnergy() > 0 && Movement.isStaminaBoosted())
 		{
 			Movement.toggleRun();
 			Time.sleepUntil(Movement::isRunEnabled, 2000);
 			return true;
+		}
+
+		// Handles when stuck on those trees next to draynor manor
+		if (!local.isMoving())
+		{
+			NPC tree = NPCs.getNearest(n -> n.getId() == NpcID.TREE_4416 && n.getInteracting() == local && n.getWorldLocation().distanceTo2D(local.getWorldLocation()) <= 1);
+			if (tree != null)
+			{
+				WorldArea area = local.getWorldLocation().dx(-1).dy(-1).createWorldArea(3, 3);
+				area.toWorldPointList().stream()
+						.filter(wp -> !wp.equals(local.getWorldLocation()) && !wp.equals(tree.getWorldLocation()))
+						.unordered()
+						.min(Comparator.comparingInt(wp -> wp.distanceTo2D(tree.getWorldLocation())))
+						.ifPresent(Movement::walk);
+				return false;
+			}
 		}
 
 		return true;
@@ -250,7 +267,15 @@ public class Walker
 				{
 					if (Players.getLocal().isMoving())
 					{
-						return true;
+						LocalPoint localDesti = Static.getClient().getLocalDestinationLocation();
+						if (localDesti != null)
+						{
+							WorldPoint desti = WorldPoint.fromLocal(Static.getClient(), localDesti);
+							if (desti.distanceTo2D(transport.getSource()) < 3)
+							{
+								return true;
+							}
+						}
 					}
 					log.debug("Trying to use transport at {} to move {} -> {}", transport.getSource(), a, b);
 					transport.getHandler().run();
@@ -428,12 +453,14 @@ public class Walker
 			currentDestination = destination;
 		}
 
-		boolean sameDestination = destination.getX() == currentDestination.getX()
-			&& destination.getY() == currentDestination.getY()
-			&& destination.getPlane() == currentDestination.getPlane()
-			&& destination.getWidth() == currentDestination.getWidth()
-			&& destination.getHeight() == currentDestination.getHeight();
-		if (!sameDestination || RegionManager.shouldRefreshPath() || forced)
+		boolean sameDestination = currentDestination != null
+				&& destination.getX() == currentDestination.getX()
+				&& destination.getY() == currentDestination.getY()
+				&& destination.getPlane() == currentDestination.getPlane()
+				&& destination.getWidth() == currentDestination.getWidth()
+				&& destination.getHeight() == currentDestination.getHeight();
+		boolean shouldRefresh = RegionManager.shouldRefreshPath();
+		if (!sameDestination || shouldRefresh || forced)
 		{
 			pathFuture.cancel(true);
 			pathFuture = executor.submit(new Pathfinder(Static.getGlobalCollisionMap(), buildTransportLinks(), startPoints, destination, avoidWilderness));
@@ -454,6 +481,15 @@ public class Walker
 			log.debug("Path is loading");
 			return List.of();
 		}
+	}
+
+	public static List<WorldPoint> buildPath()
+	{
+		if (currentDestination == null)
+		{
+			return null;
+		}
+		return buildPath(currentDestination);
 	}
 
 	public static List<WorldPoint> buildPath(WorldArea destination, boolean avoidWilderness, boolean forced)
@@ -532,5 +568,11 @@ public class Walker
 		}
 
 		return out;
+	}
+
+	public static boolean canPathTo(WorldPoint start, WorldPoint destination)
+	{
+		List<WorldPoint> pathTo = start.pathTo(Static.getClient(), destination);
+		return pathTo != null && pathTo.contains(destination);
 	}
 }
