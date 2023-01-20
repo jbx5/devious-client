@@ -570,6 +570,34 @@ public class Walker
 		return out;
 	}
 
+	public static Map<WorldPoint, List<Transport>> buildTransportLinksOnPath(List<WorldPoint> path)
+	{
+		Map<WorldPoint, List<Transport>> out = new HashMap<>();
+		for (Transport transport : TransportLoader.buildTransports())
+		{
+			WorldPoint destination = transport.getDestination();
+			if (path.contains(destination))
+			{
+				out.computeIfAbsent(transport.getSource(), x -> new ArrayList<>()).add(transport);
+			}
+		}
+		return out;
+	}
+
+	public static LinkedHashMap<WorldPoint, Teleport> buildTeleportLinksOnPath(List<WorldPoint> path)
+	{
+		LinkedHashMap<WorldPoint, Teleport> out = new LinkedHashMap<>();
+		for (Teleport teleport : TeleportLoader.buildTeleports())
+		{
+			WorldPoint destination = teleport.getDestination();
+			if (path.contains(destination))
+			{
+				out.putIfAbsent(destination, teleport);
+			}
+		}
+		return out;
+	}
+
 	public static boolean canPathTo(WorldPoint start, WorldPoint destination)
 	{
 		List<WorldPoint> pathTo = start.pathTo(Static.getClient(), destination);
