@@ -1,7 +1,12 @@
 package net.unethicalite.api.movement.pathfinder;
 
 import lombok.extern.slf4j.Slf4j;
-import net.runelite.api.*;
+import net.runelite.api.NPC;
+import net.runelite.api.NpcID;
+import net.runelite.api.Player;
+import net.runelite.api.Tile;
+import net.runelite.api.TileObject;
+import net.runelite.api.WallObject;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldArea;
 import net.runelite.api.coords.WorldPoint;
