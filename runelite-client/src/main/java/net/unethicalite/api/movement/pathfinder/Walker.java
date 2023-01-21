@@ -208,7 +208,7 @@ public class Walker
 			{
 				WorldArea area = local.getWorldLocation().dx(-1).dy(-1).createWorldArea(3, 3);
 				area.toWorldPointList().stream()
-						.filter(wp -> !wp.equals(local.getWorldLocation()) && !wp.equals(tree.getWorldLocation()) && !calculatePath(wp).isEmpty())
+						.filter(wp -> !wp.equals(local.getWorldLocation()) && !wp.equals(tree.getWorldLocation()) && canPathTo(local.getWorldLocation(), wp))
 						.unordered()
 						.min(Comparator.comparingInt(wp -> wp.distanceTo2D(tree.getWorldLocation())))
 						.ifPresent(Movement::walk);
