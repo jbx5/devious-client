@@ -270,6 +270,11 @@ public class RegionManager
 
 	private boolean teleportsChanged()
 	{
+		if (Walker.buildPath() == null)
+		{
+			return false;
+		}
+
 		List<WorldPoint> path = Walker.remainingPath(Walker.buildPath());
 
 		if (path.isEmpty())
