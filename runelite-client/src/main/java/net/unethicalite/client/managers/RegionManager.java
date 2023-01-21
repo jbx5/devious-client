@@ -238,6 +238,11 @@ public class RegionManager
 
 	private boolean transportsChanged()
 	{
+		if (Walker.buildPath() == null)
+		{
+			return false;
+		}
+
 		List<WorldPoint> path = Walker.remainingPath(Walker.buildPath());
 
 		if (path.isEmpty())

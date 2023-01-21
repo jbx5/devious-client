@@ -172,6 +172,10 @@ public class Worlds
 	public static boolean inMembersWorld(boolean useCache)
 	{
 		List<World> worldList = useCache && !worldListCache.isEmpty() ? worldListCache : getAll(w -> true);
+		if (worldListCache.isEmpty())
+		{
+			return false;
+		}
 		worldCache = useCache && worldCache.getId() == getCurrentId() ? worldCache : worldList.stream()
 				.filter(x -> x.getId() == getCurrentId())
 				.findFirst()
