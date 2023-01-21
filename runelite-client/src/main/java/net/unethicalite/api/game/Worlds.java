@@ -26,6 +26,9 @@ import java.util.function.Predicate;
 @Slf4j
 public class Worlds
 {
+	private static List<World> worldListCache = new ArrayList<>();
+	private static World worldCache = Static.getClient().createWorld();
+
 	private static List<World> lookup()
 	{
 		List<World> out = new ArrayList<>();
@@ -48,6 +51,8 @@ public class Worlds
 			world.setTypes(types);
 			out.add(world);
 		});
+
+		worldListCache = out;
 
 		return out;
 	}
@@ -81,6 +86,8 @@ public class Worlds
 				out.add(world);
 			}
 		}
+
+		worldListCache = out;
 
 		return out;
 	}
@@ -159,11 +166,17 @@ public class Worlds
 
 	public static boolean inMembersWorld()
 	{
-		return lookup().stream()
+		return inMembersWorld(false);
+	}
+
+	public static boolean inMembersWorld(boolean useCache)
+	{
+		List<World> worldList = useCache && !worldListCache.isEmpty() ? worldListCache : getAll(w -> true);
+		worldCache = useCache && worldCache.getId() == getCurrentId() ? worldCache : worldList.stream()
 				.filter(x -> x.getId() == getCurrentId())
 				.findFirst()
-				.get()
-				.isMembers();
+				.get();
+		return worldCache.isMembers();
 	}
 
 	public static void loadWorlds()

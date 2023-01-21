@@ -5703,7 +5703,13 @@
     },
     "action": "Walk-down",
     "objectId": 39647,
-    "requirements": {}
+    "requirements": {
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
+      ]
+    }
   },
   {
     "source": {
@@ -5733,7 +5739,13 @@
     },
     "action": "Walk-down",
     "objectId": 39647,
-    "requirements": {}
+    "requirements": {
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
+      ]
+    }
   },
   {
     "source": {
@@ -12333,7 +12345,13 @@
     },
     "action": "Open",
     "objectId": 1728,
-    "requirements": {}
+    "requirements": {
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
+      ]
+    }
   },
   {
     "source": {
@@ -12348,7 +12366,13 @@
     },
     "action": "Open",
     "objectId": 1728,
-    "requirements": {}
+    "requirements": {
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
+      ]
+    }
   },
   {
     "source": {
@@ -12363,7 +12387,13 @@
     },
     "action": "Open",
     "objectId": 1727,
-    "requirements": {}
+    "requirements": {
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
+      ]
+    }
   },
   {
     "source": {
@@ -12378,7 +12408,13 @@
     },
     "action": "Open",
     "objectId": 1727,
-    "requirements": {}
+    "requirements": {
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
+      ]
+    }
   },
   {
     "source": {
@@ -12555,7 +12591,13 @@
     },
     "action": "Pull",
     "objectId": 26761,
-    "requirements": {}
+    "requirements": {
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
+      ]
+    }
   },
   {
     "source": {
@@ -76870,6 +76912,294 @@
     },
     "action": "Climb",
     "objectId": 34531,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 3261,
+      "y": 3446,
+      "plane": 0
+    },
+    "destination": {
+      "x": 3261,
+      "y": 3447,
+      "plane": 0
+    },
+    "action": "Open",
+    "objectId": 24536,
+    "requirements": {
+      "questRequirements": [
+        {
+          "quest": "THE_DIG_SITE",
+          "states": [
+            "FINISHED"
+          ]
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
+      ]
+    }
+  },
+  {
+    "source": {
+      "x": 3261,
+      "y": 3447,
+      "plane": 0
+    },
+    "destination": {
+      "x": 3261,
+      "y": 3446,
+      "plane": 0
+    },
+    "action": "Open",
+    "objectId": 24536,
+    "requirements": {
+      "questRequirements": [
+        {
+          "quest": "THE_DIG_SITE",
+          "states": [
+            "FINISHED"
+          ]
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
+      ]
+    }
+  },
+  {
+    "source": {
+      "x": 3265,
+      "y": 3442,
+      "plane": 0
+    },
+    "destination": {
+      "x": 3265,
+      "y": 3441,
+      "plane": 0
+    },
+    "action": "Open",
+    "objectId": 24565,
+    "requirements": {
+      "questRequirements": [
+        {
+          "quest": "THE_DIG_SITE",
+          "states": [
+            "FINISHED"
+          ]
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
+      ]
+    }
+  },
+  {
+    "source": {
+      "x": 3265,
+      "y": 3441,
+      "plane": 0
+    },
+    "destination": {
+      "x": 3265,
+      "y": 3442,
+      "plane": 0
+    },
+    "action": "Open",
+    "objectId": 24565,
+    "requirements": {
+      "questRequirements": [
+        {
+          "quest": "THE_DIG_SITE",
+          "states": [
+            "FINISHED"
+          ]
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
+      ]
+    }
+  },
+  {
+    "source": {
+      "x": 3264,
+      "y": 3442,
+      "plane": 0
+    },
+    "destination": {
+      "x": 3264,
+      "y": 3441,
+      "plane": 0
+    },
+    "action": "Open",
+    "objectId": 24567,
+    "requirements": {
+      "questRequirements": [
+        {
+          "quest": "THE_DIG_SITE",
+          "states": [
+            "FINISHED"
+          ]
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
+      ]
+    }
+  },
+  {
+    "source": {
+      "x": 3264,
+      "y": 3441,
+      "plane": 0
+    },
+    "destination": {
+      "x": 3264,
+      "y": 3442,
+      "plane": 0
+    },
+    "action": "Open",
+    "objectId": 24567,
+    "requirements": {
+      "questRequirements": [
+        {
+          "quest": "THE_DIG_SITE",
+          "states": [
+            "FINISHED"
+          ]
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
+      ]
+    }
+  },
+  {
+    "source": {
+      "x": 2934,
+      "y": 3320,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2934,
+      "y": 3319,
+      "plane": 0
+    },
+    "action": "Open",
+    "objectId": 1727,
+    "requirements": {
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
+      ]
+    }
+  },
+  {
+    "source": {
+      "x": 2934,
+      "y": 3319,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2934,
+      "y": 3320,
+      "plane": 0
+    },
+    "action": "Open",
+    "objectId": 1727,
+    "requirements": {
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
+      ]
+    }
+  },
+  {
+    "source": {
+      "x": 2933,
+      "y": 3320,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2933,
+      "y": 3319,
+      "plane": 0
+    },
+    "action": "Open",
+    "objectId": 1728,
+    "requirements": {
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
+      ]
+    }
+  },
+  {
+    "source": {
+      "x": 2933,
+      "y": 3319,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2933,
+      "y": 3320,
+      "plane": 0
+    },
+    "action": "Open",
+    "objectId": 1728,
+    "requirements": {
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
+      ]
+    }
+  },
+  {
+    "source": {
+      "x": 3088,
+      "y": 3570,
+      "plane": 0
+    },
+    "destination": {
+      "x": 3088,
+      "y": 9970,
+      "plane": 0
+    },
+    "action": "Climb-down",
+    "objectId": 16680,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 3088,
+      "y": 9970,
+      "plane": 0
+    },
+    "destination": {
+      "x": 3088,
+      "y": 3570,
+      "plane": 0
+    },
+    "action": "Climb-up",
+    "objectId": 17385,
     "requirements": {}
   }
 ]
