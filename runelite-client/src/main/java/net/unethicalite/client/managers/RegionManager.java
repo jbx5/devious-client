@@ -238,14 +238,7 @@ public class RegionManager
 
 	private boolean transportsChanged()
 	{
-		List<WorldPoint> p = Walker.buildPath();
-
-		if (p == null)
-		{
-			return false;
-		}
-
-		List<WorldPoint> path = Walker.remainingPath(p);
+		List<WorldPoint> path = Walker.remainingPath(Walker.buildPath());
 
 		if (path.isEmpty())
 		{
@@ -272,14 +265,7 @@ public class RegionManager
 
 	private boolean teleportsChanged()
 	{
-		List<WorldPoint> p = Walker.buildPath();
-
-		if (p == null)
-		{
-			return false;
-		}
-
-		List<WorldPoint> path = Walker.remainingPath(p);
+		List<WorldPoint> path = Walker.remainingPath(Walker.buildPath());
 
 		if (path.isEmpty())
 		{

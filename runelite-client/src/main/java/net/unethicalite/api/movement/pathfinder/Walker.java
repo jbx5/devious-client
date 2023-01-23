@@ -492,7 +492,7 @@ public class Walker
 	{
 		if (currentDestination == null)
 		{
-			return null;
+			return List.of();
 		}
 		return buildPath(currentDestination);
 	}
