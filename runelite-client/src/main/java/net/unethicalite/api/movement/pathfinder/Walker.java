@@ -270,17 +270,9 @@ public class Walker
 
 				if (transport != null)
 				{
-					if (Players.getLocal().isMoving())
+					if (ignoreObstacle(transport.getSource(), 2))
 					{
-						LocalPoint localDesti = Static.getClient().getLocalDestinationLocation();
-						if (localDesti != null)
-						{
-							WorldPoint desti = WorldPoint.fromLocal(Static.getClient(), localDesti);
-							if (desti.distanceTo2D(transport.getSource()) < 3)
-							{
-								return true;
-							}
-						}
+						return true;
 					}
 					log.debug("Trying to use transport at {} to move {} -> {}", transport.getSource(), a, b);
 					transport.getHandler().run();
@@ -316,7 +308,7 @@ public class Walker
 				);
 				if (wall != null && wall.hasAction("Open"))
 				{
-					if (Players.getLocal().isMoving())
+					if (ignoreObstacle(wall.getWorldLocation(), 1))
 					{
 						return true;
 					}
@@ -335,11 +327,11 @@ public class Walker
 			// Normal doors
 			if (Reachable.isDoored(tileA, tileB))
 			{
-				if (Players.getLocal().isMoving())
+				WallObject wall = tileA.getWallObject();
+				if (ignoreObstacle(wall.getWorldLocation(), 1))
 				{
 					return true;
 				}
-				WallObject wall = tileA.getWallObject();
 				wall.interact("Open");
 				log.debug("Handling door at {}", wall.getWorldLocation());
 				Time.sleepUntil(() -> tileA.getWallObject() == null
@@ -349,11 +341,11 @@ public class Walker
 
 			if (Reachable.isDoored(tileB, tileA))
 			{
-				if (Players.getLocal().isMoving())
+				WallObject wall = tileB.getWallObject();
+				if (ignoreObstacle(wall.getWorldLocation(), 1))
 				{
 					return true;
 				}
-				WallObject wall = tileB.getWallObject();
 				wall.interact("Open");
 				log.debug("Handling door at {}", wall.getWorldLocation());
 				Time.sleepUntil(() -> tileB.getWallObject() == null
@@ -362,6 +354,20 @@ public class Walker
 			}
 		}
 
+		return false;
+	}
+
+	private static boolean ignoreObstacle(WorldPoint point, int distance)
+	{
+		if (Players.getLocal().isMoving())
+		{
+			LocalPoint localDesti = Static.getClient().getLocalDestinationLocation();
+			if (localDesti != null)
+			{
+				WorldPoint desti = WorldPoint.fromLocal(Static.getClient(), localDesti);
+				return desti.distanceTo2D(point) <= distance;
+			}
+		}
 		return false;
 	}
 
