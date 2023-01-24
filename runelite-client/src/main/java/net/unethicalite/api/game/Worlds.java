@@ -171,7 +171,7 @@ public class Worlds
 
 	public static boolean inMembersWorld(boolean useCache)
 	{
-		List<World> worldList = useCache && !worldListCache.isEmpty() ? worldListCache : lookup();
+		List<World> worldList = useCache && !worldListCache.isEmpty() ? worldListCache : getAll(w -> true);
 		if (worldListCache.isEmpty())
 		{
 			return false;
