@@ -26,16 +26,30 @@ import java.util.function.Predicate;
 @Slf4j
 public class Worlds
 {
-	private static List<World> worldListCache = new ArrayList<>();
-	private static World worldCache = Static.getClient().createWorld();
+	private static List<World> cachedWorlds = new ArrayList<>();
 
 	private static List<World> lookup()
 	{
-		List<World> out = new ArrayList<>();
+		return lookup(false);
+	}
+
+	private static List<World> lookup(boolean forceLookup)
+	{
+		if (forceLookup)
+		{
+			cachedWorlds.clear();
+		}
+
+		if (!cachedWorlds.isEmpty())
+		{
+			return cachedWorlds;
+		}
+
 		WorldResult lookup = Static.getWorldService().getWorlds();
 		if (lookup == null)
 		{
-			return Collections.emptyList();
+			World[] rsWorlds = Static.getClient().getWorldList();
+			return rsWorlds != null ? Arrays.asList(rsWorlds) : Collections.emptyList();
 		}
 
 		lookup.getWorlds().forEach(w ->
@@ -49,47 +63,41 @@ public class Worlds
 			EnumSet<WorldType> types = EnumSet.noneOf(WorldType.class);
 			w.getTypes().stream().map(Worlds::toApiWorldType).forEach(types::add);
 			world.setTypes(types);
-			out.add(world);
+			cachedWorlds.add(world);
 		});
 
-		worldListCache = out;
-
-		return out;
+		return cachedWorlds;
 	}
 
 	public static List<World> getAll(Predicate<World> filter)
 	{
-		List<World> out = new ArrayList<>();
 		List<World> loadedWorlds;
+		List<World> result = new ArrayList<>();
 
 		try
 		{
-			World[] worlds = Static.getClient().getWorldList();
-			if (worlds == null)
+			if (!cachedWorlds.isEmpty())
 			{
-				loadWorlds();
-				return out;
+				loadedWorlds = cachedWorlds;
+			}
+			else
+			{
+				loadedWorlds = lookup();
 			}
 
-			loadedWorlds = Arrays.asList(worlds);
+			for (World world : loadedWorlds)
+			{
+				if (filter.test(world))
+				{
+					result.add(world);
+				}
+			}
 		}
 		catch (Exception e)
 		{
-			log.warn("Game couldn't load worlds, falling back to RuneLite API.");
-			loadedWorlds = lookup();
+			log.warn("Game couldn't load worlds", e);
 		}
-
-		for (World world : loadedWorlds)
-		{
-			if (filter.test(world))
-			{
-				out.add(world);
-			}
-		}
-
-		worldListCache = out;
-
-		return out;
+		return result;
 	}
 
 	public static World getFirst(Predicate<World> filter)
@@ -166,24 +174,14 @@ public class Worlds
 
 	public static boolean inMembersWorld()
 	{
-		return inMembersWorld(false);
-	}
-
-	public static boolean inMembersWorld(boolean useCache)
-	{
-		List<World> worldList = useCache && !worldListCache.isEmpty() ? worldListCache : getAll(w -> true);
-		if (worldListCache.isEmpty())
-		{
-			return false;
-		}
-		worldCache = useCache && worldCache.getId() == getCurrentId() ? worldCache : worldList.stream()
+		return lookup().stream()
 				.filter(x -> x.getId() == getCurrentId())
 				.findFirst()
-				.get();
-		return worldCache.isMembers();
+				.get()
+				.isMembers();
 	}
 
-	public static void loadWorlds()
+	/*public static void loadWorlds()
 	{
 		if (Game.isOnLoginScreen())
 		{
@@ -197,7 +195,7 @@ public class Worlds
 		{
 			openHopper();
 		}
-	}
+	}*/
 
 	public static void openHopper()
 	{
