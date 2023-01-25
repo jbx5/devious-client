@@ -20,6 +20,7 @@ import net.unethicalite.api.movement.Reachable;
 import net.unethicalite.api.movement.pathfinder.TeleportLoader;
 import net.unethicalite.api.movement.pathfinder.TransportLoader;
 import net.unethicalite.api.movement.pathfinder.Walker;
+import net.unethicalite.api.movement.pathfinder.model.Teleport;
 import net.unethicalite.api.movement.pathfinder.model.Transport;
 import net.unethicalite.api.movement.pathfinder.model.poh.HousePortal;
 import net.unethicalite.api.movement.pathfinder.model.poh.JewelryBox;
@@ -33,6 +34,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.LinkedHashMap;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
@@ -183,9 +185,7 @@ public class RegionManager
 	{
 		if (REFRESH_WIDGET_IDS.contains(event.getGroupId()))
 		{
-			REFRESH_PATH = true;
-			TransportLoader.refreshTransports();
-			TeleportLoader.refreshTeleports();
+			REFRESH_PATH = hasChanged();
 		}
 	}
 
@@ -194,9 +194,7 @@ public class RegionManager
 	{
 		if (REFRESH_VARBS.contains(event.getIndex()))
 		{
-			REFRESH_PATH = true;
-			TeleportLoader.refreshTeleports();
-			TransportLoader.refreshTransports();
+			REFRESH_PATH = hasChanged();
 		}
 	}
 
@@ -205,15 +203,11 @@ public class RegionManager
 	{
 		if (event.getContainerId() == InventoryID.INVENTORY.getId())
 		{
-			REFRESH_PATH = true;
-			TransportLoader.refreshTransports();
-			TeleportLoader.refreshTeleports();
+			REFRESH_PATH = hasChanged();
 		}
 		if (event.getContainerId() == InventoryID.EQUIPMENT.getId())
 		{
-			REFRESH_PATH = true;
-			TransportLoader.refreshTransports();
-			TeleportLoader.refreshTeleports();
+			REFRESH_PATH = hasChanged();
 		}
 	}
 
@@ -233,6 +227,67 @@ public class RegionManager
 				TeleportLoader.refreshTeleports();
 			}
 		}
+	}
+
+	private boolean hasChanged()
+	{
+		boolean tranChanged = transportsChanged();
+		boolean teleChanged = teleportsChanged();
+		return tranChanged || teleChanged;
+	}
+
+	private boolean transportsChanged()
+	{
+		List<WorldPoint> path = Walker.remainingPath(Walker.buildPath());
+
+		if (path.isEmpty())
+		{
+			TransportLoader.refreshTransports();
+			return false;
+		}
+
+		Map<WorldPoint, List<Transport>> previousTransports = Walker.buildTransportLinksOnPath(path);
+		TransportLoader.refreshTransports();
+		Map<WorldPoint, List<Transport>> currentTransports = Walker.buildTransportLinksOnPath(path);
+
+		for (WorldPoint point : path)
+		{
+			List<Transport> prevTran = previousTransports.getOrDefault(point, new ArrayList<>());
+			List<Transport> currTran = currentTransports.getOrDefault(point, new ArrayList<>());
+			if (!prevTran.equals(currTran))
+			{
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	private boolean teleportsChanged()
+	{
+		List<WorldPoint> path = Walker.remainingPath(Walker.buildPath());
+
+		if (path.isEmpty())
+		{
+			TeleportLoader.refreshTeleports();
+			return false;
+		}
+
+		LinkedHashMap<WorldPoint, Teleport> previousTeleports = Walker.buildTeleportLinksOnPath(path);
+		TeleportLoader.refreshTeleports();
+		LinkedHashMap<WorldPoint, Teleport> currentTeleports = Walker.buildTeleportLinksOnPath(path);
+
+		for (WorldPoint point : path)
+		{
+			Teleport prevTele = previousTeleports.getOrDefault(point, null);
+			Teleport currTele = currentTeleports.getOrDefault(point, null);
+			if ((prevTele == null && currTele != null) || (prevTele != null && currTele == null))
+			{
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	public List<TileFlag> getTileFlags()

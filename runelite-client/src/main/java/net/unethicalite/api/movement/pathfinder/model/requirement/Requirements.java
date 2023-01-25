@@ -13,6 +13,7 @@ public class Requirements
     List<SkillRequirement> skillRequirements = new ArrayList<>();
     List<VarRequirement> varRequirements = new ArrayList<>();
     List<QuestRequirement> questRequirements = new ArrayList<>();
+    List<WorldRequirement> worldRequirements = new ArrayList<>();
 
     public boolean fulfilled()
     {
@@ -21,6 +22,7 @@ public class Requirements
         all.addAll(skillRequirements);
         all.addAll(varRequirements);
         all.addAll(questRequirements);
+        all.addAll(worldRequirements);
         return all.stream().allMatch(Supplier::get);
     }
 }
