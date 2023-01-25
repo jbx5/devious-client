@@ -232,15 +232,6 @@ public class OPRSExternalPluginManager
 	{
 		try
 		{
-			List.copyOf(repositories).forEach(repo ->
-			{
-				if (Static.getPluginRepoManager().isRepoMalicious(repo.getOwner()))
-				{
-					repositories.removeIf(x -> x.getOwner().equals(repo.getOwner()));
-					removeRepository(repo.getOwner());
-				}
-			});
-
 			externalPluginManager.loadPlugins();
 		}
 		catch (Exception ex)

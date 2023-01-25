@@ -135,10 +135,6 @@ public class Static
 
 	@Inject
 	@Getter
-	private static PluginRepoManager pluginRepoManager;
-
-	@Inject
-	@Getter
 	private static SpriteManager spriteManager;
 
 	@Inject

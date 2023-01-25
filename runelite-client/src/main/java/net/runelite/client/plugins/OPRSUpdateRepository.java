@@ -81,7 +81,6 @@ public class OPRSUpdateRepository implements UpdateRepository
 
 	public void initPlugins()
 	{
-		if (Static.getPluginRepoManager().isRepoMalicious(getOwner())) return;
 		Reader pluginsJsonReader;
 		try
 		{

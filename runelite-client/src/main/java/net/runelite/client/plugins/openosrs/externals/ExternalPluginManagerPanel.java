@@ -120,13 +120,6 @@ public class ExternalPluginManagerPanel extends PluginPanel
 					return;
 				}
 
-				if (Static.getPluginRepoManager().isRepoMalicious(owner.getText()))
-				{
-					JOptionPane.showMessageDialog(ClientUI.getFrame(), "Failed to add " + owner.getText() + "'s repo, contact an admin for support. ", "Error!",
-							JOptionPane.ERROR_MESSAGE);
-					return;
-				}
-
 				if (externalPluginManager.doesGhRepoExist(owner.getText(), name.getText()))
 				{
 					JOptionPane.showMessageDialog(ClientUI.getFrame(), "This repository already exists.", "Error!",
