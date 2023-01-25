@@ -53,7 +53,6 @@ import net.runelite.client.events.ConfigChanged;
 import net.runelite.client.events.ExternalPluginsChanged;
 import net.runelite.client.ui.ClientUI;
 import net.runelite.client.util.SwingUtil;
-import net.unethicalite.client.Static;
 import net.unethicalite.client.plugins.PrivateUpdateRepository;
 import org.jgroups.Message;
 import org.pf4j.DefaultPluginManager;

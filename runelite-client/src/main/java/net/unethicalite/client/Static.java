@@ -26,7 +26,6 @@ import net.unethicalite.client.managers.DefinitionManager;
 import net.unethicalite.client.managers.InventoryManager;
 import net.unethicalite.client.managers.NativeInputManager;
 import net.unethicalite.client.managers.NeverLogManager;
-import net.unethicalite.client.managers.PluginRepoManager;
 import net.unethicalite.client.managers.QuestManager;
 import net.unethicalite.client.managers.RegionManager;
 import net.unethicalite.client.managers.SettingsManager;
