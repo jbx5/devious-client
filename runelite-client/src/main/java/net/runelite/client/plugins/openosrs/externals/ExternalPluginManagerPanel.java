@@ -8,7 +8,6 @@ import net.runelite.client.ui.ColorScheme;
 import net.runelite.client.ui.FontManager;
 import net.runelite.client.ui.PluginPanel;
 import net.runelite.client.util.ImageUtil;
-import net.unethicalite.client.Static;
 
 import javax.inject.Inject;
 import javax.swing.ImageIcon;
@@ -117,13 +116,6 @@ public class ExternalPluginManagerPanel extends PluginPanel
 					JOptionPane.showConfirmDialog(ClientUI.getFrame(), message, "Add repository", JOptionPane.OK_CANCEL_OPTION);
 				if (option != JOptionPane.OK_OPTION || owner.getText().equals("") || name.getText().equals(""))
 				{
-					return;
-				}
-
-				if (Static.getPluginRepoManager().isRepoMalicious(owner.getText()))
-				{
-					JOptionPane.showMessageDialog(ClientUI.getFrame(), "Failed to add " + owner.getText() + "'s repo, contact an admin for support. ", "Error!",
-							JOptionPane.ERROR_MESSAGE);
 					return;
 				}
 

@@ -125,7 +125,7 @@ public class GlobalCollisionMap implements CollisionMap
 		return region.get(regionX, regionY, z, w);
 	}
 
-	private GlobalCollisionMap copy()
+	public GlobalCollisionMap copy()
 	{
 		return new GlobalCollisionMap(this.toBytes());
 	}
