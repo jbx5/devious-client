@@ -273,16 +273,6 @@ public class WorldPoint implements net.unethicalite.api.Positionable
 	}
 
 	/**
-	 * Converts a WorldPoint to a 1x1 WorldArea.
-	 *
-	 * @return Returns a 1x1 WorldArea
-	 */
-	public WorldArea toWorldArea()
-	{
-		return new WorldArea(x, y, 1, 1, plane);
-	}
-
-	/**
 	 * Rotate the coordinates in the chunk according to chunk rotation
 	 *
 	 * @param point    point
@@ -315,7 +305,7 @@ public class WorldPoint implements net.unethicalite.api.Positionable
 	 */
 	public int distanceTo(WorldArea other)
 	{
-		return new WorldArea(this, 1, 1).distanceTo(other);
+		return this.toWorldArea().distanceTo(other);
 	}
 
 	/**
@@ -604,6 +594,16 @@ public class WorldPoint implements net.unethicalite.api.Positionable
 			}
 		}
 		return false;
+	}
+
+	/**
+	 * Retrieves an area consisting of only this point.
+	 *
+	 * @return A {@link WorldArea} of width and height 1, encompassing only this point.
+	 */
+	public WorldArea toWorldArea()
+	{
+		return new WorldArea(this, 1, 1);
 	}
 
 	public void outline(Client client, Graphics2D graphics2D, Color color)
