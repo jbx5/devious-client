@@ -64,7 +64,7 @@ public class class422 implements class421 {
 
             JSONArray var2 = new JSONArray(var1);
             this.field4658 = new JSONObject();
-            this.field4658.method8392("arrayValues", var2);
+            this.field4658.method9196("arrayValues", var2);
          }
 
       } catch (JSONException var3) {
