@@ -131,6 +131,10 @@ public interface RSModel extends RSRenderable, Model
 	@Override
 	int getRadius();
 
+	@Import("diameter")
+	@Override
+	int getDiameter();
+
 	@Import("faceTextures")
 	@Override
 	short[] getFaceTextures();

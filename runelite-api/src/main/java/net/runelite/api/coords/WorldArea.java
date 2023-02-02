@@ -136,7 +136,7 @@ public class WorldArea
 	 */
 	public int distanceTo(WorldPoint other)
 	{
-		return distanceTo(new WorldArea(other, 1, 1));
+		return distanceTo(other.toWorldArea());
 	}
 
 	/**
@@ -159,7 +159,7 @@ public class WorldArea
 	 */
 	public int distanceTo2D(WorldPoint other)
 	{
-		return distanceTo2D(new WorldArea(other, 1, 1));
+		return distanceTo2D(other.toWorldArea());
 	}
 
 	/**
@@ -212,7 +212,7 @@ public class WorldArea
 	 */
 	public boolean isInMeleeDistance(WorldPoint other)
 	{
-		return isInMeleeDistance(new WorldArea(other, 1, 1));
+		return isInMeleeDistance(other.toWorldArea());
 	}
 
 	/**
@@ -715,7 +715,7 @@ public class WorldArea
 	 */
 	public boolean hasLineOfSightTo(Client client, WorldPoint other)
 	{
-		return hasLineOfSightTo(client, new WorldArea(other, 1, 1));
+		return hasLineOfSightTo(client, other.toWorldArea());
 	}
 
 	/**
