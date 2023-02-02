@@ -11,6 +11,6 @@ public class WorldRequirement implements Requirement
     @Override
     public Boolean get()
     {
-        return !memberWorld || Worlds.inMembersWorld(true);
+        return !memberWorld || Worlds.inMembersWorld();
     }
 }
