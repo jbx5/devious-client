@@ -1,90 +1,147 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("eo")
-public class class134 extends class136 {
-   @ObfuscatedName("h")
+@ObfuscatedName("el")
+public enum class134 implements MouseWheel {
+   @ObfuscatedName("f")
+   @ObfuscatedSignature(
+      descriptor = "Lel;"
+   )
+   field1621(0, 0),
+   @ObfuscatedName("w")
+   @ObfuscatedSignature(
+      descriptor = "Lel;"
+   )
+   field1607(1, 1),
+   @ObfuscatedName("v")
+   @ObfuscatedSignature(
+      descriptor = "Lel;"
+   )
+   field1608(2, 2),
+   @ObfuscatedName("s")
+   @ObfuscatedSignature(
+      descriptor = "Lel;"
+   )
+   field1609(3, 3),
+   @ObfuscatedName("z")
+   @ObfuscatedSignature(
+      descriptor = "Lel;"
+   )
+   field1610(4, 4),
+   @ObfuscatedName("j")
+   @ObfuscatedSignature(
+      descriptor = "Lel;"
+   )
+   field1617(5, 5),
+   @ObfuscatedName("i")
+   @ObfuscatedSignature(
+      descriptor = "Lel;"
+   )
+   field1612(6, 6),
+   @ObfuscatedName("n")
+   @ObfuscatedSignature(
+      descriptor = "Lel;"
+   )
+   field1611(7, 7),
+   @ObfuscatedName("l")
+   @ObfuscatedSignature(
+      descriptor = "Lel;"
+   )
+   field1614(8, 8);
+
+   @ObfuscatedName("be")
+   @ObfuscatedSignature(
+      descriptor = "Lle;"
+   )
+   static StudioGame field1606;
+   @ObfuscatedName("bu")
    @ObfuscatedGetter(
-      longValue = -1817932913018406573L
+      intValue = -2047759423
    )
-   long field1642;
-   @ObfuscatedName("e")
-   String field1641;
-   // $FF: synthetic field
-   @ObfuscatedSignature(
-      descriptor = "Lem;"
+   static int field1613;
+   @ObfuscatedName("k")
+   @ObfuscatedGetter(
+      intValue = -1695238653
    )
-   final class139 this$0;
+   final int field1615;
+   @ObfuscatedName("c")
+   @ObfuscatedGetter(
+      intValue = -1557384537
+   )
+   final int field1616;
 
-   @ObfuscatedSignature(
-      descriptor = "(Lem;)V"
-   )
-   class134(class139 var1) {
-      this.this$0 = var1;
-      this.field1642 = -1L;
-      this.field1641 = null;
+   class134(int var3, int var4) {
+      this.field1615 = var3;
+      this.field1616 = var4;
    }
 
-   @ObfuscatedName("h")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
-      descriptor = "(Lqy;I)V",
-      garbageValue = "1101327225"
+      descriptor = "(B)I",
+      garbageValue = "3"
    )
-   void vmethod3349(Buffer var1) {
-      if (var1.readUnsignedByte() != 255) {
-         --var1.offset;
-         this.field1642 = var1.readLong();
-      }
-
-      this.field1641 = var1.readStringCp1252NullTerminatedOrNull();
+   @Export("rsOrdinal")
+   public int rsOrdinal() {
+      return this.field1616;
    }
 
-   @ObfuscatedName("e")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      descriptor = "(Lep;I)V",
-      garbageValue = "839088249"
+      descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;B)V",
+      garbageValue = "-116"
    )
-   void vmethod3350(ClanSettings var1) {
-      var1.method3210(this.field1642, this.field1641, 0);
+   @Export("addChatMessage")
+   static void addChatMessage(int var0, String var1, String var2, String var3) {
+      ChatChannel var4 = (ChatChannel)Messages.Messages_channels.get(var0);
+      if (var4 == null) {
+         var4 = new ChatChannel();
+         Messages.Messages_channels.put(var0, var4);
+      }
+
+      Message var5 = var4.addMessage(var0, var1, var2, var3);
+      Messages.Messages_hashTable.put(var5, (long)var5.count);
+      Messages.Messages_queue.add(var5);
+      Client.chatCycle = Client.cycleCntr;
    }
 
-   @ObfuscatedName("h")
+   @ObfuscatedName("n")
    @ObfuscatedSignature(
-      descriptor = "(Lly;Lly;I)I",
-      garbageValue = "-197424852"
+      descriptor = "(I)V",
+      garbageValue = "328947468"
    )
-   static int method3051(AbstractArchive var0, AbstractArchive var1) {
-      int var2 = 0;
-      String[] var3 = Login.field934;
+   public static void method3124() {
+      KitDefinition.KitDefinition_cached.clear();
+   }
 
-      int var4;
-      String var5;
-      for(var4 = 0; var4 < var3.length; ++var4) {
-         var5 = var3[var4];
-         if (var0.tryLoadFileByNames(var5, "")) {
-            ++var2;
+   @ObfuscatedName("ae")
+   @ObfuscatedSignature(
+      descriptor = "(ILba;ZB)I",
+      garbageValue = "-33"
+   )
+   static int method3126(int var0, Script var1, boolean var2) {
+      if (var0 == 6754) {
+         int var5 = Interpreter.Interpreter_intStack[--class302.Interpreter_intStackSize];
+         NPCComposition var6 = class137.getNpcDefinition(var5);
+         Interpreter.Interpreter_stringStack[++class20.Interpreter_stringStackSize - 1] = var6 != null ? var6.name : "";
+         return 1;
+      } else {
+         NPCComposition var3;
+         if (var0 == 6764) {
+            class302.Interpreter_intStackSize -= 2;
+            var3 = class137.getNpcDefinition(Interpreter.Interpreter_intStack[class302.Interpreter_intStackSize]);
+            int var4 = Interpreter.Interpreter_intStack[class302.Interpreter_intStackSize + 1];
+            Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.method3751(var4);
+            Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.method3734(var4);
+            return 1;
+         } else if (var0 == 6765) {
+            var3 = class137.getNpcDefinition(Interpreter.Interpreter_intStack[--class302.Interpreter_intStackSize]);
+            Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3 != null ? var3.combatLevel : 0;
+            return 1;
+         } else {
+            return 2;
          }
       }
-
-      var3 = Login.field932;
-
-      for(var4 = 0; var4 < var3.length; ++var4) {
-         var5 = var3[var4];
-         if (var1.tryLoadFileByNames(var5, "")) {
-            ++var2;
-         }
-      }
-
-      var3 = Login.field953;
-
-      for(var4 = 0; var4 < var3.length; ++var4) {
-         var5 = var3[var4];
-         if (var1.getGroupId(var5) != -1 && var1.tryLoadFileByNames(var5, "")) {
-            ++var2;
-         }
-      }
-
-      return var2;
    }
 }

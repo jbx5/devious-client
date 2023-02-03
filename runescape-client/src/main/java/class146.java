@@ -1,82 +1,68 @@
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ej")
-public class class146 extends class136 {
-   @ObfuscatedName("ti")
-   @ObfuscatedGetter(
-      intValue = 546062336
-   )
-   static int field1718;
-   @ObfuscatedName("fm")
-   static String field1717;
-   @ObfuscatedName("hh")
-   @ObfuscatedSignature(
-      descriptor = "Lnv;"
-   )
-   @Export("fontBold12")
-   static Font fontBold12;
-   @ObfuscatedName("h")
-   @ObfuscatedGetter(
-      intValue = 1438657739
-   )
-   int field1712;
-   @ObfuscatedName("e")
-   String field1719;
+@ObfuscatedName("ey")
+public class class146 extends class139 {
+   @ObfuscatedName("f")
+   boolean field1695;
+   @ObfuscatedName("w")
+   byte field1690;
+   @ObfuscatedName("v")
+   byte field1691;
+   @ObfuscatedName("s")
+   byte field1692;
+   @ObfuscatedName("z")
+   byte field1693;
    // $FF: synthetic field
    @ObfuscatedSignature(
-      descriptor = "Lem;"
+      descriptor = "Lex;"
    )
-   final class139 this$0;
+   final class142 this$0;
 
    @ObfuscatedSignature(
-      descriptor = "(Lem;)V"
+      descriptor = "(Lex;)V"
    )
-   class146(class139 var1) {
+   class146(class142 var1) {
       this.this$0 = var1;
    }
 
-   @ObfuscatedName("h")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
-      descriptor = "(Lqy;I)V",
-      garbageValue = "1101327225"
+      descriptor = "(Lrd;S)V",
+      garbageValue = "-5782"
    )
-   void vmethod3349(Buffer var1) {
-      this.field1712 = var1.readInt();
-      this.field1719 = var1.readStringCp1252NullTerminated();
+   void vmethod3394(Buffer var1) {
+      this.field1695 = var1.readUnsignedByte() == 1;
+      this.field1690 = var1.readByte();
+      this.field1691 = var1.readByte();
+      this.field1692 = var1.readByte();
+      this.field1693 = var1.readByte();
    }
 
-   @ObfuscatedName("e")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      descriptor = "(Lep;I)V",
-      garbageValue = "839088249"
+      descriptor = "(Leb;B)V",
+      garbageValue = "-26"
    )
-   void vmethod3350(ClanSettings var1) {
-      var1.method3182(this.field1712, this.field1719);
+   void vmethod3393(ClanSettings var1) {
+      var1.allowGuests = this.field1695;
+      var1.field1722 = this.field1690;
+      var1.field1740 = this.field1691;
+      var1.field1736 = this.field1692;
+      var1.field1725 = this.field1693;
    }
 
-   @ObfuscatedName("e")
-   @ObfuscatedSignature(
-      descriptor = "(II)Lqs;",
-      garbageValue = "1183914569"
-   )
-   @Export("getDbTableType")
-   public static DbTableType getDbTableType(int var0) {
-      DbTableType var1 = (DbTableType)DbTableType.DBTableType_cache.get((long)var0);
-      if (var1 != null) {
-         return var1;
-      } else {
-         byte[] var2 = DbTableType.field4882.takeFile(39, var0);
-         var1 = new DbTableType();
-         if (var2 != null) {
-            var1.method8431(new Buffer(var2));
-         }
+   @ObfuscatedName("f")
+   static boolean method3201(long var0) {
+      return class121.method2987(var0) == 2;
+   }
 
-         var1.method8433();
-         DbTableType.DBTableType_cache.put(var1, (long)var0);
-         return var1;
-      }
+   @ObfuscatedName("f")
+   @ObfuscatedSignature(
+      descriptor = "(I)V",
+      garbageValue = "-704646988"
+   )
+   public static void method3200() {
+      class36.reflectionChecks = new IterableNodeDeque();
    }
 }

@@ -3,30 +3,30 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jv")
+@ObfuscatedName("ja")
 @Implements("EvictingDualNodeHashTable")
 public final class EvictingDualNodeHashTable {
-   @ObfuscatedName("h")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
-      descriptor = "Lpw;"
+      descriptor = "Lpi;"
    )
    @Export("dualNode")
    DualNode dualNode = new DualNode();
-   @ObfuscatedName("e")
+   @ObfuscatedName("w")
    @Export("capacity")
    int capacity;
    @ObfuscatedName("v")
    @Export("remainingCapacity")
    int remainingCapacity;
-   @ObfuscatedName("x")
+   @ObfuscatedName("s")
    @ObfuscatedSignature(
-      descriptor = "Lql;"
+      descriptor = "Lqu;"
    )
    @Export("hashTable")
    IterableNodeHashTable hashTable;
-   @ObfuscatedName("m")
+   @ObfuscatedName("z")
    @ObfuscatedSignature(
-      descriptor = "Lmm;"
+      descriptor = "Lmc;"
    )
    @Export("deque")
    IterableDualNodeQueue deque = new IterableDualNodeQueue();
@@ -42,9 +42,9 @@ public final class EvictingDualNodeHashTable {
       this.hashTable = new IterableNodeHashTable(var2);
    }
 
-   @ObfuscatedName("h")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
-      descriptor = "(J)Lpw;"
+      descriptor = "(J)Lpi;"
    )
    @Export("get")
    public DualNode get(long var1) {
@@ -56,7 +56,7 @@ public final class EvictingDualNodeHashTable {
       return var3;
    }
 
-   @ObfuscatedName("e")
+   @ObfuscatedName("w")
    @Export("remove")
    public void remove(long var1) {
       DualNode var3 = (DualNode)this.hashTable.get(var1);
@@ -70,7 +70,7 @@ public final class EvictingDualNodeHashTable {
 
    @ObfuscatedName("v")
    @ObfuscatedSignature(
-      descriptor = "(Lpw;J)V"
+      descriptor = "(Lpi;J)V"
    )
    @Export("put")
    public void put(DualNode var1, long var2) {
@@ -91,7 +91,7 @@ public final class EvictingDualNodeHashTable {
       this.deque.add(var1);
    }
 
-   @ObfuscatedName("x")
+   @ObfuscatedName("s")
    @Export("clear")
    public void clear() {
       this.deque.clear();

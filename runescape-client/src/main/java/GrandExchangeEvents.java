@@ -7,22 +7,22 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("lr")
+@ObfuscatedName("mk")
 @Implements("GrandExchangeEvents")
 public class GrandExchangeEvents {
-   @ObfuscatedName("e")
+   @ObfuscatedName("w")
    @Export("GrandExchangeEvents_ageComparator")
    public static Comparator GrandExchangeEvents_ageComparator = new GrandExchangeOfferAgeComparator();
    @ObfuscatedName("v")
    @Export("GrandExchangeEvents_priceComparator")
    public static Comparator GrandExchangeEvents_priceComparator;
-   @ObfuscatedName("x")
+   @ObfuscatedName("s")
    @Export("GrandExchangeEvents_nameComparator")
    public static Comparator GrandExchangeEvents_nameComparator;
-   @ObfuscatedName("m")
+   @ObfuscatedName("z")
    @Export("GrandExchangeEvents_quantityComparator")
    public static Comparator GrandExchangeEvents_quantityComparator;
-   @ObfuscatedName("h")
+   @ObfuscatedName("f")
    @Export("events")
    public final List events;
 
@@ -34,7 +34,7 @@ public class GrandExchangeEvents {
    }
 
    @ObfuscatedSignature(
-      descriptor = "(Lqy;Z)V",
+      descriptor = "(Lrd;Z)V",
       garbageValue = "1"
    )
    public GrandExchangeEvents(Buffer var1, boolean var2) {
@@ -56,10 +56,10 @@ public class GrandExchangeEvents {
 
    }
 
-   @ObfuscatedName("h")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
       descriptor = "(Ljava/util/Comparator;ZI)V",
-      garbageValue = "1698148596"
+      garbageValue = "1466510344"
    )
    @Export("sort")
    public void sort(Comparator var1, boolean var2) {
@@ -71,30 +71,17 @@ public class GrandExchangeEvents {
 
    }
 
-   @ObfuscatedName("ab")
+   @ObfuscatedName("lx")
    @ObfuscatedSignature(
-      descriptor = "(Laa;B)V",
-      garbageValue = "-67"
+      descriptor = "(IB)V",
+      garbageValue = "-93"
    )
-   @Export("PcmStream_disable")
-   static final void PcmStream_disable(PcmStream var0) {
-      var0.active = false;
-      if (var0.sound != null) {
-         var0.sound.position = 0;
+   static void method6645(int var0) {
+      for(IntegerNode var1 = (IntegerNode)Client.widgetFlags.first(); var1 != null; var1 = (IntegerNode)Client.widgetFlags.next()) {
+         if ((var1.key >> 48 & 65535L) == (long)var0) {
+            var1.remove();
+         }
       }
 
-      for(PcmStream var1 = var0.firstSubStream(); var1 != null; var1 = var0.nextSubStream()) {
-         PcmStream_disable(var1);
-      }
-
-   }
-
-   @ObfuscatedName("ak")
-   @ObfuscatedSignature(
-      descriptor = "(IB)I",
-      garbageValue = "82"
-   )
-   static int method6569(int var0) {
-      return (int)((Math.log((double)var0) / Interpreter.field871 - 7.0) * 256.0);
    }
 }

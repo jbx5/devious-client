@@ -1,87 +1,88 @@
+import java.io.File;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cm")
+@ObfuscatedName("ct")
 @Implements("PendingSpawn")
 public final class PendingSpawn extends Node {
-   @ObfuscatedName("ns")
+   @ObfuscatedName("em")
    @ObfuscatedSignature(
-      descriptor = "Lbs;"
+      descriptor = "Llm;"
    )
-   @Export("tempMenuAction")
-   static MenuAction tempMenuAction;
-   @ObfuscatedName("h")
+   @Export("archive13")
+   static Archive archive13;
+   @ObfuscatedName("f")
    @ObfuscatedGetter(
-      intValue = -768872951
+      intValue = 1966483205
    )
    @Export("plane")
    int plane;
-   @ObfuscatedName("e")
+   @ObfuscatedName("w")
    @ObfuscatedGetter(
-      intValue = 1473814219
+      intValue = 827005237
    )
    @Export("type")
    int type;
    @ObfuscatedName("v")
    @ObfuscatedGetter(
-      intValue = -1941580187
+      intValue = 602578105
    )
    @Export("x")
    int x;
-   @ObfuscatedName("x")
+   @ObfuscatedName("s")
    @ObfuscatedGetter(
-      intValue = 301883379
+      intValue = -890591527
    )
    @Export("y")
    int y;
-   @ObfuscatedName("m")
+   @ObfuscatedName("z")
    @ObfuscatedGetter(
-      intValue = -1863285855
+      intValue = -852502005
    )
    @Export("objectId")
    int objectId;
-   @ObfuscatedName("q")
+   @ObfuscatedName("j")
    @ObfuscatedGetter(
-      intValue = 1543631763
+      intValue = 1719605699
    )
-   int field1175;
-   @ObfuscatedName("f")
-   @ObfuscatedGetter(
-      intValue = -1082491127
-   )
-   int field1166;
-   @ObfuscatedName("r")
-   @ObfuscatedGetter(
-      intValue = -323138543
-   )
-   int field1167;
-   @ObfuscatedName("u")
-   @ObfuscatedGetter(
-      intValue = -910085015
-   )
-   int field1168;
-   @ObfuscatedName("b")
-   @ObfuscatedGetter(
-      intValue = -1613827299
-   )
-   int field1169;
-   @ObfuscatedName("g")
-   @ObfuscatedGetter(
-      intValue = -1272901055
-   )
-   int field1165 = 31;
+   int field1148;
    @ObfuscatedName("i")
    @ObfuscatedGetter(
-      intValue = 583629257
+      intValue = 933994981
+   )
+   int field1149;
+   @ObfuscatedName("n")
+   @ObfuscatedGetter(
+      intValue = 1534871701
+   )
+   int field1150;
+   @ObfuscatedName("l")
+   @ObfuscatedGetter(
+      intValue = 518048967
+   )
+   int field1151;
+   @ObfuscatedName("k")
+   @ObfuscatedGetter(
+      intValue = -354364767
+   )
+   int field1152;
+   @ObfuscatedName("r")
+   @ObfuscatedGetter(
+      intValue = -854755163
+   )
+   int field1153 = 31;
+   @ObfuscatedName("b")
+   @ObfuscatedGetter(
+      intValue = 1645697629
    )
    @Export("delay")
    int delay = 0;
-   @ObfuscatedName("o")
+   @ObfuscatedName("m")
    @ObfuscatedGetter(
-      intValue = 1183420635
+      intValue = -2085294823
    )
    @Export("hitpoints")
    int hitpoints = -1;
@@ -89,25 +90,69 @@ public final class PendingSpawn extends Node {
    PendingSpawn() {
    }
 
-   @ObfuscatedName("h")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
-      descriptor = "(IB)V",
-      garbageValue = "-39"
+      descriptor = "(II)V",
+      garbageValue = "178165513"
    )
-   void method2338(int var1) {
-      this.field1165 = var1;
+   void method2414(int var1) {
+      this.field1153 = var1;
    }
 
-   @ObfuscatedName("e")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
       descriptor = "(II)Z",
-      garbageValue = "-2145111937"
+      garbageValue = "-211927889"
    )
-   boolean method2341(int var1) {
+   boolean method2415(int var1) {
       if (var1 >= 0 && var1 <= 4) {
-         return (this.field1165 & 1 << var1) != 0;
+         return (this.field1153 & 1 << var1) != 0;
       } else {
          return true;
       }
+   }
+
+   @ObfuscatedName("f")
+   @ObfuscatedSignature(
+      descriptor = "(Ljava/io/File;B)V",
+      garbageValue = "1"
+   )
+   public static void method2421(File var0) {
+      FileSystem.FileSystem_cacheDir = var0;
+      if (!FileSystem.FileSystem_cacheDir.exists()) {
+         throw new RuntimeException("");
+      } else {
+         FileSystem.FileSystem_hasPermissions = true;
+      }
+   }
+
+   @ObfuscatedName("gr")
+   @ObfuscatedSignature(
+      descriptor = "(Lcl;IIB)V",
+      garbageValue = "-1"
+   )
+   @Export("performPlayerAnimation")
+   static void performPlayerAnimation(Player var0, int var1, int var2) {
+      if (var0.sequence == var1 && var1 != -1) {
+         int var3 = class85.SequenceDefinition_get(var1).field2308;
+         if (var3 == 1) {
+            var0.sequenceFrame = 0;
+            var0.sequenceFrameCycle = 0;
+            var0.sequenceDelay = var2;
+            var0.field1205 = 0;
+         }
+
+         if (var3 == 2) {
+            var0.field1205 = 0;
+         }
+      } else if (var1 == -1 || var0.sequence == -1 || class85.SequenceDefinition_get(var1).field2292 >= class85.SequenceDefinition_get(var0.sequence).field2292) {
+         var0.sequence = var1;
+         var0.sequenceFrame = 0;
+         var0.sequenceFrameCycle = 0;
+         var0.sequenceDelay = var2;
+         var0.field1205 = 0;
+         var0.field1230 = var0.pathLength;
+      }
+
    }
 }

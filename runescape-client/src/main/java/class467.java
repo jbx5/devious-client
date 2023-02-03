@@ -1,209 +1,116 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("qz")
-public class class467 {
-   @ObfuscatedName("u")
-   @ObfuscatedGetter(
-      intValue = -1047217151
+@ObfuscatedName("qc")
+public class class467 extends DualNode {
+   @ObfuscatedName("s")
+   @ObfuscatedSignature(
+      descriptor = "[Lqn;"
    )
-   @Export("musicTrackVolume")
-   public static int musicTrackVolume;
-   @ObfuscatedName("h")
-   int[] field4920 = new int[8];
-   @ObfuscatedName("e")
-   short[] field4918 = new short[8];
+   class463[] field4914;
+   @ObfuscatedName("z")
+   List field4913;
 
    @ObfuscatedSignature(
-      descriptor = "(Lgz;)V"
+      descriptor = "(Lln;I)V"
    )
-   public class467(NPCComposition var1) {
-      int var2 = 0;
-      if (var1.method3672()) {
-         var2 = var1.method3678().length;
-         System.arraycopy(var1.method3678(), 0, this.field4920, 0, var2);
-         System.arraycopy(var1.method3715(), 0, this.field4918, 0, var2);
-      }
-
-      for(int var3 = var2; var3 < 8; ++var3) {
-         this.field4920[var3] = -1;
-         this.field4918[var3] = -1;
-      }
-
+   public class467(AbstractArchive var1, int var2) {
+      byte[] var3 = var1.takeFile(var2, 0);
+      this.method8553(new Buffer(var3));
    }
 
-   @ObfuscatedName("h")
    @ObfuscatedSignature(
-      descriptor = "(I)[I",
-      garbageValue = "2005193688"
+      descriptor = "(Lln;II)V"
    )
-   public int[] method8797() {
-      return this.field4920;
+   public class467(AbstractArchive var1, int var2, int var3) {
+      byte[] var4 = var1.takeFile(var2, var3 + 1);
+      this.method8553(new Buffer(var4));
    }
 
-   @ObfuscatedName("e")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
-      descriptor = "(I)[S",
-      garbageValue = "1232945994"
+      descriptor = "(Lrd;I)V",
+      garbageValue = "-1407265611"
    )
-   public short[] method8799() {
-      return this.field4918;
-   }
+   void method8553(Buffer var1) {
+      int var2 = var1.packBytesToInt();
+      this.field4914 = new class463[var2];
+      this.field4913 = new ArrayList(var2);
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      descriptor = "(IISI)V",
-      garbageValue = "727886744"
-   )
-   public void method8800(int var1, int var2, short var3) {
-      this.field4920[var1] = var2;
-      this.field4918[var1] = var3;
-   }
+      for(int var3 = 0; var3 < var2; ++var3) {
+         this.field4914[var3] = (class463)class4.findEnumerated(class463.method8503(), var1.readUnsignedByte());
+         int var4 = var1.packBytesToInt();
+         HashMap var5 = new HashMap(var4);
 
-   @ObfuscatedName("x")
-   @ObfuscatedSignature(
-      descriptor = "([I[SI)V",
-      garbageValue = "-371112886"
-   )
-   public void method8801(int[] var1, short[] var2) {
-      this.field4920 = var1;
-      this.field4918 = var2;
-   }
+         while(var4-- > 0) {
+            Object var6 = this.field4914[var3].method8507(var1);
+            int var7 = var1.packBytesToInt();
+            ArrayList var8 = new ArrayList();
 
-   @ObfuscatedName("h")
-   @ObfuscatedSignature(
-      descriptor = "(ILjava/lang/String;Lmb;II)Ljx;",
-      garbageValue = "79142033"
-   )
-   public static PacketBufferNode method8803(int var0, String var1, Language var2, int var3) {
-      PacketBufferNode var4 = class136.getPacketBufferNode(ClientPacket.field3065, Client.packetWriter.isaacCipher);
-      var4.packetBuffer.writeByte(0);
-      int var5 = var4.packetBuffer.offset;
-      var4.packetBuffer.writeByte(var0);
-      String var6 = var1.toLowerCase();
-      byte var7 = 0;
-      if (var6.startsWith("yellow:")) {
-         var7 = 0;
-         var1 = var1.substring("yellow:".length());
-      } else if (var6.startsWith("red:")) {
-         var7 = 1;
-         var1 = var1.substring("red:".length());
-      } else if (var6.startsWith("green:")) {
-         var7 = 2;
-         var1 = var1.substring("green:".length());
-      } else if (var6.startsWith("cyan:")) {
-         var7 = 3;
-         var1 = var1.substring("cyan:".length());
-      } else if (var6.startsWith("purple:")) {
-         var7 = 4;
-         var1 = var1.substring("purple:".length());
-      } else if (var6.startsWith("white:")) {
-         var7 = 5;
-         var1 = var1.substring("white:".length());
-      } else if (var6.startsWith("flash1:")) {
-         var7 = 6;
-         var1 = var1.substring("flash1:".length());
-      } else if (var6.startsWith("flash2:")) {
-         var7 = 7;
-         var1 = var1.substring("flash2:".length());
-      } else if (var6.startsWith("flash3:")) {
-         var7 = 8;
-         var1 = var1.substring("flash3:".length());
-      } else if (var6.startsWith("glow1:")) {
-         var7 = 9;
-         var1 = var1.substring("glow1:".length());
-      } else if (var6.startsWith("glow2:")) {
-         var7 = 10;
-         var1 = var1.substring("glow2:".length());
-      } else if (var6.startsWith("glow3:")) {
-         var7 = 11;
-         var1 = var1.substring("glow3:".length());
-      } else if (var2 != Language.Language_EN) {
-         if (var6.startsWith("yellow:")) {
-            var7 = 0;
-            var1 = var1.substring("yellow:".length());
-         } else if (var6.startsWith("red:")) {
-            var7 = 1;
-            var1 = var1.substring("red:".length());
-         } else if (var6.startsWith("green:")) {
-            var7 = 2;
-            var1 = var1.substring("green:".length());
-         } else if (var6.startsWith("cyan:")) {
-            var7 = 3;
-            var1 = var1.substring("cyan:".length());
-         } else if (var6.startsWith("purple:")) {
-            var7 = 4;
-            var1 = var1.substring("purple:".length());
-         } else if (var6.startsWith("white:")) {
-            var7 = 5;
-            var1 = var1.substring("white:".length());
-         } else if (var6.startsWith("flash1:")) {
-            var7 = 6;
-            var1 = var1.substring("flash1:".length());
-         } else if (var6.startsWith("flash2:")) {
-            var7 = 7;
-            var1 = var1.substring("flash2:".length());
-         } else if (var6.startsWith("flash3:")) {
-            var7 = 8;
-            var1 = var1.substring("flash3:".length());
-         } else if (var6.startsWith("glow1:")) {
-            var7 = 9;
-            var1 = var1.substring("glow1:".length());
-         } else if (var6.startsWith("glow2:")) {
-            var7 = 10;
-            var1 = var1.substring("glow2:".length());
-         } else if (var6.startsWith("glow3:")) {
-            var7 = 11;
-            var1 = var1.substring("glow3:".length());
+            while(var7-- > 0) {
+               int var9 = var1.packBytesToInt();
+               var8.add(var9);
+            }
+
+            var5.put(var6, var8);
          }
+
+         this.field4913.add(var3, var5);
       }
 
-      var6 = var1.toLowerCase();
-      byte var8 = 0;
-      if (var6.startsWith("wave:")) {
-         var8 = 1;
-         var1 = var1.substring("wave:".length());
-      } else if (var6.startsWith("wave2:")) {
-         var8 = 2;
-         var1 = var1.substring("wave2:".length());
-      } else if (var6.startsWith("shake:")) {
-         var8 = 3;
-         var1 = var1.substring("shake:".length());
-      } else if (var6.startsWith("scroll:")) {
-         var8 = 4;
-         var1 = var1.substring("scroll:".length());
-      } else if (var6.startsWith("slide:")) {
-         var8 = 5;
-         var1 = var1.substring("slide:".length());
-      } else if (var2 != Language.Language_EN) {
-         if (var6.startsWith("wave:")) {
-            var8 = 1;
-            var1 = var1.substring("wave:".length());
-         } else if (var6.startsWith("wave2:")) {
-            var8 = 2;
-            var1 = var1.substring("wave2:".length());
-         } else if (var6.startsWith("shake:")) {
-            var8 = 3;
-            var1 = var1.substring("shake:".length());
-         } else if (var6.startsWith("scroll:")) {
-            var8 = 4;
-            var1 = var1.substring("scroll:".length());
-         } else if (var6.startsWith("slide:")) {
-            var8 = 5;
-            var1 = var1.substring("slide:".length());
+   }
+
+   @ObfuscatedName("w")
+   @ObfuscatedSignature(
+      descriptor = "(Ljava/lang/Object;II)Ljava/util/List;",
+      garbageValue = "693163868"
+   )
+   public List method8548(Object var1, int var2) {
+      if (var2 < 0) {
+         var2 = 0;
+      }
+
+      Map var3 = (Map)this.field4913.get(var2);
+      return (List)var3.get(var1);
+   }
+
+   @ObfuscatedName("hx")
+   @ObfuscatedSignature(
+      descriptor = "(IIIB)V",
+      garbageValue = "48"
+   )
+   @Export("worldToScreen")
+   static final void worldToScreen(int var0, int var1, int var2) {
+      if (var0 >= 128 && var1 >= 128 && var0 <= 13056 && var1 <= 13056) {
+         int var3 = GrandExchangeOfferNameComparator.getTileHeight(var0, var1, class103.Client_plane) - var2;
+         var0 -= ClanSettings.cameraX;
+         var3 -= UserComparator10.cameraY;
+         var1 -= class366.cameraZ;
+         int var4 = Rasterizer3D.Rasterizer3D_sine[class103.cameraPitch];
+         int var5 = Rasterizer3D.Rasterizer3D_cosine[class103.cameraPitch];
+         int var6 = Rasterizer3D.Rasterizer3D_sine[class285.cameraYaw];
+         int var7 = Rasterizer3D.Rasterizer3D_cosine[class285.cameraYaw];
+         int var8 = var6 * var1 + var0 * var7 >> 16;
+         var1 = var7 * var1 - var0 * var6 >> 16;
+         var0 = var8;
+         var8 = var3 * var5 - var4 * var1 >> 16;
+         var1 = var5 * var1 + var4 * var3 >> 16;
+         if (var1 >= 50) {
+            Client.viewportTempX = var0 * Client.viewportZoom / var1 + Client.viewportWidth / 2;
+            Client.viewportTempY = Client.viewportHeight / 2 + var8 * Client.viewportZoom / var1;
+         } else {
+            Client.viewportTempX = -1;
+            Client.viewportTempY = -1;
          }
-      }
 
-      var4.packetBuffer.writeByte(var7);
-      var4.packetBuffer.writeByte(var8);
-      BufferedSource.method7683(var4.packetBuffer, var1);
-      if (var0 == class313.field3722.rsOrdinal()) {
-         var4.packetBuffer.writeByte(var3);
+      } else {
+         Client.viewportTempX = -1;
+         Client.viewportTempY = -1;
       }
-
-      var4.packetBuffer.writeLengthByte(var4.packetBuffer.offset - var5);
-      return var4;
    }
 }

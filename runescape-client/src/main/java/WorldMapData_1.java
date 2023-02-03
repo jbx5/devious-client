@@ -3,32 +3,31 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("ij")
+@ObfuscatedName("it")
 @Implements("WorldMapData_1")
 public class WorldMapData_1 extends AbstractWorldMapData {
-   @ObfuscatedName("h")
+   @ObfuscatedName("f")
    @ObfuscatedGetter(
-      intValue = 673523519
+      intValue = -1615754911
    )
    @Export("chunkXLow")
    int chunkXLow;
-   @ObfuscatedName("e")
+   @ObfuscatedName("w")
    @ObfuscatedGetter(
-      intValue = 1046620565
+      intValue = 719102261
    )
    @Export("chunkYLow")
    int chunkYLow;
    @ObfuscatedName("v")
    @ObfuscatedGetter(
-      intValue = 1891808843
+      intValue = 45958023
    )
    @Export("chunkX")
    int chunkX;
-   @ObfuscatedName("x")
+   @ObfuscatedName("s")
    @ObfuscatedGetter(
-      intValue = 1231900861
+      intValue = -945718561
    )
    @Export("chunkY")
    int chunkY;
@@ -36,21 +35,21 @@ public class WorldMapData_1 extends AbstractWorldMapData {
    WorldMapData_1() {
    }
 
-   @ObfuscatedName("h")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
-      descriptor = "(Lqy;B)V",
+      descriptor = "(Lrd;B)V",
       garbageValue = "16"
    )
    @Export("init")
    void init(Buffer var1) {
       int var2 = var1.readUnsignedByte();
-      if (var2 != WorldMapID.field2983.value) {
+      if (var2 != WorldMapID.field2993.value) {
          throw new IllegalStateException("");
       } else {
          super.minPlane = var1.readUnsignedByte();
          super.planes = var1.readUnsignedByte();
-         super.regionXLow = var1.readUnsignedShort() * 4096;
-         super.regionYLow = var1.readUnsignedShort() * 64;
+         super.regionXLow = var1.readUnsignedShort() * 64;
+         super.regionYLow = var1.readUnsignedShort() * 4096;
          this.chunkXLow = var1.readUnsignedByte();
          this.chunkYLow = var1.readUnsignedByte();
          super.regionX = var1.readUnsignedShort();
@@ -62,21 +61,21 @@ public class WorldMapData_1 extends AbstractWorldMapData {
       }
    }
 
-   @ObfuscatedName("e")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      descriptor = "(Lqy;I)V",
-      garbageValue = "1703912011"
+      descriptor = "(Lrd;B)V",
+      garbageValue = "9"
    )
    @Export("readGeography")
    void readGeography(Buffer var1) {
       super.planes = Math.min(super.planes, 4);
       super.floorUnderlayIds = new short[1][64][64];
       super.floorOverlayIds = new short[super.planes][64][64];
-      super.field2950 = new byte[super.planes][64][64];
-      super.field2951 = new byte[super.planes][64][64];
+      super.field2960 = new byte[super.planes][64][64];
+      super.field2956 = new byte[super.planes][64][64];
       super.decorations = new WorldMapDecoration[super.planes][64][64][];
       int var2 = var1.readUnsignedByte();
-      if (var2 != class251.field2977.value) {
+      if (var2 != class255.field2989.value) {
          throw new IllegalStateException("");
       } else {
          int var3 = var1.readUnsignedByte();
@@ -99,41 +98,45 @@ public class WorldMapData_1 extends AbstractWorldMapData {
    @ObfuscatedName("v")
    @ObfuscatedSignature(
       descriptor = "(I)I",
-      garbageValue = "-1726020547"
+      garbageValue = "-476588904"
    )
    @Export("getChunkXLow")
    int getChunkXLow() {
       return this.chunkXLow;
    }
 
-   @ObfuscatedName("x")
+   @ObfuscatedName("s")
    @ObfuscatedSignature(
-      descriptor = "(I)I",
-      garbageValue = "660980173"
+      descriptor = "(B)I",
+      garbageValue = "-31"
    )
    @Export("getChunkYLow")
    int getChunkYLow() {
       return this.chunkYLow;
    }
 
-   @ObfuscatedName("m")
+   @ObfuscatedName("z")
    @ObfuscatedSignature(
-      descriptor = "(I)I",
-      garbageValue = "-1808236663"
+      descriptor = "(B)I",
+      garbageValue = "64"
    )
    @Export("getChunkX")
    int getChunkX() {
       return this.chunkX;
    }
 
-   @ObfuscatedName("g")
+   @ObfuscatedName("j")
    @ObfuscatedSignature(
-      descriptor = "(I)I",
-      garbageValue = "-1429277578"
+      descriptor = "(B)I",
+      garbageValue = "-120"
    )
    @Export("getChunkY")
    int getChunkY() {
       return this.chunkY;
+   }
+
+   public int hashCode() {
+      return super.regionX | super.regionY << 8 | this.chunkX << 16 | this.chunkY << 24;
    }
 
    public boolean equals(Object var1) {
@@ -141,76 +144,37 @@ public class WorldMapData_1 extends AbstractWorldMapData {
          return false;
       } else {
          WorldMapData_1 var2 = (WorldMapData_1)var1;
-         if (super.regionX == var2.regionX && super.regionY == var2.regionY) {
-            return this.chunkX == var2.chunkX && this.chunkY == var2.chunkY;
+         if (var2.regionX == super.regionX && super.regionY == var2.regionY) {
+            return var2.chunkX == this.chunkX && this.chunkY == var2.chunkY;
          } else {
             return false;
          }
       }
    }
 
-   public int hashCode() {
-      return super.regionX | super.regionY << 8 | this.chunkX << 16 | this.chunkY << 24;
-   }
-
-   @ObfuscatedName("m")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
-      descriptor = "(ILbm;ZB)I",
-      garbageValue = "-55"
+      descriptor = "(Ljava/lang/Object;ZI)[B",
+      garbageValue = "1996834961"
    )
-   static int method5162(int var0, Script var1, boolean var2) {
-      int var3 = -1;
-      Widget var4;
-      if (var0 >= 2000) {
-         var0 -= 1000;
-         var3 = Interpreter.Interpreter_intStack[--class87.Interpreter_intStackSize];
-         var4 = PlayerCompositionColorTextureOverride.getWidget(var3);
+   public static byte[] method5224(Object var0, boolean var1) {
+      if (var0 == null) {
+         return null;
+      } else if (var0 instanceof byte[]) {
+         byte[] var6 = (byte[])((byte[])var0);
+         if (var1) {
+            int var4 = var6.length;
+            byte[] var5 = new byte[var4];
+            System.arraycopy(var6, 0, var5, 0, var4);
+            return var5;
+         } else {
+            return var6;
+         }
+      } else if (var0 instanceof AbstractByteArrayCopier) {
+         AbstractByteArrayCopier var2 = (AbstractByteArrayCopier)var0;
+         return var2.get();
       } else {
-         var4 = var2 ? class190.scriptDotWidget : class360.scriptActiveWidget;
-      }
-
-      if (var0 == ScriptOpcodes.CC_SETPOSITION) {
-         class87.Interpreter_intStackSize -= 4;
-         var4.rawX = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize];
-         var4.rawY = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize + 1];
-         var4.xAlignment = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize + 2];
-         var4.yAlignment = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize + 3];
-         class69.invalidateWidget(var4);
-         BuddyRankComparator.client.alignWidget(var4);
-         if (var3 != -1 && var4.type == 0) {
-            class169.revalidateWidgetScroll(class71.Widget_interfaceComponents[var3 >> 16], var4, false);
-         }
-
-         return 1;
-      } else if (var0 == ScriptOpcodes.CC_SETSIZE) {
-         class87.Interpreter_intStackSize -= 4;
-         var4.rawWidth = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize];
-         var4.rawHeight = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize + 1];
-         var4.widthAlignment = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize + 2];
-         var4.heightAlignment = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize + 3];
-         class69.invalidateWidget(var4);
-         BuddyRankComparator.client.alignWidget(var4);
-         if (var3 != -1 && var4.type == 0) {
-            class169.revalidateWidgetScroll(class71.Widget_interfaceComponents[var3 >> 16], var4, false);
-         }
-
-         return 1;
-      } else if (var0 == ScriptOpcodes.CC_SETHIDE) {
-         boolean var5 = Interpreter.Interpreter_intStack[--class87.Interpreter_intStackSize] == 1;
-         if (var5 != var4.isHidden) {
-            var4.isHidden = var5;
-            class69.invalidateWidget(var4);
-         }
-
-         return 1;
-      } else if (var0 == ScriptOpcodes.CC_SETNOCLICKTHROUGH) {
-         var4.noClickThrough = Interpreter.Interpreter_intStack[--class87.Interpreter_intStackSize] == 1;
-         return 1;
-      } else if (var0 == ScriptOpcodes.CC_SETNOSCROLLTHROUGH) {
-         var4.noScrollThrough = Interpreter.Interpreter_intStack[--class87.Interpreter_intStackSize] == 1;
-         return 1;
-      } else {
-         return 2;
+         throw new IllegalArgumentException();
       }
    }
 }

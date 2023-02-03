@@ -4,134 +4,129 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("he")
+@ObfuscatedName("hy")
 @Implements("Tile")
 public final class Tile extends Node {
-   @ObfuscatedName("tx")
+   @ObfuscatedName("f")
    @ObfuscatedGetter(
-      intValue = -325316609
-   )
-   static int field2481;
-   @ObfuscatedName("h")
-   @ObfuscatedGetter(
-      intValue = -850337333
+      intValue = -1860038519
    )
    @Export("plane")
    int plane;
-   @ObfuscatedName("e")
+   @ObfuscatedName("w")
    @ObfuscatedGetter(
-      intValue = 1304974879
+      intValue = -1072152213
    )
    @Export("x")
    int x;
    @ObfuscatedName("v")
    @ObfuscatedGetter(
-      intValue = 578479025
+      intValue = 307632737
    )
    @Export("y")
    int y;
-   @ObfuscatedName("x")
+   @ObfuscatedName("s")
    @ObfuscatedGetter(
-      intValue = 2133290123
+      intValue = -298498015
    )
    @Export("originalPlane")
    int originalPlane;
-   @ObfuscatedName("m")
+   @ObfuscatedName("z")
    @ObfuscatedSignature(
-      descriptor = "Lhj;"
+      descriptor = "Lhc;"
    )
    @Export("paint")
    SceneTilePaint paint;
-   @ObfuscatedName("q")
+   @ObfuscatedName("j")
    @ObfuscatedSignature(
-      descriptor = "Lhy;"
+      descriptor = "Lhj;"
    )
    @Export("model")
    SceneTileModel model;
-   @ObfuscatedName("f")
+   @ObfuscatedName("i")
    @ObfuscatedSignature(
-      descriptor = "Lhq;"
+      descriptor = "Lhg;"
    )
    @Export("boundaryObject")
    BoundaryObject boundaryObject;
-   @ObfuscatedName("r")
+   @ObfuscatedName("n")
    @ObfuscatedSignature(
-      descriptor = "Lhb;"
+      descriptor = "Lij;"
    )
    @Export("wallDecoration")
    WallDecoration wallDecoration;
-   @ObfuscatedName("u")
+   @ObfuscatedName("l")
    @ObfuscatedSignature(
-      descriptor = "Lhs;"
+      descriptor = "Lhq;"
    )
    @Export("floorDecoration")
    FloorDecoration floorDecoration;
-   @ObfuscatedName("b")
+   @ObfuscatedName("k")
    @ObfuscatedSignature(
-      descriptor = "Lgy;"
+      descriptor = "Lhi;"
    )
    @Export("itemLayer")
    ItemLayer itemLayer;
-   @ObfuscatedName("j")
+   @ObfuscatedName("c")
    @ObfuscatedGetter(
-      intValue = -1327449423
+      intValue = 1465434097
    )
    @Export("gameObjectsCount")
    int gameObjectsCount;
-   @ObfuscatedName("g")
+   @ObfuscatedName("r")
    @ObfuscatedSignature(
-      descriptor = "[Lhp;"
+      descriptor = "[Liu;"
    )
    @Export("gameObjects")
    GameObject[] gameObjects = new GameObject[5];
-   @ObfuscatedName("i")
+   @ObfuscatedName("b")
    @Export("gameObjectEdgeMasks")
    int[] gameObjectEdgeMasks = new int[5];
-   @ObfuscatedName("o")
+   @ObfuscatedName("m")
    @ObfuscatedGetter(
-      intValue = 1267903553
+      intValue = 16880637
    )
    @Export("gameObjectsEdgeMask")
    int gameObjectsEdgeMask = 0;
-   @ObfuscatedName("n")
+   @ObfuscatedName("t")
    @ObfuscatedGetter(
-      intValue = 879913943
+      intValue = 503958465
    )
    @Export("minPlane")
    int minPlane;
-   @ObfuscatedName("k")
+   @ObfuscatedName("h")
    @Export("drawPrimary")
    boolean drawPrimary;
-   @ObfuscatedName("a")
+   @ObfuscatedName("p")
    @Export("drawSecondary")
    boolean drawSecondary;
-   @ObfuscatedName("s")
+   @ObfuscatedName("o")
    @Export("drawGameObjects")
    boolean drawGameObjects;
-   @ObfuscatedName("l")
+   @ObfuscatedName("u")
    @ObfuscatedGetter(
-      intValue = 820043389
+      intValue = 2038034063
    )
    @Export("drawGameObjectEdges")
    int drawGameObjectEdges;
-   @ObfuscatedName("t")
+   @ObfuscatedName("x")
    @ObfuscatedGetter(
-      intValue = -683874913
+      intValue = -1208782171
    )
-   int field2477;
-   @ObfuscatedName("c")
+   int field2483;
+   @ObfuscatedName("a")
    @ObfuscatedGetter(
-      intValue = -1337126443
+      intValue = 1698014089
    )
-   int field2470;
-   @ObfuscatedName("p")
+   int field2473;
+   @ObfuscatedName("q")
    @ObfuscatedGetter(
-      intValue = 427630575
+      intValue = -933600863
    )
-   int field2479;
+   int field2488;
    @ObfuscatedName("d")
    @ObfuscatedSignature(
-      descriptor = "Lhe;"
+      descriptor = "Lhy;"
    )
    @Export("linkedBelowTile")
    Tile linkedBelowTile;
@@ -140,69 +135,5 @@ public final class Tile extends Node {
       this.originalPlane = this.plane = var1;
       this.x = var2;
       this.y = var3;
-   }
-
-   @ObfuscatedName("h")
-   @ObfuscatedSignature(
-      descriptor = "([Ljava/lang/CharSequence;IIB)Ljava/lang/String;",
-      garbageValue = "-54"
-   )
-   public static String method4311(CharSequence[] var0, int var1, int var2) {
-      if (var2 == 0) {
-         return "";
-      } else if (var2 == 1) {
-         CharSequence var10 = var0[var1];
-         return var10 == null ? "null" : var10.toString();
-      } else {
-         int var3 = var2 + var1;
-         int var4 = 0;
-
-         for(int var5 = var1; var5 < var3; ++var5) {
-            CharSequence var9 = var0[var5];
-            if (var9 == null) {
-               var4 += 4;
-            } else {
-               var4 += var9.length();
-            }
-         }
-
-         StringBuilder var8 = new StringBuilder(var4);
-
-         for(int var6 = var1; var6 < var3; ++var6) {
-            CharSequence var7 = var0[var6];
-            if (var7 == null) {
-               var8.append("null");
-            } else {
-               var8.append(var7);
-            }
-         }
-
-         return var8.toString();
-      }
-   }
-
-   @ObfuscatedName("x")
-   @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "1595440207"
-   )
-   @Export("savePreferences")
-   static void savePreferences() {
-      AccessFile var0 = null;
-
-      try {
-         var0 = class87.getPreferencesFile("", LoginPacket.field3302.name, true);
-         Buffer var1 = StructComposition.clientPreferences.toBuffer();
-         var0.write(var1.array, 0, var1.offset);
-      } catch (Exception var3) {
-      }
-
-      try {
-         if (var0 != null) {
-            var0.closeSync(true);
-         }
-      } catch (Exception var2) {
-      }
-
    }
 }

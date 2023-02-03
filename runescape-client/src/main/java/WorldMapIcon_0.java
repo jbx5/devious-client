@@ -4,42 +4,48 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("io")
+@ObfuscatedName("ig")
 @Implements("WorldMapIcon_0")
 public class WorldMapIcon_0 extends AbstractWorldMapIcon {
-   @ObfuscatedName("h")
+   @ObfuscatedName("od")
    @ObfuscatedGetter(
-      intValue = 633921905
+      intValue = 1466718761
+   )
+   @Export("selectedItemSlot")
+   static int selectedItemSlot;
+   @ObfuscatedName("f")
+   @ObfuscatedGetter(
+      intValue = 670708255
    )
    @Export("element")
    final int element;
-   @ObfuscatedName("e")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      descriptor = "Lii;"
+      descriptor = "Lil;"
    )
    @Export("label")
    final WorldMapLabel label;
    @ObfuscatedName("v")
    @ObfuscatedGetter(
-      intValue = -426824137
+      intValue = 1702276997
    )
    @Export("subWidth")
    final int subWidth;
-   @ObfuscatedName("x")
+   @ObfuscatedName("s")
    @ObfuscatedGetter(
-      intValue = 1331062125
+      intValue = 803917295
    )
    @Export("subHeight")
    final int subHeight;
 
    @ObfuscatedSignature(
-      descriptor = "(Lky;Lky;ILii;)V"
+      descriptor = "(Lko;Lko;ILil;)V"
    )
    WorldMapIcon_0(Coord var1, Coord var2, int var3, WorldMapLabel var4) {
       super(var1, var2);
       this.element = var3;
       this.label = var4;
-      WorldMapElement var5 = JagexCache.WorldMapElement_get(this.getElement());
+      WorldMapElement var5 = class4.WorldMapElement_get(this.getElement());
       SpritePixels var6 = var5.getSpriteBool(false);
       if (var6 != null) {
          this.subWidth = var6.subWidth;
@@ -51,10 +57,10 @@ public class WorldMapIcon_0 extends AbstractWorldMapIcon {
 
    }
 
-   @ObfuscatedName("e")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
       descriptor = "(I)I",
-      garbageValue = "2098413555"
+      garbageValue = "1964880024"
    )
    @Export("getElement")
    public int getElement() {
@@ -63,52 +69,118 @@ public class WorldMapIcon_0 extends AbstractWorldMapIcon {
 
    @ObfuscatedName("v")
    @ObfuscatedSignature(
-      descriptor = "(I)Lii;",
-      garbageValue = "849546905"
+      descriptor = "(I)Lil;",
+      garbageValue = "-1317041670"
    )
    @Export("getLabel")
    WorldMapLabel getLabel() {
       return this.label;
    }
 
-   @ObfuscatedName("x")
+   @ObfuscatedName("s")
    @ObfuscatedSignature(
-      descriptor = "(I)I",
-      garbageValue = "-520723785"
+      descriptor = "(B)I",
+      garbageValue = "7"
    )
    @Export("getSubWidth")
    int getSubWidth() {
       return this.subWidth;
    }
 
-   @ObfuscatedName("m")
+   @ObfuscatedName("z")
    @ObfuscatedSignature(
       descriptor = "(I)I",
-      garbageValue = "1290081241"
+      garbageValue = "1769700454"
    )
    @Export("getSubHeight")
    int getSubHeight() {
       return this.subHeight;
    }
 
-   @ObfuscatedName("h")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
-      descriptor = "(I)[Lls;",
-      garbageValue = "-210588352"
+      descriptor = "(Lln;I)V",
+      garbageValue = "-1549197642"
    )
-   static class319[] method5201() {
-      return new class319[]{class319.field3786, class319.field3782};
+   public static void method5264(AbstractArchive var0) {
+      VarpDefinition.VarpDefinition_archive = var0;
+      VarpDefinition.field1927 = VarpDefinition.VarpDefinition_archive.getGroupFileCount(16);
    }
 
-   @ObfuscatedName("a")
+   @ObfuscatedName("v")
    @ObfuscatedSignature(
-      descriptor = "(III)I",
-      garbageValue = "-1930263759"
+      descriptor = "(B)V",
+      garbageValue = "-12"
    )
-   static final int method5188(int var0, int var1) {
-      int var2 = var0 + var1 * 57;
-      var2 ^= var2 << 13;
-      int var3 = (var2 * var2 * 15731 + 789221) * var2 + 1376312589 & Integer.MAX_VALUE;
-      return var3 >> 19 & 255;
+   public static void method5262() {
+      while(true) {
+         ArchiveDiskAction var0;
+         synchronized(ArchiveDiskActionHandler.ArchiveDiskActionHandler_requestQueue) {
+            var0 = (ArchiveDiskAction)ArchiveDiskActionHandler.ArchiveDiskActionHandler_responseQueue.removeLast();
+         }
+
+         if (var0 == null) {
+            return;
+         }
+
+         var0.archive.load(var0.archiveDisk, (int)var0.key, var0.data, false);
+      }
+   }
+
+   @ObfuscatedName("v")
+   @ObfuscatedSignature(
+      descriptor = "(II)I",
+      garbageValue = "-1016590193"
+   )
+   public static int method5265(int var0) {
+      return (var0 & class469.field4922) - 1;
+   }
+
+   @ObfuscatedName("io")
+   @ObfuscatedSignature(
+      descriptor = "(ILjava/lang/String;B)V",
+      garbageValue = "-90"
+   )
+   static void method5263(int var0, String var1) {
+      int var2 = Players.Players_count;
+      int[] var3 = Players.Players_indices;
+      boolean var4 = false;
+      Username var5 = new Username(var1, WorldMapCacheName.loginType);
+
+      for(int var6 = 0; var6 < var2; ++var6) {
+         Player var7 = Client.players[var3[var6]];
+         if (var7 != null && var7 != class387.localPlayer && var7.username != null && var7.username.equals(var5)) {
+            PacketBufferNode var8;
+            if (var0 == 1) {
+               var8 = Renderable.getPacketBufferNode(ClientPacket.OPPLAYER1, Client.packetWriter.isaacCipher);
+               var8.packetBuffer.writeShortAddLE(var3[var6]);
+               var8.packetBuffer.writeByteSub(0);
+               Client.packetWriter.addNode(var8);
+            } else if (var0 == 4) {
+               var8 = Renderable.getPacketBufferNode(ClientPacket.OPPLAYER4, Client.packetWriter.isaacCipher);
+               var8.packetBuffer.writeShort(var3[var6]);
+               var8.packetBuffer.writeByteNeg(0);
+               Client.packetWriter.addNode(var8);
+            } else if (var0 == 6) {
+               var8 = Renderable.getPacketBufferNode(ClientPacket.OPPLAYER6, Client.packetWriter.isaacCipher);
+               var8.packetBuffer.writeByteNeg(0);
+               var8.packetBuffer.writeShort(var3[var6]);
+               Client.packetWriter.addNode(var8);
+            } else if (var0 == 7) {
+               var8 = Renderable.getPacketBufferNode(ClientPacket.OPPLAYER7, Client.packetWriter.isaacCipher);
+               var8.packetBuffer.writeShortAddLE(var3[var6]);
+               var8.packetBuffer.writeByteAdd(0);
+               Client.packetWriter.addNode(var8);
+            }
+
+            var4 = true;
+            break;
+         }
+      }
+
+      if (!var4) {
+         class280.addGameMessage(4, "", "Unable to find " + var1);
+      }
+
    }
 }

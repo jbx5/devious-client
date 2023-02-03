@@ -3,13 +3,13 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kq")
+@ObfuscatedName("kg")
 @Implements("Huffman")
 public class Huffman {
-   @ObfuscatedName("h")
+   @ObfuscatedName("f")
    @Export("masks")
    int[] masks;
-   @ObfuscatedName("e")
+   @ObfuscatedName("w")
    @Export("bits")
    byte[] bits;
    @ObfuscatedName("v")
@@ -41,7 +41,7 @@ public class Huffman {
 
                for(var10 = var6 - 1; var10 >= 1; --var10) {
                   var11 = var3[var10];
-                  if (var11 != var8) {
+                  if (var8 != var11) {
                      break;
                   }
 
@@ -99,10 +99,10 @@ public class Huffman {
 
    }
 
-   @ObfuscatedName("h")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
-      descriptor = "([BII[BIB)I",
-      garbageValue = "62"
+      descriptor = "([BII[BII)I",
+      garbageValue = "-1335914650"
    )
    @Export("compress")
    int compress(byte[] var1, int var2, int var3, byte[] var4, int var5) {
@@ -150,10 +150,10 @@ public class Huffman {
       return (var7 + 7 >> 3) - var5;
    }
 
-   @ObfuscatedName("e")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      descriptor = "([BI[BIII)I",
-      garbageValue = "-1684264908"
+      descriptor = "([BI[BIIB)I",
+      garbageValue = "-103"
    )
    @Export("decompress")
    int decompress(byte[] var1, int var2, byte[] var3, int var4, int var5) {
@@ -294,13 +294,23 @@ public class Huffman {
       }
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("s")
    @ObfuscatedSignature(
-      descriptor = "(IZS)Ljava/lang/String;",
-      garbageValue = "4529"
+      descriptor = "(I)V",
+      garbageValue = "1118529348"
    )
-   @Export("intToString")
-   public static String intToString(int var0, boolean var1) {
-      return var1 && var0 >= 0 ? Widget.method6300(var0, 10, var1) : Integer.toString(var0);
+   public static void method6381() {
+      try {
+         JagexCache.JagexCache_dat2File.close();
+
+         for(int var0 = 0; var0 < JagexCache.idxCount; ++var0) {
+            class18.JagexCache_idxFiles[var0].close();
+         }
+
+         JagexCache.JagexCache_idx255File.close();
+         JagexCache.JagexCache_randomDat.close();
+      } catch (Exception var2) {
+      }
+
    }
 }

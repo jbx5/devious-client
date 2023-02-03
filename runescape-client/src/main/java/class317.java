@@ -1,53 +1,67 @@
 import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("lp")
-public final class class317 {
-   @ObfuscatedName("o")
+@ObfuscatedName("ly")
+public enum class317 implements MouseWheel {
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
-      descriptor = "(Ljava/lang/String;I)V",
-      garbageValue = "1457607137"
+      descriptor = "Lly;"
    )
-   static final void method6371(String var0) {
-      StringBuilder var10000 = (new StringBuilder()).append(var0);
-      Object var10001 = null;
-      String var1 = var10000.append(" is already on your ignore list").toString();
-      KitDefinition.addGameMessage(30, "", var1);
+   field3736(0),
+   @ObfuscatedName("w")
+   @ObfuscatedSignature(
+      descriptor = "Lly;"
+   )
+   field3737(1),
+   @ObfuscatedName("v")
+   @ObfuscatedSignature(
+      descriptor = "Lly;"
+   )
+   field3735(2),
+   @ObfuscatedName("s")
+   @ObfuscatedSignature(
+      descriptor = "Lly;"
+   )
+   field3738(3),
+   @ObfuscatedName("z")
+   @ObfuscatedSignature(
+      descriptor = "Lly;"
+   )
+   field3739(4);
+
+   @ObfuscatedName("j")
+   @ObfuscatedGetter(
+      intValue = -619743377
+   )
+   final int field3740;
+
+   class317(int var3) {
+      this.field3740 = var3;
    }
 
-   @ObfuscatedName("kw")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
-      descriptor = "(Lkd;Lgr;IIZS)V",
-      garbageValue = "229"
+      descriptor = "(B)I",
+      garbageValue = "3"
    )
-   @Export("addWidgetItemMenuItem")
-   static final void addWidgetItemMenuItem(Widget var0, ItemComposition var1, int var2, int var3, boolean var4) {
-      String[] var5 = var1.inventoryActions;
-      byte var6 = -1;
-      String var7 = null;
-      if (var5 != null && var5[var3] != null) {
-         if (var3 == 0) {
-            var6 = 33;
-         } else if (var3 == 1) {
-            var6 = 34;
-         } else if (var3 == 2) {
-            var6 = 35;
-         } else if (var3 == 3) {
-            var6 = 36;
-         } else {
-            var6 = 37;
-         }
+   @Export("rsOrdinal")
+   public int rsOrdinal() {
+      return this.field3740;
+   }
 
-         var7 = var5[var3];
-      } else if (var3 == 4) {
-         var6 = 37;
-         var7 = "Drop";
+   @ObfuscatedName("ld")
+   @ObfuscatedSignature(
+      descriptor = "(Lkz;B)Ljava/lang/String;",
+      garbageValue = "-20"
+   )
+   @Export("Widget_getSpellActionName")
+   static String Widget_getSpellActionName(Widget var0) {
+      if (MenuAction.Widget_unpackTargetMask(class173.getWidgetFlags(var0)) == 0) {
+         return null;
+      } else {
+         return var0.spellActionName != null && var0.spellActionName.trim().length() != 0 ? var0.spellActionName : null;
       }
-
-      if (var6 != -1 && var7 != null) {
-         class37.insertMenuItem(var7, MouseRecorder.colorStartTag(16748608) + var1.name, var6, 0, var2, var0.id, var1.id, var4);
-      }
-
    }
 }

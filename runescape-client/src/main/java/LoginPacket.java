@@ -4,65 +4,54 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jh")
+@ObfuscatedName("jw")
 @Implements("LoginPacket")
-public class LoginPacket implements class274 {
-   @ObfuscatedName("h")
+public class LoginPacket implements class278 {
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
-      descriptor = "Ljh;"
+      descriptor = "Ljw;"
    )
-   public static final LoginPacket field3300 = new LoginPacket(14, 0);
-   @ObfuscatedName("e")
+   public static final LoginPacket field3317 = new LoginPacket(14, 0);
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      descriptor = "Ljh;"
+      descriptor = "Ljw;"
    )
-   static final LoginPacket field3305 = new LoginPacket(15, 4);
+   static final LoginPacket field3311 = new LoginPacket(15, 4);
    @ObfuscatedName("v")
    @ObfuscatedSignature(
-      descriptor = "Ljh;"
+      descriptor = "Ljw;"
    )
-   public static final LoginPacket field3301 = new LoginPacket(16, -2);
-   @ObfuscatedName("x")
+   public static final LoginPacket field3310 = new LoginPacket(16, -2);
+   @ObfuscatedName("s")
    @ObfuscatedSignature(
-      descriptor = "Ljh;"
+      descriptor = "Ljw;"
    )
-   public static final LoginPacket field3303 = new LoginPacket(18, -2);
-   @ObfuscatedName("m")
+   public static final LoginPacket field3309 = new LoginPacket(18, -2);
+   @ObfuscatedName("z")
    @ObfuscatedSignature(
-      descriptor = "Ljh;"
+      descriptor = "Ljw;"
    )
-   public static final LoginPacket field3304 = new LoginPacket(19, -2);
-   @ObfuscatedName("q")
+   public static final LoginPacket field3312 = new LoginPacket(19, -2);
+   @ObfuscatedName("j")
    @ObfuscatedSignature(
-      descriptor = "Ljh;"
+      descriptor = "Ljw;"
    )
-   static final LoginPacket field3308 = new LoginPacket(27, 0);
-   @ObfuscatedName("r")
+   static final LoginPacket field3316 = new LoginPacket(27, 0);
+   @ObfuscatedName("n")
    @ObfuscatedSignature(
-      descriptor = "[Ljh;"
+      descriptor = "[Ljw;"
    )
    @Export("LoginPacket_indexedValues")
    static final LoginPacket[] LoginPacket_indexedValues = new LoginPacket[32];
-   @ObfuscatedName("k")
+   @ObfuscatedName("i")
    @ObfuscatedGetter(
-      intValue = 367370965
-   )
-   @Export("cacheGamebuild")
-   public static int cacheGamebuild;
-   @ObfuscatedName("bw")
-   @ObfuscatedSignature(
-      descriptor = "Llw;"
-   )
-   static StudioGame field3302;
-   @ObfuscatedName("f")
-   @ObfuscatedGetter(
-      intValue = 580881537
+      intValue = 360020071
    )
    @Export("id")
    public final int id;
 
    static {
-      LoginPacket[] var0 = GrandExchangeOfferOwnWorldComparator.method1224();
+      LoginPacket[] var0 = Canvas.method325();
 
       for(int var1 = 0; var1 < var0.length; ++var1) {
          LoginPacket_indexedValues[var0[var1].id] = var0[var1];

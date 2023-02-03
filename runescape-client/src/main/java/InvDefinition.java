@@ -4,29 +4,33 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fq")
+@ObfuscatedName("fz")
 @Implements("InvDefinition")
 public class InvDefinition extends DualNode {
-   @ObfuscatedName("h")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
-      descriptor = "Lly;"
+      descriptor = "Lln;"
    )
    @Export("InvDefinition_archive")
-   static AbstractArchive InvDefinition_archive;
-   @ObfuscatedName("e")
+   public static AbstractArchive InvDefinition_archive;
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      descriptor = "Ljv;"
+      descriptor = "Lja;"
    )
    @Export("InvDefinition_cached")
    static EvictingDualNodeHashTable InvDefinition_cached = new EvictingDualNodeHashTable(64);
-   @ObfuscatedName("if")
-   @ObfuscatedGetter(
-      intValue = 780032889
+   @ObfuscatedName("bh")
+   @Export("otp")
+   static String otp;
+   @ObfuscatedName("ju")
+   @ObfuscatedSignature(
+      descriptor = "[Lrg;"
    )
-   static int field1918;
+   @Export("scrollBarSprites")
+   static IndexedSprite[] scrollBarSprites;
    @ObfuscatedName("v")
    @ObfuscatedGetter(
-      intValue = -1028832281
+      intValue = 540744757
    )
    @Export("size")
    public int size = 0;
@@ -34,10 +38,10 @@ public class InvDefinition extends DualNode {
    InvDefinition() {
    }
 
-   @ObfuscatedName("v")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      descriptor = "(Lqy;I)V",
-      garbageValue = "232861305"
+      descriptor = "(Lrd;I)V",
+      garbageValue = "-336923015"
    )
    @Export("decode")
    void decode(Buffer var1) {
@@ -51,10 +55,10 @@ public class InvDefinition extends DualNode {
       }
    }
 
-   @ObfuscatedName("x")
+   @ObfuscatedName("v")
    @ObfuscatedSignature(
-      descriptor = "(Lqy;IB)V",
-      garbageValue = "42"
+      descriptor = "(Lrd;IB)V",
+      garbageValue = "118"
    )
    @Export("decodeNext")
    void decodeNext(Buffer var1, int var2) {

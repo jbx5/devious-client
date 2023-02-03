@@ -2,108 +2,112 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jo")
+@ObfuscatedName("js")
 public class class280 {
-   @ObfuscatedName("cb")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
-      descriptor = "[Lra;"
+      descriptor = "Ljs;"
    )
-   @Export("worldSelectStars")
-   static IndexedSprite[] worldSelectStars;
-
-   @ObfuscatedName("h")
+   public static final class280 field3179 = new class280(15);
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      descriptor = "(Lqx;I)V",
-      garbageValue = "785365671"
+      descriptor = "Ljs;"
    )
-   @Export("updatePlayer")
-   static final void updatePlayer(PacketBuffer var0) {
-      var0.importIndex();
-      int var1 = Client.localPlayerIndex;
-      Player var2 = class155.localPlayer = Client.players[var1] = new Player();
-      var2.index = var1;
-      int var3 = var0.readBits(30);
-      byte var4 = (byte)(var3 >> 28);
-      int var5 = var3 >> 14 & 16383;
-      int var6 = var3 & 16383;
-      var2.pathX[0] = var5 - class154.baseX * 64;
-      var2.x = (var2.pathX[0] << 7) + (var2.transformedSize() << 6);
-      var2.pathY[0] = var6 - class365.baseY * 64;
-      var2.y = (var2.pathY[0] << 7) + (var2.transformedSize() << 6);
-      class383.Client_plane = var2.plane = var4;
-      if (Players.field1372[var1] != null) {
-         var2.read(Players.field1372[var1]);
-      }
+   public static final class280 field3172 = new class280(14);
+   @ObfuscatedName("v")
+   @ObfuscatedSignature(
+      descriptor = "Ljs;"
+   )
+   public static final class280 field3173 = new class280(16);
+   @ObfuscatedName("s")
+   @ObfuscatedSignature(
+      descriptor = "Ljs;"
+   )
+   public static final class280 field3174 = new class280(7);
+   @ObfuscatedName("z")
+   @ObfuscatedSignature(
+      descriptor = "Ljs;"
+   )
+   public static final class280 field3175 = new class280(7);
+   @ObfuscatedName("j")
+   @ObfuscatedSignature(
+      descriptor = "Ljs;"
+   )
+   public static final class280 field3178 = new class280(4);
+   @ObfuscatedName("i")
+   @ObfuscatedSignature(
+      descriptor = "Ljs;"
+   )
+   public static final class280 field3176 = new class280(5);
+   @ObfuscatedName("n")
+   @ObfuscatedSignature(
+      descriptor = "Ljs;"
+   )
+   public static final class280 field3171 = new class280(2);
+   @ObfuscatedName("l")
+   @ObfuscatedSignature(
+      descriptor = "Ljs;"
+   )
+   public static final class280 field3183 = new class280(6);
+   @ObfuscatedName("k")
+   @ObfuscatedSignature(
+      descriptor = "Ljs;"
+   )
+   public static final class280 field3180 = new class280(4);
+   @ObfuscatedName("c")
+   @ObfuscatedSignature(
+      descriptor = "Ljs;"
+   )
+   public static final class280 field3181 = new class280(14);
+   @ObfuscatedName("r")
+   @ObfuscatedSignature(
+      descriptor = "Ljs;"
+   )
+   public static final class280 field3182 = new class280(5);
+   @ObfuscatedName("b")
+   @ObfuscatedSignature(
+      descriptor = "Ljs;"
+   )
+   public static final class280 field3177 = new class280(11);
 
-      Players.Players_count = 0;
-      Players.Players_indices[++Players.Players_count - 1] = var1;
-      Players.field1370[var1] = 0;
-      Players.Players_emptyIdxCount = 0;
-
-      for(int var7 = 1; var7 < 2048; ++var7) {
-         if (var1 != var7) {
-            int var8 = var0.readBits(18);
-            int var9 = var8 >> 16;
-            int var10 = var8 >> 8 & 597;
-            int var11 = var8 & 597;
-            Players.Players_regions[var7] = (var10 << 14) + var11 + (var9 << 28);
-            Players.Players_orientations[var7] = 0;
-            Players.Players_targetIndices[var7] = -1;
-            Players.Players_emptyIndices[++Players.Players_emptyIdxCount - 1] = var7;
-            Players.field1370[var7] = 0;
-         }
-      }
-
-      var0.exportIndex();
+   @ObfuscatedSignature(
+      descriptor = "(I)V",
+      garbageValue = "15"
+   )
+   class280(int var1) {
    }
 
-   @ObfuscatedName("hf")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
-      descriptor = "(IIIB)V",
-      garbageValue = "63"
+      descriptor = "(ILjava/lang/String;Ljava/lang/String;I)V",
+      garbageValue = "1260897554"
    )
-   static final void method5498(int var0, int var1, int var2) {
-      if (class145.cameraX < var0) {
-         class145.cameraX = (var0 - class145.cameraX) * Tile.field2481 / 1000 + class145.cameraX + class31.field181;
-         if (class145.cameraX > var0) {
-            class145.cameraX = var0;
-         }
-      }
+   @Export("addGameMessage")
+   static void addGameMessage(int var0, String var1, String var2) {
+      class134.addChatMessage(var0, var1, var2, (String)null);
+   }
 
-      if (class145.cameraX > var0) {
-         class145.cameraX -= (class145.cameraX - var0) * Tile.field2481 / 1000 + class31.field181;
-         if (class145.cameraX < var0) {
-            class145.cameraX = var0;
-         }
-      }
+   @ObfuscatedName("v")
+   @ObfuscatedSignature(
+      descriptor = "(III)I",
+      garbageValue = "1433537546"
+   )
+   static int method5545(int var0, int var1) {
+      ItemContainer var2 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
+      if (var2 == null) {
+         return 0;
+      } else if (var1 == -1) {
+         return 0;
+      } else {
+         int var3 = 0;
 
-      if (class414.cameraY < var1) {
-         class414.cameraY = (var1 - class414.cameraY) * Tile.field2481 / 1000 + class414.cameraY + class31.field181;
-         if (class414.cameraY > var1) {
-            class414.cameraY = var1;
+         for(int var4 = 0; var4 < var2.quantities.length; ++var4) {
+            if (var2.ids[var4] == var1) {
+               var3 += var2.quantities[var4];
+            }
          }
-      }
 
-      if (class414.cameraY > var1) {
-         class414.cameraY -= (class414.cameraY - var1) * Tile.field2481 / 1000 + class31.field181;
-         if (class414.cameraY < var1) {
-            class414.cameraY = var1;
-         }
+         return var3;
       }
-
-      if (ClanChannel.cameraZ < var2) {
-         ClanChannel.cameraZ = (var2 - ClanChannel.cameraZ) * Tile.field2481 / 1000 + ClanChannel.cameraZ + class31.field181;
-         if (ClanChannel.cameraZ > var2) {
-            ClanChannel.cameraZ = var2;
-         }
-      }
-
-      if (ClanChannel.cameraZ > var2) {
-         ClanChannel.cameraZ -= (ClanChannel.cameraZ - var2) * Tile.field2481 / 1000 + class31.field181;
-         if (ClanChannel.cameraZ < var2) {
-            ClanChannel.cameraZ = var2;
-         }
-      }
-
    }
 }

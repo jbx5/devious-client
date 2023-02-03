@@ -6,26 +6,32 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("il")
+@ObfuscatedName("je")
 @Implements("WorldMapAreaData")
 public class WorldMapAreaData extends WorldMapArea {
-   @ObfuscatedName("i")
+   @ObfuscatedName("is")
+   @ObfuscatedSignature(
+      descriptor = "Lhn;"
+   )
+   @Export("scene")
+   static Scene scene;
+   @ObfuscatedName("b")
    @Export("worldMapData0Set")
    HashSet worldMapData0Set;
-   @ObfuscatedName("o")
+   @ObfuscatedName("m")
    @Export("worldMapData1Set")
    HashSet worldMapData1Set;
-   @ObfuscatedName("n")
+   @ObfuscatedName("t")
    @Export("iconList")
    List iconList;
 
    WorldMapAreaData() {
    }
 
-   @ObfuscatedName("bn")
+   @ObfuscatedName("cq")
    @ObfuscatedSignature(
-      descriptor = "(Lqy;Lqy;IZI)V",
-      garbageValue = "-2083183142"
+      descriptor = "(Lrd;Lrd;IZI)V",
+      garbageValue = "-1685416357"
    )
    @Export("init")
    void init(Buffer var1, Buffer var2, int var3, boolean var4) {
@@ -64,10 +70,10 @@ public class WorldMapAreaData extends WorldMapArea {
       this.initIconsList(var2, var4);
    }
 
-   @ObfuscatedName("ba")
+   @ObfuscatedName("cd")
    @ObfuscatedSignature(
-      descriptor = "(Lqy;ZB)V",
-      garbageValue = "31"
+      descriptor = "(Lrd;ZI)V",
+      garbageValue = "-1057034559"
    )
    @Export("initIconsList")
    void initIconsList(Buffer var1, boolean var2) {
@@ -85,43 +91,55 @@ public class WorldMapAreaData extends WorldMapArea {
 
    }
 
-   @ObfuscatedName("ip")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
-      descriptor = "(Lcj;ZB)V",
-      garbageValue = "8"
+      descriptor = "(Lcd;I)V",
+      garbageValue = "-1936200764"
    )
-   @Export("addPlayerToScene")
-   static void addPlayerToScene(Player var0, boolean var1) {
-      if (var0 != null && var0.isVisible() && !var0.isHidden) {
-         var0.isUnanimated = false;
-         if ((Client.isLowDetail && Players.Players_count > 50 || Players.Players_count > 200) && var1 && var0.movementSequence == var0.idleSequence) {
-            var0.isUnanimated = true;
+   @Export("runScriptEvent")
+   public static void runScriptEvent(ScriptEvent var0) {
+      ItemLayer.runScript(var0, 500000, 475000);
+   }
+
+   @ObfuscatedName("h")
+   @ObfuscatedSignature(
+      descriptor = "(B)V",
+      garbageValue = "44"
+   )
+   static void method5426() {
+      Login.Login_username = Login.Login_username.trim();
+      if (Login.Login_username.length() == 0) {
+         class70.setLoginResponseString("Please enter your username.", "If you created your account after November", "2010, this will be the creation email address.");
+      } else {
+         long var1 = class70.method2085();
+         int var0;
+         if (0L == var1) {
+            var0 = 5;
+         } else {
+            var0 = Ignored.method7741(var1, Login.Login_username);
          }
 
-         int var2 = var0.x >> 7;
-         int var3 = var0.y >> 7;
-         if (var2 >= 0 && var2 < 104 && var3 >= 0 && var3 < 104) {
-            long var4 = GameEngine.calculateTag(0, 0, 0, false, var0.index);
-            if (var0.model0 != null && Client.cycle >= var0.animationCycleStart && Client.cycle < var0.animationCycleEnd) {
-               var0.isUnanimated = false;
-               var0.tileHeight = SpotAnimationDefinition.getTileHeight(var0.x, var0.y, class383.Client_plane);
-               var0.playerCycle = Client.cycle;
-               ReflectionCheck.scene.addNullableObject(class383.Client_plane, var0.x, var0.y, var0.tileHeight, 60, var0, var0.rotation, var4, var0.minX, var0.minY, var0.maxX, var0.maxY);
-            } else {
-               if ((var0.x & 127) == 64 && (var0.y & 127) == 64) {
-                  if (Client.tileLastDrawnActor[var2][var3] == Client.viewportDrawCount) {
-                     return;
-                  }
-
-                  Client.tileLastDrawnActor[var2][var3] = Client.viewportDrawCount;
-               }
-
-               var0.tileHeight = SpotAnimationDefinition.getTileHeight(var0.x, var0.y, class383.Client_plane);
-               var0.playerCycle = Client.cycle;
-               ReflectionCheck.scene.drawEntity(class383.Client_plane, var0.x, var0.y, var0.tileHeight, 60, var0, var0.rotation, var4, var0.isWalking);
-            }
+         switch (var0) {
+            case 2:
+               class70.setLoginResponseString(Strings.field3943, Strings.field4118, Strings.field4119);
+               ReflectionCheck.method696(6);
+               break;
+            case 3:
+               class70.setLoginResponseString("", "Error connecting to server.", "");
+               break;
+            case 4:
+               class70.setLoginResponseString("The part of the website you are trying", "to connect to is offline at the moment.", "Please try again later.");
+               break;
+            case 5:
+               class70.setLoginResponseString("Sorry, there was an error trying to", "log you in to this part of the website.", "Please try again later.");
+               break;
+            case 6:
+               class70.setLoginResponseString("", "Error connecting to server.", "");
+               break;
+            case 7:
+               class70.setLoginResponseString("You must enter a valid login to proceed. For accounts", "created after 24th November 2010, please use your", "email address. Otherwise please use your username.");
          }
+
       }
-
    }
 }

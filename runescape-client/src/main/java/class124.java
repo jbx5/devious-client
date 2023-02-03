@@ -1,85 +1,78 @@
+import java.util.concurrent.Callable;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dp")
-public enum class124 implements MouseWheel {
-   @ObfuscatedName("h")
+@ObfuscatedName("du")
+public class class124 implements Callable {
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
-      descriptor = "Ldp;"
+      descriptor = "Lda;"
    )
-   field1535(0, 0),
-   @ObfuscatedName("e")
+   final class125 field1516;
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      descriptor = "Ldp;"
+      descriptor = "Ldk;"
    )
-   field1528(1, 1),
+   final class126 field1513;
    @ObfuscatedName("v")
    @ObfuscatedSignature(
-      descriptor = "Ldp;"
+      descriptor = "Ldx;"
    )
-   field1529(2, 2),
-   @ObfuscatedName("x")
-   @ObfuscatedSignature(
-      descriptor = "Ldp;"
-   )
-   field1536(3, 3),
-   @ObfuscatedName("m")
-   @ObfuscatedSignature(
-      descriptor = "Ldp;"
-   )
-   field1531(4, 4);
-
-   @ObfuscatedName("q")
+   final class127 field1514;
+   @ObfuscatedName("s")
    @ObfuscatedGetter(
-      intValue = 324015279
+      intValue = 1186726763
    )
-   final int field1532;
-   @ObfuscatedName("f")
-   @ObfuscatedGetter(
-      intValue = 1800983085
+   final int field1515;
+   // $FF: synthetic field
+   @ObfuscatedSignature(
+      descriptor = "Lei;"
    )
-   final int field1530;
+   final class133 this$0;
 
-   class124(int var3, int var4) {
-      this.field1532 = var3;
-      this.field1530 = var4;
+   @ObfuscatedSignature(
+      descriptor = "(Lei;Lda;Ldk;Ldx;I)V"
+   )
+   class124(class133 var1, class125 var2, class126 var3, class127 var4, int var5) {
+      this.this$0 = var1;
+      this.field1516 = var2;
+      this.field1513 = var3;
+      this.field1514 = var4;
+      this.field1515 = var5;
    }
 
-   @ObfuscatedName("e")
-   @ObfuscatedSignature(
-      descriptor = "(B)I",
-      garbageValue = "96"
-   )
-   @Export("rsOrdinal")
-   public int rsOrdinal() {
-      return this.field1530;
+   public Object call() {
+      this.field1516.method3063();
+      class125[][] var1;
+      if (this.field1513 == class126.field1548) {
+         var1 = this.this$0.field1602;
+      } else {
+         var1 = this.this$0.field1601;
+      }
+
+      var1[this.field1515][this.field1514.method3076()] = this.field1516;
+      return null;
    }
 
-   @ObfuscatedName("i")
+   @ObfuscatedName("n")
+   @Export("Entity_unpackID")
+   public static int Entity_unpackID(long var0) {
+      return (int)(var0 >>> 17 & 4294967295L);
+   }
+
+   @ObfuscatedName("bz")
    @ObfuscatedSignature(
-      descriptor = "(ZI)V",
-      garbageValue = "-1048113560"
+      descriptor = "(ILko;ZI)V",
+      garbageValue = "508000194"
    )
-   static void method2939(boolean var0) {
-      byte var1 = 0;
-      boolean var2 = StructComposition.clientPreferences.method2424() >= Client.field511;
-      if (!var2) {
-         var1 = 12;
-      } else if (BuddyRankComparator.client.method1230() || BuddyRankComparator.client.method1231()) {
-         var1 = 10;
-      }
-
-      class12.method155(var1);
-      if (var0) {
-         Login.Login_username = "";
-         Login.Login_password = "";
-         class143.field1697 = 0;
-         class141.otp = "";
-      }
-
-      GameObject.method4831();
-      SoundSystem.method873();
+   static void method3040(int var0, Coord var1, boolean var2) {
+      WorldMapArea var3 = WorldMapDecorationType.getWorldMap().getMapArea(var0);
+      int var4 = class387.localPlayer.plane;
+      int var5 = ParamComposition.baseX * 64 + (class387.localPlayer.x >> 7);
+      int var6 = Client.baseY * 64 + (class387.localPlayer.y >> 7);
+      Coord var7 = new Coord(var4, var5, var6);
+      WorldMapDecorationType.getWorldMap().method8298(var3, var7, var1, var2);
    }
 }

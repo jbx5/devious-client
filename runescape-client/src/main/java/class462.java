@@ -1,16 +1,32 @@
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("qb")
-public class class462 {
-   @ObfuscatedName("v")
-   @ObfuscatedGetter(
-      intValue = -1736178807
+@ObfuscatedName("ql")
+final class class462 implements class459 {
+   @ObfuscatedName("f")
+   @ObfuscatedSignature(
+      descriptor = "(Ljava/lang/Object;Lrd;B)V",
+      garbageValue = "10"
    )
-   static final int field4896 = (int)(Math.pow(2.0, 4.0) - 1.0);
-   @ObfuscatedName("x")
-   @ObfuscatedGetter(
-      intValue = -1255956987
+   public void vmethod8518(Object var1, Buffer var2) {
+      this.method8493((Long)var1, var2);
+   }
+
+   @ObfuscatedName("w")
+   @ObfuscatedSignature(
+      descriptor = "(Lrd;B)Ljava/lang/Object;",
+      garbageValue = "4"
    )
-   static final int field4898 = (int)(Math.pow(2.0, 8.0) - 1.0);
+   public Object vmethod8517(Buffer var1) {
+      return var1.readLong();
+   }
+
+   @ObfuscatedName("i")
+   @ObfuscatedSignature(
+      descriptor = "(Ljava/lang/Long;Lrd;B)V",
+      garbageValue = "-92"
+   )
+   void method8493(Long var1, Buffer var2) {
+      var2.writeLong(var1);
+   }
 }

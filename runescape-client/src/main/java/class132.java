@@ -1,156 +1,71 @@
-import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.PrintWriter;
-import java.io.StringReader;
-import java.io.StringWriter;
-import java.net.URL;
+import java.util.concurrent.Callable;
 import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("et")
-public enum class132 implements MouseWheel {
-   @ObfuscatedName("h")
+@ObfuscatedName("er")
+class class132 implements Callable {
+   @ObfuscatedName("i")
+   @Export("SpriteBuffer_spriteHeights")
+   public static int[] SpriteBuffer_spriteHeights;
+   @ObfuscatedName("o")
+   @Export("ByteArrayPool_altSizeArrayCounts")
+   public static int[] ByteArrayPool_altSizeArrayCounts;
+   // $FF: synthetic field
    @ObfuscatedSignature(
-      descriptor = "Let;"
+      descriptor = "Lei;"
    )
-   field1624(2, 0),
-   @ObfuscatedName("e")
+   final class133 this$0;
+   // $FF: synthetic field
    @ObfuscatedSignature(
-      descriptor = "Let;"
+      descriptor = "Lrd;"
    )
-   field1629(4, 1),
-   @ObfuscatedName("v")
+   final Buffer val$p;
+   // $FF: synthetic field
+   final int val$version;
+
    @ObfuscatedSignature(
-      descriptor = "Let;"
+      descriptor = "(Lei;Lrd;I)V"
    )
-   field1625(0, 2),
+   class132(class133 var1, Buffer var2, int var3) {
+      this.this$0 = var1;
+      this.val$p = var2;
+      this.val$version = var3;
+   }
+
+   public Object call() {
+      this.this$0.method3114(this.val$p, this.val$version);
+      return null;
+   }
+
    @ObfuscatedName("x")
    @ObfuscatedSignature(
-      descriptor = "Let;"
+      descriptor = "(ILba;ZI)I",
+      garbageValue = "-1917361698"
    )
-   field1626(3, 3),
-   @ObfuscatedName("m")
-   @ObfuscatedSignature(
-      descriptor = "Let;"
-   )
-   field1628(1, 4);
-
-   @ObfuscatedName("q")
-   @ObfuscatedGetter(
-      intValue = 2018184127
-   )
-   public final int field1627;
-   @ObfuscatedName("f")
-   @ObfuscatedGetter(
-      intValue = 1796142361
-   )
-   @Export("id")
-   final int id;
-
-   class132(int var3, int var4) {
-      this.field1627 = var3;
-      this.id = var4;
-   }
-
-   @ObfuscatedName("e")
-   @ObfuscatedSignature(
-      descriptor = "(B)I",
-      garbageValue = "96"
-   )
-   @Export("rsOrdinal")
-   public int rsOrdinal() {
-      return this.id;
-   }
-
-   @ObfuscatedName("h")
-   @ObfuscatedSignature(
-      descriptor = "(Ljava/lang/String;Ljava/lang/Throwable;I)V",
-      garbageValue = "1018084003"
-   )
-   @Export("RunException_sendStackTrace")
-   public static void RunException_sendStackTrace(String var0, Throwable var1) {
-      if (var1 != null) {
-         var1.printStackTrace();
+   static int method3090(int var0, Script var1, boolean var2) {
+      Widget var3 = class133.getWidget(Interpreter.Interpreter_intStack[--class302.Interpreter_intStackSize]);
+      if (var0 == ScriptOpcodes.IF_GETX) {
+         Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.x;
+         return 1;
+      } else if (var0 == ScriptOpcodes.IF_GETY) {
+         Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.y;
+         return 1;
+      } else if (var0 == ScriptOpcodes.IF_GETWIDTH) {
+         Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.width;
+         return 1;
+      } else if (var0 == ScriptOpcodes.IF_GETHEIGHT) {
+         Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.height;
+         return 1;
+      } else if (var0 == ScriptOpcodes.IF_GETHIDE) {
+         Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.isHidden ? 1 : 0;
+         return 1;
+      } else if (var0 == ScriptOpcodes.IF_GETLAYER) {
+         Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.parentId;
+         return 1;
       } else {
-         try {
-            String var2 = "";
-            if (var1 != null) {
-               Throwable var4 = var1;
-               String var5;
-               if (var1 instanceof RunException) {
-                  RunException var6 = (RunException)var1;
-                  var5 = var6.message + " | ";
-                  var4 = var6.throwable;
-               } else {
-                  var5 = "";
-               }
-
-               StringWriter var18 = new StringWriter();
-               PrintWriter var7 = new PrintWriter(var18);
-               var4.printStackTrace(var7);
-               var7.close();
-               String var8 = var18.toString();
-               BufferedReader var9 = new BufferedReader(new StringReader(var8));
-               String var10 = var9.readLine();
-
-               label61:
-               while(true) {
-                  while(true) {
-                     String var11 = var9.readLine();
-                     if (var11 == null) {
-                        var5 = var5 + "| " + var10;
-                        var2 = var5;
-                        break label61;
-                     }
-
-                     int var12 = var11.indexOf(40);
-                     int var13 = var11.indexOf(41, var12 + 1);
-                     if (var12 >= 0 && var13 >= 0) {
-                        String var14 = var11.substring(var12 + 1, var13);
-                        int var15 = var14.indexOf(".java:");
-                        if (var15 >= 0) {
-                           var14 = var14.substring(0, var15) + var14.substring(var15 + 5);
-                           var5 = var5 + var14 + ' ';
-                           continue;
-                        }
-
-                        var11 = var11.substring(0, var12);
-                     }
-
-                     var11 = var11.trim();
-                     var11 = var11.substring(var11.lastIndexOf(32) + 1);
-                     var11 = var11.substring(var11.lastIndexOf(9) + 1);
-                     var5 = var5 + var11 + ' ';
-                  }
-               }
-            }
-
-            if (var0 != null) {
-               if (var1 != null) {
-                  var2 = var2 + " | ";
-               }
-
-               var2 = var2 + var0;
-            }
-
-            System.out.println("Error: " + var2);
-            var2 = var2.replace(':', '.');
-            var2 = var2.replace('@', '_');
-            var2 = var2.replace('&', '_');
-            var2 = var2.replace('#', '_');
-            if (class422.RunException_applet == null) {
-               return;
-            }
-
-            URL var3 = new URL(class422.RunException_applet.getCodeBase(), "clienterror.ws?cv=" + RunException.RunException_revision + "&cs=" + RunException.field5065 + "&u=" + RunException.localPlayerName + "&v1=" + TaskHandler.javaVendor + "&v2=" + TaskHandler.javaVersion + "&ct=" + RunException.clientType + "&e=" + var2);
-            DataInputStream var17 = new DataInputStream(var3.openStream());
-            var17.read();
-            var17.close();
-         } catch (Exception var16) {
-         }
-
+         return 2;
       }
    }
 }

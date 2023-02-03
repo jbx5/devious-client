@@ -1,141 +1,57 @@
-import java.lang.management.GarbageCollectorMXBean;
-import java.lang.management.ManagementFactory;
-import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jn")
+@ObfuscatedName("jm")
 public class class276 {
-   @ObfuscatedName("h")
+   @ObfuscatedName("hs")
    @ObfuscatedSignature(
-      descriptor = "Ljn;"
+      descriptor = "Lnv;"
    )
-   public static final class276 field3170 = new class276(4);
-   @ObfuscatedName("e")
-   @ObfuscatedSignature(
-      descriptor = "Ljn;"
-   )
-   public static final class276 field3158 = new class276(5);
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      descriptor = "Ljn;"
-   )
-   public static final class276 field3159 = new class276(6);
-   @ObfuscatedName("x")
-   @ObfuscatedSignature(
-      descriptor = "Ljn;"
-   )
-   public static final class276 field3171 = new class276(15);
-   @ObfuscatedName("m")
-   @ObfuscatedSignature(
-      descriptor = "Ljn;"
-   )
-   public static final class276 field3161 = new class276(4);
-   @ObfuscatedName("q")
-   @ObfuscatedSignature(
-      descriptor = "Ljn;"
-   )
-   public static final class276 field3166 = new class276(2);
-   @ObfuscatedName("f")
-   @ObfuscatedSignature(
-      descriptor = "Ljn;"
-   )
-   public static final class276 field3168 = new class276(7);
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      descriptor = "Ljn;"
-   )
-   public static final class276 field3164 = new class276(16);
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      descriptor = "Ljn;"
-   )
-   public static final class276 field3165 = new class276(8);
-   @ObfuscatedName("b")
-   @ObfuscatedSignature(
-      descriptor = "Ljn;"
-   )
-   public static final class276 field3157 = new class276(5);
-   @ObfuscatedName("j")
-   @ObfuscatedSignature(
-      descriptor = "Ljn;"
-   )
-   public static final class276 field3167 = new class276(14);
-   @ObfuscatedName("g")
-   @ObfuscatedSignature(
-      descriptor = "Ljn;"
-   )
-   public static final class276 field3160 = new class276(5);
-   @ObfuscatedName("i")
-   @ObfuscatedSignature(
-      descriptor = "Ljn;"
-   )
-   public static final class276 field3169 = new class276(7);
-   @ObfuscatedName("o")
-   @ObfuscatedSignature(
-      descriptor = "Ljn;"
-   )
-   public static final class276 field3163 = new class276(14);
+   @Export("fontPlain11")
+   static Font fontPlain11;
 
+   @ObfuscatedName("lk")
    @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "4"
+      descriptor = "(Lkz;I)Z",
+      garbageValue = "536221061"
    )
-   class276(int var1) {
-   }
-
-   @ObfuscatedName("ah")
-   @ObfuscatedSignature(
-      descriptor = "(I)I",
-      garbageValue = "2126981871"
-   )
-   @Export("getGcDuration")
-   protected static int getGcDuration() {
-      int var0 = 0;
-      if (Projectile.garbageCollector == null || !Projectile.garbageCollector.isValid()) {
-         try {
-            Iterator var1 = ManagementFactory.getGarbageCollectorMXBeans().iterator();
-
-            while(var1.hasNext()) {
-               GarbageCollectorMXBean var2 = (GarbageCollectorMXBean)var1.next();
-               if (var2.isValid()) {
-                  Projectile.garbageCollector = var2;
-                  GameEngine.garbageCollectorLastCheckTimeMs = -1L;
-                  GameEngine.garbageCollectorLastCollectionTime = -1L;
-               }
-            }
-         } catch (Throwable var11) {
-         }
-      }
-
-      if (Projectile.garbageCollector != null) {
-         long var9 = Message.method1197();
-         long var3 = Projectile.garbageCollector.getCollectionTime();
-         if (GameEngine.garbageCollectorLastCollectionTime != -1L) {
-            long var5 = var3 - GameEngine.garbageCollectorLastCollectionTime;
-            long var7 = var9 - GameEngine.garbageCollectorLastCheckTimeMs;
-            if (0L != var7) {
-               var0 = (int)(var5 * 100L / var7);
-            }
+   static final boolean method5534(Widget var0) {
+      int var1 = var0.contentType;
+      if (var1 == 205) {
+         Client.logoutTimer = 250;
+         return true;
+      } else {
+         int var2;
+         int var3;
+         if (var1 >= 300 && var1 <= 313) {
+            var2 = (var1 - 300) / 2;
+            var3 = var1 & 1;
+            Client.playerAppearance.changeAppearance(var2, var3 == 1);
          }
 
-         GameEngine.garbageCollectorLastCollectionTime = var3;
-         GameEngine.garbageCollectorLastCheckTimeMs = var9;
+         if (var1 >= 314 && var1 <= 323) {
+            var2 = (var1 - 314) / 2;
+            var3 = var1 & 1;
+            Client.playerAppearance.method5885(var2, var3 == 1);
+         }
+
+         if (var1 == 324) {
+            Client.playerAppearance.method5898(0);
+         }
+
+         if (var1 == 325) {
+            Client.playerAppearance.method5898(1);
+         }
+
+         if (var1 == 326) {
+            PacketBufferNode var4 = Renderable.getPacketBufferNode(ClientPacket.field3101, Client.packetWriter.isaacCipher);
+            Client.playerAppearance.write(var4.packetBuffer);
+            Client.packetWriter.addNode(var4);
+            return true;
+         } else {
+            return false;
+         }
       }
-
-      return var0;
-   }
-
-   @ObfuscatedName("jf")
-   @ObfuscatedSignature(
-      descriptor = "(Lbs;IIB)V",
-      garbageValue = "-92"
-   )
-   static final void method5485(MenuAction var0, int var1, int var2) {
-      if (var0 != null) {
-         WorldMapData_0.menuAction(var0.param0, var0.param1, var0.opcode, var0.identifier, var0.itemId, var0.action, var0.target, var1, var2);
-      }
-
    }
 }
