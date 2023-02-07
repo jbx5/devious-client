@@ -1,4 +1,4 @@
-[](https://i.imgur.com/pwqhhHD.png)
+![](https://i.imgur.com/pwqhhHD.png)
 
 ###
 This is an open source fork of OpenOSRS and Unethicalite that I'm looking to actively maintain since I think this would be a nice learning experience for me.
