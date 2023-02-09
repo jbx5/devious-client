@@ -84,13 +84,13 @@ public final class WorldMapRenderer {
    int tileY;
    @ObfuscatedName("m")
    @ObfuscatedGetter(
-      intValue = -363583783
+      intValue = -1794525632
    )
    @Export("tileWidth")
    int tileWidth;
    @ObfuscatedName("t")
    @ObfuscatedGetter(
-      intValue = 978853440
+      intValue = -857120647
    )
    @Export("tileHeight")
    int tileHeight;
