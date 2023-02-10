@@ -1,4 +1,5 @@
 import java.io.IOException;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
@@ -9,6 +10,7 @@ public class class246 {
       descriptor = "(II)V",
       garbageValue = "1717042974"
    )
+   @Export("updateGameState")
    static void updateGameState(int var0) {
       if (var0 != Client.gameState) {
          if (Client.gameState == 30) {

@@ -179,7 +179,7 @@ public class NPCComposition extends DualNode {
    int ambient = 0;
    @ObfuscatedName("az")
    @ObfuscatedGetter(
-      intValue = -101586163
+      intValue = -507930815
    )
    @Export("contrast")
    int contrast = 0;

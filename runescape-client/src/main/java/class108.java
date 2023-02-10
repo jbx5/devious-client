@@ -11,7 +11,7 @@ import net.runelite.mapping.ObfuscatedSignature;
 public class class108 extends UrlRequester {
    @ObfuscatedName("tn")
    @ObfuscatedGetter(
-      intValue = -1191559168
+      intValue = 1467085952
    )
    static int field1416;
    @ObfuscatedName("z")

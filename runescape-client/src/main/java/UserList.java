@@ -466,8 +466,8 @@ public abstract class UserList {
                var6.newBoundaryObject(var0, var1, var2, var16, (Renderable)var34, (Renderable)null, Tiles.field1015[var4], 0, var19, var21);
                if (var4 == 0) {
                   if (var8.clipped) {
-                     Tiles.Tiles_underlays[var0][var1][var2] = 50;
-                     Tiles.Tiles_underlays[var0][var1][var2 + 1] = 50;
+                     Tiles.Tiles_underlays2[var0][var1][var2] = 50;
+                     Tiles.Tiles_underlays2[var0][var1][var2 + 1] = 50;
                   }
 
                   if (var8.modelClipped) {
@@ -476,8 +476,8 @@ public abstract class UserList {
                   }
                } else if (var4 == 1) {
                   if (var8.clipped) {
-                     Tiles.Tiles_underlays[var0][var1][var2 + 1] = 50;
-                     Tiles.Tiles_underlays[var0][var1 + 1][var2 + 1] = 50;
+                     Tiles.Tiles_underlays2[var0][var1][var2 + 1] = 50;
+                     Tiles.Tiles_underlays2[var0][var1 + 1][var2 + 1] = 50;
                   }
 
                   if (var8.modelClipped) {
@@ -486,8 +486,8 @@ public abstract class UserList {
                   }
                } else if (var4 == 2) {
                   if (var8.clipped) {
-                     Tiles.Tiles_underlays[var0][var1 + 1][var2] = 50;
-                     Tiles.Tiles_underlays[var0][var1 + 1][var2 + 1] = 50;
+                     Tiles.Tiles_underlays2[var0][var1 + 1][var2] = 50;
+                     Tiles.Tiles_underlays2[var0][var1 + 1][var2 + 1] = 50;
                   }
 
                   if (var8.modelClipped) {
@@ -496,8 +496,8 @@ public abstract class UserList {
                   }
                } else if (var4 == 3) {
                   if (var8.clipped) {
-                     Tiles.Tiles_underlays[var0][var1][var2] = 50;
-                     Tiles.Tiles_underlays[var0][var1 + 1][var2] = 50;
+                     Tiles.Tiles_underlays2[var0][var1][var2] = 50;
+                     Tiles.Tiles_underlays2[var0][var1 + 1][var2] = 50;
                   }
 
                   if (var8.modelClipped) {
@@ -524,13 +524,13 @@ public abstract class UserList {
                var6.newBoundaryObject(var0, var1, var2, var16, (Renderable)var34, (Renderable)null, Tiles.field1016[var4], 0, var19, var21);
                if (var8.clipped) {
                   if (var4 == 0) {
-                     Tiles.Tiles_underlays[var0][var1][var2 + 1] = 50;
+                     Tiles.Tiles_underlays2[var0][var1][var2 + 1] = 50;
                   } else if (var4 == 1) {
-                     Tiles.Tiles_underlays[var0][var1 + 1][var2 + 1] = 50;
+                     Tiles.Tiles_underlays2[var0][var1 + 1][var2 + 1] = 50;
                   } else if (var4 == 2) {
-                     Tiles.Tiles_underlays[var0][var1 + 1][var2] = 50;
+                     Tiles.Tiles_underlays2[var0][var1 + 1][var2] = 50;
                   } else if (var4 == 3) {
-                     Tiles.Tiles_underlays[var0][var1][var2] = 50;
+                     Tiles.Tiles_underlays2[var0][var1][var2] = 50;
                   }
                }
 
@@ -595,13 +595,13 @@ public abstract class UserList {
                   var6.newBoundaryObject(var0, var1, var2, var16, (Renderable)var34, (Renderable)null, Tiles.field1016[var4], 0, var19, var21);
                   if (var8.clipped) {
                      if (var4 == 0) {
-                        Tiles.Tiles_underlays[var0][var1][var2 + 1] = 50;
+                        Tiles.Tiles_underlays2[var0][var1][var2 + 1] = 50;
                      } else if (var4 == 1) {
-                        Tiles.Tiles_underlays[var0][var1 + 1][var2 + 1] = 50;
+                        Tiles.Tiles_underlays2[var0][var1 + 1][var2 + 1] = 50;
                      } else if (var4 == 2) {
-                        Tiles.Tiles_underlays[var0][var1 + 1][var2] = 50;
+                        Tiles.Tiles_underlays2[var0][var1 + 1][var2] = 50;
                      } else if (var4 == 3) {
-                        Tiles.Tiles_underlays[var0][var1][var2] = 50;
+                        Tiles.Tiles_underlays2[var0][var1][var2] = 50;
                      }
                   }
 
@@ -712,8 +712,8 @@ public abstract class UserList {
 
                for(var24 = 0; var24 <= var9; ++var24) {
                   for(int var33 = 0; var33 <= var10; ++var33) {
-                     if (var23 > Tiles.Tiles_underlays[var0][var24 + var1][var33 + var2]) {
-                        Tiles.Tiles_underlays[var0][var24 + var1][var33 + var2] = (byte)var23;
+                     if (var23 > Tiles.Tiles_underlays2[var0][var24 + var1][var33 + var2]) {
+                        Tiles.Tiles_underlays2[var0][var24 + var1][var33 + var2] = (byte)var23;
                      }
                   }
                }
