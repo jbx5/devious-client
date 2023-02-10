@@ -7,37 +7,43 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ol")
+@ObfuscatedName("ox")
 @Implements("BufferedSource")
 public class BufferedSource implements Runnable {
-   @ObfuscatedName("h")
+   @ObfuscatedName("hn")
+   @ObfuscatedSignature(
+      descriptor = "Lff;"
+   )
+   @Export("socketTask")
+   static Task socketTask;
+   @ObfuscatedName("f")
    @Export("thread")
    Thread thread;
-   @ObfuscatedName("e")
+   @ObfuscatedName("w")
    @Export("inputStream")
    InputStream inputStream;
    @ObfuscatedName("v")
    @ObfuscatedGetter(
-      intValue = 1848700253
+      intValue = -1210810773
    )
    @Export("capacity")
    int capacity;
-   @ObfuscatedName("x")
+   @ObfuscatedName("s")
    @Export("buffer")
    byte[] buffer;
-   @ObfuscatedName("m")
+   @ObfuscatedName("z")
    @ObfuscatedGetter(
-      intValue = -1891508275
+      intValue = -1989146679
    )
    @Export("position")
    int position = 0;
-   @ObfuscatedName("q")
+   @ObfuscatedName("j")
    @ObfuscatedGetter(
-      intValue = -1884298899
+      intValue = 1590838683
    )
    @Export("limit")
    int limit = 0;
-   @ObfuscatedName("f")
+   @ObfuscatedName("i")
    @Export("exception")
    IOException exception;
 
@@ -50,10 +56,10 @@ public class BufferedSource implements Runnable {
       this.thread.start();
    }
 
-   @ObfuscatedName("h")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
-      descriptor = "(IB)Z",
-      garbageValue = "39"
+      descriptor = "(II)Z",
+      garbageValue = "2119015398"
    )
    @Export("isAvailable")
    boolean isAvailable(int var1) throws IOException {
@@ -84,10 +90,10 @@ public class BufferedSource implements Runnable {
       }
    }
 
-   @ObfuscatedName("e")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      descriptor = "(B)I",
-      garbageValue = "115"
+      descriptor = "(I)I",
+      garbageValue = "-2130271953"
    )
    @Export("available")
    int available() throws IOException {
@@ -110,8 +116,8 @@ public class BufferedSource implements Runnable {
 
    @ObfuscatedName("v")
    @ObfuscatedSignature(
-      descriptor = "(I)I",
-      garbageValue = "1587894570"
+      descriptor = "(B)I",
+      garbageValue = "-114"
    )
    @Export("readUnsignedByte")
    int readUnsignedByte() throws IOException {
@@ -131,10 +137,10 @@ public class BufferedSource implements Runnable {
       }
    }
 
-   @ObfuscatedName("x")
+   @ObfuscatedName("s")
    @ObfuscatedSignature(
       descriptor = "([BIII)I",
-      garbageValue = "-2101491252"
+      garbageValue = "583878445"
    )
    @Export("read")
    int read(byte[] var1, int var2, int var3) throws IOException {
@@ -172,10 +178,10 @@ public class BufferedSource implements Runnable {
       }
    }
 
-   @ObfuscatedName("m")
+   @ObfuscatedName("z")
    @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "1835564521"
+      descriptor = "(S)V",
+      garbageValue = "-3422"
    )
    @Export("close")
    void close() {
@@ -242,81 +248,96 @@ public class BufferedSource implements Runnable {
       }
    }
 
-   @ObfuscatedName("e")
+   @ObfuscatedName("jh")
    @ObfuscatedSignature(
-      descriptor = "(Lqy;Ljava/lang/String;I)I",
-      garbageValue = "-982647214"
+      descriptor = "(Lcl;IIII)V",
+      garbageValue = "-405303371"
    )
-   public static int method7683(Buffer var0, String var1) {
-      int var2 = var0.offset;
-      int var4 = var1.length();
-      byte[] var5 = new byte[var4];
+   @Export("addPlayerToMenu")
+   static final void addPlayerToMenu(Player var0, int var1, int var2, int var3) {
+      if (class387.localPlayer != var0) {
+         if (Client.menuOptionsCount < 400) {
+            String var4;
+            int var7;
+            if (var0.skillLevel == 0) {
+               String var5 = var0.actions[0] + var0.username + var0.actions[1];
+               var7 = var0.combatLevel;
+               int var8 = class387.localPlayer.combatLevel;
+               int var9 = var8 - var7;
+               String var6;
+               if (var9 < -9) {
+                  var6 = class149.colorStartTag(16711680);
+               } else if (var9 < -6) {
+                  var6 = class149.colorStartTag(16723968);
+               } else if (var9 < -3) {
+                  var6 = class149.colorStartTag(16740352);
+               } else if (var9 < 0) {
+                  var6 = class149.colorStartTag(16756736);
+               } else if (var9 > 9) {
+                  var6 = class149.colorStartTag(65280);
+               } else if (var9 > 6) {
+                  var6 = class149.colorStartTag(4259584);
+               } else if (var9 > 3) {
+                  var6 = class149.colorStartTag(8453888);
+               } else if (var9 > 0) {
+                  var6 = class149.colorStartTag(12648192);
+               } else {
+                  var6 = class149.colorStartTag(16776960);
+               }
 
-      for(int var6 = 0; var6 < var4; ++var6) {
-         char var7 = var1.charAt(var6);
-         if (var7 > 0 && var7 < 128 || var7 >= 160 && var7 <= 255) {
-            var5[var6] = (byte)var7;
-         } else if (var7 == 8364) {
-            var5[var6] = -128;
-         } else if (var7 == 8218) {
-            var5[var6] = -126;
-         } else if (var7 == 402) {
-            var5[var6] = -125;
-         } else if (var7 == 8222) {
-            var5[var6] = -124;
-         } else if (var7 == 8230) {
-            var5[var6] = -123;
-         } else if (var7 == 8224) {
-            var5[var6] = -122;
-         } else if (var7 == 8225) {
-            var5[var6] = -121;
-         } else if (var7 == 710) {
-            var5[var6] = -120;
-         } else if (var7 == 8240) {
-            var5[var6] = -119;
-         } else if (var7 == 352) {
-            var5[var6] = -118;
-         } else if (var7 == 8249) {
-            var5[var6] = -117;
-         } else if (var7 == 338) {
-            var5[var6] = -116;
-         } else if (var7 == 381) {
-            var5[var6] = -114;
-         } else if (var7 == 8216) {
-            var5[var6] = -111;
-         } else if (var7 == 8217) {
-            var5[var6] = -110;
-         } else if (var7 == 8220) {
-            var5[var6] = -109;
-         } else if (var7 == 8221) {
-            var5[var6] = -108;
-         } else if (var7 == 8226) {
-            var5[var6] = -107;
-         } else if (var7 == 8211) {
-            var5[var6] = -106;
-         } else if (var7 == 8212) {
-            var5[var6] = -105;
-         } else if (var7 == 732) {
-            var5[var6] = -104;
-         } else if (var7 == 8482) {
-            var5[var6] = -103;
-         } else if (var7 == 353) {
-            var5[var6] = -102;
-         } else if (var7 == 8250) {
-            var5[var6] = -101;
-         } else if (var7 == 339) {
-            var5[var6] = -100;
-         } else if (var7 == 382) {
-            var5[var6] = -98;
-         } else if (var7 == 376) {
-            var5[var6] = -97;
-         } else {
-            var5[var6] = 63;
+               var4 = var5 + var6 + " " + " (" + "level-" + var0.combatLevel + ")" + var0.actions[2];
+            } else {
+               var4 = var0.actions[0] + var0.username + var0.actions[1] + " " + " (" + "skill-" + var0.skillLevel + ")" + var0.actions[2];
+            }
+
+            int var10;
+            if (Client.isItemSelected == 1) {
+               WorldMapRenderer.insertMenuItemNoShift("Use", Client.selectedItemName + " " + "->" + " " + class149.colorStartTag(16777215) + var4, 14, var1, var2, var3);
+            } else if (Client.isSpellSelected) {
+               if ((class149.selectedSpellFlags & 8) == 8) {
+                  WorldMapRenderer.insertMenuItemNoShift(Client.selectedSpellActionName, Client.selectedSpellName + " " + "->" + " " + class149.colorStartTag(16777215) + var4, 15, var1, var2, var3);
+               }
+            } else {
+               for(var10 = 7; var10 >= 0; --var10) {
+                  if (Client.playerMenuActions[var10] != null) {
+                     short var11 = 0;
+                     if (Client.playerMenuActions[var10].equalsIgnoreCase("Attack")) {
+                        if (Client.playerAttackOption == AttackOption.AttackOption_hidden) {
+                           continue;
+                        }
+
+                        if (Client.playerAttackOption == AttackOption.AttackOption_alwaysRightClick || Client.playerAttackOption == AttackOption.AttackOption_dependsOnCombatLevels && var0.combatLevel > class387.localPlayer.combatLevel) {
+                           var11 = 2000;
+                        }
+
+                        if (class387.localPlayer.team != 0 && var0.team != 0) {
+                           if (var0.team == class387.localPlayer.team) {
+                              var11 = 2000;
+                           } else {
+                              var11 = 0;
+                           }
+                        } else if (Client.playerAttackOption == AttackOption.field1318 && var0.isClanMember()) {
+                           var11 = 2000;
+                        }
+                     } else if (Client.playerOptionsPriorities[var10]) {
+                        var11 = 2000;
+                     }
+
+                     boolean var12 = false;
+                     var7 = Client.playerMenuOpcodes[var10] + var11;
+                     WorldMapRenderer.insertMenuItemNoShift(Client.playerMenuActions[var10], class149.colorStartTag(16777215) + var4, var7, var1, var2, var3);
+                  }
+               }
+            }
+
+            for(var10 = 0; var10 < Client.menuOptionsCount; ++var10) {
+               if (Client.menuOpcodes[var10] == 23) {
+                  Client.menuTargets[var10] = class149.colorStartTag(16777215) + var4;
+                  break;
+               }
+            }
+
          }
       }
-
-      var0.writeSmartByteShort(var5.length);
-      var0.offset += class308.huffman.compress(var5, 0, var5.length, var0.array, var0.offset);
-      return var0.offset - var2;
    }
 }

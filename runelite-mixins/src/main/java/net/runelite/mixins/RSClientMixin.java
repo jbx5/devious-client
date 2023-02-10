@@ -68,6 +68,7 @@ import net.runelite.api.Tile;
 import net.runelite.api.VarPlayer;
 import net.runelite.api.VarbitComposition;
 import net.runelite.api.Varbits;
+import net.runelite.api.World;
 import net.runelite.api.WorldType;
 import net.runelite.api.clan.ClanChannel;
 import net.runelite.api.clan.ClanRank;
@@ -3350,5 +3351,30 @@ public abstract class RSClientMixin implements RSClient
 	{
 		return client.getWorldMap();
 	}
+
+	@Inject
+	@Override
+	public void setWorldList(World[] worlds)
+	{
+		if (worlds != null && worlds.length != 0)
+		{
+			List<RSWorld> rsWorldList = new ArrayList<>();
+			for (World world : worlds)
+			{
+				RSWorld rsWorld = client.createWorld();
+				rsWorld.setActivity(world.getActivity());
+				rsWorld.setAddress(world.getAddress());
+				rsWorld.setId(world.getId());
+				rsWorld.setLocation(world.getLocation());
+				rsWorld.setIndex(world.getIndex());
+				rsWorld.setPlayerCount(world.getPlayerCount());
+				rsWorld.setTypes(world.getTypes());
+				rsWorld.setMask(WorldType.toMask(world.getTypes()));
+				rsWorldList.add(rsWorld);
+			}
+			client.setWorldList(rsWorldList.toArray(new RSWorld[0]));
+		}
+	}
+
 }
 

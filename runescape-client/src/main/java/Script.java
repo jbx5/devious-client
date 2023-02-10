@@ -4,58 +4,59 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bm")
+@ObfuscatedName("ba")
 @Implements("Script")
 public class Script extends DualNode {
-   @ObfuscatedName("tp")
-   @ObfuscatedGetter(
-      intValue = 621523353
-   )
-   static int field1001;
-   @ObfuscatedName("h")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
-      descriptor = "Ljv;"
+      descriptor = "Lja;"
    )
    @Export("Script_cached")
    static EvictingDualNodeHashTable Script_cached = new EvictingDualNodeHashTable(128);
-   @ObfuscatedName("e")
-   String field990;
+   @ObfuscatedName("ar")
+   @ObfuscatedSignature(
+      descriptor = "Lln;"
+   )
+   @Export("Widget_fontsArchive")
+   public static AbstractArchive Widget_fontsArchive;
+   @ObfuscatedName("w")
+   String field981;
    @ObfuscatedName("v")
    @Export("opcodes")
    int[] opcodes;
-   @ObfuscatedName("x")
+   @ObfuscatedName("s")
    @Export("intOperands")
    int[] intOperands;
-   @ObfuscatedName("m")
+   @ObfuscatedName("z")
    @Export("stringOperands")
    String[] stringOperands;
-   @ObfuscatedName("q")
+   @ObfuscatedName("j")
    @ObfuscatedGetter(
-      intValue = 1144522069
+      intValue = 989411477
    )
    @Export("localIntCount")
    int localIntCount;
-   @ObfuscatedName("f")
+   @ObfuscatedName("i")
    @ObfuscatedGetter(
-      intValue = 506367355
+      intValue = 594981079
    )
    @Export("localStringCount")
    int localStringCount;
-   @ObfuscatedName("r")
+   @ObfuscatedName("n")
    @ObfuscatedGetter(
-      intValue = -1904250989
+      intValue = -250091469
    )
    @Export("intArgumentCount")
    int intArgumentCount;
-   @ObfuscatedName("u")
+   @ObfuscatedName("l")
    @ObfuscatedGetter(
-      intValue = 705152755
+      intValue = -1334350971
    )
    @Export("stringArgumentCount")
    int stringArgumentCount;
-   @ObfuscatedName("b")
+   @ObfuscatedName("k")
    @ObfuscatedSignature(
-      descriptor = "[Lql;"
+      descriptor = "[Lqu;"
    )
    @Export("switches")
    IterableNodeHashTable[] switches;
@@ -63,40 +64,13 @@ public class Script extends DualNode {
    Script() {
    }
 
-   @ObfuscatedName("x")
+   @ObfuscatedName("s")
    @ObfuscatedSignature(
-      descriptor = "(II)[Lql;",
-      garbageValue = "-1776194631"
+      descriptor = "(II)[Lqu;",
+      garbageValue = "1227371114"
    )
    @Export("newIterableNodeHashTable")
    IterableNodeHashTable[] newIterableNodeHashTable(int var1) {
       return new IterableNodeHashTable[var1];
-   }
-
-   @ObfuscatedName("x")
-   @ObfuscatedSignature(
-      descriptor = "(II)Lbv;",
-      garbageValue = "-1509182401"
-   )
-   @Export("Messages_getMessage")
-   static Message Messages_getMessage(int var0) {
-      return (Message)Messages.Messages_hashTable.get((long)var0);
-   }
-
-   @ObfuscatedName("m")
-   @ObfuscatedSignature(
-      descriptor = "(IB)V",
-      garbageValue = "-85"
-   )
-   @Export("clearItemContainer")
-   static void clearItemContainer(int var0) {
-      ItemContainer var1 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
-      if (var1 != null) {
-         for(int var2 = 0; var2 < var1.ids.length; ++var2) {
-            var1.ids[var2] = -1;
-            var1.quantities[var2] = 0;
-         }
-
-      }
    }
 }

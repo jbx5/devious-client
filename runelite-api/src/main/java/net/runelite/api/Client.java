@@ -2677,4 +2677,9 @@ public interface Client extends OAuthApi, GameEngine
 	MenuEntry createMenuEntry(String option, String target, int identifier, int opcode, int param1, int param2, boolean forceLeftClick);
 
 	void insertMenuItem(String action, String target, int opcode, int identifier, int argument1, int argument2, boolean forceLeftClick);
+
+	boolean isMembersWorld();
+
+	void setWorldList(World[] worlds);
+
 }

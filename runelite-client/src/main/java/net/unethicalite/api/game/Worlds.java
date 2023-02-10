@@ -26,9 +26,6 @@ import java.util.function.Predicate;
 @Slf4j
 public class Worlds
 {
-	private static List<World> worldListCache = new ArrayList<>();
-	private static World worldCache = Static.getClient().createWorld();
-
 	private static List<World> lookup()
 	{
 		List<World> out = new ArrayList<>();
@@ -52,7 +49,7 @@ public class Worlds
 			out.add(world);
 		});
 
-		worldListCache = out;
+		Static.getClient().setWorldList(out.toArray(new World[0]));
 
 		return out;
 	}
@@ -86,8 +83,6 @@ public class Worlds
 				out.add(world);
 			}
 		}
-
-		worldListCache = out;
 
 		return out;
 	}
@@ -169,18 +164,20 @@ public class Worlds
 		return inMembersWorld(false);
 	}
 
-	public static boolean inMembersWorld(boolean useCache)
+	public static boolean inMembersWorld(boolean useLookUp)
 	{
-		List<World> worldList = useCache && !worldListCache.isEmpty() ? worldListCache : lookup();
-		if (worldListCache.isEmpty())
+		if (useLookUp)
 		{
-			return false;
+			World currentWorld = lookup().stream()
+					.filter(x -> x.getId() == getCurrentId())
+					.findFirst()
+					.orElse(null);
+			if (currentWorld != null)
+			{
+				return currentWorld.isMembers();
+			}
 		}
-		worldCache = useCache && worldCache.getId() == getCurrentId() ? worldCache : worldList.stream()
-				.filter(x -> x.getId() == getCurrentId())
-				.findFirst()
-				.get();
-		return worldCache.isMembers();
+		return Static.getClient().isMembersWorld();
 	}
 
 	public static void loadWorlds()

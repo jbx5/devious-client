@@ -4,90 +4,93 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gq")
+@ObfuscatedName("gg")
 @Implements("SpotAnimationDefinition")
 public class SpotAnimationDefinition extends DualNode {
-   @ObfuscatedName("h")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
-      descriptor = "Lly;"
+      descriptor = "Lln;"
    )
    @Export("SpotAnimationDefinition_archive")
-   static AbstractArchive SpotAnimationDefinition_archive;
-   @ObfuscatedName("e")
+   public static AbstractArchive SpotAnimationDefinition_archive;
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      descriptor = "Lly;"
+      descriptor = "Lln;"
    )
    @Export("SpotAnimationDefinition_modelArchive")
-   static AbstractArchive SpotAnimationDefinition_modelArchive;
+   public static AbstractArchive SpotAnimationDefinition_modelArchive;
    @ObfuscatedName("v")
    @ObfuscatedSignature(
-      descriptor = "Ljv;"
+      descriptor = "Lja;"
    )
    @Export("SpotAnimationDefinition_cached")
-   static EvictingDualNodeHashTable SpotAnimationDefinition_cached = new EvictingDualNodeHashTable(64);
-   @ObfuscatedName("x")
+   public static EvictingDualNodeHashTable SpotAnimationDefinition_cached = new EvictingDualNodeHashTable(64);
+   @ObfuscatedName("s")
    @ObfuscatedSignature(
-      descriptor = "Ljv;"
+      descriptor = "Lja;"
    )
    @Export("SpotAnimationDefinition_cachedModels")
-   static EvictingDualNodeHashTable SpotAnimationDefinition_cachedModels = new EvictingDualNodeHashTable(30);
-   @ObfuscatedName("m")
+   public static EvictingDualNodeHashTable SpotAnimationDefinition_cachedModels = new EvictingDualNodeHashTable(30);
+   @ObfuscatedName("a")
+   @Export("formattedOperatingSystemName")
+   public static String formattedOperatingSystemName;
+   @ObfuscatedName("z")
    @ObfuscatedGetter(
-      intValue = 1537555243
+      intValue = -795982807
    )
    @Export("id")
    int id;
-   @ObfuscatedName("q")
+   @ObfuscatedName("j")
    @ObfuscatedGetter(
-      intValue = 903909845
+      intValue = 1630056631
    )
    @Export("archive")
    int archive;
-   @ObfuscatedName("f")
+   @ObfuscatedName("i")
    @ObfuscatedGetter(
-      intValue = -295593061
+      intValue = -501071795
    )
    @Export("sequence")
    public int sequence = -1;
-   @ObfuscatedName("r")
+   @ObfuscatedName("n")
    @Export("recolorFrom")
    short[] recolorFrom;
-   @ObfuscatedName("u")
+   @ObfuscatedName("l")
    @Export("recolorTo")
    short[] recolorTo;
-   @ObfuscatedName("b")
+   @ObfuscatedName("k")
    @Export("retextureFrom")
    short[] retextureFrom;
-   @ObfuscatedName("j")
+   @ObfuscatedName("c")
    @Export("retextureTo")
    short[] retextureTo;
-   @ObfuscatedName("g")
+   @ObfuscatedName("r")
    @ObfuscatedGetter(
-      intValue = -289907207
+      intValue = -324226543
    )
    @Export("widthScale")
    int widthScale = 128;
-   @ObfuscatedName("i")
+   @ObfuscatedName("b")
    @ObfuscatedGetter(
-      intValue = 1592669609
+      intValue = 1527622307
    )
    @Export("heightScale")
    int heightScale = 128;
-   @ObfuscatedName("o")
+   @ObfuscatedName("m")
    @ObfuscatedGetter(
-      intValue = 919548227
+      intValue = 319694079
    )
    @Export("orientation")
    int orientation = 0;
-   @ObfuscatedName("n")
+   @ObfuscatedName("t")
    @ObfuscatedGetter(
-      intValue = 291323671
+      intValue = -1353692067
    )
    @Export("ambient")
    int ambient = 0;
-   @ObfuscatedName("k")
+   @ObfuscatedName("h")
    @ObfuscatedGetter(
-      intValue = 1468773977
+      intValue = -1524145331
    )
    @Export("contrast")
    int contrast = 0;
@@ -95,10 +98,10 @@ public class SpotAnimationDefinition extends DualNode {
    SpotAnimationDefinition() {
    }
 
-   @ObfuscatedName("v")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      descriptor = "(Lqy;B)V",
-      garbageValue = "48"
+      descriptor = "(Lrd;I)V",
+      garbageValue = "1800363015"
    )
    @Export("decode")
    void decode(Buffer var1) {
@@ -112,10 +115,10 @@ public class SpotAnimationDefinition extends DualNode {
       }
    }
 
-   @ObfuscatedName("x")
+   @ObfuscatedName("v")
    @ObfuscatedSignature(
-      descriptor = "(Lqy;IB)V",
-      garbageValue = "76"
+      descriptor = "(Lrd;II)V",
+      garbageValue = "-362652876"
    )
    @Export("decodeNext")
    void decodeNext(Buffer var1, int var2) {
@@ -159,10 +162,10 @@ public class SpotAnimationDefinition extends DualNode {
 
    }
 
-   @ObfuscatedName("m")
+   @ObfuscatedName("s")
    @ObfuscatedSignature(
-      descriptor = "(II)Lhh;",
-      garbageValue = "975498886"
+      descriptor = "(II)Lhs;",
+      garbageValue = "583517159"
    )
    @Export("getModel")
    public final Model getModel(int var1) {
@@ -192,7 +195,7 @@ public class SpotAnimationDefinition extends DualNode {
 
       Model var5;
       if (this.sequence != -1 && var1 != -1) {
-         var5 = AABB.SequenceDefinition_get(this.sequence).transformSpotAnimationModel(var2, var1);
+         var5 = class85.SequenceDefinition_get(this.sequence).transformSpotAnimationModel(var2, var1);
       } else {
          var5 = var2.toSharedSpotAnimationModel(true);
       }
@@ -219,85 +222,5 @@ public class SpotAnimationDefinition extends DualNode {
       }
 
       return var5;
-   }
-
-   @ObfuscatedName("h")
-   @ObfuscatedSignature(
-      descriptor = "(I)Lop;",
-      garbageValue = "-1315664177"
-   )
-   public static class409 method3751() {
-      synchronized(class409.field4601) {
-         if (class409.field4604 == 0) {
-            return new class409();
-         } else {
-            class409.field4601[--class409.field4604].method7763();
-            return class409.field4601[class409.field4604];
-         }
-      }
-   }
-
-   @ObfuscatedName("h")
-   @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "-891167706"
-   )
-   static void method3743() {
-      StructComposition.field2122 = new int[2000];
-      int var0 = 0;
-      int var1 = 240;
-
-      int var2;
-      int var3;
-      for(var2 = 12; var0 < 16; var1 -= var2) {
-         var3 = class201.method4112((double)((float)var1 / 360.0F), 0.9998999834060669, (double)(0.425F * (float)var0 / 16.0F + 0.075F));
-         StructComposition.field2122[var0] = var3;
-         ++var0;
-      }
-
-      var1 = 48;
-
-      for(var2 = var1 / 6; var0 < StructComposition.field2122.length; var1 -= var2) {
-         var3 = var0 * 2;
-
-         for(int var4 = class201.method4112((double)((float)var1 / 360.0F), 0.9998999834060669, 0.5); var0 < var3 && var0 < StructComposition.field2122.length; ++var0) {
-            StructComposition.field2122[var0] = var4;
-         }
-      }
-
-   }
-
-   @ObfuscatedName("h")
-   @ObfuscatedSignature(
-      descriptor = "(B)[Ljn;",
-      garbageValue = "113"
-   )
-   public static class276[] method3732() {
-      return new class276[]{class276.field3170, class276.field3158, class276.field3159, class276.field3171, class276.field3161, class276.field3166, class276.field3168, class276.field3164, class276.field3165, class276.field3157, class276.field3167, class276.field3160, class276.field3169, class276.field3163};
-   }
-
-   @ObfuscatedName("ii")
-   @ObfuscatedSignature(
-      descriptor = "(IIII)I",
-      garbageValue = "-1666232175"
-   )
-   @Export("getTileHeight")
-   static final int getTileHeight(int var0, int var1, int var2) {
-      int var3 = var0 >> 7;
-      int var4 = var1 >> 7;
-      if (var3 >= 0 && var4 >= 0 && var3 <= 103 && var4 <= 103) {
-         int var5 = var2;
-         if (var2 < 3 && (Tiles.Tiles_renderFlags[1][var3][var4] & 2) == 2) {
-            var5 = var2 + 1;
-         }
-
-         int var6 = var0 & 127;
-         int var7 = var1 & 127;
-         int var8 = Tiles.Tiles_heights[var5][var3 + 1][var4] * var6 + (128 - var6) * Tiles.Tiles_heights[var5][var3][var4] >> 7;
-         int var9 = var6 * Tiles.Tiles_heights[var5][var3 + 1][var4 + 1] + Tiles.Tiles_heights[var5][var3][var4 + 1] * (128 - var6) >> 7;
-         return var8 * (128 - var7) + var7 * var9 >> 7;
-      } else {
-         return 0;
-      }
    }
 }

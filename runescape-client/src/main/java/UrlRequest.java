@@ -1,29 +1,22 @@
 import java.net.URL;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dm")
+@ObfuscatedName("dg")
 @Implements("UrlRequest")
 public class UrlRequest {
-   @ObfuscatedName("g")
+   @ObfuscatedName("jz")
    @ObfuscatedSignature(
-      descriptor = "Lfz;"
+      descriptor = "[Lrs;"
    )
-   @Export("clock")
-   static Clock clock;
-   @ObfuscatedName("d")
-   @ObfuscatedGetter(
-      intValue = -59160263
-   )
-   @Export("loginBoxCenter")
-   static int loginBoxCenter;
-   @ObfuscatedName("h")
+   @Export("mapDotSprites")
+   static SpritePixels[] mapDotSprites;
+   @ObfuscatedName("f")
    @Export("url")
    final URL url;
-   @ObfuscatedName("e")
+   @ObfuscatedName("w")
    @Export("isDone0")
    volatile boolean isDone0;
    @ObfuscatedName("v")
@@ -34,20 +27,20 @@ public class UrlRequest {
       this.url = var1;
    }
 
-   @ObfuscatedName("h")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
       descriptor = "(I)Z",
-      garbageValue = "-1999146756"
+      garbageValue = "1746965864"
    )
    @Export("isDone")
    public boolean isDone() {
       return this.isDone0;
    }
 
-   @ObfuscatedName("e")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      descriptor = "(I)[B",
-      garbageValue = "-1235886388"
+      descriptor = "(B)[B",
+      garbageValue = "104"
    )
    @Export("getResponse")
    public byte[] getResponse() {
@@ -57,19 +50,27 @@ public class UrlRequest {
    @ObfuscatedName("v")
    @ObfuscatedSignature(
       descriptor = "(I)Ljava/lang/String;",
-      garbageValue = "65026205"
+      garbageValue = "988797098"
    )
-   public String method2788() {
+   public String method2889() {
       return this.url.toString();
    }
 
-   @ObfuscatedName("h")
+   @ObfuscatedName("i")
    @ObfuscatedSignature(
-      descriptor = "(B)[Lrv;",
-      garbageValue = "-97"
+      descriptor = "(B)V",
+      garbageValue = "-122"
    )
-   @Export("FillMode_values")
-   public static FillMode[] FillMode_values() {
-      return new FillMode[]{FillMode.field4997, FillMode.SOLID, FillMode.field4998};
+   public static void method2891() {
+      StructComposition.StructDefinition_cached.clear();
+   }
+
+   @ObfuscatedName("ml")
+   @ObfuscatedSignature(
+      descriptor = "(II)V",
+      garbageValue = "1784154993"
+   )
+   static void method2899(int var0) {
+      Client.oculusOrbState = var0;
    }
 }

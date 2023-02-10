@@ -3,108 +3,114 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dz")
+@ObfuscatedName("dx")
 public class class127 implements MouseWheel {
-   @ObfuscatedName("h")
-   @ObfuscatedSignature(
-      descriptor = "Ldz;"
-   )
-   static final class127 field1589 = new class127(0, 0, (String)null, -1, -1);
-   @ObfuscatedName("e")
-   @ObfuscatedSignature(
-      descriptor = "Ldz;"
-   )
-   static final class127 field1592 = new class127(1, 1, (String)null, 0, 2);
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      descriptor = "Ldz;"
-   )
-   static final class127 field1577 = new class127(2, 2, (String)null, 1, 2);
-   @ObfuscatedName("x")
-   @ObfuscatedSignature(
-      descriptor = "Ldz;"
-   )
-   static final class127 field1581 = new class127(3, 3, (String)null, 2, 2);
-   @ObfuscatedName("m")
-   @ObfuscatedSignature(
-      descriptor = "Ldz;"
-   )
-   static final class127 field1579 = new class127(4, 4, (String)null, 3, 1);
-   @ObfuscatedName("q")
-   @ObfuscatedSignature(
-      descriptor = "Ldz;"
-   )
-   static final class127 field1580 = new class127(5, 5, (String)null, 4, 1);
    @ObfuscatedName("f")
    @ObfuscatedSignature(
-      descriptor = "Ldz;"
+      descriptor = "Ldx;"
    )
-   static final class127 field1576 = new class127(6, 6, (String)null, 5, 1);
-   @ObfuscatedName("r")
+   static final class127 field1566 = new class127(0, 0, (String)null, -1, -1);
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      descriptor = "Ldz;"
+      descriptor = "Ldx;"
    )
-   static final class127 field1582 = new class127(7, 7, (String)null, 6, 3);
-   @ObfuscatedName("u")
+   static final class127 field1559 = new class127(1, 1, (String)null, 0, 2);
+   @ObfuscatedName("v")
    @ObfuscatedSignature(
-      descriptor = "Ldz;"
+      descriptor = "Ldx;"
    )
-   static final class127 field1583 = new class127(8, 8, (String)null, 7, 3);
-   @ObfuscatedName("b")
+   static final class127 field1568 = new class127(2, 2, (String)null, 1, 2);
+   @ObfuscatedName("s")
    @ObfuscatedSignature(
-      descriptor = "Ldz;"
+      descriptor = "Ldx;"
    )
-   static final class127 field1584 = new class127(9, 9, (String)null, 8, 3);
+   static final class127 field1560 = new class127(3, 3, (String)null, 2, 2);
+   @ObfuscatedName("z")
+   @ObfuscatedSignature(
+      descriptor = "Ldx;"
+   )
+   static final class127 field1562 = new class127(4, 4, (String)null, 3, 1);
    @ObfuscatedName("j")
    @ObfuscatedSignature(
-      descriptor = "Ldz;"
+      descriptor = "Ldx;"
    )
-   static final class127 field1585 = new class127(10, 10, (String)null, 0, 7);
-   @ObfuscatedName("g")
-   @ObfuscatedSignature(
-      descriptor = "Ldz;"
-   )
-   static final class127 field1586 = new class127(11, 11, (String)null, 1, 7);
+   static final class127 field1578 = new class127(5, 5, (String)null, 4, 1);
    @ObfuscatedName("i")
    @ObfuscatedSignature(
-      descriptor = "Ldz;"
+      descriptor = "Ldx;"
    )
-   static final class127 field1587 = new class127(12, 12, (String)null, 2, 7);
-   @ObfuscatedName("o")
-   @ObfuscatedSignature(
-      descriptor = "Ldz;"
-   )
-   static final class127 field1578 = new class127(13, 13, (String)null, 3, 7);
+   static final class127 field1564 = new class127(6, 6, (String)null, 5, 1);
    @ObfuscatedName("n")
    @ObfuscatedSignature(
-      descriptor = "Ldz;"
+      descriptor = "Ldx;"
    )
-   static final class127 field1588 = new class127(14, 14, (String)null, 4, 7);
+   static final class127 field1565 = new class127(7, 7, (String)null, 6, 3);
+   @ObfuscatedName("l")
+   @ObfuscatedSignature(
+      descriptor = "Ldx;"
+   )
+   static final class127 field1561 = new class127(8, 8, (String)null, 7, 3);
    @ObfuscatedName("k")
    @ObfuscatedSignature(
-      descriptor = "Ldz;"
+      descriptor = "Ldx;"
    )
-   static final class127 field1590 = new class127(15, 15, (String)null, 5, 7);
-   @ObfuscatedName("a")
+   static final class127 field1567 = new class127(9, 9, (String)null, 8, 3);
+   @ObfuscatedName("c")
    @ObfuscatedSignature(
-      descriptor = "Ldz;"
+      descriptor = "Ldx;"
    )
-   static final class127 field1591 = new class127(16, 16, (String)null, 0, 5);
-   @ObfuscatedName("s")
+   static final class127 field1563 = new class127(10, 10, (String)null, 0, 7);
+   @ObfuscatedName("r")
+   @ObfuscatedSignature(
+      descriptor = "Ldx;"
+   )
+   static final class127 field1569 = new class127(11, 11, (String)null, 1, 7);
+   @ObfuscatedName("b")
+   @ObfuscatedSignature(
+      descriptor = "Ldx;"
+   )
+   static final class127 field1570 = new class127(12, 12, (String)null, 2, 7);
+   @ObfuscatedName("m")
+   @ObfuscatedSignature(
+      descriptor = "Ldx;"
+   )
+   static final class127 field1571 = new class127(13, 13, (String)null, 3, 7);
+   @ObfuscatedName("t")
+   @ObfuscatedSignature(
+      descriptor = "Ldx;"
+   )
+   static final class127 field1572 = new class127(14, 14, (String)null, 4, 7);
+   @ObfuscatedName("h")
+   @ObfuscatedSignature(
+      descriptor = "Ldx;"
+   )
+   static final class127 field1573 = new class127(15, 15, (String)null, 5, 7);
+   @ObfuscatedName("p")
+   @ObfuscatedSignature(
+      descriptor = "Ldx;"
+   )
+   static final class127 field1574 = new class127(16, 16, (String)null, 0, 5);
+   @ObfuscatedName("e")
    @ObfuscatedGetter(
-      intValue = 2090577293
+      intValue = -1659069287
+   )
+   @Export("canvasHeight")
+   public static int canvasHeight;
+   @ObfuscatedName("o")
+   @ObfuscatedGetter(
+      intValue = 501208477
    )
    final int field1575;
-   @ObfuscatedName("l")
+   @ObfuscatedName("u")
    @ObfuscatedGetter(
-      intValue = -1826032177
+      intValue = 954569001
    )
-   final int field1593;
-   @ObfuscatedName("t")
+   final int field1576;
+   @ObfuscatedName("x")
    @ObfuscatedGetter(
-      intValue = 607960971
+      intValue = -562475213
    )
-   final int field1594;
+   final int field1577;
 
    @ObfuscatedSignature(
       descriptor = "(IILjava/lang/String;II)V",
@@ -112,26 +118,100 @@ public class class127 implements MouseWheel {
    )
    class127(int var1, int var2, String var3, int var4, int var5) {
       this.field1575 = var1;
-      this.field1593 = var2;
-      this.field1594 = var4;
+      this.field1576 = var2;
+      this.field1577 = var4;
    }
 
-   @ObfuscatedName("e")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
       descriptor = "(B)I",
-      garbageValue = "96"
+      garbageValue = "3"
    )
    @Export("rsOrdinal")
    public int rsOrdinal() {
-      return this.field1593;
+      return this.field1576;
    }
 
-   @ObfuscatedName("v")
+   @ObfuscatedName("s")
    @ObfuscatedSignature(
       descriptor = "(I)I",
-      garbageValue = "1674730219"
+      garbageValue = "608537711"
    )
-   int method2989() {
-      return this.field1594;
+   int method3076() {
+      return this.field1577;
+   }
+
+   @ObfuscatedName("f")
+   @ObfuscatedSignature(
+      descriptor = "(Lrd;Lqu;S)Lqu;",
+      garbageValue = "640"
+   )
+   @Export("readStringIntParameters")
+   static final IterableNodeHashTable readStringIntParameters(Buffer var0, IterableNodeHashTable var1) {
+      int var2 = var0.readUnsignedByte();
+      int var3;
+      if (var1 == null) {
+         var3 = class4.method21(var2);
+         var1 = new IterableNodeHashTable(var3);
+      }
+
+      for(var3 = 0; var3 < var2; ++var3) {
+         boolean var4 = var0.readUnsignedByte() == 1;
+         int var5 = var0.readMedium();
+         Object var6;
+         if (var4) {
+            var6 = new ObjectNode(var0.readStringCp1252NullTerminated());
+         } else {
+            var6 = new IntegerNode(var0.readInt());
+         }
+
+         var1.put((Node)var6, (long)var5);
+      }
+
+      return var1;
+   }
+
+   @ObfuscatedName("jd")
+   @ObfuscatedSignature(
+      descriptor = "(I)V",
+      garbageValue = "1463549710"
+   )
+   static final void method3082() {
+      boolean var0 = false;
+
+      while(!var0) {
+         var0 = true;
+
+         for(int var1 = 0; var1 < Client.menuOptionsCount - 1; ++var1) {
+            if (Client.menuOpcodes[var1] < 1000 && Client.menuOpcodes[var1 + 1] > 1000) {
+               String var2 = Client.menuTargets[var1];
+               Client.menuTargets[var1] = Client.menuTargets[var1 + 1];
+               Client.menuTargets[var1 + 1] = var2;
+               String var3 = Client.menuActions[var1];
+               Client.menuActions[var1] = Client.menuActions[var1 + 1];
+               Client.menuActions[var1 + 1] = var3;
+               int var4 = Client.menuOpcodes[var1];
+               Client.menuOpcodes[var1] = Client.menuOpcodes[var1 + 1];
+               Client.menuOpcodes[var1 + 1] = var4;
+               var4 = Client.menuArguments1[var1];
+               Client.menuArguments1[var1] = Client.menuArguments1[var1 + 1];
+               Client.menuArguments1[var1 + 1] = var4;
+               var4 = Client.menuArguments2[var1];
+               Client.menuArguments2[var1] = Client.menuArguments2[var1 + 1];
+               Client.menuArguments2[var1 + 1] = var4;
+               var4 = Client.menuIdentifiers[var1];
+               Client.menuIdentifiers[var1] = Client.menuIdentifiers[var1 + 1];
+               Client.menuIdentifiers[var1 + 1] = var4;
+               var4 = Client.menuItemIds[var1];
+               Client.menuItemIds[var1] = Client.menuItemIds[var1 + 1];
+               Client.menuItemIds[var1 + 1] = var4;
+               boolean var5 = Client.menuShiftClick[var1];
+               Client.menuShiftClick[var1] = Client.menuShiftClick[var1 + 1];
+               Client.menuShiftClick[var1 + 1] = var5;
+               var0 = false;
+            }
+         }
+      }
+
    }
 }

@@ -4,36 +4,30 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ky")
+@ObfuscatedName("ko")
 @Implements("Coord")
 public class Coord {
-   @ObfuscatedName("ju")
-   @ObfuscatedSignature(
-      descriptor = "[Lra;"
-   )
-   @Export("modIconSprites")
-   static IndexedSprite[] modIconSprites;
-   @ObfuscatedName("h")
+   @ObfuscatedName("f")
    @ObfuscatedGetter(
-      intValue = -606144137
+      intValue = 986815881
    )
    @Export("plane")
    public int plane;
-   @ObfuscatedName("e")
+   @ObfuscatedName("w")
    @ObfuscatedGetter(
-      intValue = 453228853
+      intValue = 1503101631
    )
    @Export("x")
    public int x;
    @ObfuscatedName("v")
    @ObfuscatedGetter(
-      intValue = 141048333
+      intValue = -698726205
    )
    @Export("y")
    public int y;
 
    @ObfuscatedSignature(
-      descriptor = "(Lky;)V"
+      descriptor = "(Lko;)V"
    )
    public Coord(Coord var1) {
       this.plane = var1.plane;
@@ -58,20 +52,20 @@ public class Coord {
 
    }
 
-   @ObfuscatedName("h")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
-      descriptor = "(B)I",
-      garbageValue = "15"
+      descriptor = "(I)I",
+      garbageValue = "-198351367"
    )
    @Export("packed")
    public int packed() {
-      return class140.method3104(this.plane, this.x, this.y);
+      return class237.method4884(this.plane, this.x, this.y);
    }
 
    @ObfuscatedName("v")
    @ObfuscatedSignature(
-      descriptor = "(Lky;I)Z",
-      garbageValue = "-2001881010"
+      descriptor = "(Lko;B)Z",
+      garbageValue = "-96"
    )
    @Export("equalsCoord")
    boolean equalsCoord(Coord var1) {
@@ -84,22 +78,14 @@ public class Coord {
       }
    }
 
-   @ObfuscatedName("x")
+   @ObfuscatedName("s")
    @ObfuscatedSignature(
       descriptor = "(Ljava/lang/String;B)Ljava/lang/String;",
-      garbageValue = "4"
+      garbageValue = "-50"
    )
    @Export("toString")
    String toString(String var1) {
       return this.plane + var1 + (this.x >> 6) + var1 + (this.y >> 6) + var1 + (this.x & 63) + var1 + (this.y & 63);
-   }
-
-   public int hashCode() {
-      return this.packed();
-   }
-
-   public String toString() {
-      return this.toString(",");
    }
 
    public boolean equals(Object var1) {
@@ -108,5 +94,13 @@ public class Coord {
       } else {
          return !(var1 instanceof Coord) ? false : this.equalsCoord((Coord)var1);
       }
+   }
+
+   public int hashCode() {
+      return this.packed();
+   }
+
+   public String toString() {
+      return this.toString(",");
    }
 }

@@ -4,46 +4,42 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gl")
+@ObfuscatedName("gd")
 @Implements("VerticalAlignment")
 public enum VerticalAlignment implements MouseWheel {
-   @ObfuscatedName("h")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
-      descriptor = "Lgl;"
+      descriptor = "Lgd;"
    )
-   field2073(0, 0),
-   @ObfuscatedName("e")
+   field2074(1, 0),
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      descriptor = "Lgl;"
+      descriptor = "Lgd;"
    )
    @Export("VerticalAlignment_centered")
    VerticalAlignment_centered(2, 1),
    @ObfuscatedName("v")
    @ObfuscatedSignature(
-      descriptor = "Lgl;"
+      descriptor = "Lgd;"
    )
-   field2072(1, 2);
+   field2078(0, 2);
 
-   @ObfuscatedName("fc")
-   @ObfuscatedSignature(
-      descriptor = "Lln;"
-   )
-   @Export("archive17")
-   static Archive archive17;
-   @ObfuscatedName("hm")
+   @ObfuscatedName("l")
    @ObfuscatedGetter(
-      longValue = 1002454956067767585L
+      intValue = -76089911
    )
-   static long field2075;
-   @ObfuscatedName("x")
+   static int field2071;
+   @ObfuscatedName("bi")
+   static String field2070;
+   @ObfuscatedName("s")
    @ObfuscatedGetter(
-      intValue = -269075113
+      intValue = -404874057
    )
    @Export("value")
    public final int value;
-   @ObfuscatedName("m")
+   @ObfuscatedName("z")
    @ObfuscatedGetter(
-      intValue = -1751694473
+      intValue = 589122881
    )
    @Export("id")
    final int id;
@@ -53,24 +49,13 @@ public enum VerticalAlignment implements MouseWheel {
       this.id = var4;
    }
 
-   @ObfuscatedName("e")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
       descriptor = "(B)I",
-      garbageValue = "96"
+      garbageValue = "3"
    )
    @Export("rsOrdinal")
    public int rsOrdinal() {
       return this.id;
-   }
-
-   @ObfuscatedName("e")
-   @ObfuscatedSignature(
-      descriptor = "(Lrx;IIII)V",
-      garbageValue = "-1925002094"
-   )
-   static void method3726(SpritePixels var0, int var1, int var2, int var3) {
-      DemotingHashTable var4 = WorldMapRegion.WorldMapRegion_cachedSprites;
-      long var6 = (long)(var3 << 16 | var1 << 8 | var2);
-      var4.put(var0, var6, var0.pixels.length * 4);
    }
 }

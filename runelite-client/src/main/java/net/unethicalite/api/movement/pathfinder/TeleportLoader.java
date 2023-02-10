@@ -60,7 +60,7 @@ public class TeleportLoader
 			List<Teleport> teleports = new ArrayList<>();
 			if (Worlds.inMembersWorld())
 			{
-				if (Game.getWildyLevel() <= 20)
+				if (Game.getWildyLevel() == 0)
 				{
 					// Minigames
 					if (RegionManager.useMinigameTeleports() && Minigames.canTeleport())
@@ -76,33 +76,36 @@ public class TeleportLoader
 				}
 			}
 
-			for (TeleportSpell teleportSpell : TeleportSpell.values())
+			if (Game.getWildyLevel() <= 20)
 			{
-				if (!teleportSpell.canCast() || teleportSpell.getPoint() == null)
+				for (TeleportSpell teleportSpell : TeleportSpell.values())
 				{
-					continue;
-				}
-
-				if (teleportSpell.getPoint().distanceTo(Players.getLocal().getWorldLocation()) > 50)
-				{
-					teleports.add(new Teleport(teleportSpell.getPoint(), 5, () ->
+					if (!teleportSpell.canCast() || teleportSpell.getPoint() == null)
 					{
-						final Spell spell = teleportSpell.getSpell();
-						if (teleportSpell == TeleportSpell.TELEPORT_TO_HOUSE)
+						continue;
+					}
+
+					if (teleportSpell.getPoint().distanceTo(Players.getLocal().getWorldLocation()) > 50)
+					{
+						teleports.add(new Teleport(teleportSpell.getPoint(), 5, () ->
 						{
-							// Tele to outside
-							Widget widget = Widgets.get(spell.getWidget());
-							if (widget == null)
+							final Spell spell = teleportSpell.getSpell();
+							if (teleportSpell == TeleportSpell.TELEPORT_TO_HOUSE)
 							{
-								return;
+								// Tele to outside
+								Widget widget = Widgets.get(spell.getWidget());
+								if (widget == null)
+								{
+									return;
+								}
+								widget.interact(1);
 							}
-							widget.interact(1);
-						}
-						else
-						{
-							Magic.cast(spell);
-						}
-					}));
+							else
+							{
+								Magic.cast(spell);
+							}
+						}));
+					}
 				}
 			}
 

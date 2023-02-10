@@ -3,51 +3,22 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kn")
-public class class286 {
-   @ObfuscatedName("h")
-   @ObfuscatedSignature(
-      descriptor = "Lly;"
-   )
-   @Export("musicPatchesArchive")
-   static AbstractArchive musicPatchesArchive;
-   @ObfuscatedName("e")
-   @ObfuscatedSignature(
-      descriptor = "Lly;"
-   )
-   @Export("musicSamplesArchive")
-   static AbstractArchive musicSamplesArchive;
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      descriptor = "Lly;"
-   )
-   @Export("soundEffectsArchive")
-   static AbstractArchive soundEffectsArchive;
-   @ObfuscatedName("m")
+@ObfuscatedName("ki")
+public final class class286 {
+   @ObfuscatedName("f")
    @ObfuscatedGetter(
-      intValue = -248283575
+      longValue = -6773866295660205201L
    )
-   @Export("musicPlayerStatus")
-   public static int musicPlayerStatus = 0;
-   @ObfuscatedName("q")
-   @Export("PcmPlayer_stereo")
-   public static boolean PcmPlayer_stereo;
-   @ObfuscatedName("r")
+   static long field3335;
+   @ObfuscatedName("w")
    @ObfuscatedGetter(
-      intValue = -334824875
+      longValue = -514573897747409403L
    )
-   @Export("musicTrackFileId")
-   public static int musicTrackFileId;
-   @ObfuscatedName("b")
-   @ObfuscatedGetter(
-      intValue = 623704693
-   )
-   @Export("pcmSampleLength")
-   public static int pcmSampleLength;
-   @ObfuscatedName("g")
+   static long field3337;
+   @ObfuscatedName("fn")
    @ObfuscatedSignature(
-      descriptor = "Lkc;"
+      descriptor = "Llm;"
    )
-   @Export("musicTrack")
-   static MusicTrack musicTrack;
+   @Export("archive15")
+   static Archive archive15;
 }

@@ -4,17 +4,17 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kh")
+@ObfuscatedName("lw")
 @Implements("DirectByteArrayCopier")
 public class DirectByteArrayCopier extends AbstractByteArrayCopier {
-   @ObfuscatedName("h")
+   @ObfuscatedName("f")
    @Export("directBuffer")
    ByteBuffer directBuffer;
 
-   @ObfuscatedName("v")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      descriptor = "(B)[B",
-      garbageValue = "-108"
+      descriptor = "(I)[B",
+      garbageValue = "2088056836"
    )
    @Export("get")
    byte[] get() {
@@ -24,15 +24,24 @@ public class DirectByteArrayCopier extends AbstractByteArrayCopier {
       return var1;
    }
 
-   @ObfuscatedName("x")
+   @ObfuscatedName("v")
    @ObfuscatedSignature(
       descriptor = "([BI)V",
-      garbageValue = "-878200260"
+      garbageValue = "1513593399"
    )
    @Export("set")
    public void set(byte[] var1) {
       this.directBuffer = ByteBuffer.allocateDirect(var1.length);
       this.directBuffer.position(0);
       this.directBuffer.put(var1);
+   }
+
+   @ObfuscatedName("ha")
+   @ObfuscatedSignature(
+      descriptor = "(I)Z",
+      garbageValue = "-1425254255"
+   )
+   static boolean method6408() {
+      return (Client.drawPlayerNames & 4) != 0;
    }
 }

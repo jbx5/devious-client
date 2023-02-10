@@ -1,83 +1,75 @@
-import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ei")
-public abstract class class152 extends Node {
-   class152() {
+@ObfuscatedName("ee")
+public class class152 extends class155 {
+   @ObfuscatedName("fy")
+   static String field1755;
+   @ObfuscatedName("f")
+   @ObfuscatedGetter(
+      intValue = 1642484089
+   )
+   int field1754;
+   @ObfuscatedName("w")
+   byte field1752;
+   @ObfuscatedName("v")
+   @ObfuscatedGetter(
+      intValue = -348846825
+   )
+   int field1756;
+   @ObfuscatedName("s")
+   String field1751;
+   // $FF: synthetic field
+   @ObfuscatedSignature(
+      descriptor = "Lfn;"
+   )
+   final class156 this$0;
+
+   @ObfuscatedSignature(
+      descriptor = "(Lfn;)V"
+   )
+   class152(class156 var1) {
+      this.this$0 = var1;
+      this.field1754 = -1;
    }
 
-   @ObfuscatedName("h")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
-      descriptor = "(Lqy;I)V",
-      garbageValue = "468341515"
+      descriptor = "(Lrd;B)V",
+      garbageValue = "-123"
    )
-   abstract void vmethod3336(Buffer var1);
+   void vmethod3387(Buffer var1) {
+      var1.readUnsignedByte();
+      this.field1754 = var1.readUnsignedShort();
+      this.field1752 = var1.readByte();
+      this.field1756 = var1.readUnsignedShort();
+      var1.readLong();
+      this.field1751 = var1.readStringCp1252NullTerminated();
+      var1.readUnsignedByte();
+   }
 
-   @ObfuscatedName("e")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      descriptor = "(Lfn;I)V",
-      garbageValue = "1227548281"
+      descriptor = "(Lfm;I)V",
+      garbageValue = "127147356"
    )
-   abstract void vmethod3337(ClanChannel var1);
+   void vmethod3388(ClanChannel var1) {
+      ClanChannelMember var2 = (ClanChannelMember)var1.members.get(this.field1754);
+      var2.rank = this.field1752;
+      var2.world = this.field1756;
+      var2.username = new Username(this.field1751);
+   }
 
-   @ObfuscatedName("hn")
+   @ObfuscatedName("s")
    @ObfuscatedSignature(
-      descriptor = "(Ljava/lang/String;I)V",
-      garbageValue = "-1882870143"
+      descriptor = "(IIII)I",
+      garbageValue = "-1452562011"
    )
-   @Export("doCheat")
-   static final void doCheat(String var0) {
-      if (var0.equalsIgnoreCase("toggleroof")) {
-         StructComposition.clientPreferences.method2486(!StructComposition.clientPreferences.method2412());
-         if (StructComposition.clientPreferences.method2412()) {
-            KitDefinition.addGameMessage(99, "", "Roofs are now all hidden");
-         } else {
-            KitDefinition.addGameMessage(99, "", "Roofs will only be removed selectively");
-         }
-      }
-
-      if (var0.equalsIgnoreCase("displayfps")) {
-         StructComposition.clientPreferences.method2433();
-      }
-
-      if (var0.equalsIgnoreCase("renderself")) {
-         Client.renderSelf = !Client.renderSelf;
-      }
-
-      if (var0.equalsIgnoreCase("mouseovertext")) {
-         Client.showMouseOverText = !Client.showMouseOverText;
-      }
-
-      if (Client.staffModLevel >= 2) {
-         if (var0.equalsIgnoreCase("errortest")) {
-            throw new RuntimeException();
-         }
-
-         if (var0.equalsIgnoreCase("showcoord")) {
-            KitDefinition.worldMap.showCoord = !KitDefinition.worldMap.showCoord;
-         }
-
-         if (var0.equalsIgnoreCase("fpson")) {
-            StructComposition.clientPreferences.method2470(true);
-         }
-
-         if (var0.equalsIgnoreCase("fpsoff")) {
-            StructComposition.clientPreferences.method2470(false);
-         }
-
-         if (var0.equalsIgnoreCase("gc")) {
-            System.gc();
-         }
-
-         if (var0.equalsIgnoreCase("clientdrop")) {
-            FaceNormal.method4619();
-         }
-      }
-
-      PacketBufferNode var1 = class136.getPacketBufferNode(ClientPacket.DOCHEAT, Client.packetWriter.isaacCipher);
-      var1.packetBuffer.writeByte(var0.length() + 1);
-      var1.packetBuffer.writeStringCp1252NullTerminated(var0);
-      Client.packetWriter.addNode(var1);
+   public static int method3307(int var0, int var1, int var2) {
+      int var3 = SoundCache.method871(var2 - var1 + 1);
+      var3 <<= var1;
+      var0 |= var3;
+      return var0;
    }
 }

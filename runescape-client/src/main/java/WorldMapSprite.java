@@ -3,10 +3,10 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ir")
+@ObfuscatedName("iy")
 @Implements("WorldMapSprite")
 public final class WorldMapSprite {
-   @ObfuscatedName("e")
+   @ObfuscatedName("w")
    @Export("tileColors")
    final int[] tileColors;
 
@@ -18,22 +18,34 @@ public final class WorldMapSprite {
       this.tileColors = var1;
    }
 
-   @ObfuscatedName("h")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
       descriptor = "(III)I",
-      garbageValue = "77614709"
+      garbageValue = "-1421933673"
    )
    @Export("getTileColor")
    final int getTileColor(int var1, int var2) {
       return this.tileColors[var2 * 64 + var1];
    }
 
-   @ObfuscatedName("v")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
-      descriptor = "(IB)I",
-      garbageValue = "118"
+      descriptor = "(Lln;Lln;I)V",
+      garbageValue = "-1163139509"
    )
-   public static int method5272(int var0) {
-      return Varps.method5806(ViewportMouse.ViewportMouse_entityTags[var0]);
+   public static void method5338(AbstractArchive var0, AbstractArchive var1) {
+      NPCComposition.NpcDefinition_archive = var0;
+      NPCComposition.field2024 = var1;
+   }
+
+   @ObfuscatedName("fg")
+   @ObfuscatedSignature(
+      descriptor = "(Llm;Ljava/lang/String;I)V",
+      garbageValue = "-1208127892"
+   )
+   static void method5337(Archive var0, String var1) {
+      ArchiveLoader var2 = new ArchiveLoader(var0, var1);
+      Client.archiveLoaders.add(var2);
+      Client.field800 += var2.groupCount;
    }
 }

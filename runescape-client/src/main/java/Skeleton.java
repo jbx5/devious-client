@@ -1,41 +1,38 @@
+import java.util.List;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hn")
+@ObfuscatedName("ha")
 @Implements("Skeleton")
 public class Skeleton extends Node {
-   @ObfuscatedName("lf")
-   @ObfuscatedSignature(
-      descriptor = "Lht;"
-   )
-   @Export("textureProvider")
-   static TextureProvider textureProvider;
-   @ObfuscatedName("q")
+   @ObfuscatedName("vx")
+   static List field2521;
+   @ObfuscatedName("j")
    @ObfuscatedGetter(
-      intValue = 227763471
+      intValue = 1291388827
    )
    @Export("id")
    int id;
-   @ObfuscatedName("f")
+   @ObfuscatedName("i")
    @ObfuscatedGetter(
-      intValue = 15717685
+      intValue = 339077095
    )
    @Export("count")
    int count;
-   @ObfuscatedName("r")
+   @ObfuscatedName("n")
    @Export("transformTypes")
    int[] transformTypes;
-   @ObfuscatedName("u")
+   @ObfuscatedName("l")
    @Export("labels")
    int[][] labels;
-   @ObfuscatedName("b")
+   @ObfuscatedName("k")
    @ObfuscatedSignature(
-      descriptor = "Lhi;"
+      descriptor = "Lhk;"
    )
-   class213 field2525;
+   class217 field2523;
 
    public Skeleton(int var1, byte[] var2) {
       this.id = var1;
@@ -62,38 +59,38 @@ public class Skeleton extends Node {
       if (var3.offset < var3.array.length) {
          var4 = var3.readUnsignedShort();
          if (var4 > 0) {
-            this.field2525 = new class213(var3, var4);
+            this.field2523 = new class217(var3, var4);
          }
       }
 
    }
 
-   @ObfuscatedName("h")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
       descriptor = "(I)I",
-      garbageValue = "-2112065673"
+      garbageValue = "-210758645"
    )
-   public int method4426() {
+   public int method4446() {
       return this.count;
    }
 
-   @ObfuscatedName("e")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      descriptor = "(I)Lhi;",
-      garbageValue = "736109074"
+      descriptor = "(I)Lhk;",
+      garbageValue = "289819628"
    )
-   public class213 method4422() {
-      return this.field2525;
+   public class217 method4450() {
+      return this.field2523;
    }
 
-   @ObfuscatedName("j")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
-      descriptor = "(B)V",
-      garbageValue = "81"
+      descriptor = "(Lln;Ljava/lang/String;Ljava/lang/String;IZI)V",
+      garbageValue = "-1743211471"
    )
-   static final void method4428() {
-      Object var10000 = null;
-      String var0 = "You can't add yourself to your own friend list";
-      KitDefinition.addGameMessage(30, "", var0);
+   public static void method4454(AbstractArchive var0, String var1, String var2, int var3, boolean var4) {
+      int var5 = var0.getGroupId(var1);
+      int var6 = var0.getFileId(var5, var2);
+      class148.method3216(var0, var5, var6, var3, var4);
    }
 }

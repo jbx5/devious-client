@@ -4,18 +4,23 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bd")
+@ObfuscatedName("bx")
 @Implements("ChatChannel")
 public class ChatChannel {
-   @ObfuscatedName("e")
+   @ObfuscatedName("m")
    @ObfuscatedSignature(
-      descriptor = "[Lbv;"
+      descriptor = "Lrg;"
+   )
+   static IndexedSprite field1005;
+   @ObfuscatedName("w")
+   @ObfuscatedSignature(
+      descriptor = "[Lbq;"
    )
    @Export("messages")
    Message[] messages = new Message[100];
    @ObfuscatedName("v")
    @ObfuscatedGetter(
-      intValue = -1171646571
+      intValue = 1540858731
    )
    @Export("count")
    int count;
@@ -23,10 +28,10 @@ public class ChatChannel {
    ChatChannel() {
    }
 
-   @ObfuscatedName("h")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
-      descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;I)Lbv;",
-      garbageValue = "1717245391"
+      descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;I)Lbq;",
+      garbageValue = "-1653728872"
    )
    @Export("addMessage")
    Message addMessage(int var1, String var2, String var3, String var4) {
@@ -54,10 +59,10 @@ public class ChatChannel {
       return var5;
    }
 
-   @ObfuscatedName("e")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      descriptor = "(II)Lbv;",
-      garbageValue = "-370186174"
+      descriptor = "(II)Lbq;",
+      garbageValue = "1684263002"
    )
    @Export("getMessage")
    Message getMessage(int var1) {
@@ -66,26 +71,41 @@ public class ChatChannel {
 
    @ObfuscatedName("v")
    @ObfuscatedSignature(
-      descriptor = "(I)I",
-      garbageValue = "1046620565"
+      descriptor = "(B)I",
+      garbageValue = "-61"
    )
    @Export("size")
    int size() {
       return this.count;
    }
 
-   @ObfuscatedName("h")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
-      descriptor = "(IB)Ley;",
-      garbageValue = "-58"
+      descriptor = "(IB)Lgb;",
+      garbageValue = "45"
    )
-   static class131 method2152(int var0) {
-      class131[] var1 = new class131[]{class131.field1621, class131.field1612, class131.field1613, class131.field1614, class131.field1615, class131.field1616, class131.field1620, class131.field1618, class131.field1622};
-      class131 var2 = (class131)World.findEnumerated(var1, var0);
-      if (var2 == null) {
-         var2 = class131.field1622;
-      }
+   public static HitSplatDefinition method2224(int var0) {
+      HitSplatDefinition var1 = (HitSplatDefinition)HitSplatDefinition.HitSplatDefinition_cached.get((long)var0);
+      if (var1 != null) {
+         return var1;
+      } else {
+         byte[] var2 = class498.HitSplatDefinition_archive.takeFile(32, var0);
+         var1 = new HitSplatDefinition();
+         if (var2 != null) {
+            var1.decode(new Buffer(var2));
+         }
 
-      return var2;
+         HitSplatDefinition.HitSplatDefinition_cached.put(var1, (long)var0);
+         return var1;
+      }
+   }
+
+   @ObfuscatedName("u")
+   @ObfuscatedSignature(
+      descriptor = "(B)V",
+      garbageValue = "30"
+   )
+   static final void method2213() {
+      Decimator.method1115("You can't add yourself to your own ignore list");
    }
 }

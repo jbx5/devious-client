@@ -3,74 +3,70 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("en")
-public class class148 extends class152 {
-   @ObfuscatedName("h")
-   String field1748;
-   @ObfuscatedName("e")
+@ObfuscatedName("ec")
+public class class148 extends class139 {
+   @ObfuscatedName("z")
    @ObfuscatedGetter(
-      intValue = -489906031
+      intValue = -448895225
    )
-   int field1747;
-   @ObfuscatedName("v")
-   byte field1749;
+   static int field1702;
+   @ObfuscatedName("eb")
+   @ObfuscatedSignature(
+      descriptor = "Llm;"
+   )
+   static Archive field1704;
+   @ObfuscatedName("nl")
+   @ObfuscatedSignature(
+      descriptor = "Lbs;"
+   )
+   @Export("tempMenuAction")
+   static MenuAction tempMenuAction;
+   @ObfuscatedName("f")
+   String field1706;
    // $FF: synthetic field
    @ObfuscatedSignature(
-      descriptor = "Led;"
+      descriptor = "Lex;"
    )
-   final class153 this$0;
+   final class142 this$0;
 
    @ObfuscatedSignature(
-      descriptor = "(Led;)V"
+      descriptor = "(Lex;)V"
    )
-   class148(class153 var1) {
+   class148(class142 var1) {
       this.this$0 = var1;
-      this.field1748 = null;
    }
 
-   @ObfuscatedName("h")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
-      descriptor = "(Lqy;I)V",
-      garbageValue = "468341515"
+      descriptor = "(Lrd;S)V",
+      garbageValue = "-5782"
    )
-   void vmethod3336(Buffer var1) {
-      if (var1.readUnsignedByte() != 255) {
-         --var1.offset;
-         var1.readLong();
-      }
-
-      this.field1748 = var1.readStringCp1252NullTerminatedOrNull();
-      this.field1747 = var1.readUnsignedShort();
-      this.field1749 = var1.readByte();
-      var1.readLong();
+   void vmethod3394(Buffer var1) {
+      this.field1706 = var1.readStringCp1252NullTerminated();
+      var1.readInt();
    }
 
-   @ObfuscatedName("e")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      descriptor = "(Lfn;I)V",
-      garbageValue = "1227548281"
+      descriptor = "(Leb;B)V",
+      garbageValue = "-26"
    )
-   void vmethod3337(ClanChannel var1) {
-      ClanChannelMember var2 = new ClanChannelMember();
-      var2.username = new Username(this.field1748);
-      var2.world = this.field1747;
-      var2.rank = this.field1749;
-      var1.addMember(var2);
+   void vmethod3393(ClanSettings var1) {
+      var1.name = this.field1706;
    }
 
-   @ObfuscatedName("a")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      descriptor = "(CI)Z",
-      garbageValue = "2023912721"
+      descriptor = "(Lln;IIIZI)V",
+      garbageValue = "1410945003"
    )
-   @Export("isCharPrintable")
-   public static boolean isCharPrintable(char var0) {
-      if (var0 >= ' ' && var0 <= '~') {
-         return true;
-      } else if (var0 >= 160 && var0 <= 255) {
-         return true;
-      } else {
-         return var0 == 8364 || var0 == 338 || var0 == 8212 || var0 == 339 || var0 == 376;
-      }
+   public static void method3216(AbstractArchive var0, int var1, int var2, int var3, boolean var4) {
+      class290.musicPlayerStatus = 1;
+      class6.musicTrackArchive = var0;
+      class20.musicTrackGroupId = var1;
+      class161.musicTrackFileId = var2;
+      class290.musicTrackVolume = var3;
+      class423.musicTrackBoolean = var4;
+      class203.pcmSampleLength = 10000;
    }
 }
