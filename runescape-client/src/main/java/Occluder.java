@@ -1,161 +1,149 @@
+import java.applet.Applet;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hv")
+@ObfuscatedName("hx")
 @Implements("Occluder")
 public final class Occluder {
-   @ObfuscatedName("h")
+   @ObfuscatedName("th")
    @ObfuscatedGetter(
-      intValue = -1514606591
+      intValue = 959648640
+   )
+   static int field2636;
+   @ObfuscatedName("f")
+   @ObfuscatedGetter(
+      intValue = -1892245081
    )
    @Export("minTileX")
    int minTileX;
-   @ObfuscatedName("e")
+   @ObfuscatedName("w")
    @ObfuscatedGetter(
-      intValue = -1843218791
+      intValue = 514373031
    )
    @Export("maxTileX")
    int maxTileX;
    @ObfuscatedName("v")
    @ObfuscatedGetter(
-      intValue = -250574197
+      intValue = -1916583407
    )
    @Export("minTileY")
    int minTileY;
-   @ObfuscatedName("x")
+   @ObfuscatedName("s")
    @ObfuscatedGetter(
-      intValue = -839589963
+      intValue = 1037281985
    )
    @Export("maxTileY")
    int maxTileY;
-   @ObfuscatedName("m")
+   @ObfuscatedName("z")
    @ObfuscatedGetter(
-      intValue = -845662039
+      intValue = -1080102931
    )
    @Export("type")
    int type;
-   @ObfuscatedName("q")
+   @ObfuscatedName("j")
    @ObfuscatedGetter(
-      intValue = 227042381
+      intValue = -821427861
    )
    @Export("minX")
    int minX;
-   @ObfuscatedName("f")
+   @ObfuscatedName("i")
    @ObfuscatedGetter(
-      intValue = -201172581
+      intValue = -1466699159
    )
    @Export("maxX")
    int maxX;
-   @ObfuscatedName("r")
+   @ObfuscatedName("n")
    @ObfuscatedGetter(
-      intValue = -754335941
+      intValue = -1277702437
    )
    @Export("minZ")
    int minZ;
-   @ObfuscatedName("u")
+   @ObfuscatedName("l")
    @ObfuscatedGetter(
-      intValue = 253383223
+      intValue = 1587170153
    )
    @Export("maxZ")
    int maxZ;
-   @ObfuscatedName("b")
+   @ObfuscatedName("k")
    @ObfuscatedGetter(
-      intValue = 554630705
+      intValue = -1761060981
    )
    @Export("minY")
    int minY;
-   @ObfuscatedName("j")
+   @ObfuscatedName("c")
    @ObfuscatedGetter(
-      intValue = 1377372931
+      intValue = -934931019
    )
    @Export("maxY")
    int maxY;
-   @ObfuscatedName("g")
+   @ObfuscatedName("r")
    @ObfuscatedGetter(
-      intValue = 1764147967
+      intValue = -2054486103
    )
-   int field2621;
-   @ObfuscatedName("i")
+   int field2627;
+   @ObfuscatedName("b")
    @ObfuscatedGetter(
-      intValue = -1535206503
-   )
-   int field2630;
-   @ObfuscatedName("o")
-   @ObfuscatedGetter(
-      intValue = -961493963
-   )
-   int field2631;
-   @ObfuscatedName("n")
-   @ObfuscatedGetter(
-      intValue = -2087575951
-   )
-   int field2632;
-   @ObfuscatedName("k")
-   @ObfuscatedGetter(
-      intValue = 619321753
+      intValue = -1792552595
    )
    int field2633;
-   @ObfuscatedName("a")
+   @ObfuscatedName("m")
    @ObfuscatedGetter(
-      intValue = -1441193489
+      intValue = 8708161
    )
-   int field2634;
-   @ObfuscatedName("s")
+   int field2632;
+   @ObfuscatedName("t")
    @ObfuscatedGetter(
-      intValue = -1410345339
+      intValue = -801880649
    )
    int field2635;
+   @ObfuscatedName("h")
+   @ObfuscatedGetter(
+      intValue = 428701389
+   )
+   int field2634;
+   @ObfuscatedName("p")
+   @ObfuscatedGetter(
+      intValue = 1960214883
+   )
+   int field2639;
+   @ObfuscatedName("o")
+   @ObfuscatedGetter(
+      intValue = 124194473
+   )
+   int field2638;
 
    Occluder() {
    }
 
    @ObfuscatedName("f")
    @ObfuscatedSignature(
-      descriptor = "(B)V",
-      garbageValue = "8"
+      descriptor = "(Ljava/applet/Applet;Ljava/lang/String;I)V",
+      garbageValue = "1977226602"
    )
-   public static void method4627() {
-      try {
-         if (class286.musicPlayerStatus == 1) {
-            int var0 = class251.midiPcmStream.method5650();
-            if (var0 > 0 && class251.midiPcmStream.isReady()) {
-               var0 -= class286.pcmSampleLength;
-               if (var0 < 0) {
-                  var0 = 0;
-               }
-
-               class251.midiPcmStream.setPcmStreamVolume(var0);
-               return;
-            }
-
-            class251.midiPcmStream.clear();
-            class251.midiPcmStream.removeAll();
-            if (class304.musicTrackArchive != null) {
-               class286.musicPlayerStatus = 2;
-            } else {
-               class286.musicPlayerStatus = 0;
-            }
-
-            class286.musicTrack = null;
-            ItemContainer.soundCache = null;
-         }
-      } catch (Exception var2) {
-         var2.printStackTrace();
-         class251.midiPcmStream.clear();
-         class286.musicPlayerStatus = 0;
-         class286.musicTrack = null;
-         ItemContainer.soundCache = null;
-         class304.musicTrackArchive = null;
+   public static void method4650(Applet var0, String var1) {
+      class31.field190 = var0;
+      if (var1 != null) {
+         class31.field186 = var1;
       }
 
    }
 
-   @ObfuscatedName("f")
-   @Export("Entity_unpackID")
-   public static int Entity_unpackID(long var0) {
-      return (int)(var0 >>> 17 & 4294967295L);
+   @ObfuscatedName("af")
+   @ObfuscatedSignature(
+      descriptor = "(Ljava/lang/String;B)V",
+      garbageValue = "-76"
+   )
+   static void method4649(String var0) {
+      String var1;
+      if (var0 != null && !var0.isEmpty() && var0.charAt(0) != '#') {
+         var1 = var0;
+      } else {
+         var1 = "";
+      }
+
+      Login.field927 = var1;
    }
 }

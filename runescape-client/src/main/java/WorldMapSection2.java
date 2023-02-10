@@ -3,100 +3,100 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("iu")
+@Deprecated
+@ObfuscatedName("iw")
 @Implements("WorldMapSection2")
 public class WorldMapSection2 implements WorldMapSection {
-   @ObfuscatedName("h")
+   @ObfuscatedName("f")
    @ObfuscatedGetter(
-      intValue = -1092602777
+      intValue = 626739277
    )
    @Export("minPlane")
    int minPlane;
-   @ObfuscatedName("e")
+   @ObfuscatedName("w")
    @ObfuscatedGetter(
-      intValue = -939702515
+      intValue = 462528053
    )
    @Export("planes")
    int planes;
    @ObfuscatedName("v")
    @ObfuscatedGetter(
-      intValue = -1065150765
+      intValue = 1808578733
    )
    @Export("regionStartX")
    int regionStartX;
-   @ObfuscatedName("x")
+   @ObfuscatedName("s")
    @ObfuscatedGetter(
-      intValue = 346902175
+      intValue = -1090582517
    )
    @Export("regionStartY")
    int regionStartY;
-   @ObfuscatedName("m")
+   @ObfuscatedName("z")
    @ObfuscatedGetter(
-      intValue = 337769061
+      intValue = -1337123697
    )
    @Export("regionEndX")
    int regionEndX;
-   @ObfuscatedName("q")
+   @ObfuscatedName("j")
    @ObfuscatedGetter(
-      intValue = 1809147725
+      intValue = -1869420189
    )
    @Export("regionEndY")
    int regionEndY;
-   @ObfuscatedName("f")
+   @ObfuscatedName("i")
    @ObfuscatedGetter(
-      intValue = -651808565
+      intValue = -547983943
    )
-   int field2845;
-   @ObfuscatedName("r")
+   int field2836;
+   @ObfuscatedName("n")
    @ObfuscatedGetter(
-      intValue = -957154991
+      intValue = -950632927
    )
-   int field2844;
-   @ObfuscatedName("u")
+   int field2835;
+   @ObfuscatedName("l")
    @ObfuscatedGetter(
-      intValue = -394773385
+      intValue = 1695178763
    )
    int field2841;
-   @ObfuscatedName("b")
+   @ObfuscatedName("k")
    @ObfuscatedGetter(
-      intValue = 403564879
+      intValue = 1110945225
    )
-   int field2848;
+   int field2842;
 
    WorldMapSection2() {
    }
 
-   @ObfuscatedName("h")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
-      descriptor = "(Lit;B)V",
-      garbageValue = "86"
+      descriptor = "(Lii;I)V",
+      garbageValue = "1606915966"
    )
    @Export("expandBounds")
    public void expandBounds(WorldMapArea var1) {
-      if (var1.regionLowX > this.field2845) {
-         var1.regionLowX = this.field2845;
+      if (var1.regionLowX > this.field2836) {
+         var1.regionLowX = this.field2836;
       }
 
       if (var1.regionHighX < this.field2841) {
          var1.regionHighX = this.field2841;
       }
 
-      if (var1.regionLowY > this.field2844) {
-         var1.regionLowY = this.field2844;
+      if (var1.regionLowY > this.field2835) {
+         var1.regionLowY = this.field2835;
       }
 
-      if (var1.regionHighY < this.field2848) {
-         var1.regionHighY = this.field2848;
+      if (var1.regionHighY < this.field2842) {
+         var1.regionHighY = this.field2842;
       }
 
    }
 
-   @ObfuscatedName("e")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
       descriptor = "(IIII)Z",
-      garbageValue = "986597458"
+      garbageValue = "1059252076"
    )
    @Export("containsCoord")
    public boolean containsCoord(int var1, int var2, int var3) {
@@ -109,49 +109,49 @@ public class WorldMapSection2 implements WorldMapSection {
 
    @ObfuscatedName("v")
    @ObfuscatedSignature(
-      descriptor = "(IIS)Z",
-      garbageValue = "-11823"
+      descriptor = "(III)Z",
+      garbageValue = "1209851870"
    )
    @Export("containsPosition")
    public boolean containsPosition(int var1, int var2) {
-      return var1 >> 6 >= this.field2845 && var1 >> 6 <= this.field2841 && var2 >> 6 >= this.field2844 && var2 >> 6 <= this.field2848;
+      return var1 >> 6 >= this.field2836 && var1 >> 6 <= this.field2841 && var2 >> 6 >= this.field2835 && var2 >> 6 <= this.field2842;
    }
 
-   @ObfuscatedName("x")
+   @ObfuscatedName("s")
    @ObfuscatedSignature(
-      descriptor = "(IIIB)[I",
-      garbageValue = "-52"
+      descriptor = "(IIII)[I",
+      garbageValue = "-1188894867"
    )
    @Export("getBorderTileLengths")
    public int[] getBorderTileLengths(int var1, int var2, int var3) {
       if (!this.containsCoord(var1, var2, var3)) {
          return null;
       } else {
-         int[] var4 = new int[]{this.field2845 * 64 - this.regionStartX * 64 + var2, var3 + (this.field2844 * 64 - this.regionStartY * 64)};
+         int[] var4 = new int[]{this.field2836 * 64 - this.regionStartX * 64 + var2, var3 + (this.field2835 * 64 - this.regionStartY * 64)};
          return var4;
       }
    }
 
-   @ObfuscatedName("m")
+   @ObfuscatedName("z")
    @ObfuscatedSignature(
-      descriptor = "(III)Lky;",
-      garbageValue = "1584933614"
+      descriptor = "(III)Lko;",
+      garbageValue = "-1946236139"
    )
    @Export("coord")
    public Coord coord(int var1, int var2) {
       if (!this.containsPosition(var1, var2)) {
          return null;
       } else {
-         int var3 = this.regionStartX * 64 - this.field2845 * 64 + var1;
-         int var4 = this.regionStartY * 64 - this.field2844 * 64 + var2;
+         int var3 = this.regionStartX * 64 - this.field2836 * 64 + var1;
+         int var4 = this.regionStartY * 64 - this.field2835 * 64 + var2;
          return new Coord(this.minPlane, var3, var4);
       }
    }
 
-   @ObfuscatedName("q")
+   @ObfuscatedName("j")
    @ObfuscatedSignature(
-      descriptor = "(Lqy;I)V",
-      garbageValue = "1737950913"
+      descriptor = "(Lrd;I)V",
+      garbageValue = "158933591"
    )
    @Export("read")
    public void read(Buffer var1) {
@@ -161,63 +161,19 @@ public class WorldMapSection2 implements WorldMapSection {
       this.regionStartY = var1.readUnsignedShort();
       this.regionEndX = var1.readUnsignedShort();
       this.regionEndY = var1.readUnsignedShort();
-      this.field2845 = var1.readUnsignedShort();
-      this.field2844 = var1.readUnsignedShort();
+      this.field2836 = var1.readUnsignedShort();
+      this.field2835 = var1.readUnsignedShort();
       this.field2841 = var1.readUnsignedShort();
-      this.field2848 = var1.readUnsignedShort();
+      this.field2842 = var1.readUnsignedShort();
       this.postRead();
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("i")
    @ObfuscatedSignature(
-      descriptor = "(B)V",
-      garbageValue = "1"
+      descriptor = "(I)V",
+      garbageValue = "1264343644"
    )
    @Export("postRead")
    void postRead() {
-   }
-
-   @ObfuscatedName("x")
-   @ObfuscatedSignature(
-      descriptor = "(II)Z",
-      garbageValue = "1114752689"
-   )
-   public static boolean method4907(int var0) {
-      return (var0 >> 30 & 1) != 0;
-   }
-
-   @ObfuscatedName("d")
-   @ObfuscatedSignature(
-      descriptor = "(ILbm;ZI)I",
-      garbageValue = "-1887108041"
-   )
-   static int method4905(int var0, Script var1, boolean var2) {
-      Widget var3 = PlayerCompositionColorTextureOverride.getWidget(Interpreter.Interpreter_intStack[--class87.Interpreter_intStackSize]);
-      if (var0 == ScriptOpcodes.IF_GETTARGETMASK) {
-         Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = PacketWriter.Widget_unpackTargetMask(Clock.getWidgetFlags(var3));
-         return 1;
-      } else if (var0 != ScriptOpcodes.IF_GETOP) {
-         if (var0 == ScriptOpcodes.IF_GETOPBASE) {
-            if (var3.dataText == null) {
-               Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = "";
-            } else {
-               Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var3.dataText;
-            }
-
-            return 1;
-         } else {
-            return 2;
-         }
-      } else {
-         int var4 = Interpreter.Interpreter_intStack[--class87.Interpreter_intStackSize];
-         --var4;
-         if (var3.actions != null && var4 < var3.actions.length && var3.actions[var4] != null) {
-            Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var3.actions[var4];
-         } else {
-            Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = "";
-         }
-
-         return 1;
-      }
    }
 }

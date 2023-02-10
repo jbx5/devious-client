@@ -369,6 +369,9 @@ public interface RSClient extends RSGameEngine, Client
 	@Override
 	RSWorld[] getWorldList();
 
+	@Import("World_worlds")
+	void setWorldList(RSWorld[] worlds);
+
 	@Import("addChatMessage")
 	void addRSChatMessage(int type, String name, String message, String sender);
 
@@ -1815,4 +1818,8 @@ public interface RSClient extends RSGameEngine, Client
 
 	@Import("graphicsCycle")
 	int getGraphicsCycle();
+
+	@Import("isMembersWorld")
+	@Override
+	boolean isMembersWorld();
 }

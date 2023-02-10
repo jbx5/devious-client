@@ -4,38 +4,37 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gu")
+@ObfuscatedName("gh")
 @Implements("VarbitComposition")
 public class VarbitComposition extends DualNode {
-   @ObfuscatedName("h")
+   @ObfuscatedName("sg")
+   static boolean field2116;
+   @ObfuscatedName("vi")
+   @Export("foundItemIds")
+   static short[] foundItemIds;
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      descriptor = "Lly;"
-   )
-   @Export("VarbitDefinition_archive")
-   public static AbstractArchive VarbitDefinition_archive;
-   @ObfuscatedName("e")
-   @ObfuscatedSignature(
-      descriptor = "Ljv;"
+      descriptor = "Lja;"
    )
    @Export("VarbitDefinition_cached")
-   public static EvictingDualNodeHashTable VarbitDefinition_cached = new EvictingDualNodeHashTable(64);
-   @ObfuscatedName("q")
-   static final int[] field2112 = new int[32];
+   static EvictingDualNodeHashTable VarbitDefinition_cached = new EvictingDualNodeHashTable(64);
+   @ObfuscatedName("j")
+   static final int[] field2114 = new int[32];
    @ObfuscatedName("v")
    @ObfuscatedGetter(
-      intValue = 1633221379
+      intValue = -849337785
    )
    @Export("baseVar")
    public int baseVar;
-   @ObfuscatedName("x")
+   @ObfuscatedName("s")
    @ObfuscatedGetter(
-      intValue = -270804781
+      intValue = -926382043
    )
    @Export("startBit")
    public int startBit;
-   @ObfuscatedName("m")
+   @ObfuscatedName("z")
    @ObfuscatedGetter(
-      intValue = -1549035405
+      intValue = -1686633587
    )
    @Export("endBit")
    public int endBit;
@@ -44,19 +43,22 @@ public class VarbitComposition extends DualNode {
       int var0 = 2;
 
       for(int var1 = 0; var1 < 32; ++var1) {
-         field2112[var1] = var0 - 1;
+         field2114[var1] = var0 - 1;
          var0 += var0;
       }
 
    }
 
-   @ObfuscatedName("e")
+   VarbitComposition() {
+   }
+
+   @ObfuscatedName("v")
    @ObfuscatedSignature(
-      descriptor = "(Lqy;I)V",
-      garbageValue = "2093010759"
+      descriptor = "(Lrd;I)V",
+      garbageValue = "-2142044850"
    )
    @Export("decode")
-   public void decode(Buffer var1) {
+   void decode(Buffer var1) {
       while(true) {
          int var2 = var1.readUnsignedByte();
          if (var2 == 0) {
@@ -67,10 +69,10 @@ public class VarbitComposition extends DualNode {
       }
    }
 
-   @ObfuscatedName("v")
+   @ObfuscatedName("s")
    @ObfuscatedSignature(
-      descriptor = "(Lqy;II)V",
-      garbageValue = "1158300194"
+      descriptor = "(Lrd;IB)V",
+      garbageValue = "8"
    )
    @Export("decodeNext")
    void decodeNext(Buffer var1, int var2) {
@@ -82,70 +84,43 @@ public class VarbitComposition extends DualNode {
 
    }
 
-   @ObfuscatedName("h")
+   @ObfuscatedName("a")
    @ObfuscatedSignature(
-      descriptor = "(IB)Lbm;",
-      garbageValue = "-42"
+      descriptor = "(Lbw;B)V",
+      garbageValue = "-31"
    )
-   @Export("getScript")
-   static Script getScript(int var0) {
-      Script var1 = (Script)Script.Script_cached.get((long)var0);
-      if (var1 != null) {
-         return var1;
-      } else {
-         byte[] var2 = class71.archive12.takeFile(var0, 0);
-         if (var2 == null) {
-            return null;
-         } else {
-            var1 = FriendSystem.newScript(var2);
-            Script.Script_cached.put(var1, (long)var0);
-            return var1;
-         }
+   @Export("changeWorld")
+   static void changeWorld(World var0) {
+      if (var0.isMembersOnly() != Client.isMembersWorld) {
+         Client.isMembersWorld = var0.isMembersOnly();
+         StructComposition.method3868(var0.isMembersOnly());
       }
+
+      if (var0.properties != Client.worldProperties) {
+         ObjectComposition.method3948(WorldMapEvent.archive8, var0.properties);
+      }
+
+      NetCache.worldHost = var0.host;
+      Client.worldId = var0.id;
+      Client.worldProperties = var0.properties;
+      class1.worldPort = Client.gameBuild == 0 ? 'ꩊ' : var0.id + '鱀';
+      class10.js5Port = Client.gameBuild == 0 ? 443 : var0.id + '썐';
+      Calendar.currentPort = class1.worldPort;
    }
 
-   @ObfuscatedName("o")
+   @ObfuscatedName("gb")
    @ObfuscatedSignature(
-      descriptor = "(Ljava/lang/String;I)Ljava/lang/String;",
-      garbageValue = "235490030"
+      descriptor = "(B)V",
+      garbageValue = "-119"
    )
-   public static String method3779(String var0) {
-      int var1 = var0.length();
-      char[] var2 = new char[var1];
-      byte var3 = 2;
-
-      for(int var4 = 0; var4 < var1; ++var4) {
-         char var5 = var0.charAt(var4);
-         if (var3 == 0) {
-            var5 = Character.toLowerCase(var5);
-         } else if (var3 == 2 || Character.isUpperCase(var5)) {
-            char var6;
-            if (var5 != 181 && var5 != 402) {
-               var6 = Character.toTitleCase(var5);
-            } else {
-               var6 = var5;
-            }
-
-            var5 = var6;
+   static final void method3812() {
+      for(int var0 = 0; var0 < Client.npcCount; ++var0) {
+         int var1 = Client.npcIndices[var0];
+         NPC var2 = Client.npcs[var1];
+         if (var2 != null) {
+            PcmPlayer.updateActorSequence(var2, var2.definition.size);
          }
-
-         if (Character.isLetter(var5)) {
-            var3 = 0;
-         } else if (var5 != '.' && var5 != '?' && var5 != '!') {
-            if (Character.isSpaceChar(var5)) {
-               if (var3 != 2) {
-                  var3 = 1;
-               }
-            } else {
-               var3 = 1;
-            }
-         } else {
-            var3 = 2;
-         }
-
-         var2[var4] = var5;
       }
 
-      return new String(var2);
    }
 }

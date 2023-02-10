@@ -4,66 +4,51 @@ import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("fv")
-public abstract class class173 {
-   @ObfuscatedName("r")
+public class class173 {
+   @ObfuscatedName("s")
+   public String field1875;
+   @ObfuscatedName("z")
+   public float[] field1880;
+   @ObfuscatedName("j")
    @ObfuscatedGetter(
-      intValue = -389562639
+      intValue = -1278868647
    )
-   @Export("gameCyclesToDo")
-   static int gameCyclesToDo;
-   @ObfuscatedName("bv")
-   @ObfuscatedSignature(
-      descriptor = "Lmb;"
+   public int field1876;
+   @ObfuscatedName("i")
+   @ObfuscatedGetter(
+      intValue = 1484170657
    )
-   @Export("clientLanguage")
-   static Language clientLanguage;
-   @ObfuscatedName("x")
-   String field1900;
+   public int field1878;
+   @ObfuscatedName("n")
+   @ObfuscatedGetter(
+      intValue = -1927653763
+   )
+   public int field1879;
    // $FF: synthetic field
    @ObfuscatedSignature(
-      descriptor = "Lfk;"
+      descriptor = "Lfs;"
    )
-   final class163 this$0;
+   final class166 this$0;
 
    @ObfuscatedSignature(
-      descriptor = "(Lfk;Ljava/lang/String;)V"
+      descriptor = "(Lfs;)V"
    )
-   class173(class163 var1, String var2) {
+   class173(class166 var1) {
       this.this$0 = var1;
-      this.field1900 = var2;
+      this.field1880 = new float[4];
+      this.field1876 = 1;
+      this.field1878 = 1;
+      this.field1879 = 0;
    }
 
-   @ObfuscatedName("h")
+   @ObfuscatedName("li")
    @ObfuscatedSignature(
-      descriptor = "(B)I",
-      garbageValue = "16"
+      descriptor = "(Lkz;I)I",
+      garbageValue = "-182721901"
    )
-   public abstract int vmethod3504();
-
-   @ObfuscatedName("e")
-   @ObfuscatedSignature(
-      descriptor = "(I)Ljava/lang/String;",
-      garbageValue = "380048809"
-   )
-   public String vmethod3505() {
-      return null;
-   }
-
-   @ObfuscatedName("q")
-   @ObfuscatedSignature(
-      descriptor = "(I)I",
-      garbageValue = "-736426895"
-   )
-   public int vmethod3511() {
-      return -1;
-   }
-
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      descriptor = "(I)Ljava/lang/String;",
-      garbageValue = "-1768788528"
-   )
-   public String method3503() {
-      return this.field1900;
+   @Export("getWidgetFlags")
+   static int getWidgetFlags(Widget var0) {
+      IntegerNode var1 = (IntegerNode)Client.widgetFlags.get((long)var0.childIndex + ((long)var0.id << 32));
+      return var1 != null ? var1.integer : var0.flags;
    }
 }

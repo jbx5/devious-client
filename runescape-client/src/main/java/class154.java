@@ -1,97 +1,129 @@
+import java.applet.Applet;
+import java.net.URL;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import netscape.javascript.JSObject;
 
-@ObfuscatedName("eu")
-public class class154 extends class136 {
-   @ObfuscatedName("a")
+@ObfuscatedName("em")
+public class class154 extends class139 {
+   @ObfuscatedName("b")
    @ObfuscatedSignature(
-      descriptor = "Lco;"
+      descriptor = "Lah;"
    )
-   @Export("loginScreenRunesAnimation")
-   static LoginScreenAnimation loginScreenRunesAnimation;
-   @ObfuscatedName("hk")
+   @Export("soundCache")
+   public static SoundCache soundCache;
+   @ObfuscatedName("f")
    @ObfuscatedGetter(
-      intValue = -854586489
+      longValue = -561702384304559325L
    )
-   @Export("baseX")
-   static int baseX;
-   @ObfuscatedName("h")
+   long field1763;
+   @ObfuscatedName("w")
+   String field1765;
+   @ObfuscatedName("v")
    @ObfuscatedGetter(
-      intValue = 1555819897
+      intValue = -369907185
    )
-   int field1778;
-   @ObfuscatedName("e")
-   @ObfuscatedGetter(
-      intValue = 831952737
-   )
-   int field1781;
+   int field1764;
    // $FF: synthetic field
    @ObfuscatedSignature(
-      descriptor = "Lem;"
+      descriptor = "Lex;"
    )
-   final class139 this$0;
+   final class142 this$0;
 
    @ObfuscatedSignature(
-      descriptor = "(Lem;)V"
+      descriptor = "(Lex;)V"
    )
-   class154(class139 var1) {
+   class154(class142 var1) {
       this.this$0 = var1;
+      this.field1763 = -1L;
+      this.field1765 = null;
+      this.field1764 = 0;
    }
 
-   @ObfuscatedName("h")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
-      descriptor = "(Lqy;I)V",
-      garbageValue = "1101327225"
+      descriptor = "(Lrd;S)V",
+      garbageValue = "-5782"
    )
-   void vmethod3349(Buffer var1) {
-      this.field1778 = var1.readInt();
-      this.field1781 = var1.readInt();
+   void vmethod3394(Buffer var1) {
+      if (var1.readUnsignedByte() != 255) {
+         --var1.offset;
+         this.field1763 = var1.readLong();
+      }
+
+      this.field1765 = var1.readStringCp1252NullTerminatedOrNull();
+      this.field1764 = var1.readUnsignedShort();
    }
 
-   @ObfuscatedName("e")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      descriptor = "(Lep;I)V",
-      garbageValue = "839088249"
+      descriptor = "(Leb;B)V",
+      garbageValue = "-26"
    )
-   void vmethod3350(ClanSettings var1) {
-      var1.method3179(this.field1778, this.field1781);
+   void vmethod3393(ClanSettings var1) {
+      var1.method3230(this.field1763, this.field1765, this.field1764);
    }
 
-   @ObfuscatedName("e")
+   @ObfuscatedName("s")
    @ObfuscatedSignature(
-      descriptor = "(B)V",
-      garbageValue = "-106"
+      descriptor = "(Ljava/lang/String;ILjava/lang/String;I)Z",
+      garbageValue = "1149827152"
    )
-   static void method3300() {
-      synchronized(ArchiveDiskActionHandler.ArchiveDiskActionHandler_lock) {
-         if (ArchiveDiskActionHandler.field4173 == 0) {
-            AbstractByteArrayCopier.ArchiveDiskActionHandler_thread = new Thread(new ArchiveDiskActionHandler());
-            AbstractByteArrayCopier.ArchiveDiskActionHandler_thread.setDaemon(true);
-            AbstractByteArrayCopier.ArchiveDiskActionHandler_thread.start();
-            AbstractByteArrayCopier.ArchiveDiskActionHandler_thread.setPriority(5);
+   static boolean method3319(String var0, int var1, String var2) {
+      if (var1 == 0) {
+         try {
+            if (!class31.field186.startsWith("win")) {
+               throw new Exception();
+            } else if (!var0.startsWith("http://") && !var0.startsWith("https://")) {
+               throw new Exception();
+            } else {
+               String var14 = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789?&=,.%+-_#:/*";
+
+               for(int var4 = 0; var4 < var0.length(); ++var4) {
+                  if (var14.indexOf(var0.charAt(var4)) == -1) {
+                     throw new Exception();
+                  }
+               }
+
+               Runtime.getRuntime().exec("cmd /c start \"j\" \"" + var0 + "\"");
+               return true;
+            }
+         } catch (Throwable var8) {
+            return false;
+         }
+      } else if (var1 == 1) {
+         try {
+            Applet var7 = class31.field190;
+            Object[] var5 = new Object[]{(new URL(class31.field190.getCodeBase(), var0)).toString()};
+            Object var13 = JSObject.getWindow(var7).call(var2, var5);
+            return var13 != null;
+         } catch (Throwable var9) {
+            return false;
+         }
+      } else if (var1 == 2) {
+         try {
+            class31.field190.getAppletContext().showDocument(new URL(class31.field190.getCodeBase(), var0), "_blank");
+            return true;
+         } catch (Exception var10) {
+            return false;
+         }
+      } else if (var1 == 3) {
+         try {
+            Applet var3 = class31.field190;
+            JSObject.getWindow(var3).call("loggedout", (Object[])null);
+         } catch (Throwable var12) {
          }
 
-         ArchiveDiskActionHandler.field4173 = 600;
+         try {
+            class31.field190.getAppletContext().showDocument(new URL(class31.field190.getCodeBase(), var0), "_top");
+            return true;
+         } catch (Exception var11) {
+            return false;
+         }
+      } else {
+         throw new IllegalArgumentException();
       }
-   }
-
-   @ObfuscatedName("m")
-   @ObfuscatedSignature(
-      descriptor = "(B)V",
-      garbageValue = "11"
-   )
-   public static void method3299() {
-      FloorOverlayDefinition.FloorOverlayDefinition_cached.clear();
-   }
-
-   @ObfuscatedName("gb")
-   @ObfuscatedSignature(
-      descriptor = "(B)J",
-      garbageValue = "0"
-   )
-   static long method3301() {
-      return Client.field637;
    }
 }

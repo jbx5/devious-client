@@ -3,46 +3,57 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("go")
+@ObfuscatedName("gq")
 @Implements("EnumComposition")
 public class EnumComposition extends DualNode {
-   @ObfuscatedName("e")
+   @ObfuscatedName("vc")
    @ObfuscatedSignature(
-      descriptor = "Ljv;"
+      descriptor = "Lmk;"
+   )
+   @Export("grandExchangeEvents")
+   static GrandExchangeEvents grandExchangeEvents;
+   @ObfuscatedName("f")
+   @ObfuscatedSignature(
+      descriptor = "Lln;"
+   )
+   @Export("EnumDefinition_archive")
+   static AbstractArchive EnumDefinition_archive;
+   @ObfuscatedName("w")
+   @ObfuscatedSignature(
+      descriptor = "Lja;"
    )
    @Export("EnumDefinition_cached")
    static EvictingDualNodeHashTable EnumDefinition_cached = new EvictingDualNodeHashTable(64);
-   @ObfuscatedName("fe")
-   static String field2006;
    @ObfuscatedName("v")
    @Export("inputType")
    public char inputType;
-   @ObfuscatedName("x")
+   @ObfuscatedName("s")
    @Export("outputType")
    public char outputType;
-   @ObfuscatedName("m")
+   @ObfuscatedName("z")
    @Export("defaultStr")
    public String defaultStr = "null";
-   @ObfuscatedName("q")
+   @ObfuscatedName("j")
    @ObfuscatedGetter(
-      intValue = 1478484323
+      intValue = 1053984563
    )
    @Export("defaultInt")
    public int defaultInt;
-   @ObfuscatedName("f")
+   @ObfuscatedName("i")
    @ObfuscatedGetter(
-      intValue = -1015031679
+      intValue = -1265657645
    )
    @Export("outputCount")
    public int outputCount = 0;
-   @ObfuscatedName("r")
+   @ObfuscatedName("n")
    @Export("keys")
    public int[] keys;
-   @ObfuscatedName("u")
+   @ObfuscatedName("l")
    @Export("intVals")
    public int[] intVals;
-   @ObfuscatedName("b")
+   @ObfuscatedName("k")
    @Export("strVals")
    public String[] strVals;
 
@@ -51,8 +62,8 @@ public class EnumComposition extends DualNode {
 
    @ObfuscatedName("v")
    @ObfuscatedSignature(
-      descriptor = "(Lqy;I)V",
-      garbageValue = "-2074495591"
+      descriptor = "(Lrd;I)V",
+      garbageValue = "-2126248770"
    )
    @Export("decode")
    void decode(Buffer var1) {
@@ -66,10 +77,10 @@ public class EnumComposition extends DualNode {
       }
    }
 
-   @ObfuscatedName("x")
+   @ObfuscatedName("s")
    @ObfuscatedSignature(
-      descriptor = "(Lqy;IS)V",
-      garbageValue = "8918"
+      descriptor = "(Lrd;II)V",
+      garbageValue = "-225365971"
    )
    @Export("decodeNext")
    void decodeNext(Buffer var1, int var2) {
@@ -106,70 +117,172 @@ public class EnumComposition extends DualNode {
 
    }
 
-   @ObfuscatedName("m")
+   @ObfuscatedName("z")
    @ObfuscatedSignature(
-      descriptor = "(I)I",
-      garbageValue = "-585138184"
+      descriptor = "(B)I",
+      garbageValue = "59"
    )
    @Export("size")
    public int size() {
       return this.outputCount;
    }
 
-   @ObfuscatedName("h")
+   @ObfuscatedName("a")
    @ObfuscatedSignature(
-      descriptor = "(I)[Ljf;",
-      garbageValue = "-1969198767"
+      descriptor = "(ILba;ZI)I",
+      garbageValue = "1103882701"
    )
-   @Export("ServerPacket_values")
-   public static ServerPacket[] ServerPacket_values() {
-      return new ServerPacket[]{ServerPacket.RUNCLIENTSCRIPT, ServerPacket.IF_MOVESUB, ServerPacket.URL_OPEN, ServerPacket.field3186, ServerPacket.MESSAGE_FRIENDS_CHAT, ServerPacket.VARP_LARGE, ServerPacket.MESSAGE_GAME, ServerPacket.EVENT_WORLDHOP, ServerPacket.IF_SETHIDE, ServerPacket.field3208, ServerPacket.field3193, ServerPacket.field3194, ServerPacket.MIDI_SONG, ServerPacket.UPDATE_INV_STOP_TRANSIT, ServerPacket.IF_SETANGLE, ServerPacket.IF_CLOSESUB, ServerPacket.field3199, ServerPacket.PROJECTILE_SPAWN, ServerPacket.GRAPHICSOBJECT_SPAWN, ServerPacket.PLAYER_SPOTANIM, ServerPacket.CAM_SETANGLE, ServerPacket.MESSAGE_PRIVATE_ECHO, ServerPacket.MINIMAP_FLAG_SET, ServerPacket.field3206, ServerPacket.CAM_LOOKAT, ServerPacket.field3183, ServerPacket.UPDATE_IGNORELIST, ServerPacket.UPDATE_UID192, ServerPacket.UPDATE_FRIENDLIST, ServerPacket.UPDATE_REBOOT_TIMER, ServerPacket.field3205, ServerPacket.field3214, ServerPacket.NPC_SPOTANIM, ServerPacket.NPC_INFO_SMALL_VIEWPORT_1, ServerPacket.VARP_SMALL, ServerPacket.IF_SETPOSITION, ServerPacket.TRIGGER_ONDIALOG_ABORT, ServerPacket.field3213, ServerPacket.field3221, ServerPacket.field3222, ServerPacket.field3223, ServerPacket.field3224, ServerPacket.field3251, ServerPacket.field3226, ServerPacket.field3227, ServerPacket.field3184, ServerPacket.field3229, ServerPacket.field3242, ServerPacket.IF_SETPLAYERHEAD, ServerPacket.field3232, ServerPacket.field3192, ServerPacket.NPC_INFO_SMALL_VIEWPORT_2, ServerPacket.field3235, ServerPacket.UPDATE_ZONE_FULL_FOLLOWS, ServerPacket.CAM_RESET, ServerPacket.UPDATE_INV_PARTIAL, ServerPacket.CHAT_FILTER_SETTINGS, ServerPacket.UPDATE_INV_CLEAR, ServerPacket.field3241, ServerPacket.UPDATE_STOCKMARKET_SLOT, ServerPacket.RESET_CLIENT_VARCACHE, ServerPacket.IF_SETCOLOUR, ServerPacket.REFLECTION_CHECKER, ServerPacket.UPDATE_ZONE_PARTIAL_ENCLOSED, ServerPacket.field3247, ServerPacket.field3266, ServerPacket.field3285, ServerPacket.SYNC_CLIENT_VARCACHE, ServerPacket.field3249, ServerPacket.UPDATE_INV_FULL, ServerPacket.field3253, ServerPacket.IF_SETNPCHEAD, ServerPacket.NPC_INFO_LARGE_VIEWPORT_2, ServerPacket.field3207, ServerPacket.field3248, ServerPacket.IF_SETSCROLLPOS, ServerPacket.SET_PRIVCHATMODE, ServerPacket.PLAYER_INFO, ServerPacket.LOGOUT, ServerPacket.IF_SETOBJECT, ServerPacket.field3263, ServerPacket.LOGOUT_FULL, ServerPacket.field3265, ServerPacket.UPDATE_STAT, ServerPacket.field3267, ServerPacket.field3268, ServerPacket.field3269, ServerPacket.field3286, ServerPacket.NPC_INFO_LARGE_VIEWPORT_1, ServerPacket.field3215, ServerPacket.field3287, ServerPacket.HINT_ARROW, ServerPacket.IF_SETMODEL, ServerPacket.field3276, ServerPacket.MESSAGE_PRIVATE, ServerPacket.REBUILD_REGION, ServerPacket.field3279, ServerPacket.NPC_SET_SEQUENCE, ServerPacket.field3281, ServerPacket.SET_PLAYER_OP, ServerPacket.field3283, ServerPacket.field3284, ServerPacket.MINIMAP_TOGGLE, ServerPacket.REBUILD_NORMAL, ServerPacket.PING_STATISTICS_REQUEST, ServerPacket.field3288, ServerPacket.DYNAMICOBJECT_SPAWN, ServerPacket.field3290, ServerPacket.field3291, ServerPacket.field3292, ServerPacket.field3293, ServerPacket.field3189, ServerPacket.field3295, ServerPacket.field3296, ServerPacket.field3297};
+   static int method3711(int var0, Script var1, boolean var2) {
+      Widget var3 = class133.getWidget(Interpreter.Interpreter_intStack[--class302.Interpreter_intStackSize]);
+      if (var0 == ScriptOpcodes.IF_GETSCROLLX) {
+         Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.scrollX;
+         return 1;
+      } else if (var0 == ScriptOpcodes.IF_GETSCROLLY) {
+         Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.scrollY;
+         return 1;
+      } else if (var0 == ScriptOpcodes.IF_GETTEXT) {
+         Interpreter.Interpreter_stringStack[++class20.Interpreter_stringStackSize - 1] = var3.text;
+         return 1;
+      } else if (var0 == ScriptOpcodes.IF_GETSCROLLWIDTH) {
+         Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.scrollWidth;
+         return 1;
+      } else if (var0 == ScriptOpcodes.IF_GETSCROLLHEIGHT) {
+         Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.scrollHeight;
+         return 1;
+      } else if (var0 == ScriptOpcodes.IF_GETMODELZOOM) {
+         Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.modelZoom;
+         return 1;
+      } else if (var0 == ScriptOpcodes.IF_GETMODELANGLE_X) {
+         Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.modelAngleX;
+         return 1;
+      } else if (var0 == ScriptOpcodes.IF_GETMODELANGLE_Z) {
+         Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.modelAngleZ;
+         return 1;
+      } else if (var0 == ScriptOpcodes.IF_GETMODELANGLE_Y) {
+         Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.modelAngleY;
+         return 1;
+      } else if (var0 == ScriptOpcodes.IF_GETTRANS) {
+         Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.transparencyTop;
+         return 1;
+      } else if (var0 == 2610) {
+         Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.transparencyBot;
+         return 1;
+      } else if (var0 == ScriptOpcodes.IF_GETCOLOUR) {
+         Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.color;
+         return 1;
+      } else if (var0 == ScriptOpcodes.IF_GETFILLCOLOUR) {
+         Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.color2;
+         return 1;
+      } else if (var0 == 2613) {
+         Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.fillMode.rsOrdinal();
+         return 1;
+      } else if (var0 == ScriptOpcodes.IF_GETMODELTRANSPARENT) {
+         Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.modelTransparency ? 1 : 0;
+         return 1;
+      } else {
+         class302 var4;
+         if (var0 == 2617) {
+            var4 = var3.method6226();
+            Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var4 != null ? var4.field3465 : 0;
+         }
+
+         if (var0 == 2618) {
+            var4 = var3.method6226();
+            Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var4 != null ? var4.field3470 : 0;
+            return 1;
+         } else {
+            class307 var7;
+            if (var0 == 2619) {
+               var7 = var3.method6235();
+               Interpreter.Interpreter_stringStack[++class20.Interpreter_stringStackSize - 1] = var7 != null ? var7.method6128().method7078() : "";
+               return 1;
+            } else if (var0 == 2620) {
+               var4 = var3.method6226();
+               Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var4 != null ? var4.field3467 : 0;
+               return 1;
+            } else if (var0 == 2621) {
+               var7 = var3.method6235();
+               Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var7 != null ? var7.method5950() : 0;
+               return 1;
+            } else if (var0 == 2622) {
+               var7 = var3.method6235();
+               Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var7 != null ? var7.method5983() : 0;
+               return 1;
+            } else if (var0 == 2623) {
+               var7 = var3.method6235();
+               Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var7 != null ? var7.method5984() : 0;
+               return 1;
+            } else if (var0 == 2624) {
+               var7 = var3.method6235();
+               Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var7 != null && var7.method5974() ? 1 : 0;
+               return 1;
+            } else if (var0 != 2625) {
+               if (var0 == 2626) {
+                  var7 = var3.method6235();
+                  Interpreter.Interpreter_stringStack[++class20.Interpreter_stringStackSize - 1] = var7 != null ? var7.method5973().method7307() : "";
+                  return 1;
+               } else if (var0 == 2627) {
+                  var7 = var3.method6235();
+                  int var5 = var7 != null ? var7.method5978() : 0;
+                  int var6 = var7 != null ? var7.method6145() : 0;
+                  Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = Math.min(var5, var6);
+                  Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = Math.max(var5, var6);
+                  return 1;
+               } else if (var0 == 2628) {
+                  var7 = var3.method6235();
+                  Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var7 != null ? var7.method6145() : 0;
+                  return 1;
+               } else if (var0 == 2629) {
+                  var7 = var3.method6235();
+                  Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var7 != null ? var7.method5985() : 0;
+                  return 1;
+               } else if (var0 == 2630) {
+                  var7 = var3.method6235();
+                  Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var7 != null ? var7.method5948() : 0;
+                  return 1;
+               } else if (var0 == 2631) {
+                  var7 = var3.method6235();
+                  Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var7 != null ? var7.method6058() : 0;
+                  return 1;
+               } else if (var0 == 2632) {
+                  var7 = var3.method6235();
+                  Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var7 != null ? var7.method5987() : 0;
+                  return 1;
+               } else {
+                  class27 var8;
+                  if (var0 == 2633) {
+                     var8 = var3.method6227();
+                     Interpreter.Interpreter_intStack[class302.Interpreter_intStackSize - 1] = var8 != null ? var8.method393(Interpreter.Interpreter_intStack[class302.Interpreter_intStackSize - 1]) : 0;
+                     return 1;
+                  } else if (var0 == 2634) {
+                     var8 = var3.method6227();
+                     Interpreter.Interpreter_intStack[class302.Interpreter_intStackSize - 1] = var8 != null ? var8.method394((char)Interpreter.Interpreter_intStack[class302.Interpreter_intStackSize - 1]) : 0;
+                     return 1;
+                  } else {
+                     return 2;
+                  }
+               }
+            } else {
+               var7 = var3.method6235();
+               Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var7 != null && var7.method5954() ? 1 : 0;
+               return 1;
+            }
+         }
+      }
    }
 
-   @ObfuscatedName("h")
+   @ObfuscatedName("kk")
    @ObfuscatedSignature(
-      descriptor = "([BI)Ljava/lang/String;",
-      garbageValue = "-850113409"
+      descriptor = "(II)Z",
+      garbageValue = "1234070189"
    )
-   public static String method3650(byte[] var0) {
-      int var2 = var0.length;
-      StringBuilder var3 = new StringBuilder();
-
-      for(int var4 = 0; var4 < var2 + 0; var4 += 3) {
-         int var5 = var0[var4] & 255;
-         var3.append(class359.field4350[var5 >>> 2]);
-         if (var4 < var2 - 1) {
-            int var6 = var0[var4 + 1] & 255;
-            var3.append(class359.field4350[(var5 & 3) << 4 | var6 >>> 4]);
-            if (var4 < var2 - 2) {
-               int var7 = var0[var4 + 2] & 255;
-               var3.append(class359.field4350[(var6 & 15) << 2 | var7 >>> 6]).append(class359.field4350[var7 & 63]);
-            } else {
-               var3.append(class359.field4350[(var6 & 15) << 2]).append("=");
-            }
-         } else {
-            var3.append(class359.field4350[(var5 & 3) << 4]).append("==");
+   static boolean method3710(int var0) {
+      for(int var1 = 0; var1 < Client.field759; ++var1) {
+         if (Client.field745[var1] == var0) {
+            return true;
          }
       }
 
-      String var1 = var3.toString();
-      return var1;
-   }
-
-   @ObfuscatedName("e")
-   @ObfuscatedSignature(
-      descriptor = "(Ljava/lang/Throwable;Ljava/lang/String;)Lrw;"
-   )
-   @Export("newRunException")
-   public static RunException newRunException(Throwable var0, String var1) {
-      RunException var2;
-      if (var0 instanceof RunException) {
-         var2 = (RunException)var0;
-         var2.message = var2.message + ' ' + var1;
-      } else {
-         var2 = new RunException(var0, var1);
-      }
-
-      return var2;
+      return false;
    }
 }

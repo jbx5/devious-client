@@ -3,38 +3,33 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ce")
+@ObfuscatedName("cv")
 @Implements("HealthBar")
 public class HealthBar extends Node {
-   @ObfuscatedName("ex")
-   @ObfuscatedSignature(
-      descriptor = "Lln;"
-   )
-   static Archive field1306;
    @ObfuscatedName("v")
    @ObfuscatedSignature(
-      descriptor = "Lfw;"
+      descriptor = "Lgi;"
    )
    @Export("definition")
    HealthBarDefinition definition;
-   @ObfuscatedName("x")
+   @ObfuscatedName("s")
    @ObfuscatedSignature(
-      descriptor = "Lmv;"
+      descriptor = "Lmt;"
    )
    @Export("updates")
    IterableNodeDeque updates = new IterableNodeDeque();
 
    @ObfuscatedSignature(
-      descriptor = "(Lfw;)V"
+      descriptor = "(Lgi;)V"
    )
    HealthBar(HealthBarDefinition var1) {
       this.definition = var1;
    }
 
-   @ObfuscatedName("h")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
-      descriptor = "(IIIIS)V",
-      garbageValue = "-24757"
+      descriptor = "(IIIII)V",
+      garbageValue = "2137835977"
    )
    @Export("put")
    void put(int var1, int var2, int var3, int var4) {
@@ -67,10 +62,10 @@ public class HealthBar extends Node {
       }
    }
 
-   @ObfuscatedName("e")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      descriptor = "(II)Lcu;",
-      garbageValue = "-1494424352"
+      descriptor = "(II)Lcz;",
+      garbageValue = "1621839790"
    )
    @Export("get")
    HealthBarUpdate get(int var1) {
@@ -95,75 +90,120 @@ public class HealthBar extends Node {
    @ObfuscatedName("v")
    @ObfuscatedSignature(
       descriptor = "(I)Z",
-      garbageValue = "-1047690816"
+      garbageValue = "776562128"
    )
    @Export("isEmpty")
    boolean isEmpty() {
-      return this.updates.method6774();
+      return this.updates.method6900();
    }
 
-   @ObfuscatedName("h")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
-      descriptor = "(Lly;I)V",
-      garbageValue = "784434833"
+      descriptor = "(IIII)Z",
+      garbageValue = "97534508"
    )
-   public static void method2528(AbstractArchive var0) {
-      ParamComposition.ParamDefinition_archive = var0;
+   static boolean method2611(int var0, int var1, int var2) {
+      return var0 >= 0 && var0 < 4 && var1 >= 0 && var1 < 104 && var2 >= 0 && var2 < 104;
    }
 
-   @ObfuscatedName("e")
+   @ObfuscatedName("z")
    @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "-8692175"
+      descriptor = "(II)Z",
+      garbageValue = "-1489961954"
    )
-   static void method2526() {
-      for(ObjectSound var0 = (ObjectSound)ObjectSound.objectSounds.last(); var0 != null; var0 = (ObjectSound)ObjectSound.objectSounds.previous()) {
-         if (var0.obj != null) {
-            var0.set();
-         }
-      }
-
+   public static boolean method2609(int var0) {
+      return var0 == WorldMapDecorationType.field3765.id;
    }
 
-   @ObfuscatedName("n")
+   @ObfuscatedName("x")
    @ObfuscatedSignature(
-      descriptor = "(CII)Ljava/lang/String;",
-      garbageValue = "1267412510"
+      descriptor = "(Laj;I)V",
+      garbageValue = "-644486874"
    )
-   static String method2525(char var0, int var1) {
-      char[] var2 = new char[var1];
+   static void method2610(GameEngine var0) {
+      class205 var1 = Client.field702;
+      class205 var2 = var1;
 
-      for(int var3 = 0; var3 < var1; ++var3) {
-         var2[var3] = var0;
-      }
-
-      return new String(var2);
-   }
-
-   @ObfuscatedName("ke")
-   @ObfuscatedSignature(
-      descriptor = "(IIIIIIIII)V",
-      garbageValue = "824026775"
-   )
-   @Export("drawWidgets")
-   static final void drawWidgets(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7) {
-      if (Players.loadInterface(var0)) {
-         MouseHandler.field268 = null;
-         class34.drawInterface(class71.Widget_interfaceComponents[var0], -1, var1, var2, var3, var4, var5, var6, var7);
-         if (MouseHandler.field268 != null) {
-            class34.drawInterface(MouseHandler.field268, -1412584499, var1, var2, var3, var4, class142.field1691, HealthBarDefinition.field1989, var7);
-            MouseHandler.field268 = null;
+      while(var2.method4141()) {
+         if (var2.field2339 == 13) {
+            class17.method270();
+            return;
          }
 
-      } else {
-         if (var7 != -1) {
-            Client.field731[var7] = true;
-         } else {
-            for(int var8 = 0; var8 < 100; ++var8) {
-               Client.field731[var8] = true;
+         if (var2.field2339 == 96) {
+            if (Login.worldSelectPage > 0 && StudioGame.worldSelectLeftSprite != null) {
+               --Login.worldSelectPage;
             }
+         } else if (var2.field2339 == 97 && Login.worldSelectPage < Login.worldSelectPagesCount && class205.worldSelectRightSprite != null) {
+            ++Login.worldSelectPage;
+         }
+      }
+
+      if (MouseHandler.MouseHandler_lastButton == 1 || !ClanMate.mouseCam && MouseHandler.MouseHandler_lastButton == 4) {
+         int var3 = Login.xPadding + 280;
+         if (MouseHandler.MouseHandler_lastPressedX >= var3 && MouseHandler.MouseHandler_lastPressedX <= var3 + 14 && MouseHandler.MouseHandler_lastPressedY >= 4 && MouseHandler.MouseHandler_lastPressedY <= 18) {
+            class369.changeWorldSelectSorting(0, 0);
+            return;
          }
 
+         if (MouseHandler.MouseHandler_lastPressedX >= var3 + 15 && MouseHandler.MouseHandler_lastPressedX <= var3 + 80 && MouseHandler.MouseHandler_lastPressedY >= 4 && MouseHandler.MouseHandler_lastPressedY <= 18) {
+            class369.changeWorldSelectSorting(0, 1);
+            return;
+         }
+
+         int var4 = Login.xPadding + 390;
+         if (MouseHandler.MouseHandler_lastPressedX >= var4 && MouseHandler.MouseHandler_lastPressedX <= var4 + 14 && MouseHandler.MouseHandler_lastPressedY >= 4 && MouseHandler.MouseHandler_lastPressedY <= 18) {
+            class369.changeWorldSelectSorting(1, 0);
+            return;
+         }
+
+         if (MouseHandler.MouseHandler_lastPressedX >= var4 + 15 && MouseHandler.MouseHandler_lastPressedX <= var4 + 80 && MouseHandler.MouseHandler_lastPressedY >= 4 && MouseHandler.MouseHandler_lastPressedY <= 18) {
+            class369.changeWorldSelectSorting(1, 1);
+            return;
+         }
+
+         int var5 = Login.xPadding + 500;
+         if (MouseHandler.MouseHandler_lastPressedX >= var5 && MouseHandler.MouseHandler_lastPressedX <= var5 + 14 && MouseHandler.MouseHandler_lastPressedY >= 4 && MouseHandler.MouseHandler_lastPressedY <= 18) {
+            class369.changeWorldSelectSorting(2, 0);
+            return;
+         }
+
+         if (MouseHandler.MouseHandler_lastPressedX >= var5 + 15 && MouseHandler.MouseHandler_lastPressedX <= var5 + 80 && MouseHandler.MouseHandler_lastPressedY >= 4 && MouseHandler.MouseHandler_lastPressedY <= 18) {
+            class369.changeWorldSelectSorting(2, 1);
+            return;
+         }
+
+         int var6 = Login.xPadding + 610;
+         if (MouseHandler.MouseHandler_lastPressedX >= var6 && MouseHandler.MouseHandler_lastPressedX <= var6 + 14 && MouseHandler.MouseHandler_lastPressedY >= 4 && MouseHandler.MouseHandler_lastPressedY <= 18) {
+            class369.changeWorldSelectSorting(3, 0);
+            return;
+         }
+
+         if (MouseHandler.MouseHandler_lastPressedX >= var6 + 15 && MouseHandler.MouseHandler_lastPressedX <= var6 + 80 && MouseHandler.MouseHandler_lastPressedY >= 4 && MouseHandler.MouseHandler_lastPressedY <= 18) {
+            class369.changeWorldSelectSorting(3, 1);
+            return;
+         }
+
+         if (MouseHandler.MouseHandler_lastPressedX >= Login.xPadding + 708 && MouseHandler.MouseHandler_lastPressedY >= 4 && MouseHandler.MouseHandler_lastPressedX <= Login.xPadding + 708 + 50 && MouseHandler.MouseHandler_lastPressedY <= 20) {
+            class17.method270();
+            return;
+         }
+
+         if (Login.hoveredWorldIndex != -1) {
+            World var7 = class88.World_worlds[Login.hoveredWorldIndex];
+            VarbitComposition.changeWorld(var7);
+            class17.method270();
+            return;
+         }
+
+         if (Login.worldSelectPage > 0 && StudioGame.worldSelectLeftSprite != null && MouseHandler.MouseHandler_lastPressedX >= 0 && MouseHandler.MouseHandler_lastPressedX <= StudioGame.worldSelectLeftSprite.subWidth && MouseHandler.MouseHandler_lastPressedY >= class127.canvasHeight / 2 - 50 && MouseHandler.MouseHandler_lastPressedY <= class127.canvasHeight / 2 + 50) {
+            --Login.worldSelectPage;
+         }
+
+         if (Login.worldSelectPage < Login.worldSelectPagesCount && class205.worldSelectRightSprite != null && MouseHandler.MouseHandler_lastPressedX >= GameEngine.canvasWidth - class205.worldSelectRightSprite.subWidth - 5 && MouseHandler.MouseHandler_lastPressedX <= GameEngine.canvasWidth && MouseHandler.MouseHandler_lastPressedY >= class127.canvasHeight / 2 - 50 && MouseHandler.MouseHandler_lastPressedY <= class127.canvasHeight / 2 + 50) {
+            ++Login.worldSelectPage;
+         }
       }
+
    }
 }

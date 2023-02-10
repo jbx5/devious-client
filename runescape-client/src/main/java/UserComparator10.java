@@ -1,12 +1,25 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dx")
+@ObfuscatedName("dt")
 @Implements("UserComparator10")
 public class UserComparator10 extends AbstractUserComparator {
-   @ObfuscatedName("h")
+   @ObfuscatedName("jf")
+   @ObfuscatedGetter(
+      intValue = 2114297915
+   )
+   @Export("cameraY")
+   static int cameraY;
+   @ObfuscatedName("kj")
+   @ObfuscatedGetter(
+      intValue = -846038315
+   )
+   @Export("oculusOrbFocalPointY")
+   static int oculusOrbFocalPointY;
+   @ObfuscatedName("f")
    @Export("reversed")
    final boolean reversed;
 
@@ -14,10 +27,10 @@ public class UserComparator10 extends AbstractUserComparator {
       this.reversed = var1;
    }
 
-   @ObfuscatedName("h")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
       descriptor = "(Loa;Loa;I)I",
-      garbageValue = "-1617310498"
+      garbageValue = "1557178098"
    )
    @Export("compareBuddy")
    int compareBuddy(Buddy var1, Buddy var2) {
@@ -32,94 +45,25 @@ public class UserComparator10 extends AbstractUserComparator {
       return this.compareBuddy((Buddy)var1, (Buddy)var2);
    }
 
-   @ObfuscatedName("m")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      descriptor = "(IB)Z",
-      garbageValue = "1"
+      descriptor = "(IB)Lgq;",
+      garbageValue = "61"
    )
-   public static boolean method2867(int var0) {
-      return (var0 >> 31 & 1) != 0;
-   }
-
-   @ObfuscatedName("le")
-   @ObfuscatedSignature(
-      descriptor = "([Lkd;II)V",
-      garbageValue = "1689586583"
-   )
-   @Export("drawModelComponents")
-   static final void drawModelComponents(Widget[] var0, int var1) {
-      for(int var2 = 0; var2 < var0.length; ++var2) {
-         Widget var3 = var0[var2];
-         if (var3 != null && var3.parentId == var1 && (!var3.isIf3 || !FriendSystem.isComponentHidden(var3))) {
-            int var5;
-            if (var3.type == 0) {
-               if (!var3.isIf3 && FriendSystem.isComponentHidden(var3) && var3 != WorldMapScaleHandler.mousedOverWidgetIf1) {
-                  continue;
-               }
-
-               drawModelComponents(var0, var3.id);
-               if (var3.children != null) {
-                  drawModelComponents(var3.children, var3.id);
-               }
-
-               InterfaceParent var4 = (InterfaceParent)Client.interfaceParents.get((long)var3.id);
-               if (var4 != null) {
-                  var5 = var4.group;
-                  if (Players.loadInterface(var5)) {
-                     drawModelComponents(class71.Widget_interfaceComponents[var5], -1);
-                  }
-               }
-            }
-
-            if (var3.type == 6) {
-               if (var3.sequenceId != -1 || var3.sequenceId2 != -1) {
-                  boolean var8 = KeyHandler.runCs1(var3);
-                  if (var8) {
-                     var5 = var3.sequenceId2;
-                  } else {
-                     var5 = var3.sequenceId;
-                  }
-
-                  if (var5 != -1) {
-                     SequenceDefinition var6 = AABB.SequenceDefinition_get(var5);
-                     if (!var6.isCachedModelIdSet()) {
-                        for(var3.modelFrameCycle += Client.graphicsCycle; var3.modelFrameCycle > var6.frameLengths[var3.modelFrame]; class69.invalidateWidget(var3)) {
-                           var3.modelFrameCycle -= var6.frameLengths[var3.modelFrame];
-                           ++var3.modelFrame;
-                           if (var3.modelFrame >= var6.frameIds.length) {
-                              var3.modelFrame -= var6.frameCount;
-                              if (var3.modelFrame < 0 || var3.modelFrame >= var6.frameIds.length) {
-                                 var3.modelFrame = 0;
-                              }
-                           }
-                        }
-                     } else {
-                        var3.modelFrame += Client.graphicsCycle;
-                        int var7 = var6.method4024();
-                        if (var3.modelFrame >= var7) {
-                           var3.modelFrame -= var6.frameCount;
-                           if (var3.modelFrame < 0 || var3.modelFrame >= var7) {
-                              var3.modelFrame = 0;
-                           }
-                        }
-
-                        class69.invalidateWidget(var3);
-                     }
-                  }
-               }
-
-               if (var3.field3598 != 0 && !var3.isIf3) {
-                  int var9 = var3.field3598 >> 16;
-                  var5 = var3.field3598 << 16 >> 16;
-                  var9 *= Client.graphicsCycle;
-                  var5 *= Client.graphicsCycle;
-                  var3.modelAngleX = var9 + var3.modelAngleX & 2047;
-                  var3.modelAngleY = var5 + var3.modelAngleY & 2047;
-                  class69.invalidateWidget(var3);
-               }
-            }
+   @Export("getEnum")
+   public static EnumComposition getEnum(int var0) {
+      EnumComposition var1 = (EnumComposition)EnumComposition.EnumDefinition_cached.get((long)var0);
+      if (var1 != null) {
+         return var1;
+      } else {
+         byte[] var2 = EnumComposition.EnumDefinition_archive.takeFile(8, var0);
+         var1 = new EnumComposition();
+         if (var2 != null) {
+            var1.decode(new Buffer(var2));
          }
-      }
 
+         EnumComposition.EnumDefinition_cached.put(var1, (long)var0);
+         return var1;
+      }
    }
 }

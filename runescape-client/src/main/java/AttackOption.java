@@ -1,51 +1,52 @@
-import java.awt.Component;
+import java.awt.Desktop;
+import java.awt.Desktop.Action;
+import java.net.URI;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cz")
+@ObfuscatedName("co")
 @Implements("AttackOption")
 public enum AttackOption implements MouseWheel {
-   @ObfuscatedName("h")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
-      descriptor = "Lcz;"
+      descriptor = "Lco;"
    )
    @Export("AttackOption_dependsOnCombatLevels")
    AttackOption_dependsOnCombatLevels(0),
-   @ObfuscatedName("e")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      descriptor = "Lcz;"
+      descriptor = "Lco;"
    )
    @Export("AttackOption_alwaysRightClick")
    AttackOption_alwaysRightClick(1),
    @ObfuscatedName("v")
    @ObfuscatedSignature(
-      descriptor = "Lcz;"
+      descriptor = "Lco;"
    )
-   field1347(2),
-   @ObfuscatedName("x")
+   field1314(2),
+   @ObfuscatedName("s")
    @ObfuscatedSignature(
-      descriptor = "Lcz;"
+      descriptor = "Lco;"
    )
    @Export("AttackOption_hidden")
    AttackOption_hidden(3),
-   @ObfuscatedName("m")
+   @ObfuscatedName("z")
    @ObfuscatedSignature(
-      descriptor = "Lcz;"
+      descriptor = "Lco;"
    )
-   field1346(4);
+   field1318(4);
 
-   @ObfuscatedName("mf")
+   @ObfuscatedName("tv")
    @ObfuscatedGetter(
-      intValue = 1102902677
+      intValue = -620769605
    )
-   @Export("menuWidth")
-   static int menuWidth;
-   @ObfuscatedName("q")
+   static int field1320;
+   @ObfuscatedName("j")
    @ObfuscatedGetter(
-      intValue = -1340490443
+      intValue = 1823309479
    )
    @Export("id")
    final int id;
@@ -54,63 +55,112 @@ public enum AttackOption implements MouseWheel {
       this.id = var3;
    }
 
-   @ObfuscatedName("e")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
       descriptor = "(B)I",
-      garbageValue = "96"
+      garbageValue = "3"
    )
    @Export("rsOrdinal")
    public int rsOrdinal() {
       return this.id;
    }
 
-   @ObfuscatedName("h")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      descriptor = "(Ljava/awt/Component;B)V",
-      garbageValue = "0"
+      descriptor = "(Ljava/lang/String;ZZI)V",
+      garbageValue = "2124220394"
    )
-   static void method2603(Component var0) {
-      var0.removeMouseListener(MouseHandler.MouseHandler_instance);
-      var0.removeMouseMotionListener(MouseHandler.MouseHandler_instance);
-      var0.removeFocusListener(MouseHandler.MouseHandler_instance);
-      MouseHandler.MouseHandler_currentButtonVolatile = 0;
-   }
+   @Export("openURL")
+   public static void openURL(String var0, boolean var1, boolean var2) {
+      if (var1) {
+         if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Action.BROWSE)) {
+            try {
+               Desktop.getDesktop().browse(new URI(var0));
+               return;
+            } catch (Exception var4) {
+            }
+         }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      descriptor = "(III)Lkd;",
-      garbageValue = "-1318941452"
-   )
-   @Export("getWidgetChild")
-   public static Widget getWidgetChild(int var0, int var1) {
-      Widget var2 = PlayerCompositionColorTextureOverride.getWidget(var0);
-      if (var1 == -1) {
-         return var2;
+         if (class31.field186.startsWith("win")) {
+            class158.method3351(var0, 0);
+         } else if (class31.field186.startsWith("mac")) {
+            class154.method3319(var0, 1, "openjs");
+         } else {
+            class158.method3351(var0, 2);
+         }
       } else {
-         return var2 != null && var2.children != null && var1 < var2.children.length ? var2.children[var1] : null;
+         class158.method3351(var0, 3);
       }
+
    }
 
-   @ObfuscatedName("az")
+   @ObfuscatedName("hc")
    @ObfuscatedSignature(
-      descriptor = "(IB)I",
-      garbageValue = "82"
+      descriptor = "(II)V",
+      garbageValue = "457231157"
    )
-   static int method2610(int var0) {
-      return (int)Math.pow(2.0, (double)((float)var0 / 256.0F + 7.0F));
-   }
+   static final void method2710(int var0) {
+      int[] var1 = class31.sceneMinimapSprite.pixels;
+      int var2 = var1.length;
 
-   @ObfuscatedName("bw")
-   @ObfuscatedSignature(
-      descriptor = "(ILky;ZB)V",
-      garbageValue = "2"
-   )
-   static void method2608(int var0, Coord var1, boolean var2) {
-      WorldMapArea var3 = Client.getWorldMap().getMapArea(var0);
-      int var4 = class155.localPlayer.plane;
-      int var5 = class154.baseX * 64 + (class155.localPlayer.x >> 7);
-      int var6 = class365.baseY * 64 + (class155.localPlayer.y >> 7);
-      Coord var7 = new Coord(var4, var5, var6);
-      Client.getWorldMap().method8046(var3, var7, var1, var2);
+      int var3;
+      for(var3 = 0; var3 < var2; ++var3) {
+         var1[var3] = 0;
+      }
+
+      int var4;
+      int var5;
+      for(var3 = 1; var3 < 103; ++var3) {
+         var4 = (103 - var3) * 2048 + 24628;
+
+         for(var5 = 1; var5 < 103; ++var5) {
+            if ((Tiles.Tiles_renderFlags[var0][var5][var3] & 24) == 0) {
+               WorldMapAreaData.scene.drawTileMinimap(var1, var4, 512, var0, var5, var3);
+            }
+
+            if (var0 < 3 && (Tiles.Tiles_renderFlags[var0 + 1][var5][var3] & 8) != 0) {
+               WorldMapAreaData.scene.drawTileMinimap(var1, var4, 512, var0 + 1, var5, var3);
+            }
+
+            var4 += 4;
+         }
+      }
+
+      var3 = (238 + (int)(Math.random() * 20.0) - 10 << 16) + (238 + (int)(Math.random() * 20.0) - 10 << 8) + (238 + (int)(Math.random() * 20.0) - 10);
+      var4 = 238 + (int)(Math.random() * 20.0) - 10 << 16;
+      class31.sceneMinimapSprite.setRaster();
+
+      int var6;
+      for(var5 = 1; var5 < 103; ++var5) {
+         for(var6 = 1; var6 < 103; ++var6) {
+            if ((Tiles.Tiles_renderFlags[var0][var6][var5] & 24) == 0) {
+               AbstractWorldMapIcon.drawObject(var0, var6, var5, var3, var4);
+            }
+
+            if (var0 < 3 && (Tiles.Tiles_renderFlags[var0 + 1][var6][var5] & 8) != 0) {
+               AbstractWorldMapIcon.drawObject(var0 + 1, var6, var5, var3, var4);
+            }
+         }
+      }
+
+      Client.mapIconCount = 0;
+
+      for(var5 = 0; var5 < 104; ++var5) {
+         for(var6 = 0; var6 < 104; ++var6) {
+            long var7 = WorldMapAreaData.scene.getFloorDecorationTag(class103.Client_plane, var5, var6);
+            if (0L != var7) {
+               int var9 = class124.Entity_unpackID(var7);
+               int var10 = class463.getObjectDefinition(var9).mapIconId;
+               if (var10 >= 0 && class4.WorldMapElement_get(var10).field1953) {
+                  Client.mapIcons[Client.mapIconCount] = class4.WorldMapElement_get(var10).getSpriteBool(false);
+                  Client.mapIconXs[Client.mapIconCount] = var5;
+                  Client.mapIconYs[Client.mapIconCount] = var6;
+                  ++Client.mapIconCount;
+               }
+            }
+         }
+      }
+
+      KeyHandler.rasterProvider.apply();
    }
 }

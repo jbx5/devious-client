@@ -4,28 +4,22 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("iv")
+@ObfuscatedName("ie")
 @Implements("WorldMapID")
 public class WorldMapID {
-   @ObfuscatedName("h")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
-      descriptor = "Liv;"
+      descriptor = "Lie;"
    )
-   static final WorldMapID field2984 = new WorldMapID(0);
-   @ObfuscatedName("e")
+   static final WorldMapID field2992 = new WorldMapID(0);
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      descriptor = "Liv;"
+      descriptor = "Lie;"
    )
-   static final WorldMapID field2983 = new WorldMapID(1);
-   @ObfuscatedName("lw")
-   @ObfuscatedSignature(
-      descriptor = "Lkd;"
-   )
-   @Export("hoveredItemContainer")
-   static Widget hoveredItemContainer;
+   static final WorldMapID field2993 = new WorldMapID(1);
    @ObfuscatedName("v")
    @ObfuscatedGetter(
-      intValue = 1808192051
+      intValue = 933607109
    )
    @Export("value")
    final int value;
@@ -34,59 +28,28 @@ public class WorldMapID {
       this.value = var1;
    }
 
-   @ObfuscatedName("v")
+   @ObfuscatedName("ic")
    @ObfuscatedSignature(
-      descriptor = "([Ljava/lang/String;[IIII)V",
-      garbageValue = "-71600503"
+      descriptor = "(Lcf;I)V",
+      garbageValue = "1547422490"
    )
-   static void method5277(String[] var0, int[] var1, int var2, int var3) {
-      if (var2 < var3) {
-         int var4 = (var3 + var2) / 2;
-         int var5 = var2;
-         String var6 = var0[var4];
-         var0[var4] = var0[var3];
-         var0[var3] = var6;
-         int var7 = var1[var4];
-         var1[var4] = var1[var3];
-         var1[var3] = var7;
-
-         for(int var8 = var2; var8 < var3; ++var8) {
-            if (var6 == null || var0[var8] != null && var0[var8].compareTo(var6) < (var8 & 1)) {
-               String var9 = var0[var8];
-               var0[var8] = var0[var5];
-               var0[var5] = var9;
-               int var10 = var1[var8];
-               var1[var8] = var1[var5];
-               var1[var5++] = var10;
-            }
-         }
-
-         var0[var3] = var0[var5];
-         var0[var5] = var6;
-         var1[var3] = var1[var5];
-         var1[var5] = var7;
-         method5277(var0, var1, var2, var5 - 1);
-         method5277(var0, var1, var5 + 1, var3);
-      }
-
-   }
-
-   @ObfuscatedName("nv")
-   @ObfuscatedSignature(
-      descriptor = "(B)V",
-      garbageValue = "1"
-   )
-   static void method5276() {
-      if (GameEngine.field241 != null) {
-         Client.field801 = Client.cycle;
-         GameEngine.field241.method6663();
-
-         for(int var0 = 0; var0 < Client.players.length; ++var0) {
-            if (Client.players[var0] != null) {
-               GameEngine.field241.method6652(class154.baseX * 64 + (Client.players[var0].x >> 7), class365.baseY * 64 + (Client.players[var0].y >> 7));
-            }
-         }
-      }
-
+   static void method5339(NPC var0) {
+      var0.field1163 = var0.definition.size;
+      var0.field1228 = var0.definition.rotation;
+      var0.walkSequence = var0.definition.walkSequence;
+      var0.walkBackSequence = var0.definition.walkBackSequence;
+      var0.walkLeftSequence = var0.definition.walkLeftSequence;
+      var0.walkRightSequence = var0.definition.walkRightSequence;
+      var0.idleSequence = var0.definition.idleSequence;
+      var0.turnLeftSequence = var0.definition.turnLeftSequence;
+      var0.turnRightSequence = var0.definition.turnRightSequence;
+      var0.runSequence = var0.definition.field2039;
+      var0.field1173 = var0.definition.field2040;
+      var0.field1174 = var0.definition.field2059;
+      var0.field1168 = var0.definition.field2042;
+      var0.field1187 = var0.definition.field2043;
+      var0.field1172 = var0.definition.field2065;
+      var0.field1178 = var0.definition.field2045;
+      var0.field1179 = var0.definition.field2057;
    }
 }

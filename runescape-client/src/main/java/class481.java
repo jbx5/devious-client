@@ -1,22 +1,12 @@
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ri")
-public class class481 {
-   @ObfuscatedName("h")
-   @ObfuscatedGetter(
-      intValue = -249548481
-   )
-   @Export("SpriteBuffer_spriteCount")
-   static int SpriteBuffer_spriteCount;
+@ObfuscatedName("rc")
+public interface class481 {
    @ObfuscatedName("v")
-   @ObfuscatedGetter(
-      intValue = 457282671
+   @ObfuscatedSignature(
+      descriptor = "(II)Ljava/lang/Object;",
+      garbageValue = "1860534238"
    )
-   @Export("SpriteBuffer_spriteHeight")
-   public static int SpriteBuffer_spriteHeight;
-   @ObfuscatedName("x")
-   @Export("SpriteBuffer_xOffsets")
-   public static int[] SpriteBuffer_xOffsets;
+   Object vmethod8966(int var1);
 }

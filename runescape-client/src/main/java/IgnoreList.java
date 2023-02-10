@@ -3,38 +3,38 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("nj")
+@ObfuscatedName("om")
 @Implements("IgnoreList")
 public class IgnoreList extends UserList {
    @ObfuscatedName("v")
    @ObfuscatedSignature(
-      descriptor = "Lqi;"
+      descriptor = "Lqj;"
    )
    @Export("loginType")
    final LoginType loginType;
 
    @ObfuscatedSignature(
-      descriptor = "(Lqi;)V"
+      descriptor = "(Lqj;)V"
    )
    public IgnoreList(LoginType var1) {
       super(400);
       this.loginType = var1;
    }
 
-   @ObfuscatedName("h")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
-      descriptor = "(B)Lov;",
-      garbageValue = "47"
+      descriptor = "(I)Low;",
+      garbageValue = "-2146736820"
    )
    @Export("newInstance")
    User newInstance() {
       return new Ignored();
    }
 
-   @ObfuscatedName("e")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      descriptor = "(II)[Lov;",
-      garbageValue = "1710517567"
+      descriptor = "(II)[Low;",
+      garbageValue = "1411048209"
    )
    @Export("newTypedArray")
    User[] newTypedArray(int var1) {
@@ -43,8 +43,8 @@ public class IgnoreList extends UserList {
 
    @ObfuscatedName("v")
    @ObfuscatedSignature(
-      descriptor = "(Lqy;II)V",
-      garbageValue = "1829255932"
+      descriptor = "(Lrd;IB)V",
+      garbageValue = "10"
    )
    @Export("read")
    public void read(Buffer var1, int var2) {
@@ -59,7 +59,7 @@ public class IgnoreList extends UserList {
                Ignored var7 = (Ignored)this.getByCurrentUsername(var5);
                if (var4) {
                   Ignored var8 = (Ignored)this.getByCurrentUsername(var6);
-                  if (var8 != null && var7 != var8) {
+                  if (var8 != null && var8 != var7) {
                      if (var7 != null) {
                         this.remove(var8);
                      } else {
@@ -86,5 +86,21 @@ public class IgnoreList extends UserList {
 
          return;
       }
+   }
+
+   @ObfuscatedName("ac")
+   @ObfuscatedSignature(
+      descriptor = "([BIII)I",
+      garbageValue = "-1742873444"
+   )
+   public static int method7524(byte[] var0, int var1, int var2) {
+      int var3 = -1;
+
+      for(int var4 = var1; var4 < var2; ++var4) {
+         var3 = var3 >>> 8 ^ Buffer.field4939[(var3 ^ var0[var4]) & 255];
+      }
+
+      var3 = ~var3;
+      return var3;
    }
 }

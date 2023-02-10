@@ -3,57 +3,60 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("gv")
+@ObfuscatedName("gy")
 @Implements("ParamComposition")
 public class ParamComposition extends DualNode {
-   @ObfuscatedName("h")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
-      descriptor = "Lly;"
+      descriptor = "Lln;"
    )
    @Export("ParamDefinition_archive")
-   static AbstractArchive ParamDefinition_archive;
-   @ObfuscatedName("e")
+   public static AbstractArchive ParamDefinition_archive;
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      descriptor = "Ljv;"
+      descriptor = "Lja;"
    )
    @Export("ParamDefinition_cached")
-   static EvictingDualNodeHashTable ParamDefinition_cached = new EvictingDualNodeHashTable(64);
-   @ObfuscatedName("du")
-   static boolean field2121;
+   public static EvictingDualNodeHashTable ParamDefinition_cached = new EvictingDualNodeHashTable(64);
+   @ObfuscatedName("hh")
+   @ObfuscatedGetter(
+      intValue = -1984383565
+   )
+   @Export("baseX")
+   static int baseX;
    @ObfuscatedName("v")
    @Export("type")
    char type;
-   @ObfuscatedName("x")
+   @ObfuscatedName("s")
    @ObfuscatedGetter(
-      intValue = 818744259
+      intValue = 1399796535
    )
    @Export("defaultInt")
    public int defaultInt;
-   @ObfuscatedName("m")
+   @ObfuscatedName("z")
    @Export("defaultStr")
    public String defaultStr;
-   @ObfuscatedName("q")
+   @ObfuscatedName("j")
    @Export("autoDisable")
    boolean autoDisable = true;
 
    ParamComposition() {
    }
 
-   @ObfuscatedName("v")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      descriptor = "(B)V",
-      garbageValue = "-35"
+      descriptor = "(I)V",
+      garbageValue = "-406747783"
    )
    @Export("postDecode")
    void postDecode() {
    }
 
-   @ObfuscatedName("x")
+   @ObfuscatedName("v")
    @ObfuscatedSignature(
-      descriptor = "(Lqy;B)V",
-      garbageValue = "125"
+      descriptor = "(Lrd;I)V",
+      garbageValue = "-540226117"
    )
    @Export("decode")
    void decode(Buffer var1) {
@@ -67,10 +70,10 @@ public class ParamComposition extends DualNode {
       }
    }
 
-   @ObfuscatedName("m")
+   @ObfuscatedName("s")
    @ObfuscatedSignature(
-      descriptor = "(Lqy;II)V",
-      garbageValue = "1176853720"
+      descriptor = "(Lrd;IB)V",
+      garbageValue = "76"
    )
    @Export("decodeNext")
    void decodeNext(Buffer var1, int var2) {
@@ -82,7 +85,7 @@ public class ParamComposition extends DualNode {
          }
 
          if (var5 >= 128 && var5 < 160) {
-            char var6 = class358.cp1252AsciiExtension[var5 - 128];
+            char var6 = class362.cp1252AsciiExtension[var5 - 128];
             if (var6 == 0) {
                var6 = '?';
             }
@@ -102,224 +105,97 @@ public class ParamComposition extends DualNode {
 
    }
 
-   @ObfuscatedName("q")
+   @ObfuscatedName("z")
    @ObfuscatedSignature(
-      descriptor = "(I)Z",
-      garbageValue = "1916237971"
+      descriptor = "(B)Z",
+      garbageValue = "1"
    )
    @Export("isString")
    public boolean isString() {
       return this.type == 's';
    }
 
-   @ObfuscatedName("ar")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
-      descriptor = "(ILbm;ZI)I",
-      garbageValue = "-114129637"
+      descriptor = "(IIII)J",
+      garbageValue = "2043821642"
    )
-   static int method3803(int var0, Script var1, boolean var2) {
-      int var3;
-      int var4;
-      if (var0 == ScriptOpcodes.ADD) {
-         class87.Interpreter_intStackSize -= 2;
-         var3 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize];
-         var4 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize + 1];
-         Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = var4 + var3;
-         return 1;
-      } else if (var0 == ScriptOpcodes.SUB) {
-         class87.Interpreter_intStackSize -= 2;
-         var3 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize];
-         var4 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize + 1];
-         Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = var3 - var4;
-         return 1;
-      } else if (var0 == ScriptOpcodes.MULTIPLY) {
-         class87.Interpreter_intStackSize -= 2;
-         var3 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize];
-         var4 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize + 1];
-         Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = var4 * var3;
-         return 1;
-      } else if (var0 == ScriptOpcodes.DIV) {
-         class87.Interpreter_intStackSize -= 2;
-         var3 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize];
-         var4 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize + 1];
-         Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = var3 / var4;
-         return 1;
-      } else if (var0 == ScriptOpcodes.RANDOM) {
-         var3 = Interpreter.Interpreter_intStack[--class87.Interpreter_intStackSize];
-         Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = (int)(Math.random() * (double)var3);
-         return 1;
-      } else if (var0 == ScriptOpcodes.RANDOMINC) {
-         var3 = Interpreter.Interpreter_intStack[--class87.Interpreter_intStackSize];
-         Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = (int)(Math.random() * (double)(var3 + 1));
-         return 1;
-      } else {
-         int var5;
-         int var6;
-         int var7;
-         if (var0 == ScriptOpcodes.INTERPOLATE) {
-            class87.Interpreter_intStackSize -= 5;
-            var3 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize];
-            var4 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize + 1];
-            var5 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize + 2];
-            var6 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize + 3];
-            var7 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize + 4];
-            Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = var3 + (var7 - var5) * (var4 - var3) / (var6 - var5);
-            return 1;
-         } else if (var0 == ScriptOpcodes.ADDPERCENT) {
-            class87.Interpreter_intStackSize -= 2;
-            var3 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize];
-            var4 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize + 1];
-            Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = var3 + var3 * var4 / 100;
-            return 1;
-         } else if (var0 == ScriptOpcodes.SETBIT) {
-            class87.Interpreter_intStackSize -= 2;
-            var3 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize];
-            var4 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize + 1];
-            Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = var3 | 1 << var4;
-            return 1;
-         } else if (var0 == ScriptOpcodes.CLEARBIT) {
-            class87.Interpreter_intStackSize -= 2;
-            var3 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize];
-            var4 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize + 1];
-            Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = var3 & -1 - (1 << var4);
-            return 1;
-         } else if (var0 == ScriptOpcodes.TESTBIT) {
-            class87.Interpreter_intStackSize -= 2;
-            var3 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize];
-            var4 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize + 1];
-            Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = (var3 & 1 << var4) != 0 ? 1 : 0;
-            return 1;
-         } else if (var0 == ScriptOpcodes.MOD) {
-            class87.Interpreter_intStackSize -= 2;
-            var3 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize];
-            var4 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize + 1];
-            Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = var3 % var4;
-            return 1;
-         } else if (var0 == ScriptOpcodes.POW) {
-            class87.Interpreter_intStackSize -= 2;
-            var3 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize];
-            var4 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize + 1];
-            if (var3 == 0) {
-               Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = 0;
-            } else {
-               Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = (int)Math.pow((double)var3, (double)var4);
-            }
+   static long method3840(int var0, int var1, int var2) {
+      return (long)(var2 << 16 | var0 << 8 | var1);
+   }
 
-            return 1;
-         } else if (var0 == ScriptOpcodes.INVPOW) {
-            class87.Interpreter_intStackSize -= 2;
-            var3 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize];
-            var4 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize + 1];
-            if (var3 == 0) {
-               Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = 0;
-               return 1;
-            } else {
-               switch (var4) {
-                  case 0:
-                     Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = Integer.MAX_VALUE;
-                     break;
-                  case 1:
-                     Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = var3;
-                     break;
-                  case 2:
-                     Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = (int)Math.sqrt((double)var3);
-                     break;
-                  case 3:
-                     Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = (int)Math.cbrt((double)var3);
-                     break;
-                  case 4:
-                     Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = (int)Math.sqrt(Math.sqrt((double)var3));
-                     break;
-                  default:
-                     Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = (int)Math.pow((double)var3, 1.0 / (double)var4);
-               }
+   @ObfuscatedName("j")
+   @ObfuscatedSignature(
+      descriptor = "(IZI)Ljava/lang/String;",
+      garbageValue = "836612090"
+   )
+   @Export("intToString")
+   public static String intToString(int var0, boolean var1) {
+      return var1 && var0 >= 0 ? BuddyRankComparator.method2965(var0, 10, var1) : Integer.toString(var0);
+   }
 
-               return 1;
-            }
-         } else if (var0 == ScriptOpcodes.AND) {
-            class87.Interpreter_intStackSize -= 2;
-            var3 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize];
-            var4 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize + 1];
-            Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = var3 & var4;
-            return 1;
-         } else if (var0 == ScriptOpcodes.OR) {
-            class87.Interpreter_intStackSize -= 2;
-            var3 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize];
-            var4 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize + 1];
-            Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = var3 | var4;
-            return 1;
-         } else if (var0 == ScriptOpcodes.SCALE) {
-            class87.Interpreter_intStackSize -= 3;
-            long var9 = (long)Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize];
-            long var11 = (long)Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize + 1];
-            long var13 = (long)Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize + 2];
-            Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = (int)(var9 * var13 / var11);
-            return 1;
-         } else if (var0 == ScriptOpcodes.BITCOUNT) {
-            var3 = class233.method4850(Interpreter.Interpreter_intStack[--class87.Interpreter_intStackSize]);
-            Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = var3;
-            return 1;
-         } else if (var0 == ScriptOpcodes.TOGGLEBIT) {
-            class87.Interpreter_intStackSize -= 2;
-            var3 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize];
-            var4 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize + 1];
-            Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = var3 ^ 1 << var4;
-            return 1;
-         } else if (var0 == ScriptOpcodes.SETBIT_RANGE) {
-            class87.Interpreter_intStackSize -= 3;
-            var3 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize];
-            var4 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize + 1];
-            var5 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize + 2];
-            Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = WorldMapEvent.method5405(var3, var4, var5);
-            return 1;
-         } else if (var0 == ScriptOpcodes.CLEARBIT_RANGE) {
-            class87.Interpreter_intStackSize -= 3;
-            var3 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize];
-            var4 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize + 1];
-            var5 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize + 2];
-            Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = class159.method3346(var3, var4, var5);
-            return 1;
-         } else if (var0 == ScriptOpcodes.GETBIT_RANGE) {
-            class87.Interpreter_intStackSize -= 3;
-            var3 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize];
-            var4 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize + 1];
-            var5 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize + 2];
-            var6 = 31 - var5;
-            Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = var3 << var6 >>> var6 + var4;
-            return 1;
-         } else if (var0 == 4030) {
-            class87.Interpreter_intStackSize -= 4;
-            var3 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize];
-            var4 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize + 1];
-            var5 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize + 2];
-            var6 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize + 3];
-            var3 = class159.method3346(var3, var5, var6);
-            var7 = Actor.method2362(var6 - var5 + 1);
-            if (var4 > var7) {
-               var4 = var7;
-            }
+   @ObfuscatedName("b")
+   @ObfuscatedSignature(
+      descriptor = "(Ljava/lang/String;I)Ljava/lang/String;",
+      garbageValue = "1155689918"
+   )
+   public static String method3842(String var0) {
+      int var1 = var0.length();
+      char[] var2 = new char[var1];
+      byte var3 = 2;
 
-            Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = var3 | var4 << var5;
-            return 1;
-         } else if (var0 == 4032) {
-            Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize - 1] = class163.method3416(Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize - 1]);
-            return 1;
-         } else if (var0 == 4033) {
-            Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize - 1] = SoundSystem.method874(Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize - 1]);
-            return 1;
-         } else if (var0 == 4034) {
-            class87.Interpreter_intStackSize -= 2;
-            var3 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize];
-            var4 = Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize + 1];
-            var5 = Ignored.method7614(var3, var4);
-            Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = var5;
-            return 1;
-         } else if (var0 == 4035) {
-            Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize - 1] = Math.abs(Interpreter.Interpreter_intStack[class87.Interpreter_intStackSize - 1]);
-            return 1;
-         } else {
-            return 2;
+      for(int var4 = 0; var4 < var1; ++var4) {
+         char var5 = var0.charAt(var4);
+         if (var3 == 0) {
+            var5 = Character.toLowerCase(var5);
+         } else if (var3 == 2 || Character.isUpperCase(var5)) {
+            var5 = class302.method5863(var5);
          }
+
+         if (Character.isLetter(var5)) {
+            var3 = 0;
+         } else if (var5 != '.' && var5 != '?' && var5 != '!') {
+            if (Character.isSpaceChar(var5)) {
+               if (var3 != 2) {
+                  var3 = 1;
+               }
+            } else {
+               var3 = 1;
+            }
+         } else {
+            var3 = 2;
+         }
+
+         var2[var4] = var5;
       }
+
+      return new String(var2);
+   }
+
+   @ObfuscatedName("jx")
+   @ObfuscatedSignature(
+      descriptor = "(IIIIII)V",
+      garbageValue = "-366230260"
+   )
+   @Export("drawScrollBar")
+   static final void drawScrollBar(int var0, int var1, int var2, int var3, int var4) {
+      InvDefinition.scrollBarSprites[0].drawAt(var0, var1);
+      InvDefinition.scrollBarSprites[1].drawAt(var0, var3 + var1 - 16);
+      Rasterizer2D.Rasterizer2D_fillRectangle(var0, var1 + 16, 16, var3 - 32, Client.field575);
+      int var5 = var3 * (var3 - 32) / var4;
+      if (var5 < 8) {
+         var5 = 8;
+      }
+
+      int var6 = (var3 - 32 - var5) * var2 / (var4 - var3);
+      Rasterizer2D.Rasterizer2D_fillRectangle(var0, var6 + var1 + 16, 16, var5, Client.field576);
+      Rasterizer2D.Rasterizer2D_drawVerticalLine(var0, var6 + var1 + 16, var5, Client.field636);
+      Rasterizer2D.Rasterizer2D_drawVerticalLine(var0 + 1, var6 + var1 + 16, var5, Client.field636);
+      Rasterizer2D.Rasterizer2D_drawHorizontalLine(var0, var6 + var1 + 16, 16, Client.field636);
+      Rasterizer2D.Rasterizer2D_drawHorizontalLine(var0, var6 + var1 + 17, 16, Client.field636);
+      Rasterizer2D.Rasterizer2D_drawVerticalLine(var0 + 15, var6 + var1 + 16, var5, Client.field656);
+      Rasterizer2D.Rasterizer2D_drawVerticalLine(var0 + 14, var6 + var1 + 17, var5 - 1, Client.field656);
+      Rasterizer2D.Rasterizer2D_drawHorizontalLine(var0, var6 + var5 + var1 + 15, 16, Client.field656);
+      Rasterizer2D.Rasterizer2D_drawHorizontalLine(var0 + 1, var5 + var6 + var1 + 14, 15, Client.field656);
    }
 }

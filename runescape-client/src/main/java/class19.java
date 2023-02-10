@@ -1,112 +1,50 @@
-import java.util.concurrent.Future;
+import java.io.IOException;
+import java.util.concurrent.Callable;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("t")
-public class class19 {
-   @ObfuscatedName("vb")
-   @Export("foundItemIds")
-   static short[] foundItemIds;
-   @ObfuscatedName("hi")
+@ObfuscatedName("x")
+public class class19 implements Callable {
+   @ObfuscatedName("i")
    @ObfuscatedSignature(
-      descriptor = "Lfl;"
+      descriptor = "Lrg;"
    )
-   @Export("socketTask")
-   static Task socketTask;
-   @ObfuscatedName("h")
-   Future field112;
-   @ObfuscatedName("e")
-   String field109;
+   static IndexedSprite field109;
+   @ObfuscatedName("ht")
+   @ObfuscatedSignature(
+      descriptor = "Lnv;"
+   )
+   @Export("fontBold12")
+   static Font fontBold12;
+   @ObfuscatedName("f")
+   @ObfuscatedSignature(
+      descriptor = "Lc;"
+   )
+   final class10 field110;
+   // $FF: synthetic field
+   @ObfuscatedSignature(
+      descriptor = "Lt;"
+   )
+   final class14 this$0;
 
-   class19(Future var1) {
-      this.field112 = var1;
+   @ObfuscatedSignature(
+      descriptor = "(Lt;Lc;)V"
+   )
+   class19(class14 var1, class10 var2) {
+      this.this$0 = var1;
+      this.field110 = var2;
    }
 
-   class19(String var1) {
-      this.method274(var1);
-   }
-
-   @ObfuscatedName("h")
-   @ObfuscatedSignature(
-      descriptor = "(Ljava/lang/String;I)V",
-      garbageValue = "-1964970587"
-   )
-   void method274(String var1) {
-      if (var1 == null) {
-         var1 = "";
-      }
-
-      this.field109 = var1;
-      if (this.field112 != null) {
-         this.field112.cancel(true);
-         this.field112 = null;
-      }
-
-   }
-
-   @ObfuscatedName("e")
-   @ObfuscatedSignature(
-      descriptor = "(B)Ljava/lang/String;",
-      garbageValue = "16"
-   )
-   public final String method275() {
-      return this.field109;
-   }
-
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      descriptor = "(B)Z",
-      garbageValue = "3"
-   )
-   public boolean method281() {
-      return this.field109 != null || this.field112 == null;
-   }
-
-   @ObfuscatedName("x")
-   @ObfuscatedSignature(
-      descriptor = "(B)Z",
-      garbageValue = "2"
-   )
-   public final boolean method279() {
-      return this.method281() ? true : this.field112.isDone();
-   }
-
-   @ObfuscatedName("m")
-   @ObfuscatedSignature(
-      descriptor = "(S)Lp;",
-      garbageValue = "-13054"
-   )
-   public final class21 method286() {
-      if (this.method281()) {
-         return new class21(this.field109);
-      } else if (!this.method279()) {
-         return null;
-      } else {
-         try {
-            return (class21)this.field112.get();
-         } catch (Exception var3) {
-            String var2 = "Error retrieving REST request reply";
-            System.err.println(var2 + "\r\n" + var3);
-            this.method274(var2);
-            return new class21(var2);
+   public Object call() throws Exception {
+      try {
+         while(this.field110.method103()) {
+            Clock.method3567(10L);
          }
+      } catch (IOException var2) {
+         return new class20("Error servicing REST query: " + var2.getMessage());
       }
-   }
 
-   @ObfuscatedName("e")
-   @ObfuscatedSignature(
-      descriptor = "(Lqx;IB)V",
-      garbageValue = "0"
-   )
-   @Export("updatePlayers")
-   static final void updatePlayers(PacketBuffer var0, int var1) {
-      int var2 = var0.offset;
-      Players.Players_pendingUpdateCount = 0;
-      FriendSystem.method1860(var0);
-      class300.method5841(var0);
-      if (var0.offset - var2 != var1) {
-         throw new RuntimeException(var0.offset - var2 + " " + var1);
-      }
+      return this.field110.method99();
    }
 }

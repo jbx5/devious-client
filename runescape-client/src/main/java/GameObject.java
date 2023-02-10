@@ -4,95 +4,89 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hp")
+@ObfuscatedName("iu")
 @Implements("GameObject")
 public final class GameObject {
-   @ObfuscatedName("sb")
-   @ObfuscatedSignature(
-      descriptor = "Lrx;"
-   )
-   @Export("sceneMinimapSprite")
-   static SpritePixels sceneMinimapSprite;
-   @ObfuscatedName("h")
+   @ObfuscatedName("f")
    @ObfuscatedGetter(
-      intValue = -1864133043
+      intValue = -1692376787
    )
    @Export("plane")
    int plane;
-   @ObfuscatedName("e")
+   @ObfuscatedName("w")
    @ObfuscatedGetter(
-      intValue = -1769154667
+      intValue = 1487795535
    )
    @Export("z")
    int z;
    @ObfuscatedName("v")
    @ObfuscatedGetter(
-      intValue = -472121489
+      intValue = -85158661
    )
    @Export("centerX")
    int centerX;
-   @ObfuscatedName("x")
+   @ObfuscatedName("s")
    @ObfuscatedGetter(
-      intValue = 1527155529
+      intValue = -1653532281
    )
    @Export("centerY")
    int centerY;
-   @ObfuscatedName("m")
-   @ObfuscatedGetter(
-      intValue = -835257591
-   )
-   @Export("orientation")
-   int orientation;
-   @ObfuscatedName("q")
+   @ObfuscatedName("z")
    @ObfuscatedSignature(
-      descriptor = "Lhr;"
+      descriptor = "Lhd;"
    )
    @Export("renderable")
    public Renderable renderable;
-   @ObfuscatedName("f")
+   @ObfuscatedName("j")
    @ObfuscatedGetter(
-      intValue = 1451034711
+      intValue = 1532913499
+   )
+   @Export("orientation")
+   int orientation;
+   @ObfuscatedName("i")
+   @ObfuscatedGetter(
+      intValue = 2094223063
    )
    @Export("startX")
    int startX;
-   @ObfuscatedName("r")
+   @ObfuscatedName("n")
    @ObfuscatedGetter(
-      intValue = 1873413133
+      intValue = 1521710851
    )
    @Export("endX")
    int endX;
-   @ObfuscatedName("u")
+   @ObfuscatedName("l")
    @ObfuscatedGetter(
-      intValue = -1389612741
+      intValue = -277724547
    )
    @Export("startY")
    int startY;
-   @ObfuscatedName("b")
+   @ObfuscatedName("k")
    @ObfuscatedGetter(
-      intValue = 675535951
+      intValue = -1740988579
    )
    @Export("endY")
    int endY;
-   @ObfuscatedName("j")
+   @ObfuscatedName("c")
    @ObfuscatedGetter(
-      intValue = 1098759017
+      intValue = 1657816971
    )
-   int field2806;
-   @ObfuscatedName("g")
+   int field2801;
+   @ObfuscatedName("r")
    @ObfuscatedGetter(
-      intValue = 187670921
+      intValue = -809829645
    )
    @Export("lastDrawn")
    int lastDrawn;
-   @ObfuscatedName("i")
+   @ObfuscatedName("b")
    @ObfuscatedGetter(
-      longValue = -7754761910240207891L
+      longValue = 4495018918080100601L
    )
    @Export("tag")
    public long tag = 0L;
-   @ObfuscatedName("o")
+   @ObfuscatedName("m")
    @ObfuscatedGetter(
-      intValue = -799893141
+      intValue = 16792299
    )
    @Export("flags")
    int flags = 0;
@@ -100,49 +94,98 @@ public final class GameObject {
    GameObject() {
    }
 
-   @ObfuscatedName("x")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "395481445"
+      descriptor = "(Ljava/lang/CharSequence;B)Ljava/lang/String;",
+      garbageValue = "71"
    )
-   static void method4831() {
-      if (Login.Login_username == null || Login.Login_username.length() <= 0) {
-         if (StructComposition.clientPreferences.method2430() != null) {
-            Login.Login_username = StructComposition.clientPreferences.method2430();
-            Client.Login_isUsernameRemembered = true;
-         } else {
-            Client.Login_isUsernameRemembered = false;
-         }
+   public static String method4868(CharSequence var0) {
+      int var1 = var0.length();
+      StringBuilder var2 = new StringBuilder(var1);
 
+      for(int var3 = 0; var3 < var1; ++var3) {
+         char var4 = var0.charAt(var3);
+         if ((var4 < 'a' || var4 > 'z') && (var4 < 'A' || var4 > 'Z') && (var4 < '0' || var4 > '9') && var4 != '.' && var4 != '-' && var4 != '*' && var4 != '_') {
+            if (var4 == ' ') {
+               var2.append('+');
+            } else {
+               byte var5 = class31.charToByteCp1252(var4);
+               var2.append('%');
+               int var6 = var5 >> 4 & 15;
+               if (var6 >= 10) {
+                  var2.append((char)(var6 + 55));
+               } else {
+                  var2.append((char)(var6 + 48));
+               }
+
+               var6 = var5 & 15;
+               if (var6 >= 10) {
+                  var2.append((char)(var6 + 55));
+               } else {
+                  var2.append((char)(var6 + 48));
+               }
+            }
+         } else {
+            var2.append(var4);
+         }
       }
+
+      return var2.toString();
    }
 
-   @ObfuscatedName("jt")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      descriptor = "(Lcg;B)V",
-      garbageValue = "4"
+      descriptor = "([Ljava/lang/String;[IIII)V",
+      garbageValue = "988147954"
    )
-   static void method4832(NPC var0) {
-      var0.field1181 = var0.definition.size;
-      var0.field1249 = var0.definition.rotation;
-      if (var0.field1249 == 0) {
-         var0.rotation = 0;
+   public static void method4867(String[] var0, int[] var1, int var2, int var3) {
+      if (var2 < var3) {
+         int var4 = (var3 + var2) / 2;
+         int var5 = var2;
+         String var6 = var0[var4];
+         var0[var4] = var0[var3];
+         var0[var3] = var6;
+         int var7 = var1[var4];
+         var1[var4] = var1[var3];
+         var1[var3] = var7;
+
+         for(int var8 = var2; var8 < var3; ++var8) {
+            if (var6 == null || var0[var8] != null && var0[var8].compareTo(var6) < (var8 & 1)) {
+               String var9 = var0[var8];
+               var0[var8] = var0[var5];
+               var0[var5] = var9;
+               int var10 = var1[var8];
+               var1[var8] = var1[var5];
+               var1[var5++] = var10;
+            }
+         }
+
+         var0[var3] = var0[var5];
+         var0[var5] = var6;
+         var1[var3] = var1[var5];
+         var1[var5] = var7;
+         method4867(var0, var1, var2, var5 - 1);
+         method4867(var0, var1, var5 + 1, var3);
       }
 
-      var0.walkSequence = var0.definition.walkSequence;
-      var0.walkBackSequence = var0.definition.walkBackSequence;
-      var0.walkLeftSequence = var0.definition.walkLeftSequence;
-      var0.walkRightSequence = var0.definition.walkRightSequence;
-      var0.idleSequence = var0.definition.idleSequence;
-      var0.turnLeftSequence = var0.definition.turnLeftSequence;
-      var0.turnRightSequence = var0.definition.turnRightSequence;
-      var0.runSequence = var0.definition.field2035;
-      var0.field1191 = var0.definition.field2038;
-      var0.field1201 = var0.definition.field2039;
-      var0.field1193 = var0.definition.field2040;
-      var0.field1194 = var0.definition.field2041;
-      var0.field1195 = var0.definition.field2042;
-      var0.field1226 = var0.definition.field2043;
-      var0.field1197 = var0.definition.field2044;
+   }
+
+   @ObfuscatedName("mu")
+   @ObfuscatedSignature(
+      descriptor = "(B)V",
+      garbageValue = "24"
+   )
+   static void method4866() {
+      if (class136.field1633 != null) {
+         Client.field796 = Client.cycle;
+         class136.field1633.method6759();
+
+         for(int var0 = 0; var0 < Client.players.length; ++var0) {
+            if (Client.players[var0] != null) {
+               class136.field1633.method6744(ParamComposition.baseX * 64 + (Client.players[var0].x >> 7), Client.baseY * 64 + (Client.players[var0].y >> 7));
+            }
+         }
+      }
+
    }
 }

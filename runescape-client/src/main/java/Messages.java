@@ -1,4 +1,3 @@
-import java.awt.FontMetrics;
 import java.util.HashMap;
 import java.util.Map;
 import net.runelite.mapping.Export;
@@ -7,122 +6,121 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("da")
+@ObfuscatedName("dz")
 @Implements("Messages")
 public class Messages {
-   @ObfuscatedName("h")
+   @ObfuscatedName("f")
    @Export("Messages_channels")
    static final Map Messages_channels = new HashMap();
-   @ObfuscatedName("e")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      descriptor = "Lql;"
+      descriptor = "Lqu;"
    )
    @Export("Messages_hashTable")
    static final IterableNodeHashTable Messages_hashTable = new IterableNodeHashTable(1024);
    @ObfuscatedName("v")
    @ObfuscatedSignature(
-      descriptor = "Lmm;"
+      descriptor = "Lmc;"
    )
    @Export("Messages_queue")
    static final IterableDualNodeQueue Messages_queue = new IterableDualNodeQueue();
-   @ObfuscatedName("x")
+   @ObfuscatedName("s")
    @ObfuscatedGetter(
-      intValue = -1199730995
+      intValue = -20630993
    )
    @Export("Messages_count")
    static int Messages_count = 0;
-   @ObfuscatedName("av")
-   @Export("loginScreenFontMetrics")
-   static FontMetrics loginScreenFontMetrics;
+   @ObfuscatedName("b")
+   static boolean field1381;
 
-   @ObfuscatedName("h")
+   @ObfuscatedName("s")
    @ObfuscatedSignature(
-      descriptor = "(Lly;B)V",
-      garbageValue = "0"
+      descriptor = "(Lda;FZI)F",
+      garbageValue = "-2108882173"
    )
-   public static void method2719(AbstractArchive var0) {
-      InvDefinition.InvDefinition_archive = var0;
-   }
+   static float method2821(class125 var0, float var1, boolean var2) {
+      float var3 = 0.0F;
+      if (var0 != null && var0.method3060() != 0) {
+         float var4 = (float)var0.field1524[0].field1474;
+         float var5 = (float)var0.field1524[var0.method3060() - 1].field1474;
+         float var6 = var5 - var4;
+         if ((double)var6 == 0.0) {
+            return var0.field1524[0].field1467;
+         } else {
+            float var7 = 0.0F;
+            if (var1 > var5) {
+               var7 = (var1 - var5) / var6;
+            } else {
+               var7 = (var1 - var4) / var6;
+            }
 
-   @ObfuscatedName("f")
-   @ObfuscatedSignature(
-      descriptor = "(Lqy;IIIIIII)V",
-      garbageValue = "-1974916673"
-   )
-   @Export("loadTerrain")
-   static final void loadTerrain(Buffer var0, int var1, int var2, int var3, int var4, int var5, int var6) {
-      boolean var7 = var1 >= 0 && var1 < 4 && var2 >= 0 && var2 < 104 && var3 >= 0 && var3 < 104;
-      int var8;
-      if (var7) {
-         Tiles.Tiles_renderFlags[var1][var2][var3] = 0;
+            double var8 = (double)((int)var7);
+            float var10 = Math.abs((float)((double)var7 - var8));
+            float var11 = var10 * var6;
+            var8 = Math.abs(1.0 + var8);
+            double var12 = var8 / 2.0;
+            double var14 = (double)((int)var12);
+            var10 = (float)(var12 - var14);
+            float var16;
+            float var17;
+            if (var2) {
+               if (var0.field1522 == class123.field1505) {
+                  if ((double)var10 != 0.0) {
+                     var11 += var4;
+                  } else {
+                     var11 = var5 - var11;
+                  }
+               } else if (var0.field1522 != class123.field1503 && var0.field1522 != class123.field1506) {
+                  if (var0.field1522 == class123.field1504) {
+                     var11 = var4 - var1;
+                     var16 = var0.field1524[0].field1469;
+                     var17 = var0.field1524[0].field1470;
+                     var3 = var0.field1524[0].field1467;
+                     if (0.0 != (double)var16) {
+                        var3 -= var17 * var11 / var16;
+                     }
 
-         while(true) {
-            var8 = Client.field515 < 209 ? var0.readUnsignedByte() : var0.readUnsignedShort();
-            if (var8 == 0) {
-               if (var1 == 0) {
-                  int[] var15 = Tiles.Tiles_heights[0][var2];
-                  int var12 = var4 + 932731;
-                  int var13 = var5 + 556238;
-                  int var14 = World.method1801(var12 + '넵', var13 + 91923, 4) - 128 + (World.method1801(10294 + var12, var13 + '鎽', 2) - 128 >> 1) + (World.method1801(var12, var13, 1) - 128 >> 2);
-                  var14 = (int)((double)var14 * 0.3) + 35;
-                  if (var14 < 10) {
-                     var14 = 10;
-                  } else if (var14 > 60) {
-                     var14 = 60;
+                     return var3;
+                  }
+               } else {
+                  var11 = var5 - var11;
+               }
+            } else if (var0.field1541 == class123.field1505) {
+               if (0.0 != (double)var10) {
+                  var11 = var5 - var11;
+               } else {
+                  var11 += var4;
+               }
+            } else if (var0.field1541 != class123.field1503 && var0.field1541 != class123.field1506) {
+               if (var0.field1541 == class123.field1504) {
+                  var11 = var1 - var5;
+                  var16 = var0.field1524[var0.method3060() - 1].field1473;
+                  var17 = var0.field1524[var0.method3060() - 1].field1472;
+                  var3 = var0.field1524[var0.method3060() - 1].field1467;
+                  if (0.0 != (double)var16) {
+                     var3 += var17 * var11 / var16;
                   }
 
-                  var15[var3] = -var14 * 8;
-               } else {
-                  Tiles.Tiles_heights[var1][var2][var3] = Tiles.Tiles_heights[var1 - 1][var2][var3] - 240;
+                  return var3;
                }
-               break;
-            }
-
-            if (var8 == 1) {
-               int var9 = var0.readUnsignedByte();
-               if (var9 == 1) {
-                  var9 = 0;
-               }
-
-               if (var1 == 0) {
-                  Tiles.Tiles_heights[0][var2][var3] = -var9 * 8;
-               } else {
-                  Tiles.Tiles_heights[var1][var2][var3] = Tiles.Tiles_heights[var1 - 1][var2][var3] - var9 * 8;
-               }
-               break;
-            }
-
-            if (var8 <= 49) {
-               class490.Tiles_overlays[var1][var2][var3] = Client.field515 < 209 ? (short)var0.readByte() : (short)var0.readShort();
-               Tiles.Tiles_shapes[var1][var2][var3] = (byte)((var8 - 2) / 4);
-               class358.field4344[var1][var2][var3] = (byte)(var8 - 2 + var6 & 3);
-            } else if (var8 <= 81) {
-               Tiles.Tiles_renderFlags[var1][var2][var3] = (byte)(var8 - 49);
             } else {
-               Tiles.Tiles_underlays[var1][var2][var3] = (short)(var8 - 81);
+               var11 += var4;
             }
+
+            var3 = UrlRequester.method2874(var0, var11);
+            float var18;
+            if (var2 && var0.field1522 == class123.field1506) {
+               var18 = var0.field1524[var0.method3060() - 1].field1467 - var0.field1524[0].field1467;
+               var3 = (float)((double)var3 - var8 * (double)var18);
+            } else if (!var2 && var0.field1541 == class123.field1506) {
+               var18 = var0.field1524[var0.method3060() - 1].field1467 - var0.field1524[0].field1467;
+               var3 = (float)((double)var3 + var8 * (double)var18);
+            }
+
+            return var3;
          }
       } else {
-         while(true) {
-            var8 = Client.field515 < 209 ? var0.readUnsignedByte() : var0.readUnsignedShort();
-            if (var8 == 0) {
-               break;
-            }
-
-            if (var8 == 1) {
-               var0.readUnsignedByte();
-               break;
-            }
-
-            if (var8 <= 49) {
-               if (Client.field515 < 209) {
-                  var0.readByte();
-               } else {
-                  var0.readShort();
-               }
-            }
-         }
+         return var3;
       }
-
    }
 }

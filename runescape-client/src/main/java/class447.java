@@ -1,9 +1,56 @@
 import net.runelite.mapping.ObfuscatedName;
 
-@ObfuscatedName("qt")
+@ObfuscatedName("qd")
 public class class447 {
-   @ObfuscatedName("v")
-   static final char[] field4842 = new char[]{' ', ' ', '_', '-', 'à', 'á', 'â', 'ä', 'ã', 'À', 'Á', 'Â', 'Ä', 'Ã', 'è', 'é', 'ê', 'ë', 'È', 'É', 'Ê', 'Ë', 'í', 'î', 'ï', 'Í', 'Î', 'Ï', 'ò', 'ó', 'ô', 'ö', 'õ', 'Ò', 'Ó', 'Ô', 'Ö', 'Õ', 'ù', 'ú', 'û', 'ü', 'Ù', 'Ú', 'Û', 'Ü', 'ç', 'Ç', 'ÿ', 'Ÿ', 'ñ', 'Ñ', 'ß'};
-   @ObfuscatedName("x")
-   static final char[] field4841 = new char[]{'[', ']', '#'};
+   @ObfuscatedName("f")
+   public final Object field4832;
+   @ObfuscatedName("w")
+   public final Object field4833;
+
+   public class447(Object var1, Object var2) {
+      this.field4832 = var1;
+      this.field4833 = var2;
+   }
+
+   public boolean equals(Object var1) {
+      if (var1 != null && var1 instanceof class447) {
+         class447 var2 = (class447)var1;
+         if (this.field4832 == null) {
+            if (var2.field4832 != null) {
+               return false;
+            }
+         } else if (!this.field4832.equals(var2.field4832)) {
+            return false;
+         }
+
+         if (this.field4833 == null) {
+            if (var2.field4833 != null) {
+               return false;
+            }
+         } else if (!this.field4833.equals(var2.field4833)) {
+            return false;
+         }
+
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public String toString() {
+      return this.field4832 + ", " + this.field4833;
+   }
+
+   public int hashCode() {
+      int var1 = 0;
+      if (this.field4832 != null) {
+         var1 += this.field4832.hashCode();
+      }
+
+      if (this.field4833 != null) {
+         var1 += 31 * this.field4833.hashCode();
+      }
+
+      return var1;
+   }
 }

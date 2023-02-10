@@ -4,64 +4,63 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hg")
+@ObfuscatedName("hu")
 @Implements("ViewportMouse")
 public class ViewportMouse {
-   @ObfuscatedName("h")
+   @ObfuscatedName("f")
    @Export("ViewportMouse_isInViewport")
-   public static boolean ViewportMouse_isInViewport = false;
-   @ObfuscatedName("e")
+   static boolean ViewportMouse_isInViewport = false;
+   @ObfuscatedName("w")
    @ObfuscatedGetter(
-      intValue = 233603823
+      intValue = -2103357105
    )
    @Export("ViewportMouse_x")
-   public static int ViewportMouse_x = 0;
+   static int ViewportMouse_x = 0;
    @ObfuscatedName("v")
    @ObfuscatedGetter(
-      intValue = 1918112547
+      intValue = 1057785079
    )
    @Export("ViewportMouse_y")
-   public static int ViewportMouse_y = 0;
-   @ObfuscatedName("x")
+   static int ViewportMouse_y = 0;
+   @ObfuscatedName("s")
    @Export("ViewportMouse_false0")
-   public static boolean ViewportMouse_false0 = false;
-   @ObfuscatedName("q")
-   @ObfuscatedGetter(
-      intValue = 1060045251
-   )
-   static int field2746;
-   @ObfuscatedName("b")
-   @ObfuscatedGetter(
-      intValue = 242710193
-   )
-   static int field2747;
-   @ObfuscatedName("j")
-   @ObfuscatedGetter(
-      intValue = -61886565
-   )
-   static int field2749;
+   static boolean ViewportMouse_false0 = false;
    @ObfuscatedName("i")
    @ObfuscatedGetter(
-      intValue = 2117851361
+      intValue = 108829011
    )
-   static int field2742;
-   @ObfuscatedName("o")
+   static int field2744;
+   @ObfuscatedName("m")
    @ObfuscatedGetter(
-      intValue = -1096761705
+      intValue = -1104628383
    )
    @Export("ViewportMouse_entityCount")
    public static int ViewportMouse_entityCount = 0;
-   @ObfuscatedName("n")
+   @ObfuscatedName("t")
    @Export("ViewportMouse_entityTags")
    public static long[] ViewportMouse_entityTags = new long[1000];
 
-   @ObfuscatedName("b")
+   @ObfuscatedName("j")
    @ObfuscatedSignature(
-      descriptor = "(CI)Z",
-      garbageValue = "1012943456"
+      descriptor = "(II)Z",
+      garbageValue = "-1193422924"
    )
-   @Export("isCharAlphabetic")
-   public static boolean isCharAlphabetic(char var0) {
-      return var0 >= 'A' && var0 <= 'Z' || var0 >= 'a' && var0 <= 'z';
+   public static boolean method4813(int var0) {
+      return (var0 >> 28 & 1) != 0;
+   }
+
+   @ObfuscatedName("k")
+   @ObfuscatedSignature(
+      descriptor = "(Lkz;IIII)V",
+      garbageValue = "498385779"
+   )
+   @Export("Widget_setKeyRate")
+   static final void Widget_setKeyRate(Widget var0, int var1, int var2, int var3) {
+      if (var0.field3634 == null) {
+         throw new RuntimeException();
+      } else {
+         var0.field3634[var1] = var2;
+         var0.field3635[var1] = var3;
+      }
    }
 }

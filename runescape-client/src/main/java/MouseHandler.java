@@ -9,142 +9,130 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ab")
+@ObfuscatedName("ax")
 @Implements("MouseHandler")
 public class MouseHandler implements MouseListener, MouseMotionListener, FocusListener {
-   @ObfuscatedName("x")
-   @ObfuscatedGetter(
-      intValue = -467089053
-   )
-   @Export("MouseHandler_y")
-   public static int MouseHandler_y = 0;
-   @ObfuscatedName("m")
+   @ObfuscatedName("s")
    @ObfuscatedSignature(
-      descriptor = "Lab;"
+      descriptor = "Lax;"
    )
    @Export("MouseHandler_instance")
    public static MouseHandler MouseHandler_instance = new MouseHandler();
-   @ObfuscatedName("q")
+   @ObfuscatedName("z")
    @ObfuscatedGetter(
-      intValue = -666107829
+      intValue = -912265761
    )
    @Export("MouseHandler_idleCycles")
    public static volatile int MouseHandler_idleCycles = 0;
-   @ObfuscatedName("f")
-   @ObfuscatedGetter(
-      intValue = -1780151387
-   )
-   @Export("MouseHandler_currentButtonVolatile")
-   public static volatile int MouseHandler_currentButtonVolatile = 0;
-   @ObfuscatedName("r")
-   @ObfuscatedGetter(
-      intValue = -178516955
-   )
-   @Export("MouseHandler_xVolatile")
-   public static volatile int MouseHandler_xVolatile = -1;
-   @ObfuscatedName("u")
-   @ObfuscatedGetter(
-      intValue = 1239267453
-   )
-   @Export("MouseHandler_yVolatile")
-   public static volatile int MouseHandler_yVolatile = -1;
-   @ObfuscatedName("b")
-   @ObfuscatedGetter(
-      longValue = 4716901357680916313L
-   )
-   @Export("MouseHandler_lastMovedVolatile")
-   public static volatile long MouseHandler_lastMovedVolatile = -1L;
    @ObfuscatedName("j")
    @ObfuscatedGetter(
-      intValue = -1144336295
+      intValue = -1575282397
    )
-   @Export("MouseHandler_currentButton")
-   public static int MouseHandler_currentButton = 0;
-   @ObfuscatedName("g")
+   @Export("MouseHandler_currentButtonVolatile")
+   static volatile int MouseHandler_currentButtonVolatile = 0;
+   @ObfuscatedName("i")
    @ObfuscatedGetter(
-      intValue = 1055725291
+      intValue = 1059969675
+   )
+   @Export("MouseHandler_xVolatile")
+   static volatile int MouseHandler_xVolatile = -1;
+   @ObfuscatedName("n")
+   @ObfuscatedGetter(
+      intValue = -1998720499
+   )
+   @Export("MouseHandler_yVolatile")
+   static volatile int MouseHandler_yVolatile = -1;
+   @ObfuscatedName("l")
+   @ObfuscatedGetter(
+      longValue = 8611634018514314459L
+   )
+   @Export("MouseHandler_lastMovedVolatile")
+   static volatile long MouseHandler_lastMovedVolatile = -1L;
+   @ObfuscatedName("k")
+   @ObfuscatedGetter(
+      intValue = -1498866663
    )
    @Export("MouseHandler_x")
    public static int MouseHandler_x = 0;
-   @ObfuscatedName("i")
+   @ObfuscatedName("c")
    @ObfuscatedGetter(
-      longValue = 1841814800481912317L
+      intValue = -384176359
+   )
+   @Export("MouseHandler_currentButton")
+   public static int MouseHandler_currentButton = 0;
+   @ObfuscatedName("r")
+   @ObfuscatedGetter(
+      intValue = -278205531
+   )
+   @Export("MouseHandler_y")
+   public static int MouseHandler_y = 0;
+   @ObfuscatedName("b")
+   @ObfuscatedGetter(
+      longValue = 3571772717098428175L
    )
    @Export("MouseHandler_millis")
    public static long MouseHandler_millis = 0L;
-   @ObfuscatedName("o")
+   @ObfuscatedName("m")
    @ObfuscatedGetter(
-      intValue = -1359580461
+      intValue = 1415622569
    )
    @Export("MouseHandler_lastButtonVolatile")
-   public static volatile int MouseHandler_lastButtonVolatile = 0;
-   @ObfuscatedName("n")
+   static volatile int MouseHandler_lastButtonVolatile = 0;
+   @ObfuscatedName("t")
    @ObfuscatedGetter(
-      intValue = -1431798489
+      intValue = 623256745
    )
    @Export("MouseHandler_lastPressedXVolatile")
-   public static volatile int MouseHandler_lastPressedXVolatile = 0;
-   @ObfuscatedName("k")
+   static volatile int MouseHandler_lastPressedXVolatile = 0;
+   @ObfuscatedName("h")
    @ObfuscatedGetter(
-      intValue = -231426227
+      intValue = 1887239603
    )
    @Export("MouseHandler_lastPressedYVolatile")
-   public static volatile int MouseHandler_lastPressedYVolatile = 0;
-   @ObfuscatedName("a")
+   static volatile int MouseHandler_lastPressedYVolatile = 0;
+   @ObfuscatedName("p")
    @ObfuscatedGetter(
-      longValue = -1319422683492569027L
+      longValue = 7328677094157922607L
    )
    @Export("MouseHandler_lastPressedTimeMillisVolatile")
-   public static volatile long MouseHandler_lastPressedTimeMillisVolatile = 0L;
-   @ObfuscatedName("s")
+   static volatile long MouseHandler_lastPressedTimeMillisVolatile = 0L;
+   @ObfuscatedName("o")
    @ObfuscatedGetter(
-      intValue = 1573473759
+      intValue = 743788703
    )
    @Export("MouseHandler_lastButton")
    public static int MouseHandler_lastButton = 0;
-   @ObfuscatedName("l")
+   @ObfuscatedName("u")
    @ObfuscatedGetter(
-      intValue = 1391909665
+      intValue = 1894371577
    )
    @Export("MouseHandler_lastPressedX")
    public static int MouseHandler_lastPressedX = 0;
-   @ObfuscatedName("t")
+   @ObfuscatedName("x")
    @ObfuscatedGetter(
-      intValue = -255937079
+      intValue = 464680597
    )
    @Export("MouseHandler_lastPressedY")
    public static int MouseHandler_lastPressedY = 0;
-   @ObfuscatedName("c")
+   @ObfuscatedName("a")
    @ObfuscatedGetter(
-      longValue = -3284909752288296989L
+      longValue = 520159285792776095L
    )
    @Export("MouseHandler_lastPressedTimeMillis")
    public static long MouseHandler_lastPressedTimeMillis = 0L;
-   @ObfuscatedName("ih")
+   @ObfuscatedName("ph")
    @ObfuscatedSignature(
-      descriptor = "[Lrx;"
+      descriptor = "[Lkz;"
    )
-   @Export("crossSprites")
-   static SpritePixels[] crossSprites;
-   @ObfuscatedName("nb")
-   @ObfuscatedGetter(
-      intValue = -1112640559
-   )
-   @Export("menuHeight")
-   static int menuHeight;
-   @ObfuscatedName("pr")
-   @ObfuscatedSignature(
-      descriptor = "[Lkd;"
-   )
-   static Widget[] field268;
+   static Widget[] field262;
 
    MouseHandler() {
    }
 
-   @ObfuscatedName("v")
+   @ObfuscatedName("s")
    @ObfuscatedSignature(
-      descriptor = "(Ljava/awt/event/MouseEvent;B)I",
-      garbageValue = "116"
+      descriptor = "(Ljava/awt/event/MouseEvent;I)I",
+      garbageValue = "-1007792141"
    )
    @Export("getButton")
    final int getButton(MouseEvent var1) {
@@ -166,15 +154,25 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
 
    }
 
-   public final void focusGained(FocusEvent var1) {
-   }
-
-   public final synchronized void mouseReleased(MouseEvent var1) {
+   public final synchronized void mousePressed(MouseEvent var1) {
       if (MouseHandler_instance != null) {
          MouseHandler_idleCycles = 0;
-         MouseHandler_currentButtonVolatile = 0;
+         MouseHandler_lastPressedXVolatile = var1.getX();
+         MouseHandler_lastPressedYVolatile = var1.getY();
+         MouseHandler_lastPressedTimeMillisVolatile = class153.method3317();
+         MouseHandler_lastButtonVolatile = this.getButton(var1);
+         if (MouseHandler_lastButtonVolatile != 0) {
+            MouseHandler_currentButtonVolatile = MouseHandler_lastButtonVolatile;
+         }
       }
 
+      if (var1.isPopupTrigger()) {
+         var1.consume();
+      }
+
+   }
+
+   public final void mouseClicked(MouseEvent var1) {
       if (var1.isPopupTrigger()) {
          var1.consume();
       }
@@ -185,9 +183,13 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
       this.mouseMoved(var1);
    }
 
-   public final void mouseClicked(MouseEvent var1) {
-      if (var1.isPopupTrigger()) {
-         var1.consume();
+   public final synchronized void mouseDragged(MouseEvent var1) {
+      this.mouseMoved(var1);
+   }
+
+   public final synchronized void focusLost(FocusEvent var1) {
+      if (MouseHandler_instance != null) {
+         MouseHandler_currentButtonVolatile = 0;
       }
 
    }
@@ -202,27 +204,10 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
 
    }
 
-   public final synchronized void focusLost(FocusEvent var1) {
-      if (MouseHandler_instance != null) {
-         MouseHandler_currentButtonVolatile = 0;
-      }
-
-   }
-
-   public final synchronized void mouseDragged(MouseEvent var1) {
-      this.mouseMoved(var1);
-   }
-
-   public final synchronized void mousePressed(MouseEvent var1) {
+   public final synchronized void mouseReleased(MouseEvent var1) {
       if (MouseHandler_instance != null) {
          MouseHandler_idleCycles = 0;
-         MouseHandler_lastPressedXVolatile = var1.getX();
-         MouseHandler_lastPressedYVolatile = var1.getY();
-         MouseHandler_lastPressedTimeMillisVolatile = Message.method1197();
-         MouseHandler_lastButtonVolatile = this.getButton(var1);
-         if (MouseHandler_lastButtonVolatile != 0) {
-            MouseHandler_currentButtonVolatile = MouseHandler_lastButtonVolatile;
-         }
+         MouseHandler_currentButtonVolatile = 0;
       }
 
       if (var1.isPopupTrigger()) {
@@ -231,13 +216,6 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
 
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      descriptor = "(IIIIB)I",
-      garbageValue = "-23"
-   )
-   static final int method700(int var0, int var1, int var2, int var3) {
-      int var4 = 65536 - Rasterizer3D.Rasterizer3D_cosine[var2 * 1024 / var3] >> 1;
-      return ((65536 - var4) * var0 >> 16) + (var4 * var1 >> 16);
+   public final void focusGained(FocusEvent var1) {
    }
 }

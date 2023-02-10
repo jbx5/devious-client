@@ -4,47 +4,47 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cq")
+@ObfuscatedName("cr")
 @Implements("ArchiveLoader")
 public class ArchiveLoader {
-   @ObfuscatedName("e")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      descriptor = "Lln;"
+      descriptor = "Llm;"
    )
    @Export("archive")
    final Archive archive;
    @ObfuscatedName("v")
    @ObfuscatedGetter(
-      intValue = 1940986101
+      intValue = 322604319
    )
    @Export("groupCount")
    final int groupCount;
-   @ObfuscatedName("x")
+   @ObfuscatedName("s")
    @ObfuscatedGetter(
-      intValue = 2076780085
+      intValue = 1823567525
    )
    @Export("loadedCount")
    int loadedCount = 0;
 
    @ObfuscatedSignature(
-      descriptor = "(Lln;Ljava/lang/String;)V"
+      descriptor = "(Llm;Ljava/lang/String;)V"
    )
    ArchiveLoader(Archive var1, String var2) {
       this.archive = var1;
       this.groupCount = var1.getGroupCount();
    }
 
-   @ObfuscatedName("h")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
       descriptor = "(B)Z",
-      garbageValue = "3"
+      garbageValue = "-100"
    )
    @Export("isLoaded")
    boolean isLoaded() {
       this.loadedCount = 0;
 
       for(int var1 = 0; var1 < this.groupCount; ++var1) {
-         if (!this.archive.method6448(var1) || this.archive.method6424(var1)) {
+         if (!this.archive.method6484(var1) || this.archive.method6483(var1)) {
             ++this.loadedCount;
          }
       }
@@ -52,30 +52,34 @@ public class ArchiveLoader {
       return this.loadedCount >= this.groupCount;
    }
 
-   @ObfuscatedName("mm")
+   @ObfuscatedName("v")
    @ObfuscatedSignature(
-      descriptor = "(Lkd;I)Ljava/lang/String;",
-      garbageValue = "764446077"
+      descriptor = "(I)[Llu;",
+      garbageValue = "1369192932"
    )
-   @Export("Widget_getSpellActionName")
-   static String Widget_getSpellActionName(Widget var0) {
-      if (PacketWriter.Widget_unpackTargetMask(Clock.getWidgetFlags(var0)) == 0) {
-         return null;
-      } else {
-         return var0.spellActionName != null && var0.spellActionName.trim().length() != 0 ? var0.spellActionName : null;
-      }
+   @Export("PlayerType_values")
+   public static PlayerType[] PlayerType_values() {
+      return new PlayerType[]{PlayerType.field4175, PlayerType.field4169, PlayerType.PlayerType_jagexModerator, PlayerType.PlayerType_ironman, PlayerType.field4178, PlayerType.field4184, PlayerType.PlayerType_ultimateIronman, PlayerType.field4182, PlayerType.PlayerType_normal, PlayerType.PlayerType_playerModerator, PlayerType.PlayerType_hardcoreIronman, PlayerType.field4176, PlayerType.field4177, PlayerType.field4180, PlayerType.field4174, PlayerType.field4190, PlayerType.field4179};
    }
 
-   @ObfuscatedName("mc")
+   @ObfuscatedName("s")
    @ObfuscatedSignature(
-      descriptor = "([BII)V",
-      garbageValue = "1191186738"
+      descriptor = "(Lru;B)I",
+      garbageValue = "38"
    )
-   static void method2222(byte[] var0, int var1) {
-      if (Client.randomDatData == null) {
-         Client.randomDatData = new byte[24];
+   static int method2283(PacketBuffer var0) {
+      int var1 = var0.readBits(2);
+      int var2;
+      if (var1 == 0) {
+         var2 = 0;
+      } else if (var1 == 1) {
+         var2 = var0.readBits(5);
+      } else if (var1 == 2) {
+         var2 = var0.readBits(8);
+      } else {
+         var2 = var0.readBits(11);
       }
 
-      class373.writeRandomDat(var0, var1, Client.randomDatData, 0, 24);
+      return var2;
    }
 }

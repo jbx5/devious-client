@@ -14,6 +14,7 @@ import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
 import net.unethicalite.api.game.Skills;
 import net.unethicalite.api.game.Vars;
+import net.unethicalite.api.game.Worlds;
 import net.unethicalite.api.quests.Quests;
 import net.unethicalite.client.Static;
 
@@ -151,39 +152,45 @@ public class Minigames
 	@AllArgsConstructor
 	public enum Destination
 	{
-		BARBARIAN_ASSAULT(1, "Barbarian Assault", new WorldPoint(2531, 3577, 0)),
-		BLAST_FURNACE(2, "Blast Furnace", new WorldPoint(2933, 10183, 0)),
-		BURTHORPE_GAMES_ROOM(3, "Burthorpe Games Room", new WorldPoint(2208, 4938, 0)),
-		CASTLE_WARS(4, "Castle Wars", new WorldPoint(2439, 3092, 0)),
-		CLAN_WARS(5, "Clan Wars", new WorldPoint(3151, 3636, 0)),
-		DAGANNOTH_KINGS(6, "Dagannoth Kings", null),
-		FISHING_TRAWLER(7, "Fishing Trawler", new WorldPoint(2658, 3158, 0)),
-		GIANTS_FOUNDARY(8, "Giants' Foundary", new WorldPoint(3361, 3147, 0)),
-		GOD_WARS(9, "God Wars", null),
-		GUARDIANS_OF_THE_RIFT(10, "Guardians of the Rift", new WorldPoint(3616, 9478, 0)),
-		LAST_MAN_STANDING(11, "Last Man Standing", new WorldPoint(3149, 3635, 0)),
-		NIGHTMARE_ZONE(12, "Nightmare Zone", new WorldPoint(2611, 3121, 0)),
-		PEST_CONTROL(13, "Pest Control", new WorldPoint(2653, 2655, 0)),
-		PLAYER_OWNED_HOUSES(14, "Player Owned Houses", null),
-		RAT_PITS(15, "Rat Pits", new WorldPoint(3263, 3406, 0)),
-		SHADES_OF_MORTTON(16, "Shades of Mort'ton", new WorldPoint(3500, 3300, 0)),
-		SHIELD_OF_ARRAV(17, "Shield of Arrav", null),
-		SHOOTING_STARS(18, "Shooting Stars", null),
-		SOUL_WARS(19, "Soul Wars", new WorldPoint(2209, 2857, 0)),
-		THEATRE_OF_BLOOD(20, "Theatre of Blood", null),
-		TITHE_FARM(21, "Tithe Farm", new WorldPoint(1793, 3501, 0)),
-		TROUBLE_BREWING(22, "Trouble Brewing", new WorldPoint(3811, 3021, 0)),
-		TZHAAR_FIGHT_PIT(23, "TzHaar Fight Pit", new WorldPoint(2402, 5181, 0)),
-		VOLCANIC_MINE(24, "Volcanic Mine", null),
-		NONE(-1, "None", null);
+		BARBARIAN_ASSAULT(1, "Barbarian Assault", new WorldPoint(2531, 3577, 0), false),
+		BLAST_FURNACE(2, "Blast Furnace", new WorldPoint(2933, 10183, 0), true),
+		BURTHORPE_GAMES_ROOM(3, "Burthorpe Games Room", new WorldPoint(2208, 4938, 0), true),
+		CASTLE_WARS(4, "Castle Wars", new WorldPoint(2439, 3092, 0), false),
+		CLAN_WARS(5, "Clan Wars", new WorldPoint(3151, 3636, 0), false),
+		DAGANNOTH_KINGS(6, "Dagannoth Kings", null, true),
+		FISHING_TRAWLER(7, "Fishing Trawler", new WorldPoint(2658, 3158, 0), true),
+		GIANTS_FOUNDARY(8, "Giants' Foundary", new WorldPoint(3361, 3147, 0), true),
+		GOD_WARS(9, "God Wars", null, true),
+		GUARDIANS_OF_THE_RIFT(10, "Guardians of the Rift", new WorldPoint(3616, 9478, 0), true),
+		LAST_MAN_STANDING(11, "Last Man Standing", new WorldPoint(3149, 3635, 0), false),
+		NIGHTMARE_ZONE(12, "Nightmare Zone", new WorldPoint(2611, 3121, 0), true),
+		PEST_CONTROL(13, "Pest Control", new WorldPoint(2653, 2655, 0), true),
+		PLAYER_OWNED_HOUSES(14, "Player Owned Houses", null, false),
+		RAT_PITS(15, "Rat Pits", new WorldPoint(3263, 3406, 0), true),
+		SHADES_OF_MORTTON(16, "Shades of Mort'ton", new WorldPoint(3500, 3300, 0), true),
+		SHIELD_OF_ARRAV(17, "Shield of Arrav", null, true),
+		SHOOTING_STARS(18, "Shooting Stars", null, true),
+		SOUL_WARS(19, "Soul Wars", new WorldPoint(2209, 2857, 0), true),
+		THEATRE_OF_BLOOD(20, "Theatre of Blood", null, true),
+		TITHE_FARM(21, "Tithe Farm", new WorldPoint(1793, 3501, 0), true),
+		TROUBLE_BREWING(22, "Trouble Brewing", new WorldPoint(3811, 3021, 0), true),
+		TZHAAR_FIGHT_PIT(23, "TzHaar Fight Pit", new WorldPoint(2402, 5181, 0), true),
+		VOLCANIC_MINE(24, "Volcanic Mine", null, true),
+		NONE(-1, "None", null, false);
 
 		private final int index;
 		private final String name;
 		private final WorldPoint location;
+		private final boolean members;
 
 		public boolean canUse()
 		{
 			if (!hasDestination())
+			{
+				return false;
+			}
+
+			if (members && !Worlds.inMembersWorld())
 			{
 				return false;
 			}
