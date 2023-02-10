@@ -45,7 +45,7 @@ public class class97 {
    @ObfuscatedName("w")
    @ObfuscatedSignature(
       descriptor = "(B)I",
-      garbageValue = "-73"
+      garbageValue = "33"
    )
    int method2692() {
       return this.field1310;
@@ -54,7 +54,7 @@ public class class97 {
    @ObfuscatedName("v")
    @ObfuscatedSignature(
       descriptor = "(I)I",
-      garbageValue = "-1907200129"
+      garbageValue = "-1621620467"
    )
    int method2693() {
       return this.field1308;
@@ -63,7 +63,7 @@ public class class97 {
    @ObfuscatedName("s")
    @ObfuscatedSignature(
       descriptor = "(I)I",
-      garbageValue = "2091202510"
+      garbageValue = "1286894246"
    )
    int method2694() {
       return this.field1309;

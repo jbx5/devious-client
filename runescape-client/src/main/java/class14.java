@@ -90,7 +90,7 @@ public class class14 {
       for(int var4 = var1; var4 <= var3 + var1; ++var4) {
          for(int var5 = var0; var5 <= var0 + var2; ++var5) {
             if (var5 >= 0 && var5 < 104 && var4 >= 0 && var4 < 104) {
-               Tiles.Tiles_underlays[0][var5][var4] = 127;
+               Tiles.Tiles_underlays2[0][var5][var4] = 127;
                if (var0 == var5 && var5 > 0) {
                   Tiles.Tiles_heights[0][var5][var4] = Tiles.Tiles_heights[0][var5 - 1][var4];
                }

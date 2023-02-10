@@ -394,7 +394,7 @@ public class FontName {
          class172.Tiles_overlays[var2] = null;
          Tiles.Tiles_shapes[var2] = null;
          Tiles.field1012[var2] = null;
-         Tiles.Tiles_underlays[var2] = null;
+         Tiles.Tiles_underlays2[var2] = null;
       }
 
       var0.method4487(-50, -10, -50);
