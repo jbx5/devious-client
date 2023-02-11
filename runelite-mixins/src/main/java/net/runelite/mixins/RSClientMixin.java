@@ -907,7 +907,8 @@ public abstract class RSClientMixin implements RSClient
 		{
 			if (idx < 0)
 			{
-				idx = client.getMenuOptionCount() + idx + 1;
+				idx = +1;
+
 				if (idx < 0)
 				{
 					throw new IllegalArgumentException();
