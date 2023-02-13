@@ -6017,7 +6017,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
    )
    @Export("menu")
    final void menu() {
-      class127.method3082();
+      class127.menuSort();
       if (WorldMapLabelSize.dragInventoryWidget == null) {
          if (clickedWidget == null) {
             int var1 = MouseHandler.MouseHandler_lastButton;
