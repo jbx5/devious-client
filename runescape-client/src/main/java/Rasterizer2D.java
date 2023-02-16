@@ -619,6 +619,7 @@ public class Rasterizer2D extends DualNode {
    }
 
    @ObfuscatedName("dc")
+   @Export("Rasterizer2D_drawHorizontalLine")
    public static void Rasterizer2D_drawHorizontalLine(int var0, int var1, int var2, int var3) {
       if (var1 >= Rasterizer2D_yClipStart && var1 < Rasterizer2D_yClipEnd) {
          if (var0 < Rasterizer2D_xClipStart) {
@@ -670,6 +671,7 @@ public class Rasterizer2D extends DualNode {
    }
 
    @ObfuscatedName("du")
+   @Export("Rasterizer2D_drawVerticalLine")
    public static void Rasterizer2D_drawVerticalLine(int var0, int var1, int var2, int var3) {
       if (var0 >= Rasterizer2D_xClipStart && var0 < Rasterizer2D_xClipEnd) {
          if (var1 < Rasterizer2D_yClipStart) {

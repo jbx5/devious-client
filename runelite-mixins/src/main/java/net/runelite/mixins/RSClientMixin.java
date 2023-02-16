@@ -94,6 +94,7 @@ import net.runelite.api.events.NpcSpawned;
 import net.runelite.api.events.PlayerDespawned;
 import net.runelite.api.events.PlayerMenuOptionsChanged;
 import net.runelite.api.events.PlayerSpawned;
+import net.runelite.api.events.PostMenuSort;
 import net.runelite.api.events.PostStructComposition;
 import net.runelite.api.events.ResizeableChanged;
 import net.runelite.api.events.StatChanged;
@@ -1036,6 +1037,32 @@ public abstract class RSClientMixin implements RSClient
 			client.getTempMenuAction().setParam0(client.getMenuArguments1()[client.getMenuOptionCount() - 1]);
 			client.getTempMenuAction().setParam1(client.getMenuArguments2()[client.getMenuOptionCount() - 1]);
 			client.getTempMenuAction().setItemId(client.getMenuItemIds()[client.getMenuOptionCount() - 1]);
+		}
+	}
+
+	@Copy("menuSort")
+	@Replace("menuSort")
+	public static void copy$menuSort()
+	{
+		if (!client.isMenuOpen())
+		{
+			while (true)
+			{
+				boolean postMenuSort = true;
+				for (int i = 0; i < client.getMenuOptionCount() - 1; i++)
+				{
+					if (client.getMenuOpcodes()[i] < 1000 && client.getMenuOpcodes()[i + 1] > 1000)
+					{
+						sortMenuEntries(i, i + 1);
+						postMenuSort = false;
+					}
+				}
+				if (postMenuSort)
+				{
+					client.getCallbacks().post(new PostMenuSort());
+					break;
+				}
+			}
 		}
 	}
 
