@@ -1,136 +1,98 @@
+import java.lang.management.GarbageCollectorMXBean;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("eq")
+@ObfuscatedName("fa")
 public enum class135 implements MouseWheel {
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
-      descriptor = "Leq;"
+      descriptor = "Lfa;"
    )
-   field1626(2, 0),
-   @ObfuscatedName("w")
+   field1588(0, 0),
+   @ObfuscatedName("al")
    @ObfuscatedSignature(
-      descriptor = "Leq;"
+      descriptor = "Lfa;"
    )
-   field1623(4, 1),
-   @ObfuscatedName("v")
+   field1579(1, 1),
+   @ObfuscatedName("ac")
    @ObfuscatedSignature(
-      descriptor = "Leq;"
+      descriptor = "Lfa;"
    )
-   field1624(0, 2),
-   @ObfuscatedName("s")
+   field1580(2, 2),
+   @ObfuscatedName("ab")
    @ObfuscatedSignature(
-      descriptor = "Leq;"
+      descriptor = "Lfa;"
    )
-   field1625(3, 3),
-   @ObfuscatedName("z")
+   field1581(3, 3),
+   @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "Leq;"
+      descriptor = "Lfa;"
    )
-   field1630(1, 4);
+   field1589(4, 4),
+   @ObfuscatedName("ao")
+   @ObfuscatedSignature(
+      descriptor = "Lfa;"
+   )
+   field1583(5, 5),
+   @ObfuscatedName("av")
+   @ObfuscatedSignature(
+      descriptor = "Lfa;"
+   )
+   field1584(6, 6),
+   @ObfuscatedName("aq")
+   @ObfuscatedSignature(
+      descriptor = "Lfa;"
+   )
+   field1585(7, 7),
+   @ObfuscatedName("ap")
+   @ObfuscatedSignature(
+      descriptor = "Lfa;"
+   )
+   field1586(8, 8);
 
-   @ObfuscatedName("uq")
-   @ObfuscatedGetter(
-      intValue = 1009971383
+   @ObfuscatedName("bp")
+   @Export("garbageCollector")
+   static GarbageCollectorMXBean garbageCollector;
+   @ObfuscatedName("fg")
+   @ObfuscatedSignature(
+      descriptor = "Lmx;"
    )
-   static int field1629;
-   @ObfuscatedName("j")
+   @Export("archive4")
+   static Archive archive4;
+   @ObfuscatedName("ar")
    @ObfuscatedGetter(
-      intValue = -236409277
+      intValue = -1601735427
    )
-   public final int field1627;
-   @ObfuscatedName("i")
+   final int field1582;
+   @ObfuscatedName("ak")
    @ObfuscatedGetter(
-      intValue = -1115089473
+      intValue = 443647549
    )
-   @Export("id")
-   final int id;
+   final int field1590;
 
    class135(int var3, int var4) {
-      this.field1627 = var3;
-      this.id = var4;
+      this.field1582 = var3;
+      this.field1590 = var4;
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
-      descriptor = "(B)I",
-      garbageValue = "3"
+      descriptor = "(I)I",
+      garbageValue = "-1409646049"
    )
    @Export("rsOrdinal")
    public int rsOrdinal() {
-      return this.id;
+      return this.field1590;
    }
 
-   @ObfuscatedName("w")
+   @ObfuscatedName("cj")
    @ObfuscatedSignature(
-      descriptor = "(III)Lkz;",
-      garbageValue = "-1176907573"
+      descriptor = "(II)Ljava/lang/Object;",
+      garbageValue = "1765946215"
    )
-   @Export("getWidgetChild")
-   public static Widget getWidgetChild(int var0, int var1) {
-      Widget var2 = class133.getWidget(var0);
-      if (var1 == -1) {
-         return var2;
-      } else {
-         return var2 != null && var2.children != null && var1 < var2.children.length ? var2.children[var1] : null;
-      }
-   }
-
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      descriptor = "(I)[Lch;",
-      garbageValue = "381687737"
-   )
-   static class85[] method3131() {
-      return new class85[]{class85.field1084, class85.field1089, class85.field1083, class85.field1086, class85.field1092};
-   }
-
-   @ObfuscatedName("kd")
-   @ObfuscatedSignature(
-      descriptor = "([Lkz;IB)V",
-      garbageValue = "10"
-   )
-   @Export("runComponentCloseListeners")
-   static final void runComponentCloseListeners(Widget[] var0, int var1) {
-      for(int var2 = 0; var2 < var0.length; ++var2) {
-         Widget var3 = var0[var2];
-         if (var3 != null) {
-            if (var3.type == 0) {
-               if (var3.children != null) {
-                  runComponentCloseListeners(var3.children, var1);
-               }
-
-               InterfaceParent var4 = (InterfaceParent)Client.interfaceParents.get((long)var3.id);
-               if (var4 != null) {
-                  class147.runIntfCloseListeners(var4.group, var1);
-               }
-            }
-
-            ScriptEvent var5;
-            if (var1 == 0 && var3.onDialogAbort != null) {
-               var5 = new ScriptEvent();
-               var5.widget = var3;
-               var5.args = var3.onDialogAbort;
-               WorldMapAreaData.runScriptEvent(var5);
-            }
-
-            if (var1 == 1 && var3.onSubChange != null) {
-               if (var3.childIndex >= 0) {
-                  Widget var6 = class133.getWidget(var3.id);
-                  if (var6 == null || var6.children == null || var3.childIndex >= var6.children.length || var3 != var6.children[var3.childIndex]) {
-                     continue;
-                  }
-               }
-
-               var5 = new ScriptEvent();
-               var5.widget = var3;
-               var5.args = var3.onSubChange;
-               WorldMapAreaData.runScriptEvent(var5);
-            }
-         }
-      }
-
+   static Object method3074(int var0) {
+      return class148.method3171((class467)SpriteMask.findEnumerated(class467.method8480(), var0));
    }
 }

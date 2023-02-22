@@ -4,78 +4,78 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("io")
+@ObfuscatedName("ku")
 @Implements("AbstractWorldMapIcon")
 public abstract class AbstractWorldMapIcon {
-   @ObfuscatedName("i")
+   @ObfuscatedName("av")
    @ObfuscatedSignature(
-      descriptor = "Lko;"
+      descriptor = "Llt;"
    )
    @Export("coord2")
    public final Coord coord2;
-   @ObfuscatedName("n")
+   @ObfuscatedName("aq")
    @ObfuscatedSignature(
-      descriptor = "Lko;"
+      descriptor = "Llt;"
    )
    @Export("coord1")
    public final Coord coord1;
-   @ObfuscatedName("l")
+   @ObfuscatedName("ap")
    @ObfuscatedGetter(
-      intValue = 2126070551
+      intValue = -1724895915
    )
    @Export("screenX")
    int screenX;
-   @ObfuscatedName("k")
+   @ObfuscatedName("ar")
    @ObfuscatedGetter(
-      intValue = -1014530325
+      intValue = 945338029
    )
    @Export("screenY")
    int screenY;
 
    @ObfuscatedSignature(
-      descriptor = "(Lko;Lko;)V"
+      descriptor = "(Llt;Llt;)V"
    )
    AbstractWorldMapIcon(Coord var1, Coord var2) {
       this.coord1 = var1;
       this.coord2 = var2;
    }
 
-   @ObfuscatedName("w")
+   @ObfuscatedName("al")
    @ObfuscatedSignature(
-      descriptor = "(I)I",
-      garbageValue = "1964880024"
+      descriptor = "(B)I",
+      garbageValue = "-81"
    )
    @Export("getElement")
    public abstract int getElement();
 
-   @ObfuscatedName("v")
+   @ObfuscatedName("ac")
    @ObfuscatedSignature(
-      descriptor = "(I)Lil;",
-      garbageValue = "-1317041670"
+      descriptor = "(I)Ljb;",
+      garbageValue = "-166366580"
    )
    @Export("getLabel")
    abstract WorldMapLabel getLabel();
 
-   @ObfuscatedName("s")
+   @ObfuscatedName("ab")
    @ObfuscatedSignature(
-      descriptor = "(B)I",
-      garbageValue = "7"
+      descriptor = "(I)I",
+      garbageValue = "638535000"
    )
    @Export("getSubWidth")
    abstract int getSubWidth();
 
-   @ObfuscatedName("z")
+   @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "(I)I",
-      garbageValue = "1769700454"
+      descriptor = "(B)I",
+      garbageValue = "36"
    )
    @Export("getSubHeight")
    abstract int getSubHeight();
 
-   @ObfuscatedName("b")
+   @ObfuscatedName("au")
    @ObfuscatedSignature(
       descriptor = "(III)Z",
-      garbageValue = "-932852742"
+      garbageValue = "941876103"
    )
    @Export("fitsScreen")
    boolean fitsScreen(int var1, int var2) {
@@ -86,42 +86,40 @@ public abstract class AbstractWorldMapIcon {
       }
    }
 
-   @ObfuscatedName("m")
+   @ObfuscatedName("ag")
    @ObfuscatedSignature(
-      descriptor = "(B)Z",
-      garbageValue = "126"
+      descriptor = "(S)Z",
+      garbageValue = "3146"
    )
    @Export("hasValidElement")
    boolean hasValidElement() {
       return this.getElement() >= 0;
    }
 
-   @ObfuscatedName("t")
+   @ObfuscatedName("at")
    @ObfuscatedSignature(
       descriptor = "(III)Z",
-      garbageValue = "1650119608"
+      garbageValue = "534224947"
    )
    @Export("elementFitsScreen")
    boolean elementFitsScreen(int var1, int var2) {
       if (!this.hasValidElement()) {
          return false;
       } else {
-         WorldMapElement var3 = class4.WorldMapElement_get(this.getElement());
+         WorldMapElement var3 = class123.WorldMapElement_get(this.getElement());
          int var4 = this.getSubWidth();
          int var5 = this.getSubHeight();
          switch (var3.horizontalAlignment.value) {
             case 0:
-               if (var1 > this.screenX - var4 && var1 <= this.screenX) {
-                  break;
+               if (var1 <= this.screenX - var4 || var1 > this.screenX) {
+                  return false;
                }
-
-               return false;
+               break;
             case 1:
-               if (var1 >= this.screenX && var1 < var4 + this.screenX) {
-                  break;
+               if (var1 < this.screenX || var1 >= var4 + this.screenX) {
+                  return false;
                }
-
-               return false;
+               break;
             case 2:
                if (var1 < this.screenX - var4 / 2 || var1 > var4 / 2 + this.screenX) {
                   return false;
@@ -130,17 +128,15 @@ public abstract class AbstractWorldMapIcon {
 
          switch (var3.verticalAlignment.value) {
             case 0:
-               if (var2 >= this.screenY && var2 < var5 + this.screenY) {
-                  break;
+               if (var2 < this.screenY || var2 >= var5 + this.screenY) {
+                  return false;
                }
-
-               return false;
+               break;
             case 1:
-               if (var2 > this.screenY - var5 && var2 <= this.screenY) {
-                  break;
+               if (var2 <= this.screenY - var5 || var2 > this.screenY) {
+                  return false;
                }
-
-               return false;
+               break;
             case 2:
                if (var2 < this.screenY - var5 / 2 || var2 > var5 / 2 + this.screenY) {
                   return false;
@@ -151,10 +147,10 @@ public abstract class AbstractWorldMapIcon {
       }
    }
 
-   @ObfuscatedName("h")
+   @ObfuscatedName("af")
    @ObfuscatedSignature(
       descriptor = "(IIB)Z",
-      garbageValue = "38"
+      garbageValue = "22"
    )
    @Export("labelFitsScreen")
    boolean labelFitsScreen(int var1, int var2) {
@@ -162,167 +158,111 @@ public abstract class AbstractWorldMapIcon {
       if (var3 == null) {
          return false;
       } else if (var1 >= this.screenX - var3.width / 2 && var1 <= var3.width / 2 + this.screenX) {
-         return var2 >= this.screenY && var2 <= var3.height + this.screenY;
+         return var2 >= this.screenY && var2 <= this.screenY + var3.height;
       } else {
          return false;
       }
    }
 
-   @ObfuscatedName("hp")
+   @ObfuscatedName("ac")
    @ObfuscatedSignature(
-      descriptor = "(IIIIII)V",
-      garbageValue = "-574378563"
+      descriptor = "(Ljava/lang/CharSequence;Lrm;I)Ljava/lang/String;",
+      garbageValue = "-1753469141"
    )
-   @Export("drawObject")
-   static final void drawObject(int var0, int var1, int var2, int var3, int var4) {
-      long var5 = WorldMapAreaData.scene.getBoundaryObjectTag(var0, var1, var2);
-      int var7;
-      int var8;
-      int var9;
-      int var10;
-      int var14;
-      int var26;
-      if (var5 != 0L) {
-         var7 = WorldMapAreaData.scene.getObjectFlags(var0, var1, var2, var5);
-         var8 = var7 >> 6 & 3;
-         var9 = var7 & 31;
-         var10 = var3;
-         boolean var12 = 0L != var5;
-         if (var12) {
-            boolean var13 = (int)(var5 >>> 16 & 1L) == 1;
-            var12 = !var13;
+   public static String method5295(CharSequence var0, LoginType var1) {
+      if (var0 == null) {
+         return null;
+      } else {
+         int var2 = 0;
+
+         int var3;
+         boolean var4;
+         char var5;
+         for(var3 = var0.length(); var2 < var3; ++var2) {
+            var5 = var0.charAt(var2);
+            var4 = var5 == 160 || var5 == ' ' || var5 == '_' || var5 == '-';
+            if (!var4) {
+               break;
+            }
          }
 
-         if (var12) {
-            var10 = var4;
+         while(var3 > var2) {
+            var5 = var0.charAt(var3 - 1);
+            var4 = var5 == 160 || var5 == ' ' || var5 == '_' || var5 == '-';
+            if (!var4) {
+               break;
+            }
+
+            --var3;
          }
 
-         int[] var19 = class31.sceneMinimapSprite.pixels;
-         var26 = var1 * 4 + (103 - var2) * 2048 + 24624;
-         var14 = class124.Entity_unpackID(var5);
-         ObjectComposition var15 = class463.getObjectDefinition(var14);
-         if (var15.mapSceneId != -1) {
-            IndexedSprite var16 = VarpDefinition.mapSceneSprites[var15.mapSceneId];
-            if (var16 != null) {
-               int var17 = (var15.sizeX * 4 - var16.subWidth) / 2;
-               int var18 = (var15.sizeY * 4 - var16.subHeight) / 2;
-               var16.drawAt(var1 * 4 + var17 + 48, (104 - var2 - var15.sizeY) * 4 + var18 + 48);
+         int var10 = var3 - var2;
+         if (var10 >= 1 && var10 <= PlayerType.method6363(var1)) {
+            StringBuilder var9 = new StringBuilder(var10);
+
+            for(int var6 = var2; var6 < var3; ++var6) {
+               char var7 = var0.charAt(var6);
+               if (VarbitComposition.method3770(var7)) {
+                  char var8 = JagexCache.method3483(var7);
+                  if (var8 != 0) {
+                     var9.append(var8);
+                  }
+               }
+            }
+
+            if (var9.length() == 0) {
+               return null;
+            } else {
+               return var9.toString();
             }
          } else {
-            if (var9 == 0 || var9 == 2) {
-               if (var8 == 0) {
-                  var19[var26] = var10;
-                  var19[var26 + 512] = var10;
-                  var19[var26 + 1024] = var10;
-                  var19[var26 + 1536] = var10;
-               } else if (var8 == 1) {
-                  var19[var26] = var10;
-                  var19[var26 + 1] = var10;
-                  var19[var26 + 2] = var10;
-                  var19[var26 + 3] = var10;
-               } else if (var8 == 2) {
-                  var19[var26 + 3] = var10;
-                  var19[var26 + 512 + 3] = var10;
-                  var19[var26 + 1024 + 3] = var10;
-                  var19[var26 + 1536 + 3] = var10;
-               } else if (var8 == 3) {
-                  var19[var26 + 1536] = var10;
-                  var19[var26 + 1536 + 1] = var10;
-                  var19[var26 + 1536 + 2] = var10;
-                  var19[var26 + 1536 + 3] = var10;
-               }
-            }
-
-            if (var9 == 3) {
-               if (var8 == 0) {
-                  var19[var26] = var10;
-               } else if (var8 == 1) {
-                  var19[var26 + 3] = var10;
-               } else if (var8 == 2) {
-                  var19[var26 + 1536 + 3] = var10;
-               } else if (var8 == 3) {
-                  var19[var26 + 1536] = var10;
-               }
-            }
-
-            if (var9 == 2) {
-               if (var8 == 3) {
-                  var19[var26] = var10;
-                  var19[var26 + 512] = var10;
-                  var19[var26 + 1024] = var10;
-                  var19[var26 + 1536] = var10;
-               } else if (var8 == 0) {
-                  var19[var26] = var10;
-                  var19[var26 + 1] = var10;
-                  var19[var26 + 2] = var10;
-                  var19[var26 + 3] = var10;
-               } else if (var8 == 1) {
-                  var19[var26 + 3] = var10;
-                  var19[var26 + 512 + 3] = var10;
-                  var19[var26 + 1024 + 3] = var10;
-                  var19[var26 + 1536 + 3] = var10;
-               } else if (var8 == 2) {
-                  var19[var26 + 1536] = var10;
-                  var19[var26 + 1536 + 1] = var10;
-                  var19[var26 + 1536 + 2] = var10;
-                  var19[var26 + 1536 + 3] = var10;
-               }
-            }
+            return null;
          }
       }
+   }
 
-      var5 = WorldMapAreaData.scene.getGameObjectTag(var0, var1, var2);
-      if (var5 != 0L) {
-         var7 = WorldMapAreaData.scene.getObjectFlags(var0, var1, var2, var5);
-         var8 = var7 >> 6 & 3;
-         var9 = var7 & 31;
-         var10 = class124.Entity_unpackID(var5);
-         ObjectComposition var20 = class463.getObjectDefinition(var10);
-         if (var20.mapSceneId != -1) {
-            IndexedSprite var28 = VarpDefinition.mapSceneSprites[var20.mapSceneId];
-            if (var28 != null) {
-               var26 = (var20.sizeX * 4 - var28.subWidth) / 2;
-               var14 = (var20.sizeY * 4 - var28.subHeight) / 2;
-               var28.drawAt(var26 + var1 * 4 + 48, (104 - var2 - var20.sizeY) * 4 + var14 + 48);
-            }
-         } else if (var9 == 9) {
-            int var25 = 15658734;
-            boolean var27 = var5 != 0L;
-            if (var27) {
-               boolean var21 = (int)(var5 >>> 16 & 1L) == 1;
-               var27 = !var21;
-            }
-
-            if (var27) {
-               var25 = 15597568;
-            }
-
-            int[] var22 = class31.sceneMinimapSprite.pixels;
-            int var29 = var1 * 4 + (103 - var2) * 2048 + 24624;
-            if (var8 != 0 && var8 != 2) {
-               var22[var29] = var25;
-               var22[var29 + 1 + 512] = var25;
-               var22[var29 + 1024 + 2] = var25;
-               var22[var29 + 1536 + 3] = var25;
-            } else {
-               var22[var29 + 1536] = var25;
-               var22[var29 + 1 + 1024] = var25;
-               var22[var29 + 512 + 2] = var25;
-               var22[var29 + 3] = var25;
-            }
-         }
+   @ObfuscatedName("br")
+   @ObfuscatedSignature(
+      descriptor = "(Lbj;B)V",
+      garbageValue = "26"
+   )
+   @Export("PcmStream_disable")
+   static final void PcmStream_disable(PcmStream var0) {
+      var0.active = false;
+      if (var0.sound != null) {
+         var0.sound.position = 0;
       }
 
-      var5 = WorldMapAreaData.scene.getFloorDecorationTag(var0, var1, var2);
-      if (0L != var5) {
-         var7 = class124.Entity_unpackID(var5);
-         ObjectComposition var23 = class463.getObjectDefinition(var7);
-         if (var23.mapSceneId != -1) {
-            IndexedSprite var24 = VarpDefinition.mapSceneSprites[var23.mapSceneId];
-            if (var24 != null) {
-               var10 = (var23.sizeX * 4 - var24.subWidth) / 2;
-               int var11 = (var23.sizeY * 4 - var24.subHeight) / 2;
-               var24.drawAt(var10 + var1 * 4 + 48, (104 - var2 - var23.sizeY) * 4 + var11 + 48);
+      for(PcmStream var1 = var0.firstSubStream(); var1 != null; var1 = var0.nextSubStream()) {
+         PcmStream_disable(var1);
+      }
+
+   }
+
+   @ObfuscatedName("im")
+   @ObfuscatedSignature(
+      descriptor = "(ZI)V",
+      garbageValue = "-1903521341"
+   )
+   @Export("addNpcsToScene")
+   static final void addNpcsToScene(boolean var0) {
+      for(int var1 = 0; var1 < Client.npcCount; ++var1) {
+         NPC var2 = Client.npcs[Client.npcIndices[var1]];
+         if (var2 != null && var2.isVisible() && var2.definition.isVisible == var0 && var2.definition.transformIsVisible()) {
+            int var3 = var2.x >> 7;
+            int var4 = var2.y >> 7;
+            if (var3 >= 0 && var3 < 104 && var4 >= 0 && var4 < 104) {
+               if (var2.field1142 * -420973504 == 1 && (var2.x & 127) == 64 && (var2.y & 127) == 64) {
+                  if (Client.tileLastDrawnActor[var3][var4] == Client.viewportDrawCount) {
+                     continue;
+                  }
+
+                  Client.tileLastDrawnActor[var3][var4] = Client.viewportDrawCount;
+               }
+
+               long var5 = class103.calculateTag(0, 0, 1, !var2.definition.isInteractable, Client.npcIndices[var1]);
+               var2.playerCycle = Client.cycle;
+               class1.scene.drawEntity(TaskHandler.Client_plane, var2.x, var2.y, WorldMapDecorationType.getTileHeight(var2.field1142 * -1172500480 - 64 + var2.x, var2.field1142 * -1172500480 - 64 + var2.y, TaskHandler.Client_plane), var2.field1142 * -1172500480 - 64 + 60, var2, var2.rotation, var5, var2.isWalking);
             }
          }
       }

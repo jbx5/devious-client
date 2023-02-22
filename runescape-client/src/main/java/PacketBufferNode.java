@@ -4,48 +4,42 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ji")
+@ObfuscatedName("kp")
 @Implements("PacketBufferNode")
 public class PacketBufferNode extends Node {
-   @ObfuscatedName("z")
+   @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "[Lji;"
+      descriptor = "[Lkp;"
    )
    @Export("PacketBufferNode_packetBufferNodes")
    static PacketBufferNode[] PacketBufferNode_packetBufferNodes = new PacketBufferNode[300];
-   @ObfuscatedName("j")
+   @ObfuscatedName("ao")
    @ObfuscatedGetter(
-      intValue = -1278824965
+      intValue = -367873173
    )
    @Export("PacketBufferNode_packetBufferNodeCount")
    static int PacketBufferNode_packetBufferNodeCount = 0;
-   @ObfuscatedName("io")
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
-      descriptor = "Lrs;"
-   )
-   @Export("redHintArrowSprite")
-   static SpritePixels redHintArrowSprite;
-   @ObfuscatedName("f")
-   @ObfuscatedSignature(
-      descriptor = "Ljv;"
+      descriptor = "Lkb;"
    )
    @Export("clientPacket")
    ClientPacket clientPacket;
-   @ObfuscatedName("w")
+   @ObfuscatedName("al")
    @ObfuscatedGetter(
-      intValue = -1228062939
+      intValue = -1667084847
    )
    @Export("clientPacketLength")
    int clientPacketLength;
-   @ObfuscatedName("v")
+   @ObfuscatedName("ac")
    @ObfuscatedSignature(
-      descriptor = "Lru;"
+      descriptor = "Lsq;"
    )
    @Export("packetBuffer")
    public PacketBuffer packetBuffer;
-   @ObfuscatedName("s")
+   @ObfuscatedName("ab")
    @ObfuscatedGetter(
-      intValue = -905803903
+      intValue = 997120047
    )
    @Export("index")
    public int index;
@@ -53,10 +47,10 @@ public class PacketBufferNode extends Node {
    PacketBufferNode() {
    }
 
-   @ObfuscatedName("s")
+   @ObfuscatedName("ac")
    @ObfuscatedSignature(
-      descriptor = "(B)V",
-      garbageValue = "2"
+      descriptor = "(I)V",
+      garbageValue = "-957261976"
    )
    @Export("release")
    public void release() {
@@ -65,25 +59,40 @@ public class PacketBufferNode extends Node {
       }
    }
 
-   @ObfuscatedName("v")
+   @ObfuscatedName("as")
    @ObfuscatedSignature(
-      descriptor = "(I)[Lck;",
-      garbageValue = "-1678569517"
+      descriptor = "(Ljava/lang/String;I)Ljava/lang/String;",
+      garbageValue = "1565722343"
    )
-   static class86[] method5551() {
-      return new class86[]{class86.field1098, class86.field1094, class86.field1096, class86.field1102, class86.field1097, class86.field1095};
-   }
+   public static String method5467(String var0) {
+      StringBuilder var1 = new StringBuilder(var0.length());
+      int var2 = 0;
+      int var3 = -1;
 
-   @ObfuscatedName("lz")
-   @ObfuscatedSignature(
-      descriptor = "(B)V",
-      garbageValue = "1"
-   )
-   static final void method5557() {
-      for(int var0 = 0; var0 < Players.Players_count; ++var0) {
-         Player var1 = Client.players[Players.Players_indices[var0]];
-         var1.clearIsInFriendsChat();
+      for(int var4 = 0; var4 < var0.length(); ++var4) {
+         char var5 = var0.charAt(var4);
+         if (var5 == '<') {
+            var1.append(var0.substring(var2, var4));
+            var3 = var4;
+         } else if (var5 == '>' && var3 != -1) {
+            String var6 = var0.substring(var3 + 1, var4);
+            var3 = -1;
+            if (var6.equals("lt")) {
+               var1.append("<");
+            } else if (var6.equals("gt")) {
+               var1.append(">");
+            } else if (var6.equals("br")) {
+               var1.append("\n");
+            }
+
+            var2 = var4 + 1;
+         }
       }
 
+      if (var2 < var0.length()) {
+         var1.append(var0.substring(var2, var0.length()));
+      }
+
+      return var1.toString();
    }
 }

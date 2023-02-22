@@ -4,20 +4,20 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ou")
+@ObfuscatedName("pl")
 @Implements("AbstractUserComparator")
 public abstract class AbstractUserComparator implements Comparator {
-   @ObfuscatedName("w")
+   @ObfuscatedName("al")
    @Export("nextComparator")
    Comparator nextComparator;
 
    protected AbstractUserComparator() {
    }
 
-   @ObfuscatedName("k")
+   @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "(Ljava/util/Comparator;B)V",
-      garbageValue = "8"
+      descriptor = "(Ljava/util/Comparator;I)V",
+      garbageValue = "-757378534"
    )
    @Export("addComparator")
    final void addComparator(Comparator var1) {
@@ -29,10 +29,10 @@ public abstract class AbstractUserComparator implements Comparator {
 
    }
 
-   @ObfuscatedName("c")
+   @ObfuscatedName("av")
    @ObfuscatedSignature(
-      descriptor = "(Low;Low;I)I",
-      garbageValue = "508228633"
+      descriptor = "(Lpb;Lpb;I)I",
+      garbageValue = "1351948063"
    )
    @Export("compareUser")
    protected final int compareUser(User var1, User var2) {
@@ -41,20 +41,5 @@ public abstract class AbstractUserComparator implements Comparator {
 
    public boolean equals(Object var1) {
       return super.equals(var1);
-   }
-
-   @ObfuscatedName("w")
-   @ObfuscatedSignature(
-      descriptor = "([FIFB)F",
-      garbageValue = "123"
-   )
-   static float method7640(float[] var0, int var1, float var2) {
-      float var3 = var0[var1];
-
-      for(int var4 = var1 - 1; var4 >= 0; --var4) {
-         var3 = var3 * var2 + var0[var4];
-      }
-
-      return var3;
    }
 }

@@ -1,96 +1,75 @@
-import java.io.IOException;
-import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("ew")
-public class class138 extends class139 {
-   @ObfuscatedName("b")
-   @ObfuscatedSignature(
-      descriptor = "Lnv;"
-   )
-   @Export("ItemDefinition_fontPlain11")
-   public static Font ItemDefinition_fontPlain11;
-   @ObfuscatedName("f")
+@ObfuscatedName("fb")
+public class class138 extends class140 {
+   @ObfuscatedName("aj")
    @ObfuscatedGetter(
-      intValue = 362693273
+      longValue = 5970519739755097027L
    )
-   int field1645;
+   long field1610;
+   @ObfuscatedName("al")
+   String field1608;
    // $FF: synthetic field
    @ObfuscatedSignature(
-      descriptor = "Lex;"
+      descriptor = "Lfo;"
    )
-   final class142 this$0;
+   final class143 this$0;
 
    @ObfuscatedSignature(
-      descriptor = "(Lex;)V"
+      descriptor = "(Lfo;)V"
    )
-   class138(class142 var1) {
+   class138(class143 var1) {
       this.this$0 = var1;
-      this.field1645 = -1;
+      this.field1610 = -1L;
+      this.field1608 = null;
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
-      descriptor = "(Lrd;S)V",
-      garbageValue = "-5782"
+      descriptor = "(Lsy;I)V",
+      garbageValue = "-1979280996"
    )
-   void vmethod3394(Buffer var1) {
-      this.field1645 = var1.readUnsignedShort();
-   }
-
-   @ObfuscatedName("w")
-   @ObfuscatedSignature(
-      descriptor = "(Leb;B)V",
-      garbageValue = "-26"
-   )
-   void vmethod3393(ClanSettings var1) {
-      var1.method3231(this.field1645);
-   }
-
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      descriptor = "(S)Lcy;",
-      garbageValue = "190"
-   )
-   static ClientPreferences method3150() {
-      AccessFile var0 = null;
-      ClientPreferences var1 = new ClientPreferences();
-
-      try {
-         var0 = UrlRequester.getPreferencesFile("", class134.field1606.name, false);
-         byte[] var2 = new byte[(int)var0.length()];
-
-         int var4;
-         for(int var3 = 0; var3 < var2.length; var3 += var4) {
-            var4 = var0.read(var2, var3, var2.length - var3);
-            if (var4 == -1) {
-               throw new IOException();
-            }
-         }
-
-         var1 = new ClientPreferences(new Buffer(var2));
-      } catch (Exception var6) {
+   void vmethod3361(Buffer var1) {
+      if (var1.readUnsignedByte() != 255) {
+         --var1.offset;
+         this.field1610 = var1.readLong();
       }
 
-      try {
-         if (var0 != null) {
-            var0.close();
-         }
-      } catch (Exception var5) {
-      }
-
-      return var1;
+      this.field1608 = var1.readStringCp1252NullTerminatedOrNull();
    }
 
-   @ObfuscatedName("lp")
+   @ObfuscatedName("al")
    @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "1273374954"
+      descriptor = "(Lfi;B)V",
+      garbageValue = "29"
    )
-   static final void method3149() {
-      Client.field637 = Client.cycleCntr;
-      WorldMapSectionType.ClanChat_inClanChat = true;
+   void vmethod3362(ClanSettings var1) {
+      var1.method3199(this.field1610, this.field1608, 0);
+   }
+
+   @ObfuscatedName("bc")
+   @ObfuscatedSignature(
+      descriptor = "(ILcv;ZI)I",
+      garbageValue = "1640153201"
+   )
+   static int method3096(int var0, Script var1, boolean var2) {
+      if (var0 == ScriptOpcodes.LOGOUT) {
+         Client.logoutTimer = 250;
+         return 1;
+      } else {
+         return 2;
+      }
+   }
+
+   @ObfuscatedName("gp")
+   @ObfuscatedSignature(
+      descriptor = "(I)J",
+      garbageValue = "-959228999"
+   )
+   static long method3095() {
+      return Client.field671;
    }
 }

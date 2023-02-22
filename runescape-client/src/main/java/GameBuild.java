@@ -4,48 +4,42 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("lp")
+@ObfuscatedName("mf")
 @Implements("GameBuild")
 public class GameBuild {
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
-      descriptor = "Llp;"
+      descriptor = "Lmf;"
    )
    @Export("LIVE")
-   public static final GameBuild LIVE = new GameBuild("LIVE", 0);
-   @ObfuscatedName("w")
+   static final GameBuild LIVE = new GameBuild("LIVE", 0);
+   @ObfuscatedName("al")
    @ObfuscatedSignature(
-      descriptor = "Llp;"
+      descriptor = "Lmf;"
    )
    @Export("BUILDLIVE")
-   public static final GameBuild BUILDLIVE = new GameBuild("BUILDLIVE", 3);
-   @ObfuscatedName("v")
+   static final GameBuild BUILDLIVE = new GameBuild("BUILDLIVE", 3);
+   @ObfuscatedName("ac")
    @ObfuscatedSignature(
-      descriptor = "Llp;"
+      descriptor = "Lmf;"
    )
    @Export("RC")
-   public static final GameBuild RC = new GameBuild("RC", 1);
-   @ObfuscatedName("s")
+   static final GameBuild RC = new GameBuild("RC", 1);
+   @ObfuscatedName("ab")
    @ObfuscatedSignature(
-      descriptor = "Llp;"
+      descriptor = "Lmf;"
    )
    @Export("WIP")
-   public static final GameBuild WIP = new GameBuild("WIP", 2);
-   @ObfuscatedName("ld")
-   @ObfuscatedSignature(
-      descriptor = "Lho;"
-   )
-   @Export("textureProvider")
-   static TextureProvider textureProvider;
-   @ObfuscatedName("z")
+   static final GameBuild WIP = new GameBuild("WIP", 2);
+   @ObfuscatedName("an")
    @Export("name")
    public final String name;
-   @ObfuscatedName("j")
+   @ObfuscatedName("ao")
    @ObfuscatedGetter(
-      intValue = -207916577
+      intValue = 1881256167
    )
    @Export("buildId")
-   public final int buildId;
+   final int buildId;
 
    GameBuild(String var1, int var2) {
       this.name = var1;

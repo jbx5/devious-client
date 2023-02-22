@@ -7,16 +7,19 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bc")
+@ObfuscatedName("cf")
 @Implements("SecureRandomFuture")
 public class SecureRandomFuture {
-   @ObfuscatedName("z")
-   @Export("Interpreter_stringLocals")
-   static String[] Interpreter_stringLocals;
-   @ObfuscatedName("f")
+   @ObfuscatedName("ac")
+   @ObfuscatedSignature(
+      descriptor = "Lne;"
+   )
+   @Export("HitSplatDefinition_fontsArchive")
+   public static AbstractArchive HitSplatDefinition_fontsArchive;
+   @ObfuscatedName("aj")
    @Export("executor")
    ExecutorService executor = Executors.newSingleThreadExecutor();
-   @ObfuscatedName("w")
+   @ObfuscatedName("al")
    @Export("future")
    Future future;
 
@@ -24,10 +27,10 @@ public class SecureRandomFuture {
       this.future = this.executor.submit(new SecureRandomCallable());
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
       descriptor = "(I)V",
-      garbageValue = "-910737329"
+      garbageValue = "141845738"
    )
    @Export("shutdown")
    void shutdown() {
@@ -35,42 +38,45 @@ public class SecureRandomFuture {
       this.executor = null;
    }
 
-   @ObfuscatedName("w")
+   @ObfuscatedName("al")
    @ObfuscatedSignature(
-      descriptor = "(B)Z",
-      garbageValue = "122"
+      descriptor = "(I)Z",
+      garbageValue = "-2139546026"
    )
    @Export("isDone")
    boolean isDone() {
       return this.future.isDone();
    }
 
-   @ObfuscatedName("v")
+   @ObfuscatedName("ac")
    @ObfuscatedSignature(
       descriptor = "(I)Ljava/security/SecureRandom;",
-      garbageValue = "927124280"
+      garbageValue = "-1649323244"
    )
    @Export("get")
    SecureRandom get() {
       try {
          return (SecureRandom)this.future.get();
       } catch (Exception var2) {
-         return class143.method3179();
+         return class392.method7406();
       }
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
-      descriptor = "(II)I",
-      garbageValue = "-1316720395"
+      descriptor = "(I)[Lmf;",
+      garbageValue = "1229624350"
    )
-   @Export("getVarbit")
-   public static int getVarbit(int var0) {
-      VarbitComposition var1 = VarpDefinition.method3597(var0);
-      int var2 = var1.baseVar;
-      int var3 = var1.startBit;
-      int var4 = var1.endBit;
-      int var5 = Varps.Varps_masks[var4 - var3];
-      return Varps.Varps_main[var2] >> var3 & var5;
+   static GameBuild[] method2123() {
+      return new GameBuild[]{GameBuild.WIP, GameBuild.BUILDLIVE, GameBuild.LIVE, GameBuild.RC};
+   }
+
+   @ObfuscatedName("ab")
+   @ObfuscatedSignature(
+      descriptor = "(B)[Lml;",
+      garbageValue = "-8"
+   )
+   public static StudioGame[] method2124() {
+      return new StudioGame[]{StudioGame.game5, StudioGame.oldscape, StudioGame.game3, StudioGame.runescape, StudioGame.game4, StudioGame.stellardawn};
    }
 }

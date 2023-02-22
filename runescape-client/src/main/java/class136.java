@@ -1,66 +1,98 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ea")
-public class class136 extends class139 {
-   @ObfuscatedName("vr")
+@ObfuscatedName("ft")
+public enum class136 implements MouseWheel {
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
-      descriptor = "Lmu;"
+      descriptor = "Lft;"
    )
-   public static class347 field1633;
-   @ObfuscatedName("f")
-   @ObfuscatedGetter(
-      intValue = -66286931
-   )
-   int field1635;
-   @ObfuscatedName("w")
-   @ObfuscatedGetter(
-      intValue = 445176669
-   )
-   int field1632;
-   @ObfuscatedName("v")
-   @ObfuscatedGetter(
-      intValue = -1161886563
-   )
-   int field1631;
-   @ObfuscatedName("s")
-   @ObfuscatedGetter(
-      intValue = 335766969
-   )
-   int field1634;
-   // $FF: synthetic field
+   field1593(1, 0),
+   @ObfuscatedName("al")
    @ObfuscatedSignature(
-      descriptor = "Lex;"
+      descriptor = "Lft;"
    )
-   final class142 this$0;
+   field1594(3, 1),
+   @ObfuscatedName("ac")
+   @ObfuscatedSignature(
+      descriptor = "Lft;"
+   )
+   field1595(2, 2),
+   @ObfuscatedName("ab")
+   @ObfuscatedSignature(
+      descriptor = "Lft;"
+   )
+   field1596(0, 3),
+   @ObfuscatedName("an")
+   @ObfuscatedSignature(
+      descriptor = "Lft;"
+   )
+   field1597(4, 4);
 
+   @ObfuscatedName("ji")
    @ObfuscatedSignature(
-      descriptor = "(Lex;)V"
+      descriptor = "Lsn;"
    )
-   class136(class142 var1) {
-      this.this$0 = var1;
-      this.field1635 = -1;
+   @Export("redHintArrowSprite")
+   static SpritePixels redHintArrowSprite;
+   @ObfuscatedName("ao")
+   @ObfuscatedGetter(
+      intValue = 166719319
+   )
+   public final int field1600;
+   @ObfuscatedName("av")
+   @ObfuscatedGetter(
+      intValue = -560347297
+   )
+   @Export("id")
+   final int id;
+
+   class136(int var3, int var4) {
+      this.field1600 = var3;
+      this.id = var4;
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
-      descriptor = "(Lrd;S)V",
-      garbageValue = "-5782"
+      descriptor = "(I)I",
+      garbageValue = "-1409646049"
    )
-   void vmethod3394(Buffer var1) {
-      this.field1635 = var1.readUnsignedShort();
-      this.field1632 = var1.readInt();
-      this.field1631 = var1.readUnsignedByte();
-      this.field1634 = var1.readUnsignedByte();
+   @Export("rsOrdinal")
+   public int rsOrdinal() {
+      return this.id;
    }
 
-   @ObfuscatedName("w")
+   @ObfuscatedName("ao")
    @ObfuscatedSignature(
-      descriptor = "(Leb;B)V",
-      garbageValue = "-26"
+      descriptor = "(Lew;FFFFFFFFB)V",
+      garbageValue = "-88"
    )
-   void vmethod3393(ClanSettings var1) {
-      var1.method3244(this.field1635, this.field1632, this.field1631, this.field1634);
+   static void method3075(class127 var0, float var1, float var2, float var3, float var4, float var5, float var6, float var7, float var8) {
+      if (var0 != null) {
+         var0.field1505 = var1;
+         float var9 = var4 - var1;
+         float var10 = var8 - var5;
+         float var11 = var2 - var1;
+         float var12 = 0.0F;
+         float var13 = 0.0F;
+         if ((double)var11 != 0.0) {
+            var12 = (var6 - var5) / var11;
+         }
+
+         var11 = var4 - var3;
+         if (0.0 != (double)var11) {
+            var13 = (var8 - var7) / var11;
+         }
+
+         float var14 = 1.0F / (var9 * var9);
+         float var15 = var9 * var12;
+         float var16 = var13 * var9;
+         var0.field1521 = (var16 + var15 - var10 - var10) * var14 / var9;
+         var0.field1506 = (var10 + var10 + var10 - var15 - var15 - var16) * var14;
+         var0.field1507 = var12;
+         var0.field1500 = var5;
+      }
    }
 }

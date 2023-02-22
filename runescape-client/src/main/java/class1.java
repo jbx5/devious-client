@@ -1,66 +1,57 @@
 import java.util.concurrent.Callable;
 import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("w")
+@ObfuscatedName("al")
 public class class1 implements Callable {
-   @ObfuscatedName("ag")
-   @Export("fontHelvetica13")
-   static java.awt.Font fontHelvetica13;
-   @ObfuscatedName("fw")
-   @ObfuscatedGetter(
-      intValue = 43392043
-   )
-   @Export("worldPort")
-   static int worldPort;
-   @ObfuscatedName("f")
+   @ObfuscatedName("jt")
    @ObfuscatedSignature(
-      descriptor = "Lrd;"
+      descriptor = "Lir;"
    )
-   final Buffer field6;
-   @ObfuscatedName("w")
+   @Export("scene")
+   static Scene scene;
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
-      descriptor = "Ls;"
+      descriptor = "Lsy;"
    )
-   final class3 field1;
+   final Buffer field1;
+   @ObfuscatedName("al")
+   @ObfuscatedSignature(
+      descriptor = "Lab;"
+   )
+   final class3 field0;
    // $FF: synthetic field
    @ObfuscatedSignature(
-      descriptor = "Ln;"
+      descriptor = "Laq;"
    )
    final class7 this$0;
 
    @ObfuscatedSignature(
-      descriptor = "(Ln;Lrd;Ls;)V"
+      descriptor = "(Laq;Lsy;Lab;)V"
    )
    class1(class7 var1, Buffer var2, class3 var3) {
       this.this$0 = var1;
-      this.field6 = var2;
-      this.field1 = var3;
+      this.field1 = var2;
+      this.field0 = var3;
    }
 
    public Object call() {
-      return this.field1.vmethod12(this.field6);
+      return this.field0.vmethod12(this.field1);
    }
 
-   @ObfuscatedName("v")
+   @ObfuscatedName("ak")
    @ObfuscatedSignature(
-      descriptor = "(Llm;II)V",
-      garbageValue = "-2059005384"
+      descriptor = "(II)I",
+      garbageValue = "-564139226"
    )
-   static void method9(Archive var0, int var1) {
-      class10.field56.offset = var1 * 8 + 5;
-      if (class10.field56.offset >= class10.field56.array.length) {
-         if (var0.field4205) {
-            var0.method6480();
-         } else {
-            throw new RuntimeException("");
-         }
+   @Export("Messages_getLastChatID")
+   static int Messages_getLastChatID(int var0) {
+      Message var1 = (Message)Messages.Messages_hashTable.get((long)var0);
+      if (var1 == null) {
+         return -1;
       } else {
-         int var2 = class10.field56.readInt();
-         int var3 = class10.field56.readInt();
-         var0.loadIndex(var2, var3);
+         return var1.previousDual == Messages.Messages_queue.sentinel ? -1 : ((Message)var1.previousDual).count;
       }
    }
 }

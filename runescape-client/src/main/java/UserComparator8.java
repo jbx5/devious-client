@@ -3,18 +3,10 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dn")
+@ObfuscatedName("ef")
 @Implements("UserComparator8")
 public class UserComparator8 extends AbstractUserComparator {
-   @ObfuscatedName("c")
-   public static short[][] field1435;
-   @ObfuscatedName("ai")
-   @ObfuscatedSignature(
-      descriptor = "Lln;"
-   )
-   @Export("Widget_archive")
-   public static AbstractArchive Widget_archive;
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
    @Export("reversed")
    final boolean reversed;
 
@@ -22,10 +14,10 @@ public class UserComparator8 extends AbstractUserComparator {
       this.reversed = var1;
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
-      descriptor = "(Loa;Loa;I)I",
-      garbageValue = "528002841"
+      descriptor = "(Lpt;Lpt;I)I",
+      garbageValue = "-870240222"
    )
    @Export("compareBuddy")
    int compareBuddy(Buddy var1, Buddy var2) {
@@ -42,5 +34,33 @@ public class UserComparator8 extends AbstractUserComparator {
 
    public int compare(Object var1, Object var2) {
       return this.compareBuddy((Buddy)var1, (Buddy)var2);
+   }
+
+   @ObfuscatedName("ab")
+   @ObfuscatedSignature(
+      descriptor = "(IIII)I",
+      garbageValue = "643209545"
+   )
+   public static int method2849(int var0, int var1, int var2) {
+      int var3 = class206.method4069(var2 - var1 + 1);
+      var3 <<= var1;
+      return var0 & ~var3;
+   }
+
+   @ObfuscatedName("jo")
+   @ObfuscatedSignature(
+      descriptor = "(I)V",
+      garbageValue = "1768721944"
+   )
+   static final void method2847() {
+      for(PendingSpawn var0 = (PendingSpawn)Client.pendingSpawns.last(); var0 != null; var0 = (PendingSpawn)Client.pendingSpawns.previous()) {
+         if (var0.hitpoints == -1) {
+            var0.delay = 0;
+            class27.method383(var0);
+         } else {
+            var0.remove();
+         }
+      }
+
    }
 }

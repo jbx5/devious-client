@@ -1,93 +1,94 @@
+import java.util.Date;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ir")
+@ObfuscatedName("jz")
 @Implements("WorldMapSection0")
 public class WorldMapSection0 implements WorldMapSection {
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
    @ObfuscatedGetter(
-      intValue = -1702426343
+      intValue = -1755197921
    )
    @Export("oldZ")
    int oldZ;
-   @ObfuscatedName("w")
+   @ObfuscatedName("al")
    @ObfuscatedGetter(
-      intValue = -1776682101
+      intValue = -689194049
    )
    @Export("newZ")
    int newZ;
-   @ObfuscatedName("v")
+   @ObfuscatedName("ac")
    @ObfuscatedGetter(
-      intValue = 1316025563
+      intValue = 59787351
    )
    @Export("oldX")
    int oldX;
-   @ObfuscatedName("s")
+   @ObfuscatedName("ab")
    @ObfuscatedGetter(
-      intValue = -1604457337
+      intValue = 1694360689
    )
    @Export("oldY")
    int oldY;
-   @ObfuscatedName("z")
+   @ObfuscatedName("an")
    @ObfuscatedGetter(
-      intValue = 188484319
+      intValue = 246464859
    )
    @Export("newX")
    int newX;
-   @ObfuscatedName("j")
+   @ObfuscatedName("ao")
    @ObfuscatedGetter(
-      intValue = 234003925
+      intValue = 609785649
    )
    @Export("newY")
    int newY;
-   @ObfuscatedName("i")
+   @ObfuscatedName("av")
    @ObfuscatedGetter(
-      intValue = -1412477315
+      intValue = 181771769
    )
    @Export("oldChunkXLow")
    int oldChunkXLow;
-   @ObfuscatedName("n")
+   @ObfuscatedName("aq")
    @ObfuscatedGetter(
-      intValue = 422903357
+      intValue = -1249582361
    )
    @Export("oldChunkYLow")
    int oldChunkYLow;
-   @ObfuscatedName("l")
+   @ObfuscatedName("ap")
    @ObfuscatedGetter(
-      intValue = 1972947631
+      intValue = -1005488461
    )
    @Export("oldChunkXHigh")
    int oldChunkXHigh;
-   @ObfuscatedName("k")
+   @ObfuscatedName("ar")
    @ObfuscatedGetter(
-      intValue = 1821981
+      intValue = -1957914017
    )
    @Export("oldChunkYHigh")
    int oldChunkYHigh;
-   @ObfuscatedName("c")
+   @ObfuscatedName("ak")
    @ObfuscatedGetter(
-      intValue = -804200583
+      intValue = -132128731
    )
    @Export("newChunkXLow")
    int newChunkXLow;
-   @ObfuscatedName("r")
+   @ObfuscatedName("ax")
    @ObfuscatedGetter(
-      intValue = -136029891
+      intValue = -532634241
    )
    @Export("newChunkYLow")
    int newChunkYLow;
-   @ObfuscatedName("b")
+   @ObfuscatedName("as")
    @ObfuscatedGetter(
-      intValue = -1664098361
+      intValue = 898908713
    )
    @Export("newChunkXHigh")
    int newChunkXHigh;
-   @ObfuscatedName("m")
+   @ObfuscatedName("ay")
    @ObfuscatedGetter(
-      intValue = -1465681713
+      intValue = -654143135
    )
    @Export("newChunkYHigh")
    int newChunkYHigh;
@@ -95,10 +96,10 @@ public class WorldMapSection0 implements WorldMapSection {
    WorldMapSection0() {
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
-      descriptor = "(Lii;I)V",
-      garbageValue = "1606915966"
+      descriptor = "(Ljw;B)V",
+      garbageValue = "-27"
    )
    @Export("expandBounds")
    public void expandBounds(WorldMapArea var1) {
@@ -120,10 +121,10 @@ public class WorldMapSection0 implements WorldMapSection {
 
    }
 
-   @ObfuscatedName("w")
+   @ObfuscatedName("al")
    @ObfuscatedSignature(
       descriptor = "(IIII)Z",
-      garbageValue = "1059252076"
+      garbageValue = "-779320103"
    )
    @Export("containsCoord")
    public boolean containsCoord(int var1, int var2, int var3) {
@@ -134,20 +135,20 @@ public class WorldMapSection0 implements WorldMapSection {
       }
    }
 
-   @ObfuscatedName("v")
+   @ObfuscatedName("ac")
    @ObfuscatedSignature(
       descriptor = "(III)Z",
-      garbageValue = "1209851870"
+      garbageValue = "207934155"
    )
    @Export("containsPosition")
    public boolean containsPosition(int var1, int var2) {
       return var1 >= (this.newX << 6) + (this.newChunkXLow << 3) && var1 <= (this.newX << 6) + (this.newChunkXHigh << 3) + 7 && var2 >= (this.newY << 6) + (this.newChunkYLow << 3) && var2 <= (this.newY << 6) + (this.newChunkYHigh << 3) + 7;
    }
 
-   @ObfuscatedName("s")
+   @ObfuscatedName("ab")
    @ObfuscatedSignature(
       descriptor = "(IIII)[I",
-      garbageValue = "-1188894867"
+      garbageValue = "-1684969021"
    )
    @Export("getBorderTileLengths")
    public int[] getBorderTileLengths(int var1, int var2, int var3) {
@@ -159,10 +160,10 @@ public class WorldMapSection0 implements WorldMapSection {
       }
    }
 
-   @ObfuscatedName("z")
+   @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "(III)Lko;",
-      garbageValue = "-1946236139"
+      descriptor = "(III)Llt;",
+      garbageValue = "2016097062"
    )
    @Export("coord")
    public Coord coord(int var1, int var2) {
@@ -175,10 +176,10 @@ public class WorldMapSection0 implements WorldMapSection {
       }
    }
 
-   @ObfuscatedName("j")
+   @ObfuscatedName("ao")
    @ObfuscatedSignature(
-      descriptor = "(Lrd;I)V",
-      garbageValue = "158933591"
+      descriptor = "(Lsy;I)V",
+      garbageValue = "1437872186"
    )
    @Export("read")
    public void read(Buffer var1) {
@@ -199,12 +200,123 @@ public class WorldMapSection0 implements WorldMapSection {
       this.postRead();
    }
 
-   @ObfuscatedName("i")
+   @ObfuscatedName("av")
    @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "808293169"
+      descriptor = "(B)V",
+      garbageValue = "-19"
    )
    @Export("postRead")
    void postRead() {
+   }
+
+   @ObfuscatedName("aj")
+   @ObfuscatedSignature(
+      descriptor = "(II)Lsx;",
+      garbageValue = "813744184"
+   )
+   @Export("getDbTableType")
+   public static DbTableType getDbTableType(int var0) {
+      DbTableType var1 = (DbTableType)DbTableType.DBTableType_cache.get((long)var0);
+      if (var1 != null) {
+         return var1;
+      } else {
+         byte[] var2 = DbTableType.field4874.takeFile(39, var0);
+         var1 = new DbTableType();
+         if (var2 != null) {
+            var1.method8503(new Buffer(var2));
+         }
+
+         var1.method8505();
+         DbTableType.DBTableType_cache.put(var1, (long)var0);
+         return var1;
+      }
+   }
+
+   @ObfuscatedName("an")
+   @ObfuscatedSignature(
+      descriptor = "(Ljava/lang/CharSequence;I)[B",
+      garbageValue = "1532555874"
+   )
+   public static byte[] method5168(CharSequence var0) {
+      int var1 = var0.length();
+      byte[] var2 = new byte[var1];
+
+      for(int var3 = 0; var3 < var1; ++var3) {
+         char var4 = var0.charAt(var3);
+         if (var4 > 0 && var4 < 128 || var4 >= 160 && var4 <= 255) {
+            var2[var3] = (byte)var4;
+         } else if (var4 == 8364) {
+            var2[var3] = -128;
+         } else if (var4 == 8218) {
+            var2[var3] = -126;
+         } else if (var4 == 402) {
+            var2[var3] = -125;
+         } else if (var4 == 8222) {
+            var2[var3] = -124;
+         } else if (var4 == 8230) {
+            var2[var3] = -123;
+         } else if (var4 == 8224) {
+            var2[var3] = -122;
+         } else if (var4 == 8225) {
+            var2[var3] = -121;
+         } else if (var4 == 710) {
+            var2[var3] = -120;
+         } else if (var4 == 8240) {
+            var2[var3] = -119;
+         } else if (var4 == 352) {
+            var2[var3] = -118;
+         } else if (var4 == 8249) {
+            var2[var3] = -117;
+         } else if (var4 == 338) {
+            var2[var3] = -116;
+         } else if (var4 == 381) {
+            var2[var3] = -114;
+         } else if (var4 == 8216) {
+            var2[var3] = -111;
+         } else if (var4 == 8217) {
+            var2[var3] = -110;
+         } else if (var4 == 8220) {
+            var2[var3] = -109;
+         } else if (var4 == 8221) {
+            var2[var3] = -108;
+         } else if (var4 == 8226) {
+            var2[var3] = -107;
+         } else if (var4 == 8211) {
+            var2[var3] = -106;
+         } else if (var4 == 8212) {
+            var2[var3] = -105;
+         } else if (var4 == 732) {
+            var2[var3] = -104;
+         } else if (var4 == 8482) {
+            var2[var3] = -103;
+         } else if (var4 == 353) {
+            var2[var3] = -102;
+         } else if (var4 == 8250) {
+            var2[var3] = -101;
+         } else if (var4 == 339) {
+            var2[var3] = -100;
+         } else if (var4 == 382) {
+            var2[var3] = -98;
+         } else if (var4 == 376) {
+            var2[var3] = -97;
+         } else {
+            var2[var3] = 63;
+         }
+      }
+
+      return var2;
+   }
+
+   @ObfuscatedName("ar")
+   @ObfuscatedSignature(
+      descriptor = "(I)Ljava/util/Date;",
+      garbageValue = "1603468903"
+   )
+   static Date method5182() {
+      java.util.Calendar var0 = java.util.Calendar.getInstance();
+      var0.set(2, 0);
+      var0.set(5, 1);
+      var0.set(1, 1900);
+      return var0.getTime();
    }
 }

@@ -1,160 +1,115 @@
 import java.applet.Applet;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ar")
+@ObfuscatedName("bh")
 public class class31 {
-   @ObfuscatedName("sh")
-   @ObfuscatedSignature(
-      descriptor = "Lrs;"
+   @ObfuscatedName("aj")
+   public static Applet field166 = null;
+   @ObfuscatedName("al")
+   public static String field161 = "";
+   @ObfuscatedName("ce")
+   @ObfuscatedGetter(
+      intValue = 803191375
    )
-   @Export("sceneMinimapSprite")
-   static SpritePixels sceneMinimapSprite;
-   @ObfuscatedName("f")
-   static Applet field190 = null;
-   @ObfuscatedName("w")
-   static String field186 = "";
-
-   @ObfuscatedName("f")
-   @ObfuscatedSignature(
-      descriptor = "(CI)B",
-      garbageValue = "754042406"
+   static int field167;
+   @ObfuscatedName("iz")
+   @ObfuscatedGetter(
+      intValue = -1643583259
    )
-   @Export("charToByteCp1252")
-   public static byte charToByteCp1252(char var0) {
-      byte var1;
-      if (var0 > 0 && var0 < 128 || var0 >= 160 && var0 <= 255) {
-         var1 = (byte)var0;
-      } else if (var0 == 8364) {
-         var1 = -128;
-      } else if (var0 == 8218) {
-         var1 = -126;
-      } else if (var0 == 402) {
-         var1 = -125;
-      } else if (var0 == 8222) {
-         var1 = -124;
-      } else if (var0 == 8230) {
-         var1 = -123;
-      } else if (var0 == 8224) {
-         var1 = -122;
-      } else if (var0 == 8225) {
-         var1 = -121;
-      } else if (var0 == 710) {
-         var1 = -120;
-      } else if (var0 == 8240) {
-         var1 = -119;
-      } else if (var0 == 352) {
-         var1 = -118;
-      } else if (var0 == 8249) {
-         var1 = -117;
-      } else if (var0 == 338) {
-         var1 = -116;
-      } else if (var0 == 381) {
-         var1 = -114;
-      } else if (var0 == 8216) {
-         var1 = -111;
-      } else if (var0 == 8217) {
-         var1 = -110;
-      } else if (var0 == 8220) {
-         var1 = -109;
-      } else if (var0 == 8221) {
-         var1 = -108;
-      } else if (var0 == 8226) {
-         var1 = -107;
-      } else if (var0 == 8211) {
-         var1 = -106;
-      } else if (var0 == 8212) {
-         var1 = -105;
-      } else if (var0 == 732) {
-         var1 = -104;
-      } else if (var0 == 8482) {
-         var1 = -103;
-      } else if (var0 == 353) {
-         var1 = -102;
-      } else if (var0 == 8250) {
-         var1 = -101;
-      } else if (var0 == 339) {
-         var1 = -100;
-      } else if (var0 == 382) {
-         var1 = -98;
-      } else if (var0 == 376) {
-         var1 = -97;
-      } else {
-         var1 = 63;
-      }
+   static int field164;
 
-      return var1;
-   }
-
-   @ObfuscatedName("i")
+   @ObfuscatedName("le")
    @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "-350025471"
+      descriptor = "([Lmy;IB)V",
+      garbageValue = "108"
    )
-   public static void method460() {
-      HealthBarDefinition.HealthBarDefinition_cached.clear();
-      HealthBarDefinition.HealthBarDefinition_cachedSprites.clear();
-   }
+   @Export("drawModelComponents")
+   static final void drawModelComponents(Widget[] var0, int var1) {
+      for(int var2 = 0; var2 < var0.length; ++var2) {
+         Widget var3 = var0[var2];
+         if (var3 != null && var3.parentId == var1 && (!var3.isIf3 || !WallDecoration.isComponentHidden(var3))) {
+            int var5;
+            if (var3.type == 0) {
+               if (!var3.isIf3 && WallDecoration.isComponentHidden(var3) && var3 != InvDefinition.mousedOverWidgetIf1) {
+                  continue;
+               }
 
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      descriptor = "(Ljava/lang/String;I)V",
-      garbageValue = "-1409171773"
-   )
-   static final void method471(String var0) {
-      Decimator.method1115(var0 + " is already on your ignore list");
-   }
+               drawModelComponents(var0, var3.id);
+               if (var3.children != null) {
+                  drawModelComponents(var3.children, var3.id);
+               }
 
-   @ObfuscatedName("ag")
-   @ObfuscatedSignature(
-      descriptor = "(Lan;I)V",
-      garbageValue = "2069353782"
-   )
-   @Export("PcmStream_disable")
-   static final void PcmStream_disable(PcmStream var0) {
-      var0.active = false;
-      if (var0.sound != null) {
-         var0.sound.position = 0;
-      }
-
-      for(PcmStream var1 = var0.firstSubStream(); var1 != null; var1 = var0.nextSubStream()) {
-         PcmStream_disable(var1);
-      }
-
-   }
-
-   @ObfuscatedName("hw")
-   @ObfuscatedSignature(
-      descriptor = "(Lcb;II)V",
-      garbageValue = "-19548989"
-   )
-   static final void method468(Actor var0, int var1) {
-      class467.worldToScreen(var0.x, var0.y, var1);
-   }
-
-   @ObfuscatedName("lg")
-   @ObfuscatedSignature(
-      descriptor = "(IIIILrs;Lkb;B)V",
-      garbageValue = "126"
-   )
-   @Export("drawSpriteOnMinimap")
-   static final void drawSpriteOnMinimap(int var0, int var1, int var2, int var3, SpritePixels var4, SpriteMask var5) {
-      if (var4 != null) {
-         int var6 = Client.camAngleY & 2047;
-         int var7 = var3 * var3 + var2 * var2;
-         if (var7 <= 6400) {
-            int var8 = Rasterizer3D.Rasterizer3D_sine[var6];
-            int var9 = Rasterizer3D.Rasterizer3D_cosine[var6];
-            int var10 = var9 * var2 + var3 * var8 >> 16;
-            int var11 = var3 * var9 - var8 * var2 >> 16;
-            if (var7 > 2500) {
-               var4.method9115(var10 + var5.width / 2 - var4.width / 2, var5.height / 2 - var11 - var4.height / 2, var0, var1, var5.width, var5.height, var5.xStarts, var5.xWidths);
-            } else {
-               var4.drawTransBgAt(var0 + var10 + var5.width / 2 - var4.width / 2, var5.height / 2 + var1 - var11 - var4.height / 2);
+               InterfaceParent var4 = (InterfaceParent)Client.interfaceParents.get((long)var3.id);
+               if (var4 != null) {
+                  var5 = var4.group;
+                  if (GrandExchangeEvent.loadInterface(var5)) {
+                     drawModelComponents(class155.Widget_interfaceComponents[var5], -1);
+                  }
+               }
             }
 
+            if (var3.type == 6) {
+               if (var3.sequenceId != -1 || var3.sequenceId2 != -1) {
+                  boolean var8 = JagexCache.runCs1(var3);
+                  if (var8) {
+                     var5 = var3.sequenceId2;
+                  } else {
+                     var5 = var3.sequenceId;
+                  }
+
+                  if (var5 != -1) {
+                     SequenceDefinition var6 = Coord.SequenceDefinition_get(var5);
+                     if (!var6.isCachedModelIdSet()) {
+                        for(var3.modelFrameCycle += Client.graphicsCycle; var3.modelFrameCycle > var6.frameLengths[var3.modelFrame]; class69.invalidateWidget(var3)) {
+                           var3.modelFrameCycle -= var6.frameLengths[var3.modelFrame];
+                           ++var3.modelFrame;
+                           if (var3.modelFrame >= var6.frameIds.length) {
+                              var3.modelFrame -= var6.frameCount;
+                              if (var3.modelFrame < 0 || var3.modelFrame >= var6.frameIds.length) {
+                                 var3.modelFrame = 0;
+                              }
+                           }
+                        }
+                     } else {
+                        var3.modelFrame += Client.graphicsCycle;
+                        int var7 = var6.method4015();
+                        if (var3.modelFrame >= var7) {
+                           var3.modelFrame -= var6.frameCount;
+                           if (var3.modelFrame < 0 || var3.modelFrame >= var7) {
+                              var3.modelFrame = 0;
+                           }
+                        }
+
+                        class69.invalidateWidget(var3);
+                     }
+                  }
+               }
+
+               if (var3.field3582 != 0 && !var3.isIf3) {
+                  int var9 = var3.field3582 >> 16;
+                  var5 = var3.field3582 << 16 >> 16;
+                  var9 *= Client.graphicsCycle;
+                  var5 *= Client.graphicsCycle;
+                  var3.modelAngleX = var9 + var3.modelAngleX & 2047;
+                  var3.modelAngleY = var5 + var3.modelAngleY & 2047;
+                  class69.invalidateWidget(var3);
+               }
+            }
          }
       }
+
+   }
+
+   @ObfuscatedName("mj")
+   @ObfuscatedSignature(
+      descriptor = "(B)V",
+      garbageValue = "-3"
+   )
+   static final void method445() {
+      Client.field525 = Client.cycleCntr;
+      class18.ClanChat_inClanChat = true;
    }
 }

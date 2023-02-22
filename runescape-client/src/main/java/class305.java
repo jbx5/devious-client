@@ -1,38 +1,28 @@
-import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kl")
+@ObfuscatedName("le")
 public class class305 {
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      descriptor = "Lca;"
+   @ObfuscatedName("fa")
+   @ObfuscatedGetter(
+      longValue = -8262714272311397775L
    )
-   @Export("loginScreenRunesAnimation")
-   static LoginScreenAnimation loginScreenRunesAnimation;
-   @ObfuscatedName("f")
-   @ObfuscatedSignature(
-      descriptor = "Lkp;"
+   static long field3439;
+   @ObfuscatedName("aj")
+   @ObfuscatedGetter(
+      intValue = -315144963
    )
-   public class307 field3476 = new class307();
-   @ObfuscatedName("w")
-   @ObfuscatedSignature(
-      descriptor = "Lkr;"
+   public int field3436;
+   @ObfuscatedName("al")
+   @ObfuscatedGetter(
+      intValue = 437488265
    )
-   class302 field3477 = new class302();
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      descriptor = "Laa;"
+   public int field3437;
+   @ObfuscatedName("ac")
+   @ObfuscatedGetter(
+      intValue = -2020302753
    )
-   class27 field3478 = new class27();
-   @ObfuscatedName("s")
-   public Object[] field3481;
-   @ObfuscatedName("z")
-   public Object[] field3480;
-   @ObfuscatedName("j")
-   public Object[] field3479;
-   @ObfuscatedName("i")
-   public Object[] field3482;
+   public int field3440;
 
    class305() {
    }

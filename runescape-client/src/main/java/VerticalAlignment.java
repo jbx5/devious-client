@@ -4,42 +4,35 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gd")
+@ObfuscatedName("he")
 @Implements("VerticalAlignment")
 public enum VerticalAlignment implements MouseWheel {
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
-      descriptor = "Lgd;"
+      descriptor = "Lhe;"
    )
-   field2074(1, 0),
-   @ObfuscatedName("w")
+   field2034(1, 0),
+   @ObfuscatedName("al")
    @ObfuscatedSignature(
-      descriptor = "Lgd;"
+      descriptor = "Lhe;"
    )
    @Export("VerticalAlignment_centered")
    VerticalAlignment_centered(2, 1),
-   @ObfuscatedName("v")
+   @ObfuscatedName("ac")
    @ObfuscatedSignature(
-      descriptor = "Lgd;"
+      descriptor = "Lhe;"
    )
-   field2078(0, 2);
+   field2036(0, 2);
 
-   @ObfuscatedName("l")
+   @ObfuscatedName("ab")
    @ObfuscatedGetter(
-      intValue = -76089911
-   )
-   static int field2071;
-   @ObfuscatedName("bi")
-   static String field2070;
-   @ObfuscatedName("s")
-   @ObfuscatedGetter(
-      intValue = -404874057
+      intValue = -1414458079
    )
    @Export("value")
    public final int value;
-   @ObfuscatedName("z")
+   @ObfuscatedName("an")
    @ObfuscatedGetter(
-      intValue = 589122881
+      intValue = -2110724161
    )
    @Export("id")
    final int id;
@@ -49,13 +42,33 @@ public enum VerticalAlignment implements MouseWheel {
       this.id = var4;
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
-      descriptor = "(B)I",
-      garbageValue = "3"
+      descriptor = "(I)I",
+      garbageValue = "-1409646049"
    )
    @Export("rsOrdinal")
    public int rsOrdinal() {
       return this.id;
+   }
+
+   @ObfuscatedName("ac")
+   @ObfuscatedSignature(
+      descriptor = "(I)V",
+      garbageValue = "1334130459"
+   )
+   public static void method3716() {
+      while(true) {
+         ArchiveDiskAction var0;
+         synchronized(ArchiveDiskActionHandler.ArchiveDiskActionHandler_requestQueue) {
+            var0 = (ArchiveDiskAction)ArchiveDiskActionHandler.ArchiveDiskActionHandler_responseQueue.removeLast();
+         }
+
+         if (var0 == null) {
+            return;
+         }
+
+         var0.archive.load(var0.archiveDisk, (int)var0.key, var0.data, false);
+      }
    }
 }
