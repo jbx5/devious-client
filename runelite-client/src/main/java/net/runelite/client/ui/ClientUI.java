@@ -38,21 +38,16 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GraphicsConfiguration;
 import java.awt.GraphicsDevice;
-import static java.awt.GraphicsDevice.WindowTranslucency.TRANSLUCENT;
 import java.awt.GraphicsEnvironment;
 import java.awt.LayoutManager;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.TrayIcon;
-import java.awt.Window;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.time.Duration;
 import javax.annotation.Nullable;
 import javax.inject.Named;
@@ -116,13 +111,10 @@ import org.pushingpixels.substance.internal.utils.SubstanceTitlePaneUtilities;
 public class ClientUI
 {
 	private static final String CONFIG_GROUP = "runelite";
-	private static final String OPENOSRS_CONFIG_GROUP = "openosrs";
 	private static final String CONFIG_CLIENT_BOUNDS = "clientBounds";
 	private static final String CONFIG_CLIENT_MAXIMIZED = "clientMaximized";
 	private static final String CONFIG_CLIENT_SIDEBAR_CLOSED = "clientSidebarClosed";
-	private static final String CONFIG_OPACITY = "enableOpacity";
-	private static final String CONFIG_OPACITY_AMOUNT = "opacityPercentage";
-	public static final BufferedImage ICON = ImageUtil.loadImageResource(ClientUI.class, "/openosrs.png");
+	public static final BufferedImage ICON = ImageUtil.loadImageResource(ClientUI.class, "/runelite.png");
 
 	@Getter
 	private TrayIcon trayIcon;
@@ -142,26 +134,19 @@ public class ClientUI
 	private boolean withTitleBar;
 	private BufferedImage sidebarOpenIcon;
 	private BufferedImage sidebarClosedIcon;
-
-	@Getter
-	public static ContainableFrame frame;
+	private ContainableFrame frame;
 	private JPanel navContainer;
-	@Getter
 	private PluginPanel pluginPanel;
 	private ClientPluginToolbar pluginToolbar;
 	private ClientTitleToolbar titleToolbar;
 	private JButton currentButton;
 	private NavigationButton currentNavButton;
-	@Getter
 	private boolean sidebarOpen;
 	private JPanel container;
 	private NavigationButton sidebarNavigationButton;
 	private JButton sidebarNavigationJButton;
 	private Dimension lastClientSize;
 	private Cursor defaultCursor;
-	private Field opacityField;
-	private Field peerField;
-	private Method setOpacityMethod;
 
 	@Inject(optional = true)
 	@Named("minMemoryLimit")
@@ -170,6 +155,18 @@ public class ClientUI
 	@Inject(optional = true)
 	@Named("recommendedMemoryLimit")
 	private int recommendedMemoryLimit = 512;
+
+	@Inject(optional = true)
+	@Named("outdatedLauncherWarning")
+	private boolean outdatedLauncherWarning = false;
+
+	@Inject(optional = true)
+	@Named("outdatedLauncherJava8")
+	private boolean outdatedLauncherJava8 = false;
+
+	@Inject(optional = true)
+	@Named("java8Brownout")
+	private boolean java8Brownout = false;
 
 	@Inject
 	private ClientUI(
@@ -180,7 +177,8 @@ public class ClientUI
 		ConfigManager configManager,
 		Provider<ClientThread> clientThreadProvider,
 		EventBus eventBus,
-		@Named("safeMode") boolean safeMode
+		@Named("safeMode") boolean safeMode,
+		@Named("runelite.title") String title
 	)
 	{
 		this.config = config;
@@ -191,16 +189,13 @@ public class ClientUI
 		this.clientThreadProvider = clientThreadProvider;
 		this.eventBus = eventBus;
 		this.safeMode = safeMode;
-		this.title = RuneLiteProperties.getTitle() + (safeMode ? " (safe mode)" : "");
+		this.title = title + (safeMode ? " (safe mode)" : "");
 	}
 
 	@Subscribe
 	public void onConfigChanged(ConfigChanged event)
 	{
-		if (!event.getGroup().equals(CONFIG_GROUP)
-			&& !(event.getGroup().equals(OPENOSRS_CONFIG_GROUP)
-			&& event.getKey().equals(CONFIG_OPACITY) ||
-			event.getKey().equals(CONFIG_OPACITY_AMOUNT)) ||
+		if (!event.getGroup().equals(CONFIG_GROUP) ||
 			event.getKey().equals(CONFIG_CLIENT_MAXIMIZED) ||
 			event.getKey().equals(CONFIG_CLIENT_BOUNDS))
 		{
@@ -550,6 +545,31 @@ public class ClientUI
 
 	public void show()
 	{
+		if (java8Brownout && System.getProperty("java.version", "").startsWith("1.8."))
+		{
+			SwingUtilities.invokeLater(() ->
+			{
+				JEditorPane ep = new JEditorPane("text/html",
+					"Your RuneLite launcher version is old, and requires an update.<br>Update to the latest version by visiting " +
+						"<a href=\"https://runelite.net\">https://runelite.net</a>,<br>or follow the link from the OSRS homepage.<br>" +
+						"Join <a href=\"" + RuneLiteProperties.getDiscordInvite() + "\">Discord</a> for assistance."
+				);
+				ep.addHyperlinkListener(e ->
+				{
+					if (e.getEventType().equals(HyperlinkEvent.EventType.ACTIVATED))
+					{
+						LinkBrowser.browse(e.getURL().toString());
+					}
+				});
+				ep.setEditable(false);
+				ep.setOpaque(false);
+				JOptionPane.showMessageDialog(frame,
+					ep, "Launcher outdated", JOptionPane.ERROR_MESSAGE);
+				System.exit(0);
+			});
+			return;
+		}
+
 		SwingUtilities.invokeLater(() ->
 		{
 			// Layout frame
@@ -640,9 +660,9 @@ public class ClientUI
 		if (client != null && !(client instanceof Client))
 		{
 			SwingUtilities.invokeLater(() -> JOptionPane.showMessageDialog(frame,
-				"OpenOSRS has not yet been updated to work with the latest\n"
+				"RuneLite has not yet been updated to work with the latest\n"
 					+ "game update, it will work with reduced functionality until then.",
-				"OpenOSRS is outdated", INFORMATION_MESSAGE));
+				"RuneLite is outdated", INFORMATION_MESSAGE));
 		}
 
 		final int maxMemory = (int) (Runtime.getRuntime().maxMemory() / 1024L / 1024L);
@@ -666,6 +686,32 @@ public class ClientUI
 				ep.setOpaque(false);
 				JOptionPane.showMessageDialog(frame,
 					ep, "Max memory limit low", JOptionPane.WARNING_MESSAGE);
+			});
+		}
+
+		String launcherVersion = RuneLiteProperties.getLauncherVersion();
+		String javaVersion = System.getProperty("java.version", "");
+		if (outdatedLauncherWarning && javaVersion.startsWith("1.8.") &&
+			(launcherVersion == null || launcherVersion.startsWith("1.5") || outdatedLauncherJava8))
+		{
+			SwingUtilities.invokeLater(() ->
+			{
+				JEditorPane ep = new JEditorPane("text/html",
+					"Your RuneLite launcher version is old, and will soon stop working.<br>Update to the latest version by visiting " +
+						"<a href=\"https://runelite.net\">https://runelite.net</a>,<br>or follow the link from the OSRS homepage.<br>" +
+						"Join <a href=\"" + RuneLiteProperties.getDiscordInvite() + "\">Discord</a> for assistance."
+				);
+				ep.addHyperlinkListener(e ->
+				{
+					if (e.getEventType().equals(HyperlinkEvent.EventType.ACTIVATED))
+					{
+						LinkBrowser.browse(e.getURL().toString());
+					}
+				});
+				ep.setEditable(false);
+				ep.setOpaque(false);
+				JOptionPane.showMessageDialog(frame,
+					ep, "Launcher outdated", INFORMATION_MESSAGE);
 			});
 		}
 	}
@@ -739,7 +785,7 @@ public class ClientUI
 				}
 			}
 			System.exit(0);
-		}, "OpenOSRS Shutdown").start();
+		}, "RuneLite Shutdown").start();
 	}
 
 	/**
@@ -780,7 +826,7 @@ public class ClientUI
 	 */
 	public boolean isFocused()
 	{
-		return frame.isFocused() || net.unethicalite.client.Static.getClient().isFocused();
+		return frame.isFocused();
 	}
 
 	/**
@@ -825,7 +871,6 @@ public class ClientUI
 
 	/**
 	 * Returns current cursor set on game container
-	 *
 	 * @return awt cursor
 	 */
 	public Cursor getCurrentCursor()
@@ -835,7 +880,6 @@ public class ClientUI
 
 	/**
 	 * Returns current custom cursor or default system cursor if cursor is not set
-	 *
 	 * @return awt cursor
 	 */
 	public Cursor getDefaultCursor()
@@ -846,7 +890,6 @@ public class ClientUI
 	/**
 	 * Changes cursor for client window. Requires ${@link ClientUI#init()} to be called first.
 	 * FIXME: This is working properly only on Windows, Linux and Mac are displaying cursor incorrectly
-	 *
 	 * @param image cursor image
 	 * @param name  cursor name
 	 */
@@ -865,7 +908,6 @@ public class ClientUI
 
 	/**
 	 * Changes cursor for client window. Requires ${@link ClientUI#init()} to be called first.
-	 *
 	 * @param cursor awt cursor
 	 */
 	public void setCursor(final Cursor cursor)
@@ -875,7 +917,6 @@ public class ClientUI
 
 	/**
 	 * Resets client window cursor to default one.
-	 *
 	 * @see ClientUI#setCursor(BufferedImage, String)
 	 */
 	public void resetCursor()
@@ -911,7 +952,6 @@ public class ClientUI
 
 	/**
 	 * Paint UI related overlays to target graphics
-	 *
 	 * @param graphics target graphics
 	 */
 	public void paintOverlays(final Graphics2D graphics)
@@ -1128,7 +1168,7 @@ public class ClientUI
 
 		if (config.usernameInTitle() && (client instanceof Client))
 		{
-			final Player player = ((Client) client).getLocalPlayer();
+			final Player player = ((Client)client).getLocalPlayer();
 
 			if (player != null && player.getName() != null)
 			{
@@ -1165,26 +1205,6 @@ public class ClientUI
 		{
 			configManager.unsetConfiguration(CONFIG_GROUP, CONFIG_CLIENT_MAXIMIZED);
 			configManager.unsetConfiguration(CONFIG_GROUP, CONFIG_CLIENT_BOUNDS);
-		}
-
-		if (configManager.getConfiguration(OPENOSRS_CONFIG_GROUP, CONFIG_OPACITY, boolean.class))
-		{
-			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-			GraphicsDevice gd = ge.getDefaultScreenDevice();
-
-			if (gd.isWindowTranslucencySupported(TRANSLUCENT))
-			{
-				setOpacity();
-			}
-			else
-			{
-				log.warn("Opacity isn't supported on your system!");
-				configManager.setConfiguration(OPENOSRS_CONFIG_GROUP, CONFIG_OPACITY, false);
-			}
-		}
-		else if (frame.getOpacity() != 1F)
-		{
-			frame.setOpacity(1F);
 		}
 
 		if (client == null)
@@ -1235,53 +1255,5 @@ public class ClientUI
 			configManager.unsetConfiguration(CONFIG_GROUP, CONFIG_CLIENT_MAXIMIZED);
 			configManager.setConfiguration(CONFIG_GROUP, CONFIG_CLIENT_BOUNDS, bounds);
 		}
-	}
-
-	private void setOpacity()
-	{
-		if (frame == null)
-		{
-			return;
-		}
-
-		SwingUtilities.invokeLater(() ->
-		{
-			try
-			{
-				if (opacityField == null)
-				{
-					opacityField = Window.class.getDeclaredField("opacity");
-					opacityField.setAccessible(true);
-				}
-
-				if (peerField == null)
-				{
-					peerField = Component.class.getDeclaredField("peer");
-					peerField.setAccessible(true);
-				}
-
-				if (setOpacityMethod == null)
-				{
-					setOpacityMethod = Class.forName("java.awt.peer.WindowPeer").getDeclaredMethod("setOpacity", float.class);
-				}
-
-				if (peerField.get(frame) == null)
-				{
-					return;
-				}
-
-				final float opacity = Float.parseFloat(configManager.getConfiguration(OPENOSRS_CONFIG_GROUP, CONFIG_OPACITY_AMOUNT)) / 100F;
-				assert opacity > 0F && opacity <= 1F : "I don't know who you are, I don't know why you tried, and I don't know how you tried, but this is NOT what you're supposed to do and you should honestly feel terrible about what you did, so I want you to take a nice long amount of time to think about what you just tried to do so you are not gonna do this in the future.";
-
-				opacityField.setFloat(frame, opacity);
-				setOpacityMethod.invoke(peerField.get(frame), opacity);
-
-			}
-			catch (NoSuchFieldException | NoSuchMethodException | ClassNotFoundException | IllegalAccessException |
-				InvocationTargetException e)
-			{
-				e.printStackTrace();
-			}
-		});
 	}
 }
