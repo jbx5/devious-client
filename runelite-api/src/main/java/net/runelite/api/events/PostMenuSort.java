@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017, Adam <Adam@sigterm.info>
+ * Copyright (c) 2022, Adam <Adam@sigterm.info>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,34 +22,13 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.client.plugins.timers;
+package net.runelite.api.events;
 
-import java.time.Duration;
-import java.time.temporal.ChronoUnit;
-import net.runelite.client.plugins.Plugin;
-import net.runelite.client.ui.overlay.infobox.InfoBoxPriority;
-import net.runelite.client.ui.overlay.infobox.Timer;
-
-class TimerTimer extends Timer
+/**
+ * Posted after the menu is sorted, but before clicks are processed.
+ * This is only fired if the menu isn't open, and shouldn't be used as a general purpose
+ * client tick event.
+ */
+public class PostMenuSort
 {
-	private final GameTimer timer;
-	int ticks;
-
-	TimerTimer(GameTimer timer, Duration duration, Plugin plugin)
-	{
-		super(duration.toMillis(), ChronoUnit.MILLIS, null, plugin);
-		this.timer = timer;
-		setPriority(InfoBoxPriority.MED);
-	}
-
-	public GameTimer getTimer()
-	{
-		return timer;
-	}
-
-	@Override
-	public String getName()
-	{
-		return timer.name();
-	}
 }

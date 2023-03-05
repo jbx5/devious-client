@@ -399,11 +399,13 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
    @ObfuscatedGetter(
       intValue = 1932736064
    )
+   @Export("hintArrowSubX")
    static int hintArrowSubX = 0;
    @ObfuscatedName("ds")
    @ObfuscatedGetter(
       intValue = 1335659968
    )
+   @Export("hintArrowSubY")
    static int hintArrowSubY = 0;
    @ObfuscatedName("de")
    @ObfuscatedSignature(
@@ -625,11 +627,13 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
    @ObfuscatedGetter(
       intValue = 651770897
    )
+   @Export("camAngleDY")
    static int camAngleDY;
    @ObfuscatedName("jk")
    @ObfuscatedGetter(
       intValue = 542177225
    )
+   @Export("camAngleDX")
    static int camAngleDX;
    @ObfuscatedName("ki")
    @ObfuscatedGetter(
@@ -640,6 +644,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
    @ObfuscatedGetter(
       intValue = -801588943
    )
+   @Export("mouseCamClickedY")
    static int mouseCamClickedY;
    @ObfuscatedName("kf")
    @ObfuscatedGetter(
@@ -6012,7 +6017,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
    )
    @Export("menu")
    final void menu() {
-      class127.method3082();
+      class127.menuSort();
       if (WorldMapLabelSize.dragInventoryWidget == null) {
          if (clickedWidget == null) {
             int var1 = MouseHandler.MouseHandler_lastButton;
