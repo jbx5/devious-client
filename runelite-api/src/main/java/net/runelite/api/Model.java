@@ -24,7 +24,7 @@
  */
 package net.runelite.api;
 
-import java.util.HashMap;
+import javax.annotation.Nonnull;
 
 /**
  * Represents the model of an object.
@@ -63,10 +63,11 @@ public interface Model extends Mesh, Renderable
 	@Deprecated
 	void calculateExtreme(int orientation);
 
+	@Nonnull
+	AABB getAABB(int orientation);
+
 	int getXYZMag();
 	boolean isClickable();
-	
-	void drawFace(int face);
 
 	int[] getVertexNormalsX();
 	int[] getVertexNormalsY();
@@ -76,11 +77,10 @@ public interface Model extends Mesh, Renderable
 	byte getOverrideHue();
 	byte getOverrideSaturation();
 	byte getOverrideLuminance();
-	HashMap<Integer, AABB> getAABBMap();
 
-	AABB getAABB(int orientation);
+	byte[] getTextureFaces();
 
-	void calculateBoundingBox(int orientation);
-
-	int getLastOrientation();
+	int[] getTexIndices1();
+	int[] getTexIndices2();
+	int[] getTexIndices3();
 }
