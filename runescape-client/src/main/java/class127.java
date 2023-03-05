@@ -176,7 +176,8 @@ public class class127 implements MouseWheel {
       descriptor = "(I)V",
       garbageValue = "1463549710"
    )
-   static final void method3082() {
+   @Export("menuSort")
+   static final void menuSort() {
       boolean var0 = false;
 
       while(!var0) {

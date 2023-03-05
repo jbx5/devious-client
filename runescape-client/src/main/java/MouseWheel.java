@@ -9,7 +9,7 @@ public interface MouseWheel {
    @ObfuscatedName("f")
    @ObfuscatedSignature(
       descriptor = "(B)I",
-      garbageValue = "96"
+      garbageValue = "3"
    )
    @Export("rsOrdinal")
    int rsOrdinal();
