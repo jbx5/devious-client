@@ -25,6 +25,13 @@
 package net.runelite.api;
 
 import com.jagex.oldscape.pub.OAuthApi;
+import java.awt.Canvas;
+import java.awt.Dimension;
+import java.util.EnumSet;
+import java.util.List;
+import java.util.Map;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import net.runelite.api.annotations.VarCInt;
 import net.runelite.api.annotations.VarCStr;
 import net.runelite.api.annotations.Varbit;
@@ -34,14 +41,9 @@ import net.runelite.api.clan.ClanID;
 import net.runelite.api.clan.ClanSettings;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
-import net.runelite.api.events.PlayerChanged;
+import net.runelite.api.dbtable.DBRowConfig;
 import net.runelite.api.hooks.Callbacks;
 import net.runelite.api.hooks.DrawCallbacks;
-import net.runelite.api.packets.ClientPacket;
-import net.runelite.api.packets.IsaacCipher;
-import net.runelite.api.packets.PacketBufferNode;
-import net.runelite.api.packets.PacketWriter;
-import net.runelite.api.packets.ServerPacket;
 import net.runelite.api.vars.AccountType;
 import net.runelite.api.widgets.ItemQuantityMode;
 import net.runelite.api.widgets.Widget;
@@ -49,21 +51,7 @@ import net.runelite.api.widgets.WidgetConfig;
 import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.api.worldmap.MapElementConfig;
 import net.runelite.api.worldmap.WorldMap;
-import net.unethicalite.api.MouseHandler;
-import net.unethicalite.api.SceneEntity;
-import net.unethicalite.api.events.MenuAutomated;
 import org.intellij.lang.annotations.MagicConstant;
-import org.slf4j.Logger;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import java.awt.Canvas;
-import java.awt.Dimension;
-import java.math.BigInteger;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 /**
  * Represents the RuneScape client.
@@ -82,12 +70,6 @@ public interface Client extends OAuthApi, GameEngine
 	DrawCallbacks getDrawCallbacks();
 
 	void setDrawCallbacks(DrawCallbacks drawCallbacks);
-
-	/**
-	 * Retrieve a global logger for the client.
-	 * This is most useful for mixins which can't have their own.
-	 */
-	Logger getLogger();
 
 	String getBuildID();
 
@@ -173,13 +155,6 @@ public interface Client extends OAuthApi, GameEngine
 	GameState getGameState();
 
 	/**
-	 * Gets the current game state as an int
-	 *
-	 * @return the game state
-	 */
-	int getRSGameState();
-
-	/**
 	 * Sets the current game state
 	 *
 	 * @param gameState
@@ -187,32 +162,11 @@ public interface Client extends OAuthApi, GameEngine
 	void setGameState(GameState gameState);
 
 	/**
-	 * Sets the current game state
-	 * This takes an int instead of a {@link GameState} so it can
-	 * can handle states that aren't in the enum yet
-	 *
-	 * @param gameState
-	 */
-	void setGameState(int gameState);
-
-	/**
 	 * Causes the client to shutdown. It is faster than
 	 * {@link java.applet.Applet#stop()} because it doesn't wait for 4000ms.
 	 * This will call {@link System#exit} when it is done
 	 */
 	void stopNow();
-
-	/**
-	 * Gets the login screen world select state.
-	 *
-	 * @return the world select state
-	 */
-	boolean isWorldSelectOpen();
-
-	/**
-	 * Sets the login screen world select state.
-	 */
-	void setWorldSelectOpen(boolean open);
 
 	/**
 	 * DEPRECATED. See getAccountHash instead.
@@ -332,11 +286,13 @@ public interface Client extends OAuthApi, GameEngine
 
 	/**
 	 * Gets the canvas height
+	 * @return
 	 */
 	int getCanvasHeight();
 
 	/**
 	 * Gets the canvas width
+	 * @return
 	 */
 	int getCanvasWidth();
 
@@ -428,22 +384,8 @@ public interface Client extends OAuthApi, GameEngine
 	 * Gets the logged in player instance.
 	 *
 	 * @return the logged in player
-	 * <p>
-	 * (getLocalPlayerIndex returns the local index, useful for menus/interacting)
 	 */
 	Player getLocalPlayer();
-
-	int getLocalPlayerIndex();
-
-	/**
-	 * Gets the item composition corresponding to an items ID.
-	 *
-	 * @param id the item ID
-	 * @return the corresponding item composition
-	 * @see ItemID
-	 */
-	@Nonnull
-	ItemComposition getItemComposition(int id);
 
 	/**
 	 * Get the local player's follower, such as a pet
@@ -465,13 +407,13 @@ public interface Client extends OAuthApi, GameEngine
 	/**
 	 * Creates an item icon sprite with passed variables.
 	 *
-	 * @param itemId      the item ID
-	 * @param quantity    the item quantity
-	 * @param border      whether to draw a border
+	 * @param itemId the item ID
+	 * @param quantity the item quantity
+	 * @param border whether to draw a border
 	 * @param shadowColor the shadow color
-	 * @param stackable   whether the item is stackable
-	 * @param noted       whether the item is noted
-	 * @param scale       the scale of the sprite
+	 * @param stackable whether the item is stackable
+	 * @param noted whether the item is noted
+	 * @param scale the scale of the sprite
 	 * @return the created sprite
 	 */
 	@Nullable
@@ -494,9 +436,9 @@ public interface Client extends OAuthApi, GameEngine
 	/**
 	 * Loads and creates the sprite images of the passed archive and file IDs.
 	 *
-	 * @param source    the sprite index
+	 * @param source the sprite index
 	 * @param archiveId the sprites archive ID
-	 * @param fileId    the sprites file ID
+	 * @param fileId the sprites file ID
 	 * @return the sprite image of the file
 	 */
 	@Nullable
@@ -659,13 +601,6 @@ public interface Client extends OAuthApi, GameEngine
 	int[] getWidgetPositionsY();
 
 	/**
-	 * Creates a new widget element
-	 *
-	 * @return
-	 */
-	Widget createWidget();
-
-	/**
 	 * Gets the current run energy of the logged in player.
 	 *
 	 * @return the run energy in units of 1/100th of an percentage
@@ -718,23 +653,12 @@ public interface Client extends OAuthApi, GameEngine
 	MenuEntry createMenuEntry(int idx);
 
 	/**
-	 * Create a new menu entry
-	 * @return the newly created menu entry
-	 */
-	MenuEntry createMenuEntry(String option, String target, int identifier, int opcode, int param1, int param2, int itemId, boolean forceLeftClick);
-
-	/**
 	 * Gets an array of currently open right-click menu entries that can be
 	 * clicked and activated.
 	 *
 	 * @return array of open menu entries
 	 */
 	MenuEntry[] getMenuEntries();
-
-	/**
-	 * @return amount of menu entries the client has (same as client.getMenuEntries().size())
-	 */
-	int getMenuOptionCount();
 
 	/**
 	 * Sets the array of open menu entries.
@@ -745,12 +669,6 @@ public interface Client extends OAuthApi, GameEngine
 	 * @param entries new array of open menu entries
 	 */
 	void setMenuEntries(MenuEntry[] entries);
-
-	/**
-	 * Set the amount of menu entries the client has.
-	 * If you decrement this count, it's the same as removing the last one
-	 */
-	void setMenuOptionCount(int count);
 
 	/**
 	 * Checks whether a right-click menu is currently open.
@@ -833,7 +751,6 @@ public interface Client extends OAuthApi, GameEngine
 	 * | |rot|     y chunk coord     |    x chunk coord    |pln|       |
 	 * +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 	 * }</pre>
-	 *
 	 * @return the array of instance template chunks
 	 * @see Constants#CHUNK_SIZE
 	 * @see InstanceTemplates
@@ -859,6 +776,7 @@ public interface Client extends OAuthApi, GameEngine
 	 *
 	 * @return local player variables
 	 */
+	@VisibleForDevtools
 	int[] getVarps();
 
 	/**
@@ -873,6 +791,7 @@ public interface Client extends OAuthApi, GameEngine
 	/**
 	 * Gets an array of all client variables.
 	 */
+	@VisibleForDevtools
 	Map<Integer, Object> getVarcMap();
 
 	/**
@@ -976,7 +895,7 @@ public interface Client extends OAuthApi, GameEngine
 	 * Sets the value of a varbit
 	 *
 	 * @param varbit the varbit id
-	 * @param value  the new value
+	 * @param value the new value
 	 */
 	void setVarbit(@Varbit int varbit, int value);
 
@@ -986,37 +905,30 @@ public interface Client extends OAuthApi, GameEngine
 	 * @param id
 	 * @return
 	 */
+	@VisibleForDevtools
 	@Nullable
 	VarbitComposition getVarbit(int id);
 
 	/**
 	 * Gets the value of a given variable.
 	 *
-	 * @param varps    passed varbits
+	 * @param varps passed varbits
 	 * @param varbitId the variable ID
 	 * @return the value
 	 * @see Varbits
 	 */
+	@VisibleForDevtools
 	int getVarbitValue(int[] varps, @Varbit int varbitId);
-
-	/**
-	 * Gets the value of a given VarPlayer.
-	 *
-	 * @param varps  passed varps
-	 * @param varpId the VarpPlayer id
-	 * @return the value
-	 * @see VarPlayer#getId()
-	 */
-	int getVarpValue(int[] varps, int varpId);
 
 	/**
 	 * Sets the value of a given variable.
 	 *
-	 * @param varps  passed varbits
+	 * @param varps passed varbits
 	 * @param varbit the variable
-	 * @param value  the value
+	 * @param value the value
 	 * @see Varbits
 	 */
+	@VisibleForDevtools
 	void setVarbitValue(int[] varps, @Varbit int varbit, int value);
 
 	/**
@@ -1066,6 +978,8 @@ public interface Client extends OAuthApi, GameEngine
 
 	/**
 	 * Get the total experience of the player
+	 *
+	 * @return
 	 */
 	long getOverallExperience();
 
@@ -1123,12 +1037,7 @@ public interface Client extends OAuthApi, GameEngine
 	 */
 	Object getDBTableField(int rowID, int column, int tupleIndex, int fieldIndex);
 
-	/**
-	 * Gets an array of all world areas
-	 *
-	 * @return the world areas
-	 */
-	MapElementConfig[] getMapElementConfigs();
+	DBRowConfig getDBRowConfig(int rowID);
 
 	/**
 	 * Get a map element config by id
@@ -1193,7 +1102,7 @@ public interface Client extends OAuthApi, GameEngine
 	 * pixels.
 	 *
 	 * @param pixels the pixels
-	 * @param width  the width
+	 * @param width the width
 	 * @param height the height
 	 * @return the sprite image
 	 */
@@ -1225,7 +1134,7 @@ public interface Client extends OAuthApi, GameEngine
 	 * @return the new projectile
 	 */
 	Projectile createProjectile(int id, int plane, int startX, int startY, int startZ, int startCycle, int endCycle,
-								int slope, int startHeight, int endHeight, @Nullable Actor target, int targetX, int targetY);
+		int slope, int startHeight, int endHeight, @Nullable Actor target, int targetX, int targetY);
 
 	/**
 	 * Gets a list of all projectiles currently spawned.
@@ -1322,31 +1231,31 @@ public interface Client extends OAuthApi, GameEngine
 	 * normally played.
 	 *
 	 * @param id the ID of the sound to play. Any int is allowed, but see
-	 *           {@link SoundEffectID} for some common ones
+	 * {@link SoundEffectID} for some common ones
 	 */
 	void playSoundEffect(int id);
 
 	/**
 	 * Play a sound effect from some point in the world.
 	 *
-	 * @param id    the ID of the sound to play. Any int is allowed, but see
-	 *              {@link SoundEffectID} for some common ones
-	 * @param x     the ground coordinate on the x axis
-	 * @param y     the ground coordinate on the y axis
+	 * @param id the ID of the sound to play. Any int is allowed, but see
+	 * {@link SoundEffectID} for some common ones
+	 * @param x the ground coordinate on the x axis
+	 * @param y the ground coordinate on the y axis
 	 * @param range the number of tiles away that the sound can be heard
-	 *              from
+	 * from
 	 */
 	void playSoundEffect(int id, int x, int y, int range);
 
 	/**
 	 * Play a sound effect from some point in the world.
 	 *
-	 * @param id    the ID of the sound to play. Any int is allowed, but see
-	 *              {@link SoundEffectID} for some common ones
-	 * @param x     the ground coordinate on the x axis
-	 * @param y     the ground coordinate on the y axis
+	 * @param id the ID of the sound to play. Any int is allowed, but see
+	 * {@link SoundEffectID} for some common ones
+	 * @param x the ground coordinate on the x axis
+	 * @param y the ground coordinate on the y axis
 	 * @param range the number of tiles away that the sound can be heard
-	 *              from
+	 * from
 	 * @param delay the amount of frames before the sound starts playing
 	 */
 	void playSoundEffect(int id, int x, int y, int range, int delay);
@@ -1382,35 +1291,12 @@ public interface Client extends OAuthApi, GameEngine
 	long getMouseLastPressedMillis();
 
 	/**
-	 * Sets the time at which the last mouse press occurred in milliseconds since
-	 * the UNIX epoch.
-	 */
-	void setMouseLastPressedMillis(long time);
-
-	/**
-	 * Gets the time at which the second-to-last mouse press occurred in milliseconds since
-	 * the UNIX epoch.
-	 */
-	long getClientMouseLastPressedMillis();
-
-	/**
-	 * Sets the time at which the second-to-last mouse press occurred in milliseconds since
-	 * the UNIX epoch.
-	 */
-	void setClientMouseLastPressedMillis(long time);
-
-	/**
 	 * Gets the amount of client ticks since the last keyboard press occurred.
 	 *
 	 * @return amount of idle keyboard ticks
 	 * @see Constants#CLIENT_TICK_LENGTH
 	 */
 	int getKeyboardIdleTicks();
-
-	/**
-	 * Returns an array of booleans relating to keys pressed.
-	 */
-	boolean[] getPressedKeys();
 
 	/**
 	 * Changes how game behaves based on memory mode. Low memory mode skips
@@ -1493,7 +1379,7 @@ public interface Client extends OAuthApi, GameEngine
 	/**
 	 * Checks whether a player is on the friends list.
 	 *
-	 * @param name           the name of the player
+	 * @param name the name of the player
 	 * @param mustBeLoggedIn if they player is online
 	 * @return true if the player is friends
 	 */
@@ -1509,11 +1395,15 @@ public interface Client extends OAuthApi, GameEngine
 
 	/**
 	 * Retrieve the nameable container containing friends
+	 *
+	 * @return
 	 */
 	FriendContainer getFriendContainer();
 
 	/**
 	 * Retrieve the nameable container containing ignores
+	 *
+	 * @return
 	 */
 	NameableContainer<Ignore> getIgnoreContainer();
 
@@ -1625,7 +1515,7 @@ public interface Client extends OAuthApi, GameEngine
 	 * factors towards {@code zero} when stretching.
 	 *
 	 * @param state new integer scaling state
-	 */
+	*/
 	void setStretchedIntegerScaling(boolean state);
 
 	/**
@@ -1641,12 +1531,6 @@ public interface Client extends OAuthApi, GameEngine
 	 * @param factor new scaling factor
 	 */
 	void setScalingFactor(int factor);
-
-
-	/**
-	 * @return Scaling factor that was set for stretched mode.
-	 */
-	double getScalingFactor();
 
 	/**
 	 * Invalidates cached dimensions that are
@@ -1695,11 +1579,9 @@ public interface Client extends OAuthApi, GameEngine
 	 */
 	SpritePixels drawInstanceMap(int z);
 
-	void setMinimapReceivesClicks(boolean minimapReceivesClicks);
-
 	/**
 	 * Executes a client script from the cache
-	 * <p>
+	 *
 	 * This method must be ran on the client thread and is not reentrant
 	 *
 	 * This method is shorthand for {@code client.createScriptEvent(args).run()}
@@ -1828,41 +1710,11 @@ public interface Client extends OAuthApi, GameEngine
 	void setInterpolateObjectAnimations(boolean interpolate);
 
 	/**
-	 * Checks whether animation smoothing is enabled for widgets.
-	 *
-	 * @return true if widget animation smoothing is enabled, false otherwise
-	 */
-	boolean isInterpolateWidgetAnimations();
-
-	/**
-	 * Sets the animation smoothing state for widgets.
-	 *
-	 * @param interpolate the new smoothing state
-	 */
-	void setInterpolateWidgetAnimations(boolean interpolate);
-
-	/**
 	 * Checks whether the logged in player is in an instanced region.
 	 *
 	 * @return true if the player is in instanced region, false otherwise
 	 */
 	boolean isInInstancedRegion();
-
-	/**
-	 * Get the number of client ticks an item has been pressed
-	 *
-	 * @return the number of client ticks an item has been pressed
-	 */
-	@Deprecated
-	int getItemPressedDuration();
-
-	/**
-	 * Adds a custom clientscript to the list of available clientscripts.
-	 *
-	 * @param script compiled clientscript code
-	 * @return the id of the newly-added script
-	 */
-	int addClientScript(byte[] script);
 
 	/**
 	 * Gets an array of tile collision data.
@@ -1874,10 +1726,13 @@ public interface Client extends OAuthApi, GameEngine
 	@Nullable
 	CollisionData[] getCollisionMaps();
 
+	@VisibleForDevtools
 	int[] getBoostedSkillLevels();
 
+	@VisibleForDevtools
 	int[] getRealSkillLevels();
 
+	@VisibleForDevtools
 	int[] getSkillExperiences();
 
 	void queueChangedSkill(Skill skill);
@@ -1901,9 +1756,9 @@ public interface Client extends OAuthApi, GameEngine
 	/**
 	 * Sets the compass sprite.
 	 *
-	 * @param SpritePixels the new sprite
+	 * @param spritePixels the new sprite
 	 */
-	void setCompass(SpritePixels SpritePixels);
+	void setCompass(SpritePixels spritePixels);
 
 	/**
 	 * Returns widget sprite cache, to be used with {@link Client#getSpriteOverrides()}
@@ -1933,10 +1788,6 @@ public interface Client extends OAuthApi, GameEngine
 	 */
 	@Deprecated
 	void setInventoryDragDelay(int delay);
-
-	boolean isHdMinimapEnabled();
-
-	void setHdMinimapEnabled(boolean enabled);
 
 	/**
 	 * Gets a set of current world types that apply to the logged in world.
@@ -1973,23 +1824,12 @@ public interface Client extends OAuthApi, GameEngine
 	int getOculusOrbFocalPointY();
 
 	/**
-	 * Sets local X coord where the camera is pointing when the Oculus orb is active
-	 */
-	void setOculusOrbFocalPointX(int xPos);
-
-	/**
-	 * Sets local Y coord where the camera is pointing when the Oculus orb is active
-	 */
-	void setOculusOrbFocalPointY(int yPos);
-
-	/**
 	 * Opens in-game world hopper interface
 	 */
 	void openWorldHopper();
 
 	/**
 	 * Hops using in-game world hopper widget to another world
-	 *
 	 * @param world target world to hop to
 	 */
 	void hopToWorld(World world);
@@ -2009,37 +1849,33 @@ public interface Client extends OAuthApi, GameEngine
 	void setGpu(boolean gpu);
 
 	int get3dZoom();
-
 	int getCenterX();
-
 	int getCenterY();
 
 	int getCameraX2();
-
 	int getCameraY2();
-
 	int getCameraZ2();
 
 	TextureProvider getTextureProvider();
 
-	NodeCache getCachedModels2();
-
 	void setRenderArea(boolean[][] renderArea);
 
 	int getRasterizer3D_clipMidX2();
-
 	int getRasterizer3D_clipNegativeMidX();
-
 	int getRasterizer3D_clipNegativeMidY();
-
 	int getRasterizer3D_clipMidY2();
 
 	void checkClickbox(Model model, int orientation, int pitchSin, int pitchCos, int yawSin, int yawCos, int x, int y, int z, long hash);
 
 	/**
+	 * Is a widget is in target mode?
+	 */
+	boolean isWidgetSelected();
+
+	/**
 	 * Sets if a widget is in target mode
 	 */
-	void setSpellSelected(boolean selected);
+	void setWidgetSelected(boolean selected);
 
 	/**
 	 * Get the selected widget, such as a selected spell or selected item (eg. "Use")
@@ -2074,11 +1910,6 @@ public interface Client extends OAuthApi, GameEngine
 	void draw2010Menu(int alpha);
 
 	/**
-	 * Get client pixels. Each integer represents an ARGB colored pixel.
-	 */
-	int[] getGraphicsPixels();
-
-	/**
 	 * Draws a menu in the OSRS interface style.
 	 *
 	 * @param alpha background transparency of the menu
@@ -2086,84 +1917,6 @@ public interface Client extends OAuthApi, GameEngine
 	void drawOriginalMenu(int alpha);
 
 	void resetHealthBarCaches();
-
-	boolean getRenderSelf();
-
-	void setRenderSelf(boolean enabled);
-
-	default void invokeMenuAction(String option, String target, int identifier, int opcode, int param0, int param1)
-	{
-		invokeMenuAction(option, target, identifier, opcode, param0, param1, -1, -1);
-	}
-
-	void invokeMenuAction(String option, String target, int identifier, int opcode, int param0, int param1,
-			int screenX, int screenY);
-
-	void invokeMenuAction(String option, String target, int identifier, int opcode, int param0, int param1,
-						  int itemId, int screenX, int screenY);
-
-	MouseRecorder getMouseRecorder();
-
-	void setPrintMenuActions(boolean b);
-
-	boolean getSpellSelected();
-
-	int getSelectedSpellFlags();
-
-	void setSelectedSpellFlags(int var0);
-
-	int getSelectedSpellItemId();
-
-	void setSelectedSpellItemId(int itemId);
-
-	/**
-	 * Set whether or not player attack options will be hidden for friends
-	 */
-	void setHideFriendAttackOptions(boolean yes);
-
-	/**
-	 * Set whether or not player cast options will be hidden for friends
-	 */
-	void setHideFriendCastOptions(boolean yes);
-
-	/**
-	 * Set whether or not player attack options will be hidden for clanmates
-	 */
-	void setHideClanmateAttackOptions(boolean yes);
-
-	/**
-	 * Set whether or not player cast options will be hidden for clanmates
-	 */
-	void setHideClanmateCastOptions(boolean yes);
-
-	/**
-	 * Set spells excluded from above hiding
-	 */
-	void setUnhiddenCasts(Set<String> casts);
-
-	/**
-	 * Add player to friendlist
-	 */
-	void addFriend(String name);
-
-	/**
-	 * Remove player from friendlist
-	 */
-	void removeFriend(String name);
-
-	/**
-	 * Add player to ignorelist
-	 */
-	void addIgnore(String name);
-
-	/**
-	 * Remove player from ignorelist
-	 */
-	void removeIgnore(String name, boolean confirmToJagex);
-
-	void setModulus(BigInteger modulus);
-
-	BigInteger getModulus();
 
 	/**
 	 * Returns the max item index + 1 from cache
@@ -2174,56 +1927,6 @@ public interface Client extends OAuthApi, GameEngine
 	 * Makes all widgets behave as if they are {@link WidgetConfig#WIDGET_USE_TARGET}
 	 */
 	void setAllWidgetsAreOpTargetable(boolean value);
-
-	/**
-	 * Adds a MenuEntry to the current menu.
-	 */
-	void insertMenuItem(String action, String target, int opcode, int identifier, int argument1, int argument2, int itemId, boolean forceLeftClick);
-
-	int getSelectedSpellWidget();
-
-	int getSelectedSpellChildIndex();
-
-	void setSelectedSpellWidget(int widgetID);
-
-	void setSelectedSpellChildIndex(int index);
-
-	/**
-	 * Scales values from pixels onto canvas
-	 *
-	 * @param canvas       the array we're writing to
-	 * @param pixels       pixels to draw
-	 * @param color        should be 0
-	 * @param pixelX       x index
-	 * @param pixelY       y index
-	 * @param canvasIdx    index in canvas (canvas[canvasIdx])
-	 * @param canvasOffset x offset
-	 * @param newWidth     new width
-	 * @param newHeight    new height
-	 * @param pixelWidth   pretty much horizontal scale
-	 * @param pixelHeight  pretty much vertical scale
-	 * @param oldWidth     old width
-	 * @see net.runelite.client.util.ImageUtil#resizeSprite(Client, SpritePixels, int, int)
-	 */
-	void scaleSprite(int[] canvas, int[] pixels, int color, int pixelX, int pixelY, int canvasIdx, int canvasOffset, int newWidth, int newHeight, int pixelWidth, int pixelHeight, int oldWidth);
-
-	/**
-	 * If this field is set to true, getting 5 minute logged won't show
-	 * the "You have been disconnected." message anymore.
-	 */
-	void setHideDisconnect(boolean dontShow);
-
-	/**
-	 * Sets the fields in the temporary menu entry that's saved in the client
-	 * when a inventory item is clicked and dragged.
-	 */
-	void setTempMenuEntry(MenuEntry entry);
-
-	void setShowMouseCross(boolean show);
-
-	void setMouseIdleTicks(int cycles);
-
-	void setKeyboardIdleTicks(int cycles);
 
 	/**
 	 * Sets the result count for GE search
@@ -2241,40 +1944,6 @@ public interface Client extends OAuthApi, GameEngine
 	void setGeSearchResultIndex(int index);
 
 	/**
-	 * Sets values related to jagex compliance
-	 */
-	void setComplianceValue(@Nonnull String key, boolean value);
-
-	/**
-	 * Gets values related to jagex compliance
-	 */
-	boolean getComplianceValue(@Nonnull String key);
-
-	/**
-	 * Gets the status of client mirror
-	 */
-	boolean isMirrored();
-
-	/**
-	 * Sets the status of client mirror
-	 */
-	void setMirrored(boolean isMirrored);
-
-	/**
-	 * True if the client is comparing player appearance hashes.
-	 */
-	boolean isComparingAppearance();
-
-	/**
-	 * Setting this to true will allow the client to compare
-	 * player appearance hashes and dispatch when one changes
-	 * via the {@link PlayerChanged} event.
-	 * <p>
-	 * WARNING - THIS METHOD IS CPU-INTENSE.
-	 */
-	void setComparingAppearance(boolean comparingAppearance);
-
-	/**
 	 * Sets the image to be used for the login screen, provided as SpritePixels
 	 * If the image is larger than half the width of fixed mode,
 	 * it won't get mirrored to the other side of the screen
@@ -2282,80 +1951,17 @@ public interface Client extends OAuthApi, GameEngine
 	void setLoginScreen(SpritePixels pixels);
 
 	/**
-	 * Low level control over the login screen background.
-	 * Useful when changing the login screen background every frame, for example for playing a video.
-	 * A typical update cycle would be:
-	 * 1. setLoginScreenBackground(pixels) 2. setLoginScreenLeftTitleSprite() 3. setLoginScreenRightTitleSprite()
-	 */
-	void setLoginScreenBackground(SpritePixels pixels);
-	void setLoginScreenLeftTitleSprite();
-	void setLoginScreenRightTitleSprite();
-
-	/**
 	 * Sets whether the flames on the login screen should be rendered
 	 */
 	void setShouldRenderLoginScreenFire(boolean val);
 
 	/**
-	 * Gets whether the flames on the login screen should be rendered
-	 */
-	boolean shouldRenderLoginScreenFire();
-
-	/**
 	 * Test if a key is pressed
-	 *
 	 * @param keycode the keycode
 	 * @return
 	 * @see KeyCode
 	 */
 	boolean isKeyPressed(@MagicConstant(valuesFromClass = KeyCode.class) int keycode);
-
-	int getFollowerIndex();
-
-	int isItemSelected();
-
-	Widget getMessageContinueWidget();
-
-	void setOutdatedScript(String outdatedScript);
-
-	List<String> getOutdatedScripts();
-
-	/**
-	 * Gets a Frames object. File Ids for animations frames are grouped together into a Frames object. getFrames will get the group of frames that the frameId belongs to.
-	 */
-	Frames getFrames(int frameId);
-
-	SequenceDefinition getSequenceDefinition(int id);
-
-	/**
-	 * various archives you might want to use for reading data from cache
-	 */
-	IndexDataBase getSequenceDefinition_skeletonsArchive();
-
-	IndexDataBase getSequenceDefinition_archive();
-
-	IndexDataBase getSequenceDefinition_animationsArchive();
-
-	IndexDataBase getNpcDefinition_archive();
-
-	IndexDataBase getObjectDefinition_modelsArchive();
-
-	IndexDataBase getObjectDefinition_archive();
-
-	IndexDataBase getItemDefinition_archive();
-
-	IndexDataBase getKitDefinition_archive();
-
-	IndexDataBase getKitDefinition_modelsArchive();
-
-	IndexDataBase getSpotAnimationDefinition_archive();
-
-	IndexDataBase getSpotAnimationDefinition_modelArchive();
-
-	/**
-	 * use createBuffer to create a new byte buffer
-	 */
-	Buffer createBuffer(byte[] initialBytes);
 
 	/**
 	 * Get the list of message ids for the recently received cross-world messages. The upper 32 bits of the
@@ -2428,7 +2034,7 @@ public interface Client extends OAuthApi, GameEngine
 	Deque<AmbientSoundEffect> getAmbientSoundEffects();
 
 	/**
-	 * Set the amount of time until the client automatically logs out due idle input.
+	 * Set the amount of time until the client automatically logs out due to idle input.
 	 * @param ticks client ticks
 	 */
 	void setIdleTimeout(int ticks);
@@ -2439,183 +2045,35 @@ public interface Client extends OAuthApi, GameEngine
 	 */
 	int getIdleTimeout();
 
-	boolean getCameraPitchRelaxerEnabled();
-
-	void posToCameraAngle(int var0, int var1);
-
-	/*
-	 * Unethical
-	 */
-
-	default void interact(int identifier, int opcode, int param0, int param1)
-	{
-		interact(identifier, opcode, param0, param1, -1, -1);
-	}
-
-	default void interact(int identifier, int opcode, int param0, int param1,
-						  int clickX, int clickY)
-	{
-		interact(identifier, opcode, param0, param1, clickX, clickY, null);
-	}
-
-	default void interact(int identifier, int opcode, int param0, int param1, int clickX, int clickY,
-				  SceneEntity sceneEntity)
-	{
-		interact(
-				MenuAutomated.builder()
-						.identifier(identifier)
-						.opcode(MenuAction.of(opcode))
-						.param0(param0)
-						.param1(param1)
-						.clickX(clickX)
-						.clickY(clickY)
-						.entity(sceneEntity)
-						.build()
-		);
-	}
-
-	void interact(MenuAutomated menuAutomated);
-
-	int getMouseLastPressedX();
-
-	void setMouseLastPressedX(int x);
-
-	int getMouseLastPressedY();
-
-	void setMouseLastPressedY(int y);
-
-	String getLoginMessage();
 	/**
-	 * Used to send packets to the server.
-	 * @return the client's PacketWriter.
+	 * Get whether minimap zoom is enabled
+	 * @return
 	 */
-	PacketWriter getPacketWriter();
+	boolean isMinimapZoom();
 
 	/**
-	 * Used to prepare a packet which can then be queued to the PacketWriter.
-	 * @param packet the type of packet
-	 * @param isaac client's isaaccipher
-	 * @return the prepared packet.
+	 * Set whether minimap zoom is enabled
+	 * @param minimapZoom
 	 */
-	PacketBufferNode preparePacket(ClientPacket packet, IsaacCipher isaac);
-
-	PacketBufferNode preparePacket(ClientPacket packet);
-
-	void setSelectedSceneTileX(int sceneX);
-
-	void setSelectedSceneTileY(int sceneY);
-
-	void setViewportWalking(boolean enabled);
-
-	void setCheckClick(boolean enabled);
-
-	boolean isTileObjectValid(Tile tile, TileObject tileObject);
-
-	boolean isItemDefinitionCached(int id);
-
-	boolean loadWorlds();
-
-	Widget[][] getWidgets();
-
-	boolean isLowCpu();
-
-	void setLowCpu(boolean enabled);
-
-	void uncacheItem(int id);
-
-	void cacheItem(int id, ItemComposition item);
-
-	void clearItemCache();
-
-	void processDialog(int widgetUid, int menuIndex);
-
-	void setDestinationX(int sceneX);
-
-	void setDestinationY(int sceneY);
-
-	int getDestinationX();
-
-	int getDestinationY();
-
-	void setWindowedMode(int mode);
-
-	int getWindowedMode();
-
-	MouseHandler getMouseHandler();
-
-	boolean isFocused();
-
-	void setFocused(boolean focused);
-
-	void setClickCrossX(int x);
-
-	void setClickCrossY(int y);
-
-	void setLoginIndex(int index);
-
-	ClientPacket createClientPacket(int opcode, int length);
-
-	ServerPacket createServerPacket(int opcode, int length);
-
-	String getPassword();
-
-	long[] getEntitiesAtMouse();
-
-	int getEntitiesAtMouseCount();
-
-	void setEntitiesAtMouseCount(int count);
-
-	long calculateTag(int var0, int var1, int var2, boolean var3, int var4);
-
-	String[] getMenuOptions();
-
-	String[] getMenuTargets();
-
-	int[] getMenuIdentifiers();
-
-	int[] getMenuOpcodes();
-
-	int[] getMenuArguments1();
-
-	int[] getMenuArguments2();
-
-	void setMenuOpen(boolean open);
-
-	void setPendingAutomation(MenuAutomated entry);
+	void setMinimapZoom(boolean minimapZoom);
 
 	/**
-	 * The difference between this and {@link #setPendingAutomation(MenuAutomated)} is that this method
-	 * doesnt register it to be consumed by the interaction manager. Queued menus are used by the mouse forwarding
-	 * feature.
+	 * Gets the number of pixels per tile on the minimap. The default is 4.
+	 * @return
 	 */
-	void setQueuedMenu(MenuAutomated menuAutomated);
+	double getMinimapZoom();
 
-	MenuAutomated getQueuedMenu();
+	/**
+	 * Set the number of pixels per tile on the minimap. The default is 4.
+	 * @param zoom
+	 */
+	void setMinimapZoom(double zoom);
 
-	VarbitComposition getVarbitComposition(int varbitId);
+	/**
+	 * Sets a callback to override the drawing of tiles on the minimap.
+	 * Will be called per tile per frame.
+	 */
+	void setMinimapTileDrawer(TileFunction drawTile);
 
-	void setDraggedWidget(Widget widget);
-
-	void setIf1DraggedWidget(Widget widget);
-
-	void invokeWidgetAction(int identifier, int param1, int param0, int itemId, String target);
-
-	Widget getWidgetChild(int parent, int child);
-
-	void promptCredentials(boolean clearPass);
-
-	void setStaffModLevel(int level);
-
-	int getStaffModLevel();
-
-	void setShowMouseOverText(boolean showMouseOverText);
-
-	MenuEntry createMenuEntry(String option, String target, int identifier, int opcode, int param1, int param2, boolean forceLeftClick);
-
-	void insertMenuItem(String action, String target, int opcode, int identifier, int argument1, int argument2, boolean forceLeftClick);
-
-	boolean isMembersWorld();
-
-	void setWorldList(World[] worlds);
-
+	Rasterizer getRasterizer();
 }
