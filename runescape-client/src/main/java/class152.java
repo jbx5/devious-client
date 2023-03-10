@@ -2,74 +2,73 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ee")
-public class class152 extends class155 {
-   @ObfuscatedName("fy")
-   static String field1755;
-   @ObfuscatedName("f")
+@ObfuscatedName("fu")
+public class class152 extends class156 {
+   @ObfuscatedName("aj")
+   String field1719;
+   @ObfuscatedName("al")
    @ObfuscatedGetter(
-      intValue = 1642484089
+      intValue = 1378456505
    )
-   int field1754;
-   @ObfuscatedName("w")
-   byte field1752;
-   @ObfuscatedName("v")
-   @ObfuscatedGetter(
-      intValue = -348846825
-   )
-   int field1756;
-   @ObfuscatedName("s")
-   String field1751;
+   int field1715;
+   @ObfuscatedName("ac")
+   byte field1717;
    // $FF: synthetic field
    @ObfuscatedSignature(
-      descriptor = "Lfn;"
+      descriptor = "Lgk;"
    )
-   final class156 this$0;
+   final class157 this$0;
 
    @ObfuscatedSignature(
-      descriptor = "(Lfn;)V"
+      descriptor = "(Lgk;)V"
    )
-   class152(class156 var1) {
+   class152(class157 var1) {
       this.this$0 = var1;
-      this.field1754 = -1;
+      this.field1719 = null;
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
-      descriptor = "(Lrd;B)V",
-      garbageValue = "-123"
+      descriptor = "(Lsy;I)V",
+      garbageValue = "2070491057"
    )
-   void vmethod3387(Buffer var1) {
-      var1.readUnsignedByte();
-      this.field1754 = var1.readUnsignedShort();
-      this.field1752 = var1.readByte();
-      this.field1756 = var1.readUnsignedShort();
+   void vmethod3353(Buffer var1) {
+      if (var1.readUnsignedByte() != 255) {
+         --var1.offset;
+         var1.readLong();
+      }
+
+      this.field1719 = var1.readStringCp1252NullTerminatedOrNull();
+      this.field1715 = var1.readUnsignedShort();
+      this.field1717 = var1.readByte();
       var1.readLong();
-      this.field1751 = var1.readStringCp1252NullTerminated();
-      var1.readUnsignedByte();
    }
 
-   @ObfuscatedName("w")
+   @ObfuscatedName("al")
    @ObfuscatedSignature(
-      descriptor = "(Lfm;I)V",
-      garbageValue = "127147356"
+      descriptor = "(Lgn;B)V",
+      garbageValue = "-82"
    )
-   void vmethod3388(ClanChannel var1) {
-      ClanChannelMember var2 = (ClanChannelMember)var1.members.get(this.field1754);
-      var2.rank = this.field1752;
-      var2.world = this.field1756;
-      var2.username = new Username(this.field1751);
+   void vmethod3354(ClanChannel var1) {
+      ClanChannelMember var2 = new ClanChannelMember();
+      var2.username = new Username(this.field1719);
+      var2.world = this.field1715;
+      var2.rank = this.field1717;
+      var1.addMember(var2);
    }
 
-   @ObfuscatedName("s")
+   @ObfuscatedName("ab")
    @ObfuscatedSignature(
-      descriptor = "(IIII)I",
-      garbageValue = "-1452562011"
+      descriptor = "(II)Lfa;",
+      garbageValue = "-2137783984"
    )
-   public static int method3307(int var0, int var1, int var2) {
-      int var3 = SoundCache.method871(var2 - var1 + 1);
-      var3 <<= var1;
-      var0 |= var3;
-      return var0;
+   static class135 method3268(int var0) {
+      class135[] var1 = new class135[]{class135.field1588, class135.field1579, class135.field1580, class135.field1581, class135.field1589, class135.field1583, class135.field1584, class135.field1585, class135.field1586};
+      class135 var2 = (class135)SpriteMask.findEnumerated(var1, var0);
+      if (var2 == null) {
+         var2 = class135.field1586;
+      }
+
+      return var2;
    }
 }

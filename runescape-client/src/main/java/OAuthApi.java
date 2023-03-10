@@ -1,4 +1,3 @@
-import com.jagex.oldscape.pub.OtlTokenRequester;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
@@ -13,7 +12,10 @@ public interface OAuthApi {
 
    long getAccountHash();
 
-   void setOtlTokenRequester(OtlTokenRequester var1);
-
    boolean isOnLoginScreen();
+
+   @ObfuscatedSignature(
+      descriptor = "(Lcom/jagex/oldscape/pub/OtlTokenRequester;)V"
+   )
+   void setOtlTokenRequester(OtlTokenRequester var1);
 }

@@ -106,9 +106,9 @@ class SceneUploader
 			}
 			Point tilePoint = tile.getSceneLocation();
 			int len = upload(sceneTilePaint,
-				tile.getRenderLevel(), tilePoint.getX(), tilePoint.getY(),
-				vertexBuffer, uvBuffer,
-				0, 0, false);
+					tile.getRenderLevel(), tilePoint.getX(), tilePoint.getY(),
+					vertexBuffer, uvBuffer,
+					0, 0, false);
 			sceneTilePaint.setBufferLen(len);
 			offset += len;
 			if (sceneTilePaint.getTexture() != -1)
@@ -131,9 +131,9 @@ class SceneUploader
 			}
 			Point tilePoint = tile.getSceneLocation();
 			int len = upload(sceneTileModel,
-				tilePoint.getX(), tilePoint.getY(),
-				vertexBuffer, uvBuffer,
-				0, 0, false);
+					tilePoint.getX(), tilePoint.getY(),
+					vertexBuffer, uvBuffer,
+					0, 0, false);
 			sceneTileModel.setBufferLen(len);
 			offset += len;
 			if (sceneTileModel.getTriangleTextureId() != null)
@@ -201,7 +201,7 @@ class SceneUploader
 	}
 
 	int upload(SceneTilePaint tile, int tileZ, int tileX, int tileY, GpuIntBuffer vertexBuffer, GpuFloatBuffer uvBuffer,
-		int offsetX, int offsetY, boolean padUvs)
+			   int offsetX, int offsetY, boolean padUvs)
 	{
 		final int[][][] tileHeights = client.getTileHeights();
 
@@ -274,7 +274,7 @@ class SceneUploader
 	}
 
 	int upload(SceneTileModel sceneTileModel, int tileX, int tileY, GpuIntBuffer vertexBuffer, GpuFloatBuffer uvBuffer,
-		int offsetX, int offsetY, boolean padUvs)
+			   int offsetX, int offsetY, boolean padUvs)
 	{
 		final int[] faceX = sceneTileModel.getFaceX();
 		final int[] faceY = sceneTileModel.getFaceY();
@@ -629,12 +629,12 @@ class SceneUploader
 				final int v3 = indices3[i];
 
 				final float
-					aX = modelCanvasX[v1],
-					aY = modelCanvasY[v1],
-					bX = modelCanvasX[v2],
-					bY = modelCanvasY[v2],
-					cX = modelCanvasX[v3],
-					cY = modelCanvasY[v3];
+						aX = modelCanvasX[v1],
+						aY = modelCanvasY[v1],
+						bX = modelCanvasX[v2],
+						bY = modelCanvasY[v2],
+						cX = modelCanvasX[v3],
+						cY = modelCanvasY[v3];
 
 				if ((aX - bX) * (cY - bY) - (cX - bX) * (aY - bY) > 0)
 				{

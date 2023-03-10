@@ -1,31 +1,30 @@
-import java.util.Date;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("lx")
+@ObfuscatedName("mk")
 @Implements("ArchiveDiskAction")
 public class ArchiveDiskAction extends Node {
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
    @ObfuscatedGetter(
-      intValue = -2090670973
+      intValue = 407589317
    )
    @Export("type")
    int type;
-   @ObfuscatedName("w")
+   @ObfuscatedName("al")
    @Export("data")
    byte[] data;
-   @ObfuscatedName("v")
+   @ObfuscatedName("ac")
    @ObfuscatedSignature(
-      descriptor = "Loi;"
+      descriptor = "Lpv;"
    )
    @Export("archiveDisk")
    ArchiveDisk archiveDisk;
-   @ObfuscatedName("s")
+   @ObfuscatedName("ab")
    @ObfuscatedSignature(
-      descriptor = "Llm;"
+      descriptor = "Lmx;"
    )
    @Export("archive")
    Archive archive;
@@ -33,13 +32,13 @@ public class ArchiveDiskAction extends Node {
    ArchiveDiskAction() {
    }
 
-   @ObfuscatedName("l")
+   @ObfuscatedName("ar")
    @ObfuscatedSignature(
-      descriptor = "(Ljava/util/Date;I)Z",
-      garbageValue = "814020204"
+      descriptor = "(CI)Z",
+      garbageValue = "-1494106242"
    )
-   static boolean method6455(Date var0) {
-      Date var1 = StudioGame.method6442();
-      return var0.after(var1);
+   @Export("isCharAlphabetic")
+   public static boolean isCharAlphabetic(char var0) {
+      return var0 >= 'A' && var0 <= 'Z' || var0 >= 'a' && var0 <= 'z';
    }
 }

@@ -1,149 +1,146 @@
-import java.applet.Applet;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hx")
+@ObfuscatedName("io")
 @Implements("Occluder")
 public final class Occluder {
-   @ObfuscatedName("th")
-   @ObfuscatedGetter(
-      intValue = 959648640
+   @ObfuscatedName("co")
+   @ObfuscatedSignature(
+      descriptor = "Lrm;"
    )
-   static int field2636;
-   @ObfuscatedName("f")
+   @Export("loginType")
+   static LoginType loginType;
+   @ObfuscatedName("aj")
    @ObfuscatedGetter(
-      intValue = -1892245081
+      intValue = -917227683
    )
    @Export("minTileX")
    int minTileX;
-   @ObfuscatedName("w")
+   @ObfuscatedName("al")
    @ObfuscatedGetter(
-      intValue = 514373031
+      intValue = 1000298007
    )
    @Export("maxTileX")
    int maxTileX;
-   @ObfuscatedName("v")
+   @ObfuscatedName("ac")
    @ObfuscatedGetter(
-      intValue = -1916583407
+      intValue = -1897859131
    )
    @Export("minTileY")
    int minTileY;
-   @ObfuscatedName("s")
+   @ObfuscatedName("ab")
    @ObfuscatedGetter(
-      intValue = 1037281985
+      intValue = 438820163
    )
    @Export("maxTileY")
    int maxTileY;
-   @ObfuscatedName("z")
+   @ObfuscatedName("an")
    @ObfuscatedGetter(
-      intValue = -1080102931
+      intValue = -926370029
    )
    @Export("type")
    int type;
-   @ObfuscatedName("j")
+   @ObfuscatedName("ao")
    @ObfuscatedGetter(
-      intValue = -821427861
+      intValue = -228357533
    )
    @Export("minX")
    int minX;
-   @ObfuscatedName("i")
+   @ObfuscatedName("av")
    @ObfuscatedGetter(
-      intValue = -1466699159
+      intValue = 324539461
    )
    @Export("maxX")
    int maxX;
-   @ObfuscatedName("n")
+   @ObfuscatedName("aq")
    @ObfuscatedGetter(
-      intValue = -1277702437
+      intValue = 1422103233
    )
    @Export("minZ")
    int minZ;
-   @ObfuscatedName("l")
+   @ObfuscatedName("ap")
    @ObfuscatedGetter(
-      intValue = 1587170153
+      intValue = 2140908231
    )
    @Export("maxZ")
    int maxZ;
-   @ObfuscatedName("k")
+   @ObfuscatedName("ar")
    @ObfuscatedGetter(
-      intValue = -1761060981
+      intValue = -96491847
    )
    @Export("minY")
    int minY;
-   @ObfuscatedName("c")
+   @ObfuscatedName("ak")
    @ObfuscatedGetter(
-      intValue = -934931019
+      intValue = 1634358819
    )
    @Export("maxY")
    int maxY;
-   @ObfuscatedName("r")
+   @ObfuscatedName("ax")
    @ObfuscatedGetter(
-      intValue = -2054486103
+      intValue = 941054415
    )
-   int field2627;
-   @ObfuscatedName("b")
+   int field2609;
+   @ObfuscatedName("as")
    @ObfuscatedGetter(
-      intValue = -1792552595
+      intValue = -181392515
    )
-   int field2633;
-   @ObfuscatedName("m")
+   int field2610;
+   @ObfuscatedName("ay")
    @ObfuscatedGetter(
-      intValue = 8708161
+      intValue = -1463862325
    )
-   int field2632;
-   @ObfuscatedName("t")
+   int field2598;
+   @ObfuscatedName("am")
    @ObfuscatedGetter(
-      intValue = -801880649
+      intValue = -1633371041
    )
-   int field2635;
-   @ObfuscatedName("h")
+   int field2612;
+   @ObfuscatedName("az")
    @ObfuscatedGetter(
-      intValue = 428701389
+      intValue = 1629326833
    )
-   int field2634;
-   @ObfuscatedName("p")
+   int field2601;
+   @ObfuscatedName("ae")
    @ObfuscatedGetter(
-      intValue = 1960214883
+      intValue = -1321946745
    )
-   int field2639;
-   @ObfuscatedName("o")
+   int field2614;
+   @ObfuscatedName("au")
    @ObfuscatedGetter(
-      intValue = 124194473
+      intValue = 512353701
    )
-   int field2638;
+   int field2611;
 
    Occluder() {
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("ab")
    @ObfuscatedSignature(
-      descriptor = "(Ljava/applet/Applet;Ljava/lang/String;I)V",
-      garbageValue = "1977226602"
+      descriptor = "(S)[Lej;",
+      garbageValue = "22012"
    )
-   public static void method4650(Applet var0, String var1) {
-      class31.field190 = var0;
-      if (var1 != null) {
-         class31.field186 = var1;
-      }
-
+   static class125[] method4564() {
+      return new class125[]{class125.field1490, class125.field1489, class125.field1484, class125.field1483, class125.field1486};
    }
 
-   @ObfuscatedName("af")
+   @ObfuscatedName("iw")
    @ObfuscatedSignature(
-      descriptor = "(Ljava/lang/String;B)V",
-      garbageValue = "-76"
+      descriptor = "(IIB)I",
+      garbageValue = "-3"
    )
-   static void method4649(String var0) {
-      String var1;
-      if (var0 != null && !var0.isEmpty() && var0.charAt(0) != '#') {
-         var1 = var0;
-      } else {
-         var1 = "";
+   static int method4563(int var0, int var1) {
+      int var2 = var1 - 334;
+      if (var2 < 0) {
+         var2 = 0;
+      } else if (var2 > 100) {
+         var2 = 100;
       }
 
-      Login.field927 = var1;
+      int var3 = (Client.zoomWidth - Client.zoomHeight) * var2 / 100 + Client.zoomHeight;
+      return var0 * var3 / 256;
    }
 }

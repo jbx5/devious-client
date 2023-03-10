@@ -3,129 +3,113 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("k")
+@ObfuscatedName("ar")
 public class class9 implements MouseWheel {
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
-      descriptor = "Lk;"
+      descriptor = "Lar;"
    )
-   public static final class9 field31 = new class9(0, "POST", true, true);
-   @ObfuscatedName("w")
+   public static final class9 field37 = new class9(0, "POST", true, true);
+   @ObfuscatedName("al")
    @ObfuscatedSignature(
-      descriptor = "Lk;"
+      descriptor = "Lar;"
    )
-   public static final class9 field32 = new class9(1, "GET", true, false);
-   @ObfuscatedName("v")
+   public static final class9 field33 = new class9(1, "GET", true, false);
+   @ObfuscatedName("ac")
    @ObfuscatedSignature(
-      descriptor = "Lk;"
+      descriptor = "Lar;"
    )
-   static final class9 field33 = new class9(2, "PUT", false, true);
-   @ObfuscatedName("s")
+   static final class9 field34 = new class9(2, "PUT", false, true);
+   @ObfuscatedName("ab")
    @ObfuscatedSignature(
-      descriptor = "Lk;"
+      descriptor = "Lar;"
    )
-   static final class9 field42 = new class9(3, "PATCH", false, true);
-   @ObfuscatedName("z")
+   static final class9 field35 = new class9(3, "PATCH", false, true);
+   @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "Lk;"
+      descriptor = "Lar;"
    )
-   static final class9 field35 = new class9(4, "DELETE", false, true);
-   @ObfuscatedName("u")
-   @Export("ByteArrayPool_arrays")
-   public static byte[][][] ByteArrayPool_arrays;
-   @ObfuscatedName("on")
+   static final class9 field36 = new class9(4, "DELETE", false, true);
+   @ObfuscatedName("ao")
    @ObfuscatedGetter(
-      intValue = -1648378979
+      intValue = -1353386787
    )
-   @Export("selectedSpellWidget")
-   static int selectedSpellWidget;
-   @ObfuscatedName("qa")
-   @ObfuscatedSignature(
-      descriptor = "Ldw;"
-   )
-   @Export("varcs")
-   static Varcs varcs;
-   @ObfuscatedName("j")
-   @ObfuscatedGetter(
-      intValue = 294665859
-   )
-   int field36;
-   @ObfuscatedName("i")
-   String field37;
-   @ObfuscatedName("n")
-   boolean field38;
-   @ObfuscatedName("l")
-   boolean field39;
+   int field39;
+   @ObfuscatedName("av")
+   String field38;
+   @ObfuscatedName("aq")
+   boolean field41;
+   @ObfuscatedName("ap")
+   boolean field40;
 
    class9(int var1, String var2, boolean var3, boolean var4) {
-      this.field36 = var1;
-      this.field37 = var2;
-      this.field38 = var3;
-      this.field39 = var4;
+      this.field39 = var1;
+      this.field38 = var2;
+      this.field41 = var3;
+      this.field40 = var4;
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
-      descriptor = "(B)I",
-      garbageValue = "3"
+      descriptor = "(I)I",
+      garbageValue = "-1409646049"
    )
    @Export("rsOrdinal")
    public int rsOrdinal() {
-      return this.field36;
-   }
-
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      descriptor = "(B)Z",
-      garbageValue = "119"
-   )
-   boolean method92() {
-      return this.field38;
-   }
-
-   @ObfuscatedName("s")
-   @ObfuscatedSignature(
-      descriptor = "(B)Ljava/lang/String;",
-      garbageValue = "-39"
-   )
-   public String method80() {
-      return this.field37;
-   }
-
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      descriptor = "(B)Z",
-      garbageValue = "-16"
-   )
-   boolean method84() {
       return this.field39;
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("ab")
    @ObfuscatedSignature(
-      descriptor = "(Lln;B)V",
-      garbageValue = "0"
+      descriptor = "(I)Z",
+      garbageValue = "-1979721546"
    )
-   public static void method81(AbstractArchive var0) {
-      DevicePcmPlayerProvider.VarbitDefinition_archive = var0;
+   boolean method62() {
+      return this.field41;
    }
 
-   @ObfuscatedName("w")
+   @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "(B)V",
-      garbageValue = "-38"
+      descriptor = "(I)Ljava/lang/String;",
+      garbageValue = "1838962601"
    )
-   public static void method93() {
-      synchronized(MouseHandler.MouseHandler_instance) {
-         MouseHandler.MouseHandler_currentButton = MouseHandler.MouseHandler_currentButtonVolatile;
-         MouseHandler.MouseHandler_x = MouseHandler.MouseHandler_xVolatile;
-         MouseHandler.MouseHandler_y = MouseHandler.MouseHandler_yVolatile;
-         MouseHandler.MouseHandler_millis = MouseHandler.MouseHandler_lastMovedVolatile;
-         MouseHandler.MouseHandler_lastButton = MouseHandler.MouseHandler_lastButtonVolatile;
-         MouseHandler.MouseHandler_lastPressedX = MouseHandler.MouseHandler_lastPressedXVolatile;
-         MouseHandler.MouseHandler_lastPressedY = MouseHandler.MouseHandler_lastPressedYVolatile;
-         MouseHandler.MouseHandler_lastPressedTimeMillis = MouseHandler.MouseHandler_lastPressedTimeMillisVolatile;
-         MouseHandler.MouseHandler_lastButtonVolatile = 0;
+   public String method63() {
+      return this.field38;
+   }
+
+   @ObfuscatedName("ao")
+   @ObfuscatedSignature(
+      descriptor = "(I)Z",
+      garbageValue = "534305297"
+   )
+   boolean method64() {
+      return this.field40;
+   }
+
+   @ObfuscatedName("aj")
+   @ObfuscatedSignature(
+      descriptor = "(Ldx;I)V",
+      garbageValue = "-2025110230"
+   )
+   @Export("runScriptEvent")
+   public static void runScriptEvent(ScriptEvent var0) {
+      class14.runScript(var0, 500000, 475000);
+   }
+
+   @ObfuscatedName("al")
+   @ObfuscatedSignature(
+      descriptor = "(Ljava/lang/Throwable;Ljava/lang/String;)Ltw;"
+   )
+   @Export("newRunException")
+   public static RunException newRunException(Throwable var0, String var1) {
+      RunException var2;
+      if (var0 instanceof RunException) {
+         var2 = (RunException)var0;
+         var2.message = var2.message + ' ' + var1;
+      } else {
+         var2 = new RunException(var0, var1);
       }
+
+      return var2;
    }
 }

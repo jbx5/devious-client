@@ -87,7 +87,7 @@ public abstract class RSActorMixin implements RSActor
 				return null;
 			}
 
-			int var2 = client.isLargePlayerInfo() ? 65536 : '耀';
+			int var2 = 65536;
 			if (index < var2)
 			{
 				NPC[] npcs = client.getCachedNPCs();

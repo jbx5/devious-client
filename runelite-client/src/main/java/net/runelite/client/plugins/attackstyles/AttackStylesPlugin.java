@@ -55,9 +55,9 @@ import static net.runelite.client.plugins.attackstyles.AttackStyle.OTHER;
 import net.runelite.client.ui.overlay.OverlayManager;
 
 @PluginDescriptor(
-	name = "Attack Styles",
-	description = "Show your current attack style as an overlay",
-	tags = {"combat", "defence", "magic", "overlay", "ranged", "strength", "warn", "pure"}
+		name = "Attack Styles",
+		description = "Show your current attack style as an overlay",
+		tags = {"combat", "defence", "magic", "overlay", "ranged", "strength", "warn", "pure"}
 )
 public class AttackStylesPlugin extends Plugin
 {
@@ -106,9 +106,9 @@ public class AttackStylesPlugin extends Plugin
 		equippedWeaponTypeVarbit = client.getVarbitValue(Varbits.EQUIPPED_WEAPON_TYPE);
 		int castingModeVarbit = client.getVarbitValue(Varbits.DEFENSIVE_CASTING_MODE);
 		updateAttackStyle(
-			equippedWeaponTypeVarbit,
-			attackStyleVarbit,
-			castingModeVarbit);
+				equippedWeaponTypeVarbit,
+				attackStyleVarbit,
+				castingModeVarbit);
 		updateWarning(false);
 		processWidgets();
 	}
@@ -172,8 +172,8 @@ public class AttackStylesPlugin extends Plugin
 	public void onVarbitChanged(VarbitChanged event)
 	{
 		if (event.getVarpId() == VarPlayer.ATTACK_STYLE.getId()
-			|| event.getVarbitId() == Varbits.EQUIPPED_WEAPON_TYPE
-			|| event.getVarbitId() == Varbits.DEFENSIVE_CASTING_MODE)
+				|| event.getVarbitId() == Varbits.EQUIPPED_WEAPON_TYPE
+				|| event.getVarbitId() == Varbits.DEFENSIVE_CASTING_MODE)
 		{
 			final int currentAttackStyleVarbit = client.getVarpValue(VarPlayer.ATTACK_STYLE);
 			final int currentEquippedWeaponTypeVarbit = client.getVarbitValue(Varbits.EQUIPPED_WEAPON_TYPE);
@@ -184,7 +184,7 @@ public class AttackStylesPlugin extends Plugin
 			equippedWeaponTypeVarbit = currentEquippedWeaponTypeVarbit;
 
 			updateAttackStyle(equippedWeaponTypeVarbit, currentAttackStyleVarbit,
-				currentCastingModeVarbit);
+					currentCastingModeVarbit);
 			updateWarning(weaponSwitch);
 
 			// this isn't required, but will hide styles 1 tick earlier than the script event, which fires

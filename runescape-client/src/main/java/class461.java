@@ -1,35 +1,65 @@
+import java.util.Iterator;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("qw")
-public class class461 {
-   @ObfuscatedName("w")
-   static final int[] field4893 = new int[]{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, -1, 1, -1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, -1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 3, 3, 1, 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
-   @ObfuscatedName("i")
+@ObfuscatedName("rr")
+class class461 implements Iterator {
+   @ObfuscatedName("aj")
    @ObfuscatedGetter(
-      intValue = -1068091111
+      intValue = -27751579
    )
-   static int field4894;
-
-   @ObfuscatedName("gx")
+   int field4847;
+   // $FF: synthetic field
    @ObfuscatedSignature(
-      descriptor = "(IIII)V",
-      garbageValue = "-933528912"
+      descriptor = "Lrw;"
    )
-   static void method8491(int var0, int var1, int var2) {
-      if (var0 != 0) {
-         int var3 = var0 >> 8;
-         int var4 = var0 >> 4 & 7;
-         int var5 = var0 & 15;
-         Client.soundEffectIds[Client.soundEffectCount] = var3;
-         Client.queuedSoundEffectLoops[Client.soundEffectCount] = var4;
-         Client.queuedSoundEffectDelays[Client.soundEffectCount] = 0;
-         Client.soundEffects[Client.soundEffectCount] = null;
-         int var6 = (var1 - 64) / 128;
-         int var7 = (var2 - 64) / 128;
-         Client.soundLocations[Client.soundEffectCount] = var5 + (var7 << 8) + (var6 << 16);
-         ++Client.soundEffectCount;
+   final class462 this$0;
+
+   @ObfuscatedSignature(
+      descriptor = "(Lrw;)V"
+   )
+   class461(class462 var1) {
+      this.this$0 = var1;
+   }
+
+   public boolean hasNext() {
+      return this.field4847 < this.this$0.method7938();
+   }
+
+   public void remove() {
+      throw new UnsupportedOperationException();
+   }
+
+   public Object next() {
+      int var1 = ++this.field4847 - 1;
+      class427 var2 = (class427)this.this$0.field4850.get((long)var1);
+      return var2 != null ? var2 : this.this$0.method8431(var1);
+   }
+
+   @ObfuscatedName("aj")
+   @ObfuscatedSignature(
+      descriptor = "([BILjava/lang/CharSequence;I)I",
+      garbageValue = "-1830456034"
+   )
+   public static int method8419(byte[] var0, int var1, CharSequence var2) {
+      int var3 = var2.length();
+      int var4 = var1;
+
+      for(int var5 = 0; var5 < var3; ++var5) {
+         char var6 = var2.charAt(var5);
+         if (var6 <= 127) {
+            var0[var4++] = (byte)var6;
+         } else if (var6 <= 2047) {
+            var0[var4++] = (byte)(192 | var6 >> 6);
+            var0[var4++] = (byte)(128 | var6 & 63);
+         } else {
+            var0[var4++] = (byte)(224 | var6 >> 12);
+            var0[var4++] = (byte)(128 | var6 >> 6 & 63);
+            var0[var4++] = (byte)(128 | var6 & 63);
+         }
       }
+
+      return var4 - var1;
    }
 }

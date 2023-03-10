@@ -4,35 +4,24 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ik")
+@ObfuscatedName("ji")
 @Implements("WorldMapDecoration")
 public class WorldMapDecoration {
-   @ObfuscatedName("uy")
+   @ObfuscatedName("aj")
    @ObfuscatedGetter(
-      intValue = -1318536169
-   )
-   static int field2970;
-   @ObfuscatedName("m")
-   @ObfuscatedSignature(
-      descriptor = "Lld;"
-   )
-   @Export("NetCache_currentResponse")
-   public static NetFileRequest NetCache_currentResponse;
-   @ObfuscatedName("f")
-   @ObfuscatedGetter(
-      intValue = 981301237
+      intValue = -192568909
    )
    @Export("objectDefinitionId")
    final int objectDefinitionId;
-   @ObfuscatedName("w")
+   @ObfuscatedName("al")
    @ObfuscatedGetter(
-      intValue = 992100525
+      intValue = 1253616953
    )
    @Export("decoration")
    final int decoration;
-   @ObfuscatedName("v")
+   @ObfuscatedName("ac")
    @ObfuscatedGetter(
-      intValue = -565157325
+      intValue = -1349259141
    )
    @Export("rotation")
    final int rotation;
@@ -43,91 +32,53 @@ public class WorldMapDecoration {
       this.rotation = var3;
    }
 
-   @ObfuscatedName("w")
+   @ObfuscatedName("ap")
    @ObfuscatedSignature(
-      descriptor = "(CLmn;B)C",
-      garbageValue = "75"
+      descriptor = "([BIILir;[Liz;B)V",
+      garbageValue = "64"
    )
-   @Export("standardizeChar")
-   static char standardizeChar(char var0, Language var1) {
-      if (var0 >= 192 && var0 <= 255) {
-         if (var0 >= 192 && var0 <= 198) {
-            return 'A';
+   static final void method5220(byte[] var0, int var1, int var2, Scene var3, CollisionMap[] var4) {
+      Buffer var5 = new Buffer(var0);
+      int var6 = -1;
+
+      while(true) {
+         int var7 = var5.readIncrSmallSmart();
+         if (var7 == 0) {
+            return;
          }
 
-         if (var0 == 199) {
-            return 'C';
-         }
+         var6 += var7;
+         int var8 = 0;
 
-         if (var0 >= 200 && var0 <= 203) {
-            return 'E';
-         }
+         while(true) {
+            int var9 = var5.readUShortSmart();
+            if (var9 == 0) {
+               break;
+            }
 
-         if (var0 >= 204 && var0 <= 207) {
-            return 'I';
-         }
+            var8 += var9 - 1;
+            int var10 = var8 & 63;
+            int var11 = var8 >> 6 & 63;
+            int var12 = var8 >> 12;
+            int var13 = var5.readUnsignedByte();
+            int var14 = var13 >> 2;
+            int var15 = var13 & 3;
+            int var16 = var11 + var1;
+            int var17 = var10 + var2;
+            if (var16 > 0 && var17 > 0 && var16 < 103 && var17 < 103) {
+               int var18 = var12;
+               if ((Tiles.Tiles_renderFlags[1][var16][var17] & 2) == 2) {
+                  var18 = var12 - 1;
+               }
 
-         if (var0 == 209 && var1 != Language.Language_ES) {
-            return 'N';
-         }
+               CollisionMap var19 = null;
+               if (var18 >= 0) {
+                  var19 = var4[var18];
+               }
 
-         if (var0 >= 210 && var0 <= 214) {
-            return 'O';
+               class30.addObjects(var12, var16, var17, var6, var15, var14, var3, var19);
+            }
          }
-
-         if (var0 >= 217 && var0 <= 220) {
-            return 'U';
-         }
-
-         if (var0 == 221) {
-            return 'Y';
-         }
-
-         if (var0 == 223) {
-            return 's';
-         }
-
-         if (var0 >= 224 && var0 <= 230) {
-            return 'a';
-         }
-
-         if (var0 == 231) {
-            return 'c';
-         }
-
-         if (var0 >= 232 && var0 <= 235) {
-            return 'e';
-         }
-
-         if (var0 >= 236 && var0 <= 239) {
-            return 'i';
-         }
-
-         if (var0 == 241 && var1 != Language.Language_ES) {
-            return 'n';
-         }
-
-         if (var0 >= 242 && var0 <= 246) {
-            return 'o';
-         }
-
-         if (var0 >= 249 && var0 <= 252) {
-            return 'u';
-         }
-
-         if (var0 == 253 || var0 == 255) {
-            return 'y';
-         }
-      }
-
-      if (var0 == 338) {
-         return 'O';
-      } else if (var0 == 339) {
-         return 'o';
-      } else if (var0 == 376) {
-         return 'Y';
-      } else {
-         return var0;
       }
    }
 }

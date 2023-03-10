@@ -54,10 +54,10 @@ import net.runelite.client.ui.overlay.infobox.InfoBoxManager;
 import net.runelite.client.util.QuantityFormatter;
 
 @PluginDescriptor(
-	name = "Kingdom of Miscellania",
-	description = "Show amount of approval when inside Miscellania",
-	tags = {"favor", "favour", "managing", "overlay", "approval", "coffer"},
-	enabledByDefault = false
+		name = "Kingdom of Miscellania",
+		description = "Show amount of approval when inside Miscellania",
+		tags = {"favor", "favour", "managing", "overlay", "approval", "coffer"},
+		enabledByDefault = false
 )
 @Slf4j
 public class KingdomPlugin extends Plugin
@@ -116,8 +116,8 @@ public class KingdomPlugin extends Plugin
 			final int approval = client.getVarbitValue(Varbits.KINGDOM_APPROVAL);
 
 			if (isThroneOfMiscellaniaCompleted()
-				&& (isInKingdom() || coffer > 0 && approval > 0)
-				&& (getCoffer() != coffer || getApproval() != approval))
+					&& (isInKingdom() || coffer > 0 && approval > 0)
+					&& (getCoffer() != coffer || getApproval() != approval))
 			{
 				setLastChanged(Instant.now());
 				setCoffer(coffer);
@@ -186,9 +186,9 @@ public class KingdomPlugin extends Plugin
 		if (estimatedCoffer < config.getCofferThreshold() || getApprovalPercent(estimatedApproval) < config.getApprovalThreshold())
 		{
 			sendChatMessage(String.format(
-				CHAT_MESSAGE_FORMAT,
-				getApprovalPercent(estimatedApproval),
-				QuantityFormatter.quantityToStackSize(estimatedCoffer)));
+					CHAT_MESSAGE_FORMAT,
+					getApprovalPercent(estimatedApproval),
+					QuantityFormatter.quantityToStackSize(estimatedCoffer)));
 		}
 	}
 
@@ -237,7 +237,7 @@ public class KingdomPlugin extends Plugin
 	private boolean isInKingdom()
 	{
 		return client.getLocalPlayer() != null
-			&& KINGDOM_REGION.contains(client.getLocalPlayer().getWorldLocation().getRegionID());
+				&& KINGDOM_REGION.contains(client.getLocalPlayer().getWorldLocation().getRegionID());
 	}
 
 	private boolean isThroneOfMiscellaniaCompleted()
@@ -258,15 +258,15 @@ public class KingdomPlugin extends Plugin
 	private void sendChatMessage(String chatMessage)
 	{
 		final String message = new ChatMessageBuilder()
-			.append(ChatColorType.HIGHLIGHT)
-			.append(chatMessage)
-			.build();
+				.append(ChatColorType.HIGHLIGHT)
+				.append(chatMessage)
+				.build();
 
 		chatMessageManager.queue(
-			QueuedMessage.builder()
-				.type(ChatMessageType.CONSOLE)
-				.runeLiteFormattedMessage(message)
-				.build());
+				QueuedMessage.builder()
+						.type(ChatMessageType.CONSOLE)
+						.runeLiteFormattedMessage(message)
+						.build());
 	}
 
 	private Instant getLastChanged()

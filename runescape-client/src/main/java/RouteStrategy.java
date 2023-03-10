@@ -4,30 +4,35 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gt")
+@ObfuscatedName("ip")
 @Implements("RouteStrategy")
 public abstract class RouteStrategy {
-   @ObfuscatedName("f")
+   @ObfuscatedName("ct")
    @ObfuscatedGetter(
-      intValue = 1813601119
+      intValue = 662591573
+   )
+   static int field2330;
+   @ObfuscatedName("aj")
+   @ObfuscatedGetter(
+      intValue = -1075309893
    )
    @Export("approxDestinationX")
    public int approxDestinationX;
-   @ObfuscatedName("w")
+   @ObfuscatedName("al")
    @ObfuscatedGetter(
-      intValue = 582937053
+      intValue = 579867739
    )
    @Export("approxDestinationY")
    public int approxDestinationY;
-   @ObfuscatedName("v")
+   @ObfuscatedName("ac")
    @ObfuscatedGetter(
-      intValue = -1144807893
+      intValue = -1252836685
    )
    @Export("approxDestinationSizeX")
    public int approxDestinationSizeX;
-   @ObfuscatedName("s")
+   @ObfuscatedName("ab")
    @ObfuscatedGetter(
-      intValue = 1308573933
+      intValue = -2146683721
    )
    @Export("approxDestinationSizeY")
    public int approxDestinationSizeY;
@@ -35,20 +40,48 @@ public abstract class RouteStrategy {
    protected RouteStrategy() {
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
-      descriptor = "(IIILgv;I)Z",
-      garbageValue = "118374037"
+      descriptor = "(IIILiz;B)Z",
+      garbageValue = "1"
    )
    @Export("hasArrived")
-   public abstract boolean hasArrived(int var1, int var2, int var3, CollisionMap var4);
+   protected abstract boolean hasArrived(int var1, int var2, int var3, CollisionMap var4);
 
-   @ObfuscatedName("h")
+   @ObfuscatedName("aq")
    @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "-546644607"
+      descriptor = "(IIZI)Ljava/lang/String;",
+      garbageValue = "-1339770799"
    )
-   static final void method4218() {
-      Decimator.method1115("Your ignore list is full. Max of 100 for free users, and 400 for members");
+   static String method4142(int var0, int var1, boolean var2) {
+      if (var1 >= 2 && var1 <= 36) {
+         if (var2 && var0 >= 0) {
+            int var3 = 2;
+
+            for(int var4 = var0 / var1; var4 != 0; ++var3) {
+               var4 /= var1;
+            }
+
+            char[] var5 = new char[var3];
+            var5[0] = '+';
+
+            for(int var6 = var3 - 1; var6 > 0; --var6) {
+               int var7 = var0;
+               var0 /= var1;
+               int var8 = var7 - var0 * var1;
+               if (var8 >= 10) {
+                  var5[var6] = (char)(var8 + 87);
+               } else {
+                  var5[var6] = (char)(var8 + 48);
+               }
+            }
+
+            return new String(var5);
+         } else {
+            return Integer.toString(var0, var1);
+         }
+      } else {
+         throw new IllegalArgumentException("" + var1);
+      }
    }
 }

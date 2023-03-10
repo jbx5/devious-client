@@ -4,40 +4,40 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("qi")
+@ObfuscatedName("rp")
 @Implements("IterableNodeHashTableIterator")
 public class IterableNodeHashTableIterator implements Iterator {
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
-      descriptor = "Lqu;"
+      descriptor = "Lrz;"
    )
    @Export("hashTable")
    IterableNodeHashTable hashTable;
-   @ObfuscatedName("w")
+   @ObfuscatedName("al")
    @ObfuscatedSignature(
-      descriptor = "Lpr;"
+      descriptor = "Lru;"
    )
    @Export("head")
    Node head;
-   @ObfuscatedName("v")
+   @ObfuscatedName("ac")
    @Export("index")
    int index;
-   @ObfuscatedName("s")
+   @ObfuscatedName("ab")
    @ObfuscatedSignature(
-      descriptor = "Lpr;"
+      descriptor = "Lru;"
    )
    @Export("last")
    Node last = null;
 
    @ObfuscatedSignature(
-      descriptor = "(Lqu;)V"
+      descriptor = "(Lrz;)V"
    )
    IterableNodeHashTableIterator(IterableNodeHashTable var1) {
       this.hashTable = var1;
       this.start();
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
    @Export("start")
    void start() {
       this.head = this.hashTable.buckets[0].previous;
@@ -85,11 +85,7 @@ public class IterableNodeHashTableIterator implements Iterator {
    }
 
    public void remove() {
-      if (this.last == null) {
-         throw new IllegalStateException();
-      } else {
-         this.last.remove();
-         this.last = null;
-      }
+      this.last.remove();
+      this.last = null;
    }
 }

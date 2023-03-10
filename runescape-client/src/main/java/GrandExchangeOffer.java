@@ -4,42 +4,39 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("mi")
+@ObfuscatedName("nd")
 @Implements("GrandExchangeOffer")
 public class GrandExchangeOffer {
-   @ObfuscatedName("ir")
-   @Export("xteaKeys")
-   static int[][] xteaKeys;
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
    @Export("state")
    byte state;
-   @ObfuscatedName("w")
+   @ObfuscatedName("al")
    @ObfuscatedGetter(
-      intValue = 50135989
+      intValue = 1677994713
    )
    @Export("id")
    public int id;
-   @ObfuscatedName("v")
+   @ObfuscatedName("ac")
    @ObfuscatedGetter(
-      intValue = 679692431
+      intValue = -445284831
    )
    @Export("unitPrice")
    public int unitPrice;
-   @ObfuscatedName("s")
+   @ObfuscatedName("ab")
    @ObfuscatedGetter(
-      intValue = 1942837321
+      intValue = -1293101251
    )
    @Export("totalQuantity")
    public int totalQuantity;
-   @ObfuscatedName("z")
+   @ObfuscatedName("an")
    @ObfuscatedGetter(
-      intValue = 151790641
+      intValue = -315326791
    )
    @Export("currentQuantity")
    public int currentQuantity;
-   @ObfuscatedName("j")
+   @ObfuscatedName("ao")
    @ObfuscatedGetter(
-      intValue = 895894785
+      intValue = 566393859
    )
    @Export("currentPrice")
    public int currentPrice;
@@ -48,7 +45,7 @@ public class GrandExchangeOffer {
    }
 
    @ObfuscatedSignature(
-      descriptor = "(Lrd;Z)V",
+      descriptor = "(Lsy;Z)V",
       garbageValue = "0"
    )
    public GrandExchangeOffer(Buffer var1, boolean var2) {
@@ -60,42 +57,42 @@ public class GrandExchangeOffer {
       this.currentPrice = var1.readInt();
    }
 
-   @ObfuscatedName("w")
+   @ObfuscatedName("ac")
    @ObfuscatedSignature(
       descriptor = "(B)I",
-      garbageValue = "-47"
+      garbageValue = "70"
    )
    @Export("status")
    public int status() {
       return this.state & 7;
    }
 
-   @ObfuscatedName("v")
+   @ObfuscatedName("ab")
    @ObfuscatedSignature(
       descriptor = "(I)I",
-      garbageValue = "-8448203"
+      garbageValue = "1952832227"
    )
    @Export("type")
    public int type() {
       return (this.state & 8) == 8 ? 1 : 0;
    }
 
-   @ObfuscatedName("s")
+   @ObfuscatedName("an")
    @ObfuscatedSignature(
       descriptor = "(II)V",
-      garbageValue = "-161610158"
+      garbageValue = "-354706724"
    )
-   void method6719(int var1) {
+   void method6579(int var1) {
       this.state &= -8;
       this.state = (byte)(this.state | var1 & 7);
    }
 
-   @ObfuscatedName("z")
+   @ObfuscatedName("ao")
    @ObfuscatedSignature(
-      descriptor = "(IB)V",
-      garbageValue = "10"
+      descriptor = "(II)V",
+      garbageValue = "1603678725"
    )
-   void method6710(int var1) {
+   void method6587(int var1) {
       this.state &= -9;
       if (var1 == 1) {
          this.state = (byte)(this.state | 8);
@@ -103,15 +100,73 @@ public class GrandExchangeOffer {
 
    }
 
-   @ObfuscatedName("lt")
+   @ObfuscatedName("al")
+   @Export("base37DecodeLong")
+   public static String base37DecodeLong(long var0) {
+      if (var0 > 0L && var0 < 6582952005840035281L) {
+         if (var0 % 37L == 0L) {
+            return null;
+         } else {
+            int var2 = 0;
+
+            for(long var3 = var0; var3 != 0L; var3 /= 37L) {
+               ++var2;
+            }
+
+            StringBuilder var5;
+            char var8;
+            for(var5 = new StringBuilder(var2); var0 != 0L; var5.append(var8)) {
+               long var6 = var0;
+               var0 /= 37L;
+               var8 = class369.base37Table[(int)(var6 - var0 * 37L)];
+               if (var8 == '_') {
+                  int var9 = var5.length() - 1;
+                  var5.setCharAt(var9, Character.toUpperCase(var5.charAt(var9)));
+                  var8 = 160;
+               }
+            }
+
+            var5.reverse();
+            var5.setCharAt(0, Character.toUpperCase(var5.charAt(0)));
+            return var5.toString();
+         }
+      } else {
+         return null;
+      }
+   }
+
+   @ObfuscatedName("ap")
    @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "-615655692"
+      descriptor = "(Lmy;I[B[BB)V",
+      garbageValue = "-86"
    )
-   @Export("Clan_leaveChat")
-   static final void Clan_leaveChat() {
-      PacketBufferNode var0 = Renderable.getPacketBufferNode(ClientPacket.field3160, Client.packetWriter.isaacCipher);
-      var0.packetBuffer.writeByte(0);
-      Client.packetWriter.addNode(var0);
+   @Export("Widget_setKey")
+   static final void Widget_setKey(Widget var0, int var1, byte[] var2, byte[] var3) {
+      if (var0.field3575 == null) {
+         if (var2 == null) {
+            return;
+         }
+
+         var0.field3575 = new byte[11][];
+         var0.field3601 = new byte[11][];
+         var0.field3583 = new int[11];
+         var0.field3603 = new int[11];
+      }
+
+      var0.field3575[var1] = var2;
+      if (var2 != null) {
+         var0.field3599 = true;
+      } else {
+         var0.field3599 = false;
+
+         for(int var4 = 0; var4 < var0.field3575.length; ++var4) {
+            if (var0.field3575[var4] != null) {
+               var0.field3599 = true;
+               break;
+            }
+         }
+      }
+
+      var0.field3601[var1] = var3;
    }
 }

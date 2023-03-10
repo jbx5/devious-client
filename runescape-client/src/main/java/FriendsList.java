@@ -4,64 +4,59 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("oe")
+@ObfuscatedName("py")
 @Implements("FriendsList")
 public class FriendsList extends UserList {
-   @ObfuscatedName("j")
-   @Export("SpriteBuffer_spriteWidths")
-   public static int[] SpriteBuffer_spriteWidths;
    @ObfuscatedName("ac")
-   protected static String field4540;
-   @ObfuscatedName("v")
    @ObfuscatedSignature(
-      descriptor = "Lqj;"
+      descriptor = "Lrm;"
    )
    @Export("loginType")
    final LoginType loginType;
-   @ObfuscatedName("s")
+   @ObfuscatedName("ab")
    @ObfuscatedGetter(
-      intValue = -893041511
+      intValue = -825907637
    )
-   int field4541 = 1;
-   @ObfuscatedName("z")
+   int field4498 = 1;
+   @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "Lme;"
+      descriptor = "Lny;"
    )
    @Export("friendLoginUpdates")
    public LinkDeque friendLoginUpdates = new LinkDeque();
 
    @ObfuscatedSignature(
-      descriptor = "(Lqj;)V"
+      descriptor = "(Lrm;)V"
    )
    public FriendsList(LoginType var1) {
       super(400);
       this.loginType = var1;
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
-      descriptor = "(I)Low;",
-      garbageValue = "-2146736820"
+      descriptor = "(I)Lpb;",
+      garbageValue = "1708206647"
    )
    @Export("newInstance")
    User newInstance() {
       return new Friend();
    }
 
-   @ObfuscatedName("w")
+   @ObfuscatedName("al")
    @ObfuscatedSignature(
-      descriptor = "(II)[Low;",
-      garbageValue = "1411048209"
+      descriptor = "(IB)[Lpb;",
+      garbageValue = "0"
    )
    @Export("newTypedArray")
    User[] newTypedArray(int var1) {
       return new Friend[var1];
    }
 
-   @ObfuscatedName("v")
+   @ObfuscatedName("ac")
    @ObfuscatedSignature(
-      descriptor = "(Lsi;ZI)Z",
-      garbageValue = "-890591527"
+      descriptor = "(Ltj;ZB)Z",
+      garbageValue = "59"
    )
    @Export("isFriended")
    public boolean isFriended(Username var1, boolean var2) {
@@ -73,10 +68,10 @@ public class FriendsList extends UserList {
       }
    }
 
-   @ObfuscatedName("n")
+   @ObfuscatedName("ar")
    @ObfuscatedSignature(
-      descriptor = "(Lrd;II)V",
-      garbageValue = "-1435809245"
+      descriptor = "(Lsy;IB)V",
+      garbageValue = "29"
    )
    @Export("read")
    public void read(Buffer var1, int var2) {
@@ -140,17 +135,17 @@ public class FriendsList extends UserList {
                }
 
                if (var6 != var11.world) {
-                  var11.int2 = ++this.field4541 - 1;
+                  var11.int2 = ++this.field4498 - 1;
                   if (var11.world == -1 && var6 == 0) {
-                     var11.int2 = -(var11.int2 * -801801849) * 143588407;
+                     var11.int2 = -(var11.int2 * 446520237) * -58671067;
                   }
 
                   var11.world = var6;
                }
 
                var11.rank = var7;
-               var11.field4553 = var9;
-               var11.field4552 = var10;
+               var11.field4509 = var9;
+               var11.field4508 = var10;
                continue;
             }
 
@@ -162,23 +157,17 @@ public class FriendsList extends UserList {
       }
    }
 
-   @ObfuscatedName("br")
+   @ObfuscatedName("ay")
    @ObfuscatedSignature(
-      descriptor = "(Lqn;I)Ljava/lang/Object;",
-      garbageValue = "2113318877"
+      descriptor = "(I)V",
+      garbageValue = "-882883055"
    )
-   static Object method7543(class463 var0) {
-      if (var0 == null) {
-         throw new IllegalStateException("popValueOfType() failure - null baseVarType");
-      } else {
-         switch (var0.field4899) {
-            case 1:
-               return Interpreter.Interpreter_stringStack[--class20.Interpreter_stringStackSize];
-            case 2:
-               return Interpreter.Interpreter_intStack[--class302.Interpreter_intStackSize];
-            default:
-               throw new IllegalStateException("popValueOfType() failure - unsupported type");
-         }
-      }
+   public static void method7473() {
+      class492.SpriteBuffer_xOffsets = null;
+      Canvas.SpriteBuffer_yOffsets = null;
+      InterfaceParent.SpriteBuffer_spriteWidths = null;
+      class144.SpriteBuffer_spriteHeights = null;
+      class181.SpriteBuffer_spritePalette = null;
+      class144.SpriteBuffer_pixels = null;
    }
 }

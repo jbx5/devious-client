@@ -2,48 +2,47 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hc")
+@ObfuscatedName("it")
 @Implements("SceneTilePaint")
 public final class SceneTilePaint {
-   @ObfuscatedName("m")
-   static int[] field2764;
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
    @ObfuscatedGetter(
-      intValue = 1905065961
+      intValue = 1545996495
    )
    @Export("swColor")
    int swColor;
-   @ObfuscatedName("w")
+   @ObfuscatedName("al")
    @ObfuscatedGetter(
-      intValue = 395510695
+      intValue = -1652527289
    )
    @Export("seColor")
    int seColor;
-   @ObfuscatedName("v")
+   @ObfuscatedName("ac")
    @ObfuscatedGetter(
-      intValue = -1229882029
+      intValue = -1801729611
    )
    @Export("neColor")
    int neColor;
-   @ObfuscatedName("s")
+   @ObfuscatedName("ab")
    @ObfuscatedGetter(
-      intValue = -1388285787
+      intValue = -2002434175
    )
    @Export("nwColor")
    int nwColor;
-   @ObfuscatedName("z")
+   @ObfuscatedName("an")
    @ObfuscatedGetter(
-      intValue = -1517279351
+      intValue = -1083388959
    )
    @Export("texture")
    int texture;
-   @ObfuscatedName("j")
+   @ObfuscatedName("ao")
    @Export("isFlat")
    boolean isFlat = true;
-   @ObfuscatedName("i")
+   @ObfuscatedName("av")
    @ObfuscatedGetter(
-      intValue = 1002272025
+      intValue = 91212955
    )
    @Export("rgb")
    int rgb;
@@ -56,5 +55,18 @@ public final class SceneTilePaint {
       this.texture = var5;
       this.rgb = var6;
       this.isFlat = var7;
+   }
+
+   @ObfuscatedName("kr")
+   @ObfuscatedSignature(
+      descriptor = "(II)Ljava/lang/String;",
+      garbageValue = "1985297196"
+   )
+   static String method4753(int var0) {
+      if (var0 < 0) {
+         return "";
+      } else {
+         return Client.menuTargets[var0].length() > 0 ? Client.menuActions[var0] + " " + Client.menuTargets[var0] : Client.menuActions[var0];
+      }
    }
 }

@@ -1,45 +1,52 @@
+import java.awt.Component;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hl")
+@ObfuscatedName("ie")
 @Implements("AABB")
 public class AABB {
-   @ObfuscatedName("f")
+   @ObfuscatedName("fn")
+   @ObfuscatedSignature(
+      descriptor = "Lmx;"
+   )
+   @Export("archive10")
+   static Archive archive10;
+   @ObfuscatedName("aj")
    @ObfuscatedGetter(
-      intValue = 2096870165
+      intValue = 532233349
    )
    @Export("xMid")
    int xMid;
-   @ObfuscatedName("w")
+   @ObfuscatedName("al")
    @ObfuscatedGetter(
-      intValue = 332866065
+      intValue = -2038217369
    )
    @Export("yMid")
    int yMid;
-   @ObfuscatedName("v")
+   @ObfuscatedName("ac")
    @ObfuscatedGetter(
-      intValue = -2013647353
+      intValue = -2099700903
    )
    @Export("zMid")
    int zMid;
-   @ObfuscatedName("s")
+   @ObfuscatedName("ab")
    @ObfuscatedGetter(
-      intValue = 465602659
+      intValue = -1231347425
    )
    @Export("xMidOffset")
    int xMidOffset;
-   @ObfuscatedName("z")
+   @ObfuscatedName("an")
    @ObfuscatedGetter(
-      intValue = 838590455
+      intValue = 1061110137
    )
    @Export("yMidOffset")
    int yMidOffset;
-   @ObfuscatedName("j")
+   @ObfuscatedName("ao")
    @ObfuscatedGetter(
-      intValue = -1243099435
+      intValue = -290660215
    )
    @Export("zMidOffset")
    int zMidOffset;
@@ -53,59 +60,44 @@ public class AABB {
       this.zMidOffset = var6;
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
-      descriptor = "(Lln;III)[Lrs;",
-      garbageValue = "-1540758388"
+      descriptor = "(Ljava/awt/Component;I)V",
+      garbageValue = "-984780725"
    )
-   public static SpritePixels[] method4629(AbstractArchive var0, int var1, int var2) {
-      if (!Buffer.method8892(var0, var1, var2)) {
-         return null;
-      } else {
-         SpritePixels[] var4 = new SpritePixels[class488.SpriteBuffer_spriteCount];
-
-         for(int var5 = 0; var5 < class488.SpriteBuffer_spriteCount; ++var5) {
-            SpritePixels var6 = var4[var5] = new SpritePixels();
-            var6.width = class488.SpriteBuffer_spriteWidth;
-            var6.height = class488.SpriteBuffer_spriteHeight;
-            var6.xOffset = class488.SpriteBuffer_xOffsets[var5];
-            var6.yOffset = ApproximateRouteStrategy.SpriteBuffer_yOffsets[var5];
-            var6.subWidth = FriendsList.SpriteBuffer_spriteWidths[var5];
-            var6.subHeight = class132.SpriteBuffer_spriteHeights[var5];
-            int var7 = var6.subWidth * var6.subHeight;
-            byte[] var8 = class140.SpriteBuffer_pixels[var5];
-            var6.pixels = new int[var7];
-
-            for(int var9 = 0; var9 < var7; ++var9) {
-               var6.pixels[var9] = class100.SpriteBuffer_spritePalette[var8[var9] & 255];
-            }
-         }
-
-         class100.method2724();
-         return var4;
-      }
+   static void method4546(Component var0) {
+      var0.addMouseListener(MouseHandler.MouseHandler_instance);
+      var0.addMouseMotionListener(MouseHandler.MouseHandler_instance);
+      var0.addFocusListener(MouseHandler.MouseHandler_instance);
    }
 
-   @ObfuscatedName("hb")
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
-      descriptor = "(IIIII)V",
-      garbageValue = "-1608051056"
+      descriptor = "(Lsy;Lrz;I)Lrz;",
+      garbageValue = "1598994640"
    )
-   static final void method4628(int var0, int var1, int var2, int var3) {
-      Client.field626 = 0;
-      int var4 = ParamComposition.baseX * 64 + (class387.localPlayer.x >> 7);
-      int var5 = Client.baseY * 64 + (class387.localPlayer.y >> 7);
-      if (var4 >= 3053 && var4 <= 3156 && var5 >= 3056 && var5 <= 3136) {
-         Client.field626 = 1;
+   @Export("readStringIntParameters")
+   static final IterableNodeHashTable readStringIntParameters(Buffer var0, IterableNodeHashTable var1) {
+      int var2 = var0.readUnsignedByte();
+      int var3;
+      if (var1 == null) {
+         var3 = WorldMapLabelSize.method4793(var2);
+         var1 = new IterableNodeHashTable(var3);
       }
 
-      if (var4 >= 3072 && var4 <= 3118 && var5 >= 9492 && var5 <= 9535) {
-         Client.field626 = 1;
+      for(var3 = 0; var3 < var2; ++var3) {
+         boolean var4 = var0.readUnsignedByte() == 1;
+         int var5 = var0.readMedium();
+         Object var6;
+         if (var4) {
+            var6 = new ObjectNode(var0.readStringCp1252NullTerminated());
+         } else {
+            var6 = new IntegerNode(var0.readInt());
+         }
+
+         var1.put((Node)var6, (long)var5);
       }
 
-      if (Client.field626 == 1 && var4 >= 3139 && var4 <= 3199 && var5 >= 3008 && var5 <= 3062) {
-         Client.field626 = 0;
-      }
-
+      return var1;
    }
 }

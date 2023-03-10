@@ -40,8 +40,8 @@ public interface RSServerPacket extends ServerPacket
 	@Import("IF_SETSCROLLPOS")
 	RSServerPacket IF_SETSCROLLPOS();
 
-	@Import("NPC_INFO_LARGE_VIEWPORT_1")
-	RSServerPacket NPC_INFO_LARGE_VIEWPORT_1();
+	//@Import("NPC_INFO_LARGE_VIEWPORT_1")
+	//RSServerPacket NPC_INFO_LARGE_VIEWPORT_1();
 
 	@Import("UPDATE_REBOOT_TIMER")
 	RSServerPacket UPDATE_REBOOT_TIMER();
@@ -49,8 +49,8 @@ public interface RSServerPacket extends ServerPacket
 	@Import("UPDATE_STOCKMARKET_SLOT")
 	RSServerPacket UPDATE_STOCKMARKET_SLOT();
 
-	@Import("NPC_INFO_SMALL_VIEWPORT_2")
-	RSServerPacket NPC_INFO_SMALL_VIEWPORT_2();
+	//@Import("NPC_INFO_SMALL_VIEWPORT_2")
+	//RSServerPacket NPC_INFO_SMALL_VIEWPORT_2();
 
 	@Import("UPDATE_FRIENDLIST")
 	RSServerPacket UPDATE_FRIENDLIST();

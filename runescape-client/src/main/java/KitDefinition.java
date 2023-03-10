@@ -4,68 +4,73 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gf")
+@ObfuscatedName("hv")
 @Implements("KitDefinition")
 public class KitDefinition extends DualNode {
-   @ObfuscatedName("f")
+   @ObfuscatedName("al")
    @ObfuscatedSignature(
-      descriptor = "Lln;"
-   )
-   @Export("KitDefinition_archive")
-   public static AbstractArchive KitDefinition_archive;
-   @ObfuscatedName("w")
-   @ObfuscatedSignature(
-      descriptor = "Lln;"
+      descriptor = "Lne;"
    )
    @Export("KitDefinition_modelsArchive")
    public static AbstractArchive KitDefinition_modelsArchive;
-   @ObfuscatedName("v")
+   @ObfuscatedName("ac")
    @ObfuscatedGetter(
-      intValue = -1307688333
+      intValue = 1091197995
    )
    @Export("KitDefinition_fileCount")
    public static int KitDefinition_fileCount;
-   @ObfuscatedName("s")
+   @ObfuscatedName("ab")
    @ObfuscatedSignature(
-      descriptor = "Lja;"
+      descriptor = "Lkt;"
    )
    @Export("KitDefinition_cached")
    static EvictingDualNodeHashTable KitDefinition_cached = new EvictingDualNodeHashTable(64);
-   @ObfuscatedName("z")
+   @ObfuscatedName("az")
+   @ObfuscatedSignature(
+      descriptor = "Lsp;"
+   )
+   static IndexedSprite field1941;
+   @ObfuscatedName("qk")
+   @ObfuscatedSignature(
+      descriptor = "Lrw;"
+   )
+   @Export("HitSplatDefinition_cachedSprites")
+   static class462 HitSplatDefinition_cachedSprites;
+   @ObfuscatedName("an")
    @ObfuscatedGetter(
-      intValue = 118475417
+      intValue = -508884005
    )
    @Export("bodypartID")
    public int bodypartID = -1;
-   @ObfuscatedName("j")
+   @ObfuscatedName("ao")
    @Export("models2")
    int[] models2;
-   @ObfuscatedName("i")
+   @ObfuscatedName("av")
    @Export("recolorFrom")
    short[] recolorFrom;
-   @ObfuscatedName("n")
+   @ObfuscatedName("aq")
    @Export("recolorTo")
    short[] recolorTo;
-   @ObfuscatedName("l")
+   @ObfuscatedName("ap")
    @Export("retextureFrom")
    short[] retextureFrom;
-   @ObfuscatedName("k")
+   @ObfuscatedName("ar")
    @Export("retextureTo")
    short[] retextureTo;
-   @ObfuscatedName("c")
+   @ObfuscatedName("ak")
    @Export("models")
    int[] models = new int[]{-1, -1, -1, -1, -1};
-   @ObfuscatedName("r")
+   @ObfuscatedName("ax")
    @Export("nonSelectable")
    public boolean nonSelectable = false;
 
    KitDefinition() {
    }
 
-   @ObfuscatedName("w")
+   @ObfuscatedName("al")
    @ObfuscatedSignature(
-      descriptor = "(Lrd;I)V",
-      garbageValue = "1063684102"
+      descriptor = "(Lsy;I)V",
+      garbageValue = "-436445916"
    )
    @Export("decode")
    void decode(Buffer var1) {
@@ -79,10 +84,10 @@ public class KitDefinition extends DualNode {
       }
    }
 
-   @ObfuscatedName("v")
+   @ObfuscatedName("ac")
    @ObfuscatedSignature(
-      descriptor = "(Lrd;IB)V",
-      garbageValue = "-28"
+      descriptor = "(Lsy;II)V",
+      garbageValue = "-220480988"
    )
    @Export("decodeNext")
    void decodeNext(Buffer var1, int var2) {
@@ -125,10 +130,10 @@ public class KitDefinition extends DualNode {
 
    }
 
-   @ObfuscatedName("s")
+   @ObfuscatedName("ab")
    @ObfuscatedSignature(
-      descriptor = "(S)Z",
-      garbageValue = "23626"
+      descriptor = "(I)Z",
+      garbageValue = "2143068501"
    )
    @Export("ready")
    public boolean ready() {
@@ -147,10 +152,10 @@ public class KitDefinition extends DualNode {
       }
    }
 
-   @ObfuscatedName("z")
+   @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "(I)Lhe;",
-      garbageValue = "1641810679"
+      descriptor = "(I)Liu;",
+      garbageValue = "845408563"
    )
    @Export("getModelData")
    public ModelData getModelData() {
@@ -187,12 +192,12 @@ public class KitDefinition extends DualNode {
       }
    }
 
-   @ObfuscatedName("j")
+   @ObfuscatedName("ao")
    @ObfuscatedSignature(
       descriptor = "(I)Z",
-      garbageValue = "-1598933884"
+      garbageValue = "751474710"
    )
-   public boolean method3645() {
+   public boolean method3608() {
       boolean var1 = true;
 
       for(int var2 = 0; var2 < 5; ++var2) {
@@ -204,10 +209,10 @@ public class KitDefinition extends DualNode {
       return var1;
    }
 
-   @ObfuscatedName("i")
+   @ObfuscatedName("av")
    @ObfuscatedSignature(
-      descriptor = "(I)Lhe;",
-      garbageValue = "-1231697529"
+      descriptor = "(I)Liu;",
+      garbageValue = "1250407015"
    )
    @Export("getKitDefinitionModels")
    public ModelData getKitDefinitionModels() {

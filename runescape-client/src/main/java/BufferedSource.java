@@ -7,43 +7,37 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ox")
+@ObfuscatedName("px")
 @Implements("BufferedSource")
 public class BufferedSource implements Runnable {
-   @ObfuscatedName("hn")
-   @ObfuscatedSignature(
-      descriptor = "Lff;"
-   )
-   @Export("socketTask")
-   static Task socketTask;
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
    @Export("thread")
    Thread thread;
-   @ObfuscatedName("w")
+   @ObfuscatedName("al")
    @Export("inputStream")
    InputStream inputStream;
-   @ObfuscatedName("v")
+   @ObfuscatedName("ac")
    @ObfuscatedGetter(
-      intValue = -1210810773
+      intValue = -686104627
    )
    @Export("capacity")
    int capacity;
-   @ObfuscatedName("s")
+   @ObfuscatedName("ab")
    @Export("buffer")
    byte[] buffer;
-   @ObfuscatedName("z")
+   @ObfuscatedName("an")
    @ObfuscatedGetter(
-      intValue = -1989146679
+      intValue = 1482773295
    )
    @Export("position")
    int position = 0;
-   @ObfuscatedName("j")
+   @ObfuscatedName("ao")
    @ObfuscatedGetter(
-      intValue = 1590838683
+      intValue = -7223263
    )
    @Export("limit")
    int limit = 0;
-   @ObfuscatedName("i")
+   @ObfuscatedName("av")
    @Export("exception")
    IOException exception;
 
@@ -56,10 +50,10 @@ public class BufferedSource implements Runnable {
       this.thread.start();
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
-      descriptor = "(II)Z",
-      garbageValue = "2119015398"
+      descriptor = "(IB)Z",
+      garbageValue = "16"
    )
    @Export("isAvailable")
    boolean isAvailable(int var1) throws IOException {
@@ -90,10 +84,10 @@ public class BufferedSource implements Runnable {
       }
    }
 
-   @ObfuscatedName("w")
+   @ObfuscatedName("al")
    @ObfuscatedSignature(
       descriptor = "(I)I",
-      garbageValue = "-2130271953"
+      garbageValue = "-1649077050"
    )
    @Export("available")
    int available() throws IOException {
@@ -114,15 +108,15 @@ public class BufferedSource implements Runnable {
       }
    }
 
-   @ObfuscatedName("v")
+   @ObfuscatedName("ac")
    @ObfuscatedSignature(
-      descriptor = "(B)I",
-      garbageValue = "-114"
+      descriptor = "(I)I",
+      garbageValue = "-1796520433"
    )
    @Export("readUnsignedByte")
    int readUnsignedByte() throws IOException {
       synchronized(this) {
-         if (this.position == this.limit) {
+         if (this.limit == this.position) {
             if (this.exception != null) {
                throw new IOException(this.exception.toString());
             } else {
@@ -137,10 +131,10 @@ public class BufferedSource implements Runnable {
       }
    }
 
-   @ObfuscatedName("s")
+   @ObfuscatedName("ab")
    @ObfuscatedSignature(
       descriptor = "([BIII)I",
-      garbageValue = "583878445"
+      garbageValue = "-617991622"
    )
    @Export("read")
    int read(byte[] var1, int var2, int var3) throws IOException {
@@ -178,10 +172,10 @@ public class BufferedSource implements Runnable {
       }
    }
 
-   @ObfuscatedName("z")
+   @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "(S)V",
-      garbageValue = "-3422"
+      descriptor = "(I)V",
+      garbageValue = "535821760"
    )
    @Export("close")
    void close() {
@@ -244,99 +238,6 @@ public class BufferedSource implements Runnable {
 
          synchronized(this) {
             this.limit = (var7 + this.limit) % this.capacity;
-         }
-      }
-   }
-
-   @ObfuscatedName("jh")
-   @ObfuscatedSignature(
-      descriptor = "(Lcl;IIII)V",
-      garbageValue = "-405303371"
-   )
-   @Export("addPlayerToMenu")
-   static final void addPlayerToMenu(Player var0, int var1, int var2, int var3) {
-      if (class387.localPlayer != var0) {
-         if (Client.menuOptionsCount < 400) {
-            String var4;
-            int var7;
-            if (var0.skillLevel == 0) {
-               String var5 = var0.actions[0] + var0.username + var0.actions[1];
-               var7 = var0.combatLevel;
-               int var8 = class387.localPlayer.combatLevel;
-               int var9 = var8 - var7;
-               String var6;
-               if (var9 < -9) {
-                  var6 = class149.colorStartTag(16711680);
-               } else if (var9 < -6) {
-                  var6 = class149.colorStartTag(16723968);
-               } else if (var9 < -3) {
-                  var6 = class149.colorStartTag(16740352);
-               } else if (var9 < 0) {
-                  var6 = class149.colorStartTag(16756736);
-               } else if (var9 > 9) {
-                  var6 = class149.colorStartTag(65280);
-               } else if (var9 > 6) {
-                  var6 = class149.colorStartTag(4259584);
-               } else if (var9 > 3) {
-                  var6 = class149.colorStartTag(8453888);
-               } else if (var9 > 0) {
-                  var6 = class149.colorStartTag(12648192);
-               } else {
-                  var6 = class149.colorStartTag(16776960);
-               }
-
-               var4 = var5 + var6 + " " + " (" + "level-" + var0.combatLevel + ")" + var0.actions[2];
-            } else {
-               var4 = var0.actions[0] + var0.username + var0.actions[1] + " " + " (" + "skill-" + var0.skillLevel + ")" + var0.actions[2];
-            }
-
-            int var10;
-            if (Client.isItemSelected == 1) {
-               WorldMapRenderer.insertMenuItemNoShift("Use", Client.selectedItemName + " " + "->" + " " + class149.colorStartTag(16777215) + var4, 14, var1, var2, var3);
-            } else if (Client.isSpellSelected) {
-               if ((class149.selectedSpellFlags & 8) == 8) {
-                  WorldMapRenderer.insertMenuItemNoShift(Client.selectedSpellActionName, Client.selectedSpellName + " " + "->" + " " + class149.colorStartTag(16777215) + var4, 15, var1, var2, var3);
-               }
-            } else {
-               for(var10 = 7; var10 >= 0; --var10) {
-                  if (Client.playerMenuActions[var10] != null) {
-                     short var11 = 0;
-                     if (Client.playerMenuActions[var10].equalsIgnoreCase("Attack")) {
-                        if (Client.playerAttackOption == AttackOption.AttackOption_hidden) {
-                           continue;
-                        }
-
-                        if (Client.playerAttackOption == AttackOption.AttackOption_alwaysRightClick || Client.playerAttackOption == AttackOption.AttackOption_dependsOnCombatLevels && var0.combatLevel > class387.localPlayer.combatLevel) {
-                           var11 = 2000;
-                        }
-
-                        if (class387.localPlayer.team != 0 && var0.team != 0) {
-                           if (var0.team == class387.localPlayer.team) {
-                              var11 = 2000;
-                           } else {
-                              var11 = 0;
-                           }
-                        } else if (Client.playerAttackOption == AttackOption.field1318 && var0.isClanMember()) {
-                           var11 = 2000;
-                        }
-                     } else if (Client.playerOptionsPriorities[var10]) {
-                        var11 = 2000;
-                     }
-
-                     boolean var12 = false;
-                     var7 = Client.playerMenuOpcodes[var10] + var11;
-                     WorldMapRenderer.insertMenuItemNoShift(Client.playerMenuActions[var10], class149.colorStartTag(16777215) + var4, var7, var1, var2, var3);
-                  }
-               }
-            }
-
-            for(var10 = 0; var10 < Client.menuOptionsCount; ++var10) {
-               if (Client.menuOpcodes[var10] == 23) {
-                  Client.menuTargets[var10] = class149.colorStartTag(16777215) + var4;
-                  break;
-               }
-            }
-
          }
       }
    }

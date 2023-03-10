@@ -1,26 +1,61 @@
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("nr")
+@ObfuscatedName("oy")
 public class class389 {
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
-      descriptor = "Lnr;"
+      descriptor = "Loy;"
    )
-   public static final class389 field4516 = new class389(0);
-   @ObfuscatedName("w")
+   static final class389 field4463 = new class389("Basic");
+   @ObfuscatedName("al")
    @ObfuscatedSignature(
-      descriptor = "Lnr;"
+      descriptor = "Loy;"
    )
-   static final class389 field4515 = new class389(1);
-   @ObfuscatedName("v")
-   @ObfuscatedGetter(
-      intValue = -1237713179
-   )
-   final int field4514;
+   static final class389 field4461 = new class389("Bearer");
+   @ObfuscatedName("ac")
+   final String field4462;
 
-   class389(int var1) {
-      this.field4514 = var1;
+   class389(String var1) {
+      this.field4462 = var1;
+   }
+
+   @ObfuscatedName("aj")
+   @ObfuscatedSignature(
+      descriptor = "(I)Ljava/lang/String;",
+      garbageValue = "1567314137"
+   )
+   String method7351() {
+      return this.field4462;
+   }
+
+   @ObfuscatedName("aj")
+   @ObfuscatedSignature(
+      descriptor = "(I)I",
+      garbageValue = "1824771862"
+   )
+   static int method7352() {
+      return ++Messages.Messages_count - 1;
+   }
+
+   @ObfuscatedName("aj")
+   @ObfuscatedSignature(
+      descriptor = "(B)V",
+      garbageValue = "69"
+   )
+   static void method7353() {
+      for(ObjectSound var0 = (ObjectSound)ObjectSound.objectSounds.last(); var0 != null; var0 = (ObjectSound)ObjectSound.objectSounds.previous()) {
+         if (var0.stream1 != null) {
+            class323.pcmStreamMixer.removeSubStream(var0.stream1);
+            var0.stream1 = null;
+         }
+
+         if (var0.stream2 != null) {
+            class323.pcmStreamMixer.removeSubStream(var0.stream2);
+            var0.stream2 = null;
+         }
+      }
+
+      ObjectSound.objectSounds.clear();
    }
 }

@@ -3,16 +3,16 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kg")
+@ObfuscatedName("mg")
 @Implements("Huffman")
 public class Huffman {
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
    @Export("masks")
    int[] masks;
-   @ObfuscatedName("w")
+   @ObfuscatedName("al")
    @Export("bits")
    byte[] bits;
-   @ObfuscatedName("v")
+   @ObfuscatedName("ac")
    @Export("keys")
    int[] keys;
 
@@ -41,7 +41,7 @@ public class Huffman {
 
                for(var10 = var6 - 1; var10 >= 1; --var10) {
                   var11 = var3[var10];
-                  if (var8 != var11) {
+                  if (var11 != var8) {
                      break;
                   }
 
@@ -99,10 +99,10 @@ public class Huffman {
 
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
       descriptor = "([BII[BII)I",
-      garbageValue = "-1335914650"
+      garbageValue = "-1700341370"
    )
    @Export("compress")
    int compress(byte[] var1, int var2, int var3, byte[] var4, int var5) {
@@ -150,10 +150,10 @@ public class Huffman {
       return (var7 + 7 >> 3) - var5;
    }
 
-   @ObfuscatedName("w")
+   @ObfuscatedName("al")
    @ObfuscatedSignature(
-      descriptor = "([BI[BIIB)I",
-      garbageValue = "-103"
+      descriptor = "([BI[BIII)I",
+      garbageValue = "820789090"
    )
    @Export("decompress")
    int decompress(byte[] var1, int var2, byte[] var3, int var4, int var5) {
@@ -292,25 +292,5 @@ public class Huffman {
 
          return var7 + 1 - var2;
       }
-   }
-
-   @ObfuscatedName("s")
-   @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "1118529348"
-   )
-   public static void method6381() {
-      try {
-         JagexCache.JagexCache_dat2File.close();
-
-         for(int var0 = 0; var0 < JagexCache.idxCount; ++var0) {
-            class18.JagexCache_idxFiles[var0].close();
-         }
-
-         JagexCache.JagexCache_idx255File.close();
-         JagexCache.JagexCache_randomDat.close();
-      } catch (Exception var2) {
-      }
-
    }
 }

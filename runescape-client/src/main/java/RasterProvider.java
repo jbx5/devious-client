@@ -14,13 +14,13 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("al")
+@ObfuscatedName("bl")
 @Implements("RasterProvider")
 public final class RasterProvider extends AbstractRasterProvider {
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
    @Export("component")
    Component component;
-   @ObfuscatedName("w")
+   @ObfuscatedName("al")
    @Export("image")
    Image image;
 
@@ -36,40 +36,40 @@ public final class RasterProvider extends AbstractRasterProvider {
       this.apply();
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
       descriptor = "(Ljava/awt/Component;I)V",
-      garbageValue = "1334791189"
+      garbageValue = "-1574363596"
    )
    @Export("setComponent")
    final void setComponent(Component var1) {
       this.component = var1;
    }
 
-   @ObfuscatedName("w")
+   @ObfuscatedName("al")
    @ObfuscatedSignature(
-      descriptor = "(IIB)V",
-      garbageValue = "44"
+      descriptor = "(III)V",
+      garbageValue = "-234209918"
    )
    @Export("drawFull")
    public final void drawFull(int var1, int var2) {
       this.drawFull0(this.component.getGraphics(), var1, var2);
    }
 
-   @ObfuscatedName("v")
+   @ObfuscatedName("ac")
    @ObfuscatedSignature(
       descriptor = "(IIIIB)V",
-      garbageValue = "-68"
+      garbageValue = "-98"
    )
    @Export("draw")
    public final void draw(int var1, int var2, int var3, int var4) {
       this.draw0(this.component.getGraphics(), var1, var2, var3, var4);
    }
 
-   @ObfuscatedName("s")
+   @ObfuscatedName("ab")
    @ObfuscatedSignature(
-      descriptor = "(Ljava/awt/Graphics;III)V",
-      garbageValue = "-1792511799"
+      descriptor = "(Ljava/awt/Graphics;IIB)V",
+      garbageValue = "14"
    )
    @Export("drawFull0")
    final void drawFull0(Graphics var1, int var2, int var3) {
@@ -81,10 +81,10 @@ public final class RasterProvider extends AbstractRasterProvider {
 
    }
 
-   @ObfuscatedName("z")
+   @ObfuscatedName("an")
    @ObfuscatedSignature(
       descriptor = "(Ljava/awt/Graphics;IIIIB)V",
-      garbageValue = "1"
+      garbageValue = "50"
    )
    @Export("draw0")
    final void draw0(Graphics var1, int var2, int var3, int var4, int var5) {

@@ -1,116 +1,181 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("qc")
-public class class467 extends DualNode {
-   @ObfuscatedName("s")
+@ObfuscatedName("rf")
+public class class467 implements MouseWheel {
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
-      descriptor = "[Lqn;"
+      descriptor = "Lrf;"
    )
-   class463[] field4914;
-   @ObfuscatedName("z")
-   List field4913;
+   public static final class467 field4866 = new class467(0, 0, Integer.class, new class464());
+   @ObfuscatedName("al")
+   @ObfuscatedSignature(
+      descriptor = "Lrf;"
+   )
+   public static final class467 field4859 = new class467(1, 1, Long.class, new class466());
+   @ObfuscatedName("ac")
+   @ObfuscatedSignature(
+      descriptor = "Lrf;"
+   )
+   public static final class467 field4865 = new class467(2, 2, String.class, new class468());
+   @ObfuscatedName("ab")
+   @ObfuscatedGetter(
+      intValue = 800309189
+   )
+   public final int field4861;
+   @ObfuscatedName("an")
+   @ObfuscatedGetter(
+      intValue = 502816997
+   )
+   public final int field4862;
+   @ObfuscatedName("ao")
+   public final Class field4858;
+   @ObfuscatedName("av")
+   @ObfuscatedSignature(
+      descriptor = "Lrj;"
+   )
+   final class463 field4864;
 
    @ObfuscatedSignature(
-      descriptor = "(Lln;I)V"
+      descriptor = "(IILjava/lang/Class;Lrj;)V"
    )
-   public class467(AbstractArchive var1, int var2) {
-      byte[] var3 = var1.takeFile(var2, 0);
-      this.method8553(new Buffer(var3));
+   class467(int var1, int var2, Class var3, class463 var4) {
+      this.field4861 = var1;
+      this.field4862 = var2;
+      this.field4858 = var3;
+      this.field4864 = var4;
    }
 
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
-      descriptor = "(Lln;II)V"
+      descriptor = "(I)I",
+      garbageValue = "-1409646049"
    )
-   public class467(AbstractArchive var1, int var2, int var3) {
-      byte[] var4 = var1.takeFile(var2, var3 + 1);
-      this.method8553(new Buffer(var4));
+   @Export("rsOrdinal")
+   public int rsOrdinal() {
+      return this.field4862;
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("aq")
    @ObfuscatedSignature(
-      descriptor = "(Lrd;I)V",
-      garbageValue = "-1407265611"
+      descriptor = "(Lsy;I)Ljava/lang/Object;",
+      garbageValue = "-680543053"
    )
-   void method8553(Buffer var1) {
-      int var2 = var1.packBytesToInt();
-      this.field4914 = new class463[var2];
-      this.field4913 = new ArrayList(var2);
-
-      for(int var3 = 0; var3 < var2; ++var3) {
-         this.field4914[var3] = (class463)class4.findEnumerated(class463.method8503(), var1.readUnsignedByte());
-         int var4 = var1.packBytesToInt();
-         HashMap var5 = new HashMap(var4);
-
-         while(var4-- > 0) {
-            Object var6 = this.field4914[var3].method8507(var1);
-            int var7 = var1.packBytesToInt();
-            ArrayList var8 = new ArrayList();
-
-            while(var7-- > 0) {
-               int var9 = var1.packBytesToInt();
-               var8.add(var9);
-            }
-
-            var5.put(var6, var8);
-         }
-
-         this.field4913.add(var3, var5);
-      }
-
+   public Object method8465(Buffer var1) {
+      return this.field4864.vmethod8485(var1);
    }
 
-   @ObfuscatedName("w")
+   @ObfuscatedName("al")
    @ObfuscatedSignature(
-      descriptor = "(Ljava/lang/Object;II)Ljava/util/List;",
-      garbageValue = "693163868"
+      descriptor = "(IB)I",
+      garbageValue = "83"
    )
-   public List method8548(Object var1, int var2) {
-      if (var2 < 0) {
-         var2 = 0;
-      }
-
-      Map var3 = (Map)this.field4913.get(var2);
-      return (List)var3.get(var1);
+   public static int method8481(int var0) {
+      return var0 >> 17 & 7;
    }
 
-   @ObfuscatedName("hx")
+   @ObfuscatedName("ac")
    @ObfuscatedSignature(
-      descriptor = "(IIIB)V",
-      garbageValue = "48"
+      descriptor = "(Lew;FB)F",
+      garbageValue = "33"
    )
-   @Export("worldToScreen")
-   static final void worldToScreen(int var0, int var1, int var2) {
-      if (var0 >= 128 && var1 >= 128 && var0 <= 13056 && var1 <= 13056) {
-         int var3 = GrandExchangeOfferNameComparator.getTileHeight(var0, var1, class103.Client_plane) - var2;
-         var0 -= ClanSettings.cameraX;
-         var3 -= UserComparator10.cameraY;
-         var1 -= class366.cameraZ;
-         int var4 = Rasterizer3D.Rasterizer3D_sine[class103.cameraPitch];
-         int var5 = Rasterizer3D.Rasterizer3D_cosine[class103.cameraPitch];
-         int var6 = Rasterizer3D.Rasterizer3D_sine[class285.cameraYaw];
-         int var7 = Rasterizer3D.Rasterizer3D_cosine[class285.cameraYaw];
-         int var8 = var6 * var1 + var0 * var7 >> 16;
-         var1 = var7 * var1 - var0 * var6 >> 16;
-         var0 = var8;
-         var8 = var3 * var5 - var4 * var1 >> 16;
-         var1 = var5 * var1 + var4 * var3 >> 16;
-         if (var1 >= 50) {
-            Client.viewportTempX = var0 * Client.viewportZoom / var1 + Client.viewportWidth / 2;
-            Client.viewportTempY = Client.viewportHeight / 2 + var8 * Client.viewportZoom / var1;
-         } else {
-            Client.viewportTempX = -1;
-            Client.viewportTempY = -1;
-         }
-
+   static float method8462(class127 var0, float var1) {
+      if (var0 == null) {
+         return 0.0F;
       } else {
-         Client.viewportTempX = -1;
-         Client.viewportTempY = -1;
+         float var2 = var1 - var0.field1505;
+         return var0.field1500 + var2 * (var2 * (var2 * var0.field1521 + var0.field1506) + var0.field1507);
       }
+   }
+
+   @ObfuscatedName("ab")
+   @ObfuscatedSignature(
+      descriptor = "(B)[Lrf;",
+      garbageValue = "79"
+   )
+   public static class467[] method8480() {
+      return new class467[]{field4866, field4865, field4859};
+   }
+
+   @ObfuscatedName("an")
+   @ObfuscatedSignature(
+      descriptor = "(Ljava/lang/Class;B)Lrf;",
+      garbageValue = "-2"
+   )
+   public static class467 method8473(Class var0) {
+      class467[] var1 = method8480();
+
+      for(int var2 = 0; var2 < var1.length; ++var2) {
+         class467 var3 = var1[var2];
+         if (var3.field4858 == var0) {
+            return var3;
+         }
+      }
+
+      return null;
+   }
+
+   @ObfuscatedName("ao")
+   @ObfuscatedSignature(
+      descriptor = "(Ljava/lang/Object;Lsy;B)V",
+      garbageValue = "32"
+   )
+   public static void method8475(Object var0, Buffer var1) {
+      class463 var2 = method8471(var0.getClass());
+      var2.vmethod8486(var0, var1);
+   }
+
+   @ObfuscatedName("av")
+   @ObfuscatedSignature(
+      descriptor = "(Ljava/lang/Class;B)Lrj;",
+      garbageValue = "-18"
+   )
+   static class463 method8471(Class var0) {
+      class467[] var2 = method8480();
+      int var3 = 0;
+
+      class467 var1;
+      while(true) {
+         if (var3 >= var2.length) {
+            var1 = null;
+            break;
+         }
+
+         class467 var4 = var2[var3];
+         if (var4.field4858 == var0) {
+            var1 = var4;
+            break;
+         }
+
+         ++var3;
+      }
+
+      if (var1 == null) {
+         throw new IllegalArgumentException();
+      } else {
+         return var1.field4864;
+      }
+   }
+
+   @ObfuscatedName("ap")
+   @ObfuscatedSignature(
+      descriptor = "(I)Lcz;",
+      garbageValue = "306318319"
+   )
+   @Export("getNextWorldListWorld")
+   static World getNextWorldListWorld() {
+      return World.World_listCount < World.World_count ? class260.World_worlds[++World.World_listCount - 1] : null;
+   }
+
+   @ObfuscatedName("fi")
+   @ObfuscatedSignature(
+      descriptor = "(B)Lrc;",
+      garbageValue = "-64"
+   )
+   @Export("getWorldMap")
+   static WorldMap getWorldMap() {
+      return WorldMapData_1.worldMap;
    }
 }

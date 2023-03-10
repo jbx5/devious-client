@@ -1,65 +1,64 @@
+import java.io.IOException;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hg")
+@ObfuscatedName("jc")
 @Implements("BoundaryObject")
 public final class BoundaryObject {
-   @ObfuscatedName("an")
-   static String field2768;
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
    @ObfuscatedGetter(
-      intValue = 1225941573
+      intValue = -476261499
    )
    @Export("z")
    int z;
-   @ObfuscatedName("w")
+   @ObfuscatedName("al")
    @ObfuscatedGetter(
-      intValue = -962187195
+      intValue = -1217976121
    )
    @Export("x")
    int x;
-   @ObfuscatedName("v")
+   @ObfuscatedName("ac")
    @ObfuscatedGetter(
-      intValue = -834568319
+      intValue = 220339665
    )
    @Export("y")
    int y;
-   @ObfuscatedName("s")
+   @ObfuscatedName("ab")
    @ObfuscatedGetter(
-      intValue = -453008145
+      intValue = -244010561
    )
    @Export("orientationA")
    int orientationA;
-   @ObfuscatedName("z")
+   @ObfuscatedName("an")
    @ObfuscatedGetter(
-      intValue = -1304759669
+      intValue = 1655274619
    )
    @Export("orientationB")
    int orientationB;
-   @ObfuscatedName("j")
+   @ObfuscatedName("ao")
    @ObfuscatedSignature(
-      descriptor = "Lhd;"
+      descriptor = "Liq;"
    )
    @Export("renderable1")
    public Renderable renderable1;
-   @ObfuscatedName("i")
+   @ObfuscatedName("av")
    @ObfuscatedSignature(
-      descriptor = "Lhd;"
+      descriptor = "Liq;"
    )
    @Export("renderable2")
    public Renderable renderable2;
-   @ObfuscatedName("n")
+   @ObfuscatedName("aq")
    @ObfuscatedGetter(
-      longValue = -7566933810645434605L
+      longValue = 1373015219928650129L
    )
    @Export("tag")
    public long tag = 0L;
-   @ObfuscatedName("l")
+   @ObfuscatedName("ap")
    @ObfuscatedGetter(
-      intValue = -596388311
+      intValue = 1167353109
    )
    @Export("flags")
    int flags = 0;
@@ -67,28 +66,27 @@ public final class BoundaryObject {
    BoundaryObject() {
    }
 
-   @ObfuscatedName("gs")
+   @ObfuscatedName("ix")
    @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "-1120121316"
+      descriptor = "(ZI)V",
+      garbageValue = "1252454973"
    )
-   static final void method4846() {
-      class275.method5532(WorldMapRegion.field2874, PacketWriter.field1404, WorldMapDecoration.field2970);
-      FloorOverlayDefinition.method4027(class135.field1629, class16.field88);
-      if (ClanSettings.cameraX == WorldMapRegion.field2874 && UserComparator10.cameraY == PacketWriter.field1404 && WorldMapDecoration.field2970 == class366.cameraZ && class135.field1629 == class103.cameraPitch && class16.field88 == class285.cameraYaw) {
-         Client.field767 = false;
-         Client.isCameraLocked = false;
-         WorldMapData_0.field2806 = 0;
-         Players.field1352 = 0;
-         FloorOverlayDefinition.field2266 = 0;
-         Message.field485 = 0;
-         AttackOption.field1320 = 0;
-         UserComparator7.field1444 = 0;
-         ModeWhere.field4340 = 0;
-         Occluder.field2636 = 0;
-         class108.field1416 = 0;
-         class10.field55 = 0;
-      }
+   static final void method4754(boolean var0) {
+      EnumComposition.playPcmPlayers();
+      ++Client.packetWriter.pendingWrites;
+      if (Client.packetWriter.pendingWrites >= 50 || var0) {
+         Client.packetWriter.pendingWrites = 0;
+         if (!Client.hadNetworkError && Client.packetWriter.getSocket() != null) {
+            PacketBufferNode var1 = UserComparator9.getPacketBufferNode(ClientPacket.NO_TIMEOUT, Client.packetWriter.isaacCipher);
+            Client.packetWriter.addNode(var1);
 
+            try {
+               Client.packetWriter.flush();
+            } catch (IOException var3) {
+               Client.hadNetworkError = true;
+            }
+         }
+
+      }
    }
 }

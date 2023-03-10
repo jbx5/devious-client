@@ -3,10 +3,16 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("iy")
+@ObfuscatedName("jn")
 @Implements("WorldMapSprite")
 public final class WorldMapSprite {
-   @ObfuscatedName("w")
+   @ObfuscatedName("an")
+   @ObfuscatedSignature(
+      descriptor = "Lsp;"
+   )
+   @Export("titleboxSprite")
+   static IndexedSprite titleboxSprite;
+   @ObfuscatedName("al")
    @Export("tileColors")
    final int[] tileColors;
 
@@ -18,34 +24,40 @@ public final class WorldMapSprite {
       this.tileColors = var1;
    }
 
-   @ObfuscatedName("w")
+   @ObfuscatedName("al")
    @ObfuscatedSignature(
       descriptor = "(III)I",
-      garbageValue = "-1421933673"
+      garbageValue = "-2092140456"
    )
    @Export("getTileColor")
    final int getTileColor(int var1, int var2) {
-      return this.tileColors[var2 * 64 + var1];
+      return this.tileColors[var1 + var2 * 64];
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("al")
    @ObfuscatedSignature(
-      descriptor = "(Lln;Lln;I)V",
-      garbageValue = "-1163139509"
+      descriptor = "(Lsq;II)V",
+      garbageValue = "1646831270"
    )
-   public static void method5338(AbstractArchive var0, AbstractArchive var1) {
-      NPCComposition.NpcDefinition_archive = var0;
-      NPCComposition.field2024 = var1;
-   }
+   @Export("updatePlayers")
+   static final void updatePlayers(PacketBuffer var0, int var1) {
+      int var2 = var0.offset;
+      Players.Players_pendingUpdateCount = 0;
+      WorldMapRectangle.method5219(var0);
 
-   @ObfuscatedName("fg")
-   @ObfuscatedSignature(
-      descriptor = "(Llm;Ljava/lang/String;I)V",
-      garbageValue = "-1208127892"
-   )
-   static void method5337(Archive var0, String var1) {
-      ArchiveLoader var2 = new ArchiveLoader(var0, var1);
-      Client.archiveLoaders.add(var2);
-      Client.field800 += var2.groupCount;
+      for(int var3 = 0; var3 < Players.Players_pendingUpdateCount; ++var3) {
+         int var4 = Players.Players_pendingUpdateIndices[var3];
+         Player var5 = Client.players[var4];
+         int var6 = var0.readUnsignedByte();
+         if ((var6 & 2) != 0) {
+            var6 += var0.readUnsignedByte() << 8;
+         }
+
+         Frames.method4561(var0, var4, var5, var6);
+      }
+
+      if (var0.offset - var2 != var1) {
+         throw new RuntimeException(var0.offset - var2 + " " + var1);
+      }
    }
 }

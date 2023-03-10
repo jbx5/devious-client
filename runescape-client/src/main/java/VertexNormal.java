@@ -4,30 +4,30 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ht")
+@ObfuscatedName("iy")
 @Implements("VertexNormal")
 public class VertexNormal {
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
    @ObfuscatedGetter(
-      intValue = 1947768797
+      intValue = 969385191
    )
    @Export("x")
    int x;
-   @ObfuscatedName("w")
+   @ObfuscatedName("al")
    @ObfuscatedGetter(
-      intValue = 858418419
+      intValue = -396532773
    )
    @Export("y")
    int y;
-   @ObfuscatedName("v")
+   @ObfuscatedName("ac")
    @ObfuscatedGetter(
-      intValue = 1811796619
+      intValue = -630703257
    )
    @Export("z")
    int z;
-   @ObfuscatedName("s")
+   @ObfuscatedName("ab")
    @ObfuscatedGetter(
-      intValue = -513667565
+      intValue = 1138206661
    )
    @Export("magnitude")
    int magnitude;
@@ -36,39 +36,12 @@ public class VertexNormal {
    }
 
    @ObfuscatedSignature(
-      descriptor = "(Lht;)V"
+      descriptor = "(Liy;)V"
    )
    VertexNormal(VertexNormal var1) {
       this.x = var1.x;
       this.y = var1.y;
       this.z = var1.z;
       this.magnitude = var1.magnitude;
-   }
-
-   @ObfuscatedName("w")
-   @ObfuscatedSignature(
-      descriptor = "(II)J",
-      garbageValue = "1903334964"
-   )
-   public static long method4844(int var0) {
-      return ViewportMouse.ViewportMouse_entityTags[var0];
-   }
-
-   @ObfuscatedName("s")
-   @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "1985144350"
-   )
-   static void method4845() {
-      WorldMapRegion.WorldMapRegion_cachedSprites.clear();
-   }
-
-   @ObfuscatedName("c")
-   @ObfuscatedSignature(
-      descriptor = "(B)V",
-      garbageValue = "9"
-   )
-   public static void method4843() {
-      PlayerComposition.PlayerAppearance_cachedModels.clear();
    }
 }

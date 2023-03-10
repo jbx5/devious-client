@@ -120,7 +120,7 @@ public interface ClientPacket
 
 	ClientPacket FRIEND_DELUSER();
 
-	ClientPacket IF_BUTTOND();
+	//ClientPacket IF_BUTTOND();
 
 	ClientPacket OPLOCE();
 
@@ -212,7 +212,7 @@ public interface ClientPacket
 				Map.entry(OPPLAYERT(), "OPPLAYERT"),
 				Map.entry(OPNPCT(), "OPNPCT"),
 				Map.entry(FRIEND_DELUSER(), "FRIEND_DELUSER"),
-				Map.entry(IF_BUTTOND(), "IF_BUTTOND"),
+				//Map.entry(IF_BUTTOND(), "IF_BUTTOND"),
 				Map.entry(OPLOCE(), "OPLOCE"),
 				Map.entry(OPNPCE(), "OPNPCE"),
 				Map.entry(EVENT_CAMERA_POSITION(), "EVENT_CAMERA_POSITION"),
