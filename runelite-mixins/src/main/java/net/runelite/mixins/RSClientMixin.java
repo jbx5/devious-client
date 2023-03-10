@@ -94,7 +94,6 @@ import net.runelite.api.events.NpcSpawned;
 import net.runelite.api.events.PlayerDespawned;
 import net.runelite.api.events.PlayerMenuOptionsChanged;
 import net.runelite.api.events.PlayerSpawned;
-import net.runelite.api.events.PostMenuSort;
 import net.runelite.api.events.PostStructComposition;
 import net.runelite.api.events.ResizeableChanged;
 import net.runelite.api.events.StatChanged;
@@ -138,7 +137,6 @@ import net.runelite.rs.api.RSFriendSystem;
 import net.runelite.rs.api.RSGameEngine;
 import net.runelite.rs.api.RSIndexedSprite;
 import net.runelite.rs.api.RSInterfaceParent;
-import net.runelite.rs.api.RSItemComposition;
 import net.runelite.rs.api.RSItemContainer;
 import net.runelite.rs.api.RSModelData;
 import net.runelite.rs.api.RSNPC;
@@ -2425,7 +2423,8 @@ public abstract class RSClientMixin implements RSClient
 
 	@Inject
 	@Override
-	public void removeIgnore(String friend, boolean confirmToJagex) {
+	public void removeIgnore(String friend, boolean confirmToJagex)
+	{
 		RSFriendSystem friendSystem = getFriendManager();
 		friendSystem.removeIgnore(friend, confirmToJagex);
 	}
