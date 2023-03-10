@@ -55,9 +55,9 @@ import net.runelite.client.util.ColorUtil;
 import net.runelite.client.util.ImageUtil;
 
 @PluginDescriptor(
-	name = "Poison",
-	description = "Tracks current damage values for Poison and Venom",
-	tags = {"combat", "poison", "venom", "heart", "hp"}
+		name = "Poison",
+		description = "Tracks current damage values for Poison and Venom",
+		tags = {"combat", "poison", "venom", "heart", "hp"}
 )
 public class PoisonPlugin extends Plugin
 {
@@ -144,7 +144,7 @@ public class PoisonPlugin extends Plugin
 	@Subscribe
 	public void onVarbitChanged(VarbitChanged event)
 	{
-		if (event.getVarpId() == VarPlayer.POISON)
+		if (event.getVarpId() == VarPlayer.POISON.getId())
 		{
 			final int poisonValue = event.getValue();
 			nextPoisonTick = Instant.now().plus(Duration.of(POISON_TICK_MILLIS, ChronoUnit.MILLIS));
@@ -185,7 +185,7 @@ public class PoisonPlugin extends Plugin
 
 			checkHealthIcon();
 		}
-		else if (event.getVarpId() == VarPlayer.DISEASE_VALUE)
+		else if (event.getVarpId() == VarPlayer.DISEASE_VALUE.getId())
 		{
 			checkHealthIcon();
 		}
@@ -249,10 +249,10 @@ public class PoisonPlugin extends Plugin
 		}
 
 		final BufferedImage splat = new BufferedImage(
-			rawSplat.getColorModel(),
-			rawSplat.copyData(null),
-			rawSplat.getColorModel().isAlphaPremultiplied(),
-			null);
+				rawSplat.getColorModel(),
+				rawSplat.copyData(null),
+				rawSplat.getColorModel().isAlphaPremultiplied(),
+				null);
 
 		final Graphics g = splat.getGraphics();
 		g.setFont(FontManager.getRunescapeSmallFont());
@@ -283,7 +283,7 @@ public class PoisonPlugin extends Plugin
 	String createTooltip()
 	{
 		String line1 = MessageFormat.format("Next {0} damage: {1}</br>Time until damage: {2}",
-			envenomed ? "venom" : "poison", ColorUtil.wrapWithColorTag(String.valueOf(lastDamage), Color.RED), getFormattedTime(nextPoisonTick));
+				envenomed ? "venom" : "poison", ColorUtil.wrapWithColorTag(String.valueOf(lastDamage), Color.RED), getFormattedTime(nextPoisonTick));
 		String line2 = envenomed ? "" : MessageFormat.format("</br>Time until cure: {0}", getFormattedTime(poisonNaturalCure));
 
 		return line1 + line2;
@@ -297,7 +297,7 @@ public class PoisonPlugin extends Plugin
 		}
 
 		final BufferedImage newHeart;
-		final int poison = client.getVarpValue(VarPlayer.POISON);
+		final int poison = client.getVarpValue(VarPlayer.IS_POISONED);
 
 		if (poison >= VENOM_THRESHOLD)
 		{

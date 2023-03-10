@@ -88,9 +88,9 @@ import net.runelite.client.util.Text;
 import org.apache.commons.lang3.ArrayUtils;
 
 @PluginDescriptor(
-	name = "Slayer",
-	description = "Show additional slayer task related information",
-	tags = {"combat", "notifications", "overlay", "tasks"}
+		name = "Slayer",
+		description = "Show additional slayer task related information",
+		tags = {"combat", "notifications", "overlay", "tasks"}
 )
 @Slf4j
 public class SlayerPlugin extends Plugin
@@ -181,13 +181,13 @@ public class SlayerPlugin extends Plugin
 		{
 			Color color = config.getTargetColor();
 			return HighlightedNpc.builder()
-				.npc(n)
-				.highlightColor(color)
-				.fillColor(ColorUtil.colorWithAlpha(color, color.getAlpha() / 12))
-				.hull(config.highlightHull())
-				.tile(config.highlightTile())
-				.outline(config.highlightOutline())
-				.build();
+					.npc(n)
+					.highlightColor(color)
+					.fillColor(ColorUtil.colorWithAlpha(color, color.getAlpha() / 12))
+					.hull(config.highlightHull())
+					.tile(config.highlightTile())
+					.outline(config.highlightOutline())
+					.build();
 
 		}
 		return null;
@@ -200,7 +200,7 @@ public class SlayerPlugin extends Plugin
 	}
 
 	@Override
-	protected void startUp()
+	protected void startUp() throws Exception
 	{
 		chatCommandManager.registerCommandAsync(TASK_COMMAND_STRING, this::taskLookup, this::taskSubmit);
 		npcOverlayService.registerHighlighter(isTarget);
@@ -229,7 +229,7 @@ public class SlayerPlugin extends Plugin
 	}
 
 	@Override
-	protected void shutDown()
+	protected void shutDown() throws Exception
 	{
 		chatCommandManager.unregisterCommand(TASK_COMMAND_STRING);
 		npcOverlayService.unregisterHighlighter(isTarget);
@@ -322,9 +322,9 @@ public class SlayerPlugin extends Plugin
 	{
 		int varpId = varbitChanged.getVarpId();
 		int varbitId = varbitChanged.getVarbitId();
-		if (varpId == VarPlayer.SLAYER_TASK_SIZE
-			|| varpId == VarPlayer.SLAYER_TASK_LOCATION
-			|| varpId == VarPlayer.SLAYER_TASK_CREATURE)
+		if (varpId == VarPlayer.SLAYER_TASK_SIZE.getId()
+				|| varpId == VarPlayer.SLAYER_TASK_LOCATION.getId()
+				|| varpId == VarPlayer.SLAYER_TASK_CREATURE.getId())
 		{
 			clientThread.invokeLater(this::updateTask);
 		}
@@ -362,12 +362,12 @@ public class SlayerPlugin extends Plugin
 			if (taskId == 98 /* Bosses, from [proc,helper_slayer_current_assignment] */)
 			{
 				taskName = client.getEnum(EnumID.SLAYER_TASK_BOSS)
-					.getStringValue(client.getVarbitValue(Varbits.SLAYER_TASK_BOSS));
+						.getStringValue(client.getVarbitValue(Varbits.SLAYER_TASK_BOSS));
 			}
 			else
 			{
 				taskName = client.getEnum(EnumID.SLAYER_TASK_CREATURE)
-					.getStringValue(taskId);
+						.getStringValue(taskId);
 			}
 
 			int areaId = client.getVarpValue(VarPlayer.SLAYER_TASK_LOCATION);
@@ -375,7 +375,7 @@ public class SlayerPlugin extends Plugin
 			if (areaId > 0)
 			{
 				taskLocation = client.getEnum(EnumID.SLAYER_TASK_LOCATION)
-					.getStringValue(areaId);
+						.getStringValue(areaId);
 			}
 
 			if (loginFlag)
@@ -492,14 +492,14 @@ public class SlayerPlugin extends Plugin
 		}
 
 		final String name = composition.getName()
-			.replace('\u00A0', ' ')
-			.toLowerCase();
+				.replace('\u00A0', ' ')
+				.toLowerCase();
 
 		for (Pattern target : targetNames)
 		{
 			final Matcher targetMatcher = target.matcher(name);
 			if (targetMatcher.find()
-				&& (ArrayUtils.contains(composition.getActions(), "Attack")
+					&& (ArrayUtils.contains(composition.getActions(), "Attack")
 					// Pick action is for zygomite-fungi
 					|| ArrayUtils.contains(composition.getActions(), "Pick")))
 			{
@@ -516,8 +516,8 @@ public class SlayerPlugin extends Plugin
 		if (task != null)
 		{
 			Arrays.stream(task.getTargetNames())
-				.map(SlayerPlugin::targetNamePattern)
-				.forEach(targetNames::add);
+					.map(SlayerPlugin::targetNamePattern)
+					.forEach(targetNames::add);
 
 			targetNames.add(targetNamePattern(taskName.replaceAll("s$", "")));
 		}
@@ -591,15 +591,15 @@ public class SlayerPlugin extends Plugin
 		}
 
 		taskTooltip += ColorUtil.wrapWithColorTag("Pts:", Color.YELLOW)
-			+ " %s</br>"
-			+ ColorUtil.wrapWithColorTag("Streak:", Color.YELLOW)
-			+ " %s";
+				+ " %s</br>"
+				+ ColorUtil.wrapWithColorTag("Streak:", Color.YELLOW)
+				+ " %s";
 
 		if (initialAmount > 0)
 		{
 			taskTooltip += "</br>"
-				+ ColorUtil.wrapWithColorTag("Start:", Color.YELLOW)
-				+ " " + initialAmount;
+					+ ColorUtil.wrapWithColorTag("Start:", Color.YELLOW)
+					+ " " + initialAmount;
 		}
 
 		counter = new TaskCounter(taskImg, this, amount);
@@ -636,7 +636,7 @@ public class SlayerPlugin extends Plugin
 		else
 		{
 			player = Text.removeTags(chatMessage.getName())
-				.replace('\u00A0', ' ');
+					.replace('\u00A0', ' ');
 		}
 
 		net.runelite.http.api.chat.Task task;
@@ -651,8 +651,8 @@ public class SlayerPlugin extends Plugin
 		}
 
 		if (TASK_STRING_VALIDATION.matcher(task.getTask()).find() || task.getTask().length() > TASK_STRING_MAX_LENGTH ||
-			TASK_STRING_VALIDATION.matcher(task.getLocation()).find() || task.getLocation().length() > TASK_STRING_MAX_LENGTH ||
-			Task.getTask(task.getTask()) == null || !isValidLocation(task.getLocation()))
+				TASK_STRING_VALIDATION.matcher(task.getLocation()).find() || task.getLocation().length() > TASK_STRING_MAX_LENGTH ||
+				Task.getTask(task.getTask()) == null || !isValidLocation(task.getLocation()))
 		{
 			log.debug("Validation failed for task name or location: {}", task);
 			return;
@@ -677,11 +677,11 @@ public class SlayerPlugin extends Plugin
 		}
 
 		String response = new ChatMessageBuilder()
-			.append(ChatColorType.NORMAL)
-			.append("Slayer Task: ")
-			.append(ChatColorType.HIGHLIGHT)
-			.append(sb.toString())
-			.build();
+				.append(ChatColorType.NORMAL)
+				.append("Slayer Task: ")
+				.append(ChatColorType.HIGHLIGHT)
+				.append(sb.toString())
+				.build();
 
 		final MessageNode messageNode = chatMessage.getMessageNode();
 		messageNode.setRuneLiteFormatMessage(response);
