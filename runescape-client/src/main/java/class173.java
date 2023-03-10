@@ -3,52 +3,50 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fv")
+@ObfuscatedName("gx")
 public class class173 {
-   @ObfuscatedName("s")
-   public String field1875;
-   @ObfuscatedName("z")
-   public float[] field1880;
-   @ObfuscatedName("j")
+   @ObfuscatedName("ws")
    @ObfuscatedGetter(
-      intValue = -1278868647
+      intValue = -1905199499
    )
-   public int field1876;
-   @ObfuscatedName("i")
-   @ObfuscatedGetter(
-      intValue = 1484170657
+   @Export("foundItemIndex")
+   static int foundItemIndex;
+   @ObfuscatedName("aj")
+   @ObfuscatedSignature(
+      descriptor = "Leo;"
    )
-   public int field1878;
-   @ObfuscatedName("n")
-   @ObfuscatedGetter(
-      intValue = -1927653763
-   )
-   public int field1879;
+   public UrlRequest field1830;
+   @ObfuscatedName("al")
+   public float[] field1829;
    // $FF: synthetic field
    @ObfuscatedSignature(
-      descriptor = "Lfs;"
+      descriptor = "Lgs;"
    )
-   final class166 this$0;
+   final class167 this$0;
 
    @ObfuscatedSignature(
-      descriptor = "(Lfs;)V"
+      descriptor = "(Lgs;)V"
    )
-   class173(class166 var1) {
+   class173(class167 var1) {
       this.this$0 = var1;
-      this.field1880 = new float[4];
-      this.field1876 = 1;
-      this.field1878 = 1;
-      this.field1879 = 0;
+      this.field1829 = new float[4];
    }
 
-   @ObfuscatedName("li")
+   @ObfuscatedName("ak")
    @ObfuscatedSignature(
-      descriptor = "(Lkz;I)I",
-      garbageValue = "-182721901"
+      descriptor = "(Lmy;IB)V",
+      garbageValue = "1"
    )
-   @Export("getWidgetFlags")
-   static int getWidgetFlags(Widget var0) {
-      IntegerNode var1 = (IntegerNode)Client.widgetFlags.get((long)var0.childIndex + ((long)var0.id << 32));
-      return var1 != null ? var1.integer : var0.flags;
+   @Export("Widget_setKeyIgnoreHeld")
+   static final void Widget_setKeyIgnoreHeld(Widget var0, int var1) {
+      if (var0.field3575 == null) {
+         throw new RuntimeException();
+      } else {
+         if (var0.field3670 == null) {
+            var0.field3670 = new int[var0.field3575.length];
+         }
+
+         var0.field3670[var1] = Integer.MAX_VALUE;
+      }
    }
 }

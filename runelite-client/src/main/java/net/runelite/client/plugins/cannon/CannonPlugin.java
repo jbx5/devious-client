@@ -66,9 +66,9 @@ import net.runelite.client.ui.overlay.OverlayManager;
 import net.runelite.client.ui.overlay.infobox.InfoBoxManager;
 
 @PluginDescriptor(
-	name = "Cannon",
-	description = "Show information about cannon placement and/or amount of cannonballs",
-	tags = {"combat", "notifications", "ranged", "overlay"}
+		name = "Cannon",
+		description = "Show information about cannon placement and/or amount of cannonballs",
+		tags = {"combat", "notifications", "ranged", "overlay"}
 )
 @Slf4j
 public class CannonPlugin extends Plugin
@@ -255,7 +255,7 @@ public class CannonPlugin extends Plugin
 		if ((gameObject.getId() == ObjectID.CANNON_BASE || gameObject.getId() == ObjectID.CANNON_BASE_43029) && !cannonPlaced)
 		{
 			if (localPlayer.getWorldLocation().distanceTo(gameObject.getWorldLocation()) <= 2
-				&& localPlayer.getAnimation() == AnimationID.BURYING_BONES)
+					&& localPlayer.getAnimation() == AnimationID.BURYING_BONES)
 			{
 				cannonPosition = buildCannonWorldArea(gameObject.getWorldLocation());
 				cannonWorld = client.getWorld();
@@ -323,8 +323,8 @@ public class CannonPlugin extends Plugin
 			firstCannonLoad = true;
 		}
 		else if (event.getMessage().contains("You pick up the cannon")
-			|| event.getMessage().contains("Your cannon has decayed. Speak to Nulodion to get a new one!")
-			|| event.getMessage().contains("Your cannon has been destroyed!"))
+				|| event.getMessage().contains("Your cannon has decayed. Speak to Nulodion to get a new one!")
+				|| event.getMessage().contains("Your cannon has been destroyed!"))
 		{
 			cannonPlaced = false;
 			removeCounter();

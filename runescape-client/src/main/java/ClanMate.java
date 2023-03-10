@@ -3,21 +3,18 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("og")
+@ObfuscatedName("po")
 @Implements("ClanMate")
 public class ClanMate extends Buddy {
-   @ObfuscatedName("dc")
-   @Export("mouseCam")
-   static boolean mouseCam;
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
-      descriptor = "Lot;"
+      descriptor = "Lpf;"
    )
    @Export("friend")
    TriBool friend;
-   @ObfuscatedName("w")
+   @ObfuscatedName("al")
    @ObfuscatedSignature(
-      descriptor = "Lot;"
+      descriptor = "Lpf;"
    )
    @Export("ignored")
    TriBool ignored;
@@ -27,20 +24,20 @@ public class ClanMate extends Buddy {
       this.ignored = TriBool.TriBool_unknown;
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "-393311077"
+      descriptor = "(B)V",
+      garbageValue = "124"
    )
    @Export("clearIsFriend")
    void clearIsFriend() {
       this.friend = TriBool.TriBool_unknown;
    }
 
-   @ObfuscatedName("v")
+   @ObfuscatedName("ac")
    @ObfuscatedSignature(
       descriptor = "(B)Z",
-      garbageValue = "-25"
+      garbageValue = "0"
    )
    @Export("isFriend")
    public final boolean isFriend() {
@@ -51,30 +48,30 @@ public class ClanMate extends Buddy {
       return this.friend == TriBool.TriBool_true;
    }
 
-   @ObfuscatedName("s")
+   @ObfuscatedName("ap")
    @ObfuscatedSignature(
-      descriptor = "(B)V",
-      garbageValue = "16"
+      descriptor = "(I)V",
+      garbageValue = "713912709"
    )
    @Export("fillIsFriend")
    void fillIsFriend() {
-      this.friend = WorldMapElement.friendSystem.friendsList.contains(super.username) ? TriBool.TriBool_true : TriBool.TriBool_false;
+      this.friend = class6.friendSystem.friendsList.contains(super.username) ? TriBool.TriBool_true : TriBool.TriBool_false;
    }
 
-   @ObfuscatedName("n")
+   @ObfuscatedName("ar")
    @ObfuscatedSignature(
-      descriptor = "(B)V",
-      garbageValue = "102"
+      descriptor = "(I)V",
+      garbageValue = "613175438"
    )
    @Export("clearIsIgnored")
    void clearIsIgnored() {
       this.ignored = TriBool.TriBool_unknown;
    }
 
-   @ObfuscatedName("r")
+   @ObfuscatedName("ak")
    @ObfuscatedSignature(
-      descriptor = "(I)Z",
-      garbageValue = "1204193663"
+      descriptor = "(B)Z",
+      garbageValue = "63"
    )
    @Export("isIgnored")
    public final boolean isIgnored() {
@@ -85,13 +82,28 @@ public class ClanMate extends Buddy {
       return this.ignored == TriBool.TriBool_true;
    }
 
-   @ObfuscatedName("b")
+   @ObfuscatedName("ax")
    @ObfuscatedSignature(
-      descriptor = "(B)V",
-      garbageValue = "-67"
+      descriptor = "(I)V",
+      garbageValue = "193686662"
    )
    @Export("fillIsIgnored")
    void fillIsIgnored() {
-      this.ignored = WorldMapElement.friendSystem.ignoreList.contains(super.username) ? TriBool.TriBool_true : TriBool.TriBool_false;
+      this.ignored = class6.friendSystem.ignoreList.contains(super.username) ? TriBool.TriBool_true : TriBool.TriBool_false;
+   }
+
+   @ObfuscatedName("jy")
+   @ObfuscatedSignature(
+      descriptor = "(B)V",
+      garbageValue = "37"
+   )
+   @Export("addCancelMenuEntry")
+   static void addCancelMenuEntry() {
+      class60.method1159();
+      Client.menuActions[0] = "Cancel";
+      Client.menuTargets[0] = "";
+      Client.menuOpcodes[0] = 1006;
+      Client.menuShiftClick[0] = false;
+      Client.menuOptionsCount = 1;
    }
 }

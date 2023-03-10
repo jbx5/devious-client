@@ -3,36 +3,22 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cs")
+@ObfuscatedName("dk")
 @Implements("ItemContainer")
 public class ItemContainer extends Node {
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
-      descriptor = "Lqg;"
+      descriptor = "Lrh;"
    )
    @Export("itemContainers")
    static NodeHashTable itemContainers = new NodeHashTable(32);
-   @ObfuscatedName("w")
+   @ObfuscatedName("al")
    @Export("ids")
    int[] ids = new int[]{-1};
-   @ObfuscatedName("v")
+   @ObfuscatedName("ac")
    @Export("quantities")
    int[] quantities = new int[]{0};
 
    ItemContainer() {
-   }
-
-   @ObfuscatedName("s")
-   @ObfuscatedSignature(
-      descriptor = "(IB)Lde;",
-      garbageValue = "95"
-   )
-   static class123 method2292(int var0) {
-      class123 var1 = (class123)class4.findEnumerated(UrlRequester.method2852(), var0);
-      if (var1 == null) {
-         var1 = class123.field1502;
-      }
-
-      return var1;
    }
 }

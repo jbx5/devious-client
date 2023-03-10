@@ -1,114 +1,72 @@
 import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("de")
-public enum class123 implements MouseWheel {
-   @ObfuscatedName("f")
-   @ObfuscatedSignature(
-      descriptor = "Lde;"
-   )
-   field1502(0, 0),
-   @ObfuscatedName("w")
-   @ObfuscatedSignature(
-      descriptor = "Lde;"
-   )
-   field1504(1, 1),
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      descriptor = "Lde;"
-   )
-   field1503(2, 2),
-   @ObfuscatedName("s")
-   @ObfuscatedSignature(
-      descriptor = "Lde;"
-   )
-   field1506(3, 3),
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      descriptor = "Lde;"
-   )
-   field1505(4, 4);
+@ObfuscatedName("eh")
+public class class123 {
+   @ObfuscatedName("ab")
+   public static final float field1459 = Math.ulp(1.0F);
+   @ObfuscatedName("an")
+   public static final float field1457;
+   @ObfuscatedName("ao")
+   static float[] field1460;
+   @ObfuscatedName("av")
+   static float[] field1461;
+   @ObfuscatedName("ad")
+   @Export("Widget_loadedInterfaces")
+   static boolean[] Widget_loadedInterfaces;
+   @ObfuscatedName("jk")
+   @Export("regionLandArchiveIds")
+   static int[] regionLandArchiveIds;
 
-   @ObfuscatedName("j")
-   @ObfuscatedGetter(
-      intValue = -677297709
-   )
-   final int field1508;
-   @ObfuscatedName("i")
-   @ObfuscatedGetter(
-      intValue = 1512847447
-   )
-   final int field1507;
-
-   class123(int var3, int var4) {
-      this.field1508 = var3;
-      this.field1507 = var4;
+   static {
+      field1457 = 2.0F * field1459;
+      field1460 = new float[4];
+      field1461 = new float[5];
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
-      descriptor = "(B)I",
-      garbageValue = "3"
+      descriptor = "(Lne;Lne;Lne;Lne;I)V",
+      garbageValue = "-354426867"
    )
-   @Export("rsOrdinal")
-   public int rsOrdinal() {
-      return this.field1507;
+   public static void method2911(AbstractArchive var0, AbstractArchive var1, AbstractArchive var2, AbstractArchive var3) {
+      MouseRecorder.Widget_archive = var0;
+      class211.field2337 = var1;
+      MusicPatch.Widget_spritesArchive = var2;
+      AbstractWorldMapData.Widget_fontsArchive = var3;
+      class155.Widget_interfaceComponents = new Widget[MouseRecorder.Widget_archive.getGroupCount()][];
+      Widget_loadedInterfaces = new boolean[MouseRecorder.Widget_archive.getGroupCount()];
    }
 
-   @ObfuscatedName("k")
+   @ObfuscatedName("al")
    @ObfuscatedSignature(
-      descriptor = "(III)V",
-      garbageValue = "-1543055552"
+      descriptor = "(IB)Lhd;",
+      garbageValue = "-108"
    )
-   public static final void method3031(int var0, int var1) {
-      ViewportMouse.ViewportMouse_x = var0;
-      ViewportMouse.ViewportMouse_y = var1;
-      ViewportMouse.ViewportMouse_isInViewport = true;
-      ViewportMouse.ViewportMouse_entityCount = 0;
-      ViewportMouse.ViewportMouse_false0 = false;
+   @Export("WorldMapElement_get")
+   public static WorldMapElement WorldMapElement_get(int var0) {
+      return var0 >= 0 && var0 < WorldMapElement.WorldMapElement_cached.length && WorldMapElement.WorldMapElement_cached[var0] != null ? WorldMapElement.WorldMapElement_cached[var0] : new WorldMapElement(var0);
    }
 
-   @ObfuscatedName("m")
-   @ObfuscatedSignature(
-      descriptor = "(IIIII)I",
-      garbageValue = "-1240645994"
-   )
-   static final int method3037(int var0, int var1, int var2, int var3) {
-      int var4 = 65536 - Rasterizer3D.Rasterizer3D_cosine[var2 * 1024 / var3] >> 1;
-      return ((65536 - var4) * var0 >> 16) + (var4 * var1 >> 16);
-   }
-
-   @ObfuscatedName("km")
+   @ObfuscatedName("ig")
    @ObfuscatedSignature(
       descriptor = "(I)V",
-      garbageValue = "-636311920"
+      garbageValue = "1101388613"
    )
-   static void method3032() {
-      for(InterfaceParent var0 = (InterfaceParent)Client.interfaceParents.first(); var0 != null; var0 = (InterfaceParent)Client.interfaceParents.next()) {
-         int var1 = var0.group;
-         if (class153.loadInterface(var1)) {
-            boolean var2 = true;
-            Widget[] var3 = WorldMapLabel.Widget_interfaceComponents[var1];
-
-            int var4;
-            for(var4 = 0; var4 < var3.length; ++var4) {
-               if (var3[var4] != null) {
-                  var2 = var3[var4].isIf3;
-                  break;
-               }
-            }
-
-            if (!var2) {
-               var4 = (int)var0.key;
-               Widget var5 = class133.getWidget(var4);
-               if (var5 != null) {
-                  LoginScreenAnimation.invalidateWidget(var5);
-               }
-            }
-         }
+   static void method2923() {
+      for(class207 var0 = (class207)Client.field692.last(); var0 != null; var0 = (class207)Client.field692.previous()) {
+         var0.remove();
       }
 
+   }
+
+   @ObfuscatedName("kw")
+   @ObfuscatedSignature(
+      descriptor = "(Ljava/lang/String;Ljava/lang/String;IIIIIB)V",
+      garbageValue = "7"
+   )
+   static final void method2924(String var0, String var1, int var2, int var3, int var4, int var5, int var6) {
+      class351.insertMenuItem(var0, var1, var2, var3, var4, var5, var6, false);
    }
 }

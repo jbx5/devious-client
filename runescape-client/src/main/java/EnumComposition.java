@@ -3,67 +3,66 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("gq")
+@ObfuscatedName("hg")
 @Implements("EnumComposition")
 public class EnumComposition extends DualNode {
-   @ObfuscatedName("vc")
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
-      descriptor = "Lmk;"
-   )
-   @Export("grandExchangeEvents")
-   static GrandExchangeEvents grandExchangeEvents;
-   @ObfuscatedName("f")
-   @ObfuscatedSignature(
-      descriptor = "Lln;"
+      descriptor = "Lne;"
    )
    @Export("EnumDefinition_archive")
    static AbstractArchive EnumDefinition_archive;
-   @ObfuscatedName("w")
+   @ObfuscatedName("al")
    @ObfuscatedSignature(
-      descriptor = "Lja;"
+      descriptor = "Lkt;"
    )
    @Export("EnumDefinition_cached")
    static EvictingDualNodeHashTable EnumDefinition_cached = new EvictingDualNodeHashTable(64);
-   @ObfuscatedName("v")
+   @ObfuscatedName("jx")
+   @ObfuscatedSignature(
+      descriptor = "[Lsn;"
+   )
+   @Export("headIconHintSprites")
+   static SpritePixels[] headIconHintSprites;
+   @ObfuscatedName("ac")
    @Export("inputType")
    public char inputType;
-   @ObfuscatedName("s")
+   @ObfuscatedName("ab")
    @Export("outputType")
    public char outputType;
-   @ObfuscatedName("z")
+   @ObfuscatedName("an")
    @Export("defaultStr")
    public String defaultStr = "null";
-   @ObfuscatedName("j")
+   @ObfuscatedName("ao")
    @ObfuscatedGetter(
-      intValue = 1053984563
+      intValue = -1280965073
    )
    @Export("defaultInt")
    public int defaultInt;
-   @ObfuscatedName("i")
+   @ObfuscatedName("av")
    @ObfuscatedGetter(
-      intValue = -1265657645
+      intValue = -363214541
    )
    @Export("outputCount")
    public int outputCount = 0;
-   @ObfuscatedName("n")
+   @ObfuscatedName("aq")
    @Export("keys")
    public int[] keys;
-   @ObfuscatedName("l")
+   @ObfuscatedName("ap")
    @Export("intVals")
    public int[] intVals;
-   @ObfuscatedName("k")
+   @ObfuscatedName("ar")
    @Export("strVals")
    public String[] strVals;
 
    EnumComposition() {
    }
 
-   @ObfuscatedName("v")
+   @ObfuscatedName("ac")
    @ObfuscatedSignature(
-      descriptor = "(Lrd;I)V",
-      garbageValue = "-2126248770"
+      descriptor = "(Lsy;I)V",
+      garbageValue = "1329154788"
    )
    @Export("decode")
    void decode(Buffer var1) {
@@ -77,10 +76,10 @@ public class EnumComposition extends DualNode {
       }
    }
 
-   @ObfuscatedName("s")
+   @ObfuscatedName("ab")
    @ObfuscatedSignature(
-      descriptor = "(Lrd;II)V",
-      garbageValue = "-225365971"
+      descriptor = "(Lsy;IB)V",
+      garbageValue = "-35"
    )
    @Export("decodeNext")
    void decodeNext(Buffer var1, int var2) {
@@ -117,172 +116,126 @@ public class EnumComposition extends DualNode {
 
    }
 
-   @ObfuscatedName("z")
+   @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "(B)I",
-      garbageValue = "59"
+      descriptor = "(I)I",
+      garbageValue = "-548958041"
    )
    @Export("size")
    public int size() {
       return this.outputCount;
    }
 
-   @ObfuscatedName("a")
+   @ObfuscatedName("hb")
    @ObfuscatedSignature(
-      descriptor = "(ILba;ZI)I",
-      garbageValue = "1103882701"
+      descriptor = "(I)V",
+      garbageValue = "-297669766"
    )
-   static int method3711(int var0, Script var1, boolean var2) {
-      Widget var3 = class133.getWidget(Interpreter.Interpreter_intStack[--class302.Interpreter_intStackSize]);
-      if (var0 == ScriptOpcodes.IF_GETSCROLLX) {
-         Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.scrollX;
-         return 1;
-      } else if (var0 == ScriptOpcodes.IF_GETSCROLLY) {
-         Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.scrollY;
-         return 1;
-      } else if (var0 == ScriptOpcodes.IF_GETTEXT) {
-         Interpreter.Interpreter_stringStack[++class20.Interpreter_stringStackSize - 1] = var3.text;
-         return 1;
-      } else if (var0 == ScriptOpcodes.IF_GETSCROLLWIDTH) {
-         Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.scrollWidth;
-         return 1;
-      } else if (var0 == ScriptOpcodes.IF_GETSCROLLHEIGHT) {
-         Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.scrollHeight;
-         return 1;
-      } else if (var0 == ScriptOpcodes.IF_GETMODELZOOM) {
-         Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.modelZoom;
-         return 1;
-      } else if (var0 == ScriptOpcodes.IF_GETMODELANGLE_X) {
-         Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.modelAngleX;
-         return 1;
-      } else if (var0 == ScriptOpcodes.IF_GETMODELANGLE_Z) {
-         Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.modelAngleZ;
-         return 1;
-      } else if (var0 == ScriptOpcodes.IF_GETMODELANGLE_Y) {
-         Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.modelAngleY;
-         return 1;
-      } else if (var0 == ScriptOpcodes.IF_GETTRANS) {
-         Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.transparencyTop;
-         return 1;
-      } else if (var0 == 2610) {
-         Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.transparencyBot;
-         return 1;
-      } else if (var0 == ScriptOpcodes.IF_GETCOLOUR) {
-         Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.color;
-         return 1;
-      } else if (var0 == ScriptOpcodes.IF_GETFILLCOLOUR) {
-         Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.color2;
-         return 1;
-      } else if (var0 == 2613) {
-         Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.fillMode.rsOrdinal();
-         return 1;
-      } else if (var0 == ScriptOpcodes.IF_GETMODELTRANSPARENT) {
-         Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.modelTransparency ? 1 : 0;
-         return 1;
-      } else {
-         class302 var4;
-         if (var0 == 2617) {
-            var4 = var3.method6226();
-            Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var4 != null ? var4.field3465 : 0;
-         }
-
-         if (var0 == 2618) {
-            var4 = var3.method6226();
-            Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var4 != null ? var4.field3470 : 0;
-            return 1;
-         } else {
-            class307 var7;
-            if (var0 == 2619) {
-               var7 = var3.method6235();
-               Interpreter.Interpreter_stringStack[++class20.Interpreter_stringStackSize - 1] = var7 != null ? var7.method6128().method7078() : "";
-               return 1;
-            } else if (var0 == 2620) {
-               var4 = var3.method6226();
-               Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var4 != null ? var4.field3467 : 0;
-               return 1;
-            } else if (var0 == 2621) {
-               var7 = var3.method6235();
-               Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var7 != null ? var7.method5950() : 0;
-               return 1;
-            } else if (var0 == 2622) {
-               var7 = var3.method6235();
-               Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var7 != null ? var7.method5983() : 0;
-               return 1;
-            } else if (var0 == 2623) {
-               var7 = var3.method6235();
-               Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var7 != null ? var7.method5984() : 0;
-               return 1;
-            } else if (var0 == 2624) {
-               var7 = var3.method6235();
-               Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var7 != null && var7.method5974() ? 1 : 0;
-               return 1;
-            } else if (var0 != 2625) {
-               if (var0 == 2626) {
-                  var7 = var3.method6235();
-                  Interpreter.Interpreter_stringStack[++class20.Interpreter_stringStackSize - 1] = var7 != null ? var7.method5973().method7307() : "";
-                  return 1;
-               } else if (var0 == 2627) {
-                  var7 = var3.method6235();
-                  int var5 = var7 != null ? var7.method5978() : 0;
-                  int var6 = var7 != null ? var7.method6145() : 0;
-                  Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = Math.min(var5, var6);
-                  Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = Math.max(var5, var6);
-                  return 1;
-               } else if (var0 == 2628) {
-                  var7 = var3.method6235();
-                  Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var7 != null ? var7.method6145() : 0;
-                  return 1;
-               } else if (var0 == 2629) {
-                  var7 = var3.method6235();
-                  Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var7 != null ? var7.method5985() : 0;
-                  return 1;
-               } else if (var0 == 2630) {
-                  var7 = var3.method6235();
-                  Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var7 != null ? var7.method5948() : 0;
-                  return 1;
-               } else if (var0 == 2631) {
-                  var7 = var3.method6235();
-                  Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var7 != null ? var7.method6058() : 0;
-                  return 1;
-               } else if (var0 == 2632) {
-                  var7 = var3.method6235();
-                  Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var7 != null ? var7.method5987() : 0;
-                  return 1;
-               } else {
-                  class27 var8;
-                  if (var0 == 2633) {
-                     var8 = var3.method6227();
-                     Interpreter.Interpreter_intStack[class302.Interpreter_intStackSize - 1] = var8 != null ? var8.method393(Interpreter.Interpreter_intStack[class302.Interpreter_intStackSize - 1]) : 0;
-                     return 1;
-                  } else if (var0 == 2634) {
-                     var8 = var3.method6227();
-                     Interpreter.Interpreter_intStack[class302.Interpreter_intStackSize - 1] = var8 != null ? var8.method394((char)Interpreter.Interpreter_intStack[class302.Interpreter_intStackSize - 1]) : 0;
-                     return 1;
-                  } else {
-                     return 2;
-                  }
-               }
-            } else {
-               var7 = var3.method6235();
-               Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var7 != null && var7.method5954() ? 1 : 0;
-               return 1;
-            }
-         }
+   @Export("playPcmPlayers")
+   static final void playPcmPlayers() {
+      if (ViewportMouse.pcmPlayer1 != null) {
+         ViewportMouse.pcmPlayer1.run();
       }
+
+      if (Interpreter.pcmPlayer0 != null) {
+         Interpreter.pcmPlayer0.run();
+      }
+
    }
 
-   @ObfuscatedName("kk")
+   @ObfuscatedName("hc")
    @ObfuscatedSignature(
-      descriptor = "(II)Z",
-      garbageValue = "1234070189"
+      descriptor = "(I)V",
+      garbageValue = "323203445"
    )
-   static boolean method3710(int var0) {
-      for(int var1 = 0; var1 < Client.field759; ++var1) {
-         if (Client.field745[var1] == var0) {
-            return true;
+   static final void method3652() {
+      for(int var0 = 0; var0 < Client.soundEffectCount; ++var0) {
+         int var10002 = Client.queuedSoundEffectDelays[var0]--;
+         if (Client.queuedSoundEffectDelays[var0] >= -10) {
+            SoundEffect var1 = Client.soundEffects[var0];
+            if (var1 == null) {
+               Object var10000 = null;
+               var1 = SoundEffect.readSoundEffect(class175.field1841, Client.soundEffectIds[var0], 0);
+               if (var1 == null) {
+                  continue;
+               }
+
+               int[] var13 = Client.queuedSoundEffectDelays;
+               var13[var0] += var1.calculateDelay();
+               Client.soundEffects[var0] = var1;
+            }
+
+            if (Client.queuedSoundEffectDelays[var0] < 0) {
+               int var2;
+               if (Client.soundLocations[var0] != 0) {
+                  int var3 = (Client.soundLocations[var0] & 255) * 128;
+                  int var4 = Client.soundLocations[var0] >> 16 & 255;
+                  int var5 = var4 * 128 + 64 - BuddyRankComparator.localPlayer.x;
+                  if (var5 < 0) {
+                     var5 = -var5;
+                  }
+
+                  int var6 = Client.soundLocations[var0] >> 8 & 255;
+                  int var7 = var6 * 128 + 64 - BuddyRankComparator.localPlayer.y;
+                  if (var7 < 0) {
+                     var7 = -var7;
+                  }
+
+                  int var8 = var7 + var5 - 128;
+                  if (var8 > var3) {
+                     Client.queuedSoundEffectDelays[var0] = -100;
+                     continue;
+                  }
+
+                  if (var8 < 0) {
+                     var8 = 0;
+                  }
+
+                  var2 = (var3 - var8) * WorldMapSectionType.clientPreferences.method2463() / var3;
+               } else {
+                  var2 = WorldMapSectionType.clientPreferences.method2442();
+               }
+
+               if (var2 > 0) {
+                  RawSound var9 = var1.toRawSound().resample(TaskHandler.decimator);
+                  RawPcmStream var10 = RawPcmStream.createRawPcmStream(var9, 100, var2);
+                  var10.setNumLoops(Client.queuedSoundEffectLoops[var0] - 1);
+                  class323.pcmStreamMixer.addSubStream(var10);
+               }
+
+               Client.queuedSoundEffectDelays[var0] = -100;
+            }
+         } else {
+            --Client.soundEffectCount;
+
+            for(int var11 = var0; var11 < Client.soundEffectCount; ++var11) {
+               Client.soundEffectIds[var11] = Client.soundEffectIds[var11 + 1];
+               Client.soundEffects[var11] = Client.soundEffects[var11 + 1];
+               Client.queuedSoundEffectLoops[var11] = Client.queuedSoundEffectLoops[var11 + 1];
+               Client.queuedSoundEffectDelays[var11] = Client.queuedSoundEffectDelays[var11 + 1];
+               Client.soundLocations[var11] = Client.soundLocations[var11 + 1];
+            }
+
+            --var0;
          }
       }
 
-      return false;
+      if (Client.playingJingle) {
+         boolean var12;
+         if (class293.musicPlayerStatus != 0) {
+            var12 = true;
+         } else {
+            var12 = class293.midiPcmStream.isReady();
+         }
+
+         if (!var12) {
+            if (WorldMapSectionType.clientPreferences.method2440() != 0 && Client.currentTrackGroupId != -1) {
+               class163.method3352(class308.archive6, Client.currentTrackGroupId, 0, WorldMapSectionType.clientPreferences.method2440(), false);
+            }
+
+            Client.playingJingle = false;
+         }
+      }
+
    }
 }

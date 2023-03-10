@@ -3,30 +3,30 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ja")
+@ObfuscatedName("kt")
 @Implements("EvictingDualNodeHashTable")
 public final class EvictingDualNodeHashTable {
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
-      descriptor = "Lpi;"
+      descriptor = "Lqk;"
    )
    @Export("dualNode")
    DualNode dualNode = new DualNode();
-   @ObfuscatedName("w")
+   @ObfuscatedName("al")
    @Export("capacity")
    int capacity;
-   @ObfuscatedName("v")
+   @ObfuscatedName("ac")
    @Export("remainingCapacity")
    int remainingCapacity;
-   @ObfuscatedName("s")
+   @ObfuscatedName("ab")
    @ObfuscatedSignature(
-      descriptor = "Lqu;"
+      descriptor = "Lrz;"
    )
    @Export("hashTable")
    IterableNodeHashTable hashTable;
-   @ObfuscatedName("z")
+   @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "Lmc;"
+      descriptor = "Lnh;"
    )
    @Export("deque")
    IterableDualNodeQueue deque = new IterableDualNodeQueue();
@@ -42,9 +42,9 @@ public final class EvictingDualNodeHashTable {
       this.hashTable = new IterableNodeHashTable(var2);
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
-      descriptor = "(J)Lpi;"
+      descriptor = "(J)Lqk;"
    )
    @Export("get")
    public DualNode get(long var1) {
@@ -56,7 +56,7 @@ public final class EvictingDualNodeHashTable {
       return var3;
    }
 
-   @ObfuscatedName("w")
+   @ObfuscatedName("al")
    @Export("remove")
    public void remove(long var1) {
       DualNode var3 = (DualNode)this.hashTable.get(var1);
@@ -68,9 +68,9 @@ public final class EvictingDualNodeHashTable {
 
    }
 
-   @ObfuscatedName("v")
+   @ObfuscatedName("ac")
    @ObfuscatedSignature(
-      descriptor = "(Lpi;J)V"
+      descriptor = "(Lqk;J)V"
    )
    @Export("put")
    public void put(DualNode var1, long var2) {
@@ -91,7 +91,7 @@ public final class EvictingDualNodeHashTable {
       this.deque.add(var1);
    }
 
-   @ObfuscatedName("s")
+   @ObfuscatedName("ab")
    @Export("clear")
    public void clear() {
       this.deque.clear();

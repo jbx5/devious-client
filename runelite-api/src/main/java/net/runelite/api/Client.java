@@ -2037,33 +2037,9 @@ public interface Client extends OAuthApi, GameEngine
 	void checkClickbox(Model model, int orientation, int pitchSin, int pitchCos, int yawSin, int yawCos, int x, int y, int z, long hash);
 
 	/**
-	 * Get the if1 widget whose item is being dragged
-	 */
-	@Deprecated
-	Widget getIf1DraggedWidget();
-
-	/**
-	 * Get the item index of the item being dragged on an if1 widget
-	 */
-	@Deprecated
-	int getIf1DraggedItemIndex();
-
-	/**
 	 * Sets if a widget is in target mode
 	 */
 	void setSpellSelected(boolean selected);
-
-	/**
-	 * @deprecated use {@link #getSelectedWidget()} instead.
-	 */
-	@Deprecated
-	int getSelectedItem();
-
-	/**
-	 * @deprecated use {@link #getSelectedSpellChildIndex()} instead.
-	 */
-	@Deprecated
-	int getSelectedItemIndex();
 
 	/**
 	 * Get the selected widget, such as a selected spell or selected item (eg. "Use")
@@ -2121,7 +2097,7 @@ public interface Client extends OAuthApi, GameEngine
 	}
 
 	void invokeMenuAction(String option, String target, int identifier, int opcode, int param0, int param1,
-			int screenX, int screenY);
+						  int screenX, int screenY);
 
 	void invokeMenuAction(String option, String target, int identifier, int opcode, int param0, int param1,
 						  int itemId, int screenX, int screenY);
@@ -2130,13 +2106,7 @@ public interface Client extends OAuthApi, GameEngine
 
 	void setPrintMenuActions(boolean b);
 
-	String getSelectedSpellName();
-
-	void setSelectedSpellName(String name);
-
 	boolean getSpellSelected();
-
-	String getSelectedSpellActionName();
 
 	int getSelectedSpellFlags();
 
@@ -2189,7 +2159,7 @@ public interface Client extends OAuthApi, GameEngine
 	/**
 	 * Remove player from ignorelist
 	 */
-	void removeIgnore(String name);
+	void removeIgnore(String name, boolean confirmToJagex);
 
 	void setModulus(BigInteger modulus);
 
@@ -2209,36 +2179,6 @@ public interface Client extends OAuthApi, GameEngine
 	 * Adds a MenuEntry to the current menu.
 	 */
 	void insertMenuItem(String action, String target, int opcode, int identifier, int argument1, int argument2, int itemId, boolean forceLeftClick);
-
-	/**
-	 * @deprecated use {@link #setSelectedSpellItemId(int)} instead.
-	 */
-	@Deprecated
-	void setSelectedItemID(int id);
-
-	/**
-	 * @deprecated use {@link #getSelectedSpellWidget()} instead.
-	 */
-	@Deprecated
-	int getSelectedItemWidget();
-
-	/**
-	 * @deprecated use {@link #setSelectedSpellWidget(int)} instead.
-	 */
-	@Deprecated
-	void setSelectedItemWidget(int widgetID);
-
-	/**
-	 * @deprecated use {@link #getSelectedSpellChildIndex()} instead.
-	 */
-	@Deprecated
-	int getSelectedItemSlot();
-
-	/**
-	 * @deprecated use {@link #setSelectedSpellChildIndex(int)} instead.
-	 */
-	@Deprecated
-	void setSelectedItemSlot(int idx);
 
 	int getSelectedSpellWidget();
 
@@ -2373,8 +2313,6 @@ public interface Client extends OAuthApi, GameEngine
 	int getFollowerIndex();
 
 	int isItemSelected();
-
-	String getSelectedItemName();
 
 	Widget getMessageContinueWidget();
 
@@ -2521,7 +2459,7 @@ public interface Client extends OAuthApi, GameEngine
 	}
 
 	default void interact(int identifier, int opcode, int param0, int param1, int clickX, int clickY,
-				  SceneEntity sceneEntity)
+						  SceneEntity sceneEntity)
 	{
 		interact(
 				MenuAutomated.builder()
@@ -2655,8 +2593,6 @@ public interface Client extends OAuthApi, GameEngine
 	MenuAutomated getQueuedMenu();
 
 	VarbitComposition getVarbitComposition(int varbitId);
-
-	int getSelectedItemID();
 
 	void setDraggedWidget(Widget widget);
 

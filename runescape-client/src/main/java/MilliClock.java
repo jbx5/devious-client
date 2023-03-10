@@ -4,111 +4,111 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fo")
+@ObfuscatedName("gq")
 @Implements("MilliClock")
 public class MilliClock extends Clock {
-   @ObfuscatedName("f")
-   long[] field1884 = new long[10];
-   @ObfuscatedName("w")
+   @ObfuscatedName("aj")
+   long[] field1847 = new long[10];
+   @ObfuscatedName("al")
    @ObfuscatedGetter(
-      intValue = -110419121
+      intValue = -1869895227
    )
-   int field1885 = 256;
-   @ObfuscatedName("v")
+   int field1848 = 256;
+   @ObfuscatedName("ac")
    @ObfuscatedGetter(
-      intValue = -1893993921
+      intValue = -83478851
    )
-   int field1890 = 1;
-   @ObfuscatedName("s")
+   int field1846 = 1;
+   @ObfuscatedName("ab")
    @ObfuscatedGetter(
-      longValue = 6857388795724027113L
+      longValue = 2122071681802424889L
    )
-   long field1887 = class153.method3317();
-   @ObfuscatedName("z")
+   long field1849 = WorldMapSection2.method4844();
+   @ObfuscatedName("an")
    @ObfuscatedGetter(
-      intValue = -536261417
+      intValue = -1052994805
    )
-   int field1888 = 0;
-   @ObfuscatedName("j")
+   int field1850 = 0;
+   @ObfuscatedName("ao")
    @ObfuscatedGetter(
-      intValue = 989727053
+      intValue = 1175347671
    )
-   int field1889;
+   int field1851;
 
    MilliClock() {
       for(int var1 = 0; var1 < 10; ++var1) {
-         this.field1884[var1] = this.field1887;
+         this.field1847[var1] = this.field1849;
       }
 
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
       descriptor = "(I)V",
-      garbageValue = "-1619845116"
+      garbageValue = "1425086968"
    )
    @Export("mark")
    public void mark() {
       for(int var1 = 0; var1 < 10; ++var1) {
-         this.field1884[var1] = 0L;
+         this.field1847[var1] = 0L;
       }
 
    }
 
-   @ObfuscatedName("w")
+   @ObfuscatedName("al")
    @ObfuscatedSignature(
       descriptor = "(III)I",
-      garbageValue = "1661663667"
+      garbageValue = "1465993621"
    )
    @Export("wait")
    public int wait(int var1, int var2) {
-      int var3 = this.field1885;
-      int var4 = this.field1890;
-      this.field1885 = 300;
-      this.field1890 = 1;
-      this.field1887 = class153.method3317();
-      if (0L == this.field1884[this.field1889]) {
-         this.field1885 = var3;
-         this.field1890 = var4;
-      } else if (this.field1887 > this.field1884[this.field1889]) {
-         this.field1885 = (int)((long)(var1 * 2560) / (this.field1887 - this.field1884[this.field1889]));
+      int var3 = this.field1848;
+      int var4 = this.field1846;
+      this.field1848 = 300;
+      this.field1846 = 1;
+      this.field1849 = WorldMapSection2.method4844();
+      if (this.field1847[this.field1851] == 0L) {
+         this.field1848 = var3;
+         this.field1846 = var4;
+      } else if (this.field1849 > this.field1847[this.field1851]) {
+         this.field1848 = (int)((long)(var1 * 2560) / (this.field1849 - this.field1847[this.field1851]));
       }
 
-      if (this.field1885 < 25) {
-         this.field1885 = 25;
+      if (this.field1848 < 25) {
+         this.field1848 = 25;
       }
 
-      if (this.field1885 > 256) {
-         this.field1885 = 256;
-         this.field1890 = (int)((long)var1 - (this.field1887 - this.field1884[this.field1889]) / 10L);
+      if (this.field1848 > 256) {
+         this.field1848 = 256;
+         this.field1846 = (int)((long)var1 - (this.field1849 - this.field1847[this.field1851]) / 10L);
       }
 
-      if (this.field1890 > var1) {
-         this.field1890 = var1;
+      if (this.field1846 > var1) {
+         this.field1846 = var1;
       }
 
-      this.field1884[this.field1889] = this.field1887;
-      this.field1889 = (this.field1889 + 1) % 10;
+      this.field1847[this.field1851] = this.field1849;
+      this.field1851 = (this.field1851 + 1) % 10;
       int var5;
-      if (this.field1890 > 1) {
+      if (this.field1846 > 1) {
          for(var5 = 0; var5 < 10; ++var5) {
-            if (0L != this.field1884[var5]) {
-               this.field1884[var5] += (long)this.field1890;
+            if (0L != this.field1847[var5]) {
+               this.field1847[var5] += (long)this.field1846;
             }
          }
       }
 
-      if (this.field1890 < var2) {
-         this.field1890 = var2;
+      if (this.field1846 < var2) {
+         this.field1846 = var2;
       }
 
-      Clock.method3567((long)this.field1890);
+      Login.method2088((long)this.field1846);
 
-      for(var5 = 0; this.field1888 < 256; this.field1888 += this.field1885) {
+      for(var5 = 0; this.field1850 < 256; this.field1850 += this.field1848) {
          ++var5;
       }
 
-      this.field1888 &= 255;
+      this.field1850 &= 255;
       return var5;
    }
 }

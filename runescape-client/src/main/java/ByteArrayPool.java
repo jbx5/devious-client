@@ -6,75 +6,75 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("no")
+@ObfuscatedName("ot")
 @Implements("ByteArrayPool")
 public class ByteArrayPool {
-   @ObfuscatedName("z")
+   @ObfuscatedName("an")
    @ObfuscatedGetter(
-      intValue = 1615203993
+      intValue = -868010203
    )
    @Export("ByteArrayPool_smallCount")
    static int ByteArrayPool_smallCount = 0;
-   @ObfuscatedName("j")
+   @ObfuscatedName("ao")
    @ObfuscatedGetter(
-      intValue = 11864649
+      intValue = -376683317
    )
    @Export("ByteArrayPool_mediumCount")
    static int ByteArrayPool_mediumCount = 0;
-   @ObfuscatedName("i")
+   @ObfuscatedName("av")
    @ObfuscatedGetter(
-      intValue = 1586651023
+      intValue = 105173507
    )
    @Export("ByteArrayPool_largeCount")
    static int ByteArrayPool_largeCount = 0;
-   @ObfuscatedName("n")
+   @ObfuscatedName("aq")
    @ObfuscatedGetter(
-      intValue = -436333049
+      intValue = -1943183323
    )
-   static int field4449 = 0;
-   @ObfuscatedName("l")
+   static int field4417 = 0;
+   @ObfuscatedName("ap")
    @ObfuscatedGetter(
-      intValue = -1375098291
+      intValue = 1880973257
    )
-   static int field4450 = 1000;
-   @ObfuscatedName("k")
+   static int field4420 = 1000;
+   @ObfuscatedName("ar")
    @ObfuscatedGetter(
-      intValue = -1502991471
+      intValue = 182947453
    )
-   static int field4455 = 250;
-   @ObfuscatedName("c")
+   static int field4421 = 250;
+   @ObfuscatedName("ak")
    @ObfuscatedGetter(
-      intValue = 309881497
+      intValue = 2013212249
    )
-   static int field4456 = 100;
-   @ObfuscatedName("r")
+   static int field4422 = 100;
+   @ObfuscatedName("ax")
    @ObfuscatedGetter(
-      intValue = 322972771
+      intValue = -2032532103
    )
-   static int field4452 = 50;
-   @ObfuscatedName("b")
+   static int field4413 = 50;
+   @ObfuscatedName("as")
    @Export("ByteArrayPool_small")
    static byte[][] ByteArrayPool_small = new byte[1000][];
-   @ObfuscatedName("m")
+   @ObfuscatedName("ay")
    @Export("ByteArrayPool_medium")
    static byte[][] ByteArrayPool_medium = new byte[250][];
-   @ObfuscatedName("t")
+   @ObfuscatedName("am")
    @Export("ByteArrayPool_large")
    static byte[][] ByteArrayPool_large = new byte[100][];
-   @ObfuscatedName("h")
-   static byte[][] field4453 = new byte[50][];
-   @ObfuscatedName("x")
-   public static ArrayList field4443 = new ArrayList();
+   @ObfuscatedName("az")
+   static byte[][] field4427 = new byte[50][];
+   @ObfuscatedName("at")
+   public static ArrayList field4424 = new ArrayList();
 
    static {
-      class36.method694();
+      SpriteMask.method5743();
       new HashMap();
    }
 
-   @ObfuscatedName("w")
+   @ObfuscatedName("al")
    @ObfuscatedSignature(
       descriptor = "(IZI)[B",
-      garbageValue = "513950466"
+      garbageValue = "1201755418"
    )
    @Export("ByteArrayPool_getArrayBool")
    public static synchronized byte[] ByteArrayPool_getArrayBool(int var0, boolean var1) {
@@ -91,26 +91,26 @@ public class ByteArrayPool {
          var4 = ByteArrayPool_large[--ByteArrayPool_largeCount];
          ByteArrayPool_large[ByteArrayPool_largeCount] = null;
          return var4;
-      } else if ((var0 == 30000 || var0 < 30000 && var1) && field4449 > 0) {
-         var4 = field4453[--field4449];
-         field4453[field4449] = null;
+      } else if ((var0 == 30000 || var0 < 30000 && var1) && field4417 > 0) {
+         var4 = field4427[--field4417];
+         field4427[field4417] = null;
          return var4;
       } else {
          int var2;
-         if (class9.ByteArrayPool_arrays != null) {
-            for(var2 = 0; var2 < class172.ByteArrayPool_alternativeSizes.length; ++var2) {
-               if ((class172.ByteArrayPool_alternativeSizes[var2] == var0 || var0 < class172.ByteArrayPool_alternativeSizes[var2] && var1) && class132.ByteArrayPool_altSizeArrayCounts[var2] > 0) {
-                  byte[] var3 = class9.ByteArrayPool_arrays[var2][--class132.ByteArrayPool_altSizeArrayCounts[var2]];
-                  class9.ByteArrayPool_arrays[var2][class132.ByteArrayPool_altSizeArrayCounts[var2]] = null;
+         if (InterfaceParent.ByteArrayPool_arrays != null) {
+            for(var2 = 0; var2 < class212.ByteArrayPool_alternativeSizes.length; ++var2) {
+               if ((class212.ByteArrayPool_alternativeSizes[var2] == var0 || var0 < class212.ByteArrayPool_alternativeSizes[var2] && var1) && SoundSystem.ByteArrayPool_altSizeArrayCounts[var2] > 0) {
+                  byte[] var3 = InterfaceParent.ByteArrayPool_arrays[var2][--SoundSystem.ByteArrayPool_altSizeArrayCounts[var2]];
+                  InterfaceParent.ByteArrayPool_arrays[var2][SoundSystem.ByteArrayPool_altSizeArrayCounts[var2]] = null;
                   return var3;
                }
             }
          }
 
-         if (var1 && class172.ByteArrayPool_alternativeSizes != null) {
-            for(var2 = 0; var2 < class172.ByteArrayPool_alternativeSizes.length; ++var2) {
-               if (var0 <= class172.ByteArrayPool_alternativeSizes[var2] && class132.ByteArrayPool_altSizeArrayCounts[var2] < class9.ByteArrayPool_arrays[var2].length) {
-                  return new byte[class172.ByteArrayPool_alternativeSizes[var2]];
+         if (var1 && class212.ByteArrayPool_alternativeSizes != null) {
+            for(var2 = 0; var2 < class212.ByteArrayPool_alternativeSizes.length; ++var2) {
+               if (var0 <= class212.ByteArrayPool_alternativeSizes[var2] && SoundSystem.ByteArrayPool_altSizeArrayCounts[var2] < InterfaceParent.ByteArrayPool_arrays[var2].length) {
+                  return new byte[class212.ByteArrayPool_alternativeSizes[var2]];
                }
             }
          }

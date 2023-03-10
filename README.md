@@ -5,6 +5,10 @@ Come join my discord if you're looking to share knowledge and learn together!
 
 https://discord.gg/5sh52G36GF
 
+You can also support this project through Patreon:
+
+https://www.patreon.com/DeviousClient
+
 # Launcher
 
 The client launcher can be downloaded here:

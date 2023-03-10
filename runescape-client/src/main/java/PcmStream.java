@@ -3,61 +3,61 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("an")
+@ObfuscatedName("bj")
 @Implements("PcmStream")
 public abstract class PcmStream extends Node {
-   @ObfuscatedName("w")
-   @Export("active")
-   volatile boolean active = true;
-   @ObfuscatedName("p")
+   @ObfuscatedName("az")
    @ObfuscatedSignature(
-      descriptor = "Lan;"
+      descriptor = "Lbj;"
    )
    @Export("after")
    PcmStream after;
-   @ObfuscatedName("o")
-   int field369;
-   @ObfuscatedName("u")
+   @ObfuscatedName("ae")
+   int field349;
+   @ObfuscatedName("au")
    @ObfuscatedSignature(
-      descriptor = "Lbo;"
+      descriptor = "Lce;"
    )
    @Export("sound")
    AbstractSound sound;
+   @ObfuscatedName("ag")
+   @Export("active")
+   volatile boolean active = true;
 
    protected PcmStream() {
    }
 
-   @ObfuscatedName("j")
+   @ObfuscatedName("ao")
    @ObfuscatedSignature(
-      descriptor = "()Lan;"
+      descriptor = "()Lbj;"
    )
    @Export("firstSubStream")
    protected abstract PcmStream firstSubStream();
 
-   @ObfuscatedName("i")
+   @ObfuscatedName("av")
    @ObfuscatedSignature(
-      descriptor = "()Lan;"
+      descriptor = "()Lbj;"
    )
    @Export("nextSubStream")
    protected abstract PcmStream nextSubStream();
 
-   @ObfuscatedName("n")
-   protected abstract int vmethod5793();
+   @ObfuscatedName("aq")
+   protected abstract int vmethod5700();
 
-   @ObfuscatedName("l")
+   @ObfuscatedName("ap")
    @Export("fill")
    protected abstract void fill(int[] var1, int var2, int var3);
 
-   @ObfuscatedName("c")
+   @ObfuscatedName("ak")
    @Export("skip")
    protected abstract void skip(int var1);
 
-   @ObfuscatedName("av")
-   int vmethod1026() {
+   @ObfuscatedName("by")
+   int vmethod1024() {
       return 255;
    }
 
-   @ObfuscatedName("ec")
+   @ObfuscatedName("gz")
    @Export("update")
    final void update(int[] var1, int var2, int var3) {
       if (this.active) {

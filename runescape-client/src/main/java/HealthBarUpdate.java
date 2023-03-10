@@ -4,30 +4,41 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cz")
+@ObfuscatedName("dw")
 @Implements("HealthBarUpdate")
 public class HealthBarUpdate extends Node {
-   @ObfuscatedName("f")
+   @ObfuscatedName("vc")
+   @ObfuscatedSignature(
+      descriptor = "Lrt;"
+   )
+   @Export("platformInfo")
+   static PlatformInfo platformInfo;
+   @ObfuscatedName("at")
+   @ObfuscatedSignature(
+      descriptor = "Lsy;"
+   )
+   public static Buffer field1223;
+   @ObfuscatedName("aj")
    @ObfuscatedGetter(
-      intValue = -1205456479
+      intValue = -259594641
    )
    @Export("cycle")
    int cycle;
-   @ObfuscatedName("w")
+   @ObfuscatedName("al")
    @ObfuscatedGetter(
-      intValue = -1905009045
+      intValue = 773379775
    )
    @Export("health")
    int health;
-   @ObfuscatedName("v")
+   @ObfuscatedName("ac")
    @ObfuscatedGetter(
-      intValue = 481450881
+      intValue = 323434117
    )
    @Export("health2")
    int health2;
-   @ObfuscatedName("s")
+   @ObfuscatedName("ab")
    @ObfuscatedGetter(
-      intValue = 1800793113
+      intValue = -685069757
    )
    @Export("cycleOffset")
    int cycleOffset;
@@ -39,10 +50,10 @@ public class HealthBarUpdate extends Node {
       this.cycleOffset = var4;
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
-      descriptor = "(IIIIB)V",
-      garbageValue = "88"
+      descriptor = "(IIIII)V",
+      garbageValue = "-1435919028"
    )
    @Export("set")
    void set(int var1, int var2, int var3, int var4) {
@@ -50,15 +61,5 @@ public class HealthBarUpdate extends Node {
       this.health = var2;
       this.health2 = var3;
       this.cycleOffset = var4;
-   }
-
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      descriptor = "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V",
-      garbageValue = "-1170890753"
-   )
-   static void method2442(String var0, String var1, String var2) {
-      ReflectionCheck.method696(7);
-      class70.setLoginResponseString(var0, var1, var2);
    }
 }

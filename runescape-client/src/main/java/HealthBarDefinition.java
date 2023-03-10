@@ -4,81 +4,87 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gi")
+@ObfuscatedName("hn")
 @Implements("HealthBarDefinition")
 public class HealthBarDefinition extends DualNode {
-   @ObfuscatedName("w")
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
-      descriptor = "Lln;"
+      descriptor = "Lne;"
    )
-   static AbstractArchive field1985;
-   @ObfuscatedName("v")
+   @Export("HealthBarDefinition_archive")
+   public static AbstractArchive HealthBarDefinition_archive;
+   @ObfuscatedName("al")
    @ObfuscatedSignature(
-      descriptor = "Lja;"
+      descriptor = "Lne;"
+   )
+   public static AbstractArchive field1947;
+   @ObfuscatedName("ac")
+   @ObfuscatedSignature(
+      descriptor = "Lkt;"
    )
    @Export("HealthBarDefinition_cached")
-   static EvictingDualNodeHashTable HealthBarDefinition_cached = new EvictingDualNodeHashTable(64);
-   @ObfuscatedName("s")
+   public static EvictingDualNodeHashTable HealthBarDefinition_cached = new EvictingDualNodeHashTable(64);
+   @ObfuscatedName("ab")
    @ObfuscatedSignature(
-      descriptor = "Lja;"
+      descriptor = "Lkt;"
    )
    @Export("HealthBarDefinition_cachedSprites")
-   static EvictingDualNodeHashTable HealthBarDefinition_cachedSprites = new EvictingDualNodeHashTable(64);
-   @ObfuscatedName("z")
+   public static EvictingDualNodeHashTable HealthBarDefinition_cachedSprites = new EvictingDualNodeHashTable(64);
+   @ObfuscatedName("an")
    @ObfuscatedGetter(
-      intValue = 340088571
+      intValue = 758214251
    )
-   public int field1982;
-   @ObfuscatedName("n")
+   public int field1946;
+   @ObfuscatedName("aq")
    @ObfuscatedGetter(
-      intValue = 610863041
+      intValue = -1872045827
    )
    @Export("int1")
    public int int1 = 255;
-   @ObfuscatedName("l")
+   @ObfuscatedName("ap")
    @ObfuscatedGetter(
-      intValue = 485061889
+      intValue = -1053115535
    )
    @Export("int2")
    public int int2 = 255;
-   @ObfuscatedName("k")
+   @ObfuscatedName("ar")
    @ObfuscatedGetter(
-      intValue = 1538861117
+      intValue = 1554459737
    )
    @Export("int3")
    public int int3 = -1;
-   @ObfuscatedName("c")
+   @ObfuscatedName("ak")
    @ObfuscatedGetter(
-      intValue = 1759495171
+      intValue = 1621376523
    )
-   public int field1984 = 1;
-   @ObfuscatedName("r")
+   public int field1942 = 1;
+   @ObfuscatedName("ax")
    @ObfuscatedGetter(
-      intValue = -496661429
+      intValue = 1656797509
    )
    @Export("int5")
    public int int5 = 70;
-   @ObfuscatedName("b")
+   @ObfuscatedName("as")
    @ObfuscatedGetter(
-      intValue = -515352613
+      intValue = 1047664091
    )
    @Export("frontSpriteID")
    int frontSpriteID = -1;
-   @ObfuscatedName("m")
+   @ObfuscatedName("ay")
    @ObfuscatedGetter(
-      intValue = -697159111
+      intValue = 1815861979
    )
    @Export("backSpriteID")
    int backSpriteID = -1;
-   @ObfuscatedName("t")
+   @ObfuscatedName("am")
    @ObfuscatedGetter(
-      intValue = 742840403
+      intValue = 1796624873
    )
    @Export("width")
    public int width = 30;
-   @ObfuscatedName("h")
+   @ObfuscatedName("az")
    @ObfuscatedGetter(
-      intValue = 2118917585
+      intValue = -1912503923
    )
    @Export("widthPadding")
    public int widthPadding = 0;
@@ -86,10 +92,10 @@ public class HealthBarDefinition extends DualNode {
    HealthBarDefinition() {
    }
 
-   @ObfuscatedName("v")
+   @ObfuscatedName("al")
    @ObfuscatedSignature(
-      descriptor = "(Lrd;I)V",
-      garbageValue = "-2019372676"
+      descriptor = "(Lsy;B)V",
+      garbageValue = "67"
    )
    @Export("decode")
    void decode(Buffer var1) {
@@ -103,10 +109,10 @@ public class HealthBarDefinition extends DualNode {
       }
    }
 
-   @ObfuscatedName("s")
+   @ObfuscatedName("ac")
    @ObfuscatedSignature(
-      descriptor = "(Lrd;II)V",
-      garbageValue = "655885225"
+      descriptor = "(Lsy;II)V",
+      garbageValue = "-442070903"
    )
    @Export("decodeNext")
    void decodeNext(Buffer var1, int var2) {
@@ -136,10 +142,10 @@ public class HealthBarDefinition extends DualNode {
 
    }
 
-   @ObfuscatedName("z")
+   @ObfuscatedName("ab")
    @ObfuscatedSignature(
-      descriptor = "(I)Lrs;",
-      garbageValue = "-350000117"
+      descriptor = "(S)Lsn;",
+      garbageValue = "-18194"
    )
    @Export("getFrontSprite")
    public SpritePixels getFrontSprite() {
@@ -150,7 +156,7 @@ public class HealthBarDefinition extends DualNode {
          if (var1 != null) {
             return var1;
          } else {
-            var1 = BZip2State.SpriteBuffer_getSprite(field1985, this.frontSpriteID, 0);
+            var1 = WorldMapScaleHandler.SpriteBuffer_getSprite(field1947, this.frontSpriteID, 0);
             if (var1 != null) {
                HealthBarDefinition_cachedSprites.put(var1, (long)this.frontSpriteID);
             }
@@ -160,10 +166,10 @@ public class HealthBarDefinition extends DualNode {
       }
    }
 
-   @ObfuscatedName("j")
+   @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "(I)Lrs;",
-      garbageValue = "-1607255134"
+      descriptor = "(B)Lsn;",
+      garbageValue = "99"
    )
    @Export("getBackSprite")
    public SpritePixels getBackSprite() {
@@ -174,7 +180,7 @@ public class HealthBarDefinition extends DualNode {
          if (var1 != null) {
             return var1;
          } else {
-            var1 = BZip2State.SpriteBuffer_getSprite(field1985, this.backSpriteID, 0);
+            var1 = WorldMapScaleHandler.SpriteBuffer_getSprite(field1947, this.backSpriteID, 0);
             if (var1 != null) {
                HealthBarDefinition_cachedSprites.put(var1, (long)this.backSpriteID);
             }
@@ -182,76 +188,5 @@ public class HealthBarDefinition extends DualNode {
             return var1;
          }
       }
-   }
-
-   @ObfuscatedName("ff")
-   @ObfuscatedSignature(
-      descriptor = "(B)V",
-      garbageValue = "75"
-   )
-   @Export("logOut")
-   static final void logOut() {
-      Client.packetWriter.close();
-      WorldMapElement.method3612();
-      FloorUnderlayDefinition.FloorUnderlayDefinition_cached.clear();
-      class134.method3124();
-      ObjectComposition.ObjectDefinition_cached.clear();
-      ObjectComposition.ObjectDefinition_cachedModelData.clear();
-      ObjectComposition.ObjectDefinition_cachedEntities.clear();
-      ObjectComposition.ObjectDefinition_cachedModels.clear();
-      class168.method3488();
-      TaskHandler.method3475();
-      ObjectSound.method1920();
-      SpotAnimationDefinition.SpotAnimationDefinition_cached.clear();
-      SpotAnimationDefinition.SpotAnimationDefinition_cachedModels.clear();
-      WorldMapDecorationType.method6425();
-      FaceNormal.method4641();
-      class491.HitSplatDefinition_cachedSprites.method8463();
-      class208.HitSplatDefinition_cached.method8463();
-      HitSplatDefinition.HitSplatDefinition_cached.clear();
-      HitSplatDefinition.HitSplatDefinition_cachedSprites.clear();
-      HitSplatDefinition.HitSplatDefinition_cachedFonts.clear();
-      class31.method460();
-      UrlRequest.method2891();
-      ParamComposition.ParamDefinition_cached.clear();
-      class85.method2339();
-      DbTableType.DBTableType_cache.clear();
-      DbRowType.DBRowType_cache.clear();
-      Client.DBTableIndex_cache.clear();
-      Client.DBTableMasterIndex_cache.clear();
-      VertexNormal.method4843();
-      Widget.Widget_cachedSprites.clear();
-      Widget.Widget_cachedModels.clear();
-      Widget.Widget_cachedFonts.clear();
-      Widget.Widget_cachedSpriteMasks.clear();
-      ((TextureProvider)Rasterizer3D.Rasterizer3D_textureLoader).clear();
-      Script.Script_cached.clear();
-      Client.archive5.method7487();
-      class13.field70.clearFiles();
-      FriendsChat.archive7.clearFiles();
-      class144.archive4.clearFiles();
-      DynamicObject.field1001.clearFiles();
-      NetCache.archive9.clearFiles();
-      class153.archive6.clearFiles();
-      class151.archive11.clearFiles();
-      WorldMapEvent.archive8.clearFiles();
-      class148.field1704.clearFiles();
-      ApproximateRouteStrategy.archive10.clearFiles();
-      MusicPatchNode.field3448.clearFiles();
-      class12.archive12.clearFiles();
-      Canvas.field132.clearFiles();
-      WorldMapAreaData.scene.clear();
-
-      for(int var0 = 0; var0 < 4; ++var0) {
-         Client.collisionMaps[var0].clear();
-      }
-
-      Client.field752.method4097();
-      System.gc();
-      class28.method430(2);
-      Client.currentTrackGroupId = -1;
-      Client.playingJingle = false;
-      UserComparator4.method2902();
-      class246.updateGameState(10);
    }
 }

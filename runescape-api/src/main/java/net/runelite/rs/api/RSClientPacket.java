@@ -181,8 +181,8 @@ public interface RSClientPacket extends ClientPacket
 	@Import("FRIEND_DELUSER")
 	RSClientPacket FRIEND_DELUSER();
 
-	@Import("IF_BUTTOND")
-	RSClientPacket IF_BUTTOND();
+	//@Import("IF_BUTTOND")
+	//RSClientPacket IF_BUTTOND();
 
 	@Import("OPLOCE")
 	RSClientPacket OPLOCE();

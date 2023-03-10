@@ -55,9 +55,9 @@ import net.runelite.client.util.QuantityFormatter;
 import net.runelite.client.util.Text;
 
 @PluginDescriptor(
-	name = "Examine",
-	description = "Shows additional examine information (eg. GE Average, HA Value)",
-	tags = {"npcs", "items", "inventory", "objects", "prices", "high alchemy"}
+		name = "Examine",
+		description = "Shows additional examine information (eg. GE Average, HA Value)",
+		tags = {"npcs", "items", "inventory", "objects", "prices", "high alchemy"}
 )
 @Slf4j
 public class ExaminePlugin extends Plugin
@@ -110,11 +110,11 @@ public class ExaminePlugin extends Plugin
 				{
 					int itemId = event.getId();
 					final ChatMessageBuilder message = new ChatMessageBuilder()
-						.append(QuantityFormatter.formatNumber(quantity)).append(" x ").append(itemManager.getItemComposition(itemId).getMembersName());
+							.append(QuantityFormatter.formatNumber(quantity)).append(" x ").append(itemManager.getItemComposition(itemId).getMembersName());
 					chatMessageManager.queue(QueuedMessage.builder()
-						.type(ChatMessageType.ITEM_EXAMINE)
-						.runeLiteFormattedMessage(message.build())
-						.build());
+							.type(ChatMessageType.ITEM_EXAMINE)
+							.runeLiteFormattedMessage(message.build())
+							.build());
 					event.consume();
 				}
 				break;
@@ -265,66 +265,66 @@ public class ExaminePlugin extends Plugin
 		if (gePrice > 0 || alchPrice > 0)
 		{
 			final ChatMessageBuilder message = new ChatMessageBuilder()
-				.append(ChatColorType.NORMAL)
-				.append("Price of ")
-				.append(ChatColorType.HIGHLIGHT);
+					.append(ChatColorType.NORMAL)
+					.append("Price of ")
+					.append(ChatColorType.HIGHLIGHT);
 
 			if (quantity > 1)
 			{
 				message
-					.append(QuantityFormatter.formatNumber(quantity))
-					.append(" x ");
+						.append(QuantityFormatter.formatNumber(quantity))
+						.append(" x ");
 			}
 
 			message
-				.append(itemComposition.getMembersName())
-				.append(ChatColorType.NORMAL)
-				.append(":");
+					.append(itemComposition.getMembersName())
+					.append(ChatColorType.NORMAL)
+					.append(":");
 
 			if (gePrice > 0)
 			{
 				message
-					.append(ChatColorType.NORMAL)
-					.append(" GE average ")
-					.append(ChatColorType.HIGHLIGHT)
-					.append(QuantityFormatter.formatNumber((long) gePrice * quantity));
+						.append(ChatColorType.NORMAL)
+						.append(" GE average ")
+						.append(ChatColorType.HIGHLIGHT)
+						.append(QuantityFormatter.formatNumber((long) gePrice * quantity));
 
 				if (quantity > 1)
 				{
 					message
-						.append(ChatColorType.NORMAL)
-						.append(" (")
-						.append(ChatColorType.HIGHLIGHT)
-						.append(QuantityFormatter.formatNumber(gePrice))
-						.append(ChatColorType.NORMAL)
-						.append("ea)");
+							.append(ChatColorType.NORMAL)
+							.append(" (")
+							.append(ChatColorType.HIGHLIGHT)
+							.append(QuantityFormatter.formatNumber(gePrice))
+							.append(ChatColorType.NORMAL)
+							.append("ea)");
 				}
 			}
 
 			if (alchPrice > 0)
 			{
 				message
-					.append(ChatColorType.NORMAL)
-					.append(" HA value ")
-					.append(ChatColorType.HIGHLIGHT)
-					.append(QuantityFormatter.formatNumber((long) alchPrice * quantity));
+						.append(ChatColorType.NORMAL)
+						.append(" HA value ")
+						.append(ChatColorType.HIGHLIGHT)
+						.append(QuantityFormatter.formatNumber((long) alchPrice * quantity));
 
 				if (quantity > 1)
 				{
 					message
-						.append(ChatColorType.NORMAL)
-						.append(" (")
-						.append(ChatColorType.HIGHLIGHT)
-						.append(QuantityFormatter.formatNumber(alchPrice))
-						.append(ChatColorType.NORMAL)
-						.append("ea)");
+							.append(ChatColorType.NORMAL)
+							.append(" (")
+							.append(ChatColorType.HIGHLIGHT)
+							.append(QuantityFormatter.formatNumber(alchPrice))
+							.append(ChatColorType.NORMAL)
+							.append("ea)");
 				}
 			}
 
 			chatMessageManager.queue(QueuedMessage.builder()
-				.type(ChatMessageType.ITEM_EXAMINE)
-				.runeLiteFormattedMessage(message.build())
-				.build());
+					.type(ChatMessageType.ITEM_EXAMINE)
+					.runeLiteFormattedMessage(message.build())
+					.build());
 		}
 	}
 }

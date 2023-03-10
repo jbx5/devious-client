@@ -1,71 +1,34 @@
-import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("nn")
+@ObfuscatedName("od")
 public class class377 {
-   @ObfuscatedName("f")
-   @Export("writeRandomDat")
-   public static void writeRandomDat(byte[] var0, int var1, byte[] var2, int var3, int var4) {
-      if (var2 == var0) {
-         if (var3 == var1) {
-            return;
-         }
+   @ObfuscatedName("aj")
+   public char field4380;
+   @ObfuscatedName("al")
+   @ObfuscatedGetter(
+      intValue = 427774341
+   )
+   public int field4379 = 0;
+   @ObfuscatedName("ac")
+   @ObfuscatedGetter(
+      intValue = 1079124409
+   )
+   public int field4378 = 0;
 
-         if (var3 > var1 && var3 < var4 + var1) {
-            --var4;
-            var1 += var4;
-            var3 += var4;
-            var4 = var1 - var4;
-
-            for(var4 += 7; var1 >= var4; var2[var3--] = var0[var1--]) {
-               var2[var3--] = var0[var1--];
-               var2[var3--] = var0[var1--];
-               var2[var3--] = var0[var1--];
-               var2[var3--] = var0[var1--];
-               var2[var3--] = var0[var1--];
-               var2[var3--] = var0[var1--];
-               var2[var3--] = var0[var1--];
-            }
-
-            for(var4 -= 7; var1 >= var4; var2[var3--] = var0[var1--]) {
-            }
-
-            return;
-         }
-      }
-
-      var4 += var1;
-
-      for(var4 -= 7; var1 < var4; var2[var3++] = var0[var1++]) {
-         var2[var3++] = var0[var1++];
-         var2[var3++] = var0[var1++];
-         var2[var3++] = var0[var1++];
-         var2[var3++] = var0[var1++];
-         var2[var3++] = var0[var1++];
-         var2[var3++] = var0[var1++];
-         var2[var3++] = var0[var1++];
-      }
-
-      for(var4 += 7; var1 < var4; var2[var3++] = var0[var1++]) {
-      }
-
+   class377() {
    }
 
-   @ObfuscatedName("k")
-   @Export("clearIntArray")
-   public static void clearIntArray(int[] var0, int var1, int var2) {
-      for(var2 = var2 + var1 - 7; var1 < var2; var0[var1++] = 0) {
-         var0[var1++] = 0;
-         var0[var1++] = 0;
-         var0[var1++] = 0;
-         var0[var1++] = 0;
-         var0[var1++] = 0;
-         var0[var1++] = 0;
-         var0[var1++] = 0;
+   @ObfuscatedName("ao")
+   @ObfuscatedSignature(
+      descriptor = "(IB)V",
+      garbageValue = "87"
+   )
+   static void method7139(int var0) {
+      ItemContainer var1 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
+      if (var1 != null) {
+         var1.remove();
       }
-
-      for(var2 += 7; var1 < var2; var0[var1++] = 0) {
-      }
-
    }
 }

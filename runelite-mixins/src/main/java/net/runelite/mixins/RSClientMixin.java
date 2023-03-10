@@ -94,7 +94,6 @@ import net.runelite.api.events.NpcSpawned;
 import net.runelite.api.events.PlayerDespawned;
 import net.runelite.api.events.PlayerMenuOptionsChanged;
 import net.runelite.api.events.PlayerSpawned;
-import net.runelite.api.events.PostMenuSort;
 import net.runelite.api.events.PostStructComposition;
 import net.runelite.api.events.ResizeableChanged;
 import net.runelite.api.events.StatChanged;
@@ -138,7 +137,6 @@ import net.runelite.rs.api.RSFriendSystem;
 import net.runelite.rs.api.RSGameEngine;
 import net.runelite.rs.api.RSIndexedSprite;
 import net.runelite.rs.api.RSInterfaceParent;
-import net.runelite.rs.api.RSItemComposition;
 import net.runelite.rs.api.RSItemContainer;
 import net.runelite.rs.api.RSModelData;
 import net.runelite.rs.api.RSNPC;
@@ -1040,7 +1038,7 @@ public abstract class RSClientMixin implements RSClient
 		}
 	}
 
-	@Copy("menuSort")
+	/*@Copy("menuSort")
 	@Replace("menuSort")
 	public static void copy$menuSort()
 	{
@@ -1064,7 +1062,7 @@ public abstract class RSClientMixin implements RSClient
 				}
 			}
 		}
-	}
+	}*/
 
 	@Inject
 	public static void sortMenuEntries(int left, int right)
@@ -1358,7 +1356,7 @@ public abstract class RSClientMixin implements RSClient
 		}
 	}
 
-	@FieldHook("itemDragDuration")
+	/*@FieldHook("itemDragDuration")
 	@Inject
 	public static void itemPressedDurationChanged(int idx)
 	{
@@ -1378,7 +1376,7 @@ public abstract class RSClientMixin implements RSClient
 		{
 			itemPressedDurationBuffer = 0;
 		}
-	}
+	}*/
 
 //	@FieldHook("experience")
 //	@Inject
@@ -2025,7 +2023,7 @@ public abstract class RSClientMixin implements RSClient
 		client.getScene().menuOpen(client.getPlane(), x - client.getViewportXOffset(), y - client.getViewportYOffset(), false);
 	}
 
-	@Copy("addWidgetItemMenuItem")
+	/*@Copy("addWidgetItemMenuItem")
 	@Replace("addWidgetItemMenuItem")
 	static void copy$addWidgetItemMenuItem(RSWidget var0, RSItemComposition var1, int var2, int var3, boolean var4)
 	{
@@ -2035,7 +2033,7 @@ public abstract class RSClientMixin implements RSClient
 		{
 			copy$addWidgetItemMenuItem(var0, var1, var2, var3, var4);
 		}
-	}
+	}*/
 
 	@Inject
 	@MethodHook("updateNpcs")
@@ -2390,11 +2388,11 @@ public abstract class RSClientMixin implements RSClient
 	@Inject
 	static boolean shouldHideAttackOptionFor(RSPlayer p)
 	{
-		if (client.getSpellSelected())
+		/*if (client.getSpellSelected())
 		{
 			return ((hideFriendCastOptions && p.isFriended()) || (hideClanmateCastOptions && p.isFriendsChatMember()))
 					&& !unhiddenCasts.contains(client.getSelectedSpellName().replaceAll("<[^>]*>", "").toLowerCase());
-		}
+		}*/
 
 		return ((hideFriendAttackOptions && p.isFriended()) || (hideClanmateAttackOptions && p.isFriendsChatMember()));
 	}
@@ -2425,10 +2423,10 @@ public abstract class RSClientMixin implements RSClient
 
 	@Inject
 	@Override
-	public void removeIgnore(String friend)
+	public void removeIgnore(String friend, boolean confirmToJagex)
 	{
 		RSFriendSystem friendSystem = getFriendManager();
-		friendSystem.removeIgnore(friend);
+		friendSystem.removeIgnore(friend, confirmToJagex);
 	}
 
 	@Inject
@@ -3219,7 +3217,7 @@ public abstract class RSClientMixin implements RSClient
 
 	@Inject
 	@MethodHook("loginScreen")
-	public static void loginScreenClick(RSGameEngine var0, RSFont var1)
+	public static void loginScreenClick(RSGameEngine var0, RSFont var1, RSFont var2)
 	{
 		if (!client.isWorldSelectOpen() && (client.getMouseLastPressedX() > client.getLoginScreenXPadding() + 765 || client.getMouseLastPressedY() > 503))
 		{

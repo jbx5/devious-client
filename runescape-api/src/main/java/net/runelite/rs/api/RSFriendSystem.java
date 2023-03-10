@@ -27,5 +27,5 @@ public interface RSFriendSystem
 	void addIgnore(String username);
 
 	@Import("removeIgnore")
-	void removeIgnore(String username);
+	void removeIgnore(String username, boolean confirmToJagex);
 }

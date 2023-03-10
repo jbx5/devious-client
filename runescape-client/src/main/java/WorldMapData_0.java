@@ -1,36 +1,29 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ih")
+@ObfuscatedName("jo")
 @Implements("WorldMapData_0")
 public class WorldMapData_0 extends AbstractWorldMapData {
-   @ObfuscatedName("tp")
-   @ObfuscatedGetter(
-      intValue = 1048100864
-   )
-   static int field2806;
-
    WorldMapData_0() {
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
-      descriptor = "(Lrd;I)V",
-      garbageValue = "-2018545200"
+      descriptor = "(Lsy;I)V",
+      garbageValue = "-716170974"
    )
    @Export("init")
    void init(Buffer var1) {
       int var2 = var1.readUnsignedByte();
-      if (var2 != WorldMapID.field2992.value) {
+      if (var2 != WorldMapID.field2991.value) {
          throw new IllegalStateException("");
       } else {
          super.minPlane = var1.readUnsignedByte();
          super.planes = var1.readUnsignedByte();
-         super.regionXLow = var1.readUnsignedShort() * 64;
-         super.regionYLow = var1.readUnsignedShort() * 4096;
+         super.regionXLow = var1.readUnsignedShort() * 4096;
+         super.regionYLow = var1.readUnsignedShort() * 64;
          super.regionX = var1.readUnsignedShort();
          super.regionY = var1.readUnsignedShort();
          super.groupId = var1.readNullableLargeSmart();
@@ -38,21 +31,21 @@ public class WorldMapData_0 extends AbstractWorldMapData {
       }
    }
 
-   @ObfuscatedName("w")
+   @ObfuscatedName("al")
    @ObfuscatedSignature(
-      descriptor = "(Lrd;B)V",
-      garbageValue = "9"
+      descriptor = "(Lsy;I)V",
+      garbageValue = "-724858915"
    )
    @Export("readGeography")
    void readGeography(Buffer var1) {
       super.planes = Math.min(super.planes, 4);
       super.floorUnderlayIds = new short[1][64][64];
       super.floorOverlayIds = new short[super.planes][64][64];
-      super.field2960 = new byte[super.planes][64][64];
-      super.field2956 = new byte[super.planes][64][64];
+      super.field2949 = new byte[super.planes][64][64];
+      super.field2952 = new byte[super.planes][64][64];
       super.decorations = new WorldMapDecoration[super.planes][64][64][];
       int var2 = var1.readUnsignedByte();
-      if (var2 != class255.field2990.value) {
+      if (var2 != class258.field2980.value) {
          throw new IllegalStateException("");
       } else {
          int var3 = var1.readUnsignedByte();
@@ -75,7 +68,7 @@ public class WorldMapData_0 extends AbstractWorldMapData {
          return false;
       } else {
          WorldMapData_0 var2 = (WorldMapData_0)var1;
-         return var2.regionX == super.regionX && var2.regionY == super.regionY;
+         return super.regionX == var2.regionX && super.regionY == var2.regionY;
       }
    }
 
@@ -83,13 +76,45 @@ public class WorldMapData_0 extends AbstractWorldMapData {
       return super.regionX | super.regionY << 8;
    }
 
-   @ObfuscatedName("v")
+   @ObfuscatedName("ac")
    @ObfuscatedSignature(
-      descriptor = "(I)[Lre;",
-      garbageValue = "-1511545880"
+      descriptor = "(III)I",
+      garbageValue = "-698742703"
    )
-   @Export("FillMode_values")
-   public static FillMode[] FillMode_values() {
-      return new FillMode[]{FillMode.field5017, FillMode.field5016, FillMode.SOLID};
+   static int method4791(int var0, int var1) {
+      ItemContainer var2 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
+      if (var2 == null) {
+         return 0;
+      } else if (var1 == -1) {
+         return 0;
+      } else {
+         int var3 = 0;
+
+         for(int var4 = 0; var4 < var2.quantities.length; ++var4) {
+            if (var2.ids[var4] == var1) {
+               var3 += var2.quantities[var4];
+            }
+         }
+
+         return var3;
+      }
+   }
+
+   @ObfuscatedName("jx")
+   @ObfuscatedSignature(
+      descriptor = "(II)Z",
+      garbageValue = "1796138717"
+   )
+   static final boolean method4790(int var0) {
+      if (var0 < 0) {
+         return false;
+      } else {
+         int var1 = Client.menuOpcodes[var0];
+         if (var1 >= 2000) {
+            var1 -= 2000;
+         }
+
+         return var1 == 1007;
+      }
    }
 }

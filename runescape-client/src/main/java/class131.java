@@ -1,62 +1,91 @@
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
+import java.util.concurrent.Callable;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("en")
-public class class131 {
-   @ObfuscatedName("iz")
-   @ObfuscatedGetter(
-      intValue = -1316992101
-   )
-   @Export("selectedItemId")
-   static int selectedItemId;
-
-   @ObfuscatedName("m")
+@ObfuscatedName("fr")
+class class131 implements Callable {
+   // $FF: synthetic field
    @ObfuscatedSignature(
-      descriptor = "(II)Lhw;",
-      garbageValue = "-1224453305"
+      descriptor = "Lfl;"
    )
-   @Export("getFrames")
-   static Frames getFrames(int var0) {
-      Frames var1 = (Frames)SequenceDefinition.SequenceDefinition_cachedFrames.get((long)var0);
-      if (var1 != null) {
-         return var1;
-      } else {
-         AbstractArchive var3 = SequenceDefinition.SequenceDefinition_animationsArchive;
-         AbstractArchive var4 = class16.SequenceDefinition_skeletonsArchive;
-         boolean var5 = true;
-         int[] var6 = var3.getGroupFileIds(var0);
+   final class134 this$0;
+   // $FF: synthetic field
+   @ObfuscatedSignature(
+      descriptor = "Lsy;"
+   )
+   final Buffer val$p;
+   // $FF: synthetic field
+   final int val$version;
 
-         for(int var7 = 0; var7 < var6.length; ++var7) {
-            byte[] var8 = var3.getFile(var0, var6[var7]);
-            if (var8 == null) {
-               var5 = false;
+   @ObfuscatedSignature(
+      descriptor = "(Lfl;Lsy;I)V"
+   )
+   class131(class134 var1, Buffer var2, int var3) {
+      this.this$0 = var1;
+      this.val$p = var2;
+      this.val$version = var3;
+   }
+
+   public Object call() {
+      this.this$0.method3049(this.val$p, this.val$version);
+      return null;
+   }
+
+   @ObfuscatedName("al")
+   @ObfuscatedSignature(
+      descriptor = "([BIIB)Ljava/lang/String;",
+      garbageValue = "1"
+   )
+   public static String method3032(byte[] var0, int var1, int var2) {
+      char[] var3 = new char[var2];
+      int var4 = 0;
+      int var5 = var1;
+
+      int var8;
+      for(int var6 = var2 + var1; var5 < var6; var3[var4++] = (char)var8) {
+         int var7 = var0[var5++] & 255;
+         if (var7 < 128) {
+            if (var7 == 0) {
+               var8 = 65533;
             } else {
-               int var9 = (var8[0] & 255) << 8 | var8[1] & 255;
-               byte[] var10 = var4.getFile(var9, 0);
-               if (var10 == null) {
-                  var5 = false;
+               var8 = var7;
+            }
+         } else if (var7 < 192) {
+            var8 = 65533;
+         } else if (var7 < 224) {
+            if (var5 < var6 && (var0[var5] & 192) == 128) {
+               var8 = (var7 & 31) << 6 | var0[var5++] & 63;
+               if (var8 < 128) {
+                  var8 = 65533;
                }
+            } else {
+               var8 = 65533;
             }
-         }
-
-         Frames var2;
-         if (!var5) {
-            var2 = null;
+         } else if (var7 < 240) {
+            if (var5 + 1 < var6 && (var0[var5] & 192) == 128 && (var0[var5 + 1] & 192) == 128) {
+               var8 = (var7 & 15) << 12 | (var0[var5++] & 63) << 6 | var0[var5++] & 63;
+               if (var8 < 2048) {
+                  var8 = 65533;
+               }
+            } else {
+               var8 = 65533;
+            }
+         } else if (var7 < 248) {
+            if (var5 + 2 < var6 && (var0[var5] & 192) == 128 && (var0[var5 + 1] & 192) == 128 && (var0[var5 + 2] & 192) == 128) {
+               var8 = (var7 & 7) << 18 | (var0[var5++] & 63) << 12 | (var0[var5++] & 63) << 6 | var0[var5++] & 63;
+               if (var8 >= 65536 && var8 <= 1114111) {
+                  var8 = 65533;
+               } else {
+                  var8 = 65533;
+               }
+            } else {
+               var8 = 65533;
+            }
          } else {
-            try {
-               var2 = new Frames(var3, var4, var0, false);
-            } catch (Exception var12) {
-               var2 = null;
-            }
+            var8 = 65533;
          }
-
-         if (var2 != null) {
-            SequenceDefinition.SequenceDefinition_cachedFrames.put(var2, (long)var0);
-         }
-
-         return var2;
       }
+
+      return new String(var3, 0, var4);
    }
 }

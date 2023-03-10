@@ -1,94 +1,70 @@
 import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("z")
+@ObfuscatedName("an")
 public final class class4 {
-   @ObfuscatedName("j")
-   @ObfuscatedSignature(
-      descriptor = "Lln;"
+   @ObfuscatedName("th")
+   @ObfuscatedGetter(
+      intValue = 260227072
    )
-   @Export("ItemDefinition_archive")
-   public static AbstractArchive ItemDefinition_archive;
-   @ObfuscatedName("ib")
-   @Export("regionLandArchives")
-   static byte[][] regionLandArchives;
+   static int field7;
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("ab")
    @ObfuscatedSignature(
-      descriptor = "([Lmb;II)Lmb;",
-      garbageValue = "1096060078"
+      descriptor = "([BB)Lcv;",
+      garbageValue = "-53"
    )
-   @Export("findEnumerated")
-   public static MouseWheel findEnumerated(MouseWheel[] var0, int var1) {
-      MouseWheel[] var2 = var0;
+   @Export("newScript")
+   static Script newScript(byte[] var0) {
+      Script var1 = new Script();
+      Buffer var2 = new Buffer(var0);
+      var2.offset = var2.array.length - 2;
+      int var3 = var2.readUnsignedShort();
+      int var4 = var2.array.length - 2 - var3 - 12;
+      var2.offset = var4;
+      int var5 = var2.readInt();
+      var1.localIntCount = var2.readUnsignedShort();
+      var1.localStringCount = var2.readUnsignedShort();
+      var1.intArgumentCount = var2.readUnsignedShort();
+      var1.stringArgumentCount = var2.readUnsignedShort();
+      int var6 = var2.readUnsignedByte();
+      int var7;
+      int var8;
+      if (var6 > 0) {
+         var1.switches = var1.newIterableNodeHashTable(var6);
 
-      for(int var3 = 0; var3 < var2.length; ++var3) {
-         MouseWheel var4 = var2[var3];
-         if (var1 == var4.rsOrdinal()) {
-            return var4;
+         for(var7 = 0; var7 < var6; ++var7) {
+            var8 = var2.readUnsignedShort();
+            IterableNodeHashTable var9 = new IterableNodeHashTable(var8 > 0 ? WorldMapLabelSize.method4793(var8) : 1);
+            var1.switches[var7] = var9;
+
+            while(var8-- > 0) {
+               int var10 = var2.readInt();
+               int var11 = var2.readInt();
+               var9.put(new IntegerNode(var11), (long)var10);
+            }
          }
       }
 
-      return null;
-   }
+      var2.offset = 0;
+      var1.field965 = var2.readStringCp1252NullTerminatedOrNull();
+      var1.opcodes = new int[var5];
+      var1.intOperands = new int[var5];
+      var1.stringOperands = new String[var5];
 
-   @ObfuscatedName("w")
-   @ObfuscatedSignature(
-      descriptor = "(II)Lgk;",
-      garbageValue = "1400820827"
-   )
-   @Export("WorldMapElement_get")
-   public static WorldMapElement WorldMapElement_get(int var0) {
-      return var0 >= 0 && var0 < GrandExchangeOfferNameComparator.WorldMapElement_cached.length && GrandExchangeOfferNameComparator.WorldMapElement_cached[var0] != null ? GrandExchangeOfferNameComparator.WorldMapElement_cached[var0] : new WorldMapElement(var0);
-   }
-
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      descriptor = "(IB)I",
-      garbageValue = "103"
-   )
-   public static int method21(int var0) {
-      --var0;
-      var0 |= var0 >>> 1;
-      var0 |= var0 >>> 2;
-      var0 |= var0 >>> 4;
-      var0 |= var0 >>> 8;
-      var0 |= var0 >>> 16;
-      return var0 + 1;
-   }
-
-   @ObfuscatedName("b")
-   @ObfuscatedSignature(
-      descriptor = "(IIII)I",
-      garbageValue = "-669376956"
-   )
-   static final int method17(int var0, int var1, int var2) {
-      int var3 = var0 / var2;
-      int var4 = var0 & var2 - 1;
-      int var5 = var1 / var2;
-      int var6 = var1 & var2 - 1;
-      int var7 = Message.method1192(var3, var5);
-      int var8 = Message.method1192(var3 + 1, var5);
-      int var9 = Message.method1192(var3, var5 + 1);
-      int var10 = Message.method1192(var3 + 1, var5 + 1);
-      int var11 = class123.method3037(var7, var8, var4, var2);
-      int var12 = class123.method3037(var9, var10, var4, var2);
-      return class123.method3037(var11, var12, var6, var2);
-   }
-
-   @ObfuscatedName("as")
-   @ObfuscatedSignature(
-      descriptor = "(ILba;ZI)I",
-      garbageValue = "1899720097"
-   )
-   static int method22(int var0, Script var1, boolean var2) {
-      if (var0 == 7463) {
-         boolean var3 = Interpreter.Interpreter_intStack[--class302.Interpreter_intStackSize] == 1;
-         class194.method3809(var3);
-         return 1;
-      } else {
-         return 2;
+      for(var7 = 0; var2.offset < var4; var1.opcodes[var7++] = var8) {
+         var8 = var2.readUnsignedShort();
+         if (var8 == 3) {
+            var1.stringOperands[var7] = var2.readStringCp1252NullTerminated();
+         } else if (var8 < 100 && var8 != 21 && var8 != 38 && var8 != 39) {
+            var1.intOperands[var7] = var2.readInt();
+         } else {
+            var1.intOperands[var7] = var2.readUnsignedByte();
+         }
       }
+
+      return var1;
    }
 }

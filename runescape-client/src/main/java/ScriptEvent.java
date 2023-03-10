@@ -4,111 +4,142 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cd")
+@ObfuscatedName("dx")
 @Implements("ScriptEvent")
 public class ScriptEvent extends Node {
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
    @Export("args")
    Object[] args;
-   @ObfuscatedName("w")
-   @Export("isMouseInputEvent")
-   boolean isMouseInputEvent;
-   @ObfuscatedName("v")
+   @ObfuscatedName("al")
+   boolean field1046;
+   @ObfuscatedName("ac")
    @ObfuscatedSignature(
-      descriptor = "Lkz;"
+      descriptor = "Lmy;"
    )
    @Export("widget")
    Widget widget;
-   @ObfuscatedName("s")
+   @ObfuscatedName("ab")
    @ObfuscatedGetter(
-      intValue = -227463845
+      intValue = -1215525673
    )
    @Export("mouseX")
    int mouseX;
-   @ObfuscatedName("z")
+   @ObfuscatedName("an")
    @ObfuscatedGetter(
-      intValue = 1283983679
+      intValue = 1595874415
    )
    @Export("mouseY")
    int mouseY;
-   @ObfuscatedName("j")
+   @ObfuscatedName("ao")
    @ObfuscatedGetter(
-      intValue = 1632865199
+      intValue = -1303853145
    )
    @Export("opIndex")
    int opIndex;
-   @ObfuscatedName("i")
+   @ObfuscatedName("av")
    @ObfuscatedSignature(
-      descriptor = "Lkz;"
+      descriptor = "Lmy;"
    )
    @Export("dragTarget")
    Widget dragTarget;
-   @ObfuscatedName("n")
+   @ObfuscatedName("aq")
    @ObfuscatedGetter(
-      intValue = -1466980021
+      intValue = 1590198513
    )
    @Export("keyTyped")
    int keyTyped;
-   @ObfuscatedName("l")
+   @ObfuscatedName("ap")
    @ObfuscatedGetter(
-      intValue = -257259557
+      intValue = 2089751377
    )
    @Export("keyPressed")
    int keyPressed;
-   @ObfuscatedName("k")
+   @ObfuscatedName("ar")
    @Export("targetName")
    String targetName;
-   @ObfuscatedName("c")
+   @ObfuscatedName("ak")
    @ObfuscatedGetter(
-      intValue = 1989980605
+      intValue = 1158325503
    )
-   int field1071;
-   @ObfuscatedName("r")
+   int field1051;
+   @ObfuscatedName("ax")
    @ObfuscatedGetter(
-      intValue = 1561734475
+      intValue = -948515929
    )
    @Export("type")
    int type = 76;
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
       descriptor = "([Ljava/lang/Object;I)V",
-      garbageValue = "710868309"
+      garbageValue = "-1270007973"
    )
    @Export("setArgs")
    public void setArgs(Object[] var1) {
       this.args = var1;
    }
 
-   @ObfuscatedName("w")
+   @ObfuscatedName("al")
    @ObfuscatedSignature(
       descriptor = "(II)V",
-      garbageValue = "-2059816970"
+      garbageValue = "1638695958"
    )
    @Export("setType")
    public void setType(int var1) {
       this.type = var1;
    }
 
-   @ObfuscatedName("v")
+   @ObfuscatedName("ac")
    @ObfuscatedSignature(
-      descriptor = "(Lkz;I)V",
-      garbageValue = "826217061"
+      descriptor = "(Lmy;I)V",
+      garbageValue = "-376683317"
    )
-   public void method2313(Widget var1) {
+   public void method2260(Widget var1) {
       this.widget = var1;
    }
 
-   @ObfuscatedName("gj")
+   @ObfuscatedName("hq")
    @ObfuscatedSignature(
-      descriptor = "(IIB)V",
-      garbageValue = "-48"
+      descriptor = "(Ldq;IB)V",
+      garbageValue = "106"
    )
-   static void method2321(int var0, int var1) {
-      if (PacketWriter.clientPreferences.method2495() != 0 && var0 != -1) {
-         class148.method3216(MusicPatchNode.field3448, var0, 0, PacketWriter.clientPreferences.method2495(), false);
-         Client.playingJingle = true;
+   @Export("updateActorSequence")
+   static final void updateActorSequence(Actor var0, int var1) {
+      if (var0.field1196 >= Client.cycle) {
+         int var2 = Math.max(1, var0.field1196 - Client.cycle);
+         int var3 = var0.field1142 * -1172500480 + var0.field1192 * 128;
+         int var4 = var0.field1142 * -1172500480 + var0.field1194 * 128;
+         var0.x += (var3 - var0.x) / var2;
+         var0.y += (var4 - var0.y) / var2;
+         var0.field1214 = 0;
+         var0.orientation = var0.field1162;
+      } else if (var0.field1197 >= Client.cycle) {
+         class6.method37(var0);
+      } else {
+         class18.method273(var0);
       }
 
+      if (var0.x < 128 || var0.y < 128 || var0.x >= 13184 || var0.y >= 13184) {
+         var0.sequence = -1;
+         var0.spotAnimation = -1;
+         var0.field1196 = 0;
+         var0.field1197 = 0;
+         var0.x = var0.field1142 * -1172500480 + var0.pathX[0] * 128;
+         var0.y = var0.field1142 * -1172500480 + var0.pathY[0] * 128;
+         var0.method2371();
+      }
+
+      if (BuddyRankComparator.localPlayer == var0 && (var0.x < 1536 || var0.y < 1536 || var0.x >= 11776 || var0.y >= 11776)) {
+         var0.sequence = -1;
+         var0.spotAnimation = -1;
+         var0.field1196 = 0;
+         var0.field1197 = 0;
+         var0.x = var0.field1142 * -1172500480 + var0.pathX[0] * 128;
+         var0.y = var0.field1142 * -1172500480 + var0.pathY[0] * 128;
+         var0.method2371();
+      }
+
+      MenuAction.method2054(var0);
+      class13.method154(var0);
    }
 }

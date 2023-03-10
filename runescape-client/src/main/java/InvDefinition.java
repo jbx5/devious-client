@@ -1,36 +1,42 @@
+import java.awt.Component;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fz")
+@ObfuscatedName("hb")
 @Implements("InvDefinition")
 public class InvDefinition extends DualNode {
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
-      descriptor = "Lln;"
+      descriptor = "Lne;"
    )
    @Export("InvDefinition_archive")
-   public static AbstractArchive InvDefinition_archive;
-   @ObfuscatedName("w")
+   static AbstractArchive InvDefinition_archive;
+   @ObfuscatedName("al")
    @ObfuscatedSignature(
-      descriptor = "Lja;"
+      descriptor = "Lkt;"
    )
    @Export("InvDefinition_cached")
    static EvictingDualNodeHashTable InvDefinition_cached = new EvictingDualNodeHashTable(64);
-   @ObfuscatedName("bh")
-   @Export("otp")
-   static String otp;
-   @ObfuscatedName("ju")
+   @ObfuscatedName("af")
    @ObfuscatedSignature(
-      descriptor = "[Lrg;"
+      descriptor = "Lkh;"
    )
-   @Export("scrollBarSprites")
-   static IndexedSprite[] scrollBarSprites;
-   @ObfuscatedName("v")
+   @Export("worldMapEvent")
+   static WorldMapEvent worldMapEvent;
+   @ObfuscatedName("bj")
+   static String field1884;
+   @ObfuscatedName("op")
+   @ObfuscatedSignature(
+      descriptor = "Lmy;"
+   )
+   @Export("mousedOverWidgetIf1")
+   static Widget mousedOverWidgetIf1;
+   @ObfuscatedName("ac")
    @ObfuscatedGetter(
-      intValue = 540744757
+      intValue = -684508907
    )
    @Export("size")
    public int size = 0;
@@ -38,10 +44,10 @@ public class InvDefinition extends DualNode {
    InvDefinition() {
    }
 
-   @ObfuscatedName("w")
+   @ObfuscatedName("ac")
    @ObfuscatedSignature(
-      descriptor = "(Lrd;I)V",
-      garbageValue = "-336923015"
+      descriptor = "(Lsy;I)V",
+      garbageValue = "-667429593"
    )
    @Export("decode")
    void decode(Buffer var1) {
@@ -55,10 +61,10 @@ public class InvDefinition extends DualNode {
       }
    }
 
-   @ObfuscatedName("v")
+   @ObfuscatedName("ab")
    @ObfuscatedSignature(
-      descriptor = "(Lrd;IB)V",
-      garbageValue = "118"
+      descriptor = "(Lsy;II)V",
+      garbageValue = "454664689"
    )
    @Export("decodeNext")
    void decodeNext(Buffer var1, int var2) {
@@ -66,5 +72,17 @@ public class InvDefinition extends DualNode {
          this.size = var1.readUnsignedShort();
       }
 
+   }
+
+   @ObfuscatedName("al")
+   @ObfuscatedSignature(
+      descriptor = "(Ljava/awt/Component;B)V",
+      garbageValue = "16"
+   )
+   static void method3545(Component var0) {
+      var0.removeMouseListener(MouseHandler.MouseHandler_instance);
+      var0.removeMouseMotionListener(MouseHandler.MouseHandler_instance);
+      var0.removeFocusListener(MouseHandler.MouseHandler_instance);
+      MouseHandler.MouseHandler_currentButtonVolatile = 0;
    }
 }

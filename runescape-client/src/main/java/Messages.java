@@ -5,122 +5,342 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("dz")
+@ObfuscatedName("ex")
 @Implements("Messages")
 public class Messages {
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
    @Export("Messages_channels")
    static final Map Messages_channels = new HashMap();
-   @ObfuscatedName("w")
+   @ObfuscatedName("al")
    @ObfuscatedSignature(
-      descriptor = "Lqu;"
+      descriptor = "Lrz;"
    )
    @Export("Messages_hashTable")
    static final IterableNodeHashTable Messages_hashTable = new IterableNodeHashTable(1024);
-   @ObfuscatedName("v")
+   @ObfuscatedName("ac")
    @ObfuscatedSignature(
-      descriptor = "Lmc;"
+      descriptor = "Lnh;"
    )
    @Export("Messages_queue")
    static final IterableDualNodeQueue Messages_queue = new IterableDualNodeQueue();
-   @ObfuscatedName("s")
+   @ObfuscatedName("ab")
    @ObfuscatedGetter(
-      intValue = -20630993
+      intValue = -2117975007
    )
    @Export("Messages_count")
    static int Messages_count = 0;
-   @ObfuscatedName("b")
-   static boolean field1381;
-
-   @ObfuscatedName("s")
-   @ObfuscatedSignature(
-      descriptor = "(Lda;FZI)F",
-      garbageValue = "-2108882173"
+   @ObfuscatedName("gl")
+   @ObfuscatedGetter(
+      intValue = -943031545
    )
-   static float method2821(class125 var0, float var1, boolean var2) {
-      float var3 = 0.0F;
-      if (var0 != null && var0.method3060() != 0) {
-         float var4 = (float)var0.field1524[0].field1474;
-         float var5 = (float)var0.field1524[var0.method3060() - 1].field1474;
-         float var6 = var5 - var4;
-         if ((double)var6 == 0.0) {
-            return var0.field1524[0].field1467;
-         } else {
-            float var7 = 0.0F;
-            if (var1 > var5) {
-               var7 = (var1 - var5) / var6;
-            } else {
-               var7 = (var1 - var4) / var6;
-            }
+   static int field1375;
+   @ObfuscatedName("qp")
+   @ObfuscatedSignature(
+      descriptor = "Lrw;"
+   )
+   @Export("HitSplatDefinition_cached")
+   static class462 HitSplatDefinition_cached;
 
-            double var8 = (double)((int)var7);
-            float var10 = Math.abs((float)((double)var7 - var8));
-            float var11 = var10 * var6;
-            var8 = Math.abs(1.0 + var8);
-            double var12 = var8 / 2.0;
-            double var14 = (double)((int)var12);
-            var10 = (float)(var12 - var14);
-            float var16;
-            float var17;
-            if (var2) {
-               if (var0.field1522 == class123.field1505) {
-                  if ((double)var10 != 0.0) {
-                     var11 += var4;
-                  } else {
-                     var11 = var5 - var11;
-                  }
-               } else if (var0.field1522 != class123.field1503 && var0.field1522 != class123.field1506) {
-                  if (var0.field1522 == class123.field1504) {
-                     var11 = var4 - var1;
-                     var16 = var0.field1524[0].field1469;
-                     var17 = var0.field1524[0].field1470;
-                     var3 = var0.field1524[0].field1467;
-                     if (0.0 != (double)var16) {
-                        var3 -= var17 * var11 / var16;
+   @ObfuscatedName("ah")
+   @ObfuscatedSignature(
+      descriptor = "(ILcv;ZI)I",
+      garbageValue = "577265757"
+   )
+   static int method2762(int var0, Script var1, boolean var2) {
+      if (var0 == ScriptOpcodes.SOUND_SYNTH) {
+         Interpreter.Interpreter_intStackSize -= 3;
+         Skills.queueSoundEffect(Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize], Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1], Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 2]);
+         return 1;
+      } else if (var0 == ScriptOpcodes.SOUND_SONG) {
+         Language.playSong(Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]);
+         return 1;
+      } else if (var0 == ScriptOpcodes.SOUND_JINGLE) {
+         Interpreter.Interpreter_intStackSize -= 2;
+         class19.method278(Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize], Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1]);
+         return 1;
+      } else {
+         class88 var3;
+         class87 var4;
+         int var5;
+         int var6;
+         String var12;
+         if (var0 != 3212 && var0 != 3213 && var0 != 3209 && var0 != 3181 && var0 != 3203 && var0 != 3205 && var0 != 3207) {
+            boolean var13;
+            if (var0 != 3214 && var0 != 3215 && var0 != 3210 && var0 != 3182 && var0 != 3204 && var0 != 3206 && var0 != 3208) {
+               if (var0 == 3211) {
+                  return 1;
+               } else {
+                  int var9;
+                  int var10;
+                  if (var0 == 3216) {
+                     var9 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+                     var10 = 0;
+                     class88 var16 = (class88)SpriteMask.findEnumerated(ParamComposition.method3791(), var9);
+                     if (var16 != null) {
+                        var10 = var16 != class88.field1083 ? 1 : 0;
                      }
 
-                     return var3;
-                  }
-               } else {
-                  var11 = var5 - var11;
-               }
-            } else if (var0.field1541 == class123.field1505) {
-               if (0.0 != (double)var10) {
-                  var11 = var5 - var11;
-               } else {
-                  var11 += var4;
-               }
-            } else if (var0.field1541 != class123.field1503 && var0.field1541 != class123.field1506) {
-               if (var0.field1541 == class123.field1504) {
-                  var11 = var1 - var5;
-                  var16 = var0.field1524[var0.method3060() - 1].field1473;
-                  var17 = var0.field1524[var0.method3060() - 1].field1472;
-                  var3 = var0.field1524[var0.method3060() - 1].field1467;
-                  if (0.0 != (double)var16) {
-                     var3 += var17 * var11 / var16;
-                  }
+                     Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var10;
+                     return 1;
+                  } else if (var0 == 3218) {
+                     var9 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+                     var10 = 0;
+                     class87 var11 = (class87)SpriteMask.findEnumerated(class122.method2896(), var9);
+                     if (var11 != null) {
+                        var10 = var11 != class87.field1069 ? 1 : 0;
+                     }
 
-                  return var3;
+                     Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var10;
+                     return 1;
+                  } else if (var0 != 3217 && var0 != 3219) {
+                     return 2;
+                  } else {
+                     var3 = class88.field1083;
+                     var4 = class87.field1069;
+                     var13 = true;
+                     boolean var14 = true;
+                     int var7;
+                     if (var0 == 3217) {
+                        var7 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+                        var3 = (class88)SpriteMask.findEnumerated(ParamComposition.method3791(), var7);
+                        if (var3 == null) {
+                           throw new RuntimeException(String.format("Unrecognized device option %d", var7));
+                        }
+                     }
+
+                     if (var0 == 3219) {
+                        var7 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+                        var4 = (class87)SpriteMask.findEnumerated(class122.method2896(), var7);
+                        if (var4 == null) {
+                           throw new RuntimeException(String.format("Unrecognized game option %d", var7));
+                        }
+                     }
+
+                     String var8;
+                     byte var15;
+                     if (var4 == class87.field1069) {
+                        switch (var3.field1079) {
+                           case 1:
+                           case 2:
+                           case 3:
+                              var15 = 0;
+                              var6 = 1;
+                              break;
+                           case 4:
+                              var15 = 0;
+                              var6 = Integer.MAX_VALUE;
+                              break;
+                           case 5:
+                              var15 = 0;
+                              var6 = 100;
+                              break;
+                           default:
+                              var8 = String.format("Unkown device option: %s.", var3.toString());
+                              throw new RuntimeException(var8);
+                        }
+                     } else {
+                        switch (var4.field1073) {
+                           case 1:
+                              var15 = 0;
+                              var6 = 1;
+                              break;
+                           case 2:
+                           case 3:
+                           case 4:
+                              var15 = 0;
+                              var6 = 100;
+                              break;
+                           default:
+                              var8 = String.format("Unkown game option: %s.", var4.toString());
+                              throw new RuntimeException(var8);
+                        }
+                     }
+
+                     Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var15;
+                     Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var6;
+                     return 1;
+                  }
                }
             } else {
-               var11 += var4;
+               var3 = class88.field1083;
+               var4 = class87.field1069;
+               var13 = false;
+               if (var0 == 3214) {
+                  var6 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+                  var3 = (class88)SpriteMask.findEnumerated(ParamComposition.method3791(), var6);
+                  if (var3 == null) {
+                     throw new RuntimeException(String.format("Unrecognized device option %d", var6));
+                  }
+               }
+
+               if (var0 == 3215) {
+                  var6 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+                  var4 = (class87)SpriteMask.findEnumerated(class122.method2896(), var6);
+                  if (var4 == null) {
+                     throw new RuntimeException(String.format("Unrecognized game option %d", var6));
+                  }
+               }
+
+               if (var0 == 3210) {
+                  var6 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+                  var3 = (class88)SpriteMask.findEnumerated(ParamComposition.method3791(), var6);
+                  if (var3 == null) {
+                     var4 = (class87)SpriteMask.findEnumerated(class122.method2896(), var6);
+                     if (var4 == null) {
+                        throw new RuntimeException(String.format("Unrecognized client option %d", var6));
+                     }
+                  }
+               } else if (var0 == 3182) {
+                  var3 = class88.field1082;
+               } else if (var0 == 3204) {
+                  var4 = class87.field1070;
+               } else if (var0 == 3206) {
+                  var4 = class87.field1076;
+               } else if (var0 == 3208) {
+                  var4 = class87.field1072;
+               }
+
+               if (var4 == class87.field1069) {
+                  switch (var3.field1079) {
+                     case 1:
+                        var5 = WorldMapSectionType.clientPreferences.method2429() ? 1 : 0;
+                        break;
+                     case 2:
+                        var5 = WorldMapSectionType.clientPreferences.method2445() ? 1 : 0;
+                        break;
+                     case 3:
+                        var5 = WorldMapSectionType.clientPreferences.method2426() ? 1 : 0;
+                        break;
+                     case 4:
+                        var5 = WorldMapSectionType.clientPreferences.method2529();
+                        break;
+                     case 5:
+                        var5 = NetCache.method6534();
+                        break;
+                     default:
+                        var12 = String.format("Unkown device option: %s.", var3.toString());
+                        throw new RuntimeException(var12);
+                  }
+               } else {
+                  switch (var4.field1073) {
+                     case 1:
+                        var5 = WorldMapSectionType.clientPreferences.method2458() ? 1 : 0;
+                        break;
+                     case 2:
+                        var6 = WorldMapSectionType.clientPreferences.method2440();
+                        var5 = Math.round((float)(var6 * 100) / 255.0F);
+                        break;
+                     case 3:
+                        var6 = WorldMapSectionType.clientPreferences.method2442();
+                        var5 = Math.round((float)(var6 * 100) / 127.0F);
+                        break;
+                     case 4:
+                        var6 = WorldMapSectionType.clientPreferences.method2463();
+                        var5 = Math.round((float)(var6 * 100) / 127.0F);
+                        break;
+                     default:
+                        var12 = String.format("Unkown game option: %s.", var4.toString());
+                        throw new RuntimeException(var12);
+                  }
+               }
+
+               Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var5;
+               return 1;
+            }
+         } else {
+            var3 = class88.field1083;
+            var4 = class87.field1069;
+            var5 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+            if (var0 == 3212) {
+               var6 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+               var3 = (class88)SpriteMask.findEnumerated(ParamComposition.method3791(), var6);
+               if (var3 == null) {
+                  throw new RuntimeException(String.format("Unrecognized device option %d", var6));
+               }
             }
 
-            var3 = UrlRequester.method2874(var0, var11);
-            float var18;
-            if (var2 && var0.field1522 == class123.field1506) {
-               var18 = var0.field1524[var0.method3060() - 1].field1467 - var0.field1524[0].field1467;
-               var3 = (float)((double)var3 - var8 * (double)var18);
-            } else if (!var2 && var0.field1541 == class123.field1506) {
-               var18 = var0.field1524[var0.method3060() - 1].field1467 - var0.field1524[0].field1467;
-               var3 = (float)((double)var3 + var8 * (double)var18);
+            if (var0 == 3213) {
+               var6 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+               var4 = (class87)SpriteMask.findEnumerated(class122.method2896(), var6);
+               if (var4 == null) {
+                  throw new RuntimeException(String.format("Unrecognized game option %d", var6));
+               }
             }
 
-            return var3;
+            if (var0 == 3209) {
+               var6 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+               var3 = (class88)SpriteMask.findEnumerated(ParamComposition.method3791(), var6);
+               if (var3 == null) {
+                  var4 = (class87)SpriteMask.findEnumerated(class122.method2896(), var6);
+                  if (var4 == null) {
+                     throw new RuntimeException(String.format("Unrecognized client option %d", var6));
+                  }
+               }
+            } else if (var0 == 3181) {
+               var3 = class88.field1082;
+            } else if (var0 == 3203) {
+               var4 = class87.field1070;
+            } else if (var0 == 3205) {
+               var4 = class87.field1076;
+            } else if (var0 == 3207) {
+               var4 = class87.field1072;
+            }
+
+            if (var4 == class87.field1069) {
+               switch (var3.field1079) {
+                  case 1:
+                     WorldMapSectionType.clientPreferences.method2459(var5 == 1);
+                     break;
+                  case 2:
+                     WorldMapSectionType.clientPreferences.method2500(var5 == 1);
+                     break;
+                  case 3:
+                     WorldMapSectionType.clientPreferences.method2523(var5 == 1);
+                     break;
+                  case 4:
+                     if (var5 < 0) {
+                        var5 = 0;
+                     }
+
+                     WorldMapSectionType.clientPreferences.method2435(var5);
+                     break;
+                  case 5:
+                     Skeleton.method4384(var5);
+                     break;
+                  default:
+                     var12 = String.format("Unkown device option: %s.", var3.toString());
+                     throw new RuntimeException(var12);
+               }
+            } else {
+               switch (var4.field1073) {
+                  case 1:
+                     WorldMapSectionType.clientPreferences.method2432(var5 == 1);
+                     break;
+                  case 2:
+                     var5 = Math.min(Math.max(var5, 0), 100);
+                     var6 = Math.round((float)(var5 * 255) / 100.0F);
+                     class70.method2047(var6);
+                     break;
+                  case 3:
+                     var5 = Math.min(Math.max(var5, 0), 100);
+                     var6 = Math.round((float)(var5 * 127) / 100.0F);
+                     ApproximateRouteStrategy.method1201(var6);
+                     break;
+                  case 4:
+                     var5 = Math.min(Math.max(var5, 0), 100);
+                     var6 = Math.round((float)(var5 * 127) / 100.0F);
+                     class12.method151(var6);
+                     break;
+                  default:
+                     var12 = String.format("Unkown game option: %s.", var4.toString());
+                     throw new RuntimeException(var12);
+               }
+            }
+
+            return 1;
          }
-      } else {
-         return var3;
       }
    }
 }

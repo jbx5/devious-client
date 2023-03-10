@@ -3,47 +3,70 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("rm")
-public class class482 {
-   @ObfuscatedName("sm")
+@ObfuscatedName("sg")
+public class class482 implements MouseWheel {
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
-      descriptor = "Lfm;"
+      descriptor = "Lsg;"
    )
-   @Export("guestClanChannel")
-   static ClanChannel guestClanChannel;
-   @ObfuscatedName("f")
+   public static final class482 field4962 = new class482(5, 0);
+   @ObfuscatedName("al")
+   @ObfuscatedSignature(
+      descriptor = "Lsg;"
+   )
+   public static final class482 field4956 = new class482(3, 2);
+   @ObfuscatedName("ac")
+   @ObfuscatedSignature(
+      descriptor = "Lsg;"
+   )
+   static final class482 field4957 = new class482(2, 5);
+   @ObfuscatedName("ab")
+   @ObfuscatedSignature(
+      descriptor = "Lsg;"
+   )
+   static final class482 field4955 = new class482(1, 6);
+   @ObfuscatedName("an")
+   @ObfuscatedSignature(
+      descriptor = "Lsg;"
+   )
+   static final class482 field4959 = new class482(0, 7);
+   @ObfuscatedName("ao")
+   @ObfuscatedSignature(
+      descriptor = "Lsg;"
+   )
+   static final class482 field4960 = new class482(4, 8);
+   @ObfuscatedName("av")
    @ObfuscatedGetter(
-      intValue = -307864915
+      intValue = -539848629
    )
-   public final int field5003;
-   @ObfuscatedName("w")
-   public Object field5004;
+   final int field4961;
+   @ObfuscatedName("aq")
+   @ObfuscatedGetter(
+      intValue = -1027217745
+   )
+   final int field4958;
 
-   public class482(int var1) {
-      this.field5003 = var1;
+   class482(int var1, int var2) {
+      this.field4961 = var1;
+      this.field4958 = var2;
    }
 
-   public class482(int var1, Object var2) {
-      this.field5003 = var1;
-      this.field5004 = var2;
+   @ObfuscatedName("aj")
+   @ObfuscatedSignature(
+      descriptor = "(I)I",
+      garbageValue = "-1409646049"
+   )
+   @Export("rsOrdinal")
+   public int rsOrdinal() {
+      return this.field4958;
    }
 
-   public int hashCode() {
-      return super.hashCode();
-   }
-
-   public boolean equals(Object var1) {
-      if (!(var1 instanceof class482)) {
-         return false;
-      } else {
-         class482 var2 = (class482)var1;
-         if (var2.field5004 == null && this.field5004 != null) {
-            return false;
-         } else if (this.field5004 == null && var2.field5004 != null) {
-            return false;
-         } else {
-            return this.field5003 == var2.field5003 && var2.field5004.equals(this.field5004);
-         }
-      }
+   @ObfuscatedName("ab")
+   @ObfuscatedSignature(
+      descriptor = "(I)Z",
+      garbageValue = "-1427661354"
+   )
+   public boolean method8928() {
+      return this == field4956;
    }
 }

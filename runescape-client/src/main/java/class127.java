@@ -3,216 +3,238 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dx")
-public class class127 implements MouseWheel {
-   @ObfuscatedName("f")
+@ObfuscatedName("ew")
+public class class127 {
+   @ObfuscatedName("fx")
    @ObfuscatedSignature(
-      descriptor = "Ldx;"
+      descriptor = "Lmx;"
    )
-   static final class127 field1566 = new class127(0, 0, (String)null, -1, -1);
-   @ObfuscatedName("w")
+   @Export("archive17")
+   static Archive archive17;
+   @ObfuscatedName("aj")
+   boolean field1508;
+   @ObfuscatedName("al")
+   boolean field1498;
+   @ObfuscatedName("ac")
    @ObfuscatedSignature(
-      descriptor = "Ldx;"
+      descriptor = "Lej;"
    )
-   static final class127 field1559 = new class127(1, 1, (String)null, 0, 2);
-   @ObfuscatedName("v")
+   class125 field1499;
+   @ObfuscatedName("ab")
    @ObfuscatedSignature(
-      descriptor = "Ldx;"
+      descriptor = "Lej;"
    )
-   static final class127 field1568 = new class127(2, 2, (String)null, 1, 2);
-   @ObfuscatedName("s")
+   class125 field1512;
+   @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "Ldx;"
+      descriptor = "[Leq;"
    )
-   static final class127 field1560 = new class127(3, 3, (String)null, 2, 2);
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      descriptor = "Ldx;"
-   )
-   static final class127 field1562 = new class127(4, 4, (String)null, 3, 1);
-   @ObfuscatedName("j")
-   @ObfuscatedSignature(
-      descriptor = "Ldx;"
-   )
-   static final class127 field1578 = new class127(5, 5, (String)null, 4, 1);
-   @ObfuscatedName("i")
-   @ObfuscatedSignature(
-      descriptor = "Ldx;"
-   )
-   static final class127 field1564 = new class127(6, 6, (String)null, 5, 1);
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      descriptor = "Ldx;"
-   )
-   static final class127 field1565 = new class127(7, 7, (String)null, 6, 3);
-   @ObfuscatedName("l")
-   @ObfuscatedSignature(
-      descriptor = "Ldx;"
-   )
-   static final class127 field1561 = new class127(8, 8, (String)null, 7, 3);
-   @ObfuscatedName("k")
-   @ObfuscatedSignature(
-      descriptor = "Ldx;"
-   )
-   static final class127 field1567 = new class127(9, 9, (String)null, 8, 3);
-   @ObfuscatedName("c")
-   @ObfuscatedSignature(
-      descriptor = "Ldx;"
-   )
-   static final class127 field1563 = new class127(10, 10, (String)null, 0, 7);
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      descriptor = "Ldx;"
-   )
-   static final class127 field1569 = new class127(11, 11, (String)null, 1, 7);
-   @ObfuscatedName("b")
-   @ObfuscatedSignature(
-      descriptor = "Ldx;"
-   )
-   static final class127 field1570 = new class127(12, 12, (String)null, 2, 7);
-   @ObfuscatedName("m")
-   @ObfuscatedSignature(
-      descriptor = "Ldx;"
-   )
-   static final class127 field1571 = new class127(13, 13, (String)null, 3, 7);
-   @ObfuscatedName("t")
-   @ObfuscatedSignature(
-      descriptor = "Ldx;"
-   )
-   static final class127 field1572 = new class127(14, 14, (String)null, 4, 7);
-   @ObfuscatedName("h")
-   @ObfuscatedSignature(
-      descriptor = "Ldx;"
-   )
-   static final class127 field1573 = new class127(15, 15, (String)null, 5, 7);
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      descriptor = "Ldx;"
-   )
-   static final class127 field1574 = new class127(16, 16, (String)null, 0, 5);
-   @ObfuscatedName("e")
+   class122[] field1501;
+   @ObfuscatedName("ao")
+   boolean field1519;
+   @ObfuscatedName("av")
+   float field1505;
+   @ObfuscatedName("aq")
+   float field1504;
+   @ObfuscatedName("ap")
+   float field1521;
+   @ObfuscatedName("ar")
+   float field1506;
+   @ObfuscatedName("ak")
+   float field1507;
+   @ObfuscatedName("ax")
+   float field1500;
+   @ObfuscatedName("as")
+   float field1509;
+   @ObfuscatedName("ay")
+   float field1510;
+   @ObfuscatedName("am")
+   float field1511;
+   @ObfuscatedName("az")
+   float field1520;
+   @ObfuscatedName("ae")
+   boolean field1513 = true;
+   @ObfuscatedName("au")
    @ObfuscatedGetter(
-      intValue = -1659069287
+      intValue = -2048973097
    )
-   @Export("canvasHeight")
-   public static int canvasHeight;
-   @ObfuscatedName("o")
+   int field1503 = 0;
+   @ObfuscatedName("ag")
+   float[] field1515;
+   @ObfuscatedName("at")
    @ObfuscatedGetter(
-      intValue = 501208477
+      intValue = 856746677
    )
-   final int field1575;
-   @ObfuscatedName("u")
+   int field1516;
+   @ObfuscatedName("af")
    @ObfuscatedGetter(
-      intValue = 954569001
+      intValue = -125025945
    )
-   final int field1576;
-   @ObfuscatedName("x")
-   @ObfuscatedGetter(
-      intValue = -562475213
-   )
-   final int field1577;
+   int field1517;
+   @ObfuscatedName("ai")
+   float field1518;
+   @ObfuscatedName("aw")
+   float field1514;
 
-   @ObfuscatedSignature(
-      descriptor = "(IILjava/lang/String;II)V",
-      garbageValue = "-1"
-   )
-   class127(int var1, int var2, String var3, int var4, int var5) {
-      this.field1575 = var1;
-      this.field1576 = var2;
-      this.field1577 = var4;
+   class127() {
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
+   @ObfuscatedSignature(
+      descriptor = "(Lsy;IB)I",
+      garbageValue = "-73"
+   )
+   int method2972(Buffer var1, int var2) {
+      int var3 = var1.readUnsignedShort();
+      class152.method3268(var1.readUnsignedByte());
+      this.field1499 = ApproximateRouteStrategy.method1203(var1.readUnsignedByte());
+      this.field1512 = ApproximateRouteStrategy.method1203(var1.readUnsignedByte());
+      this.field1508 = var1.readUnsignedByte() != 0;
+      this.field1501 = new class122[var3];
+      class122 var4 = null;
+
+      for(int var5 = 0; var5 < var3; ++var5) {
+         class122 var6 = new class122();
+         var6.method2892(var1, var2);
+         this.field1501[var5] = var6;
+         if (var4 != null) {
+            var4.field1451 = var6;
+         }
+
+         var4 = var6;
+      }
+
+      return var3;
+   }
+
+   @ObfuscatedName("al")
+   @ObfuscatedSignature(
+      descriptor = "(B)V",
+      garbageValue = "11"
+   )
+   void method2995() {
+      this.field1516 = this.field1501[0].field1455;
+      this.field1517 = this.field1501[this.method2980() - 1].field1455;
+      this.field1515 = new float[this.method2977() + 1];
+
+      for(int var1 = this.method2983(); var1 <= this.method2976(); ++var1) {
+         this.field1515[var1 - this.method2983()] = AttackOption.method2646(this, (float)var1);
+      }
+
+      this.field1501 = null;
+      this.field1518 = AttackOption.method2646(this, (float)(this.method2983() - 1));
+      this.field1514 = AttackOption.method2646(this, (float)(this.method2976() + 1));
+   }
+
+   @ObfuscatedName("ac")
+   @ObfuscatedSignature(
+      descriptor = "(II)F",
+      garbageValue = "-58733500"
+   )
+   public float method2974(int var1) {
+      if (var1 < this.method2983()) {
+         return this.field1518;
+      } else {
+         return var1 > this.method2976() ? this.field1514 : this.field1515[var1 - this.method2983()];
+      }
+   }
+
+   @ObfuscatedName("ab")
    @ObfuscatedSignature(
       descriptor = "(B)I",
-      garbageValue = "3"
+      garbageValue = "-71"
    )
-   @Export("rsOrdinal")
-   public int rsOrdinal() {
-      return this.field1576;
+   int method2983() {
+      return this.field1516;
    }
 
-   @ObfuscatedName("s")
+   @ObfuscatedName("an")
    @ObfuscatedSignature(
       descriptor = "(I)I",
-      garbageValue = "608537711"
+      garbageValue = "-920980756"
    )
-   int method3076() {
-      return this.field1577;
+   int method2976() {
+      return this.field1517;
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("ao")
    @ObfuscatedSignature(
-      descriptor = "(Lrd;Lqu;S)Lqu;",
-      garbageValue = "640"
+      descriptor = "(I)I",
+      garbageValue = "-594070844"
    )
-   @Export("readStringIntParameters")
-   static final IterableNodeHashTable readStringIntParameters(Buffer var0, IterableNodeHashTable var1) {
-      int var2 = var0.readUnsignedByte();
-      int var3;
-      if (var1 == null) {
-         var3 = class4.method21(var2);
-         var1 = new IterableNodeHashTable(var3);
-      }
-
-      for(var3 = 0; var3 < var2; ++var3) {
-         boolean var4 = var0.readUnsignedByte() == 1;
-         int var5 = var0.readMedium();
-         Object var6;
-         if (var4) {
-            var6 = new ObjectNode(var0.readStringCp1252NullTerminated());
-         } else {
-            var6 = new IntegerNode(var0.readInt());
-         }
-
-         var1.put((Node)var6, (long)var5);
-      }
-
-      return var1;
+   int method2977() {
+      return this.method2976() - this.method2983();
    }
 
-   @ObfuscatedName("jd")
+   @ObfuscatedName("av")
    @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "1463549710"
+      descriptor = "(FI)I",
+      garbageValue = "1606006629"
    )
-   @Export("menuSort")
-   static final void menuSort() {
-      boolean var0 = false;
+   int method2997(float var1) {
+      if (this.field1503 < 0 || !((float)this.field1501[this.field1503].field1455 <= var1) || this.field1501[this.field1503].field1451 != null && !((float)this.field1501[this.field1503].field1451.field1455 > var1)) {
+         if (!(var1 < (float)this.method2983()) && !(var1 > (float)this.method2976())) {
+            int var2 = this.method2980();
+            int var3 = this.field1503;
+            if (var2 > 0) {
+               int var4 = 0;
+               int var5 = var2 - 1;
 
-      while(!var0) {
-         var0 = true;
+               do {
+                  int var6 = var4 + var5 >> 1;
+                  if (var1 < (float)this.field1501[var6].field1455) {
+                     if (var1 > (float)this.field1501[var6 - 1].field1455) {
+                        var3 = var6 - 1;
+                        break;
+                     }
 
-         for(int var1 = 0; var1 < Client.menuOptionsCount - 1; ++var1) {
-            if (Client.menuOpcodes[var1] < 1000 && Client.menuOpcodes[var1 + 1] > 1000) {
-               String var2 = Client.menuTargets[var1];
-               Client.menuTargets[var1] = Client.menuTargets[var1 + 1];
-               Client.menuTargets[var1 + 1] = var2;
-               String var3 = Client.menuActions[var1];
-               Client.menuActions[var1] = Client.menuActions[var1 + 1];
-               Client.menuActions[var1 + 1] = var3;
-               int var4 = Client.menuOpcodes[var1];
-               Client.menuOpcodes[var1] = Client.menuOpcodes[var1 + 1];
-               Client.menuOpcodes[var1 + 1] = var4;
-               var4 = Client.menuArguments1[var1];
-               Client.menuArguments1[var1] = Client.menuArguments1[var1 + 1];
-               Client.menuArguments1[var1 + 1] = var4;
-               var4 = Client.menuArguments2[var1];
-               Client.menuArguments2[var1] = Client.menuArguments2[var1 + 1];
-               Client.menuArguments2[var1 + 1] = var4;
-               var4 = Client.menuIdentifiers[var1];
-               Client.menuIdentifiers[var1] = Client.menuIdentifiers[var1 + 1];
-               Client.menuIdentifiers[var1 + 1] = var4;
-               var4 = Client.menuItemIds[var1];
-               Client.menuItemIds[var1] = Client.menuItemIds[var1 + 1];
-               Client.menuItemIds[var1 + 1] = var4;
-               boolean var5 = Client.menuShiftClick[var1];
-               Client.menuShiftClick[var1] = Client.menuShiftClick[var1 + 1];
-               Client.menuShiftClick[var1 + 1] = var5;
-               var0 = false;
+                     var5 = var6 - 1;
+                  } else {
+                     if (!(var1 > (float)this.field1501[var6].field1455)) {
+                        var3 = var6;
+                        break;
+                     }
+
+                     if (var1 < (float)this.field1501[var6 + 1].field1455) {
+                        var3 = var6;
+                        break;
+                     }
+
+                     var4 = var6 + 1;
+                  }
+               } while(var4 <= var5);
             }
-         }
-      }
 
+            if (var3 != this.field1503) {
+               this.field1503 = var3;
+               this.field1513 = true;
+            }
+
+            return this.field1503;
+         } else {
+            return -1;
+         }
+      } else {
+         return this.field1503;
+      }
+   }
+
+   @ObfuscatedName("aq")
+   @ObfuscatedSignature(
+      descriptor = "(FI)Leq;",
+      garbageValue = "1483862611"
+   )
+   class122 method2978(float var1) {
+      int var2 = this.method2997(var1);
+      return var2 >= 0 && var2 < this.field1501.length ? this.field1501[var2] : null;
+   }
+
+   @ObfuscatedName("ap")
+   @ObfuscatedSignature(
+      descriptor = "(B)I",
+      garbageValue = "-61"
+   )
+   int method2980() {
+      return this.field1501 == null ? 0 : this.field1501.length;
    }
 }

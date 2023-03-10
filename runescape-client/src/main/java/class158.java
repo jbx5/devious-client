@@ -3,54 +3,50 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fh")
-public class class158 extends class139 {
-   @ObfuscatedName("p")
-   @Export("cacheParentPaths")
-   public static String[] cacheParentPaths;
-   @ObfuscatedName("f")
+@ObfuscatedName("gb")
+public class class158 extends class140 {
+   @ObfuscatedName("ah")
+   @Export("BZip2Decompressor_block")
+   static int[] BZip2Decompressor_block;
+   @ObfuscatedName("aj")
    @ObfuscatedGetter(
-      intValue = 894252117
+      intValue = -534646765
    )
-   int field1783;
+   int field1750;
+   @ObfuscatedName("al")
+   @ObfuscatedGetter(
+      intValue = 731087325
+   )
+   int field1749;
    // $FF: synthetic field
    @ObfuscatedSignature(
-      descriptor = "Lex;"
+      descriptor = "Lfo;"
    )
-   final class142 this$0;
+   final class143 this$0;
 
    @ObfuscatedSignature(
-      descriptor = "(Lex;)V"
+      descriptor = "(Lfo;)V"
    )
-   class158(class142 var1) {
+   class158(class143 var1) {
       this.this$0 = var1;
-      this.field1783 = -1;
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
-      descriptor = "(Lrd;S)V",
-      garbageValue = "-5782"
+      descriptor = "(Lsy;I)V",
+      garbageValue = "-1979280996"
    )
-   void vmethod3394(Buffer var1) {
-      this.field1783 = var1.readUnsignedShort();
+   void vmethod3361(Buffer var1) {
+      this.field1750 = var1.readInt();
+      this.field1749 = var1.readInt();
    }
 
-   @ObfuscatedName("w")
+   @ObfuscatedName("al")
    @ObfuscatedSignature(
-      descriptor = "(Leb;B)V",
-      garbageValue = "-26"
+      descriptor = "(Lfi;B)V",
+      garbageValue = "29"
    )
-   void vmethod3393(ClanSettings var1) {
-      var1.method3265(this.field1783);
-   }
-
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      descriptor = "(Ljava/lang/String;II)Z",
-      garbageValue = "-1623657899"
-   )
-   static boolean method3351(String var0, int var1) {
-      return class154.method3319(var0, var1, "openjs");
+   void vmethod3362(ClanSettings var1) {
+      var1.method3243(this.field1750, this.field1749);
    }
 }

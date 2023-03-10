@@ -605,8 +605,8 @@ public interface Widget extends Interactable, Identifiable
 	 */
 	Widget setPos(int x, int y);
 	Widget setPos(int x, int y,
-		@MagicConstant(valuesFromClass = WidgetPositionMode.class) int xMode,
-		@MagicConstant(valuesFromClass = WidgetPositionMode.class) int yMode);
+				  @MagicConstant(valuesFromClass = WidgetPositionMode.class) int xMode,
+				  @MagicConstant(valuesFromClass = WidgetPositionMode.class) int yMode);
 
 	/**
 	 * Gets the height coordinate of this widget before being adjusted by
@@ -638,8 +638,8 @@ public interface Widget extends Interactable, Identifiable
 
 	Widget setSize(int width, int height);
 	Widget setSize(int width, int height,
-		@MagicConstant(valuesFromClass = WidgetSizeMode.class) int widthMode,
-		@MagicConstant(valuesFromClass = WidgetSizeMode.class) int heightMode);
+				   @MagicConstant(valuesFromClass = WidgetSizeMode.class) int widthMode,
+				   @MagicConstant(valuesFromClass = WidgetSizeMode.class) int heightMode);
 
 	/**
 	 * Gets the menu options available on the widget as a sparse array.

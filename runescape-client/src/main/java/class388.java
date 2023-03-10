@@ -1,57 +1,55 @@
-import java.util.Comparator;
-import java.util.Map;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("nl")
-class class388 implements Comparator {
-   @ObfuscatedName("s")
-   @ObfuscatedGetter(
-      intValue = -1393816003
-   )
-   public static int field4510;
-   @ObfuscatedName("qb")
+@ObfuscatedName("oq")
+public class class388 {
+   @ObfuscatedName("ab")
    @ObfuscatedSignature(
-      descriptor = "Lpq;"
+      descriptor = "(IIILhu;II)V",
+      garbageValue = "2037948415"
    )
-   static class421 field4512;
-   // $FF: synthetic field
-   @ObfuscatedSignature(
-      descriptor = "Lnx;"
-   )
-   final class387 this$0;
+   static void method7347(int var0, int var1, int var2, ObjectComposition var3, int var4) {
+      ObjectSound var5 = new ObjectSound();
+      var5.plane = var0;
+      var5.x = var1 * 128;
+      var5.y = var2 * 128;
+      int var6 = var3.sizeX;
+      int var7 = var3.sizeY;
+      if (var4 == 1 || var4 == 3) {
+         var6 = var3.sizeY;
+         var7 = var3.sizeX;
+      }
 
-   @ObfuscatedSignature(
-      descriptor = "(Lnx;)V"
-   )
-   class388(class387 var1) {
-      this.this$0 = var1;
+      var5.maxX = (var6 + var1) * 128;
+      var5.maxY = (var7 + var2) * 128;
+      var5.soundEffectId = var3.ambientSoundId;
+      var5.field812 = var3.int7 * 128;
+      var5.field806 = var3.int5;
+      var5.field808 = var3.int6;
+      var5.soundEffectIds = var3.soundEffectIds;
+      if (var3.transforms != null) {
+         var5.obj = var3;
+         var5.set();
+      }
+
+      ObjectSound.objectSounds.addFirst(var5);
+      if (var5.soundEffectIds != null) {
+         var5.field818 = var5.field806 + (int)(Math.random() * (double)(var5.field808 - var5.field806));
+      }
+
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("bj")
    @ObfuscatedSignature(
-      descriptor = "(Ljava/util/Map$Entry;Ljava/util/Map$Entry;I)I",
-      garbageValue = "-731916106"
+      descriptor = "(ILcv;ZI)I",
+      garbageValue = "792599380"
    )
-   int method7459(Map.Entry var1, Map.Entry var2) {
-      return ((Float)var2.getValue()).compareTo((Float)var1.getValue());
-   }
-
-   public boolean equals(Object var1) {
-      return super.equals(var1);
-   }
-
-   public int compare(Object var1, Object var2) {
-      return this.method7459((Map.Entry)var1, (Map.Entry)var2);
-   }
-
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      descriptor = "(IS)I",
-      garbageValue = "-22723"
-   )
-   public static int method7467(int var0) {
-      return class431.field4690[var0 & 16383];
+   static int method7348(int var0, Script var1, boolean var2) {
+      if (var0 == 7108) {
+         Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = class381.method7304() ? 1 : 0;
+         return 1;
+      } else {
+         return 2;
+      }
    }
 }

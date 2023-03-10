@@ -1,79 +1,34 @@
-import java.util.Iterator;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("qt")
-public class class458 extends class422 implements class268 {
-   @ObfuscatedName("w")
-   @ObfuscatedSignature(
-      descriptor = "Lln;"
-   )
-   final AbstractArchive field4886;
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      descriptor = "Ljp;"
-   )
-   final DemotingHashTable field4888 = new DemotingHashTable(64);
-   @ObfuscatedName("s")
+@ObfuscatedName("rl")
+public class class458 {
+   @ObfuscatedName("ac")
+   static final char[] field4828 = new char[]{' ', ' ', '_', '-', 'à', 'á', 'â', 'ä', 'ã', 'À', 'Á', 'Â', 'Ä', 'Ã', 'è', 'é', 'ê', 'ë', 'È', 'É', 'Ê', 'Ë', 'í', 'î', 'ï', 'Í', 'Î', 'Ï', 'ò', 'ó', 'ô', 'ö', 'õ', 'Ò', 'Ó', 'Ô', 'Ö', 'Õ', 'ù', 'ú', 'û', 'ü', 'Ù', 'Ú', 'Û', 'Ü', 'ç', 'Ç', 'ÿ', 'Ÿ', 'ñ', 'Ñ', 'ß'};
+   @ObfuscatedName("ab")
+   static final char[] field4831 = new char[]{'[', ']', '#'};
+   @ObfuscatedName("an")
    @ObfuscatedGetter(
-      intValue = -1043559905
+      intValue = 1173563887
    )
-   final int field4885;
+   @Export("clientType")
+   public static int clientType;
 
+   @ObfuscatedName("al")
    @ObfuscatedSignature(
-      descriptor = "(Lle;ILmn;Lln;)V"
+      descriptor = "(II)Lrf;",
+      garbageValue = "1805661214"
    )
-   public class458(StudioGame var1, int var2, Language var3, AbstractArchive var4) {
-      super(var1, var3, var4 != null ? var4.getGroupFileCount(var2) : 0);
-      this.field4886 = var4;
-      this.field4885 = var2;
-   }
-
-   @ObfuscatedName("f")
-   @ObfuscatedSignature(
-      descriptor = "(II)Lpj;",
-      garbageValue = "-982443960"
-   )
-   protected class424 vmethod8461(int var1) {
-      synchronized(this.field4888) {
-         class423 var2 = (class423)this.field4888.get((long)var1);
-         if (var2 == null) {
-            var2 = this.method8467(var1);
-            this.field4888.method5482(var2, (long)var1);
-         }
-
-         return var2;
+   public static class467 method8343(int var0) {
+      int var1 = class465.field4855[var0];
+      if (var1 == 1) {
+         return class467.field4866;
+      } else if (var1 == 2) {
+         return class467.field4865;
+      } else {
+         return var1 == 3 ? class467.field4859 : null;
       }
-   }
-
-   @ObfuscatedName("b")
-   @ObfuscatedSignature(
-      descriptor = "(II)Lpp;",
-      garbageValue = "-1876607651"
-   )
-   class423 method8467(int var1) {
-      byte[] var2 = this.field4886.takeFile(this.field4885, var1);
-      class423 var3 = new class423(var1);
-      if (var2 != null) {
-         var3.method8016(new Buffer(var2));
-      }
-
-      return var3;
-   }
-
-   @ObfuscatedName("m")
-   @ObfuscatedSignature(
-      descriptor = "(B)V",
-      garbageValue = "-105"
-   )
-   public void method8463() {
-      synchronized(this.field4888) {
-         this.field4888.clear();
-      }
-   }
-
-   public Iterator iterator() {
-      return new class457(this);
    }
 }

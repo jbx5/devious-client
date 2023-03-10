@@ -1,23 +1,24 @@
 import java.util.Comparator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("mx")
+@ObfuscatedName("no")
 @Implements("GrandExchangeOfferUnitPriceComparator")
 final class GrandExchangeOfferUnitPriceComparator implements Comparator {
-   @ObfuscatedName("vz")
-   @ObfuscatedSignature(
-      descriptor = "Lqf;"
+   @ObfuscatedName("ul")
+   @ObfuscatedGetter(
+      intValue = 1915876021
    )
-   @Export("worldMap")
-   static WorldMap worldMap;
+   static int field4269;
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
-      descriptor = "(Lmv;Lmv;B)I",
-      garbageValue = "75"
+      descriptor = "(Lnv;Lnv;I)I",
+      garbageValue = "-698884156"
    )
    @Export("compare_bridged")
    int compare_bridged(GrandExchangeEvent var1, GrandExchangeEvent var2) {
@@ -32,76 +33,98 @@ final class GrandExchangeOfferUnitPriceComparator implements Comparator {
       return this.compare_bridged((GrandExchangeEvent)var1, (GrandExchangeEvent)var2);
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("av")
    @ObfuscatedSignature(
-      descriptor = "(II)I",
-      garbageValue = "-1038582693"
+      descriptor = "([BIII)Ljava/lang/String;",
+      garbageValue = "146398086"
    )
-   static int method6729(int var0) {
-      return class28.KeyHandler_keyCodes[var0];
+   @Export("decodeStringCp1252")
+   public static String decodeStringCp1252(byte[] var0, int var1, int var2) {
+      char[] var3 = new char[var2];
+      int var4 = 0;
+
+      for(int var5 = 0; var5 < var2; ++var5) {
+         int var6 = var0[var5 + var1] & 255;
+         if (var6 != 0) {
+            if (var6 >= 128 && var6 < 160) {
+               char var7 = class365.cp1252AsciiExtension[var6 - 128];
+               if (var7 == 0) {
+                  var7 = '?';
+               }
+
+               var6 = var7;
+            }
+
+            var3[var4++] = (char)var6;
+         }
+      }
+
+      return new String(var3, 0, var4);
    }
 
-   @ObfuscatedName("z")
+   @ObfuscatedName("am")
    @ObfuscatedSignature(
-      descriptor = "(Ljava/lang/CharSequence;IZI)I",
-      garbageValue = "-269331071"
+      descriptor = "(ILcv;ZI)I",
+      garbageValue = "-1107467981"
    )
-   static int method6737(CharSequence var0, int var1, boolean var2) {
-      if (var1 >= 2 && var1 <= 36) {
-         boolean var3 = false;
-         boolean var4 = false;
-         int var5 = 0;
-         int var6 = var0.length();
-
-         for(int var7 = 0; var7 < var6; ++var7) {
-            int var8 = var0.charAt(var7);
-            if (var7 == 0) {
-               if (var8 == 45) {
-                  var3 = true;
-                  continue;
-               }
-
-               if (var8 == 43) {
-                  continue;
-               }
-            }
-
-            if (var8 >= 48 && var8 <= 57) {
-               var8 -= 48;
-            } else if (var8 >= 65 && var8 <= 90) {
-               var8 -= 55;
-            } else {
-               if (var8 < 97 || var8 > 122) {
-                  throw new NumberFormatException();
-               }
-
-               var8 -= 87;
-            }
-
-            if (var8 >= var1) {
-               throw new NumberFormatException();
-            }
-
-            if (var3) {
-               var8 = -var8;
-            }
-
-            int var9 = var5 * var1 + var8;
-            if (var9 / var1 != var5) {
-               throw new NumberFormatException();
-            }
-
-            var5 = var9;
-            var4 = true;
-         }
-
-         if (!var4) {
-            throw new NumberFormatException();
+   static int method6602(int var0, Script var1, boolean var2) {
+      Widget var3 = var2 ? GameObject.scriptDotWidget : SoundSystem.scriptActiveWidget;
+      if (var0 == ScriptOpcodes.CC_GETINVOBJECT) {
+         Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3.itemId;
+         return 1;
+      } else if (var0 == ScriptOpcodes.CC_GETINVCOUNT) {
+         if (var3.itemId != -1) {
+            Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3.itemQuantity;
          } else {
-            return var5;
+            Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = 0;
          }
+
+         return 1;
+      } else if (var0 == ScriptOpcodes.CC_GETID) {
+         Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3.childIndex;
+         return 1;
+      } else if (var0 == 1707) {
+         Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3.method6191() ? 1 : 0;
+         return 1;
+      } else if (var0 == 1708) {
+         return World.method1830(var3);
       } else {
-         throw new IllegalArgumentException("" + var1);
+         return var0 == 1709 ? class420.method7841(var3) : 2;
+      }
+   }
+
+   @ObfuscatedName("iq")
+   @ObfuscatedSignature(
+      descriptor = "(IIIB)V",
+      garbageValue = "-29"
+   )
+   @Export("worldToScreen")
+   static final void worldToScreen(int var0, int var1, int var2) {
+      if (var0 >= 128 && var1 >= 128 && var0 <= 13056 && var1 <= 13056) {
+         int var3 = WorldMapDecorationType.getTileHeight(var0, var1, TaskHandler.Client_plane) - var2;
+         var0 -= class381.cameraX;
+         var3 -= class351.cameraY;
+         var1 -= class471.cameraZ;
+         int var4 = Rasterizer3D.Rasterizer3D_sine[class311.cameraPitch];
+         int var5 = Rasterizer3D.Rasterizer3D_cosine[class311.cameraPitch];
+         int var6 = Rasterizer3D.Rasterizer3D_sine[class110.cameraYaw];
+         int var7 = Rasterizer3D.Rasterizer3D_cosine[class110.cameraYaw];
+         int var8 = var6 * var1 + var0 * var7 >> 16;
+         var1 = var7 * var1 - var0 * var6 >> 16;
+         var0 = var8;
+         var8 = var5 * var3 - var4 * var1 >> 16;
+         var1 = var4 * var3 + var5 * var1 >> 16;
+         if (var1 >= 50) {
+            Client.viewportTempX = var0 * Client.viewportZoom / var1 + Client.viewportWidth / 2;
+            Client.viewportTempY = var8 * Client.viewportZoom / var1 + Client.viewportHeight / 2;
+         } else {
+            Client.viewportTempX = -1;
+            Client.viewportTempY = -1;
+         }
+
+      } else {
+         Client.viewportTempX = -1;
+         Client.viewportTempY = -1;
       }
    }
 }

@@ -4,28 +4,28 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("rn")
+@ObfuscatedName("sh")
 @Implements("DbRowType")
 public class DbRowType extends DualNode {
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
-      descriptor = "Lln;"
+      descriptor = "Lne;"
    )
-   static AbstractArchive field4918;
-   @ObfuscatedName("w")
+   public static AbstractArchive field4881;
+   @ObfuscatedName("al")
    @ObfuscatedSignature(
-      descriptor = "Lja;"
+      descriptor = "Lkt;"
    )
    @Export("DBRowType_cache")
    public static EvictingDualNodeHashTable DBRowType_cache = new EvictingDualNodeHashTable(64);
-   @ObfuscatedName("v")
+   @ObfuscatedName("ac")
    @Export("columnTypes")
    Object[][] columnTypes;
-   @ObfuscatedName("s")
-   int[][] field4919;
-   @ObfuscatedName("z")
+   @ObfuscatedName("ab")
+   int[][] field4880;
+   @ObfuscatedName("an")
    @ObfuscatedGetter(
-      intValue = 1930079777
+      intValue = 1115242547
    )
    @Export("tableId")
    public int tableId = -1;
@@ -33,43 +33,43 @@ public class DbRowType extends DualNode {
    DbRowType() {
    }
 
-   @ObfuscatedName("v")
+   @ObfuscatedName("al")
    @ObfuscatedSignature(
-      descriptor = "(Lrd;I)V",
-      garbageValue = "138870085"
+      descriptor = "(Lsy;B)V",
+      garbageValue = "-19"
    )
-   void method8556(Buffer var1) {
+   void method8519(Buffer var1) {
       while(true) {
          int var2 = var1.readUnsignedByte();
          if (var2 == 0) {
             return;
          }
 
-         this.method8557(var1, var2);
+         this.method8522(var1, var2);
       }
    }
 
-   @ObfuscatedName("s")
+   @ObfuscatedName("ac")
    @ObfuscatedSignature(
       descriptor = "(IB)[Ljava/lang/Object;",
-      garbageValue = "18"
+      garbageValue = "-99"
    )
    @Export("getColumnType")
    public Object[] getColumnType(int var1) {
       return this.columnTypes == null ? null : this.columnTypes[var1];
    }
 
-   @ObfuscatedName("z")
+   @ObfuscatedName("ab")
    @ObfuscatedSignature(
-      descriptor = "(Lrd;II)V",
-      garbageValue = "1069329376"
+      descriptor = "(Lsy;II)V",
+      garbageValue = "-2101784162"
    )
-   void method8557(Buffer var1, int var2) {
+   void method8522(Buffer var1, int var2) {
       if (var2 == 3) {
          int var3 = var1.readUnsignedByte();
          if (this.columnTypes == null) {
             this.columnTypes = new Object[var3][];
-            this.field4919 = new int[var3][];
+            this.field4880 = new int[var3][];
          }
 
          for(int var4 = var1.readUnsignedByte(); var4 != 255; var4 = var1.readUnsignedByte()) {
@@ -80,20 +80,8 @@ public class DbRowType extends DualNode {
                var6[var7] = var1.readUShortSmart();
             }
 
-            Object[][] var16 = this.columnTypes;
-            int var10 = var1.readUShortSmart();
-            Object[] var11 = new Object[var6.length * var10];
-
-            for(int var12 = 0; var12 < var10; ++var12) {
-               for(int var13 = 0; var13 < var6.length; ++var13) {
-                  int var14 = var13 + var6.length * var12;
-                  class463 var15 = class370.method7047(var6[var13]);
-                  var11[var14] = var15.method8507(var1);
-               }
-            }
-
-            var16[var4] = var11;
-            this.field4919[var4] = var6;
+            this.columnTypes[var4] = Clock.method3525(var1, var6);
+            this.field4880[var4] = var6;
          }
       } else if (var2 == 4) {
          this.tableId = var1.packBytesToInt();
@@ -101,55 +89,11 @@ public class DbRowType extends DualNode {
 
    }
 
-   @ObfuscatedName("j")
+   @ObfuscatedName("an")
    @ObfuscatedSignature(
       descriptor = "(I)V",
-      garbageValue = "-1520825771"
+      garbageValue = "8396928"
    )
-   void method8558() {
-   }
-
-   @ObfuscatedName("lj")
-   @ObfuscatedSignature(
-      descriptor = "(Lkz;I)V",
-      garbageValue = "-1866344930"
-   )
-   static final void method8572(Widget var0) {
-      int var1 = var0.contentType;
-      if (var1 == 324) {
-         if (Client.field787 == -1) {
-            Client.field787 = var0.spriteId2;
-            Client.field788 = var0.spriteId;
-         }
-
-         if (Client.playerAppearance.gender == 1) {
-            var0.spriteId2 = Client.field787;
-         } else {
-            var0.spriteId2 = Client.field788;
-         }
-
-      } else if (var1 == 325) {
-         if (Client.field787 == -1) {
-            Client.field787 = var0.spriteId2;
-            Client.field788 = var0.spriteId;
-         }
-
-         if (Client.playerAppearance.gender == 1) {
-            var0.spriteId2 = Client.field788;
-         } else {
-            var0.spriteId2 = Client.field787;
-         }
-
-      } else if (var1 == 327) {
-         var0.modelAngleX = 150;
-         var0.modelAngleY = (int)(Math.sin((double)Client.cycle / 40.0) * 256.0) & 2047;
-         var0.modelType = 5;
-         var0.modelId = 0;
-      } else if (var1 == 328) {
-         var0.modelAngleX = 150;
-         var0.modelAngleY = (int)(Math.sin((double)Client.cycle / 40.0) * 256.0) & 2047;
-         var0.modelType = 5;
-         var0.modelId = 1;
-      }
+   void method8524() {
    }
 }

@@ -1,181 +1,186 @@
 import java.text.DecimalFormat;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("bu")
+@ObfuscatedName("cp")
 @Implements("Login")
 public class Login {
-   @ObfuscatedName("w")
+   @ObfuscatedName("al")
    @Export("clearLoginScreen")
    static boolean clearLoginScreen;
-   @ObfuscatedName("v")
+   @ObfuscatedName("ac")
    @ObfuscatedGetter(
-      intValue = -1185580279
+      intValue = -1829519957
    )
    @Export("xPadding")
    static int xPadding = 0;
-   @ObfuscatedName("s")
+   @ObfuscatedName("ab")
    @ObfuscatedSignature(
-      descriptor = "[Lrg;"
+      descriptor = "[Lsp;"
    )
    @Export("runesSprite")
    static IndexedSprite[] runesSprite;
-   @ObfuscatedName("j")
+   @ObfuscatedName("ao")
    @ObfuscatedSignature(
-      descriptor = "Lrg;"
+      descriptor = "Lsp;"
    )
    @Export("titlebuttonSprite")
    static IndexedSprite titlebuttonSprite;
-   @ObfuscatedName("l")
+   @ObfuscatedName("ap")
    @ObfuscatedSignature(
-      descriptor = "Lrs;"
+      descriptor = "Lsn;"
    )
    @Export("leftTitleSprite")
    static SpritePixels leftTitleSprite;
-   @ObfuscatedName("r")
+   @ObfuscatedName("ak")
    @ObfuscatedSignature(
-      descriptor = "[Lrg;"
+      descriptor = "Lsp;"
    )
-   @Export("title_muteSprite")
-   static IndexedSprite[] title_muteSprite;
-   @ObfuscatedName("b")
+   @Export("logoSprite")
+   static IndexedSprite logoSprite;
+   @ObfuscatedName("as")
    @ObfuscatedSignature(
-      descriptor = "Lrg;"
+      descriptor = "Lsp;"
    )
    @Export("options_buttons_0Sprite")
    static IndexedSprite options_buttons_0Sprite;
-   @ObfuscatedName("t")
+   @ObfuscatedName("am")
    @ObfuscatedSignature(
-      descriptor = "Lrg;"
+      descriptor = "Lsp;"
    )
    @Export("options_buttons_2Sprite")
    static IndexedSprite options_buttons_2Sprite;
-   @ObfuscatedName("q")
+   @ObfuscatedName("ai")
    @ObfuscatedGetter(
-      intValue = 1865803391
+      intValue = -1797050063
    )
    @Export("loginBoxX")
    static int loginBoxX;
-   @ObfuscatedName("e")
+   @ObfuscatedName("aw")
    @ObfuscatedGetter(
-      intValue = -1234617649
+      intValue = 647465325
+   )
+   @Export("loginBoxCenter")
+   static int loginBoxCenter;
+   @ObfuscatedName("aa")
+   @ObfuscatedGetter(
+      intValue = 813109745
    )
    @Export("Login_loadingPercent")
    static int Login_loadingPercent;
-   @ObfuscatedName("g")
+   @ObfuscatedName("ah")
    @Export("Login_loadingText")
    static String Login_loadingText;
-   @ObfuscatedName("ae")
+   @ObfuscatedName("bp")
    @ObfuscatedGetter(
-      intValue = 2070143889
+      intValue = 589427449
    )
    @Export("Login_banType")
    static int Login_banType;
-   @ObfuscatedName("ab")
+   @ObfuscatedName("bn")
    @ObfuscatedGetter(
-      intValue = 1374593207
+      intValue = -550556813
    )
-   static int field917;
-   @ObfuscatedName("ao")
+   static int field887;
+   @ObfuscatedName("bi")
    @ObfuscatedGetter(
-      intValue = 830758527
+      intValue = -1020695771
    )
    @Export("loginIndex")
    static int loginIndex;
-   @ObfuscatedName("bj")
+   @ObfuscatedName("cl")
    @Export("Login_response0")
    static String Login_response0;
-   @ObfuscatedName("bf")
+   @ObfuscatedName("ca")
    @Export("Login_response1")
    static String Login_response1;
-   @ObfuscatedName("bz")
+   @ObfuscatedName("cb")
    @Export("Login_response2")
    static String Login_response2;
-   @ObfuscatedName("br")
+   @ObfuscatedName("co")
    @Export("Login_response3")
    static String Login_response3;
-   @ObfuscatedName("bm")
+   @ObfuscatedName("cj")
    @Export("Login_username")
    static String Login_username;
-   @ObfuscatedName("be")
+   @ObfuscatedName("cn")
    @Export("Login_password")
    static String Login_password;
-   @ObfuscatedName("bl")
+   @ObfuscatedName("cd")
    @ObfuscatedGetter(
-      intValue = -312548173
+      intValue = 621584615
    )
-   static int field925;
-   @ObfuscatedName("bq")
-   static String[] field926;
-   @ObfuscatedName("bd")
-   static String field927;
-   @ObfuscatedName("bp")
-   static boolean field939;
-   @ObfuscatedName("bc")
-   static boolean field934;
-   @ObfuscatedName("bx")
-   static boolean field930;
-   @ObfuscatedName("bv")
+   static int field909;
+   @ObfuscatedName("cc")
+   static String[] field908;
+   @ObfuscatedName("cg")
+   static String field911;
+   @ObfuscatedName("cw")
+   static boolean field900;
+   @ObfuscatedName("cp")
+   static boolean field913;
+   @ObfuscatedName("cv")
+   static boolean field914;
+   @ObfuscatedName("cr")
    @ObfuscatedGetter(
-      intValue = 465493979
+      intValue = -67843131
    )
    @Export("currentLoginField")
    static int currentLoginField;
-   @ObfuscatedName("cp")
+   @ObfuscatedName("dp")
    @Export("worldSelectOpen")
    static boolean worldSelectOpen;
-   @ObfuscatedName("ck")
-   @ObfuscatedSignature(
-      descriptor = "Lrg;"
-   )
-   static IndexedSprite field935;
-   @ObfuscatedName("ct")
+   @ObfuscatedName("dh")
    @ObfuscatedGetter(
-      intValue = -995626195
+      intValue = -611355623
    )
    @Export("hoveredWorldIndex")
    static int hoveredWorldIndex;
-   @ObfuscatedName("cb")
+   @ObfuscatedName("dj")
    @ObfuscatedGetter(
-      intValue = -1797889597
+      intValue = 1145129403
    )
    @Export("worldSelectPage")
    static int worldSelectPage;
-   @ObfuscatedName("cz")
+   @ObfuscatedName("da")
    @ObfuscatedGetter(
-      intValue = 1497941413
+      intValue = 1942540433
    )
    @Export("worldSelectPagesCount")
    static int worldSelectPagesCount;
-   @ObfuscatedName("cy")
+   @ObfuscatedName("dw")
    @ObfuscatedGetter(
-      longValue = -576354342293618767L
+      longValue = 1083052260744045781L
    )
-   static long field921;
-   @ObfuscatedName("cv")
+   static long field922;
+   @ObfuscatedName("dt")
    @ObfuscatedGetter(
-      longValue = 1153389561507731615L
+      longValue = -3783900184507538293L
    )
-   static long field904;
-   @ObfuscatedName("cf")
-   static String[] field941;
-   @ObfuscatedName("cm")
-   static String[] field942;
-   @ObfuscatedName("ce")
-   static String[] field902;
+   static long field923;
+   @ObfuscatedName("db")
+   static String[] field924;
+   @ObfuscatedName("dm")
+   static String[] field925;
+   @ObfuscatedName("dz")
+   static String[] field926;
+   @ObfuscatedName("np")
+   @ObfuscatedGetter(
+      intValue = -398912461
+   )
+   @Export("menuY")
+   static int menuY;
 
    static {
       loginBoxX = xPadding + 202;
       Login_loadingPercent = 10;
       Login_loadingText = "";
       Login_banType = -1;
-      field917 = 1;
+      field887 = 1;
       loginIndex = 0;
       Login_response0 = "";
       Login_response1 = "";
@@ -183,120 +188,199 @@ public class Login {
       Login_response3 = "";
       Login_username = "";
       Login_password = "";
-      field925 = 0;
-      field926 = new String[8];
-      field927 = "";
-      field939 = false;
-      field934 = false;
-      field930 = true;
+      field909 = 0;
+      field908 = new String[8];
+      field911 = "";
+      field900 = false;
+      field913 = false;
+      field914 = true;
       currentLoginField = 0;
       worldSelectOpen = false;
       hoveredWorldIndex = -1;
       worldSelectPage = 0;
       worldSelectPagesCount = 0;
       new DecimalFormat("##0.00");
-      new class129();
-      field921 = -1L;
-      field904 = -1L;
-      field941 = new String[]{"title.jpg"};
-      field942 = new String[]{"logo", "logo_deadman_mode", "logo_seasonal_mode", "titlebox", "titlebutton", "titlebutton_large", "play_now_text", "titlebutton_wide42,1", "runes", "title_mute", "options_radio_buttons,0", "options_radio_buttons,2", "options_radio_buttons,4", "options_radio_buttons,6", "sl_back", "sl_flags", "sl_arrows", "sl_stars", "sl_button"};
-      field902 = new String[]{"logo_speedrunning"};
+      new class130();
+      field922 = -1L;
+      field923 = -1L;
+      field924 = new String[]{"title.jpg"};
+      field925 = new String[]{"logo", "logo_deadman_mode", "logo_seasonal_mode", "titlebox", "titlebutton", "titlebutton_large", "play_now_text", "titlebutton_wide42,1", "runes", "title_mute", "options_radio_buttons,0", "options_radio_buttons,2", "options_radio_buttons,4", "options_radio_buttons,6", "sl_back", "sl_flags", "sl_arrows", "sl_stars", "sl_button"};
+      field926 = new String[]{"logo_speedrunning"};
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
+   public static final void method2088(long var0) {
+      if (var0 > 0L) {
+         if (0L == var0 % 10L) {
+            class169.method3466(var0 - 1L);
+            class169.method3466(1L);
+         } else {
+            class169.method3466(var0);
+         }
+
+      }
+   }
+
+   @ObfuscatedName("ap")
    @ObfuscatedSignature(
-      descriptor = "(Lln;Lln;IZB)Lei;",
-      garbageValue = "-125"
+      descriptor = "(Ljava/lang/CharSequence;S)I",
+      garbageValue = "977"
    )
-   public static class133 method2165(AbstractArchive var0, AbstractArchive var1, int var2, boolean var3) {
-      boolean var4 = true;
-      byte[] var5 = var0.getFile(var2 >> 16 & '\uffff', var2 & '\uffff');
-      if (var5 == null) {
-         var4 = false;
-         return null;
+   @Export("hashString")
+   public static int hashString(CharSequence var0) {
+      int var1 = var0.length();
+      int var2 = 0;
+
+      for(int var3 = 0; var3 < var1; ++var3) {
+         var2 = (var2 << 5) - var2 + class18.charToByteCp1252(var0.charAt(var3));
+      }
+
+      return var2;
+   }
+
+   @ObfuscatedName("bh")
+   @ObfuscatedSignature(
+      descriptor = "(ILcv;ZB)I",
+      garbageValue = "27"
+   )
+   static int method2107(int var0, Script var1, boolean var2) {
+      int var3;
+      if (var0 == ScriptOpcodes.STOCKMARKET_GETOFFERTYPE) {
+         var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+         Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Client.grandExchangeOffers[var3].type();
+         return 1;
+      } else if (var0 == ScriptOpcodes.STOCKMARKET_GETOFFERITEM) {
+         var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+         Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Client.grandExchangeOffers[var3].id;
+         return 1;
+      } else if (var0 == ScriptOpcodes.STOCKMARKET_GETOFFERPRICE) {
+         var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+         Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Client.grandExchangeOffers[var3].unitPrice;
+         return 1;
+      } else if (var0 == ScriptOpcodes.STOCKMARKET_GETOFFERCOUNT) {
+         var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+         Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Client.grandExchangeOffers[var3].totalQuantity;
+         return 1;
+      } else if (var0 == ScriptOpcodes.STOCKMARKET_GETOFFERCOMPLETEDCOUNT) {
+         var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+         Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Client.grandExchangeOffers[var3].currentQuantity;
+         return 1;
+      } else if (var0 == ScriptOpcodes.STOCKMARKET_GETOFFERCOMPLETEDGOLD) {
+         var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+         Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Client.grandExchangeOffers[var3].currentPrice;
+         return 1;
       } else {
-         int var6 = (var5[1] & 255) << 8 | var5[2] & 255;
-         byte[] var7;
-         if (var3) {
-            var7 = var1.getFile(0, var6);
+         int var13;
+         if (var0 == ScriptOpcodes.STOCKMARKET_ISOFFEREMPTY) {
+            var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+            var13 = Client.grandExchangeOffers[var3].status();
+            Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var13 == 0 ? 1 : 0;
+            return 1;
+         } else if (var0 == ScriptOpcodes.STOCKMARKET_ISOFFERSTABLE) {
+            var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+            var13 = Client.grandExchangeOffers[var3].status();
+            Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var13 == 2 ? 1 : 0;
+            return 1;
+         } else if (var0 == ScriptOpcodes.STOCKMARKET_ISOFFERFINISHED) {
+            var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+            var13 = Client.grandExchangeOffers[var3].status();
+            Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var13 == 5 ? 1 : 0;
+            return 1;
+         } else if (var0 == ScriptOpcodes.STOCKMARKET_ISOFFERADDING) {
+            var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+            var13 = Client.grandExchangeOffers[var3].status();
+            Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var13 == 1 ? 1 : 0;
+            return 1;
          } else {
-            var7 = var1.getFile(var6, 0);
-         }
+            boolean var12;
+            if (var0 == ScriptOpcodes.TRADINGPOST_SORTBY_NAME) {
+               var12 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize] == 1;
+               if (Projectile.grandExchangeEvents != null) {
+                  Projectile.grandExchangeEvents.sort(GrandExchangeEvents.GrandExchangeEvents_nameComparator, var12);
+               }
 
-         if (var7 == null) {
-            var4 = false;
-         }
+               return 1;
+            } else if (var0 == ScriptOpcodes.TRADINGPOST_SORTBY_PRICE) {
+               var12 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize] == 1;
+               if (Projectile.grandExchangeEvents != null) {
+                  Projectile.grandExchangeEvents.sort(GrandExchangeEvents.GrandExchangeEvents_priceComparator, var12);
+               }
 
-         if (!var4) {
-            return null;
-         } else {
-            if (class277.field3059 == null) {
-               class461.field4894 = Runtime.getRuntime().availableProcessors();
-               class277.field3059 = new ThreadPoolExecutor(0, class461.field4894, 0L, TimeUnit.MILLISECONDS, new ArrayBlockingQueue(class461.field4894 * 100 + 100), new class130());
+               return 1;
+            } else if (var0 == ScriptOpcodes.TRADINGPOST_SORTFILTERBY_WORLD) {
+               Interpreter.Interpreter_intStackSize -= 2;
+               var12 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize] == 1;
+               boolean var11 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1] == 1;
+               if (Projectile.grandExchangeEvents != null) {
+                  Client.GrandExchangeEvents_worldComparator.filterWorlds = var11;
+                  Projectile.grandExchangeEvents.sort(Client.GrandExchangeEvents_worldComparator, var12);
+               }
+
+               return 1;
+            } else if (var0 == ScriptOpcodes.TRADINGPOST_SORTBY_AGE) {
+               var12 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize] == 1;
+               if (Projectile.grandExchangeEvents != null) {
+                  Projectile.grandExchangeEvents.sort(GrandExchangeEvents.GrandExchangeEvents_ageComparator, var12);
+               }
+
+               return 1;
+            } else if (var0 == ScriptOpcodes.TRADINGPOST_SORTBY_COUNT) {
+               var12 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize] == 1;
+               if (Projectile.grandExchangeEvents != null) {
+                  Projectile.grandExchangeEvents.sort(GrandExchangeEvents.GrandExchangeEvents_quantityComparator, var12);
+               }
+
+               return 1;
+            } else if (var0 == ScriptOpcodes.TRADINGPOST_GETTOTALOFFERS) {
+               Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Projectile.grandExchangeEvents == null ? 0 : Projectile.grandExchangeEvents.events.size();
+               return 1;
+            } else {
+               GrandExchangeEvent var4;
+               if (var0 == ScriptOpcodes.TRADINGPOST_GETOFFERWORLD) {
+                  var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+                  var4 = (GrandExchangeEvent)Projectile.grandExchangeEvents.events.get(var3);
+                  Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var4.world;
+                  return 1;
+               } else if (var0 == ScriptOpcodes.TRADINGPOST_GETOFFERNAME) {
+                  var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+                  var4 = (GrandExchangeEvent)Projectile.grandExchangeEvents.events.get(var3);
+                  Interpreter.Interpreter_stringStack[++HealthBar.Interpreter_stringStackSize - 1] = var4.getOfferName();
+                  return 1;
+               } else if (var0 == ScriptOpcodes.TRADINGPOST_GETOFFERPREVIOUSNAME) {
+                  var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+                  var4 = (GrandExchangeEvent)Projectile.grandExchangeEvents.events.get(var3);
+                  Interpreter.Interpreter_stringStack[++HealthBar.Interpreter_stringStackSize - 1] = var4.getPreviousOfferName();
+                  return 1;
+               } else if (var0 == ScriptOpcodes.TRADINGPOST_GETOFFERAGE) {
+                  var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+                  var4 = (GrandExchangeEvent)Projectile.grandExchangeEvents.events.get(var3);
+                  long var5 = WorldMapSection2.method4844() - GrandExchangeOfferWorldComparator.field4254 - var4.age;
+                  int var7 = (int)(var5 / 3600000L);
+                  int var8 = (int)((var5 - (long)(var7 * 3600000)) / 60000L);
+                  int var9 = (int)((var5 - (long)(var7 * 3600000) - (long)(var8 * '\uea60')) / 1000L);
+                  String var10 = var7 + ":" + var8 / 10 + var8 % 10 + ":" + var9 / 10 + var9 % 10;
+                  Interpreter.Interpreter_stringStack[++HealthBar.Interpreter_stringStackSize - 1] = var10;
+                  return 1;
+               } else if (var0 == ScriptOpcodes.TRADINGPOST_GETOFFERCOUNT) {
+                  var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+                  var4 = (GrandExchangeEvent)Projectile.grandExchangeEvents.events.get(var3);
+                  Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var4.grandExchangeOffer.totalQuantity;
+                  return 1;
+               } else if (var0 == ScriptOpcodes.TRADINGPOST_GETOFFERPRICE) {
+                  var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+                  var4 = (GrandExchangeEvent)Projectile.grandExchangeEvents.events.get(var3);
+                  Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var4.grandExchangeOffer.unitPrice;
+                  return 1;
+               } else if (var0 == ScriptOpcodes.TRADINGPOST_GETOFFERITEM) {
+                  var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+                  var4 = (GrandExchangeEvent)Projectile.grandExchangeEvents.events.get(var3);
+                  Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var4.grandExchangeOffer.id;
+                  return 1;
+               } else {
+                  return 2;
+               }
             }
-
-            try {
-               return new class133(var0, var1, var2, var3);
-            } catch (Exception var9) {
-               return null;
-            }
          }
       }
-   }
-
-   @ObfuscatedName("f")
-   @ObfuscatedSignature(
-      descriptor = "(Lru;B)V",
-      garbageValue = "-76"
-   )
-   @Export("updatePlayer")
-   static final void updatePlayer(PacketBuffer var0) {
-      var0.importIndex();
-      int var1 = Client.localPlayerIndex;
-      Player var2 = class387.localPlayer = Client.players[var1] = new Player();
-      var2.index = var1;
-      int var3 = var0.readBits(30);
-      byte var4 = (byte)(var3 >> 28);
-      int var5 = var3 >> 14 & 16383;
-      int var6 = var3 & 16383;
-      var2.pathX[0] = var5 - ParamComposition.baseX * 64;
-      var2.x = (var2.pathX[0] << 7) + (var2.transformedSize() << 6);
-      var2.pathY[0] = var6 - Client.baseY * 64;
-      var2.y = (var2.pathY[0] << 7) + (var2.transformedSize() << 6);
-      class103.Client_plane = var2.plane = var4;
-      if (Players.field1341[var1] != null) {
-         var2.read(Players.field1341[var1]);
-      }
-
-      Players.Players_count = 0;
-      Players.Players_indices[++Players.Players_count - 1] = var1;
-      Players.field1353[var1] = 0;
-      Players.Players_emptyIdxCount = 0;
-
-      for(int var7 = 1; var7 < 2048; ++var7) {
-         if (var7 != var1) {
-            int var8 = var0.readBits(18);
-            int var9 = var8 >> 16;
-            int var10 = var8 >> 8 & 597;
-            int var11 = var8 & 597;
-            Players.Players_regions[var7] = (var10 << 14) + var11 + (var9 << 28);
-            Players.Players_orientations[var7] = 0;
-            Players.Players_targetIndices[var7] = -1;
-            Players.Players_emptyIndices[++Players.Players_emptyIdxCount - 1] = var7;
-            Players.field1353[var7] = 0;
-         }
-      }
-
-      var0.exportIndex();
-   }
-
-   @ObfuscatedName("f")
-   @ObfuscatedSignature(
-      descriptor = "(Lln;Lln;B)V",
-      garbageValue = "102"
-   )
-   public static void method2166(AbstractArchive var0, AbstractArchive var1) {
-      class303.HealthBarDefinition_archive = var0;
-      HealthBarDefinition.field1985 = var1;
    }
 }

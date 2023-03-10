@@ -3,171 +3,147 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("eo")
-public class class145 extends class155 {
-   @ObfuscatedName("ag")
-   @ObfuscatedSignature(
-      descriptor = "Lln;"
-   )
-   public static AbstractArchive field1689;
-   @ObfuscatedName("f")
+@ObfuscatedName("fw")
+public class class145 extends class140 {
+   @ObfuscatedName("an")
+   @Export("ArchiveDiskActionHandler_thread")
+   static Thread ArchiveDiskActionHandler_thread;
+   @ObfuscatedName("aj")
    @ObfuscatedGetter(
-      intValue = 462461389
+      intValue = 1698095601
    )
-   int field1684;
-   @ObfuscatedName("w")
-   byte field1687;
-   @ObfuscatedName("v")
+   int field1647;
+   @ObfuscatedName("al")
    @ObfuscatedGetter(
-      intValue = 1636205357
+      intValue = -1140518151
    )
-   int field1683;
-   @ObfuscatedName("s")
-   String field1686;
+   int field1652;
+   @ObfuscatedName("ac")
+   @ObfuscatedGetter(
+      intValue = -62241527
+   )
+   int field1648;
+   @ObfuscatedName("ab")
+   @ObfuscatedGetter(
+      intValue = 1118004607
+   )
+   int field1649;
    // $FF: synthetic field
    @ObfuscatedSignature(
-      descriptor = "Lfn;"
+      descriptor = "Lfo;"
    )
-   final class156 this$0;
+   final class143 this$0;
 
    @ObfuscatedSignature(
-      descriptor = "(Lfn;)V"
+      descriptor = "(Lfo;)V"
    )
-   class145(class156 var1) {
+   class145(class143 var1) {
       this.this$0 = var1;
-      this.field1684 = -1;
    }
 
-   @ObfuscatedName("f")
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
-      descriptor = "(Lrd;B)V",
-      garbageValue = "-123"
+      descriptor = "(Lsy;I)V",
+      garbageValue = "-1979280996"
    )
-   void vmethod3387(Buffer var1) {
-      this.field1684 = var1.readUnsignedShort();
-      this.field1687 = var1.readByte();
-      this.field1683 = var1.readUnsignedShort();
-      var1.readLong();
-      this.field1686 = var1.readStringCp1252NullTerminated();
+   void vmethod3361(Buffer var1) {
+      this.field1647 = var1.readInt();
+      this.field1649 = var1.readInt();
+      this.field1652 = var1.readUnsignedByte();
+      this.field1648 = var1.readUnsignedByte();
    }
 
-   @ObfuscatedName("w")
+   @ObfuscatedName("al")
    @ObfuscatedSignature(
-      descriptor = "(Lfm;I)V",
-      garbageValue = "127147356"
+      descriptor = "(Lfi;B)V",
+      garbageValue = "29"
    )
-   void vmethod3388(ClanChannel var1) {
-      ClanChannelMember var2 = (ClanChannelMember)var1.members.get(this.field1684);
-      var2.rank = this.field1687;
-      var2.world = this.field1683;
-      var2.username = new Username(this.field1686);
+   void vmethod3362(ClanSettings var1) {
+      var1.method3209(this.field1647, this.field1649, this.field1652, this.field1648);
    }
 
-   @ObfuscatedName("w")
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
-      descriptor = "(Lqu;ILjava/lang/String;S)Ljava/lang/String;",
-      garbageValue = "-3344"
+      descriptor = "(Lne;I)V",
+      garbageValue = "-493974812"
    )
-   static String method3192(IterableNodeHashTable var0, int var1, String var2) {
-      if (var0 == null) {
-         return var2;
-      } else {
-         ObjectNode var3 = (ObjectNode)var0.get((long)var1);
-         return var3 == null ? var2 : (String)var3.obj;
-      }
+   public static void method3141(AbstractArchive var0) {
+      FloorOverlayDefinition.FloorOverlayDefinition_archive = var0;
    }
 
-   @ObfuscatedName("w")
+   @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "(IIII)Lba;",
-      garbageValue = "-1454987791"
+      descriptor = "(Lew;FFFFFFFFI)V",
+      garbageValue = "1761714022"
    )
-   @Export("getWorldMapScript")
-   static Script getWorldMapScript(int var0, int var1, int var2) {
-      int var3 = (var1 << 8) + var0;
-      Script var6 = (Script)Script.Script_cached.get((long)(var3 << 16));
-      Script var5;
-      if (var6 != null) {
-         var5 = var6;
-      } else {
-         String var7 = String.valueOf(var3);
-         int var8 = class12.archive12.getGroupId(var7);
-         if (var8 == -1) {
-            var5 = null;
-         } else {
-            label58: {
-               byte[] var9 = class12.archive12.takeFileFlat(var8);
-               if (var9 != null) {
-                  if (var9.length <= 1) {
-                     var5 = null;
-                     break label58;
-                  }
+   static void method3149(class127 var0, float var1, float var2, float var3, float var4, float var5, float var6, float var7, float var8) {
+      if (var0 != null) {
+         float var9 = var4 - var1;
+         if (0.0 != (double)var9) {
+            float var10 = var2 - var1;
+            float var11 = var3 - var1;
+            float[] var12 = new float[]{var10 / var9, var11 / var9};
+            var0.field1519 = var12[0] == 0.33333334F && 0.6666667F == var12[1];
+            float var13 = var12[0];
+            float var14 = var12[1];
+            if ((double)var12[0] < 0.0) {
+               var12[0] = 0.0F;
+            }
 
-                  var6 = WorldMapLabelSize.newScript(var9);
-                  if (var6 != null) {
-                     Script.Script_cached.put(var6, (long)(var3 << 16));
-                     var5 = var6;
-                     break label58;
+            if ((double)var12[1] > 1.0) {
+               var12[1] = 1.0F;
+            }
+
+            float var15;
+            if ((double)var12[0] > 1.0 || var12[1] < -1.0F) {
+               var12[1] = 1.0F - var12[1];
+               if (var12[0] < 0.0F) {
+                  var12[0] = 0.0F;
+               }
+
+               if (var12[1] < 0.0F) {
+                  var12[1] = 0.0F;
+               }
+
+               if (var12[0] > 1.0F || var12[1] > 1.0F) {
+                  var15 = (float)(1.0 + (double)var12[1] * ((double)var12[1] - 2.0) + (double)(var12[0] * (var12[1] + (var12[0] - 2.0F))));
+                  if (var15 + class123.field1459 > 0.0F) {
+                     Client.method1778(var12);
                   }
                }
 
-               var5 = null;
+               var12[1] = 1.0F - var12[1];
             }
-         }
-      }
 
-      if (var5 != null) {
-         return var5;
-      } else {
-         int var4 = class208.method4221(var2, var0);
-         Script var12 = (Script)Script.Script_cached.get((long)(var4 << 16));
-         Script var13;
-         if (var12 != null) {
-            var13 = var12;
-         } else {
-            String var14 = String.valueOf(var4);
-            int var10 = class12.archive12.getGroupId(var14);
-            if (var10 == -1) {
-               var13 = null;
-            } else {
-               byte[] var11 = class12.archive12.takeFileFlat(var10);
-               if (var11 != null) {
-                  if (var11.length <= 1) {
-                     var13 = null;
-                     return var13 != null ? var13 : null;
-                  }
-
-                  var12 = WorldMapLabelSize.newScript(var11);
-                  if (var12 != null) {
-                     Script.Script_cached.put(var12, (long)(var4 << 16));
-                     var13 = var12;
-                     return var13 != null ? var13 : null;
-                  }
+            float var10000;
+            if (var13 != var12[0]) {
+               var10000 = var1 + var9 * var12[0];
+               if (0.0 != (double)var13) {
+                  var6 = var5 + var12[0] * (var6 - var5) / var13;
                }
-
-               var13 = null;
             }
+
+            if (var12[1] != var14) {
+               var10000 = var1 + var12[1] * var9;
+               if (1.0 != (double)var14) {
+                  var7 = (float)((double)var8 - (double)(var8 - var7) * (1.0 - (double)var12[1]) / (1.0 - (double)var14));
+               }
+            }
+
+            var0.field1505 = var1;
+            var0.field1504 = var4;
+            var15 = var12[0];
+            float var16 = var12[1];
+            float var17 = var15 - 0.0F;
+            float var18 = var16 - var15;
+            float var19 = 1.0F - var16;
+            float var20 = var18 - var17;
+            var0.field1500 = var19 - var18 - var20;
+            var0.field1507 = var20 + var20 + var20;
+            var0.field1506 = var17 + var17 + var17;
+            var0.field1521 = 0.0F;
+            DesktopPlatformInfoProvider.method8039(var5, var6, var7, var8, var0);
          }
-
-         return var13 != null ? var13 : null;
-      }
-   }
-
-   @ObfuscatedName("c")
-   @ObfuscatedSignature(
-      descriptor = "(Lkz;IB)V",
-      garbageValue = "33"
-   )
-   @Export("Widget_setKeyIgnoreHeld")
-   static final void Widget_setKeyIgnoreHeld(Widget var0, int var1) {
-      if (var0.field3632 == null) {
-         throw new RuntimeException();
-      } else {
-         if (var0.field3594 == null) {
-            var0.field3594 = new int[var0.field3632.length];
-         }
-
-         var0.field3594[var1] = Integer.MAX_VALUE;
       }
    }
 }
