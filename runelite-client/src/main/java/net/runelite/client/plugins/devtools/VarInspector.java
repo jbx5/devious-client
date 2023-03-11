@@ -91,14 +91,12 @@ class VarInspector extends DevToolsFrame
 	private static final Map<Integer, String> VARBIT_NAMES;
 	private static final Map<Integer, String> VARCINT_NAMES;
 	private static final Map<Integer, String> VARCSTR_NAMES;
-	private static final Map<Integer, String> VARP_NAMES;
 
 	static
 	{
 		ImmutableMap.Builder<Integer, String> varbits = new ImmutableMap.Builder<>();
 		ImmutableMap.Builder<Integer, String> varcint = new ImmutableMap.Builder<>();
 		ImmutableMap.Builder<Integer, String> varcstr = new ImmutableMap.Builder<>();
-		ImmutableMap.Builder<Integer, String> varp = new ImmutableMap.Builder<>();
 
 		try
 		{
@@ -116,11 +114,6 @@ class VarInspector extends DevToolsFrame
 			{
 				varcstr.put(f.getInt(null), f.getName());
 			}
-
-			for (Field f : VarPlayer.class.getDeclaredFields())
-			{
-				varp.put(f.getInt(null), f.getName());
-			}
 		}
 		catch (IllegalAccessException ex)
 		{
@@ -130,7 +123,6 @@ class VarInspector extends DevToolsFrame
 		VARBIT_NAMES = varbits.build();
 		VARCINT_NAMES = varcint.build();
 		VARCSTR_NAMES = varcstr.build();
-		VARP_NAMES = varp.build();
 	}
 
 	private final Client client;
@@ -231,8 +223,8 @@ class VarInspector extends DevToolsFrame
 				JLabel header = new JLabel("Tick " + tick);
 				header.setFont(FontManager.getRunescapeSmallFont());
 				header.setBorder(new CompoundBorder(
-					BorderFactory.createMatteBorder(0, 0, 1, 0, ColorScheme.LIGHT_GRAY_COLOR),
-					BorderFactory.createEmptyBorder(3, 6, 0, 0)
+						BorderFactory.createMatteBorder(0, 0, 1, 0, ColorScheme.LIGHT_GRAY_COLOR),
+						BorderFactory.createEmptyBorder(3, 6, 0, 0)
 				));
 				tracker.add(header);
 			}
@@ -276,14 +268,14 @@ class VarInspector extends DevToolsFrame
 		int neew = varps[index];
 		if (old != neew)
 		{
-			String name = VARP_NAMES.get(index);
-			if (name != null)
+			String name = Integer.toString(index);
+			for (VarPlayer varp : VarPlayer.values())
 			{
-				name += "(" + index + ")";
-			}
-			else
-			{
-				name = Integer.toString(index);
+				if (varp.getId() == index)
+				{
+					name = String.format("%s(%d)", varp.name(), index);
+					break;
+				}
 			}
 			addVarLog(VarType.VARP, name, old, neew);
 		}
