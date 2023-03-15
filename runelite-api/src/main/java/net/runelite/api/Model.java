@@ -53,14 +53,9 @@ public interface Model extends Mesh, Renderable
 	byte[] getFaceRenderPriorities();
 
 	int getRadius();
-	int getDiameter();
 
 	float[] getFaceTextureUVCoordinates();
 
-	/**
-	 * @see #getAABB(int)
-	 */
-	@Deprecated
 	void calculateExtreme(int orientation);
 
 	int getXYZMag();
@@ -76,11 +71,19 @@ public interface Model extends Mesh, Renderable
 	byte getOverrideHue();
 	byte getOverrideSaturation();
 	byte getOverrideLuminance();
-	HashMap<Integer, AABB> getAABBMap();
+
+	HashMap<Integer, AABB>  getAABBMap();
 
 	AABB getAABB(int orientation);
 
 	void calculateBoundingBox(int orientation);
 
 	int getLastOrientation();
+	int getDiameter();
+
+	byte[] getTextureFaces();
+
+	int[] getTexIndices1();
+	int[] getTexIndices2();
+	int[] getTexIndices3();
 }
