@@ -80,4 +80,10 @@ public interface Model extends Mesh, Renderable
 
 	int getLastOrientation();
 	int getDiameter();
+
+	byte[] getTextureFaces();
+
+	int[] getTexIndices1();
+	int[] getTexIndices2();
+	int[] getTexIndices3();
 }
