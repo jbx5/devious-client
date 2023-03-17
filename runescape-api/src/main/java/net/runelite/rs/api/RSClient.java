@@ -1129,6 +1129,17 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("mouseRecorder")
 	RSMouseRecorder getMouseRecorder();
 
+	@Import("selectedSpellName")
+	String getSelectedSpellName();
+
+	@Import("selectedSpellName")
+	@Override
+	void setSelectedSpellName(String name);
+
+	@Override
+	@Import("selectedSpellActionName")
+	String getSelectedSpellActionName();
+
 	@Override
 	@Import("selectedSpellFlags")
 	int getSelectedSpellFlags();
@@ -1293,6 +1304,9 @@ public interface RSClient extends RSGameEngine, Client
 
 	@Import("showMouseOverText")
 	void setShowMouseOverText(boolean showMouseOverText);
+
+	@Import("defaultRotations")
+	int[] getDefaultRotations();
 
 	@Import("showLoadingMessages")
 	boolean getShowLoadingMessages();
