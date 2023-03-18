@@ -2109,13 +2109,13 @@ public class ModelData extends Renderable {
             }
          }
 
-         var8.field2671 = new byte[this.faceCount];
+         var8.textureFaces = new byte[this.faceCount];
 
          for(var11 = 0; var11 < this.faceCount; ++var11) {
             if (this.textureCoords[var11] != -1) {
-               var8.field2671[var11] = (byte)var9[this.textureCoords[var11] & 255];
+               var8.textureFaces[var11] = (byte)var9[this.textureCoords[var11] & 255];
             } else {
-               var8.field2671[var11] = -1;
+               var8.textureFaces[var11] = -1;
             }
          }
       }

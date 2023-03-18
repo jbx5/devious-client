@@ -194,12 +194,18 @@ public interface RSModel extends RSRenderable, Model
 	@Override
 	HashMap<Integer, AABB> getAABBMap();
 
+	@Import("textureFaces")
+	@Override
+	byte[] getTextureFaces();
+
 	@Import("texIndices1")
 	@Override
 	int[] getTexIndices1();
+
 	@Import("texIndices2")
 	@Override
 	int[] getTexIndices2();
+
 	@Import("texIndices3")
 	@Override
 	int[] getTexIndices3();
