@@ -2084,25 +2084,25 @@ public class ModelData extends Renderable {
             }
          }
 
-         var8.field2674 = 0;
+         var8.texIndicesCount = 0;
 
          for(var10 = 0; var10 < this.textureTriangleCount; ++var10) {
             if (var9[var10] > 0 && this.textureRenderTypes[var10] == 0) {
-               ++var8.field2674;
+               ++var8.texIndicesCount;
             }
          }
 
-         var8.field2675 = new int[var8.field2674];
-         var8.field2676 = new int[var8.field2674];
-         var8.field2677 = new int[var8.field2674];
+         var8.texIndices1 = new int[var8.texIndicesCount];
+         var8.texIndices2 = new int[var8.texIndicesCount];
+         var8.texIndices3 = new int[var8.texIndicesCount];
          var10 = 0;
 
          int var11;
          for(var11 = 0; var11 < this.textureTriangleCount; ++var11) {
             if (var9[var11] > 0 && this.textureRenderTypes[var11] == 0) {
-               var8.field2675[var10] = this.texTriangleX[var11] & '\uffff';
-               var8.field2676[var10] = this.texTriangleY[var11] & '\uffff';
-               var8.field2677[var10] = this.texTriangleZ[var11] & '\uffff';
+               var8.texIndices1[var10] = this.texTriangleX[var11] & '\uffff';
+               var8.texIndices2[var10] = this.texTriangleY[var11] & '\uffff';
+               var8.texIndices3[var10] = this.texTriangleZ[var11] & '\uffff';
                var9[var11] = var10++;
             } else {
                var9[var11] = -1;

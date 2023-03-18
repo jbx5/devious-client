@@ -144,13 +144,17 @@ public class Model extends Renderable {
    @ObfuscatedName("aw")
    byte field2673 = 0;
    @ObfuscatedName("aa")
-   int field2674 = 0;
+   @Export("texIndicesCount")
+   int texIndicesCount = 0;
    @ObfuscatedName("ah")
-   int[] field2675;
+   @Export("texIndices1")
+   int[] texIndices1;
    @ObfuscatedName("ad")
-   int[] field2676;
+   @Export("texIndices2")
+   int[] texIndices2;
    @ObfuscatedName("bm")
-   int[] field2677;
+   @Export("texIndices3")
+   int[] texIndices3;
    @ObfuscatedName("bv")
    @Export("vertexLabels")
    int[][] vertexLabels;
@@ -217,7 +221,7 @@ public class Model extends Renderable {
       boolean var6 = false;
       this.verticesCount = 0;
       this.indicesCount = 0;
-      this.field2674 = 0;
+      this.texIndicesCount = 0;
       this.field2673 = -1;
 
       int var7;
@@ -227,7 +231,7 @@ public class Model extends Renderable {
          if (var8 != null) {
             this.verticesCount += var8.verticesCount;
             this.indicesCount += var8.indicesCount;
-            this.field2674 += var8.field2674;
+            this.texIndicesCount += var8.texIndicesCount;
             if (var8.faceRenderPriorities != null) {
                var3 = true;
             } else {
@@ -271,15 +275,15 @@ public class Model extends Renderable {
          this.field2671 = new byte[this.indicesCount];
       }
 
-      if (this.field2674 > 0) {
-         this.field2675 = new int[this.field2674];
-         this.field2676 = new int[this.field2674];
-         this.field2677 = new int[this.field2674];
+      if (this.texIndicesCount > 0) {
+         this.texIndices1 = new int[this.texIndicesCount];
+         this.texIndices2 = new int[this.texIndicesCount];
+         this.texIndices3 = new int[this.texIndicesCount];
       }
 
       this.verticesCount = 0;
       this.indicesCount = 0;
-      this.field2674 = 0;
+      this.texIndicesCount = 0;
 
       for(var7 = 0; var7 < var2; ++var7) {
          var8 = var1[var7];
@@ -314,7 +318,7 @@ public class Model extends Renderable {
 
                if (var6) {
                   if (var8.field2671 != null && var8.field2671[var9] != -1) {
-                     this.field2671[this.indicesCount] = (byte)(this.field2674 + var8.field2671[var9]);
+                     this.field2671[this.indicesCount] = (byte)(this.texIndicesCount + var8.field2671[var9]);
                   } else {
                      this.field2671[this.indicesCount] = -1;
                   }
@@ -323,11 +327,11 @@ public class Model extends Renderable {
                ++this.indicesCount;
             }
 
-            for(var9 = 0; var9 < var8.field2674; ++var9) {
-               this.field2675[this.field2674] = this.verticesCount + var8.field2675[var9];
-               this.field2676[this.field2674] = this.verticesCount + var8.field2676[var9];
-               this.field2677[this.field2674] = this.verticesCount + var8.field2677[var9];
-               ++this.field2674;
+            for(var9 = 0; var9 < var8.texIndicesCount; ++var9) {
+               this.texIndices1[this.texIndicesCount] = this.verticesCount + var8.texIndices1[var9];
+               this.texIndices2[this.texIndicesCount] = this.verticesCount + var8.texIndices2[var9];
+               this.texIndices3[this.texIndicesCount] = this.verticesCount + var8.texIndices3[var9];
+               ++this.texIndicesCount;
             }
 
             for(var9 = 0; var9 < var8.verticesCount; ++var9) {
@@ -365,7 +369,7 @@ public class Model extends Renderable {
                var11 = new Model();
                var11.verticesCount = this.verticesCount;
                var11.indicesCount = this.indicesCount;
-               var11.field2674 = this.field2674;
+               var11.texIndicesCount = this.texIndicesCount;
                var11.verticesX = this.verticesX;
                var11.verticesZ = this.verticesZ;
                var11.indices1 = this.indices1;
@@ -379,9 +383,9 @@ public class Model extends Renderable {
                var11.field2671 = this.field2671;
                var11.faceTextures = this.faceTextures;
                var11.field2673 = this.field2673;
-               var11.field2675 = this.field2675;
-               var11.field2676 = this.field2676;
-               var11.field2677 = this.field2677;
+               var11.texIndices1 = this.texIndices1;
+               var11.texIndices2 = this.texIndices2;
+               var11.texIndices3 = this.texIndices3;
                var11.vertexLabels = this.vertexLabels;
                var11.faceLabelsAlpha = this.faceLabelsAlpha;
                var11.isSingleTile = this.isSingleTile;
@@ -473,7 +477,7 @@ public class Model extends Renderable {
    Model buildSharedModel(boolean var1, Model var2, byte[] var3) {
       var2.verticesCount = this.verticesCount;
       var2.indicesCount = this.indicesCount;
-      var2.field2674 = this.field2674;
+      var2.texIndicesCount = this.texIndicesCount;
       if (var2.verticesX == null || var2.verticesX.length < this.verticesCount) {
          var2.verticesX = new int[this.verticesCount + 100];
          var2.verticesY = new int[this.verticesCount + 100];
@@ -512,9 +516,9 @@ public class Model extends Renderable {
       var2.field2671 = this.field2671;
       var2.faceTextures = this.faceTextures;
       var2.field2673 = this.field2673;
-      var2.field2675 = this.field2675;
-      var2.field2676 = this.field2676;
-      var2.field2677 = this.field2677;
+      var2.texIndices1 = this.texIndices1;
+      var2.texIndices2 = this.texIndices2;
+      var2.texIndices3 = this.texIndices3;
       var2.vertexLabels = this.vertexLabels;
       var2.faceLabelsAlpha = this.faceLabelsAlpha;
       var2.field2680 = this.field2680;
@@ -1140,7 +1144,7 @@ public class Model extends Renderable {
          field2669[var19] = var22 - var18;
          modelViewportXs[var19] = var20 * Rasterizer3D.Rasterizer3D_zoom / var22 + var8;
          modelViewportYs[var19] = var23 * Rasterizer3D.Rasterizer3D_zoom / var22 + var9;
-         if (this.field2674 > 0) {
+         if (this.texIndicesCount > 0) {
             field2695[var19] = var20;
             field2651[var19] = var23;
             field2655[var19] = var22;
@@ -1203,7 +1207,7 @@ public class Model extends Renderable {
          field2669[var20] = var23 - var19;
          modelViewportXs[var20] = var9 + var21 * Rasterizer3D.Rasterizer3D_zoom / var8;
          modelViewportYs[var20] = var10 + var24 * Rasterizer3D.Rasterizer3D_zoom / var8;
-         if (this.field2674 > 0) {
+         if (this.texIndicesCount > 0) {
             field2695[var20] = var21;
             field2651[var20] = var24;
             field2655[var20] = var23;
@@ -1476,9 +1480,9 @@ public class Model extends Renderable {
          int var15;
          if (this.field2671 != null && this.field2671[var1] != -1) {
             int var14 = this.field2671[var1] & 255;
-            var15 = this.field2675[var14];
-            var12 = this.field2676[var14];
-            var13 = this.field2677[var14];
+            var15 = this.texIndices1[var14];
+            var12 = this.texIndices2[var14];
+            var13 = this.texIndices3[var14];
          } else {
             var15 = this.indices1[var1];
             var12 = this.indices2[var1];
@@ -1621,9 +1625,9 @@ public class Model extends Renderable {
             int var21;
             if (this.field2671 != null && this.field2671[var1] != -1) {
                int var20 = this.field2671[var1] & 255;
-               var21 = this.field2675[var20];
-               var18 = this.field2676[var20];
-               var19 = this.field2677[var20];
+               var21 = this.texIndices1[var20];
+               var18 = this.texIndices2[var20];
+               var19 = this.texIndices3[var20];
             } else {
                var21 = var5;
                var18 = var6;
@@ -1737,7 +1741,7 @@ public class Model extends Renderable {
                         var26 = true;
                      }
 
-                     boolean var27 = var26 || this.field2674 > 0;
+                     boolean var27 = var26 || this.texIndicesCount > 0;
                      int var28 = HitSplatDefinition.method3854();
                      int var29 = ViewportMouse.ViewportMouse_y;
                      boolean var31 = ViewportMouse.ViewportMouse_isInViewport;

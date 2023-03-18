@@ -34,6 +34,7 @@ import net.runelite.api.clan.ClanID;
 import net.runelite.api.clan.ClanSettings;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
+import net.runelite.api.dbtable.DBRowConfig;
 import net.runelite.api.events.PlayerChanged;
 import net.runelite.api.hooks.Callbacks;
 import net.runelite.api.hooks.DrawCallbacks;
@@ -1130,6 +1131,8 @@ public interface Client extends OAuthApi, GameEngine
 	 */
 	MapElementConfig[] getMapElementConfigs();
 
+	DBRowConfig getDBRowConfig(int rowID);
+
 	/**
 	 * Get a map element config by id
 	 *
@@ -2106,7 +2109,13 @@ public interface Client extends OAuthApi, GameEngine
 
 	void setPrintMenuActions(boolean b);
 
+	String getSelectedSpellName();
+
+	void setSelectedSpellName(String name);
+
 	boolean getSpellSelected();
+
+	String getSelectedSpellActionName();
 
 	int getSelectedSpellFlags();
 

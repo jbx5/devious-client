@@ -411,7 +411,7 @@ public class class16 implements ThreadFactory {
          Rasterizer2D.Rasterizer2D_fillRectangle(var3 - var2, var4 - var2, var5 + var2 + var2, var2 + var6 + var2, 0);
          Rasterizer2D.Rasterizer2D_drawRectangle(var3 - var2, var4 - var2, var5 + var2 + var2, var2 + var6 + var2, 16777215);
          class420.fontPlain12.drawLines(var0, var3, var4, var5, var6, 16777215, -1, 1, 1, 0);
-         class167.method3445(var3 - var2, var4 - var2, var2 + var2 + var5, var2 + var2 + var6);
+         class167.invalidateMenu(var3 - var2, var4 - var2, var2 + var2 + var5, var2 + var2 + var6);
          if (var1) {
             StudioGame.rasterProvider.drawFull(0, 0);
          } else {
