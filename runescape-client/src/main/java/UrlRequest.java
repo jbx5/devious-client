@@ -15,7 +15,7 @@ public class UrlRequest {
    static int field1403 = -1;
    @ObfuscatedName("ac")
    @ObfuscatedGetter(
-      intValue = 476982434
+      intValue = 1778633031
    )
    static int field1404 = 1536228292;
    @ObfuscatedName("aj")

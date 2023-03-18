@@ -31,7 +31,7 @@ public class MidiPcmStream extends PcmStream {
    int field3335 = 256;
    @ObfuscatedName("ac")
    @ObfuscatedGetter(
-      intValue = -346441309
+      intValue = -656970048
    )
    int field3336 = 1000000;
    @ObfuscatedName("ab")

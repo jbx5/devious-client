@@ -21,13 +21,13 @@ public final class ObjectSound extends Node {
    int plane;
    @ObfuscatedName("ac")
    @ObfuscatedGetter(
-      intValue = 2004718041
+      intValue = -1094128512
    )
    @Export("x")
    int x;
    @ObfuscatedName("ab")
    @ObfuscatedGetter(
-      intValue = 599655883
+      intValue = -553458304
    )
    @Export("y")
    int y;
