@@ -256,7 +256,7 @@ public class ItemComposition extends DualNode {
    public int field2224 = 0;
    @ObfuscatedName("cj")
    @ObfuscatedGetter(
-      intValue = -1884848513
+      intValue = -2094956621
    )
    public int field2225 = 0;
    @ObfuscatedName("cn")
