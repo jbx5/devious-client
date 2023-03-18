@@ -5962,7 +5962,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
                var3 = MouseHandler.MouseHandler_y;
                if (var2 < class20.menuX - 10 || var2 > PacketWriter.menuWidth + class20.menuX + 10 || var3 < Login.menuY - 10 || var3 > class30.menuHeight + Login.menuY + 10) {
                   isMenuOpen = false;
-                  class167.method3445(class20.menuX, Login.menuY, PacketWriter.menuWidth, class30.menuHeight);
+                  class167.invalidateMenu(class20.menuX, Login.menuY, PacketWriter.menuWidth, class30.menuHeight);
                }
             }
 
@@ -5982,11 +5982,11 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
                }
 
                if (var7 != -1) {
-                  ScriptFrame.method1153(var7);
+                  ScriptFrame.createMenuAction(var7);
                }
 
                isMenuOpen = false;
-               class167.method3445(class20.menuX, Login.menuY, PacketWriter.menuWidth, class30.menuHeight);
+               class167.invalidateMenu(class20.menuX, Login.menuY, PacketWriter.menuWidth, class30.menuHeight);
             }
          } else {
             var2 = menuOptionsCount - 1;
@@ -5995,7 +5995,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
             }
 
             if ((var12 == 1 || !class319.mouseCam && var12 == 4) && menuOptionsCount > 0) {
-               ScriptFrame.method1153(var2);
+               ScriptFrame.createMenuAction(var2);
             }
 
             if (var12 == 2 && menuOptionsCount > 0) {

@@ -181,8 +181,15 @@ public class RuneLiteMenuEntry implements MenuEntry {
 	@Override
 	public MenuEntry setParent(MenuEntry parent)
 	{
-		this.parent = parent;
-		return parent;
+		if (parent == this)
+		{
+			throw new IllegalArgumentException("cannot set parent to self");
+		}
+		else
+		{
+			client.getMenuEntries()[this.idx] = (MenuEntry) parent;
+			return this;
+		}
 	}
 
 	@Override

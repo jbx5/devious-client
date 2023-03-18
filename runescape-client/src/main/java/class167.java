@@ -446,7 +446,8 @@ public class class167 {
       descriptor = "(IIIII)V",
       garbageValue = "560158880"
    )
-   static final void method3445(int var0, int var1, int var2, int var3) {
+   @Export("invalidateMenu")
+   static final void invalidateMenu(int var0, int var1, int var2, int var3) {
       for(int var4 = 0; var4 < Client.rootWidgetCount; ++var4) {
          if (Client.rootWidgetXs[var4] + Client.rootWidgetWidths[var4] > var0 && Client.rootWidgetXs[var4] < var0 + var2 && Client.rootWidgetHeights[var4] + Client.rootWidgetYs[var4] > var1 && Client.rootWidgetYs[var4] < var3 + var1) {
             Client.field722[var4] = true;

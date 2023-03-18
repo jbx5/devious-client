@@ -538,6 +538,9 @@ public interface RSClient extends RSGameEngine, Client
 	@Override
 	boolean isMenuOpen();
 
+	@Import("isMenuOpen")
+	void setMenuOpen(boolean open);
+
 	@Import("cycle")
 	@Override
 	int getGameCycle();
@@ -670,6 +673,9 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("MouseHandler_lastPressedTimeMillis")
 	@Override
 	long getMouseLastPressedMillis();
+
+	@Import("MouseHandler_lastButton")
+	int getMouseLastButton();
 
 	@Import("keyHandler")
 	RSKeyHandler getKeyHandler();
@@ -1645,7 +1651,19 @@ public interface RSClient extends RSGameEngine, Client
 
 	@Import("getDbRowType")
 	RSDbRowType getDbRowType(int var0);
-	
+
+	@Import("graphicsCycle")
+	int getGraphicsCycle();
+
+	@Import("openMenu")
+	void openMenu(int mouseX, int mouseY);
+
+	@Import("createMenuAction")
+	void createMenuAction(int var0);
+
+	@Import("invalidateMenu")
+	void invalidateMenu(int menuX, int menuY, int menuWidth, int menuHeight);
+
 	/*
 	Unethical
 	 */
@@ -1732,10 +1750,6 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("calculateTag")
 	long calculateTag(int var0, int var1, int var2, boolean var3, int var4);
 
-	@Import("isMenuOpen")
-	@Override
-	void setMenuOpen(boolean open);
-
 	@Import("clickedWidget")
 	@Override
 	void setDraggedWidget(Widget widget);
@@ -1751,9 +1765,6 @@ public interface RSClient extends RSGameEngine, Client
 
 	@Import("staffModLevel")
 	void setStaffModLevel(int level);
-
-	@Import("graphicsCycle")
-	int getGraphicsCycle();
 
 	@Import("isMembersWorld")
 	@Override
