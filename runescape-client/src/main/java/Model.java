@@ -137,7 +137,8 @@ public class Model extends Renderable {
    @Export("faceAlphas")
    byte[] faceAlphas;
    @ObfuscatedName("af")
-   byte[] field2671;
+   @Export("textureFaces")
+   byte[] textureFaces;
    @ObfuscatedName("ai")
    @Export("faceTextures")
    short[] faceTextures;
@@ -246,7 +247,7 @@ public class Model extends Renderable {
 
             var4 |= var8.faceAlphas != null;
             var5 |= var8.faceTextures != null;
-            var6 |= var8.field2671 != null;
+            var6 |= var8.textureFaces != null;
          }
       }
 
@@ -272,7 +273,7 @@ public class Model extends Renderable {
       }
 
       if (var6) {
-         this.field2671 = new byte[this.indicesCount];
+         this.textureFaces = new byte[this.indicesCount];
       }
 
       if (this.texIndicesCount > 0) {
@@ -317,10 +318,10 @@ public class Model extends Renderable {
                }
 
                if (var6) {
-                  if (var8.field2671 != null && var8.field2671[var9] != -1) {
-                     this.field2671[this.indicesCount] = (byte)(this.texIndicesCount + var8.field2671[var9]);
+                  if (var8.textureFaces != null && var8.textureFaces[var9] != -1) {
+                     this.textureFaces[this.indicesCount] = (byte)(this.texIndicesCount + var8.textureFaces[var9]);
                   } else {
-                     this.field2671[this.indicesCount] = -1;
+                     this.textureFaces[this.indicesCount] = -1;
                   }
                }
 
@@ -380,7 +381,7 @@ public class Model extends Renderable {
                var11.faceColors3 = this.faceColors3;
                var11.faceRenderPriorities = this.faceRenderPriorities;
                var11.faceAlphas = this.faceAlphas;
-               var11.field2671 = this.field2671;
+               var11.textureFaces = this.textureFaces;
                var11.faceTextures = this.faceTextures;
                var11.field2673 = this.field2673;
                var11.texIndices1 = this.texIndices1;
@@ -513,7 +514,7 @@ public class Model extends Renderable {
       var2.faceColors2 = this.faceColors2;
       var2.faceColors3 = this.faceColors3;
       var2.faceRenderPriorities = this.faceRenderPriorities;
-      var2.field2671 = this.field2671;
+      var2.textureFaces = this.textureFaces;
       var2.faceTextures = this.faceTextures;
       var2.field2673 = this.field2673;
       var2.texIndices1 = this.texIndices1;
@@ -1478,8 +1479,8 @@ public class Model extends Renderable {
          int var12;
          int var13;
          int var15;
-         if (this.field2671 != null && this.field2671[var1] != -1) {
-            int var14 = this.field2671[var1] & 255;
+         if (this.textureFaces != null && this.textureFaces[var1] != -1) {
+            int var14 = this.textureFaces[var1] & 255;
             var15 = this.texIndices1[var14];
             var12 = this.texIndices2[var14];
             var13 = this.texIndices3[var14];
@@ -1623,8 +1624,8 @@ public class Model extends Renderable {
          if (this.faceTextures != null && this.faceTextures[var1] != -1) {
             int var19;
             int var21;
-            if (this.field2671 != null && this.field2671[var1] != -1) {
-               int var20 = this.field2671[var1] & 255;
+            if (this.textureFaces != null && this.textureFaces[var1] != -1) {
+               int var20 = this.textureFaces[var1] & 255;
                var21 = this.texIndices1[var20];
                var18 = this.texIndices2[var20];
                var19 = this.texIndices3[var20];
