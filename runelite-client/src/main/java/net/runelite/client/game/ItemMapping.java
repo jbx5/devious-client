@@ -621,6 +621,8 @@ import static net.runelite.api.ItemID.UNHOLY_BOOK_OR;
 import static net.runelite.api.ItemID.UNIDENTIFIED_MINERALS;
 import static net.runelite.api.ItemID.URSINE_CHAINMACE_27660;
 import static net.runelite.api.ItemID.URSINE_CHAINMACE_U_27657;
+import static net.runelite.api.ItemID.VENATOR_BOW;
+import static net.runelite.api.ItemID.VENATOR_BOW_UNCHARGED;
 import static net.runelite.api.ItemID.VERACS_BRASSARD;
 import static net.runelite.api.ItemID.VERACS_BRASSARD_100;
 import static net.runelite.api.ItemID.VERACS_BRASSARD_25;
@@ -867,6 +869,7 @@ public enum ItemMapping
 	ITEM_RING_OF_ENDURANCE(RING_OF_ENDURANCE_UNCHARGED_24844, RING_OF_ENDURANCE),
 	ITEM_TUMEKENS_SHADOW(TUMEKENS_SHADOW_UNCHARGED, TUMEKENS_SHADOW),
 	ITEM_PHARAOHS_SCEPTRE(PHARAOHS_SCEPTRE_UNCHARGED, true, 1L, PHARAOHS_SCEPTRE),
+	ITEM_VENATOR_BOW(VENATOR_BOW_UNCHARGED, VENATOR_BOW),
 
 	// Tombs of Amascut gear
 	ITEM_ELIDINIS_WARD(ELIDINIS_WARD, ELIDINIS_WARD_F, ELIDINIS_WARD_OR),
