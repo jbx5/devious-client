@@ -40,7 +40,7 @@ public enum WorldMapSectionType implements MouseWheel {
    static ClientPreferences clientPreferences;
    @ObfuscatedName("ue")
    @ObfuscatedGetter(
-      intValue = -1356337792
+      intValue = -1812545536
    )
    static int field2937;
    @ObfuscatedName("bf")

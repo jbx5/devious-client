@@ -331,13 +331,13 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
    static int hintArrowY = 0;
    @ObfuscatedName("ec")
    @ObfuscatedGetter(
-      intValue = 1052077852
+      intValue = 526038926
    )
    @Export("hintArrowHeight")
    static int hintArrowHeight = 0;
    @ObfuscatedName("eg")
    @ObfuscatedGetter(
-      intValue = -64569664
+      intValue = -269444357
    )
    @Export("hintArrowSubX")
    static int hintArrowSubX = 0;
@@ -474,6 +474,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
    @Export("fontsMap")
    static HashMap fontsMap;
    @ObfuscatedName("it")
+   @Export("selectedItemName")
    static String selectedItemName;
    @ObfuscatedName("jc")
    @ObfuscatedGetter(
@@ -712,7 +713,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
    static int mouseCrossY;
    @ObfuscatedName("mh")
    @ObfuscatedGetter(
-      intValue = 745575289
+      intValue = 2026603892
    )
    @Export("mouseCrossState")
    static int mouseCrossState;
@@ -781,6 +782,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
    @Export("playerOptionsPriorities")
    static boolean[] playerOptionsPriorities;
    @ObfuscatedName("nz")
+   @Export("defaultRotations")
    static int[] defaultRotations;
    @ObfuscatedName("ng")
    @ObfuscatedGetter(
@@ -910,8 +912,10 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
    @Export("selectedSpellItemId")
    static int selectedSpellItemId;
    @ObfuscatedName("os")
+   @Export("selectedSpellActionName")
    static String selectedSpellActionName;
    @ObfuscatedName("ox")
+   @Export("selectedSpellName")
    static String selectedSpellName;
    @ObfuscatedName("oo")
    @ObfuscatedGetter(
@@ -1044,13 +1048,16 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
    @Export("cycleCntr")
    static int cycleCntr;
    @ObfuscatedName("qt")
+   @Export("changedVarps")
    static int[] changedVarps;
    @ObfuscatedName("qx")
    @ObfuscatedGetter(
       intValue = 851598891
    )
+   @Export("changedVarpCount")
    static int changedVarpCount;
    @ObfuscatedName("qo")
+   @Export("changedItemContainers")
    static int[] changedItemContainers;
    @ObfuscatedName("qs")
    @ObfuscatedGetter(
@@ -1058,11 +1065,13 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
    )
    static int field666;
    @ObfuscatedName("qv")
+   @Export("changedSkills")
    static int[] changedSkills;
    @ObfuscatedName("ql")
    @ObfuscatedGetter(
       intValue = -1272683167
    )
+   @Export("changedSkillsCount")
    static int changedSkillsCount;
    @ObfuscatedName("qf")
    static int[] field677;
@@ -1210,11 +1219,13 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
    @ObfuscatedName("sh")
    static String field637;
    @ObfuscatedName("si")
+   @Export("crossWorldMessageIds")
    static long[] crossWorldMessageIds;
    @ObfuscatedName("se")
    @ObfuscatedGetter(
       intValue = -2087955713
    )
+   @Export("crossWorldMessageIdsIndex")
    static int crossWorldMessageIdsIndex;
    @ObfuscatedName("sq")
    @ObfuscatedSignature(
@@ -5951,7 +5962,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
                var3 = MouseHandler.MouseHandler_y;
                if (var2 < class20.menuX - 10 || var2 > PacketWriter.menuWidth + class20.menuX + 10 || var3 < Login.menuY - 10 || var3 > class30.menuHeight + Login.menuY + 10) {
                   isMenuOpen = false;
-                  class167.method3445(class20.menuX, Login.menuY, PacketWriter.menuWidth, class30.menuHeight);
+                  class167.invalidateMenu(class20.menuX, Login.menuY, PacketWriter.menuWidth, class30.menuHeight);
                }
             }
 
@@ -5971,11 +5982,11 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
                }
 
                if (var7 != -1) {
-                  ScriptFrame.method1153(var7);
+                  ScriptFrame.createMenuAction(var7);
                }
 
                isMenuOpen = false;
-               class167.method3445(class20.menuX, Login.menuY, PacketWriter.menuWidth, class30.menuHeight);
+               class167.invalidateMenu(class20.menuX, Login.menuY, PacketWriter.menuWidth, class30.menuHeight);
             }
          } else {
             var2 = menuOptionsCount - 1;
@@ -5984,7 +5995,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
             }
 
             if ((var12 == 1 || !class319.mouseCam && var12 == 4) && menuOptionsCount > 0) {
-               ScriptFrame.method1153(var2);
+               ScriptFrame.createMenuAction(var2);
             }
 
             if (var12 == 2 && menuOptionsCount > 0) {

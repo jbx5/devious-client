@@ -54,6 +54,7 @@ public interface Model extends Mesh, Renderable
 
 	int getRadius();
 
+	@Deprecated
 	float[] getFaceTextureUVCoordinates();
 
 	void calculateExtreme(int orientation);
