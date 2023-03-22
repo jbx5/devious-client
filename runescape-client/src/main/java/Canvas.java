@@ -11,7 +11,7 @@ import net.runelite.mapping.ObfuscatedSignature;
 public final class Canvas extends java.awt.Canvas {
    @ObfuscatedName("uj")
    @ObfuscatedGetter(
-      intValue = 34981760
+      intValue = 182697984
    )
    static int field123;
    @ObfuscatedName("an")

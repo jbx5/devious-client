@@ -279,7 +279,8 @@ public class ScriptFrame {
       descriptor = "(II)V",
       garbageValue = "1564152216"
    )
-   static final void method1153(int var0) {
+   @Export("createMenuAction")
+   static final void createMenuAction(int var0) {
       if (var0 >= 0) {
          int var1 = Client.menuArguments1[var0];
          int var2 = Client.menuArguments2[var0];
