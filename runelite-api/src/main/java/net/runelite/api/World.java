@@ -133,11 +133,16 @@ public interface World
 
 	default boolean isNormal()
 	{
-		return !isAllPkWorld() && !isSkillTotal() && !isTournament() && !isLeague() && !isPvpArena();
+		return !isAllPkWorld() && !isSkillTotal() && !isTournament() && !isLeague() && !isPvpArena() && !isQuestSpeedRunning();
 	}
 
 	default boolean isPvpArena()
 	{
 		return getTypes().contains(WorldType.PVP_ARENA);
+	}
+
+	default boolean isQuestSpeedRunning()
+	{
+		return getTypes().contains(WorldType.QUEST_SPEEDRUNNING);
 	}
 }
