@@ -131,7 +131,7 @@ LABEL101:
    sstore                 2
 LABEL105:
    sload                  2
-   sconst                 ": "
+   sconst                 ": "
    sload                  0
    sload                  1
    sconst                 "</col>"
