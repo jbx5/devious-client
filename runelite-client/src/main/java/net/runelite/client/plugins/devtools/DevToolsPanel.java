@@ -55,7 +55,7 @@ class DevToolsPanel extends PluginPanel
 	private final DevToolsPlugin plugin;
 
 	private final WidgetInspector widgetInspector;
-	private final VarInspector varInspector;
+	//private final VarInspector varInspector;
 	private final ScriptInspector scriptInspector;
 	private final InventoryInspector inventoryInspector;
 	private final InfoBoxManager infoBoxManager;
@@ -67,7 +67,7 @@ class DevToolsPanel extends PluginPanel
 		ClientThread clientThread,
 		DevToolsPlugin plugin,
 		WidgetInspector widgetInspector,
-		VarInspector varInspector,
+		//VarInspector varInspector,
 		ScriptInspector scriptInspector,
 		InventoryInspector inventoryInspector,
 		Notifier notifier,
@@ -79,7 +79,7 @@ class DevToolsPanel extends PluginPanel
 		this.clientThread = clientThread;
 		this.plugin = plugin;
 		this.widgetInspector = widgetInspector;
-		this.varInspector = varInspector;
+		//this.varInspector = varInspector;
 		this.inventoryInspector = inventoryInspector;
 		this.scriptInspector = scriptInspector;
 		this.notifier = notifier;
@@ -137,8 +137,8 @@ class DevToolsPanel extends PluginPanel
 		container.add(plugin.getWidgetInspector());
 		plugin.getWidgetInspector().addFrame(widgetInspector);
 
-		container.add(plugin.getVarInspector());
-		plugin.getVarInspector().addFrame(varInspector);
+		//container.add(plugin.getVarInspector());
+		//plugin.getVarInspector().addFrame(varInspector);
 
 		container.add(plugin.getSoundEffects());
 

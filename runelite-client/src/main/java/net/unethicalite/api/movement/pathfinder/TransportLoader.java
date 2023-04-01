@@ -336,6 +336,9 @@ public class TransportLoader
 			// Edgeville Dungeon
 			transports.add(trapDoorTransport(new WorldPoint(3096, 3468, 0), new WorldPoint(3096, 9867, 0), 1579, 1581));
 
+			// Varrock Castle manhole
+			transports.add(trapDoorTransport(new WorldPoint(3237, 3459, 0), new WorldPoint(3237, 9859, 0), 881, 882));
+
 			if (Inventory.contains(SLASH_ITEMS) || Equipment.contains(SLASH_ITEMS))
 			{
 				for (Pair<WorldPoint, WorldPoint> pair : SLASH_WEB_POINTS)

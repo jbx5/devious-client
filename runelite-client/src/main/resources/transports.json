@@ -67302,42 +67302,12 @@
   {
     "source": {
       "x": 3237,
-      "y": 9858,
+      "y": 9859,
       "plane": 0
     },
     "destination": {
       "x": 3237,
-      "y": 3457,
-      "plane": 0
-    },
-    "action": "Climb-down",
-    "objectId": 882,
-    "requirements": {}
-  },
-  {
-    "source": {
-      "x": 3237,
-      "y": 9858,
-      "plane": 0
-    },
-    "destination": {
-      "x": 3236,
-      "y": 3458,
-      "plane": 0
-    },
-    "action": "Climb-down",
-    "objectId": 882,
-    "requirements": {}
-  },
-  {
-    "source": {
-      "x": 3236,
-      "y": 3458,
-      "plane": 0
-    },
-    "destination": {
-      "x": 3237,
-      "y": 9858,
+      "y": 3459,
       "plane": 0
     },
     "action": "Climb-up",
