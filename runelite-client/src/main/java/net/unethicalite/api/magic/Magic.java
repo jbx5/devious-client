@@ -73,6 +73,7 @@ public class Magic
 		{
 			Static.getClient().setSelectedSpellWidget(widget.getId());
 			Static.getClient().setSelectedSpellChildIndex(-1);
+			Static.getClient().setSpellSelected(true);
 		}
 	}
 
