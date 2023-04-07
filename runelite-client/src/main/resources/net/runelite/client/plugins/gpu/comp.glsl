@@ -27,21 +27,21 @@
 
 #include thread_config
 
-shared int totalNum[12]; // number of faces with a given priority
-shared int totalDistance[12]; // sum of distances to faces of a given priority
+shared int totalNum[12];       // number of faces with a given priority
+shared int totalDistance[12];  // sum of distances to faces of a given priority
 
-shared int totalMappedNum[18]; // number of faces with a given adjusted priority
+shared int totalMappedNum[18];  // number of faces with a given adjusted priority
 
-shared int min10; // minimum distance to a face of priority 10
-shared int dfs[THREAD_COUNT * FACES_PER_THREAD]; // packed face id and distance
+shared int min10;                                 // minimum distance to a face of priority 10
+shared int dfs[THREAD_COUNT * FACES_PER_THREAD];  // packed face id and distance
 
-#include comp_common.glsl
+#include "comp_common.glsl"
 
 layout(local_size_x = THREAD_COUNT) in;
 
-#include common.glsl
-#include uv.glsl
-#include priority_render.glsl
+#include "common.glsl"
+#include "uv.glsl"
+#include "priority_render.glsl"
 
 void main() {
   uint groupId = gl_WorkGroupID.x;

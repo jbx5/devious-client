@@ -109,6 +109,7 @@ public class Item implements Interactable, Identifiable, EntityNameable
 		client.setSelectedSpellWidget(widgetId);
 		client.setSelectedSpellChildIndex(slot);
 		client.setSelectedSpellItemId(id);
+		client.setSpellSelected(true);
 	}
 
 	public void useOn(TileItem object)
