@@ -61,6 +61,7 @@ import static net.runelite.api.widgets.WidgetInfo.TO_GROUP;
 public abstract class RSWidgetMixin implements RSWidget
 {
 	private static final int ITEM_SLOT_SIZE = 32;
+	private static final int ITEM_EMPTY = 6512;
 	@Shadow("client")
 	private static RSClient client;
 	@Inject
@@ -293,6 +294,30 @@ public abstract class RSWidgetMixin implements RSWidget
 	}
 
 	@Inject
+	@FieldHook("cycle")
+	public void onCycle(int cycle)
+	{
+		Widget[] children = getDynamicChildren();
+		int[] itemIds = new int[children.length];
+		for (int i = 0; i < children.length; i++)
+		{
+			Widget child = children[i];
+			int itemId = child.getItemId();
+			if (itemId != -1)
+			{
+				itemIds[i] = itemId;
+			}
+		}
+
+		if (itemIds == null)
+		{
+			return;
+		}
+
+		setItemIds(itemIds);
+	}
+
+	@Inject
 	@Override
 	public List<WidgetItem> getWidgetItems()
 	{
@@ -307,7 +332,7 @@ public abstract class RSWidgetMixin implements RSWidget
 
 		for (int i = 0; i < itemIds.length; ++i)
 		{
-			if (itemIds[i] <= 0)
+			if (itemIds[i] <= 0 || itemIds[i] == ITEM_EMPTY)
 			{
 				continue;
 			}
@@ -323,49 +348,29 @@ public abstract class RSWidgetMixin implements RSWidget
 		return items;
 	}
 
-	/*@Inject
+	@Inject
 	@Override
 	public WidgetItem getWidgetItem(int index)
 	{
-		int[] itemIds = getItemIds();
-		int[] itemQuantities = getItemQuantities();
-
-		if (itemIds == null || itemQuantities == null)
-		{
-			return null;
-		}
-
-		int columns = getWidth(); // the number of item slot columns is stored here
-		int xPadding = getPaddingX();
-		int yPadding = getPaddingY();
-		int itemId = itemIds[index];
-		int itemQuantity = itemQuantities[index];
-
-		if (columns <= 0)
-		{
-			return null;
-		}
-
-		int row = index / columns;
-		int col = index % columns;
-		int itemX = rl$x + ((ITEM_SLOT_SIZE + xPadding) * col);
-		int itemY = rl$y + ((ITEM_SLOT_SIZE + yPadding) * row);
-
-		boolean isDragged = isWidgetItemDragged(index);
+		Widget child = getDynamicChildren()[index];
+		boolean isDragged = child.isWidgetItemDragged(index);
 		int dragOffsetX = 0;
 		int dragOffsetY = 0;
 
 		if (isDragged)
 		{
-			Point p = getWidgetItemDragOffsets();
+			Point p = child.getWidgetItemDragOffsets();
 			dragOffsetX = p.getX();
 			dragOffsetY = p.getY();
 		}
 
-		Rectangle bounds = new Rectangle(itemX - 1, itemY - 1, ITEM_SLOT_SIZE, ITEM_SLOT_SIZE);
-		Rectangle draggedBounds = new Rectangle(itemX + dragOffsetX, itemY + dragOffsetY, ITEM_SLOT_SIZE, ITEM_SLOT_SIZE);
-		return new WidgetItem(itemId - 1, itemQuantity, index, bounds, this, draggedBounds);
-	}*/
+		// set bounds to same size as default inventory
+		Rectangle bounds = child.getBounds();
+		bounds.setBounds(bounds.x - 1, bounds.y - 1, ITEM_SLOT_SIZE, ITEM_SLOT_SIZE);
+		Rectangle dragBounds = child.getBounds();
+		dragBounds.setBounds(bounds.x + dragOffsetX, bounds.y + dragOffsetY, ITEM_SLOT_SIZE, ITEM_SLOT_SIZE);
+		return new WidgetItem(child.getItemId(), child.getItemQuantity(), index, bounds, child, dragBounds);
+	}
 
 	@Inject
 	@Override
@@ -637,19 +642,19 @@ public abstract class RSWidgetMixin implements RSWidget
 		return copy$getModel(sequence, frame, alternate, playerComposition, npcComposition, newStuff);
 	}
 
-	/*@Inject
+	@Inject
 	@Override
 	public boolean isWidgetItemDragged(int index)
 	{
-		return client.getIf1DraggedWidget() == this && client.getItemPressedDuration() >= 5 &&
-			client.getIf1DraggedItemIndex() == index;
+		return client.getDraggedWidget() == this && client.getDragTime() >= 5 &&
+			client.getDraggedWidget().getIndex() == index;
 	}
 
 	@Inject
 	public Point getWidgetItemDragOffsets()
 	{
-		int dragOffsetX = client.getMouseX() - client.getDraggedWidgetX();
-		int dragOffsetY = client.getMouseY() - client.getDraggedWidgetY();
+		int dragOffsetX = client.getMouseX() - client.getWidgetClickX();
+		int dragOffsetY = client.getMouseY() - client.getWidgetClickY();
 
 		if (dragOffsetX < 5 && dragOffsetX > -5)
 		{
@@ -662,7 +667,7 @@ public abstract class RSWidgetMixin implements RSWidget
 		}
 
 		return new Point(dragOffsetX, dragOffsetY);
-	}*/
+	}
 
 	@Inject
 	public void setForcedX()
