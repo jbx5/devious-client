@@ -292,10 +292,10 @@ public abstract class RSWidgetMixin implements RSWidget
 		Point canvasLocation = getCanvasLocation();
 		return new Rectangle(canvasLocation.getX(), canvasLocation.getY(), getWidth(), getHeight());
 	}
-	
+
 	@Inject
-	@Override
-	public List<WidgetItem> getWidgetItems()
+	@FieldHook("cycle")
+	public void onCycle(int cycle)
 	{
 		Widget[] children = getDynamicChildren();
 		int[] itemIds = new int[children.length];
@@ -311,10 +311,22 @@ public abstract class RSWidgetMixin implements RSWidget
 
 		if (itemIds == null)
 		{
-			return null;
+			return;
 		}
 
 		setItemIds(itemIds);
+	}
+
+	@Inject
+	@Override
+	public List<WidgetItem> getWidgetItems()
+	{
+		int[] itemIds = getItemIds();
+
+		if (itemIds == null)
+		{
+			return null;
+		}
 
 		List<WidgetItem> items = new ArrayList<WidgetItem>(itemIds.length);
 
@@ -340,13 +352,6 @@ public abstract class RSWidgetMixin implements RSWidget
 	@Override
 	public WidgetItem getWidgetItem(int index)
 	{
-		int[] itemIds = getItemIds();
-
-		if (itemIds == null)
-		{
-			return null;
-		}
-
 		Widget child = getDynamicChildren()[index];
 		boolean isDragged = child.isWidgetItemDragged(index);
 		int dragOffsetX = 0;
