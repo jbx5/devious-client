@@ -625,9 +625,9 @@ public final class WidgetID
 		static final int REDEMPTION = 25;
 		static final int SMITE = 26;
 		static final int PRESERVE = 37;
-		static final int CHIVALRY = 33;
-		static final int PIETY = 34;
-		static final int RIGOUR = 35;
+		static final int CHIVALRY = 34;
+		static final int PIETY = 35;
+		static final int RIGOUR = 33;
 		static final int AUGURY = 36;
 	}
 
