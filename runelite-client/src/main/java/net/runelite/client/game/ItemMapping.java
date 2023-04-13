@@ -29,18 +29,16 @@ import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import lombok.Getter;
-
-import javax.annotation.Nullable;
 import java.util.Collection;
-
+import javax.annotation.Nullable;
 import static net.runelite.api.ItemID.ABYSSAL_TENTACLE;
 import static net.runelite.api.ItemID.ABYSSAL_TENTACLE_OR;
 import static net.runelite.api.ItemID.ABYSSAL_WHIP;
 import static net.runelite.api.ItemID.ABYSSAL_WHIP_OR;
-import static net.runelite.api.ItemID.ACCURSED_SCEPTRE_27665;
-import static net.runelite.api.ItemID.ACCURSED_SCEPTRE_AU_27676;
-import static net.runelite.api.ItemID.ACCURSED_SCEPTRE_A_27679;
-import static net.runelite.api.ItemID.ACCURSED_SCEPTRE_U_27662;
+import static net.runelite.api.ItemID.ACCURSED_SCEPTRE;
+import static net.runelite.api.ItemID.ACCURSED_SCEPTRE_A;
+import static net.runelite.api.ItemID.ACCURSED_SCEPTRE_AU;
+import static net.runelite.api.ItemID.ACCURSED_SCEPTRE_U;
 import static net.runelite.api.ItemID.ADAMANT_DEFENDER_L;
 import static net.runelite.api.ItemID.AHRIMS_HOOD;
 import static net.runelite.api.ItemID.AHRIMS_HOOD_100;
@@ -619,8 +617,8 @@ import static net.runelite.api.ItemID.UNCHARGED_TRIDENT;
 import static net.runelite.api.ItemID.UNCHARGED_TRIDENT_E;
 import static net.runelite.api.ItemID.UNHOLY_BOOK_OR;
 import static net.runelite.api.ItemID.UNIDENTIFIED_MINERALS;
-import static net.runelite.api.ItemID.URSINE_CHAINMACE_27660;
-import static net.runelite.api.ItemID.URSINE_CHAINMACE_U_27657;
+import static net.runelite.api.ItemID.URSINE_CHAINMACE;
+import static net.runelite.api.ItemID.URSINE_CHAINMACE_U;
 import static net.runelite.api.ItemID.VENATOR_BOW;
 import static net.runelite.api.ItemID.VENATOR_BOW_UNCHARGED;
 import static net.runelite.api.ItemID.VERACS_BRASSARD;
@@ -669,8 +667,8 @@ import static net.runelite.api.ItemID.VOLATILE_ORB;
 import static net.runelite.api.ItemID.VOLCANIC_ABYSSAL_WHIP;
 import static net.runelite.api.ItemID.WARRIOR_RING;
 import static net.runelite.api.ItemID.WARRIOR_RING_I;
-import static net.runelite.api.ItemID.WEBWEAVER_BOW_27655;
-import static net.runelite.api.ItemID.WEBWEAVER_BOW_U_27652;
+import static net.runelite.api.ItemID.WEBWEAVER_BOW;
+import static net.runelite.api.ItemID.WEBWEAVER_BOW_U;
 import static net.runelite.api.ItemID.ZALCANO_SHARD;
 import static net.runelite.api.ItemID.ZAMORAK_GODSWORD;
 import static net.runelite.api.ItemID.ZAMORAK_GODSWORD_OR;
@@ -861,10 +859,10 @@ public enum ItemMapping
 	ITEM_CRAWS_BOW(CRAWS_BOW_U, CRAWS_BOW),
 	ITEM_VIGGORAS_CHAINMACE(VIGGORAS_CHAINMACE_U, VIGGORAS_CHAINMACE),
 	ITEM_THAMMARONS_SCEPTRE(THAMMARONS_SCEPTRE_U, THAMMARONS_SCEPTRE),
-	ITEM_WEBWEAVER_BOW(WEBWEAVER_BOW_U_27652, WEBWEAVER_BOW_27655),
-	ITEM_URSINE_CHAINMACE(URSINE_CHAINMACE_U_27657, URSINE_CHAINMACE_27660),
-	ITEM_ACCURSED_SCEPTRE(ACCURSED_SCEPTRE_U_27662, ACCURSED_SCEPTRE_27665),
-	ITEM_ACCURSED_SCEPTRE_A(ACCURSED_SCEPTRE_AU_27676, ACCURSED_SCEPTRE_A_27679),
+	ITEM_WEBWEAVER_BOW(WEBWEAVER_BOW_U, WEBWEAVER_BOW),
+	ITEM_URSINE_CHAINMACE(URSINE_CHAINMACE_U, URSINE_CHAINMACE),
+	ITEM_ACCURSED_SCEPTRE(ACCURSED_SCEPTRE_U, ACCURSED_SCEPTRE),
+	ITEM_ACCURSED_SCEPTRE_A(ACCURSED_SCEPTRE_AU, ACCURSED_SCEPTRE_A),
 	ITEM_BRYOPHYTAS_STAFF(BRYOPHYTAS_STAFF_UNCHARGED, BRYOPHYTAS_STAFF),
 	ITEM_RING_OF_ENDURANCE(RING_OF_ENDURANCE_UNCHARGED_24844, RING_OF_ENDURANCE),
 	ITEM_TUMEKENS_SHADOW(TUMEKENS_SHADOW_UNCHARGED, TUMEKENS_SHADOW),
