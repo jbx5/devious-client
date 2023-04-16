@@ -41,6 +41,8 @@
             <maxFileSize>10MB</maxFileSize>
             <!-- keep 30 days' worth of history -->
             <maxHistory>30</maxHistory>
+            <!-- controls the total size of all archive files. Oldest archives are deleted asynchronously when the total size cap is exceeded -->
+            <totalSizeCap>10GB</totalSizeCap>
         </rollingPolicy>
 
         <encoder>
