@@ -1150,6 +1150,10 @@ public interface RSClient extends RSGameEngine, Client
 	String getSelectedSpellActionName();
 
 	@Override
+	@Import("selectedSpellActionName")
+	void setSelectedSpellActionName(String action);
+
+	@Override
 	@Import("selectedSpellFlags")
 	int getSelectedSpellFlags();
 
