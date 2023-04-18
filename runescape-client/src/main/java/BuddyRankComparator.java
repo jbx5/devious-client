@@ -1,19 +1,12 @@
-import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ea")
+@ObfuscatedName("er")
 @Implements("BuddyRankComparator")
 public class BuddyRankComparator extends AbstractUserComparator {
-   @ObfuscatedName("ml")
-   @ObfuscatedSignature(
-      descriptor = "Ldh;"
-   )
-   @Export("localPlayer")
-   static Player localPlayer;
-   @ObfuscatedName("aj")
+   @ObfuscatedName("af")
    @Export("reversed")
    final boolean reversed;
 
@@ -21,10 +14,10 @@ public class BuddyRankComparator extends AbstractUserComparator {
       this.reversed = var1;
    }
 
-   @ObfuscatedName("aj")
+   @ObfuscatedName("af")
    @ObfuscatedSignature(
-      descriptor = "(Lpt;Lpt;B)I",
-      garbageValue = "8"
+      descriptor = "(Lpb;Lpb;B)I",
+      garbageValue = "-49"
    )
    @Export("compareBuddy")
    int compareBuddy(Buddy var1, Buddy var2) {
@@ -39,157 +32,87 @@ public class BuddyRankComparator extends AbstractUserComparator {
       return this.compareBuddy((Buddy)var1, (Buddy)var2);
    }
 
-   @ObfuscatedName("aj")
+   @ObfuscatedName("af")
    @ObfuscatedSignature(
-      descriptor = "(ILjava/lang/String;Lnq;II)Lkp;",
-      garbageValue = "662322828"
+      descriptor = "(IIII)J",
+      garbageValue = "-1198658533"
    )
-   public static PacketBufferNode method2887(int var0, String var1, Language var2, int var3) {
-      PacketBufferNode var4 = UserComparator9.getPacketBufferNode(ClientPacket.field3072, Client.packetWriter.isaacCipher);
-      var4.packetBuffer.writeByte(0);
-      int var5 = var4.packetBuffer.offset;
-      var4.packetBuffer.writeByte(var0);
-      String var6 = var1.toLowerCase();
-      byte var7 = 0;
-      if (var6.startsWith("yellow:")) {
-         var7 = 0;
-         var1 = var1.substring("yellow:".length());
-      } else if (var6.startsWith("red:")) {
-         var7 = 1;
-         var1 = var1.substring("red:".length());
-      } else if (var6.startsWith("green:")) {
-         var7 = 2;
-         var1 = var1.substring("green:".length());
-      } else if (var6.startsWith("cyan:")) {
-         var7 = 3;
-         var1 = var1.substring("cyan:".length());
-      } else if (var6.startsWith("purple:")) {
-         var7 = 4;
-         var1 = var1.substring("purple:".length());
-      } else if (var6.startsWith("white:")) {
-         var7 = 5;
-         var1 = var1.substring("white:".length());
-      } else if (var6.startsWith("flash1:")) {
-         var7 = 6;
-         var1 = var1.substring("flash1:".length());
-      } else if (var6.startsWith("flash2:")) {
-         var7 = 7;
-         var1 = var1.substring("flash2:".length());
-      } else if (var6.startsWith("flash3:")) {
-         var7 = 8;
-         var1 = var1.substring("flash3:".length());
-      } else if (var6.startsWith("glow1:")) {
-         var7 = 9;
-         var1 = var1.substring("glow1:".length());
-      } else if (var6.startsWith("glow2:")) {
-         var7 = 10;
-         var1 = var1.substring("glow2:".length());
-      } else if (var6.startsWith("glow3:")) {
-         var7 = 11;
-         var1 = var1.substring("glow3:".length());
-      } else if (var2 != Language.Language_EN) {
-         if (var6.startsWith("yellow:")) {
-            var7 = 0;
-            var1 = var1.substring("yellow:".length());
-         } else if (var6.startsWith("red:")) {
-            var7 = 1;
-            var1 = var1.substring("red:".length());
-         } else if (var6.startsWith("green:")) {
-            var7 = 2;
-            var1 = var1.substring("green:".length());
-         } else if (var6.startsWith("cyan:")) {
-            var7 = 3;
-            var1 = var1.substring("cyan:".length());
-         } else if (var6.startsWith("purple:")) {
-            var7 = 4;
-            var1 = var1.substring("purple:".length());
-         } else if (var6.startsWith("white:")) {
-            var7 = 5;
-            var1 = var1.substring("white:".length());
-         } else if (var6.startsWith("flash1:")) {
-            var7 = 6;
-            var1 = var1.substring("flash1:".length());
-         } else if (var6.startsWith("flash2:")) {
-            var7 = 7;
-            var1 = var1.substring("flash2:".length());
-         } else if (var6.startsWith("flash3:")) {
-            var7 = 8;
-            var1 = var1.substring("flash3:".length());
-         } else if (var6.startsWith("glow1:")) {
-            var7 = 9;
-            var1 = var1.substring("glow1:".length());
-         } else if (var6.startsWith("glow2:")) {
-            var7 = 10;
-            var1 = var1.substring("glow2:".length());
-         } else if (var6.startsWith("glow3:")) {
-            var7 = 11;
-            var1 = var1.substring("glow3:".length());
-         }
-      }
-
-      var6 = var1.toLowerCase();
-      byte var8 = 0;
-      if (var6.startsWith("wave:")) {
-         var8 = 1;
-         var1 = var1.substring("wave:".length());
-      } else if (var6.startsWith("wave2:")) {
-         var8 = 2;
-         var1 = var1.substring("wave2:".length());
-      } else if (var6.startsWith("shake:")) {
-         var8 = 3;
-         var1 = var1.substring("shake:".length());
-      } else if (var6.startsWith("scroll:")) {
-         var8 = 4;
-         var1 = var1.substring("scroll:".length());
-      } else if (var6.startsWith("slide:")) {
-         var8 = 5;
-         var1 = var1.substring("slide:".length());
-      } else if (var2 != Language.Language_EN) {
-         if (var6.startsWith("wave:")) {
-            var8 = 1;
-            var1 = var1.substring("wave:".length());
-         } else if (var6.startsWith("wave2:")) {
-            var8 = 2;
-            var1 = var1.substring("wave2:".length());
-         } else if (var6.startsWith("shake:")) {
-            var8 = 3;
-            var1 = var1.substring("shake:".length());
-         } else if (var6.startsWith("scroll:")) {
-            var8 = 4;
-            var1 = var1.substring("scroll:".length());
-         } else if (var6.startsWith("slide:")) {
-            var8 = 5;
-            var1 = var1.substring("slide:".length());
-         }
-      }
-
-      var4.packetBuffer.writeByte(var7);
-      var4.packetBuffer.writeByte(var8);
-      ClanChannel.method3325(var4.packetBuffer, var1);
-      if (var0 == class320.field3705.rsOrdinal()) {
-         var4.packetBuffer.writeByte(var3);
-      }
-
-      var4.packetBuffer.writeLengthByte(var4.packetBuffer.offset - var5);
-      return var4;
+   static long method2959(int var0, int var1, int var2) {
+      return (long)(var2 << 16 | var0 << 8 | var1);
    }
 
-   @ObfuscatedName("ax")
+   @ObfuscatedName("af")
    @ObfuscatedSignature(
-      descriptor = "(I)Ljava/lang/String;",
-      garbageValue = "-713331340"
+      descriptor = "(Lnm;Lnm;I)V",
+      garbageValue = "893030532"
    )
-   static String method2886() {
-      StringBuilder var0 = new StringBuilder();
+   public static void method2958(AbstractArchive var0, AbstractArchive var1) {
+      SpotAnimationDefinition.SpotAnimationDefinition_archive = var0;
+      SpotAnimationDefinition.SpotAnimationDefinition_modelArchive = var1;
+   }
 
-      Message var2;
-      for(Iterator var1 = Messages.Messages_hashTable.iterator(); var1.hasNext(); var0.append(var2.text).append('\n')) {
-         var2 = (Message)var1.next();
-         if (var2.sender != null && !var2.sender.isEmpty()) {
-            var0.append(var2.sender).append(':');
+   @ObfuscatedName("aa")
+   @ObfuscatedSignature(
+      descriptor = "(II)I",
+      garbageValue = "1625583201"
+   )
+   static int method2949(int var0) {
+      Message var1 = (Message)Messages.Messages_hashTable.get((long)var0);
+      if (var1 == null) {
+         return -1;
+      } else {
+         return var1.nextDual == Messages.Messages_queue.sentinel ? -1 : ((Message)var1.nextDual).count;
+      }
+   }
+
+   @ObfuscatedName("ao")
+   @ObfuscatedSignature(
+      descriptor = "(Ljava/lang/String;B)Ljava/lang/String;",
+      garbageValue = "-55"
+   )
+   public static String method2960(String var0) {
+      int var1 = var0.length();
+      char[] var2 = new char[var1];
+      byte var3 = 2;
+
+      for(int var4 = 0; var4 < var1; ++var4) {
+         char var5 = var0.charAt(var4);
+         if (var3 == 0) {
+            var5 = Character.toLowerCase(var5);
+         } else if (var3 == 2 || Character.isUpperCase(var5)) {
+            var5 = WorldMapSectionType.method5420(var5);
          }
+
+         if (Character.isLetter(var5)) {
+            var3 = 0;
+         } else if (var5 != '.' && var5 != '?' && var5 != '!') {
+            if (Character.isSpaceChar(var5)) {
+               if (var3 != 2) {
+                  var3 = 1;
+               }
+            } else {
+               var3 = 1;
+            }
+         } else {
+            var3 = 2;
+         }
+
+         var2[var4] = var5;
       }
 
-      return var0.toString();
+      return new String(var2);
+   }
+
+   @ObfuscatedName("ah")
+   @ObfuscatedSignature(
+      descriptor = "(II)I",
+      garbageValue = "-1723997839"
+   )
+   public static int method2961(int var0) {
+      if (var0 > 0) {
+         return 1;
+      } else {
+         return var0 < 0 ? -1 : 0;
+      }
    }
 }

@@ -3,57 +3,52 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("sx")
+@ObfuscatedName("sm")
 @Implements("DbTableType")
 public class DbTableType extends DualNode {
-   @ObfuscatedName("aj")
+   @ObfuscatedName("af")
    @ObfuscatedSignature(
-      descriptor = "Lne;"
+      descriptor = "Lnm;"
    )
-   public static AbstractArchive field4874;
-   @ObfuscatedName("al")
+   static AbstractArchive field4961;
+   @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "Lkt;"
+      descriptor = "Lkh;"
    )
    @Export("DBTableType_cache")
-   public static EvictingDualNodeHashTable DBTableType_cache = new EvictingDualNodeHashTable(64);
-   @ObfuscatedName("cb")
-   @ObfuscatedSignature(
-      descriptor = "Lml;"
-   )
-   static StudioGame field4870;
-   @ObfuscatedName("ac")
+   static EvictingDualNodeHashTable DBTableType_cache = new EvictingDualNodeHashTable(64);
+   @ObfuscatedName("aw")
    @Export("types")
    public int[][] types;
-   @ObfuscatedName("ab")
+   @ObfuscatedName("ac")
    @Export("defaultValues")
    public Object[][] defaultValues;
 
    DbTableType() {
    }
 
-   @ObfuscatedName("al")
+   @ObfuscatedName("aw")
    @ObfuscatedSignature(
-      descriptor = "(Lsy;I)V",
-      garbageValue = "-2070277964"
+      descriptor = "(Lsg;B)V",
+      garbageValue = "1"
    )
-   void method8503(Buffer var1) {
+   void method8929(Buffer var1) {
       while(true) {
          int var2 = var1.readUnsignedByte();
          if (var2 == 0) {
             return;
          }
 
-         this.method8502(var1, var2);
+         this.method8930(var1, var2);
       }
    }
 
    @ObfuscatedName("ac")
    @ObfuscatedSignature(
-      descriptor = "(Lsy;II)V",
-      garbageValue = "1718940042"
+      descriptor = "(Lsg;IB)V",
+      garbageValue = "-4"
    )
-   void method8502(Buffer var1, int var2) {
+   void method8930(Buffer var1, int var2) {
       if (var2 == 1) {
          int var3 = var1.readUnsignedByte();
          if (this.types == null) {
@@ -75,18 +70,18 @@ public class DbTableType extends DualNode {
                   this.defaultValues = new Object[this.types.length][];
                }
 
-               this.defaultValues[var5] = Clock.method3525(var1, var7);
+               this.defaultValues[var5] = class377.method7250(var1, var7);
             }
          }
       }
 
    }
 
-   @ObfuscatedName("ab")
+   @ObfuscatedName("au")
    @ObfuscatedSignature(
-      descriptor = "(B)V",
-      garbageValue = "-24"
+      descriptor = "(S)V",
+      garbageValue = "-25081"
    )
-   void method8505() {
+   void method8934() {
    }
 }

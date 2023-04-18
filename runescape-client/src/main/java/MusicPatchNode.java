@@ -4,200 +4,219 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("lp")
+@ObfuscatedName("lq")
 @Implements("MusicPatchNode")
 public class MusicPatchNode extends Node {
-   @ObfuscatedName("fu")
+   @ObfuscatedName("mi")
    @ObfuscatedSignature(
-      descriptor = "Lmx;"
+      descriptor = "Ldv;"
    )
-   @Export("archive19")
-   static Archive archive19;
-   @ObfuscatedName("aj")
+   @Export("localPlayer")
+   static Player localPlayer;
+   @ObfuscatedName("af")
    @ObfuscatedGetter(
-      intValue = 1536995511
+      intValue = 1021419297
    )
-   int field3417;
-   @ObfuscatedName("al")
+   int field3467;
+   @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "Llb;"
+      descriptor = "Llz;"
    )
    @Export("patch")
    MusicPatch patch;
-   @ObfuscatedName("ac")
+   @ObfuscatedName("aw")
    @ObfuscatedSignature(
-      descriptor = "Lbe;"
+      descriptor = "Lbr;"
    )
    @Export("rawSound")
    RawSound rawSound;
-   @ObfuscatedName("ab")
+   @ObfuscatedName("ac")
    @ObfuscatedSignature(
-      descriptor = "Llj;"
+      descriptor = "Llp;"
    )
-   MusicPatchNode2 field3399;
-   @ObfuscatedName("an")
-   @ObfuscatedGetter(
-      intValue = -1917608321
-   )
-   int field3396;
-   @ObfuscatedName("ao")
-   @ObfuscatedGetter(
-      intValue = 428171735
-   )
-   int field3401;
-   @ObfuscatedName("av")
-   @ObfuscatedGetter(
-      intValue = -1423876977
-   )
-   int field3416;
-   @ObfuscatedName("aq")
-   @ObfuscatedGetter(
-      intValue = 407140507
-   )
-   int field3403;
-   @ObfuscatedName("ap")
-   @ObfuscatedGetter(
-      intValue = -1408521151
-   )
-   int field3404;
-   @ObfuscatedName("ar")
-   @ObfuscatedGetter(
-      intValue = -475867799
-   )
-   int field3405;
-   @ObfuscatedName("ak")
-   @ObfuscatedGetter(
-      intValue = 385520429
-   )
-   int field3406;
-   @ObfuscatedName("ax")
-   @ObfuscatedGetter(
-      intValue = -537324416
-   )
-   int field3402;
-   @ObfuscatedName("as")
-   @ObfuscatedGetter(
-      intValue = -1139762519
-   )
-   int field3408;
-   @ObfuscatedName("ay")
-   @ObfuscatedGetter(
-      intValue = -1459425483
-   )
-   int field3409;
-   @ObfuscatedName("am")
-   @ObfuscatedGetter(
-      intValue = -112149617
-   )
-   int field3413;
-   @ObfuscatedName("az")
-   @ObfuscatedGetter(
-      intValue = 1385793315
-   )
-   int field3411;
-   @ObfuscatedName("ae")
-   @ObfuscatedGetter(
-      intValue = 1586540291
-   )
-   int field3412;
+   MusicPatchNode2 field3452;
    @ObfuscatedName("au")
    @ObfuscatedGetter(
-      intValue = -1439862757
+      intValue = 1959190999
    )
-   int field3400;
+   int field3450;
+   @ObfuscatedName("ab")
+   @ObfuscatedGetter(
+      intValue = -630482265
+   )
+   int field3454;
+   @ObfuscatedName("aq")
+   @ObfuscatedGetter(
+      intValue = -254585523
+   )
+   int field3455;
+   @ObfuscatedName("al")
+   @ObfuscatedGetter(
+      intValue = 1083381765
+   )
+   int field3456;
+   @ObfuscatedName("at")
+   @ObfuscatedGetter(
+      intValue = -279706293
+   )
+   int field3470;
+   @ObfuscatedName("aa")
+   @ObfuscatedGetter(
+      intValue = 274954637
+   )
+   int field3458;
+   @ObfuscatedName("ay")
+   @ObfuscatedGetter(
+      intValue = -1077015879
+   )
+   int field3459;
+   @ObfuscatedName("ao")
+   @ObfuscatedGetter(
+      intValue = -814647939
+   )
+   int field3460;
+   @ObfuscatedName("ax")
+   @ObfuscatedGetter(
+      intValue = 873438947
+   )
+   int field3461;
+   @ObfuscatedName("ai")
+   @ObfuscatedGetter(
+      intValue = 891662681
+   )
+   int field3468;
    @ObfuscatedName("ag")
+   @ObfuscatedGetter(
+      intValue = -602614853
+   )
+   int field3464;
+   @ObfuscatedName("ah")
+   @ObfuscatedGetter(
+      intValue = -371546193
+   )
+   int field3449;
+   @ObfuscatedName("av")
+   @ObfuscatedGetter(
+      intValue = 667306259
+   )
+   int field3465;
+   @ObfuscatedName("ar")
+   @ObfuscatedGetter(
+      intValue = -2032101041
+   )
+   int field3457;
+   @ObfuscatedName("am")
    @ObfuscatedSignature(
-      descriptor = "Lbn;"
+      descriptor = "Lbl;"
    )
    @Export("stream")
    RawPcmStream stream;
-   @ObfuscatedName("at")
+   @ObfuscatedName("as")
    @ObfuscatedGetter(
-      intValue = -1037505339
+      intValue = -1971564769
    )
-   int field3415;
-   @ObfuscatedName("ai")
+   int field3462;
+   @ObfuscatedName("ak")
    @ObfuscatedGetter(
-      intValue = 425596591
+      intValue = -89170073
    )
-   int field3410;
+   int field3469;
 
    MusicPatchNode() {
    }
 
-   @ObfuscatedName("aj")
+   @ObfuscatedName("af")
    @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "-1067363009"
+      descriptor = "(B)V",
+      garbageValue = "-61"
    )
-   void method5736() {
+   void method5986() {
       this.patch = null;
       this.rawSound = null;
-      this.field3399 = null;
+      this.field3452 = null;
       this.stream = null;
    }
 
-   @ObfuscatedName("al")
+   @ObfuscatedName("af")
    @ObfuscatedSignature(
-      descriptor = "(ILjava/lang/String;Ljava/lang/String;I)V",
-      garbageValue = "871011997"
+      descriptor = "(IS)F",
+      garbageValue = "13359"
    )
-   @Export("addGameMessage")
-   static void addGameMessage(int var0, String var1, String var2) {
-      class12.addChatMessage(var0, var1, var2, (String)null);
+   public static float method5985(int var0) {
+      var0 &= 16383;
+      return (float)((double)((float)var0 / 16384.0F) * 6.283185307179586);
    }
 
-   @ObfuscatedName("ao")
+   @ObfuscatedName("aw")
    @ObfuscatedSignature(
-      descriptor = "(I)Z",
-      garbageValue = "-2022661591"
+      descriptor = "(II)Z",
+      garbageValue = "-1731174532"
    )
-   public static boolean method5737() {
-      try {
-         if (class293.musicPlayerStatus == 2) {
-            if (BufferedNetSocket.musicTrack == null) {
-               BufferedNetSocket.musicTrack = MusicTrack.readTrack(class364.musicTrackArchive, IntHashTable.musicTrackGroupId, class293.musicTrackFileId);
-               if (BufferedNetSocket.musicTrack == null) {
-                  return false;
-               }
+   public static boolean method5983(int var0) {
+      return (var0 >> 20 & 1) != 0;
+   }
+
+   @ObfuscatedName("iw")
+   @ObfuscatedSignature(
+      descriptor = "(Lmq;IIB)V",
+      garbageValue = "-122"
+   )
+   @Export("checkIfMinimapClicked")
+   static final void checkIfMinimapClicked(Widget var0, int var1, int var2) {
+      if (Client.minimapState == 0 || Client.minimapState == 3) {
+         if (!Client.isMenuOpen && (MouseHandler.MouseHandler_lastButton == 1 || !class473.mouseCam && MouseHandler.MouseHandler_lastButton == 4)) {
+            SpriteMask var3 = var0.getSpriteMask(true);
+            if (var3 == null) {
+               return;
             }
 
-            if (class293.soundCache == null) {
-               class293.soundCache = new SoundCache(class293.soundEffectsArchive, class293.musicSamplesArchive);
-            }
-
-            if (class293.midiPcmStream.loadMusicTrack(BufferedNetSocket.musicTrack, class293.musicPatchesArchive, class293.soundCache, 22050)) {
-               class293.midiPcmStream.clearAll();
-               class293.midiPcmStream.setPcmStreamVolume(class368.musicTrackVolume);
-               class293.midiPcmStream.setMusicTrack(BufferedNetSocket.musicTrack, class293.musicTrackBoolean);
-               class293.musicPlayerStatus = 0;
-               BufferedNetSocket.musicTrack = null;
-               class293.soundCache = null;
-               class364.musicTrackArchive = null;
-               return true;
+            int var4 = MouseHandler.MouseHandler_lastPressedX - var1;
+            int var5 = MouseHandler.MouseHandler_lastPressedY - var2;
+            if (var3.contains(var4, var5)) {
+               var4 -= var3.width / 2;
+               var5 -= var3.height / 2;
+               int var6 = Client.camAngleY & 2047;
+               int var7 = Rasterizer3D.Rasterizer3D_sine[var6];
+               int var8 = Rasterizer3D.Rasterizer3D_cosine[var6];
+               int var9 = var4 * var8 + var5 * var7 >> 11;
+               int var10 = var5 * var8 - var4 * var7 >> 11;
+               int var11 = var9 + localPlayer.x >> 7;
+               int var12 = localPlayer.y - var10 >> 7;
+               PacketBufferNode var13 = class330.getPacketBufferNode(ClientPacket.field3105, Client.packetWriter.isaacCipher);
+               var13.packetBuffer.writeByte(18);
+               var13.packetBuffer.writeShortAddLE(GameObject.baseY * 64 + var12);
+               var13.packetBuffer.writeShortLE(WorldMapData_0.baseX * 64 + var11);
+               var13.packetBuffer.writeByteSub(Client.field721.method4229(82) ? (Client.field721.method4229(81) ? 2 : 1) : 0);
+               var13.packetBuffer.writeByte(var4);
+               var13.packetBuffer.writeByte(var5);
+               var13.packetBuffer.writeShort(Client.camAngleY);
+               var13.packetBuffer.writeByte(57);
+               var13.packetBuffer.writeByte(0);
+               var13.packetBuffer.writeByte(0);
+               var13.packetBuffer.writeByte(89);
+               var13.packetBuffer.writeShort(localPlayer.x);
+               var13.packetBuffer.writeShort(localPlayer.y);
+               var13.packetBuffer.writeByte(63);
+               Client.packetWriter.addNode(var13);
+               Client.destinationX = var11;
+               Client.destinationY = var12;
             }
          }
-      } catch (Exception var1) {
-         var1.printStackTrace();
-         class293.midiPcmStream.clear();
-         class293.musicPlayerStatus = 0;
-         BufferedNetSocket.musicTrack = null;
-         class293.soundCache = null;
-         class364.musicTrackArchive = null;
-      }
 
-      return false;
+      }
    }
 
-   @ObfuscatedName("ay")
+   @ObfuscatedName("nu")
    @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "2127102250"
+      descriptor = "(Lmq;I)Ljava/lang/String;",
+      garbageValue = "603369429"
    )
-   public static void method5741() {
-      ObjectComposition.ObjectDefinition_cached.clear();
-      ObjectComposition.ObjectDefinition_cachedModelData.clear();
-      ObjectComposition.ObjectDefinition_cachedEntities.clear();
-      ObjectComposition.ObjectDefinition_cachedModels.clear();
+   @Export("Widget_getSpellActionName")
+   static String Widget_getSpellActionName(Widget var0) {
+      if (class195.Widget_unpackTargetMask(KeyHandler.getWidgetFlags(var0)) == 0) {
+         return null;
+      } else {
+         return var0.spellActionName != null && var0.spellActionName.trim().length() != 0 ? var0.spellActionName : null;
+      }
    }
 }

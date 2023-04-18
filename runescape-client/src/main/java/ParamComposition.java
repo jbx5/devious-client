@@ -4,38 +4,50 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hp")
+@ObfuscatedName("ho")
 @Implements("ParamComposition")
 public class ParamComposition extends DualNode {
-   @ObfuscatedName("al")
+   @ObfuscatedName("af")
    @ObfuscatedSignature(
-      descriptor = "Lkt;"
+      descriptor = "Lnm;"
+   )
+   @Export("ParamDefinition_archive")
+   static AbstractArchive ParamDefinition_archive;
+   @ObfuscatedName("an")
+   @ObfuscatedSignature(
+      descriptor = "Lkh;"
    )
    @Export("ParamDefinition_cached")
    static EvictingDualNodeHashTable ParamDefinition_cached = new EvictingDualNodeHashTable(64);
-   @ObfuscatedName("ac")
+   @ObfuscatedName("aa")
+   @ObfuscatedSignature(
+      descriptor = "Ltq;"
+   )
+   @Export("rightTitleSprite")
+   static SpritePixels rightTitleSprite;
+   @ObfuscatedName("aw")
    @Export("type")
    char type;
-   @ObfuscatedName("ab")
+   @ObfuscatedName("ac")
    @ObfuscatedGetter(
-      intValue = -58366445
+      intValue = -171401431
    )
    @Export("defaultInt")
    public int defaultInt;
-   @ObfuscatedName("an")
+   @ObfuscatedName("au")
    @Export("defaultStr")
    public String defaultStr;
-   @ObfuscatedName("ao")
+   @ObfuscatedName("ab")
    @Export("autoDisable")
    boolean autoDisable = true;
 
    ParamComposition() {
    }
 
-   @ObfuscatedName("al")
+   @ObfuscatedName("aw")
    @ObfuscatedSignature(
       descriptor = "(I)V",
-      garbageValue = "-1889600271"
+      garbageValue = "-1924870301"
    )
    @Export("postDecode")
    void postDecode() {
@@ -43,8 +55,8 @@ public class ParamComposition extends DualNode {
 
    @ObfuscatedName("ac")
    @ObfuscatedSignature(
-      descriptor = "(Lsy;I)V",
-      garbageValue = "-1831159851"
+      descriptor = "(Lsg;B)V",
+      garbageValue = "-102"
    )
    @Export("decode")
    void decode(Buffer var1) {
@@ -58,15 +70,31 @@ public class ParamComposition extends DualNode {
       }
    }
 
-   @ObfuscatedName("ab")
+   @ObfuscatedName("au")
    @ObfuscatedSignature(
-      descriptor = "(Lsy;IB)V",
-      garbageValue = "42"
+      descriptor = "(Lsg;II)V",
+      garbageValue = "1800051666"
    )
    @Export("decodeNext")
    void decodeNext(Buffer var1, int var2) {
       if (var2 == 1) {
-         this.type = WorldMapRegion.method5007(var1.readByte());
+         byte var4 = var1.readByte();
+         int var5 = var4 & 255;
+         if (var5 == 0) {
+            throw new IllegalArgumentException("" + Integer.toString(var5, 16));
+         }
+
+         if (var5 >= 128 && var5 < 160) {
+            char var6 = class369.cp1252AsciiExtension[var5 - 128];
+            if (var6 == 0) {
+               var6 = '?';
+            }
+
+            var5 = var6;
+         }
+
+         char var3 = (char)var5;
+         this.type = var3;
       } else if (var2 == 2) {
          this.defaultInt = var1.readInt();
       } else if (var2 == 4) {
@@ -77,104 +105,99 @@ public class ParamComposition extends DualNode {
 
    }
 
-   @ObfuscatedName("an")
+   @ObfuscatedName("ab")
    @ObfuscatedSignature(
-      descriptor = "(B)Z",
-      garbageValue = "102"
+      descriptor = "(I)Z",
+      garbageValue = "-1346057295"
    )
    @Export("isString")
    public boolean isString() {
       return this.type == 's';
    }
 
-   @ObfuscatedName("aj")
+   @ObfuscatedName("af")
    @ObfuscatedSignature(
-      descriptor = "(IS)Lhh;",
-      garbageValue = "-6691"
+      descriptor = "(Lnm;Lnm;Lnm;Lln;I)Z",
+      garbageValue = "-1821221274"
    )
-   @Export("ItemDefinition_get")
-   public static ItemComposition ItemDefinition_get(int var0) {
-      ItemComposition var1 = (ItemComposition)ItemComposition.ItemDefinition_cached.get((long)var0);
-      if (var1 != null) {
-         return var1;
-      } else {
-         byte[] var2 = class290.ItemDefinition_archive.takeFile(10, var0);
-         var1 = new ItemComposition();
-         var1.id = var0;
-         if (var2 != null) {
-            var1.decode(new Buffer(var2));
-         }
+   public static boolean method3900(AbstractArchive var0, AbstractArchive var1, AbstractArchive var2, MidiPcmStream var3) {
+      class297.musicPatchesArchive = var0;
+      class297.musicSamplesArchive = var1;
+      class297.soundEffectsArchive = var2;
+      class475.midiPcmStream = var3;
+      return true;
+   }
 
-         var1.post();
-         if (var1.noteTemplate != -1) {
-            var1.genCert(ItemDefinition_get(var1.noteTemplate), ItemDefinition_get(var1.note));
-         }
-
-         if (var1.notedId != -1) {
-            var1.genBought(ItemDefinition_get(var1.notedId), ItemDefinition_get(var1.unnotedId));
-         }
-
-         if (var1.placeholderTemplate != -1) {
-            var1.genPlaceholder(ItemDefinition_get(var1.placeholderTemplate), ItemDefinition_get(var1.placeholder));
-         }
-
-         if (!VarcInt.ItemDefinition_inMembersWorld && var1.isMembersOnly) {
-            var1.name = "Members object";
-            var1.isTradable = false;
-
-            int var3;
-            for(var3 = 0; var3 < var1.groundActions.length; ++var3) {
-               var1.groundActions[var3] = null;
+   @ObfuscatedName("ac")
+   @ObfuscatedSignature(
+      descriptor = "(Lek;FFFFFFFFI)V",
+      garbageValue = "-2028355721"
+   )
+   static void method3916(class125 var0, float var1, float var2, float var3, float var4, float var5, float var6, float var7, float var8) {
+      if (var0 != null) {
+         float var9 = var4 - var1;
+         if (0.0 != (double)var9) {
+            float var10 = var2 - var1;
+            float var11 = var3 - var1;
+            float[] var12 = new float[]{var10 / var9, var11 / var9};
+            var0.field1509 = var12[0] == 0.33333334F && 0.6666667F == var12[1];
+            float var13 = var12[0];
+            float var14 = var12[1];
+            if ((double)var12[0] < 0.0) {
+               var12[0] = 0.0F;
             }
 
-            for(var3 = 0; var3 < var1.inventoryActions.length; ++var3) {
-               if (var3 != 4) {
-                  var1.inventoryActions[var3] = null;
+            if ((double)var12[1] > 1.0) {
+               var12[1] = 1.0F;
+            }
+
+            float var15;
+            if ((double)var12[0] > 1.0 || var12[1] < -1.0F) {
+               var12[1] = 1.0F - var12[1];
+               if (var12[0] < 0.0F) {
+                  var12[0] = 0.0F;
                }
-            }
 
-            var1.shiftClickIndex = -2;
-            var1.team = 0;
-            if (var1.params != null) {
-               boolean var6 = false;
+               if (var12[1] < 0.0F) {
+                  var12[1] = 0.0F;
+               }
 
-               for(Node var4 = var1.params.first(); var4 != null; var4 = var1.params.next()) {
-                  ParamComposition var5 = class153.getParamDefinition((int)var4.key);
-                  if (var5.autoDisable) {
-                     var4.remove();
-                  } else {
-                     var6 = true;
+               if (var12[0] > 1.0F || var12[1] > 1.0F) {
+                  var15 = (float)(1.0 + (double)var12[1] * ((double)var12[1] - 2.0) + (double)((var12[0] - 2.0F + var12[1]) * var12[0]));
+                  if (class121.field1462 + var15 > 0.0F) {
+                     UrlRequester.method2839(var12);
                   }
                }
 
-               if (!var6) {
-                  var1.params = null;
+               var12[1] = 1.0F - var12[1];
+            }
+
+            if (var13 != var12[0]) {
+               float var10000 = var1 + var9 * var12[0];
+               if ((double)var13 != 0.0) {
+                  var6 = var5 + var12[0] * (var6 - var5) / var13;
                }
             }
+
+            if (var12[1] != var14) {
+               var3 = var9 * var12[1] + var1;
+               if ((double)var14 != 1.0) {
+                  var7 = (float)((double)var8 - (double)(var8 - var7) * (1.0 - (double)var12[1]) / (1.0 - (double)var14));
+               }
+            }
+
+            var0.field1513 = var1;
+            var0.field1521 = var4;
+            class151.method3365(0.0F, var12[0], var12[1], 1.0F, var0);
+            var15 = var6 - var5;
+            float var16 = var7 - var6;
+            float var17 = var8 - var7;
+            float var18 = var16 - var15;
+            var0.field1522 = var17 - var16 - var18;
+            var0.field1517 = var18 + var18 + var18;
+            var0.field1520 = var15 + var15 + var15;
+            var0.field1519 = var5;
          }
-
-         ItemComposition.ItemDefinition_cached.put(var1, (long)var0);
-         return var1;
       }
-   }
-
-   @ObfuscatedName("ab")
-   @ObfuscatedSignature(
-      descriptor = "(I)[Ldv;",
-      garbageValue = "-1627747805"
-   )
-   static class88[] method3791() {
-      return new class88[]{class88.field1077, class88.field1081, class88.field1080, class88.field1078, class88.field1082, class88.field1083};
-   }
-
-   @ObfuscatedName("mn")
-   @ObfuscatedSignature(
-      descriptor = "(Lmy;I)I",
-      garbageValue = "-2088637092"
-   )
-   @Export("getWidgetFlags")
-   static int getWidgetFlags(Widget var0) {
-      IntegerNode var1 = (IntegerNode)Client.widgetFlags.get(((long)var0.id << 32) + (long)var0.childIndex);
-      return var1 != null ? var1.integer : var0.flags;
    }
 }

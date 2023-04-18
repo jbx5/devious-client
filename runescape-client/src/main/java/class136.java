@@ -1,98 +1,98 @@
+import java.util.Date;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ft")
-public enum class136 implements MouseWheel {
-   @ObfuscatedName("aj")
-   @ObfuscatedSignature(
-      descriptor = "Lft;"
+@ObfuscatedName("fo")
+public class class136 extends class139 {
+   @ObfuscatedName("ar")
+   @Export("ByteArrayPool_altSizeArrayCounts")
+   static int[] ByteArrayPool_altSizeArrayCounts;
+   @ObfuscatedName("af")
+   @ObfuscatedGetter(
+      intValue = -830375851
    )
-   field1593(1, 0),
-   @ObfuscatedName("al")
-   @ObfuscatedSignature(
-      descriptor = "Lft;"
+   int field1629;
+   @ObfuscatedName("an")
+   @ObfuscatedGetter(
+      intValue = 605814203
    )
-   field1594(3, 1),
+   int field1626;
+   @ObfuscatedName("aw")
+   @ObfuscatedGetter(
+      intValue = -1826209289
+   )
+   int field1623;
    @ObfuscatedName("ac")
-   @ObfuscatedSignature(
-      descriptor = "Lft;"
+   @ObfuscatedGetter(
+      intValue = -1378851861
    )
-   field1595(2, 2),
-   @ObfuscatedName("ab")
+   int field1627;
+   // $FF: synthetic field
    @ObfuscatedSignature(
-      descriptor = "Lft;"
+      descriptor = "Lfa;"
    )
-   field1596(0, 3),
+   final class142 this$0;
+
+   @ObfuscatedSignature(
+      descriptor = "(Lfa;)V"
+   )
+   class136(class142 var1) {
+      this.this$0 = var1;
+      this.field1629 = -1;
+   }
+
+   @ObfuscatedName("af")
+   @ObfuscatedSignature(
+      descriptor = "(Lsg;I)V",
+      garbageValue = "168736686"
+   )
+   void vmethod3461(Buffer var1) {
+      this.field1629 = var1.readUnsignedShort();
+      this.field1626 = var1.readInt();
+      this.field1623 = var1.readUnsignedByte();
+      this.field1627 = var1.readUnsignedByte();
+   }
+
    @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "Lft;"
+      descriptor = "(Lfj;I)V",
+      garbageValue = "1712319228"
    )
-   field1597(4, 4);
-
-   @ObfuscatedName("ji")
-   @ObfuscatedSignature(
-      descriptor = "Lsn;"
-   )
-   @Export("redHintArrowSprite")
-   static SpritePixels redHintArrowSprite;
-   @ObfuscatedName("ao")
-   @ObfuscatedGetter(
-      intValue = 166719319
-   )
-   public final int field1600;
-   @ObfuscatedName("av")
-   @ObfuscatedGetter(
-      intValue = -560347297
-   )
-   @Export("id")
-   final int id;
-
-   class136(int var3, int var4) {
-      this.field1600 = var3;
-      this.id = var4;
+   void vmethod3458(ClanSettings var1) {
+      var1.method3323(this.field1629, this.field1626, this.field1623, this.field1627);
    }
 
-   @ObfuscatedName("aj")
-   @ObfuscatedSignature(
-      descriptor = "(I)I",
-      garbageValue = "-1409646049"
-   )
-   @Export("rsOrdinal")
-   public int rsOrdinal() {
-      return this.id;
+   @ObfuscatedName("af")
+   public static String method3194(long var0) {
+      Calendar.Calendar_calendar.setTime(new Date(var0));
+      int var2 = Calendar.Calendar_calendar.get(7);
+      int var3 = Calendar.Calendar_calendar.get(5);
+      int var4 = Calendar.Calendar_calendar.get(2);
+      int var5 = Calendar.Calendar_calendar.get(1);
+      int var6 = Calendar.Calendar_calendar.get(11);
+      int var7 = Calendar.Calendar_calendar.get(12);
+      int var8 = Calendar.Calendar_calendar.get(13);
+      return Calendar.DAYS_OF_THE_WEEK[var2 - 1] + ", " + var3 / 10 + var3 % 10 + "-" + Calendar.MONTH_NAMES_ENGLISH_GERMAN[0][var4] + "-" + var5 + " " + var6 / 10 + var6 % 10 + ":" + var7 / 10 + var7 % 10 + ":" + var8 / 10 + var8 % 10 + " GMT";
    }
 
-   @ObfuscatedName("ao")
+   @ObfuscatedName("aw")
    @ObfuscatedSignature(
-      descriptor = "(Lew;FFFFFFFFB)V",
-      garbageValue = "-88"
+      descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;S)V",
+      garbageValue = "-29165"
    )
-   static void method3075(class127 var0, float var1, float var2, float var3, float var4, float var5, float var6, float var7, float var8) {
-      if (var0 != null) {
-         var0.field1505 = var1;
-         float var9 = var4 - var1;
-         float var10 = var8 - var5;
-         float var11 = var2 - var1;
-         float var12 = 0.0F;
-         float var13 = 0.0F;
-         if ((double)var11 != 0.0) {
-            var12 = (var6 - var5) / var11;
-         }
-
-         var11 = var4 - var3;
-         if (0.0 != (double)var11) {
-            var13 = (var8 - var7) / var11;
-         }
-
-         float var14 = 1.0F / (var9 * var9);
-         float var15 = var9 * var12;
-         float var16 = var13 * var9;
-         var0.field1521 = (var16 + var15 - var10 - var10) * var14 / var9;
-         var0.field1506 = (var10 + var10 + var10 - var15 - var15 - var16) * var14;
-         var0.field1507 = var12;
-         var0.field1500 = var5;
+   @Export("addChatMessage")
+   static void addChatMessage(int var0, String var1, String var2, String var3) {
+      ChatChannel var4 = (ChatChannel)Messages.Messages_channels.get(var0);
+      if (var4 == null) {
+         var4 = new ChatChannel();
+         Messages.Messages_channels.put(var0, var4);
       }
+
+      Message var5 = var4.addMessage(var0, var1, var2, var3);
+      Messages.Messages_hashTable.put(var5, (long)var5.count);
+      Messages.Messages_queue.add(var5);
+      Client.chatCycle = Client.cycleCntr;
    }
 }

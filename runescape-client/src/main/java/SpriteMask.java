@@ -4,25 +4,27 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("lx")
+@ObfuscatedName("ll")
 @Implements("SpriteMask")
 public class SpriteMask extends DualNode {
-   @ObfuscatedName("aj")
+   @ObfuscatedName("gn")
+   static String field3475;
+   @ObfuscatedName("af")
    @ObfuscatedGetter(
-      intValue = 1325150283
+      intValue = 1484188043
    )
    @Export("width")
    public final int width;
-   @ObfuscatedName("al")
+   @ObfuscatedName("an")
    @ObfuscatedGetter(
-      intValue = -606386499
+      intValue = 939947663
    )
    @Export("height")
    public final int height;
-   @ObfuscatedName("ac")
+   @ObfuscatedName("aw")
    @Export("xWidths")
    public final int[] xWidths;
-   @ObfuscatedName("ab")
+   @ObfuscatedName("ac")
    @Export("xStarts")
    public final int[] xStarts;
 
@@ -33,10 +35,10 @@ public class SpriteMask extends DualNode {
       this.xStarts = var4;
    }
 
-   @ObfuscatedName("aj")
+   @ObfuscatedName("af")
    @ObfuscatedSignature(
       descriptor = "(III)Z",
-      garbageValue = "-2050749327"
+      garbageValue = "-746690647"
    )
    @Export("contains")
    public boolean contains(int var1, int var2) {
@@ -50,35 +52,19 @@ public class SpriteMask extends DualNode {
       return false;
    }
 
-   @ObfuscatedName("aj")
+   @ObfuscatedName("af")
    @ObfuscatedSignature(
-      descriptor = "([Lnt;IB)Lnt;",
-      garbageValue = "108"
+      descriptor = "(IIII)I",
+      garbageValue = "575322475"
    )
-   @Export("findEnumerated")
-   public static MouseWheel findEnumerated(MouseWheel[] var0, int var1) {
-      MouseWheel[] var2 = var0;
-
-      for(int var3 = 0; var3 < var2.length; ++var3) {
-         MouseWheel var4 = var2[var3];
-         if (var1 == var4.rsOrdinal()) {
-            return var4;
-         }
+   public static int method5990(int var0, int var1, int var2) {
+      var2 &= 3;
+      if (var2 == 0) {
+         return var0;
+      } else if (var2 == 1) {
+         return var1;
+      } else {
+         return var2 == 2 ? 7 - var0 : 7 - var1;
       }
-
-      return null;
-   }
-
-   @ObfuscatedName("aj")
-   @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "-1516793225"
-   )
-   public static void method5743() {
-      ByteArrayPool.field4424.clear();
-      ByteArrayPool.field4424.add(100);
-      ByteArrayPool.field4424.add(5000);
-      ByteArrayPool.field4424.add(10000);
-      ByteArrayPool.field4424.add(30000);
    }
 }

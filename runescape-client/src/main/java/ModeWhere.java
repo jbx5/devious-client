@@ -6,94 +6,103 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("nm")
+@ObfuscatedName("ne")
 @Implements("ModeWhere")
 public enum ModeWhere implements MouseWheel {
-   @ObfuscatedName("aj")
+   @ObfuscatedName("af")
    @ObfuscatedSignature(
-      descriptor = "Lnm;"
+      descriptor = "Lne;"
    )
-   field4306("", 0, new class351[]{class351.field4281}),
-   @ObfuscatedName("al")
-   @ObfuscatedSignature(
-      descriptor = "Lnm;"
-   )
-   field4302("", 1, new class351[]{class351.field4280, class351.field4281}),
-   @ObfuscatedName("ac")
-   @ObfuscatedSignature(
-      descriptor = "Lnm;"
-   )
-   field4301("", 2, new class351[]{class351.field4280, class351.field4282, class351.field4281}),
-   @ObfuscatedName("ab")
-   @ObfuscatedSignature(
-      descriptor = "Lnm;"
-   )
-   field4313("", 3, new class351[]{class351.field4280}),
+   field4351("", 0, new class355[]{class355.field4307}),
    @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "Lnm;"
+      descriptor = "Lne;"
    )
-   field4305("", 4),
-   @ObfuscatedName("ao")
+   field4333("", 1, new class355[]{class355.field4308, class355.field4307}),
+   @ObfuscatedName("aw")
    @ObfuscatedSignature(
-      descriptor = "Lnm;"
+      descriptor = "Lne;"
    )
-   field4303("", 5, new class351[]{class351.field4280, class351.field4281}),
-   @ObfuscatedName("av")
+   field4334("", 2, new class355[]{class355.field4308, class355.field4309, class355.field4307}),
+   @ObfuscatedName("ac")
    @ObfuscatedSignature(
-      descriptor = "Lnm;"
+      descriptor = "Lne;"
    )
-   field4307("", 6, new class351[]{class351.field4281}),
+   field4343("", 3, new class355[]{class355.field4308}),
+   @ObfuscatedName("au")
+   @ObfuscatedSignature(
+      descriptor = "Lne;"
+   )
+   field4336("", 4),
+   @ObfuscatedName("ab")
+   @ObfuscatedSignature(
+      descriptor = "Lne;"
+   )
+   field4339("", 5, new class355[]{class355.field4308, class355.field4307}),
    @ObfuscatedName("aq")
    @ObfuscatedSignature(
-      descriptor = "Lnm;"
+      descriptor = "Lne;"
    )
-   field4312("", 8, new class351[]{class351.field4280, class351.field4281}),
-   @ObfuscatedName("ap")
+   field4332("", 6, new class355[]{class355.field4307}),
+   @ObfuscatedName("al")
    @ObfuscatedSignature(
-      descriptor = "Lnm;"
+      descriptor = "Lne;"
    )
-   field4309("", 9, new class351[]{class351.field4280, class351.field4282}),
-   @ObfuscatedName("ar")
+   field4335("", 8, new class355[]{class355.field4308, class355.field4307}),
+   @ObfuscatedName("at")
    @ObfuscatedSignature(
-      descriptor = "Lnm;"
+      descriptor = "Lne;"
    )
-   field4310("", 10, new class351[]{class351.field4280}),
-   @ObfuscatedName("ak")
+   field4340("", 9, new class355[]{class355.field4308, class355.field4309}),
+   @ObfuscatedName("aa")
    @ObfuscatedSignature(
-      descriptor = "Lnm;"
+      descriptor = "Lne;"
    )
-   field4311("", 11, new class351[]{class351.field4280}),
+   field4341("", 10, new class355[]{class355.field4308}),
+   @ObfuscatedName("ay")
+   @ObfuscatedSignature(
+      descriptor = "Lne;"
+   )
+   field4342("", 11, new class355[]{class355.field4308}),
+   @ObfuscatedName("ao")
+   @ObfuscatedSignature(
+      descriptor = "Lne;"
+   )
+   field4349("", 12, new class355[]{class355.field4308, class355.field4307}),
    @ObfuscatedName("ax")
    @ObfuscatedSignature(
-      descriptor = "Lnm;"
+      descriptor = "Lne;"
    )
-   field4314("", 12, new class351[]{class351.field4280, class351.field4281}),
-   @ObfuscatedName("as")
-   @ObfuscatedSignature(
-      descriptor = "Lnm;"
-   )
-   field4308("", 13, new class351[]{class351.field4280});
+   field4337("", 13, new class355[]{class355.field4308});
 
-   @ObfuscatedName("ay")
+   @ObfuscatedName("ak")
+   @Export("operatingSystemName")
+   public static String operatingSystemName;
+   @ObfuscatedName("gb")
+   static String field4347;
+   @ObfuscatedName("ai")
    @ObfuscatedGetter(
-      intValue = 2063405181
+      intValue = -336951645
    )
    @Export("id")
    final int id;
-   @ObfuscatedName("am")
-   final Set field4315 = new HashSet();
+   @ObfuscatedName("ag")
+   final Set field4346 = new HashSet();
+
+   static {
+      method6945();
+   }
 
    @ObfuscatedSignature(
-      descriptor = "(Ljava/lang/String;I[Lnu;)V"
+      descriptor = "(Ljava/lang/String;I[Lnc;)V"
    )
-   ModeWhere(String var3, int var4, class351[] var5) {
+   ModeWhere(String var3, int var4, class355[] var5) {
       this.id = var4;
-      class351[] var6 = var5;
+      class355[] var6 = var5;
 
       for(int var7 = 0; var7 < var6.length; ++var7) {
-         class351 var8 = var6[var7];
-         this.field4315.add(var8);
+         class355 var8 = var6[var7];
+         this.field4346.add(var8);
       }
 
    }
@@ -102,56 +111,59 @@ public enum ModeWhere implements MouseWheel {
       this.id = var4;
    }
 
-   @ObfuscatedName("aj")
+   @ObfuscatedName("af")
    @ObfuscatedSignature(
       descriptor = "(I)I",
-      garbageValue = "-1409646049"
+      garbageValue = "741942848"
    )
    @Export("rsOrdinal")
    public int rsOrdinal() {
       return this.id;
    }
 
-   @ObfuscatedName("ac")
+   @ObfuscatedName("au")
    @ObfuscatedSignature(
-      descriptor = "(S)I",
-      garbageValue = "16024"
+      descriptor = "(B)[Lne;",
+      garbageValue = "-88"
    )
-   public static int method6668() {
-      return ++MouseHandler.MouseHandler_idleCycles - 1;
+   static ModeWhere[] method6945() {
+      return new ModeWhere[]{field4332, field4340, field4339, field4351, field4343, field4342, field4333, field4349, field4335, field4334, field4336, field4337, field4341};
    }
 
-   @ObfuscatedName("an")
+   @ObfuscatedName("ay")
    @ObfuscatedSignature(
-      descriptor = "(B)V",
-      garbageValue = "114"
+      descriptor = "(Lmq;IB)V",
+      garbageValue = "17"
    )
-   static void method6667() {
-      if (Login.clearLoginScreen) {
-         WorldMapSprite.titleboxSprite = null;
-         Login.titlebuttonSprite = null;
-         Login.runesSprite = null;
-         Login.leftTitleSprite = null;
-         class419.rightTitleSprite = null;
-         Login.logoSprite = null;
-         class139.title_muteSprite = null;
-         Login.options_buttons_0Sprite = null;
-         Login.options_buttons_2Sprite = null;
-         WorldMapSection2.worldSelectBackSprites = null;
-         class279.worldSelectFlagSprites = null;
-         class353.worldSelectArrows = null;
-         class293.worldSelectStars = null;
-         FriendSystem.field801 = null;
-         ArchiveDiskActionHandler.loginScreenRunesAnimation.method2418();
-         class293.musicPlayerStatus = 1;
-         class364.musicTrackArchive = null;
-         IntHashTable.musicTrackGroupId = -1;
-         class293.musicTrackFileId = -1;
-         class368.musicTrackVolume = 0;
-         class293.musicTrackBoolean = false;
-         AbstractRasterProvider.pcmSampleLength = 2;
-         class166.method3383(true);
-         Login.clearLoginScreen = false;
+   @Export("Widget_setKeyIgnoreHeld")
+   static final void Widget_setKeyIgnoreHeld(Widget var0, int var1) {
+      if (var0.field3645 == null) {
+         throw new RuntimeException();
+      } else {
+         if (var0.field3643 == null) {
+            var0.field3643 = new int[var0.field3645.length];
+         }
+
+         var0.field3643[var1] = Integer.MAX_VALUE;
       }
+   }
+
+   @ObfuscatedName("nh")
+   @ObfuscatedSignature(
+      descriptor = "(Ljava/lang/String;I)Ljava/lang/String;",
+      garbageValue = "1227239523"
+   )
+   static String method6952(String var0) {
+      PlayerType[] var1 = StudioGame.PlayerType_values();
+
+      for(int var2 = 0; var2 < var1.length; ++var2) {
+         PlayerType var3 = var1[var2];
+         if (var3.modIcon != -1 && var0.startsWith(ArchiveDiskActionHandler.method6619(var3.modIcon))) {
+            var0 = var0.substring(6 + Integer.toString(var3.modIcon).length());
+            break;
+         }
+      }
+
+      return var0;
    }
 }

@@ -1,115 +1,101 @@
+import java.util.List;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ar")
+@ObfuscatedName("aa")
 public class class9 implements MouseWheel {
-   @ObfuscatedName("aj")
+   @ObfuscatedName("wf")
+   static List field35;
+   @ObfuscatedName("af")
    @ObfuscatedSignature(
-      descriptor = "Lar;"
+      descriptor = "Laa;"
    )
-   public static final class9 field37 = new class9(0, "POST", true, true);
-   @ObfuscatedName("al")
-   @ObfuscatedSignature(
-      descriptor = "Lar;"
-   )
-   public static final class9 field33 = new class9(1, "GET", true, false);
-   @ObfuscatedName("ac")
-   @ObfuscatedSignature(
-      descriptor = "Lar;"
-   )
-   static final class9 field34 = new class9(2, "PUT", false, true);
-   @ObfuscatedName("ab")
-   @ObfuscatedSignature(
-      descriptor = "Lar;"
-   )
-   static final class9 field35 = new class9(3, "PATCH", false, true);
+   public static final class9 field45 = new class9(0, "POST", true, true);
    @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "Lar;"
+      descriptor = "Laa;"
    )
-   static final class9 field36 = new class9(4, "DELETE", false, true);
-   @ObfuscatedName("ao")
+   public static final class9 field39 = new class9(1, "GET", true, false);
+   @ObfuscatedName("aw")
+   @ObfuscatedSignature(
+      descriptor = "Laa;"
+   )
+   static final class9 field36 = new class9(2, "PUT", false, true);
+   @ObfuscatedName("ac")
+   @ObfuscatedSignature(
+      descriptor = "Laa;"
+   )
+   static final class9 field37 = new class9(3, "PATCH", false, true);
+   @ObfuscatedName("au")
+   @ObfuscatedSignature(
+      descriptor = "Laa;"
+   )
+   static final class9 field46 = new class9(4, "DELETE", false, true);
+   @ObfuscatedName("ax")
    @ObfuscatedGetter(
-      intValue = -1353386787
+      intValue = -2043788763
    )
-   int field39;
-   @ObfuscatedName("av")
-   String field38;
+   static int field44;
+   @ObfuscatedName("jp")
+   @ObfuscatedGetter(
+      intValue = 1555915261
+   )
+   static int field43;
+   @ObfuscatedName("ab")
+   @ObfuscatedGetter(
+      intValue = 985819831
+   )
+   int field34;
    @ObfuscatedName("aq")
+   String field40;
+   @ObfuscatedName("al")
    boolean field41;
-   @ObfuscatedName("ap")
-   boolean field40;
+   @ObfuscatedName("at")
+   boolean field42;
 
    class9(int var1, String var2, boolean var3, boolean var4) {
-      this.field39 = var1;
-      this.field38 = var2;
+      this.field34 = var1;
+      this.field40 = var2;
       this.field41 = var3;
-      this.field40 = var4;
+      this.field42 = var4;
    }
 
-   @ObfuscatedName("aj")
+   @ObfuscatedName("af")
    @ObfuscatedSignature(
       descriptor = "(I)I",
-      garbageValue = "-1409646049"
+      garbageValue = "741942848"
    )
    @Export("rsOrdinal")
    public int rsOrdinal() {
-      return this.field39;
+      return this.field34;
+   }
+
+   @ObfuscatedName("au")
+   @ObfuscatedSignature(
+      descriptor = "(B)Z",
+      garbageValue = "74"
+   )
+   boolean method77() {
+      return this.field41;
    }
 
    @ObfuscatedName("ab")
    @ObfuscatedSignature(
-      descriptor = "(I)Z",
-      garbageValue = "-1979721546"
+      descriptor = "(B)Ljava/lang/String;",
+      garbageValue = "-57"
    )
-   boolean method62() {
-      return this.field41;
-   }
-
-   @ObfuscatedName("an")
-   @ObfuscatedSignature(
-      descriptor = "(I)Ljava/lang/String;",
-      garbageValue = "1838962601"
-   )
-   public String method63() {
-      return this.field38;
-   }
-
-   @ObfuscatedName("ao")
-   @ObfuscatedSignature(
-      descriptor = "(I)Z",
-      garbageValue = "534305297"
-   )
-   boolean method64() {
+   public String method71() {
       return this.field40;
    }
 
-   @ObfuscatedName("aj")
+   @ObfuscatedName("aq")
    @ObfuscatedSignature(
-      descriptor = "(Ldx;I)V",
-      garbageValue = "-2025110230"
+      descriptor = "(I)Z",
+      garbageValue = "142097256"
    )
-   @Export("runScriptEvent")
-   public static void runScriptEvent(ScriptEvent var0) {
-      class14.runScript(var0, 500000, 475000);
-   }
-
-   @ObfuscatedName("al")
-   @ObfuscatedSignature(
-      descriptor = "(Ljava/lang/Throwable;Ljava/lang/String;)Ltw;"
-   )
-   @Export("newRunException")
-   public static RunException newRunException(Throwable var0, String var1) {
-      RunException var2;
-      if (var0 instanceof RunException) {
-         var2 = (RunException)var0;
-         var2.message = var2.message + ' ' + var1;
-      } else {
-         var2 = new RunException(var0, var1);
-      }
-
-      return var2;
+   boolean method72() {
+      return this.field42;
    }
 }

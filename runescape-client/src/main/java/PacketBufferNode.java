@@ -4,42 +4,42 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kp")
+@ObfuscatedName("lg")
 @Implements("PacketBufferNode")
 public class PacketBufferNode extends Node {
-   @ObfuscatedName("an")
+   @ObfuscatedName("au")
    @ObfuscatedSignature(
-      descriptor = "[Lkp;"
+      descriptor = "[Llg;"
    )
    @Export("PacketBufferNode_packetBufferNodes")
    static PacketBufferNode[] PacketBufferNode_packetBufferNodes = new PacketBufferNode[300];
-   @ObfuscatedName("ao")
+   @ObfuscatedName("ab")
    @ObfuscatedGetter(
-      intValue = -367873173
+      intValue = 380401923
    )
    @Export("PacketBufferNode_packetBufferNodeCount")
    static int PacketBufferNode_packetBufferNodeCount = 0;
-   @ObfuscatedName("aj")
+   @ObfuscatedName("af")
    @ObfuscatedSignature(
-      descriptor = "Lkb;"
+      descriptor = "Llv;"
    )
    @Export("clientPacket")
    ClientPacket clientPacket;
-   @ObfuscatedName("al")
+   @ObfuscatedName("an")
    @ObfuscatedGetter(
-      intValue = -1667084847
+      intValue = -1245059367
    )
    @Export("clientPacketLength")
    int clientPacketLength;
-   @ObfuscatedName("ac")
+   @ObfuscatedName("aw")
    @ObfuscatedSignature(
       descriptor = "Lsq;"
    )
    @Export("packetBuffer")
    public PacketBuffer packetBuffer;
-   @ObfuscatedName("ab")
+   @ObfuscatedName("ac")
    @ObfuscatedGetter(
-      intValue = 997120047
+      intValue = 1816684323
    )
    @Export("index")
    public int index;
@@ -50,7 +50,7 @@ public class PacketBufferNode extends Node {
    @ObfuscatedName("ac")
    @ObfuscatedSignature(
       descriptor = "(I)V",
-      garbageValue = "-957261976"
+      garbageValue = "-2073453785"
    )
    @Export("release")
    public void release() {
@@ -59,40 +59,22 @@ public class PacketBufferNode extends Node {
       }
    }
 
-   @ObfuscatedName("as")
+   @ObfuscatedName("af")
    @ObfuscatedSignature(
-      descriptor = "(Ljava/lang/String;I)Ljava/lang/String;",
-      garbageValue = "1565722343"
+      descriptor = "(I)[Lls;",
+      garbageValue = "-1731859764"
    )
-   public static String method5467(String var0) {
-      StringBuilder var1 = new StringBuilder(var0.length());
-      int var2 = 0;
-      int var3 = -1;
+   @Export("ServerPacket_values")
+   public static ServerPacket[] ServerPacket_values() {
+      return new ServerPacket[]{ServerPacket.REBUILD_NORMAL, ServerPacket.field3218, ServerPacket.IF_SETPLAYERHEAD, ServerPacket.LOGOUT_FULL, ServerPacket.SET_PRIVCHATMODE, ServerPacket.PLAYER_SPOTANIM, ServerPacket.field3223, ServerPacket.PING_STATISTICS_REQUEST, ServerPacket.MIDI_SONG, ServerPacket.field3226, ServerPacket.SET_PLAYER_OP, ServerPacket.field3253, ServerPacket.UPDATE_UID192, ServerPacket.RUNCLIENTSCRIPT, ServerPacket.UPDATE_STAT, ServerPacket.UPDATE_INV_STOP_TRANSIT, ServerPacket.IF_CLOSESUB, ServerPacket.VARP_SMALL, ServerPacket.UPDATE_STOCKMARKET_SLOT, ServerPacket.HINT_ARROW, ServerPacket.MESSAGE_GAME, ServerPacket.field3228, ServerPacket.IF_SETHIDE, ServerPacket.field3240, ServerPacket.PLAYER_INFO, ServerPacket.MINIMAP_FLAG_SET, ServerPacket.field3243, ServerPacket.field3244, ServerPacket.field3245, ServerPacket.field3241, ServerPacket.PROJECTILE_SPAWN, ServerPacket.field3248, ServerPacket.CAM_RESET, ServerPacket.field3250, ServerPacket.field3282, ServerPacket.UPDATE_INV_PARTIAL, ServerPacket.TRIGGER_ONDIALOG_ABORT, ServerPacket.NPC_INFO_LARGE_VIEWPORT_2, ServerPacket.field3255, ServerPacket.field3256, ServerPacket.IF_SETMODEL, ServerPacket.field3251, ServerPacket.REBUILD_REGION, ServerPacket.field3224, ServerPacket.RESET_CLIENT_VARCACHE, ServerPacket.IF_SETANGLE, ServerPacket.SYNC_CLIENT_VARCACHE, ServerPacket.MINIMAP_TOGGLE, ServerPacket.field3261, ServerPacket.IF_SETPOSITION, ServerPacket.IF_MOVESUB, ServerPacket.IF_SETNPCHEAD, ServerPacket.field3325, ServerPacket.field3270, ServerPacket.IF_SETCOLOUR, ServerPacket.field3272, ServerPacket.field3233, ServerPacket.field3274, ServerPacket.field3275, ServerPacket.field3276, ServerPacket.URL_OPEN, ServerPacket.NPC_INFO_SMALL_VIEWPORT_1, ServerPacket.field3279, ServerPacket.field3280, ServerPacket.field3281, ServerPacket.EVENT_WORLDHOP, ServerPacket.DYNAMICOBJECT_SPAWN, ServerPacket.field3285, ServerPacket.MESSAGE_FRIENDS_CHAT, ServerPacket.field3286, ServerPacket.field3333, ServerPacket.field3288, ServerPacket.UPDATE_REBOOT_TIMER, ServerPacket.REFLECTION_CHECKER, ServerPacket.UPDATE_IGNORELIST, ServerPacket.CHAT_FILTER_SETTINGS, ServerPacket.field3258, ServerPacket.field3294, ServerPacket.field3324, ServerPacket.field3296, ServerPacket.IF_SETOBJECT, ServerPacket.UPDATE_INV_CLEAR, ServerPacket.field3332, ServerPacket.MESSAGE_PRIVATE_ECHO, ServerPacket.field3329, ServerPacket.VARP_LARGE, ServerPacket.field3303, ServerPacket.field3268, ServerPacket.field3292, ServerPacket.NPC_SET_SEQUENCE, ServerPacket.UPDATE_FRIENDLIST, ServerPacket.field3297, ServerPacket.UPDATE_ZONE_PARTIAL_ENCLOSED, ServerPacket.UPDATE_INV_FULL, ServerPacket.field3311, ServerPacket.field3312, ServerPacket.UPDATE_ZONE_FULL_FOLLOWS, ServerPacket.IF_SETSCROLLPOS, ServerPacket.field3252, ServerPacket.NPC_SPOTANIM, ServerPacket.field3266, ServerPacket.field3318, ServerPacket.field3319, ServerPacket.CAM_SETANGLE, ServerPacket.field3238, ServerPacket.field3322, ServerPacket.GRAPHICSOBJECT_SPAWN, ServerPacket.field3284, ServerPacket.field3326, ServerPacket.field3293, ServerPacket.field3327, ServerPacket.CAM_LOOKAT, ServerPacket.field3269, ServerPacket.field3330, ServerPacket.field3331, ServerPacket.field3308, ServerPacket.field3316, ServerPacket.field3334, ServerPacket.field3335};
+   }
 
-      for(int var4 = 0; var4 < var0.length(); ++var4) {
-         char var5 = var0.charAt(var4);
-         if (var5 == '<') {
-            var1.append(var0.substring(var2, var4));
-            var3 = var4;
-         } else if (var5 == '>' && var3 != -1) {
-            String var6 = var0.substring(var3 + 1, var4);
-            var3 = -1;
-            if (var6.equals("lt")) {
-               var1.append("<");
-            } else if (var6.equals("gt")) {
-               var1.append(">");
-            } else if (var6.equals("br")) {
-               var1.append("\n");
-            }
-
-            var2 = var4 + 1;
-         }
-      }
-
-      if (var2 < var0.length()) {
-         var1.append(var0.substring(var2, var0.length()));
-      }
-
-      return var1.toString();
+   @ObfuscatedName("ac")
+   @ObfuscatedSignature(
+      descriptor = "(Ljava/lang/CharSequence;B)I",
+      garbageValue = "27"
+   )
+   public static int method5709(CharSequence var0) {
+      return SecureRandomFuture.method2122(var0, 10, true);
    }
 }

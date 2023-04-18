@@ -1,99 +1,91 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("qd")
-public abstract class class428 implements class268 {
-   @ObfuscatedName("aj")
+@ObfuscatedName("qf")
+public enum class428 implements MouseWheel {
+   @ObfuscatedName("af")
    @ObfuscatedSignature(
-      descriptor = "Lrf;"
+      descriptor = "Lqf;"
    )
-   class467 field4637;
-
-   class428(int var1) {
-   }
-
-   @ObfuscatedName("aj")
-   @ObfuscatedSignature(
-      descriptor = "(Lsy;IB)V",
-      garbageValue = "-66"
-   )
-   abstract void vmethod7952(Buffer var1, int var2);
-
-   @ObfuscatedName("ac")
-   @ObfuscatedSignature(
-      descriptor = "(Lsy;I)V",
-      garbageValue = "-1069470771"
-   )
-   public void method7957(Buffer var1) {
-      while(true) {
-         int var2 = var1.readUnsignedByte();
-         if (var2 == 0) {
-            return;
-         }
-
-         class424[] var3 = new class424[]{class424.field4632, class424.field4631, class424.field4629, class424.field4630};
-         class424 var4 = (class424)SpriteMask.findEnumerated(var3, var2);
-         if (var4 != null) {
-            switch (var4.field4628) {
-               case 1:
-                  int var5 = var1.readUnsignedByte();
-                  this.field4637 = class458.method8343(var5);
-                  if (this.field4637 != null) {
-                     break;
-                  }
-
-                  throw new IllegalStateException("Unknown ScriptVarType ID in VarType.decode: " + var5);
-               case 2:
-                  var1.readStringCp1252NullCircumfixed();
-                  break;
-               case 3:
-                  class333[] var6 = new class333[]{class333.field4125, class333.field4126, class333.field4127, class333.field4124};
-                  SpriteMask.findEnumerated(var6, var1.readUnsignedByte());
-                  break;
-               default:
-                  throw new IllegalStateException("Unrecognised VarTypeEncodingKey - " + var4);
-            }
-         } else {
-            this.vmethod7952(var1, var2);
-         }
-      }
-   }
-
-   @ObfuscatedName("ab")
-   @ObfuscatedSignature(
-      descriptor = "(I)Z",
-      garbageValue = "-762998085"
-   )
-   boolean method7953() {
-      return this.field4637 != null;
-   }
-
+   field4692(1, 1),
    @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "(I)Ljava/lang/Object;",
-      garbageValue = "2009560345"
+      descriptor = "Lqf;"
    )
-   Object method7958() {
-      if (this.field4637 == class467.field4866) {
-         return 0;
-      } else if (this.field4637 == class467.field4859) {
-         return -1L;
-      } else {
-         return this.field4637 == class467.field4865 ? "" : null;
-      }
-   }
-
+   field4694(2, 2),
+   @ObfuscatedName("aw")
+   @ObfuscatedSignature(
+      descriptor = "Lqf;"
+   )
+   field4693(0, 3),
    @ObfuscatedName("ac")
    @ObfuscatedSignature(
-      descriptor = "(Lrz;ILjava/lang/String;I)Ljava/lang/String;",
-      garbageValue = "1198780318"
+      descriptor = "Lqf;"
    )
-   static String method7964(IterableNodeHashTable var0, int var1, String var2) {
-      if (var0 == null) {
-         return var2;
+   field4691(3, 10);
+
+   @ObfuscatedName("au")
+   @ObfuscatedGetter(
+      intValue = -1750512657
+   )
+   final int field4695;
+   @ObfuscatedName("ab")
+   @ObfuscatedGetter(
+      intValue = 2023077401
+   )
+   final int field4696;
+
+   class428(int var3, int var4) {
+      this.field4695 = var3;
+      this.field4696 = var4;
+   }
+
+   @ObfuscatedName("af")
+   @ObfuscatedSignature(
+      descriptor = "(I)I",
+      garbageValue = "741942848"
+   )
+   @Export("rsOrdinal")
+   public int rsOrdinal() {
+      return this.field4696;
+   }
+
+   @ObfuscatedName("ag")
+   @ObfuscatedSignature(
+      descriptor = "(Lit;IIIIB)Z",
+      garbageValue = "11"
+   )
+   static final boolean method8278(Model var0, int var1, int var2, int var3, int var4) {
+      boolean var5 = ViewportMouse.ViewportMouse_isInViewport;
+      if (!var5) {
+         return false;
       } else {
-         ObjectNode var3 = (ObjectNode)var0.get((long)var1);
-         return var3 == null ? var2 : (String)var3.obj;
+         class122.method3045();
+         AABB var6 = (AABB)var0.aabb.get(var1);
+         int var7 = var2 + var6.xMid;
+         int var8 = var3 + var6.yMid;
+         int var9 = var4 + var6.zMid;
+         int var10 = var6.xMidOffset;
+         int var11 = var6.yMidOffset;
+         int var12 = var6.zMidOffset;
+         int var13 = ViewportMouse.field2767 - var7;
+         int var14 = class294.field3366 - var8;
+         int var15 = ViewportMouse.field2768 - var9;
+         if (Math.abs(var13) > var10 + EnumComposition.field1979) {
+            return false;
+         } else if (Math.abs(var14) > var11 + ViewportMouse.field2771) {
+            return false;
+         } else if (Math.abs(var15) > var12 + class9.field44) {
+            return false;
+         } else if (Math.abs(var15 * UserComparator8.field1418 - var14 * ReflectionCheck.field268) > var11 * class9.field44 + var12 * ViewportMouse.field2771) {
+            return false;
+         } else if (Math.abs(var13 * ReflectionCheck.field268 - var15 * ViewportMouse.field2769) > var12 * EnumComposition.field1979 + var10 * class9.field44) {
+            return false;
+         } else {
+            return Math.abs(var14 * ViewportMouse.field2769 - var13 * UserComparator8.field1418) <= var11 * EnumComposition.field1979 + var10 * ViewportMouse.field2771;
+         }
       }
    }
 }

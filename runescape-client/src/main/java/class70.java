@@ -1,84 +1,118 @@
 import java.math.BigInteger;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cu")
+@ObfuscatedName("co")
 public class class70 {
+   @ObfuscatedName("af")
+   static final BigInteger field885 = new BigInteger("10001", 16);
    @ObfuscatedName("an")
-   static final BigInteger field863 = new BigInteger("80782894952180643741752986186714059433953886149239752893425047584684715842049");
+   static final BigInteger field887 = new BigInteger("caa2a7bee781b3652a5a550b5318cb074141ad9dbd06389622fbd58a3947aeb27e79771809fb6e20de92d7cdbe34830805ebad9bb17640a45878eea57edbb1d808a6122150c097b7a4960054ccc5e98fc0a139709f6f1a3dbf0bfc4559d63ba568b3860a7d477756bd21bb37f989b4522af2d3ee6af1781654acbafd740072c1", 16);
+   @ObfuscatedName("cn")
+   @ObfuscatedSignature(
+      descriptor = "Lsw;"
+   )
+   @Export("loginType")
+   static LoginType loginType;
+
+   @ObfuscatedName("ab")
+   @ObfuscatedSignature(
+      descriptor = "(II)I",
+      garbageValue = "698228402"
+   )
+   public static int method2044(int var0) {
+      --var0;
+      var0 |= var0 >>> 1;
+      var0 |= var0 >>> 2;
+      var0 |= var0 >>> 4;
+      var0 |= var0 >>> 8;
+      var0 |= var0 >>> 16;
+      return var0 + 1;
+   }
+
    @ObfuscatedName("ao")
-   static final BigInteger field867 = new BigInteger("7237300117305667488707183861728052766358166655052137727439795191253340127955075499635575104901523446809299097934591732635674173519120047404024393881551683");
-
-   @ObfuscatedName("ac")
    @ObfuscatedSignature(
-      descriptor = "(Lne;IIB)[Lsn;",
-      garbageValue = "58"
+      descriptor = "(IIII)D",
+      garbageValue = "-426403722"
    )
-   public static SpritePixels[] method2046(AbstractArchive var0, int var1, int var2) {
-      byte[] var4 = var0.takeFile(var1, var2);
-      boolean var3;
-      if (var4 == null) {
-         var3 = false;
+   static double method2045(int var0, int var1, int var2) {
+      double var3 = var1 > 0 ? (double)Math.max(0.0F, Math.min(1.0F, (float)var0 / (float)var1)) : 1.0;
+      if (!(var3 <= 0.0) && !(var3 >= 1.0)) {
+         double var5;
+         double var7;
+         switch (var2) {
+            case 0:
+               return var3;
+            case 1:
+               return 1.0 - Math.cos(Math.PI * var3 / 2.0);
+            case 2:
+               return Math.sin(var3 * Math.PI / 2.0);
+            case 3:
+               return -(Math.cos(var3 * Math.PI) - 1.0) / 2.0;
+            case 4:
+               return var3 * var3;
+            case 5:
+               return 1.0 - (1.0 - var3) * (1.0 - var3);
+            case 6:
+               return var3 < 0.5 ? var3 * var3 * 2.0 : 1.0 - Math.pow(2.0 + var3 * -2.0, 2.0) / 2.0;
+            case 7:
+               return var3 * var3 * var3;
+            case 8:
+               return 1.0 - Math.pow(1.0 - var3, 3.0);
+            case 9:
+               return var3 < 0.5 ? 4.0 * var3 * var3 * var3 : 1.0 - Math.pow(2.0 + -2.0 * var3, 3.0) / 2.0;
+            case 10:
+               return var3 * var3 * var3 * var3;
+            case 11:
+               return 1.0 - Math.pow(1.0 - var3, 4.0);
+            case 12:
+               return var3 < 0.5 ? var3 * var3 * var3 * var3 * 8.0 : 1.0 - Math.pow(var3 * -2.0 + 2.0, 4.0) / 2.0;
+            case 13:
+               return var3 * var3 * var3 * var3 * var3;
+            case 14:
+               return 1.0 - Math.pow(1.0 - var3, 5.0);
+            case 15:
+               return var3 < 0.5 ? var3 * var3 * var3 * 8.0 * var3 * var3 : 1.0 - Math.pow(var3 * -2.0 + 2.0, 5.0) / 2.0;
+            case 16:
+               return Math.pow(2.0, var3 * 10.0 - 10.0);
+            case 17:
+               return 1.0 - Math.pow(2.0, var3 * -10.0);
+            case 18:
+               return var3 < 0.5 ? Math.pow(2.0, 20.0 * var3 + 10.0) / 2.0 : (2.0 - Math.pow(2.0, 10.0 + var3 * -20.0)) / 2.0;
+            case 19:
+               return 1.0 - Math.sqrt(1.0 - Math.pow(var3, 2.0));
+            case 20:
+               return Math.sqrt(1.0 - Math.pow(var3 - 1.0, 2.0));
+            case 21:
+               return var3 < 0.5 ? (1.0 - Math.sqrt(1.0 - Math.pow(2.0 * var3, 2.0))) / 2.0 : (Math.sqrt(1.0 - Math.pow(2.0 + -2.0 * var3, 2.0)) + 1.0) / 2.0;
+            case 22:
+               var5 = 1.70158;
+               var7 = 2.70158;
+               return var3 * 2.70158 * var3 * var3 - 1.70158 * var3 * var3;
+            case 23:
+               var5 = 1.70158;
+               var7 = 2.70158;
+               return 1.0 + 2.70158 * Math.pow(var3 - 1.0, 3.0) + 1.70158 * Math.pow(var3 - 1.0, 2.0);
+            case 24:
+               var5 = 1.70158;
+               var7 = 2.5949095;
+               return var3 < 0.5 ? Math.pow(2.0 * var3, 2.0) * (7.189819 * var3 - 2.5949095) / 2.0 : (Math.pow(var3 * 2.0 - 2.0, 2.0) * (2.5949095 + (var3 * 2.0 - 2.0) * 3.5949095) + 2.0) / 2.0;
+            case 25:
+               var5 = 2.0943951023931953;
+               return -Math.pow(2.0, var3 * 10.0 - 10.0) * Math.sin((10.0 * var3 - 10.75) * 2.0943951023931953);
+            case 26:
+               var5 = 2.0943951023931953;
+               return Math.pow(2.0, -10.0 * var3) * Math.sin((var3 * 10.0 - 0.75) * 2.0943951023931953) + 1.0;
+            case 27:
+               var5 = 1.3962634015954636;
+               var7 = Math.sin((20.0 * var3 - 11.125) * 1.3962634015954636);
+               return var3 < 0.5 ? -(Math.pow(2.0, var3 * 20.0 - 10.0) * var7) / 2.0 : Math.pow(2.0, -20.0 * var3 + 10.0) * var7 / 2.0 + 1.0;
+            default:
+               return var3;
+         }
       } else {
-         class212.SpriteBuffer_decode(var4);
-         var3 = true;
+         return var3 <= 0.0 ? 0.0 : 1.0;
       }
-
-      return !var3 ? null : ViewportMouse.method4752();
-   }
-
-   @ObfuscatedName("an")
-   @ObfuscatedSignature(
-      descriptor = "(Lsy;II)V",
-      garbageValue = "1835049871"
-   )
-   public static void method2049(Buffer var0, int var1) {
-      if (JagexCache.JagexCache_randomDat != null) {
-         try {
-            JagexCache.JagexCache_randomDat.seek(0L);
-            JagexCache.JagexCache_randomDat.write(var0.array, var1, 24);
-         } catch (Exception var3) {
-         }
-      }
-
-   }
-
-   @ObfuscatedName("lc")
-   @ObfuscatedSignature(
-      descriptor = "(II)V",
-      garbageValue = "1051942220"
-   )
-   static final void method2047(int var0) {
-      var0 = Math.min(Math.max(var0, 0), 255);
-      if (var0 != WorldMapSectionType.clientPreferences.method2440()) {
-         if (WorldMapSectionType.clientPreferences.method2440() == 0 && Client.currentTrackGroupId != -1) {
-            class163.method3352(class308.archive6, Client.currentTrackGroupId, 0, var0, false);
-            Client.playingJingle = false;
-         } else if (var0 == 0) {
-            class258.method5232();
-            Client.playingJingle = false;
-         } else if (class293.musicPlayerStatus != 0) {
-            class368.musicTrackVolume = var0;
-         } else {
-            class293.midiPcmStream.setPcmStreamVolume(var0);
-         }
-
-         WorldMapSectionType.clientPreferences.method2428(var0);
-      }
-
-   }
-
-   @ObfuscatedName("nm")
-   @ObfuscatedSignature(
-      descriptor = "(II)Lst;",
-      garbageValue = "745575289"
-   )
-   static class471 method2050(int var0) {
-      class471 var1 = (class471)Client.DBTableMasterIndex_cache.get((long)var0);
-      if (var1 == null) {
-         var1 = new class471(class320.field3708, var0);
-      }
-
-      return var1;
    }
 }

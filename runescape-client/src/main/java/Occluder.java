@@ -2,145 +2,112 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("io")
+@ObfuscatedName("ip")
 @Implements("Occluder")
 public final class Occluder {
-   @ObfuscatedName("co")
-   @ObfuscatedSignature(
-      descriptor = "Lrm;"
-   )
-   @Export("loginType")
-   static LoginType loginType;
-   @ObfuscatedName("aj")
+   @ObfuscatedName("af")
    @ObfuscatedGetter(
-      intValue = -917227683
+      intValue = -219522119
    )
    @Export("minTileX")
    int minTileX;
-   @ObfuscatedName("al")
+   @ObfuscatedName("an")
    @ObfuscatedGetter(
-      intValue = 1000298007
+      intValue = -1873370011
    )
    @Export("maxTileX")
    int maxTileX;
-   @ObfuscatedName("ac")
+   @ObfuscatedName("aw")
    @ObfuscatedGetter(
-      intValue = -1897859131
+      intValue = 1910687837
    )
    @Export("minTileY")
    int minTileY;
-   @ObfuscatedName("ab")
+   @ObfuscatedName("ac")
    @ObfuscatedGetter(
-      intValue = 438820163
+      intValue = 506177633
    )
    @Export("maxTileY")
    int maxTileY;
-   @ObfuscatedName("an")
+   @ObfuscatedName("au")
    @ObfuscatedGetter(
-      intValue = -926370029
+      intValue = -33717119
    )
    @Export("type")
    int type;
-   @ObfuscatedName("ao")
+   @ObfuscatedName("ab")
    @ObfuscatedGetter(
-      intValue = -228357533
+      intValue = -1074260583
    )
    @Export("minX")
    int minX;
-   @ObfuscatedName("av")
+   @ObfuscatedName("aq")
    @ObfuscatedGetter(
-      intValue = 324539461
+      intValue = -875468987
    )
    @Export("maxX")
    int maxX;
-   @ObfuscatedName("aq")
+   @ObfuscatedName("al")
    @ObfuscatedGetter(
-      intValue = 1422103233
+      intValue = -1443747699
    )
    @Export("minZ")
    int minZ;
-   @ObfuscatedName("ap")
+   @ObfuscatedName("at")
    @ObfuscatedGetter(
-      intValue = 2140908231
+      intValue = 1383802843
    )
    @Export("maxZ")
    int maxZ;
-   @ObfuscatedName("ar")
+   @ObfuscatedName("aa")
    @ObfuscatedGetter(
-      intValue = -96491847
+      intValue = 690846039
    )
    @Export("minY")
    int minY;
-   @ObfuscatedName("ak")
+   @ObfuscatedName("ay")
    @ObfuscatedGetter(
-      intValue = 1634358819
+      intValue = 1879954201
    )
    @Export("maxY")
    int maxY;
+   @ObfuscatedName("ao")
+   @ObfuscatedGetter(
+      intValue = -221071853
+   )
+   int field2644;
    @ObfuscatedName("ax")
    @ObfuscatedGetter(
-      intValue = 941054415
+      intValue = 1498322871
    )
-   int field2609;
-   @ObfuscatedName("as")
+   int field2645;
+   @ObfuscatedName("ai")
    @ObfuscatedGetter(
-      intValue = -181392515
+      intValue = 542133003
    )
-   int field2610;
-   @ObfuscatedName("ay")
+   int field2646;
+   @ObfuscatedName("ag")
    @ObfuscatedGetter(
-      intValue = -1463862325
+      intValue = -371961737
    )
-   int field2598;
-   @ObfuscatedName("am")
+   int field2648;
+   @ObfuscatedName("ah")
    @ObfuscatedGetter(
-      intValue = -1633371041
+      intValue = 1030915821
    )
-   int field2612;
-   @ObfuscatedName("az")
+   int field2638;
+   @ObfuscatedName("av")
    @ObfuscatedGetter(
-      intValue = 1629326833
+      intValue = -847323611
    )
-   int field2601;
-   @ObfuscatedName("ae")
+   int field2635;
+   @ObfuscatedName("ar")
    @ObfuscatedGetter(
-      intValue = -1321946745
+      intValue = -283662079
    )
-   int field2614;
-   @ObfuscatedName("au")
-   @ObfuscatedGetter(
-      intValue = 512353701
-   )
-   int field2611;
+   int field2650;
 
    Occluder() {
-   }
-
-   @ObfuscatedName("ab")
-   @ObfuscatedSignature(
-      descriptor = "(S)[Lej;",
-      garbageValue = "22012"
-   )
-   static class125[] method4564() {
-      return new class125[]{class125.field1490, class125.field1489, class125.field1484, class125.field1483, class125.field1486};
-   }
-
-   @ObfuscatedName("iw")
-   @ObfuscatedSignature(
-      descriptor = "(IIB)I",
-      garbageValue = "-3"
-   )
-   static int method4563(int var0, int var1) {
-      int var2 = var1 - 334;
-      if (var2 < 0) {
-         var2 = 0;
-      } else if (var2 > 100) {
-         var2 = 100;
-      }
-
-      int var3 = (Client.zoomWidth - Client.zoomHeight) * var2 / 100 + Client.zoomHeight;
-      return var0 * var3 / 256;
    }
 }

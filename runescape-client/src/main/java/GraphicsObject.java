@@ -4,64 +4,67 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cq")
+@ObfuscatedName("cx")
 @Implements("GraphicsObject")
 public class GraphicsObject extends Renderable {
-   @ObfuscatedName("aj")
+   @ObfuscatedName("sl")
+   @Export("ClanChat_inClanChat")
+   static boolean ClanChat_inClanChat;
+   @ObfuscatedName("af")
    @ObfuscatedGetter(
-      intValue = -2054380649
+      intValue = -1107802607
    )
    @Export("id")
    int id;
-   @ObfuscatedName("al")
+   @ObfuscatedName("an")
    @ObfuscatedGetter(
-      intValue = -279976939
+      intValue = -1927288833
    )
    @Export("cycleStart")
    int cycleStart;
-   @ObfuscatedName("ac")
+   @ObfuscatedName("aw")
    @ObfuscatedGetter(
-      intValue = -1458482639
+      intValue = 397044137
    )
    @Export("plane")
    int plane;
-   @ObfuscatedName("ab")
+   @ObfuscatedName("ac")
    @ObfuscatedGetter(
-      intValue = 195307387
+      intValue = -1570643775
    )
    @Export("x")
    int x;
-   @ObfuscatedName("an")
+   @ObfuscatedName("au")
    @ObfuscatedGetter(
-      intValue = 2026876309
+      intValue = -161744223
    )
    @Export("y")
    int y;
-   @ObfuscatedName("ao")
+   @ObfuscatedName("ab")
    @ObfuscatedGetter(
-      intValue = -391770129
+      intValue = -769506393
    )
    @Export("z")
    int z;
-   @ObfuscatedName("av")
+   @ObfuscatedName("aq")
    @ObfuscatedSignature(
-      descriptor = "Lhx;"
+      descriptor = "Lha;"
    )
    @Export("sequenceDefinition")
    SequenceDefinition sequenceDefinition;
-   @ObfuscatedName("aq")
+   @ObfuscatedName("al")
    @ObfuscatedGetter(
-      intValue = -968171095
+      intValue = 158616165
    )
    @Export("frame")
    int frame;
-   @ObfuscatedName("ap")
+   @ObfuscatedName("at")
    @ObfuscatedGetter(
-      intValue = -1608022677
+      intValue = -1355788689
    )
    @Export("frameCycle")
    int frameCycle;
-   @ObfuscatedName("ar")
+   @ObfuscatedName("aa")
    @Export("isFinished")
    boolean isFinished;
 
@@ -75,20 +78,20 @@ public class GraphicsObject extends Renderable {
       this.y = var4;
       this.z = var5;
       this.cycleStart = var7 + var6;
-      int var8 = DevicePcmPlayerProvider.SpotAnimationDefinition_get(this.id).sequence;
+      int var8 = ItemContainer.SpotAnimationDefinition_get(this.id).sequence;
       if (var8 != -1) {
          this.isFinished = false;
-         this.sequenceDefinition = Coord.SequenceDefinition_get(var8);
+         this.sequenceDefinition = ItemContainer.SequenceDefinition_get(var8);
       } else {
          this.isFinished = true;
       }
 
    }
 
-   @ObfuscatedName("aj")
+   @ObfuscatedName("af")
    @ObfuscatedSignature(
-      descriptor = "(II)V",
-      garbageValue = "-1172204333"
+      descriptor = "(IB)V",
+      garbageValue = "-34"
    )
    @Export("advance")
    final void advance(int var1) {
@@ -105,7 +108,7 @@ public class GraphicsObject extends Renderable {
             }
          } else {
             this.frame += var1;
-            if (this.frame >= this.sequenceDefinition.method4015()) {
+            if (this.frame >= this.sequenceDefinition.method4135()) {
                this.isFinished = true;
             }
          }
@@ -113,14 +116,14 @@ public class GraphicsObject extends Renderable {
       }
    }
 
-   @ObfuscatedName("al")
+   @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "(I)Lix;",
-      garbageValue = "-1998422213"
+      descriptor = "(B)Lit;",
+      garbageValue = "-112"
    )
    @Export("getModel")
    protected final Model getModel() {
-      SpotAnimationDefinition var1 = DevicePcmPlayerProvider.SpotAnimationDefinition_get(this.id);
+      SpotAnimationDefinition var1 = ItemContainer.SpotAnimationDefinition_get(this.id);
       Model var2;
       if (!this.isFinished) {
          var2 = var1.getModel(this.frame);
@@ -129,6 +132,78 @@ public class GraphicsObject extends Renderable {
       }
 
       return var2 == null ? null : var2;
+   }
+
+   @ObfuscatedName("an")
+   @ObfuscatedSignature(
+      descriptor = "(S)V",
+      garbageValue = "152"
+   )
+   public static void method2025() {
+      if (MouseHandler.MouseHandler_instance != null) {
+         synchronized(MouseHandler.MouseHandler_instance) {
+            MouseHandler.MouseHandler_instance = null;
+         }
+      }
+
+   }
+
+   @ObfuscatedName("ao")
+   static final void method2016(long var0) {
+      ViewportMouse.ViewportMouse_entityTags[++ViewportMouse.ViewportMouse_entityCount - 1] = var0;
+   }
+
+   @ObfuscatedName("is")
+   @ObfuscatedSignature(
+      descriptor = "(IIB)V",
+      garbageValue = "57"
+   )
+   static final void method2026(int var0, int var1) {
+      if (var0 < 128) {
+         var0 = 128;
+      } else if (var0 > 383) {
+         var0 = 383;
+      }
+
+      if (WorldMapSectionType.cameraPitch < var0) {
+         WorldMapSectionType.cameraPitch = (var0 - WorldMapSectionType.cameraPitch) * WorldMapElement.field1937 / 1000 + WorldMapSectionType.cameraPitch + Archive.field4213;
+         if (WorldMapSectionType.cameraPitch > var0) {
+            WorldMapSectionType.cameraPitch = var0;
+         }
+      } else if (WorldMapSectionType.cameraPitch > var0) {
+         WorldMapSectionType.cameraPitch -= (WorldMapSectionType.cameraPitch - var0) * WorldMapElement.field1937 / 1000 + Archive.field4213;
+         if (WorldMapSectionType.cameraPitch < var0) {
+            WorldMapSectionType.cameraPitch = var0;
+         }
+      }
+
+      var1 &= 2047;
+      int var2 = var1 - class125.cameraYaw;
+      if (var2 > 1024) {
+         var2 -= 2048;
+      } else if (var2 < -1024) {
+         var2 += 2048;
+      }
+
+      if (var2 > 0) {
+         class125.cameraYaw = class125.cameraYaw + Archive.field4213 + var2 * WorldMapElement.field1937 / 1000;
+         class125.cameraYaw &= 2047;
+      } else if (var2 < 0) {
+         class125.cameraYaw -= -var2 * WorldMapElement.field1937 / 1000 + Archive.field4213;
+         class125.cameraYaw &= 2047;
+      }
+
+      int var3 = var1 - class125.cameraYaw;
+      if (var3 > 1024) {
+         var3 -= 2048;
+      } else if (var3 < -1024) {
+         var3 += 2048;
+      }
+
+      if (var3 < 0 && var2 > 0 || var3 > 0 && var2 < 0) {
+         class125.cameraYaw = var1;
+      }
+
    }
 
    public GraphicsObject() {

@@ -4,89 +4,92 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ch")
+@ObfuscatedName("cr")
 @Implements("ObjectSound")
 public final class ObjectSound extends Node {
-   @ObfuscatedName("aj")
+   @ObfuscatedName("af")
    @ObfuscatedSignature(
-      descriptor = "Lnj;"
+      descriptor = "Lnh;"
    )
    @Export("objectSounds")
    static NodeDeque objectSounds = new NodeDeque();
-   @ObfuscatedName("al")
+   @ObfuscatedName("jw")
+   @Export("regionMapArchives")
+   static byte[][] regionMapArchives;
+   @ObfuscatedName("an")
    @ObfuscatedGetter(
-      intValue = -816284393
+      intValue = 776275305
    )
    @Export("plane")
    int plane;
-   @ObfuscatedName("ac")
+   @ObfuscatedName("aw")
    @ObfuscatedGetter(
-      intValue = -1094128512
+      intValue = 417312384
    )
    @Export("x")
    int x;
-   @ObfuscatedName("ab")
+   @ObfuscatedName("ac")
    @ObfuscatedGetter(
-      intValue = -553458304
+      intValue = 99345247
    )
    @Export("y")
    int y;
-   @ObfuscatedName("an")
+   @ObfuscatedName("au")
    @ObfuscatedGetter(
-      intValue = 396792949
+      intValue = -823707049
    )
    @Export("maxX")
    int maxX;
-   @ObfuscatedName("ao")
+   @ObfuscatedName("ab")
    @ObfuscatedGetter(
-      intValue = -125593713
+      intValue = -1828326483
    )
    @Export("maxY")
    int maxY;
-   @ObfuscatedName("av")
-   @ObfuscatedGetter(
-      intValue = -1811939217
-   )
-   int field812;
    @ObfuscatedName("aq")
    @ObfuscatedGetter(
-      intValue = -1092434559
+      intValue = -1826007749
+   )
+   int field815;
+   @ObfuscatedName("al")
+   @ObfuscatedGetter(
+      intValue = 1671764667
    )
    @Export("soundEffectId")
    int soundEffectId;
-   @ObfuscatedName("ap")
+   @ObfuscatedName("at")
    @ObfuscatedSignature(
-      descriptor = "Lbn;"
+      descriptor = "Lbl;"
    )
    @Export("stream1")
    RawPcmStream stream1;
-   @ObfuscatedName("ar")
+   @ObfuscatedName("aa")
    @ObfuscatedGetter(
-      intValue = -1375364183
+      intValue = -442346035
    )
-   int field806;
-   @ObfuscatedName("ak")
+   int field824;
+   @ObfuscatedName("ay")
    @ObfuscatedGetter(
-      intValue = -1479769427
+      intValue = -1018564833
    )
-   int field808;
-   @ObfuscatedName("ax")
+   int field825;
+   @ObfuscatedName("ao")
    @Export("soundEffectIds")
    int[] soundEffectIds;
-   @ObfuscatedName("as")
+   @ObfuscatedName("ax")
    @ObfuscatedGetter(
-      intValue = 485843781
+      intValue = -428166745
    )
-   int field818;
-   @ObfuscatedName("ay")
+   int field822;
+   @ObfuscatedName("ai")
    @ObfuscatedSignature(
-      descriptor = "Lbn;"
+      descriptor = "Lbl;"
    )
    @Export("stream2")
    RawPcmStream stream2;
-   @ObfuscatedName("am")
+   @ObfuscatedName("ag")
    @ObfuscatedSignature(
-      descriptor = "Lhu;"
+      descriptor = "Lhq;"
    )
    @Export("obj")
    ObjectComposition obj;
@@ -94,10 +97,10 @@ public final class ObjectSound extends Node {
    ObjectSound() {
    }
 
-   @ObfuscatedName("ac")
+   @ObfuscatedName("aw")
    @ObfuscatedSignature(
       descriptor = "(I)V",
-      garbageValue = "79523440"
+      garbageValue = "27660078"
    )
    @Export("set")
    void set() {
@@ -105,20 +108,20 @@ public final class ObjectSound extends Node {
       ObjectComposition var2 = this.obj.transform();
       if (var2 != null) {
          this.soundEffectId = var2.ambientSoundId;
-         this.field812 = var2.int7 * 128;
-         this.field806 = var2.int5;
-         this.field808 = var2.int6;
+         this.field815 = var2.int7 * 128;
+         this.field824 = var2.int5;
+         this.field825 = var2.int6;
          this.soundEffectIds = var2.soundEffectIds;
       } else {
          this.soundEffectId = -1;
-         this.field812 = 0;
-         this.field806 = 0;
-         this.field808 = 0;
+         this.field815 = 0;
+         this.field824 = 0;
+         this.field825 = 0;
          this.soundEffectIds = null;
       }
 
       if (var1 != this.soundEffectId && this.stream1 != null) {
-         class323.pcmStreamMixer.removeSubStream(this.stream1);
+         class130.pcmStreamMixer.removeSubStream(this.stream1);
          this.stream1 = null;
       }
 

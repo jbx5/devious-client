@@ -1,48 +1,41 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dm")
+@ObfuscatedName("db")
 @Implements("HealthBar")
 public class HealthBar extends Node {
-   @ObfuscatedName("an")
+   @ObfuscatedName("ka")
    @ObfuscatedSignature(
-      descriptor = "Lne;"
+      descriptor = "[Ltc;"
    )
-   @Export("SequenceDefinition_archive")
-   public static AbstractArchive SequenceDefinition_archive;
-   @ObfuscatedName("ak")
-   @ObfuscatedGetter(
-      intValue = 1613794431
-   )
-   @Export("Interpreter_stringStackSize")
-   static int Interpreter_stringStackSize;
-   @ObfuscatedName("ac")
+   @Export("scrollBarSprites")
+   static IndexedSprite[] scrollBarSprites;
+   @ObfuscatedName("aw")
    @ObfuscatedSignature(
-      descriptor = "Lhn;"
+      descriptor = "Lhm;"
    )
    @Export("definition")
    HealthBarDefinition definition;
-   @ObfuscatedName("ab")
+   @ObfuscatedName("ac")
    @ObfuscatedSignature(
-      descriptor = "Lni;"
+      descriptor = "Loi;"
    )
    @Export("updates")
    IterableNodeDeque updates = new IterableNodeDeque();
 
    @ObfuscatedSignature(
-      descriptor = "(Lhn;)V"
+      descriptor = "(Lhm;)V"
    )
    HealthBar(HealthBarDefinition var1) {
       this.definition = var1;
    }
 
-   @ObfuscatedName("aj")
+   @ObfuscatedName("af")
    @ObfuscatedSignature(
       descriptor = "(IIIII)V",
-      garbageValue = "443468111"
+      garbageValue = "-869970014"
    )
    @Export("put")
    void put(int var1, int var2, int var3, int var4) {
@@ -75,10 +68,10 @@ public class HealthBar extends Node {
       }
    }
 
-   @ObfuscatedName("al")
+   @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "(II)Ldw;",
-      garbageValue = "53530946"
+      descriptor = "(IB)Ldh;",
+      garbageValue = "-122"
    )
    @Export("get")
    HealthBarUpdate get(int var1) {
@@ -100,89 +93,30 @@ public class HealthBar extends Node {
       }
    }
 
-   @ObfuscatedName("ac")
+   @ObfuscatedName("aw")
    @ObfuscatedSignature(
-      descriptor = "(B)Z",
-      garbageValue = "4"
+      descriptor = "(I)Z",
+      garbageValue = "-12674764"
    )
    @Export("isEmpty")
    boolean isEmpty() {
-      return this.updates.method6738();
+      return this.updates.method7012();
    }
 
-   @ObfuscatedName("aj")
+   @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "(II)Lhn;",
-      garbageValue = "-1719654213"
+      descriptor = "(Ljava/lang/Throwable;Ljava/lang/String;)Ltr;"
    )
-   public static HealthBarDefinition method2538(int var0) {
-      HealthBarDefinition var1 = (HealthBarDefinition)HealthBarDefinition.HealthBarDefinition_cached.get((long)var0);
-      if (var1 != null) {
-         return var1;
+   @Export("newRunException")
+   public static RunException newRunException(Throwable var0, String var1) {
+      RunException var2;
+      if (var0 instanceof RunException) {
+         var2 = (RunException)var0;
+         var2.message = var2.message + ' ' + var1;
       } else {
-         byte[] var2 = HealthBarDefinition.HealthBarDefinition_archive.takeFile(33, var0);
-         var1 = new HealthBarDefinition();
-         if (var2 != null) {
-            var1.decode(new Buffer(var2));
-         }
-
-         HealthBarDefinition.HealthBarDefinition_cached.put(var1, (long)var0);
-         return var1;
-      }
-   }
-
-   @ObfuscatedName("aj")
-   @ObfuscatedSignature(
-      descriptor = "(I[BLpv;B)V",
-      garbageValue = "-48"
-   )
-   static void method2550(int var0, byte[] var1, ArchiveDisk var2) {
-      ArchiveDiskAction var3 = new ArchiveDiskAction();
-      var3.type = 0;
-      var3.key = (long)var0;
-      var3.data = var1;
-      var3.archiveDisk = var2;
-      synchronized(ArchiveDiskActionHandler.ArchiveDiskActionHandler_requestQueue) {
-         ArchiveDiskActionHandler.ArchiveDiskActionHandler_requestQueue.addFirst(var3);
+         var2 = new RunException(var0, var1);
       }
 
-      Skills.method6322();
-   }
-
-   @ObfuscatedName("ac")
-   @ObfuscatedSignature(
-      descriptor = "([Ljava/lang/String;[IIII)V",
-      garbageValue = "-329447192"
-   )
-   static void method2542(String[] var0, int[] var1, int var2, int var3) {
-      if (var2 < var3) {
-         int var4 = (var3 + var2) / 2;
-         int var5 = var2;
-         String var6 = var0[var4];
-         var0[var4] = var0[var3];
-         var0[var3] = var6;
-         int var7 = var1[var4];
-         var1[var4] = var1[var3];
-         var1[var3] = var7;
-
-         for(int var8 = var2; var8 < var3; ++var8) {
-            if (var6 == null || var0[var8] != null && var0[var8].compareTo(var6) < (var8 & 1)) {
-               String var9 = var0[var8];
-               var0[var8] = var0[var5];
-               var0[var5] = var9;
-               int var10 = var1[var8];
-               var1[var8] = var1[var5];
-               var1[var5++] = var10;
-            }
-         }
-
-         var0[var3] = var0[var5];
-         var0[var5] = var6;
-         var1[var3] = var1[var5];
-         var1[var5] = var7;
-         method2542(var0, var1, var2, var5 - 1);
-         method2542(var0, var1, var5 + 1, var3);
-      }
-
+      return var2;
    }
 }

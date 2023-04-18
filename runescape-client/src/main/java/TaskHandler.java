@@ -2,52 +2,37 @@ import java.io.DataInputStream;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.URL;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("ge")
+@ObfuscatedName("gd")
 @Implements("TaskHandler")
 public class TaskHandler implements Runnable {
-   @ObfuscatedName("tv")
-   @ObfuscatedSignature(
-      descriptor = "Lco;"
-   )
-   @Export("decimator")
-   static Decimator decimator;
-   @ObfuscatedName("aj")
+   @ObfuscatedName("af")
    @Export("javaVendor")
    public static String javaVendor;
-   @ObfuscatedName("al")
+   @ObfuscatedName("an")
    @Export("javaVersion")
    public static String javaVersion;
-   @ObfuscatedName("mz")
-   @ObfuscatedGetter(
-      intValue = -2026807571
-   )
-   @Export("Client_plane")
-   static int Client_plane;
-   @ObfuscatedName("ac")
+   @ObfuscatedName("aw")
    @ObfuscatedSignature(
-      descriptor = "Lgf;"
+      descriptor = "Lgp;"
    )
    @Export("current")
    Task current = null;
-   @ObfuscatedName("ab")
+   @ObfuscatedName("ac")
    @ObfuscatedSignature(
-      descriptor = "Lgf;"
+      descriptor = "Lgp;"
    )
    @Export("task")
    Task task = null;
-   @ObfuscatedName("an")
+   @ObfuscatedName("au")
    @Export("thread")
    Thread thread;
-   @ObfuscatedName("ao")
+   @ObfuscatedName("ab")
    @Export("isClosed")
    boolean isClosed = false;
 
@@ -68,10 +53,10 @@ public class TaskHandler implements Runnable {
       this.thread.start();
    }
 
-   @ObfuscatedName("aj")
+   @ObfuscatedName("af")
    @ObfuscatedSignature(
-      descriptor = "(B)V",
-      garbageValue = "23"
+      descriptor = "(I)V",
+      garbageValue = "-1782899864"
    )
    @Export("close")
    public final void close() {
@@ -87,10 +72,10 @@ public class TaskHandler implements Runnable {
 
    }
 
-   @ObfuscatedName("al")
+   @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "(IIILjava/lang/Object;I)Lgf;",
-      garbageValue = "216202968"
+      descriptor = "(IIILjava/lang/Object;I)Lgp;",
+      garbageValue = "1775674834"
    )
    @Export("newTask")
    final Task newTask(int var1, int var2, int var3, Object var4) {
@@ -111,20 +96,20 @@ public class TaskHandler implements Runnable {
       }
    }
 
-   @ObfuscatedName("ac")
+   @ObfuscatedName("aw")
    @ObfuscatedSignature(
-      descriptor = "(Ljava/lang/String;IB)Lgf;",
-      garbageValue = "2"
+      descriptor = "(Ljava/lang/String;II)Lgp;",
+      garbageValue = "-1731609371"
    )
    @Export("newSocketTask")
    public final Task newSocketTask(String var1, int var2) {
       return this.newTask(1, var2, 0, var1);
    }
 
-   @ObfuscatedName("ab")
+   @ObfuscatedName("ac")
    @ObfuscatedSignature(
-      descriptor = "(Ljava/lang/Runnable;II)Lgf;",
-      garbageValue = "572645137"
+      descriptor = "(Ljava/lang/Runnable;IB)Lgp;",
+      garbageValue = "0"
    )
    @Export("newThreadTask")
    public final Task newThreadTask(Runnable var1, int var2) {
@@ -179,191 +164,60 @@ public class TaskHandler implements Runnable {
       }
    }
 
-   @ObfuscatedName("ab")
+   @ObfuscatedName("au")
    @ObfuscatedSignature(
-      descriptor = "(IIB)Lct;",
-      garbageValue = "-127"
+      descriptor = "(I)I",
+      garbageValue = "-1616456716"
    )
-   @Export("Messages_getByChannelAndID")
-   static Message Messages_getByChannelAndID(int var0, int var1) {
-      ChatChannel var2 = (ChatChannel)Messages.Messages_channels.get(var0);
-      return var2.getMessage(var1);
+   static int method3563() {
+      return Rasterizer3D.field2514.field2795;
    }
 
-   @ObfuscatedName("an")
+   @ObfuscatedName("au")
    @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "881208565"
+      descriptor = "(I)[Lmr;",
+      garbageValue = "2087958579"
    )
-   public static void method3460() {
-      synchronized(ArchiveDiskActionHandler.ArchiveDiskActionHandler_lock) {
-         if (ArchiveDiskActionHandler.field4162 != 0) {
-            ArchiveDiskActionHandler.field4162 = 1;
+   public static StudioGame[] method3567() {
+      return new StudioGame[]{StudioGame.game3, StudioGame.game4, StudioGame.runescape, StudioGame.stellardawn, StudioGame.game5, StudioGame.oldscape};
+   }
 
-            try {
-               ArchiveDiskActionHandler.ArchiveDiskActionHandler_lock.wait();
-            } catch (InterruptedException var3) {
-            }
+   @ObfuscatedName("bj")
+   @ObfuscatedSignature(
+      descriptor = "(ILch;ZI)I",
+      garbageValue = "-898403827"
+   )
+   static int method3561(int var0, Script var1, boolean var2) {
+      int var3;
+      if (var0 == ScriptOpcodes.CAM_FORCEANGLE) {
+         Interpreter.Interpreter_intStackSize -= 2;
+         var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+         int var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+         if (!Client.isCameraLocked) {
+            Client.camAngleX = var3;
+            Client.camAngleY = var4;
          }
 
-      }
-   }
+         return 1;
+      } else if (var0 == ScriptOpcodes.CAM_GETANGLE_XA) {
+         Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Client.camAngleX;
+         return 1;
+      } else if (var0 == ScriptOpcodes.CAM_GETANGLE_YA) {
+         Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Client.camAngleY;
+         return 1;
+      } else if (var0 == ScriptOpcodes.CAM_SETFOLLOWHEIGHT) {
+         var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+         if (var3 < 0) {
+            var3 = 0;
+         }
 
-   @ObfuscatedName("am")
-   @ObfuscatedSignature(
-      descriptor = "(II)Lfl;",
-      garbageValue = "-755195342"
-   )
-   static class134 method3458(int var0) {
-      class134 var3 = (class134)SequenceDefinition.SequenceDefinition_cachedModel.get((long)var0);
-      class134 var2;
-      class134 var4;
-      AbstractArchive var5;
-      AbstractArchive var6;
-      boolean var7;
-      byte[] var8;
-      int var9;
-      byte[] var10;
-      if (var3 != null) {
-         var2 = var3;
+         Client.camFollowHeight = var3;
+         return 1;
+      } else if (var0 == ScriptOpcodes.CAM_GETFOLLOWHEIGHT) {
+         Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Client.camFollowHeight;
+         return 1;
       } else {
-         var5 = SequenceDefinition.SequenceDefinition_animationsArchive;
-         var6 = SequenceDefinition.SequenceDefinition_skeletonsArchive;
-         var7 = true;
-         var8 = var5.getFile(var0 >> 16 & '\uffff', var0 & '\uffff');
-         if (var8 == null) {
-            var7 = false;
-            var4 = null;
-         } else {
-            var9 = (var8[1] & 255) << 8 | var8[2] & 255;
-            var10 = var6.getFile(var9, 0);
-            if (var10 == null) {
-               var7 = false;
-            }
-
-            if (!var7) {
-               var4 = null;
-            } else {
-               if (UserComparator7.field1413 == null) {
-                  class134.field1573 = Runtime.getRuntime().availableProcessors();
-                  UserComparator7.field1413 = new ThreadPoolExecutor(0, class134.field1573, 0L, TimeUnit.MILLISECONDS, new ArrayBlockingQueue(class134.field1573 * 100 + 100), new class181());
-               }
-
-               try {
-                  var4 = new class134(var5, var6, var0, false);
-               } catch (Exception var13) {
-                  var4 = null;
-               }
-            }
-         }
-
-         if (var4 != null) {
-            SequenceDefinition.SequenceDefinition_cachedModel.put(var4, (long)var0);
-         }
-
-         var2 = var4;
+         return 2;
       }
-
-      int var1;
-      if (var2 == null) {
-         var1 = 2;
-      } else {
-         var1 = var2.method3044() ? 0 : 1;
-      }
-
-      if (var1 != 0) {
-         return null;
-      } else {
-         var3 = (class134)SequenceDefinition.SequenceDefinition_cachedModel.get((long)var0);
-         if (var3 != null) {
-            var2 = var3;
-         } else {
-            var5 = SequenceDefinition.SequenceDefinition_animationsArchive;
-            var6 = SequenceDefinition.SequenceDefinition_skeletonsArchive;
-            var7 = true;
-            var8 = var5.getFile(var0 >> 16 & '\uffff', var0 & '\uffff');
-            if (var8 == null) {
-               var7 = false;
-               var4 = null;
-            } else {
-               var9 = (var8[1] & 255) << 8 | var8[2] & 255;
-               var10 = var6.getFile(var9, 0);
-               if (var10 == null) {
-                  var7 = false;
-               }
-
-               if (!var7) {
-                  var4 = null;
-               } else {
-                  if (UserComparator7.field1413 == null) {
-                     class134.field1573 = Runtime.getRuntime().availableProcessors();
-                     UserComparator7.field1413 = new ThreadPoolExecutor(0, class134.field1573, 0L, TimeUnit.MILLISECONDS, new ArrayBlockingQueue(class134.field1573 * 100 + 100), new class199());
-                  }
-
-                  try {
-                     var4 = new class134(var5, var6, var0, false);
-                  } catch (Exception var12) {
-                     var4 = null;
-                  }
-               }
-            }
-
-            if (var4 != null) {
-               SequenceDefinition.SequenceDefinition_cachedModel.put(var4, (long)var0);
-            }
-
-            var2 = var4;
-         }
-
-         return var2;
-      }
-   }
-
-   @ObfuscatedName("at")
-   @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "433390522"
-   )
-   public static void method3446() {
-      ItemComposition.ItemDefinition_cachedSprites.clear();
-   }
-
-   @ObfuscatedName("kd")
-   @ObfuscatedSignature(
-      descriptor = "(IIIII)V",
-      garbageValue = "1665222999"
-   )
-   @Export("selectSpell")
-   static void selectSpell(int var0, int var1, int var2, int var3) {
-      Widget var4 = class36.getWidgetChild(var0, var1);
-      if (var4 != null && var4.onTargetEnter != null) {
-         ScriptEvent var5 = new ScriptEvent();
-         var5.widget = var4;
-         var5.args = var4.onTargetEnter;
-         class9.runScriptEvent(var5);
-      }
-
-      Client.selectedSpellItemId = var3;
-      Client.isSpellSelected = true;
-      class18.selectedSpellWidget = var0;
-      Client.selectedSpellChildIndex = var1;
-      class90.selectedSpellFlags = var2;
-      class69.invalidateWidget(var4);
-   }
-
-   @ObfuscatedName("lx")
-   @ObfuscatedSignature(
-      descriptor = "(II)V",
-      garbageValue = "-1645174054"
-   )
-   static void method3457(int var0) {
-      ViewportMouse.tempMenuAction = new MenuAction();
-      ViewportMouse.tempMenuAction.param0 = Client.menuArguments1[var0];
-      ViewportMouse.tempMenuAction.param1 = Client.menuArguments2[var0];
-      ViewportMouse.tempMenuAction.opcode = Client.menuOpcodes[var0];
-      ViewportMouse.tempMenuAction.identifier = Client.menuIdentifiers[var0];
-      ViewportMouse.tempMenuAction.itemId = Client.menuItemIds[var0];
-      ViewportMouse.tempMenuAction.action = Client.menuActions[var0];
-      ViewportMouse.tempMenuAction.target = Client.menuTargets[var0];
    }
 }

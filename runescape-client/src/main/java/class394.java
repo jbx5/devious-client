@@ -1,205 +1,193 @@
-import java.util.Comparator;
+import java.awt.Component;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
-import net.runelite.mapping.ObfuscatedGetter;
+import javax.net.ssl.HttpsURLConnection;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("pe")
-public final class class394 {
-   @ObfuscatedName("aj")
-   final Comparator field4487;
+@ObfuscatedName("pc")
+public class class394 {
    @ObfuscatedName("al")
-   final Map field4484;
+   @Export("SpriteBuffer_spritePalette")
+   public static int[] SpriteBuffer_spritePalette;
    @ObfuscatedName("ac")
-   @ObfuscatedSignature(
-      descriptor = "Lop;"
-   )
-   final class373 field4483;
+   final Map field4521 = new HashMap();
+   @ObfuscatedName("au")
+   final Map field4525 = new HashMap();
    @ObfuscatedName("ab")
+   final DecimalFormat field4526 = new DecimalFormat();
+
+   public class394() {
+      this.field4526.setMaximumFractionDigits(2);
+   }
+
+   @ObfuscatedName("af")
    @ObfuscatedSignature(
-      descriptor = "Lop;"
+      descriptor = "(Ljavax/net/ssl/HttpsURLConnection;I)V",
+      garbageValue = "1759614769"
    )
-   final class373 field4481;
+   public void method7625(HttpsURLConnection var1) {
+      Iterator var2 = this.field4521.entrySet().iterator();
+
+      while(var2.hasNext()) {
+         Map.Entry var3 = (Map.Entry)var2.next();
+         var1.setRequestProperty((String)var3.getKey(), (String)var3.getValue());
+      }
+
+   }
+
    @ObfuscatedName("an")
-   @ObfuscatedGetter(
-      longValue = -7338482294239229465L
-   )
-   final long field4482;
-   @ObfuscatedName("ao")
    @ObfuscatedSignature(
-      descriptor = "Lpm;"
+      descriptor = "(I)Ljava/util/Map;",
+      garbageValue = "1411572394"
    )
-   final class392 field4486;
-   @ObfuscatedName("av")
-   @ObfuscatedGetter(
-      intValue = -1557215357
-   )
-   final int field4485;
+   public Map method7626() {
+      return this.field4521;
+   }
 
+   @ObfuscatedName("aw")
    @ObfuscatedSignature(
-      descriptor = "(JILpm;)V"
+      descriptor = "(Ljava/lang/String;Ljava/lang/String;I)V",
+      garbageValue = "-687653151"
    )
-   class394(long var1, int var3, class392 var4) {
-      this.field4487 = new class393(this);
-      this.field4482 = var1;
-      this.field4485 = var3;
-      this.field4486 = var4;
-      if (this.field4485 == -1) {
-         this.field4484 = new HashMap(64);
-         this.field4483 = new class373(64, this.field4487);
-         this.field4481 = null;
-      } else {
-         if (this.field4486 == null) {
-            throw new IllegalArgumentException("");
-         }
-
-         this.field4484 = new HashMap(this.field4485);
-         this.field4483 = new class373(this.field4485, this.field4487);
-         this.field4481 = new class373(this.field4485);
+   public void method7627(String var1, String var2) {
+      if (var1 != null && !var1.isEmpty()) {
+         this.field4521.put(var1, var2 != null ? var2 : "");
       }
 
-   }
-
-   @ObfuscatedSignature(
-      descriptor = "(ILpm;)V"
-   )
-   public class394(int var1, class392 var2) {
-      this(-1L, var1, var2);
-   }
-
-   @ObfuscatedName("aj")
-   @ObfuscatedSignature(
-      descriptor = "(B)Z",
-      garbageValue = "-121"
-   )
-   boolean method7421() {
-      return this.field4485 != -1;
-   }
-
-   @ObfuscatedName("al")
-   @ObfuscatedSignature(
-      descriptor = "(Ljava/lang/Object;B)Ljava/lang/Object;",
-      garbageValue = "-9"
-   )
-   public Object method7414(Object var1) {
-      synchronized(this) {
-         if (this.field4482 != -1L) {
-            this.method7416();
-         }
-
-         class395 var3 = (class395)this.field4484.get(var1);
-         if (var3 == null) {
-            return null;
-         } else {
-            this.method7415(var3, false);
-            return var3.field4491;
-         }
-      }
    }
 
    @ObfuscatedName("ac")
    @ObfuscatedSignature(
-      descriptor = "(Ljava/lang/Object;Ljava/lang/Object;I)Ljava/lang/Object;",
-      garbageValue = "-388203843"
+      descriptor = "(Ljava/lang/String;S)V",
+      garbageValue = "-14811"
    )
-   public Object method7427(Object var1, Object var2) {
-      synchronized(this) {
-         if (this.field4482 != -1L) {
-            this.method7416();
-         }
-
-         class395 var4 = (class395)this.field4484.get(var1);
-         if (var4 != null) {
-            Object var8 = var4.field4491;
-            var4.field4491 = var2;
-            this.method7415(var4, false);
-            return var8;
-         } else {
-            class395 var5;
-            if (this.method7421() && this.field4484.size() == this.field4485) {
-               var5 = (class395)this.field4481.remove();
-               this.field4484.remove(var5.field4489);
-               this.field4483.remove(var5);
-            }
-
-            var5 = new class395(var2, var1);
-            this.field4484.put(var1, var5);
-            this.method7415(var5, true);
-            return null;
-         }
+   public void method7657(String var1) {
+      if (var1 != null && !var1.isEmpty()) {
+         this.field4521.remove(var1);
       }
+
+   }
+
+   @ObfuscatedName("au")
+   @ObfuscatedSignature(
+      descriptor = "(Lpm;Ljava/lang/String;B)V",
+      garbageValue = "84"
+   )
+   void method7629(class393 var1, String var2) {
+      String var3 = String.format("%s %s", var1.method7621(), var2);
+      this.method7627("Authorization", var3);
    }
 
    @ObfuscatedName("ab")
    @ObfuscatedSignature(
-      descriptor = "(Lpn;ZI)V",
-      garbageValue = "-797803936"
+      descriptor = "(Ljava/lang/String;B)V",
+      garbageValue = "95"
    )
-   void method7415(class395 var1, boolean var2) {
-      if (!var2) {
-         this.field4483.remove(var1);
-         if (this.method7421() && !this.field4481.remove(var1)) {
-            throw new IllegalStateException("");
-         }
-      }
-
-      var1.field4488 = System.currentTimeMillis();
-      if (this.method7421()) {
-         switch (this.field4486.field4477) {
-            case 0:
-               ++var1.field4490;
-               break;
-            case 1:
-               var1.field4490 = var1.field4488;
-         }
-
-         this.field4481.add(var1);
-      }
-
-      this.field4483.add(var1);
+   public void method7645(String var1) {
+      this.method7629(class393.field4519, var1);
    }
 
-   @ObfuscatedName("an")
+   @ObfuscatedName("aq")
+   @ObfuscatedSignature(
+      descriptor = "(Ljava/lang/String;I)V",
+      garbageValue = "-596088088"
+   )
+   public void method7631(String var1) {
+      this.method7629(class393.field4518, var1);
+   }
+
+   @ObfuscatedName("al")
+   @ObfuscatedSignature(
+      descriptor = "(Lqz;I)V",
+      garbageValue = "1037521942"
+   )
+   public void method7632(class435 var1) {
+      this.field4521.put("Content-Type", var1.method8319());
+   }
+
+   @ObfuscatedName("at")
    @ObfuscatedSignature(
       descriptor = "(I)V",
-      garbageValue = "1617279865"
+      garbageValue = "1055361805"
    )
-   void method7416() {
-      if (this.field4482 == -1L) {
-         throw new IllegalStateException("");
-      } else {
-         long var1 = System.currentTimeMillis() - this.field4482;
+   public void method7633() {
+      this.field4521.remove("Content-Type");
+   }
 
-         while(!this.field4483.isEmpty()) {
-            class395 var3 = (class395)this.field4483.peek();
-            if (var3.field4488 >= var1) {
-               return;
-            }
+   @ObfuscatedName("aa")
+   @ObfuscatedSignature(
+      descriptor = "(Lqz;B)V",
+      garbageValue = "49"
+   )
+   public void method7634(class435 var1) {
+      this.method7635(var1, 1.0F);
+   }
 
-            this.field4484.remove(var3.field4489);
-            this.field4483.remove(var3);
-            if (this.method7421()) {
-               this.field4481.remove(var3);
-            }
-         }
-
-      }
+   @ObfuscatedName("ay")
+   @ObfuscatedSignature(
+      descriptor = "(Lqz;FI)V",
+      garbageValue = "-868305920"
+   )
+   void method7635(class435 var1, float var2) {
+      this.field4525.put(var1, Math.max(0.0F, Math.min(1.0F, var2)));
+      this.method7636();
    }
 
    @ObfuscatedName("ao")
    @ObfuscatedSignature(
       descriptor = "(I)V",
-      garbageValue = "1379189598"
+      garbageValue = "720033407"
    )
-   public void method7417() {
-      synchronized(this) {
-         this.field4484.clear();
-         this.field4483.clear();
-         if (this.method7421()) {
-            this.field4481.clear();
+   void method7636() {
+      this.field4521.remove("Accept");
+      if (!this.field4525.isEmpty()) {
+         this.field4521.put("Accept", this.method7665());
+      }
+
+   }
+
+   @ObfuscatedName("ax")
+   @ObfuscatedSignature(
+      descriptor = "(I)Ljava/lang/String;",
+      garbageValue = "269746303"
+   )
+   String method7665() {
+      ArrayList var1 = new ArrayList(this.field4525.entrySet());
+      Collections.sort(var1, new class395(this));
+      StringBuilder var2 = new StringBuilder();
+      Iterator var3 = var1.iterator();
+
+      while(var3.hasNext()) {
+         Map.Entry var4 = (Map.Entry)var3.next();
+         if (var2.length() > 0) {
+            var2.append(",");
          }
 
+         var2.append(((class435)var4.getKey()).method8319());
+         float var5 = (Float)var4.getValue();
+         if (var5 < 1.0F) {
+            String var6 = this.field4526.format((double)var5);
+            var2.append(";q=").append(var6);
+         }
       }
+
+      return var2.toString();
+   }
+
+   @ObfuscatedName("af")
+   @ObfuscatedSignature(
+      descriptor = "(Ljava/awt/Component;I)V",
+      garbageValue = "1714263236"
+   )
+   static void method7672(Component var0) {
+      var0.addMouseListener(MouseHandler.MouseHandler_instance);
+      var0.addMouseMotionListener(MouseHandler.MouseHandler_instance);
+      var0.addFocusListener(MouseHandler.MouseHandler_instance);
    }
 }

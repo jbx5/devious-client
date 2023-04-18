@@ -4,35 +4,44 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ho")
+@ObfuscatedName("hd")
 @Implements("HorizontalAlignment")
 public enum HorizontalAlignment implements MouseWheel {
-   @ObfuscatedName("aj")
+   @ObfuscatedName("af")
    @ObfuscatedSignature(
-      descriptor = "Lho;"
+      descriptor = "Lhd;"
    )
-   field1977(0, 0),
-   @ObfuscatedName("al")
+   field1990(0, 0),
+   @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "Lho;"
+      descriptor = "Lhd;"
    )
    @Export("HorizontalAlignment_centered")
    HorizontalAlignment_centered(2, 1),
-   @ObfuscatedName("ac")
+   @ObfuscatedName("aw")
    @ObfuscatedSignature(
-      descriptor = "Lho;"
+      descriptor = "Lhd;"
    )
-   field1975(1, 2);
+   field1992(1, 2);
 
-   @ObfuscatedName("ab")
+   @ObfuscatedName("az")
+   @Export("userHomeDirectory")
+   public static String userHomeDirectory;
+   @ObfuscatedName("tt")
+   @ObfuscatedSignature(
+      descriptor = "Lbu;"
+   )
+   @Export("pcmPlayer1")
+   static PcmPlayer pcmPlayer1;
+   @ObfuscatedName("ac")
    @ObfuscatedGetter(
-      intValue = 375185625
+      intValue = 1932346871
    )
    @Export("value")
    public final int value;
-   @ObfuscatedName("an")
+   @ObfuscatedName("au")
    @ObfuscatedGetter(
-      intValue = -1513901581
+      intValue = 455418089
    )
    @Export("id")
    final int id;
@@ -42,46 +51,24 @@ public enum HorizontalAlignment implements MouseWheel {
       this.id = var4;
    }
 
-   @ObfuscatedName("aj")
+   @ObfuscatedName("af")
    @ObfuscatedSignature(
       descriptor = "(I)I",
-      garbageValue = "-1409646049"
+      garbageValue = "741942848"
    )
    @Export("rsOrdinal")
    public int rsOrdinal() {
       return this.id;
    }
 
-   @ObfuscatedName("ac")
+   @ObfuscatedName("au")
    @ObfuscatedSignature(
-      descriptor = "(III)Lcv;",
-      garbageValue = "2046155289"
+      descriptor = "(ZZB)I",
+      garbageValue = "-35"
    )
-   static Script method3663(int var0, int var1) {
-      Script var2 = (Script)Script.Script_cached.get((long)(var0 << 16));
-      if (var2 != null) {
-         return var2;
-      } else {
-         String var3 = String.valueOf(var0);
-         int var4 = class167.archive12.getGroupId(var3);
-         if (var4 == -1) {
-            return null;
-         } else {
-            byte[] var5 = class167.archive12.takeFileFlat(var4);
-            if (var5 != null) {
-               if (var5.length <= 1) {
-                  return null;
-               }
-
-               var2 = class4.newScript(var5);
-               if (var2 != null) {
-                  Script.Script_cached.put(var2, (long)(var0 << 16));
-                  return var2;
-               }
-            }
-
-            return null;
-         }
-      }
+   public static int method3762(boolean var0, boolean var1) {
+      int var2 = 0;
+      var2 = var2 + NetCache.NetCache_pendingPriorityWritesCount + NetCache.NetCache_pendingPriorityResponsesCount;
+      return var2;
    }
 }

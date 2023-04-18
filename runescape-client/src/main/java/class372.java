@@ -1,57 +1,84 @@
-import java.util.ConcurrentModificationException;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("oi")
-public class class372 implements Iterator {
-   @ObfuscatedName("ja")
-   @Export("regionMapArchives")
-   static byte[][] regionMapArchives;
-   @ObfuscatedName("aj")
+@ObfuscatedName("of")
+public class class372 {
+   @ObfuscatedName("aq")
    @ObfuscatedSignature(
-      descriptor = "Lop;"
+      descriptor = "(Lsg;IIIIIIB)V",
+      garbageValue = "-110"
    )
-   class373 field4355;
-   @ObfuscatedName("al")
-   @ObfuscatedGetter(
-      intValue = -1576368141
-   )
-   int field4354 = 0;
-   @ObfuscatedName("ac")
-   @ObfuscatedGetter(
-      intValue = 81874847
-   )
-   int field4356;
+   @Export("loadTerrain")
+   static final void loadTerrain(Buffer var0, int var1, int var2, int var3, int var4, int var5, int var6) {
+      boolean var7 = var1 >= 0 && var1 < 4 && var2 >= 0 && var2 < 104 && var3 >= 0 && var3 < 104;
+      int var8;
+      if (var7) {
+         Tiles.Tiles_renderFlags[var1][var2][var3] = 0;
 
-   @ObfuscatedSignature(
-      descriptor = "(Lop;)V"
-   )
-   class372(class373 var1) {
-      this.field4356 = this.field4355.field4362;
-      this.field4355 = var1;
-   }
+         while(true) {
+            var8 = var0.readUnsignedShort();
+            if (var8 == 0) {
+               if (var1 == 0) {
+                  int[] var15 = Tiles.Tiles_heights[0][var2];
+                  int var12 = var4 + 932731;
+                  int var13 = var5 + 556238;
+                  int var14 = class101.method2691('넵' + var12, 91923 + var13, 4) - 128 + (class101.method2691(10294 + var12, '鎽' + var13, 2) - 128 >> 1) + (class101.method2691(var12, var13, 1) - 128 >> 2);
+                  var14 = (int)((double)var14 * 0.3) + 35;
+                  if (var14 < 10) {
+                     var14 = 10;
+                  } else if (var14 > 60) {
+                     var14 = 60;
+                  }
 
-   public boolean hasNext() {
-      return this.field4354 < this.field4355.field4359;
-   }
+                  var15[var3] = -var14 * 8;
+               } else {
+                  Tiles.Tiles_heights[var1][var2][var3] = Tiles.Tiles_heights[var1 - 1][var2][var3] - 240;
+               }
+               break;
+            }
 
-   public Object next() {
-      if (this.field4355.field4362 != this.field4356) {
-         throw new ConcurrentModificationException();
-      } else if (this.field4354 < this.field4355.field4359) {
-         Object var1 = this.field4355.field4360[this.field4354].field4353;
-         ++this.field4354;
-         return var1;
+            if (var8 == 1) {
+               int var9 = var0.readUnsignedByte();
+               if (var9 == 1) {
+                  var9 = 0;
+               }
+
+               if (var1 == 0) {
+                  Tiles.Tiles_heights[0][var2][var3] = -var9 * 8;
+               } else {
+                  Tiles.Tiles_heights[var1][var2][var3] = Tiles.Tiles_heights[var1 - 1][var2][var3] - var9 * 8;
+               }
+               break;
+            }
+
+            if (var8 <= 49) {
+               Tiles.Tiles_overlays[var1][var2][var3] = (short)var0.readShort();
+               Tiles.Tiles_shapes[var1][var2][var3] = (byte)((var8 - 2) / 4);
+               Tiles.field999[var1][var2][var3] = (byte)(var8 - 2 + var6 & 3);
+            } else if (var8 <= 81) {
+               Tiles.Tiles_renderFlags[var1][var2][var3] = (byte)(var8 - 49);
+            } else {
+               class186.Tiles_underlays[var1][var2][var3] = (short)(var8 - 81);
+            }
+         }
       } else {
-         throw new NoSuchElementException();
-      }
-   }
+         while(true) {
+            var8 = var0.readUnsignedShort();
+            if (var8 == 0) {
+               break;
+            }
 
-   public void remove() {
-      throw new UnsupportedOperationException();
+            if (var8 == 1) {
+               var0.readUnsignedByte();
+               break;
+            }
+
+            if (var8 <= 49) {
+               var0.readShort();
+            }
+         }
+      }
+
    }
 }

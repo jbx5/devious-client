@@ -3,28 +3,28 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("sn")
+@ObfuscatedName("tq")
 @Implements("SpritePixels")
 public final class SpritePixels extends Rasterizer2D {
-   @ObfuscatedName("aj")
+   @ObfuscatedName("af")
    @Export("pixels")
    public int[] pixels;
-   @ObfuscatedName("al")
+   @ObfuscatedName("an")
    @Export("subWidth")
    public int subWidth;
-   @ObfuscatedName("ac")
+   @ObfuscatedName("aw")
    @Export("subHeight")
    public int subHeight;
-   @ObfuscatedName("ab")
+   @ObfuscatedName("ac")
    @Export("xOffset")
    public int xOffset;
-   @ObfuscatedName("an")
+   @ObfuscatedName("au")
    @Export("yOffset")
    int yOffset;
-   @ObfuscatedName("ao")
+   @ObfuscatedName("ab")
    @Export("width")
    public int width;
-   @ObfuscatedName("av")
+   @ObfuscatedName("aq")
    @Export("height")
    public int height;
 
@@ -43,9 +43,9 @@ public final class SpritePixels extends Rasterizer2D {
    SpritePixels() {
    }
 
-   @ObfuscatedName("aj")
+   @ObfuscatedName("af")
    @ObfuscatedSignature(
-      descriptor = "()Lsn;"
+      descriptor = "()Ltq;"
    )
    @Export("mirrorHorizontally")
    public SpritePixels mirrorHorizontally() {
@@ -64,11 +64,11 @@ public final class SpritePixels extends Rasterizer2D {
       return var1;
    }
 
-   @ObfuscatedName("al")
+   @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "()Lsn;"
+      descriptor = "()Ltq;"
    )
-   public SpritePixels method9111() {
+   public SpritePixels method9504() {
       SpritePixels var1 = new SpritePixels(this.subWidth, this.subHeight);
       var1.width = this.width;
       var1.height = this.height;
@@ -83,9 +83,9 @@ public final class SpritePixels extends Rasterizer2D {
       return var1;
    }
 
-   @ObfuscatedName("ac")
+   @ObfuscatedName("aw")
    @ObfuscatedSignature(
-      descriptor = "()Lsn;"
+      descriptor = "()Ltq;"
    )
    @Export("copyNormalized")
    public SpritePixels copyNormalized() {
@@ -100,13 +100,13 @@ public final class SpritePixels extends Rasterizer2D {
       return var1;
    }
 
-   @ObfuscatedName("ab")
+   @ObfuscatedName("ac")
    @Export("setRaster")
    public void setRaster() {
-      Rasterizer2D.Rasterizer2D_replace(this.pixels, this.subWidth, this.subHeight);
+      Rasterizer2D.method9384(this.pixels, this.subWidth, this.subHeight, (float[])null);
    }
 
-   @ObfuscatedName("an")
+   @ObfuscatedName("au")
    @Export("normalize")
    public void normalize() {
       if (this.subWidth != this.width || this.subHeight != this.height) {
@@ -126,7 +126,7 @@ public final class SpritePixels extends Rasterizer2D {
       }
    }
 
-   @ObfuscatedName("ao")
+   @ObfuscatedName("ab")
    @Export("pad")
    public void pad(int var1) {
       if (this.subWidth != this.width || this.subHeight != this.height) {
@@ -168,7 +168,7 @@ public final class SpritePixels extends Rasterizer2D {
       }
    }
 
-   @ObfuscatedName("av")
+   @ObfuscatedName("aq")
    @Export("flipHorizontally")
    public void flipHorizontally() {
       int[] var1 = new int[this.subWidth * this.subHeight];
@@ -184,7 +184,7 @@ public final class SpritePixels extends Rasterizer2D {
       this.xOffset = this.width - this.subWidth - this.xOffset;
    }
 
-   @ObfuscatedName("aq")
+   @ObfuscatedName("al")
    @Export("flipVertically")
    public void flipVertically() {
       int[] var1 = new int[this.subWidth * this.subHeight];
@@ -200,7 +200,7 @@ public final class SpritePixels extends Rasterizer2D {
       this.yOffset = this.height - this.subHeight - this.yOffset;
    }
 
-   @ObfuscatedName("ap")
+   @ObfuscatedName("at")
    @Export("outline")
    public void outline(int var1) {
       int[] var2 = new int[this.subWidth * this.subHeight];
@@ -228,7 +228,7 @@ public final class SpritePixels extends Rasterizer2D {
       this.pixels = var2;
    }
 
-   @ObfuscatedName("ar")
+   @ObfuscatedName("aa")
    @Export("shadow")
    public void shadow(int var1) {
       for(int var2 = this.subHeight - 1; var2 > 0; --var2) {
@@ -243,7 +243,7 @@ public final class SpritePixels extends Rasterizer2D {
 
    }
 
-   @ObfuscatedName("ak")
+   @ObfuscatedName("ay")
    @Export("drawAt")
    public void drawAt(int var1, int var2) {
       var1 += this.xOffset;
@@ -289,7 +289,7 @@ public final class SpritePixels extends Rasterizer2D {
       }
    }
 
-   @ObfuscatedName("as")
+   @ObfuscatedName("ax")
    @Export("drawTransBgAt")
    public void drawTransBgAt(int var1, int var2) {
       var1 += this.xOffset;
@@ -335,7 +335,7 @@ public final class SpritePixels extends Rasterizer2D {
       }
    }
 
-   @ObfuscatedName("am")
+   @ObfuscatedName("ag")
    @Export("drawScaledAt")
    public void drawScaledAt(int var1, int var2, int var3, int var4) {
       if (var3 > 0 && var4 > 0) {
@@ -400,7 +400,7 @@ public final class SpritePixels extends Rasterizer2D {
       }
    }
 
-   @ObfuscatedName("ae")
+   @ObfuscatedName("av")
    @Export("drawTransOverlayAt")
    public void drawTransOverlayAt(int var1, int var2, int var3, int var4) {
       if (var3 == 256) {
@@ -450,7 +450,7 @@ public final class SpritePixels extends Rasterizer2D {
       }
    }
 
-   @ObfuscatedName("ag")
+   @ObfuscatedName("am")
    @Export("drawTransAt")
    public void drawTransAt(int var1, int var2, int var3) {
       var1 += this.xOffset;
@@ -496,7 +496,7 @@ public final class SpritePixels extends Rasterizer2D {
       }
    }
 
-   @ObfuscatedName("af")
+   @ObfuscatedName("aj")
    @Export("drawTransScaledAt")
    public void drawTransScaledAt(int var1, int var2, int var3, int var4, int var5) {
       if (var3 > 0 && var4 > 0) {
@@ -561,8 +561,8 @@ public final class SpritePixels extends Rasterizer2D {
       }
    }
 
-   @ObfuscatedName("aw")
-   public void method9070(int var1, int var2, int var3) {
+   @ObfuscatedName("az")
+   public void method9576(int var1, int var2, int var3) {
       var1 += this.xOffset;
       var2 += this.yOffset;
       int var4 = var1 + var2 * Rasterizer2D.Rasterizer2D_width;
@@ -603,16 +603,16 @@ public final class SpritePixels extends Rasterizer2D {
 
       if (var7 > 0 && var6 > 0) {
          if (var3 == 256) {
-            method9071(0, 0, 0, Rasterizer2D.Rasterizer2D_pixels, this.pixels, var5, 0, var4, 0, var7, var6, var8, var9);
+            method9525(0, 0, 0, Rasterizer2D.Rasterizer2D_pixels, this.pixels, var5, 0, var4, 0, var7, var6, var8, var9);
          } else {
-            method9072(0, 0, 0, Rasterizer2D.Rasterizer2D_pixels, this.pixels, var5, 0, var4, 0, var7, var6, var8, var9, var3);
+            method9526(0, 0, 0, Rasterizer2D.Rasterizer2D_pixels, this.pixels, var5, 0, var4, 0, var7, var6, var8, var9, var3);
          }
 
       }
    }
 
-   @ObfuscatedName("ad")
-   public void method9073(int var1, int var2, int var3, int var4, int var5) {
+   @ObfuscatedName("ap")
+   public void method9509(int var1, int var2, int var3, int var4, int var5) {
       if (var3 > 0 && var4 > 0) {
          int var6 = this.subWidth;
          int var7 = this.subHeight;
@@ -672,16 +672,16 @@ public final class SpritePixels extends Rasterizer2D {
          }
 
          if (var5 == 256) {
-            method9074(0, 0, 0, var8, this.pixels, Rasterizer2D.Rasterizer2D_pixels, 0, 0, -var4, var9, var14, var15, var3, var12, var13, var6);
+            method9522(0, 0, 0, var8, this.pixels, Rasterizer2D.Rasterizer2D_pixels, 0, 0, -var4, var9, var14, var15, var3, var12, var13, var6);
          } else {
-            method9145(0, 0, 0, var8, this.pixels, Rasterizer2D.Rasterizer2D_pixels, 0, 0, -var4, var9, var14, var15, var3, var12, var13, var6, var5);
+            method9556(0, 0, 0, var8, this.pixels, Rasterizer2D.Rasterizer2D_pixels, 0, 0, -var4, var9, var14, var15, var3, var12, var13, var6, var5);
          }
 
       }
    }
 
-   @ObfuscatedName("bo")
-   public void method9076(int var1, int var2, int var3, int var4, int var5, int var6, int[] var7, int[] var8) {
+   @ObfuscatedName("bi")
+   public void method9512(int var1, int var2, int var3, int var4, int var5, int var6, int[] var7, int[] var8) {
       int var9 = var2 < 0 ? -var2 : 0;
       int var10 = var2 + this.subHeight <= var6 ? this.subHeight : var6 - var2;
       int var11 = var1 < 0 ? -var1 : 0;
@@ -728,7 +728,7 @@ public final class SpritePixels extends Rasterizer2D {
 
    }
 
-   @ObfuscatedName("bs")
+   @ObfuscatedName("be")
    @Export("drawRotatedMaskedCenteredAround")
    public void drawRotatedMaskedCenteredAround(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int[] var9, int[] var10) {
       try {
@@ -763,8 +763,8 @@ public final class SpritePixels extends Rasterizer2D {
 
    }
 
-   @ObfuscatedName("bg")
-   public void method9078(int var1, int var2, int var3, int var4, int var5, int var6, double var7, int var9) {
+   @ObfuscatedName("bk")
+   public void method9531(int var1, int var2, int var3, int var4, int var5, int var6, double var7, int var9) {
       try {
          int var10 = -var3 / 2;
          int var11 = -var4 / 2;
@@ -802,13 +802,13 @@ public final class SpritePixels extends Rasterizer2D {
 
    }
 
-   @ObfuscatedName("bh")
-   public void method9136(int var1, int var2, int var3, int var4) {
-      this.method9080(this.width << 3, this.height << 3, var1 << 4, var2 << 4, var3, var4);
+   @ObfuscatedName("bx")
+   public void method9601(int var1, int var2, int var3, int var4) {
+      this.method9533(this.width << 3, this.height << 3, var1 << 4, var2 << 4, var3, var4);
    }
 
-   @ObfuscatedName("bl")
-   void method9080(int var1, int var2, int var3, int var4, int var5, int var6) {
+   @ObfuscatedName("bo")
+   void method9533(int var1, int var2, int var3, int var4, int var5, int var6) {
       if (var6 != 0) {
          var1 -= this.xOffset << 4;
          var2 -= this.yOffset << 4;
@@ -1276,7 +1276,7 @@ public final class SpritePixels extends Rasterizer2D {
       }
    }
 
-   @ObfuscatedName("bk")
+   @ObfuscatedName("bz")
    @Export("drawScaledWorldmap")
    public void drawScaledWorldmap(int var1, int var2, int var3, int var4) {
       if (var3 <= this.width && var4 <= this.height) {
@@ -1399,7 +1399,7 @@ public final class SpritePixels extends Rasterizer2D {
       }
    }
 
-   @ObfuscatedName("ax")
+   @ObfuscatedName("ao")
    @Export("Sprite_draw")
    static void Sprite_draw(int[] var0, int[] var1, int var2, int var3, int var4, int var5, int var6, int var7) {
       for(int var8 = -var5; var8 < 0; ++var8) {
@@ -1419,7 +1419,7 @@ public final class SpritePixels extends Rasterizer2D {
 
    }
 
-   @ObfuscatedName("ay")
+   @ObfuscatedName("ai")
    @Export("Sprite_drawTransBg")
    static void Sprite_drawTransBg(int[] var0, int[] var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
       int var9 = -(var5 >> 2);
@@ -1472,7 +1472,7 @@ public final class SpritePixels extends Rasterizer2D {
 
    }
 
-   @ObfuscatedName("az")
+   @ObfuscatedName("ah")
    @Export("Sprite_drawScaled")
    static void Sprite_drawScaled(int[] var0, int[] var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11) {
       int var12 = var3;
@@ -1498,7 +1498,7 @@ public final class SpritePixels extends Rasterizer2D {
 
    }
 
-   @ObfuscatedName("au")
+   @ObfuscatedName("ar")
    @Export("Sprite_drawTransOverlay")
    static void Sprite_drawTransOverlay(int[] var0, int[] var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10) {
       int var11 = 256 - var9;
@@ -1524,7 +1524,7 @@ public final class SpritePixels extends Rasterizer2D {
 
    }
 
-   @ObfuscatedName("at")
+   @ObfuscatedName("as")
    @Export("Sprite_drawTransparent")
    static void Sprite_drawTransparent(int[] var0, int[] var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9) {
       int var10 = 256 - var9;
@@ -1546,7 +1546,7 @@ public final class SpritePixels extends Rasterizer2D {
 
    }
 
-   @ObfuscatedName("ai")
+   @ObfuscatedName("ak")
    @Export("Sprite_drawTransScaled")
    static void Sprite_drawTransScaled(int[] var0, int[] var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12) {
       int var13 = 256 - var12;
@@ -1574,8 +1574,8 @@ public final class SpritePixels extends Rasterizer2D {
 
    }
 
-   @ObfuscatedName("aa")
-   static void method9071(int var0, int var1, int var2, int[] var3, int[] var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12) {
+   @ObfuscatedName("ad")
+   static void method9525(int var0, int var1, int var2, int[] var3, int[] var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12) {
       for(var8 = -var10; var8 < 0; ++var8) {
          for(var6 = -var9; var6 < 0; ++var6) {
             var0 = var4[var5++];
@@ -1596,8 +1596,8 @@ public final class SpritePixels extends Rasterizer2D {
 
    }
 
-   @ObfuscatedName("ah")
-   static void method9072(int var0, int var1, int var2, int[] var3, int[] var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12, int var13) {
+   @ObfuscatedName("ae")
+   static void method9526(int var0, int var1, int var2, int[] var3, int[] var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12, int var13) {
       for(var8 = -var10; var8 < 0; ++var8) {
          for(var6 = -var9; var6 < 0; ++var6) {
             var0 = var4[var5++];
@@ -1620,8 +1620,8 @@ public final class SpritePixels extends Rasterizer2D {
 
    }
 
-   @ObfuscatedName("bm")
-   static void method9074(int var0, int var1, int var2, int var3, int[] var4, int[] var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12, int var13, int var14, int var15) {
+   @ObfuscatedName("by")
+   static void method9522(int var0, int var1, int var2, int var3, int[] var4, int[] var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12, int var13, int var14, int var15) {
       for(int var16 = var3; var8 < 0; ++var8) {
          var7 = var15 * (var9 >> 16);
 
@@ -1647,8 +1647,8 @@ public final class SpritePixels extends Rasterizer2D {
 
    }
 
-   @ObfuscatedName("bv")
-   static void method9145(int var0, int var1, int var2, int var3, int[] var4, int[] var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12, int var13, int var14, int var15, int var16) {
+   @ObfuscatedName("bb")
+   static void method9556(int var0, int var1, int var2, int var3, int[] var4, int[] var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12, int var13, int var14, int var15, int var16) {
       for(int var17 = var3; var8 < 0; ++var8) {
          var7 = var15 * (var9 >> 16);
 
