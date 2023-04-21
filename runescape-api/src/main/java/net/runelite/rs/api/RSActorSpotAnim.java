@@ -25,15 +25,10 @@
 package net.runelite.rs.api;
 
 import net.runelite.api.Actor;
-import net.runelite.api.Renderable;
 import net.runelite.mapping.Import;
-
-import java.awt.*;
 
 public interface RSActorSpotAnim extends RSRenderable, Actor
 {
-
-
     @Import("spotAnimationHeight")
     @Override
     int getGraphicHeight();
