@@ -25,7 +25,6 @@
  */
 package net.runelite.rs.api;
 
-import net.runelite.api.Actor;
 import net.runelite.mapping.Import;
 
 public interface RSActor extends RSActorSpotAnim
