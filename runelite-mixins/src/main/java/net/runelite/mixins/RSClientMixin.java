@@ -3381,7 +3381,8 @@ public abstract class RSClientMixin implements RSClient
 
 	@Inject
 	@Override
-	public void set3dZoom(int zoom) {
+	public void set3dZoom(int zoom)
+	{
 		clips.setViewportZoom(zoom);
 		client.setScale(zoom);
 	}
