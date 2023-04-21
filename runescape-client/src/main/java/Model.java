@@ -1120,8 +1120,8 @@ public class Model extends Renderable {
          this.method4857();
       }
 
-      int var8 = TaskHandler.method3563();
-      int var9 = class12.method164();
+      int var8 = TaskHandler.getClipMidX();
+      int var9 = class12.getClipMidY();
       int var10 = field2749[var1];
       int var11 = field2687[var1];
       int var12 = field2749[var2];
@@ -1161,8 +1161,8 @@ public class Model extends Renderable {
          var23 = var21 * var17 - var22 * var16 >> 16;
          var22 = var21 * var16 + var22 * var17 >> 16;
          field2729[var19] = var22 - var18;
-         modelViewportXs[var19] = var8 + var20 * UserComparator7.method2904() / var22;
-         modelViewportYs[var19] = var9 + var23 * UserComparator7.method2904() / var22;
+         modelViewportXs[var19] = var8 + var20 * UserComparator7.get3dZoom() / var22;
+         modelViewportYs[var19] = var9 + var23 * UserComparator7.get3dZoom() / var22;
          field2728[var19] = NPC.method2626(var22);
          if (this.texIndicesCount > 0) {
             field2716[var19] = var20;
@@ -1184,8 +1184,8 @@ public class Model extends Renderable {
          this.method4857();
       }
 
-      int var9 = TaskHandler.method3563();
-      int var10 = class12.method164();
+      int var9 = TaskHandler.getClipMidX();
+      int var10 = class12.getClipMidY();
       int var11 = field2749[var1];
       int var12 = field2687[var1];
       int var13 = field2749[var2];
@@ -1225,8 +1225,8 @@ public class Model extends Renderable {
          var24 = var22 * var18 - var23 * var17 >> 16;
          var23 = var22 * var17 + var23 * var18 >> 16;
          field2729[var20] = var23 - var19;
-         modelViewportXs[var20] = var9 + var21 * UserComparator7.method2904() / var8;
-         modelViewportYs[var20] = var10 + var24 * UserComparator7.method2904() / var8;
+         modelViewportXs[var20] = var9 + var21 * UserComparator7.get3dZoom() / var8;
+         modelViewportYs[var20] = var10 + var24 * UserComparator7.get3dZoom() / var8;
          field2728[var20] = NPC.method2626(var8);
          if (this.texIndicesCount > 0) {
             field2716[var20] = var21;
@@ -1507,11 +1507,11 @@ public class Model extends Renderable {
          int var2 = this.indices1[var1];
          int var3 = this.indices2[var1];
          int var4 = this.indices3[var1];
-         Rasterizer3D.field2514.field2798 = field2724[var1];
+         Rasterizer3D.clips.field2798 = field2724[var1];
          if (this.faceAlphas == null) {
-            Rasterizer3D.field2514.field2788 = 0;
+            Rasterizer3D.clips.field2788 = 0;
          } else {
-            Rasterizer3D.field2514.field2788 = this.faceAlphas[var1] & 255;
+            Rasterizer3D.clips.field2788 = this.faceAlphas[var1] & 255;
          }
 
          this.method4780(var1, modelViewportYs[var2], modelViewportYs[var3], modelViewportYs[var4], modelViewportXs[var2], modelViewportXs[var3], modelViewportXs[var4], field2728[var2], field2728[var3], field2728[var4], this.faceColors1[var1], this.faceColors2[var1], this.faceColors3[var1]);
@@ -1573,8 +1573,8 @@ public class Model extends Renderable {
 
    @ObfuscatedName("bj")
    final void method4791(int var1) {
-      int var2 = TaskHandler.method3563();
-      int var3 = class12.method164();
+      int var2 = TaskHandler.getClipMidX();
+      int var3 = class12.getClipMidY();
       int var4 = 0;
       int var5 = this.indices1[var1];
       int var6 = this.indices2[var1];
@@ -1583,9 +1583,9 @@ public class Model extends Renderable {
       int var9 = field2760[var6];
       int var10 = field2760[var7];
       if (this.faceAlphas == null) {
-         Rasterizer3D.field2514.field2788 = 0;
+         Rasterizer3D.clips.field2788 = 0;
       } else {
-         Rasterizer3D.field2514.field2788 = this.faceAlphas[var1] & 255;
+         Rasterizer3D.clips.field2788 = this.faceAlphas[var1] & 255;
       }
 
       int var11;
@@ -1603,16 +1603,16 @@ public class Model extends Renderable {
          var13 = this.faceColors1[var1];
          if (var10 >= 50) {
             var14 = field2732[var10 - var8] * (50 - var8);
-            field2741[var4] = var2 + (var11 + ((field2716[var7] - var11) * var14 >> 16)) * UserComparator7.method2904() / 50;
-            field2742[var4] = var3 + (var12 + ((field2731[var7] - var12) * var14 >> 16)) * UserComparator7.method2904() / 50;
+            field2741[var4] = var2 + (var11 + ((field2716[var7] - var11) * var14 >> 16)) * UserComparator7.get3dZoom() / 50;
+            field2742[var4] = var3 + (var12 + ((field2731[var7] - var12) * var14 >> 16)) * UserComparator7.get3dZoom() / 50;
             field2705[var4] = field2757;
             field2743[var4++] = var13 + ((this.faceColors3[var1] - var13) * var14 >> 16);
          }
 
          if (var9 >= 50) {
             var14 = field2732[var9 - var8] * (50 - var8);
-            field2741[var4] = var2 + (var11 + ((field2716[var6] - var11) * var14 >> 16)) * UserComparator7.method2904() / 50;
-            field2742[var4] = var3 + (var12 + ((field2731[var6] - var12) * var14 >> 16)) * UserComparator7.method2904() / 50;
+            field2741[var4] = var2 + (var11 + ((field2716[var6] - var11) * var14 >> 16)) * UserComparator7.get3dZoom() / 50;
+            field2742[var4] = var3 + (var12 + ((field2731[var6] - var12) * var14 >> 16)) * UserComparator7.get3dZoom() / 50;
             field2705[var4] = field2757;
             field2743[var4++] = var13 + ((this.faceColors2[var1] - var13) * var14 >> 16);
          }
@@ -1629,16 +1629,16 @@ public class Model extends Renderable {
          var13 = this.faceColors2[var1];
          if (var8 >= 50) {
             var14 = field2732[var8 - var9] * (50 - var9);
-            field2741[var4] = var2 + (var11 + ((field2716[var5] - var11) * var14 >> 16)) * UserComparator7.method2904() / 50;
-            field2742[var4] = var3 + (var12 + ((field2731[var5] - var12) * var14 >> 16)) * UserComparator7.method2904() / 50;
+            field2741[var4] = var2 + (var11 + ((field2716[var5] - var11) * var14 >> 16)) * UserComparator7.get3dZoom() / 50;
+            field2742[var4] = var3 + (var12 + ((field2731[var5] - var12) * var14 >> 16)) * UserComparator7.get3dZoom() / 50;
             field2705[var4] = field2757;
             field2743[var4++] = var13 + ((this.faceColors1[var1] - var13) * var14 >> 16);
          }
 
          if (var10 >= 50) {
             var14 = field2732[var10 - var9] * (50 - var9);
-            field2741[var4] = var2 + (var11 + ((field2716[var7] - var11) * var14 >> 16)) * UserComparator7.method2904() / 50;
-            field2742[var4] = var3 + (var12 + ((field2731[var7] - var12) * var14 >> 16)) * UserComparator7.method2904() / 50;
+            field2741[var4] = var2 + (var11 + ((field2716[var7] - var11) * var14 >> 16)) * UserComparator7.get3dZoom() / 50;
+            field2742[var4] = var3 + (var12 + ((field2731[var7] - var12) * var14 >> 16)) * UserComparator7.get3dZoom() / 50;
             field2743[var4++] = var13 + ((this.faceColors3[var1] - var13) * var14 >> 16);
          }
       }
@@ -1654,16 +1654,16 @@ public class Model extends Renderable {
          var13 = this.faceColors3[var1];
          if (var9 >= 50) {
             var14 = field2732[var9 - var10] * (50 - var10);
-            field2741[var4] = var2 + (var11 + ((field2716[var6] - var11) * var14 >> 16)) * UserComparator7.method2904() / 50;
-            field2742[var4] = var3 + (var12 + ((field2731[var6] - var12) * var14 >> 16)) * UserComparator7.method2904() / 50;
+            field2741[var4] = var2 + (var11 + ((field2716[var6] - var11) * var14 >> 16)) * UserComparator7.get3dZoom() / 50;
+            field2742[var4] = var3 + (var12 + ((field2731[var6] - var12) * var14 >> 16)) * UserComparator7.get3dZoom() / 50;
             field2705[var4] = field2757;
             field2743[var4++] = var13 + ((this.faceColors2[var1] - var13) * var14 >> 16);
          }
 
          if (var8 >= 50) {
             var14 = field2732[var8 - var10] * (50 - var10);
-            field2741[var4] = var2 + (var11 + ((field2716[var5] - var11) * var14 >> 16)) * UserComparator7.method2904() / 50;
-            field2742[var4] = var3 + (var12 + ((field2731[var5] - var12) * var14 >> 16)) * UserComparator7.method2904() / 50;
+            field2741[var4] = var2 + (var11 + ((field2716[var5] - var11) * var14 >> 16)) * UserComparator7.get3dZoom() / 50;
+            field2742[var4] = var3 + (var12 + ((field2731[var5] - var12) * var14 >> 16)) * UserComparator7.get3dZoom() / 50;
             field2705[var4] = field2757;
             field2743[var4++] = var13 + ((this.faceColors1[var1] - var13) * var14 >> 16);
          }
@@ -1678,11 +1678,11 @@ public class Model extends Renderable {
       float var17 = field2705[0];
       float var18 = field2705[1];
       float var19 = field2705[2];
-      Rasterizer3D.field2514.field2798 = false;
+      Rasterizer3D.clips.field2798 = false;
       int var20 = class6.method46();
       if (var4 == 3) {
          if (var11 < 0 || var12 < 0 || var13 < 0 || var11 > var20 || var12 > var20 || var13 > var20) {
-            Rasterizer3D.field2514.field2798 = true;
+            Rasterizer3D.clips.field2798 = true;
          }
 
          this.method4780(var1, var14, var15, var16, var11, var12, var13, var17, var18, var19, field2743[0], field2743[1], field2743[2]);
@@ -1690,7 +1690,7 @@ public class Model extends Renderable {
 
       if (var4 == 4) {
          if (var11 < 0 || var12 < 0 || var13 < 0 || var11 > var20 || var12 > var20 || var13 > var20 || field2741[3] < 0 || field2741[3] > var20) {
-            Rasterizer3D.field2514.field2798 = true;
+            Rasterizer3D.clips.field2798 = true;
          }
 
          int var22;
@@ -1829,22 +1829,22 @@ public class Model extends Renderable {
       int var14 = var12 + var13;
       if (var14 > 50 && var12 < 3500) {
          int var15 = var8 * var4 + var5 * var6 >> 16;
-         int var16 = (var15 - this.xzRadius) * UserComparator7.method2904();
-         if (var16 / var14 < class264.method5479()) {
-            int var17 = (var15 + this.xzRadius) * UserComparator7.method2904();
+         int var16 = (var15 - this.xzRadius) * UserComparator7.get3dZoom();
+         if (var16 / var14 < class264.Rasterizer3D_clipMidX2()) {
+            int var17 = (var15 + this.xzRadius) * UserComparator7.get3dZoom();
             int var18 = var17 / var14;
-            int var19 = Rasterizer3D.field2514.field2799;
+            int var19 = Rasterizer3D.clips.clipNegativeMidX;
             if (var18 > var19) {
                int var20 = var3 * var7 - var11 * var2 >> 16;
                int var21 = var2 * this.xzRadius >> 16;
                int var22 = (var3 * this.bottomY >> 16) + var21;
-               int var23 = (var20 + var22) * UserComparator7.method2904();
+               int var23 = (var20 + var22) * UserComparator7.get3dZoom();
                int var24 = var23 / var14;
-               int var25 = Rasterizer3D.field2514.field2801;
+               int var25 = Rasterizer3D.clips.clipNegativeMidY;
                if (var24 > var25) {
                   int var26 = (var3 * super.height >> 16) + var21;
-                  int var27 = (var20 - var26) * UserComparator7.method2904();
-                  if (var27 / var14 < class142.method3227()) {
+                  int var27 = (var20 - var26) * UserComparator7.get3dZoom();
+                  if (var27 / var14 < class142.Rasterizer3D_clipMidY2()) {
                      int var28 = var13 + (var2 * super.height >> 16);
                      boolean var29 = false;
                      boolean var30 = false;
@@ -1887,8 +1887,8 @@ public class Model extends Renderable {
                               var27 /= var40;
                            }
 
-                           var41 = var32 - TaskHandler.method3563();
-                           var42 = var33 - class12.method164();
+                           var41 = var32 - TaskHandler.getClipMidX();
+                           var42 = var33 - class12.getClipMidY();
                            if (var41 > var16 && var41 < var17 && var42 > var27 && var42 < var23) {
                               var39 = true;
                            }
@@ -1903,8 +1903,8 @@ public class Model extends Renderable {
                         }
                      }
 
-                     int var50 = TaskHandler.method3563();
-                     var40 = class12.method164();
+                     int var50 = TaskHandler.getClipMidX();
+                     var40 = class12.getClipMidY();
                      var41 = 0;
                      var42 = 0;
                      if (var1 != 0) {
@@ -1933,8 +1933,8 @@ public class Model extends Renderable {
                         var46 = var45 * var2 + var3 * var46 >> 16;
                         field2729[var43] = var46 - var12;
                         if (var46 >= 50) {
-                           modelViewportXs[var43] = var50 + var44 * UserComparator7.method2904() / var46;
-                           modelViewportYs[var43] = var40 + var47 * UserComparator7.method2904() / var46;
+                           modelViewportXs[var43] = var50 + var44 * UserComparator7.get3dZoom() / var46;
+                           modelViewportYs[var43] = var40 + var47 * UserComparator7.get3dZoom() / var46;
                            field2728[var43] = NPC.method2626(var46);
                         } else {
                            modelViewportXs[var43] = -5000;

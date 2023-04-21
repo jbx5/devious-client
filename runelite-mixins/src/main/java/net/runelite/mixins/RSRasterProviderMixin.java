@@ -29,7 +29,7 @@ public abstract class RSRasterProviderMixin implements RSRasterProvider
 	@Inject
 	private IntBuffer buffer;
 
-	@MethodHook(value = "<init>", end = true)
+	/*@MethodHook(value = "<init>", end = true)
 	@Inject
 	public void init(int width, int height, Component canvas)
 	{
@@ -50,7 +50,7 @@ public abstract class RSRasterProviderMixin implements RSRasterProvider
 		BufferedImage bufferedImage = new BufferedImage(directColorModel, writableRaster, true, new Hashtable());
 
 		setImage(bufferedImage);
-	}
+	}*/
 
 	/**
 	 * Replacing this method makes it so we can completely

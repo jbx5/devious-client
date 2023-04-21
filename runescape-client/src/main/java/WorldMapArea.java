@@ -396,10 +396,10 @@ public class WorldMapArea {
       garbageValue = "32"
    )
    public static void method5163(int var0, int var1) {
-      int var2 = Rasterizer3D.field2514.Rasterizer3D_rowOffsets[0];
+      int var2 = Rasterizer3D.clips.Rasterizer3D_rowOffsets[0];
       int var3 = var2 / Rasterizer2D.Rasterizer2D_width;
       int var4 = var2 - var3 * Rasterizer2D.Rasterizer2D_width;
-      Rasterizer3D.field2514.method4944(var0, var4, var1, var3);
+      Rasterizer3D.clips.method4944(var0, var4, var1, var3);
    }
 
    @ObfuscatedName("bu")

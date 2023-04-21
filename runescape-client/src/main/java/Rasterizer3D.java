@@ -27,7 +27,7 @@ public class Rasterizer3D {
    @ObfuscatedSignature(
       descriptor = "Ljg;"
    )
-   public static class236 field2514;
+   public static Clips clips;
    @ObfuscatedName("aq")
    @ObfuscatedSignature(
       descriptor = "Lii;"
@@ -64,9 +64,9 @@ public class Rasterizer3D {
          Rasterizer3D_cosine[var0] = (int)(65536.0 * Math.cos(0.0030679615 * (double)var0));
       }
 
-      field2514 = new class236();
-      field2518 = new class235(field2514);
-      field2512 = new class237(field2514);
+      clips = new Clips();
+      field2518 = new class235(clips);
+      field2512 = new class237(clips);
       field2519 = field2518;
    }
 

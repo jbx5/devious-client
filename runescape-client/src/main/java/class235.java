@@ -1,3 +1,4 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
@@ -6,7 +7,7 @@ public class class235 extends class220 {
    @ObfuscatedSignature(
       descriptor = "(Ljg;)V"
    )
-   class235(class236 var1) {
+   class235(Clips var1) {
       super(var1);
    }
 
@@ -85,7 +86,7 @@ public class class235 extends class220 {
                                  return;
                               }
 
-                              this.method4920(Rasterizer2D.Rasterizer2D_pixels, var1, 0, 0, var6 >> 14, var5 >> 14, var10, var23);
+                              this.Rasterizer3D_vertAlpha(Rasterizer2D.Rasterizer2D_pixels, var1, 0, 0, var6 >> 14, var5 >> 14, var10, var23);
                               var6 += var21;
                               var5 += var19;
                               var10 += var24;
@@ -93,7 +94,7 @@ public class class235 extends class220 {
                            }
                         }
 
-                        this.method4920(Rasterizer2D.Rasterizer2D_pixels, var1, 0, 0, var6 >> 14, var4 >> 14, var10, var23);
+                        this.Rasterizer3D_vertAlpha(Rasterizer2D.Rasterizer2D_pixels, var1, 0, 0, var6 >> 14, var4 >> 14, var10, var23);
                         var6 += var21;
                         var4 += var20;
                         var10 += var24;
@@ -113,7 +114,7 @@ public class class235 extends class220 {
                                  return;
                               }
 
-                              this.method4920(Rasterizer2D.Rasterizer2D_pixels, var1, 0, 0, var5 >> 14, var6 >> 14, var10, var23);
+                              this.Rasterizer3D_vertAlpha(Rasterizer2D.Rasterizer2D_pixels, var1, 0, 0, var5 >> 14, var6 >> 14, var10, var23);
                               var6 += var21;
                               var5 += var19;
                               var10 += var24;
@@ -121,7 +122,7 @@ public class class235 extends class220 {
                            }
                         }
 
-                        this.method4920(Rasterizer2D.Rasterizer2D_pixels, var1, 0, 0, var4 >> 14, var6 >> 14, var10, var23);
+                        this.Rasterizer3D_vertAlpha(Rasterizer2D.Rasterizer2D_pixels, var1, 0, 0, var4 >> 14, var6 >> 14, var10, var23);
                         var6 += var21;
                         var4 += var20;
                         var10 += var24;
@@ -157,7 +158,7 @@ public class class235 extends class220 {
                                  return;
                               }
 
-                              this.method4920(Rasterizer2D.Rasterizer2D_pixels, var1, 0, 0, var6 >> 14, var4 >> 14, var10, var23);
+                              this.Rasterizer3D_vertAlpha(Rasterizer2D.Rasterizer2D_pixels, var1, 0, 0, var6 >> 14, var4 >> 14, var10, var23);
                               var6 += var19;
                               var4 += var20;
                               var10 += var24;
@@ -165,7 +166,7 @@ public class class235 extends class220 {
                            }
                         }
 
-                        this.method4920(Rasterizer2D.Rasterizer2D_pixels, var1, 0, 0, var5 >> 14, var4 >> 14, var10, var23);
+                        this.Rasterizer3D_vertAlpha(Rasterizer2D.Rasterizer2D_pixels, var1, 0, 0, var5 >> 14, var4 >> 14, var10, var23);
                         var5 += var21;
                         var4 += var20;
                         var10 += var24;
@@ -185,7 +186,7 @@ public class class235 extends class220 {
                                  return;
                               }
 
-                              this.method4920(Rasterizer2D.Rasterizer2D_pixels, var1, 0, 0, var4 >> 14, var6 >> 14, var10, var23);
+                              this.Rasterizer3D_vertAlpha(Rasterizer2D.Rasterizer2D_pixels, var1, 0, 0, var4 >> 14, var6 >> 14, var10, var23);
                               var6 += var19;
                               var4 += var20;
                               var10 += var24;
@@ -193,7 +194,7 @@ public class class235 extends class220 {
                            }
                         }
 
-                        this.method4920(Rasterizer2D.Rasterizer2D_pixels, var1, 0, 0, var4 >> 14, var5 >> 14, var10, var23);
+                        this.Rasterizer3D_vertAlpha(Rasterizer2D.Rasterizer2D_pixels, var1, 0, 0, var4 >> 14, var5 >> 14, var10, var23);
                         var5 += var21;
                         var4 += var20;
                         var10 += var24;
@@ -242,7 +243,7 @@ public class class235 extends class220 {
                                  return;
                               }
 
-                              this.method4920(Rasterizer2D.Rasterizer2D_pixels, var2, 0, 0, var4 >> 14, var6 >> 14, var11, var23);
+                              this.Rasterizer3D_vertAlpha(Rasterizer2D.Rasterizer2D_pixels, var2, 0, 0, var4 >> 14, var6 >> 14, var11, var23);
                               var4 += var20;
                               var6 += var21;
                               var11 += var24;
@@ -250,7 +251,7 @@ public class class235 extends class220 {
                            }
                         }
 
-                        this.method4920(Rasterizer2D.Rasterizer2D_pixels, var2, 0, 0, var4 >> 14, var5 >> 14, var11, var23);
+                        this.Rasterizer3D_vertAlpha(Rasterizer2D.Rasterizer2D_pixels, var2, 0, 0, var4 >> 14, var5 >> 14, var11, var23);
                         var4 += var20;
                         var5 += var19;
                         var11 += var24;
@@ -270,7 +271,7 @@ public class class235 extends class220 {
                                  return;
                               }
 
-                              this.method4920(Rasterizer2D.Rasterizer2D_pixels, var2, 0, 0, var6 >> 14, var4 >> 14, var11, var23);
+                              this.Rasterizer3D_vertAlpha(Rasterizer2D.Rasterizer2D_pixels, var2, 0, 0, var6 >> 14, var4 >> 14, var11, var23);
                               var4 += var20;
                               var6 += var21;
                               var11 += var24;
@@ -278,7 +279,7 @@ public class class235 extends class220 {
                            }
                         }
 
-                        this.method4920(Rasterizer2D.Rasterizer2D_pixels, var2, 0, 0, var5 >> 14, var4 >> 14, var11, var23);
+                        this.Rasterizer3D_vertAlpha(Rasterizer2D.Rasterizer2D_pixels, var2, 0, 0, var5 >> 14, var4 >> 14, var11, var23);
                         var4 += var20;
                         var5 += var19;
                         var11 += var24;
@@ -314,7 +315,7 @@ public class class235 extends class220 {
                                  return;
                               }
 
-                              this.method4920(Rasterizer2D.Rasterizer2D_pixels, var2, 0, 0, var4 >> 14, var5 >> 14, var11, var23);
+                              this.Rasterizer3D_vertAlpha(Rasterizer2D.Rasterizer2D_pixels, var2, 0, 0, var4 >> 14, var5 >> 14, var11, var23);
                               var4 += var21;
                               var5 += var19;
                               var11 += var24;
@@ -322,7 +323,7 @@ public class class235 extends class220 {
                            }
                         }
 
-                        this.method4920(Rasterizer2D.Rasterizer2D_pixels, var2, 0, 0, var6 >> 14, var5 >> 14, var11, var23);
+                        this.Rasterizer3D_vertAlpha(Rasterizer2D.Rasterizer2D_pixels, var2, 0, 0, var6 >> 14, var5 >> 14, var11, var23);
                         var6 += var20;
                         var5 += var19;
                         var11 += var24;
@@ -342,7 +343,7 @@ public class class235 extends class220 {
                                  return;
                               }
 
-                              this.method4920(Rasterizer2D.Rasterizer2D_pixels, var2, 0, 0, var5 >> 14, var4 >> 14, var11, var23);
+                              this.Rasterizer3D_vertAlpha(Rasterizer2D.Rasterizer2D_pixels, var2, 0, 0, var5 >> 14, var4 >> 14, var11, var23);
                               var4 += var21;
                               var5 += var19;
                               var11 += var24;
@@ -350,7 +351,7 @@ public class class235 extends class220 {
                            }
                         }
 
-                        this.method4920(Rasterizer2D.Rasterizer2D_pixels, var2, 0, 0, var5 >> 14, var6 >> 14, var11, var23);
+                        this.Rasterizer3D_vertAlpha(Rasterizer2D.Rasterizer2D_pixels, var2, 0, 0, var5 >> 14, var6 >> 14, var11, var23);
                         var6 += var20;
                         var5 += var19;
                         var11 += var24;
@@ -398,7 +399,7 @@ public class class235 extends class220 {
                               return;
                            }
 
-                           this.method4920(Rasterizer2D.Rasterizer2D_pixels, var3, 0, 0, var5 >> 14, var4 >> 14, var12, var23);
+                           this.Rasterizer3D_vertAlpha(Rasterizer2D.Rasterizer2D_pixels, var3, 0, 0, var5 >> 14, var4 >> 14, var12, var23);
                            var5 += var19;
                            var4 += var20;
                            var12 += var24;
@@ -406,7 +407,7 @@ public class class235 extends class220 {
                         }
                      }
 
-                     this.method4920(Rasterizer2D.Rasterizer2D_pixels, var3, 0, 0, var5 >> 14, var6 >> 14, var12, var23);
+                     this.Rasterizer3D_vertAlpha(Rasterizer2D.Rasterizer2D_pixels, var3, 0, 0, var5 >> 14, var6 >> 14, var12, var23);
                      var5 += var19;
                      var6 += var21;
                      var12 += var24;
@@ -426,7 +427,7 @@ public class class235 extends class220 {
                               return;
                            }
 
-                           this.method4920(Rasterizer2D.Rasterizer2D_pixels, var3, 0, 0, var4 >> 14, var5 >> 14, var12, var23);
+                           this.Rasterizer3D_vertAlpha(Rasterizer2D.Rasterizer2D_pixels, var3, 0, 0, var4 >> 14, var5 >> 14, var12, var23);
                            var5 += var19;
                            var4 += var20;
                            var12 += var24;
@@ -434,7 +435,7 @@ public class class235 extends class220 {
                         }
                      }
 
-                     this.method4920(Rasterizer2D.Rasterizer2D_pixels, var3, 0, 0, var6 >> 14, var5 >> 14, var12, var23);
+                     this.Rasterizer3D_vertAlpha(Rasterizer2D.Rasterizer2D_pixels, var3, 0, 0, var6 >> 14, var5 >> 14, var12, var23);
                      var5 += var19;
                      var6 += var21;
                      var12 += var24;
@@ -470,7 +471,7 @@ public class class235 extends class220 {
                               return;
                            }
 
-                           this.method4920(Rasterizer2D.Rasterizer2D_pixels, var3, 0, 0, var5 >> 14, var6 >> 14, var12, var23);
+                           this.Rasterizer3D_vertAlpha(Rasterizer2D.Rasterizer2D_pixels, var3, 0, 0, var5 >> 14, var6 >> 14, var12, var23);
                            var5 += var20;
                            var6 += var21;
                            var12 += var24;
@@ -478,7 +479,7 @@ public class class235 extends class220 {
                         }
                      }
 
-                     this.method4920(Rasterizer2D.Rasterizer2D_pixels, var3, 0, 0, var4 >> 14, var6 >> 14, var12, var23);
+                     this.Rasterizer3D_vertAlpha(Rasterizer2D.Rasterizer2D_pixels, var3, 0, 0, var4 >> 14, var6 >> 14, var12, var23);
                      var4 += var19;
                      var6 += var21;
                      var12 += var24;
@@ -498,7 +499,7 @@ public class class235 extends class220 {
                               return;
                            }
 
-                           this.method4920(Rasterizer2D.Rasterizer2D_pixels, var3, 0, 0, var6 >> 14, var5 >> 14, var12, var23);
+                           this.Rasterizer3D_vertAlpha(Rasterizer2D.Rasterizer2D_pixels, var3, 0, 0, var6 >> 14, var5 >> 14, var12, var23);
                            var5 += var20;
                            var6 += var21;
                            var12 += var24;
@@ -506,7 +507,7 @@ public class class235 extends class220 {
                         }
                      }
 
-                     this.method4920(Rasterizer2D.Rasterizer2D_pixels, var3, 0, 0, var6 >> 14, var4 >> 14, var12, var23);
+                     this.Rasterizer3D_vertAlpha(Rasterizer2D.Rasterizer2D_pixels, var3, 0, 0, var6 >> 14, var4 >> 14, var12, var23);
                      var4 += var19;
                      var6 += var21;
                      var12 += var24;
@@ -1011,7 +1012,7 @@ public class class235 extends class220 {
          if (var33 != 0) {
             int var34 = (var28 * var27 - var29 * var25 << 9) / var33;
             int var35 = (var29 * var24 - var28 * var26 << 9) / var33;
-            int var36 = super.field2530.field2790;
+            int var36 = super.field2530.viewportZoom;
             var14 = var13 - var14;
             var17 = var16 - var17;
             var20 = var19 - var20;
@@ -1635,7 +1636,7 @@ public class class235 extends class220 {
          if (var33 != 0) {
             int var34 = (var28 * var27 - var29 * var25 << 9) / var33;
             int var35 = (var29 * var24 - var28 * var26 << 9) / var33;
-            int var36 = super.field2530.field2790;
+            int var36 = super.field2530.viewportZoom;
             var14 = var13 - var14;
             var17 = var16 - var17;
             var20 = var19 - var20;
@@ -2226,7 +2227,8 @@ public class class235 extends class220 {
    }
 
    @ObfuscatedName("bj")
-   final void method4920(int[] var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
+   @Export("Rasterizer3D_vertAlpha")
+   final void Rasterizer3D_vertAlpha(int[] var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
       if (super.field2530.field2798) {
          if (var6 > super.field2530.field2797) {
             var6 = super.field2530.field2797;

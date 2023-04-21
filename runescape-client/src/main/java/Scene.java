@@ -1809,26 +1809,26 @@ public class Scene {
                var21 = var20 * var4 - var3 * var15 >> 16;
                var15 = var3 * var20 + var15 * var4 >> 16;
                if (var15 >= 50) {
-                  int var22 = TaskHandler.method3563() + var10 * UserComparator7.method2904() / var12;
-                  int var23 = class12.method164() + var17 * UserComparator7.method2904() / var12;
-                  int var24 = TaskHandler.method3563() + var14 * UserComparator7.method2904() / var11;
-                  int var25 = class12.method164() + var18 * UserComparator7.method2904() / var11;
-                  int var26 = TaskHandler.method3563() + var13 * UserComparator7.method2904() / var16;
-                  int var27 = class12.method164() + var19 * UserComparator7.method2904() / var16;
-                  int var28 = TaskHandler.method3563() + var9 * UserComparator7.method2904() / var15;
-                  int var29 = class12.method164() + var21 * UserComparator7.method2904() / var15;
+                  int var22 = TaskHandler.getClipMidX() + var10 * UserComparator7.get3dZoom() / var12;
+                  int var23 = class12.getClipMidY() + var17 * UserComparator7.get3dZoom() / var12;
+                  int var24 = TaskHandler.getClipMidX() + var14 * UserComparator7.get3dZoom() / var11;
+                  int var25 = class12.getClipMidY() + var18 * UserComparator7.get3dZoom() / var11;
+                  int var26 = TaskHandler.getClipMidX() + var13 * UserComparator7.get3dZoom() / var16;
+                  int var27 = class12.getClipMidY() + var19 * UserComparator7.get3dZoom() / var16;
+                  int var28 = TaskHandler.getClipMidX() + var9 * UserComparator7.get3dZoom() / var15;
+                  int var29 = class12.getClipMidY() + var21 * UserComparator7.get3dZoom() / var15;
                   float var30 = NPC.method2626(var12);
                   float var31 = NPC.method2626(var11);
                   float var32 = NPC.method2626(var16);
                   float var33 = NPC.method2626(var15);
-                  Rasterizer3D.field2514.field2788 = 0;
+                  Rasterizer3D.clips.field2788 = 0;
                   int var34;
                   int var35;
                   if ((var26 - var28) * (var25 - var29) - (var27 - var29) * (var24 - var28) > 0) {
-                     Rasterizer3D.field2514.field2798 = false;
+                     Rasterizer3D.clips.field2798 = false;
                      var34 = class6.method46();
                      if (var26 < 0 || var28 < 0 || var24 < 0 || var26 > var34 || var28 > var34 || var24 > var34) {
-                        Rasterizer3D.field2514.field2798 = true;
+                        Rasterizer3D.clips.field2798 = true;
                      }
 
                      if (checkClick && containsBounds(Scene_selectedScreenX, Scene_selectedScreenY, var27, var29, var25, var26, var28, var24)) {
@@ -1847,16 +1847,16 @@ public class Scene {
                            FloorDecoration.method4399(var27, var29, var25, var26, var28, var24, var32, var33, var31, var1.neColor, var1.nwColor, var1.seColor, var13, var9, var14, var19, var21, var18, var16, var15, var11, var1.texture);
                         }
                      } else {
-                        var35 = Rasterizer3D.field2514.Rasterizer3D_textureLoader.getAverageTextureRGB(var1.texture);
+                        var35 = Rasterizer3D.clips.Rasterizer3D_textureLoader.getAverageTextureRGB(var1.texture);
                         BoundaryObject.method5010(var27, var29, var25, var26, var28, var24, var32, var33, var31, method4567(var35, var1.neColor), method4567(var35, var1.nwColor), method4567(var35, var1.seColor));
                      }
                   }
 
                   if ((var22 - var24) * (var29 - var25) - (var23 - var25) * (var28 - var24) > 0) {
-                     Rasterizer3D.field2514.field2798 = false;
+                     Rasterizer3D.clips.field2798 = false;
                      var34 = class6.method46();
                      if (var22 < 0 || var24 < 0 || var28 < 0 || var22 > var34 || var24 > var34 || var28 > var34) {
-                        Rasterizer3D.field2514.field2798 = true;
+                        Rasterizer3D.clips.field2798 = true;
                      }
 
                      if (checkClick && containsBounds(Scene_selectedScreenX, Scene_selectedScreenY, var23, var25, var29, var22, var24, var28)) {
@@ -1871,7 +1871,7 @@ public class Scene {
                      } else if (!Scene_isLowDetail) {
                         FloorDecoration.method4399(var23, var25, var29, var22, var24, var28, var30, var31, var33, var1.swColor, var1.seColor, var1.nwColor, var10, var14, var9, var17, var18, var21, var12, var11, var15, var1.texture);
                      } else {
-                        var35 = Rasterizer3D.field2514.Rasterizer3D_textureLoader.getAverageTextureRGB(var1.texture);
+                        var35 = Rasterizer3D.clips.Rasterizer3D_textureLoader.getAverageTextureRGB(var1.texture);
                         BoundaryObject.method5010(var23, var25, var29, var22, var24, var28, var30, var31, var33, method4567(var35, var1.swColor), method4567(var35, var1.seColor), method4567(var35, var1.nwColor));
                      }
                   }
@@ -1914,12 +1914,12 @@ public class Scene {
             SceneTileModel.field2660[var9] = var12;
          }
 
-         SceneTileModel.field2673[var9] = TaskHandler.method3563() + var10 * UserComparator7.method2904() / var12;
-         SceneTileModel.field2674[var9] = class12.method164() + var13 * UserComparator7.method2904() / var12;
+         SceneTileModel.field2673[var9] = TaskHandler.getClipMidX() + var10 * UserComparator7.get3dZoom() / var12;
+         SceneTileModel.field2674[var9] = class12.getClipMidY() + var13 * UserComparator7.get3dZoom() / var12;
          SceneTileModel.field2675[var9] = NPC.method2626(var12);
       }
 
-      Rasterizer3D.field2514.field2788 = 0;
+      Rasterizer3D.clips.field2788 = 0;
       var8 = var1.faceX.length;
 
       for(var9 = 0; var9 < var8; ++var9) {
@@ -1936,10 +1936,10 @@ public class Scene {
          float var20 = SceneTileModel.field2675[var11];
          float var21 = SceneTileModel.field2675[var12];
          if ((var13 - var14) * (var18 - var17) - (var16 - var17) * (var15 - var14) > 0) {
-            Rasterizer3D.field2514.field2798 = false;
+            Rasterizer3D.clips.field2798 = false;
             int var22 = class6.method46();
             if (var13 < 0 || var14 < 0 || var15 < 0 || var13 > var22 || var14 > var22 || var15 > var22) {
-               Rasterizer3D.field2514.field2798 = true;
+               Rasterizer3D.clips.field2798 = true;
             }
 
             if (checkClick && containsBounds(Scene_selectedScreenX, Scene_selectedScreenY, var16, var17, var18, var13, var14, var15)) {
@@ -1949,13 +1949,13 @@ public class Scene {
 
             if (var1.triangleTextureId != null && var1.triangleTextureId[var9] != -1) {
                if (!Scene_isLowDetail) {
-                  if (var1.field2666) {
+                  if (var1.isFlat) {
                      FloorDecoration.method4399(var16, var17, var18, var13, var14, var15, var19, var20, var21, var1.triangleColorA[var9], var1.triangleColorB[var9], var1.triangleColorC[var9], SceneTileModel.field2676[0], SceneTileModel.field2676[1], SceneTileModel.field2676[3], SceneTileModel.field2677[0], SceneTileModel.field2677[1], SceneTileModel.field2677[3], SceneTileModel.field2660[0], SceneTileModel.field2660[1], SceneTileModel.field2660[3], var1.triangleTextureId[var9]);
                   } else {
                      FloorDecoration.method4399(var16, var17, var18, var13, var14, var15, var19, var20, var21, var1.triangleColorA[var9], var1.triangleColorB[var9], var1.triangleColorC[var9], SceneTileModel.field2676[var10], SceneTileModel.field2676[var11], SceneTileModel.field2676[var12], SceneTileModel.field2677[var10], SceneTileModel.field2677[var11], SceneTileModel.field2677[var12], SceneTileModel.field2660[var10], SceneTileModel.field2660[var11], SceneTileModel.field2660[var12], var1.triangleTextureId[var9]);
                   }
                } else {
-                  int var23 = Rasterizer3D.field2514.Rasterizer3D_textureLoader.getAverageTextureRGB(var1.triangleTextureId[var9]);
+                  int var23 = Rasterizer3D.clips.Rasterizer3D_textureLoader.getAverageTextureRGB(var1.triangleTextureId[var9]);
                   BoundaryObject.method5010(var16, var17, var18, var13, var14, var15, var19, var20, var21, method4567(var23, var1.triangleColorA[var9]), method4567(var23, var1.triangleColorB[var9]), method4567(var23, var1.triangleColorC[var9]));
                }
             } else if (var1.triangleColorA[var9] != 12345678) {

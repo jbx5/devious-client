@@ -200,7 +200,7 @@ public abstract class class432 implements class272 {
    )
    public static void method8317() {
       HitSplatDefinition.HitSplatDefinition_cached.clear();
-      HitSplatDefinition.field2134.clear();
+      HitSplatDefinition.HitSplatDefinition_cachedSprites.clear();
       HitSplatDefinition.HitSplatDefinition_cachedFonts.clear();
    }
 }

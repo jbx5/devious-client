@@ -21,7 +21,8 @@ public final class RasterProvider extends AbstractRasterProvider {
    @Export("component")
    Component component;
    @ObfuscatedName("an")
-   Image field185;
+   @Export("image")
+   Image image;
 
    RasterProvider(int var1, int var2, Component var3, boolean var4) {
       super.width = var1;
@@ -34,7 +35,7 @@ public final class RasterProvider extends AbstractRasterProvider {
       DataBufferInt var5 = new DataBufferInt(super.pixels, super.pixels.length);
       DirectColorModel var6 = new DirectColorModel(32, 16711680, 65280, 255);
       WritableRaster var7 = Raster.createWritableRaster(var6.createCompatibleSampleModel(super.width, super.height), var5, (Point)null);
-      this.field185 = new BufferedImage(var6, var7, false, new Hashtable());
+      this.image = new BufferedImage(var6, var7, false, new Hashtable());
       this.setComponent(var3);
       this.apply();
    }
@@ -77,7 +78,7 @@ public final class RasterProvider extends AbstractRasterProvider {
    @Export("drawFull0")
    final void drawFull0(Graphics var1, int var2, int var3) {
       try {
-         var1.drawImage(this.field185, var2, var3, this.component);
+         var1.drawImage(this.image, var2, var3, this.component);
       } catch (Exception var5) {
          this.component.repaint();
       }
@@ -94,7 +95,7 @@ public final class RasterProvider extends AbstractRasterProvider {
       try {
          Shape var6 = var1.getClip();
          var1.clipRect(var2, var3, var4, var5);
-         var1.drawImage(this.field185, 0, 0, this.component);
+         var1.drawImage(this.image, 0, 0, this.component);
          var1.setClip(var6);
       } catch (Exception var7) {
          this.component.repaint();

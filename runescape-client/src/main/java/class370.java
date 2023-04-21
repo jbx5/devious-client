@@ -169,7 +169,7 @@ public class class370 {
                Client.isDraggingWidget = false;
                int var9 = DynamicObject.method2142();
                if (var9 != -1) {
-                  class287.method5689(var9);
+                  class287.createMenuAction(var9);
                }
 
                return;

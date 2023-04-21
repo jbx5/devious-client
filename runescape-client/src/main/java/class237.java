@@ -6,7 +6,7 @@ public class class237 extends class220 {
    @ObfuscatedSignature(
       descriptor = "(Ljg;)V"
    )
-   class237(class236 var1) {
+   class237(Clips var1) {
       super(var1);
    }
 
@@ -1102,7 +1102,7 @@ public class class237 extends class220 {
             float var37 = var9 - var7;
             float var38 = (var36 * (float)var27 - var37 * (float)var25) / (float)var33;
             float var39 = (var37 * (float)var24 - var36 * (float)var26) / (float)var33;
-            int var40 = super.field2530.field2790;
+            int var40 = super.field2530.viewportZoom;
             var14 = var13 - var14;
             var17 = var16 - var17;
             var20 = var19 - var20;
@@ -1763,7 +1763,7 @@ public class class237 extends class220 {
             float var37 = var9 - var7;
             float var38 = (var36 * (float)var27 - var37 * (float)var25) / (float)var33;
             float var39 = (var37 * (float)var24 - var36 * (float)var26) / (float)var33;
-            int var40 = super.field2530.field2790;
+            int var40 = super.field2530.viewportZoom;
             var14 = var13 - var14;
             var17 = var16 - var17;
             var20 = var19 - var20;

@@ -264,7 +264,7 @@ public class ScriptFrame {
    @ObfuscatedName("mg")
    static final void method1164(double var0) {
       class18.method285(var0);
-      ((TextureProvider)Rasterizer3D.field2514.Rasterizer3D_textureLoader).setBrightness(var0);
+      ((TextureProvider)Rasterizer3D.clips.Rasterizer3D_textureLoader).setBrightness(var0);
       class127.method3118();
       class20.clientPreferences.method2458(var0);
    }

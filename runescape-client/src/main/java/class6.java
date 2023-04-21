@@ -43,7 +43,7 @@ public enum class6 implements MouseWheel {
       garbageValue = "-1788010106"
    )
    static int method46() {
-      return Rasterizer3D.field2514.field2797;
+      return Rasterizer3D.clips.field2797;
    }
 
    @ObfuscatedName("aa")

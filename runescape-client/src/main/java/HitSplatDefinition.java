@@ -34,7 +34,7 @@ public class HitSplatDefinition extends DualNode {
    @ObfuscatedSignature(
       descriptor = "Lkh;"
    )
-   static EvictingDualNodeHashTable field2134 = new EvictingDualNodeHashTable(64);
+   static EvictingDualNodeHashTable HitSplatDefinition_cachedSprites = new EvictingDualNodeHashTable(64);
    @ObfuscatedName("ab")
    @ObfuscatedSignature(
       descriptor = "Lkh;"
@@ -262,13 +262,13 @@ public class HitSplatDefinition extends DualNode {
       if (this.field2155 < 0) {
          return null;
       } else {
-         SpritePixels var1 = (SpritePixels)field2134.get((long)this.field2155);
+         SpritePixels var1 = (SpritePixels)HitSplatDefinition_cachedSprites.get((long)this.field2155);
          if (var1 != null) {
             return var1;
          } else {
             var1 = class484.SpriteBuffer_getSprite(field2131, this.field2155, 0);
             if (var1 != null) {
-               field2134.put(var1, (long)this.field2155);
+               HitSplatDefinition_cachedSprites.put(var1, (long)this.field2155);
             }
 
             return var1;
@@ -285,13 +285,13 @@ public class HitSplatDefinition extends DualNode {
       if (this.field2143 < 0) {
          return null;
       } else {
-         SpritePixels var1 = (SpritePixels)field2134.get((long)this.field2143);
+         SpritePixels var1 = (SpritePixels)HitSplatDefinition_cachedSprites.get((long)this.field2143);
          if (var1 != null) {
             return var1;
          } else {
             var1 = class484.SpriteBuffer_getSprite(field2131, this.field2143, 0);
             if (var1 != null) {
-               field2134.put(var1, (long)this.field2143);
+               HitSplatDefinition_cachedSprites.put(var1, (long)this.field2143);
             }
 
             return var1;
@@ -308,13 +308,13 @@ public class HitSplatDefinition extends DualNode {
       if (this.field2144 < 0) {
          return null;
       } else {
-         SpritePixels var1 = (SpritePixels)field2134.get((long)this.field2144);
+         SpritePixels var1 = (SpritePixels)HitSplatDefinition_cachedSprites.get((long)this.field2144);
          if (var1 != null) {
             return var1;
          } else {
             var1 = class484.SpriteBuffer_getSprite(field2131, this.field2144, 0);
             if (var1 != null) {
-               field2134.put(var1, (long)this.field2144);
+               HitSplatDefinition_cachedSprites.put(var1, (long)this.field2144);
             }
 
             return var1;
@@ -331,13 +331,13 @@ public class HitSplatDefinition extends DualNode {
       if (this.field2145 < 0) {
          return null;
       } else {
-         SpritePixels var1 = (SpritePixels)field2134.get((long)this.field2145);
+         SpritePixels var1 = (SpritePixels)HitSplatDefinition_cachedSprites.get((long)this.field2145);
          if (var1 != null) {
             return var1;
          } else {
             var1 = class484.SpriteBuffer_getSprite(field2131, this.field2145, 0);
             if (var1 != null) {
-               field2134.put(var1, (long)this.field2145);
+               HitSplatDefinition_cachedSprites.put(var1, (long)this.field2145);
             }
 
             return var1;

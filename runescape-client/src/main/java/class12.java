@@ -117,8 +117,8 @@ class class12 extends SSLSocket {
       descriptor = "(I)I",
       garbageValue = "-1139847057"
    )
-   static int method164() {
-      return Rasterizer3D.field2514.field2793;
+   static int getClipMidY() {
+      return Rasterizer3D.clips.field2793;
    }
 
    @ObfuscatedName("ci")

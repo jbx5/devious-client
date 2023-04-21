@@ -438,7 +438,7 @@ public class class166 {
    @Export("Widget_runOnTargetLeave")
    static void Widget_runOnTargetLeave() {
       if (Client.isSpellSelected) {
-         Widget var0 = SoundSystem.getWidgetChild(class236.selectedSpellWidget, Client.selectedSpellChildIndex);
+         Widget var0 = SoundSystem.getWidgetChild(Clips.selectedSpellWidget, Client.selectedSpellChildIndex);
          if (var0 != null && var0.onTargetLeave != null) {
             ScriptEvent var1 = new ScriptEvent();
             var1.widget = var0;

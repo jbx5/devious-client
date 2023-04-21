@@ -252,7 +252,7 @@ public class class252 implements WorldMapSection {
          Rasterizer2D.Rasterizer2D_clear();
          class18.method271();
          WorldMapArea.method5163(16, 16);
-         Rasterizer3D.field2514.field2789 = false;
+         Rasterizer3D.clips.field2789 = false;
          if (var9.placeholderTemplate != -1) {
             var21.drawTransBgAt(0, 0);
          }
@@ -300,7 +300,7 @@ public class class252 implements WorldMapSection {
          class1.method8(var12, var13, var14, var15);
          Rasterizer2D.Rasterizer2D_setClipArray(var16);
          class18.method271();
-         Rasterizer3D.field2514.field2789 = true;
+         Rasterizer3D.clips.field2789 = true;
          return var8;
       }
    }

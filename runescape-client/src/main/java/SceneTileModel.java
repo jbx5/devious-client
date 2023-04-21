@@ -52,7 +52,8 @@ public final class SceneTileModel {
    @Export("triangleTextureId")
    int[] triangleTextureId;
    @ObfuscatedName("ay")
-   boolean field2666 = true;
+   @Export("isFlat")
+   boolean isFlat = true;
    @ObfuscatedName("ao")
    @Export("shape")
    int shape;
@@ -68,7 +69,7 @@ public final class SceneTileModel {
 
    SceneTileModel(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12, int var13, int var14, int var15, int var16, int var17, int var18, int var19) {
       if (var7 != var6 || var8 != var6 || var9 != var6) {
-         this.field2666 = false;
+         this.isFlat = false;
       }
 
       this.shape = var1;

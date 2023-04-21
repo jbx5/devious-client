@@ -487,32 +487,32 @@ public class NetFileRequest extends DualNode {
       IterableNodeHashTableIterator var7 = new IterableNodeHashTableIterator(var0.method2376());
 
       int var3;
-      for(class511 var6 = (class511)var7.method8686(); var6 != null; var6 = (class511)var7.next()) {
-         if (var6.field5143 != -1 && Client.cycle >= var6.field5144) {
-            var3 = ItemContainer.SpotAnimationDefinition_get(var6.field5143).sequence;
+      for(ActorSpotAnim var6 = (ActorSpotAnim)var7.method8686(); var6 != null; var6 = (ActorSpotAnim)var7.next()) {
+         if (var6.spotAnimation != -1 && Client.cycle >= var6.field5144) {
+            var3 = ItemContainer.SpotAnimationDefinition_get(var6.spotAnimation).sequence;
             if (var3 == -1) {
                var6.remove();
                --var0.field1202;
             } else {
-               var6.field5142 = Math.max(var6.field5142, 0);
+               var6.spotAnimationFrame = Math.max(var6.spotAnimationFrame, 0);
                SequenceDefinition var4 = ItemContainer.SequenceDefinition_get(var3);
                if (var4.frameIds != null && !var4.isCachedModelIdSet()) {
-                  ++var6.field5141;
-                  if (var6.field5142 < var4.frameIds.length && var6.field5141 > var4.frameLengths[var6.field5142]) {
-                     var6.field5141 = 1;
-                     ++var6.field5142;
-                     class287.method5696(var4, var6.field5142, var0.x, var0.y);
+                  ++var6.spotAnimationFrameCycle;
+                  if (var6.spotAnimationFrame < var4.frameIds.length && var6.spotAnimationFrameCycle > var4.frameLengths[var6.spotAnimationFrame]) {
+                     var6.spotAnimationFrameCycle = 1;
+                     ++var6.spotAnimationFrame;
+                     class287.method5696(var4, var6.spotAnimationFrame, var0.x, var0.y);
                   }
 
-                  if (var6.field5142 >= var4.frameIds.length) {
+                  if (var6.spotAnimationFrame >= var4.frameIds.length) {
                      var6.remove();
                      --var0.field1202;
                   }
                } else if (var4.isCachedModelIdSet()) {
-                  ++var6.field5142;
+                  ++var6.spotAnimationFrame;
                   int var5 = var4.method4135();
-                  if (var6.field5142 < var5) {
-                     KeyHandler.method386(var4, var6.field5142, var0.x, var0.y);
+                  if (var6.spotAnimationFrame < var5) {
+                     KeyHandler.method386(var4, var6.spotAnimationFrame, var0.x, var0.y);
                   } else {
                      var6.remove();
                      --var0.field1202;

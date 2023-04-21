@@ -321,7 +321,7 @@ public class DevicePcmPlayerProvider implements class50 {
                } else {
                   class7.textureProvider = new TextureProvider(WorldMapLabelSize.field2868, class452.archive8, 20, class20.clientPreferences.method2459(), Client.isLowDetail ? 64 : 128);
                   TextureProvider var19 = class7.textureProvider;
-                  Rasterizer3D.field2514.Rasterizer3D_textureLoader = var19;
+                  Rasterizer3D.clips.Rasterizer3D_textureLoader = var19;
                   class18.method285(class20.clientPreferences.method2459());
                   Client.titleLoadingStage = 100;
                }

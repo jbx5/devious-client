@@ -146,17 +146,17 @@ public class class18 {
       int var1 = Rasterizer2D.Rasterizer2D_yClipStart;
       int var2 = Rasterizer2D.Rasterizer2D_xClipEnd;
       int var3 = Rasterizer2D.Rasterizer2D_yClipEnd;
-      Rasterizer3D.field2514.field2797 = var2 - var0;
-      Rasterizer3D.field2514.field2796 = var3 - var1;
+      Rasterizer3D.clips.field2797 = var2 - var0;
+      Rasterizer3D.clips.field2796 = var3 - var1;
       Tiles.method2221();
-      if (Rasterizer3D.field2514.Rasterizer3D_rowOffsets.length < Rasterizer3D.field2514.field2796) {
-         Rasterizer3D.field2514.Rasterizer3D_rowOffsets = new int[class70.method2044(Rasterizer3D.field2514.field2796)];
+      if (Rasterizer3D.clips.Rasterizer3D_rowOffsets.length < Rasterizer3D.clips.field2796) {
+         Rasterizer3D.clips.Rasterizer3D_rowOffsets = new int[class70.method2044(Rasterizer3D.clips.field2796)];
       }
 
       int var4 = var0 + var1 * Rasterizer2D.Rasterizer2D_width;
 
-      for(int var5 = 0; var5 < Rasterizer3D.field2514.field2796; ++var5) {
-         Rasterizer3D.field2514.Rasterizer3D_rowOffsets[var5] = var4;
+      for(int var5 = 0; var5 < Rasterizer3D.clips.field2796; ++var5) {
+         Rasterizer3D.clips.Rasterizer3D_rowOffsets[var5] = var4;
          var4 += Rasterizer2D.Rasterizer2D_width;
       }
 
@@ -518,16 +518,16 @@ public class class18 {
       class323.playPcmPlayers();
       Rasterizer2D.Rasterizer2D_fillRectangle(var0, var1, var2, var3, 0);
       class323.playPcmPlayers();
-      var18 = UserComparator7.method2904();
+      var18 = UserComparator7.get3dZoom();
       class314.method6147(ScriptFrame.client.field215);
-      Rasterizer3D.field2514.field2790 = Client.viewportZoom;
+      Rasterizer3D.clips.viewportZoom = Client.viewportZoom;
       class31.scene.draw(class36.cameraX, class174.cameraY, class297.cameraZ, WorldMapSectionType.cameraPitch, class125.cameraYaw, var10);
       class314.method6147(false);
       if (Client.renderSelf) {
          Rasterizer2D.method9404();
       }
 
-      Rasterizer3D.field2514.field2790 = var18;
+      Rasterizer3D.clips.viewportZoom = var18;
       class323.playPcmPlayers();
       class31.scene.clearTempGameObjects();
       Client.overheadTextCount = 0;
@@ -682,7 +682,7 @@ public class class18 {
       }
 
       class317.method6527(var0, var1);
-      ((TextureProvider)Rasterizer3D.field2514.Rasterizer3D_textureLoader).animate(Client.graphicsCycle);
+      ((TextureProvider)Rasterizer3D.clips.Rasterizer3D_textureLoader).animate(Client.graphicsCycle);
       Friend.method7815();
       class36.cameraX = var11;
       class174.cameraY = var12;
@@ -717,7 +717,7 @@ public class class18 {
 
       Client.selectedSpellItemId = var3;
       Client.isSpellSelected = true;
-      class236.selectedSpellWidget = var0;
+      Clips.selectedSpellWidget = var0;
       Client.selectedSpellChildIndex = var1;
       SecureRandomFuture.selectedSpellFlags = var2;
       class144.invalidateWidget(var4);

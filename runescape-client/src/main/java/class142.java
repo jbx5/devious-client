@@ -1,3 +1,4 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
@@ -102,8 +103,9 @@ public class class142 {
       descriptor = "(B)I",
       garbageValue = "6"
    )
-   static int method3227() {
-      return Rasterizer3D.field2514.field2802;
+   @Export("Rasterizer3D_clipMidY2")
+   static int Rasterizer3D_clipMidY2() {
+      return Rasterizer3D.clips.field2802;
    }
 
    @ObfuscatedName("ji")

@@ -518,7 +518,7 @@ public class WorldMapRegion {
                var18 = class97.method2652(var17, 96);
                var9 = Rasterizer3D.Rasterizer3D_colorPalette[var18] | -16777216;
             } else if (var11.texture >= 0) {
-               int var19 = class97.method2652(Rasterizer3D.field2514.Rasterizer3D_textureLoader.getAverageTextureRGB(var11.texture), 96);
+               int var19 = class97.method2652(Rasterizer3D.clips.Rasterizer3D_textureLoader.getAverageTextureRGB(var11.texture), 96);
                var9 = Rasterizer3D.Rasterizer3D_colorPalette[var19] | -16777216;
             } else if (var11.primaryRgb == 16711935) {
                var9 = var10;
@@ -622,7 +622,7 @@ public class WorldMapRegion {
                   var16 = class97.method2652(var15, 96);
                   var7 = Rasterizer3D.Rasterizer3D_colorPalette[var16] | -16777216;
                } else if (var9.texture >= 0) {
-                  int var17 = class97.method2652(Rasterizer3D.field2514.Rasterizer3D_textureLoader.getAverageTextureRGB(var9.texture), 96);
+                  int var17 = class97.method2652(Rasterizer3D.clips.Rasterizer3D_textureLoader.getAverageTextureRGB(var9.texture), 96);
                   var7 = Rasterizer3D.Rasterizer3D_colorPalette[var17] | -16777216;
                } else if (var9.primaryRgb == 16711935) {
                   var7 = var8;

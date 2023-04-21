@@ -497,7 +497,7 @@ public class class31 {
       Client.DBTableMasterIndex_cache.clear();
       GrandExchangeOfferTotalQuantityComparator.method6811();
       class18.method288();
-      ((TextureProvider)Rasterizer3D.field2514.Rasterizer3D_textureLoader).clear();
+      ((TextureProvider)Rasterizer3D.clips.Rasterizer3D_textureLoader).clear();
       Script.Script_cached.clear();
       Client.archive5.method7719();
       DevicePcmPlayerProvider.field117.clearFiles();

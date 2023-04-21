@@ -4097,7 +4097,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
                var20 = var3.readInt();
                var5 = var3.readInt();
                var6 = NetCache.getGcDuration();
-               PacketBufferNode var57 = class330.getPacketBufferNode(ClientPacket.field3165, packetWriter.isaacCipher);
+               PacketBufferNode var57 = class330.getPacketBufferNode(ClientPacket.PING_STATISTICS, packetWriter.isaacCipher);
                var57.packetBuffer.writeByteAdd(GameEngine.fps);
                var57.packetBuffer.writeByteNeg(var6);
                var57.packetBuffer.writeIntME(var20);
@@ -4207,7 +4207,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
                return true;
             }
 
-            if (ServerPacket.field3286 == var1.serverPacket) {
+            if (ServerPacket.LOGOUT == var1.serverPacket) {
                var20 = var3.readUnsignedByte();
                class293.forceDisconnect(var20);
                var1.serverPacket = null;
@@ -5679,7 +5679,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
                return true;
             }
 
-            if (ServerPacket.field3245 == var1.serverPacket) {
+            if (ServerPacket.MESSAGE_PRIVATE == var1.serverPacket) {
                var49 = var3.readStringCp1252NullTerminated();
                var21 = (long)var3.readUnsignedShort();
                var23 = (long)var3.readMedium();

@@ -204,6 +204,6 @@ public class GrandExchangeEvent {
    )
    public static void method6857() {
       HealthBarDefinition.HealthBarDefinition_cached.clear();
-      HealthBarDefinition.HitSplatDefinition_cachedSprites.clear();
+      HealthBarDefinition.HealthBarDefinition_cachedSprites.clear();
    }
 }

@@ -94,7 +94,6 @@ import net.runelite.api.events.NpcSpawned;
 import net.runelite.api.events.PlayerDespawned;
 import net.runelite.api.events.PlayerMenuOptionsChanged;
 import net.runelite.api.events.PlayerSpawned;
-import net.runelite.api.events.PostMenuSort;
 import net.runelite.api.events.PostStructComposition;
 import net.runelite.api.events.ResizeableChanged;
 import net.runelite.api.events.StatChanged;
@@ -120,44 +119,7 @@ import net.runelite.api.widgets.WidgetConfig;
 import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.api.widgets.WidgetItem;
 import net.runelite.api.widgets.WidgetType;
-import net.runelite.rs.api.RSAbstractArchive;
-import net.runelite.rs.api.RSArchive;
-import net.runelite.rs.api.RSBuffer;
-import net.runelite.rs.api.RSChatChannel;
-import net.runelite.rs.api.RSClanChannel;
-import net.runelite.rs.api.RSClient;
-import net.runelite.rs.api.RSCollisionMap;
-import net.runelite.rs.api.RSDbRowType;
-import net.runelite.rs.api.RSDbTableType;
-import net.runelite.rs.api.RSDualNode;
-import net.runelite.rs.api.RSEnumComposition;
-import net.runelite.rs.api.RSEvictingDualNodeHashTable;
-import net.runelite.rs.api.RSFloorOverlayDefinition;
-import net.runelite.rs.api.RSFont;
-import net.runelite.rs.api.RSFriendSystem;
-import net.runelite.rs.api.RSGameEngine;
-import net.runelite.rs.api.RSIndexedSprite;
-import net.runelite.rs.api.RSInterfaceParent;
-import net.runelite.rs.api.RSItemContainer;
-import net.runelite.rs.api.RSModelData;
-import net.runelite.rs.api.RSNPC;
-import net.runelite.rs.api.RSNode;
-import net.runelite.rs.api.RSNodeDeque;
-import net.runelite.rs.api.RSNodeHashTable;
-import net.runelite.rs.api.RSPacketBuffer;
-import net.runelite.rs.api.RSPlayer;
-import net.runelite.rs.api.RSProjectile;
-import net.runelite.rs.api.RSRuneLiteClanMember;
-import net.runelite.rs.api.RSRuneLiteMenuEntry;
-import net.runelite.rs.api.RSScene;
-import net.runelite.rs.api.RSScriptEvent;
-import net.runelite.rs.api.RSSpritePixels;
-import net.runelite.rs.api.RSStructComposition;
-import net.runelite.rs.api.RSTile;
-import net.runelite.rs.api.RSTileItem;
-import net.runelite.rs.api.RSUsername;
-import net.runelite.rs.api.RSWidget;
-import net.runelite.rs.api.RSWorld;
+import net.runelite.rs.api.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
@@ -1039,96 +1001,31 @@ public abstract class RSClientMixin implements RSClient
 		}
 	}
 
-	@Copy("menu")
-	@Replace("menu")
-	public final void copy$menu()
+	/*@Copy("menuSort")
+	@Replace("menuSort")
+	public static void copy$menuSort()
 	{
-		boolean var1 = false;
-
-		int var2;
-		int var5;
-
-		while (!var1)
+		if (!client.isMenuOpen())
 		{
-			var1 = true;
-			for (var2 = 0; var2 < client.getMenuOptionCount() - 1; ++var2)
+			while (true)
 			{
-				if (client.getMenuOpcodes()[var2] < 1000 && client.getMenuOpcodes()[var2 + 1] > 1000)
+				boolean postMenuSort = true;
+				for (int i = 0; i < client.getMenuOptionCount() - 1; i++)
 				{
-					sortMenuEntries(var2, var2 + 1);
-					var1 = false;
-				}
-			}
-			if (var1 && !client.isMenuOpen())
-			{
-				client.getCallbacks().post(new PostMenuSort());
-			}
-		}
-
-		if (client.getDraggedWidget() == null)
-		{
-			int var12 = client.getMouseLastButton();
-			if (client.isMenuOpen())
-			{
-				int var3;
-				if (var12 != 1 && (client.isMouseCam() || var12 != 4))
-				{
-					var2 = client.getMouseX();
-					var3 = client.getMouseY();
-					if (var2 < client.getMenuX() - 10 || var2 > client.getMenuWidth() + client.getMenuX() + 10 || var3 < client.getMenuY() - 10 || var3 > client.getMenuHeight() + client.getMenuY() + 10)
+					if (client.getMenuOpcodes()[i] < 1000 && client.getMenuOpcodes()[i + 1] > 1000)
 					{
-						client.setMenuOpen(false);
-						client.invalidateMenu(client.getMenuX(), client.getMenuY(), client.getMenuWidth(), client.getMenuHeight());
+						sortMenuEntries(i, i + 1);
+						postMenuSort = false;
 					}
 				}
-
-				if (var12 == 1 || !client.isMouseCam() && var12 == 4)
+				if (postMenuSort)
 				{
-					var2 = client.getMenuX();
-					var3 = client.getMenuY();
-					int var4 = client.getMenuWidth();
-					var5 = client.getMouseLastPressedX();
-					int var13 = client.getMouseLastPressedY();
-					int var7 = -1;
-
-					for (int var8 = 0; var8 < client.getMenuOptionCount(); ++var8)
-					{
-						int var9 = var3 + (client.getMenuOptionCount() - 1 - var8) * 15 + 31;
-						if (var5 > var2 && var5 < var2 + var4 && var13 > var9 - 13 && var13 < var9 + 3)
-						{
-							var7 = var8;
-						}
-					}
-
-					if (var7 != -1)
-					{
-						client.createMenuAction(var7);
-					}
-
-					client.setMenuOpen(false);
-					client.invalidateMenu(client.getMenuX(), client.getMenuY(), client.getMenuWidth(), client.getMenuHeight());
-				}
-			}
-			else
-			{
-				var2 = client.getMenuOptionCount() - 1;
-				if ((var12 == 1 || !client.isMouseCam() && var12 == 4) && client.getLeftClickOpensMenu())
-				{
-					var12 = 2;
-				}
-
-				if ((var12 == 1 || !client.isMouseCam() && var12 == 4) && client.getMenuOptionCount() > 0)
-				{
-					client.createMenuAction(var2);
-				}
-
-				if (var12 == 2 && client.getMenuOptionCount() > 0)
-				{
-					client.openMenu(client.getMouseLastPressedX(), client.getMouseLastPressedY());
+					client.getCallbacks().post(new PostMenuSort());
+					break;
 				}
 			}
 		}
-	}
+	}*/
 
 	@Inject
 	public static void sortMenuEntries(int left, int right)
@@ -1444,7 +1341,7 @@ public abstract class RSClientMixin implements RSClient
 		}
 	}*/
 
-//	@FieldHook("experience")
+	//	@FieldHook("experience")
 //	@Inject
 	public static void experiencedChanged(int idx)
 	{
@@ -1914,7 +1811,7 @@ public abstract class RSClientMixin implements RSClient
 		return null;
 	}
 
-//	@Copy("menuAction")
+	//	@Copy("menuAction")
 //	@Replace("menuAction")
 	static void copy$menuAction(int param0, int param1, int opcode, int id, String option, String target, int canvasX, int canvasY)
 	{
@@ -3292,7 +3189,7 @@ public abstract class RSClientMixin implements RSClient
 		}
 	}
 
-//	@FieldHook("worldSelectOpen")
+	//	@FieldHook("worldSelectOpen")
 //	@Inject
 	public static void worldSelectionScreenToggled(int idx)
 	{
@@ -3467,5 +3364,26 @@ public abstract class RSClientMixin implements RSClient
 		}
 	}
 
+	@Shadow("clips")
+	static RSClips clips;
+
+	@Inject
+	@Override
+	public int getRasterizer3D_clipNegativeMidX() {
+		return clips.getClipNegativeMidX();
+	}
+
+	@Inject
+	@Override
+	public int getRasterizer3D_clipNegativeMidY() {
+		return clips.getClipNegativeMidY();
+	}
+
+	@Inject
+	@Override
+	public void set3dZoom(int zoom) {
+		clips.setViewportZoom(zoom);
+		client.setScale(zoom);
+	}
 }
 

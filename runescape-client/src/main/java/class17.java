@@ -498,7 +498,7 @@ class class17 implements SSLSession {
                Client.destinationY = var1;
                var10 = class330.getPacketBufferNode(ClientPacket.OPNPCT, Client.packetWriter.isaacCipher);
                var10.packetBuffer.writeShortAdd(Client.selectedSpellItemId);
-               var10.packetBuffer.writeIntIME(class236.selectedSpellWidget);
+               var10.packetBuffer.writeIntIME(Clips.selectedSpellWidget);
                var10.packetBuffer.writeShortLE(var3);
                var10.packetBuffer.writeShortAdd(Client.selectedSpellChildIndex);
                var10.packetBuffer.writeByteAdd(Client.field721.method4229(82) ? 1 : 0);
@@ -519,7 +519,7 @@ class class17 implements SSLSession {
             var14.packetBuffer.writeShortLE(Client.selectedSpellItemId);
             var14.packetBuffer.writeShortLE(WorldMapData_0.baseX * 64 + var0);
             var14.packetBuffer.writeShortAddLE(Client.selectedSpellChildIndex);
-            var14.packetBuffer.writeIntIME(class236.selectedSpellWidget);
+            var14.packetBuffer.writeIntIME(Clips.selectedSpellWidget);
             var14.packetBuffer.writeShortAddLE(GameObject.baseY * 64 + var1);
             Client.packetWriter.addNode(var14);
          }
@@ -645,7 +645,7 @@ class class17 implements SSLSession {
                var10 = class330.getPacketBufferNode(ClientPacket.IF_BUTTONT, Client.packetWriter.isaacCipher);
                var10.packetBuffer.writeShortLE(var0);
                var10.packetBuffer.writeShort(var4);
-               var10.packetBuffer.writeIntME(class236.selectedSpellWidget);
+               var10.packetBuffer.writeIntME(Clips.selectedSpellWidget);
                var10.packetBuffer.writeShortAddLE(Client.selectedSpellChildIndex);
                var10.packetBuffer.writeIntIME(var1);
                var10.packetBuffer.writeShortAdd(Client.selectedSpellItemId);
@@ -677,7 +677,7 @@ class class17 implements SSLSession {
                var10.packetBuffer.writeShortAdd(Client.selectedSpellItemId);
                var10.packetBuffer.writeShortLE(var3);
                var10.packetBuffer.writeByteAdd(Client.field721.method4229(82) ? 1 : 0);
-               var10.packetBuffer.writeInt(class236.selectedSpellWidget);
+               var10.packetBuffer.writeInt(Clips.selectedSpellWidget);
                Client.packetWriter.addNode(var10);
             }
          }
@@ -725,7 +725,7 @@ class class17 implements SSLSession {
             Client.destinationY = var1;
             var14 = class330.getPacketBufferNode(ClientPacket.OPOBJT, Client.packetWriter.isaacCipher);
             var14.packetBuffer.writeByteAdd(Client.field721.method4229(82) ? 1 : 0);
-            var14.packetBuffer.writeIntIME(class236.selectedSpellWidget);
+            var14.packetBuffer.writeIntIME(Clips.selectedSpellWidget);
             var14.packetBuffer.writeShortAddLE(Client.selectedSpellChildIndex);
             var14.packetBuffer.writeShort(var3);
             var14.packetBuffer.writeShortLE(WorldMapData_0.baseX * 64 + var0);

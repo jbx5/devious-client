@@ -579,7 +579,7 @@ public abstract class Actor extends Renderable {
    )
    void method2375(int var1, int var2, int var3, int var4) {
       int var5 = var4 + Client.cycle;
-      class511 var6 = (class511)this.field1185.get((long)var1);
+      ActorSpotAnim var6 = (ActorSpotAnim)this.field1185.get((long)var1);
       if (var6 != null) {
          var6.remove();
          --this.field1202;
@@ -591,7 +591,7 @@ public abstract class Actor extends Renderable {
             var7 = -1;
          }
 
-         this.field1185.put(new class511(var2, var3, var5, var7), (long)var1);
+         this.field1185.put(new ActorSpotAnim(var2, var3, var5, var7), (long)var1);
          ++this.field1202;
       }
    }
@@ -613,7 +613,7 @@ public abstract class Actor extends Renderable {
    void method2377() {
       IterableNodeHashTableIterator var1 = new IterableNodeHashTableIterator(this.field1185);
 
-      for(class511 var2 = (class511)var1.method8686(); var2 != null; var2 = (class511)var1.next()) {
+      for(ActorSpotAnim var2 = (ActorSpotAnim)var1.method8686(); var2 != null; var2 = (ActorSpotAnim)var1.next()) {
          var2.remove();
       }
 
@@ -635,9 +635,9 @@ public abstract class Actor extends Renderable {
          int var5 = var1.texIndicesCount;
          byte var6 = var1.field2707;
 
-         for(class511 var7 = (class511)var2.method8686(); var7 != null; var7 = (class511)var2.next()) {
-            if (var7.field5142 != -1) {
-               Model var8 = ItemContainer.SpotAnimationDefinition_get(var7.field5143).method3835();
+         for(ActorSpotAnim var7 = (ActorSpotAnim)var2.method8686(); var7 != null; var7 = (ActorSpotAnim)var2.next()) {
+            if (var7.spotAnimationFrame != -1) {
+               Model var8 = ItemContainer.SpotAnimationDefinition_get(var7.spotAnimation).method3835();
                if (var8 != null) {
                   var3 += var8.verticesCount;
                   var4 += var8.indicesCount;
@@ -649,11 +649,11 @@ public abstract class Actor extends Renderable {
          Model var10 = new Model(var3, var4, var5, var6);
          var10.method4862(var1);
 
-         for(class511 var11 = (class511)var2.method8686(); var11 != null; var11 = (class511)var2.next()) {
-            if (var11.field5142 != -1) {
-               Model var9 = ItemContainer.SpotAnimationDefinition_get(var11.field5143).getModel(var11.field5142);
+         for(ActorSpotAnim var11 = (ActorSpotAnim)var2.method8686(); var11 != null; var11 = (ActorSpotAnim)var2.next()) {
+            if (var11.spotAnimationFrame != -1) {
+               Model var9 = ItemContainer.SpotAnimationDefinition_get(var11.spotAnimation).getModel(var11.spotAnimationFrame);
                if (var9 != null) {
-                  var9.offsetBy(0, -var11.field5145, 0);
+                  var9.offsetBy(0, -var11.spotAnimationHeight, 0);
                   var10.method4862(var9);
                }
             }

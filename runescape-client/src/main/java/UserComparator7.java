@@ -99,8 +99,9 @@ public class UserComparator7 extends AbstractUserComparator {
       descriptor = "(I)I",
       garbageValue = "-1532029373"
    )
-   public static int method2904() {
-      return Rasterizer3D.field2514.field2790;
+   @Export("get3dZoom")
+   public static int get3dZoom() {
+      return Rasterizer3D.clips.viewportZoom;
    }
 
    @ObfuscatedName("bv")

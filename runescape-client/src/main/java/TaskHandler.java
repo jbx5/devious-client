@@ -169,8 +169,8 @@ public class TaskHandler implements Runnable {
       descriptor = "(I)I",
       garbageValue = "-1616456716"
    )
-   static int method3563() {
-      return Rasterizer3D.field2514.field2795;
+   static int getClipMidX() {
+      return Rasterizer3D.clips.field2795;
    }
 
    @ObfuscatedName("au")

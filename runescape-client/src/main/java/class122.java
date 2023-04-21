@@ -298,10 +298,10 @@ public class class122 {
          int var3 = Scene.Scene_cameraYawCosine;
          int var4 = 50;
          int var5 = 3500;
-         int var6 = (ViewportMouse.ViewportMouse_x - TaskHandler.method3563()) * var4 / UserComparator7.method2904();
-         int var7 = (ViewportMouse.ViewportMouse_y - class12.method164()) * var4 / UserComparator7.method2904();
-         int var8 = (ViewportMouse.ViewportMouse_x - TaskHandler.method3563()) * var5 / UserComparator7.method2904();
-         int var9 = (ViewportMouse.ViewportMouse_y - class12.method164()) * var5 / UserComparator7.method2904();
+         int var6 = (ViewportMouse.ViewportMouse_x - TaskHandler.getClipMidX()) * var4 / UserComparator7.get3dZoom();
+         int var7 = (ViewportMouse.ViewportMouse_y - class12.getClipMidY()) * var4 / UserComparator7.get3dZoom();
+         int var8 = (ViewportMouse.ViewportMouse_x - TaskHandler.getClipMidX()) * var5 / UserComparator7.get3dZoom();
+         int var9 = (ViewportMouse.ViewportMouse_y - class12.getClipMidY()) * var5 / UserComparator7.get3dZoom();
          int var11 = var1 * var7 + var0 * var4 >> 16;
          int var12 = var1 * var4 - var0 * var7 >> 16;
          int var13 = var5 * var0 + var1 * var9 >> 16;

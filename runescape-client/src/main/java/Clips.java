@@ -4,7 +4,7 @@ import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("jg")
-public class class236 {
+public class Clips {
    @ObfuscatedName("ou")
    @ObfuscatedGetter(
       intValue = 96656415
@@ -24,7 +24,7 @@ public class class236 {
    @ObfuscatedGetter(
       intValue = -1734758735
    )
-   public int field2790 = 512;
+   public int viewportZoom = 512;
    @ObfuscatedName("aq")
    @ObfuscatedSignature(
       descriptor = "Ljq;"
@@ -55,7 +55,8 @@ public class class236 {
    @ObfuscatedGetter(
       intValue = -1346890391
    )
-   int field2799;
+   @Export("clipNegativeMidX")
+   int clipNegativeMidX;
    @ObfuscatedName("ar")
    @ObfuscatedGetter(
       intValue = -1643027043
@@ -65,7 +66,8 @@ public class class236 {
    @ObfuscatedGetter(
       intValue = 1380452969
    )
-   int field2801;
+   @Export("clipNegativeMidY")
+   int clipNegativeMidY;
    @ObfuscatedName("as")
    @ObfuscatedGetter(
       intValue = 1145780727
@@ -75,7 +77,7 @@ public class class236 {
    @Export("Rasterizer3D_rowOffsets")
    int[] Rasterizer3D_rowOffsets = new int[1024];
 
-   class236() {
+   Clips() {
    }
 
    @ObfuscatedName("af")
@@ -86,9 +88,9 @@ public class class236 {
    void method4943() {
       this.field2795 = this.field2797 / 2;
       this.field2793 = this.field2796 / 2;
-      this.field2799 = -(this.field2795 * 1684654809) * -1346890391;
+      this.clipNegativeMidX = -(this.field2795 * 1684654809) * -1346890391;
       this.field2800 = this.field2797 - this.field2795;
-      this.field2801 = -(this.field2793 * -2109856295) * 1380452969;
+      this.clipNegativeMidY = -(this.field2793 * -2109856295) * 1380452969;
       this.field2802 = this.field2796 - this.field2793;
    }
 
@@ -100,9 +102,9 @@ public class class236 {
    void method4944(int var1, int var2, int var3, int var4) {
       this.field2795 = var1 - var2;
       this.field2793 = var3 - var4;
-      this.field2799 = -(this.field2795 * 1684654809) * -1346890391;
+      this.clipNegativeMidX = -(this.field2795 * 1684654809) * -1346890391;
       this.field2800 = this.field2797 - this.field2795;
-      this.field2801 = -(this.field2793 * -2109856295) * 1380452969;
+      this.clipNegativeMidY = -(this.field2793 * -2109856295) * 1380452969;
       this.field2802 = this.field2796 - this.field2793;
    }
 

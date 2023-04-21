@@ -205,6 +205,6 @@ public final class Tiles {
       garbageValue = "1441948024"
    )
    public static void method2221() {
-      Rasterizer3D.field2514.method4943();
+      Rasterizer3D.clips.method4943();
    }
 }

@@ -85,7 +85,8 @@ public class class287 {
       descriptor = "(IB)V",
       garbageValue = "-87"
    )
-   static void method5689(int var0) {
+   @Export("createMenuAction")
+   static void createMenuAction(int var0) {
       Language.tempMenuAction = new MenuAction();
       Language.tempMenuAction.param0 = Client.menuArguments1[var0];
       Language.tempMenuAction.param1 = Client.menuArguments2[var0];

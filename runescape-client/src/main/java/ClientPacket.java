@@ -346,7 +346,7 @@ public class ClientPacket implements class285 {
    @ObfuscatedSignature(
       descriptor = "Llv;"
    )
-   public static final ClientPacket field3165 = new ClientPacket(67, 10);
+   public static final ClientPacket PING_STATISTICS = new ClientPacket(67, 10);
    @ObfuscatedName("cv")
    @ObfuscatedSignature(
       descriptor = "Llv;"

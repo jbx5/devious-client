@@ -151,7 +151,7 @@ public class ServerPacket {
    @ObfuscatedSignature(
       descriptor = "Lls;"
    )
-   public static final ServerPacket field3245 = new ServerPacket(28, -2);
+   public static final ServerPacket MESSAGE_PRIVATE = new ServerPacket(28, -2);
    @ObfuscatedName("be")
    @ObfuscatedSignature(
       descriptor = "Lls;"
@@ -356,7 +356,7 @@ public class ServerPacket {
    @ObfuscatedSignature(
       descriptor = "Lls;"
    )
-   public static final ServerPacket field3286 = new ServerPacket(69, 1);
+   public static final ServerPacket LOGOUT = new ServerPacket(69, 1);
    @ObfuscatedName("co")
    @ObfuscatedSignature(
       descriptor = "Lls;"

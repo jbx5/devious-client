@@ -376,7 +376,7 @@ public class Archive extends AbstractArchive {
 
          for(var1 = 0; var1 < this.validGroups.length; ++var1) {
             if (super.fileCounts[var1] > 0) {
-               class236.method4951(var1, this.archiveDisk, this);
+               Clips.method4951(var1, this.archiveDisk, this);
                this.field4207 = var1;
             }
          }

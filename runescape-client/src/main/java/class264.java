@@ -60,7 +60,8 @@ public class class264 {
       descriptor = "(I)I",
       garbageValue = "1788412659"
    )
-   static int method5479() {
-      return Rasterizer3D.field2514.field2800;
+   @Export("Rasterizer3D_clipMidX2")
+   static int Rasterizer3D_clipMidX2() {
+      return Rasterizer3D.clips.field2800;
    }
 }

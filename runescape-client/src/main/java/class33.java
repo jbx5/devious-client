@@ -494,7 +494,7 @@ public class class33 {
                   }
                } else {
                   HealthBarDefinition var12 = var76.definition;
-                  SpritePixels var79 = var12.method3713();
+                  SpritePixels var79 = var12.getBackSprite();
                   SpritePixels var83 = var12.getFrontSprite();
                   int var84 = 0;
                   if (var79 != null && var83 != null) {

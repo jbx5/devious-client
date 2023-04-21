@@ -471,7 +471,7 @@ public class class10 {
                            int var42;
                            int var43;
                            if (var48 >= 0) {
-                              var41 = Rasterizer3D.field2514.Rasterizer3D_textureLoader.getAverageTextureRGB(var48);
+                              var41 = Rasterizer3D.clips.Rasterizer3D_textureLoader.getAverageTextureRGB(var48);
                               var40 = -1;
                            } else if (var36.primaryRgb == 16711935) {
                               var40 = -2;

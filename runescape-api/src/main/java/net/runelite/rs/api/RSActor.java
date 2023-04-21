@@ -28,7 +28,7 @@ package net.runelite.rs.api;
 import net.runelite.api.Actor;
 import net.runelite.mapping.Import;
 
-public interface RSActor extends RSRenderable, Actor
+public interface RSActor extends RSActorSpotAnim
 {
 	@Import("targetIndex")
 	@Override
@@ -98,7 +98,7 @@ public interface RSActor extends RSRenderable, Actor
 	@Override
 	void setGraphic(int id);
 
-	@Import("spotAnimationHeight")
+	/*@Import("spotAnimationHeight")
 	@Override
 	int getGraphicHeight();
 
@@ -114,7 +114,7 @@ public interface RSActor extends RSRenderable, Actor
 	void setSpotAnimFrame(int id);
 
 	@Import("spotAnimationFrameCycle")
-	int getSpotAnimationFrameCycle();
+	int getSpotAnimationFrameCycle();*/
 
 	// Idle animation
 

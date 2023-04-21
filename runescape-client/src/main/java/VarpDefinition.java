@@ -94,6 +94,6 @@ public class VarpDefinition extends DualNode {
       garbageValue = "-1740756415"
    )
    public static void method3653(int var0, int var1, int var2) {
-      Rasterizer3D.field2514.method4948(var0, var1, var2);
+      Rasterizer3D.clips.method4948(var0, var1, var2);
    }
 }
