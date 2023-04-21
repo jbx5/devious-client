@@ -119,7 +119,45 @@ import net.runelite.api.widgets.WidgetConfig;
 import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.api.widgets.WidgetItem;
 import net.runelite.api.widgets.WidgetType;
-import net.runelite.rs.api.*;
+import net.runelite.rs.api.RSAbstractArchive;
+import net.runelite.rs.api.RSArchive;
+import net.runelite.rs.api.RSBuffer;
+import net.runelite.rs.api.RSChatChannel;
+import net.runelite.rs.api.RSClanChannel;
+import net.runelite.rs.api.RSClient;
+import net.runelite.rs.api.RSCollisionMap;
+import net.runelite.rs.api.RSDbRowType;
+import net.runelite.rs.api.RSDbTableType;
+import net.runelite.rs.api.RSDualNode;
+import net.runelite.rs.api.RSEnumComposition;
+import net.runelite.rs.api.RSEvictingDualNodeHashTable;
+import net.runelite.rs.api.RSFloorOverlayDefinition;
+import net.runelite.rs.api.RSFont;
+import net.runelite.rs.api.RSFriendSystem;
+import net.runelite.rs.api.RSGameEngine;
+import net.runelite.rs.api.RSIndexedSprite;
+import net.runelite.rs.api.RSInterfaceParent;
+import net.runelite.rs.api.RSItemContainer;
+import net.runelite.rs.api.RSModelData;
+import net.runelite.rs.api.RSNPC;
+import net.runelite.rs.api.RSNode;
+import net.runelite.rs.api.RSNodeDeque;
+import net.runelite.rs.api.RSNodeHashTable;
+import net.runelite.rs.api.RSPacketBuffer;
+import net.runelite.rs.api.RSPlayer;
+import net.runelite.rs.api.RSProjectile;
+import net.runelite.rs.api.RSRuneLiteClanMember;
+import net.runelite.rs.api.RSRuneLiteMenuEntry;
+import net.runelite.rs.api.RSScene;
+import net.runelite.rs.api.RSScriptEvent;
+import net.runelite.rs.api.RSSpritePixels;
+import net.runelite.rs.api.RSStructComposition;
+import net.runelite.rs.api.RSTile;
+import net.runelite.rs.api.RSTileItem;
+import net.runelite.rs.api.RSUsername;
+import net.runelite.rs.api.RSWidget;
+import net.runelite.rs.api.RSWorld;
+import net.runelite.rs.api.RSClips;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
@@ -3369,13 +3407,15 @@ public abstract class RSClientMixin implements RSClient
 
 	@Inject
 	@Override
-	public int getRasterizer3D_clipNegativeMidX() {
+	public int getRasterizer3D_clipNegativeMidX()
+	{
 		return clips.getClipNegativeMidX();
 	}
 
 	@Inject
 	@Override
-	public int getRasterizer3D_clipNegativeMidY() {
+	public int getRasterizer3D_clipNegativeMidY()
+	{
 		return clips.getClipNegativeMidY();
 	}
 
