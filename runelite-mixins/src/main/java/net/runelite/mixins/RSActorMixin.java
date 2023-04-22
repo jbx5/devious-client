@@ -361,13 +361,15 @@ public abstract class RSActorMixin implements RSActor
 
 	@Inject
 	@Override
-	public int getGraphicHeight() {
+	public int getGraphicHeight()
+	{
 		return graphicHeight;
 	}
 
 	@Inject
 	@Override
-	public void setGraphicHeight(int height) {
+	public void setGraphicHeight(int height)
+	{
 		graphicHeight = height;
 	}
 }

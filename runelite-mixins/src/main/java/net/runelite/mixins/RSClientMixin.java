@@ -94,6 +94,7 @@ import net.runelite.api.events.NpcSpawned;
 import net.runelite.api.events.PlayerDespawned;
 import net.runelite.api.events.PlayerMenuOptionsChanged;
 import net.runelite.api.events.PlayerSpawned;
+import net.runelite.api.events.PostMenuSort;
 import net.runelite.api.events.PostStructComposition;
 import net.runelite.api.events.ResizeableChanged;
 import net.runelite.api.events.StatChanged;
@@ -1039,31 +1040,29 @@ public abstract class RSClientMixin implements RSClient
 		}
 	}
 
-	/*@Copy("menuSort")
+	@Copy("menuSort")
 	@Replace("menuSort")
-	public static void copy$menuSort()
+	public static final void copy$menuSort()
 	{
-		if (!client.isMenuOpen())
+		boolean var0 = false;
+
+		while (!var0)
 		{
-			while (true)
+			var0 = true;
+			for (int var1 = 0; var1 < client.getMenuOptionCount() - 1; ++var1)
 			{
-				boolean postMenuSort = true;
-				for (int i = 0; i < client.getMenuOptionCount() - 1; i++)
+				if (client.getMenuOpcodes()[var1] < 1000 && client.getMenuOpcodes()[var1 + 1] > 1000)
 				{
-					if (client.getMenuOpcodes()[i] < 1000 && client.getMenuOpcodes()[i + 1] > 1000)
-					{
-						sortMenuEntries(i, i + 1);
-						postMenuSort = false;
+					sortMenuEntries(var1, var1 + 1);
+					var0 = false;
 					}
 				}
-				if (postMenuSort)
+			if (var0 && !client.isMenuOpen())
 				{
 					client.getCallbacks().post(new PostMenuSort());
-					break;
 				}
 			}
 		}
-	}*/
 
 	@Inject
 	public static void sortMenuEntries(int left, int right)
