@@ -470,7 +470,8 @@ public final class class425 {
       descriptor = "(B)V",
       garbageValue = "32"
    )
-   static final void method8244() {
+   @Export("menuSort")
+   static final void menuSort() {
       boolean var0 = false;
 
       while(!var0) {

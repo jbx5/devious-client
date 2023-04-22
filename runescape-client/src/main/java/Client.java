@@ -6022,7 +6022,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
    )
    @Export("menu")
    final void menu() {
-      class425.method8244();
+      class425.menuSort();
       if (clickedWidget == null) {
          int var1 = MouseHandler.MouseHandler_lastButton;
          int var2;

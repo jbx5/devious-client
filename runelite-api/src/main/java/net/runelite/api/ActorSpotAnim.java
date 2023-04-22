@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2017, Adam <Adam@sigterm.info>
+ * Copyright (c) 2023, Adam <Adam@sigterm.info>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,6 +24,49 @@
  */
 package net.runelite.api;
 
-public interface ActorSpotAnim
+public interface ActorSpotAnim extends Node
 {
+	/**
+	 * Get the spotanim id
+	 * @see GraphicID
+	 * @return
+	 */
+	int getId();
+
+	/**
+	 * Set the spotanim id
+	 * @see GraphicID
+	 * @param id
+	 */
+	void setId(int id);
+
+	/**
+	 * Get the spotanim height
+	 * @return
+	 */
+	int getHeight();
+
+	/**
+	 * Set the spotanim height
+	 * @param height
+	 */
+	void setHeight(int height);
+
+	/**
+	 * Get the spotanim frame
+	 * @return
+	 */
+	int getFrame();
+
+	/**
+	 * Set the spotanim frame
+	 * @param frame
+	 */
+	void setFrame(int frame);
+
+	/**
+	 * Get the spotanim frame cycle
+	 * @return
+	 */
+	int getSpotAnimationFrameCycle();
 }

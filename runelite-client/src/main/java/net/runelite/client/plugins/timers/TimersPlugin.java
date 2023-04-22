@@ -195,6 +195,18 @@ public class TimersPlugin extends Plugin
 			}
 		}
 
+		if (event.getVarbitId() == Varbits.HEAL_GROUP_COOLDOWN && config.showHealGroup())
+		{
+			if (event.getValue() == 1)
+			{
+				createGameTimer(HEAL_GROUP);
+			}
+			else
+			{
+				removeGameTimer(HEAL_GROUP);
+			}
+		}
+
 		if (event.getVarbitId() == Varbits.DEATH_CHARGE_COOLDOWN && config.showArceuusCooldown())
 		{
 			if (event.getValue() == 1)
@@ -646,6 +658,11 @@ public class TimersPlugin extends Plugin
 		if (!config.showVengeance())
 		{
 			removeGameTimer(VENGEANCE);
+		}
+
+		if (!config.showHealGroup())
+		{
+			removeGameTimer(HEAL_GROUP);
 		}
 
 		if (!config.showVengeanceActive())

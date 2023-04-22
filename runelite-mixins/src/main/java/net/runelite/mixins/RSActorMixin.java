@@ -50,6 +50,7 @@ import net.runelite.api.mixins.MethodHook;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Shadow;
 import net.runelite.rs.api.RSActor;
+import net.runelite.rs.api.RSActorSpotAnim;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSHealthBar;
 import net.runelite.rs.api.RSHealthBarDefinition;
@@ -218,23 +219,28 @@ public abstract class RSActorMixin implements RSActor
 		client.getCallbacks().post(animationChange);
 	}
 
+	@Inject
+	private RSActorSpotAnim rsActorSpotAnim;
+
 	@MethodHook(value = "updateSpotAnimation", end = true)
 	@Inject
 	public void onGraphicChanged(int idx, int graphicID, int graphicHeight, int graphicStartCycle)
 	{
+		rsActorSpotAnim = (RSActorSpotAnim) this.getSpotAnims().get(idx);
+
 		GraphicChanged graphicChanged = new GraphicChanged();
 		graphicChanged.setActor(this);
 		client.getCallbacks().post(graphicChanged);
 	}
 
-	@FieldHook("spotAnimation")
+	/*@FieldHook("spotAnimation")
 	@Inject
 	public void spotAnimationChanged(int idx)
 	{
 		GraphicChanged graphicChanged = new GraphicChanged();
 		graphicChanged.setActor(this);
 		client.getCallbacks().post(graphicChanged);
-	}
+	}*/
 
 	@FieldHook("targetIndex")
 	@Inject
@@ -357,17 +363,37 @@ public abstract class RSActorMixin implements RSActor
 	}
 
 	@Inject
-	public int graphicHeight = -1;
-
-	@Inject
 	@Override
-	public int getGraphicHeight() {
-		return graphicHeight;
+	public int getGraphicHeight()
+	{
+		return rsActorSpotAnim.getHeight();
 	}
 
 	@Inject
 	@Override
-	public void setGraphicHeight(int height) {
-		graphicHeight = height;
+	public void setGraphicHeight(int height)
+	{
+		rsActorSpotAnim.setHeight(height);
+	}
+
+	@Inject
+	@Override
+	public int getSpotAnimFrame()
+	{
+		return rsActorSpotAnim.getFrame();
+	}
+
+	@Inject
+	@Override
+	public void setSpotAnimFrame(int id)
+	{
+		rsActorSpotAnim.setFrame(id);
+	}
+
+	@Inject
+	@Override
+	public int getSpotAnimationFrameCycle()
+	{
+		return rsActorSpotAnim.getSpotAnimationFrameCycle();
 	}
 }

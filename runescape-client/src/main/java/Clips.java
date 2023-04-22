@@ -1,9 +1,11 @@
 import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("jg")
+@Implements("Clips")
 public class Clips {
    @ObfuscatedName("ou")
    @ObfuscatedGetter(
