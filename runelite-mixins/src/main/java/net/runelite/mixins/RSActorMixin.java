@@ -355,4 +355,19 @@ public abstract class RSActorMixin implements RSActor
 	{
 		return getPathLength() > 0;
 	}
+
+	@Inject
+	public int graphicHeight = -1;
+
+	@Inject
+	@Override
+	public int getGraphicHeight() {
+		return graphicHeight;
+	}
+
+	@Inject
+	@Override
+	public void setGraphicHeight(int height) {
+		graphicHeight = height;
+	}
 }
