@@ -492,7 +492,7 @@ public class NetFileRequest extends DualNode {
             var3 = ItemContainer.SpotAnimationDefinition_get(var6.spotAnimation).sequence;
             if (var3 == -1) {
                var6.remove();
-               --var0.field1202;
+               --var0.graphicsCount;
             } else {
                var6.spotAnimationFrame = Math.max(var6.spotAnimationFrame, 0);
                SequenceDefinition var4 = ItemContainer.SequenceDefinition_get(var3);
@@ -506,7 +506,7 @@ public class NetFileRequest extends DualNode {
 
                   if (var6.spotAnimationFrame >= var4.frameIds.length) {
                      var6.remove();
-                     --var0.field1202;
+                     --var0.graphicsCount;
                   }
                } else if (var4.isCachedModelIdSet()) {
                   ++var6.spotAnimationFrame;
@@ -515,11 +515,11 @@ public class NetFileRequest extends DualNode {
                      KeyHandler.method386(var4, var6.spotAnimationFrame, var0.x, var0.y);
                   } else {
                      var6.remove();
-                     --var0.field1202;
+                     --var0.graphicsCount;
                   }
                } else {
                   var6.remove();
-                  --var0.field1202;
+                  --var0.graphicsCount;
                }
             }
          }

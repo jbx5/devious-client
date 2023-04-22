@@ -4231,7 +4231,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
                var6 = var3.readUnsignedShort();
                var5 = var3.readInt();
                if (var55 != null) {
-                  var55.method2375(0, var6, var5 >> 16, var5 & '\uffff');
+                  var55.updateSpotAnimation(0, var6, var5 >> 16, var5 & '\uffff');
                }
 
                var1.serverPacket = null;
@@ -4276,7 +4276,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
                var5 = var3.readUnsignedShort();
                var6 = var3.readInt();
                if (var56 != null) {
-                  var56.method2375(0, var5, var6 >> 16, var6 & '\uffff');
+                  var56.updateSpotAnimation(0, var5, var6 >> 16, var6 & '\uffff');
                }
 
                var1.serverPacket = null;
@@ -5197,7 +5197,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
                var6 = var3.readUnsignedShort();
                var5 = var3.readInt();
                if (var70 != null) {
-                  var70.method2375(var26, var6, var5 >> 16, var5 & '\uffff');
+                  var70.updateSpotAnimation(var26, var6, var5 >> 16, var5 & '\uffff');
                }
 
                var1.serverPacket = null;
@@ -5443,7 +5443,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
                var5 = var3.readUnsignedShort();
                var6 = var3.readInt();
                if (var69 != null) {
-                  var69.method2375(var26, var5, var6 >> 16, var6 & '\uffff');
+                  var69.updateSpotAnimation(var26, var5, var6 >> 16, var6 & '\uffff');
                }
 
                var1.serverPacket = null;

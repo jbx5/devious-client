@@ -225,7 +225,7 @@ public class class146 extends class139 {
          if ((var5 & 1) != 0) {
             var6 = var1.readUnsignedShort();
             var7 = var1.readUnsignedIntLE();
-            var4.method2375(0, var6, var7 >> 16, var7 & '\uffff');
+            var4.updateSpotAnimation(0, var6, var7 >> 16, var7 & '\uffff');
          }
 
          if ((var5 & 16) != 0) {
@@ -441,7 +441,7 @@ public class class146 extends class139 {
                var8 = var1.readUnsignedByteSub();
                var9 = var1.readUnsignedShortAddLE();
                var16 = var1.readUnsignedIntLE();
-               var4.method2375(var8, var9, var16 >> 16, var16 & '\uffff');
+               var4.updateSpotAnimation(var8, var9, var16 >> 16, var16 & '\uffff');
             }
          }
       }

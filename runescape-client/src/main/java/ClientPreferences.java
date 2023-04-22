@@ -605,7 +605,7 @@ public class ClientPreferences {
       if ((var3 & 4096) != 0) {
          var5 = var0.readUnsignedShort();
          var13 = var0.readUnsignedIntIME();
-         var2.method2375(0, var5, var13 >> 16, var13 & '\uffff');
+         var2.updateSpotAnimation(0, var5, var13 >> 16, var13 & '\uffff');
       }
 
       if ((var3 & 1024) != 0) {
@@ -665,7 +665,7 @@ public class ClientPreferences {
             var14 = var0.readUnsignedByteNeg();
             var8 = var0.readUnsignedShortAddLE();
             var9 = var0.readInt();
-            var2.method2375(var14, var8, var9 >> 16, var9 & '\uffff');
+            var2.updateSpotAnimation(var14, var8, var9 >> 16, var9 & '\uffff');
          }
       }
 
