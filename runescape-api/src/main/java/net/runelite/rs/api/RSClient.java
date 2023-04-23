@@ -541,6 +541,9 @@ public interface RSClient extends RSGameEngine, Client
 	@Override
 	boolean isMenuOpen();
 
+	@Import("isMenuOpen")
+	void setMenuOpen(boolean open);
+
 	@Import("cycle")
 	@Override
 	int getGameCycle();
@@ -674,6 +677,9 @@ public interface RSClient extends RSGameEngine, Client
 	@Override
 	long getMouseLastPressedMillis();
 
+	@Import("MouseHandler_lastButton")
+	int getMouseLastButton();
+
 	@Import("keyHandler")
 	RSKeyHandler getKeyHandler();
 
@@ -794,7 +800,7 @@ public interface RSClient extends RSGameEngine, Client
 	@Override
 	int get3dZoom();
 
-	//@Import("Rasterizer3D_zoom")
+	@Import("get3dZoom")
 	void set3dZoom(int zoom);
 
 	@Import("Rasterizer3D_clipMidX2")
@@ -1131,6 +1137,21 @@ public interface RSClient extends RSGameEngine, Client
 
 	@Import("mouseRecorder")
 	RSMouseRecorder getMouseRecorder();
+
+	@Import("selectedSpellName")
+	String getSelectedSpellName();
+
+	@Import("selectedSpellName")
+	@Override
+	void setSelectedSpellName(String name);
+
+	@Override
+	@Import("selectedSpellActionName")
+	String getSelectedSpellActionName();
+
+	@Override
+	@Import("selectedSpellActionName")
+	void setSelectedSpellActionName(String action);
 
 	@Override
 	@Import("selectedSpellFlags")
@@ -1635,6 +1656,9 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("getDbRowType")
 	RSDbRowType getDbRowType(int var0);
 
+	@Import("graphicsCycle")
+	int getGraphicsCycle();
+
 	/*
 	Unethical
 	 */
@@ -1721,10 +1745,6 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("calculateTag")
 	long calculateTag(int var0, int var1, int var2, boolean var3, int var4);
 
-	@Import("isMenuOpen")
-	@Override
-	void setMenuOpen(boolean open);
-
 	@Import("clickedWidget")
 	@Override
 	void setDraggedWidget(Widget widget);
@@ -1740,9 +1760,6 @@ public interface RSClient extends RSGameEngine, Client
 
 	@Import("staffModLevel")
 	void setStaffModLevel(int level);
-
-	@Import("graphicsCycle")
-	int getGraphicsCycle();
 
 	@Import("isMembersWorld")
 	@Override
