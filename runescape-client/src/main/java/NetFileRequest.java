@@ -484,7 +484,7 @@ public class NetFileRequest extends DualNode {
          }
       }
 
-      IterableNodeHashTableIterator var7 = new IterableNodeHashTableIterator(var0.method2376());
+      IterableNodeHashTableIterator var7 = new IterableNodeHashTableIterator(var0.getSpotAnimations());
 
       int var3;
       for(ActorSpotAnim var6 = (ActorSpotAnim)var7.method8686(); var6 != null; var6 = (ActorSpotAnim)var7.next()) {

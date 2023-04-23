@@ -226,6 +226,7 @@ public abstract class RSActorMixin implements RSActor
 	@Inject
 	public void onGraphicChanged(int idx, int graphicID, int graphicHeight, int graphicStartCycle)
 	{
+		setGraphic(graphicID);
 		rsActorSpotAnim = (RSActorSpotAnim) this.getSpotAnims().get(idx);
 
 		GraphicChanged graphicChanged = new GraphicChanged();
@@ -394,6 +395,6 @@ public abstract class RSActorMixin implements RSActor
 	@Override
 	public int getSpotAnimationFrameCycle()
 	{
-		return rsActorSpotAnim.getSpotAnimationFrameCycle();
+		return rsActorSpotAnim.getCycle();
 	}
 }
