@@ -228,16 +228,26 @@ public abstract class RSActorMixin implements RSActor
 	@Inject
 	public void onGraphicChanged(int idx, int graphicID, int graphicHeight, int graphicStartCycle)
 	{
-		rsActorSpotAnim = (RSActorSpotAnim) this.getSpotAnims().get(idx);
-
 		if (hasSpotAnim(graphicID))
 		{
 			setGraphic(graphicID);
+			rsActorSpotAnim = (RSActorSpotAnim) this.getSpotAnims().get(idx);
 		}
 
 		GraphicChanged graphicChanged = new GraphicChanged();
 		graphicChanged.setActor(this);
 		client.getCallbacks().post(graphicChanged);
+	}
+
+	@FieldHook("graphicsCount")
+	@Inject
+	public void onGraphicsCountChanged(int idx)
+	{
+		if (!hasSpotAnim(getGraphic()))
+		{
+			setGraphic(-1);
+			rsActorSpotAnim = null;
+		}
 	}
 
 	@Inject
