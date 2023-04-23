@@ -604,7 +604,8 @@ public abstract class Actor extends Renderable {
       descriptor = "(B)Lro;",
       garbageValue = "10"
    )
-   IterableNodeHashTable method2376() {
+   @Export("getSpotAnimations")
+   IterableNodeHashTable getSpotAnimations() {
       return this.spotAnimations;
    }
 
@@ -613,7 +614,8 @@ public abstract class Actor extends Renderable {
       descriptor = "(I)V",
       garbageValue = "-2086288959"
    )
-   void method2377() {
+   @Export("clearSpotAnimations")
+   void clearSpotAnimations() {
       IterableNodeHashTableIterator var1 = new IterableNodeHashTableIterator(this.spotAnimations);
 
       for(ActorSpotAnim var2 = (ActorSpotAnim)var1.method8686(); var2 != null; var2 = (ActorSpotAnim)var1.next()) {

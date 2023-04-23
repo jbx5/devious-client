@@ -96,6 +96,10 @@ public interface RSActor extends RSRenderable, Actor, RSActorSpotAnim
 	@Override
 	IterableHashTable<ActorSpotAnim> getSpotAnims();
 
+	@Import("clearSpotAnimations")
+	@Override
+	void clearSpotAnims();
+
 	@Import("spotAnimation")
 	@Override
 	int getGraphic();

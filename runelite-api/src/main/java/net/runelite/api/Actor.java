@@ -385,6 +385,14 @@ public interface Actor extends Renderable, SceneEntity
 	void setSpotAnimFrame(int spotAnimFrame);
 
 	/**
+	 * Get the frame cycle. The number of ticks the client has been on this frame.
+	 * @return
+	 * @deprecated see {@link ActorSpotAnim#getCycle()}
+	 */
+	@Deprecated
+	int getSpotAnimationFrameCycle();
+
+	/**
 	 * Gets the canvas area of the current tiles the actor is standing on.
 	 *
 	 * @return the current tile canvas area

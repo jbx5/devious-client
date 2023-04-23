@@ -65,8 +65,14 @@ public interface ActorSpotAnim extends Node
 	void setFrame(int frame);
 
 	/**
-	 * Get the spotanim frame cycle
+	 * Get the frame cycle. The number of ticks the client has been on this frame.
 	 * @return
 	 */
-	int getSpotAnimationFrameCycle();
+	int getCycle();
+
+	/**
+	 * Set the frame cycle.
+	 * @param cycle
+	 */
+	void setCycle(int cycle);
 }

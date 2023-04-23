@@ -13,23 +13,27 @@ public interface RSActorSpotAnim extends ActorSpotAnim
 	@Override
 	void setId(int id);
 
-    @Import("spotAnimationHeight")
-    @Override
+	@Import("spotAnimationHeight")
+	@Override
 	int getHeight();
 
-    @Import("spotAnimationHeight")
-    @Override
+	@Import("spotAnimationHeight")
+	@Override
 	void setHeight(int id);
 
-    @Import("spotAnimationFrame")
+	@Import("spotAnimationFrame")
 	@Override
 	int getFrame();
 
-    @Import("spotAnimationFrame")
-    @Override
+	@Import("spotAnimationFrame")
+	@Override
 	void setFrame(int id);
 
-    @Import("spotAnimationFrameCycle")
+	@Import("spotAnimationFrameCycle")
 	@Override
-    int getSpotAnimationFrameCycle();
+	int getCycle();
+
+	@Import("spotAnimationFrameCycle")
+	@Override
+	void setCycle(int cycle);
 }
