@@ -26,6 +26,7 @@ package net.runelite.mixins;
 
 import com.google.common.collect.ImmutableSet;
 import net.runelite.api.Actor;
+import net.runelite.api.ActorSpotAnim;
 import net.runelite.api.Hitsplat;
 import net.runelite.api.NPC;
 import net.runelite.api.NPCComposition;
@@ -62,6 +63,7 @@ import net.runelite.rs.api.RSNode;
 import java.awt.Graphics2D;
 import java.awt.Polygon;
 import java.awt.image.BufferedImage;
+import java.util.Iterator;
 import java.util.Set;
 
 @Mixin(RSActor.class)
@@ -226,12 +228,43 @@ public abstract class RSActorMixin implements RSActor
 	@Inject
 	public void onGraphicChanged(int idx, int graphicID, int graphicHeight, int graphicStartCycle)
 	{
-		setGraphic(graphicID);
-		rsActorSpotAnim = (RSActorSpotAnim) this.getSpotAnims().get(idx);
+		if (hasSpotAnim(graphicID))
+		{
+			setGraphic(graphicID);
+			rsActorSpotAnim = (RSActorSpotAnim) this.getSpotAnims().get(idx);
+		}
 
 		GraphicChanged graphicChanged = new GraphicChanged();
 		graphicChanged.setActor(this);
 		client.getCallbacks().post(graphicChanged);
+	}
+
+	@FieldHook("graphicsCount")
+	@Inject
+	public void onGraphicsCountChanged(int idx)
+	{
+		if (!hasSpotAnim(getGraphic()))
+		{
+			setGraphic(-1);
+			rsActorSpotAnim = null;
+		}
+	}
+
+	@Inject
+	@Override
+	public boolean hasSpotAnim(int spotAnimId)
+	{
+		Iterator<ActorSpotAnim> iter = this.getSpotAnims().iterator();
+
+		while (iter.hasNext())
+		{
+			RSActorSpotAnim rsActorSpotAnim = (RSActorSpotAnim) iter.next();
+			if (rsActorSpotAnim.getId() == spotAnimId)
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/*@FieldHook("spotAnimation")
