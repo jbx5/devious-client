@@ -102,7 +102,7 @@ public class ObjectComposition extends DualNode {
    public int int1 = -1;
    @ObfuscatedName("ak")
    @ObfuscatedGetter(
-      intValue = -1437543955
+      intValue = 1355934976
    )
    @Export("clipType")
    int clipType = -1;
