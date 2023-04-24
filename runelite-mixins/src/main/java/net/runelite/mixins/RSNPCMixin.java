@@ -150,6 +150,7 @@ public abstract class RSNPCMixin implements RSNPC
 	public RSModel copy$getModel()
 	{
 		if (!client.isInterpolateNpcAnimations()
+			|| !this.hasSpotAnim(getGraphic())
 			|| this.getAnimation() == AnimationID.HELLHOUND_DEFENCE
 			|| this.getAnimation() == 8270
 			|| this.getAnimation() == 8271
@@ -158,7 +159,6 @@ public abstract class RSNPCMixin implements RSNPC
 			|| this.getId() == NpcID.TREE_SPIRIT && this.getAnimation() == AnimationID.IDLE
 			|| this.getId() == NpcID.TREE_SPIRIT_6380 && this.getAnimation() == AnimationID.IDLE
 			|| this.getId() == NpcID.TREE_SPIRIT_HARD && this.getAnimation() == AnimationID.IDLE
-			|| this.getGraphicsCount() == 0
 		)
 		{
 			return copy$getModel();
