@@ -30,7 +30,7 @@ import net.runelite.api.ActorSpotAnim;
 import net.runelite.api.IterableHashTable;
 import net.runelite.mapping.Import;
 
-public interface RSActor extends RSRenderable, Actor, RSActorSpotAnim
+public interface RSActor extends RSRenderable, Actor
 {
 	@Import("targetIndex")
 	@Override
