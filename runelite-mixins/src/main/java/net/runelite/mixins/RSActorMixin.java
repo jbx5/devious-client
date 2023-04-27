@@ -26,6 +26,7 @@ package net.runelite.mixins;
 
 import com.google.common.collect.ImmutableSet;
 import net.runelite.api.Actor;
+import net.runelite.api.ActorSpotAnim;
 import net.runelite.api.Hitsplat;
 import net.runelite.api.NPC;
 import net.runelite.api.NPCComposition;
@@ -50,6 +51,7 @@ import net.runelite.api.mixins.MethodHook;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Shadow;
 import net.runelite.rs.api.RSActor;
+import net.runelite.rs.api.RSActorSpotAnim;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSHealthBar;
 import net.runelite.rs.api.RSHealthBarDefinition;
@@ -61,6 +63,7 @@ import net.runelite.rs.api.RSNode;
 import java.awt.Graphics2D;
 import java.awt.Polygon;
 import java.awt.image.BufferedImage;
+import java.util.Iterator;
 import java.util.Set;
 
 @Mixin(RSActor.class)
@@ -218,14 +221,60 @@ public abstract class RSActorMixin implements RSActor
 		client.getCallbacks().post(animationChange);
 	}
 
-	@FieldHook("spotAnimation")
+	@Inject
+	private ActorSpotAnim actorSpotAnim;
+
+	@MethodHook(value = "updateSpotAnimation", end = true)
+	@Inject
+	public void onGraphicChanged(int idx, int graphicID, int graphicHeight, int graphicStartCycle)
+	{
+		if (hasSpotAnim(graphicID))
+		{
+			setGraphic(graphicID);
+			actorSpotAnim = this.getSpotAnims().get(idx);
+		}
+
+		GraphicChanged graphicChanged = new GraphicChanged();
+		graphicChanged.setActor(this);
+		client.getCallbacks().post(graphicChanged);
+	}
+
+	@FieldHook("graphicsCount")
+	@Inject
+	public void onGraphicsCountChanged(int idx)
+	{
+		if (!hasSpotAnim(getGraphic()))
+		{
+			setGraphic(-1);
+			actorSpotAnim = null;
+		}
+	}
+
+	@Inject
+	@Override
+	public boolean hasSpotAnim(int spotAnimId)
+	{
+		Iterator<ActorSpotAnim> iter = this.getSpotAnims().iterator();
+
+		while (iter.hasNext())
+		{
+			RSActorSpotAnim rsActorSpotAnim = (RSActorSpotAnim) iter.next();
+			if (rsActorSpotAnim.getId() == spotAnimId)
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/*@FieldHook("spotAnimation")
 	@Inject
 	public void spotAnimationChanged(int idx)
 	{
 		GraphicChanged graphicChanged = new GraphicChanged();
 		graphicChanged.setActor(this);
 		client.getCallbacks().post(graphicChanged);
-	}
+	}*/
 
 	@FieldHook("targetIndex")
 	@Inject
@@ -345,5 +394,40 @@ public abstract class RSActorMixin implements RSActor
 	public boolean isMoving()
 	{
 		return getPathLength() > 0;
+	}
+
+	@Inject
+	@Override
+	public int getGraphicHeight()
+	{
+		return actorSpotAnim.getHeight();
+	}
+
+	@Inject
+	@Override
+	public void setGraphicHeight(int height)
+	{
+		actorSpotAnim.setHeight(height);
+	}
+
+	@Inject
+	@Override
+	public int getSpotAnimFrame()
+	{
+		return actorSpotAnim.getFrame();
+	}
+
+	@Inject
+	@Override
+	public void setSpotAnimFrame(int id)
+	{
+		actorSpotAnim.setFrame(id);
+	}
+
+	@Inject
+	@Override
+	public int getSpotAnimationFrameCycle()
+	{
+		return actorSpotAnim.getCycle();
 	}
 }

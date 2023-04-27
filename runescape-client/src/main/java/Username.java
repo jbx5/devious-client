@@ -3,62 +3,62 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("tj")
+@ObfuscatedName("tm")
 @Implements("Username")
 public class Username implements Comparable {
-   @ObfuscatedName("aj")
+   @ObfuscatedName("af")
    @Export("name")
    String name;
-   @ObfuscatedName("al")
+   @ObfuscatedName("an")
    @Export("cleanName")
    String cleanName;
 
    @ObfuscatedSignature(
-      descriptor = "(Ljava/lang/String;Lrm;)V"
+      descriptor = "(Ljava/lang/String;Lsw;)V"
    )
    public Username(String var1, LoginType var2) {
       this.name = var1;
-      this.cleanName = AbstractWorldMapIcon.method5295(var1, var2);
+      this.cleanName = class30.method468(var1, var2);
    }
 
    public Username(String var1) {
       this.name = var1;
-      this.cleanName = AbstractWorldMapIcon.method5295(var1, LoginType.oldscape);
+      this.cleanName = class30.method468(var1, LoginType.oldscape);
    }
 
-   @ObfuscatedName("aj")
+   @ObfuscatedName("af")
    @ObfuscatedSignature(
-      descriptor = "(B)Ljava/lang/String;",
-      garbageValue = "-69"
+      descriptor = "(I)Ljava/lang/String;",
+      garbageValue = "-710264960"
    )
    @Export("getName")
    public String getName() {
       return this.name;
    }
 
-   @ObfuscatedName("al")
+   @ObfuscatedName("an")
    @ObfuscatedSignature(
       descriptor = "(I)Ljava/lang/String;",
-      garbageValue = "-1873877372"
+      garbageValue = "-1558017121"
    )
-   public String method9223() {
+   public String method9667() {
       return this.cleanName;
    }
 
-   @ObfuscatedName("ac")
+   @ObfuscatedName("aw")
    @ObfuscatedSignature(
-      descriptor = "(B)Z",
-      garbageValue = "50"
+      descriptor = "(I)Z",
+      garbageValue = "-1688194993"
    )
    @Export("hasCleanName")
    public boolean hasCleanName() {
       return this.cleanName != null;
    }
 
-   @ObfuscatedName("ab")
+   @ObfuscatedName("aq")
    @ObfuscatedSignature(
-      descriptor = "(Ltj;B)I",
-      garbageValue = "-55"
+      descriptor = "(Ltm;B)I",
+      garbageValue = "58"
    )
    @Export("compareToTyped")
    public int compareToTyped(Username var1) {
@@ -88,20 +88,11 @@ public class Username implements Comparable {
       return this.cleanName == null ? 0 : this.cleanName.hashCode();
    }
 
-   public String toString() {
-      return this.getName();
-   }
-
    public int compareTo(Object var1) {
       return this.compareToTyped((Username)var1);
    }
 
-   @ObfuscatedName("ab")
-   @ObfuscatedSignature(
-      descriptor = "(II)Z",
-      garbageValue = "-918163875"
-   )
-   public static boolean method9220(int var0) {
-      return var0 >= WorldMapDecorationType.field3721.id && var0 <= WorldMapDecorationType.field3729.id || var0 == WorldMapDecorationType.field3713.id;
+   public String toString() {
+      return this.getName();
    }
 }

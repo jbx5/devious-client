@@ -4,26 +4,26 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("pz")
+@ObfuscatedName("pf")
 @Implements("FriendLoginUpdate")
 public class FriendLoginUpdate extends Link {
-   @ObfuscatedName("aj")
+   @ObfuscatedName("af")
    @ObfuscatedGetter(
-      intValue = -1570670069
+      intValue = 761297005
    )
-   public int field4512 = (int)(WorldMapSection2.method4844() / 1000L);
-   @ObfuscatedName("al")
+   public int field4575 = (int)(class96.method2634() / 1000L);
+   @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "Ltj;"
+      descriptor = "Ltm;"
    )
    @Export("username")
    public Username username;
-   @ObfuscatedName("ac")
+   @ObfuscatedName("aw")
    @Export("world")
    public short world;
 
    @ObfuscatedSignature(
-      descriptor = "(Ltj;I)V"
+      descriptor = "(Ltm;I)V"
    )
    FriendLoginUpdate(Username var1, int var2) {
       this.username = var1;

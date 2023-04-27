@@ -72,6 +72,13 @@ public abstract class RSDynamicObjectMixin implements RSDynamicObject
 		}
 	}
 
+	@Inject
+	@Override
+	public int getAnimCycle()
+	{
+		return client.getGameCycle() - getAnimCycleCount();
+	}
+
 	@FieldHook("cycleStart")
 	@Inject
 	public void onAnimCycleCountChanged(int idx)

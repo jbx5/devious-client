@@ -3,55 +3,39 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kg")
+@ObfuscatedName("kq")
 @Implements("WorldMapCacheName")
 public class WorldMapCacheName {
-   @ObfuscatedName("aj")
+   @ObfuscatedName("af")
    @ObfuscatedSignature(
-      descriptor = "Lkg;"
+      descriptor = "Lkq;"
    )
-   public static final WorldMapCacheName field3019 = new WorldMapCacheName("details");
-   @ObfuscatedName("al")
-   @ObfuscatedSignature(
-      descriptor = "Lkg;"
-   )
-   public static final WorldMapCacheName field3014 = new WorldMapCacheName("compositemap");
-   @ObfuscatedName("ac")
-   @ObfuscatedSignature(
-      descriptor = "Lkg;"
-   )
-   public static final WorldMapCacheName field3016 = new WorldMapCacheName("compositetexture");
-   @ObfuscatedName("ab")
-   @ObfuscatedSignature(
-      descriptor = "Lkg;"
-   )
-   static final WorldMapCacheName field3013 = new WorldMapCacheName("area");
+   public static final WorldMapCacheName field3054 = new WorldMapCacheName("details");
    @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "Lkg;"
+      descriptor = "Lkq;"
    )
-   public static final WorldMapCacheName field3017 = new WorldMapCacheName("labels");
-   @ObfuscatedName("sl")
+   public static final WorldMapCacheName field3058 = new WorldMapCacheName("compositemap");
+   @ObfuscatedName("aw")
    @ObfuscatedSignature(
-      descriptor = "Lfi;"
+      descriptor = "Lkq;"
    )
-   @Export("guestClanSettings")
-   static ClanSettings guestClanSettings;
-   @ObfuscatedName("ao")
+   public static final WorldMapCacheName field3055 = new WorldMapCacheName("compositetexture");
+   @ObfuscatedName("ac")
+   @ObfuscatedSignature(
+      descriptor = "Lkq;"
+   )
+   static final WorldMapCacheName field3056 = new WorldMapCacheName("area");
+   @ObfuscatedName("au")
+   @ObfuscatedSignature(
+      descriptor = "Lkq;"
+   )
+   public static final WorldMapCacheName field3053 = new WorldMapCacheName("labels");
+   @ObfuscatedName("ab")
    @Export("name")
    public final String name;
 
    WorldMapCacheName(String var1) {
       this.name = var1;
-   }
-
-   @ObfuscatedName("aj")
-   @ObfuscatedSignature(
-      descriptor = "(I)Z",
-      garbageValue = "295942057"
-   )
-   public static boolean method5296() {
-      ReflectionCheck var0 = (ReflectionCheck)class36.reflectionChecks.last();
-      return var0 != null;
    }
 }

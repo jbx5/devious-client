@@ -1,83 +1,47 @@
-import net.runelite.mapping.ObfuscatedGetter;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kz")
+@ObfuscatedName("kn")
 public class class283 {
-   @ObfuscatedName("aj")
-   @ObfuscatedSignature(
-      descriptor = "Lkz;"
-   )
-   public static final class283 field3158 = new class283(5);
-   @ObfuscatedName("al")
-   @ObfuscatedSignature(
-      descriptor = "Lkz;"
-   )
-   public static final class283 field3157 = new class283(5);
-   @ObfuscatedName("ac")
-   @ObfuscatedSignature(
-      descriptor = "Lkz;"
-   )
-   public static final class283 field3156 = new class283(14);
-   @ObfuscatedName("ab")
-   @ObfuscatedSignature(
-      descriptor = "Lkz;"
-   )
-   public static final class283 field3159 = new class283(4);
-   @ObfuscatedName("an")
-   @ObfuscatedSignature(
-      descriptor = "Lkz;"
-   )
-   public static final class283 field3155 = new class283(7);
    @ObfuscatedName("ao")
-   @ObfuscatedSignature(
-      descriptor = "Lkz;"
-   )
-   public static final class283 field3154 = new class283(4);
-   @ObfuscatedName("av")
-   @ObfuscatedSignature(
-      descriptor = "Lkz;"
-   )
-   public static final class283 field3160 = new class283(11);
-   @ObfuscatedName("aq")
-   @ObfuscatedSignature(
-      descriptor = "Lkz;"
-   )
-   public static final class283 field3161 = new class283(14);
-   @ObfuscatedName("ap")
-   @ObfuscatedSignature(
-      descriptor = "Lkz;"
-   )
-   public static final class283 field3162 = new class283(16);
-   @ObfuscatedName("ar")
-   @ObfuscatedSignature(
-      descriptor = "Lkz;"
-   )
-   public static final class283 field3163 = new class283(2);
-   @ObfuscatedName("ak")
-   @ObfuscatedSignature(
-      descriptor = "Lkz;"
-   )
-   public static final class283 field3164 = new class283(6);
-   @ObfuscatedName("jz")
-   @ObfuscatedGetter(
-      intValue = -2093609199
-   )
-   static int field3165;
+   @Export("Tiles_lightness")
+   static int[] Tiles_lightness;
 
+   @ObfuscatedName("af")
    @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "5"
+      descriptor = "(Lsw;I)I",
+      garbageValue = "-740837934"
    )
-   class283(int var1) {
+   static final int method5686(LoginType var0) {
+      if (var0 == null) {
+         return 12;
+      } else {
+         switch (var0.field4915) {
+            case 5:
+               return 20;
+            default:
+               return 12;
+         }
+      }
    }
 
-   @ObfuscatedName("ac")
+   @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "(II)Z",
-      garbageValue = "836863508"
+      descriptor = "(III)V",
+      garbageValue = "1369065577"
    )
-   public static boolean method5455(int var0) {
-      return (var0 >> 20 & 1) != 0;
+   public static void method5685(int var0, int var1) {
+      VarbitComposition var2 = class158.method3409(var0);
+      int var3 = var2.baseVar;
+      int var4 = var2.startBit;
+      int var5 = var2.endBit;
+      int var6 = Varps.Varps_masks[var5 - var4];
+      if (var1 < 0 || var1 > var6) {
+         var1 = 0;
+      }
+
+      var6 <<= var4;
+      Varps.Varps_main[var3] = Varps.Varps_main[var3] & ~var6 | var1 << var4 & var6;
    }
 }

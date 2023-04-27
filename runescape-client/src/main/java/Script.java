@@ -4,64 +4,59 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cv")
+@ObfuscatedName("ch")
 @Implements("Script")
 public class Script extends DualNode {
-   @ObfuscatedName("aj")
+   @ObfuscatedName("af")
    @ObfuscatedSignature(
-      descriptor = "Lkt;"
+      descriptor = "Lkh;"
    )
    @Export("Script_cached")
    static EvictingDualNodeHashTable Script_cached = new EvictingDualNodeHashTable(128);
-   @ObfuscatedName("as")
+   @ObfuscatedName("ai")
    @ObfuscatedSignature(
-      descriptor = "Lbw;"
+      descriptor = "Lno;"
    )
-   @Export("pcmPlayerProvider")
-   public static class50 pcmPlayerProvider;
-   @ObfuscatedName("oe")
-   @ObfuscatedSignature(
-      descriptor = "Lmy;"
-   )
-   static Widget field975;
-   @ObfuscatedName("al")
-   String field965;
-   @ObfuscatedName("ac")
+   @Export("NetCache_currentResponse")
+   public static NetFileRequest NetCache_currentResponse;
+   @ObfuscatedName("an")
+   String field961;
+   @ObfuscatedName("aw")
    @Export("opcodes")
    int[] opcodes;
-   @ObfuscatedName("ab")
+   @ObfuscatedName("ac")
    @Export("intOperands")
    int[] intOperands;
-   @ObfuscatedName("an")
+   @ObfuscatedName("au")
    @Export("stringOperands")
    String[] stringOperands;
-   @ObfuscatedName("ao")
+   @ObfuscatedName("ab")
    @ObfuscatedGetter(
-      intValue = -643585665
+      intValue = 2144970855
    )
    @Export("localIntCount")
    int localIntCount;
-   @ObfuscatedName("av")
+   @ObfuscatedName("aq")
    @ObfuscatedGetter(
-      intValue = -1479313491
+      intValue = -1897224143
    )
    @Export("localStringCount")
    int localStringCount;
-   @ObfuscatedName("aq")
+   @ObfuscatedName("al")
    @ObfuscatedGetter(
-      intValue = 208680291
+      intValue = -1203198865
    )
    @Export("intArgumentCount")
    int intArgumentCount;
-   @ObfuscatedName("ap")
+   @ObfuscatedName("at")
    @ObfuscatedGetter(
-      intValue = 492927757
+      intValue = 1178893217
    )
    @Export("stringArgumentCount")
    int stringArgumentCount;
-   @ObfuscatedName("ar")
+   @ObfuscatedName("aa")
    @ObfuscatedSignature(
-      descriptor = "[Lrz;"
+      descriptor = "[Lro;"
    )
    @Export("switches")
    IterableNodeHashTable[] switches;
@@ -69,49 +64,35 @@ public class Script extends DualNode {
    Script() {
    }
 
-   @ObfuscatedName("an")
+   @ObfuscatedName("au")
    @ObfuscatedSignature(
-      descriptor = "(II)[Lrz;",
-      garbageValue = "-2130489863"
+      descriptor = "(II)[Lro;",
+      garbageValue = "-1544314186"
    )
    @Export("newIterableNodeHashTable")
    IterableNodeHashTable[] newIterableNodeHashTable(int var1) {
       return new IterableNodeHashTable[var1];
    }
 
-   @ObfuscatedName("kp")
+   @ObfuscatedName("af")
    @ObfuscatedSignature(
-      descriptor = "([Lmy;IIIZI)V",
-      garbageValue = "-1823735571"
+      descriptor = "(III)I",
+      garbageValue = "-2065195027"
    )
-   @Export("resizeInterface")
-   static void resizeInterface(Widget[] var0, int var1, int var2, int var3, boolean var4) {
-      for(int var5 = 0; var5 < var0.length; ++var5) {
-         Widget var6 = var0[var5];
-         if (var6 != null && var6.parentId == var1) {
-            PcmPlayer.alignWidgetSize(var6, var2, var3, var4);
-            Tiles.alignWidgetPosition(var6, var2, var3);
-            if (var6.scrollX > var6.scrollWidth - var6.width) {
-               var6.scrollX = var6.scrollWidth - var6.width;
-            }
-
-            if (var6.scrollX < 0) {
-               var6.scrollX = 0;
-            }
-
-            if (var6.scrollY > var6.scrollHeight - var6.height) {
-               var6.scrollY = var6.scrollHeight - var6.height;
-            }
-
-            if (var6.scrollY < 0) {
-               var6.scrollY = 0;
-            }
-
-            if (var6.type == 0) {
-               class278.revalidateWidgetScroll(var0, var6, var4);
-            }
+   public static int method2137(int var0, int var1) {
+      int var2;
+      for(var2 = 1; var1 > 1; var1 >>= 1) {
+         if ((var1 & 1) != 0) {
+            var2 = var0 * var2;
          }
+
+         var0 *= var0;
       }
 
+      if (var1 == 1) {
+         return var0 * var2;
+      } else {
+         return var2;
+      }
    }
 }

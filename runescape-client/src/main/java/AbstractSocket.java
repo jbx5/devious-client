@@ -4,63 +4,56 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("pj")
+@ObfuscatedName("ph")
 @Implements("AbstractSocket")
 public abstract class AbstractSocket {
-   @ObfuscatedName("ir")
-   @ObfuscatedSignature(
-      descriptor = "Lrs;"
-   )
-   @Export("WorldMapElement_fonts")
-   static Fonts WorldMapElement_fonts;
-
    AbstractSocket() {
    }
 
-   @ObfuscatedName("aj")
+   @ObfuscatedName("an")
    @ObfuscatedSignature(
       descriptor = "(II)Z",
-      garbageValue = "-1511735162"
+      garbageValue = "1063469226"
    )
    @Export("isAvailable")
    public abstract boolean isAvailable(int var1) throws IOException;
 
-   @ObfuscatedName("al")
+   @ObfuscatedName("aw")
    @ObfuscatedSignature(
       descriptor = "(I)I",
-      garbageValue = "-1330081033"
+      garbageValue = "-1612671788"
    )
    @Export("available")
    public abstract int available() throws IOException;
 
    @ObfuscatedName("ac")
    @ObfuscatedSignature(
-      descriptor = "(B)I",
-      garbageValue = "-16"
+      descriptor = "(I)I",
+      garbageValue = "-591957582"
    )
    @Export("readUnsignedByte")
    public abstract int readUnsignedByte() throws IOException;
 
-   @ObfuscatedName("ab")
+   @ObfuscatedName("au")
    @ObfuscatedSignature(
-      descriptor = "([BIIB)I",
-      garbageValue = "0"
+      descriptor = "([BIII)I",
+      garbageValue = "-2106093590"
    )
    @Export("read")
    public abstract int read(byte[] var1, int var2, int var3) throws IOException;
 
-   @ObfuscatedName("an")
+   @ObfuscatedName("ab")
    @ObfuscatedSignature(
       descriptor = "([BIII)V",
-      garbageValue = "-1968026935"
+      garbageValue = "-2115422184"
    )
    @Export("write")
    public abstract void write(byte[] var1, int var2, int var3) throws IOException;
 
-   @ObfuscatedName("ao")
+   @ObfuscatedName("aq")
    @ObfuscatedSignature(
-      descriptor = "(B)V",
-      garbageValue = "-105"
+      descriptor = "(I)V",
+      garbageValue = "323141636"
    )
    @Export("close")
    public abstract void close();

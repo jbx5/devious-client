@@ -1,201 +1,52 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("qx")
+@ObfuscatedName("qi")
 public class class422 {
-   @ObfuscatedName("aj")
-   float field4619;
-   @ObfuscatedName("al")
-   float field4624;
-   @ObfuscatedName("ac")
-   float field4615;
-   @ObfuscatedName("ab")
-   float field4616;
-   @ObfuscatedName("an")
-   float field4617;
-   @ObfuscatedName("ao")
-   float field4618;
-   @ObfuscatedName("av")
-   float field4613;
-   @ObfuscatedName("aq")
-   float field4620;
-   @ObfuscatedName("ap")
-   float field4621;
-   @ObfuscatedName("ar")
-   float field4622;
-   @ObfuscatedName("ak")
-   float field4614;
-   @ObfuscatedName("ax")
-   float field4623;
-
-   static {
-      new class422();
-   }
-
-   class422() {
-      this.method7903();
-   }
-
-   @ObfuscatedName("aj")
+   @ObfuscatedName("af")
    @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "1933719764"
+      descriptor = "(Lsq;B)V",
+      garbageValue = "-98"
    )
-   void method7903() {
-      this.field4623 = 0.0F;
-      this.field4614 = 0.0F;
-      this.field4622 = 0.0F;
-      this.field4620 = 0.0F;
-      this.field4613 = 0.0F;
-      this.field4618 = 0.0F;
-      this.field4616 = 0.0F;
-      this.field4615 = 0.0F;
-      this.field4624 = 0.0F;
-      this.field4621 = 1.0F;
-      this.field4617 = 1.0F;
-      this.field4619 = 1.0F;
-   }
-
-   @ObfuscatedName("al")
-   @ObfuscatedSignature(
-      descriptor = "(FI)V",
-      garbageValue = "-1117453232"
-   )
-   void method7904(float var1) {
-      float var2 = (float)Math.cos((double)var1);
-      float var3 = (float)Math.sin((double)var1);
-      float var4 = this.field4624;
-      float var5 = this.field4617;
-      float var6 = this.field4620;
-      float var7 = this.field4614;
-      this.field4624 = var2 * var4 - this.field4615 * var3;
-      this.field4615 = var2 * this.field4615 + var4 * var3;
-      this.field4617 = var2 * var5 - var3 * this.field4618;
-      this.field4618 = var2 * this.field4618 + var5 * var3;
-      this.field4620 = var6 * var2 - this.field4621 * var3;
-      this.field4621 = var6 * var3 + this.field4621 * var2;
-      this.field4614 = var2 * var7 - var3 * this.field4623;
-      this.field4623 = var2 * this.field4623 + var7 * var3;
-   }
-
-   @ObfuscatedName("ac")
-   @ObfuscatedSignature(
-      descriptor = "(FI)V",
-      garbageValue = "-1895738714"
-   )
-   void method7905(float var1) {
-      float var2 = (float)Math.cos((double)var1);
-      float var3 = (float)Math.sin((double)var1);
-      float var4 = this.field4619;
-      float var5 = this.field4616;
-      float var6 = this.field4613;
-      float var7 = this.field4622;
-      this.field4619 = var2 * var4 + var3 * this.field4615;
-      this.field4615 = this.field4615 * var2 - var4 * var3;
-      this.field4616 = var3 * this.field4618 + var5 * var2;
-      this.field4618 = var2 * this.field4618 - var5 * var3;
-      this.field4613 = this.field4621 * var3 + var6 * var2;
-      this.field4621 = var2 * this.field4621 - var6 * var3;
-      this.field4622 = this.field4623 * var3 + var2 * var7;
-      this.field4623 = this.field4623 * var2 - var7 * var3;
-   }
-
-   @ObfuscatedName("ab")
-   @ObfuscatedSignature(
-      descriptor = "(FI)V",
-      garbageValue = "-1995207939"
-   )
-   void method7908(float var1) {
-      float var2 = (float)Math.cos((double)var1);
-      float var3 = (float)Math.sin((double)var1);
-      float var4 = this.field4619;
-      float var5 = this.field4616;
-      float var6 = this.field4613;
-      float var7 = this.field4622;
-      this.field4619 = var2 * var4 - var3 * this.field4624;
-      this.field4624 = var3 * var4 + this.field4624 * var2;
-      this.field4616 = var5 * var2 - this.field4617 * var3;
-      this.field4617 = var3 * var5 + var2 * this.field4617;
-      this.field4613 = var6 * var2 - this.field4620 * var3;
-      this.field4620 = this.field4620 * var2 + var6 * var3;
-      this.field4622 = var2 * var7 - var3 * this.field4614;
-      this.field4614 = var7 * var3 + this.field4614 * var2;
-   }
-
-   @ObfuscatedName("an")
-   @ObfuscatedSignature(
-      descriptor = "(FFFI)V",
-      garbageValue = "-446919774"
-   )
-   void method7913(float var1, float var2, float var3) {
-      this.field4622 += var1;
-      this.field4614 += var2;
-      this.field4623 += var3;
-   }
-
-   public String toString() {
-      return this.field4619 + "," + this.field4616 + "," + this.field4613 + "," + this.field4622 + "\n" + this.field4624 + "," + this.field4617 + "," + this.field4620 + "," + this.field4614 + "\n" + this.field4615 + "," + this.field4618 + "," + this.field4621 + "," + this.field4623;
-   }
-
-   @ObfuscatedName("an")
-   @ObfuscatedSignature(
-      descriptor = "(ILcv;ZB)I",
-      garbageValue = "-31"
-   )
-   static int method7922(int var0, Script var1, boolean var2) {
-      int var3 = -1;
-      Widget var4;
-      if (var0 >= 2000) {
-         var0 -= 1000;
-         var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-         var4 = WorldMapSection1.getWidget(var3);
-      } else {
-         var4 = var2 ? GameObject.scriptDotWidget : SoundSystem.scriptActiveWidget;
+   @Export("updatePlayer")
+   static final void updatePlayer(PacketBuffer var0) {
+      var0.importIndex();
+      int var1 = Client.localPlayerIndex;
+      Player var2 = MusicPatchNode.localPlayer = Client.players[var1] = new Player();
+      var2.index = var1;
+      int var3 = var0.readBits(30);
+      byte var4 = (byte)(var3 >> 28);
+      int var5 = var3 >> 14 & 16383;
+      int var6 = var3 & 16383;
+      var2.pathX[0] = var5 - WorldMapData_0.baseX * 64;
+      var2.x = (var2.pathX[0] << 7) + (var2.transformedSize() << 6);
+      var2.pathY[0] = var6 - GameObject.baseY * 64;
+      var2.y = (var2.pathY[0] << 7) + (var2.transformedSize() << 6);
+      GameEngine.Client_plane = var2.plane = var4;
+      if (Players.field1333[var1] != null) {
+         var2.read(Players.field1333[var1]);
       }
 
-      if (var0 == ScriptOpcodes.CC_SETPOSITION) {
-         Interpreter.Interpreter_intStackSize -= 4;
-         var4.rawX = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
-         var4.rawY = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
-         var4.xAlignment = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 2];
-         var4.yAlignment = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 3];
-         class69.invalidateWidget(var4);
-         class392.client.alignWidget(var4);
-         if (var3 != -1 && var4.type == 0) {
-            class278.revalidateWidgetScroll(class155.Widget_interfaceComponents[var3 >> 16], var4, false);
-         }
+      Players.Players_count = 0;
+      Players.Players_indices[++Players.Players_count - 1] = var1;
+      Players.field1329[var1] = 0;
+      Players.Players_emptyIdxCount = 0;
 
-         return 1;
-      } else if (var0 == ScriptOpcodes.CC_SETSIZE) {
-         Interpreter.Interpreter_intStackSize -= 4;
-         var4.rawWidth = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
-         var4.rawHeight = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
-         var4.widthAlignment = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 2];
-         var4.heightAlignment = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 3];
-         class69.invalidateWidget(var4);
-         class392.client.alignWidget(var4);
-         if (var3 != -1 && var4.type == 0) {
-            class278.revalidateWidgetScroll(class155.Widget_interfaceComponents[var3 >> 16], var4, false);
+      for(int var7 = 1; var7 < 2048; ++var7) {
+         if (var7 != var1) {
+            int var8 = var0.readBits(18);
+            int var9 = var8 >> 16;
+            int var10 = var8 >> 8 & 597;
+            int var11 = var8 & 597;
+            Players.Players_regions[var7] = (var10 << 14) + var11 + (var9 << 28);
+            Players.Players_orientations[var7] = 0;
+            Players.Players_targetIndices[var7] = -1;
+            Players.Players_emptyIndices[++Players.Players_emptyIdxCount - 1] = var7;
+            Players.field1329[var7] = 0;
          }
-
-         return 1;
-      } else if (var0 == ScriptOpcodes.CC_SETHIDE) {
-         boolean var5 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize] == 1;
-         if (var5 != var4.isHidden) {
-            var4.isHidden = var5;
-            class69.invalidateWidget(var4);
-         }
-
-         return 1;
-      } else if (var0 == ScriptOpcodes.CC_SETNOCLICKTHROUGH) {
-         var4.noClickThrough = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize] == 1;
-         return 1;
-      } else if (var0 == ScriptOpcodes.CC_SETNOSCROLLTHROUGH) {
-         var4.noScrollThrough = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize] == 1;
-         return 1;
-      } else {
-         return 2;
       }
+
+      var0.exportIndex();
    }
 }

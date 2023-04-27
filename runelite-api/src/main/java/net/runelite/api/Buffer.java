@@ -55,7 +55,7 @@ public interface Buffer extends Node
 
 	void readBytes(byte[] var1, int var2, int var3);
 
-	void readBytesLE(byte[] var1, int var2, int var3);
+	//void readBytesLE(byte[] var1, int var2, int var3);
 
 	String readCESU8();
 

@@ -7,47 +7,50 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gn")
+@ObfuscatedName("gj")
 @Implements("ClanChannel")
 public class ClanChannel extends Node {
-   @ObfuscatedName("aj")
-   boolean field1760;
-   @ObfuscatedName("al")
-   boolean field1754 = true;
-   @ObfuscatedName("ac")
+   @ObfuscatedName("av")
+   @Export("ByteArrayPool_alternativeSizes")
+   static int[] ByteArrayPool_alternativeSizes;
+   @ObfuscatedName("af")
+   boolean field1775;
+   @ObfuscatedName("an")
+   boolean field1777 = true;
+   @ObfuscatedName("aw")
    @Export("members")
    public List members;
-   @ObfuscatedName("ab")
+   @ObfuscatedName("ac")
    @Export("sortedMembers")
    int[] sortedMembers;
-   @ObfuscatedName("an")
+   @ObfuscatedName("au")
    @ObfuscatedGetter(
-      longValue = -2874155691746172939L
+      longValue = -3803380935026318657L
    )
-   long field1757;
-   @ObfuscatedName("ao")
+   long field1771;
+   @ObfuscatedName("ab")
    @Export("name")
    public String name = null;
-   @ObfuscatedName("av")
-   public byte field1758;
    @ObfuscatedName("aq")
-   public byte field1761;
+   public byte field1768;
+   @ObfuscatedName("al")
+   public byte field1774;
 
    static {
       new BitSet(65536);
    }
 
    @ObfuscatedSignature(
-      descriptor = "(Lsy;)V"
+      descriptor = "(Lsg;)V"
    )
    public ClanChannel(Buffer var1) {
-      this.method3330(var1);
+      this.method3419(var1);
    }
 
-   @ObfuscatedName("aj")
+   @ObfuscatedName("af")
    @ObfuscatedSignature(
       descriptor = "(I)[I",
-      garbageValue = "1448709705"
+      garbageValue = "67863678"
    )
    @Export("getSortedMembers")
    public int[] getSortedMembers() {
@@ -56,19 +59,20 @@ public class ClanChannel extends Node {
          this.sortedMembers = new int[this.members.size()];
 
          for(int var2 = 0; var2 < this.members.size(); this.sortedMembers[var2] = var2++) {
-            var1[var2] = ((ClanChannelMember)this.members.get(var2)).username.method9223();
+            var1[var2] = ((ClanChannelMember)this.members.get(var2)).username.method9667();
          }
 
-         Canvas.method315(var1, this.sortedMembers);
+         int[] var3 = this.sortedMembers;
+         class138.method3212(var1, var3, 0, var1.length - 1);
       }
 
       return this.sortedMembers;
    }
 
-   @ObfuscatedName("al")
+   @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "(Lfy;I)V",
-      garbageValue = "1948006287"
+      descriptor = "(Lfz;I)V",
+      garbageValue = "-1098707641"
    )
    @Export("addMember")
    void addMember(ClanChannelMember var1) {
@@ -76,10 +80,10 @@ public class ClanChannel extends Node {
       this.sortedMembers = null;
    }
 
-   @ObfuscatedName("ac")
+   @ObfuscatedName("aw")
    @ObfuscatedSignature(
-      descriptor = "(II)V",
-      garbageValue = "-661821909"
+      descriptor = "(IB)V",
+      garbageValue = "-27"
    )
    @Export("removeMember")
    void removeMember(int var1) {
@@ -87,22 +91,22 @@ public class ClanChannel extends Node {
       this.sortedMembers = null;
    }
 
-   @ObfuscatedName("ab")
+   @ObfuscatedName("ac")
    @ObfuscatedSignature(
-      descriptor = "(B)I",
-      garbageValue = "69"
+      descriptor = "(I)I",
+      garbageValue = "390972136"
    )
-   public int method3329() {
+   public int method3416() {
       return this.members.size();
    }
 
-   @ObfuscatedName("an")
+   @ObfuscatedName("au")
    @ObfuscatedSignature(
-      descriptor = "(Ljava/lang/String;S)I",
-      garbageValue = "179"
+      descriptor = "(Ljava/lang/String;I)I",
+      garbageValue = "-1047252257"
    )
-   public int method3337(String var1) {
-      if (!this.field1754) {
+   public int method3415(String var1) {
+      if (!this.field1777) {
          throw new RuntimeException("Displaynames not available");
       } else {
          for(int var2 = 0; var2 < this.members.size(); ++var2) {
@@ -115,19 +119,19 @@ public class ClanChannel extends Node {
       }
    }
 
-   @ObfuscatedName("ao")
+   @ObfuscatedName("ab")
    @ObfuscatedSignature(
-      descriptor = "(Lsy;I)V",
-      garbageValue = "1790413390"
+      descriptor = "(Lsg;I)V",
+      garbageValue = "-1838416622"
    )
-   void method3330(Buffer var1) {
+   void method3419(Buffer var1) {
       int var2 = var1.readUnsignedByte();
       if ((var2 & 1) != 0) {
-         this.field1760 = true;
+         this.field1775 = true;
       }
 
       if ((var2 & 2) != 0) {
-         this.field1754 = true;
+         this.field1777 = true;
       }
 
       int var3 = 2;
@@ -136,22 +140,22 @@ public class ClanChannel extends Node {
       }
 
       super.key = var1.readLong();
-      this.field1757 = var1.readLong();
+      this.field1771 = var1.readLong();
       this.name = var1.readStringCp1252NullTerminated();
       var1.readBoolean();
-      this.field1761 = var1.readByte();
-      this.field1758 = var1.readByte();
+      this.field1774 = var1.readByte();
+      this.field1768 = var1.readByte();
       int var4 = var1.readUnsignedShort();
       if (var4 > 0) {
          this.members = new ArrayList(var4);
 
          for(int var5 = 0; var5 < var4; ++var5) {
             ClanChannelMember var6 = new ClanChannelMember();
-            if (this.field1760) {
+            if (this.field1775) {
                var1.readLong();
             }
 
-            if (this.field1754) {
+            if (this.field1777) {
                var6.username = new Username(var1.readStringCp1252NullTerminated());
             }
 
@@ -167,16 +171,12 @@ public class ClanChannel extends Node {
 
    }
 
-   @ObfuscatedName("al")
+   @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "(Lsy;Ljava/lang/String;I)I",
-      garbageValue = "1827188191"
+      descriptor = "(IIIIB)I",
+      garbageValue = "91"
    )
-   public static int method3325(Buffer var0, String var1) {
-      int var2 = var0.offset;
-      byte[] var3 = WorldMapSection0.method5168(var1);
-      var0.writeSmartByteShort(var3.length);
-      var0.offset += class315.huffman.compress(var3, 0, var3.length, var0.array, var0.offset);
-      return var0.offset - var2;
+   static final int method3439(int var0, int var1, int var2, int var3) {
+      return var2 * var1 - var3 * var0 >> 16;
    }
 }

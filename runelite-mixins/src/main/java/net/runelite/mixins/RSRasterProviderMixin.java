@@ -1,13 +1,5 @@
 package net.runelite.mixins;
 
-import net.runelite.api.mixins.Inject;
-import net.runelite.api.mixins.MethodHook;
-import net.runelite.api.mixins.Mixin;
-import net.runelite.api.mixins.Replace;
-import net.runelite.api.mixins.Shadow;
-import net.runelite.rs.api.RSClient;
-import net.runelite.rs.api.RSRasterProvider;
-
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.color.ColorSpace;
@@ -19,6 +11,13 @@ import java.awt.image.Raster;
 import java.awt.image.WritableRaster;
 import java.nio.IntBuffer;
 import java.util.Hashtable;
+import net.runelite.api.mixins.Inject;
+import net.runelite.api.mixins.MethodHook;
+import net.runelite.api.mixins.Mixin;
+import net.runelite.api.mixins.Replace;
+import net.runelite.api.mixins.Shadow;
+import net.runelite.rs.api.RSClient;
+import net.runelite.rs.api.RSRasterProvider;
 
 @Mixin(RSRasterProvider.class)
 public abstract class RSRasterProviderMixin implements RSRasterProvider
@@ -31,7 +30,7 @@ public abstract class RSRasterProviderMixin implements RSRasterProvider
 
 	@MethodHook(value = "<init>", end = true)
 	@Inject
-	public void init(int width, int height, Component canvas)
+	public void init(int width, int height, Component canvas, boolean pixelsFloat)
 	{
 		if (!client.isGpu())
 		{

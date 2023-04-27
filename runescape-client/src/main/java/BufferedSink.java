@@ -6,40 +6,40 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("pg")
+@ObfuscatedName("qe")
 @Implements("BufferedSink")
 public class BufferedSink implements Runnable {
-   @ObfuscatedName("aj")
+   @ObfuscatedName("af")
    @Export("thread")
    Thread thread;
-   @ObfuscatedName("al")
+   @ObfuscatedName("an")
    @Export("outputStream")
    OutputStream outputStream;
-   @ObfuscatedName("ac")
+   @ObfuscatedName("aw")
    @ObfuscatedGetter(
-      intValue = -215647093
+      intValue = 1534274201
    )
    @Export("capacity")
    int capacity;
-   @ObfuscatedName("ab")
+   @ObfuscatedName("ac")
    @Export("buffer")
    byte[] buffer;
-   @ObfuscatedName("an")
+   @ObfuscatedName("au")
    @ObfuscatedGetter(
-      intValue = -1767803785
+      intValue = -836587695
    )
    @Export("position")
    int position = 0;
-   @ObfuscatedName("ao")
+   @ObfuscatedName("ab")
    @ObfuscatedGetter(
-      intValue = 1407565077
+      intValue = -989370023
    )
    @Export("limit")
    int limit = 0;
-   @ObfuscatedName("av")
+   @ObfuscatedName("aq")
    @Export("exception")
    IOException exception;
-   @ObfuscatedName("aq")
+   @ObfuscatedName("al")
    @Export("closed")
    boolean closed;
 
@@ -52,10 +52,10 @@ public class BufferedSink implements Runnable {
       this.thread.start();
    }
 
-   @ObfuscatedName("aj")
+   @ObfuscatedName("af")
    @ObfuscatedSignature(
-      descriptor = "(I)Z",
-      garbageValue = "27683152"
+      descriptor = "(B)Z",
+      garbageValue = "44"
    )
    @Export("isClosed")
    boolean isClosed() {
@@ -77,10 +77,10 @@ public class BufferedSink implements Runnable {
       }
    }
 
-   @ObfuscatedName("al")
+   @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "([BIII)V",
-      garbageValue = "-1927805716"
+      descriptor = "([BIIB)V",
+      garbageValue = "-78"
    )
    @Export("write")
    void write(byte[] var1, int var2, int var3) throws IOException {
@@ -117,10 +117,10 @@ public class BufferedSink implements Runnable {
       }
    }
 
-   @ObfuscatedName("ac")
+   @ObfuscatedName("aw")
    @ObfuscatedSignature(
       descriptor = "(I)V",
-      garbageValue = "-1959704308"
+      garbageValue = "663754894"
    )
    @Export("close")
    void close() {
@@ -196,57 +196,12 @@ public class BufferedSink implements Runnable {
 
    }
 
-   @ObfuscatedName("io")
+   @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "(IIIIIIII)V",
-      garbageValue = "-1819755426"
+      descriptor = "(IB)I",
+      garbageValue = "115"
    )
-   static final void method7747(int var0, int var1, int var2, int var3, int var4, int var5, int var6) {
-      var5 = Occluder.method4563(var5, var6);
-      int var7 = 2048 - var3 & 2047;
-      int var8 = 2048 - var4 & 2047;
-      int var9 = 0;
-      int var10 = 0;
-      int var11 = var5;
-      int var12;
-      int var13;
-      int var14;
-      if (var7 != 0) {
-         var12 = Rasterizer3D.Rasterizer3D_sine[var7];
-         var13 = Rasterizer3D.Rasterizer3D_cosine[var7];
-         var14 = var10 * var13 - var12 * var5 >> 16;
-         var11 = var12 * var10 + var13 * var5 >> 16;
-         var10 = var14;
-      }
-
-      if (var8 != 0) {
-         var12 = Rasterizer3D.Rasterizer3D_sine[var8];
-         var13 = Rasterizer3D.Rasterizer3D_cosine[var8];
-         var14 = var12 * var11 + var9 * var13 >> 16;
-         var11 = var13 * var11 - var12 * var9 >> 16;
-         var9 = var14;
-      }
-
-      if (Client.isCameraLocked) {
-         class364.field4333 = var0 - var9;
-         Coord.field3432 = var1 - var10;
-         class307.field3449 = var2 - var11;
-         WorldMapRectangle.field2963 = var3;
-         class28.field154 = var4;
-      } else {
-         class381.cameraX = var0 - var9;
-         class351.cameraY = var1 - var10;
-         class471.cameraZ = var2 - var11;
-         class311.cameraPitch = var3;
-         class110.cameraYaw = var4;
-      }
-
-      if (Client.oculusOrbState == 1 && Client.staffModLevel >= 2 && Client.cycle % 50 == 0 && (GrandExchangeOfferOwnWorldComparator.oculusOrbFocalPointX >> 7 != BuddyRankComparator.localPlayer.x >> 7 || ReflectionCheck.oculusOrbFocalPointY >> 7 != BuddyRankComparator.localPlayer.y >> 7)) {
-         var12 = BuddyRankComparator.localPlayer.plane;
-         var13 = GameEngine.baseX * 64 + (GrandExchangeOfferOwnWorldComparator.oculusOrbFocalPointX >> 7);
-         var14 = class178.baseY * 64 + (ReflectionCheck.oculusOrbFocalPointY >> 7);
-         class163.method3359(var13, var14, var12, true);
-      }
-
+   public static int method8064(int var0) {
+      return var0 >>> 4 & class484.field4974;
    }
 }

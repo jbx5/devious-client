@@ -1,91 +1,78 @@
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gu")
-public class class163 extends class156 {
-   @ObfuscatedName("aj")
-   String field1773;
-   @ObfuscatedName("al")
-   byte field1774;
-   @ObfuscatedName("ac")
-   byte field1772;
+@ObfuscatedName("gt")
+public class class163 extends class139 {
+   @ObfuscatedName("af")
+   @ObfuscatedGetter(
+      intValue = 1515394365
+   )
+   int field1791;
+   @ObfuscatedName("an")
+   @ObfuscatedGetter(
+      longValue = 382806309398385789L
+   )
+   long field1790;
    // $FF: synthetic field
    @ObfuscatedSignature(
-      descriptor = "Lgk;"
+      descriptor = "Lfa;"
    )
-   final class157 this$0;
+   final class142 this$0;
 
    @ObfuscatedSignature(
-      descriptor = "(Lgk;)V"
+      descriptor = "(Lfa;)V"
    )
-   class163(class157 var1) {
+   class163(class142 var1) {
       this.this$0 = var1;
    }
 
-   @ObfuscatedName("aj")
+   @ObfuscatedName("af")
    @ObfuscatedSignature(
-      descriptor = "(Lsy;I)V",
-      garbageValue = "2070491057"
+      descriptor = "(Lsg;I)V",
+      garbageValue = "168736686"
    )
-   void vmethod3353(Buffer var1) {
-      this.field1773 = var1.readStringCp1252NullTerminatedOrNull();
-      if (this.field1773 != null) {
-         var1.readUnsignedByte();
-         this.field1774 = var1.readByte();
-         this.field1772 = var1.readByte();
+   void vmethod3461(Buffer var1) {
+      this.field1791 = var1.readInt();
+      this.field1790 = var1.readLong();
+   }
+
+   @ObfuscatedName("an")
+   @ObfuscatedSignature(
+      descriptor = "(Lfj;I)V",
+      garbageValue = "1712319228"
+   )
+   void vmethod3458(ClanSettings var1) {
+      var1.method3312(this.field1791, this.field1790);
+   }
+
+   @ObfuscatedName("ac")
+   @ObfuscatedSignature(
+      descriptor = "(I[III)V",
+      garbageValue = "2068575587"
+   )
+   static void method3462(int var0, int[] var1, int var2) {
+      for(int var3 = 0; var3 < KitDefinition.KitDefinition_fileCount; ++var3) {
+         KitDefinition var4 = class100.KitDefinition_get(var3);
+         if (var4 != null && !var4.nonSelectable && (var0 == 1 ? 7 : 0) + var2 == var4.bodypartID) {
+            var1[PlayerComposition.equipmentIndices[var2]] = var3 + 256;
+            break;
+         }
       }
 
    }
 
-   @ObfuscatedName("al")
+   @ObfuscatedName("bp")
    @ObfuscatedSignature(
-      descriptor = "(Lgn;B)V",
-      garbageValue = "-82"
+      descriptor = "(ILch;ZI)I",
+      garbageValue = "-1671510816"
    )
-   void vmethod3354(ClanChannel var1) {
-      var1.name = this.field1773;
-      if (this.field1773 != null) {
-         var1.field1758 = this.field1774;
-         var1.field1761 = this.field1772;
+   static int method3463(int var0, Script var1, boolean var2) {
+      if (var0 == 7108) {
+         Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = ByteArrayPool.method7595() ? 1 : 0;
+         return 1;
+      } else {
+         return 2;
       }
-
-   }
-
-   @ObfuscatedName("al")
-   @ObfuscatedSignature(
-      descriptor = "(Lne;IIIZI)V",
-      garbageValue = "590202172"
-   )
-   public static void method3352(AbstractArchive var0, int var1, int var2, int var3, boolean var4) {
-      class293.musicPlayerStatus = 1;
-      class364.musicTrackArchive = var0;
-      IntHashTable.musicTrackGroupId = var1;
-      class293.musicTrackFileId = var2;
-      class368.musicTrackVolume = var3;
-      class293.musicTrackBoolean = var4;
-      AbstractRasterProvider.pcmSampleLength = 10000;
-   }
-
-   @ObfuscatedName("ab")
-   @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "-1594025816"
-   )
-   public static void method3357() {
-      WorldMapRegion.WorldMapRegion_cachedSprites.demote(5);
-   }
-
-   @ObfuscatedName("nf")
-   @ObfuscatedSignature(
-      descriptor = "(IIIZI)V",
-      garbageValue = "370588109"
-   )
-   public static void method3359(int var0, int var1, int var2, boolean var3) {
-      PacketBufferNode var4 = UserComparator9.getPacketBufferNode(ClientPacket.field3135, Client.packetWriter.isaacCipher);
-      var4.packetBuffer.writeShort(var0);
-      var4.packetBuffer.writeByteSub(var2);
-      var4.packetBuffer.writeIntME(var3 ? Client.field575 : 0);
-      var4.packetBuffer.writeShortAdd(var1);
-      Client.packetWriter.addNode(var4);
    }
 }
