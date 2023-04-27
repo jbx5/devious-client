@@ -5,83 +5,91 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("eo")
+@ObfuscatedName("ez")
 @Implements("UrlRequest")
 public class UrlRequest {
-   @ObfuscatedName("al")
+   @ObfuscatedName("an")
    @ObfuscatedGetter(
-      intValue = -685256153
+      intValue = 1340146847
    )
-   static int field1403 = -1;
+   static int field1407 = -1;
+   @ObfuscatedName("aw")
+   @ObfuscatedGetter(
+      intValue = -1513206085
+   )
+   static int field1406 = -2;
+   @ObfuscatedName("at")
+   @ObfuscatedGetter(
+      intValue = -808987209
+   )
+   public static int field1410;
+   @ObfuscatedName("af")
+   final URL field1408;
    @ObfuscatedName("ac")
    @ObfuscatedGetter(
-      intValue = 1778633031
+      intValue = -349727197
    )
-   static int field1404 = 1536228292;
-   @ObfuscatedName("aj")
-   final URL field1405;
-   @ObfuscatedName("ab")
-   @ObfuscatedGetter(
-      intValue = 475379689
-   )
-   volatile int field1402;
-   @ObfuscatedName("an")
+   volatile int field1405;
+   @ObfuscatedName("au")
    @Export("response0")
    volatile byte[] response0;
 
    UrlRequest(URL var1) {
-      this.field1402 = field1403;
-      this.field1405 = var1;
+      this.field1405 = field1407;
+      this.field1408 = var1;
    }
 
-   @ObfuscatedName("aj")
+   @ObfuscatedName("af")
    @ObfuscatedSignature(
-      descriptor = "(I)Z",
-      garbageValue = "549528116"
+      descriptor = "(B)Z",
+      garbageValue = "-54"
    )
    @Export("isDone")
    public boolean isDone() {
-      return this.field1402 != field1403;
+      return this.field1405 != field1407;
    }
 
-   @ObfuscatedName("al")
+   @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "(I)[B",
-      garbageValue = "1852193551"
+      descriptor = "(B)[B",
+      garbageValue = "76"
    )
    @Export("getResponse")
    public byte[] getResponse() {
       return this.response0;
    }
 
+   @ObfuscatedName("aw")
+   @ObfuscatedSignature(
+      descriptor = "(B)Ljava/lang/String;",
+      garbageValue = "82"
+   )
+   public String method2866() {
+      return this.field1408.toString();
+   }
+
    @ObfuscatedName("ac")
-   @ObfuscatedSignature(
-      descriptor = "(S)Ljava/lang/String;",
-      garbageValue = "-24011"
-   )
-   public String method2828() {
-      return this.field1405.toString();
+   @Export("Rasterizer3D_brighten")
+   static int Rasterizer3D_brighten(int var0, double var1) {
+      double var3 = (double)(var0 >> 16) / 256.0;
+      double var5 = (double)(var0 >> 8 & 255) / 256.0;
+      double var7 = (double)(var0 & 255) / 256.0;
+      var3 = Math.pow(var3, var1);
+      var5 = Math.pow(var5, var1);
+      var7 = Math.pow(var7, var1);
+      int var9 = (int)(var3 * 256.0);
+      int var10 = (int)(var5 * 256.0);
+      int var11 = (int)(256.0 * var7);
+      return var11 + (var10 << 8) + (var9 << 16);
    }
 
-   @ObfuscatedName("ab")
-   @ObfuscatedSignature(
-      descriptor = "(IZIZI)V",
-      garbageValue = "837272188"
-   )
-   @Export("sortWorldList")
-   static void sortWorldList(int var0, boolean var1, int var2, boolean var3) {
-      if (class260.World_worlds != null) {
-         class12.doWorldSorting(0, class260.World_worlds.length - 1, var0, var1, var2, var3);
-      }
-
-   }
-
-   @ObfuscatedName("ao")
+   @ObfuscatedName("as")
    @ObfuscatedSignature(
       descriptor = "(I)V",
-      garbageValue = "1203549376"
+      garbageValue = "-560341895"
    )
-   public static void method2834() {
-      ParamComposition.ParamDefinition_cached.clear();
+   static void method2867() {
+      class129.method3124(24);
+      class205.setLoginResponseString("The game servers are currently being updated.", "Please wait a few minutes and try again.", "");
    }
 }

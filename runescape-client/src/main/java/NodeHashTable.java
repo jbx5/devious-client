@@ -3,31 +3,31 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("rh")
+@ObfuscatedName("rc")
 @Implements("NodeHashTable")
 public final class NodeHashTable {
-   @ObfuscatedName("aj")
+   @ObfuscatedName("af")
    @Export("size")
    int size;
-   @ObfuscatedName("al")
+   @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "[Lru;"
+      descriptor = "[Lrp;"
    )
    @Export("buckets")
    Node[] buckets;
-   @ObfuscatedName("ac")
+   @ObfuscatedName("aw")
    @ObfuscatedSignature(
-      descriptor = "Lru;"
+      descriptor = "Lrp;"
    )
    @Export("currentGet")
    Node currentGet;
-   @ObfuscatedName("ab")
+   @ObfuscatedName("ac")
    @ObfuscatedSignature(
-      descriptor = "Lru;"
+      descriptor = "Lrp;"
    )
    @Export("current")
    Node current;
-   @ObfuscatedName("an")
+   @ObfuscatedName("au")
    @Export("index")
    int index = 0;
 
@@ -43,9 +43,9 @@ public final class NodeHashTable {
 
    }
 
-   @ObfuscatedName("aj")
+   @ObfuscatedName("af")
    @ObfuscatedSignature(
-      descriptor = "(J)Lru;"
+      descriptor = "(J)Lrp;"
    )
    @Export("get")
    public Node get(long var1) {
@@ -63,9 +63,9 @@ public final class NodeHashTable {
       return null;
    }
 
-   @ObfuscatedName("al")
+   @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "(Lru;J)V"
+      descriptor = "(Lrp;J)V"
    )
    @Export("put")
    public void put(Node var1, long var2) {
@@ -81,9 +81,9 @@ public final class NodeHashTable {
       var1.key = var2;
    }
 
-   @ObfuscatedName("ac")
+   @ObfuscatedName("aw")
    @ObfuscatedSignature(
-      descriptor = "()Lru;"
+      descriptor = "()Lrp;"
    )
    @Export("first")
    public Node first() {
@@ -91,9 +91,9 @@ public final class NodeHashTable {
       return this.next();
    }
 
-   @ObfuscatedName("ab")
+   @ObfuscatedName("ac")
    @ObfuscatedSignature(
-      descriptor = "()Lru;"
+      descriptor = "()Lrp;"
    )
    @Export("next")
    public Node next() {

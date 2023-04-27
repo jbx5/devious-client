@@ -1,3 +1,6 @@
+import java.lang.management.GarbageCollectorMXBean;
+import java.lang.management.ManagementFactory;
+import java.util.Iterator;
 import java.util.zip.CRC32;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
@@ -5,138 +8,172 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("nk")
+@ObfuscatedName("nl")
 @Implements("NetCache")
 public class NetCache {
-   @ObfuscatedName("aj")
+   @ObfuscatedName("af")
    @ObfuscatedSignature(
-      descriptor = "Lpj;"
+      descriptor = "Lph;"
    )
    @Export("NetCache_socket")
    public static AbstractSocket NetCache_socket;
-   @ObfuscatedName("al")
+   @ObfuscatedName("an")
    @ObfuscatedGetter(
-      intValue = 1180496763
+      intValue = -942339237
    )
    @Export("NetCache_loadTime")
    public static int NetCache_loadTime = 0;
-   @ObfuscatedName("ac")
+   @ObfuscatedName("aw")
    @ObfuscatedGetter(
-      longValue = -5798342046050268773L
+      longValue = -2114584129517998633L
    )
-   public static long field4204;
-   @ObfuscatedName("ab")
+   public static long field4259;
+   @ObfuscatedName("ac")
    @ObfuscatedSignature(
-      descriptor = "Lrh;"
+      descriptor = "Lrc;"
    )
    @Export("NetCache_pendingPriorityWrites")
    public static NodeHashTable NetCache_pendingPriorityWrites = new NodeHashTable(4096);
-   @ObfuscatedName("an")
+   @ObfuscatedName("au")
    @ObfuscatedGetter(
-      intValue = 73591553
+      intValue = -1171541559
    )
    @Export("NetCache_pendingPriorityWritesCount")
    public static int NetCache_pendingPriorityWritesCount = 0;
-   @ObfuscatedName("ao")
+   @ObfuscatedName("ab")
    @ObfuscatedSignature(
-      descriptor = "Lrh;"
+      descriptor = "Lrc;"
    )
    @Export("NetCache_pendingPriorityResponses")
    public static NodeHashTable NetCache_pendingPriorityResponses = new NodeHashTable(32);
-   @ObfuscatedName("av")
+   @ObfuscatedName("aq")
    @ObfuscatedGetter(
-      intValue = 569947331
+      intValue = -1952694793
    )
    @Export("NetCache_pendingPriorityResponsesCount")
    public static int NetCache_pendingPriorityResponsesCount = 0;
-   @ObfuscatedName("aq")
+   @ObfuscatedName("al")
    @ObfuscatedSignature(
-      descriptor = "Lnl;"
+      descriptor = "Lni;"
    )
    @Export("NetCache_pendingWritesQueue")
    public static DualNodeDeque NetCache_pendingWritesQueue = new DualNodeDeque();
-   @ObfuscatedName("ap")
+   @ObfuscatedName("at")
    @ObfuscatedSignature(
-      descriptor = "Lrh;"
+      descriptor = "Lrc;"
    )
    @Export("NetCache_pendingWrites")
    public static NodeHashTable NetCache_pendingWrites = new NodeHashTable(4096);
-   @ObfuscatedName("ar")
+   @ObfuscatedName("aa")
    @ObfuscatedGetter(
-      intValue = 1074039989
+      intValue = -32010957
    )
    @Export("NetCache_pendingWritesCount")
    public static int NetCache_pendingWritesCount = 0;
-   @ObfuscatedName("ak")
+   @ObfuscatedName("ay")
    @ObfuscatedSignature(
-      descriptor = "Lrh;"
+      descriptor = "Lrc;"
    )
    @Export("NetCache_pendingResponses")
    public static NodeHashTable NetCache_pendingResponses = new NodeHashTable(4096);
-   @ObfuscatedName("ax")
+   @ObfuscatedName("ao")
    @ObfuscatedGetter(
-      intValue = -1997263581
+      intValue = -1651605431
    )
    @Export("NetCache_pendingResponsesCount")
    public static int NetCache_pendingResponsesCount = 0;
-   @ObfuscatedName("am")
+   @ObfuscatedName("ax")
+   static boolean field4247;
+   @ObfuscatedName("ag")
    @ObfuscatedSignature(
-      descriptor = "Lsy;"
+      descriptor = "Lsg;"
    )
    @Export("NetCache_responseHeaderBuffer")
    public static Buffer NetCache_responseHeaderBuffer = new Buffer(8);
-   @ObfuscatedName("az")
+   @ObfuscatedName("ah")
    @ObfuscatedSignature(
-      descriptor = "Lsy;"
+      descriptor = "Lsg;"
    )
    @Export("NetCache_responseArchiveBuffer")
    public static Buffer NetCache_responseArchiveBuffer;
-   @ObfuscatedName("ae")
+   @ObfuscatedName("av")
    @ObfuscatedGetter(
-      intValue = -1060120023
+      intValue = -1961769541
    )
-   public static int field4216 = 0;
-   @ObfuscatedName("ag")
+   public static int field4253 = 0;
+   @ObfuscatedName("am")
    @Export("NetCache_crc")
-   public static CRC32 NetCache_crc = new CRC32();
-   @ObfuscatedName("af")
+   static CRC32 NetCache_crc = new CRC32();
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
-      descriptor = "[Lmx;"
+      descriptor = "[Lnd;"
    )
    @Export("NetCache_archives")
-   public static Archive[] NetCache_archives = new Archive[256];
-   @ObfuscatedName("ai")
+   static Archive[] NetCache_archives = new Archive[256];
+   @ObfuscatedName("ak")
    @ObfuscatedGetter(
-      intValue = -886563131
+      intValue = 1097614811
    )
-   static int field4219 = -1;
-   @ObfuscatedName("aw")
+   static int field4238 = -1;
+   @ObfuscatedName("az")
    @ObfuscatedGetter(
-      intValue = 82319179
+      intValue = 1745465359
    )
-   static int field4220 = 255;
-   @ObfuscatedName("aa")
-   public static byte field4213 = 0;
-   @ObfuscatedName("ah")
+   static int field4257 = 255;
+   @ObfuscatedName("ad")
+   public static byte field4255 = 0;
+   @ObfuscatedName("ae")
    @ObfuscatedGetter(
-      intValue = 1034579133
+      intValue = 1551453085
    )
    @Export("NetCache_crcMismatches")
    public static int NetCache_crcMismatches = 0;
-   @ObfuscatedName("ad")
+   @ObfuscatedName("ap")
    @ObfuscatedGetter(
-      intValue = -744142975
+      intValue = -1386597723
    )
    @Export("NetCache_ioExceptions")
    public static int NetCache_ioExceptions = 0;
 
-   @ObfuscatedName("ls")
+   @ObfuscatedName("bq")
    @ObfuscatedSignature(
       descriptor = "(I)I",
-      garbageValue = "1019053742"
+      garbageValue = "1990174320"
    )
-   static final int method6534() {
-      float var0 = 200.0F * ((float)WorldMapSectionType.clientPreferences.method2438() - 0.5F);
-      return 100 - Math.round(var0);
+   @Export("getGcDuration")
+   protected static int getGcDuration() {
+      int var0 = 0;
+      if (class291.garbageCollector == null || !class291.garbageCollector.isValid()) {
+         try {
+            Iterator var1 = ManagementFactory.getGarbageCollectorMXBeans().iterator();
+
+            while(var1.hasNext()) {
+               GarbageCollectorMXBean var2 = (GarbageCollectorMXBean)var1.next();
+               if (var2.isValid()) {
+                  class291.garbageCollector = var2;
+                  GameEngine.garbageCollectorLastCheckTimeMs = -1L;
+                  GameEngine.garbageCollectorLastCollectionTime = -1L;
+               }
+            }
+         } catch (Throwable var11) {
+         }
+      }
+
+      if (class291.garbageCollector != null) {
+         long var9 = class96.method2634();
+         long var3 = class291.garbageCollector.getCollectionTime();
+         if (GameEngine.garbageCollectorLastCollectionTime != -1L) {
+            long var5 = var3 - GameEngine.garbageCollectorLastCollectionTime;
+            long var7 = var9 - GameEngine.garbageCollectorLastCheckTimeMs;
+            if (var7 != 0L) {
+               var0 = (int)(100L * var5 / var7);
+            }
+         }
+
+         GameEngine.garbageCollectorLastCollectionTime = var3;
+         GameEngine.garbageCollectorLastCheckTimeMs = var9;
+      }
+
+      return var0;
    }
 }

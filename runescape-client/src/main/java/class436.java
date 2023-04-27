@@ -1,19 +1,20 @@
+import java.io.UnsupportedEncodingException;
 import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("qz")
-public class class436 {
-   @ObfuscatedName("as")
-   static final int[] field4660 = new int[2048];
-   @ObfuscatedName("ay")
-   static final int[] field4661 = new int[2048];
+@ObfuscatedName("qq")
+public interface class436 {
+   @ObfuscatedName("af")
+   @ObfuscatedSignature(
+      descriptor = "(I)Lqz;",
+      garbageValue = "-1368831969"
+   )
+   class435 vmethod8346();
 
-   static {
-      double var0 = 0.0030679615757712823;
-
-      for(int var2 = 0; var2 < 2048; ++var2) {
-         field4660[var2] = (int)(65536.0 * Math.sin(var0 * (double)var2));
-         field4661[var2] = (int)(65536.0 * Math.cos((double)var2 * var0));
-      }
-
-   }
+   @ObfuscatedName("an")
+   @ObfuscatedSignature(
+      descriptor = "(I)[B",
+      garbageValue = "888549065"
+   )
+   byte[] vmethod8347() throws UnsupportedEncodingException;
 }

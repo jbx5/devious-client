@@ -1,163 +1,111 @@
-import java.io.File;
-import java.io.RandomAccessFile;
-import java.util.concurrent.Callable;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ez")
-public class class126 implements Callable {
-   @ObfuscatedName("as")
-   public static short[][] field1495;
-   @ObfuscatedName("aj")
+@ObfuscatedName("ey")
+public class class126 implements MouseWheel {
+   @ObfuscatedName("wt")
    @ObfuscatedSignature(
-      descriptor = "Lew;"
+      descriptor = "Lrb;"
    )
-   final class127 field1494;
-   @ObfuscatedName("al")
+   @Export("worldMap")
+   static WorldMap worldMap;
+   @ObfuscatedName("af")
    @ObfuscatedSignature(
-      descriptor = "Leu;"
+      descriptor = "Ley;"
    )
-   final class128 field1491;
+   static final class126 field1535 = new class126(0, 0, (String)null, 0);
+   @ObfuscatedName("an")
+   @ObfuscatedSignature(
+      descriptor = "Ley;"
+   )
+   static final class126 field1532 = new class126(1, 1, (String)null, 9);
+   @ObfuscatedName("aw")
+   @ObfuscatedSignature(
+      descriptor = "Ley;"
+   )
+   static final class126 field1533 = new class126(2, 2, (String)null, 3);
    @ObfuscatedName("ac")
    @ObfuscatedSignature(
-      descriptor = "Led;"
+      descriptor = "Ley;"
    )
-   final class129 field1493;
+   static final class126 field1538 = new class126(3, 3, (String)null, 6);
+   @ObfuscatedName("au")
+   @ObfuscatedSignature(
+      descriptor = "Ley;"
+   )
+   static final class126 field1539 = new class126(4, 4, (String)null, 1);
    @ObfuscatedName("ab")
+   @ObfuscatedSignature(
+      descriptor = "Ley;"
+   )
+   static final class126 field1536 = new class126(5, 5, (String)null, 3);
+   @ObfuscatedName("fj")
+   @ObfuscatedSignature(
+      descriptor = "Lnd;"
+   )
+   @Export("archive12")
+   static Archive archive12;
+   @ObfuscatedName("fm")
+   @ObfuscatedSignature(
+      descriptor = "Lnd;"
+   )
+   @Export("archive15")
+   static Archive archive15;
+   @ObfuscatedName("aq")
    @ObfuscatedGetter(
-      intValue = -420043691
+      intValue = 75502821
    )
-   final int field1492;
-   // $FF: synthetic field
-   @ObfuscatedSignature(
-      descriptor = "Lfl;"
-   )
-   final class134 this$0;
-
-   @ObfuscatedSignature(
-      descriptor = "(Lfl;Lew;Leu;Led;I)V"
-   )
-   class126(class134 var1, class127 var2, class128 var3, class129 var4, int var5) {
-      this.this$0 = var1;
-      this.field1494 = var2;
-      this.field1491 = var3;
-      this.field1493 = var4;
-      this.field1492 = var5;
-   }
-
-   public Object call() {
-      this.field1494.method2995();
-      class127[][] var1;
-      if (this.field1491 == class128.field1534) {
-         var1 = this.this$0.field1575;
-      } else {
-         var1 = this.this$0.field1568;
-      }
-
-      var1[this.field1492][this.field1493.method3017()] = this.field1494;
-      return null;
-   }
-
-   @ObfuscatedName("aj")
-   @ObfuscatedSignature(
-      descriptor = "(Ljava/io/File;I)V",
-      garbageValue = "-818218620"
-   )
-   static void method2965(File var0) {
-      FileSystem.FileSystem_cacheDir = var0;
-      if (!FileSystem.FileSystem_cacheDir.exists()) {
-         throw new RuntimeException("");
-      } else {
-         FileSystem.FileSystem_hasPermissions = true;
-      }
-   }
-
+   final int field1537;
    @ObfuscatedName("al")
-   @ObfuscatedSignature(
-      descriptor = "(Ljava/lang/Object;ZI)[B",
-      garbageValue = "112300404"
+   @ObfuscatedGetter(
+      intValue = -902992331
    )
-   public static byte[] method2966(Object var0, boolean var1) {
-      if (var0 == null) {
-         return null;
-      } else if (var0 instanceof byte[]) {
-         byte[] var6 = (byte[])((byte[])var0);
-         if (var1) {
-            int var4 = var6.length;
-            byte[] var5 = new byte[var4];
-            System.arraycopy(var6, 0, var5, 0, var4);
-            return var5;
-         } else {
-            return var6;
-         }
-      } else if (var0 instanceof AbstractByteArrayCopier) {
-         AbstractByteArrayCopier var2 = (AbstractByteArrayCopier)var0;
-         return var2.get();
-      } else {
-         throw new IllegalArgumentException();
-      }
+   final int field1542;
+   @ObfuscatedName("at")
+   @ObfuscatedGetter(
+      intValue = 1224388371
+   )
+   final int field1534;
+
+   class126(int var1, int var2, String var3, int var4) {
+      this.field1537 = var1;
+      this.field1542 = var2;
+      this.field1534 = var4;
    }
 
-   @ObfuscatedName("al")
+   @ObfuscatedName("af")
    @ObfuscatedSignature(
-      descriptor = "(Ljava/lang/String;I)Ljava/io/File;",
-      garbageValue = "-1808711243"
+      descriptor = "(I)I",
+      garbageValue = "741942848"
    )
-   @Export("getFile")
-   static File getFile(String var0) {
-      if (!FileSystem.FileSystem_hasPermissions) {
-         throw new RuntimeException("");
-      } else {
-         File var1 = (File)FileSystem.FileSystem_cacheFiles.get(var0);
-         if (var1 != null) {
-            return var1;
-         } else {
-            File var2 = new File(FileSystem.FileSystem_cacheDir, var0);
-            RandomAccessFile var3 = null;
-
-            try {
-               File var4 = new File(var2.getParent());
-               if (!var4.exists()) {
-                  throw new RuntimeException("");
-               } else {
-                  var3 = new RandomAccessFile(var2, "rw");
-                  int var5 = var3.read();
-                  var3.seek(0L);
-                  var3.write(var5);
-                  var3.seek(0L);
-                  var3.close();
-                  FileSystem.FileSystem_cacheFiles.put(var0, var2);
-                  return var2;
-               }
-            } catch (Exception var8) {
-               try {
-                  if (var3 != null) {
-                     var3.close();
-                     var3 = null;
-                  }
-               } catch (Exception var7) {
-               }
-
-               throw new RuntimeException();
-            }
-         }
-      }
+   @Export("rsOrdinal")
+   public int rsOrdinal() {
+      return this.field1542;
    }
 
-   @ObfuscatedName("nq")
+   @ObfuscatedName("ab")
    @ObfuscatedSignature(
-      descriptor = "(II)Lst;",
-      garbageValue = "311737350"
+      descriptor = "(I)I",
+      garbageValue = "-406434338"
    )
-   static class471 method2968(int var0) {
-      class471 var1 = (class471)Client.DBTableIndex_cache.get((long)var0);
-      if (var1 == null) {
-         var1 = new class471(class320.field3708, class36.method674(var0), GameObject.method4778(var0));
-         Client.DBTableIndex_cache.put(var1, (long)var0);
-      }
+   int method3101() {
+      return this.field1534;
+   }
 
-      return var1;
+   @ObfuscatedName("bh")
+   @ObfuscatedSignature(
+      descriptor = "(ILch;ZS)I",
+      garbageValue = "15950"
+   )
+   static int method3099(int var0, Script var1, boolean var2) {
+      if (var0 == 7463) {
+         boolean var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize] == 1;
+         GrandExchangeOfferOwnWorldComparator.method1227(var3);
+         return 1;
+      } else {
+         return 2;
+      }
    }
 }

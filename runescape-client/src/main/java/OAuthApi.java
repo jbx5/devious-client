@@ -10,9 +10,9 @@ public interface OAuthApi {
    )
    void setRefreshTokenRequester(RefreshAccessTokenRequester var1);
 
-   long getAccountHash();
-
    boolean isOnLoginScreen();
+
+   long getAccountHash();
 
    @ObfuscatedSignature(
       descriptor = "(Lcom/jagex/oldscape/pub/OtlTokenRequester;)V"

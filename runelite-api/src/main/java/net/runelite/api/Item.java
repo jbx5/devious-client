@@ -110,6 +110,13 @@ public class Item implements Interactable, Identifiable, EntityNameable
 		client.setSelectedSpellChildIndex(slot);
 		client.setSelectedSpellItemId(id);
 		client.setSpellSelected(true);
+
+		Widget selectedWidget = client.getSelectedWidget();
+		if (selectedWidget != null && selectedWidget.isIf3())
+		{
+			client.setSelectedSpellActionName("Use");
+			client.setSelectedSpellName(selectedWidget.getName() + "<col=" + Integer.toHexString(16777215) + ">");
+		}
 	}
 
 	public void useOn(TileItem object)

@@ -4,24 +4,24 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ji")
+@ObfuscatedName("jl")
 @Implements("WorldMapDecoration")
 public class WorldMapDecoration {
-   @ObfuscatedName("aj")
+   @ObfuscatedName("af")
    @ObfuscatedGetter(
-      intValue = -192568909
+      intValue = 2080162465
    )
    @Export("objectDefinitionId")
    final int objectDefinitionId;
-   @ObfuscatedName("al")
+   @ObfuscatedName("an")
    @ObfuscatedGetter(
-      intValue = 1253616953
+      intValue = 1504481025
    )
    @Export("decoration")
    final int decoration;
-   @ObfuscatedName("ac")
+   @ObfuscatedName("aw")
    @ObfuscatedGetter(
-      intValue = -1349259141
+      intValue = -1419490017
    )
    @Export("rotation")
    final int rotation;
@@ -32,53 +32,39 @@ public class WorldMapDecoration {
       this.rotation = var3;
    }
 
-   @ObfuscatedName("ap")
+   @ObfuscatedName("ij")
    @ObfuscatedSignature(
-      descriptor = "([BIILir;[Liz;B)V",
-      garbageValue = "64"
+      descriptor = "(Ljava/lang/String;ZI)V",
+      garbageValue = "-215676095"
    )
-   static final void method5220(byte[] var0, int var1, int var2, Scene var3, CollisionMap[] var4) {
-      Buffer var5 = new Buffer(var0);
-      int var6 = -1;
+   @Export("drawLoadingMessage")
+   static final void drawLoadingMessage(String var0, boolean var1) {
+      if (Client.showLoadingMessages) {
+         byte var2 = 4;
+         int var3 = var2 + 6;
+         int var4 = var2 + 6;
+         int var5 = WallDecoration.fontPlain12.lineWidth(var0, 250);
+         int var6 = WallDecoration.fontPlain12.lineCount(var0, 250) * 13;
+         Rasterizer2D.Rasterizer2D_fillRectangle(var3 - var2, var4 - var2, var2 + var2 + var5, var2 + var2 + var6, 0);
+         Rasterizer2D.Rasterizer2D_drawRectangle(var3 - var2, var4 - var2, var5 + var2 + var2, var6 + var2 + var2, 16777215);
+         WallDecoration.fontPlain12.drawLines(var0, var3, var4, var5, var6, 16777215, -1, 1, 1, 0);
+         int var7 = var3 - var2;
+         int var8 = var4 - var2;
+         int var9 = var5 + var2 + var2;
+         int var10 = var2 + var6 + var2;
 
-      while(true) {
-         int var7 = var5.readIncrSmallSmart();
-         if (var7 == 0) {
-            return;
-         }
-
-         var6 += var7;
-         int var8 = 0;
-
-         while(true) {
-            int var9 = var5.readUShortSmart();
-            if (var9 == 0) {
-               break;
-            }
-
-            var8 += var9 - 1;
-            int var10 = var8 & 63;
-            int var11 = var8 >> 6 & 63;
-            int var12 = var8 >> 12;
-            int var13 = var5.readUnsignedByte();
-            int var14 = var13 >> 2;
-            int var15 = var13 & 3;
-            int var16 = var11 + var1;
-            int var17 = var10 + var2;
-            if (var16 > 0 && var17 > 0 && var16 < 103 && var17 < 103) {
-               int var18 = var12;
-               if ((Tiles.Tiles_renderFlags[1][var16][var17] & 2) == 2) {
-                  var18 = var12 - 1;
-               }
-
-               CollisionMap var19 = null;
-               if (var18 >= 0) {
-                  var19 = var4[var18];
-               }
-
-               class30.addObjects(var12, var16, var17, var6, var15, var14, var3, var19);
+         for(int var11 = 0; var11 < Client.rootWidgetCount; ++var11) {
+            if (Client.rootWidgetWidths[var11] + Client.rootWidgetXs[var11] > var7 && Client.rootWidgetXs[var11] < var9 + var7 && Client.rootWidgetYs[var11] + Client.rootWidgetHeights[var11] > var8 && Client.rootWidgetYs[var11] < var8 + var10) {
+               Client.field705[var11] = true;
             }
          }
+
+         if (var1) {
+            RouteStrategy.rasterProvider.drawFull(0, 0);
+         } else {
+            FriendsChat.invalidateMenu(var3, var4, var5, var6);
+         }
+
       }
    }
 }

@@ -28,7 +28,7 @@
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <Pattern>%d{yyyy-MM-dd HH:mm:ss:SSS} [%thread] %-5level %logger{36} - %msg%n</Pattern>
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss zzz} [%thread] %-5level %logger{36} - %msg%n</Pattern>
         </encoder>
     </appender>
 
@@ -41,10 +41,12 @@
             <maxFileSize>10MB</maxFileSize>
             <!-- keep 30 days' worth of history -->
             <maxHistory>30</maxHistory>
+            <!-- controls the total size of all archive files. Oldest archives are deleted asynchronously when the total size cap is exceeded -->
+            <totalSizeCap>10GB</totalSizeCap>
         </rollingPolicy>
 
         <encoder>
-            <Pattern>%d{yyyy-MM-dd HH:mm:ss:SSS} [%thread] %-5level %logger{36} - %msg%n</Pattern>
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss zzz} [%thread] %-5level %logger{36} - %msg%n</Pattern>
         </encoder>
     </appender>
 

@@ -2117,6 +2117,8 @@ public interface Client extends OAuthApi, GameEngine
 
 	String getSelectedSpellActionName();
 
+	void setSelectedSpellActionName(String action);
+
 	int getSelectedSpellFlags();
 
 	void setSelectedSpellFlags(int var0);

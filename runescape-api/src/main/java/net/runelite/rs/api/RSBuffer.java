@@ -43,8 +43,8 @@ public interface RSBuffer extends Buffer, RSNode
 	@Import("readBytes")
 	void readBytes(byte[] var1, int var2, int var3);
 
-	@Import("readBytesLE")
-	void readBytesLE(byte[] var1, int var2, int var3);
+	//@Import("readBytesLE")
+	//void readBytesLE(byte[] var1, int var2, int var3);
 
 	@Import("readCESU8")
 	String readCESU8();

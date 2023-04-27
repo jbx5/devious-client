@@ -150,6 +150,7 @@ public abstract class RSNPCMixin implements RSNPC
 	public RSModel copy$getModel()
 	{
 		if (!client.isInterpolateNpcAnimations()
+			|| !this.hasSpotAnim(getGraphic())
 			|| this.getAnimation() == AnimationID.HELLHOUND_DEFENCE
 			|| this.getAnimation() == 8270
 			|| this.getAnimation() == 8271

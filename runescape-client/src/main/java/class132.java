@@ -1,39 +1,44 @@
-import net.runelite.mapping.Export;
+import java.util.concurrent.Callable;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fs")
-public class class132 {
-   @ObfuscatedName("al")
+@ObfuscatedName("fi")
+class class132 implements Callable {
+   @ObfuscatedName("wc")
    @ObfuscatedSignature(
-      descriptor = "(IB)Lhg;",
-      garbageValue = "-90"
+      descriptor = "Lnf;"
    )
-   @Export("getEnum")
-   public static EnumComposition getEnum(int var0) {
-      EnumComposition var1 = (EnumComposition)EnumComposition.EnumDefinition_cached.get((long)var0);
-      if (var1 != null) {
-         return var1;
-      } else {
-         byte[] var2 = EnumComposition.EnumDefinition_archive.takeFile(8, var0);
-         var1 = new EnumComposition();
-         if (var2 != null) {
-            var1.decode(new Buffer(var2));
-         }
+   public static class354 field1585;
+   @ObfuscatedName("fx")
+   @ObfuscatedGetter(
+      longValue = 4041510135797154485L
+   )
+   static long field1580;
+   // $FF: synthetic field
+   @ObfuscatedSignature(
+      descriptor = "Lfh;"
+   )
+   final class133 this$0;
+   // $FF: synthetic field
+   @ObfuscatedSignature(
+      descriptor = "Lsg;"
+   )
+   final Buffer val$p;
+   // $FF: synthetic field
+   final int val$version;
 
-         EnumComposition.EnumDefinition_cached.put(var1, (long)var0);
-         return var1;
-      }
+   @ObfuscatedSignature(
+      descriptor = "(Lfh;Lsg;I)V"
+   )
+   class132(class133 var1, Buffer var2, int var3) {
+      this.this$0 = var1;
+      this.val$p = var2;
+      this.val$version = var3;
    }
 
-   @ObfuscatedName("ab")
-   @ObfuscatedSignature(
-      descriptor = "(IB)I",
-      garbageValue = "-97"
-   )
-   public static int method3036(int var0) {
-      long var2 = ViewportMouse.ViewportMouse_entityTags[var0];
-      int var1 = (int)(var2 >>> 0 & 127L);
-      return var1;
+   public Object call() {
+      this.this$0.method3135(this.val$p, this.val$version);
+      return null;
    }
 }
