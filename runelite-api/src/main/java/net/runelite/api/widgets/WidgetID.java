@@ -201,6 +201,8 @@ public final class WidgetID
 	public static final int TOA_RAID_GROUP_ID = 481;
 	public static final int ACHIEVEMENT_DIARY_SCROLL_GROUP_ID = 741;
 	public static final int GOTR_GROUP_ID = 746;
+	public static final int TROUBLE_BREWING_GROUP_ID = 415;
+	public static final int TROUBLE_BREWING_LOBBY_GROUP_ID = 418;
 
 	/**
 	 * Tutorial Island player customization
@@ -1432,6 +1434,11 @@ public final class WidgetID
 	static class Trade
 	{
 		static final int HEADER = 31;
+	}
+
+	static class TroubleBrewing
+	{
+		static final int SCORE = 68;
 	}
 
 	static class SetDisplayName
