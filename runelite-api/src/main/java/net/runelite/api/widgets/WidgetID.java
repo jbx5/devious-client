@@ -200,6 +200,7 @@ public final class WidgetID
 	 */
 	public static final int TOA_RAID_GROUP_ID = 481;
 	public static final int ACHIEVEMENT_DIARY_SCROLL_GROUP_ID = 741;
+	public static final int GOTR_GROUP_ID = 746;
 
 	/**
 	 * Tutorial Island player customization
