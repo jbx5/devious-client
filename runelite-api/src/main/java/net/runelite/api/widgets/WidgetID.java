@@ -180,6 +180,7 @@ public final class WidgetID
 	public static final int DIALOG_SPRITE2_ID = 11;
 	public static final int MULTISKILL_MENU_GROUP_ID = 270;
 	public static final int TEMPOROSS_GROUP_ID = 437;
+	public static final int TEMPOROSS_LOBBY_GROUP_ID = 687;
 	public static final int CLAN_GROUP_ID = 701;
 	public static final int CLAN_GUEST_GROUP_ID = 702;
 	public static final int GRAVESTONE_GROUP_ID = 672;
@@ -1081,6 +1082,7 @@ public final class WidgetID
 	static class TemporossStatus
 	{
 		static final int STATUS_INDICATOR = 2;
+		static final int LOBBY = 5;
 	}
 
 	static class DialogNotification
