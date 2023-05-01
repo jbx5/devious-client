@@ -471,8 +471,13 @@ public class Walker
 				&& destination.getWidth() == currentDestination.getWidth()
 				&& destination.getHeight() == currentDestination.getHeight();
 		boolean shouldRefresh = RegionManager.shouldRefreshPath();
+
+		if (shouldRefresh)
+			log.debug("Path should refresh!");
+
 		if (!sameDestination || shouldRefresh || forced)
 		{
+			log.debug("Cancelling current path");
 			pathFuture.cancel(true);
 			pathFuture = executor.submit(new Pathfinder(Static.getGlobalCollisionMap(), buildTransportLinks(), startPoints, destination, avoidWilderness));
 			currentDestination = destination;
