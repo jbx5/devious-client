@@ -5,6 +5,7 @@ import net.runelite.api.CollisionData;
 import net.runelite.api.CollisionDataFlag;
 import net.runelite.api.InventoryID;
 import net.runelite.api.Tile;
+import net.runelite.api.Varbits;
 import net.runelite.api.coords.Direction;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.events.GameStateChanged;
@@ -24,6 +25,7 @@ import net.unethicalite.api.movement.pathfinder.model.Teleport;
 import net.unethicalite.api.movement.pathfinder.model.Transport;
 import net.unethicalite.api.movement.pathfinder.model.poh.HousePortal;
 import net.unethicalite.api.movement.pathfinder.model.poh.JewelryBox;
+import net.unethicalite.api.quests.QuestVarbits;
 import net.unethicalite.api.scene.Tiles;
 import net.unethicalite.client.Static;
 import net.unethicalite.client.config.UnethicaliteConfig;
@@ -207,29 +209,31 @@ public class RegionManager
 	{
 		if (REFRESH_WIDGET_IDS.contains(event.getGroupId()))
 		{
-			REFRESH_PATH = hasChanged();
+			if (hasChanged())
+				REFRESH_PATH = true;
 		}
 	}
 
 	@Subscribe(priority = Integer.MAX_VALUE)
 	public void onVarChanged(VarbitChanged event)
 	{
-		if (REFRESH_VARBS.contains(event.getIndex()))
+		if (REFRESH_VARBITS.contains(event.getVarbitId()))
 		{
-			REFRESH_PATH = hasChanged();
+			if (hasChanged()) {
+				log.debug("Path refresh triggered by varbit {} change", event.getVarbitId());
+				REFRESH_PATH = true;
+			}
 		}
 	}
 
 	@Subscribe(priority = Integer.MAX_VALUE)
 	public void onItemContainerChanged(ItemContainerChanged event)
 	{
-		if (event.getContainerId() == InventoryID.INVENTORY.getId())
+		if (event.getContainerId() == InventoryID.INVENTORY.getId()
+		|| event.getContainerId() == InventoryID.EQUIPMENT.getId())
 		{
-			REFRESH_PATH = hasChanged();
-		}
-		if (event.getContainerId() == InventoryID.EQUIPMENT.getId())
-		{
-			REFRESH_PATH = hasChanged();
+			if (hasChanged())
+				REFRESH_PATH = true;
 		}
 	}
 
@@ -255,7 +259,14 @@ public class RegionManager
 	{
 		boolean tranChanged = transportsChanged();
 		boolean teleChanged = teleportsChanged();
-		return tranChanged || teleChanged;
+
+		boolean changed = tranChanged || teleChanged;
+
+		if (changed) {
+			log.debug("Transports/teleports changed!");
+		}
+
+		return changed;
 	}
 
 	private boolean transportsChanged()
