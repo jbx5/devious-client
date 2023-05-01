@@ -836,7 +836,6 @@ public final class Varbits
 	 */
 	public static final int SLAYER_TASK_BOSS = 4723;
 
-
 	/**
 	 * Draynor manor basement
 	 * See <a href="https://oldschool.runescape.wiki/w/File:Ernest_the_Chicken_-_Oil_can_map.png">asd</a>
@@ -874,5 +873,4 @@ public final class Varbits
 	 * Veos dialog
 	 */
 	public static final int VEOS_HAS_TALKED_TO_BEFORE = 4897;
-
 }
