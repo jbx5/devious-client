@@ -61,17 +61,39 @@ public class RegionManager
 			"useMinigameTeleports"
 	);
 
-	private static final Set<Integer> REFRESH_VARBS = Set.of(
-			// Static
-			4504,
-			4536,
-			4525,
-			10449,
-			10450,
-			// Hardcoded
-			3637,
-			4897,
-			8063
+	private static final Set<Integer> REFRESH_VARBITS = Set.of(
+			// Motherlode mine shortcut (54 agility)
+			QuestVarbits.ACHIEVEMENT_DIARY_FALADOR_MEDIUM.getId(),
+
+			// Draynor village wall shortcut (42 agility)
+			QuestVarbits.ACHIEVEMENT_DIARY_LUMBRIDGE_MEDIUM.getId(),
+
+			// Big windows shortcut in Al Kharid Palace (70 agility)
+			QuestVarbits.ACHIEVEMENT_DIARY_DESERT_HARD.getId(),
+
+			// Constructible darkmeyer shortcut on the eastern wall (63 agility)
+			Varbits.DARKMEYER_EAST_WALL_SHORTCUT_1,
+			Varbits.DARKMEYER_EAST_WALL_SHORTCUT_2,
+
+			// Digsite gate might be accessible when value is >=153
+			Varbits.KUDOS,
+
+			// Zeah transport dialog is different first time talking to Veos
+			Varbits.VEOS_HAS_TALKED_TO_BEFORE,
+			// Zeah transport dialog is different when getting to a certain point in X Marks the spot (progress varbit >= 7)
+			QuestVarbits.QUEST_X_MARKS_THE_SPOT.getId(),
+
+			// Door states change depending on the lever states
+			Varbits.DRAYNOR_MANOR_BASEMENT_DOOR_1_STATE,
+			Varbits.DRAYNOR_MANOR_BASEMENT_DOOR_2_STATE,
+			Varbits.DRAYNOR_MANOR_BASEMENT_DOOR_3_STATE,
+			Varbits.DRAYNOR_MANOR_BASEMENT_DOOR_4_STATE,
+			Varbits.DRAYNOR_MANOR_BASEMENT_DOOR_5_STATE,
+			Varbits.DRAYNOR_MANOR_BASEMENT_DOOR_6_STATE,
+			Varbits.DRAYNOR_MANOR_BASEMENT_DOOR_7_STATE,
+			Varbits.DRAYNOR_MANOR_BASEMENT_DOOR_8_STATE,
+			Varbits.DRAYNOR_MANOR_BASEMENT_DOOR_9_STATE
+
 	);
 
 	private static boolean REFRESH_PATH = false;
