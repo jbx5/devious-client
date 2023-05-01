@@ -1,6 +1,7 @@
 package net.unethicalite.api.movement.pathfinder.model;
 
 import net.runelite.api.ItemID;
+import net.runelite.api.Varbits;
 import net.runelite.api.coords.WorldArea;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.widgets.WidgetInfo;
@@ -8,6 +9,7 @@ import net.unethicalite.api.movement.pathfinder.TransportLoader;
 import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.List;
+import java.util.Map;
 
 public class MovementConstants
 {
@@ -239,6 +241,18 @@ public class MovementConstants
             Pair.of(new WorldPoint(1850, 9935, 0), new WorldPoint(1850, 9933, 0)),
             Pair.of(new WorldPoint(1848, 9919, 0), new WorldPoint(1846, 9919, 0)),
             Pair.of(new WorldPoint(1847, 9920, 0), new WorldPoint(1847, 9918, 0))
+    );
+
+    public static final Map<Integer, Pair<WorldPoint, WorldPoint>> DRAYNOR_MANOR_BASEMENT_DOORS = Map.of(
+            Varbits.DRAYNOR_MANOR_BASEMENT_DOOR_1_STATE, Pair.of(new WorldPoint(3108, 9757, 0), new WorldPoint(3108, 9759, 0)),
+            Varbits.DRAYNOR_MANOR_BASEMENT_DOOR_2_STATE, Pair.of(new WorldPoint(3104, 9760, 0), new WorldPoint(3106, 9760, 0)),
+            Varbits.DRAYNOR_MANOR_BASEMENT_DOOR_3_STATE, Pair.of(new WorldPoint(3102, 9757, 0), new WorldPoint(3102, 9759, 0)),
+            Varbits.DRAYNOR_MANOR_BASEMENT_DOOR_4_STATE, Pair.of(new WorldPoint(3101, 9760, 0), new WorldPoint(3098, 9760, 0)),
+            Varbits.DRAYNOR_MANOR_BASEMENT_DOOR_5_STATE, Pair.of(new WorldPoint(3097, 9762, 0), new WorldPoint(3097, 9764, 0)),
+            Varbits.DRAYNOR_MANOR_BASEMENT_DOOR_6_STATE, Pair.of(new WorldPoint(3099, 9765, 0), new WorldPoint(3101, 9765, 0)),
+            Varbits.DRAYNOR_MANOR_BASEMENT_DOOR_7_STATE, Pair.of(new WorldPoint(3104, 9765, 0), new WorldPoint(3106, 9765, 0)),
+            Varbits.DRAYNOR_MANOR_BASEMENT_DOOR_8_STATE, Pair.of(new WorldPoint(3102, 9764, 0), new WorldPoint(3102, 9762, 0)),
+            Varbits.DRAYNOR_MANOR_BASEMENT_DOOR_9_STATE, Pair.of(new WorldPoint(3101, 9755, 0), new WorldPoint(3099, 9755, 0))
     );
 
 }

@@ -339,20 +339,42 @@ public class TransportLoader
 			// Varrock Castle manhole
 			transports.add(trapDoorTransport(new WorldPoint(3237, 3459, 0), new WorldPoint(3237, 9859, 0), 881, 882));
 
-			if (Inventory.contains(SLASH_ITEMS) || Equipment.contains(SLASH_ITEMS))
-			{
-				for (Pair<WorldPoint, WorldPoint> pair : SLASH_WEB_POINTS)
-				{
-					transports.add(slashWebTransport(pair.getLeft(), pair.getRight()));
-					transports.add(slashWebTransport(pair.getRight(), pair.getLeft()));
+				// Draynor manor basement
+				for (var entry : DRAYNOR_MANOR_BASEMENT_DOORS.entrySet()) {
+					if (Vars.getBit(entry.getKey()) == 1) {
+						var points = entry.getValue();
+						transports.add(lockingDoorTransport(points.getLeft(), points.getRight(), 11450));
+						transports.add(lockingDoorTransport(points.getRight(), points.getLeft(), 11450));
+					}
 				}
-			}
+
+				if (Inventory.contains(SLASH_ITEMS) || Equipment.contains(SLASH_ITEMS)) {
+					for (Pair<WorldPoint, WorldPoint> pair : SLASH_WEB_POINTS) {
+						transports.add(slashWebTransport(pair.getLeft(), pair.getRight()));
+						transports.add(slashWebTransport(pair.getRight(), pair.getLeft()));
+					}
+				}
 
 			LAST_TRANSPORT_LIST.clear();
 			LAST_TRANSPORT_LIST.addAll(filteredStatic);
 			LAST_TRANSPORT_LIST.addAll(transports);
 		});
 	}
+
+	public static Transport lockingDoorTransport(
+			WorldPoint source,
+			WorldPoint destination,
+			int openDoorId
+	)
+	{
+        return new Transport(source, destination, 0, 0, () ->
+        {
+            TileObject openDoor = TileObjects.getFirstSurrounding(source, 1, openDoorId);
+
+            if (openDoor != null)
+                openDoor.interact("Open");
+        });
+    }
 
 	public static Transport trapDoorTransport(
 			WorldPoint source,
