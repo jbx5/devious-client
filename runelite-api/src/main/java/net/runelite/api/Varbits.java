@@ -850,8 +850,8 @@ public final class Varbits
 
 	public static final int DRAYNOR_MANOR_BASEMENT_DOOR_1_STATE = 1801;
 	public static final int DRAYNOR_MANOR_BASEMENT_DOOR_2_STATE = 1796;
-	public static final int DRAYNOR_MANOR_BASEMENT_DOOR_3_STATE = 1797;
-	public static final int DRAYNOR_MANOR_BASEMENT_DOOR_4_STATE = 1802;
+	public static final int DRAYNOR_MANOR_BASEMENT_DOOR_3_STATE = 1802;
+	public static final int DRAYNOR_MANOR_BASEMENT_DOOR_4_STATE = 1797;
 	public static final int DRAYNOR_MANOR_BASEMENT_DOOR_5_STATE = 1800;
 	public static final int DRAYNOR_MANOR_BASEMENT_DOOR_6_STATE = 1795;
 	public static final int DRAYNOR_MANOR_BASEMENT_DOOR_7_STATE = 1794;
