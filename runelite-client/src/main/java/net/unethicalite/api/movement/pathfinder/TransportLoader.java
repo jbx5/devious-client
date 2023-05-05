@@ -115,9 +115,8 @@ public class TransportLoader
             {
                 //Shamans
                 transports.add(objectTransport(new WorldPoint(1312, 3685, 0), new WorldPoint(1312, 10086, 0), 34405, "Enter"));
-                /**
-                 * Doors for shamans
-                 */
+
+                //Doors for shamans
                 transports.add(objectTransport(new WorldPoint(1293, 10090, 0), new WorldPoint(1293, 10093, 0), 34642, "Pass"));
                 transports.add(objectTransport(new WorldPoint(1293, 10093, 0), new WorldPoint(1293, 10091, 0), 34642, "Pass"));
                 transports.add(objectTransport(new WorldPoint(1296, 10096, 0), new WorldPoint(1298, 10096, 0), 34642, "Pass"));
@@ -308,11 +307,9 @@ public class TransportLoader
             }
 
             // Gnome stronghold
-            transports.add(objectDialogTransport(new WorldPoint(2461, 3382, 0),
-                    new WorldPoint(2461, 3385, 0),
-                    190,
-                    new String[] {"Open"},
-                    "Sorry, I'm a bit busy."));
+            transports.add(objectDialogTransport(new WorldPoint(2460, 3382, 0), new WorldPoint(2461, 3385, 0), 190, new String[] {"Open"}, "Sorry, I'm a bit busy."));
+            transports.add(objectDialogTransport(new WorldPoint(2461, 3382, 0), new WorldPoint(2461, 3385, 0), 190, new String[] {"Open"}, "Sorry, I'm a bit busy."));
+            transports.add(objectDialogTransport(new WorldPoint(2462, 3382, 0), new WorldPoint(2461, 3385, 0), 190, new String[] {"Open"}, "Sorry, I'm a bit busy."));
 
             // Paterdomus
             transports.add(trapDoorTransport(new WorldPoint(3405, 3506, 0), new WorldPoint(3405, 9906, 0), 1579, 1581));
