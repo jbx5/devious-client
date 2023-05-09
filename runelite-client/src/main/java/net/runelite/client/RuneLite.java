@@ -123,6 +123,9 @@ public class RuneLite
 
 	static
 	{
+		//Fixes win10 scaling when not 100% while using Anti-Aliasing with GPU
+		System.setProperty("sun.java2d.uiScale", "1.0");
+
 		String launcherVersion = System.getProperty("launcher.version");
 		System.setProperty("runelite.launcher.version", launcherVersion == null ? "unknown" : launcherVersion);
 	}
