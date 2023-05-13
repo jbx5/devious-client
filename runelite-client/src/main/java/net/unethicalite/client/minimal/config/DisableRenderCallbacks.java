@@ -2,6 +2,7 @@ package net.unethicalite.client.minimal.config;
 
 import net.runelite.api.Model;
 import net.runelite.api.Renderable;
+import net.runelite.api.Scene;
 import net.runelite.api.SceneTileModel;
 import net.runelite.api.SceneTilePaint;
 import net.runelite.api.Texture;
@@ -53,6 +54,18 @@ public class DisableRenderCallbacks implements DrawCallbacks
 
 	@Override
 	public void animate(Texture texture, int diff)
+	{
+
+	}
+
+	@Override
+	public void loadScene(Scene scene)
+	{
+
+	}
+
+	@Override
+	public void swapScene(Scene scene)
 	{
 
 	}
