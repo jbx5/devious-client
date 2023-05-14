@@ -1361,4 +1361,16 @@ public abstract class RSSceneMixin implements RSScene
 			return newGameObject(level, var11, var12, var13 - var11 + 1, var14 - var12 + 1, x, y, z, (RSRenderable) renderable, orientation, true, var8, 0);
 		}
 	}
+
+	@MethodHook("init")
+	@Inject
+	public void init(int var1)
+	{
+		final DrawCallbacks drawCallbacks = client.getDrawCallbacks();
+		if (drawCallbacks != null)
+		{
+			drawCallbacks.loadScene(this);
+			drawCallbacks.swapScene(this);
+		}
+	}
 }
