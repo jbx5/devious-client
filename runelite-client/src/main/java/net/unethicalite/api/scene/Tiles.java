@@ -92,7 +92,7 @@ public class Tiles
 		{
 			for (int y = -radius; y <= radius; y++)
 			{
-				out.add(getAt(worldPoint.dx(x).dx(y)));
+				out.add(getAt(worldPoint.dx(x).dy(y)));
 			}
 		}
 
