@@ -854,6 +854,13 @@ public final class Varbits
 	public static final int PRAYERBOOK = 14826;
 
 	/**
+	 * During and after Curse of the Empty Lord, Viggora can be located in one of three locations,
+	 * which is uniquely and permanently set for each player.
+	 * This varbit determines which location he will appear in, which is useful for a master clue step.
+	 */
+	public static final int VIGGORA_LOCATION = 815;
+
+	/**
 	 * Draynor manor basement
 	 * See <a href="https://oldschool.runescape.wiki/w/File:Ernest_the_Chicken_-_Oil_can_map.png">asd</a>
 	 */
