@@ -104,17 +104,7 @@ public class Item implements Interactable, Identifiable, EntityNameable
 		}
 	}
 
-	/**
-	 * @deprecated Use {@link #select()} and {@link #deSelect()} instead
-	 * select -> interact -> deselect
-	 */
-	@Deprecated
 	public void use()
-	{
-		select();
-	}
-
-	public void select()
 	{
 		client.setSelectedSpellWidget(widgetId);
 		client.setSelectedSpellChildIndex(slot);
@@ -129,45 +119,35 @@ public class Item implements Interactable, Identifiable, EntityNameable
 		}
 	}
 
-	public void deSelect()
-	{
-		client.setSpellSelected(false);
-	}
-
 	public void useOn(TileItem object)
 	{
-		select();
+		use();
 		object.interact(0, MenuAction.WIDGET_TARGET_ON_GROUND_ITEM.getId());
-		deSelect();
 	}
 
 	public void useOn(TileObject object)
 	{
-		select();
+		use();
 		object.interact(0, MenuAction.WIDGET_TARGET_ON_GAME_OBJECT.getId());
-		deSelect();
 	}
 
 	public void useOn(Item item)
 	{
-		select();
+		use();
 		item.interact(0, MenuAction.WIDGET_TARGET_ON_WIDGET.getId());
-		deSelect();
 	}
 
 	public void useOn(Actor actor)
 	{
 		MenuAction menuAction = actor instanceof NPC ? MenuAction.WIDGET_TARGET_ON_NPC : MenuAction.WIDGET_TARGET_ON_PLAYER;
-		select();
+		use();
 		actor.interact(0, menuAction.getId());
-		deSelect();
 	}
 
 	public void useOn(Widget widget)
 	{
-		select();
+		use();
 		widget.interact(0, MenuAction.WIDGET_TARGET_ON_WIDGET.getId());
-		deSelect();
 	}
 
 	public Type getType()
