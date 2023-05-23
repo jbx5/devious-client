@@ -550,12 +550,23 @@ public final class WidgetID
 		static final int MINIMAP_ORB_HOLDER = 32;
 		static final int LOGOUT_BUTTON_OVERLAY = 33;
 		static final int MINIMAP_LOGOUT_BUTTON = 34;
+		static final int FRIENDS_CHAT_TAB = 37;
+		static final int IGNORES_TAB = 38;
+		static final int FRIENDS_TAB = 39;
+		static final int SETTINGS_TAB = 40;
+		static final int EMOTES_TAB = 41;
+		static final int MUSIC_TAB = 42;
 		static final int FC_ICON = 43;
+		static final int IGNORES_ICON = 44;
 		static final int FRIEND_ICON = 45;
 		static final int SETTINGS_ICON = 46;
 		static final int EMOTE_ICON = 47;
 		static final int MUSIC_ICON = 48;
+		static final int COMBAT_TAB = 51;
+		static final int SKILLS_TAB = 52;
+		static final int QUESTS_TAB = 53;
 		static final int INVENTORY_TAB = 54;
+		static final int EQUIP_TAB = 55;
 		static final int PRAYER_TAB = 56;
 		static final int MAGIC_TAB = 57;
 		static final int CMB_ICON = 58;
@@ -968,10 +979,10 @@ public final class WidgetID
 
 	static class SettingsSide
 	{
-		static final int CAMERA_ZOOM_SLIDER_TRACK = 100;
-		static final int MUSIC_SLIDER = 29;
-		static final int SOUND_EFFECT_SLIDER = 43;
-		static final int AREA_SOUND_SLIDER = 57;
+		static final int CAMERA_ZOOM_SLIDER_TRACK = 57;
+		static final int MUSIC_SLIDER = 92;
+		static final int SOUND_EFFECT_SLIDER = 106;
+		static final int AREA_SOUND_SLIDER = 120;
 	}
 
 	static class Settings

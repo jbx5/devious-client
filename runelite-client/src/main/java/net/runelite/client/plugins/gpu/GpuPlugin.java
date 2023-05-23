@@ -138,6 +138,8 @@ public class GpuPlugin extends Plugin implements DrawCallbacks
 	private AWTContext awtContext;
 	private Callback debugCallback;
 
+	private GLCapabilities glCapabilities;
+
 	static final String LINUX_VERSION_HEADER =
 		"#version 420\n" +
 			"#extension GL_ARB_compute_shader : require\n" +
@@ -181,22 +183,19 @@ public class GpuPlugin extends Plugin implements DrawCallbacks
 	private int fboSceneHandle;
 	private int rboSceneHandle;
 
-	// scene vertex buffer
-	private final GLBuffer sceneVertexBuffer = new GLBuffer();
-	// scene uv buffer
-	private final GLBuffer sceneUvBuffer = new GLBuffer();
-
-	private final GLBuffer tmpVertexBuffer = new GLBuffer(); // temporary scene vertex buffer
-	private final GLBuffer tmpUvBuffer = new GLBuffer(); // temporary scene uv buffer
-	private final GLBuffer tmpModelBufferLarge = new GLBuffer(); // scene model buffer, large
-	private final GLBuffer tmpModelBufferSmall = new GLBuffer(); // scene model buffer, small
-	private final GLBuffer tmpModelBufferUnordered = new GLBuffer(); // scene model buffer, unordered
-	private final GLBuffer tmpOutBuffer = new GLBuffer(); // target vertex buffer for compute shaders
-	private final GLBuffer tmpOutUvBuffer = new GLBuffer(); // target uv buffer for compute shaders
+	private final GLBuffer sceneVertexBuffer = new GLBuffer("scene vertex buffer");
+	private final GLBuffer sceneUvBuffer = new GLBuffer("scene tex buffer");
+	private final GLBuffer tmpVertexBuffer = new GLBuffer("tmp vertex buffer");
+	private final GLBuffer tmpUvBuffer = new GLBuffer("tmp tex buffer");
+	private final GLBuffer tmpModelBufferLarge = new GLBuffer("model buffer large");
+	private final GLBuffer tmpModelBufferSmall = new GLBuffer("model buffer small");
+	private final GLBuffer tmpModelBufferUnordered = new GLBuffer("model buffer unordered");
+	private final GLBuffer tmpOutBuffer = new GLBuffer("out vertex buffer");
+	private final GLBuffer tmpOutUvBuffer = new GLBuffer("out tex buffer");
 
 	private int textureArrayId;
 
-	private final GLBuffer uniformBuffer = new GLBuffer();
+	private final GLBuffer uniformBuffer = new GLBuffer("uniform buffer");
 
 	private GpuIntBuffer vertexBuffer;
 	private GpuFloatBuffer uvBuffer;
@@ -269,6 +268,11 @@ public class GpuPlugin extends Plugin implements DrawCallbacks
 
 	private boolean lwjglInitted = false;
 
+	private int sceneId;
+	private int nextSceneId;
+	private GpuIntBuffer nextSceneVertexBuffer;
+	private GpuFloatBuffer nextSceneTexBuffer;
+
 	@Override
 	protected void startUp()
 	{
@@ -307,19 +311,17 @@ public class GpuPlugin extends Plugin implements DrawCallbacks
 				// to be created, and also breaks if both 32 and 64 bit lwjgl versions try to run at once.
 				Configuration.SHARED_LIBRARY_EXTRACT_DIRECTORY.set("lwjgl-rl-" + System.getProperty("os.arch", "unknown"));
 
-				GL.createCapabilities();
+				glCapabilities = GL.createCapabilities();
 
 				log.info("Using device: {}", GL43C.glGetString(GL43C.GL_RENDERER));
 				log.info("Using driver: {}", GL43C.glGetString(GL43C.GL_VERSION));
 
-				GLCapabilities caps = GL.getCapabilities();
-
-				if (!caps.OpenGL31)
+				if (!glCapabilities.OpenGL31)
 				{
 					throw new RuntimeException("OpenGL 3.1 is required but not available");
 				}
 
-				if (!caps.OpenGL43 && computeMode == ComputeMode.OPENGL)
+				if (!glCapabilities.OpenGL43 && computeMode == ComputeMode.OPENGL)
 				{
 					log.info("disabling compute shaders because OpenGL 4.3 is not available");
 					computeMode = ComputeMode.NONE;
@@ -333,7 +335,7 @@ public class GpuPlugin extends Plugin implements DrawCallbacks
 				lwjglInitted = true;
 
 				checkGLErrors();
-				if (log.isDebugEnabled() && caps.glDebugMessageControl != 0)
+				if (log.isDebugEnabled() && glCapabilities.glDebugMessageControl != 0)
 				{
 					debugCallback = GLUtil.setupDebugMessageCallback();
 					if (debugCallback != null)
@@ -392,7 +394,9 @@ public class GpuPlugin extends Plugin implements DrawCallbacks
 
 				if (client.getGameState() == GameState.LOGGED_IN)
 				{
-					uploadScene();
+					Scene scene = client.getScene();
+					loadScene(scene);
+					swapScene(scene);
 				}
 
 				checkGLErrors();
@@ -461,6 +465,8 @@ public class GpuPlugin extends Plugin implements DrawCallbacks
 				debugCallback.free();
 				debugCallback = null;
 			}
+
+			glCapabilities = null;
 
 			vertexBuffer = null;
 			uvBuffer = null;
@@ -998,7 +1004,7 @@ public class GpuPlugin extends Plugin implements DrawCallbacks
 	{
 		if (computeMode == ComputeMode.NONE)
 		{
-			targetBufferOffset += sceneUploader.upload(paint,
+			targetBufferOffset += sceneUploader.upload(client.getScene(), paint,
 				tileZ, tileX, tileY,
 				vertexBuffer, uvBuffer,
 				tileX << Perspective.LOCAL_COORD_BITS,
@@ -1443,41 +1449,49 @@ public class GpuPlugin extends Plugin implements DrawCallbacks
 	@Subscribe
 	public void onGameStateChanged(GameStateChanged gameStateChanged)
 	{
-		switch (gameStateChanged.getGameState())
+		if (gameStateChanged.getGameState() == GameState.LOGIN_SCREEN)
 		{
-			case LOGGED_IN:
-				if (computeMode != ComputeMode.NONE)
-				{
-					this.uploadScene();
-					checkGLErrors();
-				}
-				break;
-			case LOGIN_SCREEN:
-				// Avoid drawing the last frame's buffer during LOADING after LOGIN_SCREEN
-				targetBufferOffset = 0;
+			// Avoid drawing the last frame's buffer during LOADING after LOGIN_SCREEN
+			targetBufferOffset = 0;
 		}
 	}
 
-	private void uploadScene()
+	@Override
+	public void loadScene(Scene scene)
 	{
-		vertexBuffer.clear();
-		uvBuffer.clear();
+		if (computeMode == ComputeMode.NONE)
+		{
+			return;
+		}
 
-		sceneUploader.upload(client.getScene(), vertexBuffer, uvBuffer);
+		GpuIntBuffer vertexBuffer = new GpuIntBuffer();
+		GpuFloatBuffer uvBuffer = new GpuFloatBuffer();
+
+		sceneUploader.upload(scene, vertexBuffer, uvBuffer);
 
 		vertexBuffer.flip();
 		uvBuffer.flip();
 
-		IntBuffer vertexBuffer = this.vertexBuffer.getBuffer();
-		FloatBuffer uvBuffer = this.uvBuffer.getBuffer();
+		nextSceneVertexBuffer = vertexBuffer;
+		nextSceneTexBuffer = uvBuffer;
+		nextSceneId = sceneUploader.sceneId;
+	}
 
-		updateBuffer(sceneVertexBuffer, GL43C.GL_ARRAY_BUFFER, vertexBuffer, GL43C.GL_STATIC_COPY, CL_MEM_READ_ONLY);
-		updateBuffer(sceneUvBuffer, GL43C.GL_ARRAY_BUFFER, uvBuffer, GL43C.GL_STATIC_COPY, CL_MEM_READ_ONLY);
+	@Override
+	public void swapScene(Scene scene)
+	{
+		if (computeMode == ComputeMode.NONE)
+		{
+			return;
+		}
 
-		GL43C.glBindBuffer(GL43C.GL_ARRAY_BUFFER, 0);
+		sceneId = nextSceneId;
+		updateBuffer(sceneVertexBuffer, GL43C.GL_ARRAY_BUFFER, nextSceneVertexBuffer.getBuffer(), GL43C.GL_STATIC_COPY, CL_MEM_READ_ONLY);
+		updateBuffer(sceneUvBuffer, GL43C.GL_ARRAY_BUFFER, nextSceneTexBuffer.getBuffer(), GL43C.GL_STATIC_COPY, CL_MEM_READ_ONLY);
 
-		vertexBuffer.clear();
-		uvBuffer.clear();
+		nextSceneVertexBuffer = null;
+		nextSceneTexBuffer = null;
+		nextSceneId = -1;
 	}
 
 	/**
@@ -1570,7 +1584,7 @@ public class GpuPlugin extends Plugin implements DrawCallbacks
 			}
 		}
 		// Model may be in the scene buffer
-		else if (renderable instanceof Model && ((Model) renderable).getSceneId() == sceneUploader.sceneId)
+		else if (renderable instanceof Model && ((Model) renderable).getSceneId() == sceneId)
 		{
 			Model model = (Model) renderable;
 
@@ -1700,51 +1714,48 @@ public class GpuPlugin extends Plugin implements DrawCallbacks
 
 	private void updateBuffer(@Nonnull GLBuffer glBuffer, int target, @Nonnull IntBuffer data, int usage, long clFlags)
 	{
-		GL43C.glBindBuffer(target, glBuffer.glBufferId);
-		int size = data.remaining();
-		if (size > glBuffer.size)
-		{
-			log.trace("Buffer resize: {} {} -> {}", glBuffer, glBuffer.size, size);
-
-			glBuffer.size = size;
-			GL43C.glBufferData(target, data, usage);
-			recreateCLBuffer(glBuffer, clFlags);
-		}
-		else
-		{
-			GL43C.glBufferSubData(target, 0, data);
-		}
+		int size = data.remaining() << 2;
+		updateBuffer(glBuffer, target, size, usage, clFlags);
+		GL43C.glBufferSubData(target, 0, data);
 	}
 
 	private void updateBuffer(@Nonnull GLBuffer glBuffer, int target, @Nonnull FloatBuffer data, int usage, long clFlags)
 	{
-		GL43C.glBindBuffer(target, glBuffer.glBufferId);
-		int size = data.remaining();
-		if (size > glBuffer.size)
-		{
-			log.trace("Buffer resize: {} {} -> {}", glBuffer, glBuffer.size, size);
-
-			glBuffer.size = size;
-			GL43C.glBufferData(target, data, usage);
-			recreateCLBuffer(glBuffer, clFlags);
-		}
-		else
-		{
-			GL43C.glBufferSubData(target, 0, data);
-		}
+		int size = data.remaining() << 2;
+		updateBuffer(glBuffer, target, size, usage, clFlags);
+		GL43C.glBufferSubData(target, 0, data);
 	}
 
 	private void updateBuffer(@Nonnull GLBuffer glBuffer, int target, int size, int usage, long clFlags)
 	{
 		GL43C.glBindBuffer(target, glBuffer.glBufferId);
+		if (glCapabilities.glInvalidateBufferData != 0L)
+		{
+			// https://www.khronos.org/opengl/wiki/Buffer_Object_Streaming suggests buffer re-specification is useful
+			// to avoid implicit synching. We always need to trash the whole buffer anyway so this can't hurt.
+			GL43C.glInvalidateBufferData(glBuffer.glBufferId);
+		}
 		if (size > glBuffer.size)
 		{
-			log.trace("Buffer resize: {} {} -> {}", glBuffer, glBuffer.size, size);
+			int newSize = Math.max(1024, nextPowerOfTwo(size));
+			log.trace("Buffer resize: {} {} -> {}", glBuffer.name, glBuffer.size, newSize);
 
-			glBuffer.size = size;
-			GL43C.glBufferData(target, size, usage);
+			glBuffer.size = newSize;
+			GL43C.glBufferData(target, newSize, usage);
 			recreateCLBuffer(glBuffer, clFlags);
 		}
+	}
+
+	private static int nextPowerOfTwo(int v)
+	{
+		v--;
+		v |= v >> 1;
+		v |= v >> 2;
+		v |= v >> 4;
+		v |= v >> 8;
+		v |= v >> 16;
+		v++;
+		return v;
 	}
 
 	private void recreateCLBuffer(GLBuffer glBuffer, long clFlags)

@@ -28,6 +28,7 @@ public interface RSScene extends Scene
 	void draw(Tile tile, boolean var2);
 
 	@Import("tileHeights")
+	@Override
 	int[][][] getTileHeights();
 
 	@Import("drawTileMinimap")
@@ -78,14 +79,33 @@ public interface RSScene extends Scene
 	@Import("removeFloorDecoration")
 	void removeGroundObject(int plane, int x, int y);
 
+	@Override
 	short[][][] getUnderlayIds();
 	void setUnderlayIds(short[][][] underlayIds);
 
+	@Override
 	short[][][] getOverlayIds();
 	void setOverlayIds(short[][][] overlayIds);
 
+	@Override
 	byte[][][] getTileShapes();
 	void setTileShapes(byte[][][] tileShapes);
+
+	@Import("baseX")
+	@Override
+	int getBaseX();
+
+	@Import("baseY")
+	@Override
+	int getBaseY();
+
+	@Import("isInInstance")
+	@Override
+	boolean isInstance();
+
+	@Import("instanceChunkTemplates")
+	@Override
+	int[][][] getInstanceTemplateChunks();
 
 	@Import("menuOpen")
 	void menuOpen(int selectedPlane, int screenX, int screenY, boolean viewportWalking);

@@ -26498,21 +26498,6 @@
   },
   {
     "source": {
-      "x": 2461,
-      "y": 3382,
-      "plane": 0
-    },
-    "destination": {
-      "x": 2461,
-      "y": 3385,
-      "plane": 0
-    },
-    "action": "Open",
-    "objectId": 190,
-    "requirements": {}
-  },
-  {
-    "source": {
       "x": 2462,
       "y": 3385,
       "plane": 0
@@ -26529,42 +26514,12 @@
   {
     "source": {
       "x": 2460,
-      "y": 3382,
-      "plane": 0
-    },
-    "destination": {
-      "x": 2461,
-      "y": 3385,
-      "plane": 0
-    },
-    "action": "Open",
-    "objectId": 190,
-    "requirements": {}
-  },
-  {
-    "source": {
-      "x": 2460,
       "y": 3385,
       "plane": 0
     },
     "destination": {
       "x": 2461,
       "y": 3382,
-      "plane": 0
-    },
-    "action": "Open",
-    "objectId": 190,
-    "requirements": {}
-  },
-  {
-    "source": {
-      "x": 2462,
-      "y": 3382,
-      "plane": 0
-    },
-    "destination": {
-      "x": 2461,
-      "y": 3385,
       "plane": 0
     },
     "action": "Open",

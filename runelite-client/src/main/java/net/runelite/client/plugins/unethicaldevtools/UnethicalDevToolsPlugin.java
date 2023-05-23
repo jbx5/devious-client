@@ -47,6 +47,9 @@ public class UnethicalDevToolsPlugin extends Plugin
 	private InteractionOverlay interactionOverlay;
 
 	@Inject
+	private MemoryUsageOverlay memoryUsageOverlay;
+
+	@Inject
 	private OverlayManager overlayManager;
 
 	@Inject
@@ -61,6 +64,7 @@ public class UnethicalDevToolsPlugin extends Plugin
 		overlayManager.add(overlay);
 		overlayManager.add(regionOverlay);
 		overlayManager.add(interactionOverlay);
+		overlayManager.add(memoryUsageOverlay);
 
 		eventBus.register(regionOverlay);
 	}
@@ -71,6 +75,7 @@ public class UnethicalDevToolsPlugin extends Plugin
 		overlayManager.remove(overlay);
 		overlayManager.remove(regionOverlay);
 		overlayManager.remove(interactionOverlay);
+		overlayManager.remove(memoryUsageOverlay);
 
 		eventBus.unregister(regionOverlay);
 	}

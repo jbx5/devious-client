@@ -33,6 +33,7 @@ public class GrandExchange
 	private static final Supplier<Widget> COLLECT_BUTTON = () -> Widgets.get(WidgetID.GRAND_EXCHANGE_GROUP_ID, 6, 0);
 	private static final Supplier<Widget> CONFIRM_BUTTON = () -> Widgets.get(WidgetID.GRAND_EXCHANGE_GROUP_ID, 29);
 	private static final Supplier<Widget> OFFER_PRICE = () -> Widgets.get(WidgetID.GRAND_EXCHANGE_GROUP_ID, 27);
+	private static final Supplier<Widget> EXIT = () -> Widgets.get(WidgetID.GRAND_EXCHANGE_GROUP_ID, 2, 11);
 
 	public static View getView()
 	{
@@ -156,6 +157,17 @@ public class GrandExchange
 		{
 			booth.interact("Exchange");
 		}
+	}
+
+	public static void close()
+	{
+		Widget exitButton = EXIT.get();
+		if (!Widgets.isVisible(exitButton))
+		{
+			return;
+		}
+
+		exitButton.interact("Close");
 	}
 
 	public static void sell(Predicate<Item> filter)

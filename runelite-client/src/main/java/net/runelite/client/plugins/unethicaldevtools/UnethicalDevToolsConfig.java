@@ -299,6 +299,18 @@ public interface UnethicalDevToolsConfig extends Config
 		return 0;
 	}
 
+	@ConfigItem(
+		keyName = "memoryUsage",
+		name = "Memory usage",
+		description = "Render memory usage",
+		position = 202,
+		section = others
+	)
+	default boolean memoryUsage()
+	{
+		return false;
+	}
+
 	@ConfigSection(
 			name = "Packet debugger",
 			keyName = "packets",
@@ -312,7 +324,7 @@ public interface UnethicalDevToolsConfig extends Config
 			keyName = "packets",
 			name = "Client Packets",
 			description = "Packets",
-			position = 202,
+			position = 203,
 			section = packets
 	)
 	default boolean packets()
@@ -324,7 +336,7 @@ public interface UnethicalDevToolsConfig extends Config
 			keyName = "serverPackets",
 			name = "Server Packets",
 			description = "Server Packets",
-			position = 203,
+			position = 204,
 			section = packets
 	)
 	default boolean serverPackets()
@@ -336,7 +348,7 @@ public interface UnethicalDevToolsConfig extends Config
 			keyName = "opcodes",
 			name = "Opcodes",
 			description = "Opcodes to log",
-			position = 204,
+			position = 205,
 			section = packets
 	)
 	default String opcodes()
@@ -348,7 +360,7 @@ public interface UnethicalDevToolsConfig extends Config
 			keyName = "hexDump",
 			name = "Hex dump",
 			description = "Create a hex dump of the payload",
-			position = 205,
+			position = 206,
 			section = packets
 	)
 	default boolean hexDump()
