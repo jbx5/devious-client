@@ -159,7 +159,7 @@ public class Minigames
 		CLAN_WARS(5, "Clan Wars", new WorldPoint(3151, 3636, 0), false),
 		DAGANNOTH_KINGS(6, "Dagannoth Kings", null, true),
 		FISHING_TRAWLER(7, "Fishing Trawler", new WorldPoint(2658, 3158, 0), true),
-		GIANTS_FOUNDARY(8, "Giants' Foundary", new WorldPoint(3361, 3147, 0), true),
+		GIANTS_FOUNDARY(8, "Giants' Foundry", new WorldPoint(3361, 3147, 0), true),
 		GOD_WARS(9, "God Wars", null, true),
 		GUARDIANS_OF_THE_RIFT(10, "Guardians of the Rift", new WorldPoint(3616, 9478, 0), true),
 		LAST_MAN_STANDING(11, "Last Man Standing", new WorldPoint(3149, 3635, 0), false),
@@ -203,9 +203,8 @@ public class Minigames
 				case LAST_MAN_STANDING:
 				case SOUL_WARS:
 				case TZHAAR_FIGHT_PIT:
-					return true;
 				case GIANTS_FOUNDARY:
-					return Quests.isFinished(Quest.SLEEPING_GIANTS);
+					return true;
 				case BARBARIAN_ASSAULT:
 					return Vars.getBit(3251) >= 1;
 				case BLAST_FURNACE:

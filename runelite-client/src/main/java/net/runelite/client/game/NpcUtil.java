@@ -126,7 +126,12 @@ public class NpcUtil
 			case NpcID.HOPELESS_CREATURE_1073:
 			case NpcID.GADDERANKS_4484:
 			case NpcID.WALL_BEAST:
+			case NpcID.RUNITE_GOLEM:
+			case NpcID.RUNITE_ROCKS:
 			case NpcID.STRANGE_CREATURE_12076: // Secrets of the North transitioning to Jhallan
+			// Agrith Naar restores health upon reaching 0hp if the player does not have Silverlight
+			// equipped, or moved away immediately after applying the killing blow.
+			case NpcID.AGRITH_NAAR:
 				return false;
 			// These NPCs have no attack options, but are the dead and uninteractable form of otherwise attackable NPCs,
 			// thus should not be considered alive.

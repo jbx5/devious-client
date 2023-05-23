@@ -565,7 +565,7 @@ public class MusicPlugin extends Plugin
 			}
 
 			Object[] onLoad = root.getOnLoadListener();
-			if (onLoad == null || onLoad.length != 5)
+			if (onLoad == null || onLoad.length != 6)
 			{
 				return;
 			}
