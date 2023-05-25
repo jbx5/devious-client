@@ -845,6 +845,11 @@ public final class Varbits
 	public static final int SLAYER_TASK_BOSS = 4723;
 
 	/**
+	 * Whether the level up interface is disabled
+	 */
+	public static final int DISABLE_LEVEL_UP_INTERFACE = 9452;
+
+	/**
 	 * Draynor manor basement
 	 * See <a href="https://oldschool.runescape.wiki/w/File:Ernest_the_Chicken_-_Oil_can_map.png">asd</a>
 	 */
