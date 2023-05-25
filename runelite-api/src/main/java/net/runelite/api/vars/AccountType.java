@@ -27,6 +27,7 @@ package net.runelite.api.vars;
 /**
  * An enumeration of possible account types.
  */
+@Deprecated
 public enum AccountType
 {
 	/**
@@ -52,7 +53,11 @@ public enum AccountType
 	/**
 	 * Hardcore group ironman account type
 	 */
-	HARDCORE_GROUP_IRONMAN;
+	HARDCORE_GROUP_IRONMAN,
+	/**
+	 * Unranked group ironman account type
+	 */
+	UNRANKED_GROUP_IRONMAN;
 
 	/**
 	 * Checks whether this type is a non-group ironman.
@@ -71,6 +76,6 @@ public enum AccountType
 	 */
 	public boolean isGroupIronman()
 	{
-		return this.ordinal() >= GROUP_IRONMAN.ordinal() && this.ordinal() <= HARDCORE_GROUP_IRONMAN.ordinal();
+		return this.ordinal() >= GROUP_IRONMAN.ordinal() && this.ordinal() <= UNRANKED_GROUP_IRONMAN.ordinal();
 	}
 }
