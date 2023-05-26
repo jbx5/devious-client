@@ -53,7 +53,7 @@ dependencies {
 
     compileOnly(group = "javax.annotation", name = "javax.annotation-api", version = "1.3.2")
     compileOnly(group = "org.projectlombok", name = "lombok", version = ProjectVersions.lombokVersion)
-    compileOnly(group = "net.runelite", name = "orange-extensions", version = "1.0")
+    compileOnly(group = "net.runelite", name = "orange-extensions", version = "1.1")
 
     implementation(project(":http-api"))
     implementation(project(":runelite-jshell"))
