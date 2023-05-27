@@ -350,6 +350,18 @@ public class TransportLoader
                 }
             }
 
+            // Corsair Cove, Captain Tock's ship's gangplank
+            transports.add(objectTransport(new WorldPoint(2578, 2837, 1), new WorldPoint(2578, 2840, 0), 31756, "Cross"));
+            transports.add(objectTransport(new WorldPoint(2578, 2840, 0), new WorldPoint(2578, 2837, 1), 31756, "Cross"));
+
+            // Corsair Cove, Ithoi the Navigator's hut stairs
+            transports.add(objectTransport(new WorldPoint(2532, 2833, 0), new WorldPoint(2529, 2835, 1), 31735, "Climb"));
+            transports.add(objectTransport(new WorldPoint(2529, 2835, 1), new WorldPoint(2532, 2833, 0), 31735, "Climb"));
+
+            // Corsair Cove, Dungeon hole to Ogress Warriors/Vine ladder
+            transports.add(objectTransport(new WorldPoint(2523, 2860, 0), new WorldPoint(2012, 9004, 1), 31791, "Enter"));
+            transports.add(objectTransport(new WorldPoint(2012, 9004, 1), new WorldPoint(2523, 2860, 0), 31790, "Climb"));
+
             if (Inventory.contains(SLASH_ITEMS) || Equipment.contains(SLASH_ITEMS))
             {
                 for (Pair<WorldPoint, WorldPoint> pair : SLASH_WEB_POINTS)
