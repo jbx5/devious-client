@@ -66866,8 +66866,8 @@
       "y": 3497,
       "plane": 0
     },
-    "action": "Climb-up",
-    "objectId": 16450,
+    "action": "Climb-down",
+    "objectId": 16556,
     "requirements": {}
   },
   {
@@ -66881,8 +66881,8 @@
       "y": 3498,
       "plane": 2
     },
-    "action": "Climb-down",
-    "objectId": 16556,
+    "action": "Climb-up",
+    "objectId": 16450,
     "requirements": {}
   },
   {
