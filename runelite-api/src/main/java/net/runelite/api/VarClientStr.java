@@ -40,4 +40,12 @@ public final class VarClientStr
 	public static final int NOTIFICATION_TOP_TEXT = 387;
 	public static final int NOTIFICATION_BOTTOM_TEXT = 388;
 	public static final int DUEL_OPPONENT_NAME = 357;
+
+	/**
+	 * Tutorial island
+	 */
+	public static final int SET_DISPLAY_NAME_INPUT_TEXT = 436;
+	public static final int SET_DISPLAY_NAME_CURRENT_LOOKUP = 437;
+
+
 }

@@ -263,6 +263,11 @@ public enum VarPlayer
 	 */
 	SLAYER_TASK_LOCATION(2096),
 
+	/**
+	 * Tutorial island progression
+	 */
+	TUTORIAL_ISLAND_PROGRESSION(281)
+
 	;
 
 	private final int id;

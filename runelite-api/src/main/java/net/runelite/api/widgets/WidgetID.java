@@ -200,6 +200,12 @@ public final class WidgetID
 	public static final int TOA_RAID_GROUP_ID = 481;
 	public static final int ACHIEVEMENT_DIARY_SCROLL_GROUP_ID = 741;
 
+	/**
+	 * Tutorial Island player customization
+	 */
+	public static final int SET_DISPLAY_NAME_GROUP_ID = 558;
+	public static final int CHARACTER_CREATOR_GROUP_ID = 679;
+
 	static class WorldMap
 	{
 		static final int MAPVIEW = 7;
@@ -1419,5 +1425,37 @@ public final class WidgetID
 	static class Trade
 	{
 		static final int HEADER = 31;
+	}
+
+	static class SetDisplayName
+	{
+		static final int LAYER = 0;
+		static final int ENTER_NAME_INPUT = 7;
+		static final int NAME_STATUS = 13;
+		static final int NAME_SUGGESTIONS = 14;
+		static final int LOOKUP_NAME_BUTTON = 18;
+		static final int SET_NAME_BUTTON = 19;
+	}
+
+	static class CharacterCreator
+	{
+		static final int LAYER = 0;
+		static final int HEAD_LEFT_BUTTON = 12;
+		static final int HEAD_RIGHT_BUTTON = 13;
+		static final int JAW_LEFT_BUTTON = 16;
+		static final int JAW_RIGHT_BUTTON = 17;
+		static final int TORSO_LEFT_BUTTON = 20;
+		static final int TORSO_RIGHT_BUTTON = 21;
+		static final int ARMS_LEFT_BUTTON = 24;
+		static final int ARMS_RIGHT_BUTTON = 25;
+		static final int HANDS_LEFT_BUTTON = 28;
+		static final int HANDS_RIGHT_BUTTON = 29;
+		static final int LEGS_LEFT_BUTTON = 32;
+		static final int LEGS_RIGHT_BUTTON = 33;
+		static final int FEET_LEFT_BUTTON = 36;
+		static final int FEET_RIGHT_BUTTON = 37;
+		static final int GENDER_MALE_BUTTON = 65;
+		static final int GENDER_FEMALE_BUTTON = 66;
+		static final int CONFIRM_BUTTON = 68;
 	}
 }
