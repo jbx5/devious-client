@@ -886,4 +886,15 @@ public final class Varbits
 	 * Veos dialog
 	 */
 	public static final int VEOS_HAS_TALKED_TO_BEFORE = 4897;
+
+
+	/**
+	 * Tutorial island
+	 */
+	public static final int CUSTOMIZE_PLAYER_STATE = 5605;
+
+	/**
+	 * Local player gender? (Changes depending on gender selected within Tutorial island)
+	 */
+	public static final int LOCAL_PLAYER_GENDER = 14021;
 }

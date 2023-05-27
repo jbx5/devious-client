@@ -69,4 +69,9 @@ public final class VarClientInt
 	public static final int BLOCK_KEYPRESS = 187;
 
 	public static final int WORLD_MAP_SEARCH_FOCUSED = 190;
+
+	/**
+	 * Tutorial island
+	 */
+	public static final int SET_DISPLAY_NAME_FOCUSED = 435;
 }
