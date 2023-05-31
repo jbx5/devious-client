@@ -415,6 +415,10 @@ public final class WidgetID
 
 	static class Equipment
 	{
+		static final int STATS = 1;
+		static final int PRICES = 3;
+		static final int DEATH = 5;
+		static final int FOLLOWER = 7;
 		static final int HELMET = 15;
 		static final int CAPE = 16;
 		static final int AMULET = 17;
