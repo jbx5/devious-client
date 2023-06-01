@@ -59,6 +59,11 @@ public interface Callbacks
 	void tick();
 
 	/**
+	 * Called at the end of each tick
+	 */
+	void tickEnd();
+
+	/**
 	 * Called each frame
 	 */
 	void frame();
