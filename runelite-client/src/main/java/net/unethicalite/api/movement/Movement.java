@@ -1,6 +1,7 @@
 package net.unethicalite.api.movement;
 
 import lombok.extern.slf4j.Slf4j;
+import net.runelite.api.Actor;
 import net.runelite.api.Client;
 import net.runelite.api.Locatable;
 import net.runelite.api.MenuAction;
@@ -8,6 +9,7 @@ import net.runelite.api.Perspective;
 import net.runelite.api.Player;
 import net.runelite.api.Point;
 import net.runelite.api.Tile;
+import net.runelite.api.TileObject;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldArea;
 import net.runelite.api.coords.WorldPoint;
@@ -29,6 +31,7 @@ public class Movement
 {
 	private static final int STAMINA_VARBIT = 25;
 	private static final int RUN_VARP = 173;
+
 
 	public static void setDestination(int sceneX, int sceneY)
 	{
@@ -138,6 +141,68 @@ public class Movement
 	public static boolean walkTo(int x, int y, int plane)
 	{
 		return walkTo(new WorldPoint(x, y, plane));
+	}
+
+	public static boolean walkToInteract(Actor actor, String action)
+	{
+		if (actor == null)
+			return false;
+		return walkToInteract(actor, action, actor.getWorldLocation());
+	}
+
+	public static boolean walkToInteract(Actor actor, String action, WorldPoint worldPoint)
+	{
+		return walkToInteract(actor, action, worldPoint.toWorldArea());
+	}
+
+	public static boolean walkToInteract(Actor actor, String action, WorldArea worldArea)
+	{
+		Player local = Players.getLocal();
+
+		// Interact if possible and not already
+		if (actor != null && Reachable.isInteractable(actor) && local.getInteracting() == null)
+		{
+			actor.interact(action);
+			return true;
+		}
+
+		// walkTo if not reachable or far away
+		if (actor == null || actor.distanceTo(local) > 20 || !Reachable.isInteractable(actor))
+		{
+			return Movement.walkTo(worldArea);
+		}
+		return true;
+	}
+
+	public static boolean walkToInteract(TileObject tileObject, String action)
+	{
+		if (tileObject == null)
+			return false;
+		return walkToInteract(tileObject, action, tileObject.getWorldLocation());
+	}
+
+	public static boolean walkToInteract(TileObject tileObject, String action, WorldPoint worldPoint)
+	{
+		return walkToInteract(tileObject, action, worldPoint.toWorldArea());
+	}
+
+	public static boolean walkToInteract(TileObject tileObject, String action, WorldArea worldArea)
+	{
+		Player local = Players.getLocal();
+
+		// Cancel walkTo when interactable
+		if (tileObject != null && Reachable.isInteractable(tileObject) && local.isIdle())
+		{
+			tileObject.interact(action);
+			return true;
+		}
+
+		// walkTo if not reachable or far away
+		if (tileObject == null || tileObject.distanceTo(local) > 20 || !Reachable.isInteractable(tileObject))
+		{
+			return Movement.walkTo(worldArea);
+		}
+		return true;
 	}
 
 	public static boolean isRunEnabled()

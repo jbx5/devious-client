@@ -2994,10 +2994,17 @@ public abstract class RSClientMixin implements RSClient
 	}
 
 	@Inject
-	@MethodHook("doCycle")
+	@MethodHook(value = "doCycle")
 	protected final void doCycle()
 	{
 		client.getCallbacks().tick();
+	}
+
+	@Inject
+	@MethodHook(value = "doCycle", end = true)
+	protected final void doCycleEnd()
+	{
+		client.getCallbacks().tickEnd();
 	}
 
 	@Inject
