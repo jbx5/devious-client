@@ -2,68 +2,68 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 
-@ObfuscatedName("ij")
+@ObfuscatedName("jr")
 @Implements("SceneTileModel")
 public final class SceneTileModel {
-   @ObfuscatedName("ah")
-   static int[] field2673 = new int[6];
-   @ObfuscatedName("av")
-   static int[] field2674 = new int[6];
+   @ObfuscatedName("ag")
+   static int[] field2672 = new int[6];
    @ObfuscatedName("ar")
-   static float[] field2675 = new float[6];
-   @ObfuscatedName("am")
-   static int[] field2676 = new int[6];
-   @ObfuscatedName("as")
-   static int[] field2677 = new int[6];
-   @ObfuscatedName("aj")
-   static int[] field2660 = new int[6];
-   @ObfuscatedName("ak")
-   static final int[][] field2658 = new int[][]{{1, 3, 5, 7}, {1, 3, 5, 7}, {1, 3, 5, 7}, {1, 3, 5, 7, 6}, {1, 3, 5, 7, 6}, {1, 3, 5, 7, 6}, {1, 3, 5, 7, 6}, {1, 3, 5, 7, 2, 6}, {1, 3, 5, 7, 2, 8}, {1, 3, 5, 7, 2, 8}, {1, 3, 5, 7, 11, 12}, {1, 3, 5, 7, 11, 12}, {1, 3, 5, 7, 13, 14}};
+   static int[] field2673 = new int[6];
+   @ObfuscatedName("ah")
+   static float[] field2674 = new float[6];
    @ObfuscatedName("az")
-   static final int[][] field2680 = new int[][]{{0, 1, 2, 3, 0, 0, 1, 3}, {1, 1, 2, 3, 1, 0, 1, 3}, {0, 1, 2, 3, 1, 0, 1, 3}, {0, 0, 1, 2, 0, 0, 2, 4, 1, 0, 4, 3}, {0, 0, 1, 4, 0, 0, 4, 3, 1, 1, 2, 4}, {0, 0, 4, 3, 1, 0, 1, 2, 1, 0, 2, 4}, {0, 1, 2, 4, 1, 0, 1, 4, 1, 0, 4, 3}, {0, 4, 1, 2, 0, 4, 2, 5, 1, 0, 4, 5, 1, 0, 5, 3}, {0, 4, 1, 2, 0, 4, 2, 3, 0, 4, 3, 5, 1, 0, 4, 5}, {0, 0, 4, 5, 1, 4, 1, 2, 1, 4, 2, 3, 1, 4, 3, 5}, {0, 0, 1, 5, 0, 1, 4, 5, 0, 1, 2, 4, 1, 0, 5, 3, 1, 5, 4, 3, 1, 4, 2, 3}, {1, 0, 1, 5, 1, 1, 4, 5, 1, 1, 2, 4, 0, 0, 5, 3, 0, 5, 4, 3, 0, 4, 2, 3}, {1, 0, 5, 4, 1, 0, 1, 5, 0, 0, 4, 3, 0, 4, 5, 3, 0, 5, 2, 3, 0, 1, 2, 5}};
-   @ObfuscatedName("af")
+   static int[] field2666 = new int[6];
+   @ObfuscatedName("au")
+   static int[] field2657 = new int[6];
+   @ObfuscatedName("ai")
+   static int[] field2677 = new int[6];
+   @ObfuscatedName("aq")
+   static final int[][] field2675 = new int[][]{{1, 3, 5, 7}, {1, 3, 5, 7}, {1, 3, 5, 7}, {1, 3, 5, 7, 6}, {1, 3, 5, 7, 6}, {1, 3, 5, 7, 6}, {1, 3, 5, 7, 6}, {1, 3, 5, 7, 2, 6}, {1, 3, 5, 7, 2, 8}, {1, 3, 5, 7, 2, 8}, {1, 3, 5, 7, 11, 12}, {1, 3, 5, 7, 11, 12}, {1, 3, 5, 7, 13, 14}};
+   @ObfuscatedName("aw")
+   static final int[][] field2679 = new int[][]{{0, 1, 2, 3, 0, 0, 1, 3}, {1, 1, 2, 3, 1, 0, 1, 3}, {0, 1, 2, 3, 1, 0, 1, 3}, {0, 0, 1, 2, 0, 0, 2, 4, 1, 0, 4, 3}, {0, 0, 1, 4, 0, 0, 4, 3, 1, 1, 2, 4}, {0, 0, 4, 3, 1, 0, 1, 2, 1, 0, 2, 4}, {0, 1, 2, 4, 1, 0, 1, 4, 1, 0, 4, 3}, {0, 4, 1, 2, 0, 4, 2, 5, 1, 0, 4, 5, 1, 0, 5, 3}, {0, 4, 1, 2, 0, 4, 2, 3, 0, 4, 3, 5, 1, 0, 4, 5}, {0, 0, 4, 5, 1, 4, 1, 2, 1, 4, 2, 3, 1, 4, 3, 5}, {0, 0, 1, 5, 0, 1, 4, 5, 0, 1, 2, 4, 1, 0, 5, 3, 1, 5, 4, 3, 1, 4, 2, 3}, {1, 0, 1, 5, 1, 1, 4, 5, 1, 1, 2, 4, 0, 0, 5, 3, 0, 5, 4, 3, 0, 4, 2, 3}, {1, 0, 5, 4, 1, 0, 1, 5, 0, 0, 4, 3, 0, 4, 5, 3, 0, 5, 2, 3, 0, 1, 2, 5}};
+   @ObfuscatedName("at")
    @Export("vertexX")
    int[] vertexX;
    @ObfuscatedName("an")
    @Export("vertexY")
    int[] vertexY;
-   @ObfuscatedName("aw")
+   @ObfuscatedName("av")
    @Export("vertexZ")
    int[] vertexZ;
-   @ObfuscatedName("ac")
+   @ObfuscatedName("as")
    @Export("triangleColorA")
    int[] triangleColorA;
-   @ObfuscatedName("au")
+   @ObfuscatedName("ax")
    @Export("triangleColorB")
    int[] triangleColorB;
-   @ObfuscatedName("ab")
+   @ObfuscatedName("ap")
    @Export("triangleColorC")
    int[] triangleColorC;
-   @ObfuscatedName("aq")
+   @ObfuscatedName("ab")
    @Export("faceX")
    int[] faceX;
-   @ObfuscatedName("al")
+   @ObfuscatedName("ak")
    @Export("faceY")
    int[] faceY;
-   @ObfuscatedName("at")
+   @ObfuscatedName("ae")
    @Export("faceZ")
    int[] faceZ;
-   @ObfuscatedName("aa")
+   @ObfuscatedName("af")
    @Export("triangleTextureId")
    int[] triangleTextureId;
-   @ObfuscatedName("ay")
+   @ObfuscatedName("ao")
    @Export("isFlat")
    boolean isFlat = true;
-   @ObfuscatedName("ao")
+   @ObfuscatedName("aa")
    @Export("shape")
    int shape;
-   @ObfuscatedName("ax")
+   @ObfuscatedName("aj")
    @Export("rotation")
    int rotation;
-   @ObfuscatedName("ai")
+   @ObfuscatedName("ad")
    @Export("underlayRgb")
    int underlayRgb;
-   @ObfuscatedName("ag")
+   @ObfuscatedName("ac")
    @Export("overlayRgb")
    int overlayRgb;
 
@@ -80,7 +80,7 @@ public final class SceneTileModel {
       int var21 = var20 / 2;
       int var22 = var20 / 4;
       int var23 = var20 * 3 / 4;
-      int[] var24 = field2658[var1];
+      int[] var24 = field2675[var1];
       int var25 = var24.length;
       this.vertexX = new int[var25];
       this.vertexY = new int[var25];
@@ -215,7 +215,7 @@ public final class SceneTileModel {
          var27[var30] = var36;
       }
 
-      int[] var38 = field2680[var1];
+      int[] var38 = field2679[var1];
       var31 = var38.length / 4;
       this.faceX = new int[var31];
       this.faceY = new int[var31];

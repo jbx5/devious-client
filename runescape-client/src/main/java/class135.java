@@ -1,106 +1,84 @@
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
+import java.util.concurrent.Callable;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fp")
-public enum class135 implements MouseWheel {
-   @ObfuscatedName("af")
+@ObfuscatedName("fe")
+class class135 implements Callable {
+   @ObfuscatedName("at")
    @ObfuscatedSignature(
-      descriptor = "Lfp;"
+      descriptor = "[Lis;"
    )
-   field1618(2, 0),
-   @ObfuscatedName("an")
+   public static class215[] field1579;
+   // $FF: synthetic field
    @ObfuscatedSignature(
-      descriptor = "Lfp;"
+      descriptor = "Lfz;"
    )
-   field1615(1, 1),
-   @ObfuscatedName("aw")
+   final class136 this$0;
+   // $FF: synthetic field
+   final int val$workStart;
+   // $FF: synthetic field
+   final int val$workEnd;
+   // $FF: synthetic field
    @ObfuscatedSignature(
-      descriptor = "Lfp;"
+      descriptor = "[Leg;"
    )
-   field1621(0, 2),
-   @ObfuscatedName("ac")
-   @ObfuscatedSignature(
-      descriptor = "Lfp;"
-   )
-   field1617(3, 3),
-   @ObfuscatedName("au")
-   @ObfuscatedSignature(
-      descriptor = "Lfp;"
-   )
-   field1619(4, 4);
+   final class128[] val$curveLoadJobs;
 
-   @ObfuscatedName("ab")
-   @ObfuscatedGetter(
-      intValue = 1915854149
+   @ObfuscatedSignature(
+      descriptor = "(Lfz;II[Leg;)V"
    )
-   public final int field1620;
-   @ObfuscatedName("aq")
-   @ObfuscatedGetter(
-      intValue = -601050455
-   )
-   @Export("id")
-   final int id;
-
-   class135(int var3, int var4) {
-      this.field1620 = var3;
-      this.id = var4;
+   class135(class136 var1, int var2, int var3, class128[] var4) {
+      this.this$0 = var1;
+      this.val$workStart = var2;
+      this.val$workEnd = var3;
+      this.val$curveLoadJobs = var4;
    }
 
-   @ObfuscatedName("af")
-   @ObfuscatedSignature(
-      descriptor = "(I)I",
-      garbageValue = "741942848"
-   )
-   @Export("rsOrdinal")
-   public int rsOrdinal() {
-      return this.id;
-   }
-
-   @ObfuscatedName("ld")
-   @ObfuscatedSignature(
-      descriptor = "([Lmq;IIIZI)V",
-      garbageValue = "1809081725"
-   )
-   @Export("resizeInterface")
-   static void resizeInterface(Widget[] var0, int var1, int var2, int var3, boolean var4) {
-      for(int var5 = 0; var5 < var0.length; ++var5) {
-         Widget var6 = var0[var5];
-         if (var6 != null && var6.parentId == var1) {
-            class158.alignWidgetSize(var6, var2, var3, var4);
-            class192.alignWidgetPosition(var6, var2, var3);
-            if (var6.scrollX > var6.scrollWidth - var6.width) {
-               var6.scrollX = var6.scrollWidth - var6.width;
-            }
-
-            if (var6.scrollX < 0) {
-               var6.scrollX = 0;
-            }
-
-            if (var6.scrollY > var6.scrollHeight - var6.height) {
-               var6.scrollY = var6.scrollHeight - var6.height;
-            }
-
-            if (var6.scrollY < 0) {
-               var6.scrollY = 0;
-            }
-
-            if (var6.type == 0) {
-               WallDecoration.revalidateWidgetScroll(var0, var6, var4);
-            }
-         }
+   public Object call() {
+      for(int var1 = this.val$workStart; var1 < this.val$workEnd; ++var1) {
+         this.val$curveLoadJobs[var1].call();
       }
 
+      return null;
    }
 
-   @ObfuscatedName("mi")
+   @ObfuscatedName("at")
    @ObfuscatedSignature(
-      descriptor = "(IB)V",
-      garbageValue = "0"
+      descriptor = "(I)[Llj;",
+      garbageValue = "1017659250"
    )
-   static final void method3182(int var0) {
-      var0 = Math.min(Math.max(var0, 0), 127);
-      class20.clientPreferences.method2464(var0);
+   public static class294[] method3046() {
+      return new class294[]{class294.field3206, class294.field3199, class294.field3207, class294.field3201, class294.field3198, class294.field3203, class294.field3202, class294.field3205, class294.field3208, class294.field3204, class294.field3200};
+   }
+
+   @ObfuscatedName("aj")
+   @ObfuscatedSignature(
+      descriptor = "(IIIB)I",
+      garbageValue = "36"
+   )
+   static int method3045(int var0, int var1, int var2) {
+      if ((Tiles.Tiles_renderFlags[var0][var1][var2] & 8) != 0) {
+         return 0;
+      } else {
+         return var0 > 0 && (Tiles.Tiles_renderFlags[1][var1][var2] & 2) != 0 ? var0 - 1 : var0;
+      }
+   }
+
+   @ObfuscatedName("ai")
+   @ObfuscatedSignature(
+      descriptor = "(I)I",
+      garbageValue = "844519050"
+   )
+   static int method3048() {
+      return Login.loginIndex;
+   }
+
+   @ObfuscatedName("bu")
+   @ObfuscatedSignature(
+      descriptor = "(ILdd;ZB)I",
+      garbageValue = "49"
+   )
+   static int method3047(int var0, Script var1, boolean var2) {
+      return 2;
    }
 }

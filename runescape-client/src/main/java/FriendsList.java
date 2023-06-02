@@ -4,39 +4,44 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("po")
+@ObfuscatedName("pr")
 @Implements("FriendsList")
 public class FriendsList extends UserList {
-   @ObfuscatedName("aw")
+   @ObfuscatedName("bt")
    @ObfuscatedSignature(
-      descriptor = "Lsw;"
+      descriptor = "Lqs;"
+   )
+   static Bounds field4572;
+   @ObfuscatedName("av")
+   @ObfuscatedSignature(
+      descriptor = "Lsj;"
    )
    @Export("loginType")
    final LoginType loginType;
-   @ObfuscatedName("ac")
+   @ObfuscatedName("as")
    @ObfuscatedGetter(
-      intValue = 2010685907
+      intValue = -534786145
    )
-   int field4555 = 1;
-   @ObfuscatedName("au")
+   int field4575 = 1;
+   @ObfuscatedName("ax")
    @ObfuscatedSignature(
-      descriptor = "Log;"
+      descriptor = "Lor;"
    )
    @Export("friendLoginUpdates")
    public LinkDeque friendLoginUpdates = new LinkDeque();
 
    @ObfuscatedSignature(
-      descriptor = "(Lsw;)V"
+      descriptor = "(Lsj;)V"
    )
    public FriendsList(LoginType var1) {
       super(400);
       this.loginType = var1;
    }
 
-   @ObfuscatedName("af")
+   @ObfuscatedName("at")
    @ObfuscatedSignature(
-      descriptor = "(I)Lpw;",
-      garbageValue = "1756938494"
+      descriptor = "(I)Lqm;",
+      garbageValue = "328216456"
    )
    @Export("newInstance")
    User newInstance() {
@@ -45,18 +50,18 @@ public class FriendsList extends UserList {
 
    @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "(II)[Lpw;",
-      garbageValue = "-463450295"
+      descriptor = "(IB)[Lqm;",
+      garbageValue = "20"
    )
    @Export("newTypedArray")
    User[] newTypedArray(int var1) {
       return new Friend[var1];
    }
 
-   @ObfuscatedName("aw")
+   @ObfuscatedName("av")
    @ObfuscatedSignature(
-      descriptor = "(Ltm;ZI)Z",
-      garbageValue = "-605757932"
+      descriptor = "(Lun;ZB)Z",
+      garbageValue = "11"
    )
    @Export("isFriended")
    public boolean isFriended(Username var1, boolean var2) {
@@ -68,10 +73,10 @@ public class FriendsList extends UserList {
       }
    }
 
-   @ObfuscatedName("ay")
+   @ObfuscatedName("ab")
    @ObfuscatedSignature(
-      descriptor = "(Lsg;IB)V",
-      garbageValue = "-80"
+      descriptor = "(Ltz;IB)V",
+      garbageValue = "30"
    )
    @Export("read")
    public void read(Buffer var1, int var2) {
@@ -96,7 +101,7 @@ public class FriendsList extends UserList {
                Friend var11 = (Friend)this.getByCurrentUsername(var4);
                if (var3) {
                   Friend var12 = (Friend)this.getByCurrentUsername(var5);
-                  if (var12 != null && var12 != var11) {
+                  if (var12 != null && var11 != var12) {
                      if (var11 != null) {
                         this.remove(var12);
                      } else {
@@ -135,17 +140,17 @@ public class FriendsList extends UserList {
                }
 
                if (var6 != var11.world) {
-                  var11.int2 = ++this.field4555 - 1;
+                  var11.int2 = ++this.field4575 - 1;
                   if (var11.world == -1 && var6 == 0) {
-                     var11.int2 = -(var11.int2 * 1270747397) * 1907692493;
+                     var11.int2 = -(var11.int2 * -1981175651) * 819600821;
                   }
 
                   var11.world = var6;
                }
 
                var11.rank = var7;
-               var11.field4571 = var9;
-               var11.field4570 = var10;
+               var11.field4589 = var9;
+               var11.field4590 = var10;
                continue;
             }
 
@@ -157,57 +162,25 @@ public class FriendsList extends UserList {
       }
    }
 
-   @ObfuscatedName("je")
+   @ObfuscatedName("kw")
    @ObfuscatedSignature(
-      descriptor = "(Lhf;I)V",
-      garbageValue = "544798953"
+      descriptor = "(I)V",
+      garbageValue = "-1087298650"
    )
-   static void method7770(class206 var0) {
-      if (var0 != null && var0.field2345 != null) {
-         if (var0.field2345.childIndex >= 0) {
-            Widget var1 = class165.getWidget(var0.field2345.parentId);
-            if (var1 == null || var1.children == null || var1.children.length == 0 || var0.field2345.childIndex >= var1.children.length || var0.field2345 != var1.children[var0.field2345.childIndex]) {
-               return;
-            }
+   @Export("Widget_runOnTargetLeave")
+   static void Widget_runOnTargetLeave() {
+      if (Client.isSpellSelected) {
+         Widget var0 = class158.getWidgetChild(ScriptFrame.selectedSpellWidget, Client.selectedSpellChildIndex);
+         if (var0 != null && var0.onTargetLeave != null) {
+            ScriptEvent var1 = new ScriptEvent();
+            var1.widget = var0;
+            var1.args = var0.onTargetLeave;
+            Clock.runScriptEvent(var1);
          }
 
-         if (var0.field2345.type == 11 && var0.field2344 == 0) {
-            if (var0.field2345.method6381(var0.field2348, var0.field2343, 0, 0)) {
-               switch (var0.field2345.method6385()) {
-                  case 0:
-                     Ignored.openURL(var0.field2345.method6503(), true, false);
-                     break;
-                  case 1:
-                     if (ObjectComposition.method4028(KeyHandler.getWidgetFlags(var0.field2345))) {
-                        int[] var4 = var0.field2345.method6388();
-                        if (var4 != null) {
-                           PacketBufferNode var2 = class330.getPacketBufferNode(ClientPacket.field3137, Client.packetWriter.isaacCipher);
-                           var2.packetBuffer.writeIntIME(var4[0]);
-                           var2.packetBuffer.writeIntLE(var0.field2345.id);
-                           var2.packetBuffer.writeInt(var4[1]);
-                           var2.packetBuffer.writeIntME(var0.field2345.method6386());
-                           var2.packetBuffer.writeIntIME(var4[2]);
-                           var2.packetBuffer.writeShortLE(var0.field2345.childIndex);
-                           Client.packetWriter.addNode(var2);
-                        }
-                     }
-               }
-            }
-         } else if (var0.field2345.type == 12) {
-            class314 var3 = var0.field2345.method6392();
-            if (var3 != null && var3.method6139()) {
-               switch (var0.field2344) {
-                  case 0:
-                     Client.field722.method4179(var0.field2345);
-                     var3.method6087(true);
-                     var3.method6126(var0.field2348, var0.field2343, Client.field721.method4229(82), Client.field721.method4229(81));
-                     break;
-                  case 1:
-                     var3.method6115(var0.field2348, var0.field2343);
-               }
-            }
-         }
-
+         Client.selectedSpellItemId = -1;
+         Client.isSpellSelected = false;
+         Messages.invalidateWidget(var0);
       }
    }
 }

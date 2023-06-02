@@ -12,15 +12,15 @@ import net.runelite.mapping.ObfuscatedSignature;
 import org.bouncycastle.crypto.tls.TlsClientProtocol;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
-@ObfuscatedName("ah")
+@ObfuscatedName("ag")
 public class class15 extends SSLSocketFactory {
    @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "Lah;"
+      descriptor = "Lag;"
    )
-   public static class15 field83;
-   @ObfuscatedName("af")
-   SecureRandom field82 = new SecureRandom();
+   static class15 field78;
+   @ObfuscatedName("at")
+   SecureRandom field77 = new SecureRandom();
 
    static {
       if (Security.getProvider("BC") == null) {
@@ -29,16 +29,19 @@ public class class15 extends SSLSocketFactory {
 
    }
 
-   @ObfuscatedName("af")
+   class15() {
+   }
+
+   @ObfuscatedName("an")
    @ObfuscatedSignature(
       descriptor = "(Ljava/lang/String;Lorg/bouncycastle/crypto/tls/TlsClientProtocol;I)Ljavax/net/ssl/SSLSocket;",
-      garbageValue = "-489123832"
+      garbageValue = "1348412469"
    )
-   SSLSocket method208(String var1, TlsClientProtocol var2) {
+   SSLSocket method191(String var1, TlsClientProtocol var2) {
       return new class12(this, var2, var1);
    }
 
-   public String[] getDefaultCipherSuites() {
+   public Socket createSocket(InetAddress var1, int var2) throws IOException {
       return null;
    }
 
@@ -46,19 +49,11 @@ public class class15 extends SSLSocketFactory {
       return null;
    }
 
-   public Socket createSocket(String var1, int var2) throws IOException, UnknownHostException {
-      return null;
-   }
-
-   public Socket createSocket(InetAddress var1, int var2) throws IOException {
+   public Socket createSocket(String var1, int var2, InetAddress var3, int var4) throws IOException, UnknownHostException {
       return null;
    }
 
    public Socket createSocket(InetAddress var1, int var2, InetAddress var3, int var4) throws IOException {
-      return null;
-   }
-
-   public Socket createSocket(String var1, int var2, InetAddress var3, int var4) throws IOException, UnknownHostException {
       return null;
    }
 
@@ -71,7 +66,28 @@ public class class15 extends SSLSocketFactory {
          var1.connect(new InetSocketAddress(var2, var3));
       }
 
-      TlsClientProtocol var5 = new TlsClientProtocol(var1.getInputStream(), var1.getOutputStream(), this.field82);
-      return this.method208(var2, var5);
+      TlsClientProtocol var5 = new TlsClientProtocol(var1.getInputStream(), var1.getOutputStream(), this.field77);
+      return this.method191(var2, var5);
+   }
+
+   public String[] getDefaultCipherSuites() {
+      return null;
+   }
+
+   public Socket createSocket(String var1, int var2) throws IOException, UnknownHostException {
+      return null;
+   }
+
+   @ObfuscatedName("at")
+   @ObfuscatedSignature(
+      descriptor = "(I)Lag;",
+      garbageValue = "-124922762"
+   )
+   public static class15 method206() {
+      if (field78 == null) {
+         field78 = new class15();
+      }
+
+      return field78;
    }
 }

@@ -3,74 +3,50 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ta")
+@ObfuscatedName("tv")
 public enum FillMode implements MouseWheel {
-   @ObfuscatedName("af")
+   @ObfuscatedName("at")
    @ObfuscatedSignature(
-      descriptor = "Lta;"
+      descriptor = "Ltv;"
    )
    @Export("SOLID")
    SOLID(0, 0),
    @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "Lta;"
+      descriptor = "Ltv;"
    )
-   field5073(1, 1),
-   @ObfuscatedName("aw")
+   field5099(1, 1),
+   @ObfuscatedName("av")
    @ObfuscatedSignature(
-      descriptor = "Lta;"
+      descriptor = "Ltv;"
    )
-   field5074(2, 2);
+   field5100(2, 2);
 
-   @ObfuscatedName("ac")
+   @ObfuscatedName("cd")
+   static String field5098;
+   @ObfuscatedName("as")
    @ObfuscatedGetter(
-      intValue = -894516731
+      intValue = 1590997735
    )
-   public final int field5072;
-   @ObfuscatedName("au")
+   public final int field5101;
+   @ObfuscatedName("ax")
    @ObfuscatedGetter(
-      intValue = -1089213109
+      intValue = -1109288009
    )
-   final int field5075;
+   final int field5103;
 
    FillMode(int var3, int var4) {
-      this.field5072 = var3;
-      this.field5075 = var4;
+      this.field5101 = var3;
+      this.field5103 = var4;
    }
 
-   @ObfuscatedName("af")
+   @ObfuscatedName("at")
    @ObfuscatedSignature(
-      descriptor = "(I)I",
-      garbageValue = "741942848"
+      descriptor = "(B)I",
+      garbageValue = "-14"
    )
    @Export("rsOrdinal")
    public int rsOrdinal() {
-      return this.field5075;
-   }
-
-   @ObfuscatedName("an")
-   @ObfuscatedSignature(
-      descriptor = "(III)V",
-      garbageValue = "-456739970"
-   )
-   @Export("changeWorldSelectSorting")
-   static void changeWorldSelectSorting(int var0, int var1) {
-      int[] var2 = new int[4];
-      int[] var3 = new int[4];
-      var2[0] = var0;
-      var3[0] = var1;
-      int var4 = 1;
-
-      for(int var5 = 0; var5 < 4; ++var5) {
-         if (World.World_sortOption1[var5] != var0) {
-            var2[var4] = World.World_sortOption1[var5];
-            var3[var4] = World.World_sortOption2[var5];
-            ++var4;
-         }
-      }
-
-      World.World_sortOption1 = var2;
-      World.World_sortOption2 = var3;
-      class123.sortWorlds(class31.World_worlds, 0, class31.World_worlds.length - 1, World.World_sortOption1, World.World_sortOption2);
+      return this.field5103;
    }
 }

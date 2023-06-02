@@ -4,116 +4,168 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gb")
+@ObfuscatedName("gj")
 @Implements("MilliClock")
 public class MilliClock extends Clock {
-   @ObfuscatedName("ux")
-   @ObfuscatedGetter(
-      intValue = 924172288
-   )
-   static int field1871;
-   @ObfuscatedName("af")
-   long[] field1879 = new long[10];
+   @ObfuscatedName("at")
+   long[] field1860 = new long[10];
    @ObfuscatedName("an")
    @ObfuscatedGetter(
-      intValue = 1354187759
+      intValue = 266969677
    )
-   int field1872 = 256;
-   @ObfuscatedName("aw")
+   int field1861 = 256;
+   @ObfuscatedName("av")
    @ObfuscatedGetter(
-      intValue = -1087246239
+      intValue = -778124261
    )
-   int field1873 = 1;
-   @ObfuscatedName("ac")
+   int field1859 = 1;
+   @ObfuscatedName("as")
    @ObfuscatedGetter(
-      longValue = -3320355304386370601L
+      longValue = -2178734300602278069L
    )
-   long field1875 = class96.method2634();
-   @ObfuscatedName("au")
+   long field1858 = BoundaryObject.method5027();
+   @ObfuscatedName("ax")
    @ObfuscatedGetter(
-      intValue = 1554226597
+      intValue = -29680377
    )
-   int field1878 = 0;
-   @ObfuscatedName("ab")
+   int field1857 = 0;
+   @ObfuscatedName("ap")
    @ObfuscatedGetter(
-      intValue = 1512168621
+      intValue = 332250967
    )
-   int field1876;
+   int field1862;
 
-   MilliClock() {
+   public MilliClock() {
       for(int var1 = 0; var1 < 10; ++var1) {
-         this.field1879[var1] = this.field1875;
+         this.field1860[var1] = this.field1858;
       }
 
    }
 
-   @ObfuscatedName("af")
+   @ObfuscatedName("at")
    @ObfuscatedSignature(
       descriptor = "(I)V",
-      garbageValue = "-331366942"
+      garbageValue = "-1909200559"
    )
    @Export("mark")
    public void mark() {
       for(int var1 = 0; var1 < 10; ++var1) {
-         this.field1879[var1] = 0L;
+         this.field1860[var1] = 0L;
       }
 
    }
 
    @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "(III)I",
-      garbageValue = "-1491982008"
+      descriptor = "(IIB)I",
+      garbageValue = "-4"
    )
    @Export("wait")
    public int wait(int var1, int var2) {
-      int var3 = this.field1872;
-      int var4 = this.field1873;
-      this.field1872 = 300;
-      this.field1873 = 1;
-      this.field1875 = class96.method2634();
-      if (0L == this.field1879[this.field1876]) {
-         this.field1872 = var3;
-         this.field1873 = var4;
-      } else if (this.field1875 > this.field1879[this.field1876]) {
-         this.field1872 = (int)((long)(var1 * 2560) / (this.field1875 - this.field1879[this.field1876]));
+      int var3 = this.field1861;
+      int var4 = this.field1859;
+      this.field1861 = 300;
+      this.field1859 = 1;
+      this.field1858 = BoundaryObject.method5027();
+      if (this.field1860[this.field1862] == 0L) {
+         this.field1861 = var3;
+         this.field1859 = var4;
+      } else if (this.field1858 > this.field1860[this.field1862]) {
+         this.field1861 = (int)((long)(var1 * 2560) / (this.field1858 - this.field1860[this.field1862]));
       }
 
-      if (this.field1872 < 25) {
-         this.field1872 = 25;
+      if (this.field1861 < 25) {
+         this.field1861 = 25;
       }
 
-      if (this.field1872 > 256) {
-         this.field1872 = 256;
-         this.field1873 = (int)((long)var1 - (this.field1875 - this.field1879[this.field1876]) / 10L);
+      if (this.field1861 > 256) {
+         this.field1861 = 256;
+         this.field1859 = (int)((long)var1 - (this.field1858 - this.field1860[this.field1862]) / 10L);
       }
 
-      if (this.field1873 > var1) {
-         this.field1873 = var1;
+      if (this.field1859 > var1) {
+         this.field1859 = var1;
       }
 
-      this.field1879[this.field1876] = this.field1875;
-      this.field1876 = (this.field1876 + 1) % 10;
+      this.field1860[this.field1862] = this.field1858;
+      this.field1862 = (this.field1862 + 1) % 10;
       int var5;
-      if (this.field1873 > 1) {
+      if (this.field1859 > 1) {
          for(var5 = 0; var5 < 10; ++var5) {
-            if (0L != this.field1879[var5]) {
-               this.field1879[var5] += (long)this.field1873;
+            if (0L != this.field1860[var5]) {
+               this.field1860[var5] += (long)this.field1859;
             }
          }
       }
 
-      if (this.field1873 < var2) {
-         this.field1873 = var2;
+      if (this.field1859 < var2) {
+         this.field1859 = var2;
       }
 
-      PlayerComposition.method6084((long)this.field1873);
+      FloorDecoration.method4357((long)this.field1859);
 
-      for(var5 = 0; this.field1878 < 256; this.field1878 += this.field1872) {
+      for(var5 = 0; this.field1857 < 256; this.field1857 += this.field1861) {
          ++var5;
       }
 
-      this.field1878 &= 255;
+      this.field1857 &= 255;
       return var5;
+   }
+
+   @ObfuscatedName("at")
+   @ObfuscatedSignature(
+      descriptor = "(II)I",
+      garbageValue = "1523541011"
+   )
+   static int method3527(int var0) {
+      return class28.KeyHandler_keyCodes[var0];
+   }
+
+   @ObfuscatedName("an")
+   @ObfuscatedSignature(
+      descriptor = "(Ljava/lang/Throwable;Ljava/lang/String;)Lud;"
+   )
+   @Export("newRunException")
+   public static RunException newRunException(Throwable var0, String var1) {
+      RunException var2;
+      if (var0 instanceof RunException) {
+         var2 = (RunException)var0;
+         var2.message = var2.message + ' ' + var1;
+      } else {
+         var2 = new RunException(var0, var1);
+      }
+
+      return var2;
+   }
+
+   @ObfuscatedName("av")
+   @ObfuscatedSignature(
+      descriptor = "(IIIIB)V",
+      garbageValue = "-66"
+   )
+   static final void method3526(int var0, int var1, int var2, int var3) {
+      for(int var4 = var1; var4 <= var3 + var1; ++var4) {
+         for(int var5 = var0; var5 <= var0 + var2; ++var5) {
+            if (var5 >= 0 && var5 < 104 && var4 >= 0 && var4 < 104) {
+               class305.Tiles_underlays2[0][var5][var4] = 127;
+               if (var0 == var5 && var5 > 0) {
+                  Tiles.Tiles_heights[0][var5][var4] = Tiles.Tiles_heights[0][var5 - 1][var4];
+               }
+
+               if (var0 + var2 == var5 && var5 < 103) {
+                  Tiles.Tiles_heights[0][var5][var4] = Tiles.Tiles_heights[0][var5 + 1][var4];
+               }
+
+               if (var4 == var1 && var4 > 0) {
+                  Tiles.Tiles_heights[0][var5][var4] = Tiles.Tiles_heights[0][var5][var4 - 1];
+               }
+
+               if (var4 == var3 + var1 && var4 < 103) {
+                  Tiles.Tiles_heights[0][var5][var4] = Tiles.Tiles_heights[0][var5][var4 + 1];
+               }
+            }
+         }
+      }
+
    }
 }

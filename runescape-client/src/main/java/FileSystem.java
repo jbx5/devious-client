@@ -1,21 +1,19 @@
+import java.io.File;
 import java.util.Hashtable;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 
-@ObfuscatedName("gm")
+@ObfuscatedName("gy")
 @Implements("FileSystem")
 public class FileSystem {
-   @ObfuscatedName("af")
+   @ObfuscatedName("at")
    @Export("FileSystem_hasPermissions")
-   public static boolean FileSystem_hasPermissions = false;
-   @ObfuscatedName("aw")
+   static boolean FileSystem_hasPermissions = false;
+   @ObfuscatedName("an")
+   @Export("FileSystem_cacheDir")
+   static File FileSystem_cacheDir;
+   @ObfuscatedName("av")
    @Export("FileSystem_cacheFiles")
    static Hashtable FileSystem_cacheFiles = new Hashtable(16);
-   @ObfuscatedName("al")
-   @Export("ItemDefinition_inMembersWorld")
-   public static boolean ItemDefinition_inMembersWorld;
-   @ObfuscatedName("aa")
-   @Export("Tiles_hue")
-   static int[] Tiles_hue;
 }

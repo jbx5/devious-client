@@ -3,35 +3,35 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 
-@ObfuscatedName("tt")
+@ObfuscatedName("uv")
 @Implements("ActorSpotAnim")
 public class ActorSpotAnim extends Node {
-   @ObfuscatedName("af")
+   @ObfuscatedName("at")
    @ObfuscatedGetter(
-      intValue = -1171575623
+      intValue = 144070655
    )
    @Export("spotAnimation")
    public int spotAnimation = -1;
    @ObfuscatedName("an")
    @ObfuscatedGetter(
-      intValue = 971664459
+      intValue = 1780958433
    )
    @Export("spotAnimationFrame")
    public int spotAnimationFrame = 0;
-   @ObfuscatedName("aw")
+   @ObfuscatedName("av")
    @ObfuscatedGetter(
-      intValue = 77733639
+      intValue = -642369433
    )
    @Export("spotAnimationFrameCycle")
    public int spotAnimationFrameCycle = 0;
-   @ObfuscatedName("ac")
+   @ObfuscatedName("as")
    @ObfuscatedGetter(
-      intValue = -1415749665
+      intValue = -243562479
    )
-   public int field5144 = 0;
-   @ObfuscatedName("au")
+   public int field5170 = 0;
+   @ObfuscatedName("ax")
    @ObfuscatedGetter(
-      intValue = -790772793
+      intValue = 293081805
    )
    @Export("spotAnimationHeight")
    public int spotAnimationHeight = 0;
@@ -39,7 +39,7 @@ public class ActorSpotAnim extends Node {
    public ActorSpotAnim(int var1, int var2, int var3, int var4) {
       this.spotAnimation = var1;
       this.spotAnimationHeight = var2;
-      this.field5144 = var3;
+      this.field5170 = var3;
       this.spotAnimationFrame = var4;
    }
 }

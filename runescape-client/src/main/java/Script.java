@@ -4,59 +4,53 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ch")
+@ObfuscatedName("dd")
 @Implements("Script")
 public class Script extends DualNode {
-   @ObfuscatedName("af")
+   @ObfuscatedName("at")
    @ObfuscatedSignature(
-      descriptor = "Lkh;"
+      descriptor = "Llf;"
    )
    @Export("Script_cached")
    static EvictingDualNodeHashTable Script_cached = new EvictingDualNodeHashTable(128);
-   @ObfuscatedName("ai")
-   @ObfuscatedSignature(
-      descriptor = "Lno;"
-   )
-   @Export("NetCache_currentResponse")
-   public static NetFileRequest NetCache_currentResponse;
    @ObfuscatedName("an")
-   String field961;
-   @ObfuscatedName("aw")
+   String field992;
+   @ObfuscatedName("av")
    @Export("opcodes")
    int[] opcodes;
-   @ObfuscatedName("ac")
+   @ObfuscatedName("as")
    @Export("intOperands")
    int[] intOperands;
-   @ObfuscatedName("au")
+   @ObfuscatedName("ax")
    @Export("stringOperands")
    String[] stringOperands;
-   @ObfuscatedName("ab")
+   @ObfuscatedName("ap")
    @ObfuscatedGetter(
-      intValue = 2144970855
+      intValue = 280962447
    )
    @Export("localIntCount")
    int localIntCount;
-   @ObfuscatedName("aq")
+   @ObfuscatedName("ab")
    @ObfuscatedGetter(
-      intValue = -1897224143
+      intValue = 219646607
    )
    @Export("localStringCount")
    int localStringCount;
-   @ObfuscatedName("al")
+   @ObfuscatedName("ak")
    @ObfuscatedGetter(
-      intValue = -1203198865
+      intValue = -1089927101
    )
    @Export("intArgumentCount")
    int intArgumentCount;
-   @ObfuscatedName("at")
+   @ObfuscatedName("ae")
    @ObfuscatedGetter(
-      intValue = 1178893217
+      intValue = 942495419
    )
    @Export("stringArgumentCount")
    int stringArgumentCount;
-   @ObfuscatedName("aa")
+   @ObfuscatedName("af")
    @ObfuscatedSignature(
-      descriptor = "[Lro;"
+      descriptor = "[Lsv;"
    )
    @Export("switches")
    IterableNodeHashTable[] switches;
@@ -64,35 +58,13 @@ public class Script extends DualNode {
    Script() {
    }
 
-   @ObfuscatedName("au")
+   @ObfuscatedName("ax")
    @ObfuscatedSignature(
-      descriptor = "(II)[Lro;",
-      garbageValue = "-1544314186"
+      descriptor = "(II)[Lsv;",
+      garbageValue = "-1348069017"
    )
    @Export("newIterableNodeHashTable")
    IterableNodeHashTable[] newIterableNodeHashTable(int var1) {
       return new IterableNodeHashTable[var1];
-   }
-
-   @ObfuscatedName("af")
-   @ObfuscatedSignature(
-      descriptor = "(III)I",
-      garbageValue = "-2065195027"
-   )
-   public static int method2137(int var0, int var1) {
-      int var2;
-      for(var2 = 1; var1 > 1; var1 >>= 1) {
-         if ((var1 & 1) != 0) {
-            var2 = var0 * var2;
-         }
-
-         var0 *= var0;
-      }
-
-      if (var1 == 1) {
-         return var0 * var2;
-      } else {
-         return var2;
-      }
    }
 }

@@ -1,29 +1,36 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 
-@ObfuscatedName("hv")
+@ObfuscatedName("hs")
 @Implements("NewStuff")
 public class NewStuff {
-   @ObfuscatedName("af")
+   @ObfuscatedName("nq")
    @ObfuscatedGetter(
-      longValue = -1176524468931644747L
+      intValue = 354011115
    )
-   public long field2002;
+   @Export("menuY")
+   static int menuY;
+   @ObfuscatedName("at")
+   @ObfuscatedGetter(
+      longValue = 1293909845241469211L
+   )
+   public long field1989;
    @ObfuscatedName("an")
-   int[] field2001;
-   @ObfuscatedName("aw")
-   short[] field2000;
-   @ObfuscatedName("ac")
-   short[] field2003;
-   @ObfuscatedName("au")
-   public boolean field2004 = false;
+   int[] field1987;
+   @ObfuscatedName("av")
+   short[] field1988;
+   @ObfuscatedName("as")
+   short[] field1991;
+   @ObfuscatedName("ax")
+   public boolean field1990 = false;
 
    public NewStuff(long var1, int[] var3, short[] var4, short[] var5, boolean var6) {
-      this.field2002 = var1;
-      this.field2001 = var3;
-      this.field2000 = var4;
-      this.field2003 = var5;
-      this.field2004 = var6;
+      this.field1989 = var1;
+      this.field1987 = var3;
+      this.field1988 = var4;
+      this.field1991 = var5;
+      this.field1990 = var6;
    }
 }

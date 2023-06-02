@@ -5,91 +5,198 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ez")
+@ObfuscatedName("et")
 @Implements("UrlRequest")
 public class UrlRequest {
    @ObfuscatedName("an")
    @ObfuscatedGetter(
-      intValue = 1340146847
+      intValue = -513413295
    )
-   static int field1407 = -1;
-   @ObfuscatedName("aw")
+   static int field1404 = -1;
+   @ObfuscatedName("av")
    @ObfuscatedGetter(
-      intValue = -1513206085
+      intValue = 460487335
    )
-   static int field1406 = -2;
+   static int field1405 = -2;
    @ObfuscatedName("at")
+   final URL field1407;
+   @ObfuscatedName("as")
    @ObfuscatedGetter(
-      intValue = -808987209
+      intValue = 1650044907
    )
-   public static int field1410;
-   @ObfuscatedName("af")
-   final URL field1408;
-   @ObfuscatedName("ac")
-   @ObfuscatedGetter(
-      intValue = -349727197
-   )
-   volatile int field1405;
-   @ObfuscatedName("au")
+   volatile int field1403;
+   @ObfuscatedName("ax")
    @Export("response0")
    volatile byte[] response0;
 
    UrlRequest(URL var1) {
-      this.field1405 = field1407;
-      this.field1408 = var1;
+      this.field1403 = field1404;
+      this.field1407 = var1;
    }
 
-   @ObfuscatedName("af")
+   @ObfuscatedName("at")
    @ObfuscatedSignature(
       descriptor = "(B)Z",
-      garbageValue = "-54"
+      garbageValue = "-57"
    )
    @Export("isDone")
    public boolean isDone() {
-      return this.field1405 != field1407;
+      return this.field1403 != field1404;
    }
 
    @ObfuscatedName("an")
    @ObfuscatedSignature(
       descriptor = "(B)[B",
-      garbageValue = "76"
+      garbageValue = "-91"
    )
    @Export("getResponse")
    public byte[] getResponse() {
       return this.response0;
    }
 
-   @ObfuscatedName("aw")
+   @ObfuscatedName("av")
    @ObfuscatedSignature(
-      descriptor = "(B)Ljava/lang/String;",
-      garbageValue = "82"
+      descriptor = "(I)Ljava/lang/String;",
+      garbageValue = "1290466605"
    )
-   public String method2866() {
-      return this.field1408.toString();
+   public String method2833() {
+      return this.field1407.toString();
    }
 
-   @ObfuscatedName("ac")
-   @Export("Rasterizer3D_brighten")
-   static int Rasterizer3D_brighten(int var0, double var1) {
-      double var3 = (double)(var0 >> 16) / 256.0;
-      double var5 = (double)(var0 >> 8 & 255) / 256.0;
-      double var7 = (double)(var0 & 255) / 256.0;
-      var3 = Math.pow(var3, var1);
-      var5 = Math.pow(var5, var1);
-      var7 = Math.pow(var7, var1);
-      int var9 = (int)(var3 * 256.0);
-      int var10 = (int)(var5 * 256.0);
-      int var11 = (int)(256.0 * var7);
-      return var11 + (var10 << 8) + (var9 << 16);
-   }
-
-   @ObfuscatedName("as")
+   @ObfuscatedName("av")
    @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "-560341895"
+      descriptor = "(Ltl;B)V",
+      garbageValue = "-27"
    )
-   static void method2867() {
-      class129.method3124(24);
-      class205.setLoginResponseString("The game servers are currently being updated.", "Please wait a few minutes and try again.", "");
+   static final void method2839(PacketBuffer var0) {
+      int var1 = 0;
+      var0.importIndex();
+
+      byte[] var10000;
+      int var2;
+      int var4;
+      int var5;
+      for(var2 = 0; var2 < Players.Players_count; ++var2) {
+         var5 = Players.Players_indices[var2];
+         if ((Players.field1330[var5] & 1) == 0) {
+            if (var1 > 0) {
+               --var1;
+               var10000 = Players.field1330;
+               var10000[var5] = (byte)(var10000[var5] | 2);
+            } else {
+               var4 = var0.readBits(1);
+               if (var4 == 0) {
+                  var1 = InterfaceParent.method2244(var0);
+                  var10000 = Players.field1330;
+                  var10000[var5] = (byte)(var10000[var5] | 2);
+               } else {
+                  class72.readPlayerUpdate(var0, var5);
+               }
+            }
+         }
+      }
+
+      var0.exportIndex();
+      if (var1 != 0) {
+         throw new RuntimeException();
+      } else {
+         var0.importIndex();
+
+         for(var2 = 0; var2 < Players.Players_count; ++var2) {
+            var5 = Players.Players_indices[var2];
+            if ((Players.field1330[var5] & 1) != 0) {
+               if (var1 > 0) {
+                  --var1;
+                  var10000 = Players.field1330;
+                  var10000[var5] = (byte)(var10000[var5] | 2);
+               } else {
+                  var4 = var0.readBits(1);
+                  if (var4 == 0) {
+                     var1 = InterfaceParent.method2244(var0);
+                     var10000 = Players.field1330;
+                     var10000[var5] = (byte)(var10000[var5] | 2);
+                  } else {
+                     class72.readPlayerUpdate(var0, var5);
+                  }
+               }
+            }
+         }
+
+         var0.exportIndex();
+         if (var1 != 0) {
+            throw new RuntimeException();
+         } else {
+            var0.importIndex();
+
+            for(var2 = 0; var2 < Players.Players_emptyIdxCount; ++var2) {
+               var5 = Players.Players_emptyIndices[var2];
+               if ((Players.field1330[var5] & 1) != 0) {
+                  if (var1 > 0) {
+                     --var1;
+                     var10000 = Players.field1330;
+                     var10000[var5] = (byte)(var10000[var5] | 2);
+                  } else {
+                     var4 = var0.readBits(1);
+                     if (var4 == 0) {
+                        var1 = InterfaceParent.method2244(var0);
+                        var10000 = Players.field1330;
+                        var10000[var5] = (byte)(var10000[var5] | 2);
+                     } else if (UserComparator7.updateExternalPlayer(var0, var5)) {
+                        var10000 = Players.field1330;
+                        var10000[var5] = (byte)(var10000[var5] | 2);
+                     }
+                  }
+               }
+            }
+
+            var0.exportIndex();
+            if (var1 != 0) {
+               throw new RuntimeException();
+            } else {
+               var0.importIndex();
+
+               for(var2 = 0; var2 < Players.Players_emptyIdxCount; ++var2) {
+                  var5 = Players.Players_emptyIndices[var2];
+                  if ((Players.field1330[var5] & 1) == 0) {
+                     if (var1 > 0) {
+                        --var1;
+                        var10000 = Players.field1330;
+                        var10000[var5] = (byte)(var10000[var5] | 2);
+                     } else {
+                        var4 = var0.readBits(1);
+                        if (var4 == 0) {
+                           var1 = InterfaceParent.method2244(var0);
+                           var10000 = Players.field1330;
+                           var10000[var5] = (byte)(var10000[var5] | 2);
+                        } else if (UserComparator7.updateExternalPlayer(var0, var5)) {
+                           var10000 = Players.field1330;
+                           var10000[var5] = (byte)(var10000[var5] | 2);
+                        }
+                     }
+                  }
+               }
+
+               var0.exportIndex();
+               if (var1 != 0) {
+                  throw new RuntimeException();
+               } else {
+                  Players.Players_count = 0;
+                  Players.Players_emptyIdxCount = 0;
+
+                  for(var2 = 1; var2 < 2048; ++var2) {
+                     var10000 = Players.field1330;
+                     var10000[var2] = (byte)(var10000[var2] >> 1);
+                     Player var3 = Client.players[var2];
+                     if (var3 != null) {
+                        Players.Players_indices[++Players.Players_count - 1] = var2;
+                     } else {
+                        Players.Players_emptyIndices[++Players.Players_emptyIdxCount - 1] = var2;
+                     }
+                  }
+
+               }
+            }
+         }
+      }
    }
 }

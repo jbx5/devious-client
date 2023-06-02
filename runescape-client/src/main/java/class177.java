@@ -1,81 +1,88 @@
-import java.io.IOException;
+import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gn")
-public abstract class class177 {
+@ObfuscatedName("gl")
+public class class177 extends class180 {
+   @ObfuscatedName("ax")
+   @ObfuscatedGetter(
+      intValue = 556092711
+   )
+   static int field1853;
    @ObfuscatedName("ac")
-   String field1889;
+   @ObfuscatedSignature(
+      descriptor = "Ltj;"
+   )
+   @Export("options_buttons_2Sprite")
+   static IndexedSprite options_buttons_2Sprite;
+   @ObfuscatedName("at")
+   @ObfuscatedGetter(
+      intValue = 753588277
+   )
+   int field1854;
    // $FF: synthetic field
    @ObfuscatedSignature(
-      descriptor = "Lgy;"
+      descriptor = "Lgi;"
    )
-   final class166 this$0;
+   final class169 this$0;
 
    @ObfuscatedSignature(
-      descriptor = "(Lgy;Ljava/lang/String;)V"
+      descriptor = "(Lgi;Ljava/lang/String;I)V"
    )
-   class177(class166 var1, String var2) {
+   class177(class169 var1, String var2, int var3) {
+      super(var1, var2);
       this.this$0 = var1;
-      this.field1889 = var2;
+      this.field1854 = var3;
    }
 
-   @ObfuscatedName("af")
+   @ObfuscatedName("at")
    @ObfuscatedSignature(
-      descriptor = "(B)I",
-      garbageValue = "-41"
+      descriptor = "(I)I",
+      garbageValue = "-1756234342"
    )
-   public abstract int vmethod3607();
+   public int vmethod3531() {
+      return 0;
+   }
+
+   @ObfuscatedName("ax")
+   @ObfuscatedSignature(
+      descriptor = "(I)I",
+      garbageValue = "16858419"
+   )
+   public int vmethod3536() {
+      return this.field1854;
+   }
 
    @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "(B)Ljava/lang/String;",
-      garbageValue = "88"
+      descriptor = "(II)Lnt;",
+      garbageValue = "1150408327"
    )
-   public String vmethod3616() {
+   public static GameBuild method3517(int var0) {
+      GameBuild[] var1 = class280.method5602();
+
+      for(int var2 = 0; var2 < var1.length; ++var2) {
+         GameBuild var3 = var1[var2];
+         if (var0 == var3.buildId) {
+            return var3;
+         }
+      }
+
       return null;
    }
 
-   @ObfuscatedName("al")
+   @ObfuscatedName("ae")
    @ObfuscatedSignature(
-      descriptor = "(I)I",
-      garbageValue = "421671702"
+      descriptor = "(IS)Lfa;",
+      garbageValue = "1200"
    )
-   public int vmethod3608() {
-      return -1;
-   }
-
-   @ObfuscatedName("ao")
-   @ObfuscatedSignature(
-      descriptor = "(B)Ljava/lang/String;",
-      garbageValue = "89"
-   )
-   public String method3606() {
-      return this.field1889;
-   }
-
-   @ObfuscatedName("an")
-   @ObfuscatedSignature(
-      descriptor = "(ZI)V",
-      garbageValue = "1787184956"
-   )
-   public static void method3617(boolean var0) {
-      if (NetCache.NetCache_socket != null) {
-         try {
-            Buffer var1 = new Buffer(4);
-            var1.writeByte(var0 ? 2 : 3);
-            var1.writeMedium(0);
-            NetCache.NetCache_socket.write(var1.array, 0, 4);
-         } catch (IOException var4) {
-            try {
-               NetCache.NetCache_socket.close();
-            } catch (Exception var3) {
-            }
-
-            ++NetCache.NetCache_ioExceptions;
-            NetCache.NetCache_socket = null;
-         }
-
+   static class131 method3518(int var0) {
+      class131 var1 = (class131)GameObject.findEnumerated(Widget.method6508(), var0);
+      if (var1 == null) {
+         var1 = class131.field1554;
       }
+
+      return var1;
    }
 }

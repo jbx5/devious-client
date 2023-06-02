@@ -6,78 +6,78 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("eo")
+@ObfuscatedName("ez")
 @Implements("Messages")
 public class Messages {
-   @ObfuscatedName("af")
+   @ObfuscatedName("at")
    @Export("Messages_channels")
    static final Map Messages_channels = new HashMap();
    @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "Lro;"
+      descriptor = "Lsv;"
    )
    @Export("Messages_hashTable")
    static final IterableNodeHashTable Messages_hashTable = new IterableNodeHashTable(1024);
-   @ObfuscatedName("aw")
+   @ObfuscatedName("av")
    @ObfuscatedSignature(
-      descriptor = "Lox;"
+      descriptor = "Los;"
    )
    @Export("Messages_queue")
    static final IterableDualNodeQueue Messages_queue = new IterableDualNodeQueue();
-   @ObfuscatedName("ac")
+   @ObfuscatedName("as")
    @ObfuscatedGetter(
-      intValue = -1810202571
+      intValue = 1554238267
    )
    @Export("Messages_count")
    static int Messages_count = 0;
-   @ObfuscatedName("cp")
-   @Export("otp")
-   static String otp;
-
-   @ObfuscatedName("au")
+   @ObfuscatedName("go")
    @ObfuscatedSignature(
-      descriptor = "(I)[Lex;",
-      garbageValue = "-1633313603"
+      descriptor = "Lny;"
    )
-   static class123[] method2757() {
-      return new class123[]{class123.field1496, class123.field1487, class123.field1489, class123.field1490, class123.field1491};
+   static Archive field1377;
+   @ObfuscatedName("mm")
+   @ObfuscatedSignature(
+      descriptor = "Ljp;"
+   )
+   @Export("textureProvider")
+   static TextureProvider textureProvider;
+
+   @ObfuscatedName("at")
+   @ObfuscatedSignature(
+      descriptor = "(I)[Lnn;",
+      garbageValue = "1346140648"
+   )
+   static class343[] method2772() {
+      return new class343[]{class343.field3838, class343.field3837};
    }
 
-   @ObfuscatedName("kc")
+   @ObfuscatedName("as")
    @ObfuscatedSignature(
-      descriptor = "(Ldg;I)V",
-      garbageValue = "-1336825850"
+      descriptor = "(B)V",
+      garbageValue = "55"
    )
-   static final void method2763(PendingSpawn var0) {
-      long var1 = 0L;
-      int var3 = -1;
-      int var4 = 0;
-      int var5 = 0;
-      if (var0.type == 0) {
-         var1 = class31.scene.getBoundaryObjectTag(var0.plane, var0.x, var0.y);
+   static void method2771() {
+      if (Login.Login_username == null || Login.Login_username.length() <= 0) {
+         if (class10.clientPreferences.method2529() != null) {
+            Login.Login_username = class10.clientPreferences.method2529();
+            Client.Login_isUsernameRemembered = true;
+         } else {
+            Client.Login_isUsernameRemembered = false;
+         }
+
+      }
+   }
+
+   @ObfuscatedName("lr")
+   @ObfuscatedSignature(
+      descriptor = "(Lmb;I)V",
+      garbageValue = "-648264388"
+   )
+   @Export("invalidateWidget")
+   public static void invalidateWidget(Widget var0) {
+      if (var0 != null && var0.cycle == Client.field722) {
+         Client.field723[var0.rootIndex] = true;
       }
 
-      if (var0.type == 1) {
-         var1 = class31.scene.getWallDecorationTag(var0.plane, var0.x, var0.y);
-      }
-
-      if (var0.type == 2) {
-         var1 = class31.scene.getGameObjectTag(var0.plane, var0.x, var0.y);
-      }
-
-      if (var0.type == 3) {
-         var1 = class31.scene.getFloorDecorationTag(var0.plane, var0.x, var0.y);
-      }
-
-      if (var1 != 0L) {
-         int var6 = class31.scene.getObjectFlags(var0.plane, var0.x, var0.y, var1);
-         var3 = InterfaceParent.Entity_unpackID(var1);
-         var4 = var6 & 31;
-         var5 = var6 >> 6 & 3;
-      }
-
-      var0.objectId = var3;
-      var0.field1123 = var4;
-      var0.field1128 = var5;
    }
 }

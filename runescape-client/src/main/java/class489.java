@@ -1,66 +1,83 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("sx")
-public class class489 {
-   @ObfuscatedName("af")
-   int[] field4997 = new int[8];
-   @ObfuscatedName("an")
-   short[] field4995 = new short[8];
-
-   @ObfuscatedSignature(
-      descriptor = "(Lhs;)V"
+@ObfuscatedName("sk")
+final class class489 implements class486 {
+   @ObfuscatedName("av")
+   @ObfuscatedGetter(
+      intValue = -212008943
    )
-   public class489(NPCComposition var1) {
-      int var2 = 0;
-      if (var1.method3776()) {
-         var2 = var1.method3777().length;
-         System.arraycopy(var1.method3777(), 0, this.field4997, 0, var2);
-         System.arraycopy(var1.method3779(), 0, this.field4995, 0, var2);
-      }
+   @Export("SpriteBuffer_spriteHeight")
+   public static int SpriteBuffer_spriteHeight;
 
-      for(int var3 = var2; var3 < 8; ++var3) {
-         this.field4997[var3] = -1;
-         this.field4995[var3] = -1;
-      }
-
-   }
-
-   @ObfuscatedName("af")
+   @ObfuscatedName("at")
    @ObfuscatedSignature(
-      descriptor = "(B)[I",
-      garbageValue = "-91"
+      descriptor = "(Ljava/lang/Object;Ltz;B)V",
+      garbageValue = "71"
    )
-   public int[] method9309() {
-      return this.field4997;
+   public void vmethod8774(Object var1, Buffer var2) {
+      this.method8746((Long)var1, var2);
    }
 
    @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "(I)[S",
-      garbageValue = "496795655"
+      descriptor = "(Ltz;I)Ljava/lang/Object;",
+      garbageValue = "-190288914"
    )
-   public short[] method9302() {
-      return this.field4995;
+   public Object vmethod8773(Buffer var1) {
+      return var1.readLong();
    }
 
-   @ObfuscatedName("aw")
+   @ObfuscatedName("ap")
    @ObfuscatedSignature(
-      descriptor = "(IISI)V",
-      garbageValue = "164406269"
+      descriptor = "(Ljava/lang/Long;Ltz;I)V",
+      garbageValue = "-683011741"
    )
-   public void method9303(int var1, int var2, short var3) {
-      this.field4997[var1] = var2;
-      this.field4995[var1] = var3;
+   void method8746(Long var1, Buffer var2) {
+      var2.writeLong(var1);
    }
 
-   @ObfuscatedName("ac")
+   @ObfuscatedName("ao")
    @ObfuscatedSignature(
-      descriptor = "([I[SB)V",
-      garbageValue = "12"
+      descriptor = "(I)V",
+      garbageValue = "1160932965"
    )
-   public void method9315(int[] var1, short[] var2) {
-      this.field4997 = var1;
-      this.field4995 = var2;
+   static void method8753() {
+      Login.Login_username = Login.Login_username.trim();
+      if (Login.Login_username.length() == 0) {
+         class478.setLoginResponseString("Please enter your username.", "If you created your account after November", "2010, this will be the creation email address.");
+      } else {
+         long var1 = VerticalAlignment.method3753();
+         int var0;
+         if (0L == var1) {
+            var0 = 5;
+         } else {
+            var0 = WorldMapSection2.method5087(var1, Login.Login_username);
+         }
+
+         switch (var0) {
+            case 2:
+               class478.setLoginResponseString(Strings.field4052, Strings.field4128, Strings.field4146);
+               class390.method7249(6);
+               break;
+            case 3:
+               class478.setLoginResponseString("", "Error connecting to server.", "");
+               break;
+            case 4:
+               class478.setLoginResponseString("The part of the website you are trying", "to connect to is offline at the moment.", "Please try again later.");
+               break;
+            case 5:
+               class478.setLoginResponseString("Sorry, there was an error trying to", "log you in to this part of the website.", "Please try again later.");
+               break;
+            case 6:
+               class478.setLoginResponseString("", "Error connecting to server.", "");
+               break;
+            case 7:
+               class478.setLoginResponseString("You must enter a valid login to proceed. For accounts", "created after 24th November 2010, please use your", "email address. Otherwise please use your username.");
+         }
+
+      }
    }
 }

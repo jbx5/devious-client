@@ -4,30 +4,30 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jh")
+@ObfuscatedName("jl")
 @Implements("WorldMapData_1")
 public class WorldMapData_1 extends AbstractWorldMapData {
-   @ObfuscatedName("af")
+   @ObfuscatedName("at")
    @ObfuscatedGetter(
-      intValue = 1294287845
+      intValue = -933874853
    )
    @Export("chunkXLow")
    int chunkXLow;
    @ObfuscatedName("an")
    @ObfuscatedGetter(
-      intValue = 294135409
+      intValue = 1617233987
    )
    @Export("chunkYLow")
    int chunkYLow;
-   @ObfuscatedName("aw")
+   @ObfuscatedName("av")
    @ObfuscatedGetter(
-      intValue = -1275112475
+      intValue = -1191894665
    )
    @Export("chunkX")
    int chunkX;
-   @ObfuscatedName("ac")
+   @ObfuscatedName("as")
    @ObfuscatedGetter(
-      intValue = 1219256101
+      intValue = -2105922707
    )
    @Export("chunkY")
    int chunkY;
@@ -35,15 +35,15 @@ public class WorldMapData_1 extends AbstractWorldMapData {
    WorldMapData_1() {
    }
 
-   @ObfuscatedName("af")
+   @ObfuscatedName("at")
    @ObfuscatedSignature(
-      descriptor = "(Lsg;I)V",
-      garbageValue = "1529906024"
+      descriptor = "(Ltz;S)V",
+      garbageValue = "-18329"
    )
    @Export("init")
    void init(Buffer var1) {
       int var2 = var1.readUnsignedByte();
-      if (var2 != WorldMapID.field3030.value) {
+      if (var2 != WorldMapID.field3022.value) {
          throw new IllegalStateException("");
       } else {
          super.minPlane = var1.readUnsignedByte();
@@ -63,19 +63,19 @@ public class WorldMapData_1 extends AbstractWorldMapData {
 
    @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "(Lsg;S)V",
-      garbageValue = "2348"
+      descriptor = "(Ltz;S)V",
+      garbageValue = "128"
    )
    @Export("readGeography")
    void readGeography(Buffer var1) {
       super.planes = Math.min(super.planes, 4);
       super.floorUnderlayIds = new short[1][64][64];
       super.floorOverlayIds = new short[super.planes][64][64];
-      super.field2990 = new byte[super.planes][64][64];
-      super.field2996 = new byte[super.planes][64][64];
+      super.field2988 = new byte[super.planes][64][64];
+      super.field2985 = new byte[super.planes][64][64];
       super.decorations = new WorldMapDecoration[super.planes][64][64][];
       int var2 = var1.readUnsignedByte();
-      if (var2 != class262.field3027.value) {
+      if (var2 != class269.field3016.value) {
          throw new IllegalStateException("");
       } else {
          int var3 = var1.readUnsignedByte();
@@ -95,40 +95,40 @@ public class WorldMapData_1 extends AbstractWorldMapData {
       }
    }
 
-   @ObfuscatedName("aw")
+   @ObfuscatedName("av")
    @ObfuscatedSignature(
-      descriptor = "(I)I",
-      garbageValue = "-907307158"
+      descriptor = "(S)I",
+      garbageValue = "30030"
    )
    @Export("getChunkXLow")
    int getChunkXLow() {
       return this.chunkXLow;
    }
 
-   @ObfuscatedName("al")
+   @ObfuscatedName("as")
    @ObfuscatedSignature(
       descriptor = "(I)I",
-      garbageValue = "652823069"
+      garbageValue = "-261572212"
    )
    @Export("getChunkYLow")
    int getChunkYLow() {
       return this.chunkYLow;
    }
 
-   @ObfuscatedName("at")
+   @ObfuscatedName("ax")
    @ObfuscatedSignature(
-      descriptor = "(B)I",
-      garbageValue = "57"
+      descriptor = "(I)I",
+      garbageValue = "784439493"
    )
    @Export("getChunkX")
    int getChunkX() {
       return this.chunkX;
    }
 
-   @ObfuscatedName("aa")
+   @ObfuscatedName("ap")
    @ObfuscatedSignature(
-      descriptor = "(S)I",
-      garbageValue = "-12865"
+      descriptor = "(I)I",
+      garbageValue = "403525895"
    )
    @Export("getChunkY")
    int getChunkY() {
@@ -140,8 +140,8 @@ public class WorldMapData_1 extends AbstractWorldMapData {
          return false;
       } else {
          WorldMapData_1 var2 = (WorldMapData_1)var1;
-         if (super.regionX == var2.regionX && var2.regionY == super.regionY) {
-            return this.chunkX == var2.chunkX && this.chunkY == var2.chunkY;
+         if (super.regionX == var2.regionX && super.regionY == var2.regionY) {
+            return var2.chunkX == this.chunkX && var2.chunkY == this.chunkY;
          } else {
             return false;
          }
@@ -150,17 +150,5 @@ public class WorldMapData_1 extends AbstractWorldMapData {
 
    public int hashCode() {
       return super.regionX | super.regionY << 8 | this.chunkX << 16 | this.chunkY << 24;
-   }
-
-   @ObfuscatedName("jq")
-   @ObfuscatedSignature(
-      descriptor = "(S)V",
-      garbageValue = "4393"
-   )
-   static void method5345() {
-      for(class206 var0 = (class206)Client.field701.last(); var0 != null; var0 = (class206)Client.field701.previous()) {
-         var0.remove();
-      }
-
    }
 }

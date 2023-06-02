@@ -7,37 +7,42 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("pn")
+@ObfuscatedName("qa")
 @Implements("BufferedSource")
 public class BufferedSource implements Runnable {
-   @ObfuscatedName("af")
+   @ObfuscatedName("us")
+   @ObfuscatedGetter(
+      intValue = 1926081621
+   )
+   static int field4636;
+   @ObfuscatedName("at")
    @Export("thread")
    Thread thread;
    @ObfuscatedName("an")
    @Export("inputStream")
    InputStream inputStream;
-   @ObfuscatedName("aw")
+   @ObfuscatedName("av")
    @ObfuscatedGetter(
-      intValue = -1464241637
+      intValue = 1058935467
    )
    @Export("capacity")
    int capacity;
-   @ObfuscatedName("ac")
+   @ObfuscatedName("as")
    @Export("buffer")
    byte[] buffer;
-   @ObfuscatedName("au")
+   @ObfuscatedName("ax")
    @ObfuscatedGetter(
-      intValue = 160772207
+      intValue = -111289331
    )
    @Export("position")
    int position = 0;
-   @ObfuscatedName("ab")
+   @ObfuscatedName("ap")
    @ObfuscatedGetter(
-      intValue = 1652063427
+      intValue = 1191519469
    )
    @Export("limit")
    int limit = 0;
-   @ObfuscatedName("aq")
+   @ObfuscatedName("ab")
    @Export("exception")
    IOException exception;
 
@@ -50,10 +55,10 @@ public class BufferedSource implements Runnable {
       this.thread.start();
    }
 
-   @ObfuscatedName("af")
+   @ObfuscatedName("at")
    @ObfuscatedSignature(
-      descriptor = "(II)Z",
-      garbageValue = "-1797531866"
+      descriptor = "(IS)Z",
+      garbageValue = "300"
    )
    @Export("isAvailable")
    boolean isAvailable(int var1) throws IOException {
@@ -86,8 +91,8 @@ public class BufferedSource implements Runnable {
 
    @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "(B)I",
-      garbageValue = "25"
+      descriptor = "(I)I",
+      garbageValue = "-1605131235"
    )
    @Export("available")
    int available() throws IOException {
@@ -108,15 +113,15 @@ public class BufferedSource implements Runnable {
       }
    }
 
-   @ObfuscatedName("aw")
+   @ObfuscatedName("av")
    @ObfuscatedSignature(
-      descriptor = "(S)I",
-      garbageValue = "28528"
+      descriptor = "(I)I",
+      garbageValue = "1297881061"
    )
    @Export("readUnsignedByte")
    int readUnsignedByte() throws IOException {
       synchronized(this) {
-         if (this.limit == this.position) {
+         if (this.position == this.limit) {
             if (this.exception != null) {
                throw new IOException(this.exception.toString());
             } else {
@@ -131,10 +136,10 @@ public class BufferedSource implements Runnable {
       }
    }
 
-   @ObfuscatedName("ac")
+   @ObfuscatedName("as")
    @ObfuscatedSignature(
       descriptor = "([BIII)I",
-      garbageValue = "-744884869"
+      garbageValue = "229108101"
    )
    @Export("read")
    int read(byte[] var1, int var2, int var3) throws IOException {
@@ -172,10 +177,10 @@ public class BufferedSource implements Runnable {
       }
    }
 
-   @ObfuscatedName("au")
+   @ObfuscatedName("ax")
    @ObfuscatedSignature(
       descriptor = "(I)V",
-      garbageValue = "-1118938495"
+      garbageValue = "-1342586973"
    )
    @Export("close")
    void close() {
@@ -239,23 +244,6 @@ public class BufferedSource implements Runnable {
          synchronized(this) {
             this.limit = (var7 + this.limit) % this.capacity;
          }
-      }
-   }
-
-   @ObfuscatedName("ah")
-   @ObfuscatedSignature(
-      descriptor = "(Lmq;I)I",
-      garbageValue = "590181687"
-   )
-   static int method8029(Widget var0) {
-      if (var0.type != 11) {
-         --SecureRandomCallable.Interpreter_stringStackSize;
-         Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = -1;
-         return 1;
-      } else {
-         String var1 = Interpreter.Interpreter_stringStack[--SecureRandomCallable.Interpreter_stringStackSize];
-         Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var0.method6378(var1);
-         return 1;
       }
    }
 }
