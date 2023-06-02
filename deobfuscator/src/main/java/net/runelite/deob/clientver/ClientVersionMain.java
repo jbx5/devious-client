@@ -33,7 +33,18 @@ public class ClientVersionMain
 {
 	public static void main(String[] args) throws IOException
 	{
+		if (args.length < 1)
+		{
+			System.out.println("Provide gamepack path");
+			return;
+		}
+
 		File jar = new File(args[0]);
+		if (!jar.exists())
+		{
+			System.out.println("File " + jar.getAbsolutePath() + " does not exist");
+			return;
+		}
 		ClientVersion cv = new ClientVersion(jar);
 		System.out.println(cv.getVersion());
 	}
