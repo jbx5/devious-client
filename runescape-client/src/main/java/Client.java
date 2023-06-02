@@ -2789,7 +2789,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
             var35.packetBuffer.writeIntIME(class180.archive8.hash);
             var35.packetBuffer.writeIntME(0);
             var35.packetBuffer.writeInt(ViewportMouse.field2770.hash);
-            var35.packetBuffer.method8919(class291.archive20.hash);
+            var35.packetBuffer.writeIntLE(class291.archive20.hash);
             var35.packetBuffer.writeInt(class17.archive15.hash);
             var35.packetBuffer.writeInt(class53.archive10.hash);
             var35.packetBuffer.writeIntIME(BuddyRankComparator.archive4.hash);
@@ -2797,11 +2797,11 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
             var35.packetBuffer.writeIntIME(class350.archive18.hash);
             var35.packetBuffer.writeInt(MouseRecorder.archive2.hash);
             var35.packetBuffer.writeInt(class466.field4812.hash);
-            var35.packetBuffer.method8919(class310.archive13.hash);
+            var35.packetBuffer.writeIntLE(class310.archive13.hash);
             var35.packetBuffer.writeIntIME(Actor.archive7.hash);
             var35.packetBuffer.writeInt(ReflectionCheck.archive6.hash);
             var35.packetBuffer.writeIntIME(class33.archive12.hash);
-            var35.packetBuffer.method8919(FontName.archive11.hash);
+            var35.packetBuffer.writeIntLE(FontName.archive11.hash);
             var35.packetBuffer.writeInt(GrandExchangeOffer.archive14.hash);
             var35.packetBuffer.writeIntIME(ChatChannel.archive19.hash);
             var35.packetBuffer.writeIntME(LoginScreenAnimation.field1244.hash);
@@ -3404,7 +3404,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 
                         field744 = var19;
                         var14.packetBuffer.writeByteNeg(field739.field2339[var5]);
-                        var14.packetBuffer.writeIntLE((int)var21);
+                        var14.packetBuffer.writeMediumLE((int)var21);
                      }
 
                      var14.packetBuffer.writeLengthShort(var14.packetBuffer.offset - var15);
@@ -3888,7 +3888,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
                                                                      var26.packetBuffer.writeIntIME(var40[1]);
                                                                      var26.packetBuffer.writeInt(var51.field2332.method6374());
                                                                      var26.packetBuffer.writeShort(var51.field2332.childIndex);
-                                                                     var26.packetBuffer.method8919(var51.field2332.id);
+                                                                     var26.packetBuffer.writeIntLE(var51.field2332.id);
                                                                      packetWriter.addNode(var26);
                                                                   }
                                                                }
@@ -4985,7 +4985,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
                var79.packetBuffer.writeByteSub(GameEngine.fps);
                var79.packetBuffer.writeByteSub(var25);
                var79.packetBuffer.writeIntIME(var20);
-               var79.packetBuffer.method8919(var5);
+               var79.packetBuffer.writeIntLE(var5);
                packetWriter.addNode(var79);
                var1.serverPacket = null;
                return true;
