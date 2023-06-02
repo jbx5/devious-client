@@ -26,6 +26,10 @@ public abstract class RSItemCompositionMixin implements RSItemComposition
 	@Inject
 	public static void rl$clinit()
 	{
+		if (client == null)
+		{
+			return;
+		}
 		RSEvictingDualNodeHashTable cachedModels2 = client.getItemCompositionCache();
 		cachedModels2.resize(1024);
 	}
@@ -68,6 +72,10 @@ public abstract class RSItemCompositionMixin implements RSItemComposition
 	@MethodHook(value = "post", end = true)
 	public void post()
 	{
+		if (client == null)
+		{
+			return;
+		}
 		final PostItemComposition event = new PostItemComposition(this);
 		client.getCallbacks().post(event);
 	}
