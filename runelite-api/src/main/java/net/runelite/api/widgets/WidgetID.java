@@ -415,6 +415,10 @@ public final class WidgetID
 
 	static class Equipment
 	{
+		static final int STATS = 1;
+		static final int PRICES = 3;
+		static final int DEATH = 5;
+		static final int FOLLOWER = 7;
 		static final int HELMET = 15;
 		static final int CAPE = 16;
 		static final int AMULET = 17;
@@ -1454,6 +1458,16 @@ public final class WidgetID
 		static final int LEGS_RIGHT_BUTTON = 33;
 		static final int FEET_LEFT_BUTTON = 36;
 		static final int FEET_RIGHT_BUTTON = 37;
+		static final int HAIR_COLOR_LEFT_BUTTON = 43;
+		static final int HAIR_COLOR_RIGHT_BUTTON = 44;
+		static final int TORSO_COLOR_LEFT_BUTTON = 47;
+		static final int TORSO_COLOR_RIGHT_BUTTON = 48;
+		static final int LEGS_COLOR_LEFT_BUTTON = 51;
+		static final int LEGS_COLOR_RIGHT_BUTTON = 52;
+		static final int FEET_COLOR_LEFT_BUTTON = 55;
+		static final int FEET_COLOR_RIGHT_BUTTON = 56;
+		static final int SKIN_COLOR_LEFT_BUTTON = 59;
+		static final int SKIN_COLOR_RIGHT_BUTTON = 60;
 		static final int GENDER_MALE_BUTTON = 65;
 		static final int GENDER_FEMALE_BUTTON = 66;
 		static final int CONFIRM_BUTTON = 68;
