@@ -168,7 +168,7 @@ public class WorldMapIcon_0 extends AbstractWorldMapIcon {
             Client.destinationY = var1;
             var10 = ObjectComposition.getPacketBufferNode(ClientPacket.OPPLAYERT, Client.packetWriter.isaacCipher);
             var10.packetBuffer.writeShort(var3);
-            var10.packetBuffer.method8919(ScriptFrame.selectedSpellWidget);
+            var10.packetBuffer.writeIntLE(ScriptFrame.selectedSpellWidget);
             var10.packetBuffer.writeShort(Client.selectedSpellItemId);
             var10.packetBuffer.writeShortLE(Client.selectedSpellChildIndex);
             var10.packetBuffer.writeByteAdd(Client.field739.method4134(82) ? 1 : 0);
@@ -310,7 +310,7 @@ public class WorldMapIcon_0 extends AbstractWorldMapIcon {
             Client.destinationY = var1;
             var10 = ObjectComposition.getPacketBufferNode(ClientPacket.field3137, Client.packetWriter.isaacCipher);
             var10.packetBuffer.writeByteNeg(Client.field739.method4134(82) ? 1 : 0);
-            var10.packetBuffer.method8919(ScriptFrame.field474);
+            var10.packetBuffer.writeIntLE(ScriptFrame.field474);
             var10.packetBuffer.writeShortAdd(TaskHandler.field1820);
             var10.packetBuffer.writeShort(Renderable.field2619);
             var10.packetBuffer.writeShort(var3);
@@ -426,7 +426,7 @@ public class WorldMapIcon_0 extends AbstractWorldMapIcon {
          var14.packetBuffer.writeShortAddLE(class101.baseY * 64 + var1);
          var14.packetBuffer.writeByteAdd(Client.field739.method4134(82) ? 1 : 0);
          var14.packetBuffer.writeShortAddLE(class213.baseX * 64 + var0);
-         var14.packetBuffer.method8919(ScriptFrame.selectedSpellWidget);
+         var14.packetBuffer.writeIntLE(ScriptFrame.selectedSpellWidget);
          Client.packetWriter.addNode(var14);
       }
 
@@ -599,7 +599,7 @@ public class WorldMapIcon_0 extends AbstractWorldMapIcon {
             var10.packetBuffer.writeShortAddLE(var0);
             var10.packetBuffer.writeShortLE(Client.selectedSpellItemId);
             var10.packetBuffer.writeShortAddLE(var4);
-            var10.packetBuffer.method8919(var1);
+            var10.packetBuffer.writeIntLE(var1);
             var10.packetBuffer.writeIntIME(ScriptFrame.selectedSpellWidget);
             Client.packetWriter.addNode(var10);
          }
@@ -735,7 +735,7 @@ public class WorldMapIcon_0 extends AbstractWorldMapIcon {
                Client.mouseCrossState = 0;
                Client.destinationX = var0;
                Client.destinationY = var1;
-               var10 = ObjectComposition.getPacketBufferNode(ClientPacket.field3113, Client.packetWriter.isaacCipher);
+               var10 = ObjectComposition.getPacketBufferNode(ClientPacket.OPNPCT, Client.packetWriter.isaacCipher);
                var10.packetBuffer.writeShortLE(var3);
                var10.packetBuffer.writeIntME(ScriptFrame.selectedSpellWidget);
                var10.packetBuffer.writeByteNeg(Client.field739.method4134(82) ? 1 : 0);

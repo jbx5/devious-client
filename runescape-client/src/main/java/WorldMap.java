@@ -459,7 +459,7 @@ public class WorldMap {
 
                if (var9) {
                   PacketBufferNode var13 = ObjectComposition.getPacketBufferNode(ClientPacket.field3106, Client.packetWriter.isaacCipher);
-                  var13.packetBuffer.method8919(this.mouseCoord.packed());
+                  var13.packetBuffer.writeIntLE(this.mouseCoord.packed());
                   Client.packetWriter.addNode(var13);
                   this.field4867 = 0L;
                }
