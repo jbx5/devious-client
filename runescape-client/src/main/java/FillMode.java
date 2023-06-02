@@ -1,9 +1,12 @@
+import net.runelite.api.mixins.Inject;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("tv")
+@Implements("FillMode")
 public enum FillMode implements MouseWheel {
    @ObfuscatedName("at")
    @ObfuscatedSignature(
