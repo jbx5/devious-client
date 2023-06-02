@@ -139,7 +139,7 @@ public class ObjectComposition extends DualNode {
    int ambient = 0;
    @ObfuscatedName("bc")
    @ObfuscatedGetter(
-      intValue = -680982011
+      intValue = 155318909
    )
    @Export("contrast")
    int contrast = 0;
