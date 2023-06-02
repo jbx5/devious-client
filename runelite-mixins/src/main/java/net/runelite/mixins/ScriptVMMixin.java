@@ -142,8 +142,8 @@ public abstract class ScriptVMMixin implements RSClient
 				client.getCallbacks().post(event);
 				return true;
 			case INVOKE:
-				//int scriptId = currentScript.getIntOperands()[currentScriptPC];
-				//client.getCallbacks().post(new ScriptPreFired(scriptId));
+				int scriptId = currentScript.getIntOperands()[currentScriptPC];
+				client.getCallbacks().post(new ScriptPreFired(scriptId));
 				return false;
 			case RETURN:
 				client.getCallbacks().post(new ScriptPostFired((int) currentScript.getHash()));
@@ -195,9 +195,10 @@ public abstract class ScriptVMMixin implements RSClient
 	}
 
 	@Copy("runScriptLogic")
+	@Replace("runScriptLogic")
 	static void copy$runScriptLogic(RSScriptEvent event, RSScript var4, int maxExecutionTime, int var2)
 	{
-
+		copy$runScriptLogic(event, var4, maxExecutionTime, var2);
 	}
 
 	@Inject

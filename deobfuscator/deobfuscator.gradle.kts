@@ -117,6 +117,15 @@ tasks {
             "$buildDir/libs/updated-$version.jar"
         )
     }
+
+    // Run with --args
+    // Path is relative to package root
+    register<JavaExec>("ClientVersion\$main()") {
+        group = "gamepack"
+
+        classpath = project.sourceSets.main.get().runtimeClasspath
+        mainClass.set("net.runelite.deob.clientver.ClientVersionMain")
+    }
 }
 
 publishing {

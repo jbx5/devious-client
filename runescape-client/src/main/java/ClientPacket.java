@@ -81,7 +81,7 @@ public class ClientPacket implements class292 {
    @ObfuscatedSignature(
       descriptor = "Lli;"
    )
-   public static final ClientPacket field3113 = new ClientPacket(14, 11);
+   public static final ClientPacket OPNPCT = new ClientPacket(14, 11);
    @ObfuscatedName("ag")
    @ObfuscatedSignature(
       descriptor = "Lli;"
@@ -391,7 +391,7 @@ public class ClientPacket implements class292 {
    @ObfuscatedSignature(
       descriptor = "Lli;"
    )
-   public static final ClientPacket OPNPCT = new ClientPacket(76, 13);
+   public static final ClientPacket field3113 = new ClientPacket(76, 13);
    @ObfuscatedName("cz")
    @ObfuscatedSignature(
       descriptor = "Lli;"

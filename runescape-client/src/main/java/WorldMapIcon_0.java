@@ -735,7 +735,7 @@ public class WorldMapIcon_0 extends AbstractWorldMapIcon {
                Client.mouseCrossState = 0;
                Client.destinationX = var0;
                Client.destinationY = var1;
-               var10 = ObjectComposition.getPacketBufferNode(ClientPacket.field3113, Client.packetWriter.isaacCipher);
+               var10 = ObjectComposition.getPacketBufferNode(ClientPacket.OPNPCT, Client.packetWriter.isaacCipher);
                var10.packetBuffer.writeShortLE(var3);
                var10.packetBuffer.writeIntME(ScriptFrame.selectedSpellWidget);
                var10.packetBuffer.writeByteNeg(Client.field739.method4134(82) ? 1 : 0);
