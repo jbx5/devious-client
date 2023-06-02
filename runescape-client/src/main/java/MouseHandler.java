@@ -477,7 +477,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
             PacketBufferNode var19;
             if (class347.client.hasFrame()) {
                var19 = ObjectComposition.getPacketBufferNode(ClientPacket.DETECT_MODIFIED_CLIENT, Client.packetWriter.isaacCipher);
-               var19.packetBuffer.method9050(1057001181);
+               var19.packetBuffer.writeInt(1057001181);
                Client.packetWriter.addNode(var19);
             }
 

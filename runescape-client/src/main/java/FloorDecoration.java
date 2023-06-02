@@ -68,7 +68,7 @@ public final class FloorDecoration {
    @Export("resumePauseWidget")
    static void resumePauseWidget(int var0, int var1) {
       PacketBufferNode var2 = ObjectComposition.getPacketBufferNode(ClientPacket.RESUME_PAUSEBUTTON, Client.packetWriter.isaacCipher);
-      var2.packetBuffer.method9050(var0);
+      var2.packetBuffer.writeInt(var0);
       var2.packetBuffer.writeShortAdd(var1);
       Client.packetWriter.addNode(var2);
    }

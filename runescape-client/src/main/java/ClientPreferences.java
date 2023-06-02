@@ -159,8 +159,8 @@ public class ClientPreferences {
 
       while(var2.hasNext()) {
          Map.Entry var3 = (Map.Entry)var2.next();
-         var1.method9050((Integer)var3.getKey());
-         var1.method9050((Integer)var3.getValue());
+         var1.writeInt((Integer)var3.getKey());
+         var1.writeInt((Integer)var3.getValue());
       }
 
       var1.writeStringCp1252NullTerminated(this.rememberedUsername != null ? this.rememberedUsername : "");
@@ -171,7 +171,7 @@ public class ClientPreferences {
       var1.writeByte(this.areaSoundEffectsVolume);
       var1.writeByte(this.field1269);
       var1.writeByte(this.displayFps ? 1 : 0);
-      var1.method9050(this.field1264);
+      var1.writeInt(this.field1264);
       return var1;
    }
 

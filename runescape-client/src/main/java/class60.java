@@ -1,3 +1,4 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
@@ -14,7 +15,8 @@ public class class60 {
    @ObfuscatedGetter(
       intValue = -1106831405
    )
-   static int field444;
+   @Export("menuHeight")
+   static int menuHeight;
    @ObfuscatedName("at")
    byte[] field440 = null;
    @ObfuscatedName("an")

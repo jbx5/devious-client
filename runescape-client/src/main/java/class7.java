@@ -171,8 +171,8 @@ public class class7 {
    static final void method44() {
       int var0 = class180.menuX;
       int var1 = NewStuff.menuY;
-      int var2 = class237.field2681;
-      int var3 = class60.field444;
+      int var2 = class237.menuWidth;
+      int var3 = class60.menuHeight;
       int var4 = 6116423;
       Rasterizer2D.Rasterizer2D_fillRectangle(var0, var1, var2, var3, var4);
       Rasterizer2D.Rasterizer2D_fillRectangle(var0 + 1, var1 + 1, var2 - 2, 16, 0);
@@ -206,8 +206,8 @@ public class class7 {
 
       var7 = class180.menuX;
       var8 = NewStuff.menuY;
-      var9 = class237.field2681;
-      int var10 = class60.field444;
+      var9 = class237.menuWidth;
+      int var10 = class60.menuHeight;
 
       for(int var11 = 0; var11 < Client.rootWidgetCount; ++var11) {
          if (Client.rootWidgetWidths[var11] + Client.rootWidgetXs[var11] > var7 && Client.rootWidgetXs[var11] < var7 + var9 && Client.rootWidgetHeights[var11] + Client.rootWidgetYs[var11] > var8 && Client.rootWidgetYs[var11] < var10 + var8) {

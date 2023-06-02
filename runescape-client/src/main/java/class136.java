@@ -701,7 +701,7 @@ public class class136 extends DualNode {
             class290.pcmPlayer1 = ObjectComposition.method3907(GameEngine.taskHandler, 1, 2048);
             KitDefinition.pcmStreamMixer = new PcmStreamMixer();
             class290.pcmPlayer1.setStream(KitDefinition.pcmStreamMixer);
-            FloorOverlayDefinition.field2259 = new Decimator(22050, PcmPlayer.field291);
+            FloorOverlayDefinition.decimator = new Decimator(22050, PcmPlayer.field291);
             Login.Login_loadingText = "Prepared sound engine";
             Login.Login_loadingPercent = 35;
             Client.titleLoadingStage = 50;

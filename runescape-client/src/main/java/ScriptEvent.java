@@ -168,7 +168,7 @@ public class ScriptEvent extends Node {
          Rasterizer2D.Rasterizer2D_clear();
          Rasterizer3D.method4382();
          Rasterizer3D.method4387(16, 16);
-         Rasterizer3D.field2520.field2805 = false;
+         Rasterizer3D.clips.field2805 = false;
          if (var9.placeholderTemplate != -1) {
             var23.drawTransBgAt(0, 0);
          }
@@ -226,7 +226,7 @@ public class ScriptEvent extends Node {
          Rasterizer3D.method4383(var12, var13, var14, var15);
          Rasterizer2D.Rasterizer2D_setClipArray(var16);
          Rasterizer3D.method4382();
-         Rasterizer3D.field2520.field2805 = true;
+         Rasterizer3D.clips.field2805 = true;
          return var8;
       }
    }

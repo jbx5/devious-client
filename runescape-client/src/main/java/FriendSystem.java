@@ -369,7 +369,7 @@ public class FriendSystem {
       Client.DBTableMasterIndex_cache.clear();
       PlayerComposition.PlayerAppearance_cachedModels.clear();
       class33.method460();
-      ((TextureProvider)Rasterizer3D.field2520.Rasterizer3D_textureLoader).clear();
+      ((TextureProvider)Rasterizer3D.clips.Rasterizer3D_textureLoader).clear();
       Script.Script_cached.clear();
       Client.archive5.method7699();
       class466.field4812.clearFiles();

@@ -25,7 +25,8 @@ public class FloorOverlayDefinition extends DualNode {
    @ObfuscatedSignature(
       descriptor = "Lch;"
    )
-   static Decimator field2259;
+   @Export("decimator")
+   static Decimator decimator;
    @ObfuscatedName("av")
    @ObfuscatedGetter(
       intValue = 2120418151

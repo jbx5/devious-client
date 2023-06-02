@@ -201,7 +201,7 @@ public class WorldMapIcon_0 extends AbstractWorldMapIcon {
       Widget var16;
       if (var2 == 29) {
          var14 = ObjectComposition.getPacketBufferNode(ClientPacket.WIDGET_TYPE, Client.packetWriter.isaacCipher);
-         var14.packetBuffer.method9050(var1);
+         var14.packetBuffer.writeInt(var1);
          Client.packetWriter.addNode(var14);
          var16 = FriendSystem.getWidget(var1);
          if (var16 != null && var16.cs1Instructions != null && var16.cs1Instructions[0][0] == 5) {
@@ -384,7 +384,7 @@ public class WorldMapIcon_0 extends AbstractWorldMapIcon {
 
             if (var12) {
                var13 = ObjectComposition.getPacketBufferNode(ClientPacket.WIDGET_TYPE, Client.packetWriter.isaacCipher);
-               var13.packetBuffer.method9050(var1);
+               var13.packetBuffer.writeInt(var1);
                Client.packetWriter.addNode(var13);
             }
          }
@@ -572,7 +572,7 @@ public class WorldMapIcon_0 extends AbstractWorldMapIcon {
 
       if (var2 == 28) {
          var14 = ObjectComposition.getPacketBufferNode(ClientPacket.WIDGET_TYPE, Client.packetWriter.isaacCipher);
-         var14.packetBuffer.method9050(var1);
+         var14.packetBuffer.writeInt(var1);
          Client.packetWriter.addNode(var14);
          var16 = FriendSystem.getWidget(var1);
          if (var16 != null && var16.cs1Instructions != null && var16.cs1Instructions[0][0] == 5) {

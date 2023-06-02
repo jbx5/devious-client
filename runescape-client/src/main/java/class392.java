@@ -798,7 +798,7 @@ public class class392 {
    @ObfuscatedName("mv")
    static final void method7411(double var0) {
       Rasterizer3D.method4372(var0);
-      ((TextureProvider)Rasterizer3D.field2520.Rasterizer3D_textureLoader).setBrightness(var0);
+      ((TextureProvider)Rasterizer3D.clips.Rasterizer3D_textureLoader).setBrightness(var0);
       class165.method3378();
       class10.clientPreferences.method2443(var0);
    }

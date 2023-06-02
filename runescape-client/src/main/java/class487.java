@@ -27,6 +27,6 @@ final class class487 implements class486 {
       garbageValue = "2031362998"
    )
    void method8737(Integer var1, Buffer var2) {
-      var2.method9050(var1);
+      var2.writeInt(var1);
    }
 }

@@ -192,10 +192,10 @@ public class PlatformInfo extends Node {
       var1.writeByte(this.field4530);
 
       for(int var2 = 0; var2 < this.field4539.length; ++var2) {
-         var1.method9050(this.field4539[var2]);
+         var1.writeInt(this.field4539[var2]);
       }
 
-      var1.method9050(this.field4540);
+      var1.writeInt(this.field4540);
       var1.writeStringCp1252NullCircumfixed(this.field4541);
       var1.writeStringCp1252NullCircumfixed(this.field4542);
    }

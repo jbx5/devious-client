@@ -217,7 +217,7 @@ public class World {
       ReflectionCheck var1 = (ReflectionCheck)class36.reflectionChecks.last();
       if (var1 != null) {
          int var2 = var0.offset;
-         var0.method9050(var1.id);
+         var0.writeInt(var1.id);
 
          for(int var3 = 0; var3 < var1.size; ++var3) {
             if (var1.creationErrors[var3] != 0) {
@@ -231,7 +231,7 @@ public class World {
                      var5 = var1.fields[var3];
                      var6 = Reflection.getInt(var5, (Object)null);
                      var0.writeByte(0);
-                     var0.method9050(var6);
+                     var0.writeInt(var6);
                   } else if (var4 == 1) {
                      var5 = var1.fields[var3];
                      Reflection.setInt(var5, (Object)null, var1.intReplaceValues[var3]);
@@ -240,7 +240,7 @@ public class World {
                      var5 = var1.fields[var3];
                      var6 = var5.getModifiers();
                      var0.writeByte(0);
-                     var0.method9050(var6);
+                     var0.writeInt(var6);
                   }
 
                   Method var25;
@@ -249,7 +249,7 @@ public class World {
                         var25 = var1.methods[var3];
                         var6 = var25.getModifiers();
                         var0.writeByte(0);
-                        var0.method9050(var6);
+                        var0.writeInt(var6);
                      }
                   } else {
                      var25 = var1.methods[var3];

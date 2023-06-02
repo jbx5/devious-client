@@ -341,7 +341,7 @@ public class ClientPacket implements class292 {
    @ObfuscatedSignature(
       descriptor = "Lli;"
    )
-   public static final ClientPacket field3123 = new ClientPacket(66, 10);
+   public static final ClientPacket PING_STATISTICS = new ClientPacket(66, 10);
    @ObfuscatedName("cc")
    @ObfuscatedSignature(
       descriptor = "Lli;"

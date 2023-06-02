@@ -322,14 +322,14 @@ public class Skeleton extends Node {
       WorldMapSectionType.playPcmPlayers();
       var18 = Rasterizer3D.get3dZoom();
       Rasterizer3D.method4416(class347.client.field209);
-      Rasterizer3D.field2520.field2796 = Client.viewportZoom;
+      Rasterizer3D.clips.field2796 = Client.viewportZoom;
       class36.scene.draw(class208.cameraX, class152.cameraY, ByteArrayPool.cameraZ, MusicPatchNode.cameraPitch, class291.cameraYaw, var10);
       Rasterizer3D.method4416(false);
       if (Client.renderSelf) {
          Rasterizer2D.method9270();
       }
 
-      Rasterizer3D.field2520.field2796 = var18;
+      Rasterizer3D.clips.field2796 = var18;
       WorldMapSectionType.playPcmPlayers();
       class36.scene.clearTempGameObjects();
       class152.method3199(var0, var1, var2, var3);
@@ -340,7 +340,7 @@ public class Skeleton extends Node {
          }
       }
 
-      ((TextureProvider)Rasterizer3D.field2520.Rasterizer3D_textureLoader).animate(Client.graphicsCycle);
+      ((TextureProvider)Rasterizer3D.clips.Rasterizer3D_textureLoader).animate(Client.graphicsCycle);
       ScriptEvent.method2256(var0, var1, var2, var3);
       class208.cameraX = var11;
       class152.cameraY = var12;

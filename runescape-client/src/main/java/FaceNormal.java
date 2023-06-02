@@ -84,7 +84,7 @@ public class FaceNormal {
          } else {
             int var10;
             if (var2.texture >= 0) {
-               var10 = SecureRandomCallable.method2214(Rasterizer3D.field2520.Rasterizer3D_textureLoader.getAverageTextureRGB(var2.texture), 96);
+               var10 = SecureRandomCallable.method2214(Rasterizer3D.clips.Rasterizer3D_textureLoader.getAverageTextureRGB(var2.texture), 96);
                return Rasterizer3D.Rasterizer3D_colorPalette[var10] | -16777216;
             } else if (var2.primaryRgb == 16711935) {
                return var1;

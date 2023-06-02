@@ -201,23 +201,23 @@ public class WorldMapSection2 implements WorldMapSection {
 
       int var7;
       for(var7 = 0; var7 < 4; ++var7) {
-         var4.method9050(var3.nextInt());
+         var4.writeInt(var3.nextInt());
       }
 
-      var4.method9050(var6[0]);
-      var4.method9050(var6[1]);
+      var4.writeInt(var6[0]);
+      var4.writeInt(var6[1]);
       var4.writeLong(var0);
       var4.writeLong(0L);
 
       for(var7 = 0; var7 < 4; ++var7) {
-         var4.method9050(var3.nextInt());
+         var4.writeInt(var3.nextInt());
       }
 
       var4.encryptRsa(class72.field890, class72.field891);
       var5.writeByte(10);
 
       for(var7 = 0; var7 < 3; ++var7) {
-         var5.method9050(var3.nextInt());
+         var5.writeInt(var3.nextInt());
       }
 
       var5.writeLong(var3.nextLong());

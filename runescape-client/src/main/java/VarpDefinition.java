@@ -337,7 +337,7 @@ public class VarpDefinition extends DualNode {
                            int var44;
                            int var45;
                            if (var50 >= 0) {
-                              var43 = Rasterizer3D.field2520.Rasterizer3D_textureLoader.getAverageTextureRGB(var50);
+                              var43 = Rasterizer3D.clips.Rasterizer3D_textureLoader.getAverageTextureRGB(var50);
                               var42 = -1;
                            } else if (var38.primaryRgb == 16711935) {
                               var42 = -2;

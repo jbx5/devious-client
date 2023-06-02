@@ -68,10 +68,10 @@ public class UserComparator9 extends AbstractUserComparator {
          int var3 = Scene.Scene_cameraYawCosine;
          int var4 = 50;
          int var5 = 3500;
-         int var6 = (ViewportMouse.ViewportMouse_x - Rasterizer3D.method4375()) * var4 / Rasterizer3D.get3dZoom();
-         int var7 = (ViewportMouse.ViewportMouse_y - Rasterizer3D.method4376()) * var4 / Rasterizer3D.get3dZoom();
-         int var8 = (ViewportMouse.ViewportMouse_x - Rasterizer3D.method4375()) * var5 / Rasterizer3D.get3dZoom();
-         int var9 = (ViewportMouse.ViewportMouse_y - Rasterizer3D.method4376()) * var5 / Rasterizer3D.get3dZoom();
+         int var6 = (ViewportMouse.ViewportMouse_x - Rasterizer3D.getClipMidX()) * var4 / Rasterizer3D.get3dZoom();
+         int var7 = (ViewportMouse.ViewportMouse_y - Rasterizer3D.getClipMidY()) * var4 / Rasterizer3D.get3dZoom();
+         int var8 = (ViewportMouse.ViewportMouse_x - Rasterizer3D.getClipMidX()) * var5 / Rasterizer3D.get3dZoom();
+         int var9 = (ViewportMouse.ViewportMouse_y - Rasterizer3D.getClipMidY()) * var5 / Rasterizer3D.get3dZoom();
          int var10 = JagexCache.method3498(var7, var4, var1, var0);
          int var11 = var1 * var4 - var0 * var7 >> 16;
          var7 = var10;

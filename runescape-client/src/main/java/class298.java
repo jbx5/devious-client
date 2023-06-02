@@ -54,7 +54,7 @@ public class class298 {
          var0.sequence = -1;
          var0.spotAnimation = 0;
          var0.field1208 = 0;
-         var0.method2365();
+         var0.clearSpotAnimations();
          var0.x = var0.field1155 * 1292107776 + var0.pathX[0] * 128;
          var0.y = var0.field1155 * 1292107776 + var0.pathY[0] * 128;
          var0.method2364();
@@ -64,7 +64,7 @@ public class class298 {
          var0.sequence = -1;
          var0.spotAnimation = 0;
          var0.field1208 = 0;
-         var0.method2365();
+         var0.clearSpotAnimations();
          var0.x = var0.field1155 * 1292107776 + var0.pathX[0] * 128;
          var0.y = var0.field1155 * 1292107776 + var0.pathY[0] * 128;
          var0.method2364();

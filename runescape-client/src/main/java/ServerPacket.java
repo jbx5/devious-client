@@ -126,12 +126,12 @@ public class ServerPacket {
    @ObfuscatedSignature(
       descriptor = "Lll;"
    )
-   public static final ServerPacket field3243 = new ServerPacket(23, 1);
+   public static final ServerPacket LOGOUT = new ServerPacket(23, 1);
    @ObfuscatedName("al")
    @ObfuscatedSignature(
       descriptor = "Lll;"
    )
-   public static final ServerPacket field3220 = new ServerPacket(24, -2);
+   public static final ServerPacket MESSAGE_PRIVATE = new ServerPacket(24, -2);
    @ObfuscatedName("am")
    @ObfuscatedSignature(
       descriptor = "Lll;"

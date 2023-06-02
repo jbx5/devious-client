@@ -3037,7 +3037,7 @@ public abstract class RSClientMixin implements RSClient
 		check("FloorUnderlayDefinition_cached", client.getFloorUnderlayDefinitionCache());
 		check("FloorOverlayDefinition_cached", client.getFloorOverlayDefinitionCache());
 		check("HitSplatDefinition_cached", client.getHitSplatDefinitionCache());
-		check("HitSplatDefinition_cachedSprites", client.getHitSplatDefinitionSpritesCache());
+		//check("HitSplatDefinition_cachedSprites", client.getHitSplatDefinitionSpritesCache());
 		check("HitSplatDefinition_cachedFonts", client.getHitSplatDefinitionDontsCache());
 		check("InvDefinition_cached", client.getInvDefinitionCache());
 		check("ItemDefinition_cachedModels", client.getItemDefinitionModelsCache());

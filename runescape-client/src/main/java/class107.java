@@ -183,7 +183,7 @@ public class class107 {
             }
 
             PacketBufferNode var13 = ObjectComposition.getPacketBufferNode(ClientPacket.RESUME_COUNTDIALOG, Client.packetWriter.isaacCipher);
-            var13.packetBuffer.method9050(var15);
+            var13.packetBuffer.writeInt(var15);
             Client.packetWriter.addNode(var13);
             return 1;
          } else {

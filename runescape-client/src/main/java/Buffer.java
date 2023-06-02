@@ -122,7 +122,8 @@ public class Buffer extends Node {
       descriptor = "(II)V",
       garbageValue = "-88709237"
    )
-   public void method9050(int var1) {
+   @Export("writeInt")
+   public void writeInt(int var1) {
       this.array[++this.offset - 1] = (byte)(var1 >> 24);
       this.array[++this.offset - 1] = (byte)(var1 >> 16);
       this.array[++this.offset - 1] = (byte)(var1 >> 8);
@@ -644,8 +645,8 @@ public class Buffer extends Node {
          }
 
          this.offset -= 8;
-         this.method9050(var4);
-         this.method9050(var5);
+         this.writeInt(var4);
+         this.writeInt(var5);
       }
 
    }
@@ -672,8 +673,8 @@ public class Buffer extends Node {
          }
 
          this.offset -= 8;
-         this.method9050(var4);
-         this.method9050(var5);
+         this.writeInt(var4);
+         this.writeInt(var5);
       }
 
    }
@@ -701,8 +702,8 @@ public class Buffer extends Node {
          }
 
          this.offset -= 8;
-         this.method9050(var7);
-         this.method9050(var8);
+         this.writeInt(var7);
+         this.writeInt(var8);
       }
 
       this.offset = var4;
@@ -731,8 +732,8 @@ public class Buffer extends Node {
          }
 
          this.offset -= 8;
-         this.method9050(var7);
-         this.method9050(var8);
+         this.writeInt(var7);
+         this.writeInt(var8);
       }
 
       this.offset = var4;
@@ -773,7 +774,7 @@ public class Buffer extends Node {
       }
 
       var5 = ~var5;
-      this.method9050(var5);
+      this.writeInt(var5);
       return var5;
    }
 

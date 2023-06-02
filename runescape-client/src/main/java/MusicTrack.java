@@ -179,8 +179,8 @@ public class MusicTrack extends Node {
       var1.offset += var5 * 3;
       this.midi = new byte[var4];
       Buffer var51 = new Buffer(this.midi);
-      var51.method9050(1297377380);
-      var51.method9050(6);
+      var51.writeInt(1297377380);
+      var51.writeInt(6);
       var51.writeShort(var2 > 1 ? 1 : 0);
       var51.writeShort(var2);
       var51.writeShort(var3);
@@ -201,7 +201,7 @@ public class MusicTrack extends Node {
 
       label256:
       for(int var63 = 0; var63 < var2; ++var63) {
-         var51.method9050(1297379947);
+         var51.writeInt(1297379947);
          var51.offset += 4;
          int var64 = var51.offset;
          int var65 = var64;

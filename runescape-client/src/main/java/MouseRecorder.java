@@ -78,7 +78,8 @@ public class MouseRecorder implements Runnable {
       descriptor = "(I)V",
       garbageValue = "-22181255"
    )
-   static final void method2261() {
+   @Export("menuSort")
+   static final void menuSort() {
       boolean var0 = false;
 
       while(!var0) {
