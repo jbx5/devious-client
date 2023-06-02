@@ -34,7 +34,8 @@ public class class125 {
       descriptor = "(Ldz;Ldd;III)V",
       garbageValue = "2074139136"
    )
-   static void method2919(ScriptEvent var0, Script var1, int var2, int var3) {
+   @Export("runScriptLogic")
+   static void runScriptLogic(ScriptEvent var0, Script var1, int var2, int var3) {
       Object[] var4 = var0.args;
       Interpreter.Interpreter_intStackSize = 0;
       class149.Interpreter_stringStackSize = 0;

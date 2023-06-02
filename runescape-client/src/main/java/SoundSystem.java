@@ -52,7 +52,7 @@ public class SoundSystem implements Runnable {
       }
 
       if (var4 != null) {
-         class125.method2919(var0, var4, var1, var2);
+         class125.runScriptLogic(var0, var4, var1, var2);
       }
 
    }
