@@ -3404,7 +3404,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 
                         field744 = var19;
                         var14.packetBuffer.writeByteNeg(field739.field2339[var5]);
-                        var14.packetBuffer.method8919((int)var21);
+                        var14.packetBuffer.writeIntLE((int)var21);
                      }
 
                      var14.packetBuffer.writeLengthShort(var14.packetBuffer.offset - var15);
