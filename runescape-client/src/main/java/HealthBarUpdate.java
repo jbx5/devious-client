@@ -4,30 +4,35 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dh")
+@ObfuscatedName("dj")
 @Implements("HealthBarUpdate")
 public class HealthBarUpdate extends Node {
-   @ObfuscatedName("af")
+   @ObfuscatedName("ue")
    @ObfuscatedGetter(
-      intValue = -1225111563
+      intValue = 1485127680
+   )
+   static int field1233;
+   @ObfuscatedName("at")
+   @ObfuscatedGetter(
+      intValue = 968748489
    )
    @Export("cycle")
    int cycle;
    @ObfuscatedName("an")
    @ObfuscatedGetter(
-      intValue = 1250696899
+      intValue = -1602340347
    )
    @Export("health")
    int health;
-   @ObfuscatedName("aw")
+   @ObfuscatedName("av")
    @ObfuscatedGetter(
-      intValue = -2028064551
+      intValue = 582432987
    )
    @Export("health2")
    int health2;
-   @ObfuscatedName("ac")
+   @ObfuscatedName("as")
    @ObfuscatedGetter(
-      intValue = -2116244499
+      intValue = 801480233
    )
    @Export("cycleOffset")
    int cycleOffset;
@@ -39,10 +44,10 @@ public class HealthBarUpdate extends Node {
       this.cycleOffset = var4;
    }
 
-   @ObfuscatedName("af")
+   @ObfuscatedName("at")
    @ObfuscatedSignature(
-      descriptor = "(IIIII)V",
-      garbageValue = "470045969"
+      descriptor = "(IIIIB)V",
+      garbageValue = "33"
    )
    @Export("set")
    void set(int var1, int var2, int var3, int var4) {
@@ -52,84 +57,74 @@ public class HealthBarUpdate extends Node {
       this.cycleOffset = var4;
    }
 
-   @ObfuscatedName("af")
+   @ObfuscatedName("hd")
    @ObfuscatedSignature(
-      descriptor = "(IB)Lhz;",
-      garbageValue = "36"
+      descriptor = "(III)V",
+      garbageValue = "-2067901217"
    )
-   @Export("ItemDefinition_get")
-   public static ItemComposition ItemDefinition_get(int var0) {
-      ItemComposition var1 = (ItemComposition)ItemComposition.ItemDefinition_cached.get((long)var0);
-      if (var1 != null) {
-         return var1;
-      } else {
-         byte[] var2 = class355.ItemDefinition_archive.takeFile(10, var0);
-         var1 = new ItemComposition();
-         var1.id = var0;
-         if (var2 != null) {
-            var1.decode(new Buffer(var2));
-         }
-
-         var1.post();
-         if (var1.noteTemplate != -1) {
-            var1.genCert(ItemDefinition_get(var1.noteTemplate), ItemDefinition_get(var1.note));
-         }
-
-         if (var1.notedId != -1) {
-            var1.genBought(ItemDefinition_get(var1.notedId), ItemDefinition_get(var1.unnotedId));
-         }
-
-         if (var1.placeholderTemplate != -1) {
-            var1.genPlaceholder(ItemDefinition_get(var1.placeholderTemplate), ItemDefinition_get(var1.placeholder));
-         }
-
-         if (!FileSystem.ItemDefinition_inMembersWorld && var1.isMembersOnly) {
-            var1.name = "Members object";
-            var1.isTradable = false;
-
-            int var3;
-            for(var3 = 0; var3 < var1.groundActions.length; ++var3) {
-               var1.groundActions[var3] = null;
-            }
-
-            for(var3 = 0; var3 < var1.inventoryActions.length; ++var3) {
-               if (var3 != 4) {
-                  var1.inventoryActions[var3] = null;
-               }
-            }
-
-            var1.shiftClickIndex = -2;
-            var1.team = 0;
-            if (var1.params != null) {
-               boolean var6 = false;
-
-               for(Node var4 = var1.params.first(); var4 != null; var4 = var1.params.next()) {
-                  ParamComposition var5 = class33.getParamDefinition((int)var4.key);
-                  if (var5.autoDisable) {
-                     var4.remove();
-                  } else {
-                     var6 = true;
-                  }
-               }
-
-               if (!var6) {
-                  var1.params = null;
-               }
-            }
-         }
-
-         ItemComposition.ItemDefinition_cached.put(var1, (long)var0);
-         return var1;
+   static void method2400(int var0, int var1) {
+      if (class10.clientPreferences.method2488() != 0 && var0 != -1) {
+         class368.method6892(ViewportMouse.field2770, var0, 0, class10.clientPreferences.method2488(), false);
+         Client.playingJingle = true;
       }
+
    }
 
-   @ObfuscatedName("af")
+   @ObfuscatedName("ia")
    @ObfuscatedSignature(
-      descriptor = "(Ldr;B)V",
-      garbageValue = "5"
+      descriptor = "(Ldh;ZI)V",
+      garbageValue = "-1885589665"
    )
-   @Export("runScriptEvent")
-   public static void runScriptEvent(ScriptEvent var0) {
-      PlayerType.runScript(var0, 500000, 475000);
+   @Export("addPlayerToScene")
+   static void addPlayerToScene(Player var0, boolean var1) {
+      if (var0 != null && var0.isVisible() && !var0.isHidden) {
+         var0.isUnanimated = false;
+         if ((Client.isLowDetail && Players.Players_count > 50 || Players.Players_count > 200) && var1 && var0.idleSequence == var0.movementSequence) {
+            var0.isUnanimated = true;
+         }
+
+         int var2 = var0.x >> 7;
+         int var3 = var0.y >> 7;
+         if (var2 >= 0 && var2 < 104 && var3 >= 0 && var3 < 104) {
+            long var4 = class394.calculateTag(0, 0, 0, false, var0.index);
+            if (var0.model0 != null && Client.cycle >= var0.animationCycleStart && Client.cycle < var0.animationCycleEnd) {
+               var0.isUnanimated = false;
+               var0.tileHeight = Renderable.getTileHeight(var0.x, var0.y, Clock.Client_plane);
+               var0.playerCycle = Client.cycle;
+               class36.scene.addNullableObject(Clock.Client_plane, var0.x, var0.y, var0.tileHeight, 60, var0, var0.rotation, var4, var0.minX, var0.minY, var0.maxX, var0.maxY);
+            } else {
+               if ((var0.x & 127) == 64 && (var0.y & 127) == 64) {
+                  if (Client.tileLastDrawnActor[var2][var3] == Client.viewportDrawCount) {
+                     return;
+                  }
+
+                  Client.tileLastDrawnActor[var2][var3] = Client.viewportDrawCount;
+               }
+
+               var0.tileHeight = Renderable.getTileHeight(var0.x, var0.y, Clock.Client_plane);
+               var0.playerCycle = Client.cycle;
+               class36.scene.drawEntity(Clock.Client_plane, var0.x, var0.y, var0.tileHeight, 60, var0, var0.rotation, var4, var0.isWalking);
+            }
+         }
+      }
+
+   }
+
+   @ObfuscatedName("ms")
+   @ObfuscatedSignature(
+      descriptor = "(Lmb;IIIB)V",
+      garbageValue = "-55"
+   )
+   @Export("drawCompass")
+   static final void drawCompass(Widget var0, int var1, int var2, int var3) {
+      SpriteMask var4 = var0.getSpriteMask(false);
+      if (var4 != null) {
+         if (Client.minimapState < 3) {
+            class304.compass.drawRotatedMaskedCenteredAround(var1, var2, var4.width, var4.height, 25, 25, Client.camAngleY, 256, var4.xStarts, var4.xWidths);
+         } else {
+            Rasterizer2D.Rasterizer2D_fillMaskedRectangle(var1, var2, 0, var4.xStarts, var4.xWidths);
+         }
+
+      }
    }
 }

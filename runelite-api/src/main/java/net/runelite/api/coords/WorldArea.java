@@ -95,8 +95,8 @@ public class WorldArea
 		this.x = swLocation.getX();
 		this.y = swLocation.getY();
 		this.plane = swLocation.getPlane();
-		this.width = neLocation.getX() - swLocation.getX();
-		this.height = neLocation.getY() - swLocation.getY();
+		this.width = neLocation.getX() - swLocation.getX() + 1;
+		this.height = neLocation.getY() - swLocation.getY() + 1;
 	}
 
 	/**

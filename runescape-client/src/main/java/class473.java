@@ -1,92 +1,81 @@
-import java.util.Iterator;
 import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("su")
-public class class473 extends class430 implements class275 {
-   @ObfuscatedName("ev")
-   @Export("mouseCam")
-   static boolean mouseCam;
+@ObfuscatedName("sf")
+public class class473 {
+   @ObfuscatedName("at")
+   public final Object field4903;
    @ObfuscatedName("an")
-   @ObfuscatedSignature(
-      descriptor = "Lnm;"
-   )
-   final AbstractArchive field4937;
-   @ObfuscatedName("aw")
-   @ObfuscatedSignature(
-      descriptor = "Lke;"
-   )
-   final DemotingHashTable field4936 = new DemotingHashTable(64);
-   @ObfuscatedName("ac")
-   @ObfuscatedGetter(
-      intValue = -418179859
-   )
-   final int field4938;
+   public final Object field4904;
 
-   @ObfuscatedSignature(
-      descriptor = "(Lmr;ILnx;Lnm;)V"
-   )
-   public class473(StudioGame var1, int var2, Language var3, AbstractArchive var4) {
-      super(var1, var3, var4 != null ? var4.getGroupFileCount(var2) : 0);
-      this.field4937 = var4;
-      this.field4938 = var2;
+   public class473(Object var1, Object var2) {
+      this.field4903 = var1;
+      this.field4904 = var2;
    }
 
-   @ObfuscatedName("af")
-   @ObfuscatedSignature(
-      descriptor = "(IB)Lqg;",
-      garbageValue = "0"
-   )
-   protected class432 vmethod8824(int var1) {
-      synchronized(this.field4936) {
-         class431 var2 = (class431)this.field4936.get((long)var1);
-         if (var2 == null) {
-            var2 = this.method8838(var1);
-            this.field4936.method5646(var2, (long)var1);
+   public String toString() {
+      return this.field4903 + ", " + this.field4904;
+   }
+
+   public int hashCode() {
+      int var1 = 0;
+      if (this.field4903 != null) {
+         var1 += this.field4903.hashCode();
+      }
+
+      if (this.field4904 != null) {
+         var1 += 31 * this.field4904.hashCode();
+      }
+
+      return var1;
+   }
+
+   public boolean equals(Object var1) {
+      if (var1 != null && var1 instanceof class473) {
+         class473 var2 = (class473)var1;
+         if (this.field4903 == null) {
+            if (var2.field4903 != null) {
+               return false;
+            }
+         } else if (!this.field4903.equals(var2.field4903)) {
+            return false;
          }
 
-         return var2;
+         if (this.field4904 == null) {
+            if (var2.field4904 != null) {
+               return false;
+            }
+         } else if (!this.field4904.equals(var2.field4904)) {
+            return false;
+         }
+
+         return true;
+      } else {
+         return false;
       }
    }
 
-   @ObfuscatedName("ar")
+   @ObfuscatedName("at")
    @ObfuscatedSignature(
-      descriptor = "(II)Lqb;",
-      garbageValue = "-989370023"
+      descriptor = "(IB)Ltp;",
+      garbageValue = "0"
    )
-   class431 method8838(int var1) {
-      byte[] var2 = this.field4937.takeFile(this.field4938, var1);
-      class431 var3 = new class431(var1);
-      if (var2 != null) {
-         var3.method8303(new Buffer(var2));
+   @Export("getDbRowType")
+   public static DbRowType getDbRowType(int var0) {
+      DbRowType var1 = (DbRowType)DbRowType.DBRowType_cache.get((long)var0);
+      if (var1 != null) {
+         return var1;
+      } else {
+         byte[] var2 = DbRowType.field4997.takeFile(38, var0);
+         var1 = new DbRowType();
+         if (var2 != null) {
+            var1.method8811(new Buffer(var2));
+         }
+
+         var1.method8814();
+         DbRowType.DBRowType_cache.put(var1, (long)var0);
+         return var1;
       }
-
-      return var3;
-   }
-
-   @ObfuscatedName("am")
-   @ObfuscatedSignature(
-      descriptor = "(B)V",
-      garbageValue = "-105"
-   )
-   public void method8823() {
-      synchronized(this.field4936) {
-         this.field4936.clear();
-      }
-   }
-
-   public Iterator iterator() {
-      return new class472(this);
-   }
-
-   @ObfuscatedName("au")
-   @ObfuscatedSignature(
-      descriptor = "(B)[Lhd;",
-      garbageValue = "-126"
-   )
-   static HorizontalAlignment[] method8839() {
-      return new HorizontalAlignment[]{HorizontalAlignment.field1990, HorizontalAlignment.field1992, HorizontalAlignment.HorizontalAlignment_centered};
    }
 }

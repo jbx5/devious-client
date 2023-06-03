@@ -6,57 +6,67 @@ import net.runelite.mapping.ObfuscatedSignature;
 @ObfuscatedName("hi")
 @Implements("VarcInt")
 public class VarcInt extends DualNode {
+   @ObfuscatedName("at")
+   @ObfuscatedSignature(
+      descriptor = "Lnq;"
+   )
+   @Export("VarcInt_archive")
+   public static AbstractArchive VarcInt_archive;
    @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "Lkh;"
+      descriptor = "Llf;"
    )
    @Export("VarcInt_cached")
    public static EvictingDualNodeHashTable VarcInt_cached = new EvictingDualNodeHashTable(64);
-   @ObfuscatedName("aw")
+   @ObfuscatedName("av")
    @Export("persist")
    public boolean persist = false;
 
-   @ObfuscatedName("af")
+   @ObfuscatedName("at")
    @ObfuscatedSignature(
-      descriptor = "(Lsg;I)V",
-      garbageValue = "1521148390"
+      descriptor = "(Ltz;B)V",
+      garbageValue = "-30"
    )
-   public void method3680(Buffer var1) {
+   public void method3613(Buffer var1) {
       while(true) {
          int var2 = var1.readUnsignedByte();
          if (var2 == 0) {
             return;
          }
 
-         this.method3681(var1, var2);
+         this.method3612(var1, var2);
       }
    }
 
    @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "(Lsg;II)V",
-      garbageValue = "-194909553"
+      descriptor = "(Ltz;II)V",
+      garbageValue = "-1843921437"
    )
-   void method3681(Buffer var1, int var2) {
+   void method3612(Buffer var1, int var2) {
       if (var2 == 2) {
          this.persist = true;
       }
 
    }
 
-   @ObfuscatedName("ag")
+   @ObfuscatedName("ah")
    @ObfuscatedSignature(
-      descriptor = "(CB)Z",
-      garbageValue = "4"
+      descriptor = "(I)V",
+      garbageValue = "-2100829638"
    )
-   @Export("isCharPrintable")
-   public static boolean isCharPrintable(char var0) {
-      if (var0 >= ' ' && var0 <= '~') {
-         return true;
-      } else if (var0 >= 160 && var0 <= 255) {
-         return true;
-      } else {
-         return var0 == 8364 || var0 == 338 || var0 == 8212 || var0 == 339 || var0 == 376;
-      }
+   public static void method3617() {
+      SequenceDefinition.SequenceDefinition_cached.clear();
+      SequenceDefinition.SequenceDefinition_cachedFrames.clear();
+      SequenceDefinition.SequenceDefinition_cachedModel.clear();
+   }
+
+   @ObfuscatedName("br")
+   @ObfuscatedSignature(
+      descriptor = "(Ljava/lang/String;B)I",
+      garbageValue = "-3"
+   )
+   public static int method3616(String var0) {
+      return var0.length() + 2;
    }
 }

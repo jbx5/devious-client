@@ -1,105 +1,114 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dc")
+@ObfuscatedName("dw")
 @Implements("ItemContainer")
 public class ItemContainer extends Node {
-   @ObfuscatedName("af")
+   @ObfuscatedName("at")
    @ObfuscatedSignature(
-      descriptor = "Lrc;"
+      descriptor = "Lsh;"
    )
    @Export("itemContainers")
    static NodeHashTable itemContainers = new NodeHashTable(32);
-   @ObfuscatedName("gf")
-   @ObfuscatedGetter(
-      intValue = -1275160227
-   )
-   @Export("currentPort")
-   static int currentPort;
-   @ObfuscatedName("sv")
-   static boolean field1024;
    @ObfuscatedName("an")
    @Export("ids")
    int[] ids = new int[]{-1};
-   @ObfuscatedName("aw")
+   @ObfuscatedName("av")
    @Export("quantities")
    int[] quantities = new int[]{0};
 
    ItemContainer() {
    }
 
-   @ObfuscatedName("an")
+   @ObfuscatedName("ah")
    @ObfuscatedSignature(
-      descriptor = "(II)Lhh;",
-      garbageValue = "-707697126"
+      descriptor = "(IIB)I",
+      garbageValue = "-7"
    )
-   @Export("SpotAnimationDefinition_get")
-   public static SpotAnimationDefinition SpotAnimationDefinition_get(int var0) {
-      SpotAnimationDefinition var1 = (SpotAnimationDefinition)SpotAnimationDefinition.SpotAnimationDefinition_cached.get((long)var0);
-      if (var1 != null) {
-         return var1;
+   static final int method2230(int var0, int var1) {
+      if (var0 == -1) {
+         return 12345678;
       } else {
-         byte[] var2 = SpotAnimationDefinition.SpotAnimationDefinition_archive.takeFile(13, var0);
-         var1 = new SpotAnimationDefinition();
-         var1.id = var0;
-         if (var2 != null) {
-            var1.decode(new Buffer(var2));
+         var1 = (var0 & 127) * var1 / 128;
+         if (var1 < 2) {
+            var1 = 2;
+         } else if (var1 > 126) {
+            var1 = 126;
          }
 
-         SpotAnimationDefinition.SpotAnimationDefinition_cached.put(var1, (long)var0);
-         return var1;
+         return (var0 & 'ﾀ') + var1;
       }
    }
 
-   @ObfuscatedName("an")
+   @ObfuscatedName("jz")
    @ObfuscatedSignature(
-      descriptor = "(IB)Lha;",
-      garbageValue = "28"
+      descriptor = "(II)V",
+      garbageValue = "-1737946308"
    )
-   @Export("SequenceDefinition_get")
-   public static SequenceDefinition SequenceDefinition_get(int var0) {
-      SequenceDefinition var1 = (SequenceDefinition)SequenceDefinition.SequenceDefinition_cached.get((long)var0);
-      if (var1 != null) {
-         return var1;
-      } else {
-         byte[] var2 = SequenceDefinition.SequenceDefinition_archive.takeFile(12, var0);
-         var1 = new SequenceDefinition();
-         if (var2 != null) {
-            var1.decode(new Buffer(var2));
+   static final void method2239(int var0) {
+      int[] var1 = class33.sceneMinimapSprite.pixels;
+      int var2 = var1.length;
+
+      int var3;
+      for(var3 = 0; var3 < var2; ++var3) {
+         var1[var3] = 0;
+      }
+
+      int var4;
+      int var5;
+      for(var3 = 1; var3 < 103; ++var3) {
+         var4 = (103 - var3) * 2048 + 24628;
+
+         for(var5 = 1; var5 < 103; ++var5) {
+            if ((Tiles.Tiles_renderFlags[var0][var5][var3] & 24) == 0) {
+               class36.scene.drawTileMinimap(var1, var4, 512, var0, var5, var3);
+            }
+
+            if (var0 < 3 && (Tiles.Tiles_renderFlags[var0 + 1][var5][var3] & 8) != 0) {
+               class36.scene.drawTileMinimap(var1, var4, 512, var0 + 1, var5, var3);
+            }
+
+            var4 += 4;
          }
-
-         var1.postDecode();
-         SequenceDefinition.SequenceDefinition_cached.put(var1, (long)var0);
-         return var1;
       }
-   }
 
-   @ObfuscatedName("lu")
-   @ObfuscatedSignature(
-      descriptor = "(IIB)Ljava/lang/String;",
-      garbageValue = "27"
-   )
-   static final String method2243(int var0, int var1) {
-      int var2 = var1 - var0;
-      if (var2 < -9) {
-         return class383.colorStartTag(16711680);
-      } else if (var2 < -6) {
-         return class383.colorStartTag(16723968);
-      } else if (var2 < -3) {
-         return class383.colorStartTag(16740352);
-      } else if (var2 < 0) {
-         return class383.colorStartTag(16756736);
-      } else if (var2 > 9) {
-         return class383.colorStartTag(65280);
-      } else if (var2 > 6) {
-         return class383.colorStartTag(4259584);
-      } else if (var2 > 3) {
-         return class383.colorStartTag(8453888);
-      } else {
-         return var2 > 0 ? class383.colorStartTag(12648192) : class383.colorStartTag(16776960);
+      var3 = (238 + (int)(Math.random() * 20.0) - 10 << 16) + (238 + (int)(Math.random() * 20.0) - 10 << 8) + (238 + (int)(Math.random() * 20.0) - 10);
+      var4 = 238 + (int)(Math.random() * 20.0) - 10 << 16;
+      class33.sceneMinimapSprite.setRaster();
+
+      int var6;
+      for(var5 = 1; var5 < 103; ++var5) {
+         for(var6 = 1; var6 < 103; ++var6) {
+            if ((Tiles.Tiles_renderFlags[var0][var6][var5] & 24) == 0) {
+               UserComparator10.drawObject(var0, var6, var5, var3, var4);
+            }
+
+            if (var0 < 3 && (Tiles.Tiles_renderFlags[var0 + 1][var6][var5] & 8) != 0) {
+               UserComparator10.drawObject(var0 + 1, var6, var5, var3, var4);
+            }
+         }
       }
+
+      Client.mapIconCount = 0;
+
+      for(var5 = 0; var5 < 104; ++var5) {
+         for(var6 = 0; var6 < 104; ++var6) {
+            long var7 = class36.scene.getFloorDecorationTag(Clock.Client_plane, var5, var6);
+            if (var7 != 0L) {
+               int var9 = class215.Entity_unpackID(var7);
+               int var10 = class175.getObjectDefinition(var9).mapIconId;
+               if (var10 >= 0 && class147.WorldMapElement_get(var10).field1908) {
+                  Client.mapIcons[Client.mapIconCount] = class147.WorldMapElement_get(var10).getSpriteBool(false);
+                  Client.mapIconXs[Client.mapIconCount] = var5;
+                  Client.mapIconYs[Client.mapIconCount] = var6;
+                  ++Client.mapIconCount;
+               }
+            }
+         }
+      }
+
+      WorldMapSectionType.rasterProvider.apply();
    }
 }

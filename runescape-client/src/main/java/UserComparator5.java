@@ -3,16 +3,13 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("es")
+@ObfuscatedName("ed")
 @Implements("UserComparator5")
 public class UserComparator5 extends AbstractUserComparator {
-   @ObfuscatedName("sb")
-   @ObfuscatedSignature(
-      descriptor = "Lps;"
-   )
-   @Export("friendsChat")
-   static FriendsChat friendsChat;
    @ObfuscatedName("af")
+   @Export("Tiles_hue")
+   static int[] Tiles_hue;
+   @ObfuscatedName("at")
    @Export("reversed")
    final boolean reversed;
 
@@ -20,10 +17,10 @@ public class UserComparator5 extends AbstractUserComparator {
       this.reversed = var1;
    }
 
-   @ObfuscatedName("af")
+   @ObfuscatedName("at")
    @ObfuscatedSignature(
-      descriptor = "(Lpb;Lpb;I)I",
-      garbageValue = "318450924"
+      descriptor = "(Lqg;Lqg;I)I",
+      garbageValue = "-1114697504"
    )
    @Export("compareBuddy")
    int compareBuddy(Buddy var1, Buddy var2) {
@@ -42,24 +39,28 @@ public class UserComparator5 extends AbstractUserComparator {
       return this.compareBuddy((Buddy)var1, (Buddy)var2);
    }
 
-   @ObfuscatedName("an")
+   @ObfuscatedName("as")
    @ObfuscatedSignature(
-      descriptor = "(ILjava/lang/String;Ljava/lang/String;I)V",
-      garbageValue = "-397121414"
+      descriptor = "(III)Lcg;",
+      garbageValue = "570345303"
    )
-   @Export("addGameMessage")
-   static void addGameMessage(int var0, String var1, String var2) {
-      class136.addChatMessage(var0, var1, var2, (String)null);
+   @Export("Messages_getByChannelAndID")
+   static Message Messages_getByChannelAndID(int var0, int var1) {
+      ChatChannel var2 = (ChatChannel)Messages.Messages_channels.get(var0);
+      return var2.getMessage(var1);
    }
 
-   @ObfuscatedName("hx")
+   @ObfuscatedName("ak")
    @ObfuscatedSignature(
-      descriptor = "(Lnd;Ljava/lang/String;I)V",
-      garbageValue = "967968354"
+      descriptor = "(IS)Lfp;",
+      garbageValue = "-26313"
    )
-   static void method2920(Archive var0, String var1) {
-      ArchiveLoader var2 = new ArchiveLoader(var0, var1);
-      Client.archiveLoaders.add(var2);
-      Client.field529 += var2.groupCount;
+   static class137 method2865(int var0) {
+      class137 var1 = (class137)GameObject.findEnumerated(LoginScreenAnimation.method2429(), var0);
+      if (var1 == null) {
+         var1 = class137.field1600;
+      }
+
+      return var1;
    }
 }

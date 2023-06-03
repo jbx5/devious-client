@@ -4,67 +4,76 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("di")
+@ObfuscatedName("dx")
 @Implements("InterfaceParent")
 public class InterfaceParent extends Node {
-   @ObfuscatedName("af")
+   @ObfuscatedName("at")
    @ObfuscatedGetter(
-      intValue = 944864121
+      intValue = 1141372521
    )
    @Export("group")
    int group;
    @ObfuscatedName("an")
    @ObfuscatedGetter(
-      intValue = -1702664641
+      intValue = 861483533
    )
    @Export("type")
    int type;
-   @ObfuscatedName("aw")
-   boolean field1038 = false;
+   @ObfuscatedName("av")
+   boolean field1057 = false;
 
    InterfaceParent() {
    }
 
-   @ObfuscatedName("au")
+   @ObfuscatedName("as")
    @ObfuscatedSignature(
-      descriptor = "([BB)V",
-      garbageValue = "7"
+      descriptor = "(Ltl;I)I",
+      garbageValue = "1730686990"
    )
-   @Export("ByteArrayPool_release")
-   public static synchronized void ByteArrayPool_release(byte[] var0) {
-      if (var0.length == 100 && ByteArrayPool.ByteArrayPool_smallCount < ByteArrayPool.field4469) {
-         ByteArrayPool.ByteArrayPool_small[++ByteArrayPool.ByteArrayPool_smallCount - 1] = var0;
-      } else if (var0.length == 5000 && ByteArrayPool.ByteArrayPool_mediumCount < ByteArrayPool.field4470) {
-         ByteArrayPool.ByteArrayPool_medium[++ByteArrayPool.ByteArrayPool_mediumCount - 1] = var0;
-      } else if (var0.length == 10000 && ByteArrayPool.ByteArrayPool_largeCount < ByteArrayPool.field4471) {
-         ByteArrayPool.ByteArrayPool_large[++ByteArrayPool.ByteArrayPool_largeCount - 1] = var0;
-      } else if (var0.length == 30000 && ByteArrayPool.field4476 < ByteArrayPool.field4463) {
-         ByteArrayPool.field4474[++ByteArrayPool.field4476 - 1] = var0;
+   static int method2244(PacketBuffer var0) {
+      int var1 = var0.readBits(2);
+      int var2;
+      if (var1 == 0) {
+         var2 = 0;
+      } else if (var1 == 1) {
+         var2 = var0.readBits(5);
+      } else if (var1 == 2) {
+         var2 = var0.readBits(8);
       } else {
-         if (UserComparator3.ByteArrayPool_arrays != null) {
-            for(int var1 = 0; var1 < ClanChannel.ByteArrayPool_alternativeSizes.length; ++var1) {
-               if (var0.length == ClanChannel.ByteArrayPool_alternativeSizes[var1] && class136.ByteArrayPool_altSizeArrayCounts[var1] < UserComparator3.ByteArrayPool_arrays[var1].length) {
-                  UserComparator3.ByteArrayPool_arrays[var1][class136.ByteArrayPool_altSizeArrayCounts[var1]++] = var0;
-                  return;
-               }
-            }
-         }
-
+         var2 = var0.readBits(11);
       }
+
+      return var2;
    }
 
-   @ObfuscatedName("al")
+   @ObfuscatedName("bc")
    @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "-1880388281"
+      descriptor = "(Lby;B)V",
+      garbageValue = "1"
    )
-   public static void method2252() {
-      StructComposition.StructDefinition_cached.clear();
+   @Export("PcmStream_disable")
+   static final void PcmStream_disable(PcmStream var0) {
+      var0.active = false;
+      if (var0.sound != null) {
+         var0.sound.position = 0;
+      }
+
+      for(PcmStream var1 = var0.firstSubStream(); var1 != null; var1 = var0.nextSubStream()) {
+         PcmStream_disable(var1);
+      }
+
    }
 
-   @ObfuscatedName("at")
-   @Export("Entity_unpackID")
-   public static int Entity_unpackID(long var0) {
-      return (int)(var0 >>> 17 & 4294967295L);
+   @ObfuscatedName("il")
+   @ObfuscatedSignature(
+      descriptor = "(B)V",
+      garbageValue = "-72"
+   )
+   static void method2243() {
+      if (ScriptFrame.worldMap != null) {
+         ScriptFrame.worldMap.method8401(Clock.Client_plane, class213.baseX * 64 + (Projectile.localPlayer.x >> 7), class101.baseY * 64 + (Projectile.localPlayer.y >> 7), false);
+         ScriptFrame.worldMap.loadCache();
+      }
+
    }
 }

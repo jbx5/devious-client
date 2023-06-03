@@ -3,18 +3,18 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("pw")
+@ObfuscatedName("qm")
 @Implements("User")
 public class User implements Comparable {
-   @ObfuscatedName("aw")
+   @ObfuscatedName("av")
    @ObfuscatedSignature(
-      descriptor = "Ltm;"
+      descriptor = "Lun;"
    )
    @Export("username")
    Username username;
-   @ObfuscatedName("ac")
+   @ObfuscatedName("as")
    @ObfuscatedSignature(
-      descriptor = "Ltm;"
+      descriptor = "Lun;"
    )
    @Export("previousUsername")
    Username previousUsername;
@@ -24,48 +24,48 @@ public class User implements Comparable {
 
    @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "(Lpw;I)I",
-      garbageValue = "1093536041"
+      descriptor = "(Lqm;I)I",
+      garbageValue = "615597391"
    )
    @Export("compareTo_user")
    public int compareTo_user(User var1) {
       return this.username.compareToTyped(var1.username);
    }
 
-   @ObfuscatedName("be")
+   @ObfuscatedName("ba")
    @ObfuscatedSignature(
-      descriptor = "(I)Ltm;",
-      garbageValue = "473993579"
+      descriptor = "(I)Lun;",
+      garbageValue = "-830991264"
    )
    @Export("getUsername")
    public Username getUsername() {
       return this.username;
    }
 
-   @ObfuscatedName("bk")
+   @ObfuscatedName("bn")
    @ObfuscatedSignature(
       descriptor = "(I)Ljava/lang/String;",
-      garbageValue = "-238021346"
+      garbageValue = "1410115840"
    )
    @Export("getName")
    public String getName() {
       return this.username == null ? "" : this.username.getName();
    }
 
-   @ObfuscatedName("bx")
+   @ObfuscatedName("bb")
    @ObfuscatedSignature(
       descriptor = "(I)Ljava/lang/String;",
-      garbageValue = "-43557433"
+      garbageValue = "153403834"
    )
    @Export("getPreviousName")
    public String getPreviousName() {
       return this.previousUsername == null ? "" : this.previousUsername.getName();
    }
 
-   @ObfuscatedName("bo")
+   @ObfuscatedName("bx")
    @ObfuscatedSignature(
-      descriptor = "(Ltm;Ltm;B)V",
-      garbageValue = "92"
+      descriptor = "(Lun;Lun;I)V",
+      garbageValue = "635123380"
    )
    @Export("set")
    void set(Username var1, Username var2) {
@@ -79,17 +79,5 @@ public class User implements Comparable {
 
    public int compareTo(Object var1) {
       return this.compareTo_user((User)var1);
-   }
-
-   @ObfuscatedName("ab")
-   @ObfuscatedSignature(
-      descriptor = "(IS)V",
-      garbageValue = "19082"
-   )
-   static void method7857(int var0) {
-      ItemContainer var1 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
-      if (var1 != null) {
-         var1.remove();
-      }
    }
 }

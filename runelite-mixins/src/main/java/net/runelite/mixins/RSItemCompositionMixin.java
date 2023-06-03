@@ -22,9 +22,17 @@ public abstract class RSItemCompositionMixin implements RSItemComposition
 	@Inject
 	private int shiftClickActionIndex = DEFAULT_CUSTOM_SHIFT_CLICK_INDEX;
 
-	@MethodHook(value = "<clinit>", end = true)
+	/*@MethodHook(value = "<clinit>", end = true)
 	@Inject
 	public static void rl$clinit()
+	{
+		RSEvictingDualNodeHashTable cachedModels2 = client.getItemCompositionCache();
+		cachedModels2.resize(1024);
+	}*/
+
+	@MethodHook(value = "<init>", end = true)
+	@Inject
+	public void rl$init()
 	{
 		RSEvictingDualNodeHashTable cachedModels2 = client.getItemCompositionCache();
 		cachedModels2.resize(1024);

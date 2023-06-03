@@ -4,60 +4,60 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jk")
+@ObfuscatedName("jo")
 @Implements("BoundaryObject")
 public final class BoundaryObject {
-   @ObfuscatedName("af")
+   @ObfuscatedName("at")
    @ObfuscatedGetter(
-      intValue = 1061912079
+      intValue = 1322040305
    )
    @Export("z")
    int z;
    @ObfuscatedName("an")
    @ObfuscatedGetter(
-      intValue = -1998748175
+      intValue = -1395173813
    )
    @Export("x")
    int x;
-   @ObfuscatedName("aw")
+   @ObfuscatedName("av")
    @ObfuscatedGetter(
-      intValue = -1171883603
+      intValue = 2147061777
    )
    @Export("y")
    int y;
-   @ObfuscatedName("ac")
+   @ObfuscatedName("as")
    @ObfuscatedGetter(
-      intValue = -137992079
+      intValue = -312981103
    )
    @Export("orientationA")
    int orientationA;
-   @ObfuscatedName("au")
+   @ObfuscatedName("ax")
    @ObfuscatedGetter(
-      intValue = 379413203
+      intValue = -272343979
    )
    @Export("orientationB")
    int orientationB;
-   @ObfuscatedName("ab")
+   @ObfuscatedName("ap")
    @ObfuscatedSignature(
-      descriptor = "Liv;"
+      descriptor = "Lim;"
    )
    @Export("renderable1")
    public Renderable renderable1;
-   @ObfuscatedName("aq")
+   @ObfuscatedName("ab")
    @ObfuscatedSignature(
-      descriptor = "Liv;"
+      descriptor = "Lim;"
    )
    @Export("renderable2")
    public Renderable renderable2;
-   @ObfuscatedName("al")
+   @ObfuscatedName("ak")
    @ObfuscatedGetter(
-      longValue = -4009183385476919801L
+      longValue = -1669611721957992963L
    )
    @Export("tag")
    public long tag = 0L;
-   @ObfuscatedName("at")
+   @ObfuscatedName("ae")
    @ObfuscatedGetter(
-      intValue = 347144389
+      intValue = 1298585617
    )
    @Export("flags")
    int flags = 0;
@@ -65,12 +65,52 @@ public final class BoundaryObject {
    BoundaryObject() {
    }
 
-   @ObfuscatedName("ah")
+   @ObfuscatedName("at")
    @ObfuscatedSignature(
-      descriptor = "(IIIIIIFFFIIII)V",
-      garbageValue = "-428480375"
+      descriptor = "(I)J",
+      garbageValue = "-149818697"
    )
-   static void method5010(int var0, int var1, int var2, int var3, int var4, int var5, float var6, float var7, float var8, int var9, int var10, int var11) {
-      Rasterizer3D.field2519.vmethod4970(var0, var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11);
+   public static final synchronized long method5027() {
+      long var0 = System.currentTimeMillis();
+      if (var0 < class300.field3364) {
+         class300.field3365 += class300.field3364 - var0;
+      }
+
+      class300.field3364 = var0;
+      return var0 + class300.field3365;
+   }
+
+   @ObfuscatedName("jc")
+   @ObfuscatedSignature(
+      descriptor = "(IIIIIIIIIII)V",
+      garbageValue = "190093423"
+   )
+   static final void method5026(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9) {
+      PendingSpawn var10 = null;
+
+      for(PendingSpawn var11 = (PendingSpawn)Client.pendingSpawns.last(); var11 != null; var11 = (PendingSpawn)Client.pendingSpawns.previous()) {
+         if (var0 == var11.plane && var11.x == var1 && var2 == var11.y && var3 == var11.type) {
+            var10 = var11;
+            break;
+         }
+      }
+
+      if (var10 == null) {
+         var10 = new PendingSpawn();
+         var10.plane = var0;
+         var10.type = var3;
+         var10.x = var1;
+         var10.y = var2;
+         var10.field1143 = -1;
+         DirectByteArrayCopier.method6568(var10);
+         Client.pendingSpawns.addFirst(var10);
+      }
+
+      var10.field1148 = var4;
+      var10.field1142 = var5;
+      var10.field1141 = var6;
+      var10.delay = var8;
+      var10.hitpoints = var9;
+      var10.method2346(var7);
    }
 }

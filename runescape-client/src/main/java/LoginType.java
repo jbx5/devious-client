@@ -4,81 +4,81 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("sw")
+@ObfuscatedName("sj")
 @Implements("LoginType")
 public class LoginType {
-   @ObfuscatedName("af")
-   @ObfuscatedSignature(
-      descriptor = "Lsw;"
-   )
-   @Export("oldscape")
-   public static final LoginType oldscape = new LoginType(4, 0, "", "");
-   @ObfuscatedName("an")
-   @ObfuscatedSignature(
-      descriptor = "Lsw;"
-   )
-   static final LoginType field4907 = new LoginType(6, 1, "", "");
-   @ObfuscatedName("aw")
-   @ObfuscatedSignature(
-      descriptor = "Lsw;"
-   )
-   static final LoginType field4909 = new LoginType(3, 2, "", "");
-   @ObfuscatedName("ac")
-   @ObfuscatedSignature(
-      descriptor = "Lsw;"
-   )
-   static final LoginType field4910 = new LoginType(8, 3, "", "");
-   @ObfuscatedName("au")
-   @ObfuscatedSignature(
-      descriptor = "Lsw;"
-   )
-   static final LoginType field4906 = new LoginType(7, 4, "", "");
-   @ObfuscatedName("ab")
-   @ObfuscatedSignature(
-      descriptor = "Lsw;"
-   )
-   static final LoginType field4911 = new LoginType(5, 5, "", "");
-   @ObfuscatedName("aq")
-   @ObfuscatedSignature(
-      descriptor = "Lsw;"
-   )
-   static final LoginType field4912 = new LoginType(2, 6, "", "");
-   @ObfuscatedName("al")
-   @ObfuscatedSignature(
-      descriptor = "Lsw;"
-   )
-   static final LoginType field4913 = new LoginType(1, 7, "", "");
    @ObfuscatedName("at")
    @ObfuscatedSignature(
-      descriptor = "Lsw;"
+      descriptor = "Lsj;"
    )
-   public static final LoginType field4914;
-   @ObfuscatedName("aa")
+   @Export("oldscape")
+   public static final LoginType oldscape = new LoginType(1, 0, "", "");
+   @ObfuscatedName("an")
+   @ObfuscatedSignature(
+      descriptor = "Lsj;"
+   )
+   static final LoginType field4925 = new LoginType(7, 1, "", "");
+   @ObfuscatedName("av")
+   @ObfuscatedSignature(
+      descriptor = "Lsj;"
+   )
+   static final LoginType field4926 = new LoginType(0, 2, "", "");
+   @ObfuscatedName("as")
+   @ObfuscatedSignature(
+      descriptor = "Lsj;"
+   )
+   static final LoginType field4927 = new LoginType(5, 3, "", "");
+   @ObfuscatedName("ax")
+   @ObfuscatedSignature(
+      descriptor = "Lsj;"
+   )
+   static final LoginType field4929 = new LoginType(8, 4, "", "");
+   @ObfuscatedName("ap")
+   @ObfuscatedSignature(
+      descriptor = "Lsj;"
+   )
+   static final LoginType field4928 = new LoginType(6, 5, "", "");
+   @ObfuscatedName("ab")
+   @ObfuscatedSignature(
+      descriptor = "Lsj;"
+   )
+   static final LoginType field4930 = new LoginType(2, 6, "", "");
+   @ObfuscatedName("ak")
+   @ObfuscatedSignature(
+      descriptor = "Lsj;"
+   )
+   static final LoginType field4931 = new LoginType(4, 7, "", "");
+   @ObfuscatedName("ae")
+   @ObfuscatedSignature(
+      descriptor = "Lsj;"
+   )
+   public static final LoginType field4924;
+   @ObfuscatedName("af")
    @ObfuscatedGetter(
-      intValue = -874502107
+      intValue = -1068092619
    )
-   final int field4915;
-   @ObfuscatedName("ay")
-   final String field4916;
+   final int field4933;
+   @ObfuscatedName("ao")
+   final String field4932;
 
    static {
-      field4914 = new LoginType(0, -1, "", "", true, new LoginType[]{oldscape, field4907, field4909, field4906, field4910});
+      field4924 = new LoginType(3, -1, "", "", true, new LoginType[]{oldscape, field4925, field4926, field4929, field4927});
    }
 
    LoginType(int var1, int var2, String var3, String var4) {
-      this.field4915 = var1;
-      this.field4916 = var4;
+      this.field4933 = var1;
+      this.field4932 = var4;
    }
 
    @ObfuscatedSignature(
-      descriptor = "(IILjava/lang/String;Ljava/lang/String;Z[Lsw;)V"
+      descriptor = "(IILjava/lang/String;Ljava/lang/String;Z[Lsj;)V"
    )
    LoginType(int var1, int var2, String var3, String var4, boolean var5, LoginType[] var6) {
-      this.field4915 = var1;
-      this.field4916 = var4;
+      this.field4933 = var1;
+      this.field4932 = var4;
    }
 
    public String toString() {
-      return this.field4916;
+      return this.field4932;
    }
 }

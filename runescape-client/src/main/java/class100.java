@@ -1,153 +1,55 @@
-import java.applet.Applet;
+import java.awt.Desktop;
+import java.awt.Desktop.Action;
+import java.net.URI;
 import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dn")
-final class class100 implements class308 {
-   @ObfuscatedName("af")
-   @Export("RunException_applet")
-   public static Applet RunException_applet;
+@ObfuscatedName("du")
+public class class100 {
    @ObfuscatedName("at")
-   @ObfuscatedGetter(
-      intValue = -280777997
-   )
-   @Export("musicTrackVolume")
-   public static int musicTrackVolume;
-   // $FF: synthetic field
    @ObfuscatedSignature(
-      descriptor = "Lmq;"
+      descriptor = "(II)Ljava/lang/String;",
+      garbageValue = "405828754"
    )
-   final Widget val$cc;
-
-   @ObfuscatedSignature(
-      descriptor = "(Lmq;)V"
-   )
-   class100(Widget var1) {
-      this.val$cc = var1;
+   static String method2624(int var0) {
+      return "<img=" + var0 + ">";
    }
 
-   @ObfuscatedName("af")
+   @ObfuscatedName("at")
    @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "427135973"
+      descriptor = "(II)Lhn;",
+      garbageValue = "451118805"
    )
-   public void vmethod6027() {
-      if (this.val$cc != null && this.val$cc.method6395().field3505 != null) {
-         ScriptEvent var1 = new ScriptEvent();
-         var1.method2256(this.val$cc);
-         var1.setArgs(this.val$cc.method6395().field3505);
-         GrandExchangeOfferAgeComparator.method6838().addFirst(var1);
-      }
-
-   }
-
-   @ObfuscatedName("af")
-   @ObfuscatedSignature(
-      descriptor = "(CB)B",
-      garbageValue = "-20"
-   )
-   @Export("charToByteCp1252")
-   public static byte charToByteCp1252(char var0) {
-      byte var1;
-      if (var0 > 0 && var0 < 128 || var0 >= 160 && var0 <= 255) {
-         var1 = (byte)var0;
-      } else if (var0 == 8364) {
-         var1 = -128;
-      } else if (var0 == 8218) {
-         var1 = -126;
-      } else if (var0 == 402) {
-         var1 = -125;
-      } else if (var0 == 8222) {
-         var1 = -124;
-      } else if (var0 == 8230) {
-         var1 = -123;
-      } else if (var0 == 8224) {
-         var1 = -122;
-      } else if (var0 == 8225) {
-         var1 = -121;
-      } else if (var0 == 710) {
-         var1 = -120;
-      } else if (var0 == 8240) {
-         var1 = -119;
-      } else if (var0 == 352) {
-         var1 = -118;
-      } else if (var0 == 8249) {
-         var1 = -117;
-      } else if (var0 == 338) {
-         var1 = -116;
-      } else if (var0 == 381) {
-         var1 = -114;
-      } else if (var0 == 8216) {
-         var1 = -111;
-      } else if (var0 == 8217) {
-         var1 = -110;
-      } else if (var0 == 8220) {
-         var1 = -109;
-      } else if (var0 == 8221) {
-         var1 = -108;
-      } else if (var0 == 8226) {
-         var1 = -107;
-      } else if (var0 == 8211) {
-         var1 = -106;
-      } else if (var0 == 8212) {
-         var1 = -105;
-      } else if (var0 == 732) {
-         var1 = -104;
-      } else if (var0 == 8482) {
-         var1 = -103;
-      } else if (var0 == 353) {
-         var1 = -102;
-      } else if (var0 == 8250) {
-         var1 = -101;
-      } else if (var0 == 339) {
-         var1 = -100;
-      } else if (var0 == 382) {
-         var1 = -98;
-      } else if (var0 == 376) {
-         var1 = -97;
-      } else {
-         var1 = 63;
-      }
-
-      return var1;
-   }
-
-   @ObfuscatedName("an")
-   @ObfuscatedSignature(
-      descriptor = "(II)Lhj;",
-      garbageValue = "1112844336"
-   )
-   @Export("KitDefinition_get")
-   public static KitDefinition KitDefinition_get(int var0) {
-      KitDefinition var1 = (KitDefinition)KitDefinition.KitDefinition_cached.get((long)var0);
+   @Export("VarpDefinition_get")
+   public static VarpDefinition VarpDefinition_get(int var0) {
+      VarpDefinition var1 = (VarpDefinition)VarpDefinition.VarpDefinition_cached.get((long)var0);
       if (var1 != null) {
          return var1;
       } else {
-         byte[] var2 = KitDefinition.KitDefinition_archive.takeFile(3, var0);
-         var1 = new KitDefinition();
+         byte[] var2 = class305.VarpDefinition_archive.takeFile(16, var0);
+         var1 = new VarpDefinition();
          if (var2 != null) {
             var1.decode(new Buffer(var2));
          }
 
-         KitDefinition.KitDefinition_cached.put(var1, (long)var0);
+         VarpDefinition.VarpDefinition_cached.put(var1, (long)var0);
          return var1;
       }
    }
 
-   @ObfuscatedName("ac")
+   @ObfuscatedName("av")
    @ObfuscatedSignature(
-      descriptor = "(B)V",
-      garbageValue = "-16"
+      descriptor = "(I)V",
+      garbageValue = "80451609"
    )
    @Export("savePreferences")
    static void savePreferences() {
       AccessFile var0 = null;
 
       try {
-         var0 = Rasterizer3D.getPreferencesFile("", Client.field490.name, true);
-         Buffer var1 = class20.clientPreferences.toBuffer();
+         var0 = FontName.getPreferencesFile("", GameBuild.field3841.name, true);
+         Buffer var1 = class10.clientPreferences.toBuffer();
          var0.write(var1.array, 0, var1.offset);
       } catch (Exception var3) {
       }
@@ -157,6 +59,38 @@ final class class100 implements class308 {
             var0.closeSync(true);
          }
       } catch (Exception var2) {
+      }
+
+   }
+
+   @ObfuscatedName("av")
+   @ObfuscatedSignature(
+      descriptor = "(Ljava/lang/String;ZLjava/lang/String;ZI)V",
+      garbageValue = "-486098991"
+   )
+   static void method2626(String var0, boolean var1, String var2, boolean var3) {
+      if (var1) {
+         if (!var3 && Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Action.BROWSE)) {
+            try {
+               Desktop.getDesktop().browse(new URI(var0));
+               return;
+            } catch (Exception var5) {
+            }
+         }
+
+         if (class31.field160.startsWith("win") && !var3) {
+            class14.method183(var0, 0, "openjs");
+            return;
+         }
+
+         if (class31.field160.startsWith("mac")) {
+            class14.method183(var0, 1, var2);
+            return;
+         }
+
+         class14.method183(var0, 2, "openjs");
+      } else {
+         class14.method183(var0, 3, "openjs");
       }
 
    }

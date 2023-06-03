@@ -3,21 +3,20 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ld")
+@ObfuscatedName("mv")
 @Implements("MusicTrack")
 public class MusicTrack extends Node {
-   @ObfuscatedName("af")
+   @ObfuscatedName("at")
    @ObfuscatedSignature(
-      descriptor = "Lrc;"
+      descriptor = "Lsh;"
    )
-   @Export("table")
-   NodeHashTable table;
+   NodeHashTable field3473 = new NodeHashTable(16);
    @ObfuscatedName("an")
    @Export("midi")
    byte[] midi;
 
    @ObfuscatedSignature(
-      descriptor = "(Lsg;)V"
+      descriptor = "(Ltz;)V"
    )
    MusicTrack(Buffer var1) {
       var1.offset = var1.array.length - 3;
@@ -195,34 +194,40 @@ public class MusicTrack extends Node {
       int var58 = 0;
       int[] var59 = new int[128];
       var28 = 0;
+      int[] var60 = new int[16];
+      int[] var61 = new int[16];
+      var61[9] = 128;
+      var60[9] = 128;
 
-      label243:
-      for(int var60 = 0; var60 < var2; ++var60) {
+      label256:
+      for(int var63 = 0; var63 < var2; ++var63) {
          var51.writeInt(1297379947);
          var51.offset += 4;
-         int var61 = var51.offset;
-         int var62 = -1;
+         int var64 = var51.offset;
+         int var65 = var64;
+         int var66 = -1;
 
          while(true) {
             while(true) {
-               int var63 = var1.readVarInt();
-               var51.writeVarInt(var63);
-               int var64 = var1.array[var29++] & 255;
-               boolean var65 = var64 != var62;
-               var62 = var64 & 15;
-               if (var64 == 7) {
-                  if (var65) {
+               int var67 = var1.readVarInt();
+               var51.writeVarInt(var67);
+               var65 += var67;
+               int var68 = var1.array[var29++] & 255;
+               boolean var69 = var68 != var66;
+               var66 = var68 & 15;
+               if (var68 == 7) {
+                  if (var69) {
                      var51.writeByte(255);
                   }
 
                   var51.writeByte(47);
                   var51.writeByte(0);
-                  var51.writeLengthInt(var51.offset - var61);
-                  continue label243;
+                  var51.writeLengthInt(var51.offset - var64);
+                  continue label256;
                }
 
-               if (var64 == 23) {
-                  if (var65) {
+               if (var68 == 23) {
+                  if (var69) {
                      var51.writeByte(255);
                   }
 
@@ -232,18 +237,32 @@ public class MusicTrack extends Node {
                   var51.writeByte(var1.array[var50++]);
                   var51.writeByte(var1.array[var50++]);
                } else {
-                  var52 ^= var64 >> 4;
-                  if (var62 == 0) {
-                     if (var65) {
+                  var52 ^= var68 >> 4;
+                  int var70;
+                  int var71;
+                  if (var66 == 0) {
+                     if (var69) {
                         var51.writeByte(var52 + 144);
                      }
 
                      var53 += var1.array[var37++];
                      var54 += var1.array[var38++];
-                     var51.writeByte(var53 & 127);
-                     var51.writeByte(var54 & 127);
-                  } else if (var62 == 1) {
-                     if (var65) {
+                     var70 = var53 & 127;
+                     var71 = var54 & 127;
+                     var51.writeByte(var70);
+                     var51.writeByte(var71);
+                     if (var71 > 0) {
+                        int var72 = var61[var52];
+                        class316 var73 = (class316)this.field3473.get((long)var72);
+                        if (var73 == null) {
+                           var73 = new class316(var65);
+                           this.field3473.put(var73, (long)var72);
+                        }
+
+                        var73.field3500.set(var70);
+                     }
+                  } else if (var66 == 1) {
+                     if (var69) {
                         var51.writeByte(var52 + 128);
                      }
 
@@ -251,49 +270,56 @@ public class MusicTrack extends Node {
                      var55 += var1.array[var40++];
                      var51.writeByte(var53 & 127);
                      var51.writeByte(var55 & 127);
-                  } else if (var62 == 2) {
-                     if (var65) {
+                  } else if (var66 == 2) {
+                     if (var69) {
                         var51.writeByte(var52 + 176);
                      }
 
                      var28 = var28 + var1.array[var15++] & 127;
                      var51.writeByte(var28);
-                     int var66;
                      if (var28 != 0 && var28 != 32) {
                         if (var28 == 1) {
-                           var66 = var1.array[var34++];
+                           var70 = var1.array[var34++];
                         } else if (var28 == 33) {
-                           var66 = var1.array[var41++];
+                           var70 = var1.array[var41++];
                         } else if (var28 == 7) {
-                           var66 = var1.array[var35++];
+                           var70 = var1.array[var35++];
                         } else if (var28 == 39) {
-                           var66 = var1.array[var42++];
+                           var70 = var1.array[var42++];
                         } else if (var28 == 10) {
-                           var66 = var1.array[var36++];
+                           var70 = var1.array[var36++];
                         } else if (var28 == 42) {
-                           var66 = var1.array[var43++];
+                           var70 = var1.array[var43++];
                         } else if (var28 == 99) {
-                           var66 = var1.array[var46++];
+                           var70 = var1.array[var46++];
                         } else if (var28 == 98) {
-                           var66 = var1.array[var47++];
+                           var70 = var1.array[var47++];
                         } else if (var28 == 101) {
-                           var66 = var1.array[var48++];
+                           var70 = var1.array[var48++];
                         } else if (var28 == 100) {
-                           var66 = var1.array[var49++];
+                           var70 = var1.array[var49++];
                         } else if (var28 != 64 && var28 != 65 && var28 != 120 && var28 != 121 && var28 != 123) {
-                           var66 = var1.array[var39++];
+                           var70 = var1.array[var39++];
                         } else {
-                           var66 = var1.array[var30++];
+                           var70 = var1.array[var30++];
                         }
                      } else {
-                        var66 = var1.array[var44++];
+                        var70 = var1.array[var44++];
                      }
 
-                     var66 += var59[var28];
-                     var59[var28] = var66;
-                     var51.writeByte(var66 & 127);
-                  } else if (var62 == 3) {
-                     if (var65) {
+                     var70 += var59[var28];
+                     var59[var28] = var70;
+                     var71 = var70 & 127;
+                     var51.writeByte(var71);
+                     if (var28 == 0) {
+                        var60[var52] = (var71 << 14) + (var60[var52] & -2080769);
+                     }
+
+                     if (var28 == 32) {
+                        var60[var52] = (var60[var52] & -16257) + (var71 << 7);
+                     }
+                  } else if (var66 == 3) {
+                     if (var69) {
                         var51.writeByte(var52 + 224);
                      }
 
@@ -301,15 +327,15 @@ public class MusicTrack extends Node {
                      var56 += var1.array[var33++] << 7;
                      var51.writeByte(var56 & 127);
                      var51.writeByte(var56 >> 7 & 127);
-                  } else if (var62 == 4) {
-                     if (var65) {
+                  } else if (var66 == 4) {
+                     if (var69) {
                         var51.writeByte(var52 + 208);
                      }
 
                      var57 += var1.array[var32++];
                      var51.writeByte(var57 & 127);
-                  } else if (var62 == 5) {
-                     if (var65) {
+                  } else if (var66 == 5) {
+                     if (var69) {
                         var51.writeByte(var52 + 160);
                      }
 
@@ -318,15 +344,17 @@ public class MusicTrack extends Node {
                      var51.writeByte(var53 & 127);
                      var51.writeByte(var58 & 127);
                   } else {
-                     if (var62 != 6) {
+                     if (var66 != 6) {
                         throw new RuntimeException();
                      }
 
-                     if (var65) {
+                     if (var69) {
                         var51.writeByte(var52 + 192);
                      }
 
-                     var51.writeByte(var1.array[var44++]);
+                     var70 = var1.array[var44++];
+                     var61[var52] = var70 + var60[var52];
+                     var51.writeByte(var70);
                   }
                }
             }
@@ -335,99 +363,12 @@ public class MusicTrack extends Node {
 
    }
 
-   @ObfuscatedName("an")
-   void method5971() {
-      if (this.table == null) {
-         this.table = new NodeHashTable(16);
-         int[] var1 = new int[16];
-         int[] var2 = new int[16];
-         var2[9] = 128;
-         var1[9] = 128;
-         MidiFileReader var4 = new MidiFileReader(this.midi);
-         int var5 = var4.trackCount();
-
-         int var6;
-         for(var6 = 0; var6 < var5; ++var6) {
-            var4.gotoTrack(var6);
-            var4.readTrackLength(var6);
-            var4.markTrackPosition(var6);
-         }
-
-         label56:
-         do {
-            while(true) {
-               var6 = var4.getPrioritizedTrack();
-               int var7 = var4.trackLengths[var6];
-
-               while(var7 == var4.trackLengths[var6]) {
-                  var4.gotoTrack(var6);
-                  int var8 = var4.readMessage(var6);
-                  if (var8 == 1) {
-                     var4.setTrackDone();
-                     var4.markTrackPosition(var6);
-                     continue label56;
-                  }
-
-                  int var9 = var8 & 240;
-                  int var10;
-                  int var11;
-                  int var12;
-                  if (var9 == 176) {
-                     var10 = var8 & 15;
-                     var11 = var8 >> 8 & 127;
-                     var12 = var8 >> 16 & 127;
-                     if (var11 == 0) {
-                        var1[var10] = (var12 << 14) + (var1[var10] & -2080769);
-                     }
-
-                     if (var11 == 32) {
-                        var1[var10] = (var1[var10] & -16257) + (var12 << 7);
-                     }
-                  }
-
-                  if (var9 == 192) {
-                     var10 = var8 & 15;
-                     var11 = var8 >> 8 & 127;
-                     var2[var10] = var11 + var1[var10];
-                  }
-
-                  if (var9 == 144) {
-                     var10 = var8 & 15;
-                     var11 = var8 >> 8 & 127;
-                     var12 = var8 >> 16 & 127;
-                     if (var12 > 0) {
-                        int var13 = var2[var10];
-                        ByteArrayNode var14 = (ByteArrayNode)this.table.get((long)var13);
-                        if (var14 == null) {
-                           var14 = new ByteArrayNode(new byte[128]);
-                           this.table.put(var14, (long)var13);
-                        }
-
-                        var14.byteArray[var11] = 1;
-                     }
-                  }
-
-                  var4.readTrackLength(var6);
-                  var4.markTrackPosition(var6);
-               }
-            }
-         } while(!var4.isDone());
-
-      }
-   }
-
-   @ObfuscatedName("aw")
-   @Export("clear")
-   void clear() {
-      this.table = null;
-   }
-
-   @ObfuscatedName("af")
+   @ObfuscatedName("at")
    @ObfuscatedSignature(
-      descriptor = "(Lnm;II)Lld;"
+      descriptor = "(Lnq;II)Lmv;"
    )
    @Export("readTrack")
-   public static MusicTrack readTrack(AbstractArchive var0, int var1, int var2) {
+   static MusicTrack readTrack(AbstractArchive var0, int var1, int var2) {
       byte[] var3 = var0.takeFile(var1, var2);
       return var3 == null ? null : new MusicTrack(new Buffer(var3));
    }

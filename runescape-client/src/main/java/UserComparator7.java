@@ -3,10 +3,10 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("eu")
+@ObfuscatedName("el")
 @Implements("UserComparator7")
 public class UserComparator7 extends AbstractUserComparator {
-   @ObfuscatedName("af")
+   @ObfuscatedName("at")
    @Export("reversed")
    final boolean reversed;
 
@@ -14,10 +14,10 @@ public class UserComparator7 extends AbstractUserComparator {
       this.reversed = var1;
    }
 
-   @ObfuscatedName("af")
+   @ObfuscatedName("at")
    @ObfuscatedSignature(
-      descriptor = "(Lpb;Lpb;B)I",
-      garbageValue = "-76"
+      descriptor = "(Lqg;Lqg;I)I",
+      garbageValue = "280239649"
    )
    @Export("compareBuddy")
    int compareBuddy(Buddy var1, Buddy var2) {
@@ -32,132 +32,128 @@ public class UserComparator7 extends AbstractUserComparator {
       return this.compareBuddy((Buddy)var1, (Buddy)var2);
    }
 
-   @ObfuscatedName("af")
-   public static final int method2910(double var0, double var2, double var4) {
-      double var6 = var4;
-      double var8 = var4;
-      double var10 = var4;
-      if (var2 != 0.0) {
-         double var12;
-         if (var4 < 0.5) {
-            var12 = var4 * (1.0 + var2);
-         } else {
-            var12 = var4 + var2 - var2 * var4;
-         }
-
-         double var14 = var4 * 2.0 - var12;
-         double var16 = 0.3333333333333333 + var0;
-         if (var16 > 1.0) {
-            --var16;
-         }
-
-         double var20 = var0 - 0.3333333333333333;
-         if (var20 < 0.0) {
-            ++var20;
-         }
-
-         if (var16 * 6.0 < 1.0) {
-            var6 = 6.0 * (var12 - var14) * var16 + var14;
-         } else if (2.0 * var16 < 1.0) {
-            var6 = var12;
-         } else if (var16 * 3.0 < 2.0) {
-            var6 = var14 + (0.6666666666666666 - var16) * (var12 - var14) * 6.0;
-         } else {
-            var6 = var14;
-         }
-
-         if (var0 * 6.0 < 1.0) {
-            var8 = var14 + 6.0 * (var12 - var14) * var0;
-         } else if (var0 * 2.0 < 1.0) {
-            var8 = var12;
-         } else if (3.0 * var0 < 2.0) {
-            var8 = var14 + 6.0 * (var12 - var14) * (0.6666666666666666 - var0);
-         } else {
-            var8 = var14;
-         }
-
-         if (6.0 * var20 < 1.0) {
-            var10 = 6.0 * (var12 - var14) * var20 + var14;
-         } else if (2.0 * var20 < 1.0) {
-            var10 = var12;
-         } else if (var20 * 3.0 < 2.0) {
-            var10 = (0.6666666666666666 - var20) * (var12 - var14) * 6.0 + var14;
-         } else {
-            var10 = var14;
-         }
-      }
-
-      int var22 = (int)(256.0 * var6);
-      int var13 = (int)(256.0 * var8);
-      int var23 = (int)(256.0 * var10);
-      int var15 = var23 + (var13 << 8) + (var22 << 16);
-      return var15;
-   }
-
    @ObfuscatedName("at")
    @ObfuscatedSignature(
-      descriptor = "(I)I",
-      garbageValue = "-1532029373"
+      descriptor = "(III)I",
+      garbageValue = "-1267523279"
    )
-   @Export("get3dZoom")
-   public static int get3dZoom() {
-      return Rasterizer3D.clips.viewportZoom;
+   public static int method2860(int var0, int var1) {
+      return (int)Math.round(Math.atan2((double)var0, (double)var1) * 2607.5945876176133) & 16383;
    }
 
-   @ObfuscatedName("bv")
+   @ObfuscatedName("ap")
    @ObfuscatedSignature(
-      descriptor = "(ILch;ZI)I",
-      garbageValue = "-1934960343"
+      descriptor = "(Ltl;IS)Z",
+      garbageValue = "-23255"
    )
-   static int method2911(int var0, Script var1, boolean var2) {
-      return 2;
-   }
+   @Export("updateExternalPlayer")
+   static boolean updateExternalPlayer(PacketBuffer var0, int var1) {
+      int var2 = var0.readBits(2);
+      int var3;
+      int var4;
+      int var7;
+      int var8;
+      int var9;
+      int var10;
+      if (var2 == 0) {
+         if (var0.readBits(1) != 0) {
+            updateExternalPlayer(var0, var1);
+         }
 
-   @ObfuscatedName("ky")
-   @ObfuscatedSignature(
-      descriptor = "(ILjava/lang/String;I)V",
-      garbageValue = "129719618"
-   )
-   static void method2909(int var0, String var1) {
-      int var2 = Players.Players_count;
-      int[] var3 = Players.Players_indices;
-      boolean var4 = false;
-      Username var5 = new Username(var1, class70.loginType);
+         var3 = var0.readBits(13);
+         var4 = var0.readBits(13);
+         boolean var12 = var0.readBits(1) == 1;
+         if (var12) {
+            Players.Players_pendingUpdateIndices[++Players.Players_pendingUpdateCount - 1] = var1;
+         }
 
-      for(int var6 = 0; var6 < var2; ++var6) {
-         Player var7 = Client.players[var3[var6]];
-         if (var7 != null && var7 != MusicPatchNode.localPlayer && var7.username != null && var7.username.equals(var5)) {
-            PacketBufferNode var8;
-            if (var0 == 1) {
-               var8 = class330.getPacketBufferNode(ClientPacket.OPPLAYER1, Client.packetWriter.isaacCipher);
-               var8.packetBuffer.writeByteSub(0);
-               var8.packetBuffer.writeShort(var3[var6]);
-               Client.packetWriter.addNode(var8);
-            } else if (var0 == 4) {
-               var8 = class330.getPacketBufferNode(ClientPacket.OPPLAYER4, Client.packetWriter.isaacCipher);
-               var8.packetBuffer.writeByteNeg(0);
-               var8.packetBuffer.writeShortLE(var3[var6]);
-               Client.packetWriter.addNode(var8);
-            } else if (var0 == 6) {
-               var8 = class330.getPacketBufferNode(ClientPacket.OPPLAYER6, Client.packetWriter.isaacCipher);
-               var8.packetBuffer.writeShortAdd(var3[var6]);
-               var8.packetBuffer.writeByteNeg(0);
-               Client.packetWriter.addNode(var8);
-            } else if (var0 == 7) {
-               var8 = class330.getPacketBufferNode(ClientPacket.OPPLAYER7, Client.packetWriter.isaacCipher);
-               var8.packetBuffer.writeShortAddLE(var3[var6]);
-               var8.packetBuffer.writeByteAdd(0);
-               Client.packetWriter.addNode(var8);
+         if (Client.players[var1] != null) {
+            throw new RuntimeException();
+         } else {
+            Player var11 = Client.players[var1] = new Player();
+            var11.index = var1;
+            if (Players.field1332[var1] != null) {
+               var11.read(Players.field1332[var1]);
             }
 
-            var4 = true;
-            break;
+            var11.orientation = Players.Players_orientations[var1];
+            var11.targetIndex = Players.Players_targetIndices[var1];
+            var7 = Players.Players_regions[var1];
+            var8 = var7 >> 28;
+            var9 = var7 >> 14 & 255;
+            var10 = var7 & 255;
+            var11.pathTraversed[0] = Players.field1328[var1];
+            var11.plane = (byte)var8;
+            var11.resetPath((var9 << 13) + var3 - class213.baseX * 64, (var10 << 13) + var4 - class101.baseY * 64);
+            var11.field1124 = false;
+            return true;
+         }
+      } else if (var2 == 1) {
+         var3 = var0.readBits(2);
+         var4 = Players.Players_regions[var1];
+         Players.Players_regions[var1] = (((var4 >> 28) + var3 & 3) << 28) + (var4 & 268435455);
+         return false;
+      } else {
+         int var5;
+         int var6;
+         if (var2 == 2) {
+            var3 = var0.readBits(5);
+            var4 = var3 >> 3;
+            var5 = var3 & 7;
+            var6 = Players.Players_regions[var1];
+            var7 = (var6 >> 28) + var4 & 3;
+            var8 = var6 >> 14 & 255;
+            var9 = var6 & 255;
+            if (var5 == 0) {
+               --var8;
+               --var9;
+            }
+
+            if (var5 == 1) {
+               --var9;
+            }
+
+            if (var5 == 2) {
+               ++var8;
+               --var9;
+            }
+
+            if (var5 == 3) {
+               --var8;
+            }
+
+            if (var5 == 4) {
+               ++var8;
+            }
+
+            if (var5 == 5) {
+               --var8;
+               ++var9;
+            }
+
+            if (var5 == 6) {
+               ++var9;
+            }
+
+            if (var5 == 7) {
+               ++var8;
+               ++var9;
+            }
+
+            Players.Players_regions[var1] = (var8 << 14) + var9 + (var7 << 28);
+            return false;
+         } else {
+            var3 = var0.readBits(18);
+            var4 = var3 >> 16;
+            var5 = var3 >> 8 & 255;
+            var6 = var3 & 255;
+            var7 = Players.Players_regions[var1];
+            var8 = (var7 >> 28) + var4 & 3;
+            var9 = var5 + (var7 >> 14) & 255;
+            var10 = var7 + var6 & 255;
+            Players.Players_regions[var1] = (var9 << 14) + var10 + (var8 << 28);
+            return false;
          }
       }
-
-      if (!var4) {
-         UserComparator5.addGameMessage(4, "", "Unable to find " + var1);
-      }
-
    }
 }

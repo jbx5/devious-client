@@ -4,40 +4,40 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("rj")
+@ObfuscatedName("sc")
 @Implements("IterableNodeHashTableIterator")
 public class IterableNodeHashTableIterator implements Iterator {
-   @ObfuscatedName("af")
+   @ObfuscatedName("at")
    @ObfuscatedSignature(
-      descriptor = "Lro;"
+      descriptor = "Lsv;"
    )
    @Export("hashTable")
    IterableNodeHashTable hashTable;
    @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "Lrp;"
+      descriptor = "Lrz;"
    )
    @Export("head")
    Node head;
-   @ObfuscatedName("aw")
+   @ObfuscatedName("av")
    @Export("index")
    int index;
-   @ObfuscatedName("ac")
+   @ObfuscatedName("as")
    @ObfuscatedSignature(
-      descriptor = "Lrp;"
+      descriptor = "Lrz;"
    )
    @Export("last")
    Node last = null;
 
    @ObfuscatedSignature(
-      descriptor = "(Lro;)V"
+      descriptor = "(Lsv;)V"
    )
    public IterableNodeHashTableIterator(IterableNodeHashTable var1) {
       this.hashTable = var1;
       this.start();
    }
 
-   @ObfuscatedName("af")
+   @ObfuscatedName("at")
    @Export("start")
    void start() {
       this.head = this.hashTable.buckets[0].previous;
@@ -47,9 +47,9 @@ public class IterableNodeHashTableIterator implements Iterator {
 
    @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "()Lrp;"
+      descriptor = "()Lrz;"
    )
-   public Node method8686() {
+   public Node method8589() {
       this.start();
       return (Node)this.next();
    }
@@ -76,6 +76,15 @@ public class IterableNodeHashTableIterator implements Iterator {
       }
    }
 
+   public void remove() {
+      if (this.last == null) {
+         throw new IllegalStateException();
+      } else {
+         this.last.remove();
+         this.last = null;
+      }
+   }
+
    public boolean hasNext() {
       if (this.hashTable.buckets[this.index - 1] != this.head) {
          return true;
@@ -91,10 +100,5 @@ public class IterableNodeHashTableIterator implements Iterator {
 
          return false;
       }
-   }
-
-   public void remove() {
-      this.last.remove();
-      this.last = null;
    }
 }
