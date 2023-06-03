@@ -1,92 +1,182 @@
 import java.io.IOException;
 import java.util.concurrent.Callable;
+import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("as")
+@ObfuscatedName("au")
 public class class19 implements Callable {
-   @ObfuscatedName("bw")
-   @ObfuscatedSignature(
-      descriptor = "Lqu;"
+   @ObfuscatedName("av")
+   @ObfuscatedGetter(
+      longValue = -2034572934949977087L
    )
-   static Bounds field103;
-   @ObfuscatedName("af")
+   public static long field100;
+   @ObfuscatedName("dz")
    @ObfuscatedSignature(
-      descriptor = "Lay;"
+      descriptor = "Ltj;"
    )
-   final class10 field106;
+   static IndexedSprite field97;
+   @ObfuscatedName("fc")
+   @ObfuscatedSignature(
+      descriptor = "Lgu;"
+   )
+   @Export("js5SocketTask")
+   static Task js5SocketTask;
+   @ObfuscatedName("kc")
+   @ObfuscatedSignature(
+      descriptor = "[Ltm;"
+   )
+   @Export("mapDotSprites")
+   static SpritePixels[] mapDotSprites;
+   @ObfuscatedName("om")
+   @ObfuscatedSignature(
+      descriptor = "Lmb;"
+   )
+   static Widget field99;
+   @ObfuscatedName("at")
+   @ObfuscatedSignature(
+      descriptor = "Lao;"
+   )
+   final class10 field96;
    // $FF: synthetic field
    @ObfuscatedSignature(
-      descriptor = "Lag;"
+      descriptor = "Lac;"
    )
    final class14 this$0;
 
    @ObfuscatedSignature(
-      descriptor = "(Lag;Lay;)V"
+      descriptor = "(Lac;Lao;)V"
    )
    class19(class14 var1, class10 var2) {
       this.this$0 = var1;
-      this.field106 = var2;
+      this.field96 = var2;
    }
 
    public Object call() throws Exception {
       try {
-         while(this.field106.method91()) {
-            PlayerComposition.method6084(10L);
+         while(this.field96.method101()) {
+            FloorDecoration.method4357(10L);
          }
       } catch (IOException var2) {
          return new class20("Error servicing REST query: " + var2.getMessage());
       }
 
-      return this.field106.method87();
+      return this.field96.method95();
    }
 
-   @ObfuscatedName("au")
+   @ObfuscatedName("jp")
    @ObfuscatedSignature(
-      descriptor = "([BIIIIIIIII[Lif;I)V",
-      garbageValue = "146668751"
+      descriptor = "(ZLtl;I)V",
+      garbageValue = "-1158341435"
    )
-   static final void method294(byte[] var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, CollisionMap[] var10) {
-      int var12;
-      for(int var11 = 0; var11 < 8; ++var11) {
-         for(var12 = 0; var12 < 8; ++var12) {
-            if (var11 + var2 > 0 && var11 + var2 < 103 && var3 + var12 > 0 && var3 + var12 < 103) {
-               int[] var10000 = var10[var1].flags[var11 + var2];
-               var10000[var12 + var3] &= -16777217;
+   @Export("loadRegions")
+   static final void loadRegions(boolean var0, PacketBuffer var1) {
+      Client.isInInstance = var0;
+      int var3;
+      int var4;
+      int var5;
+      int var6;
+      int var7;
+      if (!Client.isInInstance) {
+         int var2 = var1.readUnsignedShortAdd();
+         var3 = var1.readUnsignedShortAddLE();
+         var4 = var1.readUnsignedShort();
+         SpotAnimationDefinition.xteaKeys = new int[var4][4];
+
+         for(var5 = 0; var5 < var4; ++var5) {
+            for(var6 = 0; var6 < 4; ++var6) {
+               SpotAnimationDefinition.xteaKeys[var5][var6] = var1.readInt();
             }
          }
-      }
 
-      Buffer var24 = new Buffer(var0);
+         SceneTilePaint.regions = new int[var4];
+         WorldMapCacheName.regionMapArchiveIds = new int[var4];
+         class130.regionLandArchiveIds = new int[var4];
+         WorldMapLabelSize.regionLandArchives = new byte[var4][];
+         class74.regionMapArchives = new byte[var4][];
+         var4 = 0;
 
-      for(var12 = 0; var12 < 4; ++var12) {
-         for(int var13 = 0; var13 < 64; ++var13) {
-            for(int var14 = 0; var14 < 64; ++var14) {
-               if (var12 == var4 && var13 >= var5 && var13 < var5 + 8 && var14 >= var6 && var14 < var6 + 8) {
-                  int var15 = var2 + SpriteMask.method5990(var13 & 7, var14 & 7, var7);
-                  int var18 = var13 & 7;
-                  int var19 = var14 & 7;
-                  int var20 = var7 & 3;
-                  int var17;
-                  if (var20 == 0) {
-                     var17 = var19;
-                  } else if (var20 == 1) {
-                     var17 = 7 - var18;
-                  } else if (var20 == 2) {
-                     var17 = 7 - var19;
+         for(var5 = (var3 - 6) / 8; var5 <= (var3 + 6) / 8; ++var5) {
+            for(var6 = (var2 - 6) / 8; var6 <= (var2 + 6) / 8; ++var6) {
+               var7 = var6 + (var5 << 8);
+               SceneTilePaint.regions[var4] = var7;
+               WorldMapCacheName.regionMapArchiveIds[var4] = class305.archive9.getGroupId("m" + var5 + "_" + var6);
+               class130.regionLandArchiveIds[var4] = class305.archive9.getGroupId("l" + var5 + "_" + var6);
+               ++var4;
+            }
+         }
+
+         ReflectionCheck.method670(var3, var2, true);
+      } else {
+         boolean var15 = var1.readUnsignedByte() == 1;
+         var3 = var1.readUnsignedShortAddLE();
+         var4 = var1.readUnsignedShortAdd();
+         var5 = var1.readUnsignedShort();
+         var1.importIndex();
+
+         int var8;
+         int var9;
+         for(var6 = 0; var6 < 4; ++var6) {
+            for(var7 = 0; var7 < 13; ++var7) {
+               for(var8 = 0; var8 < 13; ++var8) {
+                  var9 = var1.readBits(1);
+                  if (var9 == 1) {
+                     Client.instanceChunkTemplates[var6][var7][var8] = var1.readBits(26);
                   } else {
-                     var17 = var18;
+                     Client.instanceChunkTemplates[var6][var7][var8] = -1;
                   }
-
-                  int var21 = var3 + var17;
-                  int var22 = (var13 & 7) + var8 + var2;
-                  int var23 = var3 + (var14 & 7) + var9;
-                  class372.loadTerrain(var24, var1, var15, var21, var22, var23, var7);
-               } else {
-                  class372.loadTerrain(var24, 0, -1, -1, 0, 0, 0);
                }
             }
          }
+
+         var1.exportIndex();
+         SpotAnimationDefinition.xteaKeys = new int[var5][4];
+
+         for(var6 = 0; var6 < var5; ++var6) {
+            for(var7 = 0; var7 < 4; ++var7) {
+               SpotAnimationDefinition.xteaKeys[var6][var7] = var1.readInt();
+            }
+         }
+
+         SceneTilePaint.regions = new int[var5];
+         WorldMapCacheName.regionMapArchiveIds = new int[var5];
+         class130.regionLandArchiveIds = new int[var5];
+         WorldMapLabelSize.regionLandArchives = new byte[var5][];
+         class74.regionMapArchives = new byte[var5][];
+         var5 = 0;
+
+         for(var6 = 0; var6 < 4; ++var6) {
+            for(var7 = 0; var7 < 13; ++var7) {
+               for(var8 = 0; var8 < 13; ++var8) {
+                  var9 = Client.instanceChunkTemplates[var6][var7][var8];
+                  if (var9 != -1) {
+                     int var10 = var9 >> 14 & 1023;
+                     int var11 = var9 >> 3 & 2047;
+                     int var12 = (var10 / 8 << 8) + var11 / 8;
+
+                     int var13;
+                     for(var13 = 0; var13 < var5; ++var13) {
+                        if (SceneTilePaint.regions[var13] == var12) {
+                           var12 = -1;
+                           break;
+                        }
+                     }
+
+                     if (var12 != -1) {
+                        SceneTilePaint.regions[var5] = var12;
+                        var13 = var12 >> 8 & 255;
+                        int var14 = var12 & 255;
+                        WorldMapCacheName.regionMapArchiveIds[var5] = class305.archive9.getGroupId("m" + var13 + "_" + var14);
+                        class130.regionLandArchiveIds[var5] = class305.archive9.getGroupId("l" + var13 + "_" + var14);
+                        ++var5;
+                     }
+                  }
+               }
+            }
+         }
+
+         ReflectionCheck.method670(var4, var3, !var15);
       }
 
    }

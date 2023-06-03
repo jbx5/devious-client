@@ -1,22 +1,12 @@
 import java.security.SecureRandom;
-import java.util.Arrays;
 import java.util.concurrent.Callable;
-import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dm")
+@ObfuscatedName("dt")
 @Implements("SecureRandomCallable")
 public class SecureRandomCallable implements Callable {
-   @ObfuscatedName("ay")
-   @ObfuscatedGetter(
-      intValue = -2017760987
-   )
-   @Export("Interpreter_stringStackSize")
-   static int Interpreter_stringStackSize;
-
    SecureRandomCallable() {
    }
 
@@ -26,18 +16,50 @@ public class SecureRandomCallable implements Callable {
       return var2;
    }
 
-   @ObfuscatedName("bv")
+   @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "(Lmq;Lmw;ZS)V",
-      garbageValue = "222"
+      descriptor = "(IIB)I",
+      garbageValue = "23"
    )
-   public static void method2223(Widget var0, PlayerComposition var1, boolean var2) {
-      var0.modelType = 7;
-      var0.field3584 = new PlayerComposition(var1);
-      if (!var2) {
-         var0.field3584.equipment = Arrays.copyOf(var0.field3584.field3522, var0.field3584.field3522.length);
-         var0.field3584.method6068();
-      }
+   static int method2214(int var0, int var1) {
+      if (var0 == -2) {
+         return 12345678;
+      } else if (var0 == -1) {
+         if (var1 < 0) {
+            var1 = 0;
+         } else if (var1 > 127) {
+            var1 = 127;
+         }
 
+         var1 = 127 - var1;
+         return var1;
+      } else {
+         var1 = (var0 & 127) * var1 / 128;
+         if (var1 < 2) {
+            var1 = 2;
+         } else if (var1 > 126) {
+            var1 = 126;
+         }
+
+         return (var0 & 'ﾀ') + var1;
+      }
+   }
+
+   @ObfuscatedName("av")
+   @ObfuscatedSignature(
+      descriptor = "(B)V",
+      garbageValue = "-85"
+   )
+   public static void method2210() {
+      VarbitComposition.VarbitDefinition_cached.clear();
+   }
+
+   @ObfuscatedName("ap")
+   @ObfuscatedSignature(
+      descriptor = "(I)V",
+      garbageValue = "-1602230035"
+   )
+   public static void method2215() {
+      DbRowType.DBRowType_cache.clear();
    }
 }

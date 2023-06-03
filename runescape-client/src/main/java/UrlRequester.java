@@ -11,49 +11,49 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("et")
+@ObfuscatedName("ea")
 @Implements("UrlRequester")
 public abstract class UrlRequester implements Runnable {
-   @ObfuscatedName("tk")
+   @ObfuscatedName("oy")
    @ObfuscatedSignature(
-      descriptor = "Ltq;"
+      descriptor = "Lcn;"
    )
-   @Export("sceneMinimapSprite")
-   static SpritePixels sceneMinimapSprite;
-   @ObfuscatedName("af")
-   final Thread field1399 = new Thread(this);
+   @Export("tempMenuAction")
+   static MenuAction tempMenuAction;
+   @ObfuscatedName("at")
+   final Thread field1395 = new Thread(this);
    @ObfuscatedName("an")
    @Export("isClosed")
    volatile boolean isClosed;
-   @ObfuscatedName("aw")
+   @ObfuscatedName("av")
    @Export("requests")
    Queue requests = new LinkedList();
-   @ObfuscatedName("ac")
+   @ObfuscatedName("as")
    @ObfuscatedGetter(
-      intValue = 1429112917
+      intValue = -2102049249
    )
-   int field1398;
+   int field1397;
 
    UrlRequester(int var1) {
-      this.field1399.setPriority(1);
-      this.field1399.start();
-      this.field1398 = var1;
+      this.field1395.setPriority(1);
+      this.field1395.start();
+      this.field1397 = var1;
    }
 
-   @ObfuscatedName("af")
+   @ObfuscatedName("at")
    @ObfuscatedSignature(
-      descriptor = "(Lez;B)V",
-      garbageValue = "16"
+      descriptor = "(Let;I)V",
+      garbageValue = "2051535253"
    )
-   abstract void vmethod2842(UrlRequest var1) throws IOException;
+   abstract void vmethod2824(UrlRequest var1) throws IOException;
 
    @ObfuscatedName("an")
    @ObfuscatedSignature(
       descriptor = "(Ljava/net/URLConnection;I)I",
-      garbageValue = "-903419789"
+      garbageValue = "601333595"
    )
-   int method2816(URLConnection var1) {
-      int var2 = UrlRequest.field1406;
+   int method2801(URLConnection var1) {
+      int var2 = UrlRequest.field1405;
       if (var1 != null) {
          try {
             if (var1 instanceof HttpURLConnection) {
@@ -66,25 +66,25 @@ public abstract class UrlRequester implements Runnable {
       return var2;
    }
 
-   @ObfuscatedName("aw")
+   @ObfuscatedName("av")
    @ObfuscatedSignature(
       descriptor = "(Ljava/net/URLConnection;I)V",
-      garbageValue = "-218004174"
+      garbageValue = "20210019"
    )
-   void method2832(URLConnection var1) {
+   void method2802(URLConnection var1) {
       var1.setConnectTimeout(5000);
       var1.setReadTimeout(5000);
       var1.setUseCaches(false);
       var1.setRequestProperty("Connection", "close");
-      var1.setRequestProperty("User-Agent", "OldSchoolRuneScape/" + this.field1398);
+      var1.setRequestProperty("User-Agent", "OldSchoolRuneScape/" + this.field1397);
    }
 
-   @ObfuscatedName("ac")
+   @ObfuscatedName("as")
    @ObfuscatedSignature(
-      descriptor = "(Ljava/net/URLConnection;Lez;B)V",
-      garbageValue = "1"
+      descriptor = "(Ljava/net/URLConnection;Let;I)V",
+      garbageValue = "-916847883"
    )
-   void method2835(URLConnection var1, UrlRequest var2) {
+   void method2803(URLConnection var1, UrlRequest var2) {
       DataInputStream var3 = null;
 
       try {
@@ -96,7 +96,7 @@ public abstract class UrlRequester implements Runnable {
             var3.readFully(var4);
          } else {
             var4 = new byte[0];
-            byte[] var6 = AbstractWorldMapData.ByteArrayPool_getArray(5000);
+            byte[] var6 = WorldMapSection1.ByteArrayPool_getArray(5000);
 
             byte[] var8;
             for(int var7 = var3.read(var6, 0, var6.length); var7 > -1; var4 = var8) {
@@ -105,14 +105,14 @@ public abstract class UrlRequester implements Runnable {
                System.arraycopy(var6, 0, var8, var4.length, var7);
             }
 
-            InterfaceParent.ByteArrayPool_release(var6);
+            MusicPatchPcmStream.ByteArrayPool_release(var6);
          }
 
          var2.response0 = var4;
       } catch (IOException var14) {
          var2.response0 = null;
       } finally {
-         var2.field1405 = this.method2816(var1);
+         var2.field1403 = this.method2801(var1);
       }
 
       if (var3 != null) {
@@ -124,10 +124,10 @@ public abstract class UrlRequester implements Runnable {
 
    }
 
-   @ObfuscatedName("au")
+   @ObfuscatedName("ax")
    @ObfuscatedSignature(
-      descriptor = "(Ljava/net/URL;I)Lez;",
-      garbageValue = "-73486264"
+      descriptor = "(Ljava/net/URL;I)Let;",
+      garbageValue = "-1833072628"
    )
    @Export("request")
    public UrlRequest request(URL var1) {
@@ -139,10 +139,10 @@ public abstract class UrlRequester implements Runnable {
       }
    }
 
-   @ObfuscatedName("ab")
+   @ObfuscatedName("ap")
    @ObfuscatedSignature(
       descriptor = "(I)V",
-      garbageValue = "-1770460847"
+      garbageValue = "562063725"
    )
    @Export("close")
    public void close() {
@@ -153,7 +153,7 @@ public abstract class UrlRequester implements Runnable {
             this.notify();
          }
 
-         this.field1399.join();
+         this.field1395.join();
       } catch (InterruptedException var4) {
       }
 
@@ -174,97 +174,86 @@ public abstract class UrlRequester implements Runnable {
                }
             }
 
-            this.vmethod2842(var1);
+            this.vmethod2824(var1);
          } catch (Exception var7) {
-            class387.RunException_sendStackTrace((String)null, var7);
+            class260.RunException_sendStackTrace((String)null, var7);
          }
       }
 
    }
 
-   @ObfuscatedName("aw")
+   @ObfuscatedName("ax")
    @ObfuscatedSignature(
-      descriptor = "(Ljava/lang/CharSequence;IZB)Z",
-      garbageValue = "46"
+      descriptor = "(Ljava/lang/CharSequence;II[BII)I",
+      garbageValue = "2051956986"
    )
-   static boolean method2840(CharSequence var0, int var1, boolean var2) {
-      if (var1 >= 2 && var1 <= 36) {
-         boolean var3 = false;
-         boolean var4 = false;
-         int var5 = 0;
-         int var6 = var0.length();
+   @Export("encodeStringCp1252")
+   public static int encodeStringCp1252(CharSequence var0, int var1, int var2, byte[] var3, int var4) {
+      int var5 = var2 - var1;
 
-         for(int var7 = 0; var7 < var6; ++var7) {
-            int var8 = var0.charAt(var7);
-            if (var7 == 0) {
-               if (var8 == 45) {
-                  var3 = true;
-                  continue;
-               }
-
-               if (var8 == 43) {
-                  continue;
-               }
-            }
-
-            if (var8 >= 48 && var8 <= 57) {
-               var8 -= 48;
-            } else if (var8 >= 65 && var8 <= 90) {
-               var8 -= 55;
-            } else {
-               if (var8 < 97 || var8 > 122) {
-                  return false;
-               }
-
-               var8 -= 87;
-            }
-
-            if (var8 >= var1) {
-               return false;
-            }
-
-            if (var3) {
-               var8 = -var8;
-            }
-
-            int var9 = var5 * var1 + var8;
-            if (var9 / var1 != var5) {
-               return false;
-            }
-
-            var5 = var9;
-            var4 = true;
-         }
-
-         return var4;
-      } else {
-         throw new IllegalArgumentException("" + var1);
-      }
-   }
-
-   @ObfuscatedName("au")
-   @ObfuscatedSignature(
-      descriptor = "([FI)V",
-      garbageValue = "-166868527"
-   )
-   static void method2839(float[] var0) {
-      if (class121.field1462 + var0[0] < 1.3333334F) {
-         float var1 = var0[0] - 2.0F;
-         float var2 = var0[0] - 1.0F;
-         float var3 = (float)Math.sqrt((double)(var1 * var1 - var2 * var2 * 4.0F));
-         float var4 = 0.5F * (-var1 + var3);
-         if (class121.field1462 + var0[1] > var4) {
-            var0[1] = var4 - class121.field1462;
+      for(int var6 = 0; var6 < var5; ++var6) {
+         char var7 = var0.charAt(var6 + var1);
+         if (var7 > 0 && var7 < 128 || var7 >= 160 && var7 <= 255) {
+            var3[var6 + var4] = (byte)var7;
+         } else if (var7 == 8364) {
+            var3[var6 + var4] = -128;
+         } else if (var7 == 8218) {
+            var3[var6 + var4] = -126;
+         } else if (var7 == 402) {
+            var3[var6 + var4] = -125;
+         } else if (var7 == 8222) {
+            var3[var6 + var4] = -124;
+         } else if (var7 == 8230) {
+            var3[var6 + var4] = -123;
+         } else if (var7 == 8224) {
+            var3[var6 + var4] = -122;
+         } else if (var7 == 8225) {
+            var3[var6 + var4] = -121;
+         } else if (var7 == 710) {
+            var3[var6 + var4] = -120;
+         } else if (var7 == 8240) {
+            var3[var6 + var4] = -119;
+         } else if (var7 == 352) {
+            var3[var6 + var4] = -118;
+         } else if (var7 == 8249) {
+            var3[var6 + var4] = -117;
+         } else if (var7 == 338) {
+            var3[var6 + var4] = -116;
+         } else if (var7 == 381) {
+            var3[var6 + var4] = -114;
+         } else if (var7 == 8216) {
+            var3[var6 + var4] = -111;
+         } else if (var7 == 8217) {
+            var3[var6 + var4] = -110;
+         } else if (var7 == 8220) {
+            var3[var6 + var4] = -109;
+         } else if (var7 == 8221) {
+            var3[var6 + var4] = -108;
+         } else if (var7 == 8226) {
+            var3[var6 + var4] = -107;
+         } else if (var7 == 8211) {
+            var3[var6 + var4] = -106;
+         } else if (var7 == 8212) {
+            var3[var6 + var4] = -105;
+         } else if (var7 == 732) {
+            var3[var6 + var4] = -104;
+         } else if (var7 == 8482) {
+            var3[var6 + var4] = -103;
+         } else if (var7 == 353) {
+            var3[var6 + var4] = -102;
+         } else if (var7 == 8250) {
+            var3[var6 + var4] = -101;
+         } else if (var7 == 339) {
+            var3[var6 + var4] = -100;
+         } else if (var7 == 382) {
+            var3[var6 + var4] = -98;
+         } else if (var7 == 376) {
+            var3[var6 + var4] = -97;
          } else {
-            var4 = 0.5F * (-var1 - var3);
-            if (var0[1] < class121.field1462 + var4) {
-               var0[1] = var4 + class121.field1462;
-            }
+            var3[var6 + var4] = 63;
          }
-      } else {
-         var0[0] = 1.3333334F - class121.field1462;
-         var0[1] = 0.33333334F - class121.field1462;
       }
 
+      return var5;
    }
 }

@@ -1,96 +1,124 @@
-import java.io.UnsupportedEncodingException;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-@ObfuscatedName("qv")
-public class class437 implements class436 {
-   @ObfuscatedName("ai")
-   public static short[][] field4707;
+@ObfuscatedName("qj")
+public final class class437 {
+   @ObfuscatedName("at")
+   @ObfuscatedSignature(
+      descriptor = "[Lqj;"
+   )
+   public static class437[] field4677 = new class437[0];
    @ObfuscatedName("an")
-   JSONObject field4708;
-
-   public class437(byte[] var1) throws UnsupportedEncodingException {
-      this.method8330(var1);
-   }
-
-   public class437(JSONObject var1) {
-      this.field4708 = var1;
-   }
-
-   public class437(String var1) throws UnsupportedEncodingException {
-      this.method8340(var1);
-   }
-
-   @ObfuscatedName("af")
-   @ObfuscatedSignature(
-      descriptor = "(I)Lqz;",
-      garbageValue = "-1368831969"
+   @ObfuscatedGetter(
+      intValue = -971051793
    )
-   public class435 vmethod8346() {
-      return class435.field4703;
-   }
-
-   @ObfuscatedName("an")
-   @ObfuscatedSignature(
-      descriptor = "(I)[B",
-      garbageValue = "888549065"
+   static int field4680 = 100;
+   @ObfuscatedName("av")
+   @ObfuscatedGetter(
+      intValue = 1349749605
    )
-   public byte[] vmethod8347() throws UnsupportedEncodingException {
-      return this.field4708 == null ? new byte[0] : this.field4708.toString().getBytes("UTF-8");
-   }
-
-   @ObfuscatedName("au")
-   @ObfuscatedSignature(
-      descriptor = "([BI)V",
-      garbageValue = "773111973"
-   )
-   void method8330(byte[] var1) throws UnsupportedEncodingException {
-      String var2 = new String(var1, "UTF-8");
-      this.method8340(var2);
-   }
-
+   public static int field4676;
+   @ObfuscatedName("as")
+   float field4678;
+   @ObfuscatedName("ax")
+   float field4675;
+   @ObfuscatedName("ap")
+   float field4679;
    @ObfuscatedName("ab")
-   @ObfuscatedSignature(
-      descriptor = "(Ljava/lang/String;B)V",
-      garbageValue = "101"
-   )
-   void method8340(String var1) throws UnsupportedEncodingException {
-      try {
-         if (var1.charAt(0) == '{') {
-            this.field4708 = new JSONObject(var1);
-         } else {
-            if (var1.charAt(0) != '[') {
-               throw new UnsupportedEncodingException("Invalid JSON passed to the JSON content builder.");
-            }
+   float field4674;
 
-            JSONArray var2 = new JSONArray(var1);
-            this.field4708 = new JSONObject();
-            this.field4708.method8392("arrayValues", var2);
+   static {
+      field4677 = new class437[100];
+      field4676 = 0;
+      new class437();
+   }
+
+   public class437() {
+      this.method8070();
+   }
+
+   @ObfuscatedName("at")
+   @ObfuscatedSignature(
+      descriptor = "(B)V",
+      garbageValue = "50"
+   )
+   public void method8076() {
+      synchronized(field4677) {
+         if (field4676 < field4680 - 1) {
+            field4677[++field4676 - 1] = this;
          }
 
-      } catch (JSONException var3) {
-         throw new UnsupportedEncodingException(var3.getMessage());
       }
    }
 
-   @ObfuscatedName("aq")
+   @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "(I)Lorg/json/JSONObject;",
-      garbageValue = "-288365426"
+      descriptor = "(FFFFI)V",
+      garbageValue = "1858320120"
    )
-   public JSONObject method8332() {
-      return this.field4708;
+   void method8068(float var1, float var2, float var3, float var4) {
+      this.field4678 = var1;
+      this.field4675 = var2;
+      this.field4679 = var3;
+      this.field4674 = var4;
    }
 
-   @ObfuscatedName("ac")
+   @ObfuscatedName("av")
    @ObfuscatedSignature(
-      descriptor = "(IIIIB)I",
-      garbageValue = "34"
+      descriptor = "(FFFFS)V",
+      garbageValue = "19512"
    )
-   static final int method8344(int var0, int var1, int var2, int var3) {
-      return var2 * var1 + var3 * var0 >> 16;
+   public void method8069(float var1, float var2, float var3, float var4) {
+      float var5 = (float)Math.sin((double)(var4 * 0.5F));
+      float var6 = (float)Math.cos((double)(var4 * 0.5F));
+      this.field4678 = var1 * var5;
+      this.field4675 = var2 * var5;
+      this.field4679 = var5 * var3;
+      this.field4674 = var6;
+   }
+
+   @ObfuscatedName("as")
+   @ObfuscatedSignature(
+      descriptor = "(I)V",
+      garbageValue = "978687872"
+   )
+   public final void method8070() {
+      this.field4679 = 0.0F;
+      this.field4675 = 0.0F;
+      this.field4678 = 0.0F;
+      this.field4674 = 1.0F;
+   }
+
+   @ObfuscatedName("ax")
+   @ObfuscatedSignature(
+      descriptor = "(Lqj;I)V",
+      garbageValue = "-682588791"
+   )
+   public final void method8071(class437 var1) {
+      this.method8068(var1.field4674 * this.field4678 + var1.field4678 * this.field4674 + this.field4679 * var1.field4675 - var1.field4679 * this.field4675, var1.field4675 * this.field4674 + (var1.field4674 * this.field4675 - var1.field4678 * this.field4679) + var1.field4679 * this.field4678, this.field4674 * var1.field4679 + (this.field4679 * var1.field4674 + this.field4675 * var1.field4678 - this.field4678 * var1.field4675), this.field4674 * var1.field4674 - var1.field4678 * this.field4678 - var1.field4675 * this.field4675 - var1.field4679 * this.field4679);
+   }
+
+   public String toString() {
+      return this.field4678 + "," + this.field4675 + "," + this.field4679 + "," + this.field4674;
+   }
+
+   public boolean equals(Object var1) {
+      if (!(var1 instanceof class437)) {
+         return false;
+      } else {
+         class437 var2 = (class437)var1;
+         return var2.field4678 == this.field4678 && var2.field4675 == this.field4675 && var2.field4679 == this.field4679 && this.field4674 == var2.field4674;
+      }
+   }
+
+   public int hashCode() {
+      boolean var1 = true;
+      float var2 = 1.0F;
+      var2 = this.field4678 + var2 * 31.0F;
+      var2 = 31.0F * var2 + this.field4675;
+      var2 = this.field4679 + var2 * 31.0F;
+      var2 = var2 * 31.0F + this.field4674;
+      return (int)var2;
    }
 }

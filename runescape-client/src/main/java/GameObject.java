@@ -7,99 +7,114 @@ import net.runelite.mapping.ObfuscatedSignature;
 @ObfuscatedName("jj")
 @Implements("GameObject")
 public final class GameObject {
-   @ObfuscatedName("jc")
+   @ObfuscatedName("cy")
    @ObfuscatedGetter(
-      intValue = 827352769
+      intValue = 1995795893
    )
-   @Export("baseY")
-   static int baseY;
-   @ObfuscatedName("jd")
-   @Export("xteaKeys")
-   static int[][] xteaKeys;
-   @ObfuscatedName("af")
+   static int field2850;
+   @ObfuscatedName("at")
    @ObfuscatedGetter(
-      intValue = -872547715
+      intValue = 1220186919
    )
    @Export("plane")
    int plane;
    @ObfuscatedName("an")
    @ObfuscatedGetter(
-      intValue = 626811319
+      intValue = 963750777
    )
    @Export("startX")
    int startX;
-   @ObfuscatedName("aw")
+   @ObfuscatedName("av")
    @ObfuscatedGetter(
-      intValue = 1042267931
+      intValue = -1050812385
    )
    @Export("z")
    int z;
-   @ObfuscatedName("ac")
+   @ObfuscatedName("as")
    @ObfuscatedGetter(
-      intValue = -1546117209
+      intValue = 1872708547
    )
    @Export("centerX")
    int centerX;
-   @ObfuscatedName("au")
+   @ObfuscatedName("ax")
    @ObfuscatedGetter(
-      intValue = 1463075659
+      intValue = 1000962549
    )
    @Export("centerY")
    int centerY;
-   @ObfuscatedName("ab")
+   @ObfuscatedName("ap")
    @ObfuscatedSignature(
-      descriptor = "Liv;"
+      descriptor = "Lim;"
    )
    @Export("renderable")
    public Renderable renderable;
-   @ObfuscatedName("aq")
+   @ObfuscatedName("ab")
    @ObfuscatedGetter(
-      intValue = -1521986263
+      intValue = 1073660437
    )
    @Export("orientation")
    int orientation;
-   @ObfuscatedName("al")
+   @ObfuscatedName("ak")
    @ObfuscatedGetter(
-      intValue = -1242897449
+      intValue = 674522119
    )
    @Export("endX")
    int endX;
-   @ObfuscatedName("at")
+   @ObfuscatedName("ae")
    @ObfuscatedGetter(
-      intValue = 2004902003
+      intValue = 1292137241
    )
    @Export("startY")
    int startY;
-   @ObfuscatedName("aa")
+   @ObfuscatedName("af")
    @ObfuscatedGetter(
-      intValue = -80616117
+      intValue = 1875098861
    )
    @Export("endY")
    int endY;
-   @ObfuscatedName("ay")
-   @ObfuscatedGetter(
-      intValue = 308174317
-   )
-   int field2843;
    @ObfuscatedName("ao")
    @ObfuscatedGetter(
-      intValue = -1033646519
+      intValue = -1962091335
+   )
+   int field2847;
+   @ObfuscatedName("aa")
+   @ObfuscatedGetter(
+      intValue = -1491176913
    )
    @Export("lastDrawn")
    int lastDrawn;
-   @ObfuscatedName("ax")
+   @ObfuscatedName("aj")
    @ObfuscatedGetter(
-      longValue = 5016412888503339625L
+      longValue = 3751080140565960067L
    )
    @Export("tag")
    public long tag = 0L;
-   @ObfuscatedName("ai")
+   @ObfuscatedName("ad")
    @ObfuscatedGetter(
-      intValue = -72925475
+      intValue = -1247354483
    )
    @Export("flags")
    int flags = 0;
 
    GameObject() {
+   }
+
+   @ObfuscatedName("at")
+   @ObfuscatedSignature(
+      descriptor = "([Lob;II)Lob;",
+      garbageValue = "285155448"
+   )
+   @Export("findEnumerated")
+   public static MouseWheel findEnumerated(MouseWheel[] var0, int var1) {
+      MouseWheel[] var2 = var0;
+
+      for(int var3 = 0; var3 < var2.length; ++var3) {
+         MouseWheel var4 = var2[var3];
+         if (var1 == var4.rsOrdinal()) {
+            return var4;
+         }
+      }
+
+      return null;
    }
 }

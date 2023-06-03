@@ -4,81 +4,80 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("lp")
+@ObfuscatedName("lu")
 @Implements("MusicPatchNode2")
 public class MusicPatchNode2 {
-   @ObfuscatedName("af")
+   @ObfuscatedName("hp")
+   static String field3380;
+   @ObfuscatedName("at")
    byte[] field3374;
    @ObfuscatedName("an")
-   byte[] field3373;
-   @ObfuscatedName("aw")
+   byte[] field3381;
+   @ObfuscatedName("av")
    @ObfuscatedGetter(
-      intValue = 354539497
+      intValue = 890722773
+   )
+   int field3373;
+   @ObfuscatedName("as")
+   @ObfuscatedGetter(
+      intValue = 326247471
    )
    int field3375;
-   @ObfuscatedName("ac")
+   @ObfuscatedName("ax")
    @ObfuscatedGetter(
-      intValue = -32542335
+      intValue = -1214878621
    )
    int field3376;
-   @ObfuscatedName("au")
+   @ObfuscatedName("ap")
    @ObfuscatedGetter(
-      intValue = -574961187
-   )
-   int field3381;
-   @ObfuscatedName("ab")
-   @ObfuscatedGetter(
-      intValue = 821482501
-   )
-   int field3378;
-   @ObfuscatedName("aq")
-   @ObfuscatedGetter(
-      intValue = -1552238757
+      intValue = -929568749
    )
    int field3379;
-   @ObfuscatedName("al")
+   @ObfuscatedName("ab")
    @ObfuscatedGetter(
-      intValue = -1668380791
+      intValue = -1825442637
    )
-   int field3380;
-   @ObfuscatedName("at")
+   int field3378;
+   @ObfuscatedName("ak")
    @ObfuscatedGetter(
-      intValue = 391036783
+      intValue = -1031731101
+   )
+   int field3372;
+   @ObfuscatedName("ae")
+   @ObfuscatedGetter(
+      intValue = -1573016247
    )
    int field3377;
 
    MusicPatchNode2() {
    }
 
-   @ObfuscatedName("au")
+   @ObfuscatedName("ap")
    @ObfuscatedSignature(
-      descriptor = "(Lnm;Ljava/lang/String;Ljava/lang/String;I)Ltc;",
-      garbageValue = "1319736369"
+      descriptor = "([BIII)Ljava/lang/String;",
+      garbageValue = "412264069"
    )
-   @Export("SpriteBuffer_getIndexedSpriteByName")
-   public static IndexedSprite SpriteBuffer_getIndexedSpriteByName(AbstractArchive var0, String var1, String var2) {
-      if (!var0.isValidFileName(var1, var2)) {
-         return null;
-      } else {
-         int var3 = var0.getGroupId(var1);
-         int var4 = var0.getFileId(var3, var2);
-         byte[] var7 = var0.takeFile(var3, var4);
-         boolean var6;
-         if (var7 == null) {
-            var6 = false;
-         } else {
-            class485.SpriteBuffer_decode(var7);
-            var6 = true;
-         }
+   @Export("decodeStringCp1252")
+   public static String decodeStringCp1252(byte[] var0, int var1, int var2) {
+      char[] var3 = new char[var2];
+      int var4 = 0;
 
-         IndexedSprite var5;
-         if (!var6) {
-            var5 = null;
-         } else {
-            var5 = Strings.method6600();
-         }
+      for(int var5 = 0; var5 < var2; ++var5) {
+         int var6 = var0[var5 + var1] & 255;
+         if (var6 != 0) {
+            if (var6 >= 128 && var6 < 160) {
+               char var7 = class382.cp1252AsciiExtension[var6 - 128];
+               if (var7 == 0) {
+                  var7 = '?';
+               }
 
-         return var5;
+               var6 = var7;
+            }
+
+            var3[var4++] = (char)var6;
+         }
       }
+
+      return new String(var3, 0, var4);
    }
 }

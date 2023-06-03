@@ -4,109 +4,78 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cb")
+@ObfuscatedName("cn")
 @Implements("MenuAction")
 public class MenuAction {
-   @ObfuscatedName("qh")
+   @ObfuscatedName("bo")
    @ObfuscatedSignature(
-      descriptor = "Lsu;"
+      descriptor = "Lnq;"
    )
-   @Export("HitSplatDefinition_cached")
-   static class473 HitSplatDefinition_cached;
-   @ObfuscatedName("af")
+   @Export("Widget_spritesArchive")
+   public static AbstractArchive Widget_spritesArchive;
+   @ObfuscatedName("at")
    @ObfuscatedGetter(
-      intValue = 68640743
+      intValue = -1834340331
    )
    @Export("param0")
    int param0;
    @ObfuscatedName("an")
    @ObfuscatedGetter(
-      intValue = 1427372077
+      intValue = -159980401
    )
    @Export("param1")
    int param1;
-   @ObfuscatedName("aw")
+   @ObfuscatedName("av")
    @ObfuscatedGetter(
-      intValue = 532700261
+      intValue = -1577768295
    )
    @Export("opcode")
    int opcode;
-   @ObfuscatedName("ac")
+   @ObfuscatedName("as")
    @ObfuscatedGetter(
-      intValue = 1480765569
+      intValue = 2012852551
    )
    @Export("identifier")
    int identifier;
-   @ObfuscatedName("au")
+   @ObfuscatedName("ax")
    @ObfuscatedGetter(
-      intValue = 680599237
+      intValue = 1845635199
    )
    @Export("itemId")
    int itemId;
-   @ObfuscatedName("ab")
+   @ObfuscatedName("ap")
    @Export("action")
    String action;
-   @ObfuscatedName("aq")
+   @ObfuscatedName("ab")
    @Export("target")
    String target;
 
    MenuAction() {
    }
 
-   @ObfuscatedName("af")
+   @ObfuscatedName("as")
    @ObfuscatedSignature(
-      descriptor = "(I[BLqk;B)V",
-      garbageValue = "73"
+      descriptor = "(I)I",
+      garbageValue = "-1739019735"
    )
-   static void method2041(int var0, byte[] var1, ArchiveDisk var2) {
-      ArchiveDiskAction var3 = new ArchiveDiskAction();
-      var3.type = 0;
-      var3.key = (long)var0;
-      var3.data = var1;
-      var3.archiveDisk = var2;
-      synchronized(ArchiveDiskActionHandler.ArchiveDiskActionHandler_requestQueue) {
-         ArchiveDiskActionHandler.ArchiveDiskActionHandler_requestQueue.addFirst(var3);
+   public static int method2055() {
+      return ++MouseHandler.MouseHandler_idleCycles - 1;
+   }
+
+   @ObfuscatedName("ar")
+   @ObfuscatedSignature(
+      descriptor = "(Lmb;I)I",
+      garbageValue = "-282518364"
+   )
+   static int method2056(Widget var0) {
+      if (var0.type != 11) {
+         --class149.Interpreter_stringStackSize;
+         Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = -1;
+         return 1;
+      } else {
+         String var1 = Interpreter.Interpreter_stringStack[--class149.Interpreter_stringStackSize];
+         Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var0.method6371(var1);
+         return 1;
       }
-
-      class124.method3057();
-   }
-
-   @ObfuscatedName("af")
-   @ObfuscatedSignature(
-      descriptor = "(Lnm;Lnm;I)V",
-      garbageValue = "1515081265"
-   )
-   public static void method2040(AbstractArchive var0, AbstractArchive var1) {
-      NPCComposition.NpcDefinition_archive = var0;
-      NPCComposition.field2006 = var1;
-   }
-
-   @ObfuscatedName("af")
-   @ObfuscatedSignature(
-      descriptor = "(Lnm;I)V",
-      garbageValue = "-1939733213"
-   )
-   public static void method2043(AbstractArchive var0) {
-      VarbitComposition.VarbitDefinition_archive = var0;
-   }
-
-   @ObfuscatedName("ay")
-   @ObfuscatedSignature(
-      descriptor = "(CI)Z",
-      garbageValue = "-2123095492"
-   )
-   @Export("isAlphaNumeric")
-   public static boolean isAlphaNumeric(char var0) {
-      return var0 >= '0' && var0 <= '9' || var0 >= 'A' && var0 <= 'Z' || var0 >= 'a' && var0 <= 'z';
-   }
-
-   @ObfuscatedName("kz")
-   @ObfuscatedSignature(
-      descriptor = "(Ljava/lang/String;Ljava/lang/String;IIIIB)V",
-      garbageValue = "116"
-   )
-   @Export("insertMenuItemNoShift")
-   public static final void insertMenuItemNoShift(String var0, String var1, int var2, int var3, int var4, int var5) {
-      SceneTilePaint.insertMenuItem(var0, var1, var2, var3, var4, var5, -1, false);
    }
 }

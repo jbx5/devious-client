@@ -4,29 +4,32 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ns")
+@ObfuscatedName("nz")
 @Implements("ArchiveDiskActionHandler")
 public class ArchiveDiskActionHandler implements Runnable {
-   @ObfuscatedName("af")
+   @ObfuscatedName("at")
    @ObfuscatedSignature(
-      descriptor = "Lnh;"
+      descriptor = "Loy;"
    )
    @Export("ArchiveDiskActionHandler_requestQueue")
    public static NodeDeque ArchiveDiskActionHandler_requestQueue = new NodeDeque();
    @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "Lnh;"
+      descriptor = "Loy;"
    )
    @Export("ArchiveDiskActionHandler_responseQueue")
    public static NodeDeque ArchiveDiskActionHandler_responseQueue = new NodeDeque();
-   @ObfuscatedName("aw")
+   @ObfuscatedName("av")
    @ObfuscatedGetter(
-      intValue = -1248352937
+      intValue = -1607301919
    )
-   static int field4196 = 0;
-   @ObfuscatedName("ac")
+   static int field4224 = 0;
+   @ObfuscatedName("as")
    @Export("ArchiveDiskActionHandler_lock")
    static Object ArchiveDiskActionHandler_lock = new Object();
+   @ObfuscatedName("ax")
+   @Export("ArchiveDiskActionHandler_thread")
+   static Thread ArchiveDiskActionHandler_thread;
 
    ArchiveDiskActionHandler() {
    }
@@ -53,38 +56,29 @@ public class ArchiveDiskActionHandler implements Runnable {
                }
 
                synchronized(ArchiveDiskActionHandler_lock) {
-                  if (field4196 <= 1) {
-                     field4196 = 0;
+                  if (field4224 <= 1) {
+                     field4224 = 0;
                      ArchiveDiskActionHandler_lock.notifyAll();
                      return;
                   }
 
-                  field4196 = 600;
+                  field4224 = 600;
                }
             } else {
-               PlayerComposition.method6084(100L);
+               FloorDecoration.method4357(100L);
                synchronized(ArchiveDiskActionHandler_lock) {
-                  if (field4196 <= 1) {
-                     field4196 = 0;
+                  if (field4224 <= 1) {
+                     field4224 = 0;
                      ArchiveDiskActionHandler_lock.notifyAll();
                      return;
                   }
 
-                  --field4196;
+                  --field4224;
                }
             }
          }
       } catch (Exception var13) {
-         class387.RunException_sendStackTrace((String)null, var13);
+         class260.RunException_sendStackTrace((String)null, var13);
       }
-   }
-
-   @ObfuscatedName("af")
-   @ObfuscatedSignature(
-      descriptor = "(II)Ljava/lang/String;",
-      garbageValue = "1319912203"
-   )
-   static String method6619(int var0) {
-      return "<img=" + var0 + ">";
    }
 }

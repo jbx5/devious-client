@@ -4,498 +4,503 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("lv")
+@ObfuscatedName("li")
 @Implements("ClientPacket")
-public class ClientPacket implements class285 {
-   @ObfuscatedName("af")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   public static final ClientPacket field3105 = new ClientPacket(0, -1);
-   @ObfuscatedName("an")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   static final ClientPacket field3099 = new ClientPacket(1, -1);
-   @ObfuscatedName("aw")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   public static final ClientPacket EVENT_MOUSE_IDLE = new ClientPacket(2, 0);
-   @ObfuscatedName("ac")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   public static final ClientPacket FREECAM_EXIT = new ClientPacket(3, 0);
-   @ObfuscatedName("au")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   public static final ClientPacket field3102 = new ClientPacket(4, 13);
-   @ObfuscatedName("ab")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   public static final ClientPacket EVENT_KEYBOARD = new ClientPacket(5, -2);
-   @ObfuscatedName("aq")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   public static final ClientPacket CHAT_SENDPRIVATE = new ClientPacket(6, -2);
-   @ObfuscatedName("al")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   public static final ClientPacket OPPLAYER7 = new ClientPacket(7, 3);
+public class ClientPacket implements class292 {
    @ObfuscatedName("at")
    @ObfuscatedSignature(
-      descriptor = "Llv;"
+      descriptor = "Lli;"
    )
-   public static final ClientPacket OPPLAYER8 = new ClientPacket(8, 3);
-   @ObfuscatedName("aa")
+   public static final ClientPacket OPOBJ2 = new ClientPacket(0, 7);
+   @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "Llv;"
+      descriptor = "Lli;"
    )
-   public static final ClientPacket field3142 = new ClientPacket(9, -1);
-   @ObfuscatedName("ay")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   public static final ClientPacket OPLOC1 = new ClientPacket(10, 7);
-   @ObfuscatedName("ao")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   public static final ClientPacket RESUME_COUNTDIALOG = new ClientPacket(11, 4);
-   @ObfuscatedName("ax")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   public static final ClientPacket field3110 = new ClientPacket(12, -1);
-   @ObfuscatedName("ai")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   public static final ClientPacket EVENT_MOUSE_CLICK = new ClientPacket(13, 6);
-   @ObfuscatedName("ag")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   public static final ClientPacket IGNORE_DELUSER = new ClientPacket(14, -1);
-   @ObfuscatedName("ah")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   public static final ClientPacket field3113 = new ClientPacket(15, 15);
+   public static final ClientPacket OPOBJ4 = new ClientPacket(1, 7);
    @ObfuscatedName("av")
    @ObfuscatedSignature(
-      descriptor = "Llv;"
+      descriptor = "Lli;"
    )
-   public static final ClientPacket EVENT_WINDOW_SETTING = new ClientPacket(16, 5);
-   @ObfuscatedName("ar")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   static final ClientPacket field3115 = new ClientPacket(17, 2);
-   @ObfuscatedName("am")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   public static final ClientPacket FRIEND_DELUSER = new ClientPacket(18, -1);
+   public static final ClientPacket IF_BUTTON8 = new ClientPacket(2, 8);
    @ObfuscatedName("as")
    @ObfuscatedSignature(
-      descriptor = "Llv;"
+      descriptor = "Lli;"
    )
-   public static final ClientPacket OPOBJ5 = new ClientPacket(19, 7);
-   @ObfuscatedName("aj")
+   public static final ClientPacket OPPLAYER7 = new ClientPacket(3, 3);
+   @ObfuscatedName("ax")
    @ObfuscatedSignature(
-      descriptor = "Llv;"
+      descriptor = "Lli;"
    )
-   public static final ClientPacket IF_BUTTON5 = new ClientPacket(20, 8);
-   @ObfuscatedName("ak")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   public static final ClientPacket FRIEND_ADDUSER = new ClientPacket(21, -1);
-   @ObfuscatedName("az")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   public static final ClientPacket OPPLAYER5 = new ClientPacket(22, 3);
-   @ObfuscatedName("ad")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   public static final ClientPacket IF_BUTTONT = new ClientPacket(23, 16);
-   @ObfuscatedName("ae")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   public static final ClientPacket OPLOCT = new ClientPacket(24, 15);
+   public static final ClientPacket OPNPCE = new ClientPacket(4, 2);
    @ObfuscatedName("ap")
    @ObfuscatedSignature(
-      descriptor = "Llv;"
+      descriptor = "Lli;"
    )
-   public static final ClientPacket OPOBJT = new ClientPacket(25, 15);
-   @ObfuscatedName("by")
+   static final ClientPacket field3104 = new ClientPacket(5, 7);
+   @ObfuscatedName("ab")
    @ObfuscatedSignature(
-      descriptor = "Llv;"
+      descriptor = "Lli;"
    )
-   public static final ClientPacket NO_TIMEOUT = new ClientPacket(26, 0);
-   @ObfuscatedName("bb")
+   public static final ClientPacket CLOSE_MODAL = new ClientPacket(6, 0);
+   @ObfuscatedName("ak")
    @ObfuscatedSignature(
-      descriptor = "Llv;"
+      descriptor = "Lli;"
    )
-   static final ClientPacket field3125 = new ClientPacket(27, -1);
-   @ObfuscatedName("bi")
+   public static final ClientPacket CHAT_SETFILTER = new ClientPacket(7, 3);
+   @ObfuscatedName("ae")
    @ObfuscatedSignature(
-      descriptor = "Llv;"
+      descriptor = "Lli;"
    )
-   public static final ClientPacket OPOBJ3 = new ClientPacket(28, 7);
-   @ObfuscatedName("be")
+   public static final ClientPacket OPOBJE = new ClientPacket(8, 6);
+   @ObfuscatedName("af")
    @ObfuscatedSignature(
-      descriptor = "Llv;"
+      descriptor = "Lli;"
    )
-   public static final ClientPacket OPNPC4 = new ClientPacket(29, 3);
-   @ObfuscatedName("bk")
+   public static final ClientPacket OPPLAYER5 = new ClientPacket(9, 3);
+   @ObfuscatedName("ao")
    @ObfuscatedSignature(
-      descriptor = "Llv;"
+      descriptor = "Lli;"
    )
-   static final ClientPacket field3128 = new ClientPacket(30, 7);
-   @ObfuscatedName("bx")
+   public static final ClientPacket OPOBJ3 = new ClientPacket(10, 7);
+   @ObfuscatedName("aa")
    @ObfuscatedSignature(
-      descriptor = "Llv;"
+      descriptor = "Lli;"
    )
-   public static final ClientPacket field3129 = new ClientPacket(31, 11);
-   @ObfuscatedName("bo")
+   static final ClientPacket field3110 = new ClientPacket(11, -1);
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
-      descriptor = "Llv;"
+      descriptor = "Lli;"
    )
-   public static final ClientPacket OPPLAYER3 = new ClientPacket(32, 3);
-   @ObfuscatedName("bz")
+   public static final ClientPacket FRIEND_ADDUSER = new ClientPacket(12, -1);
+   @ObfuscatedName("ad")
    @ObfuscatedSignature(
-      descriptor = "Llv;"
+      descriptor = "Lli;"
    )
-   public static final ClientPacket OPOBJ2 = new ClientPacket(33, 7);
-   @ObfuscatedName("bm")
+   public static final ClientPacket IF_BUTTON3 = new ClientPacket(13, 8);
+   @ObfuscatedName("ac")
    @ObfuscatedSignature(
-      descriptor = "Llv;"
+      descriptor = "Lli;"
    )
-   public static final ClientPacket IF_BUTTON9 = new ClientPacket(34, 8);
-   @ObfuscatedName("bd")
+   public static final ClientPacket OPNPCT = new ClientPacket(14, 11);
+   @ObfuscatedName("ag")
    @ObfuscatedSignature(
-      descriptor = "Llv;"
+      descriptor = "Lli;"
    )
-   public static final ClientPacket OPPLAYER2 = new ClientPacket(35, 3);
-   @ObfuscatedName("bt")
+   public static final ClientPacket EVENT_CAMERA_POSITION = new ClientPacket(15, 4);
+   @ObfuscatedName("ar")
    @ObfuscatedSignature(
-      descriptor = "Llv;"
+      descriptor = "Lli;"
    )
-   public static final ClientPacket DETECT_MODIFIED_CLIENT = new ClientPacket(36, 4);
-   @ObfuscatedName("bj")
+   public static final ClientPacket OPLOCT = new ClientPacket(16, 15);
+   @ObfuscatedName("ah")
    @ObfuscatedSignature(
-      descriptor = "Llv;"
+      descriptor = "Lli;"
    )
-   static final ClientPacket field3135 = new ClientPacket(37, -1);
-   @ObfuscatedName("bn")
+   public static final ClientPacket IF_BUTTON2 = new ClientPacket(17, 8);
+   @ObfuscatedName("az")
    @ObfuscatedSignature(
-      descriptor = "Llv;"
+      descriptor = "Lli;"
    )
-   public static final ClientPacket IF_BUTTON7 = new ClientPacket(38, 8);
+   public static final ClientPacket LOGIN_TIMINGS = new ClientPacket(18, -1);
+   @ObfuscatedName("au")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   public static final ClientPacket OPOBJT = new ClientPacket(19, 15);
+   @ObfuscatedName("ai")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   public static final ClientPacket OPPLAYER1 = new ClientPacket(20, 3);
+   @ObfuscatedName("aq")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   public static final ClientPacket field3120 = new ClientPacket(21, -1);
+   @ObfuscatedName("aw")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   static final ClientPacket field3121 = new ClientPacket(22, 2);
+   @ObfuscatedName("ay")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   public static final ClientPacket DETECT_MODIFIED_CLIENT = new ClientPacket(23, 4);
+   @ObfuscatedName("al")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   public static final ClientPacket OPLOC3 = new ClientPacket(24, 7);
+   @ObfuscatedName("am")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   public static final ClientPacket field3138 = new ClientPacket(25, -1);
    @ObfuscatedName("bs")
    @ObfuscatedSignature(
-      descriptor = "Llv;"
+      descriptor = "Lli;"
    )
-   public static final ClientPacket OPLOC2 = new ClientPacket(39, 7);
-   @ObfuscatedName("br")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   static final ClientPacket field3138 = new ClientPacket(40, 2);
-   @ObfuscatedName("bg")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   static final ClientPacket field3139 = new ClientPacket(41, -1);
-   @ObfuscatedName("bu")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   public static final ClientPacket field3140 = new ClientPacket(42, -2);
-   @ObfuscatedName("bf")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   public static final ClientPacket field3141 = new ClientPacket(43, 15);
-   @ObfuscatedName("bq")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   public static final ClientPacket OPLOC3 = new ClientPacket(44, 7);
-   @ObfuscatedName("ba")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   public static final ClientPacket field3151 = new ClientPacket(45, -1);
-   @ObfuscatedName("bv")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   public static final ClientPacket field3144 = new ClientPacket(46, 4);
-   @ObfuscatedName("bl")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   public static final ClientPacket OPPLAYERT = new ClientPacket(47, 11);
-   @ObfuscatedName("bp")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   public static final ClientPacket OPLOC4 = new ClientPacket(48, 7);
+   public static final ClientPacket IF_BUTTON5 = new ClientPacket(26, 8);
    @ObfuscatedName("bc")
    @ObfuscatedSignature(
-      descriptor = "Llv;"
+      descriptor = "Lli;"
    )
-   public static final ClientPacket OPNPC5 = new ClientPacket(49, 3);
+   public static final ClientPacket WIDGET_TYPE = new ClientPacket(27, 4);
+   @ObfuscatedName("bj")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   public static final ClientPacket EVENT_WINDOW_SETTING = new ClientPacket(28, 5);
+   @ObfuscatedName("bo")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   public static final ClientPacket field3128 = new ClientPacket(29, -1);
+   @ObfuscatedName("bq")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   public static final ClientPacket IF_BUTTON9 = new ClientPacket(30, 8);
+   @ObfuscatedName("bg")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   public static final ClientPacket field3146 = new ClientPacket(31, -1);
+   @ObfuscatedName("bf")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   public static final ClientPacket OPNPC1 = new ClientPacket(32, 3);
+   @ObfuscatedName("bd")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   public static final ClientPacket field3132 = new ClientPacket(33, 15);
+   @ObfuscatedName("ba")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   public static final ClientPacket CLAN_KICKUSER = new ClientPacket(34, -1);
+   @ObfuscatedName("bn")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   public static final ClientPacket CHAT_SENDABUSEREPORT = new ClientPacket(35, -1);
+   @ObfuscatedName("bb")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   public static final ClientPacket field3137 = new ClientPacket(36, 11);
+   @ObfuscatedName("bx")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   public static final ClientPacket IF_BUTTON10 = new ClientPacket(37, 8);
+   @ObfuscatedName("be")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   public static final ClientPacket MOVE_GAMECLICK = new ClientPacket(38, -1);
    @ObfuscatedName("bh")
    @ObfuscatedSignature(
-      descriptor = "Llv;"
+      descriptor = "Lli;"
    )
-   public static final ClientPacket field3148 = new ClientPacket(50, -1);
+   public static final ClientPacket OPNPC2 = new ClientPacket(39, 3);
+   @ObfuscatedName("bp")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   static final ClientPacket field3160 = new ClientPacket(40, -1);
    @ObfuscatedName("bw")
    @ObfuscatedSignature(
-      descriptor = "Llv;"
+      descriptor = "Lli;"
    )
-   public static final ClientPacket OPHELDD = new ClientPacket(51, 16);
-   @ObfuscatedName("ce")
+   public static final ClientPacket OPPLAYER4 = new ClientPacket(41, 3);
+   @ObfuscatedName("bi")
    @ObfuscatedSignature(
-      descriptor = "Llv;"
+      descriptor = "Lli;"
    )
-   public static final ClientPacket OPNPCT = new ClientPacket(52, 11);
-   @ObfuscatedName("ci")
+   public static final ClientPacket OPPLAYER8 = new ClientPacket(42, 3);
+   @ObfuscatedName("bk")
    @ObfuscatedSignature(
-      descriptor = "Llv;"
+      descriptor = "Lli;"
    )
-   public static final ClientPacket WIDGET_TYPE = new ClientPacket(53, 4);
+   static final ClientPacket field3142 = new ClientPacket(43, 2);
+   @ObfuscatedName("bv")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   public static final ClientPacket IF_BUTTON4 = new ClientPacket(44, 8);
+   @ObfuscatedName("bz")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   public static final ClientPacket OPNPC3 = new ClientPacket(45, 3);
+   @ObfuscatedName("bm")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   public static final ClientPacket OPLOC5 = new ClientPacket(46, 7);
+   @ObfuscatedName("br")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   public static final ClientPacket field3150 = new ClientPacket(47, -2);
+   @ObfuscatedName("bu")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   public static final ClientPacket field3147 = new ClientPacket(48, 11);
+   @ObfuscatedName("by")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   public static final ClientPacket field3148 = new ClientPacket(49, -1);
+   @ObfuscatedName("bt")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   public static final ClientPacket NO_TIMEOUT = new ClientPacket(50, 0);
+   @ObfuscatedName("bl")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   public static final ClientPacket field3106 = new ClientPacket(51, 4);
    @ObfuscatedName("cs")
    @ObfuscatedSignature(
-      descriptor = "Llv;"
+      descriptor = "Lli;"
    )
-   public static final ClientPacket CHAT_SETFILTER = new ClientPacket(54, 3);
-   @ObfuscatedName("cc")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   public static final ClientPacket OPNPCE = new ClientPacket(55, 2);
-   @ObfuscatedName("cn")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   public static final ClientPacket CLOSE_MODAL = new ClientPacket(56, 0);
-   @ObfuscatedName("ca")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   public static final ClientPacket OPPLAYER6 = new ClientPacket(57, 3);
+   public static final ClientPacket field3175 = new ClientPacket(52, 15);
    @ObfuscatedName("cu")
    @ObfuscatedSignature(
-      descriptor = "Llv;"
+      descriptor = "Lli;"
    )
-   public static final ClientPacket RESUME_NAMEDIALOG = new ClientPacket(58, -1);
-   @ObfuscatedName("ck")
+   public static final ClientPacket field3152 = new ClientPacket(53, -1);
+   @ObfuscatedName("ca")
    @ObfuscatedSignature(
-      descriptor = "Llv;"
+      descriptor = "Lli;"
    )
-   public static final ClientPacket MOVE_GAMECLICK = new ClientPacket(59, -1);
-   @ObfuscatedName("cq")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   public static final ClientPacket field3179 = new ClientPacket(60, 9);
-   @ObfuscatedName("cm")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   public static final ClientPacket RESUME_OBJDIALOG = new ClientPacket(61, 2);
+   public static final ClientPacket field3153 = new ClientPacket(54, -1);
    @ObfuscatedName("cf")
    @ObfuscatedSignature(
-      descriptor = "Llv;"
+      descriptor = "Lli;"
    )
-   public static final ClientPacket OPPLAYER4 = new ClientPacket(62, 3);
-   @ObfuscatedName("cl")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   public static final ClientPacket IF_BUTTON8 = new ClientPacket(63, 8);
-   @ObfuscatedName("cg")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   public static final ClientPacket IF_BUTTON1 = new ClientPacket(64, 8);
-   @ObfuscatedName("cr")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   public static final ClientPacket RESUME_STRINGDIALOG = new ClientPacket(65, -1);
-   @ObfuscatedName("cy")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   public static final ClientPacket EVENT_APPLET_FOCUS = new ClientPacket(66, 1);
-   @ObfuscatedName("cx")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   public static final ClientPacket PING_STATISTICS = new ClientPacket(67, 10);
-   @ObfuscatedName("cv")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   public static final ClientPacket OPLOCE = new ClientPacket(68, 2);
-   @ObfuscatedName("cb")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   public static final ClientPacket IF_BUTTON10 = new ClientPacket(69, 8);
-   @ObfuscatedName("co")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   public static final ClientPacket IF_BUTTON2 = new ClientPacket(70, 8);
-   @ObfuscatedName("cz")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   public static final ClientPacket IF_BUTTON6 = new ClientPacket(71, 8);
+   public static final ClientPacket RESUME_COUNTDIALOG = new ClientPacket(55, 4);
    @ObfuscatedName("cw")
    @ObfuscatedSignature(
-      descriptor = "Llv;"
+      descriptor = "Lli;"
    )
-   public static final ClientPacket OPLOC5 = new ClientPacket(72, 7);
-   @ObfuscatedName("cj")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   public static final ClientPacket CHAT_SENDABUSEREPORT = new ClientPacket(73, -1);
+   public static final ClientPacket OPHELDD = new ClientPacket(56, 16);
    @ObfuscatedName("ch")
    @ObfuscatedSignature(
-      descriptor = "Llv;"
+      descriptor = "Lli;"
    )
-   public static final ClientPacket field3172 = new ClientPacket(74, 0);
-   @ObfuscatedName("ct")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   public static final ClientPacket field3137 = new ClientPacket(75, 22);
+   public static final ClientPacket RESUME_NAMEDIALOG = new ClientPacket(57, -1);
    @ObfuscatedName("cp")
    @ObfuscatedSignature(
-      descriptor = "Llv;"
+      descriptor = "Lli;"
    )
-   public static final ClientPacket RESUME_PAUSEBUTTON = new ClientPacket(76, 6);
+   public static final ClientPacket OPOBJ1 = new ClientPacket(58, 7);
+   @ObfuscatedName("cy")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   public static final ClientPacket EVENT_APPLET_FOCUS = new ClientPacket(59, 1);
    @ObfuscatedName("cd")
    @ObfuscatedSignature(
-      descriptor = "Llv;"
+      descriptor = "Lli;"
    )
-   public static final ClientPacket EVENT_CAMERA_POSITION = new ClientPacket(77, 4);
-   @ObfuscatedName("dm")
+   public static final ClientPacket IF_BUTTONT = new ClientPacket(60, 16);
+   @ObfuscatedName("cv")
    @ObfuscatedSignature(
-      descriptor = "Llv;"
+      descriptor = "Lli;"
    )
-   public static final ClientPacket OPOBJE = new ClientPacket(78, 6);
-   @ObfuscatedName("dw")
+   public static final ClientPacket OPLOC1 = new ClientPacket(61, 7);
+   @ObfuscatedName("cr")
    @ObfuscatedSignature(
-      descriptor = "Llv;"
+      descriptor = "Lli;"
    )
-   public static final ClientPacket IF_BUTTON3 = new ClientPacket(79, 8);
-   @ObfuscatedName("dc")
+   public static final ClientPacket OPLOC4 = new ClientPacket(62, 7);
+   @ObfuscatedName("cm")
    @ObfuscatedSignature(
-      descriptor = "Llv;"
+      descriptor = "Lli;"
    )
-   public static final ClientPacket OPNPC3 = new ClientPacket(80, 3);
-   @ObfuscatedName("do")
+   static final ClientPacket field3162 = new ClientPacket(63, -1);
+   @ObfuscatedName("cg")
    @ObfuscatedSignature(
-      descriptor = "Llv;"
+      descriptor = "Lli;"
    )
-   public static final ClientPacket OPOBJ1 = new ClientPacket(81, 7);
-   @ObfuscatedName("di")
+   public static final ClientPacket CHAT_SENDPRIVATE = new ClientPacket(64, -2);
+   @ObfuscatedName("ci")
    @ObfuscatedSignature(
-      descriptor = "Llv;"
+      descriptor = "Lli;"
    )
-   public static final ClientPacket DOCHEAT = new ClientPacket(82, -1);
-   @ObfuscatedName("dr")
+   public static final ClientPacket RESUME_PAUSEBUTTON = new ClientPacket(65, 6);
+   @ObfuscatedName("cb")
    @ObfuscatedSignature(
-      descriptor = "Llv;"
+      descriptor = "Lli;"
    )
-   public static final ClientPacket OPNPC2 = new ClientPacket(83, 3);
+   public static final ClientPacket PING_STATISTICS = new ClientPacket(66, 10);
+   @ObfuscatedName("cc")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   public static final ClientPacket field3170 = new ClientPacket(67, -1);
+   @ObfuscatedName("ck")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   public static final ClientPacket field3167 = new ClientPacket(68, 22);
+   @ObfuscatedName("cq")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   public static final ClientPacket IF_BUTTON7 = new ClientPacket(69, 8);
+   @ObfuscatedName("ce")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   public static final ClientPacket FRIEND_DELUSER = new ClientPacket(70, -1);
+   @ObfuscatedName("cj")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   public static final ClientPacket field3114 = new ClientPacket(71, 0);
+   @ObfuscatedName("cl")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   public static final ClientPacket OPNPC4 = new ClientPacket(72, 3);
+   @ObfuscatedName("cn")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   public static final ClientPacket REFLECTION_CHECK_REPLY = new ClientPacket(73, -1);
+   @ObfuscatedName("ct")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   public static final ClientPacket IGNORE_DELUSER = new ClientPacket(74, -1);
+   @ObfuscatedName("cx")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   public static final ClientPacket EVENT_MOUSE_CLICK = new ClientPacket(75, 6);
+   @ObfuscatedName("co")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   public static final ClientPacket field3113 = new ClientPacket(76, 13);
+   @ObfuscatedName("cz")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   static final ClientPacket field3176 = new ClientPacket(77, -1);
+   @ObfuscatedName("dd")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   public static final ClientPacket EVENT_KEYBOARD = new ClientPacket(78, -2);
    @ObfuscatedName("dl")
    @ObfuscatedSignature(
-      descriptor = "Llv;"
+      descriptor = "Lli;"
    )
-   public static final ClientPacket field3153 = new ClientPacket(84, -1);
-   @ObfuscatedName("dk")
+   public static final ClientPacket EVENT_MOUSE_IDLE = new ClientPacket(79, 0);
+   @ObfuscatedName("dm")
    @ObfuscatedSignature(
-      descriptor = "Llv;"
+      descriptor = "Lli;"
    )
-   public static final ClientPacket REFLECTION_CHECK_REPLY = new ClientPacket(85, -1);
+   public static final ClientPacket field3179 = new ClientPacket(80, -1);
+   @ObfuscatedName("da")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   public static final ClientPacket DOCHEAT = new ClientPacket(81, -1);
    @ObfuscatedName("dt")
    @ObfuscatedSignature(
-      descriptor = "Llv;"
+      descriptor = "Lli;"
    )
-   public static final ClientPacket CLAN_KICKUSER = new ClientPacket(86, -1);
-   @ObfuscatedName("dv")
+   public static final ClientPacket OPOBJ5 = new ClientPacket(82, 7);
+   @ObfuscatedName("dn")
    @ObfuscatedSignature(
-      descriptor = "Llv;"
+      descriptor = "Lli;"
    )
-   public static final ClientPacket field3185 = new ClientPacket(87, -1);
-   @ObfuscatedName("dz")
+   public static final ClientPacket OPPLAYER3 = new ClientPacket(83, 3);
+   @ObfuscatedName("dw")
    @ObfuscatedSignature(
-      descriptor = "Llv;"
+      descriptor = "Lli;"
    )
-   public static final ClientPacket LOGIN_TIMINGS = new ClientPacket(88, -1);
-   @ObfuscatedName("dg")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   public static final ClientPacket field3177 = new ClientPacket(89, -1);
-   @ObfuscatedName("de")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   public static final ClientPacket OPPLAYER1 = new ClientPacket(90, 3);
-   @ObfuscatedName("dh")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   public static final ClientPacket OPNPC1 = new ClientPacket(91, 3);
-   @ObfuscatedName("dp")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   public static final ClientPacket IF_BUTTON4 = new ClientPacket(92, 8);
-   @ObfuscatedName("du")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   public static final ClientPacket field3191 = new ClientPacket(93, 11);
-   @ObfuscatedName("db")
-   @ObfuscatedSignature(
-      descriptor = "Llv;"
-   )
-   public static final ClientPacket OPOBJ4 = new ClientPacket(94, 7);
+   public static final ClientPacket field3182 = new ClientPacket(84, 9);
    @ObfuscatedName("df")
    @ObfuscatedSignature(
-      descriptor = "Llv;"
+      descriptor = "Lli;"
    )
-   public static final ClientPacket field3193 = new ClientPacket(95, -1);
+   public static final ClientPacket OPPLAYER6 = new ClientPacket(85, 3);
+   @ObfuscatedName("dx")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   public static final ClientPacket IF_BUTTON6 = new ClientPacket(86, 8);
+   @ObfuscatedName("dz")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   public static final ClientPacket OPLOC2 = new ClientPacket(87, 7);
+   @ObfuscatedName("do")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   public static final ClientPacket RESUME_STRINGDIALOG = new ClientPacket(88, -1);
+   @ObfuscatedName("db")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   public static final ClientPacket OPPLAYERT = new ClientPacket(89, 11);
    @ObfuscatedName("dq")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   public static final ClientPacket OPPLAYER2 = new ClientPacket(90, 3);
+   @ObfuscatedName("dh")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   public static final ClientPacket IF_BUTTON1 = new ClientPacket(91, 8);
+   @ObfuscatedName("dp")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   public static final ClientPacket OPNPC5 = new ClientPacket(92, 3);
+   @ObfuscatedName("dv")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   public static final ClientPacket FREECAM_EXIT = new ClientPacket(93, 0);
+   @ObfuscatedName("di")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   public static final ClientPacket RESUME_OBJDIALOG = new ClientPacket(94, 2);
+   @ObfuscatedName("dj")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   public static final ClientPacket OPLOCE = new ClientPacket(95, 2);
+   @ObfuscatedName("dk")
+   @ObfuscatedSignature(
+      descriptor = "Lli;"
+   )
+   public static final ClientPacket field3130 = new ClientPacket(96, 4);
+   @ObfuscatedName("dy")
    @ObfuscatedGetter(
-      intValue = 1546470819
+      intValue = -1759991881
    )
    @Export("id")
    final int id;
-   @ObfuscatedName("dd")
+   @ObfuscatedName("dg")
    @ObfuscatedGetter(
-      intValue = -1619950699
+      intValue = -1663684713
    )
    @Export("length")
    final int length;
@@ -505,35 +510,45 @@ public class ClientPacket implements class285 {
       this.length = var2;
    }
 
-   @ObfuscatedName("mp")
+   @ObfuscatedName("ax")
    @ObfuscatedSignature(
-      descriptor = "(B)V",
-      garbageValue = "2"
+      descriptor = "(IB)V",
+      garbageValue = "45"
    )
-   static void method5688() {
-      for(InterfaceParent var0 = (InterfaceParent)Client.interfaceParents.first(); var0 != null; var0 = (InterfaceParent)Client.interfaceParents.next()) {
-         int var1 = var0.group;
-         if (SoundSystem.loadInterface(var1)) {
-            boolean var2 = true;
-            Widget[] var3 = VerticalAlignment.Widget_interfaceComponents[var1];
+   @Export("clearItemContainer")
+   static void clearItemContainer(int var0) {
+      ItemContainer var1 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
+      if (var1 != null) {
+         for(int var2 = 0; var2 < var1.ids.length; ++var2) {
+            var1.ids[var2] = -1;
+            var1.quantities[var2] = 0;
+         }
 
-            int var4;
-            for(var4 = 0; var4 < var3.length; ++var4) {
-               if (var3[var4] != null) {
-                  var2 = var3[var4].isIf3;
-                  break;
-               }
-            }
+      }
+   }
 
-            if (!var2) {
-               var4 = (int)var0.key;
-               Widget var5 = class165.getWidget(var4);
-               if (var5 != null) {
-                  class144.invalidateWidget(var5);
-               }
+   @ObfuscatedName("ao")
+   @ObfuscatedSignature(
+      descriptor = "(IIIIIIIS)Z",
+      garbageValue = "384"
+   )
+   static final boolean method5662(int var0, int var1, int var2, int var3, int var4, int var5, int var6) {
+      int var7 = ViewportMouse.ViewportMouse_y + var6;
+      if (var7 < var0 && var7 < var1 && var7 < var2) {
+         return false;
+      } else {
+         var7 = ViewportMouse.ViewportMouse_y - var6;
+         if (var7 > var0 && var7 > var1 && var7 > var2) {
+            return false;
+         } else {
+            var7 = ViewportMouse.ViewportMouse_x + var6;
+            if (var7 < var3 && var7 < var4 && var7 < var5) {
+               return false;
+            } else {
+               var7 = ViewportMouse.ViewportMouse_x - var6;
+               return var7 <= var3 || var7 <= var4 || var7 <= var5;
             }
          }
       }
-
    }
 }

@@ -2,58 +2,128 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fr")
-public class class145 extends class155 {
-   @ObfuscatedName("af")
+@ObfuscatedName("fh")
+public class class145 {
+   @ObfuscatedName("at")
    @ObfuscatedGetter(
-      intValue = -1706146983
+      longValue = 986235802482684067L
    )
-   int field1679;
+   long field1635;
    @ObfuscatedName("an")
-   byte field1680;
-   @ObfuscatedName("aw")
    @ObfuscatedGetter(
-      intValue = 928863875
+      intValue = -769873593
    )
-   int field1684;
-   @ObfuscatedName("ac")
-   String field1682;
-   // $FF: synthetic field
+   int field1636 = -1;
+   @ObfuscatedName("av")
    @ObfuscatedSignature(
-      descriptor = "Lgr;"
+      descriptor = "Lom;"
    )
-   final class156 this$0;
+   IterableNodeDeque field1637 = new IterableNodeDeque();
 
    @ObfuscatedSignature(
-      descriptor = "(Lgr;)V"
+      descriptor = "(Ltz;)V"
    )
-   class145(class156 var1) {
-      this.this$0 = var1;
-      this.field1679 = -1;
+   public class145(Buffer var1) {
+      this.method3140(var1);
    }
 
-   @ObfuscatedName("af")
+   @ObfuscatedName("at")
    @ObfuscatedSignature(
-      descriptor = "(Lsg;I)V",
-      garbageValue = "-1949352075"
+      descriptor = "(Ltz;B)V",
+      garbageValue = "-112"
    )
-   void vmethod3448(Buffer var1) {
-      this.field1679 = var1.readUnsignedShort();
-      this.field1680 = var1.readByte();
-      this.field1684 = var1.readUnsignedShort();
-      var1.readLong();
-      this.field1682 = var1.readStringCp1252NullTerminated();
+   void method3140(Buffer var1) {
+      this.field1635 = var1.readLong();
+      this.field1636 = var1.readInt();
+
+      for(int var2 = var1.readUnsignedByte(); var2 != 0; var2 = var1.readUnsignedByte()) {
+         Object var3;
+         if (var2 == 3) {
+            var3 = new class164(this);
+         } else if (var2 == 1) {
+            var3 = new class140(this);
+         } else if (var2 == 13) {
+            var3 = new class157(this);
+         } else if (var2 == 4) {
+            var3 = new class149(this);
+         } else if (var2 == 6) {
+            var3 = new class156(this);
+         } else if (var2 == 5) {
+            var3 = new class141(this);
+         } else if (var2 == 2) {
+            var3 = new class146(this);
+         } else if (var2 == 7) {
+            var3 = new class139(this);
+         } else if (var2 == 14) {
+            var3 = new class143(this);
+         } else if (var2 == 8) {
+            var3 = new class160(this);
+         } else if (var2 == 9) {
+            var3 = new class166(this);
+         } else if (var2 == 10) {
+            var3 = new class152(this);
+         } else if (var2 == 11) {
+            var3 = new class147(this);
+         } else if (var2 == 12) {
+            var3 = new class151(this);
+         } else {
+            if (var2 != 15) {
+               throw new RuntimeException("");
+            }
+
+            var3 = new class161(this);
+         }
+
+         ((class142)var3).vmethod3381(var1);
+         this.field1637.addFirst((Node)var3);
+      }
+
    }
 
    @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "(Lgj;B)V",
-      garbageValue = "-49"
+      descriptor = "(Lfs;I)V",
+      garbageValue = "376498717"
    )
-   void vmethod3450(ClanChannel var1) {
-      ClanChannelMember var2 = (ClanChannelMember)var1.members.get(this.field1679);
-      var2.rank = this.field1680;
-      var2.world = this.field1684;
-      var2.username = new Username(this.field1682);
+   public void method3141(ClanSettings var1) {
+      if (this.field1635 == var1.field1689 && this.field1636 == var1.field1699) {
+         for(class142 var2 = (class142)this.field1637.last(); var2 != null; var2 = (class142)this.field1637.previous()) {
+            var2.vmethod3382(var1);
+         }
+
+         ++var1.field1699;
+      } else {
+         throw new RuntimeException("");
+      }
+   }
+
+   @ObfuscatedName("at")
+   @ObfuscatedSignature(
+      descriptor = "(I)V",
+      garbageValue = "-1123792033"
+   )
+   static void method3139() {
+      for(ObjectSound var0 = (ObjectSound)ObjectSound.objectSounds.last(); var0 != null; var0 = (ObjectSound)ObjectSound.objectSounds.previous()) {
+         if (var0.stream1 != null) {
+            KitDefinition.pcmStreamMixer.removeSubStream(var0.stream1);
+            var0.stream1 = null;
+         }
+
+         if (var0.stream2 != null) {
+            KitDefinition.pcmStreamMixer.removeSubStream(var0.stream2);
+            var0.stream2 = null;
+         }
+      }
+
+      ObjectSound.objectSounds.clear();
+   }
+
+   @ObfuscatedName("ax")
+   @ObfuscatedSignature(
+      descriptor = "(IB)Z",
+      garbageValue = "59"
+   )
+   public static boolean method3147(int var0) {
+      return (var0 >> 20 & 1) != 0;
    }
 }

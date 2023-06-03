@@ -3,22 +3,27 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-@ObfuscatedName("ea")
+@ObfuscatedName("ec")
 @Implements("UserComparator8")
 public class UserComparator8 extends AbstractUserComparator {
-   @ObfuscatedName("at")
+   @ObfuscatedName("ua")
    @ObfuscatedGetter(
-      intValue = -864785215
+      intValue = 1237393549
    )
-   static int field1418;
-   @ObfuscatedName("gd")
-   @Export("worldHost")
-   static String worldHost;
-   @ObfuscatedName("af")
+   static int field1415;
+   @ObfuscatedName("ak")
+   @ObfuscatedSignature(
+      descriptor = "Ltj;"
+   )
+   static IndexedSprite field1416;
+   @ObfuscatedName("gr")
+   @ObfuscatedGetter(
+      intValue = -777492217
+   )
+   @Export("currentPort")
+   static int currentPort;
+   @ObfuscatedName("at")
    @Export("reversed")
    final boolean reversed;
 
@@ -26,10 +31,10 @@ public class UserComparator8 extends AbstractUserComparator {
       this.reversed = var1;
    }
 
-   @ObfuscatedName("af")
+   @ObfuscatedName("at")
    @ObfuscatedSignature(
-      descriptor = "(Lpb;Lpb;I)I",
-      garbageValue = "-1369824853"
+      descriptor = "(Lqg;Lqg;I)I",
+      garbageValue = "180048199"
    )
    @Export("compareBuddy")
    int compareBuddy(Buddy var1, Buddy var2) {
@@ -48,111 +53,106 @@ public class UserComparator8 extends AbstractUserComparator {
       return this.compareBuddy((Buddy)var1, (Buddy)var2);
    }
 
-   @ObfuscatedName("an")
+   @ObfuscatedName("at")
    @ObfuscatedSignature(
-      descriptor = "(III)I",
-      garbageValue = "62977818"
+      descriptor = "(III)Z",
+      garbageValue = "-415594604"
    )
-   public static int method2890(int var0, int var1) {
-      return (int)Math.round(Math.atan2((double)var0, (double)var1) * 2607.5945876176133) & 16383;
+   static boolean method2852(int var0, int var1) {
+      return var0 != 4 || var1 < 8;
    }
 
-   @ObfuscatedName("as")
+   @ObfuscatedName("av")
    @ObfuscatedSignature(
-      descriptor = "(Lorg/json/JSONObject;Ljava/lang/String;I)[F",
-      garbageValue = "-1286212275"
+      descriptor = "(III)Ldd;",
+      garbageValue = "-1140342011"
    )
-   static float[] method2886(JSONObject var0, String var1) throws JSONException {
-      float[] var2 = new float[4];
+   static Script method2854(int var0, int var1) {
+      Script var2 = (Script)Script.Script_cached.get((long)(var0 << 16));
+      if (var2 != null) {
+         return var2;
+      } else {
+         String var3 = String.valueOf(var0);
+         int var4 = class33.archive12.getGroupId(var3);
+         if (var4 == -1) {
+            return null;
+         } else {
+            byte[] var5 = class33.archive12.takeFileFlat(var4);
+            if (var5 != null) {
+               if (var5.length <= 1) {
+                  return null;
+               }
 
-      try {
-         JSONArray var3 = var0.getJSONArray(var1);
-         var2[0] = (float)var3.optDouble(0, 0.0);
-         var2[1] = (float)var3.optDouble(1, 0.0);
-         var2[2] = (float)var3.optDouble(2, 1.0);
-         var2[3] = (float)var3.optDouble(3, 1.0);
-      } catch (JSONException var4) {
-         var2[0] = 0.0F;
-         var2[1] = 0.0F;
-         var2[2] = 1.0F;
-         var2[3] = 1.0F;
+               var2 = class165.newScript(var5);
+               if (var2 != null) {
+                  Script.Script_cached.put(var2, (long)(var0 << 16));
+                  return var2;
+               }
+            }
+
+            return null;
+         }
       }
-
-      return var2;
    }
 
-   @ObfuscatedName("iu")
+   @ObfuscatedName("gg")
    @ObfuscatedSignature(
-      descriptor = "(B)V",
-      garbageValue = "-116"
+      descriptor = "(II)V",
+      garbageValue = "1243357118"
    )
-   static final void method2896() {
-      if (GameEngine.Client_plane != Client.field729) {
-         Client.field729 = GameEngine.Client_plane;
-         int var0 = GameEngine.Client_plane;
-         int[] var1 = UrlRequester.sceneMinimapSprite.pixels;
-         int var2 = var1.length;
-
-         int var3;
-         for(var3 = 0; var3 < var2; ++var3) {
-            var1[var3] = 0;
+   @Export("updateGameState")
+   static void updateGameState(int var0) {
+      if (var0 != Client.gameState) {
+         if (Client.gameState == 30) {
+            Client.field740.method4102();
          }
 
-         int var4;
-         int var5;
-         for(var3 = 1; var3 < 103; ++var3) {
-            var4 = (103 - var3) * 2048 + 24628;
+         if (Client.gameState == 0) {
+            class347.client.method500();
+         }
 
-            for(var5 = 1; var5 < 103; ++var5) {
-               if ((Tiles.Tiles_renderFlags[var0][var5][var3] & 24) == 0) {
-                  class31.scene.drawTileMinimap(var1, var4, 512, var0, var5, var3);
-               }
-
-               if (var0 < 3 && (Tiles.Tiles_renderFlags[var0 + 1][var5][var3] & 8) != 0) {
-                  class31.scene.drawTileMinimap(var1, var4, 512, var0 + 1, var5, var3);
-               }
-
-               var4 += 4;
+         if (var0 == 20 || var0 == 40 || var0 == 45 || var0 == 50) {
+            class347.method6613(0);
+            Client.field558 = 0;
+            Client.field782 = 0;
+            Client.timer.method7609(var0);
+            if (var0 != 20) {
+               class152.method3194(false);
             }
          }
 
-         var3 = (238 + (int)(Math.random() * 20.0) - 10 << 16) + (238 + (int)(Math.random() * 20.0) - 10 << 8) + (238 + (int)(Math.random() * 20.0) - 10);
-         var4 = 238 + (int)(Math.random() * 20.0) - 10 << 16;
-         UrlRequester.sceneMinimapSprite.setRaster();
-
-         int var6;
-         for(var5 = 1; var5 < 103; ++var5) {
-            for(var6 = 1; var6 < 103; ++var6) {
-               if ((Tiles.Tiles_renderFlags[var0][var6][var5] & 24) == 0) {
-                  class149.drawObject(var0, var6, var5, var3, var4);
-               }
-
-               if (var0 < 3 && (Tiles.Tiles_renderFlags[var0 + 1][var6][var5] & 8) != 0) {
-                  class149.drawObject(var0 + 1, var6, var5, var3, var4);
-               }
-            }
+         if (var0 != 20 && var0 != 40 && ArchiveLoader.field1037 != null) {
+            ArchiveLoader.field1037.close();
+            ArchiveLoader.field1037 = null;
          }
 
-         Client.mapIconCount = 0;
-
-         for(var5 = 0; var5 < 104; ++var5) {
-            for(var6 = 0; var6 < 104; ++var6) {
-               long var7 = class31.scene.getFloorDecorationTag(GameEngine.Client_plane, var5, var6);
-               if (var7 != 0L) {
-                  int var9 = InterfaceParent.Entity_unpackID(var7);
-                  int var10 = class144.getObjectDefinition(var9).mapIconId;
-                  if (var10 >= 0 && class354.WorldMapElement_get(var10).field1925) {
-                     Client.mapIcons[Client.mapIconCount] = class354.WorldMapElement_get(var10).getSpriteBool(false);
-                     Client.mapIconXs[Client.mapIconCount] = var5;
-                     Client.mapIconYs[Client.mapIconCount] = var6;
-                     ++Client.mapIconCount;
-                  }
-               }
-            }
+         if (Client.gameState == 25) {
+            Client.field576 = 0;
+            Client.field572 = 0;
+            Client.field573 = 1;
+            Client.field574 = 0;
+            Client.field580 = 1;
          }
 
-         RouteStrategy.rasterProvider.apply();
+         if (var0 != 5 && var0 != 10) {
+            if (var0 == 20) {
+               int var3 = Client.gameState == 11 ? 4 : 0;
+               HorizontalAlignment.method3679(class53.archive10, class180.archive8, false, var3);
+            } else if (var0 == 11) {
+               HorizontalAlignment.method3679(class53.archive10, class180.archive8, false, 4);
+            } else if (var0 == 50) {
+               class478.setLoginResponseString("", "Updating date of birth...", "");
+               HorizontalAlignment.method3679(class53.archive10, class180.archive8, false, 7);
+            } else {
+               ReflectionCheck.method669();
+            }
+         } else {
+            boolean var1 = class10.clientPreferences.method2454() >= Client.field508;
+            int var2 = var1 ? 0 : 12;
+            HorizontalAlignment.method3679(class53.archive10, class180.archive8, true, var2);
+         }
+
+         Client.gameState = var0;
       }
-
    }
 }

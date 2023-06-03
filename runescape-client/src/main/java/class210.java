@@ -1,102 +1,107 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringReader;
-import java.io.StringWriter;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("iu")
-public enum class210 implements MouseWheel {
-   @ObfuscatedName("af")
-   @ObfuscatedSignature(
-      descriptor = "Liu;"
+@ObfuscatedName("ij")
+public class class210 extends Node {
+   @ObfuscatedName("ao")
+   @Export("Tiles_saturation")
+   static int[] Tiles_saturation;
+   @ObfuscatedName("av")
+   @ObfuscatedGetter(
+      intValue = 383898851
    )
-   field2390((byte)-1),
-   @ObfuscatedName("an")
-   @ObfuscatedSignature(
-      descriptor = "Liu;"
+   public int field2335;
+   @ObfuscatedName("as")
+   @ObfuscatedGetter(
+      intValue = -2043098711
    )
-   field2388((byte)0),
-   @ObfuscatedName("aw")
-   @ObfuscatedSignature(
-      descriptor = "Liu;"
+   public int field2330;
+   @ObfuscatedName("ax")
+   @ObfuscatedGetter(
+      intValue = 1470694441
    )
-   field2389((byte)1),
-   @ObfuscatedName("ac")
+   public int field2331;
+   @ObfuscatedName("ap")
    @ObfuscatedSignature(
-      descriptor = "Liu;"
+      descriptor = "Lmb;"
    )
-   field2387((byte)2);
+   public Widget field2332;
 
-   @ObfuscatedName("au")
-   public byte field2391;
-
-   class210(byte var3) {
-      this.field2391 = var3;
+   @ObfuscatedSignature(
+      descriptor = "(IIILmb;)V"
+   )
+   public class210(int var1, int var2, int var3, Widget var4) {
+      this.field2331 = var1;
+      this.field2335 = var2;
+      this.field2330 = var3;
+      this.field2332 = var4;
    }
 
-   @ObfuscatedName("af")
+   @ObfuscatedName("av")
    @ObfuscatedSignature(
-      descriptor = "(I)I",
-      garbageValue = "741942848"
+      descriptor = "(CI)C",
+      garbageValue = "1705126651"
    )
-   @Export("rsOrdinal")
-   public int rsOrdinal() {
-      return this.field2391;
-   }
-
-   @ObfuscatedName("aw")
-   @ObfuscatedSignature(
-      descriptor = "(Ljava/lang/Throwable;I)Ljava/lang/String;",
-      garbageValue = "-1633313603"
-   )
-   static String method4292(Throwable var0) throws IOException {
-      String var1;
-      if (var0 instanceof RunException) {
-         RunException var2 = (RunException)var0;
-         var1 = var2.message + " | ";
-         var0 = var2.throwable;
+   static char method4124(char var0) {
+      if (var0 == 198) {
+         return 'E';
+      } else if (var0 == 230) {
+         return 'e';
+      } else if (var0 == 223) {
+         return 's';
+      } else if (var0 == 338) {
+         return 'E';
       } else {
-         var1 = "";
+         return (char)(var0 == 339 ? 'e' : '\u0000');
       }
+   }
 
-      StringWriter var12 = new StringWriter();
-      PrintWriter var3 = new PrintWriter(var12);
-      var0.printStackTrace(var3);
-      var3.close();
-      String var4 = var12.toString();
-      BufferedReader var5 = new BufferedReader(new StringReader(var4));
-      String var6 = var5.readLine();
-
-      while(true) {
-         while(true) {
-            String var7 = var5.readLine();
-            if (var7 == null) {
-               var1 = var1 + "| " + var6;
-               return var1;
-            }
-
-            int var8 = var7.indexOf(40);
-            int var9 = var7.indexOf(41, var8 + 1);
-            if (var8 >= 0 && var9 >= 0) {
-               String var10 = var7.substring(var8 + 1, var9);
-               int var11 = var10.indexOf(".java:");
-               if (var11 >= 0) {
-                  var10 = var10.substring(0, var11) + var10.substring(var11 + 5);
-                  var1 = var1 + var10 + ' ';
-                  continue;
+   @ObfuscatedName("lu")
+   @ObfuscatedSignature(
+      descriptor = "([Lmb;IB)V",
+      garbageValue = "-26"
+   )
+   @Export("runComponentCloseListeners")
+   static final void runComponentCloseListeners(Widget[] var0, int var1) {
+      for(int var2 = 0; var2 < var0.length; ++var2) {
+         Widget var3 = var0[var2];
+         if (var3 != null) {
+            if (var3.type == 0) {
+               if (var3.children != null) {
+                  runComponentCloseListeners(var3.children, var1);
                }
 
-               var7 = var7.substring(0, var8);
+               InterfaceParent var4 = (InterfaceParent)Client.interfaceParents.get((long)var3.id);
+               if (var4 != null) {
+                  class453.runIntfCloseListeners(var4.group, var1);
+               }
             }
 
-            var7 = var7.trim();
-            var7 = var7.substring(var7.lastIndexOf(32) + 1);
-            var7 = var7.substring(var7.lastIndexOf(9) + 1);
-            var1 = var1 + var7 + ' ';
+            ScriptEvent var5;
+            if (var1 == 0 && var3.onDialogAbort != null) {
+               var5 = new ScriptEvent();
+               var5.widget = var3;
+               var5.args = var3.onDialogAbort;
+               Clock.runScriptEvent(var5);
+            }
+
+            if (var1 == 1 && var3.onSubChange != null) {
+               if (var3.childIndex >= 0) {
+                  Widget var6 = FriendSystem.getWidget(var3.id);
+                  if (var6 == null || var6.children == null || var3.childIndex >= var6.children.length || var3 != var6.children[var3.childIndex]) {
+                     continue;
+                  }
+               }
+
+               var5 = new ScriptEvent();
+               var5.widget = var3;
+               var5.args = var3.onSubChange;
+               Clock.runScriptEvent(var5);
+            }
          }
       }
+
    }
 }

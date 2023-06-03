@@ -1,24 +1,17 @@
-import java.util.concurrent.ScheduledExecutorService;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bq")
+@ObfuscatedName("bv")
 @Implements("SoundSystem")
 public class SoundSystem implements Runnable {
-   @ObfuscatedName("al")
-   @Export("soundSystemExecutor")
-   static ScheduledExecutorService soundSystemExecutor;
-   @ObfuscatedName("ag")
+   @ObfuscatedName("co")
+   @Export("otp")
+   static String otp;
+   @ObfuscatedName("at")
    @ObfuscatedSignature(
-      descriptor = "Lmq;"
-   )
-   @Export("scriptDotWidget")
-   static Widget scriptDotWidget;
-   @ObfuscatedName("af")
-   @ObfuscatedSignature(
-      descriptor = "[Lbu;"
+      descriptor = "[Lbi;"
    )
    @Export("players")
    volatile PcmPlayer[] players = new PcmPlayer[2];
@@ -35,83 +28,116 @@ public class SoundSystem implements Runnable {
             }
          }
       } catch (Exception var4) {
-         class387.RunException_sendStackTrace((String)null, var4);
+         class260.RunException_sendStackTrace((String)null, var4);
       }
 
    }
 
-   @ObfuscatedName("aw")
+   @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "(III)Lmq;",
-      garbageValue = "-310708295"
+      descriptor = "(Ldz;IIB)V",
+      garbageValue = "99"
    )
-   @Export("getWidgetChild")
-   public static Widget getWidgetChild(int var0, int var1) {
-      Widget var2 = class165.getWidget(var0);
-      if (var1 == -1) {
-         return var2;
+   @Export("runScript")
+   static void runScript(ScriptEvent var0, int var1, int var2) {
+      Object[] var3 = var0.args;
+      Script var4;
+      if (TileItem.isWorldMapEvent(var0.type)) {
+         class183.worldMapEvent = (WorldMapEvent)var3[0];
+         WorldMapElement var6 = class147.WorldMapElement_get(class183.worldMapEvent.mapElement);
+         var4 = class412.getWorldMapScript(var0.type, var6.objectId, var6.category);
       } else {
-         return var2 != null && var2.children != null && var1 < var2.children.length ? var2.children[var1] : null;
+         int var5 = (Integer)var3[0];
+         var4 = class190.getScript(var5);
       }
+
+      if (var4 != null) {
+         class125.runScriptLogic(var0, var4, var1, var2);
+      }
+
    }
 
-   @ObfuscatedName("ac")
+   @ObfuscatedName("ax")
    @ObfuscatedSignature(
-      descriptor = "(II)Z",
-      garbageValue = "1376777516"
+      descriptor = "([FI)V",
+      garbageValue = "-838943376"
    )
-   @Export("loadInterface")
-   public static boolean loadInterface(int var0) {
-      if (class264.Widget_loadedInterfaces[var0]) {
-         return true;
-      } else if (!UserComparator3.Widget_archive.tryLoadGroup(var0)) {
-         return false;
-      } else {
-         int var1 = UserComparator3.Widget_archive.getGroupFileCount(var0);
-         if (var1 == 0) {
-            class264.Widget_loadedInterfaces[var0] = true;
-            return true;
-         } else {
-            if (VerticalAlignment.Widget_interfaceComponents[var0] == null) {
-               VerticalAlignment.Widget_interfaceComponents[var0] = new Widget[var1];
-            }
+   static void method815(float[] var0) {
+      var0[1] = 1.0F - var0[1];
+      if (var0[0] < 0.0F) {
+         var0[0] = 0.0F;
+      }
 
-            for(int var2 = 0; var2 < var1; ++var2) {
-               if (VerticalAlignment.Widget_interfaceComponents[var0][var2] == null) {
-                  byte[] var3 = UserComparator3.Widget_archive.takeFile(var0, var2);
-                  if (var3 != null) {
-                     VerticalAlignment.Widget_interfaceComponents[var0][var2] = new Widget();
-                     VerticalAlignment.Widget_interfaceComponents[var0][var2].id = var2 + (var0 << 16);
-                     if (var3[0] == -1) {
-                        VerticalAlignment.Widget_interfaceComponents[var0][var2].decode(new Buffer(var3));
-                     } else {
-                        VerticalAlignment.Widget_interfaceComponents[var0][var2].decodeLegacy(new Buffer(var3));
-                     }
-                  }
-               }
-            }
+      if (var0[1] < 0.0F) {
+         var0[1] = 0.0F;
+      }
 
-            class264.Widget_loadedInterfaces[var0] = true;
-            return true;
+      if (var0[0] > 1.0F || var0[1] > 1.0F) {
+         float var1 = (float)(1.0 + ((double)var0[1] - 2.0) * (double)var0[1] + (double)(var0[0] * (var0[0] - 2.0F + var0[1])));
+         if (var1 + class125.field1463 > 0.0F) {
+            World.method1753(var0);
          }
       }
+
+      var0[1] = 1.0F - var0[1];
    }
 
-   @ObfuscatedName("br")
+   @ObfuscatedName("ab")
    @ObfuscatedSignature(
-      descriptor = "(II)I",
-      garbageValue = "-1195339231"
+      descriptor = "(I)[Ldq;",
+      garbageValue = "-910083542"
    )
-   static int method878(int var0) {
-      return (int)((Math.log((double)var0) / Interpreter.field851 - 7.0) * 256.0);
+   static class90[] method817() {
+      return new class90[]{class90.field1090, class90.field1096, class90.field1091, class90.field1094, class90.field1093, class90.field1092};
    }
 
-   @ObfuscatedName("bl")
+   @ObfuscatedName("la")
    @ObfuscatedSignature(
-      descriptor = "(ILch;ZI)I",
-      garbageValue = "2001743352"
+      descriptor = "(Lmb;IIZI)V",
+      garbageValue = "170850099"
    )
-   static int method879(int var0, Script var1, boolean var2) {
-      return 2;
+   @Export("alignWidgetSize")
+   static void alignWidgetSize(Widget var0, int var1, int var2, boolean var3) {
+      int var4 = var0.width;
+      int var5 = var0.height;
+      if (var0.widthAlignment == 0) {
+         var0.width = var0.rawWidth;
+      } else if (var0.widthAlignment == 1) {
+         var0.width = var1 - var0.rawWidth;
+      } else if (var0.widthAlignment == 2) {
+         var0.width = var0.rawWidth * var1 >> 14;
+      }
+
+      if (var0.heightAlignment == 0) {
+         var0.height = var0.rawHeight;
+      } else if (var0.heightAlignment == 1) {
+         var0.height = var2 - var0.rawHeight;
+      } else if (var0.heightAlignment == 2) {
+         var0.height = var2 * var0.rawHeight >> 14;
+      }
+
+      if (var0.widthAlignment == 4) {
+         var0.width = var0.field3619 * var0.height / var0.field3620;
+      }
+
+      if (var0.heightAlignment == 4) {
+         var0.height = var0.field3620 * var0.width / var0.field3619;
+      }
+
+      if (var0.contentType == 1337) {
+         Client.viewportWidget = var0;
+      }
+
+      if (var0.type == 12) {
+         var0.method6380().method6061(var0.width, var0.height);
+      }
+
+      if (var3 && var0.onResize != null && (var4 != var0.width || var5 != var0.height)) {
+         ScriptEvent var6 = new ScriptEvent();
+         var6.widget = var0;
+         var6.args = var0.onResize;
+         Client.scriptEvents.addFirst(var6);
+      }
+
    }
 }

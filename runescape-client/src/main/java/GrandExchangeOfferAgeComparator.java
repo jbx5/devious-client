@@ -4,13 +4,13 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("np")
+@ObfuscatedName("nh")
 @Implements("GrandExchangeOfferAgeComparator")
 final class GrandExchangeOfferAgeComparator implements Comparator {
-   @ObfuscatedName("af")
+   @ObfuscatedName("at")
    @ObfuscatedSignature(
-      descriptor = "(Lnu;Lnu;B)I",
-      garbageValue = "76"
+      descriptor = "(Lod;Lod;I)I",
+      garbageValue = "1963540389"
    )
    @Export("compare_bridged")
    int compare_bridged(GrandExchangeEvent var1, GrandExchangeEvent var2) {
@@ -25,12 +25,18 @@ final class GrandExchangeOfferAgeComparator implements Comparator {
       return super.equals(var1);
    }
 
-   @ObfuscatedName("jk")
+   @ObfuscatedName("ad")
    @ObfuscatedSignature(
-      descriptor = "(B)Lnh;",
-      garbageValue = "17"
+      descriptor = "(CIB)Ljava/lang/String;",
+      garbageValue = "1"
    )
-   public static NodeDeque method6838() {
-      return Client.scriptEvents;
+   public static String method6832(char var0, int var1) {
+      char[] var2 = new char[var1];
+
+      for(int var3 = 0; var3 < var1; ++var3) {
+         var2[var3] = var0;
+      }
+
+      return new String(var2);
    }
 }

@@ -867,6 +867,9 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("runScript")
 	void runScript(RSScriptEvent ev, int ex, int var2);
 
+	@Import("runScriptLogic")
+	void runScriptLogic(RSScriptEvent ev, RSScript s, int ex, int var2);
+
 	@Import("hintArrowType")
 	void setHintArrowTargetType(int value);
 
@@ -1548,8 +1551,8 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("HitSplatDefinition_cached")
 	RSEvictingDualNodeHashTable getHitSplatDefinitionCache();
 
-	@Import("HitSplatDefinition_cachedSprites")
-	RSEvictingDualNodeHashTable getHitSplatDefinitionSpritesCache();
+	//@Import("HitSplatDefinition_cachedSprites")
+	//RSEvictingDualNodeHashTable getHitSplatDefinitionSpritesCache();
 
 	@Import("HitSplatDefinition_cachedFonts")
 	RSEvictingDualNodeHashTable getHitSplatDefinitionDontsCache();

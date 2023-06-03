@@ -1,154 +1,72 @@
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fc")
-public class class148 extends class139 {
-   @ObfuscatedName("ao")
-   @ObfuscatedSignature(
-      descriptor = "[Ltc;"
+@ObfuscatedName("fb")
+public class class148 extends class158 {
+   @ObfuscatedName("aw")
+   @Export("userHomeDirectory")
+   static String userHomeDirectory;
+   @ObfuscatedName("at")
+   @ObfuscatedGetter(
+      intValue = 1972531337
    )
-   @Export("title_muteSprite")
-   static IndexedSprite[] title_muteSprite;
-   @ObfuscatedName("af")
-   String field1700;
+   int field1660;
+   @ObfuscatedName("an")
+   byte field1654;
+   @ObfuscatedName("av")
+   @ObfuscatedGetter(
+      intValue = -1059656523
+   )
+   int field1658;
+   @ObfuscatedName("as")
+   String field1656;
    // $FF: synthetic field
    @ObfuscatedSignature(
-      descriptor = "Lfa;"
+      descriptor = "Lgh;"
    )
-   final class142 this$0;
+   final class159 this$0;
 
    @ObfuscatedSignature(
-      descriptor = "(Lfa;)V"
+      descriptor = "(Lgh;)V"
    )
-   class148(class142 var1) {
+   class148(class159 var1) {
       this.this$0 = var1;
+      this.field1660 = -1;
    }
 
-   @ObfuscatedName("af")
+   @ObfuscatedName("at")
    @ObfuscatedSignature(
-      descriptor = "(Lsg;I)V",
-      garbageValue = "168736686"
+      descriptor = "(Ltz;I)V",
+      garbageValue = "-986564571"
    )
-   void vmethod3461(Buffer var1) {
-      this.field1700 = var1.readStringCp1252NullTerminated();
-      var1.readInt();
-   }
-
-   @ObfuscatedName("an")
-   @ObfuscatedSignature(
-      descriptor = "(Lfj;I)V",
-      garbageValue = "1712319228"
-   )
-   void vmethod3458(ClanSettings var1) {
-      var1.name = this.field1700;
+   void vmethod3370(Buffer var1) {
+      this.field1660 = var1.readUnsignedShort();
+      this.field1654 = var1.readByte();
+      this.field1658 = var1.readUnsignedShort();
+      var1.readLong();
+      this.field1656 = var1.readStringCp1252NullTerminated();
    }
 
    @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "(IB)Lhx;",
-      garbageValue = "15"
+      descriptor = "(Lgv;I)V",
+      garbageValue = "1284013379"
    )
-   @Export("getEnum")
-   public static EnumComposition getEnum(int var0) {
-      EnumComposition var1 = (EnumComposition)EnumComposition.EnumDefinition_cached.get((long)var0);
-      if (var1 != null) {
-         return var1;
-      } else {
-         byte[] var2 = EnumComposition.EnumDefinition_archive.takeFile(8, var0);
-         var1 = new EnumComposition();
-         if (var2 != null) {
-            var1.decode(new Buffer(var2));
-         }
-
-         EnumComposition.EnumDefinition_cached.put(var1, (long)var0);
-         return var1;
-      }
+   void vmethod3371(ClanChannel var1) {
+      ClanChannelMember var2 = (ClanChannelMember)var1.members.get(this.field1660);
+      var2.rank = this.field1654;
+      var2.world = this.field1658;
+      var2.username = new Username(this.field1656);
    }
 
-   @ObfuscatedName("al")
+   @ObfuscatedName("ax")
    @ObfuscatedSignature(
-      descriptor = "(I)Lgv;",
-      garbageValue = "450057476"
+      descriptor = "(Ljava/lang/CharSequence;II)I",
+      garbageValue = "-535468247"
    )
-   public static Clock method3284() {
-      try {
-         return new NanoClock();
-      } catch (Throwable var1) {
-         return new MilliClock();
-      }
-   }
-
-   @ObfuscatedName("as")
-   @ObfuscatedSignature(
-      descriptor = "(Lgd;III)Lbu;",
-      garbageValue = "1831095645"
-   )
-   public static final PcmPlayer method3290(TaskHandler var0, int var1, int var2) {
-      if (PcmPlayer.field306 * 586337296 == 0) {
-         throw new IllegalStateException();
-      } else if (var1 >= 0 && var1 < 2) {
-         if (var2 < 256) {
-            var2 = 256;
-         }
-
-         try {
-            PcmPlayer var3 = PcmPlayer.pcmPlayerProvider.player();
-            var3.samples = new int[256 * (PcmPlayer.PcmPlayer_stereo ? 2 : 1)];
-            var3.field305 = var2;
-            var3.init();
-            var3.capacity = (var2 & -1024) + 1024;
-            if (var3.capacity > 16384) {
-               var3.capacity = 16384;
-            }
-
-            var3.open(var3.capacity);
-            if (UrlRequest.field1410 > 0 && class354.soundSystem == null) {
-               class354.soundSystem = new SoundSystem();
-               SoundSystem.soundSystemExecutor = Executors.newScheduledThreadPool(1);
-               SoundSystem.soundSystemExecutor.scheduleAtFixedRate(class354.soundSystem, 0L, 10L, TimeUnit.MILLISECONDS);
-            }
-
-            if (class354.soundSystem != null) {
-               if (class354.soundSystem.players[var1] != null) {
-                  throw new IllegalArgumentException();
-               }
-
-               class354.soundSystem.players[var1] = var3;
-            }
-
-            return var3;
-         } catch (Throwable var4) {
-            return new PcmPlayer();
-         }
-      } else {
-         throw new IllegalArgumentException();
-      }
-   }
-
-   @ObfuscatedName("ml")
-   @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "-1480705530"
-   )
-   static final void method3291() {
-      PacketBufferNode var0 = class330.getPacketBufferNode(ClientPacket.CLOSE_MODAL, Client.packetWriter.isaacCipher);
-      Client.packetWriter.addNode(var0);
-      Interpreter.field853 = true;
-
-      for(InterfaceParent var1 = (InterfaceParent)Client.interfaceParents.first(); var1 != null; var1 = (InterfaceParent)Client.interfaceParents.next()) {
-         if (var1.type == 0 || var1.type == 3) {
-            class357.closeInterface(var1, true);
-         }
-      }
-
-      if (Client.meslayerContinueWidget != null) {
-         class144.invalidateWidget(Client.meslayerContinueWidget);
-         Client.meslayerContinueWidget = null;
-      }
-
-      Interpreter.field853 = false;
+   public static int method3166(CharSequence var0, int var1) {
+      return class211.method4167(var0, var1, true);
    }
 }

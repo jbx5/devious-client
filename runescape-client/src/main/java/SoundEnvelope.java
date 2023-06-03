@@ -3,40 +3,40 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bf")
+@ObfuscatedName("bk")
 @Implements("SoundEnvelope")
 public class SoundEnvelope {
-   @ObfuscatedName("af")
+   @ObfuscatedName("at")
    @Export("segments")
    int segments = 2;
    @ObfuscatedName("an")
    @Export("durations")
    int[] durations = new int[2];
-   @ObfuscatedName("aw")
+   @ObfuscatedName("av")
    @Export("phases")
    int[] phases = new int[2];
-   @ObfuscatedName("ac")
+   @ObfuscatedName("as")
    @Export("start")
    int start;
-   @ObfuscatedName("au")
+   @ObfuscatedName("ax")
    @Export("end")
    int end;
-   @ObfuscatedName("ab")
+   @ObfuscatedName("ap")
    @Export("form")
    int form;
-   @ObfuscatedName("aq")
+   @ObfuscatedName("ab")
    @Export("ticks")
    int ticks;
-   @ObfuscatedName("al")
+   @ObfuscatedName("ak")
    @Export("phaseIndex")
    int phaseIndex;
-   @ObfuscatedName("at")
+   @ObfuscatedName("ae")
    @Export("step")
    int step;
-   @ObfuscatedName("aa")
+   @ObfuscatedName("af")
    @Export("amplitude")
    int amplitude;
-   @ObfuscatedName("ay")
+   @ObfuscatedName("ao")
    @Export("max")
    int max;
 
@@ -47,9 +47,9 @@ public class SoundEnvelope {
       this.phases[1] = 65535;
    }
 
-   @ObfuscatedName("af")
+   @ObfuscatedName("at")
    @ObfuscatedSignature(
-      descriptor = "(Lsg;)V"
+      descriptor = "(Ltz;)V"
    )
    @Export("decode")
    final void decode(Buffer var1) {
@@ -61,7 +61,7 @@ public class SoundEnvelope {
 
    @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "(Lsg;)V"
+      descriptor = "(Ltz;)V"
    )
    @Export("decodeSegments")
    final void decodeSegments(Buffer var1) {
@@ -76,7 +76,7 @@ public class SoundEnvelope {
 
    }
 
-   @ObfuscatedName("aw")
+   @ObfuscatedName("av")
    @Export("reset")
    final void reset() {
       this.ticks = 0;
@@ -86,7 +86,7 @@ public class SoundEnvelope {
       this.max = 0;
    }
 
-   @ObfuscatedName("ac")
+   @ObfuscatedName("as")
    @Export("doStep")
    final int doStep(int var1) {
       if (this.max >= this.ticks) {

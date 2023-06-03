@@ -350,24 +350,24 @@ public abstract class RSTileMixin implements RSTile
 				distances[currentMapX - 1][currentMapY - 1] = currentDistance;
 			}
 
-			if (currentMapX < 127 && currentMapY > 0 && directions[currentMapX + 1][currentMapY - 1] == 0 && (collisionDataFlags[currentX + 1][currentY - 1] & 19136899) == 0 && (collisionDataFlags[currentX + 1][currentY] & 19136896) == 0 && (collisionDataFlags[currentX][currentY - 1] & 19136770) == 0)
+			if (currentMapX > 0 && currentMapY < 127 && directions[currentMapX - 1][currentMapY + 1] == 0 && (collisionDataFlags[currentX - 1][currentY + 1] & 19136899) == 0 && (collisionDataFlags[currentX - 1][currentY] & 19136776) == 0 && (collisionDataFlags[currentX][currentY + 1] & 19136800) == 0)
 			{
 				// Able to move 1 tile north-west
-				bufferX[index2] = currentX + 1;
-				bufferY[index2] = currentY - 1;
-				index2 = index2 + 1 & 4095;
-				directions[currentMapX + 1][currentMapY - 1] = 9;
-				distances[currentMapX + 1][currentMapY - 1] = currentDistance;
-			}
-
-			if (currentMapX > 0 && currentMapY < 127 && directions[currentMapX - 1][currentMapY + 1] == 0 && (collisionDataFlags[currentX - 1][currentY + 1] & 19136824) == 0 && (collisionDataFlags[currentX - 1][currentY] & 19136776) == 0 && (collisionDataFlags[currentX][currentY + 1] & 19136800) == 0)
-			{
-				// Able to move 1 tile south-east
 				bufferX[index2] = currentX - 1;
 				bufferY[index2] = currentY + 1;
 				index2 = index2 + 1 & 4095;
 				directions[currentMapX - 1][currentMapY + 1] = 6;
 				distances[currentMapX - 1][currentMapY + 1] = currentDistance;
+			}
+
+			if (currentMapX < 127 && currentMapY > 0 && directions[currentMapX + 1][currentMapY - 1] == 0 && (collisionDataFlags[currentX + 1][currentY - 1] & 19136824) == 0 && (collisionDataFlags[currentX + 1][currentY] & 19136896) == 0 && (collisionDataFlags[currentX][currentY - 1] & 19136770) == 0)
+			{
+				// Able to move 1 tile south-east
+				bufferX[index2] = currentX + 1;
+				bufferY[index2] = currentY - 1;
+				index2 = index2 + 1 & 4095;
+				directions[currentMapX + 1][currentMapY - 1] = 9;
+				distances[currentMapX + 1][currentMapY - 1] = currentDistance;
 			}
 
 			if (currentMapX < 127 && currentMapY < 127 && directions[currentMapX + 1][currentMapY + 1] == 0 && (collisionDataFlags[currentX + 1][currentY + 1] & 19136992) == 0 && (collisionDataFlags[currentX + 1][currentY] & 19136896) == 0 && (collisionDataFlags[currentX][currentY + 1] & 19136800) == 0)

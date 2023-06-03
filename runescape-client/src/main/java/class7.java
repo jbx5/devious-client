@@ -2,339 +2,233 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("al")
+@ObfuscatedName("ak")
 public class class7 {
-   @ObfuscatedName("gm")
-   @ObfuscatedGetter(
-      intValue = -1894298815
-   )
-   static int field27;
-   @ObfuscatedName("mp")
-   @ObfuscatedSignature(
-      descriptor = "Lim;"
-   )
-   @Export("textureProvider")
-   static TextureProvider textureProvider;
-   @ObfuscatedName("af")
-   ExecutorService field30 = Executors.newSingleThreadExecutor();
+   @ObfuscatedName("at")
+   ExecutorService field20 = Executors.newSingleThreadExecutor();
    @ObfuscatedName("an")
-   Future field28;
-   @ObfuscatedName("aw")
+   Future field21;
+   @ObfuscatedName("av")
    @ObfuscatedSignature(
-      descriptor = "Lsg;"
+      descriptor = "Ltz;"
    )
-   final Buffer field24;
-   @ObfuscatedName("ac")
+   final Buffer field19;
+   @ObfuscatedName("as")
    @ObfuscatedSignature(
-      descriptor = "Lac;"
+      descriptor = "Las;"
    )
-   final class3 field26;
+   final class3 field22;
 
    @ObfuscatedSignature(
-      descriptor = "(Lsg;Lac;)V"
+      descriptor = "(Ltz;Las;)V"
    )
    public class7(Buffer var1, class3 var2) {
-      this.field24 = var1;
-      this.field26 = var2;
-      this.method51();
+      this.field19 = var1;
+      this.field22 = var2;
+      this.method41();
    }
 
-   @ObfuscatedName("af")
+   @ObfuscatedName("at")
    @ObfuscatedSignature(
       descriptor = "(I)Z",
-      garbageValue = "-571674084"
+      garbageValue = "443618027"
    )
-   public boolean method58() {
-      return this.field28.isDone();
+   public boolean method37() {
+      return this.field21.isDone();
    }
 
    @ObfuscatedName("an")
    @ObfuscatedSignature(
-      descriptor = "(B)V",
-      garbageValue = "47"
+      descriptor = "(I)V",
+      garbageValue = "1008705538"
    )
-   public void method49() {
-      this.field30.shutdown();
-      this.field30 = null;
+   public void method50() {
+      this.field20.shutdown();
+      this.field20 = null;
    }
 
-   @ObfuscatedName("aw")
+   @ObfuscatedName("av")
    @ObfuscatedSignature(
-      descriptor = "(I)Lsg;",
-      garbageValue = "1213555586"
+      descriptor = "(I)Ltz;",
+      garbageValue = "-1569723442"
    )
-   public Buffer method50() {
+   public Buffer method40() {
       try {
-         return (Buffer)this.field28.get();
+         return (Buffer)this.field21.get();
       } catch (Exception var2) {
          return null;
       }
    }
 
-   @ObfuscatedName("ac")
+   @ObfuscatedName("as")
    @ObfuscatedSignature(
       descriptor = "(S)V",
-      garbageValue = "32199"
+      garbageValue = "-28030"
    )
-   void method51() {
-      this.field28 = this.field30.submit(new class1(this, this.field24, this.field26));
+   void method41() {
+      this.field21 = this.field20.submit(new class1(this, this.field19, this.field22));
    }
 
-   @ObfuscatedName("aw")
+   @ObfuscatedName("ax")
    @ObfuscatedSignature(
-      descriptor = "(DIII)V",
-      garbageValue = "-1907908914"
+      descriptor = "(CI)C",
+      garbageValue = "557899842"
    )
-   @Export("Rasterizer3D_buildPalette")
-   static void Rasterizer3D_buildPalette(double var0, int var2, int var3) {
-      int var4 = var2 * 128;
+   static char method52(char var0) {
+      switch (var0) {
+         case ' ':
+         case '-':
+         case '_':
+         case ' ':
+            return '_';
+         case '#':
+         case '[':
+         case ']':
+            return var0;
+         case 'À':
+         case 'Á':
+         case 'Â':
+         case 'Ã':
+         case 'Ä':
+         case 'à':
+         case 'á':
+         case 'â':
+         case 'ã':
+         case 'ä':
+            return 'a';
+         case 'Ç':
+         case 'ç':
+            return 'c';
+         case 'È':
+         case 'É':
+         case 'Ê':
+         case 'Ë':
+         case 'è':
+         case 'é':
+         case 'ê':
+         case 'ë':
+            return 'e';
+         case 'Í':
+         case 'Î':
+         case 'Ï':
+         case 'í':
+         case 'î':
+         case 'ï':
+            return 'i';
+         case 'Ñ':
+         case 'ñ':
+            return 'n';
+         case 'Ò':
+         case 'Ó':
+         case 'Ô':
+         case 'Õ':
+         case 'Ö':
+         case 'ò':
+         case 'ó':
+         case 'ô':
+         case 'õ':
+         case 'ö':
+            return 'o';
+         case 'Ù':
+         case 'Ú':
+         case 'Û':
+         case 'Ü':
+         case 'ù':
+         case 'ú':
+         case 'û':
+         case 'ü':
+            return 'u';
+         case 'ß':
+            return 'b';
+         case 'ÿ':
+         case 'Ÿ':
+            return 'y';
+         default:
+            return Character.toLowerCase(var0);
+      }
+   }
 
-      for(int var5 = var2; var5 < var3; ++var5) {
-         double var6 = (double)(var5 >> 3) / 64.0 + 0.0078125;
-         double var8 = 0.0625 + (double)(var5 & 7) / 8.0;
+   @ObfuscatedName("ag")
+   @ObfuscatedSignature(
+      descriptor = "(Ljava/lang/String;B)V",
+      garbageValue = "-111"
+   )
+   static final void method51(String var0) {
+      PacketBufferNode var1 = ObjectComposition.getPacketBufferNode(ClientPacket.FRIEND_ADDUSER, Client.packetWriter.isaacCipher);
+      var1.packetBuffer.writeByte(Widget.stringCp1252NullTerminatedByteSize(var0));
+      var1.packetBuffer.writeStringCp1252NullTerminated(var0);
+      Client.packetWriter.addNode(var1);
+   }
 
-         for(int var10 = 0; var10 < 128; ++var10) {
-            double var11 = (double)var10 / 128.0;
-            double var13 = var11;
-            double var15 = var11;
-            double var17 = var11;
-            if (var8 != 0.0) {
-               double var19;
-               if (var11 < 0.5) {
-                  var19 = var11 * (1.0 + var8);
-               } else {
-                  var19 = var8 + var11 - var8 * var11;
-               }
+   @ObfuscatedName("jf")
+   @ObfuscatedSignature(
+      descriptor = "(I)V",
+      garbageValue = "-541537538"
+   )
+   static final void method44() {
+      int var0 = class180.menuX;
+      int var1 = NewStuff.menuY;
+      int var2 = class237.menuWidth;
+      int var3 = class60.menuHeight;
+      int var4 = 6116423;
+      Rasterizer2D.Rasterizer2D_fillRectangle(var0, var1, var2, var3, var4);
+      Rasterizer2D.Rasterizer2D_fillRectangle(var0 + 1, var1 + 1, var2 - 2, 16, 0);
+      Rasterizer2D.Rasterizer2D_drawRectangle(var0 + 1, var1 + 18, var2 - 2, var3 - 19, 0);
+      class166.fontBold12.draw("Choose Option", var0 + 3, var1 + 14, var4, -1);
+      int var5 = MouseHandler.MouseHandler_x;
+      int var6 = MouseHandler.MouseHandler_y;
 
-               double var21 = var11 * 2.0 - var19;
-               double var23 = var6 + 0.3333333333333333;
-               if (var23 > 1.0) {
-                  --var23;
-               }
+      int var7;
+      int var8;
+      int var9;
+      for(var7 = 0; var7 < Client.menuOptionsCount; ++var7) {
+         var8 = var1 + (Client.menuOptionsCount - 1 - var7) * 15 + 31;
+         var9 = 16777215;
+         if (var5 > var0 && var5 < var2 + var0 && var6 > var8 - 13 && var6 < var8 + 3) {
+            var9 = 16776960;
+         }
 
-               double var27 = var6 - 0.3333333333333333;
-               if (var27 < 0.0) {
-                  ++var27;
-               }
+         Font var12 = class166.fontBold12;
+         String var13;
+         if (var7 < 0) {
+            var13 = "";
+         } else if (Client.menuTargets[var7].length() > 0) {
+            var13 = Client.menuActions[var7] + " " + Client.menuTargets[var7];
+         } else {
+            var13 = Client.menuActions[var7];
+         }
 
-               if (var23 * 6.0 < 1.0) {
-                  var13 = var23 * 6.0 * (var19 - var21) + var21;
-               } else if (2.0 * var23 < 1.0) {
-                  var13 = var19;
-               } else if (var23 * 3.0 < 2.0) {
-                  var13 = var21 + 6.0 * (0.6666666666666666 - var23) * (var19 - var21);
-               } else {
-                  var13 = var21;
-               }
+         var12.draw(var13, var0 + 3, var8, var9, 0);
+      }
 
-               if (var6 * 6.0 < 1.0) {
-                  var15 = var21 + (var19 - var21) * 6.0 * var6;
-               } else if (var6 * 2.0 < 1.0) {
-                  var15 = var19;
-               } else if (var6 * 3.0 < 2.0) {
-                  var15 = var21 + (var19 - var21) * (0.6666666666666666 - var6) * 6.0;
-               } else {
-                  var15 = var21;
-               }
+      var7 = class180.menuX;
+      var8 = NewStuff.menuY;
+      var9 = class237.menuWidth;
+      int var10 = class60.menuHeight;
 
-               if (6.0 * var27 < 1.0) {
-                  var17 = var27 * (var19 - var21) * 6.0 + var21;
-               } else if (var27 * 2.0 < 1.0) {
-                  var17 = var19;
-               } else if (3.0 * var27 < 2.0) {
-                  var17 = 6.0 * (var19 - var21) * (0.6666666666666666 - var27) + var21;
-               } else {
-                  var17 = var21;
-               }
-            }
-
-            int var29 = (int)(256.0 * var13);
-            int var20 = (int)(256.0 * var15);
-            int var30 = (int)(256.0 * var17);
-            int var22 = var30 + (var20 << 8) + (var29 << 16);
-            var22 = UrlRequest.Rasterizer3D_brighten(var22, var0);
-            if (var22 == 0) {
-               var22 = 1;
-            }
-
-            Rasterizer3D.Rasterizer3D_colorPalette[var4++] = var22;
+      for(int var11 = 0; var11 < Client.rootWidgetCount; ++var11) {
+         if (Client.rootWidgetWidths[var11] + Client.rootWidgetXs[var11] > var7 && Client.rootWidgetXs[var11] < var7 + var9 && Client.rootWidgetHeights[var11] + Client.rootWidgetYs[var11] > var8 && Client.rootWidgetYs[var11] < var10 + var8) {
+            Client.field724[var11] = true;
          }
       }
 
    }
 
-   @ObfuscatedName("at")
+   @ObfuscatedName("my")
    @ObfuscatedSignature(
-      descriptor = "(Lmq;I[B[BI)V",
-      garbageValue = "1887295232"
+      descriptor = "(Ljava/lang/String;I)V",
+      garbageValue = "1677894938"
    )
-   @Export("Widget_setKey")
-   static final void Widget_setKey(Widget var0, int var1, byte[] var2, byte[] var3) {
-      if (var0.field3645 == null) {
-         if (var2 == null) {
-            return;
-         }
-
-         var0.field3645 = new byte[11][];
-         var0.field3646 = new byte[11][];
-         var0.field3627 = new int[11];
-         var0.field3670 = new int[11];
-      }
-
-      var0.field3645[var1] = var2;
-      if (var2 != null) {
-         var0.field3581 = true;
-      } else {
-         var0.field3581 = false;
-
-         for(int var4 = 0; var4 < var0.field3645.length; ++var4) {
-            if (var0.field3645[var4] != null) {
-               var0.field3581 = true;
-               break;
-            }
-         }
-      }
-
-      var0.field3646[var1] = var3;
-   }
-
-   @ObfuscatedName("md")
-   @ObfuscatedSignature(
-      descriptor = "(II)V",
-      garbageValue = "2026496728"
-   )
-   @Export("changeGameOptions")
-   static final void changeGameOptions(int var0) {
-      ClientPacket.method5688();
-      class18.method283();
-      int var1 = GraphicsDefaults.VarpDefinition_get(var0).type;
-      if (var1 != 0) {
-         int var2 = Varps.Varps_main[var0];
-         if (var1 == 1) {
-            if (var2 == 1) {
-               ScriptFrame.method1164(0.9);
-            }
-
-            if (var2 == 2) {
-               ScriptFrame.method1164(0.8);
-            }
-
-            if (var2 == 3) {
-               ScriptFrame.method1164(0.7);
-            }
-
-            if (var2 == 4) {
-               ScriptFrame.method1164(0.6);
-            }
-         }
-
-         if (var1 == 3) {
-            if (var2 == 0) {
-               class86.method2286(255);
-            }
-
-            if (var2 == 1) {
-               class86.method2286(192);
-            }
-
-            if (var2 == 2) {
-               class86.method2286(128);
-            }
-
-            if (var2 == 3) {
-               class86.method2286(64);
-            }
-
-            if (var2 == 4) {
-               class86.method2286(0);
-            }
-         }
-
-         if (var1 == 4) {
-            if (var2 == 0) {
-               class130.method3125(127);
-            }
-
-            if (var2 == 1) {
-               class130.method3125(96);
-            }
-
-            if (var2 == 2) {
-               class130.method3125(64);
-            }
-
-            if (var2 == 3) {
-               class130.method3125(32);
-            }
-
-            if (var2 == 4) {
-               class130.method3125(0);
-            }
-         }
-
-         if (var1 == 5) {
-            Client.leftClickOpensMenu = var2 == 1;
-         }
-
-         if (var1 == 6) {
-            Client.chatEffects = var2;
-         }
-
-         if (var1 == 9) {
-         }
-
-         if (var1 == 10) {
-            if (var2 == 0) {
-               class135.method3182(127);
-            }
-
-            if (var2 == 1) {
-               class135.method3182(96);
-            }
-
-            if (var2 == 2) {
-               class135.method3182(64);
-            }
-
-            if (var2 == 3) {
-               class135.method3182(32);
-            }
-
-            if (var2 == 4) {
-               class135.method3182(0);
-            }
-         }
-
-         if (var1 == 17) {
-            Client.followerIndex = var2 & '\uffff';
-         }
-
-         if (var1 == 18) {
-            Client.playerAttackOption = (AttackOption)StructComposition.findEnumerated(UserComparator4.method2885(), var2);
-            if (Client.playerAttackOption == null) {
-               Client.playerAttackOption = AttackOption.AttackOption_dependsOnCombatLevels;
-            }
-         }
-
-         if (var1 == 19) {
-            if (var2 == -1) {
-               Client.combatTargetPlayerIndex = -1;
-            } else {
-               Client.combatTargetPlayerIndex = var2 & 2047;
-            }
-         }
-
-         if (var1 == 22) {
-            Client.npcAttackOption = (AttackOption)StructComposition.findEnumerated(UserComparator4.method2885(), var2);
-            if (Client.npcAttackOption == null) {
-               Client.npcAttackOption = AttackOption.AttackOption_dependsOnCombatLevels;
-            }
-         }
-
+   @Export("Clan_joinChat")
+   static final void Clan_joinChat(String var0) {
+      if (!var0.equals("")) {
+         PacketBufferNode var1 = ObjectComposition.getPacketBufferNode(ClientPacket.field3128, Client.packetWriter.isaacCipher);
+         var1.packetBuffer.writeByte(Widget.stringCp1252NullTerminatedByteSize(var0));
+         var1.packetBuffer.writeStringCp1252NullTerminated(var0);
+         Client.packetWriter.addNode(var1);
       }
    }
 }
