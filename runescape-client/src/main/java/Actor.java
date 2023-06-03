@@ -36,7 +36,7 @@ public abstract class Actor extends Renderable {
    int rotation;
    @ObfuscatedName("ba")
    @ObfuscatedGetter(
-      intValue = 1429274449
+      intValue = 1279251520
    )
    int field1155 = 1;
    @ObfuscatedName("bn")

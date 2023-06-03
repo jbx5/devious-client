@@ -768,6 +768,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
    @Export("playerOptionsPriorities")
    static boolean[] playerOptionsPriorities;
    @ObfuscatedName("nt")
+   @Export("defaultRotations")
    static int[] defaultRotations;
    @ObfuscatedName("ng")
    @ObfuscatedGetter(
@@ -1204,11 +1205,13 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
    @ObfuscatedName("sv")
    static String field736;
    @ObfuscatedName("sn")
+   @Export("crossWorldMessageIds")
    static long[] crossWorldMessageIds;
    @ObfuscatedName("sy")
    @ObfuscatedGetter(
       intValue = 1912793217
    )
+   @Export("crossWorldMessageIdsIndex")
    static int crossWorldMessageIdsIndex;
    @ObfuscatedName("sz")
    @ObfuscatedSignature(
