@@ -15,13 +15,13 @@ public final class FloorDecoration {
    int z;
    @ObfuscatedName("an")
    @ObfuscatedGetter(
-      intValue = -978321408
+      intValue = 1961961451
    )
    @Export("x")
    int x;
    @ObfuscatedName("av")
    @ObfuscatedGetter(
-      intValue = -860880896
+      intValue = 842433563
    )
    @Export("y")
    int y;
