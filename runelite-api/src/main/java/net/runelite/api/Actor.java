@@ -463,6 +463,7 @@ public interface Actor extends Renderable, SceneEntity
 	 *
 	 * @return the world area
 	 */
+	@Override
 	WorldArea getWorldArea();
 
 	/**

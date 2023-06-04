@@ -104,5 +104,6 @@ public interface GameObject extends TileObject
 	 */
 	int getConfig();
 
+	@Override
 	WorldArea getWorldArea();
 }

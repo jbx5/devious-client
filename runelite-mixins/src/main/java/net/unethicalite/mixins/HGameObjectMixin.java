@@ -31,13 +31,13 @@ public abstract class HGameObjectMixin implements RSGameObject
 		}
 
 		LocalPoint localSWTile = new LocalPoint(
-				getLocalLocation().getX() - sizeX() * Perspective.LOCAL_TILE_SIZE / 2,
-				getLocalLocation().getY() - sizeY() * Perspective.LOCAL_TILE_SIZE / 2
+				getLocalLocation().getX() - (sizeX() - 1) * Perspective.LOCAL_TILE_SIZE / 2,
+				getLocalLocation().getY() - (sizeY() - 1) * Perspective.LOCAL_TILE_SIZE / 2
 		);
 
 		LocalPoint localNETile = new LocalPoint(
-				getLocalLocation().getX() + sizeX() * Perspective.LOCAL_TILE_SIZE / 2,
-				getLocalLocation().getY() + sizeY() * Perspective.LOCAL_TILE_SIZE / 2
+				getLocalLocation().getX() + (sizeX() - 1) * Perspective.LOCAL_TILE_SIZE / 2,
+				getLocalLocation().getY() + (sizeY() - 1) * Perspective.LOCAL_TILE_SIZE / 2
 		);
 
 		return new WorldArea(

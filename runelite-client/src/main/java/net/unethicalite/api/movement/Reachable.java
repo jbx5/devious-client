@@ -1,12 +1,10 @@
 package net.unethicalite.api.movement;
 
-import net.runelite.api.Actor;
 import net.runelite.api.CollisionData;
 import net.runelite.api.GameObject;
 import net.runelite.api.Locatable;
 import net.runelite.api.Player;
 import net.runelite.api.Tile;
-import net.runelite.api.TileObject;
 import net.runelite.api.WallObject;
 import net.runelite.api.coords.WorldArea;
 import net.unethicalite.api.Positionable;
@@ -25,7 +23,6 @@ import java.util.stream.Collectors;
 public class Reachable
 {
 	private static final int MAX_ATTEMPTED_TILES = 64 * 64;
-	private static Actor actor;
 
 	public static boolean check(int flag, int checkFlag)
 	{
@@ -278,31 +275,20 @@ public class Reachable
 
 	public static boolean isInteractable(Locatable locatable)
 	{
-		return getVisitedTiles(locatable).contains(locatable.getWorldLocation());
+		return getInteractable(locatable).stream().anyMatch(Reachable::isWalkable);
 	}
 
-	public static boolean isInteractable(TileObject tileObject)
+	public static List<WorldPoint> getInteractable(Locatable locatable)
 	{
-		return isInteractable(tileObject instanceof GameObject ? ((GameObject) tileObject).getWorldArea() : tileObject.getWorldLocation().toWorldArea());
-	}
-
-	public static boolean isInteractable(Actor actor)
-	{
-		Reachable.actor = actor;
-		return isInteractable(actor.getWorldArea());
-	}
-
-	public static boolean isInteractable(WorldArea worldArea)
-	{
-		WorldArea surrounding = worldArea.offset(1);
+		WorldArea locatableArea = locatable.getWorldArea();
+		WorldArea surrounding = locatableArea.offset(1);
 
 		// List of tiles that can interact with worldArea and can be walked on
-		List<WorldPoint> interactPoints = surrounding.toWorldPointList().stream()
-				.filter(p -> worldArea.canMelee(Static.getClient(), p.toWorldArea()))
-				.filter(p -> !isObstacle(p))
-				.collect(Collectors.toList());
-
-		return interactPoints.stream().anyMatch(Reachable::isWalkable);
+		return surrounding.toWorldPointList().stream()
+			.filter(p -> !locatableArea.contains(p))
+			.filter(p -> locatableArea.canMelee(Static.getClient(), p.toWorldArea()))
+			.filter(p -> !isObstacle(p))
+			.collect(Collectors.toList());
 	}
 
 	public static boolean isWalkable(WorldPoint worldPoint)

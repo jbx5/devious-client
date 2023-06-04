@@ -1,8 +1,6 @@
 package net.unethicalite.api.movement;
 
-import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
-import net.runelite.api.Actor;
 import net.runelite.api.Client;
 import net.runelite.api.Locatable;
 import net.runelite.api.MenuAction;
@@ -10,7 +8,6 @@ import net.runelite.api.Perspective;
 import net.runelite.api.Player;
 import net.runelite.api.Point;
 import net.runelite.api.Tile;
-import net.runelite.api.TileObject;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldArea;
 import net.runelite.api.coords.WorldPoint;
@@ -123,6 +120,7 @@ public class Movement
 		return Walker.walkTo(worldPoint);
 	}
 
+
 	public static boolean walkTo(Locatable locatable)
 	{
 		return walkTo(locatable.getWorldLocation());
@@ -143,64 +141,30 @@ public class Movement
 		return walkTo(new WorldPoint(x, y, plane));
 	}
 
-	public static boolean walkToInteract(@NonNull Actor actor, String action)
+	/**
+	 * Walk next to a Locatable.
+	 * This will first attempt to walk to tile that can interact with the locatable.
+	 */
+	public static boolean walkNextTo(Locatable locatable)
 	{
-		return walkToInteract(actor, action, actor.getWorldLocation());
-	}
+		// WorldPoints that can interact with the locatable
+		List<WorldPoint> interactPoints = Reachable.getInteractable(locatable);
 
-	public static boolean walkToInteract(Actor actor, String action, WorldPoint worldPoint)
-	{
-		return walkToInteract(actor, action, worldPoint.toWorldArea());
-	}
-
-	public static boolean walkToInteract(Actor actor, String action, WorldArea worldArea)
-	{
-		Player local = Players.getLocal();
-
-		// Interact if possible and not already
-		if (actor != null && Reachable.isInteractable(actor) && local.getInteracting() == null)
+		// If no tiles are interactable, use un-interactable tiles instead  (exclusing self)
+		if (interactPoints.isEmpty())
 		{
-			actor.interact(action);
-			return true;
+			interactPoints.addAll(locatable.getWorldArea().offset(1).toWorldPointList());
+			interactPoints.removeIf(p -> locatable.getWorldArea().contains(p));
 		}
 
-		// Walk towards if not interactable or far away
-		if (actor == null || actor.distanceTo(local) > 20 || !Reachable.isInteractable(actor))
-		{
-			return Movement.walkTo(worldArea);
-		}
-		return true;
-	}
+		// First WorldPoint that is walkable from the list of interactPoints
+		WorldPoint walkableInteractPoint = interactPoints.stream()
+			.filter(Reachable::isWalkable)
+			.findFirst()
+			.orElse(null);
 
-	public static boolean walkToInteract(@NonNull TileObject tileObject, String action)
-	{
-		return walkToInteract(tileObject, action, tileObject.getWorldLocation());
-	}
-
-	public static boolean walkToInteract(TileObject tileObject, String action, WorldPoint worldPoint)
-	{
-		return walkToInteract(tileObject, action, worldPoint.toWorldArea());
-	}
-
-	public static boolean walkToInteract(TileObject tileObject, String action, WorldArea worldArea)
-	{
-		Player local = Players.getLocal();
-
-		// Interact if idle and interactable
-		// There's not an easy way to tell if the player is already interacting with a tileObject,
-		// so we just check isIdle
-		if (tileObject != null && Reachable.isInteractable(tileObject) && local.isIdle())
-		{
-			tileObject.interact(action);
-			return true;
-		}
-
-		// Walk towards if not reachable or far away
-		if (tileObject == null || tileObject.distanceTo(local) > 20 || !Reachable.isInteractable(tileObject))
-		{
-			return Movement.walkTo(worldArea);
-		}
-		return true;
+		// Priority to a walkable tile, otherwise walk to the first tile next to locatable
+		return (walkableInteractPoint != null) ? walkTo(walkableInteractPoint) : walkTo(interactPoints.get(0));
 	}
 
 	public static boolean isRunEnabled()
