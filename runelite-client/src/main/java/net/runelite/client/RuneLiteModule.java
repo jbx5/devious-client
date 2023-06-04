@@ -238,6 +238,13 @@ public class RuneLiteModule extends AbstractModule
 	}
 
 	@Provides
+	@Named("runelite.pluginhub.url")
+	HttpUrl providePluginHubBase(@Named("runelite.pluginhub.url") String s)
+	{
+		return HttpUrl.get(System.getProperty("runelite.pluginhub.url", s));
+	}
+
+	@Provides
 	@Singleton
 	OpenOSRSConfig provideOpenOSRSConfig(ConfigManager configManager)
 	{

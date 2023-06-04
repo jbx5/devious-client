@@ -967,7 +967,7 @@ public class OPRSExternalPluginManager
 				groups.broadcastString("STARTEXTERNAL;" + pluginId);
 			}
 			scanAndInstantiate(loadPlugin(pluginId), true, false);
-			ExternalPluginsChanged event = new ExternalPluginsChanged(null);
+			ExternalPluginsChanged event = new ExternalPluginsChanged();
 			eventBus.post(event);
 
 			return true;
@@ -1013,7 +1013,7 @@ public class OPRSExternalPluginManager
 				externalPluginManager.startPlugin(pluginId);
 			}
 
-			ExternalPluginsChanged event = new ExternalPluginsChanged(null);
+			ExternalPluginsChanged event = new ExternalPluginsChanged();
 			eventBus.post(event);
 			if (groups != null)
 			{
