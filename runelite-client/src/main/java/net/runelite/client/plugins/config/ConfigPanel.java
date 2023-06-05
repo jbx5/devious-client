@@ -115,7 +115,6 @@ import net.runelite.client.events.ConfigChanged;
 import net.runelite.client.events.ExternalPluginsChanged;
 import net.runelite.client.events.PluginChanged;
 import net.runelite.client.externalplugins.ExternalPluginManager;
-import net.runelite.client.externalplugins.ExternalPluginManifest;
 import net.runelite.client.plugins.OPRSExternalPluginManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginManager;
@@ -247,12 +246,12 @@ class ConfigPanel extends PluginPanel
 		title.setForeground(Color.WHITE);
 		title.setToolTipText("<html>" + name + ":<br>" + pluginConfig.getDescription() + "</html>");
 
-		ExternalPluginManifest mf = pluginConfig.getExternalPluginManifest();
+		String iname = pluginConfig.getInternalPluginHubName();
 		JMenuItem uninstallItem = null;
-		if (mf != null)
+		if (iname != null)
 		{
 			uninstallItem = new JMenuItem("Uninstall");
-			uninstallItem.addActionListener(ev -> externalPluginManager.remove(mf.getInternalName()));
+			uninstallItem.addActionListener(ev -> externalPluginManager.remove(iname));
 		}
 
 		PluginListItem.addLabelPopupMenu(title, pluginConfig.createSupportMenuItem(), uninstallItem);
