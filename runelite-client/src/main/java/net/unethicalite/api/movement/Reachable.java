@@ -1,13 +1,14 @@
 package net.unethicalite.api.movement;
 
-import net.unethicalite.api.Positionable;
-import net.unethicalite.api.scene.Tiles;
 import net.runelite.api.CollisionData;
 import net.runelite.api.GameObject;
 import net.runelite.api.Locatable;
 import net.runelite.api.Player;
 import net.runelite.api.Tile;
 import net.runelite.api.WallObject;
+import net.runelite.api.coords.WorldArea;
+import net.unethicalite.api.Positionable;
+import net.unethicalite.api.scene.Tiles;
 import net.runelite.api.coords.Direction;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
@@ -274,7 +275,20 @@ public class Reachable
 
 	public static boolean isInteractable(Locatable locatable)
 	{
-		return getVisitedTiles(locatable).contains(locatable.getWorldLocation());
+		return getInteractable(locatable).stream().anyMatch(Reachable::isWalkable);
+	}
+
+	public static List<WorldPoint> getInteractable(Locatable locatable)
+	{
+		WorldArea locatableArea = locatable.getWorldArea();
+		WorldArea surrounding = locatableArea.offset(1);
+
+		// List of tiles that can interact with worldArea and can be walked on
+		return surrounding.toWorldPointList().stream()
+			.filter(p -> !locatableArea.contains(p))
+			.filter(p -> locatableArea.canMelee(Static.getClient(), p.toWorldArea()))
+			.filter(p -> !isObstacle(p))
+			.collect(Collectors.toList());
 	}
 
 	public static boolean isWalkable(WorldPoint worldPoint)
