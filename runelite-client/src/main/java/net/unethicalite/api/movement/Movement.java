@@ -120,6 +120,7 @@ public class Movement
 		return Walker.walkTo(worldPoint);
 	}
 
+
 	public static boolean walkTo(Locatable locatable)
 	{
 		return walkTo(locatable.getWorldLocation());
@@ -138,6 +139,32 @@ public class Movement
 	public static boolean walkTo(int x, int y, int plane)
 	{
 		return walkTo(new WorldPoint(x, y, plane));
+	}
+
+	/**
+	 * Walk next to a Locatable.
+	 * This will first attempt to walk to tile that can interact with the locatable.
+	 */
+	public static boolean walkNextTo(Locatable locatable)
+	{
+		// WorldPoints that can interact with the locatable
+		List<WorldPoint> interactPoints = Reachable.getInteractable(locatable);
+
+		// If no tiles are interactable, use un-interactable tiles instead  (exclusing self)
+		if (interactPoints.isEmpty())
+		{
+			interactPoints.addAll(locatable.getWorldArea().offset(1).toWorldPointList());
+			interactPoints.removeIf(p -> locatable.getWorldArea().contains(p));
+		}
+
+		// First WorldPoint that is walkable from the list of interactPoints
+		WorldPoint walkableInteractPoint = interactPoints.stream()
+			.filter(Reachable::isWalkable)
+			.findFirst()
+			.orElse(null);
+
+		// Priority to a walkable tile, otherwise walk to the first tile next to locatable
+		return (walkableInteractPoint != null) ? walkTo(walkableInteractPoint) : walkTo(interactPoints.get(0));
 	}
 
 	public static boolean isRunEnabled()
