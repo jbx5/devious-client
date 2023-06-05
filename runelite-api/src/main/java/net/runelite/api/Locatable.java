@@ -25,6 +25,7 @@
 package net.runelite.api;
 
 import net.runelite.api.coords.LocalPoint;
+import net.runelite.api.coords.WorldArea;
 import net.runelite.api.coords.WorldPoint;
 
 public interface Locatable extends net.unethicalite.api.Positionable
@@ -38,6 +39,19 @@ public interface Locatable extends net.unethicalite.api.Positionable
 	 * @return the server location
 	 */
 	WorldPoint getWorldLocation();
+
+	/**
+	 * Gets the server-side location of the actor as a WorldArea.
+	 * <p>
+	 * This value is typically ahead of where the client renders and is not
+	 * affected by things such as animations.
+	 *
+	 * @return the server location
+	 */
+	default WorldArea getWorldArea()
+	{
+		return getWorldLocation().toWorldArea();
+	}
 
 	/**
 	 * Gets the client-side location of the actor.
