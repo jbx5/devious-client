@@ -40,10 +40,9 @@ public abstract class HGameObjectMixin implements RSGameObject
 				getLocalLocation().getY() + (sizeY() - 1) * Perspective.LOCAL_TILE_SIZE / 2
 		);
 
-		// Off-set north-east tile by -1 because WorldArea construct will add 1 setting width and height
 		return new WorldArea(
 				WorldPoint.fromLocal(client, localSWTile),
-				WorldPoint.fromLocal(client, localNETile).dx(-1).dy(-1)
+				WorldPoint.fromLocal(client, localNETile)
 		);
 	}
 
