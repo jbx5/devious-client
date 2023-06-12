@@ -16,6 +16,7 @@ import net.unethicalite.api.events.MenuAutomated;
 import net.unethicalite.api.exception.InteractionException;
 import net.unethicalite.api.game.GameThread;
 import net.unethicalite.api.input.naturalmouse.NaturalMouse;
+import net.unethicalite.api.packets.MousePackets;
 import net.unethicalite.api.packets.Packets;
 import net.unethicalite.api.utils.CoordUtils;
 import net.unethicalite.api.widgets.Widgets;
@@ -113,6 +114,11 @@ public class InteractionManager
 					{
 						try
 						{
+							if (config.sendClickPacket())
+							{
+								MousePackets.queueClickPacket();
+							}
+
 							if (event.getOpcode() == MenuAction.CC_OP || event.getOpcode() == MenuAction.CC_OP_LOW_PRIORITY)
 							{
 								int param0 = event.getParam0();
@@ -178,8 +184,15 @@ public class InteractionManager
 
 	private void processAction(MenuAutomated entry, int x, int y)
 	{
-		GameThread.invoke(() -> client.invokeMenuAction(entry.getOption(), entry.getTarget(), entry.getIdentifier(),
-				entry.getOpcode().getId(), entry.getParam0(), entry.getParam1(), x, y));
+		GameThread.invoke(() ->
+				{
+					if (config.sendClickPacket())
+					{
+						MousePackets.queueClickPacket();
+					}
+					client.invokeMenuAction(entry.getOption(), entry.getTarget(), entry.getIdentifier(),
+							entry.getOpcode().getId(), entry.getParam0(), entry.getParam1(), x, y);
+				});
 	}
 
 	private Point getClickPoint(MenuAutomated event)
