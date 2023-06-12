@@ -65,6 +65,11 @@ public class InteractionContainer extends PanelContainer
 
 				add(mouseFwContainer, "wrap");
 				break;
+
+			case INVOKE:
+			case PACKETS:
+				add(createCheckBox("Send Click Packet", "sendClickPacket"), "wrap");
+				break;
 		}
 
 		add(createCheckBox("Disable manual input", "disableMouse"), "wrap");
