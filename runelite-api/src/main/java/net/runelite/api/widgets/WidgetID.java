@@ -364,7 +364,6 @@ public final class WidgetID
 
 	static class Shop
 	{
-		static final int ITEMS_CONTAINER = 2;
 		static final int INVENTORY_ITEM_CONTAINER = 0;
 	}
 
