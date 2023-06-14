@@ -185,6 +185,18 @@ public interface UnethicaliteConfig extends Config
 		return false;
 	}
 
+	@ConfigItem(
+			position = 23,
+			keyName = "sendClickPacket",
+			name = "Send Click Packet",
+			description = "Sends click packet before interacting",
+			hidden = true
+	)
+	default boolean sendClickPacket()
+	{
+		return false;
+	}
+
 	@ConfigSection(
 			name = "Pathfinder/Regions",
 			position = 1,
