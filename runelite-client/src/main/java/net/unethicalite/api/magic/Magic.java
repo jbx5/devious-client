@@ -107,6 +107,6 @@ public class Magic
 
 	public static boolean isHomeTeleportOnCooldown()
 	{
-		return getLastHomeTeleportUsage().plus(30, ChronoUnit.MINUTES).isAfter(Instant.now());
+		return !getLastHomeTeleportUsage().plus(30, ChronoUnit.MINUTES).isAfter(Instant.now());
 	}
 }
