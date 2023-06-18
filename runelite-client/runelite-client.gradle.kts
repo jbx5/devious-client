@@ -95,6 +95,7 @@ dependencies {
     implementation(platform("org.lwjgl:lwjgl-bom:3.3.2"))
     implementation(group = "org.lwjgl", name = "lwjgl")
     implementation(group = "org.lwjgl", name = "lwjgl-opengl")
+    implementation(group = "org.lwjgl", name = "lwjgl-opencl")
 
     runtimeOnly(project(":runescape-api"))
     runtimeOnly(group = "net.runelite.pushingpixels", name = "trident", version = "1.5.00")
