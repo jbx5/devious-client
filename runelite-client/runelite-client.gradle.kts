@@ -92,7 +92,7 @@ dependencies {
     implementation(group = "net.runelite.gluegen", name = "gluegen-rt", version = "2.4.0-rc-20220318")
     implementation(group = "net.runelite.jocl", name = "jocl", version = "1.0")
 
-    implementation(platform("org.lwjgl:lwjgl-bom:3.3.1"))
+    implementation(platform("org.lwjgl:lwjgl-bom:3.3.2"))
     implementation(group = "org.lwjgl", name = "lwjgl")
     implementation(group = "org.lwjgl", name = "lwjgl-opengl")
 
