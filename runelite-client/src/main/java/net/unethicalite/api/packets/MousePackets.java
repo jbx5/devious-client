@@ -20,7 +20,7 @@ public class MousePackets
 			mousePressedTime = 32767;
 		}
 		Static.getClient().setClientMouseLastPressedMillis(Static.getClient().getMouseLastPressedMillis());
-		int mouseInfo = (mousePressedTime << 1) + 1;
+		int mouseInfo = (mousePressedTime << 1);
 		MousePackets.queueClickPacket(mouseInfo, x, y);
 	}
 
