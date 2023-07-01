@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019 Owain van Brakel <https://github.com/Owain94>
+ * Copyright (c) 2023 Abex
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,17 +22,37 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package net.runelite.client.util;
 
-object ProjectVersions {
-    const val launcherVersion = "1.0.0"
-    const val rlVersion = "1.10.6"
+import com.apple.eawt.FullScreenAdapter;
+import com.apple.eawt.FullScreenUtilities;
+import com.apple.eawt.event.FullScreenEvent;
+import java.awt.Frame;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
-    const val openosrsVersion = "4.31.2"
+@Slf4j
+@RequiredArgsConstructor
+class OSXFullScreenAdapter extends FullScreenAdapter
+{
+	private final Frame frame;
 
-    const val rsversion = 214.3
-    const val cacheversion = 165
+	@Override
+	public void windowEnteredFullScreen(FullScreenEvent e)
+	{
+		log.debug("Window entered fullscreen mode--setting extended state to {}", Frame.MAXIMIZED_BOTH);
+		frame.setExtendedState(Frame.MAXIMIZED_BOTH);
+	}
 
-    const val lombokVersion = "1.18.22"
+	@Override
+	public void windowExitedFullScreen(FullScreenEvent e)
+	{
+		log.debug("Window exited fullscreen mode--setting extended state to {}", Frame.NORMAL);
+		frame.setExtendedState(Frame.NORMAL);
+	}
 
-    const val unethicaliteVersion = "1.0.19-STABLE"
+	public static void install(Frame frame)
+	{
+		FullScreenUtilities.addFullScreenListenerTo(frame, new OSXFullScreenAdapter(frame));
+	}
 }
