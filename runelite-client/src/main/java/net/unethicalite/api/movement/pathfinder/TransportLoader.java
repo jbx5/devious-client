@@ -8,6 +8,7 @@ import net.runelite.api.ItemID;
 import net.runelite.api.MenuAction;
 import net.runelite.api.NPC;
 import net.runelite.api.NpcID;
+import net.runelite.api.ObjectID;
 import net.runelite.api.Point;
 import net.runelite.api.Quest;
 import net.runelite.api.QuestState;
@@ -373,6 +374,10 @@ public class TransportLoader
                 transports.add(npcTransport(new WorldPoint(2910, 3226, 0), new WorldPoint(2578, 2837, 1), NpcID.CAPTAIN_TOCK_7958, "Travel"));
                 transports.add(npcTransport(new WorldPoint(2574, 2835, 1), new WorldPoint(2909, 3230, 1), NpcID.CAPTAIN_TOCK_7958, "Travel"));
             }
+
+            // Draynor Jail
+            transports.add(lockingDoorTransport(new WorldPoint(3123, 3244, 0), new WorldPoint(3123, 3243, 0), ObjectID.PRISON_GATE_2881));
+            transports.add(lockingDoorTransport(new WorldPoint(3123, 3243, 0), new WorldPoint(3123, 3244, 0), ObjectID.PRISON_GATE_2881));
 
             if (Inventory.contains(SLASH_ITEMS) || Equipment.contains(SLASH_ITEMS))
             {

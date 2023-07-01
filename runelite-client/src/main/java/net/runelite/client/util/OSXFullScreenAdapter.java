@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018, Levi <me@levischuck.com>
+ * Copyright (c) 2023 Abex
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,75 +22,37 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.client.plugins.xptracker;
+package net.runelite.client.util;
 
-import java.util.EnumSet;
-import java.util.Set;
-import lombok.Getter;
+import com.apple.eawt.FullScreenAdapter;
+import com.apple.eawt.FullScreenUtilities;
+import com.apple.eawt.event.FullScreenEvent;
+import java.awt.Frame;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @RequiredArgsConstructor
-class XpPauseStateSingle
+class OSXFullScreenAdapter extends FullScreenAdapter
 {
-	private final Set<XpPauseReason> pauseReasons = EnumSet.noneOf(XpPauseReason.class);
-	@Getter
-	private long lastChangeMillis;
-	@Getter
-	private long xp;
+	private final Frame frame;
 
-	boolean isPaused()
+	@Override
+	public void windowEnteredFullScreen(FullScreenEvent e)
 	{
-		return !pauseReasons.isEmpty();
+		log.debug("Window entered fullscreen mode--setting extended state to {}", Frame.MAXIMIZED_BOTH);
+		frame.setExtendedState(Frame.MAXIMIZED_BOTH);
 	}
 
-	boolean login()
+	@Override
+	public void windowExitedFullScreen(FullScreenEvent e)
 	{
-		return pauseReasons.remove(XpPauseReason.PAUSED_LOGOUT);
+		log.debug("Window exited fullscreen mode--setting extended state to {}", Frame.NORMAL);
+		frame.setExtendedState(Frame.NORMAL);
 	}
 
-	boolean logout()
+	public static void install(Frame frame)
 	{
-		return pauseReasons.add(XpPauseReason.PAUSED_LOGOUT);
-	}
-
-	boolean timeout()
-	{
-		return pauseReasons.add(XpPauseReason.PAUSED_TIMEOUT);
-	}
-
-	boolean manualPause()
-	{
-		return pauseReasons.add(XpPauseReason.PAUSE_MANUAL);
-	}
-
-	boolean xpChanged(long xp)
-	{
-		this.xp = xp;
-		this.lastChangeMillis = System.currentTimeMillis();
-		return clearAll();
-	}
-
-	boolean unpause()
-	{
-		this.lastChangeMillis = System.currentTimeMillis();
-		return clearAll();
-	}
-
-	private boolean clearAll()
-	{
-		if (pauseReasons.isEmpty())
-		{
-			return false;
-		}
-
-		pauseReasons.clear();
-		return true;
-	}
-
-	private enum XpPauseReason
-	{
-		PAUSE_MANUAL,
-		PAUSED_LOGOUT,
-		PAUSED_TIMEOUT
+		FullScreenUtilities.addFullScreenListenerTo(frame, new OSXFullScreenAdapter(frame));
 	}
 }

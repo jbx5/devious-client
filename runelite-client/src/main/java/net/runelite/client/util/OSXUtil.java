@@ -24,9 +24,10 @@
  */
 package net.runelite.client.util;
 
+import com.apple.eawt.Application;
+import com.apple.eawt.FullScreenUtilities;
 import javax.swing.JFrame;
 import lombok.extern.slf4j.Slf4j;
-import org.madlonkay.desktopsupport.DesktopSupport;
 
 /**
  * A class with OSX-specific functions to improve integration.
@@ -35,7 +36,7 @@ import org.madlonkay.desktopsupport.DesktopSupport;
 public class OSXUtil
 {
 	/**
-	 * Enables the osx native fullscreen if running on a mac.
+	 * Enables the osx native fullscreen if running on a Mac.
 	 *
 	 * @param gui The gui to enable the fullscreen on.
 	 */
@@ -43,7 +44,8 @@ public class OSXUtil
 	{
 		if (OSType.getOSType() == OSType.MacOS)
 		{
-			DesktopSupport.getSupport().setWindowCanFullScreen(gui, true);
+			OSXFullScreenAdapter.install(gui);
+			FullScreenUtilities.setWindowCanFullScreen(gui, true);
 			log.debug("Enabled fullscreen on macOS");
 		}
 	}
@@ -53,7 +55,8 @@ public class OSXUtil
 	 */
 	public static void requestUserAttention()
 	{
-		DesktopSupport.getSupport().requestUserAttention(true);
+		Application app = Application.getApplication();
+		app.requestUserAttention(true);
 		log.debug("Requested user attention on macOS");
 	}
 
@@ -62,7 +65,8 @@ public class OSXUtil
 	 */
 	public static void requestForeground()
 	{
-		DesktopSupport.getSupport().requestForeground(true);
+		Application app = Application.getApplication();
+		app.requestForeground(true);
 		log.debug("Forced focus on macOS");
 	}
 }

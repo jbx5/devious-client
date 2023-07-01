@@ -31,6 +31,8 @@ import com.google.common.collect.Multimap;
 import lombok.Getter;
 import java.util.Collection;
 import javax.annotation.Nullable;
+import static net.runelite.api.ItemID.ABYSSAL_DAGGER;
+import static net.runelite.api.ItemID.ABYSSAL_DAGGER_BH;
 import static net.runelite.api.ItemID.ABYSSAL_TENTACLE;
 import static net.runelite.api.ItemID.ABYSSAL_TENTACLE_OR;
 import static net.runelite.api.ItemID.ABYSSAL_WHIP;
@@ -174,6 +176,7 @@ import static net.runelite.api.ItemID.DARK_BOW_12766;
 import static net.runelite.api.ItemID.DARK_BOW_12767;
 import static net.runelite.api.ItemID.DARK_BOW_12768;
 import static net.runelite.api.ItemID.DARK_BOW_20408;
+import static net.runelite.api.ItemID.DARK_BOW_BH;
 import static net.runelite.api.ItemID.DARK_INFINITY_BOTTOMS;
 import static net.runelite.api.ItemID.DARK_INFINITY_COLOUR_KIT;
 import static net.runelite.api.ItemID.DARK_INFINITY_HAT;
@@ -217,20 +220,40 @@ import static net.runelite.api.ItemID.DRAGONFIRE_SHIELD;
 import static net.runelite.api.ItemID.DRAGONFIRE_SHIELD_11284;
 import static net.runelite.api.ItemID.DRAGONFIRE_WARD;
 import static net.runelite.api.ItemID.DRAGONFIRE_WARD_22003;
+import static net.runelite.api.ItemID.DRAGON_2H_SWORD;
+import static net.runelite.api.ItemID.DRAGON_2H_SWORD_CR;
 import static net.runelite.api.ItemID.DRAGON_AXE;
 import static net.runelite.api.ItemID.DRAGON_AXE_OR;
+import static net.runelite.api.ItemID.DRAGON_BATTLEAXE;
+import static net.runelite.api.ItemID.DRAGON_BATTLEAXE_CR;
 import static net.runelite.api.ItemID.DRAGON_BOOTS;
+import static net.runelite.api.ItemID.DRAGON_BOOTS_CR;
 import static net.runelite.api.ItemID.DRAGON_BOOTS_G;
 import static net.runelite.api.ItemID.DRAGON_BOOTS_ORNAMENT_KIT;
 import static net.runelite.api.ItemID.DRAGON_CHAINBODY_3140;
+import static net.runelite.api.ItemID.DRAGON_CHAINBODY_CR;
 import static net.runelite.api.ItemID.DRAGON_CHAINBODY_G;
 import static net.runelite.api.ItemID.DRAGON_CHAINBODY_ORNAMENT_KIT;
+import static net.runelite.api.ItemID.DRAGON_CLAWS;
+import static net.runelite.api.ItemID.DRAGON_CLAWS_CR;
+import static net.runelite.api.ItemID.DRAGON_CROSSBOW;
+import static net.runelite.api.ItemID.DRAGON_CROSSBOW_CR;
+import static net.runelite.api.ItemID.DRAGON_DAGGER;
+import static net.runelite.api.ItemID.DRAGON_DAGGERP;
+import static net.runelite.api.ItemID.DRAGON_DAGGERP_5680;
+import static net.runelite.api.ItemID.DRAGON_DAGGERP_5698;
+import static net.runelite.api.ItemID.DRAGON_DAGGER_CR;
+import static net.runelite.api.ItemID.DRAGON_DAGGER_PCR;
+import static net.runelite.api.ItemID.DRAGON_DAGGER_PCR_28023;
+import static net.runelite.api.ItemID.DRAGON_DAGGER_PCR_28025;
 import static net.runelite.api.ItemID.DRAGON_DEFENDER_L;
 import static net.runelite.api.ItemID.DRAGON_DEFENDER_ORNAMENT_KIT;
 import static net.runelite.api.ItemID.DRAGON_DEFENDER_T;
 import static net.runelite.api.ItemID.DRAGON_FULL_HELM;
 import static net.runelite.api.ItemID.DRAGON_FULL_HELM_G;
 import static net.runelite.api.ItemID.DRAGON_FULL_HELM_ORNAMENT_KIT;
+import static net.runelite.api.ItemID.DRAGON_HALBERD;
+import static net.runelite.api.ItemID.DRAGON_HALBERD_CR;
 import static net.runelite.api.ItemID.DRAGON_HARPOON;
 import static net.runelite.api.ItemID.DRAGON_HARPOON_OR;
 import static net.runelite.api.ItemID.DRAGON_HUNTER_CROSSBOW;
@@ -240,6 +263,14 @@ import static net.runelite.api.ItemID.DRAGON_KITESHIELD;
 import static net.runelite.api.ItemID.DRAGON_KITESHIELD_G;
 import static net.runelite.api.ItemID.DRAGON_KITESHIELD_ORNAMENT_KIT;
 import static net.runelite.api.ItemID.DRAGON_LEGSSKIRT_ORNAMENT_KIT;
+import static net.runelite.api.ItemID.DRAGON_LONGSWORD;
+import static net.runelite.api.ItemID.DRAGON_LONGSWORD_BH;
+import static net.runelite.api.ItemID.DRAGON_LONGSWORD_CR;
+import static net.runelite.api.ItemID.DRAGON_MACE;
+import static net.runelite.api.ItemID.DRAGON_MACE_BH;
+import static net.runelite.api.ItemID.DRAGON_MACE_CR;
+import static net.runelite.api.ItemID.DRAGON_MED_HELM;
+import static net.runelite.api.ItemID.DRAGON_MED_HELM_CR;
 import static net.runelite.api.ItemID.DRAGON_PICKAXE;
 import static net.runelite.api.ItemID.DRAGON_PICKAXE_12797;
 import static net.runelite.api.ItemID.DRAGON_PICKAXE_OR;
@@ -248,15 +279,39 @@ import static net.runelite.api.ItemID.DRAGON_PLATEBODY;
 import static net.runelite.api.ItemID.DRAGON_PLATEBODY_G;
 import static net.runelite.api.ItemID.DRAGON_PLATEBODY_ORNAMENT_KIT;
 import static net.runelite.api.ItemID.DRAGON_PLATELEGS;
+import static net.runelite.api.ItemID.DRAGON_PLATELEGS_CR;
 import static net.runelite.api.ItemID.DRAGON_PLATELEGS_G;
 import static net.runelite.api.ItemID.DRAGON_PLATESKIRT;
+import static net.runelite.api.ItemID.DRAGON_PLATESKIRT_CR;
 import static net.runelite.api.ItemID.DRAGON_PLATESKIRT_G;
 import static net.runelite.api.ItemID.DRAGON_SCIMITAR;
+import static net.runelite.api.ItemID.DRAGON_SCIMITAR_CR;
 import static net.runelite.api.ItemID.DRAGON_SCIMITAR_OR;
 import static net.runelite.api.ItemID.DRAGON_SCIMITAR_ORNAMENT_KIT;
+import static net.runelite.api.ItemID.DRAGON_SPEAR;
+import static net.runelite.api.ItemID.DRAGON_SPEARP;
+import static net.runelite.api.ItemID.DRAGON_SPEARP_5716;
+import static net.runelite.api.ItemID.DRAGON_SPEARP_5730;
+import static net.runelite.api.ItemID.DRAGON_SPEAR_CR;
+import static net.runelite.api.ItemID.DRAGON_SPEAR_PCR;
+import static net.runelite.api.ItemID.DRAGON_SPEAR_PCR_28045;
+import static net.runelite.api.ItemID.DRAGON_SPEAR_PCR_28047;
 import static net.runelite.api.ItemID.DRAGON_SQ_SHIELD;
+import static net.runelite.api.ItemID.DRAGON_SQ_SHIELD_CR;
 import static net.runelite.api.ItemID.DRAGON_SQ_SHIELD_G;
 import static net.runelite.api.ItemID.DRAGON_SQ_SHIELD_ORNAMENT_KIT;
+import static net.runelite.api.ItemID.DRAGON_SWORD;
+import static net.runelite.api.ItemID.DRAGON_SWORD_CR;
+import static net.runelite.api.ItemID.DRAGON_WARHAMMER;
+import static net.runelite.api.ItemID.DRAGON_WARHAMMER_CR;
+import static net.runelite.api.ItemID.ELDER_CHAOS_HOOD;
+import static net.runelite.api.ItemID.ELDER_CHAOS_HOOD_OR;
+import static net.runelite.api.ItemID.ELDER_CHAOS_ROBE;
+import static net.runelite.api.ItemID.ELDER_CHAOS_ROBE_OR;
+import static net.runelite.api.ItemID.ELDER_CHAOS_TOP;
+import static net.runelite.api.ItemID.ELDER_CHAOS_TOP_OR;
+import static net.runelite.api.ItemID.ELDER_MAUL;
+import static net.runelite.api.ItemID.ELDER_MAUL_OR;
 import static net.runelite.api.ItemID.ELDRITCH_NIGHTMARE_STAFF;
 import static net.runelite.api.ItemID.ELDRITCH_ORB;
 import static net.runelite.api.ItemID.ELIDINIS_WARD;
@@ -369,7 +424,10 @@ import static net.runelite.api.ItemID.GUTHIX_HALO_L;
 import static net.runelite.api.ItemID.HARMONISED_NIGHTMARE_STAFF;
 import static net.runelite.api.ItemID.HARMONISED_ORB;
 import static net.runelite.api.ItemID.HEALER_HAT_L;
+import static net.runelite.api.ItemID.HEAVY_BALLISTA;
+import static net.runelite.api.ItemID.HEAVY_BALLISTA_OR;
 import static net.runelite.api.ItemID.HELM_OF_NEITIZNOT;
+import static net.runelite.api.ItemID.HELM_OF_NEITIZNOT_OR;
 import static net.runelite.api.ItemID.HOLY_BOOK_OR;
 import static net.runelite.api.ItemID.HOLY_GHRAZI_RAPIER;
 import static net.runelite.api.ItemID.HOLY_SANGUINESTI_STAFF;
@@ -708,8 +766,24 @@ public enum ItemMapping
 	ITEM_VERACS_FLAIL(VERACS_FLAIL, VERACS_FLAIL_25, VERACS_FLAIL_50, VERACS_FLAIL_75, VERACS_FLAIL_100),
 
 	// Dragon equipment ornament kits
-	ITEM_DRAGON_SCIMITAR(DRAGON_SCIMITAR, DRAGON_SCIMITAR_OR),
+	ITEM_DRAGON_2H_SWORD(DRAGON_2H_SWORD, DRAGON_2H_SWORD_CR),
+	ITEM_DRAGON_BATTLEAXE(DRAGON_BATTLEAXE, DRAGON_BATTLEAXE_CR),
+	ITEM_DRAGON_CLAWS(DRAGON_CLAWS, DRAGON_CLAWS_CR),
+	ITEM_DRAGON_CROSSBOW(DRAGON_CROSSBOW, DRAGON_CROSSBOW_CR),
+	ITEM_DRAGON_DAGGER(DRAGON_DAGGER, DRAGON_DAGGER_CR),
+	ITEM_DRAGON_DAGGER_P(DRAGON_DAGGERP, DRAGON_DAGGER_PCR),
+	ITEM_DRAGON_DAGGER_P_(DRAGON_DAGGERP_5680, DRAGON_DAGGER_PCR_28023),
+	ITEM_DRAGON_DAGGER_P__(DRAGON_DAGGERP_5698, DRAGON_DAGGER_PCR_28025),
+	ITEM_DRAGON_HALBERD(DRAGON_HALBERD, DRAGON_HALBERD_CR),
+	// Dragon longsword and Dragon mace are included in "Bounty hunter" section
+	ITEM_DRAGON_SCIMITAR(DRAGON_SCIMITAR, DRAGON_SCIMITAR_OR, DRAGON_SCIMITAR_CR),
 	ITEM_DRAGON_SCIMITAR_ORNAMENT_KIT(DRAGON_SCIMITAR_ORNAMENT_KIT, DRAGON_SCIMITAR_OR),
+	ITEM_DRAGON_SPEAR(DRAGON_SPEAR, DRAGON_SPEAR_CR),
+	ITEM_DRAGON_SPEAR_P(DRAGON_SPEARP, DRAGON_SPEAR_PCR),
+	ITEM_DRAGON_SPEAR_P_(DRAGON_SPEARP_5716, DRAGON_SPEAR_PCR_28045),
+	ITEM_DRAGON_SPEAR_P__(DRAGON_SPEARP_5730, DRAGON_SPEAR_PCR_28047),
+	ITEM_DRAGON_SWORD(DRAGON_SWORD, DRAGON_SWORD_CR),
+	ITEM_DRAGON_WARHAMMER(DRAGON_WARHAMMER, DRAGON_WARHAMMER_CR),
 	ITEM_DRAGON_DEFENDER(DRAGON_DEFENDER_ORNAMENT_KIT, DRAGON_DEFENDER_T),
 	ITEM_DRAGON_PICKAXE(DRAGON_PICKAXE, DRAGON_PICKAXE_12797, DRAGON_PICKAXE_OR, DRAGON_PICKAXE_OR_25376),
 	ITEM_DRAGON_PICKAXE_OR(ZALCANO_SHARD, DRAGON_PICKAXE_OR),
@@ -726,17 +800,18 @@ public enum ItemMapping
 	ITEM_DRAGON_KITESHIELD_ORNAMENT_KIT(DRAGON_KITESHIELD_ORNAMENT_KIT, DRAGON_KITESHIELD_G),
 	ITEM_DRAGON_FULL_HELM(DRAGON_FULL_HELM, DRAGON_FULL_HELM_G),
 	ITEM_DRAGON_FULL_HELM_ORNAMENT_KIT(DRAGON_FULL_HELM_ORNAMENT_KIT, DRAGON_FULL_HELM_G),
-	ITEM_DRAGON_CHAINBODY(DRAGON_CHAINBODY_3140, DRAGON_CHAINBODY_G),
+	ITEM_DRAGON_MED_HELM(DRAGON_MED_HELM, DRAGON_MED_HELM_CR),
+	ITEM_DRAGON_CHAINBODY(DRAGON_CHAINBODY_3140, DRAGON_CHAINBODY_G, DRAGON_CHAINBODY_CR),
 	ITEM_DRAGON_CHAINBODY_ORNAMENT_KIT(DRAGON_CHAINBODY_ORNAMENT_KIT, DRAGON_CHAINBODY_G),
 	ITEM_DRAGON_PLATEBODY(DRAGON_PLATEBODY, DRAGON_PLATEBODY_G),
 	ITEM_DRAGON_PLATEBODY_ORNAMENT_KIT(DRAGON_PLATEBODY_ORNAMENT_KIT, DRAGON_PLATEBODY_G),
-	ITEM_DRAGON_PLATESKIRT(DRAGON_PLATESKIRT, DRAGON_PLATESKIRT_G),
+	ITEM_DRAGON_PLATESKIRT(DRAGON_PLATESKIRT, DRAGON_PLATESKIRT_G, DRAGON_PLATESKIRT_CR),
 	ITEM_DRAGON_SKIRT_ORNAMENT_KIT(DRAGON_LEGSSKIRT_ORNAMENT_KIT, DRAGON_PLATESKIRT_G),
-	ITEM_DRAGON_PLATELEGS(DRAGON_PLATELEGS, DRAGON_PLATELEGS_G),
+	ITEM_DRAGON_PLATELEGS(DRAGON_PLATELEGS, DRAGON_PLATELEGS_G, DRAGON_PLATELEGS_CR),
 	ITEM_DRAGON_LEGS_ORNAMENT_KIT(DRAGON_LEGSSKIRT_ORNAMENT_KIT, DRAGON_PLATELEGS_G),
-	ITEM_DRAGON_SQ_SHIELD(DRAGON_SQ_SHIELD, DRAGON_SQ_SHIELD_G),
+	ITEM_DRAGON_SQ_SHIELD(DRAGON_SQ_SHIELD, DRAGON_SQ_SHIELD_G, DRAGON_SQ_SHIELD_CR),
 	ITEM_DRAGON_SQ_SHIELD_ORNAMENT_KIT(DRAGON_SQ_SHIELD_ORNAMENT_KIT, DRAGON_SQ_SHIELD_G),
-	ITEM_DRAGON_BOOTS(DRAGON_BOOTS, DRAGON_BOOTS_G),
+	ITEM_DRAGON_BOOTS(DRAGON_BOOTS, DRAGON_BOOTS_G, DRAGON_BOOTS_CR),
 	ITEM_DRAGON_BOOTS_ORNAMENT_KIT(DRAGON_BOOTS_ORNAMENT_KIT, DRAGON_BOOTS_G),
 
 	// Rune ornament kits
@@ -788,6 +863,11 @@ public enum ItemMapping
 	ITEM_CANNON_FURNACE(CANNON_FURNACE, CANNON_FURNACE_OR),
 	ITEM_CANNON_STAND(CANNON_STAND, CANNON_STAND_OR),
 	ITEM_SHATTERED_CANNON_ORNAMENT_KIT(SHATTERED_CANNON_ORNAMENT_KIT, CANNON_BARRELS_OR, CANNON_BASE_OR, CANNON_FURNACE_OR, CANNON_STAND_OR),
+	ITEM_ELDER_MAUL(ELDER_MAUL, ELDER_MAUL_OR),
+	ITEM_HEAVY_BALLISTA(HEAVY_BALLISTA, HEAVY_BALLISTA_OR),
+	ITEM_ELDER_CHAOS_HOOD(ELDER_CHAOS_HOOD, ELDER_CHAOS_HOOD_OR),
+	ITEM_ELDER_CHAOS_TOP(ELDER_CHAOS_TOP, ELDER_CHAOS_TOP_OR),
+	ITEM_ELDER_CHAOS_ROBE(ELDER_CHAOS_ROBE, ELDER_CHAOS_ROBE_OR),
 
 	// Ensouled heads
 	ITEM_ENSOULED_GOBLIN_HEAD(ENSOULED_GOBLIN_HEAD_13448, ENSOULED_GOBLIN_HEAD),
@@ -829,6 +909,9 @@ public enum ItemMapping
 	ITEM_MAGIC_SHORTBOW(MAGIC_SHORTBOW, MAGIC_SHORTBOW_I),
 	ITEM_MAGIC_SHORTBOW_SCROLL(MAGIC_SHORTBOW_SCROLL, MAGIC_SHORTBOW_I),
 	ITEM_SARADOMINS_BLESSED_SWORD(SARADOMINS_TEAR, SARADOMINS_BLESSED_SWORD),
+	ITEM_ABYSSAL_DAGGER(ABYSSAL_DAGGER, ABYSSAL_DAGGER_BH),
+	ITEM_DRAGON_LONGSWORD(DRAGON_LONGSWORD, DRAGON_LONGSWORD_BH, DRAGON_LONGSWORD_CR),
+	ITEM_DRAGON_MACE(DRAGON_MACE, DRAGON_MACE_BH, DRAGON_MACE_CR),
 
 	// Jewellery with charges
 	ITEM_RING_OF_WEALTH(RING_OF_WEALTH, true, 1L, RING_OF_WEALTH_1),
@@ -885,7 +968,7 @@ public enum ItemMapping
 	ITEM_INFINITY_HAT_DARK_COLOUR_KIT(DARK_INFINITY_COLOUR_KIT, DARK_INFINITY_HAT),
 
 	// Miscellaneous ornament kits
-	ITEM_DARK_BOW(DARK_BOW, DARK_BOW_12765, DARK_BOW_12766, DARK_BOW_12767, DARK_BOW_12768, DARK_BOW_20408),
+	ITEM_DARK_BOW(DARK_BOW, DARK_BOW_12765, DARK_BOW_12766, DARK_BOW_12767, DARK_BOW_12768, DARK_BOW_20408, DARK_BOW_BH),
 	ITEM_ODIUM_WARD(ODIUM_WARD, ODIUM_WARD_12807),
 	ITEM_MALEDICTION_WARD(MALEDICTION_WARD, MALEDICTION_WARD_12806),
 	ITEM_STEAM_BATTLESTAFF(STEAM_BATTLESTAFF, STEAM_BATTLESTAFF_12795),
@@ -903,7 +986,7 @@ public enum ItemMapping
 	ITEM_DRAGONBONE_NECKLACE(DRAGONBONE_NECKLACE, BONECRUSHER_NECKLACE),
 	ITEM_BOTTOMLESS_COMPOST_BUCKET(BOTTOMLESS_COMPOST_BUCKET, BOTTOMLESS_COMPOST_BUCKET_22997),
 	ITEM_BASILISK_JAW(BASILISK_JAW, NEITIZNOT_FACEGUARD),
-	ITEM_HELM_OF_NEITIZNOT(HELM_OF_NEITIZNOT, NEITIZNOT_FACEGUARD),
+	ITEM_HELM_OF_NEITIZNOT(HELM_OF_NEITIZNOT, NEITIZNOT_FACEGUARD, HELM_OF_NEITIZNOT_OR),
 	ITEM_TWISTED_HORNS(TWISTED_HORNS, TWISTED_SLAYER_HELMET, TWISTED_SLAYER_HELMET_I, TWISTED_SLAYER_HELMET_I_25191, TWISTED_SLAYER_HELMET_I_26681),
 	ITEM_ELDRITCH_ORB(ELDRITCH_ORB, ELDRITCH_NIGHTMARE_STAFF),
 	ITEM_HARMONISED_ORB(HARMONISED_ORB, HARMONISED_NIGHTMARE_STAFF),
