@@ -27,6 +27,8 @@ package net.runelite.mixins;
 
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
 import com.google.common.primitives.Doubles;
 import net.runelite.api.Actor;
 import net.runelite.api.Animation;
@@ -168,6 +170,7 @@ import javax.annotation.Nullable;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.EnumSet;
 import java.util.HashMap;
@@ -1494,34 +1497,23 @@ public abstract class RSClientMixin implements RSClient
 	}
 
 	@Inject
-	private static Map<Integer, ArrayList<Integer>> varbitsMap;
+	private static Multimap<Integer, Integer> varbits = HashMultimap.create();
 
 	@Inject
-	public static void loadVarbits()
+	private static void loadVarbits()
 	{
-		// Load varbits into map<index, varbitIds>
-		if (varbitsMap == null)
+		if (varbits.isEmpty())
 		{
-			varbitsMap = new HashMap<>();
-			RSArchive archive = client.getIndexConfig();
-			int[] fileIds = archive.getFileIds(14);
-
-			for (int i = 0; i < fileIds.length; i++)
+			// Build varp index -> varbit id map
+			IndexDataBase indexVarbits = client.getIndexConfig();
+			int VARBITS_ARCHIVE_ID = 14;
+			final int[] varbitIds = indexVarbits.getFileIds(VARBITS_ARCHIVE_ID);
+			for (int id : varbitIds)
 			{
-				VarbitComposition varbitComposition = client.getVarbit(i);
-				if (varbitComposition != null)
+				VarbitComposition varbit = client.getVarbit(id);
+				if (varbit != null)
 				{
-					int idx = varbitComposition.getIndex();
-					if (varbitsMap.containsKey(idx))
-					{
-						varbitsMap.get(idx).add(i);
-					}
-					else
-					{
-						ArrayList<Integer> varbitIds = new ArrayList<>();
-						varbitIds.add(i);
-						varbitsMap.put(idx, varbitIds);
-					}
+					varbits.put(varbit.getIndex(), id);
 				}
 			}
 		}
@@ -1625,7 +1617,7 @@ public abstract class RSClientMixin implements RSClient
 
 		if (!Arrays.equals(oldVarps, client.getVarps()))
 		{
-			ArrayList<Integer> varbitIds = varbitsMap.get(idx);
+			Collection<Integer> varbitIds = varbits.get(idx);
 
 			if (varbitIds == null || varbitIds.isEmpty())
 			{
