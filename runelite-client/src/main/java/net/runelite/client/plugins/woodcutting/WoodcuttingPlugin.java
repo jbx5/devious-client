@@ -62,10 +62,8 @@ import net.runelite.client.Notifier;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.plugins.Plugin;
-import net.runelite.client.plugins.PluginDependency;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.plugins.woodcutting.config.ClueNestTier;
-import net.runelite.client.plugins.xptracker.XpTrackerPlugin;
 import net.runelite.client.ui.overlay.OverlayManager;
 
 @PluginDescriptor(
@@ -74,11 +72,11 @@ import net.runelite.client.ui.overlay.OverlayManager;
 	tags = {"birds", "nest", "notifications", "overlay", "skilling", "wc", "forestry"},
 	enabledByDefault = false
 )
-@PluginDependency(XpTrackerPlugin.class)
 @Slf4j
 public class WoodcuttingPlugin extends Plugin
 {
 	private static final Pattern WOOD_CUT_PATTERN = Pattern.compile("You get (?:some|an)[\\w ]+(?:logs?|mushrooms)\\.");
+	private static final Pattern ANIMA_BARK_PATTERN = Pattern.compile("You've been awarded <col=[0-9a-f]+>(\\d+) Anima-infused bark</col>\\.");
 
 	@Inject
 	private Notifier notifier;
@@ -183,7 +181,7 @@ public class WoodcuttingPlugin extends Plugin
 
 		if (sinceCut.compareTo(statTimeout) >= 0)
 		{
-			session = null;
+			session.setActive(false);
 			axe = null;
 		}
 	}
@@ -198,7 +196,9 @@ public class WoodcuttingPlugin extends Plugin
 			return;
 		}
 
-		if (WOOD_CUT_PATTERN.matcher(event.getMessage()).matches())
+		final var msg = event.getMessage();
+
+		if (WOOD_CUT_PATTERN.matcher(msg).matches())
 		{
 			if (session == null)
 			{
@@ -206,9 +206,23 @@ public class WoodcuttingPlugin extends Plugin
 			}
 
 			session.setLastChopping();
+			session.incrementLogsCut();
 		}
 
-		var msg = event.getMessage();
+		var matcher = ANIMA_BARK_PATTERN.matcher(msg);
+		if (matcher.matches())
+		{
+			if (session == null)
+			{
+				session = new WoodcuttingSession();
+			}
+
+			session.setLastChopping();
+
+			int num = Integer.parseInt(matcher.group(1));
+			session.incrementBark(num);
+		}
+
 		if (msg.contains("A bird's nest falls out of the tree") && config.showNestNotification())
 		{
 			if (clueTierSpawned == null || clueTierSpawned.ordinal() >= config.clueNestNotifyTier().ordinal())
