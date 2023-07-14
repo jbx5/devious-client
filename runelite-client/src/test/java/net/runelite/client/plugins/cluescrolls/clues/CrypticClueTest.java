@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018, Tomas Slusny <slusnucky@gmail.com>
+ * Copyright (c) 2020, Jordan Atwood <jordan.atwood423@gmail.com>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,16 +24,45 @@
  */
 package net.runelite.client.plugins.cluescrolls.clues;
 
-import net.runelite.api.coords.WorldPoint;
+import net.runelite.api.Client;
+import net.runelite.api.Varbits;
 import net.runelite.client.plugins.cluescrolls.ClueScrollPlugin;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import static org.mockito.Mockito.when;
+import org.mockito.junit.MockitoJUnitRunner;
 
-public interface LocationClueScroll
+@RunWith(MockitoJUnitRunner.class)
+public class CrypticClueTest
 {
-	WorldPoint getLocation(ClueScrollPlugin plugin);
+	@Mock
+	private ClueScrollPlugin plugin;
 
-	default WorldPoint[] getLocations(ClueScrollPlugin plugin)
+	@Mock
+	private Client client;
+
+	@Test
+	public void forTextEmptyString()
 	{
-		WorldPoint location = getLocation(plugin);
-		return location == null ? new WorldPoint[0] : new WorldPoint[]{location};
+		assertNull(CrypticClue.forText(""));
+	}
+
+	@Test
+	public void forViggoraLocations()
+	{
+		when(plugin.getClient()).thenReturn(client);
+		when(client.getVarbitValue(Varbits.VIGGORA_LOCATION)).thenReturn(0, 1, 2, 3, 4);
+
+		CrypticClue clue = CrypticClue.forText("Come brave adventurer, your sense is on fire. If you talk to me, it's an old god you desire.");
+		assert clue != null;
+
+		assertNull(clue.getLocation(plugin));
+		assertNotNull(clue.getLocation(plugin));
+		assertNotNull(clue.getLocation(plugin));
+		assertNotNull(clue.getLocation(plugin));
+		assertNull(clue.getLocation(plugin));
 	}
 }

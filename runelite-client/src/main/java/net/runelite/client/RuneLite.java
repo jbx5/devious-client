@@ -584,7 +584,9 @@ public class RuneLite
 
 		if (options.has("enable-telemetry"))
 		{
-			injector.getInstance(TelemetryClient.class).submitTelemetry();
+			TelemetryClient telemetryClient = injector.getInstance(TelemetryClient.class);
+			telemetryClient.submitTelemetry();
+			telemetryClient.submitVmErrors(LOGS_DIR);
 		}
 
 		ReflectUtil.queueInjectorAnnotationCacheInvalidation(injector);
