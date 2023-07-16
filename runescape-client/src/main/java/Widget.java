@@ -1349,8 +1349,8 @@ public class Widget extends Node {
                case 4:
                   ItemComposition var15 = class300.ItemDefinition_get(var8);
                   var12 = var15.getModelData(10);
-                  var13 += var15.field2238;
-                  var14 += var15.field2239;
+                  var13 += var15.ambient;
+                  var14 += var15.contrast;
                case 5:
                default:
                   break;
