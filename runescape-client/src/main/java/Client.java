@@ -2999,7 +2999,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 			}
 
 			int var1;
-			for (var1 = 0; var1 < 100 && this.method1288(packetWriter); ++var1) {
+			for (var1 = 0; var1 < 100 && this.method1434(packetWriter); ++var1) {
 			}
 
 			if (gameState == 30) {
@@ -4060,7 +4060,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 		descriptor = "(Leb;I)Z",
 		garbageValue = "1827422343"
 	)
-	final boolean method1288(PacketWriter var1) {
+	final boolean method1434(PacketWriter var1) {
 		AbstractSocket var2 = var1.getSocket();
 		PacketBuffer var3 = var1.packetBuffer;
 		if (var2 == null) {
