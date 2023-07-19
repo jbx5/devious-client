@@ -3,167 +3,498 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kv")
+@ObfuscatedName("kw")
 @Implements("WorldMapSprite")
 public final class WorldMapSprite {
-   @ObfuscatedName("an")
-   @Export("tileColors")
-   final int[] tileColors;
+	@ObfuscatedName("ay")
+	@Export("tileColors")
+	final int[] tileColors;
 
-   WorldMapSprite() {
-      this.tileColors = new int[4096];
-   }
+	WorldMapSprite() {
+		this.tileColors = new int[4096];
+	}
 
-   WorldMapSprite(int[] var1) {
-      this.tileColors = var1;
-   }
+	WorldMapSprite(int[] var1) {
+		this.tileColors = var1;
+	}
 
-   @ObfuscatedName("at")
-   @ObfuscatedSignature(
-      descriptor = "(III)I",
-      garbageValue = "-1695191644"
-   )
-   @Export("getTileColor")
-   final int getTileColor(int var1, int var2) {
-      return this.tileColors[var1 + var2 * 64];
-   }
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "(III)I",
+		garbageValue = "-1192538000"
+	)
+	@Export("getTileColor")
+	final int getTileColor(int var1, int var2) {
+		return this.tileColors[var1 + var2 * 64];
+	}
 
-   @ObfuscatedName("gs")
-   @ObfuscatedSignature(
-      descriptor = "(IB)V",
-      garbageValue = "-86"
-   )
-   @Export("getLoginError")
-   static void getLoginError(int var0) {
-      int var1 = class135.method3048();
-      if (var0 == -3) {
-         class478.setLoginResponseString("Connection timed out.", "Please try using a different world.", "");
-      } else if (var0 == -2) {
-         class478.setLoginResponseString("Error connecting to server.", "Please try using a different world.", "");
-      } else if (var0 == -1) {
-         class478.setLoginResponseString("No response from server.", "Please try using a different world.", "");
-      } else if (var0 == 3) {
-         class390.method7249(3);
-         Login.field929 = 1;
-      } else if (var0 == 4) {
-         class390.method7249(14);
-         Login.Login_banType = 0;
-      } else if (var0 == 5) {
-         Login.field929 = 2;
-         class478.setLoginResponseString("Either your account is still logged in, or the last", "world you were using has become unavailable.", "Please try again later.");
-      } else if (var0 == 68 || !Client.onMobile && var0 == 6) {
-         class478.setLoginResponseString("RuneScape has been updated!", "Please reload this page.", "");
-      } else if (var0 == 7) {
-         class478.setLoginResponseString("This world is full.", "Please use a different world.", "");
-      } else if (var0 == 8) {
-         class478.setLoginResponseString("Unable to connect.", "Login server offline.", "");
-      } else if (var0 == 9) {
-         class478.setLoginResponseString("Login limit exceeded.", "Too many connections from your address.", "");
-      } else if (var0 == 10) {
-         class478.setLoginResponseString("Unable to connect.", "Bad session id.", "");
-      } else if (var0 == 11) {
-         class478.setLoginResponseString("We suspect someone knows your password.", "Press 'change your password' on front page.", "");
-      } else if (var0 == 12) {
-         class478.setLoginResponseString("You need a members account to login to this world.", "Please subscribe, or use a different world.", "");
-      } else if (var0 == 13) {
-         class478.setLoginResponseString("Could not complete login.", "Please try using a different world.", "");
-      } else if (var0 == 14) {
-         class478.setLoginResponseString("The server is being updated.", "Please wait 1 minute and try again.", "");
-      } else if (var0 == 16) {
-         class478.setLoginResponseString("Too many login attempts.", "You can use the Jagex Launcher to continue playing.", "Press the button below to download it now.");
-         class390.method7249(33);
-      } else if (var0 == 17) {
-         class478.setLoginResponseString("To access this free world, log into a", "members world and move your character", "to a non-members area.");
-      } else if (var0 == 18) {
-         class390.method7249(14);
-         Login.Login_banType = 1;
-      } else if (var0 == 19) {
-         class478.setLoginResponseString("This world is running a closed Beta.", "Sorry invited players only.", "Please use a different world.");
-      } else if (var0 == 20) {
-         class478.setLoginResponseString("Invalid loginserver requested.", "Please try using a different world.", "");
-      } else if (var0 == 22) {
-         class478.setLoginResponseString("Malformed login packet.", "Please try again.", "");
-      } else if (var0 == 23) {
-         class478.setLoginResponseString("No reply from loginserver.", "Please wait 1 minute and try again.", "");
-      } else if (var0 == 24) {
-         class478.setLoginResponseString("Error loading your profile.", "Please contact customer support.", "");
-      } else if (var0 == 25) {
-         class478.setLoginResponseString("Unexpected loginserver response.", "Please try using a different world.", "");
-      } else if (var0 == 26) {
-         class478.setLoginResponseString("This computers address has been blocked", "as it was used to break our rules.", "");
-      } else if (var0 == 27) {
-         class478.setLoginResponseString("", "Service unavailable.", "");
-      } else if (var0 == 31) {
-         class478.setLoginResponseString("Your account must have a displayname set", "in order to play the game.  Please set it", "via the website, or the main game.");
-      } else if (var0 == 32) {
-         class390.method7249(14);
-         Login.Login_banType = 2;
-      } else if (var0 == 37) {
-         class478.setLoginResponseString("Your account is currently inaccessible.", "Please try again in a few minutes.", "");
-      } else if (var0 == 38) {
-         class478.setLoginResponseString("You need to vote to play!", "Visit runescape.com and vote,", "and then come back here!");
-      } else if (var0 == 55) {
-         class390.method7249(8);
-      } else {
-         if (var0 == 56) {
-            class478.setLoginResponseString("Enter the 6-digit code generated by your", "authenticator app.", "");
-            UserComparator8.updateGameState(11);
-            return;
-         }
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "(IIILin;Lij;Z[I[ILiq;I)I",
+		garbageValue = "-475105468"
+	)
+	public static int method5513(int var0, int var1, int var2, RouteStrategy var3, CollisionMap var4, boolean var5, int[] var6, int[] var7, class217 var8) {
+		var8.method4232();
+		int var9 = var8.method4236();
+		int var10 = var8.method4237();
+		int[][] var11 = var8.method4260();
+		int[][] var12 = var8.method4238();
+		int[] var13 = var8.method4240();
+		int[] var14 = var8.method4241();
+		boolean var15;
+		int var17;
+		int var18;
+		int var23;
+		int var24;
+		int var25;
+		int var26;
+		int var27;
+		int var28;
+		int var29;
+		int var31;
+		int var33;
+		int var43;
+		if (var2 == 1) {
+			var15 = class172.method3519(var0, var1, var3, var4, var8);
+		} else {
+			boolean var16;
+			int[][] var19;
+			int[][] var20;
+			int[] var21;
+			int[] var22;
+			byte var30;
+			int[][] var32;
+			int var34;
+			int var35;
+			if (var2 == 2) {
+				var17 = var8.method4236();
+				var18 = var8.method4237();
+				var19 = var8.method4260();
+				var20 = var8.method4238();
+				var21 = var8.method4240();
+				var22 = var8.method4241();
+				var23 = var8.method4242();
+				var24 = var0;
+				var25 = var1;
+				var26 = var17 >> 1;
+				var27 = var18 >> 1;
+				var28 = var0 - var26;
+				var29 = var1 - var27;
+				var20[var26][var27] = 99;
+				var19[var26][var27] = 0;
+				var30 = 0;
+				var31 = 0;
+				var21[var30] = var0;
+				var43 = var30 + 1;
+				var22[var30] = var1;
+				var32 = var4.flags;
 
-         if (var0 == 57) {
-            class478.setLoginResponseString("The code you entered was incorrect.", "Please try again.", "");
-            UserComparator8.updateGameState(11);
-            return;
-         }
+				while (true) {
+					if (var43 == var31) {
+						var8.method4233(var24, var25);
+						var16 = false;
+						break;
+					}
 
-         if (var0 == 61) {
-            class478.setLoginResponseString("", "Please enter your date of birth (DD/MM/YYYY)", "");
-            class390.method7249(7);
-         } else {
-            if (var0 == 62) {
-               UserComparator8.updateGameState(10);
-               class390.method7249(9);
-               class478.setLoginResponseString("Login attempt timed out.", "Please try again.", "");
-               return;
-            }
+					var24 = var21[var31];
+					var25 = var22[var31];
+					var31 = var31 + 1 & var23;
+					var26 = var24 - var28;
+					var27 = var25 - var29;
+					var33 = var24 - var4.xInset;
+					var34 = var25 - var4.yInset;
+					if (var3.hasArrived(2, var24, var25, var4)) {
+						var8.method4233(var24, var25);
+						var16 = true;
+						break;
+					}
 
-            if (var0 == 63) {
-               UserComparator8.updateGameState(10);
-               class390.method7249(9);
-               class478.setLoginResponseString("You were signed out.", "Please sign in again.", "");
-               return;
-            }
+					var35 = var19[var26][var27] + 1;
+					if (var26 > 0 && var20[var26 - 1][var27] == 0 && (var32[var33 - 1][var34] & 19136782) == 0 && (var32[var33 - 1][var34 + 1] & 19136824) == 0) {
+						var21[var43] = var24 - 1;
+						var22[var43] = var25;
+						var43 = var43 + 1 & var23;
+						var20[var26 - 1][var27] = 2;
+						var19[var26 - 1][var27] = var35;
+					}
 
-            if (var0 == 65 || var0 == 67) {
-               UserComparator8.updateGameState(10);
-               class390.method7249(9);
-               class478.setLoginResponseString("Failed to login.", "Please try again.", "");
-               return;
-            }
+					if (var26 < var17 - 2 && var20[var26 + 1][var27] == 0 && (var32[var33 + 2][var34] & 19136899) == 0 && (var32[var33 + 2][var34 + 1] & 19136992) == 0) {
+						var21[var43] = var24 + 1;
+						var22[var43] = var25;
+						var43 = var43 + 1 & var23;
+						var20[var26 + 1][var27] = 8;
+						var19[var26 + 1][var27] = var35;
+					}
 
-            if (var0 == 71) {
-               UserComparator8.updateGameState(10);
-               class390.method7249(7);
-               class478.setLoginResponseString("There was a problem updating your DOB.", "Please try again later. If the problem ", "persists, please contact Jagex Support.");
-            } else if (var0 == 73) {
-               UserComparator8.updateGameState(10);
-               class390.method7249(6);
-               class478.setLoginResponseString("Your date of birth information is waiting", "to be reviewed by our staff.", "It will be processed shortly.");
-            } else if (var0 == 72) {
-               UserComparator8.updateGameState(10);
-               class390.method7249(32);
-            } else {
-               class478.setLoginResponseString("Unexpected server response", "Please try using a different world.", "");
-            }
-         }
-      }
+					if (var27 > 0 && var20[var26][var27 - 1] == 0 && (var32[var33][var34 - 1] & 19136782) == 0 && (var32[var33 + 1][var34 - 1] & 19136899) == 0) {
+						var21[var43] = var24;
+						var22[var43] = var25 - 1;
+						var43 = var43 + 1 & var23;
+						var20[var26][var27 - 1] = 1;
+						var19[var26][var27 - 1] = var35;
+					}
 
-      UserComparator8.updateGameState(10);
-      boolean var2 = var1 != class135.method3048();
-      if (!var2 && Client.field633.method9212()) {
-         class390.method7249(9);
-      }
+					if (var27 < var18 - 2 && var20[var26][var27 + 1] == 0 && (var32[var33][var34 + 2] & 19136824) == 0 && (var32[var33 + 1][var34 + 2] & 19136992) == 0) {
+						var21[var43] = var24;
+						var22[var43] = var25 + 1;
+						var43 = var43 + 1 & var23;
+						var20[var26][var27 + 1] = 4;
+						var19[var26][var27 + 1] = var35;
+					}
 
-   }
+					if (var26 > 0 && var27 > 0 && var20[var26 - 1][var27 - 1] == 0 && (var32[var33 - 1][var34] & 19136830) == 0 && (var32[var33 - 1][var34 - 1] & 19136782) == 0 && (var32[var33][var34 - 1] & 19136911) == 0) {
+						var21[var43] = var24 - 1;
+						var22[var43] = var25 - 1;
+						var43 = var43 + 1 & var23;
+						var20[var26 - 1][var27 - 1] = 3;
+						var19[var26 - 1][var27 - 1] = var35;
+					}
+
+					if (var26 < var17 - 2 && var27 > 0 && var20[var26 + 1][var27 - 1] == 0 && (var32[var33 + 1][var34 - 1] & 19136911) == 0 && (var32[var33 + 2][var34 - 1] & 19136899) == 0 && (var32[var33 + 2][var34] & 19136995) == 0) {
+						var21[var43] = var24 + 1;
+						var22[var43] = var25 - 1;
+						var43 = var43 + 1 & var23;
+						var20[var26 + 1][var27 - 1] = 9;
+						var19[var26 + 1][var27 - 1] = var35;
+					}
+
+					if (var26 > 0 && var27 < var18 - 2 && var20[var26 - 1][var27 + 1] == 0 && (var32[var33 - 1][var34 + 1] & 19136830) == 0 && (var32[var33 - 1][var34 + 2] & 19136824) == 0 && (var32[var33][var34 + 2] & 19137016) == 0) {
+						var21[var43] = var24 - 1;
+						var22[var43] = var25 + 1;
+						var43 = var43 + 1 & var23;
+						var20[var26 - 1][var27 + 1] = 6;
+						var19[var26 - 1][var27 + 1] = var35;
+					}
+
+					if (var26 < var17 - 2 && var27 < var18 - 2 && var20[var26 + 1][var27 + 1] == 0 && (var32[var33 + 1][var34 + 2] & 19137016) == 0 && (var32[var33 + 2][var34 + 2] & 19136992) == 0 && (var32[var33 + 2][var34 + 1] & 19136995) == 0) {
+						var21[var43] = var24 + 1;
+						var22[var43] = var25 + 1;
+						var43 = var43 + 1 & var23;
+						var20[var26 + 1][var27 + 1] = 12;
+						var19[var26 + 1][var27 + 1] = var35;
+					}
+				}
+
+				var15 = var16;
+			} else {
+				var17 = var8.method4236();
+				var18 = var8.method4237();
+				var19 = var8.method4260();
+				var20 = var8.method4238();
+				var21 = var8.method4240();
+				var22 = var8.method4241();
+				var23 = var8.method4242();
+				var24 = var0;
+				var25 = var1;
+				var26 = var17 >> 1;
+				var27 = var18 >> 1;
+				var28 = var0 - var26;
+				var29 = var1 - var27;
+				var20[var26][var27] = 99;
+				var19[var26][var27] = 0;
+				var30 = 0;
+				var31 = 0;
+				var21[var30] = var0;
+				var43 = var30 + 1;
+				var22[var30] = var1;
+				var32 = var4.flags;
+
+				label624:
+				while (true) {
+					label622:
+					while (true) {
+						int var36;
+						do {
+							do {
+								do {
+									label599:
+									do {
+										if (var31 == var43) {
+											var8.method4233(var24, var25);
+											var16 = false;
+											break label624;
+										}
+
+										var24 = var21[var31];
+										var25 = var22[var31];
+										var31 = var31 + 1 & var23;
+										var26 = var24 - var28;
+										var27 = var25 - var29;
+										var33 = var24 - var4.xInset;
+										var34 = var25 - var4.yInset;
+										if (var3.hasArrived(var2, var24, var25, var4)) {
+											var8.method4233(var24, var25);
+											var16 = true;
+											break label624;
+										}
+
+										var35 = var19[var26][var27] + 1;
+										if (var26 > 0 && var20[var26 - 1][var27] == 0 && (var32[var33 - 1][var34] & 19136782) == 0 && (var32[var33 - 1][var34 + var2 - 1] & 19136824) == 0) {
+											var36 = 1;
+
+											while (true) {
+												if (var36 >= var2 - 1) {
+													var21[var43] = var24 - 1;
+													var22[var43] = var25;
+													var43 = var43 + 1 & var23;
+													var20[var26 - 1][var27] = 2;
+													var19[var26 - 1][var27] = var35;
+													break;
+												}
+
+												if ((var32[var33 - 1][var34 + var36] & 19136830) != 0) {
+													break;
+												}
+
+												++var36;
+											}
+										}
+
+										if (var26 < var17 - var2 && var20[var26 + 1][var27] == 0 && (var32[var33 + var2][var34] & 19136899) == 0 && (var32[var33 + var2][var34 + var2 - 1] & 19136992) == 0) {
+											var36 = 1;
+
+											while (true) {
+												if (var36 >= var2 - 1) {
+													var21[var43] = var24 + 1;
+													var22[var43] = var25;
+													var43 = var43 + 1 & var23;
+													var20[var26 + 1][var27] = 8;
+													var19[var26 + 1][var27] = var35;
+													break;
+												}
+
+												if ((var32[var33 + var2][var34 + var36] & 19136995) != 0) {
+													break;
+												}
+
+												++var36;
+											}
+										}
+
+										if (var27 > 0 && var20[var26][var27 - 1] == 0 && (var32[var33][var34 - 1] & 19136782) == 0 && (var32[var33 + var2 - 1][var34 - 1] & 19136899) == 0) {
+											var36 = 1;
+
+											while (true) {
+												if (var36 >= var2 - 1) {
+													var21[var43] = var24;
+													var22[var43] = var25 - 1;
+													var43 = var43 + 1 & var23;
+													var20[var26][var27 - 1] = 1;
+													var19[var26][var27 - 1] = var35;
+													break;
+												}
+
+												if ((var32[var36 + var33][var34 - 1] & 19136911) != 0) {
+													break;
+												}
+
+												++var36;
+											}
+										}
+
+										if (var27 < var18 - var2 && var20[var26][var27 + 1] == 0 && (var32[var33][var34 + var2] & 19136824) == 0 && (var32[var33 + var2 - 1][var34 + var2] & 19136992) == 0) {
+											var36 = 1;
+
+											while (true) {
+												if (var36 >= var2 - 1) {
+													var21[var43] = var24;
+													var22[var43] = var25 + 1;
+													var43 = var43 + 1 & var23;
+													var20[var26][var27 + 1] = 4;
+													var19[var26][var27 + 1] = var35;
+													break;
+												}
+
+												if ((var32[var33 + var36][var34 + var2] & 19137016) != 0) {
+													break;
+												}
+
+												++var36;
+											}
+										}
+
+										if (var26 > 0 && var27 > 0 && var20[var26 - 1][var27 - 1] == 0 && (var32[var33 - 1][var34 - 1] & 19136782) == 0) {
+											var36 = 1;
+
+											while (true) {
+												if (var36 >= var2) {
+													var21[var43] = var24 - 1;
+													var22[var43] = var25 - 1;
+													var43 = var43 + 1 & var23;
+													var20[var26 - 1][var27 - 1] = 3;
+													var19[var26 - 1][var27 - 1] = var35;
+													break;
+												}
+
+												if ((var32[var33 - 1][var36 + (var34 - 1)] & 19136830) != 0 || (var32[var36 + (var33 - 1)][var34 - 1] & 19136911) != 0) {
+													break;
+												}
+
+												++var36;
+											}
+										}
+
+										if (var26 < var17 - var2 && var27 > 0 && var20[var26 + 1][var27 - 1] == 0 && (var32[var33 + var2][var34 - 1] & 19136899) == 0) {
+											var36 = 1;
+
+											while (true) {
+												if (var36 >= var2) {
+													var21[var43] = var24 + 1;
+													var22[var43] = var25 - 1;
+													var43 = var43 + 1 & var23;
+													var20[var26 + 1][var27 - 1] = 9;
+													var19[var26 + 1][var27 - 1] = var35;
+													break;
+												}
+
+												if ((var32[var33 + var2][var36 + (var34 - 1)] & 19136995) != 0 || (var32[var33 + var36][var34 - 1] & 19136911) != 0) {
+													break;
+												}
+
+												++var36;
+											}
+										}
+
+										if (var26 > 0 && var27 < var18 - var2 && var20[var26 - 1][var27 + 1] == 0 && (var32[var33 - 1][var34 + var2] & 19136824) == 0) {
+											for (var36 = 1; var36 < var2; ++var36) {
+												if ((var32[var33 - 1][var36 + var34] & 19136830) != 0 || (var32[var36 + (var33 - 1)][var34 + var2] & 19137016) != 0) {
+													continue label599;
+												}
+											}
+
+											var21[var43] = var24 - 1;
+											var22[var43] = var25 + 1;
+											var43 = var43 + 1 & var23;
+											var20[var26 - 1][var27 + 1] = 6;
+											var19[var26 - 1][var27 + 1] = var35;
+										}
+									} while(var26 >= var17 - var2);
+								} while(var27 >= var18 - var2);
+							} while(var20[var26 + 1][var27 + 1] != 0);
+						} while((var32[var33 + var2][var34 + var2] & 19136992) != 0);
+
+						for (var36 = 1; var36 < var2; ++var36) {
+							if ((var32[var33 + var36][var34 + var2] & 19137016) != 0 || (var32[var33 + var2][var36 + var34] & 19136995) != 0) {
+								continue label622;
+							}
+						}
+
+						var21[var43] = var24 + 1;
+						var22[var43] = var25 + 1;
+						var43 = var43 + 1 & var23;
+						var20[var26 + 1][var27 + 1] = 12;
+						var19[var26 + 1][var27 + 1] = var35;
+					}
+				}
+
+				var15 = var16;
+			}
+		}
+
+		int var42 = var0 - (var9 >> 1);
+		var17 = var1 - (var10 >> 1);
+		var18 = var8.method4234();
+		int var37 = var8.method4257();
+		int var38;
+		int var39;
+		if (!var15) {
+			var38 = Integer.MAX_VALUE;
+			var39 = Integer.MAX_VALUE;
+			byte var40 = 10;
+			var23 = var3.approxDestinationX;
+			var24 = var3.approxDestinationY;
+			var25 = var3.approxDestinationSizeX;
+			var26 = var3.approxDestinationSizeY;
+
+			for (var27 = var23 - var40; var27 <= var40 + var23; ++var27) {
+				for (var28 = var24 - var40; var28 <= var24 + var40; ++var28) {
+					var29 = var27 - var42;
+					var43 = var28 - var17;
+					if (var29 >= 0 && var43 >= 0 && var29 < var9 && var43 < var10 && var11[var29][var43] < 100) {
+						var31 = 0;
+						if (var27 < var23) {
+							var31 = var23 - var27;
+						} else if (var27 > var23 + var25 - 1) {
+							var31 = var27 - (var23 + var25 - 1);
+						}
+
+						int var41 = 0;
+						if (var28 < var24) {
+							var41 = var24 - var28;
+						} else if (var28 > var26 + var24 - 1) {
+							var41 = var28 - (var26 + var24 - 1);
+						}
+
+						var33 = var31 * var31 + var41 * var41;
+						if (var33 < var38 || var38 == var33 && var11[var29][var43] < var39) {
+							var38 = var33;
+							var39 = var11[var29][var43];
+							var18 = var27;
+							var37 = var28;
+						}
+					}
+				}
+			}
+
+			if (var38 == Integer.MAX_VALUE) {
+				return -1;
+			}
+		}
+
+		if (var0 == var18 && var37 == var1) {
+			var6[0] = var18;
+			var7[0] = var37;
+			return 0;
+		} else {
+			byte var44 = 0;
+			var13[var44] = var18;
+			var38 = var44 + 1;
+			var14[var44] = var37;
+
+			int var45;
+			for (var39 = var45 = var12[var18 - var42][var37 - var17]; var0 != var18 || var37 != var1; var39 = var12[var18 - var42][var37 - var17]) {
+				if (var45 != var39) {
+					var45 = var39;
+					var13[var38] = var18;
+					var14[var38++] = var37;
+				}
+
+				if ((var39 & 2) != 0) {
+					++var18;
+				} else if ((var39 & 8) != 0) {
+					--var18;
+				}
+
+				if ((var39 & 1) != 0) {
+					++var37;
+				} else if ((var39 & 4) != 0) {
+					--var37;
+				}
+			}
+
+			var23 = 0;
+
+			while (var38-- > 0) {
+				var6[var23] = var13[var38];
+				var7[var23++] = var14[var38];
+				if (var23 >= var6.length) {
+					break;
+				}
+			}
+
+			return var23;
+		}
+	}
+
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "(III)I",
+		garbageValue = "86727146"
+	)
+	static final int method5515(int var0, int var1) {
+		int var2 = Canvas.method322(var0 - 1, var1 - 1) + Canvas.method322(1 + var0, var1 - 1) + Canvas.method322(var0 - 1, var1 + 1) + Canvas.method322(1 + var0, 1 + var1);
+		int var3 = Canvas.method322(var0 - 1, var1) + Canvas.method322(1 + var0, var1) + Canvas.method322(var0, var1 - 1) + Canvas.method322(var0, 1 + var1);
+		int var4 = Canvas.method322(var0, var1);
+		return var2 / 16 + var3 / 8 + var4 / 4;
+	}
 }

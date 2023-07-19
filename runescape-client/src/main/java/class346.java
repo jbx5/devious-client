@@ -1,26 +1,46 @@
-import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("np")
+@ObfuscatedName("nc")
 public class class346 {
-   @ObfuscatedName("kd")
-   @ObfuscatedSignature(
-      descriptor = "(II)Ljava/lang/String;",
-      garbageValue = "-1225846728"
-   )
-   @Export("formatItemStacks")
-   static final String formatItemStacks(int var0) {
-      String var1 = Integer.toString(var0);
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "Lnc;"
+	)
+	static final class346 field3863;
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "Lnc;"
+	)
+	static final class346 field3860;
+	@ObfuscatedName("ar")
+	@ObfuscatedGetter(
+		intValue = 1852756963
+	)
+	final int field3861;
+	@ObfuscatedName("am")
+	@ObfuscatedGetter(
+		intValue = 1077429433
+	)
+	final int field3862;
 
-      for(int var2 = var1.length() - 3; var2 > 0; var2 -= 3) {
-         var1 = var1.substring(0, var2) + "," + var1.substring(var2);
-      }
+	static {
+		field3863 = new class346(51, 27, 800, 0, 16, 16);
+		field3860 = new class346(25, 28, 800, 656, 40, 40);
+	}
 
-      if (var1.length() > 9) {
-         return " " + Strings.colorStartTag(65408) + var1.substring(0, var1.length() - 8) + "M" + " " + " (" + var1 + ")" + "</col>";
-      } else {
-         return var1.length() > 6 ? " " + Strings.colorStartTag(16777215) + var1.substring(0, var1.length() - 4) + "K" + " " + " (" + var1 + ")" + "</col>" : " " + Strings.colorStartTag(16776960) + var1 + "</col>";
-      }
-   }
+	class346(int var1, int var2, int var3, int var4, int var5, int var6) {
+		this.field3861 = var5;
+		this.field3862 = var6;
+	}
+
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "(II)I",
+		garbageValue = "-1801743156"
+	)
+	public static int method6649(int var0) {
+		return var0 != 0 && var0 != 1 ? -1 : 0;
+	}
 }

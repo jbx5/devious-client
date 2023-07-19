@@ -1,177 +1,97 @@
-import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import javax.net.ssl.HttpsURLConnection;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("pj")
-public class class407 {
-   @ObfuscatedName("as")
-   final Map field4541 = new HashMap();
-   @ObfuscatedName("ax")
-   final Map field4540 = new HashMap();
-   @ObfuscatedName("ap")
-   final DecimalFormat field4539 = new DecimalFormat();
+@ObfuscatedName("pp")
+public abstract class class407 {
+	@ObfuscatedName("av")
+	@ObfuscatedSignature(
+		descriptor = "Lud;"
+	)
+	@Export("leftTitleSprite")
+	static SpritePixels leftTitleSprite;
+	@ObfuscatedName("am")
+	@ObfuscatedSignature(
+		descriptor = "Lpp;"
+	)
+	class407 field4527;
+	@ObfuscatedName("as")
+	String field4529;
+	@ObfuscatedName("aj")
+	String field4528;
+	@ObfuscatedName("ag")
+	boolean field4530;
+	@ObfuscatedName("az")
+	boolean field4526;
 
-   public class407() {
-      this.field4539.setMaximumFractionDigits(2);
-   }
+	@ObfuscatedSignature(
+		descriptor = "(Lpp;)V"
+	)
+	class407(class407 var1) {
+		this.field4527 = var1;
+	}
 
-   @ObfuscatedName("at")
-   @ObfuscatedSignature(
-      descriptor = "(Ljavax/net/ssl/HttpsURLConnection;I)V",
-      garbageValue = "-2039102239"
-   )
-   public void method7640(HttpsURLConnection var1) {
-      Iterator var2 = this.field4541.entrySet().iterator();
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "(II)Z",
+		garbageValue = "994462530"
+	)
+	public abstract boolean vmethod7676(int var1);
 
-      while(var2.hasNext()) {
-         Map.Entry var3 = (Map.Entry)var2.next();
-         var1.setRequestProperty((String)var3.getKey(), (String)var3.getValue());
-      }
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "(B)Z",
+		garbageValue = "15"
+	)
+	public boolean method7668() {
+		return this.field4530;
+	}
 
-   }
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z",
+		garbageValue = "751419690"
+	)
+	public boolean method7650() {
+		return this.field4526;
+	}
 
-   @ObfuscatedName("an")
-   @ObfuscatedSignature(
-      descriptor = "(I)Ljava/util/Map;",
-      garbageValue = "2005775152"
-   )
-   public Map method7641() {
-      return this.field4541;
-   }
+	@ObfuscatedName("av")
+	@ObfuscatedSignature(
+		descriptor = "(B)Ljava/lang/String;",
+		garbageValue = "-29"
+	)
+	public String method7651() {
+		return "Error in task: " + this.field4528 + ", Error message: " + this.field4529;
+	}
 
-   @ObfuscatedName("av")
-   @ObfuscatedSignature(
-      descriptor = "(Ljava/lang/String;Ljava/lang/String;I)V",
-      garbageValue = "755189204"
-   )
-   public void method7642(String var1, String var2) {
-      if (var1 != null && !var1.isEmpty()) {
-         this.field4541.put(var1, var2 != null ? var2 : "");
-      }
+	@ObfuscatedName("ap")
+	@ObfuscatedSignature(
+		descriptor = "(S)Lpp;",
+		garbageValue = "276"
+	)
+	public class407 method7652() {
+		return this.field4527;
+	}
 
-   }
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;I)V",
+		garbageValue = "934674418"
+	)
+	void method7653(String var1) {
+		this.field4530 = true;
+		this.field4529 = var1;
+	}
 
-   @ObfuscatedName("as")
-   @ObfuscatedSignature(
-      descriptor = "(Ljava/lang/String;I)V",
-      garbageValue = "-1921423246"
-   )
-   public void method7643(String var1) {
-      if (var1 != null && !var1.isEmpty()) {
-         this.field4541.remove(var1);
-      }
-
-   }
-
-   @ObfuscatedName("ax")
-   @ObfuscatedSignature(
-      descriptor = "(Lpt;Ljava/lang/String;B)V",
-      garbageValue = "-48"
-   )
-   void method7644(class406 var1, String var2) {
-      String var3 = String.format("%s %s", var1.method7635(), var2);
-      this.method7642("Authorization", var3);
-   }
-
-   @ObfuscatedName("ap")
-   @ObfuscatedSignature(
-      descriptor = "(Ljava/lang/String;I)V",
-      garbageValue = "1629749961"
-   )
-   public void method7678(String var1) {
-      this.method7644(class406.field4536, var1);
-   }
-
-   @ObfuscatedName("ab")
-   @ObfuscatedSignature(
-      descriptor = "(Ljava/lang/String;B)V",
-      garbageValue = "-35"
-   )
-   public void method7646(String var1) {
-      this.method7644(class406.field4535, var1);
-   }
-
-   @ObfuscatedName("ak")
-   @ObfuscatedSignature(
-      descriptor = "(Lro;I)V",
-      garbageValue = "-1402490176"
-   )
-   public void method7647(class448 var1) {
-      this.field4541.put("Content-Type", var1.method8223());
-   }
-
-   @ObfuscatedName("ae")
-   @ObfuscatedSignature(
-      descriptor = "(B)V",
-      garbageValue = "-67"
-   )
-   public void method7645() {
-      this.field4541.remove("Content-Type");
-   }
-
-   @ObfuscatedName("af")
-   @ObfuscatedSignature(
-      descriptor = "(Lro;I)V",
-      garbageValue = "-1014036136"
-   )
-   public void method7649(class448 var1) {
-      this.method7667(var1, 1.0F);
-   }
-
-   @ObfuscatedName("ao")
-   @ObfuscatedSignature(
-      descriptor = "(Lro;FB)V",
-      garbageValue = "49"
-   )
-   void method7667(class448 var1, float var2) {
-      this.field4540.put(var1, Math.max(0.0F, Math.min(1.0F, var2)));
-      this.method7651();
-   }
-
-   @ObfuscatedName("aa")
-   @ObfuscatedSignature(
-      descriptor = "(B)V",
-      garbageValue = "-24"
-   )
-   void method7651() {
-      this.field4541.remove("Accept");
-      if (!this.field4540.isEmpty()) {
-         this.field4541.put("Accept", this.method7666());
-      }
-
-   }
-
-   @ObfuscatedName("aj")
-   @ObfuscatedSignature(
-      descriptor = "(I)Ljava/lang/String;",
-      garbageValue = "-877459928"
-   )
-   String method7666() {
-      ArrayList var1 = new ArrayList(this.field4540.entrySet());
-      Collections.sort(var1, new class408(this));
-      StringBuilder var2 = new StringBuilder();
-      Iterator var3 = var1.iterator();
-
-      while(var3.hasNext()) {
-         Map.Entry var4 = (Map.Entry)var3.next();
-         if (var2.length() > 0) {
-            var2.append(",");
-         }
-
-         var2.append(((class448)var4.getKey()).method8223());
-         float var5 = (Float)var4.getValue();
-         if (var5 < 1.0F) {
-            String var6 = this.field4539.format((double)var5);
-            var2.append(";q=").append(var6);
-         }
-      }
-
-      return var2.toString();
-   }
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "(Lnd;Lnd;Lnd;I)V",
+		garbageValue = "-1865602506"
+	)
+	public static void method7667(AbstractArchive var0, AbstractArchive var1, AbstractArchive var2) {
+		SequenceDefinition.SequenceDefinition_archive = var0;
+		class333.SequenceDefinition_animationsArchive = var1;
+		class169.SequenceDefinition_skeletonsArchive = var2;
+	}
 }

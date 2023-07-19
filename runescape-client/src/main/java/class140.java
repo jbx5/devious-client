@@ -3,96 +3,71 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ft")
-public class class140 extends class142 {
-   @ObfuscatedName("at")
-   @ObfuscatedGetter(
-      longValue = 1751161965949237267L
-   )
-   long field1618;
-   @ObfuscatedName("an")
-   String field1617;
-   // $FF: synthetic field
-   @ObfuscatedSignature(
-      descriptor = "Lfh;"
-   )
-   final class145 this$0;
+@ObfuscatedName("fl")
+public class class140 extends class143 {
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "Lnd;"
+	)
+	@Export("ItemDefinition_modelArchive")
+	static AbstractArchive ItemDefinition_modelArchive;
+	@ObfuscatedName("jh")
+	@ObfuscatedGetter(
+		intValue = -1294738569
+	)
+	static int field1640;
+	@ObfuscatedName("aw")
+	@ObfuscatedGetter(
+		intValue = -2119013471
+	)
+	int field1641;
+	@ObfuscatedName("ay")
+	@ObfuscatedGetter(
+		intValue = -1993792891
+	)
+	int field1636;
+	@ObfuscatedName("ar")
+	@ObfuscatedGetter(
+		intValue = -160323187
+	)
+	int field1635;
+	@ObfuscatedName("am")
+	@ObfuscatedGetter(
+		intValue = -1695229803
+	)
+	int field1639;
+	// $FF: synthetic field
+	@ObfuscatedSignature(
+		descriptor = "Lfr;"
+	)
+	final class146 this$0;
 
-   @ObfuscatedSignature(
-      descriptor = "(Lfh;)V"
-   )
-   class140(class145 var1) {
-      this.this$0 = var1;
-      this.field1618 = -1L;
-      this.field1617 = null;
-   }
+	@ObfuscatedSignature(
+		descriptor = "(Lfr;)V"
+	)
+	class140(class146 var1) {
+		this.this$0 = var1;
+		this.field1641 = -1;
+	}
 
-   @ObfuscatedName("at")
-   @ObfuscatedSignature(
-      descriptor = "(Ltz;B)V",
-      garbageValue = "59"
-   )
-   void vmethod3381(Buffer var1) {
-      if (var1.readUnsignedByte() != 255) {
-         --var1.offset;
-         this.field1618 = var1.readLong();
-      }
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "(Lty;B)V",
+		garbageValue = "1"
+	)
+	void vmethod3412(Buffer var1) {
+		this.field1641 = var1.readUnsignedShort();
+		this.field1636 = var1.readInt();
+		this.field1635 = var1.readUnsignedByte();
+		this.field1639 = var1.readUnsignedByte();
+	}
 
-      this.field1617 = var1.readStringCp1252NullTerminatedOrNull();
-   }
-
-   @ObfuscatedName("an")
-   @ObfuscatedSignature(
-      descriptor = "(Lfs;B)V",
-      garbageValue = "-72"
-   )
-   void vmethod3382(ClanSettings var1) {
-      var1.method3207(this.field1618, this.field1617, 0);
-   }
-
-   @ObfuscatedName("at")
-   @ObfuscatedSignature(
-      descriptor = "(Lnq;B)V",
-      garbageValue = "37"
-   )
-   public static void method3112(AbstractArchive var0) {
-      EnumComposition.EnumDefinition_archive = var0;
-   }
-
-   @ObfuscatedName("ln")
-   @ObfuscatedSignature(
-      descriptor = "(Lmb;III)V",
-      garbageValue = "-1010047426"
-   )
-   @Export("alignWidgetPosition")
-   static void alignWidgetPosition(Widget var0, int var1, int var2) {
-      if (var0.xAlignment == 0) {
-         var0.x = var0.rawX;
-      } else if (var0.xAlignment == 1) {
-         var0.x = var0.rawX + (var1 - var0.width) / 2;
-      } else if (var0.xAlignment == 2) {
-         var0.x = var1 - var0.width - var0.rawX;
-      } else if (var0.xAlignment == 3) {
-         var0.x = var0.rawX * var1 >> 14;
-      } else if (var0.xAlignment == 4) {
-         var0.x = (var0.rawX * var1 >> 14) + (var1 - var0.width) / 2;
-      } else {
-         var0.x = var1 - var0.width - (var0.rawX * var1 >> 14);
-      }
-
-      if (var0.yAlignment == 0) {
-         var0.y = var0.rawY;
-      } else if (var0.yAlignment == 1) {
-         var0.y = (var2 - var0.height) / 2 + var0.rawY;
-      } else if (var0.yAlignment == 2) {
-         var0.y = var2 - var0.height - var0.rawY;
-      } else if (var0.yAlignment == 3) {
-         var0.y = var2 * var0.rawY >> 14;
-      } else if (var0.yAlignment == 4) {
-         var0.y = (var2 * var0.rawY >> 14) + (var2 - var0.height) / 2;
-      } else {
-         var0.y = var2 - var0.height - (var2 * var0.rawY >> 14);
-      }
-
-   }
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "(Lfx;B)V",
+		garbageValue = "-72"
+	)
+	void vmethod3419(ClanSettings var1) {
+		var1.method3239(this.field1641, this.field1636, this.field1635, this.field1639);
+	}
 }
