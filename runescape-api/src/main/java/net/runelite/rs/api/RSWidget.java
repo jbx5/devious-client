@@ -84,9 +84,6 @@ public interface RSWidget extends Widget
 	@Import("itemIds")
 	void setItemIds(int[] itemIds);
 
-	@Import("itemQuantities")
-	int[] getItemQuantities();
-
 	@Import("modelType")
 	int getModelType();
 

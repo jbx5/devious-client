@@ -562,19 +562,19 @@ public class WorldMapRegion {
 
 						if (var8.decoration == WorldMapDecorationType.field3809.id) {
 							if (var8.rotation == 0) {
-								Rasterizer2D.method9438(this.pixelsPerTile * var1, this.pixelsPerTile * (63 - var2), 1, var12);
+								Rasterizer2D.Rasterizer2D_drawHorizontalLine(this.pixelsPerTile * var1, this.pixelsPerTile * (63 - var2), 1, var12);
 							}
 
 							if (var8.rotation == 1) {
-								Rasterizer2D.method9438(this.pixelsPerTile * var1 + this.pixelsPerTile - 1, this.pixelsPerTile * (63 - var2), 1, var12);
+								Rasterizer2D.Rasterizer2D_drawHorizontalLine(this.pixelsPerTile * var1 + this.pixelsPerTile - 1, this.pixelsPerTile * (63 - var2), 1, var12);
 							}
 
 							if (var8.rotation == 2) {
-								Rasterizer2D.method9438(this.pixelsPerTile * var1 + this.pixelsPerTile - 1, this.pixelsPerTile * (63 - var2) + this.pixelsPerTile - 1, 1, var12);
+								Rasterizer2D.Rasterizer2D_drawHorizontalLine(this.pixelsPerTile * var1 + this.pixelsPerTile - 1, this.pixelsPerTile * (63 - var2) + this.pixelsPerTile - 1, 1, var12);
 							}
 
 							if (var8.rotation == 3) {
-								Rasterizer2D.method9438(this.pixelsPerTile * var1, this.pixelsPerTile * (63 - var2) + this.pixelsPerTile - 1, 1, var12);
+								Rasterizer2D.Rasterizer2D_drawHorizontalLine(this.pixelsPerTile * var1, this.pixelsPerTile * (63 - var2) + this.pixelsPerTile - 1, 1, var12);
 							}
 						}
 
@@ -583,11 +583,11 @@ public class WorldMapRegion {
 							int var14;
 							if (var13 == 0) {
 								for (var14 = 0; var14 < this.pixelsPerTile; ++var14) {
-									Rasterizer2D.method9438(var14 + this.pixelsPerTile * var1, (64 - var2) * this.pixelsPerTile - 1 - var14, 1, var12);
+									Rasterizer2D.Rasterizer2D_drawHorizontalLine(var14 + this.pixelsPerTile * var1, (64 - var2) * this.pixelsPerTile - 1 - var14, 1, var12);
 								}
 							} else {
 								for (var14 = 0; var14 < this.pixelsPerTile; ++var14) {
-									Rasterizer2D.method9438(var14 + this.pixelsPerTile * var1, var14 + this.pixelsPerTile * (63 - var2), 1, var12);
+									Rasterizer2D.Rasterizer2D_drawHorizontalLine(var14 + this.pixelsPerTile * var1, var14 + this.pixelsPerTile * (63 - var2), 1, var12);
 								}
 							}
 						}
@@ -890,19 +890,19 @@ public class WorldMapRegion {
 	void method5245(int var1, int var2, int var3, int var4) {
 		var3 %= 4;
 		if (var3 == 0) {
-			Rasterizer2D.method9440(this.pixelsPerTile * var1, this.pixelsPerTile * (63 - var2), this.pixelsPerTile, var4);
+			Rasterizer2D.Rasterizer2D_drawVerticalLine(this.pixelsPerTile * var1, this.pixelsPerTile * (63 - var2), this.pixelsPerTile, var4);
 		}
 
 		if (var3 == 1) {
-			Rasterizer2D.method9438(this.pixelsPerTile * var1, this.pixelsPerTile * (63 - var2), this.pixelsPerTile, var4);
+			Rasterizer2D.Rasterizer2D_drawHorizontalLine(this.pixelsPerTile * var1, this.pixelsPerTile * (63 - var2), this.pixelsPerTile, var4);
 		}
 
 		if (var3 == 2) {
-			Rasterizer2D.method9440(this.pixelsPerTile * var1 + this.pixelsPerTile - 1, this.pixelsPerTile * (63 - var2), this.pixelsPerTile, var4);
+			Rasterizer2D.Rasterizer2D_drawVerticalLine(this.pixelsPerTile * var1 + this.pixelsPerTile - 1, this.pixelsPerTile * (63 - var2), this.pixelsPerTile, var4);
 		}
 
 		if (var3 == 3) {
-			Rasterizer2D.method9438(this.pixelsPerTile * var1, this.pixelsPerTile * (63 - var2) + this.pixelsPerTile - 1, this.pixelsPerTile, var4);
+			Rasterizer2D.Rasterizer2D_drawHorizontalLine(this.pixelsPerTile * var1, this.pixelsPerTile * (63 - var2) + this.pixelsPerTile - 1, this.pixelsPerTile, var4);
 		}
 
 	}

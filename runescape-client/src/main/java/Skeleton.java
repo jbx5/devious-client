@@ -482,8 +482,8 @@ public class Skeleton extends Node {
 						++var0;
 					}
 
-					if (DynamicObject.field1014 == null) {
-						DynamicObject.field1014 = class453.method8339(class386.archive8, class350.field3888.field4713, 0);
+					if (DynamicObject.mapDotSprites == null) {
+						DynamicObject.mapDotSprites = class453.method8339(class386.archive8, class350.field3888.field4713, 0);
 					} else {
 						++var0;
 					}
@@ -594,13 +594,13 @@ public class Skeleton extends Node {
 						Login.Login_loadingText = "Loading textures - " + "0%";
 						Login.Login_loadingPercent = 90;
 					} else {
-						class113.field1431 = new TextureProvider(class148.field1670, class386.archive8, 20, class150.clientPreferences.method2476(), Client.isLowDetail ? 64 : 128);
-						Rasterizer3D.method4404(class113.field1431);
+						class113.textureProvider = new TextureProvider(class148.field1670, class386.archive8, 20, class150.clientPreferences.method2476(), Client.isLowDetail ? 64 : 128);
+						Rasterizer3D.method4404(class113.textureProvider);
 						Rasterizer3D.method4405(class150.clientPreferences.method2476());
 						Client.field547 = class92.field1149;
 					}
 				} else if (Client.field547 == class92.field1149) {
-					var0 = class113.field1431.getLoadedPercentage();
+					var0 = class113.textureProvider.getLoadedPercentage();
 					if (var0 < 100) {
 						Login.Login_loadingText = "Loading textures - " + var0 + "%";
 						Login.Login_loadingPercent = 90;

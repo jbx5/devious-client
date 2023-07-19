@@ -283,27 +283,32 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 	@ObfuscatedGetter(
 		intValue = -712016263
 	)
-	static int field539;
+	@Export("hintArrowX")
+	static int hintArrowX;
 	@ObfuscatedName("eq")
 	@ObfuscatedGetter(
 		intValue = -1813183945
 	)
-	static int field607;
+	@Export("hintArrowY")
+	static int hintArrowY;
 	@ObfuscatedName("ee")
 	@ObfuscatedGetter(
 		intValue = 610251460
 	)
-	static int field541;
+	@Export("hintArrowHeight")
+	static int hintArrowHeight;
 	@ObfuscatedName("eg")
 	@ObfuscatedGetter(
 		intValue = -877869888
 	)
-	static int field542;
+	@Export("hintArrowSubX")
+	static int hintArrowSubX;
 	@ObfuscatedName("ey")
 	@ObfuscatedGetter(
 		intValue = 132594496
 	)
-	static int field543;
+	@Export("hintArrowSubY")
+	static int hintArrowSubY;
 	@ObfuscatedName("ea")
 	@ObfuscatedSignature(
 		descriptor = "Ldw;"
@@ -469,7 +474,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 	@Export("isInInstance")
 	static boolean isInInstance;
 	@ObfuscatedName("jj")
-	static int[][][] field590;
+	@Export("instanceChunkTemplates")
+	static int[][][] instanceChunkTemplates;
 	@ObfuscatedName("jg")
 	static final int[] field591;
 	@ObfuscatedName("jv")
@@ -1173,12 +1179,14 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 	@ObfuscatedName("sd")
 	static String field747;
 	@ObfuscatedName("sl")
-	static long[] field748;
+	@Export("crossWorldMessageIds")
+	static long[] crossWorldMessageIds;
 	@ObfuscatedName("sk")
 	@ObfuscatedGetter(
 		intValue = -1532136743
 	)
-	static int field640;
+	@Export("crossWorldMessageIdsIndex")
+	static int crossWorldMessageIdsIndex;
 	@ObfuscatedName("st")
 	@ObfuscatedSignature(
 		descriptor = "Lih;"
@@ -1388,11 +1396,11 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 		hintArrowType = 0;
 		hintArrowNpcIndex = 0;
 		hintArrowPlayerIndex = 0;
-		field539 = 0;
-		field607 = 0;
-		field541 = 0;
-		field542 = 0;
-		field543 = 0;
+		hintArrowX = 0;
+		hintArrowY = 0;
+		hintArrowHeight = 0;
+		hintArrowSubX = 0;
+		hintArrowSubY = 0;
 		playerAttackOption = AttackOption.AttackOption_hidden;
 		npcAttackOption = AttackOption.AttackOption_hidden;
 		renderSelf = false;
@@ -1439,7 +1447,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 		field537 = 0;
 		collisionMaps = new CollisionMap[4];
 		isInInstance = false;
-		field590 = new int[4][13][13];
+		instanceChunkTemplates = new int[4][13][13];
 		field591 = new int[]{0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3};
 		graphicsCycle = 0;
 		field593 = 2301979;
@@ -1597,8 +1605,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 		publicChatMode = 0;
 		tradeChatMode = 0;
 		field747 = "";
-		field748 = new long[100];
-		field640 = 0;
+		crossWorldMessageIds = new long[100];
+		crossWorldMessageIdsIndex = 0;
 		field750 = new class213();
 		field612 = new class211();
 		field752 = 0;
@@ -4505,7 +4513,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					boolean var70 = false;
 
 					for (var15 = 0; var15 < 100; ++var15) {
-						if (field748[var15] == var26) {
+						if (crossWorldMessageIds[var15] == var26) {
 							var70 = true;
 							break;
 						}
@@ -4516,8 +4524,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					}
 
 					if (!var70 && field637 == 0) {
-						field748[field640] = var26;
-						field640 = (field640 + 1) % 100;
+						crossWorldMessageIds[crossWorldMessageIdsIndex] = var26;
+						crossWorldMessageIdsIndex = (crossWorldMessageIdsIndex + 1) % 100;
 						var36 = AbstractFont.escapeBrackets(class153.method3218(class292.method5720(var3)));
 						if (var91.modIcon != -1) {
 							class213.addChatMessage(9, SecureRandomCallable.method2253(var91.modIcon) + var52, var36, class170.base37DecodeLong(var29));
@@ -4642,7 +4650,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 						var62 = true;
 					} else {
 						for (var13 = 0; var13 < 100; ++var13) {
-							if (var33 == field748[var13]) {
+							if (var33 == crossWorldMessageIds[var13]) {
 								var62 = true;
 								break;
 							}
@@ -4650,8 +4658,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					}
 
 					if (!var62) {
-						field748[field640] = var33;
-						field640 = (field640 + 1) % 100;
+						crossWorldMessageIds[crossWorldMessageIdsIndex] = var33;
+						crossWorldMessageIdsIndex = (crossWorldMessageIdsIndex + 1) % 100;
 						var38 = class292.method5720(var3);
 						var69 = var72 >= 0 ? 43 : 46;
 						class213.addChatMessage(var69, "", var38, var12.name);
@@ -4925,34 +4933,34 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 
 					if (hintArrowType >= 2 && hintArrowType <= 6) {
 						if (hintArrowType == 2) {
-							field542 = 4096;
-							field543 = 4096;
+							hintArrowSubX = 4096;
+							hintArrowSubY = 4096;
 						}
 
 						if (hintArrowType == 3) {
-							field542 = 0;
-							field543 = 4096;
+							hintArrowSubX = 0;
+							hintArrowSubY = 4096;
 						}
 
 						if (hintArrowType == 4) {
-							field542 = 8192;
-							field543 = 4096;
+							hintArrowSubX = 8192;
+							hintArrowSubY = 4096;
 						}
 
 						if (hintArrowType == 5) {
-							field542 = 4096;
-							field543 = 0;
+							hintArrowSubX = 4096;
+							hintArrowSubY = 0;
 						}
 
 						if (hintArrowType == 6) {
-							field542 = 4096;
-							field543 = 8192;
+							hintArrowSubX = 4096;
+							hintArrowSubY = 8192;
 						}
 
 						hintArrowType = 2;
-						field539 = var3.readUnsignedShort();
-						field607 = var3.readUnsignedShort();
-						field541 = var3.readUnsignedByte() * 4;
+						hintArrowX = var3.readUnsignedShort();
+						hintArrowY = var3.readUnsignedShort();
+						hintArrowHeight = var3.readUnsignedByte() * 4;
 					}
 
 					if (hintArrowType == 10) {
@@ -5275,7 +5283,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 								break;
 							}
 
-							if (var44 == field748[var15]) {
+							if (var44 == crossWorldMessageIds[var15]) {
 								var65 = true;
 								break;
 							}
@@ -5285,8 +5293,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					}
 
 					if (!var65) {
-						field748[field640] = var44;
-						field640 = (field640 + 1) % 100;
+						crossWorldMessageIds[crossWorldMessageIdsIndex] = var44;
+						crossWorldMessageIdsIndex = (crossWorldMessageIdsIndex + 1) % 100;
 						var36 = AbstractFont.escapeBrackets(class292.method5720(var3));
 						var16 = var72 >= 0 ? 41 : 44;
 						if (var28.modIcon != -1) {
@@ -5735,7 +5743,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					var23 = false;
 
 					for (var13 = 0; var13 < 100; ++var13) {
-						if (var46 == field748[var13]) {
+						if (var46 == crossWorldMessageIds[var13]) {
 							var23 = true;
 							break;
 						}
@@ -5746,8 +5754,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					}
 
 					if (!var23 && field637 == 0) {
-						field748[field640] = var46;
-						field640 = (field640 + 1) % 100;
+						crossWorldMessageIds[crossWorldMessageIdsIndex] = var46;
+						crossWorldMessageIdsIndex = (crossWorldMessageIdsIndex + 1) % 100;
 						var38 = AbstractFont.escapeBrackets(class153.method3218(class292.method5720(var3)));
 						byte var14;
 						if (var25.isPrivileged) {
