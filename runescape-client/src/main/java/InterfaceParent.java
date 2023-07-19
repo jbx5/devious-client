@@ -152,7 +152,7 @@ public class InterfaceParent extends Node {
 		class158.masterDisk = null;
 		Client.archiveLoaders.clear();
 		Client.field814 = 0;
-		class153.field1700 = new class360();
+		class153.field1700 = new NewArchiveStuff();
 		WorldMapLabel.urlRequester = new class113(TileItem.client.field562, 215);
 
 		try {

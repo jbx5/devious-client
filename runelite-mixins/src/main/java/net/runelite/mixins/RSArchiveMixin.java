@@ -7,6 +7,7 @@ import net.runelite.api.mixins.Shadow;
 import net.runelite.rs.api.RSArchive;
 import net.runelite.rs.api.RSArchiveDisk;
 import net.runelite.rs.api.RSClient;
+import net.runelite.rs.api.RSNewArchiveStuff;
 
 @Mixin(RSArchive.class)
 public abstract class RSArchiveMixin implements RSArchive
@@ -20,7 +21,7 @@ public abstract class RSArchiveMixin implements RSArchive
 
 	@MethodHook(value = "<init>", end = true)
 	@Inject
-	private void rl$init(RSArchiveDisk var1, RSArchiveDisk var2, int archive, boolean var4, boolean var5, boolean var6, boolean var7)
+	private void rl$init(RSArchiveDisk var1, RSArchiveDisk var2, RSNewArchiveStuff var3, int archive, boolean var5, boolean var6, boolean var7, boolean var8)
 	{
 		if (archive >= 0 && archive < 21)
 		{

@@ -1,11 +1,13 @@
 import java.io.IOException;
 import java.util.zip.CRC32;
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("nq")
-public class class360 {
+@Implements("NewArchiveStuff")
+public class NewArchiveStuff {
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "Lqh;"
@@ -123,7 +125,7 @@ public class class360 {
 	)
 	public int field4298;
 
-	public class360() {
+	public NewArchiveStuff() {
 		this.field4296 = 0;
 		this.field4315 = new NodeHashTable(4096);
 		this.field4310 = 0;

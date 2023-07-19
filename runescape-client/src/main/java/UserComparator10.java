@@ -99,7 +99,7 @@ public class UserComparator10 extends AbstractUserComparator {
 			}
 
 			class306.field3398.clear();
-			class360 var6 = class153.field1700;
+			NewArchiveStuff var6 = class153.field1700;
 			var6.method6845(false);
 			Login.clearLoginScreen = true;
 			Login.xPadding = (GrandExchangeOfferTotalQuantityComparator.canvasWidth - 765) / 2;
