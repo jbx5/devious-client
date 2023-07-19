@@ -2605,13 +2605,20 @@ public abstract class RSClientMixin implements RSClient
 	@Inject
 	public void playMusicTrack(int var0, RSAbstractArchive var1, int var2, int var3, int var4, boolean var5)
 	{
-		client.setMusicPlayerStatus(1);
-		client.setMusicTrackArchive(var1);
-		client.setMusicTrackGroupId(var2);
-		client.setMusicTrackFileId(var3);
-		client.setMusicTrackVolume(var4);
-		client.setMusicTrackBoolean(var5);
-		client.setPcmSampleLength(var0);
+		for (RSMusicSong musicSong : client.getMusicSongs())
+		{
+			if (musicSong.getMusicTrackFileId() == var3)
+			{
+				client.setMusicPlayerStatus(1);
+				musicSong.setMusicTrackArchive(var1);
+				musicSong.setMusicTrackGroupId(var2);
+				musicSong.setMusicTrackFileId(var3);
+				musicSong.setMusicTrackVolume(var4);
+				musicSong.setMusicTrackBoolean(var5);
+				//musicSong.setPcmSampleLength(var0);
+				break;
+			}
+		}
 	}
 
 	@Inject
@@ -2713,16 +2720,17 @@ public abstract class RSClientMixin implements RSClient
 	@Override
 	public void setMusicVolume(int volume)
 	{
-		if (volume > 0 && client.getPreferences().getMusicVolume() <= 0 && client.getCurrentTrackGroupId() != -1)
+		RSMusicSong song = client.getMusicSongs().get(0);
+		if (volume > 0 && client.getPreferences().getMusicVolume() <= 0 && song.getMusicCurrentTrackId() != -1)
 		{
-			client.playMusicTrack(1000, client.getMusicTracks(), client.getCurrentTrackGroupId(), 0, volume, false);
+			client.playMusicTrack(1000, client.getMusicTracks(), song.getMusicCurrentTrackId(), 0, volume, false);
 		}
 
 		client.getPreferences().setMusicVolume(volume);
-		client.setMusicTrackVolume(volume);
-		if (client.getMidiPcmStream() != null)
+		song.setMusicTrackVolume(volume);
+		if (song.getMidiPcmStream() != null)
 		{
-			client.getMidiPcmStream().setPcmStreamVolume(volume);
+			song.getMidiPcmStream().setPcmStreamVolume(volume);
 		}
 	}
 

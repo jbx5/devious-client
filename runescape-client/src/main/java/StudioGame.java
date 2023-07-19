@@ -81,20 +81,20 @@ public enum StudioGame implements MouseWheel {
 		if (var0 != class150.clientPreferences.method2478()) {
 			label40: {
 				if (class150.clientPreferences.method2478() == 0) {
-					boolean var1 = !class306.field3398.isEmpty();
+					boolean var1 = !class306.musicSongs.isEmpty();
 					if (var1) {
 						Archive var2 = class13.archive6;
-						if (!class306.field3398.isEmpty()) {
+						if (!class306.musicSongs.isEmpty()) {
 							ArrayList var3 = new ArrayList();
-							Iterator var4 = class306.field3398.iterator();
+							Iterator var4 = class306.musicSongs.iterator();
 
 							while (var4.hasNext()) {
-								class318 var5 = (class318)var4.next();
+								MusicSong var5 = (MusicSong)var4.next();
 								var5.field3508 = false;
 								var5.field3513 = false;
 								var5.field3515 = false;
-								var5.field3514 = var2;
-								var5.field3510 = var0;
+								var5.musicTrackArchive = var2;
+								var5.musicTrackVolume = var0;
 								var5.field3511 = 0.0F;
 								var3.add(var5);
 							}

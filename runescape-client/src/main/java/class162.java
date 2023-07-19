@@ -53,7 +53,7 @@ public class class162 extends class143 {
 		Iterator var1 = class306.field3394.iterator();
 
 		while (var1.hasNext()) {
-			class318 var2 = (class318)var1.next();
+			MusicSong var2 = (MusicSong)var1.next();
 			var0.add(var2);
 		}
 
