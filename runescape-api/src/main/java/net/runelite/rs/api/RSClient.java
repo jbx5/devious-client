@@ -427,7 +427,7 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("mouseCam")
 	boolean isMouseCam();
 
-	@Import("camAngleDX")
+	/*@Import("camAngleDX")
 	int getCamAngleDX();
 
 	@Import("camAngleDX")
@@ -437,7 +437,7 @@ public interface RSClient extends RSGameEngine, Client
 	int getCamAngleDY();
 
 	@Import("camAngleDY")
-	void setCamAngleDY(int angle);
+	void setCamAngleDY(int angle);*/
 
 	@Import("itemContainers")
 	RSNodeHashTable getItemContainers();
