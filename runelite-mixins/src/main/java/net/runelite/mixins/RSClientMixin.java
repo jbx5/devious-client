@@ -140,6 +140,7 @@ import net.runelite.rs.api.RSIndexedSprite;
 import net.runelite.rs.api.RSInterfaceParent;
 import net.runelite.rs.api.RSItemContainer;
 import net.runelite.rs.api.RSModelData;
+import net.runelite.rs.api.RSMusicSong;
 import net.runelite.rs.api.RSNPC;
 import net.runelite.rs.api.RSNode;
 import net.runelite.rs.api.RSNodeDeque;
@@ -2605,13 +2606,20 @@ public abstract class RSClientMixin implements RSClient
 	@Inject
 	public void playMusicTrack(int var0, RSAbstractArchive var1, int var2, int var3, int var4, boolean var5)
 	{
-		client.setMusicPlayerStatus(1);
-		/*client.setMusicTrackArchive(var1);
-		client.setMusicTrackGroupId(var2);
-		client.setMusicTrackFileId(var3);
-		client.setMusicTrackVolume(var4);
-		client.setMusicTrackBoolean(var5);
-		client.setPcmSampleLength(var0);*/
+		for (RSMusicSong musicSong : client.getMusicSongs())
+		{
+			if (musicSong.getMusicTrackGroupId() == var2)
+			{
+				client.setMusicPlayerStatus(1);
+				musicSong.setMusicTrackArchive(var1);
+				musicSong.setMusicTrackGroupId(var2);
+				musicSong.setMusicTrackFileId(var3);
+				musicSong.setMusicTrackVolume(var4);
+				musicSong.setMusicTrackBoolean(var5);
+				//musicSong.setPcmSampleLength(var0);
+				break;
+			}
+		}
 	}
 
 	@Inject
@@ -2713,17 +2721,20 @@ public abstract class RSClientMixin implements RSClient
 	@Override
 	public void setMusicVolume(int volume)
 	{
-		/*if (volume > 0 && client.getPreferences().getMusicVolume() <= 0 && client.getCurrentTrackGroupId() != -1)
+		for (RSMusicSong musicSong : client.getMusicSongs())
 		{
-			client.playMusicTrack(1000, client.getMusicTracks(), client.getCurrentTrackGroupId(), 0, volume, false);
-		}
+			if (volume > 0 && client.getPreferences().getMusicVolume() <= 0 && musicSong.getMusicTrackGroupId() != -1)
+			{
+				client.playMusicTrack(1000, client.getMusicTracks(), musicSong.getMusicTrackGroupId(), 0, volume, false);
+			}
 
-		client.getPreferences().setMusicVolume(volume);
-		client.setMusicTrackVolume(volume);
-		if (client.getMidiPcmStream() != null)
-		{
-			client.getMidiPcmStream().setPcmStreamVolume(volume);
-		}*/
+			client.getPreferences().setMusicVolume(volume);
+			musicSong.setMusicTrackVolume(volume);
+			if (musicSong.getMidiPcmStream() != null)
+			{
+				musicSong.getMidiPcmStream().setPcmStreamVolume(volume);
+			}
+		}
 	}
 
 	@Inject

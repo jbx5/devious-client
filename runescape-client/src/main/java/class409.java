@@ -38,21 +38,21 @@ public class class409 extends class407 {
 	)
 	public boolean vmethod7676(int var1) {
 		int var2 = 0;
-		Iterator var3 = class306.field3394.iterator();
+		Iterator var3 = class306.musicSongs.iterator();
 
 		while (true) {
 			while (var3.hasNext()) {
-				class318 var4 = (class318)var3.next();
-				if (var4 != null && var4.field3516.field3439 > 1 && var4.field3516.method5926()) {
+				MusicSong var4 = (MusicSong)var3.next();
+				if (var4 != null && var4.midiPcmStream.field3439 > 1 && var4.midiPcmStream.method5926()) {
 					this.method7653("Attempted to load patches of already loading midiplayer!");
 					return true;
 				}
 
 				if (var4 != null && !var4.field3513) {
 					try {
-						if (var4.field3514 != null && var4.field3507 != -1 && var4.field3509 != -1) {
+						if (var4.musicTrackArchive != null && var4.musicTrackGroupId != -1 && var4.musicTrackFileId != -1) {
 							if (var4.field3518 == null) {
-								var4.field3518 = MusicTrack.readTrack(var4.field3514, var4.field3507, var4.field3509);
+								var4.field3518 = MusicTrack.readTrack(var4.musicTrackArchive, var4.musicTrackGroupId, var4.musicTrackFileId);
 								if (var4.field3518 == null) {
 									continue;
 								}
@@ -62,10 +62,10 @@ public class class409 extends class407 {
 								var4.field3517 = new SoundCache(this.field4536, this.field4535);
 							}
 
-							if (var4.field3516.method5817(var4.field3518, this.field4534, var4.field3517)) {
+							if (var4.midiPcmStream.method5817(var4.field3518, this.field4534, var4.field3517)) {
 								++var2;
 								var4.field3513 = true;
-								var4.field3516.method5840();
+								var4.midiPcmStream.method5840();
 							}
 						} else {
 							++var2;
@@ -80,7 +80,7 @@ public class class409 extends class407 {
 				}
 			}
 
-			if (var2 == class306.field3394.size()) {
+			if (var2 == class306.musicSongs.size()) {
 				return true;
 			}
 

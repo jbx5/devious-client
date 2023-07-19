@@ -89,12 +89,12 @@ public enum StudioGame implements MouseWheel {
 							Iterator var4 = class306.field3398.iterator();
 
 							while (var4.hasNext()) {
-								class318 var5 = (class318)var4.next();
+								MusicSong var5 = (MusicSong)var4.next();
 								var5.field3508 = false;
 								var5.field3513 = false;
 								var5.field3515 = false;
-								var5.field3514 = var2;
-								var5.field3510 = var0;
+								var5.musicTrackArchive = var2;
+								var5.musicTrackVolume = var0;
 								var5.field3511 = 0.0F;
 								var3.add(var5);
 							}

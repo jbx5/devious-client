@@ -60,7 +60,7 @@ public class FileSystem {
 				class150.clientPreferences.method2468(!class150.clientPreferences.method2469());
 				if (!class150.clientPreferences.method2469()) {
 					ArrayList var3 = new ArrayList();
-					var3.add(new class318(class13.archive6, "scape main", "", 255, false));
+					var3.add(new MusicSong(class13.archive6, "scape main", "", 255, false));
 					UserComparator4.method2858(var3, 0, 0, 0, 100, false);
 				} else {
 					RouteStrategy.method4227(0, 0);
