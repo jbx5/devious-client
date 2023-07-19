@@ -106,7 +106,7 @@ public class InterfaceParent extends Node {
 		DbTableType.headIconPkSprites = null;
 		class17.headIconPrayerSprites = null;
 		class345.headIconHintSprites = null;
-		DynamicObject.field1014 = null;
+		DynamicObject.mapDotSprites = null;
 		class211.crossSprites = null;
 		MusicPatchNode2.field3389 = null;
 		class302.scrollBarSprites = null;

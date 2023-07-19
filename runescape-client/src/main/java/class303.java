@@ -739,9 +739,9 @@ public class class303 {
 					for (var8 = 0; var8 < 13; ++var8) {
 						var9 = var1.readBits(1);
 						if (var9 == 1) {
-							Client.field590[var6][var7][var8] = var1.readBits(26);
+							Client.instanceChunkTemplates[var6][var7][var8] = var1.readBits(26);
 						} else {
-							Client.field590[var6][var7][var8] = -1;
+							Client.instanceChunkTemplates[var6][var7][var8] = -1;
 						}
 					}
 				}
@@ -766,7 +766,7 @@ public class class303 {
 			for (var6 = 0; var6 < 4; ++var6) {
 				for (var7 = 0; var7 < 13; ++var7) {
 					for (var8 = 0; var8 < 13; ++var8) {
-						var9 = Client.field590[var6][var7][var8];
+						var9 = Client.instanceChunkTemplates[var6][var7][var8];
 						if (var9 != -1) {
 							int var10 = var9 >> 14 & 1023;
 							int var11 = var9 >> 3 & 2047;

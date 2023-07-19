@@ -571,7 +571,7 @@ public final class WorldMapRenderer {
 							GameEngine.drawSpriteOnMinimap(var1, var2, var12, var13, MusicPatchNode2.field3389[3], var4);
 						} else if (class136.localPlayer.team != 0 && var15.team != 0 && var15.team == class136.localPlayer.team) {
 							GameEngine.drawSpriteOnMinimap(var1, var2, var12, var13, MusicPatchNode2.field3389[4], var4);
-						} else if (var15.method2330()) {
+						} else if (var15.isFriendsChatMember()) {
 							GameEngine.drawSpriteOnMinimap(var1, var2, var12, var13, MusicPatchNode2.field3389[5], var4);
 						} else if (var15.isClanMember()) {
 							GameEngine.drawSpriteOnMinimap(var1, var2, var12, var13, MusicPatchNode2.field3389[6], var4);
@@ -587,14 +587,14 @@ public final class WorldMapRenderer {
 						if (var19 != null) {
 							var11 = var19.x / 32 - class136.localPlayer.x / 32;
 							var12 = var19.y / 32 - class136.localPlayer.y / 32;
-							class158.worldToMinimap(var1, var2, var11, var12, DynamicObject.field1014[1], var4);
+							class158.worldToMinimap(var1, var2, var11, var12, DynamicObject.mapDotSprites[1], var4);
 						}
 					}
 
 					if (Client.hintArrowType == 2) {
-						var10 = Client.field539 * 4 - AbstractArchive.baseX * 256 + 2 - class136.localPlayer.x / 32;
-						var11 = Client.field607 * 4 - class148.baseY * 256 + 2 - class136.localPlayer.y / 32;
-						class158.worldToMinimap(var1, var2, var10, var11, DynamicObject.field1014[1], var4);
+						var10 = Client.hintArrowX * 4 - AbstractArchive.baseX * 256 + 2 - class136.localPlayer.x / 32;
+						var11 = Client.hintArrowY * 4 - class148.baseY * 256 + 2 - class136.localPlayer.y / 32;
+						class158.worldToMinimap(var1, var2, var10, var11, DynamicObject.mapDotSprites[1], var4);
 					}
 
 					if (Client.hintArrowType == 10 && Client.hintArrowPlayerIndex >= 0 && Client.hintArrowPlayerIndex < Client.players.length) {
@@ -602,7 +602,7 @@ public final class WorldMapRenderer {
 						if (var20 != null) {
 							var11 = var20.x / 32 - class136.localPlayer.x / 32;
 							var12 = var20.y / 32 - class136.localPlayer.y / 32;
-							class158.worldToMinimap(var1, var2, var11, var12, DynamicObject.field1014[1], var4);
+							class158.worldToMinimap(var1, var2, var11, var12, DynamicObject.mapDotSprites[1], var4);
 						}
 					}
 				}
@@ -610,7 +610,7 @@ public final class WorldMapRenderer {
 				if (Client.destinationX != 0) {
 					var10 = Client.destinationX * 4 + 2 - class136.localPlayer.x / 32;
 					var11 = Client.destinationY * 4 + 2 - class136.localPlayer.y / 32;
-					GameEngine.drawSpriteOnMinimap(var1, var2, var10, var11, DynamicObject.field1014[0], var4);
+					GameEngine.drawSpriteOnMinimap(var1, var2, var10, var11, DynamicObject.mapDotSprites[0], var4);
 				}
 
 				if (!class136.localPlayer.isHidden) {

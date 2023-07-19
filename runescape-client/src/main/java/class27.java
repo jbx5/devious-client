@@ -486,7 +486,7 @@ public class class27 {
 		UserComparator5.scene.clearTempGameObjects();
 		UserComparator7.method2869(var0, var1, var2, var3);
 		if (Client.hintArrowType == 2) {
-			ReflectionCheck.worldToScreen(Client.field542 * 64 + (Client.field539 - AbstractArchive.baseX * 64 << 7), Client.field543 * 64 + (Client.field607 - class148.baseY * 64 << 7), Client.field541 * 2);
+			ReflectionCheck.worldToScreen(Client.hintArrowSubX * 64 + (Client.hintArrowX - AbstractArchive.baseX * 64 << 7), Client.hintArrowSubY * 64 + (Client.hintArrowY - class148.baseY * 64 << 7), Client.hintArrowHeight * 2);
 			if (Client.viewportTempX > -1 && Client.cycle % 20 < 10) {
 				class345.headIconHintSprites[0].drawTransBgAt(var0 + Client.viewportTempX - 12, Client.viewportTempY + var1 - 28);
 			}
