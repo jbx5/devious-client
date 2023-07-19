@@ -167,18 +167,18 @@ public class class358 extends DualNode {
 			}
 
 			if ((var23 & 1) != 0) {
-				var14.definition = Tile.getNpcDefinition(var1.method9116());
+				var14.definition = Tile.getNpcDefinition(var1.readUnsignedShortAdd());
 				Client.method1623(var14);
 				var14.method2625();
 			}
 
 			if ((var23 & 4) != 0) {
-				var6 = var1.method9087();
+				var6 = var1.readUnsignedShortLE();
 				if (var6 == 65535) {
 					var6 = -1;
 				}
 
-				var7 = var1.method9089();
+				var7 = var1.readUnsignedByteSub();
 				if (var6 == var14.sequence && var6 != -1) {
 					var8 = class135.SequenceDefinition_get(var6).field2274;
 					if (var8 == 1) {
@@ -202,7 +202,7 @@ public class class358 extends DualNode {
 			}
 
 			if ((var23 & 64) != 0) {
-				var1.method9087();
+				var1.readUnsignedShortLE();
 				var1.readInt();
 			}
 
@@ -213,13 +213,13 @@ public class class358 extends DualNode {
 			int var24;
 			boolean var25;
 			if ((var23 & 512) != 0) {
-				var6 = var1.method9089();
+				var6 = var1.readUnsignedByteSub();
 				if ((var6 & 1) == 1) {
 					var14.method2604();
 				} else {
 					var15 = null;
 					if ((var6 & 2) == 2) {
-						var8 = var1.method9120();
+						var8 = var1.readUnsignedByteNeg();
 						var15 = new int[var8];
 
 						for (var9 = 0; var9 < var8; ++var9) {
@@ -253,7 +253,7 @@ public class class358 extends DualNode {
 						var17 = new short[var10];
 
 						for (var24 = 0; var24 < var10; ++var24) {
-							var17[var24] = (short)var1.method9116();
+							var17[var24] = (short)var1.readUnsignedShortAdd();
 						}
 					}
 
@@ -268,13 +268,13 @@ public class class358 extends DualNode {
 			}
 
 			if ((var23 & 256) != 0) {
-				var6 = var1.method9089();
+				var6 = var1.readUnsignedByteSub();
 				if ((var6 & 1) == 1) {
 					var14.method2598();
 				} else {
 					var15 = null;
 					if ((var6 & 2) == 2) {
-						var8 = var1.method9119();
+						var8 = var1.readUnsignedByteAdd();
 						var15 = new int[var8];
 
 						for (var9 = 0; var9 < var8; ++var9) {
@@ -294,7 +294,7 @@ public class class358 extends DualNode {
 						var16 = new short[var9];
 
 						for (var10 = 0; var10 < var9; ++var10) {
-							var16[var10] = (short)var1.method9087();
+							var16[var10] = (short)var1.readUnsignedShortLE();
 						}
 					}
 
@@ -308,13 +308,13 @@ public class class358 extends DualNode {
 						var17 = new short[var10];
 
 						for (var24 = 0; var24 < var10; ++var24) {
-							var17[var24] = (short)var1.method9087();
+							var17[var24] = (short)var1.readUnsignedShortLE();
 						}
 					}
 
 					var25 = false;
 					if ((var6 & 16) != 0) {
-						var25 = var1.method9120() == 1;
+						var25 = var1.readUnsignedByteNeg() == 1;
 					}
 
 					var18 = (long)(++NPC.field1315 - 1);
@@ -323,43 +323,43 @@ public class class358 extends DualNode {
 			}
 
 			if ((var23 & 262144) != 0) {
-				var6 = var1.method9200();
-				var14.turnLeftSequence = (var6 & 1) != 0 ? var1.method9087() : var14.definition.turnLeftSequence;
+				var6 = var1.readUnsignedIntIME();
+				var14.turnLeftSequence = (var6 & 1) != 0 ? var1.readUnsignedShortLE() : var14.definition.turnLeftSequence;
 				var14.turnRightSequence = (var6 & 2) != 0 ? var1.readUnsignedShort() : var14.definition.turnRightSequence;
 				var14.walkSequence = (var6 & 4) != 0 ? var1.readUnsignedShort() : var14.definition.walkSequence;
-				var14.walkBackSequence = (var6 & 8) != 0 ? var1.method9087() : var14.definition.walkBackSequence;
-				var14.walkLeftSequence = (var6 & 16) != 0 ? var1.method9130() : var14.definition.walkLeftSequence;
-				var14.walkRightSequence = (var6 & 32) != 0 ? var1.method9116() : var14.definition.walkRightSequence;
-				var14.runSequence = (var6 & 64) != 0 ? var1.method9116() : var14.definition.field1996;
+				var14.walkBackSequence = (var6 & 8) != 0 ? var1.readUnsignedShortLE() : var14.definition.walkBackSequence;
+				var14.walkLeftSequence = (var6 & 16) != 0 ? var1.readUnsignedShortAddLE() : var14.definition.walkLeftSequence;
+				var14.walkRightSequence = (var6 & 32) != 0 ? var1.readUnsignedShortAdd() : var14.definition.walkRightSequence;
+				var14.runSequence = (var6 & 64) != 0 ? var1.readUnsignedShortAdd() : var14.definition.field1996;
 				var14.field1194 = (var6 & 128) != 0 ? var1.readUnsignedShort() : var14.definition.field2013;
-				var14.field1197 = (var6 & 256) != 0 ? var1.method9130() : var14.definition.field1998;
-				var14.field1198 = (var6 & 512) != 0 ? var1.method9130() : var14.definition.field2015;
-				var14.field1211 = (var6 & 1024) != 0 ? var1.method9087() : var14.definition.field2016;
-				var14.field1200 = (var6 & 2048) != 0 ? var1.method9087() : var14.definition.field2017;
-				var14.field1201 = (var6 & 4096) != 0 ? var1.method9130() : var14.definition.field2018;
-				var14.field1202 = (var6 & 8192) != 0 ? var1.method9116() : var14.definition.field2024;
-				var14.idleSequence = (var6 & 16384) != 0 ? var1.method9087() : var14.definition.idleSequence;
+				var14.field1197 = (var6 & 256) != 0 ? var1.readUnsignedShortAddLE() : var14.definition.field1998;
+				var14.field1198 = (var6 & 512) != 0 ? var1.readUnsignedShortAddLE() : var14.definition.field2015;
+				var14.field1211 = (var6 & 1024) != 0 ? var1.readUnsignedShortLE() : var14.definition.field2016;
+				var14.field1200 = (var6 & 2048) != 0 ? var1.readUnsignedShortLE() : var14.definition.field2017;
+				var14.field1201 = (var6 & 4096) != 0 ? var1.readUnsignedShortAddLE() : var14.definition.field2018;
+				var14.field1202 = (var6 & 8192) != 0 ? var1.readUnsignedShortAdd() : var14.definition.field2024;
+				var14.idleSequence = (var6 & 16384) != 0 ? var1.readUnsignedShortLE() : var14.definition.idleSequence;
 			}
 
 			if ((var23 & 131072) != 0) {
-				var6 = var1.method9120();
+				var6 = var1.readUnsignedByteNeg();
 
 				for (var7 = 0; var7 < var6; ++var7) {
-					var8 = var1.method9120();
+					var8 = var1.readUnsignedByteNeg();
 					var9 = var1.readUnsignedShort();
-					var10 = var1.method9200();
+					var10 = var1.readUnsignedIntIME();
 					var14.updateSpotAnimation(var8, var9, var10 >> 16, var10 & 65535);
 				}
 			}
 
 			if ((var23 & 32768) != 0) {
-				var14.field1234 = var1.method9124();
-				var14.field1236 = var1.method9122();
+				var14.field1234 = var1.readByteSub();
+				var14.field1236 = var1.readByteAdd();
 				var14.field1196 = var1.readByte();
 				var14.field1224 = var1.readByte();
 				var14.spotAnimation = var1.readUnsignedShort() + Client.cycle;
-				var14.field1239 = var1.method9087() + Client.cycle;
-				var14.field1232 = var1.method9116();
+				var14.field1239 = var1.readUnsignedShortLE() + Client.cycle;
+				var14.field1232 = var1.readUnsignedShortAdd();
 				var14.pathLength = 1;
 				var14.field1257 = 0;
 				var14.field1234 += var14.pathX[0];
@@ -369,8 +369,8 @@ public class class358 extends DualNode {
 			}
 
 			if ((var23 & 2) != 0) {
-				var6 = var1.method9130();
-				var7 = var1.method9130();
+				var6 = var1.readUnsignedShortAddLE();
+				var7 = var1.readUnsignedShortAddLE();
 				var14.field1222 = var1.readUnsignedByte() == 1;
 				if (Client.field525 >= 212) {
 					var14.field1220 = var6;
@@ -386,11 +386,11 @@ public class class358 extends DualNode {
 			}
 
 			if ((var23 & 4096) != 0) {
-				var14.field1183 = Client.cycle + var1.method9087();
+				var14.field1183 = Client.cycle + var1.readUnsignedShortLE();
 				var14.field1244 = Client.cycle + var1.readUnsignedShort();
-				var14.field1245 = var1.method9122();
+				var14.field1245 = var1.readByteAdd();
 				var14.field1238 = var1.readByte();
-				var14.field1247 = var1.method9123();
+				var14.field1247 = var1.readByteNeg();
 				var14.field1248 = (byte)var1.readUnsignedByte();
 			}
 
@@ -425,8 +425,8 @@ public class class358 extends DualNode {
 						var10 = var1.readUShortSmart();
 						if (var10 != 32767) {
 							var24 = var1.readUShortSmart();
-							var12 = var1.method9089();
-							int var13 = var10 > 0 ? var1.method9089() : var12;
+							var12 = var1.readUnsignedByteSub();
+							int var13 = var10 > 0 ? var1.readUnsignedByteSub() : var12;
 							var14.addHealthBar(var9, Client.cycle, var10, var24, var12, var13);
 						} else {
 							var14.removeHealthBar(var9);
@@ -436,22 +436,22 @@ public class class358 extends DualNode {
 			}
 
 			if ((var23 & 8192) != 0) {
-				var14.method2601(var1.method9120());
+				var14.method2601(var1.readUnsignedByteNeg());
 			}
 
 			if ((var23 & 16384) != 0) {
-				var14.field1258 = var1.method9336();
+				var14.field1258 = var1.readUnsignedIntLE();
 			}
 
 			if ((var23 & 65536) != 0) {
-				var6 = var1.method9119();
+				var6 = var1.readUnsignedByteAdd();
 				var15 = new int[8];
 				var16 = new short[8];
 
 				for (var9 = 0; var9 < 8; ++var9) {
 					if ((var6 & 1 << var9) != 0) {
-						var15[var9] = var1.method9152();
-						var16[var9] = (short)var1.method9261();
+						var15[var9] = var1.readNullableLargeSmart();
+						var16[var9] = (short)var1.readShortSmartSub();
 					} else {
 						var15[var9] = -1;
 						var16[var9] = -1;

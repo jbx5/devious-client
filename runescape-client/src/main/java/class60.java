@@ -229,7 +229,7 @@ public class class60 {
 
 				if (var10 != null) {
 					var11 = class503.getPacketBufferNode(ClientPacket.field3120, Client.packetWriter.isaacCipher);
-					var11.packetBuffer.method9126(var10.id);
+					var11.packetBuffer.writeShortAdd(var10.id);
 					Client.packetWriter.addNode(var11);
 				}
 			}
@@ -246,10 +246,10 @@ public class class60 {
 				Client.destinationX = var0;
 				Client.destinationY = var1;
 				var15 = class503.getPacketBufferNode(ClientPacket.field3159, Client.packetWriter.isaacCipher);
-				var15.packetBuffer.method9126(class301.field3359);
-				var15.packetBuffer.method9272(SecureRandomCallable.field1039);
-				var15.packetBuffer.method9139(DirectByteArrayCopier.field3796);
-				var15.packetBuffer.method9126(var3);
+				var15.packetBuffer.writeShortAdd(class301.field3359);
+				var15.packetBuffer.writeShortAddLE(SecureRandomCallable.field1039);
+				var15.packetBuffer.writeIntME(DirectByteArrayCopier.field3796);
+				var15.packetBuffer.writeShortAdd(var3);
 				var15.packetBuffer.writeByte(Client.field750.method4151(82) ? 1 : 0);
 				Client.packetWriter.addNode(var15);
 			}
@@ -266,8 +266,8 @@ public class class60 {
 				Client.destinationX = var0;
 				Client.destinationY = var1;
 				var15 = class503.getPacketBufferNode(ClientPacket.field3140, Client.packetWriter.isaacCipher);
-				var15.packetBuffer.method9272(var3);
-				var15.packetBuffer.method9118(Client.field750.method4151(82) ? 1 : 0);
+				var15.packetBuffer.writeShortAddLE(var3);
+				var15.packetBuffer.writeByteSub(Client.field750.method4151(82) ? 1 : 0);
 				Client.packetWriter.addNode(var15);
 			}
 		}
@@ -283,7 +283,7 @@ public class class60 {
 				Client.destinationY = var1;
 				var15 = class503.getPacketBufferNode(ClientPacket.field3126, Client.packetWriter.isaacCipher);
 				var15.packetBuffer.writeByte(Client.field750.method4151(82) ? 1 : 0);
-				var15.packetBuffer.method9272(var3);
+				var15.packetBuffer.writeShortAddLE(var3);
 				Client.packetWriter.addNode(var15);
 			}
 		}
@@ -298,8 +298,8 @@ public class class60 {
 				Client.destinationX = var0;
 				Client.destinationY = var1;
 				var15 = class503.getPacketBufferNode(ClientPacket.field3152, Client.packetWriter.isaacCipher);
-				var15.packetBuffer.method9272(var3);
-				var15.packetBuffer.method9244(Client.field750.method4151(82) ? 1 : 0);
+				var15.packetBuffer.writeShortAddLE(var3);
+				var15.packetBuffer.writeByteNeg(Client.field750.method4151(82) ? 1 : 0);
 				Client.packetWriter.addNode(var15);
 			}
 		}
@@ -314,8 +314,8 @@ public class class60 {
 				Client.destinationX = var0;
 				Client.destinationY = var1;
 				var15 = class503.getPacketBufferNode(ClientPacket.field3116, Client.packetWriter.isaacCipher);
-				var15.packetBuffer.method9272(var3);
-				var15.packetBuffer.method9118(Client.field750.method4151(82) ? 1 : 0);
+				var15.packetBuffer.writeShortAddLE(var3);
+				var15.packetBuffer.writeByteSub(Client.field750.method4151(82) ? 1 : 0);
 				Client.packetWriter.addNode(var15);
 			}
 		}
@@ -341,8 +341,8 @@ public class class60 {
 				Client.destinationX = var0;
 				Client.destinationY = var1;
 				var15 = class503.getPacketBufferNode(ClientPacket.field3156, Client.packetWriter.isaacCipher);
-				var15.packetBuffer.method9126(var3);
-				var15.packetBuffer.method9244(Client.field750.method4151(82) ? 1 : 0);
+				var15.packetBuffer.writeShortAdd(var3);
+				var15.packetBuffer.writeByteNeg(Client.field750.method4151(82) ? 1 : 0);
 				Client.packetWriter.addNode(var15);
 			}
 		}
@@ -356,9 +356,9 @@ public class class60 {
 			Client.destinationY = var1;
 			var16 = class503.getPacketBufferNode(ClientPacket.field3125, Client.packetWriter.isaacCipher);
 			var16.packetBuffer.writeByte(Client.field750.method4151(82) ? 1 : 0);
-			var16.packetBuffer.method9272(var3);
-			var16.packetBuffer.method9272(class148.baseY * 64 + var1);
-			var16.packetBuffer.method9272(AbstractArchive.baseX * 64 + var0);
+			var16.packetBuffer.writeShortAddLE(var3);
+			var16.packetBuffer.writeShortAddLE(class148.baseY * 64 + var1);
+			var16.packetBuffer.writeShortAddLE(AbstractArchive.baseX * 64 + var0);
 			Client.packetWriter.addNode(var16);
 		}
 
@@ -372,7 +372,7 @@ public class class60 {
 				Client.destinationX = var0;
 				Client.destinationY = var1;
 				var15 = class503.getPacketBufferNode(ClientPacket.field3175, Client.packetWriter.isaacCipher);
-				var15.packetBuffer.method9143(var3);
+				var15.packetBuffer.writeShortLE(var3);
 				var15.packetBuffer.writeByte(Client.field750.method4151(82) ? 1 : 0);
 				Client.packetWriter.addNode(var15);
 			}
@@ -392,12 +392,12 @@ public class class60 {
 				}
 
 				var15 = class503.getPacketBufferNode(ClientPacket.field3110, Client.packetWriter.isaacCipher);
-				var15.packetBuffer.method9126(Client.selectedSpellItemId);
-				var15.packetBuffer.method9143(var0);
-				var15.packetBuffer.method9126(Client.selectedSpellChildIndex);
-				var15.packetBuffer.method9272(var4);
-				var15.packetBuffer.method9138(class33.selectedSpellWidget);
-				var15.packetBuffer.method9138(var1);
+				var15.packetBuffer.writeShortAdd(Client.selectedSpellItemId);
+				var15.packetBuffer.writeShortLE(var0);
+				var15.packetBuffer.writeShortAdd(Client.selectedSpellChildIndex);
+				var15.packetBuffer.writeShortAddLE(var4);
+				var15.packetBuffer.writeIntIME(class33.selectedSpellWidget);
+				var15.packetBuffer.writeIntIME(var1);
 				Client.packetWriter.addNode(var15);
 			}
 		}
@@ -412,10 +412,10 @@ public class class60 {
 				Client.destinationX = var0;
 				Client.destinationY = var1;
 				var15 = class503.getPacketBufferNode(ClientPacket.field3103, Client.packetWriter.isaacCipher);
-				var15.packetBuffer.method9139(class33.selectedSpellWidget);
-				var15.packetBuffer.method9143(Client.selectedSpellChildIndex);
-				var15.packetBuffer.method9143(Client.selectedSpellItemId);
-				var15.packetBuffer.method9143(var3);
+				var15.packetBuffer.writeIntME(class33.selectedSpellWidget);
+				var15.packetBuffer.writeShortLE(Client.selectedSpellChildIndex);
+				var15.packetBuffer.writeShortLE(Client.selectedSpellItemId);
+				var15.packetBuffer.writeShortLE(var3);
 				var15.packetBuffer.writeByte(Client.field750.method4151(82) ? 1 : 0);
 				Client.packetWriter.addNode(var15);
 			}
@@ -429,13 +429,13 @@ public class class60 {
 			Client.destinationX = var0;
 			Client.destinationY = var1;
 			var16 = class503.getPacketBufferNode(ClientPacket.field3134, Client.packetWriter.isaacCipher);
-			var16.packetBuffer.method9143(var3);
-			var16.packetBuffer.method9143(SecureRandomCallable.field1039);
-			var16.packetBuffer.method9143(class301.field3359);
-			var16.packetBuffer.method9143(AbstractArchive.baseX * 64 + var0);
-			var16.packetBuffer.method9188(Client.field750.method4151(82) ? 1 : 0);
+			var16.packetBuffer.writeShortLE(var3);
+			var16.packetBuffer.writeShortLE(SecureRandomCallable.field1039);
+			var16.packetBuffer.writeShortLE(class301.field3359);
+			var16.packetBuffer.writeShortLE(AbstractArchive.baseX * 64 + var0);
+			var16.packetBuffer.writeByteAdd(Client.field750.method4151(82) ? 1 : 0);
 			var16.packetBuffer.writeInt(DirectByteArrayCopier.field3796);
-			var16.packetBuffer.method9143(class148.baseY * 64 + var1);
+			var16.packetBuffer.writeShortLE(class148.baseY * 64 + var1);
 			Client.packetWriter.addNode(var16);
 		}
 
@@ -449,7 +449,7 @@ public class class60 {
 				Client.destinationX = var0;
 				Client.destinationY = var1;
 				var15 = class503.getPacketBufferNode(ClientPacket.field3150, Client.packetWriter.isaacCipher);
-				var15.packetBuffer.method9126(var3);
+				var15.packetBuffer.writeShortAdd(var3);
 				var15.packetBuffer.writeByte(Client.field750.method4151(82) ? 1 : 0);
 				Client.packetWriter.addNode(var15);
 			}
@@ -465,8 +465,8 @@ public class class60 {
 				Client.destinationX = var0;
 				Client.destinationY = var1;
 				var15 = class503.getPacketBufferNode(ClientPacket.field3174, Client.packetWriter.isaacCipher);
-				var15.packetBuffer.method9272(var3);
-				var15.packetBuffer.method9118(Client.field750.method4151(82) ? 1 : 0);
+				var15.packetBuffer.writeShortAddLE(var3);
+				var15.packetBuffer.writeByteSub(Client.field750.method4151(82) ? 1 : 0);
 				Client.packetWriter.addNode(var15);
 			}
 		}
@@ -482,7 +482,7 @@ public class class60 {
 				Client.destinationY = var1;
 				var15 = class503.getPacketBufferNode(ClientPacket.field3162, Client.packetWriter.isaacCipher);
 				var15.packetBuffer.writeShort(var3);
-				var15.packetBuffer.method9188(Client.field750.method4151(82) ? 1 : 0);
+				var15.packetBuffer.writeByteAdd(Client.field750.method4151(82) ? 1 : 0);
 				Client.packetWriter.addNode(var15);
 			}
 		}
@@ -511,10 +511,10 @@ public class class60 {
 			Client.destinationX = var0;
 			Client.destinationY = var1;
 			var16 = class503.getPacketBufferNode(ClientPacket.field3095, Client.packetWriter.isaacCipher);
-			var16.packetBuffer.method9126(AbstractArchive.baseX * 64 + var0);
-			var16.packetBuffer.method9188(Client.field750.method4151(82) ? 1 : 0);
-			var16.packetBuffer.method9126(var3);
-			var16.packetBuffer.method9126(class148.baseY * 64 + var1);
+			var16.packetBuffer.writeShortAdd(AbstractArchive.baseX * 64 + var0);
+			var16.packetBuffer.writeByteAdd(Client.field750.method4151(82) ? 1 : 0);
+			var16.packetBuffer.writeShortAdd(var3);
+			var16.packetBuffer.writeShortAdd(class148.baseY * 64 + var1);
 			Client.packetWriter.addNode(var16);
 		}
 
@@ -529,7 +529,7 @@ public class class60 {
 				Client.destinationY = var1;
 				var15 = class503.getPacketBufferNode(ClientPacket.field3189, Client.packetWriter.isaacCipher);
 				var15.packetBuffer.writeShort(var3);
-				var15.packetBuffer.method9244(Client.field750.method4151(82) ? 1 : 0);
+				var15.packetBuffer.writeByteNeg(Client.field750.method4151(82) ? 1 : 0);
 				Client.packetWriter.addNode(var15);
 			}
 		}
@@ -544,8 +544,8 @@ public class class60 {
 				Client.destinationX = var0;
 				Client.destinationY = var1;
 				var15 = class503.getPacketBufferNode(ClientPacket.field3179, Client.packetWriter.isaacCipher);
-				var15.packetBuffer.method9272(SecureRandomCallable.field1039);
-				var15.packetBuffer.method9272(class301.field3359);
+				var15.packetBuffer.writeShortAddLE(SecureRandomCallable.field1039);
+				var15.packetBuffer.writeShortAddLE(class301.field3359);
 				var15.packetBuffer.method9137(DirectByteArrayCopier.field3796);
 				var15.packetBuffer.writeShort(var3);
 				var15.packetBuffer.writeByte(Client.field750.method4151(82) ? 1 : 0);
@@ -573,13 +573,13 @@ public class class60 {
 			Client.destinationX = var0;
 			Client.destinationY = var1;
 			var16 = class503.getPacketBufferNode(ClientPacket.field3130, Client.packetWriter.isaacCipher);
-			var16.packetBuffer.method9143(class301.field3359);
-			var16.packetBuffer.method9143(SecureRandomCallable.field1039);
-			var16.packetBuffer.method9143(var3);
-			var16.packetBuffer.method9143(class148.baseY * 64 + var1);
-			var16.packetBuffer.method9272(AbstractArchive.baseX * 64 + var0);
-			var16.packetBuffer.method9188(Client.field750.method4151(82) ? 1 : 0);
-			var16.packetBuffer.method9138(DirectByteArrayCopier.field3796);
+			var16.packetBuffer.writeShortLE(class301.field3359);
+			var16.packetBuffer.writeShortLE(SecureRandomCallable.field1039);
+			var16.packetBuffer.writeShortLE(var3);
+			var16.packetBuffer.writeShortLE(class148.baseY * 64 + var1);
+			var16.packetBuffer.writeShortAddLE(AbstractArchive.baseX * 64 + var0);
+			var16.packetBuffer.writeByteAdd(Client.field750.method4151(82) ? 1 : 0);
+			var16.packetBuffer.writeIntIME(DirectByteArrayCopier.field3796);
 			Client.packetWriter.addNode(var16);
 		}
 
@@ -639,11 +639,11 @@ public class class60 {
 					Client.destinationX = var0;
 					Client.destinationY = var1;
 					var15 = class503.getPacketBufferNode(ClientPacket.field3185, Client.packetWriter.isaacCipher);
-					var15.packetBuffer.method9126(var3);
-					var15.packetBuffer.method9138(class33.selectedSpellWidget);
+					var15.packetBuffer.writeShortAdd(var3);
+					var15.packetBuffer.writeIntIME(class33.selectedSpellWidget);
 					var15.packetBuffer.writeByte(Client.field750.method4151(82) ? 1 : 0);
 					var15.packetBuffer.writeShort(Client.selectedSpellItemId);
-					var15.packetBuffer.method9143(Client.selectedSpellChildIndex);
+					var15.packetBuffer.writeShortLE(Client.selectedSpellChildIndex);
 					Client.packetWriter.addNode(var15);
 				}
 			}
@@ -656,10 +656,10 @@ public class class60 {
 				Client.destinationX = var0;
 				Client.destinationY = var1;
 				var16 = class503.getPacketBufferNode(ClientPacket.field3154, Client.packetWriter.isaacCipher);
-				var16.packetBuffer.method9272(class148.baseY * 64 + var1);
-				var16.packetBuffer.method9143(AbstractArchive.baseX * 64 + var0);
+				var16.packetBuffer.writeShortAddLE(class148.baseY * 64 + var1);
+				var16.packetBuffer.writeShortLE(AbstractArchive.baseX * 64 + var0);
 				var16.packetBuffer.writeShort(var3);
-				var16.packetBuffer.method9188(Client.field750.method4151(82) ? 1 : 0);
+				var16.packetBuffer.writeByteAdd(Client.field750.method4151(82) ? 1 : 0);
 				Client.packetWriter.addNode(var16);
 			}
 
@@ -671,10 +671,10 @@ public class class60 {
 				Client.destinationX = var0;
 				Client.destinationY = var1;
 				var16 = class503.getPacketBufferNode(ClientPacket.field3167, Client.packetWriter.isaacCipher);
-				var16.packetBuffer.method9126(AbstractArchive.baseX * 64 + var0);
-				var16.packetBuffer.method9126(var3);
-				var16.packetBuffer.method9143(class148.baseY * 64 + var1);
-				var16.packetBuffer.method9244(Client.field750.method4151(82) ? 1 : 0);
+				var16.packetBuffer.writeShortAdd(AbstractArchive.baseX * 64 + var0);
+				var16.packetBuffer.writeShortAdd(var3);
+				var16.packetBuffer.writeShortLE(class148.baseY * 64 + var1);
+				var16.packetBuffer.writeByteNeg(Client.field750.method4151(82) ? 1 : 0);
 				Client.packetWriter.addNode(var16);
 			}
 
@@ -686,12 +686,12 @@ public class class60 {
 				Client.destinationX = var0;
 				Client.destinationY = var1;
 				var16 = class503.getPacketBufferNode(ClientPacket.field3158, Client.packetWriter.isaacCipher);
-				var16.packetBuffer.method9143(class148.baseY * 64 + var1);
-				var16.packetBuffer.method9126(Client.selectedSpellChildIndex);
-				var16.packetBuffer.method9126(var3);
+				var16.packetBuffer.writeShortLE(class148.baseY * 64 + var1);
+				var16.packetBuffer.writeShortAdd(Client.selectedSpellChildIndex);
+				var16.packetBuffer.writeShortAdd(var3);
 				var16.packetBuffer.method9137(class33.selectedSpellWidget);
-				var16.packetBuffer.method9126(Client.selectedSpellItemId);
-				var16.packetBuffer.method9244(Client.field750.method4151(82) ? 1 : 0);
+				var16.packetBuffer.writeShortAdd(Client.selectedSpellItemId);
+				var16.packetBuffer.writeByteNeg(Client.field750.method4151(82) ? 1 : 0);
 				var16.packetBuffer.writeShort(AbstractArchive.baseX * 64 + var0);
 				Client.packetWriter.addNode(var16);
 			}
@@ -704,10 +704,10 @@ public class class60 {
 				Client.destinationX = var0;
 				Client.destinationY = var1;
 				var16 = class503.getPacketBufferNode(ClientPacket.field3153, Client.packetWriter.isaacCipher);
-				var16.packetBuffer.method9143(AbstractArchive.baseX * 64 + var0);
-				var16.packetBuffer.method9244(Client.field750.method4151(82) ? 1 : 0);
-				var16.packetBuffer.method9143(var3);
-				var16.packetBuffer.method9272(class148.baseY * 64 + var1);
+				var16.packetBuffer.writeShortLE(AbstractArchive.baseX * 64 + var0);
+				var16.packetBuffer.writeByteNeg(Client.field750.method4151(82) ? 1 : 0);
+				var16.packetBuffer.writeShortLE(var3);
+				var16.packetBuffer.writeShortAddLE(class148.baseY * 64 + var1);
 				Client.packetWriter.addNode(var16);
 			}
 
@@ -722,7 +722,7 @@ public class class60 {
 					Client.destinationY = var1;
 					var15 = class503.getPacketBufferNode(ClientPacket.field3171, Client.packetWriter.isaacCipher);
 					var15.packetBuffer.writeByte(Client.field750.method4151(82) ? 1 : 0);
-					var15.packetBuffer.method9143(var3);
+					var15.packetBuffer.writeShortLE(var3);
 					Client.packetWriter.addNode(var15);
 				}
 			}
@@ -735,13 +735,13 @@ public class class60 {
 				Client.destinationX = var0;
 				Client.destinationY = var1;
 				var16 = class503.getPacketBufferNode(ClientPacket.field3184, Client.packetWriter.isaacCipher);
-				var16.packetBuffer.method9244(Client.field750.method4151(82) ? 1 : 0);
+				var16.packetBuffer.writeByteNeg(Client.field750.method4151(82) ? 1 : 0);
 				var16.packetBuffer.writeShort(Client.selectedSpellItemId);
 				var16.packetBuffer.writeShort(var3);
 				var16.packetBuffer.writeShort(class148.baseY * 64 + var1);
-				var16.packetBuffer.method9126(AbstractArchive.baseX * 64 + var0);
-				var16.packetBuffer.method9143(Client.selectedSpellChildIndex);
-				var16.packetBuffer.method9139(class33.selectedSpellWidget);
+				var16.packetBuffer.writeShortAdd(AbstractArchive.baseX * 64 + var0);
+				var16.packetBuffer.writeShortLE(Client.selectedSpellChildIndex);
+				var16.packetBuffer.writeIntME(class33.selectedSpellWidget);
 				Client.packetWriter.addNode(var16);
 			}
 
@@ -753,9 +753,9 @@ public class class60 {
 				Client.destinationX = var0;
 				Client.destinationY = var1;
 				var16 = class503.getPacketBufferNode(ClientPacket.field3132, Client.packetWriter.isaacCipher);
-				var16.packetBuffer.method9143(class148.baseY * 64 + var1);
-				var16.packetBuffer.method9143(AbstractArchive.baseX * 64 + var0);
-				var16.packetBuffer.method9118(Client.field750.method4151(82) ? 1 : 0);
+				var16.packetBuffer.writeShortLE(class148.baseY * 64 + var1);
+				var16.packetBuffer.writeShortLE(AbstractArchive.baseX * 64 + var0);
+				var16.packetBuffer.writeByteSub(Client.field750.method4151(82) ? 1 : 0);
 				var16.packetBuffer.writeShort(var3);
 				Client.packetWriter.addNode(var16);
 			}
@@ -784,10 +784,10 @@ public class class60 {
 				Client.destinationX = var0;
 				Client.destinationY = var1;
 				var16 = class503.getPacketBufferNode(ClientPacket.field3146, Client.packetWriter.isaacCipher);
-				var16.packetBuffer.method9126(AbstractArchive.baseX * 64 + var0);
-				var16.packetBuffer.method9118(Client.field750.method4151(82) ? 1 : 0);
-				var16.packetBuffer.method9126(class148.baseY * 64 + var1);
-				var16.packetBuffer.method9272(var3);
+				var16.packetBuffer.writeShortAdd(AbstractArchive.baseX * 64 + var0);
+				var16.packetBuffer.writeByteSub(Client.field750.method4151(82) ? 1 : 0);
+				var16.packetBuffer.writeShortAdd(class148.baseY * 64 + var1);
+				var16.packetBuffer.writeShortAddLE(var3);
 				Client.packetWriter.addNode(var16);
 			}
 
@@ -799,10 +799,10 @@ public class class60 {
 				Client.destinationX = var0;
 				Client.destinationY = var1;
 				var16 = class503.getPacketBufferNode(ClientPacket.field3148, Client.packetWriter.isaacCipher);
-				var16.packetBuffer.method9118(Client.field750.method4151(82) ? 1 : 0);
-				var16.packetBuffer.method9143(var3);
-				var16.packetBuffer.method9272(class148.baseY * 64 + var1);
-				var16.packetBuffer.method9272(AbstractArchive.baseX * 64 + var0);
+				var16.packetBuffer.writeByteSub(Client.field750.method4151(82) ? 1 : 0);
+				var16.packetBuffer.writeShortLE(var3);
+				var16.packetBuffer.writeShortAddLE(class148.baseY * 64 + var1);
+				var16.packetBuffer.writeShortAddLE(AbstractArchive.baseX * 64 + var0);
 				Client.packetWriter.addNode(var16);
 			}
 
@@ -814,10 +814,10 @@ public class class60 {
 				Client.destinationX = var0;
 				Client.destinationY = var1;
 				var16 = class503.getPacketBufferNode(ClientPacket.field3102, Client.packetWriter.isaacCipher);
-				var16.packetBuffer.method9118(Client.field750.method4151(82) ? 1 : 0);
-				var16.packetBuffer.method9272(class148.baseY * 64 + var1);
-				var16.packetBuffer.method9272(var3);
-				var16.packetBuffer.method9272(AbstractArchive.baseX * 64 + var0);
+				var16.packetBuffer.writeByteSub(Client.field750.method4151(82) ? 1 : 0);
+				var16.packetBuffer.writeShortAddLE(class148.baseY * 64 + var1);
+				var16.packetBuffer.writeShortAddLE(var3);
+				var16.packetBuffer.writeShortAddLE(AbstractArchive.baseX * 64 + var0);
 				Client.packetWriter.addNode(var16);
 			}
 
@@ -833,9 +833,9 @@ public class class60 {
 				Client.mouseCrossColor = 2;
 				Client.mouseCrossState = 0;
 				var16 = class503.getPacketBufferNode(ClientPacket.field3107, Client.packetWriter.isaacCipher);
-				var16.packetBuffer.method9143(AbstractArchive.baseX * 64 + var0);
-				var16.packetBuffer.method9126(var3);
-				var16.packetBuffer.method9272(class148.baseY * 64 + var1);
+				var16.packetBuffer.writeShortLE(AbstractArchive.baseX * 64 + var0);
+				var16.packetBuffer.writeShortAdd(var3);
+				var16.packetBuffer.writeShortAddLE(class148.baseY * 64 + var1);
 				Client.packetWriter.addNode(var16);
 			}
 
@@ -847,10 +847,10 @@ public class class60 {
 				Client.destinationX = var0;
 				Client.destinationY = var1;
 				var16 = class503.getPacketBufferNode(ClientPacket.field3104, Client.packetWriter.isaacCipher);
-				var16.packetBuffer.method9143(class148.baseY * 64 + var1);
-				var16.packetBuffer.method9272(var3);
+				var16.packetBuffer.writeShortLE(class148.baseY * 64 + var1);
+				var16.packetBuffer.writeShortAddLE(var3);
 				var16.packetBuffer.writeByte(Client.field750.method4151(82) ? 1 : 0);
-				var16.packetBuffer.method9126(AbstractArchive.baseX * 64 + var0);
+				var16.packetBuffer.writeShortAdd(AbstractArchive.baseX * 64 + var0);
 				Client.packetWriter.addNode(var16);
 			}
 
@@ -876,7 +876,7 @@ public class class60 {
 					Client.destinationX = var0;
 					Client.destinationY = var1;
 					var15 = class503.getPacketBufferNode(ClientPacket.field3164, Client.packetWriter.isaacCipher);
-					var15.packetBuffer.method9118(Client.field750.method4151(82) ? 1 : 0);
+					var15.packetBuffer.writeByteSub(Client.field750.method4151(82) ? 1 : 0);
 					var15.packetBuffer.writeShort(var3);
 					Client.packetWriter.addNode(var15);
 				}

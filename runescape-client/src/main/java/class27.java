@@ -527,14 +527,14 @@ public class class27 {
 		int var9;
 		int var10;
 		if (class296.field3195 == var0) {
-			var2 = var1.method9120();
+			var2 = var1.readUnsignedByteNeg();
 			var3 = var2 >> 4 & 15;
 			var4 = var2 & 7;
-			var5 = var1.method9119();
-			var6 = var1.method9089();
+			var5 = var1.readUnsignedByteAdd();
+			var6 = var1.readUnsignedByteSub();
 			var7 = (var6 >> 4 & 7) + WorldMapSectionType.field2978;
 			var8 = (var6 & 7) + class387.field4440;
-			var9 = var1.method9087();
+			var9 = var1.readUnsignedShortLE();
 			if (var7 >= 0 && var8 >= 0 && var7 < 104 && var8 < 104) {
 				var10 = var3 + 1;
 				if (class136.localPlayer.pathX[0] >= var7 - var10 && class136.localPlayer.pathX[0] <= var7 + var10 && class136.localPlayer.pathY[0] >= var8 - var10 && class136.localPlayer.pathY[0] <= var10 + var8 && class150.clientPreferences.method2481() != 0 && var4 > 0 && Client.soundEffectCount < 50) {
@@ -550,16 +550,16 @@ public class class27 {
 
 		TileItem var32;
 		if (class296.field3194 == var0) {
-			var2 = var1.method9336();
-			var3 = var1.method9089();
+			var2 = var1.readUnsignedIntLE();
+			var3 = var1.readUnsignedByteSub();
 			var1.readUnsignedShort();
-			var1.method9120();
+			var1.readUnsignedByteNeg();
 			var4 = var1.readUnsignedShort();
 			var5 = var1.readUnsignedByte();
 			var6 = (var5 >> 4 & 7) + WorldMapSectionType.field2978;
 			var7 = (var5 & 7) + class387.field4440;
 			var1.readUnsignedByte();
-			var1.method9116();
+			var1.readUnsignedShortAdd();
 			if (var6 >= 0 && var7 >= 0 && var6 < 104 && var7 < 104) {
 				var32 = new TileItem();
 				var32.id = var4;
@@ -576,11 +576,11 @@ public class class27 {
 		} else {
 			int var11;
 			if (class296.field3193 == var0) {
-				var2 = var1.method9087();
+				var2 = var1.readUnsignedShortLE();
 				var3 = var1.readUnsignedByte();
 				var4 = (var3 >> 4 & 7) + WorldMapSectionType.field2978;
 				var5 = (var3 & 7) + class387.field4440;
-				var6 = var1.method9089();
+				var6 = var1.readUnsignedByteSub();
 				var7 = var6 >> 2;
 				var8 = var6 & 3;
 				var9 = Client.field591[var7];
@@ -645,12 +645,12 @@ public class class27 {
 				}
 
 			} else if (class296.field3202 == var0) {
-				var2 = var1.method9089();
+				var2 = var1.readUnsignedByteSub();
 				var3 = var1.readUnsignedByte();
 				var4 = (var3 >> 4 & 7) + WorldMapSectionType.field2978;
 				var5 = (var3 & 7) + class387.field4440;
 				var6 = var1.readUnsignedShort();
-				var7 = var1.method9116();
+				var7 = var1.readUnsignedShortAdd();
 				if (var4 >= 0 && var5 >= 0 && var4 < 104 && var5 < 104) {
 					var4 = var4 * 128 + 64;
 					var5 = var5 * 128 + 64;
@@ -659,12 +659,12 @@ public class class27 {
 				}
 
 			} else if (class296.field3197 == var0) {
-				var2 = var1.method9119();
+				var2 = var1.readUnsignedByteAdd();
 				var3 = (var2 >> 4 & 7) + WorldMapSectionType.field2978;
 				var4 = (var2 & 7) + class387.field4440;
 				var5 = var1.readUnsignedShort();
-				var6 = var1.method9142();
-				var7 = var1.method9142();
+				var6 = var1.readUnsignedIntME();
+				var7 = var1.readUnsignedIntME();
 				if (var3 >= 0 && var4 >= 0 && var3 < 104 && var4 < 104) {
 					NodeDeque var40 = Client.groundItems[class36.Client_plane][var3][var4];
 					if (var40 != null) {
@@ -700,11 +700,11 @@ public class class27 {
 					}
 
 				} else if (class296.field3200 == var0) {
-					var2 = var1.method9089();
+					var2 = var1.readUnsignedByteSub();
 					var3 = (var2 >> 4 & 7) + WorldMapSectionType.field2978;
 					var4 = (var2 & 7) + class387.field4440;
-					var5 = var1.method9119();
-					var6 = var1.method9087();
+					var5 = var1.readUnsignedByteAdd();
+					var6 = var1.readUnsignedShortLE();
 					var7 = var1.readUnsignedByte();
 					var8 = var7 >> 2;
 					var9 = var7 & 3;
@@ -718,20 +718,20 @@ public class class27 {
 					int var13;
 					int var14;
 					if (class296.field3203 == var0) {
-						byte var36 = var1.method9122();
-						var3 = var1.method9119();
+						byte var36 = var1.readByteAdd();
+						var3 = var1.readUnsignedByteAdd();
 						var4 = (var3 >> 4 & 7) + WorldMapSectionType.field2978;
 						var5 = (var3 & 7) + class387.field4440;
-						var6 = var1.method9116();
-						var7 = var1.method9087();
+						var6 = var1.readUnsignedShortAdd();
+						var7 = var1.readUnsignedShortLE();
 						var8 = var1.readUnsignedShort();
-						var9 = var1.method9116();
+						var9 = var1.readUnsignedShortAdd();
 						byte var38 = var1.readByte();
 						var11 = var1.readUnsignedByte();
 						var12 = var11 >> 2;
 						var13 = var11 & 3;
 						var14 = Client.field591[var12];
-						byte var15 = var1.method9122();
+						byte var15 = var1.readByteAdd();
 						byte var16 = var1.readByte();
 						Player var17;
 						if (var6 == Client.localPlayerIndex) {
@@ -793,17 +793,17 @@ public class class27 {
 					if (class296.field3201 == var0) {
 						var2 = var1.readUnsignedShort();
 						var3 = var1.method9136();
-						var4 = var1.method9120();
-						byte var37 = var1.method9124();
-						var6 = var1.method9120();
+						var4 = var1.readUnsignedByteNeg();
+						byte var37 = var1.readByteSub();
+						var6 = var1.readUnsignedByteNeg();
 						var7 = (var6 >> 4 & 7) + WorldMapSectionType.field2978;
 						var8 = (var6 & 7) + class387.field4440;
-						var9 = var1.method9119();
-						var10 = var1.method9116();
-						var11 = var1.method9116();
-						byte var39 = var1.method9122();
-						var13 = var1.method9119() * 4;
-						var14 = var1.method9120() * 4;
+						var9 = var1.readUnsignedByteAdd();
+						var10 = var1.readUnsignedShortAdd();
+						var11 = var1.readUnsignedShortAdd();
+						byte var39 = var1.readByteAdd();
+						var13 = var1.readUnsignedByteAdd() * 4;
+						var14 = var1.readUnsignedByteNeg() * 4;
 						var5 = var37 + var7;
 						var12 = var39 + var8;
 						if (var7 >= 0 && var8 >= 0 && var7 < 104 && var8 < 104 && var5 >= 0 && var12 >= 0 && var5 < 104 && var12 < 104 && var11 != 65535) {
@@ -818,7 +818,7 @@ public class class27 {
 
 					} else if (class296.field3196 != var0) {
 						if (class296.field3199 == var0) {
-							var2 = var1.method9089();
+							var2 = var1.readUnsignedByteSub();
 							var3 = (var2 >> 4 & 7) + WorldMapSectionType.field2978;
 							var4 = (var2 & 7) + class387.field4440;
 							var5 = var1.readUnsignedByte();
@@ -831,9 +831,9 @@ public class class27 {
 
 						}
 					} else {
-						var2 = var1.method9336();
+						var2 = var1.readUnsignedIntLE();
 						var3 = var1.readUnsignedShort();
-						var4 = var1.method9120();
+						var4 = var1.readUnsignedByteNeg();
 						var5 = (var4 >> 4 & 7) + WorldMapSectionType.field2978;
 						var6 = (var4 & 7) + class387.field4440;
 						if (var5 >= 0 && var6 >= 0 && var5 < 104 && var6 < 104) {

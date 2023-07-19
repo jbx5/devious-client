@@ -164,7 +164,7 @@ public class class396 {
 			var4.packetBuffer.writeByte(var3);
 		}
 
-		var4.packetBuffer.method9083(var4.packetBuffer.offset - var5);
+		var4.packetBuffer.writeLengthByte(var4.packetBuffer.offset - var5);
 		return var4;
 	}
 }

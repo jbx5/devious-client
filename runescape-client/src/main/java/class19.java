@@ -80,7 +80,7 @@ public class class19 implements Callable {
 		int var6 = -1;
 
 		while (true) {
-			int var7 = var5.method9104();
+			int var7 = var5.readIncrSmallSmart();
 			if (var7 == 0) {
 				return;
 			}

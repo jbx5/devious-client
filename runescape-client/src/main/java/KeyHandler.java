@@ -240,12 +240,12 @@ public class KeyHandler implements KeyListener, FocusListener {
 			if ((var4 & 512) != 0) {
 				class218[] var6 = Players.field1363;
 				class218[] var8 = new class218[]{class218.field2381, class218.field2384, class218.field2378, class218.field2377};
-				var6[var2] = (class218)ClientPreferences.findEnumerated(var8, var0.method9122());
+				var6[var2] = (class218)ClientPreferences.findEnumerated(var8, var0.readByteAdd());
 			}
 
 			int var17;
 			if ((var4 & 32) != 0) {
-				var3.targetIndex = var0.method9130();
+				var3.targetIndex = var0.readUnsignedShortAddLE();
 				var3.targetIndex += var0.readUnsignedByte() << 16;
 				var17 = 16777215;
 				if (var17 == var3.targetIndex) {
@@ -255,12 +255,12 @@ public class KeyHandler implements KeyListener, FocusListener {
 
 			int var7;
 			if ((var4 & 2) != 0) {
-				var17 = var0.method9087();
+				var17 = var0.readUnsignedShortLE();
 				if (var17 == 65535) {
 					var17 = -1;
 				}
 
-				var7 = var0.method9119();
+				var7 = var0.readUnsignedByteAdd();
 				WorldMapSectionType.performPlayerAnimation(var3, var17, var7);
 			}
 
@@ -269,9 +269,9 @@ public class KeyHandler implements KeyListener, FocusListener {
 			int var13;
 			if ((var4 & 16) != 0) {
 				var17 = var0.readUnsignedShort();
-				PlayerType var18 = (PlayerType)ClientPreferences.findEnumerated(PendingSpawn.PlayerType_values(), var0.method9120());
+				PlayerType var18 = (PlayerType)ClientPreferences.findEnumerated(PendingSpawn.PlayerType_values(), var0.readUnsignedByteNeg());
 				boolean var19 = var0.readUnsignedByte() == 1;
-				var9 = var0.method9089();
+				var9 = var0.readUnsignedByteSub();
 				var10 = var0.offset;
 				if (var3.username != null && var3.appearance != null) {
 					boolean var11 = false;
@@ -315,13 +315,13 @@ public class KeyHandler implements KeyListener, FocusListener {
 			}
 
 			if ((var4 & 4096) != 0) {
-				var3.field1234 = var0.method9124();
-				var3.field1236 = var0.method9122();
-				var3.field1196 = var0.method9122();
-				var3.field1224 = var0.method9124();
-				var3.spotAnimation = var0.method9116() + Client.cycle;
-				var3.field1239 = var0.method9130() + Client.cycle;
-				var3.field1232 = var0.method9130();
+				var3.field1234 = var0.readByteSub();
+				var3.field1236 = var0.readByteAdd();
+				var3.field1196 = var0.readByteAdd();
+				var3.field1224 = var0.readByteSub();
+				var3.spotAnimation = var0.readUnsignedShortAdd() + Client.cycle;
+				var3.field1239 = var0.readUnsignedShortAddLE() + Client.cycle;
+				var3.field1232 = var0.readUnsignedShortAddLE();
 				if (var3.field1118) {
 					var3.field1234 += var3.tileX;
 					var3.field1236 += var3.tileY;
@@ -355,19 +355,19 @@ public class KeyHandler implements KeyListener, FocusListener {
 			}
 
 			if ((var4 & 32768) != 0) {
-				var5 = var0.method9124();
+				var5 = var0.readByteSub();
 			}
 
 			int var21;
 			int var25;
 			int var29;
 			if ((var4 & 2048) != 0) {
-				var17 = var0.method9130();
+				var17 = var0.readUnsignedShortAddLE();
 				var7 = var17 >> 8;
 				var29 = var7 >= 13 && var7 <= 20 ? var7 - 12 : 0;
-				PlayerType var20 = (PlayerType)ClientPreferences.findEnumerated(PendingSpawn.PlayerType_values(), var0.method9119());
-				boolean var24 = var0.method9119() == 1;
-				var25 = var0.method9119();
+				PlayerType var20 = (PlayerType)ClientPreferences.findEnumerated(PendingSpawn.PlayerType_values(), var0.readUnsignedByteAdd());
+				boolean var24 = var0.readUnsignedByteAdd() == 1;
+				var25 = var0.readUnsignedByteAdd();
 				var21 = var0.offset;
 				if (var3.username != null && var3.appearance != null) {
 					boolean var26 = false;
@@ -377,7 +377,7 @@ public class KeyHandler implements KeyListener, FocusListener {
 
 					if (!var26 && Client.field637 == 0 && !var3.isHidden) {
 						Players.field1374.offset = 0;
-						var0.method9335(Players.field1374.array, 0, var25);
+						var0.readBytesLE(Players.field1374.array, 0, var25);
 						Players.field1374.offset = 0;
 						String var14 = AbstractFont.escapeBrackets(class153.method3218(class292.method5720(Players.field1374)));
 						var3.overheadText = var14.trim();
@@ -390,7 +390,7 @@ public class KeyHandler implements KeyListener, FocusListener {
 							var15 = new byte[var29];
 
 							for (var16 = 0; var16 < var29; ++var16) {
-								var15[var16] = var0.method9123();
+								var15[var16] = var0.readByteNeg();
 							}
 						}
 
@@ -415,18 +415,18 @@ public class KeyHandler implements KeyListener, FocusListener {
 			}
 
 			if ((var4 & 65536) != 0) {
-				var17 = var0.method9119();
+				var17 = var0.readUnsignedByteAdd();
 
 				for (var7 = 0; var7 < var17; ++var7) {
-					var29 = var0.method9089();
+					var29 = var0.readUnsignedByteSub();
 					var9 = var0.readUnsignedShort();
-					var10 = var0.method9142();
+					var10 = var0.readUnsignedIntME();
 					var3.updateSpotAnimation(var29, var9, var10 >> 16, var10 & 65535);
 				}
 			}
 
 			if ((var4 & 8) != 0) {
-				var17 = var0.method9119();
+				var17 = var0.readUnsignedByteAdd();
 				if (var17 > 0) {
 					for (var7 = 0; var7 < var17; ++var7) {
 						var9 = -1;
@@ -449,7 +449,7 @@ public class KeyHandler implements KeyListener, FocusListener {
 					}
 				}
 
-				var7 = var0.method9120();
+				var7 = var0.readUnsignedByteNeg();
 				if (var7 > 0) {
 					for (var29 = 0; var29 < var7; ++var29) {
 						var9 = var0.readUShortSmart();
@@ -457,7 +457,7 @@ public class KeyHandler implements KeyListener, FocusListener {
 						if (var10 != 32767) {
 							var25 = var0.readUShortSmart();
 							var21 = var0.readUnsignedByte();
-							var13 = var10 > 0 ? var0.method9120() : var21;
+							var13 = var10 > 0 ? var0.readUnsignedByteNeg() : var21;
 							var3.addHealthBar(var9, Client.cycle, var10, var25, var21, var13);
 						} else {
 							var3.removeHealthBar(var9);
@@ -467,7 +467,7 @@ public class KeyHandler implements KeyListener, FocusListener {
 			}
 
 			if ((var4 & 128) != 0) {
-				var3.field1219 = var0.method9116();
+				var3.field1219 = var0.readUnsignedShortAdd();
 				if (var3.pathLength == 0) {
 					var3.orientation = var3.field1219;
 					var3.method2392();
@@ -476,9 +476,9 @@ public class KeyHandler implements KeyListener, FocusListener {
 
 			if ((var4 & 256) != 0) {
 				var3.field1183 = Client.cycle + var0.readUnsignedShort();
-				var3.field1244 = Client.cycle + var0.method9130();
-				var3.field1245 = var0.method9124();
-				var3.field1238 = var0.method9123();
+				var3.field1244 = Client.cycle + var0.readUnsignedShortAddLE();
+				var3.field1245 = var0.readByteSub();
+				var3.field1238 = var0.readByteNeg();
 				var3.field1247 = var0.readByte();
 				var3.field1248 = (byte)var0.readUnsignedByte();
 			}
@@ -487,7 +487,7 @@ public class KeyHandler implements KeyListener, FocusListener {
 				var17 = var0.readUnsignedByte();
 				byte[] var27 = new byte[var17];
 				Buffer var23 = new Buffer(var27);
-				var0.method9335(var27, 0, var17);
+				var0.readBytesLE(var27, 0, var17);
 				Players.field1360[var2] = var23;
 				var3.read(var23);
 			}

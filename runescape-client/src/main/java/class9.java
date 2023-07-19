@@ -341,7 +341,7 @@ public class class9 implements MouseWheel {
 							var6.packetBuffer.writeShort(1 + class501.stringCp1252NullTerminatedByteSize(var4) + class501.stringCp1252NullTerminatedByteSize(var5));
 							var6.packetBuffer.writeStringCp1252NullTerminated(var5);
 							var6.packetBuffer.writeStringCp1252NullTerminated(var4);
-							var6.packetBuffer.method9244(var3);
+							var6.packetBuffer.writeByteNeg(var3);
 							Client.packetWriter.addNode(var6);
 							return 1;
 						}

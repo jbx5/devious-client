@@ -23,7 +23,7 @@ public class class303 {
 
 		label70:
 		while (true) {
-			int var6 = var4.method9104();
+			int var6 = var4.readIncrSmallSmart();
 			if (var6 == 0) {
 				return var3;
 			}
@@ -726,9 +726,9 @@ public class class303 {
 
 			class385.method7202(var3, var2, true);
 		} else {
-			var2 = var1.method9116();
-			var3 = var1.method9087();
-			boolean var15 = var1.method9089() == 1;
+			var2 = var1.readUnsignedShortAdd();
+			var3 = var1.readUnsignedShortLE();
+			boolean var15 = var1.readUnsignedByteSub() == 1;
 			var5 = var1.readUnsignedShort();
 			var1.importIndex();
 
