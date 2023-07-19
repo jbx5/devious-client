@@ -3,70 +3,88 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fb")
-public class class148 extends class158 {
-   @ObfuscatedName("aw")
-   @Export("userHomeDirectory")
-   static String userHomeDirectory;
-   @ObfuscatedName("at")
-   @ObfuscatedGetter(
-      intValue = 1972531337
-   )
-   int field1660;
-   @ObfuscatedName("an")
-   byte field1654;
-   @ObfuscatedName("av")
-   @ObfuscatedGetter(
-      intValue = -1059656523
-   )
-   int field1658;
-   @ObfuscatedName("as")
-   String field1656;
-   // $FF: synthetic field
-   @ObfuscatedSignature(
-      descriptor = "Lgh;"
-   )
-   final class159 this$0;
+@ObfuscatedName("fn")
+public class class148 extends class143 {
+	@ObfuscatedName("fn")
+	@ObfuscatedSignature(
+		descriptor = "Lny;"
+	)
+	static Archive field1670;
+	@ObfuscatedName("jb")
+	@ObfuscatedGetter(
+		intValue = -607814879
+	)
+	@Export("baseY")
+	static int baseY;
+	@ObfuscatedName("aw")
+	@ObfuscatedGetter(
+		intValue = 1269845755
+	)
+	int field1669;
+	@ObfuscatedName("ay")
+	@ObfuscatedGetter(
+		intValue = -4986227
+	)
+	int field1666;
+	@ObfuscatedName("ar")
+	@ObfuscatedGetter(
+		intValue = 57408083
+	)
+	int field1668;
+	@ObfuscatedName("am")
+	@ObfuscatedGetter(
+		intValue = 1191160211
+	)
+	int field1667;
+	// $FF: synthetic field
+	@ObfuscatedSignature(
+		descriptor = "Lfr;"
+	)
+	final class146 this$0;
 
-   @ObfuscatedSignature(
-      descriptor = "(Lgh;)V"
-   )
-   class148(class159 var1) {
-      this.this$0 = var1;
-      this.field1660 = -1;
-   }
+	@ObfuscatedSignature(
+		descriptor = "(Lfr;)V"
+	)
+	class148(class146 var1) {
+		this.this$0 = var1;
+	}
 
-   @ObfuscatedName("at")
-   @ObfuscatedSignature(
-      descriptor = "(Ltz;I)V",
-      garbageValue = "-986564571"
-   )
-   void vmethod3370(Buffer var1) {
-      this.field1660 = var1.readUnsignedShort();
-      this.field1654 = var1.readByte();
-      this.field1658 = var1.readUnsignedShort();
-      var1.readLong();
-      this.field1656 = var1.readStringCp1252NullTerminated();
-   }
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "(Lty;B)V",
+		garbageValue = "1"
+	)
+	void vmethod3412(Buffer var1) {
+		this.field1669 = var1.readInt();
+		this.field1667 = var1.readInt();
+		this.field1666 = var1.readUnsignedByte();
+		this.field1668 = var1.readUnsignedByte();
+	}
 
-   @ObfuscatedName("an")
-   @ObfuscatedSignature(
-      descriptor = "(Lgv;I)V",
-      garbageValue = "1284013379"
-   )
-   void vmethod3371(ClanChannel var1) {
-      ClanChannelMember var2 = (ClanChannelMember)var1.members.get(this.field1660);
-      var2.rank = this.field1654;
-      var2.world = this.field1658;
-      var2.username = new Username(this.field1656);
-   }
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "(Lfx;B)V",
+		garbageValue = "-72"
+	)
+	void vmethod3419(ClanSettings var1) {
+		var1.method3237(this.field1669, this.field1667, this.field1666, this.field1668);
+	}
 
-   @ObfuscatedName("ax")
-   @ObfuscatedSignature(
-      descriptor = "(Ljava/lang/CharSequence;II)I",
-      garbageValue = "-535468247"
-   )
-   public static int method3166(CharSequence var0, int var1) {
-      return class211.method4167(var0, var1, true);
-   }
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "(ILrg;Lny;B)V",
+		garbageValue = "98"
+	)
+	static void method3170(int var0, ArchiveDisk var1, Archive var2) {
+		ArchiveDiskAction var3 = new ArchiveDiskAction();
+		var3.type = 1;
+		var3.key = (long)var0;
+		var3.archiveDisk = var1;
+		var3.archive = var2;
+		synchronized(ArchiveDiskActionHandler.ArchiveDiskActionHandler_requestQueue) {
+			ArchiveDiskActionHandler.ArchiveDiskActionHandler_requestQueue.addFirst(var3);
+		}
+
+		class292.method5721();
+	}
 }

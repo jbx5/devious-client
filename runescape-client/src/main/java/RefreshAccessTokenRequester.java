@@ -7,5 +7,5 @@ import net.runelite.mapping.ObfuscatedName;
 @Implements("RefreshAccessTokenRequester")
 @ObfuscatedName("com/jagex/oldscape/pub/RefreshAccessTokenRequester")
 public interface RefreshAccessTokenRequester {
-   Future request(String var1, URL var2, Map var3, String var4);
+	Future request(String var1, URL var2, Map var3, String var4);
 }

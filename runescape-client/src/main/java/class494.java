@@ -1,80 +1,33 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("tb")
-public class class494 extends DualNode {
-   @ObfuscatedName("as")
-   @ObfuscatedSignature(
-      descriptor = "[Lsw;"
-   )
-   class490[] field4989;
-   @ObfuscatedName("ax")
-   List field4991;
+@ObfuscatedName("ta")
+public class class494 {
+	@ObfuscatedName("ar")
+	static final char[] field4999;
+	@ObfuscatedName("am")
+	static final char[] field4998;
 
-   @ObfuscatedSignature(
-      descriptor = "(Lnq;I)V"
-   )
-   public class494(AbstractArchive var1, int var2) {
-      byte[] var3 = var1.takeFile(var2, 0);
-      this.method8802(new Buffer(var3));
-   }
+	static {
+		field4999 = new char[]{' ', ' ', '_', '-', 'à', 'á', 'â', 'ä', 'ã', 'À', 'Á', 'Â', 'Ä', 'Ã', 'è', 'é', 'ê', 'ë', 'È', 'É', 'Ê', 'Ë', 'í', 'î', 'ï', 'Í', 'Î', 'Ï', 'ò', 'ó', 'ô', 'ö', 'õ', 'Ò', 'Ó', 'Ô', 'Ö', 'Õ', 'ù', 'ú', 'û', 'ü', 'Ù', 'Ú', 'Û', 'Ü', 'ç', 'Ç', 'ÿ', 'Ÿ', 'ñ', 'Ñ', 'ß'};
+		field4998 = new char[]{'[', ']', '#'};
+	}
 
-   @ObfuscatedSignature(
-      descriptor = "(Lnq;II)V"
-   )
-   public class494(AbstractArchive var1, int var2, int var3) {
-      byte[] var4 = var1.takeFile(var2, var3 + 1);
-      this.method8802(new Buffer(var4));
-   }
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "(Lnd;IB)Luu;",
+		garbageValue = "31"
+	)
+	public static IndexedSprite method8824(AbstractArchive var0, int var1) {
+		byte[] var3 = var0.takeFileFlat(var1);
+		boolean var2;
+		if (var3 == null) {
+			var2 = false;
+		} else {
+			VarbitComposition.SpriteBuffer_decode(var3);
+			var2 = true;
+		}
 
-   @ObfuscatedName("at")
-   @ObfuscatedSignature(
-      descriptor = "(Ltz;I)V",
-      garbageValue = "1347371252"
-   )
-   void method8802(Buffer var1) {
-      int var2 = var1.packBytesToInt();
-      this.field4989 = new class490[var2];
-      this.field4991 = new ArrayList(var2);
-
-      for(int var3 = 0; var3 < var2; ++var3) {
-         this.field4989[var3] = (class490)GameObject.findEnumerated(class490.method8761(), var1.readUnsignedByte());
-         int var4 = var1.packBytesToInt();
-         HashMap var5 = new HashMap(var4);
-
-         while(var4-- > 0) {
-            Object var6 = this.field4989[var3].method8758(var1);
-            int var7 = var1.packBytesToInt();
-            ArrayList var8 = new ArrayList();
-
-            while(var7-- > 0) {
-               int var9 = var1.packBytesToInt();
-               var8.add(var9);
-            }
-
-            var5.put(var6, var8);
-         }
-
-         this.field4991.add(var3, var5);
-      }
-
-   }
-
-   @ObfuscatedName("an")
-   @ObfuscatedSignature(
-      descriptor = "(Ljava/lang/Object;II)Ljava/util/List;",
-      garbageValue = "2136063107"
-   )
-   public List method8803(Object var1, int var2) {
-      if (var2 < 0) {
-         var2 = 0;
-      }
-
-      Map var3 = (Map)this.field4991.get(var2);
-      return (List)var3.get(var1);
-   }
+		return !var2 ? null : Script.method2172();
+	}
 }

@@ -4,9 +4,9 @@ import net.runelite.mapping.ObfuscatedName;
 @Implements("RefreshAccessTokenResponse")
 @ObfuscatedName("com/jagex/oldscape/pub/RefreshAccessTokenResponse")
 public interface RefreshAccessTokenResponse {
-   boolean isSuccess();
+	boolean isSuccess();
 
-   String getAccessToken();
+	String getAccessToken();
 
-   String getRefreshToken();
+	String getRefreshToken();
 }

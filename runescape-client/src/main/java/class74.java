@@ -1,91 +1,92 @@
 import java.math.BigInteger;
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ct")
+@ObfuscatedName("cg")
 public class class74 {
-   @ObfuscatedName("at")
-   static final BigInteger field913 = new BigInteger("10001", 16);
-   @ObfuscatedName("an")
-   static final BigInteger field907 = new BigInteger("abc31bb2d0938536c5db9c13d63acd8be013bf03a8adf82d7eeb74ff76295fb695114405ad7451023ca93bc605bd48d9844d94694682157a8f969b9b34f5bb294f650532f4aca8734ffac3d71b389af10d8d4372811a5cedd4b4427a45d02bcc2d901ea30db7fcbd372ca0bf00e52aa3a185d0d23a2320d72e180157ad3b1d8b", 16);
-   @ObfuscatedName("ax")
-   @Export("Tiles_overlays")
-   static short[][][] Tiles_overlays;
-   @ObfuscatedName("jb")
-   @Export("regionMapArchives")
-   static byte[][] regionMapArchives;
-   @ObfuscatedName("qb")
-   @ObfuscatedGetter(
-      intValue = -1236759399
-   )
-   static int field911;
+	@ObfuscatedName("aw")
+	static final BigInteger field918;
+	@ObfuscatedName("ay")
+	static final BigInteger field915;
 
-   @ObfuscatedName("an")
-   @ObfuscatedSignature(
-      descriptor = "(Ltl;II)V",
-      garbageValue = "-1520578315"
-   )
-   @Export("updatePlayers")
-   static final void updatePlayers(PacketBuffer var0, int var1) {
-      int var2 = var0.offset;
-      Players.Players_pendingUpdateCount = 0;
-      UrlRequest.method2839(var0);
+	static {
+		field918 = new BigInteger("10001", 16);
+		field915 = new BigInteger("837aa9f02cc04c9b343d5266504f7fb5b16a966ed0c040361d86894e88a6f50d1fd0f1e7d8ab3c0d44eff369029a1e6e13a1f0890ba4ac0dc315e76e6f8c38fb9df4c6d04831f525e1dd4b7e1c38cc3c44888a7e9d3ae2120f12877bdd671dffcb137690ab80971e9af17d19644615b37eebd59b204317b2445bcebe6b66949d", 16);
+	}
 
-      for(int var3 = 0; var3 < Players.Players_pendingUpdateCount; ++var3) {
-         int var4 = Players.Players_pendingUpdateIndices[var3];
-         Player var5 = Client.players[var4];
-         int var6 = var0.readUnsignedByte();
-         if ((var6 & 8) != 0) {
-            var6 += var0.readUnsignedByte() << 8;
-         }
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "(II)Leu;",
+		garbageValue = "1051457224"
+	)
+	static class128 method2086(int var0) {
+		class128[] var1 = new class128[]{class128.field1524, class128.field1516, class128.field1517, class128.field1518, class128.field1521};
+		class128 var2 = (class128)ClientPreferences.findEnumerated(var1, var0);
+		if (var2 == null) {
+			var2 = class128.field1524;
+		}
 
-         if ((var6 & 512) != 0) {
-            var6 += var0.readUnsignedByte() << 16;
-         }
+		return var2;
+	}
 
-         class137.method3090(var0, var4, var5, var6);
-      }
+	@ObfuscatedName("aj")
+	@ObfuscatedSignature(
+		descriptor = "(IIIB)V",
+		garbageValue = "127"
+	)
+	static final void method2087(int var0, int var1, int var2) {
+		int var3;
+		for (var3 = 0; var3 < 8; ++var3) {
+			for (int var4 = 0; var4 < 8; ++var4) {
+				Tiles.Tiles_heights[var0][var3 + var1][var4 + var2] = 0;
+			}
+		}
 
-      if (var0.offset - var2 != var1) {
-         throw new RuntimeException(var0.offset - var2 + " " + var1);
-      }
-   }
+		if (var1 > 0) {
+			for (var3 = 1; var3 < 8; ++var3) {
+				Tiles.Tiles_heights[var0][var1][var3 + var2] = Tiles.Tiles_heights[var0][var1 - 1][var3 + var2];
+			}
+		}
 
-   @ObfuscatedName("as")
-   @ObfuscatedSignature(
-      descriptor = "(IIIII)V",
-      garbageValue = "-272656609"
-   )
-   @Export("itemContainerSetItem")
-   static void itemContainerSetItem(int var0, int var1, int var2, int var3) {
-      ItemContainer var4 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
-      if (var4 == null) {
-         var4 = new ItemContainer();
-         ItemContainer.itemContainers.put(var4, (long)var0);
-      }
+		if (var2 > 0) {
+			for (var3 = 1; var3 < 8; ++var3) {
+				Tiles.Tiles_heights[var0][var3 + var1][var2] = Tiles.Tiles_heights[var0][var3 + var1][var2 - 1];
+			}
+		}
 
-      if (var4.ids.length <= var1) {
-         int[] var5 = new int[var1 + 1];
-         int[] var6 = new int[var1 + 1];
+		if (var1 > 0 && Tiles.Tiles_heights[var0][var1 - 1][var2] != 0) {
+			Tiles.Tiles_heights[var0][var1][var2] = Tiles.Tiles_heights[var0][var1 - 1][var2];
+		} else if (var2 > 0 && Tiles.Tiles_heights[var0][var1][var2 - 1] != 0) {
+			Tiles.Tiles_heights[var0][var1][var2] = Tiles.Tiles_heights[var0][var1][var2 - 1];
+		} else if (var1 > 0 && var2 > 0 && Tiles.Tiles_heights[var0][var1 - 1][var2 - 1] != 0) {
+			Tiles.Tiles_heights[var0][var1][var2] = Tiles.Tiles_heights[var0][var1 - 1][var2 - 1];
+		}
 
-         int var7;
-         for(var7 = 0; var7 < var4.ids.length; ++var7) {
-            var5[var7] = var4.ids[var7];
-            var6[var7] = var4.quantities[var7];
-         }
+	}
 
-         for(var7 = var4.ids.length; var7 < var1; ++var7) {
-            var5[var7] = -1;
-            var6[var7] = 0;
-         }
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "(Lmt;I)I",
+		garbageValue = "-1427529511"
+	)
+	static int method2089(Widget var0) {
+		if (var0.type != 11) {
+			--Interpreter.Interpreter_stringStackSize;
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = -1;
+			return 1;
+		} else {
+			String var1 = Interpreter.Interpreter_stringStack[--Interpreter.Interpreter_stringStackSize];
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var0.method6460(var1);
+			return 1;
+		}
+	}
 
-         var4.ids = var5;
-         var4.quantities = var6;
-      }
-
-      var4.ids[var1] = var2;
-      var4.quantities[var1] = var3;
-   }
+	@ObfuscatedName("ir")
+	@ObfuscatedSignature(
+		descriptor = "(IB)I",
+		garbageValue = "36"
+	)
+	static final int method2088(int var0) {
+		return Math.min(Math.max(var0, 128), 383);
+	}
 }
