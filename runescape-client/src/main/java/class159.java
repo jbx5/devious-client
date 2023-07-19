@@ -75,7 +75,7 @@ public abstract class class159 extends Node {
 		Client.DBTableMasterIndex_cache.clear();
 		PlayerComposition.PlayerAppearance_cachedModels.clear();
 		class59.method1181();
-		((TextureProvider)Rasterizer3D.field2510.Rasterizer3D_textureLoader).clear();
+		((TextureProvider)Rasterizer3D.clips.Rasterizer3D_textureLoader).clear();
 		Script.Script_cached.clear();
 		Client.archive5.method7849();
 		class151.field1694.clearFiles();

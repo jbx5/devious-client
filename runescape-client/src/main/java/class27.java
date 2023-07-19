@@ -474,14 +474,14 @@ public class class27 {
 		class105.method2684();
 		var14 = Rasterizer3D.get3dZoom();
 		Rasterizer3D.method4403(TileItem.client.field210);
-		Rasterizer3D.field2510.field2781 = Client.viewportZoom;
+		Rasterizer3D.clips.field2781 = Client.viewportZoom;
 		UserComparator5.scene.draw(class157.cameraX, class384.cameraY, SoundSystem.cameraZ, class19.cameraPitch, class456.cameraYaw, var6);
 		Rasterizer3D.method4403(false);
 		if (Client.renderSelf) {
 			Rasterizer2D.method9446();
 		}
 
-		Rasterizer3D.field2510.field2781 = var14;
+		Rasterizer3D.clips.field2781 = var14;
 		class105.method2684();
 		UserComparator5.scene.clearTempGameObjects();
 		UserComparator7.method2869(var0, var1, var2, var3);
@@ -492,7 +492,7 @@ public class class27 {
 			}
 		}
 
-		((TextureProvider)Rasterizer3D.field2510.Rasterizer3D_textureLoader).animate(Client.graphicsCycle);
+		((TextureProvider)Rasterizer3D.clips.Rasterizer3D_textureLoader).animate(Client.graphicsCycle);
 		FriendLoginUpdate.method7930();
 		class157.cameraX = var7;
 		class384.cameraY = var8;
