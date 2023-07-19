@@ -37,22 +37,22 @@ public class class507 extends DualNode {
 		garbageValue = "702803819"
 	)
 	void method8988(Buffer var1) {
-		int var2 = var1.method9331();
+		int var2 = var1.packBytesToInt();
 		this.field5046 = new class503[var2];
 		this.field5044 = new ArrayList(var2);
 
 		for (int var3 = 0; var3 < var2; ++var3) {
 			this.field5046[var3] = (class503)ClientPreferences.findEnumerated(class503.method8943(), var1.readUnsignedByte());
-			int var4 = var1.method9331();
+			int var4 = var1.packBytesToInt();
 			HashMap var5 = new HashMap(var4);
 
 			while (var4-- > 0) {
 				Object var6 = this.field5046[var3].method8938(var1);
-				int var7 = var1.method9331();
+				int var7 = var1.packBytesToInt();
 				ArrayList var8 = new ArrayList();
 
 				while (var7-- > 0) {
-					int var9 = var1.method9331();
+					int var9 = var1.packBytesToInt();
 					var8.add(var9);
 				}
 

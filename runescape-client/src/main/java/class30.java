@@ -108,10 +108,10 @@ public class class30 {
 			var13 = AbstractArchive.baseX * 64 + (class467.oculusOrbFocalPointX >> 7);
 			var14 = class148.baseY * 64 + (class36.oculusOrbFocalPointY >> 7);
 			PacketBufferNode var15 = class503.getPacketBufferNode(ClientPacket.field3165, Client.packetWriter.isaacCipher);
-			var15.packetBuffer.method9138(Client.field624);
-			var15.packetBuffer.method9272(var13);
-			var15.packetBuffer.method9188(var12);
-			var15.packetBuffer.method9126(var14);
+			var15.packetBuffer.writeIntIME(Client.field624);
+			var15.packetBuffer.writeShortAddLE(var13);
+			var15.packetBuffer.writeByteAdd(var12);
+			var15.packetBuffer.writeShortAdd(var14);
 			Client.packetWriter.addNode(var15);
 		}
 

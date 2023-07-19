@@ -26,8 +26,8 @@ public class WorldMapData_0 extends AbstractWorldMapData {
 			super.regionYLow = var1.readUnsignedShort() * 64;
 			super.regionX = var1.readUnsignedShort();
 			super.regionY = var1.readUnsignedShort();
-			super.groupId = var1.method9152();
-			super.fileId = var1.method9152();
+			super.groupId = var1.readNullableLargeSmart();
+			super.fileId = var1.readNullableLargeSmart();
 		}
 	}
 
@@ -358,7 +358,7 @@ public class WorldMapData_0 extends AbstractWorldMapData {
 		PacketBufferNode var2 = class503.getPacketBufferNode(ClientPacket.field3172, Client.packetWriter.isaacCipher);
 		var2.packetBuffer.writeByte(class501.stringCp1252NullTerminatedByteSize(var0) + 1);
 		var2.packetBuffer.writeStringCp1252NullTerminated(var0);
-		var2.packetBuffer.method9118(var1);
+		var2.packetBuffer.writeByteSub(var1);
 		Client.packetWriter.addNode(var2);
 	}
 }

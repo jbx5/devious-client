@@ -89,7 +89,7 @@ public class DbRowType extends DualNode {
 				this.field5051[var4] = var6;
 			}
 		} else if (var2 == 4) {
-			this.tableId = var1.method9331();
+			this.tableId = var1.packBytesToInt();
 		}
 
 	}

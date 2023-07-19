@@ -136,7 +136,7 @@ public class FriendsChat extends UserList {
 				throw new IllegalArgumentException("Invalid friend chat full update version: " + var2);
 			}
 
-			var8 = var1.method9261();
+			var8 = var1.readShortSmartSub();
 			var14 = -1;
 		}
 

@@ -220,12 +220,12 @@ public class PacketWriter {
 							int[] var3 = var0.field2313.method6561();
 							if (var3 != null) {
 								PacketBufferNode var4 = class503.getPacketBufferNode(ClientPacket.field3186, Client.packetWriter.isaacCipher);
-								var4.packetBuffer.method9272(var0.field2313.childIndex);
-								var4.packetBuffer.method9138(var3[1]);
-								var4.packetBuffer.method9139(var0.field2313.method6437());
+								var4.packetBuffer.writeShortAddLE(var0.field2313.childIndex);
+								var4.packetBuffer.writeIntIME(var3[1]);
+								var4.packetBuffer.writeIntME(var0.field2313.method6437());
 								var4.packetBuffer.method9137(var3[2]);
 								var4.packetBuffer.method9137(var3[0]);
-								var4.packetBuffer.method9139(var0.field2313.id);
+								var4.packetBuffer.writeIntME(var0.field2313.id);
 								Client.packetWriter.addNode(var4);
 							}
 						}

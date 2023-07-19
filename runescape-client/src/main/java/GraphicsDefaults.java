@@ -98,17 +98,17 @@ public class GraphicsDefaults {
 				var3.readMedium();
 				break;
 			case 2:
-				this.field4715 = var3.method9152();
-				this.field4708 = var3.method9152();
-				this.field4709 = var3.method9152();
-				this.field4710 = var3.method9152();
-				this.field4712 = var3.method9152();
-				this.field4707 = var3.method9152();
-				this.field4713 = var3.method9152();
-				this.field4714 = var3.method9152();
-				this.field4711 = var3.method9152();
-				this.field4716 = var3.method9152();
-				this.field4717 = var3.method9152();
+				this.field4715 = var3.readNullableLargeSmart();
+				this.field4708 = var3.readNullableLargeSmart();
+				this.field4709 = var3.readNullableLargeSmart();
+				this.field4710 = var3.readNullableLargeSmart();
+				this.field4712 = var3.readNullableLargeSmart();
+				this.field4707 = var3.readNullableLargeSmart();
+				this.field4713 = var3.readNullableLargeSmart();
+				this.field4714 = var3.readNullableLargeSmart();
+				this.field4711 = var3.readNullableLargeSmart();
+				this.field4716 = var3.readNullableLargeSmart();
+				this.field4717 = var3.readNullableLargeSmart();
 			}
 		}
 	}
