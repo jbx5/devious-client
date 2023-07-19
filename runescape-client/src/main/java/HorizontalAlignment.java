@@ -58,7 +58,7 @@ public enum HorizontalAlignment implements MouseWheel {
 		garbageValue = "-858932897"
 	)
 	public static boolean method3701() {
-		return !class306.field3398.isEmpty();
+		return !class306.musicSongs.isEmpty();
 	}
 
 	@ObfuscatedName("ak")

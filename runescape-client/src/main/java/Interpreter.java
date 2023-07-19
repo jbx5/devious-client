@@ -163,7 +163,7 @@ public class Interpreter {
 	static void method1995(int var0, int var1) {
 		if (class150.clientPreferences.method2478() != 0 && var0 != -1) {
 			ArrayList var2 = new ArrayList();
-			var2.add(new class318(GrandExchangeOfferOwnWorldComparator.field511, var0, 0, class150.clientPreferences.method2478(), false));
+			var2.add(new MusicSong(GrandExchangeOfferOwnWorldComparator.field511, var0, 0, class150.clientPreferences.method2478(), false));
 			UserComparator4.method2858(var2, 0, 0, 0, 0, true);
 			Client.playingJingle = true;
 		}

@@ -3368,17 +3368,17 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 						if (class150.clientPreferences.method2478() != 0 && HorizontalAlignment.method3701()) {
 							Archive var32 = class13.archive6;
 							var2 = class150.clientPreferences.method2478();
-							if (!class306.field3398.isEmpty()) {
+							if (!class306.musicSongs.isEmpty()) {
 								ArrayList var25 = new ArrayList();
-								Iterator var38 = class306.field3398.iterator();
+								Iterator var38 = class306.musicSongs.iterator();
 
 								while (var38.hasNext()) {
-									class318 var41 = (class318)var38.next();
+									MusicSong var41 = (MusicSong)var38.next();
 									var41.field3508 = false;
 									var41.field3513 = false;
 									var41.field3515 = false;
-									var41.field3514 = var32;
-									var41.field3510 = var2;
+									var41.musicTrackArchive = var32;
+									var41.musicTrackVolume = var2;
 									var41.field3511 = 0.0F;
 									var25.add(var41);
 								}

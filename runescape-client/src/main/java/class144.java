@@ -54,16 +54,16 @@ public class class144 extends class143 {
 	)
 	static void method3148(ArrayList var0, boolean var1) {
 		if (!var1) {
-			class306.field3398.clear();
+			class306.musicSongs.clear();
 		}
 
 		Iterator var2 = var0.iterator();
 
 		while (var2.hasNext()) {
-			class318 var3 = (class318)var2.next();
-			if (var3.field3507 != -1 && var3.field3509 != -1) {
+			MusicSong var3 = (MusicSong)var2.next();
+			if (var3.musicTrackGroupId != -1 && var3.musicTrackFileId != -1) {
 				if (!var1) {
-					class306.field3398.add(var3);
+					class306.musicSongs.add(var3);
 				}
 
 				class306.field3396.add(var3);

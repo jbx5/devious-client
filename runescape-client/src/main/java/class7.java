@@ -138,15 +138,15 @@ public class class7 {
 			Iterator var1 = class306.field3394.iterator();
 
 			while (var1.hasNext()) {
-				class318 var2 = (class318)var1.next();
+				MusicSong var2 = (MusicSong)var1.next();
 				if (var2 != null) {
-					var2.field3510 = var0;
+					var2.musicTrackVolume = var0;
 				}
 			}
 
-			class318 var3 = (class318)class306.field3394.get(0);
-			if (var3 != null && var3.field3516 != null && var3.field3516.isReady() && !var3.field3515) {
-				var3.field3516.setPcmStreamVolume(var0);
+			MusicSong var3 = (MusicSong)class306.field3394.get(0);
+			if (var3 != null && var3.midiPcmStream != null && var3.midiPcmStream.isReady() && !var3.field3515) {
+				var3.midiPcmStream.setPcmStreamVolume(var0);
 				var3.field3511 = (float)var0;
 			}
 		}

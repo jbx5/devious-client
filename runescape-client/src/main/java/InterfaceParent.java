@@ -120,7 +120,7 @@ public class InterfaceParent extends Node {
 
 		class127.worldMap = null;
 		RouteStrategy.method4227(0, 0);
-		class306.field3398.clear();
+		class306.musicSongs.clear();
 		Client.playingJingle = false;
 		class133.method3041();
 		if (VerticalAlignment.pcmPlayer1 != null) {
