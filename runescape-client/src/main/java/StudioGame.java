@@ -8,7 +8,7 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("nu")
 @Implements("StudioGame")
-public enum StudioGame implements class372 {
+public enum StudioGame implements MouseWheel {
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "Lnu;"

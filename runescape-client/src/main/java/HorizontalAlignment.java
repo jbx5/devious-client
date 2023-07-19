@@ -6,7 +6,7 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("hz")
 @Implements("HorizontalAlignment")
-public enum HorizontalAlignment implements class372 {
+public enum HorizontalAlignment implements MouseWheel {
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "Lhz;"

@@ -7,7 +7,7 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("ot")
 @Implements("Language")
-public class Language implements class372 {
+public class Language implements MouseWheel {
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "Lot;"

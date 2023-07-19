@@ -8,7 +8,7 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("ox")
 @Implements("ModeWhere")
-public enum ModeWhere implements class372 {
+public enum ModeWhere implements MouseWheel {
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "Lox;"

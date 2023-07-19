@@ -74,8 +74,8 @@ public final class ItemLayer {
 		garbageValue = "643907738"
 	)
 	@Export("FillMode_values")
-	public static class525[] FillMode_values() {
-		return new class525[]{class525.SOLID, class525.field5151, class525.field5149};
+	public static FillMode[] FillMode_values() {
+		return new FillMode[]{FillMode.SOLID, FillMode.field5151, FillMode.field5149};
 	}
 
 	@ObfuscatedName("av")

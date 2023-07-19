@@ -6,7 +6,7 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("dw")
 @Implements("AttackOption")
-public enum AttackOption implements class372 {
+public enum AttackOption implements MouseWheel {
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "Ldw;"

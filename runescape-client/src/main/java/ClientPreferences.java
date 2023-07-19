@@ -482,11 +482,11 @@ public class ClientPreferences {
 		garbageValue = "-1385726051"
 	)
 	@Export("findEnumerated")
-	public static class372 findEnumerated(class372[] var0, int var1) {
-		class372[] var2 = var0;
+	public static MouseWheel findEnumerated(MouseWheel[] var0, int var1) {
+		MouseWheel[] var2 = var0;
 
 		for (int var3 = 0; var3 < var2.length; ++var3) {
-			class372 var4 = var2[var3];
+			MouseWheel var4 = var2[var3];
 			if (var1 == var4.rsOrdinal()) {
 				return var4;
 			}

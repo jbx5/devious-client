@@ -6,7 +6,7 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("hl")
 @Implements("VerticalAlignment")
-public enum VerticalAlignment implements class372 {
+public enum VerticalAlignment implements MouseWheel {
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "Lhl;"

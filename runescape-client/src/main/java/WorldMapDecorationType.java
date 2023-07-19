@@ -7,7 +7,7 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("no")
 @Implements("WorldMapDecorationType")
-public enum WorldMapDecorationType implements class372 {
+public enum WorldMapDecorationType implements MouseWheel {
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "Lno;"

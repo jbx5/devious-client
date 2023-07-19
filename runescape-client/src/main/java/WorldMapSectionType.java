@@ -8,7 +8,7 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("ke")
 @Implements("WorldMapSectionType")
-public enum WorldMapSectionType implements class372 {
+public enum WorldMapSectionType implements MouseWheel {
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "Lke;"
