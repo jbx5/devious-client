@@ -158,7 +158,6 @@ import net.runelite.rs.api.RSTileItem;
 import net.runelite.rs.api.RSUsername;
 import net.runelite.rs.api.RSWidget;
 import net.runelite.rs.api.RSWorld;
-import net.runelite.rs.api.RSClips;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
@@ -3403,28 +3402,28 @@ public abstract class RSClientMixin implements RSClient
 		}
 	}
 
-	@Shadow("clips")
-	static RSClips clips;
+	//@Shadow("clips")
+	//static RSClips clips;
 
 	@Inject
 	@Override
 	public int getRasterizer3D_clipNegativeMidX()
 	{
-		return clips.getClipNegativeMidX();
+		return client.getClips().getClipNegativeMidX();
 	}
 
 	@Inject
 	@Override
 	public int getRasterizer3D_clipNegativeMidY()
 	{
-		return clips.getClipNegativeMidY();
+		return client.getClips().getClipNegativeMidY();
 	}
 
 	@Inject
 	@Override
 	public void set3dZoom(int zoom)
 	{
-		clips.setViewportZoom(zoom);
+		client.getClips().setViewportZoom(zoom);
 		client.setScale(zoom);
 	}
 }

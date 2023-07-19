@@ -1662,6 +1662,9 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("graphicsCycle")
 	int getGraphicsCycle();
 
+	@Import("clips")
+	RSClips getClips();
+
 	/*
 	Unethical
 	 */
