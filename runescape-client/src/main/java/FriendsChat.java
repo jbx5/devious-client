@@ -257,7 +257,7 @@ public class FriendsChat extends UserList {
 			}
 
 			int var4 = var3 - var2;
-			if (var4 >= 1 && var4 <= class403.method7631(var1)) {
+			if (var4 >= 1 && var4 <= DelayFadeTask.method7631(var1)) {
 				StringBuilder var5 = new StringBuilder(var4);
 
 				for (int var6 = var2; var6 < var3; ++var6) {

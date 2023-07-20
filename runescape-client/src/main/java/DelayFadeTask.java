@@ -1,9 +1,12 @@
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("pn")
-public class class403 extends class407 {
+@Implements("DelayFadeTask")
+public class DelayFadeTask extends SongTask
+{
 	@ObfuscatedName("or")
 	@ObfuscatedSignature(
 		descriptor = "Lmt;"
@@ -25,11 +28,11 @@ public class class403 extends class407 {
 	@ObfuscatedSignature(
 		descriptor = "(Lpp;I)V"
 	)
-	public class403(class407 var1, int var2) {
+	public DelayFadeTask(SongTask var1, int var2) {
 		super(var1);
 		this.field4516 = false;
 		this.field4517 = var2;
-		super.field4528 = "DelayFadeTask";
+		super.songTaskName = "DelayFadeTask";
 	}
 
 	@ObfuscatedName("aw")

@@ -1,9 +1,12 @@
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("px")
-public class class405 extends class407 {
+@Implements("FadeOutTask")
+public class FadeOutTask extends SongTask
+{
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "Lmj;"
@@ -18,11 +21,11 @@ public class class405 extends class407 {
 	@ObfuscatedSignature(
 		descriptor = "(Lpp;IZI)V"
 	)
-	public class405(class407 var1, int var2, boolean var3, int var4) {
+	public FadeOutTask(SongTask var1, int var2, boolean var3, int var4) {
 		super(var1);
 		this.field4520 = null;
 		this.field4521 = 0;
-		super.field4528 = "FadeOutTask";
+		super.songTaskName = "FadeOutTask";
 		if (var2 >= 0) {
 			if (var3 && var2 < class306.field3396.size()) {
 				this.field4520 = (MusicSong)class306.field3396.get(var2);

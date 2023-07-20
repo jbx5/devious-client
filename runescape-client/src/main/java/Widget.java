@@ -1310,7 +1310,7 @@ public class Widget extends Node {
 			if (var1 != null) {
 				return var1;
 			} else {
-				var1 = class408.method7672(UserComparator10.Widget_spritesArchive, WallDecoration.Widget_fontsArchive, this.fontId, 0);
+				var1 = ConcurrentMidiTask.method7672(UserComparator10.Widget_spritesArchive, WallDecoration.Widget_fontsArchive, this.fontId, 0);
 				if (var1 != null) {
 					Widget_cachedFonts.put(var1, (long)this.fontId);
 				} else {

@@ -312,7 +312,7 @@ public class class20 {
 		while (var1.method4162()) {
 			if (var1.field2330 == 13) {
 				Login.worldSelectOpen = false;
-				class407.leftTitleSprite.drawAt(Login.xPadding, 0);
+				SongTask.leftTitleSprite.drawAt(Login.xPadding, 0);
 				ScriptFrame.rightTitleSprite.drawAt(Login.xPadding + 382, 0);
 				Login.logoSprite.drawAt(Login.xPadding + 382 - Login.logoSprite.subWidth / 2, 18);
 				return;
@@ -374,7 +374,7 @@ public class class20 {
 
 			if (MouseHandler.MouseHandler_lastPressedX >= Login.xPadding + 708 && MouseHandler.MouseHandler_lastPressedY >= 4 && MouseHandler.MouseHandler_lastPressedX <= Login.xPadding + 708 + 50 && MouseHandler.MouseHandler_lastPressedY <= 20) {
 				Login.worldSelectOpen = false;
-				class407.leftTitleSprite.drawAt(Login.xPadding, 0);
+				SongTask.leftTitleSprite.drawAt(Login.xPadding, 0);
 				ScriptFrame.rightTitleSprite.drawAt(Login.xPadding + 382, 0);
 				Login.logoSprite.drawAt(Login.xPadding + 382 - Login.logoSprite.subWidth / 2, 18);
 				return;
@@ -397,7 +397,7 @@ public class class20 {
 
 				class137.changeWorld(var6);
 				Login.worldSelectOpen = false;
-				class407.leftTitleSprite.drawAt(Login.xPadding, 0);
+				SongTask.leftTitleSprite.drawAt(Login.xPadding, 0);
 				ScriptFrame.rightTitleSprite.drawAt(Login.xPadding + 382, 0);
 				Login.logoSprite.drawAt(Login.xPadding + 382 - Login.logoSprite.subWidth / 2, 18);
 				if (var7) {

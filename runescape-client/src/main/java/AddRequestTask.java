@@ -1,16 +1,19 @@
 import java.util.Iterator;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("pe")
-public class class400 extends class407 {
+@Implements("AddRequestTask")
+public class AddRequestTask extends SongTask
+{
 	@ObfuscatedSignature(
 		descriptor = "(Lpp;)V"
 	)
-	public class400(class407 var1) {
+	public AddRequestTask(SongTask var1) {
 		super(var1);
-		super.field4528 = "AddRequestTask";
+		super.songTaskName = "AddRequestTask";
 	}
 
 	@ObfuscatedName("aw")

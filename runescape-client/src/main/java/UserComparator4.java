@@ -62,18 +62,18 @@ public class UserComparator4 implements Comparator {
 			class144.method3148(var0, var5);
 			if (!class306.field3396.isEmpty()) {
 				ArchiveLoader.method2259(var1, var2, var3, var4);
-				class306.field3399.add(new class400((class407)null));
-				class306.field3399.add(new class409((class407)null, class306.field3393, class306.field3397, class306.field3401));
+				class306.field3399.add(new AddRequestTask((SongTask)null));
+				class306.field3399.add(new LoadSongTask((SongTask)null, class306.field3393, class306.field3397, class306.field3401));
 				if (!class306.musicSongs.isEmpty()) {
 					ArrayList var6 = new ArrayList();
-					var6.add(new class403(new class404(new class406((class407)null, 0, true, class306.field3407)), class306.field3403));
+					var6.add(new DelayFadeTask(new StartSongTask(new FadeInTask((SongTask)null, 0, true, class306.field3407)), class306.field3403));
 					ArrayList var7 = class162.method3356();
-					var6.add(new class403(new class405(new class402((class407)null, var7), 0, false, class306.field3402), class306.musicPlayerStatus));
-					class306.field3399.add(new class408((class407)null, var6));
+					var6.add(new DelayFadeTask(new FadeOutTask(new ClearRequestTask((SongTask)null, var7), 0, false, class306.field3402), class306.musicPlayerStatus));
+					class306.field3399.add(new ConcurrentMidiTask((SongTask)null, var6));
 				} else {
-					class306.field3399.add(new class403((class407)null, class306.field3403));
-					class306.field3399.add(new class404((class407)null));
-					class306.field3399.add(new class406((class407)null, 0, true, class306.field3407));
+					class306.field3399.add(new DelayFadeTask((SongTask)null, class306.field3403));
+					class306.field3399.add(new StartSongTask((SongTask)null));
+					class306.field3399.add(new FadeInTask((SongTask)null, 0, true, class306.field3407));
 				}
 
 			}

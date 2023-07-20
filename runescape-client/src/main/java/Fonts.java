@@ -56,7 +56,7 @@ public class Fonts {
 				} else {
 					int var10 = var7.getGroupId(var9);
 					int var11 = var7.getFileId(var10, "");
-					var6 = class408.method7672(var7, var8, var10, var11);
+					var6 = ConcurrentMidiTask.method7672(var7, var8, var10, var11);
 				}
 
 				if (var6 != null) {

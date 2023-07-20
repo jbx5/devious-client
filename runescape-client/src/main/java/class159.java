@@ -47,7 +47,7 @@ public abstract class class159 extends Node {
 		garbageValue = "-22255"
 	)
 	static final void method3336() {
-		class405.method7642();
+		FadeOutTask.method7642();
 		ArchiveDiskActionHandler.method6684();
 		KitDefinition.KitDefinition_cached.clear();
 		ObjectComposition.ObjectDefinition_cached.clear();

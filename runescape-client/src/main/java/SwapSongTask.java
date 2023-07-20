@@ -1,14 +1,17 @@
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("pj")
-public class class401 extends class407 {
+@Implements("SwapSongTask")
+public class SwapSongTask extends SongTask
+{
 	@ObfuscatedSignature(
 		descriptor = "(Lpp;)V"
 	)
-	public class401(class407 var1) {
+	public SwapSongTask(SongTask var1) {
 		super(var1);
-		super.field4528 = "SwapSongTask";
+		super.songTaskName = "SwapSongTask";
 	}
 
 	@ObfuscatedName("aw")

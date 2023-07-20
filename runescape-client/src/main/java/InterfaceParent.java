@@ -37,7 +37,7 @@ public class InterfaceParent extends Node {
 		boolean var1 = false;
 		boolean var2 = false;
 		if (!class306.field3399.isEmpty()) {
-			class407 var3 = (class407)class306.field3399.get(0);
+			SongTask var3 = (SongTask)class306.field3399.get(0);
 			if (var3 == null) {
 				class306.field3399.remove(0);
 			} else if (var3.vmethod7676(var0)) {
@@ -45,8 +45,8 @@ public class InterfaceParent extends Node {
 					System.out.println("Error in midimanager.service: " + var3.method7651());
 					var1 = true;
 				} else {
-					if (var3.method7652() != null) {
-						class306.field3399.add(1, var3.method7652());
+					if (var3.getSongTask() != null) {
+						class306.field3399.add(1, var3.getSongTask());
 					}
 
 					var2 = var3.method7650();
@@ -61,7 +61,7 @@ public class InterfaceParent extends Node {
 		if (var1) {
 			class306.field3399.clear();
 			ArrayList var4 = class162.method3356();
-			class306.field3399.add(new class402((class407)null, var4));
+			class306.field3399.add(new ClearRequestTask((SongTask)null, var4));
 		}
 
 		return var2;

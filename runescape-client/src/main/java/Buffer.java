@@ -538,7 +538,7 @@ public class Buffer extends Node {
 			if (var2 + this.offset > this.array.length) {
 				throw new IllegalStateException("");
 			} else {
-				String var3 = class403.method7628(this.array, this.offset, var2);
+				String var3 = DelayFadeTask.method7628(this.array, this.offset, var2);
 				this.offset += var2;
 				return var3;
 			}

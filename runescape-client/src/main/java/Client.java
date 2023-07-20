@@ -2851,7 +2851,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 							field718[var13] = true;
 						}
 
-						class409.method7680();
+						LoadSongTask.method7680();
 						Canvas.friendsChat = null;
 						class11.guestClanSettings = null;
 						Arrays.fill(currentClanSettings, (Object)null);
@@ -2960,7 +2960,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 								field718[var14] = true;
 							}
 
-							class409.method7680();
+							LoadSongTask.method7680();
 							class164.updatePlayer(var2);
 							if (var13 != var2.offset) {
 								throw new RuntimeException();
@@ -3430,9 +3430,9 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 						}
 
 						Widget var35 = WorldMapScaleHandler.mousedOverWidgetIf1;
-						Widget var37 = class403.field4519;
+						Widget var37 = DelayFadeTask.field4519;
 						WorldMapScaleHandler.mousedOverWidgetIf1 = null;
-						class403.field4519 = null;
+						DelayFadeTask.field4519 = null;
 						draggedOnWidget = null;
 						field809 = false;
 						field761 = false;
@@ -3547,21 +3547,21 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 																		}
 																	}
 
-																	if (var37 != class403.field4519 && field676 == field675) {
+																	if (var37 != DelayFadeTask.field4519 && field676 == field675) {
 																		if (var37 != null) {
 																			class200.invalidateWidget(var37);
 																		}
 
-																		if (class403.field4519 != null) {
-																			class200.invalidateWidget(class403.field4519);
+																		if (DelayFadeTask.field4519 != null) {
+																			class200.invalidateWidget(DelayFadeTask.field4519);
 																		}
 																	}
 
-																	if (class403.field4519 != null) {
+																	if (DelayFadeTask.field4519 != null) {
 																		if (field675 < field676) {
 																			++field675;
 																			if (field676 == field675) {
-																				class200.invalidateWidget(class403.field4519);
+																				class200.invalidateWidget(DelayFadeTask.field4519);
 																			}
 																		}
 																	} else if (field675 > 0) {
@@ -3737,9 +3737,9 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 																	}
 
 																	if (field781) {
-																		class89.method2306(class422.field4606, class406.field4522, ModeWhere.field4410);
+																		class89.method2306(class422.field4606, FadeInTask.field4522, ModeWhere.field4410);
 																		class184.method3581(class165.field1791, class4.field11);
-																		if (class157.cameraX == class422.field4606 && class406.field4522 == class384.cameraY && ModeWhere.field4410 == SoundSystem.cameraZ && class165.field1791 == class19.cameraPitch && class456.cameraYaw == class4.field11) {
+																		if (class157.cameraX == class422.field4606 && FadeInTask.field4522 == class384.cameraY && ModeWhere.field4410 == SoundSystem.cameraZ && class165.field1791 == class19.cameraPitch && class456.cameraYaw == class4.field11) {
 																			field781 = false;
 																			isCameraLocked = false;
 																			field775 = false;
@@ -4813,7 +4813,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 				if (ServerPacket.UPDATE_UID192 == var1.serverPacket) {
 					var3.offset += 28;
 					if (var3.checkCrc()) {
-						class403.method7630(var3, var3.offset - 28);
+						DelayFadeTask.method7630(var3, var3.offset - 28);
 					}
 
 					var1.serverPacket = null;

@@ -1,9 +1,12 @@
 import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("pp")
-public abstract class class407 {
+@Implements("SongTask")
+public abstract class SongTask
+{
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "Lud;"
@@ -14,11 +17,13 @@ public abstract class class407 {
 	@ObfuscatedSignature(
 		descriptor = "Lpp;"
 	)
-	class407 field4527;
+	@Export("songTask")
+	SongTask songTask;
 	@ObfuscatedName("as")
 	String field4529;
 	@ObfuscatedName("aj")
-	String field4528;
+	@Export("songTaskName")
+	String songTaskName;
 	@ObfuscatedName("ag")
 	boolean field4530;
 	@ObfuscatedName("az")
@@ -27,8 +32,8 @@ public abstract class class407 {
 	@ObfuscatedSignature(
 		descriptor = "(Lpp;)V"
 	)
-	class407(class407 var1) {
-		this.field4527 = var1;
+	SongTask(SongTask var1) {
+		this.songTask = var1;
 	}
 
 	@ObfuscatedName("aw")
@@ -62,7 +67,7 @@ public abstract class class407 {
 		garbageValue = "-29"
 	)
 	public String method7651() {
-		return "Error in task: " + this.field4528 + ", Error message: " + this.field4529;
+		return "Error in task: " + this.songTaskName + ", Error message: " + this.field4529;
 	}
 
 	@ObfuscatedName("ap")
@@ -70,8 +75,9 @@ public abstract class class407 {
 		descriptor = "(S)Lpp;",
 		garbageValue = "276"
 	)
-	public class407 method7652() {
-		return this.field4527;
+	@Export("getSongTask")
+	public SongTask getSongTask() {
+		return this.songTask;
 	}
 
 	@ObfuscatedName("aq")
