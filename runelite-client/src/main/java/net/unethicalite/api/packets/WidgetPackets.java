@@ -365,9 +365,9 @@ public class WidgetPackets
 		var clientPacket = Game.getClientPacket();
 		var packetBufferNode = Static.getClient().preparePacket(clientPacket.IF_BUTTONT(), client.getPacketWriter().getIsaacCipher());
 		packetBufferNode.getPacketBuffer().writeShortAdd(sourceItemId);
-		packetBufferNode.getPacketBuffer().writeShortLE(itemId);
+		packetBufferNode.getPacketBuffer().writeShortLE(destinationSlot);
 		packetBufferNode.getPacketBuffer().writeShortAdd(sourceSlot);
-		packetBufferNode.getPacketBuffer().writeShortAddLE(destinationSlot);
+		packetBufferNode.getPacketBuffer().writeShortAddLE(itemId);
 		packetBufferNode.getPacketBuffer().writeIntIME(sourceWidgetId);
 		packetBufferNode.getPacketBuffer().writeIntIME(widgetId);
 		return packetBufferNode;
