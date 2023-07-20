@@ -343,7 +343,7 @@ public class MusicPlugin extends Plugin
 						client.setGameState(GameState.LOADING);
 					}
 				}
-				else
+				else if (musicConfig.granularSliders())
 				{
 					updateMusicOptions();
 				}
