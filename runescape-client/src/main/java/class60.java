@@ -546,7 +546,7 @@ public class class60 {
 				var15 = class503.getPacketBufferNode(ClientPacket.field3179, Client.packetWriter.isaacCipher);
 				var15.packetBuffer.writeShortAddLE(SecureRandomCallable.field1039);
 				var15.packetBuffer.writeShortAddLE(class301.field3359);
-				var15.packetBuffer.method9137(DirectByteArrayCopier.field3796);
+				var15.packetBuffer.writeIntLE(DirectByteArrayCopier.field3796);
 				var15.packetBuffer.writeShort(var3);
 				var15.packetBuffer.writeByte(Client.field750.method4151(82) ? 1 : 0);
 				Client.packetWriter.addNode(var15);
@@ -689,7 +689,7 @@ public class class60 {
 				var16.packetBuffer.writeShortLE(class148.baseY * 64 + var1);
 				var16.packetBuffer.writeShortAdd(Client.selectedSpellChildIndex);
 				var16.packetBuffer.writeShortAdd(var3);
-				var16.packetBuffer.method9137(class33.selectedSpellWidget);
+				var16.packetBuffer.writeIntLE(class33.selectedSpellWidget);
 				var16.packetBuffer.writeShortAdd(Client.selectedSpellItemId);
 				var16.packetBuffer.writeByteNeg(Client.field750.method4151(82) ? 1 : 0);
 				var16.packetBuffer.writeShort(AbstractArchive.baseX * 64 + var0);

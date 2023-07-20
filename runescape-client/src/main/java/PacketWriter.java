@@ -223,8 +223,8 @@ public class PacketWriter {
 								var4.packetBuffer.writeShortAddLE(var0.field2313.childIndex);
 								var4.packetBuffer.writeIntIME(var3[1]);
 								var4.packetBuffer.writeIntME(var0.field2313.method6437());
-								var4.packetBuffer.method9137(var3[2]);
-								var4.packetBuffer.method9137(var3[0]);
+								var4.packetBuffer.writeIntLE(var3[2]);
+								var4.packetBuffer.writeIntLE(var3[0]);
 								var4.packetBuffer.writeIntME(var0.field2313.id);
 								Client.packetWriter.addNode(var4);
 							}
