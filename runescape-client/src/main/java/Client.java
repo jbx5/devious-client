@@ -528,11 +528,13 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 	@ObfuscatedGetter(
 		intValue = 437288283
 	)
+	@Export("camAngleDY")
 	static int camAngleDY;
 	@ObfuscatedName("lj")
 	@ObfuscatedGetter(
 		intValue = 204992847
 	)
+	@Export("camAngleDX")
 	static int camAngleDX;
 	@ObfuscatedName("lr")
 	@ObfuscatedGetter(

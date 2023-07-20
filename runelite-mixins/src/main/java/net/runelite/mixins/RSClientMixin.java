@@ -2499,7 +2499,7 @@ public abstract class RSClientMixin implements RSClient
 		return widgetClickMask;
 	}
 
-	/*@Inject
+	@Inject
 	@FieldHook("camAngleDX")
 	private static void onCamAngleDXChange(int index)
 	{
@@ -2517,7 +2517,7 @@ public abstract class RSClientMixin implements RSClient
 		{
 			client.setCamAngleDY(-client.getCamAngleDY());
 		}
-	}*/
+	}
 
 	@Inject
 	@Override
@@ -2955,11 +2955,11 @@ public abstract class RSClientMixin implements RSClient
 	@Inject
 	public void interpolateCamera(long var1)
 	{
-		//double angleDX = diffToDangle(client.getCamAngleDY(), var1);
-		//double angleDY = diffToDangle(client.getCamAngleDX(), var1);
+		double angleDX = diffToDangle(client.getCamAngleDY(), var1);
+		double angleDY = diffToDangle(client.getCamAngleDX(), var1);
 
-		//tmpCamAngleY += angleDX / 2;
-		//tmpCamAngleX += angleDY / 2;
+		tmpCamAngleY += angleDX / 2;
+		tmpCamAngleX += angleDY / 2;
 		tmpCamAngleX = Doubles.constrainToRange(tmpCamAngleX, Perspective.UNIT * STANDARD_PITCH_MIN, client.getCameraPitchRelaxerEnabled() ? Perspective.UNIT * NEW_PITCH_MAX : Perspective.UNIT * STANDARD_PITCH_MAX);
 
 		int yaw = toCameraPos(tmpCamAngleY);
