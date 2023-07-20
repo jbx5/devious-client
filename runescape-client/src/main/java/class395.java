@@ -851,7 +851,7 @@ public class class395 {
 		if (Login.worldSelectOpen) {
 			WorldMapData_0.method5082(var0, var1);
 		} else {
-			class407.leftTitleSprite.drawAt(Login.xPadding, 0);
+			SongTask.leftTitleSprite.drawAt(Login.xPadding, 0);
 			ScriptFrame.rightTitleSprite.drawAt(Login.xPadding + 382, 0);
 			Login.logoSprite.drawAt(Login.xPadding + 382 - Login.logoSprite.subWidth / 2, 18);
 			int var4;

@@ -1,19 +1,22 @@
 import java.util.ArrayList;
 import java.util.Iterator;
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("pu")
-public class class402 extends class407 {
+@Implements("ClearRequestTask")
+public class ClearRequestTask extends SongTask
+{
 	@ObfuscatedName("aw")
 	ArrayList field4515;
 
 	@ObfuscatedSignature(
 		descriptor = "(Lpp;Ljava/util/ArrayList;)V"
 	)
-	public class402(class407 var1, ArrayList var2) {
+	public ClearRequestTask(SongTask var1, ArrayList var2) {
 		super(var1);
-		super.field4528 = "ClearRequestTask";
+		super.songTaskName = "ClearRequestTask";
 		this.field4515 = var2;
 	}
 

@@ -338,7 +338,7 @@ public class Skeleton extends Node {
 						NPCComposition.field1997 = var53;
 						class20.method292(class197.archive2);
 						Interpreter.method2070(class197.archive2, class7.archive11, Client.isMembersWorld, ItemComposition.fontPlain11);
-						class407.method7667(class197.archive2, class151.field1694, TileItem.archive7);
+						SongTask.method7667(class197.archive2, class151.field1694, TileItem.archive7);
 						Archive var45 = class197.archive2;
 						Archive var7 = class7.archive11;
 						SpotAnimationDefinition.SpotAnimationDefinition_archive = var45;
@@ -371,7 +371,7 @@ public class Skeleton extends Node {
 						Archive var16 = class197.archive2;
 						Archive var17 = class197.archive2;
 						ParamComposition.ParamDefinition_archive = var17;
-						class404.method7637(class197.archive2);
+						StartSongTask.method7637(class197.archive2);
 						Language.method6993(class197.archive2);
 						class293.HitSplatDefinition_cachedSprites = new class498(KeyHandler.field138, 54, Interpreter.clientLanguage, class197.archive2);
 						class344.HitSplatDefinition_cached = new class498(KeyHandler.field138, 47, Interpreter.clientLanguage, class197.archive2);

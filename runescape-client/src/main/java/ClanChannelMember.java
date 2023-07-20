@@ -657,7 +657,7 @@ public class ClanChannelMember {
 							}
 
 							if (var9.type == 8 && MouseHandler.MouseHandler_x >= var12 && MouseHandler.MouseHandler_y >= var13 && MouseHandler.MouseHandler_x < var14 && MouseHandler.MouseHandler_y < var15) {
-								class403.field4519 = var9;
+								DelayFadeTask.field4519 = var9;
 							}
 
 							if (var9.scrollHeight > var9.height) {

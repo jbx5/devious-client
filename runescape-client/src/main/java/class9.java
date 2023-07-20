@@ -163,7 +163,7 @@ public class class9 implements MouseWheel {
 						var5 = 10;
 						var8 = new byte[]{(byte)Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize]};
 						byte[] var9 = new byte[]{(byte)Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1]};
-						class400.Widget_setKey(var4, var5, var8, var9);
+						AddRequestTask.Widget_setKey(var4, var5, var8, var9);
 						return 1;
 					} else if (var0 == ScriptOpcodes.CC_SETOPKEYRATE) {
 						Interpreter.Interpreter_intStackSize -= 3;
@@ -224,7 +224,7 @@ public class class9 implements MouseWheel {
 
 					var7 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize] - 1;
 					if (var7 >= 0 && var7 <= 9) {
-						class400.Widget_setKey(var4, var7, var10, var8);
+						AddRequestTask.Widget_setKey(var4, var7, var10, var8);
 						return 1;
 					} else {
 						throw new RuntimeException();

@@ -375,7 +375,7 @@ public class HitSplatDefinition extends DualNode {
 			if (var1 != null) {
 				return var1;
 			} else {
-				var1 = class408.method7672(class387.field4438, HitSplatDefinition_fontsArchive, this.fontId, 0);
+				var1 = ConcurrentMidiTask.method7672(class387.field4438, HitSplatDefinition_fontsArchive, this.fontId, 0);
 				if (var1 != null) {
 					HitSplatDefinition_cachedFonts.put(var1, (long)this.fontId);
 				}

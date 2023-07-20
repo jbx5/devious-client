@@ -1,9 +1,12 @@
 import java.util.Iterator;
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("ps")
-public class class409 extends class407 {
+@Implements("LoadSongTask")
+public class LoadSongTask extends SongTask
+{
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "Lnd;"
@@ -23,12 +26,12 @@ public class class409 extends class407 {
 	@ObfuscatedSignature(
 		descriptor = "(Lpp;Lnd;Lnd;Lnd;)V"
 	)
-	public class409(class407 var1, AbstractArchive var2, AbstractArchive var3, AbstractArchive var4) {
+	public LoadSongTask(SongTask var1, AbstractArchive var2, AbstractArchive var3, AbstractArchive var4) {
 		super(var1);
 		this.field4534 = var2;
 		this.field4535 = var3;
 		this.field4536 = var4;
-		super.field4528 = "LoadSongTask";
+		super.songTaskName = "LoadSongTask";
 	}
 
 	@ObfuscatedName("aw")

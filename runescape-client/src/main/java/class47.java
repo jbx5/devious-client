@@ -405,7 +405,7 @@ public class class47 {
 					if (var0.movementFrame < var2.frameIds.length && var0.movementFrameCycle > var2.frameLengths[var0.movementFrame]) {
 						var0.movementFrameCycle = 1;
 						++var0.movementFrame;
-						class405.method7643(var2, var0.movementFrame, var0.x, var0.y);
+						FadeOutTask.method7643(var2, var0.movementFrame, var0.x, var0.y);
 					}
 
 					if (var0.movementFrame >= var2.frameIds.length) {
@@ -425,7 +425,7 @@ public class class47 {
 							var0.movementFrame = 0;
 						}
 
-						class405.method7643(var2, var0.movementFrame, var0.x, var0.y);
+						FadeOutTask.method7643(var2, var0.movementFrame, var0.x, var0.y);
 					}
 				} else if (var2.isCachedModelIdSet()) {
 					++var0.movementFrame;
@@ -475,7 +475,7 @@ public class class47 {
 						if (var12.spotAnimationFrame < var13.frameIds.length && var12.spotAnimationFrameCycle > var13.frameLengths[var12.spotAnimationFrame]) {
 							var12.spotAnimationFrameCycle = 1;
 							++var12.spotAnimationFrame;
-							class405.method7643(var13, var12.spotAnimationFrame, var0.x, var0.y);
+							FadeOutTask.method7643(var13, var12.spotAnimationFrame, var0.x, var0.y);
 						}
 
 						if (var12.spotAnimationFrame >= var13.frameIds.length) {
@@ -517,7 +517,7 @@ public class class47 {
 				if (var0.sequenceFrame < var16.frameIds.length && var0.sequenceFrameCycle > var16.frameLengths[var0.sequenceFrame]) {
 					var0.sequenceFrameCycle = 1;
 					++var0.sequenceFrame;
-					class405.method7643(var16, var0.sequenceFrame, var0.x, var0.y);
+					FadeOutTask.method7643(var16, var0.sequenceFrame, var0.x, var0.y);
 				}
 
 				if (var0.sequenceFrame >= var16.frameIds.length) {
@@ -526,7 +526,7 @@ public class class47 {
 					if (var0.field1199 >= var16.field2281) {
 						var0.sequence = -1;
 					} else if (var0.sequenceFrame >= 0 && var0.sequenceFrame < var16.frameIds.length) {
-						class405.method7643(var16, var0.sequenceFrame, var0.x, var0.y);
+						FadeOutTask.method7643(var16, var0.sequenceFrame, var0.x, var0.y);
 					} else {
 						var0.sequence = -1;
 					}
@@ -987,7 +987,7 @@ public class class47 {
 											Rasterizer3D.method4419();
 										} else {
 											Font var29;
-											if (var10.type == 8 && var10 == class403.field4519 && Client.field676 == Client.field675) {
+											if (var10.type == 8 && var10 == DelayFadeTask.field4519 && Client.field676 == Client.field675) {
 												var19 = 0;
 												var20 = 0;
 												var29 = class113.fontPlain12;

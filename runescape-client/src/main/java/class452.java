@@ -146,11 +146,11 @@ public class class452 {
 	public static void method8324(int var0, int var1, int var2, int var3) {
 		if (class306.musicSongs.size() > 1 && class306.musicSongs.get(0) != null && ((MusicSong)class306.musicSongs.get(0)).midiPcmStream.isReady() && class306.musicSongs.get(1) != null && ((MusicSong)class306.musicSongs.get(1)).midiPcmStream.isReady()) {
 			ArchiveLoader.method2259(var0, var1, var2, var3);
-			class306.field3399.add(new class401((class407)null));
+			class306.field3399.add(new SwapSongTask((SongTask)null));
 			ArrayList var4 = new ArrayList();
-			var4.add(new class403(new class406((class407)null, 1, false, class306.field3407), class306.field3403));
-			var4.add(new class403(new class405((class407)null, 0, false, class306.field3402), class306.musicPlayerStatus));
-			class306.field3399.add(new class408((class407)null, var4));
+			var4.add(new DelayFadeTask(new FadeInTask((SongTask)null, 1, false, class306.field3407), class306.field3403));
+			var4.add(new DelayFadeTask(new FadeOutTask((SongTask)null, 0, false, class306.field3402), class306.musicPlayerStatus));
+			class306.field3399.add(new ConcurrentMidiTask((SongTask)null, var4));
 			if (class306.field3398.get(0) != null && class306.field3398.get(1) != null) {
 				MusicSong var5 = (MusicSong)class306.field3398.get(0);
 				class306.field3398.set(0, class306.musicSongs.get(1));
