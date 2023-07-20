@@ -411,7 +411,7 @@ public class ViewportMouse {
 						case 2:
 							var5 = Math.min(Math.max(var5, 0), 100);
 							var6 = Math.round((float)(var5 * 255) / 100.0F);
-							StudioGame.method6652(var6);
+							StudioGame.setMusicVolume(var6);
 							break;
 						case 3:
 							var5 = Math.min(Math.max(var5, 0), 100);

@@ -76,7 +76,8 @@ public enum StudioGame implements MouseWheel {
 		descriptor = "(IB)V",
 		garbageValue = "0"
 	)
-	static final void method6652(int var0) {
+	@Export("setMusicVolume")
+	static final void setMusicVolume(int var0) {
 		var0 = Math.min(Math.max(var0, 0), 255);
 		if (var0 != class150.clientPreferences.method2478()) {
 			label40: {
