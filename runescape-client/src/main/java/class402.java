@@ -29,28 +29,28 @@ public class class402 extends class407 {
 			Iterator var2 = this.field4515.iterator();
 
 			while (var2.hasNext()) {
-				class318 var3 = (class318)var2.next();
+				MusicSong var3 = (MusicSong)var2.next();
 
 				try {
-					if (class306.field3394.contains(var3)) {
+					if (class306.musicSongs.contains(var3)) {
 						if (var3 == null) {
-							class306.field3394.remove(var3);
+							class306.musicSongs.remove(var3);
 						} else {
-							--var3.field3516.field3439;
-							if (var3.field3516.field3439 == 0) {
-								var3.field3516.clear();
-								var3.field3516.method5820();
-								var3.field3516.setPcmStreamVolume(0);
+							--var3.midiPcmStream.field3439;
+							if (var3.midiPcmStream.field3439 == 0) {
+								var3.midiPcmStream.clear();
+								var3.midiPcmStream.method5820();
+								var3.midiPcmStream.setPcmStreamVolume(0);
 							}
 
-							FloorOverlayDefinition.method4061(var3.field3507, var3.field3509);
-							class306.field3394.remove(var3);
+							FloorOverlayDefinition.method4061(var3.musicTrackGroupId, var3.musicTrackFileId);
+							class306.musicSongs.remove(var3);
 						}
 					}
 				} catch (Exception var5) {
 					var5.printStackTrace();
 					this.method7653(var5.getMessage());
-					class306.field3394.clear();
+					class306.musicSongs.clear();
 					return true;
 				}
 			}

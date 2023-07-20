@@ -129,13 +129,13 @@ public enum WorldMapSectionType implements MouseWheel {
 			if (class306.field3398.isEmpty()) {
 				var1 = false;
 			} else {
-				class318 var2 = (class318)class306.field3398.get(0);
-				var1 = var2 != null && var0 == var2.field3507;
+				MusicSong var2 = (MusicSong)class306.field3398.get(0);
+				var1 = var2 != null && var0 == var2.musicTrackGroupId;
 			}
 
 			if (!var1 && class150.clientPreferences.method2478() != 0) {
 				ArrayList var3 = new ArrayList();
-				var3.add(new class318(class13.archive6, var0, 0, class150.clientPreferences.method2478(), false));
+				var3.add(new MusicSong(class13.archive6, var0, 0, class150.clientPreferences.method2478(), false));
 				if (Client.playingJingle) {
 					class306.field3398.clear();
 					class306.field3398.addAll(var3);

@@ -92,7 +92,7 @@ public class UserComparator10 extends AbstractUserComparator {
 			Login.worldSelectOpen = false;
 			if (!class150.clientPreferences.method2469()) {
 				ArrayList var5 = new ArrayList();
-				var5.add(new class318(class13.archive6, "scape main", "", 255, false));
+				var5.add(new MusicSong(class13.archive6, "scape main", "", 255, false));
 				UserComparator4.method2858(var5, 0, 0, 0, 100, false);
 			} else {
 				RouteStrategy.method4227(0, 0);

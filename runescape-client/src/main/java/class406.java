@@ -13,7 +13,7 @@ public class class406 extends class407 {
 	@ObfuscatedSignature(
 		descriptor = "Lmj;"
 	)
-	class318 field4524;
+	MusicSong field4524;
 	@ObfuscatedName("ay")
 	@ObfuscatedGetter(
 		intValue = 870968583
@@ -30,9 +30,9 @@ public class class406 extends class407 {
 		super.field4528 = "FadeInTask";
 		if (var2 >= 0) {
 			if (var3 && var2 < class306.field3396.size()) {
-				this.field4524 = (class318)class306.field3396.get(var2);
-			} else if (!var3 && var2 < class306.field3394.size()) {
-				this.field4524 = (class318)class306.field3394.get(var2);
+				this.field4524 = (MusicSong)class306.field3396.get(var2);
+			} else if (!var3 && var2 < class306.musicSongs.size()) {
+				this.field4524 = (MusicSong)class306.musicSongs.get(var2);
 			}
 
 			this.field4523 = var4;
@@ -45,19 +45,19 @@ public class class406 extends class407 {
 		garbageValue = "994462530"
 	)
 	public boolean vmethod7676(int var1) {
-		if (this.field4524 != null && this.field4524.field3516 != null) {
+		if (this.field4524 != null && this.field4524.midiPcmStream != null) {
 			this.field4524.field3515 = true;
 
 			try {
-				if (this.field4524.field3511 < (float)this.field4524.field3510 && this.field4524.field3516.isReady()) {
-					float var2 = this.field4523 == 0 ? (float)this.field4523 : (float)this.field4524.field3510 / (float)this.field4523;
-					class318 var10000 = this.field4524;
-					var10000.field3511 += var2 == 0.0F ? (float)this.field4524.field3510 : var2;
-					if (this.field4524.field3511 > (float)this.field4524.field3510) {
-						this.field4524.field3511 = (float)this.field4524.field3510;
+				if (this.field4524.field3511 < (float)this.field4524.musicTrackVolume && this.field4524.midiPcmStream.isReady()) {
+					float var2 = this.field4523 == 0 ? (float)this.field4523 : (float)this.field4524.musicTrackVolume / (float)this.field4523;
+					MusicSong var10000 = this.field4524;
+					var10000.field3511 += var2 == 0.0F ? (float)this.field4524.musicTrackVolume : var2;
+					if (this.field4524.field3511 > (float)this.field4524.musicTrackVolume) {
+						this.field4524.field3511 = (float)this.field4524.musicTrackVolume;
 					}
 
-					this.field4524.field3516.setPcmStreamVolume((int)this.field4524.field3511);
+					this.field4524.midiPcmStream.setPcmStreamVolume((int)this.field4524.field3511);
 					return false;
 				}
 			} catch (Exception var4) {

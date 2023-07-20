@@ -18,21 +18,21 @@ public class class404 extends class407 {
 		garbageValue = "994462530"
 	)
 	public boolean vmethod7676(int var1) {
-		Iterator var2 = class306.field3394.iterator();
+		Iterator var2 = class306.musicSongs.iterator();
 
 		while (var2.hasNext()) {
-			class318 var3 = (class318)var2.next();
-			if (var3 != null && !var3.field3508 && var3.field3516 != null) {
+			MusicSong var3 = (MusicSong)var2.next();
+			if (var3 != null && !var3.field3508 && var3.midiPcmStream != null) {
 				try {
-					var3.field3516.method5819();
-					var3.field3516.setPcmStreamVolume(0);
+					var3.midiPcmStream.method5819();
+					var3.midiPcmStream.setPcmStreamVolume(0);
 					if (var3.field3518 != null) {
-						var3.field3516.setMusicTrack(var3.field3518, var3.field3512);
+						var3.midiPcmStream.setMusicTrack(var3.field3518, var3.musicTrackBoolean);
 					}
 
 					var3.field3518 = null;
 					var3.field3517 = null;
-					var3.field3514 = null;
+					var3.musicTrackArchive = null;
 					var3.field3508 = true;
 				} catch (Exception var5) {
 					var5.printStackTrace();

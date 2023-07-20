@@ -64,7 +64,7 @@ public class UserComparator4 implements Comparator {
 				ArchiveLoader.method2259(var1, var2, var3, var4);
 				class306.field3399.add(new class400((class407)null));
 				class306.field3399.add(new class409((class407)null, class306.field3393, class306.field3397, class306.field3401));
-				if (!class306.field3394.isEmpty()) {
+				if (!class306.musicSongs.isEmpty()) {
 					ArrayList var6 = new ArrayList();
 					var6.add(new class403(new class404(new class406((class407)null, 0, true, class306.field3407)), class306.field3403));
 					ArrayList var7 = class162.method3356();

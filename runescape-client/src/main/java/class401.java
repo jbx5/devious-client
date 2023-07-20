@@ -17,10 +17,10 @@ public class class401 extends class407 {
 		garbageValue = "994462530"
 	)
 	public boolean vmethod7676(int var1) {
-		if (class306.field3394.size() > 1 && class306.field3394.get(0) != null && ((class318)class306.field3394.get(0)).field3516.isReady() && class306.field3394.get(1) != null && ((class318)class306.field3394.get(1)).field3516.isReady()) {
-			class318 var2 = (class318)class306.field3394.get(0);
-			class306.field3394.set(0, class306.field3394.get(1));
-			class306.field3394.set(1, var2);
+		if (class306.musicSongs.size() > 1 && class306.musicSongs.get(0) != null && ((MusicSong)class306.musicSongs.get(0)).midiPcmStream.isReady() && class306.musicSongs.get(1) != null && ((MusicSong)class306.musicSongs.get(1)).midiPcmStream.isReady()) {
+			MusicSong var2 = (MusicSong)class306.musicSongs.get(0);
+			class306.musicSongs.set(0, class306.musicSongs.get(1));
+			class306.musicSongs.set(1, var2);
 		}
 
 		return true;

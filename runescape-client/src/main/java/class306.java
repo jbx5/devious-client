@@ -28,7 +28,8 @@ public class class306 {
 	@ObfuscatedName("as")
 	public static LinkedList field3396;
 	@ObfuscatedName("aj")
-	public static ArrayList field3394;
+	@Export("musicSongs")
+	public static ArrayList musicSongs;
 	@ObfuscatedName("ag")
 	public static ArrayList field3398;
 	@ObfuscatedName("az")
@@ -60,7 +61,7 @@ public class class306 {
 	static {
 		field3395 = null;
 		field3396 = new LinkedList();
-		field3394 = new ArrayList(3);
+		musicSongs = new ArrayList(3);
 		field3398 = new ArrayList(3);
 		field3399 = new ArrayList();
 		field3400 = new ArrayList();
