@@ -94,4 +94,12 @@ public interface RSItemComposition extends ItemComposition
 
 	@Import("params")
 	void setParams(RSIterableNodeHashTable params);
+
+	@Import("ambient")
+	@Override
+	int getAmbient();
+
+	@Import("contrast")
+	@Override
+	int getContrast();
 }
