@@ -109,23 +109,23 @@ public class MenuAction {
 
 			if (var1 == 3) {
 				if (var2 == 0) {
-					StudioGame.method6652(255);
+					StudioGame.setMusicVolume(255);
 				}
 
 				if (var2 == 1) {
-					StudioGame.method6652(192);
+					StudioGame.setMusicVolume(192);
 				}
 
 				if (var2 == 2) {
-					StudioGame.method6652(128);
+					StudioGame.setMusicVolume(128);
 				}
 
 				if (var2 == 3) {
-					StudioGame.method6652(64);
+					StudioGame.setMusicVolume(64);
 				}
 
 				if (var2 == 4) {
-					StudioGame.method6652(0);
+					StudioGame.setMusicVolume(0);
 				}
 			}
 
