@@ -140,6 +140,7 @@ import net.runelite.rs.api.RSIndexedSprite;
 import net.runelite.rs.api.RSInterfaceParent;
 import net.runelite.rs.api.RSItemContainer;
 import net.runelite.rs.api.RSModelData;
+import net.runelite.rs.api.RSMusicSong;
 import net.runelite.rs.api.RSNPC;
 import net.runelite.rs.api.RSNode;
 import net.runelite.rs.api.RSNodeDeque;

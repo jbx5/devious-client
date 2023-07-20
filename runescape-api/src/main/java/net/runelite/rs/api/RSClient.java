@@ -39,6 +39,7 @@ import net.runelite.mapping.Construct;
 import net.runelite.mapping.Import;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.Map;
 
 public interface RSClient extends RSGameEngine, Client
