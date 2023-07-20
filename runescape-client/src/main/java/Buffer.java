@@ -1002,7 +1002,7 @@ public class Buffer extends Node {
 		descriptor = "(II)V",
 		garbageValue = "176308421"
 	)
-	public void writeIntLE(int var1) {
+	public void writeMediumLE(int var1) {
 		this.array[++this.offset - 1] = (byte)var1;
 		this.array[++this.offset - 1] = (byte)(var1 >> 8);
 		this.array[++this.offset - 1] = (byte)(var1 >> 16);
@@ -1048,7 +1048,7 @@ public class Buffer extends Node {
 		descriptor = "(II)V",
 		garbageValue = "-1385470000"
 	)
-	public void method9137(int var1) {
+	public void writeIntLE(int var1) {
 		this.array[++this.offset - 1] = (byte)var1;
 		this.array[++this.offset - 1] = (byte)(var1 >> 8);
 		this.array[++this.offset - 1] = (byte)(var1 >> 16);
