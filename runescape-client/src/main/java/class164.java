@@ -1,107 +1,115 @@
-import net.runelite.mapping.ObfuscatedGetter;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gk")
-public class class164 extends class142 {
-   @ObfuscatedName("at")
-   @ObfuscatedGetter(
-      longValue = -4056701840650155267L
-   )
-   long field1774;
-   @ObfuscatedName("an")
-   String field1775;
-   // $FF: synthetic field
-   @ObfuscatedSignature(
-      descriptor = "Lfh;"
-   )
-   final class145 this$0;
+@ObfuscatedName("gj")
+public class class164 {
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "(Ltc;S)V",
+		garbageValue = "15572"
+	)
+	@Export("updatePlayer")
+	static final void updatePlayer(PacketBuffer var0) {
+		var0.importIndex();
+		int var1 = Client.localPlayerIndex;
+		Player var2 = class136.localPlayer = Client.players[var1] = new Player();
+		var2.index = var1;
+		int var3 = var0.readBits(30);
+		byte var4 = (byte)(var3 >> 28);
+		int var5 = var3 >> 14 & 16383;
+		int var6 = var3 & 16383;
+		var2.pathX[0] = var5 - AbstractArchive.baseX * 64;
+		var2.x = (var2.pathX[0] << 7) + (var2.transformedSize() << 6);
+		var2.pathY[0] = var6 - class148.baseY * 64;
+		var2.y = (var2.pathY[0] << 7) + (var2.transformedSize() << 6);
+		class36.Client_plane = var2.plane = var4;
+		if (Players.field1360[var1] != null) {
+			var2.read(Players.field1360[var1]);
+		}
 
-   @ObfuscatedSignature(
-      descriptor = "(Lfh;)V"
-   )
-   class164(class145 var1) {
-      this.this$0 = var1;
-      this.field1774 = -1L;
-      this.field1775 = null;
-   }
+		Players.Players_count = 0;
+		Players.Players_indices[++Players.Players_count - 1] = var1;
+		Players.field1362[var1] = 0;
+		Players.Players_emptyIdxCount = 0;
 
-   @ObfuscatedName("at")
-   @ObfuscatedSignature(
-      descriptor = "(Ltz;B)V",
-      garbageValue = "59"
-   )
-   void vmethod3381(Buffer var1) {
-      if (var1.readUnsignedByte() != 255) {
-         --var1.offset;
-         this.field1774 = var1.readLong();
-      }
+		for (int var7 = 1; var7 < 2048; ++var7) {
+			if (var7 != var1) {
+				int var8 = var0.readBits(18);
+				int var9 = var8 >> 16;
+				int var10 = var8 >> 8 & 597;
+				int var11 = var8 & 597;
+				Players.Players_regions[var7] = (var10 << 14) + var11 + (var9 << 28);
+				Players.Players_orientations[var7] = 0;
+				Players.Players_targetIndices[var7] = -1;
+				Players.Players_emptyIndices[++Players.Players_emptyIdxCount - 1] = var7;
+				Players.field1362[var7] = 0;
+			}
+		}
 
-      this.field1775 = var1.readStringCp1252NullTerminatedOrNull();
-   }
+		var0.exportIndex();
+	}
 
-   @ObfuscatedName("an")
-   @ObfuscatedSignature(
-      descriptor = "(Lfs;B)V",
-      garbageValue = "-72"
-   )
-   void vmethod3382(ClanSettings var1) {
-      var1.method3210(this.field1774, this.field1775);
-   }
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-1762704908"
+	)
+	static void method3394() {
+		Tiles.Tiles_underlays = null;
+		Tiles.Tiles_overlays = null;
+		class19.Tiles_shapes = null;
+		UserComparator10.field1474 = null;
+		BufferedNetSocket.field4681 = null;
+		InvDefinition.Tiles_underlays2 = null;
+		class135.field1601 = null;
+		class172.Tiles_hue = null;
+		GameBuild.Tiles_saturation = null;
+		Tiles.Tiles_lightness = null;
+		Language.Tiles_hueMultiplier = null;
+		class159.field1755 = null;
+	}
 
-   @ObfuscatedName("at")
-   @ObfuscatedSignature(
-      descriptor = "(Lnq;I)V",
-      garbageValue = "-2001205388"
-   )
-   public static void method3365(AbstractArchive var0) {
-      FloorOverlayDefinition.FloorOverlayDefinition_archive = var0;
-   }
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "(IIB)V",
+		garbageValue = "34"
+	)
+	public static void method3392(int var0, int var1) {
+		VarbitComposition var3 = (VarbitComposition)VarbitComposition.VarbitDefinition_cached.get((long)var0);
+		VarbitComposition var2;
+		if (var3 != null) {
+			var2 = var3;
+		} else {
+			byte[] var4 = VarbitComposition.VarbitDefinition_archive.takeFile(14, var0);
+			var3 = new VarbitComposition();
+			if (var4 != null) {
+				var3.decode(new Buffer(var4));
+			}
 
-   @ObfuscatedName("av")
-   @ObfuscatedSignature(
-      descriptor = "(IIIIB)I",
-      garbageValue = "20"
-   )
-   static final int method3368(int var0, int var1, int var2, int var3) {
-      return var0 * var2 - var3 * var1 >> 16;
-   }
+			VarbitComposition.VarbitDefinition_cached.put(var3, (long)var0);
+			var2 = var3;
+		}
 
-   @ObfuscatedName("af")
-   @ObfuscatedSignature(
-      descriptor = "(ZI)V",
-      garbageValue = "-1509455427"
-   )
-   static void method3362(boolean var0) {
-      byte var1 = 0;
-      boolean var2 = class10.clientPreferences.method2454() >= Client.field508;
-      if (!var2) {
-         var1 = 12;
-      } else if (class347.client.method1201() || class347.client.method1509() || class347.client.method1202()) {
-         var1 = 10;
-      }
+		int var8 = var2.baseVar;
+		int var5 = var2.startBit;
+		int var6 = var2.endBit;
+		int var7 = Varps.Varps_masks[var6 - var5];
+		if (var1 < 0 || var1 > var7) {
+			var1 = 0;
+		}
 
-      class390.method7249(var1);
-      if (var0) {
-         Login.Login_username = "";
-         Login.Login_password = "";
-         class322.field3521 = 0;
-         SoundSystem.otp = "";
-      }
+		var7 <<= var5;
+		Varps.Varps_main[var8] = Varps.Varps_main[var8] & ~var7 | var1 << var5 & var7;
+	}
 
-      Messages.method2771();
-      WorldMapSectionType.method5418();
-   }
-
-   @ObfuscatedName("mr")
-   @ObfuscatedSignature(
-      descriptor = "(IB)V",
-      garbageValue = "11"
-   )
-   static final void method3366(int var0) {
-      var0 = Math.max(Math.min(var0, 100), 0);
-      var0 = 100 - var0;
-      float var1 = 0.5F + (float)var0 / 200.0F;
-      class392.method7411((double)var1);
-   }
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "(CB)Z",
+		garbageValue = "80"
+	)
+	@Export("isDigit")
+	public static boolean isDigit(char var0) {
+		return var0 >= '0' && var0 <= '9';
+	}
 }

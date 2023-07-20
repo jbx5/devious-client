@@ -1,239 +1,325 @@
-import net.runelite.mapping.ObfuscatedGetter;
+import java.io.IOException;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ej")
+@ObfuscatedName("ez")
 public class class126 {
-   @ObfuscatedName("ub")
-   @ObfuscatedGetter(
-      intValue = 1218560000
-   )
-   static int field1469;
-   @ObfuscatedName("at")
-   @ObfuscatedGetter(
-      intValue = -1150635435
-   )
-   public final int field1477;
-   @ObfuscatedName("an")
-   @ObfuscatedSignature(
-      descriptor = "Lej;"
-   )
-   public class126 field1470;
-   @ObfuscatedName("av")
-   float[][] field1471;
-   @ObfuscatedName("as")
-   @ObfuscatedSignature(
-      descriptor = "[Lqp;"
-   )
-   final class438[] field1479;
-   @ObfuscatedName("ax")
-   @ObfuscatedSignature(
-      descriptor = "[Lqp;"
-   )
-   class438[] field1473;
-   @ObfuscatedName("ap")
-   @ObfuscatedSignature(
-      descriptor = "[Lqp;"
-   )
-   class438[] field1474;
-   @ObfuscatedName("ab")
-   @ObfuscatedSignature(
-      descriptor = "Lqp;"
-   )
-   class438 field1475 = new class438();
-   @ObfuscatedName("ak")
-   boolean field1484 = true;
-   @ObfuscatedName("ae")
-   @ObfuscatedSignature(
-      descriptor = "Lqp;"
-   )
-   class438 field1482 = new class438();
-   @ObfuscatedName("af")
-   boolean field1478 = true;
-   @ObfuscatedName("ao")
-   @ObfuscatedSignature(
-      descriptor = "Lqp;"
-   )
-   class438 field1476 = new class438();
-   @ObfuscatedName("aa")
-   float[][] field1483;
-   @ObfuscatedName("aj")
-   float[][] field1481;
-   @ObfuscatedName("ad")
-   float[][] field1472;
+	@ObfuscatedName("am")
+	public static final float field1494;
+	@ObfuscatedName("as")
+	public static final float field1496;
+	@ObfuscatedName("aj")
+	static float[] field1492;
+	@ObfuscatedName("ag")
+	static float[] field1497;
+	@ObfuscatedName("ft")
+	@ObfuscatedSignature(
+		descriptor = "Lny;"
+	)
+	@Export("archive12")
+	static Archive archive12;
 
-   @ObfuscatedSignature(
-      descriptor = "(ILtz;Z)V"
-   )
-   public class126(int var1, Buffer var2, boolean var3) {
-      this.field1477 = var2.readShort();
-      this.field1479 = new class438[var1];
-      this.field1473 = new class438[this.field1479.length];
-      this.field1474 = new class438[this.field1479.length];
-      this.field1471 = new float[this.field1479.length][3];
+	static {
+		field1494 = Math.ulp(1.0F);
+		field1496 = 2.0F * field1494;
+		field1492 = new float[4];
+		field1497 = new float[5];
+	}
 
-      for(int var4 = 0; var4 < this.field1479.length; ++var4) {
-         this.field1479[var4] = new class438(var2, var3);
-         this.field1471[var4][0] = var2.method8916();
-         this.field1471[var4][1] = var2.method8916();
-         this.field1471[var4][2] = var2.method8916();
-      }
+	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "(I)Lda;",
+		garbageValue = "-1786451104"
+	)
+	static ClientPreferences method2941() {
+		AccessFile var0 = null;
+		ClientPreferences var1 = new ClientPreferences();
 
-      this.method2955();
-   }
+		try {
+			var0 = Decimator.getPreferencesFile("", KeyHandler.field138.name, false);
+			byte[] var2 = new byte[(int)var0.length()];
 
-   @ObfuscatedName("at")
-   @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "580765599"
-   )
-   void method2955() {
-      this.field1483 = new float[this.field1479.length][3];
-      this.field1481 = new float[this.field1479.length][3];
-      this.field1472 = new float[this.field1479.length][3];
-      class438 var1 = class396.method7554();
+			int var4;
+			for (int var3 = 0; var3 < var2.length; var3 += var4) {
+				var4 = var0.read(var2, var3, var2.length - var3);
+				if (var4 == -1) {
+					throw new IOException();
+				}
+			}
 
-      for(int var2 = 0; var2 < this.field1479.length; ++var2) {
-         class438 var3 = this.method2922(var2);
-         var1.method8096(var3);
-         var1.method8139();
-         this.field1483[var2] = var1.method8097();
-         this.field1481[var2][0] = var3.field4685[12];
-         this.field1481[var2][1] = var3.field4685[13];
-         this.field1481[var2][2] = var3.field4685[14];
-         this.field1472[var2] = var3.method8116();
-      }
+			var1 = new ClientPreferences(new Buffer(var2));
+		} catch (Exception var6) {
+		}
 
-      var1.method8119();
-   }
+		try {
+			if (var0 != null) {
+				var0.close();
+			}
+		} catch (Exception var5) {
+		}
 
-   @ObfuscatedName("an")
-   @ObfuscatedSignature(
-      descriptor = "(IB)Lqp;",
-      garbageValue = "9"
-   )
-   class438 method2922(int var1) {
-      return this.field1479[var1];
-   }
+		return var1;
+	}
 
-   @ObfuscatedName("av")
-   @ObfuscatedSignature(
-      descriptor = "(II)Lqp;",
-      garbageValue = "1829867791"
-   )
-   class438 method2923(int var1) {
-      if (this.field1473[var1] == null) {
-         this.field1473[var1] = new class438(this.method2922(var1));
-         if (this.field1470 != null) {
-            this.field1473[var1].method8104(this.field1470.method2923(var1));
-         } else {
-            this.field1473[var1].method8104(class438.field4686);
-         }
-      }
+	@ObfuscatedName("at")
+	@ObfuscatedSignature(
+		descriptor = "(CI)Z",
+		garbageValue = "-1080653526"
+	)
+	@Export("isAlphaNumeric")
+	public static boolean isAlphaNumeric(char var0) {
+		return var0 >= '0' && var0 <= '9' || var0 >= 'A' && var0 <= 'Z' || var0 >= 'a' && var0 <= 'z';
+	}
 
-      return this.field1473[var1];
-   }
+	@ObfuscatedName("jx")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "0"
+	)
+	static final void method2939() {
+		CollisionMap.method4214(false);
+		Client.field730 = 0;
+		boolean var0 = true;
 
-   @ObfuscatedName("as")
-   @ObfuscatedSignature(
-      descriptor = "(IB)Lqp;",
-      garbageValue = "105"
-   )
-   class438 method2924(int var1) {
-      if (this.field1474[var1] == null) {
-         this.field1474[var1] = new class438(this.method2923(var1));
-         this.field1474[var1].method8139();
-      }
+		int var1;
+		for (var1 = 0; var1 < class155.regionLandArchives.length; ++var1) {
+			if (UserComparator4.regionMapArchiveIds[var1] != -1 && class155.regionLandArchives[var1] == null) {
+				class155.regionLandArchives[var1] = Canvas.archive9.takeFile(UserComparator4.regionMapArchiveIds[var1], 0);
+				if (class155.regionLandArchives[var1] == null) {
+					var0 = false;
+					++Client.field730;
+				}
+			}
 
-      return this.field1474[var1];
-   }
+			if (class170.regionLandArchiveIds[var1] != -1 && class389.regionMapArchives[var1] == null) {
+				class389.regionMapArchives[var1] = Canvas.archive9.takeFileEncrypted(class170.regionLandArchiveIds[var1], 0, class18.xteaKeys[var1]);
+				if (class389.regionMapArchives[var1] == null) {
+					var0 = false;
+					++Client.field730;
+				}
+			}
+		}
 
-   @ObfuscatedName("ax")
-   @ObfuscatedSignature(
-      descriptor = "(Lqp;I)V",
-      garbageValue = "-1088629176"
-   )
-   void method2939(class438 var1) {
-      this.field1475.method8096(var1);
-      this.field1484 = true;
-      this.field1478 = true;
-   }
+		if (!var0) {
+			Client.field537 = 1;
+		} else {
+			Client.field679 = 0;
+			var0 = true;
 
-   @ObfuscatedName("ap")
-   @ObfuscatedSignature(
-      descriptor = "(I)Lqp;",
-      garbageValue = "882573661"
-   )
-   class438 method2945() {
-      return this.field1475;
-   }
+			int var3;
+			int var4;
+			for (var1 = 0; var1 < class155.regionLandArchives.length; ++var1) {
+				byte[] var17 = class389.regionMapArchives[var1];
+				if (var17 != null) {
+					var3 = (MusicPatch.regions[var1] >> 8) * 64 - AbstractArchive.baseX * 64;
+					var4 = (MusicPatch.regions[var1] & 255) * 64 - class148.baseY * 64;
+					if (Client.isInInstance) {
+						var3 = 10;
+						var4 = 10;
+					}
 
-   @ObfuscatedName("ab")
-   @ObfuscatedSignature(
-      descriptor = "(I)Lqp;",
-      garbageValue = "-1922889317"
-   )
-   class438 method2927() {
-      if (this.field1484) {
-         this.field1482.method8096(this.method2945());
-         if (this.field1470 != null) {
-            this.field1482.method8104(this.field1470.method2927());
-         }
+					var0 &= class303.method5753(var17, var3, var4);
+				}
+			}
 
-         this.field1484 = false;
-      }
+			if (!var0) {
+				Client.field537 = 2;
+			} else {
+				if (Client.field537 != 0) {
+					Actor.drawLoadingMessage("Loading - please wait." + "<br>" + " (" + 100 + "%" + ")", true);
+				}
 
-      return this.field1482;
-   }
+				class105.method2684();
+				UserComparator5.scene.clear();
 
-   @ObfuscatedName("ak")
-   @ObfuscatedSignature(
-      descriptor = "(II)Lqp;",
-      garbageValue = "-2072769178"
-   )
-   public class438 method2928(int var1) {
-      if (this.field1478) {
-         this.field1476.method8096(this.method2924(var1));
-         this.field1476.method8104(this.method2927());
-         this.field1478 = false;
-      }
+				for (var1 = 0; var1 < 4; ++var1) {
+					Client.collisionMaps[var1].clear();
+				}
 
-      return this.field1476;
-   }
+				int var2;
+				for (var1 = 0; var1 < 4; ++var1) {
+					for (var2 = 0; var2 < 104; ++var2) {
+						for (var3 = 0; var3 < 104; ++var3) {
+							Tiles.Tiles_renderFlags[var1][var2][var3] = 0;
+						}
+					}
+				}
 
-   @ObfuscatedName("ae")
-   @ObfuscatedSignature(
-      descriptor = "(II)[F",
-      garbageValue = "-1185833224"
-   )
-   float[] method2929(int var1) {
-      return this.field1483[var1];
-   }
+				class105.method2684();
+				class325.method6104();
+				var1 = class155.regionLandArchives.length;
+				class133.method3041();
+				CollisionMap.method4214(true);
+				int var5;
+				if (!Client.isInInstance) {
+					byte[] var16;
+					for (var2 = 0; var2 < var1; ++var2) {
+						var3 = (MusicPatch.regions[var2] >> 8) * 64 - AbstractArchive.baseX * 64;
+						var4 = (MusicPatch.regions[var2] & 255) * 64 - class148.baseY * 64;
+						var16 = class155.regionLandArchives[var2];
+						if (var16 != null) {
+							class105.method2684();
+							World.method1862(var16, var3, var4, class309.field3456 * 8 - 48, class140.field1640 * 8 - 48, Client.collisionMaps);
+						}
+					}
 
-   @ObfuscatedName("af")
-   @ObfuscatedSignature(
-      descriptor = "(IB)[F",
-      garbageValue = "-16"
-   )
-   float[] method2930(int var1) {
-      return this.field1481[var1];
-   }
+					for (var2 = 0; var2 < var1; ++var2) {
+						var3 = (MusicPatch.regions[var2] >> 8) * 64 - AbstractArchive.baseX * 64;
+						var4 = (MusicPatch.regions[var2] & 255) * 64 - class148.baseY * 64;
+						var16 = class155.regionLandArchives[var2];
+						if (var16 == null && class140.field1640 < 800) {
+							class105.method2684();
+							class203.method3851(var3, var4, 64, 64);
+						}
+					}
 
-   @ObfuscatedName("ao")
-   @ObfuscatedSignature(
-      descriptor = "(II)[F",
-      garbageValue = "-1165674685"
-   )
-   float[] method2931(int var1) {
-      return this.field1472[var1];
-   }
+					CollisionMap.method4214(true);
 
-   @ObfuscatedName("at")
-   @ObfuscatedSignature(
-      descriptor = "(I)[Lik;",
-      garbageValue = "-839433864"
-   )
-   static class213[] method2956() {
-      return new class213[]{class213.field2370, class213.field2376, class213.field2373, class213.field2372, class213.field2371, class213.field2377, class213.field2367};
-   }
+					for (var2 = 0; var2 < var1; ++var2) {
+						byte[] var15 = class389.regionMapArchives[var2];
+						if (var15 != null) {
+							var4 = (MusicPatch.regions[var2] >> 8) * 64 - AbstractArchive.baseX * 64;
+							var5 = (MusicPatch.regions[var2] & 255) * 64 - class148.baseY * 64;
+							class105.method2684();
+							class19.method282(var15, var4, var5, UserComparator5.scene, Client.collisionMaps);
+						}
+					}
+				}
+
+				int var6;
+				int var7;
+				int var8;
+				if (Client.isInInstance) {
+					int var9;
+					int var10;
+					int var11;
+					for (var2 = 0; var2 < 4; ++var2) {
+						class105.method2684();
+
+						for (var3 = 0; var3 < 13; ++var3) {
+							for (var4 = 0; var4 < 13; ++var4) {
+								boolean var18 = false;
+								var6 = Client.instanceChunkTemplates[var2][var3][var4];
+								if (var6 != -1) {
+									var7 = var6 >> 24 & 3;
+									var8 = var6 >> 1 & 3;
+									var9 = var6 >> 14 & 1023;
+									var10 = var6 >> 3 & 2047;
+									var11 = (var9 / 8 << 8) + var10 / 8;
+
+									for (int var12 = 0; var12 < MusicPatch.regions.length; ++var12) {
+										if (MusicPatch.regions[var12] == var11 && class155.regionLandArchives[var12] != null) {
+											int var13 = (var9 - var3) * 8;
+											int var14 = (var10 - var4) * 8;
+											class177.method3543(class155.regionLandArchives[var12], var2, var3 * 8, var4 * 8, var7, (var9 & 7) * 8, (var10 & 7) * 8, var8, var13, var14, Client.collisionMaps);
+											var18 = true;
+											break;
+										}
+									}
+								}
+
+								if (!var18) {
+									class74.method2087(var2, var3 * 8, var4 * 8);
+								}
+							}
+						}
+					}
+
+					for (var2 = 0; var2 < 13; ++var2) {
+						for (var3 = 0; var3 < 13; ++var3) {
+							var4 = Client.instanceChunkTemplates[0][var2][var3];
+							if (var4 == -1) {
+								class203.method3851(var2 * 8, var3 * 8, 8, 8);
+							}
+						}
+					}
+
+					CollisionMap.method4214(true);
+
+					for (var2 = 0; var2 < 4; ++var2) {
+						class105.method2684();
+
+						for (var3 = 0; var3 < 13; ++var3) {
+							for (var4 = 0; var4 < 13; ++var4) {
+								var5 = Client.instanceChunkTemplates[var2][var3][var4];
+								if (var5 != -1) {
+									var6 = var5 >> 24 & 3;
+									var7 = var5 >> 1 & 3;
+									var8 = var5 >> 14 & 1023;
+									var9 = var5 >> 3 & 2047;
+									var10 = (var8 / 8 << 8) + var9 / 8;
+
+									for (var11 = 0; var11 < MusicPatch.regions.length; ++var11) {
+										if (MusicPatch.regions[var11] == var10 && class389.regionMapArchives[var11] != null) {
+											Tiles.method2192(class389.regionMapArchives[var11], var2, var3 * 8, var4 * 8, var6, (var8 & 7) * 8, (var9 & 7) * 8, var7, UserComparator5.scene, Client.collisionMaps);
+											break;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+
+				CollisionMap.method4214(true);
+				class105.method2684();
+				AbstractUserComparator.method7982(UserComparator5.scene, Client.collisionMaps);
+				CollisionMap.method4214(true);
+				var2 = Tiles.Tiles_minPlane;
+				if (var2 > class36.Client_plane) {
+					var2 = class36.Client_plane;
+				}
+
+				if (var2 < class36.Client_plane - 1) {
+					var2 = class36.Client_plane - 1;
+				}
+
+				if (Client.isLowDetail) {
+					UserComparator5.scene.init(Tiles.Tiles_minPlane);
+				} else {
+					UserComparator5.scene.init(0);
+				}
+
+				for (var3 = 0; var3 < 104; ++var3) {
+					for (var4 = 0; var4 < 104; ++var4) {
+						class344.updateItemPile(var3, var4);
+					}
+				}
+
+				class105.method2684();
+				ScriptFrame.method1208();
+				ObjectComposition.ObjectDefinition_cachedModelData.clear();
+				PacketBufferNode var19;
+				if (TileItem.client.hasFrame()) {
+					var19 = class503.getPacketBufferNode(ClientPacket.DETECT_MODIFIED_CLIENT, Client.packetWriter.isaacCipher);
+					var19.packetBuffer.writeInt(1057001181);
+					Client.packetWriter.addNode(var19);
+				}
+
+				if (!Client.isInInstance) {
+					var3 = (class309.field3456 - 6) / 8;
+					var4 = (class309.field3456 + 6) / 8;
+					var5 = (class140.field1640 - 6) / 8;
+					var6 = (class140.field1640 + 6) / 8;
+
+					for (var7 = var3 - 1; var7 <= var4 + 1; ++var7) {
+						for (var8 = var5 - 1; var8 <= var6 + 1; ++var8) {
+							if (var7 < var3 || var7 > var4 || var8 < var5 || var8 > var6) {
+								Canvas.archive9.loadRegionFromName("m" + var7 + "_" + var8);
+								Canvas.archive9.loadRegionFromName("l" + var7 + "_" + var8);
+							}
+						}
+					}
+				}
+
+				class129.updateGameState(30);
+				class105.method2684();
+				class164.method3394();
+				var19 = class503.getPacketBufferNode(ClientPacket.field3173, Client.packetWriter.isaacCipher);
+				Client.packetWriter.addNode(var19);
+				HealthBarDefinition.method3672();
+			}
+		}
+	}
 }

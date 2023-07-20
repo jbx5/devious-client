@@ -1,41 +1,33 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ts")
+@ObfuscatedName("tq")
 public class class509 {
-   @ObfuscatedName("at")
-   @ObfuscatedGetter(
-      intValue = -447516077
-   )
-   public final int field5084;
-   @ObfuscatedName("an")
-   public Object field5083;
+	@ObfuscatedName("ar")
+	@ObfuscatedGetter(
+		intValue = 576167947
+	)
+	static final int field5054;
+	@ObfuscatedName("am")
+	@ObfuscatedGetter(
+		intValue = -235500959
+	)
+	static final int field5055;
 
-   public class509(int var1) {
-      this.field5084 = var1;
-   }
+	static {
+		field5054 = (int)(Math.pow(2.0D, 4.0D) - 1.0D);
+		field5055 = (int)(Math.pow(2.0D, 8.0D) - 1.0D);
+	}
 
-   public class509(int var1, Object var2) {
-      this.field5084 = var1;
-      this.field5083 = var2;
-   }
-
-   public int hashCode() {
-      return super.hashCode();
-   }
-
-   public boolean equals(Object var1) {
-      if (!(var1 instanceof class509)) {
-         return false;
-      } else {
-         class509 var2 = (class509)var1;
-         if (var2.field5083 == null && this.field5083 != null) {
-            return false;
-         } else if (this.field5083 == null && var2.field5083 != null) {
-            return false;
-         } else {
-            return var2.field5084 == this.field5084 && var2.field5083.equals(this.field5083);
-         }
-      }
-   }
+	@ObfuscatedName("aj")
+	@ObfuscatedSignature(
+		descriptor = "(IZB)Ljava/lang/String;",
+		garbageValue = "113"
+	)
+	@Export("intToString")
+	public static String intToString(int var0, boolean var1) {
+		return var1 && var0 >= 0 ? class327.method6113(var0, 10, var1) : Integer.toString(var0);
+	}
 }

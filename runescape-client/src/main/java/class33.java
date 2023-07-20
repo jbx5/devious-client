@@ -3,69 +3,53 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bd")
+@ObfuscatedName("bv")
 public class class33 {
-   @ObfuscatedName("fx")
-   @ObfuscatedSignature(
-      descriptor = "Lny;"
-   )
-   @Export("archive12")
-   static Archive archive12;
-   @ObfuscatedName("tz")
-   @ObfuscatedSignature(
-      descriptor = "Ltm;"
-   )
-   @Export("sceneMinimapSprite")
-   static SpritePixels sceneMinimapSprite;
-   @ObfuscatedName("ab")
-   @ObfuscatedGetter(
-      intValue = 1939122387
-   )
-   int field167;
-   @ObfuscatedName("ak")
-   @ObfuscatedGetter(
-      intValue = -1897713439
-   )
-   int field171;
+	@ObfuscatedName("aq")
+	public static short[] field196;
+	@ObfuscatedName("oo")
+	@ObfuscatedGetter(
+		intValue = 401350003
+	)
+	@Export("selectedSpellWidget")
+	static int selectedSpellWidget;
+	@ObfuscatedName("ag")
+	@ObfuscatedGetter(
+		intValue = 1123907327
+	)
+	int field189;
+	@ObfuscatedName("az")
+	@ObfuscatedGetter(
+		intValue = -1859599279
+	)
+	int field194;
 
-   class33(int var1, int var2) {
-      this.field167 = var1;
-      this.field171 = var2;
-   }
+	class33(int var1, int var2) {
+		this.field189 = var1;
+		this.field194 = var2;
+	}
 
-   @ObfuscatedName("at")
-   @ObfuscatedSignature(
-      descriptor = "(Lbo;I)Z",
-      garbageValue = "671391142"
-   )
-   boolean method457(class29 var1) {
-      if (var1 == null) {
-         return false;
-      } else {
-         switch (this.field167) {
-            case 1:
-               return var1.vmethod4127(this.field171);
-            case 2:
-               return var1.vmethod4128(this.field171);
-            case 3:
-               return var1.vmethod4145((char)this.field171);
-            case 4:
-               return var1.vmethod4131(this.field171 == 1);
-            default:
-               return false;
-         }
-      }
-   }
-
-   @ObfuscatedName("ar")
-   @ObfuscatedSignature(
-      descriptor = "(S)V",
-      garbageValue = "4095"
-   )
-   public static void method460() {
-      Widget.Widget_cachedSprites.clear();
-      Widget.Widget_cachedModels.clear();
-      Widget.Widget_cachedFonts.clear();
-      Widget.Widget_cachedSpriteMasks.clear();
-   }
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "(Lba;S)Z",
+		garbageValue = "-1563"
+	)
+	boolean method470(class29 var1) {
+		if (var1 == null) {
+			return false;
+		} else {
+			switch(this.field189) {
+			case 1:
+				return var1.vmethod4143(this.field194);
+			case 2:
+				return var1.vmethod4148(this.field194);
+			case 3:
+				return var1.vmethod4145((char)this.field194);
+			case 4:
+				return var1.vmethod4147(this.field194 == 1);
+			default:
+				return false;
+			}
+		}
+	}
 }

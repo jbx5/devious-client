@@ -5,198 +5,109 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("et")
+@ObfuscatedName("ei")
 @Implements("UrlRequest")
 public class UrlRequest {
-   @ObfuscatedName("an")
-   @ObfuscatedGetter(
-      intValue = -513413295
-   )
-   static int field1404 = -1;
-   @ObfuscatedName("av")
-   @ObfuscatedGetter(
-      intValue = 460487335
-   )
-   static int field1405 = -2;
-   @ObfuscatedName("at")
-   final URL field1407;
-   @ObfuscatedName("as")
-   @ObfuscatedGetter(
-      intValue = 1650044907
-   )
-   volatile int field1403;
-   @ObfuscatedName("ax")
-   @Export("response0")
-   volatile byte[] response0;
+	@ObfuscatedName("ay")
+	@ObfuscatedGetter(
+		intValue = -912482897
+	)
+	static int field1435;
+	@ObfuscatedName("ar")
+	@ObfuscatedGetter(
+		intValue = -1301970509
+	)
+	static int field1441;
+	@ObfuscatedName("aw")
+	final URL field1436;
+	@ObfuscatedName("am")
+	@ObfuscatedGetter(
+		intValue = 872753895
+	)
+	volatile int field1437;
+	@ObfuscatedName("as")
+	@Export("response0")
+	volatile byte[] response0;
 
-   UrlRequest(URL var1) {
-      this.field1403 = field1404;
-      this.field1407 = var1;
-   }
+	static {
+		field1435 = -1;
+		field1441 = -2;
+	}
 
-   @ObfuscatedName("at")
-   @ObfuscatedSignature(
-      descriptor = "(B)Z",
-      garbageValue = "-57"
-   )
-   @Export("isDone")
-   public boolean isDone() {
-      return this.field1403 != field1404;
-   }
+	UrlRequest(URL var1) {
+		this.field1437 = field1435;
+		this.field1436 = var1;
+	}
 
-   @ObfuscatedName("an")
-   @ObfuscatedSignature(
-      descriptor = "(B)[B",
-      garbageValue = "-91"
-   )
-   @Export("getResponse")
-   public byte[] getResponse() {
-      return this.response0;
-   }
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z",
+		garbageValue = "-1097483800"
+	)
+	@Export("isDone")
+	public boolean isDone() {
+		return this.field1437 != field1435;
+	}
 
-   @ObfuscatedName("av")
-   @ObfuscatedSignature(
-      descriptor = "(I)Ljava/lang/String;",
-      garbageValue = "1290466605"
-   )
-   public String method2833() {
-      return this.field1407.toString();
-   }
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "(I)[B",
+		garbageValue = "114961803"
+	)
+	@Export("getResponse")
+	public byte[] getResponse() {
+		return this.response0;
+	}
 
-   @ObfuscatedName("av")
-   @ObfuscatedSignature(
-      descriptor = "(Ltl;B)V",
-      garbageValue = "-27"
-   )
-   static final void method2839(PacketBuffer var0) {
-      int var1 = 0;
-      var0.importIndex();
+	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "(I)Ljava/lang/String;",
+		garbageValue = "-1911821505"
+	)
+	public String method2839() {
+		return this.field1436.toString();
+	}
 
-      byte[] var10000;
-      int var2;
-      int var4;
-      int var5;
-      for(var2 = 0; var2 < Players.Players_count; ++var2) {
-         var5 = Players.Players_indices[var2];
-         if ((Players.field1330[var5] & 1) == 0) {
-            if (var1 > 0) {
-               --var1;
-               var10000 = Players.field1330;
-               var10000[var5] = (byte)(var10000[var5] | 2);
-            } else {
-               var4 = var0.readBits(1);
-               if (var4 == 0) {
-                  var1 = InterfaceParent.method2244(var0);
-                  var10000 = Players.field1330;
-                  var10000[var5] = (byte)(var10000[var5] | 2);
-               } else {
-                  class72.readPlayerUpdate(var0, var5);
-               }
-            }
-         }
-      }
+	@ObfuscatedName("aj")
+	@ObfuscatedSignature(
+		descriptor = "(IB)I",
+		garbageValue = "12"
+	)
+	public static int method2837(int var0) {
+		--var0;
+		var0 |= var0 >>> 1;
+		var0 |= var0 >>> 2;
+		var0 |= var0 >>> 4;
+		var0 |= var0 >>> 8;
+		var0 |= var0 >>> 16;
+		return var0 + 1;
+	}
 
-      var0.exportIndex();
-      if (var1 != 0) {
-         throw new RuntimeException();
-      } else {
-         var0.importIndex();
+	@ObfuscatedName("nl")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;ZB)Ljava/lang/String;",
+		garbageValue = "80"
+	)
+	static String method2850(String var0, boolean var1) {
+		String var2 = var1 ? "https://" : "http://";
+		if (Client.gameBuild == 1) {
+			var0 = var0 + "-wtrc";
+		} else if (Client.gameBuild == 2) {
+			var0 = var0 + "-wtqa";
+		} else if (Client.gameBuild == 3) {
+			var0 = var0 + "-wtwip";
+		} else if (Client.gameBuild == 5) {
+			var0 = var0 + "-wti";
+		} else if (Client.gameBuild == 4) {
+			var0 = "local";
+		}
 
-         for(var2 = 0; var2 < Players.Players_count; ++var2) {
-            var5 = Players.Players_indices[var2];
-            if ((Players.field1330[var5] & 1) != 0) {
-               if (var1 > 0) {
-                  --var1;
-                  var10000 = Players.field1330;
-                  var10000[var5] = (byte)(var10000[var5] | 2);
-               } else {
-                  var4 = var0.readBits(1);
-                  if (var4 == 0) {
-                     var1 = InterfaceParent.method2244(var0);
-                     var10000 = Players.field1330;
-                     var10000[var5] = (byte)(var10000[var5] | 2);
-                  } else {
-                     class72.readPlayerUpdate(var0, var5);
-                  }
-               }
-            }
-         }
+		String var3 = "";
+		if (class36.field263 != null) {
+			var3 = "/p=" + class36.field263;
+		}
 
-         var0.exportIndex();
-         if (var1 != 0) {
-            throw new RuntimeException();
-         } else {
-            var0.importIndex();
-
-            for(var2 = 0; var2 < Players.Players_emptyIdxCount; ++var2) {
-               var5 = Players.Players_emptyIndices[var2];
-               if ((Players.field1330[var5] & 1) != 0) {
-                  if (var1 > 0) {
-                     --var1;
-                     var10000 = Players.field1330;
-                     var10000[var5] = (byte)(var10000[var5] | 2);
-                  } else {
-                     var4 = var0.readBits(1);
-                     if (var4 == 0) {
-                        var1 = InterfaceParent.method2244(var0);
-                        var10000 = Players.field1330;
-                        var10000[var5] = (byte)(var10000[var5] | 2);
-                     } else if (UserComparator7.updateExternalPlayer(var0, var5)) {
-                        var10000 = Players.field1330;
-                        var10000[var5] = (byte)(var10000[var5] | 2);
-                     }
-                  }
-               }
-            }
-
-            var0.exportIndex();
-            if (var1 != 0) {
-               throw new RuntimeException();
-            } else {
-               var0.importIndex();
-
-               for(var2 = 0; var2 < Players.Players_emptyIdxCount; ++var2) {
-                  var5 = Players.Players_emptyIndices[var2];
-                  if ((Players.field1330[var5] & 1) == 0) {
-                     if (var1 > 0) {
-                        --var1;
-                        var10000 = Players.field1330;
-                        var10000[var5] = (byte)(var10000[var5] | 2);
-                     } else {
-                        var4 = var0.readBits(1);
-                        if (var4 == 0) {
-                           var1 = InterfaceParent.method2244(var0);
-                           var10000 = Players.field1330;
-                           var10000[var5] = (byte)(var10000[var5] | 2);
-                        } else if (UserComparator7.updateExternalPlayer(var0, var5)) {
-                           var10000 = Players.field1330;
-                           var10000[var5] = (byte)(var10000[var5] | 2);
-                        }
-                     }
-                  }
-               }
-
-               var0.exportIndex();
-               if (var1 != 0) {
-                  throw new RuntimeException();
-               } else {
-                  Players.Players_count = 0;
-                  Players.Players_emptyIdxCount = 0;
-
-                  for(var2 = 1; var2 < 2048; ++var2) {
-                     var10000 = Players.field1330;
-                     var10000[var2] = (byte)(var10000[var2] >> 1);
-                     Player var3 = Client.players[var2];
-                     if (var3 != null) {
-                        Players.Players_indices[++Players.Players_count - 1] = var2;
-                     } else {
-                        Players.Players_emptyIndices[++Players.Players_emptyIdxCount - 1] = var2;
-                     }
-                  }
-
-               }
-            }
-         }
-      }
-   }
+		String var4 = "runescape.com";
+		return var2 + var0 + "." + var4 + "/l=" + Interpreter.clientLanguage + "/a=" + PcmPlayer.field299 + var3 + "/";
+	}
 }

@@ -3,85 +3,101 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dq")
+@ObfuscatedName("dt")
 public enum class90 implements MouseWheel {
-   @ObfuscatedName("at")
-   @ObfuscatedSignature(
-      descriptor = "Ldq;"
-   )
-   field1091(0, -1),
-   @ObfuscatedName("an")
-   @ObfuscatedSignature(
-      descriptor = "Ldq;"
-   )
-   field1090(1, 2),
-   @ObfuscatedName("av")
-   @ObfuscatedSignature(
-      descriptor = "Ldq;"
-   )
-   field1096(2, 3),
-   @ObfuscatedName("as")
-   @ObfuscatedSignature(
-      descriptor = "Ldq;"
-   )
-   field1092(3, 4),
-   @ObfuscatedName("ax")
-   @ObfuscatedSignature(
-      descriptor = "Ldq;"
-   )
-   field1093(4, 5),
-   @ObfuscatedName("ap")
-   @ObfuscatedSignature(
-      descriptor = "Ldq;"
-   )
-   field1094(5, 6);
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "Ldt;"
+	)
+	field1100(0, -1),
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "Ldt;"
+	)
+	field1099(1, 2),
+	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "Ldt;"
+	)
+	field1107(2, 3),
+	@ObfuscatedName("am")
+	@ObfuscatedSignature(
+		descriptor = "Ldt;"
+	)
+	field1101(3, 4),
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "Ldt;"
+	)
+	field1102(4, 5),
+	@ObfuscatedName("aj")
+	@ObfuscatedSignature(
+		descriptor = "Ldt;"
+	)
+	field1103(5, 6);
 
-   @ObfuscatedName("ab")
-   @ObfuscatedGetter(
-      intValue = -599705559
-   )
-   final int field1095;
-   @ObfuscatedName("ak")
-   @ObfuscatedGetter(
-      intValue = 2044227431
-   )
-   final int field1089;
+	@ObfuscatedName("aq")
+	@ObfuscatedGetter(
+		intValue = -1818991059
+	)
+	static int field1109;
+	@ObfuscatedName("lu")
+	@ObfuscatedGetter(
+		intValue = -783531589
+	)
+	static int field1108;
+	@ObfuscatedName("ag")
+	@ObfuscatedGetter(
+		intValue = 544385807
+	)
+	final int field1104;
+	@ObfuscatedName("az")
+	@ObfuscatedGetter(
+		intValue = -1773308819
+	)
+	final int field1105;
 
-   class90(int var3, int var4) {
-      this.field1095 = var3;
-      this.field1089 = var4;
-   }
+	class90(int var3, int var4) {
+		this.field1104 = var3;
+		this.field1105 = var4;
+	}
 
-   @ObfuscatedName("at")
-   @ObfuscatedSignature(
-      descriptor = "(B)I",
-      garbageValue = "-14"
-   )
-   @Export("rsOrdinal")
-   public int rsOrdinal() {
-      return this.field1089;
-   }
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "(I)I",
+		garbageValue = "1644350448"
+	)
+	@Export("rsOrdinal")
+	public int rsOrdinal() {
+		return this.field1105;
+	}
 
-   @ObfuscatedName("ap")
-   @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "-190718887"
-   )
-   public static void method2280() {
-      DbTableType.DBTableType_cache.clear();
-   }
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "(II)Lhb;",
+		garbageValue = "-1281408867"
+	)
+	@Export("getObjectDefinition")
+	public static ObjectComposition getObjectDefinition(int var0) {
+		ObjectComposition var1 = (ObjectComposition)ObjectComposition.ObjectDefinition_cached.get((long)var0);
+		if (var1 != null) {
+			return var1;
+		} else {
+			byte[] var2 = ObjectComposition.ObjectDefinition_archive.takeFile(6, var0);
+			var1 = new ObjectComposition();
+			var1.id = var0;
+			if (var2 != null) {
+				var1.decode(new Buffer(var2));
+			}
 
-   @ObfuscatedName("ak")
-   @ObfuscatedSignature(
-      descriptor = "(II)Ley;",
-      garbageValue = "1399066247"
-   )
-   static class127 method2279(int var0) {
-      class127 var1 = (class127)GameObject.findEnumerated(ObjectSound.method1875(), var0);
-      if (var1 == null) {
-         var1 = class127.field1494;
-      }
+			var1.postDecode();
+			if (var1.isSolid) {
+				var1.interactType = 0;
+				var1.boolean1 = false;
+			}
 
-      return var1;
-   }
+			ObjectComposition.ObjectDefinition_cached.put(var1, (long)var0);
+			return var1;
+		}
+	}
 }
