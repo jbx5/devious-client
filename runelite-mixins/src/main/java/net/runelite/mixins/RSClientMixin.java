@@ -158,7 +158,6 @@ import net.runelite.rs.api.RSTileItem;
 import net.runelite.rs.api.RSUsername;
 import net.runelite.rs.api.RSWidget;
 import net.runelite.rs.api.RSWorld;
-import net.runelite.rs.api.RSClips;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
@@ -1057,14 +1056,14 @@ public abstract class RSClientMixin implements RSClient
 				{
 					sortMenuEntries(var1, var1 + 1);
 					var0 = false;
-					}
-				}
-			if (var0 && !client.isMenuOpen())
-				{
-					client.getCallbacks().post(new PostMenuSort());
 				}
 			}
+			if (var0 && !client.isMenuOpen())
+			{
+				client.getCallbacks().post(new PostMenuSort());
+			}
 		}
+	}
 
 	@Inject
 	public static void sortMenuEntries(int left, int right)
@@ -2500,7 +2499,7 @@ public abstract class RSClientMixin implements RSClient
 		return widgetClickMask;
 	}
 
-	@Inject
+	/*@Inject
 	@FieldHook("camAngleDX")
 	private static void onCamAngleDXChange(int index)
 	{
@@ -2518,7 +2517,7 @@ public abstract class RSClientMixin implements RSClient
 		{
 			client.setCamAngleDY(-client.getCamAngleDY());
 		}
-	}
+	}*/
 
 	@Inject
 	@Override
@@ -2607,12 +2606,12 @@ public abstract class RSClientMixin implements RSClient
 	public void playMusicTrack(int var0, RSAbstractArchive var1, int var2, int var3, int var4, boolean var5)
 	{
 		client.setMusicPlayerStatus(1);
-		client.setMusicTrackArchive(var1);
+		/*client.setMusicTrackArchive(var1);
 		client.setMusicTrackGroupId(var2);
 		client.setMusicTrackFileId(var3);
 		client.setMusicTrackVolume(var4);
 		client.setMusicTrackBoolean(var5);
-		client.setPcmSampleLength(var0);
+		client.setPcmSampleLength(var0);*/
 	}
 
 	@Inject
@@ -2714,7 +2713,7 @@ public abstract class RSClientMixin implements RSClient
 	@Override
 	public void setMusicVolume(int volume)
 	{
-		if (volume > 0 && client.getPreferences().getMusicVolume() <= 0 && client.getCurrentTrackGroupId() != -1)
+		/*if (volume > 0 && client.getPreferences().getMusicVolume() <= 0 && client.getCurrentTrackGroupId() != -1)
 		{
 			client.playMusicTrack(1000, client.getMusicTracks(), client.getCurrentTrackGroupId(), 0, volume, false);
 		}
@@ -2724,7 +2723,7 @@ public abstract class RSClientMixin implements RSClient
 		if (client.getMidiPcmStream() != null)
 		{
 			client.getMidiPcmStream().setPcmStreamVolume(volume);
-		}
+		}*/
 	}
 
 	@Inject
@@ -2956,11 +2955,11 @@ public abstract class RSClientMixin implements RSClient
 	@Inject
 	public void interpolateCamera(long var1)
 	{
-		double angleDX = diffToDangle(client.getCamAngleDY(), var1);
-		double angleDY = diffToDangle(client.getCamAngleDX(), var1);
+		//double angleDX = diffToDangle(client.getCamAngleDY(), var1);
+		//double angleDY = diffToDangle(client.getCamAngleDX(), var1);
 
-		tmpCamAngleY += angleDX / 2;
-		tmpCamAngleX += angleDY / 2;
+		//tmpCamAngleY += angleDX / 2;
+		//tmpCamAngleX += angleDY / 2;
 		tmpCamAngleX = Doubles.constrainToRange(tmpCamAngleX, Perspective.UNIT * STANDARD_PITCH_MIN, client.getCameraPitchRelaxerEnabled() ? Perspective.UNIT * NEW_PITCH_MAX : Perspective.UNIT * STANDARD_PITCH_MAX);
 
 		int yaw = toCameraPos(tmpCamAngleY);
@@ -3403,28 +3402,28 @@ public abstract class RSClientMixin implements RSClient
 		}
 	}
 
-	@Shadow("clips")
-	static RSClips clips;
+	//@Shadow("clips")
+	//static RSClips clips;
 
 	@Inject
 	@Override
 	public int getRasterizer3D_clipNegativeMidX()
 	{
-		return clips.getClipNegativeMidX();
+		return client.getClips().getClipNegativeMidX();
 	}
 
 	@Inject
 	@Override
 	public int getRasterizer3D_clipNegativeMidY()
 	{
-		return clips.getClipNegativeMidY();
+		return client.getClips().getClipNegativeMidY();
 	}
 
 	@Inject
 	@Override
 	public void set3dZoom(int zoom)
 	{
-		clips.setViewportZoom(zoom);
+		client.getClips().setViewportZoom(zoom);
 		client.setScale(zoom);
 	}
 }

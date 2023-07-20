@@ -427,7 +427,7 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("mouseCam")
 	boolean isMouseCam();
 
-	@Import("camAngleDX")
+	/*@Import("camAngleDX")
 	int getCamAngleDX();
 
 	@Import("camAngleDX")
@@ -437,7 +437,7 @@ public interface RSClient extends RSGameEngine, Client
 	int getCamAngleDY();
 
 	@Import("camAngleDY")
-	void setCamAngleDY(int angle);
+	void setCamAngleDY(int angle);*/
 
 	@Import("itemContainers")
 	RSNodeHashTable getItemContainers();
@@ -1182,19 +1182,19 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("decimator")
 	RSDecimator getSoundEffectResampler();
 
-	@Import("musicTrackVolume")
-	void setMusicTrackVolume(int volume);
+	//@Import("musicTrackVolume")
+	//void setMusicTrackVolume(int volume);
 
 	@Import("viewportWalking")
 	void setViewportWalking(boolean viewportWalking);
 
 	void playMusicTrack(int var0, RSAbstractArchive var1, int var2, int var3, int var4, boolean var5);
 
-	@Import("midiPcmStream")
-	RSMidiPcmStream getMidiPcmStream();
+	//@Import("midiPcmStream")
+	//RSMidiPcmStream getMidiPcmStream();
 
-	@Import("currentTrackGroupId")
-	int getCurrentTrackGroupId();
+	//@Import("currentTrackGroupId")
+	//int getCurrentTrackGroupId();
 
 	@Import("crossSprites")
 	@Override
@@ -1359,26 +1359,26 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("playingJingle")
 	boolean isPlayingJingle();
 
-	@Import("musicTrackGroupId")
-	int getMusicCurrentTrackId();
+	//@Import("musicTrackGroupId")
+	//int getMusicCurrentTrackId();
 
 	@Import("musicPlayerStatus")
 	void setMusicPlayerStatus(int var0);
 
-	@Import("musicTrackArchive")
-	void setMusicTrackArchive(RSAbstractArchive var0);
+	//@Import("musicTrackArchive")
+	//void setMusicTrackArchive(RSAbstractArchive var0);
 
-	@Import("musicTrackGroupId")
-	void setMusicTrackGroupId(int var0);
+	//@Import("musicTrackGroupId")
+	//void setMusicTrackGroupId(int var0);
 
-	@Import("musicTrackFileId")
-	void setMusicTrackFileId(int var0);
+	//@Import("musicTrackFileId")
+	//void setMusicTrackFileId(int var0);
 
-	@Import("musicTrackBoolean")
-	void setMusicTrackBoolean(boolean var0);
+	//@Import("musicTrackBoolean")
+	//void setMusicTrackBoolean(boolean var0);
 
-	@Import("pcmSampleLength")
-	void setPcmSampleLength(int var0);
+	//@Import("pcmSampleLength")
+	//void setPcmSampleLength(int var0);
 
 	@Import("changedVarps")
 	int[] getChangedVarps();
@@ -1661,6 +1661,9 @@ public interface RSClient extends RSGameEngine, Client
 
 	@Import("graphicsCycle")
 	int getGraphicsCycle();
+
+	@Import("clips")
+	RSClips getClips();
 
 	/*
 	Unethical
