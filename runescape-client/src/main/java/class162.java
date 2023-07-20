@@ -50,10 +50,10 @@ public class class162 extends class143 {
 	)
 	static ArrayList method3356() {
 		ArrayList var0 = new ArrayList();
-		Iterator var1 = class306.field3394.iterator();
+		Iterator var1 = class306.musicSongs.iterator();
 
 		while (var1.hasNext()) {
-			class318 var2 = (class318)var1.next();
+			MusicSong var2 = (MusicSong)var1.next();
 			var0.add(var2);
 		}
 

@@ -20,12 +20,12 @@ public class class400 extends class407 {
 	)
 	public boolean vmethod7676(int var1) {
 		while (!class306.field3396.isEmpty()) {
-			class318 var2 = (class318)class306.field3396.peek();
+			MusicSong var2 = (MusicSong)class306.field3396.peek();
 			if (var2 == null) {
 				class306.field3396.pop();
 			} else {
-				var2.field3516 = this.method7611();
-				class306.field3394.add(var2);
+				var2.midiPcmStream = this.method7611();
+				class306.musicSongs.add(var2);
 				class306.field3396.pop();
 			}
 		}

@@ -53,7 +53,7 @@ public abstract class RouteStrategy {
 	public static void method4227(int var0, int var1) {
 		ArchiveLoader.method2259(var0, var1, 0, 0);
 		class306.field3398.clear();
-		if (!class306.field3394.isEmpty() && (var0 != 0 || var1 != 0)) {
+		if (!class306.musicSongs.isEmpty() && (var0 != 0 || var1 != 0)) {
 			class306.field3399.add(new class403((class407)null, class306.musicPlayerStatus));
 			class306.field3399.add(new class405((class407)null, 0, false, class306.field3402));
 		}

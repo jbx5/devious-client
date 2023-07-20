@@ -8,7 +8,7 @@ public class class405 extends class407 {
 	@ObfuscatedSignature(
 		descriptor = "Lmj;"
 	)
-	class318 field4520;
+	MusicSong field4520;
 	@ObfuscatedName("ay")
 	@ObfuscatedGetter(
 		intValue = 2025464221
@@ -25,9 +25,9 @@ public class class405 extends class407 {
 		super.field4528 = "FadeOutTask";
 		if (var2 >= 0) {
 			if (var3 && var2 < class306.field3396.size()) {
-				this.field4520 = (class318)class306.field3396.get(var2);
-			} else if (!var3 && var2 < class306.field3394.size()) {
-				this.field4520 = (class318)class306.field3394.get(var2);
+				this.field4520 = (MusicSong)class306.field3396.get(var2);
+			} else if (!var3 && var2 < class306.musicSongs.size()) {
+				this.field4520 = (MusicSong)class306.musicSongs.get(var2);
 			}
 
 			this.field4521 = var4;
@@ -40,19 +40,19 @@ public class class405 extends class407 {
 		garbageValue = "994462530"
 	)
 	public boolean vmethod7676(int var1) {
-		if (this.field4520 != null && this.field4520.field3516 != null) {
+		if (this.field4520 != null && this.field4520.midiPcmStream != null) {
 			this.field4520.field3515 = true;
 
 			try {
-				if (this.field4520.field3511 > 0.0F && this.field4520.field3516.isReady()) {
-					float var2 = this.field4521 == 0 ? (float)this.field4521 : (float)this.field4520.field3510 / (float)this.field4521;
-					class318 var10000 = this.field4520;
-					var10000.field3511 -= 0.0F == var2 ? (float)this.field4520.field3510 : var2;
+				if (this.field4520.field3511 > 0.0F && this.field4520.midiPcmStream.isReady()) {
+					float var2 = this.field4521 == 0 ? (float)this.field4521 : (float)this.field4520.musicTrackVolume / (float)this.field4521;
+					MusicSong var10000 = this.field4520;
+					var10000.field3511 -= 0.0F == var2 ? (float)this.field4520.musicTrackVolume : var2;
 					if (this.field4520.field3511 < 0.0F) {
 						this.field4520.field3511 = 0.0F;
 					}
 
-					this.field4520.field3516.setPcmStreamVolume((int)this.field4520.field3511);
+					this.field4520.midiPcmStream.setPcmStreamVolume((int)this.field4520.field3511);
 					return false;
 				}
 			} catch (Exception var4) {

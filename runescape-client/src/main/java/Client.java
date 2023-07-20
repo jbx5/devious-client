@@ -528,11 +528,13 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 	@ObfuscatedGetter(
 		intValue = 437288283
 	)
+	@Export("camAngleDY")
 	static int camAngleDY;
 	@ObfuscatedName("lj")
 	@ObfuscatedGetter(
 		intValue = 204992847
 	)
+	@Export("camAngleDX")
 	static int camAngleDX;
 	@ObfuscatedName("lr")
 	@ObfuscatedGetter(
@@ -3373,12 +3375,12 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 								Iterator var38 = class306.field3398.iterator();
 
 								while (var38.hasNext()) {
-									class318 var41 = (class318)var38.next();
+									MusicSong var41 = (MusicSong)var38.next();
 									var41.field3508 = false;
 									var41.field3513 = false;
 									var41.field3515 = false;
-									var41.field3514 = var32;
-									var41.field3510 = var2;
+									var41.musicTrackArchive = var32;
+									var41.musicTrackVolume = var2;
 									var41.field3511 = 0.0F;
 									var25.add(var41);
 								}
