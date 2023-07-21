@@ -7,5 +7,5 @@ import net.runelite.mapping.ObfuscatedName;
 @Implements("OtlTokenRequester")
 @ObfuscatedName("com/jagex/oldscape/pub/OtlTokenRequester")
 public interface OtlTokenRequester {
-   Future request(String var1, URL var2, Map var3, String var4);
+	Future request(String var1, URL var2, Map var3, String var4);
 }

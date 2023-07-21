@@ -1,95 +1,70 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.atomic.AtomicBoolean;
 import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("ly")
 public class class304 {
-   @ObfuscatedName("at")
-   @ObfuscatedSignature(
-      descriptor = "Lnq;"
-   )
-   public static AbstractArchive field3396;
-   @ObfuscatedName("an")
-   @ObfuscatedSignature(
-      descriptor = "Lnq;"
-   )
-   @Export("musicSamplesArchive")
-   public static AbstractArchive musicSamplesArchive;
-   @ObfuscatedName("av")
-   @ObfuscatedSignature(
-      descriptor = "Lnq;"
-   )
-   @Export("soundEffectsArchive")
-   public static AbstractArchive soundEffectsArchive;
-   @ObfuscatedName("as")
-   @ObfuscatedSignature(
-      descriptor = "Llb;"
-   )
-   @Export("midiPcmStream")
-   public static MidiPcmStream midiPcmStream;
-   @ObfuscatedName("ax")
-   @ObfuscatedGetter(
-      intValue = -623051517
-   )
-   @Export("musicPlayerStatus")
-   public static int musicPlayerStatus = 0;
-   @ObfuscatedName("ak")
-   @ObfuscatedGetter(
-      intValue = -1158912423
-   )
-   @Export("musicTrackFileId")
-   public static int musicTrackFileId;
-   @ObfuscatedName("ae")
-   @ObfuscatedGetter(
-      intValue = -1414441601
-   )
-   @Export("musicTrackVolume")
-   public static int musicTrackVolume;
-   @ObfuscatedName("aj")
-   @ObfuscatedSignature(
-      descriptor = "Lbz;"
-   )
-   @Export("soundCache")
-   public static SoundCache soundCache;
-   @ObfuscatedName("ad")
-   static AtomicBoolean field3392 = null;
-   @ObfuscatedName("ac")
-   static ThreadPoolExecutor field3393 = null;
-   @ObfuscatedName("ag")
-   @ObfuscatedGetter(
-      intValue = 472839149
-   )
-   public static int field3385 = -1;
-   @ObfuscatedName("ar")
-   @ObfuscatedGetter(
-      intValue = 1895494173
-   )
-   public static int field3395 = -1;
-   @ObfuscatedName("ah")
-   public static final List field3388 = new ArrayList();
-   @ObfuscatedName("jm")
-   @ObfuscatedSignature(
-      descriptor = "Ltm;"
-   )
-   @Export("compass")
-   static SpritePixels compass;
+	@ObfuscatedName("aw")
+	static int[] field3378;
+	@ObfuscatedName("at")
+	@ObfuscatedSignature(
+		descriptor = "[Luu;"
+	)
+	@Export("title_muteSprite")
+	static IndexedSprite[] title_muteSprite;
 
-   @ObfuscatedName("cf")
-   @ObfuscatedSignature(
-      descriptor = "(ILmg;ZB)V",
-      garbageValue = "21"
-   )
-   static void method5715(int var0, Coord var1, boolean var2) {
-      WorldMapArea var3 = AABB.getWorldMap().getMapArea(var0);
-      int var4 = Projectile.localPlayer.plane;
-      int var5 = class213.baseX * 64 + (Projectile.localPlayer.x >> 7);
-      int var6 = class101.baseY * 64 + (Projectile.localPlayer.y >> 7);
-      Coord var7 = new Coord(var4, var5, var6);
-      AABB.getWorldMap().method8402(var3, var7, var1, var2);
-   }
+	static {
+		new Object();
+		field3378 = new int[33];
+		field3378[0] = 0;
+		int var0 = 2;
+
+		for (int var1 = 1; var1 < 33; ++var1) {
+			field3378[var1] = var0 - 1;
+			var0 += var0;
+		}
+
+	}
+
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "(I)[Lag;",
+		garbageValue = "-98766558"
+	)
+	public static class6[] method5780() {
+		return new class6[]{class6.field22};
+	}
+
+	@ObfuscatedName("cp")
+	@ObfuscatedSignature(
+		descriptor = "([BI)[B",
+		garbageValue = "754109388"
+	)
+	@Export("decompressBytes")
+	static final byte[] decompressBytes(byte[] var0) {
+		Buffer var1 = new Buffer(var0);
+		int var2 = var1.readUnsignedByte();
+		int var3 = var1.readInt();
+		if (var3 < 0 || AbstractArchive.field4293 != 0 && var3 > AbstractArchive.field4293) {
+			throw new RuntimeException();
+		} else if (var2 == 0) {
+			byte[] var6 = new byte[var3];
+			var1.readBytes(var6, 0, var3);
+			return var6;
+		} else {
+			int var4 = var1.readInt();
+			if (var4 >= 0 && (AbstractArchive.field4293 == 0 || var4 <= AbstractArchive.field4293)) {
+				byte[] var5 = new byte[var4];
+				if (var2 == 1) {
+					BZip2Decompressor.BZip2Decompressor_decompress(var5, var4, var0, var3, 9);
+				} else {
+					AbstractArchive.gzipDecompressor.decompress(var1, var5);
+				}
+
+				return var5;
+			} else {
+				throw new RuntimeException();
+			}
+		}
+	}
 }

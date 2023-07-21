@@ -1,20 +1,30 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("lg")
-public class class302 {
-   @ObfuscatedName("at")
-   static int[] field3370;
-
-   static {
-      new Object();
-      field3370 = new int[33];
-      field3370[0] = 0;
-      int var0 = 2;
-
-      for(int var1 = 1; var1 < 33; ++var1) {
-         field3370[var1] = var0 - 1;
-         var0 += var0;
-      }
-
-   }
+@ObfuscatedName("lp")
+public final class class302 {
+	@ObfuscatedName("aw")
+	@ObfuscatedGetter(
+		longValue = 5705066418364846409L
+	)
+	static long field3368;
+	@ObfuscatedName("ay")
+	@ObfuscatedGetter(
+		longValue = -1431356877550207247L
+	)
+	static long field3369;
+	@ObfuscatedName("aa")
+	@ObfuscatedSignature(
+		descriptor = "[Lts;"
+	)
+	@Export("JagexCache_idxFiles")
+	public static BufferedFile[] JagexCache_idxFiles;
+	@ObfuscatedName("kk")
+	@ObfuscatedSignature(
+		descriptor = "[Luu;"
+	)
+	@Export("scrollBarSprites")
+	static IndexedSprite[] scrollBarSprites;
 }

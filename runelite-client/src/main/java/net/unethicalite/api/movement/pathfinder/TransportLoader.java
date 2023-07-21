@@ -273,6 +273,10 @@ public class TransportLoader
                         }
                     }
                 }
+
+                // Al Kharid to and from Ruins of Unkah
+                transports.add(npcTransport(new WorldPoint(3272, 3144, 0), new WorldPoint(3148, 2842, 0), NpcID.FERRYMAN_SATHWOOD, "Ferry"));
+                transports.add(npcTransport(new WorldPoint(3148, 2842, 0), new WorldPoint(3272, 3144, 0), NpcID.FERRYMAN_NATHWOOD, "Ferry"));
             }
 
             // Entrana

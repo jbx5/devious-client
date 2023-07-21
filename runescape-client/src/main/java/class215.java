@@ -1,181 +1,158 @@
+import java.io.IOException;
+import java.util.Arrays;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("is")
+@ObfuscatedName("ir")
 public class class215 {
-   @ObfuscatedName("at")
-   final int[][] field2390;
-   @ObfuscatedName("an")
-   final int[][] field2387;
-   @ObfuscatedName("av")
-   @ObfuscatedGetter(
-      intValue = 2071166765
-   )
-   int field2391;
-   @ObfuscatedName("as")
-   @ObfuscatedGetter(
-      intValue = -322205241
-   )
-   int field2389;
-   @ObfuscatedName("ax")
-   final int[] field2388;
-   @ObfuscatedName("ap")
-   final int[] field2386;
-   @ObfuscatedName("ab")
-   @ObfuscatedGetter(
-      intValue = 524552563
-   )
-   final int field2392;
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "Lir;"
+	)
+	static final class215 field2355;
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "Lir;"
+	)
+	static final class215 field2350;
+	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "Lir;"
+	)
+	public static final class215 field2349;
+	@ObfuscatedName("am")
+	@ObfuscatedSignature(
+		descriptor = "Lir;"
+	)
+	static final class215 field2352;
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "Lir;"
+	)
+	static final class215 field2353;
+	@ObfuscatedName("aj")
+	@ObfuscatedSignature(
+		descriptor = "Lir;"
+	)
+	static final class215 field2354;
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "Lir;"
+	)
+	static final class215 field2351;
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "[Lir;"
+	)
+	static final class215[] field2359;
+	@ObfuscatedName("az")
+	@ObfuscatedGetter(
+		intValue = 536358973
+	)
+	final int field2356;
+	@ObfuscatedName("av")
+	@ObfuscatedGetter(
+		intValue = 1985749061
+	)
+	public final int field2357;
+	@ObfuscatedName("ap")
+	@ObfuscatedGetter(
+		intValue = -1917948559
+	)
+	public final int field2358;
 
-   public class215(int var1, int var2) {
-      this.field2390 = new int[var1][var2];
-      this.field2387 = new int[var1][var2];
-      int var3 = var2 * var1;
-      int var4 = class128.method2970(var3 / 4);
-      this.field2388 = new int[var4];
-      this.field2386 = new int[var4];
-      this.field2392 = var4 - 1;
-   }
+	static {
+		field2355 = new class215(2, 8, 8);
+		field2350 = new class215(4, 16, 16);
+		field2349 = new class215(1, 32, 32);
+		field2352 = new class215(0, 48, 48);
+		field2353 = new class215(6, 64, 64);
+		field2354 = new class215(5, 96, 96);
+		field2351 = new class215(3, 128, 128);
+		field2359 = UserComparator9.method2896();
+		Arrays.sort(field2359, new class220());
+	}
 
-   @ObfuscatedName("at")
-   @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "49275"
-   )
-   void method4253() {
-      for(int var1 = 0; var1 < this.field2390.length; ++var1) {
-         for(int var2 = 0; var2 < this.field2390[var1].length; ++var2) {
-            this.field2390[var1][var2] = 0;
-            this.field2387[var1][var2] = 99999999;
-         }
-      }
+	class215(int var1, int var2, int var3) {
+		this.field2356 = var1;
+		this.field2357 = var2;
+		this.field2358 = var3;
+	}
 
-   }
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "(I)I",
+		garbageValue = "-9015084"
+	)
+	int method4222() {
+		return this.field2357 * this.field2358;
+	}
 
-   @ObfuscatedName("an")
-   @ObfuscatedSignature(
-      descriptor = "(III)V",
-      garbageValue = "-233085726"
-   )
-   void method4223(int var1, int var2) {
-      this.field2391 = var1;
-      this.field2389 = var2;
-   }
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "([Ljava/lang/String;[SIII)V",
+		garbageValue = "-2129316412"
+	)
+	@Export("sortItemsByName")
+	static void sortItemsByName(String[] var0, short[] var1, int var2, int var3) {
+		if (var2 < var3) {
+			int var4 = (var3 + var2) / 2;
+			int var5 = var2;
+			String var6 = var0[var4];
+			var0[var4] = var0[var3];
+			var0[var3] = var6;
+			short var7 = var1[var4];
+			var1[var4] = var1[var3];
+			var1[var3] = var7;
 
-   @ObfuscatedName("av")
-   @ObfuscatedSignature(
-      descriptor = "(I)I",
-      garbageValue = "-688840555"
-   )
-   int method4243() {
-      return this.field2391;
-   }
+			for (int var8 = var2; var8 < var3; ++var8) {
+				if (var6 == null || var0[var8] != null && var0[var8].compareTo(var6) < (var8 & 1)) {
+					String var9 = var0[var8];
+					var0[var8] = var0[var5];
+					var0[var5] = var9;
+					short var10 = var1[var8];
+					var1[var8] = var1[var5];
+					var1[var5++] = var10;
+				}
+			}
 
-   @ObfuscatedName("as")
-   @ObfuscatedSignature(
-      descriptor = "(I)I",
-      garbageValue = "-1112467231"
-   )
-   int method4251() {
-      return this.field2389;
-   }
+			var0[var3] = var0[var5];
+			var0[var5] = var6;
+			var1[var3] = var1[var5];
+			var1[var5] = var7;
+			sortItemsByName(var0, var1, var2, var5 - 1);
+			sortItemsByName(var0, var1, var5 + 1, var3);
+		}
 
-   @ObfuscatedName("ax")
-   @ObfuscatedSignature(
-      descriptor = "(I)I",
-      garbageValue = "-195718858"
-   )
-   int method4230() {
-      return this.field2390.length;
-   }
+	}
 
-   @ObfuscatedName("ap")
-   @ObfuscatedSignature(
-      descriptor = "(I)I",
-      garbageValue = "1040069971"
-   )
-   int method4227() {
-      return this.field2390[0].length;
-   }
+	@ObfuscatedName("am")
+	@ObfuscatedSignature(
+		descriptor = "(I)[B",
+		garbageValue = "1689417395"
+	)
+	public static byte[] method4223() {
+		byte[] var0 = new byte[24];
 
-   @ObfuscatedName("ab")
-   @ObfuscatedSignature(
-      descriptor = "(I)[[I",
-      garbageValue = "-83163757"
-   )
-   int[][] method4245() {
-      return this.field2390;
-   }
+		try {
+			JagexCache.JagexCache_randomDat.seek(0L);
+			JagexCache.JagexCache_randomDat.readFully(var0);
 
-   @ObfuscatedName("ak")
-   @ObfuscatedSignature(
-      descriptor = "(I)[[I",
-      garbageValue = "1989654250"
-   )
-   int[][] method4229() {
-      return this.field2387;
-   }
+			int var1;
+			for (var1 = 0; var1 < 24 && var0[var1] == 0; ++var1) {
+			}
 
-   @ObfuscatedName("ae")
-   @ObfuscatedSignature(
-      descriptor = "(S)[I",
-      garbageValue = "30978"
-   )
-   int[] method4225() {
-      return this.field2388;
-   }
+			if (var1 >= 24) {
+				throw new IOException();
+			}
+		} catch (Exception var4) {
+			for (int var2 = 0; var2 < 24; ++var2) {
+				var0[var2] = -1;
+			}
+		}
 
-   @ObfuscatedName("af")
-   @ObfuscatedSignature(
-      descriptor = "(I)[I",
-      garbageValue = "-853225023"
-   )
-   int[] method4221() {
-      return this.field2386;
-   }
-
-   @ObfuscatedName("ao")
-   @ObfuscatedSignature(
-      descriptor = "(I)I",
-      garbageValue = "100629336"
-   )
-   int method4232() {
-      return this.field2392;
-   }
-
-   @ObfuscatedName("an")
-   @ObfuscatedSignature(
-      descriptor = "(III)I",
-      garbageValue = "641389715"
-   )
-   @Export("ItemContainer_getCount")
-   static int ItemContainer_getCount(int var0, int var1) {
-      ItemContainer var2 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
-      if (var2 == null) {
-         return 0;
-      } else {
-         return var1 >= 0 && var1 < var2.quantities.length ? var2.quantities[var1] : 0;
-      }
-   }
-
-   @ObfuscatedName("ap")
-   @Export("Entity_unpackID")
-   public static int Entity_unpackID(long var0) {
-      return (int)(var0 >>> 17 & 4294967295L);
-   }
-
-   @ObfuscatedName("ak")
-   @ObfuscatedSignature(
-      descriptor = "(II)J",
-      garbageValue = "1690944162"
-   )
-   public static long method4252(int var0) {
-      if (var0 > 63) {
-         throw new class387("Cannot generate max unsigned value for more than 63 bits as this is greater than the boundaries of a java long. Value provided: %d", new Object[]{var0});
-      } else {
-         return (long)Math.pow(2.0, (double)var0) - 1L;
-      }
-   }
+		return var0;
+	}
 }

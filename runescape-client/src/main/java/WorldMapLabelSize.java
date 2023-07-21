@@ -4,108 +4,100 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jt")
+@ObfuscatedName("jj")
 @Implements("WorldMapLabelSize")
 public class WorldMapLabelSize {
-   @ObfuscatedName("at")
-   @ObfuscatedSignature(
-      descriptor = "Ljt;"
-   )
-   @Export("WorldMapLabelSize_small")
-   public static final WorldMapLabelSize WorldMapLabelSize_small = new WorldMapLabelSize(1, 0, 4);
-   @ObfuscatedName("an")
-   @ObfuscatedSignature(
-      descriptor = "Ljt;"
-   )
-   @Export("WorldMapLabelSize_medium")
-   public static final WorldMapLabelSize WorldMapLabelSize_medium = new WorldMapLabelSize(2, 1, 2);
-   @ObfuscatedName("av")
-   @ObfuscatedSignature(
-      descriptor = "Ljt;"
-   )
-   @Export("WorldMapLabelSize_large")
-   public static final WorldMapLabelSize WorldMapLabelSize_large = new WorldMapLabelSize(0, 2, 0);
-   @ObfuscatedName("jo")
-   @Export("regionLandArchives")
-   static byte[][] regionLandArchives;
-   @ObfuscatedName("as")
-   @ObfuscatedGetter(
-      intValue = 976233299
-   )
-   final int field2861;
-   @ObfuscatedName("ax")
-   @ObfuscatedGetter(
-      intValue = -1012793205
-   )
-   final int field2868;
-   @ObfuscatedName("ap")
-   @ObfuscatedGetter(
-      intValue = -1283115681
-   )
-   final int field2865;
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "Ljj;"
+	)
+	@Export("WorldMapLabelSize_small")
+	public static final WorldMapLabelSize WorldMapLabelSize_small;
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "Ljj;"
+	)
+	@Export("WorldMapLabelSize_medium")
+	public static final WorldMapLabelSize WorldMapLabelSize_medium;
+	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "Ljj;"
+	)
+	@Export("WorldMapLabelSize_large")
+	public static final WorldMapLabelSize WorldMapLabelSize_large;
+	@ObfuscatedName("ah")
+	@ObfuscatedSignature(
+		descriptor = "Luu;"
+	)
+	@Export("options_buttons_0Sprite")
+	static IndexedSprite options_buttons_0Sprite;
+	@ObfuscatedName("si")
+	@ObfuscatedSignature(
+		descriptor = "Lgh;"
+	)
+	@Export("guestClanChannel")
+	static ClanChannel guestClanChannel;
+	@ObfuscatedName("am")
+	@ObfuscatedGetter(
+		intValue = -1138617503
+	)
+	final int field2858;
+	@ObfuscatedName("as")
+	@ObfuscatedGetter(
+		intValue = 1772890649
+	)
+	final int field2861;
+	@ObfuscatedName("aj")
+	@ObfuscatedGetter(
+		intValue = -1703029901
+	)
+	final int field2860;
 
-   WorldMapLabelSize(int var1, int var2, int var3) {
-      this.field2861 = var1;
-      this.field2868 = var2;
-      this.field2865 = var3;
-   }
+	static {
+		WorldMapLabelSize_small = new WorldMapLabelSize(0, 0, 4);
+		WorldMapLabelSize_medium = new WorldMapLabelSize(2, 1, 2);
+		WorldMapLabelSize_large = new WorldMapLabelSize(1, 2, 0);
+	}
 
-   @ObfuscatedName("at")
-   @ObfuscatedSignature(
-      descriptor = "(FB)Z",
-      garbageValue = "89"
-   )
-   boolean method5061(float var1) {
-      return var1 >= (float)this.field2865;
-   }
+	WorldMapLabelSize(int var1, int var2, int var3) {
+		this.field2858 = var1;
+		this.field2861 = var2;
+		this.field2860 = var3;
+	}
 
-   @ObfuscatedName("an")
-   @ObfuscatedSignature(
-      descriptor = "(II)Lhy;",
-      garbageValue = "272884166"
-   )
-   @Export("SequenceDefinition_get")
-   public static SequenceDefinition SequenceDefinition_get(int var0) {
-      SequenceDefinition var1 = (SequenceDefinition)SequenceDefinition.SequenceDefinition_cached.get((long)var0);
-      if (var1 != null) {
-         return var1;
-      } else {
-         byte[] var2 = SequenceDefinition.SequenceDefinition_archive.takeFile(12, var0);
-         var1 = new SequenceDefinition();
-         if (var2 != null) {
-            var1.decode(new Buffer(var2));
-         }
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "(FB)Z",
+		garbageValue = "-3"
+	)
+	boolean method5088(float var1) {
+		return var1 >= (float)this.field2860;
+	}
 
-         var1.postDecode();
-         SequenceDefinition.SequenceDefinition_cached.put(var1, (long)var0);
-         return var1;
-      }
-   }
+	@ObfuscatedName("me")
+	@ObfuscatedSignature(
+		descriptor = "(IIII)Ldn;",
+		garbageValue = "977578301"
+	)
+	static final InterfaceParent method5085(int var0, int var1, int var2) {
+		InterfaceParent var3 = new InterfaceParent();
+		var3.group = var1;
+		var3.type = var2;
+		Client.interfaceParents.put(var3, (long)var0);
+		class92.Widget_resetModelFrames(var1);
+		Widget var4 = VarbitComposition.getWidget(var0);
+		class200.invalidateWidget(var4);
+		if (Client.meslayerContinueWidget != null) {
+			class200.invalidateWidget(Client.meslayerContinueWidget);
+			Client.meslayerContinueWidget = null;
+		}
 
-   @ObfuscatedName("li")
-   @ObfuscatedSignature(
-      descriptor = "(IIIIII)V",
-      garbageValue = "-1040672320"
-   )
-   @Export("drawScrollBar")
-   static final void drawScrollBar(int var0, int var1, int var2, int var3, int var4) {
-      class411.scrollBarSprites[0].drawAt(var0, var1);
-      class411.scrollBarSprites[1].drawAt(var0, var3 + var1 - 16);
-      Rasterizer2D.Rasterizer2D_fillRectangle(var0, var1 + 16, 16, var3 - 32, Client.field582);
-      int var5 = var3 * (var3 - 32) / var4;
-      if (var5 < 8) {
-         var5 = 8;
-      }
+		SoundCache.revalidateWidgetScroll(ArchiveLoader.Widget_interfaceComponents[var0 >> 16], var4, false);
+		ScriptFrame.runWidgetOnLoadListener(var1);
+		if (Client.rootInterface != -1) {
+			ChatChannel.runIntfCloseListeners(Client.rootInterface, 1);
+		}
 
-      int var6 = (var3 - 32 - var5) * var2 / (var4 - var3);
-      Rasterizer2D.Rasterizer2D_fillRectangle(var0, var6 + var1 + 16, 16, var5, Client.field583);
-      Rasterizer2D.Rasterizer2D_drawVerticalLine(var0, var6 + var1 + 16, var5, Client.field799);
-      Rasterizer2D.Rasterizer2D_drawVerticalLine(var0 + 1, var6 + var1 + 16, var5, Client.field799);
-      Rasterizer2D.Rasterizer2D_drawHorizontalLine(var0, var6 + var1 + 16, 16, Client.field799);
-      Rasterizer2D.Rasterizer2D_drawHorizontalLine(var0, var6 + var1 + 17, 16, Client.field799);
-      Rasterizer2D.Rasterizer2D_drawVerticalLine(var0 + 15, var6 + var1 + 16, var5, Client.field584);
-      Rasterizer2D.Rasterizer2D_drawVerticalLine(var0 + 14, var6 + var1 + 17, var5 - 1, Client.field584);
-      Rasterizer2D.Rasterizer2D_drawHorizontalLine(var0, var6 + var5 + var1 + 15, 16, Client.field584);
-      Rasterizer2D.Rasterizer2D_drawHorizontalLine(var0 + 1, var5 + var6 + var1 + 14, 15, Client.field584);
-   }
+		return var3;
+	}
 }

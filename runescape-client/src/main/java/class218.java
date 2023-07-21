@@ -1,30 +1,50 @@
-import java.util.Comparator;
-import java.util.Iterator;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ii")
-public class class218 implements Comparator {
-   @ObfuscatedName("ww")
-   static Iterator field2404;
+@ObfuscatedName("io")
+public enum class218 implements MouseWheel {
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "Lio;"
+	)
+	field2381((byte)-1),
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "Lio;"
+	)
+	field2378((byte)0),
+	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "Lio;"
+	)
+	field2384((byte)1),
+	@ObfuscatedName("am")
+	@ObfuscatedSignature(
+		descriptor = "Lio;"
+	)
+	field2377((byte)2);
 
-   class218() {
-   }
+	@ObfuscatedName("dn")
+	@ObfuscatedSignature(
+		descriptor = "[Luu;"
+	)
+	@Export("worldSelectStars")
+	static IndexedSprite[] worldSelectStars;
+	@ObfuscatedName("as")
+	public byte field2379;
 
-   @ObfuscatedName("at")
-   @ObfuscatedSignature(
-      descriptor = "(Lik;Lik;I)I",
-      garbageValue = "-530792660"
-   )
-   int method4263(class213 var1, class213 var2) {
-      return var1.method4207() - var2.method4207();
-   }
+	class218(byte var3) {
+		this.field2379 = var3;
+	}
 
-   public boolean equals(Object var1) {
-      return super.equals(var1);
-   }
-
-   public int compare(Object var1, Object var2) {
-      return this.method4263((class213)var1, (class213)var2);
-   }
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "(I)I",
+		garbageValue = "1644350448"
+	)
+	@Export("rsOrdinal")
+	public int rsOrdinal() {
+		return this.field2379;
+	}
 }

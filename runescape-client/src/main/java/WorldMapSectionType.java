@@ -1,132 +1,199 @@
+import java.applet.Applet;
+import java.util.ArrayList;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("ka")
+@ObfuscatedName("ke")
 @Implements("WorldMapSectionType")
 public enum WorldMapSectionType implements MouseWheel {
-   @ObfuscatedName("at")
-   @ObfuscatedSignature(
-      descriptor = "Lka;"
-   )
-   @Export("WORLDMAPSECTIONTYPE0")
-   WORLDMAPSECTIONTYPE0(0, (byte)0),
-   @ObfuscatedName("an")
-   @ObfuscatedSignature(
-      descriptor = "Lka;"
-   )
-   @Export("WORLDMAPSECTIONTYPE1")
-   WORLDMAPSECTIONTYPE1(2, (byte)1),
-   @ObfuscatedName("av")
-   @ObfuscatedSignature(
-      descriptor = "Lka;"
-   )
-   @Export("WORLDMAPSECTIONTYPE2")
-   WORLDMAPSECTIONTYPE2(3, (byte)2),
-   @ObfuscatedName("as")
-   @ObfuscatedSignature(
-      descriptor = "Lka;"
-   )
-   @Export("WORLDMAPSECTIONTYPE3")
-   WORLDMAPSECTIONTYPE3(1, (byte)3);
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "Lke;"
+	)
+	@Export("WORLDMAPSECTIONTYPE0")
+	WORLDMAPSECTIONTYPE0(1, (byte)0),
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "Lke;"
+	)
+	@Export("WORLDMAPSECTIONTYPE1")
+	WORLDMAPSECTIONTYPE1(0, (byte)1),
+	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "Lke;"
+	)
+	@Export("WORLDMAPSECTIONTYPE2")
+	WORLDMAPSECTIONTYPE2(3, (byte)2),
+	@ObfuscatedName("am")
+	@ObfuscatedSignature(
+		descriptor = "Lke;"
+	)
+	@Export("WORLDMAPSECTIONTYPE3")
+	WORLDMAPSECTIONTYPE3(2, (byte)3);
 
-   @ObfuscatedName("be")
-   @ObfuscatedSignature(
-      descriptor = "Ltk;"
-   )
-   @Export("rasterProvider")
-   public static AbstractRasterProvider rasterProvider;
-   @ObfuscatedName("ax")
-   @ObfuscatedGetter(
-      intValue = -259244635
-   )
-   @Export("type")
-   final int type;
-   @ObfuscatedName("ap")
-   @Export("id")
-   final byte id;
+	@ObfuscatedName("ap")
+	@ObfuscatedSignature(
+		descriptor = "Lbx;"
+	)
+	@Export("soundSystem")
+	public static SoundSystem soundSystem;
+	@ObfuscatedName("ax")
+	public static short[][] field2980;
+	@ObfuscatedName("gf")
+	@ObfuscatedGetter(
+		intValue = -1406263901
+	)
+	static int field2979;
+	@ObfuscatedName("jx")
+	@ObfuscatedGetter(
+		intValue = 1155170751
+	)
+	static int field2978;
+	@ObfuscatedName("as")
+	@ObfuscatedGetter(
+		intValue = -1104376933
+	)
+	@Export("type")
+	final int type;
+	@ObfuscatedName("aj")
+	@Export("id")
+	final byte id;
 
-   WorldMapSectionType(int var3, byte var4) {
-      this.type = var3;
-      this.id = var4;
-   }
+	WorldMapSectionType(int var3, byte var4) {
+		this.type = var3;
+		this.id = var4;
+	}
 
-   @ObfuscatedName("at")
-   @ObfuscatedSignature(
-      descriptor = "(B)I",
-      garbageValue = "-14"
-   )
-   @Export("rsOrdinal")
-   public int rsOrdinal() {
-      return this.id;
-   }
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "(I)I",
+		garbageValue = "1644350448"
+	)
+	@Export("rsOrdinal")
+	public int rsOrdinal() {
+		return this.id;
+	}
 
-   @ObfuscatedName("ap")
-   @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "-38584803"
-   )
-   static void method5418() {
-      if (Client.Login_isUsernameRemembered && Login.Login_username != null && Login.Login_username.length() > 0) {
-         Login.currentLoginField = 1;
-      } else {
-         Login.currentLoginField = 0;
-      }
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/applet/Applet;Ljava/lang/String;I)V",
+		garbageValue = "1774560987"
+	)
+	public static void method5461(Applet var0, String var1) {
+		class31.field179 = var0;
+		if (var1 != null) {
+			class31.field176 = var1;
+		}
 
-   }
+	}
 
-   @ObfuscatedName("ay")
-   @ObfuscatedSignature(
-      descriptor = "(ILdd;ZI)I",
-      garbageValue = "-521699324"
-   )
-   static int method5425(int var0, Script var1, boolean var2) {
-      Widget var3 = FriendSystem.getWidget(Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]);
-      if (var0 == ScriptOpcodes.IF_GETTARGETMASK) {
-         Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = LoginScreenAnimation.Widget_unpackTargetMask(StudioGame.getWidgetFlags(var3));
-         return 1;
-      } else if (var0 != ScriptOpcodes.IF_GETOP) {
-         if (var0 == ScriptOpcodes.IF_GETOPBASE) {
-            if (var3.dataText == null) {
-               Interpreter.Interpreter_stringStack[++class149.Interpreter_stringStackSize - 1] = "";
-            } else {
-               Interpreter.Interpreter_stringStack[++class149.Interpreter_stringStackSize - 1] = var3.dataText;
-            }
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "(Lty;II)V",
+		garbageValue = "-1332701631"
+	)
+	public static void method5469(Buffer var0, int var1) {
+		if (JagexCache.JagexCache_randomDat != null) {
+			try {
+				JagexCache.JagexCache_randomDat.seek(0L);
+				JagexCache.JagexCache_randomDat.write(var0.array, var1, 24);
+			} catch (Exception var3) {
+			}
+		}
 
-            return 1;
-         } else {
-            return 2;
-         }
-      } else {
-         int var4 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-         --var4;
-         if (var3.actions != null && var4 < var3.actions.length && var3.actions[var4] != null) {
-            Interpreter.Interpreter_stringStack[++class149.Interpreter_stringStackSize - 1] = var3.actions[var4];
-         } else {
-            Interpreter.Interpreter_stringStack[++class149.Interpreter_stringStackSize - 1] = "";
-         }
+	}
 
-         return 1;
-      }
-   }
+	@ObfuscatedName("ap")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;I)V",
+		garbageValue = "-218910900"
+	)
+	static final void method5466(String var0) {
+		Tile.method4399(var0 + " is already on your friend list");
+	}
 
-   @ObfuscatedName("hv")
-   @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "-1889537936"
-   )
-   @Export("playPcmPlayers")
-   static final void playPcmPlayers() {
-      if (class290.pcmPlayer1 != null) {
-         class290.pcmPlayer1.run();
-      }
+	@ObfuscatedName("ig")
+	@ObfuscatedSignature(
+		descriptor = "(II)V",
+		garbageValue = "1940153519"
+	)
+	@Export("playSong")
+	static void playSong(int var0) {
+		if (var0 == -1 && !Client.playingJingle) {
+			RouteStrategy.method4227(0, 0);
+		} else if (var0 != -1) {
+			boolean var1;
+			if (class306.field3398.isEmpty()) {
+				var1 = false;
+			} else {
+				MusicSong var2 = (MusicSong)class306.field3398.get(0);
+				var1 = var2 != null && var0 == var2.musicTrackGroupId;
+			}
 
-      if (MouseRecorder.pcmPlayer0 != null) {
-         MouseRecorder.pcmPlayer0.run();
-      }
+			if (!var1 && class150.clientPreferences.method2478() != 0) {
+				ArrayList var3 = new ArrayList();
+				var3.add(new MusicSong(class13.archive6, var0, 0, class150.clientPreferences.method2478(), false));
+				if (Client.playingJingle) {
+					class306.field3398.clear();
+					class306.field3398.addAll(var3);
+					ArchiveLoader.method2259(0, 100, 100, 0);
+				} else {
+					UserComparator4.method2858(var3, 0, 100, 100, 0, false);
+				}
+			}
+		}
 
-   }
+	}
+
+	@ObfuscatedName("ic")
+	@ObfuscatedSignature(
+		descriptor = "(Ldf;IIB)V",
+		garbageValue = "108"
+	)
+	@Export("performPlayerAnimation")
+	static void performPlayerAnimation(Player var0, int var1, int var2) {
+		if (var0.sequence == var1 && var1 != -1) {
+			int var3 = class135.SequenceDefinition_get(var1).field2274;
+			if (var3 == 1) {
+				var0.sequenceFrame = 0;
+				var0.sequenceFrameCycle = 0;
+				var0.sequenceDelay = var2;
+				var0.field1199 = 0;
+			}
+
+			if (var3 == 2) {
+				var0.field1199 = 0;
+			}
+		} else if (var1 == -1 || var0.sequence == -1 || class135.SequenceDefinition_get(var1).field2258 >= class135.SequenceDefinition_get(var0.sequence).field2258) {
+			var0.sequence = var1;
+			var0.sequenceFrame = 0;
+			var0.sequenceFrameCycle = 0;
+			var0.sequenceDelay = var2;
+			var0.field1199 = 0;
+			var0.field1257 = var0.pathLength;
+		}
+
+	}
+
+	@ObfuscatedName("oc")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "94"
+	)
+	static void method5467() {
+		if (UserComparator7.field1455 != null) {
+			Client.field792 = Client.cycle;
+			UserComparator7.field1455.method6966();
+
+			for (int var0 = 0; var0 < Client.players.length; ++var0) {
+				if (Client.players[var0] != null) {
+					UserComparator7.field1455.method6965(AbstractArchive.baseX * 64 + (Client.players[var0].x >> 7), class148.baseY * 64 + (Client.players[var0].y >> 7));
+				}
+			}
+		}
+
+	}
 }
