@@ -1,275 +1,319 @@
+import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hg")
+@ObfuscatedName("ia")
 @Implements("FloorOverlayDefinition")
 public class FloorOverlayDefinition extends DualNode {
-   @ObfuscatedName("at")
-   @ObfuscatedSignature(
-      descriptor = "Lnq;"
-   )
-   @Export("FloorOverlayDefinition_archive")
-   public static AbstractArchive FloorOverlayDefinition_archive;
-   @ObfuscatedName("an")
-   @ObfuscatedSignature(
-      descriptor = "Llf;"
-   )
-   @Export("FloorOverlayDefinition_cached")
-   public static EvictingDualNodeHashTable FloorOverlayDefinition_cached = new EvictingDualNodeHashTable(64);
-   @ObfuscatedName("hr")
-   static int[] field2268;
-   @ObfuscatedName("uh")
-   @ObfuscatedSignature(
-      descriptor = "Lch;"
-   )
-   @Export("decimator")
-   static Decimator decimator;
-   @ObfuscatedName("av")
-   @ObfuscatedGetter(
-      intValue = 2120418151
-   )
-   @Export("primaryRgb")
-   public int primaryRgb = 0;
-   @ObfuscatedName("as")
-   @ObfuscatedGetter(
-      intValue = 91594995
-   )
-   @Export("texture")
-   public int texture = -1;
-   @ObfuscatedName("ax")
-   @Export("hideUnderlay")
-   public boolean hideUnderlay = true;
-   @ObfuscatedName("ap")
-   @ObfuscatedGetter(
-      intValue = -1909348793
-   )
-   @Export("secondaryRgb")
-   public int secondaryRgb = -1;
-   @ObfuscatedName("ab")
-   @ObfuscatedGetter(
-      intValue = -1169710103
-   )
-   @Export("hue")
-   public int hue;
-   @ObfuscatedName("ak")
-   @ObfuscatedGetter(
-      intValue = -914575673
-   )
-   @Export("saturation")
-   public int saturation;
-   @ObfuscatedName("ae")
-   @ObfuscatedGetter(
-      intValue = -1082285021
-   )
-   @Export("lightness")
-   public int lightness;
-   @ObfuscatedName("af")
-   @ObfuscatedGetter(
-      intValue = 358320181
-   )
-   @Export("secondaryHue")
-   public int secondaryHue;
-   @ObfuscatedName("ao")
-   @ObfuscatedGetter(
-      intValue = -855683399
-   )
-   @Export("secondarySaturation")
-   public int secondarySaturation;
-   @ObfuscatedName("aa")
-   @ObfuscatedGetter(
-      intValue = 1715930167
-   )
-   @Export("secondaryLightness")
-   public int secondaryLightness;
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "Lnd;"
+	)
+	@Export("FloorOverlayDefinition_archive")
+	public static AbstractArchive FloorOverlayDefinition_archive;
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "Lld;"
+	)
+	@Export("FloorOverlayDefinition_cached")
+	public static EvictingDualNodeHashTable FloorOverlayDefinition_cached;
+	@ObfuscatedName("ar")
+	@ObfuscatedGetter(
+		intValue = 993550227
+	)
+	@Export("primaryRgb")
+	public int primaryRgb;
+	@ObfuscatedName("am")
+	@ObfuscatedGetter(
+		intValue = -324845379
+	)
+	@Export("texture")
+	public int texture;
+	@ObfuscatedName("as")
+	@Export("hideUnderlay")
+	public boolean hideUnderlay;
+	@ObfuscatedName("aj")
+	@ObfuscatedGetter(
+		intValue = 489051865
+	)
+	@Export("secondaryRgb")
+	public int secondaryRgb;
+	@ObfuscatedName("ag")
+	@ObfuscatedGetter(
+		intValue = -702369401
+	)
+	@Export("hue")
+	public int hue;
+	@ObfuscatedName("az")
+	@ObfuscatedGetter(
+		intValue = 14125191
+	)
+	@Export("saturation")
+	public int saturation;
+	@ObfuscatedName("av")
+	@ObfuscatedGetter(
+		intValue = 85508161
+	)
+	@Export("lightness")
+	public int lightness;
+	@ObfuscatedName("ap")
+	@ObfuscatedGetter(
+		intValue = -717259657
+	)
+	@Export("secondaryHue")
+	public int secondaryHue;
+	@ObfuscatedName("aq")
+	@ObfuscatedGetter(
+		intValue = 1550018733
+	)
+	@Export("secondarySaturation")
+	public int secondarySaturation;
+	@ObfuscatedName("at")
+	@ObfuscatedGetter(
+		intValue = 9379429
+	)
+	@Export("secondaryLightness")
+	public int secondaryLightness;
 
-   @ObfuscatedName("an")
-   @ObfuscatedSignature(
-      descriptor = "(S)V",
-      garbageValue = "10897"
-   )
-   @Export("postDecode")
-   public void postDecode() {
-      if (this.secondaryRgb != -1) {
-         this.setHsl(this.secondaryRgb);
-         this.secondaryHue = this.hue;
-         this.secondarySaturation = this.saturation;
-         this.secondaryLightness = this.lightness;
-      }
+	static {
+		FloorOverlayDefinition_cached = new EvictingDualNodeHashTable(64);
+	}
 
-      this.setHsl(this.primaryRgb);
-   }
+	public FloorOverlayDefinition() {
+		this.primaryRgb = 0;
+		this.texture = -1;
+		this.hideUnderlay = true;
+		this.secondaryRgb = -1;
+	}
 
-   @ObfuscatedName("av")
-   @ObfuscatedSignature(
-      descriptor = "(Ltz;II)V",
-      garbageValue = "1351995456"
-   )
-   @Export("decode")
-   public void decode(Buffer var1, int var2) {
-      while(true) {
-         int var3 = var1.readUnsignedByte();
-         if (var3 == 0) {
-            return;
-         }
+	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "2116098894"
+	)
+	@Export("postDecode")
+	public void postDecode() {
+		if (this.secondaryRgb != -1) {
+			this.setHsl(this.secondaryRgb);
+			this.secondaryHue = this.hue;
+			this.secondarySaturation = this.saturation;
+			this.secondaryLightness = this.lightness;
+		}
 
-         this.decodeNext(var1, var3, var2);
-      }
-   }
+		this.setHsl(this.primaryRgb);
+	}
 
-   @ObfuscatedName("as")
-   @ObfuscatedSignature(
-      descriptor = "(Ltz;IIB)V",
-      garbageValue = "60"
-   )
-   @Export("decodeNext")
-   void decodeNext(Buffer var1, int var2, int var3) {
-      if (var2 == 1) {
-         this.primaryRgb = var1.readMedium();
-      } else if (var2 == 2) {
-         this.texture = var1.readUnsignedByte();
-      } else if (var2 == 5) {
-         this.hideUnderlay = false;
-      } else if (var2 == 7) {
-         this.secondaryRgb = var1.readMedium();
-      } else if (var2 == 8) {
-      }
+	@ObfuscatedName("am")
+	@ObfuscatedSignature(
+		descriptor = "(Lty;II)V",
+		garbageValue = "-120471705"
+	)
+	@Export("decode")
+	public void decode(Buffer var1, int var2) {
+		while (true) {
+			int var3 = var1.readUnsignedByte();
+			if (var3 == 0) {
+				return;
+			}
 
-   }
+			this.decodeNext(var1, var3, var2);
+		}
+	}
 
-   @ObfuscatedName("ax")
-   @ObfuscatedSignature(
-      descriptor = "(II)V",
-      garbageValue = "2003241893"
-   )
-   @Export("setHsl")
-   void setHsl(int var1) {
-      double var2 = (double)(var1 >> 16 & 255) / 256.0;
-      double var4 = (double)(var1 >> 8 & 255) / 256.0;
-      double var6 = (double)(var1 & 255) / 256.0;
-      double var8 = var2;
-      if (var4 < var2) {
-         var8 = var4;
-      }
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "(Lty;IIB)V",
+		garbageValue = "25"
+	)
+	@Export("decodeNext")
+	void decodeNext(Buffer var1, int var2, int var3) {
+		if (var2 == 1) {
+			this.primaryRgb = var1.readMedium();
+		} else if (var2 == 2) {
+			this.texture = var1.readUnsignedByte();
+		} else if (var2 == 5) {
+			this.hideUnderlay = false;
+		} else if (var2 == 7) {
+			this.secondaryRgb = var1.readMedium();
+		} else if (var2 == 8) {
+		}
 
-      if (var6 < var8) {
-         var8 = var6;
-      }
+	}
 
-      double var10 = var2;
-      if (var4 > var2) {
-         var10 = var4;
-      }
+	@ObfuscatedName("aj")
+	@ObfuscatedSignature(
+		descriptor = "(II)V",
+		garbageValue = "-1964246469"
+	)
+	@Export("setHsl")
+	void setHsl(int var1) {
+		double var2 = (double)(var1 >> 16 & 255) / 256.0D;
+		double var4 = (double)(var1 >> 8 & 255) / 256.0D;
+		double var6 = (double)(var1 & 255) / 256.0D;
+		double var8 = var2;
+		if (var4 < var2) {
+			var8 = var4;
+		}
 
-      if (var6 > var10) {
-         var10 = var6;
-      }
+		if (var6 < var8) {
+			var8 = var6;
+		}
 
-      double var12 = 0.0;
-      double var14 = 0.0;
-      double var16 = (var10 + var8) / 2.0;
-      if (var10 != var8) {
-         if (var16 < 0.5) {
-            var14 = (var10 - var8) / (var10 + var8);
-         }
+		double var10 = var2;
+		if (var4 > var2) {
+			var10 = var4;
+		}
 
-         if (var16 >= 0.5) {
-            var14 = (var10 - var8) / (2.0 - var10 - var8);
-         }
+		if (var6 > var10) {
+			var10 = var6;
+		}
 
-         if (var10 == var2) {
-            var12 = (var4 - var6) / (var10 - var8);
-         } else if (var10 == var4) {
-            var12 = 2.0 + (var6 - var2) / (var10 - var8);
-         } else if (var10 == var6) {
-            var12 = (var2 - var4) / (var10 - var8) + 4.0;
-         }
-      }
+		double var12 = 0.0D;
+		double var14 = 0.0D;
+		double var16 = (var10 + var8) / 2.0D;
+		if (var10 != var8) {
+			if (var16 < 0.5D) {
+				var14 = (var10 - var8) / (var8 + var10);
+			}
 
-      var12 /= 6.0;
-      this.hue = (int)(256.0 * var12);
-      this.saturation = (int)(var14 * 256.0);
-      this.lightness = (int)(var16 * 256.0);
-      if (this.saturation < 0) {
-         this.saturation = 0;
-      } else if (this.saturation > 255) {
-         this.saturation = 255;
-      }
+			if (var16 >= 0.5D) {
+				var14 = (var10 - var8) / (2.0D - var10 - var8);
+			}
 
-      if (this.lightness < 0) {
-         this.lightness = 0;
-      } else if (this.lightness > 255) {
-         this.lightness = 255;
-      }
+			if (var2 == var10) {
+				var12 = (var4 - var6) / (var10 - var8);
+			} else if (var4 == var10) {
+				var12 = 2.0D + (var6 - var2) / (var10 - var8);
+			} else if (var6 == var10) {
+				var12 = 4.0D + (var2 - var4) / (var10 - var8);
+			}
+		}
 
-   }
+		var12 /= 6.0D;
+		this.hue = (int)(256.0D * var12);
+		this.saturation = (int)(var14 * 256.0D);
+		this.lightness = (int)(var16 * 256.0D);
+		if (this.saturation < 0) {
+			this.saturation = 0;
+		} else if (this.saturation > 255) {
+			this.saturation = 255;
+		}
 
-   @ObfuscatedName("an")
-   @ObfuscatedSignature(
-      descriptor = "(IS)I",
-      garbageValue = "23674"
-   )
-   public static int method4023(int var0) {
-      var0 = (var0 & 1431655765) + (var0 >>> 1 & 1431655765);
-      var0 = (var0 >>> 2 & 858993459) + (var0 & 858993459);
-      var0 = var0 + (var0 >>> 4) & 252645135;
-      var0 += var0 >>> 8;
-      var0 += var0 >>> 16;
-      return var0 & 255;
-   }
+		if (this.lightness < 0) {
+			this.lightness = 0;
+		} else if (this.lightness > 255) {
+			this.lightness = 255;
+		}
 
-   @ObfuscatedName("ae")
-   @ObfuscatedSignature(
-      descriptor = "(II)Z",
-      garbageValue = "339603144"
-   )
-   public static boolean method4035(int var0) {
-      return var0 == WorldMapDecorationType.field3804.id;
-   }
+	}
 
-   @ObfuscatedName("mm")
-   @ObfuscatedSignature(
-      descriptor = "(Lmb;I)Z",
-      garbageValue = "1654223314"
-   )
-   static final boolean method4043(Widget var0) {
-      int var1 = var0.contentType;
-      if (var1 == 205) {
-         Client.logoutTimer = 250;
-         return true;
-      } else {
-         int var2;
-         int var3;
-         if (var1 >= 300 && var1 <= 313) {
-            var2 = (var1 - 300) / 2;
-            var3 = var1 & 1;
-            Client.playerAppearance.changeAppearance(var2, var3 == 1);
-         }
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/CharSequence;Ljava/lang/CharSequence;Lot;I)I",
+		garbageValue = "-452810030"
+	)
+	@Export("compareStrings")
+	public static int compareStrings(CharSequence var0, CharSequence var1, Language var2) {
+		int var3 = var0.length();
+		int var4 = var1.length();
+		int var5 = 0;
+		int var6 = 0;
+		char var7 = 0;
+		char var8 = 0;
 
-         if (var1 >= 314 && var1 <= 323) {
-            var2 = (var1 - 314) / 2;
-            var3 = var1 & 1;
-            Client.playerAppearance.method6014(var2, var3 == 1);
-         }
+		while (var5 - var7 < var3 || var6 - var8 < var4) {
+			if (var5 - var7 >= var3) {
+				return -1;
+			}
 
-         if (var1 == 324) {
-            Client.playerAppearance.method6015(0);
-         }
+			if (var6 - var8 >= var4) {
+				return 1;
+			}
 
-         if (var1 == 325) {
-            Client.playerAppearance.method6015(1);
-         }
+			char var9;
+			if (var7 != 0) {
+				var9 = var7;
+				boolean var14 = false;
+			} else {
+				var9 = var0.charAt(var5++);
+			}
 
-         if (var1 == 326) {
-            PacketBufferNode var4 = ObjectComposition.getPacketBufferNode(ClientPacket.field3113, Client.packetWriter.isaacCipher);
-            Client.playerAppearance.write(var4.packetBuffer);
-            Client.packetWriter.addNode(var4);
-            return true;
-         } else {
-            return false;
-         }
-      }
-   }
+			char var10;
+			if (var8 != 0) {
+				var10 = var8;
+				boolean var15 = false;
+			} else {
+				var10 = var1.charAt(var6++);
+			}
+
+			var7 = ClanSettings.method3292(var9);
+			var8 = ClanSettings.method3292(var10);
+			var9 = class102.standardizeChar(var9, var2);
+			var10 = class102.standardizeChar(var10, var2);
+			if (var9 != var10 && Character.toUpperCase(var9) != Character.toUpperCase(var10)) {
+				var9 = Character.toLowerCase(var9);
+				var10 = Character.toLowerCase(var10);
+				if (var9 != var10) {
+					return Decimator.lowercaseChar(var9, var2) - Decimator.lowercaseChar(var10, var2);
+				}
+			}
+		}
+
+		int var16 = Math.min(var3, var4);
+
+		char var12;
+		int var17;
+		for (var17 = 0; var17 < var16; ++var17) {
+			if (var2 == Language.Language_FR) {
+				var5 = var3 - 1 - var17;
+				var6 = var4 - 1 - var17;
+			} else {
+				var6 = var17;
+				var5 = var17;
+			}
+
+			char var11 = var0.charAt(var5);
+			var12 = var1.charAt(var6);
+			if (var12 != var11 && Character.toUpperCase(var11) != Character.toUpperCase(var12)) {
+				var11 = Character.toLowerCase(var11);
+				var12 = Character.toLowerCase(var12);
+				if (var12 != var11) {
+					return Decimator.lowercaseChar(var11, var2) - Decimator.lowercaseChar(var12, var2);
+				}
+			}
+		}
+
+		var17 = var3 - var4;
+		if (var17 != 0) {
+			return var17;
+		} else {
+			for (int var18 = 0; var18 < var16; ++var18) {
+				var12 = var0.charAt(var18);
+				char var13 = var1.charAt(var18);
+				if (var12 != var13) {
+					return Decimator.lowercaseChar(var12, var2) - Decimator.lowercaseChar(var13, var2);
+				}
+			}
+
+			return 0;
+		}
+	}
+
+	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "(III)V",
+		garbageValue = "464683458"
+	)
+	public static void method4061(int var0, int var1) {
+		Iterator var2 = class306.field3400.iterator();
+
+		while (var2.hasNext()) {
+			class312 var3 = (class312)var2.next();
+			var3.vmethod6017(var0, var1);
+		}
+
+	}
 }

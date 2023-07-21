@@ -1,90 +1,95 @@
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gh")
-public class class159 {
-   @ObfuscatedName("at")
-   @ObfuscatedGetter(
-      longValue = 4655426251579530699L
-   )
-   long field1743;
-   @ObfuscatedName("an")
-   @ObfuscatedGetter(
-      longValue = -6751957355302241451L
-   )
-   long field1746 = -1L;
-   @ObfuscatedName("av")
-   @ObfuscatedSignature(
-      descriptor = "Lom;"
-   )
-   IterableNodeDeque field1744 = new IterableNodeDeque();
+@ObfuscatedName("gg")
+public abstract class class159 extends Node {
+	@ObfuscatedName("ax")
+	static int[] field1755;
 
-   @ObfuscatedSignature(
-      descriptor = "(Ltz;)V"
-   )
-   public class159(Buffer var1) {
-      this.method3312(var1);
-   }
+	class159() {
+	}
 
-   @ObfuscatedName("at")
-   @ObfuscatedSignature(
-      descriptor = "(Ltz;I)V",
-      garbageValue = "-1044770346"
-   )
-   void method3312(Buffer var1) {
-      this.field1743 = var1.readLong();
-      this.field1746 = var1.readLong();
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "(Lty;B)V",
+		garbageValue = "-43"
+	)
+	abstract void vmethod3411(Buffer var1);
 
-      for(int var2 = var1.readUnsignedByte(); var2 != 0; var2 = var1.readUnsignedByte()) {
-         Object var3;
-         if (var2 == 1) {
-            var3 = new class154(this);
-         } else if (var2 == 4) {
-            var3 = new class165(this);
-         } else if (var2 == 3) {
-            var3 = new class150(this);
-         } else if (var2 == 2) {
-            var3 = new class148(this);
-         } else {
-            if (var2 != 5) {
-               throw new RuntimeException("");
-            }
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "(Lgh;I)V",
+		garbageValue = "-2132107044"
+	)
+	abstract void vmethod3404(ClanChannel var1);
 
-            var3 = new class155(this);
-         }
+	@ObfuscatedName("bu")
+	@ObfuscatedSignature(
+		descriptor = "(II)I",
+		garbageValue = "1889169776"
+	)
+	static int method3337(int var0) {
+		return (int)((Math.log((double)var0) / Interpreter.field882 - 7.0D) * 256.0D);
+	}
 
-         ((class158)var3).vmethod3370(var1);
-         this.field1744.addFirst((Node)var3);
-      }
+	@ObfuscatedName("bt")
+	@ObfuscatedSignature(
+		descriptor = "(ILdc;ZB)I",
+		garbageValue = "43"
+	)
+	static int method3327(int var0, Script var1, boolean var2) {
+		return 2;
+	}
 
-   }
-
-   @ObfuscatedName("an")
-   @ObfuscatedSignature(
-      descriptor = "(Lgv;I)V",
-      garbageValue = "-1146523830"
-   )
-   public void method3313(ClanChannel var1) {
-      if (var1.key == this.field1743 && var1.field1764 == this.field1746) {
-         for(class158 var2 = (class158)this.field1744.last(); var2 != null; var2 = (class158)this.field1744.previous()) {
-            var2.vmethod3371(var1);
-         }
-
-         ++var1.field1764;
-      } else {
-         throw new RuntimeException("");
-      }
-   }
-
-   @ObfuscatedName("ao")
-   @ObfuscatedSignature(
-      descriptor = "(CS)Z",
-      garbageValue = "-14817"
-   )
-   @Export("isDigit")
-   public static boolean isDigit(char var0) {
-      return var0 >= '0' && var0 <= '9';
-   }
+	@ObfuscatedName("hy")
+	@ObfuscatedSignature(
+		descriptor = "(S)V",
+		garbageValue = "-22255"
+	)
+	static final void method3336() {
+		FadeOutTask.method7642();
+		ArchiveDiskActionHandler.method6684();
+		KitDefinition.KitDefinition_cached.clear();
+		ObjectComposition.ObjectDefinition_cached.clear();
+		ObjectComposition.ObjectDefinition_cachedModelData.clear();
+		ObjectComposition.ObjectDefinition_cachedEntities.clear();
+		ObjectComposition.ObjectDefinition_cachedModels.clear();
+		UserComparator3.method2887();
+		GrandExchangeOfferOwnWorldComparator.method1251();
+		class467.method8434();
+		InvDefinition.method3592();
+		VarbitComposition.VarbitDefinition_cached.clear();
+		VarpDefinition.VarpDefinition_cached.clear();
+		class293.HitSplatDefinition_cachedSprites.method8883();
+		class344.HitSplatDefinition_cached.method8883();
+		HitSplatDefinition.HitSplatDefinition_cached.clear();
+		HitSplatDefinition.field2112.clear();
+		HitSplatDefinition.HitSplatDefinition_cachedFonts.clear();
+		class503.method8952();
+		class134.method3048();
+		ParamComposition.ParamDefinition_cached.clear();
+		WorldMapElement.WorldMapElement_cachedSprites.clear();
+		Message.method1213();
+		DbRowType.DBRowType_cache.clear();
+		Client.DBTableIndex_cache.clear();
+		Client.DBTableMasterIndex_cache.clear();
+		PlayerComposition.PlayerAppearance_cachedModels.clear();
+		class59.method1181();
+		((TextureProvider)Rasterizer3D.clips.Rasterizer3D_textureLoader).clear();
+		Script.Script_cached.clear();
+		Client.archive5.method7849();
+		class151.field1694.clearFiles();
+		TileItem.archive7.clearFiles();
+		class253.archive4.clearFiles();
+		class149.field1676.clearFiles();
+		Canvas.archive9.clearFiles();
+		class13.archive6.clearFiles();
+		class7.archive11.clearFiles();
+		class386.archive8.clearFiles();
+		class148.field1670.clearFiles();
+		class131.archive10.clearFiles();
+		GrandExchangeOfferOwnWorldComparator.field511.clearFiles();
+		class126.archive12.clearFiles();
+		class176.field1852.clearFiles();
+	}
 }

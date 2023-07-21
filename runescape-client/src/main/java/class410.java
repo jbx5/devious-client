@@ -1,47 +1,71 @@
-import java.util.Comparator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("pi")
-class class410 implements Comparator {
-   @ObfuscatedName("at")
-   @ObfuscatedSignature(
-      descriptor = "Lnq;"
-   )
-   @Export("WorldMapElement_archive")
-   static AbstractArchive WorldMapElement_archive;
-   // $FF: synthetic field
-   @ObfuscatedSignature(
-      descriptor = "Lpa;"
-   )
-   final class411 this$0;
+@ObfuscatedName("py")
+public class class410 {
+	@ObfuscatedName("aw")
+	@Export("writeRandomDat")
+	public static void writeRandomDat(byte[] var0, int var1, byte[] var2, int var3, int var4) {
+		if (var2 == var0) {
+			if (var3 == var1) {
+				return;
+			}
 
-   @ObfuscatedSignature(
-      descriptor = "(Lpa;)V"
-   )
-   class410(class411 var1) {
-      this.this$0 = var1;
-   }
+			if (var3 > var1 && var3 < var4 + var1) {
+				--var4;
+				var1 += var4;
+				var3 += var4;
+				var4 = var1 - var4;
 
-   @ObfuscatedName("at")
-   @ObfuscatedSignature(
-      descriptor = "(Lpl;Lpl;I)I",
-      garbageValue = "-1198540003"
-   )
-   int method7688(class412 var1, class412 var2) {
-      if (var1.field4566 > var2.field4566) {
-         return 1;
-      } else {
-         return var1.field4566 < var2.field4566 ? -1 : 0;
-      }
-   }
+				for (var4 += 7; var1 >= var4; var2[var3--] = var0[var1--]) {
+					var2[var3--] = var0[var1--];
+					var2[var3--] = var0[var1--];
+					var2[var3--] = var0[var1--];
+					var2[var3--] = var0[var1--];
+					var2[var3--] = var0[var1--];
+					var2[var3--] = var0[var1--];
+					var2[var3--] = var0[var1--];
+				}
 
-   public int compare(Object var1, Object var2) {
-      return this.method7688((class412)var1, (class412)var2);
-   }
+				for (var4 -= 7; var1 >= var4; var2[var3--] = var0[var1--]) {
+				}
 
-   public boolean equals(Object var1) {
-      return super.equals(var1);
-   }
+				return;
+			}
+		}
+
+		var4 += var1;
+
+		for (var4 -= 7; var1 < var4; var2[var3++] = var0[var1++]) {
+			var2[var3++] = var0[var1++];
+			var2[var3++] = var0[var1++];
+			var2[var3++] = var0[var1++];
+			var2[var3++] = var0[var1++];
+			var2[var3++] = var0[var1++];
+			var2[var3++] = var0[var1++];
+			var2[var3++] = var0[var1++];
+		}
+
+		for (var4 += 7; var1 < var4; var2[var3++] = var0[var1++]) {
+		}
+
+	}
+
+	@ObfuscatedName("ap")
+	@Export("clearIntArray")
+	public static void clearIntArray(int[] var0, int var1, int var2) {
+		for (var2 = var2 + var1 - 7; var1 < var2; var0[var1++] = 0) {
+			var0[var1++] = 0;
+			var0[var1++] = 0;
+			var0[var1++] = 0;
+			var0[var1++] = 0;
+			var0[var1++] = 0;
+			var0[var1++] = 0;
+			var0[var1++] = 0;
+		}
+
+		for (var2 += 7; var1 < var2; var0[var1++] = 0) {
+		}
+
+	}
 }

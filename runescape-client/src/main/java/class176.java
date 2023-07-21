@@ -1,42 +1,31 @@
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gx")
+@ObfuscatedName("gz")
 public class class176 {
-   @ObfuscatedName("as")
-   public String field1848;
-   @ObfuscatedName("ax")
-   public float[] field1849;
-   @ObfuscatedName("ap")
-   @ObfuscatedGetter(
-      intValue = 1207998283
-   )
-   public int field1850;
-   @ObfuscatedName("ab")
-   @ObfuscatedGetter(
-      intValue = -1762383305
-   )
-   public int field1845;
-   @ObfuscatedName("ak")
-   @ObfuscatedGetter(
-      intValue = -470636499
-   )
-   public int field1852;
-   // $FF: synthetic field
-   @ObfuscatedSignature(
-      descriptor = "Lgi;"
-   )
-   final class169 this$0;
+	@ObfuscatedName("gg")
+	@ObfuscatedSignature(
+		descriptor = "Lny;"
+	)
+	static Archive field1852;
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "Lei;"
+	)
+	public UrlRequest field1853;
+	@ObfuscatedName("ay")
+	public float[] field1849;
+	// $FF: synthetic field
+	@ObfuscatedSignature(
+		descriptor = "Lgq;"
+	)
+	final class170 this$0;
 
-   @ObfuscatedSignature(
-      descriptor = "(Lgi;)V"
-   )
-   class176(class169 var1) {
-      this.this$0 = var1;
-      this.field1849 = new float[4];
-      this.field1850 = 1;
-      this.field1845 = 1;
-      this.field1852 = 0;
-   }
+	@ObfuscatedSignature(
+		descriptor = "(Lgq;)V"
+	)
+	class176(class170 var1) {
+		this.this$0 = var1;
+		this.field1849 = new float[4];
+	}
 }

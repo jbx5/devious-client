@@ -495,17 +495,9 @@ public class RuneLite
 			applet.setSize(Constants.GAME_FIXED_SIZE);
 
 			System.setProperty("jagex.disableBouncyCastle", "true");
-			// Change user.home so the client places jagexcache in the .runelite directory
-			String oldHome = System.setProperty("user.home", Unethicalite.getCacheDirectory().getAbsolutePath());
-			try
-			{
-				applet.init();
-			}
-			finally
-			{
-				System.setProperty("user.home", oldHome);
-			}
+			System.setProperty("jagex.userhome", RUNELITE_DIR.getAbsolutePath());
 
+			applet.init();
 			applet.start();
 		}
 
@@ -584,7 +576,9 @@ public class RuneLite
 
 		if (options.has("enable-telemetry"))
 		{
-			injector.getInstance(TelemetryClient.class).submitTelemetry();
+			TelemetryClient telemetryClient = injector.getInstance(TelemetryClient.class);
+			telemetryClient.submitTelemetry();
+			telemetryClient.submitVmErrors(LOGS_DIR);
 		}
 
 		ReflectUtil.queueInjectorAnnotationCacheInvalidation(injector);

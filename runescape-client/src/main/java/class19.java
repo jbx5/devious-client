@@ -5,179 +5,118 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("au")
+@ObfuscatedName("ao")
 public class class19 implements Callable {
-   @ObfuscatedName("av")
-   @ObfuscatedGetter(
-      longValue = -2034572934949977087L
-   )
-   public static long field100;
-   @ObfuscatedName("dz")
-   @ObfuscatedSignature(
-      descriptor = "Ltj;"
-   )
-   static IndexedSprite field97;
-   @ObfuscatedName("fc")
-   @ObfuscatedSignature(
-      descriptor = "Lgu;"
-   )
-   @Export("js5SocketTask")
-   static Task js5SocketTask;
-   @ObfuscatedName("kc")
-   @ObfuscatedSignature(
-      descriptor = "[Ltm;"
-   )
-   @Export("mapDotSprites")
-   static SpritePixels[] mapDotSprites;
-   @ObfuscatedName("om")
-   @ObfuscatedSignature(
-      descriptor = "Lmb;"
-   )
-   static Widget field99;
-   @ObfuscatedName("at")
-   @ObfuscatedSignature(
-      descriptor = "Lao;"
-   )
-   final class10 field96;
-   // $FF: synthetic field
-   @ObfuscatedSignature(
-      descriptor = "Lac;"
-   )
-   final class14 this$0;
+	@ObfuscatedName("aj")
+	@Export("Tiles_shapes")
+	static byte[][][] Tiles_shapes;
+	@ObfuscatedName("ks")
+	@ObfuscatedGetter(
+		intValue = 2049941555
+	)
+	@Export("cameraPitch")
+	static int cameraPitch;
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "Laq;"
+	)
+	final class10 field100;
+	// $FF: synthetic field
+	@ObfuscatedSignature(
+		descriptor = "Laa;"
+	)
+	final class14 this$0;
 
-   @ObfuscatedSignature(
-      descriptor = "(Lac;Lao;)V"
-   )
-   class19(class14 var1, class10 var2) {
-      this.this$0 = var1;
-      this.field96 = var2;
-   }
+	@ObfuscatedSignature(
+		descriptor = "(Laa;Laq;)V"
+	)
+	class19(class14 var1, class10 var2) {
+		this.this$0 = var1;
+		this.field100 = var2;
+	}
 
-   public Object call() throws Exception {
-      try {
-         while(this.field96.method101()) {
-            FloorDecoration.method4357(10L);
-         }
-      } catch (IOException var2) {
-         return new class20("Error servicing REST query: " + var2.getMessage());
-      }
+	public Object call() throws Exception {
+		try {
+			while (this.field100.method88()) {
+				class13.method180(10L);
+			}
+		} catch (IOException var2) {
+			return new class20("Error servicing REST query: " + var2.getMessage());
+		}
 
-      return this.field96.method95();
-   }
+		return this.field100.method89();
+	}
 
-   @ObfuscatedName("jp")
-   @ObfuscatedSignature(
-      descriptor = "(ZLtl;I)V",
-      garbageValue = "-1158341435"
-   )
-   @Export("loadRegions")
-   static final void loadRegions(boolean var0, PacketBuffer var1) {
-      Client.isInInstance = var0;
-      int var3;
-      int var4;
-      int var5;
-      int var6;
-      int var7;
-      if (!Client.isInInstance) {
-         int var2 = var1.readUnsignedShortAdd();
-         var3 = var1.readUnsignedShortAddLE();
-         var4 = var1.readUnsignedShort();
-         SpotAnimationDefinition.xteaKeys = new int[var4][4];
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "-50"
+	)
+	public static void method280() {
+		class36.reflectionChecks = new IterableNodeDeque();
+	}
 
-         for(var5 = 0; var5 < var4; ++var5) {
-            for(var6 = 0; var6 < 4; ++var6) {
-               SpotAnimationDefinition.xteaKeys[var5][var6] = var1.readInt();
-            }
-         }
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-525719060"
+	)
+	static void method277() {
+		for (ObjectSound var0 = (ObjectSound)ObjectSound.objectSounds.last(); var0 != null; var0 = (ObjectSound)ObjectSound.objectSounds.previous()) {
+			if (var0.obj != null) {
+				var0.set();
+			}
+		}
 
-         SceneTilePaint.regions = new int[var4];
-         WorldMapCacheName.regionMapArchiveIds = new int[var4];
-         class130.regionLandArchiveIds = new int[var4];
-         WorldMapLabelSize.regionLandArchives = new byte[var4][];
-         class74.regionMapArchives = new byte[var4][];
-         var4 = 0;
+	}
 
-         for(var5 = (var3 - 6) / 8; var5 <= (var3 + 6) / 8; ++var5) {
-            for(var6 = (var2 - 6) / 8; var6 <= (var2 + 6) / 8; ++var6) {
-               var7 = var6 + (var5 << 8);
-               SceneTilePaint.regions[var4] = var7;
-               WorldMapCacheName.regionMapArchiveIds[var4] = class305.archive9.getGroupId("m" + var5 + "_" + var6);
-               class130.regionLandArchiveIds[var4] = class305.archive9.getGroupId("l" + var5 + "_" + var6);
-               ++var4;
-            }
-         }
+	@ObfuscatedName("av")
+	@ObfuscatedSignature(
+		descriptor = "([BIILiz;[Lij;I)V",
+		garbageValue = "-999166250"
+	)
+	static final void method282(byte[] var0, int var1, int var2, Scene var3, CollisionMap[] var4) {
+		Buffer var5 = new Buffer(var0);
+		int var6 = -1;
 
-         ReflectionCheck.method670(var3, var2, true);
-      } else {
-         boolean var15 = var1.readUnsignedByte() == 1;
-         var3 = var1.readUnsignedShortAddLE();
-         var4 = var1.readUnsignedShortAdd();
-         var5 = var1.readUnsignedShort();
-         var1.importIndex();
+		while (true) {
+			int var7 = var5.readIncrSmallSmart();
+			if (var7 == 0) {
+				return;
+			}
 
-         int var8;
-         int var9;
-         for(var6 = 0; var6 < 4; ++var6) {
-            for(var7 = 0; var7 < 13; ++var7) {
-               for(var8 = 0; var8 < 13; ++var8) {
-                  var9 = var1.readBits(1);
-                  if (var9 == 1) {
-                     Client.instanceChunkTemplates[var6][var7][var8] = var1.readBits(26);
-                  } else {
-                     Client.instanceChunkTemplates[var6][var7][var8] = -1;
-                  }
-               }
-            }
-         }
+			var6 += var7;
+			int var8 = 0;
 
-         var1.exportIndex();
-         SpotAnimationDefinition.xteaKeys = new int[var5][4];
+			while (true) {
+				int var9 = var5.readUShortSmart();
+				if (var9 == 0) {
+					break;
+				}
 
-         for(var6 = 0; var6 < var5; ++var6) {
-            for(var7 = 0; var7 < 4; ++var7) {
-               SpotAnimationDefinition.xteaKeys[var6][var7] = var1.readInt();
-            }
-         }
+				var8 += var9 - 1;
+				int var10 = var8 & 63;
+				int var11 = var8 >> 6 & 63;
+				int var12 = var8 >> 12;
+				int var13 = var5.readUnsignedByte();
+				int var14 = var13 >> 2;
+				int var15 = var13 & 3;
+				int var16 = var11 + var1;
+				int var17 = var10 + var2;
+				if (var16 > 0 && var17 > 0 && var16 < 103 && var17 < 103) {
+					int var18 = var12;
+					if ((Tiles.Tiles_renderFlags[1][var16][var17] & 2) == 2) {
+						var18 = var12 - 1;
+					}
 
-         SceneTilePaint.regions = new int[var5];
-         WorldMapCacheName.regionMapArchiveIds = new int[var5];
-         class130.regionLandArchiveIds = new int[var5];
-         WorldMapLabelSize.regionLandArchives = new byte[var5][];
-         class74.regionMapArchives = new byte[var5][];
-         var5 = 0;
+					CollisionMap var19 = null;
+					if (var18 >= 0) {
+						var19 = var4[var18];
+					}
 
-         for(var6 = 0; var6 < 4; ++var6) {
-            for(var7 = 0; var7 < 13; ++var7) {
-               for(var8 = 0; var8 < 13; ++var8) {
-                  var9 = Client.instanceChunkTemplates[var6][var7][var8];
-                  if (var9 != -1) {
-                     int var10 = var9 >> 14 & 1023;
-                     int var11 = var9 >> 3 & 2047;
-                     int var12 = (var10 / 8 << 8) + var11 / 8;
-
-                     int var13;
-                     for(var13 = 0; var13 < var5; ++var13) {
-                        if (SceneTilePaint.regions[var13] == var12) {
-                           var12 = -1;
-                           break;
-                        }
-                     }
-
-                     if (var12 != -1) {
-                        SceneTilePaint.regions[var5] = var12;
-                        var13 = var12 >> 8 & 255;
-                        int var14 = var12 & 255;
-                        WorldMapCacheName.regionMapArchiveIds[var5] = class305.archive9.getGroupId("m" + var13 + "_" + var14);
-                        class130.regionLandArchiveIds[var5] = class305.archive9.getGroupId("l" + var13 + "_" + var14);
-                        ++var5;
-                     }
-                  }
-               }
-            }
-         }
-
-         ReflectionCheck.method670(var4, var3, !var15);
-      }
-
-   }
+					PendingSpawn.addObjects(var12, var16, var17, var6, var15, var14, var3, var19);
+				}
+			}
+		}
+	}
 }
