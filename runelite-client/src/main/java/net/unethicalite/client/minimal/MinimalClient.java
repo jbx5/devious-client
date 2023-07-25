@@ -399,17 +399,10 @@ public class MinimalClient
 			// Client size must be set prior to init
 			applet.setSize(Constants.GAME_FIXED_SIZE);
 
-			// Change user.home so the client places jagexcache in the .runelite directory
-			String oldHome = System.setProperty("user.home", Unethicalite.getCacheDirectory().getAbsolutePath());
-			try
-			{
-				applet.init();
-			}
-			finally
-			{
-				System.setProperty("user.home", oldHome);
-			}
+			System.setProperty("jagex.disableBouncyCastle", "true");
+			System.setProperty("jagex.userhome", Unethicalite.getCacheDirectory().getAbsolutePath());
 
+			applet.init();
 			applet.start();
 		}
 
