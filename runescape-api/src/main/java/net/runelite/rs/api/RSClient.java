@@ -29,6 +29,7 @@ import net.runelite.api.Client;
 import net.runelite.api.Deque;
 import net.runelite.api.ModelData;
 import net.runelite.api.SpritePixels;
+import net.runelite.api.WidgetNode;
 import net.runelite.api.World;
 import net.runelite.api.clan.ClanRank;
 import net.runelite.api.clan.ClanSettings;
@@ -514,6 +515,10 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("archive12")
 	@Override
 	RSArchive getIndexScripts();
+
+	@Import("closeInterface")
+	@Override
+	void closeInterface(WidgetNode interfaceNode, boolean unload);
 
 	@Import("widgetFlags")
 	@Override
@@ -1355,8 +1360,7 @@ public interface RSClient extends RSGameEngine, Client
 	ArrayList<RSMusicSong> getMusicSongs();
 
 	@Import("setMusicVolume")
-	@Override
-	void setMusicVolume(int var0);
+	void setRSMusicVolume(int var0);
 
 	@Import("musicPlayerStatus")
 	void setMusicPlayerStatus(int var0);
