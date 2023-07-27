@@ -496,7 +496,7 @@ public abstract class RSTileMixin implements RSTile
 		}
 
 		List<TileItem> result = new ArrayList<TileItem>();
-		Node node = layer.getBottom();
+		Node node = layer.getTop();
 		while (node instanceof RSTileItem)
 		{
 			RSTileItem item = (RSTileItem) node;

@@ -37,9 +37,9 @@ public abstract class RSItemLayerMixin implements RSItemLayer
 
 	@Inject
 	@Override
-	public Model getModelBottom()
+	public Model getModelTop()
 	{
-		Renderable renderable = getBottom();
+		Renderable renderable = getTop();
 		if (renderable == null)
 		{
 			return null;
@@ -77,9 +77,9 @@ public abstract class RSItemLayerMixin implements RSItemLayer
 
 	@Inject
 	@Override
-	public Model getModelTop()
+	public Model getModelBottom()
 	{
-		Renderable renderable = getTop();
+		Renderable renderable = getBottom();
 		if (renderable == null)
 		{
 			return null;
