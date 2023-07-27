@@ -495,7 +495,7 @@ public class RuneLite
 			applet.setSize(Constants.GAME_FIXED_SIZE);
 
 			System.setProperty("jagex.disableBouncyCastle", "true");
-			System.setProperty("jagex.userhome", RUNELITE_DIR.getAbsolutePath());
+			System.setProperty("jagex.userhome", Unethicalite.getCacheDirectory().getAbsolutePath());
 
 			applet.init();
 			applet.start();
