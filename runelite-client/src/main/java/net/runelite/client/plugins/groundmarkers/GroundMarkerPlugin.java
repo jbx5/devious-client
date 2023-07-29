@@ -283,7 +283,7 @@ public class GroundMarkerPlugin extends Plugin
 						SwingUtilities.invokeLater(() ->
 						{
 							RuneliteColorPicker colorPicker = colorPickerManager.create(SwingUtilities.windowForComponent((Applet) client),
-								color, "Tile marker color", true);
+								color, "Tile marker color", false);
 							colorPicker.setOnClose(c -> colorTile(existing, c));
 							colorPicker.setVisible(true);
 						});
