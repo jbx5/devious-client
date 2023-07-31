@@ -72,10 +72,10 @@ public class JagexCache {
 		descriptor = "(IB)Ltx;",
 		garbageValue = "52"
 	)
-	static class507 method3528(int var0) {
-		class507 var1 = (class507)Client.DBTableMasterIndex_cache.get((long)var0);
+	static DbTable method3528(int var0) {
+		DbTable var1 = (DbTable)Client.DBTableMasterIndex_cache.get((long)var0);
 		if (var1 == null) {
-			var1 = new class507(class176.field1852, var0);
+			var1 = new DbTable(class176.field1852, var0);
 		}
 
 		return var1;

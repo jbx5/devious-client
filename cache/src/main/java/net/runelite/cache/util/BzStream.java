@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019, Shaun Dreclin <https://github.com/ShaunDreclin>
+ * Copyright (c) 2023, Adam <Adam@sigterm.info>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,47 +22,67 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.api;
+package net.runelite.cache.util;
 
-/**
- * Utility class used for mapping enum IDs.
- * <p>
- * Note: This class is not complete and may be missing mapped IDs.
- */
-public final class EnumID
+import com.sun.jna.Pointer;
+import com.sun.jna.Structure;
+import java.util.Arrays;
+import java.util.List;
+
+public class BzStream extends Structure
 {
-	/**
-	 * key: int
-	 * val: string creature name
-	 */
-	public static final int SLAYER_TASK_CREATURE = 693;
+	/*
+	  char *next_in;
+	  unsigned int avail_in;
+	  unsigned int total_in_lo32;
+	  unsigned int total_in_hi32;
 
-	/**
-	 * key: int 1-n+1
-	 * val: namedobj
-	 */
-	public static final int RUNEPOUCH_RUNE = 982;
-	public static final int XPDROP_COLORS = 1169;
-	/**
-	 * key: int
-	 * val: string boss name
-	 */
-	public static final int SLAYER_TASK_BOSS = 1174;
-	public static final int FRIENDS_CHAT_RANK_ICONS = 1543;
-	/**
-	 * key: int 0-n
-	 * val: namedobj
-	 */
-	public static final int PETS = 2158;
-	public static final int CLAN_RANK_NAME = 3797;
-	public static final int CLAN_RANK_GRAPHIC = 3798;
+	  char *next_out;
+	  unsigned int avail_out;
+	  unsigned int total_out_lo32;
+	  unsigned int total_out_hi32;
 
-	/**
-	 * key: int
-	 * val: string location name
-	 */
-	public static final int SLAYER_TASK_LOCATION = 4064;
+	  void *state;
 
-	public static final int PRAYERS_NORMAL = 4956;
-	public static final int PRAYERS_RUINOUS = 4959;
+	  void *(*bzalloc)(void *,int,int);
+	  void (*bzfree)(void *,void *);
+	  void *opaque;
+	 */
+	public Pointer next_in;
+	public int avail_in;
+	public int total_in_lo32;
+	public int total_in_hi32;
+
+	public Pointer next_out;
+	public int avail_out;
+	public int total_out_lo32;
+	public int total_out_hi32;
+
+	public Pointer state;
+
+	public Pointer bzalloc;
+	public Pointer bzfree;
+	public Pointer opaque;
+
+	@Override
+	protected List<String> getFieldOrder()
+	{
+		return Arrays.asList(
+			"next_in",
+			"avail_in",
+			"total_in_lo32",
+			"total_in_hi32",
+
+			"next_out",
+			"avail_out",
+			"total_out_lo32",
+			"total_out_hi32",
+
+			"state",
+
+			"bzalloc",
+			"bzfree",
+			"opaque"
+		);
+	}
 }

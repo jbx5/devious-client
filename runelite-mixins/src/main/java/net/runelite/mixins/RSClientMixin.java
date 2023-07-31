@@ -127,6 +127,7 @@ import net.runelite.rs.api.RSChatChannel;
 import net.runelite.rs.api.RSClanChannel;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSCollisionMap;
+import net.runelite.rs.api.RSDbTable;
 import net.runelite.rs.api.RSDbRowType;
 import net.runelite.rs.api.RSDbTableType;
 import net.runelite.rs.api.RSDualNode;
@@ -1058,14 +1059,14 @@ public abstract class RSClientMixin implements RSClient
 				{
 					sortMenuEntries(var1, var1 + 1);
 					var0 = false;
-					}
-				}
-			if (var0 && !client.isMenuOpen())
-				{
-					client.getCallbacks().post(new PostMenuSort());
 				}
 			}
+			if (var0 && !client.isMenuOpen())
+			{
+				client.getCallbacks().post(new PostMenuSort());
+			}
 		}
+	}
 
 	@Inject
 	public static void sortMenuEntries(int left, int right)
@@ -3036,6 +3037,13 @@ public abstract class RSClientMixin implements RSClient
 	}
 
 	@Inject
+	@MethodHook(value = "doCycle", end = true)
+	protected final void doCycleEnd()
+	{
+		client.getCallbacks().tickEnd();
+	}
+
+	@Inject
 	public static void check(String name, RSEvictingDualNodeHashTable dualNodeHashTable)
 	{
 		boolean var3 = dualNodeHashTable.isTrashing();
@@ -3301,9 +3309,26 @@ public abstract class RSClientMixin implements RSClient
 		return event.isConsumed();
 	}
 
+	@Copy("getDBTable")
+	@Replace("getDBTable")
+	public static RSDbTable copy$getDBTable(int var0)
+	{
+		return copy$getDBTable(var0);
+	}
+
 	@Inject
 	@Override
-	public Object getDBTableField(int rowID, int column, int tupleIndex, int fieldIndex)
+	public List getDBRowsByValue(int rowID, int column, int tupleIndex, Object value)
+	{
+		RSDbTable dbTable = copy$getDBTable((rowID << 12 | column << 4));
+		Map columns = (Map) dbTable.getColumns().get(tupleIndex);
+		List rows = (List) columns.get(value);
+		return rows == null ? Collections.emptyList() : Collections.unmodifiableList(rows);
+	}
+
+	@Inject
+	@Override
+	public Object[] getDBTableField(int rowID, int column, int tupleIndex)
 	{
 		RSDbRowType dbRowType = client.getDbRowType(rowID);
 		RSDbTableType dbTableType = client.getDbTableType(dbRowType.getTableId());
@@ -3316,24 +3341,25 @@ public abstract class RSClientMixin implements RSClient
 			columnType = dbTableType.getDefaultValues()[column];
 		}
 
-		if (columnType == null)
-		{
-			return null;
-		}
-		else if (tupleIndex >= type.length)
+		if (tupleIndex >= type.length)
 		{
 			throw new IllegalArgumentException("tuple index too large");
 		}
+		else if (columnType == null)
+		{
+			return new Object[0];
+		}
 		else
 		{
-			if (fieldIndex > columnType.length / type.length)
+			int fieldLength = columnType.length / type.length;
+			Object[] field = new Object[fieldLength];
+
+			for (int fieldIndex = 0; fieldIndex < fieldLength; ++fieldIndex)
 			{
-				throw new IllegalArgumentException("field index too large");
+				field[fieldIndex] = columnType[fieldIndex * type.length + tupleIndex];
 			}
-			else
-			{
-				return columnType[tupleIndex * type.length + fieldIndex];
-			}
+
+			return field;
 		}
 	}
 

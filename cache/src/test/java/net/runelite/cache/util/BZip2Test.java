@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019, Shaun Dreclin <https://github.com/ShaunDreclin>
+ * Copyright (c) 2023, Adam <Adam@sigterm.info>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,47 +22,50 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.api;
+package net.runelite.cache.util;
 
-/**
- * Utility class used for mapping enum IDs.
- * <p>
- * Note: This class is not complete and may be missing mapped IDs.
- */
-public final class EnumID
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.util.Random;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assume.assumeNoException;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+public class BZip2Test
 {
-	/**
-	 * key: int
-	 * val: string creature name
-	 */
-	public static final int SLAYER_TASK_CREATURE = 693;
+	@BeforeClass
+	public static void beforeClass()
+	{
+		try
+		{
+			var l = LibBZip2.INSTANCE;
+		}
+		catch (UnsatisfiedLinkError ex)
+		{
+			assumeNoException(ex);
+		}
+	}
 
-	/**
-	 * key: int 1-n+1
-	 * val: namedobj
-	 */
-	public static final int RUNEPOUCH_RUNE = 982;
-	public static final int XPDROP_COLORS = 1169;
-	/**
-	 * key: int
-	 * val: string boss name
-	 */
-	public static final int SLAYER_TASK_BOSS = 1174;
-	public static final int FRIENDS_CHAT_RANK_ICONS = 1543;
-	/**
-	 * key: int 0-n
-	 * val: namedobj
-	 */
-	public static final int PETS = 2158;
-	public static final int CLAN_RANK_NAME = 3797;
-	public static final int CLAN_RANK_GRAPHIC = 3798;
+	@Test
+	public void testLibBZip2Small() throws IOException
+	{
+		byte[] data = "runelite".getBytes(StandardCharsets.UTF_8);
+		byte[] ddata = BZip2.compressLibBZip2(data);
+		byte[] idata = BZip2.decompress(ddata, ddata.length);
+		assertEquals("runelite", new String(idata));
+	}
 
-	/**
-	 * key: int
-	 * val: string location name
-	 */
-	public static final int SLAYER_TASK_LOCATION = 4064;
+	@Test
+	public void testLibBZipLarge() throws IOException
+	{
+		byte[] data = new byte[1024 * 1024];
+		Random r = new Random(42);
+		r.nextBytes(data);
 
-	public static final int PRAYERS_NORMAL = 4956;
-	public static final int PRAYERS_RUINOUS = 4959;
+		byte[] ddata = BZip2.compressLibBZip2(data);
+		byte[] idata = BZip2.decompress(ddata, ddata.length);
+		assertArrayEquals(data, idata);
+	}
 }

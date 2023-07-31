@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019, Shaun Dreclin <https://github.com/ShaunDreclin>
+ * Copyright (c) 2023, Adam <Adam@sigterm.info>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,47 +22,26 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.api;
+package net.runelite.cache.util;
 
-/**
- * Utility class used for mapping enum IDs.
- * <p>
- * Note: This class is not complete and may be missing mapped IDs.
- */
-public final class EnumID
+import com.sun.jna.Library;
+import com.sun.jna.Native;
+
+public interface LibBZip2 extends Library
 {
-	/**
-	 * key: int
-	 * val: string creature name
-	 */
-	public static final int SLAYER_TASK_CREATURE = 693;
+	LibBZip2 INSTANCE = Native.load("libbz2", LibBZip2.class);
 
-	/**
-	 * key: int 1-n+1
-	 * val: namedobj
-	 */
-	public static final int RUNEPOUCH_RUNE = 982;
-	public static final int XPDROP_COLORS = 1169;
-	/**
-	 * key: int
-	 * val: string boss name
-	 */
-	public static final int SLAYER_TASK_BOSS = 1174;
-	public static final int FRIENDS_CHAT_RANK_ICONS = 1543;
-	/**
-	 * key: int 0-n
-	 * val: namedobj
-	 */
-	public static final int PETS = 2158;
-	public static final int CLAN_RANK_NAME = 3797;
-	public static final int CLAN_RANK_GRAPHIC = 3798;
+	int BZ_OK = 0;
+	int BZ_RUN_OK = 1;
+	int BZ_FLUSH_OK = 2;
+	int BZ_FINISH_OK = 3;
+	int BZ_STREAM_END = 4;
 
-	/**
-	 * key: int
-	 * val: string location name
-	 */
-	public static final int SLAYER_TASK_LOCATION = 4064;
+	int BZ_RUN = 0;
+	int BZ_FLUSH = 1;
+	int BZ_FINISH = 2;
 
-	public static final int PRAYERS_NORMAL = 4956;
-	public static final int PRAYERS_RUINOUS = 4959;
+	int BZ2_bzCompressInit(BzStream stream, int blockSize100k, int verbosity, int workFactor);
+	int BZ2_bzCompress(BzStream stream, int action);
+	int BZ2_bzCompressEnd(BzStream stream);
 }

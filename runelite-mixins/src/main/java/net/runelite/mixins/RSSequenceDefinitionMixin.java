@@ -308,4 +308,11 @@ public abstract class RSSequenceDefinitionMixin implements RSSequenceDefinition
 			return sequenceDefinition;
 		}
 	}
+
+	@Inject
+	@Override
+	public int getNumFrames()
+	{
+		return getFrameLengths().length;
+	}
 }

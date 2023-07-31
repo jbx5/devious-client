@@ -46,6 +46,7 @@ dependencies {
     implementation(group = "org.antlr", name = "antlr4-runtime", version = "4.8-1")
     implementation(group = "org.apache.commons", name = "commons-compress", version = "1.21")
     implementation(group = "org.slf4j", name = "slf4j-api", version = "1.7.32")
+    implementation(group = "net.java.dev.jna", name = "jna", version = "5.9.0")
 
     testAnnotationProcessor(group = "org.projectlombok", name = "lombok", version = ProjectVersions.lombokVersion)
 
