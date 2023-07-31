@@ -1059,14 +1059,14 @@ public abstract class RSClientMixin implements RSClient
 				{
 					sortMenuEntries(var1, var1 + 1);
 					var0 = false;
-					}
-				}
-			if (var0 && !client.isMenuOpen())
-				{
-					client.getCallbacks().post(new PostMenuSort());
 				}
 			}
+			if (var0 && !client.isMenuOpen())
+			{
+				client.getCallbacks().post(new PostMenuSort());
+			}
 		}
+	}
 
 	@Inject
 	public static void sortMenuEntries(int left, int right)
