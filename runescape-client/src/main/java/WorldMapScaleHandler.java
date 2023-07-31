@@ -665,7 +665,7 @@ public class WorldMapScaleHandler {
 		int var3;
 		Object var4;
 		int var5;
-		DBTable var6;
+		DbTable var6;
 		int var7;
 		if (var0 != ScriptOpcodes.DB_FIND_WITH_COUNT && var0 != ScriptOpcodes.DB_FIND) {
 			if (var0 != ScriptOpcodes.DB_FINDNEXT) {
@@ -800,7 +800,7 @@ public class WorldMapScaleHandler {
 				} else {
 					--Interpreter.Interpreter_intStackSize;
 					var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
-					DBTable var23 = JagexCache.method3528(var3);
+					DbTable var23 = JagexCache.method3528(var3);
 					if (var23 == null) {
 						throw new RuntimeException();
 					} else {

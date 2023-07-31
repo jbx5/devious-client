@@ -8,8 +8,8 @@ import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("tx")
-@Implements("DBTable")
-public class DBTable extends DualNode {
+@Implements("DbTable")
+public class DbTable extends DualNode {
 	@ObfuscatedName("am")
 	@ObfuscatedSignature(
 		descriptor = "[Ltm;"
@@ -22,7 +22,7 @@ public class DBTable extends DualNode {
 	@ObfuscatedSignature(
 		descriptor = "(Lnd;I)V"
 	)
-	public DBTable(AbstractArchive var1, int var2) {
+	public DbTable(AbstractArchive var1, int var2) {
 		byte[] var3 = var1.takeFile(var2, 0);
 		this.method8988(new Buffer(var3));
 	}
@@ -30,7 +30,7 @@ public class DBTable extends DualNode {
 	@ObfuscatedSignature(
 		descriptor = "(Lnd;II)V"
 	)
-	public DBTable(AbstractArchive var1, int var2, int var3) {
+	public DbTable(AbstractArchive var1, int var2, int var3) {
 		byte[] var4 = var1.takeFile(var2, var3 + 1);
 		this.method8988(new Buffer(var4));
 	}

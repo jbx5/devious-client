@@ -99,10 +99,10 @@ public class class477 extends class480 {
 		garbageValue = "522363485"
 	)
 	@Export("getDBTable")
-	static DBTable getDBTable(int var0) {
-		DBTable var1 = (DBTable)Client.DBTableIndex_cache.get((long)var0);
+	static DbTable getDBTable(int var0) {
+		DbTable var1 = (DbTable)Client.DBTableIndex_cache.get((long)var0);
 		if (var1 == null) {
-			var1 = new DBTable(class176.field1852, ViewportMouse.method4930(var0), Message.method1241(var0));
+			var1 = new DbTable(class176.field1852, ViewportMouse.method4930(var0), Message.method1241(var0));
 			Client.DBTableIndex_cache.put(var1, (long)var0);
 		}
 

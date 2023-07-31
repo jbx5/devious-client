@@ -127,7 +127,7 @@ import net.runelite.rs.api.RSChatChannel;
 import net.runelite.rs.api.RSClanChannel;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSCollisionMap;
-import net.runelite.rs.api.RSDBTable;
+import net.runelite.rs.api.RSDbTable;
 import net.runelite.rs.api.RSDbRowType;
 import net.runelite.rs.api.RSDbTableType;
 import net.runelite.rs.api.RSDualNode;
@@ -3311,7 +3311,7 @@ public abstract class RSClientMixin implements RSClient
 
 	@Copy("getDBTable")
 	@Replace("getDBTable")
-	public static RSDBTable copy$getDBTable(int var0)
+	public static RSDbTable copy$getDBTable(int var0)
 	{
 		return copy$getDBTable(var0);
 	}
@@ -3320,7 +3320,7 @@ public abstract class RSClientMixin implements RSClient
 	@Override
 	public List getDBRowsByValue(int rowID, int column, int tupleIndex, Object value)
 	{
-		RSDBTable dbTable = copy$getDBTable((rowID << 12 | column << 4));
+		RSDbTable dbTable = copy$getDBTable((rowID << 12 | column << 4));
 		Map columns = (Map) dbTable.getColumns().get(tupleIndex);
 		List rows = (List) columns.get(value);
 		return rows == null ? Collections.emptyList() : Collections.unmodifiableList(rows);
