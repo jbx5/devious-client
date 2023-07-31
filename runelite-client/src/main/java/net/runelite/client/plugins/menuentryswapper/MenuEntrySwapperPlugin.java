@@ -57,6 +57,7 @@ import net.runelite.api.NPC;
 import net.runelite.api.NPCComposition;
 import net.runelite.api.ObjectComposition;
 import net.runelite.api.ParamID;
+import net.runelite.api.events.ClientTick;
 import net.runelite.api.events.MenuOpened;
 import net.runelite.api.events.PostItemComposition;
 import net.runelite.api.events.PostMenuSort;
@@ -519,13 +520,6 @@ public class MenuEntrySwapperPlugin extends Plugin
 				{
 					if (Strings.isNullOrEmpty(actions[actionIdx]))
 					{
-						continue;
-					}
-
-					if ("Build".equals(actions[actionIdx])
-						|| "Remove".equals(actions[actionIdx]))
-					{
-						// https://secure.runescape.com/m=news/third-party-client-guidelines?oldschool=1
 						continue;
 					}
 
@@ -1557,7 +1551,7 @@ public class MenuEntrySwapperPlugin extends Plugin
 	}
 
 	@Subscribe
-	public void onPostMenuSort(PostMenuSort postMenuSort)
+	public void onClientTick(ClientTick clientTick)
 	{
 		if (client.isMenuOpen())
 		{
