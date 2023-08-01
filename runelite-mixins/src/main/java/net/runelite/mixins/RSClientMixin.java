@@ -3309,18 +3309,11 @@ public abstract class RSClientMixin implements RSClient
 		return event.isConsumed();
 	}
 
-	@Copy("getDBTable")
-	@Replace("getDBTable")
-	public static RSDbTable copy$getDBTable(int var0)
-	{
-		return copy$getDBTable(var0);
-	}
-
 	@Inject
 	@Override
 	public List getDBRowsByValue(int rowID, int column, int tupleIndex, Object value)
 	{
-		RSDbTable dbTable = copy$getDBTable((rowID << 12 | column << 4));
+		RSDbTable dbTable = client.getDbTable((rowID << 12 | column << 4));
 		Map columns = (Map) dbTable.getColumns().get(tupleIndex);
 		List rows = (List) columns.get(value);
 		return rows == null ? Collections.emptyList() : Collections.unmodifiableList(rows);

@@ -772,7 +772,7 @@ public class WorldMapScaleHandler {
 						var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
 						var4 = class102.method2648(var3);
 						var5 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-						var6 = class477.getDBTable(var5);
+						var6 = class477.getDbTable(var5);
 						if (var6 == null) {
 							throw new RuntimeException();
 						} else if (ViewportMouse.method4930(var5) != Client.field619) {
@@ -832,7 +832,7 @@ public class WorldMapScaleHandler {
 			var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
 			var4 = class102.method2648(var3);
 			var5 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-			var6 = class477.getDBTable(var5);
+			var6 = class477.getDbTable(var5);
 			if (var6 == null) {
 				throw new RuntimeException();
 			} else {
