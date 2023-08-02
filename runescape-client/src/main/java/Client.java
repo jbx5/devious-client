@@ -6487,7 +6487,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 
 				class92.method2368();
 				VarbitComposition.worldHost = this.getCodeBase().getHost();
-				class153.field1700 = new NewArchiveStuff();
+				class153.field1700 = new JagNetThread();
 				String var10 = ArchiveLoader.field1044.name;
 				byte var11 = 0;
 				if ((worldProperties & 65536) != 0) {

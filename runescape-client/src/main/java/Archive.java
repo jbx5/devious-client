@@ -62,7 +62,7 @@ public class Archive extends AbstractArchive {
 	@ObfuscatedSignature(
 		descriptor = "Lnq;"
 	)
-	NewArchiveStuff field4268;
+	JagNetThread field4268;
 
 	static {
 		Archive_crc = new CRC32();
@@ -71,7 +71,7 @@ public class Archive extends AbstractArchive {
 	@ObfuscatedSignature(
 		descriptor = "(Lrg;Lrg;Lnq;IZZZZ)V"
 	)
-	public Archive(ArchiveDisk var1, ArchiveDisk var2, NewArchiveStuff var3, int var4, boolean var5, boolean var6, boolean var7, boolean var8) {
+	public Archive(ArchiveDisk var1, ArchiveDisk var2, JagNetThread var3, int var4, boolean var5, boolean var6, boolean var7, boolean var8) {
 		super(var5, var6);
 		this.field4260 = 0;
 		this.field4261 = false;
