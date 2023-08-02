@@ -98,8 +98,8 @@ public class class477 extends class480 {
 		descriptor = "(II)Ltx;",
 		garbageValue = "522363485"
 	)
-	@Export("getDBTable")
-	static DbTable getDBTable(int var0) {
+	@Export("getDbTable")
+	static DbTable getDbTable(int var0) {
 		DbTable var1 = (DbTable)Client.DBTableIndex_cache.get((long)var0);
 		if (var1 == null) {
 			var1 = new DbTable(class176.field1852, ViewportMouse.method4930(var0), Message.method1241(var0));
