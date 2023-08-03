@@ -213,7 +213,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 	@ObfuscatedGetter(
 		intValue = -991874195
 	)
-	public static int field525;
+	@Export("revision")
+	public static int revision;
 	@ObfuscatedName("dq")
 	@ObfuscatedGetter(
 		intValue = 1417535651
@@ -719,7 +720,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 	@ObfuscatedGetter(
 		longValue = 4451498081408470985L
 	)
-	static long field642;
+	@Export("userId")
+	static long userId;
 	@ObfuscatedName("ml")
 	static boolean field766;
 	@ObfuscatedName("nb")
@@ -1371,7 +1373,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 	@ObfuscatedGetter(
 		longValue = 4165547584203049963L
 	)
-	long field780;
+	@Export("accountHash")
+	long accountHash;
 
 	static {
 		field631 = true;
@@ -1384,7 +1387,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 		clientType = -1;
 		field657 = -1;
 		onMobile = false;
-		field525 = 215;
+		revision = 215;
 		gameState = 0;
 		field527 = false;
 		isLoading = true;
@@ -1501,7 +1504,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 		players = new Player[2048];
 		localPlayerIndex = -1;
 		field641 = 0;
-		field642 = -1L;
+		userId = -1L;
 		field766 = true;
 		drawPlayerNames = 0;
 		field645 = 0;
@@ -1680,7 +1683,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 
 	public Client() {
 		this.field562 = false;
-		this.field780 = -1L;
+		this.accountHash = -1L;
 	}
 
 	@ObfuscatedName("ao")
@@ -2524,7 +2527,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 				VertexNormal.method4951(var6.packetBuffer);
 				var6.packetBuffer.writeStringCp1252NullTerminated(class36.field263);
 				var6.packetBuffer.writeInt(PcmPlayer.field299);
-				if (field525 > 213) {
+				if (revision > 213) {
 					var6.packetBuffer.writeByte(0);
 				}
 
@@ -2704,11 +2707,11 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					field641 = var1.readUnsignedByte();
 					var1.read(var2.array, 0, 8);
 					var2.offset = 0;
-					this.field780 = var2.readLong();
+					this.accountHash = var2.readLong();
 					var1.read(var2.array, 0, 8);
 					var2.offset = 0;
-					field642 = var2.readLong();
-					if (field525 >= 214) {
+					userId = var2.readLong();
+					if (revision >= 214) {
 						var1.read(var2.array, 0, 8);
 						var2.offset = 0;
 						var2.readLong();
@@ -6369,7 +6372,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 	}
 
 	public long getAccountHash() {
-		return this.field780;
+		return this.accountHash;
 	}
 
 	public final void init() {
@@ -6476,9 +6479,9 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 						case 25:
 							int var3 = var2.indexOf(".");
 							if (var3 == -1) {
-								field525 = Integer.parseInt(var2);
+								revision = Integer.parseInt(var2);
 							} else {
-								field525 = Integer.parseInt(var2.substring(0, var3));
+								revision = Integer.parseInt(var2.substring(0, var3));
 								Integer.parseInt(var2.substring(var3 + 1));
 							}
 						}

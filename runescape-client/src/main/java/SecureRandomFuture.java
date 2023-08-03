@@ -278,7 +278,7 @@ public class SecureRandomFuture {
 					class200.invalidateWidget(var3);
 					return 1;
 				} else if (var0 == 1130) {
-					var3.method6518(Interpreter.Interpreter_stringStack[--Interpreter.Interpreter_stringStackSize], WorldMapLabel.urlRequester, PendingSpawn.method2375());
+					var3.method6518(Interpreter.Interpreter_stringStack[--Interpreter.Interpreter_stringStackSize], WorldMapLabel.urlRequester, PendingSpawn.getUserId());
 					return 1;
 				} else if (var0 == 1131) {
 					Interpreter.Interpreter_intStackSize -= 2;

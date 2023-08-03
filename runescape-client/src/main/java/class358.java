@@ -372,7 +372,7 @@ public class class358 extends DualNode {
 				var6 = var1.readUnsignedShortAddLE();
 				var7 = var1.readUnsignedShortAddLE();
 				var14.field1222 = var1.readUnsignedByte() == 1;
-				if (Client.field525 >= 212) {
+				if (Client.revision >= 212) {
 					var14.field1220 = var6;
 					var14.field1221 = var7;
 				} else {
