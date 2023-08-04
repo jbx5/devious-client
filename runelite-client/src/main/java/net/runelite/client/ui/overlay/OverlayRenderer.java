@@ -643,7 +643,6 @@ public class OverlayRenderer extends MouseAdapter
 			startedMovingOverlay = false;
 		}
 
-		mouseEvent.consume();
 		return mouseEvent;
 	}
 

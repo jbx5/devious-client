@@ -99,7 +99,7 @@ public class WorldMapData_0 extends AbstractWorldMapData {
 			class465.field4784 = null;
 			class165.loginScreenRunesAnimation.method2459();
 			RouteStrategy.method4227(0, 100);
-			NewArchiveStuff var0 = class153.field1700;
+			JagNetThread var0 = class153.field1700;
 			var0.method6845(true);
 			Login.clearLoginScreen = false;
 		}

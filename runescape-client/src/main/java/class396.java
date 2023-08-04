@@ -153,7 +153,7 @@ public class class396 {
 
 		var4.packetBuffer.writeByte(var7);
 		var4.packetBuffer.writeByte(var18);
-		if (var8 != null && Client.field525 >= 214) {
+		if (var8 != null && Client.revision >= 214) {
 			for (int var19 = 0; var19 < var8.length; ++var19) {
 				var4.packetBuffer.writeByte(var8[var19]);
 			}

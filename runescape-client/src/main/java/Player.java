@@ -231,7 +231,7 @@ public final class Player extends Actor {
 		}
 
 		int[] var26 = null;
-		if (Client.field525 >= 213) {
+		if (Client.revision >= 213) {
 			var26 = new int[12];
 
 			for (var7 = 0; var7 < 12; ++var7) {
