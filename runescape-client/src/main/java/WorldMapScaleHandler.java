@@ -665,7 +665,7 @@ public class WorldMapScaleHandler {
 		int var3;
 		Object var4;
 		int var5;
-		class507 var6;
+		DbTable var6;
 		int var7;
 		if (var0 != ScriptOpcodes.DB_FIND_WITH_COUNT && var0 != ScriptOpcodes.DB_FIND) {
 			if (var0 != ScriptOpcodes.DB_FINDNEXT) {
@@ -772,7 +772,7 @@ public class WorldMapScaleHandler {
 						var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
 						var4 = class102.method2648(var3);
 						var5 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-						var6 = class477.method8476(var5);
+						var6 = class477.getDbTable(var5);
 						if (var6 == null) {
 							throw new RuntimeException();
 						} else if (ViewportMouse.method4930(var5) != Client.field619) {
@@ -800,7 +800,7 @@ public class WorldMapScaleHandler {
 				} else {
 					--Interpreter.Interpreter_intStackSize;
 					var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
-					class507 var23 = JagexCache.method3528(var3);
+					DbTable var23 = JagexCache.method3528(var3);
 					if (var23 == null) {
 						throw new RuntimeException();
 					} else {
@@ -832,7 +832,7 @@ public class WorldMapScaleHandler {
 			var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
 			var4 = class102.method2648(var3);
 			var5 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-			var6 = class477.method8476(var5);
+			var6 = class477.getDbTable(var5);
 			if (var6 == null) {
 				throw new RuntimeException();
 			} else {

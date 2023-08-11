@@ -35,6 +35,7 @@ import net.runelite.api.events.BeforeRender;
 import net.runelite.api.events.FakeXpDrop;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.GameTick;
+import net.runelite.api.events.PostClientTick;
 import net.runelite.api.events.ScriptCallbackEvent;
 import net.runelite.api.hooks.Callbacks;
 import net.runelite.api.hooks.DrawCallbacks;
@@ -262,6 +263,13 @@ public class MinimalHooks implements Callbacks
 		{
 			log.warn("error during main loop tasks", ex);
 		}
+	}
+
+	@Override
+	public void tickEnd()
+	{
+		clientThread.invokeTickEnd();
+		eventBus.post(new PostClientTick());
 	}
 
 	@Override

@@ -51,7 +51,6 @@ import net.runelite.api.mixins.MethodHook;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Shadow;
 import net.runelite.rs.api.RSActor;
-import net.runelite.rs.api.RSActorSpotAnim;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSHealthBar;
 import net.runelite.rs.api.RSHealthBarDefinition;
@@ -221,9 +220,6 @@ public abstract class RSActorMixin implements RSActor
 		client.getCallbacks().post(animationChange);
 	}
 
-	@Inject
-	private ActorSpotAnim actorSpotAnim;
-
 	@MethodHook(value = "updateSpotAnimation", end = true)
 	@Inject
 	public void onGraphicChanged(int idx, int graphicID, int graphicHeight, int graphicStartCycle)
@@ -231,7 +227,6 @@ public abstract class RSActorMixin implements RSActor
 		if (hasSpotAnim(graphicID))
 		{
 			setGraphic(graphicID);
-			actorSpotAnim = this.getSpotAnims().get(idx);
 		}
 
 		GraphicChanged graphicChanged = new GraphicChanged();
@@ -246,7 +241,6 @@ public abstract class RSActorMixin implements RSActor
 		if (!hasSpotAnim(getGraphic()))
 		{
 			setGraphic(-1);
-			actorSpotAnim = null;
 		}
 	}
 
@@ -255,11 +249,10 @@ public abstract class RSActorMixin implements RSActor
 	public boolean hasSpotAnim(int spotAnimId)
 	{
 		Iterator<ActorSpotAnim> iter = this.getSpotAnims().iterator();
-
 		while (iter.hasNext())
 		{
-			RSActorSpotAnim rsActorSpotAnim = (RSActorSpotAnim) iter.next();
-			if (rsActorSpotAnim.getId() == spotAnimId)
+			ActorSpotAnim actorSpotAnim = (ActorSpotAnim) iter.next();
+			if (actorSpotAnim.getId() == spotAnimId)
 			{
 				return true;
 			}
@@ -400,34 +393,71 @@ public abstract class RSActorMixin implements RSActor
 	@Override
 	public int getGraphicHeight()
 	{
-		return actorSpotAnim.getHeight();
+		Iterator iter = this.getSpotAnims().iterator();
+		if (iter.hasNext())
+		{
+			ActorSpotAnim actorSpotAnim = (ActorSpotAnim) iter.next();
+			return actorSpotAnim.getHeight();
+		}
+		else
+		{
+			return 0;
+		}
 	}
 
 	@Inject
 	@Override
 	public void setGraphicHeight(int height)
 	{
-		actorSpotAnim.setHeight(height);
+		Iterator iter = this.getSpotAnims().iterator();
+		if (iter.hasNext())
+		{
+			ActorSpotAnim actorSpotAnim = (ActorSpotAnim) iter.next();
+			actorSpotAnim.setHeight(height);
+		}
 	}
 
 	@Inject
 	@Override
 	public int getSpotAnimFrame()
 	{
-		return actorSpotAnim.getFrame();
+		Iterator iter = this.getSpotAnims().iterator();
+		if (iter.hasNext())
+		{
+			ActorSpotAnim actorSpotAnim = (ActorSpotAnim) iter.next();
+			return actorSpotAnim.getFrame();
+		}
+		else
+		{
+			return 0;
+		}
 	}
 
 	@Inject
 	@Override
 	public void setSpotAnimFrame(int id)
 	{
-		actorSpotAnim.setFrame(id);
+		Iterator iter = this.getSpotAnims().iterator();
+		if (iter.hasNext())
+		{
+			ActorSpotAnim actorSpotAnim = (ActorSpotAnim) iter.next();
+			actorSpotAnim.setFrame(id);
+		}
 	}
 
 	@Inject
 	@Override
 	public int getSpotAnimationFrameCycle()
 	{
-		return actorSpotAnim.getCycle();
+		Iterator iter = this.getSpotAnims().iterator();
+		if (iter.hasNext())
+		{
+			ActorSpotAnim actorSpotAnim = (ActorSpotAnim) iter.next();
+			return actorSpotAnim.getCycle();
+		}
+		else
+		{
+			return 0;
+		}
 	}
 }

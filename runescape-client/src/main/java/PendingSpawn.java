@@ -527,7 +527,8 @@ public final class PendingSpawn extends Node {
 		descriptor = "(I)J",
 		garbageValue = "1729163536"
 	)
-	static long method2375() {
-		return Client.field642;
+	@Export("getUserId")
+	static long getUserId() {
+		return Client.userId;
 	}
 }

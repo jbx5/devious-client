@@ -24,6 +24,7 @@
  */
 package net.runelite.mixins;
 
+import net.runelite.api.ActorSpotAnim;
 import net.runelite.api.AnimationID;
 import net.runelite.api.NPCComposition;
 import net.runelite.api.NpcID;
@@ -45,6 +46,7 @@ import net.unethicalite.api.events.NPCCompositionChanged;
 
 import java.awt.Polygon;
 import java.awt.Shape;
+import java.util.Iterator;
 
 @Mixin(RSNPC.class)
 public abstract class RSNPCMixin implements RSNPC
@@ -150,7 +152,6 @@ public abstract class RSNPCMixin implements RSNPC
 	public RSModel copy$getModel()
 	{
 		if (!client.isInterpolateNpcAnimations()
-			|| !this.hasSpotAnim(getGraphic())
 			|| this.getAnimation() == AnimationID.HELLHOUND_DEFENCE
 			|| this.getAnimation() == 8270
 			|| this.getAnimation() == 8271
@@ -173,6 +174,16 @@ public abstract class RSNPCMixin implements RSNPC
 			setActionFrame(Integer.MIN_VALUE | getActionFrameCycle() << 16 | actionFrame);
 			setPoseFrame(Integer.MIN_VALUE | getPoseFrameCycle() << 16 | poseFrame);
 			setSpotAnimFrame(Integer.MIN_VALUE | getSpotAnimationFrameCycle() << 16 | spotAnimFrame);
+			Iterator iter = getSpotAnims().iterator();
+			while (iter.hasNext())
+			{
+				ActorSpotAnim actorSpotAnim = (ActorSpotAnim) iter.next();
+				int frame = actorSpotAnim.getFrame();
+				if (frame != -1)
+				{
+					actorSpotAnim.setFrame(Integer.MIN_VALUE | actorSpotAnim.getCycle() << 16 | frame);
+				}
+			}
 			return copy$getModel();
 		}
 		finally
@@ -181,6 +192,16 @@ public abstract class RSNPCMixin implements RSNPC
 			setActionFrame(actionFrame);
 			setPoseFrame(poseFrame);
 			setSpotAnimFrame(spotAnimFrame);
+			Iterator iter = getSpotAnims().iterator();
+			while (iter.hasNext())
+			{
+				ActorSpotAnim actorSpotAnim = (ActorSpotAnim) iter.next();
+				int frame = actorSpotAnim.getFrame();
+				if (frame != -1)
+				{
+					actorSpotAnim.setFrame(frame & '\uFFFF');
+				}
+			}
 		}
 	}
 

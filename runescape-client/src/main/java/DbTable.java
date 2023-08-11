@@ -2,23 +2,27 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("tx")
-public class class507 extends DualNode {
+@Implements("DbTable")
+public class DbTable extends DualNode {
 	@ObfuscatedName("am")
 	@ObfuscatedSignature(
 		descriptor = "[Ltm;"
 	)
 	class503[] field5046;
 	@ObfuscatedName("as")
-	List field5044;
+	@Export("columns")
+	List columns;
 
 	@ObfuscatedSignature(
 		descriptor = "(Lnd;I)V"
 	)
-	public class507(AbstractArchive var1, int var2) {
+	public DbTable(AbstractArchive var1, int var2) {
 		byte[] var3 = var1.takeFile(var2, 0);
 		this.method8988(new Buffer(var3));
 	}
@@ -26,7 +30,7 @@ public class class507 extends DualNode {
 	@ObfuscatedSignature(
 		descriptor = "(Lnd;II)V"
 	)
-	public class507(AbstractArchive var1, int var2, int var3) {
+	public DbTable(AbstractArchive var1, int var2, int var3) {
 		byte[] var4 = var1.takeFile(var2, var3 + 1);
 		this.method8988(new Buffer(var4));
 	}
@@ -39,7 +43,7 @@ public class class507 extends DualNode {
 	void method8988(Buffer var1) {
 		int var2 = var1.packBytesToInt();
 		this.field5046 = new class503[var2];
-		this.field5044 = new ArrayList(var2);
+		this.columns = new ArrayList(var2);
 
 		for (int var3 = 0; var3 < var2; ++var3) {
 			this.field5046[var3] = (class503)ClientPreferences.findEnumerated(class503.method8943(), var1.readUnsignedByte());
@@ -59,7 +63,7 @@ public class class507 extends DualNode {
 				var5.put(var6, var8);
 			}
 
-			this.field5044.add(var3, var5);
+			this.columns.add(var3, var5);
 		}
 
 	}
@@ -74,7 +78,7 @@ public class class507 extends DualNode {
 			var2 = 0;
 		}
 
-		Map var3 = (Map)this.field5044.get(var2);
+		Map var3 = (Map)this.columns.get(var2);
 		return (List)var3.get(var1);
 	}
 }

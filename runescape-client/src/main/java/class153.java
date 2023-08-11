@@ -9,7 +9,7 @@ public class class153 extends class143 {
 	@ObfuscatedSignature(
 		descriptor = "Lnq;"
 	)
-	static NewArchiveStuff field1700;
+	static JagNetThread field1700;
 	@ObfuscatedName("aw")
 	@ObfuscatedGetter(
 		intValue = 176567155

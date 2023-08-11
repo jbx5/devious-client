@@ -1,3 +1,4 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
@@ -97,10 +98,11 @@ public class class477 extends class480 {
 		descriptor = "(II)Ltx;",
 		garbageValue = "522363485"
 	)
-	static class507 method8476(int var0) {
-		class507 var1 = (class507)Client.DBTableIndex_cache.get((long)var0);
+	@Export("getDbTable")
+	static DbTable getDbTable(int var0) {
+		DbTable var1 = (DbTable)Client.DBTableIndex_cache.get((long)var0);
 		if (var1 == null) {
-			var1 = new class507(class176.field1852, ViewportMouse.method4930(var0), Message.method1241(var0));
+			var1 = new DbTable(class176.field1852, ViewportMouse.method4930(var0), Message.method1241(var0));
 			Client.DBTableIndex_cache.put(var1, (long)var0);
 		}
 
