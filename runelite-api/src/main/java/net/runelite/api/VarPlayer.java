@@ -253,8 +253,7 @@ public enum VarPlayer
 
 	/**
 	 * Currently assigned slayer task if SLAYER_TASK_SIZE is greater than 0.
-	 * Mapping of value to name can be found in {@link EnumID#SLAYER_TASK_CREATURE}. If value is 98 "Bosses",
-	 * use enum {@link EnumID#SLAYER_TASK_BOSS} for boss name.
+	 * Mapping of value to name can be found in {@link EnumID#SLAYER_TASK_CREATURE}.
 	 */
 	SLAYER_TASK_CREATURE(395),
 
