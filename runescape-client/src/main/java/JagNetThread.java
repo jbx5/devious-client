@@ -6,8 +6,8 @@ import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("nq")
-@Implements("NewArchiveStuff")
-public class NewArchiveStuff {
+@Implements("JagNetThread")
+public class JagNetThread {
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "Lqh;"
@@ -125,7 +125,7 @@ public class NewArchiveStuff {
 	)
 	public int field4298;
 
-	public NewArchiveStuff() {
+	public JagNetThread() {
 		this.field4296 = 0;
 		this.field4315 = new NodeHashTable(4096);
 		this.field4310 = 0;

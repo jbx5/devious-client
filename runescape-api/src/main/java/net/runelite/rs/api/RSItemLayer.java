@@ -23,7 +23,7 @@ public interface RSItemLayer extends ItemLayer
 
 	@Import("first")
 	@Override
-	RSRenderable getBottom();
+	RSRenderable getTop();
 
 	@Import("second")
 	@Override
@@ -31,7 +31,7 @@ public interface RSItemLayer extends ItemLayer
 
 	@Import("third")
 	@Override
-	RSRenderable getTop();
+	RSRenderable getBottom();
 
 	void setPlane(int plane);
 }

@@ -375,7 +375,7 @@ public class EntityRenderer
 					&& (tileItemPile.getCanvasTilePoly() != null
 					&& tileItemPile.getCanvasTilePoly().contains(point.getX(), point.getY())))
 			{
-				Node current = tileItemPile.getBottom();
+				Node current = tileItemPile.getTop();
 				while (current instanceof TileItem)
 				{
 					OverlayUtil.renderTileOverlay(graphics, tileItemPile, "", RED);

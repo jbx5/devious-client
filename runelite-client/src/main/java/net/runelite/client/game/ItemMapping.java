@@ -577,6 +577,9 @@ import static net.runelite.api.ItemID.SANGUINESTI_STAFF;
 import static net.runelite.api.ItemID.SANGUINESTI_STAFF_UNCHARGED;
 import static net.runelite.api.ItemID.SANGUINE_SCYTHE_OF_VITUR;
 import static net.runelite.api.ItemID.SANGUINE_SCYTHE_OF_VITUR_UNCHARGED;
+import static net.runelite.api.ItemID.SANGUINE_TORVA_FULL_HELM;
+import static net.runelite.api.ItemID.SANGUINE_TORVA_PLATEBODY;
+import static net.runelite.api.ItemID.SANGUINE_TORVA_PLATELEGS;
 import static net.runelite.api.ItemID.SARADOMINS_BLESSED_SWORD;
 import static net.runelite.api.ItemID.SARADOMINS_TEAR;
 import static net.runelite.api.ItemID.SARADOMIN_GODSWORD;
@@ -641,6 +644,9 @@ import static net.runelite.api.ItemID.TORMENTED_BRACELET_OR;
 import static net.runelite.api.ItemID.TORMENTED_ORNAMENT_KIT;
 import static net.runelite.api.ItemID.TORTOISE_SHELL;
 import static net.runelite.api.ItemID.TORTURE_ORNAMENT_KIT;
+import static net.runelite.api.ItemID.TORVA_FULL_HELM;
+import static net.runelite.api.ItemID.TORVA_PLATEBODY;
+import static net.runelite.api.ItemID.TORVA_PLATELEGS;
 import static net.runelite.api.ItemID.TOXIC_BLOWPIPE;
 import static net.runelite.api.ItemID.TOXIC_BLOWPIPE_EMPTY;
 import static net.runelite.api.ItemID.TOXIC_STAFF_OF_THE_DEAD;
@@ -1038,6 +1044,11 @@ public enum ItemMapping
 	ITEM_ANCESTRAL_HAT(ANCESTRAL_HAT, TWISTED_ANCESTRAL_HAT),
 	ITEM_ANCESTRAL_ROBE_TOP(ANCESTRAL_ROBE_TOP, TWISTED_ANCESTRAL_ROBE_TOP),
 	ITEM_ANCESTRAL_ROBE_BOTTOM(ANCESTRAL_ROBE_BOTTOM, TWISTED_ANCESTRAL_ROBE_BOTTOM),
+
+	// Torva armor
+	ITEM_TORVA_FULL_HELM(TORVA_FULL_HELM, SANGUINE_TORVA_FULL_HELM),
+	ITEM_TORVA_PLATEBODY(TORVA_PLATEBODY, SANGUINE_TORVA_PLATEBODY),
+	ITEM_TORVA_PLATELEGS(TORVA_PLATELEGS, SANGUINE_TORVA_PLATELEGS),
 
 	// Graceful
 	ITEM_MARK_OF_GRACE(AMYLASE_CRYSTAL, true, 10L, MARK_OF_GRACE),
