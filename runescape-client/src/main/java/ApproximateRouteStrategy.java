@@ -148,7 +148,7 @@ public class ApproximateRouteStrategy extends RouteStrategy {
 					} else if (var4) {
 						return (float)var2.field1483 != var1 && var2.field1485 != null ? var2.field1485.field1488 : var2.field1488;
 					} else {
-						return var0.field1532 ? NewStuff.method3703(var0, var1) : class165.method3402(var0, var1);
+						return var0.field1532 ? NpcOverrides.method3703(var0, var1) : class165.method3402(var0, var1);
 					}
 				}
 			}

@@ -943,7 +943,7 @@ public class class47 {
 												var39 = var10.field3681.getModel((SequenceDefinition)null, -1, class135.SequenceDefinition_get(class136.localPlayer.idleSequence), class136.localPlayer.movementFrame);
 											} else {
 												NPCComposition var45 = null;
-												NewStuff var33 = null;
+												NpcOverrides var33 = null;
 												if (var10.modelType == 6) {
 													var25 = var10.modelId;
 													if (var25 >= 0 && var25 < Client.npcs.length) {
