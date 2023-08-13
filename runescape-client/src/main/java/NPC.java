@@ -42,12 +42,14 @@ public final class NPC extends Actor {
 	@ObfuscatedSignature(
 		descriptor = "Lhs;"
 	)
-	NewStuff field1314;
+	@Export("modelOverrides")
+	NpcOverrides modelOverrides;
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "Lhs;"
 	)
-	NewStuff field1316;
+	@Export("chatheadOverrides")
+	NpcOverrides chatheadOverrides;
 
 	static {
 		field1315 = 1;
@@ -81,10 +83,10 @@ public final class NPC extends Actor {
 			SequenceDefinition var1 = super.sequence != -1 && super.sequenceDelay == 0 ? class135.SequenceDefinition_get(super.sequence) : null;
 			SequenceDefinition var2 = super.movementSequence != -1 && (super.movementSequence != super.idleSequence || var1 == null) ? class135.SequenceDefinition_get(super.movementSequence) : null;
 			Model var3 = null;
-			if (this.field1314 != null && this.field1314.field1994) {
+			if (this.modelOverrides != null && this.modelOverrides.useLocalPlayer) {
 				var3 = class136.localPlayer.appearance.getModel(var1, super.sequenceFrame, var2, super.movementFrame);
 			} else {
-				var3 = this.definition.getModel(var1, super.sequenceFrame, var2, super.movementFrame, this.field1314);
+				var3 = this.definition.getModel(var1, super.sequenceFrame, var2, super.movementFrame, this.modelOverrides);
 			}
 
 			if (var3 == null) {
@@ -317,8 +319,8 @@ public final class NPC extends Actor {
 		descriptor = "(Lhs;I)V",
 		garbageValue = "-1331713030"
 	)
-	void method2605(NewStuff var1) {
-		this.field1316 = var1;
+	void method2605(NpcOverrides var1) {
+		this.chatheadOverrides = var1;
 	}
 
 	@ObfuscatedName("aa")
@@ -326,8 +328,8 @@ public final class NPC extends Actor {
 		descriptor = "(I)Lhs;",
 		garbageValue = "-1510314469"
 	)
-	NewStuff method2602() {
-		return this.field1316;
+	NpcOverrides method2602() {
+		return this.chatheadOverrides;
 	}
 
 	@ObfuscatedName("au")
@@ -335,8 +337,8 @@ public final class NPC extends Actor {
 		descriptor = "(Lhs;I)V",
 		garbageValue = "-1722306850"
 	)
-	void method2603(NewStuff var1) {
-		this.field1314 = var1;
+	void method2603(NpcOverrides var1) {
+		this.modelOverrides = var1;
 	}
 
 	@ObfuscatedName("ae")
@@ -355,7 +357,7 @@ public final class NPC extends Actor {
 		garbageValue = "-883060880"
 	)
 	void method2604() {
-		this.field1316 = null;
+		this.chatheadOverrides = null;
 	}
 
 	@ObfuscatedName("ad")
@@ -364,7 +366,7 @@ public final class NPC extends Actor {
 		garbageValue = "1751428186"
 	)
 	void method2598() {
-		this.field1314 = null;
+		this.modelOverrides = null;
 	}
 
 	@ObfuscatedName("ay")

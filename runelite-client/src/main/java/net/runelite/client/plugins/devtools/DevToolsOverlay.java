@@ -34,6 +34,7 @@ import java.awt.Polygon;
 import java.awt.Rectangle;
 import java.awt.Shape;
 import java.awt.geom.Rectangle2D;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 import javax.inject.Inject;
@@ -220,6 +221,26 @@ class DevToolsOverlay extends Overlay
 
 			String text = composition.getName() + " (ID:" + composition.getId() + ")" +
 				" (A: " + npc.getAnimation() + ") (P: " + npc.getPoseAnimation() + ") (G: " + npc.getGraphic() + ")";
+			if (npc.getModelOverrides() != null)
+			{
+				var mo = npc.getModelOverrides();
+				if (mo.getModelIds() != null)
+				{
+					text += " (M: " + Arrays.toString(mo.getModelIds()) + ")";
+				}
+				if (mo.getColorToReplaceWith() != null)
+				{
+					text += " (C: " + Arrays.toString(mo.getColorToReplaceWith()) + ")";
+				}
+				if (mo.getTextureToReplaceWith() != null)
+				{
+					text += " (T: " + Arrays.toString(mo.getColorToReplaceWith()) + ")";
+				}
+				if (mo.useLocalPlayer())
+				{
+					text += " (LocalPlayer)";
+				}
+			}
 			OverlayUtil.renderActorOverlay(graphics, npc, text, color);
 		}
 	}
