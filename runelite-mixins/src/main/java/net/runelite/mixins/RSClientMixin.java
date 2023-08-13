@@ -3114,14 +3114,14 @@ public abstract class RSClientMixin implements RSClient
 	@Override
 	public RSModelData mergeModels(ModelData[] var0, int var1)
 	{
-		return newModelData(var0, var1);
+		return newModelData(Arrays.copyOf(var0, var1, getModelDataArray().getClass()), var1);
 	}
 
 	@Inject
 	@Override
 	public RSModelData mergeModels(ModelData... var0)
 	{
-		return newModelData(var0, var0.length);
+		return mergeModels(var0, var0.length);
 	}
 
 	@Inject

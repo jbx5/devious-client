@@ -1657,6 +1657,9 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("clips")
 	RSClips getClips();
 
+	@Import("modelDataArray")
+	RSModelData[] getModelDataArray();
+
 	/*
 	Unethical
 	 */

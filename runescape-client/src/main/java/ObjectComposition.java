@@ -51,7 +51,8 @@ public class ObjectComposition extends DualNode {
 	@ObfuscatedSignature(
 		descriptor = "[Lie;"
 	)
-	static ModelData[] field2180;
+	@Export("modelDataArray")
+	static ModelData[] modelDataArray;
 	@ObfuscatedName("av")
 	@ObfuscatedGetter(
 		intValue = 882408563
@@ -269,7 +270,7 @@ public class ObjectComposition extends DualNode {
 		ObjectDefinition_cachedModelData = new EvictingDualNodeHashTable(500);
 		ObjectDefinition_cachedEntities = new EvictingDualNodeHashTable(30);
 		ObjectDefinition_cachedModels = new EvictingDualNodeHashTable(30);
-		field2180 = new ModelData[4];
+		modelDataArray = new ModelData[4];
 	}
 
 	ObjectComposition() {
@@ -749,12 +750,12 @@ public class ObjectComposition extends DualNode {
 				}
 
 				if (var5 > 1) {
-					field2180[var6] = var3;
+					modelDataArray[var6] = var3;
 				}
 			}
 
 			if (var5 > 1) {
-				var3 = new ModelData(field2180, var5);
+				var3 = new ModelData(modelDataArray, var5);
 			}
 		} else {
 			int var9 = -1;
