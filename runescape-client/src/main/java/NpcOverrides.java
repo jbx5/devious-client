@@ -1,32 +1,38 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("hs")
-@Implements("NewStuff")
-public class NewStuff {
+@Implements("NpcOverrides")
+public class NpcOverrides
+{
 	@ObfuscatedName("aw")
 	@ObfuscatedGetter(
 		longValue = 3973216861410173197L
 	)
 	public long field1990;
 	@ObfuscatedName("ay")
-	int[] field1993;
+	@Export("modelIds")
+	int[] modelIds;
 	@ObfuscatedName("ar")
-	short[] field1992;
+	@Export("recolorTo")
+	short[] recolorTo;
 	@ObfuscatedName("am")
-	short[] field1995;
+	@Export("retextureTo")
+	short[] retextureTo;
 	@ObfuscatedName("as")
-	public boolean field1994;
+	@Export("useLocalPlayer")
+	public boolean useLocalPlayer;
 
-	public NewStuff(long var1, int[] var3, short[] var4, short[] var5, boolean var6) {
-		this.field1994 = false;
+	public NpcOverrides(long var1, int[] var3, short[] var4, short[] var5, boolean var6) {
+		this.useLocalPlayer = false;
 		this.field1990 = var1;
-		this.field1993 = var3;
-		this.field1992 = var4;
-		this.field1995 = var5;
-		this.field1994 = var6;
+		this.modelIds = var3;
+		this.recolorTo = var4;
+		this.retextureTo = var5;
+		this.useLocalPlayer = var6;
 	}
 
 	@ObfuscatedName("ay")

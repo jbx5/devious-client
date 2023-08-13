@@ -263,7 +263,7 @@ public class class358 extends DualNode {
 					}
 
 					var18 = (long)(++NPC.field1317 - 1);
-					var14.method2605(new NewStuff(var18, var15, var16, var17, var25));
+					var14.method2605(new NpcOverrides(var18, var15, var16, var17, var25));
 				}
 			}
 
@@ -318,7 +318,7 @@ public class class358 extends DualNode {
 					}
 
 					var18 = (long)(++NPC.field1315 - 1);
-					var14.method2603(new NewStuff(var18, var15, var16, var17, var25));
+					var14.method2603(new NpcOverrides(var18, var15, var16, var17, var25));
 				}
 			}
 

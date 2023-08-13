@@ -316,7 +316,7 @@ public class PlayerComposition {
 	@Export("getModel")
 	public Model getModel(SequenceDefinition var1, int var2, SequenceDefinition var3, int var4) {
 		if (this.npcTransformId != -1) {
-			return Tile.getNpcDefinition(this.npcTransformId).getModel(var1, var2, var3, var4, (NewStuff)null);
+			return Tile.getNpcDefinition(this.npcTransformId).getModel(var1, var2, var3, var4, (NpcOverrides)null);
 		} else {
 			long var5 = this.hash;
 			int[] var7 = this.equipment;
@@ -446,7 +446,7 @@ public class PlayerComposition {
 	@Export("getModelData")
 	ModelData getModelData() {
 		if (this.npcTransformId != -1) {
-			return Tile.getNpcDefinition(this.npcTransformId).method3709((NewStuff)null);
+			return Tile.getNpcDefinition(this.npcTransformId).method3709((NpcOverrides)null);
 		} else {
 			boolean var1 = false;
 
