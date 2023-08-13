@@ -461,7 +461,7 @@ public class NPCComposition extends DualNode {
 		garbageValue = "1827488061"
 	)
 	@Export("getModel")
-	public final Model getModel(SequenceDefinition var1, int var2, SequenceDefinition var3, int var4, NewStuff var5) {
+	public final Model getModel(SequenceDefinition var1, int var2, SequenceDefinition var3, int var4, NpcOverrides var5) {
 		if (this.transforms != null) {
 			NPCComposition var10 = this.transform();
 			return var10 == null ? null : var10.getModel(var1, var2, var3, var4, var5);
@@ -506,7 +506,7 @@ public class NPCComposition extends DualNode {
 		descriptor = "(Lhs;I)Lie;",
 		garbageValue = "1919655467"
 	)
-	public final ModelData method3709(NewStuff var1) {
+	public final ModelData method3709(NpcOverrides var1) {
 		if (this.transforms != null) {
 			NPCComposition var2 = this.transform();
 			return var2 == null ? null : var2.method3709(var1);
@@ -521,10 +521,10 @@ public class NPCComposition extends DualNode {
 		garbageValue = "1988428396"
 	)
 	@Export("getModelData")
-	ModelData getModelData(int[] var1, NewStuff var2) {
+	ModelData getModelData(int[] var1, NpcOverrides var2) {
 		int[] var3 = var1;
-		if (var2 != null && var2.field1993 != null) {
-			var3 = var2.field1993;
+		if (var2 != null && var2.modelIds != null) {
+			var3 = var2.modelIds;
 		}
 
 		if (var3 == null) {
@@ -561,8 +561,8 @@ public class NPCComposition extends DualNode {
 				int var8;
 				if (this.recolorFrom != null) {
 					var7 = this.recolorTo;
-					if (var2 != null && var2.field1992 != null) {
-						var7 = var2.field1992;
+					if (var2 != null && var2.recolorTo != null) {
+						var7 = var2.recolorTo;
 					}
 
 					for (var8 = 0; var8 < this.recolorFrom.length; ++var8) {
@@ -572,8 +572,8 @@ public class NPCComposition extends DualNode {
 
 				if (this.retextureFrom != null) {
 					var7 = this.retextureTo;
-					if (var2 != null && var2.field1995 != null) {
-						var7 = var2.field1995;
+					if (var2 != null && var2.retextureTo != null) {
+						var7 = var2.retextureTo;
 					}
 
 					for (var8 = 0; var8 < this.retextureFrom.length; ++var8) {

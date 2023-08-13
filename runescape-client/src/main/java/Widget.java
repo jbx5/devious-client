@@ -1328,7 +1328,7 @@ public class Widget extends Node {
 		garbageValue = "-1139082268"
 	)
 	@Export("getModel")
-	public Model getModel(SequenceDefinition var1, int var2, boolean var3, PlayerComposition var4, NPCComposition var5, NewStuff var6) {
+	public Model getModel(SequenceDefinition var1, int var2, boolean var3, PlayerComposition var4, NPCComposition var5, NpcOverrides var6) {
 		field3754 = false;
 		int var7;
 		int var8;
@@ -1353,7 +1353,7 @@ public class Widget extends Node {
 		} else if (var7 == 1 && var8 == -1) {
 			return null;
 		} else {
-			if (var6 != null && var6.field1994 && var7 == 6) {
+			if (var6 != null && var6.useLocalPlayer && var7 == 6) {
 				var7 = 3;
 			}
 
@@ -1372,7 +1372,7 @@ public class Widget extends Node {
 					var12 = ModelData.ModelData_get(BoundaryObject.field2818, var8, 0);
 					break;
 				case 2:
-					var12 = Tile.getNpcDefinition(var8).method3709((NewStuff)null);
+					var12 = Tile.getNpcDefinition(var8).method3709((NpcOverrides)null);
 					break;
 				case 3:
 					var12 = var4 != null ? var4.getModelData() : null;
