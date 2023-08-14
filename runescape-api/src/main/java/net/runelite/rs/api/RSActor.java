@@ -28,6 +28,7 @@ package net.runelite.rs.api;
 import net.runelite.api.Actor;
 import net.runelite.api.ActorSpotAnim;
 import net.runelite.api.IterableHashTable;
+import net.runelite.mapping.Construct;
 import net.runelite.mapping.Import;
 
 public interface RSActor extends RSRenderable, Actor
@@ -96,15 +97,20 @@ public interface RSActor extends RSRenderable, Actor
 	@Override
 	IterableHashTable<ActorSpotAnim> getSpotAnims();
 
-	@Import("updateSpotAnimation")
-	@Override
-	void createSpotAnim(int id, int spotAnimId, int height, int delay);
+	@Construct
+	RSActorSpotAnim newActorSpotAnim(int id, int height, int delay, int frame);
 
 	@Import("clearSpotAnimations")
 	@Override
 	void clearSpotAnims();
 
-	@Import("spotAnimation")
+	@Import("graphicsCount")
+	int getGraphicsCount();
+
+	@Import("graphicsCount")
+	void setGraphicsCount(int count);
+
+	/*@Import("spotAnimation")
 	@Override
 	int getGraphic();
 
@@ -112,10 +118,7 @@ public interface RSActor extends RSRenderable, Actor
 	@Override
 	void setGraphic(int id);
 
-	@Import("graphicsCount")
-	int getGraphicsCount();
-
-	/*@Import("spotAnimationHeight")
+	@Import("spotAnimationHeight")
 	@Override
 	int getGraphicHeight();
 
