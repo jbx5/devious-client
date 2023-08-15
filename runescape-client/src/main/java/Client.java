@@ -4739,7 +4739,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 						}
 
 						if (var89 == null) {
-							var89 = WorldMapLabelSize.method5085(var7, var8, var57);
+							var89 = WorldMapLabelSize.openInterface(var7, var8, var57);
 						}
 					}
 
@@ -5381,7 +5381,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 						Actor.closeInterface(var82, var22 != var82.group);
 					}
 
-					WorldMapLabelSize.method5085(var20, var22, var5);
+					WorldMapLabelSize.openInterface(var20, var22, var5);
 					var1.serverPacket = null;
 					return true;
 				}

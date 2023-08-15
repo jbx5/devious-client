@@ -79,7 +79,8 @@ public class WorldMapLabelSize {
 		descriptor = "(IIII)Ldn;",
 		garbageValue = "977578301"
 	)
-	static final InterfaceParent method5085(int var0, int var1, int var2) {
+	@Export("openInterface")
+	static final InterfaceParent openInterface(int var0, int var1, int var2) {
 		InterfaceParent var3 = new InterfaceParent();
 		var3.group = var1;
 		var3.type = var2;

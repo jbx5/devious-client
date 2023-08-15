@@ -516,6 +516,10 @@ public interface RSClient extends RSGameEngine, Client
 	@Override
 	RSArchive getIndexScripts();
 
+	@Import("openInterface")
+	@Override
+	WidgetNode openInterface(int componentId, int interfaceId, int modalMode);
+
 	@Import("closeInterface")
 	@Override
 	void closeInterface(WidgetNode interfaceNode, boolean unload);
