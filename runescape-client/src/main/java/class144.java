@@ -1,104 +1,62 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fu")
+@ObfuscatedName("fz")
 public class class144 extends class143 {
-	@ObfuscatedName("aw")
+	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		intValue = -109906921
+		intValue = -974781301
 	)
-	int field1649;
-	@ObfuscatedName("ay")
-	boolean field1648;
+	int field1672;
+	@ObfuscatedName("ae")
+	boolean field1670;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lfr;"
+		descriptor = "Lfn;"
 	)
 	final class146 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lfr;)V"
+		descriptor = "(Lfn;)V"
 	)
 	class144(class146 var1) {
 		this.this$0 = var1;
-		this.field1649 = -1;
+		this.field1672 = -1;
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(Lty;B)V",
-		garbageValue = "1"
+		descriptor = "(Ltm;I)V",
+		garbageValue = "209179459"
 	)
-	void vmethod3412(Buffer var1) {
-		this.field1649 = var1.readUnsignedShort();
-		this.field1648 = var1.readUnsignedByte() == 1;
+	void vmethod3337(Buffer var1) {
+		this.field1672 = var1.readUnsignedShort();
+		this.field1670 = var1.readUnsignedByte() == 1;
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(Lfx;B)V",
-		garbageValue = "-72"
+		descriptor = "(Lfi;B)V",
+		garbageValue = "73"
 	)
-	void vmethod3419(ClanSettings var1) {
-		var1.method3259(this.field1649, this.field1648);
+	void vmethod3339(ClanSettings var1) {
+		var1.method3232(this.field1672, this.field1670);
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/util/ArrayList;ZI)V",
-		garbageValue = "1982957469"
+		descriptor = "(IIII)I",
+		garbageValue = "-2136715015"
 	)
-	static void method3148(ArrayList var0, boolean var1) {
-		if (!var1) {
-			class306.field3398.clear();
-		}
-
-		Iterator var2 = var0.iterator();
-
-		while (var2.hasNext()) {
-			MusicSong var3 = (MusicSong)var2.next();
-			if (var3.musicTrackGroupId != -1 && var3.musicTrackFileId != -1) {
-				if (!var1) {
-					class306.field3398.add(var3);
-				}
-
-				class306.field3396.add(var3);
-			}
-		}
-
-	}
-
-	@ObfuscatedName("cs")
-	@ObfuscatedSignature(
-		descriptor = "(Ltm;I)Ljava/lang/Object;",
-		garbageValue = "-1359810813"
-	)
-	static Object method3147(class503 var0) {
-		if (var0 == null) {
-			throw new IllegalStateException("popValueOfType() failure - null baseVarType");
+	public static int method3118(int var0, int var1, int var2) {
+		var2 &= 3;
+		if (var2 == 0) {
+			return var1;
+		} else if (var2 == 1) {
+			return 7 - var0;
 		} else {
-			switch(var0.field5031) {
-			case 0:
-				return Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-			case 2:
-				return Interpreter.Interpreter_stringStack[--Interpreter.Interpreter_stringStackSize];
-			default:
-				throw new IllegalStateException("popValueOfType() failure - unsupported type");
-			}
+			return var2 == 2 ? 7 - var1 : var0;
 		}
-	}
-
-	@ObfuscatedName("mm")
-	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "2108978122"
-	)
-	@Export("getTapToDrop")
-	static boolean getTapToDrop() {
-		return Client.tapToDrop;
 	}
 }

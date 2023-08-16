@@ -3,66 +3,63 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gc")
+@ObfuscatedName("gu")
 public class class156 extends class159 {
-	@ObfuscatedName("be")
-	@ObfuscatedSignature(
-		descriptor = "Luk;"
-	)
-	@Export("rasterProvider")
-	public static AbstractRasterProvider rasterProvider;
-	@ObfuscatedName("aw")
+	@ObfuscatedName("wl")
+	@Export("foundItemIds")
+	static short[] foundItemIds;
+	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		intValue = 1707991095
+		intValue = 1961987563
 	)
-	int field1739;
-	@ObfuscatedName("ay")
-	byte field1737;
-	@ObfuscatedName("ar")
+	int field1758;
+	@ObfuscatedName("ae")
+	byte field1757;
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = -1471659389
+		intValue = 1314479155
 	)
-	int field1738;
-	@ObfuscatedName("am")
-	String field1740;
+	int field1756;
+	@ObfuscatedName("at")
+	String field1759;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lgs;"
+		descriptor = "Lgg;"
 	)
 	final class160 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lgs;)V"
+		descriptor = "(Lgg;)V"
 	)
 	class156(class160 var1) {
 		this.this$0 = var1;
-		this.field1739 = -1;
+		this.field1758 = -1;
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(Lty;B)V",
-		garbageValue = "-43"
+		descriptor = "(Ltm;B)V",
+		garbageValue = "1"
 	)
-	void vmethod3411(Buffer var1) {
+	void vmethod3333(Buffer var1) {
 		var1.readUnsignedByte();
-		this.field1739 = var1.readUnsignedShort();
-		this.field1737 = var1.readByte();
-		this.field1738 = var1.readUnsignedShort();
+		this.field1758 = var1.readUnsignedShort();
+		this.field1757 = var1.readByte();
+		this.field1756 = var1.readUnsignedShort();
 		var1.readLong();
-		this.field1740 = var1.readStringCp1252NullTerminated();
+		this.field1759 = var1.readStringCp1252NullTerminated();
 		var1.readUnsignedByte();
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(Lgh;I)V",
-		garbageValue = "-2132107044"
+		descriptor = "(Lgo;I)V",
+		garbageValue = "831405774"
 	)
-	void vmethod3404(ClanChannel var1) {
-		ClanChannelMember var2 = (ClanChannelMember)var1.members.get(this.field1739);
-		var2.rank = this.field1737;
-		var2.world = this.field1738;
-		var2.username = new Username(this.field1740);
+	void vmethod3332(ClanChannel var1) {
+		ClanChannelMember var2 = (ClanChannelMember)var1.members.get(this.field1758);
+		var2.rank = this.field1757;
+		var2.world = this.field1756;
+		var2.username = new Username(this.field1759);
 	}
 }

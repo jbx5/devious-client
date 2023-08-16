@@ -1,32 +1,24 @@
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("te")
-final class class500 implements class499 {
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Object;Lty;I)V",
-		garbageValue = "-791895690"
-	)
-	public void vmethod8956(Object var1, Buffer var2) {
-		this.method8911((Integer)var1, var2);
+@ObfuscatedName("tq")
+public class class500 {
+	@ObfuscatedName("ae")
+	static final int[] field5024;
+
+	static {
+		field5024 = new int[]{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, -1, 1, -1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, -1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 3, 3, 1, 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("jy")
 	@ObfuscatedSignature(
-		descriptor = "(Lty;I)Ljava/lang/Object;",
-		garbageValue = "1270618633"
+		descriptor = "(B)V",
+		garbageValue = "108"
 	)
-	public Object vmethod8959(Buffer var1) {
-		return var1.readInt();
-	}
+	static void method8904() {
+		for (class211 var0 = (class211)Client.field780.last(); var0 != null; var0 = (class211)Client.field780.previous()) {
+			var0.remove();
+		}
 
-	@ObfuscatedName("av")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Integer;Lty;I)V",
-		garbageValue = "-603205344"
-	)
-	void method8911(Integer var1, Buffer var2) {
-		var2.writeInt(var1);
 	}
 }

@@ -5,109 +5,77 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ei")
+@ObfuscatedName("et")
 @Implements("UrlRequest")
 public class UrlRequest {
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedGetter(
-		intValue = -912482897
+		intValue = 513778063
 	)
-	static int field1435;
-	@ObfuscatedName("ar")
+	static int field1454;
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = -1301970509
+		intValue = -2063335977
 	)
-	static int field1441;
-	@ObfuscatedName("aw")
-	final URL field1436;
-	@ObfuscatedName("am")
+	static int field1455;
+	@ObfuscatedName("ad")
+	public static short[] field1458;
+	@ObfuscatedName("au")
+	final URL field1453;
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		intValue = 872753895
+		intValue = 2063603547
 	)
-	volatile int field1437;
-	@ObfuscatedName("as")
+	volatile int field1456;
+	@ObfuscatedName("ac")
 	@Export("response0")
 	volatile byte[] response0;
 
 	static {
-		field1435 = -1;
-		field1441 = -2;
+		field1454 = -1;
+		field1455 = -2;
 	}
 
 	UrlRequest(URL var1) {
-		this.field1437 = field1435;
-		this.field1436 = var1;
+		this.field1456 = field1454;
+		this.field1453 = var1;
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "-1097483800"
+		garbageValue = "1941771443"
 	)
 	@Export("isDone")
 	public boolean isDone() {
-		return this.field1437 != field1435;
+		return this.field1456 != field1454;
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "(I)[B",
-		garbageValue = "114961803"
+		garbageValue = "-90219734"
 	)
 	@Export("getResponse")
 	public byte[] getResponse() {
 		return this.response0;
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
 		descriptor = "(I)Ljava/lang/String;",
-		garbageValue = "-1911821505"
+		garbageValue = "79865594"
 	)
-	public String method2839() {
-		return this.field1436.toString();
+	public String method2848() {
+		return this.field1453.toString();
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(IB)I",
-		garbageValue = "12"
+		descriptor = "(I)[Lnb;",
+		garbageValue = "2139207855"
 	)
-	public static int method2837(int var0) {
-		--var0;
-		var0 |= var0 >>> 1;
-		var0 |= var0 >>> 2;
-		var0 |= var0 >>> 4;
-		var0 |= var0 >>> 8;
-		var0 |= var0 >>> 16;
-		return var0 + 1;
-	}
-
-	@ObfuscatedName("nl")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;ZB)Ljava/lang/String;",
-		garbageValue = "80"
-	)
-	static String method2850(String var0, boolean var1) {
-		String var2 = var1 ? "https://" : "http://";
-		if (Client.gameBuild == 1) {
-			var0 = var0 + "-wtrc";
-		} else if (Client.gameBuild == 2) {
-			var0 = var0 + "-wtqa";
-		} else if (Client.gameBuild == 3) {
-			var0 = var0 + "-wtwip";
-		} else if (Client.gameBuild == 5) {
-			var0 = var0 + "-wti";
-		} else if (Client.gameBuild == 4) {
-			var0 = "local";
-		}
-
-		String var3 = "";
-		if (class36.field263 != null) {
-			var3 = "/p=" + class36.field263;
-		}
-
-		String var4 = "runescape.com";
-		return var2 + var0 + "." + var4 + "/l=" + Interpreter.clientLanguage + "/a=" + PcmPlayer.field299 + var3 + "/";
+	public static GameBuild[] method2855() {
+		return new GameBuild[]{GameBuild.LIVE, GameBuild.RC, GameBuild.WIP, GameBuild.BUILDLIVE};
 	}
 }

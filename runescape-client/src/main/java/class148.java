@@ -3,88 +3,77 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fn")
+@ObfuscatedName("ff")
 public class class148 extends class143 {
-	@ObfuscatedName("fn")
-	@ObfuscatedSignature(
-		descriptor = "Lny;"
-	)
-	static Archive field1670;
-	@ObfuscatedName("jb")
-	@ObfuscatedGetter(
-		intValue = -607814879
-	)
-	@Export("baseY")
-	static int baseY;
 	@ObfuscatedName("aw")
+	@Export("BZip2Decompressor_block")
+	static int[] BZip2Decompressor_block;
+	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		intValue = 1269845755
+		intValue = 2023525395
 	)
-	int field1669;
-	@ObfuscatedName("ay")
+	int field1694;
+	@ObfuscatedName("ae")
 	@ObfuscatedGetter(
-		intValue = -4986227
+		intValue = -513761011
 	)
-	int field1666;
-	@ObfuscatedName("ar")
+	int field1695;
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = 57408083
+		intValue = 22358023
 	)
-	int field1668;
-	@ObfuscatedName("am")
+	int field1696;
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		intValue = 1191160211
+		intValue = 1866813797
 	)
-	int field1667;
+	int field1697;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lfr;"
+		descriptor = "Lfn;"
 	)
 	final class146 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lfr;)V"
+		descriptor = "(Lfn;)V"
 	)
 	class148(class146 var1) {
 		this.this$0 = var1;
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(Lty;B)V",
-		garbageValue = "1"
+		descriptor = "(Ltm;I)V",
+		garbageValue = "209179459"
 	)
-	void vmethod3412(Buffer var1) {
-		this.field1669 = var1.readInt();
-		this.field1667 = var1.readInt();
-		this.field1666 = var1.readUnsignedByte();
-		this.field1668 = var1.readUnsignedByte();
+	void vmethod3337(Buffer var1) {
+		this.field1694 = var1.readInt();
+		this.field1697 = var1.readInt();
+		this.field1695 = var1.readUnsignedByte();
+		this.field1696 = var1.readUnsignedByte();
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(Lfx;B)V",
-		garbageValue = "-72"
+		descriptor = "(Lfi;B)V",
+		garbageValue = "73"
 	)
-	void vmethod3419(ClanSettings var1) {
-		var1.method3237(this.field1669, this.field1667, this.field1666, this.field1668);
+	void vmethod3339(ClanSettings var1) {
+		var1.method3194(this.field1694, this.field1697, this.field1695, this.field1696);
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "(ILrg;Lny;B)V",
-		garbageValue = "98"
+		descriptor = "(CI)Z",
+		garbageValue = "236426958"
 	)
-	static void method3170(int var0, ArchiveDisk var1, Archive var2) {
-		ArchiveDiskAction var3 = new ArchiveDiskAction();
-		var3.type = 1;
-		var3.key = (long)var0;
-		var3.archiveDisk = var1;
-		var3.archive = var2;
-		synchronized(ArchiveDiskActionHandler.ArchiveDiskActionHandler_requestQueue) {
-			ArchiveDiskActionHandler.ArchiveDiskActionHandler_requestQueue.addFirst(var3);
+	static boolean method3144(char var0) {
+		for (int var1 = 0; var1 < "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!\"ï¿½$%^&*()-_=+[{]};:'@#~,<.>/?\\| ".length(); ++var1) {
+			if (var0 == "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!\"ï¿½$%^&*()-_=+[{]};:'@#~,<.>/?\\| ".charAt(var1)) {
+				return true;
+			}
 		}
 
-		class292.method5721();
+		return false;
 	}
 }

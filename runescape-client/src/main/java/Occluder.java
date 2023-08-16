@@ -3,262 +3,172 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("jp")
+@ObfuscatedName("jn")
 @Implements("Occluder")
 public final class Occluder {
-	@ObfuscatedName("aw")
+	@ObfuscatedName("nc")
 	@ObfuscatedGetter(
-		intValue = 1148791337
+		intValue = 1693604393
+	)
+	@Export("menuHeight")
+	static int menuHeight;
+	@ObfuscatedName("au")
+	@ObfuscatedGetter(
+		intValue = 1361881663
 	)
 	@Export("minTileX")
 	int minTileX;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedGetter(
-		intValue = -1927773105
+		intValue = -254851491
 	)
 	@Export("maxTileX")
 	int maxTileX;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = 1965169437
+		intValue = 892109197
 	)
 	@Export("minTileY")
 	int minTileY;
-	@ObfuscatedName("am")
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		intValue = -1819175199
+		intValue = 1262324027
 	)
 	@Export("maxTileY")
 	int maxTileY;
-	@ObfuscatedName("as")
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = 1773446457
+		intValue = 1521030227
 	)
 	@Export("type")
 	int type;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ai")
 	@ObfuscatedGetter(
-		intValue = -1477913661
+		intValue = -1488032469
 	)
 	@Export("minX")
 	int minX;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("az")
 	@ObfuscatedGetter(
-		intValue = 1509749317
+		intValue = -234343827
 	)
 	@Export("maxX")
 	int maxX;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = 1331461521
+		intValue = 90793175
 	)
 	@Export("minZ")
 	int minZ;
-	@ObfuscatedName("av")
+	@ObfuscatedName("aa")
 	@ObfuscatedGetter(
-		intValue = -1242590627
+		intValue = 211986193
 	)
 	@Export("maxZ")
 	int maxZ;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("af")
 	@ObfuscatedGetter(
-		intValue = 577069867
+		intValue = -1860757305
 	)
 	@Export("minY")
 	int minY;
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ad")
 	@ObfuscatedGetter(
-		intValue = 1023812635
+		intValue = -1051252903
 	)
 	@Export("maxY")
 	int maxY;
-	@ObfuscatedName("at")
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = 438844335
+		intValue = 1064543433
 	)
-	int field2634;
-	@ObfuscatedName("ah")
+	int field2657;
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = -2044772523
+		intValue = -1575321813
 	)
-	int field2635;
-	@ObfuscatedName("ax")
+	int field2658;
+	@ObfuscatedName("an")
 	@ObfuscatedGetter(
-		intValue = -1905669369
+		intValue = -471429039
 	)
-	int field2636;
-	@ObfuscatedName("aa")
+	int field2661;
+	@ObfuscatedName("ar")
 	@ObfuscatedGetter(
-		intValue = 262703333
+		intValue = 623652531
 	)
-	int field2631;
-	@ObfuscatedName("au")
-	@ObfuscatedGetter(
-		intValue = -207007623
-	)
-	int field2638;
-	@ObfuscatedName("ae")
-	@ObfuscatedGetter(
-		intValue = -1859003431
-	)
-	int field2623;
+	int field2660;
 	@ObfuscatedName("ab")
 	@ObfuscatedGetter(
-		intValue = -1187966279
+		intValue = 2072845555
 	)
-	int field2640;
+	int field2664;
+	@ObfuscatedName("ag")
+	@ObfuscatedGetter(
+		intValue = -721294081
+	)
+	int field2654;
+	@ObfuscatedName("am")
+	@ObfuscatedGetter(
+		intValue = -1741613857
+	)
+	int field2646;
 
 	Occluder() {
 	}
 
-	@ObfuscatedName("bp")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(ILdc;ZI)I",
-		garbageValue = "402674072"
+		descriptor = "(IIIZIZI)V",
+		garbageValue = "124948705"
 	)
-	static int method4753(int var0, Script var1, boolean var2) {
-		int var3;
-		if (var0 == ScriptOpcodes.STOCKMARKET_GETOFFERTYPE) {
-			var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Client.grandExchangeOffers[var3].type();
-			return 1;
-		} else if (var0 == ScriptOpcodes.STOCKMARKET_GETOFFERITEM) {
-			var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Client.grandExchangeOffers[var3].id;
-			return 1;
-		} else if (var0 == ScriptOpcodes.STOCKMARKET_GETOFFERPRICE) {
-			var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Client.grandExchangeOffers[var3].unitPrice;
-			return 1;
-		} else if (var0 == ScriptOpcodes.STOCKMARKET_GETOFFERCOUNT) {
-			var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Client.grandExchangeOffers[var3].totalQuantity;
-			return 1;
-		} else if (var0 == ScriptOpcodes.STOCKMARKET_GETOFFERCOMPLETEDCOUNT) {
-			var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Client.grandExchangeOffers[var3].currentQuantity;
-			return 1;
-		} else if (var0 == ScriptOpcodes.STOCKMARKET_GETOFFERCOMPLETEDGOLD) {
-			var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Client.grandExchangeOffers[var3].currentPrice;
-			return 1;
-		} else {
-			int var13;
-			if (var0 == ScriptOpcodes.STOCKMARKET_ISOFFEREMPTY) {
-				var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-				var13 = Client.grandExchangeOffers[var3].status();
-				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var13 == 0 ? 1 : 0;
-				return 1;
-			} else if (var0 == ScriptOpcodes.STOCKMARKET_ISOFFERSTABLE) {
-				var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-				var13 = Client.grandExchangeOffers[var3].status();
-				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var13 == 2 ? 1 : 0;
-				return 1;
-			} else if (var0 == ScriptOpcodes.STOCKMARKET_ISOFFERFINISHED) {
-				var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-				var13 = Client.grandExchangeOffers[var3].status();
-				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var13 == 5 ? 1 : 0;
-				return 1;
-			} else if (var0 == ScriptOpcodes.STOCKMARKET_ISOFFERADDING) {
-				var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-				var13 = Client.grandExchangeOffers[var3].status();
-				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var13 == 1 ? 1 : 0;
-				return 1;
-			} else {
-				boolean var12;
-				if (var0 == ScriptOpcodes.TRADINGPOST_SORTBY_NAME) {
-					var12 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize] == 1;
-					if (class28.grandExchangeEvents != null) {
-						class28.grandExchangeEvents.sort(GrandExchangeEvents.GrandExchangeEvents_nameComparator, var12);
-					}
+	@Export("doWorldSorting")
+	static void doWorldSorting(int var0, int var1, int var2, boolean var3, int var4, boolean var5) {
+		if (var0 < var1) {
+			int var6 = (var0 + var1) / 2;
+			int var7 = var0;
+			World var8 = class176.World_worlds[var6];
+			class176.World_worlds[var6] = class176.World_worlds[var1];
+			class176.World_worlds[var1] = var8;
 
-					return 1;
-				} else if (var0 == ScriptOpcodes.TRADINGPOST_SORTBY_PRICE) {
-					var12 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize] == 1;
-					if (class28.grandExchangeEvents != null) {
-						class28.grandExchangeEvents.sort(GrandExchangeEvents.GrandExchangeEvents_priceComparator, var12);
-					}
-
-					return 1;
-				} else if (var0 == ScriptOpcodes.TRADINGPOST_SORTFILTERBY_WORLD) {
-					Interpreter.Interpreter_intStackSize -= 2;
-					var12 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize] == 1;
-					boolean var11 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1] == 1;
-					if (class28.grandExchangeEvents != null) {
-						Client.GrandExchangeEvents_worldComparator.filterWorlds = var11;
-						class28.grandExchangeEvents.sort(Client.GrandExchangeEvents_worldComparator, var12);
-					}
-
-					return 1;
-				} else if (var0 == ScriptOpcodes.TRADINGPOST_SORTBY_AGE) {
-					var12 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize] == 1;
-					if (class28.grandExchangeEvents != null) {
-						class28.grandExchangeEvents.sort(GrandExchangeEvents.GrandExchangeEvents_ageComparator, var12);
-					}
-
-					return 1;
-				} else if (var0 == ScriptOpcodes.TRADINGPOST_SORTBY_COUNT) {
-					var12 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize] == 1;
-					if (class28.grandExchangeEvents != null) {
-						class28.grandExchangeEvents.sort(GrandExchangeEvents.GrandExchangeEvents_quantityComparator, var12);
-					}
-
-					return 1;
-				} else if (var0 == ScriptOpcodes.TRADINGPOST_GETTOTALOFFERS) {
-					Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = class28.grandExchangeEvents == null ? 0 : class28.grandExchangeEvents.events.size();
-					return 1;
-				} else {
-					GrandExchangeEvent var4;
-					if (var0 == ScriptOpcodes.TRADINGPOST_GETOFFERWORLD) {
-						var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-						var4 = (GrandExchangeEvent)class28.grandExchangeEvents.events.get(var3);
-						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var4.world;
-						return 1;
-					} else if (var0 == ScriptOpcodes.TRADINGPOST_GETOFFERNAME) {
-						var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-						var4 = (GrandExchangeEvent)class28.grandExchangeEvents.events.get(var3);
-						Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var4.getOfferName();
-						return 1;
-					} else if (var0 == ScriptOpcodes.TRADINGPOST_GETOFFERPREVIOUSNAME) {
-						var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-						var4 = (GrandExchangeEvent)class28.grandExchangeEvents.events.get(var3);
-						Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var4.getPreviousOfferName();
-						return 1;
-					} else if (var0 == ScriptOpcodes.TRADINGPOST_GETOFFERAGE) {
-						var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-						var4 = (GrandExchangeEvent)class28.grandExchangeEvents.events.get(var3);
-						long var5 = class113.method2835() - VerticalAlignment.field2049 - var4.age;
-						int var7 = (int)(var5 / 3600000L);
-						int var8 = (int)((var5 - (long)(var7 * 3600000)) / 60000L);
-						int var9 = (int)((var5 - (long)(var7 * 3600000) - (long)(var8 * 60000)) / 1000L);
-						String var10 = var7 + ":" + var8 / 10 + var8 % 10 + ":" + var9 / 10 + var9 % 10;
-						Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var10;
-						return 1;
-					} else if (var0 == ScriptOpcodes.TRADINGPOST_GETOFFERCOUNT) {
-						var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-						var4 = (GrandExchangeEvent)class28.grandExchangeEvents.events.get(var3);
-						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var4.grandExchangeOffer.totalQuantity;
-						return 1;
-					} else if (var0 == ScriptOpcodes.TRADINGPOST_GETOFFERPRICE) {
-						var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-						var4 = (GrandExchangeEvent)class28.grandExchangeEvents.events.get(var3);
-						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var4.grandExchangeOffer.unitPrice;
-						return 1;
-					} else if (var0 == ScriptOpcodes.TRADINGPOST_GETOFFERITEM) {
-						var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-						var4 = (GrandExchangeEvent)class28.grandExchangeEvents.events.get(var3);
-						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var4.grandExchangeOffer.id;
-						return 1;
-					} else if (var0 == 3939) {
-						var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = class125.ItemDefinition_get(var3).isTradable ? 1 : 0;
-						return 1;
-					} else {
-						return 2;
-					}
+			for (int var9 = var0; var9 < var1; ++var9) {
+				if (HealthBarUpdate.method2411(class176.World_worlds[var9], var8, var2, var3, var4, var5) <= 0) {
+					World var10 = class176.World_worlds[var9];
+					class176.World_worlds[var9] = class176.World_worlds[var7];
+					class176.World_worlds[var7++] = var10;
 				}
+			}
+
+			class176.World_worlds[var1] = class176.World_worlds[var7];
+			class176.World_worlds[var7] = var8;
+			doWorldSorting(var0, var7 - 1, var2, var3, var4, var5);
+			doWorldSorting(var7 + 1, var1, var2, var3, var4, var5);
+		}
+
+	}
+
+	@ObfuscatedName("jz")
+	@ObfuscatedSignature(
+		descriptor = "(Ldf;I)Z",
+		garbageValue = "-1141977008"
+	)
+	static boolean method4725(Player var0) {
+		if (Client.drawPlayerNames == 0) {
+			return false;
+		} else {
+			boolean var1;
+			if (VarbitComposition.localPlayer == var0) {
+				var1 = (Client.drawPlayerNames & 8) != 0;
+				return var1;
+			} else {
+				var1 = UserComparator6.method2921();
+				if (!var1) {
+					boolean var2 = (Client.drawPlayerNames & 1) != 0;
+					var1 = var2 && var0.isFriend();
+				}
+
+				return var1 || UrlRequester.method2831() && var0.isFriendsChatMember();
 			}
 		}
 	}

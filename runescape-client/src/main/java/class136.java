@@ -1,25 +1,18 @@
 import java.util.concurrent.Callable;
-import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fp")
+@ObfuscatedName("fj")
 class class136 implements Callable {
-	@ObfuscatedName("at")
+	@ObfuscatedName("cg")
 	@ObfuscatedGetter(
-		intValue = 430732007
+		intValue = -1603225811
 	)
-	static int field1606;
-	@ObfuscatedName("ma")
-	@ObfuscatedSignature(
-		descriptor = "Ldf;"
-	)
-	@Export("localPlayer")
-	static Player localPlayer;
+	static int field1615;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lfz;"
+		descriptor = "Lfv;"
 	)
 	final class137 this$0;
 	// $FF: synthetic field
@@ -33,7 +26,7 @@ class class136 implements Callable {
 	final class129[] val$curveLoadJobs;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lfz;II[Lep;)V"
+		descriptor = "(Lfv;II[Lep;)V"
 	)
 	class136(class137 var1, int var2, int var3, class129[] var4) {
 		this.this$0 = var1;

@@ -1,119 +1,109 @@
+import java.awt.Desktop;
+import java.awt.Desktop.Action;
+import java.net.URI;
 import javax.imageio.ImageIO;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bf")
+@ObfuscatedName("bt")
 public class class30 {
-	@ObfuscatedName("dk")
-	@ObfuscatedSignature(
-		descriptor = "[Luu;"
+	@ObfuscatedName("al")
+	@ObfuscatedGetter(
+		intValue = 183350311
 	)
-	@Export("worldSelectArrows")
-	static IndexedSprite[] worldSelectArrows;
+	static int field167;
+	@ObfuscatedName("he")
+	static String field166;
 
 	static {
 		ImageIO.setUseCache(false);
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(III)Ldc;",
-		garbageValue = "-1173392084"
+		descriptor = "(IIIB)Z",
+		garbageValue = "-75"
 	)
-	static Script method448(int var0, int var1) {
-		Script var2 = (Script)Script.Script_cached.get((long)(var0 << 16));
-		if (var2 != null) {
-			return var2;
-		} else {
-			String var3 = String.valueOf(var0);
-			int var4 = class126.archive12.getGroupId(var3);
-			if (var4 == -1) {
-				return null;
-			} else {
-				byte[] var5 = class126.archive12.takeFileFlat(var4);
-				if (var5 != null) {
-					if (var5.length <= 1) {
-						return null;
-					}
+	static boolean method453(int var0, int var1, int var2) {
+		return var0 >= 0 && var0 < 4 && var1 >= 0 && var1 < 104 && var2 >= 0 && var2 < 104;
+	}
 
-					var2 = SoundCache.newScript(var5);
-					if (var2 != null) {
-						Script.Script_cached.put(var2, (long)(var0 << 16));
-						return var2;
-					}
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;ZZB)V",
+		garbageValue = "-94"
+	)
+	@Export("openURL")
+	public static void openURL(String var0, boolean var1, boolean var2) {
+		if (var1) {
+			if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Action.BROWSE)) {
+				try {
+					Desktop.getDesktop().browse(new URI(var0));
+					return;
+				} catch (Exception var4) {
 				}
-
-				return null;
 			}
-		}
-	}
 
-	@ObfuscatedName("bg")
-	@ObfuscatedSignature(
-		descriptor = "(ILdc;ZI)I",
-		garbageValue = "2078832853"
-	)
-	static int method447(int var0, Script var1, boolean var2) {
-		return 2;
-	}
-
-	@ObfuscatedName("jn")
-	@ObfuscatedSignature(
-		descriptor = "(IIIIIIIB)V",
-		garbageValue = "-74"
-	)
-	static final void method446(int var0, int var1, int var2, int var3, int var4, int var5, int var6) {
-		var5 = UserList.method8016(var5, var6);
-		int var7 = 2048 - var3 & 2047;
-		int var8 = 2048 - var4 & 2047;
-		int var9 = 0;
-		int var10 = 0;
-		int var11 = var5;
-		int var12;
-		int var13;
-		int var14;
-		if (var7 != 0) {
-			var12 = Rasterizer3D.Rasterizer3D_sine[var7];
-			var13 = Rasterizer3D.Rasterizer3D_cosine[var7];
-			var14 = var13 * var10 - var12 * var5 >> 16;
-			var11 = var12 * var10 + var13 * var5 >> 16;
-			var10 = var14;
-		}
-
-		if (var8 != 0) {
-			var12 = Rasterizer3D.Rasterizer3D_sine[var8];
-			var13 = Rasterizer3D.Rasterizer3D_cosine[var8];
-			var14 = var12 * var11 + var13 * var9 >> 16;
-			var11 = var11 * var13 - var9 * var12 >> 16;
-			var9 = var14;
-		}
-
-		if (Client.isCameraLocked) {
-			class422.field4606 = var0 - var9;
-			FadeInTask.field4522 = var1 - var10;
-			ModeWhere.field4410 = var2 - var11;
-			class165.field1791 = var3;
-			class4.field11 = var4;
+			if (class31.field169.startsWith("win")) {
+				BoundaryObject.method5025(var0, 0);
+			} else if (class31.field169.startsWith("mac")) {
+				class299.method5716(var0, 1, "openjs");
+			} else {
+				BoundaryObject.method5025(var0, 2);
+			}
 		} else {
-			class157.cameraX = var0 - var9;
-			class384.cameraY = var1 - var10;
-			SoundSystem.cameraZ = var2 - var11;
-			class19.cameraPitch = var3;
-			class456.cameraYaw = var4;
+			BoundaryObject.method5025(var0, 3);
 		}
 
-		if (Client.oculusOrbState == 1 && Client.staffModLevel >= 2 && Client.cycle % 50 == 0 && (class467.oculusOrbFocalPointX >> 7 != class136.localPlayer.x >> 7 || class36.oculusOrbFocalPointY >> 7 != class136.localPlayer.y >> 7)) {
-			var12 = class136.localPlayer.plane;
-			var13 = AbstractArchive.baseX * 64 + (class467.oculusOrbFocalPointX >> 7);
-			var14 = class148.baseY * 64 + (class36.oculusOrbFocalPointY >> 7);
-			PacketBufferNode var15 = class503.getPacketBufferNode(ClientPacket.field3165, Client.packetWriter.isaacCipher);
-			var15.packetBuffer.writeIntIME(Client.field624);
-			var15.packetBuffer.writeShortAddLE(var13);
-			var15.packetBuffer.writeByteAdd(var12);
-			var15.packetBuffer.writeShortAdd(var14);
-			Client.packetWriter.addNode(var15);
+	}
+
+	@ObfuscatedName("ap")
+	@ObfuscatedSignature(
+		descriptor = "(I)[Luk;",
+		garbageValue = "694687164"
+	)
+	static IndexedSprite[] method454() {
+		IndexedSprite[] var0 = new IndexedSprite[class529.SpriteBuffer_spriteCount];
+
+		for (int var1 = 0; var1 < class529.SpriteBuffer_spriteCount; ++var1) {
+			IndexedSprite var2 = var0[var1] = new IndexedSprite();
+			var2.width = class529.SpriteBuffer_spriteWidth;
+			var2.height = class420.SpriteBuffer_spriteHeight;
+			var2.xOffset = class529.SpriteBuffer_xOffsets[var1];
+			var2.yOffset = class152.SpriteBuffer_yOffsets[var1];
+			var2.subWidth = HealthBarUpdate.SpriteBuffer_spriteWidths[var1];
+			var2.subHeight = SpriteMask.SpriteBuffer_spriteHeights[var1];
+			var2.palette = DbTableType.SpriteBuffer_spritePalette;
+			var2.pixels = Coord.SpriteBuffer_pixels[var1];
 		}
 
+		class529.SpriteBuffer_xOffsets = null;
+		class152.SpriteBuffer_yOffsets = null;
+		HealthBarUpdate.SpriteBuffer_spriteWidths = null;
+		SpriteMask.SpriteBuffer_spriteHeights = null;
+		DbTableType.SpriteBuffer_spritePalette = null;
+		Coord.SpriteBuffer_pixels = null;
+		return var0;
+	}
+
+	@ObfuscatedName("jw")
+	@ObfuscatedSignature(
+		descriptor = "(I)Low;",
+		garbageValue = "1819650636"
+	)
+	public static NodeDeque method446() {
+		return Client.scriptEvents;
+	}
+
+	@ObfuscatedName("mc")
+	@ObfuscatedSignature(
+		descriptor = "(B)Z",
+		garbageValue = "26"
+	)
+	@Export("getTapToDrop")
+	static boolean getTapToDrop() {
+		return Client.tapToDrop;
 	}
 }

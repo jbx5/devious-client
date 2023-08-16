@@ -1,85 +1,80 @@
 import java.util.Iterator;
-import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("tt")
-class class497 implements Iterator {
-	@ObfuscatedName("el")
+@ObfuscatedName("th")
+public class class497 extends class455 implements class283 {
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "Lde;"
+		descriptor = "Lnu;"
 	)
-	@Export("mouseRecorder")
-	static MouseRecorder mouseRecorder;
-	@ObfuscatedName("aw")
+	final AbstractArchive field5020;
+	@ObfuscatedName("ao")
+	@ObfuscatedSignature(
+		descriptor = "Lkg;"
+	)
+	final DemotingHashTable field5021;
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		intValue = 62282521
+		intValue = -1843835189
 	)
-	int field5017;
-	// $FF: synthetic field
-	@ObfuscatedSignature(
-		descriptor = "Ltp;"
-	)
-	final class498 this$0;
+	final int field5019;
 
 	@ObfuscatedSignature(
-		descriptor = "(Ltp;)V"
+		descriptor = "(Lns;ILon;Lnu;)V"
 	)
-	class497(class498 var1) {
-		this.this$0 = var1;
+	public class497(StudioGame var1, int var2, Language var3, AbstractArchive var4) {
+		super(var1, var3, var4 != null ? var4.getGroupFileCount(var2) : 0);
+		this.field5021 = new DemotingHashTable(64);
+		this.field5020 = var4;
+		this.field5019 = var2;
 	}
 
-	public boolean hasNext() {
-		return this.field5017 < this.this$0.method8357();
-	}
-
-	public Object next() {
-		int var1 = ++this.field5017 - 1;
-		class457 var2 = (class457)this.this$0.field5018.get((long)var1);
-		return var2 != null ? var2 : this.this$0.method8885(var1);
-	}
-
-	public void remove() {
-		throw new UnsupportedOperationException();
-	}
-
-	@ObfuscatedName("aw")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/CharSequence;I)Ljava/lang/String;",
-		garbageValue = "2111297623"
+		descriptor = "(IB)Lrv;",
+		garbageValue = "-32"
 	)
-	public static String method8882(CharSequence var0) {
-		int var1 = var0.length();
-		StringBuilder var2 = new StringBuilder(var1);
-
-		for (int var3 = 0; var3 < var1; ++var3) {
-			char var4 = var0.charAt(var3);
-			if ((var4 < 'a' || var4 > 'z') && (var4 < 'A' || var4 > 'Z') && (var4 < '0' || var4 > '9') && var4 != '.' && var4 != '-' && var4 != '*' && var4 != '_') {
-				if (var4 == ' ') {
-					var2.append('+');
-				} else {
-					byte var5 = class313.charToByteCp1252(var4);
-					var2.append('%');
-					int var6 = var5 >> 4 & 15;
-					if (var6 >= 10) {
-						var2.append((char)(var6 + 55));
-					} else {
-						var2.append((char)(var6 + 48));
-					}
-
-					var6 = var5 & 15;
-					if (var6 >= 10) {
-						var2.append((char)(var6 + 55));
-					} else {
-						var2.append((char)(var6 + 48));
-					}
-				}
-			} else {
-				var2.append(var4);
+	protected class457 vmethod8872(int var1) {
+		synchronized(this.field5021) {
+			class456 var2 = (class456)this.field5021.get((long)var1);
+			if (var2 == null) {
+				var2 = this.method8878(var1);
+				this.field5021.method5639(var2, (long)var1);
 			}
+
+			return var2;
+		}
+	}
+
+	@ObfuscatedName("ab")
+	@ObfuscatedSignature(
+		descriptor = "(IB)Lrg;",
+		garbageValue = "-117"
+	)
+	class456 method8878(int var1) {
+		byte[] var2 = this.field5020.takeFile(this.field5019, var1);
+		class456 var3 = new class456(var1);
+		if (var2 != null) {
+			var3.method8310(new Buffer(var2));
 		}
 
-		return var2.toString();
+		return var3;
+	}
+
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "322447059"
+	)
+	public void method8874() {
+		synchronized(this.field5021) {
+			this.field5021.clear();
+		}
+	}
+
+	public Iterator iterator() {
+		return new class496(this);
 	}
 }

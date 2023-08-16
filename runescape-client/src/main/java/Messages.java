@@ -1,3 +1,5 @@
+import java.io.DataInputStream;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import net.runelite.mapping.Export;
@@ -6,30 +8,32 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("eo")
+@ObfuscatedName("ea")
 @Implements("Messages")
 public class Messages {
-	@ObfuscatedName("aw")
+	@ObfuscatedName("au")
 	@Export("Messages_channels")
 	static final Map Messages_channels;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "Lsa;"
+		descriptor = "Lsf;"
 	)
 	@Export("Messages_hashTable")
 	static final IterableNodeHashTable Messages_hashTable;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "Loz;"
+		descriptor = "Lou;"
 	)
 	@Export("Messages_queue")
 	static final IterableDualNodeQueue Messages_queue;
-	@ObfuscatedName("am")
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		intValue = -1617029295
+		intValue = 938382897
 	)
 	@Export("Messages_count")
 	static int Messages_count;
+	@ObfuscatedName("as")
+	public static String field1422;
 
 	static {
 		Messages_channels = new HashMap();
@@ -38,13 +42,60 @@ public class Messages {
 		Messages_count = 0;
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(I)[Lls;",
-		garbageValue = "-1826957735"
+		descriptor = "(Ljava/lang/String;Ljava/lang/Throwable;I)V",
+		garbageValue = "886881488"
 	)
-	@Export("ServerPacket_values")
-	public static ServerPacket[] ServerPacket_values() {
-		return new ServerPacket[]{ServerPacket.NPC_SET_SEQUENCE, ServerPacket.field3216, ServerPacket.UPDATE_STOCKMARKET_SLOT, ServerPacket.PING_STATISTICS_REQUEST, ServerPacket.UPDATE_REBOOT_TIMER, ServerPacket.field3305, ServerPacket.field3221, ServerPacket.SET_PLAYER_OP, ServerPacket.VARP_LARGE, ServerPacket.IF_SETOBJECT, ServerPacket.URL_OPEN, ServerPacket.IF_MOVESUB, ServerPacket.field3235, ServerPacket.field3228, ServerPacket.field3229, ServerPacket.field3230, ServerPacket.field3231, ServerPacket.field3217, ServerPacket.UPDATE_INV_STOP_TRANSIT, ServerPacket.MESSAGE_PRIVATE_ECHO, ServerPacket.RUNCLIENTSCRIPT, ServerPacket.field3314, ServerPacket.PROJECTILE_SPAWN, ServerPacket.field3312, ServerPacket.field3239, ServerPacket.field3331, ServerPacket.IF_SETNPCHEAD, ServerPacket.IF_CLOSESUB, ServerPacket.UPDATE_STAT, ServerPacket.UPDATE_IGNORELIST, ServerPacket.IF_SETCOLOUR, ServerPacket.field3250, ServerPacket.NPC_SPOTANIM, ServerPacket.field3248, ServerPacket.field3249, ServerPacket.field3335, ServerPacket.field3251, ServerPacket.field3252, ServerPacket.GRAPHICSOBJECT_SPAWN, ServerPacket.VARP_SMALL, ServerPacket.CHAT_FILTER_SETTINGS, ServerPacket.field3219, ServerPacket.field3257, ServerPacket.field3258, ServerPacket.field3259, ServerPacket.field3260, ServerPacket.field3277, ServerPacket.HINT_ARROW, ServerPacket.EVENT_WORLDHOP, ServerPacket.field3246, ServerPacket.IF_SETANGLE, ServerPacket.field3296, ServerPacket.MESSAGE_PRIVATE, ServerPacket.IF_SETSCROLLPOS, ServerPacket.REBUILD_REGION, ServerPacket.DYNAMICOBJECT_SPAWN, ServerPacket.MESSAGE_GAME, ServerPacket.UPDATE_INV_PARTIAL, ServerPacket.field3273, ServerPacket.field3274, ServerPacket.IF_SETMODEL, ServerPacket.UPDATE_UID192, ServerPacket.SYNC_CLIENT_VARCACHE, ServerPacket.field3291, ServerPacket.CAM_SETANGLE, ServerPacket.MINIMAP_FLAG_SET, ServerPacket.MINIMAP_TOGGLE, ServerPacket.UPDATE_FRIENDLIST, ServerPacket.TRIGGER_ONDIALOG_ABORT, ServerPacket.field3284, ServerPacket.PLAYER_SPOTANIM, ServerPacket.field3286, ServerPacket.IF_SETPOSITION, ServerPacket.UPDATE_INV_FULL, ServerPacket.RESET_CLIENT_VARCACHE, ServerPacket.field3290, ServerPacket.NPC_INFO_LARGE_VIEWPORT_2, ServerPacket.MESSAGE_FRIENDS_CHAT, ServerPacket.SET_PRIVCHATMODE, ServerPacket.PLAYER_INFO, ServerPacket.field3232, ServerPacket.field3223, ServerPacket.field3297, ServerPacket.field3298, ServerPacket.field3322, ServerPacket.REFLECTION_CHECKER, ServerPacket.field3280, ServerPacket.field3302, ServerPacket.field3299, ServerPacket.MIDI_SONG, ServerPacket.IF_SETHIDE, ServerPacket.field3306, ServerPacket.field3224, ServerPacket.field3308, ServerPacket.UPDATE_ZONE_FULL_FOLLOWS, ServerPacket.UPDATE_INV_CLEAR, ServerPacket.field3311, ServerPacket.CAM_RESET, ServerPacket.field3313, ServerPacket.REBUILD_NORMAL, ServerPacket.LOGOUT, ServerPacket.LOGOUT_FULL, ServerPacket.UPDATE_ZONE_PARTIAL_ENCLOSED, ServerPacket.field3318, ServerPacket.field3319, ServerPacket.field3303, ServerPacket.field3321, ServerPacket.field3247, ServerPacket.CAM_LOOKAT, ServerPacket.field3324, ServerPacket.field3325, ServerPacket.IF_SETPLAYERHEAD, ServerPacket.field3327, ServerPacket.field3328, ServerPacket.field3329, ServerPacket.NPC_INFO_SMALL_VIEWPORT_1, ServerPacket.field3332, ServerPacket.field3270, ServerPacket.field3220, ServerPacket.field3334, ServerPacket.field3301, ServerPacket.field3336};
+	@Export("RunException_sendStackTrace")
+	public static void RunException_sendStackTrace(String var0, Throwable var1) {
+		if (var1 != null) {
+			var1.printStackTrace();
+		} else {
+			try {
+				String var2 = "";
+				if (var1 != null) {
+					var2 = class493.method8807(var1);
+				}
+
+				if (var0 != null) {
+					if (var1 != null) {
+						var2 = var2 + " | ";
+					}
+
+					var2 = var2 + var0;
+				}
+
+				System.out.println("Error: " + var2);
+				var2 = var2.replace(':', '.');
+				var2 = var2.replace('@', '_');
+				var2 = var2.replace('&', '_');
+				var2 = var2.replace('#', '_');
+				if (RunException.RunException_applet == null) {
+					return;
+				}
+
+				URL var3 = new URL(RunException.RunException_applet.getCodeBase(), "clienterror.ws?cv=" + RunException.RunException_revision + "&cs=" + RunException.field5266 + "&u=" + RunException.field5263 + "&v1=" + TaskHandler.javaVendor + "&v2=" + class106.javaVersion + "&ct=" + RunException.field5267 + "&e=" + var2);
+				DataInputStream var4 = new DataInputStream(var3.openStream());
+				var4.read();
+				var4.close();
+			} catch (Exception var5) {
+			}
+
+		}
+	}
+
+	@ObfuscatedName("bw")
+	@ObfuscatedSignature(
+		descriptor = "(ILdh;ZI)I",
+		garbageValue = "1446947589"
+	)
+	static int method2771(int var0, Script var1, boolean var2) {
+		if (var0 == 7108) {
+			Interpreter.Interpreter_intStack[++SoundCache.Interpreter_intStackSize - 1] = UserList.method7991() ? 1 : 0;
+			return 1;
+		} else {
+			return 2;
+		}
 	}
 }

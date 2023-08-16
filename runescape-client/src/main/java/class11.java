@@ -4,7 +4,6 @@ import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
 import java.util.LinkedList;
 import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 import org.bouncycastle.crypto.tls.Certificate;
@@ -12,36 +11,16 @@ import org.bouncycastle.crypto.tls.CertificateRequest;
 import org.bouncycastle.crypto.tls.TlsAuthentication;
 import org.bouncycastle.crypto.tls.TlsCredentials;
 
-@ObfuscatedName("at")
+@ObfuscatedName("aq")
 class class11 implements TlsAuthentication {
-	@ObfuscatedName("aa")
-	@ObfuscatedSignature(
-		descriptor = "Luu;"
-	)
-	@Export("options_buttons_2Sprite")
-	static IndexedSprite options_buttons_2Sprite;
-	@ObfuscatedName("gq")
-	@ObfuscatedGetter(
-		intValue = 2026827067
-	)
-	@Export("js5Port")
-	static int js5Port;
-	@ObfuscatedName("gb")
-	static String field65;
-	@ObfuscatedName("sj")
-	@ObfuscatedSignature(
-		descriptor = "Lfx;"
-	)
-	@Export("guestClanSettings")
-	static ClanSettings guestClanSettings;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lax;"
+		descriptor = "Lan;"
 	)
 	final class13 this$2;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lax;)V"
+		descriptor = "(Lan;)V"
 	)
 	class11(class13 var1) {
 		this.this$2 = var1;
@@ -58,7 +37,7 @@ class class11 implements TlsAuthentication {
 				var3.add(var2.generateCertificate(new ByteArrayInputStream(var6.getEncoded())));
 			}
 
-			this.this$2.this$1.field67 = (java.security.cert.Certificate[])((java.security.cert.Certificate[])var3.toArray(new java.security.cert.Certificate[0]));
+			this.this$2.this$1.field63 = (java.security.cert.Certificate[])((java.security.cert.Certificate[])var3.toArray(new java.security.cert.Certificate[0]));
 		} catch (CertificateException var7) {
 			throw new IOException(var7);
 		}
@@ -68,12 +47,40 @@ class class11 implements TlsAuthentication {
 		return null;
 	}
 
-	@ObfuscatedName("av")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1328974540"
+		descriptor = "([BIII)Ljava/lang/String;",
+		garbageValue = "591994113"
 	)
-	static final void method105() {
+	public static String method97(byte[] var0, int var1, int var2) {
+		StringBuilder var3 = new StringBuilder();
+
+		for (int var4 = var1; var4 < var2 + var1; var4 += 3) {
+			int var5 = var0[var4] & 255;
+			var3.append(class385.field4428[var5 >>> 2]);
+			if (var4 < var2 - 1) {
+				int var6 = var0[var4 + 1] & 255;
+				var3.append(class385.field4428[(var5 & 3) << 4 | var6 >>> 4]);
+				if (var4 < var2 - 2) {
+					int var7 = var0[var4 + 2] & 255;
+					var3.append(class385.field4428[(var6 & 15) << 2 | var7 >>> 6]).append(class385.field4428[var7 & 63]);
+				} else {
+					var3.append(class385.field4428[(var6 & 15) << 2]).append("=");
+				}
+			} else {
+				var3.append(class385.field4428[(var5 & 3) << 4]).append("==");
+			}
+		}
+
+		return var3.toString();
+	}
+
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "(S)V",
+		garbageValue = "18671"
+	)
+	static final void method96() {
 		if (!ViewportMouse.ViewportMouse_false0) {
 			int var0 = Scene.Scene_cameraPitchSine;
 			int var1 = Scene.Scene_cameraPitchCosine;
@@ -85,74 +92,42 @@ class class11 implements TlsAuthentication {
 			int var7 = (ViewportMouse.ViewportMouse_y - Rasterizer3D.getClipMidY()) * var4 / Rasterizer3D.get3dZoom();
 			int var8 = (ViewportMouse.ViewportMouse_x - Rasterizer3D.getClipMidX()) * var5 / Rasterizer3D.get3dZoom();
 			int var9 = (ViewportMouse.ViewportMouse_y - Rasterizer3D.getClipMidY()) * var5 / Rasterizer3D.get3dZoom();
-			int var11 = var7 * var1 + var0 * var4 >> 16;
-			int var12 = var4 * var1 - var7 * var0 >> 16;
-			int var13 = var1 * var9 + var5 * var0 >> 16;
-			int var14 = var5 * var1 - var9 * var0 >> 16;
-			int var15 = var6 * var3 - var2 * var12 >> 16;
-			int var16 = var2 * var6 + var3 * var12 >> 16;
-			int var17 = var8 * var3 - var14 * var2 >> 16;
-			int var18 = var14 * var3 + var8 * var2 >> 16;
-			ViewportMouse.field2754 = (var15 + var17) / 2;
-			ViewportMouse.field2755 = (var13 + var11) / 2;
-			class151.field1693 = (var18 + var16) / 2;
-			class538.field5228 = (var17 - var15) / 2;
-			ViewportMouse.field2756 = (var13 - var11) / 2;
-			class133.field1593 = (var18 - var16) / 2;
-			class90.field1109 = Math.abs(class538.field5228);
-			class136.field1606 = Math.abs(ViewportMouse.field2756);
-			class387.field4437 = Math.abs(class133.field1593);
+			int var10 = class33.method492(var7, var4, var1, var0);
+			int var11 = var4 * var1 - var0 * var7 >> 16;
+			var7 = var10;
+			var10 = class33.method492(var9, var5, var1, var0);
+			int var12 = var5 * var1 - var0 * var9 >> 16;
+			var9 = var10;
+			var10 = Tiles.method2241(var6, var11, var3, var2);
+			int var13 = ClanChannelMember.method3121(var6, var11, var3, var2);
+			var6 = var10;
+			var10 = Tiles.method2241(var8, var12, var3, var2);
+			int var14 = ClanChannelMember.method3121(var8, var12, var3, var2);
+			ViewportMouse.field2779 = (var10 + var6) / 2;
+			ViewportMouse.field2793 = (var7 + var9) / 2;
+			ViewportMouse.field2785 = (var13 + var14) / 2;
+			class261.field2967 = (var10 - var6) / 2;
+			ViewportMouse.field2781 = (var9 - var7) / 2;
+			Frames.field2642 = (var14 - var13) / 2;
+			ViewportMouse.field2787 = Math.abs(class261.field2967);
+			class7.field25 = Math.abs(ViewportMouse.field2781);
+			class30.field167 = Math.abs(Frames.field2642);
 		}
 	}
 
-	@ObfuscatedName("km")
+	@ObfuscatedName("ni")
 	@ObfuscatedSignature(
-		descriptor = "(Ldz;I)V",
-		garbageValue = "-423842521"
+		descriptor = "(Lmi;IIII)V",
+		garbageValue = "1018529135"
 	)
-	static final void method112(PendingSpawn var0) {
-		long var1 = 0L;
-		int var3 = -1;
-		int var4 = 0;
-		int var5 = 0;
-		if (var0.type == 0) {
-			var1 = UserComparator5.scene.getBoundaryObjectTag(var0.plane, var0.x, var0.y);
-		}
-
-		if (var0.type == 1) {
-			var1 = UserComparator5.scene.getWallDecorationTag(var0.plane, var0.x, var0.y);
-		}
-
-		if (var0.type == 2) {
-			var1 = UserComparator5.scene.getGameObjectTag(var0.plane, var0.x, var0.y);
-		}
-
-		if (var0.type == 3) {
-			var1 = UserComparator5.scene.getFloorDecorationTag(var0.plane, var0.x, var0.y);
-		}
-
-		if (var1 != 0L) {
-			int var6 = UserComparator5.scene.getObjectFlags(var0.plane, var0.x, var0.y, var1);
-			var3 = class458.Entity_unpackID(var1);
-			var4 = var6 & 31;
-			var5 = var6 >> 6 & 3;
-		}
-
-		var0.objectId = var3;
-		var0.field1169 = var4;
-		var0.field1168 = var5;
-	}
-
-	@ObfuscatedName("ot")
-	@ObfuscatedSignature(
-		descriptor = "(IB)V",
-		garbageValue = "47"
-	)
-	static void method113(int var0) {
-		SequenceDefinition var1 = class135.SequenceDefinition_get(var0);
-		if (var1.isCachedModelIdSet()) {
-			if (class273.method5525(var1.SequenceDefinition_cachedModelId) == 2) {
-				Client.field654.add(var1.SequenceDefinition_cachedModelId);
+	@Export("drawCompass")
+	static final void drawCompass(Widget var0, int var1, int var2, int var3) {
+		SpriteMask var4 = var0.getSpriteMask(false);
+		if (var4 != null) {
+			if (Client.minimapState < 3) {
+				Client.compass.drawRotatedMaskedCenteredAround(var1, var2, var4.width, var4.height, 25, 25, Client.camAngleY, 256, var4.xStarts, var4.xWidths);
+			} else {
+				Rasterizer2D.Rasterizer2D_fillMaskedRectangle(var1, var2, 0, var4.xStarts, var4.xWidths);
 			}
 
 		}

@@ -3,19 +3,24 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("do")
+@ObfuscatedName("dd")
 @Implements("ItemContainer")
 public class ItemContainer extends Node {
-	@ObfuscatedName("aw")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "Lsm;"
+		descriptor = "Lso;"
 	)
 	@Export("itemContainers")
 	static NodeHashTable itemContainers;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ap")
+	@ObfuscatedSignature(
+		descriptor = "Luk;"
+	)
+	static IndexedSprite field1068;
+	@ObfuscatedName("ae")
 	@Export("ids")
 	int[] ids;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ao")
 	@Export("quantities")
 	int[] quantities;
 
@@ -28,28 +33,27 @@ public class ItemContainer extends Node {
 		this.quantities = new int[]{0};
 	}
 
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "0"
-	)
-	public static boolean method2273() {
-		if (!class306.field3399.isEmpty()) {
-			return true;
-		} else {
-			return !class306.musicSongs.isEmpty() && class306.musicSongs.get(0) != null && ((MusicSong)class306.musicSongs.get(0)).midiPcmStream != null ? ((MusicSong)class306.musicSongs.get(0)).midiPcmStream.isReady() : false;
-		}
-	}
-
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)V",
-		garbageValue = "409263053"
+		descriptor = "(I)V",
+		garbageValue = "-96469770"
 	)
-	static final void method2271(String var0) {
-		PacketBufferNode var1 = class503.getPacketBufferNode(ClientPacket.FRIEND_ADDUSER, Client.packetWriter.isaacCipher);
-		var1.packetBuffer.writeByte(class501.stringCp1252NullTerminatedByteSize(var0));
-		var1.packetBuffer.writeStringCp1252NullTerminated(var0);
-		Client.packetWriter.addNode(var1);
+	public static void method2269() {
+		FileSystem.FileSystem_cacheFiles.clear();
+	}
+
+	@ObfuscatedName("js")
+	@ObfuscatedSignature(
+		descriptor = "(III)V",
+		garbageValue = "2139499432"
+	)
+	static final void method2271(int var0, int var1) {
+		if (Client.hintArrowType == 2) {
+			HealthBar.worldToScreen((Client.hintArrowX - UrlRequester.baseX * 64 << 7) + Client.hintArrowSubX * 4096, Client.hintArrowSubY * 64 + (Client.hintArrowY - class47.baseY * 64 << 7), Client.hintArrowHeight * 2);
+			if (Client.viewportTempX > -1 && Client.cycle % 20 < 10) {
+				ArchiveLoader.headIconHintSprites[0].drawTransBgAt(var0 + Client.viewportTempX - 12, Client.viewportTempY + var1 - 28);
+			}
+
+		}
 	}
 }

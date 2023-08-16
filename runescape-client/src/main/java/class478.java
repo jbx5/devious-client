@@ -2,82 +2,43 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("sd")
+@ObfuscatedName("sy")
 public class class478 extends class480 {
-	@ObfuscatedName("aw")
+	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		intValue = -1816600337
+		intValue = 1265993553
 	)
-	int field4865;
-	@ObfuscatedName("ay")
+	int field4870;
+	@ObfuscatedName("ae")
 	@ObfuscatedGetter(
-		intValue = 1220188325
+		intValue = 1614524249
 	)
-	int field4869;
-	@ObfuscatedName("ar")
-	@ObfuscatedGetter(
-		intValue = 307662591
-	)
-	int field4866;
-	@ObfuscatedName("am")
-	@ObfuscatedGetter(
-		intValue = -498007277
-	)
-	int field4867;
-	@ObfuscatedName("as")
-	@ObfuscatedGetter(
-		intValue = 1900359283
-	)
-	int field4868;
-	@ObfuscatedName("aj")
-	@ObfuscatedGetter(
-		intValue = -1437635813
-	)
-	int field4864;
+	int field4871;
 
-	public class478(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
-		super(var7, var8);
-		this.field4865 = 0;
-		this.field4869 = 0;
-		this.field4866 = 0;
-		this.field4867 = 0;
-		this.field4868 = 0;
-		this.field4864 = 0;
-		this.field4865 = var1;
-		this.field4869 = var2;
-		this.field4866 = var3;
-		this.field4867 = var4;
-		this.field4868 = var5;
-		this.field4864 = var6;
+	public class478(int var1, int var2, int var3, int var4) {
+		super(var3, var4);
+		this.field4870 = 0;
+		this.field4871 = 0;
+		this.field4870 = var1;
+		this.field4871 = var2;
 	}
 
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "(S)I",
-		garbageValue = "2587"
-	)
-	public int vmethod8499() {
-		double var1 = this.method8504();
-		return (int)Math.round((double)this.field4865 + (double)(this.field4867 - this.field4865) * var1);
-	}
-
-	@ObfuscatedName("ay")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-1657628972"
+		garbageValue = "-814952381"
 	)
-	public int vmethod8496() {
-		double var1 = this.method8504();
-		return (int)Math.round(var1 * (double)(this.field4868 - this.field4869) + (double)this.field4869);
+	public int method8455() {
+		double var1 = this.method8473();
+		return (int)Math.round((double)this.field4870 + var1 * (double)(this.field4871 - this.field4870));
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(S)I",
-		garbageValue = "10605"
+		descriptor = "(Ljava/lang/String;I)V",
+		garbageValue = "-2077618476"
 	)
-	public int vmethod8497() {
-		double var1 = this.method8504();
-		return (int)Math.round(var1 * (double)(this.field4864 - this.field4866) + (double)this.field4866);
+	static void method8456(String var0) {
+		Login.field953 = HorizontalAlignment.method3677(var0);
 	}
 }

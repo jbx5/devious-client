@@ -1,29 +1,25 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bx")
+@ObfuscatedName("be")
 @Implements("SoundSystem")
 public class SoundSystem implements Runnable {
-	@ObfuscatedName("bb")
-	@Export("fontHelvetica13")
-	static java.awt.Font fontHelvetica13;
-	@ObfuscatedName("kl")
-	@ObfuscatedGetter(
-		intValue = -1784081525
-	)
-	@Export("cameraZ")
-	static int cameraZ;
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "[Lbk;"
+		descriptor = "Luk;"
+	)
+	@Export("logoSprite")
+	static IndexedSprite logoSprite;
+	@ObfuscatedName("au")
+	@ObfuscatedSignature(
+		descriptor = "[Lbb;"
 	)
 	@Export("players")
-	public volatile PcmPlayer[] players;
+	volatile PcmPlayer[] players;
 
-	public SoundSystem() {
+	SoundSystem() {
 		this.players = new PcmPlayer[2];
 	}
 
@@ -36,29 +32,28 @@ public class SoundSystem implements Runnable {
 				}
 			}
 		} catch (Exception var4) {
-			class317.RunException_sendStackTrace((String)null, var4);
+			Messages.RunException_sendStackTrace((String)null, var4);
 		}
 
 	}
 
-	@ObfuscatedName("hc")
+	@ObfuscatedName("nx")
 	@ObfuscatedSignature(
-		descriptor = "(IIIS)V",
-		garbageValue = "13799"
+		descriptor = "(IIZB)V",
+		garbageValue = "0"
 	)
-	static void method853(int var0, int var1, int var2) {
-		if (var0 != 0) {
-			int var3 = var0 >> 8;
-			int var4 = var0 >> 4 & 7;
-			int var5 = var0 & 15;
-			Client.soundEffectIds[Client.soundEffectCount] = var3;
-			Client.queuedSoundEffectLoops[Client.soundEffectCount] = var4;
-			Client.queuedSoundEffectDelays[Client.soundEffectCount] = 0;
-			Client.soundEffects[Client.soundEffectCount] = null;
-			int var6 = (var1 - 64) / 128;
-			int var7 = (var2 - 64) / 128;
-			Client.soundLocations[Client.soundEffectCount] = var5 + (var7 << 8) + (var6 << 16);
-			++Client.soundEffectCount;
+	static final void method870(int var0, int var1, boolean var2) {
+		if (Client.currentClanChannels[var0] != null) {
+			if (var1 >= 0 && var1 < Client.currentClanChannels[var0].method3301()) {
+				ClanChannelMember var3 = (ClanChannelMember)Client.currentClanChannels[var0].members.get(var1);
+				PacketBufferNode var4 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3195, Client.packetWriter.isaacCipher);
+				var4.packetBuffer.writeByte(4 + AbstractSocket.stringCp1252NullTerminatedByteSize(var3.username.getName()));
+				var4.packetBuffer.writeByte(var0);
+				var4.packetBuffer.writeShort(var1);
+				var4.packetBuffer.writeBoolean(var2);
+				var4.packetBuffer.writeStringCp1252NullTerminated(var3.username.getName());
+				Client.packetWriter.addNode(var4);
+			}
 		}
 	}
 }
