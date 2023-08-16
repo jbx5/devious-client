@@ -4,62 +4,62 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("uk")
+@ObfuscatedName("uq")
 @Implements("AbstractRasterProvider")
 public abstract class AbstractRasterProvider {
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ao")
 	@Export("pixels")
 	public int[] pixels;
-	@ObfuscatedName("am")
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		intValue = 856501773
+		intValue = 132368805
 	)
 	@Export("width")
 	public int width;
-	@ObfuscatedName("as")
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = -1072072305
+		intValue = 2105446071
 	)
 	@Export("height")
 	public int height;
-	@ObfuscatedName("aj")
-	protected float[] field5146;
+	@ObfuscatedName("ai")
+	protected float[] field5188;
 
 	protected AbstractRasterProvider() {
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(III)V",
-		garbageValue = "2103103659"
+		descriptor = "(IIB)V",
+		garbageValue = "-46"
 	)
 	@Export("drawFull")
 	public abstract void drawFull(int var1, int var2);
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIB)V",
-		garbageValue = "-93"
+		descriptor = "(IIIII)V",
+		garbageValue = "1065945289"
 	)
 	@Export("draw")
 	public abstract void draw(int var1, int var2, int var3, int var4);
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1721609371"
+		descriptor = "(B)V",
+		garbageValue = "-109"
 	)
 	@Export("apply")
 	public final void apply() {
-		Rasterizer2D.method9442(this.pixels, this.width, this.height, this.field5146);
+		Rasterizer2D.method9367(this.pixels, this.width, this.height, this.field5188);
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "(ZI)V",
-		garbageValue = "24429174"
+		descriptor = "(ZB)V",
+		garbageValue = "-37"
 	)
-	public final void method9514(boolean var1) {
-		this.field5146 = var1 ? new float[this.width * this.height + 1] : null;
+	public final void method9462(boolean var1) {
+		this.field5188 = var1 ? new float[this.height * this.width + 1] : null;
 	}
 }

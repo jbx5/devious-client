@@ -1,78 +1,70 @@
-import java.net.URL;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("dq")
+@ObfuscatedName("dj")
 @Implements("DynamicObject")
 public class DynamicObject extends Renderable {
-	@ObfuscatedName("ke")
-	@ObfuscatedSignature(
-		descriptor = "[Lud;"
-	)
-	static SpritePixels[] field1014;
-	@ObfuscatedName("se")
-	@Export("ClanChat_inClanChat")
-	static boolean ClanChat_inClanChat;
-	@ObfuscatedName("aw")
+	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		intValue = -896504387
+		intValue = -1501685719
 	)
 	@Export("id")
 	int id;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedGetter(
-		intValue = 1598644725
+		intValue = -75702939
 	)
 	@Export("type")
 	int type;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = -1824972397
+		intValue = -231241725
 	)
 	@Export("orientation")
 	int orientation;
-	@ObfuscatedName("am")
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		intValue = 2013071075
+		intValue = 215686393
 	)
 	@Export("plane")
 	int plane;
-	@ObfuscatedName("as")
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = -1094170581
+		intValue = 795738445
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ai")
 	@ObfuscatedGetter(
-		intValue = -1131276825
+		intValue = -1260218321
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "Lig;"
+		descriptor = "Lib;"
 	)
 	@Export("sequenceDefinition")
 	SequenceDefinition sequenceDefinition;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = 913053473
+		intValue = 1287923743
 	)
 	@Export("frame")
 	int frame;
-	@ObfuscatedName("av")
+	@ObfuscatedName("aa")
 	@ObfuscatedGetter(
-		intValue = -977017329
+		intValue = -714646065
 	)
 	@Export("cycleStart")
 	int cycleStart;
 
 	@ObfuscatedSignature(
-		descriptor = "(IIIIIIIZLit;)V"
+		descriptor = "(IIIIIIIZLik;)V"
 	)
 	DynamicObject(int var1, int var2, int var3, int var4, int var5, int var6, int var7, boolean var8, Renderable var9) {
 		this.id = var1;
@@ -82,10 +74,10 @@ public class DynamicObject extends Renderable {
 		this.x = var5;
 		this.y = var6;
 		if (var7 != -1) {
-			this.sequenceDefinition = class135.SequenceDefinition_get(var7);
+			this.sequenceDefinition = EnumComposition.SequenceDefinition_get(var7);
 			this.frame = 0;
 			this.cycleStart = Client.cycle - 1;
-			if (this.sequenceDefinition.field2274 == 0 && var9 != null && var9 instanceof DynamicObject) {
+			if (this.sequenceDefinition.field2327 == 0 && var9 != null && var9 instanceof DynamicObject) {
 				DynamicObject var10 = (DynamicObject)var9;
 				if (this.sequenceDefinition == var10.sequenceDefinition) {
 					this.frame = var10.frame;
@@ -99,17 +91,17 @@ public class DynamicObject extends Renderable {
 					this.frame = (int)(Math.random() * (double)this.sequenceDefinition.frameIds.length);
 					this.cycleStart -= (int)(Math.random() * (double)this.sequenceDefinition.frameLengths[this.frame]);
 				} else {
-					this.frame = (int)(Math.random() * (double)this.sequenceDefinition.method4074());
+					this.frame = (int)(Math.random() * (double)this.sequenceDefinition.method4034());
 				}
 			}
 		}
 
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(I)Ljo;",
-		garbageValue = "-983173466"
+		descriptor = "(I)Ljr;",
+		garbageValue = "798227647"
 	)
 	@Export("getModel")
 	protected final Model getModel() {
@@ -121,7 +113,7 @@ public class DynamicObject extends Renderable {
 			}
 
 			if (this.sequenceDefinition.isCachedModelIdSet()) {
-				var2 = this.sequenceDefinition.method4074();
+				var2 = this.sequenceDefinition.method4034();
 				this.frame += var1;
 				var1 = 0;
 				if (this.frame >= var2) {
@@ -131,11 +123,11 @@ public class DynamicObject extends Renderable {
 					}
 				}
 			} else {
-				label79: {
+				label82: {
 					do {
 						do {
 							if (var1 <= this.sequenceDefinition.frameLengths[this.frame]) {
-								break label79;
+								break label82;
 							}
 
 							var1 -= this.sequenceDefinition.frameLengths[this.frame];
@@ -152,7 +144,7 @@ public class DynamicObject extends Renderable {
 			this.cycleStart = Client.cycle - var1;
 		}
 
-		ObjectComposition var12 = class90.getObjectDefinition(this.id);
+		ObjectComposition var12 = WorldMapElement.getObjectDefinition(this.id);
 		if (var12.transforms != null) {
 			var12 = var12.transform();
 		}
@@ -174,50 +166,56 @@ public class DynamicObject extends Renderable {
 			int var6 = (var3 >> 1) + this.y;
 			int var7 = (var3 + 1 >> 1) + this.y;
 			int[][] var8 = Tiles.Tiles_heights[this.plane];
-			int var9 = var8[var5][var7] + var8[var4][var7] + var8[var4][var6] + var8[var5][var6] >> 2;
+			int var9 = var8[var4][var7] + var8[var4][var6] + var8[var5][var6] + var8[var5][var7] >> 2;
 			int var10 = (this.x << 7) + (var2 << 6);
 			int var11 = (this.y << 7) + (var3 << 6);
 			return var12.getModelDynamic(this.type, this.orientation, var8, var10, var9, var11, this.sequenceDefinition, this.frame);
 		}
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "-1663341979"
+		descriptor = "(IIB)I",
+		garbageValue = "43"
 	)
-	@Export("loadWorlds")
-	static boolean loadWorlds() {
-		try {
-			if (World.World_request == null) {
-				World.World_request = WorldMapLabel.urlRequester.request(new URL(class292.field3084));
-			} else if (World.World_request.isDone()) {
-				byte[] var0 = World.World_request.getResponse();
-				Buffer var1 = new Buffer(var0);
-				var1.readInt();
-				World.World_count = var1.readUnsignedShort();
-				class387.World_worlds = new World[World.World_count];
-
-				World var3;
-				for (int var2 = 0; var2 < World.World_count; var3.index = var2++) {
-					var3 = class387.World_worlds[var2] = new World();
-					var3.id = var1.readUnsignedShort();
-					var3.properties = var1.readInt();
-					var3.host = var1.readStringCp1252NullTerminated();
-					var3.activity = var1.readStringCp1252NullTerminated();
-					var3.location = var1.readUnsignedByte();
-					var3.population = var1.readShort();
-				}
-
-				VarbitComposition.sortWorlds(class387.World_worlds, 0, class387.World_worlds.length - 1, World.World_sortOption1, World.World_sortOption2);
-				World.World_request = null;
-				return true;
-			}
-		} catch (Exception var4) {
-			var4.printStackTrace();
-			World.World_request = null;
+	@Export("ItemContainer_getCount")
+	static int ItemContainer_getCount(int var0, int var1) {
+		ItemContainer var2 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
+		if (var2 == null) {
+			return 0;
+		} else {
+			return var1 >= 0 && var1 < var2.quantities.length ? var2.quantities[var1] : 0;
 		}
+	}
 
-		return false;
+	@ObfuscatedName("ab")
+	@ObfuscatedSignature(
+		descriptor = "(ILdh;ZI)I",
+		garbageValue = "-173700764"
+	)
+	static int method2186(int var0, Script var1, boolean var2) {
+		Widget var3 = var2 ? GameObject.scriptDotWidget : SceneTilePaint.scriptActiveWidget;
+		if (var0 == ScriptOpcodes.CC_GETINVOBJECT) {
+			Interpreter.Interpreter_intStack[++SoundCache.Interpreter_intStackSize - 1] = var3.itemId;
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETINVCOUNT) {
+			if (var3.itemId != -1) {
+				Interpreter.Interpreter_intStack[++SoundCache.Interpreter_intStackSize - 1] = var3.itemQuantity;
+			} else {
+				Interpreter.Interpreter_intStack[++SoundCache.Interpreter_intStackSize - 1] = 0;
+			}
+
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETID) {
+			Interpreter.Interpreter_intStack[++SoundCache.Interpreter_intStackSize - 1] = var3.childIndex;
+			return 1;
+		} else if (var0 == 1707) {
+			Interpreter.Interpreter_intStack[++SoundCache.Interpreter_intStackSize - 1] = var3.method6474() ? 1 : 0;
+			return 1;
+		} else if (var0 == 1708) {
+			return WorldMapDecoration.method5480(var3);
+		} else {
+			return var0 == 1709 ? class390.method7221(var3) : 2;
+		}
 	}
 }

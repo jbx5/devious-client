@@ -1,169 +1,168 @@
-import java.io.IOException;
-import java.util.ArrayList;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("dn")
+@ObfuscatedName("ds")
 @Implements("InterfaceParent")
 public class InterfaceParent extends Node {
-	@ObfuscatedName("aw")
+	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		intValue = 1127246631
+		intValue = 2086760251
 	)
 	@Export("group")
 	int group;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedGetter(
-		intValue = 49206093
+		intValue = -2035314843
 	)
 	@Export("type")
 	int type;
-	@ObfuscatedName("ar")
-	boolean field1065;
+	@ObfuscatedName("ao")
+	boolean field1081;
 
 	InterfaceParent() {
-		this.field1065 = false;
+		this.field1081 = false;
+	}
+
+	@ObfuscatedName("ao")
+	@ObfuscatedSignature(
+		descriptor = "(IIIIIII)I",
+		garbageValue = "1893248685"
+	)
+	public static int method2279(int var0, int var1, int var2, int var3, int var4, int var5) {
+		if ((var5 & 1) == 1) {
+			int var6 = var3;
+			var3 = var4;
+			var4 = var6;
+		}
+
+		var2 &= 3;
+		if (var2 == 0) {
+			return var1;
+		} else if (var2 == 1) {
+			return 7 - var0 - (var3 - 1);
+		} else {
+			return var2 == 2 ? 7 - var1 - (var4 - 1) : var0;
+		}
 	}
 
 	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(II)Z",
-		garbageValue = "143844531"
+		descriptor = "(ILdh;ZI)I",
+		garbageValue = "-612957518"
 	)
-	public static boolean method2276(int var0) {
-		boolean var1 = false;
-		boolean var2 = false;
-		if (!class306.field3399.isEmpty()) {
-			SongTask var3 = (SongTask)class306.field3399.get(0);
-			if (var3 == null) {
-				class306.field3399.remove(0);
-			} else if (var3.vmethod7676(var0)) {
-				if (var3.method7668()) {
-					System.out.println("Error in midimanager.service: " + var3.method7651());
-					var1 = true;
+	static int method2277(int var0, Script var1, boolean var2) {
+		Widget var3;
+		if (var0 >= 2000) {
+			var0 -= 1000;
+			var3 = class92.getWidget(Interpreter.Interpreter_intStack[--SoundCache.Interpreter_intStackSize]);
+		} else {
+			var3 = var2 ? GameObject.scriptDotWidget : SceneTilePaint.scriptActiveWidget;
+		}
+
+		class218.invalidateWidget(var3);
+		int var4;
+		int var5;
+		if (var0 != ScriptOpcodes.CC_SETOBJECT && var0 != ScriptOpcodes.CC_SETOBJECT_NONUM && var0 != ScriptOpcodes.CC_SETOBJECT_ALWAYS_NUM) {
+			if (var0 == ScriptOpcodes.CC_SETNPCHEAD) {
+				var3.modelType = 2;
+				var3.modelId = Interpreter.Interpreter_intStack[--SoundCache.Interpreter_intStackSize];
+				return 1;
+			} else if (var0 == ScriptOpcodes.CC_SETPLAYERHEAD_SELF) {
+				var3.modelType = 3;
+				var3.modelId = VarbitComposition.localPlayer.appearance.getChatHeadId();
+				return 1;
+			} else if (var0 == 1207) {
+				boolean var7 = Interpreter.Interpreter_intStack[--SoundCache.Interpreter_intStackSize] == 1;
+				class160.method3278(var3, VarbitComposition.localPlayer.appearance, var7);
+				return 1;
+			} else if (var0 == 1208) {
+				var4 = Interpreter.Interpreter_intStack[--SoundCache.Interpreter_intStackSize];
+				if (var3.field3704 == null) {
+					throw new RuntimeException("");
 				} else {
-					if (var3.getSongTask() != null) {
-						class306.field3399.add(1, var3.getSongTask());
-					}
-
-					var2 = var3.method7650();
+					ReflectionCheck.method710(var3, var4);
+					return 1;
 				}
-
-				class306.field3399.remove(0);
+			} else if (var0 == 1209) {
+				SoundCache.Interpreter_intStackSize -= 2;
+				var4 = Interpreter.Interpreter_intStack[SoundCache.Interpreter_intStackSize];
+				var5 = Interpreter.Interpreter_intStack[SoundCache.Interpreter_intStackSize + 1];
+				if (var3.field3704 == null) {
+					throw new RuntimeException("");
+				} else {
+					Tiles.method2242(var3, var4, var5);
+					return 1;
+				}
+			} else if (var0 == 1210) {
+				var4 = Interpreter.Interpreter_intStack[--SoundCache.Interpreter_intStackSize];
+				if (var3.field3704 == null) {
+					throw new RuntimeException("");
+				} else {
+					class135.method3052(var3, VarbitComposition.localPlayer.appearance.gender, var4);
+					return 1;
+				}
 			} else {
-				var2 = var3.method7650();
+				return 2;
 			}
-		}
+		} else {
+			SoundCache.Interpreter_intStackSize -= 2;
+			var4 = Interpreter.Interpreter_intStack[SoundCache.Interpreter_intStackSize];
+			var5 = Interpreter.Interpreter_intStack[SoundCache.Interpreter_intStackSize + 1];
+			var3.itemId = var4;
+			var3.itemQuantity = var5;
+			ItemComposition var6 = InvDefinition.ItemDefinition_get(var4);
+			var3.modelAngleX = var6.xan2d;
+			var3.modelAngleY = var6.yan2d;
+			var3.modelAngleZ = var6.zan2d;
+			var3.modelOffsetX = var6.offsetX2d;
+			var3.modelOffsetY = var6.offsetY2d;
+			var3.modelZoom = var6.zoom2d;
+			if (var0 == ScriptOpcodes.CC_SETOBJECT_NONUM) {
+				var3.itemQuantityMode = 0;
+			} else if (var0 == ScriptOpcodes.CC_SETOBJECT_ALWAYS_NUM | var6.isStackable == 1) {
+				var3.itemQuantityMode = 1;
+			} else {
+				var3.itemQuantityMode = 2;
+			}
 
-		if (var1) {
-			class306.field3399.clear();
-			ArrayList var4 = class162.method3356();
-			class306.field3399.add(new ClearRequestTask((SongTask)null, var4));
-		}
+			if (var3.field3702 > 0) {
+				var3.modelZoom = var3.modelZoom * 32 / var3.field3702;
+			} else if (var3.rawWidth > 0) {
+				var3.modelZoom = var3.modelZoom * 32 / var3.rawWidth;
+			}
 
-		return var2;
+			return 1;
+		}
 	}
 
-	@ObfuscatedName("hv")
+	@ObfuscatedName("bg")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-2055389038"
+		descriptor = "(ILdh;ZB)I",
+		garbageValue = "-104"
 	)
-	static void method2277() {
-		if (PendingSpawn.varcs.hasUnwrittenChanges()) {
-			PendingSpawn.varcs.write();
+	static int method2276(int var0, Script var1, boolean var2) {
+		if (var0 == 7463) {
+			boolean var3 = Interpreter.Interpreter_intStack[--SoundCache.Interpreter_intStackSize] == 1;
+			SecureRandomFuture.method2151(var3);
+			return 1;
+		} else {
+			return 2;
+		}
+	}
+
+	@ObfuscatedName("jg")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "-59"
+	)
+	static void method2278() {
+		if (Client.combatTargetPlayerIndex >= 0 && Client.players[Client.combatTargetPlayerIndex] != null) {
+			class92.addPlayerToScene(Client.players[Client.combatTargetPlayerIndex], false);
 		}
 
-		if (class497.mouseRecorder != null) {
-			class497.mouseRecorder.isRunning = false;
-		}
-
-		class497.mouseRecorder = null;
-		Client.packetWriter.close();
-		if (GameEngine.taskHandler != null) {
-			try {
-				GameEngine.taskHandler.close();
-			} catch (Exception var3) {
-			}
-		}
-
-		GameEngine.taskHandler = null;
-		class159.method3336();
-		class197.archive2.clearFiles();
-		FontName.archive13.clearFiles();
-		ReflectionCheck.field273.clearFiles();
-		class191.field1970.clearFiles();
-		World.field829.clearFiles();
-		class106.field1358.clearFiles();
-		Varcs.field1402.clearFiles();
-		Interpreter.field885.clearFiles();
-		class10.compass = null;
-		SoundCache.redHintArrowSprite = null;
-		class282.mapSceneSprites = null;
-		DbTableType.headIconPkSprites = null;
-		class17.headIconPrayerSprites = null;
-		class345.headIconHintSprites = null;
-		DynamicObject.field1014 = null;
-		class211.crossSprites = null;
-		MusicPatchNode2.mapDotSprites = null;
-		class302.scrollBarSprites = null;
-		AbstractWorldMapIcon.field3044 = null;
-		UserComparator5.scene.clear();
-
-		int var1;
-		for (var1 = 0; var1 < 4; ++var1) {
-			Client.collisionMaps[var1].clear();
-		}
-
-		class127.worldMap = null;
-		RouteStrategy.method4227(0, 0);
-		class306.field3398.clear();
-		Client.playingJingle = false;
-		class133.method3041();
-		if (VerticalAlignment.pcmPlayer1 != null) {
-			VerticalAlignment.pcmPlayer1.shutdown();
-		}
-
-		class153.field1700.method6853();
-		ArchiveDiskAction.method6681();
-		if (WorldMapLabel.urlRequester != null) {
-			WorldMapLabel.urlRequester.close();
-		}
-
-		try {
-			JagexCache.JagexCache_dat2File.close();
-
-			for (var1 = 0; var1 < JagexCache.field1840; ++var1) {
-				class302.JagexCache_idxFiles[var1].close();
-			}
-
-			JagexCache.JagexCache_idx255File.close();
-			JagexCache.JagexCache_randomDat.close();
-		} catch (Exception var4) {
-		}
-
-		JagexCache.JagexCache_dat2File = null;
-		JagexCache.JagexCache_idx255File = null;
-		class302.JagexCache_idxFiles = null;
-		FileSystem.FileSystem_cacheFiles.clear();
-		class158.masterDisk = null;
-		Client.archiveLoaders.clear();
-		Client.field814 = 0;
-		class153.field1700 = new JagNetThread();
-		WorldMapLabel.urlRequester = new class113(TileItem.client.field562, 215);
-
-		try {
-			PlayerCompositionColorTextureOverride.method3575("oldschool", VarpDefinition.field1910, ArchiveLoader.field1044.name, 0, 22);
-		} catch (IOException var2) {
-			throw new RuntimeException(var2);
-		}
-
-		class158.masterDisk = new ArchiveDisk(255, JagexCache.JagexCache_dat2File, JagexCache.JagexCache_idx255File, 500000);
-		GameEngine.taskHandler = new TaskHandler();
-		Client.field547 = class92.field1144;
-		class129.updateGameState(0);
 	}
 }

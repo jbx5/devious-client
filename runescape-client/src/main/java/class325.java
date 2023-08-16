@@ -1,46 +1,35 @@
-import net.runelite.mapping.ObfuscatedGetter;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("my")
+@ObfuscatedName("mj")
 public class class325 {
-	@ObfuscatedName("aw")
-	@ObfuscatedGetter(
-		intValue = 486674949
-	)
-	public int field3539;
-	@ObfuscatedName("ay")
-	@ObfuscatedGetter(
-		intValue = 987280921
-	)
-	public int field3540;
-	@ObfuscatedName("ar")
-	@ObfuscatedGetter(
-		intValue = 1386938305
-	)
-	public int field3541;
-
-	class325() {
-	}
-
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "113"
+		descriptor = "([BIIB)Ljava/lang/String;",
+		garbageValue = "27"
 	)
-	static void method6104() {
-		Tiles.Tiles_minPlane = 99;
-		Tiles.Tiles_underlays = new short[4][104][104];
-		Tiles.Tiles_overlays = new short[4][104][104];
-		class19.Tiles_shapes = new byte[4][104][104];
-		UserComparator10.field1474 = new byte[4][104][104];
-		BufferedNetSocket.field4681 = new int[4][105][105];
-		InvDefinition.Tiles_underlays2 = new byte[4][105][105];
-		class135.field1601 = new int[105][105];
-		class172.Tiles_hue = new int[104];
-		GameBuild.Tiles_saturation = new int[104];
-		Tiles.Tiles_lightness = new int[104];
-		Language.Tiles_hueMultiplier = new int[104];
-		class159.field1755 = new int[104];
+	@Export("decodeStringCp1252")
+	public static String decodeStringCp1252(byte[] var0, int var1, int var2) {
+		char[] var3 = new char[var2];
+		int var4 = 0;
+
+		for (int var5 = 0; var5 < var2; ++var5) {
+			int var6 = var0[var5 + var1] & 255;
+			if (var6 != 0) {
+				if (var6 >= 128 && var6 < 160) {
+					char var7 = class384.cp1252AsciiExtension[var6 - 128];
+					if (var7 == 0) {
+						var7 = '?';
+					}
+
+					var6 = var7;
+				}
+
+				var3[var4++] = (char)var6;
+			}
+		}
+
+		return new String(var3, 0, var4);
 	}
 }

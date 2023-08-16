@@ -12,15 +12,15 @@ import net.runelite.mapping.ObfuscatedSignature;
 import org.bouncycastle.crypto.tls.TlsClientProtocol;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
-@ObfuscatedName("au")
+@ObfuscatedName("ab")
 public class class15 extends SSLSocketFactory {
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "Lau;"
+		descriptor = "Lab;"
 	)
-	public static class15 field83;
-	@ObfuscatedName("aw")
-	SecureRandom field84;
+	static class15 field78;
+	@ObfuscatedName("au")
+	SecureRandom field77;
 
 	static {
 		if (Security.getProvider("BC") == null) {
@@ -29,16 +29,16 @@ public class class15 extends SSLSocketFactory {
 
 	}
 
-	public class15() {
-		this.field84 = new SecureRandom();
+	class15() {
+		this.field77 = new SecureRandom();
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Lorg/bouncycastle/crypto/tls/TlsClientProtocol;I)Ljavax/net/ssl/SSLSocket;",
-		garbageValue = "-485169673"
+		descriptor = "(Ljava/lang/String;Lorg/bouncycastle/crypto/tls/TlsClientProtocol;B)Ljavax/net/ssl/SSLSocket;",
+		garbageValue = "59"
 	)
-	SSLSocket method194(String var1, TlsClientProtocol var2) {
+	SSLSocket method190(String var1, TlsClientProtocol var2) {
 		return new class12(this, var2, var1);
 	}
 
@@ -51,8 +51,8 @@ public class class15 extends SSLSocketFactory {
 			var1.connect(new InetSocketAddress(var2, var3));
 		}
 
-		TlsClientProtocol var5 = new TlsClientProtocol(var1.getInputStream(), var1.getOutputStream(), this.field84);
-		return this.method194(var2, var5);
+		TlsClientProtocol var5 = new TlsClientProtocol(var1.getInputStream(), var1.getOutputStream(), this.field77);
+		return this.method190(var2, var5);
 	}
 
 	public String[] getDefaultCipherSuites() {
@@ -77,5 +77,18 @@ public class class15 extends SSLSocketFactory {
 
 	public Socket createSocket(InetAddress var1, int var2, InetAddress var3, int var4) throws IOException {
 		return null;
+	}
+
+	@ObfuscatedName("au")
+	@ObfuscatedSignature(
+		descriptor = "(I)Lab;",
+		garbageValue = "1970056082"
+	)
+	public static class15 method179() {
+		if (field78 == null) {
+			field78 = new class15();
+		}
+
+		return field78;
 	}
 }

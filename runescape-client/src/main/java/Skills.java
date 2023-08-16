@@ -1,16 +1,22 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("nh")
+@ObfuscatedName("nl")
 @Implements("Skills")
 public class Skills {
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@Export("Skills_enabled")
 	public static final boolean[] Skills_enabled;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ao")
 	@Export("Skills_experienceTable")
 	public static int[] Skills_experienceTable;
+	@ObfuscatedName("an")
+	@ObfuscatedSignature(
+		descriptor = "Luk;"
+	)
+	static IndexedSprite field3850;
 
 	static {
 		Skills_enabled = new boolean[]{true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, false};

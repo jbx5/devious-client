@@ -7,37 +7,37 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("qy")
+@ObfuscatedName("qa")
 @Implements("BufferedSource")
 public class BufferedSource implements Runnable {
-	@ObfuscatedName("aw")
+	@ObfuscatedName("au")
 	@Export("thread")
 	Thread thread;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@Export("inputStream")
 	InputStream inputStream;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = -391637301
+		intValue = 1284050803
 	)
 	@Export("capacity")
 	int capacity;
-	@ObfuscatedName("am")
+	@ObfuscatedName("at")
 	@Export("buffer")
 	byte[] buffer;
-	@ObfuscatedName("as")
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = 475016461
+		intValue = -153905879
 	)
 	@Export("position")
 	int position;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ai")
 	@ObfuscatedGetter(
-		intValue = 1521298383
+		intValue = -1238626583
 	)
 	@Export("limit")
 	int limit;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("az")
 	@Export("exception")
 	IOException exception;
 
@@ -52,10 +52,10 @@ public class BufferedSource implements Runnable {
 		this.thread.start();
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(II)Z",
-		garbageValue = "-1308813308"
+		descriptor = "(IB)Z",
+		garbageValue = "23"
 	)
 	@Export("isAvailable")
 	boolean isAvailable(int var1) throws IOException {
@@ -86,10 +86,10 @@ public class BufferedSource implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "647536706"
+		garbageValue = "719652359"
 	)
 	@Export("available")
 	int available() throws IOException {
@@ -110,10 +110,10 @@ public class BufferedSource implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "1535921504"
+		descriptor = "(B)I",
+		garbageValue = "102"
 	)
 	@Export("readUnsignedByte")
 	int readUnsignedByte() throws IOException {
@@ -133,10 +133,10 @@ public class BufferedSource implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "([BIII)I",
-		garbageValue = "-1691910602"
+		garbageValue = "360959196"
 	)
 	@Export("read")
 	int read(byte[] var1, int var2, int var3) throws IOException {
@@ -174,10 +174,10 @@ public class BufferedSource implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("as")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1404907821"
+		descriptor = "(S)V",
+		garbageValue = "-20258"
 	)
 	@Export("close")
 	void close() {
@@ -244,117 +244,12 @@ public class BufferedSource implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("ld")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(IIIILjava/lang/String;B)V",
-		garbageValue = "9"
+		descriptor = "(Lnu;B)V",
+		garbageValue = "-122"
 	)
-	@Export("widgetDefaultMenuAction")
-	static void widgetDefaultMenuAction(int var0, int var1, int var2, int var3, String var4) {
-		Widget var5 = MouseRecorder.getWidgetChild(var1, var2);
-		if (var5 != null) {
-			if (var5.onOp != null) {
-				ScriptEvent var6 = new ScriptEvent();
-				var6.widget = var5;
-				var6.opIndex = var0;
-				var6.targetName = var4;
-				var6.args = var5.onOp;
-				GrandExchangeOfferOwnWorldComparator.runScriptEvent(var6);
-			}
-
-			boolean var11 = true;
-			if (var5.contentType > 0) {
-				var11 = class467.method8437(var5);
-			}
-
-			if (var11) {
-				int var8 = UserComparator8.getWidgetFlags(var5);
-				int var9 = var0 - 1;
-				boolean var7 = (var8 >> var9 + 1 & 1) != 0;
-				if (var7) {
-					PacketBufferNode var10;
-					if (var0 == 1) {
-						var10 = class503.getPacketBufferNode(ClientPacket.IF_BUTTON1, Client.packetWriter.isaacCipher);
-						var10.packetBuffer.writeInt(var1);
-						var10.packetBuffer.writeShort(var2);
-						var10.packetBuffer.writeShort(var3);
-						Client.packetWriter.addNode(var10);
-					}
-
-					if (var0 == 2) {
-						var10 = class503.getPacketBufferNode(ClientPacket.IF_BUTTON2, Client.packetWriter.isaacCipher);
-						var10.packetBuffer.writeInt(var1);
-						var10.packetBuffer.writeShort(var2);
-						var10.packetBuffer.writeShort(var3);
-						Client.packetWriter.addNode(var10);
-					}
-
-					if (var0 == 3) {
-						var10 = class503.getPacketBufferNode(ClientPacket.IF_BUTTON3, Client.packetWriter.isaacCipher);
-						var10.packetBuffer.writeInt(var1);
-						var10.packetBuffer.writeShort(var2);
-						var10.packetBuffer.writeShort(var3);
-						Client.packetWriter.addNode(var10);
-					}
-
-					if (var0 == 4) {
-						var10 = class503.getPacketBufferNode(ClientPacket.IF_BUTTON4, Client.packetWriter.isaacCipher);
-						var10.packetBuffer.writeInt(var1);
-						var10.packetBuffer.writeShort(var2);
-						var10.packetBuffer.writeShort(var3);
-						Client.packetWriter.addNode(var10);
-					}
-
-					if (var0 == 5) {
-						var10 = class503.getPacketBufferNode(ClientPacket.IF_BUTTON5, Client.packetWriter.isaacCipher);
-						var10.packetBuffer.writeInt(var1);
-						var10.packetBuffer.writeShort(var2);
-						var10.packetBuffer.writeShort(var3);
-						Client.packetWriter.addNode(var10);
-					}
-
-					if (var0 == 6) {
-						var10 = class503.getPacketBufferNode(ClientPacket.IF_BUTTON6, Client.packetWriter.isaacCipher);
-						var10.packetBuffer.writeInt(var1);
-						var10.packetBuffer.writeShort(var2);
-						var10.packetBuffer.writeShort(var3);
-						Client.packetWriter.addNode(var10);
-					}
-
-					if (var0 == 7) {
-						var10 = class503.getPacketBufferNode(ClientPacket.IF_BUTTON7, Client.packetWriter.isaacCipher);
-						var10.packetBuffer.writeInt(var1);
-						var10.packetBuffer.writeShort(var2);
-						var10.packetBuffer.writeShort(var3);
-						Client.packetWriter.addNode(var10);
-					}
-
-					if (var0 == 8) {
-						var10 = class503.getPacketBufferNode(ClientPacket.IF_BUTTON8, Client.packetWriter.isaacCipher);
-						var10.packetBuffer.writeInt(var1);
-						var10.packetBuffer.writeShort(var2);
-						var10.packetBuffer.writeShort(var3);
-						Client.packetWriter.addNode(var10);
-					}
-
-					if (var0 == 9) {
-						var10 = class503.getPacketBufferNode(ClientPacket.IF_BUTTON9, Client.packetWriter.isaacCipher);
-						var10.packetBuffer.writeInt(var1);
-						var10.packetBuffer.writeShort(var2);
-						var10.packetBuffer.writeShort(var3);
-						Client.packetWriter.addNode(var10);
-					}
-
-					if (var0 == 10) {
-						var10 = class503.getPacketBufferNode(ClientPacket.IF_BUTTON10, Client.packetWriter.isaacCipher);
-						var10.packetBuffer.writeInt(var1);
-						var10.packetBuffer.writeShort(var2);
-						var10.packetBuffer.writeShort(var3);
-						Client.packetWriter.addNode(var10);
-					}
-
-				}
-			}
-		}
+	public static void method8066(AbstractArchive var0) {
+		DbTableType.field5042 = var0;
 	}
 }

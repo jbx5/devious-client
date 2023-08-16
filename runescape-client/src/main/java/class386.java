@@ -1,103 +1,31 @@
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
+import java.util.regex.Pattern;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("oo")
-public class class386 {
-	@ObfuscatedName("aw")
-	static char[] field4431;
-	@ObfuscatedName("ay")
-	static char[] field4435;
-	@ObfuscatedName("ar")
-	static char[] field4432;
-	@ObfuscatedName("am")
-	static int[] field4433;
-	@ObfuscatedName("fs")
-	@ObfuscatedSignature(
-		descriptor = "Lny;"
-	)
-	@Export("archive8")
-	static Archive archive8;
-	@ObfuscatedName("gk")
-	@ObfuscatedGetter(
-		intValue = 805063407
-	)
-	static int field4434;
-
+@ObfuscatedName("op")
+public final class class386 {
 	static {
-		field4431 = new char[64];
+		Pattern.compile("^\\D*(\\d+)\\D*$");
+	}
 
-		int var0;
-		for (var0 = 0; var0 < 26; ++var0) {
-			field4431[var0] = (char)(var0 + 65);
+	@ObfuscatedName("no")
+	@ObfuscatedSignature(
+		descriptor = "(III)V",
+		garbageValue = "289831668"
+	)
+	static final void method7205(int var0, int var1) {
+		if (Client.currentClanChannels[var0] != null) {
+			if (var1 >= 0 && var1 < Client.currentClanChannels[var0].method3301()) {
+				ClanChannelMember var2 = (ClanChannelMember)Client.currentClanChannels[var0].members.get(var1);
+				if (var2.rank == -1) {
+					PacketBufferNode var3 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3127, Client.packetWriter.isaacCipher);
+					var3.packetBuffer.writeByte(3 + AbstractSocket.stringCp1252NullTerminatedByteSize(var2.username.getName()));
+					var3.packetBuffer.writeByte(var0);
+					var3.packetBuffer.writeShort(var1);
+					var3.packetBuffer.writeStringCp1252NullTerminated(var2.username.getName());
+					Client.packetWriter.addNode(var3);
+				}
+			}
 		}
-
-		for (var0 = 26; var0 < 52; ++var0) {
-			field4431[var0] = (char)(var0 + 97 - 26);
-		}
-
-		for (var0 = 52; var0 < 62; ++var0) {
-			field4431[var0] = (char)(var0 + 48 - 52);
-		}
-
-		field4431[62] = '+';
-		field4431[63] = '/';
-		field4435 = new char[64];
-
-		for (var0 = 0; var0 < 26; ++var0) {
-			field4435[var0] = (char)(var0 + 65);
-		}
-
-		for (var0 = 26; var0 < 52; ++var0) {
-			field4435[var0] = (char)(var0 + 97 - 26);
-		}
-
-		for (var0 = 52; var0 < 62; ++var0) {
-			field4435[var0] = (char)(var0 + 48 - 52);
-		}
-
-		field4435[62] = '*';
-		field4435[63] = '-';
-		field4432 = new char[64];
-
-		for (var0 = 0; var0 < 26; ++var0) {
-			field4432[var0] = (char)(var0 + 65);
-		}
-
-		for (var0 = 26; var0 < 52; ++var0) {
-			field4432[var0] = (char)(var0 + 97 - 26);
-		}
-
-		for (var0 = 52; var0 < 62; ++var0) {
-			field4432[var0] = (char)(var0 + 48 - 52);
-		}
-
-		field4432[62] = '-';
-		field4432[63] = '_';
-		field4433 = new int[128];
-
-		for (var0 = 0; var0 < field4433.length; ++var0) {
-			field4433[var0] = -1;
-		}
-
-		for (var0 = 65; var0 <= 90; ++var0) {
-			field4433[var0] = var0 - 65;
-		}
-
-		for (var0 = 97; var0 <= 122; ++var0) {
-			field4433[var0] = var0 - 97 + 26;
-		}
-
-		for (var0 = 48; var0 <= 57; ++var0) {
-			field4433[var0] = var0 - 48 + 52;
-		}
-
-		int[] var2 = field4433;
-		field4433[43] = 62;
-		var2[42] = 62;
-		int[] var1 = field4433;
-		field4433[47] = 63;
-		var1[45] = 63;
 	}
 }

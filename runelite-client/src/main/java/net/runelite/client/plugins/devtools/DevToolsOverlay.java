@@ -234,7 +234,7 @@ class DevToolsOverlay extends Overlay
 				}
 				if (mo.getTextureToReplaceWith() != null)
 				{
-					text += " (T: " + Arrays.toString(mo.getColorToReplaceWith()) + ")";
+					text += " (T: " + Arrays.toString(mo.getTextureToReplaceWith()) + ")";
 				}
 				if (mo.useLocalPlayer())
 				{

@@ -4,27 +4,30 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("sz")
+@ObfuscatedName("sr")
 @Implements("Fonts")
 public class Fonts {
-	@ObfuscatedName("aw")
+	@ObfuscatedName("af")
+	@Export("Tiles_hue")
+	static int[] Tiles_hue;
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "Lnd;"
+		descriptor = "Lnu;"
 	)
 	@Export("spritesArchive")
 	AbstractArchive spritesArchive;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "Lnd;"
+		descriptor = "Lnu;"
 	)
 	@Export("fontsArchive")
 	AbstractArchive fontsArchive;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ao")
 	@Export("map")
 	HashMap map;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lnd;Lnd;)V"
+		descriptor = "(Lnu;Lnu;)V"
 	)
 	public Fonts(AbstractArchive var1, AbstractArchive var2) {
 		this.spritesArchive = var1;
@@ -32,10 +35,10 @@ public class Fonts {
 		this.map = new HashMap();
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "([Lsg;I)Ljava/util/HashMap;",
-		garbageValue = "-631729363"
+		descriptor = "([Lsp;I)Ljava/util/HashMap;",
+		garbageValue = "-537170056"
 	)
 	@Export("createMap")
 	public HashMap createMap(FontName[] var1) {
@@ -56,7 +59,7 @@ public class Fonts {
 				} else {
 					int var10 = var7.getGroupId(var9);
 					int var11 = var7.getFileId(var10, "");
-					var6 = ConcurrentMidiTask.method7672(var7, var8, var10, var11);
+					var6 = LoginPacket.method5712(var7, var8, var10, var11);
 				}
 
 				if (var6 != null) {

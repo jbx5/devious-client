@@ -1,146 +1,100 @@
-import net.runelite.mapping.ObfuscatedGetter;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("iq")
-public class class217 {
-	@ObfuscatedName("aw")
-	final int[][] field2372;
-	@ObfuscatedName("ay")
-	final int[][] field2369;
-	@ObfuscatedName("ar")
-	@ObfuscatedGetter(
-		intValue = 1777762751
-	)
-	int field2373;
-	@ObfuscatedName("am")
-	@ObfuscatedGetter(
-		intValue = 1982630591
-	)
-	int field2371;
-	@ObfuscatedName("as")
-	final int[] field2374;
-	@ObfuscatedName("aj")
-	final int[] field2368;
-	@ObfuscatedName("ag")
-	@ObfuscatedGetter(
-		intValue = 567035663
-	)
-	final int field2370;
-
-	public class217(int var1, int var2) {
-		this.field2372 = new int[var1][var2];
-		this.field2369 = new int[var1][var2];
-		int var3 = var2 * var1;
-		int var4 = UrlRequest.method2837(var3 / 4);
-		this.field2374 = new int[var4];
-		this.field2368 = new int[var4];
-		this.field2370 = var4 - 1;
-	}
-
-	@ObfuscatedName("aw")
+@ObfuscatedName("in")
+public enum class217 implements MouseWheel {
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-570470539"
+		descriptor = "Lin;"
 	)
-	void method4232() {
-		for (int var1 = 0; var1 < this.field2372.length; ++var1) {
-			for (int var2 = 0; var2 < this.field2372[var1].length; ++var2) {
-				this.field2372[var1][var2] = 0;
-				this.field2369[var1][var2] = 99999999;
-			}
-		}
-
-	}
-
-	@ObfuscatedName("ay")
+	field2405((byte)-1),
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(III)V",
-		garbageValue = "527120358"
+		descriptor = "Lin;"
 	)
-	void method4233(int var1, int var2) {
-		this.field2373 = var1;
-		this.field2371 = var2;
-	}
-
-	@ObfuscatedName("ar")
+	field2406((byte)0),
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "1077711185"
+		descriptor = "Lin;"
 	)
-	int method4234() {
-		return this.field2373;
-	}
-
-	@ObfuscatedName("am")
+	field2410((byte)1),
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "1117442087"
+		descriptor = "Lin;"
 	)
-	int method4257() {
-		return this.field2371;
-	}
-
-	@ObfuscatedName("as")
-	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "793127968"
-	)
-	int method4236() {
-		return this.field2372.length;
-	}
-
-	@ObfuscatedName("aj")
-	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "-58"
-	)
-	int method4237() {
-		return this.field2372[0].length;
-	}
-
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "(I)[[I",
-		garbageValue = "-1369726044"
-	)
-	int[][] method4238() {
-		return this.field2372;
-	}
-
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "(B)[[I",
-		garbageValue = "-1"
-	)
-	int[][] method4260() {
-		return this.field2369;
-	}
-
-	@ObfuscatedName("av")
-	@ObfuscatedSignature(
-		descriptor = "(I)[I",
-		garbageValue = "-1326597582"
-	)
-	int[] method4240() {
-		return this.field2374;
-	}
+	field2407((byte)2);
 
 	@ObfuscatedName("ap")
-	@ObfuscatedSignature(
-		descriptor = "(B)[I",
-		garbageValue = "-59"
-	)
-	int[] method4241() {
-		return this.field2368;
+	@Export("Tiles_underlays2")
+	static byte[][][] Tiles_underlays2;
+	@ObfuscatedName("ac")
+	public byte field2408;
+
+	class217(byte var3) {
+		this.field2408 = var3;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-8466104"
+		descriptor = "(B)I",
+		garbageValue = "41"
 	)
-	int method4242() {
-		return this.field2370;
+	@Export("rsOrdinal")
+	public int rsOrdinal() {
+		return this.field2408;
+	}
+
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "(IB)Ljava/lang/String;",
+		garbageValue = "-19"
+	)
+	@Export("colorStartTag")
+	static String colorStartTag(int var0) {
+		return "<col=" + Integer.toHexString(var0) + ">";
+	}
+
+	@ObfuscatedName("ao")
+	@ObfuscatedSignature(
+		descriptor = "(II)I",
+		garbageValue = "-1754323091"
+	)
+	public static int method4241(int var0) {
+		return (var0 & class508.field5058) - 1;
+	}
+
+	@ObfuscatedName("cn")
+	@ObfuscatedSignature(
+		descriptor = "(IS)V",
+		garbageValue = "-4242"
+	)
+	@Export("runWidgetOnLoadListener")
+	static void runWidgetOnLoadListener(int var0) {
+		if (var0 != -1) {
+			if (ModeWhere.loadInterface(var0)) {
+				Widget[] var1 = PacketBufferNode.Widget_interfaceComponents[var0];
+
+				for (int var2 = 0; var2 < var1.length; ++var2) {
+					Widget var3 = var1[var2];
+					if (var3.onLoad != null) {
+						ScriptEvent var4 = new ScriptEvent();
+						var4.widget = var3;
+						var4.args = var3.onLoad;
+						NPC.runScript(var4, 5000000, 0);
+					}
+				}
+
+			}
+		}
+	}
+
+	@ObfuscatedName("cr")
+	@ObfuscatedSignature(
+		descriptor = "(IB)Ljava/lang/Object;",
+		garbageValue = "-77"
+	)
+	static Object method4239(int var0) {
+		return class172.method3458((class502)KeyHandler.findEnumerated(class502.method8922(), var0));
 	}
 }

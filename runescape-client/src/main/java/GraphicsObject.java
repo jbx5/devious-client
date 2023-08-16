@@ -1,67 +1,70 @@
+import java.security.SecureRandom;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cl")
+@ObfuscatedName("cg")
 @Implements("GraphicsObject")
 public class GraphicsObject extends Renderable {
-	@ObfuscatedName("aw")
+	@ObfuscatedName("hn")
+	static SecureRandom field905;
+	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		intValue = -1785449313
+		intValue = 539793439
 	)
 	@Export("id")
 	int id;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedGetter(
-		intValue = 532269849
+		intValue = 794022017
 	)
 	@Export("cycleStart")
 	int cycleStart;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = 1919905893
+		intValue = -49690437
 	)
 	@Export("plane")
 	int plane;
-	@ObfuscatedName("am")
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		intValue = -1123218449
+		intValue = 540026663
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("as")
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = -1323044463
+		intValue = -37149761
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ai")
 	@ObfuscatedGetter(
-		intValue = 1884140779
+		intValue = 284515791
 	)
 	@Export("z")
 	int z;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "Lig;"
+		descriptor = "Lib;"
 	)
 	@Export("sequenceDefinition")
 	SequenceDefinition sequenceDefinition;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = 1460987609
+		intValue = -956501499
 	)
 	@Export("frame")
 	int frame;
-	@ObfuscatedName("av")
+	@ObfuscatedName("aa")
 	@ObfuscatedGetter(
-		intValue = 1679083777
+		intValue = -1971256985
 	)
 	@Export("frameCycle")
 	int frameCycle;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("af")
 	@Export("isFinished")
 	boolean isFinished;
 
@@ -75,20 +78,20 @@ public class GraphicsObject extends Renderable {
 		this.y = var4;
 		this.z = var5;
 		this.cycleStart = var7 + var6;
-		int var8 = NPCComposition.SpotAnimationDefinition_get(this.id).sequence;
+		int var8 = StructComposition.SpotAnimationDefinition_get(this.id).sequence;
 		if (var8 != -1) {
 			this.isFinished = false;
-			this.sequenceDefinition = class135.SequenceDefinition_get(var8);
+			this.sequenceDefinition = EnumComposition.SequenceDefinition_get(var8);
 		} else {
 			this.isFinished = true;
 		}
 
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
 		descriptor = "(IB)V",
-		garbageValue = "-1"
+		garbageValue = "47"
 	)
 	@Export("advance")
 	final void advance(int var1) {
@@ -105,7 +108,7 @@ public class GraphicsObject extends Renderable {
 				}
 			} else {
 				this.frame += var1;
-				if (this.frame >= this.sequenceDefinition.method4074()) {
+				if (this.frame >= this.sequenceDefinition.method4034()) {
 					this.isFinished = true;
 				}
 			}
@@ -113,14 +116,14 @@ public class GraphicsObject extends Renderable {
 		}
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(I)Ljo;",
-		garbageValue = "-983173466"
+		descriptor = "(I)Ljr;",
+		garbageValue = "798227647"
 	)
 	@Export("getModel")
 	protected final Model getModel() {
-		SpotAnimationDefinition var1 = NPCComposition.SpotAnimationDefinition_get(this.id);
+		SpotAnimationDefinition var1 = StructComposition.SpotAnimationDefinition_get(this.id);
 		Model var2;
 		if (!this.isFinished) {
 			var2 = var1.getModel(this.frame);
@@ -129,34 +132,6 @@ public class GraphicsObject extends Renderable {
 		}
 
 		return var2 == null ? null : var2;
-	}
-
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "-30148371"
-	)
-	public static boolean method2081() {
-		ReflectionCheck var0 = (ReflectionCheck)class36.reflectionChecks.last();
-		return var0 != null;
-	}
-
-	@ObfuscatedName("at")
-	@ObfuscatedSignature(
-		descriptor = "(Lmt;II)V",
-		garbageValue = "762775056"
-	)
-	@Export("Widget_setKeyIgnoreHeld")
-	static final void Widget_setKeyIgnoreHeld(Widget var0, int var1) {
-		if (var0.field3711 == null) {
-			throw new RuntimeException();
-		} else {
-			if (var0.field3769 == null) {
-				var0.field3769 = new int[var0.field3711.length];
-			}
-
-			var0.field3769[var1] = Integer.MAX_VALUE;
-		}
 	}
 
 	public GraphicsObject() {

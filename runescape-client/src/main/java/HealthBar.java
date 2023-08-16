@@ -1,36 +1,55 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dv")
+@ObfuscatedName("dm")
 @Implements("HealthBar")
 public class HealthBar extends Node {
-	@ObfuscatedName("ar")
+	@ObfuscatedName("aa")
+	@ObfuscatedGetter(
+		intValue = -74001321
+	)
+	@Export("ItemDefinition_fileCount")
+	public static int ItemDefinition_fileCount;
+	@ObfuscatedName("ls")
+	@ObfuscatedGetter(
+		intValue = 860411603
+	)
+	@Export("oculusOrbFocalPointY")
+	static int oculusOrbFocalPointY;
+	@ObfuscatedName("mn")
+	@ObfuscatedGetter(
+		intValue = 1873768041
+	)
+	@Export("Client_plane")
+	static int Client_plane;
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "Lha;"
+		descriptor = "Lhl;"
 	)
 	@Export("definition")
 	HealthBarDefinition definition;
-	@ObfuscatedName("am")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "Lor;"
+		descriptor = "Loc;"
 	)
 	@Export("updates")
 	IterableNodeDeque updates;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lha;)V"
+		descriptor = "(Lhl;)V"
 	)
 	HealthBar(HealthBarDefinition var1) {
 		this.updates = new IterableNodeDeque();
 		this.definition = var1;
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
 		descriptor = "(IIIIB)V",
-		garbageValue = "-79"
+		garbageValue = "0"
 	)
 	@Export("put")
 	void put(int var1, int var2, int var3, int var4) {
@@ -63,10 +82,10 @@ public class HealthBar extends Node {
 		}
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(II)Ldp;",
-		garbageValue = "2046925775"
+		descriptor = "(IB)Ldo;",
+		garbageValue = "-93"
 	)
 	@Export("get")
 	HealthBarUpdate get(int var1) {
@@ -77,7 +96,7 @@ public class HealthBar extends Node {
 				var2 = var3;
 			}
 
-			if (this.definition.int5 + var2.cycleOffset + var2.cycle > var1) {
+			if (this.definition.int5 + var2.cycle + var2.cycleOffset > var1) {
 				return var2;
 			} else {
 				var2.remove();
@@ -88,22 +107,48 @@ public class HealthBar extends Node {
 		}
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "-2086945413"
+		descriptor = "(B)Z",
+		garbageValue = "-45"
 	)
 	@Export("isEmpty")
 	boolean isEmpty() {
-		return this.updates.method7083();
+		return this.updates.method7032();
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("jd")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-137871436"
+		descriptor = "(IIII)V",
+		garbageValue = "-1142010157"
 	)
-	public static void method2579() {
-		ItemComposition.ItemDefinition_cachedSprites.clear();
+	@Export("worldToScreen")
+	static final void worldToScreen(int var0, int var1, int var2) {
+		if (var0 >= 128 && var1 >= 128 && var0 <= 13056 && var1 <= 13056) {
+			int var3 = class18.getTileHeight(var0, var1, Client_plane) - var2;
+			var0 -= NPCComposition.cameraX;
+			var3 -= class133.cameraY;
+			var1 -= class139.cameraZ;
+			int var4 = Rasterizer3D.Rasterizer3D_sine[class129.cameraPitch];
+			int var5 = Rasterizer3D.Rasterizer3D_cosine[class129.cameraPitch];
+			int var6 = Rasterizer3D.Rasterizer3D_sine[UserComparator10.cameraYaw];
+			int var7 = Rasterizer3D.Rasterizer3D_cosine[UserComparator10.cameraYaw];
+			int var8 = var6 * var1 + var0 * var7 >> 16;
+			var1 = var7 * var1 - var0 * var6 >> 16;
+			var0 = var8;
+			var8 = var5 * var3 - var4 * var1 >> 16;
+			var1 = var5 * var1 + var3 * var4 >> 16;
+			if (var1 >= 50) {
+				Client.viewportTempX = var0 * Client.viewportZoom / var1 + Client.viewportWidth / 2;
+				Client.viewportTempY = Client.viewportHeight / 2 + var8 * Client.viewportZoom / var1;
+			} else {
+				Client.viewportTempX = -1;
+				Client.viewportTempY = -1;
+			}
+
+		} else {
+			Client.viewportTempX = -1;
+			Client.viewportTempY = -1;
+		}
 	}
 }

@@ -1,37 +1,108 @@
 import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ti")
-final class class502 implements class499 {
+@ObfuscatedName("tb")
+public class class502 implements MouseWheel {
+	@ObfuscatedName("au")
+	@ObfuscatedSignature(
+		descriptor = "Ltb;"
+	)
+	public static final class502 field5035;
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "Ltb;"
+	)
+	public static final class502 field5037;
+	@ObfuscatedName("ao")
+	@ObfuscatedSignature(
+		descriptor = "Ltb;"
+	)
+	public static final class502 field5030;
+	@ObfuscatedName("ke")
+	@ObfuscatedSignature(
+		descriptor = "[Lui;"
+	)
+	@Export("headIconPrayerSprites")
+	static SpritePixels[] headIconPrayerSprites;
+	@ObfuscatedName("at")
+	@ObfuscatedGetter(
+		intValue = 784477885
+	)
+	public final int field5031;
+	@ObfuscatedName("ac")
+	@ObfuscatedGetter(
+		intValue = 1507631009
+	)
+	public final int field5032;
+	@ObfuscatedName("ai")
+	public final Class field5033;
 	@ObfuscatedName("az")
-	@Export("ItemDefinition_inMembersWorld")
-	static boolean ItemDefinition_inMembersWorld;
-
-	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Object;Lty;I)V",
-		garbageValue = "-791895690"
+		descriptor = "Ltj;"
 	)
-	public void vmethod8956(Object var1, Buffer var2) {
-		this.method8921((Long)var1, var2);
+	public final class498 field5034;
+
+	static {
+		field5035 = new class502(1, 0, Integer.class, new class499());
+		field5037 = new class502(0, 1, Long.class, new class501());
+		field5030 = new class502(2, 2, String.class, new class503());
 	}
 
-	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "(Lty;I)Ljava/lang/Object;",
-		garbageValue = "1270618633"
+		descriptor = "(IILjava/lang/Class;Ltj;)V"
 	)
-	public Object vmethod8959(Buffer var1) {
-		return var1.readLong();
+	class502(int var1, int var2, Class var3, class498 var4) {
+		this.field5031 = var1;
+		this.field5032 = var2;
+		this.field5033 = var3;
+		this.field5034 = var4;
 	}
 
-	@ObfuscatedName("av")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Long;Lty;I)V",
-		garbageValue = "-338210683"
+		descriptor = "(B)I",
+		garbageValue = "41"
 	)
-	void method8921(Long var1, Buffer var2) {
-		var2.writeLong(var1);
+	@Export("rsOrdinal")
+	public int rsOrdinal() {
+		return this.field5032;
+	}
+
+	@ObfuscatedName("at")
+	@ObfuscatedSignature(
+		descriptor = "(Ltm;S)Ljava/lang/Object;",
+		garbageValue = "5018"
+	)
+	public Object method8917(Buffer var1) {
+		return this.field5034.vmethod8926(var1);
+	}
+
+	@ObfuscatedName("au")
+	@ObfuscatedSignature(
+		descriptor = "(B)[Ltb;",
+		garbageValue = "44"
+	)
+	public static class502[] method8922() {
+		return new class502[]{field5035, field5030, field5037};
+	}
+
+	@ObfuscatedName("ao")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/Class;B)Ltb;",
+		garbageValue = "82"
+	)
+	public static class502 method8915(Class var0) {
+		class502[] var1 = method8922();
+
+		for (int var2 = 0; var2 < var1.length; ++var2) {
+			class502 var3 = var1[var2];
+			if (var3.field5033 == var0) {
+				return var3;
+			}
+		}
+
+		return null;
 	}
 }

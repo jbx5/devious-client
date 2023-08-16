@@ -1,132 +1,131 @@
-import java.awt.Component;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("no")
+@ObfuscatedName("nm")
 @Implements("WorldMapDecorationType")
 public enum WorldMapDecorationType implements MouseWheel {
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "Lno;"
-	)
-	field3810(0, 0),
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "Lno;"
-	)
-	field3825(1, 0),
-	@ObfuscatedName("ar")
-	@ObfuscatedSignature(
-		descriptor = "Lno;"
-	)
-	field3808(2, 0),
-	@ObfuscatedName("am")
-	@ObfuscatedSignature(
-		descriptor = "Lno;"
-	)
-	field3809(3, 0),
-	@ObfuscatedName("as")
-	@ObfuscatedSignature(
-		descriptor = "Lno;"
-	)
-	field3811(9, 2),
-	@ObfuscatedName("aj")
-	@ObfuscatedSignature(
-		descriptor = "Lno;"
-	)
-	field3826(4, 1),
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "Lno;"
-	)
-	field3812(5, 1),
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "Lno;"
-	)
-	field3813(6, 1),
-	@ObfuscatedName("av")
-	@ObfuscatedSignature(
-		descriptor = "Lno;"
-	)
-	field3814(7, 1),
-	@ObfuscatedName("ap")
-	@ObfuscatedSignature(
-		descriptor = "Lno;"
-	)
-	field3815(8, 1),
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "Lno;"
-	)
-	field3816(12, 2),
-	@ObfuscatedName("at")
-	@ObfuscatedSignature(
-		descriptor = "Lno;"
-	)
-	field3817(13, 2),
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "Lno;"
-	)
-	field3818(14, 2),
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "Lno;"
-	)
-	field3819(15, 2),
-	@ObfuscatedName("aa")
-	@ObfuscatedSignature(
-		descriptor = "Lno;"
-	)
-	field3827(16, 2),
 	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "Lno;"
+		descriptor = "Lnm;"
 	)
-	field3821(17, 2),
+	field3828(0, 0),
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "Lno;"
+		descriptor = "Lnm;"
 	)
-	field3822(18, 2),
-	@ObfuscatedName("ab")
-	@ObfuscatedSignature(
-		descriptor = "Lno;"
-	)
-	field3806(19, 2),
-	@ObfuscatedName("ad")
-	@ObfuscatedSignature(
-		descriptor = "Lno;"
-	)
-	field3824(20, 2),
+	field3824(1, 0),
 	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "Lno;"
+		descriptor = "Lnm;"
 	)
-	field3820(21, 2),
+	field3825(2, 0),
+	@ObfuscatedName("at")
+	@ObfuscatedSignature(
+		descriptor = "Lnm;"
+	)
+	field3826(3, 0),
 	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Lno;"
+		descriptor = "Lnm;"
 	)
-	field3829(10, 2),
-	@ObfuscatedName("ak")
+	field3844(9, 2),
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "Lno;"
+		descriptor = "Lnm;"
 	)
-	field3823(11, 2),
+	field3840(4, 1),
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "Lnm;"
+	)
+	field3829(5, 1),
+	@ObfuscatedName("ap")
+	@ObfuscatedSignature(
+		descriptor = "Lnm;"
+	)
+	field3830(6, 1),
+	@ObfuscatedName("aa")
+	@ObfuscatedSignature(
+		descriptor = "Lnm;"
+	)
+	field3834(7, 1),
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "Lnm;"
+	)
+	field3827(8, 1),
+	@ObfuscatedName("ad")
+	@ObfuscatedSignature(
+		descriptor = "Lnm;"
+	)
+	field3833(12, 2),
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "Lnm;"
+	)
+	field3835(13, 2),
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "Lnm;"
+	)
+	field3842(14, 2),
 	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "Lno;"
+		descriptor = "Lnm;"
 	)
-	field3828(22, 3);
+	field3836(15, 2),
+	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "Lnm;"
+	)
+	field3837(16, 2),
+	@ObfuscatedName("ab")
+	@ObfuscatedSignature(
+		descriptor = "Lnm;"
+	)
+	field3838(17, 2),
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "Lnm;"
+	)
+	field3823(18, 2),
+	@ObfuscatedName("am")
+	@ObfuscatedSignature(
+		descriptor = "Lnm;"
+	)
+	field3839(19, 2),
+	@ObfuscatedName("ax")
+	@ObfuscatedSignature(
+		descriptor = "Lnm;"
+	)
+	field3841(20, 2),
+	@ObfuscatedName("ah")
+	@ObfuscatedSignature(
+		descriptor = "Lnm;"
+	)
+	field3832(21, 2),
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "Lnm;"
+	)
+	field3843(10, 2),
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "Lnm;"
+	)
+	field3846(11, 2),
+	@ObfuscatedName("aj")
+	@ObfuscatedSignature(
+		descriptor = "Lnm;"
+	)
+	field3845(22, 3);
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("av")
 	@ObfuscatedGetter(
-		intValue = -43271469
+		intValue = 480633771
 	)
 	@Export("id")
 	public final int id;
@@ -139,34 +138,13 @@ public enum WorldMapDecorationType implements MouseWheel {
 		this.id = var3;
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "1644350448"
+		descriptor = "(B)I",
+		garbageValue = "41"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.id;
-	}
-
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/awt/Component;B)V",
-		garbageValue = "48"
-	)
-	static void method6642(Component var0) {
-		var0.addMouseListener(MouseHandler.MouseHandler_instance);
-		var0.addMouseMotionListener(MouseHandler.MouseHandler_instance);
-		var0.addFocusListener(MouseHandler.MouseHandler_instance);
-	}
-
-	@ObfuscatedName("nr")
-	@ObfuscatedSignature(
-		descriptor = "(Lmt;I)Z",
-		garbageValue = "1084852448"
-	)
-	@Export("isComponentHidden")
-	static boolean isComponentHidden(Widget var0) {
-		return var0.isHidden;
 	}
 }
