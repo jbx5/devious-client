@@ -78,7 +78,7 @@ public class class108 {
 	@ObfuscatedSignature(
 		descriptor = "Leq;"
 	)
-	static final class108 field1404;
+	static final class108 field1390;
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "Leq;"
@@ -109,7 +109,7 @@ public class class108 {
 		field1401 = new class108(10);
 		field1402 = new class108(11);
 		field1403 = new class108(12);
-		field1404 = new class108(13);
+		field1390 = new class108(13);
 		field1399 = new class108(14);
 		field1406 = new class108(15);
 	}

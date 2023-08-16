@@ -229,7 +229,7 @@ final class class105 implements class323 {
 					} else if (var32.method1843()) {
 						var21 = var32.isMembersOnly() ? class108.field1402 : class108.field1401;
 					} else if (var32.method1811()) {
-						var21 = var32.isMembersOnly() ? class108.field1404 : class108.field1403;
+						var21 = var32.isMembersOnly() ? class108.field1390 : class108.field1403;
 					}
 
 					if (var21 == null || var21.field1405 >= class74.worldSelectBackSprites.length) {
