@@ -60,4 +60,9 @@ public class ChatMessageBuilder
 	{
 		return builder.toString();
 	}
+
+	public void clear()
+	{
+		builder.setLength(0);
+	}
 }
