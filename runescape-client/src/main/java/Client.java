@@ -1195,12 +1195,14 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 	@ObfuscatedName("sc")
 	static String field554;
 	@ObfuscatedName("si")
-	static long[] field672;
+	@Export("crossWorldMessageIds")
+	static long[] crossWorldMessageIds;
 	@ObfuscatedName("sr")
 	@ObfuscatedGetter(
 		intValue = -765244531
 	)
-	static int field534;
+	@Export("crossWorldMessageIdsIndex")
+	static int crossWorldMessageIdsIndex;
 	@ObfuscatedName("sp")
 	@ObfuscatedSignature(
 		descriptor = "Liz;"
@@ -1635,8 +1637,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 		publicChatMode = 0;
 		tradeChatMode = 0;
 		field554 = "";
-		field672 = new long[100];
-		field534 = 0;
+		crossWorldMessageIds = new long[100];
+		crossWorldMessageIdsIndex = 0;
 		field674 = new class212();
 		field765 = new class210();
 		field766 = 0;
@@ -4001,7 +4003,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 						var11 = true;
 					} else {
 						for (var13 = 0; var13 < 100; ++var13) {
-							if (field672[var13] == var27) {
+							if (crossWorldMessageIds[var13] == var27) {
 								var11 = true;
 								break;
 							}
@@ -4009,8 +4011,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					}
 
 					if (!var11) {
-						field672[field534] = var27;
-						field534 = (field534 + 1) % 100;
+						crossWorldMessageIds[crossWorldMessageIdsIndex] = var27;
+						crossWorldMessageIdsIndex = (crossWorldMessageIdsIndex + 1) % 100;
 						var30 = DirectByteArrayCopier.method6579(var3);
 						var85 = var20 >= 0 ? 43 : 46;
 						class416.addChatMessage(var85, "", var30, var81.name);
@@ -4313,7 +4315,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 								break;
 							}
 
-							if (field672[var15] == var41) {
+							if (crossWorldMessageIds[var15] == var41) {
 								var63 = true;
 								break;
 							}
@@ -4323,8 +4325,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					}
 
 					if (!var63) {
-						field672[field534] = var41;
-						field534 = (field534 + 1) % 100;
+						crossWorldMessageIds[crossWorldMessageIdsIndex] = var41;
+						crossWorldMessageIdsIndex = (crossWorldMessageIdsIndex + 1) % 100;
 						var43 = AbstractFont.escapeBrackets(DirectByteArrayCopier.method6579(var3));
 						var16 = var20 >= 0 ? 41 : 44;
 						if (var87.modIcon != -1) {
@@ -5079,7 +5081,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					var12 = false;
 
 					for (var13 = 0; var13 < 100; ++var13) {
-						if (var46 == field672[var13]) {
+						if (var46 == crossWorldMessageIds[var13]) {
 							var12 = true;
 							break;
 						}
@@ -5090,8 +5092,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					}
 
 					if (!var12 && field651 == 0) {
-						field672[field534] = var46;
-						field534 = (field534 + 1) % 100;
+						crossWorldMessageIds[crossWorldMessageIdsIndex] = var46;
+						crossWorldMessageIdsIndex = (crossWorldMessageIdsIndex + 1) % 100;
 						var30 = AbstractFont.escapeBrackets(World.method1830(DirectByteArrayCopier.method6579(var3)));
 						byte var83;
 						if (var44.isPrivileged) {
@@ -5351,7 +5353,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					boolean var31 = false;
 
 					for (var15 = 0; var15 < 100; ++var15) {
-						if (field672[var15] == var32) {
+						if (crossWorldMessageIds[var15] == var32) {
 							var31 = true;
 							break;
 						}
@@ -5362,8 +5364,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					}
 
 					if (!var31 && field651 == 0) {
-						field672[field534] = var32;
-						field534 = (field534 + 1) % 100;
+						crossWorldMessageIds[crossWorldMessageIdsIndex] = var32;
+						crossWorldMessageIdsIndex = (crossWorldMessageIdsIndex + 1) % 100;
 						var43 = AbstractFont.escapeBrackets(World.method1830(DirectByteArrayCopier.method6579(var3)));
 						if (var45.modIcon != -1) {
 							class416.addChatMessage(9, Tile.method4373(var45.modIcon) + var51, var43, class211.base37DecodeLong(var23));

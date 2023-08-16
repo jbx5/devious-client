@@ -106,16 +106,20 @@ public final class Projectile extends Renderable {
 	@Export("z")
 	double z;
 	@ObfuscatedName("ah")
-	double field991;
+	@Export("speedX")
+	double speedX;
 	@ObfuscatedName("as")
-	double field992;
+	@Export("speedY")
+	double speedY;
 	@ObfuscatedName("ay")
-	double field993;
+	@Export("speed")
+	double speed;
 	@ObfuscatedName("aj")
 	@Export("speedZ")
 	double speedZ;
 	@ObfuscatedName("av")
-	double field984;
+	@Export("accelerationZ")
+	double accelerationZ;
 	@ObfuscatedName("aw")
 	@ObfuscatedGetter(
 		intValue = -556808089
@@ -198,14 +202,14 @@ public final class Projectile extends Renderable {
 		}
 
 		var5 = (double)(this.cycleEnd + 1 - var4);
-		this.field991 = ((double)this.field978 - this.x) / var5;
-		this.field992 = ((double)this.field979 - this.y) / var5;
-		this.field993 = Math.sqrt(this.field992 * this.field992 + this.field991 * this.field991);
+		this.speedX = ((double)this.field978 - this.x) / var5;
+		this.speedY = ((double)this.field979 - this.y) / var5;
+		this.speed = Math.sqrt(this.speedY * this.speedY + this.speedX * this.speedX);
 		if (!this.isMoving) {
-			this.speedZ = -this.field993 * Math.tan((double)this.slope * 0.02454369D);
+			this.speedZ = -this.speed * Math.tan((double)this.slope * 0.02454369D);
 		}
 
-		this.field984 = ((double)this.field980 - this.z - this.speedZ * var5) * 2.0D / (var5 * var5);
+		this.accelerationZ = ((double)this.field980 - this.z - this.speedZ * var5) * 2.0D / (var5 * var5);
 	}
 
 	@ObfuscatedName("ae")
@@ -233,12 +237,12 @@ public final class Projectile extends Renderable {
 	@Export("advance")
 	final void advance(int var1) {
 		this.isMoving = true;
-		this.x += this.field991 * (double)var1;
-		this.y += (double)var1 * this.field992;
-		this.z += 0.5D * this.field984 * (double)var1 * (double)var1 + (double)var1 * this.speedZ;
-		this.speedZ += this.field984 * (double)var1;
-		this.yaw = (int)(Math.atan2(this.field991, this.field992) * 325.949D) + 1024 & 2047;
-		this.pitch = (int)(Math.atan2(this.speedZ, this.field993) * 325.949D) & 2047;
+		this.x += this.speedX * (double)var1;
+		this.y += (double)var1 * this.speedY;
+		this.z += 0.5D * this.accelerationZ * (double)var1 * (double)var1 + (double)var1 * this.speedZ;
+		this.speedZ += this.accelerationZ * (double)var1;
+		this.yaw = (int)(Math.atan2(this.speedX, this.speedY) * 325.949D) + 1024 & 2047;
+		this.pitch = (int)(Math.atan2(this.speedZ, this.speed) * 325.949D) & 2047;
 		if (this.sequenceDefinition != null) {
 			if (!this.sequenceDefinition.isCachedModelIdSet()) {
 				this.frameCycle += var1;
