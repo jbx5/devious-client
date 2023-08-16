@@ -1,36 +1,45 @@
-import net.runelite.mapping.ObfuscatedGetter;
+import java.util.Comparator;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("qu")
-public class class422 {
-	@ObfuscatedName("aw")
+@ObfuscatedName("qw")
+class class422 implements Comparator {
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "Lqu;"
+		descriptor = "Lnu;"
 	)
-	public static final class422 field4609;
-	@ObfuscatedName("ay")
+	static AbstractArchive field4609;
+	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lqu;"
+		descriptor = "Lqv;"
 	)
-	static final class422 field4605;
-	@ObfuscatedName("uf")
-	@ObfuscatedGetter(
-		intValue = -1331395219
-	)
-	static int field4606;
-	@ObfuscatedName("ar")
-	@ObfuscatedGetter(
-		intValue = -1238891559
-	)
-	final int field4611;
+	final class423 this$0;
 
-	static {
-		field4609 = new class422(1);
-		field4605 = new class422(0);
+	@ObfuscatedSignature(
+		descriptor = "(Lqv;)V"
+	)
+	class422(class423 var1) {
+		this.this$0 = var1;
 	}
 
-	class422(int var1) {
-		this.field4611 = var1;
+	@ObfuscatedName("au")
+	@ObfuscatedSignature(
+		descriptor = "(Lqj;Lqj;I)I",
+		garbageValue = "-1576026190"
+	)
+	int method7770(class424 var1, class424 var2) {
+		if (var1.field4622 > var2.field4622) {
+			return 1;
+		} else {
+			return var1.field4622 < var2.field4622 ? -1 : 0;
+		}
+	}
+
+	public boolean equals(Object var1) {
+		return super.equals(var1);
+	}
+
+	public int compare(Object var1, Object var2) {
+		return this.method7770((class424)var1, (class424)var2);
 	}
 }

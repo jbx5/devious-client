@@ -1,29 +1,36 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("pj")
+@ObfuscatedName("po")
 @Implements("SwapSongTask")
-public class SwapSongTask extends SongTask
-{
+public class SwapSongTask extends SongTask {
+	@ObfuscatedName("rd")
 	@ObfuscatedSignature(
-		descriptor = "(Lpp;)V"
+		descriptor = "Lth;"
+	)
+	@Export("HitSplatDefinition_cached")
+	static class497 HitSplatDefinition_cached;
+
+	@ObfuscatedSignature(
+		descriptor = "(Lpm;)V"
 	)
 	public SwapSongTask(SongTask var1) {
 		super(var1);
-		super.songTaskName = "SwapSongTask";
+		super.field4523 = "SwapSongTask";
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(II)Z",
-		garbageValue = "994462530"
+		descriptor = "(I)Z",
+		garbageValue = "1604030758"
 	)
-	public boolean vmethod7676(int var1) {
-		if (class306.musicSongs.size() > 1 && class306.musicSongs.get(0) != null && ((MusicSong)class306.musicSongs.get(0)).midiPcmStream.isReady() && class306.musicSongs.get(1) != null && ((MusicSong)class306.musicSongs.get(1)).midiPcmStream.isReady()) {
-			MusicSong var2 = (MusicSong)class306.musicSongs.get(0);
-			class306.musicSongs.set(0, class306.musicSongs.get(1));
-			class306.musicSongs.set(1, var2);
+	public boolean vmethod7621() {
+		if (class305.musicSongs.size() > 1 && class305.musicSongs.get(0) != null && ((MusicSong)class305.musicSongs.get(0)).midiPcmStream.isReady() && class305.musicSongs.get(1) != null && ((MusicSong)class305.musicSongs.get(1)).midiPcmStream.isReady()) {
+			MusicSong var1 = (MusicSong)class305.musicSongs.get(0);
+			class305.musicSongs.set(0, class305.musicSongs.get(1));
+			class305.musicSongs.set(1, var1);
 		}
 
 		return true;

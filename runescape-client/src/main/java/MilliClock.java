@@ -4,117 +4,117 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gn")
+@ObfuscatedName("gr")
 @Implements("MilliClock")
 public class MilliClock extends Clock {
-	@ObfuscatedName("aw")
-	long[] field1867;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("au")
+	long[] field1900;
+	@ObfuscatedName("ae")
 	@ObfuscatedGetter(
-		intValue = -550412453
+		intValue = 215476723
 	)
-	int field1870;
-	@ObfuscatedName("ar")
+	int field1896;
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = -198323931
+		intValue = -868536703
 	)
-	int field1868;
-	@ObfuscatedName("am")
+	int field1899;
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		longValue = 411650762298926119L
+		longValue = 798114243387116605L
 	)
-	long field1869;
-	@ObfuscatedName("as")
+	long field1898;
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = 1217161433
+		intValue = 1786287119
 	)
-	int field1866;
-	@ObfuscatedName("aj")
+	int field1895;
+	@ObfuscatedName("ai")
 	@ObfuscatedGetter(
-		intValue = 927990785
+		intValue = 1522261221
 	)
-	int field1871;
+	int field1901;
 
 	public MilliClock() {
-		this.field1867 = new long[10];
-		this.field1870 = 256;
-		this.field1868 = 1;
-		this.field1866 = 0;
-		this.field1869 = class113.method2835();
+		this.field1900 = new long[10];
+		this.field1896 = 256;
+		this.field1899 = 1;
+		this.field1895 = 0;
+		this.field1898 = GameEngine.method661();
 
 		for (int var1 = 0; var1 < 10; ++var1) {
-			this.field1867[var1] = this.field1869;
+			this.field1900[var1] = this.field1898;
 		}
 
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-1541664401"
+		garbageValue = "-1021685028"
 	)
 	@Export("mark")
 	public void mark() {
 		for (int var1 = 0; var1 < 10; ++var1) {
-			this.field1867[var1] = 0L;
+			this.field1900[var1] = 0L;
 		}
 
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "(IIB)I",
-		garbageValue = "64"
+		garbageValue = "20"
 	)
 	@Export("wait")
 	public int wait(int var1, int var2) {
-		int var3 = this.field1870;
-		int var4 = this.field1868;
-		this.field1870 = 300;
-		this.field1868 = 1;
-		this.field1869 = class113.method2835();
-		if (0L == this.field1867[this.field1871]) {
-			this.field1870 = var3;
-			this.field1868 = var4;
-		} else if (this.field1869 > this.field1867[this.field1871]) {
-			this.field1870 = (int)((long)(var1 * 2560) / (this.field1869 - this.field1867[this.field1871]));
+		int var3 = this.field1896;
+		int var4 = this.field1899;
+		this.field1896 = 300;
+		this.field1899 = 1;
+		this.field1898 = GameEngine.method661();
+		if (0L == this.field1900[this.field1901]) {
+			this.field1896 = var3;
+			this.field1899 = var4;
+		} else if (this.field1898 > this.field1900[this.field1901]) {
+			this.field1896 = (int)((long)(var1 * 2560) / (this.field1898 - this.field1900[this.field1901]));
 		}
 
-		if (this.field1870 < 25) {
-			this.field1870 = 25;
+		if (this.field1896 < 25) {
+			this.field1896 = 25;
 		}
 
-		if (this.field1870 > 256) {
-			this.field1870 = 256;
-			this.field1868 = (int)((long)var1 - (this.field1869 - this.field1867[this.field1871]) / 10L);
+		if (this.field1896 > 256) {
+			this.field1896 = 256;
+			this.field1899 = (int)((long)var1 - (this.field1898 - this.field1900[this.field1901]) / 10L);
 		}
 
-		if (this.field1868 > var1) {
-			this.field1868 = var1;
+		if (this.field1899 > var1) {
+			this.field1899 = var1;
 		}
 
-		this.field1867[this.field1871] = this.field1869;
-		this.field1871 = (this.field1871 + 1) % 10;
+		this.field1900[this.field1901] = this.field1898;
+		this.field1901 = (this.field1901 + 1) % 10;
 		int var5;
-		if (this.field1868 > 1) {
+		if (this.field1899 > 1) {
 			for (var5 = 0; var5 < 10; ++var5) {
-				if (this.field1867[var5] != 0L) {
-					this.field1867[var5] += (long)this.field1868;
+				if (0L != this.field1900[var5]) {
+					this.field1900[var5] += (long)this.field1899;
 				}
 			}
 		}
 
-		if (this.field1868 < var2) {
-			this.field1868 = var2;
+		if (this.field1899 < var2) {
+			this.field1899 = var2;
 		}
 
-		class13.method180((long)this.field1868);
+		PendingSpawn.method2365((long)this.field1899);
 
-		for (var5 = 0; this.field1866 < 256; this.field1866 += this.field1870) {
+		for (var5 = 0; this.field1895 < 256; this.field1895 += this.field1896) {
 			++var5;
 		}
 
-		this.field1866 &= 255;
+		this.field1895 &= 255;
 		return var5;
 	}
 }

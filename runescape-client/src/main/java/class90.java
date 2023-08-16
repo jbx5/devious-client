@@ -3,100 +3,90 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dt")
+@ObfuscatedName("dk")
 public enum class90 implements MouseWheel {
-	@ObfuscatedName("aw")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "Ldt;"
+		descriptor = "Ldk;"
 	)
-	field1100(0, -1),
-	@ObfuscatedName("ay")
+	field1126(0, -1),
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "Ldt;"
+		descriptor = "Ldk;"
 	)
-	field1099(1, 2),
-	@ObfuscatedName("ar")
+	field1118(1, 2),
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "Ldt;"
+		descriptor = "Ldk;"
 	)
-	field1107(2, 3),
-	@ObfuscatedName("am")
+	field1119(2, 3),
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "Ldt;"
+		descriptor = "Ldk;"
 	)
-	field1101(3, 4),
-	@ObfuscatedName("as")
+	field1121(3, 4),
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Ldt;"
+		descriptor = "Ldk;"
 	)
-	field1102(4, 5),
-	@ObfuscatedName("aj")
+	field1125(4, 5),
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "Ldt;"
+		descriptor = "Ldk;"
 	)
-	field1103(5, 6);
+	field1122(5, 6);
 
-	@ObfuscatedName("aq")
-	@ObfuscatedGetter(
-		intValue = -1818991059
+	@ObfuscatedName("bg")
+	@ObfuscatedSignature(
+		descriptor = "Lrb;"
 	)
-	static int field1109;
-	@ObfuscatedName("lu")
-	@ObfuscatedGetter(
-		intValue = -783531589
-	)
-	static int field1108;
-	@ObfuscatedName("ag")
-	@ObfuscatedGetter(
-		intValue = 544385807
-	)
-	final int field1104;
+	static Bounds field1117;
 	@ObfuscatedName("az")
 	@ObfuscatedGetter(
-		intValue = -1773308819
+		intValue = 1055124911
 	)
-	final int field1105;
+	final int field1123;
+	@ObfuscatedName("ap")
+	@ObfuscatedGetter(
+		intValue = 178610013
+	)
+	final int field1124;
 
 	class90(int var3, int var4) {
-		this.field1104 = var3;
-		this.field1105 = var4;
+		this.field1123 = var3;
+		this.field1124 = var4;
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "1644350448"
+		descriptor = "(B)I",
+		garbageValue = "41"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
-		return this.field1105;
+		return this.field1124;
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lhb;",
-		garbageValue = "-1281408867"
+		descriptor = "(IB)Lhw;",
+		garbageValue = "0"
 	)
-	@Export("getObjectDefinition")
-	public static ObjectComposition getObjectDefinition(int var0) {
-		ObjectComposition var1 = (ObjectComposition)ObjectComposition.ObjectDefinition_cached.get((long)var0);
+	@Export("getNpcDefinition")
+	public static NPCComposition getNpcDefinition(int var0) {
+		NPCComposition var1 = (NPCComposition)NPCComposition.NpcDefinition_cached.get((long)var0);
 		if (var1 != null) {
 			return var1;
 		} else {
-			byte[] var2 = ObjectComposition.ObjectDefinition_archive.takeFile(6, var0);
-			var1 = new ObjectComposition();
+			byte[] var2 = NPCComposition.NpcDefinition_archive.takeFile(9, var0);
+			var1 = new NPCComposition();
 			var1.id = var0;
 			if (var2 != null) {
 				var1.decode(new Buffer(var2));
 			}
 
 			var1.postDecode();
-			if (var1.isSolid) {
-				var1.interactType = 0;
-				var1.boolean1 = false;
-			}
-
-			ObjectComposition.ObjectDefinition_cached.put(var1, (long)var0);
+			NPCComposition.NpcDefinition_cached.put(var1, (long)var0);
 			return var1;
 		}
 	}

@@ -4,63 +4,51 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("sg")
+@ObfuscatedName("sp")
 @Implements("FontName")
 public class FontName {
-	@ObfuscatedName("aw")
+	@ObfuscatedName("up")
+	@ObfuscatedGetter(
+		intValue = 1344045265
+	)
+	static int field4962;
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "Lsg;"
+		descriptor = "Lsp;"
 	)
 	@Export("FontName_plain11")
 	public static final FontName FontName_plain11;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "Lsg;"
+		descriptor = "Lsp;"
 	)
 	@Export("FontName_plain12")
 	public static final FontName FontName_plain12;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "Lsg;"
+		descriptor = "Lsp;"
 	)
 	@Export("FontName_bold12")
 	public static final FontName FontName_bold12;
-	@ObfuscatedName("am")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "Lsg;"
+		descriptor = "Lsp;"
 	)
 	@Export("FontName_verdana11")
 	public static final FontName FontName_verdana11;
-	@ObfuscatedName("as")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Lsg;"
+		descriptor = "Lsp;"
 	)
 	@Export("FontName_verdana13")
 	public static final FontName FontName_verdana13;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "Lsg;"
+		descriptor = "Lsp;"
 	)
 	@Export("FontName_verdana15")
 	public static final FontName FontName_verdana15;
-	@ObfuscatedName("dd")
-	@ObfuscatedSignature(
-		descriptor = "Luu;"
-	)
-	@Export("worldSelectRightSprite")
-	static IndexedSprite worldSelectRightSprite;
-	@ObfuscatedName("fe")
-	@ObfuscatedSignature(
-		descriptor = "Lny;"
-	)
-	@Export("archive13")
-	static Archive archive13;
-	@ObfuscatedName("un")
-	@ObfuscatedGetter(
-		intValue = -99375235
-	)
-	static int field4949;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("az")
 	@Export("name")
 	String name;
 
@@ -77,106 +65,250 @@ public class FontName {
 		this.name = var1;
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "-821041494"
+		descriptor = "(IIILiw;Lis;Lij;I)Z",
+		garbageValue = "-287593620"
 	)
-	static int method8744(int var0, int var1) {
-		FloorOverlayDefinition var2 = class131.method3024(var0);
-		if (var2 == null) {
-			return var1;
-		} else {
-			int var4;
-			int var5;
-			int var6;
-			int var7;
-			int var8;
-			if (var2.secondaryRgb >= 0) {
-				var4 = var2.secondaryHue;
-				var5 = var2.secondarySaturation;
-				var6 = var2.secondaryLightness;
-				if (var6 > 179) {
-					var5 /= 2;
+	static final boolean method8702(int var0, int var1, int var2, RouteStrategy var3, CollisionMap var4, class216 var5) {
+		int var6 = var5.method4199();
+		int var7 = var5.method4216();
+		int[][] var8 = var5.method4202();
+		int[][] var9 = var5.method4222();
+		int[] var10 = var5.method4203();
+		int[] var11 = var5.method4204();
+		int var12 = var5.method4205();
+		int var13 = var0;
+		int var14 = var1;
+		int var15 = var6 >> 1;
+		int var16 = var7 >> 1;
+		int var17 = var0 - var15;
+		int var18 = var1 - var16;
+		var9[var15][var16] = 99;
+		var8[var15][var16] = 0;
+		byte var19 = 0;
+		int var20 = 0;
+		var10[var19] = var0;
+		int var26 = var19 + 1;
+		var11[var19] = var1;
+		int[][] var21 = var4.flags;
+
+		while (true) {
+			label305:
+			while (true) {
+				int var22;
+				int var23;
+				int var24;
+				int var25;
+				do {
+					do {
+						do {
+							label282:
+							do {
+								if (var20 == var26) {
+									var5.method4196(var13, var14);
+									return false;
+								}
+
+								var13 = var10[var20];
+								var14 = var11[var20];
+								var20 = var20 + 1 & var12;
+								var15 = var13 - var17;
+								var16 = var14 - var18;
+								var22 = var13 - var4.xInset;
+								var23 = var14 - var4.yInset;
+								if (var3.hasArrived(var2, var13, var14, var4)) {
+									var5.method4196(var13, var14);
+									return true;
+								}
+
+								var24 = var8[var15][var16] + 1;
+								if (var15 > 0 && var9[var15 - 1][var16] == 0 && (var21[var22 - 1][var23] & 19136782) == 0 && (var21[var22 - 1][var23 + var2 - 1] & 19136824) == 0) {
+									var25 = 1;
+
+									while (true) {
+										if (var25 >= var2 - 1) {
+											var10[var26] = var13 - 1;
+											var11[var26] = var14;
+											var26 = var26 + 1 & var12;
+											var9[var15 - 1][var16] = 2;
+											var8[var15 - 1][var16] = var24;
+											break;
+										}
+
+										if ((var21[var22 - 1][var25 + var23] & 19136830) != 0) {
+											break;
+										}
+
+										++var25;
+									}
+								}
+
+								if (var15 < var6 - var2 && var9[var15 + 1][var16] == 0 && (var21[var22 + var2][var23] & 19136899) == 0 && (var21[var22 + var2][var23 + var2 - 1] & 19136992) == 0) {
+									var25 = 1;
+
+									while (true) {
+										if (var25 >= var2 - 1) {
+											var10[var26] = var13 + 1;
+											var11[var26] = var14;
+											var26 = var26 + 1 & var12;
+											var9[var15 + 1][var16] = 8;
+											var8[var15 + 1][var16] = var24;
+											break;
+										}
+
+										if ((var21[var22 + var2][var25 + var23] & 19136995) != 0) {
+											break;
+										}
+
+										++var25;
+									}
+								}
+
+								if (var16 > 0 && var9[var15][var16 - 1] == 0 && (var21[var22][var23 - 1] & 19136782) == 0 && (var21[var22 + var2 - 1][var23 - 1] & 19136899) == 0) {
+									var25 = 1;
+
+									while (true) {
+										if (var25 >= var2 - 1) {
+											var10[var26] = var13;
+											var11[var26] = var14 - 1;
+											var26 = var26 + 1 & var12;
+											var9[var15][var16 - 1] = 1;
+											var8[var15][var16 - 1] = var24;
+											break;
+										}
+
+										if ((var21[var22 + var25][var23 - 1] & 19136911) != 0) {
+											break;
+										}
+
+										++var25;
+									}
+								}
+
+								if (var16 < var7 - var2 && var9[var15][var16 + 1] == 0 && (var21[var22][var23 + var2] & 19136824) == 0 && (var21[var22 + var2 - 1][var23 + var2] & 19136992) == 0) {
+									var25 = 1;
+
+									while (true) {
+										if (var25 >= var2 - 1) {
+											var10[var26] = var13;
+											var11[var26] = var14 + 1;
+											var26 = var26 + 1 & var12;
+											var9[var15][var16 + 1] = 4;
+											var8[var15][var16 + 1] = var24;
+											break;
+										}
+
+										if ((var21[var25 + var22][var23 + var2] & 19137016) != 0) {
+											break;
+										}
+
+										++var25;
+									}
+								}
+
+								if (var15 > 0 && var16 > 0 && var9[var15 - 1][var16 - 1] == 0 && (var21[var22 - 1][var23 - 1] & 19136782) == 0) {
+									var25 = 1;
+
+									while (true) {
+										if (var25 >= var2) {
+											var10[var26] = var13 - 1;
+											var11[var26] = var14 - 1;
+											var26 = var26 + 1 & var12;
+											var9[var15 - 1][var16 - 1] = 3;
+											var8[var15 - 1][var16 - 1] = var24;
+											break;
+										}
+
+										if ((var21[var22 - 1][var25 + (var23 - 1)] & 19136830) != 0 || (var21[var25 + (var22 - 1)][var23 - 1] & 19136911) != 0) {
+											break;
+										}
+
+										++var25;
+									}
+								}
+
+								if (var15 < var6 - var2 && var16 > 0 && var9[var15 + 1][var16 - 1] == 0 && (var21[var22 + var2][var23 - 1] & 19136899) == 0) {
+									var25 = 1;
+
+									while (true) {
+										if (var25 >= var2) {
+											var10[var26] = var13 + 1;
+											var11[var26] = var14 - 1;
+											var26 = var26 + 1 & var12;
+											var9[var15 + 1][var16 - 1] = 9;
+											var8[var15 + 1][var16 - 1] = var24;
+											break;
+										}
+
+										if ((var21[var22 + var2][var25 + (var23 - 1)] & 19136995) != 0 || (var21[var22 + var25][var23 - 1] & 19136911) != 0) {
+											break;
+										}
+
+										++var25;
+									}
+								}
+
+								if (var15 > 0 && var16 < var7 - var2 && var9[var15 - 1][var16 + 1] == 0 && (var21[var22 - 1][var23 + var2] & 19136824) == 0) {
+									for (var25 = 1; var25 < var2; ++var25) {
+										if ((var21[var22 - 1][var23 + var25] & 19136830) != 0 || (var21[var25 + (var22 - 1)][var23 + var2] & 19137016) != 0) {
+											continue label282;
+										}
+									}
+
+									var10[var26] = var13 - 1;
+									var11[var26] = var14 + 1;
+									var26 = var26 + 1 & var12;
+									var9[var15 - 1][var16 + 1] = 6;
+									var8[var15 - 1][var16 + 1] = var24;
+								}
+							} while(var15 >= var6 - var2);
+						} while(var16 >= var7 - var2);
+					} while(var9[var15 + 1][var16 + 1] != 0);
+				} while((var21[var22 + var2][var23 + var2] & 19136992) != 0);
+
+				for (var25 = 1; var25 < var2; ++var25) {
+					if ((var21[var22 + var25][var23 + var2] & 19137016) != 0 || (var21[var22 + var2][var23 + var25] & 19136995) != 0) {
+						continue label305;
+					}
 				}
 
-				if (var6 > 192) {
-					var5 /= 2;
-				}
-
-				if (var6 > 217) {
-					var5 /= 2;
-				}
-
-				if (var6 > 243) {
-					var5 /= 2;
-				}
-
-				var7 = (var5 / 32 << 7) + var6 / 2 + (var4 / 4 << 10);
-				var8 = ClanChannelMember.method3150(var7, 96);
-				return Rasterizer3D.Rasterizer3D_colorPalette[var8] | -16777216;
-			} else if (var2.texture >= 0) {
-				int var3 = ClanChannelMember.method3150(Rasterizer3D.clips.Rasterizer3D_textureLoader.getAverageTextureRGB(var2.texture), 96);
-				return Rasterizer3D.Rasterizer3D_colorPalette[var3] | -16777216;
-			} else if (var2.primaryRgb == 16711935) {
-				return var1;
-			} else {
-				var4 = var2.hue;
-				var5 = var2.saturation;
-				var6 = var2.lightness;
-				if (var6 > 179) {
-					var5 /= 2;
-				}
-
-				if (var6 > 192) {
-					var5 /= 2;
-				}
-
-				if (var6 > 217) {
-					var5 /= 2;
-				}
-
-				if (var6 > 243) {
-					var5 /= 2;
-				}
-
-				var7 = (var5 / 32 << 7) + var6 / 2 + (var4 / 4 << 10);
-				var8 = ClanChannelMember.method3150(var7, 96);
-				return Rasterizer3D.Rasterizer3D_colorPalette[var8] | -16777216;
+				var10[var26] = var13 + 1;
+				var11[var26] = var14 + 1;
+				var26 = var26 + 1 & var12;
+				var9[var15 + 1][var16 + 1] = 12;
+				var8[var15 + 1][var16 + 1] = var24;
 			}
 		}
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "(I)[Lsg;",
-		garbageValue = "-347561633"
+		descriptor = "(IIIZIB)J",
+		garbageValue = "0"
 	)
-	public static FontName[] method8739() {
-		return new FontName[]{FontName_verdana15, FontName_bold12, FontName_verdana13, FontName_plain11, FontName_plain12, FontName_verdana11};
+	@Export("calculateTag")
+	public static long calculateTag(int var0, int var1, int var2, boolean var3, int var4) {
+		long var5 = (long)((var0 & 127) << 0 | (var1 & 127) << 7 | (var2 & 3) << 14) | ((long)var4 & 4294967295L) << 17;
+		if (var3) {
+			var5 |= 65536L;
+		}
+
+		return var5;
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("op")
 	@ObfuscatedSignature(
-		descriptor = "(I)[Ldd;",
-		garbageValue = "-718226553"
+		descriptor = "(IB)V",
+		garbageValue = "-80"
 	)
-	static class89[] method8742() {
-		return new class89[]{class89.field1096, class89.field1091, class89.field1089, class89.field1093, class89.field1097};
-	}
+	static void method8701(int var0) {
+		SequenceDefinition var1 = EnumComposition.SequenceDefinition_get(var0);
+		if (var1.isCachedModelIdSet()) {
+			if (ClientPreferences.method2552(var1.SequenceDefinition_cachedModelId) == 2) {
+				Client.field695.add(var1.SequenceDefinition_cachedModelId);
+			}
 
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "-1946858719"
-	)
-	@Export("ItemContainer_getCount")
-	static int ItemContainer_getCount(int var0, int var1) {
-		ItemContainer var2 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
-		if (var2 == null) {
-			return 0;
-		} else {
-			return var1 >= 0 && var1 < var2.quantities.length ? var2.quantities[var1] : 0;
 		}
 	}
 }

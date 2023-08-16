@@ -4,38 +4,38 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("su")
+@ObfuscatedName("sw")
 @Implements("DesktopPlatformInfoProvider")
-public class DesktopPlatformInfoProvider implements class476 {
-	@ObfuscatedName("am")
+public class DesktopPlatformInfoProvider implements class475 {
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		intValue = 934001659
+		intValue = 1677471835
 	)
-	int field4823;
-	@ObfuscatedName("as")
+	int field4818;
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = -350512903
+		intValue = 970706241
 	)
-	int field4820;
-	@ObfuscatedName("aj")
+	int field4819;
+	@ObfuscatedName("ai")
 	@ObfuscatedGetter(
-		intValue = -1643880639
+		intValue = -1711922933
 	)
-	int field4822;
+	int field4816;
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lsy;",
-		garbageValue = "1568411855"
+		descriptor = "(S)Lsm;",
+		garbageValue = "256"
 	)
 	@Export("get")
 	public PlatformInfo get() {
 		byte var1;
-		if (CollisionMap.field2347.startsWith("win")) {
+		if (Messages.field1422.startsWith("win")) {
 			var1 = 1;
-		} else if (CollisionMap.field2347.startsWith("mac")) {
+		} else if (Messages.field1422.startsWith("mac")) {
 			var1 = 2;
-		} else if (CollisionMap.field2347.startsWith("linux")) {
+		} else if (Messages.field1422.startsWith("linux")) {
 			var1 = 3;
 		} else {
 			var1 = 4;
@@ -133,11 +133,11 @@ public class DesktopPlatformInfoProvider implements class476 {
 			var8 = 4;
 		}
 
-		this.method8451(var5);
+		this.method8409(var5);
 		boolean var9 = false;
 		int var10 = (int)(Runtime.getRuntime().maxMemory() / 1048576L) + 1;
 		int var11;
-		if (this.field4823 > 3) {
+		if (this.field4818 > 3) {
 			var11 = Runtime.getRuntime().availableProcessors();
 		} else {
 			var11 = 0;
@@ -159,101 +159,55 @@ public class DesktopPlatformInfoProvider implements class476 {
 		String var25 = "";
 		String var26 = "";
 		boolean var27 = false;
-		return new PlatformInfo(var1, var28, var7, var8, this.field4823, this.field4820, this.field4822, false, var10, var11, var12, 0, var13, var14, var15, var16, 0, 0, 0, 0, var17, var18, var23, 0, "", "");
+		return new PlatformInfo(var1, var28, var7, var8, this.field4818, this.field4819, this.field4816, false, var10, var11, var12, 0, var13, var14, var15, var16, 0, 0, 0, 0, var17, var18, var23, 0, "", "");
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)V",
-		garbageValue = "-738858129"
+		descriptor = "(Ljava/lang/String;B)V",
+		garbageValue = "10"
 	)
-	void method8451(String var1) {
+	void method8409(String var1) {
 		if (var1.startsWith("1.")) {
-			this.method8459(var1);
+			this.method8404(var1);
 		} else {
-			this.method8453(var1);
+			this.method8398(var1);
 		}
 
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/String;I)V",
-		garbageValue = "234184738"
+		garbageValue = "133401339"
 	)
-	void method8459(String var1) {
+	void method8404(String var1) {
 		String[] var2 = var1.split("\\.");
 
 		try {
-			this.field4823 = Integer.parseInt(var2[1]);
+			this.field4818 = Integer.parseInt(var2[1]);
 			var2 = var2[2].split("_");
-			this.field4820 = Integer.parseInt(var2[0]);
-			this.field4822 = Integer.parseInt(var2[1]);
+			this.field4819 = Integer.parseInt(var2[0]);
+			this.field4816 = Integer.parseInt(var2[1]);
 		} catch (Exception var4) {
 		}
 
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/String;I)V",
-		garbageValue = "21471391"
+		garbageValue = "1874487348"
 	)
-	void method8453(String var1) {
+	void method8398(String var1) {
 		String[] var2 = var1.split("\\.");
 
 		try {
-			this.field4823 = Integer.parseInt(var2[0]);
-			this.field4820 = Integer.parseInt(var2[1]);
-			this.field4822 = Integer.parseInt(var2[2]);
+			this.field4818 = Integer.parseInt(var2[0]);
+			this.field4819 = Integer.parseInt(var2[1]);
+			this.field4816 = Integer.parseInt(var2[2]);
 		} catch (Exception var4) {
 		}
 
-	}
-
-	@ObfuscatedName("as")
-	@ObfuscatedSignature(
-		descriptor = "(Lnd;Ljava/lang/String;Ljava/lang/String;I)[Luu;",
-		garbageValue = "-578185470"
-	)
-	public static IndexedSprite[] method8449(AbstractArchive var0, String var1, String var2) {
-		if (!var0.isValidFileName(var1, var2)) {
-			return null;
-		} else {
-			int var3 = var0.getGroupId(var1);
-			int var4 = var0.getFileId(var3, var2);
-			byte[] var7 = var0.takeFile(var3, var4);
-			boolean var6;
-			if (var7 == null) {
-				var6 = false;
-			} else {
-				VarbitComposition.SpriteBuffer_decode(var7);
-				var6 = true;
-			}
-
-			IndexedSprite[] var5;
-			if (!var6) {
-				var5 = null;
-			} else {
-				IndexedSprite[] var8 = new IndexedSprite[class528.SpriteBuffer_spriteCount];
-
-				for (int var9 = 0; var9 < class528.SpriteBuffer_spriteCount; ++var9) {
-					IndexedSprite var10 = var8[var9] = new IndexedSprite();
-					var10.width = class528.SpriteBuffer_spriteWidth;
-					var10.height = class528.SpriteBuffer_spriteHeight;
-					var10.xOffset = class492.SpriteBuffer_xOffsets[var9];
-					var10.yOffset = class134.SpriteBuffer_yOffsets[var9];
-					var10.subWidth = class172.SpriteBuffer_spriteWidths[var9];
-					var10.subHeight = class528.SpriteBuffer_spriteHeights[var9];
-					var10.palette = class528.SpriteBuffer_spritePalette;
-					var10.pixels = ArchiveDiskAction.SpriteBuffer_pixels[var9];
-				}
-
-				DbTableType.method8985();
-				var5 = var8;
-			}
-
-			return var5;
-		}
 	}
 }

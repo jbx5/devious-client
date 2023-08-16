@@ -3,102 +3,92 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fj")
+@ObfuscatedName("fb")
 public enum class138 implements MouseWheel {
-	@ObfuscatedName("aw")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "Lfj;"
+		descriptor = "Lfb;"
 	)
-	field1618(0, 0),
-	@ObfuscatedName("ay")
+	field1635(0, 0),
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "Lfj;"
+		descriptor = "Lfb;"
 	)
-	field1616(1, 1),
-	@ObfuscatedName("ar")
+	field1633(1, 1),
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "Lfj;"
+		descriptor = "Lfb;"
 	)
-	field1622(2, 2),
-	@ObfuscatedName("am")
+	field1634(2, 2),
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "Lfj;"
+		descriptor = "Lfb;"
 	)
-	field1615(3, 3),
-	@ObfuscatedName("as")
+	field1638(3, 3),
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Lfj;"
+		descriptor = "Lfb;"
 	)
-	field1619(4, 4),
-	@ObfuscatedName("aj")
+	field1636(4, 4),
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "Lfj;"
+		descriptor = "Lfb;"
 	)
-	field1617(5, 5),
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "Lfj;"
-	)
-	field1621(6, 6),
+	field1637(5, 5),
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "Lfj;"
+		descriptor = "Lfb;"
 	)
-	field1620(7, 7),
-	@ObfuscatedName("av")
-	@ObfuscatedSignature(
-		descriptor = "Lfj;"
-	)
-	field1623(8, 8);
-
+	field1632(6, 6),
 	@ObfuscatedName("ap")
-	@ObfuscatedGetter(
-		intValue = 1823179125
+	@ObfuscatedSignature(
+		descriptor = "Lfb;"
 	)
-	final int field1624;
-	@ObfuscatedName("aq")
-	@ObfuscatedGetter(
-		intValue = 1944390957
+	field1639(7, 7),
+	@ObfuscatedName("aa")
+	@ObfuscatedSignature(
+		descriptor = "Lfb;"
 	)
-	final int field1625;
+	field1640(8, 8);
+
+	@ObfuscatedName("ix")
+	@ObfuscatedGetter(
+		intValue = 1742355953
+	)
+	static int field1643;
+	@ObfuscatedName("af")
+	@ObfuscatedGetter(
+		intValue = 360150709
+	)
+	final int field1641;
+	@ObfuscatedName("ad")
+	@ObfuscatedGetter(
+		intValue = 1042578959
+	)
+	final int field1642;
 
 	class138(int var3, int var4) {
-		this.field1624 = var3;
-		this.field1625 = var4;
+		this.field1641 = var3;
+		this.field1642 = var4;
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "1644350448"
+		descriptor = "(B)I",
+		garbageValue = "41"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
-		return this.field1625;
+		return this.field1642;
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(B)Lrm;",
-		garbageValue = "16"
+		descriptor = "(II)Lhd;",
+		garbageValue = "-2092352148"
 	)
-	public static class451 method3097() {
-		synchronized(class451.field4744) {
-			if (class451.field4742 == 0) {
-				return new class451();
-			} else {
-				class451.field4744[--class451.field4742].method8249();
-				return class451.field4744[class451.field4742];
-			}
-		}
-	}
-
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "(I)[Llx;",
-		garbageValue = "1787686386"
-	)
-	static LoginPacket[] method3096() {
-		return new LoginPacket[]{LoginPacket.field3344, LoginPacket.field3345, LoginPacket.field3340, LoginPacket.field3341, LoginPacket.field3343, LoginPacket.field3342};
+	@Export("WorldMapElement_get")
+	public static WorldMapElement WorldMapElement_get(int var0) {
+		return var0 >= 0 && var0 < WorldMapElement.WorldMapElement_cached.length && WorldMapElement.WorldMapElement_cached[var0] != null ? WorldMapElement.WorldMapElement_cached[var0] : new WorldMapElement(var0);
 	}
 }

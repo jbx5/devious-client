@@ -1,62 +1,71 @@
-import java.util.ArrayList;
-import java.util.Iterator;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("go")
+@ObfuscatedName("gi")
 public class class162 extends class143 {
-	@ObfuscatedName("aw")
-	@ObfuscatedGetter(
-		intValue = 94323223
+	@ObfuscatedName("aa")
+	static int[][] field1794;
+	@ObfuscatedName("qv")
+	@ObfuscatedSignature(
+		descriptor = "[Lmi;"
 	)
-	int field1770;
+	static Widget[] field1797;
+	@ObfuscatedName("tm")
+	@ObfuscatedSignature(
+		descriptor = "Lbl;"
+	)
+	@Export("pcmStreamMixer")
+	static PcmStreamMixer pcmStreamMixer;
+	@ObfuscatedName("au")
+	@ObfuscatedGetter(
+		intValue = 519523655
+	)
+	int field1799;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lfr;"
+		descriptor = "Lfn;"
 	)
 	final class146 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lfr;)V"
+		descriptor = "(Lfn;)V"
 	)
 	class162(class146 var1) {
 		this.this$0 = var1;
-		this.field1770 = -1;
+		this.field1799 = -1;
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(Lty;B)V",
-		garbageValue = "1"
+		descriptor = "(Ltm;I)V",
+		garbageValue = "209179459"
 	)
-	void vmethod3412(Buffer var1) {
-		this.field1770 = var1.readUnsignedShort();
+	void vmethod3337(Buffer var1) {
+		this.field1799 = var1.readUnsignedShort();
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(Lfx;B)V",
-		garbageValue = "-72"
+		descriptor = "(Lfi;B)V",
+		garbageValue = "73"
 	)
-	void vmethod3419(ClanSettings var1) {
-		var1.method3232(this.field1770);
+	void vmethod3339(ClanSettings var1) {
+		var1.method3190(this.field1799);
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("cs")
 	@ObfuscatedSignature(
-		descriptor = "(B)Ljava/util/ArrayList;",
-		garbageValue = "1"
+		descriptor = "(ILmc;ZI)V",
+		garbageValue = "-1867605195"
 	)
-	static ArrayList method3356() {
-		ArrayList var0 = new ArrayList();
-		Iterator var1 = class306.musicSongs.iterator();
-
-		while (var1.hasNext()) {
-			MusicSong var2 = (MusicSong)var1.next();
-			var0.add(var2);
-		}
-
-		return var0;
+	static void method3296(int var0, Coord var1, boolean var2) {
+		WorldMapArea var3 = class227.getWorldMap().getMapArea(var0);
+		int var4 = VarbitComposition.localPlayer.plane;
+		int var5 = UrlRequester.baseX * 64 + (VarbitComposition.localPlayer.x >> 7);
+		int var6 = class47.baseY * 64 + (VarbitComposition.localPlayer.y >> 7);
+		Coord var7 = new Coord(var4, var5, var6);
+		class227.getWorldMap().method8514(var3, var7, var1, var2);
 	}
 }

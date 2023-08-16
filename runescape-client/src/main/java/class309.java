@@ -1,36 +1,25 @@
-import java.util.concurrent.ThreadFactory;
-import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("lg")
-class class309 implements ThreadFactory {
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "Lbj;"
-	)
-	@Export("pcmPlayerProvider")
-	public static class51 pcmPlayerProvider;
-	@ObfuscatedName("ju")
+@ObfuscatedName("li")
+public class class309 {
+	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		intValue = 576671459
+		intValue = 844910323
 	)
-	static int field3456;
-	// $FF: synthetic field
+	int field3463;
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "Llc;"
+		descriptor = "Lcf;"
 	)
-	final MidiPcmStream this$0;
+	class53 field3464;
 
 	@ObfuscatedSignature(
-		descriptor = "(Llc;)V"
+		descriptor = "(ILcf;)V"
 	)
-	class309(MidiPcmStream var1) {
-		this.this$0 = var1;
-	}
-
-	public Thread newThread(Runnable var1) {
-		return new Thread(var1, "OSRS WAV Load");
+	class309(int var1, class53 var2) {
+		this.field3463 = var1;
+		this.field3464 = var2;
 	}
 }

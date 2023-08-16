@@ -1,126 +1,115 @@
+import java.net.URL;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ev")
+@ObfuscatedName("eg")
 public class class125 {
-	@ObfuscatedName("ab")
-	@Export("ByteArrayPool_altSizeArrayCounts")
-	public static int[] ByteArrayPool_altSizeArrayCounts;
-	@ObfuscatedName("aw")
+	@ObfuscatedName("iy")
 	@ObfuscatedGetter(
-		intValue = 697776475
+		longValue = -1653606137358564459L
 	)
-	int field1483;
-	@ObfuscatedName("ay")
-	float field1488;
-	@ObfuscatedName("ar")
-	float field1484;
-	@ObfuscatedName("am")
-	float field1482;
-	@ObfuscatedName("as")
-	float field1486;
-	@ObfuscatedName("aj")
-	float field1487;
-	@ObfuscatedName("ag")
+	static long field1501;
+	@ObfuscatedName("jh")
+	@ObfuscatedGetter(
+		intValue = 788509083
+	)
+	static int field1499;
+	@ObfuscatedName("lw")
+	@ObfuscatedGetter(
+		intValue = -644441085
+	)
+	static int field1494;
+	@ObfuscatedName("au")
+	@ObfuscatedGetter(
+		intValue = -1852442399
+	)
+	int field1492;
+	@ObfuscatedName("ae")
+	float field1495;
+	@ObfuscatedName("ao")
+	float field1503;
+	@ObfuscatedName("at")
+	float field1493;
+	@ObfuscatedName("ac")
+	float field1496;
+	@ObfuscatedName("ai")
+	float field1497;
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "Lev;"
+		descriptor = "Leg;"
 	)
-	class125 field1485;
+	class125 field1498;
 
 	class125() {
-		this.field1484 = Float.MAX_VALUE;
-		this.field1482 = Float.MAX_VALUE;
-		this.field1486 = Float.MAX_VALUE;
-		this.field1487 = Float.MAX_VALUE;
+		this.field1503 = Float.MAX_VALUE;
+		this.field1493 = Float.MAX_VALUE;
+		this.field1496 = Float.MAX_VALUE;
+		this.field1497 = Float.MAX_VALUE;
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(Lty;IB)V",
-		garbageValue = "25"
+		descriptor = "(Ltm;IS)V",
+		garbageValue = "249"
 	)
-	void method2919(Buffer var1, int var2) {
-		this.field1483 = var1.readShort();
-		this.field1488 = var1.method9094();
-		this.field1484 = var1.method9094();
-		this.field1482 = var1.method9094();
-		this.field1486 = var1.method9094();
-		this.field1487 = var1.method9094();
+	void method2924(Buffer var1, int var2) {
+		this.field1492 = var1.readShort();
+		this.field1495 = var1.method9066();
+		this.field1503 = var1.method9066();
+		this.field1493 = var1.method9066();
+		this.field1496 = var1.method9066();
+		this.field1497 = var1.method9066();
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lhc;",
-		garbageValue = "-1218756149"
+		descriptor = "(I)Z",
+		garbageValue = "1201510681"
 	)
-	@Export("ItemDefinition_get")
-	public static ItemComposition ItemDefinition_get(int var0) {
-		ItemComposition var1 = (ItemComposition)ItemComposition.ItemDefinition_cached.get((long)var0);
-		if (var1 != null) {
-			return var1;
-		} else {
-			byte[] var2 = Frames.ItemDefinition_archive.takeFile(10, var0);
-			var1 = new ItemComposition();
-			var1.id = var0;
-			if (var2 != null) {
-				var1.decode(new Buffer(var2));
-			}
+	@Export("loadWorlds")
+	static boolean loadWorlds() {
+		try {
+			if (WorldMapLabelSize.World_request == null) {
+				WorldMapLabelSize.World_request = FriendsChat.urlRequester.request(new URL(class200.field2121));
+			} else if (WorldMapLabelSize.World_request.isDone()) {
+				byte[] var0 = WorldMapLabelSize.World_request.getResponse();
+				Buffer var1 = new Buffer(var0);
+				var1.readInt();
+				World.World_count = var1.readUnsignedShort();
+				class176.World_worlds = new World[World.World_count];
 
-			var1.post();
-			if (var1.noteTemplate != -1) {
-				var1.genCert(ItemDefinition_get(var1.noteTemplate), ItemDefinition_get(var1.note));
-			}
-
-			if (var1.notedId != -1) {
-				var1.genBought(ItemDefinition_get(var1.notedId), ItemDefinition_get(var1.unnotedId));
-			}
-
-			if (var1.placeholderTemplate != -1) {
-				var1.genPlaceholder(ItemDefinition_get(var1.placeholderTemplate), ItemDefinition_get(var1.placeholder));
-			}
-
-			if (!class502.ItemDefinition_inMembersWorld && var1.isMembersOnly) {
-				if (var1.noteTemplate == -1 && var1.notedId == -1 && var1.placeholderTemplate == -1) {
-					var1.name = var1.name + " (Members)";
+				World var3;
+				for (int var2 = 0; var2 < World.World_count; var3.index = var2++) {
+					var3 = class176.World_worlds[var2] = new World();
+					var3.id = var1.readUnsignedShort();
+					var3.properties = var1.readInt();
+					var3.host = var1.readStringCp1252NullTerminated();
+					var3.activity = var1.readStringCp1252NullTerminated();
+					var3.location = var1.readUnsignedByte();
+					var3.population = var1.readShort();
 				}
 
-				var1.isTradable = false;
-
-				int var3;
-				for (var3 = 0; var3 < var1.groundActions.length; ++var3) {
-					var1.groundActions[var3] = null;
-				}
-
-				for (var3 = 0; var3 < var1.inventoryActions.length; ++var3) {
-					if (var3 != 4) {
-						var1.inventoryActions[var3] = null;
-					}
-				}
-
-				var1.shiftClickIndex = -2;
-				var1.team = 0;
-				if (var1.params != null) {
-					boolean var6 = false;
-
-					for (Node var4 = var1.params.first(); var4 != null; var4 = var1.params.next()) {
-						ParamComposition var5 = MusicPatchNode.getParamDefinition((int)var4.key);
-						if (var5.autoDisable) {
-							var4.remove();
-						} else {
-							var6 = true;
-						}
-					}
-
-					if (!var6) {
-						var1.params = null;
-					}
-				}
+				GameEngine.sortWorlds(class176.World_worlds, 0, class176.World_worlds.length - 1, World.World_sortOption1, World.World_sortOption2);
+				WorldMapLabelSize.World_request = null;
+				return true;
 			}
-
-			ItemComposition.ItemDefinition_cached.put(var1, (long)var0);
-			return var1;
+		} catch (Exception var4) {
+			var4.printStackTrace();
+			WorldMapLabelSize.World_request = null;
 		}
+
+		return false;
+	}
+
+	@ObfuscatedName("at")
+	@ObfuscatedSignature(
+		descriptor = "(IB)[B",
+		garbageValue = "-47"
+	)
+	@Export("ByteArrayPool_getArray")
+	public static synchronized byte[] ByteArrayPool_getArray(int var0) {
+		return ByteArrayPool.ByteArrayPool_getArrayBool(var0, false);
 	}
 }

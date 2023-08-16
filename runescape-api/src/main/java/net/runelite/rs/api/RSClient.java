@@ -426,6 +426,12 @@ public interface RSClient extends RSGameEngine, Client
 	@Override
 	int[] getWidgetPositionsY();
 
+	@Import("rootWidgetWidths")
+	int[] getWidgetWidths();
+
+	@Import("rootWidgetHeights")
+	int[] getWidgetHeights();
+
 	@Import("mouseCam")
 	boolean isMouseCam();
 
@@ -515,6 +521,10 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("archive12")
 	@Override
 	RSArchive getIndexScripts();
+
+	@Import("openInterface")
+	@Override
+	WidgetNode openInterface(int componentId, int interfaceId, int modalMode);
 
 	@Import("closeInterface")
 	@Override
@@ -1650,8 +1660,17 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("graphicsCycle")
 	int getGraphicsCycle();
 
+	@Import("openMenu")
+	void openMenu(int mouseX, int mouseY);
+
 	@Import("clips")
 	RSClips getClips();
+
+	@Import("modelDataArray")
+	RSModelData[] getModelDataArray();
+
+	@Import("validRootWidgets")
+	boolean[] getValidRootWidgets();
 
 	/*
 	Unethical
