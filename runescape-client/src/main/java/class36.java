@@ -1,100 +1,47 @@
 import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("br")
+@ObfuscatedName("bq")
 public class class36 {
-	@ObfuscatedName("aw")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "Lor;"
+		descriptor = "Loc;"
 	)
 	@Export("reflectionChecks")
-	static IterableNodeDeque reflectionChecks;
-	@ObfuscatedName("aa")
-	@ObfuscatedSignature(
-		descriptor = "Lmt;"
-	)
-	@Export("scriptDotWidget")
-	static Widget scriptDotWidget;
-	@ObfuscatedName("cq")
-	static String field263;
-	@ObfuscatedName("le")
-	@ObfuscatedGetter(
-		intValue = -1399571883
-	)
-	@Export("oculusOrbFocalPointY")
-	static int oculusOrbFocalPointY;
-	@ObfuscatedName("mo")
-	@ObfuscatedGetter(
-		intValue = 988841787
-	)
-	@Export("Client_plane")
-	static int Client_plane;
+	public static IterableNodeDeque reflectionChecks;
+	@ObfuscatedName("aj")
+	@Export("userHomeDirectory")
+	static String userHomeDirectory;
 
 	static {
 		reflectionChecks = new IterableNodeDeque();
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("lj")
 	@ObfuscatedSignature(
-		descriptor = "(IIII)I",
-		garbageValue = "475151817"
+		descriptor = "(IIIIIIIIB)V",
+		garbageValue = "16"
 	)
-	static final int method694(int var0, int var1, int var2) {
-		if (var2 > 179) {
-			var1 /= 2;
-		}
+	@Export("drawWidgets")
+	static final void drawWidgets(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7) {
+		if (ModeWhere.loadInterface(var0)) {
+			class162.field1797 = null;
+			class135.drawInterface(PacketBufferNode.Widget_interfaceComponents[var0], -1, var1, var2, var3, var4, var5, var6, var7);
+			if (class162.field1797 != null) {
+				class135.drawInterface(class162.field1797, -1412584499, var1, var2, var3, var4, class134.field1611, class326.field3559, var7);
+				class162.field1797 = null;
+			}
 
-		if (var2 > 192) {
-			var1 /= 2;
-		}
-
-		if (var2 > 217) {
-			var1 /= 2;
-		}
-
-		if (var2 > 243) {
-			var1 /= 2;
-		}
-
-		int var3 = (var1 / 32 << 7) + (var0 / 4 << 10) + var2 / 2;
-		return var3;
-	}
-
-	@ObfuscatedName("lk")
-	@ObfuscatedSignature(
-		descriptor = "([Lmt;IIIZS)V",
-		garbageValue = "-18913"
-	)
-	@Export("resizeInterface")
-	static void resizeInterface(Widget[] var0, int var1, int var2, int var3, boolean var4) {
-		for (int var5 = 0; var5 < var0.length; ++var5) {
-			Widget var6 = var0[var5];
-			if (var6 != null && var6.parentId == var1) {
-				FriendSystem.alignWidgetSize(var6, var2, var3, var4);
-				class17.alignWidgetPosition(var6, var2, var3);
-				if (var6.scrollX > var6.scrollWidth - var6.width) {
-					var6.scrollX = var6.scrollWidth - var6.width;
-				}
-
-				if (var6.scrollX < 0) {
-					var6.scrollX = 0;
-				}
-
-				if (var6.scrollY > var6.scrollHeight - var6.height) {
-					var6.scrollY = var6.scrollHeight - var6.height;
-				}
-
-				if (var6.scrollY < 0) {
-					var6.scrollY = 0;
-				}
-
-				if (var6.type == 0) {
-					SoundCache.revalidateWidgetScroll(var0, var6, var4);
+		} else {
+			if (var7 != -1) {
+				Client.field536[var7] = true;
+			} else {
+				for (int var8 = 0; var8 < 100; ++var8) {
+					Client.field536[var8] = true;
 				}
 			}
-		}
 
+		}
 	}
 }

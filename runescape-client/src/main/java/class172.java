@@ -2,124 +2,75 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gl")
+@ObfuscatedName("gy")
 public class class172 {
-	@ObfuscatedName("aj")
-	@Export("SpriteBuffer_spriteWidths")
-	public static int[] SpriteBuffer_spriteWidths;
-	@ObfuscatedName("ap")
-	@Export("Tiles_hue")
-	static int[] Tiles_hue;
+	@ObfuscatedName("ai")
+	@Export("Tiles_shapes")
+	static byte[][][] Tiles_shapes;
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "(IILin;Lij;Liq;I)Z",
-		garbageValue = "135723678"
+		descriptor = "(Lnu;Ljava/lang/String;Ljava/lang/String;I)Luk;",
+		garbageValue = "2141415166"
 	)
-	static final boolean method3519(int var0, int var1, RouteStrategy var2, CollisionMap var3, class217 var4) {
-		int var5 = var4.method4236();
-		int var6 = var4.method4237();
-		int[][] var7 = var4.method4260();
-		int[][] var8 = var4.method4238();
-		int[] var9 = var4.method4240();
-		int[] var10 = var4.method4241();
-		int var11 = var4.method4242();
-		int var12 = var0;
-		int var13 = var1;
-		int var14 = var5 >> 1;
-		int var15 = var6 >> 1;
-		int var16 = var0 - var14;
-		int var17 = var1 - var15;
-		var8[var14][var15] = 99;
-		var7[var14][var15] = 0;
-		byte var18 = 0;
-		int var19 = 0;
-		var9[var18] = var0;
-		byte var10001 = var18;
-		int var24 = var18 + 1;
-		var10[var10001] = var1;
-		int[][] var20 = var3.flags;
-
-		while (var19 != var24) {
-			var12 = var9[var19];
-			var13 = var10[var19];
-			var19 = var19 + 1 & var11;
-			var14 = var12 - var16;
-			var15 = var13 - var17;
-			int var21 = var12 - var3.xInset;
-			int var22 = var13 - var3.yInset;
-			if (var2.hasArrived(1, var12, var13, var3)) {
-				var4.method4233(var12, var13);
-				return true;
+	@Export("SpriteBuffer_getIndexedSpriteByName")
+	public static IndexedSprite SpriteBuffer_getIndexedSpriteByName(AbstractArchive var0, String var1, String var2) {
+		if (!var0.isValidFileName(var1, var2)) {
+			return null;
+		} else {
+			int var3 = var0.getGroupId(var1);
+			int var4 = var0.getFileId(var3, var2);
+			IndexedSprite var5;
+			if (!ApproximateRouteStrategy.method1228(var0, var3, var4)) {
+				var5 = null;
+			} else {
+				var5 = class493.method8806();
 			}
 
-			int var23 = var7[var14][var15] + 1;
-			if (var14 > 0 && var8[var14 - 1][var15] == 0 && (var20[var21 - 1][var22] & 19136776) == 0) {
-				var9[var24] = var12 - 1;
-				var10[var24] = var13;
-				var24 = var24 + 1 & var11;
-				var8[var14 - 1][var15] = 2;
-				var7[var14 - 1][var15] = var23;
-			}
+			return var5;
+		}
+	}
 
-			if (var14 < var5 - 1 && var8[var14 + 1][var15] == 0 && (var20[var21 + 1][var22] & 19136896) == 0) {
-				var9[var24] = var12 + 1;
-				var10[var24] = var13;
-				var24 = var24 + 1 & var11;
-				var8[var14 + 1][var15] = 8;
-				var7[var14 + 1][var15] = var23;
-			}
+	@ObfuscatedName("ai")
+	@ObfuscatedSignature(
+		descriptor = "(II)Z",
+		garbageValue = "-1301151779"
+	)
+	public static boolean method3457(int var0) {
+		if (class305.field3405.isEmpty()) {
+			return false;
+		} else {
+			MusicSong var1 = (MusicSong)class305.field3405.get(0);
+			return var1 != null && var0 == var1.musicTrackGroupId;
+		}
+	}
 
-			if (var15 > 0 && var8[var14][var15 - 1] == 0 && (var20[var21][var22 - 1] & 19136770) == 0) {
-				var9[var24] = var12;
-				var10[var24] = var13 - 1;
-				var24 = var24 + 1 & var11;
-				var8[var14][var15 - 1] = 1;
-				var7[var14][var15 - 1] = var23;
-			}
-
-			if (var15 < var6 - 1 && var8[var14][var15 + 1] == 0 && (var20[var21][var22 + 1] & 19136800) == 0) {
-				var9[var24] = var12;
-				var10[var24] = var13 + 1;
-				var24 = var24 + 1 & var11;
-				var8[var14][var15 + 1] = 4;
-				var7[var14][var15 + 1] = var23;
-			}
-
-			if (var14 > 0 && var15 > 0 && var8[var14 - 1][var15 - 1] == 0 && (var20[var21 - 1][var22 - 1] & 19136782) == 0 && (var20[var21 - 1][var22] & 19136776) == 0 && (var20[var21][var22 - 1] & 19136770) == 0) {
-				var9[var24] = var12 - 1;
-				var10[var24] = var13 - 1;
-				var24 = var24 + 1 & var11;
-				var8[var14 - 1][var15 - 1] = 3;
-				var7[var14 - 1][var15 - 1] = var23;
-			}
-
-			if (var14 < var5 - 1 && var15 > 0 && var8[var14 + 1][var15 - 1] == 0 && (var20[var21 + 1][var22 - 1] & 19136899) == 0 && (var20[var21 + 1][var22] & 19136896) == 0 && (var20[var21][var22 - 1] & 19136770) == 0) {
-				var9[var24] = var12 + 1;
-				var10[var24] = var13 - 1;
-				var24 = var24 + 1 & var11;
-				var8[var14 + 1][var15 - 1] = 9;
-				var7[var14 + 1][var15 - 1] = var23;
-			}
-
-			if (var14 > 0 && var15 < var6 - 1 && var8[var14 - 1][var15 + 1] == 0 && (var20[var21 - 1][var22 + 1] & 19136824) == 0 && (var20[var21 - 1][var22] & 19136776) == 0 && (var20[var21][var22 + 1] & 19136800) == 0) {
-				var9[var24] = var12 - 1;
-				var10[var24] = var13 + 1;
-				var24 = var24 + 1 & var11;
-				var8[var14 - 1][var15 + 1] = 6;
-				var7[var14 - 1][var15 + 1] = var23;
-			}
-
-			if (var14 < var5 - 1 && var15 < var6 - 1 && var8[var14 + 1][var15 + 1] == 0 && (var20[var21 + 1][var22 + 1] & 19136992) == 0 && (var20[var21 + 1][var22] & 19136896) == 0 && (var20[var21][var22 + 1] & 19136800) == 0) {
-				var9[var24] = var12 + 1;
-				var10[var24] = var13 + 1;
-				var24 = var24 + 1 & var11;
-				var8[var14 + 1][var15 + 1] = 12;
-				var7[var14 + 1][var15 + 1] = var23;
+	@ObfuscatedName("cx")
+	@ObfuscatedSignature(
+		descriptor = "(Ltb;I)Ljava/lang/Object;",
+		garbageValue = "263841727"
+	)
+	static Object method3458(class502 var0) {
+		if (var0 == null) {
+			throw new IllegalStateException("popValueOfType() failure - null baseVarType");
+		} else {
+			switch(var0.field5031) {
+			case 1:
+				return Interpreter.Interpreter_intStack[--SoundCache.Interpreter_intStackSize];
+			case 2:
+				return Interpreter.Interpreter_stringStack[--class137.Interpreter_stringStackSize];
+			default:
+				throw new IllegalStateException("popValueOfType() failure - unsupported type");
 			}
 		}
+	}
 
-		var4.method4233(var12, var13);
-		return false;
+	@ObfuscatedName("he")
+	@ObfuscatedSignature(
+		descriptor = "(IB)I",
+		garbageValue = "0"
+	)
+	static int method3459(int var0) {
+		return var0 * 3 + 600;
 	}
 }

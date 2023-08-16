@@ -3,58 +3,58 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("iu")
+@ObfuscatedName("ix")
 @Implements("Rasterizer3D")
 public class Rasterizer3D {
-	@ObfuscatedName("aw")
+	@ObfuscatedName("au")
 	@Export("Rasterizer3D_colorPalette")
 	public static int[] Rasterizer3D_colorPalette;
-	@ObfuscatedName("ay")
-	static int[] field2507;
-	@ObfuscatedName("ar")
-	static int[] field2506;
-	@ObfuscatedName("am")
+	@ObfuscatedName("ae")
+	static int[] field2535;
+	@ObfuscatedName("ao")
+	static int[] field2533;
+	@ObfuscatedName("at")
 	@Export("Rasterizer3D_sine")
 	public static int[] Rasterizer3D_sine;
-	@ObfuscatedName("as")
+	@ObfuscatedName("ac")
 	@Export("Rasterizer3D_cosine")
 	public static int[] Rasterizer3D_cosine;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "Ljq;"
+		descriptor = "Ljl;"
 	)
 	@Export("clips")
 	public static Clips clips;
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "Lii;"
-	)
-	static class229 field2513;
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "Lii;"
+		descriptor = "Lid;"
 	)
-	static final class229 field2512;
-	@ObfuscatedName("av")
+	static class228 field2537;
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Lii;"
+		descriptor = "Lid;"
 	)
-	static final class229 field2505;
+	static final class228 field2538;
+	@ObfuscatedName("aa")
+	@ObfuscatedSignature(
+		descriptor = "Lid;"
+	)
+	static final class228 field2539;
 
 	static {
 		Rasterizer3D_colorPalette = new int[65536];
-		field2507 = new int[512];
-		field2506 = new int[2048];
+		field2535 = new int[512];
+		field2533 = new int[2048];
 		Rasterizer3D_sine = new int[2048];
 		Rasterizer3D_cosine = new int[2048];
 
 		int var0;
 		for (var0 = 1; var0 < 512; ++var0) {
-			field2507[var0] = 32768 / var0;
+			field2535[var0] = 32768 / var0;
 		}
 
 		for (var0 = 1; var0 < 2048; ++var0) {
-			field2506[var0] = 65536 / var0;
+			field2533[var0] = 65536 / var0;
 		}
 
 		for (var0 = 0; var0 < 2048; ++var0) {
@@ -63,35 +63,35 @@ public class Rasterizer3D {
 		}
 
 		clips = new Clips();
-		field2512 = new class244(clips);
-		field2505 = new class246(clips);
-		field2513 = field2512;
+		field2538 = new class243(clips);
+		field2539 = new class245(clips);
+		field2537 = field2538;
 	}
 
-	@ObfuscatedName("aw")
-	public static void method4403(boolean var0) {
-		if (var0 && Rasterizer2D.field5139 != null) {
-			field2513 = field2505;
+	@ObfuscatedName("au")
+	public static void method4390(boolean var0) {
+		if (var0 && Rasterizer2D.field5184 != null) {
+			field2537 = field2539;
 		} else {
-			field2513 = field2512;
+			field2537 = field2538;
 		}
 
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(Ljy;)V"
+		descriptor = "(Ljs;)V"
 	)
-	public static void method4404(TextureLoader var0) {
+	public static void method4376(TextureLoader var0) {
 		clips.Rasterizer3D_textureLoader = var0;
 	}
 
-	@ObfuscatedName("ar")
-	public static void method4405(double var0) {
+	@ObfuscatedName("ao")
+	public static void method4377(double var0) {
 		Rasterizer3D_buildPalette(var0, 0, 512);
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("at")
 	@Export("Rasterizer3D_buildPalette")
 	static void Rasterizer3D_buildPalette(double var0, int var2, int var3) {
 		int var4 = var2 * 128;
@@ -170,7 +170,7 @@ public class Rasterizer3D {
 
 	}
 
-	@ObfuscatedName("as")
+	@ObfuscatedName("ac")
 	@Export("Rasterizer3D_brighten")
 	static int Rasterizer3D_brighten(int var0, double var1) {
 		double var3 = (double)(var0 >> 16) / 256.0D;
@@ -185,128 +185,128 @@ public class Rasterizer3D {
 		return var11 + (var10 << 8) + (var9 << 16);
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ai")
 	@Export("getClipMidX")
 	static int getClipMidX() {
-		return clips.field2800;
-	}
-
-	@ObfuscatedName("ag")
-	@Export("getClipMidY")
-	static int getClipMidY() {
-		return clips.field2794;
+		return clips.field2810;
 	}
 
 	@ObfuscatedName("az")
-	static int method4490() {
-		return clips.clipNegativeMidX;
-	}
-
-	@ObfuscatedName("av")
-	@Export("Rasterizer3D_clipMidX2")
-	static int Rasterizer3D_clipMidX2() {
-		return clips.field2786;
+	@Export("getClipMidY")
+	static int getClipMidY() {
+		return clips.field2825;
 	}
 
 	@ObfuscatedName("ap")
-	@Export("Rasterizer3D_clipMidY2")
-	static int Rasterizer3D_clipMidY2() {
-		return clips.field2798;
-	}
-
-	@ObfuscatedName("aq")
-	static int method4413() {
-		return clips.clipNegativeMidY;
-	}
-
-	@ObfuscatedName("at")
-	@Export("get3dZoom")
-	public static int get3dZoom() {
-		return clips.field2781;
-	}
-
-	@ObfuscatedName("ah")
-	static int method4410() {
-		return clips.field2795;
-	}
-
-	@ObfuscatedName("ax")
-	public static void method4416(int[] var0, int var1, int var2, float[] var3) {
-		if (var3 == null && field2513 == field2505) {
-			field2513 = field2512;
-		}
-
-		field2513.method4515(var0, var1, var2, var3);
+	static int method4382() {
+		return clips.clipNegativeMidX;
 	}
 
 	@ObfuscatedName("aa")
-	public static void method4417() {
-		method4429(Rasterizer2D.Rasterizer2D_xClipStart, Rasterizer2D.Rasterizer2D_yClipStart, Rasterizer2D.Rasterizer2D_xClipEnd, Rasterizer2D.Rasterizer2D_yClipEnd);
+	@Export("Rasterizer3D_clipMidX2")
+	static int Rasterizer3D_clipMidX2() {
+		return clips.field2827;
 	}
 
-	@ObfuscatedName("au")
-	static void method4429(int var0, int var1, int var2, int var3) {
-		clips.field2795 = var2 - var0;
-		clips.field2796 = var3 - var1;
-		method4419();
-		if (clips.Rasterizer3D_rowOffsets.length < clips.field2796) {
-			clips.Rasterizer3D_rowOffsets = new int[UrlRequest.method2837(clips.field2796)];
+	@ObfuscatedName("af")
+	@Export("Rasterizer3D_clipMidY2")
+	static int Rasterizer3D_clipMidY2() {
+		return clips.field2829;
+	}
+
+	@ObfuscatedName("ad")
+	static int method4385() {
+		return clips.clipNegativeMidY;
+	}
+
+	@ObfuscatedName("aq")
+	@Export("get3dZoom")
+	public static int get3dZoom() {
+		return clips.field2815;
+	}
+
+	@ObfuscatedName("al")
+	static int method4387() {
+		return clips.field2824;
+	}
+
+	@ObfuscatedName("an")
+	public static void method4388(int[] var0, int var1, int var2, float[] var3) {
+		if (var3 == null && field2537 == field2539) {
+			field2537 = field2538;
+		}
+
+		field2537.method4482(var0, var1, var2, var3);
+	}
+
+	@ObfuscatedName("ar")
+	public static void method4389() {
+		method4445(Rasterizer2D.Rasterizer2D_xClipStart, Rasterizer2D.Rasterizer2D_yClipStart, Rasterizer2D.Rasterizer2D_xClipEnd, Rasterizer2D.Rasterizer2D_yClipEnd);
+	}
+
+	@ObfuscatedName("ab")
+	static void method4445(int var0, int var1, int var2, int var3) {
+		clips.field2824 = var2 - var0;
+		clips.field2822 = var3 - var1;
+		method4391();
+		if (clips.Rasterizer3D_rowOffsets.length < clips.field2822) {
+			clips.Rasterizer3D_rowOffsets = new int[WorldMapIcon_1.method5088(clips.field2822)];
 		}
 
 		int var4 = var0 + Rasterizer2D.Rasterizer2D_width * var1;
 
-		for (int var5 = 0; var5 < clips.field2796; ++var5) {
+		for (int var5 = 0; var5 < clips.field2822; ++var5) {
 			clips.Rasterizer3D_rowOffsets[var5] = var4;
 			var4 += Rasterizer2D.Rasterizer2D_width;
 		}
 
 	}
 
-	@ObfuscatedName("ae")
-	public static void method4419() {
-		clips.method4987();
+	@ObfuscatedName("ag")
+	public static void method4391() {
+		clips.method4956();
 	}
 
-	@ObfuscatedName("ab")
-	public static void method4420(int var0, int var1) {
+	@ObfuscatedName("am")
+	public static void method4449(int var0, int var1) {
 		int var2 = clips.Rasterizer3D_rowOffsets[0];
 		int var3 = var2 / Rasterizer2D.Rasterizer2D_width;
 		int var4 = var2 - var3 * Rasterizer2D.Rasterizer2D_width;
-		clips.method4984(var0, var4, var1, var3);
+		clips.method4962(var0, var4, var1, var3);
 	}
 
-	@ObfuscatedName("ad")
-	public static void method4444(int var0, int var1, int var2) {
-		clips.method4985(var0, var1, var2);
+	@ObfuscatedName("ax")
+	public static void method4393(int var0, int var1, int var2) {
+		clips.method4958(var0, var1, var2);
 	}
 
-	@ObfuscatedName("ao")
-	static void method4422(int var0, int var1, int var2, int var3, int var4, int var5, float var6, float var7, float var8, int var9, int var10, int var11) {
-		field2513.vmethod4995(var0, var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11);
+	@ObfuscatedName("ah")
+	static void method4398(int var0, int var1, int var2, int var3, int var4, int var5, float var6, float var7, float var8, int var9, int var10, int var11) {
+		field2537.vmethod5020(var0, var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11);
 	}
 
-	@ObfuscatedName("ac")
-	public static void method4457(int var0, int var1, int var2, int var3, int var4, int var5, float var6, float var7, float var8, int var9) {
-		field2513.vmethod5001(var0, var1, var2, var3, var4, var5, var6, var7, var8, var9);
+	@ObfuscatedName("as")
+	public static void method4455(int var0, int var1, int var2, int var3, int var4, int var5, float var6, float var7, float var8, int var9) {
+		field2537.vmethod4972(var0, var1, var2, var3, var4, var5, var6, var7, var8, var9);
 	}
 
-	@ObfuscatedName("ak")
-	static void method4424(int var0, int var1, int var2, int var3, int var4, int var5, float var6, float var7, float var8, int var9, int var10, int var11, int var12, int var13, int var14, int var15, int var16, int var17, int var18, int var19, int var20, int var21) {
-		field2513.vmethod5003(var0, var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11, var12, var13, var14, var15, var16, var17, var18, var19, var20, var21);
+	@ObfuscatedName("ay")
+	static void method4396(int var0, int var1, int var2, int var3, int var4, int var5, float var6, float var7, float var8, int var9, int var10, int var11, int var12, int var13, int var14, int var15, int var16, int var17, int var18, int var19, int var20, int var21) {
+		field2537.vmethod4967(var0, var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11, var12, var13, var14, var15, var16, var17, var18, var19, var20, var21);
 	}
 
-	@ObfuscatedName("an")
-	static void method4425(int var0, int var1, int var2, int var3, int var4, int var5, float var6, float var7, float var8, int var9, int var10, int var11, int var12, int var13, int var14, int var15, int var16, int var17, int var18, int var19, int var20, int var21) {
-		field2513.vmethod5030(var0, var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11, var12, var13, var14, var15, var16, var17, var18, var19, var20, var21);
+	@ObfuscatedName("aj")
+	static void method4397(int var0, int var1, int var2, int var3, int var4, int var5, float var6, float var7, float var8, int var9, int var10, int var11, int var12, int var13, int var14, int var15, int var16, int var17, int var18, int var19, int var20, int var21) {
+		field2537.vmethod4981(var0, var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11, var12, var13, var14, var15, var16, var17, var18, var19, var20, var21);
 	}
 
-	@ObfuscatedName("af")
-	static void method4426(int var0, int var1, int var2, int var3, int var4, int var5, float var6, float var7, float var8, int var9, int var10, int var11, byte var12, byte var13, byte var14, byte var15) {
-		field2513.method4518(var0, var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11, var12, var13, var14, var15);
+	@ObfuscatedName("av")
+	static void method4447(int var0, int var1, int var2, int var3, int var4, int var5, float var6, float var7, float var8, int var9, int var10, int var11, byte var12, byte var13, byte var14, byte var15) {
+		field2537.method4485(var0, var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11, var12, var13, var14, var15);
 	}
 
-	@ObfuscatedName("ai")
-	static void method4427(int var0, int var1, int var2, int var3, int var4, int var5, float var6, float var7, float var8, int var9, byte var10, byte var11, byte var12, byte var13) {
-		field2513.method4523(var0, var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11, var12, var13);
+	@ObfuscatedName("aw")
+	static void method4453(int var0, int var1, int var2, int var3, int var4, int var5, float var6, float var7, float var8, int var9, byte var10, byte var11, byte var12, byte var13) {
+		field2537.method4481(var0, var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11, var12, var13);
 	}
 }

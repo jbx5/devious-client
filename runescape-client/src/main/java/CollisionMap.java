@@ -1,40 +1,37 @@
-import java.io.IOException;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ij")
+@ObfuscatedName("is")
 @Implements("CollisionMap")
 public class CollisionMap {
-	@ObfuscatedName("ac")
-	public static String field2347;
-	@ObfuscatedName("bv")
+	@ObfuscatedName("bs")
 	@ObfuscatedGetter(
-		intValue = 2023804941
+		intValue = -586193895
 	)
 	@Export("xInset")
 	int xInset;
-	@ObfuscatedName("bq")
+	@ObfuscatedName("bm")
 	@ObfuscatedGetter(
-		intValue = 1811869817
+		intValue = -1216130805
 	)
 	@Export("yInset")
 	int yInset;
-	@ObfuscatedName("bo")
+	@ObfuscatedName("bf")
 	@ObfuscatedGetter(
-		intValue = -1511640623
+		intValue = -356929081
 	)
 	@Export("xSize")
 	int xSize;
-	@ObfuscatedName("br")
+	@ObfuscatedName("bq")
 	@ObfuscatedGetter(
-		intValue = 777221461
+		intValue = 1787133985
 	)
 	@Export("ySize")
 	int ySize;
-	@ObfuscatedName("bw")
+	@ObfuscatedName("ba")
 	@Export("flags")
 	public int[][] flags;
 
@@ -47,10 +44,10 @@ public class CollisionMap {
 		this.clear();
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "1057196754"
+		garbageValue = "594753621"
 	)
 	@Export("clear")
 	public void clear() {
@@ -66,12 +63,12 @@ public class CollisionMap {
 
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "(IIIIZI)V",
-		garbageValue = "-1208247289"
+		garbageValue = "-1991321796"
 	)
-	public void method4191(int var1, int var2, int var3, int var4, boolean var5) {
+	public void method4148(int var1, int var2, int var3, int var4, boolean var5) {
 		var1 -= this.xInset;
 		var2 -= this.yInset;
 		if (var3 == 0) {
@@ -218,10 +215,10 @@ public class CollisionMap {
 
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIZI)V",
-		garbageValue = "1569995917"
+		descriptor = "(IIIIZB)V",
+		garbageValue = "-55"
 	)
 	@Export("addGameObject")
 	public void addGameObject(int var1, int var2, int var3, int var4, boolean var5) {
@@ -245,10 +242,10 @@ public class CollisionMap {
 
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "(III)V",
-		garbageValue = "745791000"
+		descriptor = "(IIB)V",
+		garbageValue = "-52"
 	)
 	@Export("setBlockedByFloor")
 	public void setBlockedByFloor(int var1, int var2) {
@@ -258,10 +255,10 @@ public class CollisionMap {
 		var10000[var2] |= 2097152;
 	}
 
-	@ObfuscatedName("as")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
 		descriptor = "(III)V",
-		garbageValue = "-190738836"
+		garbageValue = "952149721"
 	)
 	@Export("setBlockedByFloorDec")
 	public void setBlockedByFloorDec(int var1, int var2) {
@@ -271,10 +268,10 @@ public class CollisionMap {
 		var10000[var2] |= 262144;
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
 		descriptor = "(IIIB)V",
-		garbageValue = "45"
+		garbageValue = "-70"
 	)
 	@Export("setFlag")
 	void setFlag(int var1, int var2, int var3) {
@@ -282,12 +279,12 @@ public class CollisionMap {
 		var10000[var2] |= var3;
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "(IIIIZI)V",
-		garbageValue = "-908082263"
+		garbageValue = "-191479302"
 	)
-	public void method4202(int var1, int var2, int var3, int var4, boolean var5) {
+	public void method4153(int var1, int var2, int var3, int var4, boolean var5) {
 		var1 -= this.xInset;
 		var2 -= this.yInset;
 		if (var3 == 0) {
@@ -434,10 +431,10 @@ public class CollisionMap {
 
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
 		descriptor = "(IIIIIZI)V",
-		garbageValue = "1718462800"
+		garbageValue = "-320113584"
 	)
 	@Export("setFlagOffNonSquare")
 	public void setFlagOffNonSquare(int var1, int var2, int var3, int var4, int var5, boolean var6) {
@@ -467,10 +464,10 @@ public class CollisionMap {
 
 	}
 
-	@ObfuscatedName("av")
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
 		descriptor = "(IIII)V",
-		garbageValue = "-866743118"
+		garbageValue = "-675298247"
 	)
 	@Export("setFlagOff")
 	void setFlagOff(int var1, int var2, int var3) {
@@ -478,76 +475,24 @@ public class CollisionMap {
 		var10000[var2] &= ~var3;
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "(IIB)V",
-		garbageValue = "1"
+		descriptor = "(III)V",
+		garbageValue = "2112024151"
 	)
-	public void method4194(int var1, int var2) {
+	public void method4155(int var1, int var2) {
 		var1 -= this.xInset;
 		var2 -= this.yInset;
 		int[] var10000 = this.flags[var1];
 		var10000[var2] &= -262145;
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("oo")
 	@ObfuscatedSignature(
-		descriptor = "(IIB)I",
-		garbageValue = "-118"
+		descriptor = "(B)Lnf;",
+		garbageValue = "-74"
 	)
-	public static int method4216(int var0, int var1) {
-		int var2;
-		for (var2 = 1; var1 > 1; var1 >>= 1) {
-			if ((var1 & 1) != 0) {
-				var2 = var0 * var2;
-			}
-
-			var0 *= var0;
-		}
-
-		if (var1 == 1) {
-			return var0 * var2;
-		} else {
-			return var2;
-		}
-	}
-
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1867192379"
-	)
-	static void method4208() {
-		Players.Players_count = 0;
-
-		for (int var0 = 0; var0 < 2048; ++var0) {
-			Players.field1360[var0] = null;
-			Players.field1363[var0] = class218.field2384;
-		}
-
-	}
-
-	@ObfuscatedName("jg")
-	@ObfuscatedSignature(
-		descriptor = "(ZI)V",
-		garbageValue = "-1603276123"
-	)
-	static final void method4214(boolean var0) {
-		class105.method2684();
-		++Client.packetWriter.pendingWrites;
-		if (Client.packetWriter.pendingWrites >= 50 || var0) {
-			Client.packetWriter.pendingWrites = 0;
-			if (!Client.hadNetworkError && Client.packetWriter.getSocket() != null) {
-				PacketBufferNode var1 = class503.getPacketBufferNode(ClientPacket.NO_TIMEOUT, Client.packetWriter.isaacCipher);
-				Client.packetWriter.addNode(var1);
-
-				try {
-					Client.packetWriter.flush();
-				} catch (IOException var3) {
-					Client.hadNetworkError = true;
-				}
-			}
-
-		}
+	static JagNetThread method4177() {
+		return class308.field3462;
 	}
 }

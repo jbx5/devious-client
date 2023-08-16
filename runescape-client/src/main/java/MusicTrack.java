@@ -3,23 +3,23 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("mp")
+@ObfuscatedName("mv")
 @Implements("MusicTrack")
 public class MusicTrack extends Node {
-	@ObfuscatedName("aw")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "Lsm;"
+		descriptor = "Lso;"
 	)
-	NodeHashTable field3483;
-	@ObfuscatedName("ay")
+	NodeHashTable field3486;
+	@ObfuscatedName("ae")
 	@Export("midi")
 	byte[] midi;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lty;)V"
+		descriptor = "(Ltm;)V"
 	)
 	MusicTrack(Buffer var1) {
-		this.field3483 = new NodeHashTable(16);
+		this.field3486 = new NodeHashTable(16);
 		var1.offset = var1.array.length - 3;
 		int var2 = var1.readUnsignedByte();
 		int var3 = var1.readUnsignedShort();
@@ -254,13 +254,13 @@ public class MusicTrack extends Node {
 							var51.writeByte(var71);
 							if (var71 > 0) {
 								int var72 = var61[var52];
-								class319 var73 = (class319)this.field3483.get((long)var72);
+								class318 var73 = (class318)this.field3486.get((long)var72);
 								if (var73 == null) {
-									var73 = new class319(var65);
-									this.field3483.put(var73, (long)var72);
+									var73 = new class318(var65);
+									this.field3486.put(var73, (long)var72);
 								}
 
-								var73.field3520.set(var74);
+								var73.field3526.set(var74);
 							}
 						} else if (var66 == 1) {
 							if (var69) {
@@ -367,9 +367,9 @@ public class MusicTrack extends Node {
 
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(Lnd;II)Lmp;"
+		descriptor = "(Lnu;II)Lmv;"
 	)
 	@Export("readTrack")
 	public static MusicTrack readTrack(AbstractArchive var0, int var1, int var2) {

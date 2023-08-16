@@ -1,35 +1,33 @@
-import java.util.ArrayList;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("in")
+@ObfuscatedName("iw")
 @Implements("RouteStrategy")
 public abstract class RouteStrategy {
-	@ObfuscatedName("aw")
+	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		intValue = -1929046779
+		intValue = -102970783
 	)
 	@Export("approxDestinationX")
 	public int approxDestinationX;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedGetter(
-		intValue = 564458277
+		intValue = 1216826241
 	)
 	@Export("approxDestinationY")
 	public int approxDestinationY;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = 2019727173
+		intValue = 883188487
 	)
 	@Export("approxDestinationSizeX")
 	public int approxDestinationSizeX;
-	@ObfuscatedName("am")
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		intValue = -1270533897
+		intValue = -610372655
 	)
 	@Export("approxDestinationSizeY")
 	public int approxDestinationSizeY;
@@ -37,67 +35,22 @@ public abstract class RouteStrategy {
 	protected RouteStrategy() {
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(IIILij;I)Z",
-		garbageValue = "2142084611"
+		descriptor = "(IIILis;B)Z",
+		garbageValue = "85"
 	)
 	@Export("hasArrived")
 	protected abstract boolean hasArrived(int var1, int var2, int var3, CollisionMap var4);
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ja")
 	@ObfuscatedSignature(
-		descriptor = "(IIS)V",
-		garbageValue = "-1978"
+		descriptor = "(I)V",
+		garbageValue = "1131670989"
 	)
-	public static void method4227(int var0, int var1) {
-		ArchiveLoader.method2259(var0, var1, 0, 0);
-		class306.field3398.clear();
-		if (!class306.musicSongs.isEmpty() && (var0 != 0 || var1 != 0)) {
-			class306.field3399.add(new DelayFadeTask((SongTask)null, class306.musicPlayerStatus));
-			class306.field3399.add(new FadeOutTask((SongTask)null, 0, false, class306.field3402));
-		}
-
-		ArrayList var2 = class162.method3356();
-		class306.field3399.add(new ClearRequestTask((SongTask)null, var2));
-	}
-
-	@ObfuscatedName("bc")
-	@ObfuscatedSignature(
-		descriptor = "(ILdc;ZS)I",
-		garbageValue = "-21358"
-	)
-	static int method4230(int var0, Script var1, boolean var2) {
-		if (var0 == ScriptOpcodes.LOGOUT) {
-			Client.logoutTimer = 250;
-			return 1;
-		} else {
-			return 2;
-		}
-	}
-
-	@ObfuscatedName("il")
-	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "-774340966"
-	)
-	@Export("setWindowedMode")
-	static void setWindowedMode(int var0) {
-		Client.field742 = 0L;
-		if (var0 >= 2) {
-			Client.isResizable = true;
-		} else {
-			Client.isResizable = false;
-		}
-
-		if (Huffman.getWindowedMode() == 1) {
-			TileItem.client.setMaxCanvasSize(765, 503);
-		} else {
-			TileItem.client.setMaxCanvasSize(7680, 2160);
-		}
-
-		if (Client.gameState >= 25) {
-			LoadSongTask.method7680();
+	static void method4187() {
+		if (Client.field764) {
+			class92.addPlayerToScene(VarbitComposition.localPlayer, false);
 		}
 
 	}

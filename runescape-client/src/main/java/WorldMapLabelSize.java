@@ -4,101 +4,86 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jj")
+@ObfuscatedName("jb")
 @Implements("WorldMapLabelSize")
 public class WorldMapLabelSize {
-	@ObfuscatedName("aw")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "Ljj;"
+		descriptor = "Ljb;"
 	)
 	@Export("WorldMapLabelSize_small")
 	public static final WorldMapLabelSize WorldMapLabelSize_small;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "Ljj;"
+		descriptor = "Ljb;"
 	)
 	@Export("WorldMapLabelSize_medium")
 	public static final WorldMapLabelSize WorldMapLabelSize_medium;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "Ljj;"
+		descriptor = "Ljb;"
 	)
 	@Export("WorldMapLabelSize_large")
 	public static final WorldMapLabelSize WorldMapLabelSize_large;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "Luu;"
+		descriptor = "Let;"
 	)
-	@Export("options_buttons_0Sprite")
-	static IndexedSprite options_buttons_0Sprite;
-	@ObfuscatedName("si")
+	@Export("World_request")
+	static UrlRequest World_request;
+	@ObfuscatedName("cf")
 	@ObfuscatedSignature(
-		descriptor = "Lgh;"
+		descriptor = "Lnb;"
 	)
-	@Export("guestClanChannel")
-	static ClanChannel guestClanChannel;
-	@ObfuscatedName("am")
+	static GameBuild field2882;
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		intValue = -1138617503
+		intValue = 1949670383
 	)
-	final int field2858;
-	@ObfuscatedName("as")
+	final int field2879;
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = 1772890649
+		intValue = -1008526791
 	)
-	final int field2861;
-	@ObfuscatedName("aj")
+	final int field2880;
+	@ObfuscatedName("ai")
 	@ObfuscatedGetter(
-		intValue = -1703029901
+		intValue = -1148385691
 	)
-	final int field2860;
+	final int field2881;
 
 	static {
-		WorldMapLabelSize_small = new WorldMapLabelSize(0, 0, 4);
-		WorldMapLabelSize_medium = new WorldMapLabelSize(2, 1, 2);
+		WorldMapLabelSize_small = new WorldMapLabelSize(2, 0, 4);
+		WorldMapLabelSize_medium = new WorldMapLabelSize(0, 1, 2);
 		WorldMapLabelSize_large = new WorldMapLabelSize(1, 2, 0);
 	}
 
 	WorldMapLabelSize(int var1, int var2, int var3) {
-		this.field2858 = var1;
-		this.field2861 = var2;
-		this.field2860 = var3;
+		this.field2879 = var1;
+		this.field2880 = var2;
+		this.field2881 = var3;
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(FB)Z",
-		garbageValue = "-3"
+		descriptor = "(FI)Z",
+		garbageValue = "-122455389"
 	)
-	boolean method5088(float var1) {
-		return var1 >= (float)this.field2860;
+	boolean method5058(float var1) {
+		return var1 >= (float)this.field2881;
 	}
 
-	@ObfuscatedName("me")
+	@ObfuscatedName("mx")
 	@ObfuscatedSignature(
-		descriptor = "(IIII)Ldn;",
-		garbageValue = "977578301"
+		descriptor = "(Lmi;I)Lmi;",
+		garbageValue = "1356224559"
 	)
-	@Export("openInterface")
-	static final InterfaceParent openInterface(int var0, int var1, int var2) {
-		InterfaceParent var3 = new InterfaceParent();
-		var3.group = var1;
-		var3.type = var2;
-		Client.interfaceParents.put(var3, (long)var0);
-		class92.Widget_resetModelFrames(var1);
-		Widget var4 = VarbitComposition.getWidget(var0);
-		class200.invalidateWidget(var4);
-		if (Client.meslayerContinueWidget != null) {
-			class200.invalidateWidget(Client.meslayerContinueWidget);
-			Client.meslayerContinueWidget = null;
+	static Widget method5059(Widget var0) {
+		Widget var1 = BuddyRankComparator.method2916(var0);
+		if (var1 == null) {
+			var1 = var0.parent;
 		}
 
-		SoundCache.revalidateWidgetScroll(ArchiveLoader.Widget_interfaceComponents[var0 >> 16], var4, false);
-		ScriptFrame.runWidgetOnLoadListener(var1);
-		if (Client.rootInterface != -1) {
-			ChatChannel.runIntfCloseListeners(Client.rootInterface, 1);
-		}
-
-		return var3;
+		return var1;
 	}
 }

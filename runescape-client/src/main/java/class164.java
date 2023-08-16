@@ -2,114 +2,68 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gj")
+@ObfuscatedName("gl")
 public class class164 {
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(Ltc;S)V",
-		garbageValue = "15572"
+		descriptor = "([BI)[I",
+		garbageValue = "2043897954"
 	)
-	@Export("updatePlayer")
-	static final void updatePlayer(PacketBuffer var0) {
-		var0.importIndex();
-		int var1 = Client.localPlayerIndex;
-		Player var2 = class136.localPlayer = Client.players[var1] = new Player();
-		var2.index = var1;
-		int var3 = var0.readBits(30);
-		byte var4 = (byte)(var3 >> 28);
-		int var5 = var3 >> 14 & 16383;
-		int var6 = var3 & 16383;
-		var2.pathX[0] = var5 - AbstractArchive.baseX * 64;
-		var2.x = (var2.pathX[0] << 7) + (var2.transformedSize() << 6);
-		var2.pathY[0] = var6 - class148.baseY * 64;
-		var2.y = (var2.pathY[0] << 7) + (var2.transformedSize() << 6);
-		class36.Client_plane = var2.plane = var4;
-		if (Players.field1360[var1] != null) {
-			var2.read(Players.field1360[var1]);
-		}
+	public static int[] method3322(byte[] var0) {
+		if (var0 != null && var0.length != 0 && var0.length <= 8) {
+			int[] var1 = new int[var0.length];
 
-		Players.Players_count = 0;
-		Players.Players_indices[++Players.Players_count - 1] = var1;
-		Players.field1362[var1] = 0;
-		Players.Players_emptyIdxCount = 0;
+			for (int var2 = 0; var2 < var0.length; ++var2) {
+				if (var0[var2] < 0 || var0[var2] > class538.field5261.length) {
+					return null;
+				}
 
-		for (int var7 = 1; var7 < 2048; ++var7) {
-			if (var7 != var1) {
-				int var8 = var0.readBits(18);
-				int var9 = var8 >> 16;
-				int var10 = var8 >> 8 & 597;
-				int var11 = var8 & 597;
-				Players.Players_regions[var7] = (var10 << 14) + var11 + (var9 << 28);
-				Players.Players_orientations[var7] = 0;
-				Players.Players_targetIndices[var7] = -1;
-				Players.Players_emptyIndices[++Players.Players_emptyIdxCount - 1] = var7;
-				Players.field1362[var7] = 0;
+				var1[var2] = class538.field5261[var0[var2]];
 			}
-		}
 
-		var0.exportIndex();
+			return var1;
+		} else {
+			return null;
+		}
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("in")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-1762704908"
+		garbageValue = "-1654219145"
 	)
-	static void method3394() {
-		Tiles.Tiles_underlays = null;
-		Tiles.Tiles_overlays = null;
-		class19.Tiles_shapes = null;
-		UserComparator10.field1474 = null;
-		BufferedNetSocket.field4681 = null;
-		InvDefinition.Tiles_underlays2 = null;
-		class135.field1601 = null;
-		class172.Tiles_hue = null;
-		GameBuild.Tiles_saturation = null;
-		Tiles.Tiles_lightness = null;
-		Language.Tiles_hueMultiplier = null;
-		class159.field1755 = null;
-	}
-
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "(IIB)V",
-		garbageValue = "34"
-	)
-	public static void method3392(int var0, int var1) {
-		VarbitComposition var3 = (VarbitComposition)VarbitComposition.VarbitDefinition_cached.get((long)var0);
-		VarbitComposition var2;
-		if (var3 != null) {
-			var2 = var3;
-		} else {
-			byte[] var4 = VarbitComposition.VarbitDefinition_archive.takeFile(14, var0);
-			var3 = new VarbitComposition();
-			if (var4 != null) {
-				var3.decode(new Buffer(var4));
-			}
-
-			VarbitComposition.VarbitDefinition_cached.put(var3, (long)var0);
-			var2 = var3;
+	static final void method3324() {
+		if (Client.field772 != HealthBar.Client_plane) {
+			Client.field772 = HealthBar.Client_plane;
+			class17.method262(HealthBar.Client_plane);
 		}
 
-		int var8 = var2.baseVar;
-		int var5 = var2.startBit;
-		int var6 = var2.endBit;
-		int var7 = Varps.Varps_masks[var6 - var5];
-		if (var1 < 0 || var1 > var7) {
-			var1 = 0;
-		}
-
-		var7 <<= var5;
-		Varps.Varps_main[var8] = Varps.Varps_main[var8] & ~var7 | var1 << var5 & var7;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("mq")
 	@ObfuscatedSignature(
-		descriptor = "(CB)Z",
-		garbageValue = "80"
+		descriptor = "(IIIIII)V",
+		garbageValue = "1697845802"
 	)
-	@Export("isDigit")
-	public static boolean isDigit(char var0) {
-		return var0 >= '0' && var0 <= '9';
+	@Export("drawScrollBar")
+	static final void drawScrollBar(int var0, int var1, int var2, int var3, int var4) {
+		GrandExchangeOfferOwnWorldComparator.scrollBarSprites[0].drawAt(var0, var1);
+		GrandExchangeOfferOwnWorldComparator.scrollBarSprites[1].drawAt(var0, var3 + var1 - 16);
+		Rasterizer2D.Rasterizer2D_fillRectangle(var0, var1 + 16, 16, var3 - 32, Client.field607);
+		int var5 = var3 * (var3 - 32) / var4;
+		if (var5 < 8) {
+			var5 = 8;
+		}
+
+		int var6 = (var3 - 32 - var5) * var2 / (var4 - var3);
+		Rasterizer2D.Rasterizer2D_fillRectangle(var0, var6 + var1 + 16, 16, var5, Client.field718);
+		Rasterizer2D.method9385(var0, var6 + var1 + 16, var5, Client.field798);
+		Rasterizer2D.method9385(var0 + 1, var6 + var1 + 16, var5, Client.field798);
+		Rasterizer2D.method9410(var0, var6 + var1 + 16, 16, Client.field798);
+		Rasterizer2D.method9410(var0, var6 + var1 + 17, 16, Client.field798);
+		Rasterizer2D.method9385(var0 + 15, var6 + var1 + 16, var5, Client.field609);
+		Rasterizer2D.method9385(var0 + 14, var6 + var1 + 17, var5 - 1, Client.field609);
+		Rasterizer2D.method9410(var0, var5 + var6 + var1 + 15, 16, Client.field609);
+		Rasterizer2D.method9410(var0 + 1, var6 + var5 + var1 + 14, 15, Client.field609);
 	}
 }

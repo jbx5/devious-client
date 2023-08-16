@@ -1,20 +1,16 @@
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("nv")
-public class class343 {
-	@ObfuscatedName("bg")
+@ObfuscatedName("ng")
+public final class class343 {
+	@ObfuscatedName("gm")
 	@ObfuscatedSignature(
-		descriptor = "Lrk;"
+		descriptor = "Lnk;"
 	)
-	static Bounds field3840;
-
-	@ObfuscatedName("ay")
+	static Archive field3869;
+	@ObfuscatedName("ou")
 	@ObfuscatedSignature(
-		descriptor = "(IB)I",
-		garbageValue = "2"
+		descriptor = "Lmi;"
 	)
-	static int method6643(int var0) {
-		return class28.KeyHandler_keyCodes[var0];
-	}
+	static Widget field3868;
 }

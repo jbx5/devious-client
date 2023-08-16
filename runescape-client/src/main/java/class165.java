@@ -1,77 +1,94 @@
-import net.runelite.mapping.Export;
+import java.io.File;
+import java.io.IOException;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gm")
+@ObfuscatedName("gb")
 public class class165 extends class143 {
-	@ObfuscatedName("uq")
+	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		intValue = -1247158369
+		longValue = 5068354842123857345L
 	)
-	static int field1791;
+	long field1815;
 	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "Lds;"
-	)
-	@Export("loginScreenRunesAnimation")
-	static LoginScreenAnimation loginScreenRunesAnimation;
-	@ObfuscatedName("aw")
-	@ObfuscatedGetter(
-		longValue = 5869356690923119311L
-	)
-	long field1787;
-	@ObfuscatedName("ay")
-	String field1790;
+	String field1813;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lfr;"
+		descriptor = "Lfn;"
 	)
 	final class146 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lfr;)V"
+		descriptor = "(Lfn;)V"
 	)
 	class165(class146 var1) {
 		this.this$0 = var1;
-		this.field1787 = -1L;
-		this.field1790 = null;
+		this.field1815 = -1L;
+		this.field1813 = null;
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(Lty;B)V",
-		garbageValue = "1"
+		descriptor = "(Ltm;I)V",
+		garbageValue = "209179459"
 	)
-	void vmethod3412(Buffer var1) {
+	void vmethod3337(Buffer var1) {
 		if (var1.readUnsignedByte() != 255) {
 			--var1.offset;
-			this.field1787 = var1.readLong();
+			this.field1815 = var1.readLong();
 		}
 
-		this.field1790 = var1.readStringCp1252NullTerminatedOrNull();
+		this.field1813 = var1.readStringCp1252NullTerminatedOrNull();
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(Lfx;B)V",
-		garbageValue = "-72"
+		descriptor = "(Lfi;B)V",
+		garbageValue = "73"
 	)
-	void vmethod3419(ClanSettings var1) {
-		var1.method3234(this.field1787, this.field1790);
+	void vmethod3339(ClanSettings var1) {
+		var1.method3187(this.field1815, this.field1813);
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(Lfm;FI)F",
-		garbageValue = "-655918907"
+		descriptor = "(Ljava/io/File;Ljava/io/File;I)V",
+		garbageValue = "1715361402"
 	)
-	static float method3402(class130 var0, float var1) {
-		if (var0 == null) {
-			return 0.0F;
-		} else {
-			float var2 = var1 - var0.field1538;
-			return (var0.field1542 + (var0.field1540 * var2 + var0.field1541) * var2) * var2 + var0.field1550;
+	static void method3330(File var0, File var1) {
+		try {
+			AccessFile var2 = new AccessFile(JagexCache.field1869, "rw", 10000L);
+			Buffer var3 = new Buffer(500);
+			var3.writeByte(3);
+			var3.writeByte(var1 != null ? 1 : 0);
+			var3.writeCESU8(var0.getPath());
+			if (var1 != null) {
+				var3.writeCESU8("");
+			}
+
+			var2.write(var3.array, 0, var3.offset);
+			var2.close();
+		} catch (IOException var4) {
+			var4.printStackTrace();
 		}
+
+	}
+
+	@ObfuscatedName("kx")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "97"
+	)
+	static final void method3325() {
+		for (PendingSpawn var0 = (PendingSpawn)Client.pendingSpawns.last(); var0 != null; var0 = (PendingSpawn)Client.pendingSpawns.previous()) {
+			if (var0.hitpoints == -1) {
+				var0.delay = 0;
+				PacketWriter.method2805(var0);
+			} else {
+				var0.remove();
+			}
+		}
+
 	}
 }

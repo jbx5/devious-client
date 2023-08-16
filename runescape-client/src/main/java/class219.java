@@ -1,49 +1,64 @@
+import java.util.Comparator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ib")
-public class class219 {
-	@ObfuscatedName("aw")
+@ObfuscatedName("it")
+public class class219 implements Comparator {
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "[Liq;"
+		descriptor = "Luk;"
 	)
-	public static class217[] field2388;
+	@Export("titlebuttonSprite")
+	static IndexedSprite titlebuttonSprite;
+	@ObfuscatedName("bw")
+	@Export("client")
+	@ObfuscatedSignature(
+		descriptor = "Lclient;"
+	)
+	static Client client;
 
-	@ObfuscatedName("ay")
+	class219() {
+	}
+
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Lht;",
-		garbageValue = "-74"
+		descriptor = "(Lio;Lio;I)I",
+		garbageValue = "-975759787"
 	)
-	@Export("StructDefinition_getStructDefinition")
-	public static StructComposition StructDefinition_getStructDefinition(int var0) {
-		StructComposition var1 = (StructComposition)StructComposition.StructDefinition_cached.get((long)var0);
-		if (var1 != null) {
-			return var1;
+	int method4257(class214 var1, class214 var2) {
+		return var1.method4178() - var2.method4178();
+	}
+
+	public int compare(Object var1, Object var2) {
+		return this.method4257((class214)var1, (class214)var2);
+	}
+
+	public boolean equals(Object var1) {
+		return super.equals(var1);
+	}
+
+	@ObfuscatedName("ac")
+	@ObfuscatedSignature(
+		descriptor = "(Lnu;Ljava/lang/String;Ljava/lang/String;B)[Luk;",
+		garbageValue = "-64"
+	)
+	public static IndexedSprite[] method4261(AbstractArchive var0, String var1, String var2) {
+		if (!var0.isValidFileName(var1, var2)) {
+			return null;
 		} else {
-			byte[] var2 = StructComposition.StructDefinition_archive.takeFile(34, var0);
-			var1 = new StructComposition();
-			if (var2 != null) {
-				var1.decode(new Buffer(var2));
-			}
-
-			var1.postDecode();
-			StructComposition.StructDefinition_cached.put(var1, (long)var0);
-			return var1;
+			int var3 = var0.getGroupId(var1);
+			int var4 = var0.getFileId(var3, var2);
+			return class28.method424(var0, var3, var4);
 		}
 	}
 
-	@ObfuscatedName("by")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "(ILdc;ZB)I",
-		garbageValue = "61"
+		descriptor = "(B)V",
+		garbageValue = "-38"
 	)
-	static int method4284(int var0, Script var1, boolean var2) {
-		if (var0 == 7108) {
-			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = AttackOption.method2660() ? 1 : 0;
-			return 1;
-		} else {
-			return 2;
-		}
+	public static void method4262() {
+		DbTableType.DBTableType_cache.clear();
 	}
 }

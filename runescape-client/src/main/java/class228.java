@@ -1,144 +1,92 @@
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("iv")
-public class class228 {
-	@ObfuscatedName("ay")
+@ObfuscatedName("id")
+public abstract class class228 extends Rasterizer2D {
+	@ObfuscatedName("au")
+	boolean field2553;
+	@ObfuscatedName("ae")
+	boolean field2548;
+	@ObfuscatedName("az")
+	int[] field2552;
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "[Lek;"
+		descriptor = "Ljl;"
 	)
-	class127[] field2514;
-	@ObfuscatedName("ar")
-	@ObfuscatedGetter(
-		intValue = -2137547161
-	)
-	int field2515;
+	Clips field2547;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lty;I)V"
+		descriptor = "(Ljl;)V"
 	)
-	class228(Buffer var1, int var2) {
-		this.field2514 = new class127[var2];
-		this.field2515 = var1.readUnsignedByte();
+	class228(Clips var1) {
+		this.field2553 = false;
+		this.field2548 = false;
+		this.field2552 = Rasterizer3D.Rasterizer3D_colorPalette;
+		this.field2547 = var1;
+	}
 
-		for (int var3 = 0; var3 < this.field2514.length; ++var3) {
-			class127 var4 = new class127(this.field2515, var1, false);
-			this.field2514[var3] = var4;
+	@ObfuscatedName("au")
+	void method4482(int[] var1, int var2, int var3, float[] var4) {
+		Rasterizer2D.method9367(var1, var2, var3, var4);
+	}
+
+	@ObfuscatedName("at")
+	void method4485(int var1, int var2, int var3, int var4, int var5, int var6, float var7, float var8, float var9, int var10, int var11, int var12, byte var13, byte var14, byte var15, byte var16) {
+		var10 = method4512(var10, var13, var14, var15, var16);
+		var11 = method4512(var11, var13, var14, var15, var16);
+		var12 = method4512(var12, var13, var14, var15, var16);
+		this.vmethod5020(var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11, var12);
+	}
+
+	@ObfuscatedName("ac")
+	void method4481(int var1, int var2, int var3, int var4, int var5, int var6, float var7, float var8, float var9, int var10, byte var11, byte var12, byte var13, byte var14) {
+		int var15 = method4512(var10, var11, var12, var13, var14);
+		var10 = this.field2552[var15];
+		this.vmethod4972(var1, var2, var3, var4, var5, var6, var7, var8, var9, var10);
+	}
+
+	@ObfuscatedName("ai")
+	abstract void vmethod5020(int var1, int var2, int var3, int var4, int var5, int var6, float var7, float var8, float var9, int var10, int var11, int var12);
+
+	@ObfuscatedName("az")
+	abstract void vmethod4972(int var1, int var2, int var3, int var4, int var5, int var6, float var7, float var8, float var9, int var10);
+
+	@ObfuscatedName("ap")
+	abstract void vmethod4967(int var1, int var2, int var3, int var4, int var5, int var6, float var7, float var8, float var9, int var10, int var11, int var12, int var13, int var14, int var15, int var16, int var17, int var18, int var19, int var20, int var21, int var22);
+
+	@ObfuscatedName("aa")
+	abstract void vmethod4981(int var1, int var2, int var3, int var4, int var5, int var6, float var7, float var8, float var9, int var10, int var11, int var12, int var13, int var14, int var15, int var16, int var17, int var18, int var19, int var20, int var21, int var22);
+
+	@ObfuscatedName("ae")
+	static int method4512(int var0, byte var1, byte var2, byte var3, byte var4) {
+		int var5 = var0 >> 10 & 63;
+		int var6 = var0 >> 7 & 7;
+		int var7 = var0 & 127;
+		int var8 = var4 & 255;
+		if (var1 != -1) {
+			var5 += var8 * (var1 - var5) >> 7;
 		}
 
-		this.method4494();
-	}
-
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-5"
-	)
-	void method4494() {
-		class127[] var1 = this.field2514;
-
-		for (int var2 = 0; var2 < var1.length; ++var2) {
-			class127 var3 = var1[var2];
-			if (var3.field1505 >= 0) {
-				var3.field1500 = this.field2514[var3.field1505];
-			}
+		if (var2 != -1) {
+			var6 += var8 * (var2 - var6) >> 7;
 		}
 
-	}
-
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "(S)I",
-		garbageValue = "3739"
-	)
-	public int method4493() {
-		return this.field2514.length;
-	}
-
-	@ObfuscatedName("ar")
-	@ObfuscatedSignature(
-		descriptor = "(II)Lek;",
-		garbageValue = "1197556608"
-	)
-	class127 method4496(int var1) {
-		return var1 >= this.method4493() ? null : this.field2514[var1];
-	}
-
-	@ObfuscatedName("am")
-	@ObfuscatedSignature(
-		descriptor = "(B)[Lek;",
-		garbageValue = "104"
-	)
-	class127[] method4511() {
-		return this.field2514;
-	}
-
-	@ObfuscatedName("as")
-	@ObfuscatedSignature(
-		descriptor = "(Lfz;II)V",
-		garbageValue = "233488741"
-	)
-	void method4498(class137 var1, int var2) {
-		this.method4497(var1, var2, (boolean[])null, false);
-	}
-
-	@ObfuscatedName("aj")
-	@ObfuscatedSignature(
-		descriptor = "(Lfz;I[ZZI)V",
-		garbageValue = "2080039921"
-	)
-	void method4497(class137 var1, int var2, boolean[] var3, boolean var4) {
-		int var5 = var1.method3082();
-		int var6 = 0;
-		class127[] var7 = this.method4511();
-
-		for (int var8 = 0; var8 < var7.length; ++var8) {
-			class127 var9 = var7[var8];
-			if (var3 == null || var4 == var3[var6]) {
-				var1.method3059(var2, var9, var6, var5);
-			}
-
-			++var6;
+		if (var3 != -1) {
+			var7 += var8 * (var3 - var7) >> 7;
 		}
 
+		return (var5 << 10 | var6 << 7 | var7) & 65535;
 	}
 
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "(II)Lut;",
-		garbageValue = "1151848897"
-	)
-	public static PrivateChatMode method4513(int var0) {
-		PrivateChatMode[] var1 = new PrivateChatMode[]{PrivateChatMode.field5207, PrivateChatMode.field5206, PrivateChatMode.field5205};
-		PrivateChatMode[] var2 = var1;
-
-		for (int var3 = 0; var3 < var2.length; ++var3) {
-			PrivateChatMode var4 = var2[var3];
-			if (var0 == var4.field5208) {
-				return var4;
-			}
+	@ObfuscatedName("ao")
+	static final int method4484(int var0, int var1) {
+		var1 = (var0 & 127) * var1 >> 7;
+		if (var1 < 2) {
+			var1 = 2;
+		} else if (var1 > 126) {
+			var1 = 126;
 		}
 
-		return null;
-	}
-
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "-1771033339"
-	)
-	public static int method4505(int var0) {
-		return class304.field3378[var0];
-	}
-
-	@ObfuscatedName("av")
-	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "-1328962536"
-	)
-	public static int method4502(int var0, int var1) {
-		int var2 = var0 >>> 31;
-		return (var0 + var2) / var1 - var2;
+		return (var0 & 65408) + var1;
 	}
 }

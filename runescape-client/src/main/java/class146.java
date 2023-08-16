@@ -3,41 +3,47 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fr")
+@ObfuscatedName("fn")
 public class class146 {
-	@ObfuscatedName("aw")
-	@ObfuscatedGetter(
-		longValue = 2173419995924177459L
-	)
-	long field1661;
-	@ObfuscatedName("ay")
-	@ObfuscatedGetter(
-		intValue = 2093798089
-	)
-	int field1660;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ol")
 	@ObfuscatedSignature(
-		descriptor = "Lor;"
+		descriptor = "Lmi;"
 	)
-	IterableNodeDeque field1657;
+	@Export("mousedOverWidgetIf1")
+	static Widget mousedOverWidgetIf1;
+	@ObfuscatedName("au")
+	@ObfuscatedGetter(
+		longValue = 6751235396742420937L
+	)
+	long field1690;
+	@ObfuscatedName("ae")
+	@ObfuscatedGetter(
+		intValue = 128058307
+	)
+	public int field1682;
+	@ObfuscatedName("ao")
+	@ObfuscatedSignature(
+		descriptor = "Loc;"
+	)
+	IterableNodeDeque field1683;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lty;)V"
+		descriptor = "(Ltm;)V"
 	)
 	public class146(Buffer var1) {
-		this.field1660 = -1;
-		this.field1657 = new IterableNodeDeque();
-		this.method3155(var1);
+		this.field1682 = -1;
+		this.field1683 = new IterableNodeDeque();
+		this.method3130(var1);
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(Lty;I)V",
-		garbageValue = "-625880362"
+		descriptor = "(Ltm;B)V",
+		garbageValue = "-82"
 	)
-	void method3155(Buffer var1) {
-		this.field1661 = var1.readLong();
-		this.field1660 = var1.readInt();
+	void method3130(Buffer var1) {
+		this.field1690 = var1.readLong();
+		this.field1682 = var1.readInt();
 
 		for (int var2 = var1.readUnsignedByte(); var2 != 0; var2 = var1.readUnsignedByte()) {
 			Object var3;
@@ -77,87 +83,35 @@ public class class146 {
 				var3 = new class162(this);
 			}
 
-			((class143)var3).vmethod3412(var1);
-			this.field1657.addFirst((Node)var3);
+			((class143)var3).vmethod3337(var1);
+			this.field1683.addFirst((Node)var3);
 		}
 
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(Lfx;I)V",
-		garbageValue = "-955904177"
+		descriptor = "(Lfi;I)V",
+		garbageValue = "192399010"
 	)
-	public void method3159(ClanSettings var1) {
-		if (this.field1661 == var1.field1704 && this.field1660 == var1.field1707) {
-			for (class143 var2 = (class143)this.field1657.last(); var2 != null; var2 = (class143)this.field1657.previous()) {
-				var2.vmethod3419(var1);
+	public void method3124(ClanSettings var1) {
+		if (var1.field1728 == this.field1690 && this.field1682 == var1.field1745) {
+			for (class143 var2 = (class143)this.field1683.last(); var2 != null; var2 = (class143)this.field1683.previous()) {
+				var2.vmethod3339(var1);
 			}
 
-			++var1.field1707;
+			++var1.field1745;
 		} else {
 			throw new RuntimeException("");
 		}
 	}
 
-	@ObfuscatedName("nx")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;ZB)V",
-		garbageValue = "0"
+		descriptor = "(B)Lly;",
+		garbageValue = "-1"
 	)
-	@Export("findItemDefinitions")
-	static void findItemDefinitions(String var0, boolean var1) {
-		var0 = var0.toLowerCase();
-		short[] var2 = new short[16];
-		int var3 = 0;
-
-		for (int var4 = 0; var4 < class239.ItemDefinition_fileCount; ++var4) {
-			ItemComposition var9 = class125.ItemDefinition_get(var4);
-			if ((!var1 || var9.isTradable) && var9.noteTemplate == -1 && var9.name.toLowerCase().indexOf(var0) != -1) {
-				if (var3 >= 250) {
-					JagexCache.foundItemIdCount = -1;
-					MouseRecorder.foundItemIds = null;
-					return;
-				}
-
-				if (var3 >= var2.length) {
-					short[] var6 = new short[var2.length * 2];
-
-					for (int var7 = 0; var7 < var3; ++var7) {
-						var6[var7] = var2[var7];
-					}
-
-					var2 = var6;
-				}
-
-				var2[var3++] = (short)var4;
-			}
-		}
-
-		MouseRecorder.foundItemIds = var2;
-		ClanSettings.foundItemIndex = 0;
-		JagexCache.foundItemIdCount = var3;
-		String[] var8 = new String[JagexCache.foundItemIdCount];
-
-		for (int var5 = 0; var5 < JagexCache.foundItemIdCount; ++var5) {
-			var8[var5] = class125.ItemDefinition_get(var2[var5]).name;
-		}
-
-		class481.method8509(var8, MouseRecorder.foundItemIds);
-	}
-
-	@ObfuscatedName("ox")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-618232336"
-	)
-	static void method3154() {
-		for (int var0 = 0; var0 < Client.field654.size(); ++var0) {
-			if (class273.method5525((Integer)Client.field654.get(var0)) != 2) {
-				Client.field654.remove(var0);
-				--var0;
-			}
-		}
-
+	public static PacketBufferNode method3131() {
+		return PacketBufferNode.PacketBufferNode_packetBufferNodeCount == 0 ? new PacketBufferNode() : PacketBufferNode.PacketBufferNode_packetBufferNodes[--PacketBufferNode.PacketBufferNode_packetBufferNodeCount];
 	}
 }

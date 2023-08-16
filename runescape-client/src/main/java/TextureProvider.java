@@ -4,51 +4,51 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jb")
+@ObfuscatedName("jk")
 @Implements("TextureProvider")
 public class TextureProvider implements TextureLoader {
-	@ObfuscatedName("aw")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "[Lic;"
+		descriptor = "[Lif;"
 	)
 	@Export("textures")
 	Texture[] textures;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "Lod;"
+		descriptor = "Low;"
 	)
 	@Export("deque")
 	NodeDeque deque;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = 1753640669
+		intValue = -997416033
 	)
 	@Export("capacity")
 	int capacity;
-	@ObfuscatedName("am")
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		intValue = -600079117
+		intValue = -1854212709
 	)
 	@Export("remaining")
 	int remaining;
-	@ObfuscatedName("as")
+	@ObfuscatedName("ac")
 	@Export("brightness")
 	double brightness;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ai")
 	@ObfuscatedGetter(
-		intValue = 830792605
+		intValue = 1457440821
 	)
 	@Export("textureSize")
 	int textureSize;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "Lnd;"
+		descriptor = "Lnu;"
 	)
 	@Export("archive")
 	AbstractArchive archive;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lnd;Lnd;IDI)V"
+		descriptor = "(Lnu;Lnu;IDI)V"
 	)
 	public TextureProvider(AbstractArchive var1, AbstractArchive var2, int var3, double var4, int var6) {
 		this.deque = new NodeDeque();
@@ -75,10 +75,10 @@ public class TextureProvider implements TextureLoader {
 
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-243247454"
+		descriptor = "(B)I",
+		garbageValue = "1"
 	)
 	@Export("getLoadedPercentage")
 	public int getLoadedPercentage() {
@@ -97,7 +97,7 @@ public class TextureProvider implements TextureLoader {
 
 					for (int var7 = 0; var7 < var6.length; ++var7) {
 						int var8 = var6[var7];
-						if (this.archive.method6757(var8)) {
+						if (this.archive.method6698(var8)) {
 							++var2;
 						}
 					}
@@ -112,17 +112,17 @@ public class TextureProvider implements TextureLoader {
 		}
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@Export("setBrightness")
 	public void setBrightness(double var1) {
 		this.brightness = var1;
 		this.clear();
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(IB)[I",
-		garbageValue = "84"
+		descriptor = "(II)[I",
+		garbageValue = "-1284455059"
 	)
 	@Export("getTexturePixels")
 	public int[] getTexturePixels(int var1) {
@@ -152,39 +152,39 @@ public class TextureProvider implements TextureLoader {
 		return null;
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "(II)I",
-		garbageValue = "-1542791475"
+		garbageValue = "-1228029354"
 	)
 	@Export("getAverageTextureRGB")
 	public int getAverageTextureRGB(int var1) {
 		return this.textures[var1] != null ? this.textures[var1].averageRGB : 0;
 	}
 
-	@ObfuscatedName("as")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
 		descriptor = "(IB)Z",
-		garbageValue = "41"
+		garbageValue = "89"
 	)
-	public boolean vmethod5062(int var1) {
-		return this.textures[var1].field2455;
+	public boolean vmethod5036(int var1) {
+		return this.textures[var1].field2486;
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
 		descriptor = "(II)Z",
-		garbageValue = "1788191406"
+		garbageValue = "-1328264692"
 	)
 	@Export("isLowDetail")
 	public boolean isLowDetail(int var1) {
 		return this.textureSize == 64;
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-24"
+		descriptor = "(I)V",
+		garbageValue = "-1655781551"
 	)
 	@Export("clear")
 	public void clear() {
@@ -198,10 +198,10 @@ public class TextureProvider implements TextureLoader {
 		this.remaining = this.capacity;
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
 		descriptor = "(II)V",
-		garbageValue = "-1648148323"
+		garbageValue = "2107237619"
 	)
 	@Export("animate")
 	public void animate(int var1) {
@@ -213,5 +213,80 @@ public class TextureProvider implements TextureLoader {
 			}
 		}
 
+	}
+
+	@ObfuscatedName("at")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/CharSequence;B)[B",
+		garbageValue = "1"
+	)
+	public static byte[] method4752(CharSequence var0) {
+		int var1 = var0.length();
+		byte[] var2 = new byte[var1];
+
+		for (int var3 = 0; var3 < var1; ++var3) {
+			char var4 = var0.charAt(var3);
+			if (var4 > 0 && var4 < 128 || var4 >= 160 && var4 <= 255) {
+				var2[var3] = (byte)var4;
+			} else if (var4 == 8364) {
+				var2[var3] = -128;
+			} else if (var4 == 8218) {
+				var2[var3] = -126;
+			} else if (var4 == 402) {
+				var2[var3] = -125;
+			} else if (var4 == 8222) {
+				var2[var3] = -124;
+			} else if (var4 == 8230) {
+				var2[var3] = -123;
+			} else if (var4 == 8224) {
+				var2[var3] = -122;
+			} else if (var4 == 8225) {
+				var2[var3] = -121;
+			} else if (var4 == 710) {
+				var2[var3] = -120;
+			} else if (var4 == 8240) {
+				var2[var3] = -119;
+			} else if (var4 == 352) {
+				var2[var3] = -118;
+			} else if (var4 == 8249) {
+				var2[var3] = -117;
+			} else if (var4 == 338) {
+				var2[var3] = -116;
+			} else if (var4 == 381) {
+				var2[var3] = -114;
+			} else if (var4 == 8216) {
+				var2[var3] = -111;
+			} else if (var4 == 8217) {
+				var2[var3] = -110;
+			} else if (var4 == 8220) {
+				var2[var3] = -109;
+			} else if (var4 == 8221) {
+				var2[var3] = -108;
+			} else if (var4 == 8226) {
+				var2[var3] = -107;
+			} else if (var4 == 8211) {
+				var2[var3] = -106;
+			} else if (var4 == 8212) {
+				var2[var3] = -105;
+			} else if (var4 == 732) {
+				var2[var3] = -104;
+			} else if (var4 == 8482) {
+				var2[var3] = -103;
+			} else if (var4 == 353) {
+				var2[var3] = -102;
+			} else if (var4 == 8250) {
+				var2[var3] = -101;
+			} else if (var4 == 339) {
+				var2[var3] = -100;
+			} else if (var4 == 382) {
+				var2[var3] = -98;
+			} else if (var4 == 376) {
+				var2[var3] = -97;
+			} else {
+				var2[var3] = 63;
+			}
+		}
+
+		return var2;
 	}
 }

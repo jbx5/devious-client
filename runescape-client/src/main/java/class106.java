@@ -1,81 +1,68 @@
-import java.util.Iterator;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-@ObfuscatedName("ec")
-final class class106 implements class324 {
-	@ObfuscatedName("gc")
+@ObfuscatedName("ey")
+final class class106 implements class323 {
+	@ObfuscatedName("ae")
+	@Export("javaVersion")
+	public static String javaVersion;
+	@ObfuscatedName("fw")
 	@ObfuscatedSignature(
-		descriptor = "Lny;"
+		descriptor = "Lnk;"
 	)
-	static Archive field1358;
+	static Archive field1371;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lmt;"
+		descriptor = "Lmi;"
 	)
 	final Widget val$cc;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lmt;)V"
+		descriptor = "(Lmi;)V"
 	)
 	class106(Widget var1) {
 		this.val$cc = var1;
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
 		descriptor = "(B)V",
-		garbageValue = "-3"
+		garbageValue = "17"
 	)
-	public void vmethod6102() {
-		if (this.val$cc != null && this.val$cc.method6471().field3553 != null) {
+	public void vmethod6045() {
+		if (this.val$cc != null && this.val$cc.method6418().field3562 != null) {
 			ScriptEvent var1 = new ScriptEvent();
-			var1.method2290(this.val$cc);
-			var1.setArgs(this.val$cc.method6471().field3553);
-			ClientPacket.method5722().addFirst(var1);
+			var1.method2283(this.val$cc);
+			var1.setArgs(this.val$cc.method6418().field3562);
+			class30.method446().addFirst(var1);
 		}
 
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "16"
+		descriptor = "(IIIB)I",
+		garbageValue = "-47"
 	)
-	static void method2690() {
-		Iterator var0 = Messages.Messages_hashTable.iterator();
-
-		while (var0.hasNext()) {
-			Message var1 = (Message)var0.next();
-			var1.clearIsFromFriend();
+	static final int method2692(int var0, int var1, int var2) {
+		if (var2 > 179) {
+			var1 /= 2;
 		}
 
-	}
-
-	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "(Lorg/json/JSONObject;Ljava/lang/String;I)[F",
-		garbageValue = "1061757144"
-	)
-	static float[] method2689(JSONObject var0, String var1) throws JSONException {
-		float[] var2 = new float[4];
-
-		try {
-			JSONArray var3 = var0.getJSONArray(var1);
-			var2[0] = (float)var3.optDouble(0, 0.0D);
-			var2[1] = (float)var3.optDouble(1, 0.0D);
-			var2[2] = (float)var3.optDouble(2, 1.0D);
-			var2[3] = (float)var3.optDouble(3, 1.0D);
-		} catch (JSONException var4) {
-			var2[0] = 0.0F;
-			var2[1] = 0.0F;
-			var2[2] = 1.0F;
-			var2[3] = 1.0F;
+		if (var2 > 192) {
+			var1 /= 2;
 		}
 
-		return var2;
+		if (var2 > 217) {
+			var1 /= 2;
+		}
+
+		if (var2 > 243) {
+			var1 /= 2;
+		}
+
+		int var3 = (var1 / 32 << 7) + (var0 / 4 << 10) + var2 / 2;
+		return var3;
 	}
 }

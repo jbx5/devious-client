@@ -1,64 +1,58 @@
+import java.util.ArrayList;
+import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dc")
+@ObfuscatedName("dh")
 @Implements("Script")
 public class Script extends DualNode {
-	@ObfuscatedName("aw")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "Lld;"
+		descriptor = "Lle;"
 	)
 	@Export("Script_cached")
 	static EvictingDualNodeHashTable Script_cached;
-	@ObfuscatedName("an")
-	@ObfuscatedGetter(
-		intValue = 843151793
-	)
-	@Export("loginBoxCenter")
-	static int loginBoxCenter;
-	@ObfuscatedName("gi")
-	static String field1003;
-	@ObfuscatedName("ay")
-	String field993;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ae")
+	String field1014;
+	@ObfuscatedName("ao")
 	@Export("opcodes")
 	int[] opcodes;
-	@ObfuscatedName("am")
+	@ObfuscatedName("at")
 	@Export("intOperands")
 	int[] intOperands;
-	@ObfuscatedName("as")
+	@ObfuscatedName("ac")
 	@Export("stringOperands")
 	String[] stringOperands;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ai")
 	@ObfuscatedGetter(
-		intValue = 1850120873
+		intValue = -1597120201
 	)
 	@Export("localIntCount")
 	int localIntCount;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("az")
 	@ObfuscatedGetter(
-		intValue = -1710224679
+		intValue = 1421158661
 	)
 	@Export("localStringCount")
 	int localStringCount;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = -1207485643
+		intValue = -395613867
 	)
 	@Export("intArgumentCount")
 	int intArgumentCount;
-	@ObfuscatedName("av")
+	@ObfuscatedName("aa")
 	@ObfuscatedGetter(
-		intValue = -1546918135
+		intValue = 942118187
 	)
 	@Export("stringArgumentCount")
 	int stringArgumentCount;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "[Lsa;"
+		descriptor = "[Lsf;"
 	)
 	@Export("switches")
 	IterableNodeHashTable[] switches;
@@ -70,56 +64,59 @@ public class Script extends DualNode {
 	Script() {
 	}
 
-	@ObfuscatedName("as")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(II)[Lsa;",
-		garbageValue = "1100527320"
+		descriptor = "(II)[Lsf;",
+		garbageValue = "-723912201"
 	)
 	@Export("newIterableNodeHashTable")
 	IterableNodeHashTable[] newIterableNodeHashTable(int var1) {
 		return new IterableNodeHashTable[var1];
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "(CI)Z",
-		garbageValue = "-1835095730"
+		descriptor = "(IIB)V",
+		garbageValue = "0"
 	)
-	public static boolean method2169(char var0) {
-		if (var0 >= ' ' && var0 < 127 || var0 > 127 && var0 < 160 || var0 > 160 && var0 <= 255) {
-			return true;
+	public static void method2180(int var0, int var1) {
+		class270.method5491(var0, var1, 0, 0);
+		class305.field3405.clear();
+		class305.field3406.clear();
+		if (class305.musicSongs.isEmpty() || var0 == 0 && var1 == 0) {
+			ByteArrayPool.method7671();
 		} else {
-			if (var0 != 0) {
-				char[] var1 = class385.cp1252AsciiExtension;
+			class305.field3406.add(new DelayFadeTask((SongTask)null, class305.musicPlayerStatus));
+			class305.field3406.add(new FadeOutTask((SongTask)null, 0, false, class305.field3409));
+			ArrayList var3 = new ArrayList();
+			Iterator var4 = class305.musicSongs.iterator();
 
-				for (int var2 = 0; var2 < var1.length; ++var2) {
-					char var3 = var1[var2];
-					if (var0 == var3) {
-						return true;
-					}
-				}
+			while (var4.hasNext()) {
+				MusicSong var5 = (MusicSong)var4.next();
+				var3.add(var5);
 			}
 
-			return false;
+			class305.field3406.add(new class401((SongTask)null, var3));
 		}
+
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("hf")
 	@ObfuscatedSignature(
-		descriptor = "(I)Luu;",
-		garbageValue = "-2099566519"
+		descriptor = "(II)V",
+		garbageValue = "-69260226"
 	)
-	static IndexedSprite method2172() {
-		IndexedSprite var0 = new IndexedSprite();
-		var0.width = class528.SpriteBuffer_spriteWidth;
-		var0.height = class528.SpriteBuffer_spriteHeight;
-		var0.xOffset = class492.SpriteBuffer_xOffsets[0];
-		var0.yOffset = class134.SpriteBuffer_yOffsets[0];
-		var0.subWidth = class172.SpriteBuffer_spriteWidths[0];
-		var0.subHeight = class528.SpriteBuffer_spriteHeights[0];
-		var0.palette = class528.SpriteBuffer_spritePalette;
-		var0.pixels = ArchiveDiskAction.SpriteBuffer_pixels[0];
-		DbTableType.method8985();
-		return var0;
+	@Export("forceDisconnect")
+	static final void forceDisconnect(int var0) {
+		ArchiveDisk.logOut();
+		switch(var0) {
+		case 1:
+			class463.method8342();
+			break;
+		case 2:
+			PcmPlayer.method838(24);
+			class318.setLoginResponseString("The game servers are currently being updated.", "Please wait a few minutes and try again.", "");
+		}
+
 	}
 }
