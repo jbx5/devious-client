@@ -207,7 +207,7 @@ public class FriendSystem {
 				} else if (this.isFriended(var2, false)) {
 					UserComparator8.method2870("Please remove " + var1 + " from your friend list first");
 				} else {
-					PacketBufferNode var3 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3162, Client.packetWriter.isaacCipher);
+					PacketBufferNode var3 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.FRIEND_ADDUSER, Client.packetWriter.isaacCipher);
 					var3.packetBuffer.writeByte(AbstractSocket.stringCp1252NullTerminatedByteSize(var1));
 					var3.packetBuffer.writeStringCp1252NullTerminated(var1);
 					Client.packetWriter.addNode(var3);
@@ -238,7 +238,7 @@ public class FriendSystem {
 			if (var2.hasCleanName()) {
 				if (this.friendsList.removeByUsername(var2)) {
 					class113.method2845();
-					PacketBufferNode var3 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3142, Client.packetWriter.isaacCipher);
+					PacketBufferNode var3 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.FRIEND_DELUSER, Client.packetWriter.isaacCipher);
 					var3.packetBuffer.writeByte(AbstractSocket.stringCp1252NullTerminatedByteSize(var1));
 					var3.packetBuffer.writeStringCp1252NullTerminated(var1);
 					Client.packetWriter.addNode(var3);
@@ -277,7 +277,7 @@ public class FriendSystem {
 				if (this.ignoreList.removeByUsername(var3)) {
 					class113.method2845();
 					if (var2) {
-						PacketBufferNode var4 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3164, Client.packetWriter.isaacCipher);
+						PacketBufferNode var4 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.IGNORE_DELUSER, Client.packetWriter.isaacCipher);
 						var4.packetBuffer.writeByte(AbstractSocket.stringCp1252NullTerminatedByteSize(var1));
 						var4.packetBuffer.writeStringCp1252NullTerminated(var1);
 						Client.packetWriter.addNode(var4);

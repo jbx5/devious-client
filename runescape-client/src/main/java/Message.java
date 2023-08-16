@@ -204,7 +204,7 @@ public class Message extends DualNode {
 		garbageValue = "-103"
 	)
 	static void method1217() {
-		PacketBufferNode var0 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3197, Client.packetWriter.isaacCipher);
+		PacketBufferNode var0 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.EVENT_WINDOW_SETTING, Client.packetWriter.isaacCipher);
 		var0.packetBuffer.writeByte(class218.getWindowedMode());
 		var0.packetBuffer.writeShort(class113.canvasWidth);
 		var0.packetBuffer.writeShort(class177.canvasHeight);

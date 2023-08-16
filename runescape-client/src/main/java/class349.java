@@ -44,7 +44,7 @@ public class class349 {
 					}
 
 					int var7 = var1.readBits(1);
-					int var11 = Client.field707[var1.readBits(3)];
+					int var11 = Client.defaultRotations[var1.readBits(3)];
 					if (var5) {
 						var6.orientation = var6.rotation = var11;
 					}

@@ -112,7 +112,7 @@ public class IgnoreList extends UserList {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3196, Client.packetWriter.isaacCipher);
+				var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.OPNPC1, Client.packetWriter.isaacCipher);
 				var10.packetBuffer.writeByteAdd(Client.field674.method4120(82) ? 1 : 0);
 				var10.packetBuffer.writeShortAdd(var3);
 				Client.packetWriter.addNode(var10);
@@ -128,7 +128,7 @@ public class IgnoreList extends UserList {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3166, Client.packetWriter.isaacCipher);
+				var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.OPNPC4, Client.packetWriter.isaacCipher);
 				var10.packetBuffer.writeByteAdd(Client.field674.method4120(82) ? 1 : 0);
 				var10.packetBuffer.writeShort(var3);
 				Client.packetWriter.addNode(var10);
@@ -145,7 +145,7 @@ public class IgnoreList extends UserList {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3158, Client.packetWriter.isaacCipher);
+				var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.OPPLAYER2, Client.packetWriter.isaacCipher);
 				var10.packetBuffer.writeShortAddLE(var3);
 				var10.packetBuffer.writeByte(Client.field674.method4120(82) ? 1 : 0);
 				Client.packetWriter.addNode(var10);
@@ -161,7 +161,7 @@ public class IgnoreList extends UserList {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3173, Client.packetWriter.isaacCipher);
+				var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.OPPLAYER4, Client.packetWriter.isaacCipher);
 				var10.packetBuffer.writeShortAdd(var3);
 				var10.packetBuffer.writeByteNeg(Client.field674.method4120(82) ? 1 : 0);
 				Client.packetWriter.addNode(var10);
@@ -184,7 +184,7 @@ public class IgnoreList extends UserList {
 			Client.mouseCrossState = 0;
 			Client.destinationX = var0;
 			Client.destinationY = var1;
-			var16 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3157, Client.packetWriter.isaacCipher);
+			var16 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.OPOBJ2, Client.packetWriter.isaacCipher);
 			var16.packetBuffer.writeShort(class47.baseY * 64 + var1);
 			var16.packetBuffer.writeShortAddLE(UrlRequester.baseX * 64 + var0);
 			var16.packetBuffer.writeByteAdd(Client.field674.method4120(82) ? 1 : 0);
@@ -219,7 +219,7 @@ public class IgnoreList extends UserList {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3152, Client.packetWriter.isaacCipher);
+				var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.OPNPC5, Client.packetWriter.isaacCipher);
 				var10.packetBuffer.writeByteSub(Client.field674.method4120(82) ? 1 : 0);
 				var10.packetBuffer.writeShortLE(var3);
 				Client.packetWriter.addNode(var10);
@@ -250,7 +250,7 @@ public class IgnoreList extends UserList {
 			Client.mouseCrossY = var8;
 			Client.mouseCrossColor = 2;
 			Client.mouseCrossState = 0;
-			var16 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3171, Client.packetWriter.isaacCipher);
+			var16 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.OPLOCE, Client.packetWriter.isaacCipher);
 			var16.packetBuffer.writeShortAddLE(var3);
 			Client.packetWriter.addNode(var16);
 		}
@@ -264,7 +264,7 @@ public class IgnoreList extends UserList {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3160, Client.packetWriter.isaacCipher);
+				var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.OPNPC2, Client.packetWriter.isaacCipher);
 				var10.packetBuffer.writeByte(Client.field674.method4120(82) ? 1 : 0);
 				var10.packetBuffer.writeShortLE(var3);
 				Client.packetWriter.addNode(var10);
@@ -278,7 +278,7 @@ public class IgnoreList extends UserList {
 			Client.mouseCrossState = 0;
 			Client.destinationX = var0;
 			Client.destinationY = var1;
-			var16 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3143, Client.packetWriter.isaacCipher);
+			var16 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.OPLOC5, Client.packetWriter.isaacCipher);
 			var16.packetBuffer.writeShortAddLE(class47.baseY * 64 + var1);
 			var16.packetBuffer.writeShortLE(UrlRequester.baseX * 64 + var0);
 			var16.packetBuffer.writeByte(Client.field674.method4120(82) ? 1 : 0);
@@ -299,7 +299,7 @@ public class IgnoreList extends UserList {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3185, Client.packetWriter.isaacCipher);
+				var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.OPNPCT, Client.packetWriter.isaacCipher);
 				var10.packetBuffer.writeByteSub(Client.field674.method4120(82) ? 1 : 0);
 				var10.packetBuffer.writeShortAdd(var3);
 				var10.packetBuffer.writeShortLE(Client.selectedSpellItemId);
@@ -316,7 +316,7 @@ public class IgnoreList extends UserList {
 			Client.mouseCrossState = 0;
 			Client.destinationX = var0;
 			Client.destinationY = var1;
-			var16 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3135, Client.packetWriter.isaacCipher);
+			var16 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.OPOBJ1, Client.packetWriter.isaacCipher);
 			var16.packetBuffer.writeShortAdd(var3);
 			var16.packetBuffer.writeShortAddLE(UrlRequester.baseX * 64 + var0);
 			var16.packetBuffer.writeByteAdd(Client.field674.method4120(82) ? 1 : 0);
@@ -342,7 +342,7 @@ public class IgnoreList extends UserList {
 				}
 
 				if (var12) {
-					var11 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3122, Client.packetWriter.isaacCipher);
+					var11 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.WIDGET_TYPE, Client.packetWriter.isaacCipher);
 					var11.packetBuffer.writeInt(var1);
 					Client.packetWriter.addNode(var11);
 				}
@@ -358,7 +358,7 @@ public class IgnoreList extends UserList {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3188, Client.packetWriter.isaacCipher);
+				var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.OPNPC3, Client.packetWriter.isaacCipher);
 				var10.packetBuffer.writeShortAddLE(var3);
 				var10.packetBuffer.writeByte(Client.field674.method4120(82) ? 1 : 0);
 				Client.packetWriter.addNode(var10);
@@ -374,7 +374,7 @@ public class IgnoreList extends UserList {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3155, Client.packetWriter.isaacCipher);
+				var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.OPPLAYER6, Client.packetWriter.isaacCipher);
 				var10.packetBuffer.writeShortAdd(var3);
 				var10.packetBuffer.writeByteSub(Client.field674.method4120(82) ? 1 : 0);
 				Client.packetWriter.addNode(var10);
@@ -406,7 +406,7 @@ public class IgnoreList extends UserList {
 			Client.mouseCrossState = 0;
 			Client.destinationX = var0;
 			Client.destinationY = var1;
-			var16 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3169, Client.packetWriter.isaacCipher);
+			var16 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.OPLOCT, Client.packetWriter.isaacCipher);
 			var16.packetBuffer.writeShortAddLE(var3);
 			var16.packetBuffer.writeShortAdd(UrlRequester.baseX * 64 + var0);
 			var16.packetBuffer.writeShort(class47.baseY * 64 + var1);
@@ -428,7 +428,7 @@ public class IgnoreList extends UserList {
 			Client.mouseCrossState = 0;
 			Client.destinationX = var0;
 			Client.destinationY = var1;
-			var16 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3180, Client.packetWriter.isaacCipher);
+			var16 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.OPLOC4, Client.packetWriter.isaacCipher);
 			var16.packetBuffer.writeByte(Client.field674.method4120(82) ? 1 : 0);
 			var16.packetBuffer.writeShortAdd(class47.baseY * 64 + var1);
 			var16.packetBuffer.writeShort(var3);
@@ -443,7 +443,7 @@ public class IgnoreList extends UserList {
 			Client.mouseCrossState = 0;
 			Client.destinationX = var0;
 			Client.destinationY = var1;
-			var16 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3151, Client.packetWriter.isaacCipher);
+			var16 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.OPOBJ4, Client.packetWriter.isaacCipher);
 			var16.packetBuffer.writeByte(Client.field674.method4120(82) ? 1 : 0);
 			var16.packetBuffer.writeShortLE(UrlRequester.baseX * 64 + var0);
 			var16.packetBuffer.writeShortAdd(class47.baseY * 64 + var1);
@@ -466,7 +466,7 @@ public class IgnoreList extends UserList {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3165, Client.packetWriter.isaacCipher);
+				var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.OPPLAYERT, Client.packetWriter.isaacCipher);
 				var10.packetBuffer.writeShortAddLE(Client.selectedSpellChildIndex);
 				var10.packetBuffer.writeShortLE(Client.selectedSpellItemId);
 				var10.packetBuffer.writeIntIME(ModeWhere.selectedSpellWidget);
@@ -479,7 +479,7 @@ public class IgnoreList extends UserList {
 		int var13;
 		Widget var17;
 		if (var2 == 28) {
-			var16 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3122, Client.packetWriter.isaacCipher);
+			var16 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.WIDGET_TYPE, Client.packetWriter.isaacCipher);
 			var16.packetBuffer.writeInt(var1);
 			Client.packetWriter.addNode(var16);
 			var17 = class92.getWidget(var1);
@@ -499,7 +499,7 @@ public class IgnoreList extends UserList {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3120, Client.packetWriter.isaacCipher);
+				var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.OPPLAYER5, Client.packetWriter.isaacCipher);
 				var10.packetBuffer.writeShortAdd(var3);
 				var10.packetBuffer.writeByteSub(Client.field674.method4120(82) ? 1 : 0);
 				Client.packetWriter.addNode(var10);
@@ -513,7 +513,7 @@ public class IgnoreList extends UserList {
 			Client.mouseCrossState = 0;
 			Client.destinationX = var0;
 			Client.destinationY = var1;
-			var16 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3110, Client.packetWriter.isaacCipher);
+			var16 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.OPLOC2, Client.packetWriter.isaacCipher);
 			var16.packetBuffer.writeShort(UrlRequester.baseX * 64 + var0);
 			var16.packetBuffer.writeShort(class47.baseY * 64 + var1);
 			var16.packetBuffer.writeShortLE(var3);
@@ -522,7 +522,7 @@ public class IgnoreList extends UserList {
 		}
 
 		if (var2 == 29) {
-			var16 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3122, Client.packetWriter.isaacCipher);
+			var16 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.WIDGET_TYPE, Client.packetWriter.isaacCipher);
 			var16.packetBuffer.writeInt(var1);
 			Client.packetWriter.addNode(var16);
 			var17 = class92.getWidget(var1);
@@ -548,7 +548,7 @@ public class IgnoreList extends UserList {
 				}
 
 				if (var18 != null) {
-					var11 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3172, Client.packetWriter.isaacCipher);
+					var11 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.OPNPCE, Client.packetWriter.isaacCipher);
 					var11.packetBuffer.writeShortAdd(var18.id);
 					Client.packetWriter.addNode(var11);
 				}
@@ -564,7 +564,7 @@ public class IgnoreList extends UserList {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3117, Client.packetWriter.isaacCipher);
+				var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.OPPLAYER1, Client.packetWriter.isaacCipher);
 				var10.packetBuffer.writeShortAddLE(var3);
 				var10.packetBuffer.writeByteSub(Client.field674.method4120(82) ? 1 : 0);
 				Client.packetWriter.addNode(var10);
@@ -576,7 +576,7 @@ public class IgnoreList extends UserList {
 			Client.mouseCrossY = var8;
 			Client.mouseCrossColor = 2;
 			Client.mouseCrossState = 0;
-			var16 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3150, Client.packetWriter.isaacCipher);
+			var16 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.OPOBJE, Client.packetWriter.isaacCipher);
 			var16.packetBuffer.writeShort(UrlRequester.baseX * 64 + var0);
 			var16.packetBuffer.writeShortAddLE(var3);
 			var16.packetBuffer.writeShortLE(class47.baseY * 64 + var1);
@@ -592,7 +592,7 @@ public class IgnoreList extends UserList {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3170, Client.packetWriter.isaacCipher);
+				var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.OPPLAYER3, Client.packetWriter.isaacCipher);
 				var10.packetBuffer.writeShortLE(var3);
 				var10.packetBuffer.writeByte(Client.field674.method4120(82) ? 1 : 0);
 				Client.packetWriter.addNode(var10);
@@ -606,7 +606,7 @@ public class IgnoreList extends UserList {
 			Client.mouseCrossState = 0;
 			Client.destinationX = var0;
 			Client.destinationY = var1;
-			var16 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3178, Client.packetWriter.isaacCipher);
+			var16 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.OPOBJ5, Client.packetWriter.isaacCipher);
 			var16.packetBuffer.writeShortAddLE(UrlRequester.baseX * 64 + var0);
 			var16.packetBuffer.writeShort(class47.baseY * 64 + var1);
 			var16.packetBuffer.writeByteAdd(Client.field674.method4120(82) ? 1 : 0);
@@ -626,7 +626,7 @@ public class IgnoreList extends UserList {
 					WorldMapSection1.runScriptEvent(var19);
 				}
 
-				var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3121, Client.packetWriter.isaacCipher);
+				var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.IF_BUTTONT, Client.packetWriter.isaacCipher);
 				var10.packetBuffer.writeShortAdd(Client.selectedSpellItemId);
 				var10.packetBuffer.writeShort(var0);
 				var10.packetBuffer.writeShortAddLE(Client.selectedSpellChildIndex);
@@ -644,7 +644,7 @@ public class IgnoreList extends UserList {
 			Client.mouseCrossState = 0;
 			Client.destinationX = var0;
 			Client.destinationY = var1;
-			var16 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3146, Client.packetWriter.isaacCipher);
+			var16 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.OPLOC3, Client.packetWriter.isaacCipher);
 			var16.packetBuffer.writeShort(var3);
 			var16.packetBuffer.writeShortAddLE(UrlRequester.baseX * 64 + var0);
 			var16.packetBuffer.writeByteAdd(Client.field674.method4120(82) ? 1 : 0);
@@ -661,7 +661,7 @@ public class IgnoreList extends UserList {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3206, Client.packetWriter.isaacCipher);
+				var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.OPPLAYER7, Client.packetWriter.isaacCipher);
 				var10.packetBuffer.writeShortLE(var3);
 				var10.packetBuffer.writeByte(Client.field674.method4120(82) ? 1 : 0);
 				Client.packetWriter.addNode(var10);
@@ -694,7 +694,7 @@ public class IgnoreList extends UserList {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var16 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3199, Client.packetWriter.isaacCipher);
+				var16 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.OPOBJT, Client.packetWriter.isaacCipher);
 				var16.packetBuffer.writeShortLE(UrlRequester.baseX * 64 + var0);
 				var16.packetBuffer.writeByteAdd(Client.field674.method4120(82) ? 1 : 0);
 				var16.packetBuffer.writeShortAdd(Client.selectedSpellItemId);
@@ -712,7 +712,7 @@ public class IgnoreList extends UserList {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var16 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3141, Client.packetWriter.isaacCipher);
+				var16 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.OPOBJ3, Client.packetWriter.isaacCipher);
 				var16.packetBuffer.writeShortLE(class47.baseY * 64 + var1);
 				var16.packetBuffer.writeByteAdd(Client.field674.method4120(82) ? 1 : 0);
 				var16.packetBuffer.writeShortAddLE(var3);
@@ -727,7 +727,7 @@ public class IgnoreList extends UserList {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var16 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3186, Client.packetWriter.isaacCipher);
+				var16 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.OPLOC1, Client.packetWriter.isaacCipher);
 				var16.packetBuffer.writeShort(UrlRequester.baseX * 64 + var0);
 				var16.packetBuffer.writeShortLE(class47.baseY * 64 + var1);
 				var16.packetBuffer.writeByte(Client.field674.method4120(82) ? 1 : 0);
@@ -744,7 +744,7 @@ public class IgnoreList extends UserList {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3202, Client.packetWriter.isaacCipher);
+					var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.OPPLAYER8, Client.packetWriter.isaacCipher);
 					var10.packetBuffer.writeByte(Client.field674.method4120(82) ? 1 : 0);
 					var10.packetBuffer.writeShortAdd(var3);
 					Client.packetWriter.addNode(var10);

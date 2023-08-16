@@ -98,7 +98,7 @@ public class UserComparator9 extends AbstractUserComparator {
 						if (var11 != -1 && (!InvDefinition.ItemDefinition_get(var11).isMembersOnly || Client.isMembersWorld)) {
 							for (var12 = 0; var12 < var10.itemIds.length; ++var12) {
 								if (var11 + 1 == var10.itemIds[var12]) {
-									var7 += var10.field3778[var12];
+									var7 += var10.itemQuantities[var12];
 								}
 							}
 						}

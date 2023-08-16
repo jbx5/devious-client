@@ -145,7 +145,7 @@ public class ArchiveDiskActionHandler implements Runnable {
 			}
 
 			Client.tradeChatMode = Interpreter.Interpreter_intStack[SoundCache.Interpreter_intStackSize + 2];
-			PacketBufferNode var13 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3187, Client.packetWriter.isaacCipher);
+			PacketBufferNode var13 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.CHAT_SETFILTER, Client.packetWriter.isaacCipher);
 			var13.packetBuffer.writeByte(Client.publicChatMode);
 			var13.packetBuffer.writeByte(class128.privateChatMode.field5246);
 			var13.packetBuffer.writeByte(Client.tradeChatMode);
@@ -161,7 +161,7 @@ public class ArchiveDiskActionHandler implements Runnable {
 				SoundCache.Interpreter_intStackSize -= 2;
 				var7 = Interpreter.Interpreter_intStack[SoundCache.Interpreter_intStackSize];
 				var9 = Interpreter.Interpreter_intStack[SoundCache.Interpreter_intStackSize + 1];
-				var6 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3191, Client.packetWriter.isaacCipher);
+				var6 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.CHAT_SENDABUSEREPORT, Client.packetWriter.isaacCipher);
 				var6.packetBuffer.writeByte(AbstractSocket.stringCp1252NullTerminatedByteSize(var8) + 2);
 				var6.packetBuffer.writeStringCp1252NullTerminated(var8);
 				var6.packetBuffer.writeByte(var7 - 1);
@@ -235,7 +235,7 @@ public class ArchiveDiskActionHandler implements Runnable {
 							class137.Interpreter_stringStackSize -= 2;
 							var8 = Interpreter.Interpreter_stringStack[class137.Interpreter_stringStackSize];
 							String var11 = Interpreter.Interpreter_stringStack[class137.Interpreter_stringStackSize + 1];
-							var12 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3192, Client.packetWriter.isaacCipher);
+							var12 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.CHAT_SENDPRIVATE, Client.packetWriter.isaacCipher);
 							var12.packetBuffer.writeShort(0);
 							int var10 = var12.packetBuffer.offset;
 							var12.packetBuffer.writeStringCp1252NullTerminated(var8);

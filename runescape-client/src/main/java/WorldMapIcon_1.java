@@ -136,7 +136,7 @@ public class WorldMapIcon_1 extends AbstractWorldMapIcon {
 		garbageValue = "-16"
 	)
 	static final void method5076() {
-		PacketBufferNode var0 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3115, Client.packetWriter.isaacCipher);
+		PacketBufferNode var0 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.CLOSE_MODAL, Client.packetWriter.isaacCipher);
 		Client.packetWriter.addNode(var0);
 		Interpreter.field887 = true;
 

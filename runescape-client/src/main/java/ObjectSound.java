@@ -342,7 +342,7 @@ public final class ObjectSound extends Node {
 		garbageValue = "-24646"
 	)
 	static void method1931() {
-		Client.packetWriter.addNode(ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3182, Client.packetWriter.isaacCipher));
+		Client.packetWriter.addNode(ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.FREECAM_EXIT, Client.packetWriter.isaacCipher));
 		Client.oculusOrbState = 0;
 	}
 }

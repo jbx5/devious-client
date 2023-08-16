@@ -250,7 +250,7 @@ public class class466 {
 					var15 = HealthBarUpdate.method2412(var7);
 				}
 
-				PacketBufferNode var13 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3201, Client.packetWriter.isaacCipher);
+				PacketBufferNode var13 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.RESUME_COUNTDIALOG, Client.packetWriter.isaacCipher);
 				var13.packetBuffer.writeInt(var15);
 				Client.packetWriter.addNode(var13);
 				return 1;
@@ -258,14 +258,14 @@ public class class466 {
 				PacketBufferNode var11;
 				if (var0 == ScriptOpcodes.RESUME_NAMEDIALOG) {
 					var7 = Interpreter.Interpreter_stringStack[--class137.Interpreter_stringStackSize];
-					var11 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3109, Client.packetWriter.isaacCipher);
+					var11 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.RESUME_NAMEDIALOG, Client.packetWriter.isaacCipher);
 					var11.packetBuffer.writeByte(var7.length() + 1);
 					var11.packetBuffer.writeStringCp1252NullTerminated(var7);
 					Client.packetWriter.addNode(var11);
 					return 1;
 				} else if (var0 == ScriptOpcodes.RESUME_STRINGDIALOG) {
 					var7 = Interpreter.Interpreter_stringStack[--class137.Interpreter_stringStackSize];
-					var11 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3205, Client.packetWriter.isaacCipher);
+					var11 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.RESUME_STRINGDIALOG, Client.packetWriter.isaacCipher);
 					var11.packetBuffer.writeByte(var7.length() + 1);
 					var11.packetBuffer.writeStringCp1252NullTerminated(var7);
 					Client.packetWriter.addNode(var11);
@@ -309,7 +309,7 @@ public class class466 {
 						return 1;
 					} else if (var0 == ScriptOpcodes.RESUME_OBJDIALOG) {
 						var3 = Interpreter.Interpreter_intStack[--SoundCache.Interpreter_intStackSize];
-						var11 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3198, Client.packetWriter.isaacCipher);
+						var11 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.RESUME_OBJDIALOG, Client.packetWriter.isaacCipher);
 						var11.packetBuffer.writeShort(var3);
 						Client.packetWriter.addNode(var11);
 						return 1;
@@ -643,7 +643,7 @@ public class class466 {
 	)
 	@Export("resumePauseWidget")
 	static void resumePauseWidget(int var0, int var1) {
-		PacketBufferNode var2 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3163, Client.packetWriter.isaacCipher);
+		PacketBufferNode var2 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.RESUME_PAUSEBUTTON, Client.packetWriter.isaacCipher);
 		var2.packetBuffer.writeIntLE(var0);
 		var2.packetBuffer.writeShortLE(var1);
 		Client.packetWriter.addNode(var2);

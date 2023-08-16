@@ -75,7 +75,7 @@ public class class47 {
 				if (var7) {
 					PacketBufferNode var10;
 					if (var0 == 1) {
-						var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3133, Client.packetWriter.isaacCipher);
+						var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.IF_BUTTON1, Client.packetWriter.isaacCipher);
 						var10.packetBuffer.writeInt(var1);
 						var10.packetBuffer.writeShort(var2);
 						var10.packetBuffer.writeShort(var3);
@@ -83,7 +83,7 @@ public class class47 {
 					}
 
 					if (var0 == 2) {
-						var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3123, Client.packetWriter.isaacCipher);
+						var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.IF_BUTTON2, Client.packetWriter.isaacCipher);
 						var10.packetBuffer.writeInt(var1);
 						var10.packetBuffer.writeShort(var2);
 						var10.packetBuffer.writeShort(var3);
@@ -91,7 +91,7 @@ public class class47 {
 					}
 
 					if (var0 == 3) {
-						var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3175, Client.packetWriter.isaacCipher);
+						var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.IF_BUTTON3, Client.packetWriter.isaacCipher);
 						var10.packetBuffer.writeInt(var1);
 						var10.packetBuffer.writeShort(var2);
 						var10.packetBuffer.writeShort(var3);
@@ -99,7 +99,7 @@ public class class47 {
 					}
 
 					if (var0 == 4) {
-						var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3140, Client.packetWriter.isaacCipher);
+						var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.IF_BUTTON4, Client.packetWriter.isaacCipher);
 						var10.packetBuffer.writeInt(var1);
 						var10.packetBuffer.writeShort(var2);
 						var10.packetBuffer.writeShort(var3);
@@ -107,7 +107,7 @@ public class class47 {
 					}
 
 					if (var0 == 5) {
-						var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3156, Client.packetWriter.isaacCipher);
+						var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.IF_BUTTON5, Client.packetWriter.isaacCipher);
 						var10.packetBuffer.writeInt(var1);
 						var10.packetBuffer.writeShort(var2);
 						var10.packetBuffer.writeShort(var3);
@@ -115,7 +115,7 @@ public class class47 {
 					}
 
 					if (var0 == 6) {
-						var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3112, Client.packetWriter.isaacCipher);
+						var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.IF_BUTTON6, Client.packetWriter.isaacCipher);
 						var10.packetBuffer.writeInt(var1);
 						var10.packetBuffer.writeShort(var2);
 						var10.packetBuffer.writeShort(var3);
@@ -123,7 +123,7 @@ public class class47 {
 					}
 
 					if (var0 == 7) {
-						var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3154, Client.packetWriter.isaacCipher);
+						var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.IF_BUTTON7, Client.packetWriter.isaacCipher);
 						var10.packetBuffer.writeInt(var1);
 						var10.packetBuffer.writeShort(var2);
 						var10.packetBuffer.writeShort(var3);
@@ -131,7 +131,7 @@ public class class47 {
 					}
 
 					if (var0 == 8) {
-						var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3108, Client.packetWriter.isaacCipher);
+						var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.IF_BUTTON8, Client.packetWriter.isaacCipher);
 						var10.packetBuffer.writeInt(var1);
 						var10.packetBuffer.writeShort(var2);
 						var10.packetBuffer.writeShort(var3);
@@ -139,7 +139,7 @@ public class class47 {
 					}
 
 					if (var0 == 9) {
-						var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3183, Client.packetWriter.isaacCipher);
+						var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.IF_BUTTON9, Client.packetWriter.isaacCipher);
 						var10.packetBuffer.writeInt(var1);
 						var10.packetBuffer.writeShort(var2);
 						var10.packetBuffer.writeShort(var3);
@@ -147,7 +147,7 @@ public class class47 {
 					}
 
 					if (var0 == 10) {
-						var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3139, Client.packetWriter.isaacCipher);
+						var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.IF_BUTTON10, Client.packetWriter.isaacCipher);
 						var10.packetBuffer.writeInt(var1);
 						var10.packetBuffer.writeShort(var2);
 						var10.packetBuffer.writeShort(var3);

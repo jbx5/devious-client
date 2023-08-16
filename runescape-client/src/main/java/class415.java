@@ -226,9 +226,9 @@ public class class415 {
 		}
 
 		if (MouseHandler.MouseHandler_currentButton == 4 && PlayerCompositionColorTextureOverride.mouseCam) {
-			var0 = MouseHandler.MouseHandler_y - Client.field682;
+			var0 = MouseHandler.MouseHandler_y - Client.mouseCamClickedY;
 			Client.camAngleDX = var0 * 2;
-			Client.field682 = var0 != -1 && var0 != 1 ? (Client.field682 + MouseHandler.MouseHandler_y) / 2 : MouseHandler.MouseHandler_y;
+			Client.mouseCamClickedY = var0 != -1 && var0 != 1 ? (Client.mouseCamClickedY + MouseHandler.MouseHandler_y) / 2 : MouseHandler.MouseHandler_y;
 			var1 = Client.field538 - MouseHandler.MouseHandler_x;
 			Client.camAngleDY = var1 * 2;
 			Client.field538 = var1 != -1 && var1 != 1 ? (MouseHandler.MouseHandler_x + Client.field538) / 2 : MouseHandler.MouseHandler_x;
@@ -249,7 +249,7 @@ public class class415 {
 				Client.camAngleDX /= 2;
 			}
 
-			Client.field682 = MouseHandler.MouseHandler_y;
+			Client.mouseCamClickedY = MouseHandler.MouseHandler_y;
 			Client.field538 = MouseHandler.MouseHandler_x;
 		}
 

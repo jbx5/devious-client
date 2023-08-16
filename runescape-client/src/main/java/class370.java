@@ -258,7 +258,7 @@ public class class370 {
 				ObjectComposition.ObjectDefinition_cachedModelData.clear();
 				PacketBufferNode var19;
 				if (class219.client.hasFrame()) {
-					var19 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3132, Client.packetWriter.isaacCipher);
+					var19 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.DETECT_MODIFIED_CLIENT, Client.packetWriter.isaacCipher);
 					var19.packetBuffer.writeInt(1057001181);
 					Client.packetWriter.addNode(var19);
 				}
