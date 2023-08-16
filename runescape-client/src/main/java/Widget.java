@@ -226,7 +226,7 @@ public class Widget extends Node {
 		descriptor = "Lum;"
 	)
 	@Export("fillMode")
-	public class526 fillMode;
+	public FillMode fillMode;
 	@ObfuscatedName("cb")
 	@ObfuscatedGetter(
 		intValue = -1458216043
@@ -736,7 +736,7 @@ public class Widget extends Node {
 		this.mouseOverColor = 0;
 		this.mouseOverColor2 = 0;
 		this.fill = false;
-		this.fillMode = class526.SOLID;
+		this.fillMode = FillMode.SOLID;
 		this.transparencyTop = 0;
 		this.transparencyBot = 0;
 		this.lineWid = 1;

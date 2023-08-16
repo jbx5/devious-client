@@ -196,7 +196,7 @@ public class class93 {
 				return 1;
 			} else if (var0 == 1125) {
 				var13 = Interpreter.Interpreter_intStack[--SoundCache.Interpreter_intStackSize];
-				class526 var11 = (class526)KeyHandler.findEnumerated(MidiPcmStream.FillMode_values(), var13);
+				FillMode var11 = (FillMode)KeyHandler.findEnumerated(MidiPcmStream.FillMode_values(), var13);
 				if (var11 != null) {
 					var3.fillMode = var11;
 					class218.invalidateWidget(var3);

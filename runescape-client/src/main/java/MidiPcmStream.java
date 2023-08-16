@@ -1157,8 +1157,8 @@ public class MidiPcmStream extends PcmStream {
 		garbageValue = "37"
 	)
 	@Export("FillMode_values")
-	public static class526[] FillMode_values() {
-		return new class526[]{class526.field5193, class526.field5196, class526.SOLID};
+	public static FillMode[] FillMode_values() {
+		return new FillMode[]{FillMode.field5193, FillMode.field5196, FillMode.SOLID};
 	}
 
 	@ObfuscatedName("an")
