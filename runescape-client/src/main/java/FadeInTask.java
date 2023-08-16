@@ -93,7 +93,7 @@ public class FadeInTask extends SongTask {
 
 			for (int var11 = 0; var11 < Client.rootWidgetCount; ++var11) {
 				if (Client.rootWidgetXs[var11] + Client.rootWidgetWidths[var11] > var7 && Client.rootWidgetXs[var11] < var9 + var7 && Client.rootWidgetYs[var11] + Client.rootWidgetHeights[var11] > var8 && Client.rootWidgetYs[var11] < var10 + var8) {
-					Client.field536[var11] = true;
+					Client.validRootWidgets[var11] = true;
 				}
 			}
 

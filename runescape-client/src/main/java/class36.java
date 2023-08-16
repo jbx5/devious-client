@@ -35,10 +35,10 @@ public class class36 {
 
 		} else {
 			if (var7 != -1) {
-				Client.field536[var7] = true;
+				Client.validRootWidgets[var7] = true;
 			} else {
 				for (int var8 = 0; var8 < 100; ++var8) {
-					Client.field536[var8] = true;
+					Client.validRootWidgets[var8] = true;
 				}
 			}
 

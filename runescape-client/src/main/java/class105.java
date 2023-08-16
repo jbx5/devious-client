@@ -776,7 +776,7 @@ final class class105 implements class323 {
 		MusicSong.updateGameState(30);
 
 		for (var0 = 0; var0 < 100; ++var0) {
-			Client.field536[var0] = true;
+			Client.validRootWidgets[var0] = true;
 		}
 
 		Message.method1217();

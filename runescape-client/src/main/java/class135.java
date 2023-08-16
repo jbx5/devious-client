@@ -246,7 +246,7 @@ public class class135 {
 								Client.viewportX = var12;
 								Client.viewportY = var13;
 								class132.drawEntities(var12, var13, var10.width, var10.height);
-								Client.field536[var10.rootIndex] = true;
+								Client.validRootWidgets[var10.rootIndex] = true;
 								Rasterizer2D.Rasterizer2D_setClip(var2, var3, var4, var5);
 								continue;
 							}

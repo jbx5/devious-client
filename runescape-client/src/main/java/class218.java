@@ -69,7 +69,7 @@ public class class218 {
 	@Export("invalidateWidget")
 	public static void invalidateWidget(Widget var0) {
 		if (var0 != null && var0.cycle == Client.field747) {
-			Client.field536[var0.rootIndex] = true;
+			Client.validRootWidgets[var0.rootIndex] = true;
 		}
 
 	}

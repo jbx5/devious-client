@@ -1044,26 +1044,135 @@ public abstract class RSClientMixin implements RSClient
 		}
 	}
 
-	@Copy("menuSort")
-	@Replace("menuSort")
-	public static final void copy$menuSort()
+	@Copy("menu")
+	@Replace("menu")
+	final void menu()
 	{
-		boolean var0 = false;
-
-		while (!var0)
+		boolean var1 = false;
+		int var2;
+		int var5;
+		while (!var1)
 		{
-			var0 = true;
-			for (int var1 = 0; var1 < client.getMenuOptionCount() - 1; ++var1)
+			var1 = true;
+			for (var2 = 0; var2 < client.getMenuOptionCount() - 1; ++var2)
 			{
-				if (client.getMenuOpcodes()[var1] < 1000 && client.getMenuOpcodes()[var1 + 1] > 1000)
+				if (client.getMenuOpcodes()[var2] < 1000 && client.getMenuOpcodes()[var2 + 1] > 1000)
 				{
-					sortMenuEntries(var1, var1 + 1);
-					var0 = false;
+					sortMenuEntries(var2, var2 + 1);
+					var1 = false;
 				}
 			}
-			if (var0 && !client.isMenuOpen())
+			if (var1 && !client.isMenuOpen())
 			{
 				client.getCallbacks().post(new PostMenuSort());
+			}
+		}
+
+		if (client.getDraggedWidget() == null)
+		{
+			int var19 = client.getMouseLastButton();
+			int var4;
+			int var7;
+			int var8;
+			int var20;
+			if (client.isMenuOpen())
+			{
+				int var3;
+				if (var19 != 1 && (client.isMouseCam() || var19 != 4))
+				{
+					var2 = client.getMouseX();
+					var3 = client.getMouseY();
+					if (var2 < client.getMenuX() - 10 || var2 > client.getMenuX() + client.getMenuWidth() + 10 || var3 < client.getMenuY() - 10 || var3 > client.getMenuY() + client.getMenuHeight() + 10)
+					{
+						client.setMenuOpen(false);
+						var4 = client.getMenuX();
+						var5 = client.getMenuY();
+						var20 = client.getMenuWidth();
+						var7 = client.getMenuHeight();
+
+						for (var8 = 0; var8 < client.getRootWidgetCount(); ++var8)
+						{
+							if (client.getWidgetWidths()[var8] + client.getWidgetPositionsX()[var8] > var4 && client.getWidgetPositionsX()[var8] < var4 + var20 && client.getWidgetPositionsY()[var8] + client.getWidgetHeights()[var8] > var5 && client.getWidgetPositionsY()[var8] < var5 + var7)
+							{
+								client.getValidRootWidgets()[var8] = true;
+							}
+						}
+					}
+				}
+
+				if (var19 == 1 || !client.isMouseCam() && var19 == 4)
+				{
+					var2 = client.getMenuX();
+					var3 = client.getMenuY();
+					var4 = client.getMenuWidth();
+					var5 = client.getMouseLastPressedX();
+					var20 = client.getMouseLastPressedY();
+					var7 = -1;
+
+					int var15;
+					for (var8 = 0; var8 < client.getMenuOptionCount(); ++var8)
+					{
+						var15 = (client.getMenuOptionCount() - 1 - var8) * 15 + var3 + 31;
+						if (var5 > var2 && var5 < var4 + var2 && var20 > var15 - 13 && var20 < var15 + 3)
+						{
+							var7 = var8;
+						}
+					}
+
+					int var11;
+					int var12;
+					int var16;
+					if (var7 != -1 && var7 >= 0)
+					{
+						var8 = client.getMenuArguments1()[var7];
+						var15 = client.getMenuArguments2()[var7];
+						var16 = client.getMenuOpcodes()[var7];
+						var11 = client.getMenuIdentifiers()[var7];
+						var12 = client.getMenuItemIds()[var7];
+						String var13 = client.getMenuOptions()[var7];
+						String var14 = client.getMenuTargets()[var7];
+						client.sendMenuAction(var8, var15, var16, var11, var12, var13, var14, client.getMouseLastPressedX(), client.getMouseLastPressedY());
+					}
+
+					client.setMenuOpen(false);
+					var8 = client.getMenuX();
+					var15 = client.getMenuY();
+					var16 = client.getMenuWidth();
+					var11 = client.getMenuHeight();
+
+					for (var12 = 0; var12 < client.getRootWidgetCount(); ++var12)
+					{
+						if (client.getWidgetWidths()[var12] + client.getWidgetPositionsX()[var12] > var8 && client.getWidgetPositionsX()[var12] < var8 + var16 && client.getWidgetHeights()[var12] + client.getWidgetPositionsY()[var12] > var15 && client.getWidgetPositionsY()[var12] < var15 + var11)
+						{
+							client.getValidRootWidgets()[var12] = true;
+						}
+					}
+				}
+			}
+			else
+			{
+				var2 = client.getMenuOptionCount() - 1;
+				if ((var19 == 1 || !client.isMouseCam() && var19 == 4) && copy$shouldLeftClickOpenMenu())
+				{
+					var19 = 2;
+				}
+
+				if ((var19 == 1 || !client.isMouseCam() && var19 == 4) && client.getMenuOptionCount() > 0 && var2 >= 0)
+				{
+					var4 = client.getMenuArguments1()[var2];
+					var5 = client.getMenuArguments2()[var2];
+					var20 = client.getMenuOpcodes()[var2];
+					var7 = client.getMenuIdentifiers()[var2];
+					var8 = client.getMenuItemIds()[var2];
+					String var9 = client.getMenuOptions()[var2];
+					String var10 = client.getMenuTargets()[var2];
+					client.sendMenuAction(var4, var5, var20, var7, var8, var9, var10, client.getMouseLastPressedX(), client.getMouseLastPressedY());
+				}
+
+				if (var19 == 2 && client.getMenuOptionCount() > 0)
+				{
+					this.openMenu(client.getMouseLastPressedX(), client.getMouseLastPressedY());
+				}
 			}
 		}
 	}

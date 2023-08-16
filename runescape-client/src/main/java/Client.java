@@ -1147,7 +1147,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 	)
 	static int field747;
 	@ObfuscatedName("re")
-	static boolean[] field536;
+	@Export("validRootWidgets")
+	static boolean[] validRootWidgets;
 	@ObfuscatedName("rf")
 	static boolean[] field749;
 	@ObfuscatedName("rl")
@@ -1623,7 +1624,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 		widgetFlags = new NodeHashTable(512);
 		rootWidgetCount = 0;
 		field747 = -2;
-		field536 = new boolean[100];
+		validRootWidgets = new boolean[100];
 		field749 = new boolean[100];
 		field750 = new boolean[100];
 		rootWidgetXs = new int[100];
@@ -1882,7 +1883,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 		int var2;
 		if (var1) {
 			for (var2 = 0; var2 < 100; ++var2) {
-				field536[var2] = true;
+				validRootWidgets[var2] = true;
 			}
 		}
 
@@ -2964,7 +2965,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 						isLoading = true;
 
 						for (var13 = 0; var13 < 100; ++var13) {
-							field536[var13] = true;
+							validRootWidgets[var13] = true;
 						}
 
 						Message.method1217();
@@ -3604,12 +3605,12 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 
 		int var1;
 		for (var1 = 0; var1 < rootWidgetCount; ++var1) {
-			if (field536[var1]) {
+			if (validRootWidgets[var1]) {
 				field749[var1] = true;
 			}
 
-			field750[var1] = field536[var1];
-			field536[var1] = false;
+			field750[var1] = validRootWidgets[var1];
+			validRootWidgets[var1] = false;
 		}
 
 		field747 = cycle;
@@ -4071,7 +4072,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 						class217.runWidgetOnLoadListener(rootInterface);
 
 						for (var7 = 0; var7 < 100; ++var7) {
-							field536[var7] = true;
+							validRootWidgets[var7] = true;
 						}
 					}
 
@@ -4542,7 +4543,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					class217.runWidgetOnLoadListener(rootInterface);
 
 					for (var5 = 0; var5 < 100; ++var5) {
-						field536[var5] = true;
+						validRootWidgets[var5] = true;
 					}
 
 					var1.serverPacket = null;
@@ -5892,7 +5893,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 
 						for (var8 = 0; var8 < rootWidgetCount; ++var8) {
 							if (rootWidgetWidths[var8] + rootWidgetXs[var8] > var4 && rootWidgetXs[var8] < var4 + var20 && rootWidgetYs[var8] + rootWidgetHeights[var8] > var5 && rootWidgetYs[var8] < var5 + var7) {
-								field536[var8] = true;
+								validRootWidgets[var8] = true;
 							}
 						}
 					}
@@ -5936,7 +5937,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 
 					for (var12 = 0; var12 < rootWidgetCount; ++var12) {
 						if (rootWidgetWidths[var12] + rootWidgetXs[var12] > var8 && rootWidgetXs[var12] < var8 + var16 && rootWidgetHeights[var12] + rootWidgetYs[var12] > var15 && rootWidgetYs[var12] < var15 + var11) {
-							field536[var12] = true;
+							validRootWidgets[var12] = true;
 						}
 					}
 				}
