@@ -325,6 +325,10 @@ public class WorldArea
 		int yWallFlagsWest = CollisionDataFlag.BLOCK_MOVEMENT_FULL;
 		int yWallFlagsEast = CollisionDataFlag.BLOCK_MOVEMENT_FULL;
 
+		if (checkX >= 104 || checkY >= 104)
+		{
+			return false;
+		}
 		if (dx < 0)
 		{
 			xFlags |= CollisionDataFlag.BLOCK_MOVEMENT_EAST;
