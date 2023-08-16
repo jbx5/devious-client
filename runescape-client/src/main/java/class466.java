@@ -644,8 +644,8 @@ public class class466 {
 	@Export("resumePauseWidget")
 	static void resumePauseWidget(int var0, int var1) {
 		PacketBufferNode var2 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3163, Client.packetWriter.isaacCipher);
-		var2.packetBuffer.writeShortLE(var0);
-		var2.packetBuffer.writeIntIME(var1);
+		var2.packetBuffer.writeIntLE(var0);
+		var2.packetBuffer.writeShortLE(var1);
 		Client.packetWriter.addNode(var2);
 	}
 }

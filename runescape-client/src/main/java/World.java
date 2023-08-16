@@ -220,12 +220,12 @@ public class World {
 		int var6;
 		int var7;
 		if (class295.field3212 == var0) {
-			var2 = var1.readUnsignedByteNeg();
-			var3 = var1.method9115();
+			var2 = var1.readUnsignedIntIME();
+			var3 = var1.readUnsignedIntME();
 			var4 = var1.readUnsignedByte();
 			var5 = (var4 >> 4 & 7) + ObjectSound.field855;
 			var6 = (var4 & 7) + class125.field1499;
-			var7 = var1.readUnsignedShortLE();
+			var7 = var1.readUnsignedShortAdd();
 			if (var5 >= 0 && var6 >= 0 && var5 < 104 && var6 < 104) {
 				NodeDeque var45 = Client.groundItems[HealthBar.Client_plane][var5][var6];
 				if (var45 != null) {
@@ -247,18 +247,18 @@ public class World {
 			int var12;
 			int var13;
 			if (class295.field3215 == var0) {
-				var2 = var1.readUnsignedIntLE();
+				var2 = var1.readUnsignedByteAdd();
 				var3 = var2 >> 2;
 				var4 = var2 & 3;
 				var5 = Client.field711[var3];
-				var6 = var1.readUnsignedByteAdd();
+				var6 = var1.readUnsignedByteNeg();
 				var7 = (var6 >> 4 & 7) + ObjectSound.field855;
 				var8 = (var6 & 7) + class125.field1499;
 				var9 = var1.readUnsignedShortAddLE();
-				var10 = var1.method9078();
-				byte var11 = var1.method9095();
-				var12 = var1.readUnsignedByteSub();
-				var13 = var1.readUnsignedByteSub();
+				var10 = var1.readByteAdd();
+				byte var11 = var1.readByteNeg();
+				var12 = var1.readUnsignedShortLE();
+				var13 = var1.readUnsignedShortLE();
 				byte var14 = var1.readByteSub();
 				byte var15 = var1.readByte();
 				int var16 = var1.readUnsignedShortAddLE();
@@ -320,12 +320,12 @@ public class World {
 			}
 
 			if (class295.field3208 == var0) {
-				var2 = var1.readUnsignedByteAdd();
+				var2 = var1.readUnsignedByteNeg();
 				var3 = (var2 >> 4 & 7) + ObjectSound.field855;
 				var4 = (var2 & 7) + class125.field1499;
 				var5 = var1.readUnsignedShort();
-				var6 = var1.readUnsignedByteAdd();
-				var7 = var1.readUnsignedShortLE();
+				var6 = var1.readUnsignedByteNeg();
+				var7 = var1.readUnsignedShortAdd();
 				if (var3 >= 0 && var4 >= 0 && var3 < 104 && var4 < 104) {
 					var3 = var3 * 128 + 64;
 					var4 = var4 * 128 + 64;
@@ -336,13 +336,13 @@ public class World {
 			} else {
 				int var40;
 				if (class295.field3216 == var0) {
-					var2 = var1.readUnsignedIntLE();
-					var3 = var1.readUnsignedByteAdd();
+					var2 = var1.readUnsignedByteAdd();
+					var3 = var1.readUnsignedByteNeg();
 					var4 = var3 >> 2;
 					var5 = var3 & 3;
 					var6 = Client.field711[var4];
 					var7 = var1.readUnsignedShortAddLE();
-					var8 = var1.method9093();
+					var8 = var1.readUnsignedByteSub();
 					var9 = (var8 >> 4 & 7) + ObjectSound.field855;
 					var40 = (var8 & 7) + class125.field1499;
 					if (var9 >= 0 && var40 >= 0 && var9 < 104 && var40 < 104) {
@@ -352,12 +352,12 @@ public class World {
 				} else {
 					int var41;
 					if (class295.field3209 == var0) {
-						var2 = var1.readUnsignedByteAdd();
+						var2 = var1.readUnsignedByteNeg();
 						var3 = var2 >> 2;
 						var4 = var2 & 3;
 						var5 = Client.field711[var3];
-						var6 = var1.readUnsignedByteSub();
-						var7 = var1.readUnsignedByteAdd();
+						var6 = var1.readUnsignedShortLE();
+						var7 = var1.readUnsignedByteNeg();
 						var8 = (var7 >> 4 & 7) + ObjectSound.field855;
 						var9 = (var7 & 7) + class125.field1499;
 						if (var8 >= 0 && var9 >= 0 && var8 < 103 && var9 < 103) {
@@ -423,15 +423,15 @@ public class World {
 					} else {
 						TileItem var32;
 						if (class295.field3213 == var0) {
-							var1.readUnsignedIntLE();
-							var2 = var1.readUnsignedIntLE();
+							var1.readUnsignedByteAdd();
+							var2 = var1.readUnsignedByteAdd();
 							var3 = (var2 >> 4 & 7) + ObjectSound.field855;
 							var4 = (var2 & 7) + class125.field1499;
 							var5 = var1.readUnsignedByte();
 							var6 = var1.readInt();
 							var1.readUnsignedShortAddLE();
-							var1.readUnsignedByteSub();
-							var1.readUnsignedIntLE();
+							var1.readUnsignedShortLE();
+							var1.readUnsignedByteAdd();
 							var7 = var1.readUnsignedShort();
 							if (var3 >= 0 && var4 >= 0 && var3 < 104 && var4 < 104) {
 								var32 = new TileItem();
@@ -450,7 +450,7 @@ public class World {
 							var2 = var1.readUnsignedByte();
 							var3 = (var2 >> 4 & 7) + ObjectSound.field855;
 							var4 = (var2 & 7) + class125.field1499;
-							var5 = var1.readUnsignedByteAdd();
+							var5 = var1.readUnsignedByteNeg();
 							var6 = var5 >> 2;
 							var7 = var5 & 3;
 							var8 = Client.field711[var6];
@@ -462,7 +462,7 @@ public class World {
 							NodeDeque var31;
 							if (class295.field3217 == var0) {
 								var2 = var1.readUnsignedShortAddLE();
-								var3 = var1.readUnsignedByteNeg();
+								var3 = var1.readUnsignedIntIME();
 								var4 = var1.readUnsignedByte();
 								var5 = (var4 >> 4 & 7) + ObjectSound.field855;
 								var6 = (var4 & 7) + class125.field1499;
@@ -486,10 +486,10 @@ public class World {
 
 							} else {
 								if (class295.field3214 == var0) {
-									var2 = var1.readUnsignedIntLE();
+									var2 = var1.readUnsignedByteAdd();
 									var3 = (var2 >> 4 & 7) + ObjectSound.field855;
 									var4 = (var2 & 7) + class125.field1499;
-									var5 = var1.method9093();
+									var5 = var1.readUnsignedByteSub();
 									var6 = var5 >> 4 & 15;
 									var7 = var5 & 7;
 									var8 = var1.readUnsignedByte();
@@ -509,15 +509,15 @@ public class World {
 
 								int var42;
 								if (class295.field3211 == var0) {
-									var2 = var1.readUnsignedShortLE();
+									var2 = var1.readUnsignedShortAdd();
 									var3 = var1.readUnsignedShort();
 									byte var37 = var1.readByteSub();
-									var5 = var1.readUnsignedByteAdd();
+									var5 = var1.readUnsignedByteNeg();
 									var6 = var1.method9108();
 									byte var39 = var1.readByte();
-									var8 = var1.readUnsignedIntLE() * 4;
-									var9 = var1.readUnsignedByteAdd();
-									var40 = var1.method9093() * 4;
+									var8 = var1.readUnsignedByteAdd() * 4;
+									var9 = var1.readUnsignedByteNeg();
+									var40 = var1.readUnsignedByteSub() * 4;
 									var41 = var1.method9109();
 									var12 = var1.readUnsignedByte();
 									var13 = (var12 >> 4 & 7) + ObjectSound.field855;
@@ -536,18 +536,18 @@ public class World {
 									}
 
 								} else if (class295.field3207 == var0) {
-									var2 = var1.readUnsignedByteSub();
-									var3 = var1.readUnsignedIntLE();
+									var2 = var1.readUnsignedShortLE();
+									var3 = var1.readUnsignedByteAdd();
 									var4 = (var3 >> 4 & 7) + ObjectSound.field855;
 									var5 = (var3 & 7) + class125.field1499;
 									byte var38 = var1.readByteSub();
 									var7 = var1.method9109();
-									var8 = var1.readUnsignedIntLE();
+									var8 = var1.readUnsignedByteAdd();
 									var9 = var1.readUnsignedShortAddLE();
-									var10 = var1.method9078();
-									var41 = var1.readUnsignedByteAdd() * 4;
-									var12 = var1.readUnsignedIntLE();
-									var13 = var1.readUnsignedIntLE() * 4;
+									var10 = var1.readByteAdd();
+									var41 = var1.readUnsignedByteNeg() * 4;
+									var12 = var1.readUnsignedByteAdd();
+									var13 = var1.readUnsignedByteAdd() * 4;
 									var42 = var1.readUnsignedShort();
 									var40 = var10 + var4;
 									var6 = var38 + var5;
@@ -565,8 +565,8 @@ public class World {
 									var2 = var1.readUnsignedByte();
 									var3 = (var2 >> 4 & 7) + ObjectSound.field855;
 									var4 = (var2 & 7) + class125.field1499;
-									var5 = var1.method9093();
-									var6 = var1.readUnsignedByteSub();
+									var5 = var1.readUnsignedByteSub();
+									var6 = var1.readUnsignedShortLE();
 									if (var3 >= 0 && var4 >= 0 && var3 < 104 && var4 < 104) {
 										var31 = Client.groundItems[HealthBar.Client_plane][var3][var4];
 										if (var31 != null) {

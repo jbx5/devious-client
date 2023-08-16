@@ -113,7 +113,7 @@ public class IgnoreList extends UserList {
 				Client.destinationX = var0;
 				Client.destinationY = var1;
 				var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3196, Client.packetWriter.isaacCipher);
-				var10.packetBuffer.method9088(Client.field674.method4120(82) ? 1 : 0);
+				var10.packetBuffer.writeByteAdd(Client.field674.method4120(82) ? 1 : 0);
 				var10.packetBuffer.writeShortAdd(var3);
 				Client.packetWriter.addNode(var10);
 			}
@@ -129,7 +129,7 @@ public class IgnoreList extends UserList {
 				Client.destinationX = var0;
 				Client.destinationY = var1;
 				var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3166, Client.packetWriter.isaacCipher);
-				var10.packetBuffer.method9088(Client.field674.method4120(82) ? 1 : 0);
+				var10.packetBuffer.writeByteAdd(Client.field674.method4120(82) ? 1 : 0);
 				var10.packetBuffer.writeShort(var3);
 				Client.packetWriter.addNode(var10);
 			}
@@ -163,7 +163,7 @@ public class IgnoreList extends UserList {
 				Client.destinationY = var1;
 				var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3173, Client.packetWriter.isaacCipher);
 				var10.packetBuffer.writeShortAdd(var3);
-				var10.packetBuffer.writeMediumLE(Client.field674.method4120(82) ? 1 : 0);
+				var10.packetBuffer.writeByteNeg(Client.field674.method4120(82) ? 1 : 0);
 				Client.packetWriter.addNode(var10);
 			}
 		}
@@ -187,8 +187,8 @@ public class IgnoreList extends UserList {
 			var16 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3157, Client.packetWriter.isaacCipher);
 			var16.packetBuffer.writeShort(class47.baseY * 64 + var1);
 			var16.packetBuffer.writeShortAddLE(UrlRequester.baseX * 64 + var0);
-			var16.packetBuffer.method9088(Client.field674.method4120(82) ? 1 : 0);
-			var16.packetBuffer.writeIntIME(var3);
+			var16.packetBuffer.writeByteAdd(Client.field674.method4120(82) ? 1 : 0);
+			var16.packetBuffer.writeShortLE(var3);
 			Client.packetWriter.addNode(var16);
 		}
 
@@ -221,7 +221,7 @@ public class IgnoreList extends UserList {
 				Client.destinationY = var1;
 				var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3152, Client.packetWriter.isaacCipher);
 				var10.packetBuffer.writeByteSub(Client.field674.method4120(82) ? 1 : 0);
-				var10.packetBuffer.writeIntIME(var3);
+				var10.packetBuffer.writeShortLE(var3);
 				Client.packetWriter.addNode(var10);
 			}
 		}
@@ -236,7 +236,7 @@ public class IgnoreList extends UserList {
 				Client.destinationX = var0;
 				Client.destinationY = var1;
 				var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3118, Client.packetWriter.isaacCipher);
-				var10.packetBuffer.writeShortLE(class138.field1643);
+				var10.packetBuffer.writeIntLE(class138.field1643);
 				var10.packetBuffer.writeShortAdd(class157.field1767);
 				var10.packetBuffer.writeShortAdd(WorldMapArea.field2916);
 				var10.packetBuffer.writeShortAdd(var3);
@@ -266,7 +266,7 @@ public class IgnoreList extends UserList {
 				Client.destinationY = var1;
 				var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3160, Client.packetWriter.isaacCipher);
 				var10.packetBuffer.writeByte(Client.field674.method4120(82) ? 1 : 0);
-				var10.packetBuffer.writeIntIME(var3);
+				var10.packetBuffer.writeShortLE(var3);
 				Client.packetWriter.addNode(var10);
 			}
 		}
@@ -280,7 +280,7 @@ public class IgnoreList extends UserList {
 			Client.destinationY = var1;
 			var16 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3143, Client.packetWriter.isaacCipher);
 			var16.packetBuffer.writeShortAddLE(class47.baseY * 64 + var1);
-			var16.packetBuffer.writeIntIME(UrlRequester.baseX * 64 + var0);
+			var16.packetBuffer.writeShortLE(UrlRequester.baseX * 64 + var0);
 			var16.packetBuffer.writeByte(Client.field674.method4120(82) ? 1 : 0);
 			var16.packetBuffer.writeShortAdd(var3);
 			Client.packetWriter.addNode(var16);
@@ -302,8 +302,8 @@ public class IgnoreList extends UserList {
 				var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3185, Client.packetWriter.isaacCipher);
 				var10.packetBuffer.writeByteSub(Client.field674.method4120(82) ? 1 : 0);
 				var10.packetBuffer.writeShortAdd(var3);
-				var10.packetBuffer.writeIntIME(Client.selectedSpellItemId);
-				var10.packetBuffer.method9112(ModeWhere.selectedSpellWidget);
+				var10.packetBuffer.writeShortLE(Client.selectedSpellItemId);
+				var10.packetBuffer.writeIntIME(ModeWhere.selectedSpellWidget);
 				var10.packetBuffer.writeShortAddLE(Client.selectedSpellChildIndex);
 				Client.packetWriter.addNode(var10);
 			}
@@ -319,7 +319,7 @@ public class IgnoreList extends UserList {
 			var16 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3135, Client.packetWriter.isaacCipher);
 			var16.packetBuffer.writeShortAdd(var3);
 			var16.packetBuffer.writeShortAddLE(UrlRequester.baseX * 64 + var0);
-			var16.packetBuffer.method9088(Client.field674.method4120(82) ? 1 : 0);
+			var16.packetBuffer.writeByteAdd(Client.field674.method4120(82) ? 1 : 0);
 			var16.packetBuffer.writeShort(class47.baseY * 64 + var1);
 			Client.packetWriter.addNode(var16);
 		}
@@ -390,10 +390,10 @@ public class IgnoreList extends UserList {
 			Client.destinationY = var1;
 			var16 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3161, Client.packetWriter.isaacCipher);
 			var16.packetBuffer.writeShortAddLE(class157.field1767);
-			var16.packetBuffer.writeIntIME(var3);
+			var16.packetBuffer.writeShortLE(var3);
 			var16.packetBuffer.writeByte(Client.field674.method4120(82) ? 1 : 0);
 			var16.packetBuffer.writeShortAdd(WorldMapArea.field2916);
-			var16.packetBuffer.writeIntIME(UrlRequester.baseX * 64 + var0);
+			var16.packetBuffer.writeShortLE(UrlRequester.baseX * 64 + var0);
 			var16.packetBuffer.writeShortAdd(class47.baseY * 64 + var1);
 			var16.packetBuffer.writeIntME(class138.field1643);
 			Client.packetWriter.addNode(var16);
@@ -413,7 +413,7 @@ public class IgnoreList extends UserList {
 			var16.packetBuffer.writeShortAddLE(Client.selectedSpellChildIndex);
 			var16.packetBuffer.writeByteSub(Client.field674.method4120(82) ? 1 : 0);
 			var16.packetBuffer.writeShortAddLE(Client.selectedSpellItemId);
-			var16.packetBuffer.writeShortLE(ModeWhere.selectedSpellWidget);
+			var16.packetBuffer.writeIntLE(ModeWhere.selectedSpellWidget);
 			Client.packetWriter.addNode(var16);
 		}
 
@@ -432,7 +432,7 @@ public class IgnoreList extends UserList {
 			var16.packetBuffer.writeByte(Client.field674.method4120(82) ? 1 : 0);
 			var16.packetBuffer.writeShortAdd(class47.baseY * 64 + var1);
 			var16.packetBuffer.writeShort(var3);
-			var16.packetBuffer.writeIntIME(UrlRequester.baseX * 64 + var0);
+			var16.packetBuffer.writeShortLE(UrlRequester.baseX * 64 + var0);
 			Client.packetWriter.addNode(var16);
 		}
 
@@ -445,9 +445,9 @@ public class IgnoreList extends UserList {
 			Client.destinationY = var1;
 			var16 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3151, Client.packetWriter.isaacCipher);
 			var16.packetBuffer.writeByte(Client.field674.method4120(82) ? 1 : 0);
-			var16.packetBuffer.writeIntIME(UrlRequester.baseX * 64 + var0);
+			var16.packetBuffer.writeShortLE(UrlRequester.baseX * 64 + var0);
 			var16.packetBuffer.writeShortAdd(class47.baseY * 64 + var1);
-			var16.packetBuffer.writeIntIME(var3);
+			var16.packetBuffer.writeShortLE(var3);
 			Client.packetWriter.addNode(var16);
 		}
 
@@ -468,10 +468,10 @@ public class IgnoreList extends UserList {
 				Client.destinationY = var1;
 				var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3165, Client.packetWriter.isaacCipher);
 				var10.packetBuffer.writeShortAddLE(Client.selectedSpellChildIndex);
-				var10.packetBuffer.writeIntIME(Client.selectedSpellItemId);
-				var10.packetBuffer.method9112(ModeWhere.selectedSpellWidget);
-				var10.packetBuffer.writeIntIME(var3);
-				var10.packetBuffer.method9088(Client.field674.method4120(82) ? 1 : 0);
+				var10.packetBuffer.writeShortLE(Client.selectedSpellItemId);
+				var10.packetBuffer.writeIntIME(ModeWhere.selectedSpellWidget);
+				var10.packetBuffer.writeShortLE(var3);
+				var10.packetBuffer.writeByteAdd(Client.field674.method4120(82) ? 1 : 0);
 				Client.packetWriter.addNode(var10);
 			}
 		}
@@ -516,8 +516,8 @@ public class IgnoreList extends UserList {
 			var16 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3110, Client.packetWriter.isaacCipher);
 			var16.packetBuffer.writeShort(UrlRequester.baseX * 64 + var0);
 			var16.packetBuffer.writeShort(class47.baseY * 64 + var1);
-			var16.packetBuffer.writeIntIME(var3);
-			var16.packetBuffer.writeMediumLE(Client.field674.method4120(82) ? 1 : 0);
+			var16.packetBuffer.writeShortLE(var3);
+			var16.packetBuffer.writeByteNeg(Client.field674.method4120(82) ? 1 : 0);
 			Client.packetWriter.addNode(var16);
 		}
 
@@ -579,7 +579,7 @@ public class IgnoreList extends UserList {
 			var16 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3150, Client.packetWriter.isaacCipher);
 			var16.packetBuffer.writeShort(UrlRequester.baseX * 64 + var0);
 			var16.packetBuffer.writeShortAddLE(var3);
-			var16.packetBuffer.writeIntIME(class47.baseY * 64 + var1);
+			var16.packetBuffer.writeShortLE(class47.baseY * 64 + var1);
 			Client.packetWriter.addNode(var16);
 		}
 
@@ -593,7 +593,7 @@ public class IgnoreList extends UserList {
 				Client.destinationX = var0;
 				Client.destinationY = var1;
 				var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3170, Client.packetWriter.isaacCipher);
-				var10.packetBuffer.writeIntIME(var3);
+				var10.packetBuffer.writeShortLE(var3);
 				var10.packetBuffer.writeByte(Client.field674.method4120(82) ? 1 : 0);
 				Client.packetWriter.addNode(var10);
 			}
@@ -609,7 +609,7 @@ public class IgnoreList extends UserList {
 			var16 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3178, Client.packetWriter.isaacCipher);
 			var16.packetBuffer.writeShortAddLE(UrlRequester.baseX * 64 + var0);
 			var16.packetBuffer.writeShort(class47.baseY * 64 + var1);
-			var16.packetBuffer.method9088(Client.field674.method4120(82) ? 1 : 0);
+			var16.packetBuffer.writeByteAdd(Client.field674.method4120(82) ? 1 : 0);
 			var16.packetBuffer.writeShort(var3);
 			Client.packetWriter.addNode(var16);
 		}
@@ -631,7 +631,7 @@ public class IgnoreList extends UserList {
 				var10.packetBuffer.writeShort(var0);
 				var10.packetBuffer.writeShortAddLE(Client.selectedSpellChildIndex);
 				var10.packetBuffer.writeShort(var4);
-				var10.packetBuffer.method9112(ModeWhere.selectedSpellWidget);
+				var10.packetBuffer.writeIntIME(ModeWhere.selectedSpellWidget);
 				var10.packetBuffer.writeIntME(var1);
 				Client.packetWriter.addNode(var10);
 			}
@@ -647,7 +647,7 @@ public class IgnoreList extends UserList {
 			var16 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3146, Client.packetWriter.isaacCipher);
 			var16.packetBuffer.writeShort(var3);
 			var16.packetBuffer.writeShortAddLE(UrlRequester.baseX * 64 + var0);
-			var16.packetBuffer.method9088(Client.field674.method4120(82) ? 1 : 0);
+			var16.packetBuffer.writeByteAdd(Client.field674.method4120(82) ? 1 : 0);
 			var16.packetBuffer.writeShort(class47.baseY * 64 + var1);
 			Client.packetWriter.addNode(var16);
 		}
@@ -662,7 +662,7 @@ public class IgnoreList extends UserList {
 				Client.destinationX = var0;
 				Client.destinationY = var1;
 				var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3206, Client.packetWriter.isaacCipher);
-				var10.packetBuffer.writeIntIME(var3);
+				var10.packetBuffer.writeShortLE(var3);
 				var10.packetBuffer.writeByte(Client.field674.method4120(82) ? 1 : 0);
 				Client.packetWriter.addNode(var10);
 			}
@@ -695,11 +695,11 @@ public class IgnoreList extends UserList {
 				Client.destinationX = var0;
 				Client.destinationY = var1;
 				var16 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3199, Client.packetWriter.isaacCipher);
-				var16.packetBuffer.writeIntIME(UrlRequester.baseX * 64 + var0);
-				var16.packetBuffer.method9088(Client.field674.method4120(82) ? 1 : 0);
+				var16.packetBuffer.writeShortLE(UrlRequester.baseX * 64 + var0);
+				var16.packetBuffer.writeByteAdd(Client.field674.method4120(82) ? 1 : 0);
 				var16.packetBuffer.writeShortAdd(Client.selectedSpellItemId);
 				var16.packetBuffer.writeShortAddLE(Client.selectedSpellChildIndex);
-				var16.packetBuffer.method9112(ModeWhere.selectedSpellWidget);
+				var16.packetBuffer.writeIntIME(ModeWhere.selectedSpellWidget);
 				var16.packetBuffer.writeShortAdd(class47.baseY * 64 + var1);
 				var16.packetBuffer.writeShortAdd(var3);
 				Client.packetWriter.addNode(var16);
@@ -713,10 +713,10 @@ public class IgnoreList extends UserList {
 				Client.destinationX = var0;
 				Client.destinationY = var1;
 				var16 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3141, Client.packetWriter.isaacCipher);
-				var16.packetBuffer.writeIntIME(class47.baseY * 64 + var1);
-				var16.packetBuffer.method9088(Client.field674.method4120(82) ? 1 : 0);
+				var16.packetBuffer.writeShortLE(class47.baseY * 64 + var1);
+				var16.packetBuffer.writeByteAdd(Client.field674.method4120(82) ? 1 : 0);
 				var16.packetBuffer.writeShortAddLE(var3);
-				var16.packetBuffer.writeIntIME(UrlRequester.baseX * 64 + var0);
+				var16.packetBuffer.writeShortLE(UrlRequester.baseX * 64 + var0);
 				Client.packetWriter.addNode(var16);
 			}
 
@@ -729,7 +729,7 @@ public class IgnoreList extends UserList {
 				Client.destinationY = var1;
 				var16 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3186, Client.packetWriter.isaacCipher);
 				var16.packetBuffer.writeShort(UrlRequester.baseX * 64 + var0);
-				var16.packetBuffer.writeIntIME(class47.baseY * 64 + var1);
+				var16.packetBuffer.writeShortLE(class47.baseY * 64 + var1);
 				var16.packetBuffer.writeByte(Client.field674.method4120(82) ? 1 : 0);
 				var16.packetBuffer.writeShortAddLE(var3);
 				Client.packetWriter.addNode(var16);
@@ -761,11 +761,11 @@ public class IgnoreList extends UserList {
 					Client.destinationX = var0;
 					Client.destinationY = var1;
 					var10 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3176, Client.packetWriter.isaacCipher);
-					var10.packetBuffer.writeIntIME(WorldMapArea.field2916);
-					var10.packetBuffer.writeIntIME(class157.field1767);
-					var10.packetBuffer.writeShortLE(class138.field1643);
-					var10.packetBuffer.writeIntIME(var3);
-					var10.packetBuffer.method9088(Client.field674.method4120(82) ? 1 : 0);
+					var10.packetBuffer.writeShortLE(WorldMapArea.field2916);
+					var10.packetBuffer.writeShortLE(class157.field1767);
+					var10.packetBuffer.writeIntLE(class138.field1643);
+					var10.packetBuffer.writeShortLE(var3);
+					var10.packetBuffer.writeByteAdd(Client.field674.method4120(82) ? 1 : 0);
 					Client.packetWriter.addNode(var10);
 				}
 			}

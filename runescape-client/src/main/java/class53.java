@@ -161,7 +161,7 @@ public class class53 extends Node {
 			var5 = var0.readUnsignedByte();
 
 			for (var16 = 0; var16 < var5; ++var16) {
-				var17 = var0.readUnsignedIntLE();
+				var17 = var0.readUnsignedByteAdd();
 				var18 = var0.readUnsignedShortAddLE();
 				var9 = var0.readInt();
 				var2.updateSpotAnimation(var17, var18, var9 >> 16, var9 & 65535);
@@ -178,7 +178,7 @@ public class class53 extends Node {
 
 		if ((var3 & 16) != 0) {
 			var2.targetIndex = var0.readUnsignedShortAddLE();
-			var2.targetIndex += var0.readUnsignedIntLE() << 16;
+			var2.targetIndex += var0.readUnsignedByteAdd() << 16;
 			var5 = 16777215;
 			if (var2.targetIndex == var5) {
 				var2.targetIndex = -1;
@@ -191,9 +191,9 @@ public class class53 extends Node {
 			var5 = var0.readUnsignedShortAddLE();
 			var16 = var5 >> 8;
 			var17 = var16 >= 13 && var16 <= 20 ? var16 - 12 : 0;
-			PlayerType var8 = (PlayerType)KeyHandler.findEnumerated(MidiPcmStream.PlayerType_values(), var0.readUnsignedIntLE());
+			PlayerType var8 = (PlayerType)KeyHandler.findEnumerated(MidiPcmStream.PlayerType_values(), var0.readUnsignedByteAdd());
 			boolean var24 = var0.readUnsignedByte() == 1;
-			var10 = var0.readUnsignedByteAdd();
+			var10 = var0.readUnsignedByteNeg();
 			var11 = var0.offset;
 			if (var2.username != null && var2.appearance != null) {
 				boolean var12 = false;
@@ -242,9 +242,9 @@ public class class53 extends Node {
 
 		int var26;
 		if ((var3 & 32) != 0) {
-			var5 = var0.readUnsignedShortLE();
-			PlayerType var21 = (PlayerType)KeyHandler.findEnumerated(MidiPcmStream.PlayerType_values(), var0.readUnsignedByteAdd());
-			boolean var27 = var0.readUnsignedByteAdd() == 1;
+			var5 = var0.readUnsignedShortAdd();
+			PlayerType var21 = (PlayerType)KeyHandler.findEnumerated(MidiPcmStream.PlayerType_values(), var0.readUnsignedByteNeg());
+			boolean var27 = var0.readUnsignedByteNeg() == 1;
 			var18 = var0.readUnsignedByte();
 			var9 = var0.offset;
 			if (var2.username != null && var2.appearance != null) {
@@ -313,7 +313,7 @@ public class class53 extends Node {
 					var9 = var0.readUShortSmart();
 					if (var9 != 32767) {
 						var10 = var0.readUShortSmart();
-						var11 = var0.readUnsignedIntLE();
+						var11 = var0.readUnsignedByteAdd();
 						var26 = var9 > 0 ? var0.readUnsignedByte() : var11;
 						var2.addHealthBar(var18, Client.cycle, var9, var10, var11, var26);
 					} else {
@@ -325,11 +325,11 @@ public class class53 extends Node {
 
 		if ((var3 & 512) != 0) {
 			var2.field1249 = var0.readByteSub();
-			var2.field1251 = var0.method9078();
+			var2.field1251 = var0.readByteAdd();
 			var2.field1247 = var0.readByte();
 			var2.field1217 = var0.readByte();
-			var2.spotAnimation = var0.readUnsignedShortLE() + Client.cycle;
-			var2.field1254 = var0.readUnsignedShortLE() + Client.cycle;
+			var2.spotAnimation = var0.readUnsignedShortAdd() + Client.cycle;
+			var2.field1254 = var0.readUnsignedShortAdd() + Client.cycle;
 			var2.field1255 = var0.readUnsignedShortAddLE();
 			if (var2.field1154) {
 				var2.field1249 += var2.tileX;
@@ -370,12 +370,12 @@ public class class53 extends Node {
 		}
 
 		if ((var3 & 16384) != 0) {
-			var2.field1258 = Client.cycle + var0.readUnsignedByteSub();
-			var2.field1200 = Client.cycle + var0.readUnsignedByteSub();
+			var2.field1258 = Client.cycle + var0.readUnsignedShortLE();
+			var2.field1200 = Client.cycle + var0.readUnsignedShortLE();
 			var2.field1260 = var0.readByteSub();
-			var2.field1218 = var0.method9095();
-			var2.field1212 = var0.method9078();
-			var2.field1250 = (byte)var0.readUnsignedByteAdd();
+			var2.field1218 = var0.readByteNeg();
+			var2.field1212 = var0.readByteAdd();
+			var2.field1250 = (byte)var0.readUnsignedByteNeg();
 		}
 
 		if ((var3 & 8192) != 0) {
@@ -394,7 +394,7 @@ public class class53 extends Node {
 				var5 = -1;
 			}
 
-			var16 = var0.readUnsignedIntLE();
+			var16 = var0.readUnsignedByteAdd();
 			LoginType.performPlayerAnimation(var2, var5, var16);
 		}
 

@@ -419,9 +419,9 @@ public final class NPC extends Actor {
 	)
 	public static void method2637(int var0, int var1, int var2, boolean var3) {
 		PacketBufferNode var4 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3134, Client.packetWriter.isaacCipher);
-		var4.packetBuffer.writeMediumLE(var2);
+		var4.packetBuffer.writeByteNeg(var2);
 		var4.packetBuffer.writeShort(var1);
-		var4.packetBuffer.method9112(var3 ? Client.field626 : 0);
+		var4.packetBuffer.writeIntIME(var3 ? Client.field626 : 0);
 		var4.packetBuffer.writeShortAdd(var0);
 		Client.packetWriter.addNode(var4);
 	}

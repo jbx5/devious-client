@@ -220,11 +220,11 @@ public class ClanChannel extends Node {
 							if (var3 != null) {
 								PacketBufferNode var4 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3124, Client.packetWriter.isaacCipher);
 								var4.packetBuffer.writeIntME(var3[1]);
-								var4.packetBuffer.method9112(var0.field2355.id);
-								var4.packetBuffer.writeIntIME(var0.field2355.childIndex);
+								var4.packetBuffer.writeIntIME(var0.field2355.id);
+								var4.packetBuffer.writeShortLE(var0.field2355.childIndex);
 								var4.packetBuffer.writeInt(var0.field2355.method6409());
-								var4.packetBuffer.method9112(var3[2]);
-								var4.packetBuffer.method9112(var3[0]);
+								var4.packetBuffer.writeIntIME(var3[2]);
+								var4.packetBuffer.writeIntIME(var3[0]);
 								Client.packetWriter.addNode(var4);
 							}
 						}

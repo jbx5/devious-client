@@ -103,7 +103,7 @@ public class class14 {
 				} else if (var0 == 4) {
 					var8 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3173, Client.packetWriter.isaacCipher);
 					var8.packetBuffer.writeShortAdd(var3[var6]);
-					var8.packetBuffer.writeMediumLE(0);
+					var8.packetBuffer.writeByteNeg(0);
 					Client.packetWriter.addNode(var8);
 				} else if (var0 == 6) {
 					var8 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3155, Client.packetWriter.isaacCipher);
@@ -112,7 +112,7 @@ public class class14 {
 					Client.packetWriter.addNode(var8);
 				} else if (var0 == 7) {
 					var8 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3206, Client.packetWriter.isaacCipher);
-					var8.packetBuffer.writeIntIME(var3[var6]);
+					var8.packetBuffer.writeShortLE(var3[var6]);
 					var8.packetBuffer.writeByte(0);
 					Client.packetWriter.addNode(var8);
 				}

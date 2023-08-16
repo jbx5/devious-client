@@ -76,7 +76,7 @@ public class class151 extends class159 {
 			int var9;
 			int var10;
 			if ((var4 & 128) != 0) {
-				var5 = var0.readUnsignedByteAdd();
+				var5 = var0.readUnsignedByteNeg();
 				int var11;
 				if (var5 > 0) {
 					for (var6 = 0; var6 < var5; ++var6) {
@@ -100,15 +100,15 @@ public class class151 extends class159 {
 					}
 				}
 
-				var6 = var0.method9093();
+				var6 = var0.readUnsignedByteSub();
 				if (var6 > 0) {
 					for (var7 = 0; var7 < var6; ++var7) {
 						var8 = var0.readUShortSmart();
 						var9 = var0.readUShortSmart();
 						if (var9 != 32767) {
 							var10 = var0.readUShortSmart();
-							var11 = var0.readUnsignedByteAdd();
-							int var12 = var9 > 0 ? var0.readUnsignedByteAdd() : var11;
+							var11 = var0.readUnsignedByteNeg();
+							int var12 = var9 > 0 ? var0.readUnsignedByteNeg() : var11;
 							var3.addHealthBar(var8, Client.cycle, var9, var10, var11, var12);
 						} else {
 							var3.removeHealthBar(var8);
@@ -129,7 +129,7 @@ public class class151 extends class159 {
 				} else {
 					var13 = null;
 					if ((var5 & 2) == 2) {
-						var7 = var0.readUnsignedIntLE();
+						var7 = var0.readUnsignedByteAdd();
 						var13 = new int[var7];
 
 						for (var8 = 0; var8 < var7; ++var8) {
@@ -149,7 +149,7 @@ public class class151 extends class159 {
 						var14 = new short[var8];
 
 						for (var9 = 0; var9 < var8; ++var9) {
-							var14[var9] = (short)var0.readUnsignedShortLE();
+							var14[var9] = (short)var0.readUnsignedShortAdd();
 						}
 					}
 
@@ -163,13 +163,13 @@ public class class151 extends class159 {
 						var15 = new short[var9];
 
 						for (var10 = 0; var10 < var9; ++var10) {
-							var15[var10] = (short)var0.readUnsignedShortLE();
+							var15[var10] = (short)var0.readUnsignedShortAdd();
 						}
 					}
 
 					var19 = false;
 					if ((var5 & 16) != 0) {
-						var19 = var0.method9093() == 1;
+						var19 = var0.readUnsignedByteSub() == 1;
 					}
 
 					var16 = (long)(++NPC.field1333 - 1);
@@ -178,9 +178,9 @@ public class class151 extends class159 {
 			}
 
 			if ((var4 & 32) != 0) {
-				var5 = var0.readUnsignedShortLE();
+				var5 = var0.readUnsignedShortAdd();
 				var6 = var0.readUnsignedShort();
-				var3.field1237 = var0.readUnsignedByteAdd() == 1;
+				var3.field1237 = var0.readUnsignedByteNeg() == 1;
 				if (Client.revision >= 212) {
 					var3.field1235 = var5;
 					var3.field1236 = var6;
@@ -200,7 +200,7 @@ public class class151 extends class159 {
 					var5 = -1;
 				}
 
-				var6 = var0.method9093();
+				var6 = var0.readUnsignedByteSub();
 				if (var5 == var3.sequence && var5 != -1) {
 					var7 = EnumComposition.SequenceDefinition_get(var5).field2327;
 					if (var7 == 1) {
@@ -224,12 +224,12 @@ public class class151 extends class159 {
 			}
 
 			if ((var4 & 131072) != 0) {
-				var5 = var0.readUnsignedByteAdd();
+				var5 = var0.readUnsignedByteNeg();
 
 				for (var6 = 0; var6 < var5; ++var6) {
-					var7 = var0.method9093();
+					var7 = var0.readUnsignedByteSub();
 					var8 = var0.readUnsignedShortAddLE();
-					var9 = var0.method9188();
+					var9 = var0.readUnsignedIntLE();
 					var3.updateSpotAnimation(var7, var8, var9 >> 16, var9 & 65535);
 				}
 			}
@@ -241,8 +241,8 @@ public class class151 extends class159 {
 			}
 
 			if ((var4 & 16) != 0) {
-				var3.targetIndex = var0.readUnsignedByteSub();
-				var3.targetIndex += var0.method9093() << 16;
+				var3.targetIndex = var0.readUnsignedShortLE();
+				var3.targetIndex += var0.readUnsignedByteSub() << 16;
 				var5 = 16777215;
 				if (var5 == var3.targetIndex) {
 					var3.targetIndex = -1;
@@ -252,9 +252,9 @@ public class class151 extends class159 {
 			if ((var4 & 4096) != 0) {
 				var3.field1249 = var0.readByteSub();
 				var3.field1251 = var0.readByteSub();
-				var3.field1247 = var0.method9095();
-				var3.field1217 = var0.method9078();
-				var3.spotAnimation = var0.readUnsignedByteSub() + Client.cycle;
+				var3.field1247 = var0.readByteNeg();
+				var3.field1217 = var0.readByteAdd();
+				var3.spotAnimation = var0.readUnsignedShortLE() + Client.cycle;
 				var3.field1254 = var0.readUnsignedShort() + Client.cycle;
 				var3.field1255 = var0.readUnsignedShortAddLE();
 				var3.pathLength = 1;
@@ -266,22 +266,22 @@ public class class151 extends class159 {
 			}
 
 			if ((var4 & 65536) != 0) {
-				var5 = var0.method9115();
+				var5 = var0.readUnsignedIntME();
 				var3.turnLeftSequence = (var5 & 1) != 0 ? var0.readUnsignedShortAddLE() : var3.definition.turnLeftSequence;
-				var3.turnRightSequence = (var5 & 2) != 0 ? var0.readUnsignedShortLE() : var3.definition.turnRightSequence;
-				var3.walkSequence = (var5 & 4) != 0 ? var0.readUnsignedByteSub() : var3.definition.walkSequence;
+				var3.turnRightSequence = (var5 & 2) != 0 ? var0.readUnsignedShortAdd() : var3.definition.turnRightSequence;
+				var3.walkSequence = (var5 & 4) != 0 ? var0.readUnsignedShortLE() : var3.definition.walkSequence;
 				var3.walkBackSequence = (var5 & 8) != 0 ? var0.readUnsignedShortAddLE() : var3.definition.walkBackSequence;
-				var3.walkLeftSequence = (var5 & 16) != 0 ? var0.readUnsignedShortLE() : var3.definition.walkLeftSequence;
-				var3.walkRightSequence = (var5 & 32) != 0 ? var0.readUnsignedShortLE() : var3.definition.walkRightSequence;
+				var3.walkLeftSequence = (var5 & 16) != 0 ? var0.readUnsignedShortAdd() : var3.definition.walkLeftSequence;
+				var3.walkRightSequence = (var5 & 32) != 0 ? var0.readUnsignedShortAdd() : var3.definition.walkRightSequence;
 				var3.runSequence = (var5 & 64) != 0 ? var0.readUnsignedShortAddLE() : var3.definition.field2047;
 				var3.field1211 = (var5 & 128) != 0 ? var0.readUnsignedShortAddLE() : var3.definition.field2048;
-				var3.field1252 = (var5 & 256) != 0 ? var0.readUnsignedByteSub() : var3.definition.field2049;
+				var3.field1252 = (var5 & 256) != 0 ? var0.readUnsignedShortLE() : var3.definition.field2049;
 				var3.field1213 = (var5 & 512) != 0 ? var0.readUnsignedShortAddLE() : var3.definition.field2075;
-				var3.field1214 = (var5 & 1024) != 0 ? var0.readUnsignedByteSub() : var3.definition.field2043;
+				var3.field1214 = (var5 & 1024) != 0 ? var0.readUnsignedShortLE() : var3.definition.field2043;
 				var3.field1215 = (var5 & 2048) != 0 ? var0.readUnsignedShortAddLE() : var3.definition.field2052;
-				var3.field1216 = (var5 & 4096) != 0 ? var0.readUnsignedByteSub() : var3.definition.field2059;
-				var3.field1246 = (var5 & 8192) != 0 ? var0.readUnsignedShortLE() : var3.definition.field2076;
-				var3.idleSequence = (var5 & 16384) != 0 ? var0.readUnsignedByteSub() : var3.definition.idleSequence;
+				var3.field1216 = (var5 & 4096) != 0 ? var0.readUnsignedShortLE() : var3.definition.field2059;
+				var3.field1246 = (var5 & 8192) != 0 ? var0.readUnsignedShortAdd() : var3.definition.field2076;
+				var3.idleSequence = (var5 & 16384) != 0 ? var0.readUnsignedShortLE() : var3.definition.idleSequence;
 			}
 
 			if ((var4 & 262144) != 0) {
@@ -319,24 +319,24 @@ public class class151 extends class159 {
 			if ((var4 & 8192) != 0) {
 				var3.field1258 = Client.cycle + var0.readUnsignedShort();
 				var3.field1200 = Client.cycle + var0.readUnsignedShort();
-				var3.field1260 = var0.method9095();
-				var3.field1218 = var0.method9095();
-				var3.field1212 = var0.method9095();
+				var3.field1260 = var0.readByteNeg();
+				var3.field1218 = var0.readByteNeg();
+				var3.field1212 = var0.readByteNeg();
 				var3.field1250 = (byte)var0.readUnsignedByte();
 			}
 
 			if ((var4 & 256) != 0) {
-				var5 = var0.readUnsignedIntLE();
+				var5 = var0.readUnsignedByteAdd();
 				if ((var5 & 1) == 1) {
 					var3.method2586();
 				} else {
 					var13 = null;
 					if ((var5 & 2) == 2) {
-						var7 = var0.readUnsignedIntLE();
+						var7 = var0.readUnsignedByteAdd();
 						var13 = new int[var7];
 
 						for (var8 = 0; var8 < var7; ++var8) {
-							var9 = var0.readUnsignedShortLE();
+							var9 = var0.readUnsignedShortAdd();
 							var9 = var9 == 65535 ? -1 : var9;
 							var13[var8] = var9;
 						}
@@ -352,7 +352,7 @@ public class class151 extends class159 {
 						var14 = new short[var8];
 
 						for (var9 = 0; var9 < var8; ++var9) {
-							var14[var9] = (short)var0.readUnsignedShortLE();
+							var14[var9] = (short)var0.readUnsignedShortAdd();
 						}
 					}
 
@@ -366,13 +366,13 @@ public class class151 extends class159 {
 						var15 = new short[var9];
 
 						for (var10 = 0; var10 < var9; ++var10) {
-							var15[var10] = (short)var0.readUnsignedByteSub();
+							var15[var10] = (short)var0.readUnsignedShortLE();
 						}
 					}
 
 					var19 = false;
 					if ((var5 & 16) != 0) {
-						var19 = var0.method9093() == 1;
+						var19 = var0.readUnsignedByteSub() == 1;
 					}
 
 					var16 = (long)(++NPC.field1325 - 1);
@@ -381,7 +381,7 @@ public class class151 extends class159 {
 			}
 
 			if ((var4 & 16384) != 0) {
-				var3.method2570(var0.readUnsignedIntLE());
+				var3.method2570(var0.readUnsignedByteAdd());
 			}
 
 			if ((var4 & 1024) != 0) {
