@@ -68,6 +68,7 @@ import net.runelite.api.Tile;
 import net.runelite.api.VarPlayer;
 import net.runelite.api.VarbitComposition;
 import net.runelite.api.Varbits;
+import net.runelite.api.WidgetNode;
 import net.runelite.api.World;
 import net.runelite.api.WorldType;
 import net.runelite.api.clan.ClanChannel;
@@ -174,6 +175,7 @@ import java.util.Collections;
 import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -3589,6 +3591,75 @@ public abstract class RSClientMixin implements RSClient
 	{
 		client.getClips().setViewportZoom(zoom);
 		client.setScale(zoom);
+	}
+
+	@Inject
+	@Override
+	public WidgetNode openInterface(int componentId, int interfaceId, int modalMode)
+	{
+		assert this.isClientThread() : "openInterface must be called on client thread";
+
+		Widget component = this.getWidget(componentId);
+		if (component == null)
+		{
+			throw new IllegalStateException("component does not exist");
+		}
+		else if (component.getType() != 0)
+		{
+			throw new IllegalStateException("component is not a layer");
+		}
+		else
+		{
+			RSInterfaceParent interfaceNode = (RSInterfaceParent) this.getComponentTable().get((long) componentId);
+			if (interfaceNode != null)
+			{
+				this.closeInterface(interfaceNode, interfaceId != interfaceNode.getId());
+			}
+
+			Iterator iter = this.getComponentTable().iterator();
+
+			RSInterfaceParent iface;
+			do
+			{
+				if (!iter.hasNext())
+				{
+					interfaceNode = newInterfaceParent();
+					interfaceNode.setId(interfaceId);
+					interfaceNode.setModalMode(modalMode);
+					this.getComponentTable().put(interfaceNode, (long) componentId);
+					this.loadInterface(interfaceId);
+					this.revalidateWidgetScroll(this.getWidgets()[componentId >> 16], component, false);
+					this.copy$runWidgetOnLoadListener(interfaceId);
+					int topLevelInterfaceId = this.getTopLevelInterfaceId();
+					if (topLevelInterfaceId != -1 && this.loadInterface(topLevelInterfaceId))
+					{
+						this.runComponentCloseListeners(this.getWidgets()[topLevelInterfaceId], 1);
+					}
+
+					return interfaceNode;
+				}
+
+				iface = (RSInterfaceParent) iter.next();
+			}
+			while (iface.getId() != interfaceId);
+
+			throw new IllegalStateException("interface " + interfaceId + " is already open");
+		}
+	}
+
+	@Inject
+	@Override
+	public void closeInterface(WidgetNode interfaceNode, boolean unload)
+	{
+		WidgetNode widgetNode = (WidgetNode) interfaceNode;
+		if (widgetNode != this.getComponentTable().get(widgetNode.getHash()))
+		{
+			throw new IllegalArgumentException("WidgetNode is no longer valid");
+		}
+		else
+		{
+			this.closeRSInterface(widgetNode, unload);
+		}
 	}
 }
 

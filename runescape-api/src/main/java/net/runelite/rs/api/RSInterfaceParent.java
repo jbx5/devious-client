@@ -9,7 +9,13 @@ public interface RSInterfaceParent extends RSNode, WidgetNode
 	@Override
 	int getId();
 
+	@Import("group")
+	void setId(int id);
+
 	@Import("type")
 	@Override
 	int getModalMode();
+
+	@Import("type")
+	void setModalMode(int modalMode);
 }
