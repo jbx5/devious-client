@@ -1,6 +1,7 @@
 package net.unethicalite.api.items;
 
 import net.unethicalite.api.commons.Predicates;
+import net.unethicalite.api.commons.Time;
 import net.unethicalite.api.game.Vars;
 import net.unethicalite.api.widgets.Dialog;
 import net.unethicalite.api.widgets.Widgets;
@@ -130,7 +131,7 @@ public class Trade
 				item.interact("Offer-10");
 				break;
 			default:
-				if (quantity > Inventory.getCount(true, item.getId()))
+				if (quantity >= Inventory.getCount(true, item.getId()))
 				{
 					item.interact("Offer-All");
 				}
@@ -138,6 +139,7 @@ public class Trade
 				{
 					item.interact("Offer-X");
 					Dialog.enterAmount(quantity);
+					Time.sleepTick();
 				}
 				break;
 		}
