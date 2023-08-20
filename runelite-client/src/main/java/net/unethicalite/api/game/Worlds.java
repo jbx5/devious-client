@@ -184,9 +184,13 @@ public class Worlds
 	{
 		if (Game.isOnLoginScreen())
 		{
-			openLobbyWorlds();
+			if (openLobbyWorlds())
+			{
+				Time.sleep(200);
+				closeLobbyWorlds();
+				return;
+			}
 			Time.sleep(200);
-			closeLobbyWorlds();
 			return;
 		}
 
@@ -206,10 +210,14 @@ public class Worlds
 		Static.getClient().interact(1, MenuAction.CC_OP.getId(), -1, WidgetInfo.WORLD_SWITCHER_BUTTON.getId());
 	}
 
-	public static void openLobbyWorlds()
+	public static boolean openLobbyWorlds()
 	{
-		Static.getClient().loadWorlds();
-		Static.getClient().setWorldSelectOpen(true);
+		if (Static.getClient().loadWorlds())
+		{
+			Static.getClient().setWorldSelectOpen(true);
+			return true;
+		}
+		return false;
 	}
 
 	public static void closeLobbyWorlds()
