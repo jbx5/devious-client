@@ -13,4 +13,7 @@ public interface RSIterableNodeHashTable extends IterableHashTable
 	@Import("put")
 	@Override
 	void put(Node node, long hash);
+
+	@Import("clear")
+	void clear();
 }
