@@ -274,7 +274,7 @@ public abstract class RSActorMixin implements RSActor
 	@Override
 	public void removeSpotAnim(int id)
 	{
-		ActorSpotAnim actorSpotAnim = this.getSpotAnims().get(id);
+		ActorSpotAnim actorSpotAnim = (ActorSpotAnim) this.getSpotAnims().get(id);
 		if (actorSpotAnim != null)
 		{
 			actorSpotAnim.unlink();
@@ -282,14 +282,13 @@ public abstract class RSActorMixin implements RSActor
 		}
 	}
 
-	/*@FieldHook("spotAnimation")
 	@Inject
-	public void spotAnimationChanged(int idx)
+	@Override
+	public void clearSpotAnims()
 	{
-		GraphicChanged graphicChanged = new GraphicChanged();
-		graphicChanged.setActor(this);
-		client.getCallbacks().post(graphicChanged);
-	}*/
+		this.getSpotAnims().clear();
+		this.setGraphicsCount(0);
+	}
 
 	@FieldHook("targetIndex")
 	@Inject
@@ -433,7 +432,8 @@ public abstract class RSActorMixin implements RSActor
 	{
 		if (id == -1)
 		{
-			this.removeSpotAnim(getGraphic());
+			this.getSpotAnims().clear();
+			this.setGraphicsCount(0);
 		}
 		else
 		{

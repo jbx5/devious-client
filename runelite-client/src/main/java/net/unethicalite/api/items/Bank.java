@@ -215,6 +215,7 @@ public class Bank extends Items
 		if (action.equals("Deposit-X"))
 		{
 			Dialog.enterAmount(amount);
+			Time.sleepTick();
 		}
 	}
 
@@ -272,6 +273,7 @@ public class Bank extends Items
 		if (action.equals("Withdraw-X"))
 		{
 			Dialog.enterAmount(amount);
+			Time.sleepTick();
 		}
 	}
 

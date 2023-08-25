@@ -76,6 +76,7 @@ import net.runelite.api.clan.ClanRank;
 import net.runelite.api.clan.ClanSettings;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
+import net.runelite.api.events.AccountHashChanged;
 import net.runelite.api.events.BeforeMenuRender;
 import net.runelite.api.events.CanvasSizeChanged;
 import net.runelite.api.events.ChatMessage;
@@ -3659,6 +3660,16 @@ public abstract class RSClientMixin implements RSClient
 		else
 		{
 			this.closeRSInterface(widgetNode, unload);
+		}
+	}
+
+	@Inject
+	@FieldHook("accountHash")
+	public void onAccountHashChanged(int var0)
+	{
+		if (this.callbacks != null)
+		{
+			this.callbacks.post(new AccountHashChanged());
 		}
 	}
 }

@@ -133,14 +133,6 @@ public interface Tile extends Locatable
 	int getPhysicalLevel();
 
 	/**
-	 * Computes and returns whether this tile has line of sight to another.
-	 *
-	 * @param other the other tile
-	 * @return true if there is no sight obstruction, false otherwise
-	 */
-	boolean hasLineOfSightTo(Tile other);
-
-	/**
 	 * Computes and returns the path from this tile to another.
 	 *
 	 * @param other the other tile
