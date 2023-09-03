@@ -78,9 +78,6 @@ public interface Model extends Mesh, Renderable
 
 	byte[] getTextureFaces();
 
-	@Deprecated
-	float[] getFaceTextureUVCoordinates();
-
 	int[] getTexIndices1();
 	int[] getTexIndices2();
 	int[] getTexIndices3();

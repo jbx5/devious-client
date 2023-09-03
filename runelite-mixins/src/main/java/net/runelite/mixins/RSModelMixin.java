@@ -62,9 +62,6 @@ public abstract class RSModelMixin implements RSModel
 	private int rl$uvBufferOffset;
 
 	@Inject
-	private float[] rl$faceTextureUVCoordinates;
-
-	@Inject
 	private int[] rl$vertexNormalsX;
 
 	@Inject
@@ -77,31 +74,6 @@ public abstract class RSModelMixin implements RSModel
 	@Inject
 	public void rl$init(RSModel[] models, int length)
 	{
-		if (getFaceTextures() != null)
-		{
-			int count = getFaceCount();
-			float[] uv = new float[count * 6];
-			int idx = 0;
-
-			for (int i = 0; i < length; ++i)
-			{
-				RSModel model = models[i];
-				if (model != null)
-				{
-					float[] modelUV = model.getFaceTextureUVCoordinates();
-
-					if (modelUV != null)
-					{
-						System.arraycopy(modelUV, 0, uv, idx, model.getFaceCount() * 6);
-					}
-
-					idx += model.getFaceCount() * 6;
-				}
-			}
-
-			setFaceTextureUVCoordinates(uv);
-		}
-
 		vertexNormals();
 	}
 
@@ -162,16 +134,14 @@ public abstract class RSModelMixin implements RSModel
 	public Model copy$contourGround(int[][] tileHeights, int packedX, int height, int packedY, boolean copy, int contouredGround)
 	{
 		// With contouredGround >= 0 lighted models are countoured, so we need to copy uvs
-		Model model = copy$contourGround(tileHeights, packedX, height, packedY, copy, contouredGround);
-		if (model != null && model != this)
+		RSModel rsModel = (RSModel) copy$contourGround(tileHeights, packedX, height, packedY, copy, contouredGround);
+		if (rsModel != this)
 		{
-			RSModel rsModel = (RSModel) model;
 			rsModel.setVertexNormalsX(rl$vertexNormalsX);
 			rsModel.setVertexNormalsY(rl$vertexNormalsY);
 			rsModel.setVertexNormalsZ(rl$vertexNormalsZ);
-			rsModel.setFaceTextureUVCoordinates(rl$faceTextureUVCoordinates);
 		}
-		return model;
+		return rsModel;
 	}
 
 	@Copy("drawFace")
@@ -194,7 +164,6 @@ public abstract class RSModelMixin implements RSModel
 		rsModel.setVertexNormalsX(rl$vertexNormalsX);
 		rsModel.setVertexNormalsY(rl$vertexNormalsY);
 		rsModel.setVertexNormalsZ(rl$vertexNormalsZ);
-		rsModel.setFaceTextureUVCoordinates(rl$faceTextureUVCoordinates);
 	}
 
 	@Inject
@@ -427,20 +396,6 @@ public abstract class RSModelMixin implements RSModel
 	public void setUvBufferOffset(int bufferOffset)
 	{
 		rl$uvBufferOffset = bufferOffset;
-	}
-
-	@Inject
-	@Override
-	public float[] getFaceTextureUVCoordinates()
-	{
-		return rl$faceTextureUVCoordinates;
-	}
-
-	@Inject
-	@Override
-	public void setFaceTextureUVCoordinates(float[] faceTextureUVCoordinates)
-	{
-		rl$faceTextureUVCoordinates = faceTextureUVCoordinates;
 	}
 
 	@Inject

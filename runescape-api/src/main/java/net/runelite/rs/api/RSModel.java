@@ -163,9 +163,6 @@ public interface RSModel extends RSRenderable, Model
 	 */
 	Shape getConvexHull(int localX, int localY, int orientation, int tileHeight);
 
-	float[] getFaceTextureUVCoordinates();
-	void setFaceTextureUVCoordinates(float[] faceTextureUVCoordinates);
-
 	int[] getVertexNormalsX();
 	void setVertexNormalsX(int[] vertexNormalsX);
 
