@@ -81,7 +81,7 @@ public abstract class RSActorMixin implements RSActor
 	@Override
 	public boolean isInteracting()
 	{
-		return getInteracting() != null;
+		return getRSInteracting() != -1;
 	}
 
 	@Inject
