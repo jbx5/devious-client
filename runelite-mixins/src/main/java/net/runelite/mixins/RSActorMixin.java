@@ -523,4 +523,50 @@ public abstract class RSActorMixin implements RSActor
 			return 0;
 		}
 	}
+
+	@Inject
+	@Override
+	public int getAnimation()
+	{
+		int animation = getRSAnimation();
+		switch (animation)
+		{
+			case 7592:
+			case 7593:
+			case 7949:
+			case 7950:
+			case 7951:
+			case 7952:
+			case 7957:
+			case 7960:
+			case 8059:
+			case 8123:
+			case 8124:
+			case 8125:
+			case 8126:
+			case 8127:
+			case 8234:
+			case 8235:
+			case 8236:
+			case 8237:
+			case 8238:
+			case 8241:
+			case 8242:
+			case 8243:
+			case 8244:
+			case 8245:
+			case 8248:
+			case 8249:
+			case 8250:
+			case 8251:
+			case 8252:
+			case 8255:
+			case 8256:
+			case 8257:
+			case 8258:
+				return -1;
+			default:
+				return animation;
+		}
+	}
 }
