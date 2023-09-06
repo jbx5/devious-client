@@ -62,8 +62,7 @@ public interface RSActor extends RSRenderable, Actor
 	// Animation
 
 	@Import("sequence")
-	@Override
-	int getAnimation();
+	int getRSAnimation();
 
 	@Import("sequence")
 	@Override

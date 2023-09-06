@@ -26,7 +26,6 @@ package net.runelite.rs.api;
 
 import java.awt.Shape;
 import java.util.HashMap;
-
 import net.runelite.api.AABB;
 import net.runelite.api.Model;
 import net.runelite.mapping.Import;
@@ -135,6 +134,9 @@ public interface RSModel extends RSRenderable, Model
 	@Override
 	int getDiameter();
 
+	@Import("aabb")
+	HashMap<Integer, AABB> getAABBMap();
+
 	@Import("faceTextures")
 	@Override
 	short[] getFaceTextures();
@@ -152,7 +154,6 @@ public interface RSModel extends RSRenderable, Model
 	int getBottomY();;
 	
 	@Import("drawFace")
-	@Override
 	void drawFace(int face);
 
 	void interpolateFrames(RSFrames frames, int frameId, RSFrames nextFrames, int nextFrameId, int interval, int intervalCount);
@@ -161,9 +162,6 @@ public interface RSModel extends RSRenderable, Model
 	 * Compute the convex hull of this model
 	 */
 	Shape getConvexHull(int localX, int localY, int orientation, int tileHeight);
-
-	float[] getFaceTextureUVCoordinates();
-	void setFaceTextureUVCoordinates(float[] faceTextureUVCoordinates);
 
 	int[] getVertexNormalsX();
 	void setVertexNormalsX(int[] vertexNormalsX);
@@ -189,10 +187,6 @@ public interface RSModel extends RSRenderable, Model
 	@Import("overrideLuminance")
 	@Override
 	byte getOverrideLuminance();
-
-	@Import("aabb")
-	@Override
-	HashMap<Integer, AABB> getAABBMap();
 
 	@Import("textureFaces")
 	@Override
