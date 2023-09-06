@@ -71,12 +71,13 @@ public abstract class RSModelDataMixin implements RSModelData
 			return null;
 		}
 
-		vertexNormals();
-
-		rsModel.setVertexNormalsX(vertexNormalsX);
-		rsModel.setVertexNormalsY(vertexNormalsY);
-		rsModel.setVertexNormalsZ(vertexNormalsZ);
-
+		if ((client.getGpuFlags() & 4) == 4)
+		{
+			vertexNormals();
+			rsModel.setVertexNormalsX(vertexNormalsX);
+			rsModel.setVertexNormalsY(vertexNormalsY);
+			rsModel.setVertexNormalsZ(vertexNormalsZ);
+		}
 		return rsModel;
 	}
 
