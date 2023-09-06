@@ -41,7 +41,7 @@ public abstract class ClickboxMixin implements RSClient
 			return;
 		}
 
-		if (!boundingboxCheck(model, _x, _y, _z))
+		if (!boundingboxCheck(model, orientation, _x, _y, _z))
 		{
 			return;
 		}
@@ -205,7 +205,7 @@ public abstract class ClickboxMixin implements RSClient
 	}
 
 	@Inject
-	private boolean boundingboxCheck(Model model, int x, int y, int z)
+	private boolean boundingboxCheck(Model model, int orientation, int x, int y, int z)
 	{
 		final int cameraPitch = client.getCameraPitch();
 		final int cameraYaw = client.getCameraYaw();
@@ -246,7 +246,7 @@ public abstract class ClickboxMixin implements RSClient
 		int field601 = Math.abs(field638);
 		int field38 = Math.abs(field1846);
 
-		AABB aabb = model.getAABB(model.getLastOrientation());
+		AABB aabb = model.getAABB(orientation);
 		int var38 = x + aabb.getCenterX();
 		int var39 = y + aabb.getCenterY();
 		int var40 = z + aabb.getCenterZ();
