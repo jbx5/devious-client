@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019 Owain van Brakel <https://github.com/Owain94>
+ * Copyright (c) 2023, Adam <Adam@sigterm.info>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,17 +22,18 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package net.runelite.client.util;
 
-object ProjectVersions {
-    const val launcherVersion = "1.0.0"
-    const val rlVersion = "1.10.11"
+import java.util.EnumSet;
+import net.runelite.http.api.worlds.WorldType;
+import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 
-    const val openosrsVersion = "4.31.2"
-
-    const val rsversion = 216
-    const val cacheversion = 165
-
-    const val lombokVersion = "1.18.22"
-
-    const val unethicaliteVersion = "1.0.19-EXPERIMENTAL"
+public class WorldUtilTest
+{
+	@Test
+	public void testToWorldTypes()
+	{
+		assertEquals(WorldType.values().length, WorldUtil.toWorldTypes(EnumSet.allOf(WorldType.class)).size());
+	}
 }
