@@ -35,11 +35,9 @@ import javax.inject.Singleton;
 import lombok.Getter;
 import lombok.Setter;
 import net.runelite.api.Client;
-import net.runelite.api.Constants;
 import net.runelite.api.Player;
-import static net.runelite.api.SpriteID.WINDOW_CLOSE_BUTTON_RED_X;
-import static net.runelite.api.SpriteID.WINDOW_CLOSE_BUTTON_RED_X_HOVERED;
 import net.runelite.api.SpritePixels;
+import net.runelite.api.Tile;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.client.game.SpriteManager;
@@ -48,6 +46,8 @@ import net.runelite.client.ui.overlay.OverlayLayer;
 import net.runelite.client.ui.overlay.OverlayPosition;
 import net.runelite.client.ui.overlay.OverlayPriority;
 import net.runelite.client.ui.overlay.components.BackgroundComponent;
+import static net.runelite.api.SpriteID.WINDOW_CLOSE_BUTTON_RED_X;
+import static net.runelite.api.SpriteID.WINDOW_CLOSE_BUTTON_RED_X_HOVERED;
 
 @Singleton
 class InstanceMapOverlay extends Overlay
@@ -126,7 +126,6 @@ class InstanceMapOverlay extends Overlay
 			viewedPlane = client.getPlane();
 		}
 		mapImage = null;
-		closeButtonBounds = null;
 	}
 
 	/**
@@ -171,8 +170,7 @@ class InstanceMapOverlay extends Overlay
 		if (image == null)
 		{
 			SpritePixels map = client.drawInstanceMap(viewedPlane);
-			// larger instance map doesn't fit on fixed mode, so reduce to 104x104
-			image = minimapToBufferedImage(map, client.isResized() ? client.getExpandedMapLoading() : 0);
+			image = minimapToBufferedImage(map);
 			synchronized (this)
 			{
 				if (showMap)
@@ -196,7 +194,7 @@ class InstanceMapOverlay extends Overlay
 
 		if (client.getPlane() == viewedPlane)//If we are not viewing the plane we are on, don't show player's position
 		{
-			drawPlayerDot(graphics, client.getLocalPlayer(), Color.white, Color.black, client.isResized() ? client.getExpandedMapLoading() : 0);
+			drawPlayerDot(graphics, client.getLocalPlayer(), Color.white, Color.black);
 		}
 
 		if (isCloseButtonHovered)
@@ -213,17 +211,29 @@ class InstanceMapOverlay extends Overlay
 	}
 
 	/**
+	 * Get the files for the current viewed plane
+	 *
+	 * @return
+	 */
+	private Tile[][] getTiles()
+	{
+		Tile[][][] sceneTiles = client.getScene().getTiles();
+		return sceneTiles[viewedPlane];
+	}
+
+	/**
 	 * Draws the players position as a dot on the map.
 	 *
 	 * @param graphics graphics to be drawn to
 	 */
 	private void drawPlayerDot(Graphics2D graphics, Player player,
-		Color dotColor, Color outlineColor, int expandedChunks)
+		Color dotColor, Color outlineColor)
 	{
 		LocalPoint playerLoc = player.getLocalLocation();
 
-		int tileX = playerLoc.getSceneX() + expandedChunks * 8;
-		int tileY = ((Constants.SCENE_SIZE + expandedChunks * 16) - 1) - (playerLoc.getSceneY() + expandedChunks * 8); // flip the y value
+		Tile[][] tiles = getTiles();
+		int tileX = playerLoc.getSceneX();
+		int tileY = (tiles[0].length - 1) - playerLoc.getSceneY(); // flip the y value
 
 		int x = tileX * TILE_SIZE;
 		int y = tileY * TILE_SIZE;
@@ -241,27 +251,17 @@ class InstanceMapOverlay extends Overlay
 	public void onGameStateChange(GameStateChanged event)
 	{
 		mapImage = null;
-		closeButtonBounds = null;
 	}
 
-	private static BufferedImage minimapToBufferedImage(SpritePixels spritePixels, int expandedChunks)
+	private static BufferedImage minimapToBufferedImage(SpritePixels spritePixels)
 	{
 		int width = spritePixels.getWidth();
 		int height = spritePixels.getHeight();
 		int[] pixels = spritePixels.getPixels();
 		BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 		img.setRGB(0, 0, width, height, pixels, 0, width);
-		int maxChunks = ((Constants.EXTENDED_SCENE_SIZE - Constants.SCENE_SIZE) / 2) / 8;
-		if (expandedChunks < maxChunks)
-		{
-			int cropChunks = maxChunks - expandedChunks;
-			img = img.getSubimage(
-				TILE_SIZE * (cropChunks * 8),
-				TILE_SIZE * (cropChunks * 8),
-				(Constants.SCENE_SIZE + expandedChunks * 8) * TILE_SIZE,
-				(Constants.SCENE_SIZE + expandedChunks * 8) * TILE_SIZE
-			);
-		}
+		// 24624 / 512 and 24624 % 512 are both 48
+		img = img.getSubimage(48, 48, TILE_SIZE * 104, TILE_SIZE * 104);
 		return img;
 	}
 
