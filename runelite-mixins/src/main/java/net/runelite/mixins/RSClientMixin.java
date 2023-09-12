@@ -3679,5 +3679,22 @@ public abstract class RSClientMixin implements RSClient
 			this.callbacks.post(new AccountHashChanged());
 		}
 	}
+
+	@Inject
+	private int expandedMapLoadingChunks;
+
+	@Inject
+	@Override
+	public void setExpandedMapLoading(int chunks)
+	{
+		this.expandedMapLoadingChunks = Ints.constrainToRange(chunks, 0, 5);
+	}
+
+	@Inject
+	@Override
+	public int getExpandedMapLoading()
+	{
+		return expandedMapLoadingChunks;
+	}
 }
 
