@@ -248,7 +248,7 @@ public abstract class RSClientMixin implements RSClient
 	private static boolean invertYaw;
 
 	@Inject
-	private boolean gpu;
+	private int gpuFlags;
 
 	@Inject
 	private static boolean oldIsResized;
@@ -2351,14 +2351,21 @@ public abstract class RSClientMixin implements RSClient
 	@Override
 	public boolean isGpu()
 	{
-		return gpu;
+		return (gpuFlags & 1) == 1;
 	}
 
 	@Inject
 	@Override
-	public void setGpu(boolean gpu)
+	public void setGpuFlags(int gpuFlags)
 	{
-		this.gpu = gpu;
+		this.gpuFlags = gpuFlags;
+	}
+
+	@Inject
+	@Override
+	public int getGpuFlags()
+	{
+		return gpuFlags;
 	}
 
 	@Inject
@@ -3671,6 +3678,23 @@ public abstract class RSClientMixin implements RSClient
 		{
 			this.callbacks.post(new AccountHashChanged());
 		}
+	}
+
+	@Inject
+	private int expandedMapLoadingChunks;
+
+	@Inject
+	@Override
+	public void setExpandedMapLoading(int chunks)
+	{
+		this.expandedMapLoadingChunks = Ints.constrainToRange(chunks, 0, 5);
+	}
+
+	@Inject
+	@Override
+	public int getExpandedMapLoading()
+	{
+		return expandedMapLoadingChunks;
 	}
 }
 

@@ -30,7 +30,6 @@ import java.util.List;
 import net.runelite.api.AABB;
 import net.runelite.api.Model;
 import net.runelite.api.Perspective;
-import net.runelite.api.hooks.DrawCallbacks;
 import net.runelite.api.mixins.Copy;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.MethodHook;
@@ -128,6 +127,23 @@ public abstract class RSModelMixin implements RSModel
 		return triangles;
 	}
 
+	@Inject
+	private RSModel unskewedModel;
+
+	@Inject
+	@Override
+	public void setUnskewedModel(RSModel unskewedModel)
+	{
+		this.unskewedModel = unskewedModel;
+	}
+
+	@Inject
+	@Override
+	public RSModel getUnskewedModel()
+	{
+		return unskewedModel;
+	}
+
 	@Copy("contourGround")
 	@Replace("contourGround")
 	@SuppressWarnings("InfiniteRecursion")
@@ -140,11 +156,15 @@ public abstract class RSModelMixin implements RSModel
 			rsModel.setVertexNormalsX(rl$vertexNormalsX);
 			rsModel.setVertexNormalsY(rl$vertexNormalsY);
 			rsModel.setVertexNormalsZ(rl$vertexNormalsZ);
+			if ((client.getGpuFlags() & 2) == 2)
+			{
+				rsModel.setUnskewedModel(this);
+			}
 		}
 		return rsModel;
 	}
 
-	@Copy("drawFace")
+	/*@Copy("drawFace")
 	@Replace("drawFace")
 	public void copy$drawFace(int face)
 	{
@@ -153,7 +173,7 @@ public abstract class RSModelMixin implements RSModel
 		{
 			copy$drawFace(face);
 		}
-	}
+	}*/
 
 	@MethodHook("buildSharedModel")
 	@Inject
