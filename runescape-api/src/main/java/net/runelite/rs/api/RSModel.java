@@ -172,6 +172,9 @@ public interface RSModel extends RSRenderable, Model
 	int[] getVertexNormalsZ();
 	void setVertexNormalsZ(int[] vertexNormalsZ);
 
+	RSModel getUnskewedModel();
+	void setUnskewedModel(RSModel unskewedModel);
+
 	@Import("overrideAmount")
 	@Override
 	byte getOverrideAmount();
