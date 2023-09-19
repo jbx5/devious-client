@@ -273,7 +273,59 @@ public final class AnimationID
 	public static final int VERZIK_P2_PURPLE_NYLO_EXPLOSION = 8078;
 	public static final int VERZIK_P2_RED_NYLO_EXPLOSION = 8097;
 
-
 	// POH Animations
 	public static final int INCENSE_BURNER = 3687;
+
+	// Weapon Animation IDs
+	public static final int ELDER_MAUL_WHACK = 7516;
+	public static final int GHAZI_RAPIER_STAB = 8145;
+	public static final int OSMUMTENS_FANG = 9471;
+	public static final int DRAGON_WARHAMMER_SPEC = 1378;
+	public static final int ANCIENT_GODSWORD_WHACK = 7644;
+	public static final int ANCIENT_GODSWORD_SPEC = 9171;
+	public static final int INQUISITOR_MACE_WHACK = 4503;
+	public static final int ZARYTE_CROSSBOW_BOLT = 9166;
+	public static final int ZARYTE_CROSSBOW_SPEC = 9166;
+	public static final int DRAGON_KNIFE_THROW = 0;
+	public static final int DRAGON_KNIFE_SPEC = 0;
+	public static final int STAFF_OF_THE_DEAD_SWIPE = 440;
+	public static final int AGS_SPEC = 7644;
+	public static final int AGS_WHACK = 7045;
+	public static final int HEAVY_BALLISTA_POKE = 7218;
+	public static final int BARRAGE = 1979;
+	public static final int BLITZ = 1978;
+	public static final int CROSSBOW = 4230;
+	public static final int MORRIGANS_JAVELIN = 929;
+	public static final int AHRIMS_STAFF_BASH = 2078;
+	public static final int STAFF_OF_LIGHT_JAB = 428;
+	public static final int VLS_SPEC = 7515;
+	public static final int VLS_SWIPE = 390;
+	public static final int WHIP_LASH = 1658;
+	public static final int RAPIER_POKE = 8145;
+	public static final int FANG_STAB = 9471;
+	public static final int FANG_SLASH = 390;
+	public static final int DDS_SPEC = 1062;
+	public static final int DDS_POKE = 376;
+	public static final int DRAGON_CLAW_SPEC = 7514;
+	public static final int DRAGON_CLAW_SWIPE = 393;
+	public static final int STAT_WARHAMMER_SPEC = 1378;
+	public static final int OBBY_MAUL = 2661;
+	public static final int STAT_WARHAMMER_SMACK = 401;
+	public static final int DARK_BOW = 426;
+	public static final int VOID_WAKER = 1378;
+	public static final int MSB = 426;
+	public static final int ARMADYL_GODSWORD_SPEC = 7644;
+	public static final int ARMADYL_GODSWORD_OR_SPEC = 7645;
+	public static final int ARMADYL_GODSWORD_SLASH = 7045;
+	public static final int ARMADYL_GODSWORD_SMASH = 7054;
+	public static final int ARMADYL_GODSWORD_BLOCK = 7055;
+	public static final int DARK_BOW_SPEC = 426;
+	public static final int HEAVY_BALLISTA_SPEC = 7222;
+	public static final int GRANITE_MAUL_SPEC = 1667;
+	public static final int DRAGON_THROWNAXE_SPEC = 7521;
+	public static final int REGULAR_TELE_ANIMATION = 714;
+	public static final int TAB_TELE_ANIMATION = 4069;
+	public static final int DH_AXE = 2067;
+	public static final int POD_ANIMATION = 4544;
+	
 }
