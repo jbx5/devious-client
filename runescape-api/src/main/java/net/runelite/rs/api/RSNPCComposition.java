@@ -58,6 +58,22 @@ public interface RSNPCComposition extends NPCComposition
 	@Override
 	int getSize();
 
+	@Import("recolorFrom")
+	@Override
+	short[] getColorToReplace();
+
+	@Import("recolorTo")
+	@Override
+	short[] getColorToReplaceWith();
+
+	@Import("widthScale")
+	@Override
+	int getWidthScale();
+
+	@Import("heightScale")
+	@Override
+	int getHeightScale();
+
 	@Import("headIconArchiveIds")
 	int[] getHeadIconArchiveIds();
 
