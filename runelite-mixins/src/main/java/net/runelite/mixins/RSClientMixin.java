@@ -3191,7 +3191,6 @@ public abstract class RSClientMixin implements RSClient
 		check("StructDefinition_cached", client.getRSStructCompositionCache());
 		check("HealthBarDefinition_cached", client.getHealthBarCache());
 		check("HealthBarDefinition_cachedSprites", client.getHealthBarSpriteCache());
-		check("Widget_cachedSprites", client.getWidgetSpriteCache());
 		check("ItemDefinition_cached", client.getItemCompositionCache());
 		check("VarbitDefinition_cached", client.getVarbitCache());
 		check("EnumDefinition_cached", client.getEnumDefinitionCache());
@@ -3215,9 +3214,6 @@ public abstract class RSClientMixin implements RSClient
 		check("SpotAnimationDefinition_cached", client.getSpotAnimationDefinitionCache());
 		check("VarcInt_cached", client.getVarcIntCache());
 		check("VarpDefinition_cached", client.getVarpDefinitionCache());
-		check("Widget_cachedModels", client.getModelsCache());
-		check("Widget_cachedFonts", client.getFontsCache());
-		check("Widget_cachedSpriteMasks", client.getSpriteMasksCache());
 		check("DBRowType_cache", client.getDbRowTypeCache());
 		check("DBTableType_cache", client.getDbTableTypeCache());
 		check("DBTableIndex_cache", client.getDbTableIndexCache());

@@ -2875,7 +2875,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 			}
 
 			int var1;
-			for (var1 = 0; var1 < 100 && this.method1268(packetWriter); ++var1) {
+			for (var1 = 0; var1 < 100 && this.method1434(packetWriter); ++var1) {
 			}
 
 			if (gameState == 30) {
@@ -3769,7 +3769,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 		viewportY = -1;
 		if (rootInterface != -1) {
 			rootWidgetCount = 0;
-			class410.method7604(rootInterface, 0, 0, class340.canvasWidth, class491.canvasHeight, 0, 0, -1);
+			class410.drawWidgets(rootInterface, 0, 0, class340.canvasWidth, class491.canvasHeight, 0, 0, -1);
 		}
 
 		Rasterizer2D.Rasterizer2D_resetClip();
@@ -3962,7 +3962,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 		descriptor = "(Lez;I)Z",
 		garbageValue = "1463612350"
 	)
-	final boolean method1268(PacketWriter var1) {
+	@Export("method1434")
+	final boolean method1434(PacketWriter var1) {
 		AbstractSocket var2 = var1.getSocket();
 		PacketBuffer var3 = var1.packetBuffer;
 		if (var2 == null) {

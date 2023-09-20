@@ -11,7 +11,7 @@ public interface RSWidgetDefinition
 	boolean loadInterface(int interfaceId);
 
 	@Import("Widget_cachedSprites")
-	RSEvictingDualNodeHashTable getRSWidgetSpriteCache();
+	RSEvictingDualNodeHashTable getWidgetSpriteCache();
 
 	@Import("Widget_cachedModels")
 	RSEvictingDualNodeHashTable getModelsCache();
@@ -21,4 +21,10 @@ public interface RSWidgetDefinition
 
 	@Import("Widget_cachedSpriteMasks")
 	RSEvictingDualNodeHashTable getSpriteMasksCache();
+
+	@Import("widgetArchive")
+	RSAbstractArchive getWidgetArchive();
+
+	@Import("getWidgetChild")
+	RSWidget getWidgetChild(int parent, int child);
 }

@@ -1760,7 +1760,7 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("widgetDefaultMenuAction")
 	void invokeWidgetAction(int identifier, int param1, int param0, int itemId, String target);
 
-	@Import("getWidgetChild")
+	//@Import("getWidgetChild")
 	RSWidget getWidgetChild(int parent, int child);
 
 	@Import("ServerPacket_values")

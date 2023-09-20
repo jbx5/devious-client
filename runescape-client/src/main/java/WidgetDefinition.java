@@ -13,7 +13,8 @@ public class WidgetDefinition
 	@ObfuscatedSignature(
 		descriptor = "Lom;"
 	)
-	AbstractArchive field3583;
+	@Export("widgetArchive")
+	AbstractArchive widgetArchive;
 	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "Lom;"
@@ -90,12 +91,12 @@ public class WidgetDefinition
 		this.field3590 = new class438(10, class436.field4651);
 		int var6 = 0;
 		if (var1 != null) {
-			this.field3583 = var1;
+			this.widgetArchive = var1;
 			this.field3580 = var2;
 			this.field3581 = var3;
 			this.field3582 = var4;
 			this.field3579 = var5;
-			var6 = this.field3583.getGroupCount();
+			var6 = this.widgetArchive.getGroupCount();
 		}
 
 		this.Widget_interfaceComponents = new Widget[var6][];
@@ -144,10 +145,10 @@ public class WidgetDefinition
 	public boolean loadInterface(int var1) {
 		if (AbstractUserComparator.field4699[var1]) {
 			return true;
-		} else if (!this.field3583.tryLoadGroup(var1)) {
+		} else if (!this.widgetArchive.tryLoadGroup(var1)) {
 			return false;
 		} else {
-			int var2 = this.field3583.getGroupFileCount(var1);
+			int var2 = this.widgetArchive.getGroupFileCount(var1);
 			if (var2 == 0) {
 				AbstractUserComparator.field4699[var1] = true;
 				return true;
@@ -158,7 +159,7 @@ public class WidgetDefinition
 
 				for (int var3 = 0; var3 < var2; ++var3) {
 					if (this.Widget_interfaceComponents[var1][var3] == null) {
-						byte[] var4 = this.field3583.takeFile(var1, var3);
+						byte[] var4 = this.widgetArchive.takeFile(var1, var3);
 						if (var4 != null) {
 							this.Widget_interfaceComponents[var1][var3] = new Widget();
 							this.Widget_interfaceComponents[var1][var3].id = var3 + (var1 << 16);
@@ -193,7 +194,7 @@ public class WidgetDefinition
 	public void method6243(int var1) {
 		if (var1 != -1) {
 			if (AbstractUserComparator.field4699[var1]) {
-				this.field3583.clearFilesGroup(var1);
+				this.widgetArchive.clearFilesGroup(var1);
 				if (this.Widget_interfaceComponents[var1] != null) {
 					for (int var2 = 0; var2 < this.Widget_interfaceComponents[var1].length; ++var2) {
 						if (this.Widget_interfaceComponents[var1][var2] != null) {
