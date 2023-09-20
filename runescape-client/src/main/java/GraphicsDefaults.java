@@ -1,94 +1,90 @@
-import java.lang.management.GarbageCollectorMXBean;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("rr")
+@ObfuscatedName("ru")
 @Implements("GraphicsDefaults")
 public class GraphicsDefaults {
-	@ObfuscatedName("bi")
-	@Export("garbageCollector")
-	static GarbageCollectorMXBean garbageCollector;
-	@ObfuscatedName("au")
-	@ObfuscatedGetter(
-		intValue = 680246901
-	)
-	public int field4715;
-	@ObfuscatedName("ae")
-	@ObfuscatedGetter(
-		intValue = 698289967
-	)
-	public int field4705;
-	@ObfuscatedName("ao")
-	@ObfuscatedGetter(
-		intValue = -1868418019
-	)
-	public int field4708;
-	@ObfuscatedName("at")
-	@ObfuscatedGetter(
-		intValue = 901147751
-	)
-	public int field4707;
 	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = 1343841741
+		intValue = 2021112545
 	)
-	public int field4713;
-	@ObfuscatedName("ai")
+	public int field4758;
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = 1631909573
+		intValue = 436635071
 	)
-	public int field4704;
-	@ObfuscatedName("az")
+	public int field4750;
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = -628957467
+		intValue = 1823051071
 	)
-	public int field4710;
-	@ObfuscatedName("ap")
+	public int field4752;
+	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = -771646685
+		intValue = -893063485
 	)
-	public int field4711;
-	@ObfuscatedName("aa")
+	public int field4749;
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = -214665131
+		intValue = 374676159
 	)
-	public int field4712;
-	@ObfuscatedName("af")
+	public int field4753;
+	@ObfuscatedName("ah")
 	@ObfuscatedGetter(
-		intValue = -1437295059
+		intValue = 454929239
 	)
-	public int field4709;
-	@ObfuscatedName("ad")
+	public int field4754;
+	@ObfuscatedName("ar")
 	@ObfuscatedGetter(
-		intValue = -1483300641
+		intValue = 2132493459
 	)
-	public int field4714;
+	public int field4755;
+	@ObfuscatedName("ab")
+	@ObfuscatedGetter(
+		intValue = -1080946607
+	)
+	public int field4756;
+	@ObfuscatedName("am")
+	@ObfuscatedGetter(
+		intValue = -455480355
+	)
+	public int field4757;
+	@ObfuscatedName("av")
+	@ObfuscatedGetter(
+		intValue = -279292159
+	)
+	public int field4751;
+	@ObfuscatedName("ag")
+	@ObfuscatedGetter(
+		intValue = 1050136749
+	)
+	public int field4759;
 
 	public GraphicsDefaults() {
-		this.field4715 = -1;
-		this.field4705 = -1;
-		this.field4708 = -1;
-		this.field4707 = -1;
-		this.field4713 = -1;
-		this.field4704 = -1;
-		this.field4710 = -1;
-		this.field4711 = -1;
-		this.field4712 = -1;
-		this.field4709 = -1;
-		this.field4714 = -1;
+		this.field4758 = -1;
+		this.field4750 = -1;
+		this.field4752 = -1;
+		this.field4749 = -1;
+		this.field4753 = -1;
+		this.field4754 = -1;
+		this.field4755 = -1;
+		this.field4756 = -1;
+		this.field4757 = -1;
+		this.field4751 = -1;
+		this.field4759 = -1;
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(Lnu;I)V",
-		garbageValue = "497895580"
+		descriptor = "(Lom;B)V",
+		garbageValue = "5"
 	)
 	@Export("decode")
 	public void decode(AbstractArchive var1) {
-		byte[] var2 = var1.takeFileFlat(DefaultsGroup.field4703.group);
+		byte[] var2 = var1.takeFileFlat(DefaultsGroup.field4747.group);
 		Buffer var3 = new Buffer(var2);
 
 		while (true) {
@@ -102,18 +98,36 @@ public class GraphicsDefaults {
 				var3.readMedium();
 				break;
 			case 2:
-				this.field4715 = var3.readNullableLargeSmart();
-				this.field4705 = var3.readNullableLargeSmart();
-				this.field4708 = var3.readNullableLargeSmart();
-				this.field4707 = var3.readNullableLargeSmart();
-				this.field4713 = var3.readNullableLargeSmart();
-				this.field4704 = var3.readNullableLargeSmart();
-				this.field4710 = var3.readNullableLargeSmart();
-				this.field4711 = var3.readNullableLargeSmart();
-				this.field4712 = var3.readNullableLargeSmart();
-				this.field4709 = var3.readNullableLargeSmart();
-				this.field4714 = var3.readNullableLargeSmart();
+				this.field4758 = var3.readNullableLargeSmart();
+				this.field4750 = var3.readNullableLargeSmart();
+				this.field4752 = var3.readNullableLargeSmart();
+				this.field4749 = var3.readNullableLargeSmart();
+				this.field4753 = var3.readNullableLargeSmart();
+				this.field4754 = var3.readNullableLargeSmart();
+				this.field4755 = var3.readNullableLargeSmart();
+				this.field4756 = var3.readNullableLargeSmart();
+				this.field4757 = var3.readNullableLargeSmart();
+				this.field4751 = var3.readNullableLargeSmart();
+				this.field4759 = var3.readNullableLargeSmart();
 			}
 		}
+	}
+
+	@ObfuscatedName("ie")
+	@ObfuscatedSignature(
+		descriptor = "(IIII)V",
+		garbageValue = "1779911274"
+	)
+	@Export("queueSoundEffect")
+	static void queueSoundEffect(int var0, int var1, int var2) {
+		if (class91.clientPreferences.method2517() != 0 && var1 != 0 && Client.soundEffectCount < 50) {
+			Client.soundEffectIds[Client.soundEffectCount] = var0;
+			Client.queuedSoundEffectLoops[Client.soundEffectCount] = var1;
+			Client.queuedSoundEffectDelays[Client.soundEffectCount] = var2;
+			Client.soundEffects[Client.soundEffectCount] = null;
+			Client.soundLocations[Client.soundEffectCount] = 0;
+			++Client.soundEffectCount;
+		}
+
 	}
 }

@@ -3,59 +3,60 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
 @ObfuscatedName("hz")
 @Implements("KitDefinition")
 public class KitDefinition extends DualNode {
-	@ObfuscatedName("au")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Lnu;"
+		descriptor = "Lom;"
 	)
 	@Export("KitDefinition_archive")
-	public static AbstractArchive KitDefinition_archive;
-	@ObfuscatedName("ae")
+	static AbstractArchive KitDefinition_archive;
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "Lnu;"
+		descriptor = "Lom;"
 	)
 	@Export("KitDefinition_modelsArchive")
-	public static AbstractArchive KitDefinition_modelsArchive;
-	@ObfuscatedName("ao")
-	@ObfuscatedGetter(
-		intValue = 2017127235
-	)
-	@Export("KitDefinition_fileCount")
-	public static int KitDefinition_fileCount;
-	@ObfuscatedName("at")
+	static AbstractArchive KitDefinition_modelsArchive;
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "Lle;"
+		descriptor = "Llr;"
 	)
 	@Export("KitDefinition_cached")
-	static EvictingDualNodeHashTable KitDefinition_cached;
-	@ObfuscatedName("ac")
+	public static EvictingDualNodeHashTable KitDefinition_cached;
+	@ObfuscatedName("ko")
+	@ObfuscatedSignature(
+		descriptor = "[Lun;"
+	)
+	@Export("mapSceneSprites")
+	static IndexedSprite[] mapSceneSprites;
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = -194305975
+		intValue = 1660729609
 	)
 	@Export("bodypartID")
 	public int bodypartID;
-	@ObfuscatedName("ai")
+	@ObfuscatedName("ah")
 	@Export("models2")
 	int[] models2;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ar")
 	@Export("recolorFrom")
 	short[] recolorFrom;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("ab")
 	@Export("recolorTo")
 	short[] recolorTo;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("am")
 	@Export("retextureFrom")
 	short[] retextureFrom;
-	@ObfuscatedName("af")
+	@ObfuscatedName("av")
 	@Export("retextureTo")
 	short[] retextureTo;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ag")
 	@Export("models")
 	int[] models;
-	@ObfuscatedName("aq")
+	@ObfuscatedName("aa")
 	@Export("nonSelectable")
 	public boolean nonSelectable;
 
@@ -69,10 +70,10 @@ public class KitDefinition extends DualNode {
 		this.nonSelectable = false;
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Ltm;B)V",
-		garbageValue = "-6"
+		descriptor = "(Lul;B)V",
+		garbageValue = "-80"
 	)
 	@Export("decode")
 	void decode(Buffer var1) {
@@ -86,10 +87,10 @@ public class KitDefinition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "(Ltm;II)V",
-		garbageValue = "-1997251998"
+		descriptor = "(Lul;IB)V",
+		garbageValue = "4"
 	)
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
@@ -132,10 +133,10 @@ public class KitDefinition extends DualNode {
 
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "-1590063702"
+		garbageValue = "699085118"
 	)
 	@Export("ready")
 	public boolean ready() {
@@ -154,10 +155,10 @@ public class KitDefinition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(B)Lic;",
-		garbageValue = "-23"
+		descriptor = "(I)Ljw;",
+		garbageValue = "1587109036"
 	)
 	@Export("getModelData")
 	public ModelData getModelData() {
@@ -194,12 +195,12 @@ public class KitDefinition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("ai")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "-2117319302"
+		descriptor = "(B)Z",
+		garbageValue = "-9"
 	)
-	public boolean method3637() {
+	public boolean method3687() {
 		boolean var1 = true;
 
 		for (int var2 = 0; var2 < 5; ++var2) {
@@ -211,10 +212,10 @@ public class KitDefinition extends DualNode {
 		return var1;
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lic;",
-		garbageValue = "-1595711476"
+		descriptor = "(S)Ljw;",
+		garbageValue = "2504"
 	)
 	@Export("getKitDefinitionModels")
 	public ModelData getKitDefinitionModels() {
@@ -246,116 +247,264 @@ public class KitDefinition extends DualNode {
 
 	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(Lto;IB)Z",
-		garbageValue = "-108"
+		descriptor = "(II)Lie;",
+		garbageValue = "-765907227"
 	)
-	@Export("updateExternalPlayer")
-	static boolean updateExternalPlayer(PacketBuffer var0, int var1) {
-		int var2 = var0.readBits(2);
-		int var3;
+	public static FloorUnderlayDefinition method3706(int var0) {
+		FloorUnderlayDefinition var1 = (FloorUnderlayDefinition)FloorUnderlayDefinition.FloorUnderlayDefinition_cached.get((long)var0);
+		if (var1 != null) {
+			return var1;
+		} else {
+			byte[] var2 = FloorUnderlayDefinition.FloorUnderlayDefinition_archive.takeFile(1, var0);
+			var1 = new FloorUnderlayDefinition();
+			if (var2 != null) {
+				var1.decode(new Buffer(var2), var0);
+			}
+
+			var1.postDecode();
+			FloorUnderlayDefinition.FloorUnderlayDefinition_cached.put(var1, (long)var0);
+			return var1;
+		}
+	}
+
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "(II)I",
+		garbageValue = "769007597"
+	)
+	@Export("Widget_unpackTargetMask")
+	public static int Widget_unpackTargetMask(int var0) {
+		return var0 >> 11 & 63;
+	}
+
+	@ObfuscatedName("bz")
+	@ObfuscatedSignature(
+		descriptor = "(ILds;ZS)I",
+		garbageValue = "9029"
+	)
+	static int method3707(int var0, Script var1, boolean var2) {
 		int var4;
-		int var7;
-		int var8;
 		int var9;
-		int var10;
-		if (var2 == 0) {
-			if (var0.readBits(1) != 0) {
-				updateExternalPlayer(var0, var1);
-			}
-
-			var3 = var0.readBits(13);
-			var4 = var0.readBits(13);
-			boolean var12 = var0.readBits(1) == 1;
-			if (var12) {
-				Players.Players_pendingUpdateIndices[++Players.Players_pendingUpdateCount - 1] = var1;
-			}
-
-			if (Client.players[var1] != null) {
-				throw new RuntimeException();
-			} else {
-				Player var11 = Client.players[var1] = new Player();
-				var11.index = var1;
-				if (Players.field1388[var1] != null) {
-					var11.read(Players.field1388[var1]);
-				}
-
-				var11.orientation = Players.Players_orientations[var1];
-				var11.targetIndex = Players.Players_targetIndices[var1];
-				var7 = Players.Players_regions[var1];
-				var8 = var7 >> 28;
-				var9 = var7 >> 14 & 255;
-				var10 = var7 & 255;
-				var11.pathTraversed[0] = Players.field1377[var1];
-				var11.plane = (byte)var8;
-				var11.resetPath((var9 << 13) + var3 - UrlRequester.baseX * 64, (var10 << 13) + var4 - class47.baseY * 64);
-				var11.field1154 = false;
-				return true;
-			}
-		} else if (var2 == 1) {
-			var3 = var0.readBits(2);
-			var4 = Players.Players_regions[var1];
-			Players.Players_regions[var1] = (((var4 >> 28) + var3 & 3) << 28) + (var4 & 268435455);
-			return false;
+		if (var0 == ScriptOpcodes.ADD) {
+			Interpreter.Interpreter_intStackSize -= 2;
+			var9 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+			var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var4 + var9;
+			return 1;
+		} else if (var0 == ScriptOpcodes.SUB) {
+			Interpreter.Interpreter_intStackSize -= 2;
+			var9 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+			var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var9 - var4;
+			return 1;
+		} else if (var0 == ScriptOpcodes.MULTIPLY) {
+			Interpreter.Interpreter_intStackSize -= 2;
+			var9 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+			var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var9 * var4;
+			return 1;
+		} else if (var0 == ScriptOpcodes.DIV) {
+			Interpreter.Interpreter_intStackSize -= 2;
+			var9 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+			var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var9 / var4;
+			return 1;
+		} else if (var0 == ScriptOpcodes.RANDOM) {
+			var9 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = (int)(Math.random() * (double)var9);
+			return 1;
+		} else if (var0 == ScriptOpcodes.RANDOMINC) {
+			var9 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = (int)(Math.random() * (double)(var9 + 1));
+			return 1;
 		} else {
 			int var5;
 			int var6;
-			if (var2 == 2) {
-				var3 = var0.readBits(5);
-				var4 = var3 >> 3;
-				var5 = var3 & 7;
-				var6 = Players.Players_regions[var1];
-				var7 = (var6 >> 28) + var4 & 3;
-				var8 = var6 >> 14 & 255;
-				var9 = var6 & 255;
-				if (var5 == 0) {
-					--var8;
-					--var9;
+			int var7;
+			if (var0 == ScriptOpcodes.INTERPOLATE) {
+				Interpreter.Interpreter_intStackSize -= 5;
+				var9 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+				var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+				var5 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 2];
+				var6 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 3];
+				var7 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 4];
+				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var9 + (var4 - var9) * (var7 - var5) / (var6 - var5);
+				return 1;
+			} else if (var0 == ScriptOpcodes.ADDPERCENT) {
+				Interpreter.Interpreter_intStackSize -= 2;
+				var9 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+				var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var9 + var9 * var4 / 100;
+				return 1;
+			} else if (var0 == ScriptOpcodes.SETBIT) {
+				Interpreter.Interpreter_intStackSize -= 2;
+				var9 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+				var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var9 | 1 << var4;
+				return 1;
+			} else if (var0 == ScriptOpcodes.CLEARBIT) {
+				Interpreter.Interpreter_intStackSize -= 2;
+				var9 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+				var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var9 & -1 - (1 << var4);
+				return 1;
+			} else if (var0 == ScriptOpcodes.TESTBIT) {
+				Interpreter.Interpreter_intStackSize -= 2;
+				var9 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+				var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = (var9 & 1 << var4) != 0 ? 1 : 0;
+				return 1;
+			} else if (var0 == ScriptOpcodes.MOD) {
+				Interpreter.Interpreter_intStackSize -= 2;
+				var9 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+				var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var9 % var4;
+				return 1;
+			} else if (var0 == ScriptOpcodes.POW) {
+				Interpreter.Interpreter_intStackSize -= 2;
+				var9 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+				var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+				if (var9 == 0) {
+					Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = 0;
+				} else {
+					Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = (int)Math.pow((double)var9, (double)var4);
 				}
 
-				if (var5 == 1) {
-					--var9;
+				return 1;
+			} else if (var0 == ScriptOpcodes.INVPOW) {
+				Interpreter.Interpreter_intStackSize -= 2;
+				var9 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+				var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+				if (var9 == 0) {
+					Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = 0;
+					return 1;
+				} else {
+					switch(var4) {
+					case 0:
+						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Integer.MAX_VALUE;
+						break;
+					case 1:
+						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var9;
+						break;
+					case 2:
+						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = (int)Math.sqrt((double)var9);
+						break;
+					case 3:
+						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = (int)Math.cbrt((double)var9);
+						break;
+					case 4:
+						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = (int)Math.sqrt(Math.sqrt((double)var9));
+						break;
+					default:
+						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = (int)Math.pow((double)var9, 1.0D / (double)var4);
+					}
+
+					return 1;
+				}
+			} else if (var0 == ScriptOpcodes.AND) {
+				Interpreter.Interpreter_intStackSize -= 2;
+				var9 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+				var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var9 & var4;
+				return 1;
+			} else if (var0 == ScriptOpcodes.OR) {
+				Interpreter.Interpreter_intStackSize -= 2;
+				var9 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+				var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var9 | var4;
+				return 1;
+			} else if (var0 == 4016) {
+				Interpreter.Interpreter_intStackSize -= 2;
+				var9 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+				var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var9 < var4 ? var9 : var4;
+				return 1;
+			} else if (var0 == 4017) {
+				Interpreter.Interpreter_intStackSize -= 2;
+				var9 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+				var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var9 > var4 ? var9 : var4;
+				return 1;
+			} else if (var0 == ScriptOpcodes.SCALE) {
+				Interpreter.Interpreter_intStackSize -= 3;
+				long var10 = (long)Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+				long var12 = (long)Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+				long var14 = (long)Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 2];
+				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = (int)(var14 * var10 / var12);
+				return 1;
+			} else if (var0 == ScriptOpcodes.BITCOUNT) {
+				var9 = WorldMapLabel.method5653(Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]);
+				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var9;
+				return 1;
+			} else if (var0 == ScriptOpcodes.TOGGLEBIT) {
+				Interpreter.Interpreter_intStackSize -= 2;
+				var9 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+				var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var9 ^ 1 << var4;
+				return 1;
+			} else if (var0 == ScriptOpcodes.SETBIT_RANGE) {
+				Interpreter.Interpreter_intStackSize -= 3;
+				var9 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+				var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+				var5 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 2];
+				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = class345.method6580(var9, var4, var5);
+				return 1;
+			} else if (var0 == ScriptOpcodes.CLEARBIT_RANGE) {
+				Interpreter.Interpreter_intStackSize -= 3;
+				var9 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+				var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+				var5 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 2];
+				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = class164.method3375(var9, var4, var5);
+				return 1;
+			} else if (var0 == ScriptOpcodes.GETBIT_RANGE) {
+				Interpreter.Interpreter_intStackSize -= 3;
+				var9 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+				var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+				var5 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 2];
+				var6 = 31 - var5;
+				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var9 << var6 >>> var6 + var4;
+				return 1;
+			} else if (var0 == 4030) {
+				Interpreter.Interpreter_intStackSize -= 4;
+				var9 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+				var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+				var5 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 2];
+				var6 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 3];
+				var9 = class164.method3375(var9, var5, var6);
+				var7 = class76.method2124(var6 - var5 + 1);
+				if (var4 > var7) {
+					var4 = var7;
 				}
 
-				if (var5 == 2) {
-					++var8;
-					--var9;
+				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var9 | var4 << var5;
+				return 1;
+			} else if (var0 == 4032) {
+				Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize - 1] = GameObject.method5195(Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize - 1]);
+				return 1;
+			} else if (var0 == 4033) {
+				Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize - 1] = WorldMapLabelSize.method5221(Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize - 1]);
+				return 1;
+			} else if (var0 == 4034) {
+				Interpreter.Interpreter_intStackSize -= 2;
+				var9 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+				var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+				var5 = HealthBar.method2618(var9, var4);
+				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var5;
+				return 1;
+			} else if (var0 == 4035) {
+				Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize - 1] = Math.abs(Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize - 1]);
+				return 1;
+			} else if (var0 == 4036) {
+				String var3 = Interpreter.Interpreter_stringStack[--class180.Interpreter_stringStackSize];
+				var4 = -1;
+				if (AttackOption.isNumber(var3)) {
+					var4 = class36.method686(var3);
 				}
 
-				if (var5 == 3) {
-					--var8;
-				}
-
-				if (var5 == 4) {
-					++var8;
-				}
-
-				if (var5 == 5) {
-					--var8;
-					++var9;
-				}
-
-				if (var5 == 6) {
-					++var9;
-				}
-
-				if (var5 == 7) {
-					++var8;
-					++var9;
-				}
-
-				Players.Players_regions[var1] = (var8 << 14) + var9 + (var7 << 28);
-				return false;
+				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var4;
+				return 1;
 			} else {
-				var3 = var0.readBits(18);
-				var4 = var3 >> 16;
-				var5 = var3 >> 8 & 255;
-				var6 = var3 & 255;
-				var7 = Players.Players_regions[var1];
-				var8 = (var7 >> 28) + var4 & 3;
-				var9 = var5 + (var7 >> 14) & 255;
-				var10 = var7 + var6 & 255;
-				Players.Players_regions[var1] = (var9 << 14) + var10 + (var8 << 28);
-				return false;
+				return 2;
 			}
 		}
 	}

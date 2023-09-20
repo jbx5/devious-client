@@ -1,205 +1,90 @@
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
-import net.runelite.mapping.ObfuscatedGetter;
+import java.util.Iterator;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("qv")
-public final class class423 {
-	@ObfuscatedName("au")
-	final Comparator field4619;
-	@ObfuscatedName("ae")
-	final Map field4613;
-	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "Lpa;"
-	)
-	final class392 field4614;
-	@ObfuscatedName("at")
-	@ObfuscatedSignature(
-		descriptor = "Lpa;"
-	)
-	final class392 field4615;
+@ObfuscatedName("ql")
+public class class423 extends SongTask {
 	@ObfuscatedName("ac")
-	@ObfuscatedGetter(
-		longValue = 1657733685024468239L
-	)
-	final long field4616;
-	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "Lqm;"
+		descriptor = "Lom;"
 	)
-	final class421 field4617;
-	@ObfuscatedName("az")
-	@ObfuscatedGetter(
-		intValue = -139737171
-	)
-	final int field4618;
-
+	AbstractArchive field4583;
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(JILqm;)V"
+		descriptor = "Lom;"
 	)
-	class423(long var1, int var3, class421 var4) {
-		this.field4619 = new class422(this);
-		this.field4616 = var1;
-		this.field4618 = var3;
-		this.field4617 = var4;
-		if (this.field4618 == -1) {
-			this.field4613 = new HashMap(64);
-			this.field4614 = new class392(64, this.field4619);
-			this.field4615 = null;
-		} else {
-			if (this.field4617 == null) {
-				throw new IllegalArgumentException("");
-			}
-
-			this.field4613 = new HashMap(this.field4618);
-			this.field4614 = new class392(this.field4618, this.field4619);
-			this.field4615 = new class392(this.field4618);
-		}
-
-	}
+	AbstractArchive field4585;
+	@ObfuscatedName("ab")
+	@ObfuscatedSignature(
+		descriptor = "Lom;"
+	)
+	AbstractArchive field4582;
 
 	@ObfuscatedSignature(
-		descriptor = "(ILqm;)V"
+		descriptor = "(Lqm;Lom;Lom;Lom;)V"
 	)
-	public class423(int var1, class421 var2) {
-		this(-1L, var1, var2);
-	}
-
-	@ObfuscatedName("au")
-	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "1594986015"
-	)
-	boolean method7780() {
-		return this.field4618 != -1;
-	}
-
-	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Object;B)Ljava/lang/Object;",
-		garbageValue = "-31"
-	)
-	public Object method7781(Object var1) {
-		synchronized(this) {
-			if (this.field4616 != -1L) {
-				this.method7783();
-			}
-
-			class424 var3 = (class424)this.field4613.get(var1);
-			if (var3 == null) {
-				return null;
-			} else {
-				this.method7784(var3, false);
-				return var3.field4620;
-			}
-		}
-	}
-
-	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Object;Ljava/lang/Object;I)Ljava/lang/Object;",
-		garbageValue = "-396691149"
-	)
-	public Object method7782(Object var1, Object var2) {
-		synchronized(this) {
-			if (this.field4616 != -1L) {
-				this.method7783();
-			}
-
-			class424 var4 = (class424)this.field4613.get(var1);
-			if (var4 != null) {
-				Object var8 = var4.field4620;
-				var4.field4620 = var2;
-				this.method7784(var4, false);
-				return var8;
-			} else {
-				class424 var5;
-				if (this.method7780() && this.field4613.size() == this.field4618) {
-					var5 = (class424)this.field4615.remove();
-					this.field4613.remove(var5.field4621);
-					this.field4614.remove(var5);
-				}
-
-				var5 = new class424(var2, var1);
-				this.field4613.put(var1, var5);
-				this.method7784(var5, true);
-				return null;
-			}
-		}
-	}
-
-	@ObfuscatedName("at")
-	@ObfuscatedSignature(
-		descriptor = "(Lqj;ZB)V",
-		garbageValue = "16"
-	)
-	void method7784(class424 var1, boolean var2) {
-		if (!var2) {
-			this.field4614.remove(var1);
-			if (this.method7780() && !this.field4615.remove(var1)) {
-				throw new IllegalStateException("");
-			}
-		}
-
-		var1.field4622 = System.currentTimeMillis();
-		if (this.method7780()) {
-			switch(this.field4617.field4607) {
-			case 0:
-				var1.field4623 = var1.field4622;
-				break;
-			case 1:
-				++var1.field4623;
-			}
-
-			this.field4615.add(var1);
-		}
-
-		this.field4614.add(var1);
+	public class423(SongTask var1, AbstractArchive var2, AbstractArchive var3, AbstractArchive var4) {
+		super(var1);
+		this.field4583 = var2;
+		this.field4585 = var3;
+		this.field4582 = var4;
+		super.field4572 = "LoadSongTask";
 	}
 
 	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1791287945"
+		descriptor = "(B)Z",
+		garbageValue = "-90"
 	)
-	void method7783() {
-		if (this.field4616 == -1L) {
-			throw new IllegalStateException("");
-		} else {
-			long var1 = System.currentTimeMillis() - this.field4616;
+	public boolean vmethod7780() {
+		int var1 = 0;
+		Iterator var2 = class319.musicSongs.iterator();
 
-			while (!this.field4614.isEmpty()) {
-				class424 var3 = (class424)this.field4614.peek();
-				if (var3.field4622 >= var1) {
-					return;
+		while (true) {
+			while (var2.hasNext()) {
+				MusicSong var3 = (MusicSong)var2.next();
+				if (var3 != null && var3.midiPcmStream.field3450 > 1 && var3.midiPcmStream.method6050()) {
+					this.method7773("Attempted to load patches of already loading midiplayer!");
+					return true;
 				}
 
-				this.field4613.remove(var3.field4621);
-				this.field4614.remove(var3);
-				if (this.method7780()) {
-					this.field4615.remove(var3);
+				if (var3 != null && !var3.field3547) {
+					try {
+						if (var3.musicTrackArchive != null && var3.musicTrackGroupId != -1 && var3.musicTrackFileId != -1) {
+							if (var3.field3548 == null) {
+								var3.field3548 = MusicTrack.readTrack(var3.musicTrackArchive, var3.musicTrackGroupId, var3.musicTrackFileId);
+								if (var3.field3548 == null) {
+									continue;
+								}
+							}
+
+							if (var3.field3549 == null) {
+								var3.field3549 = new SoundCache(this.field4582, this.field4585);
+							}
+
+							if (var3.midiPcmStream.method5972(var3.field3548, this.field4583, var3.field3549)) {
+								++var1;
+								var3.field3547 = true;
+								var3.midiPcmStream.method5979();
+							}
+						} else {
+							++var1;
+						}
+					} catch (Exception var5) {
+						class190.RunException_sendStackTrace((String)null, var5);
+						this.method7773(var5.getMessage());
+						return true;
+					}
+				} else {
+					++var1;
 				}
 			}
 
-		}
-	}
-
-	@ObfuscatedName("ai")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "33"
-	)
-	public void method7779() {
-		synchronized(this) {
-			this.field4613.clear();
-			this.field4614.clear();
-			if (this.method7780()) {
-				this.field4615.clear();
+			if (var1 == class319.musicSongs.size()) {
+				return true;
 			}
 
+			return false;
 		}
 	}
 }

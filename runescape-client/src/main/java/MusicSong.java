@@ -4,99 +4,99 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("mu")
+@ObfuscatedName("mv")
 @Implements("MusicSong")
 public class MusicSong {
-	@ObfuscatedName("au")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Lnu;"
+		descriptor = "Lom;"
 	)
 	@Export("musicTrackArchive")
 	public AbstractArchive musicTrackArchive;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = 1168215327
+		intValue = 1113976665
 	)
 	@Export("musicTrackGroupId")
 	public int musicTrackGroupId;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = -109873503
+		intValue = -1736344083
 	)
 	@Export("musicTrackFileId")
 	public int musicTrackFileId;
-	@ObfuscatedName("at")
+	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = 982072253
+		intValue = -1137874919
 	)
 	@Export("musicTrackVolume")
 	public int musicTrackVolume;
-	@ObfuscatedName("ac")
-	public float field3510;
-	@ObfuscatedName("ai")
+	@ObfuscatedName("ao")
+	public float field3542;
+	@ObfuscatedName("ah")
 	@Export("musicTrackBoolean")
 	public boolean musicTrackBoolean;
-	@ObfuscatedName("az")
-	public boolean field3516;
-	@ObfuscatedName("ap")
-	public boolean field3518;
-	@ObfuscatedName("aa")
-	public boolean field3524;
-	@ObfuscatedName("af")
-	public boolean field3519;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ar")
+	public boolean field3547;
+	@ObfuscatedName("ab")
+	public boolean field3545;
+	@ObfuscatedName("am")
+	public boolean field3546;
+	@ObfuscatedName("av")
+	boolean field3550;
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "Llf;"
+		descriptor = "Lmt;"
 	)
 	@Export("midiPcmStream")
 	public MidiPcmStream midiPcmStream;
-	@ObfuscatedName("aq")
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
-		descriptor = "Lbi;"
+		descriptor = "Lbl;"
 	)
-	public SoundCache field3521;
-	@ObfuscatedName("al")
+	public SoundCache field3549;
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Lmv;"
+		descriptor = "Lmk;"
 	)
-	public MusicTrack field3522;
+	public MusicTrack field3548;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lnu;Ljava/lang/String;Ljava/lang/String;IZ)V"
-	)
-	public MusicSong(AbstractArchive var1, String var2, String var3, int var4, boolean var5) {
-		this.musicTrackGroupId = -1;
-		this.musicTrackFileId = -1;
-		this.musicTrackVolume = 0;
-		this.field3510 = 0.0F;
-		this.musicTrackBoolean = false;
-		this.field3524 = false;
-		this.field3519 = false;
-		this.musicTrackGroupId = var1.getGroupId(var2);
-		this.musicTrackFileId = var1.getFileId(this.musicTrackGroupId, var3);
-		this.method6016(var1, this.musicTrackGroupId, this.musicTrackFileId, var4, var5);
-	}
-
-	@ObfuscatedSignature(
-		descriptor = "(Lnu;IIIZ)V"
+		descriptor = "(Lom;IIIZ)V"
 	)
 	public MusicSong(AbstractArchive var1, int var2, int var3, int var4, boolean var5) {
 		this.musicTrackGroupId = -1;
 		this.musicTrackFileId = -1;
 		this.musicTrackVolume = 0;
-		this.field3510 = 0.0F;
+		this.field3542 = 0.0F;
 		this.musicTrackBoolean = false;
-		this.field3524 = false;
-		this.field3519 = false;
-		this.method6016(var1, var2, var3, var4, var5);
+		this.field3546 = false;
+		this.field3550 = false;
+		this.method6207(var1, var2, var3, var4, var5);
 	}
 
-	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(Lnu;IIIZB)V",
-		garbageValue = "28"
+		descriptor = "(Lom;Ljava/lang/String;Ljava/lang/String;IZ)V"
 	)
-	void method6016(AbstractArchive var1, int var2, int var3, int var4, boolean var5) {
+	public MusicSong(AbstractArchive var1, String var2, String var3, int var4, boolean var5) {
+		this.musicTrackGroupId = -1;
+		this.musicTrackFileId = -1;
+		this.musicTrackVolume = 0;
+		this.field3542 = 0.0F;
+		this.musicTrackBoolean = false;
+		this.field3546 = false;
+		this.field3550 = false;
+		this.musicTrackGroupId = var1.getGroupId(var2);
+		this.musicTrackFileId = var1.getFileId(this.musicTrackGroupId, var3);
+		this.method6207(var1, this.musicTrackGroupId, this.musicTrackFileId, var4, var5);
+	}
+
+	@ObfuscatedName("ac")
+	@ObfuscatedSignature(
+		descriptor = "(Lom;IIIZB)V",
+		garbageValue = "-90"
+	)
+	void method6207(AbstractArchive var1, int var2, int var3, int var4, boolean var5) {
 		this.musicTrackArchive = var1;
 		this.musicTrackGroupId = var2;
 		this.musicTrackFileId = var3;
@@ -104,81 +104,14 @@ public class MusicSong {
 		this.musicTrackBoolean = var5;
 	}
 
-	@ObfuscatedName("hi")
+	@ObfuscatedName("hk")
 	@ObfuscatedSignature(
-		descriptor = "(IB)V",
-		garbageValue = "-79"
+		descriptor = "(Lok;Ljava/lang/String;B)V",
+		garbageValue = "-43"
 	)
-	@Export("updateGameState")
-	static void updateGameState(int var0) {
-		if (var0 != Client.gameState) {
-			if (Client.gameState == 30) {
-				Client.field765.method4092();
-			}
-
-			if (Client.gameState == 0) {
-				class219.client.method658();
-			}
-
-			if (var0 == 20 || var0 == 40 || var0 == 45 || var0 == 50) {
-				class316.method6012(0);
-				Client.field541 = 0;
-				Client.field592 = 0;
-				Client.timer.method7685(var0);
-				if (var0 != 20) {
-					PendingSpawn.method2368(false);
-				}
-			}
-
-			if (var0 != 20 && var0 != 40 && AbstractSocket.field4675 != null) {
-				AbstractSocket.field4675.close();
-				AbstractSocket.field4675 = null;
-			}
-
-			if (Client.gameState == 25) {
-				Client.field600 = 0;
-				Client.field596 = 0;
-				Client.field630 = 1;
-				Client.field598 = 0;
-				Client.field599 = 1;
-			}
-
-			if (var0 != 5 && var0 != 10) {
-				if (var0 == 20) {
-					int var3 = Client.gameState == 11 ? 4 : 0;
-					Timer.method7688(class141.archive10, PcmPlayer.archive8, false, var3);
-				} else if (var0 == 11) {
-					Timer.method7688(class141.archive10, PcmPlayer.archive8, false, 4);
-				} else if (var0 == 50) {
-					class318.setLoginResponseString("", "Updating date of birth...", "");
-					Timer.method7688(class141.archive10, PcmPlayer.archive8, false, 7);
-				} else if (class403.clearLoginScreen) {
-					Login.titleboxSprite = null;
-					class219.titlebuttonSprite = null;
-					Login.runesSprite = null;
-					Login.leftTitleSprite = null;
-					Bounds.rightTitleSprite = null;
-					SoundSystem.logoSprite = null;
-					class13.title_muteSprite = null;
-					Login.options_buttons_0Sprite = null;
-					UserComparator6.options_buttons_2Sprite = null;
-					class74.worldSelectBackSprites = null;
-					SoundCache.worldSelectFlagSprites = null;
-					MusicPatchPcmStream.worldSelectArrows = null;
-					SecureRandomCallable.worldSelectStars = null;
-					VarcInt.field1966 = null;
-					class139.loginScreenRunesAnimation.method2415();
-					Script.method2180(0, 100);
-					CollisionMap.method4177().method6793(true);
-					class403.clearLoginScreen = false;
-				}
-			} else {
-				boolean var1 = class449.clientPreferences.method2468() >= Client.field531;
-				int var2 = var1 ? 0 : 12;
-				Timer.method7688(class141.archive10, PcmPlayer.archive8, true, var2);
-			}
-
-			Client.gameState = var0;
-		}
+	static void method6210(Archive var0, String var1) {
+		ArchiveLoader var2 = new ArchiveLoader(var0, var1);
+		Client.archiveLoaders.add(var2);
+		Client.field819 += var2.groupCount;
 	}
 }

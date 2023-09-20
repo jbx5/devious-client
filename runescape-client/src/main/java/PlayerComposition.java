@@ -4,132 +4,131 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("mt")
+@ObfuscatedName("ni")
 @Implements("PlayerComposition")
 public class PlayerComposition {
-	@ObfuscatedName("al")
-	public static short[] field3578;
-	@ObfuscatedName("an")
-	public static short[][] field3586;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ag")
+	public static short[] field3615;
+	@ObfuscatedName("as")
 	@Export("equipmentIndices")
 	static final int[] equipmentIndices;
-	@ObfuscatedName("am")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "Lle;"
+		descriptor = "Llr;"
 	)
 	@Export("PlayerAppearance_cachedModels")
 	public static EvictingDualNodeHashTable PlayerAppearance_cachedModels;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "Lqv;"
+		descriptor = "Lqe;"
 	)
-	static class423 field3582;
-	@ObfuscatedName("ah")
-	@ObfuscatedGetter(
-		intValue = 1525916171
-	)
-	static int field3583;
-	@ObfuscatedName("au")
-	int[] field3584;
+	public static class438 field3628;
 	@ObfuscatedName("ae")
+	@ObfuscatedGetter(
+		intValue = 1151126615
+	)
+	public static int field3626;
+	@ObfuscatedName("ac")
+	int[] field3619;
+	@ObfuscatedName("al")
 	@Export("equipment")
 	int[] equipment;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ak")
 	@Export("bodyColors")
 	int[] bodyColors;
-	@ObfuscatedName("at")
+	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = -34466909
+		intValue = -773310009
 	)
-	public int field3574;
-	@ObfuscatedName("ac")
+	public int field3614;
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = -1305081315
+		intValue = 539928443
 	)
 	@Export("gender")
 	public int gender;
-	@ObfuscatedName("ai")
+	@ObfuscatedName("ah")
 	@ObfuscatedGetter(
-		intValue = -1253753061
+		intValue = 901502003
 	)
 	@Export("npcTransformId")
 	public int npcTransformId;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ar")
 	@ObfuscatedGetter(
-		longValue = -4990962188091480033L
+		longValue = 2461738339330136607L
 	)
 	@Export("hash")
 	long hash;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("ab")
 	@ObfuscatedGetter(
-		longValue = 8032241556888834061L
+		longValue = -907075381640109889L
 	)
-	long field3575;
-	@ObfuscatedName("aa")
+	long field3618;
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "[Lho;"
+		descriptor = "[Lhy;"
 	)
 	@Export("playerCompositionColorTextureOverrides")
 	PlayerCompositionColorTextureOverride[] playerCompositionColorTextureOverrides;
-	@ObfuscatedName("af")
-	boolean field3577;
+	@ObfuscatedName("av")
+	boolean field3620;
 
 	static {
-		equipmentIndices = new int[]{class209.field2335.field2334, class209.field2339.field2334, class209.field2332.field2334, class209.field2328.field2334, class209.field2342.field2334, class209.field2330.field2334, class209.field2338.field2334};
+		equipmentIndices = new int[]{class223.field2347.field2342, class223.field2348.field2342, class223.field2346.field2342, class223.field2354.field2342, class223.field2351.field2342, class223.field2349.field2342, class223.field2352.field2342};
 		PlayerAppearance_cachedModels = new EvictingDualNodeHashTable(260);
-		field3582 = new class423(16, class421.field4606);
-		field3583 = 0;
+		field3628 = new class438(16, class436.field4651);
+		field3626 = 0;
 	}
 
 	public PlayerComposition() {
-		this.field3574 = -1;
+		this.field3614 = -1;
 		this.gender = 0;
-		this.field3577 = false;
+		this.field3620 = false;
 	}
 
 	@ObfuscatedSignature(
-		descriptor = "(Lmt;)V"
+		descriptor = "(Lni;)V"
 	)
 	PlayerComposition(PlayerComposition var1) {
-		this.field3574 = -1;
+		this.field3614 = -1;
 		this.gender = 0;
-		this.field3577 = false;
+		this.field3620 = false;
 		int[] var2 = Arrays.copyOf(var1.equipment, var1.equipment.length);
-		int[] var3 = Arrays.copyOf(var1.field3584, var1.field3584.length);
+		int[] var3 = Arrays.copyOf(var1.field3619, var1.field3619.length);
 		PlayerCompositionColorTextureOverride[] var4 = (PlayerCompositionColorTextureOverride[])(var1.playerCompositionColorTextureOverrides != null ? (PlayerCompositionColorTextureOverride[])Arrays.copyOf(var1.playerCompositionColorTextureOverrides, var1.playerCompositionColorTextureOverrides.length) : null);
 		int[] var5 = Arrays.copyOf(var1.bodyColors, var1.bodyColors.length);
-		this.method6061(var3, var2, var4, false, var5, var1.gender, var1.npcTransformId, var1.field3574);
+		this.method6266(var3, var2, var4, false, var5, var1.gender, var1.npcTransformId, var1.field3614);
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "([I[I[Lho;Z[IIIII)V",
-		garbageValue = "-1866336930"
+		descriptor = "([I[I[Lhy;Z[IIIII)V",
+		garbageValue = "-106574907"
 	)
-	public void method6061(int[] var1, int[] var2, PlayerCompositionColorTextureOverride[] var3, boolean var4, int[] var5, int var6, int var7, int var8) {
+	public void method6266(int[] var1, int[] var2, PlayerCompositionColorTextureOverride[] var3, boolean var4, int[] var5, int var6, int var7, int var8) {
 		this.playerCompositionColorTextureOverrides = var3;
-		this.field3577 = var4;
-		this.field3574 = var8;
-		this.method6080(var1, var2, var5, var6, var7);
+		this.field3620 = var4;
+		this.field3614 = var8;
+		this.method6267(var1, var2, var5, var6, var7);
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "([I[I[IIII)V",
-		garbageValue = "1458257561"
+		descriptor = "([I[I[IIIB)V",
+		garbageValue = "108"
 	)
-	public void method6080(int[] var1, int[] var2, int[] var3, int var4, int var5) {
+	public void method6267(int[] var1, int[] var2, int[] var3, int var4, int var5) {
 		if (var1 == null) {
-			var1 = this.method6063(var4);
+			var1 = this.method6268(var4);
 		}
 
 		if (var2 == null) {
-			var2 = this.method6063(var4);
+			var2 = this.method6268(var4);
 		}
 
-		this.field3584 = var1;
+		this.field3619 = var1;
 		this.equipment = var2;
 		this.bodyColors = var3;
 		this.gender = var4;
@@ -137,17 +136,17 @@ public class PlayerComposition {
 		this.setHash();
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(IB)[I",
-		garbageValue = "13"
+		garbageValue = "1"
 	)
-	int[] method6063(int var1) {
+	int[] method6268(int var1) {
 		int[] var2 = new int[12];
 
 		for (int var3 = 0; var3 < 7; ++var3) {
-			for (int var4 = 0; var4 < KitDefinition.KitDefinition_fileCount; ++var4) {
-				KitDefinition var5 = ClanChannel.KitDefinition_get(var4);
+			for (int var4 = 0; var4 < class403.KitDefinition_fileCount; ++var4) {
+				KitDefinition var5 = class73.KitDefinition_get(var4);
 				if (var5 != null && !var5.nonSelectable && var3 + (var1 == 1 ? 7 : 0) == var5.bodypartID) {
 					var2[equipmentIndices[var3]] = var4 + 256;
 					break;
@@ -158,10 +157,10 @@ public class PlayerComposition {
 		return var2;
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
 		descriptor = "(IZI)V",
-		garbageValue = "-1083968287"
+		garbageValue = "-151201208"
 	)
 	@Export("changeAppearance")
 	public void changeAppearance(int var1, boolean var2) {
@@ -174,16 +173,16 @@ public class PlayerComposition {
 				if (!var2) {
 					--var3;
 					if (var3 < 0) {
-						var3 = KitDefinition.KitDefinition_fileCount - 1;
+						var3 = class403.KitDefinition_fileCount - 1;
 					}
 				} else {
 					++var3;
-					if (var3 >= KitDefinition.KitDefinition_fileCount) {
+					if (var3 >= class403.KitDefinition_fileCount) {
 						var3 = 0;
 					}
 				}
 
-				var4 = ClanChannel.KitDefinition_get(var3);
+				var4 = class73.KitDefinition_get(var3);
 			} while(var4 == null || var4.nonSelectable || (this.gender == 1 ? 7 : 0) + var1 != var4.bodypartID);
 
 			this.equipment[equipmentIndices[var1]] = var3 + 256;
@@ -191,19 +190,19 @@ public class PlayerComposition {
 		}
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(IZB)V",
-		garbageValue = "8"
+		descriptor = "(IZI)V",
+		garbageValue = "1880856093"
 	)
-	public void method6065(int var1, boolean var2) {
+	public void method6270(int var1, boolean var2) {
 		int var3 = this.bodyColors[var1];
 		boolean var4;
 		if (!var2) {
 			do {
 				--var3;
 				if (var3 < 0) {
-					var3 = class140.field1659[var1].length - 1;
+					var3 = class104.field1342[var1].length - 1;
 				}
 
 				if (var1 == 4 && var3 >= 8) {
@@ -215,7 +214,7 @@ public class PlayerComposition {
 		} else {
 			do {
 				++var3;
-				if (var3 >= class140.field1659[var1].length) {
+				if (var3 >= class104.field1342[var1].length) {
 					var3 = 0;
 				}
 
@@ -231,21 +230,21 @@ public class PlayerComposition {
 		this.setHash();
 	}
 
-	@ObfuscatedName("ai")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "(II)V",
-		garbageValue = "-782377094"
+		garbageValue = "-554597133"
 	)
-	public void method6084(int var1) {
+	public void method6265(int var1) {
 		if (this.gender != var1) {
-			this.method6080((int[])null, (int[])null, this.bodyColors, var1, -1);
+			this.method6267((int[])null, (int[])null, this.bodyColors, var1, -1);
 		}
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "(Ltm;I)V",
-		garbageValue = "-544852329"
+		descriptor = "(Lul;B)V",
+		garbageValue = "28"
 	)
 	@Export("write")
 	public void write(Buffer var1) {
@@ -267,10 +266,10 @@ public class PlayerComposition {
 
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
 		descriptor = "(B)V",
-		garbageValue = "12"
+		garbageValue = "89"
 	)
 	@Export("setHash")
 	void setHash() {
@@ -303,24 +302,24 @@ public class PlayerComposition {
 		}
 
 		this.hash <<= 1;
-		this.hash += -1305081315L * (long)(this.gender * 72026165);
+		this.hash += 539928443L * (long)(this.gender * -746905677);
 		this.equipment[5] = var3;
 		this.equipment[9] = var4;
-		if (var1 != 0L && var1 != this.hash || this.field3577) {
+		if (var1 != 0L && var1 != this.hash || this.field3620) {
 			PlayerAppearance_cachedModels.remove(var1);
 		}
 
 	}
 
-	@ObfuscatedName("aa")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(Lib;ILib;II)Ljr;",
-		garbageValue = "955721951"
+		descriptor = "(Lif;ILif;II)Ljn;",
+		garbageValue = "745471626"
 	)
 	@Export("getModel")
 	public Model getModel(SequenceDefinition var1, int var2, SequenceDefinition var3, int var4) {
 		if (this.npcTransformId != -1) {
-			return class90.getNpcDefinition(this.npcTransformId).getModel(var1, var2, var3, var4, (NpcOverrides)null);
+			return class190.getNpcDefinition(this.npcTransformId).getModel(var1, var2, var3, var4, (NpcOverrides)null);
 		} else {
 			long var5 = this.hash;
 			int[] var7 = this.equipment;
@@ -349,18 +348,18 @@ public class PlayerComposition {
 				int var11;
 				for (int var10 = 0; var10 < 12; ++var10) {
 					var11 = var7[var10];
-					if (var11 >= 256 && var11 < 512 && !ClanChannel.KitDefinition_get(var11 - 256).ready()) {
+					if (var11 >= 256 && var11 < 512 && !class73.KitDefinition_get(var11 - 256).ready()) {
 						var9 = true;
 					}
 
-					if (var11 >= 512 && !InvDefinition.ItemDefinition_get(var11 - 512).method3947(this.gender)) {
+					if (var11 >= 512 && !class214.ItemDefinition_get(var11 - 512).method4059(this.gender)) {
 						var9 = true;
 					}
 				}
 
 				if (var9) {
-					if (-1L != this.field3575) {
-						var18 = (Model)PlayerAppearance_cachedModels.get(this.field3575);
+					if (this.field3618 != -1L) {
+						var18 = (Model)PlayerAppearance_cachedModels.get(this.field3618);
 					}
 
 					if (var18 == null) {
@@ -376,15 +375,15 @@ public class PlayerComposition {
 					for (int var12 = 0; var12 < 12; ++var12) {
 						var13 = var7[var12];
 						if (var13 >= 256 && var13 < 512) {
-							ModelData var14 = ClanChannel.KitDefinition_get(var13 - 256).getModelData();
+							ModelData var14 = class73.KitDefinition_get(var13 - 256).getModelData();
 							if (var14 != null) {
 								var19[var11++] = var14;
 							}
 						}
 
 						if (var13 >= 512) {
-							ItemComposition var22 = InvDefinition.ItemDefinition_get(var13 - 512);
-							ModelData var15 = var22.method3948(this.gender);
+							ItemComposition var22 = class214.ItemDefinition_get(var13 - 512);
+							ModelData var15 = var22.method4128(this.gender);
 							if (var15 != null) {
 								if (this.playerCompositionColorTextureOverrides != null) {
 									PlayerCompositionColorTextureOverride var16 = this.playerCompositionColorTextureOverrides[var12];
@@ -396,7 +395,7 @@ public class PlayerComposition {
 											}
 										}
 
-										if (var16.playerCompositionRetextureTo != null && var22.retextureFrom != null && var16.playerCompositionRetextureTo.length == var22.retextureTo.length) {
+										if (var16.playerCompositionRetextureTo != null && var22.retextureFrom != null && var22.retextureTo.length == var16.playerCompositionRetextureTo.length) {
 											for (var17 = 0; var17 < var22.retextureFrom.length; ++var17) {
 												var15.retexture(var22.retextureTo[var17], var16.playerCompositionRetextureTo[var17]);
 											}
@@ -412,18 +411,18 @@ public class PlayerComposition {
 					ModelData var20 = new ModelData(var19, var11);
 
 					for (var13 = 0; var13 < 5; ++var13) {
-						if (this.bodyColors[var13] < class140.field1659[var13].length) {
-							var20.recolor(UrlRequest.field1458[var13], class140.field1659[var13][this.bodyColors[var13]]);
+						if (this.bodyColors[var13] < class104.field1342[var13].length) {
+							var20.recolor(field3615[var13], class104.field1342[var13][this.bodyColors[var13]]);
 						}
 
-						if (this.bodyColors[var13] < field3586[var13].length) {
-							var20.recolor(field3578[var13], field3586[var13][this.bodyColors[var13]]);
+						if (this.bodyColors[var13] < class33.field187[var13].length) {
+							var20.recolor(Coord.field3572[var13], class33.field187[var13][this.bodyColors[var13]]);
 						}
 					}
 
 					var18 = var20.toModel(64, 850, -30, -50, -30);
 					PlayerAppearance_cachedModels.put(var18, var5);
-					this.field3575 = var5;
+					this.field3618 = var5;
 				}
 			}
 
@@ -442,26 +441,26 @@ public class PlayerComposition {
 		}
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lic;",
-		garbageValue = "-812517450"
+		descriptor = "(I)Ljw;",
+		garbageValue = "-578216920"
 	)
 	@Export("getModelData")
 	ModelData getModelData() {
 		if (this.npcTransformId != -1) {
-			return class90.getNpcDefinition(this.npcTransformId).method3692((NpcOverrides)null);
+			return class190.getNpcDefinition(this.npcTransformId).method3784((NpcOverrides)null);
 		} else {
 			boolean var1 = false;
 
 			int var3;
 			for (int var2 = 0; var2 < 12; ++var2) {
 				var3 = this.equipment[var2];
-				if (var3 >= 256 && var3 < 512 && !ClanChannel.KitDefinition_get(var3 - 256).method3637()) {
+				if (var3 >= 256 && var3 < 512 && !class73.KitDefinition_get(var3 - 256).method3687()) {
 					var1 = true;
 				}
 
-				if (var3 >= 512 && !InvDefinition.ItemDefinition_get(var3 - 512).method3949(this.gender)) {
+				if (var3 >= 512 && !class214.ItemDefinition_get(var3 - 512).method4061(this.gender)) {
 					var1 = true;
 				}
 			}
@@ -477,14 +476,14 @@ public class PlayerComposition {
 					var5 = this.equipment[var4];
 					ModelData var6;
 					if (var5 >= 256 && var5 < 512) {
-						var6 = ClanChannel.KitDefinition_get(var5 - 256).getKitDefinitionModels();
+						var6 = class73.KitDefinition_get(var5 - 256).getKitDefinitionModels();
 						if (var6 != null) {
 							var7[var3++] = var6;
 						}
 					}
 
 					if (var5 >= 512) {
-						var6 = InvDefinition.ItemDefinition_get(var5 - 512).method3952(this.gender);
+						var6 = class214.ItemDefinition_get(var5 - 512).method4062(this.gender);
 						if (var6 != null) {
 							var7[var3++] = var6;
 						}
@@ -494,12 +493,12 @@ public class PlayerComposition {
 				ModelData var8 = new ModelData(var7, var3);
 
 				for (var5 = 0; var5 < 5; ++var5) {
-					if (this.bodyColors[var5] < class140.field1659[var5].length) {
-						var8.recolor(UrlRequest.field1458[var5], class140.field1659[var5][this.bodyColors[var5]]);
+					if (this.bodyColors[var5] < class104.field1342[var5].length) {
+						var8.recolor(field3615[var5], class104.field1342[var5][this.bodyColors[var5]]);
 					}
 
-					if (this.bodyColors[var5] < field3586[var5].length) {
-						var8.recolor(field3578[var5], field3586[var5][this.bodyColors[var5]]);
+					if (this.bodyColors[var5] < class33.field187[var5].length) {
+						var8.recolor(Coord.field3572[var5], class33.field187[var5][this.bodyColors[var5]]);
 					}
 				}
 
@@ -508,10 +507,10 @@ public class PlayerComposition {
 		}
 	}
 
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "14"
+		descriptor = "(I)I",
+		garbageValue = "-1292206549"
 	)
 	@Export("getChatHeadId")
 	public int getChatHeadId() {
@@ -520,110 +519,70 @@ public class PlayerComposition {
 			var1 = -65536L | (long)this.npcTransformId;
 		}
 
-		Integer var3 = (Integer)field3582.method7781(var1);
+		Integer var3 = (Integer)field3628.method7937(var1);
 		if (var3 == null) {
-			var3 = ++field3583 - 1;
-			field3582.method7782(var1, var3);
-			field3583 %= 65535;
+			var3 = ++field3626 - 1;
+			field3628.method7928(var1, var3);
+			field3626 %= 65535;
 		}
 
 		return var3;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1158771729"
+		descriptor = "(B)V",
+		garbageValue = "0"
 	)
-	void method6072() {
-		this.method6080(this.field3584, this.equipment, this.bodyColors, this.gender, this.npcTransformId);
+	void method6291() {
+		this.method6267(this.field3619, this.equipment, this.bodyColors, this.gender, this.npcTransformId);
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(CLon;B)C",
-		garbageValue = "1"
+		descriptor = "(IIIIB)I",
+		garbageValue = "20"
 	)
-	@Export("standardizeChar")
-	static char standardizeChar(char var0, Language var1) {
-		if (var0 >= 192 && var0 <= 255) {
-			if (var0 >= 192 && var0 <= 198) {
-				return 'A';
-			}
+	static final int method6301(int var0, int var1, int var2, int var3) {
+		return var0 * var2 + var3 * var1 >> 16;
+	}
 
-			if (var0 == 199) {
-				return 'C';
-			}
-
-			if (var0 >= 200 && var0 <= 203) {
-				return 'E';
-			}
-
-			if (var0 >= 204 && var0 <= 207) {
-				return 'I';
-			}
-
-			if (var0 == 209 && var1 != Language.Language_ES) {
-				return 'N';
-			}
-
-			if (var0 >= 210 && var0 <= 214) {
-				return 'O';
-			}
-
-			if (var0 >= 217 && var0 <= 220) {
-				return 'U';
-			}
-
-			if (var0 == 221) {
-				return 'Y';
-			}
-
-			if (var0 == 223) {
-				return 's';
-			}
-
-			if (var0 >= 224 && var0 <= 230) {
-				return 'a';
-			}
-
-			if (var0 == 231) {
-				return 'c';
-			}
-
-			if (var0 >= 232 && var0 <= 235) {
-				return 'e';
-			}
-
-			if (var0 >= 236 && var0 <= 239) {
-				return 'i';
-			}
-
-			if (var0 == 241 && var1 != Language.Language_ES) {
-				return 'n';
-			}
-
-			if (var0 >= 242 && var0 <= 246) {
-				return 'o';
-			}
-
-			if (var0 >= 249 && var0 <= 252) {
-				return 'u';
-			}
-
-			if (var0 == 253 || var0 == 255) {
-				return 'y';
-			}
-		}
-
-		if (var0 == 338) {
-			return 'O';
-		} else if (var0 == 339) {
-			return 'o';
-		} else if (var0 == 376) {
-			return 'Y';
+	@ObfuscatedName("bt")
+	@ObfuscatedSignature(
+		descriptor = "(ILds;ZB)I",
+		garbageValue = "63"
+	)
+	static int method6300(int var0, Script var1, boolean var2) {
+		if (var0 == ScriptOpcodes.GETWINDOWMODE) {
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = class178.getWindowedMode();
+			return 1;
 		} else {
-			return var0;
+			int var3;
+			if (var0 == ScriptOpcodes.SETWINDOWMODE) {
+				var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+				if (var3 == 1 || var3 == 2) {
+					NPCComposition.setWindowedMode(var3);
+				}
+
+				return 1;
+			} else if (var0 == ScriptOpcodes.GETDEFAULTWINDOWMODE) {
+				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = class91.clientPreferences.method2525();
+				return 1;
+			} else if (var0 != ScriptOpcodes.SETDEFAULTWINDOWMODE) {
+				if (var0 == 5310) {
+					--Interpreter.Interpreter_intStackSize;
+					return 1;
+				} else {
+					return 2;
+				}
+			} else {
+				var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+				if (var3 == 1 || var3 == 2) {
+					class91.clientPreferences.method2524(var3);
+				}
+
+				return 1;
+			}
 		}
 	}
 }

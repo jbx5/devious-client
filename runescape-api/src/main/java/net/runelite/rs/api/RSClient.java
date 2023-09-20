@@ -202,8 +202,11 @@ public interface RSClient extends RSGameEngine, Client
 	@Override
 	int getDragTime();
 
-	@Import("Widget_interfaceComponents")
+	//@Import("Widget_interfaceComponents")
 	RSWidget[][] getWidgets();
+
+	@Import("widgetDefinition")
+	RSWidgetDefinition getWidgetDefinition();
 
 	/**
 	 * Gets an array of widgets that correspond to the passed group ID.
@@ -525,7 +528,7 @@ public interface RSClient extends RSGameEngine, Client
 	@Construct
 	RSInterfaceParent newInterfaceParent();
 
-	@Import("loadInterface")
+	//@Import("loadInterface")
 	boolean loadInterface(int interfaceId);
 
 	@Import("openInterface")
@@ -939,8 +942,8 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("compass")
 	void setCompass(SpritePixels spritePixels);
 
-	@Import("Widget_cachedSprites")
-	@Override
+	//@Import("Widget_cachedSprites")
+	//@Override
 	RSEvictingDualNodeHashTable getWidgetSpriteCache();
 
 	@Import("ItemDefinition_cached")
@@ -1616,13 +1619,13 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("VarpDefinition_cached")
 	RSEvictingDualNodeHashTable getVarpDefinitionCache();
 
-	@Import("Widget_cachedModels")
+	//@Import("Widget_cachedModels")
 	RSEvictingDualNodeHashTable getModelsCache();
 
-	@Import("Widget_cachedFonts")
+	//@Import("Widget_cachedFonts")
 	RSEvictingDualNodeHashTable getFontsCache();
 
-	@Import("Widget_cachedSpriteMasks")
+	//@Import("Widget_cachedSpriteMasks")
 	RSEvictingDualNodeHashTable getSpriteMasksCache();
 
 	@Import("WorldMapElement_cachedSprites")

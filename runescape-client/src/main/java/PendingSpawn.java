@@ -1,166 +1,156 @@
-import java.net.MalformedURLException;
-import java.net.URL;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dv")
+@ObfuscatedName("dw")
 @Implements("PendingSpawn")
 public final class PendingSpawn extends Node {
-	@ObfuscatedName("ub")
-	@ObfuscatedGetter(
-		intValue = -927036032
+	@ObfuscatedName("dz")
+	@ObfuscatedSignature(
+		descriptor = "[Lun;"
 	)
-	static int field1182;
-	@ObfuscatedName("au")
+	@Export("worldSelectFlagSprites")
+	static IndexedSprite[] worldSelectFlagSprites;
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = -1211585979
+		intValue = 1383860513
 	)
 	@Export("plane")
 	int plane;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = 1068935697
+		intValue = -1109299775
 	)
 	@Export("type")
 	int type;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = -762118645
+		intValue = 1415427477
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("at")
+	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = -359817879
+		intValue = -444130973
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = 757477475
+		intValue = 700260725
 	)
 	@Export("objectId")
 	int objectId;
-	@ObfuscatedName("ai")
+	@ObfuscatedName("ah")
 	@ObfuscatedGetter(
-		intValue = 2102589387
+		intValue = 761889211
 	)
-	int field1185;
-	@ObfuscatedName("az")
+	int field1178;
+	@ObfuscatedName("ar")
 	@ObfuscatedGetter(
-		intValue = -77659419
+		intValue = 2125054333
 	)
-	int field1186;
+	int field1176;
+	@ObfuscatedName("ab")
+	@ObfuscatedGetter(
+		intValue = -1497418465
+	)
+	int field1177;
+	@ObfuscatedName("am")
+	@ObfuscatedGetter(
+		intValue = 1698941181
+	)
+	int field1170;
+	@ObfuscatedName("av")
+	@ObfuscatedGetter(
+		intValue = 607121519
+	)
+	int field1173;
+	@ObfuscatedName("ag")
+	@ObfuscatedGetter(
+		intValue = -1155527501
+	)
+	int field1180;
 	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = -517961703
+		intValue = 88075867
 	)
-	int field1187;
-	@ObfuscatedName("aa")
+	int field1181;
+	@ObfuscatedName("ay")
 	@ObfuscatedGetter(
-		intValue = -29963369
-	)
-	int field1189;
-	@ObfuscatedName("af")
-	@ObfuscatedGetter(
-		intValue = 1851896147
-	)
-	int field1183;
-	@ObfuscatedName("ad")
-	@ObfuscatedGetter(
-		intValue = -61676879
-	)
-	int field1190;
-	@ObfuscatedName("al")
-	@ObfuscatedGetter(
-		intValue = -1398168629
-	)
-	int field1191;
-	@ObfuscatedName("an")
-	@ObfuscatedGetter(
-		intValue = 1120217811
+		intValue = 269057879
 	)
 	@Export("delay")
 	int delay;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("as")
 	@ObfuscatedGetter(
-		intValue = -649567293
+		intValue = -2145088427
 	)
 	@Export("hitpoints")
 	int hitpoints;
 
 	PendingSpawn() {
-		this.field1191 = 31;
+		this.field1181 = 31;
 		this.delay = 0;
 		this.hitpoints = -1;
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
 		descriptor = "(II)V",
-		garbageValue = "-390756021"
+		garbageValue = "1554580645"
 	)
-	void method2360(int var1) {
-		this.field1191 = var1;
+	void method2413(int var1) {
+		this.field1181 = var1;
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "(II)Z",
-		garbageValue = "-1725061454"
+		garbageValue = "585710320"
 	)
-	boolean method2362(int var1) {
+	boolean method2415(int var1) {
 		if (var1 >= 0 && var1 <= 4) {
-			return (this.field1191 & 1 << var1) != 0;
+			return (this.field1181 & 1 << var1) != 0;
 		} else {
 			return true;
 		}
 	}
 
-	@ObfuscatedName("au")
-	public static final void method2365(long var0) {
-		if (var0 > 0L) {
-			if (0L == var0 % 10L) {
-				WorldMapData_0.method5047(var0 - 1L);
-				WorldMapData_0.method5047(1L);
-			} else {
-				WorldMapData_0.method5047(var0);
-			}
-
-		}
+	@ObfuscatedName("av")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;B)V",
+		garbageValue = "-121"
+	)
+	static final void method2418(String var0) {
+		class436.method7914(var0 + " is already on your friend list");
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("lq")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)Z",
-		garbageValue = "1525376195"
+		descriptor = "([Lnm;Lnm;ZB)V",
+		garbageValue = "-37"
 	)
-	static boolean method2369(String var0) {
-		if (var0 == null) {
-			return false;
-		} else {
-			try {
-				new URL(var0);
-				return true;
-			} catch (MalformedURLException var2) {
-				return false;
+	@Export("revalidateWidgetScroll")
+	static void revalidateWidgetScroll(Widget[] var0, Widget var1, boolean var2) {
+		int var3 = var1.scrollWidth != 0 ? var1.scrollWidth : var1.width;
+		int var4 = var1.scrollHeight != 0 ? var1.scrollHeight : var1.height;
+		class360.resizeInterface(var0, var1.id, var3, var4, var2);
+		if (var1.children != null) {
+			class360.resizeInterface(var1.children, var1.id, var3, var4, var2);
+		}
+
+		InterfaceParent var5 = (InterfaceParent)Client.interfaceParents.get((long)var1.id);
+		if (var5 != null) {
+			int var6 = var5.group;
+			if (class33.widgetDefinition.loadInterface(var6)) {
+				class360.resizeInterface(class33.widgetDefinition.Widget_interfaceComponents[var6], -1, var3, var4, var2);
 			}
 		}
-	}
 
-	@ObfuscatedName("hm")
-	@ObfuscatedSignature(
-		descriptor = "(ZI)V",
-		garbageValue = "334043095"
-	)
-	static final void method2368(boolean var0) {
-		if (var0) {
-			Client.field776 = Login.field956 ? class139.field1647 : class139.field1646;
-		} else {
-			Client.field776 = class449.clientPreferences.method2472(Login.Login_username) ? class139.field1650 : class139.field1653;
+		if (var1.contentType == 1337) {
 		}
 
 	}
