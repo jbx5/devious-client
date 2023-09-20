@@ -101,7 +101,7 @@ public class class168 extends class161 {
 					if (var2) {
 						class416.scriptDotWidget = var12;
 					} else {
-						class306.field3131 = var12;
+						class306.scriptActiveWidget = var12;
 					}
 
 					ClanChannelMember.invalidateWidget(var6);
@@ -111,7 +111,7 @@ public class class168 extends class161 {
 		} else {
 			Widget var3;
 			if (var0 == ScriptOpcodes.CC_DELETE) {
-				var3 = var2 ? class416.scriptDotWidget : class306.field3131;
+				var3 = var2 ? class416.scriptDotWidget : class306.scriptActiveWidget;
 				Widget var10 = class33.widgetDefinition.method6240(var3.id);
 				var10.children[var3.childIndex] = null;
 				ClanChannelMember.invalidateWidget(var10);
@@ -129,7 +129,7 @@ public class class168 extends class161 {
 						if (var2) {
 							class416.scriptDotWidget = var3;
 						} else {
-							class306.field3131 = var3;
+							class306.scriptActiveWidget = var3;
 						}
 					} else {
 						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = 0;
@@ -143,13 +143,13 @@ public class class168 extends class161 {
 				Interpreter.Interpreter_intStackSize -= 2;
 				var9 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
 				var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
-				Widget var5 = class33.widgetDefinition.method6241(var9, var4);
+				Widget var5 = class33.widgetDefinition.getWidgetChild(var9, var4);
 				if (var5 != null && var4 != -1) {
 					Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = 1;
 					if (var2) {
 						class416.scriptDotWidget = var5;
 					} else {
-						class306.field3131 = var5;
+						class306.scriptActiveWidget = var5;
 					}
 				} else {
 					Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = 0;

@@ -233,7 +233,7 @@ public class class33 {
 
 		Widget var17;
 		if (var2 == 57 || var2 == 1007) {
-			var17 = widgetDefinition.method6241(var1, var0);
+			var17 = widgetDefinition.getWidgetChild(var1, var0);
 			if (var17 != null) {
 				TextureProvider.widgetDefaultMenuAction(var3, var1, var0, var4, var6);
 			}
@@ -388,9 +388,9 @@ public class class33 {
 				Client.destinationX = var0;
 				Client.destinationY = var1;
 				var14 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3173, Client.packetWriter.isaacCipher);
-				var14.packetBuffer.writeShort(Client.field686);
+				var14.packetBuffer.writeShort(Client.selectedSpellItemId);
 				var14.packetBuffer.method9244(Client.selectedSpellChildIndex);
-				var14.packetBuffer.writeIntME(JagexCache.field1841);
+				var14.packetBuffer.writeIntME(JagexCache.selectedSpellWidget);
 				var14.packetBuffer.writeByteSub(var3);
 				var14.packetBuffer.writeShortAddLE(Client.field755.method4280(82) ? 1 : 0);
 				Client.packetWriter.addNode(var14);
@@ -455,16 +455,16 @@ public class class33 {
 			var9.packetBuffer.writeByteNeg(Client.field755.method4280(82) ? 1 : 0);
 			var9.packetBuffer.writeShortAdd(Client.selectedSpellChildIndex);
 			var9.packetBuffer.writeShort(class20.baseX * 64 + var0);
-			var9.packetBuffer.method9258(JagexCache.field1841);
+			var9.packetBuffer.method9258(JagexCache.selectedSpellWidget);
 			var9.packetBuffer.writeByteSub(var3);
 			var9.packetBuffer.writeByteSub(class19.baseY * 64 + var1);
-			var9.packetBuffer.method9244(Client.field686);
+			var9.packetBuffer.method9244(Client.selectedSpellItemId);
 			Client.packetWriter.addNode(var9);
 		}
 
 		if (var2 == 30 && Client.meslayerContinueWidget == null) {
 			class174.resumePauseWidget(var1, var0);
-			Client.meslayerContinueWidget = widgetDefinition.method6241(var1, var0);
+			Client.meslayerContinueWidget = widgetDefinition.getWidgetChild(var1, var0);
 			ClanChannelMember.invalidateWidget(Client.meslayerContinueWidget);
 		}
 
@@ -551,8 +551,8 @@ public class class33 {
 			var9 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3228, Client.packetWriter.isaacCipher);
 			var9.packetBuffer.method9244(var3);
 			var9.packetBuffer.writeShortAddLE(Client.field755.method4280(82) ? 1 : 0);
-			var9.packetBuffer.writeInt(JagexCache.field1841);
-			var9.packetBuffer.writeShort(Client.field686);
+			var9.packetBuffer.writeInt(JagexCache.selectedSpellWidget);
+			var9.packetBuffer.writeShort(Client.selectedSpellItemId);
 			var9.packetBuffer.writeShortAdd(class19.baseY * 64 + var1);
 			var9.packetBuffer.writeShortAdd(class20.baseX * 64 + var0);
 			var9.packetBuffer.writeByteSub(Client.selectedSpellChildIndex);
@@ -635,7 +635,7 @@ public class class33 {
 		}
 
 		if (var2 == 58) {
-			var17 = widgetDefinition.method6241(var1, var0);
+			var17 = widgetDefinition.getWidgetChild(var1, var0);
 			if (var17 != null) {
 				if (var17.field3785 != null) {
 					ScriptEvent var19 = new ScriptEvent();
@@ -650,8 +650,8 @@ public class class33 {
 				var14.packetBuffer.writeShortAdd(Client.selectedSpellChildIndex);
 				var14.packetBuffer.writeInt(var1);
 				var14.packetBuffer.method9244(var4);
-				var14.packetBuffer.method9258(JagexCache.field1841);
-				var14.packetBuffer.writeShortAdd(Client.field686);
+				var14.packetBuffer.method9258(JagexCache.selectedSpellWidget);
+				var14.packetBuffer.writeShortAdd(Client.selectedSpellItemId);
 				var14.packetBuffer.writeShortAdd(var0);
 				Client.packetWriter.addNode(var14);
 			}
@@ -722,7 +722,7 @@ public class class33 {
 		}
 
 		if (var2 == 25) {
-			var17 = widgetDefinition.method6241(var1, var0);
+			var17 = widgetDefinition.getWidgetChild(var1, var0);
 			if (var17 != null) {
 				class286.method5663();
 				class478.method8514(var1, var0, KitDefinition.Widget_unpackTargetMask(MouseRecorder.getWidgetFlags(var17)), var4);
@@ -750,8 +750,8 @@ public class class33 {
 					Client.destinationX = var0;
 					Client.destinationY = var1;
 					var14 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3229, Client.packetWriter.isaacCipher);
-					var14.packetBuffer.method9258(JagexCache.field1841);
-					var14.packetBuffer.method9244(Client.field686);
+					var14.packetBuffer.method9258(JagexCache.selectedSpellWidget);
+					var14.packetBuffer.method9244(Client.selectedSpellItemId);
 					var14.packetBuffer.writeShortAddLE(Client.field755.method4280(82) ? 1 : 0);
 					var14.packetBuffer.writeByteSub(Client.selectedSpellChildIndex);
 					var14.packetBuffer.writeShortAdd(var3);

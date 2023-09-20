@@ -878,7 +878,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 	@ObfuscatedGetter(
 		intValue = -1680657639
 	)
-	static int field686;
+	@Export("selectedSpellItemId")
+	static int selectedSpellItemId;
 	@ObfuscatedName("ph")
 	@Export("selectedSpellActionName")
 	static String selectedSpellActionName;
@@ -1557,7 +1558,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 		field772 = null;
 		isSpellSelected = false;
 		selectedSpellChildIndex = -1;
-		field686 = -1;
+		selectedSpellItemId = -1;
 		selectedSpellActionName = null;
 		selectedSpellName = null;
 		rootInterface = -1;
@@ -2563,7 +2564,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 				var34.packetBuffer.writeInt(class358.field3898.hash);
 				var34.packetBuffer.writeShortLE(Language.field4435.hash);
 				var34.packetBuffer.writeShortLE(0);
-				var34.packetBuffer.writeIntME(AbstractByteArrayCopier.field3839.hash);
+				var34.packetBuffer.writeIntME(AbstractByteArrayCopier.archive4.hash);
 				var34.packetBuffer.writeIntME(class198.archive9.hash);
 				var34.packetBuffer.writeIntME(AABB.field2658.hash);
 				var34.packetBuffer.writeInt(ArchiveDiskAction.field4291.hash);
@@ -4691,9 +4692,9 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					var20 = var3.readUnsignedIntME();
 					var79 = class33.widgetDefinition.method6240(var20);
 
-					for (var22 = 0; var22 < var79.field3786.length; ++var22) {
-						var79.field3786[var22] = -1;
-						var79.field3786[var22] = 0;
+					for (var22 = 0; var22 < var79.itemIds.length; ++var22) {
+						var79.itemIds[var22] = -1;
+						var79.itemIds[var22] = 0;
 					}
 
 					ClanChannelMember.invalidateWidget(var79);
@@ -5468,9 +5469,9 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 							}
 						}
 
-						if (var6 != null && var7 >= 0 && var7 < var6.field3786.length) {
-							var6.field3786[var7] = var8;
-							var6.field3809[var7] = var24;
+						if (var6 != null && var7 >= 0 && var7 < var6.itemIds.length) {
+							var6.itemIds[var7] = var8;
+							var6.itemQuantities[var7] = var24;
 						}
 					}
 
@@ -5578,9 +5579,9 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					}
 
 					if (var6 != null) {
-						for (var7 = 0; var7 < var6.field3786.length; ++var7) {
-							var6.field3786[var7] = 0;
-							var6.field3809[var7] = 0;
+						for (var7 = 0; var7 < var6.itemIds.length; ++var7) {
+							var6.itemIds[var7] = 0;
+							var6.itemQuantities[var7] = 0;
 						}
 					}
 
@@ -5594,9 +5595,9 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 						}
 
 						var10 = var3.readUnsignedShort();
-						if (var6 != null && var8 < var6.field3786.length) {
-							var6.field3786[var8] = var10;
-							var6.field3809[var8] = var24;
+						if (var6 != null && var8 < var6.itemIds.length) {
+							var6.itemIds[var8] = var10;
+							var6.itemQuantities[var8] = var24;
 						}
 
 						SecureRandomFuture.itemContainerSetItem(var5, var8, var10 - 1, var24);

@@ -1013,9 +1013,6 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("tileLastDrawnActor")
 	int[][] getOccupiedTilesTick();
 
-	@Import("ObjectDefinition_cachedModels")
-	RSEvictingDualNodeHashTable getObjectDefinitionModelsCache();
-
 	@Import("Scene_drawnCount")
 	int getCycle();
 
@@ -1556,17 +1553,11 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("HitSplatDefinition_cached")
 	RSEvictingDualNodeHashTable getHitSplatDefinitionCache();
 
-	//@Import("HitSplatDefinition_cachedSprites")
-	//RSEvictingDualNodeHashTable getHitSplatDefinitionSpritesCache();
-
 	@Import("HitSplatDefinition_cachedFonts")
 	RSEvictingDualNodeHashTable getHitSplatDefinitionDontsCache();
 
 	@Import("InvDefinition_cached")
 	RSEvictingDualNodeHashTable getInvDefinitionCache();
-
-	@Import("ItemDefinition_cachedModels")
-	RSEvictingDualNodeHashTable getItemDefinitionModelsCache();
 
 	@Import("ItemDefinition_cachedSprites")
 	RSEvictingDualNodeHashTable getItemDefinitionSpritesCache();
@@ -1610,9 +1601,6 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("SpotAnimationDefinition_cached")
 	RSEvictingDualNodeHashTable getSpotAnimationDefinitionCache();
 
-	@Import("SpotAnimationDefinition_cachedModels")
-	RSEvictingDualNodeHashTable getSpotAnimationDefinitionModlesCache();
-
 	@Import("VarcInt_cached")
 	RSEvictingDualNodeHashTable getVarcIntCache();
 
@@ -1627,9 +1615,6 @@ public interface RSClient extends RSGameEngine, Client
 
 	//@Import("Widget_cachedSpriteMasks")
 	RSEvictingDualNodeHashTable getSpriteMasksCache();
-
-	@Import("WorldMapElement_cachedSprites")
-	RSEvictingDualNodeHashTable getSpritesCache();
 
 	@Import("DBRowType_cache")
 	RSEvictingDualNodeHashTable getDbRowTypeCache();

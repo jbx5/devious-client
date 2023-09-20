@@ -10,7 +10,8 @@ public abstract class AbstractByteArrayCopier {
 	@ObfuscatedSignature(
 		descriptor = "Lok;"
 	)
-	static Archive field3839;
+	@Export("archive4")
+	static Archive archive4;
 
 	AbstractByteArrayCopier() {
 	}

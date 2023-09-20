@@ -33,7 +33,8 @@ public class JagexCache {
 	@ObfuscatedGetter(
 		intValue = -2073836903
 	)
-	static int field1841;
+	@Export("selectedSpellWidget")
+	static int selectedSpellWidget;
 	@ObfuscatedName("vz")
 	@ObfuscatedGetter(
 		intValue = -304944963

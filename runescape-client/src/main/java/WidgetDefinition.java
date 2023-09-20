@@ -125,7 +125,8 @@ public class WidgetDefinition
 		descriptor = "(III)Lnm;",
 		garbageValue = "-356739593"
 	)
-	public Widget method6241(int var1, int var2) {
+	@Export("getWidgetChild")
+	public Widget getWidgetChild(int var1, int var2) {
 		Widget var3 = this.method6240(var1);
 		if (var2 == -1) {
 			return var3;

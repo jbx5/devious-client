@@ -56,7 +56,7 @@ public class DirectByteArrayCopier extends AbstractByteArrayCopier {
 				if (Client.isItemSelected == 1) {
 					class153.insertMenuItemNoShift("Use", Client.field772 + " " + "->" + " " + Client.colorStartTag(16777215) + var4, 14, var1, var2, var3);
 				} else if (Client.isSpellSelected) {
-					if ((class31.field173 & 8) == 8) {
+					if ((class31.selectedSpellFlags & 8) == 8) {
 						class153.insertMenuItemNoShift(Client.selectedSpellActionName, Client.selectedSpellName + " " + "->" + " " + Client.colorStartTag(16777215) + var4, 15, var1, var2, var3);
 					}
 				} else {

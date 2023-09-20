@@ -409,7 +409,7 @@ public final class Tile extends Node {
 										Rasterizer2D.Rasterizer2D_drawRectangleAlpha(var12, var13, var10.width, var10.height, var19, 256 - (var14 & 255));
 									}
 								} else if (var10.type == 4) {
-									Font var40 = var10.method6592(class33.widgetDefinition);
+									Font var40 = var10.getFont(class33.widgetDefinition);
 									if (var40 == null) {
 										if (Widget.field3666) {
 											ClanChannelMember.invalidateWidget(var10);
@@ -672,7 +672,7 @@ public final class Tile extends Node {
 												class344 var37 = var10.method6614();
 												class339 var32 = var10.method6615();
 												if (var37 != null && var32 != null && var37.method6360()) {
-													var29 = var10.method6592(class33.widgetDefinition);
+													var29 = var10.getFont(class33.widgetDefinition);
 													if (var29 != null) {
 														Client.field785.method9826(var12, var13, var10.width, var10.height, var37.method6361(), var37.method6362(), var37.method6358(), var37.method6359(), var37.method6357());
 														var22 = var10.textShadowed ? var10.spriteShadow : -1;

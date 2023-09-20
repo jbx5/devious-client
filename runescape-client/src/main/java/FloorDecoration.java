@@ -135,7 +135,7 @@ public final class FloorDecoration {
 			if (Client.isSpellSelected) {
 				var2 = MouseRecorder.getWidgetFlags(var0);
 				boolean var9 = (var2 >> 21 & 1) != 0;
-				if (var9 && (class31.field173 & 32) == 32) {
+				if (var9 && (class31.selectedSpellFlags & 32) == 32) {
 					var10 = Client.selectedSpellActionName;
 					String var11 = Client.selectedSpellName + " " + "->" + " " + var0.dataText;
 					var5 = var0.childIndex;

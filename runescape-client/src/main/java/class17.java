@@ -171,7 +171,7 @@ class class17 implements SSLSession {
 			var4 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
 			var3 = class33.widgetDefinition.method6240(var4);
 		} else {
-			var3 = var2 ? class416.scriptDotWidget : class306.field3131;
+			var3 = var2 ? class416.scriptDotWidget : class306.scriptActiveWidget;
 		}
 
 		int var14;
@@ -344,7 +344,7 @@ class class17 implements SSLSession {
 					return 1;
 				} else if (var0 == 1125) {
 					var14 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-					class541 var12 = (class541)SequenceDefinition.findEnumerated(class472.FillMode_values(), var14);
+					FillMode var12 = (FillMode)SequenceDefinition.findEnumerated(class472.FillMode_values(), var14);
 					if (var12 != null) {
 						var3.fillMode = var12;
 						ClanChannelMember.invalidateWidget(var3);

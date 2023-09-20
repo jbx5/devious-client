@@ -495,7 +495,7 @@ public class ClientPreferences {
 			var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
 			var4 = class33.widgetDefinition.method6240(var3);
 		} else {
-			var4 = var2 ? class416.scriptDotWidget : class306.field3131;
+			var4 = var2 ? class416.scriptDotWidget : class306.scriptActiveWidget;
 		}
 
 		if (var0 == ScriptOpcodes.CC_SETPOSITION) {

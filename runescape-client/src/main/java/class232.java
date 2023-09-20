@@ -763,7 +763,7 @@ public class class232 {
 				} else if (var93 == TextureProvider.localPlayer) {
 					var76 = WorldMapLabelSize.method5219();
 				} else {
-					var76 = class208.method3847() || ModeWhere.method7182() && var93.isFriend() || class47.method871() && var93.method2366();
+					var76 = class208.method3847() || ModeWhere.method7182() && var93.isFriend() || class47.method871() && var93.isFriendsChatMember();
 				}
 
 				if (var76) {

@@ -194,7 +194,7 @@ public class Widget extends Node {
 		descriptor = "Luf;"
 	)
 	@Export("fillMode")
-	public class541 fillMode;
+	public FillMode fillMode;
 	@ObfuscatedName("cy")
 	@ObfuscatedGetter(
 		intValue = 1533541555
@@ -581,9 +581,11 @@ public class Widget extends Node {
 	@Export("buttonText")
 	public String buttonText;
 	@ObfuscatedName("gm")
-	public int[] field3786;
+	@Export("itemIds")
+	public int[] itemIds;
 	@ObfuscatedName("gb")
-	public int[] field3809;
+	@Export("itemQuantities")
+	public int[] itemQuantities;
 	@ObfuscatedName("gx")
 	@ObfuscatedGetter(
 		intValue = 1826603097
@@ -697,7 +699,7 @@ public class Widget extends Node {
 		this.mouseOverColor = 0;
 		this.mouseOverColor2 = 0;
 		this.fill = false;
-		this.fillMode = class541.SOLID;
+		this.fillMode = FillMode.SOLID;
 		this.transparencyTop = 0;
 		this.transparencyBot = 0;
 		this.lineWid = 1;
@@ -1267,7 +1269,8 @@ public class Widget extends Node {
 		descriptor = "(Lnt;I)Lpu;",
 		garbageValue = "-729897431"
 	)
-	public Font method6592(WidgetDefinition var1) {
+	@Export("getFont")
+	public Font getFont(WidgetDefinition var1) {
 		field3666 = false;
 		if (this.fontId == -1) {
 			return null;
@@ -1907,7 +1910,7 @@ public class Widget extends Node {
 				int var5 = var2.method6362();
 				int var6 = var2.method6359();
 				int var7 = var2.method6358();
-				Font var8 = this.method6592(var1);
+				Font var8 = this.getFont(var1);
 				if (var8 != null) {
 					var3 |= var2.method6308(var8);
 					var3 |= this.method6618(var2);

@@ -46,7 +46,7 @@ public class class76 {
 			var0 -= 1000;
 			var3 = class33.widgetDefinition.method6240(Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]);
 		} else {
-			var3 = var2 ? class416.scriptDotWidget : class306.field3131;
+			var3 = var2 ? class416.scriptDotWidget : class306.scriptActiveWidget;
 		}
 
 		ClanChannelMember.invalidateWidget(var3);
