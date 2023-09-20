@@ -15,7 +15,8 @@ public class class31 {
 	@ObfuscatedGetter(
 		intValue = -1380833859
 	)
-	static int field173;
+	@Export("selectedSpellFlags")
+	static int selectedSpellFlags;
 
 	static {
 		field171 = null;
@@ -57,7 +58,7 @@ public class class31 {
 			var0 -= 1000;
 			var3 = class33.widgetDefinition.method6240(Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]);
 		} else {
-			var3 = var2 ? class416.scriptDotWidget : class306.field3131;
+			var3 = var2 ? class416.scriptDotWidget : class306.scriptActiveWidget;
 		}
 
 		String var4 = Interpreter.Interpreter_stringStack[--class180.Interpreter_stringStackSize];

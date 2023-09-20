@@ -73,22 +73,26 @@ public final class WorldMapRenderer {
 	@ObfuscatedGetter(
 		intValue = -1606493505
 	)
-	int field2973;
+	@Export("tileX")
+	int tileX;
 	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
 		intValue = 1924593729
 	)
-	int field2959;
+	@Export("tileY")
+	int tileY;
 	@ObfuscatedName("ay")
 	@ObfuscatedGetter(
 		intValue = -687628608
 	)
-	int field2957;
+	@Export("tileWidth")
+	int tileWidth;
 	@ObfuscatedName("as")
 	@ObfuscatedGetter(
 		intValue = 1331006784
 	)
-	int field2971;
+	@Export("tileHeight")
+	int tileHeight;
 	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
 		intValue = 200238777
@@ -137,10 +141,10 @@ public final class WorldMapRenderer {
 			this.mapAreaData.getOriginX();
 			this.mapAreaData.getOriginPlane();
 			this.mapAreaData.getOriginY();
-			this.field2973 = this.mapAreaData.getRegionLowX() * 64;
-			this.field2959 = this.mapAreaData.getRegionLowY() * 64;
-			this.field2957 = (this.mapAreaData.getRegionHighX() - this.mapAreaData.getRegionLowX() + 1) * 4096;
-			this.field2971 = (this.mapAreaData.getRegionHighY() - this.mapAreaData.getRegionLowY() + 1) * 4096;
+			this.tileX = this.mapAreaData.getRegionLowX() * 64;
+			this.tileY = this.mapAreaData.getRegionLowY() * 64;
+			this.tileWidth = (this.mapAreaData.getRegionHighX() - this.mapAreaData.getRegionLowX() + 1) * 4096;
+			this.tileHeight = (this.mapAreaData.getRegionHighY() - this.mapAreaData.getRegionLowY() + 1) * 4096;
 			int var17 = this.mapAreaData.getRegionHighX() - this.mapAreaData.getRegionLowX() + 1;
 			int var10 = this.mapAreaData.getRegionHighY() - this.mapAreaData.getRegionLowY() + 1;
 			System.nanoTime();
@@ -229,8 +233,8 @@ public final class WorldMapRenderer {
 		Rasterizer3D.method4530(var9, var10, var11, var12);
 		Rasterizer2D.Rasterizer2D_setClipArray(var13);
 		var19 = (int)(var15 * 64.0F);
-		var20 = this.field2973 * 4096 + var1;
-		int var21 = this.field2959 * 4096 + var2;
+		var20 = this.tileX * 4096 + var1;
+		int var21 = this.tileY * 4096 + var2;
 
 		for (int var22 = var14.x; var22 < var14.x + var14.width; ++var22) {
 			for (int var23 = var14.y; var23 < var14.height + var14.y; ++var23) {
@@ -250,8 +254,8 @@ public final class WorldMapRenderer {
 		WorldMapRectangle var14 = this.createWorldMapRectangle(var1, var2, var3, var4);
 		float var15 = this.getPixelsPerTile(var7 - var5, var3 - var1);
 		int var16 = (int)(var15 * 64.0F);
-		int var17 = this.field2973 * 4096 + var1;
-		int var18 = this.field2959 * 4096 + var2;
+		int var17 = this.tileX * 4096 + var1;
+		int var18 = this.tileY * 4096 + var2;
 
 		int var19;
 		int var20;
@@ -306,8 +310,8 @@ public final class WorldMapRenderer {
 
 					while (var11.hasNext()) {
 						AbstractWorldMapIcon var12 = (AbstractWorldMapIcon)var11.next();
-						int var13 = var3 * (var12.coord2.x - this.field2973 * 4096) / (this.field2957 * 64);
-						int var14 = var4 - (var12.coord2.y - this.field2959 * 4096) * var4 / (this.field2971 * 64);
+						int var13 = var3 * (var12.coord2.x - this.tileX * 4096) / (this.tileWidth * 64);
+						int var14 = var4 - (var12.coord2.y - this.tileY * 4096) * var4 / (this.tileHeight * 64);
 						Rasterizer2D.Rasterizer2D_drawCircleAlpha(var13 + var1, var14 + var2, 2, 16776960, 256);
 					}
 				}
@@ -328,8 +332,8 @@ public final class WorldMapRenderer {
 			WorldMapRectangle var12 = this.createWorldMapRectangle(var1, var2, var3, var4);
 			float var13 = this.getPixelsPerTile(var7, var3 - var1);
 			int var14 = (int)(64.0F * var13);
-			int var15 = this.field2973 * 4096 + var1;
-			int var16 = this.field2959 * 4096 + var2;
+			int var15 = this.tileX * 4096 + var1;
+			int var16 = this.tileY * 4096 + var2;
 
 			for (int var17 = var12.x; var17 < var12.x + var12.width; ++var17) {
 				for (int var18 = var12.y; var18 < var12.y + var12.height; ++var18) {
@@ -352,10 +356,10 @@ public final class WorldMapRenderer {
 	@Export("createWorldMapRectangle")
 	WorldMapRectangle createWorldMapRectangle(int var1, int var2, int var3, int var4) {
 		WorldMapRectangle var5 = new WorldMapRectangle(this);
-		int var6 = this.field2973 * 4096 + var1;
-		int var7 = this.field2959 * 4096 + var2;
-		int var8 = var3 + this.field2973 * 4096;
-		int var9 = this.field2959 * 4096 + var4;
+		int var6 = this.tileX * 4096 + var1;
+		int var7 = this.tileY * 4096 + var2;
+		int var8 = var3 + this.tileX * 4096;
+		int var9 = this.tileY * 4096 + var4;
 		int var10 = var6 / 64;
 		int var11 = var7 / 64;
 		int var12 = var8 / 64;

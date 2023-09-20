@@ -28,7 +28,8 @@ public class HealthBarDefinition extends DualNode {
 	@ObfuscatedSignature(
 		descriptor = "Llr;"
 	)
-	public static EvictingDualNodeHashTable field1990;
+	@Export("HealthBarDefinition_cached")
+	public static EvictingDualNodeHashTable HealthBarDefinition_cached;
 	@ObfuscatedName("cp")
 	static String field1995;
 	@ObfuscatedName("rn")
@@ -98,7 +99,7 @@ public class HealthBarDefinition extends DualNode {
 
 	static {
 		NpcDefinition_cachedModels = new EvictingDualNodeHashTable(64);
-		field1990 = new EvictingDualNodeHashTable(64);
+		HealthBarDefinition_cached = new EvictingDualNodeHashTable(64);
 	}
 
 	HealthBarDefinition() {
@@ -173,13 +174,13 @@ public class HealthBarDefinition extends DualNode {
 		if (this.frontSpriteID < 0) {
 			return null;
 		} else {
-			SpritePixels var1 = (SpritePixels)field1990.get((long)this.frontSpriteID);
+			SpritePixels var1 = (SpritePixels) HealthBarDefinition_cached.get((long)this.frontSpriteID);
 			if (var1 != null) {
 				return var1;
 			} else {
 				var1 = class47.SpriteBuffer_getSprite(field1979, this.frontSpriteID, 0);
 				if (var1 != null) {
-					field1990.put(var1, (long)this.frontSpriteID);
+					HealthBarDefinition_cached.put(var1, (long)this.frontSpriteID);
 				}
 
 				return var1;
@@ -197,13 +198,13 @@ public class HealthBarDefinition extends DualNode {
 		if (this.backSpriteID < 0) {
 			return null;
 		} else {
-			SpritePixels var1 = (SpritePixels)field1990.get((long)this.backSpriteID);
+			SpritePixels var1 = (SpritePixels) HealthBarDefinition_cached.get((long)this.backSpriteID);
 			if (var1 != null) {
 				return var1;
 			} else {
 				var1 = class47.SpriteBuffer_getSprite(field1979, this.backSpriteID, 0);
 				if (var1 != null) {
-					field1990.put(var1, (long)this.backSpriteID);
+					HealthBarDefinition_cached.put(var1, (long)this.backSpriteID);
 				}
 
 				return var1;

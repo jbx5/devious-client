@@ -160,9 +160,9 @@ public class VarcInt extends DualNode {
 						var10 = class33.widgetDefinition.method6240(var9);
 						var11 = var2[var4++];
 						if (var11 != -1 && (!class214.ItemDefinition_get(var11).isMembersOnly || Client.isMembersWorld)) {
-							for (var12 = 0; var12 < var10.field3786.length; ++var12) {
-								if (var11 + 1 == var10.field3786[var12]) {
-									var7 += var10.field3809[var12];
+							for (var12 = 0; var12 < var10.itemIds.length; ++var12) {
+								if (var11 + 1 == var10.itemIds[var12]) {
+									var7 += var10.itemQuantities[var12];
 								}
 							}
 						}
@@ -198,8 +198,8 @@ public class VarcInt extends DualNode {
 						var10 = class33.widgetDefinition.method6240(var9);
 						var11 = var2[var4++];
 						if (var11 != -1 && (!class214.ItemDefinition_get(var11).isMembersOnly || Client.isMembersWorld)) {
-							for (var12 = 0; var12 < var10.field3786.length; ++var12) {
-								if (var11 + 1 == var10.field3786[var12]) {
+							for (var12 = 0; var12 < var10.itemIds.length; ++var12) {
+								if (var11 + 1 == var10.itemIds[var12]) {
 									var7 = 999999999;
 									break;
 								}

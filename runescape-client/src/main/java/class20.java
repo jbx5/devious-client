@@ -149,7 +149,7 @@ public class class20 {
 		if (var0 != ScriptOpcodes.CC_CALLONRESIZE && var0 != ScriptOpcodes.IF_CALLONRESIZE) {
 			int var4;
 			if (var0 == ScriptOpcodes.CC_TRIGGEROP) {
-				var7 = var2 ? class416.scriptDotWidget : class306.field3131;
+				var7 = var2 ? class416.scriptDotWidget : class306.scriptActiveWidget;
 				var4 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
 				if (var4 >= 1 && var4 <= 10) {
 					class104 var8 = new class104(var4, var7.id, var7.childIndex, var7.itemId);
@@ -179,7 +179,7 @@ public class class20 {
 			if (var0 >= 2000) {
 				var7 = class33.widgetDefinition.method6240(Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]);
 			} else {
-				var7 = var2 ? class416.scriptDotWidget : class306.field3131;
+				var7 = var2 ? class416.scriptDotWidget : class306.scriptActiveWidget;
 			}
 
 			if (var7.onResize == null) {

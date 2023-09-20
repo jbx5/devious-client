@@ -81,7 +81,7 @@ public final class class4 {
 			var4 = class33.widgetDefinition.method6240(Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]);
 			var3 = false;
 		} else {
-			var4 = var2 ? class416.scriptDotWidget : class306.field3131;
+			var4 = var2 ? class416.scriptDotWidget : class306.scriptActiveWidget;
 		}
 
 		int var11;
@@ -100,7 +100,7 @@ public final class class4 {
 				Interpreter.Interpreter_intStackSize -= 2;
 				var11 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
 				var6 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
-				var4.parent = class33.widgetDefinition.method6241(var11, var6);
+				var4.parent = class33.widgetDefinition.getWidgetChild(var11, var6);
 				return 1;
 			} else if (var0 == ScriptOpcodes.CC_SETDRAGGABLEBEHAVIOR) {
 				var4.isScrollBar = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize] == 1;

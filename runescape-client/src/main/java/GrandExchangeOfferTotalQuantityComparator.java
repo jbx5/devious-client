@@ -225,18 +225,18 @@ final class GrandExchangeOfferTotalQuantityComparator implements Comparator {
 				PacketBufferNode var8;
 				if (var0 == 1) {
 					var8 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3142, Client.packetWriter.isaacCipher);
-					var8.packetBuffer.writeShortAddLE(0);
-					var8.packetBuffer.writeShortAdd(var3[var6]);
+					var8.packetBuffer.writeByteAdd(0);
+					var8.packetBuffer.writeShortAddLE(var3[var6]);
 					Client.packetWriter.addNode(var8);
 				} else if (var0 == 4) {
 					var8 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3199, Client.packetWriter.isaacCipher);
-					var8.packetBuffer.writeShortAdd(var3[var6]);
+					var8.packetBuffer.writeShortAddLE(var3[var6]);
 					var8.packetBuffer.writeByteNeg(0);
 					Client.packetWriter.addNode(var8);
 				} else if (var0 == 6) {
 					var8 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3182, Client.packetWriter.isaacCipher);
 					var8.packetBuffer.writeByteNeg(0);
-					var8.packetBuffer.writeByteSub(var3[var6]);
+					var8.packetBuffer.writeShortLE(var3[var6]);
 					Client.packetWriter.addNode(var8);
 				} else if (var0 == 7) {
 					var8 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3210, Client.packetWriter.isaacCipher);

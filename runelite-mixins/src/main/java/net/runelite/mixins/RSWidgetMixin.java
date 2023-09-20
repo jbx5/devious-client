@@ -40,6 +40,7 @@ import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetItem;
 import net.runelite.api.widgets.WidgetPositionMode;
 import net.runelite.rs.api.RSClient;
+import net.runelite.rs.api.RSFont;
 import net.runelite.rs.api.RSModel;
 import net.runelite.rs.api.RSNPCComposition;
 import net.runelite.rs.api.RSWidgetDefinition;
@@ -763,5 +764,12 @@ public abstract class RSWidgetMixin implements RSWidget
 			widget.setRelativeY(y - widget.getHeight() - (y * widget.getOriginalY() >> 14));
 			widget.setForcedY();
 		}
+	}
+
+	@Inject
+	@Override
+	public RSFont getFont()
+	{
+		return getRSFont(client.getWidgetDefinition());
 	}
 }

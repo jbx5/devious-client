@@ -476,10 +476,10 @@ public class WorldMap {
 					var11 = this.mouseCoord.y;
 					var12 = this.mouseCoord.plane;
 					PacketBufferNode var13 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3154, Client.packetWriter.isaacCipher);
-					var13.packetBuffer.writeShortAdd(var15);
-					var13.packetBuffer.writeByteSub(var11);
+					var13.packetBuffer.writeShortAddLE(var15);
+					var13.packetBuffer.writeShortLE(var11);
 					var13.packetBuffer.writeInt(0);
-					var13.packetBuffer.writeShortAddLE(var12);
+					var13.packetBuffer.writeByteAdd(var12);
 					Client.packetWriter.addNode(var13);
 				} else {
 					boolean var10 = true;

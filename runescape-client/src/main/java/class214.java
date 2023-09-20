@@ -217,7 +217,7 @@ public class class214 extends DualNode {
 		FloorOverlayDefinition.FloorOverlayDefinition_cached.clear();
 		FloorUnderlayDefinition.FloorUnderlayDefinition_cached.clear();
 		HealthBarDefinition.NpcDefinition_cachedModels.clear();
-		HealthBarDefinition.field1990.clear();
+		HealthBarDefinition.HealthBarDefinition_cached.clear();
 		HitSplatDefinition.HitSplatDefinition_cached.clear();
 		HitSplatDefinition.field2170.clear();
 		HitSplatDefinition.field2183.clear();
@@ -264,7 +264,7 @@ public class class214 extends DualNode {
 		class313.field3396.method6919();
 		WorldMapDecorationType.field3881.method6919();
 		class27.archive13.method6919();
-		AbstractByteArrayCopier.field3839.method6919();
+		AbstractByteArrayCopier.archive4.method6919();
 		class319.field3442.method6919();
 		class469.field4812.method6919();
 		Language.field4435.method6919();

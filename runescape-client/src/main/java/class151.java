@@ -104,7 +104,7 @@ public class class151 extends class161 {
 		} else {
 			var2 = var1.readUnsignedShortAddLE();
 			boolean var15 = var1.readUnsignedByteNeg() == 1;
-			var4 = var1.readUnsignedIntIME();
+			var4 = var1.readUnsignedShortLE();
 			var5 = var1.readUnsignedShort();
 			var1.importIndex();
 

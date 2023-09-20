@@ -113,7 +113,7 @@ final class class108 implements class337 {
 						if (Client.isItemSelected == 1) {
 							class153.insertMenuItemNoShift("Use", Client.field772 + " " + "->" + " " + Client.colorStartTag(65535) + var20.name, 1, var28, var15, var16);
 						} else if (Client.isSpellSelected) {
-							if ((class31.field173 & 4) == 4) {
+							if ((class31.selectedSpellFlags & 4) == 4) {
 								class153.insertMenuItemNoShift(Client.selectedSpellActionName, Client.selectedSpellName + " " + "->" + " " + Client.colorStartTag(65535) + var20.name, 2, var28, var15, var16);
 							}
 						} else {
@@ -223,7 +223,7 @@ final class class108 implements class337 {
 								if (Client.isItemSelected == 1) {
 									class153.insertMenuItemNoShift("Use", Client.field772 + " " + "->" + " " + Client.colorStartTag(16748608) + var39.name, 16, var35.id, var15, var16);
 								} else if (Client.isSpellSelected) {
-									if ((class31.field173 & 1) == 1) {
+									if ((class31.selectedSpellFlags & 1) == 1) {
 										class153.insertMenuItemNoShift(Client.selectedSpellActionName, Client.selectedSpellName + " " + "->" + " " + Client.colorStartTag(16748608) + var39.name, 17, var35.id, var15, var16);
 									}
 								} else {

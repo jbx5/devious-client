@@ -75,7 +75,7 @@ public class class478 implements class476 {
 		garbageValue = "2037077846"
 	)
 	static void method8514(int var0, int var1, int var2, int var3) {
-		Widget var4 = class33.widgetDefinition.method6241(var0, var1);
+		Widget var4 = class33.widgetDefinition.getWidgetChild(var0, var1);
 		if (var4 != null && var4.onTargetEnter != null) {
 			ScriptEvent var5 = new ScriptEvent();
 			var5.widget = var4;
@@ -83,11 +83,11 @@ public class class478 implements class476 {
 			Interpreter.runScriptEvent(var5);
 		}
 
-		Client.field686 = var3;
+		Client.selectedSpellItemId = var3;
 		Client.isSpellSelected = true;
-		JagexCache.field1841 = var0;
+		JagexCache.selectedSpellWidget = var0;
 		Client.selectedSpellChildIndex = var1;
-		class31.field173 = var2;
+		class31.selectedSpellFlags = var2;
 		ClanChannelMember.invalidateWidget(var4);
 	}
 }
