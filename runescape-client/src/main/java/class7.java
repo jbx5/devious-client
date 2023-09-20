@@ -120,7 +120,7 @@ public class class7 {
 	)
 	@Export("forceDisconnect")
 	static final void forceDisconnect(int var0) {
-		CollisionMap.method4301();
+		CollisionMap.logOut();
 		switch(var0) {
 		case 1:
 			GameEngine.method647(24);

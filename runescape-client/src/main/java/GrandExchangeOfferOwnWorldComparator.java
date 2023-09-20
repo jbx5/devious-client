@@ -119,7 +119,7 @@ public class GrandExchangeOfferOwnWorldComparator implements Comparator {
 		garbageValue = "81"
 	)
 	static final void method1240() {
-		PacketBufferNode var0 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3168, Client.packetWriter.isaacCipher);
+		PacketBufferNode var0 = ClanChannelMember.getPacketBufferNode(ClientPacket.CLOSE_MODAL, Client.packetWriter.isaacCipher);
 		Client.packetWriter.addNode(var0);
 		Interpreter.field883 = true;
 

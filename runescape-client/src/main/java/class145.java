@@ -37,7 +37,7 @@ public abstract class class145 extends Node {
 		garbageValue = "245688537"
 	)
 	static final void method3153(String var0) {
-		PacketBufferNode var1 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3230, Client.packetWriter.isaacCipher);
+		PacketBufferNode var1 = ClanChannelMember.getPacketBufferNode(ClientPacket.FRIEND_ADDUSER, Client.packetWriter.isaacCipher);
 		var1.packetBuffer.writeByte(class478.stringCp1252NullTerminatedByteSize(var0));
 		var1.packetBuffer.writeStringCp1252NullTerminated(var0);
 		Client.packetWriter.addNode(var1);

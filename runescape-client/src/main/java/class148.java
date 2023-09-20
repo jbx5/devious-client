@@ -190,7 +190,7 @@ public class class148 {
 		garbageValue = "49"
 	)
 	static final void method3179(String var0, int var1) {
-		PacketBufferNode var2 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3135, Client.packetWriter.isaacCipher);
+		PacketBufferNode var2 = ClanChannelMember.getPacketBufferNode(ClientPacket.OPNPCT, Client.packetWriter.isaacCipher);
 		var2.packetBuffer.writeByte(class478.stringCp1252NullTerminatedByteSize(var0) + 1);
 		var2.packetBuffer.writeStringCp1252NullTerminated(var0);
 		var2.packetBuffer.writeByteNeg(var1);
@@ -204,7 +204,7 @@ public class class148 {
 	)
 	static final void method3177() {
 		if (Client.logoutTimer > 0) {
-			CollisionMap.method4301();
+			CollisionMap.logOut();
 		} else {
 			Client.timer.method7836();
 			DefaultsGroup.updateGameState(40);

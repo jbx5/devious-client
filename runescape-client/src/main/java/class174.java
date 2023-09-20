@@ -18,7 +18,7 @@ public class class174 {
 	)
 	@Export("resumePauseWidget")
 	static void resumePauseWidget(int var0, int var1) {
-		PacketBufferNode var2 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3207, Client.packetWriter.isaacCipher);
+		PacketBufferNode var2 = ClanChannelMember.getPacketBufferNode(ClientPacket.RESUME_PAUSEBUTTON, Client.packetWriter.isaacCipher);
 		var2.packetBuffer.writeShort(var1);
 		var2.packetBuffer.writeIntME(var0);
 		Client.packetWriter.addNode(var2);

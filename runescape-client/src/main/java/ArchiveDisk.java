@@ -399,7 +399,7 @@ public final class ArchiveDisk {
 		}
 
 		if (Client.rootInterface != -1) {
-			Interpreter.method2071(Client.rootInterface, 1);
+			Interpreter.runIntfCloseListeners(Client.rootInterface, 1);
 		}
 
 	}

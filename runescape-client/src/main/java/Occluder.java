@@ -358,7 +358,7 @@ public final class Occluder {
 				ObjectComposition.ObjectDefinition_cachedModelData.clear();
 				PacketBufferNode var19;
 				if (class159.client.hasFrame()) {
-					var19 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3213, Client.packetWriter.isaacCipher);
+					var19 = ClanChannelMember.getPacketBufferNode(ClientPacket.DETECT_MODIFIED_CLIENT, Client.packetWriter.isaacCipher);
 					var19.packetBuffer.writeInt(1057001181);
 					Client.packetWriter.addNode(var19);
 				}

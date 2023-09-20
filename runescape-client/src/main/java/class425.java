@@ -46,7 +46,7 @@ public class class425 {
 		garbageValue = "-921532851"
 	)
 	static void method7821() {
-		Client.packetWriter.addNode(ClanChannelMember.getPacketBufferNode(ClientPacket.field3216, Client.packetWriter.isaacCipher));
+		Client.packetWriter.addNode(ClanChannelMember.getPacketBufferNode(ClientPacket.FREECAM_EXIT, Client.packetWriter.isaacCipher));
 		Client.oculusOrbState = 0;
 	}
 }

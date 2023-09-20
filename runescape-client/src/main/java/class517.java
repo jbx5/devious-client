@@ -135,7 +135,7 @@ public class class517 implements MouseWheel {
 		garbageValue = "119"
 	)
 	static void method9051() {
-		PacketBufferNode var0 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3181, Client.packetWriter.isaacCipher);
+		PacketBufferNode var0 = ClanChannelMember.getPacketBufferNode(ClientPacket.EVENT_WINDOW_SETTING, Client.packetWriter.isaacCipher);
 		var0.packetBuffer.writeByte(class178.getWindowedMode());
 		var0.packetBuffer.writeShort(class340.canvasWidth);
 		var0.packetBuffer.writeShort(class491.canvasHeight);

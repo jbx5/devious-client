@@ -116,7 +116,7 @@ public class class33 {
 		Widget var10;
 		int var11;
 		if (var2 == 28) {
-			var9 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3167, Client.packetWriter.isaacCipher);
+			var9 = ClanChannelMember.getPacketBufferNode(ClientPacket.WIDGET_TYPE, Client.packetWriter.isaacCipher);
 			var9.packetBuffer.writeInt(var1);
 			Client.packetWriter.addNode(var9);
 			var10 = widgetDefinition.method6240(var1);
@@ -134,7 +134,7 @@ public class class33 {
 			Client.mouseCrossState = 0;
 			Client.destinationX = var0;
 			Client.destinationY = var1;
-			var9 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3204, Client.packetWriter.isaacCipher);
+			var9 = ClanChannelMember.getPacketBufferNode(ClientPacket.OPLOC2, Client.packetWriter.isaacCipher);
 			var9.packetBuffer.writeShortAdd(var3);
 			var9.packetBuffer.writeByteNeg(Client.field755.method4280(82) ? 1 : 0);
 			var9.packetBuffer.writeShortAdd(class20.baseX * 64 + var0);
@@ -167,7 +167,7 @@ public class class33 {
 			Client.mouseCrossState = 0;
 			Client.destinationX = var0;
 			Client.destinationY = var1;
-			var9 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3222, Client.packetWriter.isaacCipher);
+			var9 = ClanChannelMember.getPacketBufferNode(ClientPacket.OPOBJ3, Client.packetWriter.isaacCipher);
 			var9.packetBuffer.writeShortLE(class19.baseY * 64 + var1);
 			var9.packetBuffer.writeShortAddLE(var3);
 			var9.packetBuffer.writeShortAddLE(class20.baseX * 64 + var0);
@@ -203,7 +203,7 @@ public class class33 {
 			Client.mouseCrossState = 0;
 			Client.destinationX = var0;
 			Client.destinationY = var1;
-			var9 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3212, Client.packetWriter.isaacCipher);
+			var9 = ClanChannelMember.getPacketBufferNode(ClientPacket.OPLOC4, Client.packetWriter.isaacCipher);
 			var9.packetBuffer.writeShortLE(class19.baseY * 64 + var1);
 			var9.packetBuffer.writeShortAddLE(var3);
 			var9.packetBuffer.writeShortAddLE(class20.baseX * 64 + var0);
@@ -248,7 +248,7 @@ public class class33 {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var14 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3218, Client.packetWriter.isaacCipher);
+				var14 = ClanChannelMember.getPacketBufferNode(ClientPacket.OPPLAYER5, Client.packetWriter.isaacCipher);
 				var14.packetBuffer.writeByteNeg(Client.field755.method4280(82) ? 1 : 0);
 				var14.packetBuffer.writeShortLE(var3);
 				Client.packetWriter.addNode(var14);
@@ -264,7 +264,7 @@ public class class33 {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var14 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3210, Client.packetWriter.isaacCipher);
+				var14 = ClanChannelMember.getPacketBufferNode(ClientPacket.OPPLAYER7, Client.packetWriter.isaacCipher);
 				var14.packetBuffer.writeByte(Client.field755.method4280(82) ? 1 : 0);
 				var14.packetBuffer.writeShort(var3);
 				Client.packetWriter.addNode(var14);
@@ -288,7 +288,7 @@ public class class33 {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var14 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3195, Client.packetWriter.isaacCipher);
+				var14 = ClanChannelMember.getPacketBufferNode(ClientPacket.OPNPC5, Client.packetWriter.isaacCipher);
 				var14.packetBuffer.writeByte(Client.field755.method4280(82) ? 1 : 0);
 				var14.packetBuffer.writeShortLE(var3);
 				Client.packetWriter.addNode(var14);
@@ -309,7 +309,7 @@ public class class33 {
 				}
 
 				if (var18 != null) {
-					var12 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3200, Client.packetWriter.isaacCipher);
+					var12 = ClanChannelMember.getPacketBufferNode(ClientPacket.OPNPCE, Client.packetWriter.isaacCipher);
 					var12.packetBuffer.writeShortAddLE(var18.id);
 					Client.packetWriter.addNode(var12);
 				}
@@ -323,7 +323,7 @@ public class class33 {
 			Client.mouseCrossState = 0;
 			Client.destinationX = var0;
 			Client.destinationY = var1;
-			var9 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3166, Client.packetWriter.isaacCipher);
+			var9 = ClanChannelMember.getPacketBufferNode(ClientPacket.OPOBJ4, Client.packetWriter.isaacCipher);
 			var9.packetBuffer.writeShortAdd(var3);
 			var9.packetBuffer.writeShort(class20.baseX * 64 + var0);
 			var9.packetBuffer.writeShort(class19.baseY * 64 + var1);
@@ -340,7 +340,7 @@ public class class33 {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var14 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3142, Client.packetWriter.isaacCipher);
+				var14 = ClanChannelMember.getPacketBufferNode(ClientPacket.OPPLAYER1, Client.packetWriter.isaacCipher);
 				var14.packetBuffer.writeByteAdd(Client.field755.method4280(82) ? 1 : 0);
 				var14.packetBuffer.writeShortAddLE(var3);
 				Client.packetWriter.addNode(var14);
@@ -356,7 +356,7 @@ public class class33 {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var14 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3177, Client.packetWriter.isaacCipher);
+				var14 = ClanChannelMember.getPacketBufferNode(ClientPacket.OPNPC3, Client.packetWriter.isaacCipher);
 				var14.packetBuffer.writeByteAdd(Client.field755.method4280(82) ? 1 : 0);
 				var14.packetBuffer.writeShortAddLE(var3);
 				Client.packetWriter.addNode(var14);
@@ -370,7 +370,7 @@ public class class33 {
 			Client.mouseCrossState = 0;
 			Client.destinationX = var0;
 			Client.destinationY = var1;
-			var9 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3206, Client.packetWriter.isaacCipher);
+			var9 = ClanChannelMember.getPacketBufferNode(ClientPacket.OPLOC3, Client.packetWriter.isaacCipher);
 			var9.packetBuffer.writeShortAddLE(class19.baseY * 64 + var1);
 			var9.packetBuffer.writeShort(var3);
 			var9.packetBuffer.writeShortLE(class20.baseX * 64 + var0);
@@ -387,7 +387,7 @@ public class class33 {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var14 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3173, Client.packetWriter.isaacCipher);
+				var14 = ClanChannelMember.getPacketBufferNode(ClientPacket.OPPLAYERT, Client.packetWriter.isaacCipher);
 				var14.packetBuffer.writeShort(Client.selectedSpellItemId);
 				var14.packetBuffer.writeShortAdd(Client.selectedSpellChildIndex);
 				var14.packetBuffer.writeIntLE(JagexCache.selectedSpellWidget);
@@ -406,7 +406,7 @@ public class class33 {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var14 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3171, Client.packetWriter.isaacCipher);
+				var14 = ClanChannelMember.getPacketBufferNode(ClientPacket.OPPLAYER8, Client.packetWriter.isaacCipher);
 				var14.packetBuffer.writeByte(Client.field755.method4280(82) ? 1 : 0);
 				var14.packetBuffer.writeShortLE(var3);
 				Client.packetWriter.addNode(var14);
@@ -420,7 +420,7 @@ public class class33 {
 			Client.mouseCrossState = 0;
 			Client.destinationX = var0;
 			Client.destinationY = var1;
-			var9 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3147, Client.packetWriter.isaacCipher);
+			var9 = ClanChannelMember.getPacketBufferNode(ClientPacket.OPOBJ5, Client.packetWriter.isaacCipher);
 			var9.packetBuffer.writeByteSub(Client.field755.method4280(82) ? 1 : 0);
 			var9.packetBuffer.writeShort(class19.baseY * 64 + var1);
 			var9.packetBuffer.writeShortLE(class20.baseX * 64 + var0);
@@ -437,7 +437,7 @@ public class class33 {
 				}
 
 				if (var13) {
-					var12 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3167, Client.packetWriter.isaacCipher);
+					var12 = ClanChannelMember.getPacketBufferNode(ClientPacket.WIDGET_TYPE, Client.packetWriter.isaacCipher);
 					var12.packetBuffer.writeInt(var1);
 					Client.packetWriter.addNode(var12);
 				}
@@ -451,7 +451,7 @@ public class class33 {
 			Client.mouseCrossState = 0;
 			Client.destinationX = var0;
 			Client.destinationY = var1;
-			var9 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3223, Client.packetWriter.isaacCipher);
+			var9 = ClanChannelMember.getPacketBufferNode(ClientPacket.OPLOCT, Client.packetWriter.isaacCipher);
 			var9.packetBuffer.writeByteNeg(Client.field755.method4280(82) ? 1 : 0);
 			var9.packetBuffer.writeShortAddLE(Client.selectedSpellChildIndex);
 			var9.packetBuffer.writeShort(class20.baseX * 64 + var0);
@@ -477,7 +477,7 @@ public class class33 {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var14 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3202, Client.packetWriter.isaacCipher);
+				var14 = ClanChannelMember.getPacketBufferNode(ClientPacket.OPNPC4, Client.packetWriter.isaacCipher);
 				var14.packetBuffer.writeByteNeg(Client.field755.method4280(82) ? 1 : 0);
 				var14.packetBuffer.writeShort(var3);
 				Client.packetWriter.addNode(var14);
@@ -493,7 +493,7 @@ public class class33 {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var14 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3203, Client.packetWriter.isaacCipher);
+				var14 = ClanChannelMember.getPacketBufferNode(ClientPacket.OPNPC1, Client.packetWriter.isaacCipher);
 				var14.packetBuffer.writeShortAdd(var3);
 				var14.packetBuffer.writeByte(Client.field755.method4280(82) ? 1 : 0);
 				Client.packetWriter.addNode(var14);
@@ -509,7 +509,7 @@ public class class33 {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var14 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3182, Client.packetWriter.isaacCipher);
+				var14 = ClanChannelMember.getPacketBufferNode(ClientPacket.OPPLAYER6, Client.packetWriter.isaacCipher);
 				var14.packetBuffer.writeByteNeg(Client.field755.method4280(82) ? 1 : 0);
 				var14.packetBuffer.writeShortLE(var3);
 				Client.packetWriter.addNode(var14);
@@ -523,7 +523,7 @@ public class class33 {
 			Client.mouseCrossState = 0;
 			Client.destinationX = var0;
 			Client.destinationY = var1;
-			var9 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3184, Client.packetWriter.isaacCipher);
+			var9 = ClanChannelMember.getPacketBufferNode(ClientPacket.OPOBJ2, Client.packetWriter.isaacCipher);
 			var9.packetBuffer.writeShortAddLE(class20.baseX * 64 + var0);
 			var9.packetBuffer.writeShort(class19.baseY * 64 + var1);
 			var9.packetBuffer.writeByteSub(Client.field755.method4280(82) ? 1 : 0);
@@ -536,7 +536,7 @@ public class class33 {
 			Client.mouseCrossY = var8;
 			Client.mouseCrossColor = 2;
 			Client.mouseCrossState = 0;
-			var9 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3164, Client.packetWriter.isaacCipher);
+			var9 = ClanChannelMember.getPacketBufferNode(ClientPacket.OPLOCE, Client.packetWriter.isaacCipher);
 			var9.packetBuffer.writeShortAdd(var3);
 			Client.packetWriter.addNode(var9);
 		}
@@ -548,7 +548,7 @@ public class class33 {
 			Client.mouseCrossState = 0;
 			Client.destinationX = var0;
 			Client.destinationY = var1;
-			var9 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3228, Client.packetWriter.isaacCipher);
+			var9 = ClanChannelMember.getPacketBufferNode(ClientPacket.OPOBJT, Client.packetWriter.isaacCipher);
 			var9.packetBuffer.writeShortAdd(var3);
 			var9.packetBuffer.writeByteAdd(Client.field755.method4280(82) ? 1 : 0);
 			var9.packetBuffer.writeInt(JagexCache.selectedSpellWidget);
@@ -568,7 +568,7 @@ public class class33 {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var14 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3159, Client.packetWriter.isaacCipher);
+				var14 = ClanChannelMember.getPacketBufferNode(ClientPacket.OPPLAYER3, Client.packetWriter.isaacCipher);
 				var14.packetBuffer.writeShortAdd(var3);
 				var14.packetBuffer.writeByte(Client.field755.method4280(82) ? 1 : 0);
 				Client.packetWriter.addNode(var14);
@@ -582,7 +582,7 @@ public class class33 {
 			Client.mouseCrossState = 0;
 			Client.destinationX = var0;
 			Client.destinationY = var1;
-			var9 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3151, Client.packetWriter.isaacCipher);
+			var9 = ClanChannelMember.getPacketBufferNode(ClientPacket.OPLOC1, Client.packetWriter.isaacCipher);
 			var9.packetBuffer.writeShortAdd(class20.baseX * 64 + var0);
 			var9.packetBuffer.writeShortAddLE(class19.baseY * 64 + var1);
 			var9.packetBuffer.writeShortAddLE(var3);
@@ -599,7 +599,7 @@ public class class33 {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var14 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3186, Client.packetWriter.isaacCipher);
+				var14 = ClanChannelMember.getPacketBufferNode(ClientPacket.OPPLAYER2, Client.packetWriter.isaacCipher);
 				var14.packetBuffer.writeByteSub(Client.field755.method4280(82) ? 1 : 0);
 				var14.packetBuffer.writeShort(var3);
 				Client.packetWriter.addNode(var14);
@@ -615,7 +615,7 @@ public class class33 {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var14 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3144, Client.packetWriter.isaacCipher);
+				var14 = ClanChannelMember.getPacketBufferNode(ClientPacket.OPNPC2, Client.packetWriter.isaacCipher);
 				var14.packetBuffer.writeByteAdd(Client.field755.method4280(82) ? 1 : 0);
 				var14.packetBuffer.writeShortAdd(var3);
 				Client.packetWriter.addNode(var14);
@@ -627,7 +627,7 @@ public class class33 {
 			Client.mouseCrossY = var8;
 			Client.mouseCrossColor = 2;
 			Client.mouseCrossState = 0;
-			var9 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3163, Client.packetWriter.isaacCipher);
+			var9 = ClanChannelMember.getPacketBufferNode(ClientPacket.OPOBJE, Client.packetWriter.isaacCipher);
 			var9.packetBuffer.writeShort(class19.baseY * 64 + var1);
 			var9.packetBuffer.writeShort(class20.baseX * 64 + var0);
 			var9.packetBuffer.writeShortAdd(var3);
@@ -646,7 +646,7 @@ public class class33 {
 					Interpreter.runScriptEvent(var19);
 				}
 
-				var14 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3169, Client.packetWriter.isaacCipher);
+				var14 = ClanChannelMember.getPacketBufferNode(ClientPacket.IF_BUTTONT, Client.packetWriter.isaacCipher);
 				var14.packetBuffer.writeShortAddLE(Client.selectedSpellChildIndex);
 				var14.packetBuffer.writeInt(var1);
 				var14.packetBuffer.writeShortAdd(var4);
@@ -664,7 +664,7 @@ public class class33 {
 			Client.mouseCrossState = 0;
 			Client.destinationX = var0;
 			Client.destinationY = var1;
-			var9 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3162, Client.packetWriter.isaacCipher);
+			var9 = ClanChannelMember.getPacketBufferNode(ClientPacket.OPOBJ1, Client.packetWriter.isaacCipher);
 			var9.packetBuffer.writeShortAdd(class19.baseY * 64 + var1);
 			var9.packetBuffer.writeByteSub(Client.field755.method4280(82) ? 1 : 0);
 			var9.packetBuffer.writeShortAdd(class20.baseX * 64 + var0);
@@ -679,7 +679,7 @@ public class class33 {
 			Client.mouseCrossState = 0;
 			Client.destinationX = var0;
 			Client.destinationY = var1;
-			var9 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3157, Client.packetWriter.isaacCipher);
+			var9 = ClanChannelMember.getPacketBufferNode(ClientPacket.OPLOC5, Client.packetWriter.isaacCipher);
 			var9.packetBuffer.writeShort(var3);
 			var9.packetBuffer.writeShortAdd(class19.baseY * 64 + var1);
 			var9.packetBuffer.writeShortAdd(class20.baseX * 64 + var0);
@@ -688,7 +688,7 @@ public class class33 {
 		}
 
 		if (var2 == 29) {
-			var9 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3167, Client.packetWriter.isaacCipher);
+			var9 = ClanChannelMember.getPacketBufferNode(ClientPacket.WIDGET_TYPE, Client.packetWriter.isaacCipher);
 			var9.packetBuffer.writeInt(var1);
 			Client.packetWriter.addNode(var9);
 			var10 = widgetDefinition.method6240(var1);
@@ -710,7 +710,7 @@ public class class33 {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var14 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3199, Client.packetWriter.isaacCipher);
+				var14 = ClanChannelMember.getPacketBufferNode(ClientPacket.OPPLAYER4, Client.packetWriter.isaacCipher);
 				var14.packetBuffer.writeShortAddLE(var3);
 				var14.packetBuffer.writeByteNeg(Client.field755.method4280(82) ? 1 : 0);
 				Client.packetWriter.addNode(var14);

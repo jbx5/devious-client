@@ -97,7 +97,8 @@ public class Interpreter {
 		descriptor = "(III)V",
 		garbageValue = "1205286290"
 	)
-	static final void method2071(int var0, int var1) {
+	@Export("runIntfCloseListeners")
+	static final void runIntfCloseListeners(int var0, int var1) {
 		if (class33.widgetDefinition.loadInterface(var0)) {
 			ClientPacket.runComponentCloseListeners(class33.widgetDefinition.Widget_interfaceComponents[var0], var1);
 		}

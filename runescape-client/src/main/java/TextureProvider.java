@@ -309,7 +309,7 @@ public class TextureProvider implements TextureLoader {
 				if (var7) {
 					PacketBufferNode var10;
 					if (var0 == 1) {
-						var10 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3183, Client.packetWriter.isaacCipher);
+						var10 = ClanChannelMember.getPacketBufferNode(ClientPacket.IF_BUTTON1, Client.packetWriter.isaacCipher);
 						var10.packetBuffer.writeInt(var1);
 						var10.packetBuffer.writeShort(var2);
 						var10.packetBuffer.writeShort(var3);
@@ -317,7 +317,7 @@ public class TextureProvider implements TextureLoader {
 					}
 
 					if (var0 == 2) {
-						var10 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3217, Client.packetWriter.isaacCipher);
+						var10 = ClanChannelMember.getPacketBufferNode(ClientPacket.IF_BUTTON2, Client.packetWriter.isaacCipher);
 						var10.packetBuffer.writeInt(var1);
 						var10.packetBuffer.writeShort(var2);
 						var10.packetBuffer.writeShort(var3);
@@ -325,7 +325,7 @@ public class TextureProvider implements TextureLoader {
 					}
 
 					if (var0 == 3) {
-						var10 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3161, Client.packetWriter.isaacCipher);
+						var10 = ClanChannelMember.getPacketBufferNode(ClientPacket.IF_BUTTON3, Client.packetWriter.isaacCipher);
 						var10.packetBuffer.writeInt(var1);
 						var10.packetBuffer.writeShort(var2);
 						var10.packetBuffer.writeShort(var3);
@@ -333,7 +333,7 @@ public class TextureProvider implements TextureLoader {
 					}
 
 					if (var0 == 4) {
-						var10 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3208, Client.packetWriter.isaacCipher);
+						var10 = ClanChannelMember.getPacketBufferNode(ClientPacket.IF_BUTTON4, Client.packetWriter.isaacCipher);
 						var10.packetBuffer.writeInt(var1);
 						var10.packetBuffer.writeShort(var2);
 						var10.packetBuffer.writeShort(var3);
@@ -341,7 +341,7 @@ public class TextureProvider implements TextureLoader {
 					}
 
 					if (var0 == 5) {
-						var10 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3165, Client.packetWriter.isaacCipher);
+						var10 = ClanChannelMember.getPacketBufferNode(ClientPacket.IF_BUTTON5, Client.packetWriter.isaacCipher);
 						var10.packetBuffer.writeInt(var1);
 						var10.packetBuffer.writeShort(var2);
 						var10.packetBuffer.writeShort(var3);
@@ -349,7 +349,7 @@ public class TextureProvider implements TextureLoader {
 					}
 
 					if (var0 == 6) {
-						var10 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3158, Client.packetWriter.isaacCipher);
+						var10 = ClanChannelMember.getPacketBufferNode(ClientPacket.IF_BUTTON6, Client.packetWriter.isaacCipher);
 						var10.packetBuffer.writeInt(var1);
 						var10.packetBuffer.writeShort(var2);
 						var10.packetBuffer.writeShort(var3);
@@ -357,7 +357,7 @@ public class TextureProvider implements TextureLoader {
 					}
 
 					if (var0 == 7) {
-						var10 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3193, Client.packetWriter.isaacCipher);
+						var10 = ClanChannelMember.getPacketBufferNode(ClientPacket.IF_BUTTON7, Client.packetWriter.isaacCipher);
 						var10.packetBuffer.writeInt(var1);
 						var10.packetBuffer.writeShort(var2);
 						var10.packetBuffer.writeShort(var3);
@@ -365,7 +365,7 @@ public class TextureProvider implements TextureLoader {
 					}
 
 					if (var0 == 8) {
-						var10 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3219, Client.packetWriter.isaacCipher);
+						var10 = ClanChannelMember.getPacketBufferNode(ClientPacket.IF_BUTTON8, Client.packetWriter.isaacCipher);
 						var10.packetBuffer.writeInt(var1);
 						var10.packetBuffer.writeShort(var2);
 						var10.packetBuffer.writeShort(var3);
@@ -373,7 +373,7 @@ public class TextureProvider implements TextureLoader {
 					}
 
 					if (var0 == 9) {
-						var10 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3172, Client.packetWriter.isaacCipher);
+						var10 = ClanChannelMember.getPacketBufferNode(ClientPacket.IF_BUTTON9, Client.packetWriter.isaacCipher);
 						var10.packetBuffer.writeInt(var1);
 						var10.packetBuffer.writeShort(var2);
 						var10.packetBuffer.writeShort(var3);
@@ -381,7 +381,7 @@ public class TextureProvider implements TextureLoader {
 					}
 
 					if (var0 == 10) {
-						var10 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3198, Client.packetWriter.isaacCipher);
+						var10 = ClanChannelMember.getPacketBufferNode(ClientPacket.IF_BUTTON10, Client.packetWriter.isaacCipher);
 						var10.packetBuffer.writeInt(var1);
 						var10.packetBuffer.writeShort(var2);
 						var10.packetBuffer.writeShort(var3);

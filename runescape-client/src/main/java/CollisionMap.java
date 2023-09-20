@@ -628,7 +628,8 @@ public class CollisionMap {
 		descriptor = "(I)V",
 		garbageValue = "856561238"
 	)
-	static final void method4301() {
+	@Export("logOut")
+	static final void logOut() {
 		Client.packetWriter.close();
 		class214.method3909();
 		class10.scene.clear();

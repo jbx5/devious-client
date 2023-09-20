@@ -287,7 +287,7 @@ class class13 extends DefaultTlsClient {
 
 					int var7 = var1.readBits(1);
 					var6.definition = class190.getNpcDefinition(var1.readBits(14));
-					int var11 = Client.field655[var1.readBits(3)];
+					int var11 = Client.defaultRotations[var1.readBits(3)];
 					if (var5) {
 						var6.orientation = var6.rotation = var11;
 					}

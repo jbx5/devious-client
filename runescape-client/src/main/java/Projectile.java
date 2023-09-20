@@ -306,7 +306,7 @@ public final class Projectile extends Renderable {
 			}
 
 			Client.tradeChatMode = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 2];
-			PacketBufferNode var13 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3205, Client.packetWriter.isaacCipher);
+			PacketBufferNode var13 = ClanChannelMember.getPacketBufferNode(ClientPacket.CHAT_SETFILTER, Client.packetWriter.isaacCipher);
 			var13.packetBuffer.writeByte(Client.publicChatMode);
 			var13.packetBuffer.writeByte(Canvas.privateChatMode.field5271);
 			var13.packetBuffer.writeByte(Client.tradeChatMode);
@@ -322,7 +322,7 @@ public final class Projectile extends Renderable {
 				Interpreter.Interpreter_intStackSize -= 2;
 				var7 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
 				var9 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
-				var6 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3156, Client.packetWriter.isaacCipher);
+				var6 = ClanChannelMember.getPacketBufferNode(ClientPacket.CHAT_SENDABUSEREPORT, Client.packetWriter.isaacCipher);
 				var6.packetBuffer.writeByte(class478.stringCp1252NullTerminatedByteSize(var8) + 2);
 				var6.packetBuffer.writeStringCp1252NullTerminated(var8);
 				var6.packetBuffer.writeByte(var7 - 1);
@@ -396,7 +396,7 @@ public final class Projectile extends Renderable {
 							class180.Interpreter_stringStackSize -= 2;
 							var8 = Interpreter.Interpreter_stringStack[class180.Interpreter_stringStackSize];
 							String var11 = Interpreter.Interpreter_stringStack[class180.Interpreter_stringStackSize + 1];
-							var12 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3152, Client.packetWriter.isaacCipher);
+							var12 = ClanChannelMember.getPacketBufferNode(ClientPacket.CHAT_SENDPRIVATE, Client.packetWriter.isaacCipher);
 							var12.packetBuffer.writeShort(0);
 							int var10 = var12.packetBuffer.offset;
 							var12.packetBuffer.writeStringCp1252NullTerminated(var8);
