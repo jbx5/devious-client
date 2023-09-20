@@ -1,55 +1,93 @@
-import net.runelite.mapping.ObfuscatedGetter;
+import java.util.Random;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("qj")
-public final class class424 implements Comparable {
-	@ObfuscatedName("au")
-	Object field4620;
-	@ObfuscatedName("ae")
-	Object field4621;
-	@ObfuscatedName("ao")
-	@ObfuscatedGetter(
-		longValue = 7811919619489354263L
-	)
-	long field4622;
-	@ObfuscatedName("at")
-	@ObfuscatedGetter(
-		longValue = -5410299538867077373L
-	)
-	long field4623;
+@ObfuscatedName("qn")
+public class class424 {
+	@ObfuscatedName("ac")
+	@Export("writeRandomDat")
+	public static void writeRandomDat(byte[] var0, int var1, byte[] var2, int var3, int var4) {
+		if (var2 == var0) {
+			if (var3 == var1) {
+				return;
+			}
 
-	class424(Object var1, Object var2) {
-		this.field4620 = var1;
-		this.field4621 = var2;
-	}
+			if (var3 > var1 && var3 < var4 + var1) {
+				--var4;
+				var1 += var4;
+				var3 += var4;
+				var4 = var1 - var4;
 
-	@ObfuscatedName("au")
-	@ObfuscatedSignature(
-		descriptor = "(Lqj;B)I",
-		garbageValue = "1"
-	)
-	int method7797(class424 var1) {
-		if (this.field4623 < var1.field4623) {
-			return -1;
-		} else {
-			return this.field4623 > var1.field4623 ? 1 : 0;
+				for (var4 += 7; var1 >= var4; var2[var3--] = var0[var1--]) {
+					var2[var3--] = var0[var1--];
+					var2[var3--] = var0[var1--];
+					var2[var3--] = var0[var1--];
+					var2[var3--] = var0[var1--];
+					var2[var3--] = var0[var1--];
+					var2[var3--] = var0[var1--];
+					var2[var3--] = var0[var1--];
+				}
+
+				for (var4 -= 7; var1 >= var4; var2[var3--] = var0[var1--]) {
+				}
+
+				return;
+			}
 		}
-	}
 
-	public boolean equals(Object var1) {
-		if (var1 instanceof class424) {
-			return this.field4621.equals(((class424)var1).field4621);
-		} else {
-			throw new IllegalArgumentException();
+		var4 += var1;
+
+		for (var4 -= 7; var1 < var4; var2[var3++] = var0[var1++]) {
+			var2[var3++] = var0[var1++];
+			var2[var3++] = var0[var1++];
+			var2[var3++] = var0[var1++];
+			var2[var3++] = var0[var1++];
+			var2[var3++] = var0[var1++];
+			var2[var3++] = var0[var1++];
+			var2[var3++] = var0[var1++];
 		}
+
+		for (var4 += 7; var1 < var4; var2[var3++] = var0[var1++]) {
+		}
+
 	}
 
-	public int compareTo(Object var1) {
-		return this.method7797((class424)var1);
+	@ObfuscatedName("av")
+	@Export("clearIntArray")
+	public static void clearIntArray(int[] var0, int var1, int var2) {
+		for (var2 = var2 + var1 - 7; var1 < var2; var0[var1++] = 0) {
+			var0[var1++] = 0;
+			var0[var1++] = 0;
+			var0[var1++] = 0;
+			var0[var1++] = 0;
+			var0[var1++] = 0;
+			var0[var1++] = 0;
+			var0[var1++] = 0;
+		}
+
+		for (var2 += 7; var1 < var2; var0[var1++] = 0) {
+		}
+
 	}
 
-	public int hashCode() {
-		return this.field4621.hashCode();
+	@ObfuscatedName("ag")
+	public static void method7796(int[] var0, int var1, int var2, int var3) {
+		if (var2 == 0 && var3 == 0) {
+			var2 = (int)(Math.random() * 2.147483647E9D);
+			var3 = (int)(Math.random() * 2.147483647E9D);
+		}
+
+		long var4 = (long)var2 << 32 | (long)var3;
+		Random var6 = new Random(var4);
+
+		for (int var7 = var1 - 1; var7 > 0; --var7) {
+			int var8 = var6.nextInt(var7 + 1);
+			if (var7 != var8) {
+				int var9 = var0[var7];
+				var0[var7] = var0[var8];
+				var0[var8] = var9;
+			}
+		}
+
 	}
 }

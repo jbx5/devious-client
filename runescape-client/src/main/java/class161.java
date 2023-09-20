@@ -1,149 +1,113 @@
-import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("gw")
-public class class161 extends class143 {
-	@ObfuscatedName("au")
+@ObfuscatedName("gt")
+public abstract class class161 extends Node {
+	@ObfuscatedName("ut")
 	@ObfuscatedGetter(
-		intValue = -2110571145
+		intValue = -1814738371
 	)
-	int field1790;
-	@ObfuscatedName("ae")
-	@ObfuscatedGetter(
-		intValue = -713647017
-	)
-	int field1789;
-	// $FF: synthetic field
-	@ObfuscatedSignature(
-		descriptor = "Lfn;"
-	)
-	final class146 this$0;
+	static int field1754;
 
-	@ObfuscatedSignature(
-		descriptor = "(Lfn;)V"
-	)
-	class161(class146 var1) {
-		this.this$0 = var1;
+	class161() {
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(Ltm;I)V",
-		garbageValue = "209179459"
+		descriptor = "(Lul;B)V",
+		garbageValue = "0"
 	)
-	void vmethod3337(Buffer var1) {
-		this.field1790 = var1.readInt();
-		this.field1789 = var1.readInt();
-	}
+	abstract void vmethod3405(Buffer var1);
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(Lfi;B)V",
-		garbageValue = "73"
+		descriptor = "(Lgb;B)V",
+		garbageValue = "0"
 	)
-	void vmethod3339(ClanSettings var1) {
-		var1.method3177(this.field1790, this.field1789);
-	}
+	abstract void vmethod3411(ClanChannel var1);
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;II)V",
-		garbageValue = "-577871422"
+		descriptor = "(Ljava/lang/String;I)[B",
+		garbageValue = "95848814"
 	)
-	static final void method3289(String var0, int var1) {
-		PacketBufferNode var2 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3181, Client.packetWriter.isaacCipher);
-		var2.packetBuffer.writeByte(AbstractSocket.stringCp1252NullTerminatedByteSize(var0) + 1);
-		var2.packetBuffer.writeByte(var1);
-		var2.packetBuffer.writeStringCp1252NullTerminated(var0);
-		Client.packetWriter.addNode(var2);
-	}
+	static byte[] method3347(String var0) {
+		boolean var1 = true;
+		boolean var2 = true;
+		int var3 = "pattern".length();
+		int var4 = 0;
+		byte[] var5 = new byte[8];
 
-	@ObfuscatedName("ba")
-	@ObfuscatedSignature(
-		descriptor = "(ILdh;ZI)I",
-		garbageValue = "-1877408335"
-	)
-	static int method3288(int var0, Script var1, boolean var2) {
-		if (var0 == ScriptOpcodes.GETWINDOWMODE) {
-			Interpreter.Interpreter_intStack[++SoundCache.Interpreter_intStackSize - 1] = class218.getWindowedMode();
-			return 1;
-		} else {
-			int var3;
-			if (var0 == ScriptOpcodes.SETWINDOWMODE) {
-				var3 = Interpreter.Interpreter_intStack[--SoundCache.Interpreter_intStackSize];
-				if (var3 == 1 || var3 == 2) {
-					class270.setWindowedMode(var3);
+		while (true) {
+			int var6 = var3 + var4;
+			if (var6 >= var0.length()) {
+				return null;
+			}
+
+			char var7 = var0.charAt(var6);
+			if (var7 == ':') {
+				if (var4 == 0) {
+					return null;
 				}
 
-				return 1;
-			} else if (var0 == ScriptOpcodes.GETDEFAULTWINDOWMODE) {
-				Interpreter.Interpreter_intStack[++SoundCache.Interpreter_intStackSize - 1] = class449.clientPreferences.method2470();
-				return 1;
-			} else if (var0 != ScriptOpcodes.SETDEFAULTWINDOWMODE) {
-				if (var0 == 5310) {
-					--SoundCache.Interpreter_intStackSize;
-					return 1;
-				} else {
-					return 2;
-				}
+				byte[] var8 = new byte[var4];
+				System.arraycopy(var5, 0, var8, 0, var4);
+				return var8;
+			}
+
+			if (var5.length == var4) {
+				return null;
+			}
+
+			if (var7 >= '0' && var7 <= '9') {
+				var7 = (char)(var7 - '0');
 			} else {
-				var3 = Interpreter.Interpreter_intStack[--SoundCache.Interpreter_intStackSize];
-				if (var3 == 1 || var3 == 2) {
-					class449.clientPreferences.method2469(var3);
+				if (var7 < 'a' || var7 > 'z') {
+					return null;
 				}
 
-				return 1;
+				var7 = (char)(var7 - 'W');
 			}
+
+			var5[var4++] = (byte)var7;
 		}
 	}
 
-	@ObfuscatedName("od")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;ZI)V",
-		garbageValue = "229621192"
+		descriptor = "([Ljava/lang/String;[IIIS)V",
+		garbageValue = "-11714"
 	)
-	@Export("findItemDefinitions")
-	static void findItemDefinitions(String var0, boolean var1) {
-		var0 = var0.toLowerCase();
-		short[] var2 = new short[16];
-		int var3 = 0;
+	public static void method3349(String[] var0, int[] var1, int var2, int var3) {
+		if (var2 < var3) {
+			int var4 = (var3 + var2) / 2;
+			int var5 = var2;
+			String var6 = var0[var4];
+			var0[var4] = var0[var3];
+			var0[var3] = var6;
+			int var7 = var1[var4];
+			var1[var4] = var1[var3];
+			var1[var3] = var7;
 
-		for (int var4 = 0; var4 < HealthBar.ItemDefinition_fileCount; ++var4) {
-			ItemComposition var9 = InvDefinition.ItemDefinition_get(var4);
-			if ((!var1 || var9.isTradable) && var9.noteTemplate == -1 && var9.name.toLowerCase().indexOf(var0) != -1) {
-				if (var3 >= 250) {
-					class28.foundItemIdCount = -1;
-					class156.foundItemIds = null;
-					return;
+			for (int var8 = var2; var8 < var3; ++var8) {
+				if (var6 == null || var0[var8] != null && var0[var8].compareTo(var6) < (var8 & 1)) {
+					String var9 = var0[var8];
+					var0[var8] = var0[var5];
+					var0[var5] = var9;
+					int var10 = var1[var8];
+					var1[var8] = var1[var5];
+					var1[var5++] = var10;
 				}
-
-				if (var3 >= var2.length) {
-					short[] var6 = new short[var2.length * 2];
-
-					for (int var7 = 0; var7 < var3; ++var7) {
-						var6[var7] = var2[var7];
-					}
-
-					var2 = var6;
-				}
-
-				var2[var3++] = (short)var4;
 			}
+
+			var0[var3] = var0[var5];
+			var0[var5] = var6;
+			var1[var3] = var1[var5];
+			var1[var5] = var7;
+			method3349(var0, var1, var2, var5 - 1);
+			method3349(var0, var1, var5 + 1, var3);
 		}
 
-		class156.foundItemIds = var2;
-		class372.foundItemIndex = 0;
-		class28.foundItemIdCount = var3;
-		String[] var8 = new String[class28.foundItemIdCount];
-
-		for (int var5 = 0; var5 < class28.foundItemIdCount; ++var5) {
-			var8[var5] = InvDefinition.ItemDefinition_get(var2[var5]).name;
-		}
-
-		short[] var10 = class156.foundItemIds;
-		FriendSystem.sortItemsByName(var8, var10, 0, var8.length - 1);
 	}
 }

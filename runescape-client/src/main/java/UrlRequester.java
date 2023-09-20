@@ -11,51 +11,55 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ev")
+@ObfuscatedName("en")
 @Implements("UrlRequester")
 public abstract class UrlRequester implements Runnable {
-	@ObfuscatedName("je")
+	@ObfuscatedName("ah")
 	@ObfuscatedGetter(
-		intValue = 1638537919
+		intValue = -1161613517
 	)
-	@Export("baseX")
-	static int baseX;
-	@ObfuscatedName("au")
-	final Thread field1446;
-	@ObfuscatedName("ae")
+	static int field1438;
+	@ObfuscatedName("co")
+	@ObfuscatedSignature(
+		descriptor = "Lnp;"
+	)
+	static StudioGame field1436;
+	@ObfuscatedName("ac")
+	final Thread field1440;
+	@ObfuscatedName("al")
 	@Export("isClosed")
 	volatile boolean isClosed;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ak")
 	@Export("requests")
 	Queue requests;
-	@ObfuscatedName("at")
+	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = 1715908929
+		intValue = 1671444091
 	)
-	int field1443;
+	int field1437;
 
 	UrlRequester(int var1) {
 		this.requests = new LinkedList();
-		this.field1446 = new Thread(this);
-		this.field1446.setPriority(1);
-		this.field1446.start();
-		this.field1443 = var1;
+		this.field1440 = new Thread(this);
+		this.field1440.setPriority(1);
+		this.field1440.start();
+		this.field1437 = var1;
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(Let;B)V",
-		garbageValue = "-114"
+		descriptor = "(Leq;I)V",
+		garbageValue = "1796222901"
 	)
-	abstract void vmethod2839(UrlRequest var1) throws IOException;
+	abstract void vmethod2859(UrlRequest var1) throws IOException;
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/net/URLConnection;B)I",
-		garbageValue = "20"
+		garbageValue = "127"
 	)
-	int method2821(URLConnection var1) {
-		int var2 = UrlRequest.field1455;
+	int method2844(URLConnection var1) {
+		int var2 = UrlRequest.field1446;
 		if (var1 != null) {
 			try {
 				if (var1 instanceof HttpURLConnection) {
@@ -68,25 +72,25 @@ public abstract class UrlRequester implements Runnable {
 		return var2;
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/net/URLConnection;B)V",
-		garbageValue = "61"
+		descriptor = "(Ljava/net/URLConnection;I)V",
+		garbageValue = "-1572559727"
 	)
-	void method2823(URLConnection var1) {
+	void method2847(URLConnection var1) {
 		var1.setConnectTimeout(5000);
 		var1.setReadTimeout(5000);
 		var1.setUseCaches(false);
 		var1.setRequestProperty("Connection", "close");
-		var1.setRequestProperty("User-Agent", "OldSchoolRuneScape/" + this.field1443);
+		var1.setRequestProperty("User-Agent", "OldSchoolRuneScape/" + this.field1437);
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/net/URLConnection;Let;I)V",
-		garbageValue = "-703916602"
+		descriptor = "(Ljava/net/URLConnection;Leq;S)V",
+		garbageValue = "32767"
 	)
-	void method2812(URLConnection var1, UrlRequest var2) {
+	void method2840(URLConnection var1, UrlRequest var2) {
 		DataInputStream var3 = null;
 
 		try {
@@ -98,23 +102,23 @@ public abstract class UrlRequester implements Runnable {
 				var3.readFully(var4);
 			} else {
 				var4 = new byte[0];
-				byte[] var6 = class125.ByteArrayPool_getArray(5000);
+				byte[] var6 = class148.ByteArrayPool_getArray(5000);
 
-				byte[] var8;
-				for (int var7 = var3.read(var6, 0, var6.length); var7 > -1; var4 = var8) {
-					var8 = new byte[var4.length + var7];
+				for (int var7 = var3.read(var6); var7 > -1; var7 = var3.read(var6)) {
+					byte[] var8 = new byte[var4.length + var7];
 					System.arraycopy(var4, 0, var8, 0, var4.length);
 					System.arraycopy(var6, 0, var8, var4.length, var7);
+					var4 = var8;
 				}
 
-				PlayerType.ByteArrayPool_release(var6);
+				MenuAction.ByteArrayPool_release(var6);
 			}
 
 			var2.response0 = var4;
 		} catch (IOException var14) {
 			var2.response0 = null;
 		} finally {
-			var2.field1456 = this.method2821(var1);
+			var2.field1445 = this.method2844(var1);
 		}
 
 		if (var3 != null) {
@@ -126,10 +130,10 @@ public abstract class UrlRequester implements Runnable {
 
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/net/URL;B)Let;",
-		garbageValue = "95"
+		descriptor = "(Ljava/net/URL;I)Leq;",
+		garbageValue = "511979680"
 	)
 	@Export("request")
 	public UrlRequest request(URL var1) {
@@ -141,10 +145,10 @@ public abstract class UrlRequester implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("ai")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-710296298"
+		garbageValue = "-1319494381"
 	)
 	@Export("close")
 	public void close() {
@@ -155,7 +159,7 @@ public abstract class UrlRequester implements Runnable {
 				this.notify();
 			}
 
-			this.field1446.join();
+			this.field1440.join();
 		} catch (InterruptedException var4) {
 		}
 
@@ -176,63 +180,55 @@ public abstract class UrlRequester implements Runnable {
 					}
 				}
 
-				this.vmethod2839(var1);
+				this.vmethod2859(var1);
 			} catch (Exception var7) {
-				Messages.RunException_sendStackTrace((String)null, var7);
+				class190.RunException_sendStackTrace((String)null, var7);
 			}
 		}
 
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("br")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "2153026"
+		descriptor = "(Lnm;III)V",
+		garbageValue = "1281314063"
 	)
-	public static void method2829() {
-		class305.field3405.clear();
-	}
+	public static void method2842(Widget var0, int var1, int var2) {
+		PlayerComposition var3 = var0.field3734;
+		boolean var4 = var2 != var3.gender;
+		var3.gender = var2;
+		if (var4) {
+			int var5;
+			int var6;
+			if (var3.gender == var1) {
+				for (var5 = 0; var5 < PlayerComposition.equipmentIndices.length; ++var5) {
+					var6 = PlayerComposition.equipmentIndices[var5];
+					if (var3.equipment[var6] > 0 && var3.equipment[var6] < 512) {
+						var3.equipment[var6] = var3.field3619[var6];
+					}
+				}
+			} else {
+				if (var3.equipment[0] < 512 || class286.method5662(var3)) {
+					var3.equipment[class223.field2348.field2342] = 1;
+				}
 
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-85"
-	)
-	public static void method2832() {
-		ItemComposition.ItemDefinition_cachedSprites.clear();
-	}
+				for (var5 = 0; var5 < 7; ++var5) {
+					var6 = PlayerComposition.equipmentIndices[var5];
+					if (var3.equipment[var6] > 0 && var3.equipment[var6] < 512) {
+						int[] var7 = var3.equipment;
 
-	@ObfuscatedName("hb")
-	@ObfuscatedSignature(
-		descriptor = "(I)J",
-		garbageValue = "286684178"
-	)
-	@Export("getUserId")
-	static long getUserId() {
-		return Client.userId;
-	}
-
-	@ObfuscatedName("jb")
-	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "1352739934"
-	)
-	static boolean method2831() {
-		return (Client.drawPlayerNames & 2) != 0;
-	}
-
-	@ObfuscatedName("nj")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)V",
-		garbageValue = "1224778546"
-	)
-	@Export("Clan_joinChat")
-	static final void Clan_joinChat(String var0) {
-		if (!var0.equals("")) {
-			PacketBufferNode var1 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3174, Client.packetWriter.isaacCipher);
-			var1.packetBuffer.writeByte(AbstractSocket.stringCp1252NullTerminatedByteSize(var0));
-			var1.packetBuffer.writeStringCp1252NullTerminated(var0);
-			Client.packetWriter.addNode(var1);
+						for (int var8 = 0; var8 < class403.KitDefinition_fileCount; ++var8) {
+							KitDefinition var9 = class73.KitDefinition_get(var8);
+							if (var9 != null && !var9.nonSelectable && var9.bodypartID == (var2 == 1 ? 7 : 0) + var5) {
+								var7[PlayerComposition.equipmentIndices[var5]] = var8 + 256;
+								break;
+							}
+						}
+					}
+				}
+			}
 		}
+
+		var3.method6291();
 	}
 }

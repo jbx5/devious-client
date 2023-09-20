@@ -4,30 +4,27 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("sr")
+@ObfuscatedName("tt")
 @Implements("Fonts")
 public class Fonts {
-	@ObfuscatedName("af")
-	@Export("Tiles_hue")
-	static int[] Tiles_hue;
-	@ObfuscatedName("au")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Lnu;"
+		descriptor = "Lom;"
 	)
 	@Export("spritesArchive")
 	AbstractArchive spritesArchive;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "Lnu;"
+		descriptor = "Lom;"
 	)
 	@Export("fontsArchive")
 	AbstractArchive fontsArchive;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ak")
 	@Export("map")
 	HashMap map;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lnu;Lnu;)V"
+		descriptor = "(Lom;Lom;)V"
 	)
 	public Fonts(AbstractArchive var1, AbstractArchive var2) {
 		this.spritesArchive = var1;
@@ -35,10 +32,10 @@ public class Fonts {
 		this.map = new HashMap();
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "([Lsp;I)Ljava/util/HashMap;",
-		garbageValue = "-537170056"
+		descriptor = "([Ltc;I)Ljava/util/HashMap;",
+		garbageValue = "932595648"
 	)
 	@Export("createMap")
 	public HashMap createMap(FontName[] var1) {
@@ -59,7 +56,24 @@ public class Fonts {
 				} else {
 					int var10 = var7.getGroupId(var9);
 					int var11 = var7.getFileId(var10, "");
-					var6 = LoginPacket.method5712(var7, var8, var10, var11);
+					Font var12;
+					if (!class164.method3376(var7, var10, var11)) {
+						var12 = null;
+					} else {
+						byte[] var14 = var8.takeFile(var10, var11);
+						Font var13;
+						if (var14 == null) {
+							var13 = null;
+						} else {
+							Font var15 = new Font(var14, class326.SpriteBuffer_xOffsets, ModelData0.SpriteBuffer_yOffsets, class59.SpriteBuffer_spriteWidths, class544.SpriteBuffer_spriteHeights, class372.SpriteBuffer_spritePalette, AddRequestTask.SpriteBuffer_pixels);
+							class407.method7453();
+							var13 = var15;
+						}
+
+						var12 = var13;
+					}
+
+					var6 = var12;
 				}
 
 				if (var6 != null) {

@@ -3,27 +3,24 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("tk")
+@ObfuscatedName("uz")
 @Implements("DbTableType")
 public class DbTableType extends DualNode {
-	@ObfuscatedName("au")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Lnu;"
+		descriptor = "Lom;"
 	)
-	static AbstractArchive field5042;
-	@ObfuscatedName("ae")
+	static AbstractArchive field5080;
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "Lle;"
+		descriptor = "Llr;"
 	)
 	@Export("DBTableType_cache")
 	static EvictingDualNodeHashTable DBTableType_cache;
-	@ObfuscatedName("ap")
-	@Export("SpriteBuffer_spritePalette")
-	static int[] SpriteBuffer_spritePalette;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ak")
 	@Export("types")
 	public int[][] types;
-	@ObfuscatedName("at")
+	@ObfuscatedName("ax")
 	@Export("defaultValues")
 	public Object[][] defaultValues;
 
@@ -34,28 +31,28 @@ public class DbTableType extends DualNode {
 	DbTableType() {
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Ltm;B)V",
+		descriptor = "(Lul;B)V",
 		garbageValue = "2"
 	)
-	void method8938(Buffer var1) {
+	void method9080(Buffer var1) {
 		while (true) {
 			int var2 = var1.readUnsignedByte();
 			if (var2 == 0) {
 				return;
 			}
 
-			this.method8939(var1, var2);
+			this.method9067(var1, var2);
 		}
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "(Ltm;II)V",
-		garbageValue = "-1215696705"
+		descriptor = "(Lul;II)V",
+		garbageValue = "-1635084839"
 	)
-	void method8939(Buffer var1, int var2) {
+	void method9067(Buffer var1, int var2) {
 		if (var2 == 1) {
 			int var3 = var1.readUnsignedByte();
 			if (this.types == null) {
@@ -77,18 +74,18 @@ public class DbTableType extends DualNode {
 						this.defaultValues = new Object[this.types.length][];
 					}
 
-					this.defaultValues[var5] = KeyHandler.method379(var1, var7);
+					this.defaultValues[var5] = class495.method8635(var1, var7);
 				}
 			}
 		}
 
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "2013883832"
+		garbageValue = "-1223582453"
 	)
-	void method8943() {
+	void method9068() {
 	}
 }

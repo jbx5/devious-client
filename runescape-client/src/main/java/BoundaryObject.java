@@ -4,60 +4,60 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jo")
+@ObfuscatedName("kr")
 @Implements("BoundaryObject")
 public final class BoundaryObject {
-	@ObfuscatedName("au")
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = 1162218027
+		intValue = -1476618981
 	)
 	@Export("z")
 	int z;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = 1928295169
+		intValue = -683767197
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = 2005175761
+		intValue = -405650921
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("at")
+	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = -1628547661
+		intValue = -250017227
 	)
 	@Export("orientationA")
 	int orientationA;
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = 1499438365
+		intValue = 696350689
 	)
 	@Export("orientationB")
 	int orientationB;
-	@ObfuscatedName("ai")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "Lik;"
+		descriptor = "Ljy;"
 	)
 	@Export("renderable1")
 	public Renderable renderable1;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "Lik;"
+		descriptor = "Ljy;"
 	)
 	@Export("renderable2")
 	public Renderable renderable2;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("ab")
 	@ObfuscatedGetter(
-		longValue = -4244623663237435829L
+		longValue = -6116645888661800441L
 	)
 	@Export("tag")
 	public long tag;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("am")
 	@ObfuscatedGetter(
-		intValue = 1002689579
+		intValue = -1705883383
 	)
 	@Export("flags")
 	int flags;
@@ -65,14 +65,5 @@ public final class BoundaryObject {
 	BoundaryObject() {
 		this.tag = 0L;
 		this.flags = 0;
-	}
-
-	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;II)Z",
-		garbageValue = "1066903143"
-	)
-	static boolean method5025(String var0, int var1) {
-		return class299.method5716(var0, var1, "openjs");
 	}
 }

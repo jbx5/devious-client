@@ -1,35 +1,33 @@
-import java.util.ArrayList;
-import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kl")
+@ObfuscatedName("li")
 @Implements("WorldMapEvent")
 public class WorldMapEvent {
-	@ObfuscatedName("au")
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = 397416983
+		intValue = 941661619
 	)
 	@Export("mapElement")
 	public int mapElement;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "Lmc;"
+		descriptor = "Lmo;"
 	)
 	@Export("coord1")
 	public Coord coord1;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Lmc;"
+		descriptor = "Lmo;"
 	)
 	@Export("coord2")
 	public Coord coord2;
 
 	@ObfuscatedSignature(
-		descriptor = "(ILmc;Lmc;)V"
+		descriptor = "(ILmo;Lmo;)V"
 	)
 	public WorldMapEvent(int var1, Coord var2, Coord var3) {
 		this.mapElement = var1;
@@ -37,53 +35,32 @@ public class WorldMapEvent {
 		this.coord2 = var3;
 	}
 
-	@ObfuscatedName("nm")
+	@ObfuscatedName("ic")
 	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "307364041"
+		descriptor = "(Ldj;IIB)V",
+		garbageValue = "124"
 	)
-	@Export("setMusicVolume")
-	static final void setMusicVolume(int var0) {
-		var0 = Math.min(Math.max(var0, 0), 255);
-		if (var0 != class449.clientPreferences.method2451()) {
-			label42: {
-				if (class449.clientPreferences.method2451() == 0) {
-					boolean var1 = !class305.field3405.isEmpty();
-					if (var1) {
-						Archive var2 = class385.archive6;
-						if (!class305.field3405.isEmpty()) {
-							ArrayList var3 = new ArrayList();
-							Iterator var4 = class305.field3405.iterator();
-
-							while (var4.hasNext()) {
-								MusicSong var5 = (MusicSong)var4.next();
-								var5.field3518 = false;
-								var5.field3516 = false;
-								var5.field3524 = false;
-								var5.field3519 = false;
-								var5.musicTrackArchive = var2;
-								var5.musicTrackVolume = var0;
-								var5.field3510 = 0.0F;
-								var3.add(var5);
-							}
-
-							class53.method1097(var3, class305.musicPlayerStatus, class305.field3409, class305.field3410, class305.field3401, false);
-						}
-
-						Client.playingJingle = false;
-						break label42;
-					}
-				}
-
-				if (var0 == 0) {
-					Script.method2180(0, 0);
-					Client.playingJingle = false;
-				} else {
-					class300.method5718(var0);
-				}
+	@Export("performPlayerAnimation")
+	static void performPlayerAnimation(Player var0, int var1, int var2) {
+		if (var0.sequence == var1 && var1 != -1) {
+			int var3 = class36.SequenceDefinition_get(var1).field2340;
+			if (var3 == 1) {
+				var0.sequenceFrame = 0;
+				var0.sequenceFrameCycle = 0;
+				var0.sequenceDelay = var2;
+				var0.field1235 = 0;
 			}
 
-			class449.clientPreferences.method2458(var0);
+			if (var3 == 2) {
+				var0.field1235 = 0;
+			}
+		} else if (var1 == -1 || var0.sequence == -1 || class36.SequenceDefinition_get(var1).field2333 >= class36.SequenceDefinition_get(var0.sequence).field2333) {
+			var0.sequence = var1;
+			var0.sequenceFrame = 0;
+			var0.sequenceFrameCycle = 0;
+			var0.sequenceDelay = var2;
+			var0.field1235 = 0;
+			var0.field1261 = var0.pathLength;
 		}
 
 	}

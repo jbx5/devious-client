@@ -4,25 +4,25 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("sa")
+@ObfuscatedName("tm")
 @Implements("IterableNodeHashTableIterator")
 public class IterableNodeHashTableIterator implements Iterator {
-	@ObfuscatedName("au")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Lsf;"
+		descriptor = "Ltp;"
 	)
 	@Export("hashTable")
 	IterableNodeHashTable hashTable;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "Lsj;"
 	)
 	@Export("head")
 	Node head;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ak")
 	@Export("index")
 	int index;
-	@ObfuscatedName("at")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
 		descriptor = "Lsj;"
 	)
@@ -30,7 +30,7 @@ public class IterableNodeHashTableIterator implements Iterator {
 	Node last;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lsf;)V"
+		descriptor = "(Ltp;)V"
 	)
 	public IterableNodeHashTableIterator(IterableNodeHashTable var1) {
 		this.last = null;
@@ -38,7 +38,7 @@ public class IterableNodeHashTableIterator implements Iterator {
 		this.start();
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("ac")
 	@Export("start")
 	void start() {
 		this.head = this.hashTable.buckets[0].previous;
@@ -46,11 +46,11 @@ public class IterableNodeHashTableIterator implements Iterator {
 		this.last = null;
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "()Lsj;"
 	)
-	public Node method8713() {
+	public Node method8861() {
 		this.start();
 		return (Node)this.next();
 	}
@@ -77,15 +77,6 @@ public class IterableNodeHashTableIterator implements Iterator {
 		}
 	}
 
-	public void remove() {
-		if (this.last == null) {
-			throw new IllegalStateException();
-		} else {
-			this.last.remove();
-			this.last = null;
-		}
-	}
-
 	public boolean hasNext() {
 		if (this.hashTable.buckets[this.index - 1] != this.head) {
 			return true;
@@ -100,6 +91,15 @@ public class IterableNodeHashTableIterator implements Iterator {
 			}
 
 			return false;
+		}
+	}
+
+	public void remove() {
+		if (this.last == null) {
+			throw new IllegalStateException();
+		} else {
+			this.last.remove();
+			this.last = null;
 		}
 	}
 }

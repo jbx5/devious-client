@@ -1,41 +1,21 @@
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 
-@ObfuscatedName("ud")
+@ObfuscatedName("uu")
 public class class523 {
-	@ObfuscatedName("au")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = 1988875325
+		intValue = -674431635
 	)
-	public final int field5178;
-	@ObfuscatedName("ae")
-	public Object field5177;
+	static final int field5093;
+	@ObfuscatedName("ax")
+	@ObfuscatedGetter(
+		intValue = 357624219
+	)
+	static final int field5092;
 
-	public class523(int var1) {
-		this.field5178 = var1;
-	}
-
-	public class523(int var1, Object var2) {
-		this.field5178 = var1;
-		this.field5177 = var2;
-	}
-
-	public int hashCode() {
-		return super.hashCode();
-	}
-
-	public boolean equals(Object var1) {
-		if (!(var1 instanceof class523)) {
-			return false;
-		} else {
-			class523 var2 = (class523)var1;
-			if (var2.field5177 == null && this.field5177 != null) {
-				return false;
-			} else if (this.field5177 == null && var2.field5177 != null) {
-				return false;
-			} else {
-				return var2.field5178 == this.field5178 && var2.field5177.equals(this.field5177);
-			}
-		}
+	static {
+		field5093 = (int)(Math.pow(2.0D, 4.0D) - 1.0D);
+		field5092 = (int)(Math.pow(2.0D, 8.0D) - 1.0D);
 	}
 }

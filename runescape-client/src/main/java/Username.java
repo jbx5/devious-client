@@ -3,175 +3,62 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("uc")
+@ObfuscatedName("vf")
 @Implements("Username")
 public class Username implements Comparable {
-	@ObfuscatedName("au")
+	@ObfuscatedName("ac")
 	@Export("name")
 	String name;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("al")
 	@Export("cleanName")
 	String cleanName;
 
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Lsl;)V"
+		descriptor = "(Ljava/lang/String;Lte;)V"
 	)
 	public Username(String var1, LoginType var2) {
 		this.name = var1;
-		String var4;
-		if (var1 == null) {
-			var4 = null;
-		} else {
-			label71: {
-				int var5 = 0;
-
-				int var6;
-				for (var6 = var1.length(); var5 < var6 && ArchiveDiskActionHandler.method6640(var1.charAt(var5)); ++var5) {
-				}
-
-				while (var6 > var5 && ArchiveDiskActionHandler.method6640(var1.charAt(var6 - 1))) {
-					--var6;
-				}
-
-				int var7 = var6 - var5;
-				if (var7 >= 1) {
-					byte var9;
-					if (var2 == null) {
-						var9 = 12;
-					} else {
-						switch(var2.field4988) {
-						case 0:
-							var9 = 20;
-							break;
-						default:
-							var9 = 12;
-						}
-					}
-
-					if (var7 <= var9) {
-						StringBuilder var12 = new StringBuilder(var7);
-
-						for (int var13 = var5; var13 < var6; ++var13) {
-							char var10 = var1.charAt(var13);
-							if (ClientPreferences.method2555(var10)) {
-								char var11 = KeyHandler.method378(var10);
-								if (var11 != 0) {
-									var12.append(var11);
-								}
-							}
-						}
-
-						if (var12.length() == 0) {
-							var4 = null;
-						} else {
-							var4 = var12.toString();
-						}
-						break label71;
-					}
-				}
-
-				var4 = null;
-			}
-		}
-
-		this.cleanName = var4;
+		this.cleanName = class432.method7856(var1, var2);
 	}
 
 	public Username(String var1) {
 		this.name = var1;
-		LoginType var4 = LoginType.oldscape;
-		String var3;
-		if (var1 == null) {
-			var3 = null;
-		} else {
-			label71: {
-				int var5 = 0;
-
-				int var6;
-				for (var6 = var1.length(); var5 < var6 && ArchiveDiskActionHandler.method6640(var1.charAt(var5)); ++var5) {
-				}
-
-				while (var6 > var5 && ArchiveDiskActionHandler.method6640(var1.charAt(var6 - 1))) {
-					--var6;
-				}
-
-				int var7 = var6 - var5;
-				if (var7 >= 1) {
-					byte var9;
-					if (var4 == null) {
-						var9 = 12;
-					} else {
-						switch(var4.field4988) {
-						case 0:
-							var9 = 20;
-							break;
-						default:
-							var9 = 12;
-						}
-					}
-
-					if (var7 <= var9) {
-						StringBuilder var12 = new StringBuilder(var7);
-
-						for (int var13 = var5; var13 < var6; ++var13) {
-							char var10 = var1.charAt(var13);
-							if (ClientPreferences.method2555(var10)) {
-								char var11 = KeyHandler.method378(var10);
-								if (var11 != 0) {
-									var12.append(var11);
-								}
-							}
-						}
-
-						if (var12.length() == 0) {
-							var3 = null;
-						} else {
-							var3 = var12.toString();
-						}
-						break label71;
-					}
-				}
-
-				var3 = null;
-			}
-		}
-
-		this.cleanName = var3;
+		this.cleanName = class432.method7856(var1, LoginType.oldscape);
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
 		descriptor = "(I)Ljava/lang/String;",
-		garbageValue = "-1021488493"
+		garbageValue = "-1870950849"
 	)
 	@Export("getName")
 	public String getName() {
 		return this.name;
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(B)Ljava/lang/String;",
-		garbageValue = "28"
+		descriptor = "(I)Ljava/lang/String;",
+		garbageValue = "641761865"
 	)
-	public String method9688() {
+	public String method9844() {
 		return this.cleanName;
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "-911492900"
+		descriptor = "(B)Z",
+		garbageValue = "-46"
 	)
 	@Export("hasCleanName")
 	public boolean hasCleanName() {
 		return this.cleanName != null;
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(Luc;I)I",
-		garbageValue = "-2077400310"
+		descriptor = "(Lvf;I)I",
+		garbageValue = "585813874"
 	)
 	@Export("compareToTyped")
 	public int compareToTyped(Username var1) {
@@ -207,5 +94,42 @@ public class Username implements Comparable {
 
 	public int compareTo(Object var1) {
 		return this.compareToTyped((Username)var1);
+	}
+
+	@ObfuscatedName("mi")
+	@ObfuscatedSignature(
+		descriptor = "(Lnm;III)V",
+		garbageValue = "-2147237579"
+	)
+	@Export("alignWidgetPosition")
+	static void alignWidgetPosition(Widget var0, int var1, int var2) {
+		if (var0.xAlignment == 0) {
+			var0.x = var0.rawX;
+		} else if (var0.xAlignment == 1) {
+			var0.x = var0.rawX + (var1 - var0.width) / 2;
+		} else if (var0.xAlignment == 2) {
+			var0.x = var1 - var0.width - var0.rawX;
+		} else if (var0.xAlignment == 3) {
+			var0.x = var0.rawX * var1 >> 14;
+		} else if (var0.xAlignment == 4) {
+			var0.x = (var1 - var0.width) / 2 + (var0.rawX * var1 >> 14);
+		} else {
+			var0.x = var1 - var0.width - (var0.rawX * var1 >> 14);
+		}
+
+		if (var0.yAlignment == 0) {
+			var0.y = var0.rawY;
+		} else if (var0.yAlignment == 1) {
+			var0.y = (var2 - var0.height) / 2 + var0.rawY;
+		} else if (var0.yAlignment == 2) {
+			var0.y = var2 - var0.height - var0.rawY;
+		} else if (var0.yAlignment == 3) {
+			var0.y = var2 * var0.rawY >> 14;
+		} else if (var0.yAlignment == 4) {
+			var0.y = (var2 - var0.height) / 2 + (var2 * var0.rawY >> 14);
+		} else {
+			var0.y = var2 - var0.height - (var2 * var0.rawY >> 14);
+		}
+
 	}
 }

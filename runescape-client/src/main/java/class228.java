@@ -1,92 +1,102 @@
+import java.util.Arrays;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("id")
-public abstract class class228 extends Rasterizer2D {
-	@ObfuscatedName("au")
-	boolean field2553;
-	@ObfuscatedName("ae")
-	boolean field2548;
-	@ObfuscatedName("az")
-	int[] field2552;
-	@ObfuscatedName("ap")
+@ObfuscatedName("ic")
+public class class228 {
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Ljl;"
+		descriptor = "Lic;"
 	)
-	Clips field2547;
+	static final class228 field2402;
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "Lic;"
+	)
+	static final class228 field2400;
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "Lic;"
+	)
+	static final class228 field2409;
+	@ObfuscatedName("ax")
+	@ObfuscatedSignature(
+		descriptor = "Lic;"
+	)
+	static final class228 field2399;
+	@ObfuscatedName("ao")
+	@ObfuscatedSignature(
+		descriptor = "Lic;"
+	)
+	static final class228 field2403;
+	@ObfuscatedName("ah")
+	@ObfuscatedSignature(
+		descriptor = "Lic;"
+	)
+	static final class228 field2404;
+	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "Lic;"
+	)
+	static final class228 field2405;
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "[Lic;"
+	)
+	static final class228[] field2408;
+	@ObfuscatedName("ab")
+	@ObfuscatedGetter(
+		intValue = 1200422575
+	)
+	final int field2406;
+	@ObfuscatedName("am")
+	@ObfuscatedGetter(
+		intValue = -1062470321
+	)
+	final int field2407;
+	@ObfuscatedName("av")
+	@ObfuscatedGetter(
+		intValue = 328884775
+	)
+	final int field2401;
 
-	@ObfuscatedSignature(
-		descriptor = "(Ljl;)V"
-	)
-	class228(Clips var1) {
-		this.field2553 = false;
-		this.field2548 = false;
-		this.field2552 = Rasterizer3D.Rasterizer3D_colorPalette;
-		this.field2547 = var1;
+	static {
+		field2402 = new class228(5, 8, 8);
+		field2400 = new class228(0, 16, 16);
+		field2409 = new class228(1, 32, 32);
+		field2399 = new class228(6, 48, 48);
+		field2403 = new class228(4, 64, 64);
+		field2404 = new class228(2, 96, 96);
+		field2405 = new class228(3, 128, 128);
+		class228[] var0 = new class228[]{field2400, field2409, field2404, field2405, field2403, field2402, field2399};
+		field2408 = var0;
+		Arrays.sort(field2408, new class233());
 	}
 
-	@ObfuscatedName("au")
-	void method4482(int[] var1, int var2, int var3, float[] var4) {
-		Rasterizer2D.method9367(var1, var2, var3, var4);
-	}
-
-	@ObfuscatedName("at")
-	void method4485(int var1, int var2, int var3, int var4, int var5, int var6, float var7, float var8, float var9, int var10, int var11, int var12, byte var13, byte var14, byte var15, byte var16) {
-		var10 = method4512(var10, var13, var14, var15, var16);
-		var11 = method4512(var11, var13, var14, var15, var16);
-		var12 = method4512(var12, var13, var14, var15, var16);
-		this.vmethod5020(var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11, var12);
+	class228(int var1, int var2, int var3) {
+		this.field2406 = var1;
+		this.field2407 = var2;
+		this.field2401 = var3;
 	}
 
 	@ObfuscatedName("ac")
-	void method4481(int var1, int var2, int var3, int var4, int var5, int var6, float var7, float var8, float var9, int var10, byte var11, byte var12, byte var13, byte var14) {
-		int var15 = method4512(var10, var11, var12, var13, var14);
-		var10 = this.field2552[var15];
-		this.vmethod4972(var1, var2, var3, var4, var5, var6, var7, var8, var9, var10);
+	@ObfuscatedSignature(
+		descriptor = "(B)I",
+		garbageValue = "14"
+	)
+	int method4336() {
+		return this.field2401 * this.field2407;
 	}
 
-	@ObfuscatedName("ai")
-	abstract void vmethod5020(int var1, int var2, int var3, int var4, int var5, int var6, float var7, float var8, float var9, int var10, int var11, int var12);
-
-	@ObfuscatedName("az")
-	abstract void vmethod4972(int var1, int var2, int var3, int var4, int var5, int var6, float var7, float var8, float var9, int var10);
-
-	@ObfuscatedName("ap")
-	abstract void vmethod4967(int var1, int var2, int var3, int var4, int var5, int var6, float var7, float var8, float var9, int var10, int var11, int var12, int var13, int var14, int var15, int var16, int var17, int var18, int var19, int var20, int var21, int var22);
-
-	@ObfuscatedName("aa")
-	abstract void vmethod4981(int var1, int var2, int var3, int var4, int var5, int var6, float var7, float var8, float var9, int var10, int var11, int var12, int var13, int var14, int var15, int var16, int var17, int var18, int var19, int var20, int var21, int var22);
-
-	@ObfuscatedName("ae")
-	static int method4512(int var0, byte var1, byte var2, byte var3, byte var4) {
-		int var5 = var0 >> 10 & 63;
-		int var6 = var0 >> 7 & 7;
-		int var7 = var0 & 127;
-		int var8 = var4 & 255;
-		if (var1 != -1) {
-			var5 += var8 * (var1 - var5) >> 7;
-		}
-
-		if (var2 != -1) {
-			var6 += var8 * (var2 - var6) >> 7;
-		}
-
-		if (var3 != -1) {
-			var7 += var8 * (var3 - var7) >> 7;
-		}
-
-		return (var5 << 10 | var6 << 7 | var7) & 65535;
-	}
-
-	@ObfuscatedName("ao")
-	static final int method4484(int var0, int var1) {
-		var1 = (var0 & 127) * var1 >> 7;
-		if (var1 < 2) {
-			var1 = 2;
-		} else if (var1 > 126) {
-			var1 = 126;
-		}
-
-		return (var0 & 65408) + var1;
+	@ObfuscatedName("ax")
+	@ObfuscatedSignature(
+		descriptor = "(II)I",
+		garbageValue = "-1760324394"
+	)
+	public static int method4335(int var0) {
+		long var2 = ViewportMouse.ViewportMouse_entityTags[var0];
+		int var1 = (int)(var2 >>> 7 & 127L);
+		return var1;
 	}
 }

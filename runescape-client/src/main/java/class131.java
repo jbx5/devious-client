@@ -1,193 +1,106 @@
-import net.runelite.mapping.Export;
+import java.io.IOException;
+import java.util.concurrent.Callable;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ft")
-public class class131 implements MouseWheel {
-	@ObfuscatedName("au")
-	@ObfuscatedSignature(
-		descriptor = "Lft;"
+@ObfuscatedName("fh")
+public class class131 implements Callable {
+	@ObfuscatedName("ur")
+	@ObfuscatedGetter(
+		intValue = 388777361
 	)
-	static final class131 field1578;
-	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "Lft;"
-	)
-	static final class131 field1581;
-	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "Lft;"
-	)
-	static final class131 field1575;
-	@ObfuscatedName("at")
-	@ObfuscatedSignature(
-		descriptor = "Lft;"
-	)
-	static final class131 field1576;
+	static int field1535;
 	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Lft;"
+		descriptor = "Lfz;"
 	)
-	static final class131 field1577;
-	@ObfuscatedName("ai")
+	final class132 field1534;
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "Lft;"
+		descriptor = "Lfs;"
 	)
-	static final class131 field1573;
-	@ObfuscatedName("az")
+	final class133 field1532;
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "Lfl;"
+	)
+	final class134 field1531;
+	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = -590541799
+		intValue = 706977805
 	)
-	final int field1579;
-	@ObfuscatedName("ap")
-	@ObfuscatedGetter(
-		intValue = 987522577
+	final int field1536;
+	// $FF: synthetic field
+	@ObfuscatedSignature(
+		descriptor = "Lfk;"
 	)
-	final int field1580;
-	@ObfuscatedName("aa")
-	@ObfuscatedGetter(
-		intValue = -345362565
-	)
-	final int field1574;
+	final class139 this$0;
 
-	static {
-		field1578 = new class131(0, 0, (String)null, 0);
-		field1581 = new class131(1, 1, (String)null, 9);
-		field1575 = new class131(2, 2, (String)null, 3);
-		field1576 = new class131(3, 3, (String)null, 6);
-		field1577 = new class131(4, 4, (String)null, 1);
-		field1573 = new class131(5, 5, (String)null, 3);
+	@ObfuscatedSignature(
+		descriptor = "(Lfk;Lfz;Lfs;Lfl;I)V"
+	)
+	class131(class139 var1, class132 var2, class133 var3, class134 var4, int var5) {
+		this.this$0 = var1;
+		this.field1534 = var2;
+		this.field1532 = var3;
+		this.field1531 = var4;
+		this.field1536 = var5;
 	}
 
-	class131(int var1, int var2, String var3, int var4) {
-		this.field1579 = var1;
-		this.field1580 = var2;
-		this.field1574 = var4;
-	}
+	public Object call() {
+		this.field1534.method3021();
+		class132[][] var1;
+		if (this.field1532 == class133.field1569) {
+			var1 = this.this$0.field1610;
+		} else {
+			var1 = this.this$0.field1603;
+		}
 
-	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "41"
-	)
-	@Export("rsOrdinal")
-	public int rsOrdinal() {
-		return this.field1580;
+		var1[this.field1536][this.field1531.method3067()] = this.field1534;
+		return null;
 	}
 
 	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "149385670"
+		descriptor = "(B)[B",
+		garbageValue = "1"
 	)
-	int method3025() {
-		return this.field1574;
-	}
+	public static byte[] method3015() {
+		byte[] var0 = new byte[24];
 
-	@ObfuscatedName("at")
-	@ObfuscatedSignature(
-		descriptor = "(IIIIB)V",
-		garbageValue = "50"
-	)
-	static void method3031(int var0, int var1, int var2, int var3) {
-		for (ObjectSound var4 = (ObjectSound)ObjectSound.objectSounds.last(); var4 != null; var4 = (ObjectSound)ObjectSound.objectSounds.previous()) {
-			if (var4.soundEffectId != -1 || var4.soundEffectIds != null) {
-				int var5 = 0;
-				if (var1 > var4.maxX * 16384) {
-					var5 += var1 - var4.maxX * 16384;
-				} else if (var1 < var4.x * 16384) {
-					var5 += var4.x * 16384 - var1;
-				}
+		try {
+			JagexCache.JagexCache_randomDat.seek(0L);
+			JagexCache.JagexCache_randomDat.readFully(var0);
 
-				if (var2 > var4.maxY * 16384) {
-					var5 += var2 - var4.maxY * 16384;
-				} else if (var2 < var4.y * 16384) {
-					var5 += var4.y * 16384 - var2;
-				}
+			int var1;
+			for (var1 = 0; var1 < 24 && var0[var1] == 0; ++var1) {
+			}
 
-				if (var5 - 64 <= var4.field861 && class449.clientPreferences.method2554() != 0 && var0 == var4.plane) {
-					var5 -= 64;
-					if (var5 < 0) {
-						var5 = 0;
-					}
-
-					int var6 = (var4.field861 - var5) * class449.clientPreferences.method2554() / var4.field861;
-					if (var4.stream1 == null) {
-						if (var4.soundEffectId >= 0) {
-							SoundEffect var7 = SoundEffect.readSoundEffect(class28.field161, var4.soundEffectId, 0);
-							if (var7 != null) {
-								RawSound var8 = var7.toRawSound().resample(class330.decimator);
-								RawPcmStream var9 = RawPcmStream.createRawPcmStream(var8, 100, var6);
-								var9.setNumLoops(-1);
-								class162.pcmStreamMixer.addSubStream(var9);
-								var4.stream1 = var9;
-							}
-						}
-					} else {
-						var4.stream1.method907(var6);
-					}
-
-					if (var4.stream2 == null) {
-						if (var4.soundEffectIds != null && (var4.field875 -= var3) <= 0) {
-							int var11 = (int)(Math.random() * (double)var4.soundEffectIds.length);
-							SoundEffect var12 = SoundEffect.readSoundEffect(class28.field161, var4.soundEffectIds[var11], 0);
-							if (var12 != null) {
-								RawSound var13 = var12.toRawSound().resample(class330.decimator);
-								RawPcmStream var10 = RawPcmStream.createRawPcmStream(var13, 100, var6);
-								var10.setNumLoops(0);
-								class162.pcmStreamMixer.addSubStream(var10);
-								var4.stream2 = var10;
-								var4.field875 = var4.field867 + (int)(Math.random() * (double)(var4.field865 - var4.field867));
-							}
-						}
-					} else {
-						var4.stream2.method907(var6);
-						if (!var4.stream2.hasNext()) {
-							var4.stream2 = null;
-						}
-					}
-				} else {
-					if (var4.stream1 != null) {
-						class162.pcmStreamMixer.removeSubStream(var4.stream1);
-						var4.stream1 = null;
-					}
-
-					if (var4.stream2 != null) {
-						class162.pcmStreamMixer.removeSubStream(var4.stream2);
-						var4.stream2 = null;
-					}
-				}
+			if (var1 >= 24) {
+				throw new IOException();
+			}
+		} catch (Exception var4) {
+			for (int var2 = 0; var2 < 24; ++var2) {
+				var0[var2] = -1;
 			}
 		}
 
+		return var0;
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("mu")
 	@ObfuscatedSignature(
-		descriptor = "(IZIZI)V",
-		garbageValue = "-761761706"
+		descriptor = "(II)Z",
+		garbageValue = "1460663579"
 	)
-	@Export("sortWorldList")
-	static void sortWorldList(int var0, boolean var1, int var2, boolean var3) {
-		if (class176.World_worlds != null) {
-			Occluder.doWorldSorting(0, class176.World_worlds.length - 1, var0, var1, var2, var3);
+	static boolean method3016(int var0) {
+		for (int var1 = 0; var1 < Client.field757; ++var1) {
+			if (Client.field759[var1] == var0) {
+				return true;
+			}
 		}
 
-	}
-
-	@ObfuscatedName("nk")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;B)V",
-		garbageValue = "-87"
-	)
-	@Export("clanKickUser")
-	static final void clanKickUser(String var0) {
-		if (ReflectionCheck.friendsChat != null) {
-			PacketBufferNode var1 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.CLAN_KICKUSER, Client.packetWriter.isaacCipher);
-			var1.packetBuffer.writeByte(AbstractSocket.stringCp1252NullTerminatedByteSize(var0));
-			var1.packetBuffer.writeStringCp1252NullTerminated(var0);
-			Client.packetWriter.addNode(var1);
-		}
+		return false;
 	}
 }
