@@ -45,8 +45,8 @@ class class511 implements Iterator {
 	)
 	@Export("updateRootInterface")
 	static final void updateRootInterface(int var0, int var1, int var2, int var3, int var4, int var5, int var6) {
-		if (class33.field184.method6242(var0)) {
-			class108.updateInterface(class33.field184.field3587[var0], -1, var1, var2, var3, var4, var5, var6);
+		if (class33.widgetDefinition.loadInterface(var0)) {
+			class108.updateInterface(class33.widgetDefinition.Widget_interfaceComponents[var0], -1, var1, var2, var3, var4, var5, var6);
 		}
 	}
 }

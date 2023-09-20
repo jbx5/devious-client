@@ -64,10 +64,11 @@ public enum VerticalAlignment implements MouseWheel {
 		descriptor = "(II)V",
 		garbageValue = "900742897"
 	)
-	static void method3845(int var0) {
+	@Export("runWidgetOnLoadListener")
+	static void runWidgetOnLoadListener(int var0) {
 		if (var0 != -1) {
-			if (class33.field184.method6242(var0)) {
-				Widget[] var1 = class33.field184.field3587[var0];
+			if (class33.widgetDefinition.loadInterface(var0)) {
+				Widget[] var1 = class33.widgetDefinition.Widget_interfaceComponents[var0];
 
 				for (int var2 = 0; var2 < var1.length; ++var2) {
 					Widget var3 = var1[var2];

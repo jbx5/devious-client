@@ -87,7 +87,7 @@ public class DevicePcmPlayerProvider implements class51 {
 		garbageValue = "124"
 	)
 	static int method307(int var0, Script var1, boolean var2) {
-		Widget var3 = class33.field184.method6240(Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]);
+		Widget var3 = class33.widgetDefinition.method6240(Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]);
 		if (var0 == ScriptOpcodes.IF_GETSCROLLX) {
 			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3.scrollX;
 			return 1;

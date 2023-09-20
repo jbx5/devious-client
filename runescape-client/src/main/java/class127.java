@@ -52,7 +52,7 @@ public class class127 {
 		garbageValue = "-59"
 	)
 	static final void method2946(Widget var0, int var1, int var2, int var3) {
-		SpriteMask var4 = var0.method6594(class33.field184, false);
+		SpriteMask var4 = var0.method6594(class33.widgetDefinition, false);
 		if (var4 != null) {
 			if (Client.minimapState < 3) {
 				class404.compass.drawRotatedMaskedCenteredAround(var1, var2, var4.width, var4.height, 25, 25, Client.camAngleY, 256, var4.xStarts, var4.xWidths);

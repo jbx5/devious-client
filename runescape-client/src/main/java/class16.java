@@ -149,7 +149,7 @@ public class class16 implements ThreadFactory {
 						int var6;
 						if (var4.combatLevel != 0 && var0.field1262 != 0) {
 							var6 = var0.field1262 != -1 ? var0.field1262 : var4.combatLevel;
-							var5 = var5 + class338.method6257(var6, TextureProvider.localPlayer.combatLevel) + " " + " (" + "level-" + var6 + ")";
+							var5 = var5 + WidgetDefinition.method6257(var6, TextureProvider.localPlayer.combatLevel) + " " + " (" + "level-" + var6 + ")";
 						}
 
 						if (var4.isFollower && Client.followerOpsLowPriority) {

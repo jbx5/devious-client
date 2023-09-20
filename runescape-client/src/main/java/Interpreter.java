@@ -98,8 +98,8 @@ public class Interpreter {
 		garbageValue = "1205286290"
 	)
 	static final void method2071(int var0, int var1) {
-		if (class33.field184.method6242(var0)) {
-			ClientPacket.runComponentCloseListeners(class33.field184.field3587[var0], var1);
+		if (class33.widgetDefinition.loadInterface(var0)) {
+			ClientPacket.runComponentCloseListeners(class33.widgetDefinition.Widget_interfaceComponents[var0], var1);
 		}
 	}
 }

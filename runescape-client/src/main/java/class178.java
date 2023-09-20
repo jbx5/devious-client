@@ -176,8 +176,8 @@ public class class178 {
 		garbageValue = "-1551769490"
 	)
 	static final void method3552(int var0) {
-		if (class33.field184.method6242(var0)) {
-			class174.drawModelComponents(class33.field184.field3587[var0], -1);
+		if (class33.widgetDefinition.loadInterface(var0)) {
+			class174.drawModelComponents(class33.widgetDefinition.Widget_interfaceComponents[var0], -1);
 		}
 	}
 }

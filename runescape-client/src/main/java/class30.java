@@ -55,7 +55,7 @@ public class class30 {
 		garbageValue = "2111489575"
 	)
 	static int method447(int var0, Script var1, boolean var2) {
-		Widget var3 = class33.field184.method6240(Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]);
+		Widget var3 = class33.widgetDefinition.method6240(Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]);
 		if (var0 == ScriptOpcodes.IF_GETX) {
 			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3.x;
 			return 1;

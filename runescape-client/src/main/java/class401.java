@@ -18,7 +18,7 @@ public final class class401 {
 	static final void checkIfMinimapClicked(Widget var0, int var1, int var2) {
 		if (Client.minimapState == 0 || Client.minimapState == 3) {
 			if (!Client.isMenuOpen && (MouseHandler.MouseHandler_lastButton == 1 || !UserComparator8.mouseCam && MouseHandler.MouseHandler_lastButton == 4)) {
-				SpriteMask var3 = var0.method6594(class33.field184, true);
+				SpriteMask var3 = var0.method6594(class33.widgetDefinition, true);
 				if (var3 == null) {
 					return;
 				}

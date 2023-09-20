@@ -286,7 +286,7 @@ public class TextureProvider implements TextureLoader {
 	)
 	@Export("widgetDefaultMenuAction")
 	static void widgetDefaultMenuAction(int var0, int var1, int var2, int var3, String var4) {
-		Widget var5 = class33.field184.method6241(var1, var2);
+		Widget var5 = class33.widgetDefinition.method6241(var1, var2);
 		if (var5 != null) {
 			if (var5.onOp != null) {
 				ScriptEvent var6 = new ScriptEvent();

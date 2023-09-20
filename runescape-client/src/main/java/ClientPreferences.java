@@ -493,7 +493,7 @@ public class ClientPreferences {
 		if (var0 >= 2000) {
 			var0 -= 1000;
 			var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-			var4 = class33.field184.method6240(var3);
+			var4 = class33.widgetDefinition.method6240(var3);
 		} else {
 			var4 = var2 ? class416.scriptDotWidget : class306.field3131;
 		}
@@ -507,7 +507,7 @@ public class ClientPreferences {
 			ClanChannelMember.invalidateWidget(var4);
 			class159.client.alignWidget(var4);
 			if (var3 != -1 && var4.type == 0) {
-				PendingSpawn.revalidateWidgetScroll(class33.field184.field3587[var3 >> 16], var4, false);
+				PendingSpawn.revalidateWidgetScroll(class33.widgetDefinition.Widget_interfaceComponents[var3 >> 16], var4, false);
 			}
 
 			return 1;
@@ -520,7 +520,7 @@ public class ClientPreferences {
 			ClanChannelMember.invalidateWidget(var4);
 			class159.client.alignWidget(var4);
 			if (var3 != -1 && var4.type == 0) {
-				PendingSpawn.revalidateWidgetScroll(class33.field184.field3587[var3 >> 16], var4, false);
+				PendingSpawn.revalidateWidgetScroll(class33.widgetDefinition.Widget_interfaceComponents[var3 >> 16], var4, false);
 			}
 
 			return 1;

@@ -47,7 +47,7 @@ public class DirectByteArrayCopier extends AbstractByteArrayCopier {
 			if (Client.menuOptionsCount < 400) {
 				String var4;
 				if (var0.skillLevel == 0) {
-					var4 = var0.actions[0] + var0.username + var0.actions[1] + class338.method6257(var0.combatLevel, TextureProvider.localPlayer.combatLevel) + " " + " (" + "level-" + var0.combatLevel + ")" + var0.actions[2];
+					var4 = var0.actions[0] + var0.username + var0.actions[1] + WidgetDefinition.method6257(var0.combatLevel, TextureProvider.localPlayer.combatLevel) + " " + " (" + "level-" + var0.combatLevel + ")" + var0.actions[2];
 				} else {
 					var4 = var0.actions[0] + var0.username + var0.actions[1] + " " + " (" + "skill-" + var0.skillLevel + ")" + var0.actions[2];
 				}

@@ -26,7 +26,7 @@ public class class212 extends DualNode {
 			return null;
 		} else {
 			for (int var4 = 0; var4 < var3; ++var4) {
-				var0 = class33.field184.method6240(var0.parentId);
+				var0 = class33.widgetDefinition.method6240(var0.parentId);
 				if (var0 == null) {
 					return null;
 				}

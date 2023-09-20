@@ -31,7 +31,7 @@ public class class286 {
 	)
 	static void method5663() {
 		if (Client.isSpellSelected) {
-			Widget var0 = class33.field184.method6241(JagexCache.field1841, Client.selectedSpellChildIndex);
+			Widget var0 = class33.widgetDefinition.method6241(JagexCache.field1841, Client.selectedSpellChildIndex);
 			if (var0 != null && var0.onTargetLeave != null) {
 				ScriptEvent var1 = new ScriptEvent();
 				var1.widget = var0;

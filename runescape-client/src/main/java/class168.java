@@ -68,7 +68,7 @@ public class class168 extends class161 {
 			if (var4 == 0) {
 				throw new RuntimeException();
 			} else {
-				Widget var6 = class33.field184.method6240(var9);
+				Widget var6 = class33.widgetDefinition.method6240(var9);
 				if (var6.children == null) {
 					var6.children = new Widget[var11 + 1];
 				}
@@ -112,18 +112,18 @@ public class class168 extends class161 {
 			Widget var3;
 			if (var0 == ScriptOpcodes.CC_DELETE) {
 				var3 = var2 ? class416.scriptDotWidget : class306.field3131;
-				Widget var10 = class33.field184.method6240(var3.id);
+				Widget var10 = class33.widgetDefinition.method6240(var3.id);
 				var10.children[var3.childIndex] = null;
 				ClanChannelMember.invalidateWidget(var10);
 				return 1;
 			} else if (var0 == ScriptOpcodes.CC_DELETEALL) {
-				var3 = class33.field184.method6240(Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]);
+				var3 = class33.widgetDefinition.method6240(Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]);
 				var3.children = null;
 				ClanChannelMember.invalidateWidget(var3);
 				return 1;
 			} else if (var0 != ScriptOpcodes.CC_FIND) {
 				if (var0 == ScriptOpcodes.IF_FIND) {
-					var3 = class33.field184.method6240(Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]);
+					var3 = class33.widgetDefinition.method6240(Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]);
 					if (var3 != null) {
 						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = 1;
 						if (var2) {
@@ -143,7 +143,7 @@ public class class168 extends class161 {
 				Interpreter.Interpreter_intStackSize -= 2;
 				var9 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
 				var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
-				Widget var5 = class33.field184.method6241(var9, var4);
+				Widget var5 = class33.widgetDefinition.method6241(var9, var4);
 				if (var5 != null && var4 != -1) {
 					Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = 1;
 					if (var2) {

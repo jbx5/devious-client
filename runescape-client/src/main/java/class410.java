@@ -68,9 +68,9 @@ public class class410 {
 		garbageValue = "-1849908879"
 	)
 	static final void method7604(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7) {
-		if (class33.field184.method6242(var0)) {
+		if (class33.widgetDefinition.loadInterface(var0)) {
 			class9.field35 = null;
-			Tile.drawInterface(class33.field184.field3587[var0], -1, var1, var2, var3, var4, var5, var6, var7);
+			Tile.drawInterface(class33.widgetDefinition.Widget_interfaceComponents[var0], -1, var1, var2, var3, var4, var5, var6, var7);
 			if (class9.field35 != null) {
 				Tile.drawInterface(class9.field35, -1412584499, var1, var2, var3, var4, GrandExchangeEvent.field4389, class10.field48, var7);
 				class9.field35 = null;

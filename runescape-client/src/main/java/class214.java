@@ -252,7 +252,7 @@ public class class214 extends DualNode {
 		PlayerComposition.PlayerAppearance_cachedModels.clear();
 		PlayerComposition.field3628.clearFiles();
 		PlayerComposition.field3626 = 0;
-		class33.field184.method6252();
+		class33.widgetDefinition.method6252();
 		((TextureProvider)Rasterizer3D.clips.Rasterizer3D_textureLoader).clear();
 		Script.Script_cached.clear();
 		Client.field810.clearFiles();

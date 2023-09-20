@@ -56,7 +56,7 @@ public class class436 {
 	@Export("drawMinimap")
 	static final void drawMinimap(Widget var0, int var1, int var2, int var3) {
 		class313.method5891();
-		SpriteMask var4 = var0.method6594(class33.field184, false);
+		SpriteMask var4 = var0.method6594(class33.widgetDefinition, false);
 		if (var4 != null) {
 			Rasterizer2D.Rasterizer2D_setClip(var1, var2, var4.width + var1, var2 + var4.height);
 			if (Client.minimapState != 2 && Client.minimapState != 5) {

@@ -1140,7 +1140,8 @@ public class Widget extends Node {
 		descriptor = "(Lnt;ZLen;B)Lud;",
 		garbageValue = "-70"
 	)
-	public SpritePixels method6587(class338 var1, boolean var2, UrlRequester var3) {
+	@Export("getSprite")
+	public SpritePixels getSprite(WidgetDefinition var1, boolean var2, UrlRequester var3) {
 		field3666 = false;
 		if (this.field3713 != null) {
 			SpritePixels var4 = this.method6655(var1, var3);
@@ -1160,7 +1161,7 @@ public class Widget extends Node {
 			return null;
 		} else {
 			long var5 = (long)var8 + ((long)this.outline << 36) + ((this.spriteFlipV ? 1L : 0L) << 38) + ((this.spriteFlipH ? 1L : 0L) << 39) + ((long)this.spriteShadow << 40);
-			SpritePixels var7 = (SpritePixels)var1.field3585.get(var5);
+			SpritePixels var7 = (SpritePixels)var1.Widget_cachedSprites.get(var5);
 			if (var7 != null) {
 				return var7;
 			} else {
@@ -1170,7 +1171,7 @@ public class Widget extends Node {
 					return null;
 				} else {
 					this.method6647(var7);
-					var1.field3585.put(var7, var5);
+					var1.Widget_cachedSprites.put(var7, var5);
 					return var7;
 				}
 			}
@@ -1182,7 +1183,7 @@ public class Widget extends Node {
 		descriptor = "(Lnt;Len;I)Lud;",
 		garbageValue = "19328064"
 	)
-	SpritePixels method6655(class338 var1, UrlRequester var2) {
+	SpritePixels method6655(WidgetDefinition var1, UrlRequester var2) {
 		if (!this.method6697()) {
 			return this.method6589(var1, var2);
 		} else {
@@ -1206,7 +1207,7 @@ public class Widget extends Node {
 		descriptor = "(Lnt;Len;S)Lud;",
 		garbageValue = "9140"
 	)
-	SpritePixels method6589(class338 var1, UrlRequester var2) {
+	SpritePixels method6589(WidgetDefinition var1, UrlRequester var2) {
 		if (this.field3713 != null && var2 != null) {
 			class341 var3 = (class341)var1.field3578.method7937(this.field3713);
 			if (var3 == null) {
@@ -1266,12 +1267,12 @@ public class Widget extends Node {
 		descriptor = "(Lnt;I)Lpu;",
 		garbageValue = "-729897431"
 	)
-	public Font method6592(class338 var1) {
+	public Font method6592(WidgetDefinition var1) {
 		field3666 = false;
 		if (this.fontId == -1) {
 			return null;
 		} else {
-			Font var2 = (Font)var1.field3586.get((long)this.fontId);
+			Font var2 = (Font)var1.Widget_cachedFonts.get((long)this.fontId);
 			if (var2 != null) {
 				return var2;
 			} else {
@@ -1296,7 +1297,7 @@ public class Widget extends Node {
 				}
 
 				if (var3 != null) {
-					var1.field3586.put(var3, (long)this.fontId);
+					var1.Widget_cachedFonts.put(var3, (long)this.fontId);
 				} else {
 					field3666 = true;
 				}
@@ -1311,7 +1312,8 @@ public class Widget extends Node {
 		descriptor = "(Lnt;Lif;IZLni;Lhw;Lhe;B)Ljn;",
 		garbageValue = "-104"
 	)
-	public Model method6626(class338 var1, SequenceDefinition var2, int var3, boolean var4, PlayerComposition var5, NPCComposition var6, NpcOverrides var7) {
+	@Export("getModel")
+	public Model getModel(WidgetDefinition var1, SequenceDefinition var2, int var3, boolean var4, PlayerComposition var5, NPCComposition var6, NpcOverrides var7) {
 		field3666 = false;
 		int var8;
 		int var9;
@@ -1345,7 +1347,7 @@ public class Widget extends Node {
 				var10 |= var7.field2040 << 20;
 			}
 
-			Model var12 = (Model)var1.field3589.get(var10);
+			Model var12 = (Model)var1.Widget_cachedModels.get(var10);
 			if (var12 == null) {
 				ModelData var13 = null;
 				int var14 = 64;
@@ -1378,7 +1380,7 @@ public class Widget extends Node {
 				}
 
 				var12 = var13.toModel(var14, var15, -50, -10, -50);
-				var1.field3589.put(var12, var10);
+				var1.Widget_cachedModels.put(var12, var10);
 			}
 
 			if (var2 != null) {
@@ -1394,7 +1396,7 @@ public class Widget extends Node {
 		descriptor = "(Lnt;ZI)Lmp;",
 		garbageValue = "1153974487"
 	)
-	public SpriteMask method6594(class338 var1, boolean var2) {
+	public SpriteMask method6594(WidgetDefinition var1, boolean var2) {
 		if (this.spriteId == -1) {
 			var2 = false;
 		}
@@ -1404,11 +1406,11 @@ public class Widget extends Node {
 			return null;
 		} else {
 			long var4 = ((long)this.spriteShadow << 40) + ((this.spriteFlipV ? 1L : 0L) << 38) + (long)var3 + ((long)this.outline << 36) + ((this.spriteFlipH ? 1L : 0L) << 39);
-			SpriteMask var6 = (SpriteMask)var1.field3584.get(var4);
+			SpriteMask var6 = (SpriteMask)var1.Widget_cachedSpriteMasks.get(var4);
 			if (var6 != null) {
 				return var6;
 			} else {
-				SpritePixels var7 = this.method6587(var1, var2, (UrlRequester)null);
+				SpritePixels var7 = this.getSprite(var1, var2, (UrlRequester)null);
 				if (var7 == null) {
 					return null;
 				} else {
@@ -1440,7 +1442,7 @@ public class Widget extends Node {
 					}
 
 					var6 = new SpriteMask(var8.subWidth, var8.subHeight, var10, var9, var3);
-					var1.field3584.put(var6, var4);
+					var1.Widget_cachedSpriteMasks.put(var6, var4);
 					return var6;
 				}
 			}
@@ -1688,7 +1690,7 @@ public class Widget extends Node {
 		descriptor = "(Lnt;Len;I)Z",
 		garbageValue = "-1209602899"
 	)
-	public boolean method6611(class338 var1, UrlRequester var2) {
+	public boolean method6611(WidgetDefinition var1, UrlRequester var2) {
 		if (this.type == 11 && this.field3745 != null) {
 			this.field3745.method3432(var2);
 			if (this.field3745.method3465() != this.field3746) {
@@ -1714,7 +1716,7 @@ public class Widget extends Node {
 		descriptor = "(Lnt;I)V",
 		garbageValue = "2132169674"
 	)
-	void method6612(class338 var1) {
+	void method6612(WidgetDefinition var1) {
 		this.noClickThrough = true;
 		ArrayList var2 = this.field3745.method3436();
 		ArrayList var3 = this.field3745.method3437();
@@ -1894,7 +1896,7 @@ public class Widget extends Node {
 		descriptor = "(Lnt;I)Z",
 		garbageValue = "-636872431"
 	)
-	public boolean method6619(class338 var1) {
+	public boolean method6619(WidgetDefinition var1) {
 		class344 var2 = this.method6614();
 		if (var2 == null) {
 			return false;

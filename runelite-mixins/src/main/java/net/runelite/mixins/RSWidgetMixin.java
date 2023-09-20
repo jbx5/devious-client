@@ -42,6 +42,7 @@ import net.runelite.api.widgets.WidgetPositionMode;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSModel;
 import net.runelite.rs.api.RSNPCComposition;
+import net.runelite.rs.api.RSWidgetDefinition;
 import net.runelite.rs.api.RSNpcOverrides;
 import net.runelite.rs.api.RSNode;
 import net.runelite.rs.api.RSNodeHashTable;
@@ -633,13 +634,13 @@ public abstract class RSWidgetMixin implements RSWidget
 	@Copy("getModel")
 	@Replace("getModel")
 	@SuppressWarnings("InfiniteRecursion")
-	public RSModel copy$getModel(RSSequenceDefinition sequence, int frame, boolean alternate, RSPlayerComposition playerComposition, RSNPCComposition npcComposition, RSNpcOverrides npcOverrides)
+	public RSModel copy$getModel(RSWidgetDefinition widgetDefinition, RSSequenceDefinition sequence, int frame, boolean alternate, RSPlayerComposition playerComposition, RSNPCComposition npcComposition, RSNpcOverrides npcOverrides)
 	{
 		if (frame != -1 && client.isInterpolateWidgetAnimations())
 		{
 			frame = frame | getModelFrameCycle() << 16 | Integer.MIN_VALUE;
 		}
-		return copy$getModel(sequence, frame, alternate, playerComposition, npcComposition, npcOverrides);
+		return copy$getModel(widgetDefinition, sequence, frame, alternate, playerComposition, npcComposition, npcOverrides);
 	}
 
 	@Inject

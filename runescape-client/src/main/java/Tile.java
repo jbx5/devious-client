@@ -409,7 +409,7 @@ public final class Tile extends Node {
 										Rasterizer2D.Rasterizer2D_drawRectangleAlpha(var12, var13, var10.width, var10.height, var19, 256 - (var14 & 255));
 									}
 								} else if (var10.type == 4) {
-									Font var40 = var10.method6592(class33.field184);
+									Font var40 = var10.method6592(class33.widgetDefinition);
 									if (var40 == null) {
 										if (Widget.field3666) {
 											ClanChannelMember.invalidateWidget(var10);
@@ -462,7 +462,7 @@ public final class Tile extends Node {
 									if (var10.type == 5) {
 										SpritePixels var38;
 										if (!var10.isIf3) {
-											var38 = var10.method6587(class33.field184, UserComparator9.runCs1(var10), AbstractWorldMapIcon.urlRequester);
+											var38 = var10.getSprite(class33.widgetDefinition, UserComparator9.runCs1(var10), AbstractWorldMapIcon.urlRequester);
 											if (var38 != null) {
 												var38.drawTransBgAt(var12, var13);
 											} else if (Widget.field3666) {
@@ -472,7 +472,7 @@ public final class Tile extends Node {
 											if (var10.itemId != -1) {
 												var38 = class158.getItemSprite(var10.itemId, var10.itemQuantity, var10.outline, var10.spriteShadow, var10.itemQuantityMode, false);
 											} else {
-												var38 = var10.method6587(class33.field184, false, AbstractWorldMapIcon.urlRequester);
+												var38 = var10.getSprite(class33.widgetDefinition, false, AbstractWorldMapIcon.urlRequester);
 											}
 
 											if (var38 == null) {
@@ -567,7 +567,7 @@ public final class Tile extends Node {
 													var26 = var10.modelFrame;
 												}
 
-												var39 = var10.method6626(class33.field184, var35, var26, var36, TextureProvider.localPlayer.appearance, var45, var33);
+												var39 = var10.getModel(class33.widgetDefinition, var35, var26, var36, TextureProvider.localPlayer.appearance, var45, var33);
 												if (var39 == null && Widget.field3666) {
 													ClanChannelMember.invalidateWidget(var10);
 												}
@@ -672,7 +672,7 @@ public final class Tile extends Node {
 												class344 var37 = var10.method6614();
 												class339 var32 = var10.method6615();
 												if (var37 != null && var32 != null && var37.method6360()) {
-													var29 = var10.method6592(class33.field184);
+													var29 = var10.method6592(class33.widgetDefinition);
 													if (var29 != null) {
 														Client.field785.method9826(var12, var13, var10.width, var10.height, var37.method6361(), var37.method6362(), var37.method6358(), var37.method6359(), var37.method6357());
 														var22 = var10.textShadowed ? var10.spriteShadow : -1;

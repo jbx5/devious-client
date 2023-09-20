@@ -67,7 +67,7 @@ public class class266 {
 						var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
 						var15 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
 						int var9 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 2];
-						Widget var14 = class33.field184.method6240(var9);
+						Widget var14 = class33.widgetDefinition.method6240(var9);
 						TaskHandler.clickWidget(var14, var3, var15);
 						return 1;
 					} else if (var0 == ScriptOpcodes.CC_DRAGPICKUP) {
