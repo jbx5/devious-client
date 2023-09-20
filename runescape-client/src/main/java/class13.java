@@ -57,7 +57,7 @@ class class13 extends DefaultTlsClient {
 		garbageValue = "-21"
 	)
 	static int method171(int var0, Script var1, boolean var2) {
-		Widget var3 = var2 ? class416.scriptDotWidget : class306.field3131;
+		Widget var3 = var2 ? class416.scriptDotWidget : class306.scriptActiveWidget;
 		if (var0 == ScriptOpcodes.CC_GETTARGETMASK) {
 			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = KitDefinition.Widget_unpackTargetMask(MouseRecorder.getWidgetFlags(var3));
 			return 1;

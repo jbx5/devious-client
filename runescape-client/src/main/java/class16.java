@@ -159,7 +159,7 @@ public class class16 implements ThreadFactory {
 						if (Client.isItemSelected == 1) {
 							class153.insertMenuItemNoShift("Use", Client.field772 + " " + "->" + " " + Client.colorStartTag(16776960) + var5, 7, var1, var2, var3);
 						} else if (Client.isSpellSelected) {
-							if ((class31.field173 & 2) == 2) {
+							if ((class31.selectedSpellFlags & 2) == 2) {
 								class153.insertMenuItemNoShift(Client.selectedSpellActionName, Client.selectedSpellName + " " + "->" + " " + Client.colorStartTag(16776960) + var5, 8, var1, var2, var3);
 							}
 						} else {

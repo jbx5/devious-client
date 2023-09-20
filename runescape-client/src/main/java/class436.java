@@ -115,7 +115,7 @@ public class class436 {
 							SecureRandomFuture.drawSpriteOnMinimap(var1, var2, var12, var13, class103.field1336[3], var4);
 						} else if (TextureProvider.localPlayer.team != 0 && var15.team != 0 && var15.team == TextureProvider.localPlayer.team) {
 							SecureRandomFuture.drawSpriteOnMinimap(var1, var2, var12, var13, class103.field1336[4], var4);
-						} else if (var15.method2366()) {
+						} else if (var15.isFriendsChatMember()) {
 							SecureRandomFuture.drawSpriteOnMinimap(var1, var2, var12, var13, class103.field1336[5], var4);
 						} else if (var15.isClanMember()) {
 							SecureRandomFuture.drawSpriteOnMinimap(var1, var2, var12, var13, class103.field1336[6], var4);

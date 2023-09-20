@@ -37,7 +37,7 @@ public class class202 extends DualNode {
 		garbageValue = "1725894118"
 	)
 	static int method3766(int var0, Script var1, boolean var2) {
-		Widget var3 = var2 ? class416.scriptDotWidget : class306.field3131;
+		Widget var3 = var2 ? class416.scriptDotWidget : class306.scriptActiveWidget;
 		if (var0 == ScriptOpcodes.CC_GETINVOBJECT) {
 			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3.itemId;
 			return 1;

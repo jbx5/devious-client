@@ -11,7 +11,8 @@ public class class306 {
 	@ObfuscatedSignature(
 		descriptor = "Lnm;"
 	)
-	static Widget field3131;
+	@Export("scriptActiveWidget")
+	static Widget scriptActiveWidget;
 
 	@ObfuscatedName("ac")
 	@ObfuscatedSignature(

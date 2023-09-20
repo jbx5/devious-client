@@ -2,18 +2,32 @@ package net.runelite.mixins;
 
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
+import net.runelite.api.mixins.Shadow;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSEvictingDualNodeHashTable;
 import net.runelite.rs.api.RSWidget;
+import net.runelite.rs.api.RSWidgetDefinition;
 
 @Mixin(RSClient.class)
 public abstract class RSWidgetDefinitionMixin implements RSClient
 {
+	@Shadow("client")
+	private static RSClient client;
+
 	@Inject
 	@Override
 	public RSWidget[][] getWidgets()
 	{
-		return getWidgetDefinition().getWidgets();
+		RSWidgetDefinition widgetDefinition = getWidgetDefinition();
+		return widgetDefinition != null ? widgetDefinition.getWidgets() : null;
+	}
+
+	@Inject
+	@Override
+	public RSWidget getWidgetChild(int parent, int child)
+	{
+		RSWidgetDefinition widgetDefinition = getWidgetDefinition();
+		return widgetDefinition != null ? widgetDefinition.getWidgetChild(parent, child) : null;
 	}
 
 	@Inject
@@ -27,7 +41,7 @@ public abstract class RSWidgetDefinitionMixin implements RSClient
 	@Override
 	public RSEvictingDualNodeHashTable getWidgetSpriteCache()
 	{
-		return getWidgetDefinition().getRSWidgetSpriteCache();
+		return getWidgetDefinition().getWidgetSpriteCache();
 	}
 
 	@Inject

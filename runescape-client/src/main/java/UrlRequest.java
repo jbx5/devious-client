@@ -125,7 +125,7 @@ public class UrlRequest {
 			var2 = var1.readUnsignedByte();
 			var3 = (var2 >> 4 & 7) + Clock.field1891;
 			var4 = (var2 & 7) + class354.field3856;
-			var5 = var1.method9238();
+			var5 = var1.readUnsignedByteSub();
 			var6 = var5 >> 2;
 			var7 = var5 & 3;
 			var8 = Client.field596[var6];
@@ -146,9 +146,9 @@ public class UrlRequest {
 			if (class309.field3243 == var0) {
 				var2 = var1.readUnsignedByteAdd() * 4;
 				var3 = var1.readUnsignedByteAdd();
-				byte var38 = var1.method9239();
-				var5 = var1.readUnsignedIntIME();
-				var37 = var1.method9240();
+				byte var38 = var1.readByteAdd();
+				var5 = var1.readUnsignedShortLE();
+				var37 = var1.readByteNeg();
 				var7 = var1.readUnsignedByteNeg();
 				var8 = (var7 >> 4 & 7) + Clock.field1891;
 				var9 = (var7 & 7) + class354.field3856;
@@ -156,8 +156,8 @@ public class UrlRequest {
 				var11 = var1.readUnsignedShort();
 				var12 = var1.method9255();
 				var13 = var1.readUnsignedByteNeg();
-				var41 = var1.readUnsignedIntIME();
-				var42 = var1.method9238() * 4;
+				var41 = var1.readUnsignedShortLE();
+				var42 = var1.readUnsignedByteSub() * 4;
 				var6 = var37 + var8;
 				var4 = var38 + var9;
 				if (var8 >= 0 && var9 >= 0 && var8 < 104 && var9 < 104 && var6 >= 0 && var4 >= 0 && var6 < 104 && var4 < 104 && var11 != 65535) {
@@ -172,11 +172,11 @@ public class UrlRequest {
 
 			} else if (class309.field3244 == var0) {
 				var2 = var1.readUnsignedShortAddLE();
-				var3 = var1.method9238();
+				var3 = var1.readUnsignedByteSub();
 				var4 = (var3 >> 4 & 7) + Clock.field1891;
 				var5 = (var3 & 7) + class354.field3856;
-				var6 = var1.readUnsignedShortLE();
-				var7 = var1.readUnsignedIntME();
+				var6 = var1.readUnsignedIntLE();
+				var7 = var1.readUnsignedIntIME();
 				if (var4 >= 0 && var5 >= 0 && var4 < 104 && var5 < 104) {
 					NodeDeque var44 = Client.groundItems[class87.Client_plane][var4][var5];
 					if (var44 != null) {
@@ -195,19 +195,19 @@ public class UrlRequest {
 				byte var14;
 				if (class309.field3236 == var0) {
 					var2 = var1.readUnsignedByte() * 4;
-					var3 = var1.readUnsignedIntIME();
+					var3 = var1.readUnsignedShortLE();
 					var4 = var1.method9254();
 					var5 = var1.readUnsignedByte() * 4;
 					var6 = var1.readUnsignedShortAddLE();
 					var7 = var1.method9254();
-					var8 = var1.readUnsignedIntIME();
+					var8 = var1.readUnsignedShortLE();
 					var9 = var1.readUnsignedShortAdd();
-					var10 = var1.method9238();
+					var10 = var1.readUnsignedByteSub();
 					var11 = (var10 >> 4 & 7) + Clock.field1891;
 					var12 = (var10 & 7) + class354.field3856;
-					byte var40 = var1.method9239();
+					byte var40 = var1.readByteAdd();
 					var14 = var1.readByte();
-					var42 = var1.method9238();
+					var42 = var1.readUnsignedByteSub();
 					var13 = var40 + var11;
 					var41 = var14 + var12;
 					if (var11 >= 0 && var12 >= 0 && var11 < 104 && var12 < 104 && var13 >= 0 && var41 >= 0 && var13 < 104 && var41 < 104 && var8 != 65535) {
@@ -222,18 +222,18 @@ public class UrlRequest {
 
 				} else if (class309.field3246 == var0) {
 					var2 = var1.readUnsignedByteNeg();
-					var3 = var1.readUnsignedIntIME();
-					var4 = var1.method9238();
+					var3 = var1.readUnsignedShortLE();
+					var4 = var1.readUnsignedByteSub();
 					var5 = (var4 >> 4 & 7) + Clock.field1891;
 					var6 = (var4 & 7) + class354.field3856;
 					var7 = var1.readUnsignedByte() * 4;
-					var8 = var1.readUnsignedIntIME();
+					var8 = var1.readUnsignedShortLE();
 					var9 = var1.method9208();
 					var10 = var1.readUnsignedByteNeg() * 4;
 					var11 = var1.readUnsignedShortAdd();
 					byte var39 = var1.readByte();
 					var13 = var1.readUnsignedByteNeg();
-					var14 = var1.method9241();
+					var14 = var1.readByteSub();
 					var12 = var39 + var5;
 					var41 = var14 + var6;
 					if (var5 >= 0 && var6 >= 0 && var5 < 104 && var6 < 104 && var12 >= 0 && var41 >= 0 && var12 < 104 && var41 < 104 && var3 != 65535) {
@@ -248,7 +248,7 @@ public class UrlRequest {
 
 				} else if (class309.field3239 == var0) {
 					var2 = var1.readUnsignedShortAddLE();
-					var3 = var1.method9238();
+					var3 = var1.readUnsignedByteSub();
 					var4 = (var3 >> 4 & 7) + Clock.field1891;
 					var5 = (var3 & 7) + class354.field3856;
 					var6 = var1.readUnsignedByteAdd();
@@ -318,8 +318,8 @@ public class UrlRequest {
 				} else {
 					if (class309.field3235 == var0) {
 						var2 = var1.readUnsignedByteAdd();
-						var3 = var1.readUnsignedIntIME();
-						var4 = var1.method9238();
+						var3 = var1.readUnsignedShortLE();
+						var4 = var1.readUnsignedByteSub();
 						var5 = var4 >> 4 & 15;
 						var6 = var4 & 7;
 						var7 = var1.readUnsignedByteAdd();
@@ -343,17 +343,17 @@ public class UrlRequest {
 						var3 = var1.readUnsignedByte();
 						var4 = (var3 >> 4 & 7) + Clock.field1891;
 						var5 = (var3 & 7) + class354.field3856;
-						var37 = var1.method9241();
-						var7 = var1.readUnsignedIntIME();
+						var37 = var1.readByteSub();
+						var7 = var1.readUnsignedShortLE();
 						var8 = var1.readUnsignedShort();
 						var9 = var1.readUnsignedShortAdd();
 						var10 = var1.readUnsignedByteNeg();
 						var11 = var10 >> 2;
 						var12 = var10 & 3;
 						var13 = Client.field596[var11];
-						var14 = var1.method9240();
-						byte var15 = var1.method9241();
-						byte var16 = var1.method9239();
+						var14 = var1.readByteNeg();
+						byte var15 = var1.readByteSub();
+						byte var16 = var1.readByteAdd();
 						Player var17;
 						if (var7 == Client.localPlayerIndex) {
 							var17 = TextureProvider.localPlayer;
@@ -414,13 +414,13 @@ public class UrlRequest {
 					TileItem var31;
 					if (class309.field3238 == var0) {
 						var2 = var1.readUnsignedByteAdd();
-						var3 = var1.method9261();
+						var3 = var1.readUnsignedIntME();
 						var4 = var1.readUnsignedByteAdd();
 						var5 = (var4 >> 4 & 7) + Clock.field1891;
 						var6 = (var4 & 7) + class354.field3856;
 						var1.readUnsignedByteAdd();
 						var1.readUnsignedShortAddLE();
-						var1.method9238();
+						var1.readUnsignedByteSub();
 						var7 = var1.readUnsignedShort();
 						var1.readUnsignedShort();
 						if (var5 >= 0 && var6 >= 0 && var5 < 104 && var6 < 104) {
@@ -443,7 +443,7 @@ public class UrlRequest {
 							var3 = (var2 >> 4 & 7) + Clock.field1891;
 							var4 = (var2 & 7) + class354.field3856;
 							var5 = var1.readUnsignedShort();
-							var6 = var1.method9238();
+							var6 = var1.readUnsignedByteSub();
 							if (var3 >= 0 && var4 >= 0 && var3 < 104 && var4 < 104) {
 								var32 = Client.groundItems[class87.Client_plane][var3][var4];
 								if (var32 != null) {
@@ -487,7 +487,7 @@ public class UrlRequest {
 
 							}
 						} else {
-							var2 = var1.readUnsignedShortLE();
+							var2 = var1.readUnsignedIntLE();
 							var3 = var1.readUnsignedByteAdd();
 							var4 = (var3 >> 4 & 7) + Clock.field1891;
 							var5 = (var3 & 7) + class354.field3856;

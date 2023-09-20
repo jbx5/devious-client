@@ -74,7 +74,7 @@ public class class266 {
 						Interpreter.Interpreter_intStackSize -= 2;
 						var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
 						var15 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
-						Widget var12 = var2 ? class416.scriptDotWidget : class306.field3131;
+						Widget var12 = var2 ? class416.scriptDotWidget : class306.scriptActiveWidget;
 						TaskHandler.clickWidget(var12, var3, var15);
 						return 1;
 					} else if (var0 == ScriptOpcodes.MOUSECAM) {
@@ -210,7 +210,7 @@ public class class266 {
 						return 1;
 					} else if (var0 == 3140) {
 						Client.field691 = 3;
-						Client.field692 = var2 ? class416.scriptDotWidget.id : class306.field3131.id;
+						Client.field692 = var2 ? class416.scriptDotWidget.id : class306.scriptActiveWidget.id;
 						return 1;
 					} else {
 						boolean var10;

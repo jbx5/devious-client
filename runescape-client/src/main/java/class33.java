@@ -99,13 +99,13 @@ public class class33 {
 			Client.destinationX = var0;
 			Client.destinationY = var1;
 			var9 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3225, Client.packetWriter.isaacCipher);
-			var9.packetBuffer.method9244(Actor.field1263);
-			var9.packetBuffer.writeByteSub(var3);
-			var9.packetBuffer.writeShortLE(class4.field10);
-			var9.packetBuffer.method9244(class20.baseX * 64 + var0);
+			var9.packetBuffer.writeShortAdd(Actor.field1263);
+			var9.packetBuffer.writeShortLE(var3);
+			var9.packetBuffer.writeIntME(class4.field10);
+			var9.packetBuffer.writeShortAdd(class20.baseX * 64 + var0);
 			var9.packetBuffer.writeShort(class129.field1520);
-			var9.packetBuffer.method9235(Client.field755.method4280(82) ? 1 : 0);
-			var9.packetBuffer.writeByteSub(class19.baseY * 64 + var1);
+			var9.packetBuffer.writeByteSub(Client.field755.method4280(82) ? 1 : 0);
+			var9.packetBuffer.writeShortLE(class19.baseY * 64 + var1);
 			Client.packetWriter.addNode(var9);
 		}
 
@@ -135,10 +135,10 @@ public class class33 {
 			Client.destinationX = var0;
 			Client.destinationY = var1;
 			var9 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3204, Client.packetWriter.isaacCipher);
-			var9.packetBuffer.method9244(var3);
+			var9.packetBuffer.writeShortAdd(var3);
 			var9.packetBuffer.writeByteNeg(Client.field755.method4280(82) ? 1 : 0);
-			var9.packetBuffer.method9244(class20.baseX * 64 + var0);
-			var9.packetBuffer.writeByteSub(class19.baseY * 64 + var1);
+			var9.packetBuffer.writeShortAdd(class20.baseX * 64 + var0);
+			var9.packetBuffer.writeShortLE(class19.baseY * 64 + var1);
 			Client.packetWriter.addNode(var9);
 		}
 
@@ -150,13 +150,13 @@ public class class33 {
 			Client.destinationX = var0;
 			Client.destinationY = var1;
 			var9 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3153, Client.packetWriter.isaacCipher);
-			var9.packetBuffer.method9258(class4.field10);
-			var9.packetBuffer.writeByteSub(class20.baseX * 64 + var0);
+			var9.packetBuffer.writeIntIME(class4.field10);
+			var9.packetBuffer.writeShortLE(class20.baseX * 64 + var0);
 			var9.packetBuffer.writeShort(Actor.field1263);
-			var9.packetBuffer.method9244(class129.field1520);
+			var9.packetBuffer.writeShortAdd(class129.field1520);
 			var9.packetBuffer.writeShort(var3);
 			var9.packetBuffer.writeByteNeg(Client.field755.method4280(82) ? 1 : 0);
-			var9.packetBuffer.writeShortAdd(class19.baseY * 64 + var1);
+			var9.packetBuffer.writeShortAddLE(class19.baseY * 64 + var1);
 			Client.packetWriter.addNode(var9);
 		}
 
@@ -168,10 +168,10 @@ public class class33 {
 			Client.destinationX = var0;
 			Client.destinationY = var1;
 			var9 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3222, Client.packetWriter.isaacCipher);
-			var9.packetBuffer.writeByteSub(class19.baseY * 64 + var1);
-			var9.packetBuffer.writeShortAdd(var3);
-			var9.packetBuffer.writeShortAdd(class20.baseX * 64 + var0);
-			var9.packetBuffer.writeShortAddLE(Client.field755.method4280(82) ? 1 : 0);
+			var9.packetBuffer.writeShortLE(class19.baseY * 64 + var1);
+			var9.packetBuffer.writeShortAddLE(var3);
+			var9.packetBuffer.writeShortAddLE(class20.baseX * 64 + var0);
+			var9.packetBuffer.writeByteAdd(Client.field755.method4280(82) ? 1 : 0);
 			Client.packetWriter.addNode(var9);
 		}
 
@@ -187,11 +187,11 @@ public class class33 {
 				Client.destinationX = var0;
 				Client.destinationY = var1;
 				var14 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3160, Client.packetWriter.isaacCipher);
-				var14.packetBuffer.method9244(Actor.field1263);
-				var14.packetBuffer.method9235(Client.field755.method4280(82) ? 1 : 0);
+				var14.packetBuffer.writeShortAdd(Actor.field1263);
+				var14.packetBuffer.writeByteSub(Client.field755.method4280(82) ? 1 : 0);
 				var14.packetBuffer.writeInt(class4.field10);
-				var14.packetBuffer.writeByteSub(var3);
-				var14.packetBuffer.writeShortAdd(class129.field1520);
+				var14.packetBuffer.writeShortLE(var3);
+				var14.packetBuffer.writeShortAddLE(class129.field1520);
 				Client.packetWriter.addNode(var14);
 			}
 		}
@@ -204,10 +204,10 @@ public class class33 {
 			Client.destinationX = var0;
 			Client.destinationY = var1;
 			var9 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3212, Client.packetWriter.isaacCipher);
-			var9.packetBuffer.writeByteSub(class19.baseY * 64 + var1);
-			var9.packetBuffer.writeShortAdd(var3);
-			var9.packetBuffer.writeShortAdd(class20.baseX * 64 + var0);
-			var9.packetBuffer.method9235(Client.field755.method4280(82) ? 1 : 0);
+			var9.packetBuffer.writeShortLE(class19.baseY * 64 + var1);
+			var9.packetBuffer.writeShortAddLE(var3);
+			var9.packetBuffer.writeShortAddLE(class20.baseX * 64 + var0);
+			var9.packetBuffer.writeByteSub(Client.field755.method4280(82) ? 1 : 0);
 			Client.packetWriter.addNode(var9);
 		}
 
@@ -222,18 +222,18 @@ public class class33 {
 				Client.destinationX = var0;
 				Client.destinationY = var1;
 				var14 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3145, Client.packetWriter.isaacCipher);
-				var14.packetBuffer.writeShortLE(class4.field10);
-				var14.packetBuffer.method9244(Actor.field1263);
+				var14.packetBuffer.writeIntME(class4.field10);
+				var14.packetBuffer.writeShortAdd(Actor.field1263);
 				var14.packetBuffer.writeByte(Client.field755.method4280(82) ? 1 : 0);
-				var14.packetBuffer.method9244(var3);
-				var14.packetBuffer.writeShortAdd(class129.field1520);
+				var14.packetBuffer.writeShortAdd(var3);
+				var14.packetBuffer.writeShortAddLE(class129.field1520);
 				Client.packetWriter.addNode(var14);
 			}
 		}
 
 		Widget var17;
 		if (var2 == 57 || var2 == 1007) {
-			var17 = widgetDefinition.method6241(var1, var0);
+			var17 = widgetDefinition.getWidgetChild(var1, var0);
 			if (var17 != null) {
 				TextureProvider.widgetDefaultMenuAction(var3, var1, var0, var4, var6);
 			}
@@ -250,7 +250,7 @@ public class class33 {
 				Client.destinationY = var1;
 				var14 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3218, Client.packetWriter.isaacCipher);
 				var14.packetBuffer.writeByteNeg(Client.field755.method4280(82) ? 1 : 0);
-				var14.packetBuffer.writeByteSub(var3);
+				var14.packetBuffer.writeShortLE(var3);
 				Client.packetWriter.addNode(var14);
 			}
 		}
@@ -290,7 +290,7 @@ public class class33 {
 				Client.destinationY = var1;
 				var14 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3195, Client.packetWriter.isaacCipher);
 				var14.packetBuffer.writeByte(Client.field755.method4280(82) ? 1 : 0);
-				var14.packetBuffer.writeByteSub(var3);
+				var14.packetBuffer.writeShortLE(var3);
 				Client.packetWriter.addNode(var14);
 			}
 		}
@@ -310,7 +310,7 @@ public class class33 {
 
 				if (var18 != null) {
 					var12 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3200, Client.packetWriter.isaacCipher);
-					var12.packetBuffer.writeShortAdd(var18.id);
+					var12.packetBuffer.writeShortAddLE(var18.id);
 					Client.packetWriter.addNode(var12);
 				}
 			}
@@ -324,10 +324,10 @@ public class class33 {
 			Client.destinationX = var0;
 			Client.destinationY = var1;
 			var9 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3166, Client.packetWriter.isaacCipher);
-			var9.packetBuffer.method9244(var3);
+			var9.packetBuffer.writeShortAdd(var3);
 			var9.packetBuffer.writeShort(class20.baseX * 64 + var0);
 			var9.packetBuffer.writeShort(class19.baseY * 64 + var1);
-			var9.packetBuffer.method9235(Client.field755.method4280(82) ? 1 : 0);
+			var9.packetBuffer.writeByteSub(Client.field755.method4280(82) ? 1 : 0);
 			Client.packetWriter.addNode(var9);
 		}
 
@@ -341,8 +341,8 @@ public class class33 {
 				Client.destinationX = var0;
 				Client.destinationY = var1;
 				var14 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3142, Client.packetWriter.isaacCipher);
-				var14.packetBuffer.writeShortAddLE(Client.field755.method4280(82) ? 1 : 0);
-				var14.packetBuffer.writeShortAdd(var3);
+				var14.packetBuffer.writeByteAdd(Client.field755.method4280(82) ? 1 : 0);
+				var14.packetBuffer.writeShortAddLE(var3);
 				Client.packetWriter.addNode(var14);
 			}
 		}
@@ -357,8 +357,8 @@ public class class33 {
 				Client.destinationX = var0;
 				Client.destinationY = var1;
 				var14 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3177, Client.packetWriter.isaacCipher);
-				var14.packetBuffer.writeShortAddLE(Client.field755.method4280(82) ? 1 : 0);
-				var14.packetBuffer.writeShortAdd(var3);
+				var14.packetBuffer.writeByteAdd(Client.field755.method4280(82) ? 1 : 0);
+				var14.packetBuffer.writeShortAddLE(var3);
 				Client.packetWriter.addNode(var14);
 			}
 		}
@@ -371,9 +371,9 @@ public class class33 {
 			Client.destinationX = var0;
 			Client.destinationY = var1;
 			var9 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3206, Client.packetWriter.isaacCipher);
-			var9.packetBuffer.writeShortAdd(class19.baseY * 64 + var1);
+			var9.packetBuffer.writeShortAddLE(class19.baseY * 64 + var1);
 			var9.packetBuffer.writeShort(var3);
-			var9.packetBuffer.writeByteSub(class20.baseX * 64 + var0);
+			var9.packetBuffer.writeShortLE(class20.baseX * 64 + var0);
 			var9.packetBuffer.writeByteNeg(Client.field755.method4280(82) ? 1 : 0);
 			Client.packetWriter.addNode(var9);
 		}
@@ -388,11 +388,11 @@ public class class33 {
 				Client.destinationX = var0;
 				Client.destinationY = var1;
 				var14 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3173, Client.packetWriter.isaacCipher);
-				var14.packetBuffer.writeShort(Client.field686);
-				var14.packetBuffer.method9244(Client.selectedSpellChildIndex);
-				var14.packetBuffer.writeIntME(JagexCache.field1841);
-				var14.packetBuffer.writeByteSub(var3);
-				var14.packetBuffer.writeShortAddLE(Client.field755.method4280(82) ? 1 : 0);
+				var14.packetBuffer.writeShort(Client.selectedSpellItemId);
+				var14.packetBuffer.writeShortAdd(Client.selectedSpellChildIndex);
+				var14.packetBuffer.writeIntLE(JagexCache.selectedSpellWidget);
+				var14.packetBuffer.writeShortLE(var3);
+				var14.packetBuffer.writeByteAdd(Client.field755.method4280(82) ? 1 : 0);
 				Client.packetWriter.addNode(var14);
 			}
 		}
@@ -408,7 +408,7 @@ public class class33 {
 				Client.destinationY = var1;
 				var14 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3171, Client.packetWriter.isaacCipher);
 				var14.packetBuffer.writeByte(Client.field755.method4280(82) ? 1 : 0);
-				var14.packetBuffer.writeByteSub(var3);
+				var14.packetBuffer.writeShortLE(var3);
 				Client.packetWriter.addNode(var14);
 			}
 		}
@@ -421,10 +421,10 @@ public class class33 {
 			Client.destinationX = var0;
 			Client.destinationY = var1;
 			var9 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3147, Client.packetWriter.isaacCipher);
-			var9.packetBuffer.method9235(Client.field755.method4280(82) ? 1 : 0);
+			var9.packetBuffer.writeByteSub(Client.field755.method4280(82) ? 1 : 0);
 			var9.packetBuffer.writeShort(class19.baseY * 64 + var1);
-			var9.packetBuffer.writeByteSub(class20.baseX * 64 + var0);
-			var9.packetBuffer.writeShortAdd(var3);
+			var9.packetBuffer.writeShortLE(class20.baseX * 64 + var0);
+			var9.packetBuffer.writeShortAddLE(var3);
 			Client.packetWriter.addNode(var9);
 		}
 
@@ -453,18 +453,18 @@ public class class33 {
 			Client.destinationY = var1;
 			var9 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3223, Client.packetWriter.isaacCipher);
 			var9.packetBuffer.writeByteNeg(Client.field755.method4280(82) ? 1 : 0);
-			var9.packetBuffer.writeShortAdd(Client.selectedSpellChildIndex);
+			var9.packetBuffer.writeShortAddLE(Client.selectedSpellChildIndex);
 			var9.packetBuffer.writeShort(class20.baseX * 64 + var0);
-			var9.packetBuffer.method9258(JagexCache.field1841);
-			var9.packetBuffer.writeByteSub(var3);
-			var9.packetBuffer.writeByteSub(class19.baseY * 64 + var1);
-			var9.packetBuffer.method9244(Client.field686);
+			var9.packetBuffer.writeIntIME(JagexCache.selectedSpellWidget);
+			var9.packetBuffer.writeShortLE(var3);
+			var9.packetBuffer.writeShortLE(class19.baseY * 64 + var1);
+			var9.packetBuffer.writeShortAdd(Client.selectedSpellItemId);
 			Client.packetWriter.addNode(var9);
 		}
 
 		if (var2 == 30 && Client.meslayerContinueWidget == null) {
 			class174.resumePauseWidget(var1, var0);
-			Client.meslayerContinueWidget = widgetDefinition.method6241(var1, var0);
+			Client.meslayerContinueWidget = widgetDefinition.getWidgetChild(var1, var0);
 			ClanChannelMember.invalidateWidget(Client.meslayerContinueWidget);
 		}
 
@@ -494,7 +494,7 @@ public class class33 {
 				Client.destinationX = var0;
 				Client.destinationY = var1;
 				var14 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3203, Client.packetWriter.isaacCipher);
-				var14.packetBuffer.method9244(var3);
+				var14.packetBuffer.writeShortAdd(var3);
 				var14.packetBuffer.writeByte(Client.field755.method4280(82) ? 1 : 0);
 				Client.packetWriter.addNode(var14);
 			}
@@ -511,7 +511,7 @@ public class class33 {
 				Client.destinationY = var1;
 				var14 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3182, Client.packetWriter.isaacCipher);
 				var14.packetBuffer.writeByteNeg(Client.field755.method4280(82) ? 1 : 0);
-				var14.packetBuffer.writeByteSub(var3);
+				var14.packetBuffer.writeShortLE(var3);
 				Client.packetWriter.addNode(var14);
 			}
 		}
@@ -524,10 +524,10 @@ public class class33 {
 			Client.destinationX = var0;
 			Client.destinationY = var1;
 			var9 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3184, Client.packetWriter.isaacCipher);
-			var9.packetBuffer.writeShortAdd(class20.baseX * 64 + var0);
+			var9.packetBuffer.writeShortAddLE(class20.baseX * 64 + var0);
 			var9.packetBuffer.writeShort(class19.baseY * 64 + var1);
-			var9.packetBuffer.method9235(Client.field755.method4280(82) ? 1 : 0);
-			var9.packetBuffer.method9244(var3);
+			var9.packetBuffer.writeByteSub(Client.field755.method4280(82) ? 1 : 0);
+			var9.packetBuffer.writeShortAdd(var3);
 			Client.packetWriter.addNode(var9);
 		}
 
@@ -537,7 +537,7 @@ public class class33 {
 			Client.mouseCrossColor = 2;
 			Client.mouseCrossState = 0;
 			var9 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3164, Client.packetWriter.isaacCipher);
-			var9.packetBuffer.method9244(var3);
+			var9.packetBuffer.writeShortAdd(var3);
 			Client.packetWriter.addNode(var9);
 		}
 
@@ -549,13 +549,13 @@ public class class33 {
 			Client.destinationX = var0;
 			Client.destinationY = var1;
 			var9 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3228, Client.packetWriter.isaacCipher);
-			var9.packetBuffer.method9244(var3);
-			var9.packetBuffer.writeShortAddLE(Client.field755.method4280(82) ? 1 : 0);
-			var9.packetBuffer.writeInt(JagexCache.field1841);
-			var9.packetBuffer.writeShort(Client.field686);
-			var9.packetBuffer.writeShortAdd(class19.baseY * 64 + var1);
-			var9.packetBuffer.writeShortAdd(class20.baseX * 64 + var0);
-			var9.packetBuffer.writeByteSub(Client.selectedSpellChildIndex);
+			var9.packetBuffer.writeShortAdd(var3);
+			var9.packetBuffer.writeByteAdd(Client.field755.method4280(82) ? 1 : 0);
+			var9.packetBuffer.writeInt(JagexCache.selectedSpellWidget);
+			var9.packetBuffer.writeShort(Client.selectedSpellItemId);
+			var9.packetBuffer.writeShortAddLE(class19.baseY * 64 + var1);
+			var9.packetBuffer.writeShortAddLE(class20.baseX * 64 + var0);
+			var9.packetBuffer.writeShortLE(Client.selectedSpellChildIndex);
 			Client.packetWriter.addNode(var9);
 		}
 
@@ -569,7 +569,7 @@ public class class33 {
 				Client.destinationX = var0;
 				Client.destinationY = var1;
 				var14 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3159, Client.packetWriter.isaacCipher);
-				var14.packetBuffer.method9244(var3);
+				var14.packetBuffer.writeShortAdd(var3);
 				var14.packetBuffer.writeByte(Client.field755.method4280(82) ? 1 : 0);
 				Client.packetWriter.addNode(var14);
 			}
@@ -583,9 +583,9 @@ public class class33 {
 			Client.destinationX = var0;
 			Client.destinationY = var1;
 			var9 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3151, Client.packetWriter.isaacCipher);
-			var9.packetBuffer.method9244(class20.baseX * 64 + var0);
-			var9.packetBuffer.writeShortAdd(class19.baseY * 64 + var1);
-			var9.packetBuffer.writeShortAdd(var3);
+			var9.packetBuffer.writeShortAdd(class20.baseX * 64 + var0);
+			var9.packetBuffer.writeShortAddLE(class19.baseY * 64 + var1);
+			var9.packetBuffer.writeShortAddLE(var3);
 			var9.packetBuffer.writeByte(Client.field755.method4280(82) ? 1 : 0);
 			Client.packetWriter.addNode(var9);
 		}
@@ -600,7 +600,7 @@ public class class33 {
 				Client.destinationX = var0;
 				Client.destinationY = var1;
 				var14 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3186, Client.packetWriter.isaacCipher);
-				var14.packetBuffer.method9235(Client.field755.method4280(82) ? 1 : 0);
+				var14.packetBuffer.writeByteSub(Client.field755.method4280(82) ? 1 : 0);
 				var14.packetBuffer.writeShort(var3);
 				Client.packetWriter.addNode(var14);
 			}
@@ -616,8 +616,8 @@ public class class33 {
 				Client.destinationX = var0;
 				Client.destinationY = var1;
 				var14 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3144, Client.packetWriter.isaacCipher);
-				var14.packetBuffer.writeShortAddLE(Client.field755.method4280(82) ? 1 : 0);
-				var14.packetBuffer.method9244(var3);
+				var14.packetBuffer.writeByteAdd(Client.field755.method4280(82) ? 1 : 0);
+				var14.packetBuffer.writeShortAdd(var3);
 				Client.packetWriter.addNode(var14);
 			}
 		}
@@ -630,12 +630,12 @@ public class class33 {
 			var9 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3163, Client.packetWriter.isaacCipher);
 			var9.packetBuffer.writeShort(class19.baseY * 64 + var1);
 			var9.packetBuffer.writeShort(class20.baseX * 64 + var0);
-			var9.packetBuffer.method9244(var3);
+			var9.packetBuffer.writeShortAdd(var3);
 			Client.packetWriter.addNode(var9);
 		}
 
 		if (var2 == 58) {
-			var17 = widgetDefinition.method6241(var1, var0);
+			var17 = widgetDefinition.getWidgetChild(var1, var0);
 			if (var17 != null) {
 				if (var17.field3785 != null) {
 					ScriptEvent var19 = new ScriptEvent();
@@ -647,12 +647,12 @@ public class class33 {
 				}
 
 				var14 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3169, Client.packetWriter.isaacCipher);
-				var14.packetBuffer.writeShortAdd(Client.selectedSpellChildIndex);
+				var14.packetBuffer.writeShortAddLE(Client.selectedSpellChildIndex);
 				var14.packetBuffer.writeInt(var1);
-				var14.packetBuffer.method9244(var4);
-				var14.packetBuffer.method9258(JagexCache.field1841);
-				var14.packetBuffer.writeShortAdd(Client.field686);
-				var14.packetBuffer.writeShortAdd(var0);
+				var14.packetBuffer.writeShortAdd(var4);
+				var14.packetBuffer.writeIntIME(JagexCache.selectedSpellWidget);
+				var14.packetBuffer.writeShortAddLE(Client.selectedSpellItemId);
+				var14.packetBuffer.writeShortAddLE(var0);
 				Client.packetWriter.addNode(var14);
 			}
 		}
@@ -665,9 +665,9 @@ public class class33 {
 			Client.destinationX = var0;
 			Client.destinationY = var1;
 			var9 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3162, Client.packetWriter.isaacCipher);
-			var9.packetBuffer.method9244(class19.baseY * 64 + var1);
-			var9.packetBuffer.method9235(Client.field755.method4280(82) ? 1 : 0);
-			var9.packetBuffer.method9244(class20.baseX * 64 + var0);
+			var9.packetBuffer.writeShortAdd(class19.baseY * 64 + var1);
+			var9.packetBuffer.writeByteSub(Client.field755.method4280(82) ? 1 : 0);
+			var9.packetBuffer.writeShortAdd(class20.baseX * 64 + var0);
 			var9.packetBuffer.writeShort(var3);
 			Client.packetWriter.addNode(var9);
 		}
@@ -681,8 +681,8 @@ public class class33 {
 			Client.destinationY = var1;
 			var9 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3157, Client.packetWriter.isaacCipher);
 			var9.packetBuffer.writeShort(var3);
-			var9.packetBuffer.method9244(class19.baseY * 64 + var1);
-			var9.packetBuffer.method9244(class20.baseX * 64 + var0);
+			var9.packetBuffer.writeShortAdd(class19.baseY * 64 + var1);
+			var9.packetBuffer.writeShortAdd(class20.baseX * 64 + var0);
 			var9.packetBuffer.writeByteNeg(Client.field755.method4280(82) ? 1 : 0);
 			Client.packetWriter.addNode(var9);
 		}
@@ -711,7 +711,7 @@ public class class33 {
 				Client.destinationX = var0;
 				Client.destinationY = var1;
 				var14 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3199, Client.packetWriter.isaacCipher);
-				var14.packetBuffer.writeShortAdd(var3);
+				var14.packetBuffer.writeShortAddLE(var3);
 				var14.packetBuffer.writeByteNeg(Client.field755.method4280(82) ? 1 : 0);
 				Client.packetWriter.addNode(var14);
 			}
@@ -722,7 +722,7 @@ public class class33 {
 		}
 
 		if (var2 == 25) {
-			var17 = widgetDefinition.method6241(var1, var0);
+			var17 = widgetDefinition.getWidgetChild(var1, var0);
 			if (var17 != null) {
 				class286.method5663();
 				class478.method8514(var1, var0, KitDefinition.Widget_unpackTargetMask(MouseRecorder.getWidgetFlags(var17)), var4);
@@ -750,11 +750,11 @@ public class class33 {
 					Client.destinationX = var0;
 					Client.destinationY = var1;
 					var14 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3229, Client.packetWriter.isaacCipher);
-					var14.packetBuffer.method9258(JagexCache.field1841);
-					var14.packetBuffer.method9244(Client.field686);
-					var14.packetBuffer.writeShortAddLE(Client.field755.method4280(82) ? 1 : 0);
-					var14.packetBuffer.writeByteSub(Client.selectedSpellChildIndex);
-					var14.packetBuffer.writeShortAdd(var3);
+					var14.packetBuffer.writeIntIME(JagexCache.selectedSpellWidget);
+					var14.packetBuffer.writeShortAdd(Client.selectedSpellItemId);
+					var14.packetBuffer.writeByteAdd(Client.field755.method4280(82) ? 1 : 0);
+					var14.packetBuffer.writeShortLE(Client.selectedSpellChildIndex);
+					var14.packetBuffer.writeShortAddLE(var3);
 					Client.packetWriter.addNode(var14);
 				}
 			}

@@ -37,9 +37,9 @@ public final class class401 {
 					int var12 = TextureProvider.localPlayer.y - var10 >> 7;
 					PacketBufferNode var13 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3197, Client.packetWriter.isaacCipher);
 					var13.packetBuffer.writeByte(18);
-					var13.packetBuffer.method9244(class19.baseY * 64 + var12);
+					var13.packetBuffer.writeShortAdd(class19.baseY * 64 + var12);
 					var13.packetBuffer.writeByte(Client.field755.method4280(82) ? (Client.field755.method4280(81) ? 2 : 1) : 0);
-					var13.packetBuffer.method9244(class20.baseX * 64 + var11);
+					var13.packetBuffer.writeShortAdd(class20.baseX * 64 + var11);
 					var13.packetBuffer.writeByte(var4);
 					var13.packetBuffer.writeByte(var5);
 					var13.packetBuffer.writeShort(Client.camAngleY);

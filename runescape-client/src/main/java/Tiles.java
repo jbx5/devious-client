@@ -159,8 +159,8 @@ public final class Tiles {
 
 				for (var9 = 0; var9 < var8; ++var9) {
 					var10 = var0.readUnsignedByte();
-					var11 = var0.readUnsignedIntIME();
-					var12 = var0.readUnsignedShortLE();
+					var11 = var0.readUnsignedShortLE();
+					var12 = var0.readUnsignedIntLE();
 					var5.updateSpotAnimation(var10, var11, var12 >> 16, var12 & 65535);
 				}
 			}
@@ -181,11 +181,11 @@ public final class Tiles {
 			}
 
 			if ((var6 & 256) != 0) {
-				var5.field1247 = Client.cycle + var0.readUnsignedIntIME();
+				var5.field1247 = Client.cycle + var0.readUnsignedShortLE();
 				var5.field1248 = Client.cycle + var0.readUnsignedShortAdd();
-				var5.field1249 = var0.method9240();
-				var5.field1250 = var0.method9239();
-				var5.field1251 = var0.method9241();
+				var5.field1249 = var0.readByteNeg();
+				var5.field1250 = var0.readByteAdd();
+				var5.field1251 = var0.readByteSub();
 				var5.field1252 = (byte)var0.readUnsignedByteNeg();
 			}
 
@@ -205,11 +205,11 @@ public final class Tiles {
 			}
 
 			if ((var6 & 16384) != 0) {
-				var5.field1238 = var0.method9239();
-				var5.field1185 = var0.method9241();
+				var5.field1238 = var0.readByteAdd();
+				var5.field1185 = var0.readByteSub();
 				var5.field1239 = var0.readByte();
-				var5.field1204 = var0.method9239();
-				var5.spotAnimation = var0.readUnsignedIntIME() + Client.cycle;
+				var5.field1204 = var0.readByteAdd();
+				var5.spotAnimation = var0.readUnsignedShortLE() + Client.cycle;
 				var5.field1243 = var0.readUnsignedShort() + Client.cycle;
 				var5.field1254 = var0.readUnsignedShortAdd();
 				if (var5.field1124) {
@@ -256,7 +256,7 @@ public final class Tiles {
 			if ((var6 & 8) != 0) {
 				var8 = var0.readUnsignedShortAddLE();
 				PlayerType var25 = (PlayerType)SequenceDefinition.findEnumerated(class183.PlayerType_values(), var0.readUnsignedByte());
-				boolean var30 = var0.method9238() == 1;
+				boolean var30 = var0.readUnsignedByteSub() == 1;
 				var11 = var0.readUnsignedByteNeg();
 				var12 = var0.offset;
 				if (var5.username != null && var5.appearance != null) {
@@ -299,7 +299,7 @@ public final class Tiles {
 				var9 = var8 >> 8;
 				var10 = var9 >= 13 && var9 <= 20 ? var9 - 12 : 0;
 				PlayerType var26 = (PlayerType)SequenceDefinition.findEnumerated(class183.PlayerType_values(), var0.readUnsignedByte());
-				boolean var32 = var0.method9238() == 1;
+				boolean var32 = var0.readUnsignedByteSub() == 1;
 				var13 = var0.readUnsignedByte();
 				var27 = var0.offset;
 				if (var5.username != null && var5.appearance != null) {
@@ -322,7 +322,7 @@ public final class Tiles {
 							var17 = new byte[var10];
 
 							for (int var18 = 0; var18 < var10; ++var18) {
-								var17[var18] = var0.method9239();
+								var17[var18] = var0.readByteAdd();
 							}
 						}
 

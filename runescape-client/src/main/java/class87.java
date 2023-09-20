@@ -38,7 +38,7 @@ public class class87 {
 		garbageValue = "949731211"
 	)
 	static int method2309(int var0, Script var1, boolean var2) {
-		Widget var3 = var2 ? class416.scriptDotWidget : class306.field3131;
+		Widget var3 = var2 ? class416.scriptDotWidget : class306.scriptActiveWidget;
 		if (var0 == ScriptOpcodes.CC_GETX) {
 			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3.x;
 			return 1;

@@ -1,3 +1,4 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
@@ -67,7 +68,8 @@ public class class410 {
 		descriptor = "(IIIIIIIII)V",
 		garbageValue = "-1849908879"
 	)
-	static final void method7604(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7) {
+	@Export("drawWidgets")
+	static final void drawWidgets(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7) {
 		if (class33.widgetDefinition.loadInterface(var0)) {
 			class9.field35 = null;
 			Tile.drawInterface(class33.widgetDefinition.Widget_interfaceComponents[var0], -1, var1, var2, var3, var4, var5, var6, var7);

@@ -301,10 +301,10 @@ public class class432 {
 			var18 = class20.baseX * 64 + (ChatChannel.oculusOrbFocalPointX >> 7);
 			var19 = class19.baseY * 64 + (AbstractWorldMapData.oculusOrbFocalPointY >> 7);
 			PacketBufferNode var20 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3154, Client.packetWriter.isaacCipher);
-			var20.packetBuffer.writeShortAdd(var18);
-			var20.packetBuffer.writeByteSub(var19);
+			var20.packetBuffer.writeShortAddLE(var18);
+			var20.packetBuffer.writeShortLE(var19);
 			var20.packetBuffer.writeInt(Client.field547);
-			var20.packetBuffer.writeShortAddLE(var17);
+			var20.packetBuffer.writeByteAdd(var17);
 			Client.packetWriter.addNode(var20);
 		}
 
