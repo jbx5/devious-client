@@ -20,7 +20,7 @@ public class class174 {
 	static void resumePauseWidget(int var0, int var1) {
 		PacketBufferNode var2 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3207, Client.packetWriter.isaacCipher);
 		var2.packetBuffer.writeShort(var1);
-		var2.packetBuffer.writeShortLE(var0);
+		var2.packetBuffer.writeIntME(var0);
 		Client.packetWriter.addNode(var2);
 	}
 

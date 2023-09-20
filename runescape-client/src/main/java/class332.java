@@ -137,17 +137,17 @@ public class class332 extends Node {
 				}
 
 				if ((var5 & 2) != 0) {
-					var4.definition = class190.getNpcDefinition(var1.readUnsignedIntIME());
+					var4.definition = class190.getNpcDefinition(var1.readUnsignedShortLE());
 					WorldMapLabel.method5655(var4);
 					var4.method2633();
 				}
 
 				if ((var5 & 32768) != 0) {
-					var4.field1238 = var1.method9239();
+					var4.field1238 = var1.readByteAdd();
 					var4.field1185 = var1.readByte();
 					var4.field1239 = var1.readByte();
-					var4.field1204 = var1.method9241();
-					var4.spotAnimation = var1.readUnsignedIntIME() + Client.cycle;
+					var4.field1204 = var1.readByteSub();
+					var4.spotAnimation = var1.readUnsignedShortLE() + Client.cycle;
 					var4.field1243 = var1.readUnsignedShort() + Client.cycle;
 					var4.field1254 = var1.readUnsignedShortAdd();
 					var4.pathLength = 1;
@@ -240,7 +240,7 @@ public class class332 extends Node {
 							var14 = new int[var8];
 
 							for (var9 = 0; var9 < var8; ++var9) {
-								var10 = var1.readUnsignedIntIME();
+								var10 = var1.readUnsignedShortLE();
 								var10 = var10 == 65535 ? -1 : var10;
 								var14[var9] = var10;
 							}
@@ -256,7 +256,7 @@ public class class332 extends Node {
 							var15 = new short[var9];
 
 							for (var10 = 0; var10 < var9; ++var10) {
-								var15[var10] = (short)var1.readUnsignedIntIME();
+								var15[var10] = (short)var1.readUnsignedShortLE();
 							}
 						}
 
@@ -291,14 +291,14 @@ public class class332 extends Node {
 					var4.walkSequence = (var6 & 4) != 0 ? var1.readUnsignedShortAdd() : var4.definition.walkSequence;
 					var4.walkBackSequence = (var6 & 8) != 0 ? var1.readUnsignedShortAddLE() : var4.definition.walkBackSequence;
 					var4.walkLeftSequence = (var6 & 16) != 0 ? var1.readUnsignedShort() : var4.definition.walkLeftSequence;
-					var4.walkRightSequence = (var6 & 32) != 0 ? var1.readUnsignedIntIME() : var4.definition.walkRightSequence;
+					var4.walkRightSequence = (var6 & 32) != 0 ? var1.readUnsignedShortLE() : var4.definition.walkRightSequence;
 					var4.runSequence = (var6 & 64) != 0 ? var1.readUnsignedShortAddLE() : var4.definition.field2059;
 					var4.field1217 = (var6 & 128) != 0 ? var1.readUnsignedShortAdd() : var4.definition.field2060;
-					var4.field1202 = (var6 & 256) != 0 ? var1.readUnsignedIntIME() : var4.definition.field2061;
+					var4.field1202 = (var6 & 256) != 0 ? var1.readUnsignedShortLE() : var4.definition.field2061;
 					var4.field1201 = (var6 & 512) != 0 ? var1.readUnsignedShort() : var4.definition.field2088;
 					var4.field1196 = (var6 & 1024) != 0 ? var1.readUnsignedShort() : var4.definition.field2063;
 					var4.field1203 = (var6 & 2048) != 0 ? var1.readUnsignedShort() : var4.definition.field2064;
-					var4.field1219 = (var6 & 4096) != 0 ? var1.readUnsignedIntIME() : var4.definition.field2065;
+					var4.field1219 = (var6 & 4096) != 0 ? var1.readUnsignedShortLE() : var4.definition.field2065;
 					var4.field1205 = (var6 & 8192) != 0 ? var1.readUnsignedShortAdd() : var4.definition.field2074;
 					var4.idleSequence = (var6 & 16384) != 0 ? var1.readUnsignedShortAddLE() : var4.definition.idleSequence;
 				}
@@ -307,15 +307,15 @@ public class class332 extends Node {
 					var6 = var1.readUnsignedByteAdd();
 
 					for (var7 = 0; var7 < var6; ++var7) {
-						var8 = var1.method9238();
+						var8 = var1.readUnsignedByteSub();
 						var9 = var1.readUnsignedShortAddLE();
-						var10 = var1.method9261();
+						var10 = var1.readUnsignedIntME();
 						var4.updateSpotAnimation(var8, var9, var10 >> 16, var10 & 65535);
 					}
 				}
 
 				if ((var5 & 8192) != 0) {
-					var4.method2622(var1.method9238());
+					var4.method2622(var1.readUnsignedByteSub());
 				}
 
 				if ((var5 & 32) != 0) {
@@ -325,7 +325,7 @@ public class class332 extends Node {
 
 				if ((var5 & 16) != 0) {
 					var6 = var1.readUnsignedShort();
-					var7 = var1.readUnsignedIntIME();
+					var7 = var1.readUnsignedShortLE();
 					var4.field1240 = var1.readUnsignedByteAdd() == 1;
 					if (Client.revision >= 212) {
 						var4.field1224 = var6;
@@ -341,11 +341,11 @@ public class class332 extends Node {
 				}
 
 				if ((var5 & 256) != 0) {
-					var4.field1262 = var1.readUnsignedShortLE();
+					var4.field1262 = var1.readUnsignedIntLE();
 				}
 
 				if ((var5 & 4) != 0) {
-					var4.targetIndex = var1.readUnsignedIntIME();
+					var4.targetIndex = var1.readUnsignedShortLE();
 					var4.targetIndex += var1.readUnsignedByte() << 16;
 					var6 = 16777215;
 					if (var6 == var4.targetIndex) {
@@ -398,9 +398,9 @@ public class class332 extends Node {
 				if ((var5 & 1024) != 0) {
 					var4.field1247 = Client.cycle + var1.readUnsignedShort();
 					var4.field1248 = Client.cycle + var1.readUnsignedShortAddLE();
-					var4.field1249 = var1.method9241();
+					var4.field1249 = var1.readByteSub();
 					var4.field1250 = var1.readByte();
-					var4.field1251 = var1.method9240();
+					var4.field1251 = var1.readByteNeg();
 					var4.field1252 = (byte)var1.readUnsignedByte();
 				}
 
