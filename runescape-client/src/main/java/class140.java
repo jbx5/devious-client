@@ -137,7 +137,7 @@ public enum class140 implements MouseWheel {
 		JagexCache.JagexCache_idx255File = null;
 		UserComparator8.JagexCache_idxFiles = null;
 		class232.method4412();
-		UserComparator10.field1480 = null;
+		UserComparator10.masterDisk = null;
 		Client.archiveLoaders.clear();
 		Client.field819 = 0;
 		class59.field452 = new JagNetThread();
@@ -149,7 +149,7 @@ public enum class140 implements MouseWheel {
 			throw new RuntimeException(var2);
 		}
 
-		UserComparator10.field1480 = new ArchiveDisk(255, JagexCache.JagexCache_dat2File, JagexCache.JagexCache_idx255File, 500000);
+		UserComparator10.masterDisk = new ArchiveDisk(255, JagexCache.JagexCache_dat2File, JagexCache.JagexCache_idx255File, 500000);
 		GameEngine.taskHandler = new TaskHandler();
 		class159.client.method615();
 		Client.field577 = class94.field1161;
