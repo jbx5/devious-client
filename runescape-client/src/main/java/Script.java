@@ -1,58 +1,58 @@
-import java.util.ArrayList;
-import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dh")
+@ObfuscatedName("ds")
 @Implements("Script")
 public class Script extends DualNode {
-	@ObfuscatedName("au")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Lle;"
+		descriptor = "Llr;"
 	)
 	@Export("Script_cached")
 	static EvictingDualNodeHashTable Script_cached;
-	@ObfuscatedName("ae")
-	String field1014;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ay")
+	static int[] field1008;
+	@ObfuscatedName("al")
+	String field1004;
+	@ObfuscatedName("ak")
 	@Export("opcodes")
 	int[] opcodes;
-	@ObfuscatedName("at")
+	@ObfuscatedName("ax")
 	@Export("intOperands")
 	int[] intOperands;
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ao")
 	@Export("stringOperands")
 	String[] stringOperands;
-	@ObfuscatedName("ai")
+	@ObfuscatedName("ah")
 	@ObfuscatedGetter(
-		intValue = -1597120201
+		intValue = -1799598971
 	)
 	@Export("localIntCount")
 	int localIntCount;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ar")
 	@ObfuscatedGetter(
-		intValue = 1421158661
+		intValue = -1300060503
 	)
 	@Export("localStringCount")
 	int localStringCount;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("ab")
 	@ObfuscatedGetter(
-		intValue = -395613867
+		intValue = 1220003295
 	)
 	@Export("intArgumentCount")
 	int intArgumentCount;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("am")
 	@ObfuscatedGetter(
-		intValue = 942118187
+		intValue = -1530472731
 	)
 	@Export("stringArgumentCount")
 	int stringArgumentCount;
-	@ObfuscatedName("af")
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "[Lsf;"
+		descriptor = "[Ltp;"
 	)
 	@Export("switches")
 	IterableNodeHashTable[] switches;
@@ -64,58 +64,44 @@ public class Script extends DualNode {
 	Script() {
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(II)[Lsf;",
-		garbageValue = "-723912201"
+		descriptor = "(II)[Ltp;",
+		garbageValue = "-902364502"
 	)
 	@Export("newIterableNodeHashTable")
 	IterableNodeHashTable[] newIterableNodeHashTable(int var1) {
 		return new IterableNodeHashTable[var1];
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(IIB)V",
-		garbageValue = "0"
+		descriptor = "(ZI)V",
+		garbageValue = "-1816632175"
 	)
-	public static void method2180(int var0, int var1) {
-		class270.method5491(var0, var1, 0, 0);
-		class305.field3405.clear();
-		class305.field3406.clear();
-		if (class305.musicSongs.isEmpty() || var0 == 0 && var1 == 0) {
-			ByteArrayPool.method7671();
+	static void method2215(boolean var0) {
+		if (var0) {
+			class74.method2113();
 		} else {
-			class305.field3406.add(new DelayFadeTask((SongTask)null, class305.musicPlayerStatus));
-			class305.field3406.add(new FadeOutTask((SongTask)null, 0, false, class305.field3409));
-			ArrayList var3 = new ArrayList();
-			Iterator var4 = class305.musicSongs.iterator();
+			for (int var1 = 0; var1 < class319.musicSongs.size(); ++var1) {
+				MusicSong var2 = (MusicSong)class319.musicSongs.get(var1);
+				if (var2 == null) {
+					class319.musicSongs.remove(var1);
+					--var1;
+				} else if (var2.field3550) {
+					if (var2.midiPcmStream.field3450 > 0) {
+						--var2.midiPcmStream.field3450;
+					}
 
-			while (var4.hasNext()) {
-				MusicSong var5 = (MusicSong)var4.next();
-				var3.add(var5);
+					var2.midiPcmStream.clear();
+					var2.midiPcmStream.method6044();
+					var2.midiPcmStream.setPcmStreamVolume(0);
+					class319.musicSongs.remove(var1);
+					--var1;
+				} else {
+					var2.field3550 = true;
+				}
 			}
-
-			class305.field3406.add(new class401((SongTask)null, var3));
-		}
-
-	}
-
-	@ObfuscatedName("hf")
-	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "-69260226"
-	)
-	@Export("forceDisconnect")
-	static final void forceDisconnect(int var0) {
-		ArchiveDisk.logOut();
-		switch(var0) {
-		case 1:
-			class463.method8342();
-			break;
-		case 2:
-			PcmPlayer.method838(24);
-			class318.setLoginResponseString("The game servers are currently being updated.", "Please wait a few minutes and try again.", "");
 		}
 
 	}

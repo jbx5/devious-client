@@ -1,88 +1,31 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ls")
-public class class295 {
-	@ObfuscatedName("au")
-	@ObfuscatedSignature(
-		descriptor = "Lls;"
-	)
-	public static final class295 field3214;
-	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "Lls;"
-	)
-	public static final class295 field3207;
+@ObfuscatedName("lk")
+public abstract class class295 implements class297 {
 	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "Lls;"
+		descriptor = "Lom;"
 	)
-	public static final class295 field3209;
-	@ObfuscatedName("at")
+	@Export("SequenceDefinition_archive")
+	static AbstractArchive SequenceDefinition_archive;
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "Lls;"
+		descriptor = "Lgi;"
 	)
-	public static final class295 field3210;
+	static ClanSettings field3108;
 	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "Lls;"
+	@ObfuscatedGetter(
+		intValue = -1087312953
 	)
-	public static final class295 field3218;
-	@ObfuscatedName("ai")
-	@ObfuscatedSignature(
-		descriptor = "Lls;"
-	)
-	public static final class295 field3212;
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "Lls;"
-	)
-	public static final class295 field3208;
-	@ObfuscatedName("ap")
-	@ObfuscatedSignature(
-		descriptor = "Lls;"
-	)
-	public static final class295 field3215;
-	@ObfuscatedName("aa")
-	@ObfuscatedSignature(
-		descriptor = "Lls;"
-	)
-	public static final class295 field3213;
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "Lls;"
-	)
-	public static final class295 field3216;
-	@ObfuscatedName("ad")
-	@ObfuscatedSignature(
-		descriptor = "Lls;"
-	)
-	public static final class295 field3217;
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "Lls;"
-	)
-	public static final class295 field3211;
-
-	static {
-		field3214 = new class295(5);
-		field3207 = new class295(16);
-		field3209 = new class295(4);
-		field3210 = new class295(4);
-		field3218 = new class295(2);
-		field3212 = new class295(11);
-		field3208 = new class295(6);
-		field3215 = new class295(14);
-		field3213 = new class295(14);
-		field3216 = new class295(5);
-		field3217 = new class295(7);
-		field3211 = new class295(19);
-	}
+	protected int field3109;
 
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "5"
+		descriptor = "(Lnp;Loa;I)V"
 	)
-	class295(int var1) {
+	protected class295(StudioGame var1, Language var2, int var3) {
+		this.field3109 = var3;
 	}
 }

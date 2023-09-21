@@ -4,51 +4,57 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jk")
+@ObfuscatedName("jq")
 @Implements("TextureProvider")
 public class TextureProvider implements TextureLoader {
-	@ObfuscatedName("au")
+	@ObfuscatedName("nx")
 	@ObfuscatedSignature(
-		descriptor = "[Lif;"
+		descriptor = "Ldj;"
+	)
+	@Export("localPlayer")
+	static Player localPlayer;
+	@ObfuscatedName("ac")
+	@ObfuscatedSignature(
+		descriptor = "[Ljo;"
 	)
 	@Export("textures")
 	Texture[] textures;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "Low;"
+		descriptor = "Lpf;"
 	)
 	@Export("deque")
 	NodeDeque deque;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = -997416033
+		intValue = 1121483173
 	)
 	@Export("capacity")
 	int capacity;
-	@ObfuscatedName("at")
+	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = -1854212709
+		intValue = 493105321
 	)
 	@Export("remaining")
 	int remaining;
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ao")
 	@Export("brightness")
 	double brightness;
-	@ObfuscatedName("ai")
+	@ObfuscatedName("ah")
 	@ObfuscatedGetter(
-		intValue = 1457440821
+		intValue = 2016217081
 	)
 	@Export("textureSize")
 	int textureSize;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "Lnu;"
+		descriptor = "Lom;"
 	)
 	@Export("archive")
 	AbstractArchive archive;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lnu;Lnu;IDI)V"
+		descriptor = "(Lom;Lom;IDI)V"
 	)
 	public TextureProvider(AbstractArchive var1, AbstractArchive var2, int var3, double var4, int var6) {
 		this.deque = new NodeDeque();
@@ -75,10 +81,10 @@ public class TextureProvider implements TextureLoader {
 
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
 		descriptor = "(B)I",
-		garbageValue = "1"
+		garbageValue = "56"
 	)
 	@Export("getLoadedPercentage")
 	public int getLoadedPercentage() {
@@ -97,7 +103,7 @@ public class TextureProvider implements TextureLoader {
 
 					for (int var7 = 0; var7 < var6.length; ++var7) {
 						int var8 = var6[var7];
-						if (this.archive.method6698(var8)) {
+						if (this.archive.method6944(var8)) {
 							++var2;
 						}
 					}
@@ -112,17 +118,17 @@ public class TextureProvider implements TextureLoader {
 		}
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("al")
 	@Export("setBrightness")
 	public void setBrightness(double var1) {
 		this.brightness = var1;
 		this.clear();
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(II)[I",
-		garbageValue = "-1284455059"
+		garbageValue = "-1910207818"
 	)
 	@Export("getTexturePixels")
 	public int[] getTexturePixels(int var1) {
@@ -152,39 +158,39 @@ public class TextureProvider implements TextureLoader {
 		return null;
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
 		descriptor = "(II)I",
-		garbageValue = "-1228029354"
+		garbageValue = "958373665"
 	)
 	@Export("getAverageTextureRGB")
 	public int getAverageTextureRGB(int var1) {
 		return this.textures[var1] != null ? this.textures[var1].averageRGB : 0;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
 		descriptor = "(IB)Z",
-		garbageValue = "89"
+		garbageValue = "-20"
 	)
-	public boolean vmethod5036(int var1) {
-		return this.textures[var1].field2486;
+	public boolean vmethod5182(int var1) {
+		return this.textures[var1].field2501;
 	}
 
-	@ObfuscatedName("ai")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "(II)Z",
-		garbageValue = "-1328264692"
+		garbageValue = "21443457"
 	)
 	@Export("isLowDetail")
 	public boolean isLowDetail(int var1) {
 		return this.textureSize == 64;
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-1655781551"
+		garbageValue = "-1815480398"
 	)
 	@Export("clear")
 	public void clear() {
@@ -198,10 +204,10 @@ public class TextureProvider implements TextureLoader {
 		this.remaining = this.capacity;
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
 		descriptor = "(II)V",
-		garbageValue = "2107237619"
+		garbageValue = "-2088818432"
 	)
 	@Export("animate")
 	public void animate(int var1) {
@@ -215,78 +221,175 @@ public class TextureProvider implements TextureLoader {
 
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/CharSequence;B)[B",
-		garbageValue = "1"
+		descriptor = "(Lom;IB)V",
+		garbageValue = "32"
 	)
-	public static byte[] method4752(CharSequence var0) {
-		int var1 = var0.length();
-		byte[] var2 = new byte[var1];
-
-		for (int var3 = 0; var3 < var1; ++var3) {
-			char var4 = var0.charAt(var3);
-			if (var4 > 0 && var4 < 128 || var4 >= 160 && var4 <= 255) {
-				var2[var3] = (byte)var4;
-			} else if (var4 == 8364) {
-				var2[var3] = -128;
-			} else if (var4 == 8218) {
-				var2[var3] = -126;
-			} else if (var4 == 402) {
-				var2[var3] = -125;
-			} else if (var4 == 8222) {
-				var2[var3] = -124;
-			} else if (var4 == 8230) {
-				var2[var3] = -123;
-			} else if (var4 == 8224) {
-				var2[var3] = -122;
-			} else if (var4 == 8225) {
-				var2[var3] = -121;
-			} else if (var4 == 710) {
-				var2[var3] = -120;
-			} else if (var4 == 8240) {
-				var2[var3] = -119;
-			} else if (var4 == 352) {
-				var2[var3] = -118;
-			} else if (var4 == 8249) {
-				var2[var3] = -117;
-			} else if (var4 == 338) {
-				var2[var3] = -116;
-			} else if (var4 == 381) {
-				var2[var3] = -114;
-			} else if (var4 == 8216) {
-				var2[var3] = -111;
-			} else if (var4 == 8217) {
-				var2[var3] = -110;
-			} else if (var4 == 8220) {
-				var2[var3] = -109;
-			} else if (var4 == 8221) {
-				var2[var3] = -108;
-			} else if (var4 == 8226) {
-				var2[var3] = -107;
-			} else if (var4 == 8211) {
-				var2[var3] = -106;
-			} else if (var4 == 8212) {
-				var2[var3] = -105;
-			} else if (var4 == 732) {
-				var2[var3] = -104;
-			} else if (var4 == 8482) {
-				var2[var3] = -103;
-			} else if (var4 == 353) {
-				var2[var3] = -102;
-			} else if (var4 == 8250) {
-				var2[var3] = -101;
-			} else if (var4 == 339) {
-				var2[var3] = -100;
-			} else if (var4 == 382) {
-				var2[var3] = -98;
-			} else if (var4 == 376) {
-				var2[var3] = -97;
-			} else {
-				var2[var3] = 63;
-			}
+	static void method4884(AbstractArchive var0, int var1) {
+		if ((var1 & class525.field5124.rsOrdinal()) != 0) {
+			Login.logoSprite = class167.SpriteBuffer_getIndexedSpriteByName(var0, "logo_deadman_mode", "");
+		} else if ((var1 & class525.field5125.rsOrdinal()) != 0) {
+			Login.logoSprite = class167.SpriteBuffer_getIndexedSpriteByName(var0, "logo_seasonal_mode", "");
+		} else if ((var1 & class525.field5103.rsOrdinal()) != 0) {
+			Login.logoSprite = class167.SpriteBuffer_getIndexedSpriteByName(var0, "logo_speedrunning", "");
+		} else {
+			Login.logoSprite = class167.SpriteBuffer_getIndexedSpriteByName(var0, "logo", "");
 		}
 
-		return var2;
+	}
+
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "-32"
+	)
+	static final void method4886() {
+		if (!ViewportMouse.ViewportMouse_false0) {
+			int var0 = Scene.Scene_cameraPitchSine;
+			int var1 = Scene.Scene_cameraPitchCosine;
+			int var2 = Scene.Scene_cameraYawSine;
+			int var3 = Scene.Scene_cameraYawCosine;
+			byte var4 = 50;
+			short var5 = 3500;
+			int var6 = (ViewportMouse.ViewportMouse_x - Rasterizer3D.getClipMidX()) * var4 / Rasterizer3D.get3dZoom();
+			int var7 = (ViewportMouse.ViewportMouse_y - Rasterizer3D.getClipMidY()) * var4 / Rasterizer3D.get3dZoom();
+			int var8 = (ViewportMouse.ViewportMouse_x - Rasterizer3D.getClipMidX()) * var5 / Rasterizer3D.get3dZoom();
+			int var9 = (ViewportMouse.ViewportMouse_y - Rasterizer3D.getClipMidY()) * var5 / Rasterizer3D.get3dZoom();
+			int var10 = class10.method83(var7, var4, var1, var0);
+			int var13 = GrandExchangeOfferUnitPriceComparator.method7115(var7, var4, var1, var0);
+			var7 = var10;
+			var10 = class10.method83(var9, var5, var1, var0);
+			int var14 = GrandExchangeOfferUnitPriceComparator.method7115(var9, var5, var1, var0);
+			var9 = var10;
+			var10 = AbstractWorldMapData.method5648(var6, var13, var3, var2);
+			int var11 = var6 * var2 + var13 * var3 >> 16;
+			var6 = var10;
+			var10 = AbstractWorldMapData.method5648(var8, var14, var3, var2);
+			int var12 = var3 * var14 + var8 * var2 >> 16;
+			ViewportMouse.field2808 = (var6 + var10) / 2;
+			ViewportMouse.field2807 = (var9 + var7) / 2;
+			class286.field3074 = (var12 + var11) / 2;
+			class180.field1865 = (var10 - var6) / 2;
+			ViewportMouse.field2802 = (var9 - var7) / 2;
+			ViewportMouse.field2809 = (var12 - var11) / 2;
+			class190.field1914 = Math.abs(class180.field1865);
+			GraphicsObject.field890 = Math.abs(ViewportMouse.field2802);
+			HealthBar.field1312 = Math.abs(ViewportMouse.field2809);
+		}
+	}
+
+	@ObfuscatedName("li")
+	@ObfuscatedSignature(
+		descriptor = "(IIIILjava/lang/String;I)V",
+		garbageValue = "-2147134009"
+	)
+	@Export("widgetDefaultMenuAction")
+	static void widgetDefaultMenuAction(int var0, int var1, int var2, int var3, String var4) {
+		Widget var5 = class33.widgetDefinition.getWidgetChild(var1, var2);
+		if (var5 != null) {
+			if (var5.onOp != null) {
+				ScriptEvent var6 = new ScriptEvent();
+				var6.widget = var5;
+				var6.opIndex = var0;
+				var6.targetName = var4;
+				var6.args = var5.onOp;
+				Interpreter.runScriptEvent(var6);
+			}
+
+			boolean var11 = true;
+			if (var5.contentType > 0) {
+				var11 = EnumComposition.method3761(var5);
+			}
+
+			if (var11) {
+				int var8 = MouseRecorder.getWidgetFlags(var5);
+				int var9 = var0 - 1;
+				boolean var7 = (var8 >> var9 + 1 & 1) != 0;
+				if (var7) {
+					PacketBufferNode var10;
+					if (var0 == 1) {
+						var10 = ClanChannelMember.getPacketBufferNode(ClientPacket.IF_BUTTON1, Client.packetWriter.isaacCipher);
+						var10.packetBuffer.writeInt(var1);
+						var10.packetBuffer.writeShort(var2);
+						var10.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var10);
+					}
+
+					if (var0 == 2) {
+						var10 = ClanChannelMember.getPacketBufferNode(ClientPacket.IF_BUTTON2, Client.packetWriter.isaacCipher);
+						var10.packetBuffer.writeInt(var1);
+						var10.packetBuffer.writeShort(var2);
+						var10.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var10);
+					}
+
+					if (var0 == 3) {
+						var10 = ClanChannelMember.getPacketBufferNode(ClientPacket.IF_BUTTON3, Client.packetWriter.isaacCipher);
+						var10.packetBuffer.writeInt(var1);
+						var10.packetBuffer.writeShort(var2);
+						var10.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var10);
+					}
+
+					if (var0 == 4) {
+						var10 = ClanChannelMember.getPacketBufferNode(ClientPacket.IF_BUTTON4, Client.packetWriter.isaacCipher);
+						var10.packetBuffer.writeInt(var1);
+						var10.packetBuffer.writeShort(var2);
+						var10.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var10);
+					}
+
+					if (var0 == 5) {
+						var10 = ClanChannelMember.getPacketBufferNode(ClientPacket.IF_BUTTON5, Client.packetWriter.isaacCipher);
+						var10.packetBuffer.writeInt(var1);
+						var10.packetBuffer.writeShort(var2);
+						var10.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var10);
+					}
+
+					if (var0 == 6) {
+						var10 = ClanChannelMember.getPacketBufferNode(ClientPacket.IF_BUTTON6, Client.packetWriter.isaacCipher);
+						var10.packetBuffer.writeInt(var1);
+						var10.packetBuffer.writeShort(var2);
+						var10.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var10);
+					}
+
+					if (var0 == 7) {
+						var10 = ClanChannelMember.getPacketBufferNode(ClientPacket.IF_BUTTON7, Client.packetWriter.isaacCipher);
+						var10.packetBuffer.writeInt(var1);
+						var10.packetBuffer.writeShort(var2);
+						var10.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var10);
+					}
+
+					if (var0 == 8) {
+						var10 = ClanChannelMember.getPacketBufferNode(ClientPacket.IF_BUTTON8, Client.packetWriter.isaacCipher);
+						var10.packetBuffer.writeInt(var1);
+						var10.packetBuffer.writeShort(var2);
+						var10.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var10);
+					}
+
+					if (var0 == 9) {
+						var10 = ClanChannelMember.getPacketBufferNode(ClientPacket.IF_BUTTON9, Client.packetWriter.isaacCipher);
+						var10.packetBuffer.writeInt(var1);
+						var10.packetBuffer.writeShort(var2);
+						var10.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var10);
+					}
+
+					if (var0 == 10) {
+						var10 = ClanChannelMember.getPacketBufferNode(ClientPacket.IF_BUTTON10, Client.packetWriter.isaacCipher);
+						var10.packetBuffer.writeInt(var1);
+						var10.packetBuffer.writeShort(var2);
+						var10.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var10);
+					}
+
+				}
+			}
+		}
 	}
 }

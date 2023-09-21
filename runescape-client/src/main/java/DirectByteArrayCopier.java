@@ -4,17 +4,17 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ms")
+@ObfuscatedName("nh")
 @Implements("DirectByteArrayCopier")
 public class DirectByteArrayCopier extends AbstractByteArrayCopier {
-	@ObfuscatedName("au")
+	@ObfuscatedName("ac")
 	@Export("directBuffer")
 	ByteBuffer directBuffer;
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "(I)[B",
-		garbageValue = "-962589916"
+		garbageValue = "1381422717"
 	)
 	@Export("get")
 	byte[] get() {
@@ -24,10 +24,10 @@ public class DirectByteArrayCopier extends AbstractByteArrayCopier {
 		return var1;
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "([BI)V",
-		garbageValue = "1426025249"
+		garbageValue = "-2137536013"
 	)
 	@Export("set")
 	public void set(byte[] var1) {
@@ -36,35 +36,70 @@ public class DirectByteArrayCopier extends AbstractByteArrayCopier {
 		this.directBuffer.put(var1);
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ld")
 	@ObfuscatedSignature(
-		descriptor = "(Ltm;I)Ljava/lang/String;",
-		garbageValue = "1088330937"
+		descriptor = "(Ldj;IIIB)V",
+		garbageValue = "8"
 	)
-	public static String method6579(Buffer var0) {
-		return class155.method3247(var0, 32767);
-	}
+	@Export("addPlayerToMenu")
+	static final void addPlayerToMenu(Player var0, int var1, int var2, int var3) {
+		if (TextureProvider.localPlayer != var0) {
+			if (Client.menuOptionsCount < 400) {
+				String var4;
+				if (var0.skillLevel == 0) {
+					var4 = var0.actions[0] + var0.username + var0.actions[1] + WidgetDefinition.method6257(var0.combatLevel, TextureProvider.localPlayer.combatLevel) + " " + " (" + "level-" + var0.combatLevel + ")" + var0.actions[2];
+				} else {
+					var4 = var0.actions[0] + var0.username + var0.actions[1] + " " + " (" + "skill-" + var0.skillLevel + ")" + var0.actions[2];
+				}
 
-	@ObfuscatedName("la")
-	@ObfuscatedSignature(
-		descriptor = "(IIIII)V",
-		garbageValue = "625731844"
-	)
-	@Export("selectSpell")
-	static void selectSpell(int var0, int var1, int var2, int var3) {
-		Widget var4 = SoundCache.getWidgetChild(var0, var1);
-		if (var4 != null && var4.onTargetEnter != null) {
-			ScriptEvent var5 = new ScriptEvent();
-			var5.widget = var4;
-			var5.args = var4.onTargetEnter;
-			WorldMapSection1.runScriptEvent(var5);
+				int var5;
+				if (Client.isItemSelected == 1) {
+					class153.insertMenuItemNoShift("Use", Client.field772 + " " + "->" + " " + Client.colorStartTag(16777215) + var4, 14, var1, var2, var3);
+				} else if (Client.isSpellSelected) {
+					if ((class31.selectedSpellFlags & 8) == 8) {
+						class153.insertMenuItemNoShift(Client.selectedSpellActionName, Client.selectedSpellName + " " + "->" + " " + Client.colorStartTag(16777215) + var4, 15, var1, var2, var3);
+					}
+				} else {
+					for (var5 = 7; var5 >= 0; --var5) {
+						if (Client.playerMenuActions[var5] != null) {
+							short var6 = 0;
+							if (Client.playerMenuActions[var5].equalsIgnoreCase("Attack")) {
+								if (Client.playerAttackOption == AttackOption.AttackOption_hidden) {
+									continue;
+								}
+
+								if (AttackOption.AttackOption_alwaysRightClick == Client.playerAttackOption || AttackOption.AttackOption_dependsOnCombatLevels == Client.playerAttackOption && var0.combatLevel > TextureProvider.localPlayer.combatLevel) {
+									var6 = 2000;
+								}
+
+								if (TextureProvider.localPlayer.team != 0 && var0.team != 0) {
+									if (var0.team == TextureProvider.localPlayer.team) {
+										var6 = 2000;
+									} else {
+										var6 = 0;
+									}
+								} else if (Client.playerAttackOption == AttackOption.field1348 && var0.isClanMember()) {
+									var6 = 2000;
+								}
+							} else if (Client.playerOptionsPriorities[var5]) {
+								var6 = 2000;
+							}
+
+							boolean var7 = false;
+							int var8 = Client.playerMenuOpcodes[var5] + var6;
+							class153.insertMenuItemNoShift(Client.playerMenuActions[var5], Client.colorStartTag(16777215) + var4, var8, var1, var2, var3);
+						}
+					}
+				}
+
+				for (var5 = 0; var5 < Client.menuOptionsCount; ++var5) {
+					if (Client.menuOpcodes[var5] == 23) {
+						Client.menuTargets[var5] = Client.colorStartTag(16777215) + var4;
+						break;
+					}
+				}
+
+			}
 		}
-
-		Client.selectedSpellItemId = var3;
-		Client.isSpellSelected = true;
-		ModeWhere.selectedSpellWidget = var0;
-		Client.selectedSpellChildIndex = var1;
-		Canvas.selectedSpellFlags = var2;
-		class218.invalidateWidget(var4);
 	}
 }

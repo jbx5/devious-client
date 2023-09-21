@@ -3,94 +3,77 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fa")
-public class class155 extends class159 {
-	@ObfuscatedName("bt")
-	@ObfuscatedSignature(
-		descriptor = "Lnu;"
-	)
-	@Export("Widget_fontsArchive")
-	public static AbstractArchive Widget_fontsArchive;
-	@ObfuscatedName("au")
-	String field1753;
-	@ObfuscatedName("ae")
+@ObfuscatedName("fx")
+public class class155 extends class145 {
+	@ObfuscatedName("go")
+	static String field1698;
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = 2093210631
+		intValue = -1559377961
 	)
-	int field1751;
-	@ObfuscatedName("ao")
-	byte field1752;
+	int field1699;
+	@ObfuscatedName("al")
+	String field1696;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lgg;"
+		descriptor = "Lff;"
 	)
-	final class160 this$0;
+	final class148 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lgg;)V"
+		descriptor = "(Lff;)V"
 	)
-	class155(class160 var1) {
+	class155(class148 var1) {
 		this.this$0 = var1;
-		this.field1753 = null;
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(Ltm;B)V",
-		garbageValue = "1"
+		descriptor = "(Lul;I)V",
+		garbageValue = "-11659242"
 	)
-	void vmethod3333(Buffer var1) {
-		if (var1.readUnsignedByte() != 255) {
-			--var1.offset;
-			var1.readLong();
-		}
-
-		this.field1753 = var1.readStringCp1252NullTerminatedOrNull();
-		this.field1751 = var1.readUnsignedShort();
-		this.field1752 = var1.readByte();
-		var1.readLong();
+	void vmethod3414(Buffer var1) {
+		this.field1699 = var1.readInt();
+		this.field1696 = var1.readStringCp1252NullTerminated();
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(Lgo;I)V",
-		garbageValue = "831405774"
+		descriptor = "(Lgi;I)V",
+		garbageValue = "21847466"
 	)
-	void vmethod3332(ClanChannel var1) {
-		ClanChannelMember var2 = new ClanChannelMember();
-		var2.username = new Username(this.field1753);
-		var2.world = this.field1751;
-		var2.rank = this.field1752;
-		var1.addMember(var2);
+	void vmethod3415(ClanSettings var1) {
+		var1.method3254(this.field1699, this.field1696);
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(Ltm;IB)Ljava/lang/String;",
-		garbageValue = "-80"
+		descriptor = "(IB)V",
+		garbageValue = "32"
 	)
-	static String method3247(Buffer var0, int var1) {
-		try {
-			int var2 = var0.readUShortSmart();
-			if (var2 > var1) {
-				var2 = var1;
+	@Export("clearItemContainer")
+	static void clearItemContainer(int var0) {
+		ItemContainer var1 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
+		if (var1 != null) {
+			for (int var2 = 0; var2 < var1.ids.length; ++var2) {
+				var1.ids[var2] = -1;
+				var1.quantities[var2] = 0;
 			}
 
-			byte[] var3 = new byte[var2];
-			var0.offset += class334.huffman.decompress(var0.array, var0.offset, var3, 0, var2);
-			String var4 = class325.decodeStringCp1252(var3, 0, var2);
-			return var4;
-		} catch (Exception var6) {
-			return "Cabbage";
 		}
 	}
 
-	@ObfuscatedName("bu")
+	@ObfuscatedName("oq")
 	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "-692209680"
+		descriptor = "(Lnm;I)Ljava/lang/String;",
+		garbageValue = "-1055476214"
 	)
-	static int method3248(int var0) {
-		return (int)Math.pow(2.0D, (double)(7.0F + (float)var0 / 256.0F));
+	@Export("Widget_getSpellActionName")
+	static String Widget_getSpellActionName(Widget var0) {
+		if (KitDefinition.Widget_unpackTargetMask(MouseRecorder.getWidgetFlags(var0)) == 0) {
+			return null;
+		} else {
+			return var0.spellActionName != null && var0.spellActionName.trim().length() != 0 ? var0.spellActionName : null;
+		}
 	}
 }

@@ -1,25 +1,42 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("be")
+@ObfuscatedName("bh")
 @Implements("SoundSystem")
 public class SoundSystem implements Runnable {
-	@ObfuscatedName("ad")
-	@ObfuscatedSignature(
-		descriptor = "Luk;"
+	@ObfuscatedName("wh")
+	@ObfuscatedGetter(
+		intValue = 1375841409
 	)
-	@Export("logoSprite")
-	static IndexedSprite logoSprite;
-	@ObfuscatedName("au")
+	@Export("foundItemIdCount")
+	static int foundItemIdCount;
+	@ObfuscatedName("cu")
 	@ObfuscatedSignature(
-		descriptor = "[Lbb;"
+		descriptor = "Lng;"
+	)
+	static GameBuild field325;
+	@ObfuscatedName("fb")
+	@ObfuscatedSignature(
+		descriptor = "Lok;"
+	)
+	@Export("archive2")
+	static Archive archive2;
+	@ObfuscatedName("up")
+	@ObfuscatedGetter(
+		intValue = 1072135185
+	)
+	static int field323;
+	@ObfuscatedName("ac")
+	@ObfuscatedSignature(
+		descriptor = "[Lbu;"
 	)
 	@Export("players")
-	volatile PcmPlayer[] players;
+	public volatile PcmPlayer[] players;
 
-	SoundSystem() {
+	public SoundSystem() {
 		this.players = new PcmPlayer[2];
 	}
 
@@ -32,28 +49,17 @@ public class SoundSystem implements Runnable {
 				}
 			}
 		} catch (Exception var4) {
-			Messages.RunException_sendStackTrace((String)null, var4);
+			class190.RunException_sendStackTrace((String)null, var4);
 		}
 
 	}
 
-	@ObfuscatedName("nx")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(IIZB)V",
-		garbageValue = "0"
+		descriptor = "(S)V",
+		garbageValue = "13012"
 	)
-	static final void method870(int var0, int var1, boolean var2) {
-		if (Client.currentClanChannels[var0] != null) {
-			if (var1 >= 0 && var1 < Client.currentClanChannels[var0].method3301()) {
-				ClanChannelMember var3 = (ClanChannelMember)Client.currentClanChannels[var0].members.get(var1);
-				PacketBufferNode var4 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3195, Client.packetWriter.isaacCipher);
-				var4.packetBuffer.writeByte(4 + AbstractSocket.stringCp1252NullTerminatedByteSize(var3.username.getName()));
-				var4.packetBuffer.writeByte(var0);
-				var4.packetBuffer.writeShort(var1);
-				var4.packetBuffer.writeBoolean(var2);
-				var4.packetBuffer.writeStringCp1252NullTerminated(var3.username.getName());
-				Client.packetWriter.addNode(var4);
-			}
-		}
+	public static void method846() {
+		class201.field2023.clear();
 	}
 }

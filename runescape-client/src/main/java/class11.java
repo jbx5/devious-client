@@ -11,19 +11,28 @@ import org.bouncycastle.crypto.tls.CertificateRequest;
 import org.bouncycastle.crypto.tls.TlsAuthentication;
 import org.bouncycastle.crypto.tls.TlsCredentials;
 
-@ObfuscatedName("aq")
+@ObfuscatedName("aa")
 class class11 implements TlsAuthentication {
+	@ObfuscatedName("iq")
+	@ObfuscatedSignature(
+		descriptor = "Lre;"
+	)
+	static AbstractSocket field59;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lan;"
+		descriptor = "Lay;"
 	)
 	final class13 this$2;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lan;)V"
+		descriptor = "(Lay;)V"
 	)
 	class11(class13 var1) {
 		this.this$2 = var1;
+	}
+
+	public TlsCredentials getClientCredentials(CertificateRequest var1) throws IOException {
+		return null;
 	}
 
 	public void notifyServerCertificate(Certificate var1) throws IOException {
@@ -43,93 +52,74 @@ class class11 implements TlsAuthentication {
 		}
 	}
 
-	public TlsCredentials getClientCredentials(CertificateRequest var1) throws IOException {
-		return null;
-	}
-
-	@ObfuscatedName("au")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "([BIII)Ljava/lang/String;",
-		garbageValue = "591994113"
+		descriptor = "(CLoa;I)I",
+		garbageValue = "832566677"
 	)
-	public static String method97(byte[] var0, int var1, int var2) {
-		StringBuilder var3 = new StringBuilder();
-
-		for (int var4 = var1; var4 < var2 + var1; var4 += 3) {
-			int var5 = var0[var4] & 255;
-			var3.append(class385.field4428[var5 >>> 2]);
-			if (var4 < var2 - 1) {
-				int var6 = var0[var4 + 1] & 255;
-				var3.append(class385.field4428[(var5 & 3) << 4 | var6 >>> 4]);
-				if (var4 < var2 - 2) {
-					int var7 = var0[var4 + 2] & 255;
-					var3.append(class385.field4428[(var6 & 15) << 2 | var7 >>> 6]).append(class385.field4428[var7 & 63]);
-				} else {
-					var3.append(class385.field4428[(var6 & 15) << 2]).append("=");
-				}
-			} else {
-				var3.append(class385.field4428[(var5 & 3) << 4]).append("==");
-			}
+	@Export("lowercaseChar")
+	static int lowercaseChar(char var0, Language var1) {
+		int var2 = var0 << 4;
+		if (Character.isUpperCase(var0) || Character.isTitleCase(var0)) {
+			var0 = Character.toLowerCase(var0);
+			var2 = (var0 << 4) + 1;
 		}
 
-		return var3.toString();
-	}
-
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "(S)V",
-		garbageValue = "18671"
-	)
-	static final void method96() {
-		if (!ViewportMouse.ViewportMouse_false0) {
-			int var0 = Scene.Scene_cameraPitchSine;
-			int var1 = Scene.Scene_cameraPitchCosine;
-			int var2 = Scene.Scene_cameraYawSine;
-			int var3 = Scene.Scene_cameraYawCosine;
-			byte var4 = 50;
-			short var5 = 3500;
-			int var6 = (ViewportMouse.ViewportMouse_x - Rasterizer3D.getClipMidX()) * var4 / Rasterizer3D.get3dZoom();
-			int var7 = (ViewportMouse.ViewportMouse_y - Rasterizer3D.getClipMidY()) * var4 / Rasterizer3D.get3dZoom();
-			int var8 = (ViewportMouse.ViewportMouse_x - Rasterizer3D.getClipMidX()) * var5 / Rasterizer3D.get3dZoom();
-			int var9 = (ViewportMouse.ViewportMouse_y - Rasterizer3D.getClipMidY()) * var5 / Rasterizer3D.get3dZoom();
-			int var10 = class33.method492(var7, var4, var1, var0);
-			int var11 = var4 * var1 - var0 * var7 >> 16;
-			var7 = var10;
-			var10 = class33.method492(var9, var5, var1, var0);
-			int var12 = var5 * var1 - var0 * var9 >> 16;
-			var9 = var10;
-			var10 = Tiles.method2241(var6, var11, var3, var2);
-			int var13 = ClanChannelMember.method3121(var6, var11, var3, var2);
-			var6 = var10;
-			var10 = Tiles.method2241(var8, var12, var3, var2);
-			int var14 = ClanChannelMember.method3121(var8, var12, var3, var2);
-			ViewportMouse.field2779 = (var10 + var6) / 2;
-			ViewportMouse.field2793 = (var7 + var9) / 2;
-			ViewportMouse.field2785 = (var13 + var14) / 2;
-			class261.field2967 = (var10 - var6) / 2;
-			ViewportMouse.field2781 = (var9 - var7) / 2;
-			Frames.field2642 = (var14 - var13) / 2;
-			ViewportMouse.field2787 = Math.abs(class261.field2967);
-			class7.field25 = Math.abs(ViewportMouse.field2781);
-			class30.field167 = Math.abs(Frames.field2642);
+		if (var0 == 241 && var1 == Language.Language_ES) {
+			var2 = 1762;
 		}
+
+		return var2;
 	}
 
-	@ObfuscatedName("ni")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "(Lmi;IIII)V",
-		garbageValue = "1018529135"
+		descriptor = "(I)V",
+		garbageValue = "610139414"
 	)
-	@Export("drawCompass")
-	static final void drawCompass(Widget var0, int var1, int var2, int var3) {
-		SpriteMask var4 = var0.getSpriteMask(false);
-		if (var4 != null) {
-			if (Client.minimapState < 3) {
-				Client.compass.drawRotatedMaskedCenteredAround(var1, var2, var4.width, var4.height, 25, 25, Client.camAngleY, 256, var4.xStarts, var4.xWidths);
-			} else {
-				Rasterizer2D.Rasterizer2D_fillMaskedRectangle(var1, var2, 0, var4.xStarts, var4.xWidths);
-			}
+	static void method112() {
+		Players.Players_count = 0;
 
+		for (int var0 = 0; var0 < 2048; ++var0) {
+			Players.field1373[var0] = null;
+			Players.field1370[var0] = class231.field2428;
+		}
+
+	}
+
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "(Ljn;IIIII)Z",
+		garbageValue = "-916093529"
+	)
+	static final boolean method111(Model var0, int var1, int var2, int var3, int var4) {
+		if (!GrandExchangeOfferTotalQuantityComparator.method7050()) {
+			return false;
+		} else {
+			TextureProvider.method4886();
+			AABB var5 = (AABB)var0.aabb.get(var1);
+			int var6 = var2 + var5.xMid;
+			int var7 = var3 + var5.yMid;
+			int var8 = var4 + var5.zMid;
+			int var9 = var5.xMidOffset;
+			int var10 = var5.yMidOffset;
+			int var11 = var5.zMidOffset;
+			int var12 = ViewportMouse.field2808 - var6;
+			int var13 = ViewportMouse.field2807 - var7;
+			int var14 = class286.field3074 - var8;
+			if (Math.abs(var12) > var9 + class190.field1914) {
+				return false;
+			} else if (Math.abs(var13) > var10 + GraphicsObject.field890) {
+				return false;
+			} else if (Math.abs(var14) > var11 + HealthBar.field1312) {
+				return false;
+			} else if (Math.abs(var14 * ViewportMouse.field2802 - var13 * ViewportMouse.field2809) > var11 * GraphicsObject.field890 + var10 * HealthBar.field1312) {
+				return false;
+			} else if (Math.abs(var12 * ViewportMouse.field2809 - var14 * class180.field1865) > var11 * class190.field1914 + var9 * HealthBar.field1312) {
+				return false;
+			} else {
+				return Math.abs(var13 * class180.field1865 - var12 * ViewportMouse.field2802) <= var9 * GraphicsObject.field890 + var10 * class190.field1914;
+			}
 		}
 	}
 }

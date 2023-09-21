@@ -1,107 +1,100 @@
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ha")
+@ObfuscatedName("ir")
 @Implements("SpotAnimationDefinition")
 public class SpotAnimationDefinition extends DualNode {
-	@ObfuscatedName("au")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Lnu;"
+		descriptor = "Lom;"
 	)
 	@Export("SpotAnimationDefinition_archive")
 	public static AbstractArchive SpotAnimationDefinition_archive;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "Lnu;"
+		descriptor = "Lom;"
 	)
 	@Export("SpotAnimationDefinition_modelArchive")
 	public static AbstractArchive SpotAnimationDefinition_modelArchive;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Lle;"
+		descriptor = "Llr;"
 	)
 	@Export("SpotAnimationDefinition_cached")
-	public static EvictingDualNodeHashTable SpotAnimationDefinition_cached;
-	@ObfuscatedName("at")
+	static EvictingDualNodeHashTable SpotAnimationDefinition_cached;
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "Lle;"
+		descriptor = "Llr;"
 	)
-	@Export("SpotAnimationDefinition_cachedModels")
-	public static EvictingDualNodeHashTable SpotAnimationDefinition_cachedModels;
-	@ObfuscatedName("sl")
-	@Export("ClanChat_inClanChat")
-	static boolean ClanChat_inClanChat;
-	@ObfuscatedName("ac")
+	@Export("DBTableMasterIndex_cache")
+	static EvictingDualNodeHashTable DBTableMasterIndex_cache;
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = 1143254317
+		intValue = -529110127
 	)
 	@Export("id")
 	int id;
-	@ObfuscatedName("ai")
+	@ObfuscatedName("ah")
 	@ObfuscatedGetter(
-		intValue = 13212181
+		intValue = 201436745
 	)
 	@Export("archive")
 	int archive;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ar")
 	@ObfuscatedGetter(
-		intValue = -1431367329
+		intValue = 253020647
 	)
 	@Export("sequence")
 	public int sequence;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("ab")
 	@Export("recolorFrom")
 	short[] recolorFrom;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("am")
 	@Export("recolorTo")
 	short[] recolorTo;
-	@ObfuscatedName("af")
+	@ObfuscatedName("av")
 	@Export("retextureFrom")
 	short[] retextureFrom;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ag")
 	@Export("retextureTo")
 	short[] retextureTo;
-	@ObfuscatedName("aq")
+	@ObfuscatedName("aa")
 	@ObfuscatedGetter(
-		intValue = 2044410789
+		intValue = 1359832271
 	)
 	@Export("widthScale")
 	int widthScale;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = 1484714697
+		intValue = -1245789773
 	)
 	@Export("heightScale")
 	int heightScale;
-	@ObfuscatedName("an")
+	@ObfuscatedName("ay")
 	@ObfuscatedGetter(
-		intValue = -1490600117
+		intValue = -314997151
 	)
 	@Export("orientation")
 	int orientation;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("as")
 	@ObfuscatedGetter(
-		intValue = 115934601
+		intValue = 226238365
 	)
 	@Export("ambient")
 	int ambient;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = 472229573
+		intValue = -1173342985
 	)
 	@Export("contrast")
 	int contrast;
 
 	static {
 		SpotAnimationDefinition_cached = new EvictingDualNodeHashTable(64);
-		SpotAnimationDefinition_cachedModels = new EvictingDualNodeHashTable(30);
+		DBTableMasterIndex_cache = new EvictingDualNodeHashTable(30);
 	}
 
 	SpotAnimationDefinition() {
@@ -113,10 +106,10 @@ public class SpotAnimationDefinition extends DualNode {
 		this.contrast = 0;
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(Ltm;B)V",
-		garbageValue = "127"
+		descriptor = "(Lul;I)V",
+		garbageValue = "-1113058920"
 	)
 	@Export("decode")
 	void decode(Buffer var1) {
@@ -130,10 +123,10 @@ public class SpotAnimationDefinition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Ltm;IB)V",
-		garbageValue = "83"
+		descriptor = "(Lul;II)V",
+		garbageValue = "2121319025"
 	)
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
@@ -177,17 +170,17 @@ public class SpotAnimationDefinition extends DualNode {
 
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "(II)Ljr;",
-		garbageValue = "620606809"
+		descriptor = "(II)Ljn;",
+		garbageValue = "1896803273"
 	)
 	@Export("getModel")
 	public final Model getModel(int var1) {
-		Model var2 = this.method3750();
+		Model var2 = this.method3863();
 		Model var3;
 		if (this.sequence != -1 && var1 != -1) {
-			var3 = EnumComposition.SequenceDefinition_get(this.sequence).transformSpotAnimationModel(var2, var1);
+			var3 = class36.SequenceDefinition_get(this.sequence).transformSpotAnimationModel(var2, var1);
 		} else {
 			var3 = var2.toSharedSpotAnimationModel(true);
 		}
@@ -216,13 +209,13 @@ public class SpotAnimationDefinition extends DualNode {
 		return var3;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(B)Ljr;",
-		garbageValue = "-10"
+		descriptor = "(B)Ljn;",
+		garbageValue = "6"
 	)
-	public final Model method3750() {
-		Model var1 = (Model)SpotAnimationDefinition_cachedModels.get((long)this.id);
+	public final Model method3863() {
+		Model var1 = (Model)DBTableMasterIndex_cache.get((long)this.id);
 		if (var1 == null) {
 			ModelData var2 = ModelData.ModelData_get(SpotAnimationDefinition_modelArchive, this.archive, 0);
 			if (var2 == null) {
@@ -243,35 +236,19 @@ public class SpotAnimationDefinition extends DualNode {
 			}
 
 			var1 = var2.toModel(this.ambient + 64, this.contrast + 850, -30, -50, -30);
-			SpotAnimationDefinition_cachedModels.put(var1, (long)this.id);
+			DBTableMasterIndex_cache.put(var1, (long)this.id);
 		}
 
 		return var1;
 	}
 
-	@ObfuscatedName("aa")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(I)Ljava/util/Date;",
-		garbageValue = "1382100876"
+		descriptor = "(B)V",
+		garbageValue = "-113"
 	)
-	static Date method3765() throws ParseException {
-		SimpleDateFormat var0 = new SimpleDateFormat("ddMMyyyyHH", Locale.ENGLISH);
-		var0.setLenient(false);
-		StringBuilder var1 = new StringBuilder();
-		String[] var2 = Login.field954;
-
-		for (int var3 = 0; var3 < var2.length; ++var3) {
-			String var4 = var2[var3];
-			if (var4 == null) {
-				PcmPlayer.method838(7);
-				class318.setLoginResponseString("Date not valid.", "Please ensure all characters are populated.", "");
-				return null;
-			}
-
-			var1.append(var4);
-		}
-
-		var1.append("12");
-		return var0.parse(var1.toString());
+	public static final void method3868() {
+		ViewportMouse.ViewportMouse_isInViewport = false;
+		ViewportMouse.ViewportMouse_entityCount = 0;
 	}
 }

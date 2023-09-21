@@ -1,21 +1,14 @@
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 
-@ObfuscatedName("tr")
+@ObfuscatedName("tv")
 public class class508 {
-	@ObfuscatedName("ao")
-	@ObfuscatedGetter(
-		intValue = -822857019
-	)
-	static final int field5058;
-	@ObfuscatedName("at")
-	@ObfuscatedGetter(
-		intValue = -511636545
-	)
-	static final int field5059;
+	@ObfuscatedName("ak")
+	static final char[] field5041;
+	@ObfuscatedName("ax")
+	static final char[] field5042;
 
 	static {
-		field5058 = (int)(Math.pow(2.0D, 4.0D) - 1.0D);
-		field5059 = (int)(Math.pow(2.0D, 8.0D) - 1.0D);
+		field5041 = new char[]{' ', ' ', '_', '-', 'à', 'á', 'â', 'ä', 'ã', 'À', 'Á', 'Â', 'Ä', 'Ã', 'è', 'é', 'ê', 'ë', 'È', 'É', 'Ê', 'Ë', 'í', 'î', 'ï', 'Í', 'Î', 'Ï', 'ò', 'ó', 'ô', 'ö', 'õ', 'Ò', 'Ó', 'Ô', 'Ö', 'Õ', 'ù', 'ú', 'û', 'ü', 'Ù', 'Ú', 'Û', 'Ü', 'ç', 'Ç', 'ÿ', 'Ÿ', 'ñ', 'Ñ', 'ß'};
+		field5042 = new char[]{'[', ']', '#'};
 	}
 }

@@ -157,7 +157,7 @@ public interface GpuPluginConfig extends Config
 	)
 	default boolean unlockFps()
 	{
-		return false;
+		return true;
 	}
 
 	enum SyncMode
@@ -175,7 +175,7 @@ public interface GpuPluginConfig extends Config
 	)
 	default SyncMode syncMode()
 	{
-		return SyncMode.ADAPTIVE;
+		return SyncMode.OFF;
 	}
 
 	@ConfigItem(

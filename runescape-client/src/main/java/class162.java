@@ -3,69 +3,86 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gi")
-public class class162 extends class143 {
-	@ObfuscatedName("aa")
-	static int[][] field1794;
-	@ObfuscatedName("qv")
+@ObfuscatedName("gf")
+public class class162 {
+	@ObfuscatedName("fo")
 	@ObfuscatedSignature(
-		descriptor = "[Lmi;"
+		descriptor = "Lre;"
 	)
-	static Widget[] field1797;
-	@ObfuscatedName("tm")
-	@ObfuscatedSignature(
-		descriptor = "Lbl;"
-	)
-	@Export("pcmStreamMixer")
-	static PcmStreamMixer pcmStreamMixer;
-	@ObfuscatedName("au")
+	@Export("js5Socket")
+	static AbstractSocket js5Socket;
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = 519523655
+		longValue = 7172631523158354997L
 	)
-	int field1799;
-	// $FF: synthetic field
+	long field1756;
+	@ObfuscatedName("al")
+	@ObfuscatedGetter(
+		longValue = -6325307052126072157L
+	)
+	public long field1758;
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Lfn;"
+		descriptor = "Lpy;"
 	)
-	final class146 this$0;
+	IterableNodeDeque field1757;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lfn;)V"
+		descriptor = "(Lul;)V"
 	)
-	class162(class146 var1) {
-		this.this$0 = var1;
-		this.field1799 = -1;
+	public class162(Buffer var1) {
+		this.field1758 = -1L;
+		this.field1757 = new IterableNodeDeque();
+		this.method3352(var1);
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(Ltm;I)V",
-		garbageValue = "209179459"
+		descriptor = "(Lul;B)V",
+		garbageValue = "90"
 	)
-	void vmethod3337(Buffer var1) {
-		this.field1799 = var1.readUnsignedShort();
+	void method3352(Buffer var1) {
+		this.field1756 = var1.readLong();
+		this.field1758 = var1.readLong();
+
+		for (int var2 = var1.readUnsignedByte(); var2 != 0; var2 = var1.readUnsignedByte()) {
+			Object var3;
+			if (var2 == 1) {
+				var3 = new class157(this);
+			} else if (var2 == 4) {
+				var3 = new class168(this);
+			} else if (var2 == 3) {
+				var3 = new class153(this);
+			} else if (var2 == 2) {
+				var3 = new class151(this);
+			} else {
+				if (var2 != 5) {
+					throw new RuntimeException("");
+				}
+
+				var3 = new class158(this);
+			}
+
+			((class161)var3).vmethod3405(var1);
+			this.field1757.addFirst((Node)var3);
+		}
+
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(Lfi;B)V",
-		garbageValue = "73"
+		descriptor = "(Lgb;I)V",
+		garbageValue = "-913420137"
 	)
-	void vmethod3339(ClanSettings var1) {
-		var1.method3190(this.field1799);
-	}
+	public void method3353(ClanChannel var1) {
+		if (this.field1756 == var1.key && var1.field1775 == this.field1758) {
+			for (class161 var2 = (class161)this.field1757.last(); var2 != null; var2 = (class161)this.field1757.previous()) {
+				var2.vmethod3411(var1);
+			}
 
-	@ObfuscatedName("cs")
-	@ObfuscatedSignature(
-		descriptor = "(ILmc;ZI)V",
-		garbageValue = "-1867605195"
-	)
-	static void method3296(int var0, Coord var1, boolean var2) {
-		WorldMapArea var3 = class227.getWorldMap().getMapArea(var0);
-		int var4 = VarbitComposition.localPlayer.plane;
-		int var5 = UrlRequester.baseX * 64 + (VarbitComposition.localPlayer.x >> 7);
-		int var6 = class47.baseY * 64 + (VarbitComposition.localPlayer.y >> 7);
-		Coord var7 = new Coord(var4, var5, var6);
-		class227.getWorldMap().method8514(var3, var7, var1, var2);
+			++var1.field1775;
+		} else {
+			throw new RuntimeException("");
+		}
 	}
 }

@@ -202,8 +202,11 @@ public interface RSClient extends RSGameEngine, Client
 	@Override
 	int getDragTime();
 
-	@Import("Widget_interfaceComponents")
+	//@Import("Widget_interfaceComponents")
 	RSWidget[][] getWidgets();
+
+	@Import("widgetDefinition")
+	RSWidgetDefinition getWidgetDefinition();
 
 	/**
 	 * Gets an array of widgets that correspond to the passed group ID.
@@ -525,7 +528,7 @@ public interface RSClient extends RSGameEngine, Client
 	@Construct
 	RSInterfaceParent newInterfaceParent();
 
-	@Import("loadInterface")
+	//@Import("loadInterface")
 	boolean loadInterface(int interfaceId);
 
 	@Import("openInterface")
@@ -939,8 +942,8 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("compass")
 	void setCompass(SpritePixels spritePixels);
 
-	@Import("Widget_cachedSprites")
-	@Override
+	//@Import("Widget_cachedSprites")
+	//@Override
 	RSEvictingDualNodeHashTable getWidgetSpriteCache();
 
 	@Import("ItemDefinition_cached")
@@ -1009,9 +1012,6 @@ public interface RSClient extends RSGameEngine, Client
 
 	@Import("tileLastDrawnActor")
 	int[][] getOccupiedTilesTick();
-
-	@Import("ObjectDefinition_cachedModels")
-	RSEvictingDualNodeHashTable getObjectDefinitionModelsCache();
 
 	@Import("Scene_drawnCount")
 	int getCycle();
@@ -1553,17 +1553,11 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("HitSplatDefinition_cached")
 	RSEvictingDualNodeHashTable getHitSplatDefinitionCache();
 
-	//@Import("HitSplatDefinition_cachedSprites")
-	//RSEvictingDualNodeHashTable getHitSplatDefinitionSpritesCache();
-
 	@Import("HitSplatDefinition_cachedFonts")
 	RSEvictingDualNodeHashTable getHitSplatDefinitionDontsCache();
 
 	@Import("InvDefinition_cached")
 	RSEvictingDualNodeHashTable getInvDefinitionCache();
-
-	@Import("ItemDefinition_cachedModels")
-	RSEvictingDualNodeHashTable getItemDefinitionModelsCache();
 
 	@Import("ItemDefinition_cachedSprites")
 	RSEvictingDualNodeHashTable getItemDefinitionSpritesCache();
@@ -1607,26 +1601,20 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("SpotAnimationDefinition_cached")
 	RSEvictingDualNodeHashTable getSpotAnimationDefinitionCache();
 
-	@Import("SpotAnimationDefinition_cachedModels")
-	RSEvictingDualNodeHashTable getSpotAnimationDefinitionModlesCache();
-
 	@Import("VarcInt_cached")
 	RSEvictingDualNodeHashTable getVarcIntCache();
 
 	@Import("VarpDefinition_cached")
 	RSEvictingDualNodeHashTable getVarpDefinitionCache();
 
-	@Import("Widget_cachedModels")
+	//@Import("Widget_cachedModels")
 	RSEvictingDualNodeHashTable getModelsCache();
 
-	@Import("Widget_cachedFonts")
+	//@Import("Widget_cachedFonts")
 	RSEvictingDualNodeHashTable getFontsCache();
 
-	@Import("Widget_cachedSpriteMasks")
+	//@Import("Widget_cachedSpriteMasks")
 	RSEvictingDualNodeHashTable getSpriteMasksCache();
-
-	@Import("WorldMapElement_cachedSprites")
-	RSEvictingDualNodeHashTable getSpritesCache();
 
 	@Import("DBRowType_cache")
 	RSEvictingDualNodeHashTable getDbRowTypeCache();
@@ -1772,7 +1760,7 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("widgetDefaultMenuAction")
 	void invokeWidgetAction(int identifier, int param1, int param0, int itemId, String target);
 
-	@Import("getWidgetChild")
+	//@Import("getWidgetChild")
 	RSWidget getWidgetChild(int parent, int child);
 
 	@Import("ServerPacket_values")
