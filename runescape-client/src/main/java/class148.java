@@ -190,7 +190,7 @@ public class class148 {
 		garbageValue = "49"
 	)
 	static final void method3179(String var0, int var1) {
-		PacketBufferNode var2 = ClanChannelMember.getPacketBufferNode(ClientPacket.OPNPCT, Client.packetWriter.isaacCipher);
+		PacketBufferNode var2 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3135, Client.packetWriter.isaacCipher);
 		var2.packetBuffer.writeByte(class478.stringCp1252NullTerminatedByteSize(var0) + 1);
 		var2.packetBuffer.writeStringCp1252NullTerminated(var0);
 		var2.packetBuffer.writeByteNeg(var1);

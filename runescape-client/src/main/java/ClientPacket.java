@@ -22,7 +22,7 @@ public class ClientPacket implements class307 {
 	@ObfuscatedSignature(
 		descriptor = "Lln;"
 	)
-	public static final ClientPacket OPNPCT;
+	public static final ClientPacket field3135;
 	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
 		descriptor = "Lln;"
@@ -37,7 +37,7 @@ public class ClientPacket implements class307 {
 	@ObfuscatedSignature(
 		descriptor = "Lln;"
 	)
-	public static final ClientPacket field3229;
+	public static final ClientPacket OPNPCT;
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "Lln;"
@@ -514,10 +514,10 @@ public class ClientPacket implements class307 {
 	static {
 		EVENT_MOUSE_IDLE = new ClientPacket(0, 0);
 		field3134 = new ClientPacket(1, 7);
-		OPNPCT = new ClientPacket(2, -1);
+		field3135 = new ClientPacket(2, -1);
 		field3136 = new ClientPacket(3, 1);
 		OPOBJE = new ClientPacket(4, 6);
-		field3229 = new ClientPacket(5, 11);
+		OPNPCT = new ClientPacket(5, 11);
 		field3139 = new ClientPacket(6, -1);
 		field3140 = new ClientPacket(7, 13);
 		field3141 = new ClientPacket(8, -1);

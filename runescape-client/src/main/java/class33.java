@@ -749,7 +749,7 @@ public class class33 {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var14 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3229, Client.packetWriter.isaacCipher);
+					var14 = ClanChannelMember.getPacketBufferNode(ClientPacket.OPNPCT, Client.packetWriter.isaacCipher);
 					var14.packetBuffer.writeIntIME(JagexCache.selectedSpellWidget);
 					var14.packetBuffer.writeShortAdd(Client.selectedSpellItemId);
 					var14.packetBuffer.writeByteAdd(Client.field755.method4280(82) ? 1 : 0);
