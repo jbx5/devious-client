@@ -206,7 +206,8 @@ public class RegionManager
     @Subscribe(priority = Integer.MAX_VALUE)
     public void onItemContainerChanged(ItemContainerChanged event)
     {
-        if (event.getContainerId() == InventoryID.INVENTORY.getId() || event.getContainerId() == InventoryID.EQUIPMENT.getId())
+        if (event.getContainerId() == InventoryID.INVENTORY.getId() || event.getContainerId() == InventoryID.EQUIPMENT.getId()
+        || event.getContainerId() == InventoryID.BANK.getId())
         {
             if (hasChanged())
             {

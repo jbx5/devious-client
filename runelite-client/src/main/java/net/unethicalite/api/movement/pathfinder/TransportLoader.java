@@ -31,6 +31,7 @@ import net.unethicalite.api.movement.pathfinder.model.FairyRingLocation;
 import net.unethicalite.api.movement.pathfinder.model.Transport;
 import net.unethicalite.api.movement.pathfinder.model.dto.TransportDto;
 import net.unethicalite.api.movement.pathfinder.model.requirement.Requirements;
+import net.unethicalite.api.quests.QuestVarPlayer;
 import net.unethicalite.api.quests.QuestVarbits;
 import net.unethicalite.api.quests.Quests;
 import net.unethicalite.api.widgets.Dialog;
@@ -203,6 +204,13 @@ public class TransportLoader
                     transports.add(npcTransport(new WorldPoint(2515, 3159, 0), new WorldPoint(2504, 3192, 0), 4968, "Follow"));
                 }
 
+                // Gnome Battlefield
+                if (Vars.getVarp(QuestVarPlayer.QUEST_TREE_GNOME_VILLAGE.getId()) >= 5)
+                {
+                    transports.add(objectDialogTransport(new WorldPoint(2509, 3252, 0),
+                            new WorldPoint(2509, 3254, 0), 2185,
+                            new String[] {"Climb-over"}));
+                }
                 // Eagles peak cave
                 if (Vars.getVarp(934) >= 15)
                 {
@@ -309,6 +317,9 @@ public class TransportLoader
                         transports.add(mushtreeTransport(source.position, target.position, target.widget));
                     }
                 }
+                // Tower of Life
+                transports.add(trapDoorTransport(new WorldPoint(2648, 3213, 0), new WorldPoint(3038, 4376, 0), ObjectID.TRAPDOOR_21921, ObjectID.TRAPDOOR_21922));
+                transports.add(objectTransport(new WorldPoint(3038, 4376, 0), new WorldPoint(2649, 3212, 0), ObjectID.LADDER_17974, "Climb-up"));
             }
 
             // Gnome stronghold
@@ -492,7 +503,7 @@ public class TransportLoader
                 return;
             }
 
-            TileObject transport = TileObjects.getFirstSurrounding(source, 5, objId);
+            TileObject transport = TileObjects.getFirstSurrounding(source, 8, objId);
             if (transport != null)
             {
                 item.useOn(transport);
