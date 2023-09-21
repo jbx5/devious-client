@@ -4,52 +4,49 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("pf")
+@ObfuscatedName("pi")
 @Implements("AddRequestTask")
 public class AddRequestTask extends SongTask {
-	@ObfuscatedName("tw")
-	@ObfuscatedSignature(
-		descriptor = "Lbb;"
-	)
-	@Export("pcmPlayer1")
-	static PcmPlayer pcmPlayer1;
+	@ObfuscatedName("am")
+	@Export("SpriteBuffer_pixels")
+	public static byte[][] SpriteBuffer_pixels;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lpm;)V"
+		descriptor = "(Lqm;)V"
 	)
 	public AddRequestTask(SongTask var1) {
 		super(var1);
-		super.field4523 = "AddRequestTask";
+		super.field4572 = "AddRequestTask";
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "1604030758"
+		descriptor = "(B)Z",
+		garbageValue = "-90"
 	)
-	public boolean vmethod7621() {
-		while (!class305.field3411.isEmpty()) {
-			MusicSong var1 = (MusicSong)class305.field3411.peek();
+	public boolean vmethod7780() {
+		while (!class319.field3428.isEmpty()) {
+			MusicSong var1 = (MusicSong)class319.field3428.peek();
 			if (var1 == null) {
-				class305.field3411.pop();
+				class319.field3428.pop();
 			} else {
-				var1.midiPcmStream = this.method7571();
-				class305.musicSongs.add(var1);
-				class305.field3411.pop();
+				var1.midiPcmStream = this.method7733();
+				class319.musicSongs.add(var1);
+				class319.field3428.pop();
 			}
 		}
 
 		return true;
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(B)Llf;",
-		garbageValue = "53"
+		descriptor = "(B)Lmt;",
+		garbageValue = "4"
 	)
-	MidiPcmStream method7571() {
+	MidiPcmStream method7733() {
 		MidiPcmStream var1 = null;
-		Iterator var2 = class305.field3402.iterator();
+		Iterator var2 = class319.field3431.iterator();
 
 		while (true) {
 			MidiPcmStream var3;
@@ -57,10 +54,10 @@ public class AddRequestTask extends SongTask {
 				do {
 					if (!var2.hasNext()) {
 						if (var1 != null) {
-							++var1.field3443;
-							if (var1.method5830() == 0 && var1.isReady()) {
+							++var1.field3450;
+							if (var1.method5971() == 0 && var1.isReady()) {
 								var1.clear();
-								var1.method5877();
+								var1.method6044();
 								var1.setPcmStreamVolume(0);
 							}
 						}
@@ -70,26 +67,37 @@ public class AddRequestTask extends SongTask {
 
 					var3 = (MidiPcmStream)var2.next();
 				} while(var3 == null);
-			} while(var1 != null && var1.field3443 <= var3.field3443 && (var3.method5830() != 0 || !var3.isReady()));
+			} while(var1 != null && var1.field3450 <= var3.field3450 && (var3.method5971() != 0 || !var3.isReady()));
 
 			var1 = var3;
 		}
 	}
 
-	@ObfuscatedName("ij")
+	@ObfuscatedName("gs")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-71"
+		descriptor = "(I)V",
+		garbageValue = "1457106589"
 	)
-	static final void method7574() {
-		if (WorldMapIcon_0.field2973) {
-			for (int var0 = 0; var0 < Players.Players_count; ++var0) {
-				Player var1 = Client.players[Players.Players_indices[var0]];
-				var1.method2353();
-			}
+	static final void method7739() {
+		Scene.Scene_isLowDetail = false;
+		Client.isLowDetail = false;
+	}
 
-			WorldMapIcon_0.field2973 = false;
+	@ObfuscatedName("la")
+	@ObfuscatedSignature(
+		descriptor = "(II)V",
+		garbageValue = "19136899"
+	)
+	static final void method7738(int var0) {
+		if (var0 >= 0) {
+			int var1 = Client.menuArguments1[var0];
+			int var2 = Client.menuArguments2[var0];
+			int var3 = Client.menuOpcodes[var0];
+			int var4 = Client.menuIdentifiers[var0];
+			int var5 = Client.menuItemIds[var0];
+			String var6 = Client.menuActions[var0];
+			String var7 = Client.menuTargets[var0];
+			class33.menuAction(var1, var2, var3, var4, var5, var6, var7, MouseHandler.MouseHandler_lastPressedX, MouseHandler.MouseHandler_lastPressedY);
 		}
-
 	}
 }

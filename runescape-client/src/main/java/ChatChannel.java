@@ -4,18 +4,24 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("di")
+@ObfuscatedName("dg")
 @Implements("ChatChannel")
 public class ChatChannel {
-	@ObfuscatedName("ae")
+	@ObfuscatedName("lv")
+	@ObfuscatedGetter(
+		intValue = -1313145805
+	)
+	@Export("oculusOrbFocalPointX")
+	static int oculusOrbFocalPointX;
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "[Lco;"
+		descriptor = "[Lcr;"
 	)
 	@Export("messages")
 	Message[] messages;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = -1615403795
+		intValue = 679923983
 	)
 	@Export("count")
 	int count;
@@ -24,10 +30,10 @@ public class ChatChannel {
 		this.messages = new Message[100];
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;B)Lco;",
-		garbageValue = "100"
+		descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;B)Lcr;",
+		garbageValue = "-1"
 	)
 	@Export("addMessage")
 	Message addMessage(int var1, String var2, String var3, String var4) {
@@ -55,57 +61,23 @@ public class ChatChannel {
 		return var5;
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lco;",
-		garbageValue = "-1297953730"
+		descriptor = "(II)Lcr;",
+		garbageValue = "-1861075879"
 	)
 	@Export("getMessage")
 	Message getMessage(int var1) {
 		return var1 >= 0 && var1 < this.count ? this.messages[var1] : null;
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "1659980687"
+		garbageValue = "-1856127113"
 	)
 	@Export("size")
 	int size() {
 		return this.count;
-	}
-
-	@ObfuscatedName("ai")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "818523875"
-	)
-	static void method2199() {
-		Messages.Messages_channels.clear();
-		Messages.Messages_hashTable.clear();
-		Messages.Messages_queue.clear();
-		Messages.Messages_count = 0;
-	}
-
-	@ObfuscatedName("hg")
-	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "130826002"
-	)
-	static boolean method2190() {
-		if (Client.archiveLoaders != null && Client.archiveLoadersDone < Client.archiveLoaders.size()) {
-			while (Client.archiveLoadersDone < Client.archiveLoaders.size()) {
-				ArchiveLoader var0 = (ArchiveLoader)Client.archiveLoaders.get(Client.archiveLoadersDone);
-				if (!var0.isLoaded()) {
-					return false;
-				}
-
-				++Client.archiveLoadersDone;
-			}
-
-			return true;
-		} else {
-			return true;
-		}
 	}
 }

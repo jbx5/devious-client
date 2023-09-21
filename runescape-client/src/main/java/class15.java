@@ -12,15 +12,15 @@ import net.runelite.mapping.ObfuscatedSignature;
 import org.bouncycastle.crypto.tls.TlsClientProtocol;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
-@ObfuscatedName("ab")
+@ObfuscatedName("aj")
 public class class15 extends SSLSocketFactory {
-	@ObfuscatedName("ae")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "Lab;"
+		descriptor = "Laj;"
 	)
-	static class15 field78;
-	@ObfuscatedName("au")
-	SecureRandom field77;
+	public static class15 field82;
+	@ObfuscatedName("ac")
+	SecureRandom field83;
 
 	static {
 		if (Security.getProvider("BC") == null) {
@@ -29,16 +29,16 @@ public class class15 extends SSLSocketFactory {
 
 	}
 
-	class15() {
-		this.field77 = new SecureRandom();
+	public class15() {
+		this.field83 = new SecureRandom();
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Lorg/bouncycastle/crypto/tls/TlsClientProtocol;B)Ljavax/net/ssl/SSLSocket;",
-		garbageValue = "59"
+		descriptor = "(Ljava/lang/String;Lorg/bouncycastle/crypto/tls/TlsClientProtocol;S)Ljavax/net/ssl/SSLSocket;",
+		garbageValue = "-369"
 	)
-	SSLSocket method190(String var1, TlsClientProtocol var2) {
+	SSLSocket method185(String var1, TlsClientProtocol var2) {
 		return new class12(this, var2, var1);
 	}
 
@@ -51,19 +51,11 @@ public class class15 extends SSLSocketFactory {
 			var1.connect(new InetSocketAddress(var2, var3));
 		}
 
-		TlsClientProtocol var5 = new TlsClientProtocol(var1.getInputStream(), var1.getOutputStream(), this.field77);
-		return this.method190(var2, var5);
+		TlsClientProtocol var5 = new TlsClientProtocol(var1.getInputStream(), var1.getOutputStream(), this.field83);
+		return this.method185(var2, var5);
 	}
 
 	public String[] getDefaultCipherSuites() {
-		return null;
-	}
-
-	public String[] getSupportedCipherSuites() {
-		return null;
-	}
-
-	public Socket createSocket(String var1, int var2) throws IOException, UnknownHostException {
 		return null;
 	}
 
@@ -79,16 +71,11 @@ public class class15 extends SSLSocketFactory {
 		return null;
 	}
 
-	@ObfuscatedName("au")
-	@ObfuscatedSignature(
-		descriptor = "(I)Lab;",
-		garbageValue = "1970056082"
-	)
-	public static class15 method179() {
-		if (field78 == null) {
-			field78 = new class15();
-		}
+	public Socket createSocket(String var1, int var2) throws IOException, UnknownHostException {
+		return null;
+	}
 
-		return field78;
+	public String[] getSupportedCipherSuites() {
+		return null;
 	}
 }

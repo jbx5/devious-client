@@ -1,49 +1,45 @@
+import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hy")
+@ObfuscatedName("hr")
 @Implements("VerticalAlignment")
 public enum VerticalAlignment implements MouseWheel {
-	@ObfuscatedName("au")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Lhy;"
+		descriptor = "Lhr;"
 	)
-	field2081(1, 0),
-	@ObfuscatedName("ae")
+	field2096(1, 0),
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "Lhy;"
+		descriptor = "Lhr;"
 	)
 	@Export("VerticalAlignment_centered")
 	VerticalAlignment_centered(0, 1),
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Lhy;"
+		descriptor = "Lhr;"
 	)
-	field2080(2, 2);
+	field2094(2, 2);
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("tb")
 	@ObfuscatedSignature(
-		descriptor = "Luk;"
+		descriptor = "Lgi;"
 	)
-	static IndexedSprite field2083;
-	@ObfuscatedName("td")
-	@ObfuscatedSignature(
-		descriptor = "Lgo;"
-	)
-	@Export("guestClanChannel")
-	static ClanChannel guestClanChannel;
-	@ObfuscatedName("at")
+	@Export("guestClanSettings")
+	static ClanSettings guestClanSettings;
+	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = -76034327
+		intValue = -1606831967
 	)
 	@Export("value")
 	public final int value;
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = -1855187977
+		intValue = 1239612337
 	)
 	@Export("id")
 	final int id;
@@ -53,49 +49,61 @@ public enum VerticalAlignment implements MouseWheel {
 		this.id = var4;
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "41"
+		descriptor = "(I)I",
+		garbageValue = "-1243971674"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.id;
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("co")
 	@ObfuscatedSignature(
-		descriptor = "([Ljava/lang/String;[IIII)V",
-		garbageValue = "807517970"
+		descriptor = "(II)V",
+		garbageValue = "900742897"
 	)
-	public static void method3745(String[] var0, int[] var1, int var2, int var3) {
-		if (var2 < var3) {
-			int var4 = (var3 + var2) / 2;
-			int var5 = var2;
-			String var6 = var0[var4];
-			var0[var4] = var0[var3];
-			var0[var3] = var6;
-			int var7 = var1[var4];
-			var1[var4] = var1[var3];
-			var1[var3] = var7;
+	@Export("runWidgetOnLoadListener")
+	static void runWidgetOnLoadListener(int var0) {
+		if (var0 != -1) {
+			if (class33.widgetDefinition.loadInterface(var0)) {
+				Widget[] var1 = class33.widgetDefinition.Widget_interfaceComponents[var0];
 
-			for (int var8 = var2; var8 < var3; ++var8) {
-				if (var6 == null || var0[var8] != null && var0[var8].compareTo(var6) < (var8 & 1)) {
-					String var9 = var0[var8];
-					var0[var8] = var0[var5];
-					var0[var5] = var9;
-					int var10 = var1[var8];
-					var1[var8] = var1[var5];
-					var1[var5++] = var10;
+				for (int var2 = 0; var2 < var1.length; ++var2) {
+					Widget var3 = var1[var2];
+					if (var3.onLoad != null) {
+						ScriptEvent var4 = new ScriptEvent();
+						var4.widget = var3;
+						var4.args = var3.onLoad;
+						ArchiveDisk.runScript(var4, 5000000, 0);
+					}
 				}
-			}
 
-			var0[var3] = var0[var5];
-			var0[var5] = var6;
-			var1[var3] = var1[var5];
-			var1[var5] = var7;
-			method3745(var0, var1, var2, var5 - 1);
-			method3745(var0, var1, var5 + 1, var3);
+			}
+		}
+	}
+
+	@ObfuscatedName("na")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-1054734987"
+	)
+	static final void method3841() {
+		for (int var0 = 0; var0 < Players.Players_count; ++var0) {
+			Player var1 = Client.players[Players.Players_indices[var0]];
+			var1.clearIsFriend();
+		}
+
+		Iterator var2 = Messages.Messages_hashTable.iterator();
+
+		while (var2.hasNext()) {
+			Message var3 = (Message)var2.next();
+			var3.clearIsFromFriend();
+		}
+
+		if (class358.friendsChat != null) {
+			class358.friendsChat.clearFriends();
 		}
 
 	}

@@ -4,52 +4,39 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dm")
+@ObfuscatedName("db")
 @Implements("HealthBar")
 public class HealthBar extends Node {
-	@ObfuscatedName("aa")
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = -74001321
+		intValue = 782417661
 	)
-	@Export("ItemDefinition_fileCount")
-	public static int ItemDefinition_fileCount;
-	@ObfuscatedName("ls")
-	@ObfuscatedGetter(
-		intValue = 860411603
-	)
-	@Export("oculusOrbFocalPointY")
-	static int oculusOrbFocalPointY;
-	@ObfuscatedName("mn")
-	@ObfuscatedGetter(
-		intValue = 1873768041
-	)
-	@Export("Client_plane")
-	static int Client_plane;
-	@ObfuscatedName("ao")
+	static int field1312;
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Lhl;"
+		descriptor = "Lhj;"
 	)
 	@Export("definition")
 	HealthBarDefinition definition;
-	@ObfuscatedName("at")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "Loc;"
+		descriptor = "Lpy;"
 	)
 	@Export("updates")
 	IterableNodeDeque updates;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lhl;)V"
+		descriptor = "(Lhj;)V"
 	)
 	HealthBar(HealthBarDefinition var1) {
 		this.updates = new IterableNodeDeque();
 		this.definition = var1;
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIB)V",
-		garbageValue = "0"
+		descriptor = "(IIIII)V",
+		garbageValue = "-495031119"
 	)
 	@Export("put")
 	void put(int var1, int var2, int var3, int var4) {
@@ -82,10 +69,10 @@ public class HealthBar extends Node {
 		}
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Ldo;",
-		garbageValue = "-93"
+		descriptor = "(IB)Ldt;",
+		garbageValue = "-24"
 	)
 	@Export("get")
 	HealthBarUpdate get(int var1) {
@@ -107,48 +94,78 @@ public class HealthBar extends Node {
 		}
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "-45"
+		descriptor = "(I)Z",
+		garbageValue = "-1212431293"
 	)
 	@Export("isEmpty")
 	boolean isEmpty() {
-		return this.updates.method7032();
+		return this.updates.method7247();
 	}
 
-	@ObfuscatedName("jd")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(IIII)V",
-		garbageValue = "-1142010157"
+		descriptor = "(IIS)I",
+		garbageValue = "-21237"
 	)
-	@Export("worldToScreen")
-	static final void worldToScreen(int var0, int var1, int var2) {
-		if (var0 >= 128 && var1 >= 128 && var0 <= 13056 && var1 <= 13056) {
-			int var3 = class18.getTileHeight(var0, var1, Client_plane) - var2;
-			var0 -= NPCComposition.cameraX;
-			var3 -= class133.cameraY;
-			var1 -= class139.cameraZ;
-			int var4 = Rasterizer3D.Rasterizer3D_sine[class129.cameraPitch];
-			int var5 = Rasterizer3D.Rasterizer3D_cosine[class129.cameraPitch];
-			int var6 = Rasterizer3D.Rasterizer3D_sine[UserComparator10.cameraYaw];
-			int var7 = Rasterizer3D.Rasterizer3D_cosine[UserComparator10.cameraYaw];
-			int var8 = var6 * var1 + var0 * var7 >> 16;
-			var1 = var7 * var1 - var0 * var6 >> 16;
-			var0 = var8;
-			var8 = var5 * var3 - var4 * var1 >> 16;
-			var1 = var5 * var1 + var3 * var4 >> 16;
-			if (var1 >= 50) {
-				Client.viewportTempX = var0 * Client.viewportZoom / var1 + Client.viewportWidth / 2;
-				Client.viewportTempY = Client.viewportHeight / 2 + var8 * Client.viewportZoom / var1;
-			} else {
-				Client.viewportTempX = -1;
-				Client.viewportTempY = -1;
+	public static int method2618(int var0, int var1) {
+		return (int)Math.round(Math.atan2((double)var0, (double)var1) * 2607.5945876176133D) & 16383;
+	}
+
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "(II)I",
+		garbageValue = "-1762849549"
+	)
+	public static int method2616(int var0) {
+		long var2 = ViewportMouse.ViewportMouse_entityTags[var0];
+		int var1 = (int)(var2 >>> 0 & 127L);
+		return var1;
+	}
+
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "(IS)I",
+		garbageValue = "28917"
+	)
+	public static int method2619(int var0) {
+		return (var0 & class523.field5093) - 1;
+	}
+
+	@ObfuscatedName("ah")
+	@ObfuscatedSignature(
+		descriptor = "(Lul;IB)V",
+		garbageValue = "1"
+	)
+	public static void method2617(Buffer var0, int var1) {
+		if (JagexCache.JagexCache_randomDat != null) {
+			try {
+				JagexCache.JagexCache_randomDat.seek(0L);
+				JagexCache.JagexCache_randomDat.write(var0.array, var1, 24);
+			} catch (Exception var3) {
+			}
+		}
+
+	}
+
+	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "516067263"
+	)
+	public static void method2615() {
+		try {
+			JagexCache.JagexCache_dat2File.close();
+
+			for (int var0 = 0; var0 < UrlRequester.field1438; ++var0) {
+				UserComparator8.JagexCache_idxFiles[var0].close();
 			}
 
-		} else {
-			Client.viewportTempX = -1;
-			Client.viewportTempY = -1;
+			JagexCache.JagexCache_idx255File.close();
+			JagexCache.JagexCache_randomDat.close();
+		} catch (Exception var2) {
 		}
+
 	}
 }

@@ -7,49 +7,54 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("go")
+@ObfuscatedName("gb")
 @Implements("ClanChannel")
 public class ClanChannel extends Node {
-	@ObfuscatedName("au")
-	boolean field1807;
-	@ObfuscatedName("ae")
-	boolean field1801;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aj")
+	@ObfuscatedSignature(
+		descriptor = "Lun;"
+	)
+	static IndexedSprite field1779;
+	@ObfuscatedName("ac")
+	boolean field1773;
+	@ObfuscatedName("al")
+	boolean field1772;
+	@ObfuscatedName("ak")
 	@Export("members")
 	public List members;
-	@ObfuscatedName("at")
+	@ObfuscatedName("ax")
 	@Export("sortedMembers")
 	int[] sortedMembers;
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		longValue = -1404514629729281795L
+		longValue = -2657131668155479195L
 	)
-	public long field1808;
-	@ObfuscatedName("ai")
+	public long field1775;
+	@ObfuscatedName("ah")
 	@Export("name")
 	public String name;
-	@ObfuscatedName("az")
-	public byte field1800;
-	@ObfuscatedName("ap")
-	public byte field1804;
+	@ObfuscatedName("ar")
+	public byte field1777;
+	@ObfuscatedName("ab")
+	public byte field1778;
 
 	static {
 		new BitSet(65536);
 	}
 
 	@ObfuscatedSignature(
-		descriptor = "(Ltm;)V"
+		descriptor = "(Lul;)V"
 	)
 	public ClanChannel(Buffer var1) {
-		this.field1801 = true;
+		this.field1772 = true;
 		this.name = null;
-		this.method3315(var1);
+		this.method3388(var1);
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
 		descriptor = "(B)[I",
-		garbageValue = "74"
+		garbageValue = "-35"
 	)
 	@Export("getSortedMembers")
 	public int[] getSortedMembers() {
@@ -58,20 +63,20 @@ public class ClanChannel extends Node {
 			this.sortedMembers = new int[this.members.size()];
 
 			for (int var2 = 0; var2 < this.members.size(); this.sortedMembers[var2] = var2++) {
-				var1[var2] = ((ClanChannelMember)this.members.get(var2)).username.method9688();
+				var1[var2] = ((ClanChannelMember)this.members.get(var2)).username.method9844();
 			}
 
 			int[] var3 = this.sortedMembers;
-			VerticalAlignment.method3745(var1, var3, 0, var1.length - 1);
+			class161.method3349(var1, var3, 0, var1.length - 1);
 		}
 
 		return this.sortedMembers;
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(Lfu;I)V",
-		garbageValue = "2089443829"
+		descriptor = "(Lfv;B)V",
+		garbageValue = "0"
 	)
 	@Export("addMember")
 	void addMember(ClanChannelMember var1) {
@@ -79,10 +84,10 @@ public class ClanChannel extends Node {
 		this.sortedMembers = null;
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "-753870503"
+		descriptor = "(IB)V",
+		garbageValue = "-32"
 	)
 	@Export("removeMember")
 	void removeMember(int var1) {
@@ -90,22 +95,22 @@ public class ClanChannel extends Node {
 		this.sortedMembers = null;
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "65"
+		descriptor = "(I)I",
+		garbageValue = "-1630727140"
 	)
-	public int method3301() {
+	public int method3382() {
 		return this.members.size();
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;S)I",
-		garbageValue = "179"
+		descriptor = "(Ljava/lang/String;I)I",
+		garbageValue = "-1421976889"
 	)
-	public int method3302(String var1) {
-		if (!this.field1801) {
+	public int method3383(String var1) {
+		if (!this.field1772) {
 			throw new RuntimeException("Displaynames not available");
 		} else {
 			for (int var2 = 0; var2 < this.members.size(); ++var2) {
@@ -118,19 +123,19 @@ public class ClanChannel extends Node {
 		}
 	}
 
-	@ObfuscatedName("ai")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(Ltm;I)V",
-		garbageValue = "-1748777408"
+		descriptor = "(Lul;I)V",
+		garbageValue = "446907071"
 	)
-	void method3315(Buffer var1) {
+	void method3388(Buffer var1) {
 		int var2 = var1.readUnsignedByte();
 		if ((var2 & 1) != 0) {
-			this.field1807 = true;
+			this.field1773 = true;
 		}
 
 		if ((var2 & 2) != 0) {
-			this.field1801 = true;
+			this.field1772 = true;
 		}
 
 		int var3 = 2;
@@ -139,22 +144,22 @@ public class ClanChannel extends Node {
 		}
 
 		super.key = var1.readLong();
-		this.field1808 = var1.readLong();
+		this.field1775 = var1.readLong();
 		this.name = var1.readStringCp1252NullTerminated();
 		var1.readBoolean();
-		this.field1804 = var1.readByte();
-		this.field1800 = var1.readByte();
+		this.field1778 = var1.readByte();
+		this.field1777 = var1.readByte();
 		int var4 = var1.readUnsignedShort();
 		if (var4 > 0) {
 			this.members = new ArrayList(var4);
 
 			for (int var5 = 0; var5 < var4; ++var5) {
 				ClanChannelMember var6 = new ClanChannelMember();
-				if (this.field1807) {
+				if (this.field1773) {
 					var1.readLong();
 				}
 
-				if (this.field1801) {
+				if (this.field1772) {
 					var6.username = new Username(var1.readStringCp1252NullTerminated());
 				}
 
@@ -170,81 +175,53 @@ public class ClanChannel extends Node {
 
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lhz;",
-		garbageValue = "1042028592"
+		descriptor = "(IB)Lhm;",
+		garbageValue = "77"
 	)
-	@Export("KitDefinition_get")
-	public static KitDefinition KitDefinition_get(int var0) {
-		KitDefinition var1 = (KitDefinition)KitDefinition.KitDefinition_cached.get((long)var0);
+	@Export("getInvDefinition")
+	public static InvDefinition getInvDefinition(int var0) {
+		InvDefinition var1 = (InvDefinition)InvDefinition.InvDefinition_cached.get((long)var0);
 		if (var1 != null) {
 			return var1;
 		} else {
-			byte[] var2 = KitDefinition.KitDefinition_archive.takeFile(3, var0);
-			var1 = new KitDefinition();
+			byte[] var2 = InvDefinition.InvDefinition_archive.takeFile(5, var0);
+			var1 = new InvDefinition();
 			if (var2 != null) {
 				var1.decode(new Buffer(var2));
 			}
 
-			KitDefinition.KitDefinition_cached.put(var1, (long)var0);
+			InvDefinition.InvDefinition_cached.put(var1, (long)var0);
 			return var1;
 		}
 	}
 
-	@ObfuscatedName("jx")
+	@ObfuscatedName("nz")
 	@ObfuscatedSignature(
-		descriptor = "(Lie;S)V",
-		garbageValue = "12208"
+		descriptor = "(IIII)Lde;",
+		garbageValue = "203333818"
 	)
-	static void method3321(class211 var0) {
-		if (var0 != null && var0.field2355 != null) {
-			if (var0.field2355.childIndex >= 0) {
-				Widget var1 = class92.getWidget(var0.field2355.parentId);
-				if (var1 == null || var1.children == null || var1.children.length == 0 || var0.field2355.childIndex >= var1.children.length || var0.field2355 != var1.children[var0.field2355.childIndex]) {
-					return;
-				}
-			}
-
-			if (var0.field2355.type == 11 && var0.field2350 == 0) {
-				if (var0.field2355.method6404(var0.field2352, var0.field2354, 0, 0)) {
-					switch(var0.field2355.method6408()) {
-					case 0:
-						class30.openURL(var0.field2355.method6410(), true, false);
-						break;
-					case 1:
-						int var2 = NpcOverrides.getWidgetFlags(var0.field2355);
-						boolean var5 = (var2 >> 22 & 1) != 0;
-						if (var5) {
-							int[] var3 = var0.field2355.method6424();
-							if (var3 != null) {
-								PacketBufferNode var4 = ApproximateRouteStrategy.getPacketBufferNode(ClientPacket.field3124, Client.packetWriter.isaacCipher);
-								var4.packetBuffer.writeIntME(var3[1]);
-								var4.packetBuffer.writeIntIME(var0.field2355.id);
-								var4.packetBuffer.writeShortLE(var0.field2355.childIndex);
-								var4.packetBuffer.writeInt(var0.field2355.method6409());
-								var4.packetBuffer.writeIntIME(var3[2]);
-								var4.packetBuffer.writeIntIME(var3[0]);
-								Client.packetWriter.addNode(var4);
-							}
-						}
-					}
-				}
-			} else if (var0.field2355.type == 12) {
-				class329 var6 = var0.field2355.method6532();
-				if (var6 != null && var6.method6158()) {
-					switch(var0.field2350) {
-					case 0:
-						Client.field765.method4093(var0.field2355);
-						var6.method6106(true);
-						var6.method6347(var0.field2352, var0.field2354, Client.field674.method4120(82), Client.field674.method4120(81));
-						break;
-					case 1:
-						var6.method6190(var0.field2352, var0.field2354);
-					}
-				}
-			}
-
+	@Export("openInterface")
+	static final InterfaceParent openInterface(int var0, int var1, int var2) {
+		InterfaceParent var3 = new InterfaceParent();
+		var3.group = var1;
+		var3.type = var2;
+		Client.interfaceParents.put(var3, (long)var0);
+		class357.method6796(var1);
+		Widget var4 = class33.widgetDefinition.method6240(var0);
+		ClanChannelMember.invalidateWidget(var4);
+		if (Client.meslayerContinueWidget != null) {
+			ClanChannelMember.invalidateWidget(Client.meslayerContinueWidget);
+			Client.meslayerContinueWidget = null;
 		}
+
+		PendingSpawn.revalidateWidgetScroll(class33.widgetDefinition.Widget_interfaceComponents[var0 >> 16], var4, false);
+		VerticalAlignment.runWidgetOnLoadListener(var1);
+		if (Client.rootInterface != -1) {
+			Interpreter.runIntfCloseListeners(Client.rootInterface, 1);
+		}
+
+		return var3;
 	}
 }

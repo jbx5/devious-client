@@ -1,62 +1,69 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fz")
-public class class144 extends class143 {
-	@ObfuscatedName("au")
+@ObfuscatedName("fa")
+public class class144 extends class145 {
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = -974781301
+		intValue = -279574085
 	)
-	int field1672;
-	@ObfuscatedName("ae")
-	boolean field1670;
+	int field1647;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lfn;"
+		descriptor = "Lff;"
 	)
-	final class146 this$0;
+	final class148 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lfn;)V"
+		descriptor = "(Lff;)V"
 	)
-	class144(class146 var1) {
+	class144(class148 var1) {
 		this.this$0 = var1;
-		this.field1672 = -1;
+		this.field1647 = -1;
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(Ltm;I)V",
-		garbageValue = "209179459"
+		descriptor = "(Lul;I)V",
+		garbageValue = "-11659242"
 	)
-	void vmethod3337(Buffer var1) {
-		this.field1672 = var1.readUnsignedShort();
-		this.field1670 = var1.readUnsignedByte() == 1;
+	void vmethod3414(Buffer var1) {
+		this.field1647 = var1.readUnsignedShort();
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(Lfi;B)V",
-		garbageValue = "73"
+		descriptor = "(Lgi;I)V",
+		garbageValue = "21847466"
 	)
-	void vmethod3339(ClanSettings var1) {
-		var1.method3232(this.field1672, this.field1670);
+	void vmethod3415(ClanSettings var1) {
+		var1.method3243(this.field1647);
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "(IIII)I",
-		garbageValue = "-2136715015"
+		descriptor = "(I)V",
+		garbageValue = "1547227801"
 	)
-	public static int method3118(int var0, int var1, int var2) {
-		var2 &= 3;
-		if (var2 == 0) {
-			return var1;
-		} else if (var2 == 1) {
-			return 7 - var0;
-		} else {
-			return var2 == 2 ? 7 - var1 : var0;
+	@Export("savePreferences")
+	static void savePreferences() {
+		AccessFile var0 = null;
+
+		try {
+			var0 = class17.getPreferencesFile("", UrlRequester.field1436.name, true);
+			Buffer var1 = class91.clientPreferences.toBuffer();
+			var0.write(var1.array, 0, var1.offset);
+		} catch (Exception var3) {
 		}
+
+		try {
+			if (var0 != null) {
+				var0.closeSync(true);
+			}
+		} catch (Exception var2) {
+		}
+
 	}
 }

@@ -4,130 +4,130 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("mg")
+@ObfuscatedName("ms")
 @Implements("MusicPatchNode")
 public class MusicPatchNode extends Node {
-	@ObfuscatedName("au")
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = -1331637163
+		intValue = -1506147385
 	)
-	int field3497;
-	@ObfuscatedName("ae")
+	int field3516;
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "Lll;"
+		descriptor = "Lmq;"
 	)
 	@Export("table")
 	MusicPatch table;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Lbu;"
+		descriptor = "Lbs;"
 	)
 	@Export("rawSound")
 	RawSound rawSound;
-	@ObfuscatedName("at")
-	@ObfuscatedSignature(
-		descriptor = "Llj;"
-	)
-	MusicPatchNode2 field3490;
-	@ObfuscatedName("ac")
-	@ObfuscatedGetter(
-		intValue = 670524253
-	)
-	int field3503;
-	@ObfuscatedName("ai")
-	@ObfuscatedGetter(
-		intValue = 1947966229
-	)
-	int field3492;
-	@ObfuscatedName("az")
-	@ObfuscatedGetter(
-		intValue = 1900320225
-	)
-	int field3493;
-	@ObfuscatedName("ap")
-	@ObfuscatedGetter(
-		intValue = -1386447781
-	)
-	int field3494;
-	@ObfuscatedName("aa")
-	@ObfuscatedGetter(
-		intValue = -1550635939
-	)
-	int field3491;
-	@ObfuscatedName("af")
-	@ObfuscatedGetter(
-		intValue = -1426698929
-	)
-	int field3496;
-	@ObfuscatedName("ad")
-	@ObfuscatedGetter(
-		intValue = 937704907
-	)
-	int field3499;
-	@ObfuscatedName("aq")
-	@ObfuscatedGetter(
-		intValue = 2124005376
-	)
-	int field3498;
-	@ObfuscatedName("al")
-	@ObfuscatedGetter(
-		intValue = -428307499
-	)
-	int field3505;
-	@ObfuscatedName("an")
-	@ObfuscatedGetter(
-		intValue = 1260895315
-	)
-	int field3500;
-	@ObfuscatedName("ar")
-	@ObfuscatedGetter(
-		intValue = 1063512765
-	)
-	int field3501;
-	@ObfuscatedName("ab")
-	@ObfuscatedGetter(
-		intValue = 1200411245
-	)
-	int field3502;
-	@ObfuscatedName("ag")
-	@ObfuscatedGetter(
-		intValue = -1774158357
-	)
-	int field3487;
-	@ObfuscatedName("am")
-	@ObfuscatedGetter(
-		intValue = -50093413
-	)
-	int field3504;
 	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "Lbn;"
+		descriptor = "Lmx;"
+	)
+	MusicPatchNode2 field3518;
+	@ObfuscatedName("ao")
+	@ObfuscatedGetter(
+		intValue = 1996196471
+	)
+	int field3519;
+	@ObfuscatedName("ah")
+	@ObfuscatedGetter(
+		intValue = 1419339041
+	)
+	int field3520;
+	@ObfuscatedName("ar")
+	@ObfuscatedGetter(
+		intValue = 1753088581
+	)
+	int field3521;
+	@ObfuscatedName("ab")
+	@ObfuscatedGetter(
+		intValue = -855974251
+	)
+	int field3522;
+	@ObfuscatedName("am")
+	@ObfuscatedGetter(
+		intValue = 1429053681
+	)
+	int field3517;
+	@ObfuscatedName("av")
+	@ObfuscatedGetter(
+		intValue = 132220191
+	)
+	int field3529;
+	@ObfuscatedName("ag")
+	@ObfuscatedGetter(
+		intValue = 1820174989
+	)
+	int field3525;
+	@ObfuscatedName("aa")
+	@ObfuscatedGetter(
+		intValue = 203101491
+	)
+	int field3526;
+	@ObfuscatedName("ap")
+	@ObfuscatedGetter(
+		intValue = 97854413
+	)
+	int field3527;
+	@ObfuscatedName("ay")
+	@ObfuscatedGetter(
+		intValue = 1208828233
+	)
+	int field3528;
+	@ObfuscatedName("as")
+	@ObfuscatedGetter(
+		intValue = -1094756993
+	)
+	int field3524;
+	@ObfuscatedName("aj")
+	@ObfuscatedGetter(
+		intValue = 437050865
+	)
+	int field3530;
+	@ObfuscatedName("an")
+	@ObfuscatedGetter(
+		intValue = 641731471
+	)
+	int field3531;
+	@ObfuscatedName("au")
+	@ObfuscatedGetter(
+		intValue = 1448128495
+	)
+	int field3534;
+	@ObfuscatedName("ai")
+	@ObfuscatedSignature(
+		descriptor = "Lbx;"
 	)
 	@Export("stream")
 	RawPcmStream stream;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ae")
 	@ObfuscatedGetter(
-		intValue = 863924975
+		intValue = -1312759697
 	)
-	int field3506;
-	@ObfuscatedName("ay")
+	int field3536;
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = 288657113
+		intValue = -1653152313
 	)
-	int field3507;
+	int field3535;
 
 	MusicPatchNode() {
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
 		descriptor = "(B)V",
-		garbageValue = "-26"
+		garbageValue = "60"
 	)
-	void method5998() {
+	void method6195() {
 		this.table = null;
 		this.rawSound = null;
-		this.field3490 = null;
+		this.field3518 = null;
 		this.stream = null;
 	}
 }

@@ -3,79 +3,103 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ge")
-public class class167 extends class143 {
-	@ObfuscatedName("ai")
-	@Export("ArchiveDiskActionHandler_thread")
-	static Thread ArchiveDiskActionHandler_thread;
-	@ObfuscatedName("ki")
-	@ObfuscatedSignature(
-		descriptor = "Lui;"
-	)
-	@Export("redHintArrowSprite")
-	static SpritePixels redHintArrowSprite;
-	@ObfuscatedName("au")
+@ObfuscatedName("gp")
+public class class167 extends class145 {
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = -739944557
+		longValue = 3610111583627244041L
 	)
-	int field1829;
-	@ObfuscatedName("ae")
-	@ObfuscatedGetter(
-		longValue = -609205745967376381L
-	)
-	long field1826;
+	long field1789;
+	@ObfuscatedName("al")
+	String field1790;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lfn;"
+		descriptor = "Lff;"
 	)
-	final class146 this$0;
+	final class148 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lfn;)V"
+		descriptor = "(Lff;)V"
 	)
-	class167(class146 var1) {
+	class167(class148 var1) {
 		this.this$0 = var1;
+		this.field1789 = -1L;
+		this.field1790 = null;
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(Ltm;I)V",
-		garbageValue = "209179459"
+		descriptor = "(Lul;I)V",
+		garbageValue = "-11659242"
 	)
-	void vmethod3337(Buffer var1) {
-		this.field1829 = var1.readInt();
-		this.field1826 = var1.readLong();
-	}
-
-	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "(Lfi;B)V",
-		garbageValue = "73"
-	)
-	void vmethod3339(ClanSettings var1) {
-		var1.method3195(this.field1829, this.field1826);
-	}
-
-	@ObfuscatedName("jq")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "769198964"
-	)
-	static final void method3342() {
-		for (GraphicsObject var0 = (GraphicsObject)Client.graphicsObjects.last(); var0 != null; var0 = (GraphicsObject)Client.graphicsObjects.previous()) {
-			if (var0.plane == HealthBar.Client_plane && !var0.isFinished) {
-				if (Client.cycle >= var0.cycleStart) {
-					var0.advance(Client.graphicsCycle);
-					if (var0.isFinished) {
-						var0.remove();
-					} else {
-						class130.scene.drawEntity(var0.plane, var0.x, var0.y, var0.z, 60, var0, 0, -1L, false);
-					}
-				}
-			} else {
-				var0.remove();
-			}
+	void vmethod3414(Buffer var1) {
+		if (var1.readUnsignedByte() != 255) {
+			--var1.offset;
+			this.field1789 = var1.readLong();
 		}
 
+		this.field1790 = var1.readStringCp1252NullTerminatedOrNull();
+	}
+
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "(Lgi;I)V",
+		garbageValue = "21847466"
+	)
+	void vmethod3415(ClanSettings var1) {
+		var1.method3251(this.field1789, this.field1790);
+	}
+
+	@ObfuscatedName("ac")
+	@ObfuscatedSignature(
+		descriptor = "(Lul;Ltp;B)Ltp;",
+		garbageValue = "8"
+	)
+	@Export("readStringIntParameters")
+	static final IterableNodeHashTable readStringIntParameters(Buffer var0, IterableNodeHashTable var1) {
+		int var2 = var0.readUnsignedByte();
+		int var3;
+		if (var1 == null) {
+			var3 = EnumComposition.method3749(var2);
+			var1 = new IterableNodeHashTable(var3);
+		}
+
+		for (var3 = 0; var3 < var2; ++var3) {
+			boolean var4 = var0.readUnsignedByte() == 1;
+			int var5 = var0.readMedium();
+			Object var6;
+			if (var4) {
+				var6 = new ObjectNode(var0.readStringCp1252NullTerminated());
+			} else {
+				var6 = new IntegerNode(var0.readInt());
+			}
+
+			var1.put((Node)var6, (long)var5);
+		}
+
+		return var1;
+	}
+
+	@ObfuscatedName("ax")
+	@ObfuscatedSignature(
+		descriptor = "(Lom;Ljava/lang/String;Ljava/lang/String;I)Lun;",
+		garbageValue = "-2109687814"
+	)
+	@Export("SpriteBuffer_getIndexedSpriteByName")
+	public static IndexedSprite SpriteBuffer_getIndexedSpriteByName(AbstractArchive var0, String var1, String var2) {
+		if (!var0.isValidFileName(var1, var2)) {
+			return null;
+		} else {
+			int var3 = var0.getGroupId(var1);
+			int var4 = var0.getFileId(var3, var2);
+			IndexedSprite var5;
+			if (!class164.method3376(var0, var3, var4)) {
+				var5 = null;
+			} else {
+				var5 = Widget.method6728();
+			}
+
+			return var5;
+		}
 	}
 }

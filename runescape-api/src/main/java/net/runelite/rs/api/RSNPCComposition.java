@@ -19,7 +19,6 @@ public interface RSNPCComposition extends NPCComposition
 	String[] getActions();
 
 	@Import("isClickable")
-	@Override
 	boolean isClickable();
 
 	@Import("isFollower")
@@ -57,6 +56,22 @@ public interface RSNPCComposition extends NPCComposition
 	@Import("size")
 	@Override
 	int getSize();
+
+	@Import("recolorFrom")
+	@Override
+	short[] getColorToReplace();
+
+	@Import("recolorTo")
+	@Override
+	short[] getColorToReplaceWith();
+
+	@Import("widthScale")
+	@Override
+	int getWidthScale();
+
+	@Import("heightScale")
+	@Override
+	int getHeightScale();
 
 	@Import("headIconArchiveIds")
 	int[] getHeadIconArchiveIds();

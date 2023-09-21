@@ -5,60 +5,58 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("kv")
+@ObfuscatedName("lj")
 @Implements("WorldMapAreaData")
 public class WorldMapAreaData extends WorldMapArea {
-	@ObfuscatedName("al")
-	@Export("worldMapData0Set")
-	HashSet worldMapData0Set;
-	@ObfuscatedName("an")
-	@Export("worldMapData1Set")
-	HashSet worldMapData1Set;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ay")
+	HashSet field3100;
+	@ObfuscatedName("as")
+	HashSet field3098;
+	@ObfuscatedName("aj")
 	@Export("iconList")
 	List iconList;
 
 	WorldMapAreaData() {
 	}
 
-	@ObfuscatedName("cu")
+	@ObfuscatedName("cx")
 	@ObfuscatedSignature(
-		descriptor = "(Ltm;Ltm;IZI)V",
-		garbageValue = "1963374909"
+		descriptor = "(Lul;Lul;IZZI)V",
+		garbageValue = "-940833039"
 	)
-	@Export("init")
-	void init(Buffer var1, Buffer var2, int var3, boolean var4) {
-		this.read(var1, var3);
-		int var5 = var2.readUnsignedShort();
-		this.worldMapData0Set = new HashSet(var5);
+	void method5746(Buffer var1, Buffer var2, int var3, boolean var4, boolean var5) {
+		this.method5266(var1, var3, var5);
+		int var6 = var2.readUnsignedShort();
+		this.field3100 = new HashSet(var6);
 
-		int var6;
-		for (var6 = 0; var6 < var5; ++var6) {
-			WorldMapData_0 var7 = new WorldMapData_0();
+		int var7;
+		for (var7 = 0; var7 < var6; ++var7) {
+			WorldMapData_0 var8 = new WorldMapData_0();
 
 			try {
-				var7.init(var2);
+				var8.init(var2);
+			} catch (IllegalStateException var13) {
+				continue;
+			}
+
+			this.field3100.add(var8);
+		}
+
+		var7 = var2.readUnsignedShort();
+		this.field3098 = new HashSet(var7);
+
+		for (int var11 = 0; var11 < var7; ++var11) {
+			WorldMapData_1 var9 = new WorldMapData_1();
+
+			try {
+				var9.init(var2);
 			} catch (IllegalStateException var12) {
 				continue;
 			}
 
-			this.worldMapData0Set.add(var7);
-		}
-
-		var6 = var2.readUnsignedShort();
-		this.worldMapData1Set = new HashSet(var6);
-
-		for (int var10 = 0; var10 < var6; ++var10) {
-			WorldMapData_1 var8 = new WorldMapData_1();
-
-			try {
-				var8.init(var2);
-			} catch (IllegalStateException var11) {
-				continue;
-			}
-
-			this.worldMapData1Set.add(var8);
+			this.field3098.add(var9);
 		}
 
 		this.initIconsList(var2, var4);
@@ -66,8 +64,8 @@ public class WorldMapAreaData extends WorldMapArea {
 
 	@ObfuscatedName("ch")
 	@ObfuscatedSignature(
-		descriptor = "(Ltm;ZB)V",
-		garbageValue = "-123"
+		descriptor = "(Lul;ZB)V",
+		garbageValue = "0"
 	)
 	@Export("initIconsList")
 	void initIconsList(Buffer var1, boolean var2) {
@@ -85,73 +83,98 @@ public class WorldMapAreaData extends WorldMapArea {
 
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("bu")
 	@ObfuscatedSignature(
-		descriptor = "(ZI)V",
-		garbageValue = "2073842388"
+		descriptor = "(ILds;ZI)I",
+		garbageValue = "1112250156"
 	)
-	@Export("Login_promptCredentials")
-	static void Login_promptCredentials(boolean var0) {
-		if (!class219.client.method1246() && !class219.client.method1248() && !class219.client.method1428()) {
-			Login.Login_response1 = "";
-			Login.Login_response2 = "Enter your username/email & password.";
-			Login.Login_response3 = "";
-			PcmPlayer.method838(2);
-			if (var0) {
-				Login.Login_password = "";
+	static int method5744(int var0, Script var1, boolean var2) {
+		if (var0 == ScriptOpcodes.VIEWPORT_SETFOV) {
+			Interpreter.Interpreter_intStackSize -= 2;
+			Client.field791 = (short)class274.method5561(Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize]);
+			if (Client.field791 <= 0) {
+				Client.field791 = 256;
 			}
 
-			if (Login.Login_username == null || Login.Login_username.length() <= 0) {
-				if (class449.clientPreferences.method2466() != null) {
-					Login.Login_username = class449.clientPreferences.method2466();
-					Client.Login_isUsernameRemembered = true;
-				} else {
-					Client.Login_isUsernameRemembered = false;
-				}
+			Client.field792 = (short)class274.method5561(Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1]);
+			if (Client.field792 <= 0) {
+				Client.field792 = 256;
 			}
 
-			ObjectComposition.method3936();
-		} else {
-			PcmPlayer.method838(10);
-		}
-	}
+			return 1;
+		} else if (var0 == ScriptOpcodes.VIEWPORT_SETZOOM) {
+			Interpreter.Interpreter_intStackSize -= 2;
+			Client.zoomHeight = (short)Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+			if (Client.zoomHeight <= 0) {
+				Client.zoomHeight = 256;
+			}
 
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "(ZB)V",
-		garbageValue = "54"
-	)
-	static void method5584(boolean var0) {
-		byte var1 = 0;
-		boolean var2 = class449.clientPreferences.method2468() >= Client.field531;
-		if (!var2) {
-			var1 = 12;
-		} else if (class219.client.method1246() || class219.client.method1248() || class219.client.method1428()) {
-			var1 = 10;
-		}
+			Client.zoomWidth = (short)Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+			if (Client.zoomWidth <= 0) {
+				Client.zoomWidth = 320;
+			}
 
-		PcmPlayer.method838(var1);
-		if (var0) {
-			Login.Login_username = "";
-			Login.Login_password = "";
-			class503.field5039 = 0;
-			class369.otp = "";
-		}
+			return 1;
+		} else if (var0 == ScriptOpcodes.VIEWPORT_CLAMPFOV) {
+			Interpreter.Interpreter_intStackSize -= 4;
+			Client.field795 = (short)Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+			if (Client.field795 <= 0) {
+				Client.field795 = 1;
+			}
 
-		if (Login.Login_username == null || Login.Login_username.length() <= 0) {
-			if (class449.clientPreferences.method2466() != null) {
-				Login.Login_username = class449.clientPreferences.method2466();
-				Client.Login_isUsernameRemembered = true;
+			Client.field662 = (short)Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+			if (Client.field662 <= 0) {
+				Client.field662 = 32767;
+			} else if (Client.field662 < Client.field795) {
+				Client.field662 = Client.field795;
+			}
+
+			Client.field594 = (short)Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 2];
+			if (Client.field594 <= 0) {
+				Client.field594 = 1;
+			}
+
+			Client.field798 = (short)Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 3];
+			if (Client.field798 <= 0) {
+				Client.field798 = 32767;
+			} else if (Client.field798 < Client.field594) {
+				Client.field798 = Client.field594;
+			}
+
+			return 1;
+		} else if (var0 == ScriptOpcodes.VIEWPORT_GETEFFECTIVESIZE) {
+			if (Client.viewportWidget != null) {
+				class53.setViewportShape(0, 0, Client.viewportWidget.width, Client.viewportWidget.height, false);
+				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Client.viewportWidth;
+				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Client.viewportHeight;
 			} else {
-				Client.Login_isUsernameRemembered = false;
+				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = -1;
+				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = -1;
 			}
-		}
 
-		if (Client.Login_isUsernameRemembered && Login.Login_username != null && Login.Login_username.length() > 0) {
-			Login.currentLoginField = 1;
+			return 1;
+		} else if (var0 == ScriptOpcodes.VIEWPORT_GETZOOM) {
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Client.zoomHeight;
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Client.zoomWidth;
+			return 1;
+		} else if (var0 == ScriptOpcodes.VIEWPORT_GETFOV) {
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = class398.method7349(Client.field791);
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = class398.method7349(Client.field792);
+			return 1;
+		} else if (var0 == 6220) {
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = 0;
+			return 1;
+		} else if (var0 == 6221) {
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = 0;
+			return 1;
+		} else if (var0 == 6222) {
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = class340.canvasWidth;
+			return 1;
+		} else if (var0 == 6223) {
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = class491.canvasHeight;
+			return 1;
 		} else {
-			Login.currentLoginField = 0;
+			return 2;
 		}
-
 	}
 }

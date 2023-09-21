@@ -1,109 +1,147 @@
-import java.awt.Desktop;
-import java.awt.Desktop.Action;
-import java.net.URI;
 import javax.imageio.ImageIO;
 import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("bt")
+@ObfuscatedName("be")
 public class class30 {
-	@ObfuscatedName("al")
-	@ObfuscatedGetter(
-		intValue = 183350311
+	@ObfuscatedName("ac")
+	@ObfuscatedSignature(
+		descriptor = "Lom;"
 	)
-	static int field167;
-	@ObfuscatedName("he")
-	static String field166;
+	@Export("FloorOverlayDefinition_archive")
+	static AbstractArchive FloorOverlayDefinition_archive;
 
 	static {
 		ImageIO.setUseCache(false);
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(IIIB)Z",
-		garbageValue = "-75"
+		descriptor = "(B)[Lnq;",
+		garbageValue = "-42"
 	)
-	static boolean method453(int var0, int var1, int var2) {
-		return var0 >= 0 && var0 < 4 && var1 >= 0 && var1 < 104 && var2 >= 0 && var2 < 104;
+	static class360[] method445() {
+		return new class360[]{class360.field3904, class360.field3906};
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;ZZB)V",
-		garbageValue = "-94"
+		descriptor = "(Ltp;ILjava/lang/String;B)Ljava/lang/String;",
+		garbageValue = "42"
 	)
-	@Export("openURL")
-	public static void openURL(String var0, boolean var1, boolean var2) {
-		if (var1) {
-			if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Action.BROWSE)) {
-				try {
-					Desktop.getDesktop().browse(new URI(var0));
-					return;
-				} catch (Exception var4) {
+	static String method448(IterableNodeHashTable var0, int var1, String var2) {
+		if (var0 == null) {
+			return var2;
+		} else {
+			ObjectNode var3 = (ObjectNode)var0.get((long)var1);
+			return var3 == null ? var2 : (String)var3.obj;
+		}
+	}
+
+	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "(I)[Lsz;",
+		garbageValue = "-651272604"
+	)
+	static class468[] method449() {
+		return new class468[]{class468.field4805, class468.field4811, class468.field4806, class468.field4808};
+	}
+
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "(ILds;ZI)I",
+		garbageValue = "2111489575"
+	)
+	static int method447(int var0, Script var1, boolean var2) {
+		Widget var3 = class33.widgetDefinition.method6240(Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]);
+		if (var0 == ScriptOpcodes.IF_GETX) {
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3.x;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETY) {
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3.y;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETWIDTH) {
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3.width;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETHEIGHT) {
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3.height;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETHIDE) {
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3.isHidden ? 1 : 0;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETLAYER) {
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3.parentId;
+			return 1;
+		} else {
+			return 2;
+		}
+	}
+
+	@ObfuscatedName("ih")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "106"
+	)
+	static void method446() {
+		if (class434.worldMap != null) {
+			class434.worldMap.method8664(class87.Client_plane, class20.baseX * 64 + (TextureProvider.localPlayer.x >> 7), class19.baseY * 64 + (TextureProvider.localPlayer.y >> 7), false);
+			class434.worldMap.loadCache();
+		}
+
+	}
+
+	@ObfuscatedName("ke")
+	@ObfuscatedSignature(
+		descriptor = "(III)V",
+		garbageValue = "-1209602899"
+	)
+	@Export("updateItemPile")
+	static final void updateItemPile(int var0, int var1) {
+		NodeDeque var2 = Client.groundItems[class87.Client_plane][var0][var1];
+		if (var2 == null) {
+			class10.scene.removeGroundItemPile(class87.Client_plane, var0, var1);
+		} else {
+			long var3 = -99999999L;
+			TileItem var5 = null;
+
+			TileItem var6;
+			for (var6 = (TileItem)var2.last(); var6 != null; var6 = (TileItem)var2.previous()) {
+				ItemComposition var7 = class214.ItemDefinition_get(var6.id);
+				long var11 = (long)var7.price;
+				if (var7.isStackable == 1) {
+					var11 *= var6.quantity < Integer.MAX_VALUE ? (long)(var6.quantity + 1) : (long)var6.quantity;
+				}
+
+				if (var11 > var3) {
+					var3 = var11;
+					var5 = var6;
 				}
 			}
 
-			if (class31.field169.startsWith("win")) {
-				BoundaryObject.method5025(var0, 0);
-			} else if (class31.field169.startsWith("mac")) {
-				class299.method5716(var0, 1, "openjs");
+			if (var5 == null) {
+				class10.scene.removeGroundItemPile(class87.Client_plane, var0, var1);
 			} else {
-				BoundaryObject.method5025(var0, 2);
+				var2.addLast(var5);
+				TileItem var13 = null;
+				TileItem var8 = null;
+
+				for (var6 = (TileItem)var2.last(); var6 != null; var6 = (TileItem)var2.previous()) {
+					if (var5.id != var6.id) {
+						if (var13 == null) {
+							var13 = var6;
+						}
+
+						if (var6.id != var13.id && var8 == null) {
+							var8 = var6;
+						}
+					}
+				}
+
+				long var9 = GrandExchangeOfferAgeComparator.calculateTag(var0, var1, 3, false, 0);
+				class10.scene.newGroundItemPile(class87.Client_plane, var0, var1, class115.getTileHeight(var0 * 128 + 64, var1 * 128 + 64, class87.Client_plane), var5, var9, var13, var8);
 			}
-		} else {
-			BoundaryObject.method5025(var0, 3);
 		}
-
-	}
-
-	@ObfuscatedName("ap")
-	@ObfuscatedSignature(
-		descriptor = "(I)[Luk;",
-		garbageValue = "694687164"
-	)
-	static IndexedSprite[] method454() {
-		IndexedSprite[] var0 = new IndexedSprite[class529.SpriteBuffer_spriteCount];
-
-		for (int var1 = 0; var1 < class529.SpriteBuffer_spriteCount; ++var1) {
-			IndexedSprite var2 = var0[var1] = new IndexedSprite();
-			var2.width = class529.SpriteBuffer_spriteWidth;
-			var2.height = class420.SpriteBuffer_spriteHeight;
-			var2.xOffset = class529.SpriteBuffer_xOffsets[var1];
-			var2.yOffset = class152.SpriteBuffer_yOffsets[var1];
-			var2.subWidth = HealthBarUpdate.SpriteBuffer_spriteWidths[var1];
-			var2.subHeight = SpriteMask.SpriteBuffer_spriteHeights[var1];
-			var2.palette = DbTableType.SpriteBuffer_spritePalette;
-			var2.pixels = Coord.SpriteBuffer_pixels[var1];
-		}
-
-		class529.SpriteBuffer_xOffsets = null;
-		class152.SpriteBuffer_yOffsets = null;
-		HealthBarUpdate.SpriteBuffer_spriteWidths = null;
-		SpriteMask.SpriteBuffer_spriteHeights = null;
-		DbTableType.SpriteBuffer_spritePalette = null;
-		Coord.SpriteBuffer_pixels = null;
-		return var0;
-	}
-
-	@ObfuscatedName("jw")
-	@ObfuscatedSignature(
-		descriptor = "(I)Low;",
-		garbageValue = "1819650636"
-	)
-	public static NodeDeque method446() {
-		return Client.scriptEvents;
-	}
-
-	@ObfuscatedName("mc")
-	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "26"
-	)
-	@Export("getTapToDrop")
-	static boolean getTapToDrop() {
-		return Client.tapToDrop;
 	}
 }

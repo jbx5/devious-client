@@ -3,39 +3,37 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("pn")
+@ObfuscatedName("qb")
 @Implements("DelayFadeTask")
 public class DelayFadeTask extends SongTask {
-	@ObfuscatedName("ag")
-	static String[] field4514;
-	@ObfuscatedName("au")
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		longValue = -5325232572376689765L
+		longValue = -8570152430470197323L
 	)
-	long field4512;
-	@ObfuscatedName("ae")
+	long field4564;
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = 942710907
+		intValue = -2113605799
 	)
-	int field4513;
+	int field4565;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lpm;I)V"
+		descriptor = "(Lqm;I)V"
 	)
 	public DelayFadeTask(SongTask var1, int var2) {
 		super(var1);
-		this.field4513 = var2;
-		super.field4523 = "DelayFadeTask";
+		this.field4565 = var2;
+		super.field4572 = "DelayFadeTask";
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "1604030758"
+		descriptor = "(B)Z",
+		garbageValue = "-90"
 	)
-	public boolean vmethod7621() {
-		if (this.field4512 < (long)this.field4513) {
-			++this.field4512;
+	public boolean vmethod7780() {
+		if (this.field4564 < (long)this.field4565) {
+			++this.field4564;
 			return false;
 		} else {
 			return true;

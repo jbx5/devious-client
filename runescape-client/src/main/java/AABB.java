@@ -2,43 +2,49 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ip")
+@ObfuscatedName("jl")
 @Implements("AABB")
 public class AABB {
-	@ObfuscatedName("au")
+	@ObfuscatedName("gi")
+	@ObfuscatedSignature(
+		descriptor = "Lok;"
+	)
+	static Archive field2658;
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = -1104288701
+		intValue = -1398982731
 	)
 	@Export("xMid")
 	int xMid;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = -1180301801
+		intValue = 583230925
 	)
 	@Export("yMid")
 	int yMid;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = -742951477
+		intValue = -1122805789
 	)
 	@Export("zMid")
 	int zMid;
-	@ObfuscatedName("at")
+	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = -1274816969
+		intValue = 1670821269
 	)
 	@Export("xMidOffset")
 	int xMidOffset;
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = -848919819
+		intValue = -1521768023
 	)
 	@Export("yMidOffset")
 	int yMidOffset;
-	@ObfuscatedName("ai")
+	@ObfuscatedName("ah")
 	@ObfuscatedGetter(
-		intValue = -623625245
+		intValue = -1443189283
 	)
 	@Export("zMidOffset")
 	int zMidOffset;

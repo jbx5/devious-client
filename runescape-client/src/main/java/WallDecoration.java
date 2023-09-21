@@ -1,81 +1,88 @@
+import java.io.File;
+import java.io.RandomAccessFile;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jw")
+@ObfuscatedName("kq")
 @Implements("WallDecoration")
 public final class WallDecoration {
-	@ObfuscatedName("ar")
+	@ObfuscatedName("wv")
 	@ObfuscatedSignature(
-		descriptor = "[Ltd;"
+		descriptor = "Low;"
 	)
-	@Export("JagexCache_idxFiles")
-	public static BufferedFile[] JagexCache_idxFiles;
-	@ObfuscatedName("au")
+	public static class384 field2871;
+	@ObfuscatedName("ly")
 	@ObfuscatedGetter(
-		intValue = -1365937923
+		intValue = -1634319151
+	)
+	@Export("cameraYaw")
+	static int cameraYaw;
+	@ObfuscatedName("ac")
+	@ObfuscatedGetter(
+		intValue = -933242443
 	)
 	@Export("z")
 	int z;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = 787946685
+		intValue = -1471615239
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = -218934925
+		intValue = 210123715
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("at")
+	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = 52639641
+		intValue = 1132126571
 	)
 	@Export("orientation")
 	int orientation;
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = 489110633
+		intValue = -1334490223
 	)
 	@Export("orientation2")
 	int orientation2;
-	@ObfuscatedName("ai")
+	@ObfuscatedName("ah")
 	@ObfuscatedGetter(
-		intValue = 1102500453
+		intValue = 1942701153
 	)
 	@Export("xOffset")
 	int xOffset;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ar")
 	@ObfuscatedGetter(
-		intValue = 1708077931
+		intValue = 737404035
 	)
 	@Export("yOffset")
 	int yOffset;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "Lik;"
+		descriptor = "Ljy;"
 	)
 	@Export("renderable1")
 	public Renderable renderable1;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "Lik;"
+		descriptor = "Ljy;"
 	)
 	@Export("renderable2")
 	public Renderable renderable2;
-	@ObfuscatedName("af")
+	@ObfuscatedName("av")
 	@ObfuscatedGetter(
-		longValue = -5570150087619181313L
+		longValue = -1188891399884727635L
 	)
 	@Export("tag")
 	public long tag;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		intValue = 1405593685
+		intValue = 1031863247
 	)
 	@Export("flags")
 	int flags;
@@ -83,5 +90,69 @@ public final class WallDecoration {
 	WallDecoration() {
 		this.tag = 0L;
 		this.flags = 0;
+	}
+
+	@ObfuscatedName("ac")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;B)Ljava/io/File;",
+		garbageValue = "97"
+	)
+	@Export("getFile")
+	static File getFile(String var0) {
+		if (!FileSystem.FileSystem_hasPermissions) {
+			throw new RuntimeException("");
+		} else {
+			File var1 = (File)FileSystem.FileSystem_cacheFiles.get(var0);
+			if (var1 != null) {
+				return var1;
+			} else {
+				File var2 = new File(FileSystem.FileSystem_cacheDir, var0);
+				RandomAccessFile var3 = null;
+
+				try {
+					File var4 = new File(var2.getParent());
+					if (!var4.exists()) {
+						throw new RuntimeException("");
+					} else {
+						var3 = new RandomAccessFile(var2, "rw");
+						int var5 = var3.read();
+						var3.seek(0L);
+						var3.write(var5);
+						var3.seek(0L);
+						var3.close();
+						FileSystem.FileSystem_cacheFiles.put(var0, var2);
+						return var2;
+					}
+				} catch (Exception var8) {
+					try {
+						if (var3 != null) {
+							var3.close();
+							var3 = null;
+						}
+					} catch (Exception var7) {
+					}
+
+					throw new RuntimeException();
+				}
+			}
+		}
+	}
+
+	@ObfuscatedName("ki")
+	@ObfuscatedSignature(
+		descriptor = "(IB)Z",
+		garbageValue = "16"
+	)
+	static final boolean method5194(int var0) {
+		if (var0 < 0) {
+			return false;
+		} else {
+			int var1 = Client.menuOpcodes[var0];
+			if (var1 >= 2000) {
+				var1 -= 2000;
+			}
+
+			return var1 == 1007;
+		}
 	}
 }

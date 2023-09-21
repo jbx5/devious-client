@@ -1,121 +1,85 @@
-import net.runelite.mapping.ObfuscatedGetter;
+import java.io.UnsupportedEncodingException;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-@ObfuscatedName("sk")
-public class class477 extends class479 {
-	@ObfuscatedName("au")
-	@ObfuscatedGetter(
-		intValue = 479610193
-	)
-	int field4867;
-	@ObfuscatedName("ae")
-	@ObfuscatedGetter(
-		intValue = -2053401073
-	)
-	int field4864;
-	@ObfuscatedName("ao")
-	@ObfuscatedGetter(
-		intValue = 1621911947
-	)
-	int field4865;
-	@ObfuscatedName("at")
-	@ObfuscatedGetter(
-		intValue = -1883870413
-	)
-	int field4866;
+@ObfuscatedName("si")
+public class class477 implements class476 {
+	@ObfuscatedName("al")
+	JSONObject field4821;
+
+	public class477(byte[] var1) throws UnsupportedEncodingException {
+		this.method8489(var1);
+	}
+
+	public class477(JSONObject var1) {
+		this.field4821 = var1;
+	}
+
+	public class477(String var1) throws UnsupportedEncodingException {
+		this.method8490(var1);
+	}
+
 	@ObfuscatedName("ac")
-	@ObfuscatedGetter(
-		intValue = 373417651
+	@ObfuscatedSignature(
+		descriptor = "(B)Lst;",
+		garbageValue = "1"
 	)
-	int field4863;
-	@ObfuscatedName("ai")
-	@ObfuscatedGetter(
-		intValue = 198014367
-	)
-	int field4868;
-
-	public class477(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
-		super(var7, var8);
-		this.field4867 = 0;
-		this.field4864 = 0;
-		this.field4865 = 0;
-		this.field4866 = 0;
-		this.field4863 = 0;
-		this.field4868 = 0;
-		this.field4867 = var1;
-		this.field4864 = var2;
-		this.field4865 = var3;
-		this.field4866 = var4;
-		this.field4863 = var5;
-		this.field4868 = var6;
+	public class475 vmethod8518() {
+		return class475.field4818;
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "818000115"
+		descriptor = "(B)[B",
+		garbageValue = "17"
 	)
-	public int vmethod8458() {
-		double var1 = this.method8473();
-		return (int)Math.round((double)(this.field4866 - this.field4867) * var1 + (double)this.field4867);
+	public byte[] vmethod8509() throws UnsupportedEncodingException {
+		return this.field4821 == null ? new byte[0] : this.field4821.toString().getBytes("UTF-8");
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "363084355"
+		descriptor = "([BI)V",
+		garbageValue = "-1876533299"
 	)
-	public int vmethod8459() {
-		double var1 = this.method8473();
-		return (int)Math.round(var1 * (double)(this.field4863 - this.field4864) + (double)this.field4864);
+	void method8489(byte[] var1) throws UnsupportedEncodingException {
+		String var2 = new String(var1, "UTF-8");
+		this.method8490(var2);
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-1706544959"
+		descriptor = "(Ljava/lang/String;I)V",
+		garbageValue = "-1250526518"
 	)
-	public int vmethod8460() {
-		double var1 = this.method8473();
-		return (int)Math.round((double)this.field4865 + (double)(this.field4868 - this.field4865) * var1);
-	}
-
-	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "([I[IIII)V",
-		garbageValue = "-1387907364"
-	)
-	public static void method8446(int[] var0, int[] var1, int var2, int var3) {
-		if (var2 < var3) {
-			int var4 = (var3 + var2) / 2;
-			int var5 = var2;
-			int var6 = var0[var4];
-			var0[var4] = var0[var3];
-			var0[var3] = var6;
-			int var7 = var1[var4];
-			var1[var4] = var1[var3];
-			var1[var3] = var7;
-			int var8 = var6 == Integer.MAX_VALUE ? 0 : 1;
-
-			for (int var9 = var2; var9 < var3; ++var9) {
-				if (var0[var9] < (var9 & var8) + var6) {
-					int var10 = var0[var9];
-					var0[var9] = var0[var5];
-					var0[var5] = var10;
-					int var11 = var1[var9];
-					var1[var9] = var1[var5];
-					var1[var5++] = var11;
+	void method8490(String var1) throws UnsupportedEncodingException {
+		try {
+			if (var1.charAt(0) == '{') {
+				this.field4821 = new JSONObject(var1);
+			} else {
+				if (var1.charAt(0) != '[') {
+					throw new UnsupportedEncodingException("Invalid JSON passed to the JSON content builder.");
 				}
+
+				JSONArray var2 = new JSONArray(var1);
+				this.field4821 = new JSONObject();
+				this.field4821.method8392("arrayValues", var2);
 			}
 
-			var0[var3] = var0[var5];
-			var0[var5] = var6;
-			var1[var3] = var1[var5];
-			var1[var5] = var7;
-			method8446(var0, var1, var2, var5 - 1);
-			method8446(var0, var1, var5 + 1, var3);
+		} catch (JSONException var3) {
+			throw new UnsupportedEncodingException(var3.getMessage());
 		}
+	}
 
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "(S)Lorg/json/JSONObject;",
+		garbageValue = "-32336"
+	)
+	public JSONObject method8491() {
+		return this.field4821;
 	}
 }

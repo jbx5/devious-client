@@ -1,29 +1,31 @@
 import java.util.Comparator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("qz")
+@ObfuscatedName("rv")
 @Implements("AbstractUserComparator")
 public abstract class AbstractUserComparator implements Comparator {
-	@ObfuscatedName("tk")
-	@ObfuscatedSignature(
-		descriptor = "Lui;"
+	@ObfuscatedName("ar")
+	static boolean[] field4699;
+	@ObfuscatedName("uj")
+	@ObfuscatedGetter(
+		intValue = 2061479115
 	)
-	@Export("sceneMinimapSprite")
-	static SpritePixels sceneMinimapSprite;
-	@ObfuscatedName("ae")
+	static int field4701;
+	@ObfuscatedName("al")
 	@Export("nextComparator")
 	Comparator nextComparator;
 
 	protected AbstractUserComparator() {
 	}
 
-	@ObfuscatedName("aa")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/util/Comparator;I)V",
-		garbageValue = "-2074845369"
+		garbageValue = "1018649978"
 	)
 	@Export("addComparator")
 	final void addComparator(Comparator var1) {
@@ -35,10 +37,10 @@ public abstract class AbstractUserComparator implements Comparator {
 
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "(Lqs;Lqs;I)I",
-		garbageValue = "1850684132"
+		descriptor = "(Lrp;Lrp;B)I",
+		garbageValue = "-78"
 	)
 	@Export("compareUser")
 	protected final int compareUser(User var1, User var2) {

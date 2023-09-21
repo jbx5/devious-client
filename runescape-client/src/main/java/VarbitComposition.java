@@ -4,60 +4,49 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hb")
+@ObfuscatedName("is")
 @Implements("VarbitComposition")
 public class VarbitComposition extends DualNode {
-	@ObfuscatedName("au")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Lnu;"
+		descriptor = "Lom;"
 	)
 	@Export("VarbitDefinition_archive")
-	static AbstractArchive VarbitDefinition_archive;
-	@ObfuscatedName("ae")
+	public static AbstractArchive VarbitDefinition_archive;
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "Lle;"
+		descriptor = "Llr;"
 	)
 	@Export("VarbitDefinition_cached")
-	public static EvictingDualNodeHashTable VarbitDefinition_cached;
-	@ObfuscatedName("ai")
-	static final int[] field2123;
-	@ObfuscatedName("mo")
-	@ObfuscatedSignature(
-		descriptor = "Ldf;"
-	)
-	@Export("localPlayer")
-	static Player localPlayer;
-	@ObfuscatedName("us")
+	static EvictingDualNodeHashTable VarbitDefinition_cached;
+	@ObfuscatedName("ah")
+	static final int[] field2143;
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = -2079670272
-	)
-	static int field2127;
-	@ObfuscatedName("ao")
-	@ObfuscatedGetter(
-		intValue = 144903653
+		intValue = 245566149
 	)
 	@Export("baseVar")
 	public int baseVar;
-	@ObfuscatedName("at")
+	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = 225410143
+		intValue = 236271761
 	)
 	@Export("startBit")
 	public int startBit;
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = 1882806955
+		intValue = -324240643
 	)
 	@Export("endBit")
 	public int endBit;
 
 	static {
 		VarbitDefinition_cached = new EvictingDualNodeHashTable(64);
-		field2123 = new int[32];
+		field2143 = new int[32];
 		int var0 = 2;
 
 		for (int var1 = 0; var1 < 32; ++var1) {
-			field2123[var1] = var0 - 1;
+			field2143[var1] = var0 - 1;
 			var0 += var0;
 		}
 
@@ -66,10 +55,10 @@ public class VarbitComposition extends DualNode {
 	VarbitComposition() {
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(Ltm;I)V",
-		garbageValue = "1889164320"
+		descriptor = "(Lul;I)V",
+		garbageValue = "-1759643857"
 	)
 	@Export("decode")
 	void decode(Buffer var1) {
@@ -83,10 +72,10 @@ public class VarbitComposition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Ltm;II)V",
-		garbageValue = "1344279898"
+		descriptor = "(Lul;II)V",
+		garbageValue = "649154016"
 	)
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
@@ -98,19 +87,22 @@ public class VarbitComposition extends DualNode {
 
 	}
 
-	@ObfuscatedName("aa")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/CharSequence;B)I",
-		garbageValue = "14"
+		descriptor = "(II)I",
+		garbageValue = "-1812761064"
 	)
-	public static int method3800(CharSequence var0) {
-		int var1 = var0.length();
-		int var2 = 0;
+	public static int method3896(int var0) {
+		return var0 >>> 4 & class523.field5092;
+	}
 
-		for (int var3 = 0; var3 < var1; ++var3) {
-			var2 = (var2 << 5) - var2 + var0.charAt(var3);
-		}
-
-		return var2;
+	@ObfuscatedName("mk")
+	@ObfuscatedSignature(
+		descriptor = "(III)V",
+		garbageValue = "-1743166576"
+	)
+	static void method3905(int var0, int var1) {
+		class12.method162(class133.tempMenuAction, var0, var1);
+		class133.tempMenuAction = null;
 	}
 }

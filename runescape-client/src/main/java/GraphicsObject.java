@@ -1,70 +1,74 @@
-import java.security.SecureRandom;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cg")
+@ObfuscatedName("ch")
 @Implements("GraphicsObject")
 public class GraphicsObject extends Renderable {
-	@ObfuscatedName("hn")
-	static SecureRandom field905;
-	@ObfuscatedName("au")
+	@ObfuscatedName("aa")
 	@ObfuscatedGetter(
-		intValue = 539793439
+		intValue = -1842226835
+	)
+	static int field890;
+	@ObfuscatedName("bt")
+	protected static String field888;
+	@ObfuscatedName("ac")
+	@ObfuscatedGetter(
+		intValue = 1980942277
 	)
 	@Export("id")
 	int id;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = 794022017
+		intValue = -193799833
 	)
 	@Export("cycleStart")
 	int cycleStart;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = -49690437
+		intValue = 488343415
 	)
 	@Export("plane")
 	int plane;
-	@ObfuscatedName("at")
+	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = 540026663
+		intValue = 463669607
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = -37149761
+		intValue = -1976147247
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("ai")
+	@ObfuscatedName("ah")
 	@ObfuscatedGetter(
-		intValue = 284515791
+		intValue = 371756529
 	)
 	@Export("z")
 	int z;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "Lib;"
+		descriptor = "Lif;"
 	)
 	@Export("sequenceDefinition")
 	SequenceDefinition sequenceDefinition;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("ab")
 	@ObfuscatedGetter(
-		intValue = -956501499
+		intValue = -2020340729
 	)
 	@Export("frame")
 	int frame;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("am")
 	@ObfuscatedGetter(
-		intValue = -1971256985
+		intValue = 597667557
 	)
 	@Export("frameCycle")
 	int frameCycle;
-	@ObfuscatedName("af")
+	@ObfuscatedName("av")
 	@Export("isFinished")
 	boolean isFinished;
 
@@ -78,20 +82,20 @@ public class GraphicsObject extends Renderable {
 		this.y = var4;
 		this.z = var5;
 		this.cycleStart = var7 + var6;
-		int var8 = StructComposition.SpotAnimationDefinition_get(this.id).sequence;
+		int var8 = class406.SpotAnimationDefinition_get(this.id).sequence;
 		if (var8 != -1) {
 			this.isFinished = false;
-			this.sequenceDefinition = EnumComposition.SequenceDefinition_get(var8);
+			this.sequenceDefinition = class36.SequenceDefinition_get(var8);
 		} else {
 			this.isFinished = true;
 		}
 
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
 		descriptor = "(IB)V",
-		garbageValue = "47"
+		garbageValue = "108"
 	)
 	@Export("advance")
 	final void advance(int var1) {
@@ -108,7 +112,7 @@ public class GraphicsObject extends Renderable {
 				}
 			} else {
 				this.frame += var1;
-				if (this.frame >= this.sequenceDefinition.method4034()) {
+				if (this.frame >= this.sequenceDefinition.method4177()) {
 					this.isFinished = true;
 				}
 			}
@@ -116,14 +120,14 @@ public class GraphicsObject extends Renderable {
 		}
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(I)Ljr;",
-		garbageValue = "798227647"
+		descriptor = "(B)Ljn;",
+		garbageValue = "0"
 	)
 	@Export("getModel")
 	protected final Model getModel() {
-		SpotAnimationDefinition var1 = StructComposition.SpotAnimationDefinition_get(this.id);
+		SpotAnimationDefinition var1 = class406.SpotAnimationDefinition_get(this.id);
 		Model var2;
 		if (!this.isFinished) {
 			var2 = var1.getModel(this.frame);

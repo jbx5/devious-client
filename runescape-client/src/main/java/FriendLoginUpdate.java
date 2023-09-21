@@ -4,35 +4,29 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("qg")
+@ObfuscatedName("rr")
 @Implements("FriendLoginUpdate")
 public class FriendLoginUpdate extends Link {
-	@ObfuscatedName("la")
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = 175102541
+		intValue = 1250536245
 	)
-	@Export("oculusOrbFocalPointX")
-	static int oculusOrbFocalPointX;
-	@ObfuscatedName("au")
-	@ObfuscatedGetter(
-		intValue = -508388215
-	)
-	public int field4651;
-	@ObfuscatedName("ae")
+	public int field4691;
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "Luc;"
+		descriptor = "Lvf;"
 	)
 	@Export("username")
 	public Username username;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ak")
 	@Export("world")
 	public short world;
 
 	@ObfuscatedSignature(
-		descriptor = "(Luc;I)V"
+		descriptor = "(Lvf;I)V"
 	)
 	FriendLoginUpdate(Username var1, int var2) {
-		this.field4651 = (int)(GameEngine.method661() / 1000L);
+		this.field4691 = (int)(GrandExchangeOfferTotalQuantityComparator.method7049() / 1000L);
 		this.username = var1;
 		this.world = (short)var2;
 	}
