@@ -10,7 +10,8 @@ public class UserComparator10 extends AbstractUserComparator {
 	@ObfuscatedSignature(
 		descriptor = "Lrw;"
 	)
-	static ArchiveDisk field1480;
+	@Export("masterDisk")
+	static ArchiveDisk masterDisk;
 	@ObfuscatedName("ac")
 	@Export("reversed")
 	final boolean reversed;
