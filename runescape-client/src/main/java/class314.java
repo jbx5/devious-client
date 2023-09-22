@@ -479,7 +479,7 @@ public final class class314 {
 					var36 = new ArchiveDisk(22, JagexCache.JagexCache_dat2File, UserComparator8.JagexCache_idxFiles[22], 1000000);
 				}
 
-				var39 = new Archive(var36, UserComparator10.field1480, class59.field452, 22, false, true, true, true, true);
+				var39 = new Archive(var36, UserComparator10.masterDisk, class59.field452, 22, false, true, true, true, true);
 				class319.field3442 = var39;
 				Login.Login_loadingText = "Connecting to update server";
 				Login.Login_loadingPercent = 20;

@@ -16,7 +16,7 @@ public enum TeleportSpell
 	),
 	TELEPORT_TO_HOUSE(
 			SpellBook.Standard.TELEPORT_TO_HOUSE,
-			MovementConstants.HOUSE_POINT
+			MovementConstants.HOUSE_POINT()
 	),
 	VARROCK_TELEPORT(
 			SpellBook.Standard.VARROCK_TELEPORT,

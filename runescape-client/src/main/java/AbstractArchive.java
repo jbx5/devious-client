@@ -481,7 +481,8 @@ public abstract class AbstractArchive {
 		descriptor = "(B)V",
 		garbageValue = "-37"
 	)
-	public void method6919() {
+	@Export("clearFiles")
+	public void clearFiles() {
 		for (int var1 = 0; var1 < this.files.length; ++var1) {
 			if (this.files[var1] != null) {
 				for (int var2 = 0; var2 < this.files[var1].length; ++var2) {

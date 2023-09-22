@@ -217,6 +217,30 @@ public interface UnethicaliteConfig extends Config
 	}
 
 	@ConfigItem(
+			keyName = "minTileDistance",
+			name = "Min step distance",
+			description = "",
+			position = 1,
+			section = pathfinderSection
+	)
+	default int minStepDistance()
+	{
+		return 7;
+	}
+
+	@ConfigItem(
+			keyName = "maxTileDistance",
+			name = "Max step distance",
+			description = "",
+			position = 2,
+			section = pathfinderSection
+	)
+	default int maxStepDistance()
+	{
+		return 14;
+	}
+
+	@ConfigItem(
 			keyName = "useTeleports",
 			name = "Use teleports",
 			description = "Include teleportation when calculating paths",

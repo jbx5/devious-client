@@ -181,7 +181,7 @@ public final class WorldMapRenderer {
 
 			System.nanoTime();
 			var1.clearGroups();
-			var1.method6919();
+			var1.clearFiles();
 			this.loaded = true;
 		}
 	}

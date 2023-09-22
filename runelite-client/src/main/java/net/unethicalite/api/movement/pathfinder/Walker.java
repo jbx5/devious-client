@@ -49,8 +49,8 @@ import java.util.function.Predicate;
 public class Walker
 {
     public static final int MAX_INTERACT_DISTANCE = 20;
-    private static final int MIN_TILES_WALKED_IN_STEP = 7;
-    private static final int MAX_TILES_WALKED_IN_STEP = 14;
+    private static final int MIN_TILES_WALKED_IN_STEP = Static.getUnethicaliteConfig().minStepDistance();
+    private static final int MAX_TILES_WALKED_IN_STEP = Static.getUnethicaliteConfig().maxStepDistance();
     private static final int MAX_MIN_ENERGY = 50;
     private static final int MIN_ENERGY = 5;
     private static final int MAX_NEAREST_SEARCH_ITERATIONS = 10;

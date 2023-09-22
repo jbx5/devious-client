@@ -5,6 +5,8 @@ import net.runelite.api.Varbits;
 import net.runelite.api.coords.WorldArea;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.widgets.WidgetInfo;
+import net.unethicalite.api.game.House;
+import net.unethicalite.api.game.Worlds;
 import net.unethicalite.api.movement.pathfinder.TransportLoader;
 import org.apache.commons.lang3.tuple.Pair;
 
@@ -29,7 +31,14 @@ public class MovementConstants
 
 	public static final WorldArea WILDERNESS_ABOVE_GROUND = new WorldArea(2944, 3523, 448, 448, 0);
 	public static final WorldArea WILDERNESS_UNDERGROUND = new WorldArea(2944, 9918, 320, 442, 0);
-	public static WorldPoint HOUSE_POINT = new WorldPoint(10000, 4000, 1);
+	public static WorldPoint HOUSE_POINT()
+	{
+		if (Worlds.inMembersWorld())
+		{
+			return House.getOutsideLocation();
+		}
+		else return new WorldPoint(10000, 4000, 1);
+	}
 
 	public static final int[] RING_OF_DUELING = new int[]
 		{
