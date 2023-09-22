@@ -14,7 +14,7 @@ import net.unethicalite.api.quests.Quests;
 public enum TeleportItem
 {
     // Prioritize house tab
-    HOUSE_TAB(MovementConstants.HOUSE_POINT, "Break", null, ItemID.TELEPORT_TO_HOUSE),
+    HOUSE_TAB(MovementConstants.HOUSE_POINT(), "Break", null, ItemID.TELEPORT_TO_HOUSE),
 
     // Tabs
     WATERBIRTH_TELEPORT_TAB(new WorldPoint(2546, 3757, 0), "Break", null, ItemID.WATERBIRTH_TELEPORT),
