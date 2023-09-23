@@ -129,7 +129,7 @@ public enum class6 implements MouseWheel {
 						int var9 = 4;
 						boolean var10 = true;
 						if (var0 instanceof NPC) {
-							var10 = ((NPC)var0).definition.isClickable;
+							var10 = ((NPC)var0).definition.isClipped;
 						}
 
 						if (var10) {

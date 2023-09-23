@@ -208,8 +208,8 @@ public class NPCComposition extends DualNode {
 	@Export("isInteractable")
 	public boolean isInteractable;
 	@ObfuscatedName("bu")
-	@Export("isClickable")
-	public boolean isClickable;
+	@Export("isClipped")
+	public boolean isClipped;
 	@ObfuscatedName("bf")
 	@Export("isFollower")
 	public boolean isFollower;
@@ -261,7 +261,7 @@ public class NPCComposition extends DualNode {
 		this.transformVarbit = -1;
 		this.transformVarp = -1;
 		this.isInteractable = true;
-		this.isClickable = true;
+		this.isClipped = true;
 		this.isFollower = false;
 		this.headIconArchiveIds = null;
 		this.headIconSpriteIndex = null;
@@ -400,7 +400,7 @@ public class NPCComposition extends DualNode {
 				if (var2 == 107) {
 					this.isInteractable = false;
 				} else if (var2 == 109) {
-					this.isClickable = false;
+					this.isClipped = false;
 				} else if (var2 == 111) {
 					this.isFollower = true;
 				} else if (var2 == 114) {
