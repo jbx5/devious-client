@@ -619,7 +619,7 @@ public abstract class RSWidgetMixin implements RSWidget
 		assert client.isClientThread() : "revalidateScroll must be called on client thread";
 
 		client.revalidateWidget(this);
-		client.revalidateWidgetScroll(client.getWidgets()[TO_GROUP(this.getId())], this, false);
+		client.revalidateWidgetScroll(client.getWidgetDefinition().getWidgets()[TO_GROUP(this.getId())], this, false);
 	}
 
 	@Inject

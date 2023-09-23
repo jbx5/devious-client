@@ -704,7 +704,7 @@ public abstract class RSClientMixin implements RSClient
 			return new Widget[]{};
 		}
 		List<Widget> widgets = new ArrayList<Widget>();
-		for (RSWidget widget : getWidgets()[topGroup])
+		for (RSWidget widget : client.getWidgetDefinition().getWidgets()[topGroup])
 		{
 			if (widget != null && widget.getRSParentId() == -1)
 			{
@@ -735,35 +735,57 @@ public abstract class RSClientMixin implements RSClient
 	@Override
 	public RSWidget[] getGroup(int groupId)
 	{
-		RSWidget[][] widgets = getWidgets();
-
-		if (widgets == null || groupId < 0 || groupId >= widgets.length || widgets[groupId] == null)
-		{
-			return null;
-		}
-
-		return widgets[groupId];
+		RSWidget[][] widgets = client.getWidgetDefinition().getWidgets();
+		return widgets != null && groupId >= 0 && groupId < widgets.length && widgets[groupId] != null ? widgets[groupId] : null;
 	}
 
 	@Inject
 	@Override
 	public Widget getWidget(int groupId, int childId)
 	{
-		RSWidget[][] widgets = getWidgets();
-
-		if (widgets == null || widgets.length <= groupId)
+		if (client.getWidgetDefinition() == null)
 		{
 			return null;
 		}
-
-		RSWidget[] childWidgets = widgets[groupId];
-		if (childWidgets == null || childWidgets.length <= childId)
+		else
 		{
-			return null;
+			RSWidget[][] widgets = client.getWidgetDefinition().getWidgets();
+			if (widgets != null && widgets.length > groupId)
+			{
+				RSWidget[] childWidgets = widgets[groupId];
+				return childWidgets != null && childWidgets.length > childId ? childWidgets[childId] : null;
+			}
+			else
+			{
+				return null;
+			}
 		}
-
-		return childWidgets[childId];
 	}
+
+	@Inject
+	@Override
+	public RSEvictingDualNodeHashTable getWidgetSpriteCache()
+	{
+		return getWidgetDefinition() != null ? getWidgetDefinition().getWidgetSpriteCache() : null;
+	}
+
+	// Unethicalite API
+	@Inject
+	@Override
+	public RSWidget[][] getWidgets()
+	{
+		return getWidgetDefinition() != null ? getWidgetDefinition().getWidgets() : null;
+	}
+
+	@Inject
+	@Override
+	public RSWidget getWidgetChild(int parent, int child)
+	{
+		return getWidgetDefinition() != null ? getWidgetDefinition().getWidgetChild(parent, child) : null;
+	}
+	//
+
+
 
 	@Inject
 	@Override
@@ -1461,7 +1483,7 @@ public abstract class RSClientMixin implements RSClient
 	{
 		copy$runWidgetOnLoadListener(groupId);
 
-		RSWidget[][] widgets = client.getWidgets();
+		RSWidget[][] widgets = client.getWidgetDefinition().getWidgets();
 		boolean loaded = widgets != null && widgets[groupId] != null;
 
 		if (loaded)
@@ -3626,13 +3648,13 @@ public abstract class RSClientMixin implements RSClient
 					interfaceNode.setId(interfaceId);
 					interfaceNode.setModalMode(modalMode);
 					this.getComponentTable().put(interfaceNode, (long) componentId);
-					this.loadInterface(interfaceId);
-					this.revalidateWidgetScroll(this.getWidgets()[componentId >> 16], component, false);
+					this.getWidgetDefinition().loadInterface(interfaceId);
+					this.revalidateWidgetScroll(this.getWidgetDefinition().getWidgets()[componentId >> 16], component, false);
 					this.copy$runWidgetOnLoadListener(interfaceId);
 					int topLevelInterfaceId = this.getTopLevelInterfaceId();
-					if (topLevelInterfaceId != -1 && this.loadInterface(topLevelInterfaceId))
+					if (topLevelInterfaceId != -1 && this.getWidgetDefinition().loadInterface(topLevelInterfaceId))
 					{
-						this.runComponentCloseListeners(this.getWidgets()[topLevelInterfaceId], 1);
+						this.runComponentCloseListeners(this.getWidgetDefinition().getWidgets()[topLevelInterfaceId], 1);
 					}
 
 					return interfaceNode;
