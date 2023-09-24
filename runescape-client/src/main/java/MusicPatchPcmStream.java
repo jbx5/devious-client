@@ -214,6 +214,6 @@ public class MusicPatchPcmStream extends PcmStream {
 		ObjectComposition.ObjectDefinition_cached.clear();
 		ObjectComposition.ObjectDefinition_cachedModelData.clear();
 		ObjectComposition.ObjectDefinition_cachedEntities.clear();
-		ObjectComposition.HitSplatDefinition_cachedSprites.clear();
+		ObjectComposition.ObjectDefinition_cachedModels.clear();
 	}
 }

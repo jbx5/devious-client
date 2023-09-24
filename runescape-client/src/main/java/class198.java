@@ -18,7 +18,7 @@ public class class198 {
 	)
 	public static void method3737() {
 		SpotAnimationDefinition.SpotAnimationDefinition_cached.clear();
-		SpotAnimationDefinition.DBTableMasterIndex_cache.clear();
+		SpotAnimationDefinition.SpotAnimationDefinition_cachedModels.clear();
 	}
 
 	@ObfuscatedName("hc")

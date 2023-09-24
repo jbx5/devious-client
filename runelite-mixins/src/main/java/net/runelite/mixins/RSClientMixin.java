@@ -3209,37 +3209,71 @@ public abstract class RSClientMixin implements RSClient
 	@Inject
 	public static void checkResize()
 	{
-		check("Script_cached", client.getScriptCache());
-		check("StructDefinition_cached", client.getRSStructCompositionCache());
-		check("HealthBarDefinition_cached", client.getHealthBarCache());
-		check("HealthBarDefinition_cachedSprites", client.getHealthBarSpriteCache());
-		check("ItemDefinition_cached", client.getItemCompositionCache());
-		check("VarbitDefinition_cached", client.getVarbitCache());
 		check("EnumDefinition_cached", client.getEnumDefinitionCache());
-		check("FloorUnderlayDefinition_cached", client.getFloorUnderlayDefinitionCache());
-		check("FloorOverlayDefinition_cached", client.getFloorOverlayDefinitionCache());
-		check("HitSplatDefinition_cached", client.getHitSplatDefinitionCache());
-		check("HitSplatDefinition_cachedFonts", client.getHitSplatDefinitionDontsCache());
-		check("InvDefinition_cached", client.getInvDefinitionCache());
-		check("ItemDefinition_cachedSprites", client.getItemDefinitionSpritesCache());
-		check("KitDefinition_cached", client.getKitDefinitionCache());
-		check("NpcDefinition_cached", client.getNpcDefinitionCache());
-		check("NpcDefinition_cachedModels", client.getNpcDefinitionModelsCache());
-		check("ObjectDefinition_cached", client.getObjectDefinitionCache());
-		check("ObjectDefinition_cachedModelData", client.getObjectDefinitionModelDataCache());
-		check("ObjectDefinition_cachedEntities", client.getObjectDefinitionEntitiesCache());
-		check("ParamDefinition_cached", client.getParamDefinitionCache());
-		check("PlayerAppearance_cachedModels", client.getPlayerAppearanceModelsCache());
+
+		check("SpotAnimationDefinition_cached", client.getSpotAnimationDefinitionCache());
+		check("SpotAnimationDefinition_cachedModels", client.getSpotAnimationDefinitionModelsCache());
+
 		check("SequenceDefinition_cached", client.getSequenceDefinitionCache());
 		check("SequenceDefinition_cachedFrames", client.getSequenceDefinitionFramesCache());
 		check("SequenceDefinition_cachedModel", client.getSequenceDefinitionModelsCache());
-		check("SpotAnimationDefinition_cached", client.getSpotAnimationDefinitionCache());
-		check("VarcInt_cached", client.getVarcIntCache());
-		check("VarpDefinition_cached", client.getVarpDefinitionCache());
+
 		check("DBRowType_cache", client.getDbRowTypeCache());
 		check("DBTableType_cache", client.getDbTableTypeCache());
 		check("DBTableIndex_cache", client.getDbTableIndexCache());
-		check("DBTableMasterIndex_cache", client.getDbTableMasterIndexCache());
+
+		check("field1909", client.getField1909());
+		check("field1913", client.getField1913());
+		check("field1915", client.getField1915());
+		check("archive7", client.getArchive7());
+		check("archive5", client.getArchive5());
+		check("field2007", client.getField2007());
+		check("field2023", client.getField2023());
+		check("field2026", client.getField2026());
+		check("field2100", client.getField2100());
+		check("field2136", client.getField2136());
+		check("archive4", client.getArchive4());
+		check("archive11", client.getArchive11());
+
+		check("HealthBarDefinition_cached", client.getHealthBarCache());
+		check("HealthBarDefinition_cachedSprites", client.getHealthBarSpriteCache());
+
+		check("HitSplatDefinition_cached", client.getHitSplatDefinitionCache());
+		check("HitSplatDefinition_cachedSprites", client.getHitSplatDefinitionSpritesCache());
+		check("HitSplatDefinition_cachedFonts", client.getHitSplatDefinitionFontsCache());
+
+		check("Widget_cachedSpriteMasks", client.getSpriteMasksCache());
+
+		check("KitDefinition_cached", client.getKitDefinitionCache());
+
+		check("InvDefinition_cached", client.getInvDefinitionCache());
+
+		check("ItemDefinition_cached", client.getItemCompositionCache());
+		check("ItemDefinition_cachedModels", client.getItemDefinitionModelsCache());
+		check("ItemDefinition_cachedSprites", client.getItemDefinitionSpritesCache());
+
+		check("NpcDefinition_cached", client.getNpcDefinitionCache());
+		check("NpcDefinition_cachedModels", client.getNpcDefinitionModelsCache());
+
+		check("ObjectDefinition_cached", client.getObjectDefinitionCache());
+		check("ObjectDefinition_cachedModelData", client.getObjectDefinitionModelDataCache());
+		check("ObjectDefinition_cachedEntities", client.getObjectDefinitionEntitiesCache());
+		check("ObjectDefinition_cachedModels", client.getObjectDefinitionModelsCache());
+
+		check("ParamDefinition_cached", client.getParamDefinitionCache());
+
+		check("PlayerAppearance_cachedModels", client.getPlayerAppearanceModelsCache());
+
+		check("Script_cached", client.getScriptCache());
+
+		check("StructDefinition_cached", client.getRSStructCompositionCache());
+
+		check("VarbitDefinition_cached", client.getVarbitCache());
+		check("VarcInt_cached", client.getVarcIntCache());
+		check("VarpDefinition_cached", client.getVarpDefinitionCache());
+
+		check("FloorUnderlayDefinition_cached", client.getFloorUnderlayDefinitionCache());
+		check("FloorOverlayDefinition_cached", client.getFloorOverlayDefinitionCache());
 	}
 
 	@Inject
