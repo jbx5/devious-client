@@ -28,8 +28,8 @@ public class NPCComposition extends DualNode {
 	@ObfuscatedSignature(
 		descriptor = "Llr;"
 	)
-	@Export("HitSplatDefinition_cachedFonts")
-	static EvictingDualNodeHashTable HitSplatDefinition_cachedFonts;
+	@Export("NpcDefinition_cachedModels")
+	static EvictingDualNodeHashTable NpcDefinition_cachedModels;
 	@ObfuscatedName("ah")
 	@ObfuscatedGetter(
 		intValue = 849514739
@@ -208,8 +208,8 @@ public class NPCComposition extends DualNode {
 	@Export("isInteractable")
 	public boolean isInteractable;
 	@ObfuscatedName("bu")
-	@Export("isClickable")
-	public boolean isClickable;
+	@Export("isClipped")
+	public boolean isClipped;
 	@ObfuscatedName("bf")
 	@Export("isFollower")
 	public boolean isFollower;
@@ -228,7 +228,7 @@ public class NPCComposition extends DualNode {
 
 	static {
 		NpcDefinition_cached = new EvictingDualNodeHashTable(64);
-		HitSplatDefinition_cachedFonts = new EvictingDualNodeHashTable(50);
+		NpcDefinition_cachedModels = new EvictingDualNodeHashTable(50);
 	}
 
 	NPCComposition() {
@@ -261,7 +261,7 @@ public class NPCComposition extends DualNode {
 		this.transformVarbit = -1;
 		this.transformVarp = -1;
 		this.isInteractable = true;
-		this.isClickable = true;
+		this.isClipped = true;
 		this.isFollower = false;
 		this.headIconArchiveIds = null;
 		this.headIconSpriteIndex = null;
@@ -400,7 +400,7 @@ public class NPCComposition extends DualNode {
 				if (var2 == 107) {
 					this.isInteractable = false;
 				} else if (var2 == 109) {
-					this.isClickable = false;
+					this.isClipped = false;
 				} else if (var2 == 111) {
 					this.isFollower = true;
 				} else if (var2 == 114) {
@@ -471,7 +471,7 @@ public class NPCComposition extends DualNode {
 				var6 |= var5.field2040 << 16;
 			}
 
-			Model var8 = (Model)HitSplatDefinition_cachedFonts.get(var6);
+			Model var8 = (Model) NpcDefinition_cachedModels.get(var6);
 			if (var8 == null) {
 				ModelData var9 = this.getModelData(this.models, var5);
 				if (var9 == null) {
@@ -479,7 +479,7 @@ public class NPCComposition extends DualNode {
 				}
 
 				var8 = var9.toModel(this.ambient + 64, this.contrast * 5 + 850, -30, -50, -30);
-				HitSplatDefinition_cachedFonts.put(var8, var6);
+				NpcDefinition_cachedModels.put(var8, var6);
 			}
 
 			Model var11;

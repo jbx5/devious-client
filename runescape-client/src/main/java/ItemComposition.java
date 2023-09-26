@@ -21,8 +21,8 @@ public class ItemComposition extends DualNode {
 	@ObfuscatedSignature(
 		descriptor = "Llr;"
 	)
-	@Export("HealthBarDefinition_cachedSprites")
-	static EvictingDualNodeHashTable HealthBarDefinition_cachedSprites;
+	@Export("ItemDefinition_cachedModels")
+	static EvictingDualNodeHashTable ItemDefinition_cachedModels;
 	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
 		descriptor = "Llr;"
@@ -300,7 +300,7 @@ public class ItemComposition extends DualNode {
 
 	static {
 		ItemDefinition_cached = new EvictingDualNodeHashTable(64);
-		HealthBarDefinition_cachedSprites = new EvictingDualNodeHashTable(50);
+		ItemDefinition_cachedModels = new EvictingDualNodeHashTable(50);
 		ItemDefinition_cachedSprites = new EvictingDualNodeHashTable(200);
 	}
 
@@ -683,7 +683,7 @@ public class ItemComposition extends DualNode {
 			}
 		}
 
-		Model var5 = (Model)HealthBarDefinition_cachedSprites.get((long)this.id);
+		Model var5 = (Model) ItemDefinition_cachedModels.get((long)this.id);
 		if (var5 != null) {
 			return var5;
 		} else {
@@ -710,7 +710,7 @@ public class ItemComposition extends DualNode {
 
 				var5 = var6.toModel(this.ambient + 64, this.contrast + 768, -50, -10, -50);
 				var5.isSingleTile = true;
-				HealthBarDefinition_cachedSprites.put(var5, (long)this.id);
+				ItemDefinition_cachedModels.put(var5, (long)this.id);
 				return var5;
 			}
 		}

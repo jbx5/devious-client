@@ -704,7 +704,7 @@ public abstract class RSClientMixin implements RSClient
 			return new Widget[]{};
 		}
 		List<Widget> widgets = new ArrayList<Widget>();
-		for (RSWidget widget : getWidgets()[topGroup])
+		for (RSWidget widget : client.getWidgetDefinition().getWidgets()[topGroup])
 		{
 			if (widget != null && widget.getRSParentId() == -1)
 			{
@@ -735,35 +735,57 @@ public abstract class RSClientMixin implements RSClient
 	@Override
 	public RSWidget[] getGroup(int groupId)
 	{
-		RSWidget[][] widgets = getWidgets();
-
-		if (widgets == null || groupId < 0 || groupId >= widgets.length || widgets[groupId] == null)
-		{
-			return null;
-		}
-
-		return widgets[groupId];
+		RSWidget[][] widgets = client.getWidgetDefinition().getWidgets();
+		return widgets != null && groupId >= 0 && groupId < widgets.length && widgets[groupId] != null ? widgets[groupId] : null;
 	}
 
 	@Inject
 	@Override
 	public Widget getWidget(int groupId, int childId)
 	{
-		RSWidget[][] widgets = getWidgets();
-
-		if (widgets == null || widgets.length <= groupId)
+		if (client.getWidgetDefinition() == null)
 		{
 			return null;
 		}
-
-		RSWidget[] childWidgets = widgets[groupId];
-		if (childWidgets == null || childWidgets.length <= childId)
+		else
 		{
-			return null;
+			RSWidget[][] widgets = client.getWidgetDefinition().getWidgets();
+			if (widgets != null && widgets.length > groupId)
+			{
+				RSWidget[] childWidgets = widgets[groupId];
+				return childWidgets != null && childWidgets.length > childId ? childWidgets[childId] : null;
+			}
+			else
+			{
+				return null;
+			}
 		}
-
-		return childWidgets[childId];
 	}
+
+	@Inject
+	@Override
+	public RSEvictingDualNodeHashTable getWidgetSpriteCache()
+	{
+		return getWidgetDefinition() != null ? getWidgetDefinition().getWidgetSpriteCache() : null;
+	}
+
+	// Unethicalite API
+	@Inject
+	@Override
+	public RSWidget[][] getWidgets()
+	{
+		return getWidgetDefinition() != null ? getWidgetDefinition().getWidgets() : null;
+	}
+
+	@Inject
+	@Override
+	public RSWidget getWidgetChild(int parent, int child)
+	{
+		return getWidgetDefinition() != null ? getWidgetDefinition().getWidgetChild(parent, child) : null;
+	}
+	//
+
+
 
 	@Inject
 	@Override
@@ -1461,7 +1483,7 @@ public abstract class RSClientMixin implements RSClient
 	{
 		copy$runWidgetOnLoadListener(groupId);
 
-		RSWidget[][] widgets = client.getWidgets();
+		RSWidget[][] widgets = client.getWidgetDefinition().getWidgets();
 		boolean loaded = widgets != null && widgets[groupId] != null;
 
 		if (loaded)
@@ -3187,37 +3209,71 @@ public abstract class RSClientMixin implements RSClient
 	@Inject
 	public static void checkResize()
 	{
-		check("Script_cached", client.getScriptCache());
-		check("StructDefinition_cached", client.getRSStructCompositionCache());
-		check("HealthBarDefinition_cached", client.getHealthBarCache());
-		check("HealthBarDefinition_cachedSprites", client.getHealthBarSpriteCache());
-		check("ItemDefinition_cached", client.getItemCompositionCache());
-		check("VarbitDefinition_cached", client.getVarbitCache());
 		check("EnumDefinition_cached", client.getEnumDefinitionCache());
-		check("FloorUnderlayDefinition_cached", client.getFloorUnderlayDefinitionCache());
-		check("FloorOverlayDefinition_cached", client.getFloorOverlayDefinitionCache());
-		check("HitSplatDefinition_cached", client.getHitSplatDefinitionCache());
-		check("HitSplatDefinition_cachedFonts", client.getHitSplatDefinitionDontsCache());
-		check("InvDefinition_cached", client.getInvDefinitionCache());
-		check("ItemDefinition_cachedSprites", client.getItemDefinitionSpritesCache());
-		check("KitDefinition_cached", client.getKitDefinitionCache());
-		check("NpcDefinition_cached", client.getNpcDefinitionCache());
-		check("NpcDefinition_cachedModels", client.getNpcDefinitionModelsCache());
-		check("ObjectDefinition_cached", client.getObjectDefinitionCache());
-		check("ObjectDefinition_cachedModelData", client.getObjectDefinitionModelDataCache());
-		check("ObjectDefinition_cachedEntities", client.getObjectDefinitionEntitiesCache());
-		check("ParamDefinition_cached", client.getParamDefinitionCache());
-		check("PlayerAppearance_cachedModels", client.getPlayerAppearanceModelsCache());
+
+		check("SpotAnimationDefinition_cached", client.getSpotAnimationDefinitionCache());
+		check("SpotAnimationDefinition_cachedModels", client.getSpotAnimationDefinitionModelsCache());
+
 		check("SequenceDefinition_cached", client.getSequenceDefinitionCache());
 		check("SequenceDefinition_cachedFrames", client.getSequenceDefinitionFramesCache());
 		check("SequenceDefinition_cachedModel", client.getSequenceDefinitionModelsCache());
-		check("SpotAnimationDefinition_cached", client.getSpotAnimationDefinitionCache());
-		check("VarcInt_cached", client.getVarcIntCache());
-		check("VarpDefinition_cached", client.getVarpDefinitionCache());
+
 		check("DBRowType_cache", client.getDbRowTypeCache());
 		check("DBTableType_cache", client.getDbTableTypeCache());
 		check("DBTableIndex_cache", client.getDbTableIndexCache());
-		check("DBTableMasterIndex_cache", client.getDbTableMasterIndexCache());
+
+		check("field1909", client.getField1909());
+		check("field1913", client.getField1913());
+		check("field1915", client.getField1915());
+		check("archive7", client.getArchive7());
+		check("archive5", client.getArchive5());
+		check("field2007", client.getField2007());
+		check("field2023", client.getField2023());
+		check("field2026", client.getField2026());
+		check("field2100", client.getField2100());
+		check("field2136", client.getField2136());
+		check("archive4", client.getArchive4());
+		check("archive11", client.getArchive11());
+
+		check("HealthBarDefinition_cached", client.getHealthBarCache());
+		check("HealthBarDefinition_cachedSprites", client.getHealthBarSpriteCache());
+
+		check("HitSplatDefinition_cached", client.getHitSplatDefinitionCache());
+		check("HitSplatDefinition_cachedSprites", client.getHitSplatDefinitionSpritesCache());
+		check("HitSplatDefinition_cachedFonts", client.getHitSplatDefinitionFontsCache());
+
+		check("Widget_cachedSpriteMasks", client.getSpriteMasksCache());
+
+		check("KitDefinition_cached", client.getKitDefinitionCache());
+
+		check("InvDefinition_cached", client.getInvDefinitionCache());
+
+		check("ItemDefinition_cached", client.getItemCompositionCache());
+		check("ItemDefinition_cachedModels", client.getItemDefinitionModelsCache());
+		check("ItemDefinition_cachedSprites", client.getItemDefinitionSpritesCache());
+
+		check("NpcDefinition_cached", client.getNpcDefinitionCache());
+		check("NpcDefinition_cachedModels", client.getNpcDefinitionModelsCache());
+
+		check("ObjectDefinition_cached", client.getObjectDefinitionCache());
+		check("ObjectDefinition_cachedModelData", client.getObjectDefinitionModelDataCache());
+		check("ObjectDefinition_cachedEntities", client.getObjectDefinitionEntitiesCache());
+		check("ObjectDefinition_cachedModels", client.getObjectDefinitionModelsCache());
+
+		check("ParamDefinition_cached", client.getParamDefinitionCache());
+
+		check("PlayerAppearance_cachedModels", client.getPlayerAppearanceModelsCache());
+
+		check("Script_cached", client.getScriptCache());
+
+		check("StructDefinition_cached", client.getRSStructCompositionCache());
+
+		check("VarbitDefinition_cached", client.getVarbitCache());
+		check("VarcInt_cached", client.getVarcIntCache());
+		check("VarpDefinition_cached", client.getVarpDefinitionCache());
+
+		check("FloorUnderlayDefinition_cached", client.getFloorUnderlayDefinitionCache());
+		check("FloorOverlayDefinition_cached", client.getFloorOverlayDefinitionCache());
 	}
 
 	@Inject
@@ -3626,13 +3682,13 @@ public abstract class RSClientMixin implements RSClient
 					interfaceNode.setId(interfaceId);
 					interfaceNode.setModalMode(modalMode);
 					this.getComponentTable().put(interfaceNode, (long) componentId);
-					this.loadInterface(interfaceId);
-					this.revalidateWidgetScroll(this.getWidgets()[componentId >> 16], component, false);
+					this.getWidgetDefinition().loadInterface(interfaceId);
+					this.revalidateWidgetScroll(this.getWidgetDefinition().getWidgets()[componentId >> 16], component, false);
 					this.copy$runWidgetOnLoadListener(interfaceId);
 					int topLevelInterfaceId = this.getTopLevelInterfaceId();
-					if (topLevelInterfaceId != -1 && this.loadInterface(topLevelInterfaceId))
+					if (topLevelInterfaceId != -1 && this.getWidgetDefinition().loadInterface(topLevelInterfaceId))
 					{
-						this.runComponentCloseListeners(this.getWidgets()[topLevelInterfaceId], 1);
+						this.runComponentCloseListeners(this.getWidgetDefinition().getWidgets()[topLevelInterfaceId], 1);
 					}
 
 					return interfaceNode;
