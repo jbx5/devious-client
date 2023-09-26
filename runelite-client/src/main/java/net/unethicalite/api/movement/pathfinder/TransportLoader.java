@@ -36,7 +36,9 @@ import net.unethicalite.api.quests.QuestVarbits;
 import net.unethicalite.api.quests.Quests;
 import net.unethicalite.api.widgets.Dialog;
 import net.unethicalite.api.widgets.Widgets;
+import net.unethicalite.client.Static;
 import org.apache.commons.lang3.tuple.Pair;
+import net.unethicalite.api.movement.pathfinder.model.CharterShipLocation;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -162,6 +164,11 @@ public class TransportLoader
                             new WorldPoint(1824, 3695, 1),
                             "Veos",
                             "Port Piscarilius"));
+                }
+                // Charter Ships
+                if (Static.getUnethicaliteConfig().useCharterShips())
+                {
+                    transports.addAll(CharterShipLocation.getCharterShips(gold));
                 }
 
                 if (Quests.getState(Quest.LUNAR_DIPLOMACY) != QuestState.NOT_STARTED)
@@ -691,6 +698,39 @@ public class TransportLoader
             else
             {
                 Movement.walk(destination);
+            }
+        });
+    }
+
+    public static Transport charterTransport(
+        WorldPoint source,
+        WorldPoint destination,
+        int destinationWidgetId
+    )
+    {
+        return new Transport(source, destination, 10, 0, () ->
+        {
+           if (Dialog.isViewingOptions())
+           {
+                Dialog.chooseOption("Okay");
+                return;
+           }
+            Widget charterWidget = Widgets.get(72, 0);
+            if (Widgets.isVisible(charterWidget))
+            {
+                Widget destinationWidget = Widgets.get(72, destinationWidgetId);
+                if (Widgets.isVisible(destinationWidget))
+                {
+                    destinationWidget.interact(0);
+                }
+            }
+            else
+            {
+                NPC charterCrew = NPCs.getNearest(source, "Trader Crewmember");
+                if (charterCrew != null)
+                {
+                    charterCrew.interact("Charter");
+                }
             }
         });
     }

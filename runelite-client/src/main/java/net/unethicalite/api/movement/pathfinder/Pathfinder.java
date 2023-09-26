@@ -3,9 +3,14 @@ package net.unethicalite.api.movement.pathfinder;
 import lombok.Data;
 import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
+import net.runelite.api.Item;
+import net.runelite.api.ItemID;
 import net.runelite.api.coords.WorldArea;
 import net.runelite.api.coords.WorldPoint;
+import net.unethicalite.api.items.Inventory;
+import net.unethicalite.api.movement.pathfinder.model.CharterShipLocation;
 import net.unethicalite.api.movement.pathfinder.model.Transport;
+import net.unethicalite.client.Static;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -32,6 +37,8 @@ public class Pathfinder implements Callable<List<WorldPoint>>
 	private final Set<WorldPoint> visited = new HashSet<>();
 	private Node nearest;
 	boolean avoidWilderness;
+	boolean useCharterShips;
+	int goldAvailable = 0;
 
 	private static boolean isInWilderness(WorldPoint location)
 	{
@@ -50,9 +57,14 @@ public class Pathfinder implements Callable<List<WorldPoint>>
 		this.target = target;
 		this.targetTiles = target.toWorldPointList();
 		this.start = new ArrayList<>();
-		this.start.addAll(start.stream().map(point -> new Node(point, null)).collect(Collectors.toList()));
 		this.nearest = null;
 		this.avoidWilderness = avoidWilderness;
+		this.useCharterShips = Static.getUnethicaliteConfig().useCharterShips();
+		if (useCharterShips)
+		{
+			this.goldAvailable = Inventory.getCount(true, ItemID.COINS_995);
+		}
+		this.start.addAll(start.stream().map(point -> new Node(point, null, goldAvailable)).collect(Collectors.toList()));
 		if (targetTiles.stream().allMatch(collisionMap::fullBlock))
 		{
 			log.warn("Walking to a {}, pathfinder will be slow", targetTiles.size() == 1 ? "blocked tile" : "fully blocked area");
@@ -117,13 +129,28 @@ public class Pathfinder implements Callable<List<WorldPoint>>
 		{
 			return;
 		}
-
+		if (useCharterShips)
+		{
+			int cost = CharterShipLocation.getCharterShipCost(node.position, neighbor);
+			if (cost != 0 && cost <= node.goldAvailable)
+			{
+				log.debug("Gold available before: {}", node.goldAvailable);
+				log.debug("Using charter ship from {} to {} for {} gp", node.position, neighbor, cost);
+				log.debug("Gold available after: {}", node.goldAvailable - cost);
+				boundary.add(new Node(neighbor, node, node.goldAvailable - cost));
+				return;
+			}
+			else if (cost != 0)
+			{
+				return;
+			}
+		}
 		if (!visited.add(neighbor))
 		{
 			return;
 		}
 
-		boundary.add(new Node(neighbor, node));
+		boundary.add(new Node(neighbor, node, node.goldAvailable));
 	}
 
 	public List<WorldPoint> find()
@@ -152,6 +179,7 @@ public class Pathfinder implements Callable<List<WorldPoint>>
 
 			if (visited.size() >= maxSearch)
 			{
+				log.debug("Reached max search limit of {}", maxSearch);
 				return nearest.path();
 			}
 
@@ -190,7 +218,7 @@ public class Pathfinder implements Callable<List<WorldPoint>>
 	{
 		WorldPoint position;
 		Node previous;
-
+		int goldAvailable;
 
 		public List<WorldPoint> path()
 		{
