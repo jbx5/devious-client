@@ -136,7 +136,7 @@ public class class20 {
 	)
 	public static void method293() {
 		NPCComposition.NpcDefinition_cached.clear();
-		NPCComposition.HitSplatDefinition_cachedFonts.clear();
+		NPCComposition.NpcDefinition_cachedModels.clear();
 	}
 
 	@ObfuscatedName("ae")

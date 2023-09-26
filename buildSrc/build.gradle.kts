@@ -29,7 +29,7 @@ plugins {
 
 repositories {
     mavenCentral()
-    maven(url = "https://raw.githubusercontent.com/open-osrs/hosting/master")
+    maven(url = "https://raw.githubusercontent.com/jbx5/hosting/master")
 }
 
 dependencies {
