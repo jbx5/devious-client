@@ -18,8 +18,8 @@ public interface RSNPCComposition extends NPCComposition
 	@Override
 	String[] getActions();
 
-	@Import("isClickable")
-	boolean isClickable();
+	@Import("isClipped")
+	boolean isClipped();
 
 	@Import("isFollower")
 	@Override
