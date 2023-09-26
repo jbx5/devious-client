@@ -33,7 +33,7 @@ public final class class315 {
 	)
 	public static void method5904() {
 		ItemComposition.ItemDefinition_cached.clear();
-		ItemComposition.HealthBarDefinition_cachedSprites.clear();
+		ItemComposition.ItemDefinition_cachedModels.clear();
 		ItemComposition.ItemDefinition_cachedSprites.clear();
 	}
 }

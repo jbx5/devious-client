@@ -15,6 +15,7 @@ public class class190 extends DualNode {
 	@ObfuscatedSignature(
 		descriptor = "Llr;"
 	)
+	@Export("field1915")
 	static EvictingDualNodeHashTable field1915;
 	@ObfuscatedName("ag")
 	@ObfuscatedGetter(

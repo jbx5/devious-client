@@ -11,6 +11,7 @@ import net.runelite.api.mixins.Replace;
 import net.runelite.api.mixins.Shadow;
 import net.runelite.rs.api.RSBuffer;
 import net.runelite.rs.api.RSClient;
+import net.runelite.rs.api.RSEvictingDualNodeHashTable;
 import net.runelite.rs.api.RSObjectComposition;
 
 @Mixin(RSObjectComposition.class)
@@ -21,6 +22,14 @@ public abstract class RSObjectCompositionMixin implements RSObjectComposition
 
 	@Inject
 	private int accessBitMask = 0;
+
+	@MethodHook(value = "<clinit>", end = true)
+	@Inject
+	public static void rl$clinit()
+	{
+		RSEvictingDualNodeHashTable objectDefinitionModelsCache = client.getObjectDefinitionModelsCache();
+		objectDefinitionModelsCache.resize(256);
+	}
 
 	@Inject
 	RSObjectCompositionMixin()
