@@ -151,12 +151,15 @@ public class RegionOverlay extends Overlay
 		{
 			return;
 		}
-
 		Point mouse = client.getMouseCanvasPosition();
 
 		Widget worldMap = Widgets.get(WidgetInfo.WORLD_MAP_VIEW);
 		if (worldMap == null)
 		{
+			if (!event.getFirstEntry().getOption().equals("Walk here"))
+			{
+				return;
+			}
 			Tile clickPoint = Tiles.getHoveredTile();
 			if (clickPoint == null)
 			{
