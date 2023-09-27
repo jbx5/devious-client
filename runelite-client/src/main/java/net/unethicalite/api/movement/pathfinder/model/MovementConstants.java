@@ -33,9 +33,10 @@ public class MovementConstants
 	public static final WorldArea WILDERNESS_UNDERGROUND = new WorldArea(2944, 9918, 320, 442, 0);
 	public static WorldPoint HOUSE_POINT()
 	{
-		if (Worlds.inMembersWorld())
+		WorldPoint outside = House.getOutsideLocation();
+		if (Worlds.inMembersWorld() && outside != null)
 		{
-			return House.getOutsideLocation();
+			return outside;
 		}
 		else return new WorldPoint(10000, 4000, 1);
 	}
