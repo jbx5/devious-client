@@ -45,7 +45,9 @@ import java.util.concurrent.TimeUnit;
 public class RegionManager
 {
     private static final Set<Integer> REFRESH_WIDGET_IDS = Set.of(WidgetInfo.QUEST_COMPLETED_NAME_TEXT.getGroupId(), WidgetInfo.LEVEL_UP_LEVEL.getGroupId());
-    private static final Set<String> pathfinderConfigKeys = Set.of("useTransports", "useTeleports", "avoidWilderness", "usePoh", "hasMountedGlory", "hasMountedDigsitePendant", "hasMountedMythicalCape", "hasMountedXericsTalisman", "hasJewelryBox", "housePortals", "useEquipmentJewellery", "useMinigameTeleports");
+    private static final Set<String> pathfinderConfigKeys = Set.of("useTransports", "useTeleports", "avoidWilderness", "usePoh",
+        "hasMountedGlory", "hasMountedDigsitePendant", "hasMountedMythicalCape", "hasMountedXericsTalisman", "hasJewelryBox",
+        "housePortals", "useEquipmentJewellery", "useMinigameTeleports", "useEquipmentTeleports");
 
     private static final Set<Integer> REFRESH_VARBITS = Set.of(
             // Motherlode mine shortcut (54 agility)
@@ -94,6 +96,11 @@ public class RegionManager
     public static boolean useEquipmentJewellery()
     {
         return Static.getUnethicaliteConfig().useEquipmentJewellery();
+    }
+
+    public static boolean useEquipmentTeleports()
+    {
+        return Static.getUnethicaliteConfig().useEquipmentTeleports();
     }
 
     public static boolean usePoh()

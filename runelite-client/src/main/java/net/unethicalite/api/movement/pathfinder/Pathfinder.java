@@ -16,8 +16,7 @@ import java.util.Set;
 import java.util.concurrent.Callable;
 import java.util.stream.Collectors;
 
-import static net.unethicalite.api.movement.pathfinder.model.MovementConstants.WILDERNESS_ABOVE_GROUND;
-import static net.unethicalite.api.movement.pathfinder.model.MovementConstants.WILDERNESS_UNDERGROUND;
+import static net.unethicalite.api.movement.pathfinder.model.MovementConstants.*;
 
 @Data
 @Slf4j
@@ -35,7 +34,8 @@ public class Pathfinder implements Callable<List<WorldPoint>>
 
 	private static boolean isInWilderness(WorldPoint location)
 	{
-		return location.isInArea2D(WILDERNESS_ABOVE_GROUND, WILDERNESS_UNDERGROUND);
+		return location.isInArea2D(WILDERNESS_ABOVE_GROUND, WILDERNESS_UNDERGROUND) &&
+			!location.isInArea2D(FEROX_ENCLAVE);
 	}
 
 	public Pathfinder(CollisionMap collisionMap, Map<WorldPoint, List<Transport>> transports, List<WorldPoint> start, WorldPoint target, boolean avoidWilderness)

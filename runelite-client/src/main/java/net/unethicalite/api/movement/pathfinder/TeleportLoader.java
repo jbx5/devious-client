@@ -294,6 +294,12 @@ public class TeleportLoader
 								() -> slayerRingTeleport("Dark Beasts", SLAYER_RING)));
 						}
 					}
+
+					if (ardyCloak())
+					{
+						teleports.add(new Teleport(new WorldPoint(2606, 3221, 0), 3,
+								() -> equipmentTeleport("Monastery Teleport", "Kandarin Monastery", ARDY_CLOAK)));
+					}
 				}
 
 				if (RegionManager.usePoh() && (canEnterHouse() || TileObjects.getNearest(ObjectID.PORTAL_4525) != null))
@@ -419,6 +425,28 @@ public class TeleportLoader
 		if (equipped != null)
 		{
 			equipped.interact(target);
+		}
+	}
+
+	public static void equipmentTeleport(String invTarget, String equipTarget, int... ids)
+	{
+		Item inv = Inventory.getFirst(x -> x.hasAction(invTarget) && Arrays.stream(ids).anyMatch(id -> id == x.getId()));
+
+		if (inv != null)
+		{
+			inv.interact(invTarget);
+			return;
+		}
+
+		if (!RegionManager.useEquipmentTeleports())
+		{
+			return;
+		}
+
+		Item equipped = Equipment.getFirst(x -> x.hasAction(equipTarget) && Arrays.stream(ids).anyMatch(id -> id == x.getId()));
+		if (equipped != null)
+		{
+			equipped.interact(equipTarget);
 		}
 	}
 
@@ -904,5 +932,11 @@ public class TeleportLoader
 	{
 		return Inventory.getFirst(BURNING_AMULET) != null
 				|| (RegionManager.useEquipmentJewellery() && Equipment.getFirst(BURNING_AMULET) != null);
+	}
+
+	public static boolean ardyCloak()
+	{
+		return Inventory.getFirst(ARDY_CLOAK) != null
+			|| (RegionManager.useEquipmentTeleports() && Equipment.getFirst(ARDY_CLOAK) != null);
 	}
 }
