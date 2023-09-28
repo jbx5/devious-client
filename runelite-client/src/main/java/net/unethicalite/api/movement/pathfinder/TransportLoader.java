@@ -28,6 +28,7 @@ import net.unethicalite.api.items.Equipment;
 import net.unethicalite.api.items.Inventory;
 import net.unethicalite.api.movement.Movement;
 import net.unethicalite.api.movement.pathfinder.model.FairyRingLocation;
+import net.unethicalite.api.movement.pathfinder.model.GnomeGliderLocation;
 import net.unethicalite.api.movement.pathfinder.model.Transport;
 import net.unethicalite.api.movement.pathfinder.model.dto.TransportDto;
 import net.unethicalite.api.movement.pathfinder.model.requirement.Requirements;
@@ -164,11 +165,6 @@ public class TransportLoader
                             new WorldPoint(1824, 3695, 1),
                             "Veos",
                             "Port Piscarilius"));
-                }
-                // Charter Ships
-                if (Static.getUnethicaliteConfig().useCharterShips())
-                {
-                    transports.addAll(CharterShipLocation.getCharterShips(gold));
                 }
 
                 if (Quests.getState(Quest.LUNAR_DIPLOMACY) != QuestState.NOT_STARTED)
@@ -324,11 +320,42 @@ public class TransportLoader
                         transports.add(mushtreeTransport(source.position, target.position, target.widget));
                     }
                 }
-                // Tower of Life
-                transports.add(trapDoorTransport(new WorldPoint(2648, 3213, 0), new WorldPoint(3038, 4376, 0), ObjectID.TRAPDOOR_21921, ObjectID.TRAPDOOR_21922));
-                transports.add(objectTransport(new WorldPoint(3038, 4376, 0), new WorldPoint(2649, 3212, 0), ObjectID.LADDER_17974, "Climb-up"));
             }
+            // Tower of Life
+            transports.add(trapDoorTransport(new WorldPoint(2648, 3213, 0), new WorldPoint(3038, 4376, 0), ObjectID.TRAPDOOR_21921, ObjectID.TRAPDOOR_21922));
+            transports.add(objectTransport(new WorldPoint(3038, 4376, 0), new WorldPoint(2649, 3212, 0), ObjectID.LADDER_17974, "Climb-up"));
 
+            // Gnome Gliders
+            if (Quests.isFinished(Quest.THE_GRAND_TREE))
+            {
+                for (var source : GnomeGliderLocation.values())
+                {
+                    for (var target : GnomeGliderLocation.values())
+                    {
+                        if (source.getWorldPoint() == GnomeGliderLocation.LEMANTO_ANDRA.getWorldPoint())
+                        {
+                            continue;
+                        }
+                        if (source.getWorldPoint() == GnomeGliderLocation.LEMANTOLLY_UNDRI.getWorldPoint() ||
+                            target.getWorldPoint() == GnomeGliderLocation.LEMANTOLLY_UNDRI.getWorldPoint() &&
+                                Quests.isFinished(Quest.ONE_SMALL_FAVOUR))
+                        {
+                            continue;
+                        }
+                        if (source.getWorldPoint() == GnomeGliderLocation.OOKOOKOLLY_UNDRI.getWorldPoint() ||
+                            target.getWorldPoint() == GnomeGliderLocation.OOKOOKOLLY_UNDRI.getWorldPoint() &&
+                                Quests.isFinished(Quest.MONKEY_MADNESS_II))
+                        {
+                            continue;
+                        }
+
+                        if (source != target)
+                        {
+                            transports.add(gnomeGliderTransport(source.getWorldPoint(), target.getWorldPoint(), target.getWidgetID()));
+                        }
+                    }
+                }
+            }
             // Gnome stronghold
             transports.add(objectDialogTransport(new WorldPoint(2460, 3382, 0), new WorldPoint(2461, 3385, 0), 190, new String[] {"Open"}, "Sorry, I'm a bit busy."));
             transports.add(objectDialogTransport(new WorldPoint(2461, 3382, 0), new WorldPoint(2461, 3385, 0), 190, new String[] {"Open"}, "Sorry, I'm a bit busy."));
@@ -735,6 +762,34 @@ public class TransportLoader
         });
     }
 
+    public static Transport gnomeGliderTransport(
+        WorldPoint source,
+        WorldPoint destination,
+        int widgetId
+    )
+    {
+        return new Transport(source, destination, 10, 0, () ->
+        {
+            Widget gliderMap = Widgets.get(138, 0);
+            if (Widgets.isVisible(gliderMap))
+            {
+                Widget destinationWidget = Widgets.get(138, widgetId);
+                if (Widgets.isVisible(destinationWidget))
+                {
+                    destinationWidget.interact(0);
+                }
+            }
+            else
+            {
+                NPC gnome = NPCs.getNearest(source, "Captain Klemfoodle", "Captain Errdo", "Captain Dalbur",
+                    "Captain Bleemadge", "Gnormadium Avlafrim", "Captain Shoracks");
+                if (gnome != null)
+                {
+                    gnome.interact("Glider");
+                }
+            }
+        });
+    }
     private static Transport spritTreeTransport(WorldPoint source, WorldPoint target, String location)
     {
         return new Transport(

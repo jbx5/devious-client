@@ -25,7 +25,7 @@ public class House
 		}
 
 		int idx = Vars.getBit(HOUSE_LOCATION_VARBIT);
-		if (idx >= HOUSE_LOCATIONS.length || idx < 0)
+		if (idx >= HOUSE_LOCATIONS.length || idx <= 0)
 		{
 			return null;
 		}
