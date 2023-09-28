@@ -215,7 +215,7 @@ public abstract class RSActorMixin implements RSActor
 	@Inject
 	public void animationChanged(int idx)
 	{
-		if (this instanceof RSNPC)
+		/*if (this instanceof RSNPC)
 		{
 			int id = ((RSNPC) this).getId();
 			switch (id)
@@ -230,11 +230,11 @@ public abstract class RSActorMixin implements RSActor
 				case 8622:
 					return;
 			}
-		}
+		}*/
 
-		AnimationChanged animationChange = new AnimationChanged();
-		animationChange.setActor(this);
-		client.getCallbacks().post(animationChange);
+		AnimationChanged animationChanged = new AnimationChanged();
+		animationChanged.setActor(this);
+		client.getCallbacks().post(animationChanged);
 	}
 
 	@MethodHook(value = "clearSpotAnimations", end = true)
@@ -557,7 +557,7 @@ public abstract class RSActorMixin implements RSActor
 		int animation = getRSAnimation();
 		switch (animation)
 		{
-			case 7592:
+			/*case 7592:
 			case 7593:
 			case 7949:
 			case 7950:
@@ -590,7 +590,7 @@ public abstract class RSActorMixin implements RSActor
 			case 8256:
 			case 8257:
 			case 8258:
-				return -1;
+				return -1;*/
 			default:
 				return animation;
 		}
