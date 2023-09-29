@@ -290,11 +290,13 @@ public class UnethicalDevToolsPlugin extends LoopedPlugin
 
 	@Subscribe
 	private void onConfigButtonPressed(ConfigButtonClicked configButtonClicked) {
-		if (!configButtonClicked.getGroup().equalsIgnoreCase("entityinspector")) {
+		if (!configButtonClicked.getGroup().equalsIgnoreCase("entityinspector"))
+		{
 			return;
 		}
 
-		if (configButtonClicked.getKey().equals("printStackTrace")) {
+		if (configButtonClicked.getKey().equals("printStackTrace"))
+		{
 			for (Map.Entry <Thread, StackTraceElement []> entry:
 					Thread.getAllStackTraces().entrySet ())
 			{
