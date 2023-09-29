@@ -50,7 +50,8 @@ public enum CharterShipLocation
     {
         this.worldPoint = worldPoint;
     }
-    static {
+    static
+    {
         priceMap.put(Pair.of(BRIMHAVEN_DOCK.getWorldPoint(), CATHERBY_SHIP.getWorldPoint()), 480);
         priceMap.put(Pair.of(BRIMHAVEN_DOCK.getWorldPoint(), CORSAIR_COVE_SHIP.getWorldPoint()), 680);
         priceMap.put(Pair.of(BRIMHAVEN_DOCK.getWorldPoint(), MOS_LE_HARMLESS_SHIP.getWorldPoint()), 3900);
@@ -174,10 +175,10 @@ public enum CharterShipLocation
         }
     }
 
-    public static int getCharterShipCost(WorldPoint source, WorldPoint destination)
+    public static int getCharterShipCost(WorldPoint source, WorldPoint destination, boolean ringOfCharos)
     {
         double priceModifier = 1.0;
-        if (Equipment.contains(ItemID.RING_OF_CHAROSA))
+        if (ringOfCharos)
         {
             priceModifier *= 0.5;
         }

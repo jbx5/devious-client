@@ -167,6 +167,12 @@ public class TransportLoader
                             "Port Piscarilius"));
                 }
 
+                // Charter Ships
+                if (Static.getUnethicaliteConfig().useCharterShips())
+                {
+                    transports.addAll(CharterShipLocation.getCharterShips(gold));
+                }
+
                 if (Quests.getState(Quest.LUNAR_DIPLOMACY) != QuestState.NOT_STARTED)
                 {
                     transports.add(npcTransport(new WorldPoint(2222, 3796, 2), new WorldPoint(2130, 3899, 2), NpcID.CAPTAIN_BENTLEY_6650, "Travel"));
@@ -336,15 +342,15 @@ public class TransportLoader
                         {
                             continue;
                         }
-                        if (source.getWorldPoint() == GnomeGliderLocation.LEMANTOLLY_UNDRI.getWorldPoint() ||
-                            target.getWorldPoint() == GnomeGliderLocation.LEMANTOLLY_UNDRI.getWorldPoint() &&
-                                Quests.isFinished(Quest.ONE_SMALL_FAVOUR))
+                        if ((source.getWorldPoint() == GnomeGliderLocation.LEMANTOLLY_UNDRI.getWorldPoint() ||
+                            target.getWorldPoint() == GnomeGliderLocation.LEMANTOLLY_UNDRI.getWorldPoint()) &&
+                                !Quests.isFinished(Quest.ONE_SMALL_FAVOUR))
                         {
                             continue;
                         }
-                        if (source.getWorldPoint() == GnomeGliderLocation.OOKOOKOLLY_UNDRI.getWorldPoint() ||
-                            target.getWorldPoint() == GnomeGliderLocation.OOKOOKOLLY_UNDRI.getWorldPoint() &&
-                                Quests.isFinished(Quest.MONKEY_MADNESS_II))
+                        if ((source.getWorldPoint() == GnomeGliderLocation.OOKOOKOLLY_UNDRI.getWorldPoint() ||
+                            target.getWorldPoint() == GnomeGliderLocation.OOKOOKOLLY_UNDRI.getWorldPoint()) &&
+                                !Quests.isFinished(Quest.MONKEY_MADNESS_II))
                         {
                             continue;
                         }

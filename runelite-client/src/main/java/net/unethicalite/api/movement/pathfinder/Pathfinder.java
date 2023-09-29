@@ -3,10 +3,12 @@ package net.unethicalite.api.movement.pathfinder;
 import lombok.Data;
 import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
+import net.runelite.api.EquipmentInventorySlot;
 import net.runelite.api.Item;
 import net.runelite.api.ItemID;
 import net.runelite.api.coords.WorldArea;
 import net.runelite.api.coords.WorldPoint;
+import net.unethicalite.api.items.Equipment;
 import net.unethicalite.api.items.Inventory;
 import net.unethicalite.api.movement.pathfinder.model.CharterShipLocation;
 import net.unethicalite.api.movement.pathfinder.model.Transport;
@@ -37,13 +39,29 @@ public class Pathfinder implements Callable<List<WorldPoint>>
 	private Node nearest;
 	boolean avoidWilderness;
 	boolean useCharterShips;
-	int goldAvailable = 0;
+	private int goldAvailable = 0;
+	private boolean ringOfCharosEquipped;
+	private boolean targetsInWilderness;
 
 	private static boolean isInWilderness(WorldPoint location)
 	{
-		return location.isInArea2D(WILDERNESS_ABOVE_GROUND, WILDERNESS_UNDERGROUND) &&
-			!location.isInArea2D(FEROX_ENCLAVE);
+
+		return contains(location, WILDERNESS_ABOVE_GROUND, WILDERNESS_UNDERGROUND) &&
+			!contains(location, FEROX_ENCLAVE);
 	}
+	private static boolean contains(WorldPoint point, WorldArea... areas)
+	{
+		for (WorldArea area : areas)
+		{
+			if (point.getX() >= area.getX() && point.getX() <= area.getX() + area.getWidth() &&
+				point.getY() >= area.getY() && point.getY() <= area.getY() + area.getHeight())
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+
 
 	public Pathfinder(CollisionMap collisionMap, Map<WorldPoint, List<Transport>> transports, List<WorldPoint> start, WorldPoint target, boolean avoidWilderness)
 	{
@@ -63,8 +81,11 @@ public class Pathfinder implements Callable<List<WorldPoint>>
 		if (useCharterShips)
 		{
 			this.goldAvailable = Inventory.getCount(true, ItemID.COINS_995);
+			Item ring = Equipment.fromSlot(EquipmentInventorySlot.RING);
+			this.ringOfCharosEquipped = ring != null && ring.getId() == ItemID.RING_OF_CHAROSA;
 		}
 		this.start.addAll(start.stream().map(point -> new Node(point, null, goldAvailable)).collect(Collectors.toList()));
+		this.targetsInWilderness = targetTiles.stream().anyMatch(Pathfinder::isInWilderness);
 		if (targetTiles.stream().allMatch(collisionMap::fullBlock))
 		{
 			log.warn("Walking to a {}, pathfinder will be slow", targetTiles.size() == 1 ? "blocked tile" : "fully blocked area");
@@ -125,32 +146,21 @@ public class Pathfinder implements Callable<List<WorldPoint>>
 
 	private void addNeighbor(Node node, WorldPoint neighbor)
 	{
-		if (avoidWilderness && isInWilderness(neighbor) && !isInWilderness(node.position) && targetTiles.stream().noneMatch(Pathfinder::isInWilderness))
+		if (avoidWilderness && isInWilderness(neighbor) && !isInWilderness(node.position) && !targetsInWilderness)
 		{
 			return;
 		}
-		if (useCharterShips)
+		int cost = CharterShipLocation.getCharterShipCost(node.position, neighbor, ringOfCharosEquipped);
+		if (useCharterShips && cost > node.goldAvailable)
 		{
-			int cost = CharterShipLocation.getCharterShipCost(node.position, neighbor);
-			if (cost != 0 && cost <= node.goldAvailable)
-			{
-				log.debug("Gold available before: {}", node.goldAvailable);
-				log.debug("Using charter ship from {} to {} for {} gp", node.position, neighbor, cost);
-				log.debug("Gold available after: {}", node.goldAvailable - cost);
-				boundary.add(new Node(neighbor, node, node.goldAvailable - cost));
-				return;
-			}
-			else if (cost != 0)
-			{
-				return;
-			}
+			return;
 		}
 		if (!visited.add(neighbor))
 		{
 			return;
 		}
 
-		boundary.add(new Node(neighbor, node, node.goldAvailable));
+		boundary.add(new Node(neighbor, node, node.goldAvailable - cost));
 	}
 
 	public List<WorldPoint> find()
@@ -161,6 +171,7 @@ public class Pathfinder implements Callable<List<WorldPoint>>
 			String.format("WorldArea(x=%s, y=%s, width=%s, height=%s, plane=%s)",
 				target.getX(), target.getY(), target.getWidth(), target.getHeight(), target.getPlane());
 		log.debug("Path calculation took {} ms to {}", System.currentTimeMillis() - startTime, targetStr);
+		System.gc();
 		return path;
 	}
 
