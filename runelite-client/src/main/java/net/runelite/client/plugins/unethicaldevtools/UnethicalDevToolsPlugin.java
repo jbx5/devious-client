@@ -4,6 +4,7 @@ import com.google.inject.Provides;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.api.DialogOption;
+import net.runelite.api.Point;
 import net.runelite.api.events.DialogProcessed;
 import net.runelite.api.events.MenuOptionClicked;
 import net.runelite.api.packets.ClientPacket;
@@ -13,15 +14,22 @@ import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.events.ConfigChanged;
-import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.ui.overlay.OverlayManager;
+import net.runelite.client.ui.overlay.OverlayUtil;
 import net.unethicalite.api.events.MenuAutomated;
 import net.unethicalite.api.events.PacketSent;
 import net.unethicalite.api.events.ServerPacketReceived;
+import net.unethicalite.api.plugins.LoopedPlugin;
 import net.unethicalite.client.Static;
+import net.unethicalite.client.managers.InputManager;
 
 import javax.inject.Inject;
+import java.awt.AWTException;
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.MouseInfo;
+import java.awt.Robot;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -32,7 +40,7 @@ import java.util.stream.Collectors;
 		enabledByDefault = false
 )
 @Slf4j
-public class UnethicalDevToolsPlugin extends Plugin
+public class UnethicalDevToolsPlugin extends LoopedPlugin
 {
 	@Inject
 	private UnethicalDevToolsConfig config;
@@ -57,6 +65,9 @@ public class UnethicalDevToolsPlugin extends Plugin
 
 	@Inject
 	private Client client;
+
+	@Inject
+	private InputManager inputManager;
 
 	@Override
 	public void startUp()
@@ -225,5 +236,53 @@ public class UnethicalDevToolsPlugin extends Plugin
 		{
 			client.setStaffModLevel(Integer.parseInt(e.getNewValue()));
 		}
+	}
+
+	private static Robot robot;
+	static
+	{
+		try
+		{
+			robot = new Robot();
+		}
+		catch (AWTException e)
+		{
+			log.error("", e);
+		}
+	}
+
+	@Override
+	protected int loop()
+	{
+		if (!config.mousePositionOverlay())
+		{
+			return -1;
+		}
+
+		final Graphics2D graphics = (Graphics2D) client.getCanvas().getGraphics();
+		if (graphics != null)
+		{
+			final int lastMoveX = inputManager.getLastMoveX();
+			final int lastMoveY = inputManager.getLastMoveY();
+
+			// Render mouse position
+			OverlayUtil.renderTextLocation(graphics,
+				new Point(lastMoveX, lastMoveY),
+				"x: " + lastMoveX + " y: " + lastMoveY,
+				Color.YELLOW);
+
+			// Render hex color
+			if (robot != null)
+			{
+				Color color = robot.getPixelColor(MouseInfo.getPointerInfo().getLocation().x,
+					MouseInfo.getPointerInfo().getLocation().y);
+
+				OverlayUtil.renderTextLocation(graphics,
+					new Point(lastMoveX, lastMoveY - 10),
+					"hex: " + String.format("#%02x%02x%02x", color.getRed(), color.getGreen(), color.getBlue()),
+					Color.YELLOW);
+			}
+		}
+		return 0;
 	}
 }
