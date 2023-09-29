@@ -1,6 +1,11 @@
 package net.runelite.client.plugins.unethicaldevtools;
 
-import net.runelite.client.config.*;
+import net.runelite.client.config.Config;
+import net.runelite.client.config.ConfigGroup;
+import net.runelite.client.config.ConfigItem;
+import net.runelite.client.config.ConfigSection;
+import net.runelite.client.config.Range;
+import net.runelite.client.config.Button;
 
 @ConfigGroup("entityinspector")
 public interface UnethicalDevToolsConfig extends Config
@@ -485,7 +490,7 @@ public interface UnethicalDevToolsConfig extends Config
 			description = "Button that prints out the current stack trace",
 			position = 100
 	)
-	default Button startButton() {
+	default Button printStackTrace() {
 		return new Button();
 	}
 }
