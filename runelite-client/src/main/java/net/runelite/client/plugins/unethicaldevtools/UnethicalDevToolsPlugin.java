@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.api.DialogOption;
 import net.runelite.api.Point;
+import net.runelite.api.events.ConfigButtonClicked;
 import net.runelite.api.events.DialogProcessed;
 import net.runelite.api.events.MenuOptionClicked;
 import net.runelite.api.packets.ClientPacket;
@@ -32,6 +33,7 @@ import java.awt.MouseInfo;
 import java.awt.Robot;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @PluginDescriptor(
@@ -284,5 +286,22 @@ public class UnethicalDevToolsPlugin extends LoopedPlugin
 			}
 		}
 		return 0;
+	}
+
+	@Subscribe
+	private void onConfigButtonPressed(ConfigButtonClicked configButtonClicked) {
+		if (!configButtonClicked.getGroup().equalsIgnoreCase("entityinspector")) {
+			return;
+		}
+
+		if (configButtonClicked.getKey().equals("printStackTrace")) {
+			for (Map.Entry <Thread, StackTraceElement []> entry:
+					Thread.getAllStackTraces().entrySet ())
+			{
+				System.out.println (entry.getKey ().getName () + ":");
+				for (StackTraceElement element: entry.getValue ())
+					System.out.println ("\t" + element);
+			}
+		}
 	}
 }
