@@ -5,6 +5,7 @@ import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
 import net.runelite.client.config.ConfigSection;
 import net.runelite.client.config.Range;
+import net.runelite.client.config.Button;
 
 @ConfigGroup("entityinspector")
 public interface UnethicalDevToolsConfig extends Config
@@ -448,11 +449,23 @@ public interface UnethicalDevToolsConfig extends Config
 	}
 
 	@ConfigItem(
+		keyName = "mousePositionOverlay",
+		name = "Draw mouse position",
+		description = "Draw the current mouse position and hex color of the hovered pixels",
+		section = interaction,
+		position = 8
+	)
+	default boolean mousePositionOverlay()
+	{
+		return false;
+	}
+
+	@ConfigItem(
 			keyName = "debugMenuAction",
 			name = "Debug menu actions",
 			description = "Debugs attempted menu actions to the console",
 			section = interaction,
-			position = 8
+			position = 9
 	)
 	default boolean debugMenuActions()
 	{
@@ -464,10 +477,20 @@ public interface UnethicalDevToolsConfig extends Config
 			name = "Debug dialog interactions",
 			description = "Debugs chat dialog actions to console",
 			section = interaction,
-			position = 9
+			position = 10
 	)
 	default boolean debugDialogs()
 	{
 		return false;
+	}
+
+	@ConfigItem(
+			keyName = "printStackTrace",
+			name = "Print Stack Trace",
+			description = "Button that prints out the current stack trace",
+			position = 100
+	)
+	default Button printStackTrace() {
+		return new Button();
 	}
 }
