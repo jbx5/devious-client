@@ -289,7 +289,8 @@ public class UnethicalDevToolsPlugin extends LoopedPlugin
 	}
 
 	@Subscribe
-	private void onConfigButtonPressed(ConfigButtonClicked configButtonClicked) {
+	private void onConfigButtonPressed(ConfigButtonClicked configButtonClicked)
+	{
 		if (!configButtonClicked.getGroup().equalsIgnoreCase("entityinspector"))
 		{
 			return;

@@ -490,7 +490,8 @@ public interface UnethicalDevToolsConfig extends Config
 			description = "Button that prints out the current stack trace",
 			position = 100
 	)
-	default Button printStackTrace() {
+	default Button printStackTrace()
+	{
 		return new Button();
 	}
 }
