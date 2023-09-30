@@ -70,7 +70,8 @@ public class RemoveNamedAnnotations
         for (Method deobMethod : deobClass.getMethods())
         {
             Type toRemove = null;
-            for (Annotation annotation : deobMethod.getAnnotations().values()) {
+            for (Annotation annotation : deobMethod.getAnnotations().values())
+            {
                 if (annotation.getType().getInternalName().contains("Named"))
                     toRemove = annotation.getType();
             }

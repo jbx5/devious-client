@@ -44,13 +44,17 @@ public class SyncRuneLitePatches
         {
             ClassFile other = findMatchingClass(classFile, group2);
 
-            if (other != null) {
+            if (other != null)
+            {
                 List<Method> otherMethods = other.getMethods();
                 ArrayList<Method> sortedMethods = new ArrayList<>();
 
-                for (Method method : classFile.getMethods()) {
-                    for (Method otherMethod : otherMethods) {
-                        if (method.getDescriptor().equals(otherMethod.getDescriptor())) {
+                for (Method method : classFile.getMethods())
+                {
+                    for (Method otherMethod : otherMethods)
+                    {
+                        if (method.getDescriptor().equals(otherMethod.getDescriptor()))
+                        {
                             sortedMethods.add(otherMethod);
                             break;
                         }
@@ -62,9 +66,12 @@ public class SyncRuneLitePatches
         }
     }
 
-    private static ClassFile findMatchingClass(ClassFile cf, ClassGroup group2) {
-        for (ClassFile other : group2.getClasses()) {
-            if (other.getClassName().equals(cf.getClassName())) {
+    private static ClassFile findMatchingClass(ClassFile cf, ClassGroup group2)
+    {
+        for (ClassFile other : group2.getClasses())
+        {
+            if (other.getClassName().equals(cf.getClassName()))
+            {
                 return other;
             }
         }
