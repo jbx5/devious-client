@@ -32,6 +32,7 @@ import net.runelite.api.Renderable;
 import net.runelite.api.Skill;
 import net.runelite.api.events.BeforeMenuRender;
 import net.runelite.api.events.BeforeRender;
+import net.runelite.api.events.Draw;
 import net.runelite.api.events.FakeXpDrop;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.GameTick;
@@ -414,6 +415,10 @@ public class MinimalHooks implements Callbacks
 		}
 
 		final Graphics2D graphics2d = getGraphics(mainBufferProvider);
+
+		Draw draw = Draw.getInstance();
+		draw.setGraphics(graphics2d);
+		eventBus.post(draw);
 
 		try
 		{

@@ -52,7 +52,7 @@ public class ClassFile implements Annotated, Named
 	private String source;
 	private final Interfaces interfaces;
 	private final List<Field> fields = new ArrayList<>();
-	private final List<Method> methods = new ArrayList<>();
+	private List<Method> methods = new ArrayList<>();
 	@Getter
 	private final Map<Type, Annotation> annotations = new LinkedHashMap<>();
 
@@ -160,6 +160,11 @@ public class ClassFile implements Annotated, Named
 	public List<Method> getMethods()
 	{
 		return methods;
+	}
+
+	public void setMethods(List<Method> methods)
+	{
+		this.methods = methods;
 	}
 
 	public void addMethod(Method method)
