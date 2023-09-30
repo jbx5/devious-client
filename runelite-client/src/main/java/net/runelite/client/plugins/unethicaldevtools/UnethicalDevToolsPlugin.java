@@ -241,6 +241,8 @@ public class UnethicalDevToolsPlugin extends LoopedPlugin
 	}
 
 	private static Robot robot;
+	private static java.awt.Point lastPoint = MouseInfo.getPointerInfo().getLocation();
+	private static String rgb;
 	static
 	{
 		try
@@ -276,12 +278,15 @@ public class UnethicalDevToolsPlugin extends LoopedPlugin
 			// Render hex color
 			if (robot != null)
 			{
-				Color color = robot.getPixelColor(MouseInfo.getPointerInfo().getLocation().x,
-					MouseInfo.getPointerInfo().getLocation().y);
-
+				if (!lastPoint.equals(MouseInfo.getPointerInfo().getLocation()))
+				{
+					lastPoint = MouseInfo.getPointerInfo().getLocation();
+					Color color = robot.getPixelColor(lastPoint.x, lastPoint.y);
+					rgb = "hex: " + String.format("#%02x%02x%02x", color.getRed(), color.getGreen(), color.getBlue());
+				}
 				OverlayUtil.renderTextLocation(graphics,
 					new Point(lastMoveX, lastMoveY - 10),
-					"hex: " + String.format("#%02x%02x%02x", color.getRed(), color.getGreen(), color.getBlue()),
+					rgb,
 					Color.YELLOW);
 			}
 		}
