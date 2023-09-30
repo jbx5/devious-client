@@ -45,6 +45,7 @@ import net.runelite.api.Client;
 import net.runelite.api.MainBufferProvider;
 import net.runelite.api.Renderable;
 import net.runelite.api.Skill;
+import net.runelite.api.events.Draw;
 import net.runelite.api.worldmap.WorldMapRenderer;
 import net.runelite.api.events.BeforeRender;
 import net.runelite.api.events.FakeXpDrop;
@@ -351,6 +352,10 @@ public class Hooks implements Callbacks
 		}
 
 		final Graphics2D graphics2d = getGraphics(mainBufferProvider);
+
+		Draw draw = Draw.getInstance();
+		draw.setGraphics(graphics2d);
+		eventBus.post(draw);
 
 		try
 		{
