@@ -397,6 +397,18 @@ public interface UnethicaliteConfig extends Config
 	}
 
 	@ConfigItem(
+		keyName = "useCharterShips",
+		name = "Use charter ships",
+		description = "",
+		position = 4,
+		section = pathfinderSection
+	)
+	default boolean useCharterShips()
+	{
+		return true;
+	}
+
+	@ConfigItem(
 			keyName = "housePortals",
 			name = "House Portals",
 			description = "",

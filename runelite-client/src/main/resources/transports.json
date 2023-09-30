@@ -54624,7 +54624,7 @@
     "destination": {
       "x": 3442,
       "y": 9734,
-      "plane": 1
+      "plane": 0
     },
     "action": "Enter",
     "objectId": 3516,
@@ -54634,7 +54634,7 @@
     "source": {
       "x": 3442,
       "y": 9734,
-      "plane": 1
+      "plane": 0
     },
     "destination": {
       "x": 3440,
@@ -54654,7 +54654,7 @@
     "destination": {
       "x": 3442,
       "y": 9734,
-      "plane": 1
+      "plane": 0
     },
     "action": "Enter",
     "objectId": 3516,
@@ -54669,7 +54669,7 @@
     "destination": {
       "x": 3442,
       "y": 9734,
-      "plane": 1
+      "plane": 0
     },
     "action": "Enter",
     "objectId": 3516,
@@ -78610,5 +78610,185 @@
     "requirements": {
       "memberWorld": true
     }
+  },
+  {
+    "source": {
+      "x": 2589,
+      "y": 2851,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2592,
+      "y": 2851,
+      "plane": 1
+    },
+    "action": "Cross",
+    "objectId": 31756,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2592,
+      "y": 2851,
+      "plane": 1
+    },
+    "destination": {
+      "x": 2589,
+      "y": 2851,
+      "plane": 0
+    },
+    "action": "Cross",
+    "objectId": 31756,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2674,
+      "y": 3144,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2674,
+      "y": 3141,
+      "plane": 1
+    },
+    "action": "Cross",
+    "objectId": 17402,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2674,
+      "y": 3141,
+      "plane": 1
+    },
+    "destination": {
+      "x": 2674,
+      "y": 3144,
+      "plane": 0
+    },
+    "action": "Cross",
+    "objectId": 17403,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 3001,
+      "y": 3032,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2098,
+      "y": 3032,
+      "plane": 1
+    },
+    "action": "Cross",
+    "objectId": 17396,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2098,
+      "y": 3032,
+      "plane": 1
+    },
+    "destination": {
+      "x": 3001,
+      "y": 3032,
+      "plane": 0
+    },
+    "action": "Cross",
+    "objectId": 17397,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 3702,
+      "y": 3503,
+      "plane": 0
+    },
+    "destination": {
+      "x": 3705,
+      "y": 3503,
+      "plane": 1
+    },
+    "action": "Cross",
+    "objectId": 17392,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 3705,
+      "y": 3503,
+      "plane": 1
+    },
+    "destination": {
+      "x": 3702,
+      "y": 3503,
+      "plane": 0
+    },
+    "action": "Cross",
+    "objectId": 17393,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2142,
+      "y": 3122,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2142,
+      "y": 3125,
+      "plane": 1
+    },
+    "action": "Cross",
+    "objectId": 17408,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2142,
+      "y": 3125,
+      "plane": 1
+    },
+    "destination": {
+      "x": 2142,
+      "y": 3122,
+      "plane": 0
+    },
+    "action": "Cross",
+    "objectId": 17409,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2157,
+      "y": 3330,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2157,
+      "y": 3333,
+      "plane": 1
+    },
+    "action": "Cross",
+    "objectId": 34948,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2157,
+      "y": 3333,
+      "plane": 1
+    },
+    "destination": {
+      "x": 2157,
+      "y": 3330,
+      "plane": 0
+    },
+    "action": "Cross",
+    "objectId": 34949,
+    "requirements": {}
   }
 ]
