@@ -38,16 +38,6 @@ public class MovementConstants
 			new WorldArea(3144, 3628, 4, 13, 0),
 			new WorldArea(3138, 3640, 8, 6, 0),
 			new WorldArea(3123, 3622, 2, 11, 0),
-			new WorldArea(3125, 3618, 19, 22, 1),
-			new WorldArea(3148, 3628, 8, 19, 1),
-			new WorldArea(3144, 3628, 4, 13, 1),
-			new WorldArea(3138, 3640, 8, 6, 1),
-			new WorldArea(3123, 3622, 2, 11, 1),
-			new WorldArea(3125, 3618, 19, 22, 2),
-			new WorldArea(3148, 3628, 8, 19, 2),
-			new WorldArea(3144, 3628, 4, 13, 2),
-			new WorldArea(3138, 3640, 8, 6, 2),
-			new WorldArea(3123, 3622, 2, 11, 2)
 		};
 	public static WorldPoint HOUSE_POINT()
 	{
