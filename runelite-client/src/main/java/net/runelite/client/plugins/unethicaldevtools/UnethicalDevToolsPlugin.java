@@ -242,6 +242,8 @@ public class UnethicalDevToolsPlugin extends Plugin
 	}
 
 	private static Robot robot;
+	private final Point p = new Point(0, 10);
+	private final Point p2 = new Point(0, 20);
 	static
 	{
 		try
@@ -271,7 +273,7 @@ public class UnethicalDevToolsPlugin extends Plugin
 
 			// Render mouse position
 			OverlayUtil.renderTextLocation(graphics,
-				new Point(lastMoveX, lastMoveY),
+				p,
 				"x: " + lastMoveX + " y: " + lastMoveY,
 				Color.YELLOW);
 
@@ -282,7 +284,7 @@ public class UnethicalDevToolsPlugin extends Plugin
 					MouseInfo.getPointerInfo().getLocation().y);
 
 				OverlayUtil.renderTextLocation(graphics,
-					new Point(lastMoveX, lastMoveY - 10),
+					p2,
 					"hex: " + String.format("#%02x%02x%02x", color.getRed(), color.getGreen(), color.getBlue()),
 					Color.YELLOW);
 			}
