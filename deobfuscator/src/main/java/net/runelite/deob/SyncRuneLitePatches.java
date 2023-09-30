@@ -30,7 +30,9 @@
  */
 package net.runelite.deob;
 
-import net.runelite.asm.*;
+import net.runelite.asm.ClassFile;
+import net.runelite.asm.ClassGroup;
+import net.runelite.asm.Method;
 
 import java.util.ArrayList;
 import java.util.List;

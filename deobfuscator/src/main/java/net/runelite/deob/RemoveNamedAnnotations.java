@@ -30,7 +30,12 @@
  */
 package net.runelite.deob;
 
-import net.runelite.asm.*;
+import net.runelite.asm.Annotation;
+import net.runelite.asm.ClassFile;
+import net.runelite.asm.ClassGroup;
+import net.runelite.asm.Field;
+import net.runelite.asm.Method;
+import net.runelite.asm.Type;
 
 public class RemoveNamedAnnotations
 {
@@ -56,7 +61,8 @@ public class RemoveNamedAnnotations
         for (Field deobField : deobClass.getFields())
         {
             Type toRemove = null;
-            for (Annotation annotation : deobField.getAnnotations().values()) {
+            for (Annotation annotation : deobField.getAnnotations().values())
+            {
                 if (annotation.getType().getInternalName().contains("Named"))
                     toRemove = annotation.getType();
             }
