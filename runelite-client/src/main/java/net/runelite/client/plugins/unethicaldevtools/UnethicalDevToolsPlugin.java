@@ -7,6 +7,7 @@ import net.runelite.api.DialogOption;
 import net.runelite.api.Point;
 import net.runelite.api.events.ConfigButtonClicked;
 import net.runelite.api.events.DialogProcessed;
+import net.runelite.api.events.Draw;
 import net.runelite.api.events.MenuOptionClicked;
 import net.runelite.api.packets.ClientPacket;
 import net.runelite.api.packets.PacketBufferNode;
@@ -15,13 +16,13 @@ import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.events.ConfigChanged;
+import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.ui.overlay.OverlayManager;
 import net.runelite.client.ui.overlay.OverlayUtil;
 import net.unethicalite.api.events.MenuAutomated;
 import net.unethicalite.api.events.PacketSent;
 import net.unethicalite.api.events.ServerPacketReceived;
-import net.unethicalite.api.plugins.LoopedPlugin;
 import net.unethicalite.client.Static;
 import net.unethicalite.client.managers.InputManager;
 
@@ -42,7 +43,7 @@ import java.util.stream.Collectors;
 		enabledByDefault = false
 )
 @Slf4j
-public class UnethicalDevToolsPlugin extends LoopedPlugin
+public class UnethicalDevToolsPlugin extends Plugin
 {
 	@Inject
 	private UnethicalDevToolsConfig config;
@@ -253,15 +254,16 @@ public class UnethicalDevToolsPlugin extends LoopedPlugin
 		}
 	}
 
-	@Override
-	protected int loop()
+	@Subscribe
+	public void onDraw(Draw event)
 	{
 		if (!config.mousePositionOverlay())
 		{
-			return -1;
+			return;
 		}
 
-		final Graphics2D graphics = (Graphics2D) client.getCanvas().getGraphics();
+		final Graphics2D graphics = (Graphics2D) event.getGraphics();
+
 		if (graphics != null)
 		{
 			final int lastMoveX = inputManager.getLastMoveX();
@@ -285,7 +287,6 @@ public class UnethicalDevToolsPlugin extends LoopedPlugin
 					Color.YELLOW);
 			}
 		}
-		return 0;
 	}
 
 	@Subscribe
