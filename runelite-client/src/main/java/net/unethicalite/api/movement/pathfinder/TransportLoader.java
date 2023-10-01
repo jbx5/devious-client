@@ -58,6 +58,7 @@ public class TransportLoader
 
     private static final List<Transport> ALL_STATIC_TRANSPORTS = new ArrayList<>();
     private static final List<Transport> LAST_TRANSPORT_LIST = new ArrayList<>();
+    private static List<Transport> TEMP_TRANSPORTS;
 
     public static void init()
     {
@@ -446,7 +447,22 @@ public class TransportLoader
             LAST_TRANSPORT_LIST.clear();
             LAST_TRANSPORT_LIST.addAll(filteredStatic);
             LAST_TRANSPORT_LIST.addAll(transports);
+            if (TEMP_TRANSPORTS != null) {
+                LAST_TRANSPORT_LIST.addAll(TEMP_TRANSPORTS);
+            }
         });
+    }
+
+    public static void updateTempTransports(List<Transport> transports)
+    {
+        TEMP_TRANSPORTS = transports;
+        refreshTransports();
+    }
+
+    public static void clearTempTransports()
+    {
+        TEMP_TRANSPORTS = null;
+        refreshTransports();
     }
 
     public static Transport lockingDoorTransport(
