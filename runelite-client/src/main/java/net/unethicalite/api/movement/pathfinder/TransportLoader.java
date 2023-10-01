@@ -447,7 +447,8 @@ public class TransportLoader
             LAST_TRANSPORT_LIST.clear();
             LAST_TRANSPORT_LIST.addAll(filteredStatic);
             LAST_TRANSPORT_LIST.addAll(transports);
-            if (TEMP_TRANSPORTS != null) {
+            if (TEMP_TRANSPORTS != null)
+            {
                 LAST_TRANSPORT_LIST.addAll(TEMP_TRANSPORTS);
             }
         });

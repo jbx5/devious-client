@@ -148,7 +148,8 @@ public class UnethicalDevToolsPlugin extends Plugin
 		}
 	}
 
-	private void createTransportMenuOptions(MenuOpened e) {
+	private void createTransportMenuOptions(MenuOpened e)
+	{
 		boolean validTile = false;
 		Map<String, TileObject> objectOptions = new HashMap<>(3);
 		for (MenuEntry entry : e.getMenuEntries())
