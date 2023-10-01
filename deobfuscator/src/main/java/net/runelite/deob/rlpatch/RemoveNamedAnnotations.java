@@ -28,7 +28,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.deob;
+package net.runelite.deob.rlpatch;
 
 import net.runelite.asm.Annotation;
 import net.runelite.asm.ClassFile;
@@ -36,6 +36,7 @@ import net.runelite.asm.ClassGroup;
 import net.runelite.asm.Field;
 import net.runelite.asm.Method;
 import net.runelite.asm.Type;
+import net.runelite.deob.DeobAnnotations;
 
 public class RemoveNamedAnnotations
 {

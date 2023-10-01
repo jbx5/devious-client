@@ -22,11 +22,13 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.deob;
+package net.runelite.deob.rlpatch;
 
 import com.google.common.base.Stopwatch;
 import net.runelite.asm.ClassGroup;
 import net.runelite.asm.execution.Execution;
+import net.runelite.deob.Deob;
+import net.runelite.deob.Deobfuscator;
 import net.runelite.deob.deobfuscators.Order;
 import net.runelite.deob.deobfuscators.arithmetic.ModArith;
 import net.runelite.deob.deobfuscators.arithmetic.MultiplicationDeobfuscator;
