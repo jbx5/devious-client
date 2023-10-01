@@ -12,7 +12,8 @@ public class class191 extends DualNode {
 	@Export("archive7")
 	static EvictingDualNodeHashTable archive7;
 	@ObfuscatedName("gg")
-	static String field1917;
+	@Export("refreshToken")
+	static String refreshToken;
 	@ObfuscatedName("uy")
 	@ObfuscatedGetter(
 		intValue = -1127038976
