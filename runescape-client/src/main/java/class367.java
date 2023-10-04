@@ -393,11 +393,11 @@ public enum class367 implements MouseWheel {
 							var0.drawCentered("Welcome to RuneScape", Login.loginBoxX + 180, var25, 16776960, 0);
 							var4 = var25 + 20;
 							Login.field929.drawAt(var24 - 109, var4);
-							if (Login.field928.isEmpty()) {
+							if (Login.displayName.isEmpty()) {
 								class364.field3941.drawAt(var24 - 48, var4 + 18);
 							} else {
 								class364.field3941.drawAt(var24 - 48, var4 + 5);
-								var0.drawCentered(Login.field928, var24, var4 + 68 - 15, 16776960, 0);
+								var0.drawCentered(Login.displayName, var24, var4 + 68 - 15, 16776960, 0);
 							}
 						} else if (Login.loginIndex == 12) {
 							var24 = class379.loginBoxCenter;

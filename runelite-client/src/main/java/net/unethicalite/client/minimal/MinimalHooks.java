@@ -53,6 +53,7 @@ import net.runelite.client.task.Scheduler;
 import net.runelite.client.ui.DrawManager;
 import net.runelite.client.ui.overlay.OverlayLayer;
 import net.runelite.client.util.DeferredEventBus;
+import net.runelite.client.util.LinkBrowser;
 import net.runelite.client.util.RSTimeUnit;
 import net.unethicalite.client.minimal.overlay.MinimalOverlayRenderer;
 import net.unethicalite.client.minimal.ui.MinimalUI;
@@ -619,5 +620,11 @@ public class MinimalHooks implements Callbacks
 	public interface RenderableDrawListener
 	{
 		boolean draw(Renderable renderable, boolean ui);
+	}
+
+	@Override
+	public void openUrl(String url)
+	{
+		LinkBrowser.browse(url);
 	}
 }

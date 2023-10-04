@@ -1,10 +1,12 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 
 @ObfuscatedName("rg")
 public class class467 {
 	@ObfuscatedName("gh")
-	static String field4804;
+	@Export("accessToken")
+	static String accessToken;
 	@ObfuscatedName("ac")
 	float[] field4802;
 	@ObfuscatedName("al")

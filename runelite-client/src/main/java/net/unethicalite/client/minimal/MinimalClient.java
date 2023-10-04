@@ -416,7 +416,7 @@ public class MinimalClient
 		eventBus.register(minimalPluginManager);
 
 		// Start client session
-		clientSessionManager.start();
+		//clientSessionManager.start();
 		eventBus.register(clientSessionManager);
 
 		minimalUI.init();

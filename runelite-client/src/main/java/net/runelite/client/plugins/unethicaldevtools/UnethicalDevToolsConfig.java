@@ -427,6 +427,29 @@ public interface UnethicalDevToolsConfig extends Config
 		return false;
 	}
 
+	@ConfigItem(
+			keyName = "transportCreator",
+			name = "Transport Creator",
+			description = "Add debug menu to make transports",
+			position = 5,
+			section = regions
+	)
+	default boolean transportCreator()
+	{
+		return false;
+	}
+
+	@ConfigItem(
+			keyName = "useCreatedTransports",
+			name = "Use created transports",
+			description = "add created transports to transport list",
+			position = 6,
+			section = regions
+	)
+	default boolean useCreatedTransports()
+	{
+		return false;
+	}
 	@ConfigSection(
 			keyName = "interaction",
 			name = "Interaction",

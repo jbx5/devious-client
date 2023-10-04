@@ -11,7 +11,7 @@ public class class429 {
 	)
 	@Export("Login_promptCredentials")
 	static void Login_promptCredentials(boolean var0) {
-		if (!class159.client.method1768() && !class159.client.method1249() && !class159.client.method1248()) {
+		if (!class159.client.containsAccessAndRefreshToken() && !class159.client.method1249() && !class159.client.containsSessionAndCharacterId()) {
 			Login.Login_response1 = "";
 			Login.Login_response2 = "Enter your username/email & password.";
 			Login.Login_response3 = "";
