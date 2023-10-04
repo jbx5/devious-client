@@ -9,7 +9,8 @@ public class Clips {
 	@ObfuscatedName("ac")
 	boolean field2838;
 	@ObfuscatedName("al")
-	public boolean field2831;
+	@Export("rasterGouraudLowRes")
+	public boolean rasterGouraudLowRes;
 	@ObfuscatedName("ak")
 	int field2832;
 	@ObfuscatedName("ah")
@@ -44,7 +45,7 @@ public class Clips {
 
 	Clips() {
 		this.field2838 = false;
-		this.field2831 = true;
+		this.rasterGouraudLowRes = true;
 		this.field2832 = 0;
 		this.field2830 = 512;
 		this.Rasterizer3D_rowOffsets = new int[1024];

@@ -2246,7 +2246,7 @@ public class class257 extends class242 {
 			int var10;
 			int var11;
 			int var12;
-			if (super.field2573.field2831) {
+			if (super.field2573.rasterGouraudLowRes) {
 				var4 = var6 - var5 >> 2;
 				var8 <<= 2;
 				if (super.field2573.field2832 == 0) {
