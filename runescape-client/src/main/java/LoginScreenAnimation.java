@@ -8,7 +8,8 @@ import net.runelite.mapping.ObfuscatedSignature;
 @Implements("LoginScreenAnimation")
 public class LoginScreenAnimation {
 	@ObfuscatedName("gu")
-	static String field1283;
+	@Export("sessionId")
+	static String sessionId;
 	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
 		descriptor = "[Lun;"

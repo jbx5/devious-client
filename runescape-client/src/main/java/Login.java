@@ -110,7 +110,8 @@ public class Login {
 	@ObfuscatedName("cp")
 	static String[] field947;
 	@ObfuscatedName("cs")
-	static String field928;
+	@Export("displayName")
+	static String displayName;
 	@ObfuscatedName("cd")
 	static boolean field949;
 	@ObfuscatedName("ct")
@@ -177,7 +178,7 @@ public class Login {
 		Login_password = "";
 		field946 = 0;
 		field947 = new String[8];
-		field928 = "";
+		displayName = "";
 		field949 = false;
 		field924 = false;
 		field951 = true;

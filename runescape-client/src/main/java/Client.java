@@ -1966,8 +1966,9 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 		descriptor = "(B)Z",
 		garbageValue = "-83"
 	)
-	boolean method1768() {
-		return class467.field4804 != null && !class467.field4804.trim().isEmpty() && class191.field1917 != null && !class191.field1917.trim().isEmpty();
+	@Export("containsAccessAndRefreshToken")
+	boolean containsAccessAndRefreshToken() {
+		return class467.accessToken != null && !class467.accessToken.trim().isEmpty() && class191.refreshToken != null && !class191.refreshToken.trim().isEmpty();
 	}
 
 	@ObfuscatedName("gh")
@@ -1975,8 +1976,9 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 		descriptor = "(I)Z",
 		garbageValue = "-1137874919"
 	)
-	boolean method1248() {
-		return LoginScreenAnimation.field1283 != null && !LoginScreenAnimation.field1283.trim().isEmpty() && class155.field1698 != null && !class155.field1698.trim().isEmpty();
+	@Export("containsSessionAndCharacterId")
+	boolean containsSessionAndCharacterId() {
+		return LoginScreenAnimation.sessionId != null && !LoginScreenAnimation.sessionId.trim().isEmpty() && class155.characterId != null && !class155.characterId.trim().isEmpty();
 	}
 
 	@ObfuscatedName("gg")
@@ -2214,9 +2216,9 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					hadNetworkError = false;
 					field555 = 0;
 					if (field559.method9506()) {
-						if (this.method1768()) {
+						if (this.containsAccessAndRefreshToken()) {
 							try {
-								this.method1250(class191.field1917);
+								this.method1250(class191.refreshToken);
 								class409.method7554(21);
 							} catch (Throwable var24) {
 								class190.RunException_sendStackTrace((String)null, var24);
@@ -2224,13 +2226,13 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 								return;
 							}
 						} else {
-							if (!this.method1248()) {
+							if (!this.containsSessionAndCharacterId()) {
 								class198.getLoginError(65);
 								return;
 							}
 
 							try {
-								this.method1252(LoginScreenAnimation.field1283, class155.field1698);
+								this.method1252(LoginScreenAnimation.sessionId, class155.characterId);
 								class409.method7554(20);
 							} catch (Exception var23) {
 								class190.RunException_sendStackTrace((String)null, var23);
@@ -2265,8 +2267,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 							return;
 						}
 
-						class467.field4804 = var3.getAccessToken();
-						class191.field1917 = var3.getRefreshToken();
+						class467.accessToken = var3.getAccessToken();
+						class191.refreshToken = var3.getRefreshToken();
 						this.field607 = null;
 					} catch (Exception var22) {
 						class190.RunException_sendStackTrace((String)null, var22);
@@ -2302,8 +2304,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					class477 var4 = new class477(var26.method289());
 
 					try {
-						class467.field4804 = var4.method8491().getString("access_token");
-						class191.field1917 = var4.method8491().getString("refresh_token");
+						class467.accessToken = var4.method8491().getString("access_token");
+						class191.refreshToken = var4.method8491().getString("refresh_token");
 					} catch (Exception var21) {
 						class190.RunException_sendStackTrace("Error parsing tokens", var21);
 						class198.getLoginError(65);
@@ -2312,7 +2314,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					}
 				}
 
-				this.method1251(class467.field4804);
+				this.method1251(class467.accessToken);
 				class409.method7554(20);
 			}
 
@@ -6473,13 +6475,13 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 
 				class159.client = this;
 				class189.field1912 = clientType;
-				class223.method4213();
+				class223.initCredentials();
 				if (Boolean.parseBoolean(System.getProperty("jagex.disableBouncyCastle"))) {
 					this.field565 = true;
 				}
 
 				if (field525 == -1) {
-					if (!this.method1768() && !this.method1248()) {
+					if (!this.containsAccessAndRefreshToken() && !this.containsSessionAndCharacterId()) {
 						field525 = 0;
 					} else {
 						field525 = 5;

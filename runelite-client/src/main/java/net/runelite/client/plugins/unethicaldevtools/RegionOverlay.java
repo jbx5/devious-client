@@ -217,7 +217,7 @@ public class RegionOverlay extends Overlay
 							startPoints, path.get(path.size() - 1)));
 					}
 				);
-			client.createMenuEntry(2)
+			client.createMenuEntry(1)
 				.setOption("<col=00ff00>Debug:</col>")
 				.setTarget("Clear path")
 				.setType(MenuAction.RUNELITE_OVERLAY)

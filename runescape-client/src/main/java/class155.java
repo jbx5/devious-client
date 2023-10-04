@@ -6,7 +6,8 @@ import net.runelite.mapping.ObfuscatedSignature;
 @ObfuscatedName("fx")
 public class class155 extends class145 {
 	@ObfuscatedName("go")
-	static String field1698;
+	@Export("characterId")
+	static String characterId;
 	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
 		intValue = -1559377961

@@ -92,8 +92,7 @@ public abstract class HClientMixin implements RSClient
 	{
 		Skill[] possibleSkills = Skill.values();
 
-		// We subtract one here because 'Overall' isn't considered a skill that's updated.
-		if (idx < possibleSkills.length - 1)
+		if (idx < possibleSkills.length)
 		{
 			Skill updatedSkill = possibleSkills[idx];
 			StatChanged statChanged = new StatChanged(

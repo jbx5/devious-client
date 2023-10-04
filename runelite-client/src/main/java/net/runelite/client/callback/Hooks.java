@@ -71,6 +71,7 @@ import net.runelite.client.ui.overlay.OverlayLayer;
 import net.runelite.client.ui.overlay.OverlayRenderer;
 import net.runelite.client.ui.overlay.infobox.InfoBoxManager;
 import net.runelite.client.util.DeferredEventBus;
+import net.runelite.client.util.LinkBrowser;
 import net.runelite.client.util.OSType;
 import net.runelite.client.util.RSTimeUnit;
 
@@ -618,5 +619,11 @@ public class Hooks implements Callbacks
 			log.error("exception from renderable draw listener", ex);
 		}
 		return true;
+	}
+
+	@Override
+	public void openUrl(String url)
+	{
+		LinkBrowser.browse(url);
 	}
 }
