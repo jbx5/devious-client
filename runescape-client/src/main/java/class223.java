@@ -122,11 +122,12 @@ public class class223 {
 		descriptor = "(I)V",
 		garbageValue = "-886545953"
 	)
-	static void method4213() {
-		class467.field4804 = System.getenv("JX_ACCESS_TOKEN");
-		class191.field1917 = System.getenv("JX_REFRESH_TOKEN");
-		LoginScreenAnimation.field1283 = System.getenv("JX_SESSION_ID");
-		class155.field1698 = System.getenv("JX_CHARACTER_ID");
+	@Export("initCredentials")
+	static void initCredentials() {
+		class467.accessToken = System.getenv("JX_ACCESS_TOKEN");
+		class191.refreshToken = System.getenv("JX_REFRESH_TOKEN");
+		LoginScreenAnimation.sessionId = System.getenv("JX_SESSION_ID");
+		class155.characterId = System.getenv("JX_CHARACTER_ID");
 		String var0 = System.getenv("JX_DISPLAY_NAME");
 		String var1;
 		if (var0 != null && !var0.isEmpty() && var0.charAt(0) != '#') {
@@ -135,7 +136,7 @@ public class class223 {
 			var1 = "";
 		}
 
-		Login.field928 = var1;
+		Login.displayName = var1;
 	}
 
 	@ObfuscatedName("mj")

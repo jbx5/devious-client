@@ -62,7 +62,7 @@ public class MusicPatchNode2 {
 		boolean var2 = class91.clientPreferences.method2562() >= Client.field717;
 		if (!var2) {
 			var1 = 12;
-		} else if (class159.client.method1768() || class159.client.method1249() || class159.client.method1248()) {
+		} else if (class159.client.containsAccessAndRefreshToken() || class159.client.method1249() || class159.client.containsSessionAndCharacterId()) {
 			var1 = 10;
 		}
 

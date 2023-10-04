@@ -1798,4 +1798,49 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("isMembersWorld")
 	@Override
 	boolean isMembersWorld();
+
+	/**
+	 * Jagex launcher credentials
+	 */
+
+	@Import("accessToken")
+	String getAccessToken();
+
+	@Import("accessToken")
+	void setAccessToken(String accessToken);
+
+	@Import("refreshToken")
+	String getRefreshToken();
+
+	@Import("refreshToken")
+	void setRefreshToken(String refreshToken);
+
+	@Import("sessionId")
+	String getSessionId();
+
+	@Import("sessionId")
+	void setSessionId(String sessionId);
+
+	@Import("characterId")
+	String getCharacterId();
+
+	@Import("characterId")
+	void setCharacterId(String characterId);
+
+	@Import("displayName")
+	String getDisplayName();
+
+	@Import("displayName")
+	void setDisplayName(String displayName);
+
+	@Import("containsAccessAndRefreshToken")
+	boolean containsAccessAndRefreshToken();
+
+	@Import("containsSessionAndCharacterId")
+	boolean containsSessionAndCharacterId();
+
+	String getCredentialsProperty(String var1);
+	java.util.Properties getCredentialsProperties();
+	boolean storeCredentials();
+	void writeCredentials();
 }
