@@ -908,4 +908,10 @@ public final class Varbits
 	 * Local player gender? (Changes depending on gender selected within Tutorial island)
 	 */
 	public static final int LOCAL_PLAYER_GENDER = 14021;
+
+	// Quest: Below ice mountain
+	public static final int BELOW_ICE_MOUNTAIN_FLEX_LEARNED = 12062;
+	public static final int BELOW_ICE_MOUNTAIN_MARLEY_PROGRESS = 12064;
+	public static final int BELOW_ICE_MOUNTAIN_CHECKAL_PROGRESS = 12065;
+	public static final int BELOW_ICE_MOUNTAIN_BURNTOF_PROGRESS = 12066;
 }
