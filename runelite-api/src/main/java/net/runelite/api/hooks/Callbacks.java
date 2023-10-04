@@ -199,4 +199,10 @@ public interface Callbacks
 	 * @return false to prevent drawing
 	 */
 	boolean draw(Renderable renderable, boolean drawingUi);
+
+	/**
+	 * Called when the client wants to open a URL
+	 * @param url
+	 */
+	void openUrl(String url);
 }
