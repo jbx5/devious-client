@@ -1,8 +1,10 @@
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("jj")
-public abstract class class242 extends Rasterizer2D {
+@Implements("AbstractRasterizer")
+public abstract class AbstractRasterizer extends Rasterizer2D {
 	@ObfuscatedName("ac")
 	boolean field2566;
 	@ObfuscatedName("al")
@@ -18,7 +20,7 @@ public abstract class class242 extends Rasterizer2D {
 	@ObfuscatedSignature(
 		descriptor = "(Ljb;)V"
 	)
-	class242(Clips var1) {
+	AbstractRasterizer(Clips var1) {
 		this.field2566 = false;
 		this.field2567 = false;
 		this.field2572 = Rasterizer3D.Rasterizer3D_colorPalette;

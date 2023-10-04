@@ -527,7 +527,7 @@ public class class158 extends class161 {
 			Rasterizer2D.Rasterizer2D_clear();
 			Rasterizer3D.method4535();
 			Rasterizer3D.method4534(16, 16);
-			Rasterizer3D.clips.field2831 = false;
+			Rasterizer3D.clips.rasterGouraudLowRes = false;
 			if (var9.placeholderTemplate != -1) {
 				var21.drawTransBgAt(0, 0);
 			}
@@ -575,7 +575,7 @@ public class class158 extends class161 {
 			Rasterizer3D.method4530(var12, var13, var14, var15);
 			Rasterizer2D.Rasterizer2D_setClipArray(var16);
 			Rasterizer3D.method4535();
-			Rasterizer3D.clips.field2831 = true;
+			Rasterizer3D.clips.rasterGouraudLowRes = true;
 			return var8;
 		}
 	}
