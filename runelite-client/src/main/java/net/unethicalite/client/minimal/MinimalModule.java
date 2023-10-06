@@ -14,6 +14,7 @@ import net.runelite.api.hooks.Callbacks;
 import net.runelite.api.packets.ClientPacket;
 import net.runelite.api.packets.ServerPacket;
 import net.runelite.client.NonScheduledExecutorServiceExceptionLogger;
+import net.runelite.client.RuneLite;
 import net.runelite.client.RuneLiteProperties;
 import net.runelite.client.chat.ChatMessageManager;
 import net.runelite.client.config.ChatColorConfig;
@@ -57,6 +58,7 @@ public class MinimalModule extends AbstractModule
 	private final Supplier<Applet> clientLoader;
 	private final File config;
 	private final OptionSet optionSet;
+	private final boolean insecureWriteCredentials;
 
 	@Override
 	protected void configure()
@@ -72,6 +74,8 @@ public class MinimalModule extends AbstractModule
 		bindConstant().annotatedWith(Names.named("developerMode")).to(developerMode);
 		bindConstant().annotatedWith(Names.named("safeMode")).to(false);
 		bind(File.class).annotatedWith(Names.named("config")).toInstance(config);
+		bindConstant().annotatedWith(Names.named("insecureWriteCredentials")).to(insecureWriteCredentials);
+		bind(File.class).annotatedWith(Names.named("runeLiteDir")).toInstance(RuneLite.RUNELITE_DIR);
 		bind(ScheduledExecutorService.class).toInstance(new ExecutorServiceExceptionLogger(Executors.newSingleThreadScheduledExecutor()));
 		bind(OkHttpClient.class).toInstance(okHttpClient);
 
