@@ -61,9 +61,9 @@ import net.runelite.api.events.ClientTick;
 import net.runelite.api.events.MenuOpened;
 import net.runelite.api.events.PostItemComposition;
 import net.runelite.api.events.PostMenuSort;
+import net.runelite.api.widgets.InterfaceID;
 import net.runelite.api.widgets.Widget;
-import net.runelite.api.widgets.WidgetID;
-import net.runelite.api.widgets.WidgetInfo;
+import net.runelite.api.widgets.WidgetUtil;
 import net.runelite.client.callback.ClientThread;
 import net.runelite.client.chat.ChatMessageBuilder;
 import net.runelite.client.chat.ChatMessageManager;
@@ -851,7 +851,7 @@ public class MenuEntrySwapperPlugin extends Plugin
 			final MenuEntry entry = entries[idx];
 			Widget w = entry.getWidget();
 
-			if (w != null && WidgetInfo.TO_GROUP(w.getId()) == WidgetID.EQUIPMENT_GROUP_ID
+			if (w != null && WidgetUtil.componentToInterface(w.getId()) == InterfaceID.EQUIPMENT
 				&& "Examine".equals(entry.getOption()) && entry.getIdentifier() == 10)
 			{
 				w = w.getChild(1);
@@ -984,7 +984,7 @@ public class MenuEntrySwapperPlugin extends Plugin
 			final MenuEntry entry = entries[idx];
 			final Widget w = entry.getWidget();
 
-			if (w != null && WidgetInfo.TO_GROUP(w.getId()) == WidgetID.INVENTORY_GROUP_ID
+			if (w != null && WidgetUtil.componentToInterface(w.getId()) == InterfaceID.INVENTORY
 				&& "Examine".equals(entry.getOption()) && entry.getIdentifier() == 10)
 			{
 				final ItemComposition itemComposition = itemManager.getItemComposition(entry.getItemId());
@@ -1151,8 +1151,8 @@ public class MenuEntrySwapperPlugin extends Plugin
 					continue;
 				}
 
-				final int interId = WidgetInfo.TO_GROUP(w.getId());
-				if (interId == WidgetID.INVENTORY_GROUP_ID || interId == WidgetID.EQUIPMENT_GROUP_ID)
+				final int interId = WidgetUtil.componentToInterface(w.getId());
+				if (interId == InterfaceID.INVENTORY || interId == InterfaceID.EQUIPMENT)
 				{
 					// inventory and worn items have their own swap systems
 					continue;
@@ -1304,10 +1304,10 @@ public class MenuEntrySwapperPlugin extends Plugin
 			return false;
 		}
 
-		final int widgetGroupId = WidgetInfo.TO_GROUP(menuEntry.getParam1());
-		final boolean isDepositBoxPlayerInventory = widgetGroupId == WidgetID.DEPOSIT_BOX_GROUP_ID;
-		final boolean isChambersOfXericStorageUnitPlayerInventory = widgetGroupId == WidgetID.CHAMBERS_OF_XERIC_STORAGE_UNIT_INVENTORY_GROUP_ID;
-		final boolean isGroupStoragePlayerInventory = widgetGroupId == WidgetID.GROUP_STORAGE_INVENTORY_GROUP_ID;
+		final int widgetGroupId = WidgetUtil.componentToInterface(menuEntry.getParam1());
+		final boolean isDepositBoxPlayerInventory = widgetGroupId == InterfaceID.DEPOSIT_BOX;
+		final boolean isChambersOfXericStorageUnitPlayerInventory = widgetGroupId == InterfaceID.CHAMBERS_OF_XERIC_INVENTORY;
+		final boolean isGroupStoragePlayerInventory = widgetGroupId == InterfaceID.GROUP_STORAGE_INVENTORY;
 		// Swap to shift-click deposit behavior
 		// Deposit- op 1 is the current withdraw amount 1/5/10/x for deposit box interface and chambers of xeric storage unit.
 		// Deposit- op 2 is the current withdraw amount 1/5/10/x for bank interface
@@ -1335,7 +1335,7 @@ public class MenuEntrySwapperPlugin extends Plugin
 			ShiftWithdrawMode shiftWithdrawMode = config.bankWithdrawShiftClick();
 			final MenuAction action;
 			final int opId;
-			if (widgetGroupId == WidgetID.CHAMBERS_OF_XERIC_STORAGE_UNIT_PRIVATE_GROUP_ID || widgetGroupId == WidgetID.CHAMBERS_OF_XERIC_STORAGE_UNIT_SHARED_GROUP_ID)
+			if (widgetGroupId == InterfaceID.CHAMBERS_OF_XERIC_STORAGE_UNIT_PRIVATE || widgetGroupId == InterfaceID.CHAMBERS_OF_XERIC_STORAGE_UNIT_SHARED)
 			{
 				action = MenuAction.CC_OP;
 				opId = shiftWithdrawMode.getIdentifierChambersStorageUnit();
@@ -1426,7 +1426,7 @@ public class MenuEntrySwapperPlugin extends Plugin
 
 		// Worn items swap
 		final Widget w = menuEntry.getWidget();
-		if (w != null && WidgetInfo.TO_GROUP(w.getId()) == WidgetID.EQUIPMENT_GROUP_ID)
+		if (w != null && WidgetUtil.componentToInterface(w.getId()) == InterfaceID.EQUIPMENT)
 		{
 			Widget child = w.getChild(1);
 			if (child != null && child.getItemId() > -1)
@@ -1496,7 +1496,7 @@ public class MenuEntrySwapperPlugin extends Plugin
 		if ((menuAction == MenuAction.CC_OP || menuAction == MenuAction.CC_OP_LOW_PRIORITY)
 			&& w != null && (w.getIndex() == -1 || w.getItemId() != -1)
 			&& w.getActions() != null
-			&& !itemOp && WidgetInfo.TO_GROUP(w.getId()) != WidgetID.EQUIPMENT_GROUP_ID)
+			&& !itemOp && WidgetUtil.componentToInterface(w.getId()) != InterfaceID.EQUIPMENT)
 		{
 			int numActions = 0;
 			for (String action : w.getActions())
