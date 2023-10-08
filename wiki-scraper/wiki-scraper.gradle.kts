@@ -28,6 +28,7 @@ description = "RuneLite Wiki scraper"
 dependencies {
     api(project(":cache"))
     api(project(":runelite-api"))
+    implementation("javax.inject:javax.inject:1")
 
     annotationProcessor(group = "org.projectlombok", name = "lombok", version = ProjectVersions.lombokVersion)
 

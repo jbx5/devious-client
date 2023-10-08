@@ -24,3 +24,6 @@
  */
 description = "Injection/Mapping annotations"
 version = "1.1"
+dependencies {
+    implementation("javax.inject:javax.inject:1")
+}

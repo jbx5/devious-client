@@ -36,6 +36,7 @@ configurations {
 }
 
 dependencies {
+    implementation("javax.inject:javax.inject:1")
     deobjars(group = "net.runelite.rs", name = "vanilla", version = ProjectVersions.rsversion.toString())
     deobjars(project(":runescape-client"))
 

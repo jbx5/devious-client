@@ -25,6 +25,7 @@
 description = "RuneLite Mixins"
 
 dependencies {
+    implementation("javax.inject:javax.inject:1")
     compileOnly(group = "com.google.guava", name = "guava", version = "30.1.1-jre")
     compileOnly(group = "javax.inject", name = "javax.inject", version = "1")
     compileOnly(group = "org.slf4j", name = "slf4j-api", version = "1.7.32")

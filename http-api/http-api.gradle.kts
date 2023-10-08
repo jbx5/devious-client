@@ -28,6 +28,7 @@ import org.apache.tools.ant.filters.ReplaceTokens
 description = "Web API"
 
 dependencies {
+    implementation("javax.inject:javax.inject:1")
     annotationProcessor(group = "org.projectlombok", name = "lombok", version = ProjectVersions.lombokVersion)
 
     compileOnly(group = "org.projectlombok", name = "lombok", version = ProjectVersions.lombokVersion)

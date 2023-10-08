@@ -27,6 +27,7 @@ group = "net.unethicalite"
 description = "RuneLite JShell"
 
 dependencies {
+    implementation("javax.inject:javax.inject:1")
     annotationProcessor(group = "org.projectlombok", name = "lombok", version = ProjectVersions.lombokVersion)
 
     compileOnly(group = "org.projectlombok", name = "lombok", version = ProjectVersions.lombokVersion)
