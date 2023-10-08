@@ -3,19 +3,19 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("do")
+@ObfuscatedName("dk")
 @Implements("ItemContainer")
 public class ItemContainer extends Node {
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Lsm;"
+		descriptor = "Ltf;"
 	)
 	@Export("itemContainers")
 	static NodeHashTable itemContainers;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("al")
 	@Export("ids")
 	int[] ids;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ak")
 	@Export("quantities")
 	int[] quantities;
 
@@ -28,28 +28,23 @@ public class ItemContainer extends Node {
 		this.quantities = new int[]{0};
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("cg")
 	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "0"
+		descriptor = "(Ltr;I)Ljava/lang/Object;",
+		garbageValue = "1234966456"
 	)
-	public static boolean method2273() {
-		if (!class306.field3399.isEmpty()) {
-			return true;
+	static Object method2290(class517 var0) {
+		if (var0 == null) {
+			throw new IllegalStateException("popValueOfType() failure - null baseVarType");
 		} else {
-			return !class306.musicSongs.isEmpty() && class306.musicSongs.get(0) != null && ((MusicSong)class306.musicSongs.get(0)).midiPcmStream != null ? ((MusicSong)class306.musicSongs.get(0)).midiPcmStream.isReady() : false;
+			switch(var0.field5068) {
+			case 0:
+				return Interpreter.Interpreter_stringStack[--class180.Interpreter_stringStackSize];
+			case 2:
+				return Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+			default:
+				throw new IllegalStateException("popValueOfType() failure - unsupported type");
+			}
 		}
-	}
-
-	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)V",
-		garbageValue = "409263053"
-	)
-	static final void method2271(String var0) {
-		PacketBufferNode var1 = class503.getPacketBufferNode(ClientPacket.FRIEND_ADDUSER, Client.packetWriter.isaacCipher);
-		var1.packetBuffer.writeByte(class501.stringCp1252NullTerminatedByteSize(var0));
-		var1.packetBuffer.writeStringCp1252NullTerminated(var0);
-		Client.packetWriter.addNode(var1);
 	}
 }

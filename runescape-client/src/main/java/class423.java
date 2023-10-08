@@ -1,193 +1,90 @@
-import java.util.Comparator;
+import java.util.Iterator;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("qo")
-class class423 implements Comparator {
-	// $FF: synthetic field
+@ObfuscatedName("ql")
+public class class423 extends SongTask {
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Lql;"
+		descriptor = "Lom;"
 	)
-	final class424 this$0;
+	AbstractArchive field4583;
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "Lom;"
+	)
+	AbstractArchive field4585;
+	@ObfuscatedName("ab")
+	@ObfuscatedSignature(
+		descriptor = "Lom;"
+	)
+	AbstractArchive field4582;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lql;)V"
+		descriptor = "(Lqm;Lom;Lom;Lom;)V"
 	)
-	class423(class424 var1) {
-		this.this$0 = var1;
+	public class423(SongTask var1, AbstractArchive var2, AbstractArchive var3, AbstractArchive var4) {
+		super(var1);
+		this.field4583 = var2;
+		this.field4585 = var3;
+		this.field4582 = var4;
+		super.field4572 = "LoadSongTask";
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(Lqr;Lqr;I)I",
-		garbageValue = "1927816429"
+		descriptor = "(B)Z",
+		garbageValue = "-90"
 	)
-	int method7820(class425 var1, class425 var2) {
-		if (var1.field4625 > var2.field4625) {
-			return 1;
-		} else {
-			return var1.field4625 < var2.field4625 ? -1 : 0;
-		}
-	}
+	public boolean vmethod7780() {
+		int var1 = 0;
+		Iterator var2 = class319.musicSongs.iterator();
 
-	public int compare(Object var1, Object var2) {
-		return this.method7820((class425)var1, (class425)var2);
-	}
-
-	public boolean equals(Object var1) {
-		return super.equals(var1);
-	}
-
-	@ObfuscatedName("aa")
-	@ObfuscatedSignature(
-		descriptor = "(ILdc;ZB)I",
-		garbageValue = "1"
-	)
-	static int method7819(int var0, Script var1, boolean var2) {
-		Widget var3 = var2 ? class36.scriptDotWidget : class351.scriptActiveWidget;
-		if (var0 == ScriptOpcodes.CC_GETSCROLLX) {
-			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3.scrollX;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_GETSCROLLY) {
-			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3.scrollY;
-			return 1;
-		} else {
-			class330 var7;
-			if (var0 == ScriptOpcodes.CC_GETTEXT) {
-				if (var3.type == 12) {
-					var7 = var3.method6504();
-					if (var7 != null) {
-						Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var7.method6264().method7368();
-						return 1;
-					}
+		while (true) {
+			while (var2.hasNext()) {
+				MusicSong var3 = (MusicSong)var2.next();
+				if (var3 != null && var3.midiPcmStream.field3450 > 1 && var3.midiPcmStream.method6050()) {
+					this.method7773("Attempted to load patches of already loading midiplayer!");
+					return true;
 				}
 
-				Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var3.text;
-				return 1;
-			} else if (var0 == ScriptOpcodes.CC_GETSCROLLWIDTH) {
-				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3.scrollWidth;
-				return 1;
-			} else if (var0 == ScriptOpcodes.CC_GETSCROLLHEIGHT) {
-				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3.scrollHeight;
-				return 1;
-			} else if (var0 == ScriptOpcodes.CC_GETMODELZOOM) {
-				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3.modelZoom;
-				return 1;
-			} else if (var0 == ScriptOpcodes.CC_GETMODELANGLE_X) {
-				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3.modelAngleX;
-				return 1;
-			} else if (var0 == ScriptOpcodes.CC_GETMODELANGLE_Z) {
-				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3.modelAngleZ;
-				return 1;
-			} else if (var0 == ScriptOpcodes.CC_GETMODELANGLE_Y) {
-				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3.modelAngleY;
-				return 1;
-			} else if (var0 == ScriptOpcodes.CC_GETTRANS) {
-				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3.transparencyTop;
-				return 1;
-			} else if (var0 == 1610) {
-				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3.transparencyBot;
-				return 1;
-			} else if (var0 == ScriptOpcodes.CC_GETCOLOUR) {
-				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3.color;
-				return 1;
-			} else if (var0 == ScriptOpcodes.CC_GETFILLCOLOUR) {
-				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3.color2;
-				return 1;
-			} else if (var0 == 1613) {
-				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3.fillMode.rsOrdinal();
-				return 1;
-			} else if (var0 == ScriptOpcodes.CC_GETMODELTRANSPARENT) {
-				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3.modelTransparency ? 1 : 0;
-				return 1;
-			} else {
-				class325 var4;
-				if (var0 == 1617) {
-					var4 = var3.method6469();
-					Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var4 != null ? var4.field3539 : 0;
-				}
+				if (var3 != null && !var3.field3547) {
+					try {
+						if (var3.musicTrackArchive != null && var3.musicTrackGroupId != -1 && var3.musicTrackFileId != -1) {
+							if (var3.field3548 == null) {
+								var3.field3548 = MusicTrack.readTrack(var3.musicTrackArchive, var3.musicTrackGroupId, var3.musicTrackFileId);
+								if (var3.field3548 == null) {
+									continue;
+								}
+							}
 
-				if (var0 == 1618) {
-					var4 = var3.method6469();
-					Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var4 != null ? var4.field3540 : 0;
-					return 1;
-				} else if (var0 == 1619) {
-					var7 = var3.method6504();
-					Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var7 != null ? var7.method6415().method7368() : "";
-					return 1;
-				} else if (var0 == 1620) {
-					var4 = var3.method6469();
-					Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var4 != null ? var4.field3541 : 0;
-					return 1;
-				} else if (var0 == 1621) {
-					var7 = var3.method6504();
-					Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var7 != null ? var7.method6219() : 0;
-					return 1;
-				} else if (var0 == 1622) {
-					var7 = var3.method6504();
-					Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var7 != null ? var7.method6220() : 0;
-					return 1;
-				} else if (var0 == 1623) {
-					var7 = var3.method6504();
-					Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var7 != null ? var7.method6221() : 0;
-					return 1;
-				} else if (var0 == 1624) {
-					var7 = var3.method6504();
-					Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var7 != null && var7.method6211() ? 1 : 0;
-					return 1;
-				} else if (var0 != 1625) {
-					if (var0 == 1626) {
-						var7 = var3.method6504();
-						Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var7 != null ? var7.method6210().method7582() : "";
-						return 1;
-					} else if (var0 == 1627) {
-						var7 = var3.method6504();
-						int var5 = var7 != null ? var7.method6215() : 0;
-						int var6 = var7 != null ? var7.method6214() : 0;
-						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Math.min(var5, var6);
-						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Math.max(var5, var6);
-						return 1;
-					} else if (var0 == 1628) {
-						var7 = var3.method6504();
-						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var7 != null ? var7.method6214() : 0;
-						return 1;
-					} else if (var0 == 1629) {
-						var7 = var3.method6504();
-						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var7 != null ? var7.method6223() : 0;
-						return 1;
-					} else if (var0 == 1630) {
-						var7 = var3.method6504();
-						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var7 != null ? var7.method6204() : 0;
-						return 1;
-					} else if (var0 == 1631) {
-						var7 = var3.method6504();
-						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var7 != null ? var7.method6311() : 0;
-						return 1;
-					} else if (var0 == 1632) {
-						var7 = var3.method6504();
-						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var7 != null ? var7.method6300() : 0;
-						return 1;
-					} else {
-						class27 var8;
-						if (var0 == 1633) {
-							var8 = var3.method6463();
-							Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize - 1] = var8 != null ? var8.method391(Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize - 1]) : 0;
-							return 1;
-						} else if (var0 == 1634) {
-							var8 = var3.method6463();
-							Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize - 1] = var8 != null ? var8.method388((char)Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize - 1]) : 0;
-							return 1;
+							if (var3.field3549 == null) {
+								var3.field3549 = new SoundCache(this.field4582, this.field4585);
+							}
+
+							if (var3.midiPcmStream.method5972(var3.field3548, this.field4583, var3.field3549)) {
+								++var1;
+								var3.field3547 = true;
+								var3.midiPcmStream.method5979();
+							}
 						} else {
-							return 2;
+							++var1;
 						}
+					} catch (Exception var5) {
+						class190.RunException_sendStackTrace((String)null, var5);
+						this.method7773(var5.getMessage());
+						return true;
 					}
 				} else {
-					var7 = var3.method6504();
-					Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var7 != null && var7.method6212() ? 1 : 0;
-					return 1;
+					++var1;
 				}
 			}
+
+			if (var1 == class319.musicSongs.size()) {
+				return true;
+			}
+
+			return false;
 		}
 	}
 }

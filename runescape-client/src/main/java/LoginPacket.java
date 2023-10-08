@@ -4,61 +4,61 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("lx")
+@ObfuscatedName("mi")
 @Implements("LoginPacket")
-public class LoginPacket implements class294 {
-	@ObfuscatedName("aw")
+public class LoginPacket implements class307 {
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Llx;"
+		descriptor = "Lmi;"
 	)
-	public static final LoginPacket field3341;
-	@ObfuscatedName("ay")
+	public static final LoginPacket field3387;
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "Llx;"
+		descriptor = "Lmi;"
 	)
-	static final LoginPacket field3340;
-	@ObfuscatedName("ar")
+	static final LoginPacket field3385;
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Llx;"
+		descriptor = "Lmi;"
 	)
-	public static final LoginPacket field3342;
-	@ObfuscatedName("am")
+	public static final LoginPacket field3386;
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "Llx;"
+		descriptor = "Lmi;"
 	)
-	public static final LoginPacket field3343;
-	@ObfuscatedName("as")
+	public static final LoginPacket field3391;
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "Llx;"
+		descriptor = "Lmi;"
 	)
-	public static final LoginPacket field3345;
-	@ObfuscatedName("aj")
+	public static final LoginPacket field3388;
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "Llx;"
+		descriptor = "Lmi;"
 	)
-	static final LoginPacket field3344;
-	@ObfuscatedName("az")
+	static final LoginPacket field3389;
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "[Llx;"
+		descriptor = "[Lmi;"
 	)
 	@Export("LoginPacket_indexedValues")
 	static final LoginPacket[] LoginPacket_indexedValues;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ar")
 	@ObfuscatedGetter(
-		intValue = 702740567
+		intValue = 800355475
 	)
 	@Export("id")
 	public final int id;
 
 	static {
-		field3341 = new LoginPacket(14, 0);
-		field3340 = new LoginPacket(15, 4);
-		field3342 = new LoginPacket(16, -2);
-		field3343 = new LoginPacket(18, -2);
-		field3345 = new LoginPacket(19, -2);
-		field3344 = new LoginPacket(27, 0);
+		field3387 = new LoginPacket(14, 0);
+		field3385 = new LoginPacket(15, 4);
+		field3386 = new LoginPacket(16, -2);
+		field3391 = new LoginPacket(18, -2);
+		field3388 = new LoginPacket(19, -2);
+		field3389 = new LoginPacket(27, 0);
 		LoginPacket_indexedValues = new LoginPacket[32];
-		LoginPacket[] var0 = class138.method3096();
+		LoginPacket[] var0 = FloorOverlayDefinition.method4147();
 
 		for (int var1 = 0; var1 < var0.length; ++var1) {
 			LoginPacket_indexedValues[var0[var1].id] = var0[var1];

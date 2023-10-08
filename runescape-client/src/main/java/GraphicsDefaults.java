@@ -7,84 +7,84 @@ import net.runelite.mapping.ObfuscatedSignature;
 @ObfuscatedName("ru")
 @Implements("GraphicsDefaults")
 public class GraphicsDefaults {
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = 1457757201
+		intValue = 2021112545
 	)
-	public int field4715;
-	@ObfuscatedName("ay")
+	public int field4758;
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = -1554565485
+		intValue = 436635071
 	)
-	public int field4708;
+	public int field4750;
+	@ObfuscatedName("ak")
+	@ObfuscatedGetter(
+		intValue = 1823051071
+	)
+	public int field4752;
+	@ObfuscatedName("ax")
+	@ObfuscatedGetter(
+		intValue = -893063485
+	)
+	public int field4749;
+	@ObfuscatedName("ao")
+	@ObfuscatedGetter(
+		intValue = 374676159
+	)
+	public int field4753;
+	@ObfuscatedName("ah")
+	@ObfuscatedGetter(
+		intValue = 454929239
+	)
+	public int field4754;
 	@ObfuscatedName("ar")
 	@ObfuscatedGetter(
-		intValue = -335893661
+		intValue = 2132493459
 	)
-	public int field4709;
+	public int field4755;
+	@ObfuscatedName("ab")
+	@ObfuscatedGetter(
+		intValue = -1080946607
+	)
+	public int field4756;
 	@ObfuscatedName("am")
 	@ObfuscatedGetter(
-		intValue = -1547272309
+		intValue = -455480355
 	)
-	public int field4710;
-	@ObfuscatedName("as")
-	@ObfuscatedGetter(
-		intValue = -1799258585
-	)
-	public int field4712;
-	@ObfuscatedName("aj")
-	@ObfuscatedGetter(
-		intValue = 173361429
-	)
-	public int field4707;
-	@ObfuscatedName("ag")
-	@ObfuscatedGetter(
-		intValue = 898862615
-	)
-	public int field4713;
-	@ObfuscatedName("az")
-	@ObfuscatedGetter(
-		intValue = 1005510493
-	)
-	public int field4714;
+	public int field4757;
 	@ObfuscatedName("av")
 	@ObfuscatedGetter(
-		intValue = -1560055347
+		intValue = -279292159
 	)
-	public int field4711;
-	@ObfuscatedName("ap")
+	public int field4751;
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		intValue = 1184444635
+		intValue = 1050136749
 	)
-	public int field4716;
-	@ObfuscatedName("aq")
-	@ObfuscatedGetter(
-		intValue = 1334760175
-	)
-	public int field4717;
+	public int field4759;
 
 	public GraphicsDefaults() {
-		this.field4715 = -1;
-		this.field4708 = -1;
-		this.field4709 = -1;
-		this.field4710 = -1;
-		this.field4712 = -1;
-		this.field4707 = -1;
-		this.field4713 = -1;
-		this.field4714 = -1;
-		this.field4711 = -1;
-		this.field4716 = -1;
-		this.field4717 = -1;
+		this.field4758 = -1;
+		this.field4750 = -1;
+		this.field4752 = -1;
+		this.field4749 = -1;
+		this.field4753 = -1;
+		this.field4754 = -1;
+		this.field4755 = -1;
+		this.field4756 = -1;
+		this.field4757 = -1;
+		this.field4751 = -1;
+		this.field4759 = -1;
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(Lnd;I)V",
-		garbageValue = "-1842345605"
+		descriptor = "(Lom;B)V",
+		garbageValue = "5"
 	)
 	@Export("decode")
 	public void decode(AbstractArchive var1) {
-		byte[] var2 = var1.takeFileFlat(DefaultsGroup.field4706.group);
+		byte[] var2 = var1.takeFileFlat(DefaultsGroup.field4747.group);
 		Buffer var3 = new Buffer(var2);
 
 		while (true) {
@@ -98,18 +98,36 @@ public class GraphicsDefaults {
 				var3.readMedium();
 				break;
 			case 2:
-				this.field4715 = var3.readNullableLargeSmart();
-				this.field4708 = var3.readNullableLargeSmart();
-				this.field4709 = var3.readNullableLargeSmart();
-				this.field4710 = var3.readNullableLargeSmart();
-				this.field4712 = var3.readNullableLargeSmart();
-				this.field4707 = var3.readNullableLargeSmart();
-				this.field4713 = var3.readNullableLargeSmart();
-				this.field4714 = var3.readNullableLargeSmart();
-				this.field4711 = var3.readNullableLargeSmart();
-				this.field4716 = var3.readNullableLargeSmart();
-				this.field4717 = var3.readNullableLargeSmart();
+				this.field4758 = var3.readNullableLargeSmart();
+				this.field4750 = var3.readNullableLargeSmart();
+				this.field4752 = var3.readNullableLargeSmart();
+				this.field4749 = var3.readNullableLargeSmart();
+				this.field4753 = var3.readNullableLargeSmart();
+				this.field4754 = var3.readNullableLargeSmart();
+				this.field4755 = var3.readNullableLargeSmart();
+				this.field4756 = var3.readNullableLargeSmart();
+				this.field4757 = var3.readNullableLargeSmart();
+				this.field4751 = var3.readNullableLargeSmart();
+				this.field4759 = var3.readNullableLargeSmart();
 			}
 		}
+	}
+
+	@ObfuscatedName("ie")
+	@ObfuscatedSignature(
+		descriptor = "(IIII)V",
+		garbageValue = "1779911274"
+	)
+	@Export("queueSoundEffect")
+	static void queueSoundEffect(int var0, int var1, int var2) {
+		if (class91.clientPreferences.method2517() != 0 && var1 != 0 && Client.soundEffectCount < 50) {
+			Client.soundEffectIds[Client.soundEffectCount] = var0;
+			Client.queuedSoundEffectLoops[Client.soundEffectCount] = var1;
+			Client.queuedSoundEffectDelays[Client.soundEffectCount] = var2;
+			Client.soundEffects[Client.soundEffectCount] = null;
+			Client.soundLocations[Client.soundEffectCount] = 0;
+			++Client.soundEffectCount;
+		}
+
 	}
 }

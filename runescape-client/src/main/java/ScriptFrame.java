@@ -4,37 +4,25 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ca")
+@ObfuscatedName("cn")
 @Implements("ScriptFrame")
 public class ScriptFrame {
-	@ObfuscatedName("ap")
-	@ObfuscatedSignature(
-		descriptor = "Lud;"
-	)
-	@Export("rightTitleSprite")
-	static SpritePixels rightTitleSprite;
 	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Lkl;"
-	)
-	@Export("worldMapEvent")
-	static WorldMapEvent worldMapEvent;
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "Ldc;"
+		descriptor = "Lds;"
 	)
 	@Export("script")
 	Script script;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = -1665755063
+		intValue = 1126556493
 	)
 	@Export("pc")
 	int pc;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ak")
 	@Export("intLocals")
 	int[] intLocals;
-	@ObfuscatedName("am")
+	@ObfuscatedName("ax")
 	@Export("stringLocals")
 	String[] stringLocals;
 
@@ -42,45 +30,27 @@ public class ScriptFrame {
 		this.pc = -1;
 	}
 
-	@ObfuscatedName("cz")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "-922438804"
+		descriptor = "(I)Z",
+		garbageValue = "1603981165"
 	)
-	@Export("runWidgetOnLoadListener")
-	static void runWidgetOnLoadListener(int var0) {
-		if (var0 != -1) {
-			if (Login.loadInterface(var0)) {
-				Widget[] var1 = ArchiveLoader.Widget_interfaceComponents[var0];
-
-				for (int var2 = 0; var2 < var1.length; ++var2) {
-					Widget var3 = var1[var2];
-					if (var3.onLoad != null) {
-						ScriptEvent var4 = new ScriptEvent();
-						var4.widget = var3;
-						var4.args = var3.onLoad;
-						UserComparator8.runScript(var4, 5000000, 0);
-					}
-				}
-
-			}
-		}
+	public static boolean method1194() {
+		return !class319.field3440.isEmpty();
 	}
 
-	@ObfuscatedName("ke")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-77"
+		descriptor = "(Lnm;IIII)V",
+		garbageValue = "1957450993"
 	)
-	static final void method1208() {
-		for (PendingSpawn var0 = (PendingSpawn)Client.pendingSpawns.last(); var0 != null; var0 = (PendingSpawn)Client.pendingSpawns.previous()) {
-			if (var0.hitpoints == -1) {
-				var0.delay = 0;
-				class11.method112(var0);
-			} else {
-				var0.remove();
-			}
+	@Export("Widget_setKeyRate")
+	static final void Widget_setKeyRate(Widget var0, int var1, int var2, int var3) {
+		if (var0.field3770 == null) {
+			throw new RuntimeException();
+		} else {
+			var0.field3770[var1] = var2;
+			var0.field3800[var1] = var3;
 		}
-
 	}
 }

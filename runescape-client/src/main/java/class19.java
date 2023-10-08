@@ -5,118 +5,120 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ao")
+@ObfuscatedName("ae")
 public class class19 implements Callable {
-	@ObfuscatedName("aj")
-	@Export("Tiles_shapes")
-	static byte[][][] Tiles_shapes;
-	@ObfuscatedName("ks")
+	@ObfuscatedName("jj")
 	@ObfuscatedGetter(
-		intValue = 2049941555
+		intValue = -1387904025
 	)
-	@Export("cameraPitch")
-	static int cameraPitch;
-	@ObfuscatedName("aw")
+	@Export("baseY")
+	static int baseY;
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Laq;"
+		descriptor = "Lag;"
 	)
-	final class10 field100;
+	final class10 field101;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Laa;"
+		descriptor = "Las;"
 	)
 	final class14 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Laa;Laq;)V"
+		descriptor = "(Las;Lag;)V"
 	)
 	class19(class14 var1, class10 var2) {
 		this.this$0 = var1;
-		this.field100 = var2;
+		this.field101 = var2;
 	}
 
 	public Object call() throws Exception {
 		try {
-			while (this.field100.method88()) {
-				class13.method180(10L);
+			while (this.field101.method88()) {
+				Players.method2741(10L);
 			}
 		} catch (IOException var2) {
 			return new class20("Error servicing REST query: " + var2.getMessage());
 		}
 
-		return this.field100.method89();
+		return this.field101.method89();
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-50"
+		descriptor = "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;B)V",
+		garbageValue = "44"
 	)
-	public static void method280() {
-		class36.reflectionChecks = new IterableNodeDeque();
+	static void method285(String var0, String var1, String var2) {
+		GameEngine.method647(7);
+		AbstractWorldMapIcon.setLoginResponseString(var0, var1, var2);
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("bz")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-525719060"
+		garbageValue = "770676496"
 	)
-	static void method277() {
-		for (ObjectSound var0 = (ObjectSound)ObjectSound.objectSounds.last(); var0 != null; var0 = (ObjectSound)ObjectSound.objectSounds.previous()) {
-			if (var0.obj != null) {
-				var0.set();
-			}
+	protected static final void method283() {
+		class314.clock.mark();
+
+		int var0;
+		for (var0 = 0; var0 < 32; ++var0) {
+			GameEngine.graphicsTickTimes[var0] = 0L;
 		}
 
+		for (var0 = 0; var0 < 32; ++var0) {
+			GameEngine.clientTickTimes[var0] = 0L;
+		}
+
+		class160.gameCyclesToDo = 0;
 	}
 
-	@ObfuscatedName("av")
+	@ObfuscatedName("kj")
 	@ObfuscatedSignature(
-		descriptor = "([BIILiz;[Lij;I)V",
-		garbageValue = "-999166250"
+		descriptor = "(IIIIIIIIIIB)V",
+		garbageValue = "-11"
 	)
-	static final void method282(byte[] var0, int var1, int var2, Scene var3, CollisionMap[] var4) {
-		Buffer var5 = new Buffer(var0);
-		int var6 = -1;
+	static final void method280(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9) {
+		PendingSpawn var10 = null;
 
-		while (true) {
-			int var7 = var5.readIncrSmallSmart();
-			if (var7 == 0) {
-				return;
-			}
-
-			var6 += var7;
-			int var8 = 0;
-
-			while (true) {
-				int var9 = var5.readUShortSmart();
-				if (var9 == 0) {
-					break;
-				}
-
-				var8 += var9 - 1;
-				int var10 = var8 & 63;
-				int var11 = var8 >> 6 & 63;
-				int var12 = var8 >> 12;
-				int var13 = var5.readUnsignedByte();
-				int var14 = var13 >> 2;
-				int var15 = var13 & 3;
-				int var16 = var11 + var1;
-				int var17 = var10 + var2;
-				if (var16 > 0 && var17 > 0 && var16 < 103 && var17 < 103) {
-					int var18 = var12;
-					if ((Tiles.Tiles_renderFlags[1][var16][var17] & 2) == 2) {
-						var18 = var12 - 1;
-					}
-
-					CollisionMap var19 = null;
-					if (var18 >= 0) {
-						var19 = var4[var18];
-					}
-
-					PendingSpawn.addObjects(var12, var16, var17, var6, var15, var14, var3, var19);
-				}
+		for (PendingSpawn var11 = (PendingSpawn)Client.pendingSpawns.last(); var11 != null; var11 = (PendingSpawn)Client.pendingSpawns.previous()) {
+			if (var0 == var11.plane && var11.x == var1 && var2 == var11.y && var3 == var11.type) {
+				var10 = var11;
+				break;
 			}
 		}
+
+		if (var10 == null) {
+			var10 = new PendingSpawn();
+			var10.plane = var0;
+			var10.type = var3;
+			var10.x = var1;
+			var10.y = var2;
+			var10.field1180 = -1;
+			GrandExchangeOfferOwnWorldComparator.method1237(var10);
+			Client.pendingSpawns.addFirst(var10);
+		}
+
+		var10.field1177 = var4;
+		var10.field1173 = var5;
+		var10.field1170 = var6;
+		var10.delay = var8;
+		var10.hitpoints = var9;
+		var10.method2413(var7);
+	}
+
+	@ObfuscatedName("kx")
+	@ObfuscatedSignature(
+		descriptor = "(IIIII)V",
+		garbageValue = "-1266586426"
+	)
+	static final void method284(int var0, int var1, int var2, int var3) {
+		for (int var4 = 0; var4 < Client.rootWidgetCount; ++var4) {
+			if (Client.rootWidgetXs[var4] + Client.rootWidgetWidths[var4] > var0 && Client.rootWidgetXs[var4] < var0 + var2 && Client.rootWidgetYs[var4] + Client.rootWidgetHeights[var4] > var1 && Client.rootWidgetYs[var4] < var3 + var1) {
+				Client.validRootWidgets[var4] = true;
+			}
+		}
+
 	}
 }

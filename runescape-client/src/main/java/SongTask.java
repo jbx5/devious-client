@@ -3,101 +3,97 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("pp")
+@ObfuscatedName("qm")
 @Implements("SongTask")
-public abstract class SongTask
-{
-	@ObfuscatedName("av")
+public abstract class SongTask {
+	@ObfuscatedName("fq")
 	@ObfuscatedSignature(
-		descriptor = "Lud;"
+		descriptor = "Lok;"
 	)
-	@Export("leftTitleSprite")
-	static SpritePixels leftTitleSprite;
-	@ObfuscatedName("am")
+	@Export("archive12")
+	static Archive archive12;
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Lpp;"
+		descriptor = "Lqm;"
 	)
 	@Export("songTask")
 	SongTask songTask;
-	@ObfuscatedName("as")
-	String field4529;
-	@ObfuscatedName("aj")
-	@Export("songTaskName")
-	String songTaskName;
-	@ObfuscatedName("ag")
-	boolean field4530;
-	@ObfuscatedName("az")
-	boolean field4526;
+	@ObfuscatedName("ax")
+	String field4574;
+	@ObfuscatedName("ao")
+	String field4572;
+	@ObfuscatedName("ah")
+	boolean field4576;
+	@ObfuscatedName("ar")
+	boolean field4573;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lpp;)V"
+		descriptor = "(Lqm;)V"
 	)
 	SongTask(SongTask var1) {
 		this.songTask = var1;
 	}
 
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "(II)Z",
-		garbageValue = "994462530"
-	)
-	public abstract boolean vmethod7676(int var1);
-
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
 		descriptor = "(B)Z",
-		garbageValue = "15"
+		garbageValue = "-90"
 	)
-	public boolean method7668() {
-		return this.field4530;
-	}
+	public abstract boolean vmethod7780();
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "751419690"
+		garbageValue = "1050307233"
 	)
-	public boolean method7650() {
-		return this.field4526;
+	public boolean method7760() {
+		return this.field4576;
+	}
+
+	@ObfuscatedName("am")
+	@ObfuscatedSignature(
+		descriptor = "(B)Z",
+		garbageValue = "45"
+	)
+	public boolean method7762() {
+		return this.field4573;
 	}
 
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "(B)Ljava/lang/String;",
-		garbageValue = "-29"
+		descriptor = "(I)Ljava/lang/String;",
+		garbageValue = "-1522187493"
 	)
-	public String method7651() {
-		return "Error in task: " + this.songTaskName + ", Error message: " + this.field4529;
+	public String method7763() {
+		return "Error in task: " + this.field4572 + ", Error message: " + this.field4574;
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(S)Lpp;",
-		garbageValue = "276"
+		descriptor = "(I)Lqm;",
+		garbageValue = "-1213560262"
 	)
-	@Export("getSongTask")
-	public SongTask getSongTask() {
+	public SongTask method7764() {
 		return this.songTask;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/String;I)V",
-		garbageValue = "934674418"
+		garbageValue = "225620137"
 	)
-	void method7653(String var1) {
-		this.field4530 = true;
-		this.field4529 = var1;
+	void method7773(String var1) {
+		this.field4576 = true;
+		this.field4574 = var1;
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(Lnd;Lnd;Lnd;I)V",
-		garbageValue = "-1865602506"
+		descriptor = "(II)Z",
+		garbageValue = "1674491330"
 	)
-	public static void method7667(AbstractArchive var0, AbstractArchive var1, AbstractArchive var2) {
-		SequenceDefinition.SequenceDefinition_archive = var0;
-		class333.SequenceDefinition_animationsArchive = var1;
-		class169.SequenceDefinition_skeletonsArchive = var2;
+	@Export("isWorldMapEvent")
+	public static boolean isWorldMapEvent(int var0) {
+		return var0 == 10 || var0 == 11 || var0 == 12 || var0 == 13 || var0 == 14 || var0 == 15 || var0 == 16 || var0 == 17;
 	}
 }

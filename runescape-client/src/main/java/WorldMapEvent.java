@@ -4,30 +4,30 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kl")
+@ObfuscatedName("li")
 @Implements("WorldMapEvent")
 public class WorldMapEvent {
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = 1659239405
+		intValue = 941661619
 	)
 	@Export("mapElement")
 	public int mapElement;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "Lmr;"
+		descriptor = "Lmo;"
 	)
 	@Export("coord1")
 	public Coord coord1;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Lmr;"
+		descriptor = "Lmo;"
 	)
 	@Export("coord2")
 	public Coord coord2;
 
 	@ObfuscatedSignature(
-		descriptor = "(ILmr;Lmr;)V"
+		descriptor = "(ILmo;Lmo;)V"
 	)
 	public WorldMapEvent(int var1, Coord var2, Coord var3) {
 		this.mapElement = var1;
@@ -35,39 +35,33 @@ public class WorldMapEvent {
 		this.coord2 = var3;
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ic")
 	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "-1720811535"
+		descriptor = "(Ldj;IIB)V",
+		garbageValue = "124"
 	)
-	public static int method5646(int var0, int var1) {
-		int var2;
-		for (var2 = 0; var1 > 0; --var1) {
-			var2 = var2 << 1 | var0 & 1;
-			var0 >>>= 1;
-		}
-
-		return var2;
-	}
-
-	@ObfuscatedName("nz")
-	@ObfuscatedSignature(
-		descriptor = "(Lmt;B)Lmt;",
-		garbageValue = "84"
-	)
-	static Widget method5647(Widget var0) {
-		int var1 = ClientPacket.method5723(UserComparator8.getWidgetFlags(var0));
-		if (var1 == 0) {
-			return null;
-		} else {
-			for (int var2 = 0; var2 < var1; ++var2) {
-				var0 = VarbitComposition.getWidget(var0.parentId);
-				if (var0 == null) {
-					return null;
-				}
+	@Export("performPlayerAnimation")
+	static void performPlayerAnimation(Player var0, int var1, int var2) {
+		if (var0.sequence == var1 && var1 != -1) {
+			int var3 = class36.SequenceDefinition_get(var1).field2340;
+			if (var3 == 1) {
+				var0.sequenceFrame = 0;
+				var0.sequenceFrameCycle = 0;
+				var0.sequenceDelay = var2;
+				var0.field1235 = 0;
 			}
 
-			return var0;
+			if (var3 == 2) {
+				var0.field1235 = 0;
+			}
+		} else if (var1 == -1 || var0.sequence == -1 || class36.SequenceDefinition_get(var1).field2333 >= class36.SequenceDefinition_get(var0.sequence).field2333) {
+			var0.sequence = var1;
+			var0.sequenceFrame = 0;
+			var0.sequenceFrameCycle = 0;
+			var0.sequenceDelay = var2;
+			var0.field1235 = 0;
+			var0.field1261 = var0.pathLength;
 		}
+
 	}
 }

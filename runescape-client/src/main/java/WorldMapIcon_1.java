@@ -3,55 +3,54 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("jg")
+@ObfuscatedName("kb")
 @Implements("WorldMapIcon_1")
 public class WorldMapIcon_1 extends AbstractWorldMapIcon {
-	@ObfuscatedName("us")
+	@ObfuscatedName("cb")
 	@ObfuscatedGetter(
-		intValue = -438679936
+		intValue = -424537003
 	)
-	static int field2870;
-	@ObfuscatedName("aw")
+	static int field2916;
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = -1809018999
+		intValue = 272253257
 	)
 	@Export("objectDefId")
 	final int objectDefId;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "Ljv;"
+		descriptor = "Lke;"
 	)
 	@Export("region")
 	final WorldMapRegion region;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = 708898903
+		intValue = 1088150255
 	)
 	@Export("element")
 	int element;
-	@ObfuscatedName("am")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "Lka;"
+		descriptor = "Lkd;"
 	)
 	@Export("label")
 	WorldMapLabel label;
-	@ObfuscatedName("as")
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = -94495923
+		intValue = 78742619
 	)
 	@Export("subWidth")
 	int subWidth;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ah")
 	@ObfuscatedGetter(
-		intValue = 163787557
+		intValue = -338644775
 	)
 	@Export("subHeight")
 	int subHeight;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lmr;Lmr;ILjv;)V"
+		descriptor = "(Lmo;Lmo;ILke;)V"
 	)
 	WorldMapIcon_1(Coord var1, Coord var2, int var3, WorldMapRegion var4) {
 		super(var1, var2);
@@ -60,16 +59,16 @@ public class WorldMapIcon_1 extends AbstractWorldMapIcon {
 		this.init();
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1295582280"
+		descriptor = "(B)V",
+		garbageValue = "-19"
 	)
 	@Export("init")
 	void init() {
-		this.element = class90.getObjectDefinition(this.objectDefId).transform().mapIconId;
-		this.label = this.region.createMapLabel(SequenceDefinition.WorldMapElement_get(this.element));
-		WorldMapElement var1 = SequenceDefinition.WorldMapElement_get(this.getElement());
+		this.element = class91.getObjectDefinition(this.objectDefId).transform().mapIconId;
+		this.label = this.region.createMapLabel(class148.WorldMapElement_get(this.element));
+		WorldMapElement var1 = class148.WorldMapElement_get(this.getElement());
 		SpritePixels var2 = var1.getSpriteBool(false);
 		if (var2 != null) {
 			this.subWidth = var2.subWidth;
@@ -81,87 +80,55 @@ public class WorldMapIcon_1 extends AbstractWorldMapIcon {
 
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "1799088869"
+		garbageValue = "-1637535390"
 	)
 	@Export("getElement")
 	public int getElement() {
 		return this.element;
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(S)Lka;",
-		garbageValue = "8220"
+		descriptor = "(B)Lkd;",
+		garbageValue = "5"
 	)
 	@Export("getLabel")
 	WorldMapLabel getLabel() {
 		return this.label;
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
 		descriptor = "(B)I",
-		garbageValue = "81"
+		garbageValue = "65"
 	)
 	@Export("getSubWidth")
 	int getSubWidth() {
 		return this.subWidth;
 	}
 
-	@ObfuscatedName("as")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-565304787"
+		garbageValue = "1338001743"
 	)
 	@Export("getSubHeight")
 	int getSubHeight() {
 		return this.subHeight;
 	}
 
-	@ObfuscatedName("ad")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(ILdc;ZI)I",
-		garbageValue = "-2050409235"
+		descriptor = "(Lmh;I)V",
+		garbageValue = "-866715691"
 	)
-	static int method5097(int var0, Script var1, boolean var2) {
-		Widget var3 = var2 ? class36.scriptDotWidget : class351.scriptActiveWidget;
-		if (var0 == ScriptOpcodes.CC_GETTARGETMASK) {
-			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = class273.Widget_unpackTargetMask(UserComparator8.getWidgetFlags(var3));
-			return 1;
-		} else if (var0 != ScriptOpcodes.CC_GETOP) {
-			if (var0 == ScriptOpcodes.CC_GETOPBASE) {
-				if (var3.dataText == null) {
-					Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = "";
-				} else {
-					Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var3.dataText;
-				}
-
-				return 1;
-			} else {
-				return 2;
-			}
-		} else {
-			int var4 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-			--var4;
-			if (var3.actions != null && var4 < var3.actions.length && var3.actions[var4] != null) {
-				Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var3.actions[var4];
-			} else {
-				Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = "";
-			}
-
-			return 1;
+	public static void method5236(class325 var0) {
+		if (!class319.field3434.contains(var0)) {
+			class319.field3434.add(var0);
 		}
-	}
 
-	@ObfuscatedName("jk")
-	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "650679453"
-	)
-	static boolean method5108() {
-		return (Client.drawPlayerNames & 1) != 0;
 	}
 }

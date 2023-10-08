@@ -1,35 +1,21 @@
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ss")
-public class class479 extends class481 {
-	@ObfuscatedName("aw")
-	@ObfuscatedGetter(
-		intValue = 515837457
-	)
-	int field4870;
-	@ObfuscatedName("ay")
-	@ObfuscatedGetter(
-		intValue = -1926180899
-	)
-	int field4871;
+@ObfuscatedName("sy")
+public class class479 {
+	@ObfuscatedName("ao")
+	static final int[] field4823;
+	@ObfuscatedName("ah")
+	static final int[] field4825;
 
-	public class479(int var1, int var2, int var3, int var4) {
-		super(var3, var4);
-		this.field4870 = 0;
-		this.field4871 = 0;
-		this.field4870 = var1;
-		this.field4871 = var2;
-	}
+	static {
+		field4823 = new int[16384];
+		field4825 = new int[16384];
+		double var0 = 3.834951969714103E-4D;
 
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "-84"
-	)
-	public int method8493() {
-		double var1 = this.method8504();
-		return (int)Math.round(var1 * (double)(this.field4871 - this.field4870) + (double)this.field4870);
+		for (int var2 = 0; var2 < 16384; ++var2) {
+			field4823[var2] = (int)(16384.0D * Math.sin(var0 * (double)var2));
+			field4825[var2] = (int)(16384.0D * Math.cos((double)var2 * var0));
+		}
+
 	}
 }

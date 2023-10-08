@@ -1,66 +1,48 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("sg")
+@ObfuscatedName("tc")
 @Implements("FontName")
 public class FontName {
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Lsg;"
+		descriptor = "Ltc;"
 	)
 	@Export("FontName_plain11")
 	public static final FontName FontName_plain11;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "Lsg;"
+		descriptor = "Ltc;"
 	)
 	@Export("FontName_plain12")
 	public static final FontName FontName_plain12;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Lsg;"
+		descriptor = "Ltc;"
 	)
 	@Export("FontName_bold12")
 	public static final FontName FontName_bold12;
-	@ObfuscatedName("am")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "Lsg;"
+		descriptor = "Ltc;"
 	)
 	@Export("FontName_verdana11")
 	public static final FontName FontName_verdana11;
-	@ObfuscatedName("as")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "Lsg;"
+		descriptor = "Ltc;"
 	)
 	@Export("FontName_verdana13")
 	public static final FontName FontName_verdana13;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "Lsg;"
+		descriptor = "Ltc;"
 	)
 	@Export("FontName_verdana15")
 	public static final FontName FontName_verdana15;
-	@ObfuscatedName("dd")
-	@ObfuscatedSignature(
-		descriptor = "Luu;"
-	)
-	@Export("worldSelectRightSprite")
-	static IndexedSprite worldSelectRightSprite;
-	@ObfuscatedName("fe")
-	@ObfuscatedSignature(
-		descriptor = "Lny;"
-	)
-	@Export("archive13")
-	static Archive archive13;
-	@ObfuscatedName("un")
-	@ObfuscatedGetter(
-		intValue = -99375235
-	)
-	static int field4949;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ar")
 	@Export("name")
 	String name;
 
@@ -77,106 +59,28 @@ public class FontName {
 		this.name = var1;
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("iv")
 	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "-821041494"
+		descriptor = "(Lif;IIII)V",
+		garbageValue = "-1051855910"
 	)
-	static int method8744(int var0, int var1) {
-		FloorOverlayDefinition var2 = class131.method3024(var0);
-		if (var2 == null) {
-			return var1;
-		} else {
-			int var4;
-			int var5;
-			int var6;
-			int var7;
-			int var8;
-			if (var2.secondaryRgb >= 0) {
-				var4 = var2.secondaryHue;
-				var5 = var2.secondarySaturation;
-				var6 = var2.secondaryLightness;
-				if (var6 > 179) {
-					var5 /= 2;
-				}
-
-				if (var6 > 192) {
-					var5 /= 2;
-				}
-
-				if (var6 > 217) {
-					var5 /= 2;
-				}
-
-				if (var6 > 243) {
-					var5 /= 2;
-				}
-
-				var7 = (var5 / 32 << 7) + var6 / 2 + (var4 / 4 << 10);
-				var8 = ClanChannelMember.method3150(var7, 96);
-				return Rasterizer3D.Rasterizer3D_colorPalette[var8] | -16777216;
-			} else if (var2.texture >= 0) {
-				int var3 = ClanChannelMember.method3150(Rasterizer3D.clips.Rasterizer3D_textureLoader.getAverageTextureRGB(var2.texture), 96);
-				return Rasterizer3D.Rasterizer3D_colorPalette[var3] | -16777216;
-			} else if (var2.primaryRgb == 16711935) {
-				return var1;
-			} else {
-				var4 = var2.hue;
-				var5 = var2.saturation;
-				var6 = var2.lightness;
-				if (var6 > 179) {
-					var5 /= 2;
-				}
-
-				if (var6 > 192) {
-					var5 /= 2;
-				}
-
-				if (var6 > 217) {
-					var5 /= 2;
-				}
-
-				if (var6 > 243) {
-					var5 /= 2;
-				}
-
-				var7 = (var5 / 32 << 7) + var6 / 2 + (var4 / 4 << 10);
-				var8 = ClanChannelMember.method3150(var7, 96);
-				return Rasterizer3D.Rasterizer3D_colorPalette[var8] | -16777216;
+	static void method8850(SequenceDefinition var0, int var1, int var2, int var3) {
+		if (Client.soundEffectCount < 50 && class91.clientPreferences.method2589() != 0) {
+			if (var0.soundEffects != null && var1 < var0.soundEffects.length) {
+				class91.method2349(var0.soundEffects[var1], var2, var3);
 			}
 		}
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("md")
 	@ObfuscatedSignature(
-		descriptor = "(I)[Lsg;",
-		garbageValue = "-347561633"
+		descriptor = "(II)V",
+		garbageValue = "-1514156294"
 	)
-	public static FontName[] method8739() {
-		return new FontName[]{FontName_verdana15, FontName_bold12, FontName_verdana13, FontName_plain11, FontName_plain12, FontName_verdana11};
-	}
-
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "(I)[Ldd;",
-		garbageValue = "-718226553"
-	)
-	static class89[] method8742() {
-		return new class89[]{class89.field1096, class89.field1091, class89.field1089, class89.field1093, class89.field1097};
-	}
-
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "-1946858719"
-	)
-	@Export("ItemContainer_getCount")
-	static int ItemContainer_getCount(int var0, int var1) {
-		ItemContainer var2 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
-		if (var2 == null) {
-			return 0;
-		} else {
-			return var1 >= 0 && var1 < var2.quantities.length ? var2.quantities[var1] : 0;
-		}
+	static final void method8851(int var0) {
+		var0 = Math.max(Math.min(var0, 100), 0);
+		var0 = 100 - var0;
+		float var1 = 0.5F + (float)var0 / 200.0F;
+		JagexCache.method3533((double)var1);
 	}
 }

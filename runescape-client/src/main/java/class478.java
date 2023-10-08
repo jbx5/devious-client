@@ -1,83 +1,93 @@
-import net.runelite.mapping.ObfuscatedGetter;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("sd")
-public class class478 extends class480 {
-	@ObfuscatedName("aw")
-	@ObfuscatedGetter(
-		intValue = -1816600337
+@ObfuscatedName("sq")
+public class class478 implements class476 {
+	@ObfuscatedName("ac")
+	final Map field4822;
+
+	public class478(Map var1) {
+		this.field4822 = var1;
+	}
+
+	@ObfuscatedName("ac")
+	@ObfuscatedSignature(
+		descriptor = "(B)Lst;",
+		garbageValue = "1"
 	)
-	int field4865;
-	@ObfuscatedName("ay")
-	@ObfuscatedGetter(
-		intValue = 1220188325
+	public class475 vmethod8518() {
+		return null;
+	}
+
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "(B)[B",
+		garbageValue = "17"
 	)
-	int field4869;
-	@ObfuscatedName("ar")
-	@ObfuscatedGetter(
-		intValue = 307662591
-	)
-	int field4866;
+	public byte[] vmethod8509() throws UnsupportedEncodingException {
+		return this.method8510().getBytes("UTF-8");
+	}
+
 	@ObfuscatedName("am")
-	@ObfuscatedGetter(
-		intValue = -498007277
+	@ObfuscatedSignature(
+		descriptor = "(I)Ljava/lang/String;",
+		garbageValue = "1386536231"
 	)
-	int field4867;
-	@ObfuscatedName("as")
-	@ObfuscatedGetter(
-		intValue = 1900359283
-	)
-	int field4868;
-	@ObfuscatedName("aj")
-	@ObfuscatedGetter(
-		intValue = -1437635813
-	)
-	int field4864;
+	public String method8510() throws UnsupportedEncodingException {
+		StringBuilder var1 = new StringBuilder();
+		Iterator var2 = this.field4822.entrySet().iterator();
 
-	public class478(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
-		super(var7, var8);
-		this.field4865 = 0;
-		this.field4869 = 0;
-		this.field4866 = 0;
-		this.field4867 = 0;
-		this.field4868 = 0;
-		this.field4864 = 0;
-		this.field4865 = var1;
-		this.field4869 = var2;
-		this.field4866 = var3;
-		this.field4867 = var4;
-		this.field4868 = var5;
-		this.field4864 = var6;
+		while (var2.hasNext()) {
+			Entry var3 = (Entry)var2.next();
+			String var4 = URLEncoder.encode((String)var3.getKey(), "UTF-8");
+			String var5 = URLEncoder.encode((String)var3.getValue(), "UTF-8");
+			var1.append(var4).append("=").append(var5).append("&");
+		}
+
+		if (var1.length() == 0) {
+			return "";
+		} else {
+			var1.deleteCharAt(var1.length() - 1);
+			var1.insert(0, "?");
+			return var1.toString();
+		}
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("bx")
 	@ObfuscatedSignature(
-		descriptor = "(S)I",
-		garbageValue = "2587"
+		descriptor = "(Ljava/lang/String;I)I",
+		garbageValue = "1087819617"
 	)
-	public int vmethod8499() {
-		double var1 = this.method8504();
-		return (int)Math.round((double)this.field4865 + (double)(this.field4867 - this.field4865) * var1);
+	@Export("stringCp1252NullTerminatedByteSize")
+	public static int stringCp1252NullTerminatedByteSize(String var0) {
+		return var0.length() + 1;
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("lm")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-1657628972"
+		descriptor = "(IIIII)V",
+		garbageValue = "2037077846"
 	)
-	public int vmethod8496() {
-		double var1 = this.method8504();
-		return (int)Math.round(var1 * (double)(this.field4868 - this.field4869) + (double)this.field4869);
-	}
+	static void method8514(int var0, int var1, int var2, int var3) {
+		Widget var4 = class33.widgetDefinition.getWidgetChild(var0, var1);
+		if (var4 != null && var4.onTargetEnter != null) {
+			ScriptEvent var5 = new ScriptEvent();
+			var5.widget = var4;
+			var5.args = var4.onTargetEnter;
+			Interpreter.runScriptEvent(var5);
+		}
 
-	@ObfuscatedName("ar")
-	@ObfuscatedSignature(
-		descriptor = "(S)I",
-		garbageValue = "10605"
-	)
-	public int vmethod8497() {
-		double var1 = this.method8504();
-		return (int)Math.round(var1 * (double)(this.field4864 - this.field4866) + (double)this.field4866);
+		Client.selectedSpellItemId = var3;
+		Client.isSpellSelected = true;
+		JagexCache.selectedSpellWidget = var0;
+		Client.selectedSpellChildIndex = var1;
+		class31.selectedSpellFlags = var2;
+		ClanChannelMember.invalidateWidget(var4);
 	}
 }

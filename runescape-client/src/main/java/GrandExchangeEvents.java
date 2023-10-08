@@ -7,22 +7,22 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ng")
+@ObfuscatedName("ox")
 @Implements("GrandExchangeEvents")
 public class GrandExchangeEvents {
-	@ObfuscatedName("ay")
+	@ObfuscatedName("al")
 	@Export("GrandExchangeEvents_ageComparator")
 	public static Comparator GrandExchangeEvents_ageComparator;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ak")
 	@Export("GrandExchangeEvents_priceComparator")
 	public static Comparator GrandExchangeEvents_priceComparator;
-	@ObfuscatedName("am")
+	@ObfuscatedName("ax")
 	@Export("GrandExchangeEvents_nameComparator")
 	public static Comparator GrandExchangeEvents_nameComparator;
-	@ObfuscatedName("as")
+	@ObfuscatedName("ao")
 	@Export("GrandExchangeEvents_quantityComparator")
 	public static Comparator GrandExchangeEvents_quantityComparator;
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@Export("events")
 	public final List events;
 
@@ -35,7 +35,7 @@ public class GrandExchangeEvents {
 	}
 
 	@ObfuscatedSignature(
-		descriptor = "(Lty;Z)V",
+		descriptor = "(Lul;Z)V",
 		garbageValue = "1"
 	)
 	public GrandExchangeEvents(Buffer var1, boolean var2) {
@@ -57,10 +57,10 @@ public class GrandExchangeEvents {
 
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/util/Comparator;ZI)V",
-		garbageValue = "97179778"
+		descriptor = "(Ljava/util/Comparator;ZB)V",
+		garbageValue = "0"
 	)
 	@Export("sort")
 	public void sort(Comparator var1, boolean var2) {
@@ -68,51 +68,6 @@ public class GrandExchangeEvents {
 			Collections.sort(this.events, var1);
 		} else {
 			Collections.sort(this.events, Collections.reverseOrder(var1));
-		}
-
-	}
-
-	@ObfuscatedName("am")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-93"
-	)
-	@Export("savePreferences")
-	static void savePreferences() {
-		AccessFile var0 = null;
-
-		try {
-			var0 = Decimator.getPreferencesFile("", KeyHandler.field138.name, true);
-			Buffer var1 = class150.clientPreferences.toBuffer();
-			var0.write(var1.array, 0, var1.offset);
-		} catch (Exception var3) {
-		}
-
-		try {
-			if (var0 != null) {
-				var0.closeSync(true);
-			}
-		} catch (Exception var2) {
-		}
-
-	}
-
-	@ObfuscatedName("hw")
-	@ObfuscatedSignature(
-		descriptor = "(IB)V",
-		garbageValue = "40"
-	)
-	@Export("forceDisconnect")
-	static final void forceDisconnect(int var0) {
-		WorldMapScaleHandler.logOut();
-		switch(var0) {
-		case 1:
-			class328.method6115(24);
-			Actor.setLoginResponseString("", "You were disconnected from the server.", "");
-			break;
-		case 2:
-			class328.method6115(24);
-			Actor.setLoginResponseString("The game servers are currently being updated.", "Please wait a few minutes and try again.", "");
 		}
 
 	}

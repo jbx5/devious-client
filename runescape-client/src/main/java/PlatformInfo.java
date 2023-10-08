@@ -4,130 +4,130 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("sy")
+@ObfuscatedName("sx")
 @Implements("PlatformInfo")
 public class PlatformInfo extends Node {
-	@ObfuscatedName("bp")
+	@ObfuscatedName("ba")
 	@ObfuscatedGetter(
-		intValue = 2041558941
+		intValue = 828307537
 	)
 	@Export("os")
 	int os;
-	@ObfuscatedName("bv")
+	@ObfuscatedName("bz")
 	@Export("field4518")
 	boolean field4518;
-	@ObfuscatedName("bq")
+	@ObfuscatedName("bb")
 	@ObfuscatedGetter(
-		intValue = -1905883459
+		intValue = 1658886897
 	)
 	@Export("osVersion")
 	int osVersion;
 	@ObfuscatedName("bo")
 	@ObfuscatedGetter(
-		intValue = -672936131
+		intValue = 1807303785
 	)
 	@Export("vendor")
 	int vendor;
-	@ObfuscatedName("br")
+	@ObfuscatedName("bp")
 	@ObfuscatedGetter(
-		intValue = -967666951
+		intValue = -425030365
 	)
 	@Export("javaMajor")
 	int javaMajor;
-	@ObfuscatedName("bw")
+	@ObfuscatedName("bt")
 	@ObfuscatedGetter(
-		intValue = -1223199221
+		intValue = -1904445675
 	)
 	@Export("javaMinor")
 	int javaMinor;
-	@ObfuscatedName("be")
+	@ObfuscatedName("bm")
 	@ObfuscatedGetter(
-		intValue = -1848809189
+		intValue = 935774115
 	)
 	@Export("javaPatch")
 	int javaPatch;
-	@ObfuscatedName("bc")
+	@ObfuscatedName("br")
 	@Export("field4524")
 	boolean field4524;
-	@ObfuscatedName("bi")
+	@ObfuscatedName("bs")
 	@ObfuscatedGetter(
-		intValue = 1209160853
+		intValue = -25939819
 	)
 	@Export("maxMemory")
 	int maxMemory;
-	@ObfuscatedName("bu")
+	@ObfuscatedName("bc")
 	@ObfuscatedGetter(
-		intValue = 87006035
+		intValue = -1028955517
 	)
 	@Export("cpuCores")
 	int cpuCores;
-	@ObfuscatedName("bz")
+	@ObfuscatedName("bf")
 	@ObfuscatedGetter(
-		intValue = -769087335
+		intValue = 916640685
 	)
 	@Export("field4527")
 	int field4527;
-	@ObfuscatedName("bx")
+	@ObfuscatedName("bh")
 	@ObfuscatedGetter(
-		intValue = 1080428069
+		intValue = 1516575009
 	)
 	@Export("clockSpeed")
 	int clockSpeed;
-	@ObfuscatedName("bh")
+	@ObfuscatedName("bl")
 	@Export("field4536")
 	String field4536;
-	@ObfuscatedName("bm")
+	@ObfuscatedName("bg")
 	@Export("field4514")
 	String field4514;
-	@ObfuscatedName("bl")
+	@ObfuscatedName("bj")
 	@Export("field4528")
 	String field4528;
-	@ObfuscatedName("bt")
+	@ObfuscatedName("bx")
 	@Export("field4532")
 	String field4532;
-	@ObfuscatedName("by")
+	@ObfuscatedName("bi")
 	@ObfuscatedGetter(
-		intValue = 955279729
+		intValue = 1640241405
 	)
 	@Export("field4512")
 	int field4512;
-	@ObfuscatedName("bg")
+	@ObfuscatedName("bq")
 	@ObfuscatedGetter(
-		intValue = -157341337
+		intValue = 151518255
 	)
 	@Export("field4534")
 	int field4534;
-	@ObfuscatedName("bj")
+	@ObfuscatedName("bw")
 	@ObfuscatedGetter(
-		intValue = 465604323
+		intValue = -1955875315
 	)
 	@Export("field4535")
 	int field4535;
-	@ObfuscatedName("ct")
+	@ObfuscatedName("ce")
 	@ObfuscatedGetter(
-		intValue = 334979683
+		intValue = 1794447707
 	)
 	@Export("field4530")
 	int field4530;
-	@ObfuscatedName("cf")
+	@ObfuscatedName("cu")
 	@Export("field4537")
 	String field4537;
-	@ObfuscatedName("cz")
+	@ObfuscatedName("cw")
 	@Export("field4538")
 	String field4538;
-	@ObfuscatedName("cb")
+	@ObfuscatedName("co")
 	@Export("field4539")
 	int[] field4539;
-	@ObfuscatedName("cs")
+	@ObfuscatedName("cc")
 	@ObfuscatedGetter(
-		intValue = -671441249
+		intValue = 189369881
 	)
 	@Export("field4540")
 	int field4540;
-	@ObfuscatedName("cj")
+	@ObfuscatedName("cg")
 	@Export("field4541")
 	String field4541;
-	@ObfuscatedName("cn")
+	@ObfuscatedName("cq")
 	@Export("field4542")
 	String field4542;
 
@@ -161,10 +161,10 @@ public class PlatformInfo extends Node {
 		this.field4542 = var26;
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(Lty;I)V",
-		garbageValue = "-1478570586"
+		descriptor = "(Lul;I)V",
+		garbageValue = "1684641716"
 	)
 	@Export("write")
 	public void write(Buffer var1) {
@@ -201,22 +201,38 @@ public class PlatformInfo extends Node {
 		var1.writeStringCp1252NullCircumfixed(this.field4542);
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-209852192"
+		garbageValue = "725870581"
 	)
 	@Export("size")
 	public int size() {
 		byte var1 = 39;
-		int var2 = var1 + class387.method7246(this.field4536);
-		var2 += class387.method7246(this.field4514);
-		var2 += class387.method7246(this.field4528);
-		var2 += class387.method7246(this.field4532);
-		var2 += class387.method7246(this.field4537);
-		var2 += class387.method7246(this.field4538);
-		var2 += class387.method7246(this.field4541);
-		var2 += class387.method7246(this.field4542);
-		return var2;
+		String var4 = this.field4536;
+		int var3 = var4.length() + 2;
+		int var26 = var1 + var3;
+		String var7 = this.field4514;
+		int var6 = var7.length() + 2;
+		var26 += var6;
+		String var10 = this.field4528;
+		int var9 = var10.length() + 2;
+		var26 += var9;
+		String var13 = this.field4532;
+		int var12 = var13.length() + 2;
+		var26 += var12;
+		String var16 = this.field4537;
+		int var15 = var16.length() + 2;
+		var26 += var15;
+		String var19 = this.field4538;
+		int var18 = var19.length() + 2;
+		var26 += var18;
+		String var22 = this.field4541;
+		int var21 = var22.length() + 2;
+		var26 += var21;
+		String var25 = this.field4542;
+		int var24 = var25.length() + 2;
+		var26 += var24;
+		return var26;
 	}
 }

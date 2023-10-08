@@ -4,59 +4,57 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cx")
+@ObfuscatedName("cr")
 @Implements("Message")
 public class Message extends DualNode {
-	@ObfuscatedName("au")
+	@ObfuscatedName("bw")
 	@ObfuscatedSignature(
-		descriptor = "Luu;"
+		descriptor = "Lrx;"
 	)
-	static IndexedSprite field504;
-	@ObfuscatedName("dw")
-	static boolean field506;
-	@ObfuscatedName("aw")
+	static Bounds field504;
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = 1911847025
+		intValue = 2144347493
 	)
 	@Export("count")
 	int count;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = 642550855
+		intValue = 1050864541
 	)
 	@Export("cycle")
 	int cycle;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = -884307299
+		intValue = 1429402863
 	)
 	@Export("type")
 	int type;
-	@ObfuscatedName("am")
+	@ObfuscatedName("ax")
 	@Export("sender")
 	String sender;
-	@ObfuscatedName("as")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "Lui;"
+		descriptor = "Lvf;"
 	)
 	@Export("senderUsername")
 	Username senderUsername;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "Lqj;"
+		descriptor = "Lra;"
 	)
 	@Export("isFromFriend0")
 	TriBool isFromFriend0;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "Lqj;"
+		descriptor = "Lra;"
 	)
 	@Export("isFromIgnored0")
 	TriBool isFromIgnored0;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ab")
 	@Export("prefix")
 	String prefix;
-	@ObfuscatedName("av")
+	@ObfuscatedName("am")
 	@Export("text")
 	String text;
 
@@ -66,14 +64,15 @@ public class Message extends DualNode {
 		this.set(var1, var2, var3, var4);
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V",
-		garbageValue = "936252808"
+		descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;B)V",
+		garbageValue = "88"
 	)
 	@Export("set")
 	void set(int var1, String var2, String var3, String var4) {
-		this.count = class425.method7864();
+		int var5 = ++Messages.Messages_count - 1;
+		this.count = var5;
 		this.cycle = Client.cycle;
 		this.type = var1;
 		this.sender = var2;
@@ -84,20 +83,20 @@ public class Message extends DualNode {
 		this.clearIsFromIgnored();
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "53"
+		descriptor = "(I)V",
+		garbageValue = "1192879818"
 	)
 	@Export("clearIsFromFriend")
 	void clearIsFromFriend() {
 		this.isFromFriend0 = TriBool.TriBool_unknown;
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "1790809365"
+		garbageValue = "-2133471128"
 	)
 	@Export("isFromFriend")
 	final boolean isFromFriend() {
@@ -108,30 +107,30 @@ public class Message extends DualNode {
 		return this.isFromFriend0 == TriBool.TriBool_true;
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "1483847830"
+		garbageValue = "1787046526"
 	)
 	@Export("fillIsFromFriend")
 	void fillIsFromFriend() {
-		this.isFromFriend0 = class177.friendSystem.friendsList.contains(this.senderUsername) ? TriBool.TriBool_true : TriBool.TriBool_false;
+		this.isFromFriend0 = InvDefinition.friendSystem.friendsList.contains(this.senderUsername) ? TriBool.TriBool_true : TriBool.TriBool_false;
 	}
 
-	@ObfuscatedName("as")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
 		descriptor = "(B)V",
-		garbageValue = "-45"
+		garbageValue = "32"
 	)
 	@Export("clearIsFromIgnored")
 	void clearIsFromIgnored() {
 		this.isFromIgnored0 = TriBool.TriBool_unknown;
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "-1800868921"
+		descriptor = "(B)Z",
+		garbageValue = "-67"
 	)
 	@Export("isFromIgnored")
 	final boolean isFromIgnored() {
@@ -142,61 +141,36 @@ public class Message extends DualNode {
 		return this.isFromIgnored0 == TriBool.TriBool_true;
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "(B)V",
-		garbageValue = "-106"
+		garbageValue = "0"
 	)
 	@Export("fillIsFromIgnored")
 	void fillIsFromIgnored() {
-		this.isFromIgnored0 = class177.friendSystem.ignoreList.contains(this.senderUsername) ? TriBool.TriBool_true : TriBool.TriBool_false;
+		this.isFromIgnored0 = InvDefinition.friendSystem.ignoreList.contains(this.senderUsername) ? TriBool.TriBool_true : TriBool.TriBool_false;
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "1553597211"
+		garbageValue = "-1525431428"
 	)
 	@Export("fillSenderUsername")
 	final void fillSenderUsername() {
 		if (this.sender != null) {
-			this.senderUsername = new Username(ClanMate.method7947(this.sender), class457.loginType);
+			this.senderUsername = new Username(InterfaceParent.method2312(this.sender), class166.loginType);
 		} else {
 			this.senderUsername = null;
 		}
 
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(IB)I",
-		garbageValue = "18"
+		descriptor = "(Lom;B)V",
+		garbageValue = "-50"
 	)
-	public static int method1241(int var0) {
-		return var0 >>> 4 & class509.field5055;
-	}
-
-	@ObfuscatedName("aj")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1851914192"
-	)
-	public static void method1213() {
-		DbTableType.DBTableType_cache.clear();
-	}
-
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "(Lty;J)V"
-	)
-	static void method1230(Buffer var0, long var1) {
-		var1 /= 10L;
-		if (var1 < 0L) {
-			var1 = 0L;
-		} else if (var1 > 65535L) {
-			var1 = 65535L;
-		}
-
-		var0.writeShort((int)var1);
+	public static void method1201(AbstractArchive var0) {
 	}
 }

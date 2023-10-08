@@ -3,52 +3,52 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("lb")
+@ObfuscatedName("mf")
 @Implements("MidiFileReader")
 public class MidiFileReader {
-	@ObfuscatedName("ap")
-	static final byte[] field3451;
-	@ObfuscatedName("aw")
+	@ObfuscatedName("av")
+	static final byte[] field3483;
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Lty;"
+		descriptor = "Lul;"
 	)
 	@Export("buffer")
 	Buffer buffer;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("al")
 	@Export("division")
 	int division;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ak")
 	@Export("trackStarts")
 	int[] trackStarts;
-	@ObfuscatedName("am")
+	@ObfuscatedName("ax")
 	@Export("trackPositions")
 	int[] trackPositions;
-	@ObfuscatedName("as")
+	@ObfuscatedName("ao")
 	@Export("trackLengths")
 	int[] trackLengths;
-	@ObfuscatedName("aj")
-	int[] field3449;
-	@ObfuscatedName("ag")
-	int field3442;
-	@ObfuscatedName("av")
-	long field3450;
+	@ObfuscatedName("ah")
+	int[] field3477;
+	@ObfuscatedName("ar")
+	int field3482;
+	@ObfuscatedName("am")
+	long field3485;
 
 	static {
-		field3451 = new byte[]{2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 1, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		field3483 = new byte[]{2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 1, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 	}
 
 	MidiFileReader() {
 		this.buffer = new Buffer((byte[])null);
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@Export("parse")
 	void parse(byte[] var1) {
 		this.buffer.array = var1;
 		this.buffer.offset = 10;
 		int var2 = this.buffer.readUnsignedShort();
 		this.division = this.buffer.readUnsignedShort();
-		this.field3442 = 500000;
+		this.field3482 = 500000;
 		this.trackStarts = new int[var2];
 
 		Buffer var10000;
@@ -65,7 +65,7 @@ public class MidiFileReader {
 			var10000 = this.buffer;
 		}
 
-		this.field3450 = 0L;
+		this.field3485 = 0L;
 		this.trackPositions = new int[var2];
 
 		for (var3 = 0; var3 < var2; ++var3) {
@@ -73,50 +73,50 @@ public class MidiFileReader {
 		}
 
 		this.trackLengths = new int[var2];
-		this.field3449 = new int[var2];
+		this.field3477 = new int[var2];
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("al")
 	@Export("clear")
 	void clear() {
 		this.buffer.array = null;
 		this.trackStarts = null;
 		this.trackPositions = null;
 		this.trackLengths = null;
-		this.field3449 = null;
+		this.field3477 = null;
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ak")
 	@Export("isReady")
 	boolean isReady() {
 		return this.buffer.array != null;
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("ax")
 	@Export("trackCount")
 	int trackCount() {
 		return this.trackPositions.length;
 	}
 
-	@ObfuscatedName("as")
+	@ObfuscatedName("ao")
 	@Export("gotoTrack")
 	void gotoTrack(int var1) {
 		this.buffer.offset = this.trackPositions[var1];
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ah")
 	@Export("markTrackPosition")
 	void markTrackPosition(int var1) {
 		this.trackPositions[var1] = this.buffer.offset;
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ar")
 	@Export("setTrackDone")
 	void setTrackDone() {
 		this.buffer.offset = -1;
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ab")
 	@Export("readTrackLength")
 	void readTrackLength(int var1) {
 		int var2 = this.buffer.readVarInt();
@@ -124,36 +124,36 @@ public class MidiFileReader {
 		var10000[var1] += var2;
 	}
 
-	@ObfuscatedName("av")
+	@ObfuscatedName("am")
 	@Export("readMessage")
 	int readMessage(int var1) {
 		int var2 = this.readMessage0(var1);
 		return var2;
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("av")
 	@Export("readMessage0")
 	int readMessage0(int var1) {
 		byte var2 = this.buffer.array[this.buffer.offset];
 		int var5;
 		if (var2 < 0) {
 			var5 = var2 & 255;
-			this.field3449[var1] = var5;
+			this.field3477[var1] = var5;
 			++this.buffer.offset;
 		} else {
-			var5 = this.field3449[var1];
+			var5 = this.field3477[var1];
 		}
 
 		if (var5 != 240 && var5 != 247) {
-			return this.method5955(var1, var5);
+			return this.method6103(var1, var5);
 		} else {
 			int var3 = this.buffer.readVarInt();
 			if (var5 == 247 && var3 > 0) {
 				int var4 = this.buffer.array[this.buffer.offset] & 255;
 				if (var4 >= 241 && var4 <= 243 || var4 == 246 || var4 == 248 || var4 >= 250 && var4 <= 252 || var4 == 254) {
 					++this.buffer.offset;
-					this.field3449[var1] = var4;
-					return this.method5955(var1, var4);
+					this.field3477[var1] = var4;
+					return this.method6103(var1, var4);
 				}
 			}
 
@@ -163,8 +163,8 @@ public class MidiFileReader {
 		}
 	}
 
-	@ObfuscatedName("aq")
-	int method5955(int var1, int var2) {
+	@ObfuscatedName("ag")
+	int method6103(int var1, int var2) {
 		int var4;
 		if (var2 == 255) {
 			int var7 = this.buffer.readUnsignedByte();
@@ -178,8 +178,8 @@ public class MidiFileReader {
 				int var5 = this.buffer.readMedium();
 				var4 -= 3;
 				int var6 = this.trackLengths[var1];
-				this.field3450 += (long)var6 * (long)(this.field3442 - var5);
-				this.field3442 = var5;
+				this.field3485 += (long)var6 * (long)(this.field3482 - var5);
+				this.field3482 = var5;
 				var10000 = this.buffer;
 				var10000.offset += var4;
 				return 2;
@@ -189,7 +189,7 @@ public class MidiFileReader {
 				return 3;
 			}
 		} else {
-			byte var3 = field3451[var2 - 128];
+			byte var3 = field3483[var2 - 128];
 			var4 = var2;
 			if (var3 >= 1) {
 				var4 = var2 | this.buffer.readUnsignedByte() << 8;
@@ -203,12 +203,12 @@ public class MidiFileReader {
 		}
 	}
 
-	@ObfuscatedName("at")
-	long method5956(int var1) {
-		return this.field3450 + (long)var1 * (long)this.field3442;
+	@ObfuscatedName("aa")
+	long method6144(int var1) {
+		return this.field3485 + (long)var1 * (long)this.field3482;
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ap")
 	@Export("getPrioritizedTrack")
 	int getPrioritizedTrack() {
 		int var1 = this.trackPositions.length;
@@ -225,7 +225,7 @@ public class MidiFileReader {
 		return var2;
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ay")
 	@Export("isDone")
 	boolean isDone() {
 		int var1 = this.trackPositions.length;
@@ -239,15 +239,15 @@ public class MidiFileReader {
 		return true;
 	}
 
-	@ObfuscatedName("aa")
+	@ObfuscatedName("as")
 	@Export("reset")
 	void reset(long var1) {
-		this.field3450 = var1;
+		this.field3485 = var1;
 		int var3 = this.trackPositions.length;
 
 		for (int var4 = 0; var4 < var3; ++var4) {
 			this.trackLengths[var4] = 0;
-			this.field3449[var4] = 0;
+			this.field3477[var4] = 0;
 			this.buffer.offset = this.trackStarts[var4];
 			this.readTrackLength(var4);
 			this.trackPositions[var4] = this.buffer.offset;

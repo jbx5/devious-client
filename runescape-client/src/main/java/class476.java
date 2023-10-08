@@ -1,12 +1,20 @@
+import java.io.UnsupportedEncodingException;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("so")
+@ObfuscatedName("sd")
 public interface class476 {
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lsy;",
-		garbageValue = "1568411855"
+		descriptor = "(B)Lst;",
+		garbageValue = "1"
 	)
-	PlatformInfo get();
+	class475 vmethod8518();
+
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "(B)[B",
+		garbageValue = "17"
+	)
+	byte[] vmethod8509() throws UnsupportedEncodingException;
 }

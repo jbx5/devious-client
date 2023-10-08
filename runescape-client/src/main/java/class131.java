@@ -1,121 +1,106 @@
-import net.runelite.mapping.Export;
+import java.io.IOException;
+import java.util.concurrent.Callable;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fa")
-public class class131 implements MouseWheel {
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "Lfa;"
-	)
-	static final class131 field1556;
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "Lfa;"
-	)
-	static final class131 field1557;
-	@ObfuscatedName("ar")
-	@ObfuscatedSignature(
-		descriptor = "Lfa;"
-	)
-	static final class131 field1560;
-	@ObfuscatedName("am")
-	@ObfuscatedSignature(
-		descriptor = "Lfa;"
-	)
-	static final class131 field1559;
-	@ObfuscatedName("as")
-	@ObfuscatedSignature(
-		descriptor = "Lfa;"
-	)
-	static final class131 field1562;
-	@ObfuscatedName("aj")
-	@ObfuscatedSignature(
-		descriptor = "Lfa;"
-	)
-	static final class131 field1561;
-	@ObfuscatedName("dr")
-	@ObfuscatedSignature(
-		descriptor = "[Lud;"
-	)
-	@Export("worldSelectBackSprites")
-	static SpritePixels[] worldSelectBackSprites;
-	@ObfuscatedName("ff")
-	@ObfuscatedSignature(
-		descriptor = "Lny;"
-	)
-	@Export("archive10")
-	static Archive archive10;
-	@ObfuscatedName("ag")
+@ObfuscatedName("fh")
+public class class131 implements Callable {
+	@ObfuscatedName("ur")
 	@ObfuscatedGetter(
-		intValue = 1754916441
+		intValue = 388777361
 	)
-	final int field1569;
-	@ObfuscatedName("az")
+	static int field1535;
+	@ObfuscatedName("ac")
+	@ObfuscatedSignature(
+		descriptor = "Lfz;"
+	)
+	final class132 field1534;
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "Lfs;"
+	)
+	final class133 field1532;
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "Lfl;"
+	)
+	final class134 field1531;
+	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = -419776961
+		intValue = 706977805
 	)
-	final int field1563;
-	@ObfuscatedName("av")
-	@ObfuscatedGetter(
-		intValue = 419187749
-	)
-	final int field1564;
-
-	static {
-		field1556 = new class131(0, 0, (String)null, 0);
-		field1557 = new class131(1, 1, (String)null, 9);
-		field1560 = new class131(2, 2, (String)null, 3);
-		field1559 = new class131(3, 3, (String)null, 6);
-		field1562 = new class131(4, 4, (String)null, 1);
-		field1561 = new class131(5, 5, (String)null, 3);
-	}
-
-	class131(int var1, int var2, String var3, int var4) {
-		this.field1569 = var1;
-		this.field1563 = var2;
-		this.field1564 = var4;
-	}
-
-	@ObfuscatedName("aw")
+	final int field1536;
+	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "1580346823"
+		descriptor = "Lfk;"
 	)
-	int method3018() {
-		return this.field1564;
+	final class139 this$0;
+
+	@ObfuscatedSignature(
+		descriptor = "(Lfk;Lfz;Lfs;Lfl;I)V"
+	)
+	class131(class139 var1, class132 var2, class133 var3, class134 var4, int var5) {
+		this.this$0 = var1;
+		this.field1534 = var2;
+		this.field1532 = var3;
+		this.field1531 = var4;
+		this.field1536 = var5;
 	}
 
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "1644350448"
-	)
-	@Export("rsOrdinal")
-	public int rsOrdinal() {
-		return this.field1563;
-	}
-
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "(II)Lia;",
-		garbageValue = "-1250585364"
-	)
-	public static FloorOverlayDefinition method3024(int var0) {
-		FloorOverlayDefinition var1 = (FloorOverlayDefinition)FloorOverlayDefinition.FloorOverlayDefinition_cached.get((long)var0);
-		if (var1 != null) {
-			return var1;
+	public Object call() {
+		this.field1534.method3021();
+		class132[][] var1;
+		if (this.field1532 == class133.field1569) {
+			var1 = this.this$0.field1610;
 		} else {
-			byte[] var2 = FloorOverlayDefinition.FloorOverlayDefinition_archive.takeFile(4, var0);
-			var1 = new FloorOverlayDefinition();
-			if (var2 != null) {
-				var1.decode(new Buffer(var2), var0);
+			var1 = this.this$0.field1603;
+		}
+
+		var1[this.field1536][this.field1531.method3067()] = this.field1534;
+		return null;
+	}
+
+	@ObfuscatedName("ao")
+	@ObfuscatedSignature(
+		descriptor = "(B)[B",
+		garbageValue = "1"
+	)
+	public static byte[] method3015() {
+		byte[] var0 = new byte[24];
+
+		try {
+			JagexCache.JagexCache_randomDat.seek(0L);
+			JagexCache.JagexCache_randomDat.readFully(var0);
+
+			int var1;
+			for (var1 = 0; var1 < 24 && var0[var1] == 0; ++var1) {
 			}
 
-			var1.postDecode();
-			FloorOverlayDefinition.FloorOverlayDefinition_cached.put(var1, (long)var0);
-			return var1;
+			if (var1 >= 24) {
+				throw new IOException();
+			}
+		} catch (Exception var4) {
+			for (int var2 = 0; var2 < 24; ++var2) {
+				var0[var2] = -1;
+			}
 		}
+
+		return var0;
+	}
+
+	@ObfuscatedName("mu")
+	@ObfuscatedSignature(
+		descriptor = "(II)Z",
+		garbageValue = "1460663579"
+	)
+	static boolean method3016(int var0) {
+		for (int var1 = 0; var1 < Client.field757; ++var1) {
+			if (Client.field759[var1] == var0) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 }

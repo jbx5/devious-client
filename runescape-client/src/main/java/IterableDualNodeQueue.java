@@ -4,18 +4,18 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("oz")
+@ObfuscatedName("pt")
 @Implements("IterableDualNodeQueue")
 public class IterableDualNodeQueue implements Iterable {
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Lsh;"
+		descriptor = "Lsb;"
 	)
 	@Export("sentinel")
 	public DualNode sentinel;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "Lsh;"
+		descriptor = "Lsb;"
 	)
 	@Export("head")
 	DualNode head;
@@ -26,7 +26,7 @@ public class IterableDualNodeQueue implements Iterable {
 		this.sentinel.nextDual = this.sentinel;
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@Export("clear")
 	public void clear() {
 		while (this.sentinel.previousDual != this.sentinel) {
@@ -35,9 +35,9 @@ public class IterableDualNodeQueue implements Iterable {
 
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(Lsh;)V"
+		descriptor = "(Lsb;)V"
 	)
 	@Export("add")
 	public void add(DualNode var1) {
@@ -51,9 +51,9 @@ public class IterableDualNodeQueue implements Iterable {
 		var1.previousDual.nextDual = var1;
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "()Lsh;"
+		descriptor = "()Lsb;"
 	)
 	@Export("removeLast")
 	public DualNode removeLast() {
@@ -66,18 +66,18 @@ public class IterableDualNodeQueue implements Iterable {
 		}
 	}
 
-	@ObfuscatedName("as")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "()Lsh;"
+		descriptor = "()Lsb;"
 	)
 	@Export("last")
 	public DualNode last() {
 		return this.previousOrLast((DualNode)null);
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(Lsh;)Lsh;"
+		descriptor = "(Lsb;)Lsb;"
 	)
 	@Export("previousOrLast")
 	DualNode previousOrLast(DualNode var1) {
@@ -97,9 +97,9 @@ public class IterableDualNodeQueue implements Iterable {
 		}
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "()Lsh;"
+		descriptor = "()Lsb;"
 	)
 	@Export("previous")
 	public DualNode previous() {
@@ -117,9 +117,9 @@ public class IterableDualNodeQueue implements Iterable {
 		return new IterableDualNodeQueueIterator(this);
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lsh;Lsh;)V"
+		descriptor = "(Lsb;Lsb;)V"
 	)
 	@Export("DualNodeDeque_addBefore")
 	public static void DualNodeDeque_addBefore(DualNode var0, DualNode var1) {

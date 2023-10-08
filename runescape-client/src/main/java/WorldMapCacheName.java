@@ -1,63 +1,67 @@
-import java.util.ArrayList;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kp")
+@ObfuscatedName("lh")
 @Implements("WorldMapCacheName")
 public class WorldMapCacheName {
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Lkp;"
+		descriptor = "Llh;"
 	)
-	public static final WorldMapCacheName field3050;
-	@ObfuscatedName("ay")
+	public static final WorldMapCacheName field3095;
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "Lkp;"
+		descriptor = "Llh;"
 	)
-	public static final WorldMapCacheName field3046;
-	@ObfuscatedName("ar")
+	public static final WorldMapCacheName field3091;
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Lkp;"
+		descriptor = "Llh;"
 	)
-	public static final WorldMapCacheName field3051;
-	@ObfuscatedName("am")
+	public static final WorldMapCacheName field3090;
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "Lkp;"
+		descriptor = "Llh;"
 	)
-	static final WorldMapCacheName field3045;
-	@ObfuscatedName("as")
+	static final WorldMapCacheName field3093;
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "Lkp;"
+		descriptor = "Llh;"
 	)
-	public static final WorldMapCacheName field3049;
-	@ObfuscatedName("aj")
+	public static final WorldMapCacheName field3094;
+	@ObfuscatedName("ah")
 	@Export("name")
 	public final String name;
 
 	static {
-		field3050 = new WorldMapCacheName("details");
-		field3046 = new WorldMapCacheName("compositemap");
-		field3051 = new WorldMapCacheName("compositetexture");
-		field3045 = new WorldMapCacheName("area");
-		field3049 = new WorldMapCacheName("labels");
+		field3095 = new WorldMapCacheName("details");
+		field3091 = new WorldMapCacheName("compositemap");
+		field3090 = new WorldMapCacheName("compositetexture");
+		field3093 = new WorldMapCacheName("area");
+		field3094 = new WorldMapCacheName("labels");
 	}
 
 	WorldMapCacheName(String var1) {
 		this.name = var1;
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(Lnd;Lnd;Lnd;Ljava/util/ArrayList;B)Z",
-		garbageValue = "1"
+		descriptor = "(I[BLrw;B)V",
+		garbageValue = "21"
 	)
-	public static boolean method5575(AbstractArchive var0, AbstractArchive var1, AbstractArchive var2, ArrayList var3) {
-		class306.field3393 = var0;
-		class306.field3397 = var1;
-		class306.field3401 = var2;
-		class306.field3395 = var3;
-		return true;
+	static void method5717(int var0, byte[] var1, ArchiveDisk var2) {
+		ArchiveDiskAction var3 = new ArchiveDiskAction();
+		var3.type = 0;
+		var3.key = (long)var0;
+		var3.data = var1;
+		var3.archiveDisk = var2;
+		synchronized(ArchiveDiskActionHandler.ArchiveDiskActionHandler_requestQueue) {
+			ArchiveDiskActionHandler.ArchiveDiskActionHandler_requestQueue.addFirst(var3);
+		}
+
+		class87.method2311();
 	}
 }

@@ -4,21 +4,34 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bx")
+@ObfuscatedName("bh")
 @Implements("SoundSystem")
 public class SoundSystem implements Runnable {
-	@ObfuscatedName("bb")
-	@Export("fontHelvetica13")
-	static java.awt.Font fontHelvetica13;
-	@ObfuscatedName("kl")
+	@ObfuscatedName("wh")
 	@ObfuscatedGetter(
-		intValue = -1784081525
+		intValue = 1375841409
 	)
-	@Export("cameraZ")
-	static int cameraZ;
-	@ObfuscatedName("aw")
+	@Export("foundItemIdCount")
+	static int foundItemIdCount;
+	@ObfuscatedName("cu")
 	@ObfuscatedSignature(
-		descriptor = "[Lbk;"
+		descriptor = "Lng;"
+	)
+	static GameBuild field325;
+	@ObfuscatedName("fb")
+	@ObfuscatedSignature(
+		descriptor = "Lok;"
+	)
+	@Export("archive2")
+	static Archive archive2;
+	@ObfuscatedName("up")
+	@ObfuscatedGetter(
+		intValue = 1072135185
+	)
+	static int field323;
+	@ObfuscatedName("ac")
+	@ObfuscatedSignature(
+		descriptor = "[Lbu;"
 	)
 	@Export("players")
 	public volatile PcmPlayer[] players;
@@ -36,29 +49,17 @@ public class SoundSystem implements Runnable {
 				}
 			}
 		} catch (Exception var4) {
-			class317.RunException_sendStackTrace((String)null, var4);
+			class190.RunException_sendStackTrace((String)null, var4);
 		}
 
 	}
 
-	@ObfuscatedName("hc")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(IIIS)V",
-		garbageValue = "13799"
+		descriptor = "(S)V",
+		garbageValue = "13012"
 	)
-	static void method853(int var0, int var1, int var2) {
-		if (var0 != 0) {
-			int var3 = var0 >> 8;
-			int var4 = var0 >> 4 & 7;
-			int var5 = var0 & 15;
-			Client.soundEffectIds[Client.soundEffectCount] = var3;
-			Client.queuedSoundEffectLoops[Client.soundEffectCount] = var4;
-			Client.queuedSoundEffectDelays[Client.soundEffectCount] = 0;
-			Client.soundEffects[Client.soundEffectCount] = null;
-			int var6 = (var1 - 64) / 128;
-			int var7 = (var2 - 64) / 128;
-			Client.soundLocations[Client.soundEffectCount] = var5 + (var7 << 8) + (var6 << 16);
-			++Client.soundEffectCount;
-		}
+	public static void method846() {
+		class201.field2023.clear();
 	}
 }

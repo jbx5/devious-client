@@ -3,12 +3,10 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ea")
+@ObfuscatedName("eu")
 @Implements("BuddyRankComparator")
 public class BuddyRankComparator extends AbstractUserComparator {
-	@ObfuscatedName("ha")
-	static String field1477;
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -16,10 +14,10 @@ public class BuddyRankComparator extends AbstractUserComparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(Lqa;Lqa;I)I",
-		garbageValue = "1135205552"
+		descriptor = "(Lri;Lri;I)I",
+		garbageValue = "383953435"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -34,14 +32,32 @@ public class BuddyRankComparator extends AbstractUserComparator {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2);
 	}
 
-	@ObfuscatedName("ov")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "-1016972354"
+		descriptor = "(I)V",
+		garbageValue = "1321294301"
 	)
-	static void method2912(int var0) {
-		if (var0 != Client.loginState) {
-			Client.loginState = var0;
-		}
+	static void method2933() {
+		World.Tiles_underlays = null;
+		VertexNormal.Tiles_overlays = null;
+		SecureRandomFuture.Tiles_shapes = null;
+		class199.field2004 = null;
+		UserComparator6.field1486 = null;
+		Tiles.Tiles_underlays2 = null;
+		class158.field1739 = null;
+		SecureRandomFuture.Tiles_hue = null;
+		class135.Tiles_saturation = null;
+		Tiles.Tiles_lightness = null;
+		WorldMapSection2.Tiles_hueMultiplier = null;
+		Script.field1008 = null;
+	}
+
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "(B)I",
+		garbageValue = "0"
+	)
+	protected static final int method2936() {
+		return GameEngine.keyHandler.method345();
 	}
 }

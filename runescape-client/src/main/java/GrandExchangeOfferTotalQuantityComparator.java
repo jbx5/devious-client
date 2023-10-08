@@ -1,208 +1,257 @@
+import java.lang.management.GarbageCollectorMXBean;
 import java.util.Comparator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ne")
+@ObfuscatedName("oc")
 @Implements("GrandExchangeOfferTotalQuantityComparator")
 final class GrandExchangeOfferTotalQuantityComparator implements Comparator {
-	@ObfuscatedName("ac")
-	@ObfuscatedGetter(
-		intValue = 498103363
-	)
-	@Export("canvasWidth")
-	public static int canvasWidth;
+	@ObfuscatedName("bl")
+	@Export("garbageCollector")
+	static GarbageCollectorMXBean garbageCollector;
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(Lol;Lol;I)I",
-		garbageValue = "-1467178768"
+		descriptor = "(Lod;Lod;I)I",
+		garbageValue = "1700442227"
 	)
 	@Export("compare_bridged")
 	int compare_bridged(GrandExchangeEvent var1, GrandExchangeEvent var2) {
 		return var1.grandExchangeOffer.totalQuantity < var2.grandExchangeOffer.totalQuantity ? -1 : (var2.grandExchangeOffer.totalQuantity == var1.grandExchangeOffer.totalQuantity ? 0 : 1);
 	}
 
-	public int compare(Object var1, Object var2) {
-		return this.compare_bridged((GrandExchangeEvent)var1, (GrandExchangeEvent)var2);
-	}
-
 	public boolean equals(Object var1) {
 		return super.equals(var1);
 	}
 
-	@ObfuscatedName("au")
-	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "1454802245"
-	)
-	public static int method6890(int var0) {
-		if (var0 > 0) {
-			return 1;
-		} else {
-			return var0 < 0 ? -1 : 0;
-		}
+	public int compare(Object var1, Object var2) {
+		return this.compare_bridged((GrandExchangeEvent)var1, (GrandExchangeEvent)var2);
 	}
 
-	@ObfuscatedName("hl")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "-2107301035"
+		descriptor = "(I)J",
+		garbageValue = "1674214518"
 	)
-	@Export("getLoginError")
-	static void getLoginError(int var0) {
-		int var1 = Login.loginIndex;
-		if (var0 == -3) {
-			Actor.setLoginResponseString("Connection timed out.", "Please try using a different world.", "");
-		} else if (var0 == -2) {
-			Actor.setLoginResponseString("Error connecting to server.", "Please try using a different world.", "");
-		} else if (var0 == -1) {
-			Actor.setLoginResponseString("No response from server.", "Please try using a different world.", "");
-		} else if (var0 == 3) {
-			class328.method6115(3);
-			Login.field930 = 1;
-		} else if (var0 == 4) {
-			class328.method6115(14);
-			Login.Login_banType = 0;
-		} else if (var0 == 5) {
-			Login.field930 = 2;
-			Actor.setLoginResponseString("Either your account is still logged in, or the last", "world you were using has become unavailable.", "Please try again later.");
-		} else if (var0 == 68) {
-			if (!Client.field527) {
-				Client.field527 = true;
-				InterfaceParent.method2277();
-				return;
-			}
+	public static final synchronized long method7049() {
+		long var0 = System.currentTimeMillis();
+		if (var0 < class135.field1592) {
+			class315.field3405 += class135.field1592 - var0;
+		}
 
-			Actor.setLoginResponseString("RuneScape has been updated!", "Please reload this page.", "");
-		} else if (!Client.onMobile && var0 == 6) {
-			Actor.setLoginResponseString("RuneScape has been updated!", "Please reload this page.", "");
-		} else if (var0 == 7) {
-			Actor.setLoginResponseString("This world is full.", "Please use a different world.", "");
-		} else if (var0 == 8) {
-			Actor.setLoginResponseString("Unable to connect.", "Login server offline.", "");
-		} else if (var0 == 9) {
-			Actor.setLoginResponseString("Login limit exceeded.", "Too many connections from your address.", "");
-		} else if (var0 == 10) {
-			Actor.setLoginResponseString("Unable to connect.", "Bad session id.", "");
-		} else if (var0 == 11) {
-			Actor.setLoginResponseString("We suspect someone knows your password.", "Press 'change your password' on front page.", "");
-		} else if (var0 == 12) {
-			Actor.setLoginResponseString("You need a members account to login to this world.", "Please subscribe, or use a different world.", "");
-		} else if (var0 == 13) {
-			Actor.setLoginResponseString("Could not complete login.", "Please try using a different world.", "");
-		} else if (var0 == 14) {
-			Actor.setLoginResponseString("The server is being updated.", "Please wait 1 minute and try again.", "");
-		} else if (var0 == 16) {
-			Actor.setLoginResponseString("Too many login attempts.", "You can use the Jagex Launcher to continue playing.", "Press the button below to download it now.");
-			class328.method6115(33);
-		} else if (var0 == 17) {
-			Actor.setLoginResponseString("To access this free world, log into a", "members world and move your character", "to a non-members area.");
-		} else if (var0 == 18) {
-			class328.method6115(14);
-			Login.Login_banType = 1;
-		} else if (var0 == 19) {
-			Actor.setLoginResponseString("This world is running a closed Beta.", "Sorry invited players only.", "Please use a different world.");
-		} else if (var0 == 20) {
-			Actor.setLoginResponseString("Invalid loginserver requested.", "Please try using a different world.", "");
-		} else if (var0 == 22) {
-			Actor.setLoginResponseString("Malformed login packet.", "Please try again.", "");
-		} else if (var0 == 23) {
-			Actor.setLoginResponseString("No reply from loginserver.", "Please wait 1 minute and try again.", "");
-		} else if (var0 == 24) {
-			Actor.setLoginResponseString("Error loading your profile.", "Please contact customer support.", "");
-		} else if (var0 == 25) {
-			Actor.setLoginResponseString("Unexpected loginserver response.", "Please try using a different world.", "");
-		} else if (var0 == 26) {
-			Actor.setLoginResponseString("This computers address has been blocked", "as it was used to break our rules.", "");
-		} else if (var0 == 27) {
-			Actor.setLoginResponseString("", "Service unavailable.", "");
-		} else if (var0 == 31) {
-			Actor.setLoginResponseString("Your account must have a displayname set", "in order to play the game.  Please set it", "via the website, or the main game.");
-		} else if (var0 == 32) {
-			class328.method6115(14);
-			Login.Login_banType = 2;
-		} else if (var0 == 37) {
-			Actor.setLoginResponseString("Your account is currently inaccessible.", "Please try again in a few minutes.", "");
-		} else if (var0 == 38) {
-			Actor.setLoginResponseString("You need to vote to play!", "Visit runescape.com and vote,", "and then come back here!");
-		} else if (var0 == 55) {
-			class328.method6115(8);
+		class135.field1592 = var0;
+		return var0 + class315.field3405;
+	}
+
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/Throwable;Ljava/lang/String;)Lve;"
+	)
+	@Export("newRunException")
+	public static RunException newRunException(Throwable var0, String var1) {
+		RunException var2;
+		if (var0 instanceof RunException) {
+			var2 = (RunException)var0;
+			var2.message = var2.message + ' ' + var1;
 		} else {
-			if (var0 == 56) {
-				Actor.setLoginResponseString("Enter the 6-digit code generated by your", "authenticator app.", "");
-				class129.updateGameState(11);
-				return;
-			}
+			var2 = new RunException(var0, var1);
+		}
 
-			if (var0 == 57) {
-				Actor.setLoginResponseString("The code you entered was incorrect.", "Please try again.", "");
-				class129.updateGameState(11);
-				return;
-			}
+		return var2;
+	}
 
-			if (var0 == 61) {
-				Actor.setLoginResponseString("", "Please enter your date of birth (DD/MM/YYYY)", "");
-				class328.method6115(7);
-			} else {
-				if (var0 == 62) {
-					class129.updateGameState(10);
-					class328.method6115(9);
-					Actor.setLoginResponseString("Login attempt timed out.", "Please try again.", "");
-					return;
-				}
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "(Luy;B)V",
+		garbageValue = "-47"
+	)
+	static final void method7048(PacketBuffer var0) {
+		int var1 = 0;
+		var0.importIndex();
 
-				if (var0 == 63) {
-					class129.updateGameState(10);
-					class328.method6115(9);
-					Actor.setLoginResponseString("You were signed out.", "Please sign in again.", "");
-					return;
-				}
-
-				if (var0 == 65 || var0 == 67) {
-					class129.updateGameState(10);
-					class328.method6115(9);
-					Actor.setLoginResponseString("Failed to login.", "Please try again.", "");
-					return;
-				}
-
-				if (var0 == 71) {
-					class129.updateGameState(10);
-					class328.method6115(7);
-					Actor.setLoginResponseString("There was a problem updating your DOB.", "Please try again later. If the problem ", "persists, please contact Jagex Support.");
-				} else if (var0 == 73) {
-					class129.updateGameState(10);
-					class328.method6115(6);
-					Actor.setLoginResponseString("Your date of birth information is waiting", "to be reviewed by our staff.", "It will be processed shortly.");
-				} else if (var0 == 72) {
-					class129.updateGameState(10);
-					class328.method6115(32);
+		byte[] var10000;
+		int var2;
+		int var4;
+		int var5;
+		for (var2 = 0; var2 < Players.Players_count; ++var2) {
+			var5 = Players.Players_indices[var2];
+			if ((Players.field1377[var5] & 1) == 0) {
+				if (var1 > 0) {
+					--var1;
+					var10000 = Players.field1377;
+					var10000[var5] = (byte)(var10000[var5] | 2);
 				} else {
-					Actor.setLoginResponseString("Unexpected server response", "Please try using a different world.", "");
+					var4 = var0.readBits(1);
+					if (var4 == 0) {
+						var1 = class108.method2739(var0);
+						var10000 = Players.field1377;
+						var10000[var5] = (byte)(var10000[var5] | 2);
+					} else {
+						WorldMapSectionType.readPlayerUpdate(var0, var5);
+					}
 				}
 			}
 		}
 
-		class129.updateGameState(10);
-		boolean var3 = var1 != class93.method2370();
-		if (!var3 && Client.field556.method9394()) {
-			class328.method6115(9);
-		}
+		var0.exportIndex();
+		if (var1 != 0) {
+			throw new RuntimeException();
+		} else {
+			var0.importIndex();
 
+			for (var2 = 0; var2 < Players.Players_count; ++var2) {
+				var5 = Players.Players_indices[var2];
+				if ((Players.field1377[var5] & 1) != 0) {
+					if (var1 > 0) {
+						--var1;
+						var10000 = Players.field1377;
+						var10000[var5] = (byte)(var10000[var5] | 2);
+					} else {
+						var4 = var0.readBits(1);
+						if (var4 == 0) {
+							var1 = class108.method2739(var0);
+							var10000 = Players.field1377;
+							var10000[var5] = (byte)(var10000[var5] | 2);
+						} else {
+							WorldMapSectionType.readPlayerUpdate(var0, var5);
+						}
+					}
+				}
+			}
+
+			var0.exportIndex();
+			if (var1 != 0) {
+				throw new RuntimeException();
+			} else {
+				var0.importIndex();
+
+				for (var2 = 0; var2 < Players.Players_emptyIdxCount; ++var2) {
+					var5 = Players.Players_emptyIndices[var2];
+					if ((Players.field1377[var5] & 1) != 0) {
+						if (var1 > 0) {
+							--var1;
+							var10000 = Players.field1377;
+							var10000[var5] = (byte)(var10000[var5] | 2);
+						} else {
+							var4 = var0.readBits(1);
+							if (var4 == 0) {
+								var1 = class108.method2739(var0);
+								var10000 = Players.field1377;
+								var10000[var5] = (byte)(var10000[var5] | 2);
+							} else if (class304.updateExternalPlayer(var0, var5)) {
+								var10000 = Players.field1377;
+								var10000[var5] = (byte)(var10000[var5] | 2);
+							}
+						}
+					}
+				}
+
+				var0.exportIndex();
+				if (var1 != 0) {
+					throw new RuntimeException();
+				} else {
+					var0.importIndex();
+
+					for (var2 = 0; var2 < Players.Players_emptyIdxCount; ++var2) {
+						var5 = Players.Players_emptyIndices[var2];
+						if ((Players.field1377[var5] & 1) == 0) {
+							if (var1 > 0) {
+								--var1;
+								var10000 = Players.field1377;
+								var10000[var5] = (byte)(var10000[var5] | 2);
+							} else {
+								var4 = var0.readBits(1);
+								if (var4 == 0) {
+									var1 = class108.method2739(var0);
+									var10000 = Players.field1377;
+									var10000[var5] = (byte)(var10000[var5] | 2);
+								} else if (class304.updateExternalPlayer(var0, var5)) {
+									var10000 = Players.field1377;
+									var10000[var5] = (byte)(var10000[var5] | 2);
+								}
+							}
+						}
+					}
+
+					var0.exportIndex();
+					if (var1 != 0) {
+						throw new RuntimeException();
+					} else {
+						Players.Players_count = 0;
+						Players.Players_emptyIdxCount = 0;
+
+						for (var2 = 1; var2 < 2048; ++var2) {
+							var10000 = Players.field1377;
+							var10000[var2] = (byte)(var10000[var2] >> 1);
+							Player var3 = Client.players[var2];
+							if (var3 != null) {
+								Players.Players_indices[++Players.Players_count - 1] = var2;
+							} else {
+								Players.Players_emptyIndices[++Players.Players_emptyIdxCount - 1] = var2;
+							}
+						}
+
+					}
+				}
+			}
+		}
 	}
 
-	@ObfuscatedName("hq")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(ZB)V",
-		garbageValue = "8"
+		descriptor = "(B)Z",
+		garbageValue = "-29"
 	)
-	static final void method6892(boolean var0) {
-		if (var0) {
-			Client.field555 = Login.field943 ? class139.field1628 : class139.field1630;
-		} else {
-			Client.field555 = class150.clientPreferences.method2540(Login.Login_username) ? class139.field1634 : class139.field1629;
+	static final boolean method7050() {
+		return ViewportMouse.ViewportMouse_isInViewport;
+	}
+
+	@ObfuscatedName("lh")
+	@ObfuscatedSignature(
+		descriptor = "(ILjava/lang/String;I)V",
+		garbageValue = "1235379718"
+	)
+	static void method7051(int var0, String var1) {
+		int var2 = Players.Players_count;
+		int[] var3 = Players.Players_indices;
+		boolean var4 = false;
+		Username var5 = new Username(var1, class166.loginType);
+
+		for (int var6 = 0; var6 < var2; ++var6) {
+			Player var7 = Client.players[var3[var6]];
+			if (var7 != null && var7 != TextureProvider.localPlayer && var7.username != null && var7.username.equals(var5)) {
+				PacketBufferNode var8;
+				if (var0 == 1) {
+					var8 = ClanChannelMember.getPacketBufferNode(ClientPacket.OPPLAYER1, Client.packetWriter.isaacCipher);
+					var8.packetBuffer.writeByteAdd(0);
+					var8.packetBuffer.writeShortAddLE(var3[var6]);
+					Client.packetWriter.addNode(var8);
+				} else if (var0 == 4) {
+					var8 = ClanChannelMember.getPacketBufferNode(ClientPacket.OPPLAYER4, Client.packetWriter.isaacCipher);
+					var8.packetBuffer.writeShortAddLE(var3[var6]);
+					var8.packetBuffer.writeByteNeg(0);
+					Client.packetWriter.addNode(var8);
+				} else if (var0 == 6) {
+					var8 = ClanChannelMember.getPacketBufferNode(ClientPacket.OPPLAYER6, Client.packetWriter.isaacCipher);
+					var8.packetBuffer.writeByteNeg(0);
+					var8.packetBuffer.writeShortLE(var3[var6]);
+					Client.packetWriter.addNode(var8);
+				} else if (var0 == 7) {
+					var8 = ClanChannelMember.getPacketBufferNode(ClientPacket.OPPLAYER7, Client.packetWriter.isaacCipher);
+					var8.packetBuffer.writeByte(0);
+					var8.packetBuffer.writeShort(var3[var6]);
+					Client.packetWriter.addNode(var8);
+				}
+
+				var4 = true;
+				break;
+			}
+		}
+
+		if (!var4) {
+			class411.addGameMessage(4, "", "Unable to find " + var1);
 		}
 
 	}

@@ -4,62 +4,62 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("uk")
+@ObfuscatedName("ui")
 @Implements("AbstractRasterProvider")
 public abstract class AbstractRasterProvider {
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ak")
 	@Export("pixels")
 	public int[] pixels;
-	@ObfuscatedName("am")
+	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = 856501773
+		intValue = 1364322547
 	)
 	@Export("width")
 	public int width;
-	@ObfuscatedName("as")
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = -1072072305
+		intValue = 1704138977
 	)
 	@Export("height")
 	public int height;
-	@ObfuscatedName("aj")
-	protected float[] field5146;
+	@ObfuscatedName("ah")
+	protected float[] field5216;
 
 	protected AbstractRasterProvider() {
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "(III)V",
-		garbageValue = "2103103659"
+		garbageValue = "-237304267"
 	)
 	@Export("drawFull")
 	public abstract void drawFull(int var1, int var2);
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(IIIIB)V",
-		garbageValue = "-93"
+		garbageValue = "-3"
 	)
 	@Export("draw")
 	public abstract void draw(int var1, int var2, int var3, int var4);
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-1721609371"
+		garbageValue = "1751275534"
 	)
 	@Export("apply")
 	public final void apply() {
-		Rasterizer2D.method9442(this.pixels, this.width, this.height, this.field5146);
+		Rasterizer2D.method9581(this.pixels, this.width, this.height, this.field5216);
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
 		descriptor = "(ZI)V",
-		garbageValue = "24429174"
+		garbageValue = "952320023"
 	)
-	public final void method9514(boolean var1) {
-		this.field5146 = var1 ? new float[this.width * this.height + 1] : null;
+	public final void method9630(boolean var1) {
+		this.field5216 = var1 ? new float[this.width * this.height + 1] : null;
 	}
 }

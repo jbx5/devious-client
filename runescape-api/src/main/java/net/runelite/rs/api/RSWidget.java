@@ -492,8 +492,7 @@ public interface RSWidget extends Widget
 	RSWidget setHeightMode(int heightMode);
 
 	@Import("getFont")
-	@Override
-	RSFont getFont();
+	RSFont getRSFont(RSWidgetDefinition var1);
 
 	@Import("fill")
 	@Override
@@ -538,7 +537,7 @@ public interface RSWidget extends Widget
 	Object[] getOnInvTransmitListener();
 
 	@Import("getSprite")
-	RSSpritePixels getSprite(boolean b, RSUrlRequester urlRequester);
+	RSSpritePixels getSprite(RSWidgetDefinition widgetDefinition, boolean b, RSUrlRequester urlRequester);
 
 	@Import("onRelease")
 	@Override

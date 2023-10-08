@@ -4,34 +4,40 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hq")
+@ObfuscatedName("ix")
 @Implements("ParamComposition")
 public class ParamComposition extends DualNode {
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Lnd;"
+		descriptor = "Lom;"
 	)
 	@Export("ParamDefinition_archive")
-	public static AbstractArchive ParamDefinition_archive;
-	@ObfuscatedName("ay")
+	static AbstractArchive ParamDefinition_archive;
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "Lld;"
+		descriptor = "Llr;"
 	)
 	@Export("ParamDefinition_cached")
-	public static EvictingDualNodeHashTable ParamDefinition_cached;
-	@ObfuscatedName("ar")
+	static EvictingDualNodeHashTable ParamDefinition_cached;
+	@ObfuscatedName("kj")
+	@ObfuscatedSignature(
+		descriptor = "Lud;"
+	)
+	@Export("redHintArrowSprite")
+	static SpritePixels redHintArrowSprite;
+	@ObfuscatedName("ak")
 	@Export("type")
 	char type;
-	@ObfuscatedName("am")
+	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = -951631697
+		intValue = -1689580317
 	)
 	@Export("defaultInt")
 	public int defaultInt;
-	@ObfuscatedName("as")
+	@ObfuscatedName("ao")
 	@Export("defaultStr")
 	public String defaultStr;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ah")
 	@Export("autoDisable")
 	boolean autoDisable;
 
@@ -43,19 +49,19 @@ public class ParamComposition extends DualNode {
 		this.autoDisable = true;
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(S)V",
-		garbageValue = "-17467"
+		descriptor = "(I)V",
+		garbageValue = "-560254991"
 	)
 	@Export("postDecode")
 	void postDecode() {
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "(Lty;I)V",
-		garbageValue = "1931541536"
+		descriptor = "(Lul;I)V",
+		garbageValue = "-721387460"
 	)
 	@Export("decode")
 	void decode(Buffer var1) {
@@ -69,15 +75,15 @@ public class ParamComposition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(Lty;II)V",
-		garbageValue = "243375101"
+		descriptor = "(Lul;II)V",
+		garbageValue = "-1665298229"
 	)
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
 		if (var2 == 1) {
-			this.type = class17.method258(var1.readByte());
+			this.type = class149.method3180(var1.readByte());
 		} else if (var2 == 2) {
 			this.defaultInt = var1.readInt();
 		} else if (var2 == 4) {
@@ -88,29 +94,29 @@ public class ParamComposition extends DualNode {
 
 	}
 
-	@ObfuscatedName("as")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "-791513096"
+		descriptor = "(B)Z",
+		garbageValue = "-19"
 	)
 	@Export("isString")
 	public boolean isString() {
 		return this.type == 's';
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(FFFFLfm;I)V",
-		garbageValue = "-1881059806"
+		descriptor = "(I)Lrb;",
+		garbageValue = "-91337538"
 	)
-	static void method3847(float var0, float var1, float var2, float var3, class130 var4) {
-		float var5 = var1 - var0;
-		float var6 = var2 - var1;
-		float var7 = var3 - var2;
-		float var8 = var6 - var5;
-		var4.field1550 = var7 - var6 - var8;
-		var4.field1542 = var8 + var8 + var8;
-		var4.field1541 = var5 + var5 + var5;
-		var4.field1540 = var0;
+	public static class465 method3936() {
+		synchronized(class465.field4783) {
+			if (class465.field4781 == 0) {
+				return new class465();
+			} else {
+				class465.field4783[--class465.field4781].method8354();
+				return class465.field4783[class465.field4781];
+			}
+		}
 	}
 }

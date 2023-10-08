@@ -4,29 +4,29 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ku")
+@ObfuscatedName("ki")
 @Implements("WorldMapID")
 public class WorldMapID {
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Lku;"
+		descriptor = "Lki;"
 	)
-	static final WorldMapID field3024;
-	@ObfuscatedName("ay")
+	static final WorldMapID field3069;
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "Lku;"
+		descriptor = "Lki;"
 	)
-	static final WorldMapID field3022;
-	@ObfuscatedName("ar")
+	static final WorldMapID field3067;
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = -383521267
+		intValue = 158021367
 	)
 	@Export("value")
 	final int value;
 
 	static {
-		field3024 = new WorldMapID(0);
-		field3022 = new WorldMapID(1);
+		field3069 = new WorldMapID(0);
+		field3067 = new WorldMapID(1);
 	}
 
 	WorldMapID(int var1) {

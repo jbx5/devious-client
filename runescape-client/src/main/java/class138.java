@@ -1,104 +1,82 @@
+import java.util.concurrent.Callable;
 import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fj")
-public enum class138 implements MouseWheel {
-	@ObfuscatedName("aw")
+@ObfuscatedName("fi")
+class class138 implements Callable {
+	@ObfuscatedName("we")
+	@Export("foundItemIds")
+	static short[] foundItemIds;
+	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lfj;"
+		descriptor = "Lfk;"
 	)
-	field1618(0, 0),
-	@ObfuscatedName("ay")
+	final class139 this$0;
+	// $FF: synthetic field
+	final int val$workStart;
+	// $FF: synthetic field
+	final int val$workEnd;
+	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lfj;"
+		descriptor = "[Lfh;"
 	)
-	field1616(1, 1),
-	@ObfuscatedName("ar")
-	@ObfuscatedSignature(
-		descriptor = "Lfj;"
-	)
-	field1622(2, 2),
-	@ObfuscatedName("am")
-	@ObfuscatedSignature(
-		descriptor = "Lfj;"
-	)
-	field1615(3, 3),
-	@ObfuscatedName("as")
-	@ObfuscatedSignature(
-		descriptor = "Lfj;"
-	)
-	field1619(4, 4),
-	@ObfuscatedName("aj")
-	@ObfuscatedSignature(
-		descriptor = "Lfj;"
-	)
-	field1617(5, 5),
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "Lfj;"
-	)
-	field1621(6, 6),
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "Lfj;"
-	)
-	field1620(7, 7),
-	@ObfuscatedName("av")
-	@ObfuscatedSignature(
-		descriptor = "Lfj;"
-	)
-	field1623(8, 8);
+	final class131[] val$curveLoadJobs;
 
-	@ObfuscatedName("ap")
-	@ObfuscatedGetter(
-		intValue = 1823179125
+	@ObfuscatedSignature(
+		descriptor = "(Lfk;II[Lfh;)V"
 	)
-	final int field1624;
-	@ObfuscatedName("aq")
-	@ObfuscatedGetter(
-		intValue = 1944390957
-	)
-	final int field1625;
-
-	class138(int var3, int var4) {
-		this.field1624 = var3;
-		this.field1625 = var4;
+	class138(class139 var1, int var2, int var3, class131[] var4) {
+		this.this$0 = var1;
+		this.val$workStart = var2;
+		this.val$workEnd = var3;
+		this.val$curveLoadJobs = var4;
 	}
 
-	@ObfuscatedName("ay")
+	public Object call() {
+		for (int var1 = this.val$workStart; var1 < this.val$workEnd; ++var1) {
+			this.val$curveLoadJobs[var1].call();
+		}
+
+		return null;
+	}
+
+	@ObfuscatedName("ac")
+	@ObfuscatedSignature(
+		descriptor = "(Lom;Lom;Lom;I)V",
+		garbageValue = "1994646383"
+	)
+	public static void method3079(AbstractArchive var0, AbstractArchive var1, AbstractArchive var2) {
+		class295.SequenceDefinition_archive = var0;
+		SequenceDefinition.SequenceDefinition_animationsArchive = var1;
+		SequenceDefinition.SequenceDefinition_skeletonsArchive = var2;
+	}
+
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "(II)V",
+		garbageValue = "1830136563"
+	)
+	public static void method3081(int var0) {
+		MouseHandler.MouseHandler_idleCycles = var0;
+	}
+
+	@ObfuscatedName("ha")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "1644350448"
+		garbageValue = "-1629606373"
 	)
-	@Export("rsOrdinal")
-	public int rsOrdinal() {
-		return this.field1625;
-	}
+	static int method3083() {
+		if (Client.archiveLoaders != null && Client.archiveLoadersDone < Client.archiveLoaders.size()) {
+			int var0 = 0;
 
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "(B)Lrm;",
-		garbageValue = "16"
-	)
-	public static class451 method3097() {
-		synchronized(class451.field4744) {
-			if (class451.field4742 == 0) {
-				return new class451();
-			} else {
-				class451.field4744[--class451.field4742].method8249();
-				return class451.field4744[class451.field4742];
+			for (int var1 = 0; var1 <= Client.archiveLoadersDone; ++var1) {
+				var0 += ((ArchiveLoader)Client.archiveLoaders.get(var1)).loadedCount;
 			}
-		}
-	}
 
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "(I)[Llx;",
-		garbageValue = "1787686386"
-	)
-	static LoginPacket[] method3096() {
-		return new LoginPacket[]{LoginPacket.field3344, LoginPacket.field3345, LoginPacket.field3340, LoginPacket.field3341, LoginPacket.field3343, LoginPacket.field3342};
+			return var0 * 10000 / Client.field819;
+		} else {
+			return 10000;
+		}
 	}
 }

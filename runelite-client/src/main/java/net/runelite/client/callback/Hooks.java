@@ -45,6 +45,7 @@ import net.runelite.api.Client;
 import net.runelite.api.MainBufferProvider;
 import net.runelite.api.Renderable;
 import net.runelite.api.Skill;
+import net.runelite.api.events.Draw;
 import net.runelite.api.worldmap.WorldMapRenderer;
 import net.runelite.api.events.BeforeRender;
 import net.runelite.api.events.FakeXpDrop;
@@ -70,6 +71,7 @@ import net.runelite.client.ui.overlay.OverlayLayer;
 import net.runelite.client.ui.overlay.OverlayRenderer;
 import net.runelite.client.ui.overlay.infobox.InfoBoxManager;
 import net.runelite.client.util.DeferredEventBus;
+import net.runelite.client.util.LinkBrowser;
 import net.runelite.client.util.OSType;
 import net.runelite.client.util.RSTimeUnit;
 
@@ -352,6 +354,10 @@ public class Hooks implements Callbacks
 
 		final Graphics2D graphics2d = getGraphics(mainBufferProvider);
 
+		Draw draw = Draw.getInstance();
+		draw.setGraphics(graphics2d);
+		eventBus.post(draw);
+
 		try
 		{
 			renderer.renderOverlayLayer(graphics2d, OverlayLayer.ALWAYS_ON_TOP);
@@ -613,5 +619,11 @@ public class Hooks implements Callbacks
 			log.error("exception from renderable draw listener", ex);
 		}
 		return true;
+	}
+
+	@Override
+	public void openUrl(String url)
+	{
+		LinkBrowser.browse(url);
 	}
 }

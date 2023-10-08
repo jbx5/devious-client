@@ -4,61 +4,55 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dc")
+@ObfuscatedName("ds")
 @Implements("Script")
 public class Script extends DualNode {
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Lld;"
+		descriptor = "Llr;"
 	)
 	@Export("Script_cached")
 	static EvictingDualNodeHashTable Script_cached;
-	@ObfuscatedName("an")
-	@ObfuscatedGetter(
-		intValue = 843151793
-	)
-	@Export("loginBoxCenter")
-	static int loginBoxCenter;
-	@ObfuscatedName("gi")
-	static String field1003;
 	@ObfuscatedName("ay")
-	String field993;
-	@ObfuscatedName("ar")
+	static int[] field1008;
+	@ObfuscatedName("al")
+	String field1004;
+	@ObfuscatedName("ak")
 	@Export("opcodes")
 	int[] opcodes;
-	@ObfuscatedName("am")
+	@ObfuscatedName("ax")
 	@Export("intOperands")
 	int[] intOperands;
-	@ObfuscatedName("as")
+	@ObfuscatedName("ao")
 	@Export("stringOperands")
 	String[] stringOperands;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ah")
 	@ObfuscatedGetter(
-		intValue = 1850120873
+		intValue = -1799598971
 	)
 	@Export("localIntCount")
 	int localIntCount;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ar")
 	@ObfuscatedGetter(
-		intValue = -1710224679
+		intValue = -1300060503
 	)
 	@Export("localStringCount")
 	int localStringCount;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ab")
 	@ObfuscatedGetter(
-		intValue = -1207485643
+		intValue = 1220003295
 	)
 	@Export("intArgumentCount")
 	int intArgumentCount;
-	@ObfuscatedName("av")
+	@ObfuscatedName("am")
 	@ObfuscatedGetter(
-		intValue = -1546918135
+		intValue = -1530472731
 	)
 	@Export("stringArgumentCount")
 	int stringArgumentCount;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "[Lsa;"
+		descriptor = "[Ltp;"
 	)
 	@Export("switches")
 	IterableNodeHashTable[] switches;
@@ -70,56 +64,45 @@ public class Script extends DualNode {
 	Script() {
 	}
 
-	@ObfuscatedName("as")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(II)[Lsa;",
-		garbageValue = "1100527320"
+		descriptor = "(II)[Ltp;",
+		garbageValue = "-902364502"
 	)
 	@Export("newIterableNodeHashTable")
 	IterableNodeHashTable[] newIterableNodeHashTable(int var1) {
 		return new IterableNodeHashTable[var1];
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(CI)Z",
-		garbageValue = "-1835095730"
+		descriptor = "(ZI)V",
+		garbageValue = "-1816632175"
 	)
-	public static boolean method2169(char var0) {
-		if (var0 >= ' ' && var0 < 127 || var0 > 127 && var0 < 160 || var0 > 160 && var0 <= 255) {
-			return true;
+	static void method2215(boolean var0) {
+		if (var0) {
+			class74.method2113();
 		} else {
-			if (var0 != 0) {
-				char[] var1 = class385.cp1252AsciiExtension;
-
-				for (int var2 = 0; var2 < var1.length; ++var2) {
-					char var3 = var1[var2];
-					if (var0 == var3) {
-						return true;
+			for (int var1 = 0; var1 < class319.musicSongs.size(); ++var1) {
+				MusicSong var2 = (MusicSong)class319.musicSongs.get(var1);
+				if (var2 == null) {
+					class319.musicSongs.remove(var1);
+					--var1;
+				} else if (var2.field3550) {
+					if (var2.midiPcmStream.field3450 > 0) {
+						--var2.midiPcmStream.field3450;
 					}
+
+					var2.midiPcmStream.clear();
+					var2.midiPcmStream.method6044();
+					var2.midiPcmStream.setPcmStreamVolume(0);
+					class319.musicSongs.remove(var1);
+					--var1;
+				} else {
+					var2.field3550 = true;
 				}
 			}
-
-			return false;
 		}
-	}
 
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "(I)Luu;",
-		garbageValue = "-2099566519"
-	)
-	static IndexedSprite method2172() {
-		IndexedSprite var0 = new IndexedSprite();
-		var0.width = class528.SpriteBuffer_spriteWidth;
-		var0.height = class528.SpriteBuffer_spriteHeight;
-		var0.xOffset = class492.SpriteBuffer_xOffsets[0];
-		var0.yOffset = class134.SpriteBuffer_yOffsets[0];
-		var0.subWidth = class172.SpriteBuffer_spriteWidths[0];
-		var0.subHeight = class528.SpriteBuffer_spriteHeights[0];
-		var0.palette = class528.SpriteBuffer_spritePalette;
-		var0.pixels = ArchiveDiskAction.SpriteBuffer_pixels[0];
-		DbTableType.method8985();
-		return var0;
 	}
 }

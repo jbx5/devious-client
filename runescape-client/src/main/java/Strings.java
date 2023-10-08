@@ -1,47 +1,52 @@
+import java.util.Arrays;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("nz")
+@ObfuscatedName("oq")
 @Implements("Strings")
 public class Strings {
-	@ObfuscatedName("fg")
-	public static String field4146;
-	@ObfuscatedName("kl")
-	public static String field3908;
-	@ObfuscatedName("ks")
-	public static String field4163;
-	@ObfuscatedName("kj")
-	public static String field4034;
+	@ObfuscatedName("fz")
+	public static String field4000;
+	@ObfuscatedName("kv")
+	public static String field4188;
+	@ObfuscatedName("kx")
+	public static String field4024;
+	@ObfuscatedName("kt")
+	public static String field4213;
 
 	static {
-		field4146 = "Please visit the support page for assistance.";
-		field3908 = "";
-		field4163 = "Page has opened in the browser.";
-		field4034 = "";
+		field4000 = "Please visit the support page for assistance.";
+		field4188 = "";
+		field4024 = "Page has opened in the browser.";
+		field4213 = "";
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(II)F",
-		garbageValue = "189737600"
+		descriptor = "(I)Z",
+		garbageValue = "5563087"
 	)
-	static final float method6663(int var0) {
-		float var1 = 10075.0F - (float)var0;
-		return (1.0075567F * var1 - 75.56675F) / var1;
-	}
-
-	@ObfuscatedName("av")
-	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "-2120353581"
-	)
-	static int method6664(int var0) {
-		Message var1 = (Message)Messages.Messages_hashTable.get((long)var0);
-		if (var1 == null) {
-			return -1;
+	public static boolean method6819() {
+		if (!class319.field3435.isEmpty()) {
+			return true;
 		} else {
-			return var1.nextDual == Messages.Messages_queue.sentinel ? -1 : ((Message)var1.nextDual).count;
+			return !class319.musicSongs.isEmpty() && class319.musicSongs.get(0) != null && ((MusicSong)class319.musicSongs.get(0)).midiPcmStream != null ? ((MusicSong)class319.musicSongs.get(0)).midiPcmStream.isReady() : false;
 		}
+	}
+
+	@ObfuscatedName("bf")
+	@ObfuscatedSignature(
+		descriptor = "(Lnm;Lni;ZB)V",
+		garbageValue = "-63"
+	)
+	public static void method6820(Widget var0, PlayerComposition var1, boolean var2) {
+		var0.modelType = 7;
+		var0.field3734 = new PlayerComposition(var1);
+		if (!var2) {
+			var0.field3734.equipment = Arrays.copyOf(var0.field3734.field3619, var0.field3734.field3619.length);
+			var0.field3734.method6291();
+		}
+
 	}
 }

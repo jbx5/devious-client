@@ -1,252 +1,105 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("gr")
-public class class167 extends class143 {
-	@ObfuscatedName("aw")
+@ObfuscatedName("gp")
+public class class167 extends class145 {
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = 233836423
+		longValue = 3610111583627244041L
 	)
-	int field1796;
-	@ObfuscatedName("ay")
-	@ObfuscatedGetter(
-		longValue = 212294045924827901L
-	)
-	long field1799;
+	long field1789;
+	@ObfuscatedName("al")
+	String field1790;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lfr;"
+		descriptor = "Lff;"
 	)
-	final class146 this$0;
+	final class148 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lfr;)V"
+		descriptor = "(Lff;)V"
 	)
-	class167(class146 var1) {
+	class167(class148 var1) {
 		this.this$0 = var1;
+		this.field1789 = -1L;
+		this.field1790 = null;
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(Lty;B)V",
-		garbageValue = "1"
+		descriptor = "(Lul;I)V",
+		garbageValue = "-11659242"
 	)
-	void vmethod3412(Buffer var1) {
-		this.field1796 = var1.readInt();
-		this.field1799 = var1.readLong();
+	void vmethod3414(Buffer var1) {
+		if (var1.readUnsignedByte() != 255) {
+			--var1.offset;
+			this.field1789 = var1.readLong();
+		}
+
+		this.field1790 = var1.readStringCp1252NullTerminatedOrNull();
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(Lfx;B)V",
-		garbageValue = "-72"
+		descriptor = "(Lgi;I)V",
+		garbageValue = "21847466"
 	)
-	void vmethod3419(ClanSettings var1) {
-		var1.method3242(this.field1796, this.field1799);
+	void vmethod3415(ClanSettings var1) {
+		var1.method3251(this.field1789, this.field1790);
 	}
 
-	@ObfuscatedName("bz")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(ILdc;ZI)I",
-		garbageValue = "-279174882"
+		descriptor = "(Lul;Ltp;B)Ltp;",
+		garbageValue = "8"
 	)
-	static int method3413(int var0, Script var1, boolean var2) {
-		if (var0 == ScriptOpcodes.WORLDLIST_FETCH) {
-			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = DynamicObject.loadWorlds() ? 1 : 0;
-			return 1;
-		} else {
-			World var9;
-			if (var0 == ScriptOpcodes.WORLDLIST_START) {
-				var9 = PcmPlayer.worldListStart();
-				if (var9 != null) {
-					Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var9.id;
-					Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var9.properties;
-					Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var9.activity;
-					Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var9.location;
-					Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var9.population;
-					Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var9.host;
-				} else {
-					Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = -1;
-					Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = 0;
-					Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = "";
-					Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = 0;
-					Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = 0;
-					Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = "";
-				}
+	@Export("readStringIntParameters")
+	static final IterableNodeHashTable readStringIntParameters(Buffer var0, IterableNodeHashTable var1) {
+		int var2 = var0.readUnsignedByte();
+		int var3;
+		if (var1 == null) {
+			var3 = EnumComposition.method3749(var2);
+			var1 = new IterableNodeHashTable(var3);
+		}
 
-				return 1;
-			} else if (var0 == ScriptOpcodes.WORLDLIST_NEXT) {
-				var9 = class419.getNextWorldListWorld();
-				if (var9 != null) {
-					Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var9.id;
-					Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var9.properties;
-					Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var9.activity;
-					Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var9.location;
-					Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var9.population;
-					Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var9.host;
-				} else {
-					Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = -1;
-					Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = 0;
-					Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = "";
-					Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = 0;
-					Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = 0;
-					Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = "";
-				}
-
-				return 1;
+		for (var3 = 0; var3 < var2; ++var3) {
+			boolean var4 = var0.readUnsignedByte() == 1;
+			int var5 = var0.readMedium();
+			Object var6;
+			if (var4) {
+				var6 = new ObjectNode(var0.readStringCp1252NullTerminated());
 			} else {
-				int var3;
-				World var7;
-				int var8;
-				if (var0 == ScriptOpcodes.WORLDLIST_SPECIFIC) {
-					var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-					var7 = null;
-
-					for (var8 = 0; var8 < World.World_count; ++var8) {
-						if (var3 == class387.World_worlds[var8].id) {
-							var7 = class387.World_worlds[var8];
-							break;
-						}
-					}
-
-					if (var7 != null) {
-						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var7.id;
-						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var7.properties;
-						Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var7.activity;
-						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var7.location;
-						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var7.population;
-						Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var7.host;
-					} else {
-						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = -1;
-						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = 0;
-						Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = "";
-						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = 0;
-						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = 0;
-						Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = "";
-					}
-
-					return 1;
-				} else if (var0 == ScriptOpcodes.WORLDLIST_SORT) {
-					Interpreter.Interpreter_intStackSize -= 4;
-					var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
-					boolean var10 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1] == 1;
-					var8 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 2];
-					boolean var6 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 3] == 1;
-					WorldMapScaleHandler.sortWorldList(var3, var10, var8, var6);
-					return 1;
-				} else if (var0 != 6511) {
-					if (var0 == ScriptOpcodes.SETFOLLOWEROPSLOWPRIORITY) {
-						Client.followerOpsLowPriority = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize] == 1;
-						return 1;
-					} else {
-						int var4;
-						ParamComposition var5;
-						if (var0 == ScriptOpcodes.NC_PARAM) {
-							Interpreter.Interpreter_intStackSize -= 2;
-							var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
-							var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
-							var5 = MusicPatchNode.getParamDefinition(var4);
-							if (var5.isString()) {
-								Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = Tile.getNpcDefinition(var3).getStringParam(var4, var5.defaultStr);
-							} else {
-								Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Tile.getNpcDefinition(var3).getIntParam(var4, var5.defaultInt);
-							}
-
-							return 1;
-						} else if (var0 == ScriptOpcodes.LC_PARAM) {
-							Interpreter.Interpreter_intStackSize -= 2;
-							var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
-							var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
-							var5 = MusicPatchNode.getParamDefinition(var4);
-							if (var5.isString()) {
-								Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = class90.getObjectDefinition(var3).getStringParam(var4, var5.defaultStr);
-							} else {
-								Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = class90.getObjectDefinition(var3).getIntParam(var4, var5.defaultInt);
-							}
-
-							return 1;
-						} else if (var0 == ScriptOpcodes.OC_PARAM) {
-							Interpreter.Interpreter_intStackSize -= 2;
-							var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
-							var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
-							var5 = MusicPatchNode.getParamDefinition(var4);
-							if (var5.isString()) {
-								Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = class125.ItemDefinition_get(var3).getStringParam(var4, var5.defaultStr);
-							} else {
-								Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = class125.ItemDefinition_get(var3).getIntParam(var4, var5.defaultInt);
-							}
-
-							return 1;
-						} else if (var0 == ScriptOpcodes.STRUCT_PARAM) {
-							Interpreter.Interpreter_intStackSize -= 2;
-							var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
-							var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
-							var5 = MusicPatchNode.getParamDefinition(var4);
-							if (var5.isString()) {
-								Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = class219.StructDefinition_getStructDefinition(var3).getStringParam(var4, var5.defaultStr);
-							} else {
-								Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = class219.StructDefinition_getStructDefinition(var3).getIntParam(var4, var5.defaultInt);
-							}
-
-							return 1;
-						} else if (var0 == ScriptOpcodes.ON_MOBILE) {
-							Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Client.onMobile ? 1 : 0;
-							return 1;
-						} else if (var0 == ScriptOpcodes.CLIENTTYPE) {
-							Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Client.clientType;
-							return 1;
-						} else if (var0 == 6520) {
-							return 1;
-						} else if (var0 == ScriptOpcodes.MOBILE_KEYBOARDHIDE) {
-							return 1;
-						} else if (var0 == 6522) {
-							--Interpreter.Interpreter_stringStackSize;
-							--Interpreter.Interpreter_intStackSize;
-							return 1;
-						} else if (var0 == 6523) {
-							--Interpreter.Interpreter_stringStackSize;
-							--Interpreter.Interpreter_intStackSize;
-							return 1;
-						} else if (var0 == ScriptOpcodes.MOBILE_BATTERYLEVEL) {
-							Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = -1;
-							return 1;
-						} else if (var0 == ScriptOpcodes.MOBILE_BATTERYCHARGING) {
-							Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = 1;
-							return 1;
-						} else if (var0 == ScriptOpcodes.MOBILE_WIFIAVAILABLE) {
-							Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = 1;
-							return 1;
-						} else if (var0 == 6527) {
-							Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Client.field657;
-							return 1;
-						} else {
-							return 2;
-						}
-					}
-				} else {
-					var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-					if (var3 >= 0 && var3 < World.World_count) {
-						var7 = class387.World_worlds[var3];
-						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var7.id;
-						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var7.properties;
-						Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var7.activity;
-						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var7.location;
-						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var7.population;
-						Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var7.host;
-					} else {
-						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = -1;
-						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = 0;
-						Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = "";
-						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = 0;
-						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = 0;
-						Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = "";
-					}
-
-					return 1;
-				}
+				var6 = new IntegerNode(var0.readInt());
 			}
+
+			var1.put((Node)var6, (long)var5);
+		}
+
+		return var1;
+	}
+
+	@ObfuscatedName("ax")
+	@ObfuscatedSignature(
+		descriptor = "(Lom;Ljava/lang/String;Ljava/lang/String;I)Lun;",
+		garbageValue = "-2109687814"
+	)
+	@Export("SpriteBuffer_getIndexedSpriteByName")
+	public static IndexedSprite SpriteBuffer_getIndexedSpriteByName(AbstractArchive var0, String var1, String var2) {
+		if (!var0.isValidFileName(var1, var2)) {
+			return null;
+		} else {
+			int var3 = var0.getGroupId(var1);
+			int var4 = var0.getFileId(var3, var2);
+			IndexedSprite var5;
+			if (!class164.method3376(var0, var3, var4)) {
+				var5 = null;
+			} else {
+				var5 = Widget.method6728();
+			}
+
+			return var5;
 		}
 	}
 }

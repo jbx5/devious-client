@@ -7,51 +7,51 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("tx")
+@ObfuscatedName("uq")
 @Implements("DbTable")
 public class DbTable extends DualNode {
-	@ObfuscatedName("am")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "[Ltm;"
+		descriptor = "[Ltr;"
 	)
-	class503[] field5046;
-	@ObfuscatedName("as")
+	class517[] field5085;
+	@ObfuscatedName("ao")
 	@Export("columns")
 	List columns;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lnd;I)V"
+		descriptor = "(Lom;I)V"
 	)
 	public DbTable(AbstractArchive var1, int var2) {
 		byte[] var3 = var1.takeFile(var2, 0);
-		this.method8988(new Buffer(var3));
+		this.method9088(new Buffer(var3));
 	}
 
 	@ObfuscatedSignature(
-		descriptor = "(Lnd;II)V"
+		descriptor = "(Lom;II)V"
 	)
 	public DbTable(AbstractArchive var1, int var2, int var3) {
 		byte[] var4 = var1.takeFile(var2, var3 + 1);
-		this.method8988(new Buffer(var4));
+		this.method9088(new Buffer(var4));
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(Lty;I)V",
-		garbageValue = "702803819"
+		descriptor = "(Lul;I)V",
+		garbageValue = "677675313"
 	)
-	void method8988(Buffer var1) {
+	void method9088(Buffer var1) {
 		int var2 = var1.packBytesToInt();
-		this.field5046 = new class503[var2];
+		this.field5085 = new class517[var2];
 		this.columns = new ArrayList(var2);
 
 		for (int var3 = 0; var3 < var2; ++var3) {
-			this.field5046[var3] = (class503)ClientPreferences.findEnumerated(class503.method8943(), var1.readUnsignedByte());
+			this.field5085[var3] = (class517)SequenceDefinition.findEnumerated(class517.method9047(), var1.readUnsignedByte());
 			int var4 = var1.packBytesToInt();
 			HashMap var5 = new HashMap(var4);
 
 			while (var4-- > 0) {
-				Object var6 = this.field5046[var3].method8938(var1);
+				Object var6 = this.field5085[var3].method9032(var1);
 				int var7 = var1.packBytesToInt();
 				ArrayList var8 = new ArrayList();
 
@@ -68,12 +68,12 @@ public class DbTable extends DualNode {
 
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Object;IB)Ljava/util/List;",
-		garbageValue = "-17"
+		descriptor = "(Ljava/lang/Object;II)Ljava/util/List;",
+		garbageValue = "17353223"
 	)
-	public List method8989(Object var1, int var2) {
+	public List method9089(Object var1, int var2) {
 		if (var2 < 0) {
 			var2 = 0;
 		}

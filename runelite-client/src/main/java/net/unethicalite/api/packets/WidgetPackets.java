@@ -364,12 +364,12 @@ public class WidgetPackets
 		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
 		var packetBufferNode = Static.getClient().preparePacket(clientPacket.IF_BUTTONT(), client.getPacketWriter().getIsaacCipher());
-		packetBufferNode.getPacketBuffer().writeShortAdd(sourceItemId);
-		packetBufferNode.getPacketBuffer().writeShortLE(destinationSlot);
-		packetBufferNode.getPacketBuffer().writeShortAdd(sourceSlot);
-		packetBufferNode.getPacketBuffer().writeShortAddLE(itemId);
+		packetBufferNode.getPacketBuffer().writeShortAddLE(sourceSlot);
+		packetBufferNode.getPacketBuffer().writeInt(widgetId);
+		packetBufferNode.getPacketBuffer().writeShortAdd(itemId);
 		packetBufferNode.getPacketBuffer().writeIntIME(sourceWidgetId);
-		packetBufferNode.getPacketBuffer().writeIntIME(widgetId);
+		packetBufferNode.getPacketBuffer().writeShortAddLE(sourceItemId);
+		packetBufferNode.getPacketBuffer().writeShortAddLE(destinationSlot);
 		return packetBufferNode;
 	}
 
@@ -378,8 +378,8 @@ public class WidgetPackets
 		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
 		var packetBufferNode = Static.getClient().preparePacket(clientPacket.RESUME_PAUSEBUTTON(), client.getPacketWriter().getIsaacCipher());
-		packetBufferNode.getPacketBuffer().writeShortAddLE(childId);
-		packetBufferNode.getPacketBuffer().writeIntIME(widgetId);
+		packetBufferNode.getPacketBuffer().writeShort(childId);
+		packetBufferNode.getPacketBuffer().writeIntME(widgetId);
 		return packetBufferNode;
 	}
 

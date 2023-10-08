@@ -1,59 +1,49 @@
+import java.util.ArrayList;
 import java.util.concurrent.Callable;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ay")
+@ObfuscatedName("al")
 public class class1 implements Callable {
-	@ObfuscatedName("au")
-	@ObfuscatedGetter(
-		intValue = -1492640615
-	)
-	static int field6;
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Lty;"
+		descriptor = "Lul;"
 	)
-	final Buffer field5;
-	@ObfuscatedName("ay")
+	final Buffer field2;
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "Lam;"
+		descriptor = "Lax;"
 	)
 	final class3 field1;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Laz;"
+		descriptor = "Lab;"
 	)
 	final class7 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Laz;Lty;Lam;)V"
+		descriptor = "(Lab;Lul;Lax;)V"
 	)
 	class1(class7 var1, Buffer var2, class3 var3) {
 		this.this$0 = var1;
-		this.field5 = var2;
+		this.field2 = var2;
 		this.field1 = var3;
 	}
 
 	public Object call() {
-		return this.field1.vmethod12(this.field5);
+		return this.field1.vmethod13(this.field2);
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(I)[Ldt;",
-		garbageValue = "-1290744164"
+		descriptor = "(Lom;Lom;Lom;Ljava/util/ArrayList;B)Z",
+		garbageValue = "-86"
 	)
-	static class90[] method10() {
-		return new class90[]{class90.field1099, class90.field1103, class90.field1102, class90.field1107, class90.field1100, class90.field1101};
-	}
-
-	@ObfuscatedName("aa")
-	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "701566139"
-	)
-	protected static final int method11() {
-		return GameEngine.keyHandler.method347();
+	public static boolean method9(AbstractArchive var0, AbstractArchive var1, AbstractArchive var2, ArrayList var3) {
+		class319.field3439 = var0;
+		class319.field3429 = var1;
+		class319.field3432 = var2;
+		class319.field3431 = var3;
+		return true;
 	}
 }

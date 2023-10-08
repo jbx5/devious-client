@@ -1,19 +1,20 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ex")
+@ObfuscatedName("ey")
 @Implements("UserComparator6")
 public class UserComparator6 extends AbstractUserComparator {
-	@ObfuscatedName("nd")
-	@ObfuscatedGetter(
-		intValue = 1967104981
+	@ObfuscatedName("as")
+	static int[][][] field1486;
+	@ObfuscatedName("jd")
+	@ObfuscatedSignature(
+		descriptor = "Lpu;"
 	)
-	@Export("menuY")
-	static int menuY;
-	@ObfuscatedName("aw")
+	@Export("fontPlain12")
+	static Font fontPlain12;
+	@ObfuscatedName("ac")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -21,10 +22,10 @@ public class UserComparator6 extends AbstractUserComparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(Lqa;Lqa;B)I",
-		garbageValue = "-26"
+		descriptor = "(Lri;Lri;B)I",
+		garbageValue = "1"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -37,5 +38,19 @@ public class UserComparator6 extends AbstractUserComparator {
 
 	public int compare(Object var1, Object var2) {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2);
+	}
+
+	@ObfuscatedName("he")
+	@ObfuscatedSignature(
+		descriptor = "(ZB)V",
+		garbageValue = "97"
+	)
+	static final void method2942(boolean var0) {
+		if (var0) {
+			Client.field558 = Login.field951 ? class141.field1627 : class141.field1629;
+		} else {
+			Client.field558 = class91.clientPreferences.method2527(Login.Login_username) ? class141.field1635 : class141.field1630;
+		}
+
 	}
 }

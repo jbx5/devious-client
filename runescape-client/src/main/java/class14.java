@@ -8,68 +8,76 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("aa")
+@ObfuscatedName("as")
 public class class14 {
-	@ObfuscatedName("bn")
+	@ObfuscatedName("bk")
+	@Export("fontHelvetica13")
+	static java.awt.Font fontHelvetica13;
+	@ObfuscatedName("by")
 	@Export("loginScreenFontMetrics")
 	static FontMetrics loginScreenFontMetrics;
-	@ObfuscatedName("so")
+	@ObfuscatedName("jw")
 	@ObfuscatedSignature(
-		descriptor = "Lut;"
+		descriptor = "Lpu;"
 	)
-	@Export("privateChatMode")
-	static PrivateChatMode privateChatMode;
-	@ObfuscatedName("aw")
+	@Export("fontPlain11")
+	static Font fontPlain11;
+	@ObfuscatedName("vb")
 	@ObfuscatedGetter(
-		intValue = -965260769
+		intValue = 79874921
 	)
-	final int field82;
-	@ObfuscatedName("ay")
-	final String field74;
-	@ObfuscatedName("ar")
-	final ThreadFactory field75;
-	@ObfuscatedName("am")
-	final ThreadPoolExecutor field76;
+	static int field76;
+	@ObfuscatedName("ac")
+	@ObfuscatedGetter(
+		intValue = -684920487
+	)
+	final int field73;
+	@ObfuscatedName("al")
+	final String field81;
+	@ObfuscatedName("ak")
+	final ThreadFactory field72;
+	@ObfuscatedName("ax")
+	final ThreadPoolExecutor field75;
 
 	public class14(String var1, int var2, int var3) {
-		this.field74 = var1;
-		this.field82 = var2;
-		this.field75 = new class16(this);
-		this.field76 = this.method183(var3);
+		this.field81 = var1;
+		this.field73 = var2;
+		this.field72 = new class16(this);
+		this.field75 = this.method179(var3);
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
 		descriptor = "(II)Ljava/util/concurrent/ThreadPoolExecutor;",
-		garbageValue = "-936222323"
+		garbageValue = "-1100148281"
 	)
-	final ThreadPoolExecutor method183(int var1) {
-		return new ThreadPoolExecutor(var1, var1, 0L, TimeUnit.MILLISECONDS, new ArrayBlockingQueue(this.field82), this.field75);
+	final ThreadPoolExecutor method179(int var1) {
+		return new ThreadPoolExecutor(var1, var1, 0L, TimeUnit.MILLISECONDS, new ArrayBlockingQueue(this.field73), this.field72);
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(Laq;I)Lad;",
-		garbageValue = "1690553514"
+		descriptor = "(Lag;B)Lai;",
+		garbageValue = "26"
 	)
-	public class18 method182(class10 var1) {
-		if (this.field76.getQueue().remainingCapacity() <= 0) {
-			System.err.println("REST thread pool queue is empty\r\nThread pool size " + this.field76.getCorePoolSize() + " Queue capacity " + this.field82);
+	public class18 method174(class10 var1) {
+		if (this.field75.getQueue().remainingCapacity() <= 0) {
+			System.err.println("REST thread pool queue is empty\r\nThread pool size " + this.field75.getCorePoolSize() + " Queue capacity " + this.field73);
 			return new class18("Queue full");
 		} else {
-			class18 var2 = new class18(this.field76.submit(new class19(this, var1)));
+			class18 var2 = new class18(this.field75.submit(new class19(this, var1)));
 			return var2;
 		}
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "1652727695"
+		garbageValue = "-1393067878"
 	)
-	public final void method184() {
+	public final void method175() {
 		try {
-			this.field76.shutdown();
+			this.field75.shutdown();
 		} catch (Exception var2) {
 			System.err.println("Error shutting down RestRequestService\r\n" + var2);
 		}
@@ -77,32 +85,37 @@ public class class14 {
 	}
 
 	@ObfuscatedName("ay")
-	public static double method190(double var0, double var2, double var4) {
-		return class133.method3042((var0 - var2) / var4) / var4;
-	}
-
-	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(I)Ljava/lang/String;",
-		garbageValue = "-1748832285"
+		descriptor = "(II)Lja;",
+		garbageValue = "1251737533"
 	)
-	static String method186() {
-		String var0;
-		if (class150.clientPreferences.method2467()) {
-			String var2 = Login.Login_username;
-			int var4 = var2.length();
-			char[] var5 = new char[var4];
-
-			for (int var6 = 0; var6 < var4; ++var6) {
-				var5[var6] = '*';
+	@Export("getFrames")
+	static Frames getFrames(int var0) {
+		Frames var1 = (Frames)SequenceDefinition.SequenceDefinition_cachedFrames.get((long)var0);
+		if (var1 != null) {
+			return var1;
+		} else {
+			var1 = class163.method3363(SequenceDefinition.SequenceDefinition_animationsArchive, SequenceDefinition.SequenceDefinition_skeletonsArchive, var0, false);
+			if (var1 != null) {
+				SequenceDefinition.SequenceDefinition_cachedFrames.put(var1, (long)var0);
 			}
 
-			String var3 = new String(var5);
-			var0 = var3;
-		} else {
-			var0 = Login.Login_username;
+			return var1;
 		}
+	}
 
-		return var0;
+	@ObfuscatedName("nl")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;B)V",
+		garbageValue = "-63"
+	)
+	@Export("clanKickUser")
+	static final void clanKickUser(String var0) {
+		if (class358.friendsChat != null) {
+			PacketBufferNode var1 = ClanChannelMember.getPacketBufferNode(ClientPacket.CLAN_KICKUSER, Client.packetWriter.isaacCipher);
+			var1.packetBuffer.writeByte(class478.stringCp1252NullTerminatedByteSize(var0));
+			var1.packetBuffer.writeStringCp1252NullTerminated(var0);
+			Client.packetWriter.addNode(var1);
+		}
 	}
 }

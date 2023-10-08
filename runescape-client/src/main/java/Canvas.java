@@ -1,38 +1,21 @@
 import java.awt.Component;
 import java.awt.Graphics;
+import java.net.URL;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("af")
+@ObfuscatedName("at")
 @Implements("Canvas")
 public final class Canvas extends java.awt.Canvas {
-	@ObfuscatedName("fu")
+	@ObfuscatedName("sa")
 	@ObfuscatedSignature(
-		descriptor = "Lny;"
+		descriptor = "Lva;"
 	)
-	@Export("archive9")
-	static Archive archive9;
-	@ObfuscatedName("nx")
-	@ObfuscatedGetter(
-		intValue = -1334765077
-	)
-	@Export("menuX")
-	static int menuX;
-	@ObfuscatedName("sm")
-	@ObfuscatedSignature(
-		descriptor = "Lqk;"
-	)
-	@Export("friendsChat")
-	static FriendsChat friendsChat;
-	@ObfuscatedName("um")
-	@ObfuscatedGetter(
-		intValue = -188497920
-	)
-	static int field124;
-	@ObfuscatedName("aw")
+	@Export("privateChatMode")
+	static PrivateChatMode privateChatMode;
+	@ObfuscatedName("ac")
 	@Export("component")
 	Component component;
 
@@ -48,48 +31,59 @@ public final class Canvas extends java.awt.Canvas {
 		this.component.paint(var1);
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(IIII)Lud;",
-		garbageValue = "-2020031634"
+		descriptor = "(I)Z",
+		garbageValue = "-1989828526"
 	)
-	static SpritePixels method320(int var0, int var1, int var2) {
-		DemotingHashTable var3 = WorldMapRegion.WorldMapRegion_cachedSprites;
-		long var4 = (long)(var2 << 16 | var0 << 8 | var1);
-		return (SpritePixels)var3.get(var4);
+	@Export("loadWorlds")
+	static boolean loadWorlds() {
+		try {
+			if (class91.World_request == null) {
+				class91.World_request = AbstractWorldMapIcon.urlRequester.request(new URL(class59.field450));
+			} else if (class91.World_request.isDone()) {
+				byte[] var0 = class91.World_request.getResponse();
+				Buffer var1 = new Buffer(var0);
+				var1.readInt();
+				World.World_count = var1.readUnsignedShort();
+				UserComparator3.World_worlds = new World[World.World_count];
+
+				World var3;
+				for (int var2 = 0; var2 < World.World_count; var3.index = var2++) {
+					var3 = UserComparator3.World_worlds[var2] = new World();
+					var3.id = var1.readUnsignedShort();
+					var3.properties = var1.readInt();
+					var3.host = var1.readStringCp1252NullTerminated();
+					var3.activity = var1.readStringCp1252NullTerminated();
+					var3.location = var1.readUnsignedByte();
+					var3.population = var1.readShort();
+				}
+
+				class12.sortWorlds(UserComparator3.World_worlds, 0, UserComparator3.World_worlds.length - 1, World.World_sortOption1, World.World_sortOption2);
+				class91.World_request = null;
+				return true;
+			}
+		} catch (Exception var4) {
+			var4.printStackTrace();
+			class91.World_request = null;
+		}
+
+		return false;
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(CI)Z",
-		garbageValue = "-1227105827"
+		descriptor = "(Lnm;I)I",
+		garbageValue = "-907105353"
 	)
-	@Export("isCharAlphabetic")
-	public static boolean isCharAlphabetic(char var0) {
-		return var0 >= 'A' && var0 <= 'Z' || var0 >= 'a' && var0 <= 'z';
-	}
-
-	@ObfuscatedName("at")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)V",
-		garbageValue = "590249840"
-	)
-	static final void method321(String var0) {
-		PacketBufferNode var1 = class503.getPacketBufferNode(ClientPacket.field3143, Client.packetWriter.isaacCipher);
-		var1.packetBuffer.writeByte(class501.stringCp1252NullTerminatedByteSize(var0));
-		var1.packetBuffer.writeStringCp1252NullTerminated(var0);
-		Client.packetWriter.addNode(var1);
-	}
-
-	@ObfuscatedName("ab")
-	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "1064085790"
-	)
-	static final int method322(int var0, int var1) {
-		int var2 = var1 * 57 + var0;
-		var2 ^= var2 << 13;
-		int var3 = (var2 * var2 * 15731 + 789221) * var2 + 1376312589 & Integer.MAX_VALUE;
-		return var3 >> 19 & 255;
+	static int method320(Widget var0) {
+		if (var0.type != 11) {
+			Interpreter.Interpreter_stringStack[class180.Interpreter_stringStackSize - 1] = "";
+			return 1;
+		} else {
+			String var1 = Interpreter.Interpreter_stringStack[--class180.Interpreter_stringStackSize];
+			Interpreter.Interpreter_stringStack[++class180.Interpreter_stringStackSize - 1] = var0.method6606(var1);
+			return 1;
+		}
 	}
 }

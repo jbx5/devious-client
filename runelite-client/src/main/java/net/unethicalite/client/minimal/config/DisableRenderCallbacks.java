@@ -1,6 +1,5 @@
 package net.unethicalite.client.minimal.config;
 
-import net.runelite.api.Model;
 import net.runelite.api.Renderable;
 import net.runelite.api.Scene;
 import net.runelite.api.SceneTileModel;
@@ -32,12 +31,6 @@ public class DisableRenderCallbacks implements DrawCallbacks
 	public void draw(int overlayColor)
 	{
 
-	}
-
-	@Override
-	public boolean drawFace(Model model, int face)
-	{
-		return false;
 	}
 
 	@Override

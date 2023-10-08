@@ -4,35 +4,43 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hz")
+@ObfuscatedName("hb")
 @Implements("HorizontalAlignment")
 public enum HorizontalAlignment implements MouseWheel {
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Lhz;"
+		descriptor = "Lhb;"
 	)
-	field1989(1, 0),
-	@ObfuscatedName("ay")
+	field2032(1, 0),
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "Lhz;"
+		descriptor = "Lhb;"
 	)
 	@Export("HorizontalAlignment_centered")
 	HorizontalAlignment_centered(0, 1),
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Lhz;"
+		descriptor = "Lhb;"
 	)
-	field1985(2, 2);
+	field2027(2, 2);
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("gj")
+	@ObfuscatedSignature(
+		descriptor = "Lok;"
+	)
+	static Archive field2028;
+	@ObfuscatedName("jf")
+	@Export("regionMapArchiveIds")
+	static int[] regionMapArchiveIds;
+	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = -1696553751
+		intValue = -328609999
 	)
 	@Export("value")
 	public final int value;
-	@ObfuscatedName("as")
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = 29547921
+		intValue = -507682681
 	)
 	@Export("id")
 	final int id;
@@ -42,31 +50,13 @@ public enum HorizontalAlignment implements MouseWheel {
 		this.id = var4;
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "1644350448"
+		garbageValue = "-1243971674"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.id;
-	}
-
-	@ObfuscatedName("av")
-	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "-858932897"
-	)
-	public static boolean method3701() {
-		return !class306.field3398.isEmpty();
-	}
-
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "(Lbj;I)V",
-		garbageValue = "-539334926"
-	)
-	public static final void method3697(class51 var0) {
-		class309.pcmPlayerProvider = var0;
 	}
 }

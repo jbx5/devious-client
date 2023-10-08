@@ -4,46 +4,49 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("pe")
+@ObfuscatedName("pi")
 @Implements("AddRequestTask")
-public class AddRequestTask extends SongTask
-{
+public class AddRequestTask extends SongTask {
+	@ObfuscatedName("am")
+	@Export("SpriteBuffer_pixels")
+	public static byte[][] SpriteBuffer_pixels;
+
 	@ObfuscatedSignature(
-		descriptor = "(Lpp;)V"
+		descriptor = "(Lqm;)V"
 	)
 	public AddRequestTask(SongTask var1) {
 		super(var1);
-		super.songTaskName = "AddRequestTask";
+		super.field4572 = "AddRequestTask";
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(II)Z",
-		garbageValue = "994462530"
+		descriptor = "(B)Z",
+		garbageValue = "-90"
 	)
-	public boolean vmethod7676(int var1) {
-		while (!class306.field3396.isEmpty()) {
-			MusicSong var2 = (MusicSong)class306.field3396.peek();
-			if (var2 == null) {
-				class306.field3396.pop();
+	public boolean vmethod7780() {
+		while (!class319.field3428.isEmpty()) {
+			MusicSong var1 = (MusicSong)class319.field3428.peek();
+			if (var1 == null) {
+				class319.field3428.pop();
 			} else {
-				var2.midiPcmStream = this.method7611();
-				class306.musicSongs.add(var2);
-				class306.field3396.pop();
+				var1.midiPcmStream = this.method7733();
+				class319.musicSongs.add(var1);
+				class319.field3428.pop();
 			}
 		}
 
 		return true;
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(I)Llc;",
-		garbageValue = "1784609156"
+		descriptor = "(B)Lmt;",
+		garbageValue = "4"
 	)
-	MidiPcmStream method7611() {
+	MidiPcmStream method7733() {
 		MidiPcmStream var1 = null;
-		Iterator var2 = class306.field3395.iterator();
+		Iterator var2 = class319.field3431.iterator();
 
 		while (true) {
 			MidiPcmStream var3;
@@ -51,10 +54,10 @@ public class AddRequestTask extends SongTask
 				do {
 					if (!var2.hasNext()) {
 						if (var1 != null) {
-							++var1.field3439;
-							if (var1.method5816() == 0 && var1.isReady()) {
+							++var1.field3450;
+							if (var1.method5971() == 0 && var1.isReady()) {
 								var1.clear();
-								var1.method5820();
+								var1.method6044();
 								var1.setPcmStreamVolume(0);
 							}
 						}
@@ -64,44 +67,37 @@ public class AddRequestTask extends SongTask
 
 					var3 = (MidiPcmStream)var2.next();
 				} while(var3 == null);
-			} while(var1 != null && var1.field3439 <= var3.field3439 && (var3.field3439 != var1.field3439 || var3.method5816() != 0 || !var3.isReady()));
+			} while(var1 != null && var1.field3450 <= var3.field3450 && (var3.method5971() != 0 || !var3.isReady()));
 
 			var1 = var3;
 		}
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("gs")
 	@ObfuscatedSignature(
-		descriptor = "(Lmt;I[B[BS)V",
-		garbageValue = "24138"
+		descriptor = "(I)V",
+		garbageValue = "1457106589"
 	)
-	@Export("Widget_setKey")
-	static final void Widget_setKey(Widget var0, int var1, byte[] var2, byte[] var3) {
-		if (var0.field3711 == null) {
-			if (var2 == null) {
-				return;
-			}
+	static final void method7739() {
+		Scene.Scene_isLowDetail = false;
+		Client.isLowDetail = false;
+	}
 
-			var0.field3711 = new byte[11][];
-			var0.field3700 = new byte[11][];
-			var0.field3657 = new int[11];
-			var0.field3630 = new int[11];
+	@ObfuscatedName("la")
+	@ObfuscatedSignature(
+		descriptor = "(II)V",
+		garbageValue = "19136899"
+	)
+	static final void method7738(int var0) {
+		if (var0 >= 0) {
+			int var1 = Client.menuArguments1[var0];
+			int var2 = Client.menuArguments2[var0];
+			int var3 = Client.menuOpcodes[var0];
+			int var4 = Client.menuIdentifiers[var0];
+			int var5 = Client.menuItemIds[var0];
+			String var6 = Client.menuActions[var0];
+			String var7 = Client.menuTargets[var0];
+			class33.menuAction(var1, var2, var3, var4, var5, var6, var7, MouseHandler.MouseHandler_lastPressedX, MouseHandler.MouseHandler_lastPressedY);
 		}
-
-		var0.field3711[var1] = var2;
-		if (var2 != null) {
-			var0.field3698 = true;
-		} else {
-			var0.field3698 = false;
-
-			for (int var4 = 0; var4 < var0.field3711.length; ++var4) {
-				if (var0.field3711[var4] != null) {
-					var0.field3698 = true;
-					break;
-				}
-			}
-		}
-
-		var0.field3700[var1] = var3;
 	}
 }

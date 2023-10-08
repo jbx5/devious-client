@@ -1,33 +1,39 @@
+import java.awt.Desktop;
+import java.awt.Desktop.Action;
+import java.net.URI;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jk")
+@ObfuscatedName("jp")
 @Implements("VertexNormal")
 public class VertexNormal {
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ao")
+	@Export("Tiles_overlays")
+	static short[][][] Tiles_overlays;
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = -929686261
+		intValue = -1814285237
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = 1772790621
+		intValue = 677675313
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = -1782288159
+		intValue = 1463557097
 	)
 	@Export("z")
 	int z;
-	@ObfuscatedName("am")
+	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = 1353901163
+		intValue = 169341921
 	)
 	@Export("magnitude")
 	int magnitude;
@@ -36,7 +42,7 @@ public class VertexNormal {
 	}
 
 	@ObfuscatedSignature(
-		descriptor = "(Ljk;)V"
+		descriptor = "(Ljp;)V"
 	)
 	VertexNormal(VertexNormal var1) {
 		this.x = var1.x;
@@ -45,17 +51,32 @@ public class VertexNormal {
 		this.magnitude = var1.magnitude;
 	}
 
-	@ObfuscatedName("ng")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(Lty;I)V",
-		garbageValue = "1893711820"
+		descriptor = "(Ljava/lang/String;ZZI)V",
+		garbageValue = "-2141219999"
 	)
-	static void method4951(Buffer var0) {
-		if (Client.randomDatData != null) {
-			var0.writeBytes(Client.randomDatData, 0, Client.randomDatData.length);
+	@Export("openURL")
+	public static void openURL(String var0, boolean var1, boolean var2) {
+		if (var1) {
+			if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Action.BROWSE)) {
+				try {
+					Desktop.getDesktop().browse(new URI(var0));
+					return;
+				} catch (Exception var4) {
+				}
+			}
+
+			if (class31.field170.startsWith("win")) {
+				Friend.method8021(var0, 0, "openjs");
+			} else if (class31.field170.startsWith("mac")) {
+				Friend.method8021(var0, 1, "openjs");
+			} else {
+				Friend.method8021(var0, 2, "openjs");
+			}
 		} else {
-			byte[] var1 = class215.method4223();
-			var0.writeBytes(var1, 0, var1.length);
+			Friend.method8021(var0, 3, "openjs");
 		}
+
 	}
 }

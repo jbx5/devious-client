@@ -32,6 +32,7 @@ import net.runelite.api.Renderable;
 import net.runelite.api.Skill;
 import net.runelite.api.events.BeforeMenuRender;
 import net.runelite.api.events.BeforeRender;
+import net.runelite.api.events.Draw;
 import net.runelite.api.events.FakeXpDrop;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.GameTick;
@@ -52,6 +53,7 @@ import net.runelite.client.task.Scheduler;
 import net.runelite.client.ui.DrawManager;
 import net.runelite.client.ui.overlay.OverlayLayer;
 import net.runelite.client.util.DeferredEventBus;
+import net.runelite.client.util.LinkBrowser;
 import net.runelite.client.util.RSTimeUnit;
 import net.unethicalite.client.minimal.overlay.MinimalOverlayRenderer;
 import net.unethicalite.client.minimal.ui.MinimalUI;
@@ -415,6 +417,10 @@ public class MinimalHooks implements Callbacks
 
 		final Graphics2D graphics2d = getGraphics(mainBufferProvider);
 
+		Draw draw = Draw.getInstance();
+		draw.setGraphics(graphics2d);
+		eventBus.post(draw);
+
 		try
 		{
 			renderer.renderOverlayLayer(graphics2d, OverlayLayer.ALWAYS_ON_TOP);
@@ -614,5 +620,11 @@ public class MinimalHooks implements Callbacks
 	public interface RenderableDrawListener
 	{
 		boolean draw(Renderable renderable, boolean ui);
+	}
+
+	@Override
+	public void openUrl(String url)
+	{
+		LinkBrowser.browse(url);
 	}
 }

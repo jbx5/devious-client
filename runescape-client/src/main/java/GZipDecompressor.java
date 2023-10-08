@@ -4,10 +4,10 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("un")
+@ObfuscatedName("vb")
 @Implements("GZipDecompressor")
 public class GZipDecompressor {
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@Export("inflater")
 	Inflater inflater;
 
@@ -22,10 +22,10 @@ public class GZipDecompressor {
 	GZipDecompressor(int var1, int var2, int var3) {
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(Lty;[BB)V",
-		garbageValue = "0"
+		descriptor = "(Lul;[BI)V",
+		garbageValue = "-684526708"
 	)
 	@Export("decompress")
 	public void decompress(Buffer var1, byte[] var2) {
@@ -46,14 +46,5 @@ public class GZipDecompressor {
 		} else {
 			throw new RuntimeException("");
 		}
-	}
-
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "(S)[Lfj;",
-		garbageValue = "12402"
-	)
-	static class138[] method9734() {
-		return new class138[]{class138.field1618, class138.field1616, class138.field1622, class138.field1615, class138.field1619, class138.field1617, class138.field1621, class138.field1620, class138.field1623};
 	}
 }

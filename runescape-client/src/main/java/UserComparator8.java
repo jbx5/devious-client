@@ -3,10 +3,25 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("es")
+@ObfuscatedName("et")
 @Implements("UserComparator8")
 public class UserComparator8 extends AbstractUserComparator {
-	@ObfuscatedName("aw")
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "[Ltl;"
+	)
+	@Export("JagexCache_idxFiles")
+	public static BufferedFile[] JagexCache_idxFiles;
+	@ObfuscatedName("ev")
+	@Export("mouseCam")
+	static boolean mouseCam;
+	@ObfuscatedName("kn")
+	@ObfuscatedSignature(
+		descriptor = "[Lud;"
+	)
+	@Export("headIconHintSprites")
+	static SpritePixels[] headIconHintSprites;
+	@ObfuscatedName("ac")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -14,10 +29,10 @@ public class UserComparator8 extends AbstractUserComparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(Lqa;Lqa;I)I",
-		garbageValue = "315336460"
+		descriptor = "(Lri;Lri;B)I",
+		garbageValue = "0"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -36,38 +51,76 @@ public class UserComparator8 extends AbstractUserComparator {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2);
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("kn")
 	@ObfuscatedSignature(
-		descriptor = "(Ldi;III)V",
-		garbageValue = "-574325390"
+		descriptor = "(B)V",
+		garbageValue = "0"
 	)
-	@Export("runScript")
-	static void runScript(ScriptEvent var0, int var1, int var2) {
-		Object[] var3 = var0.args;
-		Script var4;
-		if (class345.isWorldMapEvent(var0.type)) {
-			ScriptFrame.worldMapEvent = (WorldMapEvent)var3[0];
-			WorldMapElement var6 = SequenceDefinition.WorldMapElement_get(ScriptFrame.worldMapEvent.mapElement);
-			var4 = GameEngine.getWorldMapScript(var0.type, var6.objectId, var6.category);
-		} else {
-			int var5 = (Integer)var3[0];
-			var4 = Interpreter.getScript(var5);
+	static final void method2890() {
+		for (PendingSpawn var0 = (PendingSpawn)Client.pendingSpawns.last(); var0 != null; var0 = (PendingSpawn)Client.pendingSpawns.previous()) {
+			if (var0.hitpoints > 0) {
+				--var0.hitpoints;
+			}
+
+			boolean var1;
+			int var2;
+			int var3;
+			ObjectComposition var4;
+			if (var0.hitpoints == 0) {
+				if (var0.objectId >= 0) {
+					var2 = var0.objectId;
+					var3 = var0.field1176;
+					var4 = class91.getObjectDefinition(var2);
+					if (var3 == 11) {
+						var3 = 10;
+					}
+
+					if (var3 >= 5 && var3 <= 8) {
+						var3 = 4;
+					}
+
+					var1 = var4.method4007(var3);
+					if (!var1) {
+						continue;
+					}
+				}
+
+				class115.addPendingSpawnToScene(var0.plane, var0.type, var0.x, var0.y, var0.objectId, var0.field1178, var0.field1176, var0.field1180);
+				var0.remove();
+			} else {
+				if (var0.delay > 0) {
+					--var0.delay;
+				}
+
+				if (var0.delay == 0 && var0.x >= 1 && var0.y >= 1 && var0.x <= 102 && var0.y <= 102) {
+					if (var0.field1177 >= 0) {
+						var2 = var0.field1177;
+						var3 = var0.field1173;
+						var4 = class91.getObjectDefinition(var2);
+						if (var3 == 11) {
+							var3 = 10;
+						}
+
+						if (var3 >= 5 && var3 <= 8) {
+							var3 = 4;
+						}
+
+						var1 = var4.method4007(var3);
+						if (!var1) {
+							continue;
+						}
+					}
+
+					class115.addPendingSpawnToScene(var0.plane, var0.type, var0.x, var0.y, var0.field1177, var0.field1170, var0.field1173, var0.field1180);
+					var0.delay = -1;
+					if (var0.objectId == var0.field1177 && var0.objectId == -1) {
+						var0.remove();
+					} else if (var0.objectId == var0.field1177 && var0.field1170 == var0.field1178 && var0.field1173 == var0.field1176) {
+						var0.remove();
+					}
+				}
+			}
 		}
 
-		if (var4 != null) {
-			class18.runScriptLogic(var0, var4, var1, var2);
-		}
-
-	}
-
-	@ObfuscatedName("nt")
-	@ObfuscatedSignature(
-		descriptor = "(Lmt;B)I",
-		garbageValue = "-68"
-	)
-	@Export("getWidgetFlags")
-	static int getWidgetFlags(Widget var0) {
-		IntegerNode var1 = (IntegerNode)Client.widgetFlags.get((long)var0.childIndex + ((long)var0.id << 32));
-		return var1 != null ? var1.integer : var0.flags;
 	}
 }

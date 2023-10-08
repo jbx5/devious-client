@@ -7,31 +7,37 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gv")
+@ObfuscatedName("gw")
 @Implements("TaskHandler")
 public class TaskHandler implements Runnable {
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@Export("javaVendor")
 	public static String javaVendor;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("al")
 	@Export("javaVersion")
 	public static String javaVersion;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("dk")
 	@ObfuscatedSignature(
-		descriptor = "Lgu;"
+		descriptor = "[Lun;"
+	)
+	@Export("worldSelectStars")
+	static IndexedSprite[] worldSelectStars;
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "Lhi;"
 	)
 	@Export("current")
 	Task current;
-	@ObfuscatedName("am")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "Lgu;"
+		descriptor = "Lhi;"
 	)
 	@Export("task")
 	Task task;
-	@ObfuscatedName("as")
+	@ObfuscatedName("ao")
 	@Export("thread")
 	Thread thread;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ah")
 	@Export("isClosed")
 	boolean isClosed;
 
@@ -55,10 +61,10 @@ public class TaskHandler implements Runnable {
 		this.thread.start();
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-226500506"
+		descriptor = "(B)V",
+		garbageValue = "0"
 	)
 	@Export("close")
 	public final void close() {
@@ -74,10 +80,10 @@ public class TaskHandler implements Runnable {
 
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(IIILjava/lang/Object;I)Lgu;",
-		garbageValue = "1529565884"
+		descriptor = "(IIILjava/lang/Object;B)Lhi;",
+		garbageValue = "99"
 	)
 	@Export("newTask")
 	final Task newTask(int var1, int var2, int var3, Object var4) {
@@ -98,20 +104,20 @@ public class TaskHandler implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;II)Lgu;",
-		garbageValue = "-907549820"
+		descriptor = "(Ljava/lang/String;IS)Lhi;",
+		garbageValue = "-20310"
 	)
 	@Export("newSocketTask")
 	public final Task newSocketTask(String var1, int var2) {
 		return this.newTask(1, var2, 0, var1);
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Runnable;II)Lgu;",
-		garbageValue = "2145317836"
+		descriptor = "(Ljava/lang/Runnable;II)Lhi;",
+		garbageValue = "-1310826122"
 	)
 	@Export("newThreadTask")
 	public final Task newThreadTask(Runnable var1, int var2) {
@@ -166,61 +172,34 @@ public class TaskHandler implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("bk")
+	@ObfuscatedName("ml")
 	@ObfuscatedSignature(
-		descriptor = "(Lmt;III)V",
-		garbageValue = "-302173760"
+		descriptor = "(Lnm;III)V",
+		garbageValue = "-23690326"
 	)
-	public static void method3518(Widget var0, int var1, int var2) {
-		PlayerComposition var3 = var0.field3681;
-		boolean var4 = var2 != var3.gender;
-		var3.gender = var2;
-		if (var4) {
-			int var5;
-			int var10;
-			if (var3.gender == var1) {
-				for (var5 = 0; var5 < PlayerComposition.equipmentIndices.length; ++var5) {
-					var10 = PlayerComposition.equipmentIndices[var5];
-					if (var3.equipment[var10] > 0 && var3.equipment[var10] < 512) {
-						var3.equipment[var10] = var3.field3566[var10];
-					}
-				}
-			} else {
-				label100: {
-					if (var3.equipment[0] >= 512) {
-						boolean var11;
-						if (var3.equipment[0] < 512) {
-							var11 = false;
-						} else {
-							ItemComposition var6 = class125.ItemDefinition_get(var3.equipment[0] - 512);
-							var11 = var6.maleModel1 != class210.field2297.field2292 && var6.maleModel2 != class210.field2297.field2292;
-						}
-
-						if (!var11) {
-							break label100;
-						}
-					}
-
-					var3.equipment[class210.field2297.field2292] = 1;
+	@Export("clickWidget")
+	static final void clickWidget(Widget var0, int var1, int var2) {
+		if (Client.clickedWidget == null && !Client.isMenuOpen) {
+			if (var0 != null && class275.method5566(var0) != null) {
+				Client.clickedWidget = var0;
+				Client.clickedWidgetParent = class275.method5566(var0);
+				Client.widgetClickX = var1;
+				Client.widgetClickY = var2;
+				FriendsChat.widgetDragDuration = 0;
+				Client.isDraggingWidget = false;
+				int var3 = AttackOption.method2714();
+				if (var3 != -1) {
+					class133.tempMenuAction = new MenuAction();
+					class133.tempMenuAction.param0 = Client.menuArguments1[var3];
+					class133.tempMenuAction.param1 = Client.menuArguments2[var3];
+					class133.tempMenuAction.opcode = Client.menuOpcodes[var3];
+					class133.tempMenuAction.identifier = Client.menuIdentifiers[var3];
+					class133.tempMenuAction.itemId = Client.menuItemIds[var3];
+					class133.tempMenuAction.action = Client.menuActions[var3];
+					class133.tempMenuAction.target = Client.menuTargets[var3];
 				}
 
-				for (var5 = 0; var5 < 7; ++var5) {
-					var10 = PlayerComposition.equipmentIndices[var5];
-					if (var3.equipment[var10] > 0 && var3.equipment[var10] < 512) {
-						int[] var7 = var3.equipment;
-
-						for (int var8 = 0; var8 < KitDefinition.KitDefinition_fileCount; ++var8) {
-							KitDefinition var9 = class132.KitDefinition_get(var8);
-							if (var9 != null && !var9.nonSelectable && (var2 == 1 ? 7 : 0) + var5 == var9.bodypartID) {
-								var7[PlayerComposition.equipmentIndices[var5]] = var8 + 256;
-								break;
-							}
-						}
-					}
-				}
 			}
 		}
-
-		var3.method6128();
 	}
 }

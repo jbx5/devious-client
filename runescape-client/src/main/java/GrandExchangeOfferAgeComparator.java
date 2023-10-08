@@ -4,13 +4,13 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ou")
+@ObfuscatedName("oy")
 @Implements("GrandExchangeOfferAgeComparator")
 final class GrandExchangeOfferAgeComparator implements Comparator {
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(Lol;Lol;I)I",
-		garbageValue = "693904147"
+		descriptor = "(Lod;Lod;I)I",
+		garbageValue = "-684725239"
 	)
 	@Export("compare_bridged")
 	int compare_bridged(GrandExchangeEvent var1, GrandExchangeEvent var2) {
@@ -23,5 +23,20 @@ final class GrandExchangeOfferAgeComparator implements Comparator {
 
 	public boolean equals(Object var1) {
 		return super.equals(var1);
+	}
+
+	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "(IIIZII)J",
+		garbageValue = "-2118619289"
+	)
+	@Export("calculateTag")
+	public static long calculateTag(int var0, int var1, int var2, boolean var3, int var4) {
+		long var5 = (long)((var0 & 127) << 0 | (var1 & 127) << 7 | (var2 & 3) << 14) | ((long)var4 & 4294967295L) << 17;
+		if (var3) {
+			var5 |= 65536L;
+		}
+
+		return var5;
 	}
 }

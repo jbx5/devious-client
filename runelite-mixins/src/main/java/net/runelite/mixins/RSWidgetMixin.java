@@ -40,9 +40,11 @@ import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetItem;
 import net.runelite.api.widgets.WidgetPositionMode;
 import net.runelite.rs.api.RSClient;
+import net.runelite.rs.api.RSFont;
 import net.runelite.rs.api.RSModel;
 import net.runelite.rs.api.RSNPCComposition;
-import net.runelite.rs.api.RSNewStuff;
+import net.runelite.rs.api.RSWidgetDefinition;
+import net.runelite.rs.api.RSNpcOverrides;
 import net.runelite.rs.api.RSNode;
 import net.runelite.rs.api.RSNodeHashTable;
 import net.runelite.rs.api.RSPlayerComposition;
@@ -617,7 +619,7 @@ public abstract class RSWidgetMixin implements RSWidget
 		assert client.isClientThread() : "revalidateScroll must be called on client thread";
 
 		client.revalidateWidget(this);
-		client.revalidateWidgetScroll(client.getWidgets()[TO_GROUP(this.getId())], this, false);
+		client.revalidateWidgetScroll(client.getWidgetDefinition().getWidgets()[TO_GROUP(this.getId())], this, false);
 	}
 
 	@Inject
@@ -633,13 +635,13 @@ public abstract class RSWidgetMixin implements RSWidget
 	@Copy("getModel")
 	@Replace("getModel")
 	@SuppressWarnings("InfiniteRecursion")
-	public RSModel copy$getModel(RSSequenceDefinition sequence, int frame, boolean alternate, RSPlayerComposition playerComposition, RSNPCComposition npcComposition, RSNewStuff newStuff)
+	public RSModel copy$getModel(RSWidgetDefinition widgetDefinition, RSSequenceDefinition sequence, int frame, boolean alternate, RSPlayerComposition playerComposition, RSNPCComposition npcComposition, RSNpcOverrides npcOverrides)
 	{
 		if (frame != -1 && client.isInterpolateWidgetAnimations())
 		{
 			frame = frame | getModelFrameCycle() << 16 | Integer.MIN_VALUE;
 		}
-		return copy$getModel(sequence, frame, alternate, playerComposition, npcComposition, newStuff);
+		return copy$getModel(widgetDefinition, sequence, frame, alternate, playerComposition, npcComposition, npcOverrides);
 	}
 
 	@Inject
@@ -762,5 +764,12 @@ public abstract class RSWidgetMixin implements RSWidget
 			widget.setRelativeY(y - widget.getHeight() - (y * widget.getOriginalY() >> 14));
 			widget.setForcedY();
 		}
+	}
+
+	@Inject
+	@Override
+	public RSFont getFont()
+	{
+		return getRSFont(client.getWidgetDefinition());
 	}
 }

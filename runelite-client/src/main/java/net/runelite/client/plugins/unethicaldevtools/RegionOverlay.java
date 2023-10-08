@@ -17,6 +17,7 @@ import net.runelite.client.ui.overlay.OverlayPriority;
 import net.unethicalite.api.movement.pathfinder.GlobalCollisionMap;
 import net.unethicalite.api.movement.pathfinder.TransportLoader;
 import net.unethicalite.api.movement.pathfinder.Walker;
+import net.unethicalite.api.movement.pathfinder.model.Teleport;
 import net.unethicalite.api.movement.pathfinder.model.Transport;
 import net.unethicalite.api.scene.Tiles;
 import net.unethicalite.api.utils.CoordUtils;
@@ -31,8 +32,11 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
+
+import static net.unethicalite.api.movement.pathfinder.Walker.buildTeleportLinks;
 
 @Singleton
 @Slf4j
@@ -44,6 +48,7 @@ public class RegionOverlay extends Overlay
 	private final GlobalCollisionMap collisionMap;
 	private final Client client;
 	private final ExecutorService executorService;
+	private WorldPoint startTile;
 
 	private List<WorldPoint> path = new ArrayList<>();
 
@@ -146,23 +151,21 @@ public class RegionOverlay extends Overlay
 		{
 			return;
 		}
-
 		Point mouse = client.getMouseCanvasPosition();
 
 		Widget worldMap = Widgets.get(WidgetInfo.WORLD_MAP_VIEW);
 		if (worldMap == null)
 		{
+			if (!event.getFirstEntry().getOption().equals("Walk here"))
+			{
+				return;
+			}
 			Tile clickPoint = Tiles.getHoveredTile();
 			if (clickPoint == null)
 			{
 				return;
 			}
-
-			client.createMenuEntry(1)
-					.setOption("<col=00ff00>Debug:</col>")
-					.setTarget("Calculate path")
-					.setType(MenuAction.RUNELITE_OVERLAY)
-					.onClick(e -> executorService.execute(() -> path = Walker.calculatePath(clickPoint.getWorldLocation())));
+			generateMenu(clickPoint.getWorldLocation());
 		}
 		else
 		{
@@ -170,20 +173,60 @@ public class RegionOverlay extends Overlay
 			{
 				return;
 			}
+			WorldPoint clickPoint = CoordUtils.worldMapToWorldPoint(mouse);
+			if (clickPoint == null)
+			{
+				return;
+			}
+			generateMenu(clickPoint);
+		}
+	}
 
+	private void generateMenu(WorldPoint clickPoint)
+	{
+		client.createMenuEntry(1)
+			.setOption("<col=00ff00>Debug:</col>")
+			.setTarget("Calculate path")
+			.setType(MenuAction.RUNELITE_OVERLAY)
+			.onClick(e -> {
+				if (startTile == null)
+				{
+					executorService.execute(() -> path = Walker.calculatePath(clickPoint));
+				}
+				else
+				{
+					LinkedHashMap<WorldPoint, Teleport> teleports = buildTeleportLinks(clickPoint.toWorldArea());
+					List<WorldPoint> startPoints = new ArrayList<>(teleports.keySet());
+					startPoints.add(startTile);
+					executorService.execute(() -> path = Walker.calculatePath(
+						startPoints, clickPoint));
+				}
+			});
+		if (!path.isEmpty())
+		{
 			client.createMenuEntry(1)
-					.setOption("<col=00ff00>Debug:</col>")
-					.setTarget("Calculate path")
-					.setType(MenuAction.RUNELITE_OVERLAY)
-					.onClick(e ->
+				.setOption("<col=00ff00>Debug:</col>")
+				.setTarget("Set start")
+				.setType(MenuAction.RUNELITE_OVERLAY)
+				.onClick(e -> {
+						startTile = clickPoint;
+						LinkedHashMap<WorldPoint, Teleport> teleports = buildTeleportLinks(clickPoint.toWorldArea());
+						List<WorldPoint> startPoints = new ArrayList<>(teleports.keySet());
+						startPoints.add(startTile);
+						executorService.execute(() -> path = Walker.calculatePath(
+							startPoints, path.get(path.size() - 1)));
+					}
+				);
+			client.createMenuEntry(1)
+				.setOption("<col=00ff00>Debug:</col>")
+				.setTarget("Clear path")
+				.setType(MenuAction.RUNELITE_OVERLAY)
+				.onClick(e ->
 					{
-						WorldPoint clickPoint = CoordUtils.worldMapToWorldPoint(mouse);
-						if (clickPoint == null)
-						{
-							return;
-						}
-						executorService.execute(() -> path = Walker.calculatePath(clickPoint));
-					});
+						executorService.execute(() -> path.clear());
+						startTile = null;
+					}
+				);
 		}
 	}
 }

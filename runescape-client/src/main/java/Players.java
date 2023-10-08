@@ -4,67 +4,67 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("el")
+@ObfuscatedName("ei")
 @Implements("Players")
 public class Players {
-	@ObfuscatedName("ar")
-	static byte[] field1362;
-	@ObfuscatedName("am")
+	@ObfuscatedName("ak")
+	static byte[] field1377;
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "[Lio;"
+		descriptor = "[Lip;"
 	)
-	static class218[] field1363;
-	@ObfuscatedName("as")
+	static class231[] field1370;
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "[Lty;"
+		descriptor = "[Lul;"
 	)
-	static Buffer[] field1360;
-	@ObfuscatedName("aj")
+	static Buffer[] field1373;
+	@ObfuscatedName("ah")
 	@ObfuscatedGetter(
-		intValue = -240814297
+		intValue = -1030271551
 	)
 	@Export("Players_count")
 	static int Players_count;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ar")
 	@Export("Players_indices")
 	static int[] Players_indices;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ab")
 	@ObfuscatedGetter(
-		intValue = 612840329
+		intValue = -1755360327
 	)
 	@Export("Players_emptyIdxCount")
 	static int Players_emptyIdxCount;
-	@ObfuscatedName("av")
+	@ObfuscatedName("am")
 	@Export("Players_emptyIndices")
 	static int[] Players_emptyIndices;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("av")
 	@Export("Players_regions")
 	static int[] Players_regions;
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ag")
 	@Export("Players_orientations")
 	static int[] Players_orientations;
-	@ObfuscatedName("at")
+	@ObfuscatedName("aa")
 	@Export("Players_targetIndices")
 	static int[] Players_targetIndices;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = -1418055473
+		intValue = 734156083
 	)
 	@Export("Players_pendingUpdateCount")
 	static int Players_pendingUpdateCount;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ay")
 	@Export("Players_pendingUpdateIndices")
 	static int[] Players_pendingUpdateIndices;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
-		descriptor = "Lty;"
+		descriptor = "Lul;"
 	)
-	static Buffer field1374;
+	static Buffer field1371;
 
 	static {
-		field1362 = new byte[2048];
-		field1363 = new class218[2048];
-		field1360 = new Buffer[2048];
+		field1377 = new byte[2048];
+		field1370 = new class231[2048];
+		field1373 = new Buffer[2048];
 		Players_count = 0;
 		Players_indices = new int[2048];
 		Players_emptyIdxCount = 0;
@@ -74,15 +74,31 @@ public class Players {
 		Players_targetIndices = new int[2048];
 		Players_pendingUpdateCount = 0;
 		Players_pendingUpdateIndices = new int[2048];
-		field1374 = new Buffer(new byte[5000]);
+		field1371 = new Buffer(new byte[5000]);
 	}
 
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "(II)Z",
-		garbageValue = "1685678133"
-	)
-	public static boolean method2700(int var0) {
-		return var0 == WorldMapDecorationType.field3828.id;
+	@ObfuscatedName("ac")
+	public static final void method2741(long var0) {
+		if (var0 > 0L) {
+			if (0L == var0 % 10L) {
+				long var2 = var0 - 1L;
+
+				try {
+					Thread.sleep(var2);
+				} catch (InterruptedException var8) {
+				}
+
+				try {
+					Thread.sleep(1L);
+				} catch (InterruptedException var7) {
+				}
+			} else {
+				try {
+					Thread.sleep(var0);
+				} catch (InterruptedException var6) {
+				}
+			}
+
+		}
 	}
 }

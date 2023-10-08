@@ -7,37 +7,37 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("qy")
+@ObfuscatedName("rj")
 @Implements("BufferedSource")
 public class BufferedSource implements Runnable {
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@Export("thread")
 	Thread thread;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("al")
 	@Export("inputStream")
 	InputStream inputStream;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = -391637301
+		intValue = 1382719259
 	)
 	@Export("capacity")
 	int capacity;
-	@ObfuscatedName("am")
+	@ObfuscatedName("ax")
 	@Export("buffer")
 	byte[] buffer;
-	@ObfuscatedName("as")
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = 475016461
+		intValue = 1763962247
 	)
 	@Export("position")
 	int position;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ah")
 	@ObfuscatedGetter(
-		intValue = 1521298383
+		intValue = -1219312395
 	)
 	@Export("limit")
 	int limit;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ar")
 	@Export("exception")
 	IOException exception;
 
@@ -52,10 +52,10 @@ public class BufferedSource implements Runnable {
 		this.thread.start();
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(II)Z",
-		garbageValue = "-1308813308"
+		descriptor = "(IB)Z",
+		garbageValue = "0"
 	)
 	@Export("isAvailable")
 	boolean isAvailable(int var1) throws IOException {
@@ -86,10 +86,10 @@ public class BufferedSource implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "647536706"
+		garbageValue = "1929996335"
 	)
 	@Export("available")
 	int available() throws IOException {
@@ -110,10 +110,10 @@ public class BufferedSource implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "1535921504"
+		garbageValue = "-1702106506"
 	)
 	@Export("readUnsignedByte")
 	int readUnsignedByte() throws IOException {
@@ -133,10 +133,10 @@ public class BufferedSource implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
 		descriptor = "([BIII)I",
-		garbageValue = "-1691910602"
+		garbageValue = "171624144"
 	)
 	@Export("read")
 	int read(byte[] var1, int var2, int var3) throws IOException {
@@ -174,10 +174,10 @@ public class BufferedSource implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("as")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-1404907821"
+		garbageValue = "-189717411"
 	)
 	@Export("close")
 	void close() {
@@ -244,117 +244,36 @@ public class BufferedSource implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("ld")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "(IIIILjava/lang/String;B)V",
-		garbageValue = "9"
+		descriptor = "([BIIII[Lih;I)V",
+		garbageValue = "-2138792122"
 	)
-	@Export("widgetDefaultMenuAction")
-	static void widgetDefaultMenuAction(int var0, int var1, int var2, int var3, String var4) {
-		Widget var5 = MouseRecorder.getWidgetChild(var1, var2);
-		if (var5 != null) {
-			if (var5.onOp != null) {
-				ScriptEvent var6 = new ScriptEvent();
-				var6.widget = var5;
-				var6.opIndex = var0;
-				var6.targetName = var4;
-				var6.args = var5.onOp;
-				GrandExchangeOfferOwnWorldComparator.runScriptEvent(var6);
-			}
-
-			boolean var11 = true;
-			if (var5.contentType > 0) {
-				var11 = class467.method8437(var5);
-			}
-
-			if (var11) {
-				int var8 = UserComparator8.getWidgetFlags(var5);
-				int var9 = var0 - 1;
-				boolean var7 = (var8 >> var9 + 1 & 1) != 0;
-				if (var7) {
-					PacketBufferNode var10;
-					if (var0 == 1) {
-						var10 = class503.getPacketBufferNode(ClientPacket.IF_BUTTON1, Client.packetWriter.isaacCipher);
-						var10.packetBuffer.writeInt(var1);
-						var10.packetBuffer.writeShort(var2);
-						var10.packetBuffer.writeShort(var3);
-						Client.packetWriter.addNode(var10);
+	static final void method8232(byte[] var0, int var1, int var2, int var3, int var4, CollisionMap[] var5) {
+		int var7;
+		int var8;
+		for (int var6 = 0; var6 < 4; ++var6) {
+			for (var7 = 0; var7 < 64; ++var7) {
+				for (var8 = 0; var8 < 64; ++var8) {
+					if (var7 + var1 > 0 && var7 + var1 < 103 && var8 + var2 > 0 && var8 + var2 < 103) {
+						int[] var10000 = var5[var6].flags[var7 + var1];
+						var10000[var2 + var8] &= -16777217;
 					}
-
-					if (var0 == 2) {
-						var10 = class503.getPacketBufferNode(ClientPacket.IF_BUTTON2, Client.packetWriter.isaacCipher);
-						var10.packetBuffer.writeInt(var1);
-						var10.packetBuffer.writeShort(var2);
-						var10.packetBuffer.writeShort(var3);
-						Client.packetWriter.addNode(var10);
-					}
-
-					if (var0 == 3) {
-						var10 = class503.getPacketBufferNode(ClientPacket.IF_BUTTON3, Client.packetWriter.isaacCipher);
-						var10.packetBuffer.writeInt(var1);
-						var10.packetBuffer.writeShort(var2);
-						var10.packetBuffer.writeShort(var3);
-						Client.packetWriter.addNode(var10);
-					}
-
-					if (var0 == 4) {
-						var10 = class503.getPacketBufferNode(ClientPacket.IF_BUTTON4, Client.packetWriter.isaacCipher);
-						var10.packetBuffer.writeInt(var1);
-						var10.packetBuffer.writeShort(var2);
-						var10.packetBuffer.writeShort(var3);
-						Client.packetWriter.addNode(var10);
-					}
-
-					if (var0 == 5) {
-						var10 = class503.getPacketBufferNode(ClientPacket.IF_BUTTON5, Client.packetWriter.isaacCipher);
-						var10.packetBuffer.writeInt(var1);
-						var10.packetBuffer.writeShort(var2);
-						var10.packetBuffer.writeShort(var3);
-						Client.packetWriter.addNode(var10);
-					}
-
-					if (var0 == 6) {
-						var10 = class503.getPacketBufferNode(ClientPacket.IF_BUTTON6, Client.packetWriter.isaacCipher);
-						var10.packetBuffer.writeInt(var1);
-						var10.packetBuffer.writeShort(var2);
-						var10.packetBuffer.writeShort(var3);
-						Client.packetWriter.addNode(var10);
-					}
-
-					if (var0 == 7) {
-						var10 = class503.getPacketBufferNode(ClientPacket.IF_BUTTON7, Client.packetWriter.isaacCipher);
-						var10.packetBuffer.writeInt(var1);
-						var10.packetBuffer.writeShort(var2);
-						var10.packetBuffer.writeShort(var3);
-						Client.packetWriter.addNode(var10);
-					}
-
-					if (var0 == 8) {
-						var10 = class503.getPacketBufferNode(ClientPacket.IF_BUTTON8, Client.packetWriter.isaacCipher);
-						var10.packetBuffer.writeInt(var1);
-						var10.packetBuffer.writeShort(var2);
-						var10.packetBuffer.writeShort(var3);
-						Client.packetWriter.addNode(var10);
-					}
-
-					if (var0 == 9) {
-						var10 = class503.getPacketBufferNode(ClientPacket.IF_BUTTON9, Client.packetWriter.isaacCipher);
-						var10.packetBuffer.writeInt(var1);
-						var10.packetBuffer.writeShort(var2);
-						var10.packetBuffer.writeShort(var3);
-						Client.packetWriter.addNode(var10);
-					}
-
-					if (var0 == 10) {
-						var10 = class503.getPacketBufferNode(ClientPacket.IF_BUTTON10, Client.packetWriter.isaacCipher);
-						var10.packetBuffer.writeInt(var1);
-						var10.packetBuffer.writeShort(var2);
-						var10.packetBuffer.writeShort(var3);
-						Client.packetWriter.addNode(var10);
-					}
-
 				}
 			}
 		}
+
+		Buffer var12 = new Buffer(var0);
+
+		for (var7 = 0; var7 < 4; ++var7) {
+			for (var8 = 0; var8 < 64; ++var8) {
+				for (int var9 = 0; var9 < 64; ++var9) {
+					int var10 = var8 + var1;
+					int var11 = var9 + var2;
+					class104.loadTerrain(var12, var7, var10, var11, var3 + var10, var11 + var4, 0);
+				}
+			}
+		}
+
 	}
 }

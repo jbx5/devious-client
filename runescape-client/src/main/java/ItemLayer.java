@@ -4,93 +4,58 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ix")
+@ObfuscatedName("jc")
 @Implements("ItemLayer")
 public final class ItemLayer {
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = -228605615
+		intValue = -1568150949
 	)
 	@Export("z")
 	int z;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = 1908534059
+		intValue = 175147715
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = -1502481589
+		intValue = -1790540369
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("am")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "Lit;"
+		descriptor = "Ljy;"
 	)
 	@Export("first")
 	Renderable first;
-	@ObfuscatedName("as")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "Lit;"
+		descriptor = "Ljy;"
 	)
 	@Export("second")
 	Renderable second;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "Lit;"
+		descriptor = "Ljy;"
 	)
 	@Export("third")
 	Renderable third;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ar")
 	@ObfuscatedGetter(
-		longValue = 8507773082671382891L
+		longValue = 5336565767752743133L
 	)
 	@Export("tag")
 	long tag;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ab")
 	@ObfuscatedGetter(
-		intValue = -1910314939
+		intValue = 2111189233
 	)
 	@Export("height")
 	int height;
 
 	ItemLayer() {
-	}
-
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "(I)[Ldw;",
-		garbageValue = "-986587125"
-	)
-	static AttackOption[] method4293() {
-		return new AttackOption[]{AttackOption.AttackOption_alwaysRightClick, AttackOption.AttackOption_hidden, AttackOption.AttackOption_dependsOnCombatLevels, AttackOption.field1336, AttackOption.field1340};
-	}
-
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "(I)[Luc;",
-		garbageValue = "643907738"
-	)
-	@Export("FillMode_values")
-	public static FillMode[] FillMode_values() {
-		return new FillMode[]{FillMode.SOLID, FillMode.field5151, FillMode.field5149};
-	}
-
-	@ObfuscatedName("av")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/CharSequence;I)I",
-		garbageValue = "2136056509"
-	)
-	public static int method4292(CharSequence var0) {
-		int var1 = var0.length();
-		int var2 = 0;
-
-		for (int var3 = 0; var3 < var1; ++var3) {
-			var2 = (var2 << 5) - var2 + var0.charAt(var3);
-		}
-
-		return var2;
 	}
 }

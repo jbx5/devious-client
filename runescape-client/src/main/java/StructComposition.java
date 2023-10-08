@@ -3,24 +3,24 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ht")
+@ObfuscatedName("ii")
 @Implements("StructComposition")
 public class StructComposition extends DualNode {
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Lnd;"
+		descriptor = "Lom;"
 	)
 	@Export("StructDefinition_archive")
 	static AbstractArchive StructDefinition_archive;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "Lld;"
+		descriptor = "Llr;"
 	)
 	@Export("StructDefinition_cached")
 	static EvictingDualNodeHashTable StructDefinition_cached;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Lsa;"
+		descriptor = "Ltp;"
 	)
 	@Export("params")
 	IterableNodeHashTable params;
@@ -32,19 +32,19 @@ public class StructComposition extends DualNode {
 	StructComposition() {
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "448946158"
+		garbageValue = "-2078749719"
 	)
 	@Export("postDecode")
 	void postDecode() {
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "(Lty;B)V",
-		garbageValue = "1"
+		descriptor = "(Lul;I)V",
+		garbageValue = "-1812478277"
 	)
 	@Export("decode")
 	void decode(Buffer var1) {
@@ -58,49 +58,52 @@ public class StructComposition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("as")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(Lty;II)V",
-		garbageValue = "595587202"
+		descriptor = "(Lul;II)V",
+		garbageValue = "586234796"
 	)
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
 		if (var2 == 249) {
-			this.params = class141.readStringIntParameters(var1, this.params);
+			this.params = class167.readStringIntParameters(var1, this.params);
 		}
 
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "-154725242"
+		descriptor = "(IIS)I",
+		garbageValue = "-32631"
 	)
 	@Export("getIntParam")
 	public int getIntParam(int var1, int var2) {
-		return FileSystem.method3540(this.params, var1, var2);
+		return AttackOption.method2721(this.params, var1, var2);
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/String;B)Ljava/lang/String;",
-		garbageValue = "-86"
+		descriptor = "(ILjava/lang/String;I)Ljava/lang/String;",
+		garbageValue = "1837160520"
 	)
 	@Export("getStringParam")
 	public String getStringParam(int var1, String var2) {
-		IterableNodeHashTable var4 = this.params;
-		String var3;
-		if (var4 == null) {
-			var3 = var2;
-		} else {
-			ObjectNode var5 = (ObjectNode)var4.get((long)var1);
-			if (var5 == null) {
-				var3 = var2;
-			} else {
-				var3 = (String)var5.obj;
-			}
-		}
+		return class30.method448(this.params, var1, var2);
+	}
 
-		return var3;
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "(CI)Z",
+		garbageValue = "1128755492"
+	)
+	@Export("isCharPrintable")
+	public static boolean isCharPrintable(char var0) {
+		if (var0 >= ' ' && var0 <= '~') {
+			return true;
+		} else if (var0 >= 160 && var0 <= 255) {
+			return true;
+		} else {
+			return var0 == 8364 || var0 == 338 || var0 == 8212 || var0 == 339 || var0 == 376;
+		}
 	}
 }

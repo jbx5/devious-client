@@ -1,60 +1,124 @@
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("rx")
-public class class464 implements class462 {
-	@ObfuscatedName("aw")
-	final Map field4782;
+@ObfuscatedName("rd")
+public final class class464 {
+	@ObfuscatedName("ac")
+	@ObfuscatedSignature(
+		descriptor = "[Lrd;"
+	)
+	static class464[] field4775;
+	@ObfuscatedName("al")
+	@ObfuscatedGetter(
+		intValue = -1797064149
+	)
+	static int field4776;
+	@ObfuscatedName("ak")
+	@ObfuscatedGetter(
+		intValue = 322921749
+	)
+	static int field4774;
+	@ObfuscatedName("ax")
+	float field4777;
+	@ObfuscatedName("ao")
+	float field4778;
+	@ObfuscatedName("ah")
+	float field4779;
+	@ObfuscatedName("ar")
+	float field4780;
 
-	public class464(Map var1) {
-		this.field4782 = var1;
+	static {
+		field4775 = new class464[0];
+		class146.method3162(100);
+		new class464();
 	}
 
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "(I)Lrs;",
-		garbageValue = "186741716"
-	)
-	public class461 vmethod8417() {
-		return null;
+	class464() {
+		this.method8321();
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(I)[B",
-		garbageValue = "-587379873"
+		descriptor = "(I)V",
+		garbageValue = "1744815510"
 	)
-	public byte[] vmethod8412() throws UnsupportedEncodingException {
-		return this.method8413().getBytes("UTF-8");
-	}
+	public void method8338() {
+		synchronized(field4775) {
+			if (field4774 < field4776 - 1) {
+				field4775[++field4774 - 1] = this;
+			}
 
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "(I)Ljava/lang/String;",
-		garbageValue = "1821639668"
-	)
-	public String method8413() throws UnsupportedEncodingException {
-		StringBuilder var1 = new StringBuilder();
-		Iterator var2 = this.field4782.entrySet().iterator();
-
-		while (var2.hasNext()) {
-			Entry var3 = (Entry)var2.next();
-			String var4 = URLEncoder.encode((String)var3.getKey(), "UTF-8");
-			String var5 = URLEncoder.encode((String)var3.getValue(), "UTF-8");
-			var1.append(var4).append("=").append(var5).append("&");
 		}
+	}
 
-		if (var1.length() == 0) {
-			return "";
+	@ObfuscatedName("ax")
+	@ObfuscatedSignature(
+		descriptor = "(FFFFI)V",
+		garbageValue = "1915313855"
+	)
+	void method8322(float var1, float var2, float var3, float var4) {
+		this.field4777 = var1;
+		this.field4778 = var2;
+		this.field4779 = var3;
+		this.field4780 = var4;
+	}
+
+	@ObfuscatedName("ao")
+	@ObfuscatedSignature(
+		descriptor = "(FFFFI)V",
+		garbageValue = "-1238110919"
+	)
+	public void method8318(float var1, float var2, float var3, float var4) {
+		float var5 = (float)Math.sin((double)(0.5F * var4));
+		float var6 = (float)Math.cos((double)(0.5F * var4));
+		this.field4777 = var1 * var5;
+		this.field4778 = var5 * var2;
+		this.field4779 = var5 * var3;
+		this.field4780 = var6;
+	}
+
+	@ObfuscatedName("ah")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "33554432"
+	)
+	final void method8321() {
+		this.field4779 = 0.0F;
+		this.field4778 = 0.0F;
+		this.field4777 = 0.0F;
+		this.field4780 = 1.0F;
+	}
+
+	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "(Lrd;I)V",
+		garbageValue = "255330704"
+	)
+	public final void method8326(class464 var1) {
+		this.method8322(this.field4780 * var1.field4777 + this.field4777 * var1.field4780 + var1.field4778 * this.field4779 - var1.field4779 * this.field4778, this.field4777 * var1.field4779 + this.field4780 * var1.field4778 + (this.field4778 * var1.field4780 - this.field4779 * var1.field4777), var1.field4779 * this.field4780 + (var1.field4780 * this.field4779 + this.field4778 * var1.field4777 - this.field4777 * var1.field4778), var1.field4780 * this.field4780 - this.field4777 * var1.field4777 - var1.field4778 * this.field4778 - var1.field4779 * this.field4779);
+	}
+
+	public boolean equals(Object var1) {
+		if (!(var1 instanceof class464)) {
+			return false;
 		} else {
-			var1.deleteCharAt(var1.length() - 1);
-			var1.insert(0, "?");
-			return var1.toString();
+			class464 var2 = (class464)var1;
+			return this.field4777 == var2.field4777 && var2.field4778 == this.field4778 && this.field4779 == var2.field4779 && this.field4780 == var2.field4780;
 		}
+	}
+
+	public int hashCode() {
+		boolean var1 = true;
+		float var2 = 1.0F;
+		var2 = this.field4777 + var2 * 31.0F;
+		var2 = this.field4778 + var2 * 31.0F;
+		var2 = 31.0F * var2 + this.field4779;
+		var2 = this.field4780 + var2 * 31.0F;
+		return (int)var2;
+	}
+
+	public String toString() {
+		return this.field4777 + "," + this.field4778 + "," + this.field4779 + "," + this.field4780;
 	}
 }

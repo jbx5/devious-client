@@ -1,169 +1,82 @@
-import java.io.IOException;
-import java.util.ArrayList;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dn")
+@ObfuscatedName("de")
 @Implements("InterfaceParent")
 public class InterfaceParent extends Node {
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = 1127246631
+		intValue = 1919932593
 	)
 	@Export("group")
 	int group;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = 49206093
+		intValue = 1828374187
 	)
 	@Export("type")
 	int type;
-	@ObfuscatedName("ar")
-	boolean field1065;
+	@ObfuscatedName("ak")
+	boolean field1074;
 
 	InterfaceParent() {
-		this.field1065 = false;
+		this.field1074 = false;
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "(II)Z",
-		garbageValue = "143844531"
+		descriptor = "(Lnm;I[B[BI)V",
+		garbageValue = "101462872"
 	)
-	public static boolean method2276(int var0) {
-		boolean var1 = false;
-		boolean var2 = false;
-		if (!class306.field3399.isEmpty()) {
-			SongTask var3 = (SongTask)class306.field3399.get(0);
-			if (var3 == null) {
-				class306.field3399.remove(0);
-			} else if (var3.vmethod7676(var0)) {
-				if (var3.method7668()) {
-					System.out.println("Error in midimanager.service: " + var3.method7651());
-					var1 = true;
-				} else {
-					if (var3.getSongTask() != null) {
-						class306.field3399.add(1, var3.getSongTask());
-					}
+	@Export("Widget_setKey")
+	static final void Widget_setKey(Widget var0, int var1, byte[] var2, byte[] var3) {
+		if (var0.field3752 == null) {
+			if (var2 == null) {
+				return;
+			}
 
-					var2 = var3.method7650();
+			var0.field3752 = new byte[11][];
+			var0.field3779 = new byte[11][];
+			var0.field3770 = new int[11];
+			var0.field3800 = new int[11];
+		}
+
+		var0.field3752[var1] = var2;
+		if (var2 != null) {
+			var0.field3751 = true;
+		} else {
+			var0.field3751 = false;
+
+			for (int var4 = 0; var4 < var0.field3752.length; ++var4) {
+				if (var0.field3752[var4] != null) {
+					var0.field3751 = true;
+					break;
 				}
-
-				class306.field3399.remove(0);
-			} else {
-				var2 = var3.method7650();
 			}
 		}
 
-		if (var1) {
-			class306.field3399.clear();
-			ArrayList var4 = class162.method3356();
-			class306.field3399.add(new ClearRequestTask((SongTask)null, var4));
-		}
-
-		return var2;
+		var0.field3779[var1] = var3;
 	}
 
-	@ObfuscatedName("hv")
+	@ObfuscatedName("oz")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-2055389038"
+		descriptor = "(Ljava/lang/String;I)Ljava/lang/String;",
+		garbageValue = "554905289"
 	)
-	static void method2277() {
-		if (PendingSpawn.varcs.hasUnwrittenChanges()) {
-			PendingSpawn.varcs.write();
-		}
+	static String method2312(String var0) {
+		PlayerType[] var1 = class183.PlayerType_values();
 
-		if (class497.mouseRecorder != null) {
-			class497.mouseRecorder.isRunning = false;
-		}
-
-		class497.mouseRecorder = null;
-		Client.packetWriter.close();
-		if (GameEngine.taskHandler != null) {
-			try {
-				GameEngine.taskHandler.close();
-			} catch (Exception var3) {
+		for (int var2 = 0; var2 < var1.length; ++var2) {
+			PlayerType var3 = var1[var2];
+			if (var3.modIcon != -1 && var0.startsWith(class436.method7916(var3.modIcon))) {
+				var0 = var0.substring(6 + Integer.toString(var3.modIcon).length());
+				break;
 			}
 		}
 
-		GameEngine.taskHandler = null;
-		class159.method3336();
-		class197.archive2.clearFiles();
-		FontName.archive13.clearFiles();
-		ReflectionCheck.field273.clearFiles();
-		class191.field1970.clearFiles();
-		World.field829.clearFiles();
-		class106.field1358.clearFiles();
-		Varcs.field1402.clearFiles();
-		Interpreter.field885.clearFiles();
-		class10.compass = null;
-		SoundCache.redHintArrowSprite = null;
-		class282.mapSceneSprites = null;
-		DbTableType.headIconPkSprites = null;
-		class17.headIconPrayerSprites = null;
-		class345.headIconHintSprites = null;
-		DynamicObject.field1014 = null;
-		class211.crossSprites = null;
-		MusicPatchNode2.mapDotSprites = null;
-		class302.scrollBarSprites = null;
-		AbstractWorldMapIcon.field3044 = null;
-		UserComparator5.scene.clear();
-
-		int var1;
-		for (var1 = 0; var1 < 4; ++var1) {
-			Client.collisionMaps[var1].clear();
-		}
-
-		class127.worldMap = null;
-		RouteStrategy.method4227(0, 0);
-		class306.field3398.clear();
-		Client.playingJingle = false;
-		class133.method3041();
-		if (VerticalAlignment.pcmPlayer1 != null) {
-			VerticalAlignment.pcmPlayer1.shutdown();
-		}
-
-		class153.field1700.method6853();
-		ArchiveDiskAction.method6681();
-		if (WorldMapLabel.urlRequester != null) {
-			WorldMapLabel.urlRequester.close();
-		}
-
-		try {
-			JagexCache.JagexCache_dat2File.close();
-
-			for (var1 = 0; var1 < JagexCache.field1840; ++var1) {
-				class302.JagexCache_idxFiles[var1].close();
-			}
-
-			JagexCache.JagexCache_idx255File.close();
-			JagexCache.JagexCache_randomDat.close();
-		} catch (Exception var4) {
-		}
-
-		JagexCache.JagexCache_dat2File = null;
-		JagexCache.JagexCache_idx255File = null;
-		class302.JagexCache_idxFiles = null;
-		FileSystem.FileSystem_cacheFiles.clear();
-		class158.masterDisk = null;
-		Client.archiveLoaders.clear();
-		Client.field814 = 0;
-		class153.field1700 = new JagNetThread();
-		WorldMapLabel.urlRequester = new class113(TileItem.client.field562, 215);
-
-		try {
-			PlayerCompositionColorTextureOverride.method3575("oldschool", VarpDefinition.field1910, ArchiveLoader.field1044.name, 0, 22);
-		} catch (IOException var2) {
-			throw new RuntimeException(var2);
-		}
-
-		class158.masterDisk = new ArchiveDisk(255, JagexCache.JagexCache_dat2File, JagexCache.JagexCache_idx255File, 500000);
-		GameEngine.taskHandler = new TaskHandler();
-		Client.field547 = class92.field1144;
-		class129.updateGameState(0);
+		return var0;
 	}
 }

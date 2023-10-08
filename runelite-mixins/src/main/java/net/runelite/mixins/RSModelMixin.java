@@ -24,10 +24,12 @@
  */
 package net.runelite.mixins;
 
+import java.awt.Shape;
+import java.util.ArrayList;
+import java.util.List;
 import net.runelite.api.AABB;
 import net.runelite.api.Model;
 import net.runelite.api.Perspective;
-import net.runelite.api.hooks.DrawCallbacks;
 import net.runelite.api.mixins.Copy;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.MethodHook;
@@ -42,10 +44,6 @@ import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSFrames;
 import net.runelite.rs.api.RSModel;
 import net.runelite.rs.api.RSSkeleton;
-
-import java.awt.Shape;
-import java.util.ArrayList;
-import java.util.List;
 
 @Mixin(RSModel.class)
 public abstract class RSModelMixin implements RSModel
@@ -63,9 +61,6 @@ public abstract class RSModelMixin implements RSModel
 	private int rl$uvBufferOffset;
 
 	@Inject
-	private float[] rl$faceTextureUVCoordinates;
-
-	@Inject
 	private int[] rl$vertexNormalsX;
 
 	@Inject
@@ -78,31 +73,6 @@ public abstract class RSModelMixin implements RSModel
 	@Inject
 	public void rl$init(RSModel[] models, int length)
 	{
-		if (getFaceTextures() != null)
-		{
-			int count = getFaceCount();
-			float[] uv = new float[count * 6];
-			int idx = 0;
-
-			for (int i = 0; i < length; ++i)
-			{
-				RSModel model = models[i];
-				if (model != null)
-				{
-					float[] modelUV = model.getFaceTextureUVCoordinates();
-
-					if (modelUV != null)
-					{
-						System.arraycopy(modelUV, 0, uv, idx, model.getFaceCount() * 6);
-					}
-
-					idx += model.getFaceCount() * 6;
-				}
-			}
-
-			setFaceTextureUVCoordinates(uv);
-		}
-
 		vertexNormals();
 	}
 
@@ -157,25 +127,44 @@ public abstract class RSModelMixin implements RSModel
 		return triangles;
 	}
 
+	@Inject
+	private RSModel unskewedModel;
+
+	@Inject
+	@Override
+	public void setUnskewedModel(RSModel unskewedModel)
+	{
+		this.unskewedModel = unskewedModel;
+	}
+
+	@Inject
+	@Override
+	public RSModel getUnskewedModel()
+	{
+		return unskewedModel;
+	}
+
 	@Copy("contourGround")
 	@Replace("contourGround")
 	@SuppressWarnings("InfiniteRecursion")
 	public Model copy$contourGround(int[][] tileHeights, int packedX, int height, int packedY, boolean copy, int contouredGround)
 	{
 		// With contouredGround >= 0 lighted models are countoured, so we need to copy uvs
-		Model model = copy$contourGround(tileHeights, packedX, height, packedY, copy, contouredGround);
-		if (model != null && model != this)
+		RSModel rsModel = (RSModel) copy$contourGround(tileHeights, packedX, height, packedY, copy, contouredGround);
+		if (rsModel != this)
 		{
-			RSModel rsModel = (RSModel) model;
 			rsModel.setVertexNormalsX(rl$vertexNormalsX);
 			rsModel.setVertexNormalsY(rl$vertexNormalsY);
 			rsModel.setVertexNormalsZ(rl$vertexNormalsZ);
-			rsModel.setFaceTextureUVCoordinates(rl$faceTextureUVCoordinates);
+			if ((client.getGpuFlags() & 2) == 2)
+			{
+				rsModel.setUnskewedModel(this);
+			}
 		}
-		return model;
+		return rsModel;
 	}
 
-	@Copy("drawFace")
+	/*@Copy("drawFace")
 	@Replace("drawFace")
 	public void copy$drawFace(int face)
 	{
@@ -184,7 +173,7 @@ public abstract class RSModelMixin implements RSModel
 		{
 			copy$drawFace(face);
 		}
-	}
+	}*/
 
 	@MethodHook("buildSharedModel")
 	@Inject
@@ -195,7 +184,6 @@ public abstract class RSModelMixin implements RSModel
 		rsModel.setVertexNormalsX(rl$vertexNormalsX);
 		rsModel.setVertexNormalsY(rl$vertexNormalsY);
 		rsModel.setVertexNormalsZ(rl$vertexNormalsZ);
-		rsModel.setFaceTextureUVCoordinates(rl$faceTextureUVCoordinates);
 	}
 
 	@Inject
@@ -431,20 +419,6 @@ public abstract class RSModelMixin implements RSModel
 	}
 
 	@Inject
-	@Override
-	public float[] getFaceTextureUVCoordinates()
-	{
-		return rl$faceTextureUVCoordinates;
-	}
-
-	@Inject
-	@Override
-	public void setFaceTextureUVCoordinates(float[] faceTextureUVCoordinates)
-	{
-		rl$faceTextureUVCoordinates = faceTextureUVCoordinates;
-	}
-
-	@Inject
 	public void vertexNormals()
 	{
 		if (rl$vertexNormalsX == null)
@@ -553,20 +527,10 @@ public abstract class RSModelMixin implements RSModel
 	}
 
 	@Inject
-	public int lastOrientation = -1;
-
-	@Inject
-	@Override
-	public int getLastOrientation()
-	{
-		return lastOrientation;
-	}
-	@Inject
 	@Override
 	public AABB getAABB(int orientation)
 	{
 		calculateExtreme(orientation);
-		lastOrientation = orientation;
-		return getAABBMap().get(lastOrientation);
+		return getAABBMap().get(orientation);
 	}
 }

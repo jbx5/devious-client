@@ -3,30 +3,24 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("tk")
+@ObfuscatedName("uz")
 @Implements("DbTableType")
 public class DbTableType extends DualNode {
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Lnd;"
+		descriptor = "Lom;"
 	)
-	static AbstractArchive field5043;
-	@ObfuscatedName("ay")
+	static AbstractArchive field5080;
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "Lld;"
+		descriptor = "Llr;"
 	)
 	@Export("DBTableType_cache")
 	static EvictingDualNodeHashTable DBTableType_cache;
-	@ObfuscatedName("kr")
-	@ObfuscatedSignature(
-		descriptor = "[Lud;"
-	)
-	@Export("headIconPkSprites")
-	static SpritePixels[] headIconPkSprites;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ak")
 	@Export("types")
 	public int[][] types;
-	@ObfuscatedName("am")
+	@ObfuscatedName("ax")
 	@Export("defaultValues")
 	public Object[][] defaultValues;
 
@@ -37,28 +31,28 @@ public class DbTableType extends DualNode {
 	DbTableType() {
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lty;I)V",
-		garbageValue = "871558389"
+		descriptor = "(Lul;B)V",
+		garbageValue = "2"
 	)
-	void method8969(Buffer var1) {
+	void method9080(Buffer var1) {
 		while (true) {
 			int var2 = var1.readUnsignedByte();
 			if (var2 == 0) {
 				return;
 			}
 
-			this.method8970(var1, var2);
+			this.method9067(var1, var2);
 		}
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "(Lty;IB)V",
-		garbageValue = "-2"
+		descriptor = "(Lul;II)V",
+		garbageValue = "-1635084839"
 	)
-	void method8970(Buffer var1, int var2) {
+	void method9067(Buffer var1, int var2) {
 		if (var2 == 1) {
 			int var3 = var1.readUnsignedByte();
 			if (this.types == null) {
@@ -80,32 +74,18 @@ public class DbTableType extends DualNode {
 						this.defaultValues = new Object[this.types.length][];
 					}
 
-					this.defaultValues[var5] = class10.method103(var1, var7);
+					this.defaultValues[var5] = class495.method8635(var1, var7);
 				}
 			}
 		}
 
 	}
 
-	@ObfuscatedName("as")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-1574876599"
+		garbageValue = "-1223582453"
 	)
-	void method8968() {
-	}
-
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1773514467"
-	)
-	public static void method8985() {
-		class492.SpriteBuffer_xOffsets = null;
-		class134.SpriteBuffer_yOffsets = null;
-		class172.SpriteBuffer_spriteWidths = null;
-		class528.SpriteBuffer_spriteHeights = null;
-		class528.SpriteBuffer_spritePalette = null;
-		ArchiveDiskAction.SpriteBuffer_pixels = null;
+	void method9068() {
 	}
 }

@@ -1,33 +1,30 @@
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ta")
-public class class494 {
-	@ObfuscatedName("ar")
-	static final char[] field4999;
-	@ObfuscatedName("am")
-	static final char[] field4998;
-
-	static {
-		field4999 = new char[]{' ', ' ', '_', '-', 'à', 'á', 'â', 'ä', 'ã', 'À', 'Á', 'Â', 'Ä', 'Ã', 'è', 'é', 'ê', 'ë', 'È', 'É', 'Ê', 'Ë', 'í', 'î', 'ï', 'Í', 'Î', 'Ï', 'ò', 'ó', 'ô', 'ö', 'õ', 'Ò', 'Ó', 'Ô', 'Ö', 'Õ', 'ù', 'ú', 'û', 'ü', 'Ù', 'Ú', 'Û', 'Ü', 'ç', 'Ç', 'ÿ', 'Ÿ', 'ñ', 'Ñ', 'ß'};
-		field4998 = new char[]{'[', ']', '#'};
+@ObfuscatedName("th")
+public abstract class class494 extends class495 {
+	class494(int var1, int var2) {
+		super(var1, var2);
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(Lnd;IB)Luu;",
-		garbageValue = "31"
+		descriptor = "(I)I",
+		garbageValue = "-437522182"
 	)
-	public static IndexedSprite method8824(AbstractArchive var0, int var1) {
-		byte[] var3 = var0.takeFileFlat(var1);
-		boolean var2;
-		if (var3 == null) {
-			var2 = false;
-		} else {
-			VarbitComposition.SpriteBuffer_decode(var3);
-			var2 = true;
-		}
+	public abstract int vmethod8614();
 
-		return !var2 ? null : Script.method2172();
-	}
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "(I)I",
+		garbageValue = "-1670157872"
+	)
+	public abstract int vmethod8622();
+
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "(B)I",
+		garbageValue = "54"
+	)
+	public abstract int vmethod8618();
 }

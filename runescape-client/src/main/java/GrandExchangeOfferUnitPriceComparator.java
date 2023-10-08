@@ -4,13 +4,13 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ov")
+@ObfuscatedName("oj")
 @Implements("GrandExchangeOfferUnitPriceComparator")
 final class GrandExchangeOfferUnitPriceComparator implements Comparator {
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(Lol;Lol;I)I",
-		garbageValue = "693078358"
+		descriptor = "(Lod;Lod;I)I",
+		garbageValue = "-1207503699"
 	)
 	@Export("compare_bridged")
 	int compare_bridged(GrandExchangeEvent var1, GrandExchangeEvent var2) {
@@ -25,40 +25,24 @@ final class GrandExchangeOfferUnitPriceComparator implements Comparator {
 		return super.equals(var1);
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(IIB)I",
-		garbageValue = "17"
+		descriptor = "(IIIIB)I",
+		garbageValue = "73"
 	)
-	public static int method6962(int var0, int var1) {
-		return (int)Math.round(Math.atan2((double)var0, (double)var1) * 2607.5945876176133D) & 16383;
+	static final int method7115(int var0, int var1, int var2, int var3) {
+		return var2 * var1 - var3 * var0 >> 16;
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "([BI)V",
-		garbageValue = "-890105680"
+		descriptor = "(IB)V",
+		garbageValue = "-21"
 	)
-	@Export("ByteArrayPool_release")
-	public static synchronized void ByteArrayPool_release(byte[] var0) {
-		if (var0.length == 100 && ByteArrayPool.ByteArrayPool_smallCount < ByteArrayPool.field4548) {
-			ByteArrayPool.ByteArrayPool_small[++ByteArrayPool.ByteArrayPool_smallCount - 1] = var0;
-		} else if (var0.length == 5000 && ByteArrayPool.ByteArrayPool_mediumCount < ByteArrayPool.field4549) {
-			ByteArrayPool.ByteArrayPool_medium[++ByteArrayPool.ByteArrayPool_mediumCount - 1] = var0;
-		} else if (var0.length == 10000 && ByteArrayPool.ByteArrayPool_largeCount < ByteArrayPool.field4544) {
-			ByteArrayPool.ByteArrayPool_large[++ByteArrayPool.ByteArrayPool_largeCount - 1] = var0;
-		} else if (var0.length == 30000 && ByteArrayPool.field4547 < ByteArrayPool.field4555) {
-			ByteArrayPool.field4551[++ByteArrayPool.field4547 - 1] = var0;
-		} else {
-			if (class152.ByteArrayPool_arrays != null) {
-				for (int var1 = 0; var1 < ByteArrayPool.ByteArrayPool_alternativeSizes.length; ++var1) {
-					if (var0.length == ByteArrayPool.ByteArrayPool_alternativeSizes[var1] && class125.ByteArrayPool_altSizeArrayCounts[var1] < class152.ByteArrayPool_arrays[var1].length) {
-						class152.ByteArrayPool_arrays[var1][class125.ByteArrayPool_altSizeArrayCounts[var1]++] = var0;
-						return;
-					}
-				}
-			}
-
+	static void method7111(int var0) {
+		ItemContainer var1 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
+		if (var1 != null) {
+			var1.remove();
 		}
 	}
 }

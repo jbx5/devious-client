@@ -130,12 +130,12 @@ public class ObjectPackets
 		var clientPacket = Game.getClientPacket();
 		var packetBufferNode = Static.getClient().preparePacket(clientPacket.OPLOCT(), client.getPacketWriter().getIsaacCipher());
 		packetBufferNode.getPacketBuffer().writeByteNeg(ctrlDown ? 1 : 0);
-		packetBufferNode.getPacketBuffer().writeShort(sourceItemId);
-		packetBufferNode.getPacketBuffer().writeShort(objectId);
-		packetBufferNode.getPacketBuffer().writeShort(worldPointY);
-		packetBufferNode.getPacketBuffer().writeShortAdd(worldPointX);
-		packetBufferNode.getPacketBuffer().writeShortLE(sourceSlot);
-		packetBufferNode.getPacketBuffer().writeIntME(sourceWidgetId);
+		packetBufferNode.getPacketBuffer().writeShortAddLE(sourceSlot);
+		packetBufferNode.getPacketBuffer().writeShort(worldPointX);
+		packetBufferNode.getPacketBuffer().writeIntIME(sourceWidgetId);
+		packetBufferNode.getPacketBuffer().writeShortLE(objectId);
+		packetBufferNode.getPacketBuffer().writeShortLE(worldPointY);
+		packetBufferNode.getPacketBuffer().writeShortAdd(sourceItemId);
 		return packetBufferNode;
 	}
 
@@ -149,10 +149,10 @@ public class ObjectPackets
 		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
 		var packetBufferNode = Static.getClient().preparePacket(clientPacket.OPLOC1(), client.getPacketWriter().getIsaacCipher());
-		packetBufferNode.getPacketBuffer().writeShortLE(worldPointY);
-		packetBufferNode.getPacketBuffer().writeShortLE(worldPointX);
-		packetBufferNode.getPacketBuffer().writeByteSub(ctrlDown ? 1 : 0);
-		packetBufferNode.getPacketBuffer().writeShort(objectId);
+		packetBufferNode.getPacketBuffer().writeShortAdd(worldPointX);
+		packetBufferNode.getPacketBuffer().writeShortAddLE(worldPointY);
+		packetBufferNode.getPacketBuffer().writeShortAddLE(objectId);
+		packetBufferNode.getPacketBuffer().writeByte(ctrlDown ? 1 : 0);
 		return packetBufferNode;
 	}
 
@@ -161,10 +161,10 @@ public class ObjectPackets
 		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
 		var packetBufferNode = Static.getClient().preparePacket(clientPacket.OPLOC2(), client.getPacketWriter().getIsaacCipher());
-		packetBufferNode.getPacketBuffer().writeShortLE(worldPointY);
-		packetBufferNode.getPacketBuffer().writeShortAddLE(objectId);
-		packetBufferNode.getPacketBuffer().writeByte(ctrlDown ? 1 : 0);
+		packetBufferNode.getPacketBuffer().writeShortAdd(objectId);
+		packetBufferNode.getPacketBuffer().writeByteNeg(ctrlDown ? 1 : 0);
 		packetBufferNode.getPacketBuffer().writeShortAdd(worldPointX);
+		packetBufferNode.getPacketBuffer().writeShortLE(worldPointY);
 		return packetBufferNode;
 	}
 
@@ -173,10 +173,10 @@ public class ObjectPackets
 		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
 		var packetBufferNode = Static.getClient().preparePacket(clientPacket.OPLOC3(), client.getPacketWriter().getIsaacCipher());
-		packetBufferNode.getPacketBuffer().writeShortAdd(worldPointX);
-		packetBufferNode.getPacketBuffer().writeByteSub(ctrlDown ? 1 : 0);
-		packetBufferNode.getPacketBuffer().writeShortAdd(worldPointY);
-		packetBufferNode.getPacketBuffer().writeShortAddLE(objectId);
+		packetBufferNode.getPacketBuffer().writeShortAddLE(worldPointY);
+		packetBufferNode.getPacketBuffer().writeShort(objectId);
+		packetBufferNode.getPacketBuffer().writeShortLE(worldPointX);
+		packetBufferNode.getPacketBuffer().writeByteNeg(ctrlDown ? 1 : 0);
 		return packetBufferNode;
 	}
 
@@ -185,10 +185,10 @@ public class ObjectPackets
 		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
 		var packetBufferNode = Static.getClient().preparePacket(clientPacket.OPLOC4(), client.getPacketWriter().getIsaacCipher());
-		packetBufferNode.getPacketBuffer().writeShortAddLE(worldPointY);
-		packetBufferNode.getPacketBuffer().writeShortLE(worldPointX);
-		packetBufferNode.getPacketBuffer().writeShort(objectId);
-		packetBufferNode.getPacketBuffer().writeByteAdd(ctrlDown ? 1 : 0);
+		packetBufferNode.getPacketBuffer().writeShortLE(worldPointY);
+		packetBufferNode.getPacketBuffer().writeShortAddLE(objectId);
+		packetBufferNode.getPacketBuffer().writeShortAddLE(worldPointX);
+		packetBufferNode.getPacketBuffer().writeByteSub(ctrlDown ? 1 : 0);
 		return packetBufferNode;
 	}
 
@@ -197,10 +197,10 @@ public class ObjectPackets
 		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
 		var packetBufferNode = Static.getClient().preparePacket(clientPacket.OPLOC5(), client.getPacketWriter().getIsaacCipher());
-		packetBufferNode.getPacketBuffer().writeByte(ctrlDown ? 1 : 0);
-		packetBufferNode.getPacketBuffer().writeShortAddLE(objectId);
-		packetBufferNode.getPacketBuffer().writeShortAddLE(worldPointY);
-		packetBufferNode.getPacketBuffer().writeShortAddLE(worldPointX);
+		packetBufferNode.getPacketBuffer().writeShort(objectId);
+		packetBufferNode.getPacketBuffer().writeShortAdd(worldPointY);
+		packetBufferNode.getPacketBuffer().writeShortAdd(worldPointX);
+		packetBufferNode.getPacketBuffer().writeByteNeg(ctrlDown ? 1 : 0);
 		return packetBufferNode;
 	}
 }

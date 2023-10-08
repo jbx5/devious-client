@@ -5,6 +5,8 @@ import net.runelite.api.Varbits;
 import net.runelite.api.coords.WorldArea;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.widgets.WidgetInfo;
+import net.unethicalite.api.game.House;
+import net.unethicalite.api.game.Worlds;
 import net.unethicalite.api.movement.pathfinder.TransportLoader;
 import org.apache.commons.lang3.tuple.Pair;
 
@@ -29,7 +31,23 @@ public class MovementConstants
 
 	public static final WorldArea WILDERNESS_ABOVE_GROUND = new WorldArea(2944, 3523, 448, 448, 0);
 	public static final WorldArea WILDERNESS_UNDERGROUND = new WorldArea(2944, 9918, 320, 442, 0);
-	public static WorldPoint HOUSE_POINT = new WorldPoint(10000, 4000, 1);
+	public static final WorldArea[] FEROX_ENCLAVE = new WorldArea[]
+		{
+			new WorldArea(3125, 3618, 19, 22, 0),
+			new WorldArea(3148, 3628, 8, 19, 0),
+			new WorldArea(3144, 3628, 4, 13, 0),
+			new WorldArea(3138, 3640, 8, 6, 0),
+			new WorldArea(3123, 3622, 2, 11, 0),
+		};
+	public static WorldPoint HOUSE_POINT()
+	{
+		WorldPoint outside = House.getOutsideLocation();
+		if (Worlds.inMembersWorld() && outside != null)
+		{
+			return outside;
+		}
+		else return new WorldPoint(10000, 4000, 1);
+	}
 
 	public static final int[] RING_OF_DUELING = new int[]
 		{
@@ -171,6 +189,15 @@ public class MovementConstants
 			ItemID.WILDERNESS_SWORD_2,
 			ItemID.WILDERNESS_SWORD_3,
 			ItemID.WILDERNESS_SWORD_4
+		};
+
+	public static final int[] ARDY_CLOAK = new int[]
+		{
+			ItemID.ARDOUGNE_CLOAK_1,
+			ItemID.ARDOUGNE_CLOAK_2,
+			ItemID.ARDOUGNE_CLOAK_3,
+			ItemID.ARDOUGNE_CLOAK_4,
+			ItemID.ARDOUGNE_MAX_CAPE
 		};
 
 	public static final List<Pair<WorldPoint, WorldPoint>> SLASH_WEB_POINTS = List.<Pair<WorldPoint, WorldPoint>>of(

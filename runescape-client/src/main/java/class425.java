@@ -1,91 +1,52 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("qr")
-public final class class425 implements Comparable {
-	@ObfuscatedName("aw")
-	Object field4624;
-	@ObfuscatedName("ay")
-	Object field4626;
-	@ObfuscatedName("ar")
+@ObfuscatedName("qj")
+public class class425 {
+	@ObfuscatedName("au")
+	@Export("ByteArrayPool_altSizeArrayCounts")
+	public static int[] ByteArrayPool_altSizeArrayCounts;
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		longValue = 4590125301027778469L
+		intValue = -1111856781
 	)
-	long field4625;
-	@ObfuscatedName("am")
+	int field4589;
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		longValue = 1155107975407069413L
+		intValue = 2048912337
 	)
-	long field4623;
+	int field4587;
+	@ObfuscatedName("ak")
+	@ObfuscatedGetter(
+		intValue = -1057598057
+	)
+	int field4588;
+	@ObfuscatedName("ax")
+	@ObfuscatedGetter(
+		intValue = 492235961
+	)
+	int field4586;
 
-	class425(Object var1, Object var2) {
-		this.field4624 = var1;
-		this.field4626 = var2;
+	public String toString() {
+		boolean var1 = true;
+		int var2 = 10 - Integer.toString(this.field4589).length();
+		int var3 = 10 - Integer.toString(this.field4588).length();
+		int var4 = 10 - Integer.toString(this.field4587).length();
+		String var5 = "          ".substring(10 - var2);
+		String var6 = "          ".substring(10 - var3);
+		String var7 = "          ".substring(10 - var4);
+		return "    Size: " + this.field4589 + var5 + "Created: " + this.field4587 + var7 + "Total used: " + this.field4588 + var6 + "Max-In-Use: " + this.field4586;
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ox")
 	@ObfuscatedSignature(
-		descriptor = "(Lqr;I)I",
-		garbageValue = "1914660180"
+		descriptor = "(I)V",
+		garbageValue = "-921532851"
 	)
-	int method7859(class425 var1) {
-		if (this.field4623 < var1.field4623) {
-			return -1;
-		} else {
-			return this.field4623 > var1.field4623 ? 1 : 0;
-		}
-	}
-
-	public boolean equals(Object var1) {
-		if (var1 instanceof class425) {
-			return this.field4626.equals(((class425)var1).field4626);
-		} else {
-			throw new IllegalArgumentException();
-		}
-	}
-
-	public int hashCode() {
-		return this.field4626.hashCode();
-	}
-
-	public int compareTo(Object var1) {
-		return this.method7859((class425)var1);
-	}
-
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "686402889"
-	)
-	static int method7864() {
-		return ++Messages.Messages_count - 1;
-	}
-
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "(S)[Lhl;",
-		garbageValue = "215"
-	)
-	static VerticalAlignment[] method7863() {
-		return new VerticalAlignment[]{VerticalAlignment.field2046, VerticalAlignment.field2045, VerticalAlignment.VerticalAlignment_centered};
-	}
-
-	@ObfuscatedName("aj")
-	@ObfuscatedSignature(
-		descriptor = "(Lnd;IB)V",
-		garbageValue = "-49"
-	)
-	static void method7865(AbstractArchive var0, int var1) {
-		if ((var1 & 536870912) != 0) {
-			Login.logoSprite = class451.SpriteBuffer_getIndexedSpriteByName(var0, "logo_deadman_mode", "");
-		} else if ((var1 & 1073741824) != 0) {
-			Login.logoSprite = class451.SpriteBuffer_getIndexedSpriteByName(var0, "logo_seasonal_mode", "");
-		} else if ((var1 & 256) != 0) {
-			Login.logoSprite = class451.SpriteBuffer_getIndexedSpriteByName(var0, "logo_speedrunning", "");
-		} else {
-			Login.logoSprite = class451.SpriteBuffer_getIndexedSpriteByName(var0, "logo", "");
-		}
-
+	static void method7821() {
+		Client.packetWriter.addNode(ClanChannelMember.getPacketBufferNode(ClientPacket.FREECAM_EXIT, Client.packetWriter.isaacCipher));
+		Client.oculusOrbState = 0;
 	}
 }

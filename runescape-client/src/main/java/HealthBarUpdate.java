@@ -1,8 +1,3 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringReader;
-import java.io.StringWriter;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
@@ -10,30 +5,33 @@ import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("dp")
+@ObfuscatedName("dt")
 @Implements("HealthBarUpdate")
 public class HealthBarUpdate extends Node {
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ab")
+	@Export("ItemDefinition_inMembersWorld")
+	static boolean ItemDefinition_inMembersWorld;
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = 1792162961
+		intValue = 1165129097
 	)
 	@Export("cycle")
 	int cycle;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = -1704065255
+		intValue = -1916249825
 	)
 	@Export("health")
 	int health;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = 695756529
+		intValue = -2113097989
 	)
 	@Export("health2")
 	int health2;
-	@ObfuscatedName("am")
+	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = -1345194135
+		intValue = -141956253
 	)
 	@Export("cycleOffset")
 	int cycleOffset;
@@ -45,10 +43,10 @@ public class HealthBarUpdate extends Node {
 		this.cycleOffset = var4;
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
 		descriptor = "(IIIII)V",
-		garbageValue = "-2011079863"
+		garbageValue = "-104835898"
 	)
 	@Export("set")
 	void set(int var1, int var2, int var3, int var4) {
@@ -58,91 +56,75 @@ public class HealthBarUpdate extends Node {
 		this.cycleOffset = var4;
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Throwable;I)Ljava/lang/String;",
-		garbageValue = "2092480098"
+		descriptor = "(Ljava/lang/String;I)Ljava/lang/String;",
+		garbageValue = "-53586823"
 	)
-	static String method2427(Throwable var0) throws IOException {
-		String var1;
-		if (var0 instanceof RunException) {
-			RunException var2 = (RunException)var0;
-			var1 = var2.message + " | ";
-			var0 = var2.throwable;
-		} else {
-			var1 = "";
+	public static String method2462(String var0) {
+		int var1 = var0.length();
+		char[] var2 = new char[var1];
+		byte var3 = 2;
+
+		for (int var4 = 0; var4 < var1; ++var4) {
+			char var5 = var0.charAt(var4);
+			if (var3 == 0) {
+				var5 = Character.toLowerCase(var5);
+			} else if (var3 == 2 || Character.isUpperCase(var5)) {
+				var5 = StudioGame.method6812(var5);
+			}
+
+			if (Character.isLetter(var5)) {
+				var3 = 0;
+			} else if (var5 != '.' && var5 != '?' && var5 != '!') {
+				if (Character.isSpaceChar(var5)) {
+					if (var3 != 2) {
+						var3 = 1;
+					}
+				} else {
+					var3 = 1;
+				}
+			} else {
+				var3 = 2;
+			}
+
+			var2[var4] = var5;
 		}
 
-		StringWriter var12 = new StringWriter();
-		PrintWriter var3 = new PrintWriter(var12);
-		var0.printStackTrace(var3);
-		var3.close();
-		String var4 = var12.toString();
-		BufferedReader var5 = new BufferedReader(new StringReader(var4));
-		String var6 = var5.readLine();
+		return new String(var2);
+	}
 
-		while (true) {
-			while (true) {
-				String var7 = var5.readLine();
-				if (var7 == null) {
-					var1 = var1 + "| " + var6;
-					return var1;
-				}
-
-				int var8 = var7.indexOf(40);
-				int var9 = var7.indexOf(41, var8 + 1);
-				if (var8 >= 0 && var9 >= 0) {
-					String var10 = var7.substring(var8 + 1, var9);
-					int var11 = var10.indexOf(".java:");
-					if (var11 >= 0) {
-						var10 = var10.substring(0, var11) + var10.substring(var11 + 5);
-						var1 = var1 + var10 + ' ';
-						continue;
-					}
-
-					var7 = var7.substring(0, var8);
-				}
-
-				var7 = var7.trim();
-				var7 = var7.substring(var7.lastIndexOf(32) + 1);
-				var7 = var7.substring(var7.lastIndexOf(9) + 1);
-				var1 = var1 + var7 + ' ';
-			}
+	@ObfuscatedName("br")
+	@ObfuscatedSignature(
+		descriptor = "(ILds;ZI)I",
+		garbageValue = "-2085144575"
+	)
+	static int method2457(int var0, Script var1, boolean var2) {
+		if (var0 == ScriptOpcodes.LOGOUT) {
+			Client.logoutTimer = 250;
+			return 1;
+		} else {
+			return 2;
 		}
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("nq")
 	@ObfuscatedSignature(
-		descriptor = "(ILdc;ZI)I",
-		garbageValue = "-1197133658"
+		descriptor = "(IIZI)V",
+		garbageValue = "2104594196"
 	)
-	static int method2423(int var0, Script var1, boolean var2) {
-		Widget var3 = VarbitComposition.getWidget(Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]);
-		if (var0 == ScriptOpcodes.IF_GETTARGETMASK) {
-			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = class273.Widget_unpackTargetMask(UserComparator8.getWidgetFlags(var3));
-			return 1;
-		} else if (var0 != ScriptOpcodes.IF_GETOP) {
-			if (var0 == ScriptOpcodes.IF_GETOPBASE) {
-				if (var3.dataText == null) {
-					Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = "";
-				} else {
-					Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var3.dataText;
-				}
-
-				return 1;
-			} else {
-				return 2;
+	static final void method2460(int var0, int var1, boolean var2) {
+		if (Client.currentClanChannels[var0] != null) {
+			if (var1 >= 0 && var1 < Client.currentClanChannels[var0].method3382()) {
+				ClanChannelMember var3 = (ClanChannelMember)Client.currentClanChannels[var0].members.get(var1);
+				PacketBufferNode var4 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3141, Client.packetWriter.isaacCipher);
+				var4.packetBuffer.writeByte(4 + class478.stringCp1252NullTerminatedByteSize(var3.username.getName()));
+				var4.packetBuffer.writeByte(var0);
+				var4.packetBuffer.writeShort(var1);
+				var4.packetBuffer.writeBoolean(var2);
+				var4.packetBuffer.writeStringCp1252NullTerminated(var3.username.getName());
+				Client.packetWriter.addNode(var4);
 			}
-		} else {
-			int var4 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-			--var4;
-			if (var3.actions != null && var4 < var3.actions.length && var3.actions[var4] != null) {
-				Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var3.actions[var4];
-			} else {
-				Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = "";
-			}
-
-			return 1;
 		}
 	}
 }

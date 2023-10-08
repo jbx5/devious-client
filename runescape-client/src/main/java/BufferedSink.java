@@ -6,40 +6,40 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("rh")
+@ObfuscatedName("rs")
 @Implements("BufferedSink")
 public class BufferedSink implements Runnable {
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@Export("thread")
 	Thread thread;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("al")
 	@Export("outputStream")
 	OutputStream outputStream;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = -1482716161
+		intValue = -1793136843
 	)
 	@Export("capacity")
 	int capacity;
-	@ObfuscatedName("am")
+	@ObfuscatedName("ax")
 	@Export("buffer")
 	byte[] buffer;
-	@ObfuscatedName("as")
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = -1255610331
+		intValue = 1374706769
 	)
 	@Export("position")
 	int position;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ah")
 	@ObfuscatedGetter(
-		intValue = -1960096159
+		intValue = -510892913
 	)
 	@Export("limit")
 	int limit;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ar")
 	@Export("exception")
 	IOException exception;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ab")
 	@Export("closed")
 	boolean closed;
 
@@ -54,10 +54,10 @@ public class BufferedSink implements Runnable {
 		this.thread.start();
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "-1093105883"
+		garbageValue = "-2138016913"
 	)
 	@Export("isClosed")
 	boolean isClosed() {
@@ -79,10 +79,10 @@ public class BufferedSink implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "([BIII)V",
-		garbageValue = "-1711047468"
+		garbageValue = "-939344469"
 	)
 	@Export("write")
 	void write(byte[] var1, int var2, int var3) throws IOException {
@@ -119,10 +119,10 @@ public class BufferedSink implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "2122797894"
+		garbageValue = "792661080"
 	)
 	@Export("close")
 	void close() {
@@ -198,23 +198,17 @@ public class BufferedSink implements Runnable {
 
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(S)V",
-		garbageValue = "8211"
+		descriptor = "(B)V",
+		garbageValue = "-100"
 	)
-	public static void method8158() {
-		while (true) {
-			ArchiveDiskAction var0;
-			synchronized(ArchiveDiskActionHandler.ArchiveDiskActionHandler_requestQueue) {
-				var0 = (ArchiveDiskAction)ArchiveDiskActionHandler.ArchiveDiskActionHandler_responseQueue.removeLast();
+	public static void method8239() {
+		if (MouseHandler.MouseHandler_instance != null) {
+			synchronized(MouseHandler.MouseHandler_instance) {
+				MouseHandler.MouseHandler_instance = null;
 			}
-
-			if (var0 == null) {
-				return;
-			}
-
-			var0.archive.load(var0.archiveDisk, (int)var0.key, var0.data, false);
 		}
+
 	}
 }

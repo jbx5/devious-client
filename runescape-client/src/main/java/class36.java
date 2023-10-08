@@ -1,36 +1,21 @@
 import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("br")
+@ObfuscatedName("bp")
 public class class36 {
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Lor;"
+		descriptor = "Lpy;"
 	)
 	@Export("reflectionChecks")
-	static IterableNodeDeque reflectionChecks;
-	@ObfuscatedName("aa")
+	public static IterableNodeDeque reflectionChecks;
+	@ObfuscatedName("kh")
 	@ObfuscatedSignature(
-		descriptor = "Lmt;"
+		descriptor = "[Lun;"
 	)
-	@Export("scriptDotWidget")
-	static Widget scriptDotWidget;
-	@ObfuscatedName("cq")
-	static String field263;
-	@ObfuscatedName("le")
-	@ObfuscatedGetter(
-		intValue = -1399571883
-	)
-	@Export("oculusOrbFocalPointY")
-	static int oculusOrbFocalPointY;
-	@ObfuscatedName("mo")
-	@ObfuscatedGetter(
-		intValue = 988841787
-	)
-	@Export("Client_plane")
-	static int Client_plane;
+	@Export("scrollBarSprites")
+	static IndexedSprite[] scrollBarSprites;
 
 	static {
 		reflectionChecks = new IterableNodeDeque();
@@ -38,63 +23,69 @@ public class class36 {
 
 	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(IIII)I",
-		garbageValue = "475151817"
+		descriptor = "(II)I",
+		garbageValue = "1924526365"
 	)
-	static final int method694(int var0, int var1, int var2) {
-		if (var2 > 179) {
-			var1 /= 2;
-		}
-
-		if (var2 > 192) {
-			var1 /= 2;
-		}
-
-		if (var2 > 217) {
-			var1 /= 2;
-		}
-
-		if (var2 > 243) {
-			var1 /= 2;
-		}
-
-		int var3 = (var1 / 32 << 7) + (var0 / 4 << 10) + var2 / 2;
-		return var3;
+	@Export("getVarbit")
+	public static int getVarbit(int var0) {
+		VarbitComposition var1 = Messages.method2802(var0);
+		int var2 = var1.baseVar;
+		int var3 = var1.startBit;
+		int var4 = var1.endBit;
+		int var5 = Varps.Varps_masks[var4 - var3];
+		return Varps.Varps_main[var2] >> var3 & var5;
 	}
 
-	@ObfuscatedName("lk")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "([Lmt;IIIZS)V",
-		garbageValue = "-18913"
+		descriptor = "(II)Lif;",
+		garbageValue = "1398442265"
 	)
-	@Export("resizeInterface")
-	static void resizeInterface(Widget[] var0, int var1, int var2, int var3, boolean var4) {
-		for (int var5 = 0; var5 < var0.length; ++var5) {
-			Widget var6 = var0[var5];
-			if (var6 != null && var6.parentId == var1) {
-				FriendSystem.alignWidgetSize(var6, var2, var3, var4);
-				class17.alignWidgetPosition(var6, var2, var3);
-				if (var6.scrollX > var6.scrollWidth - var6.width) {
-					var6.scrollX = var6.scrollWidth - var6.width;
-				}
+	@Export("SequenceDefinition_get")
+	public static SequenceDefinition SequenceDefinition_get(int var0) {
+		SequenceDefinition var1 = (SequenceDefinition)SequenceDefinition.SequenceDefinition_cached.get((long)var0);
+		if (var1 != null) {
+			return var1;
+		} else {
+			byte[] var2 = class295.SequenceDefinition_archive.takeFile(12, var0);
+			var1 = new SequenceDefinition();
+			if (var2 != null) {
+				var1.decode(new Buffer(var2));
+			}
 
-				if (var6.scrollX < 0) {
-					var6.scrollX = 0;
-				}
+			var1.postDecode();
+			SequenceDefinition.SequenceDefinition_cached.put(var1, (long)var0);
+			return var1;
+		}
+	}
 
-				if (var6.scrollY > var6.scrollHeight - var6.height) {
-					var6.scrollY = var6.scrollHeight - var6.height;
-				}
+	@ObfuscatedName("ax")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/CharSequence;I)I",
+		garbageValue = "1831211968"
+	)
+	public static int method686(CharSequence var0) {
+		return class230.method4347(var0, 10, true);
+	}
 
-				if (var6.scrollY < 0) {
-					var6.scrollY = 0;
-				}
-
-				if (var6.type == 0) {
-					SoundCache.revalidateWidgetScroll(var0, var6, var4);
+	@ObfuscatedName("ne")
+	@ObfuscatedSignature(
+		descriptor = "(III)V",
+		garbageValue = "1735203823"
+	)
+	static final void method697(int var0, int var1) {
+		if (Client.currentClanChannels[var0] != null) {
+			if (var1 >= 0 && var1 < Client.currentClanChannels[var0].method3382()) {
+				ClanChannelMember var2 = (ClanChannelMember)Client.currentClanChannels[var0].members.get(var1);
+				if (var2.rank == -1) {
+					PacketBufferNode var3 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3209, Client.packetWriter.isaacCipher);
+					var3.packetBuffer.writeByte(3 + class478.stringCp1252NullTerminatedByteSize(var2.username.getName()));
+					var3.packetBuffer.writeByte(var0);
+					var3.packetBuffer.writeShort(var1);
+					var3.packetBuffer.writeStringCp1252NullTerminated(var2.username.getName());
+					Client.packetWriter.addNode(var3);
 				}
 			}
 		}
-
 	}
 }

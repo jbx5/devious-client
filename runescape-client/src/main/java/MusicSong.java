@@ -4,100 +4,114 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("mj")
+@ObfuscatedName("mv")
 @Implements("MusicSong")
-public class MusicSong
-{
-	@ObfuscatedName("aw")
+public class MusicSong {
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Lnd;"
+		descriptor = "Lom;"
 	)
 	@Export("musicTrackArchive")
 	public AbstractArchive musicTrackArchive;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = 1260242075
+		intValue = 1113976665
 	)
 	@Export("musicTrackGroupId")
 	public int musicTrackGroupId;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = -1235114521
+		intValue = -1736344083
 	)
 	@Export("musicTrackFileId")
 	public int musicTrackFileId;
-	@ObfuscatedName("am")
+	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = -1673909135
+		intValue = -1137874919
 	)
 	@Export("musicTrackVolume")
 	public int musicTrackVolume;
-	@ObfuscatedName("as")
-	public float field3511;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ao")
+	public float field3542;
+	@ObfuscatedName("ah")
 	@Export("musicTrackBoolean")
 	public boolean musicTrackBoolean;
-	@ObfuscatedName("ag")
-	public boolean field3513;
-	@ObfuscatedName("az")
-	public boolean field3508;
+	@ObfuscatedName("ar")
+	public boolean field3547;
+	@ObfuscatedName("ab")
+	public boolean field3545;
+	@ObfuscatedName("am")
+	public boolean field3546;
 	@ObfuscatedName("av")
-	public boolean field3515;
-	@ObfuscatedName("ap")
+	boolean field3550;
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "Llc;"
+		descriptor = "Lmt;"
 	)
 	@Export("midiPcmStream")
 	public MidiPcmStream midiPcmStream;
-	@ObfuscatedName("aq")
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
-		descriptor = "Lbh;"
+		descriptor = "Lbl;"
 	)
-	public SoundCache field3517;
-	@ObfuscatedName("at")
+	public SoundCache field3549;
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Lmp;"
+		descriptor = "Lmk;"
 	)
-	public MusicTrack field3518;
+	public MusicTrack field3548;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lnd;Ljava/lang/String;Ljava/lang/String;IZ)V"
-	)
-	public MusicSong(AbstractArchive var1, String var2, String var3, int var4, boolean var5) {
-		this.musicTrackGroupId = -1;
-		this.musicTrackFileId = -1;
-		this.musicTrackVolume = 0;
-		this.field3511 = 0.0F;
-		this.musicTrackBoolean = false;
-		this.field3515 = false;
-		this.musicTrackGroupId = var1.getGroupId(var2);
-		this.musicTrackFileId = var1.getFileId(this.musicTrackGroupId, var3);
-		this.method6067(var1, this.musicTrackGroupId, this.musicTrackFileId, var4, var5);
-	}
-
-	@ObfuscatedSignature(
-		descriptor = "(Lnd;IIIZ)V"
+		descriptor = "(Lom;IIIZ)V"
 	)
 	public MusicSong(AbstractArchive var1, int var2, int var3, int var4, boolean var5) {
 		this.musicTrackGroupId = -1;
 		this.musicTrackFileId = -1;
 		this.musicTrackVolume = 0;
-		this.field3511 = 0.0F;
+		this.field3542 = 0.0F;
 		this.musicTrackBoolean = false;
-		this.field3515 = false;
-		this.method6067(var1, var2, var3, var4, var5);
+		this.field3546 = false;
+		this.field3550 = false;
+		this.method6207(var1, var2, var3, var4, var5);
 	}
 
-	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "(Lnd;IIIZB)V",
-		garbageValue = "10"
+		descriptor = "(Lom;Ljava/lang/String;Ljava/lang/String;IZ)V"
 	)
-	void method6067(AbstractArchive var1, int var2, int var3, int var4, boolean var5) {
+	public MusicSong(AbstractArchive var1, String var2, String var3, int var4, boolean var5) {
+		this.musicTrackGroupId = -1;
+		this.musicTrackFileId = -1;
+		this.musicTrackVolume = 0;
+		this.field3542 = 0.0F;
+		this.musicTrackBoolean = false;
+		this.field3546 = false;
+		this.field3550 = false;
+		this.musicTrackGroupId = var1.getGroupId(var2);
+		this.musicTrackFileId = var1.getFileId(this.musicTrackGroupId, var3);
+		this.method6207(var1, this.musicTrackGroupId, this.musicTrackFileId, var4, var5);
+	}
+
+	@ObfuscatedName("ac")
+	@ObfuscatedSignature(
+		descriptor = "(Lom;IIIZB)V",
+		garbageValue = "-90"
+	)
+	void method6207(AbstractArchive var1, int var2, int var3, int var4, boolean var5) {
 		this.musicTrackArchive = var1;
 		this.musicTrackGroupId = var2;
 		this.musicTrackFileId = var3;
 		this.musicTrackVolume = var4;
 		this.musicTrackBoolean = var5;
+	}
+
+	@ObfuscatedName("hk")
+	@ObfuscatedSignature(
+		descriptor = "(Lok;Ljava/lang/String;B)V",
+		garbageValue = "-43"
+	)
+	static void method6210(Archive var0, String var1) {
+		ArchiveLoader var2 = new ArchiveLoader(var0, var1);
+		Client.archiveLoaders.add(var2);
+		Client.field819 += var2.groupCount;
 	}
 }

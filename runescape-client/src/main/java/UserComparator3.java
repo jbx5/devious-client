@@ -3,10 +3,21 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("eg")
+@ObfuscatedName("ev")
 @Implements("UserComparator3")
 public class UserComparator3 extends AbstractUserComparator {
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ao")
+	@ObfuscatedSignature(
+		descriptor = "[Lcv;"
+	)
+	@Export("World_worlds")
+	static World[] World_worlds;
+	@ObfuscatedName("ah")
+	@Export("ArchiveDiskActionHandler_thread")
+	static Thread ArchiveDiskActionHandler_thread;
+	@ObfuscatedName("hz")
+	static String field1471;
+	@ObfuscatedName("ac")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -14,10 +25,10 @@ public class UserComparator3 extends AbstractUserComparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(Lqa;Lqa;B)I",
-		garbageValue = "121"
+		descriptor = "(Lri;Lri;B)I",
+		garbageValue = "85"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -32,47 +43,12 @@ public class UserComparator3 extends AbstractUserComparator {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2);
 	}
 
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "-1707669825"
-	)
-	public static int method2885(int var0, int var1) {
-		return (var0 << 8) + var1;
-	}
-
-	@ObfuscatedName("aj")
-	@ObfuscatedSignature(
-		descriptor = "([FI)V",
-		garbageValue = "-398774343"
-	)
-	static void method2886(float[] var0) {
-		var0[1] = 1.0F - var0[1];
-		if (var0[0] < 0.0F) {
-			var0[0] = 0.0F;
-		}
-
-		if (var0[1] < 0.0F) {
-			var0[1] = 0.0F;
-		}
-
-		if (var0[0] > 1.0F || var0[1] > 1.0F) {
-			float var1 = (float)(((double)var0[1] - 2.0D) * (double)var0[1] + (double)(var0[0] * (var0[0] - 2.0F + var0[1])) + 1.0D);
-			if (class126.field1494 + var1 > 0.0F) {
-				SecureRandomCallable.method2248(var0);
-			}
-		}
-
-		var0[1] = 1.0F - var0[1];
-	}
-
-	@ObfuscatedName("at")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-1187022906"
+		garbageValue = "1193478763"
 	)
-	public static void method2887() {
-		NPCComposition.NpcDefinition_cached.clear();
-		NPCComposition.NpcDefinition_cachedModels.clear();
+	public static void method2909() {
+		VarbitComposition.VarbitDefinition_cached.clear();
 	}
 }

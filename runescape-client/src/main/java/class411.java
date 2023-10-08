@@ -1,37 +1,40 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("pw")
+@ObfuscatedName("pe")
 public class class411 {
-	@ObfuscatedName("aw")
+	@ObfuscatedName("wf")
 	@ObfuscatedGetter(
-		intValue = 2094209585
+		longValue = -3139176952693499925L
 	)
-	int field4537;
-	@ObfuscatedName("ay")
+	static long field4526;
+	@ObfuscatedName("ac")
+	public char field4523;
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = -618386709
+		intValue = 2110307635
 	)
-	int field4538;
-	@ObfuscatedName("ar")
+	public int field4524;
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = -1346449489
+		intValue = 402832077
 	)
-	int field4539;
-	@ObfuscatedName("am")
-	@ObfuscatedGetter(
-		intValue = -666028231
-	)
-	int field4540;
+	public int field4525;
 
-	public String toString() {
-		boolean var1 = true;
-		int var2 = 10 - Integer.toString(this.field4537).length();
-		int var3 = 10 - Integer.toString(this.field4539).length();
-		int var4 = 10 - Integer.toString(this.field4538).length();
-		String var5 = "          ".substring(10 - var2);
-		String var6 = "          ".substring(10 - var3);
-		String var7 = "          ".substring(10 - var4);
-		return "    Size: " + this.field4537 + var5 + "Created: " + this.field4538 + var7 + "Total used: " + this.field4539 + var6 + "Max-In-Use: " + this.field4540;
+	class411() {
+		this.field4524 = 0;
+		this.field4525 = 0;
+	}
+
+	@ObfuscatedName("ac")
+	@ObfuscatedSignature(
+		descriptor = "(ILjava/lang/String;Ljava/lang/String;B)V",
+		garbageValue = "56"
+	)
+	@Export("addGameMessage")
+	static void addGameMessage(int var0, String var1, String var2) {
+		class164.addChatMessage(var0, var1, var2, (String)null);
 	}
 }

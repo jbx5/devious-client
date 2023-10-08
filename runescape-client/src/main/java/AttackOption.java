@@ -4,41 +4,46 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dw")
+@ObfuscatedName("em")
 @Implements("AttackOption")
 public enum AttackOption implements MouseWheel {
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Ldw;"
+		descriptor = "Lem;"
 	)
 	@Export("AttackOption_dependsOnCombatLevels")
 	AttackOption_dependsOnCombatLevels(0),
-	@ObfuscatedName("ay")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "Ldw;"
+		descriptor = "Lem;"
 	)
 	@Export("AttackOption_alwaysRightClick")
 	AttackOption_alwaysRightClick(1),
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Ldw;"
+		descriptor = "Lem;"
 	)
-	field1336(2),
-	@ObfuscatedName("am")
+	field1346(2),
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "Ldw;"
+		descriptor = "Lem;"
 	)
 	@Export("AttackOption_hidden")
 	AttackOption_hidden(3),
-	@ObfuscatedName("as")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "Ldw;"
+		descriptor = "Lem;"
 	)
-	field1340(4);
+	field1348(4);
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("il")
 	@ObfuscatedGetter(
-		intValue = -1525855533
+		longValue = 5179348451515936053L
+	)
+	static long field1354;
+	@ObfuscatedName("ah")
+	@ObfuscatedGetter(
+		intValue = 1184337345
 	)
 	@Export("id")
 	final int id;
@@ -47,45 +52,46 @@ public enum AttackOption implements MouseWheel {
 		this.id = var3;
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "1644350448"
+		garbageValue = "-1243971674"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.id;
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(IS)Lfj;",
-		garbageValue = "-25003"
+		descriptor = "(Ltp;III)I",
+		garbageValue = "1550710334"
 	)
-	static class138 method2668(int var0) {
-		class138 var1 = (class138)ClientPreferences.findEnumerated(GZipDecompressor.method9734(), var0);
-		if (var1 == null) {
-			var1 = class138.field1623;
+	static int method2721(IterableNodeHashTable var0, int var1, int var2) {
+		if (var0 == null) {
+			return var2;
+		} else {
+			IntegerNode var3 = (IntegerNode)var0.get((long)var1);
+			return var3 == null ? var2 : var3.integer;
 		}
-
-		return var1;
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "1"
+		descriptor = "(Ljava/lang/CharSequence;I)Z",
+		garbageValue = "1281251233"
 	)
-	static final boolean method2669() {
-		return ViewportMouse.ViewportMouse_isInViewport;
+	@Export("isNumber")
+	public static boolean isNumber(CharSequence var0) {
+		return class135.method3074(var0, 10, true);
 	}
 
-	@ObfuscatedName("kv")
+	@ObfuscatedName("lv")
 	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "-57"
+		descriptor = "(I)I",
+		garbageValue = "-860429671"
 	)
-	static final boolean method2660() {
-		return Client.isMenuOpen;
+	static final int method2714() {
+		return Client.menuOptionsCount - 1;
 	}
 }

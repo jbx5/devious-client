@@ -4,80 +4,80 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gn")
+@ObfuscatedName("go")
 @Implements("MilliClock")
 public class MilliClock extends Clock {
-	@ObfuscatedName("aw")
-	long[] field1867;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ac")
+	long[] field1876;
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = -550412453
+		intValue = 791839951
 	)
 	int field1870;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = -198323931
-	)
-	int field1868;
-	@ObfuscatedName("am")
-	@ObfuscatedGetter(
-		longValue = 411650762298926119L
-	)
-	long field1869;
-	@ObfuscatedName("as")
-	@ObfuscatedGetter(
-		intValue = 1217161433
-	)
-	int field1866;
-	@ObfuscatedName("aj")
-	@ObfuscatedGetter(
-		intValue = 927990785
+		intValue = 1907363063
 	)
 	int field1871;
+	@ObfuscatedName("ax")
+	@ObfuscatedGetter(
+		longValue = -5892739104209832185L
+	)
+	long field1869;
+	@ObfuscatedName("ao")
+	@ObfuscatedGetter(
+		intValue = 429897187
+	)
+	int field1873;
+	@ObfuscatedName("ah")
+	@ObfuscatedGetter(
+		intValue = 54371443
+	)
+	int field1874;
 
-	public MilliClock() {
-		this.field1867 = new long[10];
+	MilliClock() {
+		this.field1876 = new long[10];
 		this.field1870 = 256;
-		this.field1868 = 1;
-		this.field1866 = 0;
-		this.field1869 = class113.method2835();
+		this.field1871 = 1;
+		this.field1873 = 0;
+		this.field1869 = GrandExchangeOfferTotalQuantityComparator.method7049();
 
 		for (int var1 = 0; var1 < 10; ++var1) {
-			this.field1867[var1] = this.field1869;
+			this.field1876[var1] = this.field1869;
 		}
 
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-1541664401"
+		garbageValue = "436321701"
 	)
 	@Export("mark")
 	public void mark() {
 		for (int var1 = 0; var1 < 10; ++var1) {
-			this.field1867[var1] = 0L;
+			this.field1876[var1] = 0L;
 		}
 
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(IIB)I",
-		garbageValue = "64"
+		descriptor = "(III)I",
+		garbageValue = "712947185"
 	)
 	@Export("wait")
 	public int wait(int var1, int var2) {
 		int var3 = this.field1870;
-		int var4 = this.field1868;
+		int var4 = this.field1871;
 		this.field1870 = 300;
-		this.field1868 = 1;
-		this.field1869 = class113.method2835();
-		if (0L == this.field1867[this.field1871]) {
+		this.field1871 = 1;
+		this.field1869 = GrandExchangeOfferTotalQuantityComparator.method7049();
+		if (this.field1876[this.field1874] == 0L) {
 			this.field1870 = var3;
-			this.field1868 = var4;
-		} else if (this.field1869 > this.field1867[this.field1871]) {
-			this.field1870 = (int)((long)(var1 * 2560) / (this.field1869 - this.field1867[this.field1871]));
+			this.field1871 = var4;
+		} else if (this.field1869 > this.field1876[this.field1874]) {
+			this.field1870 = (int)((long)(var1 * 2560) / (this.field1869 - this.field1876[this.field1874]));
 		}
 
 		if (this.field1870 < 25) {
@@ -86,35 +86,44 @@ public class MilliClock extends Clock {
 
 		if (this.field1870 > 256) {
 			this.field1870 = 256;
-			this.field1868 = (int)((long)var1 - (this.field1869 - this.field1867[this.field1871]) / 10L);
+			this.field1871 = (int)((long)var1 - (this.field1869 - this.field1876[this.field1874]) / 10L);
 		}
 
-		if (this.field1868 > var1) {
-			this.field1868 = var1;
+		if (this.field1871 > var1) {
+			this.field1871 = var1;
 		}
 
-		this.field1867[this.field1871] = this.field1869;
-		this.field1871 = (this.field1871 + 1) % 10;
+		this.field1876[this.field1874] = this.field1869;
+		this.field1874 = (this.field1874 + 1) % 10;
 		int var5;
-		if (this.field1868 > 1) {
+		if (this.field1871 > 1) {
 			for (var5 = 0; var5 < 10; ++var5) {
-				if (this.field1867[var5] != 0L) {
-					this.field1867[var5] += (long)this.field1868;
+				if (this.field1876[var5] != 0L) {
+					this.field1876[var5] += (long)this.field1871;
 				}
 			}
 		}
 
-		if (this.field1868 < var2) {
-			this.field1868 = var2;
+		if (this.field1871 < var2) {
+			this.field1871 = var2;
 		}
 
-		class13.method180((long)this.field1868);
+		Players.method2741((long)this.field1871);
 
-		for (var5 = 0; this.field1866 < 256; this.field1866 += this.field1870) {
+		for (var5 = 0; this.field1873 < 256; this.field1873 += this.field1870) {
 			++var5;
 		}
 
-		this.field1866 &= 255;
+		this.field1873 &= 255;
 		return var5;
+	}
+
+	@ObfuscatedName("ac")
+	@ObfuscatedSignature(
+		descriptor = "(Lom;I)V",
+		garbageValue = "2111970758"
+	)
+	public static void method3572(AbstractArchive var0) {
+		DbTableType.field5080 = var0;
 	}
 }

@@ -12,15 +12,15 @@ import net.runelite.mapping.ObfuscatedSignature;
 import org.bouncycastle.crypto.tls.TlsClientProtocol;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
-@ObfuscatedName("au")
+@ObfuscatedName("aj")
 public class class15 extends SSLSocketFactory {
-	@ObfuscatedName("ay")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "Lau;"
+		descriptor = "Laj;"
 	)
-	public static class15 field83;
-	@ObfuscatedName("aw")
-	SecureRandom field84;
+	public static class15 field82;
+	@ObfuscatedName("ac")
+	SecureRandom field83;
 
 	static {
 		if (Security.getProvider("BC") == null) {
@@ -30,15 +30,15 @@ public class class15 extends SSLSocketFactory {
 	}
 
 	public class15() {
-		this.field84 = new SecureRandom();
+		this.field83 = new SecureRandom();
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Lorg/bouncycastle/crypto/tls/TlsClientProtocol;I)Ljavax/net/ssl/SSLSocket;",
-		garbageValue = "-485169673"
+		descriptor = "(Ljava/lang/String;Lorg/bouncycastle/crypto/tls/TlsClientProtocol;S)Ljavax/net/ssl/SSLSocket;",
+		garbageValue = "-369"
 	)
-	SSLSocket method194(String var1, TlsClientProtocol var2) {
+	SSLSocket method185(String var1, TlsClientProtocol var2) {
 		return new class12(this, var2, var1);
 	}
 
@@ -51,19 +51,11 @@ public class class15 extends SSLSocketFactory {
 			var1.connect(new InetSocketAddress(var2, var3));
 		}
 
-		TlsClientProtocol var5 = new TlsClientProtocol(var1.getInputStream(), var1.getOutputStream(), this.field84);
-		return this.method194(var2, var5);
+		TlsClientProtocol var5 = new TlsClientProtocol(var1.getInputStream(), var1.getOutputStream(), this.field83);
+		return this.method185(var2, var5);
 	}
 
 	public String[] getDefaultCipherSuites() {
-		return null;
-	}
-
-	public String[] getSupportedCipherSuites() {
-		return null;
-	}
-
-	public Socket createSocket(String var1, int var2) throws IOException, UnknownHostException {
 		return null;
 	}
 
@@ -76,6 +68,14 @@ public class class15 extends SSLSocketFactory {
 	}
 
 	public Socket createSocket(InetAddress var1, int var2, InetAddress var3, int var4) throws IOException {
+		return null;
+	}
+
+	public Socket createSocket(String var1, int var2) throws IOException, UnknownHostException {
+		return null;
+	}
+
+	public String[] getSupportedCipherSuites() {
 		return null;
 	}
 }

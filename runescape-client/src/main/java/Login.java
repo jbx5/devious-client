@@ -5,166 +5,162 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ci")
+@ObfuscatedName("ca")
 @Implements("Login")
 public class Login {
-	@ObfuscatedName("ay")
+	@ObfuscatedName("al")
 	@Export("clearLoginScreen")
 	static boolean clearLoginScreen;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = 181677601
+		intValue = -684887311
 	)
 	@Export("xPadding")
 	static int xPadding;
-	@ObfuscatedName("am")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "[Luu;"
+		descriptor = "[Lun;"
 	)
 	@Export("runesSprite")
 	static IndexedSprite[] runesSprite;
-	@ObfuscatedName("as")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "Luu;"
+		descriptor = "Lun;"
 	)
 	@Export("titleboxSprite")
 	static IndexedSprite titleboxSprite;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "Luu;"
+		descriptor = "Lun;"
 	)
-	@Export("titlebuttonSprite")
-	static IndexedSprite titlebuttonSprite;
+	static IndexedSprite field929;
+	@ObfuscatedName("av")
+	@ObfuscatedSignature(
+		descriptor = "Lud;"
+	)
+	@Export("rightTitleSprite")
+	static SpritePixels rightTitleSprite;
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "Luu;"
-	)
-	static IndexedSprite field924;
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "Luu;"
+		descriptor = "Lun;"
 	)
 	@Export("logoSprite")
 	static IndexedSprite logoSprite;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aa")
+	@ObfuscatedSignature(
+		descriptor = "[Lun;"
+	)
+	@Export("title_muteSprite")
+	static IndexedSprite[] title_muteSprite;
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = 961751643
+		intValue = 458923923
 	)
 	@Export("loginBoxX")
 	static int loginBoxX;
-	@ObfuscatedName("af")
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		intValue = -1870177981
+		intValue = 581596689
 	)
 	@Export("Login_loadingPercent")
 	static int Login_loadingPercent;
-	@ObfuscatedName("ai")
+	@ObfuscatedName("af")
 	@Export("Login_loadingText")
 	static String Login_loadingText;
-	@ObfuscatedName("bh")
+	@ObfuscatedName("bl")
 	@ObfuscatedGetter(
-		intValue = 469326293
+		intValue = -2075218971
 	)
 	@Export("Login_banType")
 	static int Login_banType;
-	@ObfuscatedName("bt")
+	@ObfuscatedName("bx")
 	@ObfuscatedGetter(
-		intValue = -1862168703
+		intValue = -2106627381
 	)
-	static int field930;
-	@ObfuscatedName("ct")
+	static int field938;
+	@ObfuscatedName("ce")
 	@ObfuscatedGetter(
-		intValue = 2054440631
+		intValue = -175245841
 	)
 	@Export("loginIndex")
 	static int loginIndex;
-	@ObfuscatedName("cf")
+	@ObfuscatedName("cu")
 	@Export("Login_response0")
 	static String Login_response0;
-	@ObfuscatedName("cz")
+	@ObfuscatedName("cw")
 	@Export("Login_response1")
 	static String Login_response1;
-	@ObfuscatedName("cb")
+	@ObfuscatedName("co")
 	@Export("Login_response2")
 	static String Login_response2;
-	@ObfuscatedName("cs")
+	@ObfuscatedName("cc")
 	@Export("Login_response3")
 	static String Login_response3;
-	@ObfuscatedName("cj")
+	@ObfuscatedName("cg")
 	@Export("Login_username")
 	static String Login_username;
-	@ObfuscatedName("cn")
+	@ObfuscatedName("cq")
 	@Export("Login_password")
 	static String Login_password;
-	@ObfuscatedName("ce")
+	@ObfuscatedName("cz")
 	@ObfuscatedGetter(
-		intValue = -1146710171
+		intValue = 1841332601
 	)
-	static int field938;
-	@ObfuscatedName("cq")
-	static String[] field953;
-	@ObfuscatedName("cu")
-	static String field940;
-	@ObfuscatedName("ch")
-	static boolean field955;
-	@ObfuscatedName("cg")
-	static boolean field947;
-	@ObfuscatedName("cv")
-	@Export("otp")
-	static String otp;
-	@ObfuscatedName("cc")
-	static boolean field943;
-	@ObfuscatedName("dc")
+	static int field946;
+	@ObfuscatedName("cp")
+	static String[] field947;
+	@ObfuscatedName("cs")
+	@Export("displayName")
+	static String displayName;
+	@ObfuscatedName("cd")
+	static boolean field949;
+	@ObfuscatedName("ct")
+	static boolean field924;
+	@ObfuscatedName("ca")
+	static boolean field951;
+	@ObfuscatedName("dv")
 	@ObfuscatedGetter(
-		intValue = 1014236973
+		intValue = 207570935
 	)
 	@Export("currentLoginField")
 	static int currentLoginField;
-	@ObfuscatedName("dy")
+	@ObfuscatedName("dg")
 	@Export("worldSelectOpen")
 	static boolean worldSelectOpen;
-	@ObfuscatedName("dt")
+	@ObfuscatedName("dp")
 	@ObfuscatedGetter(
-		intValue = 211982419
+		intValue = 1746301625
 	)
 	@Export("hoveredWorldIndex")
 	static int hoveredWorldIndex;
-	@ObfuscatedName("df")
+	@ObfuscatedName("do")
 	@ObfuscatedGetter(
-		intValue = 185396425
+		intValue = -935504249
 	)
 	@Export("worldSelectPage")
 	static int worldSelectPage;
-	@ObfuscatedName("dm")
+	@ObfuscatedName("dh")
 	@ObfuscatedGetter(
-		intValue = 1607470035
+		intValue = 380969913
 	)
 	@Export("worldSelectPagesCount")
 	static int worldSelectPagesCount;
-	@ObfuscatedName("dz")
+	@ObfuscatedName("du")
 	@ObfuscatedGetter(
-		longValue = 6581316067511221491L
+		longValue = 5736123435137773119L
 	)
-	static long field951;
-	@ObfuscatedName("dx")
+	static long field959;
+	@ObfuscatedName("dr")
 	@ObfuscatedGetter(
-		longValue = -2311930200553503165L
+		longValue = 6594393808528520715L
 	)
-	static long field952;
-	@ObfuscatedName("dp")
-	static String[] field919;
-	@ObfuscatedName("ds")
-	static String[] field954;
-	@ObfuscatedName("da")
-	static String[] field934;
-	@ObfuscatedName("gt")
-	@ObfuscatedGetter(
-		intValue = 2088764235
-	)
-	@Export("worldPort")
-	static int worldPort;
-	@ObfuscatedName("gn")
-	static String field960;
+	static long field955;
+	@ObfuscatedName("dw")
+	static String[] field939;
+	@ObfuscatedName("di")
+	static String[] field962;
+	@ObfuscatedName("dt")
+	static String[] field961;
 
 	static {
 		xPadding = 0;
@@ -172,7 +168,7 @@ public class Login {
 		Login_loadingPercent = 10;
 		Login_loadingText = "";
 		Login_banType = -1;
-		field930 = 1;
+		field938 = 1;
 		loginIndex = 0;
 		Login_response0 = "";
 		Login_response1 = "";
@@ -180,65 +176,35 @@ public class Login {
 		Login_response3 = "";
 		Login_username = "";
 		Login_password = "";
-		field938 = 0;
-		field953 = new String[8];
-		field940 = "";
-		field955 = false;
-		field947 = false;
-		field943 = true;
+		field946 = 0;
+		field947 = new String[8];
+		displayName = "";
+		field949 = false;
+		field924 = false;
+		field951 = true;
 		currentLoginField = 0;
 		worldSelectOpen = false;
 		hoveredWorldIndex = -1;
 		worldSelectPage = 0;
 		worldSelectPagesCount = 0;
 		new DecimalFormat("##0.00");
-		new class133();
-		field951 = -1L;
-		field952 = -1L;
-		field919 = new String[]{"title.jpg"};
-		field954 = new String[]{"logo", "logo_deadman_mode", "logo_seasonal_mode", "titlebox", "titlebutton", "titlebutton_large", "play_now_text", "titlebutton_wide42,1", "runes", "title_mute", "options_radio_buttons,0", "options_radio_buttons,2", "options_radio_buttons,4", "options_radio_buttons,6", "sl_back", "sl_flags", "sl_arrows", "sl_stars", "sl_button"};
-		field934 = new String[]{"logo_speedrunning"};
+		new class135();
+		field959 = -1L;
+		field955 = -1L;
+		field939 = new String[]{"title.jpg"};
+		field962 = new String[]{"logo", "logo_deadman_mode", "logo_seasonal_mode", "titlebox", "titlebutton", "titlebutton_large", "play_now_text", "titlebutton_wide42,1", "runes", "title_mute", "options_radio_buttons,0", "options_radio_buttons,2", "options_radio_buttons,4", "options_radio_buttons,6", "sl_back", "sl_flags", "sl_arrows", "sl_stars", "sl_button"};
+		field961 = new String[]{"logo_speedrunning"};
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(II)Z",
-		garbageValue = "288446910"
+		descriptor = "(III)I",
+		garbageValue = "85678974"
 	)
-	@Export("loadInterface")
-	public static boolean loadInterface(int var0) {
-		if (Widget.Widget_loadedInterfaces[var0]) {
-			return true;
-		} else if (!ArchiveLoader.Widget_archive.tryLoadGroup(var0)) {
-			return false;
-		} else {
-			int var1 = ArchiveLoader.Widget_archive.getGroupFileCount(var0);
-			if (var1 == 0) {
-				Widget.Widget_loadedInterfaces[var0] = true;
-				return true;
-			} else {
-				if (ArchiveLoader.Widget_interfaceComponents[var0] == null) {
-					ArchiveLoader.Widget_interfaceComponents[var0] = new Widget[var1];
-				}
-
-				for (int var2 = 0; var2 < var1; ++var2) {
-					if (ArchiveLoader.Widget_interfaceComponents[var0][var2] == null) {
-						byte[] var3 = ArchiveLoader.Widget_archive.takeFile(var0, var2);
-						if (var3 != null) {
-							ArchiveLoader.Widget_interfaceComponents[var0][var2] = new Widget();
-							ArchiveLoader.Widget_interfaceComponents[var0][var2].id = var2 + (var0 << 16);
-							if (var3[0] == -1) {
-								ArchiveLoader.Widget_interfaceComponents[var0][var2].decode(new Buffer(var3));
-							} else {
-								ArchiveLoader.Widget_interfaceComponents[var0][var2].decodeLegacy(new Buffer(var3));
-							}
-						}
-					}
-				}
-
-				Widget.Widget_loadedInterfaces[var0] = true;
-				return true;
-			}
-		}
+	static final int method2140(int var0, int var1) {
+		int var2 = ClientPreferences.method2602(var0 - 1, var1 - 1) + ClientPreferences.method2602(var0 + 1, var1 - 1) + ClientPreferences.method2602(var0 - 1, var1 + 1) + ClientPreferences.method2602(var0 + 1, var1 + 1);
+		int var3 = ClientPreferences.method2602(var0 - 1, var1) + ClientPreferences.method2602(var0 + 1, var1) + ClientPreferences.method2602(var0, var1 - 1) + ClientPreferences.method2602(var0, 1 + var1);
+		int var4 = ClientPreferences.method2602(var0, var1);
+		return var2 / 16 + var3 / 8 + var4 / 4;
 	}
 }

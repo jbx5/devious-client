@@ -1,52 +1,40 @@
-import net.runelite.mapping.ObfuscatedGetter;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("iy")
-public class class212 extends Node {
-	@ObfuscatedName("ar")
-	@ObfuscatedGetter(
-		intValue = -1764748121
-	)
-	public int field2311;
-	@ObfuscatedName("am")
-	@ObfuscatedGetter(
-		intValue = 103416025
-	)
-	public int field2312;
-	@ObfuscatedName("as")
-	@ObfuscatedGetter(
-		intValue = 1783745811
-	)
-	public int field2310;
-	@ObfuscatedName("aj")
+@ObfuscatedName("in")
+public class class212 extends DualNode {
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Lmt;"
+		descriptor = "Llr;"
 	)
-	public Widget field2313;
+	@Export("field2136")
+	static EvictingDualNodeHashTable field2136;
 
-	@ObfuscatedSignature(
-		descriptor = "(IIILmt;)V"
-	)
-	public class212(int var1, int var2, int var3, Widget var4) {
-		this.field2310 = var1;
-		this.field2311 = var2;
-		this.field2312 = var3;
-		this.field2313 = var4;
+	static {
+		field2136 = new EvictingDualNodeHashTable(64);
 	}
 
-	@ObfuscatedName("nw")
+	@ObfuscatedName("nf")
 	@ObfuscatedSignature(
-		descriptor = "(Lmt;II)Ljava/lang/String;",
-		garbageValue = "-1905887286"
+		descriptor = "(Lnm;I)Lnm;",
+		garbageValue = "-1852354008"
 	)
-	static String method4141(Widget var0, int var1) {
-		int var3 = UserComparator8.getWidgetFlags(var0);
-		boolean var2 = (var3 >> var1 + 1 & 1) != 0;
-		if (!var2 && var0.onOp == null) {
+	static Widget method3891(Widget var0) {
+		int var2 = MouseRecorder.getWidgetFlags(var0);
+		int var1 = var2 >> 17 & 7;
+		int var3 = var1;
+		if (var1 == 0) {
 			return null;
 		} else {
-			return var0.actions != null && var0.actions.length > var1 && var0.actions[var1] != null && var0.actions[var1].trim().length() != 0 ? var0.actions[var1] : null;
+			for (int var4 = 0; var4 < var3; ++var4) {
+				var0 = class33.widgetDefinition.method6240(var0.parentId);
+				if (var0 == null) {
+					return null;
+				}
+			}
+
+			return var0;
 		}
 	}
 }

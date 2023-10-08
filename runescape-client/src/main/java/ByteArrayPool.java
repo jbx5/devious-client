@@ -6,97 +6,95 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("pk")
+@ObfuscatedName("qo")
 @Implements("ByteArrayPool")
 public class ByteArrayPool {
-	@ObfuscatedName("as")
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = 385405919
+		intValue = -544674551
 	)
 	@Export("ByteArrayPool_smallCount")
 	static int ByteArrayPool_smallCount;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ah")
 	@ObfuscatedGetter(
-		intValue = -1075020039
+		intValue = 1347345197
 	)
 	@Export("ByteArrayPool_mediumCount")
 	static int ByteArrayPool_mediumCount;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ar")
 	@ObfuscatedGetter(
-		intValue = -375623447
+		intValue = -268575627
 	)
 	@Export("ByteArrayPool_largeCount")
 	static int ByteArrayPool_largeCount;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ab")
 	@ObfuscatedGetter(
-		intValue = 729966117
+		intValue = -1770796283
 	)
-	static int field4547;
+	static int field4595;
+	@ObfuscatedName("am")
+	@ObfuscatedGetter(
+		intValue = 2101074183
+	)
+	static int field4606;
 	@ObfuscatedName("av")
 	@ObfuscatedGetter(
-		intValue = 737636207
+		intValue = -1137775327
 	)
-	static int field4548;
+	static int field4599;
+	@ObfuscatedName("ag")
+	@ObfuscatedGetter(
+		intValue = 97865893
+	)
+	static int field4600;
+	@ObfuscatedName("aa")
+	@ObfuscatedGetter(
+		intValue = -374552823
+	)
+	static int field4603;
 	@ObfuscatedName("ap")
-	@ObfuscatedGetter(
-		intValue = 1729288341
-	)
-	static int field4549;
-	@ObfuscatedName("aq")
-	@ObfuscatedGetter(
-		intValue = 1203889383
-	)
-	static int field4544;
-	@ObfuscatedName("at")
-	@ObfuscatedGetter(
-		intValue = 1909177715
-	)
-	static int field4555;
-	@ObfuscatedName("ah")
 	@Export("ByteArrayPool_small")
 	static byte[][] ByteArrayPool_small;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ay")
 	@Export("ByteArrayPool_medium")
 	static byte[][] ByteArrayPool_medium;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("as")
 	@Export("ByteArrayPool_large")
 	static byte[][] ByteArrayPool_large;
-	@ObfuscatedName("au")
-	static byte[][] field4551;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aj")
+	static byte[][] field4605;
+	@ObfuscatedName("an")
 	@Export("ByteArrayPool_alternativeSizes")
 	public static int[] ByteArrayPool_alternativeSizes;
-	@ObfuscatedName("ab")
-	static String[] field4541;
-	@ObfuscatedName("ao")
-	public static ArrayList field4557;
+	@ObfuscatedName("ae")
+	public static ArrayList field4591;
 
 	static {
 		ByteArrayPool_smallCount = 0;
 		ByteArrayPool_mediumCount = 0;
 		ByteArrayPool_largeCount = 0;
-		field4547 = 0;
-		field4548 = 1000;
-		field4549 = 250;
-		field4544 = 100;
-		field4555 = 50;
+		field4595 = 0;
+		field4606 = 1000;
+		field4599 = 250;
+		field4600 = 100;
+		field4603 = 50;
 		ByteArrayPool_small = new byte[1000][];
 		ByteArrayPool_medium = new byte[250][];
 		ByteArrayPool_large = new byte[100][];
-		field4551 = new byte[50][];
-		field4557 = new ArrayList();
-		field4557.clear();
-		field4557.add(100);
-		field4557.add(5000);
-		field4557.add(10000);
-		field4557.add(30000);
+		field4605 = new byte[50][];
+		field4591 = new ArrayList();
+		field4591.clear();
+		field4591.add(100);
+		field4591.add(5000);
+		field4591.add(10000);
+		field4591.add(30000);
 		new HashMap();
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
 		descriptor = "(IZI)[B",
-		garbageValue = "-1680084006"
+		garbageValue = "664601398"
 	)
 	@Export("ByteArrayPool_getArrayBool")
 	public static synchronized byte[] ByteArrayPool_getArrayBool(int var0, boolean var1) {
@@ -113,17 +111,17 @@ public class ByteArrayPool {
 			var4 = ByteArrayPool_large[--ByteArrayPool_largeCount];
 			ByteArrayPool_large[ByteArrayPool_largeCount] = null;
 			return var4;
-		} else if ((var0 == 30000 || var0 < 30000 && var1) && field4547 > 0) {
-			var4 = field4551[--field4547];
-			field4551[field4547] = null;
+		} else if ((var0 == 30000 || var0 < 30000 && var1) && field4595 > 0) {
+			var4 = field4605[--field4595];
+			field4605[field4595] = null;
 			return var4;
 		} else {
 			int var2;
-			if (class152.ByteArrayPool_arrays != null) {
+			if (class28.ByteArrayPool_arrays != null) {
 				for (var2 = 0; var2 < ByteArrayPool_alternativeSizes.length; ++var2) {
-					if ((ByteArrayPool_alternativeSizes[var2] == var0 || var0 < ByteArrayPool_alternativeSizes[var2] && var1) && class125.ByteArrayPool_altSizeArrayCounts[var2] > 0) {
-						byte[] var3 = class152.ByteArrayPool_arrays[var2][--class125.ByteArrayPool_altSizeArrayCounts[var2]];
-						class152.ByteArrayPool_arrays[var2][class125.ByteArrayPool_altSizeArrayCounts[var2]] = null;
+					if ((ByteArrayPool_alternativeSizes[var2] == var0 || var0 < ByteArrayPool_alternativeSizes[var2] && var1) && class425.ByteArrayPool_altSizeArrayCounts[var2] > 0) {
+						byte[] var3 = class28.ByteArrayPool_arrays[var2][--class425.ByteArrayPool_altSizeArrayCounts[var2]];
+						class28.ByteArrayPool_arrays[var2][class425.ByteArrayPool_altSizeArrayCounts[var2]] = null;
 						return var3;
 					}
 				}
@@ -131,7 +129,7 @@ public class ByteArrayPool {
 
 			if (var1 && ByteArrayPool_alternativeSizes != null) {
 				for (var2 = 0; var2 < ByteArrayPool_alternativeSizes.length; ++var2) {
-					if (var0 <= ByteArrayPool_alternativeSizes[var2] && class125.ByteArrayPool_altSizeArrayCounts[var2] < class152.ByteArrayPool_arrays[var2].length) {
+					if (var0 <= ByteArrayPool_alternativeSizes[var2] && class425.ByteArrayPool_altSizeArrayCounts[var2] < class28.ByteArrayPool_arrays[var2].length) {
 						return new byte[ByteArrayPool_alternativeSizes[var2]];
 					}
 				}
