@@ -2681,4 +2681,12 @@ public interface Client extends OAuthApi, GameEngine
 
 	void setWorldList(World[] worlds);
 
+	String getSessionId();
+
+	void setSessionId(String sessionId);
+
+	String getCharacterId();
+
+	void setCharacterId(String characterId);
+
 }
