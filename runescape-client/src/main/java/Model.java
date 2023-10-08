@@ -1569,11 +1569,11 @@ public class Model extends Renderable {
 			if (this.faceColors3[var1] == -1 && var14) {
 				Rasterizer3D.method4523(var2, var3, var4, var5, var6, var7, var8, var9, var10, field2778[this.faceColors1[var1]], this.overrideHue, this.overrideSaturation, this.overrideLuminance, this.overrideAmount);
 			} else if (this.faceColors3[var1] == -1) {
-				Rasterizer3D.method4565(var2, var3, var4, var5, var6, var7, var8, var9, var10, field2778[this.faceColors1[var1]]);
+				Rasterizer3D.rasterFlat(var2, var3, var4, var5, var6, var7, var8, var9, var10, field2778[this.faceColors1[var1]]);
 			} else if (var14) {
 				Rasterizer3D.method4557(var2, var3, var4, var5, var6, var7, var8, var9, var10, var11, var12, var13, this.overrideHue, this.overrideSaturation, this.overrideLuminance, this.overrideAmount);
 			} else {
-				Rasterizer3D.method4536(var2, var3, var4, var5, var6, var7, var8, var9, var10, var11, var12, var13);
+				Rasterizer3D.rasterGouraud(var2, var3, var4, var5, var6, var7, var8, var9, var10, var11, var12, var13);
 			}
 		}
 
@@ -1732,14 +1732,14 @@ public class Model extends Renderable {
 					Rasterizer3D.method4523(var14, var16, field2739[3], var11, var13, field2780[3], var17, var19, field2764[3], var22, this.overrideHue, this.overrideSaturation, this.overrideLuminance, this.overrideAmount);
 				} else if (this.faceColors3[var1] == -1) {
 					var22 = field2778[this.faceColors1[var1]];
-					Rasterizer3D.method4565(var14, var15, var16, var11, var12, var13, var17, var18, var19, var22);
-					Rasterizer3D.method4565(var14, var16, field2739[3], var11, var13, field2780[3], var17, var19, field2764[3], var22);
+					Rasterizer3D.rasterFlat(var14, var15, var16, var11, var12, var13, var17, var18, var19, var22);
+					Rasterizer3D.rasterFlat(var14, var16, field2739[3], var11, var13, field2780[3], var17, var19, field2764[3], var22);
 				} else if (var21) {
 					Rasterizer3D.method4557(var14, var15, var16, var11, var12, var13, var17, var18, var19, field2782[0], field2782[1], field2782[2], this.overrideHue, this.overrideLuminance, this.overrideSaturation, this.overrideAmount);
 					Rasterizer3D.method4557(var14, var16, field2739[3], var11, var13, field2780[3], 0.0F, 0.0F, 0.0F, field2782[0], field2782[2], field2782[3], this.overrideHue, this.overrideLuminance, this.overrideSaturation, this.overrideAmount);
 				} else {
-					Rasterizer3D.method4536(var14, var15, var16, var11, var12, var13, var17, var18, var19, field2782[0], field2782[1], field2782[2]);
-					Rasterizer3D.method4536(var14, var16, field2739[3], var11, var13, field2780[3], var17, var19, field2764[3], field2782[0], field2782[2], field2782[3]);
+					Rasterizer3D.rasterGouraud(var14, var15, var16, var11, var12, var13, var17, var18, var19, field2782[0], field2782[1], field2782[2]);
+					Rasterizer3D.rasterGouraud(var14, var16, field2739[3], var11, var13, field2780[3], var17, var19, field2764[3], field2782[0], field2782[2], field2782[3]);
 				}
 			}
 		}
