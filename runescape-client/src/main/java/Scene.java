@@ -1850,7 +1850,7 @@ public class Scene {
 
 							if (var1.texture == -1) {
 								if (var1.neColor != 12345678) {
-									Rasterizer3D.method4536(var27, var29, var25, var26, var28, var24, var32, var33, var31, var1.neColor, var1.nwColor, var1.seColor);
+									Rasterizer3D.rasterGouraud(var27, var29, var25, var26, var28, var24, var32, var33, var31, var1.neColor, var1.nwColor, var1.seColor);
 								}
 							} else if (!Scene_isLowDetail) {
 								if (var1.isFlat) {
@@ -1860,7 +1860,7 @@ public class Scene {
 								}
 							} else {
 								var35 = Rasterizer3D.clips.Rasterizer3D_textureLoader.getAverageTextureRGB(var1.texture);
-								Rasterizer3D.method4536(var27, var29, var25, var26, var28, var24, var32, var33, var31, method4778(var35, var1.neColor), method4778(var35, var1.nwColor), method4778(var35, var1.seColor));
+								Rasterizer3D.rasterGouraud(var27, var29, var25, var26, var28, var24, var32, var33, var31, method4778(var35, var1.neColor), method4778(var35, var1.nwColor), method4778(var35, var1.seColor));
 							}
 						}
 
@@ -1878,13 +1878,13 @@ public class Scene {
 
 							if (var1.texture == -1) {
 								if (var1.swColor != 12345678) {
-									Rasterizer3D.method4536(var23, var25, var29, var22, var24, var28, var30, var31, var33, var1.swColor, var1.seColor, var1.nwColor);
+									Rasterizer3D.rasterGouraud(var23, var25, var29, var22, var24, var28, var30, var31, var33, var1.swColor, var1.seColor, var1.nwColor);
 								}
 							} else if (!Scene_isLowDetail) {
 								Rasterizer3D.method4531(var23, var25, var29, var22, var24, var28, var30, var31, var33, var1.swColor, var1.seColor, var1.nwColor, var10, var14, var9, var17, var18, var21, var12, var11, var15, var1.texture);
 							} else {
 								var35 = Rasterizer3D.clips.Rasterizer3D_textureLoader.getAverageTextureRGB(var1.texture);
-								Rasterizer3D.method4536(var23, var25, var29, var22, var24, var28, var30, var31, var33, method4778(var35, var1.swColor), method4778(var35, var1.seColor), method4778(var35, var1.nwColor));
+								Rasterizer3D.rasterGouraud(var23, var25, var29, var22, var24, var28, var30, var31, var33, method4778(var35, var1.swColor), method4778(var35, var1.seColor), method4778(var35, var1.nwColor));
 							}
 						}
 
@@ -1968,10 +1968,10 @@ public class Scene {
 						}
 					} else {
 						int var23 = Rasterizer3D.clips.Rasterizer3D_textureLoader.getAverageTextureRGB(var1.triangleTextureId[var9]);
-						Rasterizer3D.method4536(var16, var17, var18, var13, var14, var15, var19, var20, var21, method4778(var23, var1.triangleColorA[var9]), method4778(var23, var1.triangleColorB[var9]), method4778(var23, var1.triangleColorC[var9]));
+						Rasterizer3D.rasterGouraud(var16, var17, var18, var13, var14, var15, var19, var20, var21, method4778(var23, var1.triangleColorA[var9]), method4778(var23, var1.triangleColorB[var9]), method4778(var23, var1.triangleColorC[var9]));
 					}
 				} else if (var1.triangleColorA[var9] != 12345678) {
-					Rasterizer3D.method4536(var16, var17, var18, var13, var14, var15, var19, var20, var21, var1.triangleColorA[var9], var1.triangleColorB[var9], var1.triangleColorC[var9]);
+					Rasterizer3D.rasterGouraud(var16, var17, var18, var13, var14, var15, var19, var20, var21, var1.triangleColorA[var9], var1.triangleColorB[var9], var1.triangleColorC[var9]);
 				}
 			}
 		}

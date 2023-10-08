@@ -26,4 +26,8 @@ public interface RSTextureProvider extends TextureProvider
 	@Import("getTexturePixels")
 	@Override
 	int[] load(int textureId);
+
+	@Import("getAverageTextureRGB")
+	@Override
+	int getDefaultColor(int textureID);
 }
