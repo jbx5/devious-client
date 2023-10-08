@@ -2,7 +2,8 @@ import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("jg")
-public class class259 extends class242 {
+public class class259 extends AbstractRasterizer
+{
 	@ObfuscatedSignature(
 		descriptor = "(Ljb;)V"
 	)
@@ -1069,7 +1070,7 @@ public class class259 extends class242 {
 		int var24;
 		if (var23 == null) {
 			var24 = super.field2573.Rasterizer3D_textureLoader.getAverageTextureRGB(var22);
-			this.vmethod5143(var1, var2, var3, var4, var5, var6, var7, var8, var9, class242.method4626(var24, var10), class242.method4626(var24, var11), class242.method4626(var24, var12));
+			this.vmethod5143(var1, var2, var3, var4, var5, var6, var7, var8, var9, AbstractRasterizer.method4626(var24, var10), AbstractRasterizer.method4626(var24, var11), AbstractRasterizer.method4626(var24, var12));
 		} else {
 			super.field2567 = super.field2573.Rasterizer3D_textureLoader.isLowDetail(var22);
 			super.field2566 = super.field2573.Rasterizer3D_textureLoader.vmethod5182(var22);
@@ -1730,7 +1731,7 @@ public class class259 extends class242 {
 		int var24;
 		if (var23 == null) {
 			var24 = super.field2573.Rasterizer3D_textureLoader.getAverageTextureRGB(var22);
-			this.vmethod5143(var1, var2, var3, var4, var5, var6, var7, var8, var9, class242.method4626(var24, var10), class242.method4626(var24, var11), class242.method4626(var24, var12));
+			this.vmethod5143(var1, var2, var3, var4, var5, var6, var7, var8, var9, AbstractRasterizer.method4626(var24, var10), AbstractRasterizer.method4626(var24, var11), AbstractRasterizer.method4626(var24, var12));
 		} else {
 			super.field2567 = super.field2573.Rasterizer3D_textureLoader.isLowDetail(var22);
 			super.field2566 = super.field2573.Rasterizer3D_textureLoader.vmethod5182(var22);
@@ -2442,7 +2443,7 @@ public class class259 extends class242 {
 			var9 += var10 * (float)var5;
 			int var11;
 			int var12;
-			if (super.field2573.field2831) {
+			if (super.field2573.rasterGouraudLowRes) {
 				var4 = var6 - var5 >> 2;
 				var8 <<= 2;
 				if (super.field2573.field2832 == 0) {

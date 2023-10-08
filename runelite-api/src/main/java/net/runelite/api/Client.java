@@ -2504,6 +2504,8 @@ public interface Client extends OAuthApi, GameEngine
 
 	void posToCameraAngle(int var0, int var1);
 
+	Rasterizer getRasterizer();
+
 	/*
 	 * Unethical
 	 */
