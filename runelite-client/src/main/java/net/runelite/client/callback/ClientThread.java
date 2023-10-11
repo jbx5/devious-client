@@ -69,7 +69,7 @@ public class ClientThread implements Executor
 	}
 
 	/**
-	 * Will run r on the game thread, at a unspecified point in the future.
+	 * Will run r on the game thread, at an unspecified point in the future.
 	 * If r returns false, r will be ran again, at a later point
 	 */
 	public void invoke(BooleanSupplier r)
