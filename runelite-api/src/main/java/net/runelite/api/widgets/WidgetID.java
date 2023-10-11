@@ -487,6 +487,9 @@ public final class WidgetID
 	static class LoginClickToPlayScreen
 	{
 		static final int MESSAGE_OF_THE_DAY = 6;
+		static final int OPEN_STORE_BUTTON = 62;
+		static final int VIEW_INBOX_BUTTON = 67;
+		static final int CLICK_HERE_TO_PLAY_BUTTON = 72;
 	}
 
 	static class FixedViewport
