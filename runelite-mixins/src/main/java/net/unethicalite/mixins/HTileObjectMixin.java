@@ -1,5 +1,6 @@
 package net.unethicalite.mixins;
 
+import java.awt.Shape;
 import net.runelite.api.ObjectComposition;
 import net.unethicalite.api.events.MenuAutomated;
 import net.unethicalite.api.util.Randomizer;
@@ -129,14 +130,29 @@ public abstract class HTileObjectMixin implements TileObject
 	@Inject
 	public Point getClickPoint()
 	{
+		Shape shape;
 		if (this instanceof GameObject)
 		{
-			return Randomizer.getRandomPointIn(((RSGameObject) this).getRenderable().getCachedBounds());
+			shape = ((GameObject) this).getConvexHull();
+		}
+		else if (this instanceof RSBoundaryObject)
+		{
+			shape = ((RSBoundaryObject) this).getConvexHull();
+		}
+		else if (this instanceof RSFloorDecoration)
+		{
+			shape = ((RSFloorDecoration) this).getConvexHull();
+		}
+		else if (this instanceof RSWallDecoration)
+		{
+			shape = ((RSWallDecoration) this).getConvexHull();
 		}
 		else
 		{
-			return Randomizer.getRandomPointIn(getCanvasTilePoly().getBounds());
+			shape = this.getCanvasTilePoly();
 		}
+
+		return shape != null ? Randomizer.getRandomPointIn(shape.getBounds()) : null;
 	}
 
 	@Inject
