@@ -89,7 +89,12 @@ public class MinimapPlugin extends Plugin
 	@Subscribe
 	public void onGameStateChanged(GameStateChanged event)
 	{
-		if (event.getGameState() == GameState.LOGIN_SCREEN && originalDotSprites == null)
+		var state = event.getGameState();
+		if (state == GameState.STARTING)
+		{
+			originalDotSprites = null;
+		}
+		else if (state == GameState.LOGIN_SCREEN && originalDotSprites == null)
 		{
 			storeOriginalDots();
 			replaceMapDots();
