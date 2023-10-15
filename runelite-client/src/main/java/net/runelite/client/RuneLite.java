@@ -444,7 +444,7 @@ public class RuneLite
 	private static void copyJagexCache()
 	{
 		Path from = Paths.get(System.getProperty("user.home"), "jagexcache");
-		Path to = Unethicalite.getCacheDirectory().getAbsoluteFile().toPath();
+		Path to = Unethicalite.getCacheDirectory().toPath();
 		if (Files.exists(to) || !Files.exists(from))
 		{
 			return;
@@ -495,7 +495,7 @@ public class RuneLite
 			applet.setSize(Constants.GAME_FIXED_SIZE);
 
 			System.setProperty("jagex.disableBouncyCastle", "true");
-			System.setProperty("jagex.userhome", Unethicalite.getCacheDirectory().getAbsolutePath());
+			System.setProperty("jagex.userhome", Unethicalite.getCacheDirectory().getParent());
 
 			applet.init();
 			applet.start();
