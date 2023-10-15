@@ -29,7 +29,7 @@ public class class339 {
 		garbageValue = "-250555554"
 	)
 	static void method6258() {
-		GameEngine.method647(24);
+		GameEngine.setLoginIndex(24);
 		AbstractWorldMapIcon.setLoginResponseString("The game servers are currently being updated.", "Please wait a few minutes and try again.", "");
 	}
 }

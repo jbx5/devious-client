@@ -1019,9 +1019,10 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 		descriptor = "(II)V",
 		garbageValue = "-1715864689"
 	)
-	static void method647(int var0) {
-		if (var0 != Login.loginIndex) {
-			Login.loginIndex = var0;
+	@Export("setLoginIndex")
+	static void setLoginIndex(int index) {
+		if (index != Login.loginIndex) {
+			Login.loginIndex = index;
 		}
 	}
 }
