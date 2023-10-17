@@ -190,7 +190,7 @@ public abstract class RSPlayerMixin implements RSPlayer
 
 		final int tileHeight = Perspective.getTileHeight(client, new LocalPoint(localX, localY), client.getPlane());
 
-		Perspective.modelToCanvas(client, model.getVerticesCount(), localX, localY, tileHeight, getOrientation(), model.getVerticesX(), model.getVerticesZ(), model.getVerticesY(), x2d, y2d);
+		Perspective.modelToCanvas(client, model.getVerticesCount(), localX, localY, tileHeight, getCurrentOrientation(), model.getVerticesX(), model.getVerticesZ(), model.getVerticesY(), x2d, y2d);
 		ArrayList polys = new ArrayList(model.getFaceCount());
 
 		int[] trianglesX = model.getFaceIndices1();
@@ -227,7 +227,7 @@ public abstract class RSPlayerMixin implements RSPlayer
 
 		int tileHeight = Perspective.getTileHeight(client, new LocalPoint(getX(), getY()), client.getPlane());
 
-		return model.getConvexHull(getX(), getY(), getOrientation(), tileHeight);
+		return model.getConvexHull(getX(), getY(), getCurrentOrientation(), tileHeight);
 	}
 
 	@SuppressWarnings("InfiniteRecursion")
