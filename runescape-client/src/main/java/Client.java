@@ -2792,7 +2792,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 						AbstractWorldMapIcon.setLoginResponseString(var37, var35, var39);
 						DefaultsGroup.updateGameState(10);
 						if (field559.method9506()) {
-							GameEngine.method647(9);
+							GameEngine.setLoginIndex(9);
 						}
 					}
 
@@ -6510,7 +6510,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 	public void setOtlTokenRequester(OtlTokenRequester var1) {
 		if (var1 != null) {
 			this.field563 = var1;
-			GameEngine.method647(10);
+			GameEngine.setLoginIndex(10);
 		}
 	}
 

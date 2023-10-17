@@ -4,7 +4,8 @@ import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("bk")
-public class class27 {
+public class class27
+{
 	@ObfuscatedName("au")
 	static String[] field147;
 	@ObfuscatedName("fp")
@@ -166,7 +167,7 @@ public class class27 {
 		garbageValue = "-376109619"
 	)
 	static void method393(int var0) {
-		GameEngine.method647(14);
+		GameEngine.setLoginIndex(14);
 		Login.Login_banType = var0;
 	}
 }

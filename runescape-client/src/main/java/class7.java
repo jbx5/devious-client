@@ -123,7 +123,7 @@ public class class7 {
 		CollisionMap.logOut();
 		switch(var0) {
 		case 1:
-			GameEngine.method647(24);
+			GameEngine.setLoginIndex(24);
 			AbstractWorldMapIcon.setLoginResponseString("", "You were disconnected from the server.", "");
 			break;
 		case 2:

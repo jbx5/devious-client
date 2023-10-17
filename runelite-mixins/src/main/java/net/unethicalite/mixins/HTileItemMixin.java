@@ -102,10 +102,15 @@ public abstract class HTileItemMixin implements RSTileItem
 	public Point getClickPoint()
 	{
 		LocalPoint localPoint = this.getLocalLocation();
+		if (localPoint == null)
+		{
+			return null;
+		}
+
 		Shape convexHull = this.getModel().getConvexHull(localPoint.getX(), localPoint.getY(), 0,
 			Perspective.getTileHeight(client, localPoint, this.getWorldLocation().getPlane()));
 
-		return Randomizer.getRandomPointIn(convexHull.getBounds());
+		return convexHull != null ? Randomizer.getRandomPointIn(convexHull.getBounds()) : null;
 	}
 
 	@Inject

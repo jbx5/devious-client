@@ -50,7 +50,7 @@ public class class19 implements Callable {
 		garbageValue = "44"
 	)
 	static void method285(String var0, String var1, String var2) {
-		GameEngine.method647(7);
+		GameEngine.setLoginIndex(7);
 		AbstractWorldMapIcon.setLoginResponseString(var0, var1, var2);
 	}
 

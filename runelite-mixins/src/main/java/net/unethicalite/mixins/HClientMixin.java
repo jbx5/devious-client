@@ -28,6 +28,7 @@ import net.runelite.rs.api.RSServerPacket;
 import net.runelite.rs.api.RSTile;
 import net.unethicalite.api.events.ExperienceGained;
 import net.unethicalite.api.events.LobbyWorldSelectToggled;
+import net.unethicalite.api.events.LoginIndexChanged;
 import net.unethicalite.api.events.LoginStateChanged;
 import net.unethicalite.api.events.MenuAutomated;
 import net.unethicalite.api.events.PlaneChanged;
@@ -83,11 +84,18 @@ public abstract class HClientMixin implements RSClient
 	@FieldHook("loginIndex")
 	public static void loginIndex(int idx)
 	{
-		client.getCallbacks().post(new LoginStateChanged(client.getLoginIndex()));
+		client.getCallbacks().post(new LoginIndexChanged(client.getLoginIndex()));
 	}
 
-	@FieldHook("experience")
 	@Inject
+	@FieldHook("loginState")
+	public static void loginState(int idx)
+	{
+		client.getCallbacks().post(new LoginStateChanged(client.getLoginState()));
+	}
+
+	@Inject
+	@FieldHook("experience")
 	public static void experiencedChanged(int idx)
 	{
 		Skill[] possibleSkills = Skill.values();
@@ -184,8 +192,8 @@ public abstract class HClientMixin implements RSClient
 		return getLoginResponse1() + " " + getLoginResponse2() + " " + getLoginResponse3();
 	}
 
-	@Override
 	@Inject
+	@Override
 	public boolean isTileObjectValid(Tile tile, TileObject t)
 	{
 		if (!(t instanceof RSGameObject))
@@ -273,8 +281,9 @@ public abstract class HClientMixin implements RSClient
 		}
 	}
 
-	@FieldHook("worldSelectOpen")
+
 	@Inject
+	@FieldHook("worldSelectOpen")
 	public static void worldSelectionScreenToggled(int idx)
 	{
 		if (!client.isWorldSelectOpen())
@@ -299,8 +308,8 @@ public abstract class HClientMixin implements RSClient
 		client.getCallbacks().post(serverPacketReceived);
 	}
 
-	@Override
 	@Inject
+	@Override
 	public PacketBufferNode preparePacket(ClientPacket packet)
 	{
 		return preparePacket(packet, client.getPacketWriter().getIsaacCipher());
