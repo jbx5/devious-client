@@ -66,7 +66,7 @@ public class MusicPatchNode2 {
 			var1 = 10;
 		}
 
-		GameEngine.method647(var1);
+		GameEngine.setLoginIndex(var1);
 		if (var0) {
 			Login.Login_username = "";
 			Login.Login_password = "";

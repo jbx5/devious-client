@@ -15,7 +15,7 @@ public class class429 {
 			Login.Login_response1 = "";
 			Login.Login_response2 = "Enter your username/email & password.";
 			Login.Login_response3 = "";
-			GameEngine.method647(2);
+			GameEngine.setLoginIndex(2);
 			if (var0) {
 				Login.Login_password = "";
 			}
@@ -28,7 +28,7 @@ public class class429 {
 			}
 
 		} else {
-			GameEngine.method647(10);
+			GameEngine.setLoginIndex(10);
 		}
 	}
 }

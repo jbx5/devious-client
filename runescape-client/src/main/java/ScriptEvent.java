@@ -242,14 +242,14 @@ public class ScriptEvent extends Node {
 	static void method2328(AbstractArchive var0, AbstractArchive var1, boolean var2, int var3) {
 		if (Login.clearLoginScreen) {
 			if (var3 == 4) {
-				GameEngine.method647(4);
+				GameEngine.setLoginIndex(4);
 			}
 
 		} else {
 			if (var3 == 0) {
 				MusicPatchNode2.method5929(var2);
 			} else {
-				GameEngine.method647(var3);
+				GameEngine.setLoginIndex(var3);
 			}
 
 			Rasterizer2D.Rasterizer2D_clear();

@@ -690,7 +690,7 @@ public final class WorldMapRenderer {
 								Login.Login_response1 = "This is a <col=00ffff>Beta<col=ffffff> world.";
 								Login.Login_response2 = "Your normal account will not be affected.";
 								Login.Login_response3 = "";
-								GameEngine.method647(1);
+								GameEngine.setLoginIndex(1);
 								if (Client.Login_isUsernameRemembered && Login.Login_username != null && Login.Login_username.length() > 0) {
 									Login.currentLoginField = 1;
 								} else {
@@ -708,7 +708,7 @@ public final class WorldMapRenderer {
 								}
 
 								Login.Login_response0 = "Warning!";
-								GameEngine.method647(1);
+								GameEngine.setLoginIndex(1);
 								if (Client.Login_isUsernameRemembered && Login.Login_username != null && Login.Login_username.length() > 0) {
 									Login.currentLoginField = 1;
 								} else {
@@ -719,7 +719,7 @@ public final class WorldMapRenderer {
 								Login.Login_response2 = "The Protect Item prayer will";
 								Login.Login_response3 = "not work on this world.";
 								Login.Login_response0 = "Warning!";
-								GameEngine.method647(1);
+								GameEngine.setLoginIndex(1);
 								if (Client.Login_isUsernameRemembered && Login.Login_username != null && Login.Login_username.length() > 0) {
 									Login.currentLoginField = 1;
 								} else {
@@ -743,7 +743,7 @@ public final class WorldMapRenderer {
 
 									var9 = class379.loginBoxCenter + 80;
 									if (var5 == 1 && var40 >= var9 - 75 && var40 <= var9 + 75 && var41 >= var10 - 20 && var41 <= var10 + 20) {
-										GameEngine.method647(0);
+										GameEngine.setLoginIndex(0);
 									}
 									break;
 								}
@@ -751,7 +751,7 @@ public final class WorldMapRenderer {
 								if (var8.field2386 == 84) {
 									class429.Login_promptCredentials(false);
 								} else if (var8.field2386 == 13) {
-									GameEngine.method647(0);
+									GameEngine.setLoginIndex(0);
 								}
 							}
 						} else {
@@ -796,7 +796,7 @@ public final class WorldMapRenderer {
 
 								var45 = Login.loginBoxX + 180 + 80;
 								if (var5 == 1 && var40 >= var45 - 75 && var40 <= var45 + 75 && var41 >= var44 - 20 && var41 <= var44 + 20) {
-									GameEngine.method647(0);
+									GameEngine.setLoginIndex(0);
 									Login.Login_username = "";
 									Login.Login_password = "";
 									ClientPreferences.field1295 = 0;
@@ -863,7 +863,7 @@ public final class WorldMapRenderer {
 																Login.Login_username = Login.Login_username + var8.field2375;
 															}
 														} else {
-															GameEngine.method647(0);
+															GameEngine.setLoginIndex(0);
 															Login.Login_username = "";
 															Login.Login_password = "";
 															ClientPreferences.field1295 = 0;
@@ -983,7 +983,7 @@ public final class WorldMapRenderer {
 											++var17;
 										}
 
-										GameEngine.method647(3);
+										GameEngine.setLoginIndex(3);
 										return;
 									} catch (UnsupportedFlavorException var37) {
 									} catch (IOException var38) {
@@ -1041,7 +1041,7 @@ public final class WorldMapRenderer {
 
 										var9 = Login.loginBoxX + 180 + 80;
 										if (var5 == 1 && var40 >= var9 - 75 && var40 <= var9 + 75 && var41 >= var10 - 20 && var41 <= var10 + 20) {
-											GameEngine.method647(0);
+											GameEngine.setLoginIndex(0);
 											Login.Login_username = "";
 											Login.Login_password = "";
 											ClientPreferences.field1295 = 0;
@@ -1059,7 +1059,7 @@ public final class WorldMapRenderer {
 											}
 
 											if (var8.field2386 == 13) {
-												GameEngine.method647(0);
+												GameEngine.setLoginIndex(0);
 												Login.Login_username = "";
 												Login.Login_password = "";
 												ClientPreferences.field1295 = 0;
@@ -1108,7 +1108,7 @@ public final class WorldMapRenderer {
 												switch(var46) {
 												case 2:
 													AbstractWorldMapIcon.setLoginResponseString(Strings.field4188, Strings.field4024, Strings.field4213);
-													GameEngine.method647(6);
+													GameEngine.setLoginIndex(6);
 													break;
 												case 3:
 													AbstractWorldMapIcon.setLoginResponseString("", "Error connecting to server.", "");
@@ -1175,7 +1175,7 @@ public final class WorldMapRenderer {
 														switch(var13) {
 														case 2:
 															AbstractWorldMapIcon.setLoginResponseString(Strings.field4188, Strings.field4024, Strings.field4213);
-															GameEngine.method647(6);
+															GameEngine.setLoginIndex(6);
 															break;
 														case 3:
 															AbstractWorldMapIcon.setLoginResponseString("", "Error connecting to server.", "");
@@ -1284,7 +1284,7 @@ public final class WorldMapRenderer {
 												if (var5 == 1 && var40 >= var9 - 75 && var40 <= var9 + 75 && var41 >= var10 - 20 && var41 <= var10 + 20) {
 													VertexNormal.openURL(ScriptEvent.method2315("secure", true) + "m=dob/set_dob.ws", true, false);
 													AbstractWorldMapIcon.setLoginResponseString("", "Page has opened in the browser.", "");
-													GameEngine.method647(6);
+													GameEngine.setLoginIndex(6);
 													return;
 												}
 
@@ -1299,7 +1299,7 @@ public final class WorldMapRenderer {
 											if (var5 == 1 && var40 >= var9 - 75 && var40 <= var9 + 75 && var41 >= var10 - 20 && var41 <= var10 + 20) {
 												VertexNormal.openURL("https://www.jagex.com/terms/privacy", true, false);
 												AbstractWorldMapIcon.setLoginResponseString("", "Page has opened in the browser.", "");
-												GameEngine.method647(6);
+												GameEngine.setLoginIndex(6);
 												return;
 											}
 
@@ -1378,7 +1378,7 @@ public final class WorldMapRenderer {
 											if (var5 == 1 && var40 >= var45 - 75 && var40 <= var45 + 75 && var41 >= var44 - 20 && var41 <= var44 + 20) {
 												VertexNormal.openURL(var36, true, false);
 												AbstractWorldMapIcon.setLoginResponseString("", "Page has opened in the browser.", "");
-												GameEngine.method647(6);
+												GameEngine.setLoginIndex(6);
 												return;
 											}
 
@@ -1399,7 +1399,7 @@ public final class WorldMapRenderer {
 											if (var5 == 1 && var40 >= var9 - 75 && var40 <= var9 + 75 && var41 >= var10 - 20 && var41 <= var10 + 20) {
 												VertexNormal.openURL(ScriptEvent.method2315("secure", true) + "m=dob/set_dob.ws", true, false);
 												AbstractWorldMapIcon.setLoginResponseString("", "Page has opened in the browser.", "");
-												GameEngine.method647(6);
+												GameEngine.setLoginIndex(6);
 												return;
 											}
 
