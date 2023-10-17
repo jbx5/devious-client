@@ -29,6 +29,7 @@ import net.runelite.rs.api.RSTile;
 import net.unethicalite.api.events.ExperienceGained;
 import net.unethicalite.api.events.LobbyWorldSelectToggled;
 import net.unethicalite.api.events.LoginIndexChanged;
+import net.unethicalite.api.events.LoginStateChanged;
 import net.unethicalite.api.events.MenuAutomated;
 import net.unethicalite.api.events.PlaneChanged;
 import net.unethicalite.api.events.ServerPacketReceived;
@@ -84,6 +85,13 @@ public abstract class HClientMixin implements RSClient
 	public static void loginIndex(int idx)
 	{
 		client.getCallbacks().post(new LoginIndexChanged(client.getLoginIndex()));
+	}
+
+	@Inject
+	@FieldHook("loginState")
+	public static void loginState(int idx)
+	{
+		client.getCallbacks().post(new LoginStateChanged(client.getLoginState()));
 	}
 
 	@Inject
