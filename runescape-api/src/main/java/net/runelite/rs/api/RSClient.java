@@ -1770,7 +1770,7 @@ public interface RSClient extends RSGameEngine, Client
 	void setLoginIndex(int index);
 
 	@Import("loginState")
-	int getLoginState();
+	int getRSLoginState();
 
 	@Construct
 	RSClientPacket createClientPacket(int opcode, int length);
