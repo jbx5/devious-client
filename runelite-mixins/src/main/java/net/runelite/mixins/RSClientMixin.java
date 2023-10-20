@@ -44,6 +44,7 @@ import net.runelite.api.IndexedSprite;
 import net.runelite.api.IntegerNode;
 import net.runelite.api.InventoryID;
 import net.runelite.api.ItemComposition;
+import net.runelite.api.LoginState;
 import net.runelite.api.MenuAction;
 import net.runelite.api.MenuEntry;
 import net.runelite.api.MessageNode;
@@ -3741,6 +3742,13 @@ public abstract class RSClientMixin implements RSClient
 	public int getExpandedMapLoading()
 	{
 		return expandedMapLoadingChunks;
+	}
+
+	@Inject
+	@Override
+	public LoginState getLoginState()
+	{
+		return LoginState.of(getRSLoginState());
 	}
 }
 
