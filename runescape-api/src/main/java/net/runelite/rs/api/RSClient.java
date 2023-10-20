@@ -27,7 +27,6 @@ package net.runelite.rs.api;
 import net.runelite.api.AmbientSoundEffect;
 import net.runelite.api.Client;
 import net.runelite.api.Deque;
-import net.runelite.api.LoginState;
 import net.runelite.api.ModelData;
 import net.runelite.api.SpritePixels;
 import net.runelite.api.WidgetNode;
@@ -1772,8 +1771,6 @@ public interface RSClient extends RSGameEngine, Client
 
 	@Import("loginState")
 	int getRSLoginState();
-
-	LoginState getLoginState();
 
 	@Construct
 	RSClientPacket createClientPacket(int opcode, int length);

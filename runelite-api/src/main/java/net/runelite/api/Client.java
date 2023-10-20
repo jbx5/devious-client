@@ -2689,6 +2689,5 @@ public interface Client extends OAuthApi, GameEngine
 
 	void setCharacterId(String characterId);
 
-	int getRSLoginState();
-
+	LoginState getLoginState();
 }
