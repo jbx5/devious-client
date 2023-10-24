@@ -1846,4 +1846,12 @@ public interface RSClient extends RSGameEngine, Client
 	java.util.Properties getCredentialsProperties();
 	boolean storeCredentials();
 	void writeCredentials();
+
+	/**
+	 * Cached random.dat
+	 */
+
+	byte[] getCachedRandomDatData(String username);
+	void writeCachedRandomDatData(String username, byte[] data);
+	boolean useCachedRandomDat();
 }

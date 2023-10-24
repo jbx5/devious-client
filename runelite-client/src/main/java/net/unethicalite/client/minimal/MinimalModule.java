@@ -59,6 +59,7 @@ public class MinimalModule extends AbstractModule
 	private final File config;
 	private final OptionSet optionSet;
 	private final boolean insecureWriteCredentials;
+	private final boolean cachedRandomDat;
 
 	@Override
 	protected void configure()
@@ -75,6 +76,7 @@ public class MinimalModule extends AbstractModule
 		bindConstant().annotatedWith(Names.named("safeMode")).to(false);
 		bind(File.class).annotatedWith(Names.named("config")).toInstance(config);
 		bindConstant().annotatedWith(Names.named("insecureWriteCredentials")).to(insecureWriteCredentials);
+		bindConstant().annotatedWith(Names.named("cachedRandomDat")).to(cachedRandomDat);
 		bind(File.class).annotatedWith(Names.named("runeLiteDir")).toInstance(RuneLite.RUNELITE_DIR);
 		bind(ScheduledExecutorService.class).toInstance(new ExecutorServiceExceptionLogger(Executors.newSingleThreadScheduledExecutor()));
 		bind(OkHttpClient.class).toInstance(okHttpClient);
