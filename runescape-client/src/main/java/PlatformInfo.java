@@ -14,8 +14,8 @@ public class PlatformInfo extends Node {
 	@Export("os")
 	int os;
 	@ObfuscatedName("bz")
-	@Export("field4518")
-	boolean field4518;
+	@Export("arch64")
+	boolean arch64;
 	@ObfuscatedName("bb")
 	@ObfuscatedGetter(
 		intValue = 1658886897
@@ -134,7 +134,7 @@ public class PlatformInfo extends Node {
 	PlatformInfo(int var1, boolean var2, int var3, int var4, int var5, int var6, int var7, boolean var8, int var9, int var10, int var11, int var12, String var13, String var14, String var15, String var16, int var17, int var18, int var19, int var20, String var21, String var22, int[] var23, int var24, String var25, String var26) {
 		this.field4539 = new int[3];
 		this.os = var1;
-		this.field4518 = var2;
+		this.arch64 = var2;
 		this.osVersion = var3;
 		this.vendor = var4;
 		this.javaMajor = var5;
@@ -170,7 +170,7 @@ public class PlatformInfo extends Node {
 	public void write(Buffer var1) {
 		var1.writeByte(9);
 		var1.writeByte(this.os);
-		var1.writeByte(this.field4518 ? 1 : 0);
+		var1.writeByte(this.arch64 ? 1 : 0);
 		var1.writeShort(this.osVersion);
 		var1.writeByte(this.vendor);
 		var1.writeByte(this.javaMajor);
