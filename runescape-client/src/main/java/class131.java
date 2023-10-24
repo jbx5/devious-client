@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.util.concurrent.Callable;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
@@ -66,7 +67,8 @@ public class class131 implements Callable {
 		descriptor = "(B)[B",
 		garbageValue = "1"
 	)
-	public static byte[] method3015() {
+	@Export("randomDatData2")
+	public static byte[] randomDatData2() {
 		byte[] var0 = new byte[24];
 
 		try {

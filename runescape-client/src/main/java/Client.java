@@ -2538,7 +2538,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 				if (randomDatData != null) {
 					var9.writeBytes(randomDatData, 0, randomDatData.length);
 				} else {
-					byte[] var10 = class131.method3015();
+					byte[] var10 = class131.randomDatData2();
 					var9.writeBytes(var10, 0, var10.length);
 				}
 
