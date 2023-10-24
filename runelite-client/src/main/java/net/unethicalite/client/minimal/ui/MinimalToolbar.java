@@ -161,16 +161,16 @@ public class MinimalToolbar extends JMenuBar
 			add(rendering);
 
 			JRadioButton mouseDebug = new JRadioButton("Mouse debug");
-			mouseDebug.addActionListener(e -> configManager.setConfiguration("unethicalite", "drawMouse",
+			mouseDebug.addActionListener(e -> configManager.setConfiguration("entityinspector", "drawMouse",
 					mouseDebug.isSelected()));
 			debug.add(mouseDebug);
 
 			JRadioButton menuActionDebug = new JRadioButton("MenuAction debug");
-			menuActionDebug.addActionListener(e -> configManager.setConfiguration("unethicalite", "debugMenuAction", menuActionDebug.isSelected()));
+			menuActionDebug.addActionListener(e -> configManager.setConfiguration("entityinspector", "debugMenuAction", menuActionDebug.isSelected()));
 			debug.add(menuActionDebug);
 
 			JRadioButton dialogDebug = new JRadioButton("Dialog debug");
-			dialogDebug.addActionListener(e -> configManager.setConfiguration("unethicalite", "debugDialogs", dialogDebug.isSelected()));
+			dialogDebug.addActionListener(e -> configManager.setConfiguration("entityinspector", "debugDialogs", dialogDebug.isSelected()));
 			debug.add(dialogDebug);
 
 			JRadioButton collisionDebug = new JRadioButton("Collision map");
