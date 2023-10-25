@@ -38,13 +38,11 @@ public abstract class RSGraphicsObjectMixin implements RSGraphicsObject
 	@Replace("advance")
 	public void copy$advance(int var1)
 	{
+		copy$advance(var1);
+
 		if (this instanceof RuneLiteObject)
 		{
 			((RSRuneLiteObject) this).advanceRL(var1);
-		}
-		else
-		{
-			copy$advance(var1);
 		}
 	}
 

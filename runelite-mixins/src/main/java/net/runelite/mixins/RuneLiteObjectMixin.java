@@ -67,22 +67,6 @@ public abstract class RuneLiteObjectMixin implements RSRuneLiteObject
 	{
 		if (getSequenceDefinition() != null)
 		{
-			if (!finished())
-			{
-				setFrameCycle(getFrameCycle() + var1);
-
-				while (getFrameCycle() > getSequenceDefinition().getFrameLengths()[getFrame()])
-				{
-					setFrameCycle(getFrameCycle() - getSequenceDefinition().getFrameLengths()[getFrame()]);
-					setFrame(getFrame() + 1);
-					if (getFrame() >= getSequenceDefinition().getFrameIDs().length)
-					{
-						setFinished(true);
-						break;
-					}
-				}
-			}
-
 			if (isLooping() && finished())
 			{
 				setFinished(false);
