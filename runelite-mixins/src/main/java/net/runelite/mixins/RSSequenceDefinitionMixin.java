@@ -296,16 +296,11 @@ public abstract class RSSequenceDefinitionMixin implements RSSequenceDefinition
 	@Replace("SequenceDefinition_get")
 	public static RSSequenceDefinition copy$sequenceDefinitionGet(int var0)
 	{
-		RSSequenceDefinition sequenceDefinition = copy$sequenceDefinitionGet(var0);
-
-		if (sequenceDefinition.getFrameIDs() == null && !sequenceDefinition.isCachedModelIdSet())
+		synchronized (client.getSequenceDefinitionCache())
 		{
-			return null;
-		}
-		else
-		{
-			sequenceDefinition.setId(var0);
-			return sequenceDefinition;
+			RSSequenceDefinition rsSequenceDefinition = copy$sequenceDefinitionGet(var0);
+			rsSequenceDefinition.setId(var0);
+			return rsSequenceDefinition;
 		}
 	}
 
