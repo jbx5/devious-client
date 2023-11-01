@@ -177,6 +177,9 @@ public class MinimalClient
 				.withValuesConvertedBy(new ConfigFileConverter())
 				.defaultsTo(DEFAULT_CONFIG_FILE);
 
+		final OptionSpec<Void> insecureWriteCredentials = parser.accepts("insecure-write-credentials", "Dump authentication tokens from the Jagex Launcher to a text file to be used for development");
+		final OptionSpec<Void> cachedRandomDat = parser.accepts("cached-random-dat", "Use cached random.dat data for each account");
+
 		OptionSet options = SettingsManager.parseArgs(parser, args);
 
 		if (options.has("debug"))
@@ -220,10 +223,6 @@ public class MinimalClient
 			int world = options.valueOf(worldInfo);
 			System.setProperty("cli.world", String.valueOf(world));
 		}
-
-		final OptionSpec<Void> insecureWriteCredentials = parser.accepts("insecure-write-credentials", "Dump authentication tokens from the Jagex Launcher to a text file to be used for development");
-
-		final OptionSpec<Void> cachedRandomDat = parser.accepts("cached-random-dat", "Use cached random.dat data for each account");
 
 		Thread.setDefaultUncaughtExceptionHandler((thread, throwable) ->
 		{
