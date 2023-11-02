@@ -43,7 +43,7 @@ dependencies {
     implementation(group = "commons-cli", name = "commons-cli", version = "1.4")
     implementation(group = "io.netty", name = "netty-buffer", version = "4.1.54.Final")
     implementation(group = "com.squareup.okhttp3", name = "okhttp", version = "4.9.1")
-    implementation(group = "org.antlr", name = "antlr4-runtime", version = "4.8-1")
+    implementation(group = "org.antlr", name = "antlr4-runtime", version = "4.13.1")
     implementation(group = "org.apache.commons", name = "commons-compress", version = "1.21")
     implementation(group = "org.slf4j", name = "slf4j-api", version = "1.7.32")
     implementation(group = "net.java.dev.jna", name = "jna", version = "5.9.0")
