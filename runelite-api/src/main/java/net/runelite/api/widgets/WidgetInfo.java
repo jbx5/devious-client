@@ -1037,13 +1037,16 @@ public enum WidgetInfo
 	CHARACTER_CREATOR_CONFIRM_BUTTON(WidgetID.CHARACTER_CREATOR_GROUP_ID, WidgetID.CharacterCreator.CONFIRM_BUTTON),
 	;
 
-	private final int groupId;
-	private final int childId;
+	private final int id;
+
+	WidgetInfo(int id)
+	{
+		this.id = id;
+	}
 
 	WidgetInfo(int groupId, int childId)
 	{
-		this.groupId = groupId;
-		this.childId = childId;
+		this.id = (groupId << 16) | childId;
 	}
 
 	/**
@@ -1053,7 +1056,7 @@ public enum WidgetInfo
 	 */
 	public int getId()
 	{
-		return groupId << 16 | childId;
+		return id;
 	}
 
 	/**
@@ -1063,7 +1066,7 @@ public enum WidgetInfo
 	 */
 	public int getGroupId()
 	{
-		return groupId;
+		return id >> 16;
 	}
 
 	/**
@@ -1073,7 +1076,7 @@ public enum WidgetInfo
 	 */
 	public int getChildId()
 	{
-		return childId;
+		return id & 0xffff;
 	}
 
 	/**
@@ -1083,7 +1086,7 @@ public enum WidgetInfo
 	 */
 	public int getPackedId()
 	{
-		return groupId << 16 | childId;
+		return id;
 	}
 
 	/**
