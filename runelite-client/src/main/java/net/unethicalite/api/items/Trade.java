@@ -1,5 +1,6 @@
 package net.unethicalite.api.items;
 
+import com.google.common.primitives.Ints;
 import net.unethicalite.api.commons.Predicates;
 import net.unethicalite.api.commons.Time;
 import net.unethicalite.api.game.Vars;
@@ -18,11 +19,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Trade
 {
+	private static Pattern FREE_SLOTS_REGEXP = Pattern.compile(" has (?<count>.+?) free inventory slots.");
 	private static final Supplier<Widget> OUR_ITEMS = () -> Widgets.get(WidgetID.PLAYER_TRADE_SCREEN_GROUP_ID, 25);
 	private static final Supplier<Widget> THEIR_ITEMS = () -> Widgets.get(WidgetID.PLAYER_TRADE_SCREEN_GROUP_ID, 28);
+	private static final Supplier<Widget> AVAILABLE_SLOTS = () -> Widgets.get(WidgetID.PLAYER_TRADE_SCREEN_GROUP_ID, 9);
 	private static final Supplier<Widget> INVENTORY = () -> Widgets.get(WidgetID.PLAYER_TRADE_INVENTORY_GROUP_ID, 0);
 	private static final Supplier<Widget> ACCEPT_1 = () -> Widgets.get(WidgetID.PLAYER_TRADE_SCREEN_GROUP_ID, 10);
 	private static final Supplier<Widget> ACCEPT_2 = () -> Widgets.get(WidgetInfo.SECOND_TRADING_WITH_ACCEPT_BUTTON);
@@ -243,6 +248,22 @@ public class Trade
 	public static Item getFirst(boolean theirs, String... names)
 	{
 		return getFirst(theirs, Predicates.names(names));
+	}
+
+	public static Integer getFreeSlots()
+	{
+		Widget widget = AVAILABLE_SLOTS.get();
+		if(widget != null)
+		{
+			Matcher matcher = FREE_SLOTS_REGEXP.matcher(widget.getText());
+			if(matcher.find())
+			{
+				String count = matcher.group("count");
+				Integer freeSlots = Ints.tryParse(count);
+				return freeSlots != null ? freeSlots : 0;
+			}
+		}
+		return 0;
 	}
 
 	public static boolean contains(boolean theirs, Predicate<Item> filter)
