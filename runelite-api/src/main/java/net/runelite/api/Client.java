@@ -623,7 +623,6 @@ public interface Client extends OAuthApi, GameEngine
 	 * @return the widget
 	 */
 	@Nullable
-	@Deprecated
 	Widget getWidget(WidgetInfo widget);
 
 	/**
