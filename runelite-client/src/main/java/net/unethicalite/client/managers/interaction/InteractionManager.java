@@ -68,7 +68,11 @@ public class InteractionManager
 					entity = event.getEntity();
 					if (entity != null && config.mouseBehavior() == MouseBehavior.CLICKBOXES)
 					{
-						clickPoint = entity.getClickPoint().getAwtPoint();
+						net.runelite.api.Point entityClickPoint = entity.getClickPoint();
+						if (entityClickPoint != null)
+						{
+							clickPoint = entityClickPoint.getAwtPoint();
+						}
 					}
 
 					if (event.getOpcode() == MenuAction.WALK && clickOffScreen(clickPoint))
