@@ -33,6 +33,7 @@ import net.unethicalite.api.Interactable;
 import net.runelite.api.FontTypeFace;
 import net.runelite.api.Point;
 import net.runelite.api.SpritePixels;
+import net.runelite.api.annotations.Component;
 import org.intellij.lang.annotations.MagicConstant;
 import org.jetbrains.annotations.Range;
 
@@ -58,6 +59,7 @@ public interface Widget extends Interactable, Identifiable
 	 *
 	 * @see WidgetID
 	 */
+	@Component
 	int getId();
 
 	/**
