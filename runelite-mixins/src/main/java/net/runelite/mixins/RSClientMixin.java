@@ -123,6 +123,7 @@ import net.runelite.api.widgets.WidgetConfig;
 import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.api.widgets.WidgetItem;
 import net.runelite.api.widgets.WidgetType;
+import net.runelite.api.widgets.WidgetUtil;
 import net.runelite.rs.api.RSAbstractArchive;
 import net.runelite.rs.api.RSArchive;
 import net.runelite.rs.api.RSBuffer;
@@ -2905,10 +2906,31 @@ public abstract class RSClientMixin implements RSClient
 	}
 
 	@Inject
+	private static void unloadInterface(int id, RSNodeDeque nodeDeque)
+	{
+		for (RSScriptEvent scriptEvent = (RSScriptEvent) nodeDeque.last(); scriptEvent != null; scriptEvent = (RSScriptEvent) nodeDeque.previous())
+		{
+			RSWidget widget = (RSWidget) scriptEvent.getSource();
+			int group = WidgetUtil.componentToInterface(widget.getId());
+			if (id == group)
+			{
+				scriptEvent.unlink();
+			}
+		}
+	}
+
+	@Inject
 	@MethodHook("closeInterface")
 	public static void preCloseInterface(RSInterfaceParent iface, boolean willUnload)
 	{
 		client.getCallbacks().post(new WidgetClosed(iface.getId(), iface.getModalMode(), willUnload));
+		if (willUnload)
+		{
+			int id = iface.getId();
+			unloadInterface(id, client.getScriptEvents());
+			unloadInterface(id, client.getScriptEvents3());
+			unloadInterface(id, client.getScriptEvents2());
+		}
 	}
 
 	@Inject
