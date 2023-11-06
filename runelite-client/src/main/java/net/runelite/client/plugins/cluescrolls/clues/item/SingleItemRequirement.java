@@ -60,7 +60,7 @@ public class SingleItemRequirement implements ItemRequirement
 	@Override
 	public String getCollectiveName(Client client)
 	{
-		ItemComposition definition = client.getItemComposition(itemId);
+		ItemComposition definition = client.getItemDefinition(itemId);
 
 		if (definition == null)
 		{
