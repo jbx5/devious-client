@@ -593,7 +593,7 @@ final class class108 implements class337 {
 										var22.mouseX = MouseHandler.MouseHandler_x - var26;
 										var22.mouseY = MouseHandler.MouseHandler_y - var11;
 										var22.args = var9.onRelease;
-										Client.field734.addFirst(var22);
+										Client.scriptEvents3.addFirst(var22);
 									}
 								}
 
@@ -639,7 +639,7 @@ final class class108 implements class337 {
 										var22.mouseX = MouseHandler.MouseHandler_x - var26;
 										var22.mouseY = MouseHandler.MouseHandler_y - var11;
 										var22.args = var9.onMouseLeave;
-										Client.field734.addFirst(var22);
+										Client.scriptEvents3.addFirst(var22);
 									}
 								}
 
@@ -647,7 +647,7 @@ final class class108 implements class337 {
 									var22 = new ScriptEvent();
 									var22.widget = var9;
 									var22.args = var9.onTimer;
-									Client.field542.addFirst(var22);
+									Client.scriptEvents2.addFirst(var22);
 								}
 
 								ScriptEvent var25;

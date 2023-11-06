@@ -24,6 +24,9 @@
  */
 package net.runelite.rs.api;
 
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.Map;
 import net.runelite.api.AmbientSoundEffect;
 import net.runelite.api.Client;
 import net.runelite.api.Deque;
@@ -38,10 +41,6 @@ import net.runelite.api.packets.IsaacCipher;
 import net.runelite.api.widgets.Widget;
 import net.runelite.mapping.Construct;
 import net.runelite.mapping.Import;
-
-import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.Map;
 
 public interface RSClient extends RSGameEngine, Client
 {
@@ -1695,6 +1694,15 @@ public interface RSClient extends RSGameEngine, Client
 
 	@Import("validRootWidgets")
 	boolean[] getValidRootWidgets();
+
+	@Import("scriptEvents")
+	RSNodeDeque getScriptEvents();
+
+	@Import("scriptEvents2")
+	RSNodeDeque getScriptEvents2();
+
+	@Import("scriptEvents3")
+	RSNodeDeque getScriptEvents3();
 
 	/*
 	Unethical
