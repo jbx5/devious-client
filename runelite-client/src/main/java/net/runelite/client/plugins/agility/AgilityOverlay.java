@@ -35,7 +35,6 @@ import java.util.Set;
 import javax.inject.Inject;
 import net.runelite.api.Client;
 import net.runelite.api.NPC;
-import net.runelite.api.Perspective;
 import net.runelite.api.Point;
 import net.runelite.api.Tile;
 import net.runelite.api.coords.LocalPoint;
@@ -172,7 +171,8 @@ class AgilityOverlay extends Overlay
 		if (tile.getPlane() == client.getPlane() && tile.getItemLayer() != null
 			&& tile.getLocalLocation().distanceTo(playerLocation) < MAX_DISTANCE)
 		{
-			final Polygon poly = Perspective.getCanvasTilePoly(client, tile.getLocalLocation(), tile.getPlane());
+			final Polygon poly = tile.getItemLayer().getCanvasTilePoly();
+
 			if (poly != null)
 			{
 				OverlayUtil.renderPolygon(graphics, poly, color);

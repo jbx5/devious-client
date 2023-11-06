@@ -40,6 +40,7 @@ import net.runelite.api.events.PostClientTick;
 import net.runelite.api.events.ScriptCallbackEvent;
 import net.runelite.api.hooks.Callbacks;
 import net.runelite.api.hooks.DrawCallbacks;
+import net.runelite.api.widgets.ComponentID;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetItem;
 import net.runelite.api.worldmap.WorldMap;
@@ -74,8 +75,6 @@ import java.awt.image.BufferedImage;
 import java.awt.image.VolatileImage;
 import java.util.ArrayList;
 import java.util.List;
-
-import static net.runelite.api.widgets.WidgetInfo.WORLD_MAP_VIEW;
 
 /**
  * This class contains field required for mixins and runelite hooks to work.
@@ -290,7 +289,7 @@ public class MinimalHooks implements Callbacks
 	 */
 	private void checkWorldMap()
 	{
-		Widget widget = client.getWidget(WORLD_MAP_VIEW);
+		Widget widget = client.getWidget(ComponentID.WORLD_MAP_MAPVIEW);
 
 		if (widget != null)
 		{
