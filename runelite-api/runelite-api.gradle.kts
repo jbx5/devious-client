@@ -25,6 +25,10 @@
 
 description = "RuneLite API"
 
+plugins {
+    id("com.openosrs.interfaceparser")
+}
+
 dependencies {
     annotationProcessor(group = "org.projectlombok", name = "lombok", version = ProjectVersions.lombokVersion)
 
@@ -39,4 +43,22 @@ dependencies {
     implementation(group = "org.jetbrains", name = "annotations", version = "22.0.0")
 
     testImplementation(group = "junit", name = "junit", version = "4.12")
+
 }
+
+    tasks {
+        createInterfaceComponents {
+            val inp = "${projectDir}/src/main/interfaces"
+            val out = "${buildDir}/generated-sources"
+
+            inputs.dir(inp)
+            outputs.dir(out)
+
+            input.set(file(inp))
+            output.set(file(out))
+        }
+
+        processResources {
+            dependsOn("createInterfaceComponents")
+        }
+    }

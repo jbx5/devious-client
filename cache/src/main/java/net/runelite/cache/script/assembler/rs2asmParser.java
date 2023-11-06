@@ -1,7 +1,6 @@
-// Generated from net\runelite\cache\script\assembler\rs2asm.g4 by ANTLR 4.6
+// Generated from net/runelite/cache/script/assembler/rs2asm.g4 by ANTLR 4.13.1
 package net.runelite.cache.script.assembler;
 
-import java.util.List;
 import org.antlr.v4.runtime.NoViableAltException;
 import org.antlr.v4.runtime.Parser;
 import org.antlr.v4.runtime.ParserRuleContext;
@@ -18,9 +17,19 @@ import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
-@SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
+import java.util.List;
+
+@SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast", "CheckReturnValue"})
 public class rs2asmParser extends Parser
 {
+	static
+	{
+		RuntimeMetaData.checkVersion("4.13.1", RuntimeMetaData.VERSION);
+	}
+
+	protected static final DFA[] _decisionToDFA;
+	protected static final PredictionContextCache _sharedContextCache =
+		new PredictionContextCache();
 	public static final int
 		T__0 = 1, T__1 = 2, T__2 = 3, T__3 = 4, T__4 = 5, T__5 = 6, NEWLINE = 7, INT = 8, QSTRING = 9,
 		IDENTIFIER = 10, COMMENT = 11, WS = 12;
@@ -33,75 +42,47 @@ public class rs2asmParser extends Parser
 		RULE_instruction_operand = 18, RULE_operand_int = 19, RULE_operand_qstring = 20,
 		RULE_operand_label = 21, RULE_switch_lookup = 22, RULE_switch_key = 23,
 		RULE_switch_value = 24;
-	public static final String[] ruleNames = {
-		"prog", "header", "id", "int_stack_count", "string_stack_count", "int_var_count",
-		"string_var_count", "id_value", "int_stack_value", "string_stack_value",
-		"int_var_value", "string_var_value", "line", "instruction", "label", "instruction_name",
-		"name_string", "name_opcode", "instruction_operand", "operand_int", "operand_qstring",
-		"operand_label", "switch_lookup", "switch_key", "switch_value"
-	};
+
+	private static String[] makeRuleNames()
+	{
+		return new String[]{
+			"prog", "header", "id", "int_stack_count", "string_stack_count", "int_var_count",
+			"string_var_count", "id_value", "int_stack_value", "string_stack_value",
+			"int_var_value", "string_var_value", "line", "instruction", "label",
+			"instruction_name", "name_string", "name_opcode", "instruction_operand",
+			"operand_int", "operand_qstring", "operand_label", "switch_lookup", "switch_key",
+			"switch_value"
+		};
+	}
+
+	public static final String[] ruleNames = makeRuleNames();
+
+	private static String[] makeLiteralNames()
+	{
+		return new String[]{
+			null, "'.id '", "'.int_stack_count '", "'.string_stack_count '", "'.int_var_count '",
+			"'.string_var_count '", "':'"
+		};
+	}
+
+	private static final String[] _LITERAL_NAMES = makeLiteralNames();
+
+	private static String[] makeSymbolicNames()
+	{
+		return new String[]{
+			null, null, null, null, null, null, null, "NEWLINE", "INT", "QSTRING",
+			"IDENTIFIER", "COMMENT", "WS"
+		};
+	}
+
+	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
+	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
+
 	/**
 	 * @deprecated Use {@link #VOCABULARY} instead.
 	 */
 	@Deprecated
 	public static final String[] tokenNames;
-	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\16\u0097\4\2\t\2" +
-			"\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13" +
-			"\t\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22" +
-			"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\4\31\t\31" +
-			"\4\32\t\32\3\2\7\2\66\n\2\f\2\16\29\13\2\3\2\3\2\6\2=\n\2\r\2\16\2>\7" +
-			"\2A\n\2\f\2\16\2D\13\2\3\2\3\2\6\2H\n\2\r\2\16\2I\6\2L\n\2\r\2\16\2M\3" +
-			"\3\3\3\3\3\3\3\3\3\5\3U\n\3\3\4\3\4\3\4\3\5\3\5\3\5\3\6\3\6\3\6\3\7\3" +
-			"\7\3\7\3\b\3\b\3\b\3\t\3\t\3\n\3\n\3\13\3\13\3\f\3\f\3\r\3\r\3\16\3\16" +
-			"\3\16\5\16s\n\16\3\17\3\17\3\17\3\20\3\20\3\20\3\21\3\21\5\21}\n\21\3" +
-			"\22\3\22\3\23\3\23\3\24\3\24\3\24\3\24\5\24\u0087\n\24\3\25\3\25\3\26" +
-			"\3\26\3\27\3\27\3\30\3\30\3\30\3\30\3\31\3\31\3\32\3\32\3\32\2\2\33\2" +
-			"\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$&(*,.\60\62\2\2\u008c\2\67\3" +
-			"\2\2\2\4T\3\2\2\2\6V\3\2\2\2\bY\3\2\2\2\n\\\3\2\2\2\f_\3\2\2\2\16b\3\2" +
-			"\2\2\20e\3\2\2\2\22g\3\2\2\2\24i\3\2\2\2\26k\3\2\2\2\30m\3\2\2\2\32r\3" +
-			"\2\2\2\34t\3\2\2\2\36w\3\2\2\2 |\3\2\2\2\"~\3\2\2\2$\u0080\3\2\2\2&\u0086" +
-			"\3\2\2\2(\u0088\3\2\2\2*\u008a\3\2\2\2,\u008c\3\2\2\2.\u008e\3\2\2\2\60" +
-			"\u0092\3\2\2\2\62\u0094\3\2\2\2\64\66\7\t\2\2\65\64\3\2\2\2\669\3\2\2" +
-			"\2\67\65\3\2\2\2\678\3\2\2\28B\3\2\2\29\67\3\2\2\2:<\5\4\3\2;=\7\t\2\2" +
-			"<;\3\2\2\2=>\3\2\2\2><\3\2\2\2>?\3\2\2\2?A\3\2\2\2@:\3\2\2\2AD\3\2\2\2" +
-			"B@\3\2\2\2BC\3\2\2\2CK\3\2\2\2DB\3\2\2\2EG\5\32\16\2FH\7\t\2\2GF\3\2\2" +
-			"\2HI\3\2\2\2IG\3\2\2\2IJ\3\2\2\2JL\3\2\2\2KE\3\2\2\2LM\3\2\2\2MK\3\2\2" +
-			"\2MN\3\2\2\2N\3\3\2\2\2OU\5\6\4\2PU\5\b\5\2QU\5\n\6\2RU\5\f\7\2SU\5\16" +
-			"\b\2TO\3\2\2\2TP\3\2\2\2TQ\3\2\2\2TR\3\2\2\2TS\3\2\2\2U\5\3\2\2\2VW\7" +
-			"\3\2\2WX\5\20\t\2X\7\3\2\2\2YZ\7\4\2\2Z[\5\22\n\2[\t\3\2\2\2\\]\7\5\2" +
-			"\2]^\5\24\13\2^\13\3\2\2\2_`\7\6\2\2`a\5\26\f\2a\r\3\2\2\2bc\7\7\2\2c" +
-			"d\5\30\r\2d\17\3\2\2\2ef\7\n\2\2f\21\3\2\2\2gh\7\n\2\2h\23\3\2\2\2ij\7" +
-			"\n\2\2j\25\3\2\2\2kl\7\n\2\2l\27\3\2\2\2mn\7\n\2\2n\31\3\2\2\2os\5\34" +
-			"\17\2ps\5\36\20\2qs\5.\30\2ro\3\2\2\2rp\3\2\2\2rq\3\2\2\2s\33\3\2\2\2" +
-			"tu\5 \21\2uv\5&\24\2v\35\3\2\2\2wx\7\f\2\2xy\7\b\2\2y\37\3\2\2\2z}\5\"" +
-			"\22\2{}\5$\23\2|z\3\2\2\2|{\3\2\2\2}!\3\2\2\2~\177\7\f\2\2\177#\3\2\2" +
-			"\2\u0080\u0081\7\n\2\2\u0081%\3\2\2\2\u0082\u0087\5(\25\2\u0083\u0087" +
-			"\5*\26\2\u0084\u0087\5,\27\2\u0085\u0087\3\2\2\2\u0086\u0082\3\2\2\2\u0086" +
-			"\u0083\3\2\2\2\u0086\u0084\3\2\2\2\u0086\u0085\3\2\2\2\u0087\'\3\2\2\2" +
-			"\u0088\u0089\7\n\2\2\u0089)\3\2\2\2\u008a\u008b\7\13\2\2\u008b+\3\2\2" +
-			"\2\u008c\u008d\7\f\2\2\u008d-\3\2\2\2\u008e\u008f\5\60\31\2\u008f\u0090" +
-			"\7\b\2\2\u0090\u0091\5\62\32\2\u0091/\3\2\2\2\u0092\u0093\7\n\2\2\u0093" +
-			"\61\3\2\2\2\u0094\u0095\7\f\2\2\u0095\63\3\2\2\2\13\67>BIMTr|\u0086";
-	public static final ATN _ATN =
-		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
-	protected static final DFA[] _decisionToDFA;
-	protected static final PredictionContextCache _sharedContextCache =
-		new PredictionContextCache();
-	private static final String[] _LITERAL_NAMES = {
-		null, "'.id '", "'.int_stack_count '", "'.string_stack_count '", "'.int_var_count '",
-		"'.string_var_count '", "':'"
-	};
-	private static final String[] _SYMBOLIC_NAMES = {
-		null, null, null, null, null, null, null, "NEWLINE", "INT", "QSTRING",
-		"IDENTIFIER", "COMMENT", "WS"
-	};
-	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
-
-	static
-	{
-		RuntimeMetaData.checkVersion("4.6", RuntimeMetaData.VERSION);
-	}
 
 	static
 	{
@@ -121,32 +102,11 @@ public class rs2asmParser extends Parser
 		}
 	}
 
-	static
-	{
-		_decisionToDFA = new DFA[_ATN.getNumberOfDecisions()];
-		for (int i = 0; i < _ATN.getNumberOfDecisions(); i++)
-		{
-			_decisionToDFA[i] = new DFA(_ATN.getDecisionState(i), i);
-		}
-	}
-
-	public rs2asmParser(TokenStream input)
-	{
-		super(input);
-		_interp = new ParserATNSimulator(this, _ATN, _decisionToDFA, _sharedContextCache);
-	}
-
 	@Override
 	@Deprecated
 	public String[] getTokenNames()
 	{
 		return tokenNames;
-	}
-
-	@Override
-	public String[] getRuleNames()
-	{
-		return ruleNames;
 	}
 
 	@Override
@@ -157,21 +117,90 @@ public class rs2asmParser extends Parser
 	}
 
 	@Override
-	public String getSerializedATN()
-	{
-		return _serializedATN;
-	}
-
-	@Override
 	public String getGrammarFileName()
 	{
 		return "rs2asm.g4";
 	}
 
 	@Override
+	public String[] getRuleNames()
+	{
+		return ruleNames;
+	}
+
+	@Override
+	public String getSerializedATN()
+	{
+		return _serializedATN;
+	}
+
+	@Override
 	public ATN getATN()
 	{
 		return _ATN;
+	}
+
+	public rs2asmParser(TokenStream input)
+	{
+		super(input);
+		_interp = new ParserATNSimulator(this, _ATN, _decisionToDFA, _sharedContextCache);
+	}
+
+	@SuppressWarnings("CheckReturnValue")
+	public static class ProgContext extends ParserRuleContext
+	{
+		public List<TerminalNode> NEWLINE()
+		{
+			return getTokens(rs2asmParser.NEWLINE);
+		}
+
+		public TerminalNode NEWLINE(int i)
+		{
+			return getToken(rs2asmParser.NEWLINE, i);
+		}
+
+		public List<HeaderContext> header()
+		{
+			return getRuleContexts(HeaderContext.class);
+		}
+
+		public HeaderContext header(int i)
+		{
+			return getRuleContext(HeaderContext.class, i);
+		}
+
+		public List<LineContext> line()
+		{
+			return getRuleContexts(LineContext.class);
+		}
+
+		public LineContext line(int i)
+		{
+			return getRuleContext(LineContext.class, i);
+		}
+
+		public ProgContext(ParserRuleContext parent, int invokingState)
+		{
+			super(parent, invokingState);
+		}
+
+		@Override
+		public int getRuleIndex()
+		{
+			return RULE_prog;
+		}
+
+		@Override
+		public void enterRule(ParseTreeListener listener)
+		{
+			if (listener instanceof rs2asmListener) ((rs2asmListener) listener).enterProg(this);
+		}
+
+		@Override
+		public void exitRule(ParseTreeListener listener)
+		{
+			if (listener instanceof rs2asmListener) ((rs2asmListener) listener).exitProg(this);
+		}
 	}
 
 	public final ProgContext prog() throws RecognitionException
@@ -201,7 +230,7 @@ public class rs2asmParser extends Parser
 				setState(64);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << T__1) | (1L << T__2) | (1L << T__3) | (1L << T__4))) != 0))
+				while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 62L) != 0))
 				{
 					{
 						{
@@ -221,7 +250,8 @@ public class rs2asmParser extends Parser
 								setState(60);
 								_errHandler.sync(this);
 								_la = _input.LA(1);
-							} while (_la == NEWLINE);
+							}
+							while (_la == NEWLINE);
 						}
 					}
 					setState(66);
@@ -251,13 +281,15 @@ public class rs2asmParser extends Parser
 								setState(71);
 								_errHandler.sync(this);
 								_la = _input.LA(1);
-							} while (_la == NEWLINE);
+							}
+							while (_la == NEWLINE);
 						}
 					}
 					setState(75);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
-				} while (_la == INT || _la == IDENTIFIER);
+				}
+				while (_la == INT || _la == IDENTIFIER);
 			}
 		}
 		catch (RecognitionException re)
@@ -271,6 +303,58 @@ public class rs2asmParser extends Parser
 			exitRule();
 		}
 		return _localctx;
+	}
+
+	@SuppressWarnings("CheckReturnValue")
+	public static class HeaderContext extends ParserRuleContext
+	{
+		public IdContext id()
+		{
+			return getRuleContext(IdContext.class, 0);
+		}
+
+		public Int_stack_countContext int_stack_count()
+		{
+			return getRuleContext(Int_stack_countContext.class, 0);
+		}
+
+		public String_stack_countContext string_stack_count()
+		{
+			return getRuleContext(String_stack_countContext.class, 0);
+		}
+
+		public Int_var_countContext int_var_count()
+		{
+			return getRuleContext(Int_var_countContext.class, 0);
+		}
+
+		public String_var_countContext string_var_count()
+		{
+			return getRuleContext(String_var_countContext.class, 0);
+		}
+
+		public HeaderContext(ParserRuleContext parent, int invokingState)
+		{
+			super(parent, invokingState);
+		}
+
+		@Override
+		public int getRuleIndex()
+		{
+			return RULE_header;
+		}
+
+		@Override
+		public void enterRule(ParseTreeListener listener)
+		{
+			if (listener instanceof rs2asmListener) ((rs2asmListener) listener).enterHeader(this);
+		}
+
+		@Override
+		public void exitRule(ParseTreeListener listener)
+		{
+			if (listener instanceof rs2asmListener) ((rs2asmListener) listener).exitHeader(this);
+		}
 	}
 
 	public final HeaderContext header() throws RecognitionException
@@ -335,6 +419,38 @@ public class rs2asmParser extends Parser
 		return _localctx;
 	}
 
+	@SuppressWarnings("CheckReturnValue")
+	public static class IdContext extends ParserRuleContext
+	{
+		public Id_valueContext id_value()
+		{
+			return getRuleContext(Id_valueContext.class, 0);
+		}
+
+		public IdContext(ParserRuleContext parent, int invokingState)
+		{
+			super(parent, invokingState);
+		}
+
+		@Override
+		public int getRuleIndex()
+		{
+			return RULE_id;
+		}
+
+		@Override
+		public void enterRule(ParseTreeListener listener)
+		{
+			if (listener instanceof rs2asmListener) ((rs2asmListener) listener).enterId(this);
+		}
+
+		@Override
+		public void exitRule(ParseTreeListener listener)
+		{
+			if (listener instanceof rs2asmListener) ((rs2asmListener) listener).exitId(this);
+		}
+	}
+
 	public final IdContext id() throws RecognitionException
 	{
 		IdContext _localctx = new IdContext(_ctx, getState());
@@ -360,6 +476,38 @@ public class rs2asmParser extends Parser
 			exitRule();
 		}
 		return _localctx;
+	}
+
+	@SuppressWarnings("CheckReturnValue")
+	public static class Int_stack_countContext extends ParserRuleContext
+	{
+		public Int_stack_valueContext int_stack_value()
+		{
+			return getRuleContext(Int_stack_valueContext.class, 0);
+		}
+
+		public Int_stack_countContext(ParserRuleContext parent, int invokingState)
+		{
+			super(parent, invokingState);
+		}
+
+		@Override
+		public int getRuleIndex()
+		{
+			return RULE_int_stack_count;
+		}
+
+		@Override
+		public void enterRule(ParseTreeListener listener)
+		{
+			if (listener instanceof rs2asmListener) ((rs2asmListener) listener).enterInt_stack_count(this);
+		}
+
+		@Override
+		public void exitRule(ParseTreeListener listener)
+		{
+			if (listener instanceof rs2asmListener) ((rs2asmListener) listener).exitInt_stack_count(this);
+		}
 	}
 
 	public final Int_stack_countContext int_stack_count() throws RecognitionException
@@ -389,6 +537,40 @@ public class rs2asmParser extends Parser
 		return _localctx;
 	}
 
+	@SuppressWarnings("CheckReturnValue")
+	public static class String_stack_countContext extends ParserRuleContext
+	{
+		public String_stack_valueContext string_stack_value()
+		{
+			return getRuleContext(String_stack_valueContext.class, 0);
+		}
+
+		public String_stack_countContext(ParserRuleContext parent, int invokingState)
+		{
+			super(parent, invokingState);
+		}
+
+		@Override
+		public int getRuleIndex()
+		{
+			return RULE_string_stack_count;
+		}
+
+		@Override
+		public void enterRule(ParseTreeListener listener)
+		{
+			if (listener instanceof rs2asmListener)
+				((rs2asmListener) listener).enterString_stack_count(this);
+		}
+
+		@Override
+		public void exitRule(ParseTreeListener listener)
+		{
+			if (listener instanceof rs2asmListener)
+				((rs2asmListener) listener).exitString_stack_count(this);
+		}
+	}
+
 	public final String_stack_countContext string_stack_count() throws RecognitionException
 	{
 		String_stack_countContext _localctx = new String_stack_countContext(_ctx, getState());
@@ -414,6 +596,38 @@ public class rs2asmParser extends Parser
 			exitRule();
 		}
 		return _localctx;
+	}
+
+	@SuppressWarnings("CheckReturnValue")
+	public static class Int_var_countContext extends ParserRuleContext
+	{
+		public Int_var_valueContext int_var_value()
+		{
+			return getRuleContext(Int_var_valueContext.class, 0);
+		}
+
+		public Int_var_countContext(ParserRuleContext parent, int invokingState)
+		{
+			super(parent, invokingState);
+		}
+
+		@Override
+		public int getRuleIndex()
+		{
+			return RULE_int_var_count;
+		}
+
+		@Override
+		public void enterRule(ParseTreeListener listener)
+		{
+			if (listener instanceof rs2asmListener) ((rs2asmListener) listener).enterInt_var_count(this);
+		}
+
+		@Override
+		public void exitRule(ParseTreeListener listener)
+		{
+			if (listener instanceof rs2asmListener) ((rs2asmListener) listener).exitInt_var_count(this);
+		}
 	}
 
 	public final Int_var_countContext int_var_count() throws RecognitionException
@@ -443,6 +657,38 @@ public class rs2asmParser extends Parser
 		return _localctx;
 	}
 
+	@SuppressWarnings("CheckReturnValue")
+	public static class String_var_countContext extends ParserRuleContext
+	{
+		public String_var_valueContext string_var_value()
+		{
+			return getRuleContext(String_var_valueContext.class, 0);
+		}
+
+		public String_var_countContext(ParserRuleContext parent, int invokingState)
+		{
+			super(parent, invokingState);
+		}
+
+		@Override
+		public int getRuleIndex()
+		{
+			return RULE_string_var_count;
+		}
+
+		@Override
+		public void enterRule(ParseTreeListener listener)
+		{
+			if (listener instanceof rs2asmListener) ((rs2asmListener) listener).enterString_var_count(this);
+		}
+
+		@Override
+		public void exitRule(ParseTreeListener listener)
+		{
+			if (listener instanceof rs2asmListener) ((rs2asmListener) listener).exitString_var_count(this);
+		}
+	}
+
 	public final String_var_countContext string_var_count() throws RecognitionException
 	{
 		String_var_countContext _localctx = new String_var_countContext(_ctx, getState());
@@ -470,6 +716,38 @@ public class rs2asmParser extends Parser
 		return _localctx;
 	}
 
+	@SuppressWarnings("CheckReturnValue")
+	public static class Id_valueContext extends ParserRuleContext
+	{
+		public TerminalNode INT()
+		{
+			return getToken(rs2asmParser.INT, 0);
+		}
+
+		public Id_valueContext(ParserRuleContext parent, int invokingState)
+		{
+			super(parent, invokingState);
+		}
+
+		@Override
+		public int getRuleIndex()
+		{
+			return RULE_id_value;
+		}
+
+		@Override
+		public void enterRule(ParseTreeListener listener)
+		{
+			if (listener instanceof rs2asmListener) ((rs2asmListener) listener).enterId_value(this);
+		}
+
+		@Override
+		public void exitRule(ParseTreeListener listener)
+		{
+			if (listener instanceof rs2asmListener) ((rs2asmListener) listener).exitId_value(this);
+		}
+	}
+
 	public final Id_valueContext id_value() throws RecognitionException
 	{
 		Id_valueContext _localctx = new Id_valueContext(_ctx, getState());
@@ -493,6 +771,38 @@ public class rs2asmParser extends Parser
 			exitRule();
 		}
 		return _localctx;
+	}
+
+	@SuppressWarnings("CheckReturnValue")
+	public static class Int_stack_valueContext extends ParserRuleContext
+	{
+		public TerminalNode INT()
+		{
+			return getToken(rs2asmParser.INT, 0);
+		}
+
+		public Int_stack_valueContext(ParserRuleContext parent, int invokingState)
+		{
+			super(parent, invokingState);
+		}
+
+		@Override
+		public int getRuleIndex()
+		{
+			return RULE_int_stack_value;
+		}
+
+		@Override
+		public void enterRule(ParseTreeListener listener)
+		{
+			if (listener instanceof rs2asmListener) ((rs2asmListener) listener).enterInt_stack_value(this);
+		}
+
+		@Override
+		public void exitRule(ParseTreeListener listener)
+		{
+			if (listener instanceof rs2asmListener) ((rs2asmListener) listener).exitInt_stack_value(this);
+		}
 	}
 
 	public final Int_stack_valueContext int_stack_value() throws RecognitionException
@@ -520,6 +830,40 @@ public class rs2asmParser extends Parser
 		return _localctx;
 	}
 
+	@SuppressWarnings("CheckReturnValue")
+	public static class String_stack_valueContext extends ParserRuleContext
+	{
+		public TerminalNode INT()
+		{
+			return getToken(rs2asmParser.INT, 0);
+		}
+
+		public String_stack_valueContext(ParserRuleContext parent, int invokingState)
+		{
+			super(parent, invokingState);
+		}
+
+		@Override
+		public int getRuleIndex()
+		{
+			return RULE_string_stack_value;
+		}
+
+		@Override
+		public void enterRule(ParseTreeListener listener)
+		{
+			if (listener instanceof rs2asmListener)
+				((rs2asmListener) listener).enterString_stack_value(this);
+		}
+
+		@Override
+		public void exitRule(ParseTreeListener listener)
+		{
+			if (listener instanceof rs2asmListener)
+				((rs2asmListener) listener).exitString_stack_value(this);
+		}
+	}
+
 	public final String_stack_valueContext string_stack_value() throws RecognitionException
 	{
 		String_stack_valueContext _localctx = new String_stack_valueContext(_ctx, getState());
@@ -543,6 +887,38 @@ public class rs2asmParser extends Parser
 			exitRule();
 		}
 		return _localctx;
+	}
+
+	@SuppressWarnings("CheckReturnValue")
+	public static class Int_var_valueContext extends ParserRuleContext
+	{
+		public TerminalNode INT()
+		{
+			return getToken(rs2asmParser.INT, 0);
+		}
+
+		public Int_var_valueContext(ParserRuleContext parent, int invokingState)
+		{
+			super(parent, invokingState);
+		}
+
+		@Override
+		public int getRuleIndex()
+		{
+			return RULE_int_var_value;
+		}
+
+		@Override
+		public void enterRule(ParseTreeListener listener)
+		{
+			if (listener instanceof rs2asmListener) ((rs2asmListener) listener).enterInt_var_value(this);
+		}
+
+		@Override
+		public void exitRule(ParseTreeListener listener)
+		{
+			if (listener instanceof rs2asmListener) ((rs2asmListener) listener).exitInt_var_value(this);
+		}
 	}
 
 	public final Int_var_valueContext int_var_value() throws RecognitionException
@@ -570,6 +946,38 @@ public class rs2asmParser extends Parser
 		return _localctx;
 	}
 
+	@SuppressWarnings("CheckReturnValue")
+	public static class String_var_valueContext extends ParserRuleContext
+	{
+		public TerminalNode INT()
+		{
+			return getToken(rs2asmParser.INT, 0);
+		}
+
+		public String_var_valueContext(ParserRuleContext parent, int invokingState)
+		{
+			super(parent, invokingState);
+		}
+
+		@Override
+		public int getRuleIndex()
+		{
+			return RULE_string_var_value;
+		}
+
+		@Override
+		public void enterRule(ParseTreeListener listener)
+		{
+			if (listener instanceof rs2asmListener) ((rs2asmListener) listener).enterString_var_value(this);
+		}
+
+		@Override
+		public void exitRule(ParseTreeListener listener)
+		{
+			if (listener instanceof rs2asmListener) ((rs2asmListener) listener).exitString_var_value(this);
+		}
+	}
+
 	public final String_var_valueContext string_var_value() throws RecognitionException
 	{
 		String_var_valueContext _localctx = new String_var_valueContext(_ctx, getState());
@@ -593,6 +1001,48 @@ public class rs2asmParser extends Parser
 			exitRule();
 		}
 		return _localctx;
+	}
+
+	@SuppressWarnings("CheckReturnValue")
+	public static class LineContext extends ParserRuleContext
+	{
+		public InstructionContext instruction()
+		{
+			return getRuleContext(InstructionContext.class, 0);
+		}
+
+		public LabelContext label()
+		{
+			return getRuleContext(LabelContext.class, 0);
+		}
+
+		public Switch_lookupContext switch_lookup()
+		{
+			return getRuleContext(Switch_lookupContext.class, 0);
+		}
+
+		public LineContext(ParserRuleContext parent, int invokingState)
+		{
+			super(parent, invokingState);
+		}
+
+		@Override
+		public int getRuleIndex()
+		{
+			return RULE_line;
+		}
+
+		@Override
+		public void enterRule(ParseTreeListener listener)
+		{
+			if (listener instanceof rs2asmListener) ((rs2asmListener) listener).enterLine(this);
+		}
+
+		@Override
+		public void exitRule(ParseTreeListener listener)
+		{
+			if (listener instanceof rs2asmListener) ((rs2asmListener) listener).exitLine(this);
+		}
 	}
 
 	public final LineContext line() throws RecognitionException
@@ -641,6 +1091,43 @@ public class rs2asmParser extends Parser
 		return _localctx;
 	}
 
+	@SuppressWarnings("CheckReturnValue")
+	public static class InstructionContext extends ParserRuleContext
+	{
+		public Instruction_nameContext instruction_name()
+		{
+			return getRuleContext(Instruction_nameContext.class, 0);
+		}
+
+		public Instruction_operandContext instruction_operand()
+		{
+			return getRuleContext(Instruction_operandContext.class, 0);
+		}
+
+		public InstructionContext(ParserRuleContext parent, int invokingState)
+		{
+			super(parent, invokingState);
+		}
+
+		@Override
+		public int getRuleIndex()
+		{
+			return RULE_instruction;
+		}
+
+		@Override
+		public void enterRule(ParseTreeListener listener)
+		{
+			if (listener instanceof rs2asmListener) ((rs2asmListener) listener).enterInstruction(this);
+		}
+
+		@Override
+		public void exitRule(ParseTreeListener listener)
+		{
+			if (listener instanceof rs2asmListener) ((rs2asmListener) listener).exitInstruction(this);
+		}
+	}
+
 	public final InstructionContext instruction() throws RecognitionException
 	{
 		InstructionContext _localctx = new InstructionContext(_ctx, getState());
@@ -668,6 +1155,38 @@ public class rs2asmParser extends Parser
 		return _localctx;
 	}
 
+	@SuppressWarnings("CheckReturnValue")
+	public static class LabelContext extends ParserRuleContext
+	{
+		public TerminalNode IDENTIFIER()
+		{
+			return getToken(rs2asmParser.IDENTIFIER, 0);
+		}
+
+		public LabelContext(ParserRuleContext parent, int invokingState)
+		{
+			super(parent, invokingState);
+		}
+
+		@Override
+		public int getRuleIndex()
+		{
+			return RULE_label;
+		}
+
+		@Override
+		public void enterRule(ParseTreeListener listener)
+		{
+			if (listener instanceof rs2asmListener) ((rs2asmListener) listener).enterLabel(this);
+		}
+
+		@Override
+		public void exitRule(ParseTreeListener listener)
+		{
+			if (listener instanceof rs2asmListener) ((rs2asmListener) listener).exitLabel(this);
+		}
+	}
+
 	public final LabelContext label() throws RecognitionException
 	{
 		LabelContext _localctx = new LabelContext(_ctx, getState());
@@ -693,6 +1212,43 @@ public class rs2asmParser extends Parser
 			exitRule();
 		}
 		return _localctx;
+	}
+
+	@SuppressWarnings("CheckReturnValue")
+	public static class Instruction_nameContext extends ParserRuleContext
+	{
+		public Name_stringContext name_string()
+		{
+			return getRuleContext(Name_stringContext.class, 0);
+		}
+
+		public Name_opcodeContext name_opcode()
+		{
+			return getRuleContext(Name_opcodeContext.class, 0);
+		}
+
+		public Instruction_nameContext(ParserRuleContext parent, int invokingState)
+		{
+			super(parent, invokingState);
+		}
+
+		@Override
+		public int getRuleIndex()
+		{
+			return RULE_instruction_name;
+		}
+
+		@Override
+		public void enterRule(ParseTreeListener listener)
+		{
+			if (listener instanceof rs2asmListener) ((rs2asmListener) listener).enterInstruction_name(this);
+		}
+
+		@Override
+		public void exitRule(ParseTreeListener listener)
+		{
+			if (listener instanceof rs2asmListener) ((rs2asmListener) listener).exitInstruction_name(this);
+		}
 	}
 
 	public final Instruction_nameContext instruction_name() throws RecognitionException
@@ -736,6 +1292,38 @@ public class rs2asmParser extends Parser
 		return _localctx;
 	}
 
+	@SuppressWarnings("CheckReturnValue")
+	public static class Name_stringContext extends ParserRuleContext
+	{
+		public TerminalNode IDENTIFIER()
+		{
+			return getToken(rs2asmParser.IDENTIFIER, 0);
+		}
+
+		public Name_stringContext(ParserRuleContext parent, int invokingState)
+		{
+			super(parent, invokingState);
+		}
+
+		@Override
+		public int getRuleIndex()
+		{
+			return RULE_name_string;
+		}
+
+		@Override
+		public void enterRule(ParseTreeListener listener)
+		{
+			if (listener instanceof rs2asmListener) ((rs2asmListener) listener).enterName_string(this);
+		}
+
+		@Override
+		public void exitRule(ParseTreeListener listener)
+		{
+			if (listener instanceof rs2asmListener) ((rs2asmListener) listener).exitName_string(this);
+		}
+	}
+
 	public final Name_stringContext name_string() throws RecognitionException
 	{
 		Name_stringContext _localctx = new Name_stringContext(_ctx, getState());
@@ -761,6 +1349,38 @@ public class rs2asmParser extends Parser
 		return _localctx;
 	}
 
+	@SuppressWarnings("CheckReturnValue")
+	public static class Name_opcodeContext extends ParserRuleContext
+	{
+		public TerminalNode INT()
+		{
+			return getToken(rs2asmParser.INT, 0);
+		}
+
+		public Name_opcodeContext(ParserRuleContext parent, int invokingState)
+		{
+			super(parent, invokingState);
+		}
+
+		@Override
+		public int getRuleIndex()
+		{
+			return RULE_name_opcode;
+		}
+
+		@Override
+		public void enterRule(ParseTreeListener listener)
+		{
+			if (listener instanceof rs2asmListener) ((rs2asmListener) listener).enterName_opcode(this);
+		}
+
+		@Override
+		public void exitRule(ParseTreeListener listener)
+		{
+			if (listener instanceof rs2asmListener) ((rs2asmListener) listener).exitName_opcode(this);
+		}
+	}
+
 	public final Name_opcodeContext name_opcode() throws RecognitionException
 	{
 		Name_opcodeContext _localctx = new Name_opcodeContext(_ctx, getState());
@@ -784,6 +1404,50 @@ public class rs2asmParser extends Parser
 			exitRule();
 		}
 		return _localctx;
+	}
+
+	@SuppressWarnings("CheckReturnValue")
+	public static class Instruction_operandContext extends ParserRuleContext
+	{
+		public Operand_intContext operand_int()
+		{
+			return getRuleContext(Operand_intContext.class, 0);
+		}
+
+		public Operand_qstringContext operand_qstring()
+		{
+			return getRuleContext(Operand_qstringContext.class, 0);
+		}
+
+		public Operand_labelContext operand_label()
+		{
+			return getRuleContext(Operand_labelContext.class, 0);
+		}
+
+		public Instruction_operandContext(ParserRuleContext parent, int invokingState)
+		{
+			super(parent, invokingState);
+		}
+
+		@Override
+		public int getRuleIndex()
+		{
+			return RULE_instruction_operand;
+		}
+
+		@Override
+		public void enterRule(ParseTreeListener listener)
+		{
+			if (listener instanceof rs2asmListener)
+				((rs2asmListener) listener).enterInstruction_operand(this);
+		}
+
+		@Override
+		public void exitRule(ParseTreeListener listener)
+		{
+			if (listener instanceof rs2asmListener)
+				((rs2asmListener) listener).exitInstruction_operand(this);
+		}
 	}
 
 	public final Instruction_operandContext instruction_operand() throws RecognitionException
@@ -839,6 +1503,38 @@ public class rs2asmParser extends Parser
 		return _localctx;
 	}
 
+	@SuppressWarnings("CheckReturnValue")
+	public static class Operand_intContext extends ParserRuleContext
+	{
+		public TerminalNode INT()
+		{
+			return getToken(rs2asmParser.INT, 0);
+		}
+
+		public Operand_intContext(ParserRuleContext parent, int invokingState)
+		{
+			super(parent, invokingState);
+		}
+
+		@Override
+		public int getRuleIndex()
+		{
+			return RULE_operand_int;
+		}
+
+		@Override
+		public void enterRule(ParseTreeListener listener)
+		{
+			if (listener instanceof rs2asmListener) ((rs2asmListener) listener).enterOperand_int(this);
+		}
+
+		@Override
+		public void exitRule(ParseTreeListener listener)
+		{
+			if (listener instanceof rs2asmListener) ((rs2asmListener) listener).exitOperand_int(this);
+		}
+	}
+
 	public final Operand_intContext operand_int() throws RecognitionException
 	{
 		Operand_intContext _localctx = new Operand_intContext(_ctx, getState());
@@ -862,6 +1558,38 @@ public class rs2asmParser extends Parser
 			exitRule();
 		}
 		return _localctx;
+	}
+
+	@SuppressWarnings("CheckReturnValue")
+	public static class Operand_qstringContext extends ParserRuleContext
+	{
+		public TerminalNode QSTRING()
+		{
+			return getToken(rs2asmParser.QSTRING, 0);
+		}
+
+		public Operand_qstringContext(ParserRuleContext parent, int invokingState)
+		{
+			super(parent, invokingState);
+		}
+
+		@Override
+		public int getRuleIndex()
+		{
+			return RULE_operand_qstring;
+		}
+
+		@Override
+		public void enterRule(ParseTreeListener listener)
+		{
+			if (listener instanceof rs2asmListener) ((rs2asmListener) listener).enterOperand_qstring(this);
+		}
+
+		@Override
+		public void exitRule(ParseTreeListener listener)
+		{
+			if (listener instanceof rs2asmListener) ((rs2asmListener) listener).exitOperand_qstring(this);
+		}
 	}
 
 	public final Operand_qstringContext operand_qstring() throws RecognitionException
@@ -889,6 +1617,38 @@ public class rs2asmParser extends Parser
 		return _localctx;
 	}
 
+	@SuppressWarnings("CheckReturnValue")
+	public static class Operand_labelContext extends ParserRuleContext
+	{
+		public TerminalNode IDENTIFIER()
+		{
+			return getToken(rs2asmParser.IDENTIFIER, 0);
+		}
+
+		public Operand_labelContext(ParserRuleContext parent, int invokingState)
+		{
+			super(parent, invokingState);
+		}
+
+		@Override
+		public int getRuleIndex()
+		{
+			return RULE_operand_label;
+		}
+
+		@Override
+		public void enterRule(ParseTreeListener listener)
+		{
+			if (listener instanceof rs2asmListener) ((rs2asmListener) listener).enterOperand_label(this);
+		}
+
+		@Override
+		public void exitRule(ParseTreeListener listener)
+		{
+			if (listener instanceof rs2asmListener) ((rs2asmListener) listener).exitOperand_label(this);
+		}
+	}
+
 	public final Operand_labelContext operand_label() throws RecognitionException
 	{
 		Operand_labelContext _localctx = new Operand_labelContext(_ctx, getState());
@@ -912,6 +1672,43 @@ public class rs2asmParser extends Parser
 			exitRule();
 		}
 		return _localctx;
+	}
+
+	@SuppressWarnings("CheckReturnValue")
+	public static class Switch_lookupContext extends ParserRuleContext
+	{
+		public Switch_keyContext switch_key()
+		{
+			return getRuleContext(Switch_keyContext.class, 0);
+		}
+
+		public Switch_valueContext switch_value()
+		{
+			return getRuleContext(Switch_valueContext.class, 0);
+		}
+
+		public Switch_lookupContext(ParserRuleContext parent, int invokingState)
+		{
+			super(parent, invokingState);
+		}
+
+		@Override
+		public int getRuleIndex()
+		{
+			return RULE_switch_lookup;
+		}
+
+		@Override
+		public void enterRule(ParseTreeListener listener)
+		{
+			if (listener instanceof rs2asmListener) ((rs2asmListener) listener).enterSwitch_lookup(this);
+		}
+
+		@Override
+		public void exitRule(ParseTreeListener listener)
+		{
+			if (listener instanceof rs2asmListener) ((rs2asmListener) listener).exitSwitch_lookup(this);
+		}
 	}
 
 	public final Switch_lookupContext switch_lookup() throws RecognitionException
@@ -943,6 +1740,38 @@ public class rs2asmParser extends Parser
 		return _localctx;
 	}
 
+	@SuppressWarnings("CheckReturnValue")
+	public static class Switch_keyContext extends ParserRuleContext
+	{
+		public TerminalNode INT()
+		{
+			return getToken(rs2asmParser.INT, 0);
+		}
+
+		public Switch_keyContext(ParserRuleContext parent, int invokingState)
+		{
+			super(parent, invokingState);
+		}
+
+		@Override
+		public int getRuleIndex()
+		{
+			return RULE_switch_key;
+		}
+
+		@Override
+		public void enterRule(ParseTreeListener listener)
+		{
+			if (listener instanceof rs2asmListener) ((rs2asmListener) listener).enterSwitch_key(this);
+		}
+
+		@Override
+		public void exitRule(ParseTreeListener listener)
+		{
+			if (listener instanceof rs2asmListener) ((rs2asmListener) listener).exitSwitch_key(this);
+		}
+	}
+
 	public final Switch_keyContext switch_key() throws RecognitionException
 	{
 		Switch_keyContext _localctx = new Switch_keyContext(_ctx, getState());
@@ -966,6 +1795,38 @@ public class rs2asmParser extends Parser
 			exitRule();
 		}
 		return _localctx;
+	}
+
+	@SuppressWarnings("CheckReturnValue")
+	public static class Switch_valueContext extends ParserRuleContext
+	{
+		public TerminalNode IDENTIFIER()
+		{
+			return getToken(rs2asmParser.IDENTIFIER, 0);
+		}
+
+		public Switch_valueContext(ParserRuleContext parent, int invokingState)
+		{
+			super(parent, invokingState);
+		}
+
+		@Override
+		public int getRuleIndex()
+		{
+			return RULE_switch_value;
+		}
+
+		@Override
+		public void enterRule(ParseTreeListener listener)
+		{
+			if (listener instanceof rs2asmListener) ((rs2asmListener) listener).enterSwitch_value(this);
+		}
+
+		@Override
+		public void exitRule(ParseTreeListener listener)
+		{
+			if (listener instanceof rs2asmListener) ((rs2asmListener) listener).exitSwitch_value(this);
+		}
 	}
 
 	public final Switch_valueContext switch_value() throws RecognitionException
@@ -993,1008 +1854,96 @@ public class rs2asmParser extends Parser
 		return _localctx;
 	}
 
-	public static class ProgContext extends ParserRuleContext
+	public static final String _serializedATN =
+		"\u0004\u0001\f\u0095\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001\u0002" +
+			"\u0002\u0007\u0002\u0002\u0003\u0007\u0003\u0002\u0004\u0007\u0004\u0002" +
+			"\u0005\u0007\u0005\u0002\u0006\u0007\u0006\u0002\u0007\u0007\u0007\u0002" +
+			"\b\u0007\b\u0002\t\u0007\t\u0002\n\u0007\n\u0002\u000b\u0007\u000b\u0002" +
+			"\f\u0007\f\u0002\r\u0007\r\u0002\u000e\u0007\u000e\u0002\u000f\u0007\u000f" +
+			"\u0002\u0010\u0007\u0010\u0002\u0011\u0007\u0011\u0002\u0012\u0007\u0012" +
+			"\u0002\u0013\u0007\u0013\u0002\u0014\u0007\u0014\u0002\u0015\u0007\u0015" +
+			"\u0002\u0016\u0007\u0016\u0002\u0017\u0007\u0017\u0002\u0018\u0007\u0018" +
+			"\u0001\u0000\u0005\u00004\b\u0000\n\u0000\f\u00007\t\u0000\u0001\u0000" +
+			"\u0001\u0000\u0004\u0000;\b\u0000\u000b\u0000\f\u0000<\u0005\u0000?\b" +
+			"\u0000\n\u0000\f\u0000B\t\u0000\u0001\u0000\u0001\u0000\u0004\u0000F\b" +
+			"\u0000\u000b\u0000\f\u0000G\u0004\u0000J\b\u0000\u000b\u0000\f\u0000K" +
+			"\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0003\u0001" +
+			"S\b\u0001\u0001\u0002\u0001\u0002\u0001\u0002\u0001\u0003\u0001\u0003" +
+			"\u0001\u0003\u0001\u0004\u0001\u0004\u0001\u0004\u0001\u0005\u0001\u0005" +
+			"\u0001\u0005\u0001\u0006\u0001\u0006\u0001\u0006\u0001\u0007\u0001\u0007" +
+			"\u0001\b\u0001\b\u0001\t\u0001\t\u0001\n\u0001\n\u0001\u000b\u0001\u000b" +
+			"\u0001\f\u0001\f\u0001\f\u0003\fq\b\f\u0001\r\u0001\r\u0001\r\u0001\u000e" +
+			"\u0001\u000e\u0001\u000e\u0001\u000f\u0001\u000f\u0003\u000f{\b\u000f" +
+			"\u0001\u0010\u0001\u0010\u0001\u0011\u0001\u0011\u0001\u0012\u0001\u0012" +
+			"\u0001\u0012\u0001\u0012\u0003\u0012\u0085\b\u0012\u0001\u0013\u0001\u0013" +
+			"\u0001\u0014\u0001\u0014\u0001\u0015\u0001\u0015\u0001\u0016\u0001\u0016" +
+			"\u0001\u0016\u0001\u0016\u0001\u0017\u0001\u0017\u0001\u0018\u0001\u0018" +
+			"\u0001\u0018\u0000\u0000\u0019\u0000\u0002\u0004\u0006\b\n\f\u000e\u0010" +
+			"\u0012\u0014\u0016\u0018\u001a\u001c\u001e \"$&(*,.0\u0000\u0000\u008a" +
+			"\u00005\u0001\u0000\u0000\u0000\u0002R\u0001\u0000\u0000\u0000\u0004T" +
+			"\u0001\u0000\u0000\u0000\u0006W\u0001\u0000\u0000\u0000\bZ\u0001\u0000" +
+			"\u0000\u0000\n]\u0001\u0000\u0000\u0000\f`\u0001\u0000\u0000\u0000\u000e" +
+			"c\u0001\u0000\u0000\u0000\u0010e\u0001\u0000\u0000\u0000\u0012g\u0001" +
+			"\u0000\u0000\u0000\u0014i\u0001\u0000\u0000\u0000\u0016k\u0001\u0000\u0000" +
+			"\u0000\u0018p\u0001\u0000\u0000\u0000\u001ar\u0001\u0000\u0000\u0000\u001c" +
+			"u\u0001\u0000\u0000\u0000\u001ez\u0001\u0000\u0000\u0000 |\u0001\u0000" +
+			"\u0000\u0000\"~\u0001\u0000\u0000\u0000$\u0084\u0001\u0000\u0000\u0000" +
+			"&\u0086\u0001\u0000\u0000\u0000(\u0088\u0001\u0000\u0000\u0000*\u008a" +
+			"\u0001\u0000\u0000\u0000,\u008c\u0001\u0000\u0000\u0000.\u0090\u0001\u0000" +
+			"\u0000\u00000\u0092\u0001\u0000\u0000\u000024\u0005\u0007\u0000\u0000" +
+			"32\u0001\u0000\u0000\u000047\u0001\u0000\u0000\u000053\u0001\u0000\u0000" +
+			"\u000056\u0001\u0000\u0000\u00006@\u0001\u0000\u0000\u000075\u0001\u0000" +
+			"\u0000\u00008:\u0003\u0002\u0001\u00009;\u0005\u0007\u0000\u0000:9\u0001" +
+			"\u0000\u0000\u0000;<\u0001\u0000\u0000\u0000<:\u0001\u0000\u0000\u0000" +
+			"<=\u0001\u0000\u0000\u0000=?\u0001\u0000\u0000\u0000>8\u0001\u0000\u0000" +
+			"\u0000?B\u0001\u0000\u0000\u0000@>\u0001\u0000\u0000\u0000@A\u0001\u0000" +
+			"\u0000\u0000AI\u0001\u0000\u0000\u0000B@\u0001\u0000\u0000\u0000CE\u0003" +
+			"\u0018\f\u0000DF\u0005\u0007\u0000\u0000ED\u0001\u0000\u0000\u0000FG\u0001" +
+			"\u0000\u0000\u0000GE\u0001\u0000\u0000\u0000GH\u0001\u0000\u0000\u0000" +
+			"HJ\u0001\u0000\u0000\u0000IC\u0001\u0000\u0000\u0000JK\u0001\u0000\u0000" +
+			"\u0000KI\u0001\u0000\u0000\u0000KL\u0001\u0000\u0000\u0000L\u0001\u0001" +
+			"\u0000\u0000\u0000MS\u0003\u0004\u0002\u0000NS\u0003\u0006\u0003\u0000" +
+			"OS\u0003\b\u0004\u0000PS\u0003\n\u0005\u0000QS\u0003\f\u0006\u0000RM\u0001" +
+			"\u0000\u0000\u0000RN\u0001\u0000\u0000\u0000RO\u0001\u0000\u0000\u0000" +
+			"RP\u0001\u0000\u0000\u0000RQ\u0001\u0000\u0000\u0000S\u0003\u0001\u0000" +
+			"\u0000\u0000TU\u0005\u0001\u0000\u0000UV\u0003\u000e\u0007\u0000V\u0005" +
+			"\u0001\u0000\u0000\u0000WX\u0005\u0002\u0000\u0000XY\u0003\u0010\b\u0000" +
+			"Y\u0007\u0001\u0000\u0000\u0000Z[\u0005\u0003\u0000\u0000[\\\u0003\u0012" +
+			"\t\u0000\\\t\u0001\u0000\u0000\u0000]^\u0005\u0004\u0000\u0000^_\u0003" +
+			"\u0014\n\u0000_\u000b\u0001\u0000\u0000\u0000`a\u0005\u0005\u0000\u0000" +
+			"ab\u0003\u0016\u000b\u0000b\r\u0001\u0000\u0000\u0000cd\u0005\b\u0000" +
+			"\u0000d\u000f\u0001\u0000\u0000\u0000ef\u0005\b\u0000\u0000f\u0011\u0001" +
+			"\u0000\u0000\u0000gh\u0005\b\u0000\u0000h\u0013\u0001\u0000\u0000\u0000" +
+			"ij\u0005\b\u0000\u0000j\u0015\u0001\u0000\u0000\u0000kl\u0005\b\u0000" +
+			"\u0000l\u0017\u0001\u0000\u0000\u0000mq\u0003\u001a\r\u0000nq\u0003\u001c" +
+			"\u000e\u0000oq\u0003,\u0016\u0000pm\u0001\u0000\u0000\u0000pn\u0001\u0000" +
+			"\u0000\u0000po\u0001\u0000\u0000\u0000q\u0019\u0001\u0000\u0000\u0000" +
+			"rs\u0003\u001e\u000f\u0000st\u0003$\u0012\u0000t\u001b\u0001\u0000\u0000" +
+			"\u0000uv\u0005\n\u0000\u0000vw\u0005\u0006\u0000\u0000w\u001d\u0001\u0000" +
+			"\u0000\u0000x{\u0003 \u0010\u0000y{\u0003\"\u0011\u0000zx\u0001\u0000" +
+			"\u0000\u0000zy\u0001\u0000\u0000\u0000{\u001f\u0001\u0000\u0000\u0000" +
+			"|}\u0005\n\u0000\u0000}!\u0001\u0000\u0000\u0000~\u007f\u0005\b\u0000" +
+			"\u0000\u007f#\u0001\u0000\u0000\u0000\u0080\u0085\u0003&\u0013\u0000\u0081" +
+			"\u0085\u0003(\u0014\u0000\u0082\u0085\u0003*\u0015\u0000\u0083\u0085\u0001" +
+			"\u0000\u0000\u0000\u0084\u0080\u0001\u0000\u0000\u0000\u0084\u0081\u0001" +
+			"\u0000\u0000\u0000\u0084\u0082\u0001\u0000\u0000\u0000\u0084\u0083\u0001" +
+			"\u0000\u0000\u0000\u0085%\u0001\u0000\u0000\u0000\u0086\u0087\u0005\b" +
+			"\u0000\u0000\u0087\'\u0001\u0000\u0000\u0000\u0088\u0089\u0005\t\u0000" +
+			"\u0000\u0089)\u0001\u0000\u0000\u0000\u008a\u008b\u0005\n\u0000\u0000" +
+			"\u008b+\u0001\u0000\u0000\u0000\u008c\u008d\u0003.\u0017\u0000\u008d\u008e" +
+			"\u0005\u0006\u0000\u0000\u008e\u008f\u00030\u0018\u0000\u008f-\u0001\u0000" +
+			"\u0000\u0000\u0090\u0091\u0005\b\u0000\u0000\u0091/\u0001\u0000\u0000" +
+			"\u0000\u0092\u0093\u0005\n\u0000\u0000\u00931\u0001\u0000\u0000\u0000" +
+			"\t5<@GKRpz\u0084";
+	public static final ATN _ATN =
+		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
+
+	static
 	{
-		public ProgContext(ParserRuleContext parent, int invokingState)
+		_decisionToDFA = new DFA[_ATN.getNumberOfDecisions()];
+		for (int i = 0; i < _ATN.getNumberOfDecisions(); i++)
 		{
-			super(parent, invokingState);
-		}
-
-		public List<TerminalNode> NEWLINE()
-		{
-			return getTokens(rs2asmParser.NEWLINE);
-		}
-
-		public TerminalNode NEWLINE(int i)
-		{
-			return getToken(rs2asmParser.NEWLINE, i);
-		}
-
-		public List<HeaderContext> header()
-		{
-			return getRuleContexts(HeaderContext.class);
-		}
-
-		public HeaderContext header(int i)
-		{
-			return getRuleContext(HeaderContext.class, i);
-		}
-
-		public List<LineContext> line()
-		{
-			return getRuleContexts(LineContext.class);
-		}
-
-		public LineContext line(int i)
-		{
-			return getRuleContext(LineContext.class, i);
-		}
-
-		@Override
-		public int getRuleIndex()
-		{
-			return RULE_prog;
-		}
-
-		@Override
-		public void enterRule(ParseTreeListener listener)
-		{
-			if (listener instanceof rs2asmListener)
-			{
-				((rs2asmListener) listener).enterProg(this);
-			}
-		}
-
-		@Override
-		public void exitRule(ParseTreeListener listener)
-		{
-			if (listener instanceof rs2asmListener)
-			{
-				((rs2asmListener) listener).exitProg(this);
-			}
-		}
-	}
-
-	public static class HeaderContext extends ParserRuleContext
-	{
-		public HeaderContext(ParserRuleContext parent, int invokingState)
-		{
-			super(parent, invokingState);
-		}
-
-		public IdContext id()
-		{
-			return getRuleContext(IdContext.class, 0);
-		}
-
-		public Int_stack_countContext int_stack_count()
-		{
-			return getRuleContext(Int_stack_countContext.class, 0);
-		}
-
-		public String_stack_countContext string_stack_count()
-		{
-			return getRuleContext(String_stack_countContext.class, 0);
-		}
-
-		public Int_var_countContext int_var_count()
-		{
-			return getRuleContext(Int_var_countContext.class, 0);
-		}
-
-		public String_var_countContext string_var_count()
-		{
-			return getRuleContext(String_var_countContext.class, 0);
-		}
-
-		@Override
-		public int getRuleIndex()
-		{
-			return RULE_header;
-		}
-
-		@Override
-		public void enterRule(ParseTreeListener listener)
-		{
-			if (listener instanceof rs2asmListener)
-			{
-				((rs2asmListener) listener).enterHeader(this);
-			}
-		}
-
-		@Override
-		public void exitRule(ParseTreeListener listener)
-		{
-			if (listener instanceof rs2asmListener)
-			{
-				((rs2asmListener) listener).exitHeader(this);
-			}
-		}
-	}
-
-	public static class IdContext extends ParserRuleContext
-	{
-		public IdContext(ParserRuleContext parent, int invokingState)
-		{
-			super(parent, invokingState);
-		}
-
-		public Id_valueContext id_value()
-		{
-			return getRuleContext(Id_valueContext.class, 0);
-		}
-
-		@Override
-		public int getRuleIndex()
-		{
-			return RULE_id;
-		}
-
-		@Override
-		public void enterRule(ParseTreeListener listener)
-		{
-			if (listener instanceof rs2asmListener)
-			{
-				((rs2asmListener) listener).enterId(this);
-			}
-		}
-
-		@Override
-		public void exitRule(ParseTreeListener listener)
-		{
-			if (listener instanceof rs2asmListener)
-			{
-				((rs2asmListener) listener).exitId(this);
-			}
-		}
-	}
-
-	public static class Int_stack_countContext extends ParserRuleContext
-	{
-		public Int_stack_countContext(ParserRuleContext parent, int invokingState)
-		{
-			super(parent, invokingState);
-		}
-
-		public Int_stack_valueContext int_stack_value()
-		{
-			return getRuleContext(Int_stack_valueContext.class, 0);
-		}
-
-		@Override
-		public int getRuleIndex()
-		{
-			return RULE_int_stack_count;
-		}
-
-		@Override
-		public void enterRule(ParseTreeListener listener)
-		{
-			if (listener instanceof rs2asmListener)
-			{
-				((rs2asmListener) listener).enterInt_stack_count(this);
-			}
-		}
-
-		@Override
-		public void exitRule(ParseTreeListener listener)
-		{
-			if (listener instanceof rs2asmListener)
-			{
-				((rs2asmListener) listener).exitInt_stack_count(this);
-			}
-		}
-	}
-
-	public static class String_stack_countContext extends ParserRuleContext
-	{
-		public String_stack_countContext(ParserRuleContext parent, int invokingState)
-		{
-			super(parent, invokingState);
-		}
-
-		public String_stack_valueContext string_stack_value()
-		{
-			return getRuleContext(String_stack_valueContext.class, 0);
-		}
-
-		@Override
-		public int getRuleIndex()
-		{
-			return RULE_string_stack_count;
-		}
-
-		@Override
-		public void enterRule(ParseTreeListener listener)
-		{
-			if (listener instanceof rs2asmListener)
-			{
-				((rs2asmListener) listener).enterString_stack_count(this);
-			}
-		}
-
-		@Override
-		public void exitRule(ParseTreeListener listener)
-		{
-			if (listener instanceof rs2asmListener)
-			{
-				((rs2asmListener) listener).exitString_stack_count(this);
-			}
-		}
-	}
-
-	public static class Int_var_countContext extends ParserRuleContext
-	{
-		public Int_var_countContext(ParserRuleContext parent, int invokingState)
-		{
-			super(parent, invokingState);
-		}
-
-		public Int_var_valueContext int_var_value()
-		{
-			return getRuleContext(Int_var_valueContext.class, 0);
-		}
-
-		@Override
-		public int getRuleIndex()
-		{
-			return RULE_int_var_count;
-		}
-
-		@Override
-		public void enterRule(ParseTreeListener listener)
-		{
-			if (listener instanceof rs2asmListener)
-			{
-				((rs2asmListener) listener).enterInt_var_count(this);
-			}
-		}
-
-		@Override
-		public void exitRule(ParseTreeListener listener)
-		{
-			if (listener instanceof rs2asmListener)
-			{
-				((rs2asmListener) listener).exitInt_var_count(this);
-			}
-		}
-	}
-
-	public static class String_var_countContext extends ParserRuleContext
-	{
-		public String_var_countContext(ParserRuleContext parent, int invokingState)
-		{
-			super(parent, invokingState);
-		}
-
-		public String_var_valueContext string_var_value()
-		{
-			return getRuleContext(String_var_valueContext.class, 0);
-		}
-
-		@Override
-		public int getRuleIndex()
-		{
-			return RULE_string_var_count;
-		}
-
-		@Override
-		public void enterRule(ParseTreeListener listener)
-		{
-			if (listener instanceof rs2asmListener)
-			{
-				((rs2asmListener) listener).enterString_var_count(this);
-			}
-		}
-
-		@Override
-		public void exitRule(ParseTreeListener listener)
-		{
-			if (listener instanceof rs2asmListener)
-			{
-				((rs2asmListener) listener).exitString_var_count(this);
-			}
-		}
-	}
-
-	public static class Id_valueContext extends ParserRuleContext
-	{
-		public Id_valueContext(ParserRuleContext parent, int invokingState)
-		{
-			super(parent, invokingState);
-		}
-
-		public TerminalNode INT()
-		{
-			return getToken(rs2asmParser.INT, 0);
-		}
-
-		@Override
-		public int getRuleIndex()
-		{
-			return RULE_id_value;
-		}
-
-		@Override
-		public void enterRule(ParseTreeListener listener)
-		{
-			if (listener instanceof rs2asmListener)
-			{
-				((rs2asmListener) listener).enterId_value(this);
-			}
-		}
-
-		@Override
-		public void exitRule(ParseTreeListener listener)
-		{
-			if (listener instanceof rs2asmListener)
-			{
-				((rs2asmListener) listener).exitId_value(this);
-			}
-		}
-	}
-
-	public static class Int_stack_valueContext extends ParserRuleContext
-	{
-		public Int_stack_valueContext(ParserRuleContext parent, int invokingState)
-		{
-			super(parent, invokingState);
-		}
-
-		public TerminalNode INT()
-		{
-			return getToken(rs2asmParser.INT, 0);
-		}
-
-		@Override
-		public int getRuleIndex()
-		{
-			return RULE_int_stack_value;
-		}
-
-		@Override
-		public void enterRule(ParseTreeListener listener)
-		{
-			if (listener instanceof rs2asmListener)
-			{
-				((rs2asmListener) listener).enterInt_stack_value(this);
-			}
-		}
-
-		@Override
-		public void exitRule(ParseTreeListener listener)
-		{
-			if (listener instanceof rs2asmListener)
-			{
-				((rs2asmListener) listener).exitInt_stack_value(this);
-			}
-		}
-	}
-
-	public static class String_stack_valueContext extends ParserRuleContext
-	{
-		public String_stack_valueContext(ParserRuleContext parent, int invokingState)
-		{
-			super(parent, invokingState);
-		}
-
-		public TerminalNode INT()
-		{
-			return getToken(rs2asmParser.INT, 0);
-		}
-
-		@Override
-		public int getRuleIndex()
-		{
-			return RULE_string_stack_value;
-		}
-
-		@Override
-		public void enterRule(ParseTreeListener listener)
-		{
-			if (listener instanceof rs2asmListener)
-			{
-				((rs2asmListener) listener).enterString_stack_value(this);
-			}
-		}
-
-		@Override
-		public void exitRule(ParseTreeListener listener)
-		{
-			if (listener instanceof rs2asmListener)
-			{
-				((rs2asmListener) listener).exitString_stack_value(this);
-			}
-		}
-	}
-
-	public static class Int_var_valueContext extends ParserRuleContext
-	{
-		public Int_var_valueContext(ParserRuleContext parent, int invokingState)
-		{
-			super(parent, invokingState);
-		}
-
-		public TerminalNode INT()
-		{
-			return getToken(rs2asmParser.INT, 0);
-		}
-
-		@Override
-		public int getRuleIndex()
-		{
-			return RULE_int_var_value;
-		}
-
-		@Override
-		public void enterRule(ParseTreeListener listener)
-		{
-			if (listener instanceof rs2asmListener)
-			{
-				((rs2asmListener) listener).enterInt_var_value(this);
-			}
-		}
-
-		@Override
-		public void exitRule(ParseTreeListener listener)
-		{
-			if (listener instanceof rs2asmListener)
-			{
-				((rs2asmListener) listener).exitInt_var_value(this);
-			}
-		}
-	}
-
-	public static class String_var_valueContext extends ParserRuleContext
-	{
-		public String_var_valueContext(ParserRuleContext parent, int invokingState)
-		{
-			super(parent, invokingState);
-		}
-
-		public TerminalNode INT()
-		{
-			return getToken(rs2asmParser.INT, 0);
-		}
-
-		@Override
-		public int getRuleIndex()
-		{
-			return RULE_string_var_value;
-		}
-
-		@Override
-		public void enterRule(ParseTreeListener listener)
-		{
-			if (listener instanceof rs2asmListener)
-			{
-				((rs2asmListener) listener).enterString_var_value(this);
-			}
-		}
-
-		@Override
-		public void exitRule(ParseTreeListener listener)
-		{
-			if (listener instanceof rs2asmListener)
-			{
-				((rs2asmListener) listener).exitString_var_value(this);
-			}
-		}
-	}
-
-	public static class LineContext extends ParserRuleContext
-	{
-		public LineContext(ParserRuleContext parent, int invokingState)
-		{
-			super(parent, invokingState);
-		}
-
-		public InstructionContext instruction()
-		{
-			return getRuleContext(InstructionContext.class, 0);
-		}
-
-		public LabelContext label()
-		{
-			return getRuleContext(LabelContext.class, 0);
-		}
-
-		public Switch_lookupContext switch_lookup()
-		{
-			return getRuleContext(Switch_lookupContext.class, 0);
-		}
-
-		@Override
-		public int getRuleIndex()
-		{
-			return RULE_line;
-		}
-
-		@Override
-		public void enterRule(ParseTreeListener listener)
-		{
-			if (listener instanceof rs2asmListener)
-			{
-				((rs2asmListener) listener).enterLine(this);
-			}
-		}
-
-		@Override
-		public void exitRule(ParseTreeListener listener)
-		{
-			if (listener instanceof rs2asmListener)
-			{
-				((rs2asmListener) listener).exitLine(this);
-			}
-		}
-	}
-
-	public static class InstructionContext extends ParserRuleContext
-	{
-		public InstructionContext(ParserRuleContext parent, int invokingState)
-		{
-			super(parent, invokingState);
-		}
-
-		public Instruction_nameContext instruction_name()
-		{
-			return getRuleContext(Instruction_nameContext.class, 0);
-		}
-
-		public Instruction_operandContext instruction_operand()
-		{
-			return getRuleContext(Instruction_operandContext.class, 0);
-		}
-
-		@Override
-		public int getRuleIndex()
-		{
-			return RULE_instruction;
-		}
-
-		@Override
-		public void enterRule(ParseTreeListener listener)
-		{
-			if (listener instanceof rs2asmListener)
-			{
-				((rs2asmListener) listener).enterInstruction(this);
-			}
-		}
-
-		@Override
-		public void exitRule(ParseTreeListener listener)
-		{
-			if (listener instanceof rs2asmListener)
-			{
-				((rs2asmListener) listener).exitInstruction(this);
-			}
-		}
-	}
-
-	public static class LabelContext extends ParserRuleContext
-	{
-		public LabelContext(ParserRuleContext parent, int invokingState)
-		{
-			super(parent, invokingState);
-		}
-
-		public TerminalNode IDENTIFIER()
-		{
-			return getToken(rs2asmParser.IDENTIFIER, 0);
-		}
-
-		@Override
-		public int getRuleIndex()
-		{
-			return RULE_label;
-		}
-
-		@Override
-		public void enterRule(ParseTreeListener listener)
-		{
-			if (listener instanceof rs2asmListener)
-			{
-				((rs2asmListener) listener).enterLabel(this);
-			}
-		}
-
-		@Override
-		public void exitRule(ParseTreeListener listener)
-		{
-			if (listener instanceof rs2asmListener)
-			{
-				((rs2asmListener) listener).exitLabel(this);
-			}
-		}
-	}
-
-	public static class Instruction_nameContext extends ParserRuleContext
-	{
-		public Instruction_nameContext(ParserRuleContext parent, int invokingState)
-		{
-			super(parent, invokingState);
-		}
-
-		public Name_stringContext name_string()
-		{
-			return getRuleContext(Name_stringContext.class, 0);
-		}
-
-		public Name_opcodeContext name_opcode()
-		{
-			return getRuleContext(Name_opcodeContext.class, 0);
-		}
-
-		@Override
-		public int getRuleIndex()
-		{
-			return RULE_instruction_name;
-		}
-
-		@Override
-		public void enterRule(ParseTreeListener listener)
-		{
-			if (listener instanceof rs2asmListener)
-			{
-				((rs2asmListener) listener).enterInstruction_name(this);
-			}
-		}
-
-		@Override
-		public void exitRule(ParseTreeListener listener)
-		{
-			if (listener instanceof rs2asmListener)
-			{
-				((rs2asmListener) listener).exitInstruction_name(this);
-			}
-		}
-	}
-
-	public static class Name_stringContext extends ParserRuleContext
-	{
-		public Name_stringContext(ParserRuleContext parent, int invokingState)
-		{
-			super(parent, invokingState);
-		}
-
-		public TerminalNode IDENTIFIER()
-		{
-			return getToken(rs2asmParser.IDENTIFIER, 0);
-		}
-
-		@Override
-		public int getRuleIndex()
-		{
-			return RULE_name_string;
-		}
-
-		@Override
-		public void enterRule(ParseTreeListener listener)
-		{
-			if (listener instanceof rs2asmListener)
-			{
-				((rs2asmListener) listener).enterName_string(this);
-			}
-		}
-
-		@Override
-		public void exitRule(ParseTreeListener listener)
-		{
-			if (listener instanceof rs2asmListener)
-			{
-				((rs2asmListener) listener).exitName_string(this);
-			}
-		}
-	}
-
-	public static class Name_opcodeContext extends ParserRuleContext
-	{
-		public Name_opcodeContext(ParserRuleContext parent, int invokingState)
-		{
-			super(parent, invokingState);
-		}
-
-		public TerminalNode INT()
-		{
-			return getToken(rs2asmParser.INT, 0);
-		}
-
-		@Override
-		public int getRuleIndex()
-		{
-			return RULE_name_opcode;
-		}
-
-		@Override
-		public void enterRule(ParseTreeListener listener)
-		{
-			if (listener instanceof rs2asmListener)
-			{
-				((rs2asmListener) listener).enterName_opcode(this);
-			}
-		}
-
-		@Override
-		public void exitRule(ParseTreeListener listener)
-		{
-			if (listener instanceof rs2asmListener)
-			{
-				((rs2asmListener) listener).exitName_opcode(this);
-			}
-		}
-	}
-
-	public static class Instruction_operandContext extends ParserRuleContext
-	{
-		public Instruction_operandContext(ParserRuleContext parent, int invokingState)
-		{
-			super(parent, invokingState);
-		}
-
-		public Operand_intContext operand_int()
-		{
-			return getRuleContext(Operand_intContext.class, 0);
-		}
-
-		public Operand_qstringContext operand_qstring()
-		{
-			return getRuleContext(Operand_qstringContext.class, 0);
-		}
-
-		public Operand_labelContext operand_label()
-		{
-			return getRuleContext(Operand_labelContext.class, 0);
-		}
-
-		@Override
-		public int getRuleIndex()
-		{
-			return RULE_instruction_operand;
-		}
-
-		@Override
-		public void enterRule(ParseTreeListener listener)
-		{
-			if (listener instanceof rs2asmListener)
-			{
-				((rs2asmListener) listener).enterInstruction_operand(this);
-			}
-		}
-
-		@Override
-		public void exitRule(ParseTreeListener listener)
-		{
-			if (listener instanceof rs2asmListener)
-			{
-				((rs2asmListener) listener).exitInstruction_operand(this);
-			}
-		}
-	}
-
-	public static class Operand_intContext extends ParserRuleContext
-	{
-		public Operand_intContext(ParserRuleContext parent, int invokingState)
-		{
-			super(parent, invokingState);
-		}
-
-		public TerminalNode INT()
-		{
-			return getToken(rs2asmParser.INT, 0);
-		}
-
-		@Override
-		public int getRuleIndex()
-		{
-			return RULE_operand_int;
-		}
-
-		@Override
-		public void enterRule(ParseTreeListener listener)
-		{
-			if (listener instanceof rs2asmListener)
-			{
-				((rs2asmListener) listener).enterOperand_int(this);
-			}
-		}
-
-		@Override
-		public void exitRule(ParseTreeListener listener)
-		{
-			if (listener instanceof rs2asmListener)
-			{
-				((rs2asmListener) listener).exitOperand_int(this);
-			}
-		}
-	}
-
-	public static class Operand_qstringContext extends ParserRuleContext
-	{
-		public Operand_qstringContext(ParserRuleContext parent, int invokingState)
-		{
-			super(parent, invokingState);
-		}
-
-		public TerminalNode QSTRING()
-		{
-			return getToken(rs2asmParser.QSTRING, 0);
-		}
-
-		@Override
-		public int getRuleIndex()
-		{
-			return RULE_operand_qstring;
-		}
-
-		@Override
-		public void enterRule(ParseTreeListener listener)
-		{
-			if (listener instanceof rs2asmListener)
-			{
-				((rs2asmListener) listener).enterOperand_qstring(this);
-			}
-		}
-
-		@Override
-		public void exitRule(ParseTreeListener listener)
-		{
-			if (listener instanceof rs2asmListener)
-			{
-				((rs2asmListener) listener).exitOperand_qstring(this);
-			}
-		}
-	}
-
-	public static class Operand_labelContext extends ParserRuleContext
-	{
-		public Operand_labelContext(ParserRuleContext parent, int invokingState)
-		{
-			super(parent, invokingState);
-		}
-
-		public TerminalNode IDENTIFIER()
-		{
-			return getToken(rs2asmParser.IDENTIFIER, 0);
-		}
-
-		@Override
-		public int getRuleIndex()
-		{
-			return RULE_operand_label;
-		}
-
-		@Override
-		public void enterRule(ParseTreeListener listener)
-		{
-			if (listener instanceof rs2asmListener)
-			{
-				((rs2asmListener) listener).enterOperand_label(this);
-			}
-		}
-
-		@Override
-		public void exitRule(ParseTreeListener listener)
-		{
-			if (listener instanceof rs2asmListener)
-			{
-				((rs2asmListener) listener).exitOperand_label(this);
-			}
-		}
-	}
-
-	public static class Switch_lookupContext extends ParserRuleContext
-	{
-		public Switch_lookupContext(ParserRuleContext parent, int invokingState)
-		{
-			super(parent, invokingState);
-		}
-
-		public Switch_keyContext switch_key()
-		{
-			return getRuleContext(Switch_keyContext.class, 0);
-		}
-
-		public Switch_valueContext switch_value()
-		{
-			return getRuleContext(Switch_valueContext.class, 0);
-		}
-
-		@Override
-		public int getRuleIndex()
-		{
-			return RULE_switch_lookup;
-		}
-
-		@Override
-		public void enterRule(ParseTreeListener listener)
-		{
-			if (listener instanceof rs2asmListener)
-			{
-				((rs2asmListener) listener).enterSwitch_lookup(this);
-			}
-		}
-
-		@Override
-		public void exitRule(ParseTreeListener listener)
-		{
-			if (listener instanceof rs2asmListener)
-			{
-				((rs2asmListener) listener).exitSwitch_lookup(this);
-			}
-		}
-	}
-
-	public static class Switch_keyContext extends ParserRuleContext
-	{
-		public Switch_keyContext(ParserRuleContext parent, int invokingState)
-		{
-			super(parent, invokingState);
-		}
-
-		public TerminalNode INT()
-		{
-			return getToken(rs2asmParser.INT, 0);
-		}
-
-		@Override
-		public int getRuleIndex()
-		{
-			return RULE_switch_key;
-		}
-
-		@Override
-		public void enterRule(ParseTreeListener listener)
-		{
-			if (listener instanceof rs2asmListener)
-			{
-				((rs2asmListener) listener).enterSwitch_key(this);
-			}
-		}
-
-		@Override
-		public void exitRule(ParseTreeListener listener)
-		{
-			if (listener instanceof rs2asmListener)
-			{
-				((rs2asmListener) listener).exitSwitch_key(this);
-			}
-		}
-	}
-
-	public static class Switch_valueContext extends ParserRuleContext
-	{
-		public Switch_valueContext(ParserRuleContext parent, int invokingState)
-		{
-			super(parent, invokingState);
-		}
-
-		public TerminalNode IDENTIFIER()
-		{
-			return getToken(rs2asmParser.IDENTIFIER, 0);
-		}
-
-		@Override
-		public int getRuleIndex()
-		{
-			return RULE_switch_value;
-		}
-
-		@Override
-		public void enterRule(ParseTreeListener listener)
-		{
-			if (listener instanceof rs2asmListener)
-			{
-				((rs2asmListener) listener).enterSwitch_value(this);
-			}
-		}
-
-		@Override
-		public void exitRule(ParseTreeListener listener)
-		{
-			if (listener instanceof rs2asmListener)
-			{
-				((rs2asmListener) listener).exitSwitch_value(this);
-			}
+			_decisionToDFA[i] = new DFA(_ATN.getDecisionState(i), i);
 		}
 	}
 }

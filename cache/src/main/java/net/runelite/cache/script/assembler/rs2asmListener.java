@@ -1,4 +1,4 @@
-// Generated from net\runelite\cache\script\assembler\rs2asm.g4 by ANTLR 4.6
+// Generated from net/runelite/cache/script/assembler/rs2asm.g4 by ANTLR 4.13.1
 package net.runelite.cache.script.assembler;
 
 import org.antlr.v4.runtime.tree.ParseTreeListener;
