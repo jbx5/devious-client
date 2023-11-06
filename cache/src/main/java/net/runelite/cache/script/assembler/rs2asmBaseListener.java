@@ -1,4 +1,4 @@
-// Generated from net\runelite\cache\script\assembler\rs2asm.g4 by ANTLR 4.6
+// Generated from net/runelite/cache/script/assembler/rs2asm.g4 by ANTLR 4.13.1
 package net.runelite.cache.script.assembler;
 
 import org.antlr.v4.runtime.ParserRuleContext;
@@ -10,6 +10,7 @@ import org.antlr.v4.runtime.tree.TerminalNode;
  * which can be extended to create a listener which only needs to handle a subset
  * of the available methods.
  */
+@SuppressWarnings("CheckReturnValue")
 public class rs2asmBaseListener implements rs2asmListener
 {
 	/**
@@ -518,26 +519,6 @@ public class rs2asmBaseListener implements rs2asmListener
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override
-	public void visitTerminal(TerminalNode node)
-	{
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override
-	public void visitErrorNode(ErrorNode node)
-	{
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override
 	public void enterEveryRule(ParserRuleContext ctx)
 	{
 	}
@@ -549,6 +530,26 @@ public class rs2asmBaseListener implements rs2asmListener
 	 */
 	@Override
 	public void exitEveryRule(ParserRuleContext ctx)
+	{
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override
+	public void visitTerminal(TerminalNode node)
+	{
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override
+	public void visitErrorNode(ErrorNode node)
 	{
 	}
 }
