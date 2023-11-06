@@ -1111,12 +1111,14 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 	@ObfuscatedSignature(
 		descriptor = "Lpf;"
 	)
-	static NodeDeque field542;
+	@Export("scriptEvents2")
+	static NodeDeque scriptEvents2;
 	@ObfuscatedName("rw")
 	@ObfuscatedSignature(
 		descriptor = "Lpf;"
 	)
-	static NodeDeque field734;
+	@Export("scriptEvents3")
+	static NodeDeque scriptEvents3;
 	@ObfuscatedName("rh")
 	@ObfuscatedSignature(
 		descriptor = "Lpf;"
@@ -1605,8 +1607,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 		mouseWheelRotation = 0;
 		field785 = new class547();
 		scriptEvents = new NodeDeque();
-		field542 = new NodeDeque();
-		field734 = new NodeDeque();
+		scriptEvents2 = new NodeDeque();
+		scriptEvents3 = new NodeDeque();
 		field534 = new NodeDeque();
 		widgetFlags = new NodeHashTable(512);
 		rootWidgetCount = 0;
@@ -3235,11 +3237,11 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 							Widget var51;
 							ScriptEvent var54;
 							do {
-								var54 = (ScriptEvent)field542.removeLast();
+								var54 = (ScriptEvent) scriptEvents2.removeLast();
 								if (var54 == null) {
 									while (true) {
 										do {
-											var54 = (ScriptEvent)field734.removeLast();
+											var54 = (ScriptEvent) scriptEvents3.removeLast();
 											if (var54 == null) {
 												while (true) {
 													do {
