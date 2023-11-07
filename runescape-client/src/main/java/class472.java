@@ -1,110 +1,133 @@
-import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("sl")
-public abstract class class472 implements class294 {
-	@ObfuscatedName("ac")
+@ObfuscatedName("si")
+public class class472 {
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "Ltr;"
+		descriptor = "Lsi;"
 	)
-	class517 field4816;
-
-	class472(int var1) {
-	}
-
-	@ObfuscatedName("ac")
+	public static final class472 field4810;
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(Lul;IS)V",
-		garbageValue = "6664"
+		descriptor = "Lsi;"
 	)
-	abstract void vmethod8471(Buffer var1, int var2);
-
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "(Lul;I)V",
-		garbageValue = "-1679983256"
-	)
-	public void method8465(Buffer var1) {
-		while (true) {
-			int var2 = var1.readUnsignedByte();
-			if (var2 == 0) {
-				return;
-			}
-
-			class468 var3 = (class468)SequenceDefinition.findEnumerated(class30.method449(), var2);
-			if (var3 != null) {
-				switch(var3.field4809) {
-				case 0:
-					int var5 = var1.readUnsignedByte();
-					this.field4816 = Tile.method4516(var5);
-					if (this.field4816 != null) {
-						break;
-					}
-
-					throw new IllegalStateException("Unknown ScriptVarType ID in VarType.decode: " + var5);
-				case 1:
-					var1.readStringCp1252NullCircumfixed();
-					break;
-				case 2:
-					class367[] var4 = new class367[]{class367.field4263, class367.field4260, class367.field4261, class367.field4259};
-					SequenceDefinition.findEnumerated(var4, var1.readUnsignedByte());
-					break;
-				default:
-					throw new IllegalStateException("Unrecognised VarTypeEncodingKey - " + var3);
-				}
-			} else {
-				this.vmethod8471(var1, var2);
-			}
-		}
-	}
-
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "1797957438"
-	)
-	boolean method8466() {
-		return this.field4816 != null;
-	}
-
-	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "(I)Ljava/lang/Object;",
-		garbageValue = "1069039915"
-	)
-	Object method8470() {
-		if (this.field4816 == class517.field5067) {
-			return 0;
-		} else if (this.field4816 == class517.field5066) {
-			return -1L;
-		} else {
-			return this.field4816 == class517.field5065 ? "" : null;
-		}
-	}
-
+	static final class472 field4811;
 	@ObfuscatedName("ar")
-	@ObfuscatedSignature(
-		descriptor = "(I)[Luf;",
-		garbageValue = "-1429373012"
-	)
-	@Export("FillMode_values")
-	public static FillMode[] FillMode_values() {
-		return new FillMode[]{FillMode.field5222, FillMode.SOLID, FillMode.field5221};
+	String field4809;
+
+	static {
+		field4810 = new class472("application/json");
+		field4811 = new class472("text/plain");
 	}
 
-	@ObfuscatedName("bw")
+	class472(String var1) {
+		this.field4809 = var1;
+	}
+
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "(ILds;ZB)I",
-		garbageValue = "47"
+		descriptor = "(I)Ljava/lang/String;",
+		garbageValue = "1925429052"
 	)
-	static int method8475(int var0, Script var1, boolean var2) {
-		if (var0 == 7463) {
-			boolean var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize] == 1;
-			class330.method6204(var3);
-			return 1;
+	public String method8563() {
+		return this.field4809;
+	}
+
+	@ObfuscatedName("ah")
+	@ObfuscatedSignature(
+		descriptor = "(II)Ltu;",
+		garbageValue = "-2020292957"
+	)
+	public static class514 method8562(int var0) {
+		int var1 = class512.field5056[var0];
+		if (var1 == 1) {
+			return class514.field5065;
+		} else if (var1 == 2) {
+			return class514.field5061;
 		} else {
-			return 2;
+			return var1 == 3 ? class514.field5066 : null;
+		}
+	}
+
+	@ObfuscatedName("aa")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-2006289317"
+	)
+	public static void method8564() {
+		class316.field3424.clear();
+	}
+
+	@ObfuscatedName("kn")
+	@ObfuscatedSignature(
+		descriptor = "(Luo;B)V",
+		garbageValue = "-41"
+	)
+	static final void method8565(PacketBuffer var0) {
+		var0.importIndex();
+		int var1 = var0.readBits(8);
+		int var2;
+		if (var1 < Client.npcCount) {
+			for (var2 = var1; var2 < Client.npcCount; ++var2) {
+				Client.field618[++Client.field617 - 1] = Client.npcIndices[var2];
+			}
+		}
+
+		if (var1 > Client.npcCount) {
+			throw new RuntimeException("");
+		} else {
+			Client.npcCount = 0;
+
+			for (var2 = 0; var2 < var1; ++var2) {
+				int var3 = Client.npcIndices[var2];
+				NPC var4 = Client.npcs[var3];
+				int var5 = var0.readBits(1);
+				if (var5 == 0) {
+					Client.npcIndices[++Client.npcCount - 1] = var3;
+					var4.npcCycle = Client.cycle;
+				} else {
+					int var6 = var0.readBits(2);
+					if (var6 == 0) {
+						Client.npcIndices[++Client.npcCount - 1] = var3;
+						var4.npcCycle = Client.cycle;
+						Client.field549[++Client.field637 - 1] = var3;
+					} else {
+						int var7;
+						int var8;
+						if (var6 == 1) {
+							Client.npcIndices[++Client.npcCount - 1] = var3;
+							var4.npcCycle = Client.cycle;
+							var7 = var0.readBits(3);
+							var4.method2664(var7, class228.field2409);
+							var8 = var0.readBits(1);
+							if (var8 == 1) {
+								Client.field549[++Client.field637 - 1] = var3;
+							}
+						} else if (var6 == 2) {
+							Client.npcIndices[++Client.npcCount - 1] = var3;
+							var4.npcCycle = Client.cycle;
+							if (var0.readBits(1) == 1) {
+								var7 = var0.readBits(3);
+								var4.method2664(var7, class228.field2410);
+								var8 = var0.readBits(3);
+								var4.method2664(var8, class228.field2410);
+							} else {
+								var7 = var0.readBits(3);
+								var4.method2664(var7, class228.field2408);
+							}
+
+							var7 = var0.readBits(1);
+							if (var7 == 1) {
+								Client.field549[++Client.field637 - 1] = var3;
+							}
+						} else if (var6 == 3) {
+							Client.field618[++Client.field617 - 1] = var3;
+						}
+					}
+				}
+			}
+
 		}
 	}
 }

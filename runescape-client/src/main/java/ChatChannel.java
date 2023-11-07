@@ -4,24 +4,20 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dg")
+@ObfuscatedName("dk")
 @Implements("ChatChannel")
 public class ChatChannel {
-	@ObfuscatedName("lv")
-	@ObfuscatedGetter(
-		intValue = -1313145805
-	)
-	@Export("oculusOrbFocalPointX")
-	static int oculusOrbFocalPointX;
 	@ObfuscatedName("al")
+	static int[] field996;
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "[Lcr;"
+		descriptor = "[Lco;"
 	)
 	@Export("messages")
 	Message[] messages;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ar")
 	@ObfuscatedGetter(
-		intValue = 679923983
+		intValue = 2075244397
 	)
 	@Export("count")
 	int count;
@@ -30,10 +26,10 @@ public class ChatChannel {
 		this.messages = new Message[100];
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;B)Lcr;",
-		garbageValue = "-1"
+		descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;I)Lco;",
+		garbageValue = "-698368105"
 	)
 	@Export("addMessage")
 	Message addMessage(int var1, String var2, String var3, String var4) {
@@ -61,20 +57,20 @@ public class ChatChannel {
 		return var5;
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lcr;",
-		garbageValue = "-1861075879"
+		descriptor = "(II)Lco;",
+		garbageValue = "-649876518"
 	)
 	@Export("getMessage")
 	Message getMessage(int var1) {
 		return var1 >= 0 && var1 < this.count ? this.messages[var1] : null;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-1856127113"
+		garbageValue = "519230888"
 	)
 	@Export("size")
 	int size() {

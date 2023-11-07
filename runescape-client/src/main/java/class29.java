@@ -1,33 +1,33 @@
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bd")
+@ObfuscatedName("bi")
 public interface class29 {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("at")
+	@ObfuscatedSignature(
+		descriptor = "(IS)Z",
+		garbageValue = "512"
+	)
+	boolean vmethod4310(int var1);
+
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "(II)Z",
-		garbageValue = "-1448724719"
+		garbageValue = "-1146773117"
 	)
-	boolean vmethod4264(int var1);
+	boolean vmethod4320(int var1);
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "(II)Z",
-		garbageValue = "-974805318"
+		descriptor = "(CI)Z",
+		garbageValue = "984376689"
 	)
-	boolean vmethod4251(int var1);
+	boolean vmethod4321(char var1);
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(CB)Z",
-		garbageValue = "19"
+		descriptor = "(ZB)Z",
+		garbageValue = "-49"
 	)
-	boolean vmethod4275(char var1);
-
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "(ZI)Z",
-		garbageValue = "-672025946"
-	)
-	boolean vmethod4254(boolean var1);
+	boolean vmethod4312(boolean var1);
 }

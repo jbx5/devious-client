@@ -7,37 +7,37 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gw")
+@ObfuscatedName("ih")
 @Implements("TaskHandler")
 public class TaskHandler implements Runnable {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("at")
 	@Export("javaVendor")
 	public static String javaVendor;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ah")
 	@Export("javaVersion")
 	public static String javaVersion;
-	@ObfuscatedName("dk")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "[Lun;"
+		descriptor = "Lpf;"
 	)
-	@Export("worldSelectStars")
-	static IndexedSprite[] worldSelectStars;
-	@ObfuscatedName("ak")
+	@Export("ItemDefinition_fontPlain11")
+	public static Font ItemDefinition_fontPlain11;
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "Lhi;"
+		descriptor = "Liq;"
 	)
 	@Export("current")
 	Task current;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "Lhi;"
+		descriptor = "Liq;"
 	)
 	@Export("task")
 	Task task;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ab")
 	@Export("thread")
 	Thread thread;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("au")
 	@Export("isClosed")
 	boolean isClosed;
 
@@ -61,10 +61,10 @@ public class TaskHandler implements Runnable {
 		this.thread.start();
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "0"
+		descriptor = "(I)V",
+		garbageValue = "-585427867"
 	)
 	@Export("close")
 	public final void close() {
@@ -80,10 +80,10 @@ public class TaskHandler implements Runnable {
 
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(IIILjava/lang/Object;B)Lhi;",
-		garbageValue = "99"
+		descriptor = "(IIILjava/lang/Object;I)Liq;",
+		garbageValue = "-993585503"
 	)
 	@Export("newTask")
 	final Task newTask(int var1, int var2, int var3, Object var4) {
@@ -104,20 +104,20 @@ public class TaskHandler implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;IS)Lhi;",
-		garbageValue = "-20310"
+		descriptor = "(Ljava/lang/String;II)Liq;",
+		garbageValue = "-180890687"
 	)
 	@Export("newSocketTask")
 	public final Task newSocketTask(String var1, int var2) {
 		return this.newTask(1, var2, 0, var1);
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Runnable;II)Lhi;",
-		garbageValue = "-1310826122"
+		descriptor = "(Ljava/lang/Runnable;II)Liq;",
+		garbageValue = "1323280137"
 	)
 	@Export("newThreadTask")
 	public final Task newThreadTask(Runnable var1, int var2) {
@@ -172,34 +172,26 @@ public class TaskHandler implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("ml")
+	@ObfuscatedName("km")
 	@ObfuscatedSignature(
-		descriptor = "(Lnm;III)V",
-		garbageValue = "-23690326"
+		descriptor = "(IIIIII)Z",
+		garbageValue = "1243535616"
 	)
-	@Export("clickWidget")
-	static final void clickWidget(Widget var0, int var1, int var2) {
-		if (Client.clickedWidget == null && !Client.isMenuOpen) {
-			if (var0 != null && class275.method5566(var0) != null) {
-				Client.clickedWidget = var0;
-				Client.clickedWidgetParent = class275.method5566(var0);
-				Client.widgetClickX = var1;
-				Client.widgetClickY = var2;
-				FriendsChat.widgetDragDuration = 0;
-				Client.isDraggingWidget = false;
-				int var3 = AttackOption.method2714();
-				if (var3 != -1) {
-					class133.tempMenuAction = new MenuAction();
-					class133.tempMenuAction.param0 = Client.menuArguments1[var3];
-					class133.tempMenuAction.param1 = Client.menuArguments2[var3];
-					class133.tempMenuAction.opcode = Client.menuOpcodes[var3];
-					class133.tempMenuAction.identifier = Client.menuIdentifiers[var3];
-					class133.tempMenuAction.itemId = Client.menuItemIds[var3];
-					class133.tempMenuAction.action = Client.menuActions[var3];
-					class133.tempMenuAction.target = Client.menuTargets[var3];
-				}
+	static final boolean method4201(int var0, int var1, int var2, int var3, int var4) {
+		PendingSpawn var5 = null;
 
+		for (PendingSpawn var6 = (PendingSpawn)Client.pendingSpawns.last(); var6 != null; var6 = (PendingSpawn)Client.pendingSpawns.previous()) {
+			if (var0 == var6.plane && var6.x == var1 && var2 == var6.y && var3 == var6.type) {
+				var5 = var6;
+				break;
 			}
+		}
+
+		if (var5 != null) {
+			var5.field1152 = var4;
+			return true;
+		} else {
+			return false;
 		}
 	}
 }

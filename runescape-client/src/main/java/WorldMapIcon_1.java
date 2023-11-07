@@ -4,53 +4,54 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kb")
+@ObfuscatedName("jp")
 @Implements("WorldMapIcon_1")
 public class WorldMapIcon_1 extends AbstractWorldMapIcon {
-	@ObfuscatedName("cb")
-	@ObfuscatedGetter(
-		intValue = -424537003
+	@ObfuscatedName("wt")
+	@ObfuscatedSignature(
+		descriptor = "Ldl;"
 	)
-	static int field2916;
-	@ObfuscatedName("ac")
+	@Export("clientPreferences")
+	static ClientPreferences clientPreferences;
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		intValue = 272253257
+		intValue = 819296275
 	)
 	@Export("objectDefId")
 	final int objectDefId;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "Lke;"
+		descriptor = "Ljl;"
 	)
 	@Export("region")
 	final WorldMapRegion region;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ar")
 	@ObfuscatedGetter(
-		intValue = 1088150255
+		intValue = -949927081
 	)
 	@Export("element")
 	int element;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "Lkd;"
+		descriptor = "Ljk;"
 	)
 	@Export("label")
 	WorldMapLabel label;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ab")
 	@ObfuscatedGetter(
-		intValue = 78742619
+		intValue = -2079223453
 	)
 	@Export("subWidth")
 	int subWidth;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		intValue = -338644775
+		intValue = 331046403
 	)
 	@Export("subHeight")
 	int subHeight;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lmo;Lmo;ILke;)V"
+		descriptor = "(Lmh;Lmh;ILjl;)V"
 	)
 	WorldMapIcon_1(Coord var1, Coord var2, int var3, WorldMapRegion var4) {
 		super(var1, var2);
@@ -59,16 +60,16 @@ public class WorldMapIcon_1 extends AbstractWorldMapIcon {
 		this.init();
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-19"
+		descriptor = "(I)V",
+		garbageValue = "-450829681"
 	)
 	@Export("init")
 	void init() {
-		this.element = class91.getObjectDefinition(this.objectDefId).transform().mapIconId;
-		this.label = this.region.createMapLabel(class148.WorldMapElement_get(this.element));
-		WorldMapElement var1 = class148.WorldMapElement_get(this.getElement());
+		this.element = WorldMapSection2.getObjectDefinition(this.objectDefId).transform().mapIconId;
+		this.label = this.region.createMapLabel(class141.WorldMapElement_get(this.element));
+		WorldMapElement var1 = class141.WorldMapElement_get(this.getElement());
 		SpritePixels var2 = var1.getSpriteBool(false);
 		if (var2 != null) {
 			this.subWidth = var2.subWidth;
@@ -80,55 +81,52 @@ public class WorldMapIcon_1 extends AbstractWorldMapIcon {
 
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-1637535390"
+		garbageValue = "574784276"
 	)
 	@Export("getElement")
 	public int getElement() {
 		return this.element;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "(B)Lkd;",
-		garbageValue = "5"
+		descriptor = "(B)Ljk;",
+		garbageValue = "-49"
 	)
 	@Export("getLabel")
 	WorldMapLabel getLabel() {
 		return this.label;
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "65"
+		descriptor = "(I)I",
+		garbageValue = "472460923"
 	)
 	@Export("getSubWidth")
 	int getSubWidth() {
 		return this.subWidth;
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "1338001743"
+		garbageValue = "-653051141"
 	)
 	@Export("getSubHeight")
 	int getSubHeight() {
 		return this.subHeight;
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ox")
 	@ObfuscatedSignature(
-		descriptor = "(Lmh;I)V",
-		garbageValue = "-866715691"
+		descriptor = "(IB)V",
+		garbageValue = "-26"
 	)
-	public static void method5236(class325 var0) {
-		if (!class319.field3434.contains(var0)) {
-			class319.field3434.add(var0);
-		}
-
+	static void method4514(int var0) {
+		Client.oculusOrbState = var0;
 	}
 }

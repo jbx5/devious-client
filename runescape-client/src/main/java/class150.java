@@ -3,203 +3,147 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fc")
-public class class150 extends class145 {
-	@ObfuscatedName("ac")
+@ObfuscatedName("fz")
+public class class150 extends class160 {
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		intValue = -530195071
-	)
-	int field1678;
-	@ObfuscatedName("al")
-	@ObfuscatedGetter(
-		intValue = 305260667
+		intValue = -1503644171
 	)
 	int field1674;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ah")
+	byte field1675;
+	@ObfuscatedName("ar")
 	@ObfuscatedGetter(
-		intValue = 1815038205
+		intValue = -1825811703
 	)
-	int field1675;
-	@ObfuscatedName("ax")
-	@ObfuscatedGetter(
-		intValue = -532414831
-	)
-	int field1677;
+	int field1672;
+	@ObfuscatedName("ao")
+	String field1673;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lff;"
+		descriptor = "Lgi;"
 	)
-	final class148 this$0;
+	final class161 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lff;)V"
+		descriptor = "(Lgi;)V"
 	)
-	class150(class148 var1) {
+	class150(class161 var1) {
 		this.this$0 = var1;
+		this.field1674 = -1;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "(Lul;I)V",
-		garbageValue = "-11659242"
+		descriptor = "(Luj;I)V",
+		garbageValue = "1810249387"
 	)
-	void vmethod3414(Buffer var1) {
-		this.field1678 = var1.readInt();
-		this.field1677 = var1.readInt();
-		this.field1674 = var1.readUnsignedByte();
-		this.field1675 = var1.readUnsignedByte();
+	void vmethod3497(Buffer var1) {
+		this.field1674 = var1.readUnsignedShort();
+		this.field1675 = var1.readByte();
+		this.field1672 = var1.readUnsignedShort();
+		var1.readLong();
+		this.field1673 = var1.readStringCp1252NullTerminated();
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(Lgi;I)V",
-		garbageValue = "21847466"
+		descriptor = "(Lgn;B)V",
+		garbageValue = "-75"
 	)
-	void vmethod3415(ClanSettings var1) {
-		var1.method3252(this.field1678, this.field1677, this.field1674, this.field1675);
+	void vmethod3501(ClanChannel var1) {
+		ClanChannelMember var2 = (ClanChannelMember)var1.members.get(this.field1674);
+		var2.rank = this.field1675;
+		var2.world = this.field1672;
+		var2.username = new Username(this.field1673);
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Lha;",
-		garbageValue = "84"
+		descriptor = "(I)V",
+		garbageValue = "1818675777"
 	)
-	@Export("VarpDefinition_get")
-	public static VarpDefinition VarpDefinition_get(int var0) {
-		VarpDefinition var1 = (VarpDefinition)VarpDefinition.VarpDefinition_cached.get((long)var0);
-		if (var1 != null) {
-			return var1;
+	static void method3281() {
+		if (Client.Login_isUsernameRemembered && Login.Login_username != null && Login.Login_username.length() > 0) {
+			Login.currentLoginField = 1;
 		} else {
-			byte[] var2 = VarpDefinition.VarpDefinition_archive.takeFile(16, var0);
-			var1 = new VarpDefinition();
-			if (var2 != null) {
-				var1.decode(new Buffer(var2));
-			}
-
-			VarpDefinition.VarpDefinition_cached.put(var1, (long)var0);
-			return var1;
-		}
-	}
-
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "(Lul;Ljava/lang/String;I)I",
-		garbageValue = "-1376508948"
-	)
-	public static int method3192(Buffer var0, String var1) {
-		int var2 = var0.offset;
-		int var4 = var1.length();
-		byte[] var5 = new byte[var4];
-
-		for (int var6 = 0; var6 < var4; ++var6) {
-			char var7 = var1.charAt(var6);
-			if (var7 > 0 && var7 < 128 || var7 >= 160 && var7 <= 255) {
-				var5[var6] = (byte)var7;
-			} else if (var7 == 8364) {
-				var5[var6] = -128;
-			} else if (var7 == 8218) {
-				var5[var6] = -126;
-			} else if (var7 == 402) {
-				var5[var6] = -125;
-			} else if (var7 == 8222) {
-				var5[var6] = -124;
-			} else if (var7 == 8230) {
-				var5[var6] = -123;
-			} else if (var7 == 8224) {
-				var5[var6] = -122;
-			} else if (var7 == 8225) {
-				var5[var6] = -121;
-			} else if (var7 == 710) {
-				var5[var6] = -120;
-			} else if (var7 == 8240) {
-				var5[var6] = -119;
-			} else if (var7 == 352) {
-				var5[var6] = -118;
-			} else if (var7 == 8249) {
-				var5[var6] = -117;
-			} else if (var7 == 338) {
-				var5[var6] = -116;
-			} else if (var7 == 381) {
-				var5[var6] = -114;
-			} else if (var7 == 8216) {
-				var5[var6] = -111;
-			} else if (var7 == 8217) {
-				var5[var6] = -110;
-			} else if (var7 == 8220) {
-				var5[var6] = -109;
-			} else if (var7 == 8221) {
-				var5[var6] = -108;
-			} else if (var7 == 8226) {
-				var5[var6] = -107;
-			} else if (var7 == 8211) {
-				var5[var6] = -106;
-			} else if (var7 == 8212) {
-				var5[var6] = -105;
-			} else if (var7 == 732) {
-				var5[var6] = -104;
-			} else if (var7 == 8482) {
-				var5[var6] = -103;
-			} else if (var7 == 353) {
-				var5[var6] = -102;
-			} else if (var7 == 8250) {
-				var5[var6] = -101;
-			} else if (var7 == 339) {
-				var5[var6] = -100;
-			} else if (var7 == 382) {
-				var5[var6] = -98;
-			} else if (var7 == 376) {
-				var5[var6] = -97;
-			} else {
-				var5[var6] = 63;
-			}
+			Login.currentLoginField = 0;
 		}
 
-		var0.writeSmartByteShort(var5.length);
-		var0.offset += class349.huffman.compress(var5, 0, var5.length, var0.array, var0.offset);
-		return var0.offset - var2;
 	}
 
-	@ObfuscatedName("cu")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(ILds;ZI)I",
-		garbageValue = "-1670051292"
+		descriptor = "(Ljava/lang/CharSequence;I)I",
+		garbageValue = "2073691331"
 	)
-	static int method3186(int var0, Script var1, boolean var2) {
-		return 2;
+	@Export("hashString")
+	public static int hashString(CharSequence var0) {
+		int var1 = var0.length();
+		int var2 = 0;
+
+		for (int var3 = 0; var3 < var1; ++var3) {
+			var2 = (var2 << 5) - var2 + class137.charToByteCp1252(var0.charAt(var3));
+		}
+
+		return var2;
 	}
 
-	@ObfuscatedName("jn")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(IIII)V",
-		garbageValue = "-405650921"
+		descriptor = "([BIII)Z",
+		garbageValue = "-851651370"
 	)
-	@Export("worldToScreen")
-	static final void worldToScreen(int var0, int var1, int var2) {
-		if (var0 >= 128 && var1 >= 128 && var0 <= 13056 && var1 <= 13056) {
-			int var3 = class115.getTileHeight(var0, var1, class87.Client_plane) - var2;
-			var0 -= Client.cameraX;
-			var3 -= class17.cameraY;
-			var1 -= WorldMapArea.cameraZ;
-			int var4 = Rasterizer3D.Rasterizer3D_sine[class365.cameraPitch];
-			int var5 = Rasterizer3D.Rasterizer3D_cosine[class365.cameraPitch];
-			int var6 = Rasterizer3D.Rasterizer3D_sine[WallDecoration.cameraYaw];
-			int var7 = Rasterizer3D.Rasterizer3D_cosine[WallDecoration.cameraYaw];
-			int var8 = var6 * var1 + var0 * var7 >> 16;
-			var1 = var7 * var1 - var0 * var6 >> 16;
-			var0 = var8;
-			var8 = var5 * var3 - var4 * var1 >> 16;
-			var1 = var3 * var4 + var5 * var1 >> 16;
-			if (var1 >= 50) {
-				Client.viewportTempX = var0 * Client.viewportZoom / var1 + Client.viewportWidth / 2;
-				Client.viewportTempY = var8 * Client.viewportZoom / var1 + Client.viewportHeight / 2;
-			} else {
-				Client.viewportTempX = -1;
-				Client.viewportTempY = -1;
+	static final boolean method3283(byte[] var0, int var1, int var2) {
+		boolean var3 = true;
+		Buffer var4 = new Buffer(var0);
+		int var5 = -1;
+
+		label68:
+		while (true) {
+			int var6 = var4.readIncrSmallSmart();
+			if (var6 == 0) {
+				return var3;
 			}
 
-		} else {
-			Client.viewportTempX = -1;
-			Client.viewportTempY = -1;
+			var5 += var6;
+			int var7 = 0;
+			boolean var8 = false;
+
+			while (true) {
+				int var9;
+				while (!var8) {
+					var9 = var4.readUShortSmart();
+					if (var9 == 0) {
+						continue label68;
+					}
+
+					var7 += var9 - 1;
+					int var10 = var7 & 63;
+					int var11 = var7 >> 6 & 63;
+					int var12 = var4.readUnsignedByte() >> 2;
+					int var13 = var11 + var1;
+					int var14 = var10 + var2;
+					if (var13 > 0 && var14 > 0 && var13 < 103 && var14 < 103) {
+						ObjectComposition var15 = WorldMapSection2.getObjectDefinition(var5);
+						if (var12 != 22 || !Client.isLowDetail || var15.int1 != 0 || var15.interactType == 1 || var15.boolean2) {
+							if (!var15.needsModelFiles()) {
+								++Client.field521;
+								var3 = false;
+							}
+
+							var8 = true;
+						}
+					}
+				}
+
+				var9 = var4.readUShortSmart();
+				if (var9 == 0) {
+					break;
+				}
+
+				var4.readUnsignedByte();
+			}
 		}
 	}
 }
