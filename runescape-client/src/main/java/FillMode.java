@@ -1,10 +1,12 @@
 import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("uk")
-public enum class538 implements MouseWheel {
+@Implements("FillMode")
+public enum FillMode implements MouseWheel {
 	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "Luk;"
@@ -33,7 +35,7 @@ public enum class538 implements MouseWheel {
 	)
 	final int field5224;
 
-	class538(int var3, int var4) {
+	FillMode(int var3, int var4) {
 		this.field5221 = var3;
 		this.field5224 = var4;
 	}

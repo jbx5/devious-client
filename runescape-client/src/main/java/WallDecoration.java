@@ -85,7 +85,7 @@ public final class WallDecoration {
 		garbageValue = "-1385996560"
 	)
 	@Export("FillMode_values")
-	public static class538[] FillMode_values() {
-		return new class538[]{class538.SOLID, class538.field5220, class538.field5222};
+	public static FillMode[] FillMode_values() {
+		return new FillMode[]{FillMode.SOLID, FillMode.field5220, FillMode.field5222};
 	}
 }

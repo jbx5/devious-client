@@ -226,7 +226,7 @@ public class class357 {
 					return 1;
 				} else if (var0 == 1125) {
 					var14 = Interpreter.Interpreter_intStack[--DbTableType.Interpreter_intStackSize];
-					class538 var12 = (class538)class12.findEnumerated(WallDecoration.FillMode_values(), var14);
+					FillMode var12 = (FillMode)class12.findEnumerated(WallDecoration.FillMode_values(), var14);
 					if (var12 != null) {
 						var3.fillMode = var12;
 						class159.invalidateWidget(var3);

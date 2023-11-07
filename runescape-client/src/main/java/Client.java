@@ -1197,12 +1197,14 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 	@ObfuscatedName("sh")
 	static String field694;
 	@ObfuscatedName("sb")
-	static long[] field575;
+	@Export("crossWorldMessageIds")
+	static long[] crossWorldMessageIds;
 	@ObfuscatedName("sz")
 	@ObfuscatedGetter(
 		intValue = -738645525
 	)
-	static int field723;
+	@Export("crossWorldMessageIdsIndex")
+	static int crossWorldMessageIdsIndex;
 	@ObfuscatedName("sp")
 	@ObfuscatedSignature(
 		descriptor = "Lil;"
@@ -1638,8 +1640,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 		publicChatMode = 0;
 		tradeChatMode = 0;
 		field694 = "";
-		field575 = new long[100];
-		field723 = 0;
+		crossWorldMessageIds = new long[100];
+		crossWorldMessageIdsIndex = 0;
 		field724 = new class223();
 		field725 = new class221();
 		field726 = 0;
@@ -2898,7 +2900,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 			}
 
 			int var1;
-			for (var1 = 0; var1 < 100 && this.method1829(packetWriter); ++var1) {
+			for (var1 = 0; var1 < 100 && this.method1434(packetWriter); ++var1) {
 			}
 
 			if (gameState == 30) {
@@ -3773,7 +3775,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 		descriptor = "(Lef;B)Z",
 		garbageValue = "1"
 	)
-	final boolean method1829(PacketWriter var1) {
+	@Export("method1434")
+	final boolean method1434(PacketWriter var1) {
 		AbstractSocket var2 = var1.getSocket();
 		PacketBuffer var3 = var1.packetBuffer;
 		if (var2 == null) {
@@ -4382,7 +4385,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					var82 = false;
 
 					for (var65 = 0; var65 < 100; ++var65) {
-						if (field575[var65] == var32) {
+						if (crossWorldMessageIds[var65] == var32) {
 							var82 = true;
 							break;
 						}
@@ -4393,8 +4396,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					}
 
 					if (!var82 && field736 == 0) {
-						field575[field723] = var32;
-						field723 = (field723 + 1) % 100;
+						crossWorldMessageIds[crossWorldMessageIdsIndex] = var32;
+						crossWorldMessageIdsIndex = (crossWorldMessageIdsIndex + 1) % 100;
 						var34 = AbstractFont.escapeBrackets(class20.method303(class128.method3076(var3)));
 						byte var87;
 						if (var90.isPrivileged) {
@@ -4874,7 +4877,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 						var62 = true;
 					} else {
 						for (var65 = 0; var65 < 100; ++var65) {
-							if (var36 == field575[var65]) {
+							if (var36 == crossWorldMessageIds[var65]) {
 								var62 = true;
 								break;
 							}
@@ -4882,8 +4885,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					}
 
 					if (!var62) {
-						field575[field723] = var36;
-						field723 = (field723 + 1) % 100;
+						crossWorldMessageIds[crossWorldMessageIdsIndex] = var36;
+						crossWorldMessageIdsIndex = (crossWorldMessageIdsIndex + 1) % 100;
 						var34 = class128.method3076(var3);
 						var26 = var76 >= 0 ? 43 : 46;
 						ArchiveLoader.addChatMessage(var26, "", var34, var96.name);
@@ -4958,7 +4961,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					boolean var85 = false;
 
 					for (var15 = 0; var15 < 100; ++var15) {
-						if (field575[var15] == var63) {
+						if (crossWorldMessageIds[var15] == var63) {
 							var85 = true;
 							break;
 						}
@@ -4969,8 +4972,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					}
 
 					if (!var85 && field736 == 0) {
-						field575[field723] = var63;
-						field723 = (field723 + 1) % 100;
+						crossWorldMessageIds[crossWorldMessageIdsIndex] = var63;
+						crossWorldMessageIdsIndex = (crossWorldMessageIdsIndex + 1) % 100;
 						var40 = AbstractFont.escapeBrackets(class20.method303(class128.method3076(var3)));
 						if (var97.modIcon != -1) {
 							ArchiveLoader.addChatMessage(9, FloorUnderlayDefinition.method3799(var97.modIcon) + var52, var40, HitSplatDefinition.base37DecodeLong(var27));
@@ -5817,7 +5820,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 								break;
 							}
 
-							if (var45 == field575[var15]) {
+							if (var45 == crossWorldMessageIds[var15]) {
 								var13 = true;
 								break;
 							}
@@ -5827,8 +5830,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					}
 
 					if (!var13) {
-						field575[field723] = var45;
-						field723 = (field723 + 1) % 100;
+						crossWorldMessageIds[crossWorldMessageIdsIndex] = var45;
+						crossWorldMessageIdsIndex = (crossWorldMessageIdsIndex + 1) % 100;
 						var40 = AbstractFont.escapeBrackets(class128.method3076(var3));
 						var16 = var76 >= 0 ? 41 : 44;
 						if (var10.modIcon != -1) {

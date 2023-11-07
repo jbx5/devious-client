@@ -668,7 +668,8 @@ public class Scene {
 	}
 
 	@ObfuscatedName("am")
-	public void method5341(int var1, int var2, int var3) {
+	@Export("removeBoundaryObject")
+	public void removeBoundaryObject(int var1, int var2, int var3) {
 		Tile var4 = this.tiles[var1][var2][var3];
 		if (var4 != null) {
 			var4.boundaryObject = null;
@@ -676,7 +677,8 @@ public class Scene {
 	}
 
 	@ObfuscatedName("aq")
-	public void method5419(int var1, int var2, int var3) {
+	@Export("removeWallDecoration")
+	public void removeWallDecoration(int var1, int var2, int var3) {
 		Tile var4 = this.tiles[var1][var2][var3];
 		if (var4 != null) {
 			var4.wallDecoration = null;
@@ -702,7 +704,8 @@ public class Scene {
 	}
 
 	@ObfuscatedName("aw")
-	public void method5388(int var1, int var2, int var3) {
+	@Export("removeFloorDecoration")
+	public void removeFloorDecoration(int var1, int var2, int var3) {
 		Tile var4 = this.tiles[var1][var2][var3];
 		if (var4 != null) {
 			var4.floorDecoration = null;

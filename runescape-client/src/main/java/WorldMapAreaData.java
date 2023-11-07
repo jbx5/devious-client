@@ -202,14 +202,14 @@ public class WorldMapAreaData extends WorldMapArea {
 				}
 
 				if (var1 == 0) {
-					class36.scene.method5341(var0, var2, var3);
+					class36.scene.removeBoundaryObject(var0, var2, var3);
 					if (var14.interactType != 0) {
 						Client.collisionMaps[var0].method4382(var2, var3, var44, var45, var14.boolean1);
 					}
 				}
 
 				if (var1 == 1) {
-					class36.scene.method5419(var0, var2, var3);
+					class36.scene.removeWallDecoration(var0, var2, var3);
 				}
 
 				if (var1 == 2) {
@@ -224,7 +224,7 @@ public class WorldMapAreaData extends WorldMapArea {
 				}
 
 				if (var1 == 3) {
-					class36.scene.method5388(var0, var2, var3);
+					class36.scene.removeFloorDecoration(var0, var2, var3);
 					if (var14.interactType == 1) {
 						Client.collisionMaps[var0].method4362(var2, var3);
 					}
