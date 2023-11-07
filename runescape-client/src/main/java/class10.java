@@ -287,8 +287,8 @@ public class class10 {
 	@Export("resumePauseWidget")
 	static void resumePauseWidget(int var0, int var1) {
 		PacketBufferNode var2 = class113.getPacketBufferNode(ClientPacket.field3203, Client.packetWriter.isaacCipher);
-		var2.packetBuffer.writeIntLE(var0);
-		var2.packetBuffer.writeByteNeg(var1);
+		var2.packetBuffer.writeIntME(var0);
+		var2.packetBuffer.writeShortAddLE(var1);
 		Client.packetWriter.addNode(var2);
 	}
 }

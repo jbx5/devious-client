@@ -40,22 +40,22 @@ public final class class402 {
 				if (var0 == 1) {
 					var8 = class113.getPacketBufferNode(ClientPacket.field3161, Client.packetWriter.isaacCipher);
 					var8.packetBuffer.writeShort(var3[var6]);
-					var8.packetBuffer.writeMediumLE(0);
+					var8.packetBuffer.writeByteNeg(0);
 					Client.packetWriter.addNode(var8);
 				} else if (var0 == 4) {
 					var8 = class113.getPacketBufferNode(ClientPacket.field3217, Client.packetWriter.isaacCipher);
-					var8.packetBuffer.writeShortAddLE(0);
-					var8.packetBuffer.writeByteNeg(var3[var6]);
+					var8.packetBuffer.writeByteSub(0);
+					var8.packetBuffer.writeShortAddLE(var3[var6]);
 					Client.packetWriter.addNode(var8);
 				} else if (var0 == 6) {
 					var8 = class113.getPacketBufferNode(ClientPacket.field3189, Client.packetWriter.isaacCipher);
-					var8.packetBuffer.writeShortAddLE(0);
+					var8.packetBuffer.writeByteSub(0);
 					var8.packetBuffer.writeShort(var3[var6]);
 					Client.packetWriter.addNode(var8);
 				} else if (var0 == 7) {
 					var8 = class113.getPacketBufferNode(ClientPacket.field3149, Client.packetWriter.isaacCipher);
-					var8.packetBuffer.writeShortLE(var3[var6]);
-					var8.packetBuffer.writeShortAddLE(0);
+					var8.packetBuffer.writeShortAdd(var3[var6]);
+					var8.packetBuffer.writeByteSub(0);
 					Client.packetWriter.addNode(var8);
 				}
 

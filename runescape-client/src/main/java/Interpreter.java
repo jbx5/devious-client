@@ -111,13 +111,13 @@ public class Interpreter {
 
 			byte var7 = class228.field2412.field2414;
 			if ((var6 & 512) != 0) {
-				var7 = var0.method9298();
+				var7 = var0.readByteSub();
 			}
 
 			if ((var6 & 1024) != 0) {
 				class228[] var8 = Players.field1356;
 				class228[] var10 = new class228[]{class228.field2409, class228.field2412, class228.field2408, class228.field2410};
-				var8[var4] = (class228)class12.findEnumerated(var10, var0.method9297());
+				var8[var4] = (class228)class12.findEnumerated(var10, var0.readByteNeg());
 			}
 
 			if ((var6 & 4) != 0) {
@@ -129,10 +129,10 @@ public class Interpreter {
 			}
 
 			if ((var6 & 4096) != 0) {
-				var5.field1209 = var0.method9297();
-				var5.field1194 = var0.method9297();
+				var5.field1209 = var0.readByteNeg();
+				var5.field1194 = var0.readByteNeg();
 				var5.field1224 = var0.readByte();
-				var5.field1203 = var0.method9297();
+				var5.field1203 = var0.readByteNeg();
 				var5.spotAnimation = var0.readUnsignedShort() + Client.cycle;
 				var5.field1187 = var0.readUnsignedShort() + Client.cycle;
 				var5.field1229 = var0.readUnsignedShort();
@@ -165,10 +165,10 @@ public class Interpreter {
 			int var14;
 			int var24;
 			if ((var6 & 2048) != 0) {
-				var23 = var0.method9304();
+				var23 = var0.readUnsignedShortAddLE();
 				var9 = var23 >> 8;
 				var24 = var9 >= 13 && var9 <= 20 ? var9 - 12 : 0;
-				PlayerType var11 = (PlayerType)class12.findEnumerated(class320.PlayerType_values(), var0.readUnsignedShortAddLE());
+				PlayerType var11 = (PlayerType)class12.findEnumerated(class320.PlayerType_values(), var0.readUnsignedByteAdd());
 				boolean var12 = var0.readUnsignedByte() == 1;
 				var13 = var0.readUnsignedByte();
 				var14 = var0.offset;
@@ -244,12 +244,12 @@ public class Interpreter {
 			int var28;
 			int var32;
 			if ((var6 & 65536) != 0) {
-				var23 = var0.readUnsignedByteNeg();
+				var23 = var0.readUnsignedByteSub();
 
 				for (var9 = 0; var9 < var23; ++var9) {
-					var24 = var0.readUnsignedByteSub();
+					var24 = var0.readUnsignedByteNeg();
 					var28 = var0.readUnsignedShort();
-					var32 = var0.readUnsignedIntLE();
+					var32 = var0.readUnsignedIntIME();
 					var5.updateSpotAnimation(var24, var28, var32 >> 16, var32 & 65535);
 				}
 			}
@@ -271,7 +271,7 @@ public class Interpreter {
 
 			int var34;
 			if ((var6 & 16) != 0) {
-				var23 = var0.readUnsignedShortAddLE();
+				var23 = var0.readUnsignedByteAdd();
 				if (var23 > 0) {
 					for (var9 = 0; var9 < var23; ++var9) {
 						var28 = -1;
@@ -301,8 +301,8 @@ public class Interpreter {
 						var32 = var0.readUShortSmart();
 						if (var32 != 32767) {
 							var13 = var0.readUShortSmart();
-							var14 = var0.readUnsignedShortAddLE();
-							var34 = var32 > 0 ? var0.readUnsignedByteNeg() : var14;
+							var14 = var0.readUnsignedByteAdd();
+							var34 = var32 > 0 ? var0.readUnsignedByteSub() : var14;
 							var5.addHealthBar(var28, Client.cycle, var32, var13, var14, var34);
 						} else {
 							var5.removeHealthBar(var28);
@@ -312,7 +312,7 @@ public class Interpreter {
 			}
 
 			if ((var6 & 2) != 0) {
-				var23 = var0.readUnsignedShortAddLE();
+				var23 = var0.readUnsignedByteAdd();
 				byte[] var27 = new byte[var23];
 				Buffer var31 = new Buffer(var27);
 				var0.method9375(var27, 0, var23);
@@ -321,18 +321,18 @@ public class Interpreter {
 			}
 
 			if ((var6 & 1) != 0) {
-				var23 = var0.method9304();
+				var23 = var0.readUnsignedShortAddLE();
 				if (var23 == 65535) {
 					var23 = -1;
 				}
 
-				var9 = var0.readUnsignedByteSub();
+				var9 = var0.readUnsignedByteNeg();
 				WorldMapLabelSize.performPlayerAnimation(var5, var23, var9);
 			}
 
 			if ((var6 & 64) != 0) {
 				var5.targetIndex = var0.readUnsignedShort();
-				var5.targetIndex += var0.readUnsignedByteNeg() << 16;
+				var5.targetIndex += var0.readUnsignedByteSub() << 16;
 				var23 = 16777215;
 				if (var23 == var5.targetIndex) {
 					var5.targetIndex = -1;
@@ -340,9 +340,9 @@ public class Interpreter {
 			}
 
 			if ((var6 & 8) != 0) {
-				var23 = var0.readShortLE();
-				PlayerType var36 = (PlayerType)class12.findEnumerated(class320.PlayerType_values(), var0.readUnsignedByteSub());
-				boolean var35 = var0.readUnsignedShortAddLE() == 1;
+				var23 = var0.readUnsignedShortLE();
+				PlayerType var36 = (PlayerType)class12.findEnumerated(class320.PlayerType_values(), var0.readUnsignedByteNeg());
+				boolean var35 = var0.readUnsignedByteAdd() == 1;
 				var28 = var0.readUnsignedByte();
 				var32 = var0.offset;
 				if (var5.username != null && var5.appearance != null) {
@@ -381,12 +381,12 @@ public class Interpreter {
 			}
 
 			if ((var6 & 256) != 0) {
-				var5.field1232 = Client.cycle + var0.readShortLE();
-				var5.field1215 = Client.cycle + var0.method9304();
-				var5.field1234 = var0.method9296();
-				var5.field1235 = var0.method9297();
-				var5.field1171 = var0.method9298();
-				var5.field1237 = (byte)var0.readUnsignedByteNeg();
+				var5.field1232 = Client.cycle + var0.readUnsignedShortLE();
+				var5.field1215 = Client.cycle + var0.readUnsignedShortAddLE();
+				var5.field1234 = var0.readByteAdd();
+				var5.field1235 = var0.readByteNeg();
+				var5.field1171 = var0.readByteSub();
+				var5.field1237 = (byte)var0.readUnsignedByteSub();
 			}
 
 			if (var5.field1122) {

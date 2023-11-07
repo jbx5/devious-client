@@ -80,12 +80,12 @@ final class class106 implements class334 {
 		int var9;
 		int var10;
 		if (class306.field3233 == var0) {
-			var2 = var1.readShortLE();
-			var3 = var1.readUnsignedByteSub();
+			var2 = var1.readUnsignedShortLE();
+			var3 = var1.readUnsignedByteNeg();
 			var4 = (var3 >> 4 & 7) + class18.field85;
 			var5 = (var3 & 7) + class6.field14;
-			var6 = var1.readUnsignedByteSub();
-			var7 = var1.readUnsignedByteSub();
+			var6 = var1.readUnsignedByteNeg();
+			var7 = var1.readUnsignedByteNeg();
 			var8 = var7 >> 2;
 			var9 = var7 & 3;
 			var10 = Client.field563[var8];
@@ -99,13 +99,13 @@ final class class106 implements class334 {
 				var2 = var1.readUnsignedByte();
 				var3 = (var2 >> 4 & 7) + class18.field85;
 				var4 = (var2 & 7) + class6.field14;
-				var5 = var1.readUnsignedShortAddLE();
-				var6 = var1.method9304();
-				var1.readUnsignedByteAdd();
-				var1.readUnsignedByteNeg();
-				var7 = var1.readInt();
+				var5 = var1.readUnsignedByteAdd();
+				var6 = var1.readUnsignedShortAddLE();
+				var1.readUnsignedShortAdd();
 				var1.readUnsignedByteSub();
-				var1.readUnsignedByteAdd();
+				var7 = var1.readInt();
+				var1.readUnsignedByteNeg();
+				var1.readUnsignedShortAdd();
 				if (var3 >= 0 && var4 >= 0 && var3 < 104 && var4 < 104) {
 					var32 = new TileItem();
 					var32.id = var6;
@@ -124,9 +124,9 @@ final class class106 implements class334 {
 					var2 = var1.readUnsignedByte();
 					var3 = var2 >> 4 & 15;
 					var4 = var2 & 7;
-					var5 = var1.readUnsignedByteSub();
-					var6 = var1.readUnsignedByteAdd();
-					var7 = var1.readUnsignedByteSub();
+					var5 = var1.readUnsignedByteNeg();
+					var6 = var1.readUnsignedShortAdd();
+					var7 = var1.readUnsignedByteNeg();
 					var8 = (var7 >> 4 & 7) + class18.field85;
 					var9 = (var7 & 7) + class6.field14;
 					if (var8 >= 0 && var9 >= 0 && var8 < 104 && var9 < 104) {
@@ -143,9 +143,9 @@ final class class106 implements class334 {
 				}
 
 				if (class306.field3236 == var0) {
-					var2 = var1.readShortLE();
-					var3 = var1.readUnsignedShortLE();
-					var4 = var1.readUnsignedByteSub();
+					var2 = var1.readUnsignedShortLE();
+					var3 = var1.readUnsignedIntLE();
+					var4 = var1.readUnsignedByteNeg();
 					var5 = (var4 >> 4 & 7) + class18.field85;
 					var6 = (var4 & 7) + class6.field14;
 					var7 = var1.readInt();
@@ -172,20 +172,20 @@ final class class106 implements class334 {
 					Projectile var35;
 					byte var38;
 					if (class306.field3235 == var0) {
-						var2 = var1.readUnsignedByteNeg();
-						var38 = var1.method9296();
-						var4 = var1.readUnsignedByteAdd();
-						var5 = var1.readUnsignedByteSub();
-						var6 = var1.readUnsignedByteSub() * 4;
+						var2 = var1.readUnsignedByteSub();
+						var38 = var1.readByteAdd();
+						var4 = var1.readUnsignedShortAdd();
+						var5 = var1.readUnsignedByteNeg();
+						var6 = var1.readUnsignedByteNeg() * 4;
 						var7 = var1.readUnsignedByte();
 						var8 = (var7 >> 4 & 7) + class18.field85;
 						var9 = (var7 & 7) + class6.field14;
-						var10 = var1.readShortLE();
+						var10 = var1.readUnsignedShortLE();
 						var11 = var1.method9489();
 						var12 = var1.method9249();
-						byte var44 = var1.method9297();
-						var14 = var1.readUnsignedByteSub() * 4;
-						var15 = var1.readShortLE();
+						byte var44 = var1.readByteNeg();
+						var14 = var1.readUnsignedByteNeg() * 4;
+						var15 = var1.readUnsignedShortLE();
 						var13 = var44 + var8;
 						var3 = var38 + var9;
 						if (var8 >= 0 && var9 >= 0 && var8 < 104 && var9 < 104 && var13 >= 0 && var3 >= 0 && var13 < 104 && var3 < 104 && var10 != 65535) {
@@ -201,11 +201,11 @@ final class class106 implements class334 {
 					} else {
 						NodeDeque var31;
 						if (class306.field3232 == var0) {
-							var2 = var1.readUnsignedShortAddLE();
+							var2 = var1.readUnsignedByteAdd();
 							var3 = (var2 >> 4 & 7) + class18.field85;
 							var4 = (var2 & 7) + class6.field14;
-							var5 = var1.readShortLE();
-							var6 = var1.readUnsignedShortAddLE();
+							var5 = var1.readUnsignedShortLE();
+							var6 = var1.readUnsignedByteAdd();
 							if (var3 >= 0 && var4 >= 0 && var3 < 104 && var4 < 104) {
 								var31 = Client.groundItems[ItemLayer.Client_plane][var3][var4];
 								if (var31 != null) {
@@ -220,21 +220,21 @@ final class class106 implements class334 {
 
 						} else {
 							if (class306.field3227 == var0) {
-								byte var37 = var1.method9296();
-								var38 = var1.method9296();
-								byte var39 = var1.method9297();
-								var5 = var1.method9304();
+								byte var37 = var1.readByteAdd();
+								var38 = var1.readByteAdd();
+								byte var39 = var1.readByteNeg();
+								var5 = var1.readUnsignedShortAddLE();
 								byte var40 = var1.readByte();
-								var7 = var1.readUnsignedByteNeg();
+								var7 = var1.readUnsignedByteSub();
 								var8 = (var7 >> 4 & 7) + class18.field85;
 								var9 = (var7 & 7) + class6.field14;
-								var10 = var1.readUnsignedByteAdd();
-								var11 = var1.method9304();
-								var12 = var1.readUnsignedShortAddLE();
+								var10 = var1.readUnsignedShortAdd();
+								var11 = var1.readUnsignedShortAddLE();
+								var12 = var1.readUnsignedByteAdd();
 								var13 = var12 >> 2;
 								var14 = var12 & 3;
 								var15 = Client.field563[var13];
-								int var16 = var1.method9304();
+								int var16 = var1.readUnsignedShortAddLE();
 								Player var17;
 								if (var16 == Client.localPlayerIndex) {
 									var17 = class229.localPlayer;
@@ -293,10 +293,10 @@ final class class106 implements class334 {
 							}
 
 							if (class306.field3237 == var0) {
-								var2 = var1.readUnsignedShortAddLE();
+								var2 = var1.readUnsignedByteAdd();
 								var3 = (var2 >> 4 & 7) + class18.field85;
 								var4 = (var2 & 7) + class6.field14;
-								var5 = var1.readUnsignedShortAddLE();
+								var5 = var1.readUnsignedByteAdd();
 								var6 = var5 >> 2;
 								var7 = var5 & 3;
 								var8 = Client.field563[var6];
@@ -305,20 +305,20 @@ final class class106 implements class334 {
 								}
 
 							} else if (class306.field3228 == var0) {
-								var2 = var1.readShortLE();
+								var2 = var1.readUnsignedShortLE();
 								var3 = var1.readUnsignedByte();
 								var4 = (var3 >> 4 & 7) + class18.field85;
 								var5 = (var3 & 7) + class6.field14;
 								var6 = var1.readUnsignedShort();
-								var7 = var1.readUnsignedShortAddLE() * 4;
-								byte var41 = var1.method9298();
-								var9 = var1.readUnsignedByteNeg();
-								var10 = var1.readUnsignedByteNeg() * 4;
-								var11 = var1.method9304();
+								var7 = var1.readUnsignedByteAdd() * 4;
+								byte var41 = var1.readByteSub();
+								var9 = var1.readUnsignedByteSub();
+								var10 = var1.readUnsignedByteSub() * 4;
+								var11 = var1.readUnsignedShortAddLE();
 								var12 = var1.method9489();
-								var13 = var1.readShortLE();
+								var13 = var1.readUnsignedShortLE();
 								var14 = var1.method9251();
-								byte var45 = var1.method9296();
+								byte var45 = var1.readByteAdd();
 								var15 = var45 + var4;
 								var8 = var41 + var5;
 								if (var4 >= 0 && var5 >= 0 && var4 < 104 && var5 < 104 && var15 >= 0 && var8 >= 0 && var15 < 104 && var8 < 104 && var11 != 65535) {
@@ -333,18 +333,18 @@ final class class106 implements class334 {
 
 							} else if (class306.field3225 == var0) {
 								var2 = var1.method9489();
-								var3 = var1.method9304();
+								var3 = var1.readUnsignedShortAddLE();
 								var4 = var1.readUnsignedByte();
-								var5 = var1.readUnsignedShortAddLE();
+								var5 = var1.readUnsignedByteAdd();
 								var6 = (var5 >> 4 & 7) + class18.field85;
 								var7 = (var5 & 7) + class6.field14;
 								var8 = var1.readUnsignedByte() * 4;
 								var9 = var1.readUnsignedShort();
-								var10 = var1.readShortLE();
-								byte var42 = var1.method9296();
-								byte var43 = var1.method9297();
-								var13 = var1.readUnsignedByteSub();
-								var14 = var1.readUnsignedShortAddLE() * 4;
+								var10 = var1.readUnsignedShortLE();
+								byte var42 = var1.readByteAdd();
+								byte var43 = var1.readByteNeg();
+								var13 = var1.readUnsignedByteNeg();
+								var14 = var1.readUnsignedByteAdd() * 4;
 								var11 = var42 + var6;
 								var12 = var43 + var7;
 								if (var6 >= 0 && var7 >= 0 && var6 < 104 && var7 < 104 && var11 >= 0 && var12 >= 0 && var11 < 104 && var12 < 104 && var10 != 65535) {
@@ -362,8 +362,8 @@ final class class106 implements class334 {
 								var3 = var2 >> 2;
 								var4 = var2 & 3;
 								var5 = Client.field563[var3];
-								var6 = var1.readUnsignedByteAdd();
-								var7 = var1.readUnsignedByteSub();
+								var6 = var1.readUnsignedShortAdd();
+								var7 = var1.readUnsignedByteNeg();
 								var8 = (var7 >> 4 & 7) + class18.field85;
 								var9 = (var7 & 7) + class6.field14;
 								if (var8 >= 0 && var9 >= 0 && var8 < 103 && var9 < 103) {
@@ -428,9 +428,9 @@ final class class106 implements class334 {
 
 							} else if (class306.field3234 == var0) {
 								var2 = var1.readUnsignedShort();
-								var3 = var1.readUnsignedByteSub();
-								var4 = var1.readUnsignedByteAdd();
-								var5 = var1.readUnsignedByteSub();
+								var3 = var1.readUnsignedByteNeg();
+								var4 = var1.readUnsignedShortAdd();
+								var5 = var1.readUnsignedByteNeg();
 								var6 = (var5 >> 4 & 7) + class18.field85;
 								var7 = (var5 & 7) + class6.field14;
 								if (var6 >= 0 && var7 >= 0 && var6 < 104 && var7 < 104) {
@@ -441,11 +441,11 @@ final class class106 implements class334 {
 								}
 
 							} else if (class306.field3229 == var0) {
-								var2 = var1.readUnsignedIntLE();
+								var2 = var1.readUnsignedIntIME();
 								var3 = var1.readUnsignedByte();
 								var4 = (var3 >> 4 & 7) + class18.field85;
 								var5 = (var3 & 7) + class6.field14;
-								var6 = var1.readShortLE();
+								var6 = var1.readUnsignedShortLE();
 								if (var4 >= 0 && var5 >= 0 && var4 < 104 && var5 < 104) {
 									var31 = Client.groundItems[ItemLayer.Client_plane][var4][var5];
 									if (var31 != null) {

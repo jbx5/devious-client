@@ -628,8 +628,8 @@ public class PlayerComposition {
 			var17 = class101.baseY * 64 + (ScriptFrame.oculusOrbFocalPointY >> 7);
 			PacketBufferNode var18 = class113.getPacketBufferNode(ClientPacket.field3223, Client.packetWriter.isaacCipher);
 			var18.packetBuffer.writeInt(Client.field584);
-			var18.packetBuffer.writeByteNeg(var16);
-			var18.packetBuffer.writeByteNeg(var17);
+			var18.packetBuffer.writeShortAddLE(var16);
+			var18.packetBuffer.writeShortAddLE(var17);
 			var18.packetBuffer.writeByte(var15);
 			Client.packetWriter.addNode(var18);
 		}

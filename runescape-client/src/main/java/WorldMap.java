@@ -470,8 +470,8 @@ public class WorldMap {
 					var13 = this.mouseCoord.plane;
 					PacketBufferNode var14 = class113.getPacketBufferNode(ClientPacket.field3223, Client.packetWriter.isaacCipher);
 					var14.packetBuffer.writeInt(0);
-					var14.packetBuffer.writeByteNeg(var16);
-					var14.packetBuffer.writeByteNeg(var12);
+					var14.packetBuffer.writeShortAddLE(var16);
+					var14.packetBuffer.writeShortAddLE(var12);
 					var14.packetBuffer.writeByte(var13);
 					Client.packetWriter.addNode(var14);
 				} else {
@@ -486,7 +486,7 @@ public class WorldMap {
 
 					if (var11) {
 						PacketBufferNode var15 = class113.getPacketBufferNode(ClientPacket.field3138, Client.packetWriter.isaacCipher);
-						var15.packetBuffer.writeIntME(this.mouseCoord.packed());
+						var15.packetBuffer.writeIntLE(this.mouseCoord.packed());
 						Client.packetWriter.addNode(var15);
 						this.field4963 = 0L;
 					}

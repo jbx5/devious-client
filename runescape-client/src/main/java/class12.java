@@ -190,7 +190,7 @@ class class12 extends SSLSocket {
 		PacketBufferNode var2 = class113.getPacketBufferNode(ClientPacket.field3179, Client.packetWriter.isaacCipher);
 		var2.packetBuffer.writeByte(ClanChannel.stringCp1252NullTerminatedByteSize(var0) + 1);
 		var2.packetBuffer.writeStringCp1252NullTerminated(var0);
-		var2.packetBuffer.writeMediumLE(var1);
+		var2.packetBuffer.writeByteNeg(var1);
 		Client.packetWriter.addNode(var2);
 	}
 

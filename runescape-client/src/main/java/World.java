@@ -305,7 +305,7 @@ public class World {
 							var6.packetBuffer.writeShort(1 + ClanChannel.stringCp1252NullTerminatedByteSize(var4) + ClanChannel.stringCp1252NullTerminatedByteSize(var5));
 							var6.packetBuffer.writeStringCp1252NullTerminated(var5);
 							var6.packetBuffer.writeStringCp1252NullTerminated(var4);
-							var6.packetBuffer.method9290(var3);
+							var6.packetBuffer.writeByteAdd(var3);
 							Client.packetWriter.addNode(var6);
 							return 1;
 						}

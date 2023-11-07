@@ -224,17 +224,17 @@ public enum class90 implements MouseWheel {
 			int var23;
 			boolean var24;
 			if ((var22 & 4096) != 0) {
-				var6 = var1.readUnsignedShortAddLE();
+				var6 = var1.readUnsignedByteAdd();
 				if ((var6 & 1) == 1) {
 					var14.method2675();
 				} else {
 					var7 = null;
 					if ((var6 & 2) == 2) {
-						var8 = var1.readUnsignedByteSub();
+						var8 = var1.readUnsignedByteNeg();
 						var7 = new int[var8];
 
 						for (var9 = 0; var9 < var8; ++var9) {
-							var10 = var1.readShortLE();
+							var10 = var1.readUnsignedShortLE();
 							var10 = var10 == 65535 ? -1 : var10;
 							var7[var9] = var10;
 						}
@@ -250,7 +250,7 @@ public enum class90 implements MouseWheel {
 						var15 = new short[var9];
 
 						for (var10 = 0; var10 < var9; ++var10) {
-							var15[var10] = (short)var1.readShortLE();
+							var15[var10] = (short)var1.readUnsignedShortLE();
 						}
 					}
 
@@ -264,13 +264,13 @@ public enum class90 implements MouseWheel {
 						var16 = new short[var10];
 
 						for (var23 = 0; var23 < var10; ++var23) {
-							var16[var23] = (short)var1.readUnsignedByteAdd();
+							var16[var23] = (short)var1.readUnsignedShortAdd();
 						}
 					}
 
 					var24 = false;
 					if ((var6 & 16) != 0) {
-						var24 = var1.readUnsignedShortAddLE() == 1;
+						var24 = var1.readUnsignedByteAdd() == 1;
 					}
 
 					var17 = (long)(++NPC.field1311 - 1);
@@ -297,26 +297,26 @@ public enum class90 implements MouseWheel {
 			}
 
 			if ((var22 & 262144) != 0) {
-				var6 = var1.readUnsignedShortAdd();
+				var6 = var1.readUnsignedIntME();
 				var14.turnLeftSequence = (var6 & 1) != 0 ? var1.readUnsignedShort() : var14.definition.turnLeftSequence;
-				var14.turnRightSequence = (var6 & 2) != 0 ? var1.readUnsignedByteAdd() : var14.definition.turnRightSequence;
-				var14.walkSequence = (var6 & 4) != 0 ? var1.method9304() : var14.definition.walkSequence;
-				var14.walkBackSequence = (var6 & 8) != 0 ? var1.readUnsignedByteAdd() : var14.definition.walkBackSequence;
-				var14.walkLeftSequence = (var6 & 16) != 0 ? var1.method9304() : var14.definition.walkLeftSequence;
-				var14.walkRightSequence = (var6 & 32) != 0 ? var1.readUnsignedByteAdd() : var14.definition.walkRightSequence;
-				var14.runSequence = (var6 & 64) != 0 ? var1.readShortLE() : var14.definition.field1931;
-				var14.field1185 = (var6 & 128) != 0 ? var1.method9304() : var14.definition.field1937;
-				var14.field1186 = (var6 & 256) != 0 ? var1.readUnsignedByteAdd() : var14.definition.field1954;
+				var14.turnRightSequence = (var6 & 2) != 0 ? var1.readUnsignedShortAdd() : var14.definition.turnRightSequence;
+				var14.walkSequence = (var6 & 4) != 0 ? var1.readUnsignedShortAddLE() : var14.definition.walkSequence;
+				var14.walkBackSequence = (var6 & 8) != 0 ? var1.readUnsignedShortAdd() : var14.definition.walkBackSequence;
+				var14.walkLeftSequence = (var6 & 16) != 0 ? var1.readUnsignedShortAddLE() : var14.definition.walkLeftSequence;
+				var14.walkRightSequence = (var6 & 32) != 0 ? var1.readUnsignedShortAdd() : var14.definition.walkRightSequence;
+				var14.runSequence = (var6 & 64) != 0 ? var1.readUnsignedShortLE() : var14.definition.field1931;
+				var14.field1185 = (var6 & 128) != 0 ? var1.readUnsignedShortAddLE() : var14.definition.field1937;
+				var14.field1186 = (var6 & 256) != 0 ? var1.readUnsignedShortAdd() : var14.definition.field1954;
 				var14.field1233 = (var6 & 512) != 0 ? var1.readUnsignedShort() : var14.definition.field1962;
-				var14.field1188 = (var6 & 1024) != 0 ? var1.readUnsignedByteAdd() : var14.definition.field1961;
+				var14.field1188 = (var6 & 1024) != 0 ? var1.readUnsignedShortAdd() : var14.definition.field1961;
 				var14.field1189 = (var6 & 2048) != 0 ? var1.readUnsignedShort() : var14.definition.field1941;
-				var14.field1190 = (var6 & 4096) != 0 ? var1.readUnsignedByteAdd() : var14.definition.field1958;
-				var14.field1239 = (var6 & 8192) != 0 ? var1.readUnsignedByteAdd() : var14.definition.field1945;
-				var14.idleSequence = (var6 & 16384) != 0 ? var1.method9304() : var14.definition.idleSequence;
+				var14.field1190 = (var6 & 4096) != 0 ? var1.readUnsignedShortAdd() : var14.definition.field1958;
+				var14.field1239 = (var6 & 8192) != 0 ? var1.readUnsignedShortAdd() : var14.definition.field1945;
+				var14.idleSequence = (var6 & 16384) != 0 ? var1.readUnsignedShortAddLE() : var14.definition.idleSequence;
 			}
 
 			if ((var22 & 1) != 0) {
-				var6 = var1.readShortLE();
+				var6 = var1.readUnsignedShortLE();
 				if (var6 == 65535) {
 					var6 = -1;
 				}
@@ -345,13 +345,13 @@ public enum class90 implements MouseWheel {
 			}
 
 			if ((var22 & 1024) != 0) {
-				var14.field1209 = var1.method9296();
-				var14.field1194 = var1.method9297();
-				var14.field1224 = var1.method9296();
-				var14.field1203 = var1.method9297();
-				var14.spotAnimation = var1.method9304() + Client.cycle;
-				var14.field1187 = var1.method9304() + Client.cycle;
-				var14.field1229 = var1.method9304();
+				var14.field1209 = var1.readByteAdd();
+				var14.field1194 = var1.readByteNeg();
+				var14.field1224 = var1.readByteAdd();
+				var14.field1203 = var1.readByteNeg();
+				var14.spotAnimation = var1.readUnsignedShortAddLE() + Client.cycle;
+				var14.field1187 = var1.readUnsignedShortAddLE() + Client.cycle;
+				var14.field1229 = var1.readUnsignedShortAddLE();
 				var14.pathLength = 1;
 				var14.field1220 = 0;
 				var14.field1209 += var14.pathX[0];
@@ -361,13 +361,13 @@ public enum class90 implements MouseWheel {
 			}
 
 			if ((var22 & 8192) != 0) {
-				var14.field1247 = var1.readUnsignedIntLE();
+				var14.field1247 = var1.readUnsignedIntIME();
 			}
 
 			if ((var22 & 32) != 0) {
 				var6 = var1.readUnsignedShort();
-				var19 = var1.readShortLE();
-				var14.field1211 = var1.readUnsignedByteSub() == 1;
+				var19 = var1.readUnsignedShortLE();
+				var14.field1211 = var1.readUnsignedByteNeg() == 1;
 				if (Client.revision >= 212) {
 					var14.field1178 = var6;
 					var14.field1210 = var19;
@@ -382,7 +382,7 @@ public enum class90 implements MouseWheel {
 
 			if ((var22 & 128) != 0) {
 				var14.targetIndex = var1.readUnsignedShort();
-				var14.targetIndex += var1.readUnsignedByteSub() << 16;
+				var14.targetIndex += var1.readUnsignedByteNeg() << 16;
 				var6 = 16777215;
 				if (var6 == var14.targetIndex) {
 					var14.targetIndex = -1;
@@ -390,7 +390,7 @@ public enum class90 implements MouseWheel {
 			}
 
 			if ((var22 & 2) != 0) {
-				var6 = var1.readUnsignedShortAddLE();
+				var6 = var1.readUnsignedByteAdd();
 				if (var6 > 0) {
 					for (var19 = 0; var19 < var6; ++var19) {
 						var9 = -1;
@@ -413,7 +413,7 @@ public enum class90 implements MouseWheel {
 					}
 				}
 
-				var19 = var1.readUnsignedByteNeg();
+				var19 = var1.readUnsignedByteSub();
 				if (var19 > 0) {
 					for (var8 = 0; var8 < var19; ++var8) {
 						var9 = var1.readUShortSmart();
@@ -435,7 +435,7 @@ public enum class90 implements MouseWheel {
 			}
 
 			if ((var22 & 32768) != 0) {
-				var14.method2660(var1.readUnsignedByteSub());
+				var14.method2660(var1.readUnsignedByteNeg());
 			}
 
 			if ((var22 & 131072) != 0) {
@@ -444,28 +444,28 @@ public enum class90 implements MouseWheel {
 				for (var19 = 0; var19 < var6; ++var19) {
 					var8 = var1.readUnsignedByte();
 					var9 = var1.readUnsignedShort();
-					var10 = var1.readUnsignedIntLE();
+					var10 = var1.readUnsignedIntIME();
 					var14.updateSpotAnimation(var8, var9, var10 >> 16, var10 & 65535);
 				}
 			}
 
 			if ((var22 & 2048) != 0) {
-				var14.field1232 = Client.cycle + var1.readShortLE();
-				var14.field1215 = Client.cycle + var1.method9304();
-				var14.field1234 = var1.method9296();
-				var14.field1235 = var1.method9297();
-				var14.field1171 = var1.method9296();
-				var14.field1237 = (byte)var1.readUnsignedByteNeg();
+				var14.field1232 = Client.cycle + var1.readUnsignedShortLE();
+				var14.field1215 = Client.cycle + var1.readUnsignedShortAddLE();
+				var14.field1234 = var1.readByteAdd();
+				var14.field1235 = var1.readByteNeg();
+				var14.field1171 = var1.readByteAdd();
+				var14.field1237 = (byte)var1.readUnsignedByteSub();
 			}
 
 			if ((var22 & 512) != 0) {
-				var6 = var1.readUnsignedByteSub();
+				var6 = var1.readUnsignedByteNeg();
 				if ((var6 & 1) == 1) {
 					var14.method2674();
 				} else {
 					var7 = null;
 					if ((var6 & 2) == 2) {
-						var8 = var1.readUnsignedByteSub();
+						var8 = var1.readUnsignedByteNeg();
 						var7 = new int[var8];
 
 						for (var9 = 0; var9 < var8; ++var9) {
@@ -499,13 +499,13 @@ public enum class90 implements MouseWheel {
 						var16 = new short[var10];
 
 						for (var23 = 0; var23 < var10; ++var23) {
-							var16[var23] = (short)var1.readUnsignedByteAdd();
+							var16[var23] = (short)var1.readUnsignedShortAdd();
 						}
 					}
 
 					var24 = false;
 					if ((var6 & 16) != 0) {
-						var24 = var1.readUnsignedShortAddLE() == 1;
+						var24 = var1.readUnsignedByteAdd() == 1;
 					}
 
 					var17 = (long)(++NPC.field1305 - 1);
@@ -514,7 +514,7 @@ public enum class90 implements MouseWheel {
 			}
 
 			if ((var22 & 8) != 0) {
-				var14.definition = VerticalAlignment.getNpcDefinition(var1.readShortLE());
+				var14.definition = VerticalAlignment.getNpcDefinition(var1.readUnsignedShortLE());
 				class33.method495(var14);
 				var14.method2670();
 			}
@@ -525,8 +525,8 @@ public enum class90 implements MouseWheel {
 			}
 
 			if ((var22 & 64) != 0) {
-				var1.readUnsignedByteAdd();
 				var1.readUnsignedShortAdd();
+				var1.readUnsignedIntME();
 			}
 		}
 

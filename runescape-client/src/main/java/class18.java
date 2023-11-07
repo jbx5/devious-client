@@ -150,8 +150,8 @@ public class class18 {
 					PacketBufferNode var13 = class113.getPacketBufferNode(ClientPacket.field3177, Client.packetWriter.isaacCipher);
 					var13.packetBuffer.writeByte(18);
 					var13.packetBuffer.writeShort(NpcOverrides.baseX * 64 + var11);
-					var13.packetBuffer.writeShortAdd(class101.baseY * 64 + var12);
-					var13.packetBuffer.writeShortAddLE(Client.field724.method4316(82) ? (Client.field724.method4316(81) ? 2 : 1) : 0);
+					var13.packetBuffer.writeShortLE(class101.baseY * 64 + var12);
+					var13.packetBuffer.writeByteSub(Client.field724.method4316(82) ? (Client.field724.method4316(81) ? 2 : 1) : 0);
 					var13.packetBuffer.writeByte(var4);
 					var13.packetBuffer.writeByte(var5);
 					var13.packetBuffer.writeShort(Client.camAngleY);
