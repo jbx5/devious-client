@@ -551,6 +551,10 @@ public class Bank extends Items
 		{
 			return BANK_INVENTORY.count(false, names);
 		}
+		public static int getFreeSlots()
+		{
+			return 28 - getAll().size();
+		}
 	}
 
 	private static String getAction(Item item, int amount, Boolean withdraw)
