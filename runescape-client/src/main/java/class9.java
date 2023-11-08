@@ -406,7 +406,7 @@ public class class9 implements MouseWheel {
 			}
 		}
 
-		PacketBufferNode var2 = class113.getPacketBufferNode(ClientPacket.field3183, Client.packetWriter.isaacCipher);
+		PacketBufferNode var2 = class113.getPacketBufferNode(ClientPacket.DOCHEAT, Client.packetWriter.isaacCipher);
 		var2.packetBuffer.writeByte(var0.length() + 1);
 		var2.packetBuffer.writeStringCp1252NullTerminated(var0);
 		Client.packetWriter.addNode(var2);
@@ -433,7 +433,7 @@ public class class9 implements MouseWheel {
 		}
 
 		if (Client.gameState >= 25 && Client.packetWriter != null && Client.packetWriter.isaacCipher != null) {
-			PacketBufferNode var1 = class113.getPacketBufferNode(ClientPacket.field3209, Client.packetWriter.isaacCipher);
+			PacketBufferNode var1 = class113.getPacketBufferNode(ClientPacket.EVENT_WINDOW_SETTING, Client.packetWriter.isaacCipher);
 			var1.packetBuffer.writeByte(ApproximateRouteStrategy.getWindowedMode());
 			var1.packetBuffer.writeShort(Language.canvasWidth);
 			var1.packetBuffer.writeShort(class47.canvasHeight);

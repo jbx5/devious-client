@@ -189,7 +189,7 @@ class class17 implements SSLSession {
 		}
 
 		if (Client.packetWriter != null && Client.packetWriter.isaacCipher != null) {
-			PacketBufferNode var2 = class113.getPacketBufferNode(ClientPacket.field3209, Client.packetWriter.isaacCipher);
+			PacketBufferNode var2 = class113.getPacketBufferNode(ClientPacket.EVENT_WINDOW_SETTING, Client.packetWriter.isaacCipher);
 			var2.packetBuffer.writeByte(ApproximateRouteStrategy.getWindowedMode());
 			var2.packetBuffer.writeShort(Language.canvasWidth);
 			var2.packetBuffer.writeShort(class47.canvasHeight);

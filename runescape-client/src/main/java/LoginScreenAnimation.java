@@ -572,7 +572,7 @@ public class LoginScreenAnimation {
 		if (Client.packetWriter.pendingWrites >= 50 || var0) {
 			Client.packetWriter.pendingWrites = 0;
 			if (!Client.hadNetworkError && Client.packetWriter.getSocket() != null) {
-				PacketBufferNode var1 = class113.getPacketBufferNode(ClientPacket.field3153, Client.packetWriter.isaacCipher);
+				PacketBufferNode var1 = class113.getPacketBufferNode(ClientPacket.NO_TIMEOUT, Client.packetWriter.isaacCipher);
 				Client.packetWriter.addNode(var1);
 
 				try {

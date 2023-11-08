@@ -40,7 +40,8 @@ final class GrandExchangeOfferUnitPriceComparator implements Comparator {
 		descriptor = "(ZLuo;ZI)V",
 		garbageValue = "151188621"
 	)
-	static final void method7146(boolean var0, PacketBuffer var1, boolean var2) {
+	@Export("loadRegions")
+	static final void loadRegions(boolean var0, PacketBuffer var1, boolean var2) {
 		Client.isInInstance = var0;
 		int var3;
 		int var5;

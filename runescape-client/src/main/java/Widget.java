@@ -584,7 +584,7 @@ public class Widget extends Node {
 	@Export("itemIds")
 	public int[] itemIds;
 	@ObfuscatedName("gb")
-	public int[] field3791;
+	public int[] itemQuantities;
 	@ObfuscatedName("gu")
 	@ObfuscatedGetter(
 		intValue = 1760219883

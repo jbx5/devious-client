@@ -161,7 +161,7 @@ public class class336 {
 			}
 
 			if (Client.field724.method4316(13)) {
-				Client.packetWriter.addNode(class113.getPacketBufferNode(ClientPacket.field3208, Client.packetWriter.isaacCipher));
+				Client.packetWriter.addNode(class113.getPacketBufferNode(ClientPacket.FREECAM_EXIT, Client.packetWriter.isaacCipher));
 				Client.oculusOrbState = 0;
 			}
 		}

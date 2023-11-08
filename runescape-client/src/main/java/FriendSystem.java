@@ -244,7 +244,7 @@ public class FriendSystem {
 			if (var2.hasCleanName()) {
 				if (this.friendsList.removeByUsername(var2)) {
 					JagexCache.method4214();
-					PacketBufferNode var3 = class113.getPacketBufferNode(ClientPacket.field3199, Client.packetWriter.isaacCipher);
+					PacketBufferNode var3 = class113.getPacketBufferNode(ClientPacket.FRIEND_DELUSER, Client.packetWriter.isaacCipher);
 					var3.packetBuffer.writeByte(ClanChannel.stringCp1252NullTerminatedByteSize(var1));
 					var3.packetBuffer.writeStringCp1252NullTerminated(var1);
 					Client.packetWriter.addNode(var3);
@@ -283,7 +283,7 @@ public class FriendSystem {
 				if (this.ignoreList.removeByUsername(var3)) {
 					JagexCache.method4214();
 					if (var2) {
-						PacketBufferNode var4 = class113.getPacketBufferNode(ClientPacket.field3133, Client.packetWriter.isaacCipher);
+						PacketBufferNode var4 = class113.getPacketBufferNode(ClientPacket.IGNORE_DELUSER, Client.packetWriter.isaacCipher);
 						var4.packetBuffer.writeByte(ClanChannel.stringCp1252NullTerminatedByteSize(var1));
 						var4.packetBuffer.writeStringCp1252NullTerminated(var1);
 						Client.packetWriter.addNode(var4);

@@ -382,7 +382,7 @@ public enum ModeWhere implements MouseWheel {
 				ObjectComposition.ObjectDefinition_cachedModelData.clear();
 				PacketBufferNode var19;
 				if (SpriteMask.client.hasFrame()) {
-					var19 = class113.getPacketBufferNode(ClientPacket.field3134, Client.packetWriter.isaacCipher);
+					var19 = class113.getPacketBufferNode(ClientPacket.DETECT_MODIFIED_CLIENT, Client.packetWriter.isaacCipher);
 					var19.packetBuffer.writeInt(1057001181);
 					Client.packetWriter.addNode(var19);
 				}
