@@ -1,157 +1,163 @@
+import java.util.ArrayList;
+import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dw")
+@ObfuscatedName("dp")
 @Implements("PendingSpawn")
 public final class PendingSpawn extends Node {
-	@ObfuscatedName("dz")
-	@ObfuscatedSignature(
-		descriptor = "[Lun;"
-	)
-	@Export("worldSelectFlagSprites")
-	static IndexedSprite[] worldSelectFlagSprites;
-	@ObfuscatedName("ac")
+	@ObfuscatedName("dy")
+	static boolean field1169;
+	@ObfuscatedName("qa")
 	@ObfuscatedGetter(
-		intValue = 1383860513
+		intValue = -1716253551
+	)
+	static int field1167;
+	@ObfuscatedName("at")
+	@ObfuscatedGetter(
+		intValue = -338943587
 	)
 	@Export("plane")
 	int plane;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ah")
 	@ObfuscatedGetter(
-		intValue = -1109299775
+		intValue = 241275811
 	)
 	@Export("type")
 	int type;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ar")
 	@ObfuscatedGetter(
-		intValue = 1415427477
+		intValue = -473377439
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = -444130973
+		intValue = -295377785
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ab")
 	@ObfuscatedGetter(
-		intValue = 700260725
+		intValue = 950457513
 	)
 	@Export("objectId")
 	int objectId;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		intValue = 761889211
+		intValue = 467323589
 	)
-	int field1178;
-	@ObfuscatedName("ar")
+	int field1157;
+	@ObfuscatedName("aa")
 	@ObfuscatedGetter(
-		intValue = 2125054333
+		intValue = -1843576419
 	)
-	int field1176;
-	@ObfuscatedName("ab")
+	int field1158;
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = -1497418465
+		intValue = 1617415071
 	)
-	int field1177;
-	@ObfuscatedName("am")
+	int field1162;
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = 1698941181
+		intValue = 1507666767
 	)
-	int field1170;
-	@ObfuscatedName("av")
+	int field1160;
+	@ObfuscatedName("az")
 	@ObfuscatedGetter(
-		intValue = 607121519
+		intValue = -164763093
 	)
-	int field1173;
-	@ObfuscatedName("ag")
-	@ObfuscatedGetter(
-		intValue = -1155527501
-	)
-	int field1180;
+	int field1161;
 	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = 88075867
+		intValue = 1169742593
 	)
-	int field1181;
-	@ObfuscatedName("ay")
+	int field1152;
+	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = 269057879
+		intValue = 1397855747
+	)
+	int field1159;
+	@ObfuscatedName("as")
+	@ObfuscatedGetter(
+		intValue = -657774781
 	)
 	@Export("delay")
 	int delay;
-	@ObfuscatedName("as")
+	@ObfuscatedName("ay")
 	@ObfuscatedGetter(
-		intValue = -2145088427
+		intValue = 2020838527
 	)
 	@Export("hitpoints")
 	int hitpoints;
 
 	PendingSpawn() {
-		this.field1181 = 31;
+		this.field1159 = 31;
 		this.delay = 0;
 		this.hitpoints = -1;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "(II)V",
-		garbageValue = "1554580645"
+		garbageValue = "-1592817450"
 	)
-	void method2413(int var1) {
-		this.field1181 = var1;
+	void method2453(int var1) {
+		this.field1159 = var1;
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(II)Z",
-		garbageValue = "585710320"
+		descriptor = "(IS)Z",
+		garbageValue = "7928"
 	)
-	boolean method2415(int var1) {
+	boolean method2455(int var1) {
 		if (var1 >= 0 && var1 <= 4) {
-			return (this.field1181 & 1 << var1) != 0;
+			return (this.field1159 & 1 << var1) != 0;
 		} else {
 			return true;
 		}
 	}
 
-	@ObfuscatedName("av")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;B)V",
-		garbageValue = "-121"
+		descriptor = "(Ljava/util/ArrayList;IIIIZI)V",
+		garbageValue = "1949440150"
 	)
-	static final void method2418(String var0) {
-		class436.method7914(var0 + " is already on your friend list");
-	}
+	public static void method2459(ArrayList var0, int var1, int var2, int var3, int var4, boolean var5) {
+		if (!var0.isEmpty()) {
+			class316.field3416.clear();
+			class316.field3413.clear();
+			PacketBufferNode.method5917(var5);
+			class30.method463(var0, var5);
+			if (!class316.field3416.isEmpty()) {
+				EnumComposition.method3678(var1, var2, var3, var4);
+				class316.field3413.add(new AddRequestTask((SongTask)null));
+				class316.field3413.add(new class420((SongTask)null, class316.field3423, class316.field3414, class168.field1789));
+				ArrayList var6 = new ArrayList();
+				var6.add(new class415(new FadeInTask((SongTask)null, 0, true, class316.field3417)));
+				if (!class316.musicSongs.isEmpty()) {
+					ArrayList var7 = new ArrayList();
+					var7.add(new DelayFadeTask(new ConcurrentMidiTask((SongTask)null, var6), class316.field3419));
+					ArrayList var9 = new ArrayList();
+					Iterator var10 = class316.musicSongs.iterator();
 
-	@ObfuscatedName("lq")
-	@ObfuscatedSignature(
-		descriptor = "([Lnm;Lnm;ZB)V",
-		garbageValue = "-37"
-	)
-	@Export("revalidateWidgetScroll")
-	static void revalidateWidgetScroll(Widget[] var0, Widget var1, boolean var2) {
-		int var3 = var1.scrollWidth != 0 ? var1.scrollWidth : var1.width;
-		int var4 = var1.scrollHeight != 0 ? var1.scrollHeight : var1.height;
-		class360.resizeInterface(var0, var1.id, var3, var4, var2);
-		if (var1.children != null) {
-			class360.resizeInterface(var1.children, var1.id, var3, var4, var2);
-		}
+					while (var10.hasNext()) {
+						MusicSong var11 = (MusicSong)var10.next();
+						var9.add(var11);
+					}
 
-		InterfaceParent var5 = (InterfaceParent)Client.interfaceParents.get((long)var1.id);
-		if (var5 != null) {
-			int var6 = var5.group;
-			if (class33.widgetDefinition.loadInterface(var6)) {
-				class360.resizeInterface(class33.widgetDefinition.Widget_interfaceComponents[var6], -1, var3, var4, var2);
+					var7.add(new DelayFadeTask(new FadeOutTask(new class413((SongTask)null, var9), 0, false, class316.field3418), class316.musicPlayerStatus));
+					class316.field3413.add(new ConcurrentMidiTask((SongTask)null, var7));
+				} else {
+					class316.field3413.add(new DelayFadeTask((SongTask)null, class316.field3419));
+					class316.field3413.add(new ConcurrentMidiTask((SongTask)null, var6));
+				}
+
 			}
 		}
-
-		if (var1.contentType == 1337) {
-		}
-
 	}
 }

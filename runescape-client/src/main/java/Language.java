@@ -5,89 +5,94 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("oa")
+@ObfuscatedName("of")
 @Implements("Language")
 public class Language implements MouseWheel {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "Loa;"
+		descriptor = "Lof;"
 	)
 	@Export("Language_EN")
 	public static final Language Language_EN;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "Loa;"
+		descriptor = "Lof;"
 	)
 	@Export("Language_DE")
 	static final Language Language_DE;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "Loa;"
+		descriptor = "Lof;"
 	)
 	@Export("Language_FR")
 	public static final Language Language_FR;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "Loa;"
+		descriptor = "Lof;"
 	)
 	@Export("Language_PT")
 	static final Language Language_PT;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "Loa;"
+		descriptor = "Lof;"
 	)
 	@Export("Language_NL")
 	static final Language Language_NL;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "Loa;"
+		descriptor = "Lof;"
 	)
 	@Export("Language_ES")
 	public static final Language Language_ES;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
-		descriptor = "Loa;"
+		descriptor = "Lof;"
 	)
 	@Export("Language_ES_MX")
 	static final Language Language_ES_MX;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "[Loa;"
+		descriptor = "[Lof;"
 	)
 	@Export("Language_valuesOrdered")
 	static final Language[] Language_valuesOrdered;
-	@ObfuscatedName("fr")
-	@ObfuscatedSignature(
-		descriptor = "Lok;"
-	)
-	static Archive field4435;
-	@ObfuscatedName("oq")
+	@ObfuscatedName("aw")
 	@ObfuscatedGetter(
-		intValue = -1015843523
+		intValue = -126881359
 	)
-	@Export("menuHeight")
-	static int menuHeight;
-	@ObfuscatedName("ab")
-	final String field4431;
-	@ObfuscatedName("am")
+	@Export("canvasWidth")
+	public static int canvasWidth;
+	@ObfuscatedName("fl")
+	@ObfuscatedSignature(
+		descriptor = "Loh;"
+	)
+	static Archive field4412;
+	@ObfuscatedName("gr")
+	@ObfuscatedGetter(
+		intValue = -656646349
+	)
+	static int field4410;
+	@ObfuscatedName("ac")
+	final String field4407;
+	@ObfuscatedName("al")
 	@Export("language")
 	final String language;
-	@ObfuscatedName("av")
+	@ObfuscatedName("az")
 	@ObfuscatedGetter(
-		intValue = 314658107
+		intValue = 680948119
 	)
 	@Export("id")
 	final int id;
 
 	static {
-		Language_EN = new Language("EN", "en", "English", ModeWhere.field4446, 0, "GB");
-		Language_DE = new Language("DE", "de", "German", ModeWhere.field4446, 1, "DE");
-		Language_FR = new Language("FR", "fr", "French", ModeWhere.field4446, 2, "FR");
-		Language_PT = new Language("PT", "pt", "Portuguese", ModeWhere.field4446, 3, "BR");
-		Language_NL = new Language("NL", "nl", "Dutch", ModeWhere.field4441, 4, "NL");
-		Language_ES = new Language("ES", "es", "Spanish", ModeWhere.field4441, 5, "ES");
-		Language_ES_MX = new Language("ES_MX", "es-mx", "Spanish (Latin American)", ModeWhere.field4446, 6, "MX");
-		Language[] var0 = method7155();
+		Language_EN = new Language("EN", "en", "English", ModeWhere.field4417, 0, "GB");
+		Language_DE = new Language("DE", "de", "German", ModeWhere.field4417, 1, "DE");
+		Language_FR = new Language("FR", "fr", "French", ModeWhere.field4417, 2, "FR");
+		Language_PT = new Language("PT", "pt", "Portuguese", ModeWhere.field4417, 3, "BR");
+		Language_NL = new Language("NL", "nl", "Dutch", ModeWhere.field4416, 4, "NL");
+		Language_ES = new Language("ES", "es", "Spanish", ModeWhere.field4416, 5, "ES");
+		Language_ES_MX = new Language("ES_MX", "es-mx", "Spanish (Latin American)", ModeWhere.field4417, 6, "MX");
+		Language[] var0 = method7189();
 		Language_valuesOrdered = new Language[var0.length];
 		Language[] var1 = var0;
 
@@ -103,10 +108,10 @@ public class Language implements MouseWheel {
 	}
 
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lor;ILjava/lang/String;)V"
+		descriptor = "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lok;ILjava/lang/String;)V"
 	)
 	Language(String var1, String var2, String var3, ModeWhere var4, int var5, String var6) {
-		this.field4431 = var1;
+		this.field4407 = var1;
 		this.language = var2;
 		this.id = var5;
 		if (var6 != null) {
@@ -117,20 +122,20 @@ public class Language implements MouseWheel {
 
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-1243971674"
+		descriptor = "(B)I",
+		garbageValue = "-11"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.id;
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "(I)Ljava/lang/String;",
-		garbageValue = "-351070004"
+		garbageValue = "1714564751"
 	)
 	@Export("getLanguage")
 	String getLanguage() {
@@ -141,95 +146,122 @@ public class Language implements MouseWheel {
 		return this.getLanguage().toLowerCase(Locale.ENGLISH);
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "-1873739638"
+		descriptor = "(I)[Lfa;",
+		garbageValue = "-1038072000"
 	)
-	static int method7161(int var0, int var1) {
-		ItemContainer var2 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
-		if (var2 == null) {
-			return -1;
-		} else {
-			return var1 >= 0 && var1 < var2.ids.length ? var2.ids[var1] : -1;
-		}
+	static class132[] method7187() {
+		return new class132[]{class132.field1549, class132.field1550, class132.field1551, class132.field1552, class132.field1557, class132.field1554};
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1596579775"
+		descriptor = "(B)[Lof;",
+		garbageValue = "0"
 	)
-	public static void method7159() {
-		class191.archive7.clear();
+	static Language[] method7189() {
+		return new Language[]{Language_PT, Language_ES_MX, Language_FR, Language_EN, Language_NL, Language_DE, Language_ES};
 	}
 
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "(S)[Loa;",
-		garbageValue = "-24301"
+		descriptor = "(Lfm;FFFFFFFFB)V",
+		garbageValue = "1"
 	)
-	static Language[] method7155() {
-		return new Language[]{Language_ES, Language_PT, Language_FR, Language_NL, Language_EN, Language_DE, Language_ES_MX};
+	static void method7200(class131 var0, float var1, float var2, float var3, float var4, float var5, float var6, float var7, float var8) {
+		if (var0 != null) {
+			float var9 = var4 - var1;
+			if ((double)var9 != 0.0D) {
+				float var10 = var2 - var1;
+				float var11 = var3 - var1;
+				float[] var12 = new float[]{var10 / var9, var11 / var9};
+				var0.field1531 = var12[0] == 0.33333334F && 0.6666667F == var12[1];
+				float var13 = var12[0];
+				float var14 = var12[1];
+				if ((double)var12[0] < 0.0D) {
+					var12[0] = 0.0F;
+				}
+
+				if ((double)var12[1] > 1.0D) {
+					var12[1] = 1.0F;
+				}
+
+				if ((double)var12[0] > 1.0D || var12[1] < -1.0F) {
+					var12[1] = 1.0F - var12[1];
+					if (var12[0] < 0.0F) {
+						var12[0] = 0.0F;
+					}
+
+					if (var12[1] < 0.0F) {
+						var12[1] = 0.0F;
+					}
+
+					if (var12[0] > 1.0F || var12[1] > 1.0F) {
+						float var15 = (float)(1.0D + ((double)var12[1] - 2.0D) * (double)var12[1] + (double)(var12[0] * (var12[1] + (var12[0] - 2.0F))));
+						if (var15 + class127.field1484 > 0.0F) {
+							if (class127.field1484 + var12[0] < 1.3333334F) {
+								float var16 = var12[0] - 2.0F;
+								float var17 = var12[0] - 1.0F;
+								float var18 = (float)Math.sqrt((double)(var16 * var16 - var17 * var17 * 4.0F));
+								float var19 = (-var16 + var18) * 0.5F;
+								if (var12[1] + class127.field1484 > var19) {
+									var12[1] = var19 - class127.field1484;
+								} else {
+									var19 = 0.5F * (-var16 - var18);
+									if (var12[1] < class127.field1484 + var19) {
+										var12[1] = class127.field1484 + var19;
+									}
+								}
+							} else {
+								var12[0] = 1.3333334F - class127.field1484;
+								var12[1] = 0.33333334F - class127.field1484;
+							}
+						}
+					}
+
+					var12[1] = 1.0F - var12[1];
+				}
+
+				if (var12[0] != var13) {
+					var2 = var12[0] * var9 + var1;
+					if (0.0D != (double)var13) {
+						var6 = var5 + var12[0] * (var6 - var5) / var13;
+					}
+				}
+
+				if (var12[1] != var14) {
+					float var10000 = var1 + var12[1] * var9;
+					if ((double)var14 != 1.0D) {
+						var7 = (float)((double)var8 - (1.0D - (double)var12[1]) * (double)(var8 - var7) / (1.0D - (double)var14));
+					}
+				}
+
+				var0.field1538 = var1;
+				var0.field1533 = var4;
+				class145.method3246(0.0F, var12[0], var12[1], 1.0F, var0);
+				Canvas.method334(var5, var6, var7, var8, var0);
+			}
+		}
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(II)Loa;",
-		garbageValue = "1742943694"
+		descriptor = "(IB)Lof;",
+		garbageValue = "15"
 	)
-	public static Language method7160(int var0) {
+	public static Language method7190(int var0) {
 		return var0 >= 0 && var0 < Language_valuesOrdered.length ? Language_valuesOrdered[var0] : null;
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
-		descriptor = "(Lcv;B)V",
-		garbageValue = "0"
+		descriptor = "(I)Lcr;",
+		garbageValue = "458832274"
 	)
-	@Export("changeWorld")
-	static void changeWorld(World var0) {
-		if (var0.isMembersOnly() != Client.isMembersWorld) {
-			Client.isMembersWorld = var0.isMembersOnly();
-			Calendar.method6761(var0.isMembersOnly());
-		}
-
-		if (var0.properties != Client.worldProperties) {
-			TextureProvider.method4884(class199.archive8, var0.properties);
-		}
-
-		MouseHandler.worldHost = var0.host;
-		Client.worldId = var0.id;
-		Client.worldProperties = var0.properties;
-		UserComparator3.field1471 = var0.field833;
-		ObjectComposition.worldPort = Client.gameBuild == 0 ? 43594 : var0.id + 40000;
-		class363.js5Port = Client.gameBuild == 0 ? 443 : var0.id + 50000;
-		class164.currentPort = ObjectComposition.worldPort;
-	}
-
-	@ObfuscatedName("nk")
-	@ObfuscatedSignature(
-		descriptor = "(IIIILud;Lmp;B)V",
-		garbageValue = "-9"
-	)
-	@Export("worldToMinimap")
-	static final void worldToMinimap(int var0, int var1, int var2, int var3, SpritePixels var4, SpriteMask var5) {
-		int var6 = var3 * var3 + var2 * var2;
-		if (var6 > 4225 && var6 < 90000) {
-			int var7 = Client.camAngleY & 2047;
-			int var8 = Rasterizer3D.Rasterizer3D_sine[var7];
-			int var9 = Rasterizer3D.Rasterizer3D_cosine[var7];
-			int var10 = var3 * var8 + var9 * var2 >> 16;
-			int var11 = var3 * var9 - var8 * var2 >> 16;
-			double var12 = Math.atan2((double)var10, (double)var11);
-			int var14 = var5.width / 2 - 25;
-			int var15 = (int)(Math.sin(var12) * (double)var14);
-			int var16 = (int)(Math.cos(var12) * (double)var14);
-			byte var17 = 20;
-			ParamComposition.redHintArrowSprite.method9687(var15 + (var0 + var5.width / 2 - var17 / 2), var5.height / 2 + var1 - var17 / 2 - var16 - 10, var17, var17, 15, 15, var12, 256);
-		} else {
-			SecureRandomFuture.drawSpriteOnMinimap(var0, var1, var2, var3, var4, var5);
-		}
-
+	@Export("worldListStart")
+	static World worldListStart() {
+		World.World_listCount = 0;
+		return WorldMapData_0.getNextWorldListWorld();
 	}
 }

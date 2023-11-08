@@ -1,93 +1,237 @@
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("sq")
-public class class478 implements class476 {
-	@ObfuscatedName("ac")
-	final Map field4822;
+@ObfuscatedName("ss")
+public class class478 {
+	@ObfuscatedName("au")
+	static int[] field4835;
+	@ObfuscatedName("aa")
+	public static int[] field4836;
+	@ObfuscatedName("ti")
+	@ObfuscatedSignature(
+		descriptor = "Lfc;"
+	)
+	@Export("guestClanSettings")
+	static ClanSettings guestClanSettings;
 
-	public class478(Map var1) {
-		this.field4822 = var1;
+	static {
+		field4835 = new int[32768];
+
+		for (int var0 = 0; var0 < 32768; ++var0) {
+			field4835[var0] = method8600(var0);
+		}
+
+		if (field4836 == null) {
+			field4836 = new int[65536];
+			double var25 = 0.949999988079071D;
+
+			for (int var2 = 0; var2 < 65536; ++var2) {
+				double var3 = 0.0078125D + (double)(var2 >> 10 & 63) / 64.0D;
+				double var5 = (double)(var2 >> 7 & 7) / 8.0D + 0.0625D;
+				double var7 = (double)(var2 & 127) / 128.0D;
+				double var9 = var7;
+				double var11 = var7;
+				double var13 = var7;
+				if (var5 != 0.0D) {
+					double var15;
+					if (var7 < 0.5D) {
+						var15 = (1.0D + var5) * var7;
+					} else {
+						var15 = var5 + var7 - var7 * var5;
+					}
+
+					double var17 = var7 * 2.0D - var15;
+					double var19 = var3 + 0.3333333333333333D;
+					if (var19 > 1.0D) {
+						--var19;
+					}
+
+					double var23 = var3 - 0.3333333333333333D;
+					if (var23 < 0.0D) {
+						++var23;
+					}
+
+					if (var19 * 6.0D < 1.0D) {
+						var9 = var17 + var19 * (var15 - var17) * 6.0D;
+					} else if (2.0D * var19 < 1.0D) {
+						var9 = var15;
+					} else if (3.0D * var19 < 2.0D) {
+						var9 = var17 + (0.6666666666666666D - var19) * (var15 - var17) * 6.0D;
+					} else {
+						var9 = var17;
+					}
+
+					if (var3 * 6.0D < 1.0D) {
+						var11 = var17 + var3 * (var15 - var17) * 6.0D;
+					} else if (2.0D * var3 < 1.0D) {
+						var11 = var15;
+					} else if (3.0D * var3 < 2.0D) {
+						var11 = var17 + (0.6666666666666666D - var3) * (var15 - var17) * 6.0D;
+					} else {
+						var11 = var17;
+					}
+
+					if (6.0D * var23 < 1.0D) {
+						var13 = var17 + var23 * (var15 - var17) * 6.0D;
+					} else if (var23 * 2.0D < 1.0D) {
+						var13 = var15;
+					} else if (var23 * 3.0D < 2.0D) {
+						var13 = var17 + (var15 - var17) * (0.6666666666666666D - var23) * 6.0D;
+					} else {
+						var13 = var17;
+					}
+				}
+
+				var9 = Math.pow(var9, var25);
+				var11 = Math.pow(var11, var25);
+				var13 = Math.pow(var13, var25);
+				int var27 = (int)(var9 * 256.0D);
+				int var16 = (int)(var11 * 256.0D);
+				int var28 = (int)(256.0D * var13);
+				int var18 = var28 + (var16 << 8) + (var27 << 16);
+				field4836[var2] = var18 & 16777215;
+			}
+		}
+
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "(B)Lst;",
-		garbageValue = "1"
+		descriptor = "(II)I",
+		garbageValue = "-2145901051"
 	)
-	public class475 vmethod8518() {
-		return null;
+	static final int method8600(int var0) {
+		double var1 = (double)(var0 >> 10 & 31) / 31.0D;
+		double var3 = (double)(var0 >> 5 & 31) / 31.0D;
+		double var5 = (double)(var0 & 31) / 31.0D;
+		double var7 = var1;
+		if (var3 < var1) {
+			var7 = var3;
+		}
+
+		if (var5 < var7) {
+			var7 = var5;
+		}
+
+		double var9 = var1;
+		if (var3 > var1) {
+			var9 = var3;
+		}
+
+		if (var5 > var9) {
+			var9 = var5;
+		}
+
+		double var11 = 0.0D;
+		double var13 = 0.0D;
+		double var15 = (var9 + var7) / 2.0D;
+		if (var9 != var7) {
+			if (var15 < 0.5D) {
+				var13 = (var9 - var7) / (var7 + var9);
+			}
+
+			if (var15 >= 0.5D) {
+				var13 = (var9 - var7) / (2.0D - var9 - var7);
+			}
+
+			if (var1 == var9) {
+				var11 = (var3 - var5) / (var9 - var7);
+			} else if (var9 == var3) {
+				var11 = 2.0D + (var5 - var1) / (var9 - var7);
+			} else if (var5 == var9) {
+				var11 = (var1 - var3) / (var9 - var7) + 4.0D;
+			}
+		}
+
+		int var17 = (int)(var11 * 256.0D / 6.0D);
+		var17 &= 255;
+		double var18 = 256.0D * var13;
+		if (var18 < 0.0D) {
+			var18 = 0.0D;
+		} else if (var18 > 255.0D) {
+			var18 = 255.0D;
+		}
+
+		if (var15 > 0.7D) {
+			var18 /= 2.0D;
+			var18 = Math.floor(var18);
+		}
+
+		if (var15 > 0.75D) {
+			var18 /= 2.0D;
+			var18 = Math.floor(var18);
+		}
+
+		if (var15 > 0.85D) {
+			var18 /= 2.0D;
+			var18 = Math.floor(var18);
+		}
+
+		if (var15 > 0.95D) {
+			var18 /= 2.0D;
+			var18 = Math.floor(var18);
+		}
+
+		if (var15 > 0.995D) {
+			var15 = 0.995D;
+		}
+
+		int var20 = (int)((double)(var17 / 4 * 8) + var18 / 32.0D);
+		return (int)(128.0D * var15) + (var20 << 7);
+	}
+
+	@ObfuscatedName("ah")
+	@ObfuscatedSignature(
+		descriptor = "(IB)I",
+		garbageValue = "124"
+	)
+	public static int method8602(int var0) {
+		return 255 - (var0 & 255);
 	}
 
 	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(B)[B",
-		garbageValue = "17"
+		descriptor = "(I)V",
+		garbageValue = "930574871"
 	)
-	public byte[] vmethod8509() throws UnsupportedEncodingException {
-		return this.method8510().getBytes("UTF-8");
-	}
-
-	@ObfuscatedName("am")
-	@ObfuscatedSignature(
-		descriptor = "(I)Ljava/lang/String;",
-		garbageValue = "1386536231"
-	)
-	public String method8510() throws UnsupportedEncodingException {
-		StringBuilder var1 = new StringBuilder();
-		Iterator var2 = this.field4822.entrySet().iterator();
-
-		while (var2.hasNext()) {
-			Entry var3 = (Entry)var2.next();
-			String var4 = URLEncoder.encode((String)var3.getKey(), "UTF-8");
-			String var5 = URLEncoder.encode((String)var3.getValue(), "UTF-8");
-			var1.append(var4).append("=").append(var5).append("&");
-		}
-
-		if (var1.length() == 0) {
-			return "";
+	static void method8609() {
+		Login.Login_username = Login.Login_username.trim();
+		if (Login.Login_username.length() == 0) {
+			class139.setLoginResponseString("", "Please enter your username/email address.", "");
+		} else if (Login.Login_password.length() == 0) {
+			class139.setLoginResponseString("", "Please enter your password.", "");
 		} else {
-			var1.deleteCharAt(var1.length() - 1);
-			var1.insert(0, "?");
-			return var1.toString();
+			class139.setLoginResponseString("", "Connecting to server...", "");
+			VerticalAlignment.method3754(false);
+			WorldMapSection2.updateGameState(20);
 		}
 	}
 
-	@ObfuscatedName("bx")
+	@ObfuscatedName("kp")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)I",
-		garbageValue = "1087819617"
+		descriptor = "(III)V",
+		garbageValue = "-1143986054"
 	)
-	@Export("stringCp1252NullTerminatedByteSize")
-	public static int stringCp1252NullTerminatedByteSize(String var0) {
-		return var0.length() + 1;
-	}
+	static final void method8608(int var0, int var1) {
+		if (Client.menuOptionsCount >= 2 || Client.isItemSelected != 0 || Client.isSpellSelected) {
+			if (Client.showMouseOverText) {
+				int var2 = Client.menuOptionsCount - 1;
+				String var4;
+				if (Client.isItemSelected == 1 && Client.menuOptionsCount < 2) {
+					var4 = "Use" + " " + Client.field767 + " " + "->";
+				} else if (Client.isSpellSelected && Client.menuOptionsCount < 2) {
+					var4 = Client.selectedSpellActionName + " " + Client.selectedSpellName + " " + "->";
+				} else {
+					var4 = ReflectionCheck.method711(var2);
+				}
 
-	@ObfuscatedName("lm")
-	@ObfuscatedSignature(
-		descriptor = "(IIIII)V",
-		garbageValue = "2037077846"
-	)
-	static void method8514(int var0, int var1, int var2, int var3) {
-		Widget var4 = class33.widgetDefinition.getWidgetChild(var0, var1);
-		if (var4 != null && var4.onTargetEnter != null) {
-			ScriptEvent var5 = new ScriptEvent();
-			var5.widget = var4;
-			var5.args = var4.onTargetEnter;
-			Interpreter.runScriptEvent(var5);
+				if (Client.menuOptionsCount > 2) {
+					var4 = var4 + class167.colorStartTag(16777215) + " " + '/' + " " + (Client.menuOptionsCount - 2) + " more options";
+				}
+
+				GrandExchangeOfferTotalQuantityComparator.fontBold12.drawRandomAlphaAndSpacing(var4, var0 + 4, var1 + 15, 16777215, 0, Client.cycle / 1000);
+			}
 		}
-
-		Client.selectedSpellItemId = var3;
-		Client.isSpellSelected = true;
-		JagexCache.selectedSpellWidget = var0;
-		Client.selectedSpellChildIndex = var1;
-		class31.selectedSpellFlags = var2;
-		ClanChannelMember.invalidateWidget(var4);
 	}
 }

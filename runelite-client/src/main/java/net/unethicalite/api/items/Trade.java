@@ -1,5 +1,6 @@
 package net.unethicalite.api.items;
 
+import com.google.common.primitives.Ints;
 import net.unethicalite.api.commons.Predicates;
 import net.unethicalite.api.commons.Time;
 import net.unethicalite.api.game.Vars;
@@ -18,6 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Trade
 {
@@ -30,6 +33,9 @@ public class Trade
 	private static final Supplier<Widget> DECLINE_2 = () -> Widgets.get(WidgetID.PLAYER_TRADE_CONFIRM_GROUP_ID, WidgetID.TradeScreen.SECOND_DECLINE_FUNC);
 	private static final Supplier<Widget> ACCEPT_STATUS_1 = () -> Widgets.get(WidgetID.PLAYER_TRADE_SCREEN_GROUP_ID, 30);
 	private static final Supplier<Widget> ACCEPT_STATUS_2 = () -> Widgets.get(WidgetID.PLAYER_TRADE_CONFIRM_GROUP_ID, 4);
+	private static final Supplier<Widget> THEIR_AVAILABLE_SLOTS = () -> Widgets.get(WidgetID.PLAYER_TRADE_SCREEN_GROUP_ID, 9);
+
+	private static final Pattern THEIR_FREE_SLOTS_REGEXP = Pattern.compile(" has (?<count>.+?) free inventory slots.");
 
 	public static boolean isOpen()
 	{
@@ -243,6 +249,22 @@ public class Trade
 	public static Item getFirst(boolean theirs, String... names)
 	{
 		return getFirst(theirs, Predicates.names(names));
+	}
+
+	public static Integer getTheirFreeSlots()
+	{
+		Widget widget = THEIR_AVAILABLE_SLOTS.get();
+		if (widget != null)
+		{
+			Matcher matcher = THEIR_FREE_SLOTS_REGEXP.matcher(widget.getText());
+			if (matcher.find())
+			{
+				String count = matcher.group("count");
+				Integer freeSlots = Ints.tryParse(count);
+				return freeSlots != null ? freeSlots : 0;
+			}
+		}
+		return 0;
 	}
 
 	public static boolean contains(boolean theirs, Predicate<Item> filter)

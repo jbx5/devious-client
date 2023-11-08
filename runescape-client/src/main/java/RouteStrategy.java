@@ -1,34 +1,33 @@
-import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("iq")
+@ObfuscatedName("it")
 @Implements("RouteStrategy")
 public abstract class RouteStrategy {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		intValue = -424258205
+		intValue = 347078319
 	)
 	@Export("approxDestinationX")
 	public int approxDestinationX;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ah")
 	@ObfuscatedGetter(
-		intValue = 920024279
+		intValue = 1494728777
 	)
 	@Export("approxDestinationY")
 	public int approxDestinationY;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ar")
 	@ObfuscatedGetter(
-		intValue = -111949365
+		intValue = 1159468313
 	)
 	@Export("approxDestinationSizeX")
 	public int approxDestinationSizeX;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = -1269252043
+		intValue = 341078091
 	)
 	@Export("approxDestinationSizeY")
 	public int approxDestinationSizeY;
@@ -36,39 +35,55 @@ public abstract class RouteStrategy {
 	protected RouteStrategy() {
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "(IIILih;B)Z",
-		garbageValue = "0"
+		descriptor = "(IIILiw;I)Z",
+		garbageValue = "729664573"
 	)
 	@Export("hasArrived")
 	protected abstract boolean hasArrived(int var1, int var2, int var3, CollisionMap var4);
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "(I)Ljava/lang/String;",
-		garbageValue = "517814479"
+		descriptor = "(I)[Lir;",
+		garbageValue = "-994113329"
 	)
-	static String method4341() {
-		StringBuilder var0 = new StringBuilder();
-
-		Message var2;
-		for (Iterator var1 = Messages.Messages_hashTable.iterator(); var1.hasNext(); var0.append(var2.text).append('\n')) {
-			var2 = (Message)var1.next();
-			if (var2.sender != null && !var2.sender.isEmpty()) {
-				var0.append(var2.sender).append(':');
-			}
-		}
-
-		return var0.toString();
+	static class225[] method4394() {
+		return new class225[]{class225.field2381, class225.field2382, class225.field2387, class225.field2383, class225.field2386, class225.field2384, class225.field2385};
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "972272925"
+		garbageValue = "820783273"
 	)
-	static final void method4340() {
-		class436.method7914("You can't add yourself to your own ignore list");
+	public static void method4389() {
+		PlayerComposition.PlayerAppearance_cachedModels.clear();
+		PlayerComposition.field3599.clearFiles();
+		PlayerComposition.field3611 = 0;
+	}
+
+	@ObfuscatedName("bl")
+	@ObfuscatedSignature(
+		descriptor = "(ILdt;ZB)I",
+		garbageValue = "52"
+	)
+	static int method4393(int var0, Script var1, boolean var2) {
+		int var3;
+		if (var0 == 3500) {
+			var3 = Interpreter.Interpreter_intStack[--DbTableType.Interpreter_intStackSize];
+			Interpreter.Interpreter_intStack[++DbTableType.Interpreter_intStackSize - 1] = Client.field724.method4316(var3) ? 1 : 0;
+			return 1;
+		} else if (var0 == 3501) {
+			var3 = Interpreter.Interpreter_intStack[--DbTableType.Interpreter_intStackSize];
+			Interpreter.Interpreter_intStack[++DbTableType.Interpreter_intStackSize - 1] = Client.field724.method4315(var3) ? 1 : 0;
+			return 1;
+		} else if (var0 == 3502) {
+			var3 = Interpreter.Interpreter_intStack[--DbTableType.Interpreter_intStackSize];
+			Interpreter.Interpreter_intStack[++DbTableType.Interpreter_intStackSize - 1] = Client.field724.method4317(var3) ? 1 : 0;
+			return 1;
+		} else {
+			return 2;
+		}
 	}
 }

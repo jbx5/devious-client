@@ -1,38 +1,82 @@
-import net.runelite.mapping.Export;
+import java.util.ConcurrentModificationException;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("px")
-public final class class403 {
-	@ObfuscatedName("ac")
-	@Export("base37Table")
-	static final char[] base37Table;
-	@ObfuscatedName("al")
-	static long[] field4487;
-	@ObfuscatedName("ak")
-	@ObfuscatedGetter(
-		intValue = 1749190019
+@ObfuscatedName("pg")
+public class class403 implements Iterator {
+	@ObfuscatedName("at")
+	@ObfuscatedSignature(
+		descriptor = "Lps;"
 	)
-	@Export("KitDefinition_fileCount")
-	public static int KitDefinition_fileCount;
+	class404 field4478;
+	@ObfuscatedName("ah")
+	@ObfuscatedGetter(
+		intValue = -1176280827
+	)
+	int field4477;
+	@ObfuscatedName("ar")
+	@ObfuscatedGetter(
+		intValue = -60441427
+	)
+	int field4476;
 
-	static {
-		base37Table = new char[]{'_', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
-		field4487 = new long[12];
+	@ObfuscatedSignature(
+		descriptor = "(Lps;)V"
+	)
+	class403(class404 var1) {
+		this.field4477 = 0;
+		this.field4476 = this.field4478.field4483;
+		this.field4478 = var1;
+	}
 
-		for (int var0 = 0; var0 < field4487.length; ++var0) {
-			field4487[var0] = (long)Math.pow(37.0D, (double)var0);
+	public boolean hasNext() {
+		return this.field4477 < this.field4478.field4485;
+	}
+
+	public void remove() {
+		throw new UnsupportedOperationException();
+	}
+
+	public Object next() {
+		if (this.field4478.field4483 != this.field4476) {
+			throw new ConcurrentModificationException();
+		} else if (this.field4477 < this.field4478.field4485) {
+			Object var1 = this.field4478.field4481[this.field4477].field4474;
+			++this.field4477;
+			return var1;
+		} else {
+			throw new NoSuchElementException();
 		}
-
 	}
 
 	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(Lbw;I)V",
-		garbageValue = "-1869845736"
+		descriptor = "(IIB)I",
+		garbageValue = "14"
 	)
-	public static final void method7413(class51 var0) {
-		class16.pcmPlayerProvider = var0;
+	static final int method7480(int var0, int var1) {
+		if (var0 == -2) {
+			return 12345678;
+		} else if (var0 == -1) {
+			if (var1 < 2) {
+				var1 = 2;
+			} else if (var1 > 126) {
+				var1 = 126;
+			}
+
+			return var1;
+		} else {
+			var1 = (var0 & 127) * var1 / 128;
+			if (var1 < 2) {
+				var1 = 2;
+			} else if (var1 > 126) {
+				var1 = 126;
+			}
+
+			return (var0 & 65408) + var1;
+		}
 	}
 }

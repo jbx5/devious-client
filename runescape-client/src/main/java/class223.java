@@ -1,180 +1,231 @@
-import net.runelite.mapping.Export;
+import java.util.Arrays;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ij")
-public class class223 {
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "Lij;"
+@ObfuscatedName("il")
+public class class223 implements class29 {
+	@ObfuscatedName("gv")
+	@ObfuscatedGetter(
+		intValue = -60348737
 	)
-	static final class223 field2355;
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "Lij;"
+	static int field2351;
+	@ObfuscatedName("jn")
+	@ObfuscatedGetter(
+		intValue = -1311681143
 	)
-	static final class223 field2343;
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "Lij;"
-	)
-	static final class223 field2344;
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "Lij;"
-	)
-	static final class223 field2353;
-	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "Lij;"
-	)
-	public static final class223 field2346;
+	static int field2367;
+	@ObfuscatedName("at")
+	char[] field2366;
 	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "Lij;"
-	)
-	static final class223 field2356;
+	int[] field2352;
 	@ObfuscatedName("ar")
-	@ObfuscatedSignature(
-		descriptor = "Lij;"
+	public int[] field2353;
+	@ObfuscatedName("ao")
+	@ObfuscatedGetter(
+		intValue = 855313001
 	)
-	public static final class223 field2354;
+	public int field2354;
 	@ObfuscatedName("ab")
-	@ObfuscatedSignature(
-		descriptor = "Lij;"
+	int[] field2355;
+	@ObfuscatedName("au")
+	@ObfuscatedGetter(
+		intValue = -1867836669
 	)
-	public static final class223 field2349;
-	@ObfuscatedName("am")
-	@ObfuscatedSignature(
-		descriptor = "Lij;"
-	)
-	public static final class223 field2347;
-	@ObfuscatedName("av")
-	@ObfuscatedSignature(
-		descriptor = "Lij;"
-	)
-	public static final class223 field2351;
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "Lij;"
-	)
-	public static final class223 field2352;
+	int field2356;
 	@ObfuscatedName("aa")
-	@ObfuscatedSignature(
-		descriptor = "Lij;"
+	@ObfuscatedGetter(
+		intValue = -879893607
 	)
-	public static final class223 field2348;
+	int field2359;
+	@ObfuscatedName("ac")
+	@ObfuscatedGetter(
+		intValue = 266395581
+	)
+	int field2358;
+	@ObfuscatedName("al")
+	@ObfuscatedGetter(
+		intValue = -1341174997
+	)
+	int field2365;
+	@ObfuscatedName("az")
+	boolean[] field2357;
 	@ObfuscatedName("ap")
-	@ObfuscatedSignature(
-		descriptor = "Lij;"
-	)
-	static final class223 field2358;
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "Lij;"
-	)
-	static final class223 field2359;
-	@ObfuscatedName("aw")
-	public static String field2350;
-	@ObfuscatedName("bm")
-	@ObfuscatedSignature(
-		descriptor = "Lui;"
-	)
-	@Export("rasterProvider")
-	public static AbstractRasterProvider rasterProvider;
+	boolean[] field2361;
+	@ObfuscatedName("av")
+	boolean[] field2362;
+	@ObfuscatedName("ax")
+	public char field2363;
 	@ObfuscatedName("as")
 	@ObfuscatedGetter(
-		intValue = 1898440511
+		intValue = 2118557339
 	)
-	public final int field2342;
+	public int field2360;
 
-	static {
-		field2355 = new class223(0);
-		field2343 = new class223(1);
-		field2344 = new class223(2);
-		field2353 = new class223(3);
-		field2346 = new class223(4, class209.field2110);
-		field2356 = new class223(5);
-		field2354 = new class223(6, class209.field2108);
-		field2349 = new class223(7, class209.field2105);
-		field2347 = new class223(8, class209.field2109);
-		field2351 = new class223(9, class209.field2107);
-		field2352 = new class223(10, class209.field2111);
-		field2348 = new class223(11, class209.field2106);
-		field2358 = new class223(12);
-		field2359 = new class223(13);
+	public class223() {
+		this.field2366 = new char[128];
+		this.field2352 = new int[128];
+		this.field2353 = new int[128];
+		this.field2354 = 0;
+		this.field2355 = new int[128];
+		this.field2356 = 0;
+		this.field2359 = 0;
+		this.field2358 = 0;
+		this.field2365 = 0;
+		this.field2357 = new boolean[112];
+		this.field2361 = new boolean[112];
+		this.field2362 = new boolean[112];
 	}
 
-	class223(int var1) {
-		this(var1, (class209)null);
-	}
-
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "(ILik;)V"
+		descriptor = "(IS)Z",
+		garbageValue = "512"
 	)
-	class223(int var1, class209 var2) {
-		this.field2342 = var1;
+	public boolean vmethod4310(int var1) {
+		this.method4311(var1);
+		this.field2357[var1] = true;
+		this.field2361[var1] = true;
+		this.field2362[var1] = false;
+		this.field2353[++this.field2354 - 1] = var1;
+		return true;
 	}
 
-	@ObfuscatedName("gv")
+	@ObfuscatedName("ah")
+	@ObfuscatedSignature(
+		descriptor = "(II)Z",
+		garbageValue = "-1146773117"
+	)
+	public boolean vmethod4320(int var1) {
+		this.field2357[var1] = false;
+		this.field2361[var1] = false;
+		this.field2362[var1] = true;
+		this.field2355[++this.field2356 - 1] = var1;
+		return true;
+	}
+
+	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "(CI)Z",
+		garbageValue = "984376689"
+	)
+	public boolean vmethod4321(char var1) {
+		int var2 = this.field2358 + 1 & 127;
+		if (var2 != this.field2359) {
+			this.field2352[this.field2358] = -1;
+			this.field2366[this.field2358] = var1;
+			this.field2358 = var2;
+		}
+
+		return false;
+	}
+
+	@ObfuscatedName("ao")
+	@ObfuscatedSignature(
+		descriptor = "(ZB)Z",
+		garbageValue = "-49"
+	)
+	public boolean vmethod4312(boolean var1) {
+		return false;
+	}
+
+	@ObfuscatedName("av")
+	@ObfuscatedSignature(
+		descriptor = "(IS)V",
+		garbageValue = "19704"
+	)
+	void method4311(int var1) {
+		int var2 = this.field2358 + 1 & 127;
+		if (var2 != this.field2359) {
+			this.field2352[this.field2358] = var1;
+			this.field2366[this.field2358] = 0;
+			this.field2358 = var2;
+		}
+
+	}
+
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-886545953"
+		garbageValue = "1513942573"
 	)
-	@Export("initCredentials")
-	static void initCredentials() {
-		class467.accessToken = System.getenv("JX_ACCESS_TOKEN");
-		class191.refreshToken = System.getenv("JX_REFRESH_TOKEN");
-		LoginScreenAnimation.sessionId = System.getenv("JX_SESSION_ID");
-		class155.characterId = System.getenv("JX_CHARACTER_ID");
-		String var0 = System.getenv("JX_DISPLAY_NAME");
-		String var1;
-		if (var0 != null && !var0.isEmpty() && var0.charAt(0) != '#') {
-			var1 = var0;
+	public void method4313() {
+		this.field2359 = this.field2365;
+		this.field2365 = this.field2358;
+		this.field2354 = 0;
+		this.field2356 = 0;
+		Arrays.fill(this.field2361, false);
+		Arrays.fill(this.field2362, false);
+	}
+
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z",
+		garbageValue = "1159556377"
+	)
+	public final boolean method4324() {
+		if (this.field2365 == this.field2359) {
+			return false;
 		} else {
-			var1 = "";
+			this.field2360 = this.field2352[this.field2359];
+			this.field2363 = this.field2366[this.field2359];
+			this.field2359 = this.field2359 + 1 & 127;
+			return true;
 		}
-
-		Login.displayName = var1;
 	}
 
-	@ObfuscatedName("mj")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIII)V",
-		garbageValue = "796213891"
+		descriptor = "(IB)Z",
+		garbageValue = "21"
 	)
-	@Export("drawScrollBar")
-	static final void drawScrollBar(int var0, int var1, int var2, int var3, int var4) {
-		class36.scrollBarSprites[0].drawAt(var0, var1);
-		class36.scrollBarSprites[1].drawAt(var0, var3 + var1 - 16);
-		Rasterizer2D.Rasterizer2D_fillRectangle(var0, var1 + 16, 16, var3 - 32, Client.field598);
-		int var5 = var3 * (var3 - 32) / var4;
-		if (var5 < 8) {
-			var5 = 8;
-		}
-
-		int var6 = (var3 - 32 - var5) * var2 / (var4 - var3);
-		Rasterizer2D.Rasterizer2D_fillRectangle(var0, var6 + var1 + 16, 16, var5, Client.field801);
-		Rasterizer2D.Rasterizer2D_drawVerticalLine(var0, var6 + var1 + 16, var5, Client.field601);
-		Rasterizer2D.Rasterizer2D_drawVerticalLine(var0 + 1, var6 + var1 + 16, var5, Client.field601);
-		Rasterizer2D.Rasterizer2D_drawHorizontalLine(var0, var6 + var1 + 16, 16, Client.field601);
-		Rasterizer2D.Rasterizer2D_drawHorizontalLine(var0, var6 + var1 + 17, 16, Client.field601);
-		Rasterizer2D.Rasterizer2D_drawVerticalLine(var0 + 15, var6 + var1 + 16, var5, Client.field556);
-		Rasterizer2D.Rasterizer2D_drawVerticalLine(var0 + 14, var6 + var1 + 17, var5 - 1, Client.field556);
-		Rasterizer2D.Rasterizer2D_drawHorizontalLine(var0, var5 + var6 + var1 + 15, 16, Client.field556);
-		Rasterizer2D.Rasterizer2D_drawHorizontalLine(var0 + 1, var5 + var6 + var1 + 14, 15, Client.field556);
+	public boolean method4315(int var1) {
+		return var1 >= 0 && var1 < 112 ? this.field2361[var1] : false;
 	}
 
-	@ObfuscatedName("oj")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(II)Luq;",
-		garbageValue = "-134807305"
+		descriptor = "(II)Z",
+		garbageValue = "1604984140"
 	)
-	static DbTable method4212(int var0) {
-		DbTable var1 = (DbTable)Client.archive11.get((long)var0);
-		if (var1 == null) {
-			var1 = new DbTable(class313.field3396, var0);
+	public boolean method4316(int var1) {
+		return var1 >= 0 && var1 < 112 ? this.field2357[var1] : false;
+	}
+
+	@ObfuscatedName("aj")
+	@ObfuscatedSignature(
+		descriptor = "(II)Z",
+		garbageValue = "1100003987"
+	)
+	public boolean method4317(int var1) {
+		return var1 >= 0 && var1 < 112 ? this.field2362[var1] : false;
+	}
+
+	@ObfuscatedName("am")
+	@ObfuscatedSignature(
+		descriptor = "(I)[I",
+		garbageValue = "-1519174440"
+	)
+	public int[] method4318() {
+		int[] var1 = new int[this.field2354];
+
+		for (int var2 = 0; var2 < this.field2354; ++var2) {
+			var1[var2] = this.field2353[var2];
+		}
+
+		return var1;
+	}
+
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "(I)[I",
+		garbageValue = "353218827"
+	)
+	public int[] method4319() {
+		int[] var1 = new int[this.field2356];
+
+		for (int var2 = 0; var2 < this.field2356; ++var2) {
+			var1[var2] = this.field2355[var2];
 		}
 
 		return var1;

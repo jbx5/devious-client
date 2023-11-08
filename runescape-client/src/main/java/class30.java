@@ -1,146 +1,130 @@
+import java.util.ArrayList;
+import java.util.Iterator;
 import javax.imageio.ImageIO;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("be")
+@ObfuscatedName("bv")
 public class class30 {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "Lom;"
+		descriptor = "Lol;"
 	)
-	@Export("FloorOverlayDefinition_archive")
-	static AbstractArchive FloorOverlayDefinition_archive;
+	@Export("VarcInt_archive")
+	public static AbstractArchive VarcInt_archive;
 
 	static {
 		ImageIO.setUseCache(false);
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(B)[Lnq;",
-		garbageValue = "-42"
+		descriptor = "(Ljava/util/ArrayList;ZI)V",
+		garbageValue = "358922906"
 	)
-	static class360[] method445() {
-		return new class360[]{class360.field3904, class360.field3906};
+	static void method463(ArrayList var0, boolean var1) {
+		if (!var1) {
+			class316.field3424.clear();
+		}
+
+		Iterator var2 = var0.iterator();
+
+		while (var2.hasNext()) {
+			MusicSong var3 = (MusicSong)var2.next();
+			if (var3.musicTrackGroupId != -1 && var3.musicTrackFileId != -1) {
+				if (!var1) {
+					class316.field3424.add(var3);
+				}
+
+				class316.field3416.add(var3);
+			}
+		}
+
 	}
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Ltp;ILjava/lang/String;B)Ljava/lang/String;",
-		garbageValue = "42"
+		descriptor = "(ILdt;ZI)I",
+		garbageValue = "-2029161315"
 	)
-	static String method448(IterableNodeHashTable var0, int var1, String var2) {
-		if (var0 == null) {
-			return var2;
-		} else {
-			ObjectNode var3 = (ObjectNode)var0.get((long)var1);
-			return var3 == null ? var2 : (String)var3.obj;
-		}
-	}
-
-	@ObfuscatedName("ar")
-	@ObfuscatedSignature(
-		descriptor = "(I)[Lsz;",
-		garbageValue = "-651272604"
-	)
-	static class468[] method449() {
-		return new class468[]{class468.field4805, class468.field4811, class468.field4806, class468.field4808};
-	}
-
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "(ILds;ZI)I",
-		garbageValue = "2111489575"
-	)
-	static int method447(int var0, Script var1, boolean var2) {
-		Widget var3 = class33.widgetDefinition.method6240(Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]);
-		if (var0 == ScriptOpcodes.IF_GETX) {
-			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3.x;
+	static int method462(int var0, Script var1, boolean var2) {
+		Widget var3 = var2 ? Interpreter.scriptDotWidget : HealthBar.scriptActiveWidget;
+		if (var0 == ScriptOpcodes.CC_GETINVOBJECT) {
+			Interpreter.Interpreter_intStack[++DbTableType.Interpreter_intStackSize - 1] = var3.itemId;
 			return 1;
-		} else if (var0 == ScriptOpcodes.IF_GETY) {
-			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3.y;
-			return 1;
-		} else if (var0 == ScriptOpcodes.IF_GETWIDTH) {
-			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3.width;
-			return 1;
-		} else if (var0 == ScriptOpcodes.IF_GETHEIGHT) {
-			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3.height;
-			return 1;
-		} else if (var0 == ScriptOpcodes.IF_GETHIDE) {
-			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3.isHidden ? 1 : 0;
-			return 1;
-		} else if (var0 == ScriptOpcodes.IF_GETLAYER) {
-			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3.parentId;
-			return 1;
-		} else {
-			return 2;
-		}
-	}
-
-	@ObfuscatedName("ih")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "106"
-	)
-	static void method446() {
-		if (class434.worldMap != null) {
-			class434.worldMap.method8664(class87.Client_plane, class20.baseX * 64 + (TextureProvider.localPlayer.x >> 7), class19.baseY * 64 + (TextureProvider.localPlayer.y >> 7), false);
-			class434.worldMap.loadCache();
-		}
-
-	}
-
-	@ObfuscatedName("ke")
-	@ObfuscatedSignature(
-		descriptor = "(III)V",
-		garbageValue = "-1209602899"
-	)
-	@Export("updateItemPile")
-	static final void updateItemPile(int var0, int var1) {
-		NodeDeque var2 = Client.groundItems[class87.Client_plane][var0][var1];
-		if (var2 == null) {
-			class10.scene.removeGroundItemPile(class87.Client_plane, var0, var1);
-		} else {
-			long var3 = -99999999L;
-			TileItem var5 = null;
-
-			TileItem var6;
-			for (var6 = (TileItem)var2.last(); var6 != null; var6 = (TileItem)var2.previous()) {
-				ItemComposition var7 = class214.ItemDefinition_get(var6.id);
-				long var11 = (long)var7.price;
-				if (var7.isStackable == 1) {
-					var11 *= var6.quantity < Integer.MAX_VALUE ? (long)(var6.quantity + 1) : (long)var6.quantity;
-				}
-
-				if (var11 > var3) {
-					var3 = var11;
-					var5 = var6;
-				}
+		} else if (var0 == ScriptOpcodes.CC_GETINVCOUNT) {
+			if (var3.itemId != -1) {
+				Interpreter.Interpreter_intStack[++DbTableType.Interpreter_intStackSize - 1] = var3.itemQuantity;
+			} else {
+				Interpreter.Interpreter_intStack[++DbTableType.Interpreter_intStackSize - 1] = 0;
 			}
 
-			if (var5 == null) {
-				class10.scene.removeGroundItemPile(class87.Client_plane, var0, var1);
-			} else {
-				var2.addLast(var5);
-				TileItem var13 = null;
-				TileItem var8 = null;
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETID) {
+			Interpreter.Interpreter_intStack[++DbTableType.Interpreter_intStackSize - 1] = var3.childIndex;
+			return 1;
+		} else if (var0 == 1707) {
+			Interpreter.Interpreter_intStack[++DbTableType.Interpreter_intStackSize - 1] = var3.method6682() ? 1 : 0;
+			return 1;
+		} else if (var0 == 1708) {
+			return class310.method5938(var3);
+		} else {
+			return var0 == 1709 ? GrandExchangeOfferTotalQuantityComparator.method7080(var3) : 2;
+		}
+	}
 
-				for (var6 = (TileItem)var2.last(); var6 != null; var6 = (TileItem)var2.previous()) {
-					if (var5.id != var6.id) {
-						if (var13 == null) {
-							var13 = var6;
-						}
-
-						if (var6.id != var13.id && var8 == null) {
-							var8 = var6;
-						}
-					}
+	@ObfuscatedName("ck")
+	@ObfuscatedSignature(
+		descriptor = "([BI)[B",
+		garbageValue = "-1158445957"
+	)
+	@Export("decompressBytes")
+	static final byte[] decompressBytes(byte[] var0) {
+		Buffer var1 = new Buffer(var0);
+		int var2 = var1.readUnsignedByte();
+		int var3 = var1.readInt();
+		if (var3 < 0 || AbstractArchive.field4303 != 0 && var3 > AbstractArchive.field4303) {
+			throw new RuntimeException();
+		} else if (var2 == 0) {
+			byte[] var6 = new byte[var3];
+			var1.readBytes(var6, 0, var3);
+			return var6;
+		} else {
+			int var4 = var1.readInt();
+			if (var4 >= 0 && (AbstractArchive.field4303 == 0 || var4 <= AbstractArchive.field4303)) {
+				byte[] var5 = new byte[var4];
+				if (var2 == 1) {
+					BZip2Decompressor.BZip2Decompressor_decompress(var5, var4, var0, var3, 9);
+				} else {
+					AbstractArchive.gzipDecompressor.decompress(var1, var5);
 				}
 
-				long var9 = GrandExchangeOfferAgeComparator.calculateTag(var0, var1, 3, false, 0);
-				class10.scene.newGroundItemPile(class87.Client_plane, var0, var1, class115.getTileHeight(var0 * 128 + 64, var1 * 128 + 64, class87.Client_plane), var5, var9, var13, var8);
+				return var5;
+			} else {
+				throw new RuntimeException();
+			}
+		}
+	}
+
+	@ObfuscatedName("nj")
+	@ObfuscatedSignature(
+		descriptor = "(III)V",
+		garbageValue = "1125993888"
+	)
+	static final void method465(int var0, int var1) {
+		ClanChannel var2 = var0 >= 0 ? Client.currentClanChannels[var0] : ItemContainer.guestClanChannel;
+		if (var2 != null && var1 >= 0 && var1 < var2.method3479()) {
+			ClanChannelMember var3 = (ClanChannelMember)var2.members.get(var1);
+			if (var3.rank == -1) {
+				String var4 = var3.username.getName();
+				PacketBufferNode var5 = class113.getPacketBufferNode(ClientPacket.field3210, Client.packetWriter.isaacCipher);
+				var5.packetBuffer.writeByte(3 + ClanChannel.stringCp1252NullTerminatedByteSize(var4));
+				var5.packetBuffer.writeByte(var0);
+				var5.packetBuffer.writeShort(var1);
+				var5.packetBuffer.writeStringCp1252NullTerminated(var4);
+				Client.packetWriter.addNode(var5);
 			}
 		}
 	}

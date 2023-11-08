@@ -3,10 +3,10 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kc")
+@ObfuscatedName("ju")
 @Implements("WorldMapSprite")
 public final class WorldMapSprite {
-	@ObfuscatedName("al")
+	@ObfuscatedName("ah")
 	@Export("tileColors")
 	final int[] tileColors;
 
@@ -18,10 +18,10 @@ public final class WorldMapSprite {
 		this.tileColors = var1;
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "(IIS)I",
-		garbageValue = "156"
+		descriptor = "(III)I",
+		garbageValue = "-2024920281"
 	)
 	@Export("getTileColor")
 	final int getTileColor(int var1, int var2) {

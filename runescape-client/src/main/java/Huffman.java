@@ -3,16 +3,16 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ns")
+@ObfuscatedName("nh")
 @Implements("Huffman")
 public class Huffman {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("at")
 	@Export("masks")
 	int[] masks;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ah")
 	@Export("bits")
 	byte[] bits;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ar")
 	@Export("keys")
 	int[] keys;
 
@@ -99,10 +99,10 @@ public class Huffman {
 
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "([BII[BII)I",
-		garbageValue = "1960932844"
+		garbageValue = "938505450"
 	)
 	@Export("compress")
 	int compress(byte[] var1, int var2, int var3, byte[] var4, int var5) {
@@ -150,10 +150,10 @@ public class Huffman {
 		return (var7 + 7 >> 3) - var5;
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "([BI[BIII)I",
-		garbageValue = "-1820686670"
+		garbageValue = "-725308504"
 	)
 	@Export("decompress")
 	int decompress(byte[] var1, int var2, byte[] var3, int var4, int var5) {
@@ -292,5 +292,14 @@ public class Huffman {
 
 			return var7 + 1 - var2;
 		}
+	}
+
+	@ObfuscatedName("ao")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/CharSequence;S)I",
+		garbageValue = "17247"
+	)
+	public static int method6840(CharSequence var0) {
+		return NPC.method2721(var0, 10, true);
 	}
 }

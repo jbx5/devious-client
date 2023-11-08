@@ -1,42 +1,45 @@
+import java.awt.Desktop;
+import java.awt.Desktop.Action;
+import java.net.URI;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("db")
+@ObfuscatedName("de")
 @Implements("HealthBar")
 public class HealthBar extends Node {
-	@ObfuscatedName("ap")
-	@ObfuscatedGetter(
-		intValue = 782417661
-	)
-	static int field1312;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
-		descriptor = "Lhj;"
+		descriptor = "Lnn;"
+	)
+	@Export("scriptActiveWidget")
+	static Widget scriptActiveWidget;
+	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "Lgh;"
 	)
 	@Export("definition")
 	HealthBarDefinition definition;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "Lpy;"
+		descriptor = "Lpm;"
 	)
 	@Export("updates")
 	IterableNodeDeque updates;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lhj;)V"
+		descriptor = "(Lgh;)V"
 	)
 	HealthBar(HealthBarDefinition var1) {
 		this.updates = new IterableNodeDeque();
 		this.definition = var1;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "(IIIII)V",
-		garbageValue = "-495031119"
+		descriptor = "(IIIIB)V",
+		garbageValue = "1"
 	)
 	@Export("put")
 	void put(int var1, int var2, int var3, int var4) {
@@ -69,10 +72,10 @@ public class HealthBar extends Node {
 		}
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Ldt;",
-		garbageValue = "-24"
+		descriptor = "(II)Ldv;",
+		garbageValue = "478923199"
 	)
 	@Export("get")
 	HealthBarUpdate get(int var1) {
@@ -94,77 +97,65 @@ public class HealthBar extends Node {
 		}
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "-1212431293"
+		garbageValue = "1159323457"
 	)
 	@Export("isEmpty")
 	boolean isEmpty() {
-		return this.updates.method7247();
+		return this.updates.method7350();
 	}
 
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "(IIS)I",
-		garbageValue = "-21237"
-	)
-	public static int method2618(int var0, int var1) {
-		return (int)Math.round(Math.atan2((double)var0, (double)var1) * 2607.5945876176133D) & 16383;
-	}
-
-	@ObfuscatedName("ak")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "(II)I",
-		garbageValue = "-1762849549"
+		garbageValue = "2038355157"
 	)
-	public static int method2616(int var0) {
-		long var2 = ViewportMouse.ViewportMouse_entityTags[var0];
-		int var1 = (int)(var2 >>> 0 & 127L);
-		return var1;
+	@Export("getVarbit")
+	public static int getVarbit(int var0) {
+		VarbitComposition var1 = ClientPreferences.method2644(var0);
+		int var2 = var1.baseVar;
+		int var3 = var1.startBit;
+		int var4 = var1.endBit;
+		int var5 = Varps.Varps_masks[var4 - var3];
+		return Varps.Varps_main[var2] >> var3 & var5;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "(IS)I",
-		garbageValue = "28917"
+		descriptor = "(I)[Ldm;",
+		garbageValue = "-789514227"
 	)
-	public static int method2619(int var0) {
-		return (var0 & class523.field5093) - 1;
+	static class89[] method2656() {
+		return new class89[]{class89.field1075, class89.field1081, class89.field1072, class89.field1071, class89.field1077};
 	}
 
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(Lul;IB)V",
-		garbageValue = "1"
+		descriptor = "(Ljava/lang/String;ZZI)V",
+		garbageValue = "2050033545"
 	)
-	public static void method2617(Buffer var0, int var1) {
-		if (JagexCache.JagexCache_randomDat != null) {
-			try {
-				JagexCache.JagexCache_randomDat.seek(0L);
-				JagexCache.JagexCache_randomDat.write(var0.array, var1, 24);
-			} catch (Exception var3) {
-			}
-		}
-
-	}
-
-	@ObfuscatedName("ar")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "516067263"
-	)
-	public static void method2615() {
-		try {
-			JagexCache.JagexCache_dat2File.close();
-
-			for (int var0 = 0; var0 < UrlRequester.field1438; ++var0) {
-				UserComparator8.JagexCache_idxFiles[var0].close();
+	@Export("openURL")
+	public static void openURL(String var0, boolean var1, boolean var2) {
+		if (var1) {
+			if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Action.BROWSE)) {
+				try {
+					Desktop.getDesktop().browse(new URI(var0));
+					return;
+				} catch (Exception var4) {
+				}
 			}
 
-			JagexCache.JagexCache_idx255File.close();
-			JagexCache.JagexCache_randomDat.close();
-		} catch (Exception var2) {
+			if (class31.field157.startsWith("win")) {
+				Canvas.method325(var0, 0, "openjs");
+			} else if (class31.field157.startsWith("mac")) {
+				Canvas.method325(var0, 1, "openjs");
+			} else {
+				Canvas.method325(var0, 2, "openjs");
+			}
+		} else {
+			Canvas.method325(var0, 3, "openjs");
 		}
 
 	}

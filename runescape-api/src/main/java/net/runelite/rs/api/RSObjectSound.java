@@ -18,8 +18,14 @@ public interface RSObjectSound extends AmbientSoundEffect
 	int getMaxY();
 
 	@Import("soundEffectId")
+	@Override
 	int getSoundEffectId();
 
+	@Import("soundEffectIds")
+	@Override
+	int[] getBackgroundSoundEffectIds();
+
 	@Import("plane")
+	@Override
 	int getPlane();
 }

@@ -1,122 +1,156 @@
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dh")
-public enum class92 implements MouseWheel {
-	@ObfuscatedName("ac")
+@ObfuscatedName("da")
+public class class92 {
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "Ldh;"
+		descriptor = "Lda;"
 	)
-	field1111(0, -1),
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "Ldh;"
-	)
-	field1109(1, 2),
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "Ldh;"
-	)
-	field1108(2, 3),
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "Ldh;"
-	)
-	field1110(3, 4),
-	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "Ldh;"
-	)
-	field1112(4, 5),
+	static final class92 field1136;
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "Ldh;"
+		descriptor = "Lda;"
 	)
-	field1113(5, 6);
-
-	@ObfuscatedName("fy")
-	@ObfuscatedSignature(
-		descriptor = "Lok;"
-	)
-	static Archive field1117;
+	static final class92 field1133;
 	@ObfuscatedName("ar")
-	@ObfuscatedGetter(
-		intValue = 818469175
+	@ObfuscatedSignature(
+		descriptor = "Lda;"
 	)
-	final int field1114;
+	static final class92 field1131;
+	@ObfuscatedName("ao")
+	@ObfuscatedSignature(
+		descriptor = "Lda;"
+	)
+	static final class92 field1130;
 	@ObfuscatedName("ab")
-	@ObfuscatedGetter(
-		intValue = 497701773
+	@ObfuscatedSignature(
+		descriptor = "Lda;"
 	)
-	final int field1115;
+	static final class92 field1137;
+	@ObfuscatedName("au")
+	@ObfuscatedSignature(
+		descriptor = "Lda;"
+	)
+	static final class92 field1132;
+	@ObfuscatedName("aa")
+	@ObfuscatedSignature(
+		descriptor = "Lda;"
+	)
+	static final class92 field1128;
+	@ObfuscatedName("ac")
+	@ObfuscatedSignature(
+		descriptor = "Lda;"
+	)
+	static final class92 field1134;
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "Lda;"
+	)
+	static final class92 field1135;
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "Lda;"
+	)
+	static final class92 field1129;
+	@ObfuscatedName("ap")
+	@ObfuscatedSignature(
+		descriptor = "Lda;"
+	)
+	static final class92 field1143;
+	@ObfuscatedName("av")
+	@ObfuscatedSignature(
+		descriptor = "Lda;"
+	)
+	static final class92 field1138;
+	@ObfuscatedName("ax")
+	@ObfuscatedSignature(
+		descriptor = "Lda;"
+	)
+	static final class92 field1139;
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "Lda;"
+	)
+	static final class92 field1140;
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "Lda;"
+	)
+	static final class92 field1141;
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "Lda;"
+	)
+	static final class92 field1142;
 
-	class92(int var3, int var4) {
-		this.field1114 = var3;
-		this.field1115 = var4;
+	static {
+		field1136 = new class92();
+		field1133 = new class92();
+		field1131 = new class92();
+		field1130 = new class92();
+		field1137 = new class92();
+		field1132 = new class92();
+		field1128 = new class92();
+		field1134 = new class92();
+		field1135 = new class92();
+		field1129 = new class92();
+		field1143 = new class92();
+		field1138 = new class92();
+		field1139 = new class92();
+		field1140 = new class92();
+		field1141 = new class92();
+		field1142 = new class92();
+	}
+
+	class92() {
+	}
+
+	@ObfuscatedName("at")
+	@ObfuscatedSignature(
+		descriptor = "(II)Lgh;",
+		garbageValue = "-1228219586"
+	)
+	public static HealthBarDefinition method2445(int var0) {
+		HealthBarDefinition var1 = (HealthBarDefinition)HealthBarDefinition.HealthBarDefinition_cached.get((long)var0);
+		if (var1 != null) {
+			return var1;
+		} else {
+			byte[] var2 = HealthBarDefinition.HealthBarDefinition_archive.takeFile(33, var0);
+			var1 = new HealthBarDefinition();
+			var1.field1870 = var0;
+			if (var2 != null) {
+				var1.decode(new Buffer(var2));
+			}
+
+			HealthBarDefinition.HealthBarDefinition_cached.put(var1, (long)var0);
+			return var1;
+		}
 	}
 
 	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-1243971674"
+		descriptor = "(II)I",
+		garbageValue = "1040473159"
 	)
-	@Export("rsOrdinal")
-	public int rsOrdinal() {
-		return this.field1115;
+	static int method2446(int var0) {
+		Message var1 = (Message)Messages.Messages_hashTable.get((long)var0);
+		if (var1 == null) {
+			return -1;
+		} else {
+			return var1.nextDual == Messages.Messages_queue.sentinel ? -1 : ((Message)var1.nextDual).count;
+		}
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("jv")
 	@ObfuscatedSignature(
-		descriptor = "([BIIB)Ljava/lang/String;",
-		garbageValue = "-128"
+		descriptor = "(B)V",
+		garbageValue = "124"
 	)
-	@Export("decodeStringCp1252")
-	public static String decodeStringCp1252(byte[] var0, int var1, int var2) {
-		char[] var3 = new char[var2];
-		int var4 = 0;
-
-		for (int var5 = 0; var5 < var2; ++var5) {
-			int var6 = var0[var5 + var1] & 255;
-			if (var6 != 0) {
-				if (var6 >= 128 && var6 < 160) {
-					char var7 = class399.cp1252AsciiExtension[var6 - 128];
-					if (var7 == 0) {
-						var7 = '?';
-					}
-
-					var6 = var7;
-				}
-
-				var3[var4++] = (char)var6;
-			}
+	static void method2447() {
+		if (class229.localPlayer.x >> 7 == Client.destinationX && class229.localPlayer.y >> 7 == Client.destinationY) {
+			Client.destinationX = 0;
 		}
 
-		return new String(var3, 0, var4);
-	}
-
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "(CII)Ljava/lang/String;",
-		garbageValue = "1422226008"
-	)
-	public static String method2360(char var0, int var1) {
-		char[] var2 = new char[var1];
-
-		for (int var3 = 0; var3 < var1; ++var3) {
-			var2[var3] = var0;
-		}
-
-		return new String(var2);
-	}
-
-	@ObfuscatedName("om")
-	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "-82"
-	)
-	public static boolean method2358() {
-		return Client.staffModLevel >= 2;
 	}
 }

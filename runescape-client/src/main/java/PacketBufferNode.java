@@ -4,42 +4,42 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("lx")
+@ObfuscatedName("ld")
 @Implements("PacketBufferNode")
 public class PacketBufferNode extends Node {
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "[Llx;"
+		descriptor = "[Lld;"
 	)
 	@Export("PacketBufferNode_packetBufferNodes")
 	static PacketBufferNode[] PacketBufferNode_packetBufferNodes;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		intValue = -283957213
+		intValue = -1591179597
 	)
 	@Export("PacketBufferNode_packetBufferNodeCount")
 	static int PacketBufferNode_packetBufferNodeCount;
-	@ObfuscatedName("ac")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "Lln;"
+		descriptor = "Llq;"
 	)
 	@Export("clientPacket")
 	ClientPacket clientPacket;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ah")
 	@ObfuscatedGetter(
-		intValue = -205658139
+		intValue = 1596400087
 	)
 	@Export("clientPacketLength")
 	int clientPacketLength;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "Luy;"
+		descriptor = "Luo;"
 	)
 	@Export("packetBuffer")
 	public PacketBuffer packetBuffer;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = -1678773637
+		intValue = -1934564091
 	)
 	@Export("index")
 	public int index;
@@ -52,10 +52,10 @@ public class PacketBufferNode extends Node {
 	PacketBufferNode() {
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "1253397804"
+		garbageValue = "-1380070255"
 	)
 	@Export("release")
 	public void release() {
@@ -64,211 +64,266 @@ public class PacketBufferNode extends Node {
 		}
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "([FIFZFZ[FB)I",
-		garbageValue = "88"
+		descriptor = "(III)I",
+		garbageValue = "-1877979689"
 	)
-	public static int method5873(float[] var0, int var1, float var2, boolean var3, float var4, boolean var5, float[] var6) {
-		float var7 = 0.0F;
+	public static int method5929(int var0, int var1) {
+		return (int)Math.round(Math.atan2((double)var0, (double)var1) * 2607.5945876176133D) & 16383;
+	}
 
-		for (int var8 = 0; var8 < var1 + 1; ++var8) {
-			var7 += Math.abs(var0[var8]);
+	@ObfuscatedName("ax")
+	@ObfuscatedSignature(
+		descriptor = "(ZI)V",
+		garbageValue = "1854762565"
+	)
+	static void method5917(boolean var0) {
+		if (var0) {
+			SecureRandomCallable.method2326();
+		} else {
+			for (int var1 = 0; var1 < class316.musicSongs.size(); ++var1) {
+				MusicSong var2 = (MusicSong)class316.musicSongs.get(var1);
+				if (var2 == null) {
+					class316.musicSongs.remove(var1);
+					--var1;
+				} else if (var2.field3526) {
+					if (var2.midiPcmStream.field3455 > 0) {
+						--var2.midiPcmStream.field3455;
+					}
+
+					var2.midiPcmStream.clear();
+					var2.midiPcmStream.method6011();
+					var2.midiPcmStream.setPcmStreamVolume(0);
+					class316.musicSongs.remove(var1);
+					--var1;
+				} else {
+					var2.field3526 = true;
+				}
+			}
 		}
 
-		float var44 = (Math.abs(var2) + Math.abs(var4)) * (float)(var1 + 1) * class128.field1501;
-		if (var7 <= var44) {
-			return -1;
-		} else {
-			float[] var9 = new float[var1 + 1];
+	}
 
-			int var10;
-			for (var10 = 0; var10 < var1 + 1; ++var10) {
-				var9[var10] = var0[var10] * (1.0F / var7);
-			}
+	@ObfuscatedName("lc")
+	@ObfuscatedSignature(
+		descriptor = "(IIIIS)V",
+		garbageValue = "-9846"
+	)
+	@Export("addSceneMenuOptions")
+	static final void addSceneMenuOptions(int var0, int var1, int var2, int var3) {
+		if (Client.isItemSelected == 0 && !Client.isSpellSelected) {
+			WorldMapSectionType.insertMenuItemNoShift("Walk here", "", 23, 0, var0 - var2, var1 - var3);
+		}
 
-			while (Math.abs(var9[var1]) < var44) {
-				--var1;
-			}
+		long var4 = -1L;
+		long var6 = -1L;
 
-			var10 = 0;
-			if (var1 == 0) {
-				return var10;
-			} else if (var1 == 1) {
-				var6[0] = -var9[0] / var9[1];
-				boolean var42 = var3 ? var2 < var6[0] + var44 : var2 < var6[0] - var44;
-				boolean var43 = var5 ? var4 > var6[0] - var44 : var4 > var6[0] + var44;
-				var10 = var42 && var43 ? 1 : 0;
-				if (var10 > 0) {
-					if (var3 && var6[0] < var2) {
-						var6[0] = var2;
-					} else if (var5 && var6[0] > var4) {
-						var6[0] = var4;
+		int var8;
+		for (var8 = 0; var8 < class93.method2450(); ++var8) {
+			long var25 = ViewportMouse.ViewportMouse_entityTags[var8];
+			if (var25 != var6) {
+				var6 = var25;
+				long var15 = ViewportMouse.ViewportMouse_entityTags[var8];
+				int var14 = (int)(var15 >>> 0 & 127L);
+				var14 = var14;
+				int var29 = GrandExchangeOfferAgeComparator.method7113(var8);
+				int var16 = class128.method3081(var8);
+				int var17 = class232.Entity_unpackID(ViewportMouse.ViewportMouse_entityTags[var8]);
+				int var18 = var17;
+				int var22;
+				if (var16 == 2 && class36.scene.getObjectFlags(ItemLayer.Client_plane, var14, var29, var25) >= 0) {
+					ObjectComposition var19 = WorldMapSection2.getObjectDefinition(var17);
+					if (var19.transforms != null) {
+						var19 = var19.transform();
 					}
-				}
 
-				return var10;
-			} else {
-				class467 var11 = new class467(var9, var1);
-				float[] var12 = new float[var1 + 1];
+					if (var19 == null) {
+						continue;
+					}
 
-				for (int var13 = 1; var13 <= var1; ++var13) {
-					var12[var13 - 1] = (float)var13 * var9[var13];
-				}
+					PendingSpawn var20 = null;
 
-				float[] var41 = new float[var1 + 1];
-				int var14 = method5873(var12, var1 - 1, var2, false, var4, false, var41);
-				if (var14 == -1) {
-					return 0;
-				} else {
-					boolean var15 = false;
-					float var17 = 0.0F;
-					float var18 = 0.0F;
-					float var19 = 0.0F;
-
-					for (int var20 = 0; var20 <= var14; ++var20) {
-						if (var10 > var1) {
-							return var10;
+					for (PendingSpawn var21 = (PendingSpawn)Client.pendingSpawns.last(); var21 != null; var21 = (PendingSpawn)Client.pendingSpawns.previous()) {
+						if (var21.plane == ItemLayer.Client_plane && var14 == var21.x && var29 == var21.y && var18 == var21.field1162) {
+							var20 = var21;
+							break;
 						}
+					}
 
-						float var16;
-						if (var20 == 0) {
-							var16 = var2;
-							var18 = Frames.method4846(var9, var1, var2);
-							if (Math.abs(var18) <= var44 && var3) {
-								var6[var10++] = var2;
-							}
-						} else {
-							var16 = var19;
-							var18 = var17;
+					if (Client.isItemSelected == 1) {
+						WorldMapSectionType.insertMenuItemNoShift("Use", Client.field767 + " " + "->" + " " + class167.colorStartTag(65535) + var19.name, 1, var18, var14, var29);
+					} else if (Client.isSpellSelected) {
+						if ((UrlRequest.selectedSpellFlags & 4) == 4) {
+							WorldMapSectionType.insertMenuItemNoShift(Client.selectedSpellActionName, Client.selectedSpellName + " " + "->" + " " + class167.colorStartTag(65535) + var19.name, 2, var18, var14, var29);
 						}
+					} else {
+						String[] var37 = var19.actions;
+						if (var37 != null) {
+							for (var22 = 4; var22 >= 0; --var22) {
+								if ((var20 == null || var20.method2455(var22)) && var37[var22] != null) {
+									short var23 = 0;
+									if (var22 == 0) {
+										var23 = 3;
+									}
 
-						if (var20 == var14) {
-							var19 = var4;
-							var15 = false;
-						} else {
-							var19 = var41[var20];
-						}
+									if (var22 == 1) {
+										var23 = 4;
+									}
 
-						var17 = Frames.method4846(var9, var1, var19);
-						if (var15) {
-							var15 = false;
-						} else if (Math.abs(var17) < var44) {
-							if (var14 != var20 || var5) {
-								var6[var10++] = var19;
-								var15 = true;
-							}
-						} else if (var18 < 0.0F && var17 > 0.0F || var18 > 0.0F && var17 < 0.0F) {
-							int var22 = var10++;
-							float var24 = var16;
-							float var25 = var19;
-							float var26 = Frames.method4846(var11.field4802, var11.field4801, var16);
-							float var23;
-							if (Math.abs(var26) < class128.field1501) {
-								var23 = var16;
-							} else {
-								float var27 = Frames.method4846(var11.field4802, var11.field4801, var19);
-								if (Math.abs(var27) < class128.field1501) {
-									var23 = var19;
-								} else {
-									float var28 = 0.0F;
-									float var29 = 0.0F;
-									float var30 = 0.0F;
-									float var35 = 0.0F;
-									boolean var36 = true;
-									boolean var37 = false;
+									if (var22 == 2) {
+										var23 = 5;
+									}
 
-									do {
-										var37 = false;
-										if (var36) {
-											var28 = var24;
-											var35 = var26;
-											var29 = var25 - var24;
-											var30 = var29;
-											var36 = false;
-										}
+									if (var22 == 3) {
+										var23 = 6;
+									}
 
-										if (Math.abs(var35) < Math.abs(var27)) {
-											var24 = var25;
-											var25 = var28;
-											var28 = var24;
-											var26 = var27;
-											var27 = var35;
-											var35 = var26;
-										}
+									if (var22 == 4) {
+										var23 = 1001;
+									}
 
-										float var38 = class128.field1504 * Math.abs(var25) + 0.0F;
-										float var39 = 0.5F * (var28 - var25);
-										boolean var40 = Math.abs(var39) > var38 && 0.0F != var27;
-										if (var40) {
-											if (Math.abs(var30) >= var38 && Math.abs(var26) > Math.abs(var27)) {
-												float var34 = var27 / var26;
-												float var31;
-												float var32;
-												if (var24 == var28) {
-													var31 = var34 * 2.0F * var39;
-													var32 = 1.0F - var34;
-												} else {
-													var32 = var26 / var35;
-													float var33 = var27 / var35;
-													var31 = var34 * ((var32 - var33) * 2.0F * var39 * var32 - (var33 - 1.0F) * (var25 - var24));
-													var32 = (var32 - 1.0F) * (var33 - 1.0F) * (var34 - 1.0F);
-												}
-
-												if ((double)var31 > 0.0D) {
-													var32 = -var32;
-												} else {
-													var31 = -var31;
-												}
-
-												var34 = var30;
-												var30 = var29;
-												if (var31 * 2.0F < var39 * 3.0F * var32 - Math.abs(var38 * var32) && var31 < Math.abs(var32 * 0.5F * var34)) {
-													var29 = var31 / var32;
-												} else {
-													var29 = var39;
-													var30 = var39;
-												}
-											} else {
-												var29 = var39;
-												var30 = var39;
-											}
-
-											var24 = var25;
-											var26 = var27;
-											if (Math.abs(var29) > var38) {
-												var25 += var29;
-											} else if ((double)var39 > 0.0D) {
-												var25 += var38;
-											} else {
-												var25 -= var38;
-											}
-
-											var27 = Frames.method4846(var11.field4802, var11.field4801, var25);
-											if ((double)(var27 * (var35 / Math.abs(var35))) > 0.0D) {
-												var36 = true;
-												var37 = true;
-											} else {
-												var37 = true;
-											}
-										}
-									} while(var37);
-
-									var23 = var25;
+									WorldMapSectionType.insertMenuItemNoShift(var37[var22], class167.colorStartTag(65535) + var19.name, var23, var18, var14, var29);
 								}
 							}
+						}
 
-							var6[var22] = var23;
-							if (var10 > 1 && var6[var10 - 2] >= var6[var10 - 1] - var44) {
-								var6[var10 - 2] = (var6[var10 - 1] + var6[var10 - 2]) * 0.5F;
-								--var10;
+						WorldMapSectionType.insertMenuItemNoShift("Examine", class167.colorStartTag(65535) + var19.name, 1002, var19.id, var14, var29);
+					}
+				}
+
+				int var30;
+				Player var31;
+				NPC var38;
+				int[] var39;
+				if (var16 == 1) {
+					NPC var33 = Client.npcs[var18];
+					if (var33 == null) {
+						continue;
+					}
+
+					if (var33.definition.size == 1 && (var33.x & 127) == 64 && (var33.y & 127) == 64) {
+						for (var30 = 0; var30 < Client.npcCount; ++var30) {
+							var38 = Client.npcs[Client.npcIndices[var30]];
+							if (var38 != null && var38 != var33 && var38.definition.size == 1 && var38.x == var33.x && var38.y == var33.y) {
+								WorldMapLabelSize.addNpcToMenu(var38, Client.npcIndices[var30], var14, var29);
+							}
+						}
+
+						var30 = Players.Players_count;
+						var39 = Players.Players_indices;
+
+						for (var22 = 0; var22 < var30; ++var22) {
+							var31 = Client.players[var39[var22]];
+							if (var31 != null && var31.x == var33.x && var31.y == var33.y) {
+								ArchiveDiskAction.addPlayerToMenu(var31, var39[var22], var14, var29);
 							}
 						}
 					}
 
-					return var10;
+					WorldMapLabelSize.addNpcToMenu(var33, var18, var14, var29);
+				}
+
+				if (var16 == 0) {
+					Player var34 = Client.players[var18];
+					if (var34 == null) {
+						continue;
+					}
+
+					if ((var34.x & 127) == 64 && (var34.y & 127) == 64) {
+						for (var30 = 0; var30 < Client.npcCount; ++var30) {
+							var38 = Client.npcs[Client.npcIndices[var30]];
+							if (var38 != null && var38.definition.size == 1 && var34.x == var38.x && var34.y == var38.y) {
+								WorldMapLabelSize.addNpcToMenu(var38, Client.npcIndices[var30], var14, var29);
+							}
+						}
+
+						var30 = Players.Players_count;
+						var39 = Players.Players_indices;
+
+						for (var22 = 0; var22 < var30; ++var22) {
+							var31 = Client.players[var39[var22]];
+							if (var31 != null && var34 != var31 && var34.x == var31.x && var31.y == var34.y) {
+								ArchiveDiskAction.addPlayerToMenu(var31, var39[var22], var14, var29);
+							}
+						}
+					}
+
+					if (var18 != Client.combatTargetPlayerIndex) {
+						ArchiveDiskAction.addPlayerToMenu(var34, var18, var14, var29);
+					} else {
+						var4 = var25;
+					}
+				}
+
+				if (var16 == 3) {
+					NodeDeque var35 = Client.groundItems[ItemLayer.Client_plane][var14][var29];
+					if (var35 != null) {
+						for (TileItem var36 = (TileItem)var35.first(); var36 != null; var36 = (TileItem)var35.next()) {
+							ItemComposition var40 = class214.ItemDefinition_get(var36.id);
+							if (Client.isItemSelected == 1) {
+								WorldMapSectionType.insertMenuItemNoShift("Use", Client.field767 + " " + "->" + " " + class167.colorStartTag(16748608) + var40.name, 16, var36.id, var14, var29);
+							} else if (Client.isSpellSelected) {
+								if ((UrlRequest.selectedSpellFlags & 1) == 1) {
+									WorldMapSectionType.insertMenuItemNoShift(Client.selectedSpellActionName, Client.selectedSpellName + " " + "->" + " " + class167.colorStartTag(16748608) + var40.name, 17, var36.id, var14, var29);
+								}
+							} else {
+								String[] var32 = var40.groundActions;
+
+								for (int var41 = 4; var41 >= 0; --var41) {
+									if (var36.method2755(var41)) {
+										if (var32 != null && var32[var41] != null) {
+											byte var24 = 0;
+											if (var41 == 0) {
+												var24 = 18;
+											}
+
+											if (var41 == 1) {
+												var24 = 19;
+											}
+
+											if (var41 == 2) {
+												var24 = 20;
+											}
+
+											if (var41 == 3) {
+												var24 = 21;
+											}
+
+											if (var41 == 4) {
+												var24 = 22;
+											}
+
+											WorldMapSectionType.insertMenuItemNoShift(var32[var41], class167.colorStartTag(16748608) + var40.name, var24, var36.id, var14, var29);
+										} else if (var41 == 2) {
+											WorldMapSectionType.insertMenuItemNoShift("Take", class167.colorStartTag(16748608) + var40.name, 20, var36.id, var14, var29);
+										}
+									}
+								}
+
+								WorldMapSectionType.insertMenuItemNoShift("Examine", class167.colorStartTag(16748608) + var40.name, 1004, var36.id, var14, var29);
+							}
+						}
+					}
 				}
 			}
 		}
+
+		if (-1L != var4) {
+			var8 = (int)(var4 >>> 0 & 127L);
+			int var10 = (int)(var4 >>> 7 & 127L);
+			Player var12 = Client.players[Client.combatTargetPlayerIndex];
+			ArchiveDiskAction.addPlayerToMenu(var12, Client.combatTargetPlayerIndex, var8, var10);
+		}
+
+	}
+
+	@ObfuscatedName("oo")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z",
+		garbageValue = "-1716534762"
+	)
+	public static boolean method5925() {
+		return Client.clickedWidget != null;
 	}
 }

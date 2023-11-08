@@ -1,58 +1,61 @@
+import java.security.SecureRandom;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ht")
+@ObfuscatedName("hp")
 @Implements("EnumComposition")
 public class EnumComposition extends DualNode {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "Lom;"
+		descriptor = "Lol;"
 	)
 	@Export("EnumDefinition_archive")
-	static AbstractArchive EnumDefinition_archive;
-	@ObfuscatedName("al")
+	public static AbstractArchive EnumDefinition_archive;
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "Llr;"
+		descriptor = "Llk;"
 	)
 	@Export("EnumDefinition_cached")
 	public static EvictingDualNodeHashTable EnumDefinition_cached;
-	@ObfuscatedName("ke")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "[Lud;"
+		descriptor = "Ldz;"
 	)
-	@Export("crossSprites")
-	static SpritePixels[] crossSprites;
-	@ObfuscatedName("ak")
+	@Export("loginScreenRunesAnimation")
+	static LoginScreenAnimation loginScreenRunesAnimation;
+	@ObfuscatedName("ih")
+	static SecureRandom field1896;
+	@ObfuscatedName("ar")
 	@Export("inputType")
 	public char inputType;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ao")
 	@Export("outputType")
 	public char outputType;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ab")
 	@Export("defaultStr")
 	public String defaultStr;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		intValue = -2088464929
+		intValue = -1735445249
 	)
 	@Export("defaultInt")
 	public int defaultInt;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("aa")
 	@ObfuscatedGetter(
-		intValue = 464493353
+		intValue = -1590765713
 	)
 	@Export("outputCount")
 	public int outputCount;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@Export("keys")
 	public int[] keys;
-	@ObfuscatedName("am")
+	@ObfuscatedName("al")
 	@Export("intVals")
 	public int[] intVals;
-	@ObfuscatedName("av")
+	@ObfuscatedName("az")
 	@Export("strVals")
 	public String[] strVals;
 
@@ -65,10 +68,10 @@ public class EnumComposition extends DualNode {
 		this.outputCount = 0;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(Lul;B)V",
-		garbageValue = "72"
+		descriptor = "(Luj;I)V",
+		garbageValue = "-673581219"
 	)
 	@Export("decode")
 	void decode(Buffer var1) {
@@ -82,10 +85,10 @@ public class EnumComposition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "(Lul;IB)V",
-		garbageValue = "101"
+		descriptor = "(Luj;II)V",
+		garbageValue = "225113863"
 	)
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
@@ -124,113 +127,38 @@ public class EnumComposition extends DualNode {
 
 	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "0"
+		descriptor = "(I)I",
+		garbageValue = "-1812244472"
 	)
 	@Export("size")
 	public int size() {
 		return this.outputCount;
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "164767930"
+		descriptor = "(Lol;IB)Z",
+		garbageValue = "120"
 	)
-	public static int method3749(int var0) {
-		--var0;
-		var0 |= var0 >>> 1;
-		var0 |= var0 >>> 2;
-		var0 |= var0 >>> 4;
-		var0 |= var0 >>> 8;
-		var0 |= var0 >>> 16;
-		return var0 + 1;
-	}
-
-	@ObfuscatedName("ab")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/CharSequence;B)I",
-		garbageValue = "-124"
-	)
-	@Export("hashString")
-	public static int hashString(CharSequence var0) {
-		int var1 = var0.length();
-		int var2 = 0;
-
-		for (int var3 = 0; var3 < var1; ++var3) {
-			var2 = (var2 << 5) - var2 + Actor.charToByteCp1252(var0.charAt(var3));
-		}
-
-		return var2;
-	}
-
-	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "(IIII)I",
-		garbageValue = "-1375573031"
-	)
-	static final int method3750(int var0, int var1, int var2) {
-		if (var2 > 179) {
-			var1 /= 2;
-		}
-
-		if (var2 > 192) {
-			var1 /= 2;
-		}
-
-		if (var2 > 217) {
-			var1 /= 2;
-		}
-
-		if (var2 > 243) {
-			var1 /= 2;
-		}
-
-		int var3 = (var1 / 32 << 7) + (var0 / 4 << 10) + var2 / 2;
-		return var3;
-	}
-
-	@ObfuscatedName("nm")
-	@ObfuscatedSignature(
-		descriptor = "(Lnm;B)Z",
-		garbageValue = "1"
-	)
-	static final boolean method3761(Widget var0) {
-		int var1 = var0.contentType;
-		if (var1 == 205) {
-			Client.logoutTimer = 250;
-			return true;
+	public static boolean method3679(AbstractArchive var0, int var1) {
+		byte[] var2 = var0.takeFileFlat(var1);
+		if (var2 == null) {
+			return false;
 		} else {
-			int var2;
-			int var3;
-			if (var1 >= 300 && var1 <= 313) {
-				var2 = (var1 - 300) / 2;
-				var3 = var1 & 1;
-				Client.playerAppearance.changeAppearance(var2, var3 == 1);
-			}
-
-			if (var1 >= 314 && var1 <= 323) {
-				var2 = (var1 - 314) / 2;
-				var3 = var1 & 1;
-				Client.playerAppearance.method6270(var2, var3 == 1);
-			}
-
-			if (var1 == 324) {
-				Client.playerAppearance.method6265(0);
-			}
-
-			if (var1 == 325) {
-				Client.playerAppearance.method6265(1);
-			}
-
-			if (var1 == 326) {
-				PacketBufferNode var4 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3140, Client.packetWriter.isaacCipher);
-				Client.playerAppearance.write(var4.packetBuffer);
-				Client.packetWriter.addNode(var4);
-				return true;
-			} else {
-				return false;
-			}
+			class162.SpriteBuffer_decode(var2);
+			return true;
 		}
+	}
+
+	@ObfuscatedName("ap")
+	@ObfuscatedSignature(
+		descriptor = "(IIIII)V",
+		garbageValue = "-264971545"
+	)
+	public static void method3678(int var0, int var1, int var2, int var3) {
+		class316.musicPlayerStatus = var0;
+		class316.field3418 = var1;
+		class316.field3419 = var2;
+		class316.field3417 = var3;
 	}
 }

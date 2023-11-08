@@ -1,129 +1,62 @@
-import net.runelite.mapping.ObfuscatedGetter;
+import java.net.URL;
+import java.util.Date;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("jr")
 public class class241 {
-	@ObfuscatedName("fw")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "Lok;"
+		descriptor = "(I)Z",
+		garbageValue = "87176655"
 	)
-	static Archive field2558;
-	@ObfuscatedName("gk")
-	@ObfuscatedSignature(
-		descriptor = "Lru;"
-	)
-	static GraphicsDefaults field2562;
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "[Led;"
-	)
-	class129[] field2563;
-	@ObfuscatedName("ak")
-	@ObfuscatedGetter(
-		intValue = 1553720975
-	)
-	int field2561;
+	@Export("loadWorlds")
+	static boolean loadWorlds() {
+		try {
+			if (class542.World_request == null) {
+				class542.World_request = class60.urlRequester.request(new URL(class228.field2415));
+			} else if (class542.World_request.isDone()) {
+				byte[] var0 = class542.World_request.getResponse();
+				Buffer var1 = new Buffer(var0);
+				var1.readInt();
+				World.World_count = var1.readUnsignedShort();
+				class361.World_worlds = new World[World.World_count];
 
-	@ObfuscatedSignature(
-		descriptor = "(Lul;I)V"
-	)
-	class241(Buffer var1, int var2) {
-		this.field2563 = new class129[var2];
-		this.field2561 = var1.readUnsignedByte();
+				World var3;
+				for (int var2 = 0; var2 < World.World_count; var3.index = var2++) {
+					var3 = class361.World_worlds[var2] = new World();
+					var3.id = var1.readUnsignedShort();
+					var3.properties = var1.readInt();
+					var3.host = var1.readStringCp1252NullTerminated();
+					var3.activity = var1.readStringCp1252NullTerminated();
+					var3.location = var1.readUnsignedByte();
+					var3.population = var1.readShort();
+				}
 
-		for (int var3 = 0; var3 < this.field2563.length; ++var3) {
-			class129 var4 = new class129(this.field2561, var1, false);
-			this.field2563[var3] = var4;
-		}
-
-		this.method4602();
-	}
-
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-43"
-	)
-	void method4602() {
-		class129[] var1 = this.field2563;
-
-		for (int var2 = 0; var2 < var1.length; ++var2) {
-			class129 var3 = var1[var2];
-			if (var3.field1521 >= 0) {
-				var3.field1506 = this.field2563[var3.field1521];
+				class181.sortWorlds(class361.World_worlds, 0, class361.World_worlds.length - 1, World.World_sortOption1, World.World_sortOption2);
+				class542.World_request = null;
+				return true;
 			}
+		} catch (Exception var4) {
+			var4.printStackTrace();
+			class542.World_request = null;
 		}
 
+		return false;
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "2112190855"
+		descriptor = "(Ljava/util/Date;I)Z",
+		garbageValue = "-209283109"
 	)
-	public int method4604() {
-		return this.field2563.length;
-	}
-
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "(II)Led;",
-		garbageValue = "1689947059"
-	)
-	class129 method4611(int var1) {
-		return var1 >= this.method4604() ? null : this.field2563[var1];
-	}
-
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "(I)[Led;",
-		garbageValue = "-130902547"
-	)
-	class129[] method4606() {
-		return this.field2563;
-	}
-
-	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "(Lfk;II)V",
-		garbageValue = "1460583301"
-	)
-	void method4612(class139 var1, int var2) {
-		this.method4608(var1, var2, (boolean[])null, false);
-	}
-
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "(Lfk;I[ZZI)V",
-		garbageValue = "-2124527943"
-	)
-	void method4608(class139 var1, int var2, boolean[] var3, boolean var4) {
-		int var5 = var1.method3107();
-		int var6 = 0;
-		class129[] var7 = this.method4606();
-
-		for (int var8 = 0; var8 < var7.length; ++var8) {
-			class129 var9 = var7[var8];
-			if (var3 == null || var4 == var3[var6]) {
-				var1.method3089(var2, var9, var6, var5);
-			}
-
-			++var6;
-		}
-
-	}
-
-	@ObfuscatedName("aj")
-	@ObfuscatedSignature(
-		descriptor = "(IB)I",
-		garbageValue = "-127"
-	)
-	public static int method4622(int var0) {
-		if (var0 > 0) {
-			return 1;
-		} else {
-			return var0 < 0 ? -1 : 0;
-		}
+	static boolean method4832(Date var0) {
+		java.util.Calendar var2 = java.util.Calendar.getInstance();
+		var2.set(2, 0);
+		var2.set(5, 1);
+		var2.set(1, 1900);
+		Date var1 = var2.getTime();
+		return var0.after(var1);
 	}
 }

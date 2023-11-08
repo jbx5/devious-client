@@ -1,12 +1,9 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("mg")
-public interface class337 {
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-118"
-	)
-	void vmethod6238();
+@ObfuscatedName("mz")
+public class class337 {
+	@ObfuscatedName("az")
+	@Export("Tiles_hue")
+	static int[] Tiles_hue;
 }
