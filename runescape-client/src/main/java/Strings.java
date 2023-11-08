@@ -15,7 +15,6 @@ public class Strings {
 	@ObfuscatedName("ky")
 	public static String field4191;
 
-	@Export("initCredentials")
 	@ObfuscatedName("<clinit>")
 	static void initCredentials() {
 		field4057 = "Please visit the support page for assistance.";
