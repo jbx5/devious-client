@@ -2,81 +2,42 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ft")
-public class class143 extends class145 {
-	@ObfuscatedName("ac")
+@ObfuscatedName("fg")
+public class class143 extends class144 {
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		longValue = -2075652897916156131L
+		intValue = 826856409
 	)
-	long field1645;
-	@ObfuscatedName("al")
-	String field1644;
+	int field1634;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lff;"
+		descriptor = "Lfv;"
 	)
-	final class148 this$0;
+	final class147 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lff;)V"
+		descriptor = "(Lfv;)V"
 	)
-	class143(class148 var1) {
+	class143(class147 var1) {
 		this.this$0 = var1;
-		this.field1645 = -1L;
-		this.field1644 = null;
+		this.field1634 = -1;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "(Lul;I)V",
-		garbageValue = "-11659242"
+		descriptor = "(Luj;I)V",
+		garbageValue = "-734756620"
 	)
-	void vmethod3414(Buffer var1) {
-		if (var1.readUnsignedByte() != 255) {
-			--var1.offset;
-			this.field1645 = var1.readLong();
-		}
-
-		this.field1644 = var1.readStringCp1252NullTerminatedOrNull();
+	void vmethod3510(Buffer var1) {
+		this.field1634 = var1.readUnsignedShort();
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(Lgi;I)V",
-		garbageValue = "21847466"
+		descriptor = "(Lfc;I)V",
+		garbageValue = "-2111347169"
 	)
-	void vmethod3415(ClanSettings var1) {
-		var1.method3242(this.field1645, this.field1644, 0);
-	}
-
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "(II)F",
-		garbageValue = "1171307082"
-	)
-	public static float method3138(int var0) {
-		var0 &= 16383;
-		return (float)(6.283185307179586D * (double)((float)var0 / 16384.0F));
-	}
-
-	@ObfuscatedName("iu")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "83"
-	)
-	static final void method3142() {
-		if (class183.ClanChat_inClanChat) {
-			if (class358.friendsChat != null) {
-				class358.friendsChat.sort();
-			}
-
-			for (int var0 = 0; var0 < Players.Players_count; ++var0) {
-				Player var1 = Client.players[Players.Players_indices[var0]];
-				var1.clearIsInFriendsChat();
-			}
-
-			class183.ClanChat_inClanChat = false;
-		}
-
+	void vmethod3506(ClanSettings var1) {
+		var1.method3328(this.field1634);
 	}
 }

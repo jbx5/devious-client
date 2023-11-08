@@ -1,77 +1,60 @@
-import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fb")
-public class class142 extends class145 {
-	@ObfuscatedName("ap")
-	@ObfuscatedSignature(
-		descriptor = "Lpu;"
-	)
-	@Export("ItemDefinition_fontPlain11")
-	static Font ItemDefinition_fontPlain11;
-	@ObfuscatedName("ac")
+@ObfuscatedName("fh")
+public class class142 extends class144 {
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		intValue = 2093604299
+		longValue = -8949315075629659099L
 	)
-	int field1640;
-	@ObfuscatedName("al")
-	@ObfuscatedGetter(
-		intValue = 236709987
-	)
-	int field1637;
-	@ObfuscatedName("ak")
-	@ObfuscatedGetter(
-		intValue = -496094403
-	)
-	int field1638;
-	@ObfuscatedName("ax")
-	@ObfuscatedGetter(
-		intValue = -1123406813
-	)
-	int field1639;
+	long field1629;
+	@ObfuscatedName("ah")
+	String field1630;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lff;"
+		descriptor = "Lfv;"
 	)
-	final class148 this$0;
+	final class147 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lff;)V"
+		descriptor = "(Lfv;)V"
 	)
-	class142(class148 var1) {
+	class142(class147 var1) {
 		this.this$0 = var1;
-		this.field1640 = -1;
+		this.field1629 = -1L;
+		this.field1630 = null;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "(Lul;I)V",
-		garbageValue = "-11659242"
+		descriptor = "(Luj;I)V",
+		garbageValue = "-734756620"
 	)
-	void vmethod3414(Buffer var1) {
-		this.field1640 = var1.readUnsignedShort();
-		this.field1637 = var1.readInt();
-		this.field1638 = var1.readUnsignedByte();
-		this.field1639 = var1.readUnsignedByte();
+	void vmethod3510(Buffer var1) {
+		if (var1.readUnsignedByte() != 255) {
+			--var1.offset;
+			this.field1629 = var1.readLong();
+		}
+
+		this.field1630 = var1.readStringCp1252NullTerminatedOrNull();
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(Lgi;I)V",
-		garbageValue = "21847466"
+		descriptor = "(Lfc;I)V",
+		garbageValue = "-2111347169"
 	)
-	void vmethod3415(ClanSettings var1) {
-		var1.method3250(this.field1640, this.field1637, this.field1638, this.field1639);
+	void vmethod3506(ClanSettings var1) {
+		var1.method3327(this.field1629, this.field1630, 0);
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("bu")
 	@ObfuscatedSignature(
-		descriptor = "(Lom;I)V",
-		garbageValue = "1595932932"
+		descriptor = "(IB)I",
+		garbageValue = "0"
 	)
-	public static void method3135(AbstractArchive var0) {
-		StructComposition.StructDefinition_archive = var0;
+	static int method3220(int var0) {
+		return (int)((Math.log((double)var0) / Interpreter.field852 - 7.0D) * 256.0D);
 	}
 }

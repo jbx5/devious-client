@@ -1,63 +1,36 @@
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("qh")
+@ObfuscatedName("qr")
 public class class430 {
-	@ObfuscatedName("al")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "([BIIB)Ljava/lang/String;",
-		garbageValue = "-12"
+		descriptor = "Lqr;"
 	)
-	public static String method7852(byte[] var0, int var1, int var2) {
-		char[] var3 = new char[var2];
-		int var4 = 0;
-		int var5 = var1;
+	static final class430 field4634;
+	@ObfuscatedName("ah")
+	@ObfuscatedSignature(
+		descriptor = "Lqr;"
+	)
+	static final class430 field4633;
+	@ObfuscatedName("ar")
+	final String field4632;
 
-		int var8;
-		for (int var6 = var2 + var1; var5 < var6; var3[var4++] = (char)var8) {
-			int var7 = var0[var5++] & 255;
-			if (var7 < 128) {
-				if (var7 == 0) {
-					var8 = 65533;
-				} else {
-					var8 = var7;
-				}
-			} else if (var7 < 192) {
-				var8 = 65533;
-			} else if (var7 < 224) {
-				if (var5 < var6 && (var0[var5] & 192) == 128) {
-					var8 = (var7 & 31) << 6 | var0[var5++] & 63;
-					if (var8 < 128) {
-						var8 = 65533;
-					}
-				} else {
-					var8 = 65533;
-				}
-			} else if (var7 < 240) {
-				if (var5 + 1 < var6 && (var0[var5] & 192) == 128 && (var0[var5 + 1] & 192) == 128) {
-					var8 = (var7 & 15) << 12 | (var0[var5++] & 63) << 6 | var0[var5++] & 63;
-					if (var8 < 2048) {
-						var8 = 65533;
-					}
-				} else {
-					var8 = 65533;
-				}
-			} else if (var7 < 248) {
-				if (var5 + 2 < var6 && (var0[var5] & 192) == 128 && (var0[var5 + 1] & 192) == 128 && (var0[var5 + 2] & 192) == 128) {
-					var8 = (var7 & 7) << 18 | (var0[var5++] & 63) << 12 | (var0[var5++] & 63) << 6 | var0[var5++] & 63;
-					if (var8 >= 65536 && var8 <= 1114111) {
-						var8 = 65533;
-					} else {
-						var8 = 65533;
-					}
-				} else {
-					var8 = 65533;
-				}
-			} else {
-				var8 = 65533;
-			}
-		}
+	static {
+		field4634 = new class430("Basic");
+		field4633 = new class430("Bearer");
+	}
 
-		return new String(var3, 0, var4);
+	class430(String var1) {
+		this.field4632 = var1;
+	}
+
+	@ObfuscatedName("at")
+	@ObfuscatedSignature(
+		descriptor = "(I)Ljava/lang/String;",
+		garbageValue = "1414159306"
+	)
+	String method7948() {
+		return this.field4632;
 	}
 }

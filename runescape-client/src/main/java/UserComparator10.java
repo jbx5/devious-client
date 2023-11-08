@@ -1,18 +1,21 @@
+import java.lang.management.GarbageCollectorMXBean;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ea")
+@ObfuscatedName("eu")
 @Implements("UserComparator10")
 public class UserComparator10 extends AbstractUserComparator {
-	@ObfuscatedName("wm")
+	@ObfuscatedName("bc")
+	@Export("garbageCollector")
+	static GarbageCollectorMXBean garbageCollector;
+	@ObfuscatedName("qw")
 	@ObfuscatedSignature(
-		descriptor = "Lrw;"
+		descriptor = "[Lnn;"
 	)
-	@Export("masterDisk")
-	static ArchiveDisk masterDisk;
-	@ObfuscatedName("ac")
+	static Widget[] field1453;
+	@ObfuscatedName("at")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -20,10 +23,10 @@ public class UserComparator10 extends AbstractUserComparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "(Lri;Lri;B)I",
-		garbageValue = "0"
+		descriptor = "(Lrh;Lrh;I)I",
+		garbageValue = "-1398324092"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -38,31 +41,18 @@ public class UserComparator10 extends AbstractUserComparator {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2);
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("kt")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "1153152060"
+		garbageValue = "-2060260259"
 	)
-	public static void method2924() {
-		class199.field2007.clear();
-	}
-
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-61"
-	)
-	public static void method2925() {
-		VarpDefinition.VarpDefinition_cached.clear();
-	}
-
-	@ObfuscatedName("nw")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-205905443"
-	)
-	static final void method2922() {
-		Client.field710 = Client.cycleCntr;
-		class183.ClanChat_inClanChat = true;
+	@Export("addCancelMenuEntry")
+	static void addCancelMenuEntry() {
+		class160.method3434();
+		Client.menuActions[0] = "Cancel";
+		Client.menuTargets[0] = "";
+		Client.menuOpcodes[0] = 1006;
+		Client.menuShiftClick[0] = false;
+		Client.menuOptionsCount = 1;
 	}
 }

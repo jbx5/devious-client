@@ -4,81 +4,81 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("om")
+@ObfuscatedName("ol")
 @Implements("AbstractArchive")
 public abstract class AbstractArchive {
-	@ObfuscatedName("bv")
+	@ObfuscatedName("bf")
 	@ObfuscatedSignature(
-		descriptor = "Lvb;"
+		descriptor = "Lve;"
 	)
 	@Export("gzipDecompressor")
 	static GZipDecompressor gzipDecompressor;
-	@ObfuscatedName("bo")
+	@ObfuscatedName("bp")
 	@ObfuscatedGetter(
-		intValue = -584506529
+		intValue = 170709657
 	)
-	static int field4339;
-	@ObfuscatedName("ae")
+	static int field4303;
+	@ObfuscatedName("ai")
 	@ObfuscatedGetter(
-		intValue = -309203221
+		intValue = -121591717
 	)
 	@Export("groupCount")
 	int groupCount;
 	@ObfuscatedName("aw")
 	@Export("groupIds")
 	int[] groupIds;
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ae")
 	@Export("groupNameHashes")
 	int[] groupNameHashes;
-	@ObfuscatedName("az")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "Lvr;"
+		descriptor = "Lvh;"
 	)
 	@Export("groupNameHashTable")
 	IntHashTable groupNameHashTable;
-	@ObfuscatedName("at")
+	@ObfuscatedName("ag")
 	@Export("groupCrcs")
 	int[] groupCrcs;
-	@ObfuscatedName("af")
+	@ObfuscatedName("ad")
 	@Export("groupVersions")
 	int[] groupVersions;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("af")
 	@Export("fileCounts")
 	int[] fileCounts;
-	@ObfuscatedName("bn")
+	@ObfuscatedName("be")
 	@Export("fileIds")
 	int[][] fileIds;
-	@ObfuscatedName("bk")
+	@ObfuscatedName("bd")
 	@Export("fileNameHashes")
 	int[][] fileNameHashes;
-	@ObfuscatedName("by")
+	@ObfuscatedName("bl")
 	@ObfuscatedSignature(
-		descriptor = "[Lvr;"
+		descriptor = "[Lvh;"
 	)
 	@Export("fileNameHashTables")
 	IntHashTable[] fileNameHashTables;
-	@ObfuscatedName("bd")
+	@ObfuscatedName("bi")
 	@Export("groups")
 	Object[] groups;
-	@ObfuscatedName("be")
+	@ObfuscatedName("bv")
 	@Export("files")
 	Object[][] files;
-	@ObfuscatedName("ba")
+	@ObfuscatedName("bg")
 	@ObfuscatedGetter(
-		intValue = 1175049071
+		intValue = 1759179805
 	)
 	@Export("hash")
 	public int hash;
-	@ObfuscatedName("bz")
+	@ObfuscatedName("ba")
 	@Export("releaseGroups")
 	boolean releaseGroups;
-	@ObfuscatedName("bb")
+	@ObfuscatedName("bm")
 	@Export("shallowFiles")
 	boolean shallowFiles;
 
 	static {
 		gzipDecompressor = new GZipDecompressor();
-		field4339 = 0;
+		field4303 = 0;
 	}
 
 	AbstractArchive(boolean var1, boolean var2) {
@@ -86,45 +86,45 @@ public abstract class AbstractArchive {
 		this.shallowFiles = var2;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "(II)V",
-		garbageValue = "1737906888"
+		garbageValue = "606874642"
 	)
 	@Export("loadRegionFromGroup")
 	void loadRegionFromGroup(int var1) {
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(IB)V",
-		garbageValue = "11"
+		descriptor = "(II)V",
+		garbageValue = "-412384319"
 	)
 	@Export("loadGroup")
 	void loadGroup(int var1) {
 	}
 
-	@ObfuscatedName("av")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "(II)I",
-		garbageValue = "177421131"
+		garbageValue = "-788412100"
 	)
 	@Export("groupLoadPercent")
 	int groupLoadPercent(int var1) {
 		return this.groups[var1] != null ? 100 : 0;
 	}
 
-	@ObfuscatedName("bu")
+	@ObfuscatedName("bq")
 	@ObfuscatedSignature(
 		descriptor = "([BI)V",
-		garbageValue = "269560048"
+		garbageValue = "-18383412"
 	)
 	@Export("decodeIndex")
 	void decodeIndex(byte[] var1) {
 		int var3 = var1.length;
-		int var2 = ArchiveDisk.method8262(var1, 0, var3);
+		int var2 = class174.method3540(var1, 0, var3);
 		this.hash = var2;
-		Buffer var4 = new Buffer(class372.decompressBytes(var1));
+		Buffer var4 = new Buffer(class30.decompressBytes(var1));
 		int var5 = var4.readUnsignedByte();
 		if (var5 >= 5 && var5 <= 7) {
 			if (var5 >= 6) {
@@ -249,20 +249,20 @@ public abstract class AbstractArchive {
 		}
 	}
 
-	@ObfuscatedName("bf")
+	@ObfuscatedName("cf")
 	@ObfuscatedSignature(
 		descriptor = "(III)[B",
-		garbageValue = "1711310441"
+		garbageValue = "946380186"
 	)
 	@Export("takeFile")
 	public byte[] takeFile(int var1, int var2) {
 		return this.takeFileEncrypted(var1, var2, (int[])null);
 	}
 
-	@ObfuscatedName("bh")
+	@ObfuscatedName("cg")
 	@ObfuscatedSignature(
 		descriptor = "(II[II)[B",
-		garbageValue = "-1302021436"
+		garbageValue = "1812200763"
 	)
 	@Export("takeFileEncrypted")
 	public byte[] takeFileEncrypted(int var1, int var2, int[] var3) {
@@ -278,7 +278,7 @@ public abstract class AbstractArchive {
 				}
 			}
 
-			byte[] var5 = class135.method3073(this.files[var1][var2], false);
+			byte[] var5 = class128.method3079(this.files[var1][var2], false);
 			if (this.shallowFiles) {
 				this.files[var1][var2] = null;
 			}
@@ -289,10 +289,10 @@ public abstract class AbstractArchive {
 		}
 	}
 
-	@ObfuscatedName("bl")
+	@ObfuscatedName("cv")
 	@ObfuscatedSignature(
 		descriptor = "(III)Z",
-		garbageValue = "-919359930"
+		garbageValue = "-1107473294"
 	)
 	@Export("tryLoadFile")
 	public boolean tryLoadFile(int var1, int var2) {
@@ -310,12 +310,12 @@ public abstract class AbstractArchive {
 		}
 	}
 
-	@ObfuscatedName("bg")
+	@ObfuscatedName("cx")
 	@ObfuscatedSignature(
 		descriptor = "(II)Z",
-		garbageValue = "-855081287"
+		garbageValue = "-544854529"
 	)
-	public boolean method6944(int var1) {
+	public boolean method6954(int var1) {
 		if (this.files.length == 1) {
 			return this.tryLoadFile(0, var1);
 		} else if (this.files[var1].length == 1) {
@@ -325,10 +325,10 @@ public abstract class AbstractArchive {
 		}
 	}
 
-	@ObfuscatedName("bj")
+	@ObfuscatedName("cp")
 	@ObfuscatedSignature(
 		descriptor = "(II)Z",
-		garbageValue = "1482943907"
+		garbageValue = "456199859"
 	)
 	@Export("tryLoadGroup")
 	public boolean tryLoadGroup(int var1) {
@@ -340,10 +340,10 @@ public abstract class AbstractArchive {
 		}
 	}
 
-	@ObfuscatedName("bx")
+	@ObfuscatedName("ce")
 	@ObfuscatedSignature(
 		descriptor = "(B)Z",
-		garbageValue = "39"
+		garbageValue = "127"
 	)
 	@Export("isFullyLoaded")
 	public boolean isFullyLoaded() {
@@ -362,10 +362,10 @@ public abstract class AbstractArchive {
 		return var1;
 	}
 
-	@ObfuscatedName("bi")
+	@ObfuscatedName("ci")
 	@ObfuscatedSignature(
-		descriptor = "(II)[B",
-		garbageValue = "2123852000"
+		descriptor = "(IB)[B",
+		garbageValue = "30"
 	)
 	@Export("takeFileFlat")
 	public byte[] takeFileFlat(int var1) {
@@ -378,10 +378,10 @@ public abstract class AbstractArchive {
 		}
 	}
 
-	@ObfuscatedName("bq")
+	@ObfuscatedName("ct")
 	@ObfuscatedSignature(
-		descriptor = "(III)[B",
-		garbageValue = "1658357673"
+		descriptor = "(IIB)[B",
+		garbageValue = "-4"
 	)
 	@Export("getFile")
 	public byte[] getFile(int var1, int var2) {
@@ -397,17 +397,17 @@ public abstract class AbstractArchive {
 				}
 			}
 
-			byte[] var4 = class135.method3073(this.files[var1][var2], false);
+			byte[] var4 = class128.method3079(this.files[var1][var2], false);
 			return var4;
 		} else {
 			return null;
 		}
 	}
 
-	@ObfuscatedName("bw")
+	@ObfuscatedName("cw")
 	@ObfuscatedSignature(
 		descriptor = "(II)[B",
-		garbageValue = "-2100873000"
+		garbageValue = "-1549556992"
 	)
 	@Export("getFileFlat")
 	public byte[] getFileFlat(int var1) {
@@ -420,30 +420,30 @@ public abstract class AbstractArchive {
 		}
 	}
 
-	@ObfuscatedName("ce")
+	@ObfuscatedName("cq")
 	@ObfuscatedSignature(
-		descriptor = "(IB)[I",
-		garbageValue = "114"
+		descriptor = "(II)[I",
+		garbageValue = "1026301706"
 	)
 	@Export("getGroupFileIds")
 	public int[] getGroupFileIds(int var1) {
 		return var1 >= 0 && var1 < this.fileIds.length ? this.fileIds[var1] : null;
 	}
 
-	@ObfuscatedName("cu")
+	@ObfuscatedName("cl")
 	@ObfuscatedSignature(
-		descriptor = "(IB)I",
-		garbageValue = "5"
+		descriptor = "(II)I",
+		garbageValue = "1471865818"
 	)
 	@Export("getGroupFileCount")
 	public int getGroupFileCount(int var1) {
 		return this.files != null && var1 < this.files.length && this.files[var1] != null ? this.files[var1].length : 0;
 	}
 
-	@ObfuscatedName("cw")
+	@ObfuscatedName("cs")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "325433573"
+		garbageValue = "1806746664"
 	)
 	@Export("getGroupCount")
 	public int getGroupCount() {
@@ -452,8 +452,8 @@ public abstract class AbstractArchive {
 
 	@ObfuscatedName("co")
 	@ObfuscatedSignature(
-		descriptor = "(S)V",
-		garbageValue = "-28003"
+		descriptor = "(B)V",
+		garbageValue = "5"
 	)
 	@Export("clearGroups")
 	public void clearGroups() {
@@ -463,10 +463,10 @@ public abstract class AbstractArchive {
 
 	}
 
-	@ObfuscatedName("cc")
+	@ObfuscatedName("cm")
 	@ObfuscatedSignature(
 		descriptor = "(II)V",
-		garbageValue = "-334571913"
+		garbageValue = "2080028111"
 	)
 	@Export("clearFilesGroup")
 	public void clearFilesGroup(int var1) {
@@ -476,10 +476,10 @@ public abstract class AbstractArchive {
 
 	}
 
-	@ObfuscatedName("cg")
+	@ObfuscatedName("cn")
 	@ObfuscatedSignature(
 		descriptor = "(B)V",
-		garbageValue = "-37"
+		garbageValue = "6"
 	)
 	@Export("clearFiles")
 	public void clearFiles() {
@@ -493,10 +493,10 @@ public abstract class AbstractArchive {
 
 	}
 
-	@ObfuscatedName("cq")
+	@ObfuscatedName("cr")
 	@ObfuscatedSignature(
 		descriptor = "(I[IB)Z",
-		garbageValue = "4"
+		garbageValue = "19"
 	)
 	@Export("buildFiles")
 	boolean buildFiles(int var1, int[] var2) {
@@ -518,29 +518,28 @@ public abstract class AbstractArchive {
 			if (var6) {
 				return true;
 			} else {
-				byte[] var21;
+				byte[] var18;
 				if (var2 == null || var2[0] == 0 && var2[1] == 0 && var2[2] == 0 && var2[3] == 0) {
-					var21 = class135.method3073(this.groups[var1], false);
+					var18 = class128.method3079(this.groups[var1], false);
 				} else {
-					var21 = class135.method3073(this.groups[var1], true);
-					Buffer var8 = new Buffer(var21);
+					var18 = class128.method3079(this.groups[var1], true);
+					Buffer var8 = new Buffer(var18);
 					var8.xteaDecrypt(var2, 5, var8.array.length);
 				}
 
-				byte[] var25 = class372.decompressBytes(var21);
+				byte[] var20 = class30.decompressBytes(var18);
 				if (this.releaseGroups) {
 					this.groups[var1] = null;
 				}
 
-				int var10;
 				if (var3 > 1) {
-					int var22 = var25.length;
-					--var22;
-					var10 = var25[var22] & 255;
-					var22 -= var10 * var3 * 4;
-					Buffer var11 = new Buffer(var25);
+					int var9 = var20.length;
+					--var9;
+					int var10 = var20[var9] & 255;
+					var9 -= var3 * var10 * 4;
+					Buffer var11 = new Buffer(var20);
 					int[] var12 = new int[var3];
-					var11.offset = var22;
+					var11.offset = var9;
 
 					int var14;
 					int var15;
@@ -553,64 +552,38 @@ public abstract class AbstractArchive {
 						}
 					}
 
-					byte[][] var23 = new byte[var3][];
+					byte[][] var19 = new byte[var3][];
 
 					for (var14 = 0; var14 < var3; ++var14) {
-						var23[var14] = new byte[var12[var14]];
+						var19[var14] = new byte[var12[var14]];
 						var12[var14] = 0;
 					}
 
-					var11.offset = var22;
+					var11.offset = var9;
 					var14 = 0;
 
-					int var17;
 					for (var15 = 0; var15 < var10; ++var15) {
-						int var24 = 0;
+						int var16 = 0;
 
-						for (var17 = 0; var17 < var3; ++var17) {
-							var24 += var11.readInt();
-							System.arraycopy(var25, var14, var23[var17], var12[var17], var24);
-							var12[var17] += var24;
-							var14 += var24;
+						for (int var17 = 0; var17 < var3; ++var17) {
+							var16 += var11.readInt();
+							System.arraycopy(var20, var14, var19[var17], var12[var17], var16);
+							var12[var17] += var16;
+							var14 += var16;
 						}
 					}
 
 					for (var15 = 0; var15 < var3; ++var15) {
 						if (!this.shallowFiles) {
-							var17 = var4[var15];
-							byte[] var19 = var23[var15];
-							Object var18;
-							if (var19 == null) {
-								var18 = null;
-							} else if (var19.length > 136) {
-								DirectByteArrayCopier var20 = new DirectByteArrayCopier();
-								var20.set(var19);
-								var18 = var20;
-							} else {
-								var18 = var19;
-							}
-
-							var5[var17] = var18;
+							var5[var4[var15]] = VarcInt.method3598(var19[var15], false);
 						} else {
-							var5[var4[var15]] = var23[var15];
+							var5[var4[var15]] = var19[var15];
 						}
 					}
 				} else if (!this.shallowFiles) {
-					var10 = var4[0];
-					Object var26;
-					if (var25 == null) {
-						var26 = null;
-					} else if (var25.length > 136) {
-						DirectByteArrayCopier var27 = new DirectByteArrayCopier();
-						var27.set(var25);
-						var26 = var27;
-					} else {
-						var26 = var25;
-					}
-
-					var5[var10] = var26;
+					var5[var4[0]] = VarcInt.method3598(var20, false);
 				} else {
-					var5[var4[0]] = var25;
+					var5[var4[0]] = var20;
 				}
 
 				return true;
@@ -618,118 +591,109 @@ public abstract class AbstractArchive {
 		}
 	}
 
-	@ObfuscatedName("cy")
+	@ObfuscatedName("cj")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;S)I",
-		garbageValue = "14942"
+		descriptor = "(Ljava/lang/String;I)I",
+		garbageValue = "1919401274"
 	)
 	@Export("getGroupId")
 	public int getGroupId(String var1) {
 		var1 = var1.toLowerCase();
-		return this.groupNameHashTable.get(EnumComposition.hashString(var1));
+		return this.groupNameHashTable.get(class150.hashString(var1));
 	}
 
-	@ObfuscatedName("cz")
+	@ObfuscatedName("ca")
 	@ObfuscatedSignature(
 		descriptor = "(ILjava/lang/String;I)I",
-		garbageValue = "261034000"
+		garbageValue = "-34343914"
 	)
 	@Export("getFileId")
 	public int getFileId(int var1, String var2) {
 		var2 = var2.toLowerCase();
-		return this.fileNameHashTables[var1].get(EnumComposition.hashString(var2));
+		return this.fileNameHashTables[var1].get(class150.hashString(var2));
 	}
 
-	@ObfuscatedName("cp")
+	@ObfuscatedName("cc")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Ljava/lang/String;I)Z",
-		garbageValue = "873049159"
+		descriptor = "(Ljava/lang/String;Ljava/lang/String;S)Z",
+		garbageValue = "245"
 	)
 	@Export("isValidFileName")
 	public boolean isValidFileName(String var1, String var2) {
 		var1 = var1.toLowerCase();
 		var2 = var2.toLowerCase();
-		int var3 = this.groupNameHashTable.get(EnumComposition.hashString(var1));
+		int var3 = this.groupNameHashTable.get(class150.hashString(var1));
 		if (var3 < 0) {
 			return false;
 		} else {
-			int var4 = this.fileNameHashTables[var3].get(EnumComposition.hashString(var2));
+			int var4 = this.fileNameHashTables[var3].get(class150.hashString(var2));
 			return var4 >= 0;
 		}
 	}
 
-	@ObfuscatedName("cb")
+	@ObfuscatedName("cu")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Ljava/lang/String;S)[B",
-		garbageValue = "-22373"
+		descriptor = "(Ljava/lang/String;Ljava/lang/String;I)[B",
+		garbageValue = "1936244729"
 	)
 	@Export("takeFileByNames")
 	public byte[] takeFileByNames(String var1, String var2) {
 		var1 = var1.toLowerCase();
 		var2 = var2.toLowerCase();
-		int var3 = this.groupNameHashTable.get(EnumComposition.hashString(var1));
-		int var4 = this.fileNameHashTables[var3].get(EnumComposition.hashString(var2));
+		int var3 = this.groupNameHashTable.get(class150.hashString(var1));
+		int var4 = this.fileNameHashTables[var3].get(class150.hashString(var2));
 		return this.takeFile(var3, var4);
 	}
 
-	@ObfuscatedName("cn")
+	@ObfuscatedName("ch")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Ljava/lang/String;I)Z",
-		garbageValue = "-227874487"
+		descriptor = "(Ljava/lang/String;Ljava/lang/String;B)Z",
+		garbageValue = "100"
 	)
 	@Export("tryLoadFileByNames")
 	public boolean tryLoadFileByNames(String var1, String var2) {
 		var1 = var1.toLowerCase();
 		var2 = var2.toLowerCase();
-		int var3 = this.groupNameHashTable.get(EnumComposition.hashString(var1));
-		int var4 = this.fileNameHashTables[var3].get(EnumComposition.hashString(var2));
+		int var3 = this.groupNameHashTable.get(class150.hashString(var1));
+		int var4 = this.fileNameHashTables[var3].get(class150.hashString(var2));
 		return this.tryLoadFile(var3, var4);
 	}
 
-	@ObfuscatedName("ck")
+	@ObfuscatedName("cb")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/String;I)Z",
-		garbageValue = "1792346501"
+		garbageValue = "-1281128467"
 	)
 	@Export("tryLoadGroupByName")
 	public boolean tryLoadGroupByName(String var1) {
 		var1 = var1.toLowerCase();
-		int var2 = this.groupNameHashTable.get(EnumComposition.hashString(var1));
+		int var2 = this.groupNameHashTable.get(class150.hashString(var1));
 		return this.tryLoadGroup(var2);
 	}
 
-	@ObfuscatedName("cr")
+	@ObfuscatedName("cz")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;B)V",
-		garbageValue = "-24"
+		descriptor = "(Ljava/lang/String;I)V",
+		garbageValue = "-1287445108"
 	)
 	@Export("loadRegionFromName")
 	public void loadRegionFromName(String var1) {
 		var1 = var1.toLowerCase();
-		int var2 = this.groupNameHashTable.get(EnumComposition.hashString(var1));
+		int var2 = this.groupNameHashTable.get(class150.hashString(var1));
 		if (var2 >= 0) {
 			this.loadRegionFromGroup(var2);
 		}
 	}
 
-	@ObfuscatedName("cs")
+	@ObfuscatedName("cy")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;B)I",
-		garbageValue = "-108"
+		descriptor = "(Ljava/lang/String;I)I",
+		garbageValue = "-1550662505"
 	)
 	@Export("groupLoadPercentByName")
 	public int groupLoadPercentByName(String var1) {
 		var1 = var1.toLowerCase();
-		int var2 = this.groupNameHashTable.get(EnumComposition.hashString(var1));
+		int var2 = this.groupNameHashTable.get(class150.hashString(var1));
 		return this.groupLoadPercent(var2);
-	}
-
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "1888101922"
-	)
-	public static int method6972(int var0) {
-		return var0 >>> 12;
 	}
 }

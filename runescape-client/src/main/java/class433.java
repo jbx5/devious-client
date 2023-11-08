@@ -2,41 +2,30 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("qf")
+@ObfuscatedName("qm")
 public class class433 {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "Lqf;"
+		descriptor = "Lqm;"
 	)
-	static final class433 field4637;
-	@ObfuscatedName("al")
+	public static final class433 field4645;
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "Lqf;"
+		descriptor = "Lqm;"
 	)
-	static final class433 field4636;
-	@ObfuscatedName("lw")
+	static final class433 field4644;
+	@ObfuscatedName("ar")
 	@ObfuscatedGetter(
-		intValue = 302131747
+		intValue = 1893748147
 	)
-	static int field4639;
-	@ObfuscatedName("ak")
-	final String field4635;
+	final int field4643;
 
 	static {
-		field4637 = new class433("Basic");
-		field4636 = new class433("Bearer");
+		field4645 = new class433(1);
+		field4644 = new class433(0);
 	}
 
-	class433(String var1) {
-		this.field4635 = var1;
-	}
-
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "(B)Ljava/lang/String;",
-		garbageValue = "36"
-	)
-	String method7857() {
-		return this.field4635;
+	class433(int var1) {
+		this.field4643 = var1;
 	}
 }

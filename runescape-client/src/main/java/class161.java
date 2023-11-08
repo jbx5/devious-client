@@ -2,112 +2,80 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gt")
-public abstract class class161 extends Node {
-	@ObfuscatedName("ut")
+@ObfuscatedName("gi")
+public class class161 {
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		intValue = -1814738371
+		longValue = -3329713020240726457L
 	)
-	static int field1754;
+	long field1756;
+	@ObfuscatedName("ah")
+	@ObfuscatedGetter(
+		longValue = 756066404053775467L
+	)
+	public long field1752;
+	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "Lpm;"
+	)
+	IterableNodeDeque field1753;
 
-	class161() {
+	@ObfuscatedSignature(
+		descriptor = "(Luj;)V"
+	)
+	public class161(Buffer var1) {
+		this.field1752 = -1L;
+		this.field1753 = new IterableNodeDeque();
+		this.method3436(var1);
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "(Lul;B)V",
-		garbageValue = "0"
+		descriptor = "(Luj;B)V",
+		garbageValue = "-62"
 	)
-	abstract void vmethod3405(Buffer var1);
+	void method3436(Buffer var1) {
+		this.field1756 = var1.readLong();
+		this.field1752 = var1.readLong();
 
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "(Lgb;B)V",
-		garbageValue = "0"
-	)
-	abstract void vmethod3411(ClanChannel var1);
-
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)[B",
-		garbageValue = "95848814"
-	)
-	static byte[] method3347(String var0) {
-		boolean var1 = true;
-		boolean var2 = true;
-		int var3 = "pattern".length();
-		int var4 = 0;
-		byte[] var5 = new byte[8];
-
-		while (true) {
-			int var6 = var3 + var4;
-			if (var6 >= var0.length()) {
-				return null;
-			}
-
-			char var7 = var0.charAt(var6);
-			if (var7 == ':') {
-				if (var4 == 0) {
-					return null;
-				}
-
-				byte[] var8 = new byte[var4];
-				System.arraycopy(var5, 0, var8, 0, var4);
-				return var8;
-			}
-
-			if (var5.length == var4) {
-				return null;
-			}
-
-			if (var7 >= '0' && var7 <= '9') {
-				var7 = (char)(var7 - '0');
+		for (int var2 = var1.readUnsignedByte(); var2 != 0; var2 = var1.readUnsignedByte()) {
+			Object var3;
+			if (var2 == 1) {
+				var3 = new class156(this);
+			} else if (var2 == 4) {
+				var3 = new class167(this);
+			} else if (var2 == 3) {
+				var3 = new class152(this);
+			} else if (var2 == 2) {
+				var3 = new class150(this);
 			} else {
-				if (var7 < 'a' || var7 > 'z') {
-					return null;
+				if (var2 != 5) {
+					throw new RuntimeException("");
 				}
 
-				var7 = (char)(var7 - 'W');
+				var3 = new class157(this);
 			}
 
-			var5[var4++] = (byte)var7;
+			((class160)var3).vmethod3497(var1);
+			this.field1753.addFirst((Node)var3);
 		}
+
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "([Ljava/lang/String;[IIIS)V",
-		garbageValue = "-11714"
+		descriptor = "(Lgn;I)V",
+		garbageValue = "1259262891"
 	)
-	public static void method3349(String[] var0, int[] var1, int var2, int var3) {
-		if (var2 < var3) {
-			int var4 = (var3 + var2) / 2;
-			int var5 = var2;
-			String var6 = var0[var4];
-			var0[var4] = var0[var3];
-			var0[var3] = var6;
-			int var7 = var1[var4];
-			var1[var4] = var1[var3];
-			var1[var3] = var7;
-
-			for (int var8 = var2; var8 < var3; ++var8) {
-				if (var6 == null || var0[var8] != null && var0[var8].compareTo(var6) < (var8 & 1)) {
-					String var9 = var0[var8];
-					var0[var8] = var0[var5];
-					var0[var5] = var9;
-					int var10 = var1[var8];
-					var1[var8] = var1[var5];
-					var1[var5++] = var10;
-				}
+	public void method3437(ClanChannel var1) {
+		if (var1.key == this.field1756 && this.field1752 == var1.field1772) {
+			for (class160 var2 = (class160)this.field1753.last(); var2 != null; var2 = (class160)this.field1753.previous()) {
+				var2.vmethod3501(var1);
 			}
 
-			var0[var3] = var0[var5];
-			var0[var5] = var6;
-			var1[var3] = var1[var5];
-			var1[var5] = var7;
-			method3349(var0, var1, var2, var5 - 1);
-			method3349(var0, var1, var5 + 1, var3);
+			++var1.field1772;
+		} else {
+			throw new RuntimeException("");
 		}
-
 	}
 }

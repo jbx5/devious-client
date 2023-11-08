@@ -3,25 +3,10 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("et")
+@ObfuscatedName("eh")
 @Implements("UserComparator8")
 public class UserComparator8 extends AbstractUserComparator {
-	@ObfuscatedName("as")
-	@ObfuscatedSignature(
-		descriptor = "[Ltl;"
-	)
-	@Export("JagexCache_idxFiles")
-	public static BufferedFile[] JagexCache_idxFiles;
-	@ObfuscatedName("ev")
-	@Export("mouseCam")
-	static boolean mouseCam;
-	@ObfuscatedName("kn")
-	@ObfuscatedSignature(
-		descriptor = "[Lud;"
-	)
-	@Export("headIconHintSprites")
-	static SpritePixels[] headIconHintSprites;
-	@ObfuscatedName("ac")
+	@ObfuscatedName("at")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -29,10 +14,10 @@ public class UserComparator8 extends AbstractUserComparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "(Lri;Lri;B)I",
-		garbageValue = "0"
+		descriptor = "(Lrh;Lrh;B)I",
+		garbageValue = "118"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -51,76 +36,50 @@ public class UserComparator8 extends AbstractUserComparator {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2);
 	}
 
-	@ObfuscatedName("kn")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "0"
+		descriptor = "(S)[Lfw;",
+		garbageValue = "226"
 	)
-	static final void method2890() {
-		for (PendingSpawn var0 = (PendingSpawn)Client.pendingSpawns.last(); var0 != null; var0 = (PendingSpawn)Client.pendingSpawns.previous()) {
-			if (var0.hitpoints > 0) {
-				--var0.hitpoints;
-			}
+	static class140[] method2955() {
+		return new class140[]{class140.field1617, class140.field1608, class140.field1618, class140.field1610, class140.field1611, class140.field1613, class140.field1607, class140.field1614, class140.field1615};
+	}
 
-			boolean var1;
-			int var2;
-			int var3;
-			ObjectComposition var4;
-			if (var0.hitpoints == 0) {
-				if (var0.objectId >= 0) {
-					var2 = var0.objectId;
-					var3 = var0.field1176;
-					var4 = class91.getObjectDefinition(var2);
-					if (var3 == 11) {
-						var3 = 10;
-					}
+	@ObfuscatedName("at")
+	@ObfuscatedSignature(
+		descriptor = "(Lol;Lol;I)V",
+		garbageValue = "-1842959884"
+	)
+	public static void method2948(AbstractArchive var0, AbstractArchive var1) {
+		SpotAnimationDefinition.SpotAnimationDefinition_archive = var0;
+		SpotAnimationDefinition.SpotAnimationDefinition_modelArchive = var1;
+	}
 
-					if (var3 >= 5 && var3 <= 8) {
-						var3 = 4;
-					}
-
-					var1 = var4.method4007(var3);
-					if (!var1) {
-						continue;
-					}
-				}
-
-				class115.addPendingSpawnToScene(var0.plane, var0.type, var0.x, var0.y, var0.objectId, var0.field1178, var0.field1176, var0.field1180);
-				var0.remove();
-			} else {
-				if (var0.delay > 0) {
-					--var0.delay;
-				}
-
-				if (var0.delay == 0 && var0.x >= 1 && var0.y >= 1 && var0.x <= 102 && var0.y <= 102) {
-					if (var0.field1177 >= 0) {
-						var2 = var0.field1177;
-						var3 = var0.field1173;
-						var4 = class91.getObjectDefinition(var2);
-						if (var3 == 11) {
-							var3 = 10;
-						}
-
-						if (var3 >= 5 && var3 <= 8) {
-							var3 = 4;
-						}
-
-						var1 = var4.method4007(var3);
-						if (!var1) {
-							continue;
-						}
-					}
-
-					class115.addPendingSpawnToScene(var0.plane, var0.type, var0.x, var0.y, var0.field1177, var0.field1170, var0.field1173, var0.field1180);
-					var0.delay = -1;
-					if (var0.objectId == var0.field1177 && var0.objectId == -1) {
-						var0.remove();
-					} else if (var0.objectId == var0.field1177 && var0.field1170 == var0.field1178 && var0.field1173 == var0.field1176) {
-						var0.remove();
-					}
-				}
-			}
+	@ObfuscatedName("nq")
+	@ObfuscatedSignature(
+		descriptor = "(IIII)Ldc;",
+		garbageValue = "853776255"
+	)
+	@Export("openInterface")
+	static final InterfaceParent openInterface(int var0, int var1, int var2) {
+		InterfaceParent var3 = new InterfaceParent();
+		var3.group = var1;
+		var3.type = var2;
+		Client.interfaceParents.put(var3, (long)var0);
+		class130.method3095(var1);
+		Widget var4 = HealthBarDefinition.widgetDefinition.method6285(var0);
+		class159.invalidateWidget(var4);
+		if (Client.meslayerContinueWidget != null) {
+			class159.invalidateWidget(Client.meslayerContinueWidget);
+			Client.meslayerContinueWidget = null;
 		}
 
+		class132.revalidateWidgetScroll(HealthBarDefinition.widgetDefinition.Widget_interfaceComponents[var0 >> 16], var4, false);
+		class106.runWidgetOnLoadListener(var1);
+		if (Client.rootInterface != -1) {
+			class514.runIntfCloseListeners(Client.rootInterface, 1);
+		}
+
+		return var3;
 	}
 }

@@ -4,144 +4,149 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("qq")
+@ObfuscatedName("qn")
 @Implements("Timer")
 public class Timer {
-	@ObfuscatedName("ac")
-	@ObfuscatedGetter(
-		longValue = -4306889190787913315L
-	)
-	long field4609;
-	@ObfuscatedName("al")
-	@ObfuscatedGetter(
-		longValue = -3876844548973792619L
-	)
-	long field4610;
 	@ObfuscatedName("ak")
-	public boolean field4617;
-	@ObfuscatedName("ax")
-	@ObfuscatedGetter(
-		longValue = 4594506903784360007L
+	@ObfuscatedSignature(
+		descriptor = "Lfc;"
 	)
-	long field4612;
-	@ObfuscatedName("ao")
+	static ClanSettings field4599;
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		longValue = 937263286774196801L
+		longValue = -5918236800932361813L
 	)
-	long field4613;
+	long field4600;
 	@ObfuscatedName("ah")
 	@ObfuscatedGetter(
-		longValue = -8607907730093070279L
+		longValue = 8938502343300443105L
 	)
-	long field4611;
+	long field4595;
 	@ObfuscatedName("ar")
+	public boolean field4596;
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = 1368088575
+		longValue = 2558513201177713L
 	)
-	int field4615;
+	long field4597;
 	@ObfuscatedName("ab")
 	@ObfuscatedGetter(
-		intValue = 390686835
+		longValue = 6748223924929752003L
 	)
-	int field4616;
-	@ObfuscatedName("am")
+	long field4598;
+	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		intValue = 23894051
+		longValue = 6630723275566090897L
 	)
-	int field4614;
-	@ObfuscatedName("av")
+	long field4594;
+	@ObfuscatedName("aa")
 	@ObfuscatedGetter(
-		intValue = 1679316281
+		intValue = 1431337855
 	)
-	int field4618;
+	int field4602;
+	@ObfuscatedName("ac")
+	@ObfuscatedGetter(
+		intValue = -472244753
+	)
+	int field4605;
+	@ObfuscatedName("al")
+	@ObfuscatedGetter(
+		intValue = -1263861047
+	)
+	int field4604;
+	@ObfuscatedName("az")
+	@ObfuscatedGetter(
+		intValue = 2108065449
+	)
+	int field4603;
 
 	public Timer() {
-		this.field4609 = -1L;
-		this.field4610 = -1L;
-		this.field4617 = false;
-		this.field4612 = 0L;
-		this.field4613 = 0L;
-		this.field4611 = 0L;
-		this.field4615 = 0;
-		this.field4616 = 0;
-		this.field4614 = 0;
-		this.field4618 = 0;
+		this.field4600 = -1L;
+		this.field4595 = -1L;
+		this.field4596 = false;
+		this.field4597 = 0L;
+		this.field4598 = 0L;
+		this.field4594 = 0L;
+		this.field4602 = 0;
+		this.field4605 = 0;
+		this.field4604 = 0;
+		this.field4603 = 0;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "281982191"
+		garbageValue = "919653710"
 	)
-	public void method7832() {
-		this.field4609 = GrandExchangeOfferTotalQuantityComparator.method7049();
-	}
-
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "8"
-	)
-	public void method7836() {
-		if (-1L != this.field4609) {
-			this.field4613 = GrandExchangeOfferTotalQuantityComparator.method7049() - this.field4609;
-			this.field4609 = -1L;
-		}
-
-	}
-
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "(IB)V",
-		garbageValue = "49"
-	)
-	public void method7833(int var1) {
-		this.field4610 = GrandExchangeOfferTotalQuantityComparator.method7049();
-		this.field4615 = var1;
-	}
-
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1876587712"
-	)
-	public void method7834() {
-		if (-1L != this.field4610) {
-			this.field4612 = GrandExchangeOfferTotalQuantityComparator.method7049() - this.field4610;
-			this.field4610 = -1L;
-		}
-
-		++this.field4614;
-		this.field4617 = true;
-	}
-
-	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-699557437"
-	)
-	public void method7835() {
-		this.field4617 = false;
-		this.field4616 = 0;
+	public void method7923() {
+		this.field4600 = SpotAnimationDefinition.method3775();
 	}
 
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-1309820962"
+		garbageValue = "587956368"
 	)
-	public void method7837() {
-		this.method7834();
+	public void method7924() {
+		if (this.field4600 != -1L) {
+			this.field4598 = SpotAnimationDefinition.method3775() - this.field4600;
+			this.field4600 = -1L;
+		}
+
 	}
 
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "(Lul;I)V",
-		garbageValue = "1951350671"
+		descriptor = "(II)V",
+		garbageValue = "1512116667"
+	)
+	public void method7931(int var1) {
+		this.field4595 = SpotAnimationDefinition.method3775();
+		this.field4602 = var1;
+	}
+
+	@ObfuscatedName("ao")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "-7"
+	)
+	public void method7926() {
+		if (-1L != this.field4595) {
+			this.field4597 = SpotAnimationDefinition.method3775() - this.field4595;
+			this.field4595 = -1L;
+		}
+
+		++this.field4604;
+		this.field4596 = true;
+	}
+
+	@ObfuscatedName("ab")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "2032251318"
+	)
+	public void method7927() {
+		this.field4596 = false;
+		this.field4605 = 0;
+	}
+
+	@ObfuscatedName("au")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "36"
+	)
+	public void method7928() {
+		this.method7926();
+	}
+
+	@ObfuscatedName("aa")
+	@ObfuscatedSignature(
+		descriptor = "(Luj;I)V",
+		garbageValue = "221618490"
 	)
 	@Export("write")
 	public void write(Buffer var1) {
-		long var2 = this.field4613;
+		long var2 = this.field4598;
 		var2 /= 10L;
 		if (var2 < 0L) {
 			var2 = 0L;
@@ -150,7 +155,7 @@ public class Timer {
 		}
 
 		var1.writeShort((int)var2);
-		long var4 = this.field4612;
+		long var4 = this.field4597;
 		var4 /= 10L;
 		if (var4 < 0L) {
 			var4 = 0L;
@@ -159,7 +164,7 @@ public class Timer {
 		}
 
 		var1.writeShort((int)var4);
-		long var6 = this.field4611;
+		long var6 = this.field4594;
 		var6 /= 10L;
 		if (var6 < 0L) {
 			var6 = 0L;
@@ -168,48 +173,9 @@ public class Timer {
 		}
 
 		var1.writeShort((int)var6);
-		var1.writeShort(this.field4615);
-		var1.writeShort(this.field4616);
-		var1.writeShort(this.field4614);
-		var1.writeShort(this.field4618);
-	}
-
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/CharSequence;I)Ljava/lang/String;",
-		garbageValue = "-2042986049"
-	)
-	public static String method7850(CharSequence var0) {
-		int var1 = var0.length();
-		StringBuilder var2 = new StringBuilder(var1);
-
-		for (int var3 = 0; var3 < var1; ++var3) {
-			char var4 = var0.charAt(var3);
-			if ((var4 < 'a' || var4 > 'z') && (var4 < 'A' || var4 > 'Z') && (var4 < '0' || var4 > '9') && var4 != '.' && var4 != '-' && var4 != '*' && var4 != '_') {
-				if (var4 == ' ') {
-					var2.append('+');
-				} else {
-					byte var5 = Actor.charToByteCp1252(var4);
-					var2.append('%');
-					int var6 = var5 >> 4 & 15;
-					if (var6 >= 10) {
-						var2.append((char)(var6 + 55));
-					} else {
-						var2.append((char)(var6 + 48));
-					}
-
-					var6 = var5 & 15;
-					if (var6 >= 10) {
-						var2.append((char)(var6 + 55));
-					} else {
-						var2.append((char)(var6 + 48));
-					}
-				}
-			} else {
-				var2.append(var4);
-			}
-		}
-
-		return var2.toString();
+		var1.writeShort(this.field4602);
+		var1.writeShort(this.field4605);
+		var1.writeShort(this.field4604);
+		var1.writeShort(this.field4603);
 	}
 }

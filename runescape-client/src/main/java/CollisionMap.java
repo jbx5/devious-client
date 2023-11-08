@@ -4,40 +4,39 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ih")
+@ObfuscatedName("iw")
 @Implements("CollisionMap")
 public class CollisionMap {
-	@ObfuscatedName("fm")
-	@ObfuscatedSignature(
-		descriptor = "Lok;"
-	)
-	@Export("archive6")
-	static Archive archive6;
-	@ObfuscatedName("bz")
+	@ObfuscatedName("vj")
 	@ObfuscatedGetter(
-		intValue = -2021200957
+		intValue = 703712075
+	)
+	static int field2370;
+	@ObfuscatedName("ba")
+	@ObfuscatedGetter(
+		intValue = -356375381
 	)
 	@Export("xInset")
 	int xInset;
-	@ObfuscatedName("bb")
+	@ObfuscatedName("bm")
 	@ObfuscatedGetter(
-		intValue = -699061873
+		intValue = 1562012705
 	)
 	@Export("yInset")
 	int yInset;
-	@ObfuscatedName("bo")
+	@ObfuscatedName("bp")
 	@ObfuscatedGetter(
-		intValue = 1430235387
+		intValue = -562831735
 	)
 	@Export("xSize")
 	int xSize;
-	@ObfuscatedName("bp")
+	@ObfuscatedName("bw")
 	@ObfuscatedGetter(
-		intValue = -182180591
+		intValue = 702872543
 	)
 	@Export("ySize")
 	int ySize;
-	@ObfuscatedName("bt")
+	@ObfuscatedName("bj")
 	@Export("flags")
 	public int[][] flags;
 
@@ -50,10 +49,10 @@ public class CollisionMap {
 		this.clear();
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "1112127553"
+		garbageValue = "-1902574063"
 	)
 	@Export("clear")
 	public void clear() {
@@ -69,12 +68,12 @@ public class CollisionMap {
 
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIZB)V",
-		garbageValue = "22"
+		descriptor = "(IIIIZI)V",
+		garbageValue = "-1712724177"
 	)
-	public void method4331(int var1, int var2, int var3, int var4, boolean var5) {
+	public void method4349(int var1, int var2, int var3, int var4, boolean var5) {
 		var1 -= this.xInset;
 		var2 -= this.yInset;
 		if (var3 == 0) {
@@ -221,10 +220,10 @@ public class CollisionMap {
 
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "(IIIIZB)V",
-		garbageValue = "-29"
+		garbageValue = "83"
 	)
 	@Export("addGameObject")
 	public void addGameObject(int var1, int var2, int var3, int var4, boolean var5) {
@@ -248,10 +247,10 @@ public class CollisionMap {
 
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
 		descriptor = "(III)V",
-		garbageValue = "404851372"
+		garbageValue = "-1907019996"
 	)
 	@Export("setBlockedByFloor")
 	public void setBlockedByFloor(int var1, int var2) {
@@ -261,10 +260,10 @@ public class CollisionMap {
 		var10000[var2] |= 2097152;
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(IIB)V",
-		garbageValue = "43"
+		descriptor = "(III)V",
+		garbageValue = "-1671554834"
 	)
 	@Export("setBlockedByFloorDec")
 	public void setBlockedByFloorDec(int var1, int var2) {
@@ -274,10 +273,10 @@ public class CollisionMap {
 		var10000[var2] |= 262144;
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(IIII)V",
-		garbageValue = "1437518268"
+		descriptor = "(IIIB)V",
+		garbageValue = "1"
 	)
 	@Export("setFlag")
 	void setFlag(int var1, int var2, int var3) {
@@ -285,12 +284,12 @@ public class CollisionMap {
 		var10000[var2] |= var3;
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
 		descriptor = "(IIIIZI)V",
-		garbageValue = "1303990924"
+		garbageValue = "1877141157"
 	)
-	public void method4334(int var1, int var2, int var3, int var4, boolean var5) {
+	public void method4382(int var1, int var2, int var3, int var4, boolean var5) {
 		var1 -= this.xInset;
 		var2 -= this.yInset;
 		if (var3 == 0) {
@@ -437,10 +436,10 @@ public class CollisionMap {
 
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
 		descriptor = "(IIIIIZI)V",
-		garbageValue = "-1836775904"
+		garbageValue = "-1490436324"
 	)
 	@Export("setFlagOffNonSquare")
 	public void setFlagOffNonSquare(int var1, int var2, int var3, int var4, int var5, boolean var6) {
@@ -470,10 +469,10 @@ public class CollisionMap {
 
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "(IIII)V",
-		garbageValue = "2063236329"
+		garbageValue = "1035067169"
 	)
 	@Export("setFlagOff")
 	void setFlagOff(int var1, int var2, int var3) {
@@ -481,179 +480,70 @@ public class CollisionMap {
 		var10000[var2] &= ~var3;
 	}
 
-	@ObfuscatedName("av")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(III)V",
-		garbageValue = "-278708003"
+		descriptor = "(IIB)V",
+		garbageValue = "-95"
 	)
-	public void method4315(int var1, int var2) {
+	public void method4362(int var1, int var2) {
 		var1 -= this.xInset;
 		var2 -= this.yInset;
 		int[] var10000 = this.flags[var1];
 		var10000[var2] &= -262145;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/CharSequence;Ljava/lang/CharSequence;Loa;B)I",
-		garbageValue = "-53"
+		descriptor = "(I[BLrg;I)V",
+		garbageValue = "412809840"
 	)
-	@Export("compareStrings")
-	public static int compareStrings(CharSequence var0, CharSequence var1, Language var2) {
-		int var3 = var0.length();
-		int var4 = var1.length();
-		int var5 = 0;
-		int var6 = 0;
-		char var7 = 0;
-		char var8 = 0;
-
-		while (var5 - var7 < var3 || var6 - var8 < var4) {
-			if (var5 - var7 >= var3) {
-				return -1;
-			}
-
-			if (var6 - var8 >= var4) {
-				return 1;
-			}
-
-			char var9;
-			if (var7 != 0) {
-				var9 = var7;
-				boolean var14 = false;
-			} else {
-				var9 = var0.charAt(var5++);
-			}
-
-			char var10;
-			if (var8 != 0) {
-				var10 = var8;
-				boolean var15 = false;
-			} else {
-				var10 = var1.charAt(var6++);
-			}
-
-			var7 = class216.method3940(var9);
-			var8 = class216.method3940(var10);
-			var9 = class319.standardizeChar(var9, var2);
-			var10 = class319.standardizeChar(var10, var2);
-			if (var9 != var10 && Character.toUpperCase(var9) != Character.toUpperCase(var10)) {
-				var9 = Character.toLowerCase(var9);
-				var10 = Character.toLowerCase(var10);
-				if (var9 != var10) {
-					return class11.lowercaseChar(var9, var2) - class11.lowercaseChar(var10, var2);
-				}
-			}
+	static void method4381(int var0, byte[] var1, ArchiveDisk var2) {
+		ArchiveDiskAction var3 = new ArchiveDiskAction();
+		var3.type = 0;
+		var3.key = (long)var0;
+		var3.data = var1;
+		var3.archiveDisk = var2;
+		synchronized(ArchiveDiskActionHandler.ArchiveDiskActionHandler_requestQueue) {
+			ArchiveDiskActionHandler.ArchiveDiskActionHandler_requestQueue.addFirst(var3);
 		}
 
-		int var16 = Math.min(var3, var4);
-
-		char var12;
-		int var17;
-		for (var17 = 0; var17 < var16; ++var17) {
-			if (var2 == Language.Language_FR) {
-				var5 = var3 - 1 - var17;
-				var6 = var4 - 1 - var17;
-			} else {
-				var6 = var17;
-				var5 = var17;
+		synchronized(ArchiveDiskActionHandler.field4272) {
+			if (ArchiveDiskActionHandler.field4271 == 0) {
+				ArchiveDiskActionHandler.ArchiveDiskActionHandler_thread = new Thread(new ArchiveDiskActionHandler());
+				ArchiveDiskActionHandler.ArchiveDiskActionHandler_thread.setDaemon(true);
+				ArchiveDiskActionHandler.ArchiveDiskActionHandler_thread.start();
+				ArchiveDiskActionHandler.ArchiveDiskActionHandler_thread.setPriority(5);
 			}
 
-			char var11 = var0.charAt(var5);
-			var12 = var1.charAt(var6);
-			if (var12 != var11 && Character.toUpperCase(var11) != Character.toUpperCase(var12)) {
-				var11 = Character.toLowerCase(var11);
-				var12 = Character.toLowerCase(var12);
-				if (var12 != var11) {
-					return class11.lowercaseChar(var11, var2) - class11.lowercaseChar(var12, var2);
-				}
-			}
+			ArchiveDiskActionHandler.field4271 = 600;
+			ArchiveDiskActionHandler.field4274 = false;
 		}
+	}
 
-		var17 = var3 - var4;
-		if (var17 != 0) {
-			return var17;
+	@ObfuscatedName("ah")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/Throwable;Ljava/lang/String;)Lvf;"
+	)
+	@Export("newRunException")
+	public static RunException newRunException(Throwable var0, String var1) {
+		RunException var2;
+		if (var0 instanceof RunException) {
+			var2 = (RunException)var0;
+			var2.message = var2.message + ' ' + var1;
 		} else {
-			for (int var18 = 0; var18 < var16; ++var18) {
-				var12 = var0.charAt(var18);
-				char var13 = var1.charAt(var18);
-				if (var13 != var12) {
-					return class11.lowercaseChar(var12, var2) - class11.lowercaseChar(var13, var2);
-				}
-			}
-
-			return 0;
+			var2 = new RunException(var0, var1);
 		}
+
+		return var2;
 	}
 
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "10"
-	)
-	public static boolean method4325() {
-		boolean var0 = false;
-		boolean var1 = false;
-		if (!class319.field3435.isEmpty()) {
-			SongTask var2 = (SongTask)class319.field3435.get(0);
-			if (var2 == null) {
-				class319.field3435.remove(0);
-			} else if (var2.vmethod7780()) {
-				if (var2.method7760()) {
-					System.out.println("Error in midimanager.service: " + var2.method7763());
-					var0 = true;
-				} else {
-					if (var2.method7764() != null) {
-						class319.field3435.add(1, var2.method7764());
-					}
-
-					var1 = var2.method7762();
-				}
-
-				class319.field3435.remove(0);
-			} else {
-				var1 = var2.method7762();
-			}
-		}
-
-		if (var0) {
-			class319.field3435.clear();
-			class74.method2113();
-		}
-
-		return var1;
-	}
-
-	@ObfuscatedName("hv")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "856561238"
+		garbageValue = "2056075058"
 	)
-	@Export("logOut")
-	static final void logOut() {
-		Client.packetWriter.close();
-		class214.method3909();
-		class10.scene.clear();
-
-		for (int var0 = 0; var0 < 4; ++var0) {
-			Client.collisionMaps[var0].clear();
-		}
-
-		Client.field756.method4232();
-		System.gc();
-		ItemComposition.method4136(0, 0);
-		class470.method8459();
-		Client.playingJingle = false;
-		SoundCache.method866();
-		DefaultsGroup.updateGameState(10);
-	}
-
-	@ObfuscatedName("oh")
-	@ObfuscatedSignature(
-		descriptor = "(Lnm;I)Z",
-		garbageValue = "1005514584"
-	)
-	@Export("isComponentHidden")
-	static boolean isComponentHidden(Widget var0) {
-		return var0.isHidden;
+	static void method4354() {
+		UserComparator7.method2966(24);
+		class139.setLoginResponseString("The game servers are currently being updated.", "Please wait a few minutes and try again.", "");
 	}
 }
