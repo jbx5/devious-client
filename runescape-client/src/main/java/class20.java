@@ -3,47 +3,42 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
 import java.util.Map;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
 
 @ObfuscatedName("aw")
 public class class20 {
-	@ObfuscatedName("jr")
-	@ObfuscatedGetter(
-		intValue = -954261147
+	@ObfuscatedName("tk")
+	@ObfuscatedSignature(
+		descriptor = "Lqi;"
 	)
-	@Export("baseX")
-	static int baseX;
-	@ObfuscatedName("ac")
+	@Export("friendsChat")
+	static FriendsChat friendsChat;
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		intValue = -508327987
+		intValue = -303905233
 	)
-	final int field108;
-	@ObfuscatedName("al")
-	final Map field104;
-	@ObfuscatedName("ak")
-	final String field106;
+	final int field101;
+	@ObfuscatedName("ah")
+	final Map field97;
+	@ObfuscatedName("ar")
+	final String field99;
 
 	class20(String var1) {
-		this.field108 = 400;
-		this.field104 = null;
-		this.field106 = "";
+		this.field101 = 400;
+		this.field97 = null;
+		this.field99 = "";
 	}
 
 	class20(HttpURLConnection var1) throws IOException {
-		this.field108 = var1.getResponseCode();
+		this.field101 = var1.getResponseCode();
 		var1.getResponseMessage();
-		this.field104 = var1.getHeaderFields();
+		this.field97 = var1.getHeaderFields();
 		StringBuilder var2 = new StringBuilder();
-		InputStream var3 = this.field108 >= 300 ? var1.getErrorStream() : var1.getInputStream();
+		InputStream var3 = this.field101 >= 300 ? var1.getErrorStream() : var1.getInputStream();
 		if (var3 != null) {
 			InputStreamReader var4 = new InputStreamReader(var3);
 			BufferedReader var5 = new BufferedReader(var4);
@@ -56,142 +51,78 @@ public class class20 {
 			var3.close();
 		}
 
-		this.field106 = var2.toString();
+		this.field99 = var2.toString();
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-1672578717"
+		descriptor = "(B)I",
+		garbageValue = "3"
 	)
-	public int method287() {
-		return this.field108;
+	public int method297() {
+		return this.field101;
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(B)Ljava/util/Map;",
-		garbageValue = "-85"
+		descriptor = "(I)Ljava/util/Map;",
+		garbageValue = "1360391754"
 	)
-	public Map method288() {
-		return this.field104;
-	}
-
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "(I)Ljava/lang/String;",
-		garbageValue = "-21006210"
-	)
-	public String method289() {
-		return this.field106;
-	}
-
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "775264196"
-	)
-	public static int method296(int var0) {
-		return var0 + -512;
+	public Map method301() {
+		return this.field97;
 	}
 
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1265533406"
+		descriptor = "(I)Ljava/lang/String;",
+		garbageValue = "-541639855"
 	)
-	public static void method297() {
-		ParamComposition.ParamDefinition_cached.clear();
+	public String method299() {
+		return this.field99;
 	}
 
-	@ObfuscatedName("aa")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "(I)Ljava/util/Date;",
-		garbageValue = "572472849"
+		descriptor = "(Ljava/lang/String;I)Ljava/lang/String;",
+		garbageValue = "564353501"
 	)
-	static Date method295() throws ParseException {
-		SimpleDateFormat var0 = new SimpleDateFormat("ddMMyyyyHH", Locale.ENGLISH);
-		var0.setLenient(false);
-		StringBuilder var1 = new StringBuilder();
-		String[] var2 = Login.field947;
+	public static String method303(String var0) {
+		int var1 = var0.length();
+		char[] var2 = new char[var1];
+		byte var3 = 2;
 
-		for (int var3 = 0; var3 < var2.length; ++var3) {
-			String var4 = var2[var3];
-			if (var4 == null) {
-				class19.method285("Date not valid.", "Please ensure all characters are populated.", "");
-				return null;
+		for (int var4 = 0; var4 < var1; ++var4) {
+			char var5 = var0.charAt(var4);
+			if (var3 == 0) {
+				var5 = Character.toLowerCase(var5);
+			} else if (var3 == 2 || Character.isUpperCase(var5)) {
+				char var6;
+				if (var5 != 181 && var5 != 402) {
+					var6 = Character.toTitleCase(var5);
+				} else {
+					var6 = var5;
+				}
+
+				var5 = var6;
 			}
 
-			var1.append(var4);
-		}
-
-		var1.append("12");
-		return var0.parse(var1.toString());
-	}
-
-	@ObfuscatedName("aa")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-690055453"
-	)
-	public static void method293() {
-		NPCComposition.NpcDefinition_cached.clear();
-		NPCComposition.NpcDefinition_cachedModels.clear();
-	}
-
-	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "(ILds;ZI)I",
-		garbageValue = "1223727295"
-	)
-	static int method299(int var0, Script var1, boolean var2) {
-		Widget var7;
-		if (var0 != ScriptOpcodes.CC_CALLONRESIZE && var0 != ScriptOpcodes.IF_CALLONRESIZE) {
-			int var4;
-			if (var0 == ScriptOpcodes.CC_TRIGGEROP) {
-				var7 = var2 ? class416.scriptDotWidget : class306.scriptActiveWidget;
-				var4 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-				if (var4 >= 1 && var4 <= 10) {
-					class104 var8 = new class104(var4, var7.id, var7.childIndex, var7.itemId);
-					Interpreter.field886.add(var8);
-					return 1;
+			if (Character.isLetter(var5)) {
+				var3 = 0;
+			} else if (var5 != '.' && var5 != '?' && var5 != '!') {
+				if (Character.isSpaceChar(var5)) {
+					if (var3 != 2) {
+						var3 = 1;
+					}
 				} else {
-					throw new RuntimeException();
-				}
-			} else if (var0 == ScriptOpcodes.IF_TRIGGEROP) {
-				Interpreter.Interpreter_intStackSize -= 3;
-				int var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
-				var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
-				int var5 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 2];
-				if (var5 >= 1 && var5 <= 10) {
-					class104 var6 = new class104(var5, var3, var4, class33.widgetDefinition.method6240(var3).itemId);
-					Interpreter.field886.add(var6);
-					return 1;
-				} else {
-					throw new RuntimeException();
+					var3 = 1;
 				}
 			} else {
-				return 2;
-			}
-		} else if (Interpreter.field878 >= 10) {
-			throw new RuntimeException();
-		} else {
-			if (var0 >= 2000) {
-				var7 = class33.widgetDefinition.method6240(Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]);
-			} else {
-				var7 = var2 ? class416.scriptDotWidget : class306.scriptActiveWidget;
+				var3 = 2;
 			}
 
-			if (var7.onResize == null) {
-				return 0;
-			} else {
-				ScriptEvent var9 = new ScriptEvent();
-				var9.widget = var7;
-				var9.args = var7.onResize;
-				var9.field1078 = Interpreter.field878 + 1;
-				Client.scriptEvents.addFirst(var9);
-				return 1;
-			}
+			var2[var4] = var5;
 		}
+
+		return new String(var2);
 	}
 }

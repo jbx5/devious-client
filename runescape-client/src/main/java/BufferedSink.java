@@ -9,37 +9,37 @@ import net.runelite.mapping.ObfuscatedSignature;
 @ObfuscatedName("rs")
 @Implements("BufferedSink")
 public class BufferedSink implements Runnable {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("at")
 	@Export("thread")
 	Thread thread;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ah")
 	@Export("outputStream")
 	OutputStream outputStream;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ar")
 	@ObfuscatedGetter(
-		intValue = -1793136843
+		intValue = 159807561
 	)
 	@Export("capacity")
 	int capacity;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ao")
 	@Export("buffer")
 	byte[] buffer;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ab")
 	@ObfuscatedGetter(
-		intValue = 1374706769
+		intValue = 2045851071
 	)
 	@Export("position")
 	int position;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		intValue = -510892913
+		intValue = 1690012111
 	)
 	@Export("limit")
 	int limit;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("aa")
 	@Export("exception")
 	IOException exception;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@Export("closed")
 	boolean closed;
 
@@ -54,10 +54,10 @@ public class BufferedSink implements Runnable {
 		this.thread.start();
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "-2138016913"
+		garbageValue = "-1028287550"
 	)
 	@Export("isClosed")
 	boolean isClosed() {
@@ -79,10 +79,10 @@ public class BufferedSink implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "([BIII)V",
-		garbageValue = "-939344469"
+		descriptor = "([BIIB)V",
+		garbageValue = "-81"
 	)
 	@Export("write")
 	void write(byte[] var1, int var2, int var3) throws IOException {
@@ -119,10 +119,10 @@ public class BufferedSink implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "792661080"
+		garbageValue = "1504320255"
 	)
 	@Export("close")
 	void close() {
@@ -195,20 +195,6 @@ public class BufferedSink implements Runnable {
 				this.position = (var1 + this.position) % this.capacity;
 			}
 		} while(!this.isClosed());
-
-	}
-
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-100"
-	)
-	public static void method8239() {
-		if (MouseHandler.MouseHandler_instance != null) {
-			synchronized(MouseHandler.MouseHandler_instance) {
-				MouseHandler.MouseHandler_instance = null;
-			}
-		}
 
 	}
 }

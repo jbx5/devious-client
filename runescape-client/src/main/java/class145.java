@@ -1,45 +1,83 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fg")
-public abstract class class145 extends Node {
-	class145() {
+@ObfuscatedName("fs")
+public class class145 extends class144 {
+	@ObfuscatedName("ar")
+	@ObfuscatedGetter(
+		intValue = -322943895
+	)
+	@Export("RunException_revision")
+	public static int RunException_revision;
+	@ObfuscatedName("fj")
+	@ObfuscatedSignature(
+		descriptor = "Loh;"
+	)
+	static Archive field1643;
+	@ObfuscatedName("at")
+	@ObfuscatedGetter(
+		intValue = -896259429
+	)
+	int field1639;
+	@ObfuscatedName("ah")
+	boolean field1644;
+	// $FF: synthetic field
+	@ObfuscatedSignature(
+		descriptor = "Lfv;"
+	)
+	final class147 this$0;
+
+	@ObfuscatedSignature(
+		descriptor = "(Lfv;)V"
+	)
+	class145(class147 var1) {
+		this.this$0 = var1;
+		this.field1639 = -1;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "(Lul;I)V",
-		garbageValue = "-11659242"
+		descriptor = "(Luj;I)V",
+		garbageValue = "-734756620"
 	)
-	abstract void vmethod3414(Buffer var1);
-
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "(Lgi;I)V",
-		garbageValue = "21847466"
-	)
-	abstract void vmethod3415(ClanSettings var1);
-
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "(Lom;Lom;I)V",
-		garbageValue = "1295708638"
-	)
-	public static void method3155(AbstractArchive var0, AbstractArchive var1) {
-		KitDefinition.KitDefinition_archive = var0;
-		KitDefinition.KitDefinition_modelsArchive = var1;
-		class403.KitDefinition_fileCount = KitDefinition.KitDefinition_archive.getGroupFileCount(3);
+	void vmethod3510(Buffer var1) {
+		this.field1639 = var1.readUnsignedShort();
+		this.field1644 = var1.readUnsignedByte() == 1;
 	}
 
-	@ObfuscatedName("as")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)V",
-		garbageValue = "245688537"
+		descriptor = "(Lfc;I)V",
+		garbageValue = "-2111347169"
 	)
-	static final void method3153(String var0) {
-		PacketBufferNode var1 = ClanChannelMember.getPacketBufferNode(ClientPacket.FRIEND_ADDUSER, Client.packetWriter.isaacCipher);
-		var1.packetBuffer.writeByte(class478.stringCp1252NullTerminatedByteSize(var0));
-		var1.packetBuffer.writeStringCp1252NullTerminated(var0);
-		Client.packetWriter.addNode(var1);
+	void vmethod3506(ClanSettings var1) {
+		var1.method3334(this.field1639, this.field1644);
+	}
+
+	@ObfuscatedName("at")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-7051987"
+	)
+	public static void method3247() {
+		class172.field1913.clear();
+	}
+
+	@ObfuscatedName("ao")
+	@ObfuscatedSignature(
+		descriptor = "(FFFFLfm;B)V",
+		garbageValue = "6"
+	)
+	static void method3246(float var0, float var1, float var2, float var3, class131 var4) {
+		float var5 = var1 - var0;
+		float var6 = var2 - var1;
+		float var7 = var3 - var2;
+		float var8 = var6 - var5;
+		var4.field1537 = var7 - var6 - var8;
+		var4.field1526 = var8 + var8 + var8;
+		var4.field1548 = var5 + var5 + var5;
+		var4.field1534 = var0;
 	}
 }

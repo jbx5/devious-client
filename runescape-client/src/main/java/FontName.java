@@ -3,46 +3,46 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("tc")
+@ObfuscatedName("th")
 @Implements("FontName")
 public class FontName {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "Ltc;"
+		descriptor = "Lth;"
 	)
 	@Export("FontName_plain11")
 	public static final FontName FontName_plain11;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "Ltc;"
+		descriptor = "Lth;"
 	)
 	@Export("FontName_plain12")
 	public static final FontName FontName_plain12;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "Ltc;"
+		descriptor = "Lth;"
 	)
 	@Export("FontName_bold12")
 	public static final FontName FontName_bold12;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "Ltc;"
+		descriptor = "Lth;"
 	)
 	@Export("FontName_verdana11")
 	public static final FontName FontName_verdana11;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "Ltc;"
+		descriptor = "Lth;"
 	)
 	@Export("FontName_verdana13")
 	public static final FontName FontName_verdana13;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "Ltc;"
+		descriptor = "Lth;"
 	)
 	@Export("FontName_verdana15")
 	public static final FontName FontName_verdana15;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("aa")
 	@Export("name")
 	String name;
 
@@ -59,28 +59,23 @@ public class FontName {
 		this.name = var1;
 	}
 
-	@ObfuscatedName("iv")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "(Lif;IIII)V",
-		garbageValue = "-1051855910"
+		descriptor = "(IB)V",
+		garbageValue = "-56"
 	)
-	static void method8850(SequenceDefinition var0, int var1, int var2, int var3) {
-		if (Client.soundEffectCount < 50 && class91.clientPreferences.method2589() != 0) {
-			if (var0.soundEffects != null && var1 < var0.soundEffects.length) {
-				class91.method2349(var0.soundEffects[var1], var2, var3);
-			}
-		}
+	static void method8929(int var0) {
+		class461.field4763 = var0;
+		class461.field4764 = new class461[var0];
+		IgnoreList.field4663 = 0;
 	}
 
-	@ObfuscatedName("md")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "-1514156294"
+		descriptor = "(B)[Lth;",
+		garbageValue = "50"
 	)
-	static final void method8851(int var0) {
-		var0 = Math.max(Math.min(var0, 100), 0);
-		var0 = 100 - var0;
-		float var1 = 0.5F + (float)var0 / 200.0F;
-		JagexCache.method3533((double)var1);
+	public static FontName[] method8927() {
+		return new FontName[]{FontName_verdana13, FontName_bold12, FontName_verdana15, FontName_plain11, FontName_plain12, FontName_verdana11};
 	}
 }

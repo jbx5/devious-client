@@ -1,81 +1,95 @@
-import java.util.List;
+import java.util.concurrent.Callable;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fj")
-public enum class130 implements MouseWheel {
-	@ObfuscatedName("ac")
+@ObfuscatedName("fd")
+public class class130 implements Callable {
+	@ObfuscatedName("du")
 	@ObfuscatedSignature(
-		descriptor = "Lfj;"
+		descriptor = "[Lup;"
 	)
-	field1524(0, 0),
-	@ObfuscatedName("al")
+	@Export("worldSelectFlagSprites")
+	static IndexedSprite[] worldSelectFlagSprites;
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "Lfj;"
+		descriptor = "Lfm;"
 	)
-	field1523(1, 1),
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "Lfj;"
-	)
-	field1525(2, 2),
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "Lfj;"
-	)
-	field1526(3, 3),
-	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "Lfj;"
-	)
-	field1522(4, 4);
-
-	@ObfuscatedName("wd")
-	static List field1529;
+	final class131 field1520;
 	@ObfuscatedName("ah")
-	@ObfuscatedGetter(
-		intValue = -992322605
+	@ObfuscatedSignature(
+		descriptor = "Lfa;"
 	)
-	final int field1527;
+	final class132 field1523;
 	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "Lfq;"
+	)
+	final class133 field1521;
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = -1058172471
+		intValue = 107549985
 	)
-	final int field1528;
+	final int field1519;
+	// $FF: synthetic field
+	@ObfuscatedSignature(
+		descriptor = "Lfo;"
+	)
+	final class139 this$0;
 
-	class130(int var3, int var4) {
-		this.field1527 = var3;
-		this.field1528 = var4;
+	@ObfuscatedSignature(
+		descriptor = "(Lfo;Lfm;Lfa;Lfq;I)V"
+	)
+	class130(class139 var1, class131 var2, class132 var3, class133 var4, int var5) {
+		this.this$0 = var1;
+		this.field1520 = var2;
+		this.field1523 = var3;
+		this.field1521 = var4;
+		this.field1519 = var5;
 	}
 
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-1243971674"
-	)
-	@Export("rsOrdinal")
-	public int rsOrdinal() {
-		return this.field1528;
-	}
-
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "(III)V",
-		garbageValue = "861803654"
-	)
-	public static void method3012(int var0, int var1) {
-		VarbitComposition var2 = Messages.method2802(var0);
-		int var3 = var2.baseVar;
-		int var4 = var2.startBit;
-		int var5 = var2.endBit;
-		int var6 = Varps.Varps_masks[var5 - var4];
-		if (var1 < 0 || var1 > var6) {
-			var1 = 0;
+	public Object call() {
+		this.field1520.method3117();
+		class131[][] var1;
+		if (this.field1523 == class132.field1550) {
+			var1 = this.this$0.field1597;
+		} else {
+			var1 = this.this$0.field1596;
 		}
 
-		var6 <<= var4;
-		Varps.Varps_main[var3] = Varps.Varps_main[var3] & ~var6 | var1 << var4 & var6;
+		var1[this.field1519][this.field1521.method3140()] = this.field1520;
+		return null;
+	}
+
+	@ObfuscatedName("at")
+	@ObfuscatedSignature(
+		descriptor = "(IIII)Luz;",
+		garbageValue = "587580140"
+	)
+	static SpritePixels method3096(int var0, int var1, int var2) {
+		DemotingHashTable var3 = WorldMapRegion.WorldMapRegion_cachedSprites;
+		long var4 = (long)(var2 << 16 | var0 << 8 | var1);
+		return (SpritePixels)var3.get(var4);
+	}
+
+	@ObfuscatedName("mt")
+	@ObfuscatedSignature(
+		descriptor = "(II)V",
+		garbageValue = "888688994"
+	)
+	static final void method3095(int var0) {
+		if (HealthBarDefinition.widgetDefinition.loadInterface(var0)) {
+			Widget[] var1 = HealthBarDefinition.widgetDefinition.Widget_interfaceComponents[var0];
+
+			for (int var2 = 0; var2 < var1.length; ++var2) {
+				Widget var3 = var1[var2];
+				if (var3 != null) {
+					var3.modelFrame = 0;
+					var3.modelFrameCycle = 0;
+				}
+			}
+
+		}
 	}
 }

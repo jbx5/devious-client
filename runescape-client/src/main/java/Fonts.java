@@ -4,27 +4,27 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("tt")
+@ObfuscatedName("tk")
 @Implements("Fonts")
 public class Fonts {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "Lom;"
+		descriptor = "Lol;"
 	)
 	@Export("spritesArchive")
 	AbstractArchive spritesArchive;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "Lom;"
+		descriptor = "Lol;"
 	)
 	@Export("fontsArchive")
 	AbstractArchive fontsArchive;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ar")
 	@Export("map")
 	HashMap map;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lom;Lom;)V"
+		descriptor = "(Lol;Lol;)V"
 	)
 	public Fonts(AbstractArchive var1, AbstractArchive var2) {
 		this.spritesArchive = var1;
@@ -32,10 +32,10 @@ public class Fonts {
 		this.map = new HashMap();
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "([Ltc;I)Ljava/util/HashMap;",
-		garbageValue = "932595648"
+		descriptor = "([Lth;I)Ljava/util/HashMap;",
+		garbageValue = "-926554557"
 	)
 	@Export("createMap")
 	public HashMap createMap(FontName[] var1) {
@@ -47,35 +47,7 @@ public class Fonts {
 			if (this.map.containsKey(var5)) {
 				var2.put(var5, this.map.get(var5));
 			} else {
-				AbstractArchive var7 = this.spritesArchive;
-				AbstractArchive var8 = this.fontsArchive;
-				String var9 = var5.name;
-				Font var6;
-				if (!var7.isValidFileName(var9, "")) {
-					var6 = null;
-				} else {
-					int var10 = var7.getGroupId(var9);
-					int var11 = var7.getFileId(var10, "");
-					Font var12;
-					if (!class164.method3376(var7, var10, var11)) {
-						var12 = null;
-					} else {
-						byte[] var14 = var8.takeFile(var10, var11);
-						Font var13;
-						if (var14 == null) {
-							var13 = null;
-						} else {
-							Font var15 = new Font(var14, class326.SpriteBuffer_xOffsets, ModelData0.SpriteBuffer_yOffsets, class59.SpriteBuffer_spriteWidths, class544.SpriteBuffer_spriteHeights, class372.SpriteBuffer_spritePalette, AddRequestTask.SpriteBuffer_pixels);
-							class407.method7453();
-							var13 = var15;
-						}
-
-						var12 = var13;
-					}
-
-					var6 = var12;
-				}
-
+				Font var6 = class10.method110(this.spritesArchive, this.fontsArchive, var5.name, "");
 				if (var6 != null) {
 					this.map.put(var5, var6);
 					var2.put(var5, var6);

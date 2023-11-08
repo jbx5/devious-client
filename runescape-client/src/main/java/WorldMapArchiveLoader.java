@@ -1,33 +1,38 @@
+import java.awt.image.BufferedImage;
+import java.awt.image.PixelGrabber;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("tb")
+@ObfuscatedName("sl")
 @Implements("WorldMapArchiveLoader")
 public class WorldMapArchiveLoader {
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ab")
 	@Export("cacheName")
 	String cacheName;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "Lom;"
+		descriptor = "Lol;"
 	)
 	@Export("archive")
 	AbstractArchive archive;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("aa")
 	@ObfuscatedGetter(
-		intValue = 78588131
+		intValue = -1424135489
 	)
 	@Export("percentLoaded")
 	int percentLoaded;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@Export("loaded")
 	boolean loaded;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lom;)V"
+		descriptor = "(Lol;)V"
 	)
 	WorldMapArchiveLoader(AbstractArchive var1) {
 		this.percentLoaded = 0;
@@ -35,10 +40,10 @@ public class WorldMapArchiveLoader {
 		this.archive = var1;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/String;I)V",
-		garbageValue = "211979079"
+		garbageValue = "2039026903"
 	)
 	@Export("reset")
 	void reset(String var1) {
@@ -52,10 +57,10 @@ public class WorldMapArchiveLoader {
 		}
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-1289967643"
+		descriptor = "(B)I",
+		garbageValue = "-24"
 	)
 	@Export("load")
 	int load() {
@@ -64,7 +69,7 @@ public class WorldMapArchiveLoader {
 			this.loaded = true;
 		} else {
 			if (this.percentLoaded < 33) {
-				if (!this.archive.tryLoadFileByNames(WorldMapCacheName.field3091.name, this.cacheName)) {
+				if (!this.archive.tryLoadFileByNames(WorldMapCacheName.field2626.name, this.cacheName)) {
 					return this.percentLoaded;
 				}
 
@@ -72,7 +77,7 @@ public class WorldMapArchiveLoader {
 			}
 
 			if (this.percentLoaded == 33) {
-				if (this.archive.isValidFileName(WorldMapCacheName.field3090.name, this.cacheName) && !this.archive.tryLoadFileByNames(WorldMapCacheName.field3090.name, this.cacheName)) {
+				if (this.archive.isValidFileName(WorldMapCacheName.field2628.name, this.cacheName) && !this.archive.tryLoadFileByNames(WorldMapCacheName.field2628.name, this.cacheName)) {
 					return this.percentLoaded;
 				}
 
@@ -80,7 +85,7 @@ public class WorldMapArchiveLoader {
 			}
 
 			if (this.percentLoaded == 66) {
-				if (!this.archive.tryLoadFileByNames(this.cacheName, WorldMapCacheName.field3094.name)) {
+				if (!this.archive.tryLoadFileByNames(this.cacheName, WorldMapCacheName.field2630.name)) {
 					return this.percentLoaded;
 				}
 
@@ -92,40 +97,60 @@ public class WorldMapArchiveLoader {
 		return this.percentLoaded;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "(B)Z",
-		garbageValue = "0"
+		garbageValue = "74"
 	)
 	@Export("isLoaded")
 	boolean isLoaded() {
 		return this.loaded;
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "835132926"
+		garbageValue = "301299850"
 	)
 	@Export("getPercentLoaded")
 	int getPercentLoaded() {
 		return this.percentLoaded;
 	}
 
-	@ObfuscatedName("jo")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-2054343870"
+		descriptor = "([BI)Luz;",
+		garbageValue = "1918465427"
 	)
-	static void method8643() {
-		int var0 = Players.Players_count;
-		int[] var1 = Players.Players_indices;
+	public static final SpritePixels method8710(byte[] var0) {
+		BufferedImage var1 = null;
 
-		for (int var2 = 0; var2 < var0; ++var2) {
-			if (var1[var2] != Client.combatTargetPlayerIndex && var1[var2] != Client.localPlayerIndex) {
-				class199.addPlayerToScene(Client.players[var1[var2]], true);
+		try {
+			Class var2 = ImageIO.class;
+			synchronized(ImageIO.class) {
+				var1 = ImageIO.read(new ByteArrayInputStream(var0));
 			}
+
+			int var6 = var1.getWidth();
+			int var7 = var1.getHeight();
+			int[] var4 = new int[var7 * var6];
+			PixelGrabber var5 = new PixelGrabber(var1, 0, 0, var6, var7, var4, 0, var6);
+			var5.grabPixels();
+			return new SpritePixels(var4, var6, var7);
+		} catch (IOException var9) {
+		} catch (InterruptedException var10) {
 		}
 
+		return new SpritePixels(0, 0);
+	}
+
+	@ObfuscatedName("gj")
+	@ObfuscatedSignature(
+		descriptor = "(I)Ltn;",
+		garbageValue = "-472166633"
+	)
+	@Export("getWorldMap")
+	static WorldMap getWorldMap() {
+		return NpcOverrides.worldMap;
 	}
 }

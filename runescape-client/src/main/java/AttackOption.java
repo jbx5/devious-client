@@ -4,46 +4,41 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("em")
+@ObfuscatedName("dy")
 @Implements("AttackOption")
 public enum AttackOption implements MouseWheel {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "Lem;"
+		descriptor = "Ldy;"
 	)
 	@Export("AttackOption_dependsOnCombatLevels")
 	AttackOption_dependsOnCombatLevels(0),
-	@ObfuscatedName("al")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "Lem;"
+		descriptor = "Ldy;"
 	)
 	@Export("AttackOption_alwaysRightClick")
 	AttackOption_alwaysRightClick(1),
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "Lem;"
+		descriptor = "Ldy;"
 	)
-	field1346(2),
-	@ObfuscatedName("ax")
+	field1337(2),
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "Lem;"
+		descriptor = "Ldy;"
 	)
 	@Export("AttackOption_hidden")
 	AttackOption_hidden(3),
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "Lem;"
+		descriptor = "Ldy;"
 	)
-	field1348(4);
+	field1334(4);
 
-	@ObfuscatedName("il")
+	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		longValue = 5179348451515936053L
-	)
-	static long field1354;
-	@ObfuscatedName("ah")
-	@ObfuscatedGetter(
-		intValue = 1184337345
+		intValue = 1183197833
 	)
 	@Export("id")
 	final int id;
@@ -52,46 +47,32 @@ public enum AttackOption implements MouseWheel {
 		this.id = var3;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-1243971674"
+		descriptor = "(B)I",
+		garbageValue = "-11"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.id;
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(Ltp;III)I",
-		garbageValue = "1550710334"
+		descriptor = "(B)V",
+		garbageValue = "-99"
 	)
-	static int method2721(IterableNodeHashTable var0, int var1, int var2) {
-		if (var0 == null) {
-			return var2;
-		} else {
-			IntegerNode var3 = (IntegerNode)var0.get((long)var1);
-			return var3 == null ? var2 : var3.integer;
-		}
+	public static void method2751() {
+		HealthBarDefinition.HealthBarDefinition_cached.clear();
+		HealthBarDefinition.HealthBarDefinition_cachedSprites.clear();
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/CharSequence;I)Z",
-		garbageValue = "1281251233"
+		descriptor = "(B)V",
+		garbageValue = "3"
 	)
-	@Export("isNumber")
-	public static boolean isNumber(CharSequence var0) {
-		return class135.method3074(var0, 10, true);
-	}
-
-	@ObfuscatedName("lv")
-	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-860429671"
-	)
-	static final int method2714() {
-		return Client.menuOptionsCount - 1;
+	static final void method2748() {
+		WorldMapArea.method4622("Your friend list is full. Max of 200 for free users, and 400 for members");
 	}
 }

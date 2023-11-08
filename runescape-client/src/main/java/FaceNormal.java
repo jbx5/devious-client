@@ -4,24 +4,24 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jv")
+@ObfuscatedName("kp")
 @Implements("FaceNormal")
 public class FaceNormal {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		intValue = 514745329
+		intValue = -622446617
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ah")
 	@ObfuscatedGetter(
-		intValue = -350302109
+		intValue = -845648025
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ar")
 	@ObfuscatedGetter(
-		intValue = -1715062155
+		intValue = 830185709
 	)
 	@Export("z")
 	int z;
@@ -29,13 +29,12 @@ public class FaceNormal {
 	FaceNormal() {
 	}
 
-	@ObfuscatedName("mo")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-2079902231"
+		descriptor = "(I)Lld;",
+		garbageValue = "1253542503"
 	)
-	static final int method4845() {
-		float var0 = 200.0F * ((float)class91.clientPreferences.method2513() - 0.5F);
-		return 100 - Math.round(var0);
+	static PacketBufferNode method5512() {
+		return PacketBufferNode.PacketBufferNode_packetBufferNodeCount == 0 ? new PacketBufferNode() : PacketBufferNode.PacketBufferNode_packetBufferNodes[--PacketBufferNode.PacketBufferNode_packetBufferNodeCount];
 	}
 }

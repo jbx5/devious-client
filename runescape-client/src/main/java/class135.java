@@ -1,155 +1,84 @@
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
+import java.util.ArrayList;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fe")
-public class class135 implements class126 {
-	@ObfuscatedName("ac")
-	@ObfuscatedGetter(
-		longValue = 3778451496536123825L
-	)
-	static long field1592;
-	@ObfuscatedName("ak")
+@ObfuscatedName("ff")
+public class class135 implements class125 {
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "Lom;"
+		descriptor = "(Lol;Lol;IZB)Lko;",
+		garbageValue = "1"
 	)
-	@Export("HitSplatDefinition_fontsArchive")
-	static AbstractArchive HitSplatDefinition_fontsArchive;
-	@ObfuscatedName("ag")
-	@Export("Tiles_saturation")
-	static int[] Tiles_saturation;
+	public static Frames method3151(AbstractArchive var0, AbstractArchive var1, int var2, boolean var3) {
+		boolean var4 = true;
+		int[] var5 = var0.getGroupFileIds(var2);
 
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Object;ZI)[B",
-		garbageValue = "-338736773"
-	)
-	public static byte[] method3073(Object var0, boolean var1) {
-		if (var0 == null) {
-			return null;
-		} else if (var0 instanceof byte[]) {
-			byte[] var6 = (byte[])((byte[])var0);
-			if (var1) {
-				int var4 = var6.length;
-				byte[] var5 = new byte[var4];
-				System.arraycopy(var6, 0, var5, 0, var4);
-				return var5;
+		for (int var6 = 0; var6 < var5.length; ++var6) {
+			byte[] var7 = var0.getFile(var2, var5[var6]);
+			if (var7 == null) {
+				var4 = false;
 			} else {
-				return var6;
-			}
-		} else if (var0 instanceof AbstractByteArrayCopier) {
-			AbstractByteArrayCopier var2 = (AbstractByteArrayCopier)var0;
-			return var2.get();
-		} else {
-			throw new IllegalArgumentException();
-		}
-	}
-
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "(Lom;I)V",
-		garbageValue = "-1763952071"
-	)
-	public static void method3075(AbstractArchive var0) {
-		VarcInt.VarcInt_archive = var0;
-	}
-
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/CharSequence;IZB)Z",
-		garbageValue = "-89"
-	)
-	static boolean method3074(CharSequence var0, int var1, boolean var2) {
-		if (var1 >= 2 && var1 <= 36) {
-			boolean var3 = false;
-			boolean var4 = false;
-			int var5 = 0;
-			int var6 = var0.length();
-
-			for (int var7 = 0; var7 < var6; ++var7) {
-				char var8 = var0.charAt(var7);
-				if (var7 == 0) {
-					if (var8 == '-') {
-						var3 = true;
-						continue;
-					}
-
-					if (var8 == '+') {
-						continue;
-					}
-				}
-
-				int var10;
-				if (var8 >= '0' && var8 <= '9') {
-					var10 = var8 - '0';
-				} else if (var8 >= 'A' && var8 <= 'Z') {
-					var10 = var8 - '7';
-				} else {
-					if (var8 < 'a' || var8 > 'z') {
-						return false;
-					}
-
-					var10 = var8 - 'W';
-				}
-
-				if (var10 >= var1) {
-					return false;
-				}
-
+				int var8 = (var7[0] & 255) << 8 | var7[1] & 255;
+				byte[] var9;
 				if (var3) {
-					var10 = -var10;
+					var9 = var1.getFile(0, var8);
+				} else {
+					var9 = var1.getFile(var8, 0);
 				}
 
-				int var9 = var10 + var5 * var1;
-				if (var9 / var1 != var5) {
-					return false;
+				if (var9 == null) {
+					var4 = false;
 				}
-
-				var5 = var9;
-				var4 = true;
 			}
+		}
 
-			return var4;
+		if (!var4) {
+			return null;
 		} else {
-			throw new IllegalArgumentException("" + var1);
+			try {
+				return new Frames(var0, var1, var2, var3);
+			} catch (Exception var11) {
+				return null;
+			}
 		}
 	}
 
-	@ObfuscatedName("av")
+	@ObfuscatedName("if")
 	@ObfuscatedSignature(
-		descriptor = "(CB)Z",
-		garbageValue = "-9"
+		descriptor = "(Ljava/util/ArrayList;IIIIB)V",
+		garbageValue = "112"
 	)
-	@Export("isCharAlphabetic")
-	public static boolean isCharAlphabetic(char var0) {
-		return var0 >= 'A' && var0 <= 'Z' || var0 >= 'a' && var0 <= 'z';
-	}
-
-	@ObfuscatedName("ky")
-	@ObfuscatedSignature(
-		descriptor = "(IIB)V",
-		garbageValue = "30"
-	)
-	static final void method3072(int var0, int var1) {
-		if (Client.menuOptionsCount >= 2 || Client.isItemSelected != 0 || Client.isSpellSelected) {
-			if (Client.showMouseOverText) {
-				int var2 = AttackOption.method2714();
-				String var3;
-				if (Client.isItemSelected == 1 && Client.menuOptionsCount < 2) {
-					var3 = "Use" + " " + Client.field772 + " " + "->";
-				} else if (Client.isSpellSelected && Client.menuOptionsCount < 2) {
-					var3 = Client.selectedSpellActionName + " " + Client.selectedSpellName + " " + "->";
+	static void method3152(ArrayList var0, int var1, int var2, int var3, int var4) {
+		if (!var0.isEmpty()) {
+			int var5 = (Integer)var0.get(0);
+			if (var5 == -1 && !Client.playingJingle) {
+				WorldMapRenderer.method4769(0, 0);
+			} else if (var5 != -1) {
+				boolean var6;
+				if (class316.field3424.isEmpty()) {
+					var6 = false;
 				} else {
-					var3 = class169.method3418(var2);
+					MusicSong var7 = (MusicSong)class316.field3424.get(0);
+					var6 = var7 != null && var5 == var7.musicTrackGroupId;
 				}
 
-				if (Client.menuOptionsCount > 2) {
-					var3 = var3 + Client.colorStartTag(16777215) + " " + '/' + " " + (Client.menuOptionsCount - 2) + " more options";
-				}
+				if (!var6 && WorldMapIcon_1.clientPreferences.method2554() != 0) {
+					ArrayList var9 = new ArrayList();
 
-				SoundCache.fontBold12.drawRandomAlphaAndSpacing(var3, var0 + 4, var1 + 15, 16777215, 0, Client.cycle / 1000);
+					for (int var8 = 0; var8 < var0.size(); ++var8) {
+						var9.add(new MusicSong(class514.archive6, (Integer)var0.get(var8), 0, WorldMapIcon_1.clientPreferences.method2554(), false));
+					}
+
+					if (Client.playingJingle) {
+						class316.field3424.clear();
+						class316.field3424.addAll(var9);
+						EnumComposition.method3678(var1, var2, var3, var4);
+					} else {
+						PendingSpawn.method2459(var9, var1, var2, var3, var4, false);
+					}
+				}
 			}
+
 		}
 	}
 }
