@@ -465,7 +465,7 @@ public class Interpreter {
 			}
 
 			if (var8.hasSound()) {
-				UrlRequester.method2900(var0, var1, var2, var8, var4);
+				UrlRequester.createObjectSound(var0, var1, var2, var8, var4);
 			}
 
 			Object var29;

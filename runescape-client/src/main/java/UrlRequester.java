@@ -184,7 +184,8 @@ public abstract class UrlRequester implements Runnable {
 		descriptor = "(IIILhs;II)V",
 		garbageValue = "237436184"
 	)
-	static void method2900(int var0, int var1, int var2, ObjectComposition var3, int var4) {
+	@Export("createObjectSound")
+	static void createObjectSound(int var0, int var1, int var2, ObjectComposition var3, int var4) {
 		ObjectSound var5 = new ObjectSound();
 		var5.plane = var0;
 		var5.x = var1 * 128;

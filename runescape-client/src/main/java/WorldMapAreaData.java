@@ -449,7 +449,7 @@ public class WorldMapAreaData extends WorldMapArea {
 
 				var38 = WorldMapSection2.getObjectDefinition(var4);
 				if (var38 != null && var38.hasSound()) {
-					UrlRequester.method2900(var13, var2, var3, var38, var5);
+					UrlRequester.createObjectSound(var13, var2, var3, var38, var5);
 				}
 			}
 		}
