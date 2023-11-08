@@ -254,10 +254,10 @@ public class Trade
 	public static Integer getTheirFreeSlots()
 	{
 		Widget widget = THEIR_AVAILABLE_SLOTS.get();
-		if(widget != null)
+		if (widget != null)
 		{
 			Matcher matcher = THEIR_FREE_SLOTS_REGEXP.matcher(widget.getText());
-			if(matcher.find())
+			if (matcher.find())
 			{
 				String count = matcher.group("count");
 				Integer freeSlots = Ints.tryParse(count);
