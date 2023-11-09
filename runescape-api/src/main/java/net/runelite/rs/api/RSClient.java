@@ -27,9 +27,7 @@ package net.runelite.rs.api;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Map;
-import net.runelite.api.AmbientSoundEffect;
 import net.runelite.api.Client;
-import net.runelite.api.Deque;
 import net.runelite.api.ModelData;
 import net.runelite.api.SpritePixels;
 import net.runelite.api.WidgetNode;
@@ -1521,7 +1519,7 @@ public interface RSClient extends RSGameEngine, Client
 	void posToCameraAngle(int var0, int var1);
 
 	@Import("objectSounds")
-	Deque<AmbientSoundEffect> getAmbientSoundEffects();
+	RSNodeDeque getAmbientSoundEffects();
 
 	@Import("EnumDefinition_cached")
 	RSEvictingDualNodeHashTable getEnumDefinitionCache();

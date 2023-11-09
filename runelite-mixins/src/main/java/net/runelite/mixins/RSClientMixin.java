@@ -3786,9 +3786,8 @@ public abstract class RSClientMixin implements RSClient
 	@MethodHook(value = "createObjectSound", end = true)
 	public static void onAmbientSoundEffect(int var0, int var1, int var2, ObjectComposition var3, int var4)
 	{
-		RSNodeDeque ambientSoundEffects = (RSNodeDeque) client.getAmbientSoundEffects();
-		RSObjectSound createdAmbientSoundEffect = (RSObjectSound) ambientSoundEffects.last();
-		AmbientSoundEffectCreated ambientSoundEffectCreated = new AmbientSoundEffectCreated(createdAmbientSoundEffect);
+		RSObjectSound ambientSoundEffect = (RSObjectSound) client.getAmbientSoundEffects().last();
+		AmbientSoundEffectCreated ambientSoundEffectCreated = new AmbientSoundEffectCreated(ambientSoundEffect);
 		client.getCallbacks().post(ambientSoundEffectCreated);
 	}
 }
