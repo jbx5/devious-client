@@ -46,6 +46,7 @@ import net.runelite.deob.deobfuscators.arithmetic.ModArith;
 import net.runelite.deob.deobfuscators.arithmetic.MultiplicationDeobfuscator;
 import net.runelite.deob.deobfuscators.arithmetic.MultiplyOneDeobfuscator;
 import net.runelite.deob.deobfuscators.arithmetic.MultiplyZeroDeobfuscator;
+import net.runelite.deob.deobfuscators.transformers.BufferRenameTransformer;
 import net.runelite.deob.deobfuscators.cfg.ControlFlowDeobfuscator;
 import net.runelite.deob.deobfuscators.constparam.ConstantParameter;
 import net.runelite.deob.deobfuscators.exprargorder.ExprArgOrder;
@@ -136,6 +137,8 @@ public class Deob
 		new ReflectionTransformer().transform(group);
 		//new MaxMemoryTransformer().transform(group);
 		//new RuneliteBufferTransformer().transform(group);
+
+		new BufferRenameTransformer().transform(group);
 
 		JarUtil.save(group, new File(args[1]));
 
