@@ -4751,7 +4751,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					NPC var77 = npcs[var21];
 					if (var77 != null) {
 						if (var5 == var77.sequence && var5 != -1) {
-							var8 = DynamicObject.SequenceDefinition_get(var5).field2230;
+							var8 = DynamicObject.SequenceDefinition_get(var5).restartMode;
 							if (var8 == 1) {
 								var77.sequenceFrame = 0;
 								var77.sequenceFrameCycle = 0;
