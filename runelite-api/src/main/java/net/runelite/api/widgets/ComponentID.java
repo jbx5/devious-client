@@ -1993,9 +1993,9 @@ public final class ComponentID
 	public static final int TRADE_HEADER = 21954591;
 
 	/**
-	 * 512:59
+	 * 512:66
 	 */
-	public static final int TRAILBLAZER_AREAS_TELEPORT = 33554491;
+	public static final int TRAILBLAZER_AREAS_TELEPORT = 33554498;
 
 	/**
 	 * 366:13

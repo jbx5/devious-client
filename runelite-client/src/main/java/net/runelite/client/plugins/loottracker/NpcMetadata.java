@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019 Hydrox6 <ikada@protonmail.ch>
+ * Copyright (c) 2023, Adam <Adam@sigterm.info>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,58 +22,20 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.client.plugins.cluescrolls.clues.item;
+package net.runelite.client.plugins.loottracker;
 
-import net.runelite.api.Client;
-import net.runelite.api.Item;
-import net.runelite.api.ItemComposition;
+import lombok.Data;
 
-public class MultipleOfItemRequirement implements ItemRequirement
+@Data
+class NpcMetadata
 {
-	private final int itemId;
-	private final int quantity;
-
-	public MultipleOfItemRequirement(int itemId, int quantity)
-	{
-		this.itemId = itemId;
-		this.quantity = quantity;
-	}
-
-	@Override
-	public boolean fulfilledBy(int itemId)
-	{
-		return itemId == this.itemId;
-	}
-
-	@Override
-	public boolean fulfilledBy(Item[] items)
-	{
-		int quantityFound = 0;
-		for (Item item : items)
-		{
-			if (item.getId() == itemId)
-			{
-				quantityFound += item.getQuantity();
-				if (quantityFound >= quantity)
-				{
-					return true;
-				}
-			}
-		}
-
-		return false;
-	}
-
-	@Override
-	public String getCollectiveName(Client client)
-	{
-		ItemComposition definition = client.getItemDefinition(itemId);
-
-		if (definition == null)
-		{
-			return "N/A";
-		}
-
-		return definition.getName() + " x" + this.quantity;
-	}
+	int id;
+	int r1;
+	int r2;
+	int r3;
+	int r4;
+	int r5;
+	int r6;
+	int r7;
+	int r8;
 }
