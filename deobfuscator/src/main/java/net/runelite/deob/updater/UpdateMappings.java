@@ -26,6 +26,7 @@ package net.runelite.deob.updater;
 
 import java.io.File;
 import java.io.IOException;
+import net.runelite.asm.ClassFile;
 import net.runelite.asm.ClassGroup;
 import net.runelite.deob.deobfuscators.mapping.AnnotationIntegrityChecker;
 import net.runelite.deob.deobfuscators.mapping.AnnotationMapper;
@@ -51,6 +52,9 @@ public class UpdateMappings
 
 	public void update()
 	{
+		ClassFile bufferCF = group1.findClass("Buffer");
+		group1.removeClass(bufferCF);
+
 		Mapper mapper = new Mapper(group1, group2);
 		mapper.run();
 		ParallelExecutorMapping mapping = mapper.getMapping();
