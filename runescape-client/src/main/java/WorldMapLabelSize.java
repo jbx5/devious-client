@@ -102,7 +102,7 @@ public class WorldMapLabelSize {
 	@Export("performPlayerAnimation")
 	static void performPlayerAnimation(Player var0, int var1, int var2) {
 		if (var0.sequence == var1 && var1 != -1) {
-			int var3 = DynamicObject.SequenceDefinition_get(var1).field2230;
+			int var3 = DynamicObject.SequenceDefinition_get(var1).restartMode;
 			if (var3 == 1) {
 				var0.sequenceFrame = 0;
 				var0.sequenceFrameCycle = 0;
