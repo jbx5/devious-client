@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023, Adam <Adam@sigterm.info>
+ * Copyright (c) 2023 Abex
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,46 +22,16 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.api.widgets;
+package net.runelite.api.events;
 
-import net.runelite.api.annotations.Component;
-import net.runelite.api.annotations.Interface;
+import lombok.Value;
+import net.runelite.api.Animation;
 
-public class WidgetUtil
+/**
+ * An event posted when an {@link Animation} is loaded
+ */
+@Value
+public class PostAnimation
 {
-	/**
-	 * Utility method that converts a component id to the interface it
-	 * belongs to.
-	 *
-	 * @param c component id
-	 * @return the interface id
-	 */
-	@Interface
-	public static int componentToInterface(@Component int c)
-	{
-		return c >>> 16;
-	}
-
-	/**
-	 * Utility method that converts a component id to the id it is within
-	 * its interface.
-	 *
-	 * @param c component id
-	 */
-	public static int componentToId(@Component int c)
-	{
-		return c & 0xFFFF;
-	}
-
-	/**
-	 * Utility method that packs a component id from an interface id and child id.
-	 * @param interfaceId interface id
-	 * @param childId id within the interface
-	 * @return the component id
-	 */
-	@Component
-	public static int packComponentId(@Interface int interfaceId, int childId)
-	{
-		return (interfaceId << 16) | childId;
-	}
+	private Animation animation;
 }

@@ -29,4 +29,12 @@ public interface RSSequenceDefinition extends RSNode, SequenceDefinition, Animat
 	boolean isCachedModelIdSet();
 
 	void setId(int id);
+
+	@Import("restartMode")
+	@Override
+	int getRestartMode();
+
+	@Import("restartMode")
+	@Override
+	void setRestartMode(int restartMode);
 }

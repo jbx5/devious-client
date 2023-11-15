@@ -323,7 +323,7 @@ public enum class90 implements MouseWheel {
 
 				var19 = var1.readUnsignedByte();
 				if (var6 == var14.sequence && var6 != -1) {
-					var8 = DynamicObject.SequenceDefinition_get(var6).field2230;
+					var8 = DynamicObject.SequenceDefinition_get(var6).restartMode;
 					if (var8 == 1) {
 						var14.sequenceFrame = 0;
 						var14.sequenceFrameCycle = 0;
