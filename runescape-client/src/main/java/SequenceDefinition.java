@@ -121,7 +121,8 @@ public class SequenceDefinition extends DualNode {
 	@ObfuscatedGetter(
 		intValue = -1712808465
 	)
-	public int field2230;
+	@Export("restartMode")
+	public int restartMode;
 
 	static {
 		field2206 = false;
@@ -143,7 +144,7 @@ public class SequenceDefinition extends DualNode {
 		this.field2210 = false;
 		this.field2218 = -1;
 		this.field2205 = -1;
-		this.field2230 = 2;
+		this.restartMode = 2;
 	}
 
 	@ObfuscatedName("ah")
@@ -216,7 +217,7 @@ public class SequenceDefinition extends DualNode {
 		} else if (var2 == 10) {
 			this.field2205 = var1.readUnsignedByte();
 		} else if (var2 == 11) {
-			this.field2230 = var1.readUnsignedByte();
+			this.restartMode = var1.readUnsignedByte();
 		} else if (var2 == 12) {
 			var3 = var1.readUnsignedByte();
 			this.chatFrameIds = new int[var3];

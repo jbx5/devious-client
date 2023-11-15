@@ -76,7 +76,7 @@ public class DynamicObject extends Renderable {
 			this.sequenceDefinition = SequenceDefinition_get(var7);
 			this.frame = 0;
 			this.cycleStart = Client.cycle - 1;
-			if (this.sequenceDefinition.field2230 == 0 && var9 != null && var9 instanceof DynamicObject) {
+			if (this.sequenceDefinition.restartMode == 0 && var9 != null && var9 instanceof DynamicObject) {
 				DynamicObject var10 = (DynamicObject)var9;
 				if (var10.sequenceDefinition == this.sequenceDefinition) {
 					this.frame = var10.frame;

@@ -1586,6 +1586,10 @@ public interface RSClient extends RSGameEngine, Client
 	RSEvictingDualNodeHashTable getPlayerAppearanceModelsCache();
 
 	@Import("SequenceDefinition_cached")
+	@Override
+	RSEvictingDualNodeHashTable getAnimationCache();
+
+	@Import("SequenceDefinition_cached")
 	RSEvictingDualNodeHashTable getSequenceDefinitionCache();
 
 	@Import("SequenceDefinition_cachedFrames")
