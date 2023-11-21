@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2018, Cameron <https://github.com/noremac201>, SoyChai <https://github.com/SoyChai>
+ * Copyright (c) 2023, Adam <Adam@sigterm.info>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,34 +23,31 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.client.plugins.experiencedrop;
+package net.runelite.client.plugins.xpdrop;
 
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
 import com.google.inject.Provides;
-import com.openosrs.client.game.NPCManager;
 import java.awt.Color;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.EnumMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.stream.IntStream;
+import java.util.stream.Collectors;
 import javax.inject.Inject;
-import lombok.AccessLevel;
-import lombok.Getter;
-import net.runelite.api.Actor;
 import net.runelite.api.Client;
 import net.runelite.api.EnumComposition;
 import net.runelite.api.EnumID;
-import net.runelite.api.NPC;
-import net.runelite.api.Player;
+import net.runelite.api.Prayer;
 import static net.runelite.api.ScriptID.XPDROPS_SETDROPSIZE;
 import static net.runelite.api.ScriptID.XPDROP_DISABLED;
 import net.runelite.api.Skill;
 import net.runelite.api.SpriteID;
 import net.runelite.api.Varbits;
-import net.runelite.api.WorldType;
-import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.GameTick;
-import net.runelite.api.events.ScriptCallbackEvent;
 import net.runelite.api.events.ScriptPreFired;
 import net.runelite.api.events.StatChanged;
 import net.runelite.api.widgets.Widget;
@@ -57,8 +55,6 @@ import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
-import net.runelite.client.ui.overlay.OverlayManager;
-import net.runelite.client.util.ColorUtil;
 
 @PluginDescriptor(
 	name = "XP Drop",
@@ -67,8 +63,40 @@ import net.runelite.client.util.ColorUtil;
 )
 public class XpDropPlugin extends Plugin
 {
-	private static final double HITPOINT_RATIO = 1.33; // Base rate of hp xp per point damage
-	private static final double DMM_MULTIPLIER_RATIO = 10;
+	enum PrayerType
+	{
+		MELEE,
+		RANGE,
+		MAGIC;
+	}
+
+	private static final Multimap<Prayer, PrayerType> PRAYER_TYPE = new ImmutableMultimap.Builder<Prayer, PrayerType>()
+		.put(Prayer.BURST_OF_STRENGTH, PrayerType.MELEE)
+		.put(Prayer.CLARITY_OF_THOUGHT, PrayerType.MELEE)
+		.put(Prayer.SHARP_EYE, PrayerType.RANGE)
+		.put(Prayer.MYSTIC_WILL, PrayerType.MAGIC)
+		.put(Prayer.SUPERHUMAN_STRENGTH, PrayerType.MELEE)
+		.put(Prayer.IMPROVED_REFLEXES, PrayerType.MELEE)
+		.put(Prayer.HAWK_EYE, PrayerType.RANGE)
+		.put(Prayer.MYSTIC_LORE, PrayerType.MAGIC)
+		.put(Prayer.ULTIMATE_STRENGTH, PrayerType.MELEE)
+		.put(Prayer.INCREDIBLE_REFLEXES, PrayerType.MELEE)
+		.put(Prayer.EAGLE_EYE, PrayerType.RANGE)
+		.put(Prayer.MYSTIC_MIGHT, PrayerType.MAGIC)
+		.put(Prayer.CHIVALRY, PrayerType.MELEE)
+		.put(Prayer.PIETY, PrayerType.MELEE)
+		.put(Prayer.RIGOUR, PrayerType.RANGE)
+		.put(Prayer.AUGURY, PrayerType.MAGIC)
+		// RP
+		.put(Prayer.RP_ANCIENT_STRENGTH, PrayerType.MELEE)
+		.put(Prayer.RP_ANCIENT_SIGHT, PrayerType.RANGE)
+		.put(Prayer.RP_ANCIENT_WILL, PrayerType.MAGIC)
+		.putAll(Prayer.RP_TRINITAS, PrayerType.MELEE, PrayerType.RANGE, PrayerType.MAGIC)
+		.put(Prayer.RP_DECIMATE, PrayerType.MELEE)
+		.put(Prayer.RP_ANNIHILATE, PrayerType.RANGE)
+		.put(Prayer.RP_VAPORISE, PrayerType.MAGIC)
+		.putAll(Prayer.RP_INTENSIFY, PrayerType.MELEE, PrayerType.RANGE, PrayerType.MAGIC)
+		.build();
 
 	@Inject
 	private Client client;
@@ -76,45 +104,17 @@ public class XpDropPlugin extends Plugin
 	@Inject
 	private XpDropConfig config;
 
-	@Inject
-	private NPCManager npcManager;
-
-	@Inject
-	private OverlayManager overlayManager;
-
-	@Inject
-	private XpDropOverlay overlay;
-
 	private int tickCounter = 0;
 	private int previousExpGained;
 	private boolean hasDropped = false;
-	private boolean correctPrayer;
+	private int xpdropColor;
 	private Skill lastSkill = null;
 	private final Map<Skill, Integer> previousSkillExpTable = new EnumMap<>(Skill.class);
-
-	@Getter(AccessLevel.PACKAGE)
-	private int damage = 0;
-	@Getter(AccessLevel.PACKAGE)
-	private int tickShow = 0;
-	@Getter(AccessLevel.PACKAGE)
-	private Actor lastOpponent;
 
 	@Provides
 	XpDropConfig provideConfig(ConfigManager configManager)
 	{
 		return configManager.getConfig(XpDropConfig.class);
-	}
-
-	@Override
-	protected void startUp() throws Exception
-	{
-		overlayManager.add(overlay);
-	}
-
-	@Override
-	protected void shutDown() throws Exception
-	{
-		overlayManager.remove(overlay);
 	}
 
 	@Subscribe
@@ -138,51 +138,64 @@ public class XpDropPlugin extends Plugin
 		// child 0 is the xpdrop text, everything else are sprite ids for skills
 		final Widget text = children[0];
 
-		PrayerType prayer = getActivePrayerType();
-		if (prayer == null)
+		Collection<PrayerType> prayers = getActivePrayerType();
+		if (prayers.isEmpty())
 		{
 			hideSkillIcons(xpdrop);
 			resetTextColor(text);
 			return;
 		}
 
-		final IntStream spriteIDs =
+		final List<PrayerType> xpDropTypes =
 			Arrays.stream(children)
 				.skip(1) // skip text
 				.filter(Objects::nonNull)
-				.mapToInt(Widget::getSpriteId);
+				.map(Widget::getSpriteId)
+				.map(id ->
+				{
+					if (id == SpriteID.SKILL_ATTACK || id == SpriteID.SKILL_STRENGTH || id == SpriteID.SKILL_DEFENCE)
+					{
+						return PrayerType.MELEE;
+					}
+					if (id == SpriteID.SKILL_RANGED)
+					{
+						return PrayerType.RANGE;
+					}
+					if (id == SpriteID.SKILL_MAGIC)
+					{
+						return PrayerType.MAGIC;
+					}
+					return null;
+				})
+				.filter(Objects::nonNull)
+				.distinct()
+				.collect(Collectors.toList());
 
-		int color = 0;
-
-		switch (prayer)
+		if (xpDropTypes.contains(PrayerType.MELEE))
 		{
-			case MELEE:
-				if (correctPrayer || spriteIDs.anyMatch(id ->
-					id == SpriteID.SKILL_ATTACK || id == SpriteID.SKILL_STRENGTH || id == SpriteID.SKILL_DEFENCE))
-				{
-					color = config.getMeleePrayerColor().getRGB();
-					correctPrayer = true;
-				}
-				break;
-			case RANGE:
-				if (correctPrayer || spriteIDs.anyMatch(id -> id == SpriteID.SKILL_RANGED))
-				{
-					color = config.getRangePrayerColor().getRGB();
-					correctPrayer = true;
-				}
-				break;
-			case MAGIC:
-				if (correctPrayer || spriteIDs.anyMatch(id -> id == SpriteID.SKILL_MAGIC))
-				{
-					color = config.getMagePrayerColor().getRGB();
-					correctPrayer = true;
-				}
-				break;
+			if (prayers.contains(PrayerType.MELEE))
+			{
+				xpdropColor = config.getMeleePrayerColor().getRGB();
+			}
+		}
+		else if (xpDropTypes.contains(PrayerType.RANGE))
+		{
+			if (prayers.contains(PrayerType.RANGE))
+			{
+				xpdropColor = config.getRangePrayerColor().getRGB();
+			}
+		}
+		else if (xpDropTypes.contains(PrayerType.MAGIC))
+		{
+			if (prayers.contains(PrayerType.MAGIC))
+			{
+				xpdropColor = config.getMagePrayerColor().getRGB();
+			}
 		}
 
-		if (color != 0)
+		if (xpdropColor != 0)
 		{
-			text.setTextColor(color);
+			text.setTextColor(xpdropColor);
 		}
 		else
 		{
@@ -219,36 +232,22 @@ public class XpDropPlugin extends Plugin
 		}
 	}
 
-	private PrayerType getActivePrayerType()
+	private Collection<PrayerType> getActivePrayerType()
 	{
-		for (XpPrayer prayer : XpPrayer.values())
+		for (Prayer prayer : PRAYER_TYPE.keySet())
 		{
-			if (client.getServerVarbitValue(prayer.getPrayer().getVarbit()) == 1)
+			if (client.getServerVarbitValue(prayer.getVarbit()) == 1)
 			{
-				return prayer.getType();
+				return PRAYER_TYPE.get(prayer);
 			}
 		}
-		return null;
-	}
-
-	@Subscribe
-	public void onGameStateChanged(GameStateChanged event)
-	{
-		tickShow = 0;
-		damage = 0;
+		return Collections.emptyList();
 	}
 
 	@Subscribe
 	public void onGameTick(GameTick tick)
 	{
-		lastOpponent = client.getLocalPlayer().getInteracting();
-
-		if (tickShow > 0)
-		{
-			tickShow--;
-		}
-
-		correctPrayer = false;
+		xpdropColor = 0;
 
 		final int fakeTickDelay = config.fakeXpDropDelay();
 
@@ -289,96 +288,4 @@ public class XpDropPlugin extends Plugin
 		}
 	}
 
-	@Subscribe
-	public void onScriptCallbackEvent(ScriptCallbackEvent e)
-	{
-		if (config.showdamagedrops() == XpDropConfig.DamageMode.NONE)
-		{
-			return;
-		}
-
-		final String eventName = e.getEventName();
-
-		if (eventName.equals("newXpDrop"))
-		{
-			damage = 0;
-		}
-		// Handles Fake XP drops (Ironman, DMM Cap, 200m xp, etc)
-		else if (eventName.equals("fakeXpDrop"))
-		{
-			final int[] intStack = client.getIntStack();
-			final int intStackSize = client.getIntStackSize();
-
-			final int skillId = intStack[intStackSize - 2];
-			final Skill skill = Skill.values()[skillId];
-
-			if (skill.equals(Skill.HITPOINTS))
-			{
-				final int exp = intStack[intStackSize - 1];
-				calculateDamageDealt(exp);
-			}
-		}
-		else if (eventName.equals("hpXpGained"))
-		{
-			final int[] intStack = client.getIntStack();
-			final int intStackSize = client.getIntStackSize();
-
-			final int exp = intStack[intStackSize - 1];
-			calculateDamageDealt(exp);
-		}
-		else if (eventName.equals("xpDropAddDamage")
-			&& config.showdamagedrops() == XpDropConfig.DamageMode.IN_XP_DROP
-			&& damage > 0)
-		{
-			final String[] stringStack = client.getStringStack();
-			final int stringStackSize = client.getStringStackSize();
-
-			String builder =
-				stringStack[stringStackSize - 1]
-					+ ColorUtil.colorTag(config.getDamageColor())
-					+ " ("
-					+ damage
-					+ ")";
-			stringStack[stringStackSize - 1] = builder;
-		}
-	}
-
-	private void calculateDamageDealt(int diff)
-	{
-		double damageDealt = diff / HITPOINT_RATIO;
-
-		// DeadMan mode has an XP modifier
-		if (client.getWorldType().contains(WorldType.DEADMAN))
-		{
-			damageDealt = damageDealt / DMM_MULTIPLIER_RATIO;
-		}
-
-		// Some NPCs have an XP modifier, account for it here.
-		Actor a = client.getLocalPlayer().getInteracting();
-		if (!(a instanceof NPC) && !(a instanceof Player))
-		{
-			// If we are interacting with nothing we may have clicked away at the perfect time fall back
-			// to last tick
-			if (!(lastOpponent instanceof NPC) && !(lastOpponent instanceof Player))
-			{
-				damage = (int) Math.rint(damageDealt);
-				tickShow = 3;
-				return;
-			}
-
-			a = lastOpponent;
-		}
-
-		if (a instanceof Player)
-		{
-			damage = (int) Math.rint(damageDealt);
-			tickShow = 3;
-
-			return;
-		}
-
-		NPC target = (NPC) a;
-		damage = (int) Math.rint(damageDealt / npcManager.getXpModifier(target.getId()));
-		tickShow = 3;
-	}
 }
