@@ -43,4 +43,16 @@ public class RuneLiteRasterizer implements Rasterizer
 	{
 		Rasterizer3D.rasterGouraud(y0, y1, y2, x0, x1, x2, 0.0F, 0.0F, 0.0F, hsl0, hsl1, hsl2);
 	}
+
+	@Override
+	public void setDrawRegion(int var1, int var2, int var3, int var4)
+	{
+		Rasterizer2D.Rasterizer2D_setClip(var1, var2, var3, var4);
+	}
+
+	@Override
+	public void resetRasterClipping()
+	{
+		Rasterizer3D.resetRasterClipping();
+	}
 }

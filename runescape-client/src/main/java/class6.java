@@ -189,7 +189,7 @@ public enum class6 implements MouseWheel {
 			var8 = new SpritePixels(36, 32);
 			Rasterizer3D.method5263(var8.pixels, 36, 32, (float[])null);
 			Rasterizer2D.Rasterizer2D_clear();
-			Rasterizer3D.method5203();
+			Rasterizer3D.resetRasterClipping();
 			Rasterizer3D.method5206(16, 16);
 			Rasterizer3D.clips.rasterGouraudLowRes = false;
 			if (var9.placeholderTemplate != -1) {
@@ -206,7 +206,7 @@ public enum class6 implements MouseWheel {
 			int var18 = var17 * Rasterizer3D.Rasterizer3D_sine[var9.xan2d] >> 16;
 			int var19 = var17 * Rasterizer3D.Rasterizer3D_cosine[var9.xan2d] >> 16;
 			var22.calculateBoundsCylinder();
-			var22.method5558(0, var9.yan2d, var9.zan2d, var9.xan2d, var9.offsetX2d, var22.height / 2 + var18 + var9.offsetY2d, var19 + var9.offsetY2d);
+			var22.drawFrustum(0, var9.yan2d, var9.zan2d, var9.xan2d, var9.offsetX2d, var22.height / 2 + var18 + var9.offsetY2d, var19 + var9.offsetY2d);
 			if (var9.notedId != -1) {
 				var23.drawTransBgAt(0, 0);
 			}
@@ -248,7 +248,7 @@ public enum class6 implements MouseWheel {
 
 			Rasterizer3D.method5263(var12, var13, var14, var15);
 			Rasterizer2D.Rasterizer2D_setClipArray(var16);
-			Rasterizer3D.method5203();
+			Rasterizer3D.resetRasterClipping();
 			Rasterizer3D.clips.rasterGouraudLowRes = true;
 			return var8;
 		}

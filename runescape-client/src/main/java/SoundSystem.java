@@ -134,7 +134,7 @@ public class SoundSystem implements Runnable {
 	@Export("drawInterface")
 	static final void drawInterface(Widget[] var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
 		Rasterizer2D.Rasterizer2D_setClip(var2, var3, var4, var5);
-		Rasterizer3D.method5203();
+		Rasterizer3D.resetRasterClipping();
 
 		for (int var9 = 0; var9 < var0.length; ++var9) {
 			Widget var10 = var0[var9];
@@ -316,7 +316,7 @@ public class SoundSystem implements Runnable {
 							}
 
 							Rasterizer2D.Rasterizer2D_setClip(var2, var3, var4, var5);
-							Rasterizer3D.method5203();
+							Rasterizer3D.resetRasterClipping();
 						} else if (var10.type == 11) {
 							if (class11.isComponentHidden(var10) && var10 != Interpreter.mousedOverWidgetIf1) {
 								continue;
@@ -327,7 +327,7 @@ public class SoundSystem implements Runnable {
 							}
 
 							Rasterizer2D.Rasterizer2D_setClip(var2, var3, var4, var5);
-							Rasterizer3D.method5203();
+							Rasterizer3D.resetRasterClipping();
 						}
 
 						if (Client.isResizable || Client.field515[var11] || Client.gameDrawingMode > 1) {
@@ -414,7 +414,7 @@ public class SoundSystem implements Runnable {
 											var42 = HitSplatDefinition.method3864(var42, var10);
 										}
 
-										var40.method7673(var42, var12, var13, var10.width, var10.height, var20, var10.textShadowed ? 0 : -1, class478.method8602(var10.transparencyTop), var10.textXAlignment, var10.textYAlignment, var10.textLineHeight);
+										var40.drawWidgetText(var42, var12, var13, var10.width, var10.height, var20, var10.textShadowed ? 0 : -1, class478.method8602(var10.transparencyTop), var10.textXAlignment, var10.textYAlignment, var10.textLineHeight);
 									}
 								} else {
 									int var23;
@@ -539,13 +539,13 @@ public class SoundSystem implements Runnable {
 											var24 = Rasterizer3D.Rasterizer3D_cosine[var10.modelAngleX] * var10.modelZoom >> 16;
 											if (var39 != null) {
 												if (!var10.isIf3) {
-													var39.method5558(0, var10.modelAngleY, 0, var10.modelAngleX, 0, var23, var24);
+													var39.drawFrustum(0, var10.modelAngleY, 0, var10.modelAngleX, 0, var23, var24);
 												} else {
 													var39.calculateBoundsCylinder();
 													if (var10.modelOrthog) {
 														var39.method5586(0, var10.modelAngleY, var10.modelAngleZ, var10.modelAngleX, var10.modelOffsetX, var23 + var22 + var10.modelOffsetY, var24 + var10.modelOffsetY, var10.modelZoom);
 													} else {
-														var39.method5558(0, var10.modelAngleY, var10.modelAngleZ, var10.modelAngleX, var10.modelOffsetX, var22 + var23 + var10.modelOffsetY, var24 + var10.modelOffsetY);
+														var39.drawFrustum(0, var10.modelAngleY, var10.modelAngleZ, var10.modelAngleX, var10.modelOffsetX, var22 + var23 + var10.modelOffsetY, var24 + var10.modelOffsetY);
 													}
 												}
 											}
