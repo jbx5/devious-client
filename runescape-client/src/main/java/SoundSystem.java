@@ -134,7 +134,7 @@ public class SoundSystem implements Runnable {
 	@Export("drawInterface")
 	static final void drawInterface(Widget[] var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
 		Rasterizer2D.Rasterizer2D_setClip(var2, var3, var4, var5);
-		Rasterizer3D.method5203();
+		Rasterizer3D.resetRasterClipping();
 
 		for (int var9 = 0; var9 < var0.length; ++var9) {
 			Widget var10 = var0[var9];
@@ -316,7 +316,7 @@ public class SoundSystem implements Runnable {
 							}
 
 							Rasterizer2D.Rasterizer2D_setClip(var2, var3, var4, var5);
-							Rasterizer3D.method5203();
+							Rasterizer3D.resetRasterClipping();
 						} else if (var10.type == 11) {
 							if (class11.isComponentHidden(var10) && var10 != Interpreter.mousedOverWidgetIf1) {
 								continue;
@@ -327,7 +327,7 @@ public class SoundSystem implements Runnable {
 							}
 
 							Rasterizer2D.Rasterizer2D_setClip(var2, var3, var4, var5);
-							Rasterizer3D.method5203();
+							Rasterizer3D.resetRasterClipping();
 						}
 
 						if (Client.isResizable || Client.field515[var11] || Client.gameDrawingMode > 1) {

@@ -189,7 +189,7 @@ public enum class6 implements MouseWheel {
 			var8 = new SpritePixels(36, 32);
 			Rasterizer3D.method5263(var8.pixels, 36, 32, (float[])null);
 			Rasterizer2D.Rasterizer2D_clear();
-			Rasterizer3D.method5203();
+			Rasterizer3D.resetRasterClipping();
 			Rasterizer3D.method5206(16, 16);
 			Rasterizer3D.clips.rasterGouraudLowRes = false;
 			if (var9.placeholderTemplate != -1) {
@@ -248,7 +248,7 @@ public enum class6 implements MouseWheel {
 
 			Rasterizer3D.method5263(var12, var13, var14, var15);
 			Rasterizer2D.Rasterizer2D_setClipArray(var16);
-			Rasterizer3D.method5203();
+			Rasterizer3D.resetRasterClipping();
 			Rasterizer3D.clips.rasterGouraudLowRes = true;
 			return var8;
 		}
