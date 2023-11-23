@@ -1165,7 +1165,8 @@ public class Model extends Renderable {
 	}
 
 	@ObfuscatedName("bf")
-	public final void method5558(int var1, int var2, int var3, int var4, int var5, int var6, int var7) {
+	@Export("drawFrustum")
+	public final void drawFrustum(int var1, int var2, int var3, int var4, int var5, int var6, int var7) {
 		if (this.boundsType != 2 && this.boundsType != 1) {
 			this.method5568();
 		}

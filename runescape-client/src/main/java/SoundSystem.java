@@ -539,13 +539,13 @@ public class SoundSystem implements Runnable {
 											var24 = Rasterizer3D.Rasterizer3D_cosine[var10.modelAngleX] * var10.modelZoom >> 16;
 											if (var39 != null) {
 												if (!var10.isIf3) {
-													var39.method5558(0, var10.modelAngleY, 0, var10.modelAngleX, 0, var23, var24);
+													var39.drawFrustum(0, var10.modelAngleY, 0, var10.modelAngleX, 0, var23, var24);
 												} else {
 													var39.calculateBoundsCylinder();
 													if (var10.modelOrthog) {
 														var39.method5586(0, var10.modelAngleY, var10.modelAngleZ, var10.modelAngleX, var10.modelOffsetX, var23 + var22 + var10.modelOffsetY, var24 + var10.modelOffsetY, var10.modelZoom);
 													} else {
-														var39.method5558(0, var10.modelAngleY, var10.modelAngleZ, var10.modelAngleX, var10.modelOffsetX, var22 + var23 + var10.modelOffsetY, var24 + var10.modelOffsetY);
+														var39.drawFrustum(0, var10.modelAngleY, var10.modelAngleZ, var10.modelAngleX, var10.modelOffsetX, var22 + var23 + var10.modelOffsetY, var24 + var10.modelOffsetY);
 													}
 												}
 											}
