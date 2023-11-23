@@ -240,7 +240,8 @@ public class Rasterizer3D {
 	}
 
 	@ObfuscatedName("ay")
-	public static void method5203() {
+	@Export("resetRasterClipping")
+	public static void resetRasterClipping() {
 		method5218(Rasterizer2D.Rasterizer2D_xClipStart, Rasterizer2D.Rasterizer2D_yClipStart, Rasterizer2D.Rasterizer2D_xClipEnd, Rasterizer2D.Rasterizer2D_yClipEnd);
 	}
 

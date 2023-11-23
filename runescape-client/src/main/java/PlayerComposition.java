@@ -567,7 +567,7 @@ public class PlayerComposition {
 		var2 = Client.viewportWidth;
 		var3 = Client.viewportHeight;
 		Rasterizer2D.Rasterizer2D_setClip(var0, var1, var0 + var2, var3 + var1);
-		Rasterizer3D.method5203();
+		Rasterizer3D.resetRasterClipping();
 		Rasterizer2D.method9630();
 		var4 = Client.camAngleX;
 		if (Client.field759 / 256 > var4) {

@@ -454,11 +454,12 @@ public abstract class AbstractFont extends Rasterizer2D {
 	@ObfuscatedName("am")
 	@Export("drawLines")
 	public int drawLines(String var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10) {
-		return this.method7673(var1, var2, var3, var4, var5, var6, var7, 256, var8, var9, var10);
+		return this.drawWidgetText(var1, var2, var3, var4, var5, var6, var7, 256, var8, var9, var10);
 	}
 
 	@ObfuscatedName("aq")
-	public int method7673(String var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11) {
+	@Export("drawWidgetText")
+	public int drawWidgetText(String var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11) {
 		if (var1 == null) {
 			return 0;
 		} else {
