@@ -414,7 +414,7 @@ public class SoundSystem implements Runnable {
 											var42 = HitSplatDefinition.method3864(var42, var10);
 										}
 
-										var40.method7673(var42, var12, var13, var10.width, var10.height, var20, var10.textShadowed ? 0 : -1, class478.method8602(var10.transparencyTop), var10.textXAlignment, var10.textYAlignment, var10.textLineHeight);
+										var40.drawWidgetText(var42, var12, var13, var10.width, var10.height, var20, var10.textShadowed ? 0 : -1, class478.method8602(var10.transparencyTop), var10.textXAlignment, var10.textYAlignment, var10.textLineHeight);
 									}
 								} else {
 									int var23;
