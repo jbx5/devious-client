@@ -12,7 +12,7 @@ import java.util.concurrent.TimeoutException;
 @Slf4j
 public class GameThread
 {
-	private static final long TIMEOUT = 1000;
+	private static final long TIMEOUT = 3000;
 
 	public static void invoke(Runnable runnable)
 	{
