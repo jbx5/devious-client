@@ -15,8 +15,7 @@ public class Strings {
 	@ObfuscatedName("ky")
 	public static String field4191;
 
-	@ObfuscatedName("<clinit>")
-	static void initCredentials() {
+	static {
 		field4057 = "Please visit the support page for assistance.";
 		field4189 = "";
 		field4118 = "Page has opened in the browser.";
