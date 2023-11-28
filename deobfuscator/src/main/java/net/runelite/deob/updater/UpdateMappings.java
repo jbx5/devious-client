@@ -27,8 +27,12 @@ package net.runelite.deob.updater;
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
+import java.util.stream.Collectors;
+import net.runelite.asm.Annotation;
+import net.runelite.asm.ClassFile;
 import net.runelite.asm.ClassGroup;
 import net.runelite.asm.Field;
+import net.runelite.asm.Type;
 import net.runelite.deob.deobfuscators.mapping.AnnotationIntegrityChecker;
 import net.runelite.deob.deobfuscators.mapping.AnnotationMapper;
 import net.runelite.deob.deobfuscators.mapping.Mapper;
@@ -87,6 +91,16 @@ public class UpdateMappings
 
 		new ScriptOpcodesTransformer().transform(group2);
 		new GraphicsObjectTransformer().transform(group2);
+
+		for (ClassFile cf : group2)
+		{
+			Map<Type, Annotation> annotations = cf.getAnnotations();
+			annotations.keySet()
+				.stream()
+				.filter(k -> !k.toString().startsWith("Lnet/runelite/"))
+				.collect(Collectors.toList())
+				.forEach(annotations::remove);
+		}
 	}
 
 	public void save(File out) throws IOException
