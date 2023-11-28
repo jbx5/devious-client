@@ -26,7 +26,9 @@ package net.runelite.deob.updater;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Map;
 import net.runelite.asm.ClassGroup;
+import net.runelite.asm.Field;
 import net.runelite.deob.deobfuscators.mapping.AnnotationIntegrityChecker;
 import net.runelite.deob.deobfuscators.mapping.AnnotationMapper;
 import net.runelite.deob.deobfuscators.mapping.Mapper;
@@ -56,6 +58,9 @@ public class UpdateMappings
 		ParallelExecutorMapping mapping = mapper.getMapping();
 
 		mapping.getMap().keySet().removeIf(k -> k.toString().startsWith("Buffer.") || k.toString().contains(" Buffer."));
+
+		Field targetFillModeField = (Field) mapping.getMap().entrySet().stream().filter(e -> e.getKey().toString().equals("static LFillMode; FillMode.SOLID")).map(Map.Entry::getValue).findFirst().get();
+		mapping.map(null, group1.findClass("FillMode"), targetFillModeField.getClassFile());
 
 		AnnotationMapper amapper = new AnnotationMapper(group1, group2, mapping);
 		amapper.run();
