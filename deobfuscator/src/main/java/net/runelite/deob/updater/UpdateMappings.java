@@ -26,12 +26,14 @@ package net.runelite.deob.updater;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import net.runelite.asm.Annotation;
 import net.runelite.asm.ClassFile;
 import net.runelite.asm.ClassGroup;
 import net.runelite.asm.Field;
+import net.runelite.asm.Method;
 import net.runelite.asm.Type;
 import net.runelite.deob.deobfuscators.mapping.AnnotationIntegrityChecker;
 import net.runelite.deob.deobfuscators.mapping.AnnotationMapper;
@@ -65,6 +67,18 @@ public class UpdateMappings
 
 		Field targetFillModeField = (Field) mapping.getMap().entrySet().stream().filter(e -> e.getKey().toString().equals("static LFillMode; FillMode.SOLID")).map(Map.Entry::getValue).findFirst().get();
 		mapping.map(null, group1.findClass("FillMode"), targetFillModeField.getClassFile());
+
+		ClassFile rasterizer2D = group1.findClass("Rasterizer2D");
+		ClassFile targetRasterizer2D = (ClassFile) mapping.getMap().get(rasterizer2D);
+		List<Method> missingRasterizer2DMethods = rasterizer2D.getMethods().stream().filter(m -> !m.getName().equals("<clinit>") && !m.getName().equals("<init>") && !mapping.getMap().containsKey(m)).collect(Collectors.toList());
+		List<Method> missingTargetRasterizer2DMethods = targetRasterizer2D.getMethods().stream().filter(m -> !m.getName().equals("<clinit>") && !m.getName().equals("<init>") && !mapping.getMap().containsValue(m)).collect(Collectors.toList());
+		if (missingRasterizer2DMethods.size() == missingTargetRasterizer2DMethods.size())
+		{
+			for (int i = 0; i < missingRasterizer2DMethods.size(); i ++)
+			{
+				mapping.map(null, missingRasterizer2DMethods.get(i), missingTargetRasterizer2DMethods.get(i));
+			}
+		}
 
 		AnnotationMapper amapper = new AnnotationMapper(group1, group2, mapping);
 		amapper.run();
