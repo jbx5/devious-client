@@ -1065,6 +1065,13 @@ public interface Widget extends Interactable, Identifiable
 	void setOnDragListener(Object ...args);
 
 	/**
+	 * Sets a script to be ran when the mouse is scrolled when on the widget
+	 *
+	 * @param args A ScriptID, then the args for the script
+	 */
+	void setOnScrollWheelListener(Object ...args);
+
+	/**
 	 * Container this can be dragged in
 	 */
 	Widget getDragParent();
