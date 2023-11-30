@@ -41,6 +41,7 @@ import net.runelite.deob.deobfuscators.mapping.Mapper;
 import net.runelite.deob.deobfuscators.mapping.ParallelExecutorMapping;
 import net.runelite.deob.deobfuscators.transformers.GraphicsObjectTransformer;
 import net.runelite.deob.deobfuscators.transformers.ScriptOpcodesTransformer;
+import net.runelite.deob.deobfuscators.transformers.BadEnumConstructorTransformer;
 import net.runelite.deob.util.JarUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -115,6 +116,8 @@ public class UpdateMappings
 				.collect(Collectors.toList())
 				.forEach(annotations::remove);
 		}
+
+		new BadEnumConstructorTransformer().transform(group2);
 	}
 
 	public void save(File out) throws IOException
