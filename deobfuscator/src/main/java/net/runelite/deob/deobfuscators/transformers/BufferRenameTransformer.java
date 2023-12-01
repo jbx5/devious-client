@@ -38,13 +38,19 @@ import net.runelite.asm.attributes.code.instructions.LDC;
 import net.runelite.asm.signature.Signature;
 import net.runelite.deob.DeobProperties;
 import net.runelite.deob.Transformer;
-import net.runelite.deob.deobfuscators.Renamer;
+import net.runelite.deob.deobfuscators.mapping.ParallelExecutorMapping;
 import net.runelite.deob.util.JarUtil;
-import net.runelite.deob.util.NameMappings;
 
 public class BufferRenameTransformer implements Transformer
 {
 	private static final Logger logger = LoggerFactory.getLogger(BufferRenameTransformer.class);
+
+	private ParallelExecutorMapping mapping;
+
+	public BufferRenameTransformer(ParallelExecutorMapping mapping)
+	{
+		this.mapping = mapping;
+	}
 
 	@Override
 	public void transform(ClassGroup group)
@@ -77,24 +83,6 @@ public class BufferRenameTransformer implements Transformer
 			}
 		}
 
-		final NameMappings mappings = new NameMappings();
-		mappings.map(targetBufferCF.getPoolClass(), namedBufferCF.getName());
-
-		// Map fields
-		List<Field> namedFields = namedBufferCF.getFields();
-		List<Field> targetFields = targetBufferCF.getFields();
-		for (int i = 0; i < namedFields.size(); i++)
-		{
-			Field namedField = namedFields.get(i);
-			Field targetField = targetFields.get(i);
-			if (namedField.getName().startsWith("field"))
-			{
-				continue;
-			}
-			mappings.map(targetField.getPoolField(), namedField.getName());
-		}
-
-		// Map methods
 		List<Method> namedMethods = namedBufferCF.getMethods().stream()
 			.filter(m -> !m.isStatic())
 			.filter(m -> !m.getName().equals("<clinit>"))
@@ -117,8 +105,31 @@ public class BufferRenameTransformer implements Transformer
 			logger.warn("targetMethodSize: {} != namedMethodSize: {}", targetMethods.size(), namedMethods.size());
 			//namedMethods.add(70, new Method(namedBufferCF, "methodRePosition", new Signature("()V")));
 			//namedMethods.remove(70);
+			return;
 		}
 
+		// Remove existing buffer mapping
+		this.mapping.getMap().keySet().removeIf(k -> k.toString().startsWith("Buffer.") || k.toString().contains(" Buffer."));
+
+		// Map class
+		mapping.map(null, targetBufferCF.getPoolClass(), namedBufferCF.getName());
+
+		// Map fields
+		List<Field> namedFields = namedBufferCF.getFields();
+		List<Field> targetFields = targetBufferCF.getFields();
+		for (int i = 0; i < namedFields.size(); i++)
+		{
+			Field namedField = namedFields.get(i);
+			Field targetField = targetFields.get(i);
+			if (namedField.getName().startsWith("field"))
+			{
+				continue;
+			}
+			logger.info("Rename field: {} -> {}", targetField.getName(), namedField.getName());
+			mapping.map(null, targetField.getPoolField(), namedField.getName());
+		}
+
+		// Map methods
 		for (int i = 0; i < Math.min(namedMethods.size(), targetMethods.size()); i++)
 		{
 			net.runelite.asm.pool.Method targetMethod = targetMethods.get(i).getPoolMethod();
@@ -129,12 +140,9 @@ public class BufferRenameTransformer implements Transformer
 				continue;
 			}
 
-			logger.info("Rename: {} -> {} | {}", targetMethod.getName(), namedMethod.getName(), i);
-			mappings.map(targetMethod, namedMethod.getName());
+			logger.info("Rename method: {} -> {} | {}", targetMethod.getName(), namedMethod.getName(), i);
+			mapping.map(null, targetMethod, namedMethod.getName());
 		}
-
-		Renamer renamer = new Renamer(mappings);
-		renamer.run(group);
 
 		logger.warn("Buffer rename order might have been incorrect verify manually!");
 	}

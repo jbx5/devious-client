@@ -39,8 +39,10 @@ import net.runelite.deob.deobfuscators.mapping.AnnotationIntegrityChecker;
 import net.runelite.deob.deobfuscators.mapping.AnnotationMapper;
 import net.runelite.deob.deobfuscators.mapping.Mapper;
 import net.runelite.deob.deobfuscators.mapping.ParallelExecutorMapping;
+import net.runelite.deob.deobfuscators.transformers.BufferRenameTransformer;
 import net.runelite.deob.deobfuscators.transformers.GraphicsObjectTransformer;
 import net.runelite.deob.deobfuscators.transformers.ScriptOpcodesTransformer;
+import net.runelite.deob.deobfuscators.transformers.BadEnumConstructorTransformer;
 import net.runelite.deob.util.JarUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -63,7 +65,7 @@ public class UpdateMappings
 		mapper.run();
 		ParallelExecutorMapping mapping = mapper.getMapping();
 
-		mapping.getMap().keySet().removeIf(k -> k.toString().startsWith("Buffer.") || k.toString().contains(" Buffer."));
+		new BufferRenameTransformer(mapping).transform(group2);
 
 		Field targetFillModeField = (Field) mapping.getMap().entrySet().stream().filter(e -> e.getKey().toString().equals("static LFillMode; FillMode.SOLID")).map(Map.Entry::getValue).findFirst().get();
 		mapping.map(null, group1.findClass("FillMode"), targetFillModeField.getClassFile());
@@ -115,6 +117,8 @@ public class UpdateMappings
 				.collect(Collectors.toList())
 				.forEach(annotations::remove);
 		}
+
+		new BadEnumConstructorTransformer().transform(group2);
 	}
 
 	public void save(File out) throws IOException
