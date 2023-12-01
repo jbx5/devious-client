@@ -1,5 +1,6 @@
 package org.json;
 
+import net.runelite.mapping.Export;
 import net.runelite.rs.Reflection;
 
 import java.io.IOException;
@@ -103,6 +104,7 @@ public class JSONObject {
       }
    }
 
+   @Export("method8392")
    public JSONObject method8392(String var1, Object var2) throws JSONException {
       if (var1 == null) {
          throw new JSONException("Null key.");
