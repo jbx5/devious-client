@@ -45,7 +45,10 @@ import net.runelite.asm.attributes.code.instructions.VReturn;
 import net.runelite.asm.pool.Class;
 import net.runelite.asm.pool.Field;
 import net.runelite.asm.signature.Signature;
+import net.runelite.deob.DeobAnnotations;
 import net.runelite.deob.Transformer;
+import net.runelite.deob.deobfuscators.Renamer;
+import net.runelite.deob.util.NameMappings;
 
 public class JSONSyntheticTransformer implements Transformer
 {
@@ -54,6 +57,25 @@ public class JSONSyntheticTransformer implements Transformer
 	@Override
 	public void transform(ClassGroup group)
 	{
+		// Map wrongly mapped json classes to org/json package
+		// This happened because the previous mapping renamed the json classes to the implements annotation
+		final NameMappings mappings = new NameMappings();
+		for (ClassFile cf : group)
+		{
+			if (!cf.getName().startsWith("JSON"))
+			{
+				continue;
+			}
+			logger.info("Mapping class: {} to package: {}", cf, "org/json/");
+			mappings.map(cf.getPoolClass(), "org/json/" + cf.getName());
+		}
+
+		if (!mappings.getMap().isEmpty())
+		{
+			new Renamer(mappings).run(group);
+		}
+
+		// Transform
 		for (ClassFile cf : group)
 		{
 			if (!cf.getName().startsWith("org/json/"))
@@ -61,11 +83,25 @@ public class JSONSyntheticTransformer implements Transformer
 				continue;
 			}
 
-			// Remove implements/obfuscatedName from all json classes
-			Map<Type, Annotation> annotations = cf.getAnnotations();
-			annotations.keySet().stream().collect(Collectors.toList()).forEach(annotations::remove);
+			// Remove obfuscated annotations from all json classes
+			Map<Type, Annotation> cfAnnotations = cf.getAnnotations();
+			cfAnnotations.keySet().stream().filter(k -> k.equals(DeobAnnotations.OBFUSCATED_NAME) || k.equals(DeobAnnotations.OBFUSCATED_SIGNATURE) || k.equals(DeobAnnotations.OBFUSCATED_GETTER)).collect(Collectors.toList()).forEach(cfAnnotations::remove);
 
-			// transform clinit method to set NULL field
+			// Remove obfuscated annotations from all json fields
+			for (net.runelite.asm.Field f : cf.getFields())
+			{
+				Map<Type, Annotation> fieldAnnotations = f.getAnnotations();
+				fieldAnnotations.keySet().stream().filter(k -> k.equals(DeobAnnotations.OBFUSCATED_NAME) || k.equals(DeobAnnotations.OBFUSCATED_SIGNATURE) || k.equals(DeobAnnotations.OBFUSCATED_GETTER)).collect(Collectors.toList()).forEach(fieldAnnotations::remove);
+			}
+
+			// Remove obfuscated annotations from all json methods
+			for (Method m : cf.getMethods())
+			{
+				Map<Type, Annotation> methodAnnotations = m.getAnnotations();
+				methodAnnotations.keySet().stream().filter(k -> k.equals(DeobAnnotations.OBFUSCATED_NAME) || k.equals(DeobAnnotations.OBFUSCATED_SIGNATURE) || k.equals(DeobAnnotations.OBFUSCATED_GETTER)).collect(Collectors.toList()).forEach(methodAnnotations::remove);
+			}
+
+			// Transform clinit method to set NULL field
 			if (cf.getName().equals("org/json/JSONObject"))
 			{
 				Method clinit = cf.findMethod("<clinit>");
