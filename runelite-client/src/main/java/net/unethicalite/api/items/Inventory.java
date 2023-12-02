@@ -70,13 +70,15 @@ public class Inventory extends Items
 
 	public static Item getItem(int slot)
 	{
-		Item[] container = InventoryManager.getCachedContainers().get(InventoryID.INVENTORY.getId());
-		if (container == null)
+		ItemContainerSnapshot containerSnapshot = InventoryManager.getCachedContainers().get(InventoryID.INVENTORY.getId());
+		if (containerSnapshot == null)
 		{
 			return null;
 		}
 
-		Item item = container[slot];
+		Item[] items = containerSnapshot.getItems();
+
+		Item item = items[slot];
 		if (item == null || item.getId() == -1 || item.getName() == null || item.getName().equals("null"))
 		{
 			return null;
