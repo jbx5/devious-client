@@ -41,6 +41,7 @@ import net.runelite.deob.deobfuscators.mapping.Mapper;
 import net.runelite.deob.deobfuscators.mapping.ParallelExecutorMapping;
 import net.runelite.deob.deobfuscators.transformers.BufferRenameTransformer;
 import net.runelite.deob.deobfuscators.transformers.GraphicsObjectTransformer;
+import net.runelite.deob.deobfuscators.transformers.JSONSyntheticTransformer;
 import net.runelite.deob.deobfuscators.transformers.ScriptOpcodesTransformer;
 import net.runelite.deob.deobfuscators.transformers.BadEnumConstructorTransformer;
 import net.runelite.deob.util.JarUtil;
@@ -118,6 +119,7 @@ public class UpdateMappings
 				.forEach(annotations::remove);
 		}
 
+		new JSONSyntheticTransformer().transform(group2);
 		new BadEnumConstructorTransformer().transform(group2);
 	}
 
