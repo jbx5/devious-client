@@ -1023,7 +1023,7 @@ public class Buffer extends Node {
 		descriptor = "(B)I",
 		garbageValue = "88"
 	)
-	public int method9412() {
+	public int method9305() {
 		this.offset += 2;
 		int var1 = ((this.array[this.offset - 1] & 255) << 8) + (this.array[this.offset - 2] & 255);
 		if (var1 > 32767) {

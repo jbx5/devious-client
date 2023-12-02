@@ -4,11 +4,7 @@ import net.runelite.mapping.Implements;
 
 @Implements("OtlTokenResponse")
 public interface OtlTokenResponse {
-   boolean isSuccess();
+	boolean isSuccess();
 
-   String getAccessToken();
-
-   String getRefreshToken();
-
-   String getToken();
+	String getToken();
 }

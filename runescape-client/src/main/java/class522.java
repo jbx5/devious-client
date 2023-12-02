@@ -173,7 +173,7 @@ public enum class522 implements MouseWheel {
 	final int field5125;
 
 	class522(int var3) {
-		this.field5125 = var3;
+		this(var3, false);
 	}
 
 	@ObfuscatedSignature(

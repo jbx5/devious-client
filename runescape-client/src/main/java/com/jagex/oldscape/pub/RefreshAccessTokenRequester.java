@@ -7,5 +7,5 @@ import net.runelite.mapping.Implements;
 
 @Implements("RefreshAccessTokenRequester")
 public interface RefreshAccessTokenRequester {
-   Future request(String var1, URL var2, Map var3, String var4);
+	Future request(String var1, URL var2, Map var3, String var4);
 }
