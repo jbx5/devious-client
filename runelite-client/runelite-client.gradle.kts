@@ -209,6 +209,5 @@ tasks {
         classpath = project.sourceSets.main.get().runtimeClasspath
         enableAssertions = true
         mainClass.set("net.unethicalite.client.Unethicalite")
-        jvmArgs("--add-opens=java.base/java.lang.reflect=ALL-UNNAMED")
     }
 }
