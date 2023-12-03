@@ -428,9 +428,9 @@ public class WorldMapCacheName {
 								Login.Login_loadingText = "Loading textures - " + "0%";
 								Login.Login_loadingPercent = 90;
 							} else {
-								class292.textureProvider = new TextureProvider(Canvas.field114, GrandExchangeOfferOwnWorldComparator.archive8, 20, WorldMapIcon_1.clientPreferences.method2548(), Client.isLowDetail ? 64 : 128);
+								class292.textureProvider = new TextureProvider(Canvas.field114, GrandExchangeOfferOwnWorldComparator.archive8, 20, WorldMapIcon_1.clientPreferences.getBrightness(), Client.isLowDetail ? 64 : 128);
 								Rasterizer3D.method5204(class292.textureProvider);
-								Rasterizer3D.method5191(WorldMapIcon_1.clientPreferences.method2548());
+								Rasterizer3D.method5191(WorldMapIcon_1.clientPreferences.getBrightness());
 								Client.field517 = class92.field1143;
 							}
 						} else if (class92.field1143 == Client.field517) {

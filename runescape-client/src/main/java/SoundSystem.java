@@ -239,7 +239,7 @@ public class SoundSystem implements Runnable {
 					if (!var10.isIf3 || var15 < var17 && var16 < var18) {
 						if (var10.contentType != 0) {
 							if (var10.contentType == 1336) {
-								if (WorldMapIcon_1.clientPreferences.method2608()) {
+								if (WorldMapIcon_1.clientPreferences.isDisplayingFps()) {
 									var13 += 15;
 									ItemLayer.fontPlain12.drawRightAligned("Fps:" + GameEngine.fps, var12 + var10.width, var13, 16776960, -1);
 									var13 += 15;

@@ -275,10 +275,10 @@ public class World {
 						class19.mouseCam = Interpreter.Interpreter_intStack[--DbTableType.Interpreter_intStackSize] == 1;
 						return 1;
 					} else if (var0 == ScriptOpcodes.GETREMOVEROOFS) {
-						Interpreter.Interpreter_intStack[++DbTableType.Interpreter_intStackSize - 1] = WorldMapIcon_1.clientPreferences.method2541() ? 1 : 0;
+						Interpreter.Interpreter_intStack[++DbTableType.Interpreter_intStackSize - 1] = WorldMapIcon_1.clientPreferences.isRoofsHidden() ? 1 : 0;
 						return 1;
 					} else if (var0 == ScriptOpcodes.SETREMOVEROOFS) {
-						WorldMapIcon_1.clientPreferences.method2540(Interpreter.Interpreter_intStack[--DbTableType.Interpreter_intStackSize] == 1);
+						WorldMapIcon_1.clientPreferences.updateRoofsHidden(Interpreter.Interpreter_intStack[--DbTableType.Interpreter_intStackSize] == 1);
 						return 1;
 					} else if (var0 == ScriptOpcodes.OPENURL) {
 						var7 = Interpreter.Interpreter_stringStack[--class127.Interpreter_stringStackSize];
@@ -316,7 +316,7 @@ public class World {
 						Client.showMouseOverText = Interpreter.Interpreter_intStack[--DbTableType.Interpreter_intStackSize] == 1;
 						return 1;
 					} else if (var0 == ScriptOpcodes.RENDERSELF) {
-						Client.field615 = Interpreter.Interpreter_intStack[--DbTableType.Interpreter_intStackSize] == 1;
+						Client.renderSelf = Interpreter.Interpreter_intStack[--DbTableType.Interpreter_intStackSize] == 1;
 						return 1;
 					} else if (var0 == 3120) {
 						if (Interpreter.Interpreter_intStack[--DbTableType.Interpreter_intStackSize] == 1) {
@@ -410,16 +410,16 @@ public class World {
 						boolean var10;
 						if (var0 == ScriptOpcodes.SETHIDEUSERNAME) {
 							var10 = Interpreter.Interpreter_intStack[--DbTableType.Interpreter_intStackSize] == 1;
-							WorldMapIcon_1.clientPreferences.method2583(var10);
+							WorldMapIcon_1.clientPreferences.updateHideUsername(var10);
 							return 1;
 						} else if (var0 == ScriptOpcodes.GETHIDEUSERNAME) {
-							Interpreter.Interpreter_intStack[++DbTableType.Interpreter_intStackSize - 1] = WorldMapIcon_1.clientPreferences.method2543() ? 1 : 0;
+							Interpreter.Interpreter_intStack[++DbTableType.Interpreter_intStackSize - 1] = WorldMapIcon_1.clientPreferences.isUsernameHidden() ? 1 : 0;
 							return 1;
 						} else if (var0 == ScriptOpcodes.SETREMEMBERUSERNAME) {
 							var10 = Interpreter.Interpreter_intStack[--DbTableType.Interpreter_intStackSize] == 1;
 							Client.Login_isUsernameRemembered = var10;
 							if (!var10) {
-								WorldMapIcon_1.clientPreferences.method2586("");
+								WorldMapIcon_1.clientPreferences.updateRememberedUsername("");
 							}
 
 							return 1;
@@ -430,10 +430,10 @@ public class World {
 							return 1;
 						} else if (var0 == 3146) {
 							var10 = Interpreter.Interpreter_intStack[--DbTableType.Interpreter_intStackSize] == 1;
-							WorldMapIcon_1.clientPreferences.method2571(!var10);
+							WorldMapIcon_1.clientPreferences.updateTitleMusicDisabled(!var10);
 							return 1;
 						} else if (var0 == 3147) {
-							Interpreter.Interpreter_intStack[++DbTableType.Interpreter_intStackSize - 1] = WorldMapIcon_1.clientPreferences.method2631() ? 0 : 1;
+							Interpreter.Interpreter_intStack[++DbTableType.Interpreter_intStackSize - 1] = WorldMapIcon_1.clientPreferences.isTitleMusicDisabled() ? 0 : 1;
 							return 1;
 						} else if (var0 == 3148) {
 							return 1;

@@ -127,7 +127,7 @@ public class UrlRequest {
 				if (Login.loginIndex != 4 && Login.loginIndex != 10) {
 					var0.draw("Login: ", Login.loginBoxX + 180 - 110, var24, 16777215, 0);
 					var25 = 200;
-					var5 = WorldMapIcon_1.clientPreferences.method2543() ? MusicPatch.method6201(Login.Login_username) : Login.Login_username;
+					var5 = WorldMapIcon_1.clientPreferences.isUsernameHidden() ? MusicPatch.method6201(Login.Login_username) : Login.Login_username;
 
 					for (var6 = var5; var0.stringWidth(var6) > var25; var6 = var6.substring(0, var6.length() - 1)) {
 					}
@@ -184,7 +184,7 @@ public class UrlRequest {
 					var24 += 7;
 					var0.draw("Login: ", class157.loginBoxCenter - 110, var24, 16777215, 0);
 					var25 = 200;
-					var5 = WorldMapIcon_1.clientPreferences.method2543() ? MusicPatch.method6201(Login.Login_username) : Login.Login_username;
+					var5 = WorldMapIcon_1.clientPreferences.isUsernameHidden() ? MusicPatch.method6201(Login.Login_username) : Login.Login_username;
 
 					for (var6 = var5; var0.stringWidth(var6) > var25; var6 = var6.substring(1)) {
 					}
@@ -206,7 +206,7 @@ public class UrlRequest {
 					var8 = var8 + var9.subWidth + 5;
 					var1.draw("Remember username", var8, var23 + 13, 16776960, 0);
 					var8 = class157.loginBoxCenter + 24;
-					boolean var14 = WorldMapIcon_1.clientPreferences.method2543();
+					boolean var14 = WorldMapIcon_1.clientPreferences.isUsernameHidden();
 					boolean var15 = Login.field919;
 					IndexedSprite var13 = var14 ? (var15 ? GrandExchangeEvents.field4344 : FriendsList.options_buttons_2Sprite) : (var15 ? Login.field902 : class310.options_buttons_0Sprite);
 					var13.drawAt(var8, var23);
@@ -269,7 +269,7 @@ public class UrlRequest {
 						var4 = Login.loginBoxX + 180 - 9 + var0.stringWidth("for 30 days: ") + 15;
 						var28 = var24 - var0.ascent;
 						IndexedSprite var26;
-						if (Login.field920) {
+						if (Login.rememberUsername) {
 							var26 = FriendsList.options_buttons_2Sprite;
 						} else {
 							var26 = class310.options_buttons_0Sprite;
@@ -297,7 +297,7 @@ public class UrlRequest {
 						var24 += 14;
 						var0.draw("Username/email: ", Login.loginBoxX + 180 - 145, var24, 16777215, 0);
 						var25 = 174;
-						var5 = WorldMapIcon_1.clientPreferences.method2543() ? MusicPatch.method6201(Login.Login_username) : Login.Login_username;
+						var5 = WorldMapIcon_1.clientPreferences.isUsernameHidden() ? MusicPatch.method6201(Login.Login_username) : Login.Login_username;
 
 						for (var6 = var5; var0.stringWidth(var6) > var25; var6 = var6.substring(1)) {
 						}
@@ -534,7 +534,7 @@ public class UrlRequest {
 				Rasterizer2D.Rasterizer2D_setClipArray(var22);
 			}
 
-			Login.title_muteSprite[WorldMapIcon_1.clientPreferences.method2631() ? 1 : 0].drawAt(Login.xPadding + 765 - 40, 463);
+			Login.title_muteSprite[WorldMapIcon_1.clientPreferences.isTitleMusicDisabled() ? 1 : 0].drawAt(Login.xPadding + 765 - 40, 463);
 			if (Client.gameState > 5 && class85.clientLanguage == Language.Language_EN) {
 				if (FadeOutTask.field4547 != null) {
 					var24 = Login.xPadding + 5;

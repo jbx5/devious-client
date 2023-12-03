@@ -60,7 +60,7 @@ public class class320 {
 		garbageValue = "1466473405"
 	)
 	static void method6188() {
-		if (Client.field615) {
+		if (Client.renderSelf) {
 			AccessFile.addPlayerToScene(class229.localPlayer, false);
 		}
 

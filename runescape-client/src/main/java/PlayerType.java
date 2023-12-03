@@ -6,7 +6,8 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("oc")
 @Implements("PlayerType")
-public enum PlayerType implements MouseWheel {
+public enum PlayerType implements Enum
+{
 	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "Loc;"

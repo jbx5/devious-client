@@ -222,12 +222,12 @@ public class WorldMapSection2 implements WorldMapSection {
 			}
 
 			if (var0 == 20 || var0 == 40 || var0 == 45 || var0 == 50) {
-				class19.method295(0);
+				class19.updateLoginState(0);
 				Client.field522 = 0;
 				Client.field614 = 0;
 				Client.timer.method7931(var0);
 				if (var0 != 20) {
-					VerticalAlignment.method3754(false);
+					VerticalAlignment.setAuthenticationScheme(false);
 				}
 			}
 

@@ -65,7 +65,7 @@ public class ClientPreferences {
 	int windowMode;
 	@ObfuscatedName("aj")
 	@Export("parameters")
-	final Map parameters;
+	final Map<Integer, Integer> parameters;
 
 	ClientPreferences() {
 		this.hideUsername = false;
@@ -201,8 +201,9 @@ public class ClientPreferences {
 		descriptor = "(ZB)V",
 		garbageValue = "-10"
 	)
-	void method2540(boolean var1) {
-		this.roofsHidden = var1;
+	@Export("updateRoofsHidden")
+	void updateRoofsHidden(boolean state) {
+		this.roofsHidden = state;
 		TextureProvider.savePreferences();
 	}
 
@@ -211,7 +212,8 @@ public class ClientPreferences {
 		descriptor = "(I)Z",
 		garbageValue = "-194443239"
 	)
-	boolean method2541() {
+	@Export("isRoofsHidden")
+	boolean isRoofsHidden() {
 		return this.roofsHidden;
 	}
 
@@ -220,8 +222,9 @@ public class ClientPreferences {
 		descriptor = "(ZI)V",
 		garbageValue = "-2140370030"
 	)
-	void method2583(boolean var1) {
-		this.hideUsername = var1;
+	@Export("updateHideUsername")
+	void updateHideUsername(boolean state) {
+		this.hideUsername = state;
 		TextureProvider.savePreferences();
 	}
 
@@ -230,7 +233,8 @@ public class ClientPreferences {
 		descriptor = "(I)Z",
 		garbageValue = "190376852"
 	)
-	boolean method2543() {
+	@Export("isUsernameHidden")
+	boolean isUsernameHidden() {
 		return this.hideUsername;
 	}
 
@@ -239,8 +243,9 @@ public class ClientPreferences {
 		descriptor = "(ZS)V",
 		garbageValue = "-5895"
 	)
-	void method2571(boolean var1) {
-		this.titleMusicDisabled = var1;
+	@Export("updateTitleMusicDisabled")
+	void updateTitleMusicDisabled(boolean state) {
+		this.titleMusicDisabled = state;
 		TextureProvider.savePreferences();
 	}
 
@@ -249,7 +254,8 @@ public class ClientPreferences {
 		descriptor = "(I)Z",
 		garbageValue = "1853874202"
 	)
-	boolean method2631() {
+	@Export("isTitleMusicDisabled")
+	boolean isTitleMusicDisabled() {
 		return this.titleMusicDisabled;
 	}
 
@@ -258,8 +264,9 @@ public class ClientPreferences {
 		descriptor = "(ZI)V",
 		garbageValue = "-1108077215"
 	)
-	void method2546(boolean var1) {
-		this.displayFps = var1;
+	@Export("updateDisplayFps")
+	void updateDisplayFps(boolean state) {
+		this.displayFps = state;
 		TextureProvider.savePreferences();
 	}
 
@@ -268,8 +275,9 @@ public class ClientPreferences {
 		descriptor = "(I)V",
 		garbageValue = "-482539852"
 	)
-	void method2547() {
-		this.method2546(!this.displayFps);
+	@Export("toggleDisplayFps")
+	void toggleDisplayFps() {
+		this.updateDisplayFps(!this.displayFps);
 	}
 
 	@ObfuscatedName("av")
@@ -277,7 +285,8 @@ public class ClientPreferences {
 		descriptor = "(I)Z",
 		garbageValue = "682721054"
 	)
-	boolean method2608() {
+	@Export("isDisplayingFps")
+	boolean isDisplayingFps() {
 		return this.displayFps;
 	}
 
@@ -301,8 +310,9 @@ public class ClientPreferences {
 	}
 
 	@ObfuscatedName("ay")
-	void method2551(double var1) {
-		this.brightness = var1;
+	@Export("updateBrightness")
+	void updateBrightness(double brightness) {
+		this.brightness = brightness;
 		TextureProvider.savePreferences();
 	}
 
@@ -311,7 +321,7 @@ public class ClientPreferences {
 		descriptor = "(I)D",
 		garbageValue = "-2063080274"
 	)
-	double method2548() {
+	double getBrightness() {
 		return this.brightness;
 	}
 
@@ -320,7 +330,8 @@ public class ClientPreferences {
 		descriptor = "(II)V",
 		garbageValue = "1063115901"
 	)
-	void method2553(int var1) {
+	@Export("updateMusicVolume")
+	void updateMusicVolume(int var1) {
 		this.musicVolume = var1;
 		TextureProvider.savePreferences();
 	}
@@ -330,7 +341,8 @@ public class ClientPreferences {
 		descriptor = "(I)I",
 		garbageValue = "2102721692"
 	)
-	int method2554() {
+	@Export("getMusicVolume")
+	int getMusicVolume() {
 		return this.musicVolume;
 	}
 
@@ -340,8 +352,8 @@ public class ClientPreferences {
 		garbageValue = "256"
 	)
 	@Export("updateSoundEffectVolume")
-	void updateSoundEffectVolume(int var1) {
-		this.soundEffectsVolume = var1;
+	void updateSoundEffectVolume(int volume) {
+		this.soundEffectsVolume = volume;
 		TextureProvider.savePreferences();
 	}
 
@@ -350,7 +362,8 @@ public class ClientPreferences {
 		descriptor = "(I)I",
 		garbageValue = "782450849"
 	)
-	int method2556() {
+	@Export("getSoundEffectsVolume")
+	int getSoundEffectsVolume() {
 		return this.soundEffectsVolume;
 	}
 
@@ -359,7 +372,8 @@ public class ClientPreferences {
 		descriptor = "(II)V",
 		garbageValue = "-568127597"
 	)
-	void method2559(int var1) {
+	@Export("updateAreaSoundEffectsVolume")
+	void updateAreaSoundEffectsVolume(int var1) {
 		this.areaSoundEffectsVolume = var1;
 		TextureProvider.savePreferences();
 	}
@@ -369,7 +383,8 @@ public class ClientPreferences {
 		descriptor = "(I)I",
 		garbageValue = "-1804486619"
 	)
-	int method2605() {
+	@Export("getAreaSoundEffectsVolume")
+	int getAreaSoundEffectsVolume() {
 		return this.areaSoundEffectsVolume;
 	}
 
@@ -378,7 +393,8 @@ public class ClientPreferences {
 		descriptor = "(Ljava/lang/String;I)V",
 		garbageValue = "1092362617"
 	)
-	void method2586(String var1) {
+	@Export("updateRememberedUsername")
+	void updateRememberedUsername(String var1) {
 		this.rememberedUsername = var1;
 		TextureProvider.savePreferences();
 	}
@@ -388,7 +404,8 @@ public class ClientPreferences {
 		descriptor = "(B)Ljava/lang/String;",
 		garbageValue = "-25"
 	)
-	String method2593() {
+	@Export("getRememberedUsername")
+	String getRememberedUsername() {
 		return this.rememberedUsername;
 	}
 
@@ -416,8 +433,9 @@ public class ClientPreferences {
 		descriptor = "(IB)V",
 		garbageValue = "32"
 	)
-	void method2563(int var1) {
-		this.windowMode = var1;
+	@Export("updateWindowMode")
+	void updateWindowMode(int mode) {
+		this.windowMode = mode;
 		TextureProvider.savePreferences();
 	}
 
@@ -426,7 +444,8 @@ public class ClientPreferences {
 		descriptor = "(I)I",
 		garbageValue = "-1248539592"
 	)
-	int method2564() {
+	@Export("getWindowMode")
+	int getWindowMode() {
 		return this.windowMode;
 	}
 
@@ -435,15 +454,16 @@ public class ClientPreferences {
 		descriptor = "(Ljava/lang/String;II)V",
 		garbageValue = "-1748399566"
 	)
-	void method2565(String var1, int var2) {
-		int var3 = this.method2568(var1);
+	@Export("put")
+	void put(String key, int value) {
+		int var3 = this.getParameterKey(key);
 		if (this.parameters.size() >= 10 && !this.parameters.containsKey(var3)) {
-			Iterator var4 = this.parameters.entrySet().iterator();
-			var4.next();
-			var4.remove();
+			Iterator<Map.Entry<Integer, Integer>> iterator = this.parameters.entrySet().iterator();
+			iterator.next();
+			iterator.remove();
 		}
 
-		this.parameters.put(var3, var2);
+		this.parameters.put(var3, value);
 		TextureProvider.savePreferences();
 	}
 
@@ -452,9 +472,10 @@ public class ClientPreferences {
 		descriptor = "(Ljava/lang/String;I)Z",
 		garbageValue = "-885731567"
 	)
-	boolean method2566(String var1) {
-		int var2 = this.method2568(var1);
-		return this.parameters.containsKey(var2);
+	@Export("containsKey")
+	boolean containsKey(String var1) {
+		int key = this.getParameterKey(var1);
+		return this.parameters.containsKey(key);
 	}
 
 	@ObfuscatedName("bv")
@@ -462,9 +483,10 @@ public class ClientPreferences {
 		descriptor = "(Ljava/lang/String;I)I",
 		garbageValue = "1978025457"
 	)
-	int method2567(String var1) {
-		int var2 = this.method2568(var1);
-		return !this.parameters.containsKey(var2) ? 0 : (Integer)this.parameters.get(var2);
+	@Export("getParameterValue")
+	int getParameterValue(String string) {
+		int key = this.getParameterKey(string);
+		return !this.parameters.containsKey(key) ? 0 : (Integer)this.parameters.get(key);
 	}
 
 	@ObfuscatedName("bf")
@@ -472,8 +494,9 @@ public class ClientPreferences {
 		descriptor = "(Ljava/lang/String;B)I",
 		garbageValue = "8"
 	)
-	int method2568(String var1) {
-		return Message.method1245(var1.toLowerCase());
+	@Export("getParameterKey")
+	int getParameterKey(String var1) {
+		return Message.decodeParameterKey(var1.toLowerCase());
 	}
 
 	@ObfuscatedName("at")
@@ -528,7 +551,7 @@ public class ClientPreferences {
 		if (var0) {
 			Login.Login_username = "";
 			Login.Login_password = "";
-			class53.field350 = 0;
+			class53.otpMedium = 0;
 			NpcOverrides.otp = "";
 		}
 

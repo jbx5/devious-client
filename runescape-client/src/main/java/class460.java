@@ -45,7 +45,7 @@ public class class460 {
 	)
 	@Export("queueSoundEffect")
 	static void queueSoundEffect(int var0, int var1, int var2) {
-		if (WorldMapIcon_1.clientPreferences.method2556() != 0 && var1 != 0 && Client.soundEffectCount < 50) {
+		if (WorldMapIcon_1.clientPreferences.getSoundEffectsVolume() != 0 && var1 != 0 && Client.soundEffectCount < 50) {
 			Client.soundEffectIds[Client.soundEffectCount] = var0;
 			Client.queuedSoundEffectLoops[Client.soundEffectCount] = var1;
 			Client.queuedSoundEffectDelays[Client.soundEffectCount] = var2;

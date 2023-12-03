@@ -91,8 +91,8 @@ public class Frames extends DualNode {
 	)
 	static void method5517() {
 		if (Login.Login_username == null || Login.Login_username.length() <= 0) {
-			if (WorldMapIcon_1.clientPreferences.method2593() != null) {
-				Login.Login_username = WorldMapIcon_1.clientPreferences.method2593();
+			if (WorldMapIcon_1.clientPreferences.getRememberedUsername() != null) {
+				Login.Login_username = WorldMapIcon_1.clientPreferences.getRememberedUsername();
 				Client.Login_isUsernameRemembered = true;
 			} else {
 				Client.Login_isUsernameRemembered = false;

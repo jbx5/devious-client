@@ -1,13 +1,14 @@
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 @ObfuscatedName("az")
-public class class9 implements MouseWheel {
+public class class9 implements Enum
+{
 	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "Laz;"
@@ -350,8 +351,8 @@ public class class9 implements MouseWheel {
 	@Export("doCheat")
 	static final void doCheat(String var0) {
 		if (var0.equalsIgnoreCase("toggleroof")) {
-			WorldMapIcon_1.clientPreferences.method2540(!WorldMapIcon_1.clientPreferences.method2541());
-			if (WorldMapIcon_1.clientPreferences.method2541()) {
+			WorldMapIcon_1.clientPreferences.updateRoofsHidden(!WorldMapIcon_1.clientPreferences.isRoofsHidden());
+			if (WorldMapIcon_1.clientPreferences.isRoofsHidden()) {
 				GrandExchangeOfferUnitPriceComparator.addGameMessage(99, "", "Roofs are now all hidden");
 			} else {
 				GrandExchangeOfferUnitPriceComparator.addGameMessage(99, "", "Roofs will only be removed selectively");
@@ -365,15 +366,15 @@ public class class9 implements MouseWheel {
 		}
 
 		if (var0.equalsIgnoreCase("z")) {
-			Client.renderSelf = !Client.renderSelf;
+			Client.z = !Client.z;
 		}
 
 		if (var0.equalsIgnoreCase("displayfps")) {
-			WorldMapIcon_1.clientPreferences.method2547();
+			WorldMapIcon_1.clientPreferences.toggleDisplayFps();
 		}
 
 		if (var0.equalsIgnoreCase("renderself")) {
-			Client.field615 = !Client.field615;
+			Client.renderSelf = !Client.renderSelf;
 		}
 
 		if (var0.equalsIgnoreCase("mouseovertext")) {
@@ -390,11 +391,11 @@ public class class9 implements MouseWheel {
 			}
 
 			if (var0.equalsIgnoreCase("fpson")) {
-				WorldMapIcon_1.clientPreferences.method2546(true);
+				WorldMapIcon_1.clientPreferences.updateDisplayFps(true);
 			}
 
 			if (var0.equalsIgnoreCase("fpsoff")) {
-				WorldMapIcon_1.clientPreferences.method2546(false);
+				WorldMapIcon_1.clientPreferences.updateDisplayFps(false);
 			}
 
 			if (var0.equalsIgnoreCase("gc")) {

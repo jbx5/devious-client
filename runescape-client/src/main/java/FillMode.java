@@ -6,7 +6,8 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("uk")
 @Implements("FillMode")
-public enum FillMode implements MouseWheel {
+public enum FillMode implements Enum
+{
 	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "Luk;"

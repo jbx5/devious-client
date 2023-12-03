@@ -1,30 +1,37 @@
 import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("eb")
-public enum class124 implements MouseWheel {
+@Implements("AuthenticationScheme")
+public enum AuthenticationScheme implements Enum
+{
 	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "Leb;"
 	)
-	field1474(3, 0),
+	@Export("USERNAME_PASSWORD_REMEMBER")
+	USERNAME_PASSWORD_REMEMBER(3, 0),
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "Leb;"
 	)
-	field1469(0, 1),
+	@Export("TOKEN_REMEMBER")
+	TOKEN_REMEMBER(0, 1),
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "Leb;"
 	)
-	field1470(2, 2),
+	@Export("USERNAME_PASSWORD")
+	USERNAME_PASSWORD(2, 2),
 	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
 		descriptor = "Leb;"
 	)
-	field1471(1, 3),
+	@Export("TOKEN")
+	TOKEN(1, 3),
 	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
 		descriptor = "Leb;"
@@ -35,17 +42,18 @@ public enum class124 implements MouseWheel {
 	@ObfuscatedGetter(
 		intValue = -636253437
 	)
-	public final int field1468;
+	@Export("schemeId")
+	public final int schemeId;
 	@ObfuscatedName("aa")
 	@ObfuscatedGetter(
 		intValue = -1971092133
 	)
-	@Export("id")
-	final int id;
+	@Export("packetId")
+	final int packetId;
 
-	class124(int var3, int var4) {
-		this.field1468 = var3;
-		this.id = var4;
+	AuthenticationScheme(int schemeId, int packetId) {
+		this.schemeId = schemeId;
+		this.packetId = packetId;
 	}
 
 	@ObfuscatedName("ah")
@@ -55,6 +63,6 @@ public enum class124 implements MouseWheel {
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
-		return this.id;
+		return this.packetId;
 	}
 }
