@@ -1,5 +1,10 @@
 import org.json.JSONException;
 import org.json.JSONObject;
+import com.jagex.oldscape.pub.OAuthApi;
+import com.jagex.oldscape.pub.OtlTokenRequester;
+import com.jagex.oldscape.pub.OtlTokenResponse;
+import com.jagex.oldscape.pub.RefreshAccessTokenRequester;
+import com.jagex.oldscape.pub.RefreshAccessTokenResponse;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.URL;
@@ -4457,7 +4462,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 				}
 
 				if (ServerPacket.field3308 == var1.serverPacket) {
-					var21 = var3.method9412();
+					var21 = var3.method9305();
 					var5 = var3.readInt();
 					var25 = HealthBarDefinition.widgetDefinition.method6285(var5);
 					if (var21 != var25.sequenceId || var21 == -1) {
@@ -5447,7 +5452,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 				}
 
 				if (ServerPacket.IF_SETPOSITION == var1.serverPacket) {
-					var21 = var3.method9412();
+					var21 = var3.method9305();
 					var5 = var3.method9307();
 					var6 = var3.readUnsignedIntIME();
 					var22 = HealthBarDefinition.widgetDefinition.method6285(var6);

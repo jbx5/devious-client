@@ -1,6 +1,14 @@
 package net.unethicalite.api.items;
 
 import lombok.Getter;
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 import net.runelite.api.Client;
 import net.runelite.api.InventoryID;
 import net.runelite.api.Item;
@@ -8,13 +16,6 @@ import net.unethicalite.api.commons.Predicates;
 import net.unethicalite.api.game.GameThread;
 import net.unethicalite.client.Static;
 import net.unethicalite.client.managers.InventoryManager;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 public abstract class Items
 {
@@ -31,17 +32,20 @@ public abstract class Items
 	protected List<Item> all(Predicate<Item> filter)
 	{
 		List<Item> items = new ArrayList<>();
-		Item[] containerItems = InventoryManager.getCachedContainers().get(inventoryID.getId());
-		if (containerItems == null)
+		ItemContainerSnapshot containerSnapshot = getSnapshot();
+		if (containerSnapshot == null)
 		{
 			return items;
 		}
 
-		cacheUncachedItems(containerItems);
+		Item[] snapshotItems = containerSnapshot.getItems();
 
-		for (int i = 0; i < containerItems.length; i++)
+		cacheUncachedItems(snapshotItems);
+
+		for (int i = 0; i < snapshotItems.length; i++)
 		{
-			Item item = containerItems[i];
+			Item item = snapshotItems[i];
+
 			if (item == null || item.getId() == -1 || "null".equals(item.getName()))
 			{
 				continue;
@@ -117,8 +121,8 @@ public abstract class Items
 	{
 		Client client = Static.getClient();
 		List<Item> uncachedItems = Arrays.stream(items)
-				.filter(i -> !client.isItemDefinitionCached(i.getId()))
-				.collect(Collectors.toList());
+			.filter(i -> !client.isItemDefinitionCached(i.getId()))
+			.collect(Collectors.toList());
 		if (!uncachedItems.isEmpty())
 		{
 			GameThread.invoke(() ->
@@ -130,5 +134,22 @@ public abstract class Items
 				}
 			});
 		}
+	}
+
+	protected @Nullable Instant lastUpdated()
+	{
+		final ItemContainerSnapshot snapshot = getSnapshot();
+
+		if (snapshot == null)
+		{
+			return null;
+		}
+
+		return snapshot.getTimestamp();
+	}
+
+	private @Nullable ItemContainerSnapshot getSnapshot()
+	{
+		return InventoryManager.getCachedContainers().get(inventoryID.getId());
 	}
 }

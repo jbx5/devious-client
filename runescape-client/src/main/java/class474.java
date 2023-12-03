@@ -8,12 +8,18 @@ import org.json.JSONObject;
 @ObfuscatedName("sv")
 public class class474 implements class473 {
 	@ObfuscatedName("ah")
+	@ObfuscatedSignature(
+		descriptor = "Lorg/json/JSONObject;"
+	)
 	JSONObject field4813;
 
 	public class474(byte[] var1) throws UnsupportedEncodingException {
 		this.method8574(var1);
 	}
 
+	@ObfuscatedSignature(
+		descriptor = "(Lorg/json/JSONObject;)V"
+	)
 	public class474(JSONObject var1) {
 		this.field4813 = var1;
 	}
