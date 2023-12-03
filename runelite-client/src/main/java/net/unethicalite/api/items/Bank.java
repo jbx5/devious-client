@@ -1,9 +1,11 @@
 package net.unethicalite.api.items;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
+import javax.annotation.Nullable;
 import net.runelite.api.InventoryID;
 import net.runelite.api.Item;
 import net.runelite.api.Varbits;
@@ -468,6 +470,11 @@ public class Bank extends Items
 		}
 	}
 
+	public static @Nullable Instant getLastUpdated()
+	{
+		return BANK.lastUpdated();
+	}
+
 	public static class Inventory extends Items
 	{
 		public Inventory()
@@ -552,6 +559,11 @@ public class Bank extends Items
 		public static int getFreeSlots()
 		{
 			return 28 - getAll().size();
+		}
+
+		public static @Nullable Instant getLastUpdated()
+		{
+			return BANK_INVENTORY.lastUpdated();
 		}
 	}
 

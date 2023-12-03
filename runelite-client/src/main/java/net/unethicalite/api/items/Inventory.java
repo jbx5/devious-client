@@ -1,14 +1,15 @@
 package net.unethicalite.api.items;
 
+import java.time.Instant;
+import java.util.List;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 import net.runelite.api.InventoryID;
 import net.runelite.api.Item;
 import net.runelite.api.widgets.WidgetInfo;
 import net.unethicalite.api.query.items.ItemQuery;
 import net.unethicalite.client.managers.InventoryManager;
-
-import java.util.List;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
 
 public class Inventory extends Items
 {
@@ -146,5 +147,10 @@ public class Inventory extends Items
 	public static int getFreeSlots()
 	{
 		return 28 - getAll().size();
+	}
+
+	public static @Nullable Instant getLastUpdated()
+	{
+		return INVENTORY.lastUpdated();
 	}
 }
