@@ -851,8 +851,8 @@ public abstract class Actor extends Renderable {
 
 		} else {
 			if ((MouseHandler.MouseHandler_lastButton == 1 || !class19.mouseCam && MouseHandler.MouseHandler_lastButton == 4) && MouseHandler.MouseHandler_lastPressedX >= Login.xPadding + 765 - 50 && MouseHandler.MouseHandler_lastPressedY >= 453) {
-				WorldMapIcon_1.clientPreferences.method2571(!WorldMapIcon_1.clientPreferences.method2631());
-				if (!WorldMapIcon_1.clientPreferences.method2631()) {
+				WorldMapIcon_1.clientPreferences.updateTitleMusicDisabled(!WorldMapIcon_1.clientPreferences.isTitleMusicDisabled());
+				if (!WorldMapIcon_1.clientPreferences.isTitleMusicDisabled()) {
 					ArrayList var3 = new ArrayList();
 					var3.add(new MusicSong(class514.archive6, "scape main", "", 255, false));
 					PendingSpawn.method2459(var3, 0, 0, 0, 100, false);
@@ -1053,9 +1053,9 @@ public abstract class Actor extends Renderable {
 									UserComparator7.method2966(0);
 									Login.Login_username = "";
 									Login.Login_password = "";
-									class53.field350 = 0;
+									class53.otpMedium = 0;
 									NpcOverrides.otp = "";
-									Login.field920 = true;
+									Login.rememberUsername = true;
 								}
 
 								var83 = class157.loginBoxCenter + -117;
@@ -1063,8 +1063,8 @@ public abstract class Actor extends Renderable {
 								Login.field916 = var78 >= var83 && var78 < var83 + NPCComposition.field1966 && var79 >= var82 && var79 < var82 + class113.field1426;
 								if (var6 == 1 && Login.field916) {
 									Client.Login_isUsernameRemembered = !Client.Login_isUsernameRemembered;
-									if (!Client.Login_isUsernameRemembered && WorldMapIcon_1.clientPreferences.method2593() != null) {
-										WorldMapIcon_1.clientPreferences.method2586((String)null);
+									if (!Client.Login_isUsernameRemembered && WorldMapIcon_1.clientPreferences.getRememberedUsername() != null) {
+										WorldMapIcon_1.clientPreferences.updateRememberedUsername((String)null);
 									}
 								}
 
@@ -1072,10 +1072,10 @@ public abstract class Actor extends Renderable {
 								var82 = 277;
 								Login.field919 = var78 >= var83 && var78 < var83 + NPCComposition.field1966 && var79 >= var82 && var79 < var82 + class113.field1426;
 								if (var6 == 1 && Login.field919) {
-									WorldMapIcon_1.clientPreferences.method2583(!WorldMapIcon_1.clientPreferences.method2543());
-									if (!WorldMapIcon_1.clientPreferences.method2543()) {
+									WorldMapIcon_1.clientPreferences.updateHideUsername(!WorldMapIcon_1.clientPreferences.isUsernameHidden());
+									if (!WorldMapIcon_1.clientPreferences.isUsernameHidden()) {
 										Login.Login_username = "";
-										WorldMapIcon_1.clientPreferences.method2586((String)null);
+										WorldMapIcon_1.clientPreferences.updateRememberedUsername((String)null);
 										class150.method3281();
 									}
 								}
@@ -1114,9 +1114,9 @@ public abstract class Actor extends Renderable {
 															UserComparator7.method2966(0);
 															Login.Login_username = "";
 															Login.Login_password = "";
-															class53.field350 = 0;
+															class53.otpMedium = 0;
 															NpcOverrides.otp = "";
-															Login.field920 = true;
+															Login.rememberUsername = true;
 														}
 													}
 
@@ -1141,7 +1141,7 @@ public abstract class Actor extends Renderable {
 													}
 
 													class139.setLoginResponseString("", "Connecting to server...", "");
-													VerticalAlignment.method3754(false);
+													VerticalAlignment.setAuthenticationScheme(false);
 													WorldMapSection2.updateGameState(20);
 													return;
 												}
@@ -1210,16 +1210,16 @@ public abstract class Actor extends Renderable {
 												return;
 											}
 
-											class53.field350 = Integer.parseInt(NpcOverrides.otp);
+											class53.otpMedium = Integer.parseInt(NpcOverrides.otp);
 											NpcOverrides.otp = "";
-											VerticalAlignment.method3754(true);
+											VerticalAlignment.setAuthenticationScheme(true);
 											class139.setLoginResponseString("", "Connecting to server...", "");
 											WorldMapSection2.updateGameState(20);
 											return;
 										}
 
 										if (var6 == 1 && var78 >= Login.loginBoxX + 180 - 9 && var78 <= Login.loginBoxX + 180 + 130 && var79 >= 263 && var79 <= 296) {
-											Login.field920 = !Login.field920;
+											Login.rememberUsername = !Login.rememberUsername;
 										}
 
 										if (var6 == 1 && var78 >= Login.loginBoxX + 180 - 34 && var78 <= Login.loginBoxX + 34 + 180 && var79 >= 351 && var79 <= 363) {
@@ -1231,7 +1231,7 @@ public abstract class Actor extends Renderable {
 											UserComparator7.method2966(0);
 											Login.Login_username = "";
 											Login.Login_password = "";
-											class53.field350 = 0;
+											class53.otpMedium = 0;
 											NpcOverrides.otp = "";
 										}
 
@@ -1249,7 +1249,7 @@ public abstract class Actor extends Renderable {
 												UserComparator7.method2966(0);
 												Login.Login_username = "";
 												Login.Login_password = "";
-												class53.field350 = 0;
+												class53.otpMedium = 0;
 												NpcOverrides.otp = "";
 											} else {
 												if (var41.field2360 == 85 && NpcOverrides.otp.length() > 0) {
@@ -1263,9 +1263,9 @@ public abstract class Actor extends Renderable {
 														return;
 													}
 
-													class53.field350 = Integer.parseInt(NpcOverrides.otp);
+													class53.otpMedium = Integer.parseInt(NpcOverrides.otp);
 													NpcOverrides.otp = "";
-													VerticalAlignment.method3754(true);
+													VerticalAlignment.setAuthenticationScheme(true);
 													class139.setLoginResponseString("", "Connecting to server...", "");
 													WorldMapSection2.updateGameState(20);
 													return;
@@ -1801,7 +1801,7 @@ public abstract class Actor extends Renderable {
 											if (var9.field2360 == 84 || var6 == 1 && var78 >= var11 - 109 && var78 <= var11 + 109 && var79 >= var12 && var79 <= var12 + 68) {
 												class139.setLoginResponseString("", "Connecting to server...", "");
 												Client.field526 = class531.field5192;
-												VerticalAlignment.method3754(false);
+												VerticalAlignment.setAuthenticationScheme(false);
 												WorldMapSection2.updateGameState(20);
 											}
 										} else if (Login.loginIndex == 12) {

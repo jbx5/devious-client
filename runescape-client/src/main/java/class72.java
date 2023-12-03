@@ -86,7 +86,7 @@ public class class72 {
 
 				return 1;
 			} else if (var0 == ScriptOpcodes.GETDEFAULTWINDOWMODE) {
-				Interpreter.Interpreter_intStack[++DbTableType.Interpreter_intStackSize - 1] = WorldMapIcon_1.clientPreferences.method2564();
+				Interpreter.Interpreter_intStack[++DbTableType.Interpreter_intStackSize - 1] = WorldMapIcon_1.clientPreferences.getWindowMode();
 				return 1;
 			} else if (var0 != ScriptOpcodes.SETDEFAULTWINDOWMODE) {
 				if (var0 == 5310) {
@@ -98,7 +98,7 @@ public class class72 {
 			} else {
 				var3 = Interpreter.Interpreter_intStack[--DbTableType.Interpreter_intStackSize];
 				if (var3 == 1 || var3 == 2) {
-					WorldMapIcon_1.clientPreferences.method2563(var3);
+					WorldMapIcon_1.clientPreferences.updateWindowMode(var3);
 				}
 
 				return 1;

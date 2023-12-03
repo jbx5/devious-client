@@ -204,7 +204,7 @@ public class DynamicObject extends Renderable {
 		if (Client.soundEffectCount < 50) {
 			if (var0.soundEffects != null && var1 < var0.soundEffects.length) {
 				int var5 = var0.soundEffects[var1] & 15;
-				if ((var5 <= 0 || WorldMapIcon_1.clientPreferences.method2605() != 0) && (var5 != 0 || WorldMapIcon_1.clientPreferences.method2556() != 0)) {
+				if ((var5 <= 0 || WorldMapIcon_1.clientPreferences.getAreaSoundEffectsVolume() != 0) && (var5 != 0 || WorldMapIcon_1.clientPreferences.getSoundEffectsVolume() != 0)) {
 					int var6 = var0.soundEffects[var1];
 					boolean var9 = var4 == class229.localPlayer;
 					if (var6 != 0) {

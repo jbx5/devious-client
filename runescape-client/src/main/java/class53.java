@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
@@ -9,7 +10,8 @@ public class class53 extends Node {
 	@ObfuscatedGetter(
 		intValue = -977763419
 	)
-	static int field350;
+	@Export("otpMedium")
+	static int otpMedium;
 	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "Lbx;"

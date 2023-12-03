@@ -40,7 +40,7 @@ public class FriendLoginUpdate extends Link {
 		if (Client.soundEffectCount < 50) {
 			if (var0.field2212 != null && var0.field2212.containsKey(var1)) {
 				int var5 = (Integer)var0.field2212.get(var1) & 15;
-				if ((var5 <= 0 || WorldMapIcon_1.clientPreferences.method2605() != 0) && (var5 != 0 || WorldMapIcon_1.clientPreferences.method2556() != 0)) {
+				if ((var5 <= 0 || WorldMapIcon_1.clientPreferences.getAreaSoundEffectsVolume() != 0) && (var5 != 0 || WorldMapIcon_1.clientPreferences.getSoundEffectsVolume() != 0)) {
 					int var6 = (Integer)var0.field2212.get(var1);
 					boolean var9 = var4 == class229.localPlayer;
 					if (var6 != 0) {

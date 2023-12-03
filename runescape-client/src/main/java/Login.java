@@ -130,7 +130,8 @@ public class Login {
 	@ObfuscatedName("cz")
 	static boolean field919;
 	@ObfuscatedName("cd")
-	static boolean field920;
+	@Export("rememberUsername")
+	static boolean rememberUsername;
 	@ObfuscatedName("dt")
 	@ObfuscatedGetter(
 		intValue = -477128201
@@ -194,7 +195,7 @@ public class Login {
 		displayName = "";
 		field916 = false;
 		field919 = false;
-		field920 = true;
+		rememberUsername = true;
 		currentLoginField = 0;
 		worldSelectOpen = false;
 		hoveredWorldIndex = -1;
@@ -257,6 +258,6 @@ public class Login {
 	)
 	static final void method2198(int var0) {
 		var0 = Math.min(Math.max(var0, 0), 127);
-		WorldMapIcon_1.clientPreferences.method2559(var0);
+		WorldMapIcon_1.clientPreferences.updateAreaSoundEffectsVolume(var0);
 	}
 }

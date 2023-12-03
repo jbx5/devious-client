@@ -131,7 +131,7 @@ final class class106 implements class334 {
 					var9 = (var7 & 7) + class6.field14;
 					if (var8 >= 0 && var9 >= 0 && var8 < 104 && var9 < 104) {
 						var10 = var3 + 1;
-						if (class229.localPlayer.pathX[0] >= var8 - var10 && class229.localPlayer.pathX[0] <= var10 + var8 && class229.localPlayer.pathY[0] >= var9 - var10 && class229.localPlayer.pathY[0] <= var9 + var10 && WorldMapIcon_1.clientPreferences.method2605() != 0 && var4 > 0 && Client.soundEffectCount < 50) {
+						if (class229.localPlayer.pathX[0] >= var8 - var10 && class229.localPlayer.pathX[0] <= var10 + var8 && class229.localPlayer.pathY[0] >= var9 - var10 && class229.localPlayer.pathY[0] <= var9 + var10 && WorldMapIcon_1.clientPreferences.getAreaSoundEffectsVolume() != 0 && var4 > 0 && Client.soundEffectCount < 50) {
 							Client.soundEffectIds[Client.soundEffectCount] = var6;
 							Client.queuedSoundEffectLoops[Client.soundEffectCount] = var4;
 							Client.queuedSoundEffectDelays[Client.soundEffectCount] = var5;

@@ -50,6 +50,6 @@ public final class class311 {
 		Rasterizer3D.method5191((double)var1);
 		((TextureProvider)Rasterizer3D.clips.Rasterizer3D_textureLoader).setBrightness((double)var1);
 		class166.method3495();
-		WorldMapIcon_1.clientPreferences.method2551((double)var1);
+		WorldMapIcon_1.clientPreferences.updateBrightness((double)var1);
 	}
 }

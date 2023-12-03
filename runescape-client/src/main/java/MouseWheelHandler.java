@@ -9,7 +9,7 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("ae")
 @Implements("MouseWheelHandler")
-public final class MouseWheelHandler implements class212, MouseWheelListener {
+public final class MouseWheelHandler implements MouseWheel, MouseWheelListener {
 	@ObfuscatedName("at")
 	@ObfuscatedGetter(
 		intValue = 1014752237

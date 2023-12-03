@@ -271,13 +271,13 @@ public class class159 extends class144 {
 						if (var11 == class89.field1077) {
 							switch(var10.field1089) {
 							case 1:
-								var5 = WorldMapIcon_1.clientPreferences.method2543() ? 1 : 0;
+								var5 = WorldMapIcon_1.clientPreferences.isUsernameHidden() ? 1 : 0;
 								break;
 							case 2:
-								var5 = WorldMapIcon_1.clientPreferences.method2631() ? 1 : 0;
+								var5 = WorldMapIcon_1.clientPreferences.isTitleMusicDisabled() ? 1 : 0;
 								break;
 							case 3:
-								var5 = WorldMapIcon_1.clientPreferences.method2608() ? 1 : 0;
+								var5 = WorldMapIcon_1.clientPreferences.isDisplayingFps() ? 1 : 0;
 								break;
 							case 4:
 								var5 = WorldMapIcon_1.clientPreferences.method2604();
@@ -292,18 +292,18 @@ public class class159 extends class144 {
 						} else {
 							switch(var11.field1076) {
 							case 1:
-								var5 = WorldMapIcon_1.clientPreferences.method2541() ? 1 : 0;
+								var5 = WorldMapIcon_1.clientPreferences.isRoofsHidden() ? 1 : 0;
 								break;
 							case 2:
-								var6 = WorldMapIcon_1.clientPreferences.method2554();
+								var6 = WorldMapIcon_1.clientPreferences.getMusicVolume();
 								var5 = Math.round((float)(var6 * 100) / 255.0F);
 								break;
 							case 3:
-								var6 = WorldMapIcon_1.clientPreferences.method2556();
+								var6 = WorldMapIcon_1.clientPreferences.getSoundEffectsVolume();
 								var5 = Math.round((float)(var6 * 100) / 127.0F);
 								break;
 							case 4:
-								var6 = WorldMapIcon_1.clientPreferences.method2605();
+								var6 = WorldMapIcon_1.clientPreferences.getAreaSoundEffectsVolume();
 								var5 = Math.round((float)(var6 * 100) / 127.0F);
 								break;
 							default:
@@ -357,13 +357,13 @@ public class class159 extends class144 {
 					if (var11 == class89.field1077) {
 						switch(var10.field1089) {
 						case 1:
-							WorldMapIcon_1.clientPreferences.method2583(var5 == 1);
+							WorldMapIcon_1.clientPreferences.updateHideUsername(var5 == 1);
 							break;
 						case 2:
-							WorldMapIcon_1.clientPreferences.method2571(var5 == 1);
+							WorldMapIcon_1.clientPreferences.updateTitleMusicDisabled(var5 == 1);
 							break;
 						case 3:
-							WorldMapIcon_1.clientPreferences.method2546(var5 == 1);
+							WorldMapIcon_1.clientPreferences.updateDisplayFps(var5 == 1);
 							break;
 						case 4:
 							if (var5 < 0) {
@@ -382,7 +382,7 @@ public class class159 extends class144 {
 					} else {
 						switch(var11.field1076) {
 						case 1:
-							WorldMapIcon_1.clientPreferences.method2540(var5 == 1);
+							WorldMapIcon_1.clientPreferences.updateRoofsHidden(var5 == 1);
 							break;
 						case 2:
 							var5 = Math.min(Math.max(var5, 0), 100);

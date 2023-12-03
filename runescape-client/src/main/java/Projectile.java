@@ -305,28 +305,28 @@ public final class Projectile extends Renderable {
 					Rasterizer3D.method5191(0.9D);
 					((TextureProvider)Rasterizer3D.clips.Rasterizer3D_textureLoader).setBrightness(0.9D);
 					class166.method3495();
-					WorldMapIcon_1.clientPreferences.method2551(0.9D);
+					WorldMapIcon_1.clientPreferences.updateBrightness(0.9D);
 				}
 
 				if (var2 == 2) {
 					Rasterizer3D.method5191(0.8D);
 					((TextureProvider)Rasterizer3D.clips.Rasterizer3D_textureLoader).setBrightness(0.8D);
 					class166.method3495();
-					WorldMapIcon_1.clientPreferences.method2551(0.8D);
+					WorldMapIcon_1.clientPreferences.updateBrightness(0.8D);
 				}
 
 				if (var2 == 3) {
 					Rasterizer3D.method5191(0.7D);
 					((TextureProvider)Rasterizer3D.clips.Rasterizer3D_textureLoader).setBrightness(0.7D);
 					class166.method3495();
-					WorldMapIcon_1.clientPreferences.method2551(0.7D);
+					WorldMapIcon_1.clientPreferences.updateBrightness(0.7D);
 				}
 
 				if (var2 == 4) {
 					Rasterizer3D.method5191(0.6D);
 					((TextureProvider)Rasterizer3D.clips.Rasterizer3D_textureLoader).setBrightness(0.6D);
 					class166.method3495();
-					WorldMapIcon_1.clientPreferences.method2551(0.6D);
+					WorldMapIcon_1.clientPreferences.updateBrightness(0.6D);
 				}
 			}
 

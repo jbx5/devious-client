@@ -15,7 +15,7 @@ public class class396 {
 		descriptor = "Lis;"
 	)
 	@Export("mouseWheel")
-	static class212 mouseWheel;
+	static MouseWheel mouseWheel;
 
 	static {
 		cp1252AsciiExtension = new char[]{'€', '\u0000', '‚', 'ƒ', '„', '…', '†', '‡', 'ˆ', '‰', 'Š', '‹', 'Œ', '\u0000', 'Ž', '\u0000', '\u0000', '‘', '’', '“', '”', '•', '–', '—', '˜', '™', 'š', '›', 'œ', '\u0000', 'ž', 'Ÿ'};
