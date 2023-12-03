@@ -205,7 +205,7 @@ public class class59 {
 					if (var14 == null) {
 						for (var15 = var12; var15 < var13; ++var15) {
 							var16 = var28[var15];
-							class514 var22 = class472.method8562(var16);
+							class514 var22 = HttpContentType.method8562(var16);
 							if (var22 == class514.field5061) {
 								Interpreter.Interpreter_stringStack[++class127.Interpreter_stringStackSize - 1] = "";
 							} else {
@@ -219,7 +219,7 @@ public class class59 {
 						if (var5 >= 0 && var5 < var15) {
 							for (var16 = var12; var16 < var13; ++var16) {
 								int var17 = var16 + var28.length * var5;
-								class514 var18 = class472.method8562(var28[var16]);
+								class514 var18 = HttpContentType.method8562(var28[var16]);
 								if (var18 == class514.field5061) {
 									Interpreter.Interpreter_stringStack[++class127.Interpreter_stringStackSize - 1] = (String)var14[var17];
 								} else {

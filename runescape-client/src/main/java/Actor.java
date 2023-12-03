@@ -860,7 +860,7 @@ public abstract class Actor extends Renderable {
 					WorldMapRenderer.method4769(0, 0);
 				}
 
-				class472.method8564();
+				HttpContentType.method8564();
 			}
 
 			if (Client.gameState != 5) {
@@ -1372,7 +1372,7 @@ public abstract class Actor extends Renderable {
 													var26.writeBytes(var22.array, 0, var22.offset);
 													var26.writeShort(var97.offset);
 													var26.writeBytes(var97.array, 0, var97.offset);
-													String var98 = class415.method7821(var26.array);
+													String var98 = class415.base64Encode(var26.array);
 
 													byte var18;
 													try {
@@ -1596,7 +1596,7 @@ public abstract class Actor extends Renderable {
 															var28.writeBytes(var61.array, 0, var61.offset);
 															var28.writeShort(var27.offset);
 															var28.writeBytes(var27.array, 0, var27.offset);
-															String var29 = class415.method7821(var28.array);
+															String var29 = class415.base64Encode(var28.array);
 
 															byte var65;
 															try {

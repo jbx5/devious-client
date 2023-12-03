@@ -20,7 +20,7 @@ public class class475 implements class473 {
 		descriptor = "(B)Lsi;",
 		garbageValue = "-24"
 	)
-	public class472 vmethod8594() {
+	public HttpContentType vmethod8594() {
 		return null;
 	}
 

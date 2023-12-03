@@ -6,7 +6,7 @@ public class class314 {
 	@ObfuscatedName("at")
 	static int[] field3402;
 	@ObfuscatedName("hu")
-	static String field3401;
+	static String authServiceBaseUrl;
 
 	static {
 		new Object();
