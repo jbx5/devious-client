@@ -1,27 +1,33 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("qr")
-public class class430 {
+@Implements("HttpAuthenticationHeader")
+public class HttpAuthenticationHeader
+{
 	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "Lqr;"
 	)
-	static final class430 field4634;
+	@Export("BASIC")
+	static final HttpAuthenticationHeader BASIC;
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "Lqr;"
 	)
-	static final class430 field4633;
+	@Export("BEARER")
+	static final HttpAuthenticationHeader BEARER;
 	@ObfuscatedName("ar")
 	final String field4632;
 
 	static {
-		field4634 = new class430("Basic");
-		field4633 = new class430("Bearer");
+		BASIC = new HttpAuthenticationHeader("Basic");
+		BEARER = new HttpAuthenticationHeader("Bearer");
 	}
 
-	class430(String var1) {
+	HttpAuthenticationHeader(String var1) {
 		this.field4632 = var1;
 	}
 
@@ -30,7 +36,7 @@ public class class430 {
 		descriptor = "(I)Ljava/lang/String;",
 		garbageValue = "1414159306"
 	)
-	String method7948() {
+	String getKey() {
 		return this.field4632;
 	}
 }

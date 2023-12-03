@@ -98,7 +98,7 @@ public class DbRowType extends DualNode {
 				for (int var12 = 0; var12 < var10; ++var12) {
 					for (int var13 = 0; var13 < var6.length; ++var13) {
 						int var14 = var13 + var6.length * var12;
-						class514 var15 = class472.method8562(var6[var13]);
+						class514 var15 = HttpContentType.method8562(var6[var13]);
 						var11[var14] = var15.method9120(var1);
 					}
 				}

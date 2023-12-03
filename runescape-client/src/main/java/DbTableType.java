@@ -88,7 +88,7 @@ public class DbTableType extends DualNode {
 					for (int var13 = 0; var13 < var11; ++var13) {
 						for (int var14 = 0; var14 < var7.length; ++var14) {
 							int var15 = var14 + var7.length * var13;
-							class514 var16 = class472.method8562(var7[var14]);
+							class514 var16 = HttpContentType.method8562(var7[var14]);
 							var12[var15] = var16.method9120(var1);
 						}
 					}

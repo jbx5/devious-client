@@ -9,7 +9,7 @@ public interface class473 {
 		descriptor = "(B)Lsi;",
 		garbageValue = "-24"
 	)
-	class472 vmethod8594();
+	HttpContentType vmethod8594();
 
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(

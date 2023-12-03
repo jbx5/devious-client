@@ -110,7 +110,7 @@ public enum class6 implements Enum
 				WorldMapRenderer.method4769(0, 0);
 			}
 
-			class472.method8564();
+			HttpContentType.method8564();
 			class157.method3396().method7045(false);
 			class384.clearLoginScreen = true;
 			Login.xPadding = (Language.canvasWidth - 765) / 2;

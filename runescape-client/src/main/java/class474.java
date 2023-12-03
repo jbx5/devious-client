@@ -33,8 +33,8 @@ public class class474 implements class473 {
 		descriptor = "(B)Lsi;",
 		garbageValue = "-24"
 	)
-	public class472 vmethod8594() {
-		return class472.field4810;
+	public HttpContentType vmethod8594() {
+		return HttpContentType.APPLICATION_JSON;
 	}
 
 	@ObfuscatedName("ah")
