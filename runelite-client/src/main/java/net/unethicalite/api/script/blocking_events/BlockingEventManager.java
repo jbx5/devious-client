@@ -8,12 +8,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 
+@Getter
 public class BlockingEventManager
 {
-	@Getter
 	private final Map<LoginEvent.Response, Function<LoginEvent.Response, Integer>> loginMessageHandlers =
 			new HashMap<>();
-	@Getter
 	private final List<BlockingEvent> blockingEvents = new ArrayList<>();
 
 	public BlockingEventManager()
@@ -22,6 +21,7 @@ public class BlockingEventManager
 		blockingEvents.add(new WelcomeScreenEvent());
 		blockingEvents.add(new ResizableEvent());
 		blockingEvents.add(new DeathEvent());
+		blockingEvents.add(new BankTutorialEvent());
 	}
 
 	public void addLoginResponseHandler(LoginEvent.Response response, Function<LoginEvent.Response, Integer> handler)
