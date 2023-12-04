@@ -34,7 +34,8 @@ public class class10 {
 	@ObfuscatedSignature(
 		descriptor = "Lsd;"
 	)
-	class473 field42;
+	@Export("httpContent")
+	HttpContent httpContent;
 	@ObfuscatedName("ab")
 	boolean field43;
 	@ObfuscatedName("au")
@@ -92,15 +93,15 @@ public class class10 {
 		descriptor = "(Lsd;I)V",
 		garbageValue = "2039275921"
 	)
-	public void method92(class473 var1) {
+	public void method92(HttpContent var1) {
 		if (!this.field43) {
 			if (var1 == null) {
 				this.httpRequestBuilder.removeHeader("Content-Type");
-				this.field42 = null;
+				this.httpContent = null;
 			} else {
-				this.field42 = var1;
-				if (this.field42.vmethod8594() != null) {
-					this.httpRequestBuilder.contentType(this.field42.vmethod8594());
+				this.httpContent = var1;
+				if (this.httpContent.type() != null) {
+					this.httpRequestBuilder.contentType(this.httpContent.type());
 				} else {
 					this.httpRequestBuilder.removeContentType();
 				}
@@ -118,12 +119,12 @@ public class class10 {
 		if (!this.field43) {
 			this.connection.setRequestMethod(this.field41.method75());
 			this.httpRequestBuilder.setRequestProperties(this.connection);
-			if (this.field41.method74() && this.field42 != null) {
+			if (this.field41.method74() && this.httpContent != null) {
 				this.connection.setDoOutput(true);
 				ByteArrayOutputStream var1 = new ByteArrayOutputStream();
 
 				try {
-					var1.write(this.field42.vmethod8587());
+					var1.write(this.httpContent.vmethod8587());
 					var1.writeTo(this.connection.getOutputStream());
 				} catch (IOException var11) {
 					var11.printStackTrace();

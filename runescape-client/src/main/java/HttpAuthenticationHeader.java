@@ -5,8 +5,7 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("qr")
 @Implements("HttpAuthenticationHeader")
-public class HttpAuthenticationHeader
-{
+public class HttpAuthenticationHeader {
 	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "Lqr;"
@@ -20,7 +19,8 @@ public class HttpAuthenticationHeader
 	@Export("BEARER")
 	static final HttpAuthenticationHeader BEARER;
 	@ObfuscatedName("ar")
-	final String field4632;
+	@Export("key")
+	final String key;
 
 	static {
 		BASIC = new HttpAuthenticationHeader("Basic");
@@ -28,7 +28,7 @@ public class HttpAuthenticationHeader
 	}
 
 	HttpAuthenticationHeader(String var1) {
-		this.field4632 = var1;
+		this.key = var1;
 	}
 
 	@ObfuscatedName("at")
@@ -36,7 +36,8 @@ public class HttpAuthenticationHeader
 		descriptor = "(I)Ljava/lang/String;",
 		garbageValue = "1414159306"
 	)
+	@Export("getKey")
 	String getKey() {
-		return this.field4632;
+		return this.key;
 	}
 }

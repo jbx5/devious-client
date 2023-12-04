@@ -1,4 +1,6 @@
 import java.io.UnsupportedEncodingException;
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 import org.json.JSONArray;
@@ -6,25 +8,27 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 @ObfuscatedName("sv")
-public class class474 implements class473 {
+@Implements("HttpJsonContent")
+public class HttpJsonContent implements HttpContent {
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "Lorg/json/JSONObject;"
 	)
-	JSONObject field4813;
+	@Export("properties")
+	JSONObject properties;
 
-	public class474(byte[] var1) throws UnsupportedEncodingException {
+	public HttpJsonContent(byte[] var1) throws UnsupportedEncodingException {
 		this.method8574(var1);
 	}
 
 	@ObfuscatedSignature(
 		descriptor = "(Lorg/json/JSONObject;)V"
 	)
-	public class474(JSONObject var1) {
-		this.field4813 = var1;
+	public HttpJsonContent(JSONObject var1) {
+		this.properties = var1;
 	}
 
-	public class474(String var1) throws UnsupportedEncodingException {
+	public HttpJsonContent(String var1) throws UnsupportedEncodingException {
 		this.method8575(var1);
 	}
 
@@ -33,7 +37,8 @@ public class class474 implements class473 {
 		descriptor = "(B)Lsi;",
 		garbageValue = "-24"
 	)
-	public HttpContentType vmethod8594() {
+	@Export("type")
+	public HttpContentType type() {
 		return HttpContentType.APPLICATION_JSON;
 	}
 
@@ -43,7 +48,7 @@ public class class474 implements class473 {
 		garbageValue = "0"
 	)
 	public byte[] vmethod8587() throws UnsupportedEncodingException {
-		return this.field4813 == null ? new byte[0] : this.field4813.toString().getBytes("UTF-8");
+		return this.properties == null ? new byte[0] : this.properties.toString().getBytes("UTF-8");
 	}
 
 	@ObfuscatedName("aa")
@@ -64,15 +69,15 @@ public class class474 implements class473 {
 	void method8575(String var1) throws UnsupportedEncodingException {
 		try {
 			if (var1.charAt(0) == '{') {
-				this.field4813 = new JSONObject(var1);
+				this.properties = new JSONObject(var1);
 			} else {
 				if (var1.charAt(0) != '[') {
 					throw new UnsupportedEncodingException("Invalid JSON passed to the JSON content builder.");
 				}
 
 				JSONArray var2 = new JSONArray(var1);
-				this.field4813 = new JSONObject();
-				this.field4813.method8392("arrayValues", var2);
+				this.properties = new JSONObject();
+				this.properties.method8392("arrayValues", var2);
 			}
 
 		} catch (JSONException var3) {
@@ -85,7 +90,8 @@ public class class474 implements class473 {
 		descriptor = "(B)Lorg/json/JSONObject;",
 		garbageValue = "70"
 	)
-	public JSONObject method8573() {
-		return this.field4813;
+	@Export("getProperties")
+	public JSONObject getProperties() {
+		return this.properties;
 	}
 }
