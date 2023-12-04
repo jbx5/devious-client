@@ -1,10 +1,10 @@
+import org.json.JSONException;
+import org.json.JSONObject;
 import com.jagex.oldscape.pub.OAuthApi;
 import com.jagex.oldscape.pub.OtlTokenRequester;
 import com.jagex.oldscape.pub.OtlTokenResponse;
 import com.jagex.oldscape.pub.RefreshAccessTokenRequester;
 import com.jagex.oldscape.pub.RefreshAccessTokenResponse;
-import org.json.JSONException;
-import org.json.JSONObject;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.URL;
@@ -1343,7 +1343,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 	@ObfuscatedName("un")
 	static boolean field482;
 	@ObfuscatedName("hb")
-	String field527;
+	@Export("token")
+	String token;
 	@ObfuscatedName("hp")
 	@ObfuscatedSignature(
 		descriptor = "Lay;"
@@ -1358,9 +1359,11 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 	@ObfuscatedSignature(
 		descriptor = "Lcom/jagex/oldscape/pub/OtlTokenRequester;"
 	)
-	OtlTokenRequester field530;
+	@Export("otlTokenRequester")
+	OtlTokenRequester otlTokenRequester;
 	@ObfuscatedName("hq")
-	Future field605;
+	@Export("otlTokenRequestFuture")
+	Future otlTokenRequestFuture;
 	@ObfuscatedName("hf")
 	boolean field532;
 	@ObfuscatedName("hw")
@@ -1377,9 +1380,11 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 	@ObfuscatedSignature(
 		descriptor = "Lcom/jagex/oldscape/pub/RefreshAccessTokenRequester;"
 	)
-	RefreshAccessTokenRequester field535;
+	@Export("refreshAccessTokenRequester")
+	RefreshAccessTokenRequester refreshAccessTokenRequester;
 	@ObfuscatedName("hk")
-	Future field536;
+	@Export("refreshAccessTokenRequestFuture")
+	Future refreshAccessTokenRequestFuture;
 	@ObfuscatedName("if")
 	@ObfuscatedSignature(
 		descriptor = "Luj;"
@@ -2032,7 +2037,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 		garbageValue = "-1304458364"
 	)
 	boolean method1347() {
-		return this.field530 != null;
+		return this.otlTokenRequester != null;
 	}
 
 	@ObfuscatedName("go")
@@ -2040,12 +2045,13 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 		descriptor = "(Ljava/lang/String;I)V",
 		garbageValue = "-191398087"
 	)
-	void method1268(String refreshToken) throws IOException {
-		HashMap<String, String> parameters = new HashMap<>();
-		parameters.put("grant_type", "refresh_token");
-		parameters.put("scope", "gamesso.token.create");
-		parameters.put("refresh_token", refreshToken);
-		URL url = new URL(class314.authServiceBaseUrl + "shield/oauth/token" + (new class475(parameters)).method8589());
+	@Export("requestRefreshAccessToken")
+	void requestRefreshAccessToken(String refreshToken) throws IOException {
+		HashMap var2 = new HashMap();
+		var2.put("grant_type", "refresh_token");
+		var2.put("scope", "gamesso.token.create");
+		var2.put("refresh_token", refreshToken);
+		URL var3 = new URL(class314.authServiceBaseUrl + "shield/oauth/token" + (new class475(var2)).method8589());
 		HttpRequestBuilder var4 = new HttpRequestBuilder();
 		if (this.method1263()) {
 			var4.basicAuthentication(field538);
@@ -2056,11 +2062,11 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 		var4.header("Host", (new URL(class314.authServiceBaseUrl)).getHost());
 		var4.accept(HttpContentType.APPLICATION_JSON);
 		class9 var5 = class9.field33;
-		RefreshAccessTokenRequester var6 = this.field535;
+		RefreshAccessTokenRequester var6 = this.refreshAccessTokenRequester;
 		if (var6 != null) {
-			this.field536 = var6.request(var5.method75(), url, var4.getHeaders(), "");
+			this.refreshAccessTokenRequestFuture = var6.request(var5.method75(), var3, var4.getHeaders(), "");
 		} else {
-			class10 var7 = new class10(url, var5, var4, this.field532);
+			class10 var7 = new class10(var3, var5, var4, this.field532);
 			this.field611 = this.field528.method181(var7);
 		}
 	}
@@ -2070,16 +2076,17 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 		descriptor = "(Ljava/lang/String;B)V",
 		garbageValue = "-43"
 	)
-	void method1386(String var1) throws IOException {
-		URL url = new URL(class314.authServiceBaseUrl + "public/v1/games/YCfdbvr2pM1zUYMxJRexZY/play");
-		HttpRequestBuilder client = new HttpRequestBuilder();
-		client.bearerToken(var1);
+	@Export("requestOtlToken")
+	void requestOtlToken(String var1) throws IOException {
+		URL var2 = new URL(class314.authServiceBaseUrl + "public/v1/games/YCfdbvr2pM1zUYMxJRexZY/play");
+		HttpRequestBuilder var3 = new HttpRequestBuilder();
+		var3.bearerToken(var1);
 		class9 var4 = class9.field31;
-		OtlTokenRequester var5 = this.field530;
+		OtlTokenRequester var5 = this.otlTokenRequester;
 		if (var5 != null) {
-			this.field605 = var5.request(var4.method75(), url, client.getHeaders(), "");
+			this.otlTokenRequestFuture = var5.request(var4.method75(), var2, var3.getHeaders(), "");
 		} else {
-			class10 var6 = new class10(url, var4, client, this.field532);
+			class10 var6 = new class10(var2, var4, var3, this.field532);
 			this.field657 = this.field528.method181(var6);
 		}
 	}
@@ -2089,14 +2096,15 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 		descriptor = "(Ljava/lang/String;Ljava/lang/String;I)V",
 		garbageValue = "169401816"
 	)
-	void method1270(String var1, String var2) throws IOException, JSONException {
+	@Export("authenticate")
+	void authenticate(String var1, String var2) throws IOException, JSONException {
 		URL var3 = new URL(FriendsChat.field4677 + "game-session/v1/tokens");
 		class10 var4 = new class10(var3, class9.field33, this.field532);
 		var4.method95().bearerToken(var1);
 		var4.method95().accept(HttpContentType.APPLICATION_JSON);
 		JSONObject var5 = new JSONObject();
 		var5.method8392("accountId", var2);
-		var4.method92(new class474(var5));
+		var4.method92(new HttpJsonContent(var5));
 		this.field657 = this.field528.method181(var4);
 	}
 
@@ -2263,7 +2271,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					if (field526.method9577()) {
 						if (this.containsAccessAndRefreshToken()) {
 							try {
-								this.method1268(ObjectComposition.refreshToken);
+								this.requestRefreshAccessToken(ObjectComposition.refreshToken);
 								class19.updateLoginState(21);
 							} catch (Throwable var22) {
 								GrandExchangeOfferWorldComparator.RunException_sendStackTrace((String)null, var22);
@@ -2277,7 +2285,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 							}
 
 							try {
-								this.method1270(class369.sessionId, InterfaceParent.characterId);
+								this.authenticate(class369.sessionId, InterfaceParent.characterId);
 								class19.updateLoginState(20);
 							} catch (Exception var21) {
 								GrandExchangeOfferWorldComparator.RunException_sendStackTrace((String)null, var21);
@@ -2293,32 +2301,32 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 
 			class20 var24;
 			if (loginState == 21) {
-				if (this.field536 != null) {
-					if (!this.field536.isDone()) {
+				if (this.refreshAccessTokenRequestFuture != null) {
+					if (!this.refreshAccessTokenRequestFuture.isDone()) {
 						return;
 					}
 
-					if (this.field536.isCancelled()) {
+					if (this.refreshAccessTokenRequestFuture.isCancelled()) {
 						class149.getLoginError(65);
-						this.field536 = null;
+						this.refreshAccessTokenRequestFuture = null;
 						return;
 					}
 
 					try {
-						RefreshAccessTokenResponse var3 = (RefreshAccessTokenResponse)this.field536.get();
+						RefreshAccessTokenResponse var3 = (RefreshAccessTokenResponse)this.refreshAccessTokenRequestFuture.get();
 						if (!var3.isSuccess()) {
 							class149.getLoginError(65);
-							this.field536 = null;
+							this.refreshAccessTokenRequestFuture = null;
 							return;
 						}
 
 						Messages.accessToken = var3.getAccessToken();
 						ObjectComposition.refreshToken = var3.getRefreshToken();
-						this.field536 = null;
+						this.refreshAccessTokenRequestFuture = null;
 					} catch (Exception var20) {
 						GrandExchangeOfferWorldComparator.RunException_sendStackTrace((String)null, var20);
 						class149.getLoginError(65);
-						this.field536 = null;
+						this.refreshAccessTokenRequestFuture = null;
 						return;
 					}
 				} else {
@@ -2346,11 +2354,11 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					}
 
 					field522 = 0;
-					class474 var4 = new class474(var24.method299());
+					HttpJsonContent var4 = new HttpJsonContent(var24.method299());
 
 					try {
-						Messages.accessToken = var4.method8573().getString("access_token");
-						ObjectComposition.refreshToken = var4.method8573().getString("refresh_token");
+						Messages.accessToken = var4.getProperties().getString("access_token");
+						ObjectComposition.refreshToken = var4.getProperties().getString("refresh_token");
 					} catch (Exception var19) {
 						GrandExchangeOfferWorldComparator.RunException_sendStackTrace("Error parsing tokens", var19);
 						class149.getLoginError(65);
@@ -2359,36 +2367,36 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					}
 				}
 
-				this.method1386(Messages.accessToken);
+				this.requestOtlToken(Messages.accessToken);
 				class19.updateLoginState(20);
 			}
 
 			if (loginState == 20) {
-				if (this.field605 != null) {
-					if (!this.field605.isDone()) {
+				if (this.otlTokenRequestFuture != null) {
+					if (!this.otlTokenRequestFuture.isDone()) {
 						return;
 					}
 
-					if (this.field605.isCancelled()) {
+					if (this.otlTokenRequestFuture.isCancelled()) {
 						class149.getLoginError(65);
-						this.field605 = null;
+						this.otlTokenRequestFuture = null;
 						return;
 					}
 
 					try {
-						OtlTokenResponse var25 = (OtlTokenResponse)this.field605.get();
+						OtlTokenResponse var25 = (OtlTokenResponse)this.otlTokenRequestFuture.get();
 						if (!var25.isSuccess()) {
 							class149.getLoginError(65);
-							this.field605 = null;
+							this.otlTokenRequestFuture = null;
 							return;
 						}
 
-						this.field527 = var25.getToken();
-						this.field605 = null;
+						this.token = var25.getToken();
+						this.otlTokenRequestFuture = null;
 					} catch (Exception var18) {
 						GrandExchangeOfferWorldComparator.RunException_sendStackTrace((String)null, var18);
 						class149.getLoginError(65);
-						this.field605 = null;
+						this.otlTokenRequestFuture = null;
 						return;
 					}
 				} else {
@@ -2420,7 +2428,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					if (var27 != null && var27.contains(HttpContentType.APPLICATION_JSON.getValue())) {
 						try {
 							JSONObject var5 = new JSONObject(var24.method299());
-							this.field527 = var5.getString("token");
+							this.token = var5.getString("token");
 						} catch (JSONException var17) {
 							GrandExchangeOfferWorldComparator.RunException_sendStackTrace((String)null, var17);
 							class149.getLoginError(65);
@@ -2428,7 +2436,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 							return;
 						}
 					} else {
-						this.field527 = var24.method299();
+						this.token = var24.method299();
 					}
 
 					this.field657 = null;
@@ -2548,7 +2556,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 
 					if (field526.method9577()) {
 						var28.writeByte(class531.field5192.rsOrdinal());
-						var28.writeStringCp1252NullTerminated(this.field527);
+						var28.writeStringCp1252NullTerminated(this.token);
 					} else {
 						var28.writeByte(class531.field5197.rsOrdinal());
 						var28.writeStringCp1252NullTerminated(Login.Login_password);
@@ -6418,7 +6426,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 	)
 	public void setOtlTokenRequester(OtlTokenRequester var1) {
 		if (var1 != null) {
-			this.field530 = var1;
+			this.otlTokenRequester = var1;
 			UserComparator7.method2966(10);
 		}
 	}
@@ -6428,7 +6436,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 	)
 	public void setRefreshTokenRequester(RefreshAccessTokenRequester var1) {
 		if (var1 != null) {
-			this.field535 = var1;
+			this.refreshAccessTokenRequester = var1;
 		}
 	}
 

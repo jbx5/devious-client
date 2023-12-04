@@ -1,15 +1,17 @@
 import java.io.UnsupportedEncodingException;
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("sd")
-public interface class473 {
+@Implements("HttpContent")
+public interface HttpContent {
 	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "(B)Lsi;",
 		garbageValue = "-24"
 	)
-	HttpContentType vmethod8594();
+	HttpContentType type();
 
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(

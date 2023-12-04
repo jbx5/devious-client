@@ -5,17 +5,18 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("si")
 @Implements("HttpContentType")
-public class HttpContentType
-{
+public class HttpContentType {
 	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "Lsi;"
 	)
+	@Export("APPLICATION_JSON")
 	public static final HttpContentType APPLICATION_JSON;
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "Lsi;"
 	)
+	@Export("TEXT_PLAIN")
 	static final HttpContentType TEXT_PLAIN;
 	@ObfuscatedName("ar")
 	@Export("contentType")

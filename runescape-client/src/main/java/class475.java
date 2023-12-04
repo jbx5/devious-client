@@ -7,7 +7,7 @@ import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("sk")
-public class class475 implements class473 {
+public class class475 implements HttpContent {
 	@ObfuscatedName("at")
 	final Map field4816;
 
@@ -20,7 +20,7 @@ public class class475 implements class473 {
 		descriptor = "(B)Lsi;",
 		garbageValue = "-24"
 	)
-	public HttpContentType vmethod8594() {
+	public HttpContentType type() {
 		return null;
 	}
 
