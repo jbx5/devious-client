@@ -36,8 +36,10 @@ import net.runelite.asm.ClassGroup;
 import net.runelite.asm.Method;
 import net.runelite.asm.Type;
 import net.runelite.deob.DeobAnnotations;
+import net.runelite.deob.DeobProperties;
 import net.runelite.deob.Transformer;
 import net.runelite.deob.deobfuscators.Renamer;
+import net.runelite.deob.util.JarUtil;
 import net.runelite.deob.util.NameMappings;
 
 /**
@@ -47,32 +49,33 @@ public class ClassToPackageTransformer implements Transformer
 {
 	private static final Logger logger = LoggerFactory.getLogger(ClassToPackageTransformer.class);
 
-	private final List<String> JSON_CLASS_NAMES = List.of("JSONArray", "JSONException", "JSONObject", "JSONObject$Null", "JSONString", "JSONTokener");
-	private final String JSON_PACKAGE_NAME = "org/json/";
-
-	private final List<String> OAUTH_CLASS_NAMES = List.of("OAuthApi", "OtlTokenRequester", "OtlTokenResponse", "RefreshAccessTokenRequester", "RefreshAccessTokenResponse");
-	private final String OAUTH_PACKAGE_NAME = "com/jagex/oldscape/pub/";
-
 	private final List<String> renamedClassNames = new ArrayList<>();
 
 	@Override
 	public void transform(ClassGroup group)
 	{
+		ClassGroup vanillaGroup = JarUtil.load(DeobProperties.getVanilla());
+		vanillaGroup.buildClassGraph();
+		vanillaGroup.lookup();
+
 		final NameMappings mappings = new NameMappings();
-		for (ClassFile cf : group.getClasses())
+
+		for (ClassFile vanillaCF : vanillaGroup)
 		{
-			if (JSON_CLASS_NAMES.contains(cf.getName()))
+			if (vanillaCF.getName().contains("bouncycastle"))
 			{
-				logger.info("Mapping class: {} to package: {}", cf, JSON_PACKAGE_NAME);
-				mappings.map(cf.getPoolClass(), JSON_PACKAGE_NAME + cf.getName());
-				renamedClassNames.add(JSON_PACKAGE_NAME + cf.getName());
+				continue;
 			}
 
-			if (OAUTH_CLASS_NAMES.contains(cf.getName()))
+			if (vanillaCF.getName().contains("/"))
 			{
-				logger.info("Mapping class: {} to package: {}", cf, OAUTH_PACKAGE_NAME);
-				mappings.map(cf.getPoolClass(), OAUTH_PACKAGE_NAME + cf.getName());
-				renamedClassNames.add(OAUTH_PACKAGE_NAME + cf.getName());
+				ClassFile targetCF = group.findClass(vanillaCF.getName().substring(vanillaCF.getName().lastIndexOf("/") + 1));
+				if (targetCF != null)
+				{
+					logger.info("Mapping class: {} to: {}", targetCF, vanillaCF);
+					mappings.map(targetCF.getPoolClass(), vanillaCF.getName());
+					renamedClassNames.add(vanillaCF.getName());
+				}
 			}
 		}
 
