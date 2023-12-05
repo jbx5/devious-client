@@ -27,9 +27,6 @@ package net.runelite.deob.deobfuscators.transformers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-import net.runelite.asm.Annotation;
 import net.runelite.asm.ClassFile;
 import net.runelite.asm.ClassGroup;
 import net.runelite.asm.Method;
@@ -60,10 +57,6 @@ public class JSONSyntheticTransformer implements Transformer
 			{
 				continue;
 			}
-
-			// Remove implements/obfuscatedName from all json classes
-			Map<Type, Annotation> annotations = cf.getAnnotations();
-			annotations.keySet().stream().collect(Collectors.toList()).forEach(annotations::remove);
 
 			// transform clinit method to set NULL field
 			if (cf.getName().equals("org/json/JSONObject"))

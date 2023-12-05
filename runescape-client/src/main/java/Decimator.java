@@ -297,9 +297,9 @@ public class Decimator {
 	@Export("setMusicVolume")
 	static final void setMusicVolume(int var0) {
 		var0 = Math.min(Math.max(var0, 0), 255);
-		if (var0 != WorldMapIcon_1.clientPreferences.method2554()) {
+		if (var0 != WorldMapIcon_1.clientPreferences.getMusicVolume()) {
 			label27: {
-				if (WorldMapIcon_1.clientPreferences.method2554() == 0) {
+				if (WorldMapIcon_1.clientPreferences.getMusicVolume() == 0) {
 					boolean var1 = !class316.field3424.isEmpty();
 					if (var1) {
 						class72.method2137(class514.archive6, var0);
@@ -316,7 +316,7 @@ public class Decimator {
 				}
 			}
 
-			WorldMapIcon_1.clientPreferences.method2553(var0);
+			WorldMapIcon_1.clientPreferences.updateMusicVolume(var0);
 		}
 
 	}

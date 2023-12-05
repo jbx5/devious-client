@@ -1,14 +1,15 @@
 package net.unethicalite.api.items;
 
-import net.unethicalite.api.query.items.ItemQuery;
+import java.time.Instant;
+import java.util.List;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 import net.runelite.api.EquipmentInventorySlot;
 import net.runelite.api.InventoryID;
 import net.runelite.api.Item;
 import net.runelite.api.widgets.WidgetInfo;
-
-import java.util.List;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
+import net.unethicalite.api.query.items.ItemQuery;
 
 public class Equipment extends Items
 {
@@ -136,5 +137,10 @@ public class Equipment extends Items
 	public static Item fromSlot(EquipmentInventorySlot slot)
 	{
 		return getFirst(x -> slot.getWidgetInfo().getPackedId() == x.getWidgetId());
+	}
+
+	public static @Nullable Instant getLastUpdated()
+	{
+		return EQUIPMENT.lastUpdated();
 	}
 }

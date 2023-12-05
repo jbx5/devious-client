@@ -3,6 +3,7 @@ package net.unethicalite.api.input.naturalmouse;
 import lombok.Getter;
 import lombok.Setter;
 import net.runelite.api.Client;
+import net.unethicalite.api.MouseHandler;
 import net.unethicalite.api.commons.Time;
 import net.unethicalite.api.input.Mouse;
 import net.unethicalite.api.input.naturalmouse.api.MouseInfoAccessor;
@@ -175,7 +176,11 @@ public class NaturalMouse
 		@Override
 		public void setMousePosition(int x, int y)
 		{
-			client.getMouseHandler().sendMovement(x, y);
+			MouseHandler mouseHandler = client.getMouseHandler();
+			if (mouseHandler != null)
+			{
+				mouseHandler.sendMovement(x, y);
+			}
 		}
 	}
 }

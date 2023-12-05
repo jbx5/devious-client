@@ -4,7 +4,8 @@ import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("dm")
-public enum class89 implements MouseWheel {
+public enum class89 implements Enum
+{
 	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "Ldm;"

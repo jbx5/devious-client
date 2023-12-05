@@ -16,12 +16,12 @@ class class432 implements Comparator {
 	@ObfuscatedSignature(
 		descriptor = "Lqf;"
 	)
-	final class431 this$0;
+	final HttpRequestBuilder this$0;
 
 	@ObfuscatedSignature(
 		descriptor = "(Lqf;)V"
 	)
-	class432(class431 var1) {
+	class432(HttpRequestBuilder var1) {
 		this.this$0 = var1;
 	}
 

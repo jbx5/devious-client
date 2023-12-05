@@ -1,28 +1,34 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("si")
-public class class472 {
+@Implements("HttpContentType")
+public class HttpContentType {
 	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "Lsi;"
 	)
-	public static final class472 field4810;
+	@Export("APPLICATION_JSON")
+	public static final HttpContentType APPLICATION_JSON;
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "Lsi;"
 	)
-	static final class472 field4811;
+	@Export("TEXT_PLAIN")
+	static final HttpContentType TEXT_PLAIN;
 	@ObfuscatedName("ar")
-	String field4809;
+	@Export("contentType")
+	String contentType;
 
 	static {
-		field4810 = new class472("application/json");
-		field4811 = new class472("text/plain");
+		APPLICATION_JSON = new HttpContentType("application/json");
+		TEXT_PLAIN = new HttpContentType("text/plain");
 	}
 
-	class472(String var1) {
-		this.field4809 = var1;
+	HttpContentType(String var1) {
+		this.contentType = var1;
 	}
 
 	@ObfuscatedName("at")
@@ -30,8 +36,9 @@ public class class472 {
 		descriptor = "(I)Ljava/lang/String;",
 		garbageValue = "1925429052"
 	)
-	public String method8563() {
-		return this.field4809;
+	@Export("getValue")
+	public String getValue() {
+		return this.contentType;
 	}
 
 	@ObfuscatedName("ah")

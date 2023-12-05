@@ -123,7 +123,7 @@ public class ByteArrayPool {
 
 		NpcOverrides.worldMap = null;
 		WorldMapRenderer.method4769(0, 0);
-		class472.method8564();
+		HttpContentType.method8564();
 		Client.playingJingle = false;
 		WorldMapSectionType.method4888();
 		if (MusicPatchPcmStream.pcmPlayer1 != null) {

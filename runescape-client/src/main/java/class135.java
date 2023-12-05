@@ -62,11 +62,11 @@ public class class135 implements class125 {
 					var6 = var7 != null && var5 == var7.musicTrackGroupId;
 				}
 
-				if (!var6 && WorldMapIcon_1.clientPreferences.method2554() != 0) {
+				if (!var6 && WorldMapIcon_1.clientPreferences.getMusicVolume() != 0) {
 					ArrayList var9 = new ArrayList();
 
 					for (int var8 = 0; var8 < var0.size(); ++var8) {
-						var9.add(new MusicSong(class514.archive6, (Integer)var0.get(var8), 0, WorldMapIcon_1.clientPreferences.method2554(), false));
+						var9.add(new MusicSong(class514.archive6, (Integer)var0.get(var8), 0, WorldMapIcon_1.clientPreferences.getMusicVolume(), false));
 					}
 
 					if (Client.playingJingle) {

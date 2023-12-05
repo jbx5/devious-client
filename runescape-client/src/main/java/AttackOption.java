@@ -6,7 +6,8 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("dy")
 @Implements("AttackOption")
-public enum AttackOption implements MouseWheel {
+public enum AttackOption implements Enum
+{
 	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "Ldy;"

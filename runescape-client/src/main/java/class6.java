@@ -6,7 +6,8 @@ import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("aa")
-public enum class6 implements MouseWheel {
+public enum class6 implements Enum
+{
 	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "Laa;"
@@ -97,11 +98,11 @@ public enum class6 implements MouseWheel {
 				Login.field915 = 0;
 			}
 
-			class53.field350 = 0;
+			class53.otpMedium = 0;
 			NpcOverrides.otp = "";
-			Login.field920 = true;
+			Login.rememberUsername = true;
 			Login.worldSelectOpen = false;
-			if (!WorldMapIcon_1.clientPreferences.method2631()) {
+			if (!WorldMapIcon_1.clientPreferences.isTitleMusicDisabled()) {
 				ArrayList var5 = new ArrayList();
 				var5.add(new MusicSong(class514.archive6, "scape main", "", 255, false));
 				PendingSpawn.method2459(var5, 0, 0, 0, 100, false);
@@ -109,7 +110,7 @@ public enum class6 implements MouseWheel {
 				WorldMapRenderer.method4769(0, 0);
 			}
 
-			class472.method8564();
+			HttpContentType.method8564();
 			class157.method3396().method7045(false);
 			class384.clearLoginScreen = true;
 			Login.xPadding = (Language.canvasWidth - 765) / 2;

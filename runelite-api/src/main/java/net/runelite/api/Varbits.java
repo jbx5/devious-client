@@ -948,4 +948,21 @@ public final class Varbits
 	public static final int BELOW_ICE_MOUNTAIN_MARLEY_PROGRESS = 12064;
 	public static final int BELOW_ICE_MOUNTAIN_CHECKAL_PROGRESS = 12065;
 	public static final int BELOW_ICE_MOUNTAIN_BURNTOF_PROGRESS = 12066;
+
+	/**
+	 * Bank withdraw mode (Noted / Un-noted)
+	 */
+	public static final int BANK_WITHDRAW_MODE = 3958;
+
+	/**
+	 * Bank quantity mode (1, 5, 10, X, ALL)
+	 */
+	public static final int BANK_QUANTITY_MODE = 6590;
+
+	/**
+	 * Bank tutorial completed atleast once
+	 */
+	public static final int BANK_TUTORIAL_COMPLETED = 10161;
+
+
 }

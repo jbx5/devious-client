@@ -637,7 +637,7 @@ public class PlayerComposition {
 		if (!Client.isCameraLocked) {
 			var10 = class306.method5913();
 		} else {
-			if (WorldMapIcon_1.clientPreferences.method2541()) {
+			if (WorldMapIcon_1.clientPreferences.isRoofsHidden()) {
 				var11 = ItemLayer.Client_plane;
 			} else {
 				var12 = WorldMapDecorationType.getTileHeight(ViewportMouse.cameraX, class36.cameraZ, ItemLayer.Client_plane);
@@ -710,7 +710,7 @@ public class PlayerComposition {
 		Rasterizer3D.clips.field3041 = Client.viewportZoom;
 		class36.scene.draw(ViewportMouse.cameraX, SecureRandomFuture.cameraY, class36.cameraZ, Varcs.cameraPitch, class192.cameraYaw, var10);
 		Rasterizer3D.method5189(false);
-		if (Client.renderSelf) {
+		if (Client.z) {
 			Rasterizer2D.method9664();
 		}
 
@@ -746,7 +746,7 @@ public class PlayerComposition {
 			class171.drawActor2d((Actor)var40, var24, var0, var1, var2, var3);
 		}
 
-		if (Client.field615 && var21 != -1) {
+		if (Client.renderSelf && var21 != -1) {
 			class171.drawActor2d(class229.localPlayer, var21, var0, var1, var2, var3);
 		}
 

@@ -17,12 +17,14 @@ public class class10 {
 	@ObfuscatedName("wj")
 	static Iterator field40;
 	@ObfuscatedName("at")
-	final HttpsURLConnection field46;
+	@Export("connection")
+	final HttpsURLConnection connection;
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "Lqf;"
 	)
-	final class431 field39;
+	@Export("httpRequestBuilder")
+	final HttpRequestBuilder httpRequestBuilder;
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "Laz;"
@@ -32,7 +34,8 @@ public class class10 {
 	@ObfuscatedSignature(
 		descriptor = "Lsd;"
 	)
-	class473 field42;
+	@Export("httpContent")
+	HttpContent httpContent;
 	@ObfuscatedName("ab")
 	boolean field43;
 	@ObfuscatedName("au")
@@ -46,16 +49,16 @@ public class class10 {
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/net/URL;Laz;Lqf;Z)V"
 	)
-	public class10(URL var1, class9 var2, class431 var3, boolean var4) throws IOException {
+	public class10(URL var1, class9 var2, HttpRequestBuilder var3, boolean var4) throws IOException {
 		this.field43 = false;
 		this.field44 = false;
 		this.field45 = 300000;
 		if (!var2.method76()) {
 			throw new UnsupportedEncodingException("Unsupported request method used " + var2.method75());
 		} else {
-			this.field46 = (HttpsURLConnection)var1.openConnection();
+			this.connection = (HttpsURLConnection)var1.openConnection();
 			if (!var4) {
-				HttpsURLConnection var5 = this.field46;
+				HttpsURLConnection var5 = this.connection;
 				if (class15.field69 == null) {
 					class15.field69 = new class15();
 				}
@@ -65,7 +68,7 @@ public class class10 {
 			}
 
 			this.field41 = var2;
-			this.field39 = var3 != null ? var3 : new class431();
+			this.httpRequestBuilder = var3 != null ? var3 : new HttpRequestBuilder();
 		}
 	}
 
@@ -73,7 +76,7 @@ public class class10 {
 		descriptor = "(Ljava/net/URL;Laz;Z)V"
 	)
 	public class10(URL var1, class9 var2, boolean var3) throws IOException {
-		this(var1, var2, new class431(), var3);
+		this(var1, var2, new HttpRequestBuilder(), var3);
 	}
 
 	@ObfuscatedName("at")
@@ -81,8 +84,8 @@ public class class10 {
 		descriptor = "(I)Lqf;",
 		garbageValue = "77865186"
 	)
-	public class431 method95() {
-		return this.field39;
+	public HttpRequestBuilder method95() {
+		return this.httpRequestBuilder;
 	}
 
 	@ObfuscatedName("ah")
@@ -90,17 +93,17 @@ public class class10 {
 		descriptor = "(Lsd;I)V",
 		garbageValue = "2039275921"
 	)
-	public void method92(class473 var1) {
+	public void method92(HttpContent var1) {
 		if (!this.field43) {
 			if (var1 == null) {
-				this.field39.method7955("Content-Type");
-				this.field42 = null;
+				this.httpRequestBuilder.removeHeader("Content-Type");
+				this.httpContent = null;
 			} else {
-				this.field42 = var1;
-				if (this.field42.vmethod8594() != null) {
-					this.field39.method7981(this.field42.vmethod8594());
+				this.httpContent = var1;
+				if (this.httpContent.type() != null) {
+					this.httpRequestBuilder.contentType(this.httpContent.type());
 				} else {
-					this.field39.method7960();
+					this.httpRequestBuilder.removeContentType();
 				}
 
 			}
@@ -114,15 +117,15 @@ public class class10 {
 	)
 	void method103() throws ProtocolException {
 		if (!this.field43) {
-			this.field46.setRequestMethod(this.field41.method75());
-			this.field39.method7958(this.field46);
-			if (this.field41.method74() && this.field42 != null) {
-				this.field46.setDoOutput(true);
+			this.connection.setRequestMethod(this.field41.method75());
+			this.httpRequestBuilder.setRequestProperties(this.connection);
+			if (this.field41.method74() && this.httpContent != null) {
+				this.connection.setDoOutput(true);
 				ByteArrayOutputStream var1 = new ByteArrayOutputStream();
 
 				try {
-					var1.write(this.field42.vmethod8587());
-					var1.writeTo(this.field46.getOutputStream());
+					var1.write(this.httpContent.vmethod8587());
+					var1.writeTo(this.connection.getOutputStream());
 				} catch (IOException var11) {
 					var11.printStackTrace();
 				} finally {
@@ -135,8 +138,8 @@ public class class10 {
 				}
 			}
 
-			this.field46.setConnectTimeout(this.field45);
-			this.field46.setInstanceFollowRedirects(this.field44);
+			this.connection.setConnectTimeout(this.field45);
+			this.connection.setInstanceFollowRedirects(this.field44);
 			this.field43 = true;
 		}
 	}
@@ -151,8 +154,8 @@ public class class10 {
 			this.method103();
 		}
 
-		this.field46.connect();
-		return this.field46.getResponseCode() == -1;
+		this.connection.connect();
+		return this.connection.getResponseCode() == -1;
 	}
 
 	@ObfuscatedName("ab")
@@ -162,22 +165,22 @@ public class class10 {
 	)
 	class20 method91() {
 		try {
-			if (!this.field43 || this.field46.getResponseCode() == -1) {
+			if (!this.field43 || this.connection.getResponseCode() == -1) {
 				return new class20("No REST response has been received yet.");
 			}
 		} catch (IOException var10) {
-			this.field46.disconnect();
+			this.connection.disconnect();
 			return new class20("Error decoding REST response code: " + var10.getMessage());
 		}
 
 		class20 var3;
 		try {
-			class20 var1 = new class20(this.field46);
+			class20 var1 = new class20(this.connection);
 			return var1;
 		} catch (IOException var8) {
 			var3 = new class20("Error decoding REST response: " + var8.getMessage());
 		} finally {
-			this.field46.disconnect();
+			this.connection.disconnect();
 		}
 
 		return var3;

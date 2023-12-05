@@ -40,7 +40,7 @@ public abstract class class469 implements class291 {
 					break;
 				case 1:
 					int var4 = var1.readUnsignedByte();
-					this.field4808 = class472.method8562(var4);
+					this.field4808 = HttpContentType.method8562(var4);
 					if (this.field4808 != null) {
 						break;
 					}

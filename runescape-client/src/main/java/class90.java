@@ -4,7 +4,8 @@ import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("dr")
-public enum class90 implements MouseWheel {
+public enum class90 implements Enum
+{
 	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "Ldr;"
@@ -121,7 +122,7 @@ public enum class90 implements MouseWheel {
 	static final void updateNpcs(boolean var0, PacketBuffer var1) {
 		Client.field617 = 0;
 		Client.field637 = 0;
-		class472.method8565(var1);
+		HttpContentType.method8565(var1);
 
 		int var3;
 		int var8;

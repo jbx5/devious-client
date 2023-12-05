@@ -62,7 +62,8 @@ public class class415 extends SongTask {
 		descriptor = "([BB)Ljava/lang/String;",
 		garbageValue = "14"
 	)
-	public static String method7821(byte[] var0) {
+	@Export("base64Encode")
+	public static String base64Encode(byte[] var0) {
 		int var2 = var0.length;
 		StringBuilder var3 = new StringBuilder();
 

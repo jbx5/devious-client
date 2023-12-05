@@ -183,14 +183,15 @@ public class Message extends DualNode {
 		descriptor = "(Ljava/lang/CharSequence;B)I",
 		garbageValue = "11"
 	)
-	public static int method1245(CharSequence var0) {
-		int var1 = var0.length();
-		int var2 = 0;
+	@Export("ClientPreferences_decodeParameterKey")
+	public static int decodeParameterKey(CharSequence sequence) {
+		int length = sequence.length();
+		int result = 0;
 
-		for (int var3 = 0; var3 < var1; ++var3) {
-			var2 = (var2 << 5) - var2 + var0.charAt(var3);
+		for (int index = 0; index < length; ++index) {
+			result = (result << 5) - result + sequence.charAt(index);
 		}
 
-		return var2;
+		return result;
 	}
 }
