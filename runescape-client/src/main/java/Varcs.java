@@ -273,7 +273,7 @@ public class Varcs {
 
 							var8 = var14.readUnsignedShort();
 							var9 = var14.readUnsignedByte();
-							class514 var10 = (class514)class12.findEnumerated(class514.method9122(), var9);
+							class514 var10 = (class514) SecureRandomSSLSocket.findEnumerated(class514.method9122(), var9);
 							Object var11 = var10.method9120(var14);
 							if (var8 >= 0 && var8 < this.intsPersistence.length && this.intsPersistence[var8]) {
 								this.map.put(var8, var11);

@@ -222,7 +222,7 @@ public class class407 {
 			}
 
 			if (var2 == 30 && Client.meslayerContinueWidget == null) {
-				class10.resumePauseWidget(var1, var0);
+				HttpRequest.resumePauseWidget(var1, var0);
 				Client.meslayerContinueWidget = HealthBarDefinition.widgetDefinition.getWidgetChild(var1, var0);
 				class159.invalidateWidget(Client.meslayerContinueWidget);
 			}

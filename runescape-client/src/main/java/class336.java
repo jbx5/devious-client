@@ -87,7 +87,7 @@ public class class336 {
 				Client.field759 += (var6 - Client.field759) / 80;
 			}
 
-			class12.field56 = WorldMapDecorationType.getTileHeight(class229.localPlayer.x, class229.localPlayer.y, ItemLayer.Client_plane) - Client.camFollowHeight;
+			SecureRandomSSLSocket.field56 = WorldMapDecorationType.getTileHeight(class229.localPlayer.x, class229.localPlayer.y, ItemLayer.Client_plane) - Client.camFollowHeight;
 		} else if (Client.oculusOrbState == 1) {
 			WorldMapCacheName.method5007();
 			short var10 = -1;
@@ -150,9 +150,9 @@ public class class336 {
 				}
 
 				if (Client.field763 != 0) {
-					class12.field56 += var3 * Client.field763;
-					if (class12.field56 > 0) {
-						class12.field56 = 0;
+					SecureRandomSSLSocket.field56 += var3 * Client.field763;
+					if (SecureRandomSSLSocket.field56 > 0) {
+						SecureRandomSSLSocket.field56 = 0;
 					}
 				}
 			} else {
@@ -166,7 +166,7 @@ public class class336 {
 			}
 		}
 
-		if (MouseHandler.MouseHandler_currentButton == 4 && class19.mouseCam) {
+		if (MouseHandler.MouseHandler_currentButton == 4 && HttpRequestTask.mouseCam) {
 			var0 = MouseHandler.MouseHandler_y - Client.mouseCamClickedY;
 			Client.camAngleDX = var0 * 2;
 			Client.mouseCamClickedY = var0 != -1 && var0 != 1 ? (MouseHandler.MouseHandler_y + Client.mouseCamClickedY) / 2 : MouseHandler.MouseHandler_y;

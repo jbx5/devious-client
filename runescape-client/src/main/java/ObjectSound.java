@@ -358,7 +358,7 @@ public final class ObjectSound extends Node {
 		PcmPlayer.field281.clearFiles();
 		WorldMapSection0.archive9.clearFiles();
 		class514.archive6.clearFiles();
-		class19.field92.clearFiles();
+		HttpRequestTask.field92.clearFiles();
 		class7.field25.clearFiles();
 		GrandExchangeOfferOwnWorldComparator.archive8.clearFiles();
 		Canvas.field114.clearFiles();

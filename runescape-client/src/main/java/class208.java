@@ -203,7 +203,7 @@ public class class208 {
 				this.field2255 = 100;
 			} else {
 				try {
-					this.method4131(new HttpJsonContent(var2), var1);
+					this.method4131(new HttpJsonRequestBody(var2), var1);
 				} catch (UnsupportedEncodingException var4) {
 					this.method4142();
 					this.field2255 = 102;
@@ -262,7 +262,7 @@ public class class208 {
 					JSONObject var4 = var1.getJSONObject(var3);
 					class214 var5 = new class214(this);
 					var5.field2303 = var2.request(new URL(var4.getString("src")));
-					var5.field2300 = class9.method84(var4, "placement");
+					var5.field2300 = HttpMethod.method84(var4, "placement");
 					this.field2261.add(var5);
 				} catch (MalformedURLException var6) {
 				}
@@ -285,7 +285,7 @@ public class class208 {
 				var4.field2308 = class33.method494(var3.getString("align_x"));
 				var4.field2309 = class33.method494(var3.getString("align_y"));
 				var4.field2310 = var3.getInt("font");
-				var4.field2306 = class9.method84(var3, "placement");
+				var4.field2306 = HttpMethod.method84(var3, "placement");
 				this.field2266.add(var4);
 			}
 
@@ -299,7 +299,7 @@ public class class208 {
 	)
 	void method4129(JSONObject var1) throws JSONException {
 		if (var1 != null) {
-			this.field2258 = class9.method84(var1, "clickbounds");
+			this.field2258 = HttpMethod.method84(var1, "clickbounds");
 			this.field2250 = var1.getString("endpoint");
 			String[] var2 = JSONObject.getNames(var1);
 
@@ -361,10 +361,10 @@ public class class208 {
 		descriptor = "(Lsv;Lel;I)V",
 		garbageValue = "1323384211"
 	)
-	void method4131(HttpJsonContent var1, UrlRequester var2) {
+	void method4131(HttpJsonRequestBody var1, UrlRequester var2) {
 		JSONObject var3;
 		try {
-			var3 = var1.getProperties();
+			var3 = var1.getBody();
 			var3 = var3.getJSONObject("message");
 		} catch (Exception var9) {
 			this.method4142();
@@ -411,7 +411,7 @@ public class class208 {
 	)
 	public boolean method4132(String var1, UrlRequester var2) {
 		try {
-			this.method4131(new HttpJsonContent(var1.getBytes()), var2);
+			this.method4131(new HttpJsonRequestBody(var1.getBytes()), var2);
 			this.field2255 = this.field2261.size() > 0 ? 1 : 2;
 		} catch (UnsupportedEncodingException var4) {
 			this.field2255 = 102;

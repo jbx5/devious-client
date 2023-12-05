@@ -208,7 +208,7 @@ public class class357 {
 
 					return 1;
 				} else if (var0 == ScriptOpcodes.CC_RESUME_PAUSEBUTTON) {
-					class10.resumePauseWidget(var3.id, var3.childIndex);
+					HttpRequest.resumePauseWidget(var3.id, var3.childIndex);
 					Client.meslayerContinueWidget = var3;
 					class159.invalidateWidget(var3);
 					return 1;
@@ -226,7 +226,7 @@ public class class357 {
 					return 1;
 				} else if (var0 == 1125) {
 					var14 = Interpreter.Interpreter_intStack[--DbTableType.Interpreter_intStackSize];
-					FillMode var12 = (FillMode)class12.findEnumerated(WallDecoration.FillMode_values(), var14);
+					FillMode var12 = (FillMode) SecureRandomSSLSocket.findEnumerated(WallDecoration.FillMode_values(), var14);
 					if (var12 != null) {
 						var3.fillMode = var12;
 						class159.invalidateWidget(var3);

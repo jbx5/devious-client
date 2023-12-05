@@ -5,12 +5,15 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.util.Map;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("aw")
-public class class20 {
+@Implements("HttpResponse")
+public class HttpResponse
+{
 	@ObfuscatedName("tk")
 	@ObfuscatedSignature(
 		descriptor = "Lqi;"
@@ -21,24 +24,27 @@ public class class20 {
 	@ObfuscatedGetter(
 		intValue = -303905233
 	)
-	final int field101;
+	@Export("responseCode")
+	final int responseCode;
 	@ObfuscatedName("ah")
-	final Map field97;
+	@Export("headerFields")
+	final Map headerFields;
 	@ObfuscatedName("ar")
-	final String field99;
+	@Export("responseBody")
+	final String responseBody;
 
-	class20(String var1) {
-		this.field101 = 400;
-		this.field97 = null;
-		this.field99 = "";
+	HttpResponse(String var1) {
+		this.responseCode = 400;
+		this.headerFields = null;
+		this.responseBody = "";
 	}
 
-	class20(HttpURLConnection var1) throws IOException {
-		this.field101 = var1.getResponseCode();
+	HttpResponse(HttpURLConnection var1) throws IOException {
+		this.responseCode = var1.getResponseCode();
 		var1.getResponseMessage();
-		this.field97 = var1.getHeaderFields();
+		this.headerFields = var1.getHeaderFields();
 		StringBuilder var2 = new StringBuilder();
-		InputStream var3 = this.field101 >= 300 ? var1.getErrorStream() : var1.getInputStream();
+		InputStream var3 = this.responseCode >= 300 ? var1.getErrorStream() : var1.getInputStream();
 		if (var3 != null) {
 			InputStreamReader var4 = new InputStreamReader(var3);
 			BufferedReader var5 = new BufferedReader(var4);
@@ -51,7 +57,7 @@ public class class20 {
 			var3.close();
 		}
 
-		this.field99 = var2.toString();
+		this.responseBody = var2.toString();
 	}
 
 	@ObfuscatedName("at")
@@ -59,8 +65,9 @@ public class class20 {
 		descriptor = "(B)I",
 		garbageValue = "3"
 	)
-	public int method297() {
-		return this.field101;
+	@Export("getResponseCode")
+	public int getResponseCode() {
+		return this.responseCode;
 	}
 
 	@ObfuscatedName("ah")
@@ -68,8 +75,9 @@ public class class20 {
 		descriptor = "(I)Ljava/util/Map;",
 		garbageValue = "1360391754"
 	)
-	public Map method301() {
-		return this.field97;
+	@Export("getHeaderFields")
+	public Map getHeaderFields() {
+		return this.headerFields;
 	}
 
 	@ObfuscatedName("ar")
@@ -77,8 +85,9 @@ public class class20 {
 		descriptor = "(I)Ljava/lang/String;",
 		garbageValue = "-541639855"
 	)
-	public String method299() {
-		return this.field99;
+	@Export("getResponseBody")
+	public String getResponseBody() {
+		return this.responseBody;
 	}
 
 	@ObfuscatedName("ax")

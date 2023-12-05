@@ -402,7 +402,7 @@ public abstract class AbstractWorldMapData {
 							PacketBufferNode.addSceneMenuOptions(var17, var18, var12, var13);
 						}
 					} else if (var9.contentType == 1338) {
-						class18.checkIfMinimapClicked(var9, var26, var11);
+						AsyncHttpResponse.checkIfMinimapClicked(var9, var26, var11);
 					} else {
 						if (var9.contentType == 1400) {
 							NpcOverrides.worldMap.onCycle(MouseHandler.MouseHandler_x, MouseHandler.MouseHandler_y, var35, var26, var11, var9.width, var9.height);
@@ -492,12 +492,12 @@ public abstract class AbstractWorldMapData {
 							}
 
 							boolean var36 = false;
-							if ((MouseHandler.MouseHandler_currentButton == 1 || !class19.mouseCam && MouseHandler.MouseHandler_currentButton == 4) && var35) {
+							if ((MouseHandler.MouseHandler_currentButton == 1 || !HttpRequestTask.mouseCam && MouseHandler.MouseHandler_currentButton == 4) && var35) {
 								var36 = true;
 							}
 
 							var21 = false;
-							if ((MouseHandler.MouseHandler_lastButton == 1 || !class19.mouseCam && MouseHandler.MouseHandler_lastButton == 4) && MouseHandler.MouseHandler_lastPressedX >= var12 && MouseHandler.MouseHandler_lastPressedY >= var13 && MouseHandler.MouseHandler_lastPressedX < var14 && MouseHandler.MouseHandler_lastPressedY < var15) {
+							if ((MouseHandler.MouseHandler_lastButton == 1 || !HttpRequestTask.mouseCam && MouseHandler.MouseHandler_lastButton == 4) && MouseHandler.MouseHandler_lastPressedX >= var12 && MouseHandler.MouseHandler_lastPressedY >= var13 && MouseHandler.MouseHandler_lastPressedX < var14 && MouseHandler.MouseHandler_lastPressedY < var15) {
 								var21 = true;
 							}
 
@@ -519,7 +519,7 @@ public abstract class AbstractWorldMapData {
 								NpcOverrides.worldMap.method8715(var17, var18, var35 & var36, var35 & var21);
 							}
 
-							if (Client.clickedWidget != null && var9 != Client.clickedWidget && var35 && class12.method169(class361.getWidgetFlags(var9))) {
+							if (Client.clickedWidget != null && var9 != Client.clickedWidget && var35 && SecureRandomSSLSocket.method169(class361.getWidgetFlags(var9))) {
 								Client.draggedOnWidget = var9;
 							}
 

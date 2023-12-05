@@ -3,31 +3,38 @@ import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("ay")
-public class class14 {
+@Implements("AsyncRestClient")
+public class AsyncRestClient
+{
 	@ObfuscatedName("bj")
 	protected static String field67;
 	@ObfuscatedName("at")
 	@ObfuscatedGetter(
 		intValue = -1975336687
 	)
-	final int field65;
+	@Export("workQueueCapacity")
+	final int workQueueCapacity;
 	@ObfuscatedName("ah")
-	final String field63;
+	@Export("threadNamePrefix")
+	final String threadNamePrefix;
 	@ObfuscatedName("ar")
-	final ThreadFactory field62;
+	@Export("threadFactory")
+	final ThreadFactory threadFactory;
 	@ObfuscatedName("ao")
-	final ThreadPoolExecutor field60;
+	@Export("threadPoolExecutor")
+	final ThreadPoolExecutor threadPoolExecutor;
 
-	public class14(String var1, int var2, int var3) {
-		this.field63 = var1;
-		this.field65 = var2;
-		this.field62 = new class16(this);
-		this.field60 = this.method184(var3);
+	public AsyncRestClient(String var1, int var2, int var3) {
+		this.threadNamePrefix = var1;
+		this.workQueueCapacity = var2;
+		this.threadFactory = new RestClientThreadFactory(this);
+		this.threadPoolExecutor = this.createThreadPoolExecutor(var3);
 	}
 
 	@ObfuscatedName("at")
@@ -35,8 +42,9 @@ public class class14 {
 		descriptor = "(II)Ljava/util/concurrent/ThreadPoolExecutor;",
 		garbageValue = "1434703627"
 	)
-	final ThreadPoolExecutor method184(int var1) {
-		return new ThreadPoolExecutor(var1, var1, 0L, TimeUnit.MILLISECONDS, new ArrayBlockingQueue(this.field65), this.field62);
+	@Export("createThreadPoolExecutor")
+	final ThreadPoolExecutor createThreadPoolExecutor(int var1) {
+		return new ThreadPoolExecutor(var1, var1, 0L, TimeUnit.MILLISECONDS, new ArrayBlockingQueue(this.workQueueCapacity), this.threadFactory);
 	}
 
 	@ObfuscatedName("ah")
@@ -44,12 +52,12 @@ public class class14 {
 		descriptor = "(Lap;I)Laq;",
 		garbageValue = "1326084774"
 	)
-	public class18 method181(class10 var1) {
-		if (this.field60.getQueue().remainingCapacity() <= 0) {
-			System.err.println("REST thread pool queue is empty\r\nThread pool size " + this.field60.getCorePoolSize() + " Queue capacity " + this.field65);
-			return new class18("Queue full");
+	public AsyncHttpResponse submitRequest(HttpRequest var1) {
+		if (this.threadPoolExecutor.getQueue().remainingCapacity() <= 0) {
+			System.err.println("REST thread pool queue is empty\r\nThread pool size " + this.threadPoolExecutor.getCorePoolSize() + " Queue capacity " + this.workQueueCapacity);
+			return new AsyncHttpResponse("Queue full");
 		} else {
-			class18 var2 = new class18(this.field60.submit(new class19(this, var1)));
+			AsyncHttpResponse var2 = new AsyncHttpResponse(this.threadPoolExecutor.submit(new HttpRequestTask(this, var1)));
 			return var2;
 		}
 	}
@@ -59,9 +67,10 @@ public class class14 {
 		descriptor = "(I)V",
 		garbageValue = "-2107542128"
 	)
-	public final void method179() {
+	@Export("shutdown")
+	public final void shutdown() {
 		try {
-			this.field60.shutdown();
+			this.threadPoolExecutor.shutdown();
 		} catch (Exception var2) {
 			System.err.println("Error shutting down RestRequestService\r\n" + var2);
 		}
@@ -73,7 +82,8 @@ public class class14 {
 		descriptor = "(Ljava/lang/CharSequence;Ltt;I)Ljava/lang/String;",
 		garbageValue = "-576035634"
 	)
-	public static String method180(CharSequence var0, LoginType var1) {
+	@Export("sanitizeUsername")
+	public static String sanitizeUsername(CharSequence var0, LoginType var1) {
 		if (var0 == null) {
 			return null;
 		} else {

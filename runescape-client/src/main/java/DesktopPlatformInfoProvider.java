@@ -31,11 +31,11 @@ public class DesktopPlatformInfoProvider implements class487 {
 	@Export("get")
 	public PlatformInfo get() {
 		byte var1;
-		if (ClanChannel.field1764.startsWith("win")) {
+		if (ClanChannel.osNameLowercase.startsWith("win")) {
 			var1 = 1;
-		} else if (ClanChannel.field1764.startsWith("mac")) {
+		} else if (ClanChannel.osNameLowercase.startsWith("mac")) {
 			var1 = 2;
-		} else if (ClanChannel.field1764.startsWith("linux")) {
+		} else if (ClanChannel.osNameLowercase.startsWith("linux")) {
 			var1 = 3;
 		} else {
 			var1 = 4;

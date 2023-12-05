@@ -741,7 +741,7 @@ public abstract class Actor extends Renderable {
 
 			while (true) {
 				if (!var4.method4324()) {
-					if (MouseHandler.MouseHandler_lastButton != 1 && (class19.mouseCam || MouseHandler.MouseHandler_lastButton != 4)) {
+					if (MouseHandler.MouseHandler_lastButton != 1 && (HttpRequestTask.mouseCam || MouseHandler.MouseHandler_lastButton != 4)) {
 						break;
 					}
 
@@ -850,7 +850,7 @@ public abstract class Actor extends Renderable {
 			}
 
 		} else {
-			if ((MouseHandler.MouseHandler_lastButton == 1 || !class19.mouseCam && MouseHandler.MouseHandler_lastButton == 4) && MouseHandler.MouseHandler_lastPressedX >= Login.xPadding + 765 - 50 && MouseHandler.MouseHandler_lastPressedY >= 453) {
+			if ((MouseHandler.MouseHandler_lastButton == 1 || !HttpRequestTask.mouseCam && MouseHandler.MouseHandler_lastButton == 4) && MouseHandler.MouseHandler_lastPressedX >= Login.xPadding + 765 - 50 && MouseHandler.MouseHandler_lastPressedY >= 453) {
 				WorldMapIcon_1.clientPreferences.updateTitleMusicDisabled(!WorldMapIcon_1.clientPreferences.isTitleMusicDisabled());
 				if (!WorldMapIcon_1.clientPreferences.isTitleMusicDisabled()) {
 					ArrayList var3 = new ArrayList();
@@ -898,7 +898,7 @@ public abstract class Actor extends Renderable {
 
 				if (Client.gameState == 10 || Client.gameState == 11) {
 					if (class85.clientLanguage == Language.Language_EN) {
-						if (MouseHandler.MouseHandler_lastButton == 1 || !class19.mouseCam && MouseHandler.MouseHandler_lastButton == 4) {
+						if (MouseHandler.MouseHandler_lastButton == 1 || !HttpRequestTask.mouseCam && MouseHandler.MouseHandler_lastButton == 4) {
 							var6 = Login.xPadding + 5;
 							short var7 = 463;
 							byte var8 = 100;
@@ -929,7 +929,7 @@ public abstract class Actor extends Renderable {
 						var79 = MouseHandler.MouseHandler_y;
 					}
 
-					if (!class19.mouseCam && var6 == 4) {
+					if (!HttpRequestTask.mouseCam && var6 == 4) {
 						var6 = 1;
 					}
 

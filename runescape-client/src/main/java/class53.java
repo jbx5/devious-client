@@ -171,7 +171,7 @@ public class class53 extends Node {
 		}
 
 		Client.pendingSpawns = new NodeDeque();
-		class12.friendSystem.clear();
+		SecureRandomSSLSocket.friendSystem.clear();
 		if (VarpDefinition.field1815 > 5000) {
 		}
 
@@ -219,7 +219,7 @@ public class class53 extends Node {
 			Client.packetWriter.addNode(var5);
 		}
 
-		class20.friendsChat = null;
+		HttpResponse.friendsChat = null;
 		class478.guestClanSettings = null;
 		Arrays.fill(Client.currentClanSettings, (Object)null);
 		ItemContainer.guestClanChannel = null;

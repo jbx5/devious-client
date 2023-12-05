@@ -8,12 +8,15 @@ import java.net.URL;
 import java.util.Iterator;
 import javax.net.ssl.HttpsURLConnection;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("ap")
-public class class10 {
+@Implements("HttpRequest")
+public class HttpRequest
+{
 	@ObfuscatedName("wj")
 	static Iterator field40;
 	@ObfuscatedName("at")
@@ -23,60 +26,63 @@ public class class10 {
 	@ObfuscatedSignature(
 		descriptor = "Lqf;"
 	)
-	@Export("httpRequestBuilder")
-	final HttpRequestBuilder httpRequestBuilder;
+	@Export("httpHeaders")
+	final HttpHeaders httpHeaders;
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "Laz;"
 	)
-	final class9 field41;
+	final HttpMethod field41;
 	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
 		descriptor = "Lsd;"
 	)
-	@Export("httpContent")
-	HttpContent httpContent;
+	@Export("httpPayload")
+	HttpPayload httpPayload;
 	@ObfuscatedName("ab")
-	boolean field43;
+	@Export("requestInitialized")
+	boolean requestInitialized;
 	@ObfuscatedName("au")
-	boolean field44;
+	@Export("followRedirects")
+	boolean followRedirects;
 	@ObfuscatedName("aa")
 	@ObfuscatedGetter(
 		intValue = -424565133
 	)
-	int field45;
+	@Export("connectionTimeout")
+	int connectionTimeout;
 
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/net/URL;Laz;Lqf;Z)V"
 	)
-	public class10(URL var1, class9 var2, HttpRequestBuilder var3, boolean var4) throws IOException {
-		this.field43 = false;
-		this.field44 = false;
-		this.field45 = 300000;
+	public HttpRequest(URL var1, HttpMethod var2, HttpHeaders var3, boolean var4) throws IOException {
+		this.requestInitialized = false;
+		this.followRedirects = false;
+		this.connectionTimeout = 300000;
 		if (!var2.method76()) {
-			throw new UnsupportedEncodingException("Unsupported request method used " + var2.method75());
+			throw new UnsupportedEncodingException("Unsupported request method used " + var2.getName());
 		} else {
 			this.connection = (HttpsURLConnection)var1.openConnection();
 			if (!var4) {
 				HttpsURLConnection var5 = this.connection;
-				if (class15.field69 == null) {
-					class15.field69 = new class15();
+				if (SecureRandomSSLSocketFactory.INSTANCE == null) {
+					SecureRandomSSLSocketFactory.INSTANCE = new SecureRandomSSLSocketFactory();
 				}
 
-				class15 var6 = class15.field69;
+				SecureRandomSSLSocketFactory var6 = SecureRandomSSLSocketFactory.INSTANCE;
 				var5.setSSLSocketFactory(var6);
 			}
 
 			this.field41 = var2;
-			this.httpRequestBuilder = var3 != null ? var3 : new HttpRequestBuilder();
+			this.httpHeaders = var3 != null ? var3 : new HttpHeaders();
 		}
 	}
 
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/net/URL;Laz;Z)V"
 	)
-	public class10(URL var1, class9 var2, boolean var3) throws IOException {
-		this(var1, var2, new HttpRequestBuilder(), var3);
+	public HttpRequest(URL var1, HttpMethod var2, boolean var3) throws IOException {
+		this(var1, var2, new HttpHeaders(), var3);
 	}
 
 	@ObfuscatedName("at")
@@ -84,8 +90,8 @@ public class class10 {
 		descriptor = "(I)Lqf;",
 		garbageValue = "77865186"
 	)
-	public HttpRequestBuilder method95() {
-		return this.httpRequestBuilder;
+	public HttpHeaders method95() {
+		return this.httpHeaders;
 	}
 
 	@ObfuscatedName("ah")
@@ -93,17 +99,18 @@ public class class10 {
 		descriptor = "(Lsd;I)V",
 		garbageValue = "2039275921"
 	)
-	public void method92(HttpContent var1) {
-		if (!this.field43) {
+	@Export("setPayload")
+	public void setPayload(HttpPayload var1) {
+		if (!this.requestInitialized) {
 			if (var1 == null) {
-				this.httpRequestBuilder.removeHeader("Content-Type");
-				this.httpContent = null;
+				this.httpHeaders.removeHeader("Content-Type");
+				this.httpPayload = null;
 			} else {
-				this.httpContent = var1;
-				if (this.httpContent.type() != null) {
-					this.httpRequestBuilder.contentType(this.httpContent.type());
+				this.httpPayload = var1;
+				if (this.httpPayload.getContentType() != null) {
+					this.httpHeaders.contentType(this.httpPayload.getContentType());
 				} else {
-					this.httpRequestBuilder.removeContentType();
+					this.httpHeaders.removeContentType();
 				}
 
 			}
@@ -115,16 +122,16 @@ public class class10 {
 		descriptor = "(B)V",
 		garbageValue = "6"
 	)
-	void method103() throws ProtocolException {
-		if (!this.field43) {
-			this.connection.setRequestMethod(this.field41.method75());
-			this.httpRequestBuilder.setRequestProperties(this.connection);
-			if (this.field41.method74() && this.httpContent != null) {
+	void initializeRequest() throws ProtocolException {
+		if (!this.requestInitialized) {
+			this.connection.setRequestMethod(this.field41.getName());
+			this.httpHeaders.setRequestProperties(this.connection);
+			if (this.field41.method74() && this.httpPayload != null) {
 				this.connection.setDoOutput(true);
 				ByteArrayOutputStream var1 = new ByteArrayOutputStream();
 
 				try {
-					var1.write(this.httpContent.vmethod8587());
+					var1.write(this.httpPayload.toBytes());
 					var1.writeTo(this.connection.getOutputStream());
 				} catch (IOException var11) {
 					var11.printStackTrace();
@@ -138,9 +145,9 @@ public class class10 {
 				}
 			}
 
-			this.connection.setConnectTimeout(this.field45);
-			this.connection.setInstanceFollowRedirects(this.field44);
-			this.field43 = true;
+			this.connection.setConnectTimeout(this.connectionTimeout);
+			this.connection.setInstanceFollowRedirects(this.followRedirects);
+			this.requestInitialized = true;
 		}
 	}
 
@@ -149,9 +156,10 @@ public class class10 {
 		descriptor = "(I)Z",
 		garbageValue = "1613730505"
 	)
-	boolean method94() throws IOException {
-		if (!this.field43) {
-			this.method103();
+	@Export("connect")
+	boolean connect() throws IOException {
+		if (!this.requestInitialized) {
+			this.initializeRequest();
 		}
 
 		this.connection.connect();
@@ -163,22 +171,23 @@ public class class10 {
 		descriptor = "(I)Law;",
 		garbageValue = "1005545851"
 	)
-	class20 method91() {
+	@Export("getResponse")
+	HttpResponse getResponse() {
 		try {
-			if (!this.field43 || this.connection.getResponseCode() == -1) {
-				return new class20("No REST response has been received yet.");
+			if (!this.requestInitialized || this.connection.getResponseCode() == -1) {
+				return new HttpResponse("No REST response has been received yet.");
 			}
 		} catch (IOException var10) {
 			this.connection.disconnect();
-			return new class20("Error decoding REST response code: " + var10.getMessage());
+			return new HttpResponse("Error decoding REST response code: " + var10.getMessage());
 		}
 
-		class20 var3;
+		HttpResponse var3;
 		try {
-			class20 var1 = new class20(this.connection);
+			HttpResponse var1 = new HttpResponse(this.connection);
 			return var1;
 		} catch (IOException var8) {
-			var3 = new class20("Error decoding REST response: " + var8.getMessage());
+			var3 = new HttpResponse("Error decoding REST response: " + var8.getMessage());
 		} finally {
 			this.connection.disconnect();
 		}
@@ -237,7 +246,8 @@ public class class10 {
 		descriptor = "(III)I",
 		garbageValue = "-841050646"
 	)
-	public static int method109(int var0, int var1) {
+	@Export("shift8LeftAndAdd")
+	public static int shift8LeftAndAdd(int var0, int var1) {
 		return (var0 << 8) + var1;
 	}
 
@@ -246,7 +256,8 @@ public class class10 {
 		descriptor = "(Lol;Lol;Ljava/lang/String;Ljava/lang/String;B)Lpf;",
 		garbageValue = "84"
 	)
-	public static Font method110(AbstractArchive var0, AbstractArchive var1, String var2, String var3) {
+	@Export("getFont")
+	public static Font getFont(AbstractArchive var0, AbstractArchive var1, String var2, String var3) {
 		if (!var0.isValidFileName(var2, var3)) {
 			return null;
 		} else {
@@ -265,7 +276,7 @@ public class class10 {
 			if (!var7) {
 				var6 = null;
 			} else {
-				var6 = WorldMapArea.method4590(var1.takeFile(var4, var5));
+				var6 = WorldMapArea.fontFromBytes(var1.takeFile(var4, var5));
 			}
 
 			return var6;

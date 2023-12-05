@@ -105,19 +105,19 @@ public class Texture extends Node {
 				var7 = null;
 			} else {
 				IndexedSprite var10 = new IndexedSprite();
-				var10.width = class541.SpriteBuffer_spriteWidth;
+				var10.width = SpriteBufferProperties.SpriteBuffer_spriteWidth;
 				var10.height = GrandExchangeOfferWorldComparator.SpriteBuffer_spriteHeight;
-				var10.xOffset = class541.SpriteBuffer_xOffsets[0];
-				var10.yOffset = class541.SpriteBuffer_yOffsets[0];
-				var10.subWidth = class541.SpriteBuffer_spriteWidths[0];
+				var10.xOffset = SpriteBufferProperties.SpriteBuffer_xOffsets[0];
+				var10.yOffset = SpriteBufferProperties.SpriteBuffer_yOffsets[0];
+				var10.subWidth = SpriteBufferProperties.SpriteBuffer_spriteWidths[0];
 				var10.subHeight = class520.SpriteBuffer_spriteHeights[0];
-				var10.palette = class541.SpriteBuffer_spritePalette;
+				var10.palette = SpriteBufferProperties.SpriteBuffer_spritePalette;
 				var10.pixels = class396.SpriteBuffer_pixels[0];
-				class541.SpriteBuffer_xOffsets = null;
-				class541.SpriteBuffer_yOffsets = null;
-				class541.SpriteBuffer_spriteWidths = null;
+				SpriteBufferProperties.SpriteBuffer_xOffsets = null;
+				SpriteBufferProperties.SpriteBuffer_yOffsets = null;
+				SpriteBufferProperties.SpriteBuffer_spriteWidths = null;
 				class520.SpriteBuffer_spriteHeights = null;
-				class541.SpriteBuffer_spritePalette = null;
+				SpriteBufferProperties.SpriteBuffer_spritePalette = null;
 				class396.SpriteBuffer_pixels = null;
 				var7 = var10;
 			}

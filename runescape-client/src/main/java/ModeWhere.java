@@ -137,18 +137,18 @@ public enum ModeWhere implements Enum
 	)
 	@Export("getWorldMapScript")
 	static Script getWorldMapScript(int var0, int var1, int var2) {
-		int var3 = class10.method109(var1, var0);
-		Script var4 = WorldMapData_1.method4789(var3, var0);
+		int var3 = HttpRequest.shift8LeftAndAdd(var1, var0);
+		Script var4 = WorldMapData_1.getScript(var3, var0);
 		if (var4 != null) {
 			return var4;
 		} else {
 			int var5 = (-3 - var2 << 8) + var0;
-			var4 = WorldMapData_1.method4789(var5, var0);
+			var4 = WorldMapData_1.getScript(var5, var0);
 			if (var4 != null) {
 				return var4;
 			} else {
 				int var6 = var0 + -512;
-				var4 = WorldMapData_1.method4789(var6, var0);
+				var4 = WorldMapData_1.getScript(var6, var0);
 				return var4 != null ? var4 : null;
 			}
 		}

@@ -640,9 +640,9 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 	@Export("clientTick")
 	void clientTick() {
 		long var1 = SpotAnimationDefinition.method3775();
-		long var3 = clientTickTimes[class18.field88];
-		clientTickTimes[class18.field88] = var1;
-		class18.field88 = class18.field88 + 1 & 31;
+		long var3 = clientTickTimes[AsyncHttpResponse.field88];
+		clientTickTimes[AsyncHttpResponse.field88] = var1;
+		AsyncHttpResponse.field88 = AsyncHttpResponse.field88 + 1 & 31;
 		if (var3 != 0L && var1 > var3) {
 		}
 
@@ -1090,9 +1090,9 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 						int var21 = var17 + var3;
 						int var22 = (var13 & 7) + var8 + var2;
 						int var23 = var3 + (var14 & 7) + var9;
-						class14.loadTerrain(var24, var1, var15, var21, var22, var23, var7);
+						AsyncRestClient.loadTerrain(var24, var1, var15, var21, var22, var23, var7);
 					} else {
-						class14.loadTerrain(var24, 0, -1, -1, 0, 0, 0);
+						AsyncRestClient.loadTerrain(var24, 0, -1, -1, 0, 0, 0);
 					}
 				}
 			}

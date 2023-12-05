@@ -532,7 +532,7 @@ public class PlayerComposition {
 			AccessFile.addPlayerToScene(Client.players[Client.combatTargetPlayerIndex], false);
 		}
 
-		class18.addNpcsToScene(true);
+		AsyncHttpResponse.addNpcsToScene(true);
 		int var4 = Players.Players_count;
 		int[] var5 = Players.Players_indices;
 
@@ -543,7 +543,7 @@ public class PlayerComposition {
 			}
 		}
 
-		class18.addNpcsToScene(false);
+		AsyncHttpResponse.addNpcsToScene(false);
 		class327.method6247();
 
 		for (GraphicsObject var36 = (GraphicsObject)Client.graphicsObjects.last(); var36 != null; var36 = (GraphicsObject)Client.graphicsObjects.previous()) {
@@ -580,7 +580,7 @@ public class PlayerComposition {
 
 		int var37 = Client.camAngleY & 2047;
 		var6 = LoginScreenAnimation.oculusOrbFocalPointX;
-		int var7 = class12.field56;
+		int var7 = SecureRandomSSLSocket.field56;
 		int var8 = ScriptFrame.oculusOrbFocalPointY;
 		int var9 = class158.method3414(var4);
 		var9 = class395.method7401(var9, var3);

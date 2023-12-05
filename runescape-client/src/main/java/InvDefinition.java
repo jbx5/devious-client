@@ -91,7 +91,7 @@ public class InvDefinition extends DualNode {
 	)
 	@Export("clanKickUser")
 	static final void clanKickUser(String var0) {
-		if (class20.friendsChat != null) {
+		if (HttpResponse.friendsChat != null) {
 			PacketBufferNode var1 = class113.getPacketBufferNode(ClientPacket.CLAN_KICKUSER, Client.packetWriter.isaacCipher);
 			var1.packetBuffer.writeByte(ClanChannel.stringCp1252NullTerminatedByteSize(var0));
 			var1.packetBuffer.writeStringCp1252NullTerminated(var0);

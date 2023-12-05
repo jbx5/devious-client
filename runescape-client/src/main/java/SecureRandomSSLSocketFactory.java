@@ -1,3 +1,5 @@
+import org.bouncycastle.crypto.tls.TlsClientProtocol;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
@@ -7,18 +9,20 @@ import java.security.SecureRandom;
 import java.security.Security;
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import org.bouncycastle.crypto.tls.TlsClientProtocol;
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
 @ObfuscatedName("ak")
-public class class15 extends SSLSocketFactory {
+@Implements("SecureRandomSSLSocketFactory")
+public class SecureRandomSSLSocketFactory extends SSLSocketFactory {
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "Lak;"
 	)
-	public static class15 field69;
+	@Export("INSTANCE")
+	public static SecureRandomSSLSocketFactory INSTANCE;
 	@ObfuscatedName("at")
 	SecureRandom field68;
 
@@ -29,7 +33,7 @@ public class class15 extends SSLSocketFactory {
 
 	}
 
-	public class15() {
+	public SecureRandomSSLSocketFactory() {
 		this.field68 = new SecureRandom();
 	}
 
@@ -38,8 +42,9 @@ public class class15 extends SSLSocketFactory {
 		descriptor = "(Ljava/lang/String;Lorg/bouncycastle/crypto/tls/TlsClientProtocol;B)Ljavax/net/ssl/SSLSocket;",
 		garbageValue = "-15"
 	)
-	SSLSocket method195(String var1, TlsClientProtocol var2) {
-		return new class12(this, var2, var1);
+	@Export("createSocket")
+	SSLSocket createSocket(String var1, TlsClientProtocol var2) {
+		return new SecureRandomSSLSocket(this, var2, var1);
 	}
 
 	public Socket createSocket(String var1, int var2, InetAddress var3, int var4) throws IOException, UnknownHostException {
@@ -72,7 +77,7 @@ public class class15 extends SSLSocketFactory {
 		}
 
 		TlsClientProtocol var5 = new TlsClientProtocol(var1.getInputStream(), var1.getOutputStream(), this.field68);
-		return this.method195(var2, var5);
+		return this.createSocket(var2, var5);
 	}
 
 	public String[] getDefaultCipherSuites() {

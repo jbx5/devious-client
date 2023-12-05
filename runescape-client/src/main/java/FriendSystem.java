@@ -88,8 +88,8 @@ public class FriendSystem {
 			var6.clearIsFromFriend();
 		}
 
-		if (class20.friendsChat != null) {
-			class20.friendsChat.clearFriends();
+		if (HttpResponse.friendsChat != null) {
+			HttpResponse.friendsChat.clearFriends();
 		}
 
 	}
@@ -262,8 +262,8 @@ public class FriendSystem {
 					var7.clearIsFromFriend();
 				}
 
-				if (class20.friendsChat != null) {
-					class20.friendsChat.clearFriends();
+				if (HttpResponse.friendsChat != null) {
+					HttpResponse.friendsChat.clearFriends();
 				}
 
 			}

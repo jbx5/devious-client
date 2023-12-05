@@ -272,7 +272,7 @@ public class World {
 						HorizontalAlignment.clickWidget(var12, var3, var15);
 						return 1;
 					} else if (var0 == ScriptOpcodes.MOUSECAM) {
-						class19.mouseCam = Interpreter.Interpreter_intStack[--DbTableType.Interpreter_intStackSize] == 1;
+						HttpRequestTask.mouseCam = Interpreter.Interpreter_intStack[--DbTableType.Interpreter_intStackSize] == 1;
 						return 1;
 					} else if (var0 == ScriptOpcodes.GETREMOVEROOFS) {
 						Interpreter.Interpreter_intStack[++DbTableType.Interpreter_intStackSize - 1] = WorldMapIcon_1.clientPreferences.isRoofsHidden() ? 1 : 0;

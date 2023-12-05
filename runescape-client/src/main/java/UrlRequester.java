@@ -68,7 +68,8 @@ public abstract class UrlRequester implements Runnable {
 		descriptor = "(Ljava/net/URLConnection;I)V",
 		garbageValue = "-727405176"
 	)
-	void method2905(URLConnection var1) {
+	@Export("setDefaultRequestProperties")
+	void setDefaultRequestProperties(URLConnection var1) {
 		var1.setConnectTimeout(5000);
 		var1.setReadTimeout(5000);
 		var1.setUseCaches(false);

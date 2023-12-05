@@ -42,7 +42,7 @@ public class class182 extends DualNode {
 		UrlRequest.headIconPkSprites = null;
 		AbstractByteArrayCopier.headIconPrayerSprites = null;
 		class60.headIconHintSprites = null;
-		class12.mapDotSprites = null;
+		SecureRandomSSLSocket.mapDotSprites = null;
 		VarpDefinition.crossSprites = null;
 		HorizontalAlignment.field1908 = null;
 		class31.scrollBarSprites = null;

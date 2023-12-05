@@ -63,12 +63,12 @@ public class class339 {
 		class521.cacheGamebuild = var3;
 
 		try {
-			class90.field1088 = System.getProperty("os.name");
+			class90.osName = System.getProperty("os.name");
 		} catch (Exception var19) {
-			class90.field1088 = "Unknown";
+			class90.osName = "Unknown";
 		}
 
-		ClanChannel.field1764 = class90.field1088.toLowerCase();
+		ClanChannel.osNameLowercase = class90.osName.toLowerCase();
 		Login.userHomeDirectory = null;
 
 		try {
@@ -88,7 +88,7 @@ public class class339 {
 		}
 
 		try {
-			if (ClanChannel.field1764.startsWith("win")) {
+			if (ClanChannel.osNameLowercase.startsWith("win")) {
 				if (Login.userHomeDirectory == null) {
 					Login.userHomeDirectory = System.getenv("USERPROFILE");
 				}
@@ -161,12 +161,12 @@ public class class339 {
 		} else {
 			FileSystem.FileSystem_hasPermissions = true;
 			PacketWriter.method2884();
-			JagexCache.JagexCache_dat2File = new BufferedFile(new AccessFile(class10.getFile("main_file_cache.dat2"), "rw", 1048576000L), 5200, 0);
-			JagexCache.JagexCache_idx255File = new BufferedFile(new AccessFile(class10.getFile("main_file_cache.idx255"), "rw", 1048576L), 6000, 0);
+			JagexCache.JagexCache_dat2File = new BufferedFile(new AccessFile(HttpRequest.getFile("main_file_cache.dat2"), "rw", 1048576000L), 5200, 0);
+			JagexCache.JagexCache_idx255File = new BufferedFile(new AccessFile(HttpRequest.getFile("main_file_cache.idx255"), "rw", 1048576L), 6000, 0);
 			KeyHandler.JagexCache_idxFiles = new BufferedFile[UserComparator6.field1464];
 
 			for (int var14 = 0; var14 < UserComparator6.field1464; ++var14) {
-				KeyHandler.JagexCache_idxFiles[var14] = new BufferedFile(new AccessFile(class10.getFile("main_file_cache.idx" + var14), "rw", 1048576L), 6000, 0);
+				KeyHandler.JagexCache_idxFiles[var14] = new BufferedFile(new AccessFile(HttpRequest.getFile("main_file_cache.idx" + var14), "rw", 1048576L), 6000, 0);
 			}
 
 		}

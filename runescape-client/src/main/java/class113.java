@@ -98,7 +98,7 @@ public class class113 extends UrlRequester {
 	)
 	URLConnection method2911(UrlRequest var1) throws IOException {
 		URLConnection var2 = var1.field1429.openConnection();
-		this.method2905(var2);
+		this.setDefaultRequestProperties(var2);
 		return var2;
 	}
 
@@ -110,15 +110,15 @@ public class class113 extends UrlRequester {
 	URLConnection method2916(UrlRequest var1) throws IOException {
 		HttpsURLConnection var2 = (HttpsURLConnection)var1.field1429.openConnection();
 		if (!this.field1423) {
-			if (class15.field69 == null) {
-				class15.field69 = new class15();
+			if (SecureRandomSSLSocketFactory.INSTANCE == null) {
+				SecureRandomSSLSocketFactory.INSTANCE = new SecureRandomSSLSocketFactory();
 			}
 
-			class15 var4 = class15.field69;
+			SecureRandomSSLSocketFactory var4 = SecureRandomSSLSocketFactory.INSTANCE;
 			var2.setSSLSocketFactory(var4);
 		}
 
-		this.method2905(var2);
+		this.setDefaultRequestProperties(var2);
 		return var2;
 	}
 

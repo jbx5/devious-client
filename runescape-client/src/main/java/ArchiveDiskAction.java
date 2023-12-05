@@ -143,7 +143,7 @@ public class ArchiveDiskAction extends Node {
 							return 1;
 						} else if (var0 == ScriptOpcodes.CHAR_ISALPHA) {
 							var11 = Interpreter.Interpreter_intStack[--DbTableType.Interpreter_intStackSize];
-							Interpreter.Interpreter_intStack[++DbTableType.Interpreter_intStackSize - 1] = class10.isCharAlphabetic((char)var11) ? 1 : 0;
+							Interpreter.Interpreter_intStack[++DbTableType.Interpreter_intStackSize - 1] = HttpRequest.isCharAlphabetic((char)var11) ? 1 : 0;
 							return 1;
 						} else if (var0 == ScriptOpcodes.CHAR_ISNUMERIC) {
 							var11 = Interpreter.Interpreter_intStack[--DbTableType.Interpreter_intStackSize];
