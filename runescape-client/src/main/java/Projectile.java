@@ -412,7 +412,7 @@ public final class Projectile extends Renderable {
 			}
 
 			if (var1 == 18) {
-				Client.playerAttackOption = (AttackOption)class12.findEnumerated(MenuAction.method2139(), var2);
+				Client.playerAttackOption = (AttackOption) SecureRandomSSLSocket.findEnumerated(MenuAction.method2139(), var2);
 				if (Client.playerAttackOption == null) {
 					Client.playerAttackOption = AttackOption.AttackOption_dependsOnCombatLevels;
 				}
@@ -428,7 +428,7 @@ public final class Projectile extends Renderable {
 
 			if (var1 == 22) {
 				AttackOption[] var3 = new AttackOption[]{AttackOption.field1334, AttackOption.AttackOption_alwaysRightClick, AttackOption.AttackOption_hidden, AttackOption.AttackOption_dependsOnCombatLevels, AttackOption.field1337};
-				Client.npcAttackOption = (AttackOption)class12.findEnumerated(var3, var2);
+				Client.npcAttackOption = (AttackOption) SecureRandomSSLSocket.findEnumerated(var3, var2);
 				if (Client.npcAttackOption == null) {
 					Client.npcAttackOption = AttackOption.AttackOption_dependsOnCombatLevels;
 				}

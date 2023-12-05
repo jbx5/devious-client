@@ -11,7 +11,8 @@ import net.runelite.mapping.ObfuscatedSignature;
 @Implements("ClanChannel")
 public class ClanChannel extends Node {
 	@ObfuscatedName("aw")
-	public static String field1764;
+	@Export("osNameLowercase")
+	public static String osNameLowercase;
 	@ObfuscatedName("at")
 	boolean field1770;
 	@ObfuscatedName("ah")
@@ -64,7 +65,7 @@ public class ClanChannel extends Node {
 			}
 
 			int[] var3 = this.sortedMembers;
-			class475.method8597(var1, var3, 0, var1.length - 1);
+			HttpQueryParams.quicksortStringsWithCorrespondingIntegers(var1, var3, 0, var1.length - 1);
 		}
 
 		return this.sortedMembers;

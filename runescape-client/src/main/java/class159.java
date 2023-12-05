@@ -116,7 +116,7 @@ public class class159 extends class144 {
 						} else if (var0 == 3216) {
 							var3 = Interpreter.Interpreter_intStack[--DbTableType.Interpreter_intStackSize];
 							var4 = 0;
-							class90 var19 = (class90)class12.findEnumerated(UserComparator3.method2985(), var3);
+							class90 var19 = (class90) SecureRandomSSLSocket.findEnumerated(UserComparator3.method2985(), var3);
 							if (var19 != null) {
 								var4 = var19 != class90.field1092 ? 1 : 0;
 							}
@@ -126,7 +126,7 @@ public class class159 extends class144 {
 						} else if (var0 == 3218) {
 							var3 = Interpreter.Interpreter_intStack[--DbTableType.Interpreter_intStackSize];
 							var4 = 0;
-							class89 var13 = (class89)class12.findEnumerated(HealthBar.method2656(), var3);
+							class89 var13 = (class89) SecureRandomSSLSocket.findEnumerated(HealthBar.method2656(), var3);
 							if (var13 != null) {
 								var4 = var13 != class89.field1077 ? 1 : 0;
 							}
@@ -171,7 +171,7 @@ public class class159 extends class144 {
 							boolean var17 = true;
 							if (var0 == 3217) {
 								var7 = Interpreter.Interpreter_intStack[--DbTableType.Interpreter_intStackSize];
-								var10 = (class90)class12.findEnumerated(UserComparator3.method2985(), var7);
+								var10 = (class90) SecureRandomSSLSocket.findEnumerated(UserComparator3.method2985(), var7);
 								if (var10 == null) {
 									throw new RuntimeException(String.format("Unrecognized device option %d", var7));
 								}
@@ -179,7 +179,7 @@ public class class159 extends class144 {
 
 							if (var0 == 3219) {
 								var7 = Interpreter.Interpreter_intStack[--DbTableType.Interpreter_intStackSize];
-								var11 = (class89)class12.findEnumerated(HealthBar.method2656(), var7);
+								var11 = (class89) SecureRandomSSLSocket.findEnumerated(HealthBar.method2656(), var7);
 								if (var11 == null) {
 									throw new RuntimeException(String.format("Unrecognized game option %d", var7));
 								}
@@ -235,7 +235,7 @@ public class class159 extends class144 {
 						var16 = false;
 						if (var0 == 3214) {
 							var6 = Interpreter.Interpreter_intStack[--DbTableType.Interpreter_intStackSize];
-							var10 = (class90)class12.findEnumerated(UserComparator3.method2985(), var6);
+							var10 = (class90) SecureRandomSSLSocket.findEnumerated(UserComparator3.method2985(), var6);
 							if (var10 == null) {
 								throw new RuntimeException(String.format("Unrecognized device option %d", var6));
 							}
@@ -243,7 +243,7 @@ public class class159 extends class144 {
 
 						if (var0 == 3215) {
 							var6 = Interpreter.Interpreter_intStack[--DbTableType.Interpreter_intStackSize];
-							var11 = (class89)class12.findEnumerated(HealthBar.method2656(), var6);
+							var11 = (class89) SecureRandomSSLSocket.findEnumerated(HealthBar.method2656(), var6);
 							if (var11 == null) {
 								throw new RuntimeException(String.format("Unrecognized game option %d", var6));
 							}
@@ -251,9 +251,9 @@ public class class159 extends class144 {
 
 						if (var0 == 3210) {
 							var6 = Interpreter.Interpreter_intStack[--DbTableType.Interpreter_intStackSize];
-							var10 = (class90)class12.findEnumerated(UserComparator3.method2985(), var6);
+							var10 = (class90) SecureRandomSSLSocket.findEnumerated(UserComparator3.method2985(), var6);
 							if (var10 == null) {
-								var11 = (class89)class12.findEnumerated(HealthBar.method2656(), var6);
+								var11 = (class89) SecureRandomSSLSocket.findEnumerated(HealthBar.method2656(), var6);
 								if (var11 == null) {
 									throw new RuntimeException(String.format("Unrecognized client option %d", var6));
 								}
@@ -321,7 +321,7 @@ public class class159 extends class144 {
 					var5 = Interpreter.Interpreter_intStack[--DbTableType.Interpreter_intStackSize];
 					if (var0 == 3212) {
 						var6 = Interpreter.Interpreter_intStack[--DbTableType.Interpreter_intStackSize];
-						var10 = (class90)class12.findEnumerated(UserComparator3.method2985(), var6);
+						var10 = (class90) SecureRandomSSLSocket.findEnumerated(UserComparator3.method2985(), var6);
 						if (var10 == null) {
 							throw new RuntimeException(String.format("Unrecognized device option %d", var6));
 						}
@@ -329,7 +329,7 @@ public class class159 extends class144 {
 
 					if (var0 == 3213) {
 						var6 = Interpreter.Interpreter_intStack[--DbTableType.Interpreter_intStackSize];
-						var11 = (class89)class12.findEnumerated(HealthBar.method2656(), var6);
+						var11 = (class89) SecureRandomSSLSocket.findEnumerated(HealthBar.method2656(), var6);
 						if (var11 == null) {
 							throw new RuntimeException(String.format("Unrecognized game option %d", var6));
 						}
@@ -337,9 +337,9 @@ public class class159 extends class144 {
 
 					if (var0 == 3209) {
 						var6 = Interpreter.Interpreter_intStack[--DbTableType.Interpreter_intStackSize];
-						var10 = (class90)class12.findEnumerated(UserComparator3.method2985(), var6);
+						var10 = (class90) SecureRandomSSLSocket.findEnumerated(UserComparator3.method2985(), var6);
 						if (var10 == null) {
-							var11 = (class89)class12.findEnumerated(HealthBar.method2656(), var6);
+							var11 = (class89) SecureRandomSSLSocket.findEnumerated(HealthBar.method2656(), var6);
 							if (var11 == null) {
 								throw new RuntimeException(String.format("Unrecognized client option %d", var6));
 							}

@@ -110,7 +110,7 @@ public enum WorldMapSectionType implements Enum
 	)
 	@Export("Clan_leaveChat")
 	static final void Clan_leaveChat() {
-		PacketBufferNode var0 = class113.getPacketBufferNode(ClientPacket.field3188, Client.packetWriter.isaacCipher);
+		PacketBufferNode var0 = SecureUrlRequester.getPacketBufferNode(ClientPacket.field3188, Client.packetWriter.isaacCipher);
 		var0.packetBuffer.writeByte(0);
 		Client.packetWriter.addNode(var0);
 	}

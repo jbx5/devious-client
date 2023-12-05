@@ -74,7 +74,7 @@ public class class101 {
 			}
 
 			if (var1 == 326) {
-				PacketBufferNode var4 = class113.getPacketBufferNode(ClientPacket.field3200, Client.packetWriter.isaacCipher);
+				PacketBufferNode var4 = SecureUrlRequester.getPacketBufferNode(ClientPacket.field3200, Client.packetWriter.isaacCipher);
 				Client.playerAppearance.write(var4.packetBuffer);
 				Client.packetWriter.addNode(var4);
 				return true;

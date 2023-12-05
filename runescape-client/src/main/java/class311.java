@@ -30,7 +30,7 @@ public final class class311 {
 		garbageValue = "-1631504286"
 	)
 	static class140 method5939(int var0) {
-		class140 var1 = (class140)class12.findEnumerated(UserComparator8.method2955(), var0);
+		class140 var1 = (class140) SecureRandomSSLSocket.findEnumerated(UserComparator8.method2955(), var0);
 		if (var1 == null) {
 			var1 = class140.field1615;
 		}

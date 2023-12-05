@@ -85,48 +85,48 @@ public class class162 extends class144 {
 	public static void SpriteBuffer_decode(byte[] var0) {
 		Buffer var1 = new Buffer(var0);
 		var1.offset = var0.length - 2;
-		class541.SpriteBuffer_spriteCount = var1.readUnsignedShort();
-		class541.SpriteBuffer_xOffsets = new int[class541.SpriteBuffer_spriteCount];
-		class541.SpriteBuffer_yOffsets = new int[class541.SpriteBuffer_spriteCount];
-		class541.SpriteBuffer_spriteWidths = new int[class541.SpriteBuffer_spriteCount];
-		class520.SpriteBuffer_spriteHeights = new int[class541.SpriteBuffer_spriteCount];
-		class396.SpriteBuffer_pixels = new byte[class541.SpriteBuffer_spriteCount][];
-		var1.offset = var0.length - 7 - class541.SpriteBuffer_spriteCount * 8;
-		class541.SpriteBuffer_spriteWidth = var1.readUnsignedShort();
+		SpriteBufferProperties.SpriteBuffer_spriteCount = var1.readUnsignedShort();
+		SpriteBufferProperties.SpriteBuffer_xOffsets = new int[SpriteBufferProperties.SpriteBuffer_spriteCount];
+		SpriteBufferProperties.SpriteBuffer_yOffsets = new int[SpriteBufferProperties.SpriteBuffer_spriteCount];
+		SpriteBufferProperties.SpriteBuffer_spriteWidths = new int[SpriteBufferProperties.SpriteBuffer_spriteCount];
+		class520.SpriteBuffer_spriteHeights = new int[SpriteBufferProperties.SpriteBuffer_spriteCount];
+		class396.SpriteBuffer_pixels = new byte[SpriteBufferProperties.SpriteBuffer_spriteCount][];
+		var1.offset = var0.length - 7 - SpriteBufferProperties.SpriteBuffer_spriteCount * 8;
+		SpriteBufferProperties.SpriteBuffer_spriteWidth = var1.readUnsignedShort();
 		GrandExchangeOfferWorldComparator.SpriteBuffer_spriteHeight = var1.readUnsignedShort();
 		int var2 = (var1.readUnsignedByte() & 255) + 1;
 
 		int var3;
-		for (var3 = 0; var3 < class541.SpriteBuffer_spriteCount; ++var3) {
-			class541.SpriteBuffer_xOffsets[var3] = var1.readUnsignedShort();
+		for (var3 = 0; var3 < SpriteBufferProperties.SpriteBuffer_spriteCount; ++var3) {
+			SpriteBufferProperties.SpriteBuffer_xOffsets[var3] = var1.readUnsignedShort();
 		}
 
-		for (var3 = 0; var3 < class541.SpriteBuffer_spriteCount; ++var3) {
-			class541.SpriteBuffer_yOffsets[var3] = var1.readUnsignedShort();
+		for (var3 = 0; var3 < SpriteBufferProperties.SpriteBuffer_spriteCount; ++var3) {
+			SpriteBufferProperties.SpriteBuffer_yOffsets[var3] = var1.readUnsignedShort();
 		}
 
-		for (var3 = 0; var3 < class541.SpriteBuffer_spriteCount; ++var3) {
-			class541.SpriteBuffer_spriteWidths[var3] = var1.readUnsignedShort();
+		for (var3 = 0; var3 < SpriteBufferProperties.SpriteBuffer_spriteCount; ++var3) {
+			SpriteBufferProperties.SpriteBuffer_spriteWidths[var3] = var1.readUnsignedShort();
 		}
 
-		for (var3 = 0; var3 < class541.SpriteBuffer_spriteCount; ++var3) {
+		for (var3 = 0; var3 < SpriteBufferProperties.SpriteBuffer_spriteCount; ++var3) {
 			class520.SpriteBuffer_spriteHeights[var3] = var1.readUnsignedShort();
 		}
 
-		var1.offset = var0.length - 7 - class541.SpriteBuffer_spriteCount * 8 - (var2 - 1) * 3;
-		class541.SpriteBuffer_spritePalette = new int[var2];
+		var1.offset = var0.length - 7 - SpriteBufferProperties.SpriteBuffer_spriteCount * 8 - (var2 - 1) * 3;
+		SpriteBufferProperties.SpriteBuffer_spritePalette = new int[var2];
 
 		for (var3 = 1; var3 < var2; ++var3) {
-			class541.SpriteBuffer_spritePalette[var3] = var1.readMedium();
-			if (class541.SpriteBuffer_spritePalette[var3] == 0) {
-				class541.SpriteBuffer_spritePalette[var3] = 1;
+			SpriteBufferProperties.SpriteBuffer_spritePalette[var3] = var1.readMedium();
+			if (SpriteBufferProperties.SpriteBuffer_spritePalette[var3] == 0) {
+				SpriteBufferProperties.SpriteBuffer_spritePalette[var3] = 1;
 			}
 		}
 
 		var1.offset = 0;
 
-		for (var3 = 0; var3 < class541.SpriteBuffer_spriteCount; ++var3) {
-			int var4 = class541.SpriteBuffer_spriteWidths[var3];
+		for (var3 = 0; var3 < SpriteBufferProperties.SpriteBuffer_spriteCount; ++var3) {
+			int var4 = SpriteBufferProperties.SpriteBuffer_spriteWidths[var3];
 			int var5 = class520.SpriteBuffer_spriteHeights[var3];
 			int var6 = var5 * var4;
 			byte[] var7 = new byte[var6];

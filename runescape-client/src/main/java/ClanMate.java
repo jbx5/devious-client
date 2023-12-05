@@ -55,7 +55,7 @@ public class ClanMate extends Buddy {
 	)
 	@Export("fillIsFriend")
 	void fillIsFriend() {
-		this.friend = class12.friendSystem.friendsList.contains(super.username) ? TriBool.TriBool_true : TriBool.TriBool_false;
+		this.friend = SecureRandomSSLSocket.friendSystem.friendsList.contains(super.username) ? TriBool.TriBool_true : TriBool.TriBool_false;
 	}
 
 	@ObfuscatedName("ab")
@@ -89,6 +89,6 @@ public class ClanMate extends Buddy {
 	)
 	@Export("fillIsIgnored")
 	void fillIsIgnored() {
-		this.ignored = class12.friendSystem.ignoreList.contains(super.username) ? TriBool.TriBool_true : TriBool.TriBool_false;
+		this.ignored = SecureRandomSSLSocket.friendSystem.ignoreList.contains(super.username) ? TriBool.TriBool_true : TriBool.TriBool_false;
 	}
 }

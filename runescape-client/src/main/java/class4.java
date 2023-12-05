@@ -44,7 +44,7 @@ public final class class4 {
 		if (Client.currentClanChannels[var0] != null) {
 			if (var1 >= 0 && var1 < Client.currentClanChannels[var0].method3479()) {
 				ClanChannelMember var3 = (ClanChannelMember)Client.currentClanChannels[var0].members.get(var1);
-				PacketBufferNode var4 = class113.getPacketBufferNode(ClientPacket.field3129, Client.packetWriter.isaacCipher);
+				PacketBufferNode var4 = SecureUrlRequester.getPacketBufferNode(ClientPacket.field3129, Client.packetWriter.isaacCipher);
 				var4.packetBuffer.writeByte(4 + ClanChannel.stringCp1252NullTerminatedByteSize(var3.username.getName()));
 				var4.packetBuffer.writeByte(var0);
 				var4.packetBuffer.writeShort(var1);

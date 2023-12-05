@@ -29,7 +29,7 @@ public class class427 {
 				for (int var9 = 0; var9 < 64; ++var9) {
 					int var10 = var8 + var1;
 					int var11 = var9 + var2;
-					class14.loadTerrain(var12, var7, var10, var11, var3 + var10, var11 + var4, 0);
+					AsyncRestClient.loadTerrain(var12, var7, var10, var11, var3 + var10, var11 + var4, 0);
 				}
 			}
 		}

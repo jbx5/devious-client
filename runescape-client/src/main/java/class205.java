@@ -127,19 +127,19 @@ public class class205 {
 			return null;
 		} else {
 			IndexedSprite var5 = new IndexedSprite();
-			var5.width = class541.SpriteBuffer_spriteWidth;
+			var5.width = SpriteBufferProperties.SpriteBuffer_spriteWidth;
 			var5.height = GrandExchangeOfferWorldComparator.SpriteBuffer_spriteHeight;
-			var5.xOffset = class541.SpriteBuffer_xOffsets[0];
-			var5.yOffset = class541.SpriteBuffer_yOffsets[0];
-			var5.subWidth = class541.SpriteBuffer_spriteWidths[0];
+			var5.xOffset = SpriteBufferProperties.SpriteBuffer_xOffsets[0];
+			var5.yOffset = SpriteBufferProperties.SpriteBuffer_yOffsets[0];
+			var5.subWidth = SpriteBufferProperties.SpriteBuffer_spriteWidths[0];
 			var5.subHeight = class520.SpriteBuffer_spriteHeights[0];
-			var5.palette = class541.SpriteBuffer_spritePalette;
+			var5.palette = SpriteBufferProperties.SpriteBuffer_spritePalette;
 			var5.pixels = class396.SpriteBuffer_pixels[0];
-			class541.SpriteBuffer_xOffsets = null;
-			class541.SpriteBuffer_yOffsets = null;
-			class541.SpriteBuffer_spriteWidths = null;
+			SpriteBufferProperties.SpriteBuffer_xOffsets = null;
+			SpriteBufferProperties.SpriteBuffer_yOffsets = null;
+			SpriteBufferProperties.SpriteBuffer_spriteWidths = null;
 			class520.SpriteBuffer_spriteHeights = null;
-			class541.SpriteBuffer_spritePalette = null;
+			SpriteBufferProperties.SpriteBuffer_spritePalette = null;
 			class396.SpriteBuffer_pixels = null;
 			return var5;
 		}

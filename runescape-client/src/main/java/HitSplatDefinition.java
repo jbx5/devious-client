@@ -397,7 +397,7 @@ public class HitSplatDefinition extends DualNode {
 				if (!var6) {
 					var2 = null;
 				} else {
-					var2 = WorldMapArea.method4590(var4.takeFile(var5, 0));
+					var2 = WorldMapArea.fontFromBytes(var4.takeFile(var5, 0));
 				}
 
 				if (var2 != null) {

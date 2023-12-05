@@ -15,12 +15,12 @@ class class17 implements SSLSession {
 	@ObfuscatedSignature(
 		descriptor = "Lax;"
 	)
-	final class12 this$1;
+	final SecureRandomSSLSocket this$1;
 
 	@ObfuscatedSignature(
 		descriptor = "(Lax;)V"
 	)
-	class17(class12 var1) {
+	class17(SecureRandomSSLSocket var1) {
 		this.this$1 = var1;
 	}
 
@@ -189,7 +189,7 @@ class class17 implements SSLSession {
 		}
 
 		if (Client.packetWriter != null && Client.packetWriter.isaacCipher != null) {
-			PacketBufferNode var2 = class113.getPacketBufferNode(ClientPacket.EVENT_WINDOW_SETTING, Client.packetWriter.isaacCipher);
+			PacketBufferNode var2 = SecureUrlRequester.getPacketBufferNode(ClientPacket.EVENT_WINDOW_SETTING, Client.packetWriter.isaacCipher);
 			var2.packetBuffer.writeByte(ApproximateRouteStrategy.getWindowedMode());
 			var2.packetBuffer.writeShort(Language.canvasWidth);
 			var2.packetBuffer.writeShort(class47.canvasHeight);
@@ -212,7 +212,7 @@ class class17 implements SSLSession {
 
 		Client.field569 = false;
 		int var7;
-		if (MouseHandler.MouseHandler_currentButton == 1 || !class19.mouseCam && MouseHandler.MouseHandler_currentButton == 4) {
+		if (MouseHandler.MouseHandler_currentButton == 1 || !HttpRequestTask.mouseCam && MouseHandler.MouseHandler_currentButton == 4) {
 			if (var5 >= var1 && var5 < var1 + 16 && var6 >= var2 && var6 < var2 + 16) {
 				var0.scrollY -= 4;
 				class159.invalidateWidget(var0);

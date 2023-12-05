@@ -1,12 +1,14 @@
 import java.util.Arrays;
 import java.util.concurrent.Future;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("aq")
-public class class18 {
+@Implements("AsyncHttpResponse")
+public class AsyncHttpResponse {
 	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
 		intValue = -1288987617
@@ -18,15 +20,17 @@ public class class18 {
 	)
 	static int field85;
 	@ObfuscatedName("at")
-	Future field86;
+	@Export("responseFuture")
+	Future responseFuture;
 	@ObfuscatedName("ah")
-	String field84;
+	@Export("errorMessage")
+	String errorMessage;
 
-	class18(Future var1) {
-		this.field86 = var1;
+	AsyncHttpResponse(Future var1) {
+		this.responseFuture = var1;
 	}
 
-	class18(String var1) {
+	AsyncHttpResponse(String var1) {
 		this.method265(var1);
 	}
 
@@ -40,10 +44,10 @@ public class class18 {
 			var1 = "";
 		}
 
-		this.field84 = var1;
-		if (this.field86 != null) {
-			this.field86.cancel(true);
-			this.field86 = null;
+		this.errorMessage = var1;
+		if (this.responseFuture != null) {
+			this.responseFuture.cancel(true);
+			this.responseFuture = null;
 		}
 
 	}
@@ -53,8 +57,9 @@ public class class18 {
 		descriptor = "(B)Ljava/lang/String;",
 		garbageValue = "94"
 	)
-	public final String method264() {
-		return this.field84;
+	@Export("getErrorMessage")
+	public final String getErrorMessage() {
+		return this.errorMessage;
 	}
 
 	@ObfuscatedName("ar")
@@ -62,8 +67,9 @@ public class class18 {
 		descriptor = "(I)Z",
 		garbageValue = "-712544099"
 	)
-	public boolean method267() {
-		return this.field84 != null || this.field86 == null;
+	@Export("hasError")
+	public boolean hasError() {
+		return this.errorMessage != null || this.responseFuture == null;
 	}
 
 	@ObfuscatedName("ao")
@@ -71,8 +77,9 @@ public class class18 {
 		descriptor = "(B)Z",
 		garbageValue = "66"
 	)
-	public final boolean method283() {
-		return this.method267() ? true : this.field86.isDone();
+	@Export("hasFinished")
+	public final boolean hasFinished() {
+		return this.hasError() ? true : this.responseFuture.isDone();
 	}
 
 	@ObfuscatedName("ab")
@@ -80,19 +87,20 @@ public class class18 {
 		descriptor = "(B)Law;",
 		garbageValue = "-42"
 	)
-	public final class20 method269() {
-		if (this.method267()) {
-			return new class20(this.field84);
-		} else if (!this.method283()) {
+	@Export("await")
+	public final HttpResponse await() {
+		if (this.hasError()) {
+			return new HttpResponse(this.errorMessage);
+		} else if (!this.hasFinished()) {
 			return null;
 		} else {
 			try {
-				return (class20)this.field86.get();
+				return (HttpResponse)this.responseFuture.get();
 			} catch (Exception var3) {
 				String var2 = "Error retrieving REST request reply";
 				System.err.println(var2 + "\r\n" + var3);
 				this.method265(var2);
-				return new class20(var2);
+				return new HttpResponse(var2);
 			}
 		}
 	}
@@ -129,7 +137,7 @@ public class class18 {
 	@Export("checkIfMinimapClicked")
 	static final void checkIfMinimapClicked(Widget var0, int var1, int var2) {
 		if (Client.minimapState == 0 || Client.minimapState == 3) {
-			if (!Client.isMenuOpen && (MouseHandler.MouseHandler_lastButton == 1 || !class19.mouseCam && MouseHandler.MouseHandler_lastButton == 4)) {
+			if (!Client.isMenuOpen && (MouseHandler.MouseHandler_lastButton == 1 || !HttpRequestTask.mouseCam && MouseHandler.MouseHandler_lastButton == 4)) {
 				SpriteMask var3 = var0.method6668(HealthBarDefinition.widgetDefinition, true);
 				if (var3 == null) {
 					return;
@@ -147,7 +155,7 @@ public class class18 {
 					int var10 = var5 * var8 - var7 * var4 >> 11;
 					int var11 = var9 + class229.localPlayer.x >> 7;
 					int var12 = class229.localPlayer.y - var10 >> 7;
-					PacketBufferNode var13 = class113.getPacketBufferNode(ClientPacket.field3177, Client.packetWriter.isaacCipher);
+					PacketBufferNode var13 = SecureUrlRequester.getPacketBufferNode(ClientPacket.field3177, Client.packetWriter.isaacCipher);
 					var13.packetBuffer.writeByte(18);
 					var13.packetBuffer.writeShort(NpcOverrides.baseX * 64 + var11);
 					var13.packetBuffer.writeShortLE(class101.baseY * 64 + var12);

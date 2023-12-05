@@ -64,21 +64,21 @@ public class WorldMapCacheName {
 	)
 	static SpritePixels method5004() {
 		SpritePixels var0 = new SpritePixels();
-		var0.width = class541.SpriteBuffer_spriteWidth;
+		var0.width = SpriteBufferProperties.SpriteBuffer_spriteWidth;
 		var0.height = GrandExchangeOfferWorldComparator.SpriteBuffer_spriteHeight;
-		var0.xOffset = class541.SpriteBuffer_xOffsets[0];
-		var0.yOffset = class541.SpriteBuffer_yOffsets[0];
-		var0.subWidth = class541.SpriteBuffer_spriteWidths[0];
+		var0.xOffset = SpriteBufferProperties.SpriteBuffer_xOffsets[0];
+		var0.yOffset = SpriteBufferProperties.SpriteBuffer_yOffsets[0];
+		var0.subWidth = SpriteBufferProperties.SpriteBuffer_spriteWidths[0];
 		var0.subHeight = class520.SpriteBuffer_spriteHeights[0];
 		int var1 = var0.subHeight * var0.subWidth;
 		byte[] var2 = class396.SpriteBuffer_pixels[0];
 		var0.pixels = new int[var1];
 
 		for (int var3 = 0; var3 < var1; ++var3) {
-			var0.pixels[var3] = class541.SpriteBuffer_spritePalette[var2[var3] & 255];
+			var0.pixels[var3] = SpriteBufferProperties.SpriteBuffer_spritePalette[var2[var3] & 255];
 		}
 
-		class458.method8401();
+		SpriteBufferUtils.SpriteBuffer_reset();
 		return var0;
 	}
 
@@ -112,7 +112,7 @@ public class WorldMapCacheName {
 			Language.field4412 = Skeleton.newArchive(4, false, true, true, false);
 			WorldMapSection0.archive9 = Skeleton.newArchive(5, true, true, true, false);
 			class514.archive6 = Skeleton.newArchive(6, true, true, true, false);
-			class19.field92 = Skeleton.newArchive(7, false, true, true, false);
+			HttpRequestTask.field92 = Skeleton.newArchive(7, false, true, true, false);
 			GrandExchangeOfferOwnWorldComparator.archive8 = Skeleton.newArchive(8, false, true, true, false);
 			Canvas.field114 = Skeleton.newArchive(9, false, true, true, false);
 			WorldMapDecorationType.archive10 = Skeleton.newArchive(10, false, true, true, false);
@@ -139,7 +139,7 @@ public class WorldMapCacheName {
 			var0 += Language.field4412.percentage() * 6 / 100;
 			var0 += WorldMapSection0.archive9.percentage() * 4 / 100;
 			var0 += class514.archive6.percentage() * 2 / 100;
-			var0 += class19.field92.percentage() * 54 / 100;
+			var0 += HttpRequestTask.field92.percentage() * 54 / 100;
 			var0 += GrandExchangeOfferOwnWorldComparator.archive8.percentage() * 2 / 100;
 			var0 += Canvas.field114.percentage() * 2 / 100;
 			var0 += WorldMapDecorationType.archive10.percentage() * 2 / 100;
@@ -166,7 +166,7 @@ public class WorldMapCacheName {
 				class357.method6862(Language.field4412, "Sound FX");
 				class357.method6862(WorldMapSection0.archive9, "Maps");
 				class357.method6862(class514.archive6, "Music Tracks");
-				class357.method6862(class19.field92, "Models");
+				class357.method6862(HttpRequestTask.field92, "Models");
 				class357.method6862(GrandExchangeOfferOwnWorldComparator.archive8, "Sprites");
 				class357.method6862(PcmPlayer.field281, "Music Jingles");
 				class357.method6862(StructComposition.field2041, "Music Samples");
@@ -346,8 +346,8 @@ public class WorldMapCacheName {
 								++var0;
 							}
 
-							if (class12.mapDotSprites == null) {
-								class12.mapDotSprites = VertexNormal.method5702(GrandExchangeOfferOwnWorldComparator.archive8, class376.field4358.field4747, 0);
+							if (SecureRandomSSLSocket.mapDotSprites == null) {
+								SecureRandomSSLSocket.mapDotSprites = VertexNormal.method5702(GrandExchangeOfferOwnWorldComparator.archive8, class376.field4358.field4747, 0);
 							} else {
 								++var0;
 							}
@@ -513,12 +513,12 @@ public class WorldMapCacheName {
 						FloorOverlayDefinition.FloorOverlayDefinition_archive = var27;
 						Archive var1 = class344.archive2;
 						FloorUnderlayDefinition.FloorUnderlayDefinition_archive = var1;
-						InvDefinition.method3531(class344.archive2, class19.field92);
-						class406.method7652(class344.archive2, class19.field92, Client.isLowDetail);
-						LoginScreenAnimation.method2510(class344.archive2, class19.field92);
-						class18.method288(class344.archive2);
+						InvDefinition.method3531(class344.archive2, HttpRequestTask.field92);
+						class406.method7652(class344.archive2, HttpRequestTask.field92, Client.isLowDetail);
+						LoginScreenAnimation.method2510(class344.archive2, HttpRequestTask.field92);
+						AsyncHttpResponse.method288(class344.archive2);
 						var2 = class344.archive2;
-						Archive var3 = class19.field92;
+						Archive var3 = HttpRequestTask.field92;
 						var4 = Client.isMembersWorld;
 						Font var5 = class369.fontPlain11;
 						DbRowType.ItemDefinition_archive = var2;
@@ -532,11 +532,11 @@ public class WorldMapCacheName {
 						class369.SequenceDefinition_archive = var25;
 						SequenceDefinition.SequenceDefinition_animationsArchive = var7;
 						SequenceDefinition.SequenceDefinition_skeletonsArchive = var8;
-						UserComparator8.method2948(class344.archive2, class19.field92);
+						UserComparator8.method2948(class344.archive2, HttpRequestTask.field92);
 						Archive var9 = class344.archive2;
 						VarbitComposition.VarbitDefinition_archive = var9;
 						ViewportMouse.method5697(class344.archive2);
-						HealthBarDefinition.widgetDefinition = new WidgetDefinition(class313.archive4, class19.field92, GrandExchangeOfferOwnWorldComparator.archive8, VarbitComposition.archive13, WorldMapAreaData.field2641);
+						HealthBarDefinition.widgetDefinition = new WidgetDefinition(class313.archive4, HttpRequestTask.field92, GrandExchangeOfferOwnWorldComparator.archive8, VarbitComposition.archive13, WorldMapAreaData.field2641);
 						Archive var10 = class344.archive2;
 						InvDefinition.InvDefinition_archive = var10;
 						Archive var11 = class344.archive2;
@@ -632,8 +632,8 @@ public class WorldMapCacheName {
 
 			LoginScreenAnimation.oculusOrbFocalPointX = class229.localPlayer.x;
 			int var2 = WorldMapDecorationType.getTileHeight(class229.localPlayer.x, class229.localPlayer.y, ItemLayer.Client_plane) - Client.camFollowHeight;
-			if (var2 < class12.field56) {
-				class12.field56 = var2;
+			if (var2 < SecureRandomSSLSocket.field56) {
+				SecureRandomSSLSocket.field56 = var2;
 			}
 
 			ScriptFrame.oculusOrbFocalPointY = class229.localPlayer.y;

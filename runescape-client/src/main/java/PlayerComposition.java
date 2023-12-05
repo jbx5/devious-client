@@ -532,7 +532,7 @@ public class PlayerComposition {
 			AccessFile.addPlayerToScene(Client.players[Client.combatTargetPlayerIndex], false);
 		}
 
-		class18.addNpcsToScene(true);
+		AsyncHttpResponse.addNpcsToScene(true);
 		int var4 = Players.Players_count;
 		int[] var5 = Players.Players_indices;
 
@@ -543,7 +543,7 @@ public class PlayerComposition {
 			}
 		}
 
-		class18.addNpcsToScene(false);
+		AsyncHttpResponse.addNpcsToScene(false);
 		class327.method6247();
 
 		for (GraphicsObject var36 = (GraphicsObject)Client.graphicsObjects.last(); var36 != null; var36 = (GraphicsObject)Client.graphicsObjects.previous()) {
@@ -580,7 +580,7 @@ public class PlayerComposition {
 
 		int var37 = Client.camAngleY & 2047;
 		var6 = LoginScreenAnimation.oculusOrbFocalPointX;
-		int var7 = class12.field56;
+		int var7 = SecureRandomSSLSocket.field56;
 		int var8 = ScriptFrame.oculusOrbFocalPointY;
 		int var9 = class158.method3414(var4);
 		var9 = class395.method7401(var9, var3);
@@ -626,7 +626,7 @@ public class PlayerComposition {
 			var15 = class229.localPlayer.plane;
 			var16 = NpcOverrides.baseX * 64 + (LoginScreenAnimation.oculusOrbFocalPointX >> 7);
 			var17 = class101.baseY * 64 + (ScriptFrame.oculusOrbFocalPointY >> 7);
-			PacketBufferNode var18 = class113.getPacketBufferNode(ClientPacket.field3223, Client.packetWriter.isaacCipher);
+			PacketBufferNode var18 = SecureUrlRequester.getPacketBufferNode(ClientPacket.field3223, Client.packetWriter.isaacCipher);
 			var18.packetBuffer.writeInt(Client.field584);
 			var18.packetBuffer.writeShortAddLE(var16);
 			var18.packetBuffer.writeShortAddLE(var17);

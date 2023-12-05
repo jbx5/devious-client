@@ -253,7 +253,7 @@ class class138 implements Callable {
 	@Export("Clan_joinChat")
 	static final void Clan_joinChat(String var0) {
 		if (!var0.equals("")) {
-			PacketBufferNode var1 = class113.getPacketBufferNode(ClientPacket.field3188, Client.packetWriter.isaacCipher);
+			PacketBufferNode var1 = SecureUrlRequester.getPacketBufferNode(ClientPacket.field3188, Client.packetWriter.isaacCipher);
 			var1.packetBuffer.writeByte(ClanChannel.stringCp1252NullTerminatedByteSize(var0));
 			var1.packetBuffer.writeStringCp1252NullTerminated(var0);
 			Client.packetWriter.addNode(var1);

@@ -88,8 +88,8 @@ public class FriendSystem {
 			var6.clearIsFromFriend();
 		}
 
-		if (class20.friendsChat != null) {
-			class20.friendsChat.clearFriends();
+		if (HttpResponse.friendsChat != null) {
+			HttpResponse.friendsChat.clearFriends();
 		}
 
 	}
@@ -178,7 +178,7 @@ public class FriendSystem {
 				} else if (this.isIgnored(var2)) {
 					AbstractUserComparator.method8173(var1);
 				} else {
-					PacketBufferNode var3 = class113.getPacketBufferNode(ClientPacket.field3154, Client.packetWriter.isaacCipher);
+					PacketBufferNode var3 = SecureUrlRequester.getPacketBufferNode(ClientPacket.field3154, Client.packetWriter.isaacCipher);
 					var3.packetBuffer.writeByte(ClanChannel.stringCp1252NullTerminatedByteSize(var1));
 					var3.packetBuffer.writeStringCp1252NullTerminated(var1);
 					Client.packetWriter.addNode(var3);
@@ -244,7 +244,7 @@ public class FriendSystem {
 			if (var2.hasCleanName()) {
 				if (this.friendsList.removeByUsername(var2)) {
 					JagexCache.method4214();
-					PacketBufferNode var3 = class113.getPacketBufferNode(ClientPacket.FRIEND_DELUSER, Client.packetWriter.isaacCipher);
+					PacketBufferNode var3 = SecureUrlRequester.getPacketBufferNode(ClientPacket.FRIEND_DELUSER, Client.packetWriter.isaacCipher);
 					var3.packetBuffer.writeByte(ClanChannel.stringCp1252NullTerminatedByteSize(var1));
 					var3.packetBuffer.writeStringCp1252NullTerminated(var1);
 					Client.packetWriter.addNode(var3);
@@ -262,8 +262,8 @@ public class FriendSystem {
 					var7.clearIsFromFriend();
 				}
 
-				if (class20.friendsChat != null) {
-					class20.friendsChat.clearFriends();
+				if (HttpResponse.friendsChat != null) {
+					HttpResponse.friendsChat.clearFriends();
 				}
 
 			}
@@ -283,7 +283,7 @@ public class FriendSystem {
 				if (this.ignoreList.removeByUsername(var3)) {
 					JagexCache.method4214();
 					if (var2) {
-						PacketBufferNode var4 = class113.getPacketBufferNode(ClientPacket.IGNORE_DELUSER, Client.packetWriter.isaacCipher);
+						PacketBufferNode var4 = SecureUrlRequester.getPacketBufferNode(ClientPacket.IGNORE_DELUSER, Client.packetWriter.isaacCipher);
 						var4.packetBuffer.writeByte(ClanChannel.stringCp1252NullTerminatedByteSize(var1));
 						var4.packetBuffer.writeStringCp1252NullTerminated(var1);
 						Client.packetWriter.addNode(var4);

@@ -1294,7 +1294,7 @@ public class Widget extends Node {
 				if (!var7) {
 					var3 = null;
 				} else {
-					var3 = WorldMapArea.method4590(var5.takeFile(var6, 0));
+					var3 = WorldMapArea.fontFromBytes(var5.takeFile(var6, 0));
 				}
 
 				if (var3 != null) {

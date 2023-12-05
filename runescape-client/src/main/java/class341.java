@@ -1255,7 +1255,7 @@ public class class341 {
 		case 1:
 			return KeyHandler.isAlphaNumeric((char)var1);
 		case 2:
-			return class10.isCharAlphabetic((char)var1);
+			return HttpRequest.isCharAlphabetic((char)var1);
 		case 3:
 			return Player.isDigit((char)var1);
 		case 4:

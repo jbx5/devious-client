@@ -166,14 +166,14 @@ public class class36 {
 						if (var19 != null) {
 							var11 = var19.x / 32 - class229.localPlayer.x / 32;
 							var12 = var19.y / 32 - class229.localPlayer.y / 32;
-							class153.worldToMinimap(var1, var2, var11, var12, class12.mapDotSprites[1], var4);
+							class153.worldToMinimap(var1, var2, var11, var12, SecureRandomSSLSocket.mapDotSprites[1], var4);
 						}
 					}
 
 					if (Client.hintArrowType == 2) {
 						var10 = Client.hintArrowX * 4 - NpcOverrides.baseX * 256 + 2 - class229.localPlayer.x / 32;
 						var11 = Client.hintArrowY * 4 - class101.baseY * 256 + 2 - class229.localPlayer.y / 32;
-						class153.worldToMinimap(var1, var2, var10, var11, class12.mapDotSprites[1], var4);
+						class153.worldToMinimap(var1, var2, var10, var11, SecureRandomSSLSocket.mapDotSprites[1], var4);
 					}
 
 					if (Client.hintArrowType == 10 && Client.hintArrowPlayerIndex >= 0 && Client.hintArrowPlayerIndex < Client.players.length) {
@@ -181,7 +181,7 @@ public class class36 {
 						if (var20 != null) {
 							var11 = var20.x / 32 - class229.localPlayer.x / 32;
 							var12 = var20.y / 32 - class229.localPlayer.y / 32;
-							class153.worldToMinimap(var1, var2, var11, var12, class12.mapDotSprites[1], var4);
+							class153.worldToMinimap(var1, var2, var11, var12, SecureRandomSSLSocket.mapDotSprites[1], var4);
 						}
 					}
 				}
@@ -189,7 +189,7 @@ public class class36 {
 				if (Client.destinationX != 0) {
 					var10 = Client.destinationX * 4 + 2 - class229.localPlayer.x / 32;
 					var11 = Client.destinationY * 4 + 2 - class229.localPlayer.y / 32;
-					class147.drawSpriteOnMinimap(var1, var2, var10, var11, class12.mapDotSprites[0], var4);
+					class147.drawSpriteOnMinimap(var1, var2, var10, var11, SecureRandomSSLSocket.mapDotSprites[0], var4);
 				}
 
 				if (!class229.localPlayer.isHidden) {

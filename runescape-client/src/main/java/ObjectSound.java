@@ -307,7 +307,7 @@ public final class ObjectSound extends Node {
 		class138.method3158();
 		class172.method3534();
 		AttackOption.method2751();
-		Client.method1848();
+		Client.clearHitSplatDefinitionCache();
 		class145.method3247();
 		HitSplatDefinition.method3858();
 		InvDefinition.InvDefinition_cached.clear();
@@ -358,7 +358,7 @@ public final class ObjectSound extends Node {
 		PcmPlayer.field281.clearFiles();
 		WorldMapSection0.archive9.clearFiles();
 		class514.archive6.clearFiles();
-		class19.field92.clearFiles();
+		HttpRequestTask.field92.clearFiles();
 		class7.field25.clearFiles();
 		GrandExchangeOfferOwnWorldComparator.archive8.clearFiles();
 		Canvas.field114.clearFiles();

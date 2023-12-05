@@ -18,7 +18,7 @@ public class Username implements Comparable {
 	)
 	public Username(String var1, LoginType var2) {
 		this.name = var1;
-		this.cleanName = class14.method180(var1, var2);
+		this.cleanName = AsyncRestClient.sanitizeUsername(var1, var2);
 	}
 
 	public Username(String var1) {

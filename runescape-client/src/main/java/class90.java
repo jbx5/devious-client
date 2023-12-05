@@ -40,7 +40,8 @@ public enum class90 implements Enum
 	@ObfuscatedName("av")
 	public static short[][] field1094;
 	@ObfuscatedName("ae")
-	static String field1088;
+	@Export("osName")
+	static String osName;
 	@ObfuscatedName("aa")
 	@ObfuscatedGetter(
 		intValue = 1259061193

@@ -62,7 +62,7 @@ public class IgnoreList extends UserList {
 				}
 
 				boolean var11 = false;
-				class12.friendSystem.removeIgnore(var10.getName(), var11);
+				SecureRandomSSLSocket.friendSystem.removeIgnore(var10.getName(), var11);
 			} else {
 				boolean var4 = (var3 & 1) != 0;
 				Username var5 = new Username(var1.readStringCp1252NullTerminated(), this.field4661);

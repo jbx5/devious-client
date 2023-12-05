@@ -47,7 +47,7 @@ public class ScriptFrame {
 		garbageValue = "1468769999"
 	)
 	static final void method1213(String var0) {
-		PacketBufferNode var1 = class113.getPacketBufferNode(ClientPacket.FRIEND_ADDUSER, Client.packetWriter.isaacCipher);
+		PacketBufferNode var1 = SecureUrlRequester.getPacketBufferNode(ClientPacket.FRIEND_ADDUSER, Client.packetWriter.isaacCipher);
 		var1.packetBuffer.writeByte(ClanChannel.stringCp1252NullTerminatedByteSize(var0));
 		var1.packetBuffer.writeStringCp1252NullTerminated(var0);
 		Client.packetWriter.addNode(var1);

@@ -119,7 +119,7 @@ public class class30 {
 			ClanChannelMember var3 = (ClanChannelMember)var2.members.get(var1);
 			if (var3.rank == -1) {
 				String var4 = var3.username.getName();
-				PacketBufferNode var5 = class113.getPacketBufferNode(ClientPacket.field3210, Client.packetWriter.isaacCipher);
+				PacketBufferNode var5 = SecureUrlRequester.getPacketBufferNode(ClientPacket.field3210, Client.packetWriter.isaacCipher);
 				var5.packetBuffer.writeByte(3 + ClanChannel.stringCp1252NullTerminatedByteSize(var4));
 				var5.packetBuffer.writeByte(var0);
 				var5.packetBuffer.writeShort(var1);

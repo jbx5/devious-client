@@ -14,12 +14,12 @@ class class13 extends DefaultTlsClient {
 	@ObfuscatedSignature(
 		descriptor = "Lax;"
 	)
-	final class12 this$1;
+	final SecureRandomSSLSocket this$1;
 
 	@ObfuscatedSignature(
 		descriptor = "(Lax;)V"
 	)
-	class13(class12 var1) {
+	class13(SecureRandomSSLSocket var1) {
 		this.this$1 = var1;
 	}
 

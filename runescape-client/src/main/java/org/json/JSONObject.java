@@ -17,14 +17,15 @@ import net.runelite.rs.Reflection;
 @Implements("JSONObject")
 public class JSONObject {
 	public static final Object NULL;
-	Map field5302;
+	@Export("properties")
+	Map properties;
 
 	static {
 		NULL = new JSONObject$Null();
 	}
 
 	public JSONObject() {
-		this.field5302 = new HashMap();
+		this.properties = new HashMap();
 	}
 
 	public JSONObject(JSONTokener var1) throws JSONException {
@@ -81,24 +82,24 @@ public class JSONObject {
 	}
 
 	public JSONObject(Map var1) {
-		this.field5302 = (Map)(var1 == null ? new HashMap() : var1);
+		this.properties = (Map)(var1 == null ? new HashMap() : var1);
 	}
 
 	public JSONObject(Map var1, boolean var2) {
-		this.field5302 = new HashMap();
+		this.properties = new HashMap();
 		if (var1 != null) {
 			Iterator var3 = var1.entrySet().iterator();
 
 			while (var3.hasNext()) {
 				Entry var4 = (Entry)var3.next();
-				this.field5302.put(var4.getKey(), new JSONObject(var4.getValue(), var2));
+				this.properties.put(var4.getKey(), new JSONObject(var4.getValue(), var2));
 			}
 		}
 
 	}
 
 	public Object method9995(String var1) {
-		return var1 == null ? null : this.field5302.get(var1);
+		return var1 == null ? null : this.properties.get(var1);
 	}
 
 	public Object method9994(String var1) throws JSONException {
@@ -110,14 +111,14 @@ public class JSONObject {
 		}
 	}
 
-	@Export("method8392")
-	public JSONObject method8392(String var1, Object var2) throws JSONException {
+	@Export("setProperty")
+	public JSONObject setProperty(String var1, Object var2) throws JSONException {
 		if (var1 == null) {
 			throw new JSONException("Null key.");
 		} else {
 			if (var2 != null) {
 				testValidity(var2);
-				this.field5302.put(var1, var2);
+				this.properties.put(var1, var2);
 			} else {
 				this.remove(var1);
 			}
@@ -181,7 +182,7 @@ public class JSONObject {
 	}
 
 	public Iterator keys() {
-		return this.field5302.keySet().iterator();
+		return this.properties.keySet().iterator();
 	}
 
 	public int getInt(String var1) throws JSONException {
@@ -202,7 +203,7 @@ public class JSONObject {
 				var8 = var5.next();
 				var6.append(quote(var8.toString()));
 				var6.append(": ");
-				var6.append(valueToString(this.field5302.get(var8), var1, var2));
+				var6.append(valueToString(this.properties.get(var8), var1, var2));
 			} else {
 				while (true) {
 					int var3;
@@ -230,7 +231,7 @@ public class JSONObject {
 
 					var6.append(quote(var8.toString()));
 					var6.append(": ");
-					var6.append(valueToString(this.field5302.get(var8), var1, var7));
+					var6.append(valueToString(this.properties.get(var8), var1, var7));
 				}
 			}
 
@@ -240,7 +241,7 @@ public class JSONObject {
 	}
 
 	public int length() {
-		return this.field5302.size();
+		return this.properties.size();
 	}
 
 	public JSONArray getJSONArray(String var1) throws JSONException {
@@ -280,19 +281,19 @@ public class JSONObject {
 
 					Object var9 = Reflection.invoke(var6, var1, (Object[])null);
 					if (var9 == null) {
-						this.field5302.put(var8, NULL);
+						this.properties.put(var8, NULL);
 					} else if (var9.getClass().isArray()) {
-						this.field5302.put(var8, new JSONArray(var9, var2));
+						this.properties.put(var8, new JSONArray(var9, var2));
 					} else if (var9 instanceof Collection) {
-						this.field5302.put(var8, new JSONArray((Collection)var9, var2));
+						this.properties.put(var8, new JSONArray((Collection)var9, var2));
 					} else if (var9 instanceof Map) {
-						this.field5302.put(var8, new JSONObject((Map)var9, var2));
+						this.properties.put(var8, new JSONObject((Map)var9, var2));
 					} else if (this.isStandardProperty(var9.getClass())) {
-						this.field5302.put(var8, var9);
+						this.properties.put(var8, var9);
 					} else if (!var9.getClass().getPackage().getName().startsWith("java") && var9.getClass().getClassLoader() != null) {
-						this.field5302.put(var8, new JSONObject(var9, var2));
+						this.properties.put(var8, new JSONObject(var9, var2));
 					} else {
-						this.field5302.put(var8, var9.toString());
+						this.properties.put(var8, var9.toString());
 					}
 				}
 			} catch (Exception var10) {
@@ -312,11 +313,11 @@ public class JSONObject {
 	}
 
 	public Object remove(String var1) {
-		return this.field5302.remove(var1);
+		return this.properties.remove(var1);
 	}
 
 	public Iterator sortedKeys() {
-		return (new TreeSet(this.field5302.keySet())).iterator();
+		return (new TreeSet(this.properties.keySet())).iterator();
 	}
 
 	public double getDouble(String var1) throws JSONException {
@@ -343,7 +344,7 @@ public class JSONObject {
 				Object var4 = var3.next();
 				var1.write(quote(var4.toString()));
 				var1.write(58);
-				Object var5 = this.field5302.get(var4);
+				Object var5 = this.properties.get(var4);
 				if (var5 instanceof JSONObject) {
 					((JSONObject)var5).write(var1);
 				} else if (var5 instanceof JSONArray) {
@@ -377,7 +378,7 @@ public class JSONObject {
 				Object var3 = var1.next();
 				var2.append(quote(var3.toString()));
 				var2.append(':');
-				var2.append(valueToString(this.field5302.get(var3)));
+				var2.append(valueToString(this.properties.get(var3)));
 			}
 
 			var2.append('}');
@@ -393,7 +394,7 @@ public class JSONObject {
 				throw new JSONException("Duplicate key \"" + var1 + "\"");
 			}
 
-			this.method8392(var1, var2);
+			this.setProperty(var1, var2);
 		}
 
 		return this;
@@ -411,11 +412,11 @@ public class JSONObject {
 		testValidity(var2);
 		Object var3 = this.method9995(var1);
 		if (var3 == null) {
-			this.method8392(var1, var2 instanceof JSONArray ? (new JSONArray()).method9985(var2) : var2);
+			this.setProperty(var1, var2 instanceof JSONArray ? (new JSONArray()).method9985(var2) : var2);
 		} else if (var3 instanceof JSONArray) {
 			((JSONArray)var3).method9985(var2);
 		} else {
-			this.method8392(var1, (new JSONArray()).method9985(var3).method9985(var2));
+			this.setProperty(var1, (new JSONArray()).method9985(var3).method9985(var2));
 		}
 
 		return this;
@@ -425,13 +426,13 @@ public class JSONObject {
 		testValidity(var2);
 		Object var3 = this.method9995(var1);
 		if (var3 == null) {
-			this.method8392(var1, (new JSONArray()).method9985(var2));
+			this.setProperty(var1, (new JSONArray()).method9985(var2));
 		} else {
 			if (!(var3 instanceof JSONArray)) {
 				throw new JSONException("JSONObject[" + var1 + "] is not a JSONArray.");
 			}
 
-			this.method8392(var1, ((JSONArray)var3).method9985(var2));
+			this.setProperty(var1, ((JSONArray)var3).method9985(var2));
 		}
 
 		return this;
@@ -498,7 +499,7 @@ public class JSONObject {
 
 	public JSONObject putOpt(String var1, Object var2) throws JSONException {
 		if (var1 != null && var2 != null) {
-			this.method8392(var1, var2);
+			this.setProperty(var1, var2);
 		}
 
 		return this;
