@@ -203,7 +203,7 @@ public class class478 {
 			class139.setLoginResponseString("", "Please enter your password.", "");
 		} else {
 			class139.setLoginResponseString("", "Connecting to server...", "");
-			VerticalAlignment.method3754(false);
+			VerticalAlignment.setAuthenticationScheme(false);
 			WorldMapSection2.updateGameState(20);
 		}
 	}

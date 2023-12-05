@@ -28,7 +28,7 @@ import org.ajoberstar.grgit.Grgit
 buildscript {
     repositories {
         mavenLocal()
-        gradlePluginPortal()
+        mavenCentral()
         maven(url = "https://repo.runelite.net")
         maven(url = "https://raw.githubusercontent.com/jbx5/hosting/master")
         maven(url = "https://raw.githubusercontent.com/jbx5/devious-hosting/master")
@@ -211,5 +211,6 @@ tasks {
         classpath = project(":runelite-client").sourceSets.main.get().runtimeClasspath
         enableAssertions = true
         mainClass.set("net.unethicalite.client.Unethicalite")
+        jvmArgs("--add-opens=java.base/java.lang.reflect=ALL-UNNAMED")
     }
 }

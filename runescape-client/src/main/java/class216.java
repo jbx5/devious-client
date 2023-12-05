@@ -63,7 +63,7 @@ public class class216 extends class219 {
 		garbageValue = "1337719835"
 	)
 	static final int method4235() {
-		float var0 = 200.0F * ((float)WorldMapIcon_1.clientPreferences.method2548() - 0.5F);
+		float var0 = 200.0F * ((float)WorldMapIcon_1.clientPreferences.getBrightness() - 0.5F);
 		return 100 - Math.round(var0);
 	}
 }

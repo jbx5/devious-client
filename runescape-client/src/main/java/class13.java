@@ -72,7 +72,7 @@ class class13 extends DefaultTlsClient {
 		Client.field725.method4281();
 		System.gc();
 		WorldMapRenderer.method4769(0, 0);
-		class472.method8564();
+		HttpContentType.method8564();
 		Client.playingJingle = false;
 		WorldMapSectionType.method4888();
 		WorldMapSection2.updateGameState(10);

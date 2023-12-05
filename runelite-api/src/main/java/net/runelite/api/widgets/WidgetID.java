@@ -201,6 +201,8 @@ public final class WidgetID
 	public static final int SANITY_GROUP_ID = InterfaceID.SANITY;
 	public static final int THE_STRANGLER_INFECTION_GROUP_ID = InterfaceID.STRANGLER;
 
+	public static final int BANK_TUTORIAL_GROUP_ID = InterfaceID.BANK_TUTORIAL;
+
 	/**
 	 * OpenOSRS
 	 */
@@ -345,6 +347,16 @@ public final class WidgetID
 		static final int SETTINGS_BUTTON = 113;
 		static final int EQUIPMENT_BUTTON = 114;
 		static final int POPUP = 116;
+	}
+
+	static class BankTutorial
+	{
+		static final int CONTAINER = 8;
+		static final int STEP_TEXT = 27;
+		static final int STEP_PROGRESS_TEXT = 28;
+		static final int CLOSE_BUTTON_CONTAINER = 29;
+		static final int PREVIOUS_BUTTON = 31;
+		static final int CONTINUE_BUTTON = 32;
 	}
 
 	static class GroupStorage

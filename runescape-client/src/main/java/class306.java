@@ -184,7 +184,7 @@ public class class306 {
 		garbageValue = "56799465"
 	)
 	static final int method5913() {
-		if (WorldMapIcon_1.clientPreferences.method2541()) {
+		if (WorldMapIcon_1.clientPreferences.isRoofsHidden()) {
 			return ItemLayer.Client_plane;
 		} else {
 			int var0 = 3;

@@ -311,4 +311,6 @@ public final class InterfaceID
 	public static final int WORLD_SWITCHER = 69;
 
 	public static final int ZEAH_MESS_HALL = 235;
+
+	public static final int BANK_TUTORIAL = 664;
 }

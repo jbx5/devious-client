@@ -50,9 +50,10 @@ public class class19 implements Callable {
 		descriptor = "(II)V",
 		garbageValue = "-2072070052"
 	)
-	static void method295(int var0) {
-		if (var0 != Client.loginState) {
-			Client.loginState = var0;
+	@Export("updateLoginState")
+	static void updateLoginState(int loginState) {
+		if (loginState != Client.loginState) {
+			Client.loginState = loginState;
 		}
 	}
 }

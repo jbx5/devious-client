@@ -35,5 +35,5 @@ repositories {
 dependencies {
     implementation(gradleApi())
     implementation(group = "net.runelite", name = "fernflower", version = "07082019")
-    implementation(group = "org.json", name = "json", version = "20190722")
+    implementation(group = "org.json", name = "json", version = "20231013")
 }

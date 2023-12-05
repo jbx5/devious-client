@@ -136,13 +136,13 @@ public class IgnoreList extends UserList {
 					var5 += var4.y * 128 - var2;
 				}
 
-				if (var5 - 64 <= var4.field824 && WorldMapIcon_1.clientPreferences.method2605() != 0 && var0 == var4.plane) {
+				if (var5 - 64 <= var4.field824 && WorldMapIcon_1.clientPreferences.getAreaSoundEffectsVolume() != 0 && var0 == var4.plane) {
 					var5 -= 64;
 					if (var5 < 0) {
 						var5 = 0;
 					}
 
-					int var6 = (var4.field824 - var5) * WorldMapIcon_1.clientPreferences.method2605() / var4.field824;
+					int var6 = (var4.field824 - var5) * WorldMapIcon_1.clientPreferences.getAreaSoundEffectsVolume() / var4.field824;
 					if (var4.stream1 == null) {
 						if (var4.soundEffectId >= 0) {
 							SoundEffect var7 = SoundEffect.readSoundEffect(Language.field4412, var4.soundEffectId, 0);

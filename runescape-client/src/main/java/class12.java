@@ -134,11 +134,11 @@ class class12 extends SSLSocket {
 		garbageValue = "-948387119"
 	)
 	@Export("findEnumerated")
-	public static MouseWheel findEnumerated(MouseWheel[] var0, int var1) {
-		MouseWheel[] var2 = var0;
+	public static Enum findEnumerated(Enum[] var0, int var1) {
+		Enum[] var2 = var0;
 
 		for (int var3 = 0; var3 < var2.length; ++var3) {
-			MouseWheel var4 = var2[var3];
+			Enum var4 = var2[var3];
 			if (var1 == var4.rsOrdinal()) {
 				return var4;
 			}

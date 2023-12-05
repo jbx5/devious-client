@@ -203,7 +203,7 @@ public class class208 {
 				this.field2255 = 100;
 			} else {
 				try {
-					this.method4131(new class474(var2), var1);
+					this.method4131(new HttpJsonContent(var2), var1);
 				} catch (UnsupportedEncodingException var4) {
 					this.method4142();
 					this.field2255 = 102;
@@ -361,10 +361,10 @@ public class class208 {
 		descriptor = "(Lsv;Lel;I)V",
 		garbageValue = "1323384211"
 	)
-	void method4131(class474 var1, UrlRequester var2) {
+	void method4131(HttpJsonContent var1, UrlRequester var2) {
 		JSONObject var3;
 		try {
-			var3 = var1.method8573();
+			var3 = var1.getProperties();
 			var3 = var3.getJSONObject("message");
 		} catch (Exception var9) {
 			this.method4142();
@@ -411,7 +411,7 @@ public class class208 {
 	)
 	public boolean method4132(String var1, UrlRequester var2) {
 		try {
-			this.method4131(new class474(var1.getBytes()), var2);
+			this.method4131(new HttpJsonContent(var1.getBytes()), var2);
 			this.field2255 = this.field2261.size() > 0 ? 1 : 2;
 		} catch (UnsupportedEncodingException var4) {
 			this.field2255 = 102;

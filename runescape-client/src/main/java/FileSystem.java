@@ -30,9 +30,9 @@ public class FileSystem {
 		garbageValue = "52"
 	)
 	static void method4224(int var0, int var1) {
-		if (WorldMapIcon_1.clientPreferences.method2554() != 0 && var0 != -1) {
+		if (WorldMapIcon_1.clientPreferences.getMusicVolume() != 0 && var0 != -1) {
 			ArrayList var2 = new ArrayList();
-			var2.add(new MusicSong(PcmPlayer.field281, var0, 0, WorldMapIcon_1.clientPreferences.method2554(), false));
+			var2.add(new MusicSong(PcmPlayer.field281, var0, 0, WorldMapIcon_1.clientPreferences.getMusicVolume(), false));
 			PendingSpawn.method2459(var2, 0, 0, 0, 0, true);
 			Client.playingJingle = true;
 		}

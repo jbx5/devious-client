@@ -145,9 +145,9 @@ public class class102 {
 				var1 = var2 != null && var0 == var2.musicTrackGroupId;
 			}
 
-			if (!var1 && WorldMapIcon_1.clientPreferences.method2554() != 0) {
+			if (!var1 && WorldMapIcon_1.clientPreferences.getMusicVolume() != 0) {
 				ArrayList var3 = new ArrayList();
-				var3.add(new MusicSong(class514.archive6, var0, 0, WorldMapIcon_1.clientPreferences.method2554(), false));
+				var3.add(new MusicSong(class514.archive6, var0, 0, WorldMapIcon_1.clientPreferences.getMusicVolume(), false));
 				if (Client.playingJingle) {
 					class316.field3424.clear();
 					class316.field3424.addAll(var3);

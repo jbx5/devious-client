@@ -277,7 +277,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 		garbageValue = "313158588"
 	)
 	@Export("mouseWheel")
-	protected class212 mouseWheel() {
+	protected MouseWheel mouseWheel() {
 		if (this.mouseWheelHandler == null) {
 			this.mouseWheelHandler = new MouseWheelHandler();
 			this.mouseWheelHandler.addTo(this.canvas);

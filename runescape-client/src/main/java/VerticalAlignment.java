@@ -6,7 +6,8 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("hg")
 @Implements("VerticalAlignment")
-public enum VerticalAlignment implements MouseWheel {
+public enum VerticalAlignment implements Enum
+{
 	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "Lhg;"
@@ -99,11 +100,12 @@ public enum VerticalAlignment implements MouseWheel {
 		descriptor = "(ZB)V",
 		garbageValue = "-52"
 	)
-	static final void method3754(boolean var0) {
-		if (var0) {
-			Client.field525 = Login.field920 ? class124.field1469 : class124.field1471;
+	@Export("setAuthenticationScheme")
+	static final void setAuthenticationScheme(boolean otp) {
+		if (otp) {
+			Client.authenticationScheme = Login.rememberUsername ? AuthenticationScheme.TOKEN_REMEMBER : AuthenticationScheme.TOKEN;
 		} else {
-			Client.field525 = WorldMapIcon_1.clientPreferences.method2566(Login.Login_username) ? class124.field1474 : class124.field1470;
+			Client.authenticationScheme = WorldMapIcon_1.clientPreferences.containsKey(Login.Login_username) ? AuthenticationScheme.USERNAME_PASSWORD_REMEMBER : AuthenticationScheme.USERNAME_PASSWORD;
 		}
 
 	}
