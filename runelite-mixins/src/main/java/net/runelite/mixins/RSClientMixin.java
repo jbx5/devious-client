@@ -3790,5 +3790,19 @@ public abstract class RSClientMixin implements RSClient
 		AmbientSoundEffectCreated ambientSoundEffectCreated = new AmbientSoundEffectCreated(ambientSoundEffect);
 		client.getCallbacks().post(ambientSoundEffectCreated);
 	}
+
+	@Copy("openURL")
+	@Replace("openURL")
+	public static void copy$openURL(String url, boolean var1, boolean var2)
+	{
+		try
+		{
+			client.getCallbacks().openUrl(url);
+		}
+		catch (Exception e)
+		{
+			client.getLogger().error("unable to open url {}", url, e);
+		}
+	}
 }
 
