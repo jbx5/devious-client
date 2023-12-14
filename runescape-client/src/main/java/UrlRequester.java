@@ -16,7 +16,8 @@ import net.runelite.rs.ScriptOpcodes;
 @Implements("UrlRequester")
 public abstract class UrlRequester implements Runnable {
 	@ObfuscatedName("at")
-	final Thread field1418;
+	@Export("requestThread")
+	final Thread requestThread;
 	@ObfuscatedName("ah")
 	@Export("isClosed")
 	volatile boolean isClosed;
@@ -27,14 +28,15 @@ public abstract class UrlRequester implements Runnable {
 	@ObfuscatedGetter(
 		intValue = -108410615
 	)
-	int field1419;
+	@Export("clientRevision")
+	int clientRevision;
 
 	UrlRequester(int var1) {
 		this.requests = new LinkedList();
-		this.field1418 = new Thread(this);
-		this.field1418.setPriority(1);
-		this.field1418.start();
-		this.field1419 = var1;
+		this.requestThread = new Thread(this);
+		this.requestThread.setPriority(1);
+		this.requestThread.start();
+		this.clientRevision = var1;
 	}
 
 	@ObfuscatedName("at")
@@ -42,7 +44,7 @@ public abstract class UrlRequester implements Runnable {
 		descriptor = "(Lea;I)V",
 		garbageValue = "422697771"
 	)
-	abstract void vmethod2910(UrlRequest var1) throws IOException;
+	abstract void openConnection(UrlRequest var1) throws IOException;
 
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
@@ -68,12 +70,13 @@ public abstract class UrlRequester implements Runnable {
 		descriptor = "(Ljava/net/URLConnection;I)V",
 		garbageValue = "-727405176"
 	)
-	void method2905(URLConnection var1) {
+	@Export("setDefaultRequestProperties")
+	void setDefaultRequestProperties(URLConnection var1) {
 		var1.setConnectTimeout(5000);
 		var1.setReadTimeout(5000);
 		var1.setUseCaches(false);
 		var1.setRequestProperty("Connection", "close");
-		var1.setRequestProperty("User-Agent", "OldSchoolRuneScape/" + this.field1419);
+		var1.setRequestProperty("User-Agent", "OldSchoolRuneScape/" + this.clientRevision);
 	}
 
 	@ObfuscatedName("ao")
@@ -150,7 +153,7 @@ public abstract class UrlRequester implements Runnable {
 				this.notify();
 			}
 
-			this.field1418.join();
+			this.requestThread.join();
 		} catch (InterruptedException var4) {
 		}
 
@@ -171,7 +174,7 @@ public abstract class UrlRequester implements Runnable {
 					}
 				}
 
-				this.vmethod2910(var1);
+				this.openConnection(var1);
 			} catch (Exception var7) {
 				GrandExchangeOfferWorldComparator.RunException_sendStackTrace((String)null, var7);
 			}

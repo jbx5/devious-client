@@ -153,7 +153,7 @@ public class class149 extends class144 {
 		} else if (var0 < 4300) {
 			return ObjectSound.method1973(var0, var1, var2);
 		} else if (var0 < 5100) {
-			return class12.method131(var0, var1, var2);
+			return SecureRandomSSLSocket.method131(var0, var1, var2);
 		} else if (var0 < 5400) {
 			return class72.method2138(var0, var1, var2);
 		} else if (var0 < 5600) {
@@ -183,7 +183,7 @@ public class class149 extends class144 {
 		} else if (var0 < 7600) {
 			return class59.method1184(var0, var1, var2);
 		} else if (var0 < 7700) {
-			return class12.method142(var0, var1, var2);
+			return SecureRandomSSLSocket.method142(var0, var1, var2);
 		} else {
 			return var0 < 8100 ? ModelData0.method5818(var0, var1, var2) : 2;
 		}
@@ -214,7 +214,7 @@ public class class149 extends class144 {
 		} else if (var0 == 68) {
 			if (!Client.field494) {
 				Client.field494 = true;
-				ByteArrayPool.method7920();
+				ByteArrayPool.reinitializeClient();
 				return;
 			}
 

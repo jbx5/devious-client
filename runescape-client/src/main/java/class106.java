@@ -82,7 +82,7 @@ final class class106 implements class334 {
 		if (class306.field3233 == var0) {
 			var2 = var1.readUnsignedShortLE();
 			var3 = var1.readUnsignedByteNeg();
-			var4 = (var3 >> 4 & 7) + class18.field85;
+			var4 = (var3 >> 4 & 7) + AsyncHttpResponse.field85;
 			var5 = (var3 & 7) + class6.field14;
 			var6 = var1.readUnsignedByteNeg();
 			var7 = var1.readUnsignedByteNeg();
@@ -97,7 +97,7 @@ final class class106 implements class334 {
 			TileItem var32;
 			if (class306.field3231 == var0) {
 				var2 = var1.readUnsignedByte();
-				var3 = (var2 >> 4 & 7) + class18.field85;
+				var3 = (var2 >> 4 & 7) + AsyncHttpResponse.field85;
 				var4 = (var2 & 7) + class6.field14;
 				var5 = var1.readUnsignedByteAdd();
 				var6 = var1.readUnsignedShortAddLE();
@@ -127,7 +127,7 @@ final class class106 implements class334 {
 					var5 = var1.readUnsignedByteNeg();
 					var6 = var1.readUnsignedShortAdd();
 					var7 = var1.readUnsignedByteNeg();
-					var8 = (var7 >> 4 & 7) + class18.field85;
+					var8 = (var7 >> 4 & 7) + AsyncHttpResponse.field85;
 					var9 = (var7 & 7) + class6.field14;
 					if (var8 >= 0 && var9 >= 0 && var8 < 104 && var9 < 104) {
 						var10 = var3 + 1;
@@ -146,7 +146,7 @@ final class class106 implements class334 {
 					var2 = var1.readUnsignedShortLE();
 					var3 = var1.readUnsignedIntLE();
 					var4 = var1.readUnsignedByteNeg();
-					var5 = (var4 >> 4 & 7) + class18.field85;
+					var5 = (var4 >> 4 & 7) + AsyncHttpResponse.field85;
 					var6 = (var4 & 7) + class6.field14;
 					var7 = var1.readInt();
 					if (var5 >= 0 && var6 >= 0 && var5 < 104 && var6 < 104) {
@@ -178,7 +178,7 @@ final class class106 implements class334 {
 						var5 = var1.readUnsignedByteNeg();
 						var6 = var1.readUnsignedByteNeg() * 4;
 						var7 = var1.readUnsignedByte();
-						var8 = (var7 >> 4 & 7) + class18.field85;
+						var8 = (var7 >> 4 & 7) + AsyncHttpResponse.field85;
 						var9 = (var7 & 7) + class6.field14;
 						var10 = var1.readUnsignedShortLE();
 						var11 = var1.method9489();
@@ -202,7 +202,7 @@ final class class106 implements class334 {
 						NodeDeque var31;
 						if (class306.field3232 == var0) {
 							var2 = var1.readUnsignedByteAdd();
-							var3 = (var2 >> 4 & 7) + class18.field85;
+							var3 = (var2 >> 4 & 7) + AsyncHttpResponse.field85;
 							var4 = (var2 & 7) + class6.field14;
 							var5 = var1.readUnsignedShortLE();
 							var6 = var1.readUnsignedByteAdd();
@@ -226,7 +226,7 @@ final class class106 implements class334 {
 								var5 = var1.readUnsignedShortAddLE();
 								byte var40 = var1.readByte();
 								var7 = var1.readUnsignedByteSub();
-								var8 = (var7 >> 4 & 7) + class18.field85;
+								var8 = (var7 >> 4 & 7) + AsyncHttpResponse.field85;
 								var9 = (var7 & 7) + class6.field14;
 								var10 = var1.readUnsignedShortAdd();
 								var11 = var1.readUnsignedShortAddLE();
@@ -294,7 +294,7 @@ final class class106 implements class334 {
 
 							if (class306.field3237 == var0) {
 								var2 = var1.readUnsignedByteAdd();
-								var3 = (var2 >> 4 & 7) + class18.field85;
+								var3 = (var2 >> 4 & 7) + AsyncHttpResponse.field85;
 								var4 = (var2 & 7) + class6.field14;
 								var5 = var1.readUnsignedByteAdd();
 								var6 = var5 >> 2;
@@ -307,7 +307,7 @@ final class class106 implements class334 {
 							} else if (class306.field3228 == var0) {
 								var2 = var1.readUnsignedShortLE();
 								var3 = var1.readUnsignedByte();
-								var4 = (var3 >> 4 & 7) + class18.field85;
+								var4 = (var3 >> 4 & 7) + AsyncHttpResponse.field85;
 								var5 = (var3 & 7) + class6.field14;
 								var6 = var1.readUnsignedShort();
 								var7 = var1.readUnsignedByteAdd() * 4;
@@ -336,7 +336,7 @@ final class class106 implements class334 {
 								var3 = var1.readUnsignedShortAddLE();
 								var4 = var1.readUnsignedByte();
 								var5 = var1.readUnsignedByteAdd();
-								var6 = (var5 >> 4 & 7) + class18.field85;
+								var6 = (var5 >> 4 & 7) + AsyncHttpResponse.field85;
 								var7 = (var5 & 7) + class6.field14;
 								var8 = var1.readUnsignedByte() * 4;
 								var9 = var1.readUnsignedShort();
@@ -364,7 +364,7 @@ final class class106 implements class334 {
 								var5 = Client.field563[var3];
 								var6 = var1.readUnsignedShortAdd();
 								var7 = var1.readUnsignedByteNeg();
-								var8 = (var7 >> 4 & 7) + class18.field85;
+								var8 = (var7 >> 4 & 7) + AsyncHttpResponse.field85;
 								var9 = (var7 & 7) + class6.field14;
 								if (var8 >= 0 && var9 >= 0 && var8 < 103 && var9 < 103) {
 									if (var5 == 0) {
@@ -431,7 +431,7 @@ final class class106 implements class334 {
 								var3 = var1.readUnsignedByteNeg();
 								var4 = var1.readUnsignedShortAdd();
 								var5 = var1.readUnsignedByteNeg();
-								var6 = (var5 >> 4 & 7) + class18.field85;
+								var6 = (var5 >> 4 & 7) + AsyncHttpResponse.field85;
 								var7 = (var5 & 7) + class6.field14;
 								if (var6 >= 0 && var7 >= 0 && var6 < 104 && var7 < 104) {
 									var6 = var6 * 128 + 64;
@@ -443,7 +443,7 @@ final class class106 implements class334 {
 							} else if (class306.field3229 == var0) {
 								var2 = var1.readUnsignedIntIME();
 								var3 = var1.readUnsignedByte();
-								var4 = (var3 >> 4 & 7) + class18.field85;
+								var4 = (var3 >> 4 & 7) + AsyncHttpResponse.field85;
 								var5 = (var3 & 7) + class6.field14;
 								var6 = var1.readUnsignedShortLE();
 								if (var4 >= 0 && var5 >= 0 && var4 < 104 && var5 < 104) {

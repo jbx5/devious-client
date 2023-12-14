@@ -1,3 +1,4 @@
+import org.bouncycastle.crypto.tls.TlsClientProtocol;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -6,14 +7,15 @@ import javax.net.ssl.HandshakeCompletedListener;
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSocket;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 import net.runelite.rs.ScriptOpcodes;
-import org.bouncycastle.crypto.tls.TlsClientProtocol;
 
 @ObfuscatedName("ax")
-class class12 extends SSLSocket {
+@Implements("SecureRandomSSLSocket")
+class SecureRandomSSLSocket extends SSLSocket {
 	@ObfuscatedName("vq")
 	@ObfuscatedSignature(
 		descriptor = "Lcj;"
@@ -37,7 +39,7 @@ class class12 extends SSLSocket {
 	@ObfuscatedSignature(
 		descriptor = "Lak;"
 	)
-	final class15 this$0;
+	final SecureRandomSSLSocketFactory this$0;
 	// $FF: synthetic field
 	final TlsClientProtocol val$tlsClientProtocol;
 	// $FF: synthetic field
@@ -46,7 +48,7 @@ class class12 extends SSLSocket {
 	@ObfuscatedSignature(
 		descriptor = "(Lak;Lorg/bouncycastle/crypto/tls/TlsClientProtocol;Ljava/lang/String;)V"
 	)
-	class12(class15 var1, TlsClientProtocol var2, String var3) {
+	SecureRandomSSLSocket(SecureRandomSSLSocketFactory var1, TlsClientProtocol var2, String var3) {
 		this.this$0 = var1;
 		this.val$tlsClientProtocol = var2;
 		this.val$host = var3;
@@ -187,7 +189,7 @@ class class12 extends SSLSocket {
 		garbageValue = "12"
 	)
 	static final void method167(String var0, int var1) {
-		PacketBufferNode var2 = class113.getPacketBufferNode(ClientPacket.field3179, Client.packetWriter.isaacCipher);
+		PacketBufferNode var2 = SecureUrlRequester.getPacketBufferNode(ClientPacket.field3179, Client.packetWriter.isaacCipher);
 		var2.packetBuffer.writeByte(ClanChannel.stringCp1252NullTerminatedByteSize(var0) + 1);
 		var2.packetBuffer.writeStringCp1252NullTerminated(var0);
 		var2.packetBuffer.writeByteNeg(var1);
@@ -212,7 +214,7 @@ class class12 extends SSLSocket {
 			}
 
 			Client.tradeChatMode = Interpreter.Interpreter_intStack[DbTableType.Interpreter_intStackSize + 2];
-			PacketBufferNode var13 = class113.getPacketBufferNode(ClientPacket.CHAT_SETFILTER, Client.packetWriter.isaacCipher);
+			PacketBufferNode var13 = SecureUrlRequester.getPacketBufferNode(ClientPacket.CHAT_SETFILTER, Client.packetWriter.isaacCipher);
 			var13.packetBuffer.writeByte(Client.publicChatMode);
 			var13.packetBuffer.writeByte(PlayerCompositionColorTextureOverride.privateChatMode.field5279);
 			var13.packetBuffer.writeByte(Client.tradeChatMode);
@@ -228,7 +230,7 @@ class class12 extends SSLSocket {
 				DbTableType.Interpreter_intStackSize -= 2;
 				var7 = Interpreter.Interpreter_intStack[DbTableType.Interpreter_intStackSize];
 				var9 = Interpreter.Interpreter_intStack[DbTableType.Interpreter_intStackSize + 1];
-				var6 = class113.getPacketBufferNode(ClientPacket.CHAT_SENDABUSEREPORT, Client.packetWriter.isaacCipher);
+				var6 = SecureUrlRequester.getPacketBufferNode(ClientPacket.CHAT_SENDABUSEREPORT, Client.packetWriter.isaacCipher);
 				var6.packetBuffer.writeByte(ClanChannel.stringCp1252NullTerminatedByteSize(var8) + 2);
 				var6.packetBuffer.writeStringCp1252NullTerminated(var8);
 				var6.packetBuffer.writeByte(var7 - 1);
@@ -242,7 +244,7 @@ class class12 extends SSLSocket {
 					DbTableType.Interpreter_intStackSize -= 2;
 					var3 = Interpreter.Interpreter_intStack[DbTableType.Interpreter_intStackSize];
 					var7 = Interpreter.Interpreter_intStack[DbTableType.Interpreter_intStackSize + 1];
-					var5 = class14.Messages_getByChannelAndID(var3, var7);
+					var5 = AsyncRestClient.Messages_getByChannelAndID(var3, var7);
 					if (var5 != null) {
 						Interpreter.Interpreter_intStack[++DbTableType.Interpreter_intStackSize - 1] = var5.count;
 						Interpreter.Interpreter_intStack[++DbTableType.Interpreter_intStackSize - 1] = var5.cycle;
@@ -302,7 +304,7 @@ class class12 extends SSLSocket {
 							class127.Interpreter_stringStackSize -= 2;
 							var8 = Interpreter.Interpreter_stringStack[class127.Interpreter_stringStackSize];
 							String var11 = Interpreter.Interpreter_stringStack[class127.Interpreter_stringStackSize + 1];
-							var12 = class113.getPacketBufferNode(ClientPacket.CHAT_SENDPRIVATE, Client.packetWriter.isaacCipher);
+							var12 = SecureUrlRequester.getPacketBufferNode(ClientPacket.CHAT_SENDPRIVATE, Client.packetWriter.isaacCipher);
 							var12.packetBuffer.writeShort(0);
 							int var10 = var12.packetBuffer.offset;
 							var12.packetBuffer.writeStringCp1252NullTerminated(var8);
@@ -336,7 +338,7 @@ class class12 extends SSLSocket {
 								return 1;
 							} else if (var0 == ScriptOpcodes.DOCHEAT) {
 								var8 = Interpreter.Interpreter_stringStack[--class127.Interpreter_stringStackSize];
-								class9.doCheat(var8);
+								HttpMethod.doCheat(var8);
 								return 1;
 							} else if (var0 == ScriptOpcodes.CHAT_SETMESSAGEFILTER) {
 								Client.field694 = Interpreter.Interpreter_stringStack[--class127.Interpreter_stringStackSize].toLowerCase().trim();
@@ -352,7 +354,7 @@ class class12 extends SSLSocket {
 								DbTableType.Interpreter_intStackSize -= 2;
 								var3 = Interpreter.Interpreter_intStack[DbTableType.Interpreter_intStackSize];
 								var7 = Interpreter.Interpreter_intStack[DbTableType.Interpreter_intStackSize + 1];
-								var5 = class14.Messages_getByChannelAndID(var3, var7);
+								var5 = AsyncRestClient.Messages_getByChannelAndID(var3, var7);
 								if (var5 != null) {
 									Interpreter.Interpreter_intStack[++DbTableType.Interpreter_intStackSize - 1] = var5.count;
 									Interpreter.Interpreter_intStack[++DbTableType.Interpreter_intStackSize - 1] = var5.cycle;

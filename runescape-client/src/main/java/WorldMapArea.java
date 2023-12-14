@@ -123,7 +123,7 @@ public class WorldMapArea {
 	@Export("readWorldMapSection")
 	WorldMapSection readWorldMapSection(Buffer var1) {
 		int var2 = var1.readUnsignedByte();
-		WorldMapSectionType var3 = (WorldMapSectionType)class12.findEnumerated(WorldMapSectionType.method4884(), var2);
+		WorldMapSectionType var3 = (WorldMapSectionType) SecureRandomSSLSocket.findEnumerated(WorldMapSectionType.method4884(), var2);
 		Object var4 = null;
 		switch(var3.type) {
 		case 0:
@@ -460,12 +460,13 @@ public class WorldMapArea {
 		descriptor = "([BB)Lpf;",
 		garbageValue = "94"
 	)
-	public static Font method4590(byte[] var0) {
+	@Export("fontFromBytes")
+	public static Font fontFromBytes(byte[] var0) {
 		if (var0 == null) {
 			return null;
 		} else {
-			Font var1 = new Font(var0, class541.SpriteBuffer_xOffsets, class541.SpriteBuffer_yOffsets, class541.SpriteBuffer_spriteWidths, class520.SpriteBuffer_spriteHeights, class541.SpriteBuffer_spritePalette, class396.SpriteBuffer_pixels);
-			class458.method8401();
+			Font var1 = new Font(var0, SpriteBufferProperties.SpriteBuffer_xOffsets, SpriteBufferProperties.SpriteBuffer_yOffsets, SpriteBufferProperties.SpriteBuffer_spriteWidths, class520.SpriteBuffer_spriteHeights, SpriteBufferProperties.SpriteBuffer_spritePalette, class396.SpriteBuffer_pixels);
+			SpriteBufferUtils.SpriteBuffer_reset();
 			return var1;
 		}
 	}

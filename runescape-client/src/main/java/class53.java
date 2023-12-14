@@ -171,7 +171,7 @@ public class class53 extends Node {
 		}
 
 		Client.pendingSpawns = new NodeDeque();
-		class12.friendSystem.clear();
+		SecureRandomSSLSocket.friendSystem.clear();
 		if (VarpDefinition.field1815 > 5000) {
 		}
 
@@ -212,14 +212,14 @@ public class class53 extends Node {
 		}
 
 		if (Client.packetWriter != null && Client.packetWriter.isaacCipher != null) {
-			PacketBufferNode var5 = class113.getPacketBufferNode(ClientPacket.EVENT_WINDOW_SETTING, Client.packetWriter.isaacCipher);
+			PacketBufferNode var5 = SecureUrlRequester.getPacketBufferNode(ClientPacket.EVENT_WINDOW_SETTING, Client.packetWriter.isaacCipher);
 			var5.packetBuffer.writeByte(ApproximateRouteStrategy.getWindowedMode());
 			var5.packetBuffer.writeShort(Language.canvasWidth);
 			var5.packetBuffer.writeShort(class47.canvasHeight);
 			Client.packetWriter.addNode(var5);
 		}
 
-		class20.friendsChat = null;
+		HttpResponse.friendsChat = null;
 		class478.guestClanSettings = null;
 		Arrays.fill(Client.currentClanSettings, (Object)null);
 		ItemContainer.guestClanChannel = null;

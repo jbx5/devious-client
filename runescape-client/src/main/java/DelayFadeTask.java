@@ -55,8 +55,8 @@ public class DelayFadeTask extends SongTask {
 	@Export("FriendSystem_invalidateIgnoreds")
 	static final void FriendSystem_invalidateIgnoreds() {
 		Canvas.method332();
-		if (class20.friendsChat != null) {
-			class20.friendsChat.invalidateIgnoreds();
+		if (HttpResponse.friendsChat != null) {
+			HttpResponse.friendsChat.invalidateIgnoreds();
 		}
 
 	}

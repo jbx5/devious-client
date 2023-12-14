@@ -354,7 +354,7 @@ public class JSONArray {
 			JSONObject var2 = new JSONObject();
 
 			for (int var3 = 0; var3 < var1.length(); ++var3) {
-				var2.method8392(var1.getString(var3), this.method9981(var3));
+				var2.setProperty(var1.getString(var3), this.method9981(var3));
 			}
 
 			return var2;

@@ -72,30 +72,30 @@ public class VertexNormal {
 		if (!var3) {
 			return null;
 		} else {
-			SpritePixels[] var5 = new SpritePixels[class541.SpriteBuffer_spriteCount];
+			SpritePixels[] var5 = new SpritePixels[SpriteBufferProperties.SpriteBuffer_spriteCount];
 
-			for (int var6 = 0; var6 < class541.SpriteBuffer_spriteCount; ++var6) {
+			for (int var6 = 0; var6 < SpriteBufferProperties.SpriteBuffer_spriteCount; ++var6) {
 				SpritePixels var7 = var5[var6] = new SpritePixels();
-				var7.width = class541.SpriteBuffer_spriteWidth;
+				var7.width = SpriteBufferProperties.SpriteBuffer_spriteWidth;
 				var7.height = GrandExchangeOfferWorldComparator.SpriteBuffer_spriteHeight;
-				var7.xOffset = class541.SpriteBuffer_xOffsets[var6];
-				var7.yOffset = class541.SpriteBuffer_yOffsets[var6];
-				var7.subWidth = class541.SpriteBuffer_spriteWidths[var6];
+				var7.xOffset = SpriteBufferProperties.SpriteBuffer_xOffsets[var6];
+				var7.yOffset = SpriteBufferProperties.SpriteBuffer_yOffsets[var6];
+				var7.subWidth = SpriteBufferProperties.SpriteBuffer_spriteWidths[var6];
 				var7.subHeight = class520.SpriteBuffer_spriteHeights[var6];
 				int var8 = var7.subHeight * var7.subWidth;
 				byte[] var9 = class396.SpriteBuffer_pixels[var6];
 				var7.pixels = new int[var8];
 
 				for (int var10 = 0; var10 < var8; ++var10) {
-					var7.pixels[var10] = class541.SpriteBuffer_spritePalette[var9[var10] & 255];
+					var7.pixels[var10] = SpriteBufferProperties.SpriteBuffer_spritePalette[var9[var10] & 255];
 				}
 			}
 
-			class541.SpriteBuffer_xOffsets = null;
-			class541.SpriteBuffer_yOffsets = null;
-			class541.SpriteBuffer_spriteWidths = null;
+			SpriteBufferProperties.SpriteBuffer_xOffsets = null;
+			SpriteBufferProperties.SpriteBuffer_yOffsets = null;
+			SpriteBufferProperties.SpriteBuffer_spriteWidths = null;
 			class520.SpriteBuffer_spriteHeights = null;
-			class541.SpriteBuffer_spritePalette = null;
+			SpriteBufferProperties.SpriteBuffer_spritePalette = null;
 			class396.SpriteBuffer_pixels = null;
 			return var5;
 		}

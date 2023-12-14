@@ -359,7 +359,7 @@ public class class221 implements class29 {
 						var10000 = Players.field1366;
 						var10000[var5] = (byte)(var10000[var5] | 2);
 					} else {
-						class9.readPlayerUpdate(var0, var5);
+						HttpMethod.readPlayerUpdate(var0, var5);
 					}
 				}
 			}
@@ -385,7 +385,7 @@ public class class221 implements class29 {
 							var10000 = Players.field1366;
 							var10000[var5] = (byte)(var10000[var5] | 2);
 						} else {
-							class9.readPlayerUpdate(var0, var5);
+							HttpMethod.readPlayerUpdate(var0, var5);
 						}
 					}
 				}

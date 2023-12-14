@@ -291,7 +291,7 @@ public class class59 {
 								DevicePcmPlayerProvider.field108.clear();
 							}
 
-							class10.field40 = DevicePcmPlayerProvider.field108.iterator();
+							HttpRequest.field40 = DevicePcmPlayerProvider.field108.iterator();
 							if (var0 == ScriptOpcodes.DB_FIND_FILTER_WITH_COUNT) {
 								Interpreter.Interpreter_intStack[++DbTableType.Interpreter_intStackSize - 1] = DevicePcmPlayerProvider.field108.size();
 							}
@@ -310,7 +310,7 @@ public class class59 {
 						var5 = 0;
 						if (DevicePcmPlayerProvider.field108 != null) {
 							Client.field636 = var3;
-							class10.field40 = DevicePcmPlayerProvider.field108.iterator();
+							HttpRequest.field40 = DevicePcmPlayerProvider.field108.iterator();
 							var5 = DevicePcmPlayerProvider.field108.size();
 						}
 
@@ -322,8 +322,8 @@ public class class59 {
 					}
 				}
 			} else {
-				if (class10.field40 != null && class10.field40.hasNext()) {
-					Interpreter.Interpreter_intStack[++DbTableType.Interpreter_intStackSize - 1] = (Integer)class10.field40.next();
+				if (HttpRequest.field40 != null && HttpRequest.field40.hasNext()) {
+					Interpreter.Interpreter_intStack[++DbTableType.Interpreter_intStackSize - 1] = (Integer) HttpRequest.field40.next();
 				} else {
 					Interpreter.Interpreter_intStack[++DbTableType.Interpreter_intStackSize - 1] = -1;
 				}
@@ -342,13 +342,13 @@ public class class59 {
 				DevicePcmPlayerProvider.field108 = var6.method9156(var4, var7);
 				if (DevicePcmPlayerProvider.field108 != null) {
 					Client.field636 = SequenceDefinition.method4092(var5);
-					class10.field40 = DevicePcmPlayerProvider.field108.iterator();
+					HttpRequest.field40 = DevicePcmPlayerProvider.field108.iterator();
 					if (var0 == ScriptOpcodes.DB_FIND_WITH_COUNT) {
 						Interpreter.Interpreter_intStack[++DbTableType.Interpreter_intStackSize - 1] = DevicePcmPlayerProvider.field108.size();
 					}
 				} else {
 					Client.field636 = -1;
-					class10.field40 = null;
+					HttpRequest.field40 = null;
 					if (var0 == ScriptOpcodes.DB_FIND_WITH_COUNT) {
 						Interpreter.Interpreter_intStack[++DbTableType.Interpreter_intStackSize - 1] = 0;
 					}
@@ -364,7 +364,8 @@ public class class59 {
 		descriptor = "(Lcb;III)V",
 		garbageValue = "1570010040"
 	)
-	static final void method1177(MenuAction var0, int var1, int var2) {
+	@Export("menuActionMousePosition")
+	static final void menuActionMousePosition(MenuAction var0, int var1, int var2) {
 		if (var0 != null) {
 			class407.menuAction(var0.param0, var0.param1, var0.opcode, var0.identifier, var0.itemId, var0.action, var0.target, var1, var2);
 		}

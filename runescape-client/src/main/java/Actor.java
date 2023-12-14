@@ -741,7 +741,7 @@ public abstract class Actor extends Renderable {
 
 			while (true) {
 				if (!var4.method4324()) {
-					if (MouseHandler.MouseHandler_lastButton != 1 && (class19.mouseCam || MouseHandler.MouseHandler_lastButton != 4)) {
+					if (MouseHandler.MouseHandler_lastButton != 1 && (HttpRequestTask.mouseCam || MouseHandler.MouseHandler_lastButton != 4)) {
 						break;
 					}
 
@@ -818,7 +818,7 @@ public abstract class Actor extends Renderable {
 						Login.rightTitleSprite.drawAt(Login.xPadding + 382, 0);
 						Login.logoSprite.drawAt(Login.xPadding + 382 - Login.logoSprite.subWidth / 2, 18);
 						if (var10) {
-							ByteArrayPool.method7920();
+							ByteArrayPool.reinitializeClient();
 						}
 					} else {
 						if (Login.worldSelectPage > 0 && Varps.worldSelectLeftSprite != null && MouseHandler.MouseHandler_lastPressedX >= 0 && MouseHandler.MouseHandler_lastPressedX <= Varps.worldSelectLeftSprite.subWidth && MouseHandler.MouseHandler_lastPressedY >= class47.canvasHeight / 2 - 50 && MouseHandler.MouseHandler_lastPressedY <= class47.canvasHeight / 2 + 50) {
@@ -850,7 +850,7 @@ public abstract class Actor extends Renderable {
 			}
 
 		} else {
-			if ((MouseHandler.MouseHandler_lastButton == 1 || !class19.mouseCam && MouseHandler.MouseHandler_lastButton == 4) && MouseHandler.MouseHandler_lastPressedX >= Login.xPadding + 765 - 50 && MouseHandler.MouseHandler_lastPressedY >= 453) {
+			if ((MouseHandler.MouseHandler_lastButton == 1 || !HttpRequestTask.mouseCam && MouseHandler.MouseHandler_lastButton == 4) && MouseHandler.MouseHandler_lastPressedX >= Login.xPadding + 765 - 50 && MouseHandler.MouseHandler_lastPressedY >= 453) {
 				WorldMapIcon_1.clientPreferences.updateTitleMusicDisabled(!WorldMapIcon_1.clientPreferences.isTitleMusicDisabled());
 				if (!WorldMapIcon_1.clientPreferences.isTitleMusicDisabled()) {
 					ArrayList var3 = new ArrayList();
@@ -898,7 +898,7 @@ public abstract class Actor extends Renderable {
 
 				if (Client.gameState == 10 || Client.gameState == 11) {
 					if (class85.clientLanguage == Language.Language_EN) {
-						if (MouseHandler.MouseHandler_lastButton == 1 || !class19.mouseCam && MouseHandler.MouseHandler_lastButton == 4) {
+						if (MouseHandler.MouseHandler_lastButton == 1 || !HttpRequestTask.mouseCam && MouseHandler.MouseHandler_lastButton == 4) {
 							var6 = Login.xPadding + 5;
 							short var7 = 463;
 							byte var8 = 100;
@@ -929,7 +929,7 @@ public abstract class Actor extends Renderable {
 						var79 = MouseHandler.MouseHandler_y;
 					}
 
-					if (!class19.mouseCam && var6 == 4) {
+					if (!HttpRequestTask.mouseCam && var6 == 4) {
 						var6 = 1;
 					}
 
@@ -1060,7 +1060,7 @@ public abstract class Actor extends Renderable {
 
 								var83 = class157.loginBoxCenter + -117;
 								var82 = 277;
-								Login.field916 = var78 >= var83 && var78 < var83 + NPCComposition.field1966 && var79 >= var82 && var79 < var82 + class113.field1426;
+								Login.field916 = var78 >= var83 && var78 < var83 + NPCComposition.field1966 && var79 >= var82 && var79 < var82 + SecureUrlRequester.field1426;
 								if (var6 == 1 && Login.field916) {
 									Client.Login_isUsernameRemembered = !Client.Login_isUsernameRemembered;
 									if (!Client.Login_isUsernameRemembered && WorldMapIcon_1.clientPreferences.getRememberedUsername() != null) {
@@ -1070,7 +1070,7 @@ public abstract class Actor extends Renderable {
 
 								var83 = class157.loginBoxCenter + 24;
 								var82 = 277;
-								Login.field919 = var78 >= var83 && var78 < var83 + NPCComposition.field1966 && var79 >= var82 && var79 < var82 + class113.field1426;
+								Login.field919 = var78 >= var83 && var78 < var83 + NPCComposition.field1966 && var79 >= var82 && var79 < var82 + SecureUrlRequester.field1426;
 								if (var6 == 1 && Login.field919) {
 									WorldMapIcon_1.clientPreferences.updateHideUsername(!WorldMapIcon_1.clientPreferences.isUsernameHidden());
 									if (!WorldMapIcon_1.clientPreferences.isUsernameHidden()) {

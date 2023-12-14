@@ -97,7 +97,7 @@ public class class520 {
 		garbageValue = "471269719"
 	)
 	static final void method9190() {
-		PacketBufferNode var0 = class113.getPacketBufferNode(ClientPacket.CLOSE_MODAL, Client.packetWriter.isaacCipher);
+		PacketBufferNode var0 = SecureUrlRequester.getPacketBufferNode(ClientPacket.CLOSE_MODAL, Client.packetWriter.isaacCipher);
 		Client.packetWriter.addNode(var0);
 		Interpreter.field842 = true;
 

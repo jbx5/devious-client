@@ -32,7 +32,7 @@ public class class426 {
 				return 1;
 			} else if (var0 == 1207) {
 				boolean var7 = Interpreter.Interpreter_intStack[--DbTableType.Interpreter_intStackSize] == 1;
-				class18.method290(var3, class229.localPlayer.appearance, var7);
+				AsyncHttpResponse.method290(var3, class229.localPlayer.appearance, var7);
 				return 1;
 			} else if (var0 == 1208) {
 				var4 = Interpreter.Interpreter_intStack[--DbTableType.Interpreter_intStackSize];

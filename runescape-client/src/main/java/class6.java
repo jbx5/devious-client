@@ -89,7 +89,7 @@ public enum class6 implements Enum
 			FriendsList.options_buttons_2Sprite = class313.SpriteBuffer_getIndexedSpriteByName(var1, "options_radio_buttons,2", "");
 			GrandExchangeEvents.field4344 = class313.SpriteBuffer_getIndexedSpriteByName(var1, "options_radio_buttons,6", "");
 			NPCComposition.field1966 = class310.options_buttons_0Sprite.subWidth;
-			class113.field1426 = class310.options_buttons_0Sprite.subHeight;
+			SecureUrlRequester.field1426 = class310.options_buttons_0Sprite.subHeight;
 			EnumComposition.loginScreenRunesAnimation = new LoginScreenAnimation(class134.runesSprite);
 			if (var2) {
 				Login.Login_username = "";

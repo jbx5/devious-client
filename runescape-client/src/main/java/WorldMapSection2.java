@@ -222,7 +222,7 @@ public class WorldMapSection2 implements WorldMapSection {
 			}
 
 			if (var0 == 20 || var0 == 40 || var0 == 45 || var0 == 50) {
-				class19.updateLoginState(0);
+				HttpRequestTask.updateLoginState(0);
 				Client.field522 = 0;
 				Client.field614 = 0;
 				Client.timer.method7931(var0);
@@ -255,7 +255,7 @@ public class WorldMapSection2 implements WorldMapSection {
 					class139.setLoginResponseString("", "Updating date of birth...", "");
 					class6.method44(WorldMapDecorationType.archive10, GrandExchangeOfferOwnWorldComparator.archive8, false, 7);
 				} else {
-					class14.method189();
+					AsyncRestClient.method189();
 				}
 			} else {
 				var1 = class4.method21() ? 0 : 12;

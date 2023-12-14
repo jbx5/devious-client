@@ -1,9 +1,11 @@
 import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 
 @ObfuscatedName("uc")
-public class class541 {
+@Implements("SpriteBufferProperties")
+public class SpriteBufferProperties {
 	@ObfuscatedName("at")
 	@ObfuscatedGetter(
 		intValue = -1261231669

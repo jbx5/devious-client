@@ -117,7 +117,7 @@ public class Interpreter {
 			if ((var6 & 1024) != 0) {
 				class228[] var8 = Players.field1356;
 				class228[] var10 = new class228[]{class228.field2409, class228.field2412, class228.field2408, class228.field2410};
-				var8[var4] = (class228)class12.findEnumerated(var10, var0.readByteNeg());
+				var8[var4] = (class228) SecureRandomSSLSocket.findEnumerated(var10, var0.readByteNeg());
 			}
 
 			if ((var6 & 4) != 0) {
@@ -168,13 +168,13 @@ public class Interpreter {
 				var23 = var0.readUnsignedShortAddLE();
 				var9 = var23 >> 8;
 				var24 = var9 >= 13 && var9 <= 20 ? var9 - 12 : 0;
-				PlayerType var11 = (PlayerType)class12.findEnumerated(class320.PlayerType_values(), var0.readUnsignedByteAdd());
+				PlayerType var11 = (PlayerType) SecureRandomSSLSocket.findEnumerated(class320.PlayerType_values(), var0.readUnsignedByteAdd());
 				boolean var12 = var0.readUnsignedByte() == 1;
 				var13 = var0.readUnsignedByte();
 				var14 = var0.offset;
 				if (var5.username != null && var5.appearance != null) {
 					boolean var15 = false;
-					if (var11.isUser && class12.friendSystem.isIgnored(var5.username)) {
+					if (var11.isUser && SecureRandomSSLSocket.friendSystem.isIgnored(var5.username)) {
 						var15 = true;
 					}
 
@@ -182,7 +182,7 @@ public class Interpreter {
 						Players.field1367.offset = 0;
 						var0.method9321(Players.field1367.array, 0, var13);
 						Players.field1367.offset = 0;
-						String var16 = AbstractFont.escapeBrackets(class20.method303(class128.method3076(Players.field1367)));
+						String var16 = AbstractFont.escapeBrackets(HttpResponse.method303(class128.method3076(Players.field1367)));
 						var5.overheadText = var16.trim();
 						var5.field1196 = var23 >> 8;
 						var5.field1197 = var23 & 255;
@@ -341,13 +341,13 @@ public class Interpreter {
 
 			if ((var6 & 8) != 0) {
 				var23 = var0.readUnsignedShortLE();
-				PlayerType var36 = (PlayerType)class12.findEnumerated(class320.PlayerType_values(), var0.readUnsignedByteNeg());
+				PlayerType var36 = (PlayerType) SecureRandomSSLSocket.findEnumerated(class320.PlayerType_values(), var0.readUnsignedByteNeg());
 				boolean var35 = var0.readUnsignedByteAdd() == 1;
 				var28 = var0.readUnsignedByte();
 				var32 = var0.offset;
 				if (var5.username != null && var5.appearance != null) {
 					boolean var33 = false;
-					if (var36.isUser && class12.friendSystem.isIgnored(var5.username)) {
+					if (var36.isUser && SecureRandomSSLSocket.friendSystem.isIgnored(var5.username)) {
 						var33 = true;
 					}
 
@@ -355,7 +355,7 @@ public class Interpreter {
 						Players.field1367.offset = 0;
 						var0.readBytes(Players.field1367.array, 0, var28);
 						Players.field1367.offset = 0;
-						String var29 = AbstractFont.escapeBrackets(class20.method303(class128.method3076(Players.field1367)));
+						String var29 = AbstractFont.escapeBrackets(HttpResponse.method303(class128.method3076(Players.field1367)));
 						var5.overheadText = var29.trim();
 						var5.field1196 = var23 >> 8;
 						var5.field1197 = var23 & 255;
@@ -396,7 +396,7 @@ public class Interpreter {
 					class228 var30;
 					if (var7 != class228.field2412.field2414) {
 						class228[] var37 = new class228[]{class228.field2409, class228.field2412, class228.field2408, class228.field2410};
-						var30 = (class228)class12.findEnumerated(var37, var7);
+						var30 = (class228) SecureRandomSSLSocket.findEnumerated(var37, var7);
 					} else {
 						var30 = Players.field1356[var4];
 					}

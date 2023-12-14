@@ -243,7 +243,7 @@ public class ClanSettings {
 			}
 
 			int[] var3 = this.sortedMembers;
-			class475.method8597(var1, var3, 0, var1.length - 1);
+			HttpQueryParams.quicksortStringsWithCorrespondingIntegers(var1, var3, 0, var1.length - 1);
 		}
 
 		return this.sortedMembers;

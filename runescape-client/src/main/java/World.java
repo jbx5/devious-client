@@ -228,7 +228,7 @@ public class World {
 					var15 = Huffman.method6840(var7);
 				}
 
-				PacketBufferNode var13 = class113.getPacketBufferNode(ClientPacket.RESUME_COUNTDIALOG, Client.packetWriter.isaacCipher);
+				PacketBufferNode var13 = SecureUrlRequester.getPacketBufferNode(ClientPacket.RESUME_COUNTDIALOG, Client.packetWriter.isaacCipher);
 				var13.packetBuffer.writeInt(var15);
 				Client.packetWriter.addNode(var13);
 				return 1;
@@ -236,14 +236,14 @@ public class World {
 				PacketBufferNode var11;
 				if (var0 == ScriptOpcodes.RESUME_NAMEDIALOG) {
 					var7 = Interpreter.Interpreter_stringStack[--class127.Interpreter_stringStackSize];
-					var11 = class113.getPacketBufferNode(ClientPacket.RESUME_NAMEDIALOG, Client.packetWriter.isaacCipher);
+					var11 = SecureUrlRequester.getPacketBufferNode(ClientPacket.RESUME_NAMEDIALOG, Client.packetWriter.isaacCipher);
 					var11.packetBuffer.writeByte(var7.length() + 1);
 					var11.packetBuffer.writeStringCp1252NullTerminated(var7);
 					Client.packetWriter.addNode(var11);
 					return 1;
 				} else if (var0 == ScriptOpcodes.RESUME_STRINGDIALOG) {
 					var7 = Interpreter.Interpreter_stringStack[--class127.Interpreter_stringStackSize];
-					var11 = class113.getPacketBufferNode(ClientPacket.RESUME_STRINGDIALOG, Client.packetWriter.isaacCipher);
+					var11 = SecureUrlRequester.getPacketBufferNode(ClientPacket.RESUME_STRINGDIALOG, Client.packetWriter.isaacCipher);
 					var11.packetBuffer.writeByte(var7.length() + 1);
 					var11.packetBuffer.writeStringCp1252NullTerminated(var7);
 					Client.packetWriter.addNode(var11);
@@ -272,7 +272,7 @@ public class World {
 						HorizontalAlignment.clickWidget(var12, var3, var15);
 						return 1;
 					} else if (var0 == ScriptOpcodes.MOUSECAM) {
-						class19.mouseCam = Interpreter.Interpreter_intStack[--DbTableType.Interpreter_intStackSize] == 1;
+						HttpRequestTask.mouseCam = Interpreter.Interpreter_intStack[--DbTableType.Interpreter_intStackSize] == 1;
 						return 1;
 					} else if (var0 == ScriptOpcodes.GETREMOVEROOFS) {
 						Interpreter.Interpreter_intStack[++DbTableType.Interpreter_intStackSize - 1] = WorldMapIcon_1.clientPreferences.isRoofsHidden() ? 1 : 0;
@@ -287,7 +287,7 @@ public class World {
 						return 1;
 					} else if (var0 == ScriptOpcodes.RESUME_OBJDIALOG) {
 						var3 = Interpreter.Interpreter_intStack[--DbTableType.Interpreter_intStackSize];
-						var11 = class113.getPacketBufferNode(ClientPacket.RESUME_OBJDIALOG, Client.packetWriter.isaacCipher);
+						var11 = SecureUrlRequester.getPacketBufferNode(ClientPacket.RESUME_OBJDIALOG, Client.packetWriter.isaacCipher);
 						var11.packetBuffer.writeShort(var3);
 						Client.packetWriter.addNode(var11);
 						return 1;
@@ -301,7 +301,7 @@ public class World {
 						} else if (var5.length() > 500) {
 							return 1;
 						} else {
-							PacketBufferNode var6 = class113.getPacketBufferNode(ClientPacket.field3157, Client.packetWriter.isaacCipher);
+							PacketBufferNode var6 = SecureUrlRequester.getPacketBufferNode(ClientPacket.field3157, Client.packetWriter.isaacCipher);
 							var6.packetBuffer.writeShort(1 + ClanChannel.stringCp1252NullTerminatedByteSize(var4) + ClanChannel.stringCp1252NullTerminatedByteSize(var5));
 							var6.packetBuffer.writeStringCp1252NullTerminated(var5);
 							var6.packetBuffer.writeStringCp1252NullTerminated(var4);

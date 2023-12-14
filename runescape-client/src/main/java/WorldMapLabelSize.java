@@ -91,7 +91,7 @@ public class WorldMapLabelSize {
 		garbageValue = "-1950450301"
 	)
 	static Object method4488(int var0) {
-		return class408.method7657((class514)class12.findEnumerated(class514.method9122(), var0));
+		return class408.method7657((class514) SecureRandomSSLSocket.findEnumerated(class514.method9122(), var0));
 	}
 
 	@ObfuscatedName("iz")

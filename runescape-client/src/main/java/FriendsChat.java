@@ -8,7 +8,8 @@ import net.runelite.mapping.ObfuscatedSignature;
 @Implements("FriendsChat")
 public class FriendsChat extends UserList {
 	@ObfuscatedName("hh")
-	static String field4677;
+	@Export("gameSessionServiceBaseUrl")
+	static String gameSessionServiceBaseUrl;
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "Ltt;"

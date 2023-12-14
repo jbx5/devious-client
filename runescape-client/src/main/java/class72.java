@@ -24,7 +24,7 @@ public class class72 {
 	)
 	static class129 method2135(int var0) {
 		class129[] var1 = new class129[]{class129.field1513, class129.field1514, class129.field1512, class129.field1518, class129.field1510};
-		class129 var2 = (class129)class12.findEnumerated(var1, var0);
+		class129 var2 = (class129) SecureRandomSSLSocket.findEnumerated(var1, var0);
 		if (var2 == null) {
 			var2 = class129.field1513;
 		}
@@ -81,7 +81,7 @@ public class class72 {
 			if (var0 == ScriptOpcodes.SETWINDOWMODE) {
 				var3 = Interpreter.Interpreter_intStack[--DbTableType.Interpreter_intStackSize];
 				if (var3 == 1 || var3 == 2) {
-					class9.setWindowedMode(var3);
+					HttpMethod.setWindowedMode(var3);
 				}
 
 				return 1;

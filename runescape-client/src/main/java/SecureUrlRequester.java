@@ -8,18 +8,19 @@ import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("es")
-public class class113 extends UrlRequester {
+public class SecureUrlRequester extends UrlRequester {
 	@ObfuscatedName("ch")
 	@ObfuscatedGetter(
 		intValue = -467021809
 	)
 	static int field1426;
 	@ObfuscatedName("ab")
-	final boolean field1423;
+	@Export("secureHttps")
+	final boolean secureHttps;
 
-	public class113(boolean var1, int var2) {
+	public SecureUrlRequester(boolean var1, int var2) {
 		super(var2);
-		this.field1423 = var1;
+		this.secureHttps = var1;
 	}
 
 	@ObfuscatedName("at")
@@ -27,7 +28,8 @@ public class class113 extends UrlRequester {
 		descriptor = "(Lea;I)V",
 		garbageValue = "422697771"
 	)
-	void vmethod2910(UrlRequest var1) throws IOException {
+	@Export("openConnection")
+	void openConnection(UrlRequest var1) throws IOException {
 		URLConnection var2 = null;
 		boolean var9 = false;
 
@@ -39,7 +41,7 @@ public class class113 extends UrlRequester {
 						var9 = true;
 						String var3 = var1.field1429.getProtocol();
 						if (var3.equals("http")) {
-							var2 = this.method2911(var1);
+							var2 = this.openHttpConnection(var1);
 						} else {
 							if (!var3.equals("https")) {
 								var1.field1427 = UrlRequest.field1432;
@@ -47,7 +49,7 @@ public class class113 extends UrlRequester {
 								break label131;
 							}
 
-							var2 = this.method2916(var1);
+							var2 = this.openHttpsConnection(var1);
 						}
 
 						this.method2890(var2, var1);
@@ -96,9 +98,10 @@ public class class113 extends UrlRequester {
 		descriptor = "(Lea;I)Ljava/net/URLConnection;",
 		garbageValue = "-1165040742"
 	)
-	URLConnection method2911(UrlRequest var1) throws IOException {
+	@Export("openHttpConnection")
+	URLConnection openHttpConnection(UrlRequest var1) throws IOException {
 		URLConnection var2 = var1.field1429.openConnection();
-		this.method2905(var2);
+		this.setDefaultRequestProperties(var2);
 		return var2;
 	}
 
@@ -107,18 +110,19 @@ public class class113 extends UrlRequester {
 		descriptor = "(Lea;I)Ljava/net/URLConnection;",
 		garbageValue = "1061431523"
 	)
-	URLConnection method2916(UrlRequest var1) throws IOException {
+	@Export("openHttpsConnection")
+	URLConnection openHttpsConnection(UrlRequest var1) throws IOException {
 		HttpsURLConnection var2 = (HttpsURLConnection)var1.field1429.openConnection();
-		if (!this.field1423) {
-			if (class15.field69 == null) {
-				class15.field69 = new class15();
+		if (!this.secureHttps) {
+			if (SecureRandomSSLSocketFactory.INSTANCE == null) {
+				SecureRandomSSLSocketFactory.INSTANCE = new SecureRandomSSLSocketFactory();
 			}
 
-			class15 var4 = class15.field69;
+			SecureRandomSSLSocketFactory var4 = SecureRandomSSLSocketFactory.INSTANCE;
 			var2.setSSLSocketFactory(var4);
 		}
 
-		this.method2905(var2);
+		this.setDefaultRequestProperties(var2);
 		return var2;
 	}
 

@@ -1,11 +1,13 @@
 import java.io.IOException;
 import java.util.concurrent.Callable;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("ai")
-public class class19 implements Callable {
+@Implements("HttpRequestTask")
+public class HttpRequestTask implements Callable {
 	@ObfuscatedName("eu")
 	@Export("mouseCam")
 	static boolean mouseCam;
@@ -18,31 +20,31 @@ public class class19 implements Callable {
 	@ObfuscatedSignature(
 		descriptor = "Lap;"
 	)
-	final class10 field94;
+	final HttpRequest field94;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
 		descriptor = "Lay;"
 	)
-	final class14 this$0;
+	final AsyncRestClient this$0;
 
 	@ObfuscatedSignature(
 		descriptor = "(Lay;Lap;)V"
 	)
-	class19(class14 var1, class10 var2) {
+	HttpRequestTask(AsyncRestClient var1, HttpRequest var2) {
 		this.this$0 = var1;
 		this.field94 = var2;
 	}
 
 	public Object call() throws Exception {
 		try {
-			while (this.field94.method94()) {
+			while (this.field94.connect()) {
 				class219.method4260(10L);
 			}
 		} catch (IOException var2) {
-			return new class20("Error servicing REST query: " + var2.getMessage());
+			return new HttpResponse("Error servicing REST query: " + var2.getMessage());
 		}
 
-		return this.field94.method91();
+		return this.field94.getResponse();
 	}
 
 	@ObfuscatedName("oq")

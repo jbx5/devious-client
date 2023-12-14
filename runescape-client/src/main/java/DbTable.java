@@ -46,7 +46,7 @@ public class DbTable extends DualNode {
 		this.columns = new ArrayList(var2);
 
 		for (int var3 = 0; var3 < var2; ++var3) {
-			this.field5076[var3] = (class514)class12.findEnumerated(class514.method9122(), var1.readUnsignedByte());
+			this.field5076[var3] = (class514) SecureRandomSSLSocket.findEnumerated(class514.method9122(), var1.readUnsignedByte());
 			int var4 = var1.packBytesToInt();
 			HashMap var5 = new HashMap(var4);
 
@@ -88,21 +88,21 @@ public class DbTable extends DualNode {
 		garbageValue = "-1344314706"
 	)
 	public static IndexedSprite[] method9159() {
-		IndexedSprite[] var0 = new IndexedSprite[class541.SpriteBuffer_spriteCount];
+		IndexedSprite[] var0 = new IndexedSprite[SpriteBufferProperties.SpriteBuffer_spriteCount];
 
-		for (int var1 = 0; var1 < class541.SpriteBuffer_spriteCount; ++var1) {
+		for (int var1 = 0; var1 < SpriteBufferProperties.SpriteBuffer_spriteCount; ++var1) {
 			IndexedSprite var2 = var0[var1] = new IndexedSprite();
-			var2.width = class541.SpriteBuffer_spriteWidth;
+			var2.width = SpriteBufferProperties.SpriteBuffer_spriteWidth;
 			var2.height = GrandExchangeOfferWorldComparator.SpriteBuffer_spriteHeight;
-			var2.xOffset = class541.SpriteBuffer_xOffsets[var1];
-			var2.yOffset = class541.SpriteBuffer_yOffsets[var1];
-			var2.subWidth = class541.SpriteBuffer_spriteWidths[var1];
+			var2.xOffset = SpriteBufferProperties.SpriteBuffer_xOffsets[var1];
+			var2.yOffset = SpriteBufferProperties.SpriteBuffer_yOffsets[var1];
+			var2.subWidth = SpriteBufferProperties.SpriteBuffer_spriteWidths[var1];
 			var2.subHeight = class520.SpriteBuffer_spriteHeights[var1];
-			var2.palette = class541.SpriteBuffer_spritePalette;
+			var2.palette = SpriteBufferProperties.SpriteBuffer_spritePalette;
 			var2.pixels = class396.SpriteBuffer_pixels[var1];
 		}
 
-		class458.method8401();
+		SpriteBufferUtils.SpriteBuffer_reset();
 		return var0;
 	}
 }

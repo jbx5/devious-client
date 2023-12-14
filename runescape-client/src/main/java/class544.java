@@ -173,7 +173,7 @@ public class class544 {
 		garbageValue = "-1670201559"
 	)
 	public static PacketBufferNode method9914(int var0, String var1, Language var2, int var3) {
-		PacketBufferNode var4 = class113.getPacketBufferNode(ClientPacket.field3166, Client.packetWriter.isaacCipher);
+		PacketBufferNode var4 = SecureUrlRequester.getPacketBufferNode(ClientPacket.field3166, Client.packetWriter.isaacCipher);
 		var4.packetBuffer.writeByte(0);
 		int var5 = var4.packetBuffer.offset;
 		var4.packetBuffer.writeByte(var0);

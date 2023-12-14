@@ -160,7 +160,8 @@ public class WorldMapData_1 extends AbstractWorldMapData {
 		descriptor = "(III)Ldt;",
 		garbageValue = "1462611314"
 	)
-	static Script method4789(int var0, int var1) {
+	@Export("getScript")
+	static Script getScript(int var0, int var1) {
 		Script var2 = (Script)Script.Script_cached.get((long)(var0 << 16));
 		if (var2 != null) {
 			return var2;

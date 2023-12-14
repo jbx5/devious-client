@@ -220,7 +220,7 @@ public class UserComparator4 implements Comparator {
 			if (var1 >= 0 && var1 < Client.currentClanChannels[var0].method3479()) {
 				ClanChannelMember var2 = (ClanChannelMember)Client.currentClanChannels[var0].members.get(var1);
 				if (var2.rank == -1) {
-					PacketBufferNode var3 = class113.getPacketBufferNode(ClientPacket.field3212, Client.packetWriter.isaacCipher);
+					PacketBufferNode var3 = SecureUrlRequester.getPacketBufferNode(ClientPacket.field3212, Client.packetWriter.isaacCipher);
 					var3.packetBuffer.writeByte(3 + ClanChannel.stringCp1252NullTerminatedByteSize(var2.username.getName()));
 					var3.packetBuffer.writeByte(var0);
 					var3.packetBuffer.writeShort(var1);

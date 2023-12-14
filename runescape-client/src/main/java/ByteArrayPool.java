@@ -93,7 +93,8 @@ public class ByteArrayPool {
 		descriptor = "(I)V",
 		garbageValue = "1234231525"
 	)
-	static void method7920() {
+	@Export("reinitializeClient")
+	static void reinitializeClient() {
 		if (class176.varcs.hasUnwrittenChanges()) {
 			class176.varcs.write();
 		}
@@ -145,7 +146,7 @@ public class ByteArrayPool {
 		Client.archiveLoaders.clear();
 		Client.field645 = 0;
 		WorldMapSectionType.field2556 = new JagNetThread();
-		class60.urlRequester = new class113(SpriteMask.client.field532, 218);
+		class60.urlRequester = new SecureUrlRequester(SpriteMask.client.https, 218);
 
 		try {
 			class339.method6310("oldschool", ItemLayer.field2655, class191.field1978.name, 0, 23);
