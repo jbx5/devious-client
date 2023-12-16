@@ -1,40 +1,44 @@
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 @ObfuscatedName("az")
 @Implements("HttpMethod")
-public class HttpMethod implements Enum
-{
+public class HttpMethod implements Enum {
 	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "Laz;"
 	)
+	@Export("POST")
 	public static final HttpMethod POST;
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "Laz;"
 	)
+	@Export("GET")
 	public static final HttpMethod GET;
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "Laz;"
 	)
+	@Export("PUT")
 	static final HttpMethod PUT;
 	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
 		descriptor = "Laz;"
 	)
+	@Export("PATCH")
 	static final HttpMethod PATCH;
 	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
 		descriptor = "Laz;"
 	)
+	@Export("DELETE")
 	static final HttpMethod DELETE;
 	@ObfuscatedName("au")
 	@ObfuscatedGetter(

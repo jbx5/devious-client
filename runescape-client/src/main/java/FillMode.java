@@ -6,8 +6,7 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("uk")
 @Implements("FillMode")
-public enum FillMode implements Enum
-{
+public enum FillMode implements Enum {
 	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "Luk;"

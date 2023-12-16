@@ -7,8 +7,7 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("of")
 @Implements("Language")
-public class Language implements Enum
-{
+public class Language implements Enum {
 	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "Lof;"

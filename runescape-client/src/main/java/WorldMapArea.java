@@ -123,7 +123,7 @@ public class WorldMapArea {
 	@Export("readWorldMapSection")
 	WorldMapSection readWorldMapSection(Buffer var1) {
 		int var2 = var1.readUnsignedByte();
-		WorldMapSectionType var3 = (WorldMapSectionType) SecureRandomSSLSocket.findEnumerated(WorldMapSectionType.method4884(), var2);
+		WorldMapSectionType var3 = (WorldMapSectionType)SecureRandomSSLSocket.findEnumerated(WorldMapSectionType.method4884(), var2);
 		Object var4 = null;
 		switch(var3.type) {
 		case 0:

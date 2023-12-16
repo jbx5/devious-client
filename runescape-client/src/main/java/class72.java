@@ -24,7 +24,7 @@ public class class72 {
 	)
 	static class129 method2135(int var0) {
 		class129[] var1 = new class129[]{class129.field1513, class129.field1514, class129.field1512, class129.field1518, class129.field1510};
-		class129 var2 = (class129) SecureRandomSSLSocket.findEnumerated(var1, var0);
+		class129 var2 = (class129)SecureRandomSSLSocket.findEnumerated(var1, var0);
 		if (var2 == null) {
 			var2 = class129.field1513;
 		}

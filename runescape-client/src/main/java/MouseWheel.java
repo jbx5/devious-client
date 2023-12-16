@@ -5,8 +5,7 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("is")
 @Implements("MouseWheel")
-public interface MouseWheel
-{
+public interface MouseWheel {
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",

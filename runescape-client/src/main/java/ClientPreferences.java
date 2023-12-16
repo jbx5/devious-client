@@ -65,7 +65,7 @@ public class ClientPreferences {
 	int windowMode;
 	@ObfuscatedName("aj")
 	@Export("parameters")
-	final Map<Integer, Integer> parameters;
+	final Map parameters;
 
 	ClientPreferences() {
 		this.hideUsername = false;
@@ -202,8 +202,8 @@ public class ClientPreferences {
 		garbageValue = "-10"
 	)
 	@Export("updateRoofsHidden")
-	void updateRoofsHidden(boolean state) {
-		this.roofsHidden = state;
+	void updateRoofsHidden(boolean var1) {
+		this.roofsHidden = var1;
 		TextureProvider.savePreferences();
 	}
 
@@ -223,8 +223,8 @@ public class ClientPreferences {
 		garbageValue = "-2140370030"
 	)
 	@Export("updateHideUsername")
-	void updateHideUsername(boolean state) {
-		this.hideUsername = state;
+	void updateHideUsername(boolean var1) {
+		this.hideUsername = var1;
 		TextureProvider.savePreferences();
 	}
 
@@ -244,8 +244,8 @@ public class ClientPreferences {
 		garbageValue = "-5895"
 	)
 	@Export("updateTitleMusicDisabled")
-	void updateTitleMusicDisabled(boolean state) {
-		this.titleMusicDisabled = state;
+	void updateTitleMusicDisabled(boolean var1) {
+		this.titleMusicDisabled = var1;
 		TextureProvider.savePreferences();
 	}
 
@@ -265,8 +265,8 @@ public class ClientPreferences {
 		garbageValue = "-1108077215"
 	)
 	@Export("updateDisplayFps")
-	void updateDisplayFps(boolean state) {
-		this.displayFps = state;
+	void updateDisplayFps(boolean var1) {
+		this.displayFps = var1;
 		TextureProvider.savePreferences();
 	}
 
@@ -311,8 +311,8 @@ public class ClientPreferences {
 
 	@ObfuscatedName("ay")
 	@Export("updateBrightness")
-	void updateBrightness(double brightness) {
-		this.brightness = brightness;
+	void updateBrightness(double var1) {
+		this.brightness = var1;
 		TextureProvider.savePreferences();
 	}
 
@@ -321,6 +321,7 @@ public class ClientPreferences {
 		descriptor = "(I)D",
 		garbageValue = "-2063080274"
 	)
+	@Export("getBrightness")
 	double getBrightness() {
 		return this.brightness;
 	}
@@ -352,8 +353,8 @@ public class ClientPreferences {
 		garbageValue = "256"
 	)
 	@Export("updateSoundEffectVolume")
-	void updateSoundEffectVolume(int volume) {
-		this.soundEffectsVolume = volume;
+	void updateSoundEffectVolume(int var1) {
+		this.soundEffectsVolume = var1;
 		TextureProvider.savePreferences();
 	}
 
@@ -434,8 +435,8 @@ public class ClientPreferences {
 		garbageValue = "32"
 	)
 	@Export("updateWindowMode")
-	void updateWindowMode(int mode) {
-		this.windowMode = mode;
+	void updateWindowMode(int var1) {
+		this.windowMode = var1;
 		TextureProvider.savePreferences();
 	}
 
@@ -455,15 +456,15 @@ public class ClientPreferences {
 		garbageValue = "-1748399566"
 	)
 	@Export("put")
-	void put(String key, int value) {
-		int var3 = this.getParameterKey(key);
+	void put(String var1, int var2) {
+		int var3 = this.getParameterKey(var1);
 		if (this.parameters.size() >= 10 && !this.parameters.containsKey(var3)) {
-			Iterator<Map.Entry<Integer, Integer>> iterator = this.parameters.entrySet().iterator();
-			iterator.next();
-			iterator.remove();
+			Iterator var4 = this.parameters.entrySet().iterator();
+			var4.next();
+			var4.remove();
 		}
 
-		this.parameters.put(var3, value);
+		this.parameters.put(var3, var2);
 		TextureProvider.savePreferences();
 	}
 
@@ -474,8 +475,8 @@ public class ClientPreferences {
 	)
 	@Export("containsKey")
 	boolean containsKey(String var1) {
-		int key = this.getParameterKey(var1);
-		return this.parameters.containsKey(key);
+		int var2 = this.getParameterKey(var1);
+		return this.parameters.containsKey(var2);
 	}
 
 	@ObfuscatedName("bv")
@@ -484,9 +485,9 @@ public class ClientPreferences {
 		garbageValue = "1978025457"
 	)
 	@Export("getParameterValue")
-	int getParameterValue(String string) {
-		int key = this.getParameterKey(string);
-		return !this.parameters.containsKey(key) ? 0 : (Integer)this.parameters.get(key);
+	int getParameterValue(String var1) {
+		int var2 = this.getParameterKey(var1);
+		return !this.parameters.containsKey(var2) ? 0 : (Integer)this.parameters.get(var2);
 	}
 
 	@ObfuscatedName("bf")
@@ -496,7 +497,7 @@ public class ClientPreferences {
 	)
 	@Export("getParameterKey")
 	int getParameterKey(String var1) {
-		return Message.decodeParameterKey(var1.toLowerCase());
+		return Message.ClientPreferences_decodeParameterKey(var1.toLowerCase());
 	}
 
 	@ObfuscatedName("at")

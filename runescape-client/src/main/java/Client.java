@@ -1,5 +1,3 @@
-import org.json.JSONException;
-import org.json.JSONObject;
 import com.jagex.oldscape.pub.OAuthApi;
 import com.jagex.oldscape.pub.OtlTokenRequester;
 import com.jagex.oldscape.pub.OtlTokenResponse;
@@ -17,6 +15,8 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 @Implements("Client")
 @ObfuscatedName("client")
@@ -1357,12 +1357,13 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 	@ObfuscatedSignature(
 		descriptor = "Laq;"
 	)
+	@Export("asyncGameSessionTokenResponse")
 	AsyncHttpResponse asyncGameSessionTokenResponse;
 	@ObfuscatedName("hi")
+	@Export("otlTokenRequester")
 	@ObfuscatedSignature(
 		descriptor = "Lcom/jagex/oldscape/pub/OtlTokenRequester;"
 	)
-	@Export("otlTokenRequester")
 	OtlTokenRequester otlTokenRequester;
 	@ObfuscatedName("hq")
 	@Export("otlTokenRequestFuture")
@@ -1383,10 +1384,10 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 	@Export("asyncAccessTokenResponse")
 	AsyncHttpResponse asyncAccessTokenResponse;
 	@ObfuscatedName("hg")
+	@Export("refreshAccessTokenRequester")
 	@ObfuscatedSignature(
 		descriptor = "Lcom/jagex/oldscape/pub/RefreshAccessTokenRequester;"
 	)
-	@Export("refreshAccessTokenRequester")
 	RefreshAccessTokenRequester refreshAccessTokenRequester;
 	@ObfuscatedName("hk")
 	@Export("refreshAccessTokenRequestFuture")
@@ -2013,7 +2014,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 		descriptor = "(I)Z",
 		garbageValue = "2071645038"
 	)
-	boolean isRunelite() {
+	@Export("isRuneLite")
+	boolean isRuneLite() {
 		return this.clientId == 1;
 	}
 
@@ -2052,28 +2054,28 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 		garbageValue = "-191398087"
 	)
 	@Export("requestRefreshAccessToken")
-	void requestRefreshAccessToken(String var0) throws IOException {
-		HashMap<String, String> parameters = new HashMap<>();
-		parameters.put("grant_type", "refresh_token");
-		parameters.put("scope", "gamesso.token.create");
-		parameters.put("refresh_token", var0);
-		URL url = new URL(class314.authServiceBaseUrl + "shield/oauth/token" + (new HttpQueryParams(parameters)).encode());
-		HttpHeaders httpHeaders = new HttpHeaders();
-		if (this.isRunelite()) {
-			httpHeaders.basicAuthentication(BASIC_AUTH_DESKTOP_RUNELITE);
+	void requestRefreshAccessToken(String var1) throws IOException {
+		HashMap var2 = new HashMap();
+		var2.put("grant_type", "refresh_token");
+		var2.put("scope", "gamesso.token.create");
+		var2.put("refresh_token", var1);
+		URL var3 = new URL(class314.authServiceBaseUrl + "shield/oauth/token" + (new HttpQueryParams(var2)).encode());
+		HttpHeaders var4 = new HttpHeaders();
+		if (this.isRuneLite()) {
+			var4.basicAuthentication(BASIC_AUTH_DESKTOP_RUNELITE);
 		} else {
-			httpHeaders.basicAuthentication(BASIC_AUTH_DESKTOP_OSRS);
+			var4.basicAuthentication(BASIC_AUTH_DESKTOP_OSRS);
 		}
 
-		httpHeaders.header("Host", (new URL(class314.authServiceBaseUrl)).getHost());
-		httpHeaders.accept(HttpContentType.APPLICATION_JSON);
-		HttpMethod method = HttpMethod.POST;
-		RefreshAccessTokenRequester accessTokenRequester = this.refreshAccessTokenRequester;
-		if (accessTokenRequester != null) {
-			this.refreshAccessTokenRequestFuture = accessTokenRequester.request(method.getName(), url, httpHeaders.getHeaders(), "");
+		var4.header("Host", (new URL(class314.authServiceBaseUrl)).getHost());
+		var4.accept(HttpContentType.APPLICATION_JSON);
+		HttpMethod var5 = HttpMethod.POST;
+		RefreshAccessTokenRequester var6 = this.refreshAccessTokenRequester;
+		if (var6 != null) {
+			this.refreshAccessTokenRequestFuture = var6.request(var5.getName(), var3, var4.getHeaders(), "");
 		} else {
-			HttpRequest request = new HttpRequest(url, method, httpHeaders, this.https);
-			this.asyncAccessTokenResponse = this.asyncRestClient.submitRequest(request);
+			HttpRequest var7 = new HttpRequest(var3, var5, var4, this.https);
+			this.asyncAccessTokenResponse = this.asyncRestClient.submitRequest(var7);
 		}
 	}
 
@@ -2084,15 +2086,15 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 	)
 	@Export("requestOtlToken")
 	void requestOtlToken(String var1) throws IOException {
-		URL authUrl = new URL(class314.authServiceBaseUrl + "public/v1/games/YCfdbvr2pM1zUYMxJRexZY/play");
-		HttpHeaders client = new HttpHeaders();
-		client.bearerToken(var1);
+		URL var2 = new URL(class314.authServiceBaseUrl + "public/v1/games/YCfdbvr2pM1zUYMxJRexZY/play");
+		HttpHeaders var3 = new HttpHeaders();
+		var3.bearerToken(var1);
 		HttpMethod var4 = HttpMethod.GET;
 		OtlTokenRequester var5 = this.otlTokenRequester;
 		if (var5 != null) {
-			this.otlTokenRequestFuture = var5.request(var4.getName(), authUrl, client.getHeaders(), "");
+			this.otlTokenRequestFuture = var5.request(var4.getName(), var2, var3.getHeaders(), "");
 		} else {
-			HttpRequest var6 = new HttpRequest(authUrl, var4, client, this.https);
+			HttpRequest var6 = new HttpRequest(var2, var4, var3, this.https);
 			this.asyncGameSessionTokenResponse = this.asyncRestClient.submitRequest(var6);
 		}
 	}
@@ -2105,13 +2107,13 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 	@Export("authenticate")
 	void authenticate(String var1, String var2) throws IOException, JSONException {
 		URL var3 = new URL(FriendsChat.gameSessionServiceBaseUrl + "game-session/v1/tokens");
-		HttpRequest request = new HttpRequest(var3, HttpMethod.POST, this.https);
-		request.getHeaders().bearerToken(var1);
-		request.getHeaders().accept(HttpContentType.APPLICATION_JSON);
-		JSONObject requestBody = new JSONObject();
-		requestBody.setProperty("accountId", var2);
-		request.setPayload(new HttpJsonRequestBody(requestBody));
-		this.asyncGameSessionTokenResponse = this.asyncRestClient.submitRequest(request);
+		HttpRequest var4 = new HttpRequest(var3, HttpMethod.POST, this.https);
+		var4.getHeaders().bearerToken(var1);
+		var4.getHeaders().accept(HttpContentType.APPLICATION_JSON);
+		JSONObject var5 = new JSONObject();
+		var5.setProperty("accountId", var2);
+		var4.setPayload(new HttpJsonRequestBody(var5));
+		this.asyncGameSessionTokenResponse = this.asyncRestClient.submitRequest(var4);
 	}
 
 	@ObfuscatedName("hi")

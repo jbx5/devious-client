@@ -6,8 +6,7 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("sd")
 @Implements("HttpPayload")
-public interface HttpPayload
-{
+public interface HttpPayload {
 	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "(B)Lsi;",

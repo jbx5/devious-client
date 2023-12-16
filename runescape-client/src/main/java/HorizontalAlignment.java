@@ -6,8 +6,7 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("hq")
 @Implements("HorizontalAlignment")
-public enum HorizontalAlignment implements Enum
-{
+public enum HorizontalAlignment implements Enum {
 	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "Lhq;"

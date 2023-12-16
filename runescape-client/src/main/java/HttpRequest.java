@@ -15,8 +15,7 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("ap")
 @Implements("HttpRequest")
-public class HttpRequest
-{
+public class HttpRequest {
 	@ObfuscatedName("wj")
 	static Iterator field40;
 	@ObfuscatedName("at")
@@ -123,6 +122,7 @@ public class HttpRequest
 		descriptor = "(B)V",
 		garbageValue = "6"
 	)
+	@Export("initializeRequest")
 	void initializeRequest() throws ProtocolException {
 		if (!this.requestInitialized) {
 			this.connection.setRequestMethod(this.field41.getName());

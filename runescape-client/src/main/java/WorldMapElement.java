@@ -225,10 +225,10 @@ public class WorldMapElement extends DualNode {
 					var1.readUnsignedByte();
 				} else if (var2 == 29) {
 					HorizontalAlignment[] var3 = new HorizontalAlignment[]{HorizontalAlignment.field1909, HorizontalAlignment.field1905, HorizontalAlignment.HorizontalAlignment_centered};
-					this.horizontalAlignment = (HorizontalAlignment) SecureRandomSSLSocket.findEnumerated(var3, var1.readUnsignedByte());
+					this.horizontalAlignment = (HorizontalAlignment)SecureRandomSSLSocket.findEnumerated(var3, var1.readUnsignedByte());
 				} else if (var2 == 30) {
 					VerticalAlignment[] var7 = new VerticalAlignment[]{VerticalAlignment.VerticalAlignment_centered, VerticalAlignment.field1972, VerticalAlignment.field1970};
-					this.verticalAlignment = (VerticalAlignment) SecureRandomSSLSocket.findEnumerated(var7, var1.readUnsignedByte());
+					this.verticalAlignment = (VerticalAlignment)SecureRandomSSLSocket.findEnumerated(var7, var1.readUnsignedByte());
 				}
 			}
 		}

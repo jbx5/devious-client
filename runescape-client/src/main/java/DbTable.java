@@ -46,7 +46,7 @@ public class DbTable extends DualNode {
 		this.columns = new ArrayList(var2);
 
 		for (int var3 = 0; var3 < var2; ++var3) {
-			this.field5076[var3] = (class514) SecureRandomSSLSocket.findEnumerated(class514.method9122(), var1.readUnsignedByte());
+			this.field5076[var3] = (class514)SecureRandomSSLSocket.findEnumerated(class514.method9122(), var1.readUnsignedByte());
 			int var4 = var1.packBytesToInt();
 			HashMap var5 = new HashMap(var4);
 

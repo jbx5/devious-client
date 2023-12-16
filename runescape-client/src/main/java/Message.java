@@ -184,14 +184,14 @@ public class Message extends DualNode {
 		garbageValue = "11"
 	)
 	@Export("ClientPreferences_decodeParameterKey")
-	public static int decodeParameterKey(CharSequence sequence) {
-		int length = sequence.length();
-		int result = 0;
+	public static int ClientPreferences_decodeParameterKey(CharSequence var0) {
+		int var1 = var0.length();
+		int var2 = 0;
 
-		for (int index = 0; index < length; ++index) {
-			result = (result << 5) - result + sequence.charAt(index);
+		for (int var3 = 0; var3 < var1; ++var3) {
+			var2 = (var2 << 5) - var2 + var0.charAt(var3);
 		}
 
-		return result;
+		return var2;
 	}
 }

@@ -1,5 +1,3 @@
-import org.bouncycastle.crypto.tls.TlsClientProtocol;
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
@@ -13,6 +11,8 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import org.bouncycastle.crypto.tls.TlsClientProtocol;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
 @ObfuscatedName("ak")
 @Implements("SecureRandomSSLSocketFactory")
