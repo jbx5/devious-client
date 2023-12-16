@@ -314,4 +314,12 @@ public abstract class HClientMixin implements RSClient
 	{
 		return preparePacket(packet, client.getPacketWriter().getIsaacCipher());
 	}
+
+	@Inject
+	@Override
+	public void login(boolean otp)
+	{
+		client.setAuthenticationScheme(otp);
+		client.setRSGameState(20);
+	}
 }
