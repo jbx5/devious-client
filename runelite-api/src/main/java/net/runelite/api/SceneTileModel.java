@@ -119,6 +119,4 @@ public interface SceneTileModel
 	int getOverlayNwColor();
 
 	void setOverlayNwColor(int color);
-
-	boolean getIsFlat();
 }
