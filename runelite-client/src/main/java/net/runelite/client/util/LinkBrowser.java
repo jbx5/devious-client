@@ -36,6 +36,7 @@ import javax.inject.Singleton;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import lombok.extern.slf4j.Slf4j;
+import net.unethicalite.client.Static;
 
 /**
  * Utility class used for web and file browser navigation
@@ -52,6 +53,12 @@ public class LinkBrowser
 	 */
 	public static void browse(final String url)
 	{
+		if (Static.getUnethicaliteConfig().disableLinkBrowser())
+		{
+			log.warn("Failed to browse url: {} because link browser is disabled", url);
+			return;
+		}
+
 		new Thread(() ->
 		{
 			if (Strings.isNullOrEmpty(url))
