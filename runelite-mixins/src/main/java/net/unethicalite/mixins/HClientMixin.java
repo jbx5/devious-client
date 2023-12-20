@@ -1,5 +1,6 @@
 package net.unethicalite.mixins;
 
+import net.runelite.api.GameState;
 import net.runelite.api.ItemComposition;
 import net.runelite.api.Skill;
 import net.runelite.api.Tile;
@@ -320,6 +321,6 @@ public abstract class HClientMixin implements RSClient
 	public void login(boolean otp)
 	{
 		client.setAuthenticationScheme(otp);
-		client.setRSGameState(20);
+		client.setRSGameState(GameState.LOGGING_IN.getState());
 	}
 }

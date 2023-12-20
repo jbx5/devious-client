@@ -250,7 +250,7 @@ public interface Client extends OAuthApi, GameEngine
 	void setOtp(String otp);
 
 	/**
-	 * Sets whether to use authenticator token or normal password scheme, login by setting game state to 20
+	 * Sets whether to use authenticator token or normal password scheme, login by setting game state to 20 {@link GameState#LOGGING_IN}
 	 *
 	 * @param otp
 	 */
