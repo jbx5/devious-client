@@ -51,8 +51,7 @@ dependencies {
     implementation(group = "com.google.code.gson", name = "gson", version = "2.8.6")
     implementation(group = "com.google.guava", name = "guava", version = "30.1.1-jre")
     implementation(group = "org.slf4j", name = "slf4j-api", version = "1.7.32")
-
-    runtimeOnly(group = "org.slf4j", name = "slf4j-simple", version = "1.7.32")
+    implementation(group = "ch.qos.logback", name = "logback-classic", version = "1.2.9")
 
     testImplementation(group = "junit", name = "junit", version = "4.12")
     testImplementation(group = "org.mockito", name = "mockito-core", version = "3.1.0")
