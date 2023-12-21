@@ -291,6 +291,9 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("setAuthenticationScheme")
 	void setAuthenticationScheme(boolean otp);
 
+	@Import("setLoginResponseString")
+	void setLoginResponseString(String var0, String var1, String var2);
+
 	@Import("xPadding")
 	int getLoginScreenXPadding();
 
