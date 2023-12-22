@@ -1,5 +1,6 @@
 package net.unethicalite.mixins;
 
+import java.util.Arrays;
 import net.unethicalite.api.events.MenuAutomated;
 import net.unethicalite.api.util.Randomizer;
 import net.unethicalite.api.util.Text;
@@ -29,7 +30,7 @@ public abstract class HWidgetMixin implements RSWidget
 		switch (getType())
 		{
 			case WidgetType.GRAPHIC:
-				return getTargetVerb() == null || getTargetVerb().isEmpty()
+				return getTargetVerb() == null || getTargetVerb().isEmpty() || Arrays.asList(getActions()).contains("Cast") && !getTargetVerb().startsWith("Cast")
 						? MenuAction.CC_OP.getId() : MenuAction.WIDGET_TARGET.getId();
 			case WidgetType.INVENTORY:
 				return MenuAction.WIDGET_TARGET.getId();
@@ -67,7 +68,7 @@ public abstract class HWidgetMixin implements RSWidget
 		switch (getType())
 		{
 			case WidgetType.GRAPHIC:
-				return getTargetVerb() == null || getTargetVerb().isEmpty() ? actionIndex + 1 : 0;
+				return getTargetVerb() == null || getTargetVerb().isEmpty() || Arrays.asList(getActions()).contains("Cast")  && !getTargetVerb().startsWith("Cast") ? actionIndex + 1 : 0;
 			case WidgetType.TEXT:
 				return 0;
 			default:
