@@ -1,18 +1,19 @@
 package net.unethicalite.api.game;
 
-import net.unethicalite.client.Static;
 import lombok.extern.slf4j.Slf4j;
-
+import org.slf4j.Logger;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
+import net.unethicalite.client.Static;
 
 @Slf4j
 public class GameThread
 {
 	private static final long TIMEOUT = 1000;
+	public static final Logger logger = Static.getClient().getLogger();
 
 	public static void invoke(Runnable runnable)
 	{
@@ -36,7 +37,7 @@ public class GameThread
 			}
 			catch (Exception e)
 			{
-				e.printStackTrace();
+				logger.error("Client thread invocation failed: {}", e.getMessage());
 			}
 		}
 
@@ -48,8 +49,8 @@ public class GameThread
 		}
 		catch (ExecutionException | InterruptedException | TimeoutException e)
 		{
-			e.printStackTrace();
-			throw new RuntimeException("Client thread invoke timed out after " + TIMEOUT + " ms");
+			logger.error("Client thread invocation timed out, {}", e.getMessage());
+			throw new RuntimeException("Client thread invoke timed out after " + TIMEOUT + " ms", e);
 		}
 	}
 }
