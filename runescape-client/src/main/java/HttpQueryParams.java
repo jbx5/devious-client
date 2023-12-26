@@ -10,8 +10,7 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("sk")
 @Implements("HttpQueryParams")
-public class HttpQueryParams implements HttpPayload
-{
+public class HttpQueryParams implements HttpPayload {
 	@ObfuscatedName("at")
 	@Export("queryParameters")
 	final Map queryParameters;
@@ -25,6 +24,7 @@ public class HttpQueryParams implements HttpPayload
 		descriptor = "(B)Lsi;",
 		garbageValue = "-24"
 	)
+	@Export("getContentType")
 	public HttpContentType getContentType() {
 		return null;
 	}
@@ -34,6 +34,7 @@ public class HttpQueryParams implements HttpPayload
 		descriptor = "(B)[B",
 		garbageValue = "0"
 	)
+	@Export("toBytes")
 	public byte[] toBytes() throws UnsupportedEncodingException {
 		return this.encode().getBytes("UTF-8");
 	}

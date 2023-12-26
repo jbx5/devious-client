@@ -323,7 +323,7 @@ public class class59 {
 				}
 			} else {
 				if (HttpRequest.field40 != null && HttpRequest.field40.hasNext()) {
-					Interpreter.Interpreter_intStack[++DbTableType.Interpreter_intStackSize - 1] = (Integer) HttpRequest.field40.next();
+					Interpreter.Interpreter_intStack[++DbTableType.Interpreter_intStackSize - 1] = (Integer)HttpRequest.field40.next();
 				} else {
 					Interpreter.Interpreter_intStack[++DbTableType.Interpreter_intStackSize - 1] = -1;
 				}

@@ -1,21 +1,20 @@
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 import java.io.UnsupportedEncodingException;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 @ObfuscatedName("sv")
 @Implements("HttpJsonRequestBody")
-public class HttpJsonRequestBody implements HttpPayload
-{
+public class HttpJsonRequestBody implements HttpPayload {
 	@ObfuscatedName("ah")
+	@Export("body")
 	@ObfuscatedSignature(
 		descriptor = "Lorg/json/JSONObject;"
 	)
-	@Export("body")
 	JSONObject body;
 
 	public HttpJsonRequestBody(byte[] var1) throws UnsupportedEncodingException {
@@ -30,7 +29,7 @@ public class HttpJsonRequestBody implements HttpPayload
 	}
 
 	public HttpJsonRequestBody(String var1) throws UnsupportedEncodingException {
-		this.bodyFromString(var1);
+		this.setBodyFromString(var1);
 	}
 
 	@ObfuscatedName("at")
@@ -38,6 +37,7 @@ public class HttpJsonRequestBody implements HttpPayload
 		descriptor = "(B)Lsi;",
 		garbageValue = "-24"
 	)
+	@Export("getContentType")
 	public HttpContentType getContentType() {
 		return HttpContentType.APPLICATION_JSON;
 	}
@@ -47,6 +47,7 @@ public class HttpJsonRequestBody implements HttpPayload
 		descriptor = "(B)[B",
 		garbageValue = "0"
 	)
+	@Export("toBytes")
 	public byte[] toBytes() throws UnsupportedEncodingException {
 		return this.body == null ? new byte[0] : this.body.toString().getBytes("UTF-8");
 	}
@@ -59,7 +60,7 @@ public class HttpJsonRequestBody implements HttpPayload
 	@Export("bodyFromBytes")
 	void bodyFromBytes(byte[] var1) throws UnsupportedEncodingException {
 		String var2 = new String(var1, "UTF-8");
-		this.bodyFromString(var2);
+		this.setBodyFromString(var2);
 	}
 
 	@ObfuscatedName("ac")
@@ -68,7 +69,7 @@ public class HttpJsonRequestBody implements HttpPayload
 		garbageValue = "1963139059"
 	)
 	@Export("setBodyFromString")
-	void bodyFromString(String var1) throws UnsupportedEncodingException {
+	void setBodyFromString(String var1) throws UnsupportedEncodingException {
 		try {
 			if (var1.charAt(0) == '{') {
 				this.body = new JSONObject(var1);

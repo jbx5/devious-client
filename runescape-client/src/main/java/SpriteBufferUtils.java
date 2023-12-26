@@ -5,8 +5,7 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("ry")
 @Implements("SpriteBufferUtils")
-public class SpriteBufferUtils
-{
+public class SpriteBufferUtils {
 	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",

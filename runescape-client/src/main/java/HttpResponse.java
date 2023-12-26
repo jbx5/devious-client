@@ -12,8 +12,7 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("aw")
 @Implements("HttpResponse")
-public class HttpResponse
-{
+public class HttpResponse {
 	@ObfuscatedName("tk")
 	@ObfuscatedSignature(
 		descriptor = "Lqi;"

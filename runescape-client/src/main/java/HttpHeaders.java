@@ -13,8 +13,7 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("qf")
 @Implements("HttpHeaders")
-public class HttpHeaders
-{
+public class HttpHeaders {
 	@ObfuscatedName("ao")
 	@Export("headers")
 	final Map headers;
@@ -26,8 +25,8 @@ public class HttpHeaders
 	final DecimalFormat decimalFormat;
 
 	public HttpHeaders() {
-		this.headers = new HashMap<>();
-		this.acceptHeaderValues = new HashMap<>();
+		this.headers = new HashMap();
+		this.acceptHeaderValues = new HashMap();
 		this.decimalFormat = new DecimalFormat();
 		this.decimalFormat.setMaximumFractionDigits(2);
 	}
@@ -38,12 +37,12 @@ public class HttpHeaders
 		garbageValue = "514712825"
 	)
 	@Export("setRequestProperties")
-	public void setRequestProperties(HttpsURLConnection connection) {
+	public void setRequestProperties(HttpsURLConnection var1) {
 		Iterator var2 = this.headers.entrySet().iterator();
 
 		while (var2.hasNext()) {
 			Entry var3 = (Entry)var2.next();
-			connection.setRequestProperty((String)var3.getKey(), (String)var3.getValue());
+			var1.setRequestProperty((String)var3.getKey(), (String)var3.getValue());
 		}
 
 	}
@@ -54,7 +53,7 @@ public class HttpHeaders
 		garbageValue = "289317846"
 	)
 	@Export("getHeaders")
-	public Map<String, String> getHeaders() {
+	public Map getHeaders() {
 		return this.headers;
 	}
 
@@ -64,9 +63,9 @@ public class HttpHeaders
 		garbageValue = "-1068565867"
 	)
 	@Export("header")
-	public void header(String key, String value) {
-		if (key != null && !key.isEmpty()) {
-			this.headers.put(key, value != null ? value : "");
+	public void header(String var1, String var2) {
+		if (var1 != null && !var1.isEmpty()) {
+			this.headers.put(var1, var2 != null ? var2 : "");
 		}
 
 	}
@@ -77,9 +76,9 @@ public class HttpHeaders
 		garbageValue = "90"
 	)
 	@Export("removeHeader")
-	public void removeHeader(String header) {
-		if (header != null && !header.isEmpty()) {
-			this.headers.remove(header);
+	public void removeHeader(String var1) {
+		if (var1 != null && !var1.isEmpty()) {
+			this.headers.remove(var1);
 		}
 
 	}
@@ -90,8 +89,8 @@ public class HttpHeaders
 		garbageValue = "-1582767971"
 	)
 	@Export("authenticationHeader")
-	void authenticationHeader(HttpAuthenticationHeader header, String value) {
-		String var3 = String.format("%s %s", header.getKey(), value);
+	void authenticationHeader(HttpAuthenticationHeader var1, String var2) {
+		String var3 = String.format("%s %s", var1.getKey(), var2);
 		this.header("Authorization", var3);
 	}
 
@@ -101,8 +100,8 @@ public class HttpHeaders
 		garbageValue = "1431"
 	)
 	@Export("basicAuthentication")
-	public void basicAuthentication(String credentials) {
-		this.authenticationHeader(HttpAuthenticationHeader.BASIC, credentials);
+	public void basicAuthentication(String var1) {
+		this.authenticationHeader(HttpAuthenticationHeader.BASIC, var1);
 	}
 
 	@ObfuscatedName("aa")
@@ -111,8 +110,8 @@ public class HttpHeaders
 		garbageValue = "1155653800"
 	)
 	@Export("bearerToken")
-	public void bearerToken(String token) {
-		this.authenticationHeader(HttpAuthenticationHeader.BEARER, token);
+	public void bearerToken(String var1) {
+		this.authenticationHeader(HttpAuthenticationHeader.BEARER, var1);
 	}
 
 	@ObfuscatedName("ac")
@@ -121,8 +120,8 @@ public class HttpHeaders
 		garbageValue = "-85"
 	)
 	@Export("contentType")
-	public void contentType(HttpContentType contentType) {
-		this.headers.put("Content-Type", contentType.getValue());
+	public void contentType(HttpContentType var1) {
+		this.headers.put("Content-Type", var1.getValue());
 	}
 
 	@ObfuscatedName("al")
@@ -141,8 +140,8 @@ public class HttpHeaders
 		garbageValue = "4"
 	)
 	@Export("accept")
-	public void accept(HttpContentType contentType) {
-		this.acceptWithFactor(contentType, 1.0F);
+	public void accept(HttpContentType var1) {
+		this.acceptWithFactor(var1, 1.0F);
 	}
 
 	@ObfuscatedName("ap")
@@ -151,8 +150,8 @@ public class HttpHeaders
 		garbageValue = "-974878647"
 	)
 	@Export("acceptWithFactor")
-	void acceptWithFactor(HttpContentType contentType, float relativeQualityFactor) {
-		this.acceptHeaderValues.put(contentType, Math.max(0.0F, Math.min(1.0F, relativeQualityFactor)));
+	void acceptWithFactor(HttpContentType var1, float var2) {
+		this.acceptHeaderValues.put(var1, Math.max(0.0F, Math.min(1.0F, var2)));
 		this.updateAcceptHeader();
 	}
 

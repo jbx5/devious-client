@@ -87,7 +87,7 @@ public class class139 extends DualNode {
 		int var9;
 		for (var5 = 0; var5 < var3; ++var5) {
 			var7 = var1.readUnsignedByte();
-			class132 var16 = (class132) SecureRandomSSLSocket.findEnumerated(Language.method7187(), var7);
+			class132 var16 = (class132)SecureRandomSSLSocket.findEnumerated(Language.method7187(), var7);
 			if (var16 == null) {
 				var16 = class132.field1549;
 			}
@@ -95,7 +95,7 @@ public class class139 extends DualNode {
 			var9 = var1.readShortSmart();
 			int var11 = var1.readUnsignedByte();
 			class133[] var12 = new class133[]{class133.field1575, class133.field1559, class133.field1568, class133.field1579, class133.field1562, class133.field1560, class133.field1564, class133.field1565, class133.field1566, class133.field1567, class133.field1563, class133.field1573, class133.field1570, class133.field1571, class133.field1572, class133.field1561, class133.field1569};
-			class133 var13 = (class133) SecureRandomSSLSocket.findEnumerated(var12, var11);
+			class133 var13 = (class133)SecureRandomSSLSocket.findEnumerated(var12, var11);
 			if (var13 == null) {
 				var13 = class133.field1575;
 			}

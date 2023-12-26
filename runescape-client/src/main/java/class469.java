@@ -32,7 +32,7 @@ public abstract class class469 implements class291 {
 				return;
 			}
 
-			class465 var3 = (class465) SecureRandomSSLSocket.findEnumerated(class129.method3090(), var2);
+			class465 var3 = (class465)SecureRandomSSLSocket.findEnumerated(class129.method3090(), var2);
 			if (var3 != null) {
 				switch(var3.field4791) {
 				case 0:

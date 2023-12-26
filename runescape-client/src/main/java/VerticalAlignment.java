@@ -6,8 +6,7 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("hg")
 @Implements("VerticalAlignment")
-public enum VerticalAlignment implements Enum
-{
+public enum VerticalAlignment implements Enum {
 	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "Lhg;"
@@ -101,8 +100,8 @@ public enum VerticalAlignment implements Enum
 		garbageValue = "-52"
 	)
 	@Export("setAuthenticationScheme")
-	static final void setAuthenticationScheme(boolean otp) {
-		if (otp) {
+	static final void setAuthenticationScheme(boolean var0) {
+		if (var0) {
 			Client.authenticationScheme = Login.rememberUsername ? AuthenticationScheme.TOKEN_REMEMBER : AuthenticationScheme.TOKEN;
 		} else {
 			Client.authenticationScheme = WorldMapIcon_1.clientPreferences.containsKey(Login.Login_username) ? AuthenticationScheme.USERNAME_PASSWORD_REMEMBER : AuthenticationScheme.USERNAME_PASSWORD;

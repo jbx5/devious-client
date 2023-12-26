@@ -44,6 +44,7 @@ public abstract class UrlRequester implements Runnable {
 		descriptor = "(Lea;I)V",
 		garbageValue = "422697771"
 	)
+	@Export("openConnection")
 	abstract void openConnection(UrlRequest var1) throws IOException;
 
 	@ObfuscatedName("ah")

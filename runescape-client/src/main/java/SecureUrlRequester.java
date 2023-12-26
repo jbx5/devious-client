@@ -3,11 +3,13 @@ import java.net.HttpURLConnection;
 import java.net.URLConnection;
 import javax.net.ssl.HttpsURLConnection;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("es")
+@Implements("SecureUrlRequester")
 public class SecureUrlRequester extends UrlRequester {
 	@ObfuscatedName("ch")
 	@ObfuscatedGetter(

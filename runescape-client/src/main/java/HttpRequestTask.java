@@ -53,9 +53,9 @@ public class HttpRequestTask implements Callable {
 		garbageValue = "-2072070052"
 	)
 	@Export("updateLoginState")
-	static void updateLoginState(int loginState) {
-		if (loginState != Client.loginState) {
-			Client.loginState = loginState;
+	static void updateLoginState(int var0) {
+		if (var0 != Client.loginState) {
+			Client.loginState = var0;
 		}
 	}
 }

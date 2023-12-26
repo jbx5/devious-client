@@ -1,4 +1,3 @@
-import org.bouncycastle.crypto.tls.TlsClientProtocol;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -12,6 +11,7 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 import net.runelite.rs.ScriptOpcodes;
+import org.bouncycastle.crypto.tls.TlsClientProtocol;
 
 @ObfuscatedName("ax")
 @Implements("SecureRandomSSLSocket")

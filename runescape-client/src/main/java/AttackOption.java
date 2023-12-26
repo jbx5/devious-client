@@ -6,8 +6,7 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("dy")
 @Implements("AttackOption")
-public enum AttackOption implements Enum
-{
+public enum AttackOption implements Enum {
 	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "Ldy;"

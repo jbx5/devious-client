@@ -5,8 +5,7 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("oj")
 @Implements("Enum")
-public interface Enum
-{
+public interface Enum {
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "(B)I",

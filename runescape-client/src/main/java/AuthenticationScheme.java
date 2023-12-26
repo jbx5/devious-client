@@ -6,8 +6,7 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("eb")
 @Implements("AuthenticationScheme")
-public enum AuthenticationScheme implements Enum
-{
+public enum AuthenticationScheme implements Enum {
 	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "Leb;"
@@ -51,9 +50,9 @@ public enum AuthenticationScheme implements Enum
 	@Export("packetId")
 	final int packetId;
 
-	AuthenticationScheme(int schemeId, int packetId) {
-		this.schemeId = schemeId;
-		this.packetId = packetId;
+	AuthenticationScheme(int var3, int var4) {
+		this.schemeId = var3;
+		this.packetId = var4;
 	}
 
 	@ObfuscatedName("ah")

@@ -6,8 +6,7 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("oc")
 @Implements("PlayerType")
-public enum PlayerType implements Enum
-{
+public enum PlayerType implements Enum {
 	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "Loc;"

@@ -6,8 +6,7 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("nx")
 @Implements("WorldMapDecorationType")
-public enum WorldMapDecorationType implements Enum
-{
+public enum WorldMapDecorationType implements Enum {
 	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "Lnx;"

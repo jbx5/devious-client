@@ -10,8 +10,7 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("ay")
 @Implements("AsyncRestClient")
-public class AsyncRestClient
-{
+public class AsyncRestClient {
 	@ObfuscatedName("bj")
 	protected static String field67;
 	@ObfuscatedName("at")
@@ -52,6 +51,7 @@ public class AsyncRestClient
 		descriptor = "(Lap;I)Laq;",
 		garbageValue = "1326084774"
 	)
+	@Export("submitRequest")
 	public AsyncHttpResponse submitRequest(HttpRequest var1) {
 		if (this.threadPoolExecutor.getQueue().remainingCapacity() <= 0) {
 			System.err.println("REST thread pool queue is empty\r\nThread pool size " + this.threadPoolExecutor.getCorePoolSize() + " Queue capacity " + this.workQueueCapacity);
