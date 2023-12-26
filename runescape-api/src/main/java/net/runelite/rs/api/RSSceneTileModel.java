@@ -62,5 +62,6 @@ public interface RSSceneTileModel extends SceneTileModel
 	int[] getTriangleTextureId();
 
 	@Import("isFlat")
-	boolean getIsFlat();
+	@Override
+	boolean isFlat();
 }
