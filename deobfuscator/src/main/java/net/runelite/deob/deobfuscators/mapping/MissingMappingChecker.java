@@ -176,16 +176,16 @@ public class MissingMappingChecker implements Runnable
 		for (int i = 0; i < namedMethods.size(); i++)
 		{
 			Method namedMethod = namedMethods.get(i);
+			String namedMethodWithClass = namedMethod.getDescriptor().toString().contains("L") ? namedMethod.getDescriptor().toString().substring(namedMethod.getDescriptor().toString().lastIndexOf("L"), namedMethod.getDescriptor().toString().lastIndexOf(";") + 1) : null;
+
 			for (int j = 0; j < targetMethods.size(); j++)
 			{
 				Method targetMethod = targetMethods.get(j);
-
-				String namedMethodClassDescriptor = namedMethod.getDescriptor().toString().contains("L") ? namedMethod.getDescriptor().toString().substring(namedMethod.getDescriptor().toString().lastIndexOf("L"), namedMethod.getDescriptor().toString().lastIndexOf(";") + 1) : null;
-				String targetMethodClassDescriptor = targetMethod.getDescriptor().toString().contains("Lclass") ? targetMethod.getDescriptor().toString().substring(targetMethod.getDescriptor().toString().lastIndexOf("L"), targetMethod.getDescriptor().toString().lastIndexOf(";") + 1) : null;
+				String targetMethodWithClass = targetMethod.getDescriptor().toString().contains("Lclass") ? targetMethod.getDescriptor().toString().substring(targetMethod.getDescriptor().toString().lastIndexOf("L"), targetMethod.getDescriptor().toString().lastIndexOf(";") + 1) : null;
 
 				if (namedMethod.getDescriptor().equals(targetMethod.getDescriptor())
 					|| namedMethod.getDescriptor().toString().replace(namedMethod.getClassFile().getName(), targetMethod.getClassFile().getName()).equals(targetMethod.getDescriptor().toString())
-					|| namedMethodClassDescriptor != null && targetMethodClassDescriptor != null && namedMethod.getDescriptor().toString().replace(namedMethodClassDescriptor, targetMethodClassDescriptor).equals(targetMethod.getDescriptor().toString()))
+					|| namedMethodWithClass != null && targetMethodWithClass != null && namedMethod.getDescriptor().toString().replace(namedMethodWithClass, targetMethodWithClass).equals(targetMethod.getDescriptor().toString()))
 				{
 					if (namedMethod.getAccessFlags() == targetMethod.getAccessFlags() && namedMethod.getParameters().equals(targetMethod.getParameters()))
 					{
