@@ -171,6 +171,7 @@ public class Pathfinder implements Callable<List<WorldPoint>>
 			String.format("WorldArea(x=%s, y=%s, width=%s, height=%s, plane=%s)",
 				target.getX(), target.getY(), target.getWidth(), target.getHeight(), target.getPlane());
 		log.debug("Path calculation took {} ms to {}", System.currentTimeMillis() - startTime, targetStr);
+		System.gc();
 		return path;
 	}
 
