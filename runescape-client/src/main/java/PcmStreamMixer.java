@@ -3,152 +3,152 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bn")
+@ObfuscatedName("bp")
 @Implements("PcmStreamMixer")
 public class PcmStreamMixer extends PcmStream {
-	@ObfuscatedName("at")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "Lon;"
+		descriptor = "Lpu;"
 	)
 	@Export("subStreams")
 	NodeDeque subStreams;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Lon;"
+		descriptor = "Lpu;"
 	)
-	NodeDeque field243;
-	@ObfuscatedName("ar")
-	int field242;
-	@ObfuscatedName("ao")
-	int field244;
+	NodeDeque field259;
+	@ObfuscatedName("af")
+	int field260;
+	@ObfuscatedName("aj")
+	int field262;
 
 	public PcmStreamMixer() {
 		this.subStreams = new NodeDeque();
-		this.field243 = new NodeDeque();
-		this.field242 = 0;
-		this.field244 = -1;
+		this.field259 = new NodeDeque();
+		this.field260 = 0;
+		this.field262 = -1;
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(Lbk;)V"
+		descriptor = "(Lbl;)V"
 	)
 	@Export("addSubStream")
 	public final synchronized void addSubStream(PcmStream var1) {
 		this.subStreams.addLast(var1);
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(Lbk;)V"
+		descriptor = "(Lbl;)V"
 	)
 	@Export("removeSubStream")
 	public final synchronized void removeSubStream(PcmStream var1) {
 		var1.remove();
 	}
 
-	@ObfuscatedName("ar")
-	void method715() {
-		if (this.field242 > 0) {
-			for (PcmStreamMixerListener var1 = (PcmStreamMixerListener)this.field243.last(); var1 != null; var1 = (PcmStreamMixerListener)this.field243.previous()) {
-				var1.field385 -= this.field242;
+	@ObfuscatedName("af")
+	void method746() {
+		if (this.field260 > 0) {
+			for (PcmStreamMixerListener var1 = (PcmStreamMixerListener)this.field259.last(); var1 != null; var1 = (PcmStreamMixerListener)this.field259.previous()) {
+				var1.field402 -= this.field260;
 			}
 
-			this.field244 -= this.field242;
-			this.field242 = 0;
+			this.field262 -= this.field260;
+			this.field260 = 0;
 		}
 
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(Lsh;Lcx;)V"
+		descriptor = "(Lse;Lcv;)V"
 	)
-	void method716(Node var1, PcmStreamMixerListener var2) {
-		while (this.field243.sentinel != var1 && ((PcmStreamMixerListener)var1).field385 <= var2.field385) {
+	void method770(Node var1, PcmStreamMixerListener var2) {
+		while (this.field259.sentinel != var1 && ((PcmStreamMixerListener)var1).field402 <= var2.field402) {
 			var1 = var1.previous;
 		}
 
 		NodeDeque.NodeDeque_addBefore(var2, var1);
-		this.field244 = ((PcmStreamMixerListener)this.field243.sentinel.previous).field385;
+		this.field262 = ((PcmStreamMixerListener)this.field259.sentinel.previous).field402;
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(Lcx;)V"
+		descriptor = "(Lcv;)V"
 	)
-	void method717(PcmStreamMixerListener var1) {
+	void method742(PcmStreamMixerListener var1) {
 		var1.remove();
 		var1.remove2();
-		Node var2 = this.field243.sentinel.previous;
-		if (var2 == this.field243.sentinel) {
-			this.field244 = -1;
+		Node var2 = this.field259.sentinel.previous;
+		if (var2 == this.field259.sentinel) {
+			this.field262 = -1;
 		} else {
-			this.field244 = ((PcmStreamMixerListener)var2).field385;
+			this.field262 = ((PcmStreamMixerListener)var2).field402;
 		}
 
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "()Lbk;"
+		descriptor = "()Lbl;"
 	)
 	@Export("firstSubStream")
 	protected PcmStream firstSubStream() {
 		return (PcmStream)this.subStreams.last();
 	}
 
-	@ObfuscatedName("aa")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "()Lbk;"
+		descriptor = "()Lbl;"
 	)
 	@Export("nextSubStream")
 	protected PcmStream nextSubStream() {
 		return (PcmStream)this.subStreams.previous();
 	}
 
-	@ObfuscatedName("ac")
-	protected int vmethod6210() {
+	@ObfuscatedName("ao")
+	protected int vmethod6281() {
 		return 0;
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ae")
 	@Export("fill")
 	public final synchronized void fill(int[] var1, int var2, int var3) {
 		do {
-			if (this.field244 < 0) {
+			if (this.field262 < 0) {
 				this.updateSubStreams(var1, var2, var3);
 				return;
 			}
 
-			if (var3 + this.field242 < this.field244) {
-				this.field242 += var3;
+			if (var3 + this.field260 < this.field262) {
+				this.field260 += var3;
 				this.updateSubStreams(var1, var2, var3);
 				return;
 			}
 
-			int var4 = this.field244 - this.field242;
+			int var4 = this.field262 - this.field260;
 			this.updateSubStreams(var1, var2, var4);
 			var2 += var4;
 			var3 -= var4;
-			this.field242 += var4;
-			this.method715();
-			PcmStreamMixerListener var5 = (PcmStreamMixerListener)this.field243.last();
+			this.field260 += var4;
+			this.method746();
+			PcmStreamMixerListener var5 = (PcmStreamMixerListener)this.field259.last();
 			synchronized(var5) {
 				int var7 = var5.update();
 				if (var7 < 0) {
-					var5.field385 = 0;
-					this.method717(var5);
+					var5.field402 = 0;
+					this.method742(var5);
 				} else {
-					var5.field385 = var7;
-					this.method716(var5.previous, var5);
+					var5.field402 = var7;
+					this.method770(var5.previous, var5);
 				}
 			}
 		} while(var3 != 0);
 
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("aa")
 	@Export("updateSubStreams")
 	void updateSubStreams(int[] var1, int var2, int var3) {
 		for (PcmStream var4 = (PcmStream)this.subStreams.last(); var4 != null; var4 = (PcmStream)this.subStreams.previous()) {
@@ -157,42 +157,42 @@ public class PcmStreamMixer extends PcmStream {
 
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("au")
 	@Export("skip")
 	public final synchronized void skip(int var1) {
 		do {
-			if (this.field244 < 0) {
+			if (this.field262 < 0) {
 				this.skipSubStreams(var1);
 				return;
 			}
 
-			if (this.field242 + var1 < this.field244) {
-				this.field242 += var1;
+			if (this.field260 + var1 < this.field262) {
+				this.field260 += var1;
 				this.skipSubStreams(var1);
 				return;
 			}
 
-			int var2 = this.field244 - this.field242;
+			int var2 = this.field262 - this.field260;
 			this.skipSubStreams(var2);
 			var1 -= var2;
-			this.field242 += var2;
-			this.method715();
-			PcmStreamMixerListener var3 = (PcmStreamMixerListener)this.field243.last();
+			this.field260 += var2;
+			this.method746();
+			PcmStreamMixerListener var3 = (PcmStreamMixerListener)this.field259.last();
 			synchronized(var3) {
 				int var5 = var3.update();
 				if (var5 < 0) {
-					var3.field385 = 0;
-					this.method717(var3);
+					var3.field402 = 0;
+					this.method742(var3);
 				} else {
-					var3.field385 = var5;
-					this.method716(var3.previous, var3);
+					var3.field402 = var5;
+					this.method770(var3.previous, var3);
 				}
 			}
 		} while(var1 != 0);
 
 	}
 
-	@ObfuscatedName("av")
+	@ObfuscatedName("an")
 	@Export("skipSubStreams")
 	void skipSubStreams(int var1) {
 		for (PcmStream var2 = (PcmStream)this.subStreams.last(); var2 != null; var2 = (PcmStream)this.subStreams.previous()) {

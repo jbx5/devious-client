@@ -1,61 +1,52 @@
-import java.security.SecureRandom;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hp")
+@ObfuscatedName("hu")
 @Implements("EnumComposition")
 public class EnumComposition extends DualNode {
-	@ObfuscatedName("at")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "Lol;"
+		descriptor = "Low;"
 	)
 	@Export("EnumDefinition_archive")
 	public static AbstractArchive EnumDefinition_archive;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Llk;"
+		descriptor = "Llq;"
 	)
 	@Export("EnumDefinition_cached")
-	public static EvictingDualNodeHashTable EnumDefinition_cached;
-	@ObfuscatedName("aj")
-	@ObfuscatedSignature(
-		descriptor = "Ldz;"
-	)
-	@Export("loginScreenRunesAnimation")
-	static LoginScreenAnimation loginScreenRunesAnimation;
-	@ObfuscatedName("ih")
-	static SecureRandom field1896;
-	@ObfuscatedName("ar")
+	static EvictingDualNodeHashTable EnumDefinition_cached;
+	@ObfuscatedName("af")
 	@Export("inputType")
 	public char inputType;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aj")
 	@Export("outputType")
 	public char outputType;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("aq")
 	@Export("defaultStr")
 	public String defaultStr;
-	@ObfuscatedName("au")
+	@ObfuscatedName("ar")
 	@ObfuscatedGetter(
-		intValue = -1735445249
+		intValue = 684618021
 	)
 	@Export("defaultInt")
 	public int defaultInt;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		intValue = -1590765713
+		intValue = -213869229
 	)
 	@Export("outputCount")
 	public int outputCount;
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ao")
 	@Export("keys")
 	public int[] keys;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ae")
 	@Export("intVals")
 	public int[] intVals;
-	@ObfuscatedName("az")
+	@ObfuscatedName("aa")
 	@Export("strVals")
 	public String[] strVals;
 
@@ -68,10 +59,10 @@ public class EnumComposition extends DualNode {
 		this.outputCount = 0;
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(Luj;I)V",
-		garbageValue = "-673581219"
+		descriptor = "(Luk;B)V",
+		garbageValue = "31"
 	)
 	@Export("decode")
 	void decode(Buffer var1) {
@@ -85,10 +76,10 @@ public class EnumComposition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "(Luj;II)V",
-		garbageValue = "225113863"
+		descriptor = "(Luk;IB)V",
+		garbageValue = "117"
 	)
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
@@ -125,10 +116,10 @@ public class EnumComposition extends DualNode {
 
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-1812244472"
+		garbageValue = "-1692614113"
 	)
 	@Export("size")
 	public int size() {
@@ -137,28 +128,16 @@ public class EnumComposition extends DualNode {
 
 	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(Lol;IB)Z",
-		garbageValue = "120"
+		descriptor = "(III)I",
+		garbageValue = "2125087536"
 	)
-	public static boolean method3679(AbstractArchive var0, int var1) {
-		byte[] var2 = var0.takeFileFlat(var1);
+	@Export("ItemContainer_getCount")
+	static int ItemContainer_getCount(int var0, int var1) {
+		ItemContainer var2 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
 		if (var2 == null) {
-			return false;
+			return 0;
 		} else {
-			class162.SpriteBuffer_decode(var2);
-			return true;
+			return var1 >= 0 && var1 < var2.quantities.length ? var2.quantities[var1] : 0;
 		}
-	}
-
-	@ObfuscatedName("ap")
-	@ObfuscatedSignature(
-		descriptor = "(IIIII)V",
-		garbageValue = "-264971545"
-	)
-	public static void method3678(int var0, int var1, int var2, int var3) {
-		class316.musicPlayerStatus = var0;
-		class316.field3418 = var1;
-		class316.field3419 = var2;
-		class316.field3417 = var3;
 	}
 }

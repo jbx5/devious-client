@@ -28,6 +28,10 @@ public class JSONObject {
 		this.properties = new HashMap();
 	}
 
+	public JSONObject(String var1) throws JSONException {
+		this(new JSONTokener(var1));
+	}
+
 	public JSONObject(JSONTokener var1) throws JSONException {
 		this();
 		if (var1.nextClean() != '{') {
@@ -72,10 +76,6 @@ public class JSONObject {
 		}
 	}
 
-	public JSONObject(String var1) throws JSONException {
-		this(new JSONTokener(var1));
-	}
-
 	public JSONObject(Object var1, boolean var2) {
 		this();
 		this.populateInternalMap(var1, var2);
@@ -98,12 +98,12 @@ public class JSONObject {
 
 	}
 
-	public Object method9995(String var1) {
+	public Object method10056(String var1) {
 		return var1 == null ? null : this.properties.get(var1);
 	}
 
-	public Object method9994(String var1) throws JSONException {
-		Object var2 = this.method9995(var1);
+	public Object method10053(String var1) throws JSONException {
+		Object var2 = this.method10056(var1);
 		if (var2 == null) {
 			throw new JSONException("JSONObject[" + quote(var1) + "] not found.");
 		} else {
@@ -127,31 +127,18 @@ public class JSONObject {
 		}
 	}
 
-	public String optString(String var1, String var2) {
-		Object var3 = this.method9995(var1);
-		return var3 != null ? var3.toString() : var2;
-	}
-
-	public double optDouble(String var1, double var2) {
+	public long optLong(String var1, long var2) {
 		try {
-			Object var4 = this.method9995(var1);
-			return var4 instanceof Number ? ((Number)var4).doubleValue() : new Double((String)var4);
+			return this.getLong(var1);
 		} catch (Exception var5) {
 			return var2;
 		}
 	}
 
-	public int optInt(String var1, int var2) {
+	public double optDouble(String var1, double var2) {
 		try {
-			return this.getInt(var1);
-		} catch (Exception var4) {
-			return var2;
-		}
-	}
-
-	public long optLong(String var1, long var2) {
-		try {
-			return this.getLong(var1);
+			Object var4 = this.method10056(var1);
+			return var4 instanceof Number ? ((Number)var4).doubleValue() : new Double((String)var4);
 		} catch (Exception var5) {
 			return var2;
 		}
@@ -166,7 +153,7 @@ public class JSONObject {
 	}
 
 	public boolean getBoolean(String var1) throws JSONException {
-		Object var2 = this.method9994(var1);
+		Object var2 = this.method10053(var1);
 		if (var2.equals(Boolean.FALSE) || var2 instanceof String && ((String)var2).equalsIgnoreCase("false")) {
 			return false;
 		} else if (var2.equals(Boolean.TRUE) || var2 instanceof String && ((String)var2).equalsIgnoreCase("true")) {
@@ -176,18 +163,31 @@ public class JSONObject {
 		}
 	}
 
+	public int optInt(String var1, int var2) {
+		try {
+			return this.getInt(var1);
+		} catch (Exception var4) {
+			return var2;
+		}
+	}
+
 	public long getLong(String var1) throws JSONException {
-		Object var2 = this.method9994(var1);
+		Object var2 = this.method10053(var1);
 		return var2 instanceof Number ? ((Number)var2).longValue() : (long)this.getDouble(var1);
+	}
+
+	public String optString(String var1, String var2) {
+		Object var3 = this.method10056(var1);
+		return var3 != null ? var3.toString() : var2;
+	}
+
+	public int getInt(String var1) throws JSONException {
+		Object var2 = this.method10053(var1);
+		return var2 instanceof Number ? ((Number)var2).intValue() : (int)this.getDouble(var1);
 	}
 
 	public Iterator keys() {
 		return this.properties.keySet().iterator();
-	}
-
-	public int getInt(String var1) throws JSONException {
-		Object var2 = this.method9994(var1);
-		return var2 instanceof Number ? ((Number)var2).intValue() : (int)this.getDouble(var1);
 	}
 
 	String toString(int var1, int var2) throws JSONException {
@@ -245,11 +245,20 @@ public class JSONObject {
 	}
 
 	public JSONArray getJSONArray(String var1) throws JSONException {
-		Object var2 = this.method9994(var1);
+		Object var2 = this.method10053(var1);
 		if (var2 instanceof JSONArray) {
 			return (JSONArray)var2;
 		} else {
 			throw new JSONException("JSONObject[" + quote(var1) + "] is not a JSONArray.");
+		}
+	}
+
+	public JSONObject getJSONObject(String var1) throws JSONException {
+		Object var2 = this.method10053(var1);
+		if (var2 instanceof JSONObject) {
+			return (JSONObject)var2;
+		} else {
+			throw new JSONException("JSONObject[" + quote(var1) + "] is not a JSONObject.");
 		}
 	}
 
@@ -303,17 +312,16 @@ public class JSONObject {
 
 	}
 
-	public JSONObject getJSONObject(String var1) throws JSONException {
-		Object var2 = this.method9994(var1);
-		if (var2 instanceof JSONObject) {
-			return (JSONObject)var2;
-		} else {
-			throw new JSONException("JSONObject[" + quote(var1) + "] is not a JSONObject.");
-		}
+	public String optString(String var1) {
+		return this.optString(var1, "");
 	}
 
 	public Object remove(String var1) {
 		return this.properties.remove(var1);
+	}
+
+	public String getString(String var1) throws JSONException {
+		return this.method10053(var1).toString();
 	}
 
 	public Iterator sortedKeys() {
@@ -321,13 +329,17 @@ public class JSONObject {
 	}
 
 	public double getDouble(String var1) throws JSONException {
-		Object var2 = this.method9994(var1);
+		Object var2 = this.method10053(var1);
 
 		try {
 			return var2 instanceof Number ? ((Number)var2).doubleValue() : Double.valueOf((String)var2);
 		} catch (Exception var4) {
 			throw new JSONException("JSONObject[" + quote(var1) + "] is not a number.");
 		}
+	}
+
+	public int optInt(String var1) {
+		return this.optInt(var1, 0);
 	}
 
 	public Writer write(Writer var1) throws JSONException {
@@ -361,10 +373,6 @@ public class JSONObject {
 		}
 	}
 
-	public String getString(String var1) throws JSONException {
-		return this.method9994(var1).toString();
-	}
-
 	public String toString() {
 		try {
 			Iterator var1 = this.keys();
@@ -388,9 +396,14 @@ public class JSONObject {
 		}
 	}
 
+	public JSONObject optJSONObject(String var1) {
+		Object var2 = this.method10056(var1);
+		return var2 instanceof JSONObject ? (JSONObject)var2 : null;
+	}
+
 	public JSONObject putOnce(String var1, Object var2) throws JSONException {
 		if (var1 != null && var2 != null) {
-			if (this.method9995(var1) != null) {
+			if (this.method10056(var1) != null) {
 				throw new JSONException("Duplicate key \"" + var1 + "\"");
 			}
 
@@ -404,35 +417,63 @@ public class JSONObject {
 		return var1.isPrimitive() || var1.isAssignableFrom(Byte.class) || var1.isAssignableFrom(Short.class) || var1.isAssignableFrom(Integer.class) || var1.isAssignableFrom(Long.class) || var1.isAssignableFrom(Float.class) || var1.isAssignableFrom(Double.class) || var1.isAssignableFrom(Character.class) || var1.isAssignableFrom(String.class) || var1.isAssignableFrom(Boolean.class);
 	}
 
-	public boolean isNull(String var1) {
-		return NULL.equals(this.method9995(var1));
+	public boolean optBoolean(String var1) {
+		return this.optBoolean(var1, false);
 	}
 
-	public JSONObject accumulate(String var1, Object var2) throws JSONException {
-		testValidity(var2);
-		Object var3 = this.method9995(var1);
-		if (var3 == null) {
-			this.setProperty(var1, var2 instanceof JSONArray ? (new JSONArray()).method9985(var2) : var2);
-		} else if (var3 instanceof JSONArray) {
-			((JSONArray)var3).method9985(var2);
-		} else {
-			this.setProperty(var1, (new JSONArray()).method9985(var3).method9985(var2));
-		}
-
-		return this;
+	public long optLong(String var1) {
+		return this.optLong(var1, 0L);
 	}
 
 	public JSONObject append(String var1, Object var2) throws JSONException {
 		testValidity(var2);
-		Object var3 = this.method9995(var1);
+		Object var3 = this.method10056(var1);
 		if (var3 == null) {
-			this.setProperty(var1, (new JSONArray()).method9985(var2));
+			this.setProperty(var1, (new JSONArray()).method10073(var2));
 		} else {
 			if (!(var3 instanceof JSONArray)) {
 				throw new JSONException("JSONObject[" + var1 + "] is not a JSONArray.");
 			}
 
-			this.setProperty(var1, ((JSONArray)var3).method9985(var2));
+			this.setProperty(var1, ((JSONArray)var3).method10073(var2));
+		}
+
+		return this;
+	}
+
+	public boolean isNull(String var1) {
+		return NULL.equals(this.method10056(var1));
+	}
+
+	public JSONArray names() {
+		JSONArray var1 = new JSONArray();
+		Iterator var2 = this.keys();
+
+		while (var2.hasNext()) {
+			var1.method10073(var2.next());
+		}
+
+		return var1.length() == 0 ? null : var1;
+	}
+
+	public double optDouble(String var1) {
+		return this.optDouble(var1, Double.NaN);
+	}
+
+	public JSONArray optJSONArray(String var1) {
+		Object var2 = this.method10056(var1);
+		return var2 instanceof JSONArray ? (JSONArray)var2 : null;
+	}
+
+	public JSONObject accumulate(String var1, Object var2) throws JSONException {
+		testValidity(var2);
+		Object var3 = this.method10056(var1);
+		if (var3 == null) {
+			this.setProperty(var1, var2 instanceof JSONArray ? (new JSONArray()).method10073(var2) : var2);
+		} else if (var3 instanceof JSONArray) {
+			((JSONArray)var3).method10073(var2);
+		} else {
+			this.setProperty(var1, (new JSONArray()).method10073(var3).method10073(var2));
 		}
 
 		return this;
@@ -442,45 +483,12 @@ public class JSONObject {
 		return this.toString(var1, 0);
 	}
 
-	public long optLong(String var1) {
-		return this.optLong(var1, 0L);
-	}
-
-	public String optString(String var1) {
-		return this.optString(var1, "");
-	}
-
-	public boolean optBoolean(String var1) {
-		return this.optBoolean(var1, false);
-	}
-
-	public double optDouble(String var1) {
-		return this.optDouble(var1, Double.NaN);
-	}
-
-	public int optInt(String var1) {
-		return this.optInt(var1, 0);
-	}
-
-	public JSONArray optJSONArray(String var1) {
-		Object var2 = this.method9995(var1);
-		return var2 instanceof JSONArray ? (JSONArray)var2 : null;
-	}
-
-	public JSONObject optJSONObject(String var1) {
-		Object var2 = this.method9995(var1);
-		return var2 instanceof JSONObject ? (JSONObject)var2 : null;
-	}
-
-	public JSONArray names() {
-		JSONArray var1 = new JSONArray();
-		Iterator var2 = this.keys();
-
-		while (var2.hasNext()) {
-			var1.method9985(var2.next());
+	public JSONObject putOpt(String var1, Object var2) throws JSONException {
+		if (var1 != null && var2 != null) {
+			this.setProperty(var1, var2);
 		}
 
-		return var1.length() == 0 ? null : var1;
+		return this;
 	}
 
 	public JSONArray toJSONArray(JSONArray var1) throws JSONException {
@@ -488,21 +496,13 @@ public class JSONObject {
 			JSONArray var2 = new JSONArray();
 
 			for (int var3 = 0; var3 < var1.length(); ++var3) {
-				var2.method9985(this.method9995(var1.getString(var3)));
+				var2.method10073(this.method10056(var1.getString(var3)));
 			}
 
 			return var2;
 		} else {
 			return null;
 		}
-	}
-
-	public JSONObject putOpt(String var1, Object var2) throws JSONException {
-		if (var1 != null && var2 != null) {
-			this.setProperty(var1, var2);
-		}
-
-		return this;
 	}
 
 	public static String[] getNames(JSONObject var0) {

@@ -1,17 +1,18 @@
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("sg")
-public class class468 extends class469 {
-	public class468(int var1) {
-		super(var1);
-	}
-
-	@ObfuscatedName("at")
-	@ObfuscatedSignature(
-		descriptor = "(Luj;II)V",
-		garbageValue = "-1867165172"
+@ObfuscatedName("si")
+public class class468 {
+	@ObfuscatedName("am")
+	float[] field4826;
+	@ObfuscatedName("ap")
+	@ObfuscatedGetter(
+		intValue = -117463861
 	)
-	void vmethod8552(Buffer var1, int var2) {
+	int field4825;
+
+	class468(float[] var1, int var2) {
+		this.field4826 = var1;
+		this.field4825 = var2;
 	}
 }

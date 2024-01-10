@@ -1,28 +1,53 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("nf")
-public class class354 {
-	@ObfuscatedName("bt")
+@ObfuscatedName("ng")
+public enum class354 implements Enum {
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "1854178059"
+		descriptor = "Lng;"
 	)
-	static int method6859(int var0) {
-		return (int)Math.pow(2.0D, (double)(7.0F + (float)var0 / 256.0F));
+	field3880(0),
+	@ObfuscatedName("ap")
+	@ObfuscatedSignature(
+		descriptor = "Lng;"
+	)
+	field3877(1),
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "Lng;"
+	)
+	field3878(2),
+	@ObfuscatedName("aj")
+	@ObfuscatedSignature(
+		descriptor = "Lng;"
+	)
+	field3879(3),
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "Lng;"
+	)
+	field3876(4);
+
+	@ObfuscatedName("ar")
+	@ObfuscatedGetter(
+		intValue = -366924757
+	)
+	final int field3883;
+
+	class354(int var3) {
+		this.field3883 = var3;
 	}
 
-	@ObfuscatedName("oc")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(Luj;I)V",
-		garbageValue = "-390178192"
+		descriptor = "(I)I",
+		garbageValue = "-884190501"
 	)
-	static void method6858(Buffer var0) {
-		if (Client.randomDatData != null) {
-			var0.writeBytes(Client.randomDatData, 0, Client.randomDatData.length);
-		} else {
-			byte[] var1 = class139.randomDatData2();
-			var0.writeBytes(var1, 0, var1.length);
-		}
+	@Export("rsOrdinal")
+	public int rsOrdinal() {
+		return this.field3883;
 	}
 }

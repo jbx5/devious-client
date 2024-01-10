@@ -4,74 +4,54 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kj")
+@ObfuscatedName("kz")
 @Implements("ItemLayer")
 public final class ItemLayer {
-	@ObfuscatedName("ht")
-	static String field2655;
-	@ObfuscatedName("jv")
-	@ObfuscatedSignature(
-		descriptor = "Lpf;"
-	)
-	@Export("fontPlain12")
-	static Font fontPlain12;
-	@ObfuscatedName("kr")
-	@ObfuscatedSignature(
-		descriptor = "Luz;"
-	)
-	@Export("compass")
-	static SpritePixels compass;
-	@ObfuscatedName("mr")
+	@ObfuscatedName("am")
 	@ObfuscatedGetter(
-		intValue = -825074063
-	)
-	@Export("Client_plane")
-	static int Client_plane;
-	@ObfuscatedName("at")
-	@ObfuscatedGetter(
-		intValue = -162293575
+		intValue = -612752779
 	)
 	@Export("z")
 	int z;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = 195005795
+		intValue = -235929600
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("af")
 	@ObfuscatedGetter(
-		intValue = 185597952
+		intValue = 1448069827
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "Lkt;"
+		descriptor = "Lkp;"
 	)
 	@Export("first")
 	Renderable first;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Lkt;"
+		descriptor = "Lkp;"
 	)
 	@Export("second")
 	Renderable second;
-	@ObfuscatedName("au")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "Lkt;"
+		descriptor = "Lkp;"
 	)
 	@Export("third")
 	Renderable third;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		longValue = -3344454084756600557L
+		longValue = -5128273485840900591L
 	)
 	@Export("tag")
 	long tag;
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = -1481862157
+		intValue = 1921801005
 	)
 	@Export("height")
 	int height;

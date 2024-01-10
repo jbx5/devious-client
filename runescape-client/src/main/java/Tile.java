@@ -4,129 +4,129 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kv")
+@ObfuscatedName("kd")
 @Implements("Tile")
 public final class Tile extends Node {
-	@ObfuscatedName("at")
+	@ObfuscatedName("am")
 	@ObfuscatedGetter(
-		intValue = -1542161315
+		intValue = 1960032189
 	)
 	@Export("plane")
 	int plane;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = -794250693
+		intValue = 934684243
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("af")
 	@ObfuscatedGetter(
-		intValue = -953310759
+		intValue = -1545522719
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = 1305070591
+		intValue = -207645507
 	)
 	@Export("originalPlane")
 	int originalPlane;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Lke;"
+		descriptor = "Lkh;"
 	)
 	@Export("paint")
 	SceneTilePaint paint;
-	@ObfuscatedName("au")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "Lkl;"
+		descriptor = "Lkc;"
 	)
 	@Export("model")
 	SceneTileModel model;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "Llv;"
 	)
 	@Export("boundaryObject")
 	BoundaryObject boundaryObject;
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "Llj;"
+		descriptor = "Llu;"
 	)
 	@Export("wallDecoration")
 	WallDecoration wallDecoration;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "Lkm;"
+		descriptor = "Lku;"
 	)
 	@Export("floorDecoration")
 	FloorDecoration floorDecoration;
-	@ObfuscatedName("az")
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
-		descriptor = "Lkj;"
+		descriptor = "Lkz;"
 	)
 	@Export("itemLayer")
 	ItemLayer itemLayer;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		intValue = 740733941
+		intValue = 1181518301
 	)
 	@Export("gameObjectsCount")
 	int gameObjectsCount;
-	@ObfuscatedName("av")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "[Lle;"
+		descriptor = "[Lll;"
 	)
 	@Export("gameObjects")
 	GameObject[] gameObjects;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ad")
 	@Export("gameObjectEdgeMasks")
 	int[] gameObjectEdgeMasks;
-	@ObfuscatedName("as")
+	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = -227378737
+		intValue = 1388713263
 	)
 	@Export("gameObjectsEdgeMask")
 	int gameObjectsEdgeMask;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("aw")
 	@ObfuscatedGetter(
-		intValue = -1756345945
+		intValue = -1788936995
 	)
 	@Export("minPlane")
 	int minPlane;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("az")
 	@Export("drawPrimary")
 	boolean drawPrimary;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("av")
 	@Export("drawSecondary")
 	boolean drawSecondary;
-	@ObfuscatedName("am")
+	@ObfuscatedName("ak")
 	@Export("drawGameObjects")
 	boolean drawGameObjects;
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ay")
 	@ObfuscatedGetter(
-		intValue = -321826469
+		intValue = -1754732641
 	)
 	@Export("drawGameObjectEdges")
 	int drawGameObjectEdges;
+	@ObfuscatedName("as")
+	@ObfuscatedGetter(
+		intValue = 2017344355
+	)
+	int field2780;
+	@ObfuscatedName("ab")
+	@ObfuscatedGetter(
+		intValue = 780240341
+	)
+	int field2796;
+	@ObfuscatedName("ah")
+	@ObfuscatedGetter(
+		intValue = -1224610147
+	)
+	int field2799;
 	@ObfuscatedName("ai")
-	@ObfuscatedGetter(
-		intValue = -675199519
-	)
-	int field2760;
-	@ObfuscatedName("aw")
-	@ObfuscatedGetter(
-		intValue = 84209581
-	)
-	int field2747;
-	@ObfuscatedName("ae")
-	@ObfuscatedGetter(
-		intValue = -2116343905
-	)
-	int field2762;
-	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "Lkv;"
+		descriptor = "Lkd;"
 	)
 	@Export("linkedBelowTile")
 	Tile linkedBelowTile;
@@ -138,17 +138,5 @@ public final class Tile extends Node {
 		this.originalPlane = this.plane = var1;
 		this.x = var2;
 		this.y = var3;
-	}
-
-	@ObfuscatedName("jh")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1636778707"
-	)
-	static void method5187() {
-		for (class222 var0 = (class222)Client.field682.last(); var0 != null; var0 = (class222)Client.field682.previous()) {
-			var0.remove();
-		}
-
 	}
 }

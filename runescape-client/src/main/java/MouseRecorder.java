@@ -7,25 +7,31 @@ import net.runelite.mapping.ObfuscatedSignature;
 @ObfuscatedName("db")
 @Implements("MouseRecorder")
 public class MouseRecorder implements Runnable {
-	@ObfuscatedName("at")
+	@ObfuscatedName("oc")
+	@ObfuscatedGetter(
+		intValue = -170100783
+	)
+	@Export("menuY")
+	static int menuY;
+	@ObfuscatedName("am")
 	@Export("isRunning")
 	boolean isRunning;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ap")
 	@Export("lock")
 	Object lock;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("af")
 	@ObfuscatedGetter(
-		intValue = 635201825
+		intValue = 849276385
 	)
 	@Export("index")
 	int index;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aj")
 	@Export("xs")
 	int[] xs;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("aq")
 	@Export("ys")
 	int[] ys;
-	@ObfuscatedName("au")
+	@ObfuscatedName("ar")
 	@Export("millis")
 	long[] millis;
 
@@ -39,7 +45,7 @@ public class MouseRecorder implements Runnable {
 	}
 
 	public void run() {
-		for (; this.isRunning; class219.method4260(50L)) {
+		for (; this.isRunning; BuddyRankComparator.method2992(50L)) {
 			synchronized(this.lock) {
 				if (this.index < 500) {
 					this.xs[this.index] = MouseHandler.MouseHandler_x;
@@ -52,29 +58,31 @@ public class MouseRecorder implements Runnable {
 
 	}
 
-	@ObfuscatedName("as")
+	@ObfuscatedName("ol")
 	@ObfuscatedSignature(
-		descriptor = "(IB)I",
-		garbageValue = "-43"
+		descriptor = "(Ljava/lang/String;ZI)Ljava/lang/String;",
+		garbageValue = "1726004576"
 	)
-	public static int method2372(int var0) {
-		class139 var2 = (class139)SequenceDefinition.SequenceDefinition_cachedModel.get((long)var0);
-		class139 var1;
-		if (var2 != null) {
-			var1 = var2;
-		} else {
-			var2 = Login.method2197(SequenceDefinition.SequenceDefinition_animationsArchive, SequenceDefinition.SequenceDefinition_skeletonsArchive, var0, false);
-			if (var2 != null) {
-				SequenceDefinition.SequenceDefinition_cachedModel.put(var2, (long)var0);
-			}
-
-			var1 = var2;
+	static String method2371(String var0, boolean var1) {
+		String var2 = var1 ? "https://" : "http://";
+		if (Client.gameBuild == 1) {
+			var0 = var0 + "-wtrc";
+		} else if (Client.gameBuild == 2) {
+			var0 = var0 + "-wtqa";
+		} else if (Client.gameBuild == 3) {
+			var0 = var0 + "-wtwip";
+		} else if (Client.gameBuild == 5) {
+			var0 = var0 + "-wti";
+		} else if (Client.gameBuild == 4) {
+			var0 = "local";
 		}
 
-		if (var1 == null) {
-			return 2;
-		} else {
-			return var1.method3164() ? 0 : 1;
+		String var3 = "";
+		if (class426.field4608 != null) {
+			var3 = "/p=" + class426.field4608;
 		}
+
+		String var4 = "runescape.com";
+		return var2 + var0 + "." + var4 + "/l=" + class92.clientLanguage + "/a=" + WorldMapData_0.field2467 + var3 + "/";
 	}
 }

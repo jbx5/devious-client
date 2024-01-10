@@ -3,32 +3,14 @@ import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 import netscape.javascript.JSObject;
 
-@ObfuscatedName("be")
+@ObfuscatedName("bj")
 public class class26 {
-	@ObfuscatedName("at")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/applet/Applet;Ljava/lang/String;I)V",
-		garbageValue = "-707108412"
+		descriptor = "(Ljava/applet/Applet;Ljava/lang/String;B)V",
+		garbageValue = "27"
 	)
-	public static void method402(Applet var0, String var1) throws Throwable {
+	public static void method390(Applet var0, String var1) throws Throwable {
 		JSObject.getWindow(var0).eval(var1);
-	}
-
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/applet/Applet;Ljava/lang/String;B)Ljava/lang/Object;",
-		garbageValue = "107"
-	)
-	public static Object method394(Applet var0, String var1) throws Throwable {
-		return JSObject.getWindow(var0).call(var1, (Object[])null);
-	}
-
-	@ObfuscatedName("ar")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/applet/Applet;Ljava/lang/String;[Ljava/lang/Object;I)Ljava/lang/Object;",
-		garbageValue = "-224433790"
-	)
-	public static Object method396(Applet var0, String var1, Object[] var2) throws Throwable {
-		return JSObject.getWindow(var0).call(var1, var2);
 	}
 }

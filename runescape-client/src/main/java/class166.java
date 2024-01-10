@@ -1,60 +1,63 @@
-import net.runelite.mapping.ObfuscatedGetter;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gu")
-public class class166 extends class144 {
-	@ObfuscatedName("at")
-	@ObfuscatedGetter(
-		longValue = 6272992877423424937L
+@ObfuscatedName("gj")
+public class class166 extends class159 {
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "Low;"
 	)
-	long field1780;
-	@ObfuscatedName("ah")
-	String field1778;
+	@Export("ItemDefinition_modelArchive")
+	public static AbstractArchive ItemDefinition_modelArchive;
+	@ObfuscatedName("jb")
+	@Export("xteaKeys")
+	static int[][] xteaKeys;
+	@ObfuscatedName("am")
+	String field1784;
+	@ObfuscatedName("ap")
+	byte field1788;
+	@ObfuscatedName("af")
+	byte field1783;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lfv;"
+		descriptor = "Lgr;"
 	)
-	final class147 this$0;
+	final class160 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lfv;)V"
+		descriptor = "(Lgr;)V"
 	)
-	class166(class147 var1) {
+	class166(class160 var1) {
 		this.this$0 = var1;
-		this.field1780 = -1L;
-		this.field1778 = null;
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(Luj;I)V",
-		garbageValue = "-734756620"
+		descriptor = "(Luk;I)V",
+		garbageValue = "-1814222712"
 	)
-	void vmethod3510(Buffer var1) {
-		if (var1.readUnsignedByte() != 255) {
-			--var1.offset;
-			this.field1780 = var1.readLong();
+	void vmethod3518(Buffer var1) {
+		this.field1784 = var1.readStringCp1252NullTerminatedOrNull();
+		if (this.field1784 != null) {
+			var1.readUnsignedByte();
+			this.field1788 = var1.readByte();
+			this.field1783 = var1.readByte();
 		}
 
-		this.field1778 = var1.readStringCp1252NullTerminatedOrNull();
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(Lfc;I)V",
-		garbageValue = "-2111347169"
+		descriptor = "(Lgt;I)V",
+		garbageValue = "1662663599"
 	)
-	void vmethod3506(ClanSettings var1) {
-		var1.method3358(this.field1780, this.field1778);
-	}
+	void vmethod3519(ClanChannel var1) {
+		var1.name = this.field1784;
+		if (this.field1784 != null) {
+			var1.field1758 = this.field1788;
+			var1.field1767 = this.field1783;
+		}
 
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "41"
-	)
-	public static void method3495() {
-		ItemComposition.ItemDefinition_cachedSprites.clear();
 	}
 }
