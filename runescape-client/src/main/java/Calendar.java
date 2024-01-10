@@ -31,7 +31,7 @@ public class Calendar {
 	)
 	static void method6881() {
 		if (Client.packetWriter != null && Client.packetWriter.isaacCipher != null) {
-			PacketBufferNode var0 = class482.getPacketBufferNode(ClientPacket.field3185, Client.packetWriter.isaacCipher);
+			PacketBufferNode var0 = class482.getPacketBufferNode(ClientPacket.EVENT_WINDOW_SETTING, Client.packetWriter.isaacCipher);
 			var0.packetBuffer.writeByte(ClanChannelMember.getWindowedMode());
 			var0.packetBuffer.writeShort(class524.canvasWidth);
 			var0.packetBuffer.writeShort(GameEngine.canvasHeight);

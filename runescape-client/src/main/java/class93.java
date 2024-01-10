@@ -112,7 +112,7 @@ public class class93 {
 					var15 = HealthBar.method2644(var7);
 				}
 
-				PacketBufferNode var13 = class482.getPacketBufferNode(ClientPacket.field3239, Client.packetWriter.isaacCipher);
+				PacketBufferNode var13 = class482.getPacketBufferNode(ClientPacket.RESUME_COUNTDIALOG, Client.packetWriter.isaacCipher);
 				var13.packetBuffer.writeInt(var15);
 				Client.packetWriter.addNode(var13);
 				return 1;
@@ -120,14 +120,14 @@ public class class93 {
 				PacketBufferNode var11;
 				if (var0 == ScriptOpcodes.RESUME_NAMEDIALOG) {
 					var7 = Interpreter.Interpreter_stringStack[--class211.Interpreter_stringStackSize];
-					var11 = class482.getPacketBufferNode(ClientPacket.field3198, Client.packetWriter.isaacCipher);
+					var11 = class482.getPacketBufferNode(ClientPacket.RESUME_NAMEDIALOG, Client.packetWriter.isaacCipher);
 					var11.packetBuffer.writeByte(var7.length() + 1);
 					var11.packetBuffer.writeStringCp1252NullTerminated(var7);
 					Client.packetWriter.addNode(var11);
 					return 1;
 				} else if (var0 == ScriptOpcodes.RESUME_STRINGDIALOG) {
 					var7 = Interpreter.Interpreter_stringStack[--class211.Interpreter_stringStackSize];
-					var11 = class482.getPacketBufferNode(ClientPacket.field3204, Client.packetWriter.isaacCipher);
+					var11 = class482.getPacketBufferNode(ClientPacket.RESUME_STRINGDIALOG, Client.packetWriter.isaacCipher);
 					var11.packetBuffer.writeByte(var7.length() + 1);
 					var11.packetBuffer.writeStringCp1252NullTerminated(var7);
 					Client.packetWriter.addNode(var11);
@@ -171,7 +171,7 @@ public class class93 {
 						return 1;
 					} else if (var0 == ScriptOpcodes.RESUME_OBJDIALOG) {
 						var3 = Interpreter.Interpreter_intStack[--UserComparator6.Interpreter_intStackSize];
-						var11 = class482.getPacketBufferNode(ClientPacket.field3254, Client.packetWriter.isaacCipher);
+						var11 = class482.getPacketBufferNode(ClientPacket.RESUME_OBJDIALOG, Client.packetWriter.isaacCipher);
 						var11.packetBuffer.writeShort(var3);
 						Client.packetWriter.addNode(var11);
 						return 1;

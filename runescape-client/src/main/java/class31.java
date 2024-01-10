@@ -142,7 +142,7 @@ public class class31 {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var10 = class482.getPacketBufferNode(ClientPacket.field3236, Client.packetWriter.isaacCipher);
+					var10 = class482.getPacketBufferNode(ClientPacket.OPPLAYER4, Client.packetWriter.isaacCipher);
 					var10.packetBuffer.writeByte(Client.field661.method4426(82) ? 1 : 0);
 					var10.packetBuffer.writeShortAdd(var3);
 					Client.packetWriter.addNode(var10);
@@ -161,7 +161,7 @@ public class class31 {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var14 = class482.getPacketBufferNode(ClientPacket.field3179, Client.packetWriter.isaacCipher);
+				var14 = class482.getPacketBufferNode(ClientPacket.OPLOC1, Client.packetWriter.isaacCipher);
 				var14.packetBuffer.writeShortAddLE(WorldMapScaleHandler.baseY * 64 + var1);
 				var14.packetBuffer.writeByteNeg(Client.field661.method4426(82) ? 1 : 0);
 				var14.packetBuffer.writeShortAddLE(HealthBarDefinition.baseX * 64 + var0);
@@ -202,7 +202,7 @@ public class class31 {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var14 = class482.getPacketBufferNode(ClientPacket.field3214, Client.packetWriter.isaacCipher);
+				var14 = class482.getPacketBufferNode(ClientPacket.OPLOC5, Client.packetWriter.isaacCipher);
 				var14.packetBuffer.writeByteAdd(Client.field661.method4426(82) ? 1 : 0);
 				var14.packetBuffer.writeShortLE(HealthBarDefinition.baseX * 64 + var0);
 				var14.packetBuffer.writeShort(WorldMapScaleHandler.baseY * 64 + var1);
@@ -222,7 +222,7 @@ public class class31 {
 						WorldMapSectionType.runScriptEvent(var16);
 					}
 
-					var10 = class482.getPacketBufferNode(ClientPacket.field3253, Client.packetWriter.isaacCipher);
+					var10 = class482.getPacketBufferNode(ClientPacket.IF_BUTTONT, Client.packetWriter.isaacCipher);
 					var10.packetBuffer.writeIntIME(var1);
 					var10.packetBuffer.writeShortAddLE(var0);
 					var10.packetBuffer.writeIntLE(ModelData0.selectedSpellWidget);
@@ -236,7 +236,7 @@ public class class31 {
 			int var11;
 			Widget var17;
 			if (var2 == 29) {
-				var14 = class482.getPacketBufferNode(ClientPacket.field3199, Client.packetWriter.isaacCipher);
+				var14 = class482.getPacketBufferNode(ClientPacket.WIDGET_TYPE, Client.packetWriter.isaacCipher);
 				var14.packetBuffer.writeInt(var1);
 				Client.packetWriter.addNode(var14);
 				var17 = class380.widgetDefinition.method6348(var1);
@@ -276,7 +276,7 @@ public class class31 {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var10 = class482.getPacketBufferNode(ClientPacket.field3209, Client.packetWriter.isaacCipher);
+					var10 = class482.getPacketBufferNode(ClientPacket.OPPLAYER3, Client.packetWriter.isaacCipher);
 					var10.packetBuffer.writeByte(Client.field661.method4426(82) ? 1 : 0);
 					var10.packetBuffer.writeShortAdd(var3);
 					Client.packetWriter.addNode(var10);
@@ -292,7 +292,7 @@ public class class31 {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var10 = class482.getPacketBufferNode(ClientPacket.field3169, Client.packetWriter.isaacCipher);
+					var10 = class482.getPacketBufferNode(ClientPacket.OPPLAYER6, Client.packetWriter.isaacCipher);
 					var10.packetBuffer.writeShort(var3);
 					var10.packetBuffer.writeByte(Client.field661.method4426(82) ? 1 : 0);
 					Client.packetWriter.addNode(var10);
@@ -312,7 +312,7 @@ public class class31 {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var14 = class482.getPacketBufferNode(ClientPacket.field3191, Client.packetWriter.isaacCipher);
+				var14 = class482.getPacketBufferNode(ClientPacket.OPLOC3, Client.packetWriter.isaacCipher);
 				var14.packetBuffer.writeByteNeg(Client.field661.method4426(82) ? 1 : 0);
 				var14.packetBuffer.writeShortAddLE(WorldMapScaleHandler.baseY * 64 + var1);
 				var14.packetBuffer.writeShortAddLE(var3);
@@ -327,7 +327,7 @@ public class class31 {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var14 = class482.getPacketBufferNode(ClientPacket.field3257, Client.packetWriter.isaacCipher);
+				var14 = class482.getPacketBufferNode(ClientPacket.OPOBJT, Client.packetWriter.isaacCipher);
 				var14.packetBuffer.writeIntLE(ModelData0.selectedSpellWidget);
 				var14.packetBuffer.writeShortAdd(Client.selectedSpellChildIndex);
 				var14.packetBuffer.writeShortAdd(var3);
@@ -347,7 +347,7 @@ public class class31 {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var10 = class482.getPacketBufferNode(ClientPacket.field3207, Client.packetWriter.isaacCipher);
+					var10 = class482.getPacketBufferNode(ClientPacket.OPPLAYER5, Client.packetWriter.isaacCipher);
 					var10.packetBuffer.writeShort(var3);
 					var10.packetBuffer.writeByteSub(Client.field661.method4426(82) ? 1 : 0);
 					Client.packetWriter.addNode(var10);
@@ -364,7 +364,7 @@ public class class31 {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var10 = class482.getPacketBufferNode(ClientPacket.field3220, Client.packetWriter.isaacCipher);
+					var10 = class482.getPacketBufferNode(ClientPacket.OPNPC5, Client.packetWriter.isaacCipher);
 					var10.packetBuffer.writeByteAdd(Client.field661.method4426(82) ? 1 : 0);
 					var10.packetBuffer.writeShortLE(var3);
 					Client.packetWriter.addNode(var10);
@@ -378,7 +378,7 @@ public class class31 {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var14 = class482.getPacketBufferNode(ClientPacket.field3244, Client.packetWriter.isaacCipher);
+				var14 = class482.getPacketBufferNode(ClientPacket.OPOBJ1, Client.packetWriter.isaacCipher);
 				var14.packetBuffer.writeByteSub(Client.field661.method4426(82) ? 1 : 0);
 				var14.packetBuffer.writeShortLE(WorldMapScaleHandler.baseY * 64 + var1);
 				var14.packetBuffer.writeShortAdd(var3);
@@ -395,7 +395,7 @@ public class class31 {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var10 = class482.getPacketBufferNode(ClientPacket.field3195, Client.packetWriter.isaacCipher);
+					var10 = class482.getPacketBufferNode(ClientPacket.OPPLAYERT, Client.packetWriter.isaacCipher);
 					var10.packetBuffer.writeByteNeg(Client.field661.method4426(82) ? 1 : 0);
 					var10.packetBuffer.writeShortLE(Client.selectedSpellItemId);
 					var10.packetBuffer.writeShortLE(Client.selectedSpellChildIndex);
@@ -412,7 +412,7 @@ public class class31 {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var14 = class482.getPacketBufferNode(ClientPacket.field3227, Client.packetWriter.isaacCipher);
+				var14 = class482.getPacketBufferNode(ClientPacket.OPOBJ5, Client.packetWriter.isaacCipher);
 				var14.packetBuffer.writeShortAdd(var3);
 				var14.packetBuffer.writeShortLE(HealthBarDefinition.baseX * 64 + var0);
 				var14.packetBuffer.writeShortLE(WorldMapScaleHandler.baseY * 64 + var1);
@@ -425,7 +425,7 @@ public class class31 {
 				Client.mouseCrossY = var8;
 				Client.mouseCrossColor = 2;
 				Client.mouseCrossState = 0;
-				var14 = class482.getPacketBufferNode(ClientPacket.field3248, Client.packetWriter.isaacCipher);
+				var14 = class482.getPacketBufferNode(ClientPacket.OPLOCE, Client.packetWriter.isaacCipher);
 				var14.packetBuffer.writeShortLE(var3);
 				Client.packetWriter.addNode(var14);
 			}
@@ -439,7 +439,7 @@ public class class31 {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var10 = class482.getPacketBufferNode(ClientPacket.field3175, Client.packetWriter.isaacCipher);
+					var10 = class482.getPacketBufferNode(ClientPacket.OPNPC2, Client.packetWriter.isaacCipher);
 					var10.packetBuffer.writeShortAddLE(var3);
 					var10.packetBuffer.writeByte(Client.field661.method4426(82) ? 1 : 0);
 					Client.packetWriter.addNode(var10);
@@ -453,7 +453,7 @@ public class class31 {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var14 = class482.getPacketBufferNode(ClientPacket.field3229, Client.packetWriter.isaacCipher);
+				var14 = class482.getPacketBufferNode(ClientPacket.OPLOC4, Client.packetWriter.isaacCipher);
 				var14.packetBuffer.writeShortLE(var3);
 				var14.packetBuffer.writeByte(Client.field661.method4426(82) ? 1 : 0);
 				var14.packetBuffer.writeShortAddLE(WorldMapScaleHandler.baseY * 64 + var1);
@@ -468,7 +468,7 @@ public class class31 {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var14 = class482.getPacketBufferNode(ClientPacket.field3165, Client.packetWriter.isaacCipher);
+				var14 = class482.getPacketBufferNode(ClientPacket.OPLOCT, Client.packetWriter.isaacCipher);
 				var14.packetBuffer.writeShortAddLE(WorldMapScaleHandler.baseY * 64 + var1);
 				var14.packetBuffer.writeShortAdd(var3);
 				var14.packetBuffer.writeShortAdd(Client.selectedSpellChildIndex);
@@ -488,7 +488,7 @@ public class class31 {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var10 = class482.getPacketBufferNode(ClientPacket.field3238, Client.packetWriter.isaacCipher);
+					var10 = class482.getPacketBufferNode(ClientPacket.OPNPCT, Client.packetWriter.isaacCipher);
 					var10.packetBuffer.writeShort(var3);
 					var10.packetBuffer.writeIntLE(ModelData0.selectedSpellWidget);
 					var10.packetBuffer.writeShort(Client.selectedSpellChildIndex);
@@ -505,7 +505,7 @@ public class class31 {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var14 = class482.getPacketBufferNode(ClientPacket.field3211, Client.packetWriter.isaacCipher);
+				var14 = class482.getPacketBufferNode(ClientPacket.OPOBJ3, Client.packetWriter.isaacCipher);
 				var14.packetBuffer.writeShortLE(var3);
 				var14.packetBuffer.writeShortAdd(HealthBarDefinition.baseX * 64 + var0);
 				var14.packetBuffer.writeShortAddLE(WorldMapScaleHandler.baseY * 64 + var1);
@@ -522,7 +522,7 @@ public class class31 {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var10 = class482.getPacketBufferNode(ClientPacket.field3197, Client.packetWriter.isaacCipher);
+					var10 = class482.getPacketBufferNode(ClientPacket.OPNPC3, Client.packetWriter.isaacCipher);
 					var10.packetBuffer.writeShortAdd(var3);
 					var10.packetBuffer.writeByteNeg(Client.field661.method4426(82) ? 1 : 0);
 					Client.packetWriter.addNode(var10);
@@ -530,7 +530,7 @@ public class class31 {
 			}
 
 			if (var2 == 28) {
-				var14 = class482.getPacketBufferNode(ClientPacket.field3199, Client.packetWriter.isaacCipher);
+				var14 = class482.getPacketBufferNode(ClientPacket.WIDGET_TYPE, Client.packetWriter.isaacCipher);
 				var14.packetBuffer.writeInt(var1);
 				Client.packetWriter.addNode(var14);
 				var17 = class380.widgetDefinition.method6348(var1);
@@ -548,7 +548,7 @@ public class class31 {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var14 = class482.getPacketBufferNode(ClientPacket.field3163, Client.packetWriter.isaacCipher);
+				var14 = class482.getPacketBufferNode(ClientPacket.OPOBJ2, Client.packetWriter.isaacCipher);
 				var14.packetBuffer.writeShortAdd(HealthBarDefinition.baseX * 64 + var0);
 				var14.packetBuffer.writeShortLE(WorldMapScaleHandler.baseY * 64 + var1);
 				var14.packetBuffer.writeShort(var3);
@@ -578,7 +578,7 @@ public class class31 {
 					}
 
 					if (var19 != null) {
-						var12 = class482.getPacketBufferNode(ClientPacket.field3262, Client.packetWriter.isaacCipher);
+						var12 = class482.getPacketBufferNode(ClientPacket.OPNPCE, Client.packetWriter.isaacCipher);
 						var12.packetBuffer.writeShortAddLE(var19.id);
 						Client.packetWriter.addNode(var12);
 					}
@@ -613,7 +613,7 @@ public class class31 {
 				Client.mouseCrossY = var8;
 				Client.mouseCrossColor = 2;
 				Client.mouseCrossState = 0;
-				var14 = class482.getPacketBufferNode(ClientPacket.field3224, Client.packetWriter.isaacCipher);
+				var14 = class482.getPacketBufferNode(ClientPacket.OPOBJE, Client.packetWriter.isaacCipher);
 				var14.packetBuffer.writeShortAdd(var3);
 				var14.packetBuffer.writeShortAdd(WorldMapScaleHandler.baseY * 64 + var1);
 				var14.packetBuffer.writeShortAddLE(HealthBarDefinition.baseX * 64 + var0);
@@ -629,7 +629,7 @@ public class class31 {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var10 = class482.getPacketBufferNode(ClientPacket.field3233, Client.packetWriter.isaacCipher);
+					var10 = class482.getPacketBufferNode(ClientPacket.OPNPC4, Client.packetWriter.isaacCipher);
 					var10.packetBuffer.writeByteNeg(Client.field661.method4426(82) ? 1 : 0);
 					var10.packetBuffer.writeShortLE(var3);
 					Client.packetWriter.addNode(var10);
@@ -645,7 +645,7 @@ public class class31 {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var10 = class482.getPacketBufferNode(ClientPacket.field3173, Client.packetWriter.isaacCipher);
+					var10 = class482.getPacketBufferNode(ClientPacket.OPPLAYER8, Client.packetWriter.isaacCipher);
 					var10.packetBuffer.writeShortLE(var3);
 					var10.packetBuffer.writeByteSub(Client.field661.method4426(82) ? 1 : 0);
 					Client.packetWriter.addNode(var10);
@@ -661,7 +661,7 @@ public class class31 {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var10 = class482.getPacketBufferNode(ClientPacket.field3172, Client.packetWriter.isaacCipher);
+					var10 = class482.getPacketBufferNode(ClientPacket.OPPLAYER1, Client.packetWriter.isaacCipher);
 					var10.packetBuffer.writeShortAddLE(var3);
 					var10.packetBuffer.writeByteNeg(Client.field661.method4426(82) ? 1 : 0);
 					Client.packetWriter.addNode(var10);
@@ -677,7 +677,7 @@ public class class31 {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var10 = class482.getPacketBufferNode(ClientPacket.field3208, Client.packetWriter.isaacCipher);
+					var10 = class482.getPacketBufferNode(ClientPacket.OPNPC1, Client.packetWriter.isaacCipher);
 					var10.packetBuffer.writeByte(Client.field661.method4426(82) ? 1 : 0);
 					var10.packetBuffer.writeShortAddLE(var3);
 					Client.packetWriter.addNode(var10);
@@ -693,7 +693,7 @@ public class class31 {
 					}
 
 					if (var13) {
-						var12 = class482.getPacketBufferNode(ClientPacket.field3199, Client.packetWriter.isaacCipher);
+						var12 = class482.getPacketBufferNode(ClientPacket.WIDGET_TYPE, Client.packetWriter.isaacCipher);
 						var12.packetBuffer.writeInt(var1);
 						Client.packetWriter.addNode(var12);
 					}
@@ -709,7 +709,7 @@ public class class31 {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var10 = class482.getPacketBufferNode(ClientPacket.field3178, Client.packetWriter.isaacCipher);
+					var10 = class482.getPacketBufferNode(ClientPacket.OPPLAYER2, Client.packetWriter.isaacCipher);
 					var10.packetBuffer.writeByteSub(Client.field661.method4426(82) ? 1 : 0);
 					var10.packetBuffer.writeShortAddLE(var3);
 					Client.packetWriter.addNode(var10);
@@ -725,7 +725,7 @@ public class class31 {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var10 = class482.getPacketBufferNode(ClientPacket.field3184, Client.packetWriter.isaacCipher);
+					var10 = class482.getPacketBufferNode(ClientPacket.OPPLAYER7, Client.packetWriter.isaacCipher);
 					var10.packetBuffer.writeShort(var3);
 					var10.packetBuffer.writeByte(Client.field661.method4426(82) ? 1 : 0);
 					Client.packetWriter.addNode(var10);
@@ -757,7 +757,7 @@ public class class31 {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var14 = class482.getPacketBufferNode(ClientPacket.field3202, Client.packetWriter.isaacCipher);
+				var14 = class482.getPacketBufferNode(ClientPacket.OPLOC2, Client.packetWriter.isaacCipher);
 				var14.packetBuffer.writeShortLE(var3);
 				var14.packetBuffer.writeShortAddLE(WorldMapScaleHandler.baseY * 64 + var1);
 				var14.packetBuffer.writeShortAddLE(HealthBarDefinition.baseX * 64 + var0);
@@ -772,7 +772,7 @@ public class class31 {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var14 = class482.getPacketBufferNode(ClientPacket.field3245, Client.packetWriter.isaacCipher);
+				var14 = class482.getPacketBufferNode(ClientPacket.OPOBJ4, Client.packetWriter.isaacCipher);
 				var14.packetBuffer.writeShortAddLE(var3);
 				var14.packetBuffer.writeShortAddLE(WorldMapScaleHandler.baseY * 64 + var1);
 				var14.packetBuffer.writeByteNeg(Client.field661.method4426(82) ? 1 : 0);

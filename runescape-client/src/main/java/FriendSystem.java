@@ -200,7 +200,7 @@ public class FriendSystem {
 				} else if (this.isFriended(var2, false)) {
 					class467.method8636(var1);
 				} else {
-					PacketBufferNode var3 = class482.getPacketBufferNode(ClientPacket.field3201, Client.packetWriter.isaacCipher);
+					PacketBufferNode var3 = class482.getPacketBufferNode(ClientPacket.FRIEND_ADDUSER, Client.packetWriter.isaacCipher);
 					var3.packetBuffer.writeByte(CollisionMap.stringCp1252NullTerminatedByteSize(var1));
 					var3.packetBuffer.writeStringCp1252NullTerminated(var1);
 					Client.packetWriter.addNode(var3);
@@ -231,7 +231,7 @@ public class FriendSystem {
 			if (var2.hasCleanName()) {
 				if (this.friendsList.removeByUsername(var2)) {
 					class13.method176();
-					PacketBufferNode var3 = class482.getPacketBufferNode(ClientPacket.field3241, Client.packetWriter.isaacCipher);
+					PacketBufferNode var3 = class482.getPacketBufferNode(ClientPacket.FRIEND_DELUSER, Client.packetWriter.isaacCipher);
 					var3.packetBuffer.writeByte(CollisionMap.stringCp1252NullTerminatedByteSize(var1));
 					var3.packetBuffer.writeStringCp1252NullTerminated(var1);
 					Client.packetWriter.addNode(var3);
@@ -264,7 +264,7 @@ public class FriendSystem {
 				if (this.ignoreList.removeByUsername(var3)) {
 					class13.method176();
 					if (var2) {
-						PacketBufferNode var4 = class482.getPacketBufferNode(ClientPacket.field3187, Client.packetWriter.isaacCipher);
+						PacketBufferNode var4 = class482.getPacketBufferNode(ClientPacket.IGNORE_DELUSER, Client.packetWriter.isaacCipher);
 						var4.packetBuffer.writeByte(CollisionMap.stringCp1252NullTerminatedByteSize(var1));
 						var4.packetBuffer.writeStringCp1252NullTerminated(var1);
 						Client.packetWriter.addNode(var4);

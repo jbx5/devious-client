@@ -654,7 +654,7 @@ public final class class466 {
 				ObjectComposition.ObjectDefinition_cachedModelData.clear();
 				PacketBufferNode var19;
 				if (VertexNormal.client.hasFrame()) {
-					var19 = class482.getPacketBufferNode(ClientPacket.field3234, Client.packetWriter.isaacCipher);
+					var19 = class482.getPacketBufferNode(ClientPacket.DETECT_MODIFIED_CLIENT, Client.packetWriter.isaacCipher);
 					var19.packetBuffer.writeInt(1057001181);
 					Client.packetWriter.addNode(var19);
 				}

@@ -615,7 +615,7 @@ public class UserComparator5 extends AbstractUserComparator {
 		garbageValue = "-903137864"
 	)
 	static void method2963() {
-		Client.packetWriter.addNode(class482.getPacketBufferNode(ClientPacket.field3246, Client.packetWriter.isaacCipher));
+		Client.packetWriter.addNode(class482.getPacketBufferNode(ClientPacket.FREECAM_EXIT, Client.packetWriter.isaacCipher));
 		Client.oculusOrbState = 0;
 	}
 }
