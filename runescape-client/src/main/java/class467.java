@@ -166,9 +166,9 @@ public class class467 {
 		int var6;
 		int var7;
 		if (!Client.isInInstance) {
-			var1.readUnsignedByteNeg();
-			int var3 = var1.readShortLE();
-			var2 = var1.readUnsignedShortLE();
+			var1.readShortLE();
+			int var3 = var1.readUnsignedShortAdd();
+			var2 = var1.readUnsignedShortAddLE();
 			var4 = var1.readUnsignedShort();
 			class166.xteaKeys = new int[var4][4];
 
@@ -197,9 +197,9 @@ public class class467 {
 
 			class59.method1170(var2, var3, true);
 		} else {
-			var2 = var1.readUnsignedShortAddLE();
-			boolean var15 = var1.readUnsignedByteAdd() == 1;
-			var4 = var1.readUnsignedShortLE();
+			var2 = var1.readUnsignedShortLE();
+			boolean var15 = var1.readUnsignedByteNeg() == 1;
+			var4 = var1.readUnsignedShortAddLE();
 			var5 = var1.readUnsignedShort();
 			var1.importIndex();
 

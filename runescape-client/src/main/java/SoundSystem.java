@@ -113,7 +113,7 @@ public class SoundSystem implements Runnable {
 			}
 
 			if ((var4 & 2) != 0) {
-				var3.field1208 = var0.readUnsignedShortAddLE();
+				var3.field1208 = var0.readUnsignedShortLE();
 				if (var3.pathLength == 0) {
 					var3.orientation = var3.field1208;
 					var3.method2460();
@@ -134,10 +134,10 @@ public class SoundSystem implements Runnable {
 			int var10;
 			int var13;
 			if ((var4 & 16) != 0) {
-				var6 = var0.readUnsignedShortAddLE();
+				var6 = var0.readUnsignedShortLE();
 				PlayerType var7 = (PlayerType)GrandExchangeEvents.findEnumerated(class184.PlayerType_values(), var0.readUnsignedByteSub());
 				boolean var8 = var0.readUnsignedByteSub() == 1;
-				var9 = var0.readUnsignedByteAdd();
+				var9 = var0.readUnsignedByteNeg();
 				var10 = var0.offset;
 				if (var3.username != null && var3.appearance != null) {
 					boolean var11 = false;
@@ -176,7 +176,7 @@ public class SoundSystem implements Runnable {
 
 			int var17;
 			if ((var4 & 8) != 0) {
-				var6 = var0.readUnsignedShortLE();
+				var6 = var0.readUnsignedShortAddLE();
 				if (var6 == 65535) {
 					var6 = -1;
 				}
@@ -189,12 +189,12 @@ public class SoundSystem implements Runnable {
 			int var24;
 			int var26;
 			if ((var4 & 32768) != 0) {
-				var6 = var0.readUnsignedShortAddLE();
+				var6 = var0.readUnsignedShortLE();
 				var17 = var6 >> 8;
 				var24 = var17 >= 13 && var17 <= 20 ? var17 - 12 : 0;
-				PlayerType var18 = (PlayerType)GrandExchangeEvents.findEnumerated(class184.PlayerType_values(), var0.readUnsignedByteAdd());
+				PlayerType var18 = (PlayerType)GrandExchangeEvents.findEnumerated(class184.PlayerType_values(), var0.readUnsignedByteNeg());
 				boolean var25 = var0.readUnsignedByteSub() == 1;
-				var26 = var0.readUnsignedByteAdd();
+				var26 = var0.readUnsignedByteNeg();
 				var19 = var0.offset;
 				if (var3.username != null && var3.appearance != null) {
 					boolean var27 = false;
@@ -217,7 +217,7 @@ public class SoundSystem implements Runnable {
 							var15 = new byte[var24];
 
 							for (var16 = 0; var16 < var24; ++var16) {
-								var15[var16] = var0.readByteSub();
+								var15[var16] = var0.readByteAdd();
 							}
 						}
 
@@ -242,7 +242,7 @@ public class SoundSystem implements Runnable {
 			}
 
 			if ((var4 & 32) != 0) {
-				var6 = var0.readUnsignedByteAdd();
+				var6 = var0.readUnsignedByteNeg();
 				if (var6 > 0) {
 					for (var17 = 0; var17 < var6; ++var17) {
 						var9 = -1;
@@ -273,7 +273,7 @@ public class SoundSystem implements Runnable {
 						if (var10 != 32767) {
 							var26 = var0.readUShortSmart();
 							var19 = var0.readUnsignedByteSub();
-							var13 = var10 > 0 ? var0.readUnsignedByteAdd() : var19;
+							var13 = var10 > 0 ? var0.readUnsignedByteNeg() : var19;
 							var3.addHealthBar(var9, Client.cycle, var10, var26, var19, var13);
 						} else {
 							var3.removeHealthBar(var9);
@@ -289,7 +289,7 @@ public class SoundSystem implements Runnable {
 			}
 
 			if ((var4 & 4) != 0) {
-				var6 = var0.readUnsignedByteAdd();
+				var6 = var0.readUnsignedByteNeg();
 				byte[] var22 = new byte[var6];
 				Buffer var29 = new Buffer(var22);
 				var0.method9533(var22, 0, var6);
@@ -304,13 +304,13 @@ public class SoundSystem implements Runnable {
 			}
 
 			if ((var4 & 1024) != 0) {
-				var3.field1223 = var0.readByteAdd();
-				var3.field1225 = var0.readByteAdd();
+				var3.field1223 = var0.readByteSub();
+				var3.field1225 = var0.readByteSub();
 				var3.field1224 = var0.readByteNeg();
-				var3.field1226 = var0.readByteSub();
-				var3.spotAnimation = var0.readUnsignedShortLE() + Client.cycle;
+				var3.field1226 = var0.readByteAdd();
+				var3.spotAnimation = var0.readUnsignedShortAddLE() + Client.cycle;
 				var3.field1228 = var0.readUnsignedShort() + Client.cycle;
-				var3.field1173 = var0.readUnsignedShortLE();
+				var3.field1173 = var0.readUnsignedShortAddLE();
 				if (var3.field1124) {
 					var3.field1223 += var3.tileX;
 					var3.field1225 += var3.tileY;
@@ -329,27 +329,27 @@ public class SoundSystem implements Runnable {
 			}
 
 			if ((var4 & 8192) != 0) {
-				var5 = var0.readByteAdd();
+				var5 = var0.readByteSub();
 			}
 
 			if ((var4 & 65536) != 0) {
-				var6 = var0.readUnsignedIntIME();
+				var6 = var0.readUnsignedByteAdd();
 
 				for (var17 = 0; var17 < var6; ++var17) {
 					var24 = var0.readUnsignedByte();
 					var9 = var0.readUnsignedShort();
-					var10 = var0.readUnsignedIntME();
+					var10 = var0.readUnsignedIntIME();
 					var3.updateSpotAnimation(var24, var9, var10 >> 16, var10 & 65535);
 				}
 			}
 
 			if ((var4 & 512) != 0) {
-				var3.field1180 = Client.cycle + var0.readUnsignedShortAddLE();
-				var3.field1233 = Client.cycle + var0.readUnsignedShortAddLE();
-				var3.field1234 = var0.readByteAdd();
+				var3.field1180 = Client.cycle + var0.readUnsignedShortLE();
+				var3.field1233 = Client.cycle + var0.readUnsignedShortLE();
+				var3.field1234 = var0.readByteSub();
 				var3.field1193 = var0.readByte();
-				var3.field1204 = var0.readByteSub();
-				var3.field1237 = (byte)var0.readUnsignedByteAdd();
+				var3.field1204 = var0.readByteAdd();
+				var3.field1237 = (byte)var0.readUnsignedByteNeg();
 			}
 
 			if (var3.field1124) {

@@ -92,21 +92,21 @@ public final class BoundaryObject {
 		int var11;
 		if (class309.field3273 == var0) {
 			var2 = var1.readUnsignedByte();
-			var3 = var1.readUnsignedIntIME();
+			var3 = var1.readUnsignedByteAdd();
 			var4 = var3 >> 2;
 			var5 = var3 & 3;
 			var6 = Client.field574[var4];
 			var7 = var1.readUnsignedByteSub();
 			var8 = (var7 >> 4 & 7) + NpcOverrides.field1944;
 			var9 = (var7 & 7) + class235.field2478;
-			var10 = var1.readUnsignedShortLE();
+			var10 = var1.readUnsignedShortAddLE();
 			if (var8 >= 0 && var9 >= 0 && var8 < 104 && var9 < 104) {
 				var11 = Client.field652 == -1 ? SecureUrlRequester.Client_plane : Client.field652;
 				class482.method8736(var11, var8, var9, var6, var10, var4, var5, var2, 0, -1);
 			}
 
 		} else if (class309.field3274 == var0) {
-			var2 = var1.readShortLE();
+			var2 = var1.readUnsignedShortAdd();
 			var3 = var1.readUnsignedByteSub();
 			var4 = (var3 >> 4 & 7) + NpcOverrides.field1944;
 			var5 = (var3 & 7) + class235.field2478;
@@ -128,9 +128,9 @@ public final class BoundaryObject {
 			var2 = var1.readUnsignedByteSub();
 			var3 = (var2 >> 4 & 7) + NpcOverrides.field1944;
 			var4 = (var2 & 7) + class235.field2478;
-			var5 = var1.readUnsignedShortAdd();
-			var6 = var1.readUnsignedShortAdd();
-			var7 = var1.readShortLE();
+			var5 = var1.readUnsignedIntME();
+			var6 = var1.readUnsignedIntME();
+			var7 = var1.readUnsignedShortAdd();
 			if (var3 >= 0 && var4 >= 0 && var3 < 104 && var4 < 104) {
 				var8 = Client.field652 == -1 ? SecureUrlRequester.Client_plane : Client.field652;
 				class4.method16(var8, var3, var4, var7, var5, var6);
@@ -140,15 +140,15 @@ public final class BoundaryObject {
 			int var12;
 			if (class309.field3266 == var0) {
 				var2 = var1.readUnsignedByteSub();
-				boolean var20 = var1.readUnsignedIntIME() == 1;
+				boolean var20 = var1.readUnsignedByteAdd() == 1;
 				var4 = var1.readUnsignedShort();
-				var5 = var1.readUnsignedIntME();
+				var5 = var1.readUnsignedIntIME();
 				var6 = var1.readUnsignedByteSub();
-				var7 = var1.readUnsignedShortAddLE();
+				var7 = var1.readUnsignedShortLE();
 				var8 = var1.readUnsignedByteSub();
 				var9 = (var8 >> 4 & 7) + NpcOverrides.field1944;
 				var10 = (var8 & 7) + class235.field2478;
-				var11 = var1.readUnsignedShortAddLE();
+				var11 = var1.readUnsignedShortLE();
 				if (var9 >= 0 && var10 >= 0 && var9 < 104 && var10 < 104) {
 					var12 = Client.field652 == -1 ? SecureUrlRequester.Client_plane : Client.field652;
 					PcmPlayer.method859(var12, var9, var10, var7, var5, var6, var4, var11, var2, var20);
@@ -161,14 +161,14 @@ public final class BoundaryObject {
 				byte var23;
 				if (class309.field3263 == var0) {
 					var2 = var1.method9436();
-					var3 = var1.readUnsignedShortAddLE();
+					var3 = var1.readUnsignedShortLE();
 					var4 = var1.readUnsignedByteSub();
 					byte var21 = var1.readByte();
-					var6 = var1.readUnsignedShortLE();
-					var7 = var1.readUnsignedShortLE();
-					var8 = var1.readShortLE();
+					var6 = var1.readUnsignedShortAddLE();
+					var7 = var1.readUnsignedShortAddLE();
+					var8 = var1.readUnsignedShortAdd();
 					var23 = var1.readByte();
-					var10 = var1.readUnsignedByteAdd() * 4;
+					var10 = var1.readUnsignedByteNeg() * 4;
 					var11 = var1.readUnsignedByteSub() * 4;
 					var12 = var1.method9436();
 					var13 = var1.readUnsignedByteSub();
@@ -182,10 +182,10 @@ public final class BoundaryObject {
 					}
 
 				} else if (class309.field3269 == var0) {
-					var2 = var1.readUnsignedIntIME();
+					var2 = var1.readUnsignedByteAdd();
 					var3 = (var2 >> 4 & 7) + NpcOverrides.field1944;
 					var4 = (var2 & 7) + class235.field2478;
-					var5 = var1.readUnsignedByteAdd();
+					var5 = var1.readUnsignedByteNeg();
 					var6 = var5 >> 2;
 					var7 = var5 & 3;
 					var8 = Client.field574[var6];
@@ -195,7 +195,7 @@ public final class BoundaryObject {
 					}
 
 				} else if (class309.field3268 == var0) {
-					var2 = var1.readUnsignedShortLE();
+					var2 = var1.readUnsignedShortAddLE();
 					var3 = var1.readUnsignedByteSub();
 					var4 = (var3 >> 4 & 7) + NpcOverrides.field1944;
 					var5 = (var3 & 7) + class235.field2478;
@@ -207,14 +207,14 @@ public final class BoundaryObject {
 
 				} else {
 					if (class309.field3271 == var0) {
-						var2 = var1.readUnsignedByteAdd();
-						var3 = var1.readUnsignedIntIME();
+						var2 = var1.readUnsignedByteNeg();
+						var3 = var1.readUnsignedByteAdd();
 						var4 = (var3 >> 4 & 7) + NpcOverrides.field1944;
 						var5 = (var3 & 7) + class235.field2478;
-						var6 = var1.readUnsignedIntIME();
+						var6 = var1.readUnsignedByteAdd();
 						var7 = var6 >> 4 & 15;
 						var8 = var6 & 7;
-						var9 = var1.readShortLE();
+						var9 = var1.readUnsignedShortAdd();
 						if (var4 >= 0 && var5 >= 0 && var4 < 104 && var5 < 104) {
 							var10 = var7 + 1;
 							if (KeyHandler.localPlayer.pathX[0] >= var4 - var10 && KeyHandler.localPlayer.pathX[0] <= var10 + var4 && KeyHandler.localPlayer.pathY[0] >= var5 - var10 && KeyHandler.localPlayer.pathY[0] <= var10 + var5 && class93.clientPreferences.getAreaSoundEffectsVolume() != 0 && var8 > 0 && Client.soundEffectCount < 50) {
@@ -229,8 +229,8 @@ public final class BoundaryObject {
 					}
 
 					if (class309.field3265 == var0) {
-						var2 = var1.readUnsignedShortAddLE();
-						var3 = var1.readUnsignedByteAdd();
+						var2 = var1.readUnsignedShortLE();
+						var3 = var1.readUnsignedByteNeg();
 						var4 = var1.readUnsignedByteSub();
 						var5 = (var4 >> 4 & 7) + NpcOverrides.field1944;
 						var6 = (var4 & 7) + class235.field2478;
@@ -244,11 +244,11 @@ public final class BoundaryObject {
 						}
 
 					} else if (class309.field3267 == var0) {
-						var2 = var1.readUnsignedIntIME();
+						var2 = var1.readUnsignedByteAdd();
 						var3 = (var2 >> 4 & 7) + NpcOverrides.field1944;
 						var4 = (var2 & 7) + class235.field2478;
-						var5 = var1.readUnsignedByteAdd();
-						var6 = var1.readUnsignedShortLE();
+						var5 = var1.readUnsignedByteNeg();
+						var6 = var1.readUnsignedShortAddLE();
 						if (var3 >= 0 && var4 >= 0 && var3 < 104 && var4 < 104) {
 							var7 = Client.field652 == -1 ? SecureUrlRequester.Client_plane : Client.field652;
 							ScriptFrame.method1204(var7, var3, var4, var6, var5);
@@ -256,21 +256,21 @@ public final class BoundaryObject {
 
 					} else {
 						if (class309.field3270 == var0) {
-							var2 = var1.readUnsignedShortAddLE();
+							var2 = var1.readUnsignedShortLE();
 							var3 = var1.readUnsignedShort();
-							var4 = var1.readUnsignedShortAddLE();
+							var4 = var1.readUnsignedShortLE();
 							var5 = var1.readUnsignedByte();
 							var6 = (var5 >> 4 & 7) + NpcOverrides.field1944;
 							var7 = (var5 & 7) + class235.field2478;
 							byte var22 = var1.readByteNeg();
 							var23 = var1.readByteNeg();
-							byte var24 = var1.readByteSub();
+							byte var24 = var1.readByteAdd();
 							var11 = var1.readUnsignedByte();
 							var12 = var11 >> 2;
 							var13 = var11 & 3;
 							var14 = Client.field574[var12];
 							var15 = var1.readUnsignedShort();
-							byte var16 = var1.readByteAdd();
+							byte var16 = var1.readByteSub();
 							Player var17;
 							if (var4 == Client.localPlayerIndex) {
 								var17 = KeyHandler.localPlayer;

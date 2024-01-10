@@ -94,8 +94,8 @@ public enum class231 implements Enum {
 					int var12 = KeyHandler.localPlayer.y - var10 >> 7;
 					PacketBufferNode var13 = class482.getPacketBufferNode(ClientPacket.field3203, Client.packetWriter.isaacCipher);
 					var13.packetBuffer.writeByte(18);
-					var13.packetBuffer.writeIntME(HealthBarDefinition.baseX * 64 + var11);
-					var13.packetBuffer.writeShortAddLE(WorldMapScaleHandler.baseY * 64 + var12);
+					var13.packetBuffer.writeShortAddLE(HealthBarDefinition.baseX * 64 + var11);
+					var13.packetBuffer.writeShortAdd(WorldMapScaleHandler.baseY * 64 + var12);
 					var13.packetBuffer.writeByteSub(Client.field661.method4426(82) ? (Client.field661.method4426(81) ? 2 : 1) : 0);
 					var13.packetBuffer.writeByte(var4);
 					var13.packetBuffer.writeByte(var5);

@@ -241,22 +241,22 @@ public abstract class UrlRequester implements Runnable {
 
 			int var6;
 			if ((var4 & 1) != 0) {
-				var5 = var0.readUnsignedShortAddLE();
+				var5 = var0.readUnsignedShortLE();
 				var6 = var0.readUnsignedShort();
-				var3.field1211 = var0.readUnsignedByteAdd() == 1;
+				var3.field1211 = var0.readUnsignedByteNeg() == 1;
 				var3.field1213 = var5;
 				var3.field1210 = var6;
 			}
 
 			if ((var4 & 2048) != 0) {
-				var3.field1192 = var0.method9429();
+				var3.field1192 = var0.readUnsignedIntLE();
 			}
 
 			if ((var4 & 512) != 0) {
 				var3.field1180 = Client.cycle + var0.readUnsignedShort();
-				var3.field1233 = Client.cycle + var0.readUnsignedShortAddLE();
-				var3.field1234 = var0.readByteAdd();
-				var3.field1193 = var0.readByteSub();
+				var3.field1233 = Client.cycle + var0.readUnsignedShortLE();
+				var3.field1234 = var0.readByteSub();
+				var3.field1193 = var0.readByteAdd();
 				var3.field1204 = var0.readByte();
 				var3.field1237 = (byte)var0.readUnsignedByte();
 			}
@@ -269,7 +269,7 @@ public abstract class UrlRequester implements Runnable {
 			int var8;
 			int[] var13;
 			if ((var4 & 262144) != 0) {
-				var5 = var0.readUnsignedByteAdd();
+				var5 = var0.readUnsignedByteNeg();
 				var13 = new int[8];
 				var7 = new short[8];
 
@@ -292,8 +292,8 @@ public abstract class UrlRequester implements Runnable {
 			}
 
 			if ((var4 & 8) != 0) {
-				var3.targetIndex = var0.readUnsignedShortLE();
-				var3.targetIndex += var0.readUnsignedIntIME() << 16;
+				var3.targetIndex = var0.readUnsignedShortAddLE();
+				var3.targetIndex += var0.readUnsignedByteAdd() << 16;
 				var5 = 16777215;
 				if (var5 == var3.targetIndex) {
 					var3.targetIndex = -1;
@@ -335,8 +335,8 @@ public abstract class UrlRequester implements Runnable {
 						var9 = var0.readUShortSmart();
 						if (var9 != 32767) {
 							var10 = var0.readUShortSmart();
-							var11 = var0.readUnsignedByteAdd();
-							int var12 = var9 > 0 ? var0.readUnsignedByteAdd() : var11;
+							var11 = var0.readUnsignedByteNeg();
+							int var12 = var9 > 0 ? var0.readUnsignedByteNeg() : var11;
 							var3.addHealthBar(var8, Client.cycle, var9, var10, var11, var12);
 						} else {
 							var3.removeHealthBar(var8);
@@ -346,18 +346,18 @@ public abstract class UrlRequester implements Runnable {
 			}
 
 			if ((var4 & 2) != 0) {
-				var0.readUnsignedShortAddLE();
-				var0.method9429();
+				var0.readUnsignedShortLE();
+				var0.readUnsignedIntLE();
 			}
 
 			if ((var4 & 4096) != 0) {
-				var3.field1223 = var0.readByteSub();
+				var3.field1223 = var0.readByteAdd();
 				var3.field1225 = var0.readByte();
 				var3.field1224 = var0.readByte();
-				var3.field1226 = var0.readByteSub();
-				var3.spotAnimation = var0.readShortLE() + Client.cycle;
+				var3.field1226 = var0.readByteAdd();
+				var3.spotAnimation = var0.readUnsignedShortAdd() + Client.cycle;
 				var3.field1228 = var0.readUnsignedShort() + Client.cycle;
-				var3.field1173 = var0.readUnsignedShortAddLE();
+				var3.field1173 = var0.readUnsignedShortLE();
 				var3.pathLength = 1;
 				var3.field1215 = 0;
 				var3.field1223 += var3.pathX[0];
@@ -370,15 +370,15 @@ public abstract class UrlRequester implements Runnable {
 				var5 = var0.readUnsignedByte();
 
 				for (var6 = 0; var6 < var5; ++var6) {
-					var14 = var0.readUnsignedIntIME();
-					var8 = var0.readUnsignedShortAddLE();
-					var9 = var0.readUnsignedShortAdd();
+					var14 = var0.readUnsignedByteAdd();
+					var8 = var0.readUnsignedShortLE();
+					var9 = var0.readUnsignedIntME();
 					var3.updateSpotAnimation(var14, var8, var9 >> 16, var9 & 65535);
 				}
 			}
 
 			if ((var4 & 64) != 0) {
-				var3.definition = Script.getNpcDefinition(var0.readUnsignedShortLE());
+				var3.definition = Script.getNpcDefinition(var0.readUnsignedShortAddLE());
 				class142.method3229(var3);
 				var3.method2669();
 			}
@@ -416,13 +416,13 @@ public abstract class UrlRequester implements Runnable {
 			long var16;
 			boolean var18;
 			if ((var4 & 8192) != 0) {
-				var5 = var0.readUnsignedByteAdd();
+				var5 = var0.readUnsignedByteNeg();
 				if ((var5 & 1) == 1) {
 					var3.method2674();
 				} else {
 					var13 = null;
 					if ((var5 & 2) == 2) {
-						var14 = var0.readUnsignedIntIME();
+						var14 = var0.readUnsignedByteAdd();
 						var13 = new int[var14];
 
 						for (var8 = 0; var8 < var14; ++var8) {
@@ -442,7 +442,7 @@ public abstract class UrlRequester implements Runnable {
 						var7 = new short[var8];
 
 						for (var9 = 0; var9 < var8; ++var9) {
-							var7[var9] = (short)var0.readUnsignedShortLE();
+							var7[var9] = (short)var0.readUnsignedShortAddLE();
 						}
 					}
 
@@ -472,21 +472,21 @@ public abstract class UrlRequester implements Runnable {
 
 			if ((var4 & 65536) != 0) {
 				var5 = var0.readInt();
-				var3.turnLeftSequence = (var5 & 1) != 0 ? var0.readShortLE() : var3.definition.turnLeftSequence;
+				var3.turnLeftSequence = (var5 & 1) != 0 ? var0.readUnsignedShortAdd() : var3.definition.turnLeftSequence;
 				var3.turnRightSequence = (var5 & 2) != 0 ? var0.readUnsignedShort() : var3.definition.turnRightSequence;
-				var3.walkSequence = (var5 & 4) != 0 ? var0.readUnsignedShortAddLE() : var3.definition.walkSequence;
-				var3.walkBackSequence = (var5 & 8) != 0 ? var0.readUnsignedShortLE() : var3.definition.walkBackSequence;
-				var3.walkLeftSequence = (var5 & 16) != 0 ? var0.readUnsignedShortLE() : var3.definition.walkLeftSequence;
-				var3.walkRightSequence = (var5 & 32) != 0 ? var0.readShortLE() : var3.definition.walkRightSequence;
-				var3.runSequence = (var5 & 64) != 0 ? var0.readUnsignedShortAddLE() : var3.definition.field1962;
-				var3.field1187 = (var5 & 128) != 0 ? var0.readShortLE() : var3.definition.field1963;
-				var3.field1186 = (var5 & 256) != 0 ? var0.readUnsignedShortAddLE() : var3.definition.field1964;
-				var3.field1218 = (var5 & 512) != 0 ? var0.readUnsignedShortLE() : var3.definition.field1965;
-				var3.field1188 = (var5 & 1024) != 0 ? var0.readShortLE() : var3.definition.field1974;
-				var3.field1178 = (var5 & 2048) != 0 ? var0.readUnsignedShortLE() : var3.definition.field1967;
-				var3.field1190 = (var5 & 4096) != 0 ? var0.readUnsignedShortAddLE() : var3.definition.field1968;
-				var3.field1191 = (var5 & 8192) != 0 ? var0.readUnsignedShortAddLE() : var3.definition.field1969;
-				var3.idleSequence = (var5 & 16384) != 0 ? var0.readUnsignedShortLE() : var3.definition.idleSequence;
+				var3.walkSequence = (var5 & 4) != 0 ? var0.readUnsignedShortLE() : var3.definition.walkSequence;
+				var3.walkBackSequence = (var5 & 8) != 0 ? var0.readUnsignedShortAddLE() : var3.definition.walkBackSequence;
+				var3.walkLeftSequence = (var5 & 16) != 0 ? var0.readUnsignedShortAddLE() : var3.definition.walkLeftSequence;
+				var3.walkRightSequence = (var5 & 32) != 0 ? var0.readUnsignedShortAdd() : var3.definition.walkRightSequence;
+				var3.runSequence = (var5 & 64) != 0 ? var0.readUnsignedShortLE() : var3.definition.field1962;
+				var3.field1187 = (var5 & 128) != 0 ? var0.readUnsignedShortAdd() : var3.definition.field1963;
+				var3.field1186 = (var5 & 256) != 0 ? var0.readUnsignedShortLE() : var3.definition.field1964;
+				var3.field1218 = (var5 & 512) != 0 ? var0.readUnsignedShortAddLE() : var3.definition.field1965;
+				var3.field1188 = (var5 & 1024) != 0 ? var0.readUnsignedShortAdd() : var3.definition.field1974;
+				var3.field1178 = (var5 & 2048) != 0 ? var0.readUnsignedShortAddLE() : var3.definition.field1967;
+				var3.field1190 = (var5 & 4096) != 0 ? var0.readUnsignedShortLE() : var3.definition.field1968;
+				var3.field1191 = (var5 & 8192) != 0 ? var0.readUnsignedShortLE() : var3.definition.field1969;
+				var3.idleSequence = (var5 & 16384) != 0 ? var0.readUnsignedShortAddLE() : var3.definition.idleSequence;
 			}
 
 			if ((var4 & 32768) != 0) {
@@ -496,11 +496,11 @@ public abstract class UrlRequester implements Runnable {
 				} else {
 					var13 = null;
 					if ((var5 & 2) == 2) {
-						var14 = var0.readUnsignedIntIME();
+						var14 = var0.readUnsignedByteAdd();
 						var13 = new int[var14];
 
 						for (var8 = 0; var8 < var14; ++var8) {
-							var9 = var0.readShortLE();
+							var9 = var0.readUnsignedShortAdd();
 							var9 = var9 == 65535 ? -1 : var9;
 							var13[var8] = var9;
 						}
@@ -516,7 +516,7 @@ public abstract class UrlRequester implements Runnable {
 						var7 = new short[var8];
 
 						for (var9 = 0; var9 < var8; ++var9) {
-							var7[var9] = (short)var0.readUnsignedShortLE();
+							var7[var9] = (short)var0.readUnsignedShortAddLE();
 						}
 					}
 
@@ -530,13 +530,13 @@ public abstract class UrlRequester implements Runnable {
 						var15 = new short[var9];
 
 						for (var10 = 0; var10 < var9; ++var10) {
-							var15[var10] = (short)var0.readShortLE();
+							var15[var10] = (short)var0.readUnsignedShortAdd();
 						}
 					}
 
 					var18 = false;
 					if ((var5 & 16) != 0) {
-						var18 = var0.readUnsignedByteAdd() == 1;
+						var18 = var0.readUnsignedByteNeg() == 1;
 					}
 
 					var16 = (long)(++NPC.field1302 - 1);

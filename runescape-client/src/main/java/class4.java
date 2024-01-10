@@ -36,7 +36,7 @@ public final class class4 {
 	static void method17(int var0, int var1, int var2, boolean var3) {
 		PacketBufferNode var4 = class482.getPacketBufferNode(ClientPacket.field3213, Client.packetWriter.isaacCipher);
 		var4.packetBuffer.writeIntIME(var3 ? Client.revision : 0);
-		var4.packetBuffer.writeShortAdd(var0);
+		var4.packetBuffer.writeShortLE(var0);
 		var4.packetBuffer.writeByte(var2);
 		var4.packetBuffer.writeShort(var1);
 		Client.packetWriter.addNode(var4);

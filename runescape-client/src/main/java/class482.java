@@ -290,13 +290,13 @@ public class class482 {
 				PacketBufferNode var8;
 				if (var0 == 1) {
 					var8 = getPacketBufferNode(ClientPacket.field3172, Client.packetWriter.isaacCipher);
-					var8.packetBuffer.writeIntME(var3[var6]);
+					var8.packetBuffer.writeShortAddLE(var3[var6]);
 					var8.packetBuffer.writeByteNeg(0);
 					Client.packetWriter.addNode(var8);
 				} else if (var0 == 4) {
 					var8 = getPacketBufferNode(ClientPacket.field3236, Client.packetWriter.isaacCipher);
 					var8.packetBuffer.writeByte(0);
-					var8.packetBuffer.writeShortAddLE(var3[var6]);
+					var8.packetBuffer.writeShortAdd(var3[var6]);
 					Client.packetWriter.addNode(var8);
 				} else if (var0 == 6) {
 					var8 = getPacketBufferNode(ClientPacket.field3169, Client.packetWriter.isaacCipher);
