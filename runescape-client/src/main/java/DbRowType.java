@@ -4,34 +4,28 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("tf")
+@ObfuscatedName("uh")
 @Implements("DbRowType")
 public class DbRowType extends DualNode {
-	@ObfuscatedName("at")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "Lol;"
+		descriptor = "Low;"
 	)
-	public static AbstractArchive field5085;
-	@ObfuscatedName("ah")
+	static AbstractArchive field5124;
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Llk;"
+		descriptor = "Llq;"
 	)
 	@Export("DBRowType_cache")
-	static EvictingDualNodeHashTable DBRowType_cache;
-	@ObfuscatedName("au")
-	@ObfuscatedSignature(
-		descriptor = "Lol;"
-	)
-	@Export("ItemDefinition_archive")
-	public static AbstractArchive ItemDefinition_archive;
-	@ObfuscatedName("ar")
+	public static EvictingDualNodeHashTable DBRowType_cache;
+	@ObfuscatedName("af")
 	@Export("columnTypes")
 	Object[][] columnTypes;
-	@ObfuscatedName("ao")
-	int[][] field5082;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("aj")
+	int[][] field5126;
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = -1891158047
+		intValue = -1134881467
 	)
 	@Export("tableId")
 	public int tableId;
@@ -44,43 +38,43 @@ public class DbRowType extends DualNode {
 		this.tableId = -1;
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "(Luj;S)V",
-		garbageValue = "2044"
+		descriptor = "(Luk;I)V",
+		garbageValue = "-911667958"
 	)
-	void method9176(Buffer var1) {
+	void method9283(Buffer var1) {
 		while (true) {
 			int var2 = var1.readUnsignedByte();
 			if (var2 == 0) {
 				return;
 			}
 
-			this.method9164(var1, var2);
+			this.method9300(var1, var2);
 		}
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(IB)[Ljava/lang/Object;",
-		garbageValue = "14"
+		descriptor = "(II)[Ljava/lang/Object;",
+		garbageValue = "-903022113"
 	)
 	@Export("getColumnType")
 	public Object[] getColumnType(int var1) {
 		return this.columnTypes == null ? null : this.columnTypes[var1];
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(Luj;IB)V",
-		garbageValue = "55"
+		descriptor = "(Luk;II)V",
+		garbageValue = "1989317971"
 	)
-	void method9164(Buffer var1, int var2) {
+	void method9300(Buffer var1, int var2) {
 		if (var2 == 3) {
 			int var3 = var1.readUnsignedByte();
 			if (this.columnTypes == null) {
 				this.columnTypes = new Object[var3][];
-				this.field5082 = new int[var3][];
+				this.field5126 = new int[var3][];
 			}
 
 			for (int var4 = var1.readUnsignedByte(); var4 != 255; var4 = var1.readUnsignedByte()) {
@@ -98,13 +92,13 @@ public class DbRowType extends DualNode {
 				for (int var12 = 0; var12 < var10; ++var12) {
 					for (int var13 = 0; var13 < var6.length; ++var13) {
 						int var14 = var13 + var6.length * var12;
-						class514 var15 = HttpContentType.method8562(var6[var13]);
-						var11[var14] = var15.method9120(var1);
+						class518 var15 = class270.method5345(var6[var13]);
+						var11[var14] = var15.method9243(var1);
 					}
 				}
 
 				var16[var4] = var11;
-				this.field5082[var4] = var6;
+				this.field5126[var4] = var6;
 			}
 		} else if (var2 == 4) {
 			this.tableId = var1.packBytesToInt();
@@ -112,11 +106,11 @@ public class DbRowType extends DualNode {
 
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1202767644"
+		descriptor = "(B)V",
+		garbageValue = "10"
 	)
-	void method9165() {
+	void method9286() {
 	}
 }

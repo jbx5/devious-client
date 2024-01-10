@@ -1,15 +1,20 @@
-import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dg")
+@ObfuscatedName("dz")
 public class class85 {
-	@ObfuscatedName("am")
-	static String[] field1039;
-	@ObfuscatedName("ct")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "Lof;"
+		descriptor = "(IIS)I",
+		garbageValue = "27164"
 	)
-	@Export("clientLanguage")
-	static Language clientLanguage;
+	public static int method2351(int var0, int var1) {
+		int var2;
+		for (var2 = 0; var1 > 0; --var1) {
+			var2 = var2 << 1 | var0 & 1;
+			var0 >>>= 1;
+		}
+
+		return var2;
+	}
 }

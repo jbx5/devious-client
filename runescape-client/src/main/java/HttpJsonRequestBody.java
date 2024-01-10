@@ -7,10 +7,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-@ObfuscatedName("sv")
+@ObfuscatedName("sd")
 @Implements("HttpJsonRequestBody")
 public class HttpJsonRequestBody implements HttpPayload {
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ap")
 	@Export("body")
 	@ObfuscatedSignature(
 		descriptor = "Lorg/json/JSONObject;"
@@ -32,30 +32,30 @@ public class HttpJsonRequestBody implements HttpPayload {
 		this.setBodyFromString(var1);
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(B)Lsi;",
-		garbageValue = "-24"
+		descriptor = "(I)Lsy;",
+		garbageValue = "2086749416"
 	)
 	@Export("getContentType")
 	public HttpContentType getContentType() {
 		return HttpContentType.APPLICATION_JSON;
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(B)[B",
-		garbageValue = "0"
+		descriptor = "(I)[B",
+		garbageValue = "529214667"
 	)
 	@Export("toBytes")
 	public byte[] toBytes() throws UnsupportedEncodingException {
 		return this.body == null ? new byte[0] : this.body.toString().getBytes("UTF-8");
 	}
 
-	@ObfuscatedName("aa")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "([BI)V",
-		garbageValue = "-1436694020"
+		garbageValue = "981961216"
 	)
 	@Export("bodyFromBytes")
 	void bodyFromBytes(byte[] var1) throws UnsupportedEncodingException {
@@ -63,10 +63,10 @@ public class HttpJsonRequestBody implements HttpPayload {
 		this.setBodyFromString(var2);
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/String;I)V",
-		garbageValue = "1963139059"
+		garbageValue = "1247464866"
 	)
 	@Export("setBodyFromString")
 	void setBodyFromString(String var1) throws UnsupportedEncodingException {
@@ -88,10 +88,10 @@ public class HttpJsonRequestBody implements HttpPayload {
 		}
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(B)Lorg/json/JSONObject;",
-		garbageValue = "70"
+		descriptor = "(I)Lorg/json/JSONObject;",
+		garbageValue = "1041668985"
 	)
 	@Export("getBody")
 	public JSONObject getBody() {

@@ -1,58 +1,66 @@
+import java.lang.management.GarbageCollectorMXBean;
+import java.lang.management.ManagementFactory;
+import java.util.Date;
+import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("go")
+@ObfuscatedName("ge")
 @Implements("KitDefinition")
 public class KitDefinition extends DualNode {
-	@ObfuscatedName("at")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "Lol;"
+		descriptor = "Low;"
 	)
 	@Export("KitDefinition_archive")
-	static AbstractArchive KitDefinition_archive;
-	@ObfuscatedName("ah")
+	public static AbstractArchive KitDefinition_archive;
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Lol;"
+		descriptor = "Low;"
 	)
 	@Export("KitDefinition_modelsArchive")
-	static AbstractArchive KitDefinition_modelsArchive;
-	@ObfuscatedName("ao")
+	public static AbstractArchive KitDefinition_modelsArchive;
+	@ObfuscatedName("af")
+	@ObfuscatedGetter(
+		intValue = -1269534839
+	)
+	@Export("KitDefinition_fileCount")
+	public static int KitDefinition_fileCount;
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "Llk;"
+		descriptor = "Llq;"
 	)
 	@Export("KitDefinition_cached")
 	static EvictingDualNodeHashTable KitDefinition_cached;
-	@ObfuscatedName("je")
-	@Export("regions")
-	static int[] regions;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = 2062657371
+		intValue = 142413103
 	)
 	@Export("bodypartID")
 	public int bodypartID;
-	@ObfuscatedName("au")
+	@ObfuscatedName("ar")
 	@Export("models2")
 	int[] models2;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("ag")
 	@Export("recolorFrom")
 	short[] recolorFrom;
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ao")
 	@Export("recolorTo")
 	short[] recolorTo;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ae")
 	@Export("retextureFrom")
 	short[] retextureFrom;
-	@ObfuscatedName("az")
+	@ObfuscatedName("aa")
 	@Export("retextureTo")
 	short[] retextureTo;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("au")
 	@Export("models")
 	int[] models;
-	@ObfuscatedName("av")
+	@ObfuscatedName("an")
 	@Export("nonSelectable")
 	public boolean nonSelectable;
 
@@ -66,10 +74,10 @@ public class KitDefinition extends DualNode {
 		this.nonSelectable = false;
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(Luj;I)V",
-		garbageValue = "-1802859477"
+		descriptor = "(Luk;I)V",
+		garbageValue = "244058044"
 	)
 	@Export("decode")
 	void decode(Buffer var1) {
@@ -83,10 +91,10 @@ public class KitDefinition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "(Luj;II)V",
-		garbageValue = "-601182989"
+		descriptor = "(Luk;II)V",
+		garbageValue = "-1818382900"
 	)
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
@@ -129,10 +137,10 @@ public class KitDefinition extends DualNode {
 
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "1847787627"
+		garbageValue = "-1083492398"
 	)
 	@Export("ready")
 	public boolean ready() {
@@ -151,10 +159,10 @@ public class KitDefinition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(B)Lkq;",
-		garbageValue = "6"
+		descriptor = "(I)Lkm;",
+		garbageValue = "-552136609"
 	)
 	@Export("getModelData")
 	public ModelData getModelData() {
@@ -191,12 +199,12 @@ public class KitDefinition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("aa")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "-62"
+		descriptor = "(I)Z",
+		garbageValue = "1199111363"
 	)
-	public boolean method3607() {
+	public boolean method3665() {
 		boolean var1 = true;
 
 		for (int var2 = 0; var2 < 5; ++var2) {
@@ -208,10 +216,10 @@ public class KitDefinition extends DualNode {
 		return var1;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lkq;",
-		garbageValue = "1386054697"
+		descriptor = "(B)Lkm;",
+		garbageValue = "0"
 	)
 	@Export("getKitDefinitionModels")
 	public ModelData getKitDefinitionModels() {
@@ -241,12 +249,245 @@ public class KitDefinition extends DualNode {
 		return var5;
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1051367383"
+		descriptor = "(B)Lia;",
+		garbageValue = "1"
 	)
-	public static void method3631() {
-		DbRowType.DBRowType_cache.clear();
+	public static class217 method3664() {
+		return class217.field2340;
+	}
+
+	@ObfuscatedName("am")
+	public static String method3654(long var0) {
+		Calendar.Calendar_calendar.setTime(new Date(var0));
+		int var2 = Calendar.Calendar_calendar.get(7);
+		int var3 = Calendar.Calendar_calendar.get(5);
+		int var4 = Calendar.Calendar_calendar.get(2);
+		int var5 = Calendar.Calendar_calendar.get(1);
+		int var6 = Calendar.Calendar_calendar.get(11);
+		int var7 = Calendar.Calendar_calendar.get(12);
+		int var8 = Calendar.Calendar_calendar.get(13);
+		return Calendar.DAYS_OF_THE_WEEK[var2 - 1] + ", " + var3 / 10 + var3 % 10 + "-" + Calendar.MONTH_NAMES_ENGLISH_GERMAN[0][var4] + "-" + var5 + " " + var6 / 10 + var6 % 10 + ":" + var7 / 10 + var7 % 10 + ":" + var8 / 10 + var8 % 10 + " GMT";
+	}
+
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/CharSequence;IZI)I",
+		garbageValue = "-795878581"
+	)
+	public static int method3666(CharSequence var0, int var1, boolean var2) {
+		if (var1 >= 2 && var1 <= 36) {
+			boolean var3 = false;
+			boolean var4 = false;
+			int var5 = 0;
+			int var6 = var0.length();
+
+			for (int var7 = 0; var7 < var6; ++var7) {
+				char var8 = var0.charAt(var7);
+				if (var7 == 0) {
+					if (var8 == '-') {
+						var3 = true;
+						continue;
+					}
+
+					if (var8 == '+') {
+						continue;
+					}
+				}
+
+				int var10;
+				if (var8 >= '0' && var8 <= '9') {
+					var10 = var8 - '0';
+				} else if (var8 >= 'A' && var8 <= 'Z') {
+					var10 = var8 - '7';
+				} else {
+					if (var8 < 'a' || var8 > 'z') {
+						throw new NumberFormatException();
+					}
+
+					var10 = var8 - 'W';
+				}
+
+				if (var10 >= var1) {
+					throw new NumberFormatException();
+				}
+
+				if (var3) {
+					var10 = -var10;
+				}
+
+				int var9 = var5 * var1 + var10;
+				if (var9 / var1 != var5) {
+					throw new NumberFormatException();
+				}
+
+				var5 = var9;
+				var4 = true;
+			}
+
+			if (!var4) {
+				throw new NumberFormatException();
+			} else {
+				return var5;
+			}
+		} else {
+			throw new IllegalArgumentException("" + var1);
+		}
+	}
+
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "(IIIII)V",
+		garbageValue = "493796599"
+	)
+	static void method3668(int var0, int var1, int var2, int var3) {
+		for (ObjectSound var4 = (ObjectSound)ObjectSound.objectSounds.last(); var4 != null; var4 = (ObjectSound)ObjectSound.objectSounds.previous()) {
+			if (var4.soundEffectId != -1 || var4.soundEffectIds != null) {
+				int var5 = 0;
+				if (var1 > var4.maxX * 16384) {
+					var5 += var1 - var4.maxX * 16384;
+				} else if (var1 < var4.x * 16384) {
+					var5 += var4.x * 16384 - var1;
+				}
+
+				if (var2 > var4.maxY * 16384) {
+					var5 += var2 - var4.maxY * 16384;
+				} else if (var2 < var4.y * 128) {
+					var5 += var4.y * 128 - var2;
+				}
+
+				if (var5 - 64 <= var4.field844 && class93.clientPreferences.getAreaSoundEffectsVolume() != 0 && var0 == var4.plane) {
+					var5 -= 64;
+					if (var5 < 0) {
+						var5 = 0;
+					}
+
+					int var6 = (var4.field844 - var5) * class93.clientPreferences.getAreaSoundEffectsVolume() / var4.field844;
+					if (var4.stream1 == null) {
+						if (var4.soundEffectId >= 0) {
+							SoundEffect var7 = SoundEffect.readSoundEffect(HttpContentType.field4844, var4.soundEffectId, 0);
+							if (var7 != null) {
+								RawSound var8 = var7.toRawSound().resample(UrlRequest.decimator);
+								RawPcmStream var9 = RawPcmStream.createRawPcmStream(var8, 100, var6);
+								var9.setNumLoops(-1);
+								ClanSettings.pcmStreamMixer.addSubStream(var9);
+								var4.stream1 = var9;
+							}
+						}
+					} else {
+						var4.stream1.method958(var6);
+					}
+
+					if (var4.stream2 == null) {
+						if (var4.soundEffectIds != null && (var4.field842 -= var3) <= 0) {
+							int var11 = (int)(Math.random() * (double)var4.soundEffectIds.length);
+							SoundEffect var12 = SoundEffect.readSoundEffect(HttpContentType.field4844, var4.soundEffectIds[var11], 0);
+							if (var12 != null) {
+								RawSound var13 = var12.toRawSound().resample(UrlRequest.decimator);
+								RawPcmStream var10 = RawPcmStream.createRawPcmStream(var13, 100, var6);
+								var10.setNumLoops(0);
+								ClanSettings.pcmStreamMixer.addSubStream(var10);
+								var4.stream2 = var10;
+								var4.field842 = var4.field834 + (int)(Math.random() * (double)(var4.field840 - var4.field834));
+							}
+						}
+					} else {
+						var4.stream2.method958(var6);
+						if (!var4.stream2.hasNext()) {
+							var4.stream2 = null;
+						}
+					}
+				} else {
+					if (var4.stream1 != null) {
+						ClanSettings.pcmStreamMixer.removeSubStream(var4.stream1);
+						var4.stream1 = null;
+					}
+
+					if (var4.stream2 != null) {
+						ClanSettings.pcmStreamMixer.removeSubStream(var4.stream2);
+						var4.stream2 = null;
+					}
+				}
+			}
+		}
+
+	}
+
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "(ILdd;ZI)I",
+		garbageValue = "643950659"
+	)
+	static int method3640(int var0, Script var1, boolean var2) {
+		Widget var3 = var2 ? class31.scriptDotWidget : class185.scriptActiveWidget;
+		if (var0 == ScriptOpcodes.CC_GETTARGETMASK) {
+			Interpreter.Interpreter_intStack[++UserComparator6.Interpreter_intStackSize - 1] = class155.Widget_unpackTargetMask(class405.getWidgetFlags(var3));
+			return 1;
+		} else if (var0 != ScriptOpcodes.CC_GETOP) {
+			if (var0 == ScriptOpcodes.CC_GETOPBASE) {
+				if (var3.dataText == null) {
+					Interpreter.Interpreter_stringStack[++class211.Interpreter_stringStackSize - 1] = "";
+				} else {
+					Interpreter.Interpreter_stringStack[++class211.Interpreter_stringStackSize - 1] = var3.dataText;
+				}
+
+				return 1;
+			} else {
+				return 2;
+			}
+		} else {
+			int var4 = Interpreter.Interpreter_intStack[--UserComparator6.Interpreter_intStackSize];
+			--var4;
+			if (var3.actions != null && var4 < var3.actions.length && var3.actions[var4] != null) {
+				Interpreter.Interpreter_stringStack[++class211.Interpreter_stringStackSize - 1] = var3.actions[var4];
+			} else {
+				Interpreter.Interpreter_stringStack[++class211.Interpreter_stringStackSize - 1] = "";
+			}
+
+			return 1;
+		}
+	}
+
+	@ObfuscatedName("bw")
+	@ObfuscatedSignature(
+		descriptor = "(I)I",
+		garbageValue = "-1687144963"
+	)
+	@Export("getGcDuration")
+	protected static int getGcDuration() {
+		int var0 = 0;
+		if (HttpMethod.garbageCollector == null || !HttpMethod.garbageCollector.isValid()) {
+			try {
+				Iterator var1 = ManagementFactory.getGarbageCollectorMXBeans().iterator();
+
+				while (var1.hasNext()) {
+					GarbageCollectorMXBean var2 = (GarbageCollectorMXBean)var1.next();
+					if (var2.isValid()) {
+						HttpMethod.garbageCollector = var2;
+						GameEngine.garbageCollectorLastCheckTimeMs = -1L;
+						GameEngine.garbageCollectorLastCollectionTime = -1L;
+					}
+				}
+			} catch (Throwable var11) {
+			}
+		}
+
+		if (HttpMethod.garbageCollector != null) {
+			long var9 = UserComparator9.method2973();
+			long var3 = HttpMethod.garbageCollector.getCollectionTime();
+			if (-1L != GameEngine.garbageCollectorLastCollectionTime) {
+				long var5 = var3 - GameEngine.garbageCollectorLastCollectionTime;
+				long var7 = var9 - GameEngine.garbageCollectorLastCheckTimeMs;
+				if (0L != var7) {
+					var0 = (int)(100L * var5 / var7);
+				}
+			}
+
+			GameEngine.garbageCollectorLastCollectionTime = var3;
+			GameEngine.garbageCollectorLastCheckTimeMs = var9;
+		}
+
+		return var0;
 	}
 }

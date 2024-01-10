@@ -1,21 +1,22 @@
 import java.awt.Component;
 import java.awt.Graphics;
-import java.net.URL;
-import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ag")
+@ObfuscatedName("ac")
 @Implements("Canvas")
 public final class Canvas extends java.awt.Canvas {
-	@ObfuscatedName("fk")
+	@ObfuscatedName("bf")
+	protected static String field120;
+	@ObfuscatedName("ec")
 	@ObfuscatedSignature(
-		descriptor = "Loh;"
+		descriptor = "Ldb;"
 	)
-	static Archive field114;
-	@ObfuscatedName("at")
+	@Export("mouseRecorder")
+	static MouseRecorder mouseRecorder;
+	@ObfuscatedName("am")
 	@Export("component")
 	Component component;
 
@@ -31,182 +32,259 @@ public final class Canvas extends java.awt.Canvas {
 		this.component.paint(var1);
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lhd;",
-		garbageValue = "-1413317241"
+		descriptor = "(Ljava/lang/String;I)V",
+		garbageValue = "-1288797139"
 	)
-	public static FloorOverlayDefinition method333(int var0) {
-		FloorOverlayDefinition var1 = (FloorOverlayDefinition)FloorOverlayDefinition.FloorOverlayDefinition_cached.get((long)var0);
-		if (var1 != null) {
-			return var1;
-		} else {
-			byte[] var2 = FloorOverlayDefinition.FloorOverlayDefinition_archive.takeFile(4, var0);
-			var1 = new FloorOverlayDefinition();
-			if (var2 != null) {
-				var1.decode(new Buffer(var2), var0);
-			}
-
-			var1.postDecode();
-			FloorOverlayDefinition.FloorOverlayDefinition_cached.put(var1, (long)var0);
-			return var1;
-		}
-	}
-
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "(II)Lha;",
-		garbageValue = "-2114676262"
-	)
-	@Export("SpotAnimationDefinition_get")
-	public static SpotAnimationDefinition SpotAnimationDefinition_get(int var0) {
-		SpotAnimationDefinition var1 = (SpotAnimationDefinition)SpotAnimationDefinition.SpotAnimationDefinition_cached.get((long)var0);
-		if (var1 != null) {
-			return var1;
-		} else {
-			byte[] var2 = SpotAnimationDefinition.SpotAnimationDefinition_archive.takeFile(13, var0);
-			var1 = new SpotAnimationDefinition();
-			var1.id = var0;
-			if (var2 != null) {
-				var1.decode(new Buffer(var2));
-			}
-
-			SpotAnimationDefinition.SpotAnimationDefinition_cached.put(var1, (long)var0);
-			return var1;
-		}
-	}
-
-	@ObfuscatedName("ar")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;ILjava/lang/String;B)Z",
-		garbageValue = "50"
-	)
-	static boolean method325(String var0, int var1, String var2) {
-		if (var1 == 0) {
-			try {
-				if (!class31.field157.startsWith("win")) {
-					throw new Exception();
-				} else if (!var0.startsWith("http://") && !var0.startsWith("https://")) {
-					throw new Exception();
-				} else {
-					String var10 = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789?&=,.%+-_#:/*";
-
-					for (int var4 = 0; var4 < var0.length(); ++var4) {
-						if (var10.indexOf(var0.charAt(var4)) == -1) {
-							throw new Exception();
-						}
-					}
-
-					Runtime.getRuntime().exec("cmd /c start \"j\" \"" + var0 + "\"");
-					return true;
-				}
-			} catch (Throwable var5) {
-				return false;
-			}
-		} else if (var1 == 1) {
-			try {
-				Object var3 = class26.method396(class31.field158, var2, new Object[]{(new URL(class31.field158.getCodeBase(), var0)).toString()});
-				return var3 != null;
-			} catch (Throwable var6) {
-				return false;
-			}
-		} else if (var1 == 2) {
-			try {
-				class31.field158.getAppletContext().showDocument(new URL(class31.field158.getCodeBase(), var0), "_blank");
-				return true;
-			} catch (Exception var7) {
-				return false;
-			}
-		} else if (var1 == 3) {
-			try {
-				class26.method394(class31.field158, "loggedout");
-			} catch (Throwable var9) {
-			}
-
-			try {
-				class31.field158.getAppletContext().showDocument(new URL(class31.field158.getCodeBase(), var0), "_top");
-				return true;
-			} catch (Exception var8) {
-				return false;
-			}
-		} else {
-			throw new IllegalArgumentException();
-		}
-	}
-
-	@ObfuscatedName("ab")
-	@ObfuscatedSignature(
-		descriptor = "(FFFFLfm;I)V",
-		garbageValue = "-2092193307"
-	)
-	static void method334(float var0, float var1, float var2, float var3, class131 var4) {
-		float var5 = var1 - var0;
-		float var6 = var2 - var1;
-		float var7 = var3 - var2;
-		float var8 = var6 - var5;
-		var4.field1528 = var7 - var6 - var8;
-		var4.field1540 = var8 + var8 + var8;
-		var4.field1539 = var5 + var5 + var5;
-		var4.field1546 = var0;
-	}
-
-	@ObfuscatedName("au")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "6"
-	)
-	static void method329() {
-		Script.Script_cached.clear();
+	static final void method334(String var0) {
+		GrandExchangeEvents.addGameMessage(30, "", var0);
 	}
 
 	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-18"
+		descriptor = "(Ljava/lang/String;B)V",
+		garbageValue = "73"
 	)
-	static void method332() {
-		Iterator var0 = Messages.Messages_hashTable.iterator();
+	static final void method333(String var0) {
+		method334("Please remove " + var0 + " from your ignore list first");
+	}
 
-		while (var0.hasNext()) {
-			Message var1 = (Message)var0.next();
-			var1.clearIsFromIgnored();
+	@ObfuscatedName("ab")
+	@ObfuscatedSignature(
+		descriptor = "(IIIIIIIILkn;Lii;I)V",
+		garbageValue = "-470023103"
+	)
+	static final void method332(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, Scene var8, CollisionMap var9) {
+		ObjectComposition var10 = class137.getObjectDefinition(var4);
+		int var11 = var7 >= 0 ? var7 : var10.animationId;
+		int var12;
+		int var13;
+		if (var5 != 1 && var5 != 3) {
+			var12 = var10.sizeX;
+			var13 = var10.sizeY;
+		} else {
+			var12 = var10.sizeY;
+			var13 = var10.sizeX;
 		}
 
-	}
+		int var14;
+		int var15;
+		if (var12 + var2 <= 104) {
+			var14 = (var12 >> 1) + var2;
+			var15 = var2 + (var12 + 1 >> 1);
+		} else {
+			var14 = var2;
+			var15 = var2 + 1;
+		}
 
-	@ObfuscatedName("js")
-	@ObfuscatedSignature(
-		descriptor = "(Ldf;II)V",
-		garbageValue = "-360697736"
-	)
-	static final void method331(Actor var0, int var1) {
-		class514.worldToScreen(var0.x, var0.y, var1);
-	}
+		int var16;
+		int var17;
+		if (var3 + var13 <= 104) {
+			var16 = var3 + (var13 >> 1);
+			var17 = var3 + (var13 + 1 >> 1);
+		} else {
+			var16 = var3;
+			var17 = var3 + 1;
+		}
 
-	@ObfuscatedName("ln")
-	@ObfuscatedSignature(
-		descriptor = "(IIIIIIIII)V",
-		garbageValue = "1842329520"
-	)
-	@Export("drawWidgets")
-	static final void drawWidgets(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7) {
-		if (HealthBarDefinition.widgetDefinition.loadInterface(var0)) {
-			UserComparator10.field1453 = null;
-			SoundSystem.drawInterface(HealthBarDefinition.widgetDefinition.Widget_interfaceComponents[var0], -1, var1, var2, var3, var4, var5, var6, var7);
-			if (UserComparator10.field1453 != null) {
-				SoundSystem.drawInterface(UserComparator10.field1453, -1412584499, var1, var2, var3, var4, ParamComposition.field2040, PendingSpawn.field1167, var7);
-				UserComparator10.field1453 = null;
+		int[][] var18 = Tiles.Tiles_heights[var1];
+		int var19 = var18[var15][var17] + var18[var15][var16] + var18[var14][var16] + var18[var14][var17] >> 2;
+		int var20 = (var2 << 7) + (var12 << 6);
+		int var21 = (var3 << 7) + (var13 << 6);
+		long var22 = DynamicObject.calculateTag(var2, var3, 2, var10.int1 == 0, var4);
+		int var24 = (var5 << 6) + var6;
+		if (var10.int3 == 1) {
+			var24 += 256;
+		}
+
+		Object var32;
+		if (var6 == 22) {
+			if (var11 == -1 && var10.transforms == null) {
+				var32 = var10.getModel(22, var5, var18, var20, var19, var21);
+			} else {
+				var32 = new DynamicObject(var4, 22, var5, var1, var2, var3, var11, var10.boolean3, (Renderable)null);
 			}
 
-		} else {
-			if (var7 != -1) {
-				Client.validRootWidgets[var7] = true;
+			var8.newFloorDecoration(var0, var2, var3, var19, (Renderable)var32, var22, var24);
+			if (var10.interactType == 1) {
+				var9.setBlockedByFloorDec(var2, var3);
+			}
+
+		} else if (var6 != 10 && var6 != 11) {
+			if (var6 >= 12) {
+				if (var11 == -1 && var10.transforms == null) {
+					var32 = var10.getModel(var6, var5, var18, var20, var19, var21);
+				} else {
+					var32 = new DynamicObject(var4, var6, var5, var1, var2, var3, var11, var10.boolean3, (Renderable)null);
+				}
+
+				var8.method5521(var0, var2, var3, var19, 1, 1, (Renderable)var32, 0, var22, var24);
+				if (var10.interactType != 0) {
+					var9.addGameObject(var2, var3, var12, var13, var10.boolean1);
+				}
+
+			} else if (var6 == 0) {
+				if (var11 == -1 && var10.transforms == null) {
+					var32 = var10.getModel(0, var5, var18, var20, var19, var21);
+				} else {
+					var32 = new DynamicObject(var4, 0, var5, var1, var2, var3, var11, var10.boolean3, (Renderable)null);
+				}
+
+				var8.newBoundaryObject(var0, var2, var3, var19, (Renderable)var32, (Renderable)null, Tiles.field1014[var5], 0, var22, var24);
+				if (var10.interactType != 0) {
+					var9.method4466(var2, var3, var6, var5, var10.boolean1);
+				}
+
+			} else if (var6 == 1) {
+				if (var11 == -1 && var10.transforms == null) {
+					var32 = var10.getModel(1, var5, var18, var20, var19, var21);
+				} else {
+					var32 = new DynamicObject(var4, 1, var5, var1, var2, var3, var11, var10.boolean3, (Renderable)null);
+				}
+
+				var8.newBoundaryObject(var0, var2, var3, var19, (Renderable)var32, (Renderable)null, Tiles.field1015[var5], 0, var22, var24);
+				if (var10.interactType != 0) {
+					var9.method4466(var2, var3, var6, var5, var10.boolean1);
+				}
+
 			} else {
-				for (int var8 = 0; var8 < 100; ++var8) {
-					Client.validRootWidgets[var8] = true;
+				int var25;
+				if (var6 == 2) {
+					var25 = var5 + 1 & 3;
+					Object var27;
+					Object var33;
+					if (var11 == -1 && var10.transforms == null) {
+						var33 = var10.getModel(2, var5 + 4, var18, var20, var19, var21);
+						var27 = var10.getModel(2, var25, var18, var20, var19, var21);
+					} else {
+						var33 = new DynamicObject(var4, 2, var5 + 4, var1, var2, var3, var11, var10.boolean3, (Renderable)null);
+						var27 = new DynamicObject(var4, 2, var25, var1, var2, var3, var11, var10.boolean3, (Renderable)null);
+					}
+
+					var8.newBoundaryObject(var0, var2, var3, var19, (Renderable)var33, (Renderable)var27, Tiles.field1014[var5], Tiles.field1014[var25], var22, var24);
+					if (var10.interactType != 0) {
+						var9.method4466(var2, var3, var6, var5, var10.boolean1);
+					}
+
+				} else if (var6 == 3) {
+					if (var11 == -1 && var10.transforms == null) {
+						var32 = var10.getModel(3, var5, var18, var20, var19, var21);
+					} else {
+						var32 = new DynamicObject(var4, 3, var5, var1, var2, var3, var11, var10.boolean3, (Renderable)null);
+					}
+
+					var8.newBoundaryObject(var0, var2, var3, var19, (Renderable)var32, (Renderable)null, Tiles.field1015[var5], 0, var22, var24);
+					if (var10.interactType != 0) {
+						var9.method4466(var2, var3, var6, var5, var10.boolean1);
+					}
+
+				} else if (var6 == 9) {
+					if (var11 == -1 && var10.transforms == null) {
+						var32 = var10.getModel(var6, var5, var18, var20, var19, var21);
+					} else {
+						var32 = new DynamicObject(var4, var6, var5, var1, var2, var3, var11, var10.boolean3, (Renderable)null);
+					}
+
+					var8.method5521(var0, var2, var3, var19, 1, 1, (Renderable)var32, 0, var22, var24);
+					if (var10.interactType != 0) {
+						var9.addGameObject(var2, var3, var12, var13, var10.boolean1);
+					}
+
+				} else if (var6 == 4) {
+					if (var11 == -1 && var10.transforms == null) {
+						var32 = var10.getModel(4, var5, var18, var20, var19, var21);
+					} else {
+						var32 = new DynamicObject(var4, 4, var5, var1, var2, var3, var11, var10.boolean3, (Renderable)null);
+					}
+
+					var8.newWallDecoration(var0, var2, var3, var19, (Renderable)var32, (Renderable)null, Tiles.field1014[var5], 0, 0, 0, var22, var24);
+				} else {
+					long var26;
+					Object var28;
+					if (var6 == 5) {
+						var25 = 16;
+						var26 = var8.getBoundaryObjectTag(var0, var2, var3);
+						if (var26 != 0L) {
+							var25 = class137.getObjectDefinition(class167.Entity_unpackID(var26)).int2;
+						}
+
+						if (var11 == -1 && var10.transforms == null) {
+							var28 = var10.getModel(4, var5, var18, var20, var19, var21);
+						} else {
+							var28 = new DynamicObject(var4, 4, var5, var1, var2, var3, var11, var10.boolean3, (Renderable)null);
+						}
+
+						var8.newWallDecoration(var0, var2, var3, var19, (Renderable)var28, (Renderable)null, Tiles.field1014[var5], 0, var25 * Tiles.field1018[var5], var25 * Tiles.field1017[var5], var22, var24);
+					} else if (var6 == 6) {
+						var25 = 8;
+						var26 = var8.getBoundaryObjectTag(var0, var2, var3);
+						if (0L != var26) {
+							var25 = class137.getObjectDefinition(class167.Entity_unpackID(var26)).int2 / 2;
+						}
+
+						if (var11 == -1 && var10.transforms == null) {
+							var28 = var10.getModel(4, var5 + 4, var18, var20, var19, var21);
+						} else {
+							var28 = new DynamicObject(var4, 4, var5 + 4, var1, var2, var3, var11, var10.boolean3, (Renderable)null);
+						}
+
+						var8.newWallDecoration(var0, var2, var3, var19, (Renderable)var28, (Renderable)null, 256, var5, var25 * Tiles.field1010[var5], var25 * Tiles.field1007[var5], var22, var24);
+					} else if (var6 == 7) {
+						int var31 = var5 + 2 & 3;
+						if (var11 == -1 && var10.transforms == null) {
+							var32 = var10.getModel(4, var31 + 4, var18, var20, var19, var21);
+						} else {
+							var32 = new DynamicObject(var4, 4, var31 + 4, var1, var2, var3, var11, var10.boolean3, (Renderable)null);
+						}
+
+						var8.newWallDecoration(var0, var2, var3, var19, (Renderable)var32, (Renderable)null, 256, var31, 0, 0, var22, var24);
+					} else if (var6 == 8) {
+						var25 = 8;
+						var26 = var8.getBoundaryObjectTag(var0, var2, var3);
+						if (0L != var26) {
+							var25 = class137.getObjectDefinition(class167.Entity_unpackID(var26)).int2 / 2;
+						}
+
+						int var30 = var5 + 2 & 3;
+						Object var29;
+						if (var11 == -1 && var10.transforms == null) {
+							var28 = var10.getModel(4, var5 + 4, var18, var20, var19, var21);
+							var29 = var10.getModel(4, var30 + 4, var18, var20, var19, var21);
+						} else {
+							var28 = new DynamicObject(var4, 4, var5 + 4, var1, var2, var3, var11, var10.boolean3, (Renderable)null);
+							var29 = new DynamicObject(var4, 4, var30 + 4, var1, var2, var3, var11, var10.boolean3, (Renderable)null);
+						}
+
+						var8.newWallDecoration(var0, var2, var3, var19, (Renderable)var28, (Renderable)var29, 256, var5, var25 * Tiles.field1010[var5], var25 * Tiles.field1007[var5], var22, var24);
+					}
 				}
 			}
+		} else {
+			if (var11 == -1 && var10.transforms == null) {
+				var32 = var10.getModel(10, var5, var18, var20, var19, var21);
+			} else {
+				var32 = new DynamicObject(var4, 10, var5, var1, var2, var3, var11, var10.boolean3, (Renderable)null);
+			}
+
+			if (var32 != null) {
+				var8.method5521(var0, var2, var3, var19, var12, var13, (Renderable)var32, var6 == 11 ? 256 : 0, var22, var24);
+			}
+
+			if (var10.interactType != 0) {
+				var9.addGameObject(var2, var3, var12, var13, var10.boolean1);
+			}
 
 		}
+	}
+
+	@ObfuscatedName("nb")
+	@ObfuscatedSignature(
+		descriptor = "(II)V",
+		garbageValue = "-830137151"
+	)
+	static final void method327(int var0) {
+		var0 = Math.min(Math.max(var0, 0), 127);
+		class93.clientPreferences.updateSoundEffectVolume(var0);
 	}
 }

@@ -4,41 +4,29 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gv")
+@ObfuscatedName("gm")
 @Implements("VarpDefinition")
 public class VarpDefinition extends DualNode {
-	@ObfuscatedName("at")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "Lol;"
+		descriptor = "Low;"
 	)
 	@Export("VarpDefinition_archive")
 	static AbstractArchive VarpDefinition_archive;
-	@ObfuscatedName("ah")
-	@ObfuscatedGetter(
-		intValue = 821023847
-	)
-	public static int field1815;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "Llk;"
+		descriptor = "Llq;"
 	)
 	@Export("VarpDefinition_cached")
 	static EvictingDualNodeHashTable VarpDefinition_cached;
-	@ObfuscatedName("ki")
-	@ObfuscatedSignature(
-		descriptor = "[Lup;"
-	)
-	@Export("mapSceneSprites")
-	static IndexedSprite[] mapSceneSprites;
-	@ObfuscatedName("ku")
-	@ObfuscatedSignature(
-		descriptor = "[Luz;"
-	)
-	@Export("crossSprites")
-	static SpritePixels[] crossSprites;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("tc")
+	@Export("ClanChat_inClanChat")
+	static boolean ClanChat_inClanChat;
+	@ObfuscatedName("tb")
+	static boolean field1832;
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = 872876049
+		intValue = -324322137
 	)
 	@Export("type")
 	public int type;
@@ -51,10 +39,10 @@ public class VarpDefinition extends DualNode {
 		this.type = 0;
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "(Luj;B)V",
-		garbageValue = "-51"
+		descriptor = "(Luk;B)V",
+		garbageValue = "20"
 	)
 	@Export("decode")
 	void decode(Buffer var1) {
@@ -68,10 +56,10 @@ public class VarpDefinition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(Luj;II)V",
-		garbageValue = "-521810807"
+		descriptor = "(Luk;II)V",
+		garbageValue = "-1962603931"
 	)
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
@@ -79,14 +67,5 @@ public class VarpDefinition extends DualNode {
 			this.type = var1.readUnsignedShort();
 		}
 
-	}
-
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "(IIII)I",
-		garbageValue = "-634068040"
-	)
-	static int method3549(int var0, int var1, int var2) {
-		return var0 << 28 | var1 << 14 | var2;
 	}
 }

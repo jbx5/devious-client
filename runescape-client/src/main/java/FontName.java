@@ -3,46 +3,46 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("th")
+@ObfuscatedName("ti")
 @Implements("FontName")
 public class FontName {
-	@ObfuscatedName("at")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "Lth;"
+		descriptor = "Lti;"
 	)
 	@Export("FontName_plain11")
 	public static final FontName FontName_plain11;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Lth;"
+		descriptor = "Lti;"
 	)
 	@Export("FontName_plain12")
 	public static final FontName FontName_plain12;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "Lth;"
+		descriptor = "Lti;"
 	)
 	@Export("FontName_bold12")
 	public static final FontName FontName_bold12;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "Lth;"
+		descriptor = "Lti;"
 	)
 	@Export("FontName_verdana11")
 	public static final FontName FontName_verdana11;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Lth;"
+		descriptor = "Lti;"
 	)
 	@Export("FontName_verdana13")
 	public static final FontName FontName_verdana13;
-	@ObfuscatedName("au")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "Lth;"
+		descriptor = "Lti;"
 	)
 	@Export("FontName_verdana15")
 	public static final FontName FontName_verdana15;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("ag")
 	@Export("name")
 	String name;
 
@@ -59,23 +59,26 @@ public class FontName {
 		this.name = var1;
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "(IB)V",
-		garbageValue = "-56"
+		descriptor = "(I)V",
+		garbageValue = "2111936849"
 	)
-	static void method8929(int var0) {
-		class461.field4763 = var0;
-		class461.field4764 = new class461[var0];
-		IgnoreList.field4663 = 0;
+	public static void method9049() {
+		class319.field3466.clear();
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("ov")
 	@ObfuscatedSignature(
-		descriptor = "(B)[Lth;",
-		garbageValue = "50"
+		descriptor = "(Lnn;I)Ljava/lang/String;",
+		garbageValue = "-1979778773"
 	)
-	public static FontName[] method8927() {
-		return new FontName[]{FontName_verdana13, FontName_bold12, FontName_verdana15, FontName_plain11, FontName_plain12, FontName_verdana11};
+	@Export("Widget_getSpellActionName")
+	static String Widget_getSpellActionName(Widget var0) {
+		if (class155.Widget_unpackTargetMask(class405.getWidgetFlags(var0)) == 0) {
+			return null;
+		} else {
+			return var0.spellActionName != null && var0.spellActionName.trim().length() != 0 ? var0.spellActionName : null;
+		}
 	}
 }

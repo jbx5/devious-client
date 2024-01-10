@@ -1,28 +1,41 @@
-import java.util.Arrays;
 import java.util.concurrent.Future;
+import java.util.concurrent.ThreadPoolExecutor;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("aq")
+@ObfuscatedName("ay")
 @Implements("AsyncHttpResponse")
 public class AsyncHttpResponse {
-	@ObfuscatedName("ak")
+	@ObfuscatedName("wd")
 	@ObfuscatedGetter(
-		intValue = -1288987617
+		intValue = 567578519
 	)
-	static int field88;
-	@ObfuscatedName("kq")
+	@Export("foundItemIndex")
+	static int foundItemIndex;
+	@ObfuscatedName("ao")
+	public static ThreadPoolExecutor field85;
+	@ObfuscatedName("fs")
 	@ObfuscatedGetter(
-		intValue = -125616841
+		longValue = 2210412390535978497L
 	)
-	static int field85;
-	@ObfuscatedName("at")
+	static long field83;
+	@ObfuscatedName("gr")
+	@ObfuscatedSignature(
+		descriptor = "Loz;"
+	)
+	static Archive field80;
+	@ObfuscatedName("ql")
+	@ObfuscatedSignature(
+		descriptor = "[Lnn;"
+	)
+	static Widget[] field78;
+	@ObfuscatedName("am")
 	@Export("responseFuture")
 	Future responseFuture;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ap")
 	@Export("errorMessage")
 	String errorMessage;
 
@@ -31,15 +44,15 @@ public class AsyncHttpResponse {
 	}
 
 	AsyncHttpResponse(String var1) {
-		this.method265(var1);
+		this.method274(var1);
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)V",
-		garbageValue = "-556763021"
+		descriptor = "(Ljava/lang/String;B)V",
+		garbageValue = "-76"
 	)
-	void method265(String var1) {
+	void method274(String var1) {
 		if (var1 == null) {
 			var1 = "";
 		}
@@ -52,40 +65,40 @@ public class AsyncHttpResponse {
 
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
 		descriptor = "(B)Ljava/lang/String;",
-		garbageValue = "94"
+		garbageValue = "80"
 	)
 	@Export("getErrorMessage")
 	public final String getErrorMessage() {
 		return this.errorMessage;
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "-712544099"
+		garbageValue = "1544046253"
 	)
 	@Export("hasError")
 	public boolean hasError() {
 		return this.errorMessage != null || this.responseFuture == null;
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "66"
+		descriptor = "(I)Z",
+		garbageValue = "-403372870"
 	)
 	@Export("hasFinished")
 	public final boolean hasFinished() {
 		return this.hasError() ? true : this.responseFuture.isDone();
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(B)Law;",
-		garbageValue = "-42"
+		descriptor = "(B)Lab;",
+		garbageValue = "52"
 	)
 	@Export("await")
 	public final HttpResponse await() {
@@ -99,113 +112,19 @@ public class AsyncHttpResponse {
 			} catch (Exception var3) {
 				String var2 = "Error retrieving REST request reply";
 				System.err.println(var2 + "\r\n" + var3);
-				this.method265(var2);
+				this.method274(var2);
 				return new HttpResponse(var2);
 			}
 		}
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(Lol;I)V",
-		garbageValue = "1722301374"
+		descriptor = "(II)Lco;",
+		garbageValue = "-1149524749"
 	)
-	public static void method288(AbstractArchive var0) {
-		StructComposition.StructDefinition_archive = var0;
-	}
-
-	@ObfuscatedName("by")
-	@ObfuscatedSignature(
-		descriptor = "(Lnn;Lnb;ZI)V",
-		garbageValue = "-940953937"
-	)
-	public static void method290(Widget var0, PlayerComposition var1, boolean var2) {
-		var0.modelType = 7;
-		var0.field3717 = new PlayerComposition(var1);
-		if (!var2) {
-			var0.field3717.equipment = Arrays.copyOf(var0.field3717.field3596, var0.field3717.field3596.length);
-			var0.field3717.method6323();
-		}
-
-	}
-
-	@ObfuscatedName("id")
-	@ObfuscatedSignature(
-		descriptor = "(Lnn;III)V",
-		garbageValue = "-1252967897"
-	)
-	@Export("checkIfMinimapClicked")
-	static final void checkIfMinimapClicked(Widget var0, int var1, int var2) {
-		if (Client.minimapState == 0 || Client.minimapState == 3) {
-			if (!Client.isMenuOpen && (MouseHandler.MouseHandler_lastButton == 1 || !HttpRequestTask.mouseCam && MouseHandler.MouseHandler_lastButton == 4)) {
-				SpriteMask var3 = var0.method6668(HealthBarDefinition.widgetDefinition, true);
-				if (var3 == null) {
-					return;
-				}
-
-				int var4 = MouseHandler.MouseHandler_lastPressedX - var1;
-				int var5 = MouseHandler.MouseHandler_lastPressedY - var2;
-				if (var3.contains(var4, var5)) {
-					var4 -= var3.width / 2;
-					var5 -= var3.height / 2;
-					int var6 = Client.camAngleY & 2047;
-					int var7 = Rasterizer3D.Rasterizer3D_sine[var6];
-					int var8 = Rasterizer3D.Rasterizer3D_cosine[var6];
-					int var9 = var4 * var8 + var5 * var7 >> 11;
-					int var10 = var5 * var8 - var7 * var4 >> 11;
-					int var11 = var9 + class229.localPlayer.x >> 7;
-					int var12 = class229.localPlayer.y - var10 >> 7;
-					PacketBufferNode var13 = SecureUrlRequester.getPacketBufferNode(ClientPacket.field3177, Client.packetWriter.isaacCipher);
-					var13.packetBuffer.writeByte(18);
-					var13.packetBuffer.writeShort(NpcOverrides.baseX * 64 + var11);
-					var13.packetBuffer.writeShortLE(class101.baseY * 64 + var12);
-					var13.packetBuffer.writeByteSub(Client.field724.method4316(82) ? (Client.field724.method4316(81) ? 2 : 1) : 0);
-					var13.packetBuffer.writeByte(var4);
-					var13.packetBuffer.writeByte(var5);
-					var13.packetBuffer.writeShort(Client.camAngleY);
-					var13.packetBuffer.writeByte(57);
-					var13.packetBuffer.writeByte(0);
-					var13.packetBuffer.writeByte(0);
-					var13.packetBuffer.writeByte(89);
-					var13.packetBuffer.writeShort(class229.localPlayer.x);
-					var13.packetBuffer.writeShort(class229.localPlayer.y);
-					var13.packetBuffer.writeByte(63);
-					Client.packetWriter.addNode(var13);
-					Client.destinationX = var11;
-					Client.destinationY = var12;
-				}
-			}
-
-		}
-	}
-
-	@ObfuscatedName("jo")
-	@ObfuscatedSignature(
-		descriptor = "(ZI)V",
-		garbageValue = "-805283190"
-	)
-	@Export("addNpcsToScene")
-	static final void addNpcsToScene(boolean var0) {
-		for (int var1 = 0; var1 < Client.npcCount; ++var1) {
-			NPC var2 = Client.npcs[Client.npcIndices[var1]];
-			if (var2 != null && var2.isVisible() && var2.definition.isVisible == var0 && var2.definition.transformIsVisible()) {
-				int var3 = var2.x >> 7;
-				int var4 = var2.y >> 7;
-				if (var3 >= 0 && var3 < 104 && var4 >= 0 && var4 < 104) {
-					if (var2.field1198 == 1 && (var2.x & 127) == 64 && (var2.y & 127) == 64) {
-						if (Client.tileLastDrawnActor[var3][var4] == Client.viewportDrawCount) {
-							continue;
-						}
-
-						Client.tileLastDrawnActor[var3][var4] = Client.viewportDrawCount;
-					}
-
-					long var5 = Player.calculateTag(0, 0, 1, !var2.definition.isInteractable, Client.npcIndices[var1]);
-					var2.playerCycle = Client.cycle;
-					class36.scene.drawEntity(ItemLayer.Client_plane, var2.x, var2.y, WorldMapDecorationType.getTileHeight(var2.field1198 * 64 - 64 + var2.x, var2.field1198 * 64 - 64 + var2.y, ItemLayer.Client_plane), var2.field1198 * 64 - 64 + 60, var2, var2.rotation, var5, var2.isWalking);
-				}
-			}
-		}
-
+	@Export("Messages_getMessage")
+	static Message Messages_getMessage(int var0) {
+		return (Message)Messages.Messages_hashTable.get((long)var0);
 	}
 }

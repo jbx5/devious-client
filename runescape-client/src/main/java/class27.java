@@ -1,106 +1,111 @@
-import java.applet.Applet;
 import java.util.Arrays;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("bd")
 public class class27 {
-	@ObfuscatedName("aa")
-	int[] field128;
-	@ObfuscatedName("ac")
-	int[] field135;
+	@ObfuscatedName("qc")
+	@ObfuscatedGetter(
+		intValue = 1968580127
+	)
+	static int field135;
+	@ObfuscatedName("ag")
+	int[] field138;
+	@ObfuscatedName("ao")
+	int[] field140;
 
 	public class27() {
-		this.field128 = new int[112];
-		this.field135 = new int[192];
-		Arrays.fill(this.field128, 3);
-		Arrays.fill(this.field135, 3);
+		this.field138 = new int[112];
+		this.field140 = new int[192];
+		Arrays.fill(this.field138, 3);
+		Arrays.fill(this.field140, 3);
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(III)V",
-		garbageValue = "-1639161786"
+		descriptor = "(IIB)V",
+		garbageValue = "83"
 	)
-	public void method404(int var1, int var2) {
-		if (this.method413(var1) && this.method415(var2)) {
-			this.field128[var1] = var2;
+	public void method427(int var1, int var2) {
+		if (this.method400(var1) && this.method422(var2)) {
+			this.field138[var1] = var2;
 		}
 
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(CII)V",
-		garbageValue = "-87016088"
+		descriptor = "(CIB)V",
+		garbageValue = "-120"
 	)
-	public void method406(char var1, int var2) {
-		if (this.method411(var1) && this.method415(var2)) {
-			this.field135[var1] = var2;
+	public void method393(char var1, int var2) {
+		if (this.method397(var1) && this.method422(var2)) {
+			this.field140[var1] = var2;
 		}
 
+	}
+
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "(II)I",
+		garbageValue = "-1889056683"
+	)
+	public int method394(int var1) {
+		return this.method400(var1) ? this.field138[var1] : 0;
+	}
+
+	@ObfuscatedName("aj")
+	@ObfuscatedSignature(
+		descriptor = "(CB)I",
+		garbageValue = "0"
+	)
+	public int method395(char var1) {
+		return this.method397(var1) ? this.field140[var1] : 0;
+	}
+
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "(II)Z",
+		garbageValue = "-1248469043"
+	)
+	public boolean method412(int var1) {
+		return this.method400(var1) && (this.field138[var1] == 1 || this.field138[var1] == 3);
 	}
 
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "1141320535"
+		descriptor = "(CB)Z",
+		garbageValue = "1"
 	)
-	public int method407(int var1) {
-		return this.method413(var1) ? this.field128[var1] : 0;
+	public boolean method418(char var1) {
+		return this.method397(var1) && (this.field140[var1] == 1 || this.field140[var1] == 3);
+	}
+
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "(II)Z",
+		garbageValue = "845483812"
+	)
+	public boolean method398(int var1) {
+		return this.method400(var1) && (this.field138[var1] == 2 || this.field138[var1] == 3);
 	}
 
 	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(CI)I",
-		garbageValue = "832183208"
-	)
-	public int method414(char var1) {
-		return this.method411(var1) ? this.field135[var1] : 0;
-	}
-
-	@ObfuscatedName("ab")
-	@ObfuscatedSignature(
-		descriptor = "(II)Z",
-		garbageValue = "-1834915572"
-	)
-	public boolean method409(int var1) {
-		return this.method413(var1) && (this.field128[var1] == 1 || this.field128[var1] == 3);
-	}
-
-	@ObfuscatedName("au")
-	@ObfuscatedSignature(
 		descriptor = "(CI)Z",
-		garbageValue = "1013987055"
+		garbageValue = "392991290"
 	)
-	public boolean method410(char var1) {
-		return this.method411(var1) && (this.field135[var1] == 1 || this.field135[var1] == 3);
+	public boolean method399(char var1) {
+		return this.method397(var1) && (this.field140[var1] == 2 || this.field140[var1] == 3);
 	}
 
-	@ObfuscatedName("aa")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(II)Z",
-		garbageValue = "1584083272"
+		descriptor = "(IB)Z",
+		garbageValue = "105"
 	)
-	public boolean method422(int var1) {
-		return this.method413(var1) && (this.field128[var1] == 2 || this.field128[var1] == 3);
-	}
-
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "(CI)Z",
-		garbageValue = "-769837729"
-	)
-	public boolean method412(char var1) {
-		return this.method411(var1) && (this.field135[var1] == 2 || this.field135[var1] == 3);
-	}
-
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "(II)Z",
-		garbageValue = "2115531423"
-	)
-	boolean method413(int var1) {
+	boolean method400(int var1) {
 		if (var1 >= 0 && var1 < 112) {
 			return true;
 		} else {
@@ -109,12 +114,12 @@ public class class27 {
 		}
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
-		descriptor = "(CI)Z",
-		garbageValue = "494262388"
+		descriptor = "(CB)Z",
+		garbageValue = "105"
 	)
-	boolean method411(char var1) {
+	boolean method397(char var1) {
 		if (var1 >= 0 && var1 < 192) {
 			return true;
 		} else {
@@ -123,12 +128,12 @@ public class class27 {
 		}
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(IS)Z",
-		garbageValue = "9461"
+		descriptor = "(IB)Z",
+		garbageValue = "84"
 	)
-	boolean method415(int var1) {
+	boolean method422(int var1) {
 		if (var1 >= 0 && var1 < 4) {
 			return true;
 		} else {
@@ -137,49 +142,12 @@ public class class27 {
 		}
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("ki")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/applet/Applet;Ljava/lang/String;I)V",
-		garbageValue = "-1746840644"
+		descriptor = "(I)Lpu;",
+		garbageValue = "89017045"
 	)
-	public static void method445(Applet var0, String var1) {
-		class31.field158 = var0;
-		if (var1 != null) {
-			class31.field157 = var1;
-		}
-
-	}
-
-	@ObfuscatedName("at")
-	@ObfuscatedSignature(
-		descriptor = "(Lnh;I)V",
-		garbageValue = "-1843378433"
-	)
-	public static void method444(Huffman var0) {
-		class350.huffman = var0;
-	}
-
-	@ObfuscatedName("ar")
-	@ObfuscatedSignature(
-		descriptor = "(IIB)I",
-		garbageValue = "70"
-	)
-	static int method446(int var0, int var1) {
-		ItemContainer var2 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
-		if (var2 == null) {
-			return 0;
-		} else if (var1 == -1) {
-			return 0;
-		} else {
-			int var3 = 0;
-
-			for (int var4 = 0; var4 < var2.quantities.length; ++var4) {
-				if (var2.ids[var4] == var1) {
-					var3 += var2.quantities[var4];
-				}
-			}
-
-			return var3;
-		}
+	public static NodeDeque method401() {
+		return Client.scriptEvents;
 	}
 }

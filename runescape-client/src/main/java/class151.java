@@ -1,83 +1,93 @@
-import java.awt.Image;
+import java.util.Date;
+import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fx")
-public class class151 extends class144 {
-	@ObfuscatedName("bg")
-	static Image field1682;
-	@ObfuscatedName("at")
-	boolean field1677;
-	@ObfuscatedName("ah")
-	byte field1678;
-	@ObfuscatedName("ar")
-	byte field1680;
-	@ObfuscatedName("ao")
-	byte field1679;
-	@ObfuscatedName("ab")
-	byte field1681;
+@ObfuscatedName("fy")
+public class class151 extends class159 {
+	@ObfuscatedName("ae")
+	@ObfuscatedGetter(
+		intValue = 405054527
+	)
+	static int field1681;
+	@ObfuscatedName("am")
+	@ObfuscatedGetter(
+		intValue = -950851675
+	)
+	int field1679;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lfv;"
+		descriptor = "Lgr;"
 	)
-	final class147 this$0;
+	final class160 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lfv;)V"
+		descriptor = "(Lgr;)V"
 	)
-	class151(class147 var1) {
+	class151(class160 var1) {
 		this.this$0 = var1;
+		this.field1679 = -1;
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(Luj;I)V",
-		garbageValue = "-734756620"
+		descriptor = "(Luk;I)V",
+		garbageValue = "-1814222712"
 	)
-	void vmethod3510(Buffer var1) {
-		this.field1677 = var1.readUnsignedByte() == 1;
-		this.field1678 = var1.readByte();
-		this.field1680 = var1.readByte();
-		this.field1679 = var1.readByte();
-		this.field1681 = var1.readByte();
+	void vmethod3518(Buffer var1) {
+		this.field1679 = var1.readUnsignedShort();
+		var1.readUnsignedByte();
+		if (var1.readUnsignedByte() != 255) {
+			--var1.offset;
+			var1.readLong();
+		}
+
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(Lfc;I)V",
-		garbageValue = "-2111347169"
+		descriptor = "(Lgt;I)V",
+		garbageValue = "1662663599"
 	)
-	void vmethod3506(ClanSettings var1) {
-		var1.allowGuests = this.field1677;
-		var1.field1705 = this.field1678;
-		var1.field1706 = this.field1680;
-		var1.field1707 = this.field1679;
-		var1.field1708 = this.field1681;
+	void vmethod3519(ClanChannel var1) {
+		var1.removeMember(this.field1679);
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lfo;",
-		garbageValue = "1476785465"
+		descriptor = "(II)Lhq;",
+		garbageValue = "1583239714"
 	)
-	static class139 method3292(int var0) {
-		if (MouseRecorder.method2372(var0) != 0) {
-			return null;
+	@Export("SpotAnimationDefinition_get")
+	public static SpotAnimationDefinition SpotAnimationDefinition_get(int var0) {
+		SpotAnimationDefinition var1 = (SpotAnimationDefinition)SpotAnimationDefinition.SpotAnimationDefinition_cached.get((long)var0);
+		if (var1 != null) {
+			return var1;
 		} else {
-			class139 var2 = (class139)SequenceDefinition.SequenceDefinition_cachedModel.get((long)var0);
-			class139 var1;
+			byte[] var2 = SpotAnimationDefinition.SpotAnimationDefinition_archive.takeFile(13, var0);
+			var1 = new SpotAnimationDefinition();
+			var1.id = var0;
 			if (var2 != null) {
-				var1 = var2;
-			} else {
-				var2 = Login.method2197(SequenceDefinition.SequenceDefinition_animationsArchive, SequenceDefinition.SequenceDefinition_skeletonsArchive, var0, false);
-				if (var2 != null) {
-					SequenceDefinition.SequenceDefinition_cachedModel.put(var2, (long)var0);
-				}
-
-				var1 = var2;
+				var1.decode(new Buffer(var2));
 			}
 
+			SpotAnimationDefinition.SpotAnimationDefinition_cached.put(var1, (long)var0);
 			return var1;
 		}
+	}
+
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/util/Date;B)Z",
+		garbageValue = "97"
+	)
+	static boolean method3312(Date var0) {
+		java.util.Calendar var2 = java.util.Calendar.getInstance();
+		var2.set(2, 0);
+		var2.set(5, 1);
+		var2.set(1, 1900);
+		Date var1 = var2.getTime();
+		return var0.after(var1);
 	}
 }
