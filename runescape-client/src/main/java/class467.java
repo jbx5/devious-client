@@ -1,3 +1,4 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
@@ -156,7 +157,8 @@ public class class467 {
 		descriptor = "(ZLuo;B)V",
 		garbageValue = "22"
 	)
-	static final void method8635(boolean var0, PacketBuffer var1) {
+	@Export("loadRegions")
+	static final void loadRegions(boolean var0, PacketBuffer var1) {
 		Client.isInInstance = var0;
 		int var2;
 		int var4;

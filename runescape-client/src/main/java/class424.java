@@ -1,11 +1,13 @@
 import java.util.Iterator;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("qk")
 public class class424 extends SongTask {
 	@ObfuscatedName("hz")
-	static String field4605;
+	@Export("authServiceBaseUrl")
+	static String authServiceBaseUrl;
 	@ObfuscatedName("am")
 	@ObfuscatedSignature(
 		descriptor = "Low;"

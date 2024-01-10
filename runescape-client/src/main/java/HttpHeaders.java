@@ -88,7 +88,8 @@ public class HttpHeaders {
 		descriptor = "(Lqo;Ljava/lang/String;I)V",
 		garbageValue = "-1169940693"
 	)
-	void method8108(HttpAuthenticationHeader var1, String var2) {
+	@Export("authenticationHeader")
+	void authenticationHeader(HttpAuthenticationHeader var1, String var2) {
 		String var3 = String.format("%s %s", var1.getKey(), var2);
 		this.header("Authorization", var3);
 	}
@@ -100,7 +101,7 @@ public class HttpHeaders {
 	)
 	@Export("basicAuthentication")
 	public void basicAuthentication(String var1) {
-		this.method8108(HttpAuthenticationHeader.BASIC, var1);
+		this.authenticationHeader(HttpAuthenticationHeader.BASIC, var1);
 	}
 
 	@ObfuscatedName("ag")
@@ -110,7 +111,7 @@ public class HttpHeaders {
 	)
 	@Export("bearerToken")
 	public void bearerToken(String var1) {
-		this.method8108(HttpAuthenticationHeader.BEARER, var1);
+		this.authenticationHeader(HttpAuthenticationHeader.BEARER, var1);
 	}
 
 	@ObfuscatedName("ao")

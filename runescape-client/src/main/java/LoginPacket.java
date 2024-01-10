@@ -112,7 +112,8 @@ public class LoginPacket implements class307 {
 		descriptor = "(I)V",
 		garbageValue = "-2077342774"
 	)
-	static final void method5997() {
+	@Export("clear")
+	static final void clear() {
 		class182.field2007.clear();
 		class184.field2023.clear();
 		class173.field1915.clear();

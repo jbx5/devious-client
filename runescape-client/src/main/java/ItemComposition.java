@@ -995,7 +995,8 @@ public class ItemComposition extends DualNode {
 		descriptor = "([BIII)Ljava/lang/String;",
 		garbageValue = "-1996387073"
 	)
-	public static String method4053(byte[] var0, int var1, int var2) {
+	@Export("base64Encode")
+	public static String base64Encode(byte[] var0, int var1, int var2) {
 		StringBuilder var3 = new StringBuilder();
 
 		for (int var4 = var1; var4 < var2 + var1; var4 += 3) {

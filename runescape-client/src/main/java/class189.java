@@ -81,7 +81,7 @@ public class class189 extends DualNode {
 	@Export("logOut")
 	static final void logOut() {
 		Client.packetWriter.close();
-		LoginPacket.method5997();
+		LoginPacket.clear();
 		GrandExchangeOfferOwnWorldComparator.scene.clear();
 
 		for (int var0 = 0; var0 < 4; ++var0) {

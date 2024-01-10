@@ -17,7 +17,8 @@ public class class148 extends class143 {
 	@Export("otp")
 	static String otp;
 	@ObfuscatedName("hf")
-	static String field1665;
+	@Export("gameSessionServiceBaseUrl")
+	static String gameSessionServiceBaseUrl;
 	@ObfuscatedName("am")
 	@ObfuscatedGetter(
 		intValue = -66437073

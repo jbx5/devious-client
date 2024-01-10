@@ -697,7 +697,7 @@ public class class131 {
 			}
 
 			if (var0 == 20 || var0 == 40 || var0 == 45 || var0 == 50) {
-				UrlRequest.method2930(0);
+				UrlRequest.updateLoginState(0);
 				Client.field533 = 0;
 				Client.field534 = 0;
 				Client.timer.method8041(var0);

@@ -108,7 +108,7 @@ public class class281 {
 		}
 
 		GameEngine.taskHandler = null;
-		LoginPacket.method5997();
+		LoginPacket.clear();
 		Player.method2436();
 		GrandExchangeOfferOwnWorldComparator.scene.clear();
 

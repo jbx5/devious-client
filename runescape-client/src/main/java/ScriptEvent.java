@@ -119,7 +119,7 @@ public class ScriptEvent extends Node {
 	)
 	static final void method2366(int var0, int var1) {
 		if (Client.hintArrowType == 2) {
-			FriendSystem.worldToScreen(Client.field523 * 64 + (Client.hintArrowX - HealthBarDefinition.baseX * 64 << 7), Client.field524 * 64 + (Client.hintArrowY - WorldMapScaleHandler.baseY * 64 << 7), Client.field522 * 4);
+			FriendSystem.worldToScreen(Client.hintArrowSubX * 64 + (Client.hintArrowX - HealthBarDefinition.baseX * 64 << 7), Client.hintArrowSubY * 64 + (Client.hintArrowY - WorldMapScaleHandler.baseY * 64 << 7), Client.hintArrowHeight * 4);
 			if (Client.viewportTempX > -1 && Client.cycle % 20 < 10) {
 				GrandExchangeOfferOwnWorldComparator.headIconHintSprites[0].drawTransBgAt(var0 + Client.viewportTempX - 12, Client.viewportTempY + var1 - 28);
 			}

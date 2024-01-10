@@ -312,7 +312,8 @@ public class UrlRequest {
 		descriptor = "(IB)V",
 		garbageValue = "50"
 	)
-	static void method2930(int var0) {
+	@Export("updateLoginState")
+	static void updateLoginState(int var0) {
 		if (var0 != Client.loginState) {
 			Client.loginState = var0;
 		}

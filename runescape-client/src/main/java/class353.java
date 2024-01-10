@@ -129,7 +129,7 @@ public class class353 {
 				}
 			}
 
-			int var12 = Client.field635[var1.readBits(3)];
+			int var12 = Client.defaultRotations[var1.readBits(3)];
 			if (var5) {
 				var6.orientation = var6.rotation = var12;
 			}

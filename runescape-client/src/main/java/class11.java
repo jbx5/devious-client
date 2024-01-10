@@ -109,7 +109,7 @@ class class11 implements TlsAuthentication {
 		var9.writeShort(var8.offset);
 		var9.writeBytes(var8.array, 0, var8.offset);
 		byte[] var11 = var9.array;
-		String var10 = ItemComposition.method4053(var11, 0, var11.length);
+		String var10 = ItemComposition.base64Encode(var11, 0, var11.length);
 		String var12 = var10;
 
 		try {

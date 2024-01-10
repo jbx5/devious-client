@@ -299,17 +299,20 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 	@ObfuscatedGetter(
 		intValue = -412826730
 	)
-	static int field522;
+	@Export("hintArrowHeight")
+	static int hintArrowHeight;
 	@ObfuscatedName("ep")
 	@ObfuscatedGetter(
 		intValue = 960645568
 	)
-	static int field523;
+	@Export("hintArrowSubX")
+	static int hintArrowSubX;
 	@ObfuscatedName("eb")
 	@ObfuscatedGetter(
 		intValue = 627451584
 	)
-	static int field524;
+	@Export("hintArrowSubY")
+	static int hintArrowSubY;
 	@ObfuscatedName("es")
 	@ObfuscatedSignature(
 		descriptor = "Ldl;"
@@ -383,7 +386,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 	@Export("BASIC_AUTH_DESKTOP_OSRS")
 	static final String BASIC_AUTH_DESKTOP_OSRS;
 	@ObfuscatedName("hq")
-	static final String field505;
+	@Export("BASIC_AUTH_DESKTOP_RUNELITE")
+	static final String BASIC_AUTH_DESKTOP_RUNELITE;
 	@ObfuscatedName("ha")
 	@Export("Login_isUsernameRemembered")
 	static boolean Login_isUsernameRemembered;
@@ -764,7 +768,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 	@Export("playerOptionsPriorities")
 	static boolean[] playerOptionsPriorities;
 	@ObfuscatedName("ng")
-	static int[] field635;
+	@Export("defaultRotations")
+	static int[] defaultRotations;
 	@ObfuscatedName("nx")
 	@ObfuscatedGetter(
 		intValue = -201620211
@@ -1438,9 +1443,9 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 		hintArrowPlayerIndex = 0;
 		hintArrowX = 0;
 		hintArrowY = 0;
-		field522 = 0;
-		field523 = 0;
-		field524 = 0;
+		hintArrowHeight = 0;
+		hintArrowSubX = 0;
+		hintArrowSubY = 0;
 		playerAttackOption = AttackOption.AttackOption_hidden;
 		npcAttackOption = AttackOption.AttackOption_hidden;
 		z = false;
@@ -1455,11 +1460,11 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 		authenticationScheme = AuthenticationScheme.USERNAME_PASSWORD;
 		field626 = class535.field5235;
 		byte[] var1 = class332.method6309("com_jagex_auth_desktop_osrs:public");
-		String var0 = ItemComposition.method4053(var1, 0, var1.length);
+		String var0 = ItemComposition.base64Encode(var1, 0, var1.length);
 		BASIC_AUTH_DESKTOP_OSRS = var0;
 		var1 = class332.method6309("com_jagex_auth_desktop_runelite:public");
-		var0 = ItemComposition.method4053(var1, 0, var1.length);
-		field505 = var0;
+		var0 = ItemComposition.base64Encode(var1, 0, var1.length);
+		BASIC_AUTH_DESKTOP_RUNELITE = var0;
 		Login_isUsernameRemembered = false;
 		secureRandomFuture = new SecureRandomFuture();
 		randomDatData = null;
@@ -1542,7 +1547,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 		playerMenuOpcodes = new int[]{44, 45, 46, 47, 48, 49, 50, 51};
 		playerMenuActions = new String[8];
 		playerOptionsPriorities = new boolean[8];
-		field635 = new int[]{768, 1024, 1280, 512, 1536, 256, 0, 1792};
+		defaultRotations = new int[]{768, 1024, 1280, 512, 1536, 256, 0, 1792};
 		combatTargetPlayerIndex = -1;
 		groundItems = new NodeDeque[4][104][104];
 		pendingSpawns = new NodeDeque();
@@ -2048,15 +2053,15 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 		var2.put("grant_type", "refresh_token");
 		var2.put("scope", "gamesso.token.create");
 		var2.put("refresh_token", var1);
-		URL var3 = new URL(class424.field4605 + "shield/oauth/token" + (new HttpQueryParams(var2)).encode());
+		URL var3 = new URL(class424.authServiceBaseUrl + "shield/oauth/token" + (new HttpQueryParams(var2)).encode());
 		HttpHeaders var4 = new HttpHeaders();
 		if (this.isRuneLite()) {
-			var4.basicAuthentication(field505);
+			var4.basicAuthentication(BASIC_AUTH_DESKTOP_RUNELITE);
 		} else {
 			var4.basicAuthentication(BASIC_AUTH_DESKTOP_OSRS);
 		}
 
-		var4.header("Host", (new URL(class424.field4605)).getHost());
+		var4.header("Host", (new URL(class424.authServiceBaseUrl)).getHost());
 		var4.accept(HttpContentType.APPLICATION_JSON);
 		HttpMethod var5 = HttpMethod.POST;
 		RefreshAccessTokenRequester var6 = this.refreshAccessTokenRequester;
@@ -2075,7 +2080,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 	)
 	@Export("requestOtlToken")
 	void requestOtlToken(String var1) throws IOException {
-		URL var2 = new URL(class424.field4605 + "public/v1/games/YCfdbvr2pM1zUYMxJRexZY/play");
+		URL var2 = new URL(class424.authServiceBaseUrl + "public/v1/games/YCfdbvr2pM1zUYMxJRexZY/play");
 		HttpHeaders var3 = new HttpHeaders();
 		var3.bearerToken(var1);
 		HttpMethod var4 = HttpMethod.GET;
@@ -2095,7 +2100,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 	)
 	@Export("authenticate")
 	void authenticate(String var1, String var2) throws IOException, JSONException {
-		URL var3 = new URL(class148.field1665 + "game-session/v1/tokens");
+		URL var3 = new URL(class148.gameSessionServiceBaseUrl + "game-session/v1/tokens");
 		HttpRequest var4 = new HttpRequest(var3, HttpMethod.POST, this.https);
 		var4.getHeaders().bearerToken(var1);
 		var4.getHeaders().accept(HttpContentType.APPLICATION_JSON);
@@ -2269,7 +2274,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 						if (this.containsAccessAndRefreshToken()) {
 							try {
 								this.requestRefreshAccessToken(class4.refreshToken);
-								UrlRequest.method2930(21);
+								UrlRequest.updateLoginState(21);
 							} catch (Throwable var22) {
 								class368.RunException_sendStackTrace((String)null, var22);
 								HealthBar.getLoginError(65);
@@ -2283,7 +2288,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 
 							try {
 								this.authenticate(ClanChannel.sessionId, class60.characterId);
-								UrlRequest.method2930(20);
+								UrlRequest.updateLoginState(20);
 							} catch (Exception var21) {
 								class368.RunException_sendStackTrace((String)null, var21);
 								HealthBar.getLoginError(65);
@@ -2291,7 +2296,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 							}
 						}
 					} else {
-						UrlRequest.method2930(1);
+						UrlRequest.updateLoginState(1);
 					}
 				}
 			}
@@ -2365,7 +2370,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 				}
 
 				this.requestOtlToken(HttpRequest.accessToken);
-				UrlRequest.method2930(20);
+				UrlRequest.updateLoginState(20);
 			}
 
 			if (loginState == 20) {
@@ -2440,7 +2445,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 				}
 
 				field533 = 0;
-				UrlRequest.method2930(1);
+				UrlRequest.updateLoginState(1);
 			}
 
 			if (loginState == 1) {
@@ -2456,7 +2461,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					var1 = WorldMapRenderer.method4879((Socket)class132.field1563.result, 40000, 5000);
 					packetWriter.setSocket(var1);
 					class132.field1563 = null;
-					UrlRequest.method2930(2);
+					UrlRequest.updateLoginState(2);
 				}
 			}
 
@@ -2471,7 +2476,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 				packetWriter.addNode(var28);
 				packetWriter.flush();
 				var2.offset = 0;
-				UrlRequest.method2930(3);
+				UrlRequest.updateLoginState(3);
 			}
 
 			int var13;
@@ -2492,7 +2497,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					}
 
 					var2.offset = 0;
-					UrlRequest.method2930(4);
+					UrlRequest.updateLoginState(4);
 				}
 			}
 
@@ -2512,7 +2517,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 				if (var2.offset == 8) {
 					var2.offset = 0;
 					class137.field1594 = var2.readLong();
-					UrlRequest.method2930(5);
+					UrlRequest.updateLoginState(5);
 				}
 			}
 
@@ -2633,7 +2638,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 				}
 
 				var2.newIsaacCipher(var11);
-				UrlRequest.method2930(6);
+				UrlRequest.updateLoginState(6);
 			}
 
 			int var14;
@@ -2642,30 +2647,30 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 				if (var13 == 61) {
 					var14 = var1.available();
 					class373.field4355 = var14 == 1 && var1.readUnsignedByte() == 1;
-					UrlRequest.method2930(5);
+					UrlRequest.updateLoginState(5);
 				}
 
 				if (var13 == 21 && gameState == 20) {
-					UrlRequest.method2930(12);
+					UrlRequest.updateLoginState(12);
 				} else if (var13 == 2) {
-					UrlRequest.method2930(14);
+					UrlRequest.updateLoginState(14);
 				} else if (var13 == 15 && gameState == 40) {
 					packetWriter.serverPacketLength = -1;
-					UrlRequest.method2930(19);
+					UrlRequest.updateLoginState(19);
 				} else if (var13 == 64) {
-					UrlRequest.method2930(10);
+					UrlRequest.updateLoginState(10);
 				} else if (var13 == 23 && field534 < 1) {
 					++field534;
-					UrlRequest.method2930(0);
+					UrlRequest.updateLoginState(0);
 				} else if (var13 == 29) {
-					UrlRequest.method2930(17);
+					UrlRequest.updateLoginState(17);
 				} else {
 					if (var13 != 69) {
 						HealthBar.getLoginError(var13);
 						return;
 					}
 
-					UrlRequest.method2930(7);
+					UrlRequest.updateLoginState(7);
 				}
 			}
 
@@ -2673,7 +2678,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 				var1.read(var2.array, 0, 2);
 				var2.offset = 0;
 				MusicPatch.field3532 = var2.readUnsignedShort();
-				UrlRequest.method2930(8);
+				UrlRequest.updateLoginState(8);
 			}
 
 			if (loginState == 8 && var1.available() >= MusicPatch.field3532) {
@@ -2686,7 +2691,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					case 0:
 						class0 var32 = new class0();
 						this.field695 = new class7(var2, var32);
-						UrlRequest.method2930(9);
+						UrlRequest.updateLoginState(9);
 						break;
 					default:
 						throw new IllegalArgumentException();
@@ -2717,36 +2722,36 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 				packetWriter.addNode(var28);
 				packetWriter.flush();
 				this.field552 = null;
-				UrlRequest.method2930(6);
+				UrlRequest.updateLoginState(6);
 			}
 
 			if (loginState == 10 && var1.available() > 0) {
 				class351.field3864 = var1.readUnsignedByte();
-				UrlRequest.method2930(11);
+				UrlRequest.updateLoginState(11);
 			}
 
 			if (loginState == 11 && var1.available() >= class351.field3864) {
 				var1.read(var2.array, 0, class351.field3864);
 				var2.offset = 0;
-				UrlRequest.method2930(6);
+				UrlRequest.updateLoginState(6);
 			}
 
 			if (loginState == 12 && var1.available() > 0) {
 				field745 = (var1.readUnsignedByte() + 3) * 60;
-				UrlRequest.method2930(13);
+				UrlRequest.updateLoginState(13);
 			}
 
 			if (loginState == 13) {
 				field533 = 0;
 				class142.setLoginResponseString("You have only just left another world.", "Your profile will be transferred in:", field745 / 60 + " seconds.");
 				if (--field745 <= 0) {
-					UrlRequest.method2930(0);
+					UrlRequest.updateLoginState(0);
 				}
 
 			} else {
 				if (loginState == 14 && var1.available() >= 1) {
 					class53.field369 = var1.readUnsignedByte();
-					UrlRequest.method2930(15);
+					UrlRequest.updateLoginState(15);
 				}
 
 				if (loginState == 15 && var1.available() >= class53.field369) {
@@ -2785,7 +2790,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					var2.offset = 0;
 					field627 = var2.readLong();
 					KitDefinition.method3664().method4281();
-					UrlRequest.method2930(22);
+					UrlRequest.updateLoginState(22);
 				}
 
 				if (loginState == 22 && var1.available() >= packetWriter.serverPacketLength) {
@@ -2814,7 +2819,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					} catch (Throwable var15) {
 					}
 
-					UrlRequest.method2930(16);
+					UrlRequest.updateLoginState(16);
 				}
 
 				if (loginState == 16) {
@@ -2825,7 +2830,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 						WorldMapElement.method3627();
 						ClientPacket.updatePlayer(var2);
 						KeyHandler.field134 = -1;
-						class467.method8635(false, var2);
+						class467.loadRegions(false, var2);
 						packetWriter.serverPacket = null;
 					}
 
@@ -2835,7 +2840,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 						var1.read(var2.array, 0, 2);
 						var2.offset = 0;
 						RouteStrategy.field2446 = var2.readUnsignedShort();
-						UrlRequest.method2930(18);
+						UrlRequest.updateLoginState(18);
 					}
 
 					if (loginState == 18 && var1.available() >= RouteStrategy.field2446) {
@@ -2885,7 +2890,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 								}
 
 								++field534;
-								UrlRequest.method2930(0);
+								UrlRequest.updateLoginState(0);
 							} else {
 								HealthBar.getLoginError(-3);
 							}
@@ -2902,7 +2907,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 				}
 
 				++field534;
-				UrlRequest.method2930(0);
+				UrlRequest.updateLoginState(0);
 			} else {
 				HealthBar.getLoginError(-2);
 			}
@@ -4126,7 +4131,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 				}
 
 				if (ServerPacket.field3372 == var1.serverPacket) {
-					class467.method8635(false, var1.packetBuffer);
+					class467.loadRegions(false, var1.packetBuffer);
 					var1.serverPacket = null;
 					return true;
 				}
@@ -4862,34 +4867,34 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 
 					if (hintArrowType >= 2 && hintArrowType <= 6) {
 						if (hintArrowType == 2) {
-							field523 = 4096;
-							field524 = 4096;
+							hintArrowSubX = 4096;
+							hintArrowSubY = 4096;
 						}
 
 						if (hintArrowType == 3) {
-							field523 = 0;
-							field524 = 4096;
+							hintArrowSubX = 0;
+							hintArrowSubY = 4096;
 						}
 
 						if (hintArrowType == 4) {
-							field523 = 8192;
-							field524 = 4096;
+							hintArrowSubX = 8192;
+							hintArrowSubY = 4096;
 						}
 
 						if (hintArrowType == 5) {
-							field523 = 4096;
-							field524 = 0;
+							hintArrowSubX = 4096;
+							hintArrowSubY = 0;
 						}
 
 						if (hintArrowType == 6) {
-							field523 = 4096;
-							field524 = 8192;
+							hintArrowSubX = 4096;
+							hintArrowSubY = 8192;
 						}
 
 						hintArrowType = 2;
 						hintArrowX = var3.readUnsignedShort();
 						hintArrowY = var3.readUnsignedShort();
-						field522 = var3.readUnsignedByte() * 2;
+						hintArrowHeight = var3.readUnsignedByte() * 2;
 					}
 
 					if (hintArrowType == 10) {
@@ -5947,7 +5952,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 				}
 
 				if (ServerPacket.field3407 == var1.serverPacket) {
-					class467.method8635(true, var1.packetBuffer);
+					class467.loadRegions(true, var1.packetBuffer);
 					var1.serverPacket = null;
 					return true;
 				}
@@ -6475,7 +6480,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 							}
 							break;
 						case 11:
-							class424.field4605 = var2;
+							class424.authServiceBaseUrl = var2;
 							break;
 						case 12:
 							worldId = Integer.parseInt(var2);
@@ -6501,7 +6506,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 							field503 = Integer.parseInt(var2);
 							break;
 						case 22:
-							class148.field1665 = var2;
+							class148.gameSessionServiceBaseUrl = var2;
 							break;
 						case 25:
 							int var3 = var2.indexOf(".");
