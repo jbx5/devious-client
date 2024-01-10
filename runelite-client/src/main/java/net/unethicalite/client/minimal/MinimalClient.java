@@ -179,6 +179,7 @@ public class MinimalClient
 
 		final OptionSpec<Void> insecureWriteCredentials = parser.accepts("insecure-write-credentials", "Dump authentication tokens from the Jagex Launcher to a text file to be used for development");
 		final OptionSpec<Void> cachedRandomDat = parser.accepts("cached-random-dat", "Use cached random.dat data for each account");
+		final OptionSpec<Void> cachedUUID = parser.accepts("cached-uuid", "Use a random cached uuid for each account");
 
 		OptionSet options = SettingsManager.parseArgs(parser, args);
 
@@ -266,7 +267,8 @@ public class MinimalClient
 					options.valueOf(configfile),
 					options,
 					options.has(insecureWriteCredentials),
-					options.has(cachedRandomDat)
+					options.has(cachedRandomDat),
+				        options.has(cachedUUID)
 			)));
 
 			RuneLite.getInjector().getInstance(MinimalClient.class).start(options);

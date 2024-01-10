@@ -1819,6 +1819,16 @@ public interface RSClient extends RSGameEngine, Client
 	boolean isMembersWorld();
 
 	/**
+	 * User id & hash
+	 */
+
+	@Import("userId")
+	long getUserId();
+
+	@Import("userHash")
+	long getUserHash();
+
+	/**
 	 * Jagex launcher credentials
 	 */
 
