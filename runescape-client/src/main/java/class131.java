@@ -628,8 +628,8 @@ public class class131 {
 								String var15 = Interpreter.Interpreter_stringStack[class211.Interpreter_stringStackSize + 1];
 								String var7 = Interpreter.Interpreter_stringStack[class211.Interpreter_stringStackSize + 2];
 								long var8 = WorldMapSprite.getUserId();
-								long var10 = class226.method4462();
-								String var12 = class72.method2142().getDeviceId(class72.method2142().os);
+								long var10 = class226.getUserHash();
+								String var12 = class72.getPlatformInfo().getDeviceId(class72.getPlatformInfo().os);
 								if (-1L != var8) {
 									var13 = var13.replaceAll("%userid%", Long.toString(var8));
 								}

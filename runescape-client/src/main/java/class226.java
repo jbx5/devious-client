@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
@@ -265,7 +266,8 @@ public class class226 implements class29 {
 		descriptor = "(B)J",
 		garbageValue = "-4"
 	)
-	static long method4462() {
-		return Client.field627;
+	@Export("getUserHash")
+	static long getUserHash() {
+		return Client.userHash;
 	}
 }

@@ -53,7 +53,8 @@ public class class72 {
 		descriptor = "(I)Lsa;",
 		garbageValue = "-293345618"
 	)
-	static PlatformInfo method2142() {
+	@Export("getPlatformInfo")
+	static PlatformInfo getPlatformInfo() {
 		return FriendSystem.platformInfo;
 	}
 

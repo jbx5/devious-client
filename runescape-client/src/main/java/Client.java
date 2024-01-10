@@ -741,7 +741,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 	@ObfuscatedGetter(
 		longValue = -6790769406651105171L
 	)
-	static long field627;
+	@Export("userHash")
+	static long userHash;
 	@ObfuscatedName("nm")
 	@Export("renderSelf")
 	static boolean renderSelf;
@@ -1539,7 +1540,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 		localPlayerIndex = -1;
 		field518 = 0;
 		userId = -1L;
-		field627 = -1L;
+		userHash = -1L;
 		renderSelf = true;
 		drawPlayerNames = 0;
 		field708 = 0;
@@ -2788,7 +2789,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					userId = var2.readLong();
 					var1.read(var2.array, 0, 8);
 					var2.offset = 0;
-					field627 = var2.readLong();
+					userHash = var2.readLong();
 					KitDefinition.method3664().method4281();
 					UrlRequest.updateLoginState(22);
 				}
