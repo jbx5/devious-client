@@ -228,7 +228,8 @@ public class PlatformInfo extends Node {
 		descriptor = "(II)Ljava/lang/String;",
 		garbageValue = "-412168738"
 	)
-	public String method8776(int var1) {
+	@Export("getDeviceId")
+	public String getDeviceId(int var1) {
 		String var2 = "";
 		String var3 = "";
 		switch(var1) {
