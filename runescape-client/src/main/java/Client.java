@@ -6539,7 +6539,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 
 				VertexNormal.client = this;
 				class317.field3442 = clientType;
-				class33.method489();
+				class33.initCredentials();
 				if (Boolean.parseBoolean(System.getProperty("jagex.disableBouncyCastle"))) {
 					this.https = true;
 				}
