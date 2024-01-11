@@ -2,79 +2,57 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gl")
-public class class158 extends class144 {
-	@ObfuscatedName("at")
+@ObfuscatedName("ga")
+public class class158 extends class143 {
+	@ObfuscatedName("am")
 	@ObfuscatedGetter(
-		intValue = -1414486485
+		longValue = 2245788515684681757L
+	)
+	long field1740;
+	@ObfuscatedName("ap")
+	String field1738;
+	@ObfuscatedName("af")
+	@ObfuscatedGetter(
+		intValue = 2050490777
 	)
 	int field1739;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lfv;"
+		descriptor = "Lfm;"
 	)
-	final class147 this$0;
+	final class146 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lfv;)V"
+		descriptor = "(Lfm;)V"
 	)
-	class158(class147 var1) {
+	class158(class146 var1) {
 		this.this$0 = var1;
-		this.field1739 = -1;
+		this.field1740 = -1L;
+		this.field1738 = null;
+		this.field1739 = 0;
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(Luj;I)V",
-		garbageValue = "-734756620"
+		descriptor = "(Luk;I)V",
+		garbageValue = "-411371469"
 	)
-	void vmethod3510(Buffer var1) {
+	void vmethod3531(Buffer var1) {
+		if (var1.readUnsignedByte() != 255) {
+			--var1.offset;
+			this.field1740 = var1.readLong();
+		}
+
+		this.field1738 = var1.readStringCp1252NullTerminatedOrNull();
 		this.field1739 = var1.readUnsignedShort();
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(Lfc;I)V",
-		garbageValue = "-2111347169"
+		descriptor = "(Lfn;I)V",
+		garbageValue = "1048713263"
 	)
-	void vmethod3506(ClanSettings var1) {
-		var1.method3338(this.field1739);
-	}
-
-	@ObfuscatedName("ab")
-	static int method3413(long var0) {
-		return (int)(var0 >>> 14 & 3L);
-	}
-
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "11323368"
-	)
-	static final void method3415() {
-		WorldMapArea.method4622("You can't add yourself to your own ignore list");
-	}
-
-	@ObfuscatedName("bk")
-	@ObfuscatedSignature(
-		descriptor = "(ILdt;ZI)I",
-		garbageValue = "-1589352545"
-	)
-	static int method3412(int var0, Script var1, boolean var2) {
-		if (var0 == 7108) {
-			Interpreter.Interpreter_intStack[++DbTableType.Interpreter_intStackSize - 1] = class60.method1186() ? 1 : 0;
-			return 1;
-		} else {
-			return 2;
-		}
-	}
-
-	@ObfuscatedName("hg")
-	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "2036594717"
-	)
-	static int method3414(int var0) {
-		return var0 * 3 + 600;
+	void vmethod3529(ClanSettings var1) {
+		var1.method3344(this.field1740, this.field1738, this.field1739);
 	}
 }

@@ -6,43 +6,30 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("eo")
+@ObfuscatedName("ew")
 @Implements("Messages")
 public class Messages {
-	@ObfuscatedName("at")
+	@ObfuscatedName("am")
 	@Export("Messages_channels")
 	static final Map Messages_channels;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Ltz;"
+		descriptor = "Ltb;"
 	)
 	@Export("Messages_hashTable")
 	static final IterableNodeHashTable Messages_hashTable;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "Lpo;"
+		descriptor = "Lpm;"
 	)
 	@Export("Messages_queue")
 	static final IterableDualNodeQueue Messages_queue;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = 1039825869
+		intValue = 1483704105
 	)
 	@Export("Messages_count")
 	static int Messages_count;
-	@ObfuscatedName("cx")
-	@ObfuscatedSignature(
-		descriptor = "Lnt;"
-	)
-	static StudioGame field1401;
-	@ObfuscatedName("gk")
-	@Export("accessToken")
-	static String accessToken;
-	@ObfuscatedName("uu")
-	@ObfuscatedGetter(
-		intValue = -604270976
-	)
-	static int field1400;
 
 	static {
 		Messages_channels = new HashMap();
@@ -51,29 +38,64 @@ public class Messages {
 		Messages_count = 0;
 	}
 
-	@ObfuscatedName("ai")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(IIII)I",
-		garbageValue = "292264125"
+		descriptor = "(CI)Z",
+		garbageValue = "1347462958"
 	)
-	static final int method2851(int var0, int var1, int var2) {
-		if (var2 > 179) {
-			var1 /= 2;
-		}
+	public static final boolean method2837(char var0) {
+		if (Character.isISOControl(var0)) {
+			return false;
+		} else if (WorldMapIcon_0.isAlphaNumeric(var0)) {
+			return true;
+		} else {
+			char[] var1 = class509.field5074;
 
-		if (var2 > 192) {
-			var1 /= 2;
-		}
+			int var2;
+			char var3;
+			for (var2 = 0; var2 < var1.length; ++var2) {
+				var3 = var1[var2];
+				if (var0 == var3) {
+					return true;
+				}
+			}
 
-		if (var2 > 217) {
-			var1 /= 2;
-		}
+			var1 = class509.field5076;
 
-		if (var2 > 243) {
-			var1 /= 2;
-		}
+			for (var2 = 0; var2 < var1.length; ++var2) {
+				var3 = var1[var2];
+				if (var0 == var3) {
+					return true;
+				}
+			}
 
-		int var3 = (var1 / 32 << 7) + (var0 / 4 << 10) + var2 / 2;
-		return var3;
+			return false;
+		}
+	}
+
+	@ObfuscatedName("ik")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "1250012045"
+	)
+	static final void method2849() {
+		if (Client.logoutTimer > 0) {
+			class189.logOut();
+		} else {
+			Client.timer.method8040();
+			class131.updateGameState(40);
+			PlayerType.field4298 = Client.packetWriter.getSocket();
+			Client.packetWriter.removeSocket();
+		}
+	}
+
+	@ObfuscatedName("on")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "76"
+	)
+	static final void method2850() {
+		Client.field706 = Client.cycleCntr;
+		VarpDefinition.field1832 = true;
 	}
 }

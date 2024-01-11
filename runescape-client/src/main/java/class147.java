@@ -3,140 +3,116 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fv")
-public class class147 {
-	@ObfuscatedName("at")
+@ObfuscatedName("fj")
+public class class147 extends class143 {
+	@ObfuscatedName("am")
 	@ObfuscatedGetter(
-		longValue = 8225525561408272315L
+		intValue = 469539041
 	)
-	long field1650;
-	@ObfuscatedName("ah")
-	@ObfuscatedGetter(
-		intValue = -926071349
-	)
-	public int field1655;
-	@ObfuscatedName("ar")
+	int field1658;
+	@ObfuscatedName("ap")
+	byte field1655;
+	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lpm;"
+		descriptor = "Lfm;"
 	)
-	IterableNodeDeque field1651;
+	final class146 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Luj;)V"
+		descriptor = "(Lfm;)V"
 	)
-	public class147(Buffer var1) {
-		this.field1655 = -1;
-		this.field1651 = new IterableNodeDeque();
-		this.method3250(var1);
+	class147(class146 var1) {
+		this.this$0 = var1;
+		this.field1658 = -1;
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(Luj;I)V",
-		garbageValue = "867669029"
+		descriptor = "(Luk;I)V",
+		garbageValue = "-411371469"
 	)
-	void method3250(Buffer var1) {
-		this.field1650 = var1.readLong();
-		this.field1655 = var1.readInt();
-
-		for (int var2 = var1.readUnsignedByte(); var2 != 0; var2 = var1.readUnsignedByte()) {
-			Object var3;
-			if (var2 == 3) {
-				var3 = new class166(this);
-			} else if (var2 == 1) {
-				var3 = new class142(this);
-			} else if (var2 == 13) {
-				var3 = new class159(this);
-			} else if (var2 == 4) {
-				var3 = new class151(this);
-			} else if (var2 == 6) {
-				var3 = new class158(this);
-			} else if (var2 == 5) {
-				var3 = new class143(this);
-			} else if (var2 == 2) {
-				var3 = new class148(this);
-			} else if (var2 == 7) {
-				var3 = new class141(this);
-			} else if (var2 == 14) {
-				var3 = new class145(this);
-			} else if (var2 == 8) {
-				var3 = new class162(this);
-			} else if (var2 == 9) {
-				var3 = new class168(this);
-			} else if (var2 == 10) {
-				var3 = new class154(this);
-			} else if (var2 == 11) {
-				var3 = new class149(this);
-			} else if (var2 == 12) {
-				var3 = new class153(this);
-			} else {
-				if (var2 != 15) {
-					throw new RuntimeException("");
-				}
-
-				var3 = new class163(this);
-			}
-
-			((class144)var3).vmethod3510(var1);
-			this.field1651.addFirst((Node)var3);
-		}
-
+	void vmethod3531(Buffer var1) {
+		this.field1658 = var1.readUnsignedShort();
+		this.field1655 = var1.readByte();
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(Lfc;B)V",
-		garbageValue = "-115"
+		descriptor = "(Lfn;I)V",
+		garbageValue = "1048713263"
 	)
-	public void method3252(ClanSettings var1) {
-		if (var1.field1722 == this.field1650 && this.field1655 == var1.field1701) {
-			for (class144 var2 = (class144)this.field1651.last(); var2 != null; var2 = (class144)this.field1651.previous()) {
-				var2.vmethod3506(var1);
-			}
+	void vmethod3529(ClanSettings var1) {
+		var1.method3349(this.field1658, this.field1655);
+	}
 
-			++var1.field1701;
+	@ObfuscatedName("am")
+	@ObfuscatedSignature(
+		descriptor = "(CI)B",
+		garbageValue = "-1114990749"
+	)
+	@Export("charToByteCp1252")
+	public static byte charToByteCp1252(char var0) {
+		byte var1;
+		if (var0 > 0 && var0 < 128 || var0 >= 160 && var0 <= 255) {
+			var1 = (byte)var0;
+		} else if (var0 == 8364) {
+			var1 = -128;
+		} else if (var0 == 8218) {
+			var1 = -126;
+		} else if (var0 == 402) {
+			var1 = -125;
+		} else if (var0 == 8222) {
+			var1 = -124;
+		} else if (var0 == 8230) {
+			var1 = -123;
+		} else if (var0 == 8224) {
+			var1 = -122;
+		} else if (var0 == 8225) {
+			var1 = -121;
+		} else if (var0 == 710) {
+			var1 = -120;
+		} else if (var0 == 8240) {
+			var1 = -119;
+		} else if (var0 == 352) {
+			var1 = -118;
+		} else if (var0 == 8249) {
+			var1 = -117;
+		} else if (var0 == 338) {
+			var1 = -116;
+		} else if (var0 == 381) {
+			var1 = -114;
+		} else if (var0 == 8216) {
+			var1 = -111;
+		} else if (var0 == 8217) {
+			var1 = -110;
+		} else if (var0 == 8220) {
+			var1 = -109;
+		} else if (var0 == 8221) {
+			var1 = -108;
+		} else if (var0 == 8226) {
+			var1 = -107;
+		} else if (var0 == 8211) {
+			var1 = -106;
+		} else if (var0 == 8212) {
+			var1 = -105;
+		} else if (var0 == 732) {
+			var1 = -104;
+		} else if (var0 == 8482) {
+			var1 = -103;
+		} else if (var0 == 353) {
+			var1 = -102;
+		} else if (var0 == 8250) {
+			var1 = -101;
+		} else if (var0 == 339) {
+			var1 = -100;
+		} else if (var0 == 382) {
+			var1 = -98;
+		} else if (var0 == 376) {
+			var1 = -97;
 		} else {
-			throw new RuntimeException("");
+			var1 = 63;
 		}
-	}
 
-	@ObfuscatedName("bq")
-	@ObfuscatedSignature(
-		descriptor = "(ILdt;ZI)I",
-		garbageValue = "193145278"
-	)
-	static int method3256(int var0, Script var1, boolean var2) {
-		if (var0 == 7463) {
-			boolean var3 = Interpreter.Interpreter_intStack[--DbTableType.Interpreter_intStackSize] == 1;
-			class165.method3486(var3);
-			return 1;
-		} else {
-			return 2;
-		}
-	}
-
-	@ObfuscatedName("np")
-	@ObfuscatedSignature(
-		descriptor = "(IIIILuz;Lme;I)V",
-		garbageValue = "2144355739"
-	)
-	@Export("drawSpriteOnMinimap")
-	static final void drawSpriteOnMinimap(int var0, int var1, int var2, int var3, SpritePixels var4, SpriteMask var5) {
-		if (var4 != null) {
-			int var6 = Client.camAngleY & 2047;
-			int var7 = var3 * var3 + var2 * var2;
-			if (var7 <= 6400) {
-				int var8 = Rasterizer3D.Rasterizer3D_sine[var6];
-				int var9 = Rasterizer3D.Rasterizer3D_cosine[var6];
-				int var10 = var3 * var8 + var9 * var2 >> 16;
-				int var11 = var3 * var9 - var8 * var2 >> 16;
-				if (var7 > 2500) {
-					var4.method9764(var10 + var5.width / 2 - var4.width / 2, var5.height / 2 - var11 - var4.height / 2, var0, var1, var5.width, var5.height, var5.xStarts, var5.xWidths);
-				} else {
-					var4.drawTransBgAt(var0 + var10 + var5.width / 2 - var4.width / 2, var5.height / 2 + var1 - var11 - var4.height / 2);
-				}
-
-			}
-		}
+		return var1;
 	}
 }

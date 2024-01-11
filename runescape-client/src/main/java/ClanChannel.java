@@ -7,51 +7,57 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gn")
+@ObfuscatedName("gt")
 @Implements("ClanChannel")
 public class ClanChannel extends Node {
-	@ObfuscatedName("aw")
-	public static String field1764;
-	@ObfuscatedName("at")
-	boolean field1770;
-	@ObfuscatedName("ah")
-	boolean field1765;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("gd")
+	@Export("sessionId")
+	static String sessionId;
+	@ObfuscatedName("un")
+	@ObfuscatedGetter(
+		intValue = -1954646921
+	)
+	static int field1766;
+	@ObfuscatedName("am")
+	boolean field1769;
+	@ObfuscatedName("ap")
+	boolean field1759;
+	@ObfuscatedName("af")
 	@Export("members")
 	public List members;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aj")
 	@Export("sortedMembers")
 	int[] sortedMembers;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		longValue = -4051346480643886815L
+		longValue = -815507630431894567L
 	)
-	public long field1772;
-	@ObfuscatedName("au")
+	public long field1764;
+	@ObfuscatedName("ar")
 	@Export("name")
 	public String name;
-	@ObfuscatedName("aa")
-	public byte field1766;
-	@ObfuscatedName("ac")
-	public byte field1771;
+	@ObfuscatedName("ag")
+	public byte field1758;
+	@ObfuscatedName("ao")
+	public byte field1767;
 
 	static {
 		new BitSet(65536);
 	}
 
 	@ObfuscatedSignature(
-		descriptor = "(Luj;)V"
+		descriptor = "(Luk;)V"
 	)
 	public ClanChannel(Buffer var1) {
-		this.field1765 = true;
+		this.field1759 = true;
 		this.name = null;
-		this.method3481(var1);
+		this.method3493(var1);
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(B)[I",
-		garbageValue = "85"
+		descriptor = "(I)[I",
+		garbageValue = "1506851312"
 	)
 	@Export("getSortedMembers")
 	public int[] getSortedMembers() {
@@ -60,20 +66,20 @@ public class ClanChannel extends Node {
 			this.sortedMembers = new int[this.members.size()];
 
 			for (int var2 = 0; var2 < this.members.size(); this.sortedMembers[var2] = var2++) {
-				var1[var2] = ((ClanChannelMember)this.members.get(var2)).username.method9937();
+				var1[var2] = ((ClanChannelMember)this.members.get(var2)).username.method10004();
 			}
 
 			int[] var3 = this.sortedMembers;
-			class475.method8597(var1, var3, 0, var1.length - 1);
+			Player.quicksortStringsWithCorrespondingIntegers(var1, var3, 0, var1.length - 1);
 		}
 
 		return this.sortedMembers;
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(Lft;I)V",
-		garbageValue = "1476937216"
+		descriptor = "(Lfk;I)V",
+		garbageValue = "545474341"
 	)
 	@Export("addMember")
 	void addMember(ClanChannelMember var1) {
@@ -81,10 +87,10 @@ public class ClanChannel extends Node {
 		this.sortedMembers = null;
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "(IB)V",
-		garbageValue = "93"
+		descriptor = "(II)V",
+		garbageValue = "-365947513"
 	)
 	@Export("removeMember")
 	void removeMember(int var1) {
@@ -92,22 +98,22 @@ public class ClanChannel extends Node {
 		this.sortedMembers = null;
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "0"
+		descriptor = "(I)I",
+		garbageValue = "347397534"
 	)
-	public int method3479() {
+	public int method3492() {
 		return this.members.size();
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/String;B)I",
-		garbageValue = "-62"
+		garbageValue = "117"
 	)
-	public int method3484(String var1) {
-		if (!this.field1765) {
+	public int method3495(String var1) {
+		if (!this.field1759) {
 			throw new RuntimeException("Displaynames not available");
 		} else {
 			for (int var2 = 0; var2 < this.members.size(); ++var2) {
@@ -120,19 +126,19 @@ public class ClanChannel extends Node {
 		}
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "(Luj;B)V",
-		garbageValue = "92"
+		descriptor = "(Luk;I)V",
+		garbageValue = "1944473885"
 	)
-	void method3481(Buffer var1) {
+	void method3493(Buffer var1) {
 		int var2 = var1.readUnsignedByte();
 		if ((var2 & 1) != 0) {
-			this.field1770 = true;
+			this.field1769 = true;
 		}
 
 		if ((var2 & 2) != 0) {
-			this.field1765 = true;
+			this.field1759 = true;
 		}
 
 		int var3 = 2;
@@ -141,22 +147,22 @@ public class ClanChannel extends Node {
 		}
 
 		super.key = var1.readLong();
-		this.field1772 = var1.readLong();
+		this.field1764 = var1.readLong();
 		this.name = var1.readStringCp1252NullTerminated();
 		var1.readBoolean();
-		this.field1771 = var1.readByte();
-		this.field1766 = var1.readByte();
+		this.field1767 = var1.readByte();
+		this.field1758 = var1.readByte();
 		int var4 = var1.readUnsignedShort();
 		if (var4 > 0) {
 			this.members = new ArrayList(var4);
 
 			for (int var5 = 0; var5 < var4; ++var5) {
 				ClanChannelMember var6 = new ClanChannelMember();
-				if (this.field1770) {
+				if (this.field1769) {
 					var1.readLong();
 				}
 
-				if (this.field1765) {
+				if (this.field1759) {
 					var6.username = new Username(var1.readStringCp1252NullTerminated());
 				}
 
@@ -170,55 +176,5 @@ public class ClanChannel extends Node {
 			}
 		}
 
-	}
-
-	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "(IB)Z",
-		garbageValue = "-18"
-	)
-	public static boolean method3483(int var0) {
-		return (var0 >> 22 & 1) != 0;
-	}
-
-	@ObfuscatedName("am")
-	@ObfuscatedSignature(
-		descriptor = "(IIB)I",
-		garbageValue = "-73"
-	)
-	static final int method3482(int var0, int var1) {
-		if (var0 == -1) {
-			return 12345678;
-		} else {
-			var1 = (var0 & 127) * var1 / 128;
-			if (var1 < 2) {
-				var1 = 2;
-			} else if (var1 > 126) {
-				var1 = 126;
-			}
-
-			return (var0 & 65408) + var1;
-		}
-	}
-
-	@ObfuscatedName("bx")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)I",
-		garbageValue = "1458009071"
-	)
-	@Export("stringCp1252NullTerminatedByteSize")
-	public static int stringCp1252NullTerminatedByteSize(String var0) {
-		return var0.length() + 1;
-	}
-
-	@ObfuscatedName("ml")
-	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "-1117566535"
-	)
-	static final void method3471(int var0) {
-		if (HealthBarDefinition.widgetDefinition.loadInterface(var0)) {
-			SoundCache.drawModelComponents(HealthBarDefinition.widgetDefinition.Widget_interfaceComponents[var0], -1);
-		}
 	}
 }

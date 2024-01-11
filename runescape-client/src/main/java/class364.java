@@ -1,49 +1,28 @@
 import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("oi")
-public enum class364 implements Enum
-{
-	@ObfuscatedName("at")
-	@ObfuscatedSignature(
-		descriptor = "Loi;"
-	)
-	field4236(-1),
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "Loi;"
-	)
-	field4237(0),
-	@ObfuscatedName("ar")
-	@ObfuscatedSignature(
-		descriptor = "Loi;"
-	)
-	field4238(1),
-	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "Loi;"
-	)
-	field4239(2);
+@ObfuscatedName("og")
+public class class364 {
+	@ObfuscatedName("jz")
+	@Export("regionLandArchiveIds")
+	static int[] regionLandArchiveIds;
 
-	@ObfuscatedName("ab")
-	@ObfuscatedGetter(
-		intValue = -1121525677
-	)
-	final int field4240;
+	static {
+		int var0 = 0;
+		int var1 = 0;
+		class360[] var2 = new class360[]{class360.field3939, class360.field3937};
+		class360[] var3 = var2;
 
-	class364(int var3) {
-		this.field4240 = var3;
-	}
+		for (int var4 = 0; var4 < var3.length; ++var4) {
+			class360 var5 = var3[var4];
+			if (var5.field3938 > var0) {
+				var0 = var5.field3938;
+			}
 
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "-11"
-	)
-	@Export("rsOrdinal")
-	public int rsOrdinal() {
-		return this.field4240;
+			if (var5.field3940 > var1) {
+				var1 = var5.field3940;
+			}
+		}
+
 	}
 }

@@ -25,12 +25,13 @@ public interface RSSceneTilePaint extends SceneTilePaint
 	@Override
 	int getNeColor();
 
-	@Import("isFlat")
-	boolean getIsFlat();
-
 	@Import("texture")
 	@Override
 	int getTexture();
+
+	@Import("isFlat")
+	@Override
+	boolean isFlat();
 
 	@Import("rgb")
 	void setRBG(int val);

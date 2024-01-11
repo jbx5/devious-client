@@ -1,36 +1,33 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("iu")
+@ObfuscatedName("it")
 @Implements("Clock")
 public abstract class Clock {
-	@ObfuscatedName("am")
-	@Export("ByteArrayPool_alternativeSizes")
-	static int[] ByteArrayPool_alternativeSizes;
-	@ObfuscatedName("iw")
-	@ObfuscatedGetter(
-		longValue = 6364188858341517481L
+	@ObfuscatedName("an")
+	@ObfuscatedSignature(
+		descriptor = "[Lut;"
 	)
-	static long field2337;
+	@Export("title_muteSprite")
+	static IndexedSprite[] title_muteSprite;
 
 	Clock() {
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-1366277024"
+		garbageValue = "65280"
 	)
 	@Export("mark")
 	public abstract void mark();
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
 		descriptor = "(III)I",
-		garbageValue = "-2001388980"
+		garbageValue = "-2123373080"
 	)
 	@Export("wait")
 	public abstract int wait(int var1, int var2);

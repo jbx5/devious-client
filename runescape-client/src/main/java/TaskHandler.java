@@ -7,37 +7,30 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ih")
+@ObfuscatedName("ij")
 @Implements("TaskHandler")
 public class TaskHandler implements Runnable {
-	@ObfuscatedName("at")
-	@Export("javaVendor")
-	public static String javaVendor;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ap")
 	@Export("javaVersion")
 	public static String javaVersion;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ae")
+	static int[] field2295;
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "Lpf;"
-	)
-	@Export("ItemDefinition_fontPlain11")
-	public static Font ItemDefinition_fontPlain11;
-	@ObfuscatedName("ar")
-	@ObfuscatedSignature(
-		descriptor = "Liq;"
+		descriptor = "Lil;"
 	)
 	@Export("current")
 	Task current;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "Liq;"
+		descriptor = "Lil;"
 	)
 	@Export("task")
 	Task task;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("aq")
 	@Export("thread")
 	Thread thread;
-	@ObfuscatedName("au")
+	@ObfuscatedName("ar")
 	@Export("isClosed")
 	boolean isClosed;
 
@@ -45,11 +38,11 @@ public class TaskHandler implements Runnable {
 		this.current = null;
 		this.task = null;
 		this.isClosed = false;
-		javaVendor = "Unknown";
+		class233.javaVendor = "Unknown";
 		javaVersion = "1.6";
 
 		try {
-			javaVendor = System.getProperty("java.vendor");
+			class233.javaVendor = System.getProperty("java.vendor");
 			javaVersion = System.getProperty("java.version");
 		} catch (Exception var2) {
 		}
@@ -61,10 +54,10 @@ public class TaskHandler implements Runnable {
 		this.thread.start();
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-585427867"
+		garbageValue = "-1884535240"
 	)
 	@Export("close")
 	public final void close() {
@@ -80,10 +73,10 @@ public class TaskHandler implements Runnable {
 
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(IIILjava/lang/Object;I)Liq;",
-		garbageValue = "-993585503"
+		descriptor = "(IIILjava/lang/Object;B)Lil;",
+		garbageValue = "-106"
 	)
 	@Export("newTask")
 	final Task newTask(int var1, int var2, int var3, Object var4) {
@@ -104,20 +97,20 @@ public class TaskHandler implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;II)Liq;",
-		garbageValue = "-180890687"
+		descriptor = "(Ljava/lang/String;II)Lil;",
+		garbageValue = "1422970877"
 	)
 	@Export("newSocketTask")
 	public final Task newSocketTask(String var1, int var2) {
 		return this.newTask(1, var2, 0, var1);
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Runnable;II)Liq;",
-		garbageValue = "1323280137"
+		descriptor = "(Ljava/lang/Runnable;II)Lil;",
+		garbageValue = "-257477270"
 	)
 	@Export("newThreadTask")
 	public final Task newThreadTask(Runnable var1, int var2) {
@@ -169,29 +162,6 @@ public class TaskHandler implements Runnable {
 			} catch (Throwable var7) {
 				var1.status = 2;
 			}
-		}
-	}
-
-	@ObfuscatedName("km")
-	@ObfuscatedSignature(
-		descriptor = "(IIIIII)Z",
-		garbageValue = "1243535616"
-	)
-	static final boolean method4201(int var0, int var1, int var2, int var3, int var4) {
-		PendingSpawn var5 = null;
-
-		for (PendingSpawn var6 = (PendingSpawn)Client.pendingSpawns.last(); var6 != null; var6 = (PendingSpawn)Client.pendingSpawns.previous()) {
-			if (var0 == var6.plane && var6.x == var1 && var2 == var6.y && var3 == var6.type) {
-				var5 = var6;
-				break;
-			}
-		}
-
-		if (var5 != null) {
-			var5.field1152 = var4;
-			return true;
-		} else {
-			return false;
 		}
 	}
 }

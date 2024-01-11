@@ -4,72 +4,78 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("lj")
+@ObfuscatedName("lu")
 @Implements("WallDecoration")
 public final class WallDecoration {
-	@ObfuscatedName("at")
+	@ObfuscatedName("ku")
+	@ObfuscatedSignature(
+		descriptor = "Luc;"
+	)
+	@Export("compass")
+	static SpritePixels compass;
+	@ObfuscatedName("am")
 	@ObfuscatedGetter(
-		intValue = 697087573
+		intValue = 1617612513
 	)
 	@Export("z")
 	int z;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = -1003869085
+		intValue = 1266112317
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("af")
 	@ObfuscatedGetter(
-		intValue = -1239297111
+		intValue = 1208845479
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = 1274967907
+		intValue = 352052341
 	)
 	@Export("orientation")
 	int orientation;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = -1874531803
+		intValue = -2047175573
 	)
 	@Export("orientation2")
 	int orientation2;
-	@ObfuscatedName("au")
+	@ObfuscatedName("ar")
 	@ObfuscatedGetter(
-		intValue = 845842723
+		intValue = -1149054363
 	)
 	@Export("xOffset")
 	int xOffset;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		intValue = -692946625
+		intValue = -1740811189
 	)
 	@Export("yOffset")
 	int yOffset;
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "Lkt;"
+		descriptor = "Lkp;"
 	)
 	@Export("renderable1")
 	public Renderable renderable1;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "Lkt;"
+		descriptor = "Lkp;"
 	)
 	@Export("renderable2")
 	public Renderable renderable2;
-	@ObfuscatedName("az")
+	@ObfuscatedName("aa")
 	@ObfuscatedGetter(
-		longValue = 6922926067835856217L
+		longValue = 3453845455137359487L
 	)
 	@Export("tag")
 	public long tag;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		intValue = 416998107
+		intValue = -138305535
 	)
 	@Export("flags")
 	int flags;
@@ -77,15 +83,5 @@ public final class WallDecoration {
 	WallDecoration() {
 		this.tag = 0L;
 		this.flags = 0;
-	}
-
-	@ObfuscatedName("at")
-	@ObfuscatedSignature(
-		descriptor = "(I)[Luk;",
-		garbageValue = "-1385996560"
-	)
-	@Export("FillMode_values")
-	public static FillMode[] FillMode_values() {
-		return new FillMode[]{FillMode.SOLID, FillMode.field5220, FillMode.field5222};
 	}
 }

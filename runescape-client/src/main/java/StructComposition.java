@@ -1,31 +1,27 @@
+import java.awt.Component;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hy")
+@ObfuscatedName("hi")
 @Implements("StructComposition")
 public class StructComposition extends DualNode {
-	@ObfuscatedName("at")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "Lol;"
+		descriptor = "Low;"
 	)
 	@Export("StructDefinition_archive")
-	static AbstractArchive StructDefinition_archive;
-	@ObfuscatedName("ah")
+	public static AbstractArchive StructDefinition_archive;
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Llk;"
+		descriptor = "Llq;"
 	)
 	@Export("StructDefinition_cached")
 	static EvictingDualNodeHashTable StructDefinition_cached;
-	@ObfuscatedName("fn")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "Loh;"
-	)
-	static Archive field2041;
-	@ObfuscatedName("ar")
-	@ObfuscatedSignature(
-		descriptor = "Ltz;"
+		descriptor = "Ltb;"
 	)
 	@Export("params")
 	IterableNodeHashTable params;
@@ -37,19 +33,19 @@ public class StructComposition extends DualNode {
 	StructComposition() {
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-968582789"
+		garbageValue = "-1428543877"
 	)
 	@Export("postDecode")
 	void postDecode() {
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "(Luj;I)V",
-		garbageValue = "-1850200983"
+		descriptor = "(Luk;I)V",
+		garbageValue = "154237221"
 	)
 	@Export("decode")
 	void decode(Buffer var1) {
@@ -63,33 +59,33 @@ public class StructComposition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(Luj;IB)V",
-		garbageValue = "4"
+		descriptor = "(Luk;IB)V",
+		garbageValue = "-14"
 	)
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
 		if (var2 == 249) {
-			this.params = class144.readStringIntParameters(var1, this.params);
+			this.params = WorldMapSection2.readStringIntParameters(var1, this.params);
 		}
 
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "(III)I",
-		garbageValue = "-408803352"
+		garbageValue = "1990579490"
 	)
 	@Export("getIntParam")
 	public int getIntParam(int var1, int var2) {
-		return Player.method2444(this.params, var1, var2);
+		return class295.method5902(this.params, var1, var2);
 	}
 
-	@ObfuscatedName("aa")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/String;B)Ljava/lang/String;",
-		garbageValue = "78"
+		descriptor = "(ILjava/lang/String;I)Ljava/lang/String;",
+		garbageValue = "890701279"
 	)
 	@Export("getStringParam")
 	public String getStringParam(int var1, String var2) {
@@ -107,5 +103,53 @@ public class StructComposition extends DualNode {
 		}
 
 		return var3;
+	}
+
+	@ObfuscatedName("am")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/awt/Component;B)V",
+		garbageValue = "-44"
+	)
+	static void method3879(Component var0) {
+		var0.removeMouseListener(MouseHandler.MouseHandler_instance);
+		var0.removeMouseMotionListener(MouseHandler.MouseHandler_instance);
+		var0.removeFocusListener(MouseHandler.MouseHandler_instance);
+		MouseHandler.MouseHandler_currentButtonVolatile = 0;
+	}
+
+	@ObfuscatedName("jn")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;ZB)V",
+		garbageValue = "-70"
+	)
+	@Export("drawLoadingMessage")
+	static final void drawLoadingMessage(String var0, boolean var1) {
+		if (Client.showLoadingMessages) {
+			byte var2 = 4;
+			int var3 = var2 + 6;
+			int var4 = var2 + 6;
+			int var5 = class339.fontPlain12.lineWidth(var0, 250);
+			int var6 = class339.fontPlain12.lineCount(var0, 250) * 13;
+			Rasterizer2D.Rasterizer2D_fillRectangle(var3 - var2, var4 - var2, var2 + var5 + var2, var2 + var2 + var6, 0);
+			Rasterizer2D.Rasterizer2D_drawRectangle(var3 - var2, var4 - var2, var5 + var2 + var2, var2 + var2 + var6, 16777215);
+			class339.fontPlain12.drawLines(var0, var3, var4, var5, var6, 16777215, -1, 1, 1, 0);
+			int var7 = var3 - var2;
+			int var8 = var4 - var2;
+			int var9 = var2 + var2 + var5;
+			int var10 = var2 + var6 + var2;
+
+			for (int var11 = 0; var11 < Client.rootWidgetCount; ++var11) {
+				if (Client.rootWidgetXs[var11] + Client.rootWidgetWidths[var11] > var7 && Client.rootWidgetXs[var11] < var9 + var7 && Client.rootWidgetHeights[var11] + Client.rootWidgetYs[var11] > var8 && Client.rootWidgetYs[var11] < var8 + var10) {
+					Client.validRootWidgets[var11] = true;
+				}
+			}
+
+			if (var1) {
+				WorldMapData_1.rasterProvider.drawFull(0, 0);
+			} else {
+				AbstractWorldMapIcon.method5085(var3, var4, var5, var6);
+			}
+
+		}
 	}
 }

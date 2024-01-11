@@ -90,6 +90,7 @@ public class RuneLiteModule extends AbstractModule
 	private final OptionSet optionSet;
 	private final boolean insecureWriteCredentials;
 	private final boolean cachedRandomDat;
+	private final boolean cachedUUID;
 
 	@Override
 	protected void configure()
@@ -138,6 +139,7 @@ public class RuneLiteModule extends AbstractModule
 		bind(File.class).annotatedWith(Names.named("config")).toInstance(config);
 		bindConstant().annotatedWith(Names.named("insecureWriteCredentials")).to(insecureWriteCredentials);
 		bindConstant().annotatedWith(Names.named("cachedRandomDat")).to(cachedRandomDat);
+		bindConstant().annotatedWith(Names.named("cachedUUID")).to(cachedUUID);
 		bind(File.class).annotatedWith(Names.named("runeLiteDir")).toInstance(RuneLite.RUNELITE_DIR);
 		bind(ScheduledExecutorService.class).toInstance(new ExecutorServiceExceptionLogger(Executors.newSingleThreadScheduledExecutor()));
 		bind(OkHttpClient.class).toInstance(okHttpClient);

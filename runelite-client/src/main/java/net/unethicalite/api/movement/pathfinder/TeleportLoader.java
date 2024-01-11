@@ -185,11 +185,11 @@ public class TeleportLoader
 												   () -> jewelryTeleport("Xeric's Glade", XERICS_TALISMAN)));
 						teleports.add(new Teleport(new WorldPoint(1504, 3817, 0), 6,
 												   () -> jewelryTeleport("Xeric's Inferno", XERICS_TALISMAN)));
-						if (Quests.isFinished(Quest.ARCHITECTURAL_ALLIANCE))
+						/*if (Quests.isFinished(Quest.ARCHITECTURAL_ALLIANCE))
 						{
 							teleports.add(new Teleport(new WorldPoint(1640, 3674, 0), 6,
 														() -> jewelryTeleport("Xeric's Heart", XERICS_TALISMAN)));
-						}
+						}*/
 					}
 
 					if (digsitePendant())

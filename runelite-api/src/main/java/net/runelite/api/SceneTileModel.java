@@ -77,6 +77,8 @@ public interface SceneTileModel
 
 	int[] getTriangleTextureId();
 
+	boolean isFlat();
+
 	int getBufferOffset();
 	void setBufferOffset(int bufferOffset);
 
@@ -117,6 +119,4 @@ public interface SceneTileModel
 	int getOverlayNwColor();
 
 	void setOverlayNwColor(int color);
-
-	boolean getIsFlat();
 }

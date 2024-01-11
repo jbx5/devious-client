@@ -3,148 +3,117 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fa")
-public class class132 implements Enum
-{
-	@ObfuscatedName("at")
+@ObfuscatedName("ff")
+public class class132 implements Enum {
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "Lfa;"
+		descriptor = "Lff;"
 	)
-	static final class132 field1549;
-	@ObfuscatedName("ah")
+	static final class132 field1555;
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Lfa;"
+		descriptor = "Lff;"
 	)
-	static final class132 field1550;
-	@ObfuscatedName("ar")
+	static final class132 field1553;
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "Lfa;"
-	)
-	static final class132 field1551;
-	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "Lfa;"
-	)
-	static final class132 field1552;
-	@ObfuscatedName("ab")
-	@ObfuscatedSignature(
-		descriptor = "Lfa;"
-	)
-	static final class132 field1557;
-	@ObfuscatedName("au")
-	@ObfuscatedSignature(
-		descriptor = "Lfa;"
+		descriptor = "Lff;"
 	)
 	static final class132 field1554;
-	@ObfuscatedName("aa")
-	@ObfuscatedGetter(
-		intValue = 403817813
+	@ObfuscatedName("aj")
+	@ObfuscatedSignature(
+		descriptor = "Lff;"
 	)
-	final int field1555;
-	@ObfuscatedName("ac")
-	@ObfuscatedGetter(
-		intValue = -1269069655
+	static final class132 field1560;
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "Lff;"
 	)
-	final int field1556;
-	@ObfuscatedName("al")
-	@ObfuscatedGetter(
-		intValue = -520684091
+	static final class132 field1556;
+	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "Lff;"
 	)
-	final int field1553;
+	static final class132 field1561;
+	@ObfuscatedName("ii")
+	@ObfuscatedSignature(
+		descriptor = "Lil;"
+	)
+	static Task field1563;
+	@ObfuscatedName("ag")
+	@ObfuscatedGetter(
+		intValue = 1569709707
+	)
+	final int field1558;
+	@ObfuscatedName("ao")
+	@ObfuscatedGetter(
+		intValue = -1331409345
+	)
+	final int field1559;
+	@ObfuscatedName("ae")
+	@ObfuscatedGetter(
+		intValue = 2076256283
+	)
+	final int field1557;
 
 	static {
-		field1549 = new class132(0, 0, (String)null, 0);
-		field1550 = new class132(1, 1, (String)null, 9);
-		field1551 = new class132(2, 2, (String)null, 3);
-		field1552 = new class132(3, 3, (String)null, 6);
-		field1557 = new class132(4, 4, (String)null, 1);
-		field1554 = new class132(5, 5, (String)null, 3);
+		field1555 = new class132(0, 0, (String)null, 0);
+		field1553 = new class132(1, 1, (String)null, 9);
+		field1554 = new class132(2, 2, (String)null, 3);
+		field1560 = new class132(3, 3, (String)null, 6);
+		field1556 = new class132(4, 4, (String)null, 1);
+		field1561 = new class132(5, 5, (String)null, 3);
 	}
 
 	class132(int var1, int var2, String var3, int var4) {
-		this.field1555 = var1;
-		this.field1556 = var2;
-		this.field1553 = var4;
+		this.field1558 = var1;
+		this.field1559 = var2;
+		this.field1557 = var4;
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "-11"
+		descriptor = "(I)I",
+		garbageValue = "-884190501"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
-		return this.field1556;
+		return this.field1559;
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "361473055"
+		garbageValue = "1760796725"
 	)
-	int method3136() {
-		return this.field1553;
+	int method3117() {
+		return this.field1557;
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "([Ljava/lang/String;[SIII)V",
-		garbageValue = "676709272"
+		descriptor = "(Lnn;I)I",
+		garbageValue = "340165408"
 	)
-	@Export("sortItemsByName")
-	static void sortItemsByName(String[] var0, short[] var1, int var2, int var3) {
-		if (var2 < var3) {
-			int var4 = (var3 + var2) / 2;
-			int var5 = var2;
-			String var6 = var0[var4];
-			var0[var4] = var0[var3];
-			var0[var3] = var6;
-			short var7 = var1[var4];
-			var1[var4] = var1[var3];
-			var1[var3] = var7;
-
-			for (int var8 = var2; var8 < var3; ++var8) {
-				if (var6 == null || var0[var8] != null && var0[var8].compareTo(var6) < (var8 & 1)) {
-					String var9 = var0[var8];
-					var0[var8] = var0[var5];
-					var0[var5] = var9;
-					short var10 = var1[var8];
-					var1[var8] = var1[var5];
-					var1[var5++] = var10;
-				}
-			}
-
-			var0[var3] = var0[var5];
-			var0[var5] = var6;
-			var1[var3] = var1[var5];
-			var1[var5] = var7;
-			sortItemsByName(var0, var1, var2, var5 - 1);
-			sortItemsByName(var0, var1, var5 + 1, var3);
+	static int method3116(Widget var0) {
+		if (var0.type != 11) {
+			--class211.Interpreter_stringStackSize;
+			Interpreter.Interpreter_intStack[++UserComparator6.Interpreter_intStackSize - 1] = -1;
+			return 1;
+		} else {
+			String var1 = Interpreter.Interpreter_stringStack[--class211.Interpreter_stringStackSize];
+			Interpreter.Interpreter_intStack[++UserComparator6.Interpreter_intStackSize - 1] = var0.method6712(var1);
+			return 1;
 		}
-
 	}
 
-	@ObfuscatedName("li")
+	@ObfuscatedName("ht")
 	@ObfuscatedSignature(
-		descriptor = "([Lnn;Lnn;ZI)V",
-		garbageValue = "-2026134195"
+		descriptor = "(B)Ltc;",
+		garbageValue = "0"
 	)
-	@Export("revalidateWidgetScroll")
-	static void revalidateWidgetScroll(Widget[] var0, Widget var1, boolean var2) {
-		int var3 = var1.scrollWidth != 0 ? var1.scrollWidth : var1.width;
-		int var4 = var1.scrollHeight != 0 ? var1.scrollHeight : var1.height;
-		UrlRequest.resizeInterface(var0, var1.id, var3, var4, var2);
-		if (var1.children != null) {
-			UrlRequest.resizeInterface(var1.children, var1.id, var3, var4, var2);
-		}
-
-		InterfaceParent var5 = (InterfaceParent)Client.interfaceParents.get((long)var1.id);
-		if (var5 != null) {
-			NPCComposition.method3748(var5.group, var3, var4, var2);
-		}
-
-		if (var1.contentType == 1337) {
-		}
-
+	@Export("getWorldMap")
+	static WorldMap getWorldMap() {
+		return GrandExchangeOfferUnitPriceComparator.worldMap;
 	}
 }

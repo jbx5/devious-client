@@ -3,37 +3,37 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("hg")
+@ObfuscatedName("he")
 @Implements("VerticalAlignment")
-public enum VerticalAlignment implements Enum
-{
-	@ObfuscatedName("at")
+public enum VerticalAlignment implements Enum {
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "Lhg;"
+		descriptor = "Lhe;"
 	)
-	field1970(2, 0),
-	@ObfuscatedName("ah")
+	field2004(0, 0),
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Lhg;"
+		descriptor = "Lhe;"
 	)
 	@Export("VerticalAlignment_centered")
-	VerticalAlignment_centered(0, 1),
-	@ObfuscatedName("ar")
+	VerticalAlignment_centered(1, 1),
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "Lhg;"
+		descriptor = "Lhe;"
 	)
-	field1972(1, 2);
+	field2006(2, 2);
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = 1916743455
+		intValue = 371572089
 	)
 	@Export("value")
 	public final int value;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = -1795857937
+		intValue = 2107776905
 	)
 	@Export("id")
 	final int id;
@@ -43,82 +43,48 @@ public enum VerticalAlignment implements Enum
 		this.id = var4;
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "-11"
+		descriptor = "(I)I",
+		garbageValue = "-884190501"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.id;
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(I)[Lnt;",
-		garbageValue = "1599103276"
+		descriptor = "(ILdd;ZI)I",
+		garbageValue = "946766288"
 	)
-	public static StudioGame[] method3755() {
-		return new StudioGame[]{StudioGame.game5, StudioGame.stellardawn, StudioGame.oldscape, StudioGame.game3, StudioGame.runescape, StudioGame.game4};
-	}
+	static int method3786(int var0, Script var1, boolean var2) {
+		Widget var3 = class380.widgetDefinition.method6348(Interpreter.Interpreter_intStack[--UserComparator6.Interpreter_intStackSize]);
+		if (var0 == ScriptOpcodes.IF_GETTARGETMASK) {
+			Interpreter.Interpreter_intStack[++UserComparator6.Interpreter_intStackSize - 1] = class155.Widget_unpackTargetMask(class405.getWidgetFlags(var3));
+			return 1;
+		} else if (var0 != ScriptOpcodes.IF_GETOP) {
+			if (var0 == ScriptOpcodes.IF_GETOPBASE) {
+				if (var3.dataText == null) {
+					Interpreter.Interpreter_stringStack[++class211.Interpreter_stringStackSize - 1] = "";
+				} else {
+					Interpreter.Interpreter_stringStack[++class211.Interpreter_stringStackSize - 1] = var3.dataText;
+				}
 
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "(IS)Lhw;",
-		garbageValue = "4625"
-	)
-	@Export("getNpcDefinition")
-	public static NPCComposition getNpcDefinition(int var0) {
-		NPCComposition var1 = (NPCComposition)NPCComposition.NpcDefinition_cached.get((long)var0);
-		if (var1 != null) {
-			return var1;
+				return 1;
+			} else {
+				return 2;
+			}
 		} else {
-			byte[] var2 = NPCComposition.NpcDefinition_archive.takeFile(9, var0);
-			var1 = new NPCComposition();
-			var1.id = var0;
-			if (var2 != null) {
-				var1.decode(new Buffer(var2));
+			int var4 = Interpreter.Interpreter_intStack[--UserComparator6.Interpreter_intStackSize];
+			--var4;
+			if (var3.actions != null && var4 < var3.actions.length && var3.actions[var4] != null) {
+				Interpreter.Interpreter_stringStack[++class211.Interpreter_stringStackSize - 1] = var3.actions[var4];
+			} else {
+				Interpreter.Interpreter_stringStack[++class211.Interpreter_stringStackSize - 1] = "";
 			}
 
-			var1.postDecode();
-			NPCComposition.NpcDefinition_cached.put(var1, (long)var0);
-			return var1;
+			return 1;
 		}
-	}
-
-	@ObfuscatedName("bx")
-	@ObfuscatedSignature(
-		descriptor = "(ILdt;ZI)I",
-		garbageValue = "-2145020206"
-	)
-	static int method3753(int var0, Script var1, boolean var2) {
-		return 2;
-	}
-
-	@ObfuscatedName("hx")
-	@ObfuscatedSignature(
-		descriptor = "(ZB)V",
-		garbageValue = "-52"
-	)
-	@Export("setAuthenticationScheme")
-	static final void setAuthenticationScheme(boolean otp) {
-		if (otp) {
-			Client.authenticationScheme = Login.rememberUsername ? AuthenticationScheme.TOKEN_REMEMBER : AuthenticationScheme.TOKEN;
-		} else {
-			Client.authenticationScheme = WorldMapIcon_1.clientPreferences.containsKey(Login.Login_username) ? AuthenticationScheme.USERNAME_PASSWORD_REMEMBER : AuthenticationScheme.USERNAME_PASSWORD;
-		}
-
-	}
-
-	@ObfuscatedName("oh")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-66"
-	)
-	static void method3756() {
-		if (Client.oculusOrbState == 1) {
-			Client.field585 = true;
-		}
-
 	}
 }

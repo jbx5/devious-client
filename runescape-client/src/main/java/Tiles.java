@@ -4,47 +4,50 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dd")
+@ObfuscatedName("dm")
 @Implements("Tiles")
 public final class Tiles {
-	@ObfuscatedName("at")
+	@ObfuscatedName("am")
 	@Export("Tiles_heights")
 	static int[][][] Tiles_heights;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ap")
 	@Export("Tiles_renderFlags")
 	static byte[][][] Tiles_renderFlags;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("af")
 	@ObfuscatedGetter(
-		intValue = -29423869
+		intValue = -47945815
 	)
 	@Export("Tiles_minPlane")
 	static int Tiles_minPlane;
-	@ObfuscatedName("al")
-	static int[][] field999;
-	@ObfuscatedName("ap")
-	@Export("Tiles_saturation")
-	static int[] Tiles_saturation;
+	@ObfuscatedName("aj")
+	@Export("Tiles_underlays")
+	static short[][][] Tiles_underlays;
 	@ObfuscatedName("aq")
-	static final int[] field1006;
-	@ObfuscatedName("ai")
-	static final int[] field1005;
+	@Export("Tiles_overlays")
+	static short[][][] Tiles_overlays;
 	@ObfuscatedName("aw")
+	static int[][][] field1012;
+	@ObfuscatedName("ay")
+	static final int[] field1014;
+	@ObfuscatedName("as")
+	static final int[] field1015;
+	@ObfuscatedName("ab")
+	static final int[] field1018;
+	@ObfuscatedName("ah")
+	static final int[] field1017;
+	@ObfuscatedName("ai")
 	static final int[] field1010;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("ac")
 	static final int[] field1007;
-	@ObfuscatedName("an")
-	static final int[] field1008;
-	@ObfuscatedName("ag")
-	static final int[] field1009;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = 322260709
+		intValue = -605866805
 	)
 	@Export("rndHue")
 	static int rndHue;
-	@ObfuscatedName("af")
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		intValue = 1691327135
+		intValue = -1897521151
 	)
 	@Export("rndLightness")
 	static int rndLightness;
@@ -53,21 +56,21 @@ public final class Tiles {
 		Tiles_heights = new int[4][105][105];
 		Tiles_renderFlags = new byte[4][104][104];
 		Tiles_minPlane = 99;
-		field1006 = new int[]{1, 2, 4, 8};
-		field1005 = new int[]{16, 32, 64, 128};
-		field1010 = new int[]{1, 0, -1, 0};
-		field1007 = new int[]{0, -1, 0, 1};
-		field1008 = new int[]{1, -1, -1, 1};
-		field1009 = new int[]{-1, -1, 1, 1};
+		field1014 = new int[]{1, 2, 4, 8};
+		field1015 = new int[]{16, 32, 64, 128};
+		field1018 = new int[]{1, 0, -1, 0};
+		field1017 = new int[]{0, -1, 0, 1};
+		field1010 = new int[]{1, -1, -1, 1};
+		field1007 = new int[]{-1, -1, 1, 1};
 		rndHue = (int)(Math.random() * 17.0D) - 8;
 		rndLightness = (int)(Math.random() * 33.0D) - 16;
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
-		descriptor = "([BIIIIIIILkf;[Liw;)V"
+		descriptor = "([BIIIIIIILkn;[Lii;)V"
 	)
-	static final void method2294(byte[] var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, Scene var8, CollisionMap[] var9) {
+	static final void method2274(byte[] var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, Scene var8, CollisionMap[] var9) {
 		Buffer var10 = new Buffer(var0);
 		int var11 = -1;
 
@@ -94,7 +97,7 @@ public final class Tiles {
 				int var19 = var18 >> 2;
 				int var20 = var18 & 3;
 				if (var17 == var4 && var16 >= var5 && var16 < var5 + 8 && var15 >= var6 && var15 < var6 + 8) {
-					ObjectComposition var21 = WorldMapSection2.getObjectDefinition(var11);
+					ObjectComposition var21 = class137.getObjectDefinition(var11);
 					int var24 = var16 & 7;
 					int var25 = var15 & 7;
 					int var27 = var21.sizeX;
@@ -118,7 +121,7 @@ public final class Tiles {
 						var23 = 7 - var25 - (var28 - 1);
 					}
 
-					var29 = var23 + var2;
+					var29 = var2 + var23;
 					int var32 = var16 & 7;
 					int var33 = var15 & 7;
 					int var35 = var21.sizeX;
@@ -142,7 +145,7 @@ public final class Tiles {
 						var31 = var32;
 					}
 
-					var37 = var31 + var3;
+					var37 = var3 + var31;
 					if (var29 > 0 && var37 > 0 && var29 < 103 && var37 < 103) {
 						int var38 = var1;
 						if ((Tiles_renderFlags[1][var29][var37] & 2) == 2) {
@@ -154,7 +157,7 @@ public final class Tiles {
 							var39 = var9[var38];
 						}
 
-						Interpreter.addObjects(var1, var29, var37, var11, var20 + var7 & 3, var19, var8, var39);
+						class59.addObjects(var1, var29, var37, var11, var20 + var7 & 3, var19, var8, var39);
 					}
 				}
 			}

@@ -3,126 +3,67 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dm")
-public enum class89 implements Enum
-{
-	@ObfuscatedName("at")
+@ObfuscatedName("dw")
+public enum class89 implements Enum {
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "Ldm;"
+		descriptor = "Ldw;"
 	)
-	field1077(0, -1),
-	@ObfuscatedName("ah")
+	field1082(0, -1),
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Ldm;"
+		descriptor = "Ldw;"
 	)
-	field1072(1, 1),
-	@ObfuscatedName("ar")
+	field1079(1, 1),
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "Ldm;"
+		descriptor = "Ldw;"
 	)
-	field1071(2, 7),
-	@ObfuscatedName("ao")
+	field1080(2, 7),
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "Ldm;"
+		descriptor = "Ldw;"
 	)
-	field1081(3, 8),
-	@ObfuscatedName("ab")
+	field1085(3, 8),
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Ldm;"
+		descriptor = "Ldw;"
 	)
-	field1075(4, 9);
+	field1078(4, 9);
 
-	@ObfuscatedName("cp")
-	@ObfuscatedSignature(
-		descriptor = "Ltt;"
-	)
-	@Export("loginType")
-	static LoginType loginType;
-	@ObfuscatedName("au")
+	@ObfuscatedName("ar")
 	@ObfuscatedGetter(
-		intValue = 1201984569
+		intValue = -1609838865
 	)
-	final int field1076;
-	@ObfuscatedName("aa")
+	final int field1083;
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		intValue = -854762467
+		intValue = -1619368997
 	)
-	final int field1073;
+	final int field1084;
 
 	class89(int var3, int var4) {
-		this.field1076 = var3;
-		this.field1073 = var4;
+		this.field1083 = var3;
+		this.field1084 = var4;
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "-11"
+		descriptor = "(I)I",
+		garbageValue = "-884190501"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
-		return this.field1073;
+		return this.field1084;
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("nf")
 	@ObfuscatedSignature(
-		descriptor = "(Lcr;Lcr;IZI)I",
-		garbageValue = "-1326256206"
+		descriptor = "(I)I",
+		garbageValue = "1156583698"
 	)
-	@Export("compareWorlds")
-	static int compareWorlds(World var0, World var1, int var2, boolean var3) {
-		if (var2 == 1) {
-			int var4 = var0.population;
-			int var5 = var1.population;
-			if (!var3) {
-				if (var4 == -1) {
-					var4 = 2001;
-				}
-
-				if (var5 == -1) {
-					var5 = 2001;
-				}
-			}
-
-			return var4 - var5;
-		} else if (var2 == 2) {
-			return var0.location - var1.location;
-		} else if (var2 == 3) {
-			if (var0.activity.equals("-")) {
-				if (var1.activity.equals("-")) {
-					return 0;
-				} else {
-					return var3 ? -1 : 1;
-				}
-			} else if (var1.activity.equals("-")) {
-				return var3 ? 1 : -1;
-			} else {
-				return var0.activity.compareTo(var1.activity);
-			}
-		} else if (var2 == 4) {
-			return var0.method1896() ? (var1.method1896() ? 0 : 1) : (var1.method1896() ? -1 : 0);
-		} else if (var2 == 5) {
-			return var0.method1853() ? (var1.method1853() ? 0 : 1) : (var1.method1853() ? -1 : 0);
-		} else if (var2 == 6) {
-			return var0.isPvp() ? (var1.isPvp() ? 0 : 1) : (var1.isPvp() ? -1 : 0);
-		} else if (var2 == 7) {
-			return var0.isMembersOnly() ? (var1.isMembersOnly() ? 0 : 1) : (var1.isMembersOnly() ? -1 : 0);
-		} else {
-			return var0.id - var1.id;
-		}
-	}
-
-	@ObfuscatedName("nt")
-	@ObfuscatedSignature(
-		descriptor = "(Lnn;B)Ljava/lang/String;",
-		garbageValue = "-100"
-	)
-	@Export("Widget_getSpellActionName")
-	static String Widget_getSpellActionName(Widget var0) {
-		if (WorldMapData_0.Widget_unpackTargetMask(class361.getWidgetFlags(var0)) == 0) {
-			return null;
-		} else {
-			return var0.spellActionName != null && var0.spellActionName.trim().length() != 0 ? var0.spellActionName : null;
-		}
+	static final int method2378() {
+		float var0 = 200.0F * ((float)class93.clientPreferences.getBrightness() - 0.5F);
+		return 100 - Math.round(var0);
 	}
 }

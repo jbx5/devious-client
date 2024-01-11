@@ -4,36 +4,25 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cs")
+@ObfuscatedName("cu")
 @Implements("ScriptFrame")
 public class ScriptFrame {
-	@ObfuscatedName("lk")
-	@ObfuscatedGetter(
-		intValue = -1780121491
-	)
-	@Export("oculusOrbFocalPointY")
-	static int oculusOrbFocalPointY;
-	@ObfuscatedName("uh")
-	@ObfuscatedGetter(
-		intValue = 1895489664
-	)
-	static int field456;
-	@ObfuscatedName("at")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "Ldt;"
+		descriptor = "Ldd;"
 	)
 	@Export("script")
 	Script script;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = 640777695
+		intValue = 1219042639
 	)
 	@Export("pc")
 	int pc;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("af")
 	@Export("intLocals")
 	int[] intLocals;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aj")
 	@Export("stringLocals")
 	String[] stringLocals;
 
@@ -41,53 +30,31 @@ public class ScriptFrame {
 		this.pc = -1;
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)V",
-		garbageValue = "1468769999"
+		descriptor = "(CS)Z",
+		garbageValue = "232"
 	)
-	static final void method1213(String var0) {
-		PacketBufferNode var1 = class113.getPacketBufferNode(ClientPacket.FRIEND_ADDUSER, Client.packetWriter.isaacCipher);
-		var1.packetBuffer.writeByte(ClanChannel.stringCp1252NullTerminatedByteSize(var0));
-		var1.packetBuffer.writeStringCp1252NullTerminated(var0);
-		Client.packetWriter.addNode(var1);
+	@Export("isDigit")
+	public static boolean isDigit(char var0) {
+		return var0 >= '0' && var0 <= '9';
 	}
 
-	@ObfuscatedName("kr")
+	@ObfuscatedName("kk")
 	@ObfuscatedSignature(
-		descriptor = "(Ldp;I)V",
-		garbageValue = "128237974"
+		descriptor = "(IIIIIB)V",
+		garbageValue = "-51"
 	)
-	static final void method1212(PendingSpawn var0) {
-		long var1 = 0L;
-		int var3 = -1;
-		int var4 = 0;
-		int var5 = 0;
-		if (var0.type == 0) {
-			var1 = class36.scene.getBoundaryObjectTag(var0.plane, var0.x, var0.y);
+	static void method1204(int var0, int var1, int var2, int var3, int var4) {
+		NodeDeque var5 = Client.groundItems[var0][var1][var2];
+		if (var5 != null) {
+			for (TileItem var6 = (TileItem)var5.last(); var6 != null; var6 = (TileItem)var5.previous()) {
+				if ((var3 & 32767) == var6.id) {
+					var6.method2750(var4);
+					break;
+				}
+			}
 		}
 
-		if (var0.type == 1) {
-			var1 = class36.scene.getWallDecorationTag(var0.plane, var0.x, var0.y);
-		}
-
-		if (var0.type == 2) {
-			var1 = class36.scene.getGameObjectTag(var0.plane, var0.x, var0.y);
-		}
-
-		if (var0.type == 3) {
-			var1 = class36.scene.getFloorDecorationTag(var0.plane, var0.x, var0.y);
-		}
-
-		if (0L != var1) {
-			int var6 = class36.scene.getObjectFlags(var0.plane, var0.x, var0.y, var1);
-			var3 = class232.Entity_unpackID(var1);
-			var4 = var6 & 31;
-			var5 = var6 >> 6 & 3;
-		}
-
-		var0.objectId = var3;
-		var0.field1158 = var4;
-		var0.field1157 = var5;
 	}
 }

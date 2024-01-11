@@ -2,47 +2,36 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gy")
+@ObfuscatedName("gh")
 public class class174 extends DualNode {
-	@ObfuscatedName("at")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "Llk;"
+		descriptor = "Llq;"
 	)
 	@Export("archive7")
 	static EvictingDualNodeHashTable archive7;
-	@ObfuscatedName("op")
+	@ObfuscatedName("db")
 	@ObfuscatedSignature(
-		descriptor = "Lcb;"
+		descriptor = "Lut;"
 	)
-	@Export("tempMenuAction")
-	static MenuAction tempMenuAction;
+	@Export("worldSelectLeftSprite")
+	static IndexedSprite worldSelectLeftSprite;
 
 	static {
 		archive7 = new EvictingDualNodeHashTable(64);
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("bl")
 	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "-1688673442"
+		descriptor = "(ILdd;ZB)I",
+		garbageValue = "0"
 	)
-	public static int method3539(int var0) {
-		return class476.field4817[var0 & 16383];
-	}
-
-	@ObfuscatedName("bn")
-	@ObfuscatedSignature(
-		descriptor = "([BIII)I",
-		garbageValue = "-2127919093"
-	)
-	public static int method3540(byte[] var0, int var1, int var2) {
-		int var3 = -1;
-
-		for (int var4 = var1; var4 < var2; ++var4) {
-			var3 = var3 >>> 8 ^ Buffer.field5138[(var3 ^ var0[var4]) & 255];
+	static int method3571(int var0, Script var1, boolean var2) {
+		if (var0 == 7108) {
+			Interpreter.Interpreter_intStack[++UserComparator6.Interpreter_intStackSize - 1] = class243.method4937() ? 1 : 0;
+			return 1;
+		} else {
+			return 2;
 		}
-
-		var3 = ~var3;
-		return var3;
 	}
 }

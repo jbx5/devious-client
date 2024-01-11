@@ -1,17 +1,26 @@
+import java.util.ArrayList;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("nj")
+@ObfuscatedName("ny")
 @Implements("Skills")
 public class Skills {
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ap")
 	@Export("Skills_enabled")
 	public static final boolean[] Skills_enabled;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("af")
 	@Export("Skills_experienceTable")
 	public static int[] Skills_experienceTable;
+	@ObfuscatedName("ag")
+	static boolean[] field3912;
+	@ObfuscatedName("cm")
+	@ObfuscatedGetter(
+		intValue = -1485031115
+	)
+	static int field3911;
 
 	static {
 		Skills_enabled = new boolean[]{true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, false};
@@ -27,34 +36,42 @@ public class Skills {
 
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("in")
 	@ObfuscatedSignature(
-		descriptor = "(Lol;Ljava/lang/String;Ljava/lang/String;I)[Lup;",
-		garbageValue = "900236984"
+		descriptor = "(Ljava/util/ArrayList;IIIII)V",
+		garbageValue = "1951977903"
 	)
-	public static IndexedSprite[] method6857(AbstractArchive var0, String var1, String var2) {
-		if (!var0.isValidFileName(var1, var2)) {
-			return null;
-		} else {
-			int var3 = var0.getGroupId(var1);
-			int var4 = var0.getFileId(var3, var2);
-			byte[] var7 = var0.takeFile(var3, var4);
-			boolean var6;
-			if (var7 == null) {
-				var6 = false;
-			} else {
-				class162.SpriteBuffer_decode(var7);
-				var6 = true;
+	static void method6928(ArrayList var0, int var1, int var2, int var3, int var4) {
+		if (!var0.isEmpty()) {
+			int var5 = (Integer)var0.get(0);
+			if (var5 == -1 && !Client.playingJingle) {
+				Actor.method2488(0, 0);
+			} else if (var5 != -1) {
+				boolean var6;
+				if (class319.field3466.isEmpty()) {
+					var6 = false;
+				} else {
+					MusicSong var7 = (MusicSong)class319.field3466.get(0);
+					var6 = var7 != null && var5 == var7.musicTrackGroupId;
+				}
+
+				if (!var6 && class93.clientPreferences.getMusicVolume() != 0) {
+					ArrayList var9 = new ArrayList();
+
+					for (int var8 = 0; var8 < var0.size(); ++var8) {
+						var9.add(new MusicSong(WorldMapSection0.archive6, (Integer)var0.get(var8), 0, class93.clientPreferences.getMusicVolume(), false));
+					}
+
+					if (Client.playingJingle) {
+						class319.field3466.clear();
+						class319.field3466.addAll(var9);
+						WorldMapRectangle.method5019(var1, var2, var3, var4);
+					} else {
+						LoginScreenAnimation.method2528(var9, var1, var2, var3, var4, false);
+					}
+				}
 			}
 
-			IndexedSprite[] var5;
-			if (!var6) {
-				var5 = null;
-			} else {
-				var5 = DbTable.method9159();
-			}
-
-			return var5;
 		}
 	}
 }

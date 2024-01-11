@@ -4,33 +4,33 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jk")
+@ObfuscatedName("jz")
 @Implements("WorldMapLabel")
 public class WorldMapLabel {
-	@ObfuscatedName("at")
+	@ObfuscatedName("am")
 	@Export("text")
 	String text;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = -415719505
+		intValue = -567280081
 	)
 	@Export("width")
 	int width;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("af")
 	@ObfuscatedGetter(
-		intValue = -481945253
+		intValue = 636723921
 	)
 	@Export("height")
 	int height;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "Lio;"
+		descriptor = "Ljm;"
 	)
 	@Export("size")
 	WorldMapLabelSize size;
 
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;IILio;)V"
+		descriptor = "(Ljava/lang/String;IILjm;)V"
 	)
 	WorldMapLabel(String var1, int var2, int var3, WorldMapLabelSize var4) {
 		this.text = var1;

@@ -7,34 +7,34 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("rc")
+@ObfuscatedName("rw")
 @Implements("UserList")
 public abstract class UserList {
-	@ObfuscatedName("al")
+	@ObfuscatedName("ae")
 	@ObfuscatedGetter(
-		intValue = -1878565521
+		intValue = -1027687485
 	)
 	@Export("capacity")
 	final int capacity;
-	@ObfuscatedName("az")
+	@ObfuscatedName("aa")
 	@ObfuscatedGetter(
-		intValue = 1107277597
+		intValue = -1816576959
 	)
 	@Export("size")
 	int size;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "[Lrf;"
+		descriptor = "[Lrq;"
 	)
 	@Export("array")
 	User[] array;
-	@ObfuscatedName("av")
+	@ObfuscatedName("an")
 	@Export("usernamesMap")
 	HashMap usernamesMap;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ad")
 	@Export("previousUsernamesMap")
 	HashMap previousUsernamesMap;
-	@ObfuscatedName("as")
+	@ObfuscatedName("ax")
 	@Export("comparator")
 	Comparator comparator;
 
@@ -47,26 +47,26 @@ public abstract class UserList {
 		this.previousUsernamesMap = new HashMap(var1 / 8);
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lrf;",
-		garbageValue = "794695059"
+		descriptor = "(I)Lrq;",
+		garbageValue = "-12713242"
 	)
 	@Export("newInstance")
 	abstract User newInstance();
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(II)[Lrf;",
-		garbageValue = "-190310061"
+		descriptor = "(IB)[Lrq;",
+		garbageValue = "-33"
 	)
 	@Export("newTypedArray")
 	abstract User[] newTypedArray(int var1);
 
-	@ObfuscatedName("bf")
+	@ObfuscatedName("br")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-1535217845"
+		garbageValue = "2015936020"
 	)
 	@Export("clear")
 	public void clear() {
@@ -76,30 +76,30 @@ public abstract class UserList {
 		this.previousUsernamesMap.clear();
 	}
 
-	@ObfuscatedName("bg")
+	@ObfuscatedName("ba")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-1124880837"
+		descriptor = "(B)I",
+		garbageValue = "-31"
 	)
 	@Export("getSize")
 	public int getSize() {
 		return this.size;
 	}
 
-	@ObfuscatedName("ba")
+	@ObfuscatedName("bk")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "458796278"
+		descriptor = "(B)Z",
+		garbageValue = "-18"
 	)
 	@Export("isFull")
 	public boolean isFull() {
-		return this.capacity == this.size;
+		return this.size == this.capacity;
 	}
 
-	@ObfuscatedName("bm")
+	@ObfuscatedName("bn")
 	@ObfuscatedSignature(
-		descriptor = "(Lvj;S)Z",
-		garbageValue = "18697"
+		descriptor = "(Lvs;I)Z",
+		garbageValue = "2126877971"
 	)
 	@Export("contains")
 	public boolean contains(Username var1) {
@@ -110,10 +110,10 @@ public abstract class UserList {
 		}
 	}
 
-	@ObfuscatedName("bp")
+	@ObfuscatedName("by")
 	@ObfuscatedSignature(
-		descriptor = "(Lvj;I)Lrf;",
-		garbageValue = "-1933118786"
+		descriptor = "(Lvs;S)Lrq;",
+		garbageValue = "14463"
 	)
 	@Export("getByUsername")
 	public User getByUsername(Username var1) {
@@ -121,30 +121,30 @@ public abstract class UserList {
 		return var2 != null ? var2 : this.getByPreviousUsername(var1);
 	}
 
-	@ObfuscatedName("bw")
+	@ObfuscatedName("bc")
 	@ObfuscatedSignature(
-		descriptor = "(Lvj;I)Lrf;",
-		garbageValue = "756260945"
+		descriptor = "(Lvs;I)Lrq;",
+		garbageValue = "-2022721851"
 	)
 	@Export("getByCurrentUsername")
 	User getByCurrentUsername(Username var1) {
 		return !var1.hasCleanName() ? null : (User)this.usernamesMap.get(var1);
 	}
 
-	@ObfuscatedName("bj")
+	@ObfuscatedName("bx")
 	@ObfuscatedSignature(
-		descriptor = "(Lvj;I)Lrf;",
-		garbageValue = "-858632406"
+		descriptor = "(Lvs;I)Lrq;",
+		garbageValue = "-1763593228"
 	)
 	@Export("getByPreviousUsername")
 	User getByPreviousUsername(Username var1) {
 		return !var1.hasCleanName() ? null : (User)this.previousUsernamesMap.get(var1);
 	}
 
-	@ObfuscatedName("bn")
+	@ObfuscatedName("bf")
 	@ObfuscatedSignature(
-		descriptor = "(Lvj;I)Z",
-		garbageValue = "-1442833706"
+		descriptor = "(Lvs;I)Z",
+		garbageValue = "-807388972"
 	)
 	@Export("removeByUsername")
 	public final boolean removeByUsername(Username var1) {
@@ -157,10 +157,10 @@ public abstract class UserList {
 		}
 	}
 
-	@ObfuscatedName("bo")
+	@ObfuscatedName("bp")
 	@ObfuscatedSignature(
-		descriptor = "(Lrf;I)V",
-		garbageValue = "-1690044546"
+		descriptor = "(Lrq;I)V",
+		garbageValue = "924596933"
 	)
 	@Export("remove")
 	final void remove(User var1) {
@@ -171,20 +171,20 @@ public abstract class UserList {
 		}
 	}
 
-	@ObfuscatedName("bt")
+	@ObfuscatedName("bv")
 	@ObfuscatedSignature(
-		descriptor = "(Lvj;B)Lrf;",
-		garbageValue = "-83"
+		descriptor = "(Lvs;I)Lrq;",
+		garbageValue = "-1459455220"
 	)
 	@Export("addLastNoPreviousUsername")
 	User addLastNoPreviousUsername(Username var1) {
 		return this.addLast(var1, (Username)null);
 	}
 
-	@ObfuscatedName("bu")
+	@ObfuscatedName("bm")
 	@ObfuscatedSignature(
-		descriptor = "(Lvj;Lvj;I)Lrf;",
-		garbageValue = "1851941311"
+		descriptor = "(Lvs;Lvs;I)Lrq;",
+		garbageValue = "2145955154"
 	)
 	@Export("addLast")
 	User addLast(Username var1, Username var2) {
@@ -199,10 +199,10 @@ public abstract class UserList {
 		}
 	}
 
-	@ObfuscatedName("by")
+	@ObfuscatedName("bq")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lrf;",
-		garbageValue = "-56414305"
+		descriptor = "(II)Lrq;",
+		garbageValue = "-445408173"
 	)
 	@Export("get")
 	public final User get(int var1) {
@@ -213,10 +213,10 @@ public abstract class UserList {
 		}
 	}
 
-	@ObfuscatedName("bh")
+	@ObfuscatedName("bb")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "76"
+		descriptor = "(S)V",
+		garbageValue = "255"
 	)
 	@Export("sort")
 	public final void sort() {
@@ -228,10 +228,10 @@ public abstract class UserList {
 
 	}
 
-	@ObfuscatedName("bz")
+	@ObfuscatedName("bh")
 	@ObfuscatedSignature(
-		descriptor = "(Lrf;Lvj;Lvj;B)V",
-		garbageValue = "30"
+		descriptor = "(Lrq;Lvs;Lvs;B)V",
+		garbageValue = "108"
 	)
 	@Export("changeName")
 	final void changeName(User var1, Username var2, Username var3) {
@@ -240,10 +240,10 @@ public abstract class UserList {
 		this.mapPut(var1);
 	}
 
-	@ObfuscatedName("bc")
+	@ObfuscatedName("bw")
 	@ObfuscatedSignature(
-		descriptor = "(Lrf;B)I",
-		garbageValue = "-102"
+		descriptor = "(Lrq;I)I",
+		garbageValue = "1990797859"
 	)
 	@Export("indexOf")
 	final int indexOf(User var1) {
@@ -256,33 +256,37 @@ public abstract class UserList {
 		return -1;
 	}
 
-	@ObfuscatedName("bs")
+	@ObfuscatedName("bi")
 	@ObfuscatedSignature(
-		descriptor = "(Lrf;B)V",
-		garbageValue = "-78"
+		descriptor = "(Lrq;B)V",
+		garbageValue = "49"
 	)
 	@Export("mapRemove")
 	final void mapRemove(User var1) {
-		if (var1.previousUsername != null) {
-			this.previousUsernamesMap.remove(var1.previousUsername);
-		}
+		if (this.usernamesMap.remove(var1.username) == null) {
+			throw new IllegalStateException();
+		} else {
+			if (var1.previousUsername != null) {
+				this.previousUsernamesMap.remove(var1.previousUsername);
+			}
 
+		}
 	}
 
-	@ObfuscatedName("bx")
+	@ObfuscatedName("bu")
 	@ObfuscatedSignature(
-		descriptor = "(Lrf;I)V",
-		garbageValue = "-488058670"
+		descriptor = "(Lrq;I)V",
+		garbageValue = "54612016"
 	)
 	@Export("arrayAddLast")
 	final void arrayAddLast(User var1) {
 		this.array[++this.size - 1] = var1;
 	}
 
-	@ObfuscatedName("bb")
+	@ObfuscatedName("be")
 	@ObfuscatedSignature(
-		descriptor = "(Lrf;I)V",
-		garbageValue = "-1090734641"
+		descriptor = "(Lrq;I)V",
+		garbageValue = "1783146092"
 	)
 	@Export("mapPut")
 	final void mapPut(User var1) {
@@ -296,10 +300,10 @@ public abstract class UserList {
 
 	}
 
-	@ObfuscatedName("bk")
+	@ObfuscatedName("bs")
 	@ObfuscatedSignature(
 		descriptor = "(II)V",
-		garbageValue = "-312876519"
+		garbageValue = "40777180"
 	)
 	@Export("arrayRemove")
 	final void arrayRemove(int var1) {
@@ -310,20 +314,20 @@ public abstract class UserList {
 
 	}
 
-	@ObfuscatedName("br")
+	@ObfuscatedName("bl")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1908013155"
+		descriptor = "(B)V",
+		garbageValue = "53"
 	)
 	@Export("removeComparator")
 	public final void removeComparator() {
 		this.comparator = null;
 	}
 
-	@ObfuscatedName("bq")
+	@ObfuscatedName("bz")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/util/Comparator;S)V",
-		garbageValue = "-18324"
+		descriptor = "(Ljava/util/Comparator;B)V",
+		garbageValue = "-47"
 	)
 	@Export("addComparator")
 	public final void addComparator(Comparator var1) {
@@ -333,28 +337,5 @@ public abstract class UserList {
 			((AbstractUserComparator)this.comparator).addComparator(var1);
 		}
 
-	}
-
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "(IS)Lhy;",
-		garbageValue = "196"
-	)
-	@Export("StructDefinition_getStructDefinition")
-	public static StructComposition StructDefinition_getStructDefinition(int var0) {
-		StructComposition var1 = (StructComposition)StructComposition.StructDefinition_cached.get((long)var0);
-		if (var1 != null) {
-			return var1;
-		} else {
-			byte[] var2 = StructComposition.StructDefinition_archive.takeFile(34, var0);
-			var1 = new StructComposition();
-			if (var2 != null) {
-				var1.decode(new Buffer(var2));
-			}
-
-			var1.postDecode();
-			StructComposition.StructDefinition_cached.put(var1, (long)var0);
-			return var1;
-		}
 	}
 }

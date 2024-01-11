@@ -516,4 +516,16 @@ public interface UnethicaliteConfig extends Config
 	{
 		return false;
 	}
+
+	@ConfigItem(
+		position = 0,
+		keyName = "disableLinkBrowser",
+		name = "Disable Link Browser",
+		description = "Disables the Link Browser (openUrl) functionality.",
+		section = otherSettings
+	)
+	default boolean disableLinkBrowser()
+	{
+		return false;
+	}
 }

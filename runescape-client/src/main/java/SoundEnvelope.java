@@ -6,37 +6,37 @@ import net.runelite.mapping.ObfuscatedSignature;
 @ObfuscatedName("bh")
 @Implements("SoundEnvelope")
 public class SoundEnvelope {
-	@ObfuscatedName("at")
+	@ObfuscatedName("am")
 	@Export("segments")
 	int segments;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ap")
 	@Export("durations")
 	int[] durations;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("af")
 	@Export("phases")
 	int[] phases;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aj")
 	@Export("start")
 	int start;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("aq")
 	@Export("end")
 	int end;
-	@ObfuscatedName("au")
+	@ObfuscatedName("ar")
 	@Export("form")
 	int form;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("ag")
 	@Export("ticks")
 	int ticks;
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ao")
 	@Export("phaseIndex")
 	int phaseIndex;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ae")
 	@Export("step")
 	int step;
-	@ObfuscatedName("az")
+	@ObfuscatedName("aa")
 	@Export("amplitude")
 	int amplitude;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("au")
 	@Export("max")
 	int max;
 
@@ -50,9 +50,9 @@ public class SoundEnvelope {
 		this.phases[1] = 65535;
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(Luj;)V"
+		descriptor = "(Luk;)V"
 	)
 	@Export("decode")
 	final void decode(Buffer var1) {
@@ -62,9 +62,9 @@ public class SoundEnvelope {
 		this.decodeSegments(var1);
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(Luj;)V"
+		descriptor = "(Luk;)V"
 	)
 	@Export("decodeSegments")
 	final void decodeSegments(Buffer var1) {
@@ -79,7 +79,7 @@ public class SoundEnvelope {
 
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("af")
 	@Export("reset")
 	final void reset() {
 		this.ticks = 0;
@@ -89,7 +89,7 @@ public class SoundEnvelope {
 		this.max = 0;
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aj")
 	@Export("doStep")
 	final int doStep(int var1) {
 		if (this.max >= this.ticks) {

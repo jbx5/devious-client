@@ -1,72 +1,50 @@
-import net.runelite.mapping.ObfuscatedGetter;
+import java.util.regex.Pattern;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("pw")
+@ObfuscatedName("pz")
 public final class class402 {
-	@ObfuscatedName("al")
-	@ObfuscatedGetter(
-		intValue = -1466470293
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "Lut;"
 	)
-	static int field4475;
-	@ObfuscatedName("at")
-	final Object field4474;
-	@ObfuscatedName("ah")
-	@ObfuscatedGetter(
-		intValue = -775774973
-	)
-	int field4472;
+	@Export("options_buttons_2Sprite")
+	static IndexedSprite options_buttons_2Sprite;
 
-	class402(Object var1, int var2) {
-		this.field4474 = var1;
-		this.field4472 = var2;
+	static {
+		Pattern.compile("^\\D*(\\d+)\\D*$");
 	}
 
-	@ObfuscatedName("kh")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/String;B)V",
-		garbageValue = "-6"
+		descriptor = "(ILdd;ZB)I",
+		garbageValue = "-23"
 	)
-	static void method7472(int var0, String var1) {
-		int var2 = Players.Players_count;
-		int[] var3 = Players.Players_indices;
-		boolean var4 = false;
-		Username var5 = new Username(var1, class89.loginType);
-
-		for (int var6 = 0; var6 < var2; ++var6) {
-			Player var7 = Client.players[var3[var6]];
-			if (var7 != null && var7 != class229.localPlayer && var7.username != null && var7.username.equals(var5)) {
-				PacketBufferNode var8;
-				if (var0 == 1) {
-					var8 = class113.getPacketBufferNode(ClientPacket.OPPLAYER1, Client.packetWriter.isaacCipher);
-					var8.packetBuffer.writeShort(var3[var6]);
-					var8.packetBuffer.writeByteNeg(0);
-					Client.packetWriter.addNode(var8);
-				} else if (var0 == 4) {
-					var8 = class113.getPacketBufferNode(ClientPacket.OPPLAYER4, Client.packetWriter.isaacCipher);
-					var8.packetBuffer.writeByteSub(0);
-					var8.packetBuffer.writeShortAddLE(var3[var6]);
-					Client.packetWriter.addNode(var8);
-				} else if (var0 == 6) {
-					var8 = class113.getPacketBufferNode(ClientPacket.OPPLAYER6, Client.packetWriter.isaacCipher);
-					var8.packetBuffer.writeByteSub(0);
-					var8.packetBuffer.writeShort(var3[var6]);
-					Client.packetWriter.addNode(var8);
-				} else if (var0 == 7) {
-					var8 = class113.getPacketBufferNode(ClientPacket.OPPLAYER7, Client.packetWriter.isaacCipher);
-					var8.packetBuffer.writeShortAdd(var3[var6]);
-					var8.packetBuffer.writeByteSub(0);
-					Client.packetWriter.addNode(var8);
-				}
-
-				var4 = true;
-				break;
+	static int method7522(int var0, Script var1, boolean var2) {
+		Widget var3 = var2 ? class31.scriptDotWidget : class185.scriptActiveWidget;
+		if (var0 == ScriptOpcodes.CC_GETINVOBJECT) {
+			Interpreter.Interpreter_intStack[++UserComparator6.Interpreter_intStackSize - 1] = var3.itemId;
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETINVCOUNT) {
+			if (var3.itemId != -1) {
+				Interpreter.Interpreter_intStack[++UserComparator6.Interpreter_intStackSize - 1] = var3.itemQuantity;
+			} else {
+				Interpreter.Interpreter_intStack[++UserComparator6.Interpreter_intStackSize - 1] = 0;
 			}
-		}
 
-		if (!var4) {
-			GrandExchangeOfferUnitPriceComparator.addGameMessage(4, "", "Unable to find " + var1);
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETID) {
+			Interpreter.Interpreter_intStack[++UserComparator6.Interpreter_intStackSize - 1] = var3.childIndex;
+			return 1;
+		} else if (var0 == 1707) {
+			Interpreter.Interpreter_intStack[++UserComparator6.Interpreter_intStackSize - 1] = var3.method6762() ? 1 : 0;
+			return 1;
+		} else if (var0 == 1708) {
+			return class132.method3116(var3);
+		} else {
+			return var0 == 1709 ? BuddyRankComparator.method2997(var3) : 2;
 		}
-
 	}
 }

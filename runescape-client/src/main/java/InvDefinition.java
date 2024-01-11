@@ -4,24 +4,27 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gz")
+@ObfuscatedName("gy")
 @Implements("InvDefinition")
 public class InvDefinition extends DualNode {
-	@ObfuscatedName("at")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "Lol;"
+		descriptor = "Low;"
 	)
 	@Export("InvDefinition_archive")
-	public static AbstractArchive InvDefinition_archive;
-	@ObfuscatedName("ah")
+	static AbstractArchive InvDefinition_archive;
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Llk;"
+		descriptor = "Llq;"
 	)
 	@Export("InvDefinition_cached")
-	public static EvictingDualNodeHashTable InvDefinition_cached;
-	@ObfuscatedName("ar")
+	static EvictingDualNodeHashTable InvDefinition_cached;
+	@ObfuscatedName("gy")
+	@Export("worldHost")
+	static String worldHost;
+	@ObfuscatedName("af")
 	@ObfuscatedGetter(
-		intValue = -285256807
+		intValue = 314824063
 	)
 	@Export("size")
 	public int size;
@@ -34,10 +37,10 @@ public class InvDefinition extends DualNode {
 		this.size = 0;
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "(Luj;B)V",
-		garbageValue = "0"
+		descriptor = "(Luk;I)V",
+		garbageValue = "-1965159394"
 	)
 	@Export("decode")
 	void decode(Buffer var1) {
@@ -51,10 +54,10 @@ public class InvDefinition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(Luj;II)V",
-		garbageValue = "-472687960"
+		descriptor = "(Luk;II)V",
+		garbageValue = "-1777478157"
 	)
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
@@ -62,40 +65,5 @@ public class InvDefinition extends DualNode {
 			this.size = var1.readUnsignedShort();
 		}
 
-	}
-
-	@ObfuscatedName("at")
-	@ObfuscatedSignature(
-		descriptor = "(Lol;Lol;S)V",
-		garbageValue = "1000"
-	)
-	public static void method3531(AbstractArchive var0, AbstractArchive var1) {
-		KitDefinition.KitDefinition_archive = var0;
-		KitDefinition.KitDefinition_modelsArchive = var1;
-		class348.KitDefinition_fileCount = KitDefinition.KitDefinition_archive.getGroupFileCount(3);
-	}
-
-	@ObfuscatedName("at")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "264426483"
-	)
-	public static void method3530() {
-		class173.field1915.clear();
-	}
-
-	@ObfuscatedName("ny")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;B)V",
-		garbageValue = "-103"
-	)
-	@Export("clanKickUser")
-	static final void clanKickUser(String var0) {
-		if (class20.friendsChat != null) {
-			PacketBufferNode var1 = class113.getPacketBufferNode(ClientPacket.CLAN_KICKUSER, Client.packetWriter.isaacCipher);
-			var1.packetBuffer.writeByte(ClanChannel.stringCp1252NullTerminatedByteSize(var0));
-			var1.packetBuffer.writeStringCp1252NullTerminated(var0);
-			Client.packetWriter.addNode(var1);
-		}
 	}
 }

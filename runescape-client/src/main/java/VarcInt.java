@@ -3,21 +3,22 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gk")
+@ObfuscatedName("gp")
 @Implements("VarcInt")
 public class VarcInt extends DualNode {
-	@ObfuscatedName("ah")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "Llk;"
+		descriptor = "Low;"
+	)
+	@Export("VarcInt_archive")
+	public static AbstractArchive VarcInt_archive;
+	@ObfuscatedName("ap")
+	@ObfuscatedSignature(
+		descriptor = "Llq;"
 	)
 	@Export("VarcInt_cached")
 	public static EvictingDualNodeHashTable VarcInt_cached;
-	@ObfuscatedName("aj")
-	@ObfuscatedSignature(
-		descriptor = "Lgn;"
-	)
-	static ClanChannel field1851;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("af")
 	@Export("persist")
 	public boolean persist;
 
@@ -25,87 +26,67 @@ public class VarcInt extends DualNode {
 		VarcInt_cached = new EvictingDualNodeHashTable(64);
 	}
 
-	VarcInt() {
+	public VarcInt() {
 		this.persist = false;
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(Luj;S)V",
-		garbageValue = "-26758"
+		descriptor = "(Luk;B)V",
+		garbageValue = "51"
 	)
-	void method3593(Buffer var1) {
+	public void method3629(Buffer var1) {
 		while (true) {
 			int var2 = var1.readUnsignedByte();
 			if (var2 == 0) {
 				return;
 			}
 
-			this.method3592(var1, var2);
+			this.method3636(var1, var2);
 		}
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(Luj;IB)V",
-		garbageValue = "14"
+		descriptor = "(Luk;II)V",
+		garbageValue = "-899761291"
 	)
-	void method3592(Buffer var1, int var2) {
+	void method3636(Buffer var1, int var2) {
 		if (var2 == 2) {
 			this.persist = true;
 		}
 
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "([BZI)Ljava/lang/Object;",
-		garbageValue = "-648175177"
+		descriptor = "(IIB)Z",
+		garbageValue = "0"
 	)
-	public static Object method3598(byte[] var0, boolean var1) {
-		if (var0 == null) {
+	static boolean method3635(int var0, int var1) {
+		return var0 != 4 || var1 < 8;
+	}
+
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "(Low;Ljava/lang/String;Ljava/lang/String;B)Lut;",
+		garbageValue = "20"
+	)
+	@Export("SpriteBuffer_getIndexedSpriteByName")
+	public static IndexedSprite SpriteBuffer_getIndexedSpriteByName(AbstractArchive var0, String var1, String var2) {
+		if (!var0.isValidFileName(var1, var2)) {
 			return null;
-		} else if (var0.length > 136) {
-			DirectByteArrayCopier var2 = new DirectByteArrayCopier();
-			var2.set(var0);
-			return var2;
 		} else {
-			return var0;
-		}
-	}
-
-	@ObfuscatedName("at")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "60"
-	)
-	public static void method3601() {
-		class176.archive5.clear();
-	}
-
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "(III)V",
-		garbageValue = "1925718940"
-	)
-	@Export("changeWorldSelectSorting")
-	static void changeWorldSelectSorting(int var0, int var1) {
-		int[] var2 = new int[4];
-		int[] var3 = new int[4];
-		var2[0] = var0;
-		var3[0] = var1;
-		int var4 = 1;
-
-		for (int var5 = 0; var5 < 4; ++var5) {
-			if (World.World_sortOption1[var5] != var0) {
-				var2[var4] = World.World_sortOption1[var5];
-				var3[var4] = World.World_sortOption2[var5];
-				++var4;
+			int var3 = var0.getGroupId(var1);
+			int var4 = var0.getFileId(var3, var2);
+			IndexedSprite var5;
+			if (!Varcs.method2829(var0, var3, var4)) {
+				var5 = null;
+			} else {
+				var5 = class464.method8511();
 			}
-		}
 
-		World.World_sortOption1 = var2;
-		World.World_sortOption2 = var3;
-		class181.sortWorlds(class361.World_worlds, 0, class361.World_worlds.length - 1, World.World_sortOption1, World.World_sortOption2);
+			return var5;
+		}
 	}
 }
