@@ -93,7 +93,8 @@ public class class33 {
 		descriptor = "(I)V",
 		garbageValue = "-2022690739"
 	)
-	static void method489() {
+	@Export("initCredentials")
+	static void initCredentials() {
 		HttpRequest.accessToken = System.getenv("JX_ACCESS_TOKEN");
 		class4.refreshToken = System.getenv("JX_REFRESH_TOKEN");
 		ClanChannel.sessionId = System.getenv("JX_SESSION_ID");
