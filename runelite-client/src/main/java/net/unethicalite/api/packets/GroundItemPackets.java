@@ -103,8 +103,8 @@ public class GroundItemPackets
 		packetBufferNode.getPacketBuffer().writeIntLE(sourceWidgetId);
 		packetBufferNode.getPacketBuffer().writeShortAdd(sourceSlot);
 		packetBufferNode.getPacketBuffer().writeShortAdd(groundItemId);
-		packetBufferNode.getPacketBuffer().writeShortAddLE(worldPointY);
-		packetBufferNode.getPacketBuffer().writeShort(worldPointX);
+		packetBufferNode.getPacketBuffer().writeShortAddLE(worldPointX);
+		packetBufferNode.getPacketBuffer().writeShort(worldPointY);
 		packetBufferNode.getPacketBuffer().writeByte(ctrlDown ? 1 : 0);
 		packetBufferNode.getPacketBuffer().writeShortAddLE(sourceItemId);
 		return packetBufferNode;
