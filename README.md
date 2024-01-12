@@ -1,5 +1,5 @@
 ###
-This is a fork of Unethicalite that I'm looking to actively maintain since I think this would be a nice learning experience for me.
+This is an open source fork of OpenOSRS and Unethicalite that I'm looking to actively maintain since I think this would be a nice learning experience for me.
 
 Come join my discord if you're looking to share knowledge and learn together!
 
